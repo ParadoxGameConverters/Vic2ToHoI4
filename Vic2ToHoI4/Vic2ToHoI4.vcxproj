@@ -65,7 +65,7 @@
     <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <EnableCppCoreCheck>false</EnableCppCoreCheck>
-    <OutDir>$(SolutionDir)$(Configuration)\Vic2ToHoI4</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\Vic2ToHoI4\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>

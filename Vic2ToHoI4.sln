@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vic2ToHoI4", "Vic2ToHoI4\Vic2ToHoI4.vcxproj", "{F5433A7A-723C-4E55-AC01-9D146820C7B4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0918DC8B-8D29-4B01-B83E-0896ECDF88A6} = {0918DC8B-8D29-4B01-B83E-0896ECDF88A6}
+	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Vic2ToHoI4Tests", "Vic2ToHoI4Tests\Vic2ToHoI4Tests.vcxproj", "{04880802-B498-49E7-8AB1-67849264E0E9}"
 EndProject
@@ -28,6 +31,7 @@ Global
 		{F5433A7A-723C-4E55-AC01-9D146820C7B4}.Debug|Win32.Build.0 = Debug|Win32
 		{F5433A7A-723C-4E55-AC01-9D146820C7B4}.Debug|x64.ActiveCfg = Debug|Win32
 		{F5433A7A-723C-4E55-AC01-9D146820C7B4}.Release|Any CPU.ActiveCfg = Release|Win32
+		{F5433A7A-723C-4E55-AC01-9D146820C7B4}.Release|Any CPU.Build.0 = Release|Win32
 		{F5433A7A-723C-4E55-AC01-9D146820C7B4}.Release|Win32.ActiveCfg = Release|Win32
 		{F5433A7A-723C-4E55-AC01-9D146820C7B4}.Release|Win32.Build.0 = Release|Win32
 		{F5433A7A-723C-4E55-AC01-9D146820C7B4}.Release|x64.ActiveCfg = Release|Win32
