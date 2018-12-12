@@ -1,4 +1,4 @@
-/*Copyright (c) 2017 The Paradox Game Converters Project
+/*Copyright (c) 2018 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -21,44 +21,41 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "HoI4SupplyZone.h"
 #include "Log.h"
-#include "../Configuration.h"
-#include <fstream>
+#include "Vic2ToHoI4Converter.h"
+#include "OSCompatibilityLayer.h"
 
 
 
-HoI4SupplyZone::HoI4SupplyZone(int _ID, int _value):
-	ID(_ID),
-	states(),
-	value(_value)
+int main(const int argc, const char* argv[])
 {
-}
-
-
-void HoI4SupplyZone::output(const string& _filename) const
-{
-	string filename("output/" + theConfiguration.getOutputName() + "/map/supplyareas/" + _filename);
-	ofstream out(filename);
-	if (!out.is_open())
+	try
 	{
-		LOG(LogLevel::Error) << "Could not open \"output/input/map/supplyareas/" + _filename;
-		exit(-1);
-	}
-	out << "\n";
-	out << "supply_area={" << endl;
-	out << "\tid=" << ID << endl;
-	out << "\tname=\"SUPPLYAREA_" << ID << "\"" << endl;
-	out << "\tvalue=" << value << endl;
-	out << "\tstates={" << endl;
-	out << "\t\t";
-	for (auto stateNum: states)
-	{
-		out << stateNum << " ";
-	}
-	out << endl;
-	out << "\t}" << endl;
-	out << "}" << endl;
+		LOG(LogLevel::Info) << "Converter version 0.2H";
+		LOG(LogLevel::Info) << "Built on " << __DATE__ << " at " << __TIME__;
+		LOG(LogLevel::Info) << "Current directory is " << Utils::getCurrentDirectory();
 
-	out.close();
+		const char* const defaultV2SaveFileName = "input.v2";
+		std::string V2SaveFileName;
+		if (argc >= 2)
+		{
+			V2SaveFileName = argv[1];
+			LOG(LogLevel::Info) << "Using input file " << V2SaveFileName;
+		}
+		else
+		{
+			V2SaveFileName = defaultV2SaveFileName;
+			LOG(LogLevel::Info) << "No input file given, defaulting to " << defaultV2SaveFileName;
+		}
+
+		ConvertV2ToHoI4(V2SaveFileName);
+
+		return 0;
+	}
+
+	catch (const std::exception& e)
+	{
+		LOG(LogLevel::Error) << e.what();
+		return -1;
+	}
 }
