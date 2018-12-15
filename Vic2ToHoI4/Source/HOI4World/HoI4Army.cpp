@@ -30,7 +30,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings, int backupLocation)
+void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings, int backupLocation, double forceMultiplier)
 {
 	std::map<std::string, std::vector<sizedRegiment>> remainingBattalionsAndCompanies;
 
@@ -55,7 +55,7 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings, int 
 				{
 					// Calculate how many Battalions and Companies are available after mapping Vic2 armies
 					sizedRegiment theRegiment;
-					theRegiment.unitSize = unitInfo.getSize() * theConfiguration.getForceMultiplier();
+					theRegiment.unitSize = unitInfo.getSize() * forceMultiplier;
 					theRegiment.regiment = regiment;
 					localBattalionsAndCompanies[unitInfo.getType()].push_back(theRegiment);
 				}

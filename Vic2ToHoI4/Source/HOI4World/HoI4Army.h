@@ -61,7 +61,7 @@ class Army
 
 		void addSourceArmies(std::vector<const Vic2::Army*> _sourceArmies) { sourceArmies = _sourceArmies; }
 
-		void convertArmies(const militaryMappings& theMilitaryMappings, int backupLocation);
+		void convertArmies(const militaryMappings& theMilitaryMappings, int backupLocation, double forceMultiplier);
 
 		friend std::ostream& operator << (std::ostream& output, const Army& theArmy);
 

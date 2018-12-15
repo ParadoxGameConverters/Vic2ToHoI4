@@ -37,18 +37,22 @@ TEST(HoI4World_HoI4ArmyTests, ArmyStartsEmpty)
 	output << theArmy;
 	ASSERT_EQ(std::string(""), output.str());
 }
+
+
 TEST(HoI4World_HoI4ArmyTests, EmptyArmyStaysEmpty)
 {
 	HoI4::Army theArmy;
 
 	std::stringstream mappingsInput;
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
-	theArmy.convertArmies(theMilitaryMappings, 0);
+	theArmy.convertArmies(theMilitaryMappings, 0, 1.0);
 
 	std::ostringstream output;
 	output << theArmy;
 	ASSERT_EQ(std::string(""), output.str());
 }
+
+
 TEST(HoI4World_HoI4ArmyTests, InsufficientDivisionsBecomeNothing)
 {
 	HoI4::Army theArmy;
@@ -130,7 +134,7 @@ TEST(HoI4World_HoI4ArmyTests, SufficientDivisionsConvert)
 												"}"
 	);
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
-	theArmy.convertArmies(theMilitaryMappings, 0);
+	theArmy.convertArmies(theMilitaryMappings, 0, 1.0);
 
 	std::ostringstream output;
 	output << theArmy;
@@ -206,7 +210,7 @@ TEST(HoI4World_HoI4ArmyTests, ExperienceConverts)
 												"}"
 	);
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
-	theArmy.convertArmies(theMilitaryMappings, 0);
+	theArmy.convertArmies(theMilitaryMappings, 0, 1.0);
 
 	std::ostringstream output;
 	output << theArmy;
@@ -289,7 +293,7 @@ TEST(HoI4World_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 												"}"
 	);
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
-	theArmy.convertArmies(theMilitaryMappings, 0);
+	theArmy.convertArmies(theMilitaryMappings, 0, 1.0);
 
 	std::ostringstream output;
 	output << theArmy;
@@ -375,7 +379,7 @@ TEST(HoI4World_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 												"}"
 	);
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
-	theArmy.convertArmies(theMilitaryMappings, 0);
+	theArmy.convertArmies(theMilitaryMappings, 0, 1.0);
 
 	std::ostringstream output;
 	output << theArmy;
@@ -454,7 +458,7 @@ TEST(HoI4World_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 												"}"
 	);
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
-	theArmy.convertArmies(theMilitaryMappings, 1);
+	theArmy.convertArmies(theMilitaryMappings, 1, 1.0);
 
 	std::ostringstream output;
 	output << theArmy;

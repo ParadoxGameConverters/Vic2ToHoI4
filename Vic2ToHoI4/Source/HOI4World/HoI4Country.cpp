@@ -564,7 +564,7 @@ void HoI4Country::convertArmies(const HoI4::militaryMappings& theMilitaryMapping
 	{
 		backupLocation = capitalState->getVPLocation();
 	}
-	theArmy.convertArmies(theMilitaryMappings, backupLocation);
+	theArmy.convertArmies(theMilitaryMappings, backupLocation, theConfiguration.getForceMultiplier());
 }
 
 
