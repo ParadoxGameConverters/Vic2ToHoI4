@@ -15,6 +15,8 @@ test_script:
     cd Release\Vic2ToHoI4
 
     ..\..\Vic2ToHoI4Tests\Release\Vic2ToHoI4Tests.exe --gtest_output=xml:tests.xml
+
+    (new-object net.webclient).UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\tests.xml))
 artifacts:
 - path: Release
   name: Vic2ToHoI4
