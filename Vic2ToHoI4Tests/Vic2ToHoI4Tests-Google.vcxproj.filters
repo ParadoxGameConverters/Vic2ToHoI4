@@ -68,9 +68,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Country.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\ProvinceMapper.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\V2Localisations.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
@@ -112,9 +109,6 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\StateCategories.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\ProvinceDefinitions.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
@@ -274,6 +268,18 @@
     <ClCompile Include="HoI4WorldTests\UnitMapTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapper.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapping.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\VersionedMappings.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\ProvinceDefinitions.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -296,6 +302,9 @@
     </Filter>
     <Filter Include="Vic2WorldTests">
       <UniqueIdentifier>{2a1ee139-22ae-41dc-ad66-4f25c8d0b046}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\Provinces">
+      <UniqueIdentifier>{2875d00b-6935-41d2-84c2-f292d2455639}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

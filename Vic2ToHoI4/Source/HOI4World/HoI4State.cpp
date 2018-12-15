@@ -25,7 +25,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "CoastalProvinces.h"
 #include "StateCategories.h"
 #include "../Configuration.h"
-#include "../Mappers/ProvinceMapper.h"
+#include "../Mappers/Provinces/ProvinceMapper.h"
 #include "../V2World/StateDefinitions.h"
 #include "../V2World/Province.h"
 #include "../V2World/State.h"

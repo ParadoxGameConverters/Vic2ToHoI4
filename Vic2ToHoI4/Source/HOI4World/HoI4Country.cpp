@@ -38,7 +38,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Mappers/V2Localisations.h"
 #include "../V2World/Relations.h"
 #include "../V2World/Party.h"
-#include "../Mappers/ProvinceMapper.h"
+#include "../Mappers/Provinces/ProvinceMapper.h"
 #include "OSCompatibilityLayer.h"
 #include <algorithm>
 #include <fstream>

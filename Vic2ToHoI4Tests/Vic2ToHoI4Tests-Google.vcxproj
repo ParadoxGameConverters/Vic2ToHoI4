@@ -104,7 +104,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\ProvinceDefinitions.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\ProvinceMapper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapping.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\VersionedMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\TechMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\V2Localisations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\targa.cpp" />

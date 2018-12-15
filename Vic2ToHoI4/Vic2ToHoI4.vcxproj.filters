@@ -13,6 +13,9 @@
     <Filter Include="Mappers">
       <UniqueIdentifier>{0b3f5118-496d-4e6f-a8a4-5d7427bbcf51}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mappers\Provinces">
+      <UniqueIdentifier>{01d85e52-eab1-4d75-979b-bcdf9a2fe2ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -78,9 +81,6 @@
       <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\Mappers\GovernmentMapper.cpp">
-      <Filter>Mappers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Mappers\ProvinceMapper.cpp">
       <Filter>Mappers</Filter>
     </ClCompile>
     <ClCompile Include="Source\Mappers\CountryMapping.cpp">
@@ -258,6 +258,15 @@
       <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\main.cpp" />
+    <ClCompile Include="Source\Mappers\Provinces\ProvinceMapper.cpp">
+      <Filter>Mappers\Provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\Provinces\ProvinceMapping.cpp">
+      <Filter>Mappers\Provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\Provinces\VersionedMappings.cpp">
+      <Filter>Mappers\Provinces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -319,9 +328,6 @@
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\GovernmentMapper.h">
-      <Filter>Mappers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Mappers\ProvinceMapper.h">
       <Filter>Mappers</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\CountryMapping.h">
@@ -503,5 +509,17 @@
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\Vic2ToHoI4Converter.h" />
+    <ClInclude Include="Source\Mappers\Provinces\ProvinceMapper.h">
+      <Filter>Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Provinces\ProvinceMapping.h">
+      <Filter>Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Provinces\VersionedMappings.h">
+      <Filter>Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Provinces\ProvinceMappingTypes.h">
+      <Filter>Mappers\Provinces</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

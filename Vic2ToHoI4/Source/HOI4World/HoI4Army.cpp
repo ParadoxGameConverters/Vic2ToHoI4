@@ -24,7 +24,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4Army.h"
 #include "Division.h"
 #include "../Configuration.h"
-#include "../Mappers/ProvinceMapper.h"
+#include "../Mappers/Provinces/ProvinceMapper.h"
 #include "../V2World/Army.h"
 #include "Log.h"
 
