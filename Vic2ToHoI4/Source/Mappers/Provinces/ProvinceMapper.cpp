@@ -93,7 +93,6 @@ void provinceMapper::initialize(std::istream& input)
 	});
 
 	parseStream(input);
-	checkAllHoI4ProvinesMapped();
 }
 
 
