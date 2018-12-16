@@ -238,7 +238,9 @@
     <ClCompile Include="Source\Mappers\GraphicsMapper.cpp" />
     <ClCompile Include="Source\Mappers\MergeRules.cpp" />
     <ClCompile Include="Source\Mappers\ProvinceDefinitions.cpp" />
-    <ClCompile Include="Source\Mappers\ProvinceMapper.cpp" />
+    <ClCompile Include="Source\Mappers\Provinces\ProvinceMapper.cpp" />
+    <ClCompile Include="Source\Mappers\Provinces\ProvinceMapping.cpp" />
+    <ClCompile Include="Source\Mappers\Provinces\VersionedMappings.cpp" />
     <ClCompile Include="Source\Mappers\TechMapper.cpp" />
     <ClCompile Include="Source\Mappers\V2Localisations.cpp" />
     <ClCompile Include="Source\targa.cpp" />
@@ -325,7 +327,10 @@
     <ClInclude Include="Source\Mappers\ProvinceDefinitions.h" />
     <ClInclude Include="Source\Mappers\CountryMapping.h" />
     <ClInclude Include="Source\Mappers\GovernmentMapper.h" />
-    <ClInclude Include="Source\Mappers\ProvinceMapper.h" />
+    <ClInclude Include="Source\Mappers\Provinces\ProvinceMapper.h" />
+    <ClInclude Include="Source\Mappers\Provinces\ProvinceMapping.h" />
+    <ClInclude Include="Source\Mappers\Provinces\ProvinceMappingTypes.h" />
+    <ClInclude Include="Source\Mappers\Provinces\VersionedMappings.h" />
     <ClInclude Include="Source\Mappers\TechMapper.h" />
     <ClInclude Include="Source\Mappers\V2Localisations.h" />
     <ClInclude Include="Source\targa.h" />

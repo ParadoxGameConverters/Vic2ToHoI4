@@ -21,62 +21,44 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef HOI4_ARMY_H_
-#define HOI4_ARMY_H_
+#ifndef PROVINCE_MAPPER_H
+#define PROVINCE_MAPPER_H
 
 
 
-#include "Division.h"
-#include "DivisionTemplate.h"
-#include "MilitaryMappings.h"
-#include "../V2World/Army.h"
-#include <string>
+#include "ProvinceMappingTypes.h"
+#include "newParser.h"
 #include <map>
+#include <optional>
 #include <vector>
 
 
 
-namespace Vic2
-{
-
-class Army;
-
-}
-
-
-namespace HoI4
-{
-
-
-typedef struct {
-	double unitSize;
-	Vic2::Regiment* regiment;
-} sizedRegiment;
-
-
-class Army
+class provinceMapper: commonItems::parser
 {
 	public:
-		Army() = default;
+		provinceMapper() = default;
+		void initialize();
+		void initialize(std::istream& input);
 
-		void addSourceArmies(std::vector<const Vic2::Army*> _sourceArmies) { sourceArmies = _sourceArmies; }
-
-		void convertArmies(const militaryMappings& theMilitaryMappings, int backupLocation, double forceMultiplier);
-
-		friend std::ostream& operator << (std::ostream& output, const Army& theArmy);
+		std::optional<std::vector<int>> getVic2ToHoI4ProvinceMapping(int Vic2Province) const;
+		std::optional<std::vector<int>> getHoI4ToVic2ProvinceMapping(int HoI4Province) const;
 
 	private:
-		void convertArmyDivisions(const militaryMappings& theMilitaryMappings, std::map<std::string, std::vector<sizedRegiment>>& BattalionsAndCompanies, int location);
-		bool sufficientUnits(const std::map<std::string, std::vector<sizedRegiment>>& units, const std::map<std::string, std::string>& subs, const std::map<std::string, int>& req);
+		provinceMapper(const provinceMapper&) = delete;
+		provinceMapper& operator=(const provinceMapper&) = delete;
 
-		std::vector<const Vic2::Army*> sourceArmies;
-		std::vector<DivisionType> divisions;
+		void checkAllHoI4ProvinesMapped() const;
+		std::optional<int> getNextProvinceNumFromFile(std::ifstream& definitions) const;
+		void verifyProvinceIsMapped(int provNum) const;
+
+		HoI4ToVic2ProvinceMapping HoI4ToVic2ProvinceMap;
+		Vic2ToHoI4ProvinceMapping Vic2ToHoI4ProvinceMap;
 };
 
-std::ostream& operator << (std::ostream& output, const Army& theArmy);
 
-}
-
+extern provinceMapper theProvinceMapper;
 
 
-#endif // HOI4_ARMY_H_
+
+#endif // PROVINCE_MAPPER_H

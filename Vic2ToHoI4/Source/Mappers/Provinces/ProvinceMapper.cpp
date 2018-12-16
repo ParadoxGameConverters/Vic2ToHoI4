@@ -22,107 +22,18 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "ProvinceMapper.h"
+#include "ProvinceMapping.h"
+#include "VersionedMappings.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
-#include "../Configuration.h"
+#include "../../Configuration.h"
 #include <fstream>
 
 
 
 provinceMapper theProvinceMapper;
 
-
-
-class mapping: commonItems::parser
-{
-	public:
-		mapping(std::istream& theStream);
-
-		auto getVic2Nums() const { return Vic2Nums; }
-		auto getHoI4Nums() const { return HoI4Nums; }
-
-	private:
-		std::vector<int> Vic2Nums;
-		std::vector<int> HoI4Nums;
-};
-
-
-mapping::mapping(std::istream& theStream)
-{
-	registerKeyword(std::regex("vic2"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleInt provinceNum(theStream);
-		Vic2Nums.push_back(provinceNum.getInt());
-	});
-	registerKeyword(std::regex("hoi4"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleInt provinceNum(theStream);
-		HoI4Nums.push_back(provinceNum.getInt());
-	});
-
-	parseStream(theStream);
-
-	if (Vic2Nums.size() == 0)
-	{
-		Vic2Nums.push_back(0);
-	}
-	if (HoI4Nums.size() == 0)
-	{
-		HoI4Nums.push_back(0);
-	}
-}
-
-
-class versionMappings: commonItems::parser
-{
-	public:
-		versionMappings(std::istream& theStream);
-
-		auto getVic2ToHoI4Mapping() const { return Vic2ToHoI4ProvinceMap; }
-		auto getHoI4ToVic2Mapping() const { return HoI4ToVic2ProvinceMap; }
-
-	private:
-		void insertIntoHoI4ToVic2ProvinceMap(const std::vector<int>& Vic2Nums, const std::vector<int>& HoI4nums);
-		void insertIntoVic2ToHoI4ProvinceMap(const std::vector<int>& Vic2Nums, const std::vector<int>& HoI4nums);
-
-		HoI4ToVic2ProvinceMapping HoI4ToVic2ProvinceMap;
-		Vic2ToHoI4ProvinceMapping Vic2ToHoI4ProvinceMap;
-};
-
-
-versionMappings::versionMappings(std::istream& theStream)
-{
-	registerKeyword(std::regex("link"), [this](const std::string& unused, std::istream& theStream){
-		mapping theMapping(theStream);
-		insertIntoHoI4ToVic2ProvinceMap(theMapping.getVic2Nums(), theMapping.getHoI4Nums());
-		insertIntoVic2ToHoI4ProvinceMap(theMapping.getVic2Nums(), theMapping.getHoI4Nums());
-	});
-
-	parseStream(theStream);
-}
-
-
-void versionMappings::insertIntoHoI4ToVic2ProvinceMap(const std::vector<int>& Vic2Nums, const std::vector<int>& HoI4Nums)
-{
-	for (auto num: HoI4Nums)
-	{
-		if (num != 0)
-		{
-			HoI4ToVic2ProvinceMap.insert(make_pair(num, Vic2Nums));
-		}
-	}
-}
-
-
-void versionMappings::insertIntoVic2ToHoI4ProvinceMap(const std::vector<int>& Vic2Nums, const std::vector<int>& HoI4Nums)
-{
-	for (auto num: Vic2Nums)
-	{
-		if (num != 0)
-		{
-			Vic2ToHoI4ProvinceMap.insert(make_pair(num, HoI4Nums));
-		}
-	}
-}
 
 
 void provinceMapper::initialize()
@@ -161,6 +72,27 @@ void provinceMapper::initialize()
 	}
 
 	checkAllHoI4ProvinesMapped();
+}
+
+
+void provinceMapper::initialize(std::istream& input)
+{
+	registerKeyword(std::regex("\\d\\.\\d\\.\\d"), [this](const std::string& version, std::istream& theStream){
+		HoI4::Version currentVersion(version);
+		if ((theConfiguration.getHOI4Version() >= currentVersion))
+		{
+			LOG(LogLevel::Debug) << "Using version " << version << " mappings";
+			versionMappings thisVersionsMappings(theStream);
+			HoI4ToVic2ProvinceMap = thisVersionsMappings.getHoI4ToVic2Mapping();
+			Vic2ToHoI4ProvinceMap = thisVersionsMappings.getVic2ToHoI4Mapping();
+		}
+		else
+		{
+			commonItems::ignoreItem(version, theStream);
+		}
+	});
+
+	parseStream(input);
 }
 
 

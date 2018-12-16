@@ -21,47 +21,30 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef PROVINCE_MAPPER_H
-#define PROVINCE_MAPPER_H
+#include "ProvinceMapping.h"
+#include "ParserHelpers.h"
 
 
 
-#include "newParser.h"
-#include <map>
-#include <optional>
-#include <vector>
-
-
-
-typedef std::map<int, std::vector<int>> HoI4ToVic2ProvinceMapping;
-typedef std::map<int, std::vector<int>> Vic2ToHoI4ProvinceMapping;
-
-
-
-class provinceMapper: commonItems::parser
+mapping::mapping(std::istream& theStream)
 {
-	public:
-		provinceMapper() = default;
-		void initialize();
+	registerKeyword(std::regex("vic2"), [this](const std::string& unused, std::istream& theStream){
+		commonItems::singleInt provinceNum(theStream);
+		Vic2Nums.push_back(provinceNum.getInt());
+	});
+	registerKeyword(std::regex("hoi4"), [this](const std::string& unused, std::istream& theStream){
+		commonItems::singleInt provinceNum(theStream);
+		HoI4Nums.push_back(provinceNum.getInt());
+	});
 
-		std::optional<std::vector<int>> getVic2ToHoI4ProvinceMapping(int Vic2Province) const;
-		std::optional<std::vector<int>> getHoI4ToVic2ProvinceMapping(int HoI4Province) const;
+	parseStream(theStream);
 
-	private:
-		provinceMapper(const provinceMapper&) = delete;
-		provinceMapper& operator=(const provinceMapper&) = delete;
-
-		void checkAllHoI4ProvinesMapped() const;
-		std::optional<int> getNextProvinceNumFromFile(std::ifstream& definitions) const;
-		void verifyProvinceIsMapped(int provNum) const;
-
-		HoI4ToVic2ProvinceMapping HoI4ToVic2ProvinceMap;
-		Vic2ToHoI4ProvinceMapping Vic2ToHoI4ProvinceMap;
-};
-
-
-extern provinceMapper theProvinceMapper;
-
-
-
-#endif // PROVINCE_MAPPER_H
+	if (Vic2Nums.size() == 0)
+	{
+		Vic2Nums.push_back(0);
+	}
+	if (HoI4Nums.size() == 0)
+	{
+		HoI4Nums.push_back(0);
+	}
+}
