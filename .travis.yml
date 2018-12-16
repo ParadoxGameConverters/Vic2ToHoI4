@@ -29,9 +29,4 @@ script:
   # Run your build commands next
   - cd Vic2ToHoI4
   - cmake -H. -Bbuild
-  - ls
-  - ls build
   - cmake --build ./build
-  - cd ../EU4toV2
-  - cmake -H. -Bbuild
-  - cmake --build ./build -- -j3
