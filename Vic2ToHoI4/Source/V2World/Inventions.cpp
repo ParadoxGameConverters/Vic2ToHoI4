@@ -31,33 +31,47 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 Vic2::inventions::inventions() noexcept
 {
-	std::string path = getInventionPath();
-	generateNums(path);
+	auto inventionFiles = getInventionFiles();
+	generateNums(inventionFiles);
 }
 
 
-std::string Vic2::inventions::getInventionPath() const
+std::list<std::string> Vic2::inventions::getInventionFiles() const
 {
+	std::map<std::string, std::string> techFiles;
+
+	std::set<std::string> mainTechFiles;
+	Utils::GetAllFilesInFolder(theConfiguration.getVic2Path() + "/inventions/", mainTechFiles);
+	std::for_each(mainTechFiles.begin(), mainTechFiles.end(),
+					  [&techFiles](const std::string& file){ techFiles[file] = theConfiguration.getVic2Path() + "/inventions/"; });
+
 	for (auto mod: theConfiguration.getVic2Mods())
 	{
-		std::string possiblePath = theConfiguration.getVic2Path() + "/mod/" + mod + "/inventions/";
-		if (Utils::doesFolderExist(possiblePath))
+		std::string modInventionsPath = theConfiguration.getVic2Path() + "/mod/" + mod + "/inventions/";
+		if (Utils::doesFolderExist(modInventionsPath))
 		{
-			return possiblePath;
+			std::set<std::string> modTechFiles;
+			Utils::GetAllFilesInFolder(modInventionsPath, modTechFiles);
+			std::for_each(modTechFiles.begin(), modTechFiles.end(),
+							  [&techFiles, modInventionsPath](const std::string& file){ techFiles[file] = modInventionsPath; });
 		}
 	}
 
-	return theConfiguration.getVic2Path() + "/inventions/";
+	std::list<std::string> finalTechFiles;
+	std::for_each(techFiles.begin(), techFiles.end(),
+					  [&finalTechFiles](const std::pair<std::string, std::string>& file){
+							finalTechFiles.push_back(file.second + file.first);
+	});
+
+	return finalTechFiles;
 }
 
 
-void Vic2::inventions::generateNums(const std::string& path)
+void Vic2::inventions::generateNums(const std::list<std::string>& inventionFiles)
 {
-	std::set<std::string> techFiles;
-	Utils::GetAllFilesInFolder(path, techFiles);
-	for (auto fileItr: techFiles)
+	for (auto file: inventionFiles)
 	{
-		processTechFile(path + "/" + fileItr);
+		processTechFile(file);
 	}
 }
 
