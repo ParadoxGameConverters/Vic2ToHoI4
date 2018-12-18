@@ -27,6 +27,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "newParser.h"
+#include <list>
 #include <map>
 #include <optional>
 #include <string>
@@ -47,8 +48,8 @@ class inventions: commonItems::parser
 		inventions(const inventions&) = delete;
 		inventions& operator=(const inventions&) = delete;
 
-		std::string getInventionPath() const;
-		void generateNums(const std::string& path);
+		std::list<std::string> getInventionFiles() const;
+		void generateNums(const std::list<std::string>& inventionFiles);
 		void processTechFile(const std::string& filename);
 
 		std::map<int, std::string> inventionNumsToNames;
