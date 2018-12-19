@@ -30,3 +30,4 @@ deploy:
   repository: idhrendur/Vic2ToHoI4
   artifact: Vic2ToHoI4
   prerelease: true
+  force_update: true
