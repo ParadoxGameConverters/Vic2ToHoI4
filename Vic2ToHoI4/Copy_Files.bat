@@ -6,7 +6,7 @@ xcopy "Data_Files\blankMod" "..\Release\Vic2ToHoI4\blankmod" /Y /E /I
 rem **Copy data files**
 copy "Data_Files\configuration.txt" "..\Release\Vic2ToHoI4\configuration.txt"
 copy "Data_Files\configuration.txt" "..\Release\Vic2ToHoI4\configuration-example.txt"
-copy "Data_Files\readme.txt" "..\Release\Vic2ToHoI4\readme.txt"
+copy "Data_Files\readme.txt" "..\Release\readme.txt"
 copy "Data_Files\merge_nations.txt" "..\Release\Vic2ToHoI4\merge_nations.txt"
 copy "Data_Files\province_mappings.txt" "..\Release\Vic2ToHoI4\province_mappings.txt
 copy "Data_Files\HPM_province_mappings.txt" "..\Release\Vic2ToHoI4\HPM_province_mappings.txt

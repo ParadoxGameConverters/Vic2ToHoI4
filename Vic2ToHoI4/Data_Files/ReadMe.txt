@@ -7,6 +7,7 @@ IMPORTANT LINKS
 Forum thread: https://forum.paradoxplaza.com/forum/index.php?threads/the-vic2-to-hoi4-converter-project-development-thread.915440
 Github project: https://github.com/Idhrendur/paradoxGameConverters
 Documentation: http://www.hoi4wiki.com/Victoria_2_to_Hearts_of_Iron_IV_converter
+Development version download: https://github.com/ParadoxGameConverters/Vic2ToHoI4/releases/tag/windows_development_build
 
 ----
 REQUIREMENTS
