@@ -22,11 +22,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "HoI4Leader.h"
 #include "../Configuration.h"
+#include "OSCompatibilityLayer.h"
 
 
 
 HoI4::General::General(const Vic2::Leader* srcLeader, const std::string& portrait):
-	name(srcLeader->getName()),
+	name(Utils::convertWin1252ToUTF8(srcLeader->getName())),
 	skill(static_cast<int>(srcLeader->getPrestige() * 22.5f) + 1),
 	picture(portrait)
 {
