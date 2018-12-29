@@ -243,7 +243,7 @@ void HoI4::Events::createFactionEvents(std::shared_ptr<HoI4Country> Leader, std:
 		yesOption += "				id = \"" + Leader->getTag() + "\"\n";
 		yesOption += "				value = 200\n";
 		yesOption += "			}\n";
-		yesOption += "			dismantle_faction = yes";
+		yesOption += "			dismantle_faction = yes\n";
 		yesOption += "		}\n";
 		yesOption += "		if = {\n";
 		yesOption += "			limit = {\n";
@@ -252,7 +252,7 @@ void HoI4::Events::createFactionEvents(std::shared_ptr<HoI4Country> Leader, std:
 		yesOption += "				}\n";
 		yesOption += "			}\n";
 		yesOption += "			" + Leader->getTag() + " = {\n";
-		yesOption += "				create_faction = " + leaderName + "\n";
+		yesOption += "				create_faction = \"" + leaderName + "\"\n";
 		yesOption += "			}\n";
 		yesOption += "		}\n";
 		yesOption += "		" + Leader->getTag() + " = {\n";
