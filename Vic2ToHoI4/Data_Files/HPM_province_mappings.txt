@@ -3227,7 +3227,7 @@
 	link = { vic2 = 1097 hoi4 = 4268 hoi4 = 1263 hoi4 = 12132 hoi4 = 10160 hoi4 = 4231 }	# New Caledonia -> land, land, land, land
 	link = { vic2 = 2535 hoi4 = 4247 hoi4 = 1237 hoi4 = 12120 }	# New Hebrides -> land, land, land
 	link = { vic2 = 2536 hoi4 = 7390 }	# Santa Cruz Islands -> land
-	link = { vic2 = 2454hoi4 = 4286  hoi4 = 7302 hoi4 = 12159 }	# Fiji -> land, land, land
+	link = { vic2 = 2454 hoi4 = 4286 hoi4 = 7302 hoi4 = 12159 }	# Fiji -> land, land, land
 	link = { vic2 = 2541 hoi4 = 13056 hoi4 = 13057 hoi4 = 13055 hoi4 = 13054 }	# Ellice Islands -> land, land, land, land
 	link = { vic2 = 2527 hoi4 = 13021 hoi4 = 4387 hoi4 = 13022 hoi4 = 7393 hoi4 = 13020 }	# Gilbert Islands -> land, land, land, land, land
 	link = { vic2 = 2522 hoi4 = 13041 hoi4 = 13043 hoi4 = 13042 hoi4 = 13040 hoi4 = 13044 hoi4 = 13039 hoi4 = 13045 hoi4 = 13046 hoi4 = 13047 }	# Marshall Islands -> land, land, land, land, land, land, land, land, land
