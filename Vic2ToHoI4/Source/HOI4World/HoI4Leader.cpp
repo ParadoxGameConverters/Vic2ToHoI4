@@ -72,7 +72,7 @@ std::ofstream& HoI4::operator<< (std::ofstream& output, const HoI4::General& ins
 
 
 HoI4::Admiral::Admiral(const Vic2::Leader* srcLeader, const std::string& portrait):
-	name(srcLeader->getName()),
+	name(Utils::convertWin1252ToUTF8(srcLeader->getName())),
 	skill(static_cast<int>(srcLeader->getPrestige() * 22.5f) + 1),
 	picture(portrait)
 {
