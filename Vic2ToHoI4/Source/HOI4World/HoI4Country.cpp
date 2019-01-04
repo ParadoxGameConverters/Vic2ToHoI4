@@ -1063,6 +1063,10 @@ void HoI4Country::outputRelations(ofstream& output) const
 	{
 		if (relation.first != tag)
 		{
+			if (relation.second->getRelations() == 0)
+			{
+				continue;
+			}
 			output << "add_opinion_modifier = { target = " << relation.first << " modifier = ";
 			int relationsValue = relation.second->getRelations();
 			if (relationsValue < 0)
