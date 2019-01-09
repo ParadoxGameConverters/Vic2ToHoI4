@@ -942,7 +942,8 @@ void HoI4Country::outputResearchBonuses(ofstream& output) const
 	output << "# Research Bonuses\n";
 	for (auto researchBonus : researchBonuses)
 	{
-		output << "add_tech_bonus = { bonus = 0." << float(researchBonus.second) << " uses = 1 category = " << researchBonus.first << " name = doctrine_bonus }\n";
+		std::string name = researchBonus.first.substr(0, researchBonus.first.size() - 5) + "_bonus";
+		output << "add_tech_bonus = { name = " << name << " bonus = 0." << float(researchBonus.second) << " uses = 1 category = " << researchBonus.first << " }\n";
 	}
 }
 
