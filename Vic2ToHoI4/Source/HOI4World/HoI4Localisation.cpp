@@ -115,7 +115,7 @@ void HoI4Localisation::importLocalisationFile(const string& filename, languageTo
 		exit(-1);
 	}
 	char bitBucket[3];
-	file.read(bitBucket, 3);
+	file.read(bitBucket, sizeof(bitBucket));
 
 	string language;
 	while (!file.eof())
