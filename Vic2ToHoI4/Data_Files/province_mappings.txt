@@ -642,16 +642,15 @@
 	link = { vic2 = 2279 hoi4 = 12798 hoi4 = 5051 }	# Quito -> land, land
 	link = { vic2 = 2280 hoi4 = 8252 }	# Guayaquil -> land
 	link = { vic2 = 2281 hoi4 = 8047 }	# Esmereldas -> land
-	link = { vic2 = 2282 hoi4 = 5120 }	# Loja -> land
-	link = { vic2 = 2283 hoi4 = 11020 }	# Zamora -> land
+	link = { vic2 = 2282 hoi4 = 5120 hoi4 = 11020 }	# Loja -> land, land
+	link = { vic2 = 2283 hoi4 = 10942 }	# Zamora -> land
 	link = { vic2 = 2284 hoi4 = 10888 hoi4 = 8075 }	# Tena -> land, land
 	link = { vic2 = 2285 hoi4 = 5023 }	# Galápagos -> land
 	# 
 	# ## Peru
 	# # Pastaza
 	link = { vic2 = 2286 hoi4 = 8213 hoi4 = 10970 }	# Iquitos -> land, land
-	link = { vic2 = 2287 hoi4 = 10942 }	# Yurimaguas -> land
-	link = { vic2 = 2288 hoi4 = 8149 }	# Yuncos -> land
+	link = { vic2 = 2288 vic2 = 2287 hoi4 = 8149 }	# Yuncos, Yurimaguas -> land
 	link = { vic2 = 2289 hoi4 = 12869 }	# Puca Urco -> land
 	# # Cajamarca
 	link = { vic2 = 2290 hoi4 = 12969 }	# Cajamarca -> land
@@ -667,10 +666,10 @@
 	# # Ica
 	link = { vic2 = 2297 hoi4 = 2225 }	# Ica -> land
 	link = { vic2 = 2299 hoi4 = 12953 }	# Ayacucho -> land
-	link = { vic2 = 2301 hoi4 = 8191 hoi4 = 8160 }	# Puerto Maldonado -> land, land
+	link = { vic2 = 2301 hoi4 = 8191 hoi4 = 8160 hoi4 = 10940 }	# Puerto Maldonado -> land, land, land
 	link = { vic2 = 2302 hoi4 = 5166 }	# Cusco -> land
 	# # Arequipa
-	link = { vic2 = 2303 hoi4 = 2182 hoi4 = 10940 }	# Puno -> land, land
+	link = { vic2 = 2303 hoi4 = 2182 }	# Puno -> land
 	link = { vic2 = 2304 hoi4 = 2210 hoi4 = 5202 }	# Arequipa -> land, land
 	link = { vic2 = 2578 hoi4 = 13086 }	# Tacna -> land
 	# 
@@ -679,11 +678,11 @@
 	link = { vic2 = 2310 hoi4 = 5230 hoi4 = 8225 hoi4 = 5188 hoi4 = 13195 hoi4 = 13174 }	# La Paz -> land, land, land, land, lake
 	link = { vic2 = 2311 hoi4 = 8157 hoi4 = 8240 }	# Cochabamba -> land, land
 	link = { vic2 = 2319 hoi4 = 10996 }	# Santa Ana -> land
-	link = { vic2 = 2320 hoi4 = 10982 hoi4 = 8211 }	# Riberalta -> land, land
+	link = { vic2 = 2320 hoi4 = 8211 }	# Riberalta -> land
 	link = { vic2 = 2321 hoi4 = 12917 }	# Cobija -> land
 	# # Santa Cruz
 	link = { vic2 = 2316 hoi4 = 10924 }	# Santa Cruz -> land
-	link = { vic2 = 2317 hoi4 = 12973 }	# San Ignacio -> land
+	link = { vic2 = 2317 hoi4 = 12973 hoi4 = 10982 }	# San Ignacio -> land, land
 	link = { vic2 = 2318 hoi4 = 12916 hoi4 = 12902 hoi4 = 2160 }	# Roboré -> land, land, land
 	# # Atacama
 	link = { vic2 = 2312 hoi4 = 10952 }	# Oruro -> land
@@ -2120,7 +2119,7 @@
 	link = { vic2 = 832 hoi4 = 3973 }	# Volos -> land
 	link = { vic2 = 833 hoi4 = 11786 }	# Trikkala -> land
 	# # Attica
-	link = { vic2 = 834 hoi4 = 4109 }	# Athens -> land
+	link = { vic2 = 834 hoi4 = 4109 hoi4 = 3988 }	# Athens -> land, land
 	link = { vic2 = 835 hoi4 = 1109 hoi4 = 976 }	# Amfissa -> land, land
 	link = { vic2 = 836 hoi4 = 3864 }	# Lamia -> land
 	link = { vic2 = 837 hoi4 = 1205 hoi4 = 12001 hoi4 = 11895 }	# Missolonghi -> land, land, land
@@ -2129,7 +2128,7 @@
 	link = { vic2 = 826 hoi4 = 10203 }	# Corfu -> land
 	link = { vic2 = 827 hoi4 = 1106 }	# Zante -> land
 	link = { vic2 = 839 hoi4 = 4178 hoi4 = 4078 hoi4 = 11965 }	# Nafplion -> land, land, land
-	link = { vic2 = 840 hoi4 = 3988 hoi4 = 7096 }	# Corinth -> land, land
+	link = { vic2 = 840 hoi4 = 7096 }	# Corinth -> land
 	link = { vic2 = 841 hoi4 = 1173 }	# Kalamata -> land
 	link = { vic2 = 842 hoi4 = 4193 hoi4 = 7211 }	# Patras -> land, land
 	# # Aegean Islands
@@ -2258,7 +2257,7 @@
 	link = { vic2 = 660 hoi4 = 9668 hoi4 = 3689 hoi4 = 9685 hoi4 = 711 }	# Udvarhely -> land, land, land, land
 	link = { vic2 = 2533 hoi4 = 11639 hoi4 = 9670 }	# Targu Mures -> land, land
 	# # Moldavia
-	link = { vic2 = 662 hoi4 = 577 hoi4 = 9548 }	# Cernauti -> land, land
+	link = { vic2 = 662 hoi4 = 9548 }	# Cernauti -> land
 	link = { vic2 = 663 hoi4 = 6761 hoi4 = 11689 }	# Suceava -> land, land
 	link = { vic2 = 670 hoi4 = 9716 hoi4 = 723 hoi4 = 6747 hoi4 = 3741 }	# Iasi -> land, land, land, land
 	link = { vic2 = 671 hoi4 = 11534 hoi4 = 744 hoi4 = 6584 }	# Botosani -> land, land, land
@@ -2279,7 +2278,7 @@
 	# ## Moldova
 	# # Bessarabia
 	link = { vic2 = 676 hoi4 = 3707 hoi4 = 11686 hoi4 = 3724 hoi4 = 565 }	# Chisinau -> land, land, land, land
-	link = { vic2 = 677 hoi4 = 6600 hoi4 = 11705 hoi4 = 414 hoi4 = 3577 hoi4 = 3407 }	# Balti -> land, land, land, land, land
+	link = { vic2 = 677 hoi4 = 6600 hoi4 = 11705 hoi4 = 414 hoi4 = 3577 hoi4 = 3407 hoi4 = 577 }	# Balti -> land, land, land, land, land, land
 	link = { vic2 = 678 hoi4 = 3704 hoi4 = 3701 hoi4 = 6727 hoi4 = 6743 hoi4 = 9683 }	# Izmail -> land, land, land, land, land
 	# 
 	# ## Bulgaria
@@ -2446,18 +2445,18 @@
 	link = { vic2 = 881 hoi4 = 3905 hoi4 = 11866 hoi4 = 11883 hoi4 = 890 hoi4 = 904 hoi4 = 6871 }	# Bolu -> land, land, land, land, land, land
 	link = { vic2 = 883 hoi4 = 6995 hoi4 = 11881 }	# Sinop -> land, land
 	# # Ankara
-	link = { vic2 = 868 hoi4 = 3951 hoi4 = 6808 hoi4 = 3907 hoi4 = 909 }	# Eskishehir -> land, land, land, land
+	link = { vic2 = 868 hoi4 = 3951 hoi4 = 6808 hoi4 = 3907 }	# Eskishehir -> land, land, land
 	link = { vic2 = 876 hoi4 = 11747 hoi4 = 11784 hoi4 = 6908 hoi4 = 9806 hoi4 = 9901 hoi4 = 6925 hoi4 = 11844 hoi4 = 804 hoi4 = 3862 hoi4 = 9861 }	# Ankara -> land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 877 hoi4 = 9900 hoi4 = 9915 hoi4 = 11897 hoi4 = 11826 hoi4 = 919 hoi4 = 3964 hoi4 = 11839 hoi4 = 6978 hoi4 = 933 }	# Amasya -> land, land, land, land, land, land, land, land, land
-	link = { vic2 = 878 hoi4 = 3870 hoi4 = 3807 hoi4 = 9830 }	# Kayseri -> land, land, land
+	link = { vic2 = 878 hoi4 = 3870 hoi4 = 3807 hoi4 = 9830 hoi4 = 961 hoi4 = 921 hoi4 = 6977 }	# Kayseri -> land, land, land, land, land, land
 	# # Konya
-	link = { vic2 = 866 hoi4 = 3983 hoi4 = 9878 hoi4 = 6877 hoi4 = 6945 }	# Afyon -> land, land, land, land
+	link = { vic2 = 866 hoi4 = 3983 hoi4 = 9878 hoi4 = 6877 hoi4 = 6945 hoi4 = 909 }	# Afyon -> land, land, land, land, land
 	link = { vic2 = 873 hoi4 = 940 hoi4 = 9755 hoi4 = 11792 hoi4 = 11860 hoi4 = 9811 hoi4 = 6894 hoi4 = 6807 hoi4 = 9763 hoi4 = 13122 hoi4 = 3788 hoi4 = 7143 hoi4 = 869 }	# Konya -> land, land, land, land, land, land, land, land, lake, land, land, land
 	link = { vic2 = 874 hoi4 = 12016 hoi4 = 784 hoi4 = 3876 hoi4 = 11907 }	# Burdur -> land, land, land, land
 	link = { vic2 = 875 hoi4 = 1005 hoi4 = 1122 hoi4 = 4127 hoi4 = 4008 }	# Antalya -> land, land, land, land
 	# # Adana
-	link = { vic2 = 894 hoi4 = 11746 hoi4 = 6956 hoi4 = 6977 hoi4 = 6888 }	# Adana -> land, land, land, land
-	link = { vic2 = 895 hoi4 = 11810 hoi4 = 4124 hoi4 = 7026 hoi4 = 10056 hoi4 = 961 hoi4 = 921 }	# Mersin -> land, land, land, land, land, land
+	link = { vic2 = 894 hoi4 = 11746 hoi4 = 6956 hoi4 = 6888 }	# Adana -> land, land, land
+	link = { vic2 = 895 hoi4 = 11810 hoi4 = 4124 hoi4 = 7026 hoi4 = 10056 }	# Mersin -> land, land, land, land
 	link = { vic2 = 896 hoi4 = 886 hoi4 = 806 hoi4 = 6813 hoi4 = 3921 }	# Marash -> land, land, land, land
 	link = { vic2 = 898 hoi4 = 9893 hoi4 = 3889 }	# Antep -> land, land
 	# # Trabizond
