@@ -1243,7 +1243,7 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag, const std:
 	char optionLetter = 'a';
 	for (auto party: parties)
 	{
-		if ((party.getIdeology() == "conservative") || (party.getIdeology() == "liberal") || (party.getIdeology() == "socialist"))
+		if ((party.getIdeology() == "conservative"))
 		{
 			std::string partyName = party.getName();
 			std::string trimmedName = partyName.substr(4, partyName.size());
@@ -1254,12 +1254,65 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag, const std:
 			if (majorIdeologies.count("democratic") > 0)
 			{
 				option += "		set_party_name = { ideology = democratic long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }\n";
+				option += "		retire_country_leader = yes\n";
+				option += "		set_country_leader_ideology = conservatism\n";
 			}
 			else
 			{
 				option += "		set_party_name = { ideology = neutrality long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }\n";
+				option += "		retire_country_leader = yes\n";
+				option += "		set_country_leader_ideology = conservatism_neutral\n";
 			}
-			option += "		retire_country_leader = yes\n";
+			option += "	}";
+			partyChoiceEvent.options.push_back(option);
+			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName);
+			optionLetter++;
+		}
+		if ((party.getIdeology() == "liberal"))
+		{
+			std::string partyName = party.getName();
+			std::string trimmedName = partyName.substr(4, partyName.size());
+
+			std::string optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
+			std::string option = "= {\n";
+			option += "		name = " + optionName + "\n";
+			if (majorIdeologies.count("democratic") > 0)
+			{
+				option += "		set_party_name = { ideology = democratic long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }\n";
+				option += "		retire_country_leader = yes\n";
+				option += "		set_country_leader_ideology = liberalism\n";
+			}
+			else
+			{
+				option += "		set_party_name = { ideology = neutrality long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }\n";
+				option += "		retire_country_leader = yes\n";
+				option += "		set_country_leader_ideology = liberalism_neutral\n";
+			}
+			option += "	}";
+			partyChoiceEvent.options.push_back(option);
+			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName);
+			optionLetter++;
+		}
+		if ((party.getIdeology() == "socialist"))
+		{
+			std::string partyName = party.getName();
+			std::string trimmedName = partyName.substr(4, partyName.size());
+
+			std::string optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
+			std::string option = "= {\n";
+			option += "		name = " + optionName + "\n";
+			if (majorIdeologies.count("democratic") > 0)
+			{
+				option += "		set_party_name = { ideology = democratic long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }\n";
+				option += "		retire_country_leader = yes\n";
+				option += "		set_country_leader_ideology = socialism\n";
+			}
+			else
+			{
+				option += "		set_party_name = { ideology = neutrality long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }\n";
+				option += "		retire_country_leader = yes\n";
+				option += "		set_country_leader_ideology = socialism_neutral\n";
+			}
 			option += "	}";
 			partyChoiceEvent.options.push_back(option);
 			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName);
