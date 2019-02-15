@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -35,7 +35,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 void checkMods();
-void setOutputName(const string& V2SaveFileName);
+void setOutputName(const std::string& V2SaveFileName);
 void clearOutputFolder();
 void output(HoI4::World& destWorld);
 void ConvertV2ToHoI4(const string& V2SaveFileName)
@@ -59,14 +59,14 @@ void checkMods()
 {
 	LOG(LogLevel::Info) << "Double-checking Vic2 mods";
 
-	set<string> fileNames;
+	std::set<std::string> fileNames;
 	Utils::GetAllFilesInFolder(theConfiguration.getVic2Path() + "/mod", fileNames);
 	for (auto fileName: fileNames)
 	{
 		const int lastPeriodPos = fileName.find_last_of('.');
-		if (fileName.substr(lastPeriodPos, fileName.length()) == ".mod")
+		if ((lastPeriodPos != std::string::npos) && (fileName.substr(lastPeriodPos, fileName.length()) == ".mod"))
 		{
-			string folderName = fileName.substr(0, lastPeriodPos);
+			std::string folderName = fileName.substr(0, lastPeriodPos);
 			if (Utils::doesFolderExist(theConfiguration.getVic2Path() + "/mod/" + folderName))
 			{
 				LOG(LogLevel::Debug) << "Found mod with name " << folderName;
