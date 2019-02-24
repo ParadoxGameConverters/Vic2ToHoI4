@@ -1583,7 +1583,7 @@
 	link = { vic2 = 423 hoi4 = 11465 hoi4 = 11616 }	# Nantes -> land, land
 	link = { vic2 = 424 hoi4 = 9495 hoi4 = 11508 hoi4 = 527 }	# Rennes -> land, land, land
 	# # Normandie
-	link = { vic2 = 415 hoi4 = 11563 hoi4 = 9434 }	# Rouen -> land, land
+	link = { vic2 = 415 hoi4 = 11563 hoi4 = 9434 hoi4 = 485 }	# Rouen -> land, land, land
 	link = { vic2 = 416 hoi4 = 3549 hoi4 = 9578 hoi4 = 6569 }	# Évreux -> land, land, land
 	link = { vic2 = 417 hoi4 = 11521 hoi4 = 539 hoi4 = 553 }	# Alençon -> land, land, land
 	link = { vic2 = 418 hoi4 = 11535 hoi4 = 3579 hoi4 = 9550 hoi4 = 6449 hoi4 = 6599 }	# Caen -> land, land, land, land, land
@@ -1603,20 +1603,20 @@
 	link = { vic2 = 399 hoi4 = 11483 hoi4 = 3536 }	# Lille -> land, land
 	link = { vic2 = 400 hoi4 = 575 hoi4 = 11548 hoi4 = 9500 }	# Dunkirk -> land, land, land
 	link = { vic2 = 401 hoi4 = 6504 hoi4 = 3476 }	# Arras -> land, land
-	link = { vic2 = 402 hoi4 = 454 hoi4 = 11420 hoi4 = 485 }	# Amiens -> land, land, land
-	link = { vic2 = 2570 hoi4 = 6585 hoi4 = 9534 hoi4 = 9561 }	# Beauvais -> land, land, land
+	link = { vic2 = 402 hoi4 = 454 hoi4 = 11420 }	# Amiens -> land, land
+	link = { vic2 = 2570 hoi4 = 6585 hoi4 = 9561 }	# Beauvais -> land, land
 	# # Ile de France
-	link = { vic2 = 425 hoi4 = 11506 hoi4 = 9523 hoi4 = 11518 }	# Paris -> land, land, land
+	link = { vic2 = 425 hoi4 = 11506 hoi4 = 9523 hoi4 = 11518 hoi4 = 9534 }	# Paris -> land, land, land, land
 	link = { vic2 = 426 hoi4 = 9507 hoi4 = 9725 hoi4 = 6547 }	# Chartres -> land, land, land
 	link = { vic2 = 427 hoi4 = 11491 hoi4 = 6949 }	# Melun -> land, land
 	link = { vic2 = 436 hoi4 = 3509 hoi4 = 3534 hoi4 = 11463 }	# Le Mans -> land, land, land
 	link = { vic2 = 438 hoi4 = 512 hoi4 = 6688 hoi4 = 6518 hoi4 = 3493 }	# Orléans -> land, land, land, land
 	link = { vic2 = 439 hoi4 = 3655 hoi4 = 11611 }	# Bourges -> land, land
-	link = { vic2 = 440 hoi4 = 11631 hoi4 = 6533 }	# Blois -> land, land
+	link = { vic2 = 440 hoi4 = 11631 hoi4 = 6533 hoi4 = 9629 }	# Blois -> land, land, land
 	link = { vic2 = 441 hoi4 = 3671 hoi4 = 669 hoi4 = 11596 hoi4 = 9492 }	# Tours -> land, land, land, land
 	# # Limousin
 	link = { vic2 = 445 hoi4 = 620 hoi4 = 6618 hoi4 = 3621 }	# Limoges -> land, land, land
-	link = { vic2 = 446 hoi4 = 6651 hoi4 = 6648 hoi4 = 651 hoi4 = 9629 hoi4 = 3626 }	# Châteauroux -> land, land, land, land, land
+	link = { vic2 = 446 hoi4 = 6651 hoi4 = 6648 hoi4 = 651 hoi4 = 3626 }	# Châteauroux -> land, land, land, land
 	link = { vic2 = 447 hoi4 = 3771 hoi4 = 9751 hoi4 = 9734 }	# Tulle -> land, land, land
 	# # Auvergne
 	link = { vic2 = 448 hoi4 = 590 hoi4 = 769 hoi4 = 9732 hoi4 = 6789 hoi4 = 9748 hoi4 = 9593 }	# Clermont-Ferrand -> land, land, land, land, land, land
@@ -1772,7 +1772,7 @@
 	# # East Friesland
 	link = { vic2 = 538 hoi4 = 11388 hoi4 = 247 }	# Osnabrück -> land, land
 	link = { vic2 = 539 hoi4 = 3326 }	# Bremen -> land
-	link = { vic2 = 540 vic2 = 533 hoi4 = 241 hoi4 = 336 }	# MANY-TO-MANY: Oldenburg, Heligoland -> land, land
+	link = { vic2 = 540 vic2 = 533 hoi4 = 336 hoi4 = 241 }	# MANY-TO-MANY: Oldenburg, Heligoland -> land, land
 	link = { vic2 = 541 hoi4 = 309 }	# Cloppenburg -> land
 	link = { vic2 = 542 hoi4 = 9281 hoi4 = 11233 hoi4 = 11264 }	# Lingen -> land, land, land
 	link = { vic2 = 543 hoi4 = 11360 }	# Emden -> land
@@ -1814,13 +1814,13 @@
 	# # Anhalt
 	link = { vic2 = 553 hoi4 = 3522 hoi4 = 6487 hoi4 = 9456 }	# Magdeburg -> land, land, land
 	link = { vic2 = 555 hoi4 = 9560 }	# Dessau -> land
-	link = { vic2 = 556 hoi4 = 6582 hoi4 = 11545 hoi4 = 6441 }	# Halle -> land, land, land
+	link = { vic2 = 556 hoi4 = 6582 hoi4 = 11545 }	# Halle -> land, land
 	link = { vic2 = 557 hoi4 = 11359 hoi4 = 9238 }	# Stendal -> land, land
 	# # Brandenburg
 	link = { vic2 = 549 hoi4 = 6521 hoi4 = 11444 hoi4 = 11505 hoi4 = 9428 hoi4 = 3499 }	# Berlin -> land, land, land, land, land
 	link = { vic2 = 550 hoi4 = 3312 hoi4 = 3207 }	# Prenzlau -> land, land
 	link = { vic2 = 551 hoi4 = 11219 hoi4 = 375 hoi4 = 3367 }	# Pritzwalk -> land, land, land
-	link = { vic2 = 552 hoi4 = 478 hoi4 = 11415 hoi4 = 9496 }	# Cottbus -> land, land, land
+	link = { vic2 = 552 hoi4 = 478 hoi4 = 11415 hoi4 = 9496 hoi4 = 6441 }	# Cottbus -> land, land, land, land
 	link = { vic2 = 681 hoi4 = 537 hoi4 = 444 hoi4 = 11478 hoi4 = 6236 hoi4 = 9387 hoi4 = 3473 hoi4 = 3572 }	# Küstrin -> land, land, land, land, land, land, land
 	# # Palatinate
 	link = { vic2 = 570 hoi4 = 11560 }	# Mainz -> land
@@ -1833,7 +1833,7 @@
 	link = { vic2 = 566 hoi4 = 564 hoi4 = 9524 hoi4 = 6549 }	# Kassel -> land, land, land
 	link = { vic2 = 567 hoi4 = 3524 hoi4 = 3397 }	# Giessen -> land, land
 	link = { vic2 = 568 hoi4 = 11445 }	# Fulda -> land
-	link = { vic2 = 2560 hoi4 = 589 }	# Darmstadt -> land
+	link = { vic2 = 2560 hoi4 = 589 hoi4 = 3574 }	# Darmstadt -> land, land
 	# # Erfurt
 	link = { vic2 = 554 hoi4 = 6524 hoi4 = 3561 hoi4 = 425 hoi4 = 538 hoi4 = 6501 }	# Erfurt -> land, land, land, land, land
 	link = { vic2 = 561 hoi4 = 9497 }	# Weimar -> land
@@ -1844,12 +1844,12 @@
 	link = { vic2 = 559 hoi4 = 3535 hoi4 = 11481 }	# Leipzig -> land, land
 	link = { vic2 = 560 hoi4 = 9471 hoi4 = 9441 }	# Chemnitz -> land, land
 	# # Franconia
-	link = { vic2 = 595 hoi4 = 11544 hoi4 = 561 hoi4 = 11529 }	# Nuremberg -> land, land, land
+	link = { vic2 = 595 hoi4 = 11544 hoi4 = 11529 }	# Nuremberg -> land, land
 	link = { vic2 = 596 hoi4 = 6594 }	# Aschaffenburg -> land
 	link = { vic2 = 597 hoi4 = 11417 hoi4 = 13116 hoi4 = 6421 hoi4 = 9572 hoi4 = 9557 }	# Würzburg -> land, land, land, land, land
 	link = { vic2 = 598 hoi4 = 11404 hoi4 = 9416 hoi4 = 3474 hoi4 = 586 }	# Bayreuth -> land, land, land, land
 	# # Baden
-	link = { vic2 = 569 hoi4 = 3574 hoi4 = 6568 hoi4 = 6581 }	# Mannheim -> land, land, land
+	link = { vic2 = 569 hoi4 = 6568 hoi4 = 6581 }	# Mannheim -> land, land
 	link = { vic2 = 586 hoi4 = 6542 hoi4 = 3530 }	# Karlsruhe -> land, land
 	link = { vic2 = 587 hoi4 = 3692 hoi4 = 11640 hoi4 = 6712 }	# Freiburg -> land, land, land
 	link = { vic2 = 588 hoi4 = 6934 hoi4 = 3679 hoi4 = 13126 }	# Konstanz -> land, land, lake
@@ -1864,7 +1864,7 @@
 	link = { vic2 = 599 hoi4 = 692 hoi4 = 6693 hoi4 = 11620 hoi4 = 9652 hoi4 = 3688 hoi4 = 707 hoi4 = 3705 hoi4 = 11653 }	# Munich -> land, land, land, land, land, land, land, land
 	link = { vic2 = 600 hoi4 = 6725 hoi4 = 9681 hoi4 = 532 }	# Landshut -> land, land, land
 	link = { vic2 = 601 hoi4 = 6540 }	# Ingolstadt -> land
-	link = { vic2 = 602 hoi4 = 3299 hoi4 = 9515 hoi4 = 3541 hoi4 = 11497 hoi4 = 571 hoi4 = 3571 }	# Regensburg -> land, land, land, land, land, land
+	link = { vic2 = 602 hoi4 = 3299 hoi4 = 9515 hoi4 = 3541 hoi4 = 11497 hoi4 = 571 hoi4 = 3571 hoi4 = 561 }	# Regensburg -> land, land, land, land, land, land, land
 	# 
 	# ## Switzerland
 	# # West Switzerland
@@ -2578,7 +2578,7 @@
 	# # Hail
 	link = { vic2 = 1156 hoi4 = 8101 hoi4 = 10815 hoi4 = 5099 hoi4 = 7970 hoi4 = 10901 }	# Kaf -> land, land, land, land, land
 	link = { vic2 = 1158 hoi4 = 4974 hoi4 = 5058 hoi4 = 2057 hoi4 = 12749 hoi4 = 10850 }	# Rafha -> land, land, land, land, land
-	link = { vic2 = 1160 hoi4 = 5027 hoi4 = 10892 hoi4 = 4968 hoi4 = 10923 }	# Hail -> land, land, land, land
+	link = { vic2 = 1160 hoi4 = 5027 hoi4 = 10892 hoi4 = 4968 hoi4 = 10923 hoi4 = 7995 }	# Hail -> land, land, land, land, land
 	link = { vic2 = 1163 hoi4 = 12702 hoi4 = 1955 }	# Qatif -> land, land
 	# # Hedjaz
 	link = { vic2 = 1151 hoi4 = 5037 hoi4 = 2090 hoi4 = 10748 hoi4 = 4981 }	# Mecca -> land, land, land, land
@@ -2587,7 +2587,7 @@
 	link = { vic2 = 1154 hoi4 = 12455 hoi4 = 12101 hoi4 = 2027 hoi4 = 1033 hoi4 = 2095 hoi4 = 8092 }	# Tabuk -> land, land, land, land, land, land
 	link = { vic2 = 1155 hoi4 = 8073 hoi4 = 1923 hoi4 = 5006 hoi4 = 10786 }	# Abha -> land, land, land, land
 	# # Nejd
-	link = { vic2 = 1157 hoi4 = 12727 hoi4 = 7995 }	# Riyadh -> land, land
+	link = { vic2 = 1157 hoi4 = 12727 }	# Riyadh -> land
 	link = { vic2 = 1159 hoi4 = 8060 hoi4 = 8004 hoi4 = 12870 hoi4 = 5093 hoi4 = 10870 hoi4 = 12813 }	# Halaban -> land, land, land, land, land, land
 	link = { vic2 = 1161 hoi4 = 8030 hoi4 = 12768 hoi4 = 5081 }	# Sharurah -> land, land, land
 	link = { vic2 = 1164 hoi4 = 5024 hoi4 = 10791 }	# Hufuf -> land, land
@@ -2745,7 +2745,7 @@
 	link = { vic2 = 1217 hoi4 = 12769 hoi4 = 5082 hoi4 = 10789 hoi4 = 8090 }	# Ghazni -> land, land, land, land
 	link = { vic2 = 1218 hoi4 = 12717 hoi4 = 4998 hoi4 = 1978 }	# Peshawar -> land, land, land
 	link = { vic2 = 1219 hoi4 = 5105 hoi4 = 8044 hoi4 = 7847 hoi4 = 7975 hoi4 = 4990 }	# Quetta -> land, land, land, land, land
-	link = { vic2 = 1223 hoi4 = 12763 hoi4 = 4558 hoi4 = 1910 }	# Chitral -> land, land, land
+	link = { vic2 = 1223 hoi4 = 12763 hoi4 = 4558 }	# Chitral -> land, land
 	# 
 	# ## Pakistan
 	# # Baluchistan
@@ -2780,7 +2780,7 @@
 	link = { vic2 = 1295 hoi4 = 11952 }	# Baroda -> land
 	link = { vic2 = 1296 hoi4 = 7150 hoi4 = 4187 hoi4 = 7013 }	# Surat -> land, land, land
 	# # Kashmir
-	link = { vic2 = 1224 hoi4 = 10905 hoi4 = 12754 }	# Srinagar -> land, land
+	link = { vic2 = 1224 hoi4 = 10905 hoi4 = 12754 hoi4 = 1910 }	# Srinagar -> land, land, land
 	link = { vic2 = 1225 hoi4 = 2084 hoi4 = 2041 hoi4 = 10821 }	# Gilgit -> land, land, land
 	link = { vic2 = 1226 hoi4 = 8005 hoi4 = 7273 hoi4 = 7316 hoi4 = 12884 }	# Leh -> land, land, land, land
 	# # Amritsar
@@ -2802,7 +2802,7 @@
 	link = { vic2 = 1297 hoi4 = 1349 hoi4 = 12269 }	# Bombay -> land, land
 	link = { vic2 = 1298 hoi4 = 4072 hoi4 = 10019 hoi4 = 7177 hoi4 = 7205 hoi4 = 11993 }	# Nasik -> land, land, land, land, land
 	link = { vic2 = 1299 hoi4 = 12182 hoi4 = 4353 hoi4 = 10270 hoi4 = 1405 hoi4 = 7119 }	# Poona -> land, land, land, land, land
-	link = { vic2 = 1300 hoi4 = 7411 hoi4 = 12295 hoi4 = 12142 }	# Bijapur -> land, land, land
+	link = { vic2 = 1300 hoi4 = 12295 hoi4 = 12142 }	# Bijapur -> land, land
 	link = { vic2 = 1301 hoi4 = 10210 hoi4 = 7232 hoi4 = 4395 }	# Kolhapur -> land, land, land
 	link = { vic2 = 1303 hoi4 = 1273 }	# Goa -> land
 	# # Mysore
@@ -2812,8 +2812,8 @@
 	link = { vic2 = 1315 hoi4 = 1412 hoi4 = 10208 hoi4 = 8100 }	# Chitaldroog -> land, land, land
 	link = { vic2 = 1316 hoi4 = 10190 hoi4 = 7244 hoi4 = 7395 }	# Mangalore -> land, land, land
 	# # Travancore
-	link = { vic2 = 1317 hoi4 = 7447 hoi4 = 12275 hoi4 = 7391 }	# Calicut -> land, land, land
-	link = { vic2 = 1318 hoi4 = 1321 hoi4 = 1238 hoi4 = 10130 }	# Cochin -> land, land, land
+	link = { vic2 = 1317 hoi4 = 7447 hoi4 = 12275 hoi4 = 7391 hoi4 = 10274 }	# Calicut -> land, land, land, land
+	link = { vic2 = 1318 hoi4 = 1321 hoi4 = 1238 hoi4 = 10130 hoi4 = 7288 }	# Cochin -> land, land, land, land
 	link = { vic2 = 1319 hoi4 = 7402 }	# Trivandrum -> land
 	# # Awadh
 	link = { vic2 = 1241 hoi4 = 4045 }	# Cawnpore -> land
@@ -2835,7 +2835,7 @@
 	link = { vic2 = 1283 hoi4 = 8087 hoi4 = 1317 }	# Hyderabad -> land, land
 	link = { vic2 = 1284 hoi4 = 10311 hoi4 = 7060 hoi4 = 5063 }	# Aurangabad -> land, land, land
 	link = { vic2 = 1285 hoi4 = 5019 hoi4 = 11950 hoi4 = 10511 hoi4 = 12226 }	# Nizamabad -> land, land, land, land
-	link = { vic2 = 1286 hoi4 = 10324 hoi4 = 5104 hoi4 = 1359 hoi4 = 10259 hoi4 = 10799 }	# Gulbarga -> land, land, land, land, land
+	link = { vic2 = 1286 hoi4 = 10324 hoi4 = 5104 hoi4 = 1359 hoi4 = 10259 hoi4 = 10799 hoi4 = 7411 }	# Gulbarga -> land, land, land, land, land, land
 	link = { vic2 = 1287 hoi4 = 12114 hoi4 = 4280 hoi4 = 1275 hoi4 = 4472 }	# Warangal -> land, land, land, land
 	# # Circars
 	link = { vic2 = 1279 hoi4 = 7465 hoi4 = 1622 hoi4 = 12490 hoi4 = 10469 hoi4 = 7428 }	# Jagdalpur -> land, land, land, land, land
@@ -2846,8 +2846,8 @@
 	# # Madras
 	link = { vic2 = 1304 hoi4 = 10278 hoi4 = 7436 hoi4 = 1268 hoi4 = 12164 hoi4 = 1344 hoi4 = 4420 }	# Madras -> land, land, land, land, land, land
 	link = { vic2 = 1309 hoi4 = 4416 hoi4 = 10246 hoi4 = 1381 }	# Tanjore -> land, land, land
-	link = { vic2 = 1310 hoi4 = 12247 hoi4 = 4327 hoi4 = 7265 hoi4 = 1409 hoi4 = 7288 }	# Madurai -> land, land, land, land, land
-	link = { vic2 = 1311 hoi4 = 7363 hoi4 = 8067 hoi4 = 10274 hoi4 = 10808 }	# Coimbatore -> land, land, land, land
+	link = { vic2 = 1310 hoi4 = 12247 hoi4 = 4327 hoi4 = 7265 hoi4 = 1409 }	# Madurai -> land, land, land, land
+	link = { vic2 = 1311 hoi4 = 7363 hoi4 = 8067 hoi4 = 10808 }	# Coimbatore -> land, land, land
 	link = { vic2 = 1312 hoi4 = 10149 }	# Pondicherry -> land
 	# # Bihar
 	link = { vic2 = 1247 hoi4 = 4516 hoi4 = 10361 hoi4 = 10878 hoi4 = 4459 hoi4 = 1541 }	# Patna -> land, land, land, land, land
