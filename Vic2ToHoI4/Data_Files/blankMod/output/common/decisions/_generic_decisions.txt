@@ -60,7 +60,7 @@ political_actions = {
 		icon = generic_industry
 
 		available = {
-			
+			has_stability < 1.0
 		}
 
 		visible = {
@@ -100,6 +100,7 @@ political_actions = {
 		available = {
 			has_war = no
 			has_war_support > 0.2
+			has_stability < 1.0
 		}
 
 		visible = {
@@ -332,7 +333,9 @@ operations = {
 	blow_suez_canal = {
 
 		icon = GFX_decision_generic_ignite_civil_war
-
+		allowed = {
+			has_dlc = "Waking the Tiger"
+		}
 		available = {
 			OR = {
 				has_full_control_of_state = 446
@@ -464,7 +467,10 @@ operations = {
 	blow_panama_canal = {
 
 		icon = GFX_decision_generic_ignite_civil_war
-
+		allowed = {
+			has_dlc = "Waking the Tiger"
+			
+		}
 		available = {
 			OR = {
 				has_full_control_of_state = 685
@@ -782,6 +788,11 @@ war_measures = {
         }
         ai_will_do = {
 			factor = 1
+
+			modifier = {
+				factor = 3
+				has_manpower < 100000
+			}
 		}
 		complete_effect = {
         }
@@ -816,7 +827,7 @@ war_measures = {
 		ai_will_do = {
 			factor = 1
 			modifier = {
-				has_political_power < 150
+				has_political_power < 100
 				factor = 0 #use as pp dump
 			}
 		}
@@ -828,12 +839,10 @@ war_measures = {
 		complete_effect = {
 			if = {
 				limit = {
-					NOT = {
-						check_variable = {
-							var = GER_war_bonds_var
-							value = 100
-							compare = greater_than_or_equals
-						}
+					check_variable = {
+						var = GER_war_bonds_var
+						value = 50
+						compare = less_than
 					}
 				}
 				set_variable = {
@@ -852,36 +861,28 @@ war_measures = {
 						value = 100
 						compare = greater_than_or_equals
 					}
-					NOT = {
-						check_variable = {
-							var = GER_war_bonds_war_support_var
-							value = 5
-							compare = greater_than_or_equals
-						}
+					check_variable = {
+						var = GER_war_bonds_war_support_var
+						value = -0.025
+						compare = greater_than
 					}
 				}
 				set_variable = {
 					var = GER_war_bonds_war_support_var
-					value = -5
+					value = -0.025
 				}
-				add_war_support = GER_war_bonds_war_support_var
 			}
 			if = {
 				limit = {
 					check_variable = {
-						var = GER_war_bonds_var
-						value = 100
-						compare = greater_than_or_equals
-					}
-					check_variable = {
 						var = GER_war_bonds_war_support_var
-						value = 5
-						compare = greater_than_or_equals
+						value = -0.025
+						compare = less_than_or_equals
 					}
 				}
 				add_to_variable = {
 					var = GER_war_bonds_war_support_var
-					value = -2.5
+					value = -0.025
 				}
 				add_war_support = GER_war_bonds_war_support_var
 			}
@@ -952,29 +953,27 @@ economy_decisions = {
 
         days_re_enable = 30
 
-        available = {
-            any_state = {
-            	NOT = { has_state_flag = infrastructure_building_slot_flag }
-            	is_fully_controlled_by = ROOT
-            	is_owned_by = ROOT
-				free_building_slots = {
-					building = infrastructure
-					size < 1
-				}
-            }
-        }
-
-        visible = {
-			any_state = {
-            	NOT = { has_state_flag = infrastructure_building_slot_flag }
-            	is_fully_controlled_by = ROOT
-            	is_owned_by = ROOT
-				free_building_slots = {
-					building = infrastructure
-					size < 1
-				}
-            }
+	available = {
+		any_owned_state = {
+			NOT = { has_state_flag = infrastructure_building_slot_flag }
+			is_fully_controlled_by = ROOT
+			free_building_slots = {
+				building = infrastructure
+				size < 1
+			}
 		}
+	}
+
+	visible = {
+		any_owned_state = {
+			NOT = { has_state_flag = infrastructure_building_slot_flag }
+			is_fully_controlled_by = ROOT
+			free_building_slots = {
+				building = infrastructure
+				size < 1
+			}
+		}
+	}
 
         complete_effect = {
 			random_owned_state = {
@@ -1017,46 +1016,109 @@ economy_decisions = {
         fire_only_once = no
 
         available = {
-            any_state = {
+            has_war = yes
+            any_owned_state = {
             	NOT = { has_state_flag = war_building_slot_flag }
             	is_fully_controlled_by = ROOT
-            	is_owned_by = ROOT
             }
-            has_war = yes
         }
 
         visible = {
-        	any_state = {
-            	NOT = { has_state_flag = war_building_slot_flag }
-            	is_fully_controlled_by = ROOT
-            	is_owned_by = ROOT
-            }
-            has_war = yes
+			has_war = yes
+			any_owned_state = {
+				NOT = { has_state_flag = war_building_slot_flag }
+				is_fully_controlled_by = ROOT
+			}
 		}
 
         complete_effect = {
         	add_war_support = -0.025
 			add_stability = -0.025
-			random_owned_state = {
+			if = {
 				limit = {
-					is_fully_controlled_by = ROOT
-					is_owned_by = ROOT
-            		free_building_slots = {
-						building = industrial_complex
-						size > 1
-						include_locked = yes
+					any_owned_state = {
+						is_fully_controlled_by = ROOT
+            			free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+						NOT = { has_state_flag = war_building_slot_flag }
+						infrastructure > 8
 					}
-					NOT = { has_state_flag = war_building_slot_flag }
 				}
-				add_extra_state_shared_building_slots = 1
-				set_state_flag = war_building_slot_flag
+				random_owned_state = {
+					limit = {
+						is_fully_controlled_by = ROOT
+            			free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+						NOT = { has_state_flag = war_building_slot_flag }
+						infrastructure > 8
+					}
+					add_extra_state_shared_building_slots = 1
+					set_state_flag = war_building_slot_flag
+				}
+			}
+			else_if = {
+				limit = {
+					any_owned_state = {
+						is_fully_controlled_by = ROOT
+            			free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+						NOT = { has_state_flag = war_building_slot_flag }
+						infrastructure > 5
+					}
+				}
+				random_owned_state = {
+					limit = {
+						is_fully_controlled_by = ROOT
+            			free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+						NOT = { has_state_flag = war_building_slot_flag }
+						infrastructure > 5
+					}
+					add_extra_state_shared_building_slots = 1
+					set_state_flag = war_building_slot_flag
+				}
+			}
+			else = {
+				random_owned_state = {
+					limit = {
+						is_fully_controlled_by = ROOT
+            			free_building_slots = {
+							building = industrial_complex
+							size > 1
+							include_locked = yes
+						}
+						NOT = { has_state_flag = war_building_slot_flag }
+						infrastructure > 8
+					}
+					add_extra_state_shared_building_slots = 1
+					set_state_flag = war_building_slot_flag
+				}
 			}
 		}
 		ai_will_do = {
 			factor = 1
 			modifier = {
 				factor = 10
-				any_owned_state = { free_building_slots = { building = industrial_complex size < 1 include_locked = no } }
+				all_owned_state = { free_building_slots = { building = industrial_complex size < 1 include_locked = no } }
+			}
+			modifier = {
+				any_owned_state = {
+					infrastructure > 5
+					free_building_slots = { building = industrial_complex size > 0 include_locked = no }
+				}
+				factor = 0
 			}
 		}
     }
@@ -1084,11 +1146,11 @@ foreign_support = {
 
 		available = {
 			any_state = {
+				has_state_flag = CHI_needed_for_burma_road
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = { is_subject_of = ROOT }
 				}
-				has_state_flag = CHI_needed_for_burma_road
 			}			
 		}
 
@@ -1100,11 +1162,11 @@ foreign_support = {
 				NOT = { tag = ROOT }
 			}
 			any_state = {
+				has_state_flag = CHI_needed_for_burma_road
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = { is_subject_of = ROOT }
 				}
-				has_state_flag = CHI_needed_for_burma_road
 			}
 		}
 
@@ -1328,11 +1390,11 @@ foreign_support = {
 
 		available = {
 			any_state = {
+				has_state_flag = CHI_needed_for_ledo_road
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = { is_subject_of = ROOT }
 				}
-				has_state_flag = CHI_needed_for_ledo_road
 			}			
 		}
 
@@ -1344,11 +1406,11 @@ foreign_support = {
 				NOT = { tag = ROOT }
 			}
 			any_state = {
+				has_state_flag = CHI_needed_for_ledo_road
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = { is_subject_of = ROOT }
 				}
-				has_state_flag = CHI_needed_for_ledo_road
 			}
 		}
 
@@ -1570,11 +1632,11 @@ foreign_support = {
 
  		available = {
  			any_state = {
+ 				has_state_flag = CHI_needed_for_the_hump
  				OR = {
  					is_controlled_by = ROOT
  					CONTROLLER = { is_subject_of = ROOT }
  				}
- 				has_state_flag = CHI_needed_for_the_hump
  			}			
  		}
 
@@ -1586,11 +1648,11 @@ foreign_support = {
  				NOT = { tag = ROOT }
  			}
  			any_state = {
+ 				has_state_flag = CHI_needed_for_the_hump
  				OR = {
  					is_controlled_by = ROOT
  					CONTROLLER = { is_subject_of = ROOT }
  				}
- 				has_state_flag = CHI_needed_for_the_hump
  			}
  		}
 
@@ -1814,11 +1876,11 @@ foreign_support = {
 
 		available = {
 			any_state = {
+				has_state_flag = CHI_needed_for_hanoi_route
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = { is_subject_of = ROOT }
 				}
-				has_state_flag = CHI_needed_for_hanoi_route
 			}			
 		}
 
@@ -1830,11 +1892,11 @@ foreign_support = {
 				NOT = { tag = ROOT }
 			}
 			any_state = {
+				has_state_flag = CHI_needed_for_hanoi_route
 				OR = {
 					is_controlled_by = ROOT
 					CONTROLLER = { is_subject_of = ROOT }
 				}
-				has_state_flag = CHI_needed_for_hanoi_route
 			}
 		}
 
