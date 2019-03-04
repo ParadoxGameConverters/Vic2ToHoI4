@@ -85,13 +85,18 @@ ideas = {
 			picture = generic_intel_bonus
 			
 			modifier = {
-				political_power_factor = 0.1
+				political_power_factor = 0.2
+				stability_weekly = 0.005
 			}
 		}
 
 		anti_soviet_pact = {
 			
 			removal_cost = -1 # Or make removable, with high cost?
+
+			available = {
+				is_subject = no
+			}
 			
 			allowed = {
 				always = no # Triggered via event
@@ -100,6 +105,8 @@ ideas = {
 			ai_will_do = {
 				factor = 0
 			}
+
+			picture = anti_soviet_pact
 		}
 		
 		shattered_government = {
@@ -113,6 +120,21 @@ ideas = {
 			
 			modifier = {
 				stability_factor = -0.1
+			}
+		}
+		
+		political_turmoil = {
+			
+			allowed = {
+				always = no
+			}
+			removal_cost = -1
+			
+			picture = FRA_scw_intervention_republicans_focus
+			
+			modifier = {
+				stability_factor = -0.1
+				war_support_factor = -0.1
 			}
 		}
 	}

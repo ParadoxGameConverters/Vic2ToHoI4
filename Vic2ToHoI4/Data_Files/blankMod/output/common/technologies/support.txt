@@ -164,7 +164,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 1
+			factor = 2
 			
 			modifier = {
 				factor = 1.2
@@ -210,7 +210,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 1
+			factor = 2
 			
 			modifier = {
 				factor = 1.2
@@ -252,7 +252,7 @@ technologies = {
 		}
 		
 		ai_will_do = {
-			factor = 1
+			factor = 2
 			
 			modifier = {
 				factor = 1.2
@@ -972,6 +972,7 @@ technologies = {
 
 		logistics_company = {
 			supply_consumption_factor = -0.1
+			fuel_consumption_factor = -0.05
 		}
 		
 		
@@ -1017,6 +1018,7 @@ technologies = {
 
 		logistics_company = {
 			supply_consumption_factor = -0.1
+			fuel_consumption_factor = -0.05
 		}
 		path = {
 			leads_to_tech = tech_logistics_company4
@@ -1059,6 +1061,7 @@ technologies = {
 
 		logistics_company = {
 			supply_consumption_factor = -0.1
+			fuel_consumption_factor = -0.05
 		}
 
 		research_cost = 1.5
@@ -1129,6 +1132,7 @@ technologies = {
 
 			modifier = {
 				factor = 5
+				is_major = yes
 				date > "1940.1.1"
 			}
 		}

@@ -36,6 +36,7 @@ technologies = {
 			destroyer_2
 		}
 		
+		
 		path = {
 			leads_to_tech = improved_destroyer 
 			research_cost_coeff = 1
@@ -121,7 +122,6 @@ technologies = {
 		enable_equipments = { 
 			light_cruiser_1
 		}
-		
 		path = {
 			leads_to_tech = basic_light_cruiser 
 			research_cost_coeff = 1
@@ -703,7 +703,6 @@ technologies = {
 
 		research_cost = 2
 		start_year = 1944
-		
 		folder = {
 			name = naval_folder
 			position = { x = 0 y = 19 }
@@ -952,6 +951,8 @@ technologies = {
 			ss_tech
 		}
 	}
+
+	
 
 	######## JAPAN FOCUS TREE UNLOCK ########
 	torpedo_cruiser = {
