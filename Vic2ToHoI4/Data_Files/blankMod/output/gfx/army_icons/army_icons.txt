@@ -653,3 +653,166 @@ army_group = {
 		}
 	}
 }
+
+fleet = {
+	gfx = GFX_theatre_task_force_shield
+	
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+}
+
+task_force = {
+	gfx = GFX_theatre_task_force_shield
+	
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+	icon = {
+	}
+}
+
+naval_equipment_role = {
+	gfx = GFX_naval_equipment_role_icons
+	
+	icon = {
+		color_override = no
+		name = "Battery"
+	}
+	icon = {
+		color_override = no
+		name = "Shield"
+	}
+	icon = {
+		color_override = no
+		name = "Spotter"
+	}
+	icon = {
+		color_override = no
+		name = "Minelayer"
+	}
+	icon = {
+		color_override = no
+		name = "Minesweeper"
+	}
+	icon = {
+		color_override = no
+		name = "Skull"
+	}
+	icon = {
+		color_override = no
+		name = "Airplane"
+	}
+	icon = {
+		color_override = no
+		name = "Crab"
+	}
+}
