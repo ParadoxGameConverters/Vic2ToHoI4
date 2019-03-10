@@ -32,6 +32,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
+namespace mappers
+{
+
 class techMapper: commonItems::parser
 {
 	public:
@@ -44,6 +47,8 @@ class techMapper: commonItems::parser
 		std::map<std::string, std::vector<std::pair<std::string, int>>> techMap;
 		std::map<std::string, std::vector<std::pair<std::string, int>>> researchBonusMap;
 };
+
+}
 
 
 

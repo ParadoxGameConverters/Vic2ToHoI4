@@ -54,8 +54,14 @@ class HoI4Ideology;
 class HoI4Province;
 class HoI4States;
 class HoI4StrategicRegion;
+
+
+namespace mappers
+{
+
 class techMapper;
 
+}
 
 namespace Vic2
 {

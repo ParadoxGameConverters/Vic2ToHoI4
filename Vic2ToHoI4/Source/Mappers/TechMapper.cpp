@@ -79,7 +79,7 @@ map::map(std::istream& theStream)
 }
 
 
-techMapper::techMapper() noexcept
+mappers::techMapper::techMapper() noexcept
 {
 	registerKeyword(std::regex("tech_map"), [this](const std::string& unused, std::istream& theStream){
 		map theTechMap(theStream);
@@ -94,7 +94,7 @@ techMapper::techMapper() noexcept
 }
 
 
-std::vector<std::pair<std::string, int>> techMapper::getHoI4Techs(const std::string& oldTech) const
+std::vector<std::pair<std::string, int>> mappers::techMapper::getHoI4Techs(const std::string& oldTech) const
 {
 	auto mapItr = techMap.find(oldTech);
 	if (mapItr == techMap.end())
@@ -108,7 +108,7 @@ std::vector<std::pair<std::string, int>> techMapper::getHoI4Techs(const std::str
 }
 
 
-std::vector<std::pair<std::string, int>> techMapper::getResearchBonuses(const std::string& oldTech) const
+std::vector<std::pair<std::string, int>> mappers::techMapper::getResearchBonuses(const std::string& oldTech) const
 {
 	auto mapItr = researchBonusMap.find(oldTech);
 	if (mapItr == researchBonusMap.end())
