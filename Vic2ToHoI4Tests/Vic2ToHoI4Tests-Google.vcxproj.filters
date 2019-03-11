@@ -280,6 +280,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\ProvinceDefinitions.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
+    <ClCompile Include="MapperTests\TechMapperTests.cpp">
+      <Filter>MapperTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -305,6 +308,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Mappers\Provinces">
       <UniqueIdentifier>{2875d00b-6935-41d2-84c2-f292d2455639}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests">
+      <UniqueIdentifier>{91e9e1ce-2a27-4b76-abe6-78c4ff1eb911}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,82 @@
+/*Copyright (c) 2019 The Paradox Game Converters Project
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+"Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
+
+
+
+#include "gtest/gtest.h"
+#include "../Vic2ToHoI4/Source/Mappers/TechMapper.h"
+
+
+
+TEST(Mappers_TechMapperTests, dontGiveNonMatchingTechs)
+{
+	std::map<std::string, std::vector<std::pair<std::string, int>>> techMap;
+	std::vector<std::pair<std::string, int>> HoI4Techs;
+	HoI4Techs.push_back(std::make_pair("arbitraryTech", 1));
+	techMap.insert(std::make_pair("arbitraryInvention", HoI4Techs));
+
+	std::map<std::string, std::vector<std::pair<std::string, int>>> researchBonusMap;
+
+	mappers::techMapper theMap(techMap, researchBonusMap);
+	ASSERT_TRUE(theMap.getHoI4Techs("notAnInvention").empty());
+}
+
+
+TEST(Mappers_TechMapperTests, giveMatchingTechs)
+{
+	std::map<std::string, std::vector<std::pair<std::string, int>>> techMap;
+	std::vector<std::pair<std::string, int>> HoI4Techs;
+	HoI4Techs.push_back(std::make_pair("arbitraryTech", 1));
+	techMap.insert(std::make_pair("arbitraryInvention", HoI4Techs));
+
+	std::map<std::string, std::vector<std::pair<std::string, int>>> researchBonusMap;
+
+	mappers::techMapper theMap(techMap, researchBonusMap);
+	ASSERT_EQ(theMap.getHoI4Techs("arbitraryInvention"), HoI4Techs);
+}
+
+
+TEST(Mappers_TechMapperTests, dontGiveNonMatchingResearchBonus)
+{
+	std::map<std::string, std::vector<std::pair<std::string, int>>> techMap;
+
+	std::map<std::string, std::vector<std::pair<std::string, int>>> researchBonusMap;
+	std::vector<std::pair<std::string, int>> researchBonuses;
+	researchBonuses.push_back(std::make_pair("arbitraryBonus", 1));
+	researchBonusMap.insert(std::make_pair("arbitraryInvention", researchBonuses));
+
+	mappers::techMapper theMap(techMap, researchBonusMap);
+	ASSERT_TRUE(theMap.getResearchBonuses("notAnInvention").empty());
+}
+
+
+TEST(Mappers_TechMapperTests, giveMatchingResearchBonus)
+{
+	std::map<std::string, std::vector<std::pair<std::string, int>>> techMap;
+
+	std::map<std::string, std::vector<std::pair<std::string, int>>> researchBonusMap;
+	std::vector<std::pair<std::string, int>> researchBonuses;
+	researchBonuses.push_back(std::make_pair("arbitraryBonus", 1));
+	researchBonusMap.insert(std::make_pair("arbitraryInvention", researchBonuses));
+
+	mappers::techMapper theMap(techMap, researchBonusMap);
+	ASSERT_EQ(theMap.getResearchBonuses("arbitraryInvention"), researchBonuses);
+}
