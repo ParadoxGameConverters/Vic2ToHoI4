@@ -35,6 +35,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Mappers/GovernmentMapper.h"
 #include "../Mappers/GraphicsMapper.h"
 #include "../Mappers/ProvinceDefinitions.h"
+#include "../Mappers/TechMapper.h"
 #include "../Mappers/V2Localisations.h"
 #include "../V2World/Relations.h"
 #include "../V2World/Party.h"
@@ -368,6 +369,35 @@ void HoI4Country::findBestCapital()
 {
 	capitalStateNum = 0;
 	LOG(LogLevel::Warning) << "Could not properly set capital for " << tag;
+}
+
+
+void HoI4Country::convertTechnology(std::unique_ptr<mappers::techMapper>& theTechMapper)
+{
+	auto sourceCountry = getSourceCountry();
+
+	for (auto technology: sourceCountry->getTechs())
+	{
+		for (auto HoI4TechItr: theTechMapper->getHoI4Techs(technology))
+		{
+			setTechnology(HoI4TechItr.first, HoI4TechItr.second);
+		}
+		for (auto HoI4TechItr: theTechMapper->getResearchBonuses(technology))
+		{
+			setResearchBonus(HoI4TechItr.first, HoI4TechItr.second);
+		}
+	}
+	for (auto invention: sourceCountry->getInventions())
+	{
+		for (auto HoI4TechItr: theTechMapper->getHoI4Techs(invention))
+		{
+			setTechnology(HoI4TechItr.first, HoI4TechItr.second);
+		}
+		for (auto HoI4TechItr: theTechMapper->getResearchBonuses(invention))
+		{
+			setResearchBonus(HoI4TechItr.first, HoI4TechItr.second);
+		}
+	}
 }
 
 

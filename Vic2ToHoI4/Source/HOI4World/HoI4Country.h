@@ -73,6 +73,12 @@ struct advisorCompare;
 }
 
 
+namespace mappers
+{
+class techMapper;
+}
+
+
 class CountryMapper;
 class governmentMapper;
 class graphicsMapper;
@@ -93,8 +99,7 @@ class HoI4Country
 		void convertConvoys(const map<string, HoI4::UnitMap>& unitMap);
 		void convertAirforce(const map<string, HoI4::UnitMap>& unitMap);
 		void convertArmies(const HoI4::militaryMappings& theMilitaryMappings);
-		void		setTechnology(const string& tech, int level);
-		void		setResearchBonus(const string& tech, int bonus);
+		void convertTechnology(std::unique_ptr<mappers::techMapper>& theTechMapper);
 		void addState(HoI4::State* _state);
 		void calculateIndustry();
 		void reportIndustry(ofstream& out);
@@ -167,6 +172,8 @@ class HoI4Country
 		bool isThisStateACoreWhileWeOwnNoStates(const HoI4::State* state) const;
 		void setCapitalInCapitalState(int capitalProvince);
 		void findBestCapital();
+		void setTechnology(const string& tech, int level);
+		void setResearchBonus(const string& tech, int bonus);
 
 		void addProvince(int _province);
 
