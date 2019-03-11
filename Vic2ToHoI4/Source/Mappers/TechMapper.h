@@ -27,6 +27,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "newParser.h"
 #include <map>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -38,14 +39,39 @@ namespace mappers
 class techMapper: commonItems::parser
 {
 	public:
-		techMapper() noexcept;
+		techMapper(const std::map<std::string, std::vector<std::pair<std::string, int>>>& _techMap, const std::map<std::string, std::vector<std::pair<std::string, int>>> _researchBonusMap):
+			techMap(_techMap), researchBonusMap(_researchBonusMap) {};
+		~techMapper() = default;
 
 		std::vector<std::pair<std::string, int>> getHoI4Techs(const std::string& oldTech) const;
 		std::vector<std::pair<std::string, int>> getResearchBonuses(const std::string& oldTech) const;
 
 	private:
+		techMapper(const techMapper&) = delete;
+		techMapper(techMapper&&) = delete;
+		techMapper& operator=(const techMapper&) = delete;
+		techMapper& operator=(techMapper&&) = delete;
+
 		std::map<std::string, std::vector<std::pair<std::string, int>>> techMap;
 		std::map<std::string, std::vector<std::pair<std::string, int>>> researchBonusMap;
+};
+
+
+class techMapperFile: commonItems::parser
+{
+	public:
+		techMapperFile();
+		~techMapperFile() = default;
+
+		std::unique_ptr<techMapper> takeTechMapper() { return std::move(theTechMapper); }
+
+	private:
+		techMapperFile(const techMapperFile&) = delete;
+		techMapperFile(techMapperFile&&) = delete;
+		techMapperFile& operator=(const techMapperFile&) = delete;
+		techMapperFile& operator=(techMapperFile&&) = delete;
+
+		std::unique_ptr<techMapper> theTechMapper;
 };
 
 }

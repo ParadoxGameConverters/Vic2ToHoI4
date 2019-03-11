@@ -25,6 +25,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "ParserHelpers.h"
 
 
+
 class techMapping: commonItems::parser
 {
 	public:
@@ -79,21 +80,6 @@ map::map(std::istream& theStream)
 }
 
 
-mappers::techMapper::techMapper() noexcept
-{
-	registerKeyword(std::regex("tech_map"), [this](const std::string& unused, std::istream& theStream){
-		map theTechMap(theStream);
-		techMap = theTechMap.getMappings();
-	});
-	registerKeyword(std::regex("bonus_map"), [this](const std::string& unused, std::istream& theStream){
-		map theBonusMap(theStream);
-		researchBonusMap = theBonusMap.getMappings();
-	});
-
-	parseFile("tech_mapping.txt");
-}
-
-
 std::vector<std::pair<std::string, int>> mappers::techMapper::getHoI4Techs(const std::string& oldTech) const
 {
 	auto mapItr = techMap.find(oldTech);
@@ -119,4 +105,23 @@ std::vector<std::pair<std::string, int>> mappers::techMapper::getResearchBonuses
 	{
 		return mapItr->second;
 	}
+}
+
+
+mappers::techMapperFile::techMapperFile()
+{
+	std::map<std::string, std::vector<std::pair<std::string, int>>> techMap;
+	std::map<std::string, std::vector<std::pair<std::string, int>>> researchBonusMap;
+
+	registerKeyword(std::regex("tech_map"), [this, &techMap](const std::string& unused, std::istream& theStream){
+		map theTechMap(theStream);
+		techMap = theTechMap.getMappings();
+	});
+	registerKeyword(std::regex("bonus_map"), [this, &researchBonusMap](const std::string& unused, std::istream& theStream){
+		map theBonusMap(theStream);
+		researchBonusMap = theBonusMap.getMappings();
+	});
+
+	parseFile("tech_mapping.txt");
+	theTechMapper = std::make_unique<techMapper>(techMap, researchBonusMap);
 }

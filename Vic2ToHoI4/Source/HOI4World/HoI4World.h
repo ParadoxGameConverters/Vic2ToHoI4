@@ -153,8 +153,8 @@ class World: commonItems::parser
 		void convertRelations();
 
 		void convertTechs();
-		void addTechs(shared_ptr<HoI4Country> countryaddTechs, const string& oldTech, const techMapper& techMap);
-		void addResearchBonuses(shared_ptr<HoI4Country> countryaddBonuses, const string& oldTech, const techMapper& researchBonusMap);
+		void addTechs(shared_ptr<HoI4Country> countryaddTechs, const string& oldTech, const mappers::techMapper& techMap);
+		void addResearchBonuses(shared_ptr<HoI4Country> countryaddBonuses, const string& oldTech, const mappers::techMapper& researchBonusMap);
 
 		void convertMilitaries();
 		void convertArmies(const militaryMappings& theMilitaryMappings);

@@ -810,7 +810,8 @@ void HoI4::World::convertTechs()
 {
 	LOG(LogLevel::Info) << "Converting techs and research bonuses";
 
-	techMapper techMap;
+	mappers::techMapperFile file;
+	unique_ptr<mappers::techMapper> techMap = file.takeTechMapper();
 
 	for (auto dstCountry: countries)
 	{
@@ -818,19 +819,19 @@ void HoI4::World::convertTechs()
 
 		for (auto technology: sourceCountry->getTechs())
 		{
-			addTechs(dstCountry.second, technology, techMap);
-			addResearchBonuses(dstCountry.second, technology, techMap);
+			addTechs(dstCountry.second, technology, *techMap);
+			addResearchBonuses(dstCountry.second, technology, *techMap);
 		}
 		for (auto invention: sourceCountry->getInventions())
 		{
-			addTechs(dstCountry.second, invention, techMap);
-			addResearchBonuses(dstCountry.second, invention, techMap);
+			addTechs(dstCountry.second, invention, *techMap);
+			addResearchBonuses(dstCountry.second, invention, *techMap);
 		}
 	}
 }
 
 
-void HoI4::World::addTechs(shared_ptr<HoI4Country> country, const string& oldTech, const techMapper& techMap)
+void HoI4::World::addTechs(shared_ptr<HoI4Country> country, const string& oldTech, const mappers::techMapper& techMap)
 {
 	for (auto HoI4TechItr: techMap.getHoI4Techs(oldTech))
 	{
@@ -839,7 +840,7 @@ void HoI4::World::addTechs(shared_ptr<HoI4Country> country, const string& oldTec
 }
 
 
-void HoI4::World::addResearchBonuses(shared_ptr<HoI4Country> country, const string& oldTech, const techMapper& techMap)
+void HoI4::World::addResearchBonuses(shared_ptr<HoI4Country> country, const string& oldTech, const mappers::techMapper& techMap)
 {
 	for (auto HoI4TechItr: techMap.getResearchBonuses(oldTech))
 	{
