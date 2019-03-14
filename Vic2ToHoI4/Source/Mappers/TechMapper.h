@@ -43,8 +43,8 @@ class techMapper: commonItems::parser
 			techMap(_techMap), researchBonusMap(_researchBonusMap) {};
 		~techMapper() = default;
 
-		std::vector<std::pair<std::string, int>> getHoI4Techs(const std::string& oldTech) const;
-		std::vector<std::pair<std::string, int>> getResearchBonuses(const std::string& oldTech) const;
+		auto getAllHoI4Techs() const { return techMap; }
+		auto getAllResearchBonuses() const { return researchBonusMap; }
 
 	private:
 		techMapper(const techMapper&) = delete;

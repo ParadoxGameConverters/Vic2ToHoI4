@@ -80,34 +80,6 @@ map::map(std::istream& theStream)
 }
 
 
-std::vector<std::pair<std::string, int>> mappers::techMapper::getHoI4Techs(const std::string& oldTech) const
-{
-	auto mapItr = techMap.find(oldTech);
-	if (mapItr == techMap.end())
-	{
-		return {};
-	}
-	else
-	{
-		return mapItr->second;
-	}
-}
-
-
-std::vector<std::pair<std::string, int>> mappers::techMapper::getResearchBonuses(const std::string& oldTech) const
-{
-	auto mapItr = researchBonusMap.find(oldTech);
-	if (mapItr == researchBonusMap.end())
-	{
-		return {};
-	}
-	else
-	{
-		return mapItr->second;
-	}
-}
-
-
 mappers::techMapperFile::techMapperFile()
 {
 	std::map<std::string, std::vector<std::pair<std::string, int>>> techMap;

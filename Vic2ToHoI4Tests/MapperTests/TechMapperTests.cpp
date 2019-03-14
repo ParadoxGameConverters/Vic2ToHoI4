@@ -36,7 +36,8 @@ TEST(Mappers_TechMapperTests, dontGiveNonMatchingTechs)
 	std::map<std::string, std::vector<std::pair<std::string, int>>> researchBonusMap;
 
 	mappers::techMapper theMap(techMap, researchBonusMap);
-	ASSERT_TRUE(theMap.getHoI4Techs("notAnInvention").empty());
+	auto returnedTechs = theMap.getAllHoI4Techs();
+	ASSERT_EQ(returnedTechs.find("notAnInvention"), returnedTechs.end());
 }
 
 
@@ -50,7 +51,7 @@ TEST(Mappers_TechMapperTests, giveMatchingTechs)
 	std::map<std::string, std::vector<std::pair<std::string, int>>> researchBonusMap;
 
 	mappers::techMapper theMap(techMap, researchBonusMap);
-	ASSERT_EQ(theMap.getHoI4Techs("arbitraryInvention"), HoI4Techs);
+	ASSERT_EQ(theMap.getAllHoI4Techs().find("arbitraryInvention")->second, HoI4Techs);
 }
 
 
@@ -64,7 +65,8 @@ TEST(Mappers_TechMapperTests, dontGiveNonMatchingResearchBonus)
 	researchBonusMap.insert(std::make_pair("arbitraryInvention", researchBonuses));
 
 	mappers::techMapper theMap(techMap, researchBonusMap);
-	ASSERT_TRUE(theMap.getResearchBonuses("notAnInvention").empty());
+	auto returnedBonuses = theMap.getAllResearchBonuses();
+	ASSERT_EQ(returnedBonuses.find("notAnInvention"), returnedBonuses.end());
 }
 
 
@@ -78,5 +80,5 @@ TEST(Mappers_TechMapperTests, giveMatchingResearchBonus)
 	researchBonusMap.insert(std::make_pair("arbitraryInvention", researchBonuses));
 
 	mappers::techMapper theMap(techMap, researchBonusMap);
-	ASSERT_EQ(theMap.getResearchBonuses("arbitraryInvention"), researchBonuses);
+	ASSERT_EQ(theMap.getAllResearchBonuses().find("arbitraryInvention")->second, researchBonuses);
 }

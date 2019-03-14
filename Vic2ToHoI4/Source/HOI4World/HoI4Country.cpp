@@ -374,28 +374,28 @@ void HoI4Country::findBestCapital()
 
 void HoI4Country::convertTechnology(std::unique_ptr<mappers::techMapper>& theTechMapper)
 {
-	auto sourceCountry = getSourceCountry();
+	auto oldTechs = srcCountry->getTechs();
+	auto oldInventions = srcCountry->getInventions();
 
-	for (auto technology: sourceCountry->getTechs())
+	for (auto techMapping: theTechMapper->getAllHoI4Techs())
 	{
-		for (auto HoI4TechItr: theTechMapper->getHoI4Techs(technology))
+		if ((oldTechs.count(techMapping.first) > 0) || (oldInventions.count(techMapping.first) > 0))
 		{
-			setTechnology(HoI4TechItr.first, HoI4TechItr.second);
-		}
-		for (auto HoI4TechItr: theTechMapper->getResearchBonuses(technology))
-		{
-			setResearchBonus(HoI4TechItr.first, HoI4TechItr.second);
+			for (auto HoI4Tech: techMapping.second)
+			{
+				setTechnology(HoI4Tech.first, HoI4Tech.second);
+			}
 		}
 	}
-	for (auto invention: sourceCountry->getInventions())
+
+	for (auto techMapping: theTechMapper->getAllResearchBonuses())
 	{
-		for (auto HoI4TechItr: theTechMapper->getHoI4Techs(invention))
+		if ((oldTechs.count(techMapping.first) > 0) || (oldInventions.count(techMapping.first) > 0))
 		{
-			setTechnology(HoI4TechItr.first, HoI4TechItr.second);
-		}
-		for (auto HoI4TechItr: theTechMapper->getResearchBonuses(invention))
-		{
-			setResearchBonus(HoI4TechItr.first, HoI4TechItr.second);
+			for (auto HoI4Tech: techMapping.second)
+			{
+				setResearchBonus(HoI4Tech.first, HoI4Tech.second);
+			}
 		}
 	}
 }
