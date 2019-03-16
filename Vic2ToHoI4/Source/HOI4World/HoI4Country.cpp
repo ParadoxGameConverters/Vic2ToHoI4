@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -383,7 +383,7 @@ void HoI4Country::convertTechnology(std::unique_ptr<mappers::techMapper>& theTec
 		{
 			for (auto HoI4Tech: techMapping.second)
 			{
-				setTechnology(HoI4Tech.first, HoI4Tech.second);
+				technologies.insert(HoI4Tech);
 			}
 		}
 	}
@@ -633,16 +633,6 @@ optional<const HoI4Relations*> HoI4Country::getRelations(string withWhom) const
 	else
 	{
 		return {};
-	}
-}
-
-
-void HoI4Country::setTechnology(const string& tech, int level)
-{
-	map<string, int>::iterator techEntry = technologies.find(tech);
-	if ((techEntry == technologies.end()) || (techEntry->second < level))
-	{
-		technologies[tech] = level;
 	}
 }
 
@@ -959,9 +949,9 @@ void HoI4Country::outputTechnology(ofstream& output) const
 {
 	output << "# Starting tech\n";
 	output << "set_technology = {\n";
-	for (auto tech : technologies)
+	for (auto technology: technologies)
 	{
-		output << tech.first << " = 1\n";
+		output << technology << " = 1\n";
 	}
 	output << "}\n";
 	output << "\n";
@@ -1276,7 +1266,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 	}
 	output << "### No BHU air forces ###\n";
 	output << "instant_effect = {\n";
-	if (technologies.find("infantry_weapons1") != technologies.end())
+	if (technologies.count("infantry_weapons1") > 0)
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1300,7 +1290,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tefficiency = 100\n";
 		output << "\t}\n";
 	}
-	if (technologies.find("gw_artillery") != technologies.end())
+	if (technologies.count("gw_artillery") > 0)
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1312,7 +1302,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tefficiency = 100\n";
 		output << "\t}\n";
 	}
-	if (technologies.find("fighter1") != technologies.end())
+	if (technologies.count("fighter1") > 0)
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1324,7 +1314,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tefficiency = 100\n";
 		output << "\t}\n";
 	}
-	else if (technologies.find("early_fighter") != technologies.end())
+	else if (technologies.count("early_fighter") > 0)
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1336,7 +1326,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tefficiency = 100\n";
 		output << "\t}\n";
 	}
-	if (technologies.find("basic_destroyer") != technologies.end())
+	if (technologies.count("basic_destroyer") > 0)
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1348,7 +1338,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tamount = 10\n";
 		output << "\t}\n";
 	}
-	else if (technologies.find("early_destroyer") != technologies.end())
+	else if (technologies.count("early_destroyer") > 0)
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1360,7 +1350,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tamount = 10\n";
 		output << "\t}\n";
 	}
-	if (technologies.find("basic_battleship") != technologies.end())
+	if (technologies.count("basic_battleship") > 0)
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1372,7 +1362,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tamount = 3\n";
 		output << "\t}\n";
 	}
-	else if (technologies.find("early_battleship") != technologies.end())
+	else if (technologies.count("early_battleship") > 0)
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";

@@ -28,12 +28,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 TEST(Mappers_TechMapperTests, dontGiveNonMatchingTechs)
 {
-	std::map<std::string, std::vector<std::pair<std::string, int>>> techMap;
-	std::vector<std::pair<std::string, int>> HoI4Techs;
-	HoI4Techs.push_back(std::make_pair("arbitraryTech", 1));
+	std::map<std::string, std::set<std::string>> techMap;
+	std::set<std::string> HoI4Techs;
+	HoI4Techs.insert("arbitraryTech");
 	techMap.insert(std::make_pair("arbitraryInvention", HoI4Techs));
 
-	std::map<std::string, std::vector<std::pair<std::string, int>>> researchBonusMap;
+	std::map<std::string, std::map<std::string, int>> researchBonusMap;
 
 	mappers::techMapper theMap(techMap, researchBonusMap);
 	auto returnedTechs = theMap.getAllHoI4Techs();
@@ -43,12 +43,12 @@ TEST(Mappers_TechMapperTests, dontGiveNonMatchingTechs)
 
 TEST(Mappers_TechMapperTests, giveMatchingTechs)
 {
-	std::map<std::string, std::vector<std::pair<std::string, int>>> techMap;
-	std::vector<std::pair<std::string, int>> HoI4Techs;
-	HoI4Techs.push_back(std::make_pair("arbitraryTech", 1));
+	std::map<std::string, std::set<std::string>> techMap;
+	std::set<std::string> HoI4Techs;
+	HoI4Techs.insert("arbitraryTech");
 	techMap.insert(std::make_pair("arbitraryInvention", HoI4Techs));
 
-	std::map<std::string, std::vector<std::pair<std::string, int>>> researchBonusMap;
+	std::map<std::string, std::map<std::string, int>> researchBonusMap;
 
 	mappers::techMapper theMap(techMap, researchBonusMap);
 	ASSERT_EQ(theMap.getAllHoI4Techs().find("arbitraryInvention")->second, HoI4Techs);
@@ -57,11 +57,11 @@ TEST(Mappers_TechMapperTests, giveMatchingTechs)
 
 TEST(Mappers_TechMapperTests, dontGiveNonMatchingResearchBonus)
 {
-	std::map<std::string, std::vector<std::pair<std::string, int>>> techMap;
+	std::map<std::string, std::set<std::string>> techMap;
 
-	std::map<std::string, std::vector<std::pair<std::string, int>>> researchBonusMap;
-	std::vector<std::pair<std::string, int>> researchBonuses;
-	researchBonuses.push_back(std::make_pair("arbitraryBonus", 1));
+	std::map<std::string, std::map<std::string, int>> researchBonusMap;
+	std::map<std::string, int> researchBonuses;
+	researchBonuses.insert(std::make_pair("arbitraryBonus", 1));
 	researchBonusMap.insert(std::make_pair("arbitraryInvention", researchBonuses));
 
 	mappers::techMapper theMap(techMap, researchBonusMap);
@@ -72,11 +72,11 @@ TEST(Mappers_TechMapperTests, dontGiveNonMatchingResearchBonus)
 
 TEST(Mappers_TechMapperTests, giveMatchingResearchBonus)
 {
-	std::map<std::string, std::vector<std::pair<std::string, int>>> techMap;
+	std::map<std::string, std::set<std::string>> techMap;
 
-	std::map<std::string, std::vector<std::pair<std::string, int>>> researchBonusMap;
-	std::vector<std::pair<std::string, int>> researchBonuses;
-	researchBonuses.push_back(std::make_pair("arbitraryBonus", 1));
+	std::map<std::string, std::map<std::string, int>> researchBonusMap;
+	std::map<std::string, int> researchBonuses;
+	researchBonuses.insert(std::make_pair("arbitraryBonus", 1));
 	researchBonusMap.insert(std::make_pair("arbitraryInvention", researchBonuses));
 
 	mappers::techMapper theMap(techMap, researchBonusMap);

@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -172,7 +172,6 @@ class HoI4Country
 		bool isThisStateACoreWhileWeOwnNoStates(const HoI4::State* state) const;
 		void setCapitalInCapitalState(int capitalProvince);
 		void findBestCapital();
-		void setTechnology(const string& tech, int level);
 		void setResearchBonus(const string& tech, int bonus);
 
 		void addProvince(int _province);
@@ -223,7 +222,7 @@ class HoI4Country
 		int									capitalStateNum;
 		HoI4::State*							capitalState;
 		string								commonCountryFile;
-		map<string, int>					technologies;
+		set<string> technologies;
 		map<string, int>					researchBonuses;
 		map<string, HoI4Relations*>	relations;
 		ConverterColor::Color color;

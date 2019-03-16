@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -36,7 +36,7 @@ class techMapping: commonItems::parser
 
 	private:
 		std::string key;
-		std::vector<std::pair<std::string, int>> values;
+		std::set<std::string> values;
 };
 
 
@@ -46,29 +46,57 @@ techMapping::techMapping(std::istream& theStream)
 		commonItems::singleString theKey(theStream);
 		key = theKey.getString();
 	});
-	registerKeyword(std::regex("[a-z0-9_]+"), [this](const std::string& valueName, std::istream& theStream){
-		commonItems::singleInt valueValue(theStream);
-		values.push_back(make_pair(valueName, valueValue.getInt()));
+	registerKeyword(std::regex("hoi4"), [this](const std::string& unused, std::istream& theStream){
+		commonItems::singleString aValue(theStream);
+		values.insert(aValue.getString());
 	});
 
 	parseStream(theStream);
 }
 
 
-
-class map: commonItems::parser
+class researchBonusMapping: commonItems::parser
 {
 	public:
-		explicit map(std::istream& theStream);
+		explicit researchBonusMapping(std::istream& theStream);
+
+		auto getKey() const { return key; }
+		auto getValues() const { return values; }
+
+	private:
+		std::string key;
+		std::map<std::string, int> values;
+};
+
+
+researchBonusMapping::researchBonusMapping(std::istream& theStream)
+{
+	registerKeyword(std::regex("vic2"), [this](const std::string& unused, std::istream& theStream){
+		commonItems::singleString theKey(theStream);
+		key = theKey.getString();
+	});
+	registerKeyword(std::regex("[a-zA-Z0-9_]+"), [this](const std::string& valueName, std::istream& theStream){
+		commonItems::singleInt aValue(theStream);
+		values.insert(std::make_pair(valueName, aValue.getInt()));
+	});
+
+	parseStream(theStream);
+}
+
+
+class techMap: commonItems::parser
+{
+	public:
+		explicit techMap(std::istream& theStream);
 
 		auto getMappings() const { return mappings; }
 
 	private:
-		std::map<std::string, std::vector<std::pair<std::string, int>>> mappings;
+		std::map<std::string, std::set<std::string>> mappings;
 };
 
 
-map::map(std::istream& theStream)
+techMap::techMap(std::istream& theStream)
 {
 	registerKeyword(std::regex("link"), [this](const std::string& unused, std::istream& theStream)
 	{
@@ -80,20 +108,44 @@ map::map(std::istream& theStream)
 }
 
 
+class researchBonusMap: commonItems::parser
+{
+	public:
+		explicit researchBonusMap(std::istream& theStream);
+
+		auto getMappings() const { return mappings; }
+
+	private:
+		std::map<std::string, std::map<std::string, int>> mappings;
+};
+
+
+researchBonusMap::researchBonusMap(std::istream& theStream)
+{
+	registerKeyword(std::regex("link"), [this](const std::string& unused, std::istream& theStream)
+	{
+		researchBonusMapping theMapping(theStream);
+		mappings.insert(make_pair(theMapping.getKey(), theMapping.getValues()));
+	});
+
+	parseStream(theStream);
+}
+
+
 mappers::techMapperFile::techMapperFile()
 {
-	std::map<std::string, std::vector<std::pair<std::string, int>>> techMap;
-	std::map<std::string, std::vector<std::pair<std::string, int>>> researchBonusMap;
+	std::map<std::string, std::set<std::string>> techMappings;
+	std::map<std::string, std::map<std::string, int>> researchBonusMappings;
 
-	registerKeyword(std::regex("tech_map"), [this, &techMap](const std::string& unused, std::istream& theStream){
-		map theTechMap(theStream);
-		techMap = theTechMap.getMappings();
+	registerKeyword(std::regex("tech_map"), [this, &techMappings](const std::string& unused, std::istream& theStream){
+		techMap theTechMap(theStream);
+		techMappings = theTechMap.getMappings();
 	});
-	registerKeyword(std::regex("bonus_map"), [this, &researchBonusMap](const std::string& unused, std::istream& theStream){
-		map theBonusMap(theStream);
-		researchBonusMap = theBonusMap.getMappings();
+	registerKeyword(std::regex("bonus_map"), [this, &researchBonusMappings](const std::string& unused, std::istream& theStream){
+		researchBonusMap theBonusMap(theStream);
+		researchBonusMappings = theBonusMap.getMappings();
 	});
 
 	parseFile("tech_mapping.txt");
-	theTechMapper = std::make_unique<techMapper>(techMap, researchBonusMap);
+	theTechMapper = std::make_unique<techMapper>(techMappings, researchBonusMappings);
 }

@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -28,8 +28,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "newParser.h"
 #include <map>
 #include <memory>
+#include <set>
 #include <string>
-#include <vector>
 
 
 
@@ -39,7 +39,7 @@ namespace mappers
 class techMapper: commonItems::parser
 {
 	public:
-		techMapper(const std::map<std::string, std::vector<std::pair<std::string, int>>>& _techMap, const std::map<std::string, std::vector<std::pair<std::string, int>>> _researchBonusMap):
+		techMapper(const std::map<std::string, std::set<std::string>>& _techMap, const std::map<std::string, std::map<std::string, int>> _researchBonusMap):
 			techMap(_techMap), researchBonusMap(_researchBonusMap) {};
 		~techMapper() = default;
 
@@ -52,8 +52,8 @@ class techMapper: commonItems::parser
 		techMapper& operator=(const techMapper&) = delete;
 		techMapper& operator=(techMapper&&) = delete;
 
-		std::map<std::string, std::vector<std::pair<std::string, int>>> techMap;
-		std::map<std::string, std::vector<std::pair<std::string, int>>> researchBonusMap;
+		std::map<std::string, std::set<std::string>> techMap;
+		std::map<std::string, std::map<std::string, int>> researchBonusMap;
 };
 
 
