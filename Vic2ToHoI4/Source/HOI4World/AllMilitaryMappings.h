@@ -42,6 +42,12 @@ class allMilitaryMappings: commonItems::parser
 {
 	public:
 		allMilitaryMappings(std::istream& theStream);
+		~allMilitaryMappings() = default;
+		allMilitaryMappings(const allMilitaryMappings&) = default;
+		allMilitaryMappings(allMilitaryMappings&&) = default;
+		allMilitaryMappings& operator=(const allMilitaryMappings&) = default;
+		allMilitaryMappings& operator=(allMilitaryMappings&&) = default;
+
 
 		militaryMappings getMilitaryMappings(const std::vector<std::string>& mods) const;
 
@@ -54,6 +60,11 @@ class militaryMappingsFile: commonItems::parser
 {
 	public:
 		militaryMappingsFile();
+		~militaryMappingsFile() = default;
+		militaryMappingsFile(const militaryMappingsFile&) = default;
+		militaryMappingsFile(militaryMappingsFile&&) = default;
+		militaryMappingsFile& operator=(const militaryMappingsFile&) = default;
+		militaryMappingsFile& operator=(militaryMappingsFile&&) = default;
 
 		auto takeAllMilitaryMappings() { return std::move(theMilitaryMappings); }
 
