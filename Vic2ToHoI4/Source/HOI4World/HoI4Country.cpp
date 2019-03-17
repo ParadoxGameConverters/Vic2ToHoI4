@@ -64,7 +64,6 @@ HoI4Country::HoI4Country(const string& _tag, const string& _commonCountryFile, c
 	capitalStateNum(0),
 	capitalState(nullptr),
 	commonCountryFile(_commonCountryFile),
-	technologies(),
 	researchBonuses(),
 	relations(),
 	color(),
@@ -377,7 +376,7 @@ void HoI4Country::convertTechnology(std::unique_ptr<mappers::techMapper>& theTec
 	auto oldTechs = srcCountry->getTechs();
 	auto oldInventions = srcCountry->getInventions();
 
-	for (auto techMapping: theTechMapper->getAllHoI4Techs())
+	for (auto techMapping: theTechMapper->getAllTechMappings())
 	{
 		if ((oldTechs.count(techMapping.first) > 0) || (oldInventions.count(techMapping.first) > 0))
 		{
@@ -388,13 +387,35 @@ void HoI4Country::convertTechnology(std::unique_ptr<mappers::techMapper>& theTec
 		}
 	}
 
-	for (auto techMapping: theTechMapper->getAllResearchBonuses())
+	for (auto techMapping: theTechMapper->getAllNonMtgNavalTechMappings())
 	{
 		if ((oldTechs.count(techMapping.first) > 0) || (oldInventions.count(techMapping.first) > 0))
 		{
 			for (auto HoI4Tech: techMapping.second)
 			{
-				setResearchBonus(HoI4Tech.first, HoI4Tech.second);
+				nonMtgNavalTechnologies.insert(HoI4Tech);
+			}
+		}
+	}
+
+	for (auto techMapping: theTechMapper->getAllMtgNavalTechMappings())
+	{
+		if ((oldTechs.count(techMapping.first) > 0) || (oldInventions.count(techMapping.first) > 0))
+		{
+			for (auto HoI4Tech: techMapping.second)
+			{
+				mtgNavalTechnologies.insert(HoI4Tech);
+			}
+		}
+	}
+
+	for (auto bonusMapping: theTechMapper->getAllResearchBonuses())
+	{
+		if ((oldTechs.count(bonusMapping.first) > 0) || (oldInventions.count(bonusMapping.first) > 0))
+		{
+			for (auto bonus: bonusMapping.second)
+			{
+				setResearchBonus(bonus.first, bonus.second);
 			}
 		}
 	}
@@ -951,11 +972,30 @@ void HoI4Country::outputTechnology(ofstream& output) const
 	output << "set_technology = {\n";
 	for (auto technology: technologies)
 	{
-		output << technology << " = 1\n";
+		output << "\t" << technology << " = 1\n";
 	}
 	output << "}\n";
 	output << "\n";
+	output << "if = {\n";
+	output << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
+	output << "\tset_technology = {\n";
+	for (auto technology: nonMtgNavalTechnologies)
+	{
+		output << "\t\t" << technology << " = 1\n";
+	}
+	output << "\t}\n";
+	output << "}\n";
+	output << "if = {\n";
+	output << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
+	output << "\tset_technology = {\n";
+	for (auto technology: mtgNavalTechnologies)
+	{
+		output << "\t\t" << technology << " = 1\n";
+	}
+	output << "\t}\n";
+	output << "}\n";
 }
+
 
 void HoI4Country::outputResearchBonuses(ofstream& output) const
 {
@@ -1326,7 +1366,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tefficiency = 100\n";
 		output << "\t}\n";
 	}
-	if (technologies.count("basic_destroyer") > 0)
+	if (nonMtgNavalTechnologies.count("basic_destroyer") > 0)
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1338,7 +1378,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tamount = 10\n";
 		output << "\t}\n";
 	}
-	else if (technologies.count("early_destroyer") > 0)
+	else if (nonMtgNavalTechnologies.count("early_destroyer") > 0)
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1350,7 +1390,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tamount = 10\n";
 		output << "\t}\n";
 	}
-	if (technologies.count("basic_battleship") > 0)
+	if (nonMtgNavalTechnologies.count("basic_battleship") > 0)
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1362,7 +1402,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tamount = 3\n";
 		output << "\t}\n";
 	}
-	else if (technologies.count("early_battleship") > 0)
+	else if (nonMtgNavalTechnologies.count("early_battleship") > 0)
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";

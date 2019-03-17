@@ -33,10 +33,12 @@ TEST(Mappers_TechMapperTests, dontGiveNonMatchingTechs)
 	HoI4Techs.insert("arbitraryTech");
 	techMap.insert(std::make_pair("arbitraryInvention", HoI4Techs));
 
+	std::map<std::string, std::set<std::string>> nonMtgNavalTechMap;
+	std::map<std::string, std::set<std::string>> mtgNavalTechMap;
 	std::map<std::string, std::map<std::string, int>> researchBonusMap;
 
-	mappers::techMapper theMap(techMap, researchBonusMap);
-	auto returnedTechs = theMap.getAllHoI4Techs();
+	mappers::techMapper theMap(techMap, nonMtgNavalTechMap, mtgNavalTechMap, researchBonusMap);
+	auto returnedTechs = theMap.getAllTechMappings();
 	ASSERT_EQ(returnedTechs.find("notAnInvention"), returnedTechs.end());
 }
 
@@ -48,23 +50,93 @@ TEST(Mappers_TechMapperTests, giveMatchingTechs)
 	HoI4Techs.insert("arbitraryTech");
 	techMap.insert(std::make_pair("arbitraryInvention", HoI4Techs));
 
+	std::map<std::string, std::set<std::string>> nonMtgNavalTechMap;
+	std::map<std::string, std::set<std::string>> mtgNavalTechMap;
 	std::map<std::string, std::map<std::string, int>> researchBonusMap;
 
-	mappers::techMapper theMap(techMap, researchBonusMap);
-	ASSERT_EQ(theMap.getAllHoI4Techs().find("arbitraryInvention")->second, HoI4Techs);
+	mappers::techMapper theMap(techMap, nonMtgNavalTechMap, mtgNavalTechMap, researchBonusMap);
+	ASSERT_EQ(theMap.getAllTechMappings().find("arbitraryInvention")->second, HoI4Techs);
+}
+
+
+TEST(Mappers_TechMapperTests, dontGiveNonMatchingNonMtgNavalTechs)
+{
+	std::map<std::string, std::set<std::string>> nonMtgNavalTechMap;
+	std::set<std::string> HoI4Techs;
+	HoI4Techs.insert("arbitraryTech");
+	nonMtgNavalTechMap.insert(std::make_pair("arbitraryInvention", HoI4Techs));
+
+	std::map<std::string, std::set<std::string>> techMap;
+	std::map<std::string, std::set<std::string>> mtgNavalTechMap;
+	std::map<std::string, std::map<std::string, int>> researchBonusMap;
+
+	mappers::techMapper theMap(techMap, nonMtgNavalTechMap, mtgNavalTechMap, researchBonusMap);
+	auto returnedTechs = theMap.getAllNonMtgNavalTechMappings();
+	ASSERT_EQ(returnedTechs.find("notAnInvention"), returnedTechs.end());
+}
+
+
+TEST(Mappers_TechMapperTests, giveMatchingNonMtgNavalTechs)
+{
+	std::map<std::string, std::set<std::string>> nonMtgNavalTechMap;
+	std::set<std::string> HoI4Techs;
+	HoI4Techs.insert("arbitraryTech");
+	nonMtgNavalTechMap.insert(std::make_pair("arbitraryInvention", HoI4Techs));
+
+	std::map<std::string, std::set<std::string>> techMap;
+	std::map<std::string, std::set<std::string>> mtgNavalTechMap;
+	std::map<std::string, std::map<std::string, int>> researchBonusMap;
+
+	mappers::techMapper theMap(techMap, nonMtgNavalTechMap, mtgNavalTechMap, researchBonusMap);
+	ASSERT_EQ(theMap.getAllNonMtgNavalTechMappings().find("arbitraryInvention")->second, HoI4Techs);
+}
+
+
+TEST(Mappers_TechMapperTests, dontGiveNonMatchingMtgNavalTechs)
+{
+	std::map<std::string, std::set<std::string>> mtgNavalTechMap;
+	std::set<std::string> HoI4Techs;
+	HoI4Techs.insert("arbitraryTech");
+	mtgNavalTechMap.insert(std::make_pair("arbitraryInvention", HoI4Techs));
+
+	std::map<std::string, std::set<std::string>> techMap;
+	std::map<std::string, std::set<std::string>> nonMtgNavalTechMap;
+	std::map<std::string, std::map<std::string, int>> researchBonusMap;
+
+	mappers::techMapper theMap(techMap, nonMtgNavalTechMap, mtgNavalTechMap, researchBonusMap);
+	auto returnedTechs = theMap.getAllMtgNavalTechMappings();
+	ASSERT_EQ(returnedTechs.find("notAnInvention"), returnedTechs.end());
+}
+
+
+TEST(Mappers_TechMapperTests, giveMatchingMtgNavalTechs)
+{
+	std::map<std::string, std::set<std::string>> mtgNavalTechMap;
+	std::set<std::string> HoI4Techs;
+	HoI4Techs.insert("arbitraryTech");
+	mtgNavalTechMap.insert(std::make_pair("arbitraryInvention", HoI4Techs));
+
+	std::map<std::string, std::set<std::string>> techMap;
+	std::map<std::string, std::set<std::string>> nonMtgNavalTechMap;
+	std::map<std::string, std::map<std::string, int>> researchBonusMap;
+
+	mappers::techMapper theMap(techMap, nonMtgNavalTechMap, mtgNavalTechMap, researchBonusMap);
+	ASSERT_EQ(theMap.getAllMtgNavalTechMappings().find("arbitraryInvention")->second, HoI4Techs);
 }
 
 
 TEST(Mappers_TechMapperTests, dontGiveNonMatchingResearchBonus)
 {
 	std::map<std::string, std::set<std::string>> techMap;
+	std::map<std::string, std::set<std::string>> nonMtgNavalTechMap;
+	std::map<std::string, std::set<std::string>> mtgNavalTechMap;
 
 	std::map<std::string, std::map<std::string, int>> researchBonusMap;
 	std::map<std::string, int> researchBonuses;
 	researchBonuses.insert(std::make_pair("arbitraryBonus", 1));
 	researchBonusMap.insert(std::make_pair("arbitraryInvention", researchBonuses));
 
-	mappers::techMapper theMap(techMap, researchBonusMap);
+	mappers::techMapper theMap(techMap, nonMtgNavalTechMap, mtgNavalTechMap, researchBonusMap);
 	auto returnedBonuses = theMap.getAllResearchBonuses();
 	ASSERT_EQ(returnedBonuses.find("notAnInvention"), returnedBonuses.end());
 }
@@ -73,12 +145,14 @@ TEST(Mappers_TechMapperTests, dontGiveNonMatchingResearchBonus)
 TEST(Mappers_TechMapperTests, giveMatchingResearchBonus)
 {
 	std::map<std::string, std::set<std::string>> techMap;
+	std::map<std::string, std::set<std::string>> nonMtgNavalTechMap;
+	std::map<std::string, std::set<std::string>> mtgNavalTechMap;
 
 	std::map<std::string, std::map<std::string, int>> researchBonusMap;
 	std::map<std::string, int> researchBonuses;
 	researchBonuses.insert(std::make_pair("arbitraryBonus", 1));
 	researchBonusMap.insert(std::make_pair("arbitraryInvention", researchBonuses));
 
-	mappers::techMapper theMap(techMap, researchBonusMap);
+	mappers::techMapper theMap(techMap, nonMtgNavalTechMap, mtgNavalTechMap, researchBonusMap);
 	ASSERT_EQ(theMap.getAllResearchBonuses().find("arbitraryInvention")->second, researchBonuses);
 }

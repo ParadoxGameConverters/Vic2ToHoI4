@@ -36,13 +36,6 @@ tech_map =
 		hoi4 = infantry_weapons
 		hoi4 = gw_artillery
 		hoi4 = tech_support
-		hoi4 = early_destroyer
-		hoi4 = early_ship_hull_light
-		hoi4 = basic_depth_charges
-		hoi4 = early_light_cruiser
-		hoi4 = early_heavy_cruiser
-		hoi4 = early_battleship
-		hoi4 = early_submarine
 		hoi4 = early_fighter
 		hoi4 = early_bomber
 	}
@@ -113,42 +106,6 @@ tech_map =
 		hoi4 = interwar_antiair
 	}
 
-
-
-	# ========================
-	# === HOI4 NAVY FOLDER ===
-	# ========================
-
-	# HoI4 Destroyer II <- Vic2 Invention Navy/Ship Construction/Oil Driven Ships/Advanced Cruisers
-	link = {
-		vic2 = advanced_cruisers
-		hoi4 = basic_destroyer
-	}
-
-	# HoI4 Light Cruiser II <- Vic2 Invention Navy/Ship Construction/Oil Driven Ships/Modern Cruisers
-	link = {
-		vic2 = modern_cruisers
-		hoi4 = basic_light_cruiser
-	}
-
-	# HoI4 Heavy Cruiser II <- Vic2 Invention Navy/Ship Construction/Oil Driven Ships/Advanced Battleships
-	link = {
-		vic2 = advanced_battleships
-		hoi4 = basic_heavy_cruiser
-	}
-
-	# HoI4 Battleship II <- Vic2 Invention Navy/Ship Construction/Oil Driven Ships/Modern Battleships
-	link = {
-		vic2 = modern_battleships
-		hoi4 = basic_battleship
-	}
-
-	# HoI4 transport
-	link = {
-		vic2 = steamer_transports
-		hoi4 = transport
-	}
-
 	# ============================
 	# === HOI4 AIRCRAFT FOLDER ===
 	# ============================
@@ -184,9 +141,92 @@ tech_map =
 		vic2 = synthetic_polymers
 		hoi4 = synth_oil_experiments
 	}
+
+	link = {
+		vic2 = cracking
+		hoi4 = fuel_silos
+		hoi4 = fuel_refining
+	}
 }
 
-bonus_map = {
+non_mtg_naval_tech_map =
+{
+
+	# ========================
+	# === HOI4 BASIC TECHS ===
+	# ========================
+
+	# Trivial Mapping Ensuring All Nations Receive These Techs
+	link = {
+		vic2 = flintlock_rifles
+		hoi4 = early_destroyer
+		hoi4 = early_light_cruiser
+		hoi4 = early_heavy_cruiser
+		hoi4 = early_battleship
+		hoi4 = early_submarine
+	}
+
+	# ========================
+	# === HOI4 NAVY FOLDER ===
+	# ========================
+
+	# HoI4 Destroyer II <- Vic2 Invention Navy/Ship Construction/Oil Driven Ships/Advanced Cruisers
+	link = {
+		vic2 = advanced_cruisers
+		hoi4 = basic_destroyer
+	}
+
+	# HoI4 Light Cruiser II <- Vic2 Invention Navy/Ship Construction/Oil Driven Ships/Modern Cruisers
+	link = {
+		vic2 = modern_cruisers
+		hoi4 = basic_light_cruiser
+	}
+
+	# HoI4 Heavy Cruiser II <- Vic2 Invention Navy/Ship Construction/Oil Driven Ships/Advanced Battleships
+	link = {
+		vic2 = advanced_battleships
+		hoi4 = basic_heavy_cruiser
+	}
+
+	# HoI4 Battleship II <- Vic2 Invention Navy/Ship Construction/Oil Driven Ships/Modern Battleships
+	link = {
+		vic2 = modern_battleships
+		hoi4 = basic_battleship
+	}
+
+	# HoI4 transport
+	link = {
+		vic2 = steamer_transports
+		hoi4 = transport
+	}
+}
+
+mtg_naval_tech_map =
+{
+	# ========================
+	# === HOI4 BASIC TECHS ===
+	# ========================
+
+	# Trivial Mapping Ensuring All Nations Receive These Techs
+	link = {
+		vic2 = flintlock_rifles
+		hoi4 = early_ship_hull_light
+		hoi4 = basic_depth_charges
+	}
+
+	# ========================
+	# === HOI4 NAVY FOLDER ===
+	# ========================
+
+	# HoI4 Destroyer II <- Vic2 Invention Navy/Ship Construction/Oil Driven Ships/Advanced Cruisers
+	link = {
+		vic2 = advanced_cruisers
+		hoi4 = basic_ship_hull_light
+	}
+}
+
+bonus_map =
+{
 
 	# =================================
 	# === HOI4 LAND DOCTRINE FOLDER ===

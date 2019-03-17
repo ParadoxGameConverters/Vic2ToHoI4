@@ -135,11 +135,21 @@ researchBonusMap::researchBonusMap(std::istream& theStream)
 mappers::techMapperFile::techMapperFile()
 {
 	std::map<std::string, std::set<std::string>> techMappings;
+	std::map<std::string, std::set<std::string>> nonMtgNavalTechMappings;
+	std::map<std::string, std::set<std::string>> mtgNavalTechMappings;
 	std::map<std::string, std::map<std::string, int>> researchBonusMappings;
 
 	registerKeyword(std::regex("tech_map"), [this, &techMappings](const std::string& unused, std::istream& theStream){
 		techMap theTechMap(theStream);
 		techMappings = theTechMap.getMappings();
+	});
+	registerKeyword(std::regex("non_mtg_naval_tech_map"), [this, &nonMtgNavalTechMappings](const std::string& unused, std::istream& theStream){
+		techMap theTechMap(theStream);
+		nonMtgNavalTechMappings = theTechMap.getMappings();
+	});
+	registerKeyword(std::regex("mtg_naval_tech_map"), [this, &mtgNavalTechMappings](const std::string& unused, std::istream& theStream){
+		techMap theTechMap(theStream);
+		mtgNavalTechMappings = theTechMap.getMappings();
 	});
 	registerKeyword(std::regex("bonus_map"), [this, &researchBonusMappings](const std::string& unused, std::istream& theStream){
 		researchBonusMap theBonusMap(theStream);
@@ -147,5 +157,5 @@ mappers::techMapperFile::techMapperFile()
 	});
 
 	parseFile("tech_mapping.txt");
-	theTechMapper = std::make_unique<techMapper>(techMappings, researchBonusMappings);
+	theTechMapper = std::make_unique<techMapper>(techMappings, nonMtgNavalTechMappings, mtgNavalTechMappings, researchBonusMappings);
 }

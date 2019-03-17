@@ -222,7 +222,9 @@ class HoI4Country
 		int									capitalStateNum;
 		HoI4::State*							capitalState;
 		string								commonCountryFile;
-		set<string> technologies;
+		std::set<std::string> technologies;
+		std::set<std::string> nonMtgNavalTechnologies;
+		std::set<std::string> mtgNavalTechnologies;
 		map<string, int>					researchBonuses;
 		map<string, HoI4Relations*>	relations;
 		ConverterColor::Color color;
