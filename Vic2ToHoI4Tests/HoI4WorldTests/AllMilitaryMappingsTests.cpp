@@ -23,28 +23,47 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/AllMilitaryMappings.h"
+#include <sstream>
+
+
+class HoI4World_allMilitaryMappingsTests: public ::testing::Test
+{
+	protected:
+		HoI4World_allMilitaryMappingsTests();
+
+		std::unique_ptr<HoI4::allMilitaryMappings> allTheMappings;
+};
+
+
+HoI4World_allMilitaryMappingsTests::HoI4World_allMilitaryMappingsTests()
+{
+	std::stringstream input;
+	input << "default = {}\n";
+	input << "PDM = {}\n";
+	allTheMappings = std::make_unique<HoI4::allMilitaryMappings>(input);
+}
 
 
 
-HoI4::allMilitaryMappings allTheMappings;
-
-
-
-TEST(HoI4World_allMilitaryMappingsTests, getDefaultMappingsWithNoMods)
+TEST_F(HoI4World_allMilitaryMappingsTests, getDefaultMappingsWithNoMods)
 {
 	std::vector<std::string> mods;
-	auto specificMappings = allTheMappings.getMilitaryMappings(mods);
+	auto specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("default"), specificMappings.getMappingsName());
 }
-TEST(HoI4World_allMilitaryMappingsTests, getDefaultMappingsWithInvalidMod)
+
+
+TEST_F(HoI4World_allMilitaryMappingsTests, getDefaultMappingsWithInvalidMod)
 {
 	std::vector<std::string> mods = { "NotAMod" };
-	auto specificMappings = allTheMappings.getMilitaryMappings(mods);
+	auto specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("default"), specificMappings.getMappingsName());
 }
-TEST(HoI4World_allMilitaryMappingsTests, getPDMMappingsWithPDM)
+
+
+TEST_F(HoI4World_allMilitaryMappingsTests, getPDMMappingsWithPDM)
 {
 	std::vector<std::string> mods = { "PDM" };
-	auto specificMappings = allTheMappings.getMilitaryMappings(mods);
+	auto specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("PDM"), specificMappings.getMappingsName());
 }

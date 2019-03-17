@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -41,12 +41,24 @@ namespace HoI4
 class allMilitaryMappings: commonItems::parser
 {
 	public:
-		allMilitaryMappings();
+		allMilitaryMappings(std::istream& theStream);
 
 		militaryMappings getMilitaryMappings(const std::vector<std::string>& mods) const;
 
 	private:
 		std::map<std::string, militaryMappings> theMappings;
+};
+
+
+class militaryMappingsFile: commonItems::parser
+{
+	public:
+		militaryMappingsFile();
+
+		auto takeAllMilitaryMappings() { return std::move(theMilitaryMappings); }
+
+	private:
+		std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
 };
 
 
