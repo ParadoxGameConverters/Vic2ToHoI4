@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -22,10 +22,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "AllMilitaryMappings.h"
+#include <fstream>
 
 
 
-HoI4::allMilitaryMappings::allMilitaryMappings()
+HoI4::allMilitaryMappings::allMilitaryMappings(std::istream& theStream)
 {
 	registerKeyword(std::regex("[a-zA-Z0-9]+"), [this](const std::string& mod, std::istream& theStream)
 	{
@@ -33,7 +34,7 @@ HoI4::allMilitaryMappings::allMilitaryMappings()
 		theMappings.insert(make_pair(mod, newMappings));
 	});
 
-	parseFile("unit_mappings.txt");
+	parseStream(theStream);
 }
 
 
@@ -48,4 +49,20 @@ HoI4::militaryMappings HoI4::allMilitaryMappings::getMilitaryMappings(const std:
 	}
 
 	return theMappings.at("default");
+}
+
+
+HoI4::militaryMappingsFile::militaryMappingsFile()
+{
+	std::ifstream unitMappingFile("unit_mappings.txt");
+	if (unitMappingFile.is_open())
+	{
+		theMilitaryMappings = std::make_unique<allMilitaryMappings>(unitMappingFile);
+		unitMappingFile.close();
+	}
+	else
+	{
+		std::exception e("Could not open unit_mappings.txt");
+		throw e;
+	}
 }

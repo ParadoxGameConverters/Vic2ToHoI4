@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -78,6 +78,7 @@ class State;
 class SupplyZones;
 class UnitMap;
 struct advisorCompare;
+
 
 class World: commonItems::parser
 {
@@ -229,7 +230,7 @@ class World: commonItems::parser
 		HoI4::Events* events = nullptr;
 		std::unique_ptr<HoI4::OnActions> onActions;
 
-		allMilitaryMappings theMilitaryMappings;
+		std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
 
 		coastalProvinces theCoastalProvinces;
 		MapData theMapData;
