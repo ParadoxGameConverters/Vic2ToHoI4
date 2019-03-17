@@ -62,7 +62,6 @@ HoI4::militaryMappingsFile::militaryMappingsFile()
 	}
 	else
 	{
-		std::exception e("Could not open unit_mappings.txt");
-		throw e;
+		throw("Could not open unit_mappings.txt");
 	}
 }
