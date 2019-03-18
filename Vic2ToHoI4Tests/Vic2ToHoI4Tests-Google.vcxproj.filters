@@ -71,9 +71,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\V2Localisations.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AllMilitaryMappings.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4States.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
@@ -84,9 +81,6 @@
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ImpassableProvinces.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Province.cpp">
@@ -194,9 +188,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Idea.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\UnitMap.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Flags.cpp">
       <Filter>Vic2ToHoI4 files</Filter>
     </ClCompile>
@@ -280,6 +271,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\ProvinceDefinitions.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MilitaryMappings.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\UnitMap.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -305,6 +305,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Mappers\Provinces">
       <UniqueIdentifier>{2875d00b-6935-41d2-84c2-f292d2455639}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\MilitaryMappings">
+      <UniqueIdentifier>{aeee018a-bb82-4a8c-836c-891aaece63c5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
