@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -21,15 +21,18 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef UNIT_MAP_H
-#define UNIT_MAP_H
+#ifndef MILITARY_MAPPINGS
+#define MILITARY_MAPPINGS
 
 
 
+#include "../DivisionTemplate.h"
+#include "UnitMap.h"
 #include "newParser.h"
 #include <istream>
-#include <iostream>
+#include <map>
 #include <string>
+#include <vector>
 
 
 
@@ -37,24 +40,25 @@ namespace HoI4
 {
 
 
-class UnitMap: commonItems::parser
+class militaryMappings: commonItems::parser
 {
 	public:
-		UnitMap(std::istream& theStream);
-		UnitMap() = default;
-		UnitMap(const UnitMap&) = default;
-		UnitMap& operator=(const UnitMap&) = default;
+		militaryMappings(const std::string& name, std::istream& theStream);
 
-		std::string getCategory() const { return category; }
-		std::string getType() const { return type; }
-		std::string getEquipment() const { return equipment; }
-		int getSize() const { return size; }
+		auto getMappingsName() const { return mappingsName; }
+		auto getUnitMap() const { return unitMap; }
+		auto getDivisionTemplates() const { return divisionTemplates; }
+		auto getSubstitutes() const { return substitutes; }
 
 	private:
-		std::string category;
-		std::string type;
-		std::string equipment;
-		int size = 0;
+		void importUnitMap(std::istream& theStream);
+		void importDivisionTemplates(std::istream& theStream);
+		void importSubstitutes(std::istream& theStream);
+
+		std::string mappingsName = "";
+		std::map<std::string, HoI4::UnitMap> unitMap;
+		std::vector<HoI4::DivisionTemplateType> divisionTemplates;
+		std::map<std::string, std::string> substitutes;
 };
 
 
@@ -62,4 +66,4 @@ class UnitMap: commonItems::parser
 
 
 
-#endif // UNIT_MAP_H
+#endif // MILITARY_MAPPINGS

@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -28,7 +28,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "Division.h"
 #include "DivisionTemplate.h"
-#include "MilitaryMappings.h"
+#include "MilitaryMappings/MilitaryMappings.h"
 #include "../V2World/Army.h"
 #include <string>
 #include <map>
