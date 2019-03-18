@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -21,37 +21,47 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef ALL_MILITARY_MAPPINGS
-#define ALL_MILITARY_MAPPINGS
+#include "AllMilitaryMappings.h"
+#include <fstream>
 
 
 
-#include "MilitaryMappings.h"
-#include "newParser.h"
-#include <map>
-#include <string>
-#include <vector>
-
-
-
-namespace HoI4
+HoI4::allMilitaryMappings::allMilitaryMappings(std::istream& theStream)
 {
+	registerKeyword(std::regex("[a-zA-Z0-9]+"), [this](const std::string& mod, std::istream& theStream)
+	{
+		militaryMappings newMappings(mod, theStream);
+		theMappings.insert(make_pair(mod, newMappings));
+	});
 
-
-class allMilitaryMappings: commonItems::parser
-{
-	public:
-		allMilitaryMappings();
-
-		militaryMappings getMilitaryMappings(const std::vector<std::string>& mods) const;
-
-	private:
-		std::map<std::string, militaryMappings> theMappings;
-};
-
-
+	parseStream(theStream);
 }
 
 
+HoI4::militaryMappings HoI4::allMilitaryMappings::getMilitaryMappings(const std::vector<std::string>& Vic2Mods) const
+{
+	for (auto mod: Vic2Mods)
+	{
+		if (auto mapping = theMappings.find(mod); mapping != theMappings.end())
+		{
+			return mapping->second;
+		}
+	}
 
-#endif // ALL_MILITARY_MAPPINGS
+	return theMappings.at("default");
+}
+
+
+HoI4::militaryMappingsFile::militaryMappingsFile()
+{
+	std::ifstream unitMappingFile("unit_mappings.txt");
+	if (unitMappingFile.is_open())
+	{
+		theMilitaryMappings = std::make_unique<allMilitaryMappings>(unitMappingFile);
+		unitMappingFile.close();
+	}
+	else
+	{
+		throw("Could not open unit_mappings.txt");
+	}
+}

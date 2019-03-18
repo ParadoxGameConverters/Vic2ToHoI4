@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -83,7 +83,11 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	convertStrategicRegions();
 	convertDiplomacy();
 	convertTechs();
+
+	militaryMappingsFile importedMilitaryMappings;
+	theMilitaryMappings = importedMilitaryMappings.takeAllMilitaryMappings();
 	convertMilitaries();
+
 	//convertArmies();
 	//convertNavies();
 	//convertAirforces();
@@ -822,7 +826,7 @@ void HoI4::World::convertTechs()
 
 void HoI4::World::convertMilitaries()
 {
-	auto specificMappings = theMilitaryMappings.getMilitaryMappings(theConfiguration.getVic2Mods());
+	auto specificMappings = theMilitaryMappings->getMilitaryMappings(theConfiguration.getVic2Mods());
 
 	convertArmies(specificMappings);
 	convertNavies(specificMappings.getUnitMap());
@@ -1400,7 +1404,7 @@ void HoI4::World::outputCountries()
 	{
 		if (country.second->getCapitalStateNum() != 0)
 		{
-			auto specificMilitaryMappings = theMilitaryMappings.getMilitaryMappings(theConfiguration.getVic2Mods());
+			auto specificMilitaryMappings = theMilitaryMappings->getMilitaryMappings(theConfiguration.getVic2Mods());
 			country.second->output(activeIdeologicalAdvisors, specificMilitaryMappings.getDivisionTemplates(), theNames, theGraphics);
 		}
 	}

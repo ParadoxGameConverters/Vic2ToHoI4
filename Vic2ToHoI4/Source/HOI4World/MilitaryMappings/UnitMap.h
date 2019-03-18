@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -21,29 +21,45 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "UnitMap.h"
-#include "ParserHelpers.h"
+#ifndef UNIT_MAP_H
+#define UNIT_MAP_H
 
 
 
-HoI4::UnitMap::UnitMap(std::istream& theStream)
+#include "newParser.h"
+#include <istream>
+#include <iostream>
+#include <string>
+
+
+
+namespace HoI4
 {
-	registerKeyword(std::regex("category"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleString categoryString(theStream);
-		category = categoryString.getString();
-	});
-	registerKeyword(std::regex("type"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleString typeString(theStream);
-		type = typeString.getString();
-	});
-	registerKeyword(std::regex("equipment"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleString equipmentString(theStream);
-		equipment = equipmentString.getString();
-	});
-	registerKeyword(std::regex("size"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleInt sizeInt(theStream);
-		size = sizeInt.getInt();
-	});
 
-	parseStream(theStream);
+
+class UnitMap: commonItems::parser
+{
+	public:
+		UnitMap(std::istream& theStream);
+		UnitMap() = default;
+		UnitMap(const UnitMap&) = default;
+		UnitMap& operator=(const UnitMap&) = default;
+
+		std::string getCategory() const { return category; }
+		std::string getType() const { return type; }
+		std::string getEquipment() const { return equipment; }
+		int getSize() const { return size; }
+
+	private:
+		std::string category;
+		std::string type;
+		std::string equipment;
+		int size = 0;
+};
+
+
 }
+
+
+
+#endif // UNIT_MAP_H
