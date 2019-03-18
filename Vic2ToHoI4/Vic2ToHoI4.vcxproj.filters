@@ -16,6 +16,9 @@
     <Filter Include="Mappers\Provinces">
       <UniqueIdentifier>{01d85e52-eab1-4d75-979b-bcdf9a2fe2ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\MilitaryMappings">
+      <UniqueIdentifier>{8a769593-a367-40a0-8aa2-39f2fd5b6514}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -239,9 +242,6 @@
     <ClCompile Include="Source\HOI4World\CoastalProvinces.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\MilitaryMappings.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Regiment.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
@@ -249,12 +249,6 @@
       <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Division.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\UnitMap.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\AllMilitaryMappings.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\main.cpp" />
@@ -266,6 +260,15 @@
     </ClCompile>
     <ClCompile Include="Source\Mappers\Provinces\VersionedMappings.cpp">
       <Filter>Mappers\Provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\MilitaryMappings.cpp">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMap.cpp">
+      <Filter>HoI4World\MilitaryMappings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -490,9 +493,6 @@
     <ClInclude Include="Source\HOI4World\CoastalProvinces.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\MilitaryMappings.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Regiment.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
@@ -500,12 +500,6 @@
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Division.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\UnitMap.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\AllMilitaryMappings.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\Vic2ToHoI4Converter.h" />
@@ -520,6 +514,15 @@
     </ClInclude>
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMappingTypes.h">
       <Filter>Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.h">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\MilitaryMappings.h">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\UnitMap.h">
+      <Filter>HoI4World\MilitaryMappings</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
