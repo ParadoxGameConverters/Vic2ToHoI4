@@ -64,7 +64,6 @@ HoI4Country::HoI4Country(const string& _tag, const string& _commonCountryFile, c
 	capitalStateNum(0),
 	capitalState(nullptr),
 	commonCountryFile(_commonCountryFile),
-	researchBonuses(),
 	relations(),
 	color(),
 	faction(nullptr),
@@ -375,50 +374,7 @@ void HoI4Country::convertTechnology(std::unique_ptr<mappers::techMapper>& theTec
 {
 	auto oldTechs = srcCountry->getTechs();
 	auto oldInventions = srcCountry->getInventions();
-
-	for (auto techMapping: theTechMapper->getAllTechMappings())
-	{
-		if ((oldTechs.count(techMapping.first) > 0) || (oldInventions.count(techMapping.first) > 0))
-		{
-			for (auto HoI4Tech: techMapping.second)
-			{
-				technologies.insert(HoI4Tech);
-			}
-		}
-	}
-
-	for (auto techMapping: theTechMapper->getAllNonMtgNavalTechMappings())
-	{
-		if ((oldTechs.count(techMapping.first) > 0) || (oldInventions.count(techMapping.first) > 0))
-		{
-			for (auto HoI4Tech: techMapping.second)
-			{
-				nonMtgNavalTechnologies.insert(HoI4Tech);
-			}
-		}
-	}
-
-	for (auto techMapping: theTechMapper->getAllMtgNavalTechMappings())
-	{
-		if ((oldTechs.count(techMapping.first) > 0) || (oldInventions.count(techMapping.first) > 0))
-		{
-			for (auto HoI4Tech: techMapping.second)
-			{
-				mtgNavalTechnologies.insert(HoI4Tech);
-			}
-		}
-	}
-
-	for (auto bonusMapping: theTechMapper->getAllResearchBonuses())
-	{
-		if ((oldTechs.count(bonusMapping.first) > 0) || (oldInventions.count(bonusMapping.first) > 0))
-		{
-			for (auto bonus: bonusMapping.second)
-			{
-				setResearchBonus(bonus.first, bonus.second);
-			}
-		}
-	}
+	technologies = std::make_unique<HoI4::technologies>(theTechMapper, oldTechs, oldInventions);
 }
 
 
@@ -658,16 +614,6 @@ optional<const HoI4Relations*> HoI4Country::getRelations(string withWhom) const
 }
 
 
-void HoI4Country::setResearchBonus(const string& tech, int bonus)
-{
-	map<string, int>::iterator researchBonusEntry = researchBonuses.find(tech);
-	if ((researchBonusEntry == researchBonuses.end()) || (researchBonusEntry->second < bonus))
-	{
-		researchBonuses[tech] = bonus;
-	}
-}
-
-
 void HoI4Country::calculateIndustry()
 {
 	for (auto state : states)
@@ -897,8 +843,8 @@ void HoI4Country::outputHistory(HoI4::namesMapper& theNames, graphicsMapper& the
 	outputResearchSlots(output);
 	outputThreat(output);
 	outputOOBLine(output);
-	outputTechnology(output);
-	outputResearchBonuses(output);
+	technologies->outputTechnology(output);
+	technologies->outputResearchBonuses(output);
 	outputConvoys(output);
 	outputEquipmentStockpile(output);
 	outputPuppets(output);
@@ -963,48 +909,6 @@ void HoI4Country::outputOOBLine(ofstream& output) const
 {
 	output << "oob = \"" << tag << "_OOB\"\n";
 	output << "\n";
-}
-
-
-void HoI4Country::outputTechnology(ofstream& output) const
-{
-	output << "# Starting tech\n";
-	output << "set_technology = {\n";
-	for (auto technology: technologies)
-	{
-		output << "\t" << technology << " = 1\n";
-	}
-	output << "}\n";
-	output << "\n";
-	output << "if = {\n";
-	output << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
-	output << "\tset_technology = {\n";
-	for (auto technology: nonMtgNavalTechnologies)
-	{
-		output << "\t\t" << technology << " = 1\n";
-	}
-	output << "\t}\n";
-	output << "}\n";
-	output << "if = {\n";
-	output << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-	output << "\tset_technology = {\n";
-	for (auto technology: mtgNavalTechnologies)
-	{
-		output << "\t\t" << technology << " = 1\n";
-	}
-	output << "\t}\n";
-	output << "}\n";
-}
-
-
-void HoI4Country::outputResearchBonuses(ofstream& output) const
-{
-	output << "# Research Bonuses\n";
-	for (auto researchBonus : researchBonuses)
-	{
-		std::string name = researchBonus.first.substr(0, researchBonus.first.size() - 5) + "_bonus";
-		output << "add_tech_bonus = { name = " << name << " bonus = 0." << float(researchBonus.second) << " uses = 1 category = " << researchBonus.first << " }\n";
-	}
 }
 
 
@@ -1306,7 +1210,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 	}
 	output << "### No BHU air forces ###\n";
 	output << "instant_effect = {\n";
-	if (technologies.count("infantry_weapons1") > 0)
+	if (technologies->hasTechnology("infantry_weapons1"))
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1330,7 +1234,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tefficiency = 100\n";
 		output << "\t}\n";
 	}
-	if (technologies.count("gw_artillery") > 0)
+	if (technologies->hasTechnology("gw_artillery"))
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1342,7 +1246,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tefficiency = 100\n";
 		output << "\t}\n";
 	}
-	if (technologies.count("fighter1") > 0)
+	if (technologies->hasTechnology("fighter1"))
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1354,7 +1258,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tefficiency = 100\n";
 		output << "\t}\n";
 	}
-	else if (technologies.count("early_fighter") > 0)
+	else if (technologies->hasTechnology("early_fighter"))
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1366,7 +1270,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tefficiency = 100\n";
 		output << "\t}\n";
 	}
-	if (nonMtgNavalTechnologies.count("basic_destroyer") > 0)
+	if (technologies->hasTechnology("basic_destroyer"))
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1378,7 +1282,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tamount = 10\n";
 		output << "\t}\n";
 	}
-	else if (nonMtgNavalTechnologies.count("early_destroyer") > 0)
+	else if (technologies->hasTechnology("early_destroyer"))
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1390,7 +1294,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tamount = 10\n";
 		output << "\t}\n";
 	}
-	if (nonMtgNavalTechnologies.count("basic_battleship") > 0)
+	if (technologies->hasTechnology("basic_battleship"))
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";
@@ -1402,7 +1306,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "\t\tamount = 3\n";
 		output << "\t}\n";
 	}
-	else if (nonMtgNavalTechnologies.count("early_battleship") > 0)
+	else if (technologies->hasTechnology("early_battleship"))
 	{
 		output << "\tadd_equipment_production = {\n";
 		output << "\t\tequipment = {\n";

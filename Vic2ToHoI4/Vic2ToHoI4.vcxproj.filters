@@ -270,6 +270,9 @@
     <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMap.cpp">
       <Filter>HoI4World\MilitaryMappings</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Technologies.cpp">
+      <Filter>HoI4World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -523,6 +526,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\MilitaryMappings\UnitMap.h">
       <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Technologies.h">
+      <Filter>HoI4World</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
