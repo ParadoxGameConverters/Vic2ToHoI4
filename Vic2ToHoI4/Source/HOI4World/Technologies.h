@@ -48,8 +48,8 @@ class technologies
 
 		bool hasTechnology(std::string technology) const;
 
-		void outputTechnology(std::ofstream& output) const;
-		void outputResearchBonuses(std::ofstream& output) const;
+		void outputTechnology(std::ostream& output) const;
+		void outputResearchBonuses(std::ostream& output) const;
 
 	private:
 		std::set<std::string> mainTechnologies;

@@ -89,7 +89,7 @@ bool HoI4::technologies::hasTechnology(std::string technology) const
 }
 
 
-void HoI4::technologies::outputTechnology(std::ofstream& output) const
+void HoI4::technologies::outputTechnology(std::ostream& output) const
 {
 	output << "# Starting tech\n";
 	output << "set_technology = {\n";
@@ -120,7 +120,7 @@ void HoI4::technologies::outputTechnology(std::ofstream& output) const
 }
 
 
-void HoI4::technologies::outputResearchBonuses(std::ofstream& output) const
+void HoI4::technologies::outputResearchBonuses(std::ostream& output) const
 {
 	output << "# Research Bonuses\n";
 	for (auto researchBonus : researchBonuses)
