@@ -291,6 +291,12 @@ mtg_naval_tech_map =
 		vic2 = 15_inch_main_armament
 		hoi4 = basic_heavy_battery
 	}
+
+	# HoI4 Transports <- Vic2 Invention Navy/Naval Engineering/Modern Naval Design/15-inch Main Armament
+	link = {
+		vic2 = amphibious_warfare_training
+		hoi4 = mtg_transport
+	}
 }
 
 bonus_map =
