@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -37,6 +37,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4Province.h"
 #include "HoI4Relations.h"
 #include "HoI4State.h"
+#include "Technologies.h"
 #include "../Color.h"
 #include "Date.h"
 #include "../V2World/Army.h"
@@ -73,6 +74,12 @@ struct advisorCompare;
 }
 
 
+namespace mappers
+{
+class techMapper;
+}
+
+
 class CountryMapper;
 class governmentMapper;
 class graphicsMapper;
@@ -93,8 +100,7 @@ class HoI4Country
 		void convertConvoys(const map<string, HoI4::UnitMap>& unitMap);
 		void convertAirforce(const map<string, HoI4::UnitMap>& unitMap);
 		void convertArmies(const HoI4::militaryMappings& theMilitaryMappings);
-		void		setTechnology(const string& tech, int level);
-		void		setResearchBonus(const string& tech, int bonus);
+		void convertTechnology(std::unique_ptr<mappers::techMapper>& theTechMapper);
 		void addState(HoI4::State* _state);
 		void calculateIndustry();
 		void reportIndustry(ofstream& out);
@@ -141,8 +147,7 @@ class HoI4Country
 		bool isInFaction() const { return faction != nullptr; }
 		bool isCivilized() const { return civilized; }
 
-		int getTechnologyCount() const { return technologies.size(); }
-		int getResearchBonusesCount() const { return researchBonuses.size(); }
+		int getTechnologyCount() const { return technologies->getTechnologyCount(); }
 		int getProvinceCount() const { return provinceCount; }
 		bool isGreatPower() const { return greatPower; }
 
@@ -176,8 +181,6 @@ class HoI4Country
 		void outputResearchSlots(ofstream& output) const;
 		void outputThreat(ofstream& output) const;
 		void outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTemplates) const;
-		void outputTechnology(ofstream& output) const;
-		void outputResearchBonuses(ofstream& output) const;
 		void outputConvoys(ofstream& output) const;
 		void outputEquipmentStockpile(ofstream& output) const;
 		void outputPuppets(ofstream& output) const;
@@ -216,8 +219,9 @@ class HoI4Country
 		int									capitalStateNum;
 		HoI4::State*							capitalState;
 		string								commonCountryFile;
-		map<string, int>					technologies;
-		map<string, int>					researchBonuses;
+
+		std::unique_ptr<HoI4::technologies> technologies;
+
 		map<string, HoI4Relations*>	relations;
 		ConverterColor::Color color;
 		double stability = 0.50;

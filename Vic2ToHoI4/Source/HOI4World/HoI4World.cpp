@@ -814,40 +814,12 @@ void HoI4::World::convertTechs()
 {
 	LOG(LogLevel::Info) << "Converting techs and research bonuses";
 
-	techMapper techMap;
+	mappers::techMapperFile file;
+	unique_ptr<mappers::techMapper> techMap = file.takeTechMapper();
 
-	for (auto dstCountry: countries)
+	for (auto country: countries)
 	{
-		auto sourceCountry = dstCountry.second->getSourceCountry();
-
-		for (auto technology: sourceCountry->getTechs())
-		{
-			addTechs(dstCountry.second, technology, techMap);
-			addResearchBonuses(dstCountry.second, technology, techMap);
-		}
-		for (auto invention: sourceCountry->getInventions())
-		{
-			addTechs(dstCountry.second, invention, techMap);
-			addResearchBonuses(dstCountry.second, invention, techMap);
-		}
-	}
-}
-
-
-void HoI4::World::addTechs(shared_ptr<HoI4Country> country, const string& oldTech, const techMapper& techMap)
-{
-	for (auto HoI4TechItr: techMap.getHoI4Techs(oldTech))
-	{
-		country->setTechnology(HoI4TechItr.first, HoI4TechItr.second);
-	}
-}
-
-
-void HoI4::World::addResearchBonuses(shared_ptr<HoI4Country> country, const string& oldTech, const techMapper& techMap)
-{
-	for (auto HoI4TechItr: techMap.getResearchBonuses(oldTech))
-	{
-		country->setResearchBonus(HoI4TechItr.first, HoI4TechItr.second);
+		country.second->convertTechnology(techMap);
 	}
 }
 

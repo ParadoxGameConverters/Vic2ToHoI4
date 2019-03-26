@@ -232,6 +232,7 @@
     <ClCompile Include="Source\HOI4World\Resources.cpp" />
     <ClCompile Include="Source\HOI4World\StateCategories.cpp" />
     <ClCompile Include="Source\HOI4World\SupplyZones.cpp" />
+    <ClCompile Include="Source\HOI4World\Technologies.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Mappers\CountryMapping.cpp" />
     <ClCompile Include="Source\Mappers\GovernmentMapper.cpp" />
@@ -322,6 +323,7 @@
     <ClInclude Include="Source\HOI4World\Resources.h" />
     <ClInclude Include="Source\HOI4World\StateCategories.h" />
     <ClInclude Include="Source\HOI4World\SupplyZones.h" />
+    <ClInclude Include="Source\HOI4World\Technologies.h" />
     <ClInclude Include="Source\Mappers\GraphicsMapper.h" />
     <ClInclude Include="Source\Mappers\MergeRules.h" />
     <ClInclude Include="Source\Mappers\ProvinceDefinitions.h" />

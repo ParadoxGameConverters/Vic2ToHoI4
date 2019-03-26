@@ -54,8 +54,14 @@ class HoI4Ideology;
 class HoI4Province;
 class HoI4States;
 class HoI4StrategicRegion;
+
+
+namespace mappers
+{
+
 class techMapper;
 
+}
 
 namespace Vic2
 {
@@ -148,8 +154,6 @@ class World: commonItems::parser
 		void convertRelations();
 
 		void convertTechs();
-		void addTechs(shared_ptr<HoI4Country> countryaddTechs, const string& oldTech, const techMapper& techMap);
-		void addResearchBonuses(shared_ptr<HoI4Country> countryaddBonuses, const string& oldTech, const techMapper& researchBonusMap);
 
 		void convertMilitaries();
 		void convertArmies(const militaryMappings& theMilitaryMappings);
