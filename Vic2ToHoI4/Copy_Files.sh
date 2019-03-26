@@ -27,6 +27,7 @@ cp "Data_Files/positions.txt" "Release-Linux/positions.txt"
 cp "Data_Files/province_mappings.txt" "Release-Linux/province_mappings.txt"
 cp "Data_Files/ReadMe.txt" "Release-Linux/ReadMe.txt"
 cp "Data_Files/Resources.txt" "Release-Linux/resources.txt"
+cp "Data_Files/shipTypes.txt" "Release-Linux/Vic2ToHoI4/shipTypes.txt"
 cp "Data_Files/tech_mapping.txt" "Release-Linux/tech_mapping.txt"
 cp "Data_Files/unit_mappings.txt" "Release-Linux/unit_mappings.txt"
 
