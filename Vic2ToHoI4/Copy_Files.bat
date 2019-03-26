@@ -1,7 +1,4 @@
 rem **Create blankMod**
-del "..\Release\Vic2ToHoI4\blankMod" /Q /S /F
-rmdir "..\Release\Vic2ToHoI4\blankMod" /Q /S
-xcopy "Data_Files\blankMod" "..\Release\Vic2ToHoI4\blankmod" /Y /E /I
 
 rem **Copy data files**
 copy "Data_Files\ai_peaces.txt" "..\Release\Vic2ToHoI4\"
@@ -26,12 +23,10 @@ copy "Data_Files\positions.txt" "..\Release\Vic2ToHoI4\"
 copy "Data_Files\province_mappings.txt" "..\Release\Vic2ToHoI4\"
 copy "Data_Files\readme.txt" "..\Release\"
 copy "Data_Files\resources.txt" "..\Release\Vic2ToHoI4\"
+copy "Data_Files\shipTypes.txt" "..\Release\Vic2ToHoI4\"
 copy "Data_Files\SupportedConvertersDefault.xml" "..\Release\Configuration\"
 copy "Data_Files\tech_mapping.txt" "..\Release\Vic2ToHoI4\"
 copy "Data_Files\unit_mappings.txt" "..\Release\Vic2ToHoI4\"
 copy "Data_Files\Vic2toHoI4DefaultConfiguration.xml" "..\Release\Configuration\"
 
 rem **Copy flags**
-del "..\Release\Vic2ToHoI4\flags" /Q /S /F
-rmdir "..\Release\Vic2ToHoI4\flags" /Q /S
-xcopy "Data_Files\flags" "..\Release\Vic2ToHoI4\flags" /Y /E /I
