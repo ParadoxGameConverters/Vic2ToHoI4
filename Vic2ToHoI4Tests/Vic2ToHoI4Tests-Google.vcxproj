@@ -99,6 +99,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Resources.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipModules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipVariant.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipVariants.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\StateCategories.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\SupplyZones.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Technologies.cpp" />
@@ -138,6 +139,7 @@
     <ClCompile Include="HoI4WorldTests\MilitaryMappingTests.cpp" />
     <ClCompile Include="HoI4WorldTests\RegimentTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipModulesTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\ShipVariantsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipVariantTests.cpp" />
     <ClCompile Include="HoI4WorldTests\TechnologiesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\UnitMapTests.cpp" />

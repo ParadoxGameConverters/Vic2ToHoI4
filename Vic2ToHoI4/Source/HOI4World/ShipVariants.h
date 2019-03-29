@@ -21,13 +21,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef SHIP_VARIANT_H
-#define SHIP_VARIANT_H
+#ifndef SHIP_VARIANTS_H
+#define SHIP_VARIANTS_H
 
 
 
 #include "newParser.h"
-#include "ShipModules.h"
+#include "ShipVariant.h"
 #include <map>
 #include <memory>
 #include <set>
@@ -37,41 +37,27 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 namespace HoI4
 {
-	
-class shipVariant: commonItems::parser
+
+class shipVariants
 {
 	public:
-		shipVariant(std::istream& theStream);
+		shipVariants(const std::vector<shipVariant>& possibleVariants, const std::set<std::string>& ownedTechs, const std::string& countryTag);
 
-		shipVariant() = delete;
-		~shipVariant() = default;
-		shipVariant(const shipVariant& source);
-		shipVariant(shipVariant&&) = default;
-		shipVariant& operator=(const shipVariant&) = default;
-		shipVariant& operator=(shipVariant&&) = default;
+		shipVariants() = delete;
+		~shipVariants() = default;
+		shipVariants(const shipVariants&) = default;
+		shipVariants(shipVariants&&) = default;
+		shipVariants& operator=(const shipVariants&) = default;
+		shipVariants& operator=(shipVariants&&) = default;
 
-		void setOwningCountryTag(const std::string& tag);
-
-		bool isValidVariant(std::set<std::string> ownedTechnologies) const;
-
-		friend std::ostream& operator << (std::ostream& output, shipVariant& theVariant);
+		friend std::ostream& operator << (std::ostream& output, const shipVariants& theVariants);
 
 	private:
-		std::string name;
-		std::string type;
-		std::string owningCountryTag;
-		std::string nameGroup;
-		std::unique_ptr<shipModules> modules;
-		bool obsolete = false;
-
-		std::string ownerTag;
-
-		std::set<std::string> requiredTechnologies;
-		std::set<std::string> blockingTechnologies;
+		std::vector<shipVariant> variants;
 };
 
 }
 
 
 
-#endif // SHIP_VARIANT_H
+#endif // SHIP_VARIANTS_H
