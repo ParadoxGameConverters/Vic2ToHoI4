@@ -21,57 +21,33 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef SHIP_VARIANT_H
-#define SHIP_VARIANT_H
+#include "ShipVariants.h"
 
 
-
-#include "newParser.h"
-#include "ShipModules.h"
-#include <map>
-#include <memory>
-#include <set>
-#include <string>
-
-
-
-namespace HoI4
+HoI4::shipVariants::shipVariants(const std::vector<shipVariant>& possibleVariants, const std::set<std::string>& ownedTechs, const std::string& countryTag)
 {
-	
-class shipVariant: commonItems::parser
-{
-	public:
-		shipVariant(std::istream& theStream);
-
-		shipVariant() = delete;
-		~shipVariant() = default;
-		shipVariant(const shipVariant& source);
-		shipVariant(shipVariant&&) = default;
-		shipVariant& operator=(const shipVariant&) = default;
-		shipVariant& operator=(shipVariant&&) = default;
-
-		void setOwningCountryTag(const std::string& tag);
-
-		bool isValidVariant(std::set<std::string> ownedTechnologies) const;
-
-		friend std::ostream& operator << (std::ostream& output, shipVariant& theVariant);
-
-	private:
-		std::string name;
-		std::string type;
-		std::string owningCountryTag;
-		std::string nameGroup;
-		std::unique_ptr<shipModules> modules;
-		bool obsolete = false;
-
-		std::string ownerTag;
-
-		std::set<std::string> requiredTechnologies;
-		std::set<std::string> blockingTechnologies;
-};
-
+	for (auto &possibleVariant: possibleVariants)
+	{
+		if (possibleVariant.isValidVariant(ownedTechs))
+		{
+			shipVariant newVariant(possibleVariant);
+			newVariant.setOwningCountryTag(countryTag);
+			variants.push_back(newVariant);
+		}
+	}
 }
 
 
+std::ostream& HoI4::operator<<(std::ostream& output, const HoI4::shipVariants& theVariants)
+{
+	output << "### VARIANTS ###\n";
+	output << "if = {\n";
+	output << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
+	for (auto variant: theVariants.variants)
+	{
+		output << variant;
+	}
+	output << "}\n";
 
-#endif // SHIP_VARIANT_H
+	return output;
+}
