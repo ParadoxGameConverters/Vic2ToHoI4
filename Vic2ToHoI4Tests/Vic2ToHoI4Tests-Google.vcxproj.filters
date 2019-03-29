@@ -289,6 +289,12 @@
     <ClCompile Include="HoI4WorldTests\TechnologiesTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\ShipModulesTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipModules.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
