@@ -282,6 +282,9 @@
     <ClCompile Include="Source\HOI4World\ShipVariants.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\PossibleShipVariants.cpp">
+      <Filter>HoI4World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -546,6 +549,9 @@
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\ShipVariants.h">
+      <Filter>HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\PossibleShipVariants.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
   </ItemGroup>
