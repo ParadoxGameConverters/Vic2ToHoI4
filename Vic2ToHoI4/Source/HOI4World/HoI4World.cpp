@@ -853,7 +853,7 @@ void HoI4::World::convertNavies(const map<string, HoI4::UnitMap>& unitMap)
 	ifstream variantsFile("shipTypes.txt");
 	if (!variantsFile.is_open())
 	{
-		std::exception e("Could not open shipTypes.txt. Double-check your converter installation");
+		std::runtime_error e("Could not open shipTypes.txt. Double-check your converter installation");
 		throw e;
 	}
 	possibleShipVariants possibleVariants(variantsFile);
