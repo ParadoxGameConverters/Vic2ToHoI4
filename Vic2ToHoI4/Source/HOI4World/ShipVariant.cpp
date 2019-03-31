@@ -66,20 +66,17 @@ HoI4::shipVariant::shipVariant(std::istream& theStream)
 }
 
 
-HoI4::shipVariant::shipVariant(const shipVariant& source)
-{
-	name = source.name;
-	type = source.type;
-	owningCountryTag = source.owningCountryTag;
-	nameGroup = source.nameGroup;
-	modules = std::make_unique<HoI4::shipModules>(*(source.modules));
-	obsolete = source.obsolete;
-
-	ownerTag = source.ownerTag;
-
-	requiredTechnologies = source.requiredTechnologies;
-	blockingTechnologies = source.blockingTechnologies;
-}
+HoI4::shipVariant::shipVariant(const shipVariant& source):
+	name(source.name),
+	type(source.type),
+	owningCountryTag(source.owningCountryTag),
+	nameGroup(source.nameGroup),
+	modules(std::make_unique<HoI4::shipModules>(*(source.modules))),
+	obsolete(source.obsolete),
+	ownerTag(source.ownerTag),
+	requiredTechnologies(source.requiredTechnologies),
+	blockingTechnologies(source.blockingTechnologies)
+	{}
 
 
 void HoI4::shipVariant::setOwningCountryTag(const std::string& tag)
