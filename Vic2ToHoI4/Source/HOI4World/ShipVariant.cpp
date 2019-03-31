@@ -88,11 +88,11 @@ void HoI4::shipVariant::setOwningCountryTag(const std::string& tag)
 }
 
 
-bool HoI4::shipVariant::isValidVariant(std::set<std::string> ownedTechnologies) const
+bool HoI4::shipVariant::isValidVariant(const technologies& ownedTechs) const
 {
 	for (auto requiredTechnology: requiredTechnologies)
 	{
-		if (ownedTechnologies.count(requiredTechnology) == 0)
+		if (ownedTechs.hasTechnology(requiredTechnology) == 0)
 		{
 			return false;
 		}
@@ -100,7 +100,7 @@ bool HoI4::shipVariant::isValidVariant(std::set<std::string> ownedTechnologies) 
 
 	for (auto blockingTechnology: blockingTechnologies)
 	{
-		if (ownedTechnologies.count(blockingTechnology) != 0)
+		if (ownedTechs.hasTechnology(blockingTechnology) != 0)
 		{
 			return false;
 		}
