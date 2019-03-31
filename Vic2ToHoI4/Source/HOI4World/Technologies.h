@@ -40,13 +40,16 @@ namespace HoI4
 class technologies
 {
 	public:
+		technologies() = default;
+		virtual ~technologies() = default;
+
 		technologies(std::unique_ptr<mappers::techMapper>& theTechMapper, const std::set<std::string>& oldTechs, const std::set<std::string>& oldInventions);
 
 		void setResearchBonus(const std::string& tech, int bonus);
 
 		int getTechnologyCount() const { return mainTechnologies.size() + nonMtgNavalTechnologies.size() + mtgNavalTechnologies.size(); }
 
-		bool hasTechnology(std::string technology) const;
+		virtual bool hasTechnology(std::string technology) const;
 
 		void outputTechnology(std::ostream& output) const;
 		void outputResearchBonuses(std::ostream& output) const;
