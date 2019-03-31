@@ -313,6 +313,10 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\PossibleShipVariants.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
+    <ClCompile Include="Mocks\TechnologiesMock.h">
+      <Filter>Mocks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\googletest\googlemock\src\gmock-all.cc" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -344,6 +348,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\MilitaryMappings">
       <UniqueIdentifier>{aeee018a-bb82-4a8c-836c-891aaece63c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Mocks">
+      <UniqueIdentifier>{3023e5d0-204d-43df-874e-1d4e3fb02ffa}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
