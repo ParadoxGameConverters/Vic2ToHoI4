@@ -292,17 +292,8 @@
     <ClCompile Include="HoI4WorldTests\ShipVariantTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipVariant.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="HoI4WorldTests\ShipModulesTests.cpp">
       <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipModules.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipVariants.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\ShipVariantsTests.cpp">
       <Filter>HoI4WorldTests</Filter>
@@ -310,13 +301,22 @@
     <ClCompile Include="HoI4WorldTests\PossibleShipVariantTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\PossibleShipVariants.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="Mocks\TechnologiesMock.h">
       <Filter>Mocks</Filter>
     </ClCompile>
     <ClCompile Include="..\googletest\googlemock\src\gmock-all.cc" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\PossibleShipVariants.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipModules.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariant.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariants.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -351,6 +351,9 @@
     </Filter>
     <Filter Include="Mocks">
       <UniqueIdentifier>{3023e5d0-204d-43df-874e-1d4e3fb02ffa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\ShipTypes">
+      <UniqueIdentifier>{56a3f8a7-5526-4e30-a05a-9dd54abc6100}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

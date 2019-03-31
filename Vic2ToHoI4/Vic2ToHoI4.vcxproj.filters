@@ -19,6 +19,9 @@
     <Filter Include="HoI4World\MilitaryMappings">
       <UniqueIdentifier>{8a769593-a367-40a0-8aa2-39f2fd5b6514}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\ShipTypes">
+      <UniqueIdentifier>{51add801-4aa6-4077-a985-b0d0d3030e26}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -273,17 +276,17 @@
     <ClCompile Include="Source\HOI4World\Technologies.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\ShipVariant.cpp">
-      <Filter>HoI4World</Filter>
+    <ClCompile Include="Source\HOI4World\ShipTypes\PossibleShipVariants.cpp">
+      <Filter>HoI4World\ShipTypes</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\ShipModules.cpp">
-      <Filter>HoI4World</Filter>
+    <ClCompile Include="Source\HOI4World\ShipTypes\ShipVariant.cpp">
+      <Filter>HoI4World\ShipTypes</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\ShipVariants.cpp">
-      <Filter>HoI4World</Filter>
+    <ClCompile Include="Source\HOI4World\ShipTypes\ShipVariants.cpp">
+      <Filter>HoI4World\ShipTypes</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\PossibleShipVariants.cpp">
-      <Filter>HoI4World</Filter>
+    <ClCompile Include="Source\HOI4World\ShipTypes\ShipModules.cpp">
+      <Filter>HoI4World\ShipTypes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -542,17 +545,17 @@
     <ClInclude Include="Source\HOI4World\Technologies.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\ShipVariant.h">
-      <Filter>HoI4World</Filter>
+    <ClInclude Include="Source\HOI4World\ShipTypes\PossibleShipVariants.h">
+      <Filter>HoI4World\ShipTypes</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\ShipModules.h">
-      <Filter>HoI4World</Filter>
+    <ClInclude Include="Source\HOI4World\ShipTypes\ShipVariant.h">
+      <Filter>HoI4World\ShipTypes</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\ShipVariants.h">
-      <Filter>HoI4World</Filter>
+    <ClInclude Include="Source\HOI4World\ShipTypes\ShipVariants.h">
+      <Filter>HoI4World\ShipTypes</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\PossibleShipVariants.h">
-      <Filter>HoI4World</Filter>
+    <ClInclude Include="Source\HOI4World\ShipTypes\ShipModules.h">
+      <Filter>HoI4World\ShipTypes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
