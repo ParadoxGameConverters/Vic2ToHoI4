@@ -23,7 +23,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
-#include "../../Vic2ToHoI4/Source/HOI4World/ShipVariant.h"
+#include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/ShipVariant.h"
 #include "../Mocks/TechnologiesMock.h"
 #include <sstream>
 

@@ -28,7 +28,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "newParser.h"
 #include "ShipModules.h"
-#include "Technologies.h"
+#include "../Technologies.h"
 #include <memory>
 #include <set>
 #include <string>
