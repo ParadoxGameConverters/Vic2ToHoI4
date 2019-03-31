@@ -27,11 +27,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "newParser.h"
+#include "Technologies.h"
 #include "ShipVariant.h"
-#include <map>
-#include <memory>
-#include <set>
 #include <string>
+#include <vector>
 
 
 
@@ -41,7 +40,7 @@ namespace HoI4
 class shipVariants
 {
 	public:
-		shipVariants(const std::vector<shipVariant>& possibleVariants, const std::set<std::string>& ownedTechs, const std::string& countryTag);
+		shipVariants(const std::vector<shipVariant>& possibleVariants, const technologies& ownedTechs, const std::string& countryTag);
 
 		shipVariants() = delete;
 		~shipVariants() = default;
