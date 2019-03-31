@@ -46,6 +46,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4State.h"
 #include "HoI4StrategicRegion.h"
 #include "HoI4WarCreator.h"
+#include "PossibleShipVariants.h"
 #include "Resources.h"
 #include "StateCategories.h"
 #include "SupplyZones.h"
@@ -849,8 +850,18 @@ void HoI4::World::convertNavies(const map<string, HoI4::UnitMap>& unitMap)
 {
 	LOG(LogLevel::Info) << "Converting navies";
 
+	ifstream variantsFile("shipTypes.txt");
+	if (!variantsFile.is_open())
+	{
+		std::exception e("Could not open shipTypes.txt. Double-check your converter installation");
+		throw e;
+	}
+	possibleShipVariants possibleVariants(variantsFile);
+	variantsFile.close();
+
 	for (auto country : countries)
 	{
+		country.second->determineShipVariants(possibleVariants.getPossibleVariants());
 		country.second->convertNavies(unitMap, theCoastalProvinces, states->getProvinceToStateIDMap());
 		country.second->convertConvoys(unitMap);
 	}

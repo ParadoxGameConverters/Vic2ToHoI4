@@ -37,6 +37,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4Province.h"
 #include "HoI4Relations.h"
 #include "HoI4State.h"
+#include "PossibleShipVariants.h"
+#include "ShipVariant.h"
+#include "ShipVariants.h"
 #include "Technologies.h"
 #include "../Color.h"
 #include "Date.h"
@@ -96,6 +99,7 @@ class HoI4Country
 		void convertGovernment(const Vic2::World& _srcWorld, const governmentMapper& governmentMap);
 		void convertParties(const set<string>& majorIdeologies, const governmentMapper& governmentMap);
 		void convertIdeologySupport(const set<string>& majorIdeologies, const governmentMapper& governmentMap);
+		void determineShipVariants(const std::vector<HoI4::shipVariant>& possibleVariants);
 		void convertNavies(const map<string, HoI4::UnitMap>& unitMap, const HoI4::coastalProvinces& theCoastalProvinces, const std::map<int, int>& provinceToStateIDMap);
 		void convertConvoys(const map<string, HoI4::UnitMap>& unitMap);
 		void convertAirforce(const map<string, HoI4::UnitMap>& unitMap);
@@ -255,6 +259,7 @@ class HoI4Country
 
 		// military stuff
 		HoI4::Army theArmy;
+		std::unique_ptr<HoI4::shipVariants> theShipVariants;
 		vector<HoI4::Navy> navies;
 		vector<HoI4Airplane> planes;
 		map<string, int> equipmentStockpile;
