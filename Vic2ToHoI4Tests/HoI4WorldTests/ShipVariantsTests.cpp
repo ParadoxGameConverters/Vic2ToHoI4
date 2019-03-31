@@ -22,8 +22,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "gtest/gtest.h"
+#include "gmock/gmock.h"
 #include "../../Vic2ToHoI4/Source/HOI4World/ShipVariants.h"
 #include "../../Vic2ToHoI4/Source/HOI4World/ShipVariant.h"
+#include "../Mocks/TechnologiesMock.h"
 #include <sstream>
 
 
@@ -31,9 +33,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 TEST(HoI4World_shipVariantsTests, noInputGivesDefaultOutput)
 {
 	std::vector<HoI4::shipVariant> possibleVariants;
-	std::set<std::string> ownedTechs;
+	mockTechnologies ownedTechs;
 
-	HoI4::shipVariants theVaraiants(possibleVariants, ownedTechs, "");
+	HoI4::shipVariants theVaraiants(possibleVariants, ownedTechs, std::string(""));
 
 	std::stringstream output;
 	output << theVaraiants;
@@ -50,11 +52,10 @@ TEST(HoI4World_shipVariantsTests, noInputGivesDefaultOutput)
 TEST(HoI4World_shipVariantsTests, canReceiveVariant)
 {
 	std::stringstream input;
-	input << "ship_type = {\n";
+	input << " = {\n";
 	input << "\tname = \"Early submarine\"\n";
 	input << "\ttype = ship_hull_submarine_1\n";
 	input << "\tname_group = SS_HISTORICAL\n";
-	input << "\tparent_version = 0\n";
 	input << "\t\tmodules = {\n";
 	input << "\t\tfixed_ship_torpedo_slot = ship_torpedo_sub_2\n";
 	input << "\t\tfixed_ship_engine_slot = sub_ship_engine_2\n";
@@ -66,7 +67,7 @@ TEST(HoI4World_shipVariantsTests, canReceiveVariant)
 	std::vector<HoI4::shipVariant> possibleVariants;
 	possibleVariants.push_back(theShipVariant);
 
-	std::set<std::string> ownedTechs;
+	mockTechnologies ownedTechs;
 
 	HoI4::shipVariants theVaraiants(possibleVariants, ownedTechs, "TAG");
 
@@ -99,14 +100,13 @@ TEST(HoI4World_shipVariantsTests, variantsNeedRequiredTechs)
 	std::vector<HoI4::shipVariant> possibleVariants;
 
 	std::stringstream input;
-	input << "ship_type = {\n";
+	input << " = {\n";
 	input << "\trequired_techs = {\n";
 	input << "\t\ttech1\n";
 	input << "\t}\n";
 	input << "\tname = \"Early submarine\"\n";
 	input << "\ttype = ship_hull_submarine_1\n";
 	input << "\tname_group = SS_HISTORICAL\n";
-	input << "\tparent_version = 0\n";
 	input << "\t\tmodules = {\n";
 	input << "\t\tfixed_ship_torpedo_slot = ship_torpedo_sub_2\n";
 	input << "\t\tfixed_ship_engine_slot = sub_ship_engine_2\n";
@@ -118,14 +118,13 @@ TEST(HoI4World_shipVariantsTests, variantsNeedRequiredTechs)
 	possibleVariants.push_back(theShipVariant);
 
 	std::stringstream input2;
-	input2 << "ship_type = {\n";
+	input2 << " = {\n";
 	input2 << "\trequired_techs = {\n";
 	input2 << "\t\ttech2\n";
 	input2 << "\t}\n";
 	input2 << "\tname = \"Early submarine2\"\n";
 	input2 << "\ttype = ship_hull_submarine_1\n";
 	input2 << "\tname_group = SS_HISTORICAL\n";
-	input2 << "\tparent_version = 0\n";
 	input2 << "\t\tmodules = {\n";
 	input2 << "\t\tfixed_ship_torpedo_slot = ship_torpedo_sub_2\n";
 	input2 << "\t\tfixed_ship_engine_slot = sub_ship_engine_2\n";
@@ -136,8 +135,9 @@ TEST(HoI4World_shipVariantsTests, variantsNeedRequiredTechs)
 	HoI4::shipVariant theShipVariant2(input2);
 	possibleVariants.push_back(theShipVariant2);
 
-	std::set<std::string> ownedTechs;
-	ownedTechs.insert("tech2");
+	mockTechnologies ownedTechs;
+	EXPECT_CALL(ownedTechs, hasTechnology("tech1")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("tech2")).WillOnce(testing::Return(true));
 
 	HoI4::shipVariants theVaraiants(possibleVariants, ownedTechs, "TAG");
 
@@ -170,14 +170,13 @@ TEST(HoI4World_shipVariantsTests, variantsCanBeBlocked)
 	std::vector<HoI4::shipVariant> possibleVariants;
 
 	std::stringstream input;
-	input << "ship_type = {\n";
+	input << " = {\n";
 	input << "\tblocking_techs = {\n";
 	input << "\t\ttech1\n";
 	input << "\t}\n";
 	input << "\tname = \"Early submarine\"\n";
 	input << "\ttype = ship_hull_submarine_1\n";
 	input << "\tname_group = SS_HISTORICAL\n";
-	input << "\tparent_version = 0\n";
 	input << "\t\tmodules = {\n";
 	input << "\t\tfixed_ship_torpedo_slot = ship_torpedo_sub_2\n";
 	input << "\t\tfixed_ship_engine_slot = sub_ship_engine_2\n";
@@ -189,14 +188,13 @@ TEST(HoI4World_shipVariantsTests, variantsCanBeBlocked)
 	possibleVariants.push_back(theShipVariant);
 
 	std::stringstream input2;
-	input2 << "ship_type = {\n";
+	input2 << " = {\n";
 	input2 << "\tblocking_techs = {\n";
 	input2 << "\t\ttech2\n";
 	input2 << "\t}\n";
 	input2 << "\tname = \"Early submarine2\"\n";
 	input2 << "\ttype = ship_hull_submarine_1\n";
 	input2 << "\tname_group = SS_HISTORICAL\n";
-	input2 << "\tparent_version = 0\n";
 	input2 << "\t\tmodules = {\n";
 	input2 << "\t\tfixed_ship_torpedo_slot = ship_torpedo_sub_2\n";
 	input2 << "\t\tfixed_ship_engine_slot = sub_ship_engine_2\n";
@@ -207,8 +205,9 @@ TEST(HoI4World_shipVariantsTests, variantsCanBeBlocked)
 	HoI4::shipVariant theShipVariant2(input2);
 	possibleVariants.push_back(theShipVariant2);
 
-	std::set<std::string> ownedTechs;
-	ownedTechs.insert("tech2");
+	mockTechnologies ownedTechs;
+	EXPECT_CALL(ownedTechs, hasTechnology("tech1")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("tech2")).WillOnce(testing::Return(true));
 
 	HoI4::shipVariants theVaraiants(possibleVariants, ownedTechs, "TAG");
 
