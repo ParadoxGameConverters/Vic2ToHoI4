@@ -414,6 +414,12 @@ void HoI4Country::convertIdeologySupport(const set<string>& majorIdeologies, con
 }
 
 
+void HoI4Country::determineShipVariants(const std::vector<HoI4::shipVariant>& possibleVariants)
+{
+	theShipVariants = std::make_unique<HoI4::shipVariants>(possibleVariants, *technologies, tag);
+}
+
+
 void HoI4Country::convertNavies(const map<string, HoI4::UnitMap>& unitMap, const HoI4::coastalProvinces& theCoastalProvinces, const std::map<int, int>& provinceToStateIDMap)
 {
 	int backupNavalLocation = 0;
@@ -856,6 +862,7 @@ void HoI4Country::outputHistory(HoI4::namesMapper& theNames, graphicsMapper& the
 	outputWarSupport(output);
 	outputCountryLeader(output, theNames, theGraphics);
 	outputCommanders(output);
+	output << *theShipVariants;
 
 	output.close();
 }
