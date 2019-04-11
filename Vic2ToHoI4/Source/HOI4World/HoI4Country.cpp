@@ -168,19 +168,14 @@ void HoI4Country::initFromV2Country(const Vic2::World& _srcWorld, const Vic2::Co
 
 void HoI4Country::determineFilename()
 {
-	auto possibleFilename = Utils::GetFileFromTag("./blankMod/output/history/countries/", tag);
-	if (!possibleFilename)
-	{
-		possibleFilename = Utils::GetFileFromTag(theConfiguration.getHoI4Path() + "/history/countries/", tag);
-	}
-
+	auto possibleFilename = srcCountry->getName("english");
 	if (possibleFilename)
 	{
-		filename = *possibleFilename;
+		filename = tag + " - " + *possibleFilename + ".txt";
 	}
 	else
 	{
-		filename = tag + " - " + commonCountryFile;
+		filename = tag + ".txt";
 	}
 }
 
