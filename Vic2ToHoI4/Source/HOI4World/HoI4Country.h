@@ -92,7 +92,7 @@ class graphicsMapper;
 class HoI4Country
 {
 	public:
-		HoI4Country(const string& _tag, const string& _commonCountryFile, const HoI4::World* _theWorld);
+		HoI4Country(const string& _tag, const HoI4::World* _theWorld);
 
 		void initFromV2Country(const Vic2::World& _srcWorld, const Vic2::Country* _srcCountry, const std::map<int, int>& stateMap, const std::map<int, HoI4::State*>& states, HoI4::namesMapper& theNames, const graphicsMapper& theGraphics, const CountryMapper& countryMap);
 		void setGovernmentToExistingIdeology(const set<string>& majorIdeologies, const map<string, HoI4Ideology*>& ideologies, const governmentMapper& governmentMap);

@@ -172,37 +172,7 @@ void HoI4::World::convertCountry(pair<string, Vic2::Country*> country)
 	}
 	else
 	{
-		auto possibleCountryName = country.second->getName("english");
-		string countryName;
-		if (possibleCountryName)
-		{
-			countryName = *possibleCountryName;
-		}
-		else
-		{
-			LOG(LogLevel::Warning) << "Could not set country name when converting country";
-		}
-
-		std::string countryFileName = Utils::convertWin1252ToUTF8(countryName) + ".txt";
-		int pipe = countryFileName.find_first_of('|');
-		while (pipe != string::npos)
-		{
-			countryFileName.replace(pipe, 1, "");
-			pipe = countryFileName.find_first_of('|');
-		}
-		int greater = countryFileName.find_first_of('>');
-		while (greater != string::npos)
-		{
-			countryFileName.replace(greater, 1, "");
-			greater = countryFileName.find_first_of('>');
-		}
-		int lesser = countryFileName.find_first_of('<');
-		while (lesser != string::npos)
-		{
-			countryFileName.replace(lesser, 1, "");
-			lesser = countryFileName.find_first_of('>');
-		}
-		destCountry = new HoI4Country(*possibleHoI4Tag, countryFileName, this);
+		destCountry = new HoI4Country(*possibleHoI4Tag, this);
 
 		destCountry->initFromV2Country(*sourceWorld, country.second, states->getProvinceToStateIDMap(), states->getStates(), theNames, theGraphics, countryMap);
 		countries.insert(make_pair(*possibleHoI4Tag, destCountry));
