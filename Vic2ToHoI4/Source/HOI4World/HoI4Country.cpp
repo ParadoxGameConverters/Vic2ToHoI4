@@ -46,10 +46,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-HoI4Country::HoI4Country(const string& _tag, const string& _commonCountryFile, const HoI4::World* _theWorld):
+HoI4Country::HoI4Country(const string& _tag, const HoI4::World* _theWorld):
 	theWorld(_theWorld),
 	srcCountry(nullptr),
-	filename(""),
 	human(false),
 	governmentIdeology("neutrality"),
 	leaderIdeology("neutrality"),
@@ -63,7 +62,6 @@ HoI4Country::HoI4Country(const string& _tag, const string& _commonCountryFile, c
 	states(),
 	capitalStateNum(0),
 	capitalState(nullptr),
-	commonCountryFile(_commonCountryFile),
 	relations(),
 	color(),
 	faction(nullptr),
@@ -171,11 +169,33 @@ void HoI4Country::determineFilename()
 	auto possibleFilename = srcCountry->getName("english");
 	if (possibleFilename)
 	{
-		filename = tag + " - " + *possibleFilename + ".txt";
+		filename = Utils::convertWin1252ToUTF8(*possibleFilename);
+		int pipe = filename.find_first_of('|');
+		while (pipe != string::npos)
+		{
+			filename.replace(pipe, 1, "");
+			pipe = filename.find_first_of('|');
+		}
+		int greater = filename.find_first_of('>');
+		while (greater != string::npos)
+		{
+			filename.replace(greater, 1, "");
+			greater = filename.find_first_of('>');
+		}
+		int lesser = filename.find_first_of('<');
+		while (lesser != string::npos)
+		{
+			filename.replace(lesser, 1, "");
+			lesser = filename.find_first_of('>');
+		}
+
+		commonCountryFile = filename + ".txt";
+		filename = tag + " - " + filename + ".txt";
 	}
 	else
 	{
 		filename = tag + ".txt";
+		commonCountryFile = tag + ".txt";
 	}
 }
 
