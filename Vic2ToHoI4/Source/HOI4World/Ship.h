@@ -37,6 +37,7 @@ class Ship
 {
 	public:
 		Ship(const std::string& _name, const std::string& _type, const std::string& _equipment, const std::string& _owner);
+		Ship() = delete;
 		~Ship() = default;
 		Ship(const Ship&) = default;
 		Ship(Ship&&) = default;
