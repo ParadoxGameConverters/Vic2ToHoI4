@@ -21,46 +21,35 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef HOI4_NAVY_H_
-#define HOI4_NAVY_H_
-
-
-
 #include "Ship.h"
-#include <fstream>
-#include <string>
-#include <vector>
 
 
 
-namespace HoI4
+HoI4::Ship::Ship(const std::string& _name, const std::string& _type, const std::string& _equipment, const std::string& _owner):
+	name(_name),
+	type(_type),
+	equipment(_equipment),
+	owner(_owner)
+{}
+
+
+std::ostream& HoI4::operator << (std::ostream& output, const HoI4::Ship& instance)
 {
+	output << "\t\t\tship = { name = \"" << instance.name << "\" definition = " << instance.type << " equipment = { " << instance.equipment << " = { amount = 1 owner = " << instance.owner << " } }";
+	if (instance.type == "carrier")
+	{
+		output << "\n";
+		output << "\t\t\tair_wings = {\n";
+		output << "\t\t\t\tcv_fighter_equipment_0 =  { owner = \"" << instance.owner << "\" amount = 8 } # historical: 36\n";
+		output << "\t\t\t\tcv_CAS_equipment_1 =  { owner = \"" << instance.owner << "\" amount = 14 } # historical: 15\n";
+		output << "\t\t\t\tcv_nav_bomber_equipment_1 =  { owner = \"" << instance.owner << "\" amount = 8 } # historical: 12\n";
+		output << "\t\t\t}\n";
+		output << "\t\t}\n";
+	}
+	else
+	{
+		output << " }\n";
+	}	
 
-
-class Navy
-{
-	public:
-		Navy(const std::string& _name, int _location, int _base);
-
-		void addShip(const Ship& newShip) { ships.push_back(newShip); }
-
-		int getNumShips() const { return ships.size(); }
-
-		friend std::ofstream& operator << (std::ofstream& output, const Navy& instance);
-
-	private:
-		std::string name;
-		int location;
-		int base;
-		std::vector<Ship> ships;
-};
-
-
-std::ofstream& operator << (std::ofstream& output, const Navy& instance);
-
-
+	return output;
 }
-
-
-
-#endif // HOI4_NAVY_H_

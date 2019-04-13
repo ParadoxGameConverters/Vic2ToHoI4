@@ -21,46 +21,40 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef HOI4_NAVY_H_
-#define HOI4_NAVY_H_
+#ifndef SHIP_H_
+#define SHIP_H_
 
 
-
-#include "Ship.h"
-#include <fstream>
+#include <ostream>
 #include <string>
-#include <vector>
 
 
 
 namespace HoI4
 {
 
-
-class Navy
+class Ship
 {
 	public:
-		Navy(const std::string& _name, int _location, int _base);
+		Ship(const std::string& _name, const std::string& _type, const std::string& _equipment, const std::string& _owner);
+		Ship(const Ship&) = default;
 
-		void addShip(const Ship& newShip) { ships.push_back(newShip); }
-
-		int getNumShips() const { return ships.size(); }
-
-		friend std::ofstream& operator << (std::ofstream& output, const Navy& instance);
+		friend std::ostream& operator << (std::ostream& output, const Ship& instance);
 
 	private:
+		Ship& operator=(const Ship&) = delete;
+
 		std::string name;
-		int location;
-		int base;
-		std::vector<Ship> ships;
+		std::string type;
+		std::string equipment;
+		std::string owner;
 };
 
 
-std::ofstream& operator << (std::ofstream& output, const Navy& instance);
-
+std::ostream& operator << (std::ostream& output, const Ship& instance);
 
 }
 
 
 
-#endif // HOI4_NAVY_H_
+#endif // SHIP_H_
