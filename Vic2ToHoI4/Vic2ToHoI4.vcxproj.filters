@@ -288,6 +288,9 @@
     <ClCompile Include="Source\HOI4World\ShipTypes\ShipModules.cpp">
       <Filter>HoI4World\ShipTypes</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Ship.cpp">
+      <Filter>HoI4World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -556,6 +559,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\ShipTypes\ShipModules.h">
       <Filter>HoI4World\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Ship.h">
+      <Filter>HoI4World</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

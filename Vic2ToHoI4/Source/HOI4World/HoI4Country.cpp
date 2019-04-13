@@ -498,7 +498,7 @@ void HoI4Country::convertNavies(const map<string, HoI4::UnitMap>& unitMap, const
 
 				if (unitInfo.getCategory() == "naval")
 				{
-					HoI4::Ship newShip(regiment->getName(),unitInfo.getType(),unitInfo.getEquipment(), tag);
+					HoI4::Ship newShip(regiment->getName(), unitInfo.getType(), unitInfo.getEquipment(), tag);
 					newNavy.addShip(newShip);
 				}
 			}
