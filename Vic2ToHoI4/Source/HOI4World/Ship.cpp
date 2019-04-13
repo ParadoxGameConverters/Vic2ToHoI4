@@ -39,12 +39,12 @@ std::ostream& HoI4::operator << (std::ostream& output, const HoI4::Ship& instanc
 	if (instance.type == "carrier")
 	{
 		output << "\n";
-		output << "\t\t\tair_wings = {\n";
-		output << "\t\t\t\tcv_fighter_equipment_0 =  { owner = \"" << instance.owner << "\" amount = 8 } # historical: 36\n";
-		output << "\t\t\t\tcv_CAS_equipment_1 =  { owner = \"" << instance.owner << "\" amount = 14 } # historical: 15\n";
-		output << "\t\t\t\tcv_nav_bomber_equipment_1 =  { owner = \"" << instance.owner << "\" amount = 8 } # historical: 12\n";
+		output << "\t\t\t\tair_wings = {\n";
+		output << "\t\t\t\t\tcv_fighter_equipment_0 =  { owner = \"" << instance.owner << "\" amount = 8 } # historical: 36\n";
+		output << "\t\t\t\t\tcv_CAS_equipment_1 =  { owner = \"" << instance.owner << "\" amount = 14 } # historical: 15\n";
+		output << "\t\t\t\t\tcv_nav_bomber_equipment_1 =  { owner = \"" << instance.owner << "\" amount = 8 } # historical: 12\n";
+		output << "\t\t\t\t}\n";
 		output << "\t\t\t}\n";
-		output << "\t\t}\n";
 	}
 	else
 	{
