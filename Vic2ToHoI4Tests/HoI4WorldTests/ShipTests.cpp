@@ -84,3 +84,39 @@ TEST(HoI4World_ShipTests, OwnerCanBeSet)
 	expectedOutput << "\t\t\tship = { name = \"\" definition =  equipment = {  = { amount = 1 owner = OWN } } }\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
+
+
+TEST(HoI4World_ShipTests, CarrierGetsAirWings)
+{
+	HoI4::Ship ship("", "carrier", "", "");
+	std::ostringstream output;
+	output << ship;
+
+	std::ostringstream expectedOutput;
+	expectedOutput << "\t\t\tship = { name = \"\" definition = carrier equipment = {  = { amount = 1 owner =  } }\n";
+	expectedOutput << "\t\t\t\tair_wings = {\n";
+	expectedOutput << "\t\t\t\t\tcv_fighter_equipment_0 =  { owner = \"\" amount = 8 } # historical: 36\n";
+	expectedOutput << "\t\t\t\t\tcv_CAS_equipment_1 =  { owner = \"\" amount = 14 } # historical: 15\n";
+	expectedOutput << "\t\t\t\t\tcv_nav_bomber_equipment_1 =  { owner = \"\" amount = 8 } # historical: 12\n";
+	expectedOutput << "\t\t\t\t}\n";
+	expectedOutput << "\t\t\t}\n";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST(HoI4World_ShipTests, AirWingsOwnerCanBeSet)
+{
+	HoI4::Ship ship("", "carrier", "", "OWN");
+	std::ostringstream output;
+	output << ship;
+
+	std::ostringstream expectedOutput;
+	expectedOutput << "\t\t\tship = { name = \"\" definition = carrier equipment = {  = { amount = 1 owner = OWN } }\n";
+	expectedOutput << "\t\t\t\tair_wings = {\n";
+	expectedOutput << "\t\t\t\t\tcv_fighter_equipment_0 =  { owner = \"OWN\" amount = 8 } # historical: 36\n";
+	expectedOutput << "\t\t\t\t\tcv_CAS_equipment_1 =  { owner = \"OWN\" amount = 14 } # historical: 15\n";
+	expectedOutput << "\t\t\t\t\tcv_nav_bomber_equipment_1 =  { owner = \"OWN\" amount = 8 } # historical: 12\n";
+	expectedOutput << "\t\t\t\t}\n";
+	expectedOutput << "\t\t\t}\n";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
