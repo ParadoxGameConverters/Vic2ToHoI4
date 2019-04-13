@@ -41,6 +41,12 @@ class Navy
 {
 	public:
 		Navy(const std::string& _name, int _location, int _base);
+		Navy() = delete;
+		~Navy() = default;
+		Navy(const Navy&) = default;
+		Navy(Navy&&) = default;
+		Navy& operator=(const Navy&) = default;
+		Navy& operator=(Navy&&) = default;
 
 		void addShip(const Ship& newShip) { ships.push_back(newShip); }
 
