@@ -37,12 +37,16 @@ class Ship
 {
 	public:
 		Ship(const std::string& _name, const std::string& _type, const std::string& _equipment, const std::string& _owner);
+		~Ship() = default;
 		Ship(const Ship&) = default;
+		Ship(Ship&&) = default;
+		Ship& operator=(const Ship&) = default;
+		Ship& operator=(Ship&&) = default;
+
 
 		friend std::ostream& operator << (std::ostream& output, const Ship& instance);
 
 	private:
-		Ship& operator=(const Ship&) = delete;
 
 		std::string name;
 		std::string type;
