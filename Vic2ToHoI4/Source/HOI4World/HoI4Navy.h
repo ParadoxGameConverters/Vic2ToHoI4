@@ -46,7 +46,7 @@ class Navy
 
 		int getNumShips() const { return ships.size(); }
 
-		friend std::ofstream& operator << (std::ofstream& output, const Navy& instance);
+		friend std::ostream& operator << (std::ostream& output, const Navy& instance);
 
 	private:
 		std::string name;
@@ -56,7 +56,7 @@ class Navy
 };
 
 
-std::ofstream& operator << (std::ofstream& output, const Navy& instance);
+std::ostream& operator << (std::ostream& output, const Navy& instance);
 
 
 }
