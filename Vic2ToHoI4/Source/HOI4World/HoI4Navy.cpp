@@ -32,16 +32,19 @@ HoI4::Navy::Navy(const std::string& _name, int _location, int _base):
 {}
 
 
-std::ofstream& HoI4::operator << (std::ofstream& output, const HoI4::Navy& instance)
+std::ostream& HoI4::operator << (std::ostream& output, const HoI4::Navy& instance)
 {
-	output << "\tnavy = {\n";
+	output << "\tfleet = {\n";
 	output << "\t\tname = \"" << instance.name << "\"\n";
-	output << "\t\tbase = " << instance.base << "\n";
-	output << "\t\tlocation = " << instance.location << "\n";
+	output << "\t\tnaval_base = " << instance.base << "\n";
+	output << "\t\ttask_force = {\n";
+	output << "\t\t\tname = \"" << instance.name << "\"\n";
+	output << "\t\t\tlocation = " << instance.location << "\n";
 	for (auto& ship: instance.ships)
 	{
 		output << ship;
 	}
+	output << "\t\t}\n";
 	output << "\t}\n";
 
 	return output;

@@ -139,6 +139,7 @@
     <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\HoI4NavyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappingTests.cpp" />
     <ClCompile Include="HoI4WorldTests\PossibleShipVariantTests.cpp" />
     <ClCompile Include="HoI4WorldTests\RegimentTests.cpp" />
