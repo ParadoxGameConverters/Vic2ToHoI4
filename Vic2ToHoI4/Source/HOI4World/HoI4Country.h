@@ -33,10 +33,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4FocusTree.h"
 #include "HOI4Ideology.h"
 #include "HoI4Leader.h"
-#include "HoI4Navy.h"
 #include "HoI4Province.h"
 #include "HoI4Relations.h"
 #include "HoI4State.h"
+#include "Navies.h"
 #include "ShipTypes/PossibleShipVariants.h"
 #include "ShipTypes/ShipVariant.h"
 #include "ShipTypes/ShipVariants.h"
@@ -260,7 +260,7 @@ class HoI4Country
 		// military stuff
 		HoI4::Army theArmy;
 		std::unique_ptr<HoI4::shipVariants> theShipVariants;
-		vector<HoI4::Navy> navies;
+		std::unique_ptr<HoI4::Navies> theNavies;
 		vector<HoI4Airplane> planes;
 		map<string, int> equipmentStockpile;
 		std::vector<HoI4::General> generals;

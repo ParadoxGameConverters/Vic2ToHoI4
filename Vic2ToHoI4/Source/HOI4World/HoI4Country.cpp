@@ -30,6 +30,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4Leader.h"
 #include "HoI4Localisation.h"
 #include "Names.h"
+#include "Navies.h"
 #include "MilitaryMappings/MilitaryMappings.h"
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/GovernmentMapper.h"
@@ -451,68 +452,7 @@ void HoI4Country::convertNavies(const map<string, HoI4::UnitMap>& unitMap, const
 		}
 	}
 
-	for (auto army: srcCountry->getArmies())
-	{
-		int navalLocation = backupNavalLocation;
-		int base = backupNavalLocation;
-
-		auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(army->getLocation());
-		if (mapping)
-		{
-			for (auto possibleProvince: *mapping)
-			{
-				if (provinceDefinitions::isSeaProvince(possibleProvince))
-				{
-					navalLocation = possibleProvince;
-					break;
-				}
-				else
-				{
-					if (provinceToStateIDMap.find(possibleProvince) != provinceToStateIDMap.end())
-					{
-						int stateID = provinceToStateIDMap.at(possibleProvince);
-						if (states.find(stateID) != states.end())
-						{
-							auto state = states.at(stateID);
-							auto mainNavalLocation = state->getMainNavalLocation();
-							if (mainNavalLocation)
-							{
-								navalLocation = *mainNavalLocation;
-								base = *mainNavalLocation;
-								break;
-							}
-						}
-					}
-				}
-			}
-		}
-
-		HoI4::Navy newNavy(army->getName(), navalLocation, base);
-
-		for (auto regiment : army->getRegiments())
-		{
-			string type = regiment->getType();
-			if (unitMap.count(type) > 0)
-			{
-				HoI4::UnitMap unitInfo = unitMap.at(type);
-
-				if (unitInfo.getCategory() == "naval")
-				{
-					HoI4::Ship newShip(regiment->getName(), unitInfo.getType(), unitInfo.getEquipment(), tag);
-					newNavy.addShip(newShip);
-				}
-			}
-			else
-			{
-				LOG(LogLevel::Warning) << "Unknown unit type: " << type;
-			}
-		}
-
-		if (newNavy.getNumShips() > 0)
-		{
-			navies.push_back(newNavy);
-		}
-	}
+	theNavies = std::make_unique<HoI4::Navies>(srcCountry->getArmies(), backupNavalLocation, unitMap, theCoastalProvinces, provinceToStateIDMap, states, tag);
 }
 
 
@@ -1352,11 +1292,8 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 	output << "}\n";
 	output << "units = {\n";
 	output << theArmy;
-	for (auto& navy: navies)
-	{
-		output << navy;
-	}
 	output << "}\n";
+	theNavies->outputLegacy(output);
 	if (planes.size() > 0)
 	{
 		output << "air_wings = {\n";
