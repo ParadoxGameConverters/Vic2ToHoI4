@@ -374,7 +374,7 @@
 	# 
 	# ## Mexico
 	# # Chihuahua
-	link = { vic2 = 2142 hoi4 = 10830 hoi4 = 12745 hoi4 = 12827 hoi4 = 5071 }	# Chihuahua -> land, land, land, land
+	link = { vic2 = 2142 hoi4 = 10830 hoi4 = 12745 hoi4 = 12827 hoi4 = 5071 hoi4 = 13214 }	# Chihuahua -> land, land, land, land, land
 	link = { vic2 = 2143 hoi4 = 8097 hoi4 = 2037 hoi4 = 10809 }	# Paso del Norte -> land, land, land
 	link = { vic2 = 2144 hoi4 = 12897 }	# Delicias -> land
 	link = { vic2 = 2145 hoi4 = 4898 hoi4 = 7935 hoi4 = 10916 hoi4 = 12850 }	# Parral -> land, land, land, land
@@ -383,7 +383,7 @@
 	# # Sonora
 	link = { vic2 = 2137 hoi4 = 10765 hoi4 = 10848 }	# Hermosillo -> land, land
 	link = { vic2 = 2138 hoi4 = 8119 hoi4 = 12736 }	# Loreto -> land, land
-	link = { vic2 = 2139 hoi4 = 12461 hoi4 = 12859 hoi4 = 7964 hoi4 = 1904 hoi4 = 1892 }	# Rosarito -> land, land, land, land, land
+	link = { vic2 = 2139 hoi4 = 12461 hoi4 = 12859 hoi4 = 7964 hoi4 = 1904 hoi4 = 1892 hoi4 = 13215 hoi4 = 13216 }	# Rosarito -> land, land, land, land, land, land, land
 	link = { vic2 = 2140 hoi4 = 8012 hoi4 = 12833 hoi4 = 2069 }	# Nogales -> land, land, land
 	link = { vic2 = 2141 hoi4 = 4908 hoi4 = 8033 hoi4 = 4977 }	# Guaymas -> land, land, land
 	# # Durango
