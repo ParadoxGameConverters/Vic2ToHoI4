@@ -870,6 +870,11 @@ void HoI4Country::outputThreat(ofstream& output) const
 void HoI4Country::outputOOBLine(ofstream& output) const
 {
 	output << "oob = \"" << tag << "_OOB\"\n";
+	output << "if = {\n";
+	output << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
+	output << "\tset_naval_oob = \"" << tag << "_1936_naval_mtg\"\n";
+	output << "}\n";
+
 	output << "\n";
 }
 
@@ -1293,7 +1298,6 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 	output << "units = {\n";
 	output << theArmy;
 	output << "}\n";
-	theNavies->outputLegacy(output);
 	if (planes.size() > 0)
 	{
 		output << "air_wings = {\n";
@@ -1306,6 +1310,9 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 		output << "}\n";
 	}
 	output.close();
+
+	std::ofstream legacyNavy("output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_legacy.txt");
+	theNavies->outputLegacy(legacyNavy);
 }
 
 
