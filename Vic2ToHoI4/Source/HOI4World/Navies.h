@@ -43,7 +43,14 @@ namespace HoI4
 class Navies
 {
 	public:
-		Navies(std::vector<const Vic2::Army*> srcArmies, int backupNavalLocation, const std::map<std::string, HoI4::UnitMap>& unitMap, const HoI4::coastalProvinces& theCoastalProvinces, const std::map<int, int>& provinceToStateIDMap, std::map<int, HoI4::State*> states, const std::string& tag);
+		Navies(
+			std::vector<const Vic2::Army*> srcArmies,
+			int backupNavalLocation,
+			const std::map<std::string, HoI4::UnitMap>& unitMap,
+			const HoI4::coastalProvinces& theCoastalProvinces,
+			const std::map<int, int>& provinceToStateIDMap,
+			std::map<int, HoI4::State*> states,
+			const std::string& tag);
 		Navies() = delete;
 		~Navies() = default;
 		Navies(const Navies&) = default;
