@@ -2179,7 +2179,7 @@
 	# 
 	# ## Lithuania
 	# # Lithuania
-	link = { vic2 = 360 hoi4 = 3320 hoi4 = 9295 hoi4 = 11342 hoi4 = 11391 }	# Vilnius -> land, land, land, land
+	link = { vic2 = 360 hoi4 = 3320 hoi4 = 9295 hoi4 = 11342 hoi4 = 11391 hoi4 = 9274 }	# Vilnius -> land, land, land, land, land
 	link = { vic2 = 361 hoi4 = 6296 hoi4 = 327 }	# Kaunas -> land, land
 	link = { vic2 = 362 hoi4 = 3272 hoi4 = 11312 hoi4 = 6407 hoi4 = 6281 }	# Marijampole -> land, land, land, land
 	link = { vic2 = 363 hoi4 = 9438 hoi4 = 9357 hoi4 = 9404 hoi4 = 11498 hoi4 = 11226 hoi4 = 9246 hoi4 = 9374 hoi4 = 530 }	# Panevezys -> land, land, land, land, land, land, land, land
@@ -2189,11 +2189,11 @@
 	# ## Belarus
 	# # Brest
 	link = { vic2 = 707 hoi4 = 400 hoi4 = 3254 hoi4 = 11357 }	# Suwalki -> land, land, land
-	link = { vic2 = 719 hoi4 = 11301 hoi4 = 11247 hoi4 = 290 }	# Bialystock -> land, land, land
-	link = { vic2 = 936 hoi4 = 3393 hoi4 = 318 hoi4 = 347 hoi4 = 3281 }	# Grodno -> land, land, land, land
+	link = { vic2 = 719 hoi4 = 11301 hoi4 = 11247 hoi4 = 290 hoi4 = 347 }	# Bialystock -> land, land, land, land
+	link = { vic2 = 936 hoi4 = 3393 hoi4 = 318 hoi4 = 3281 hoi4 = 13206 hoi4 = 3366 }	# Grodno -> land, land, land, land, land
 	link = { vic2 = 937 hoi4 = 3392 hoi4 = 3256 hoi4 = 11528 hoi4 = 6546 }	# Brest-Litovsk -> land, land, land, land
 	# # Pinsk
-	link = { vic2 = 938 hoi4 = 9274 hoi4 = 3366 hoi4 = 6413 hoi4 = 9236 hoi4 = 6340 hoi4 = 277 }	# Lida -> land, land, land, land, land, land
+	link = { vic2 = 938 hoi4 = 6413 hoi4 = 9236 hoi4 = 6340 hoi4 = 277 }	# Lida -> land, land, land, land
 	link = { vic2 = 939 hoi4 = 9304 hoi4 = 9359 hoi4 = 6359 hoi4 = 11341 hoi4 = 6306 hoi4 = 3309 }	# Baranovichi -> land, land, land, land, land, land
 	link = { vic2 = 940 hoi4 = 6280 hoi4 = 6415 hoi4 = 560 hoi4 = 3556 hoi4 = 11285 hoi4 = 6579 hoi4 = 9554 }	# Pinsk -> land, land, land, land, land, land, land
 	link = { vic2 = 947 hoi4 = 406 hoi4 = 9341 }	# Pastavy -> land, land
@@ -2212,9 +2212,9 @@
 	# # Galicia-Lodomeria
 	link = { vic2 = 702 hoi4 = 11479 hoi4 = 536 hoi4 = 9558 hoi4 = 9468 }	# Lvov -> land, land, land, land
 	link = { vic2 = 704 hoi4 = 417 hoi4 = 3410 hoi4 = 11398 }	# Novy Sacz -> land, land, land
-	link = { vic2 = 705 hoi4 = 6499 hoi4 = 6522 hoi4 = 11507 hoi4 = 466 hoi4 = 9494 }	# Przemysl -> land, land, land, land, land
+	link = { vic2 = 705 hoi4 = 6499 hoi4 = 6522 hoi4 = 11507 hoi4 = 466 hoi4 = 9494 hoi4 = 3434 }	# Przemysl -> land, land, land, land, land, land
 	link = { vic2 = 714 hoi4 = 442 hoi4 = 11413 }	# Tarnow -> land, land
-	link = { vic2 = 951 hoi4 = 6483 hoi4 = 3434 hoi4 = 6431 }	# Stryi -> land, land, land
+	link = { vic2 = 951 hoi4 = 6483 hoi4 = 6431 }	# Stryi -> land, land
 	link = { vic2 = 952 hoi4 = 462 hoi4 = 3562 hoi4 = 438 hoi4 = 3483 hoi4 = 11427 hoi4 = 491 hoi4 = 9454 }	# Ternopil -> land, land, land, land, land, land, land
 	link = { vic2 = 953 hoi4 = 9425 hoi4 = 11411 hoi4 = 11550 hoi4 = 3743 hoi4 = 6460 }	# Stanislavov -> land, land, land, land, land
 	# # Podillia
