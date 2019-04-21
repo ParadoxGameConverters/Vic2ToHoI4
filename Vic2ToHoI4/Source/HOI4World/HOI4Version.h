@@ -45,8 +45,8 @@ class Version
 
 	private:
 		int first = 1;
-		int second = 5;
-		int third = 4;
+		int second = 6;
+		int third = 2;
 };
 
 
