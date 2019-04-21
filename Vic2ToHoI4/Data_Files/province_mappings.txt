@@ -2864,11 +2864,11 @@
 	# # Katmandu
 	link = { vic2 = 1328 hoi4 = 4435 }	# Tumlong -> land
 	# # North Bengal
-	link = { vic2 = 1252 hoi4 = 12338 hoi4 = 10389 hoi4 = 7565 hoi4 = 10349 hoi4 = 1497 }	# Darjeeling -> land, land, land, land, land
+	link = { vic2 = 1252 hoi4 = 12338 hoi4 = 10389 hoi4 = 7565 }	# Darjeeling -> land, land, land
 	# # Eastern Himulayas
 	link = { vic2 = 1593 hoi4 = 12730 hoi4 = 1116 hoi4 = 10810 hoi4 = 1996 }	# Tawang -> land, land, land, land
 	# # Assam
-	link = { vic2 = 1258 hoi4 = 12366 hoi4 = 12395 hoi4 = 7455 }	# Gauhati -> land, land, land
+	link = { vic2 = 1258 hoi4 = 12366 hoi4 = 12395 hoi4 = 7455 hoi4 = 1497 hoi4 = 10349 }	# Gauhati -> land, land, land, land, land
 	link = { vic2 = 1260 hoi4 = 12322 hoi4 = 1525 }	# Dibrugarh -> land, land
 	link = { vic2 = 1259 hoi4 = 1581 hoi4 = 10514 hoi4 = 1553 }	# Imphal -> land, land, land
 	link = { vic2 = 2566 hoi4 = 7634 hoi4 = 1075 hoi4 = 10090 hoi4 = 7179 hoi4 = 997 }	# Agartala -> land, land, land, land, land
@@ -2899,7 +2899,7 @@
 	# ## Bangladesh
 	# # North Bengal
 	link = { vic2 = 1253 hoi4 = 10077 hoi4 = 4204 hoi4 = 1609 hoi4 = 4644 }	# Bardwan -> land, land, land, land
-	link = { vic2 = 1254 hoi4 = 11929 hoi4 = 9993 hoi4 = 12423 hoi4 = 10416 }	# Dacca -> land, land, land, land
+	link = { vic2 = 1254 hoi4 = 11929 hoi4 = 9993 hoi4 = 12423 hoi4 = 10416 hoi4 = 13208 }	# Dacca -> land, land, land, land, land
 	link = { vic2 = 1255 hoi4 = 4616 hoi4 = 10443 hoi4 = 7662 }	# Rajshahi -> land, land, land
 	# # South Bengal
 	link = { vic2 = 1251 hoi4 = 4245 hoi4 = 12050 hoi4 = 4062 hoi4 = 1159 hoi4 = 7220 }	# Calcutta -> land, land, land, land, land
