@@ -803,7 +803,7 @@ void HoI4Country::outputHistory(HoI4::namesMapper& theNames, graphicsMapper& the
 	outputCapital(output);
 	outputResearchSlots(output);
 	outputThreat(output);
-	outputOOBLine(output);
+	outputOOBLines(output);
 	technologies->outputTechnology(output);
 	technologies->outputResearchBonuses(output);
 	outputConvoys(output);
@@ -867,12 +867,15 @@ void HoI4Country::outputThreat(ofstream& output) const
 }
 
 
-void HoI4Country::outputOOBLine(ofstream& output) const
+void HoI4Country::outputOOBLines(ostream& output) const
 {
 	output << "oob = \"" << tag << "_OOB\"\n";
 	output << "if = {\n";
 	output << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-	output << "\tset_naval_oob = \"" << tag << "_1936_naval_mtg\"\n";
+	output << "\t\tset_naval_oob = \"" << tag << "_1936_naval_mtg\"\n";
+	output << "\telse = { \n";
+	output << "\t\tset_naval_oob = \"" << tag << "\_1936_naval_legacy\"\n";
+	output << "\t}\n";
 	output << "}\n";
 
 	output << "\n";
