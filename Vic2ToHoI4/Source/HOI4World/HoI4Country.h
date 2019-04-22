@@ -197,7 +197,7 @@ class HoI4Country
 		void outputWarSupport(ofstream& output) const;
 		void outputCountryLeader(ofstream& output, HoI4::namesMapper& theNames, graphicsMapper& theGraphics) const;
 		void outputCommanders(ofstream& output) const;
-		void outputOOBLine(ofstream& output) const;
+		void outputOOBLines(ostream& output) const;
 		void outputCommonCountryFile() const;
 		void outputAdvisorIdeas(const set<const HoI4::Advisor*, HoI4::advisorCompare>& ideologicalAdvisors) const;
 		void outputUnitType(ofstream& unitNamesFile, const string& sourceUnitType, const string& destUnitType, const string& defaultName) const;
