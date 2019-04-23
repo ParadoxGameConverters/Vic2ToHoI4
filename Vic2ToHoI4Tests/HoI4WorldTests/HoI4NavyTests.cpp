@@ -45,39 +45,39 @@ TEST(HoI4World_NavyTests, BlankNavyOutputsProperly)
 }
 
 
-TEST(HoI4World_NavyTests, ZeroShipsByDefault)
+TEST(HoI4World_NavyTests, ZeroLegacyShipsByDefault)
 {
 	HoI4::Navy navy("", 0, 0);
 	std::ostringstream output;
 	output << navy;
 
-	ASSERT_EQ(navy.getNumShips(), 0);
+	ASSERT_EQ(navy.getNumLegacyShips(), 0);
 }
 
 
-TEST(HoI4World_NavyTests, ShipsAreCountedProperly)
+TEST(HoI4World_NavyTests, LegacyShipsAreCountedProperly)
 {
 	HoI4::Navy navy("", 0, 0);
 	std::ostringstream output;
 	output << navy;
 
-	HoI4::Ship ship1("", "", "", "");
-	HoI4::Ship ship2("", "", "", "");
-	navy.addShip(ship1);
-	navy.addShip(ship2);
+	HoI4::LegacyShip ship1("", "", "", "");
+	HoI4::LegacyShip ship2("", "", "", "");
+	navy.addLegacyShip(ship1);
+	navy.addLegacyShip(ship2);
 
-	ASSERT_EQ(navy.getNumShips(), 2);
+	ASSERT_EQ(navy.getNumLegacyShips(), 2);
 }
 
 
-TEST(HoI4World_NavyTests, ShipsAreOutputProperly)
+TEST(HoI4World_NavyTests, LegacyShipsAreOutputProperly)
 {
 	HoI4::Navy navy("", 0, 0);
 
-	HoI4::Ship ship1("ship1", "type1", "equip1", "OWN");
-	HoI4::Ship ship2("ship2", "type2", "equip2", "PWN");
-	navy.addShip(ship1);
-	navy.addShip(ship2);
+	HoI4::LegacyShip ship1("ship1", "type1", "equip1", "OWN");
+	HoI4::LegacyShip ship2("ship2", "type2", "equip2", "PWN");
+	navy.addLegacyShip(ship1);
+	navy.addLegacyShip(ship2);
 
 	std::ostringstream output;
 	output << navy;

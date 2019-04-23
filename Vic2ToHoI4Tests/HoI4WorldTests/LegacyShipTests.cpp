@@ -22,13 +22,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "gtest/gtest.h"
-#include "../Vic2ToHoI4/Source/HoI4World/Ship.h"
+#include "../Vic2ToHoI4/Source/HoI4World/Navies/LegacyShip.h"
 
 
 
-TEST(HoI4World_ShipTests, BlankShipOutputsProperly)
+TEST(HoI4World_LegacyShipTests, BlankShipOutputsProperly)
 {
-	HoI4::Ship ship("", "", "", "");
+	HoI4::LegacyShip ship("", "", "", "");
 	std::ostringstream output;
 	output << ship;
 
@@ -38,9 +38,9 @@ TEST(HoI4World_ShipTests, BlankShipOutputsProperly)
 }
 
 
-TEST(HoI4World_ShipTests, NameCanBeSet)
+TEST(HoI4World_LegacyShipTests, NameCanBeSet)
 {
-	HoI4::Ship ship("theName", "", "", "");
+	HoI4::LegacyShip ship("theName", "", "", "");
 	std::ostringstream output;
 	output << ship;
 
@@ -50,9 +50,9 @@ TEST(HoI4World_ShipTests, NameCanBeSet)
 }
 
 
-TEST(HoI4World_ShipTests, TypeCanBeSet)
+TEST(HoI4World_LegacyShipTests, TypeCanBeSet)
 {
-	HoI4::Ship ship("", "theType", "", "");
+	HoI4::LegacyShip ship("", "theType", "", "");
 	std::ostringstream output;
 	output << ship;
 
@@ -62,9 +62,9 @@ TEST(HoI4World_ShipTests, TypeCanBeSet)
 }
 
 
-TEST(HoI4World_ShipTests, EquipmentCanBeSet)
+TEST(HoI4World_LegacyShipTests, EquipmentCanBeSet)
 {
-	HoI4::Ship ship("", "", "theEquipment", "");
+	HoI4::LegacyShip ship("", "", "theEquipment", "");
 	std::ostringstream output;
 	output << ship;
 
@@ -74,9 +74,9 @@ TEST(HoI4World_ShipTests, EquipmentCanBeSet)
 }
 
 
-TEST(HoI4World_ShipTests, OwnerCanBeSet)
+TEST(HoI4World_LegacyShipTests, OwnerCanBeSet)
 {
-	HoI4::Ship ship("", "", "", "OWN");
+	HoI4::LegacyShip ship("", "", "", "OWN");
 	std::ostringstream output;
 	output << ship;
 
@@ -86,9 +86,9 @@ TEST(HoI4World_ShipTests, OwnerCanBeSet)
 }
 
 
-TEST(HoI4World_ShipTests, CarrierGetsAirWings)
+TEST(HoI4World_LegacyShipTests, CarrierGetsAirWings)
 {
-	HoI4::Ship ship("", "carrier", "", "");
+	HoI4::LegacyShip ship("", "carrier", "", "");
 	std::ostringstream output;
 	output << ship;
 
@@ -104,9 +104,9 @@ TEST(HoI4World_ShipTests, CarrierGetsAirWings)
 }
 
 
-TEST(HoI4World_ShipTests, AirWingsOwnerCanBeSet)
+TEST(HoI4World_LegacyShipTests, AirWingsOwnerCanBeSet)
 {
-	HoI4::Ship ship("", "carrier", "", "OWN");
+	HoI4::LegacyShip ship("", "carrier", "", "OWN");
 	std::ostringstream output;
 	output << ship;
 

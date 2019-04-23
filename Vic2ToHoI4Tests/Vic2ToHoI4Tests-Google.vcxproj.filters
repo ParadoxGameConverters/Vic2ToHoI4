@@ -317,12 +317,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariants.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ship.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\ShipTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="HoI4WorldTests\HoI4NavyTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
@@ -331,6 +325,21 @@
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\NaviesTests.cpp">
       <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\MtgShipTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\LegacyShipTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\LegacyShip.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgShip.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\Ship.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -369,6 +378,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\ShipTypes">
       <UniqueIdentifier>{56a3f8a7-5526-4e30-a05a-9dd54abc6100}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Navies">
+      <UniqueIdentifier>{9c36c80e-e774-49e8-87c6-0ba5c32dbb8f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

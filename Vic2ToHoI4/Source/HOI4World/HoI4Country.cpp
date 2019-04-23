@@ -874,7 +874,7 @@ void HoI4Country::outputOOBLines(ostream& output) const
 	output << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
 	output << "\t\tset_naval_oob = \"" << tag << "_1936_naval_mtg\"\n";
 	output << "\telse = { \n";
-	output << "\t\tset_naval_oob = \"" << tag << "\_1936_naval_legacy\"\n";
+	output << "\t\tset_naval_oob = \"" << tag << "_1936_naval_legacy\"\n";
 	output << "\t}\n";
 	output << "}\n";
 

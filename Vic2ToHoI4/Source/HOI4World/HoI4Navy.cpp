@@ -40,7 +40,7 @@ std::ostream& HoI4::operator << (std::ostream& output, const HoI4::Navy& instanc
 	output << "\t\ttask_force = {\n";
 	output << "\t\t\tname = \"" << instance.name << "\"\n";
 	output << "\t\t\tlocation = " << instance.location << "\n";
-	for (auto& ship: instance.ships)
+	for (auto& ship: instance.legacyShips)
 	{
 		output << ship;
 	}

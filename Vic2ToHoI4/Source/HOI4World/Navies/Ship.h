@@ -21,52 +21,43 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef HOI4_NAVY_H_
-#define HOI4_NAVY_H_
+#ifndef SHIP_H_
+#define SHIP_H_
 
 
-
-#include "Navies/LegacyShip.h"
-#include <fstream>
+#include <ostream>
 #include <string>
-#include <vector>
 
 
 
 namespace HoI4
 {
 
-
-class Navy
+class Ship
 {
 	public:
-		Navy(const std::string& _name, int _location, int _base);
-		Navy() = delete;
-		~Navy() = default;
-		Navy(const Navy&) = default;
-		Navy(Navy&&) = default;
-		Navy& operator=(const Navy&) = default;
-		Navy& operator=(Navy&&) = default;
+		Ship(
+			const std::string& _name,
+			const std::string& _type,
+			const std::string& _equipment,
+			const std::string& _owner
+		);
+		Ship() = delete;
+		~Ship() = default;
+		Ship(const Ship&) = default;
+		Ship(Ship&&) = default;
+		Ship& operator=(const Ship&) = default;
+		Ship& operator=(Ship&&) = default;
 
-		void addLegacyShip(const LegacyShip& newShip) { legacyShips.push_back(newShip); }
-
-		int getNumLegacyShips() const { return legacyShips.size(); }
-
-		friend std::ostream& operator << (std::ostream& output, const Navy& instance);
-
-	private:
+	protected:
 		std::string name;
-		int location;
-		int base;
-		std::vector<LegacyShip> legacyShips;
+		std::string type;
+		std::string equipment;
+		std::string owner;
 };
-
-
-std::ostream& operator << (std::ostream& output, const Navy& instance);
-
 
 }
 
 
 
-#endif // HOI4_NAVY_H_
+#endif // SHIP_H_
