@@ -22,6 +22,9 @@
     <Filter Include="HoI4World\ShipTypes">
       <UniqueIdentifier>{51add801-4aa6-4077-a985-b0d0d3030e26}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\Navies">
+      <UniqueIdentifier>{adb02bd8-6d97-46f2-8c80-9aa13b5f81b0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -288,11 +291,17 @@
     <ClCompile Include="Source\HOI4World\ShipTypes\ShipModules.cpp">
       <Filter>HoI4World\ShipTypes</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Ship.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Navies.cpp">
       <Filter>HoI4World</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Navies\MtgShip.cpp">
+      <Filter>HoI4World\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Navies\Ship.cpp">
+      <Filter>HoI4World\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Navies\LegacyShip.cpp">
+      <Filter>HoI4World\Navies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -563,11 +572,17 @@
     <ClInclude Include="Source\HOI4World\ShipTypes\ShipModules.h">
       <Filter>HoI4World\ShipTypes</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Ship.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Navies.h">
       <Filter>HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Navies\MtgShip.h">
+      <Filter>HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Navies\Ship.h">
+      <Filter>HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Navies\LegacyShip.h">
+      <Filter>HoI4World\Navies</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -21,52 +21,49 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef HOI4_NAVY_H_
-#define HOI4_NAVY_H_
+#ifndef MTG_SHIP_H_
+#define MTG_SHIP_H_
 
 
-
-#include "Navies/LegacyShip.h"
-#include <fstream>
+#include "Ship.h"
+#include <ostream>
 #include <string>
-#include <vector>
 
 
 
 namespace HoI4
 {
 
-
-class Navy
+class MtgShip: public Ship
 {
 	public:
-		Navy(const std::string& _name, int _location, int _base);
-		Navy() = delete;
-		~Navy() = default;
-		Navy(const Navy&) = default;
-		Navy(Navy&&) = default;
-		Navy& operator=(const Navy&) = default;
-		Navy& operator=(Navy&&) = default;
+		MtgShip(
+			const std::string& _name,
+			const std::string& _type,
+			const std::string& _equipment,
+			const std::string& _owner,
+			const std::string& _version,
+			const float& _experience
+		);
+		MtgShip() = delete;
+		~MtgShip() = default;
+		MtgShip(const MtgShip&) = default;
+		MtgShip(MtgShip&&) = default;
+		MtgShip& operator=(const MtgShip&) = default;
+		MtgShip& operator=(MtgShip&&) = default;
 
-		void addLegacyShip(const LegacyShip& newShip) { legacyShips.push_back(newShip); }
-
-		int getNumLegacyShips() const { return legacyShips.size(); }
-
-		friend std::ostream& operator << (std::ostream& output, const Navy& instance);
+		friend std::ostream& operator << (std::ostream& output, const MtgShip& instance);
 
 	private:
-		std::string name;
-		int location;
-		int base;
-		std::vector<LegacyShip> legacyShips;
+		std::string version;
+		float experience = 0.0;
 };
 
 
-std::ostream& operator << (std::ostream& output, const Navy& instance);
-
+std::ostream& operator << (std::ostream& output, const MtgShip& instance);
 
 }
 
 
 
-#endif // HOI4_NAVY_H_
+#endif // MTG_SHIP_H_

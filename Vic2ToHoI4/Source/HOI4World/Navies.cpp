@@ -77,8 +77,8 @@ HoI4::Navies::Navies(std::vector<const Vic2::Army*> srcArmies, int backupNavalLo
 
 				if (unitInfo.getCategory() == "naval")
 				{
-					HoI4::Ship newShip(regiment->getName(), unitInfo.getType(), unitInfo.getEquipment(), tag);
-					newNavy.addShip(newShip);
+					HoI4::LegacyShip newShip(regiment->getName(), unitInfo.getType(), unitInfo.getEquipment(), tag);
+					newNavy.addLegacyShip(newShip);
 				}
 			}
 			else
@@ -87,7 +87,7 @@ HoI4::Navies::Navies(std::vector<const Vic2::Army*> srcArmies, int backupNavalLo
 			}
 		}
 
-		if (newNavy.getNumShips() > 0)
+		if (newNavy.getNumLegacyShips() > 0)
 		{
 			navies.push_back(newNavy);
 		}

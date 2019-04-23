@@ -21,35 +21,57 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "Ship.h"
+#include "MtgShip.h"
 
 
 
-HoI4::Ship::Ship(const std::string& _name, const std::string& _type, const std::string& _equipment, const std::string& _owner):
-	name(_name),
-	type(_type),
-	equipment(_equipment),
-	owner(_owner)
-{}
-
-
-std::ostream& HoI4::operator << (std::ostream& output, const HoI4::Ship& instance)
+HoI4::MtgShip::MtgShip(
+	const std::string& _name,
+	const std::string& _type,
+	const std::string& _equipment,
+	const std::string& _owner,
+	const std::string& _version,
+	const float& _experience
+): HoI4::Ship(_name, _type, _equipment, _owner)
 {
-	output << "\t\t\tship = { name = \"" << instance.name << "\" definition = " << instance.type << " equipment = { " << instance.equipment << " = { amount = 1 owner = " << instance.owner << " } }";
+	version = _version;
+	experience = _experience;
+}
+
+
+std::ostream& HoI4::operator<<(std::ostream& output, const MtgShip& instance)
+{
+	output << "\t\t\tship = { name = \"" << instance.name;
+	output << "\" definition = " << instance.type;
+	if (instance.experience != 0.0)
+	{
+		output << " start_experience_factor = " << instance.experience;
+	}
+	output << " equipment = { " << instance.equipment;
+	output << " = { amount = 1 owner = " << instance.owner;
+	output << " version_name = \"" << instance.version << "\" } }";
+
 	if (instance.type == "carrier")
 	{
 		output << "\n";
 		output << "\t\t\t\tair_wings = {\n";
-		output << "\t\t\t\t\tcv_fighter_equipment_0 =  { owner = \"" << instance.owner << "\" amount = 8 } # historical: 36\n";
-		output << "\t\t\t\t\tcv_CAS_equipment_1 =  { owner = \"" << instance.owner << "\" amount = 14 } # historical: 15\n";
-		output << "\t\t\t\t\tcv_nav_bomber_equipment_1 =  { owner = \"" << instance.owner << "\" amount = 8 } # historical: 12\n";
+
+		output << "\t\t\t\t\tcv_fighter_equipment_0 =  { owner = \"";
+		output << instance.owner << "\" amount = 8 } # historical: 36\n";
+
+		output << "\t\t\t\t\tcv_CAS_equipment_1 =  { owner = \"";
+		output << instance.owner << "\" amount = 14 } # historical: 15\n";
+
+		output << "\t\t\t\t\tcv_nav_bomber_equipment_1 =  { owner = \"";
+		output << instance.owner << "\" amount = 8 } # historical: 12\n";
+
 		output << "\t\t\t\t}\n";
 		output << "\t\t\t}\n";
 	}
 	else
 	{
 		output << " }\n";
-	}	
+	}
 
 	return output;
 }

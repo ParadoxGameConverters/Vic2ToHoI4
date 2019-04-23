@@ -21,10 +21,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef SHIP_H_
-#define SHIP_H_
+#ifndef LEGACY_SHIP_H_
+#define LEGACY_SHIP_H_
 
 
+#include "Ship.h"
 #include <ostream>
 #include <string>
 
@@ -33,33 +34,30 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 namespace HoI4
 {
 
-class Ship
+class LegacyShip: public Ship
 {
 	public:
-		Ship(const std::string& _name, const std::string& _type, const std::string& _equipment, const std::string& _owner);
-		Ship() = delete;
-		~Ship() = default;
-		Ship(const Ship&) = default;
-		Ship(Ship&&) = default;
-		Ship& operator=(const Ship&) = default;
-		Ship& operator=(Ship&&) = default;
+		LegacyShip(
+			const std::string& _name,
+			const std::string& _type,
+			const std::string& _equipment,
+			const std::string& _owner
+		);
+		LegacyShip() = delete;
+		~LegacyShip() = default;
+		LegacyShip(const LegacyShip&) = default;
+		LegacyShip(LegacyShip&&) = default;
+		LegacyShip& operator=(const LegacyShip&) = default;
+		LegacyShip& operator=(LegacyShip&&) = default;
 
-
-		friend std::ostream& operator << (std::ostream& output, const Ship& instance);
-
-	private:
-
-		std::string name;
-		std::string type;
-		std::string equipment;
-		std::string owner;
+		friend std::ostream& operator << (std::ostream& output, const LegacyShip& instance);
 };
 
 
-std::ostream& operator << (std::ostream& output, const Ship& instance);
+std::ostream& operator << (std::ostream& output, const LegacyShip& instance);
 
 }
 
 
 
-#endif // SHIP_H_
+#endif // LEGACY_SHIP_H_
