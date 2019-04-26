@@ -66,7 +66,7 @@ HoI4::Navies::Navies(std::vector<const Vic2::Army*> srcArmies, int backupNavalLo
 			}
 		}
 
-		HoI4::Navy newNavy(army->getName(), navalLocation, base);
+		HoI4::LegacyNavy newNavy(army->getName(), navalLocation, base);
 
 		for (auto regiment : army->getRegiments())
 		{
@@ -78,7 +78,7 @@ HoI4::Navies::Navies(std::vector<const Vic2::Army*> srcArmies, int backupNavalLo
 				if (unitInfo.getCategory() == "naval")
 				{
 					HoI4::LegacyShip newShip(regiment->getName(), unitInfo.getType(), unitInfo.getEquipment(), tag);
-					newNavy.addLegacyShip(newShip);
+					newNavy.addShip(newShip);
 				}
 			}
 			else
@@ -87,7 +87,7 @@ HoI4::Navies::Navies(std::vector<const Vic2::Army*> srcArmies, int backupNavalLo
 			}
 		}
 
-		if (newNavy.getNumLegacyShips() > 0)
+		if (newNavy.getNumShips() > 0)
 		{
 			navies.push_back(newNavy);
 		}

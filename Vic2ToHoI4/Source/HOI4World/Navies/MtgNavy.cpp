@@ -21,43 +21,29 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef SHIP_H_
-#define SHIP_H_
-
-
-#include <ostream>
-#include <string>
+#include "MtgNavy.h"
 
 
 
-namespace HoI4
+HoI4::MtgNavy::MtgNavy(const std::string& _name, int _location, int _base):
+	Navy(_name, _location, _base)
+{}
+
+
+std::ostream& HoI4::operator << (std::ostream& output, const HoI4::MtgNavy& instance)
 {
+	output << "\tfleet = {\n";
+	output << "\t\tname = \"" << instance.name << "\"\n";
+	output << "\t\tnaval_base = " << instance.base << "\n";
+	output << "\t\ttask_force = {\n";
+	output << "\t\t\tname = \"" << instance.name << "\"\n";
+	output << "\t\t\tlocation = " << instance.location << "\n";
+	for (auto& ship : instance.ships)
+	{
+		output << ship;
+	}
+	output << "\t\t}\n";
+	output << "\t}\n";
 
-class Ship
-{
-	public:
-		Ship(
-			const std::string& _name,
-			const std::string& _type,
-			const std::string& _equipment,
-			const std::string& _owner
-		);
-		Ship() = delete;
-		virtual ~Ship() = default;
-		Ship(const Ship&) = default;
-		Ship(Ship&&) = default;
-		Ship& operator=(const Ship&) = default;
-		Ship& operator=(Ship&&) = default;
-
-	protected:
-		std::string name;
-		std::string type;
-		std::string equipment;
-		std::string owner;
-};
-
+	return output;
 }
-
-
-
-#endif // SHIP_H_

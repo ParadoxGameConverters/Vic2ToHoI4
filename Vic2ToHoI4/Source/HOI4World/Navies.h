@@ -25,10 +25,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #define NAVIES_H_
 
 
-#include "HoI4Navy.h"
+
 #include "CoastalProvinces.h"
 #include "HoI4State.h"
 #include "MilitaryMappings/UnitMap.h"
+#include "Navies/LegacyNavy.h"
 #include "../V2World/Army.h"
 #include <map>
 #include <ostream>
@@ -61,7 +62,7 @@ class Navies
 		void outputLegacy(std::ostream& output);
 
 	private:
-		std::vector<HoI4::Navy> navies;
+		std::vector<HoI4::LegacyNavy> navies;
 };
 
 }

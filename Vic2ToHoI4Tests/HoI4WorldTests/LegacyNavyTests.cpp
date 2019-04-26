@@ -22,13 +22,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "gtest/gtest.h"
-#include "../Vic2ToHoI4/Source/HoI4World/HoI4Navy.h"
+#include "../Vic2ToHoI4/Source/HoI4World/Navies/LegacyNavy.h"
 
 
 
-TEST(HoI4World_NavyTests, BlankNavyOutputsProperly)
+TEST(HoI4World_LegacyNavyTests, BlankNavyOutputsProperly)
 {
-	HoI4::Navy navy("", 0, 0);
+	HoI4::LegacyNavy navy("", 0, 0);
 	std::ostringstream output;
 	output << navy;
 
@@ -45,39 +45,39 @@ TEST(HoI4World_NavyTests, BlankNavyOutputsProperly)
 }
 
 
-TEST(HoI4World_NavyTests, ZeroLegacyShipsByDefault)
+TEST(HoI4World_LegacyNavyTests, ZeroShipsByDefault)
 {
-	HoI4::Navy navy("", 0, 0);
+	HoI4::LegacyNavy navy("", 0, 0);
 	std::ostringstream output;
 	output << navy;
 
-	ASSERT_EQ(navy.getNumLegacyShips(), 0);
+	ASSERT_EQ(navy.getNumShips(), 0);
 }
 
 
-TEST(HoI4World_NavyTests, LegacyShipsAreCountedProperly)
+TEST(HoI4World_LegacyNavyTests, ShipsAreCountedProperly)
 {
-	HoI4::Navy navy("", 0, 0);
+	HoI4::LegacyNavy navy("", 0, 0);
 	std::ostringstream output;
 	output << navy;
 
 	HoI4::LegacyShip ship1("", "", "", "");
 	HoI4::LegacyShip ship2("", "", "", "");
-	navy.addLegacyShip(ship1);
-	navy.addLegacyShip(ship2);
+	navy.addShip(ship1);
+	navy.addShip(ship2);
 
-	ASSERT_EQ(navy.getNumLegacyShips(), 2);
+	ASSERT_EQ(navy.getNumShips(), 2);
 }
 
 
-TEST(HoI4World_NavyTests, LegacyShipsAreOutputProperly)
+TEST(HoI4World_LegacyNavyTests, ShipsAreOutputProperly)
 {
-	HoI4::Navy navy("", 0, 0);
+	HoI4::LegacyNavy navy("", 0, 0);
 
 	HoI4::LegacyShip ship1("ship1", "type1", "equip1", "OWN");
 	HoI4::LegacyShip ship2("ship2", "type2", "equip2", "PWN");
-	navy.addLegacyShip(ship1);
-	navy.addLegacyShip(ship2);
+	navy.addShip(ship1);
+	navy.addShip(ship2);
 
 	std::ostringstream output;
 	output << navy;
@@ -97,9 +97,9 @@ TEST(HoI4World_NavyTests, LegacyShipsAreOutputProperly)
 }
 
 
-TEST(HoI4World_NavyTests, NameCanBeSet)
+TEST(HoI4World_LegacyNavyTests, NameCanBeSet)
 {
-	HoI4::Navy navy("theName", 0, 0);
+	HoI4::LegacyNavy navy("theName", 0, 0);
 	std::ostringstream output;
 	output << navy;
 
@@ -116,9 +116,9 @@ TEST(HoI4World_NavyTests, NameCanBeSet)
 }
 
 
-TEST(HoI4World_NavyTests, LocationCanBeSet)
+TEST(HoI4World_LegacyNavyTests, LocationCanBeSet)
 {
-	HoI4::Navy navy("", 15, 0);
+	HoI4::LegacyNavy navy("", 15, 0);
 	std::ostringstream output;
 	output << navy;
 
@@ -135,9 +135,9 @@ TEST(HoI4World_NavyTests, LocationCanBeSet)
 }
 
 
-TEST(HoI4World_NavyTests, BaseCanBeSet)
+TEST(HoI4World_LegacyNavyTests, BaseCanBeSet)
 {
-	HoI4::Navy navy("", 0, 12);
+	HoI4::LegacyNavy navy("", 0, 12);
 	std::ostringstream output;
 	output << navy;
 

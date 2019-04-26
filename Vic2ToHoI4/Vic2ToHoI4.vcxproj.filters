@@ -72,9 +72,6 @@
     <ClCompile Include="Source\HOI4World\HoI4SupplyZone.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\HoI4Navy.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\HoI4StrategicRegion.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
@@ -303,6 +300,15 @@
     <ClCompile Include="Source\HOI4World\Navies\LegacyShip.cpp">
       <Filter>HoI4World\Navies</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Navies\Navy.cpp">
+      <Filter>HoI4World\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Navies\LegacyNavy.cpp">
+      <Filter>HoI4World\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Navies\MtgNavy.cpp">
+      <Filter>HoI4World\Navies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -344,9 +350,6 @@
       <Filter>CommonItems</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\HoI4SupplyZone.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\HoI4Navy.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\HoI4StrategicRegion.h">
@@ -582,6 +585,15 @@
       <Filter>HoI4World\Navies</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Navies\LegacyShip.h">
+      <Filter>HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Navies\Navy.h">
+      <Filter>HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Navies\LegacyNavy.h">
+      <Filter>HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Navies\MtgNavy.h">
       <Filter>HoI4World\Navies</Filter>
     </ClInclude>
   </ItemGroup>

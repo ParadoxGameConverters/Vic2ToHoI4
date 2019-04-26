@@ -21,43 +21,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef SHIP_H_
-#define SHIP_H_
-
-
-#include <ostream>
-#include <string>
+#include "Navy.h"
 
 
 
-namespace HoI4
-{
-
-class Ship
-{
-	public:
-		Ship(
-			const std::string& _name,
-			const std::string& _type,
-			const std::string& _equipment,
-			const std::string& _owner
-		);
-		Ship() = delete;
-		virtual ~Ship() = default;
-		Ship(const Ship&) = default;
-		Ship(Ship&&) = default;
-		Ship& operator=(const Ship&) = default;
-		Ship& operator=(Ship&&) = default;
-
-	protected:
-		std::string name;
-		std::string type;
-		std::string equipment;
-		std::string owner;
-};
-
-}
-
-
-
-#endif // SHIP_H_
+HoI4::Navy::Navy(const std::string& _name, int _location, int _base):
+	name(_name),
+	location(_location),
+	base(_base)
+{}

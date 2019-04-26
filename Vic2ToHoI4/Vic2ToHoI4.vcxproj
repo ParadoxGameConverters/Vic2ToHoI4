@@ -206,7 +206,6 @@
     <ClCompile Include="Source\HOI4World\HOI4Ideology.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Leader.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Localisation.cpp" />
-    <ClCompile Include="Source\HOI4World\HoI4Navy.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Province.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Relations.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4State.cpp" />
@@ -228,8 +227,11 @@
     <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMap.cpp" />
     <ClCompile Include="Source\HOI4World\Names.cpp" />
     <ClCompile Include="Source\HOI4World\Navies.cpp" />
+    <ClCompile Include="Source\HOI4World\Navies\LegacyNavy.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\LegacyShip.cpp" />
+    <ClCompile Include="Source\HOI4World\Navies\MtgNavy.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\MtgShip.cpp" />
+    <ClCompile Include="Source\HOI4World\Navies\Navy.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\Ship.cpp" />
     <ClCompile Include="Source\HOI4World\OnActions.cpp" />
     <ClCompile Include="Source\HOI4World\Regiment.cpp" />
@@ -305,7 +307,6 @@
     <ClInclude Include="Source\HOI4World\HOI4Ideology.h" />
     <ClInclude Include="Source\HOI4World\HoI4Leader.h" />
     <ClInclude Include="Source\HOI4World\HoI4Localisation.h" />
-    <ClInclude Include="Source\HOI4World\HoI4Navy.h" />
     <ClInclude Include="Source\HOI4World\HoI4Province.h" />
     <ClInclude Include="Source\HOI4World\HoI4Relations.h" />
     <ClInclude Include="Source\HOI4World\HoI4State.h" />
@@ -327,8 +328,11 @@
     <ClInclude Include="Source\HOI4World\MilitaryMappings\UnitMap.h" />
     <ClInclude Include="Source\HOI4World\Names.h" />
     <ClInclude Include="Source\HOI4World\Navies.h" />
+    <ClInclude Include="Source\HOI4World\Navies\LegacyNavy.h" />
     <ClInclude Include="Source\HOI4World\Navies\LegacyShip.h" />
+    <ClInclude Include="Source\HOI4World\Navies\MtgNavy.h" />
     <ClInclude Include="Source\HOI4World\Navies\MtgShip.h" />
+    <ClInclude Include="Source\HOI4World\Navies\Navy.h" />
     <ClInclude Include="Source\HOI4World\Navies\Ship.h" />
     <ClInclude Include="Source\HOI4World\OnActions.h" />
     <ClInclude Include="Source\HOI4World\Regiment.h" />

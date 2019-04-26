@@ -21,43 +21,46 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef SHIP_H_
-#define SHIP_H_
+#ifndef NAVY_H_
+#define NAVY_H_
 
 
-#include <ostream>
+
+#include "LegacyShip.h"
+#include <fstream>
 #include <string>
+#include <vector>
 
 
 
 namespace HoI4
 {
 
-class Ship
+
+class Navy
 {
 	public:
-		Ship(
-			const std::string& _name,
-			const std::string& _type,
-			const std::string& _equipment,
-			const std::string& _owner
-		);
-		Ship() = delete;
-		virtual ~Ship() = default;
-		Ship(const Ship&) = default;
-		Ship(Ship&&) = default;
-		Ship& operator=(const Ship&) = default;
-		Ship& operator=(Ship&&) = default;
+		Navy(const std::string& _name, int _location, int _base);
+		Navy() = delete;
+		~Navy() = default;
+		Navy(const Navy&) = default;
+		Navy(Navy&&) = default;
+		Navy& operator=(const Navy&) = default;
+		Navy& operator=(Navy&&) = default;
+
+		virtual void addShip(Ship& newShip) = 0;
+
+		virtual int getNumShips() const = 0;
 
 	protected:
 		std::string name;
-		std::string type;
-		std::string equipment;
-		std::string owner;
+		int location;
+		int base;
 };
+
 
 }
 
 
 
-#endif // SHIP_H_
+#endif // HOI4_NAVY_H_

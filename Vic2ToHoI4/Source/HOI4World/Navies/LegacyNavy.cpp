@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -21,18 +21,16 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "HoI4Navy.h"
+#include "LegacyNavy.h"
 
 
 
-HoI4::Navy::Navy(const std::string& _name, int _location, int _base):
-	name(_name),
-	location(_location),
-	base(_base)
+HoI4::LegacyNavy::LegacyNavy(const std::string& _name, int _location, int _base):
+	Navy(_name, _location, _base)
 {}
 
 
-std::ostream& HoI4::operator << (std::ostream& output, const HoI4::Navy& instance)
+std::ostream& HoI4::operator << (std::ostream& output, const HoI4::LegacyNavy& instance)
 {
 	output << "\tfleet = {\n";
 	output << "\t\tname = \"" << instance.name << "\"\n";
@@ -40,7 +38,7 @@ std::ostream& HoI4::operator << (std::ostream& output, const HoI4::Navy& instanc
 	output << "\t\ttask_force = {\n";
 	output << "\t\t\tname = \"" << instance.name << "\"\n";
 	output << "\t\t\tlocation = " << instance.location << "\n";
-	for (auto& ship: instance.legacyShips)
+	for (auto& ship : instance.ships)
 	{
 		output << ship;
 	}
