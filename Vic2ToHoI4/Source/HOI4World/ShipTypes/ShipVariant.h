@@ -70,6 +70,9 @@ class shipVariant: commonItems::parser
 		std::set<std::string> blockingTechnologies;
 };
 
+
+std::ostream& operator << (std::ostream& output, shipVariant& theVariant);
+
 }
 
 
