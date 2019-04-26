@@ -5,7 +5,7 @@ rm -r "Release-Linux/blankMod"
 cp -r "Data_Files/blankMod" "Release-Linux/blankMod"
 
 # **Copy data files**
-cp "Data_Files/ai_peaces.txt" "release/ai_peaces.txt"
+cp "Data_Files/ai_peaces.txt" "Release-Linux/ai_peaces.txt"
 cp "Data_Files/configuration.txt" "Release-Linux/configuration.txt"
 cp "Data_Files/configuration.txt" "Release-Linux/configuration-example.txt"
 cp "Data_Files/converterFocuses.txt" "Release-Linux/converterFocuses.txt"
@@ -27,7 +27,7 @@ cp "Data_Files/positions.txt" "Release-Linux/positions.txt"
 cp "Data_Files/province_mappings.txt" "Release-Linux/province_mappings.txt"
 cp "Data_Files/ReadMe.txt" "Release-Linux/ReadMe.txt"
 cp "Data_Files/Resources.txt" "Release-Linux/resources.txt"
-cp "Data_Files/shipTypes.txt" "Release-Linux/Vic2ToHoI4/shipTypes.txt"
+cp "Data_Files/shipTypes.txt" "Release-Linux/shipTypes.txt"
 cp "Data_Files/tech_mapping.txt" "Release-Linux/tech_mapping.txt"
 cp "Data_Files/unit_mappings.txt" "Release-Linux/unit_mappings.txt"
 
