@@ -55,6 +55,9 @@ class shipVariants
 		std::vector<shipVariant> variants;
 };
 
+
+std::ostream& operator << (std::ostream& output, const shipVariants& theVariants);
+
 }
 
 
