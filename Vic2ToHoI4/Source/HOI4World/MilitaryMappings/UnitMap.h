@@ -48,12 +48,14 @@ class UnitMap: commonItems::parser
 		std::string getCategory() const { return category; }
 		std::string getType() const { return type; }
 		std::string getEquipment() const { return equipment; }
+		std::string getVersion() const { return version; }
 		int getSize() const { return size; }
 
 	private:
 		std::string category;
 		std::string type;
 		std::string equipment;
+		std::string version;
 		int size = 0;
 };
 

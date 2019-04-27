@@ -31,21 +31,29 @@ TEST(HoI4World_UnitMapTests, defaultUnitMapCategoryIsBlank)
 	HoI4::UnitMap theMap;
 	ASSERT_EQ(std::string(""), theMap.getCategory());
 }
+
+
 TEST(HoI4World_UnitMapTests, defaultUnitMapTypeIsBlank)
 {
 	HoI4::UnitMap theMap;
 	ASSERT_EQ(std::string(""), theMap.getType());
 }
+
+
 TEST(HoI4World_UnitMapTests, defaultUnitMapEquipmentIsBlank)
 {
 	HoI4::UnitMap theMap;
 	ASSERT_EQ(std::string(""), theMap.getEquipment());
 }
+
+
 TEST(HoI4World_UnitMapTests, defaultUnitMapSizeIsZero)
 {
 	HoI4::UnitMap theMap;
 	ASSERT_EQ(0, theMap.getSize());
 }
+
+
 TEST(HoI4World_UnitMapTests, blankUnitMapCategoryRemainsBlank)
 {
 	std::stringstream input(
@@ -55,6 +63,8 @@ TEST(HoI4World_UnitMapTests, blankUnitMapCategoryRemainsBlank)
 	HoI4::UnitMap theMap(input);
 	ASSERT_EQ(std::string(""), theMap.getCategory());
 }
+
+
 TEST(HoI4World_UnitMapTests, blankUnitMapTypeRemainsBlank)
 {
 	std::stringstream input(
@@ -64,6 +74,8 @@ TEST(HoI4World_UnitMapTests, blankUnitMapTypeRemainsBlank)
 	HoI4::UnitMap theMap(input);
 	ASSERT_EQ(std::string(""), theMap.getType());
 }
+
+
 TEST(HoI4World_UnitMapTests, blankUnitMapEquipmentRemainsBlank)
 {
 	std::stringstream input(
@@ -73,6 +85,19 @@ TEST(HoI4World_UnitMapTests, blankUnitMapEquipmentRemainsBlank)
 	HoI4::UnitMap theMap(input);
 	ASSERT_EQ(std::string(""), theMap.getEquipment());
 }
+
+
+TEST(HoI4World_UnitMapTests, blankUnitMapVersionRemainsBlank)
+{
+	std::stringstream input(
+		"= {\n"\
+		"\t\t\t}"
+	);
+	HoI4::UnitMap theMap(input);
+	ASSERT_EQ(std::string(""), theMap.getVersion());
+}
+
+
 TEST(HoI4World_UnitMapTests, blankUnitMapSizeRemainsZero)
 {
 	std::stringstream input(
@@ -82,6 +107,8 @@ TEST(HoI4World_UnitMapTests, blankUnitMapSizeRemainsZero)
 	HoI4::UnitMap theMap(input);
 	ASSERT_EQ(0, theMap.getSize());
 }
+
+
 TEST(HoI4World_UnitMapTests, UnitMapCategoryCanBeSet)
 {
 	std::stringstream input(
@@ -92,6 +119,8 @@ TEST(HoI4World_UnitMapTests, UnitMapCategoryCanBeSet)
 	HoI4::UnitMap theMap(input);
 	ASSERT_EQ(std::string("land"), theMap.getCategory());
 }
+
+
 TEST(HoI4World_UnitMapTests, UnitMapTypeCanBeSet)
 {
 	std::stringstream input(
@@ -102,6 +131,8 @@ TEST(HoI4World_UnitMapTests, UnitMapTypeCanBeSet)
 	HoI4::UnitMap theMap(input);
 	ASSERT_EQ(std::string("infantry"), theMap.getType());
 }
+
+
 TEST(HoI4World_UnitMapTests, UnitMapEquipmentCanBeSet)
 {
 	std::stringstream input(
@@ -112,6 +143,20 @@ TEST(HoI4World_UnitMapTests, UnitMapEquipmentCanBeSet)
 	HoI4::UnitMap theMap(input);
 	ASSERT_EQ(std::string("infantry_equipment_0"), theMap.getEquipment());
 }
+
+
+TEST(HoI4World_UnitMapTests, UnitMapVersionCanBeSet)
+{
+	std::stringstream input(
+		"= {\n"\
+		"\t\t\t\tversion = \"Early Submarine\"\n"\
+		"\t\t\t}"
+	);
+	HoI4::UnitMap theMap(input);
+	ASSERT_EQ(std::string("Early Submarine"), theMap.getVersion());
+}
+
+
 TEST(HoI4World_UnitMapTests, UnitMapSizeCanBeSet)
 {
 	std::stringstream input(

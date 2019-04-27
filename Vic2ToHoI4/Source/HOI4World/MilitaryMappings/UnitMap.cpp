@@ -40,6 +40,10 @@ HoI4::UnitMap::UnitMap(std::istream& theStream)
 		commonItems::singleString equipmentString(theStream);
 		equipment = equipmentString.getString();
 	});
+	registerKeyword(std::regex("version"), [this](const std::string & unused, std::istream & theStream) {
+		commonItems::singleString versionString(theStream);
+		version = versionString.getString();
+	});
 	registerKeyword(std::regex("size"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::singleInt sizeInt(theStream);
 		size = sizeInt.getInt();
