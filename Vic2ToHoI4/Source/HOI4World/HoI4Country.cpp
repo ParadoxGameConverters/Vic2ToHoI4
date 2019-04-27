@@ -30,7 +30,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4Leader.h"
 #include "HoI4Localisation.h"
 #include "Names.h"
-#include "Navies.h"
 #include "MilitaryMappings/MilitaryMappings.h"
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/GovernmentMapper.h"
@@ -436,7 +435,11 @@ void HoI4Country::determineShipVariants(const std::vector<HoI4::shipVariant>& po
 }
 
 
-void HoI4Country::convertNavies(const map<string, HoI4::UnitMap>& unitMap, const HoI4::coastalProvinces& theCoastalProvinces, const std::map<int, int>& provinceToStateIDMap)
+void HoI4Country::convertNavies(
+	const map<string, HoI4::UnitMap>& unitMap,
+	const map<string, std::vector<HoI4::UnitMap>>& mtgUnitMap,
+	const HoI4::coastalProvinces& theCoastalProvinces,
+	const std::map<int, int>& provinceToStateIDMap)
 {
 	int backupNavalLocation = 0;
 	for (auto state: states)
@@ -452,7 +455,16 @@ void HoI4Country::convertNavies(const map<string, HoI4::UnitMap>& unitMap, const
 		}
 	}
 
-	theNavies = std::make_unique<HoI4::Navies>(srcCountry->getArmies(), backupNavalLocation, unitMap, theCoastalProvinces, provinceToStateIDMap, states, tag);
+	theNavies = std::make_unique<HoI4::Navies>(
+		srcCountry->getArmies(),
+		backupNavalLocation,
+		unitMap,
+		mtgUnitMap,
+		*theShipVariants,
+		theCoastalProvinces,
+		provinceToStateIDMap,
+		states,
+		tag);
 }
 
 

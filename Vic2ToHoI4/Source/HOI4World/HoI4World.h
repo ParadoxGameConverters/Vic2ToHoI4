@@ -157,7 +157,9 @@ class World: commonItems::parser
 
 		void convertMilitaries();
 		void convertArmies(const militaryMappings& theMilitaryMappings);
-		void convertNavies(const map<string, HoI4::UnitMap>& unitMap);
+		void convertNavies(
+			const map<string, HoI4::UnitMap>& unitMap,
+			const map<string, std::vector<HoI4::UnitMap>>& mtgUnitMap);
 		void convertAirforces(const map<string, HoI4::UnitMap>& unitMap);
 
 		void determineGreatPowers();

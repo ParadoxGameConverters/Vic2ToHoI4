@@ -226,11 +226,11 @@
     <ClCompile Include="Source\HOI4World\MilitaryMappings\MilitaryMappings.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMap.cpp" />
     <ClCompile Include="Source\HOI4World\Names.cpp" />
-    <ClCompile Include="Source\HOI4World\Navies.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\LegacyNavy.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\LegacyShip.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\MtgNavy.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\MtgShip.cpp" />
+    <ClCompile Include="Source\HOI4World\Navies\Navies.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\Navy.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\Ship.cpp" />
     <ClCompile Include="Source\HOI4World\OnActions.cpp" />
@@ -327,11 +327,11 @@
     <ClInclude Include="Source\HOI4World\MilitaryMappings\MilitaryMappings.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\UnitMap.h" />
     <ClInclude Include="Source\HOI4World\Names.h" />
-    <ClInclude Include="Source\HOI4World\Navies.h" />
     <ClInclude Include="Source\HOI4World\Navies\LegacyNavy.h" />
     <ClInclude Include="Source\HOI4World\Navies\LegacyShip.h" />
     <ClInclude Include="Source\HOI4World\Navies\MtgNavy.h" />
     <ClInclude Include="Source\HOI4World\Navies\MtgShip.h" />
+    <ClInclude Include="Source\HOI4World\Navies\Navies.h" />
     <ClInclude Include="Source\HOI4World\Navies\Navy.h" />
     <ClInclude Include="Source\HOI4World\Navies\Ship.h" />
     <ClInclude Include="Source\HOI4World\OnActions.h" />

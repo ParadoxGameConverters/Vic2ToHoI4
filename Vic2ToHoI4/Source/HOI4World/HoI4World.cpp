@@ -90,7 +90,6 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	convertMilitaries();
 
 	//convertArmies();
-	//convertNavies();
 	//convertAirforces();
 	determineGreatPowers();
 	importIdeologies();
@@ -798,9 +797,10 @@ void HoI4::World::convertTechs()
 void HoI4::World::convertMilitaries()
 {
 	auto specificMappings = theMilitaryMappings->getMilitaryMappings(theConfiguration.getVic2Mods());
+	const map<string, std::vector<HoI4::UnitMap>> mtgUnitMap;
 
 	convertArmies(specificMappings);
-	convertNavies(specificMappings.getUnitMap());
+	convertNavies(specificMappings.getUnitMap(), mtgUnitMap);
 	convertAirforces(specificMappings.getUnitMap());
 }
 
@@ -816,7 +816,9 @@ void HoI4::World::convertArmies(const militaryMappings& theMilitaryMappings)
 }
 
 
-void HoI4::World::convertNavies(const map<string, HoI4::UnitMap>& unitMap)
+void HoI4::World::convertNavies(
+	const map<string, HoI4::UnitMap>& unitMap,
+	const map<string, std::vector<HoI4::UnitMap>>& mtgUnitMap)
 {
 	LOG(LogLevel::Info) << "Converting navies";
 
@@ -832,7 +834,7 @@ void HoI4::World::convertNavies(const map<string, HoI4::UnitMap>& unitMap)
 	for (auto country : countries)
 	{
 		country.second->determineShipVariants(possibleVariants.getPossibleVariants());
-		country.second->convertNavies(unitMap, theCoastalProvinces, states->getProvinceToStateIDMap());
+		country.second->convertNavies(unitMap, mtgUnitMap, theCoastalProvinces, states->getProvinceToStateIDMap());
 		country.second->convertConvoys(unitMap);
 	}
 }

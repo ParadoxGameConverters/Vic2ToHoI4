@@ -288,9 +288,6 @@
     <ClCompile Include="Source\HOI4World\ShipTypes\ShipModules.cpp">
       <Filter>HoI4World\ShipTypes</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Navies.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Navies\MtgShip.cpp">
       <Filter>HoI4World\Navies</Filter>
     </ClCompile>
@@ -307,6 +304,9 @@
       <Filter>HoI4World\Navies</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Navies\MtgNavy.cpp">
+      <Filter>HoI4World\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Navies\Navies.cpp">
       <Filter>HoI4World\Navies</Filter>
     </ClCompile>
   </ItemGroup>
@@ -499,9 +499,6 @@
     <ClInclude Include="Source\HOI4World\StateCategories.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Names.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
     <ClInclude Include="Source\V2World\Inventions.h">
       <Filter>Vic2World</Filter>
     </ClInclude>
@@ -575,9 +572,6 @@
     <ClInclude Include="Source\HOI4World\ShipTypes\ShipModules.h">
       <Filter>HoI4World\ShipTypes</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Navies.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Navies\MtgShip.h">
       <Filter>HoI4World\Navies</Filter>
     </ClInclude>
@@ -594,6 +588,12 @@
       <Filter>HoI4World\Navies</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Navies\MtgNavy.h">
+      <Filter>HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Names.h">
+      <Filter>HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Navies\Navies.h">
       <Filter>HoI4World\Navies</Filter>
     </ClInclude>
   </ItemGroup>
