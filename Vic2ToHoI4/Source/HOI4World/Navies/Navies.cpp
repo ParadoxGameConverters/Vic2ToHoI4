@@ -22,13 +22,22 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "Navies.h"
-#include "../Mappers/ProvinceDefinitions.h"
-#include "../Mappers/Provinces/ProvinceMapper.h"
+#include "../../Mappers/ProvinceDefinitions.h"
+#include "../../Mappers/Provinces/ProvinceMapper.h"
 #include "Log.h"
 
 
 
-HoI4::Navies::Navies(std::vector<const Vic2::Army*> srcArmies, int backupNavalLocation, const std::map<std::string, HoI4::UnitMap>& unitMap, const HoI4::coastalProvinces& theCoastalProvinces, const std::map<int, int>& provinceToStateIDMap, map<int, HoI4::State*> states, const std::string& tag)
+HoI4::Navies::Navies(
+	std::vector<const Vic2::Army*> srcArmies,
+	int backupNavalLocation,
+	const std::map<std::string, HoI4::UnitMap>& unitMap,
+	const std::map<std::string, std::vector<HoI4::UnitMap>>& mtgUnitMap,
+	const HoI4::shipVariants& theShipVariants,
+	const HoI4::coastalProvinces& theCoastalProvinces,
+	const std::map<int, int>& provinceToStateIDMap,
+	std::map<int, HoI4::State*> states,
+	const std::string& tag)
 {
 	for (auto army: srcArmies)
 	{
@@ -66,30 +75,52 @@ HoI4::Navies::Navies(std::vector<const Vic2::Army*> srcArmies, int backupNavalLo
 			}
 		}
 
-		HoI4::LegacyNavy newNavy(army->getName(), navalLocation, base);
+		HoI4::LegacyNavy newLegacyNavy(army->getName(), navalLocation, base);
+		HoI4::MtgNavy newMtgNavy(army->getName(), navalLocation, base);
 
 		for (auto regiment : army->getRegiments())
 		{
-			string type = regiment->getType();
+			std::string type = regiment->getType();
 			if (unitMap.count(type) > 0)
 			{
 				HoI4::UnitMap unitInfo = unitMap.at(type);
 
 				if (unitInfo.getCategory() == "naval")
 				{
-					HoI4::LegacyShip newShip(regiment->getName(), unitInfo.getType(), unitInfo.getEquipment(), tag);
-					newNavy.addShip(newShip);
+					HoI4::LegacyShip newLegacyShip(regiment->getName(), unitInfo.getType(), unitInfo.getEquipment(), tag);
+					newLegacyNavy.addShip(newLegacyShip);
 				}
 			}
 			else
 			{
-				LOG(LogLevel::Warning) << "Unknown unit type: " << type;
+				LOG(LogLevel::Warning) << "Unknown legacy unit type: " << type;
+			}
+			if (mtgUnitMap.count(type) > 0)
+			{
+				std::vector<HoI4::UnitMap> unitInfos = mtgUnitMap.at(type);
+				for (auto unitInfo: unitInfos)
+				{
+					if ((unitInfo.getCategory() == "naval") && theShipVariants.hasVariant(unitInfo.getVersion()))
+					{
+						float experience = regiment->getExperience() / 100.0;
+						HoI4::MtgShip newMtgShip(regiment->getName(), unitInfo.getType(), unitInfo.getEquipment(), tag, unitInfo.getVersion(), experience);
+						newMtgNavy.addShip(newMtgShip);
+					}
+				}
+			}
+			else
+			{
+				LOG(LogLevel::Warning) << "Unknown mtg unit type: " << type;
 			}
 		}
 
-		if (newNavy.getNumShips() > 0)
+		if (newLegacyNavy.getNumShips() > 0)
 		{
-			navies.push_back(newNavy);
+			legacyNavies.push_back(newLegacyNavy);
+		}
+		if (newMtgNavy.getNumShips() > 0)
+		{
+			mtgNavies.push_back(newMtgNavy);
 		}
 	}
 }
@@ -98,7 +129,18 @@ HoI4::Navies::Navies(std::vector<const Vic2::Army*> srcArmies, int backupNavalLo
 void HoI4::Navies::outputLegacy(std::ostream& output)
 {
 	output << "units = {\n";
-	for (auto navy: navies)
+	for (auto navy: legacyNavies)
+	{
+		output << navy;
+	}
+	output << "}\n";
+}
+
+
+void HoI4::Navies::outputMtg(std::ostream& output)
+{
+	output << "units = {\n";
+	for (auto navy: mtgNavies)
 	{
 		output << navy;
 	}

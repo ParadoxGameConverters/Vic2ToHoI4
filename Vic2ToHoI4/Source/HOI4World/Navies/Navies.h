@@ -26,11 +26,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "CoastalProvinces.h"
-#include "HoI4State.h"
-#include "MilitaryMappings/UnitMap.h"
-#include "Navies/LegacyNavy.h"
-#include "../V2World/Army.h"
+#include "LegacyNavy.h"
+#include "MtgNavy.h"
+#include "../CoastalProvinces.h"
+#include "../HoI4State.h"
+#include "../MilitaryMappings/UnitMap.h"
+#include "../ShipTypes/ShipVariants.h"
+#include "../../V2World/Army.h"
 #include <map>
 #include <ostream>
 #include <string>
@@ -48,6 +50,8 @@ class Navies
 			std::vector<const Vic2::Army*> srcArmies,
 			int backupNavalLocation,
 			const std::map<std::string, HoI4::UnitMap>& unitMap,
+			const std::map<std::string, std::vector<HoI4::UnitMap>>& mtgUnitMap,
+			const HoI4::shipVariants& theShipVariants,
 			const HoI4::coastalProvinces& theCoastalProvinces,
 			const std::map<int, int>& provinceToStateIDMap,
 			std::map<int, HoI4::State*> states,
@@ -60,9 +64,11 @@ class Navies
 		Navies& operator=(Navies&&) = default;
 
 		void outputLegacy(std::ostream& output);
+		void outputMtg(std::ostream& output);
 
 	private:
-		std::vector<HoI4::LegacyNavy> navies;
+		std::vector<HoI4::LegacyNavy> legacyNavies;
+		std::vector<HoI4::MtgNavy> mtgNavies;
 };
 
 }

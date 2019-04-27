@@ -314,9 +314,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariants.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="HoI4WorldTests\NaviesTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
@@ -349,6 +346,9 @@
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\MtgNavyTests.cpp">
       <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\Navies.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
