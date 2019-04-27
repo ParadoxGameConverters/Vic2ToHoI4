@@ -49,10 +49,12 @@ class shipVariants
 		shipVariants& operator=(const shipVariants&) = default;
 		shipVariants& operator=(shipVariants&&) = default;
 
+		bool hasVariant(const std::string& variantName) const { return variants.find(variantName) != variants.end(); }
+
 		friend std::ostream& operator << (std::ostream& output, const shipVariants& theVariants);
 
 	private:
-		std::vector<shipVariant> variants;
+		std::map<std::string, shipVariant> variants;
 };
 
 
