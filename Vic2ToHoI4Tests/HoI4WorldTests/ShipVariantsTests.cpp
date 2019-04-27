@@ -95,6 +95,58 @@ TEST(HoI4World_shipVariantsTests, canReceiveVariant)
 }
 
 
+TEST(HoI4World_shipVariantsTests, heldVaraintIsIdentified)
+{
+	std::stringstream input;
+	input << " = {\n";
+	input << "\tname = \"Early submarine\"\n";
+	input << "\ttype = ship_hull_submarine_1\n";
+	input << "\tname_group = SS_HISTORICAL\n";
+	input << "\t\tmodules = {\n";
+	input << "\t\tfixed_ship_torpedo_slot = ship_torpedo_sub_2\n";
+	input << "\t\tfixed_ship_engine_slot = sub_ship_engine_2\n";
+	input << "\t\trear_1_custom_slot = ship_torpedo_sub_2\n";
+	input << "\t}\n";
+	input << "\tobsolete = yes\n";
+	input << "}\n";
+	HoI4::shipVariant theShipVariant(input);
+	std::vector<HoI4::shipVariant> possibleVariants;
+	possibleVariants.push_back(theShipVariant);
+
+	mockTechnologies ownedTechs;
+
+	HoI4::shipVariants theVaraiants(possibleVariants, ownedTechs, "TAG");
+
+	ASSERT_TRUE(theVaraiants.hasVariant("Early submarine"));
+}
+
+
+TEST(HoI4World_shipVariantsTests, missingVaraintIsNotIdentified)
+{
+	std::stringstream input;
+	input << " = {\n";
+	input << "\tname = \"Early submarine\"\n";
+	input << "\ttype = ship_hull_submarine_1\n";
+	input << "\tname_group = SS_HISTORICAL\n";
+	input << "\t\tmodules = {\n";
+	input << "\t\tfixed_ship_torpedo_slot = ship_torpedo_sub_2\n";
+	input << "\t\tfixed_ship_engine_slot = sub_ship_engine_2\n";
+	input << "\t\trear_1_custom_slot = ship_torpedo_sub_2\n";
+	input << "\t}\n";
+	input << "\tobsolete = yes\n";
+	input << "}\n";
+	HoI4::shipVariant theShipVariant(input);
+	std::vector<HoI4::shipVariant> possibleVariants;
+	possibleVariants.push_back(theShipVariant);
+
+	mockTechnologies ownedTechs;
+
+	HoI4::shipVariants theVaraiants(possibleVariants, ownedTechs, "TAG");
+
+	ASSERT_FALSE(theVaraiants.hasVariant("1936 submarine"));
+}
+
+
 TEST(HoI4World_shipVariantsTests, variantsNeedRequiredTechs)
 {
 	std::vector<HoI4::shipVariant> possibleVariants;

@@ -54,6 +54,8 @@ class shipVariant: commonItems::parser
 
 		bool isValidVariant(const technologies& ownedTechs) const;
 
+		std::string getName() const { return name; }
+
 		friend std::ostream& operator << (std::ostream& output, shipVariant& theVariant);
 
 	private:

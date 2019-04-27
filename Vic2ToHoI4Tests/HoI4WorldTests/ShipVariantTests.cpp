@@ -71,6 +71,18 @@ TEST(HoI4World_shipVariantTests, nameCanBeInput)
 }
 
 
+TEST(HoI4World_shipVariantTests, canGetName)
+{
+	std::stringstream input;
+	input << " = {\n";
+	input << "\tname = \"ship_name\"\n";
+	input << "}";
+	HoI4::shipVariant theShipVariant(input);
+
+	ASSERT_EQ(std::string("ship_name"), theShipVariant.getName());
+}
+
+
 TEST(HoI4World_shipVariantTests, typeCanBeInput)
 {
 	std::stringstream input;
