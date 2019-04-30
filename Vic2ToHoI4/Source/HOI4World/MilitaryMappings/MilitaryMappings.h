@@ -27,10 +27,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "../DivisionTemplate.h"
-#include "UnitMap.h"
+#include "HoI4UnitType.h"
+#include "UnitMappings.h"
 #include "newParser.h"
 #include <istream>
 #include <map>
+#include <memory>
 #include <string>
 #include <vector>
 
@@ -44,19 +46,26 @@ class militaryMappings: commonItems::parser
 {
 	public:
 		militaryMappings(const std::string& name, std::istream& theStream);
+		militaryMappings() = delete;
+		~militaryMappings() = default;
+		militaryMappings(const militaryMappings&) = default;
+		militaryMappings(militaryMappings&&) = default;
+		militaryMappings& operator=(const militaryMappings&) = default;
+		militaryMappings& operator=(militaryMappings&&) = default;
 
 		auto getMappingsName() const { return mappingsName; }
-		auto getUnitMap() const { return unitMap; }
+		auto& getUnitMap() const { return *unitMappings; }
+		auto getMtGUnitMap() const { return mtgUnitMap; }
 		auto getDivisionTemplates() const { return divisionTemplates; }
 		auto getSubstitutes() const { return substitutes; }
 
 	private:
-		void importUnitMap(std::istream& theStream);
 		void importDivisionTemplates(std::istream& theStream);
 		void importSubstitutes(std::istream& theStream);
 
 		std::string mappingsName = "";
-		std::map<std::string, HoI4::UnitMap> unitMap;
+		std::unique_ptr<UnitMappings> unitMappings;
+		std::map<std::string, std::vector<HoI4::HoI4UnitType>> mtgUnitMap;
 		std::vector<HoI4::DivisionTemplateType> divisionTemplates;
 		std::map<std::string, std::string> substitutes;
 };

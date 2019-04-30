@@ -223,8 +223,10 @@
     <ClCompile Include="Source\HOI4World\ImpassableProvinces.cpp" />
     <ClCompile Include="Source\HOI4World\MapData.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp" />
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\HoI4UnitType.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\MilitaryMappings.cpp" />
-    <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMap.cpp" />
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMapping.cpp" />
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMappings.cpp" />
     <ClCompile Include="Source\HOI4World\Names.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\LegacyNavy.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\LegacyShip.cpp" />
@@ -325,7 +327,9 @@
     <ClInclude Include="Source\HOI4World\MapData.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\MilitaryMappings.h" />
-    <ClInclude Include="Source\HOI4World\MilitaryMappings\UnitMap.h" />
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\HoI4UnitType.h" />
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\UnitMapping.h" />
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\UnitMappings.h" />
     <ClInclude Include="Source\HOI4World\Names.h" />
     <ClInclude Include="Source\HOI4World\Navies\LegacyNavy.h" />
     <ClInclude Include="Source\HOI4World\Navies\LegacyShip.h" />

@@ -796,11 +796,10 @@ void HoI4::World::convertTechs()
 
 void HoI4::World::convertMilitaries()
 {
-	auto specificMappings = theMilitaryMappings->getMilitaryMappings(theConfiguration.getVic2Mods());
-	const map<string, std::vector<HoI4::UnitMap>> mtgUnitMap;
+	const HoI4::militaryMappings& specificMappings = theMilitaryMappings->getMilitaryMappings(theConfiguration.getVic2Mods());
 
 	convertArmies(specificMappings);
-	convertNavies(specificMappings.getUnitMap(), mtgUnitMap);
+	convertNavies(specificMappings.getUnitMap(), specificMappings.getMtGUnitMap());
 	convertAirforces(specificMappings.getUnitMap());
 }
 
@@ -817,8 +816,8 @@ void HoI4::World::convertArmies(const militaryMappings& theMilitaryMappings)
 
 
 void HoI4::World::convertNavies(
-	const map<string, HoI4::UnitMap>& unitMap,
-	const map<string, std::vector<HoI4::UnitMap>>& mtgUnitMap)
+	const UnitMappings& unitMap,
+	const map<string, std::vector<HoI4::HoI4UnitType>>& mtgUnitMap)
 {
 	LOG(LogLevel::Info) << "Converting navies";
 
@@ -840,7 +839,7 @@ void HoI4::World::convertNavies(
 }
 
 
-void HoI4::World::convertAirforces(const map<string, HoI4::UnitMap>& unitMap)
+void HoI4::World::convertAirforces(const UnitMappings& unitMap)
 {
 	LOG(LogLevel::Info) << "Converting air forces";
 
@@ -1387,7 +1386,7 @@ void HoI4::World::outputCountries()
 	{
 		if (country.second->getCapitalStateNum() != 0)
 		{
-			auto specificMilitaryMappings = theMilitaryMappings->getMilitaryMappings(theConfiguration.getVic2Mods());
+			const HoI4::militaryMappings& specificMilitaryMappings = theMilitaryMappings->getMilitaryMappings(theConfiguration.getVic2Mods());
 			country.second->output(activeIdeologicalAdvisors, specificMilitaryMappings.getDivisionTemplates(), theNames, theGraphics);
 		}
 	}

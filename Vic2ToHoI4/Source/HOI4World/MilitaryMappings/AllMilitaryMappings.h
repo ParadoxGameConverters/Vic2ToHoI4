@@ -49,7 +49,7 @@ class allMilitaryMappings: commonItems::parser
 		allMilitaryMappings& operator=(allMilitaryMappings&&) = default;
 
 
-		militaryMappings getMilitaryMappings(const std::vector<std::string>& mods) const;
+		const militaryMappings& getMilitaryMappings(const std::vector<std::string>& mods) const;
 
 	private:
 		std::map<std::string, militaryMappings> theMappings;

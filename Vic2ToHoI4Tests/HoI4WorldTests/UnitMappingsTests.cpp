@@ -21,47 +21,49 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "AllMilitaryMappings.h"
-#include <fstream>
+#include "gtest/gtest.h"
+#include "../Vic2ToHoI4/Source/HOI4World/MilitaryMappings/UnitMappings.h"
 
 
 
-HoI4::allMilitaryMappings::allMilitaryMappings(std::istream& theStream)
+TEST(HoI4World_unitMappingsTests, NonExistingMappingNotAdded)
 {
-	registerKeyword(std::regex("[a-zA-Z0-9]+"), [this](const std::string& mod, std::istream& theStream)
-	{
-		militaryMappings newMappings(mod, theStream);
-		theMappings.insert(std::make_pair(mod, std::move(newMappings)));
-	});
-
-	parseStream(theStream);
+	std::stringstream input;
+	input << "= {\n";
+	input << "\t}";
+	HoI4::UnitMappings theMappings(input);
+	ASSERT_FALSE(theMappings.hasMatchingType("irregular"));
 }
 
 
-const HoI4::militaryMappings& HoI4::allMilitaryMappings::getMilitaryMappings(const std::vector<std::string>& Vic2Mods) const
+TEST(HoI4World_unitMappingsTests, Vic2UnitAddedToUnitMapping)
 {
-	for (auto mod: Vic2Mods)
-	{
-		if (auto& mapping = theMappings.find(mod); mapping != theMappings.end())
-		{
-			return mapping->second;
-		}
-	}
-
-	return theMappings.at("default");
+	std::stringstream input(
+		"= {\n"\
+		"\t\tlink = {\n"\
+		"\t\t\tvic = irregular\n"\
+		"\t\t}\n"\
+		"\t}"
+	);
+	HoI4::UnitMappings theMappings(input);
+	ASSERT_TRUE(theMappings.hasMatchingType("irregular"));
 }
 
 
-HoI4::militaryMappingsFile::militaryMappingsFile()
+TEST(HoI4World_unitMappingsTests, UnitMappingHandlesFilledHoI4UnitTypeCorrectly)
 {
-	std::ifstream unitMappingFile("unit_mappings.txt");
-	if (unitMappingFile.is_open())
-	{
-		theMilitaryMappings = std::make_unique<allMilitaryMappings>(unitMappingFile);
-		unitMappingFile.close();
-	}
-	else
-	{
-		throw("Could not open unit_mappings.txt");
-	}
+	std::stringstream input(
+		"= {\n"\
+		"\tmap = {\n"\
+		"\t\tlink = {\n"\
+		"\t\t\tvic = infantry\n"\
+		"\t\t\thoi = {\n"\
+		"\t\t\t\ttype = land\n"\
+		"\t\t\t}\n"\
+		"\t\t}\n"\
+		"\t}"\
+		"}"
+	);
+	HoI4::UnitMappings theMappings(input);
+	ASSERT_EQ(std::string("land"), theMappings.getMatchingUnitInfo("infantry").getType());
 }

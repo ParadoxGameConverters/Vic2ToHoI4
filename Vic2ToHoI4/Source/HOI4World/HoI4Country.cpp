@@ -436,8 +436,8 @@ void HoI4Country::determineShipVariants(const std::vector<HoI4::shipVariant>& po
 
 
 void HoI4Country::convertNavies(
-	const map<string, HoI4::UnitMap>& unitMap,
-	const map<string, std::vector<HoI4::UnitMap>>& mtgUnitMap,
+	const HoI4::UnitMappings& unitMap,
+	const map<string, std::vector<HoI4::HoI4UnitType>>& mtgUnitMap,
 	const HoI4::coastalProvinces& theCoastalProvinces,
 	const std::map<int, int>& provinceToStateIDMap)
 {
@@ -468,7 +468,7 @@ void HoI4Country::convertNavies(
 }
 
 
-void HoI4Country::convertConvoys(const map<string, HoI4::UnitMap>& unitMap)
+void HoI4Country::convertConvoys(const HoI4::UnitMappings& unitMap)
 {
 	for (auto army : srcCountry->getArmies())
 	{
@@ -476,9 +476,9 @@ void HoI4Country::convertConvoys(const map<string, HoI4::UnitMap>& unitMap)
 		{
 			string type = regiment->getType();
 
-			if (unitMap.count(type) > 0)
+			if (unitMap.hasMatchingType(type))
 			{
-				HoI4::UnitMap unitInfo = unitMap.at(type);
+				HoI4::HoI4UnitType unitInfo = unitMap.getMatchingUnitInfo(type);
 
 				if (unitInfo.getCategory() == "convoy")
 				{
@@ -495,7 +495,7 @@ void HoI4Country::convertConvoys(const map<string, HoI4::UnitMap>& unitMap)
 }
 
 
-void HoI4Country::convertAirforce(const map<string, HoI4::UnitMap>& unitMap)
+void HoI4Country::convertAirforce(const HoI4::UnitMappings& unitMap)
 {
         static std::map<std::string, vector<std::string>> backups = {
             {"fighter_equipment_0", {"tac_bomber_equipment_0"}}};
@@ -505,9 +505,9 @@ void HoI4Country::convertAirforce(const map<string, HoI4::UnitMap>& unitMap)
 		{
 			string type = regiment->getType();
 
-			if (unitMap.count(type) > 0)
+			if (unitMap.hasMatchingType(type))
 			{
-				HoI4::UnitMap unitInfo = unitMap.at(type);
+				HoI4::HoI4UnitType unitInfo = unitMap.getMatchingUnitInfo(type);
 
                                 if (unitInfo.getCategory() != "air")
                                 {
