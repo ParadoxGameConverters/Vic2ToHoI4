@@ -21,12 +21,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "UnitMap.h"
+#include "HoI4UnitType.h"
 #include "ParserHelpers.h"
 
 
 
-HoI4::UnitMap::UnitMap(std::istream& theStream)
+HoI4::HoI4UnitType::HoI4UnitType(std::istream& theStream)
 {
 	registerKeyword(std::regex("category"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::singleString categoryString(theStream);
@@ -50,4 +50,16 @@ HoI4::UnitMap::UnitMap(std::istream& theStream)
 	});
 
 	parseStream(theStream);
+}
+
+
+bool HoI4::HoI4UnitType::operator==(const HoI4UnitType& rhs)
+{
+	return (
+		(category == rhs.category) &&
+		(type == rhs.type) &&
+		(equipment == rhs.equipment) &&
+		(version == rhs.version) &&
+		(size == rhs.size)
+	);
 }

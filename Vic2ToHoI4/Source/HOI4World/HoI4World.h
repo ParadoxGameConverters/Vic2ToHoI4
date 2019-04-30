@@ -35,6 +35,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4States.h"
 #include "MapData.h"
 #include "MilitaryMappings/AllMilitaryMappings.h"
+#include "MilitaryMappings/UnitMappings.h"
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/GovernmentMapper.h"
 #include "../Mappers/GraphicsMapper.h"
@@ -82,7 +83,7 @@ class DivisionTemplateType;
 class Events;
 class State;
 class SupplyZones;
-class UnitMap;
+class HoI4UnitType;
 struct advisorCompare;
 
 
@@ -158,9 +159,9 @@ class World: commonItems::parser
 		void convertMilitaries();
 		void convertArmies(const militaryMappings& theMilitaryMappings);
 		void convertNavies(
-			const map<string, HoI4::UnitMap>& unitMap,
-			const map<string, std::vector<HoI4::UnitMap>>& mtgUnitMap);
-		void convertAirforces(const map<string, HoI4::UnitMap>& unitMap);
+			const UnitMappings& unitMap,
+			const map<string, std::vector<HoI4::HoI4UnitType>>& mtgUnitMap);
+		void convertAirforces(const UnitMappings& unitMap);
 
 		void determineGreatPowers();
 

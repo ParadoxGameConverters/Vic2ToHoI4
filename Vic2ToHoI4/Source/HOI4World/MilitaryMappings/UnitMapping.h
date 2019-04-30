@@ -21,47 +21,34 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef UNIT_MAP_H
-#define UNIT_MAP_H
+#ifndef UNIT_MAPPING_H_
+#define UNIT_MAPPING_H_
 
 
 
+#include "HoI4UnitType.h"
 #include "newParser.h"
-#include <istream>
-#include <iostream>
-#include <string>
 
 
 
 namespace HoI4
 {
 
-
-class UnitMap: commonItems::parser
+class UnitMapping: commonItems::parser
 {
 	public:
-		UnitMap(std::istream& theStream);
-		UnitMap() = default;
-		UnitMap(const UnitMap&) = default;
-		UnitMap& operator=(const UnitMap&) = default;
+		UnitMapping(std::istream& theStream);
 
-		std::string getCategory() const { return category; }
-		std::string getType() const { return type; }
-		std::string getEquipment() const { return equipment; }
-		std::string getVersion() const { return version; }
-		int getSize() const { return size; }
+		std::string getVic2Type() const { return Vic2Type; }
+		auto getHoI4Type() const { return HoI4Type; }
 
 	private:
-		std::string category;
-		std::string type;
-		std::string equipment;
-		std::string version;
-		int size = 0;
+		std::string Vic2Type;
+		HoI4UnitType HoI4Type;
 };
-
 
 }
 
 
 
-#endif // UNIT_MAP_H
+#endif // UNIT_MAPPING_H_

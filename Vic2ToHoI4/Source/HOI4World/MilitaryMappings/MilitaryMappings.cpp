@@ -22,51 +22,16 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "MilitaryMappings.h"
+#include "UnitMappings.h"
 #include "ParserHelpers.h"
 
-
-
-namespace HoI4
-{
-
-class UnitMapping: commonItems::parser
-{
-	public:
-		UnitMapping(std::istream& theStream);
-
-		std::string getVic2Type() const { return Vic2Type; }
-		auto getHoI4Type() const { return HoI4Type; }
-
-	private:
-		std::string Vic2Type;
-		UnitMap HoI4Type;
-};
-
-}
-
-
-HoI4::UnitMapping::UnitMapping(std::istream& theStream)
-{
-	registerKeyword(std::regex("vic"), [this](const std::string& unused, std::istream& theStream)
-	{
-		commonItems::singleString typeString(theStream);
-		Vic2Type = typeString.getString();
-	});
-	registerKeyword(std::regex("hoi"), [this](const std::string& unused, std::istream& theStream)
-	{
-		HoI4::UnitMap theUnit(theStream);
-		HoI4Type = theUnit;
-	});
-
-	parseStream(theStream);
-}
 
 
 HoI4::militaryMappings::militaryMappings(const std::string& name, std::istream& theStream):
 	mappingsName(name)
 {
 	registerKeyword(std::regex("map"), [this](const std::string& unused, std::istream& theStream){
-		importUnitMap(theStream);
+		unitMappings = std::make_unique<UnitMappings>(theStream);
 	});
 	registerKeyword(std::regex("division_templates"), [this](const std::string& unused, std::istream& theStream){
 		importDivisionTemplates(theStream);
@@ -76,42 +41,11 @@ HoI4::militaryMappings::militaryMappings(const std::string& name, std::istream& 
 	});
 
 	parseStream(theStream);
-}
 
-
-namespace HoI4
-{
-
-class UnitMappingsImporter: commonItems::parser
-{
-	public:
-	UnitMappingsImporter(std::istream& theStream);
-
-		auto getUnitMap() const { return unitMap; }
-
-	private:
-		std::map<std::string, HoI4::UnitMap> unitMap;
-};
-
-}
-
-
-HoI4::UnitMappingsImporter::UnitMappingsImporter(std::istream& theStream)
-{
-	registerKeyword(std::regex("link"), [this](const std::string& unused, std::istream&theStream)
+	if (!unitMappings)
 	{
-		UnitMapping newMapping(theStream);
-		unitMap.insert(make_pair(newMapping.getVic2Type(), newMapping.getHoI4Type()));
-	});
-
-	parseStream(theStream);
-}
-
-
-void HoI4::militaryMappings::importUnitMap(std::istream& theStream)
-{
-	UnitMappingsImporter importer(theStream);
-	unitMap = importer.getUnitMap();
+		throw std::invalid_argument("No unit mappings were included! Check unit_mappings.txt for correctness.");
+	}
 }
 
 

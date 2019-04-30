@@ -44,6 +44,9 @@ TEST(HoI4World_HoI4ArmyTests, EmptyArmyStaysEmpty)
 	HoI4::Army theArmy;
 
 	std::stringstream mappingsInput;
+	mappingsInput << "= {\n";
+	mappingsInput << "\tmap = {}\n";
+	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 	theArmy.convertArmies(theMilitaryMappings, 0, 1.0);
 

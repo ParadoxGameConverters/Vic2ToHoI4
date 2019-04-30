@@ -38,8 +38,12 @@ class HoI4World_allMilitaryMappingsTests: public ::testing::Test
 HoI4World_allMilitaryMappingsTests::HoI4World_allMilitaryMappingsTests()
 {
 	std::stringstream input;
-	input << "default = {}\n";
-	input << "PDM = {}\n";
+	input << "default = {\n";
+	input << "\tmap = {}\n";
+	input << "}\n";
+	input << "PDM = {\n";
+	input << "\tmap = {}\n";
+	input << "}\n";
 	allTheMappings = std::make_unique<HoI4::allMilitaryMappings>(input);
 }
 
@@ -48,7 +52,7 @@ HoI4World_allMilitaryMappingsTests::HoI4World_allMilitaryMappingsTests()
 TEST_F(HoI4World_allMilitaryMappingsTests, getDefaultMappingsWithNoMods)
 {
 	std::vector<std::string> mods;
-	auto specificMappings = allTheMappings->getMilitaryMappings(mods);
+	const HoI4::militaryMappings& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("default"), specificMappings.getMappingsName());
 }
 
@@ -56,7 +60,7 @@ TEST_F(HoI4World_allMilitaryMappingsTests, getDefaultMappingsWithNoMods)
 TEST_F(HoI4World_allMilitaryMappingsTests, getDefaultMappingsWithInvalidMod)
 {
 	std::vector<std::string> mods = { "NotAMod" };
-	auto specificMappings = allTheMappings->getMilitaryMappings(mods);
+	const HoI4::militaryMappings& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("default"), specificMappings.getMappingsName());
 }
 
@@ -64,6 +68,6 @@ TEST_F(HoI4World_allMilitaryMappingsTests, getDefaultMappingsWithInvalidMod)
 TEST_F(HoI4World_allMilitaryMappingsTests, getPDMMappingsWithPDM)
 {
 	std::vector<std::string> mods = { "PDM" };
-	auto specificMappings = allTheMappings->getMilitaryMappings(mods);
+	const HoI4::militaryMappings& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("PDM"), specificMappings.getMappingsName());
 }

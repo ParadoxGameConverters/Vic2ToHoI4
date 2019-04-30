@@ -23,6 +23,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "HoI4Army.h"
 #include "Division.h"
+#include "MilitaryMappings/UnitMappings.h"
 #include "../Configuration.h"
 #include "../Mappers/Provinces/ProvinceMapper.h"
 #include "../V2World/Army.h"
@@ -45,11 +46,11 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings, int 
 		std::map<std::string, std::vector<sizedRegiment>> localBattalionsAndCompanies;
 		for (auto regiment: army->getRegiments())
 		{
-			std::string type = regiment->getType();
+			std::string Vic2Type = regiment->getType();
 
-			if (theMilitaryMappings.getUnitMap().count(type) > 0)
+			if (theMilitaryMappings.getUnitMap().hasMatchingType(Vic2Type))
 			{
-				HoI4::UnitMap unitInfo = theMilitaryMappings.getUnitMap().at(type);
+				HoI4::HoI4UnitType unitInfo = theMilitaryMappings.getUnitMap().getMatchingUnitInfo(Vic2Type);
 
 				if (unitInfo.getCategory() == "land")
 				{
@@ -62,7 +63,7 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings, int 
 			}
 			else
 			{
-				LOG(LogLevel::Warning) << "Unknown unit type: " << type;
+				LOG(LogLevel::Warning) << "Unknown unit type: " << Vic2Type;
 			}
 		}
 

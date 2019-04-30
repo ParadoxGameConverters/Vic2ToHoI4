@@ -21,47 +21,40 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "AllMilitaryMappings.h"
-#include <fstream>
+#ifndef UNIT_MAPPINGS_H_
+#define UNIT_MAPPINGS_H_
 
 
 
-HoI4::allMilitaryMappings::allMilitaryMappings(std::istream& theStream)
+#include "HoI4UnitType.h"
+#include "newParser.h"
+#include <map>
+
+
+
+namespace HoI4
 {
-	registerKeyword(std::regex("[a-zA-Z0-9]+"), [this](const std::string& mod, std::istream& theStream)
-	{
-		militaryMappings newMappings(mod, theStream);
-		theMappings.insert(std::make_pair(mod, std::move(newMappings)));
-	});
 
-	parseStream(theStream);
+class UnitMappings: commonItems::parser
+{
+	public:
+		UnitMappings(std::istream& theStream);
+		UnitMappings() = delete;
+		~UnitMappings() = default;
+		UnitMappings(const UnitMappings&) = default;
+		UnitMappings(UnitMappings&&) = default;
+		UnitMappings& operator=(const UnitMappings&) = default;
+		UnitMappings& operator=(UnitMappings&&) = default;
+
+		bool hasMatchingType(const std::string& Vic2Type) const;
+		HoI4::HoI4UnitType getMatchingUnitInfo(const std::string& Vic2Type) const;
+
+	private:
+		std::map<std::string, HoI4::HoI4UnitType> unitMap;
+};
+
 }
 
 
-const HoI4::militaryMappings& HoI4::allMilitaryMappings::getMilitaryMappings(const std::vector<std::string>& Vic2Mods) const
-{
-	for (auto mod: Vic2Mods)
-	{
-		if (auto& mapping = theMappings.find(mod); mapping != theMappings.end())
-		{
-			return mapping->second;
-		}
-	}
 
-	return theMappings.at("default");
-}
-
-
-HoI4::militaryMappingsFile::militaryMappingsFile()
-{
-	std::ifstream unitMappingFile("unit_mappings.txt");
-	if (unitMappingFile.is_open())
-	{
-		theMilitaryMappings = std::make_unique<allMilitaryMappings>(unitMappingFile);
-		unitMappingFile.close();
-	}
-	else
-	{
-		throw("Could not open unit_mappings.txt");
-	}
-}
+#endif // UNIT_MAPPINGS_H_

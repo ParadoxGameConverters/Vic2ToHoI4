@@ -253,9 +253,6 @@
     <ClCompile Include="HoI4WorldTests\RegimentTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\UnitMapTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
     </ClCompile>
@@ -275,9 +272,6 @@
       <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MilitaryMappings.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\UnitMap.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Technologies.cpp">
@@ -349,6 +343,24 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\Navies.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\UnitMappingsTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\UnitMappingTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\UnitMapping.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\UnitMappings.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\HoI4UnitType.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\HoI4UnitTypeTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

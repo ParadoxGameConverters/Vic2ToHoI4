@@ -37,6 +37,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4Relations.h"
 #include "HoI4State.h"
 #include "Navies/Navies.h"
+#include "MilitaryMappings/UnitMappings.h"
 #include "ShipTypes/PossibleShipVariants.h"
 #include "ShipTypes/ShipVariant.h"
 #include "ShipTypes/ShipVariants.h"
@@ -71,7 +72,7 @@ class Advisor;
 class coastalProvinces;
 class namesMapper;
 class State;
-class UnitMap;
+class HoI4UnitType;
 class World;
 struct advisorCompare;
 }
@@ -101,13 +102,13 @@ class HoI4Country
 		void convertIdeologySupport(const set<string>& majorIdeologies, const governmentMapper& governmentMap);
 		void determineShipVariants(const std::vector<HoI4::shipVariant>& possibleVariants);
 		void convertNavies(
-			const map<string, HoI4::UnitMap>& unitMap,
-			const map<string, std::vector<HoI4::UnitMap>>& mtgUnitMap,
+			const HoI4::UnitMappings& unitMap,
+			const map<string, std::vector<HoI4::HoI4UnitType>>& mtgUnitMap,
 			const HoI4::coastalProvinces& theCoastalProvinces,
 			const std::map<int, int>& provinceToStateIDMap
 		);
-		void convertConvoys(const map<string, HoI4::UnitMap>& unitMap);
-		void convertAirforce(const map<string, HoI4::UnitMap>& unitMap);
+		void convertConvoys(const HoI4::UnitMappings& unitMap);
+		void convertAirforce(const HoI4::UnitMappings& unitMap);
 		void convertArmies(const HoI4::militaryMappings& theMilitaryMappings);
 		void convertTechnology(std::unique_ptr<mappers::techMapper>& theTechMapper);
 		void addState(HoI4::State* _state);

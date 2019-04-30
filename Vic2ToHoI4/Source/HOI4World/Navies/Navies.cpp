@@ -31,8 +31,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 HoI4::Navies::Navies(
 	std::vector<const Vic2::Army*> srcArmies,
 	int backupNavalLocation,
-	const std::map<std::string, HoI4::UnitMap>& unitMap,
-	const std::map<std::string, std::vector<HoI4::UnitMap>>& mtgUnitMap,
+	const UnitMappings& unitMap,
+	const std::map<std::string, std::vector<HoI4::HoI4UnitType>>& mtgUnitMap,
 	const HoI4::shipVariants& theShipVariants,
 	const HoI4::coastalProvinces& theCoastalProvinces,
 	const std::map<int, int>& provinceToStateIDMap,
@@ -81,9 +81,9 @@ HoI4::Navies::Navies(
 		for (auto regiment : army->getRegiments())
 		{
 			std::string type = regiment->getType();
-			if (unitMap.count(type) > 0)
+			if (unitMap.hasMatchingType(type))
 			{
-				HoI4::UnitMap unitInfo = unitMap.at(type);
+				HoI4::HoI4UnitType unitInfo = unitMap.getMatchingUnitInfo(type);
 
 				if (unitInfo.getCategory() == "naval")
 				{
@@ -97,12 +97,12 @@ HoI4::Navies::Navies(
 			}
 			if (mtgUnitMap.count(type) > 0)
 			{
-				std::vector<HoI4::UnitMap> unitInfos = mtgUnitMap.at(type);
+				std::vector<HoI4::HoI4UnitType> unitInfos = mtgUnitMap.at(type);
 				for (auto unitInfo: unitInfos)
 				{
 					if ((unitInfo.getCategory() == "naval") && theShipVariants.hasVariant(unitInfo.getVersion()))
 					{
-						float experience = regiment->getExperience() / 100.0;
+						float experience = static_cast<float>(regiment->getExperience() / 100);
 						HoI4::MtgShip newMtgShip(regiment->getName(), unitInfo.getType(), unitInfo.getEquipment(), tag, unitInfo.getVersion(), experience);
 						newMtgNavy.addShip(newMtgShip);
 					}

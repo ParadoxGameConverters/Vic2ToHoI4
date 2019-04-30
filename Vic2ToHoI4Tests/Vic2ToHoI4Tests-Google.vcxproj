@@ -92,7 +92,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MapData.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MilitaryMappings.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\UnitMap.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\HoI4UnitType.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\UnitMapping.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\UnitMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\LegacyNavy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\LegacyShip.cpp" />
@@ -156,7 +158,9 @@
     <ClCompile Include="HoI4WorldTests\ShipVariantsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipVariantTests.cpp" />
     <ClCompile Include="HoI4WorldTests\TechnologiesTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\UnitMapTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\UnitMappingsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\UnitMappingTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\HoI4UnitTypeTests.cpp" />
     <ClCompile Include="MapperTests\TechMapperTests.cpp" />
     <ClCompile Include="Mocks\TechnologiesMock.h" />
     <ClCompile Include="Vic2ToHoI4ConverterTests.cpp" />

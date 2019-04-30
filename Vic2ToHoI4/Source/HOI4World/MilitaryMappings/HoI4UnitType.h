@@ -21,47 +21,52 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "AllMilitaryMappings.h"
-#include <fstream>
+#ifndef UNIT_MAP_H
+#define UNIT_MAP_H
 
 
 
-HoI4::allMilitaryMappings::allMilitaryMappings(std::istream& theStream)
+#include "newParser.h"
+#include <istream>
+#include <iostream>
+#include <string>
+
+
+
+namespace HoI4
 {
-	registerKeyword(std::regex("[a-zA-Z0-9]+"), [this](const std::string& mod, std::istream& theStream)
-	{
-		militaryMappings newMappings(mod, theStream);
-		theMappings.insert(std::make_pair(mod, std::move(newMappings)));
-	});
 
-	parseStream(theStream);
+
+class HoI4UnitType: commonItems::parser
+{
+	public:
+		HoI4UnitType(std::istream& theStream);
+		HoI4UnitType() = default;
+		~HoI4UnitType() = default;
+		HoI4UnitType(const HoI4UnitType&) = default;
+		HoI4UnitType(HoI4UnitType&&) = default;
+		HoI4UnitType& operator=(const HoI4UnitType&) = default;
+		HoI4UnitType& operator=(HoI4UnitType&&) = default;
+
+		bool operator==(const HoI4UnitType&);
+
+		std::string getCategory() const { return category; }
+		std::string getType() const { return type; }
+		std::string getEquipment() const { return equipment; }
+		std::string getVersion() const { return version; }
+		int getSize() const { return size; }
+
+	private:
+		std::string category;
+		std::string type;
+		std::string equipment;
+		std::string version;
+		int size = 0;
+};
+
+
 }
 
 
-const HoI4::militaryMappings& HoI4::allMilitaryMappings::getMilitaryMappings(const std::vector<std::string>& Vic2Mods) const
-{
-	for (auto mod: Vic2Mods)
-	{
-		if (auto& mapping = theMappings.find(mod); mapping != theMappings.end())
-		{
-			return mapping->second;
-		}
-	}
 
-	return theMappings.at("default");
-}
-
-
-HoI4::militaryMappingsFile::militaryMappingsFile()
-{
-	std::ifstream unitMappingFile("unit_mappings.txt");
-	if (unitMappingFile.is_open())
-	{
-		theMilitaryMappings = std::make_unique<allMilitaryMappings>(unitMappingFile);
-		unitMappingFile.close();
-	}
-	else
-	{
-		throw("Could not open unit_mappings.txt");
-	}
-}
+#endif // UNIT_MAP_H

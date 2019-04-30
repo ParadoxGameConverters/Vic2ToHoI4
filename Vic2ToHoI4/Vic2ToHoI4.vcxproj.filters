@@ -270,9 +270,6 @@
     <ClCompile Include="Source\HOI4World\MilitaryMappings\MilitaryMappings.cpp">
       <Filter>HoI4World\MilitaryMappings</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMap.cpp">
-      <Filter>HoI4World\MilitaryMappings</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Technologies.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
@@ -308,6 +305,15 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Navies\Navies.cpp">
       <Filter>HoI4World\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMapping.cpp">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMappings.cpp">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\HoI4UnitType.cpp">
+      <Filter>HoI4World\MilitaryMappings</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -554,9 +560,6 @@
     <ClInclude Include="Source\HOI4World\MilitaryMappings\MilitaryMappings.h">
       <Filter>HoI4World\MilitaryMappings</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\MilitaryMappings\UnitMap.h">
-      <Filter>HoI4World\MilitaryMappings</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Technologies.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
@@ -595,6 +598,15 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Navies\Navies.h">
       <Filter>HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\UnitMapping.h">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\UnitMappings.h">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\HoI4UnitType.h">
+      <Filter>HoI4World\MilitaryMappings</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
