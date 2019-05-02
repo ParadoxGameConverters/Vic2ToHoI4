@@ -25,7 +25,34 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Vic2ToHoI4/Source/HOI4World/MilitaryMappings/MilitaryMappings.h"
 
 
-TEST(HoI4World_militaryMappingsTests, missingMapSectionThrowsError)
+TEST(HoI4World_militaryMappingsTests, missingUnitMapSectionThrowsError)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\tmtg_unit_map = {\n";
+	input << "\t}";
+	input << "}";
+
+	ASSERT_THROW(HoI4::militaryMappings theMappings(std::string(""), input), std::invalid_argument);
+}
+
+
+TEST(HoI4World_militaryMappingsTests, unitMapSectionCanBeInput)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\tunit_map = {\n";
+	input << "\t}";
+	input << "\tmtg_unit_map = {\n";
+	input << "\t}";
+	input << "}";
+	HoI4::militaryMappings theMappings(std::string(""), input);
+
+	ASSERT_NO_THROW(theMappings.getUnitMappings());
+}
+
+
+TEST(HoI4World_militaryMappingsTests, missingMtgUnitMapSectionThrowsError)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -39,12 +66,14 @@ TEST(HoI4World_militaryMappingsTests, MapSectionCanBeInput)
 {
 	std::stringstream input;
 	input << "= {\n";
-	input << "\tmap = {\n";
+	input << "\tunit_map = {\n";
+	input << "\t}";
+	input << "\tmtg_unit_map = {\n";
 	input << "\t}";
 	input << "}";
 	HoI4::militaryMappings theMappings(std::string(""), input);
 
-	ASSERT_NO_THROW(theMappings.getUnitMap());
+	ASSERT_NO_THROW(theMappings.getMtgUnitMappings());
 }
 
 
@@ -52,7 +81,8 @@ TEST(HoI4World_militaryMappingsTests, emptyDivisionTemplatesStaysEmpty)
 {
 	std::stringstream input(
 		"= {\n"\
-		"\tmap = {}\n"\
+		"\tunit_map = {}\n"\
+		"\tmtg_unit_map = {}\n"\
 		"\tdivision_templates = {\n"\
 		"\t}"\
 		"}"
@@ -66,7 +96,8 @@ TEST(HoI4World_militaryMappingsTests, TemplateAddedToDivisionTemplateMapping)
 {
 	std::stringstream input(
 		"= {\n"\
-		"\tmap = {}\n"\
+		"\tunit_map = {}\n"\
+		"\tmtg_unit_map = {}\n"\
 		"\tdivision_templates = {\n"\
 		"\t\tdivision_template = {\n"\
 		"\t\t\tname = \"Light Infantry Brigade\"\n"\
@@ -84,7 +115,8 @@ TEST(HoI4World_militaryMappingsTests, emptySubstitutesStaysEmpty)
 {
 	std::stringstream input(
 		"= {\n"\
-		"\tmap = {}\n"\
+		"\tunit_map = {}\n"\
+		"\tmtg_unit_map = {}\n"\
 		"\tsubstitutes = {\n"\
 		"\t}"\
 		"}"
@@ -98,7 +130,8 @@ TEST(HoI4World_militaryMappingsTests, substituteAddedToSubstitutes)
 {
 	std::stringstream input(
 		"= {\n"\
-		"\tmap = {}\n"\
+		"\tunit_map = {}\n"\
+		"\tmtg_unit_map = {}\n"\
 		"\tsubstitutes = {\n"\
 		"\t\tartillery = artillery_brigade\n"\
 		"\t}"\
@@ -113,7 +146,8 @@ TEST(HoI4World_militaryMappingsTests, substituteNameInList)
 {
 	std::stringstream input(
 		"= {\n"\
-		"\tmap = {}\n"\
+		"\tunit_map = {}\n"\
+		"\tmtg_unit_map = {}\n"\
 		"\tsubstitutes = {\n"\
 		"\t\tartillery = artillery_brigade\n"\
 		"\t}"\
@@ -128,7 +162,8 @@ TEST(HoI4World_militaryMappingsTests, substituteAlternateInMapping)
 {
 	std::stringstream input(
 		"= {\n"\
-		"\tmap = {}\n"\
+		"\tunit_map = {}\n"\
+		"\tmtg_unit_map = {}\n"\
 		"\tsubstitutes = {\n"\
 		"\t\tartillery = artillery_brigade\n"\
 		"\t}"\

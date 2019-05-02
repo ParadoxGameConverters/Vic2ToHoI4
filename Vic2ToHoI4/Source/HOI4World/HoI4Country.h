@@ -36,8 +36,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4Province.h"
 #include "HoI4Relations.h"
 #include "HoI4State.h"
-#include "Navies/Navies.h"
+#include "MilitaryMappings/MtgUnitMappings.h"
 #include "MilitaryMappings/UnitMappings.h"
+#include "Navies/Navies.h"
 #include "ShipTypes/PossibleShipVariants.h"
 #include "ShipTypes/ShipVariant.h"
 #include "ShipTypes/ShipVariants.h"
@@ -103,7 +104,7 @@ class HoI4Country
 		void determineShipVariants(const std::vector<HoI4::shipVariant>& possibleVariants);
 		void convertNavies(
 			const HoI4::UnitMappings& unitMap,
-			const map<string, std::vector<HoI4::HoI4UnitType>>& mtgUnitMap,
+			const HoI4::MtgUnitMappings& mtgUnitMap,
 			const HoI4::coastalProvinces& theCoastalProvinces,
 			const std::map<int, int>& provinceToStateIDMap
 		);

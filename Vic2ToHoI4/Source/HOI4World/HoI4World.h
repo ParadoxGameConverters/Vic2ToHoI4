@@ -160,7 +160,7 @@ class World: commonItems::parser
 		void convertArmies(const militaryMappings& theMilitaryMappings);
 		void convertNavies(
 			const UnitMappings& unitMap,
-			const map<string, std::vector<HoI4::HoI4UnitType>>& mtgUnitMap);
+			const MtgUnitMappings& mtgUnitMap);
 		void convertAirforces(const UnitMappings& unitMap);
 
 		void determineGreatPowers();

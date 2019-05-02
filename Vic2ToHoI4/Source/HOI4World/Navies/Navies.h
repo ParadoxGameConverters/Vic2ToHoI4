@@ -31,6 +31,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../CoastalProvinces.h"
 #include "../HoI4State.h"
 #include "../MilitaryMappings/HoI4UnitType.h"
+#include "../MilitaryMappings/MtgUnitMappings.h"
 #include "../MilitaryMappings/UnitMappings.h"
 #include "../ShipTypes/ShipVariants.h"
 #include "../../V2World/Army.h"
@@ -51,7 +52,7 @@ class Navies
 			std::vector<const Vic2::Army*> srcArmies,
 			int backupNavalLocation,
 			const UnitMappings& unitMap,
-			const std::map<std::string, std::vector<HoI4::HoI4UnitType>>& mtgUnitMap,
+			const MtgUnitMappings& mtgUnitMap,
 			const HoI4::shipVariants& theShipVariants,
 			const HoI4::coastalProvinces& theCoastalProvinces,
 			const std::map<int, int>& provinceToStateIDMap,

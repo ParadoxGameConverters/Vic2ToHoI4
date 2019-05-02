@@ -32,7 +32,7 @@ HoI4::Navies::Navies(
 	std::vector<const Vic2::Army*> srcArmies,
 	int backupNavalLocation,
 	const UnitMappings& unitMap,
-	const std::map<std::string, std::vector<HoI4::HoI4UnitType>>& mtgUnitMap,
+	const MtgUnitMappings& mtgUnitMap,
 	const HoI4::shipVariants& theShipVariants,
 	const HoI4::coastalProvinces& theCoastalProvinces,
 	const std::map<int, int>& provinceToStateIDMap,
@@ -95,9 +95,9 @@ HoI4::Navies::Navies(
 			{
 				LOG(LogLevel::Warning) << "Unknown legacy unit type: " << type;
 			}
-			if (mtgUnitMap.count(type) > 0)
+			if (mtgUnitMap.hasMatchingType(type))
 			{
-				std::vector<HoI4::HoI4UnitType> unitInfos = mtgUnitMap.at(type);
+				std::vector<HoI4::HoI4UnitType> unitInfos = mtgUnitMap.getMatchingUnitInfo(type);
 				for (auto unitInfo: unitInfos)
 				{
 					if ((unitInfo.getCategory() == "naval") && theShipVariants.hasVariant(unitInfo.getVersion()))

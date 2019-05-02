@@ -21,33 +21,23 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef UNIT_MAPPING_H_
-#define UNIT_MAPPING_H_
+#include "MtgUnitMapping.h"
+#include "ParserHelpers.h"
 
 
 
-#include "HoI4UnitType.h"
-#include "newParser.h"
-
-
-
-namespace HoI4
+HoI4::MtgUnitMapping::MtgUnitMapping(std::istream& theStream)
 {
+	registerKeyword(std::regex("vic"), [this](const std::string & unused, std::istream & theStream)
+	{
+		commonItems::singleString typeString(theStream);
+		Vic2Type = typeString.getString();
+	});
+	registerKeyword(std::regex("hoi"), [this](const std::string & unused, std::istream & theStream)
+	{
+		HoI4::HoI4UnitType theUnit(theStream);
+		HoI4Types.push_back(theUnit);
+	});
 
-class UnitMapping: commonItems::parser
-{
-	public:
-		UnitMapping(std::istream& theStream);
-
-		auto getMappings() const { return std::make_pair(Vic2Type, HoI4Type); }
-
-	private:
-		std::string Vic2Type;
-		HoI4UnitType HoI4Type;
-};
-
+	parseStream(theStream);
 }
-
-
-
-#endif // UNIT_MAPPING_H_

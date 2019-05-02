@@ -21,33 +21,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef UNIT_MAPPING_H_
-#define UNIT_MAPPING_H_
+#ifndef DIVISION_TEMPLATE_TYPE_H
+#define DIVISION_TEMPLATE_TYPE_H
 
 
 
-#include "HoI4UnitType.h"
-#include "newParser.h"
 
 
-
-namespace HoI4
-{
-
-class UnitMapping: commonItems::parser
-{
-	public:
-		UnitMapping(std::istream& theStream);
-
-		auto getMappings() const { return std::make_pair(Vic2Type, HoI4Type); }
-
-	private:
-		std::string Vic2Type;
-		HoI4UnitType HoI4Type;
-};
-
-}
-
-
-
-#endif // UNIT_MAPPING_H_
+#endif // DIVISION_TEMPLATE_TYPE_H

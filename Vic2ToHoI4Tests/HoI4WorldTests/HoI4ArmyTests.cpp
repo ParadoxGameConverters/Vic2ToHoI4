@@ -45,7 +45,8 @@ TEST(HoI4World_HoI4ArmyTests, EmptyArmyStaysEmpty)
 
 	std::stringstream mappingsInput;
 	mappingsInput << "= {\n";
-	mappingsInput << "\tmap = {}\n";
+	mappingsInput << "\tunit_map = {}\n";
+	mappingsInput << "\tmtg_unit_map = {}\n";
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 	theArmy.convertArmies(theMilitaryMappings, 0, 1.0);
@@ -60,28 +61,29 @@ TEST(HoI4World_HoI4ArmyTests, InsufficientDivisionsBecomeNothing)
 {
 	HoI4::Army theArmy;
 
-	std::stringstream mappingsInput("= {\n"\
-											"\tmap = {\n"\
-											"\t\tlink = {\n"\
-											"\t\t\tvic = infantry\n"\
-											"\t\t\thoi = {\n"\
-											"\t\t\t\tcategory = land\n"\
-											"\t\t\t\ttype = infantry\n"\
-											"\t\t\t\tequipment = infantry_equipment_0\n"\
-											"\t\t\t\tsize = 3\n"\
-											"\t\t\t}\n"\
-											"\t\t}\n"\
-											"\t}\n"\
-											"\tdivision_templates = {\n"\
-											"\t\tdivision_template= {\n"\
-											"\t\t\tname = \"Light Infantry Brigade\"\n"\
-											"\t\t\tregiments = {\n"\
-											"\t\t\t\tinfantry = { x = 0 y = 0 }\n"\
-											"\t\t\t}\n"\
-											"\t\t}\n"\
-											"\t}\n"\
-											"}"
-	);
+	std::stringstream mappingsInput;
+	mappingsInput << "= {\n";
+	mappingsInput << "\tmtg_unit_map = {}\n";
+	mappingsInput << "\tunit_map = {\n";
+	mappingsInput << "\t\tlink = {\n";
+	mappingsInput << "\t\t\tvic = infantry\n";
+	mappingsInput << "\t\t\thoi = {\n";
+	mappingsInput << "\t\t\t\tcategory = land\n";
+	mappingsInput << "\t\t\t\ttype = infantry\n";
+	mappingsInput << "\t\t\t\tequipment = infantry_equipment_0\n";
+	mappingsInput << "\t\t\t\tsize = 3\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "\tdivision_templates = {\n";
+	mappingsInput << "\t\tdivision_template= {\n";
+	mappingsInput << "\t\t\tname = \"Light Infantry Brigade\"\n";
+	mappingsInput << "\t\t\tregiments = {\n";
+	mappingsInput << "\t\t\t\tinfantry = { x = 0 y = 0 }\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 	theArmy.convertArmies(theMilitaryMappings, 0, 1.0);
 
@@ -114,28 +116,29 @@ TEST(HoI4World_HoI4ArmyTests, SufficientDivisionsConvert)
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
-	std::stringstream mappingsInput("= {\n"\
-												"\tmap = {\n"\
-												"\t\tlink = {\n"\
-												"\t\t\tvic = infantry\n"\
-												"\t\t\thoi = {\n"\
-												"\t\t\t\tcategory = land\n"\
-												"\t\t\t\ttype = infantry\n"\
-												"\t\t\t\tequipment = infantry_equipment_0\n"\
-												"\t\t\t\tsize = 3\n"\
-												"\t\t\t}\n"\
-												"\t\t}\n"\
-												"\t}\n"\
-												"\tdivision_templates = {\n"\
-												"\t\tdivision_template= {\n"\
-												"\t\t\tname = \"Light Infantry Brigade\"\n"\
-												"\t\t\tregiments = {\n"\
-												"\t\t\t\tinfantry = { x = 0 y = 0 }\n"\
-												"\t\t\t}\n"\
-												"\t\t}\n"\
-												"\t}\n"\
-												"}"
-	);
+	std::stringstream mappingsInput;
+	mappingsInput << "= {\n";
+	mappingsInput << "\tmtg_unit_map = {}\n";
+	mappingsInput << "\tunit_map = {\n";
+	mappingsInput << "\t\tlink = {\n";
+	mappingsInput << "\t\t\tvic = infantry\n";
+	mappingsInput << "\t\t\thoi = {\n";
+	mappingsInput << "\t\t\t\tcategory = land\n";
+	mappingsInput << "\t\t\t\ttype = infantry\n";
+	mappingsInput << "\t\t\t\tequipment = infantry_equipment_0\n";
+	mappingsInput << "\t\t\t\tsize = 3\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "\tdivision_templates = {\n";
+	mappingsInput << "\t\tdivision_template= {\n";
+	mappingsInput << "\t\t\tname = \"Light Infantry Brigade\"\n";
+	mappingsInput << "\t\t\tregiments = {\n";
+	mappingsInput << "\t\t\t\tinfantry = { x = 0 y = 0 }\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 	theArmy.convertArmies(theMilitaryMappings, 0, 1.0);
 
@@ -190,28 +193,29 @@ TEST(HoI4World_HoI4ArmyTests, ExperienceConverts)
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
-	std::stringstream mappingsInput("= {\n"\
-												"\tmap = {\n"\
-												"\t\tlink = {\n"\
-												"\t\t\tvic = infantry\n"\
-												"\t\t\thoi = {\n"\
-												"\t\t\t\tcategory = land\n"\
-												"\t\t\t\ttype = infantry\n"\
-												"\t\t\t\tequipment = infantry_equipment_0\n"\
-												"\t\t\t\tsize = 3\n"\
-												"\t\t\t}\n"\
-												"\t\t}\n"\
-												"\t}\n"\
-												"\tdivision_templates = {\n"\
-												"\t\tdivision_template= {\n"\
-												"\t\t\tname = \"Light Infantry Brigade\"\n"\
-												"\t\t\tregiments = {\n"\
-												"\t\t\t\tinfantry = { x = 0 y = 0 }\n"\
-												"\t\t\t}\n"\
-												"\t\t}\n"\
-												"\t}\n"\
-												"}"
-	);
+	std::stringstream mappingsInput;
+	mappingsInput << "= {\n";
+	mappingsInput << "\tmtg_unit_map = {}\n";
+	mappingsInput << "\tunit_map = {\n";
+	mappingsInput << "\t\tlink = {\n";
+	mappingsInput << "\t\t\tvic = infantry\n";
+	mappingsInput << "\t\t\thoi = {\n";
+	mappingsInput << "\t\t\t\tcategory = land\n";
+	mappingsInput << "\t\t\t\ttype = infantry\n";
+	mappingsInput << "\t\t\t\tequipment = infantry_equipment_0\n";
+	mappingsInput << "\t\t\t\tsize = 3\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "\tdivision_templates = {\n";
+	mappingsInput << "\t\tdivision_template= {\n";
+	mappingsInput << "\t\t\tname = \"Light Infantry Brigade\"\n";
+	mappingsInput << "\t\t\tregiments = {\n";
+	mappingsInput << "\t\t\t\tinfantry = { x = 0 y = 0 }\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 	theArmy.convertArmies(theMilitaryMappings, 0, 1.0);
 
@@ -266,35 +270,36 @@ TEST(HoI4World_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
-	std::stringstream mappingsInput("= {\n"\
-												"\tmap = {\n"\
-												"\t\tlink = {\n"\
-												"\t\t\tvic = infantry\n"\
-												"\t\t\thoi = {\n"\
-												"\t\t\t\tcategory = land\n"\
-												"\t\t\t\ttype = infantry\n"\
-												"\t\t\t\tequipment = infantry_equipment_0\n"\
-												"\t\t\t\tsize = 3\n"\
-												"\t\t\t}\n"\
-												"\t\t}\n"\
-												"\t}\n"\
-												"\tdivision_templates = {\n"\
-												"\t\tdivision_template= {\n"\
-												"\t\t\tname = \"Infantry Brigade\"\n"\
-												"\t\t\tregiments = {\n"\
-												"\t\t\t\tinfantry = { x = 0 y = 0 }\n"\
-												"\t\t\t\tinfantry = { x = 1 y = 0 }\n"\
-												"\t\t\t}\n"\
-												"\t\t}\n"\
-												"\t\tdivision_template= {\n"\
-												"\t\t\tname = \"Light Infantry Brigade\"\n"\
-												"\t\t\tregiments = {\n"\
-												"\t\t\t\tinfantry = { x = 0 y = 0 }\n"\
-												"\t\t\t}\n"\
-												"\t\t}\n"\
-												"\t}\n"\
-												"}"
-	);
+	std::stringstream mappingsInput;
+	mappingsInput << "= {\n";
+	mappingsInput << "\tmtg_unit_map = {}\n";
+	mappingsInput << "\tunit_map = {\n";
+	mappingsInput << "\t\tlink = {\n";
+	mappingsInput << "\t\t\tvic = infantry\n";
+	mappingsInput << "\t\t\thoi = {\n";
+	mappingsInput << "\t\t\t\tcategory = land\n";
+	mappingsInput << "\t\t\t\ttype = infantry\n";
+	mappingsInput << "\t\t\t\tequipment = infantry_equipment_0\n";
+	mappingsInput << "\t\t\t\tsize = 3\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "\tdivision_templates = {\n";
+	mappingsInput << "\t\tdivision_template= {\n";
+	mappingsInput << "\t\t\tname = \"Infantry Brigade\"\n";
+	mappingsInput << "\t\t\tregiments = {\n";
+	mappingsInput << "\t\t\t\tinfantry = { x = 0 y = 0 }\n";
+	mappingsInput << "\t\t\t\tinfantry = { x = 1 y = 0 }\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t\tdivision_template= {\n";
+	mappingsInput << "\t\t\tname = \"Light Infantry Brigade\"\n";
+	mappingsInput << "\t\t\tregiments = {\n";
+	mappingsInput << "\t\t\t\tinfantry = { x = 0 y = 0 }\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 	theArmy.convertArmies(theMilitaryMappings, 0, 1.0);
 
@@ -344,43 +349,44 @@ TEST(HoI4World_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
-	std::stringstream mappingsInput("= {\n"\
-												"\tmap = {\n"\
-												"\t\tlink = {\n"\
-												"\t\t\tvic = infantry\n"\
-												"\t\t\thoi = {\n"\
-												"\t\t\t\tcategory = land\n"\
-												"\t\t\t\ttype = infantry\n"\
-												"\t\t\t\tequipment = infantry_equipment_0\n"\
-												"\t\t\t\tsize = 1\n"\
-												"\t\t\t}\n"\
-												"\t\t}\n"\
-												"\t\tlink = {\n"\
-												"\t\t\tvic = artillery\n"\
-												"\t\t\thoi = {\n"\
-												"\t\t\t\tcategory = land\n"\
-												"\t\t\t\ttype = artillery_brigade\n"\
-												"\t\t\t\tequipment = artillery_equipment_0\n"\
-												"\t\t\t\tsize = 1\n"\
-												"\t\t\t}\n"\
-												"\t\t}\n"\
-												"\t}\n"\
-												"\tdivision_templates = {\n"\
-												"\t\tdivision_template= {\n"\
-												"\t\t\tname = \"Light Infantry Brigade\"\n"\
-												"\t\t\tregiments = {\n"\
-												"\t\t\t\tinfantry = { x = 0 y = 0 }\n"\
-												"\t\t\t}\n"\
-												"\t\t\tsupport = {\n"\
-												"\t\t\t\tartillery = { x = 0 y = 0 }\n"\
-												"\t\t\t}\n"\
-												"\t\t}\n"\
-												"\t}\n"\
-												"\tsubstitutes = {\n"\
-												"\t\tartillery = artillery_brigade\n"\
-												"\t}\n"\
-												"}"
-	);
+	std::stringstream mappingsInput;
+	mappingsInput << "= {\n";
+	mappingsInput << "\tmtg_unit_map = {}\n";
+	mappingsInput << "\tunit_map = {\n";
+	mappingsInput << "\t\tlink = {\n";
+	mappingsInput << "\t\t\tvic = infantry\n";
+	mappingsInput << "\t\t\thoi = {\n";
+	mappingsInput << "\t\t\t\tcategory = land\n";
+	mappingsInput << "\t\t\t\ttype = infantry\n";
+	mappingsInput << "\t\t\t\tequipment = infantry_equipment_0\n";
+	mappingsInput << "\t\t\t\tsize = 1\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t\tlink = {\n";
+	mappingsInput << "\t\t\tvic = artillery\n";
+	mappingsInput << "\t\t\thoi = {\n";
+	mappingsInput << "\t\t\t\tcategory = land\n";
+	mappingsInput << "\t\t\t\ttype = artillery_brigade\n";
+	mappingsInput << "\t\t\t\tequipment = artillery_equipment_0\n";
+	mappingsInput << "\t\t\t\tsize = 1\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "\tdivision_templates = {\n";
+	mappingsInput << "\t\tdivision_template= {\n";
+	mappingsInput << "\t\t\tname = \"Light Infantry Brigade\"\n";
+	mappingsInput << "\t\t\tregiments = {\n";
+	mappingsInput << "\t\t\t\tinfantry = { x = 0 y = 0 }\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t\tsupport = {\n";
+	mappingsInput << "\t\t\t\tartillery = { x = 0 y = 0 }\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "\tsubstitutes = {\n";
+	mappingsInput << "\t\tartillery = artillery_brigade\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 	theArmy.convertArmies(theMilitaryMappings, 0, 1.0);
 
@@ -437,29 +443,30 @@ TEST(HoI4World_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 	Vic2Armies.push_back(Vic2Army2);
 	theArmy.addSourceArmies(Vic2Armies);
 
-	std::stringstream mappingsInput("= {\n"\
-												"\tmap = {\n"\
-												"\t\tlink = {\n"\
-												"\t\t\tvic = infantry\n"\
-												"\t\t\thoi = {\n"\
-												"\t\t\t\tcategory = land\n"\
-												"\t\t\t\ttype = infantry\n"\
-												"\t\t\t\tequipment = infantry_equipment_0\n"\
-												"\t\t\t\tsize = 1\n"\
-												"\t\t\t}\n"\
-												"\t\t}\n"\
-												"\t}\n"\
-												"\tdivision_templates = {\n"\
-												"\t\tdivision_template= {\n"\
-												"\t\t\tname = \"Light Infantry Brigade\"\n"\
-												"\t\t\tregiments = {\n"\
-												"\t\t\t\tinfantry = { x = 0 y = 0 }\n"\
-												"\t\t\t\tinfantry = { x = 1 y = 0 }\n"\
-												"\t\t\t}\n"\
-												"\t\t}\n"\
-												"\t}\n"\
-												"}"
-	);
+	std::stringstream mappingsInput;
+	mappingsInput << "= {\n";
+	mappingsInput << "\tmtg_unit_map = {}\n";
+	mappingsInput << "\tunit_map = {\n";
+	mappingsInput << "\t\tlink = {\n";
+	mappingsInput << "\t\t\tvic = infantry\n";
+	mappingsInput << "\t\t\thoi = {\n";
+	mappingsInput << "\t\t\t\tcategory = land\n";
+	mappingsInput << "\t\t\t\ttype = infantry\n";
+	mappingsInput << "\t\t\t\tequipment = infantry_equipment_0\n";
+	mappingsInput << "\t\t\t\tsize = 1\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "\tdivision_templates = {\n";
+	mappingsInput << "\t\tdivision_template= {\n";
+	mappingsInput << "\t\t\tname = \"Light Infantry Brigade\"\n";
+	mappingsInput << "\t\t\tregiments = {\n";
+	mappingsInput << "\t\t\t\tinfantry = { x = 0 y = 0 }\n";
+	mappingsInput << "\t\t\t\tinfantry = { x = 1 y = 0 }\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 	theArmy.convertArmies(theMilitaryMappings, 1, 1.0);
 
