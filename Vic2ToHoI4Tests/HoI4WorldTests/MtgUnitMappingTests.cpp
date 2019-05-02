@@ -22,23 +22,23 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "gtest/gtest.h"
-#include "../Vic2ToHoI4/Source/HOI4World/MilitaryMappings/UnitMapping.h"
+#include "../Vic2ToHoI4/Source/HOI4World/MilitaryMappings/MtgUnitMapping.h"
 
 
 
-TEST(HoI4World_unitMappingTests, defaultVic2TypeIsBlank)
+TEST(HoI4World_mtgUnitMappingTests, defaultVic2TypeIsBlank)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "\t}";
 
-	HoI4::UnitMapping theMapping(input);
+	HoI4::MtgUnitMapping theMapping(input);
 
-	ASSERT_EQ(theMapping.getMappings().first, "");
+	ASSERT_EQ(theMapping.getMapping().first, "");
 }
 
 
-TEST(HoI4World_unitMappingTests, Vic2TypeCanBeSet)
+TEST(HoI4World_mtgUnitMappingTests, Vic2TypeCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -47,26 +47,26 @@ TEST(HoI4World_unitMappingTests, Vic2TypeCanBeSet)
 	input << "\t\t}\n";
 	input << "\t}";
 
-	HoI4::UnitMapping theMapping(input);
+	HoI4::MtgUnitMapping theMapping(input);
 
-	ASSERT_EQ(theMapping.getMappings().first, "irregular");
+	ASSERT_EQ(theMapping.getMapping().first, "irregular");
 }
 
 
-TEST(HoI4World_unitMappingTests, defaultHoI4TypeIsBlank)
+TEST(HoI4World_mtgUnitMappingTests, noHoI4MeansEmptyVector)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "\t}";
 
-	HoI4::UnitMapping theMapping(input);
+	HoI4::MtgUnitMapping theMapping(input);
 	HoI4::HoI4UnitType blankHoI4Type;
 
-	ASSERT_TRUE(theMapping.getMappings().second == blankHoI4Type);
+	ASSERT_TRUE(theMapping.getMapping().second.empty());
 }
 
 
-TEST(HoI4World_unitMappingTests, UnitMappingHandlesFilledHoI4UnitTypeCorrectly)
+TEST(HoI4World_mtgUnitMappingTests, MtgUnitMappingHandlesFilledHoI4UnitTypeCorrectly)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -80,6 +80,28 @@ TEST(HoI4World_unitMappingTests, UnitMappingHandlesFilledHoI4UnitTypeCorrectly)
 	input << "\t}";
 	input << "}";
 
-	HoI4::UnitMapping theMapping(input);
-	ASSERT_EQ(std::string("land"), theMapping.getMappings().second.getType());
+	HoI4::MtgUnitMapping theMapping(input);
+	ASSERT_EQ(std::string("land"), theMapping.getMapping().second[0].getType());
+}
+
+
+TEST(HoI4World_mtgUnitMappingTests, MtgUnitMappingHandlesMultipleHoI4Type)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\tmap = {\n";
+	input << "\t\tlink = {\n";
+	input << "\t\t\tvic = infantry\n";
+	input << "\t\t\thoi = {\n";
+	input << "\t\t\t\ttype = land\n";
+	input << "\t\t\t}\n";
+	input << "\t\t\thoi = {\n";
+	input << "\t\t\t\ttype = sea\n";
+	input << "\t\t\t}\n";
+	input << "\t\t}\n";
+	input << "\t}";
+	input << "}";
+
+	HoI4::MtgUnitMapping theMapping(input);
+	ASSERT_EQ(std::string("sea"), theMapping.getMapping().second[1].getType());
 }

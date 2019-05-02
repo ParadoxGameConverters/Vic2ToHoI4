@@ -48,9 +48,9 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings, int 
 		{
 			std::string Vic2Type = regiment->getType();
 
-			if (theMilitaryMappings.getUnitMap().hasMatchingType(Vic2Type))
+			if (theMilitaryMappings.getUnitMappings().hasMatchingType(Vic2Type))
 			{
-				HoI4::HoI4UnitType unitInfo = theMilitaryMappings.getUnitMap().getMatchingUnitInfo(Vic2Type);
+				HoI4::HoI4UnitType unitInfo = theMilitaryMappings.getUnitMappings().getMatchingUnitInfo(Vic2Type);
 
 				if (unitInfo.getCategory() == "land")
 				{

@@ -28,6 +28,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "../DivisionTemplate.h"
 #include "HoI4UnitType.h"
+#include "MtgUnitMappings.h"
 #include "UnitMappings.h"
 #include "newParser.h"
 #include <istream>
@@ -54,8 +55,8 @@ class militaryMappings: commonItems::parser
 		militaryMappings& operator=(militaryMappings&&) = default;
 
 		auto getMappingsName() const { return mappingsName; }
-		auto& getUnitMap() const { return *unitMappings; }
-		auto getMtGUnitMap() const { return mtgUnitMap; }
+		auto& getUnitMappings() const { return *unitMappings; }
+		auto& getMtgUnitMappings() const { return *mtgUnitMappings; }
 		auto getDivisionTemplates() const { return divisionTemplates; }
 		auto getSubstitutes() const { return substitutes; }
 
@@ -65,7 +66,7 @@ class militaryMappings: commonItems::parser
 
 		std::string mappingsName = "";
 		std::unique_ptr<UnitMappings> unitMappings;
-		std::map<std::string, std::vector<HoI4::HoI4UnitType>> mtgUnitMap;
+		std::unique_ptr<MtgUnitMappings> mtgUnitMappings;
 		std::vector<HoI4::DivisionTemplateType> divisionTemplates;
 		std::map<std::string, std::string> substitutes;
 };

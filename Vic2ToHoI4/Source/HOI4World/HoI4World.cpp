@@ -799,8 +799,8 @@ void HoI4::World::convertMilitaries()
 	const HoI4::militaryMappings& specificMappings = theMilitaryMappings->getMilitaryMappings(theConfiguration.getVic2Mods());
 
 	convertArmies(specificMappings);
-	convertNavies(specificMappings.getUnitMap(), specificMappings.getMtGUnitMap());
-	convertAirforces(specificMappings.getUnitMap());
+	convertNavies(specificMappings.getUnitMappings(), specificMappings.getMtgUnitMappings());
+	convertAirforces(specificMappings.getUnitMappings());
 }
 
 
@@ -817,7 +817,7 @@ void HoI4::World::convertArmies(const militaryMappings& theMilitaryMappings)
 
 void HoI4::World::convertNavies(
 	const UnitMappings& unitMap,
-	const map<string, std::vector<HoI4::HoI4UnitType>>& mtgUnitMap)
+	const MtgUnitMappings& mtgUnitMap)
 {
 	LOG(LogLevel::Info) << "Converting navies";
 

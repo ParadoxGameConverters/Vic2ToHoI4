@@ -101,7 +101,7 @@ TEST_F(HoI4World_NaviesTests, BlankNaviesOutputLegacyProperly)
 
 	std::stringstream input;
 	HoI4::UnitMappings unitMap(input);
-	std::map<std::string, std::vector<HoI4::HoI4UnitType>> mtgUnitMap;
+	HoI4::MtgUnitMappings mtgUnitMap(input);
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State*> states;
@@ -153,7 +153,8 @@ TEST_F(HoI4World_NaviesTests, ConvertedNaviesOutputLegacyProperly)
 	unitMappingsStream << "}\n";
 	HoI4::UnitMappings unitMappings(unitMappingsStream);
 
-	std::map<std::string, std::vector<HoI4::HoI4UnitType>> mtgUnitMap;
+	std::stringstream mtgUnitMappingStream;
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State*> states;
@@ -203,7 +204,8 @@ TEST_F(HoI4World_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
 	unitMappingsStream << "}\n";
 	HoI4::UnitMappings unitMappings(unitMappingsStream);
 
-	std::map<std::string, std::vector<HoI4::HoI4UnitType>> mtgUnitMap;
+	std::stringstream mtgUnitMappingStream;
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State*> states;
@@ -252,7 +254,8 @@ TEST_F(HoI4World_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
 	unitMappingsStream << "}\n";
 	HoI4::UnitMappings unitMappings(unitMappingsStream);
 
-	std::map<std::string, std::vector<HoI4::HoI4UnitType>> mtgUnitMap;
+	std::stringstream mtgUnitMappingStream;
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State*> states;
@@ -303,7 +306,8 @@ TEST_F(HoI4World_NaviesTests, LegacyNavyNamesConvert)
 	unitMappingsStream << "}\n";
 	HoI4::UnitMappings unitMappings(unitMappingsStream);
 
-	std::map<std::string, std::vector<HoI4::HoI4UnitType>> mtgUnitMap;
+	std::stringstream mtgUnitMappingStream;
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State*> states;
@@ -334,7 +338,7 @@ TEST_F(HoI4World_NaviesTests, BlankNaviesOutputMtgProperly)
 
 	std::stringstream input;
 	HoI4::UnitMappings unitMap(input);
-	std::map<std::string, std::vector<HoI4::HoI4UnitType>> mtgUnitMap;
+	HoI4::MtgUnitMappings mtgUnitMap(input);
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State*> states;
@@ -375,19 +379,18 @@ TEST_F(HoI4World_NaviesTests, ConvertedNaviesOutputMtgProperly)
 	std::stringstream input;
 	HoI4::UnitMappings unitMap(input);
 
-	std::map<std::string, std::vector<HoI4::HoI4UnitType>> mtgUnitMap;
-	std::stringstream unitMapStream;
-	unitMapStream << "{\n";
-	unitMapStream << "	category = naval\n";
-	unitMapStream << "	type = destroyer\n";
-	unitMapStream << "	equipment = ship_hull_light_2\n";
-	unitMapStream << "	version = \"1936 Destroyer\"\n";
-	unitMapStream << "	size = 1\n";
-	unitMapStream << "}\n";
-	HoI4::HoI4UnitType unitMapping(unitMapStream);
-	std::vector<HoI4::HoI4UnitType> unitMappings;
-	unitMappings.push_back(unitMapping);
-	mtgUnitMap.insert(std::make_pair(std::string("commerce_raider"), unitMappings));
+	std::stringstream mtgUnitMappingStream;
+	mtgUnitMappingStream << "link = {\n";
+	mtgUnitMappingStream << "	vic = commerce_raider\n";
+	mtgUnitMappingStream << "	hoi = {\n";
+	mtgUnitMappingStream << "		category = naval\n";
+	mtgUnitMappingStream << "		type = destroyer\n";
+	mtgUnitMappingStream << "		equipment = ship_hull_light_2\n";
+	mtgUnitMappingStream << "		version = \"1936 Destroyer\"\n";
+	mtgUnitMappingStream << "		size = 1\n";
+	mtgUnitMappingStream << "	}\n";
+	mtgUnitMappingStream << "}";
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
@@ -437,29 +440,25 @@ TEST_F(HoI4World_NaviesTests, OnlyConvertToAvailableMtgShipType)
 	std::stringstream input;
 	HoI4::UnitMappings unitMap(input);
 
-	std::map<std::string, std::vector<HoI4::HoI4UnitType>> mtgUnitMap;
-	std::vector<HoI4::HoI4UnitType> unitMappings;
-	std::stringstream unitMapStream;
-	unitMapStream << "{\n";
-	unitMapStream << "	category = naval\n";
-	unitMapStream << "	type = destroyer\n";
-	unitMapStream << "	equipment = ship_hull_light_2\n";
-	unitMapStream << "	version = \"1936 Destroyer\"\n";
-	unitMapStream << "	size = 1\n";
-	unitMapStream << "}\n";
-	HoI4::HoI4UnitType unitMapping(unitMapStream);
-	unitMappings.push_back(unitMapping);
-	std::stringstream unitMapStream2;
-	unitMapStream2 << "{\n";
-	unitMapStream2 << "	category = naval\n";
-	unitMapStream2 << "	type = destroyer\n";
-	unitMapStream2 << "	equipment = ship_hull_light_1\n";
-	unitMapStream2 << "	version = \"Early Destroyer\"\n";
-	unitMapStream2 << "	size = 1\n";
-	unitMapStream2 << "}\n";
-	HoI4::HoI4UnitType unitMapping2(unitMapStream2);
-	unitMappings.push_back(unitMapping2);
-	mtgUnitMap.insert(std::make_pair(std::string("commerce_raider"), unitMappings));
+	std::stringstream mtgUnitMappingStream;
+	mtgUnitMappingStream << "link = {\n";
+	mtgUnitMappingStream << "	vic = commerce_raider\n";
+	mtgUnitMappingStream << "	hoi = {\n";
+	mtgUnitMappingStream << "		category = naval\n";
+	mtgUnitMappingStream << "		type = destroyer\n";
+	mtgUnitMappingStream << "		equipment = ship_hull_light_2\n";
+	mtgUnitMappingStream << "		version = \"1936 Destroyer\"\n";
+	mtgUnitMappingStream << "		size = 1\n";
+	mtgUnitMappingStream << "	}\n";
+	mtgUnitMappingStream << "	hoi = {\n";
+	mtgUnitMappingStream << "		category = naval\n";
+	mtgUnitMappingStream << "		type = destroyer\n";
+	mtgUnitMappingStream << "		equipment = ship_hull_light_1\n";
+	mtgUnitMappingStream << "		version = \"Early Destroyer\"\n";
+	mtgUnitMappingStream << "		size = 1\n";
+	mtgUnitMappingStream << "	}\n";
+	mtgUnitMappingStream << "}";
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
@@ -509,19 +508,18 @@ TEST_F(HoI4World_NaviesTests, ConvertedNaviesGetExperience)
 	std::stringstream input;
 	HoI4::UnitMappings unitMap(input);
 
-	std::map<std::string, std::vector<HoI4::HoI4UnitType>> mtgUnitMap;
-	std::stringstream unitMapStream;
-	unitMapStream << "{\n";
-	unitMapStream << "	category = naval\n";
-	unitMapStream << "	type = destroyer\n";
-	unitMapStream << "	equipment = ship_hull_light_2\n";
-	unitMapStream << "	version = \"1936 Destroyer\"\n";
-	unitMapStream << "	size = 1\n";
-	unitMapStream << "}\n";
-	HoI4::HoI4UnitType unitMapping(unitMapStream);
-	std::vector<HoI4::HoI4UnitType> unitMappings;
-	unitMappings.push_back(unitMapping);
-	mtgUnitMap.insert(std::make_pair(std::string("commerce_raider"), unitMappings));
+	std::stringstream mtgUnitMappingStream;
+	mtgUnitMappingStream << "link = {\n";
+	mtgUnitMappingStream << "	vic = commerce_raider\n";
+	mtgUnitMappingStream << "	hoi = {\n";
+	mtgUnitMappingStream << "		category = naval\n";
+	mtgUnitMappingStream << "		type = destroyer\n";
+	mtgUnitMappingStream << "		equipment = ship_hull_light_2\n";
+	mtgUnitMappingStream << "		version = \"1936 Destroyer\"\n";
+	mtgUnitMappingStream << "		size = 1\n";
+	mtgUnitMappingStream << "	}\n";
+	mtgUnitMappingStream << "}";
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
@@ -563,19 +561,18 @@ TEST_F(HoI4World_NaviesTests, NaviesWithoutShipsDontConvertToMtg)
 	std::stringstream input;
 	HoI4::UnitMappings unitMap(input);
 
-	std::map<std::string, std::vector<HoI4::HoI4UnitType>> mtgUnitMap;
-	std::stringstream unitMapStream;
-	unitMapStream << "{\n";
-	unitMapStream << "	category = naval\n";
-	unitMapStream << "	type = destroyer\n";
-	unitMapStream << "	equipment = ship_hull_light_2\n";
-	unitMapStream << "	version = \"1936 Destroyer\"\n";
-	unitMapStream << "	size = 1\n";
-	unitMapStream << "}\n";
-	HoI4::HoI4UnitType unitMapping(unitMapStream);
-	std::vector<HoI4::HoI4UnitType> unitMappings;
-	unitMappings.push_back(unitMapping);
-	mtgUnitMap.insert(std::make_pair(std::string("commerce_raider"), unitMappings));
+	std::stringstream mtgUnitMappingStream;
+	mtgUnitMappingStream << "= {\n";
+	mtgUnitMappingStream << "	vic = commerce_raider\n";
+	mtgUnitMappingStream << "	hoi = {\n";
+	mtgUnitMappingStream << "		category = naval\n";
+	mtgUnitMappingStream << "		type = destroyer\n";
+	mtgUnitMappingStream << "		equipment = ship_hull_light_2\n";
+	mtgUnitMappingStream << "		version = \"1936 Destroyer\"\n";
+	mtgUnitMappingStream << "		size = 1\n";
+	mtgUnitMappingStream << "	}\n";
+	mtgUnitMappingStream << "}";
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
@@ -616,19 +613,18 @@ TEST_F(HoI4World_NaviesTests, NonNavalUnitsArentAddedToMtgNavy)
 	std::stringstream input;
 	HoI4::UnitMappings unitMap(input);
 
-	std::map<std::string, std::vector<HoI4::HoI4UnitType>> mtgUnitMap;
-	std::stringstream unitMapStream;
-	unitMapStream << "{\n";
-	unitMapStream << "	category = land\n";
-	unitMapStream << "	type = destroyer\n";
-	unitMapStream << "	equipment = ship_hull_light_2\n";
-	unitMapStream << "	version = \"1936 Destroyer\"\n";
-	unitMapStream << "	size = 1\n";
-	unitMapStream << "}\n";
-	HoI4::HoI4UnitType unitMapping(unitMapStream);
-	std::vector<HoI4::HoI4UnitType> unitMappings;
-	unitMappings.push_back(unitMapping);
-	mtgUnitMap.insert(std::make_pair(std::string("commerce_raider"), unitMappings));
+	std::stringstream mtgUnitMappingStream;
+	mtgUnitMappingStream << "= {\n";
+	mtgUnitMappingStream << "	vic = commerce_raider\n";
+	mtgUnitMappingStream << "	hoi = {\n";
+	mtgUnitMappingStream << "		category = naval\n";
+	mtgUnitMappingStream << "		type = destroyer\n";
+	mtgUnitMappingStream << "		equipment = ship_hull_light_2\n";
+	mtgUnitMappingStream << "		version = \"1936 Destroyer\"\n";
+	mtgUnitMappingStream << "		size = 1\n";
+	mtgUnitMappingStream << "	}\n";
+	mtgUnitMappingStream << "}";
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
@@ -669,19 +665,18 @@ TEST_F(HoI4World_NaviesTests, MtgNavyNamesConvert)
 	std::stringstream input;
 	HoI4::UnitMappings unitMap(input);
 
-	std::map<std::string, std::vector<HoI4::HoI4UnitType>> mtgUnitMap;
-	std::stringstream unitMapStream;
-	unitMapStream << "{\n";
-	unitMapStream << "	category = naval\n";
-	unitMapStream << "	type = destroyer\n";
-	unitMapStream << "	equipment = ship_hull_light_1\n";
-	unitMapStream << "	version = \"Early Destroyer\"\n";
-	unitMapStream << "	size = 1\n";
-	unitMapStream << "}\n";
-	HoI4::HoI4UnitType unitMapping(unitMapStream);
-	std::vector<HoI4::HoI4UnitType> unitMappings;
-	unitMappings.push_back(unitMapping);
-	mtgUnitMap.insert(std::make_pair(std::string("commerce_raider"), unitMappings));
+	std::stringstream mtgUnitMappingStream;
+	mtgUnitMappingStream << "link = {\n";
+	mtgUnitMappingStream << "	vic = commerce_raider\n";
+	mtgUnitMappingStream << "	hoi = {\n";
+	mtgUnitMappingStream << "		category = naval\n";
+	mtgUnitMappingStream << "		type = destroyer\n";
+	mtgUnitMappingStream << "		equipment = ship_hull_light_1\n";
+	mtgUnitMappingStream << "		version = \"Early Destroyer\"\n";
+	mtgUnitMappingStream << "		size = 1\n";
+	mtgUnitMappingStream << "	}\n";
+	mtgUnitMappingStream << "}";
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;

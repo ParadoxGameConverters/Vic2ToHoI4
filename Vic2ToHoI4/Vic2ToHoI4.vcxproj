@@ -225,6 +225,8 @@
     <ClCompile Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\HoI4UnitType.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\MilitaryMappings.cpp" />
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\MtgUnitMapping.cpp" />
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\MtgUnitMappings.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMapping.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMappings.cpp" />
     <ClCompile Include="Source\HOI4World\Names.cpp" />
@@ -328,6 +330,8 @@
     <ClInclude Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\MilitaryMappings.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\HoI4UnitType.h" />
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\MtgUnitMapping.h" />
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\MtgUnitMappings.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\UnitMapping.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\UnitMappings.h" />
     <ClInclude Include="Source\HOI4World\Names.h" />

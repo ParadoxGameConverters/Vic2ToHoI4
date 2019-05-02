@@ -39,10 +39,12 @@ HoI4World_allMilitaryMappingsTests::HoI4World_allMilitaryMappingsTests()
 {
 	std::stringstream input;
 	input << "default = {\n";
-	input << "\tmap = {}\n";
+	input << "\tunit_map = {}\n";
+	input << "\tmtg_unit_map = {}\n";
 	input << "}\n";
 	input << "PDM = {\n";
-	input << "\tmap = {}\n";
+	input << "\tunit_map = {}\n";
+	input << "\tmtg_unit_map = {}\n";
 	input << "}\n";
 	allTheMappings = std::make_unique<HoI4::allMilitaryMappings>(input);
 }

@@ -21,33 +21,38 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef UNIT_MAPPING_H_
-#define UNIT_MAPPING_H_
+#include "MtgUnitMappings.h"
+#include "MtgUnitMapping.h"
 
 
 
-#include "HoI4UnitType.h"
-#include "newParser.h"
-
-
-
-namespace HoI4
+HoI4::MtgUnitMappings::MtgUnitMappings(std::istream& theStream)
 {
+	registerKeyword(std::regex("link"), [this](const std::string & unused, std::istream & theStream)
+	{
+		MtgUnitMapping newMapping(theStream);
+		unitMaps.insert(newMapping.getMapping());
+	});
 
-class UnitMapping: commonItems::parser
-{
-	public:
-		UnitMapping(std::istream& theStream);
-
-		auto getMappings() const { return std::make_pair(Vic2Type, HoI4Type); }
-
-	private:
-		std::string Vic2Type;
-		HoI4UnitType HoI4Type;
-};
-
+	parseStream(theStream);
 }
 
 
+bool HoI4::MtgUnitMappings::hasMatchingType(const std::string& Vic2Type) const
+{
+	return unitMaps.count(Vic2Type) > 0;
+}
 
-#endif // UNIT_MAPPING_H_
+
+std::vector<HoI4::HoI4UnitType> HoI4::MtgUnitMappings::getMatchingUnitInfo(const std::string& Vic2Type) const
+{
+	if (hasMatchingType(Vic2Type))
+	{
+		return unitMaps.find(Vic2Type)->second;
+	}
+	else
+	{
+		std::vector<HoI4UnitType> emptyMaps;
+		return emptyMaps;
+	}
+}

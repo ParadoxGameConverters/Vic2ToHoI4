@@ -437,7 +437,7 @@ void HoI4Country::determineShipVariants(const std::vector<HoI4::shipVariant>& po
 
 void HoI4Country::convertNavies(
 	const HoI4::UnitMappings& unitMap,
-	const map<string, std::vector<HoI4::HoI4UnitType>>& mtgUnitMap,
+	const HoI4::MtgUnitMappings& mtgUnitMap,
 	const HoI4::coastalProvinces& theCoastalProvinces,
 	const std::map<int, int>& provinceToStateIDMap)
 {

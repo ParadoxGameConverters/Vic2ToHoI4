@@ -31,7 +31,7 @@ HoI4::UnitMappings::UnitMappings(std::istream& theStream)
 	registerKeyword(std::regex("link"), [this](const std::string & unused, std::istream & theStream)
 	{
 		UnitMapping newMapping(theStream);
-		unitMap.insert(make_pair(newMapping.getVic2Type(), newMapping.getHoI4Type()));
+		unitMap.insert(newMapping.getMappings());
 	});
 
 	parseStream(theStream);

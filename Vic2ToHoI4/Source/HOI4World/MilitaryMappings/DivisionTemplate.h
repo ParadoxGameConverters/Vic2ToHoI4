@@ -1,4 +1,4 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
+/*Copyright (c) 2018 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -21,33 +21,51 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef UNIT_MAPPING_H_
-#define UNIT_MAPPING_H_
+#ifndef HOI4_DIVISION_TEMPLATE_H_
+#define HOI4_DIVISION_TEMPLATE_H_
 
 
 
-#include "HoI4UnitType.h"
 #include "newParser.h"
+#include "Regiment.h"
+#include <istream>
+#include <ostream>
+#include <string>
+#include <vector>
 
 
 
 namespace HoI4
 {
 
-class UnitMapping: commonItems::parser
+
+class DivisionTemplateType: commonItems::parser
 {
 	public:
-		UnitMapping(std::istream& theStream);
+		explicit DivisionTemplateType(std::istream& theStream);
+		DivisionTemplateType(const DivisionTemplateType&) = default;
+		DivisionTemplateType& operator=(const DivisionTemplateType&) = delete;
 
-		auto getMappings() const { return std::make_pair(Vic2Type, HoI4Type); }
+		bool operator==(const std::string& rhs) { return name == rhs; }
+
+		friend std::ostream& operator << (std::ostream& out, const DivisionTemplateType& rhs);
+
+		std::string getName() const { return name; }
+		std::vector<RegimentType> getRegiments() const { return regiments; }
+		std::vector<RegimentType> getSupportRegiments() const { return supportRegiments; }
 
 	private:
-		std::string Vic2Type;
-		HoI4UnitType HoI4Type;
+		std::string name;
+		std::vector<RegimentType> regiments;
+		std::vector<RegimentType> supportRegiments;
 };
+
+
+std::ostream& operator << (std::ostream& out, const DivisionTemplateType& rhs);
+
 
 }
 
 
 
-#endif // UNIT_MAPPING_H_
+#endif // HOI4_DIVISION_TEMPLATE_H_

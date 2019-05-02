@@ -93,6 +93,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MilitaryMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\HoI4UnitType.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MtgUnitMapping.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MtgUnitMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\UnitMapping.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\UnitMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names.cpp" />
@@ -150,6 +152,8 @@
     <ClCompile Include="HoI4WorldTests\MilitaryMappingTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MtgNavyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MtgShipTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\MtgUnitMappingsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\MtgUnitMappingTests.cpp" />
     <ClCompile Include="HoI4WorldTests\NaviesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\PossibleShipVariantTests.cpp" />
     <ClCompile Include="HoI4WorldTests\RegimentTests.cpp" />

@@ -315,6 +315,12 @@
     <ClCompile Include="Source\HOI4World\MilitaryMappings\HoI4UnitType.cpp">
       <Filter>HoI4World\MilitaryMappings</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\MtgUnitMappings.cpp">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\MtgUnitMapping.cpp">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -606,6 +612,12 @@
       <Filter>HoI4World\MilitaryMappings</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\MilitaryMappings\HoI4UnitType.h">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\MtgUnitMappings.h">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\MtgUnitMapping.h">
       <Filter>HoI4World\MilitaryMappings</Filter>
     </ClInclude>
   </ItemGroup>

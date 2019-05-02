@@ -21,33 +21,40 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef UNIT_MAPPING_H_
-#define UNIT_MAPPING_H_
+#ifndef MTG_UNIT_MAPPINGS_H_
+#define MTG_UNIT_MAPPINGS_H_
 
 
 
 #include "HoI4UnitType.h"
 #include "newParser.h"
+#include <map>
 
 
 
 namespace HoI4
 {
 
-class UnitMapping: commonItems::parser
+class MtgUnitMappings: commonItems::parser
 {
 	public:
-		UnitMapping(std::istream& theStream);
+		MtgUnitMappings(std::istream& theStream);
+		MtgUnitMappings() = delete;
+		~MtgUnitMappings() = default;
+		MtgUnitMappings(const MtgUnitMappings&) = default;
+		MtgUnitMappings(MtgUnitMappings&&) = default;
+		MtgUnitMappings& operator=(const MtgUnitMappings&) = default;
+		MtgUnitMappings& operator=(MtgUnitMappings&&) = default;
 
-		auto getMappings() const { return std::make_pair(Vic2Type, HoI4Type); }
+		bool hasMatchingType(const std::string& Vic2Type) const;
+		std::vector<HoI4::HoI4UnitType> getMatchingUnitInfo(const std::string& Vic2Type) const;
 
 	private:
-		std::string Vic2Type;
-		HoI4UnitType HoI4Type;
+		std::map<std::string, std::vector<HoI4::HoI4UnitType>> unitMaps;
 };
 
 }
 
 
 
-#endif // UNIT_MAPPING_H_
+#endif // MTG_UNIT_MAPPINGS_H_

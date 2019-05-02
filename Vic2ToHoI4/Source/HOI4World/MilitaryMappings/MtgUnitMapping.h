@@ -21,8 +21,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef UNIT_MAPPING_H_
-#define UNIT_MAPPING_H_
+#ifndef MTG_UNIT_MAPPING_H_
+#define MTG_UNIT_MAPPING_H_
 
 
 
@@ -34,20 +34,20 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 namespace HoI4
 {
 
-class UnitMapping: commonItems::parser
+class MtgUnitMapping: commonItems::parser
 {
 	public:
-		UnitMapping(std::istream& theStream);
+		MtgUnitMapping(std::istream& theStream);
 
-		auto getMappings() const { return std::make_pair(Vic2Type, HoI4Type); }
+		auto getMapping() const { return std::make_pair(Vic2Type, HoI4Types); }
 
 	private:
 		std::string Vic2Type;
-		HoI4UnitType HoI4Type;
+		std::vector<HoI4UnitType> HoI4Types;
 };
 
 }
 
 
 
-#endif // UNIT_MAPPING_H_
+#endif // MTG_UNIT_MAPPING_H_
