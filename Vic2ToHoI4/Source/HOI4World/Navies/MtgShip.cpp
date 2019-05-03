@@ -32,11 +32,8 @@ HoI4::MtgShip::MtgShip(
 	const std::string& _owner,
 	const std::string& _version,
 	const float& _experience
-): HoI4::Ship(_name, _type, _equipment, _owner)
-{
-	version = _version;
-	experience = _experience;
-}
+): HoI4::Ship(_name, _type, _equipment, _owner), version(_version), experience(_experience)
+{}
 
 
 std::ostream& HoI4::operator<<(std::ostream& output, const MtgShip& instance)
