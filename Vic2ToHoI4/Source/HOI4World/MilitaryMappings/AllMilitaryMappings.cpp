@@ -42,7 +42,8 @@ const HoI4::militaryMappings& HoI4::allMilitaryMappings::getMilitaryMappings(con
 {
 	for (auto mod: Vic2Mods)
 	{
-		if (auto& mapping = theMappings.find(mod); mapping != theMappings.end())
+		auto mapping = theMappings.find(mod);
+		if (mapping != theMappings.end())
 		{
 			return mapping->second;
 		}
