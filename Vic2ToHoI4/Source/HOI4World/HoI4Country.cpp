@@ -1328,6 +1328,9 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 
 	std::ofstream legacyNavy("output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_legacy.txt");
 	theNavies->outputLegacy(legacyNavy);
+
+	std::ofstream mtgNavy("output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_mtg.txt");
+	theNavies->outputMtg(mtgNavy);
 }
 
 
