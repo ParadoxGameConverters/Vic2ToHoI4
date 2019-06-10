@@ -30,16 +30,18 @@ foreign_influence = {
 			}
 		}
 
+		target_array = subjects
+
 		target_trigger = {
 			FROM = {
 				is_puppet_of = ROOT
 			}
 		}
 
-		targeted_modifier = {
-			tag = FROM
-			neutrality_drift = 0.1
-			mobilization_speed = 0.15
+		complete_effect = {
+			FROM = {
+				add_timed_idea = { idea = military_parade days = 120 }
+			}
 		}
 
 		modifier = {
@@ -77,6 +79,8 @@ foreign_influence = {
 				NOT = { has_government = neutrality }
 			}
 		}
+
+		target_array = subjects
 
 		target_trigger = {
 			FROM = {

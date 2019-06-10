@@ -171,30 +171,6 @@ on_actions = {
 	#FROM is war target
 	on_declare_war = {
 		effect = {
-			if = {
-				limit = {
-					has_dlc = "Man the Guns"
-					OR = {
-						AND = {
-							has_naval_treaty_trigger = yes
-							FROM = {
-								is_major = yes
-							}
-						}
-						AND = {
-							is_major = yes
-							FROM = {
-								has_naval_treaty_trigger = yes
-							}
-						}
-					}
-				}
-				every_country = {
-					limit = { has_naval_treaty_trigger = yes }
-					remove_naval_treaty_effect = yes
-					#MTG_TODO_GABRIEL: news event
-				}
-			}
 			#If prepared by siphoning equipment, receive equipment back
 			if = {
 				limit = {
@@ -386,7 +362,6 @@ on_actions = {
 		}
 	}
 	
-	
 	on_army_leader_promoted = {
 		effect = {
 			add_timed_unit_leader_trait = {
@@ -394,9 +369,5 @@ on_actions = {
 				days = 100
 			}
 		}
-	}
-
-	# Scope is the country owner of the PotF, FROM is the country of the killer
-	on_pride_of_the_fleet_sunk = {
 	}
 }

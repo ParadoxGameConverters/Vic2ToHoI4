@@ -715,11 +715,19 @@ fleet = {
 	}
 	icon = {
 	}
+	icon = {
+	}
+	icon = {
+	}
 }
 
 task_force = {
 	gfx = GFX_theatre_task_force_shield
 	
+	icon = {
+	}
+	icon = {
+	}
 	icon = {
 	}
 	icon = {
