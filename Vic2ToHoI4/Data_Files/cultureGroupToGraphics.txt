@@ -991,12 +991,12 @@ equine = {
 }
 non_human = {
 	leader_portraits = {
-		communism = { "gfx/leaders/OC/portrait_Non_Human.dds" } 
-		democratic = { "gfx/leaders/OC/portrait_Non_Human.dds" } 
-		fascism = { "gfx/leaders/OC/portrait_Non_Human.dds" } 
-		absolutist = { "gfx/leaders/OC/portrait_Non_Human.dds" } 
-		neutrality = { "gfx/leaders/OC/portrait_Non_Human.dds" } 
-		radical = { "gfx/leaders/OC/portrait_Non_Human.dds" }
+		communism = { "GFX_portrait_eng_fallen_government" } 
+		democratic = { "GFX_portrait_eng_fallen_government" } 
+		fascism = { "GFX_portrait_eng_fallen_government" } 
+		absolutist = { "GFX_portrait_eng_fallen_government" } 
+		neutrality = { "GFX_portrait_eng_fallen_government" } 
+		radical = { "GFX_portrait_eng_fallen_government" }
 	}
 	ideology_minister_portraits = 
 	{

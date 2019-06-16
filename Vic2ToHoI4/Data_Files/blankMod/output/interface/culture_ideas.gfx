@@ -416,7 +416,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_dutch"
-		texturefile = "gfx/interface/culture/culture_dutch.dds"
+		texturefile = "gfx/interface/goals/focus_hol_oranje_boven.dds"
 	}
 
 	spriteType = {
