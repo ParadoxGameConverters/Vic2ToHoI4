@@ -820,7 +820,6 @@ technologies = {
 				date < "1941.1.1"
 				factor = 0.3
 			}
-			}
 			
 			modifier = {
 				factor = 1.1
