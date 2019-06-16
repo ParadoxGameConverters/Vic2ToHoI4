@@ -109,6 +109,26 @@ fascism = {
 				factor = 0
 			}
 		}
+
+		militarism_focus = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+
+			modifier = {
+				conscription = 0.05
+				enemy_partisan_effect = -0.1
+			}
+		}
 }
 
 communism = {
@@ -443,6 +463,26 @@ absolutist = {
 
 			ai_will_do = {
 				factor = 0
+			}
+		}
+
+		militarism_focus_absolutist = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = fascism
+			}
+
+			removal_cost = -1
+
+			picture = generic_manpower_bonus
+
+			modifier = {
+				conscription = 0.05
+				enemy_partisan_effect = -0.1
 			}
 		}
 }
