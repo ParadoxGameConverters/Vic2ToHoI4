@@ -6886,6 +6886,7 @@
 	# 
 	# ## Kazakhstan
 	# ## Uralsk
+
 	link = { vic2 = 1182 hoi4 = 9453 hoi4 = 464 hoi4 = 615 hoi4 = 11578 hoi4 = 3622 hoi4 = 3459 hoi4 = 477 hoi4 = 554 hoi4 = 7322 hoi4 = 11591 hoi4 = 11442 hoi4 = 6615 hoi4 = 11455 hoi4 = 11469 hoi4 = 9469 hoi4 = 6523 hoi4 = 6498 hoi4 = 6514 hoi4 = 468 hoi4 = 11457 hoi4 = 11472 hoi4 = 6525 hoi4 = 545 hoi4 = 3538 hoi4 = 470 hoi4 = 9513 hoi4 = 6564 hoi4 = 3515 hoi4 = 11524 hoi4 = 11552 hoi4 = 11482 hoi4 = 3618 hoi4 = 6588 hoi4 = 9538 hoi4 = 6491 hoi4 = 642 hoi4 = 432 }	# Guryev -> land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 1183 hoi4 = 10253 hoi4 = 7370 hoi4 = 4254 hoi4 = 1247 hoi4 = 12235 hoi4 = 12254 hoi4 = 4294 hoi4 = 7341 hoi4 = 7313 hoi4 = 4394 hoi4 = 12227 hoi4 = 9528 hoi4 = 7438 hoi4 = 11480 hoi4 = 1254 hoi4 = 4322 }	# Aqtobe -> land, land, land, land, land, land, land, land, land, land, land, land, land, land, land, land
 	link = { vic2 = 1194 hoi4 = 11701 hoi4 = 4523 hoi4 = 3593 hoi4 = 1517 hoi4 = 4620 hoi4 = 10262 hoi4 = 475 hoi4 = 13008 hoi4 = 12383 hoi4 = 7641 }	# Aqtau -> land, land, land, land, land, land, land, land, land, land
