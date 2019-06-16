@@ -299,6 +299,25 @@ democratic = {
 				factor = 0
 			}
 		}
+
+		liberty_ethos_focus = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_democratic_drift_bonus
+
+			modifier = {
+				trade_opinion_factor = 0.2
+			}
+		}
 }
 
 absolutist = {
@@ -594,5 +613,24 @@ neutrality = {
 			modifier = {
 				neutrality_drift = -0.02
 			}
-		}	
+		}
+
+		liberty_ethos_focus_neutral = {
+
+			allowed = {
+				always = no
+			}
+
+			allowed_civil_war = {
+				has_government = democratic
+			}
+
+			removal_cost = -1
+
+			picture = generic_democratic_drift_bonus
+
+			modifier = {
+				trade_opinion_factor = 0.2
+			}
+		}
 }

@@ -268,6 +268,10 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		newFocus->available = "= {\n";
 		newFocus->available += "			has_government = neutrality\n";
 		newFocus->available += "		}";
+
+		newFocus->completionReward = "= {\n";
+		newFocus->completionReward += "	add_ideas = liberty_ethos_focus_neutral\n";
+		newFocus->completionReward += "}";
 	}
 	newFocus->xPos = (numCollectovistIdeologies + 1) / 2;
 	newFocus->aiWillDo = "= {\n";
