@@ -192,45 +192,12 @@ on_actions = {
 		#    #  # #    #   #   #  #  # #  # #         #  #  #  # #  # #  # #  # #   #   
 		#     ##  ### ###  #  ###  ##  #  # ###     ##   #  #  #  ##   ##   ##  ### ### 
 					
-			#ROOT is new controller #FROM is old controller #FROM.FROM is state ID
-			if = {
-				limit = {
-					ROOT = {
-						has_country_flag = wtt_political_struggle
-						NOT = { has_country_flag = wtt_political_struggle_paused }
-					}
-				}
-				FROM.FROM = {
-					WTT_make_ROOT_majority_1_point_over_next = yes
-				}
-			}
-			if = {
-				limit = {
-					FROM.FROM = {
-						WTT_is_potential_political_struggle_state = yes
-					}
-				}
-				WTT_political_struggle_recalculate_support = yes
-			}
 		}
 	}
 
 	#FROM is war target
 	on_declare_war = {
 		effect = {
-			#Clear any tribute and support flag if new communists end up at war with SOV
-			if = {
-				limit = { has_country_flag = WTT_support_from_soviet }
-				PRC_soviet_tribute_clear_all = yes
-				clr_country_flag = WTT_support_from_soviet
-			}
-			FROM = {
-				if = {
-					limit = { has_country_flag = WTT_support_from_soviet }
-					PRC_soviet_tribute_clear_all = yes
-					clr_country_flag = WTT_support_from_soviet
-				}
-			}
 		}
 	}
 	#FROM is faction leader on join faction requests.

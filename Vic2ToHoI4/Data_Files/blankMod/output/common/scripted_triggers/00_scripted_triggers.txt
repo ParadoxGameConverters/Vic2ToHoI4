@@ -139,3 +139,18 @@ ai_land_doctrine_tier_2_trigger = {
 		has_tech = large_front_offensive
 	}
 }
+
+anti_submarine_strategy_required_trigger = {
+	OR = {
+		AND = {
+			has_war = yes
+			any_enemy_country = {
+				has_navy_size = {
+					type = submarine
+					size > 30
+				}
+			}
+		}
+		convoy_threat > 0.3
+	}
+}

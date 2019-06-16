@@ -240,7 +240,7 @@ news_event = {
 	id = wtt_news.8
 	title = wtt_news.8.t
 	desc = wtt_news.8.desc
-	picture = GFX_news_event_herman_goring
+	picture = GFX_news_event_german_reichstag_ruins_2
 	
 	major = yes
 	

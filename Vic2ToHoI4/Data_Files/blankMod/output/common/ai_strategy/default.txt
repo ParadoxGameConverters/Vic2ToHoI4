@@ -190,19 +190,25 @@ default_role_ratios = {
 	ai_strategy = {
 		type = role_ratio
 		id = naval_screen
-		value = 100
+		value = 65
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_escort
+		value = 35
 	}
 
 	ai_strategy = {
 		type = role_ratio
 		id = naval_cruiser_light
-		value = 20
+		value = 25
 	}
 
 	ai_strategy = {
 		type = role_ratio
 		id = naval_cruiser_heavy
-		value = 25
+		value = 20
 	}
 
 	ai_strategy = {
@@ -215,6 +221,107 @@ default_role_ratios = {
 		type = role_ratio
 		id = naval_mine_layer
 		value = 20
+	}
+}
+
+convoy_voy_voy_voy = {
+	enable = {
+		has_dlc = "Man the Guns"
+		convoy_threat > 0.2
+	}
+	abort = {
+		convoy_threat < 0.2
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_light
+		value = -20
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_escort
+		value = 25
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_layer
+		value = -10
+	}
+	ai_strategy = {
+		type = unit_ratio
+		id = screen_ship
+		value = 30
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = capital_ship
+		value = -10
+	}
+
+	ai_strategy = {
+		type = unit_ratio
+		id = convoy
+		value = 25
+	}
+}
+
+ill_show_you_mine = {
+	enable = {
+		has_dlc = "Man the Guns"
+		mine_threat > 0.2
+	}
+	abort = {
+		mine_threat < 0.2
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_heavy
+		value = -20
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_sweeper
+		value = 25
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_layer
+		value = -10
+	}
+}
+
+ill_show_you_mine_2 = {
+	enable = {
+		has_dlc = "Man the Guns"
+		mine_threat > 0.5
+	}
+	abort = {
+		mine_threat < 0.5
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_cruiser_light
+		value = -20
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_sweeper
+		value = 25
+	}
+
+	ai_strategy = {
+		type = role_ratio
+		id = naval_mine_layer
+		value = -10
 	}
 }
 
@@ -431,6 +538,12 @@ default_area_priority = {
 		id = europe
 		value = 100
 	}
+
+	ai_strategy = {
+		type = area_priority
+		id = scandinavia
+		value = 100
+	}
 	
 	ai_strategy = {
 		type = area_priority
@@ -455,11 +568,11 @@ default_area_priority = {
 		id = middle_east
 		value = 50
 	}
-	
+
 	ai_strategy = {
 		type = area_priority
-		id = africa
-		value = -90
+		id = suez
+		value = 50
 	}
 	
 	ai_strategy = {
@@ -474,6 +587,23 @@ default_area_priority = {
 		value = 80
 	}
 
+}
+
+default_area_priority_non_africa = {
+    enable = {
+        NOT = { capital_scope = { is_on_continent = africa } }
+    }
+
+    ai_strategy = {
+        type = area_priority
+        id = africa
+        value = -90
+    }
+    ai_strategy = {
+        type = area_priority
+        id = suez
+        value = -90
+    }
 }
 
 default_stockpile_management = {

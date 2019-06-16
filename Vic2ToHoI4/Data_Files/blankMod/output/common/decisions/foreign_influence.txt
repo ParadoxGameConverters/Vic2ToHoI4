@@ -3,53 +3,6 @@ foreign_influence = {
 	# Decisions for masters to push their ideology onto puppets
 	# Note that subject status is not checked due to those only appearing in DLC
 	# (Subjects are puppets with high autonomy)
-
-	
-	military_parade = {
-
-		icon = eng_propaganda_campaigns
-
-		days_remove = 120
-		
-		available = {
-			FROM = {
-				is_puppet_of = ROOT
-				neutrality < 0.9
-			}
-			OR = {
-				political_power_daily > 0.5
-				has_political_power > 60
-			}
-		}
-
-		visible = {
-			has_government = neutrality
-			FROM = {
-				is_puppet_of = ROOT
-				neutrality < 0.99
-			}
-		}
-
-		target_trigger = {
-			FROM = {
-				is_puppet_of = ROOT
-			}
-		}
-
-		targeted_modifier = {
-			tag = FROM
-			neutrality_drift = 0.1
-			mobilization_speed = 0.15
-		}
-
-		modifier = {
-			political_power_cost = 0.5
-		}
-
-		ai_will_do = {
-			factor = 0
-		}
-	}
 	
 	
 	military_dictatorship = {
@@ -77,6 +30,8 @@ foreign_influence = {
 				NOT = { has_government = neutrality }
 			}
 		}
+
+		target_array = subjects
 
 		target_trigger = {
 			FROM = {
