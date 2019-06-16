@@ -978,17 +978,6 @@ void HoI4Country::outputPuppets(ofstream& output) const
 void HoI4Country::outputPolitics(ofstream& output) const
 {
 	output << "set_politics = {\n";
-	output << "\n";
-	output << "    parties = {\n";
-	for (auto ideology: ideologySupport)
-	{
-		output << "        " << ideology.first << " = {\n";
-		output << "            popularity = " << ideology.second << "\n";
-		output << "        }\n";
-	}
-	output << "    }\n";
-	output << "    \n";
-
 	output << "    ruling_party = " << governmentIdeology << "\n";
 	output << "    last_election = \"" << lastElection << "\"\n";
 	output << "    election_frequency = 48\n";
@@ -1001,6 +990,16 @@ void HoI4Country::outputPolitics(ofstream& output) const
 		output << "    elections_allowed = no\n";
 	}
 	output << "}\n";
+	output << "\n";
+
+	output << "set_popularities = {\n";
+	for (auto ideology: ideologySupport)
+	{
+		output << "	" << ideology.first << " = " << ideology.second << "\n";
+	}
+	output << "}\n";
+	output << "\n";
+
 }
 
 
