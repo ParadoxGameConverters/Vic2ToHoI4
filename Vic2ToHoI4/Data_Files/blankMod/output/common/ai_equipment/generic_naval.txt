@@ -160,6 +160,7 @@ destroyers = {
 generic_escorts = {
 	category = naval
 	
+	blocked_for = {
 	}
 	
 	available_for = {
