@@ -581,6 +581,7 @@ tag vs internalTag:
           <internalTag>sourceGameModPath</internalTag>
           <friendlyName>Victoria 2 mod directory</friendlyName>
           <description>A path on your computer where Victoria 2 is installed</description>
+          <isMandatory>true</isMandatory>
           <alternatives>
             <!--<alternative>
               <defaultLocationType>WindowsUsersFolder</defaultLocationType>
@@ -598,6 +599,7 @@ tag vs internalTag:
           <internalTag>targetGameModPath</internalTag>
           <friendlyName>HoI4 mod directory</friendlyName>
           <description>A path on your computer where HoI4 temp files are kept</description>
+          <isMandatory>true</isMandatory>
           <alternatives>
 				<alternative>
               <defaultLocationType>WindowsUsersFolder</defaultLocationType>
