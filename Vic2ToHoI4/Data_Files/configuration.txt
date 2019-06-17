@@ -27,20 +27,8 @@ configuration =
 	# Hearts of Iron 4 directory: A path on your computer where Hearts of Iron 4 is installed
 	HoI4directory = "D:\SteamLibrary\steamapps\common\Hearts of Iron IV"
 
-	# Hearts of Iron 4 Documents directory: A path on your computer where Hearts of Iron 4 keeps temporary files
-	HoI4Documentsdirectory = "C:\Users\Stephen\Documents\Paradox Interactive\Hearts of Iron IV"
-
 	# Vic2 Mods: Vic2 mods to use for conversion (mods require manual conversion)
 	Vic2Mods = { }
-
-	# HoI4 Version Method: The method the converter uses to set the HoI4 version
-	#	Hard Coded (1.6.2)	 - Use the HoI4 version hard coded into the converter (1.6.2)
-	#	Automatic	 - Attempt to automatically detect the installed HoI4 version
-	#	Manual Entry	 - Manually enter the HoI4 version
-	HoI4VersionMethod = "hardcoded"
-
-	# HoI4 Version: If manually entering the HoI4 version, set this to the desired version
-	HoI4Version = "1.6.2"
 
 	# Industrial shape factor: How much to balance countries' industry to each other. 1.0 = fully balanced, 0.0 = no balancing
 	industrial_shape_factor = "0.0"
