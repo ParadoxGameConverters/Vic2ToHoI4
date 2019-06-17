@@ -162,6 +162,7 @@ ideas = {
 			available = {
 				has_war_support > 0.5
 				OR = {
+					# ideologies are set in code
 					custom_trigger_tooltip = { tooltip = or_clarification_tooltip always = no }
 					AND = {
 						has_war = yes
@@ -316,6 +317,7 @@ ideas = {
 			
 			
 			available = {
+				# available is set in code
 			}
 		
 			cost = 150
@@ -357,6 +359,7 @@ ideas = {
 			
 			available = {
 				has_war = yes
+				# ideologies are set in code
 				OR = {
 					has_idea = war_economy
 					has_idea = tot_economic_mobilisation
