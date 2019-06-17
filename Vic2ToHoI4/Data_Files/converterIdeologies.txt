@@ -1,7 +1,8 @@
 ideologies = {
 	radical = {
-	
+		
 		types = {
+		
 			minarchism = {
 			}
 		}
@@ -17,6 +18,11 @@ ideologies = {
 		
 		color = { 155 155 0 }
 		
+		war_impact_on_world_tension = 0.75		#Commie less threatening
+		faction_impact_on_world_tension = 0.5
+		
+		ai_communist = yes # uses the commie AI behaviour
+		
 		rules = {
 			can_force_government = no
 			can_send_volunteers = yes
@@ -24,7 +30,6 @@ ideologies = {
 			can_only_justify_war_on_threat_country = yes
 			can_guarantee_other_ideologies = no
 		}
-		
 		
 		modifiers = {
 			generate_wargoal_tension = 1.00
@@ -39,17 +44,22 @@ ideologies = {
 		faction_modifiers = {
 			faction_trade_opinion_factor = 0.50 #plus 50% trade opinion
 		}
-		ai_communist = yes # 
+
 	}
 
 	absolutist = {
+	
 		types = {
+		
 			absolute_monarchy = {
 			}
+			
 			prussian_const = {
 			}
+			
 			dictatorship = {
 			}
+			
 			theocracy = {
 			}
 		}
@@ -78,32 +88,43 @@ ideologies = {
 			justify_war_goal_when_in_major_war_time = -0.80
 		}
 
-		ai_fascist = yes # 
+		ai_fascist = yes # uses the fascist AI behaviour
 	}
-
+	
 	neutrality = {
-
+	
 		types = {
+		
 			minarchism_neutral = {
 			}
+			
 			absolute_monarchy_neutral = {
 			}
+			
 			prussian_const_neutral = {
 			}
+			
 			dictatorship_neutral = {
 			}
+			
 			theocracy_neutral = {
 			}
+			
 			conservatism_neutral = {
 			}
+			
 			liberalism_neutral = {
 			}
+			
 			socialism_neutral = {
 			}
+			
 			marxism_neutral = {
 			}
+			
 			leninism_neutral = {
 			}
+			
 			fascism_ideology_neutral = {
 			}
 		}
@@ -115,18 +136,19 @@ ideologies = {
 			"FACTION_NAME_NONALIGNED_4"
 			"FACTION_NAME_NONALIGNED_5"
 		}
-
+		
 		color = { 124 124 124 }
-
+		
+		
 		war_impact_on_world_tension = 0.25		#no major danger
 		faction_impact_on_world_tension = 0.1
-
+		
 		rules = {
 			can_force_government = no
-			can_puppet = no
+			can_puppet = yes
 			can_send_volunteers = no
 		}
-
+		
 		modifiers = {
 			#increased_influence_factor = 0.3 #30% easier to influence
 			generate_wargoal_tension = 0.5
@@ -134,18 +156,15 @@ ideologies = {
 			lend_lease_tension = 0.4
 			send_volunteers_tension = 0.4
 			guarantee_tension = 0.4
-			drift_defence_factor = -0.3
+			drift_defence_factor = -0.3	
 		}
-
+		
 		faction_modifiers = {
 		}
 
 		can_be_boosted = no
 		can_collaborate = yes
 
-		ai_neutral = yes #
+		ai_neutral = yes # 
 	}
 }
-
-
-	
