@@ -361,7 +361,7 @@ std::optional<std::vector<std::string>> HoI4::namesMapper::getCallsigns(const st
 std::optional<std::string> HoI4::namesMapper::getMaleName(const std::string& culture)
 {
 	auto firstNames = getMaleNames(culture);
-	if (firstNames)
+	if (firstNames && (firstNames->size() > 0))
 	{
 		std::uniform_int_distribution<int> firstNameGen(0, firstNames->size() - 1);
 		return (*firstNames)[firstNameGen(rng)];
@@ -377,7 +377,7 @@ std::optional<std::string> HoI4::namesMapper::getMaleName(const std::string& cul
 std::optional<std::string> HoI4::namesMapper::getFemaleName(const std::string& culture)
 {
 	auto firstNames = getFemaleNames(culture);
-	if (firstNames)
+	if (firstNames && (firstNames->size() > 0))
 	{
 		std::uniform_int_distribution<int> firstNameGen(0, firstNames->size() - 1);
 		return (*firstNames)[firstNameGen(rng)];
@@ -393,7 +393,7 @@ std::optional<std::string> HoI4::namesMapper::getFemaleName(const std::string& c
 std::optional<std::string> HoI4::namesMapper::getSurname(const std::string& culture)
 {
 	auto surnames = getSurnames(culture);
-	if (surnames)
+	if (surnames && (surnames->size() > 0))
 	{
 		std::uniform_int_distribution<int> surnameGen(0, surnames->size() - 1);
 		return (*surnames)[surnameGen(rng)];
@@ -409,7 +409,7 @@ std::optional<std::string> HoI4::namesMapper::getSurname(const std::string& cult
 std::optional<std::string> HoI4::namesMapper::getFemaleSurname(const std::string& culture)
 {
 	auto surnames = getFemaleSurnames(culture);
-	if (surnames)
+	if (surnames && (surnames->size() > 0))
 	{
 		std::uniform_int_distribution<int> surnameGen(0, surnames->size() - 1);
 		return (*surnames)[surnameGen(rng)];
@@ -425,7 +425,7 @@ std::optional<std::string> HoI4::namesMapper::getFemaleSurname(const std::string
 std::optional<std::string> HoI4::namesMapper::getCallsign(const std::string& culture)
 {
 	auto callsigns = getCallsigns(culture);
-	if (callsigns)
+	if (callsigns && (callsigns->size() > 0))
 	{
 		std::uniform_int_distribution<int> surnameGen(0, callsigns->size() - 1);
 		return (*callsigns)[surnameGen(rng)];
