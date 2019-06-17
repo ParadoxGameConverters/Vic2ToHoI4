@@ -150,11 +150,6 @@ void Configuration::instantiate(std::istream& theStream)
 			createFactions = false;
 		}
 	});
-	std::string versionMethod;
-	registerKeyword(std::regex("HoI4VersionMethod"), [&versionMethod](const std::string& unused, std::istream& theStream){
-		commonItems::singleString versionMethodString(theStream);
-		versionMethod = versionMethodString.getString();
-	});
 	std::string manualVersionString;
 	registerKeyword(std::regex("HoI4Version"), [&manualVersionString](const std::string& unused, std::istream& theStream){
 		commonItems::singleString versionString(theStream);
@@ -164,46 +159,8 @@ void Configuration::instantiate(std::istream& theStream)
 	LOG(LogLevel::Info) << "Reading configuration file";
 	parseStream(theStream);
 
-	if (versionMethod == "automatic")
-	{
-		version = getAutomaticHoI4Version();
-	}
-	else if (versionMethod == "manualEntry")
-	{
-		version = HoI4::Version(manualVersionString);
-	}
-	else // (versionMethod == "hardcoded")
-	{
-		version = HoI4::Version();
-	}
+	version = HoI4::Version();
 	Log(LogLevel::Debug) << "HoI4 version is " << version;
-}
-
-
-HoI4::Version Configuration::getAutomaticHoI4Version()
-{
-	std::ifstream systemLog(HoI4DocumentsPath + "/logs/system.log");
-	if (systemLog.is_open())
-	{
-		while (!systemLog.eof())
-		{
-			char buffer[256];
-			systemLog.getline(buffer, sizeof(buffer));
-			std::string line(buffer);
-			int versionPosition = line.find("Version: ");
-			if (versionPosition != std::string::npos)
-			{
-				int position1 = line.find_first_of(' ', versionPosition);
-				int position2 = line.find_first_of(' ', position1 + 1) + 2;
-				int position3 = line.find_first_of(' ', position2 + 1);
-				std::string versionString = line.substr(position2, position3 - position2);
-				return HoI4::Version(versionString);
-			}
-		}
-	}
-
-	LOG(LogLevel::Warning) << "Could not automatically set HoI4 version. Using the hardcoded version setting instead.";
-	return HoI4::Version();
 }
 
 

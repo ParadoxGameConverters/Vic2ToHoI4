@@ -80,8 +80,6 @@ class Configuration: commonItems::parser
 		Configuration(const Configuration&) = delete;
 		Configuration& operator=(const Configuration&) = delete;
 
-		HoI4::Version getAutomaticHoI4Version();
-
 		std::string HoI4Path = "";
 		std::string HoI4DocumentsPath = "";
 		std::string Vic2Path = "";
