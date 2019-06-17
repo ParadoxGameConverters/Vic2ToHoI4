@@ -88,6 +88,7 @@ ideas = {
 			
 			available = {
 				#has_manpower_for_recruit_change_to = { value = 0.05 group = mobilization_laws }
+				# ideologies set in code
 				has_war_support > 0.2
 			}
 
@@ -127,6 +128,7 @@ ideas = {
 			
 			available = {
 				#has_manpower_for_recruit_change_to =  { value = 0.1 group = mobilization_laws }
+				# ideologies set in code
 				OR = {
 					has_war_support > 0.6
 					surrender_progress > 0
