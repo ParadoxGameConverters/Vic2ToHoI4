@@ -55,19 +55,6 @@ void Configuration::instantiate(std::istream& theStream)
 			LOG(LogLevel::Debug) << "HoI4 path install path is " << HoI4Path;
 		}
 	});
-	registerKeyword(std::regex("HoI4Documentsdirectory"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleString directoryString(theStream);
-		HoI4DocumentsPath = directoryString.getString();
-		if (HoI4DocumentsPath.empty() || !Utils::doesFolderExist(HoI4DocumentsPath))
-		{
-			LOG(LogLevel::Error) << "No HoI4 documents directory was specified in configuration.txt, or the path was invalid";
-			std::exit(EXIT_FAILURE);
-		}
-		else
-		{
-			LOG(LogLevel::Debug) << "HoI4 documents directory is " << HoI4DocumentsPath;
-		}
-	});
 	registerKeyword(std::regex("V2directory"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::singleString directoryString(theStream);
 		Vic2Path = directoryString.getString();

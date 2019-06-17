@@ -50,7 +50,6 @@ class Configuration: commonItems::parser
 		void instantiate(std::istream& theStream);
 
 		std::string getHoI4Path() const { return HoI4Path; }
-		std::string getHoI4DocumentsPath() const { return HoI4DocumentsPath; }
 		std::string getVic2Path() const { return Vic2Path; }
 		std::vector<std::string> getVic2Mods() const { return Vic2Mods; }
 		std::string getOutputName() const { return outputName; }
@@ -81,7 +80,6 @@ class Configuration: commonItems::parser
 		Configuration& operator=(const Configuration&) = delete;
 
 		std::string HoI4Path = "";
-		std::string HoI4DocumentsPath = "";
 		std::string Vic2Path = "";
 		std::vector<std::string> Vic2Mods;
 		std::string outputName = "";

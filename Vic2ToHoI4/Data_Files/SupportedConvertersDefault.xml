@@ -578,25 +578,6 @@ tag vs internalTag:
         </requiredFolder>
 
         <requiredFolder>
-          <tag>HoI4Documentsdirectory</tag>
-          <friendlyName>Hearts of Iron 4 Documents directory</friendlyName>
-          <description>A path on your computer where Hearts of Iron 4 keeps temporary files</description>
-          <alternatives>
-            <alternative>
-              <defaultLocationType>WindowsUsersFolder</defaultLocationType>
-              <subFolderLocation>Paradox Interactive\Hearts of Iron IV</subFolderLocation>
-              <subFolderLocation>map\cache</subFolderLocation>
-            </alternative>
-            <alternative>
-              <defaultLocationType>SteamFolder</defaultLocationType>
-              <autoDetectFromSteamId>394360</autoDetectFromSteamId>
-              <subFolderLocation>map\cache</subFolderLocation>
-            </alternative>
-          </alternatives>
-          <subFolderLocation>map\cache</subFolderLocation>
-        </requiredFolder>
-
-        <requiredFolder>
           <internalTag>sourceGameModPath</internalTag>
           <friendlyName>Victoria 2 mod directory</friendlyName>
           <description>A path on your computer where Victoria 2 is installed</description>
