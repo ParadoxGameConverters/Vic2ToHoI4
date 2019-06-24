@@ -116,7 +116,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_anglo_canadian"
-		texturefile = "gfx/interface/ideas/idea_can_defence_of_canada_regulations_democratic.dds"
+		texturefile = "gfx/interface/culture/culture_anglo_canadian.dds"
 	}
 
 	spriteType = {
@@ -1376,7 +1376,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_south_german"
-		texturefile = "gfx/interface/goals/focus_proclaim_the_restauration_of_austria_hungary.dds"
+		texturefile = "gfx/interface/culture/culture_south_german.dds"
 	}
 
 	spriteType = {
