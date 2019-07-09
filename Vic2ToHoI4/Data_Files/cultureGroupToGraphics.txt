@@ -217,7 +217,7 @@ iberian = {
 		communism = { "gfx/leaders/SPR/Portrait_Spain_Jose_Diaz.dds" }
 		democratic = { "gfx/leaders/SPR/Portrait_Spain_Manuel_Azana.dds" }
 		fascism = { "GFX_POR_Francisco_Preto" } 
-		absolutist = { "gfx/leaders/SPR/Portrait_Spain_Francisco_Franco.dds" }
+		absolutist = { "gfx/leaders/OC/Portrait_SPR_Alfonso_XIII.dds" }
 		neutrality = { "gfx/leaders/POR/Portrait_Portugal_Antonio_de_Oliveira_Salazar.dds" }
 		radical = { "gfx/leaders/South America/Portrait_South_America_Generic_3.dds" } #Revise
 	}
@@ -427,7 +427,7 @@ levantine = {
 		communism = { "gfx/leaders/GRE/Portrait_Greece_Markos_Vafiadis.dds" }
 		democratic = { "GFX_GRE_Panagis_Tsaldaris" } 
 		fascism = { "GFX_GRE_Konstantinos_Maniadakis" } 
-		absolutist = { "gfx/leaders/OC/portrait_BYZ_John_VIII.dds" } 
+		absolutist = { "gfx/leaders/OC/portrait_GRE_King_George.dds" } 
 		neutrality = { "gfx/leaders/GRE/Portrait_Greece_Ioannis_Metaxas.dds" }
 		radical = { "gfx/leaders/ITA/Portrait_Italy_Generic_3.dds" } #Revise
 	}
