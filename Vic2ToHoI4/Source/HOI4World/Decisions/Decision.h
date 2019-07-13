@@ -48,33 +48,32 @@ class decision: commonItems::parser
 		void setModifier(const std::string& newModifier) { modifier = newModifier; }
 
 		friend std::ostream& operator<<(std::ostream& outStream, const HoI4::decision& outDecision);
-		friend bool operator==(const HoI4::decision& decisionOne, const HoI4::decision& decisionTwo);
+		bool operator==(const HoI4::decision& otherDecision);
 
 	private:
-		std::string name = "";
-		std::string icon = "";
-		std::string isGood = "";
-		std::string allowed = "";
-		std::string available = "";
+		std::string name;
+		std::string icon;
+		std::string isGood;
+		std::string allowed;
+		std::string available;
 		std::optional<int> daysMissionTimeout;
-		std::string activation = "";
-		std::string targetTrigger = "";
-		std::string removeTrigger = "";
-		std::string visible = "";
-		std::string cancelTrigger = "";
-		std::string completeEffect = "";
-		std::string removeEffect = "";
-		std::string timeoutEffect = "";
-		std::string aiWillDo = "";
-		std::string fireOnlyOnce = "";
-		std::optional<int> daysRemove = {};
-		std::optional<int> daysReEnable = {};
+		std::string activation;
+		std::string targetTrigger;
+		std::string removeTrigger;
+		std::string visible;
+		std::string cancelTrigger;
+		std::string completeEffect;
+		std::string removeEffect;
+		std::string timeoutEffect;
+		std::string aiWillDo;
+		std::string fireOnlyOnce;
+		std::optional<int> daysRemove;
+		std::optional<int> daysReEnable;
 		std::optional<int> cost;
-		std::string modifier = "";
+		std::string modifier;
 };
 
 std::ostream& operator<<(std::ostream& outStream, const HoI4::decision& outDecision);
-bool operator==(const HoI4::decision& decisionOne, const HoI4::decision& decisionTwo);
 
 }
 
