@@ -145,6 +145,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\StateDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\World.cpp" />
+    <ClCompile Include="DecisionsCategoryTests.cpp" />
     <ClCompile Include="DecisionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\AllMilitaryMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp" />
@@ -179,6 +180,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Mocks\EventsMock.h" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
