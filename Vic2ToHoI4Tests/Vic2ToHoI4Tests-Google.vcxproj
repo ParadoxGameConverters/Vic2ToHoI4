@@ -60,6 +60,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CoastalProvinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decisions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Division.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\DivisionTemplate.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Event.cpp" />
