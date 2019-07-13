@@ -35,12 +35,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CoastalProvinces.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decision.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MapData.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
@@ -374,6 +368,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MtgUnitMapping.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decision.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decisions.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -414,6 +414,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\Navies">
       <UniqueIdentifier>{9c36c80e-e774-49e8-87c6-0ba5c32dbb8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Decisions">
+      <UniqueIdentifier>{c0b754b1-91b1-4d98-86f3-b85b17e16e95}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

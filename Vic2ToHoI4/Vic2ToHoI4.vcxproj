@@ -18,13 +18,13 @@
     <ProjectGuid>{F5433A7A-723C-4E55-AC01-9D146820C7B4}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Vic2ToHoI4</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -189,8 +189,8 @@
     <ClCompile Include="Source\HOI4World\AIPeace.cpp" />
     <ClCompile Include="Source\HOI4World\AIPeaces.cpp" />
     <ClCompile Include="Source\HOI4World\CoastalProvinces.cpp" />
-    <ClCompile Include="Source\HOI4World\Decision.cpp" />
-    <ClCompile Include="Source\HOI4World\Decisions.cpp" />
+    <ClCompile Include="Source\HOI4World\Decisions\Decision.cpp" />
+    <ClCompile Include="Source\HOI4World\Decisions\Decisions.cpp" />
     <ClCompile Include="Source\HOI4World\Division.cpp" />
     <ClCompile Include="Source\HOI4World\DivisionTemplate.cpp" />
     <ClCompile Include="Source\HOI4World\Event.cpp" />
@@ -293,8 +293,8 @@
     <ClInclude Include="Source\HOI4World\AIPeace.h" />
     <ClInclude Include="Source\HOI4World\AIPeaces.h" />
     <ClInclude Include="Source\HOI4World\CoastalProvinces.h" />
-    <ClInclude Include="Source\HOI4World\Decision.h" />
-    <ClInclude Include="Source\HOI4World\Decisions.h" />
+    <ClInclude Include="Source\HOI4World\Decisions\Decision.h" />
+    <ClInclude Include="Source\HOI4World\Decisions\Decisions.h" />
     <ClInclude Include="Source\HOI4World\Division.h" />
     <ClInclude Include="Source\HOI4World\DivisionTemplate.h" />
     <ClInclude Include="Source\HOI4World\Event.h" />
