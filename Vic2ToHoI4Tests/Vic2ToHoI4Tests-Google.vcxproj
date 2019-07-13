@@ -144,6 +144,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\StateDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\World.cpp" />
+    <ClCompile Include="DecisionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\AllMilitaryMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTests.cpp" />
