@@ -51,8 +51,8 @@ HoI4::decision::decision(const std::string& decisionName, std::istream& theStrea
 	});
 	registerKeyword(std::regex("days_mission_timeout"), [this](const std::string& unused, std::istream& theStream)
 	{
-		commonItems::singleString theTimeout(theStream);
-		daysMissionTimeout = theTimeout.getString();
+		commonItems::singleInt theTimeout(theStream);
+		daysMissionTimeout = theTimeout.getInt();
 	});
 	registerKeyword(std::regex("activation"), [this](const std::string& unused, std::istream& theStream)
 	{
@@ -111,8 +111,8 @@ HoI4::decision::decision(const std::string& decisionName, std::istream& theStrea
 	});
 	registerKeyword(std::regex("cost"), [this](const std::string& unused, std::istream& theStream)
 	{
-		commonItems::singleString theCost(theStream);
-		cost = theCost.getString();
+		commonItems::singleInt theCost(theStream);
+		cost = theCost.getInt();
 	});
 	registerKeyword(std::regex("fire_only_once"), [this](const std::string& unused, std::istream& theStream)
 	{
@@ -148,9 +148,9 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecis
 	{
 		outStream << "\n\t\tavailable " << outDecision.available << "\n";
 	}
-	if (outDecision.daysMissionTimeout != "")
+	if (outDecision.daysMissionTimeout)
 	{
-		outStream << "\n\t\tdays_mission_timeout = " << outDecision.daysMissionTimeout << "\n";
+		outStream << "\n\t\tdays_mission_timeout = " << *outDecision.daysMissionTimeout << "\n";
 	}
 	if (outDecision.activation != "")
 	{
@@ -188,9 +188,9 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecis
 	{
 		outStream << "\t\tdays_re_enable = " << *outDecision.daysReEnable << "\n";
 	}
-	if (outDecision.cost != "")
+	if (outDecision.cost)
 	{
-		outStream << "\n\t\tcost = " << outDecision.cost << "\n";
+		outStream << "\n\t\tcost = " << *outDecision.cost << "\n";
 	}
 	if (outDecision.completeEffect != "")
 	{

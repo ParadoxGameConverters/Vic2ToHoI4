@@ -56,7 +56,7 @@ class decision: commonItems::parser
 		std::string isGood = "";
 		std::string allowed = "";
 		std::string available = "";
-		std::string daysMissionTimeout = "";
+		std::optional<int> daysMissionTimeout;
 		std::string activation = "";
 		std::string targetTrigger = "";
 		std::string removeTrigger = "";
@@ -69,7 +69,7 @@ class decision: commonItems::parser
 		std::string fireOnlyOnce = "";
 		std::optional<int> daysRemove = {};
 		std::optional<int> daysReEnable = {};
-		std::string cost = "";
+		std::optional<int> cost;
 		std::string modifier = "";
 };
 
