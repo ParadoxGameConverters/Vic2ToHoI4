@@ -25,6 +25,9 @@
     <Filter Include="HoI4World\Navies">
       <UniqueIdentifier>{adb02bd8-6d97-46f2-8c80-9aa13b5f81b0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\Decisions">
+      <UniqueIdentifier>{7558d49c-6e86-4988-b8c9-8ec76c67f5e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -127,12 +130,6 @@
     </ClCompile>
     <ClCompile Include="Source\V2World\Issues.cpp">
       <Filter>Vic2World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Decisions.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Decision.cpp">
-      <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="..\common_items\ParserHelpers.cpp">
       <Filter>CommonItems</Filter>
@@ -321,6 +318,12 @@
     <ClCompile Include="Source\HOI4World\MilitaryMappings\MtgUnitMapping.cpp">
       <Filter>HoI4World\MilitaryMappings</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\Decision.cpp">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\Decisions.cpp">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -423,12 +426,6 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Issues.h">
       <Filter>Vic2World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\Decision.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\Decisions.h">
-      <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="..\common_items\ParserHelpers.h">
       <Filter>CommonItems</Filter>
@@ -619,6 +616,12 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\MilitaryMappings\MtgUnitMapping.h">
       <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\Decision.h">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\Decisions.h">
+      <Filter>HoI4World\Decisions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -28,7 +28,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "AIPeaces.h"
 #include "CoastalProvinces.h"
-#include "Decisions.h"
+#include "Decisions/Decisions.h"
 #include "Ideas.h"
 #include "OnActions.h"
 #include "Names.h"
