@@ -62,7 +62,6 @@ class decision: commonItems::parser
 		std::string removeTrigger = "";
 		std::string visible = "";
 		std::string cancelTrigger = "";
-		std::string remove = "";
 		std::string completeEffect = "";
 		std::string removeEffect = "";
 		std::string timeoutEffect = "";

@@ -79,11 +79,6 @@ HoI4::decision::decision(const std::string& decisionName, std::istream& theStrea
 		commonItems::stringOfObject theRemoveTrigger(theStream);
 		removeTrigger = theRemoveTrigger.getString();
 	});
-	registerKeyword(std::regex("remove"), [this](const std::string& unused, std::istream& theStream)
-	{
-		commonItems::stringOfObject theRemove(theStream);
-		remove = theRemove.getString();
-	});
 	registerKeyword(std::regex("complete_effect"), [this](const std::string& unused, std::istream& theStream)
 	{
 		commonItems::stringOfObject theCompleteEffect(theStream);
@@ -176,10 +171,6 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecis
 	if (outDecision.removeTrigger != "")
 	{
 		outStream << "\n\t\tremove_trigger " << outDecision.removeTrigger << "\n";
-	}
-	if (outDecision.remove != "")
-	{
-		outStream << "\n\t\tremove " << outDecision.remove << "\n";
 	}
 	if (outDecision.fireOnlyOnce != "")
 	{
