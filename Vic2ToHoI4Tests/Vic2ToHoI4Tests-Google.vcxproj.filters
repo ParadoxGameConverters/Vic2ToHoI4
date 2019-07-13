@@ -380,6 +380,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
     </ClCompile>
+    <ClCompile Include="DecisionsCategoryTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -427,5 +430,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Mocks\EventsMock.h">
+      <Filter>Mocks</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
