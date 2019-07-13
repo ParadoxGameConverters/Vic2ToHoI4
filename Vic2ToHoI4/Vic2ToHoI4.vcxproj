@@ -191,6 +191,7 @@
     <ClCompile Include="Source\HOI4World\CoastalProvinces.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\Decision.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\Decisions.cpp" />
+    <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="Source\HOI4World\Division.cpp" />
     <ClCompile Include="Source\HOI4World\DivisionTemplate.cpp" />
     <ClCompile Include="Source\HOI4World\Event.cpp" />
@@ -295,6 +296,7 @@
     <ClInclude Include="Source\HOI4World\CoastalProvinces.h" />
     <ClInclude Include="Source\HOI4World\Decisions\Decision.h" />
     <ClInclude Include="Source\HOI4World\Decisions\Decisions.h" />
+    <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategory.h" />
     <ClInclude Include="Source\HOI4World\Division.h" />
     <ClInclude Include="Source\HOI4World\DivisionTemplate.h" />
     <ClInclude Include="Source\HOI4World\Event.h" />

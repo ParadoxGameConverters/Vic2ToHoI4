@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -21,18 +21,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef HOI4_DECISIONS_H
-#define HOI4_DECISIONS_H
+#ifndef HOI4_DECISIONS_CATEGORY_H
+#define HOI4_DECISIONS_CATEGORY_H
 
 
+#include "Decision.h"
 #include "newParser.h"
-#include "DecisionsCategory.h"
-#include <algorithm>
-#include <map>
 #include <set>
-#include <string>
-#include <vector>
-#include <utility>
 
 
 
@@ -41,33 +36,32 @@ namespace HoI4
 
 class Events;
 
-
-class decisions: commonItems::parser
+class decisionsCategory: commonItems::parser
 {
 	public:
-		decisions() noexcept;
+		decisionsCategory(const std::string& categoryName, std::istream& theStream);
 
-		void updateDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
+		std::vector<decision> getDecisions() const { return theDecisions; }
+		std::string getName() const { return name; }
 
-		void output();
-
-	private:
-		void updateStabilityDecisions(const std::set<std::string>& majorIdeologies);
-		bool stabilityDecisionToUpdate(const std::string& decisionName);
-		std::pair<std::string, std::string> determineIdeologiesForStabilityDecisions(const std::set<std::string>& majorIdeologies);
-		std::string updateTimeoutEffect(std::string& originalEffect, const std::pair<std::string, std::string>& ideologiesForStabilityDecisions);
+		void replaceDecision(decision theDecision) { std::replace(theDecisions.begin(), theDecisions.end(), theDecision, theDecision); }
+		void addDecision(decision& theDecision) { theDecisions.push_back(theDecision); }
 
 		void updatePoliticalDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
 
-		std::vector<decisionsCategory> stabilityDecisions;
-		std::vector<decisionsCategory> politicalDecisions;
+		friend std::ostream& operator<<(std::ostream& outStream, const decisionsCategory& outCategory);
+		friend bool operator==(const decisionsCategory& categoryOne, const decisionsCategory& categoryTwo);
 
-		std::multimap<std::string, decisionsCategory> ideologicalDecisions;
+	private:
+		std::string name = "";
+		std::vector<decision> theDecisions;
 };
+
+std::ostream& operator<<(std::ostream& outStream, const decisionsCategory& outCategory);
+bool operator==(const decisionsCategory& categoryOne, const decisionsCategory& categoryTwo);
 
 }
 
 
 
-
-#endif // HOI4_DECISIONS_H
+#endif // HOI4_DECISIONS_CATEGORY_H

@@ -377,6 +377,9 @@
     <ClCompile Include="DecisionTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
