@@ -57,6 +57,12 @@ class decisionsCategory: commonItems::parser
 	private:
 		std::string name = "";
 		std::vector<decision> theDecisions;
+
+		void updateOpenUpPoliticalDiscourse(decision& decisionToUpdate, const std::set<std::string>& majorIdeologies);
+		void updateDiscreditGovernment(decision& decisionToUpdate, const std::set<std::string>& majorIdeologies);
+		void updateInstitutePressCensorship(decision& decisionToUpdate, const std::set<std::string>& majorIdeologies);
+		void updateIgniteTheIdeologyCivilWar(decision& decisionToUpdate, const std::set<std::string>& majorIdeologies);
+		void updateHoldTheIdeologyNationalReferendum(decision& decisionToUpdate, const Events& theEvents);
 };
 
 std::ostream& operator<<(std::ostream& outStream, const decisionsCategory& outCategory);
