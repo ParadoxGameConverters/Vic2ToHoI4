@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -22,34 +22,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "Decisions.h"
+#include "IdeologicalDecisions.h"
 #include "Decision.h"
 #include "../Events.h"
 #include "../../Configuration.h"
 #include <fstream>
 
-
-
-namespace HoI4
-{
-	class decisionsCategorySet: commonItems::parser
-	{
-		public:
-			explicit decisionsCategorySet(std::istream& theStream)
-			{
-				registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream)
-				{
-					decisionsCategory category(categoryName, theStream);
-					theCategories.push_back(category);
-				});
-				parseStream(theStream);
-			}
-
-			std::vector<decisionsCategory> takeCategories() { return std::move(theCategories); }
-
-		private:
-			std::vector<decisionsCategory> theCategories;
-	};
-}
 
 
 HoI4::decisions::decisions() noexcept
@@ -65,8 +43,8 @@ HoI4::decisions::decisions() noexcept
 
 	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& ideologyName, std::istream& theStream)
 	{
-		decisionsCategorySet categorySet(theStream);
-		auto categories = categorySet.takeCategories();
+		IdeologicalDecisions newIdeologicalDecisions(theStream);
+		auto categories = newIdeologicalDecisions.takeCategories();
 		std::for_each(categories.begin(), categories.end(), [this, ideologyName](auto& category){
 			ideologicalDecisions.insert(std::make_pair(ideologyName, category));
 		});

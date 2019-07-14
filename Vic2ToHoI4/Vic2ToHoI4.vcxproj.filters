@@ -327,6 +327,9 @@
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategory.cpp">
       <Filter>HoI4World\Decisions</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\IdeologicalDecisions.cpp">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -627,6 +630,9 @@
       <Filter>HoI4World\Decisions</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategory.h">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\IdeologicalDecisions.h">
       <Filter>HoI4World\Decisions</Filter>
     </ClInclude>
   </ItemGroup>
