@@ -39,9 +39,12 @@ HoI4::decisionsCategory::decisionsCategory(const std::string& categoryName, std:
 }
 
 
-void HoI4::decisionsCategory::updatePoliticalDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents)
-{
-	std::for_each(theDecisions.begin(), theDecisions.end(), [majorIdeologies, &theEvents](auto& theDecision) {
+void HoI4::decisionsCategory::updatePoliticalDecisions(
+	const std::set<std::string>& majorIdeologies,
+	const Events& theEvents
+) {
+	for (auto& theDecision : theDecisions)
+	{
 		if (theDecision.getName().substr(0, 28) == "open_up_political_discourse_")
 		{
 			std::string available = "= {\n";
@@ -169,14 +172,18 @@ void HoI4::decisionsCategory::updatePoliticalDecisions(const std::set<std::strin
 				theDecision.setCompleteEffect(completeEffect);
 			}
 		}
-	});
+	}
 }
 
 
 std::ostream& HoI4::operator<<(std::ostream& outStream, const decisionsCategory& outCategory)
 {
 	outStream << outCategory.name << " = {\n";
-	std::for_each(outCategory.theDecisions.begin(), outCategory.theDecisions.end(), [&outStream](auto decision) { outStream << decision << "\n"; });
+	std::for_each(
+		outCategory.theDecisions.begin(),
+		outCategory.theDecisions.end(),
+		[&outStream](auto decision) { outStream << decision << "\n"; }
+	);
 	if (outCategory.theDecisions.size() == 0)
 	{
 		outStream << "\n";
@@ -188,7 +195,7 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decisionsCategory&
 }
 
 
-bool HoI4::operator==(const decisionsCategory& categoryOne, const decisionsCategory& categoryTwo)
+bool HoI4::decisionsCategory::operator==(const decisionsCategory& otherCategory)
 {
-	return (categoryOne.name == categoryTwo.name);
+	return (name == otherCategory.name);
 }

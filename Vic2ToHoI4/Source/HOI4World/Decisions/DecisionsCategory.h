@@ -44,13 +44,15 @@ class decisionsCategory: commonItems::parser
 		std::vector<decision> getDecisions() const { return theDecisions; }
 		std::string getName() const { return name; }
 
-		void replaceDecision(decision theDecision) { std::replace(theDecisions.begin(), theDecisions.end(), theDecision, theDecision); }
+		void replaceDecision(decision theDecision) {
+			std::replace(theDecisions.begin(), theDecisions.end(), theDecision, theDecision);
+		}
 		void addDecision(decision& theDecision) { theDecisions.push_back(theDecision); }
 
 		void updatePoliticalDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
 
 		friend std::ostream& operator<<(std::ostream& outStream, const decisionsCategory& outCategory);
-		friend bool operator==(const decisionsCategory& categoryOne, const decisionsCategory& categoryTwo);
+		bool operator==(const decisionsCategory& otherCategory);
 
 	private:
 		std::string name = "";
@@ -58,7 +60,6 @@ class decisionsCategory: commonItems::parser
 };
 
 std::ostream& operator<<(std::ostream& outStream, const decisionsCategory& outCategory);
-bool operator==(const decisionsCategory& categoryOne, const decisionsCategory& categoryTwo);
 
 }
 
