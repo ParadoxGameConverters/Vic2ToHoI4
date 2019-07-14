@@ -61,6 +61,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\IdeologicalDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Division.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\DivisionTemplate.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Event.cpp" />
@@ -151,6 +152,7 @@
     <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\IdeologicalDecisionsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\LegacyNavyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappingTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MtgNavyTests.cpp" />
