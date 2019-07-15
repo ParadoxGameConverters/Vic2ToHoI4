@@ -22,7 +22,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "Decisions.h"
-#include "IdeologicalDecisions.h"
 #include "Decision.h"
 #include "../Events.h"
 #include "../../Configuration.h"
@@ -43,11 +42,8 @@ HoI4::decisions::decisions() noexcept
 
 	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& ideologyName, std::istream& theStream)
 	{
-		IdeologicalDecisions newIdeologicalDecisions(theStream);
-		auto categories = newIdeologicalDecisions.takeCategories();
-		std::for_each(categories.begin(), categories.end(), [this, ideologyName](auto& category){
-			ideologicalDecisions.insert(std::make_pair(ideologyName, category));
-		});
+		IdeologicalDecisions ideologicalDecisions(theStream);
+		allIdeologicalDecisions.push_back(ideologicalDecisions);
 	});
 	parseFile("ideologicalDecisions.txt");
 }
@@ -105,8 +101,9 @@ bool HoI4::decisions::stabilityDecisionToUpdate(const std::string& decisionName)
 }
 
 
-std::pair<std::string, std::string> HoI4::decisions::determineIdeologiesForStabilityDecisions(const std::set<std::string>& majorIdeologies)
-{
+std::pair<std::string, std::string> HoI4::decisions::determineIdeologiesForStabilityDecisions(
+	const std::set<std::string>& majorIdeologies
+) {
 	std::pair<std::string, std::string> theIdeologies;
 
 	if (majorIdeologies.count("communism") > 0)
@@ -139,8 +136,10 @@ std::pair<std::string, std::string> HoI4::decisions::determineIdeologiesForStabi
 }
 
 
-std::string HoI4::decisions::updateTimeoutEffect(std::string& originalEffect, const std::pair<std::string, std::string>& ideologiesForStabilityDecisions)
-{
+std::string HoI4::decisions::updateTimeoutEffect(
+	std::string& originalEffect,
+	const std::pair<std::string, std::string>& ideologiesForStabilityDecisions
+) {
 	auto index = originalEffect.find("communism");
 	while (index != std::string::npos)
 	{
@@ -161,23 +160,28 @@ std::string HoI4::decisions::updateTimeoutEffect(std::string& originalEffect, co
 
 void HoI4::decisions::updatePoliticalDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents)
 {
-	std::for_each(majorIdeologies.begin(), majorIdeologies.end(), [this](auto ideology){
-		auto categories = ideologicalDecisions.equal_range(ideology);
-		std::for_each(categories.first, categories.second, [this](auto category){
-			auto existingCategory = std::find(politicalDecisions.begin(), politicalDecisions.end(), category.second);
-			if (existingCategory == politicalDecisions.end())
+	for (auto ideologicalDecisions: allIdeologicalDecisions)
+	{
+		if (ideologicalDecisions.requiredIdeologiesExist(majorIdeologies))
+		{
+			for (auto category: ideologicalDecisions.getCategories())
 			{
-				politicalDecisions.push_back(category.second);
+				auto existingCategory = std::find(politicalDecisions.begin(), politicalDecisions.end(), category);
+				if (existingCategory == politicalDecisions.end())
+				{
+					politicalDecisions.push_back(category);
+				}
+				else
+				{
+					auto theDecisions = category.getDecisions();
+					for (auto& theDecision: theDecisions)
+					{
+						existingCategory->addDecision(theDecision);
+					}
+				}
 			}
-			else
-			{
-				auto theDecisions = category.second.getDecisions();
-				std::for_each(theDecisions.begin(), theDecisions.end(), [&existingCategory](auto& theDecision){
-					existingCategory->addDecision(theDecision);
-				});
-			}
-		});
-	});
+		}
+	}
 
 	for (auto& decisionsByIdeology: politicalDecisions)
 	{
@@ -188,11 +192,19 @@ void HoI4::decisions::updatePoliticalDecisions(const std::set<std::string>& majo
 
 void HoI4::decisions::output()
 {
-	std::ofstream outStream("output/" + theConfiguration.getOutputName() + "/common/decisions/stability_war_support.txt");
-	std::for_each(stabilityDecisions.begin(), stabilityDecisions.end(), [&outStream](auto category) { outStream << category; });
+	std::ofstream outStream(
+		"output/" + theConfiguration.getOutputName() + "/common/decisions/stability_war_support.txt"
+	);
+	for (auto category: stabilityDecisions)
+	{
+		outStream << category;
+	}
 	outStream.close();
 
 	outStream.open("output/" + theConfiguration.getOutputName() + "/common/decisions/political_decisions.txt");
-	std::for_each(politicalDecisions.begin(), politicalDecisions.end(), [&outStream](auto category) { outStream << category; });
+	for (auto category: politicalDecisions)
+	{
+		outStream << category;
+	}
 	outStream.close();
 }
