@@ -26,6 +26,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "newParser.h"
+#include "IdeologicalDecisions.h"
 #include "DecisionsCategory.h"
 #include <algorithm>
 #include <map>
@@ -62,7 +63,7 @@ class decisions: commonItems::parser
 		std::vector<decisionsCategory> stabilityDecisions;
 		std::vector<decisionsCategory> politicalDecisions;
 
-		std::multimap<std::string, decisionsCategory> ideologicalDecisions;
+		std::vector<IdeologicalDecisions> allIdeologicalDecisions;
 };
 
 }

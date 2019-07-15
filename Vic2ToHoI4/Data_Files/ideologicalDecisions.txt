@@ -1,4 +1,7 @@
 fascism = {
+required_ideologies = {
+	fascism
+}
 
 fascism_on_the_rise = {
 	prepare_for_fascism_civil_war = {
@@ -505,6 +508,10 @@ political_actions = {
 }
 
 democratic = {
+required_ideologies = {
+	democratic
+}
+
 democratic_on_the_rise = {
 	prepare_for_democratic_civil_war = {
 
@@ -1010,6 +1017,10 @@ political_actions = {
 }
 
 communism = {
+required_ideologies = {
+	communism
+}
+
 communism_on_the_rise = {
 	prepare_for_communism_civil_war = {
 
@@ -1520,6 +1531,10 @@ political_actions =
 }
 
 neutrality = {
+required_ideologies = {
+	neutrality
+}
+
 political_actions = {	
 	institute_press_censorship_neutrality_state = {
 
@@ -1544,6 +1559,9 @@ political_actions = {
 }
 
 absolutist = {
+required_ideologies = {
+	absolutist
+}
 
 absolutist_on_the_rise = {
 	prepare_for_absolutist_civil_war = {
@@ -2050,6 +2068,9 @@ political_actions = {
 }
 
 radical = {
+required_ideologies = {
+	radical
+}
 
 radical_on_the_rise = {
 	prepare_for_radical_civil_war = {

@@ -22,14 +22,36 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "IdeologicalDecisions.h"
+#include "ParserHelpers.h"
 
 
 
 HoI4::IdeologicalDecisions::IdeologicalDecisions(std::istream& theStream)
 {
+	registerKeyword(std::regex("required_ideologies"), [this](const std::string& unused, std::istream& theStream) {
+		commonItems::stringList ideologiesStrings(theStream);
+		for (auto ideology: ideologiesStrings.getStrings())
+		{
+			requiredIdeologies.insert(ideology);
+		}
+	});
 	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream) {
 		decisionsCategory category(categoryName, theStream);
 		theCategories.push_back(category);
 	});
 	parseStream(theStream);
+}
+
+
+bool HoI4::IdeologicalDecisions::requiredIdeologiesExist(const std::set<std::string>& majorIdeologies)
+{
+	for (auto requiredIdeology: requiredIdeologies)
+	{
+		if (majorIdeologies.count(requiredIdeology) == 0)
+		{
+			return false;
+		}
+	}
+
+	return true;
 }

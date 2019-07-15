@@ -34,7 +34,7 @@ TEST(HoI4World_IdeologicalDecisionsTests, defaultsToEmptyList)
 	input << "}";
 	HoI4::IdeologicalDecisions ideologicalDecisions(input);
 
-	ASSERT_EQ(ideologicalDecisions.takeCategories().size(), 0);
+	ASSERT_EQ(ideologicalDecisions.getCategories().size(), 0);
 }
 
 
@@ -47,5 +47,83 @@ TEST(HoI4World_IdeologicalDecisionsTests, categoriesCanBeInput)
 	input << "}";
 	HoI4::IdeologicalDecisions ideologicalDecisions(input);
 
-	ASSERT_EQ(ideologicalDecisions.takeCategories().size(), 2);
+	ASSERT_EQ(ideologicalDecisions.getCategories().size(), 2);
+}
+
+
+TEST(HoI4World_IdeologicalDecisionsTests, handlesNoRequiredIdeologies)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "}";
+	HoI4::IdeologicalDecisions ideologicalDecisions(input);
+
+	std::set<std::string> majorIdeologies;
+	ASSERT_TRUE(ideologicalDecisions.requiredIdeologiesExist(majorIdeologies));
+}
+
+
+TEST(HoI4World_IdeologicalDecisionsTests, falseIfRequiredIdeologyMissing)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\trequired_ideologies = {\n";
+	input << "\t\tabsolutism\n";
+	input << "\t}";
+	input << "}";
+	HoI4::IdeologicalDecisions ideologicalDecisions(input);
+
+	std::set<std::string> majorIdeologies;
+	ASSERT_FALSE(ideologicalDecisions.requiredIdeologiesExist(majorIdeologies));
+}
+
+
+TEST(HoI4World_IdeologicalDecisionsTests, trueIfRequiredIdeologyPresent)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\trequired_ideologies = {\n";
+	input << "\t\tabsolutism\n";
+	input << "\t}";
+	input << "}";
+	HoI4::IdeologicalDecisions ideologicalDecisions(input);
+
+	std::set<std::string> majorIdeologies;
+	majorIdeologies.insert("absolutism");
+	ASSERT_TRUE(ideologicalDecisions.requiredIdeologiesExist(majorIdeologies));
+}
+
+
+TEST(HoI4World_IdeologicalDecisionsTests, falseIfAnyRequiredIdeologyMissing)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\trequired_ideologies = {\n";
+	input << "\t\tabsolutism\n";
+	input << "\t\tdemocracy\n";
+	input << "\t}";
+	input << "}";
+	HoI4::IdeologicalDecisions ideologicalDecisions(input);
+
+	std::set<std::string> majorIdeologies;
+	majorIdeologies.insert("absolutism");
+	ASSERT_FALSE(ideologicalDecisions.requiredIdeologiesExist(majorIdeologies));
+}
+
+
+TEST(HoI4World_IdeologicalDecisionsTests, trueIfAllRequiredIdeologiesPresent)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\trequired_ideologies = {\n";
+	input << "\t\tabsolutism\n";
+	input << "\t\tdemocracy\n";
+	input << "\t}";
+	input << "}";
+	HoI4::IdeologicalDecisions ideologicalDecisions(input);
+
+	std::set<std::string> majorIdeologies;
+	majorIdeologies.insert("absolutism");
+	majorIdeologies.insert("democracy");
+	ASSERT_TRUE(ideologicalDecisions.requiredIdeologiesExist(majorIdeologies));
 }

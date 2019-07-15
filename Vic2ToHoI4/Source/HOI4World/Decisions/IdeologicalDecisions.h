@@ -39,10 +39,13 @@ class IdeologicalDecisions: commonItems::parser
 	public:
 		IdeologicalDecisions(std::istream& theStream);
 
-		std::vector<decisionsCategory> takeCategories() { return std::move(theCategories); }
+		const std::vector<decisionsCategory>& getCategories() { return theCategories; }
+
+		bool requiredIdeologiesExist(const std::set<std::string>& majorIdeologies);
 
 	private:
 		std::vector<decisionsCategory> theCategories;
+		std::set<std::string> requiredIdeologies;
 };
 
 }
