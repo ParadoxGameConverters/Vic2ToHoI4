@@ -6,7 +6,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_afar"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_afar.dds"
 	}
 
 	spriteType = {
@@ -16,7 +16,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_african_minor"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_african_minor.dds"
 	}
 
 	spriteType = {
@@ -61,7 +61,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_akan"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_akan.dds"
 	}
 
 	spriteType = {
@@ -81,7 +81,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_all_italian"
-		texturefile = "gfx/interface/goals/focus_generic_italy_first.dds"
+		texturefile = "gfx/interface/culture/culture_all_italian.dds"
 	}
 
 	spriteType = {
@@ -96,7 +96,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_amerikaner"
-		texturefile = "gfx/interface/ideas/idea_general_staff.dds"
+		texturefile = "gfx/interface/culture/culture_amerikaner.dds"
 	}
 
 	spriteType = {
@@ -111,7 +111,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_anglo_african"
-		texturefile = "gfx/interface/goals/focus_SAF_secure_africa.dds"
+		texturefile = "gfx/interface/culture/culture_anglo_african.dds"
 	}
 
 	spriteType = {
@@ -141,12 +141,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_asian_minor"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_asian_minor.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_assamese"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_assamese.dds"
 	}
 
 	spriteType = {
@@ -171,7 +171,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_avadhi"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_avadhi.dds"
 	}
 
 	spriteType = {
@@ -186,17 +186,17 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_baganda"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_baganda.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_baguirmi"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_baguirmi.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_bai"
-		texturefile = "gfx/interface/goals/focus_chi_proclaim_rival_government.dds"
+		texturefile = "gfx/interface/culture/culture_bai.dds"
 	}
 
 	spriteType = {
@@ -211,7 +211,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_bambara"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_bambara.dds"
 	}
 
 	spriteType = {
@@ -226,17 +226,17 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_beifaren"
-		texturefile = "gfx/interface/goals/focus_chi_proclaim_rival_government.dds"
+		texturefile = "gfx/interface/culture/culture_beifaren.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_beja"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_beja.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_bengali"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_bengali.dds"
 	}
 
 	spriteType = {
@@ -246,7 +246,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_bihari"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_bihari.dds"
 	}
 
 	spriteType = {
@@ -276,7 +276,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_british"
-		texturefile = "gfx/interface/goals/focus_chi_british_cooperation.dds"
+		texturefile = "gfx/interface/culture/culture_british.dds"
 	}
 
 	spriteType = {
@@ -311,7 +311,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_cat"
-		texturefile = "gfx/interface/ideas/idea_generic_motorized_equipment_manufacturer_1.dds"
+		texturefile = "gfx/interface/culture/culture_cat.dds"
 	}
 
 	spriteType = {
@@ -341,7 +341,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_chewa"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_chewa.dds"
 	}
 
 	spriteType = {
@@ -356,7 +356,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_croat"
-		texturefile = "gfx/interface/goals/focus_yug_banovina_of_croatia.dds"
+		texturefile = "gfx/interface/culture/culture_croat.dds"
 	}
 
 	spriteType = {
@@ -396,7 +396,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_dinka"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_dinka.dds"
 	}
 
 	spriteType = {
@@ -411,17 +411,17 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_dummy"
-		texturefile = "gfx/interface/ideas/idea_chi_incompetent_officers.dds"
+		texturefile = "gfx/interface/culture/culture_dummy.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_dutch"
-		texturefile = "gfx/interface/goals/focus_hol_oranje_boven.dds"
+		texturefile = "gfx/interface/culture/culture_dutch.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_dyula"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_dyula.dds"
 	}
 
 	spriteType = {
@@ -436,12 +436,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_edo"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_edo.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_english"
-		texturefile = "gfx/interface/goals/focus_chi_british_cooperation.dds"
+		texturefile = "gfx/interface/culture/culture_english.dds"
 	}
 
 	spriteType = {
@@ -461,7 +461,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_ewe"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_ewe.dds"
 	}
 
 	spriteType = {
@@ -471,7 +471,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_fang"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_fang.dds"
 	}
 
 	spriteType = {
@@ -496,7 +496,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_fon"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_fon.dds"
 	}
 
 	spriteType = {
@@ -506,22 +506,22 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_french"
-		texturefile = "gfx/interface/goals/focus_chi_reach_out_to_france.dds"
+		texturefile = "gfx/interface/culture/culture_french.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_french_canadian"
-		texturefile = "gfx/interface/goals/goal_tfv_can_compromise_with_quebec.dds"
+		texturefile = "gfx/interface/culture/culture_french_canadian.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_fulbe"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_fulbe.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_fur"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_fur.dds"
 	}
 
 	spriteType = {
@@ -536,7 +536,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_german"
-		texturefile = "gfx/interface/ideas/idea_ger_rebuild_the_nation.dds"
+		texturefile = "gfx/interface/culture/culture_german.dds"
 	}
 
 	spriteType = {
@@ -556,7 +556,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_gujarati"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_gujarati.dds"
 	}
 
 	spriteType = {
@@ -566,12 +566,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_hakka"
-		texturefile = "gfx/interface/goals/focus_chi_proclaim_rival_government.dds"
+		texturefile = "gfx/interface/culture/culture_hakka.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_harari"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_harari.dds"
 	}
 
 	spriteType = {
@@ -586,7 +586,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_hazara"
-		texturefile = "gfx/interface/culture/culture_afghan.dds"
+		texturefile = "gfx/interface/culture/culture_hazara.dds"
 	}
 
 	spriteType = {
@@ -596,7 +596,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_herero"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_herero.dds"
 	}
 
 	spriteType = {
@@ -606,7 +606,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_horse"
-		texturefile = "gfx/interface/ideas/idea_porsche.dds"
+		texturefile = "gfx/interface/culture/culture_horse.dds"
 	}
 
 	spriteType = {
@@ -616,12 +616,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_ibibio"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_ibibio.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_ibo"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_ibo.dds"
 	}
 
 	spriteType = {
@@ -651,7 +651,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_itsekari"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_itsekari.dds"
 	}
 
 	spriteType = {
@@ -666,12 +666,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_janubii"
-		texturefile = "gfx/interface/culture/culture_janub.dds"
+		texturefile = "gfx/interface/culture/culture_janubii.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_japanese"
-		texturefile = "gfx/interface/goals/focus_chi_collaboration_with_the_japanese.dds"
+		texturefile = "gfx/interface/culture/culture_japanese.dds"
 	}
 
 	spriteType = {
@@ -701,32 +701,32 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_kachin"
-		texturefile = "gfx/interface/culture/culture_IDC.dds"
+		texturefile = "gfx/interface/culture/culture_kachin.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_kanauji"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_kanauji.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_kannada"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_kannada.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_kanuri"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_kanuri.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_karen"
-		texturefile = "gfx/interface/culture/culture_IDC.dds"
+		texturefile = "gfx/interface/culture/culture_karen.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_kashmiri"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_kashmiri.dds"
 	}
 
 	spriteType = {
@@ -736,7 +736,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_kefficho"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_kefficho.dds"
 	}
 
 	spriteType = {
@@ -746,12 +746,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_khoisan"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_khoisan.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_kikuyu"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_kikuyu.dds"
 	}
 
 	spriteType = {
@@ -766,7 +766,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_kru"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_kru.dds"
 	}
 
 	spriteType = {
@@ -796,7 +796,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_lomwe"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_lomwe.dds"
 	}
 
 	spriteType = {
@@ -806,7 +806,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_luba"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_luba.dds"
 	}
 
 	spriteType = {
@@ -816,17 +816,17 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_lunda"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_lunda.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_luo"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_luo.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_maasai"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_maasaie.dds"
 	}
 
 	spriteType = {
@@ -835,7 +835,7 @@ spriteTypes = {
 	}
 
 	spriteType = {
-		name = "GFX_idea_culture_maghreb_arabic"
+		name = "GFX_idea_culture_maghreb_arabic" #Actually, Maghreb NOT Arabic, i.e. Carthaginian
 		texturefile = "gfx/interface/culture/culture_maghreb_arabic.dds"
 	}
 
@@ -846,7 +846,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_makua"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_makua.dds"
 	}
 
 	spriteType = {
@@ -861,7 +861,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_malayalam"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_malayalam.dds"
 	}
 
 	spriteType = {
@@ -881,7 +881,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_manipuri"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_manipuri.dds"
 	}
 
 	spriteType = {
@@ -896,7 +896,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_marathi"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_marathi.dds"
 	}
 
 	spriteType = {
@@ -906,7 +906,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_maures"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_maures.dds"
 	}
 
 	spriteType = {
@@ -921,7 +921,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_melanesian"
-		texturefile = "gfx/interface/culture/culture_oceanian.dds"
+		texturefile = "gfx/interface/culture/culture_melanesian.dds"
 	}
 
 	spriteType = {
@@ -936,17 +936,17 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_miao"
-		texturefile = "gfx/interface/goals/focus_chi_proclaim_rival_government.dds"
+		texturefile = "gfx/interface/culture/culture_miao.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_micronesian"
-		texturefile = "gfx/interface/culture/culture_oceanian.dds"
+		texturefile = "gfx/interface/culture/culture_micronesian.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_min"
-		texturefile = "gfx/interface/goals/focus_chi_proclaim_rival_government.dds"
+		texturefile = "gfx/interface/culture/culture_min.dds"
 	}
 
 	spriteType = {
@@ -956,12 +956,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_moluccan"
-		texturefile = "gfx/interface/culture/culture_javan.dds"
+		texturefile = "gfx/interface/culture/culture_moluccan.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_mongo"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_mongo.dds"
 	}
 
 	spriteType = {
@@ -976,7 +976,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_mossi"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_mossi.dds"
 	}
 
 	spriteType = {
@@ -1001,7 +1001,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_nanfaren"
-		texturefile = "gfx/interface/goals/focus_chi_proclaim_rival_government.dds"
+		texturefile = "gfx/interface/culture/culture_nanfaren.dds"
 	}
 
 	spriteType = {
@@ -1031,12 +1031,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_nepali"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_nepali.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_nguni"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_nguni.dds"
 	}
 
 	spriteType = {
@@ -1046,7 +1046,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_noculture"
-		texturefile = "gfx/interface/thisisdog.dds"
+		texturefile = "gfx/interface/culture/culture_noculture.dds"
 	}
 
 	spriteType = {
@@ -1061,12 +1061,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_north_german"
-		texturefile = "gfx/interface/ideas/idea_ger_rebuild_the_nation.dds"
+		texturefile = "gfx/interface/culture/culture_north_german.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_north_italian"
-		texturefile = "gfx/interface/goals/focus_generic_italy_first.dds"
+		texturefile = "gfx/interface/culture/culture_north_italian.dds"
 	}
 
 	spriteType = {
@@ -1106,12 +1106,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_nuba"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_nuba.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_nuer"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_nuer.dds"
 	}
 
 	spriteType = {
@@ -1126,12 +1126,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_oriya"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_oriya.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_oromo"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_oromo.dds"
 	}
 
 	spriteType = {
@@ -1141,17 +1141,17 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_ovimbundu"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_ovimbundu.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_panjabi"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_panjabi.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_pashtun"
-		texturefile = "gfx/interface/culture/culture_afghan.dds"
+		texturefile = "gfx/interface/culture/culture_pashtun.dds"
 	}
 
 	spriteType = {
@@ -1176,7 +1176,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_picard"
-		texturefile = "gfx/interface/goals/focus_chi_reach_out_to_france.dds"
+		texturefile = "gfx/interface/culture/culture_picard.dds"
 	}
 
 	spriteType = {
@@ -1196,12 +1196,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_polar_bears"
-		texturefile = "gfx/leaders/POL/Portrait_POL_Voytek.dds"
+		texturefile = "gfx/interface/culture/culture_polar_bears.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_polish"
-		texturefile = "gfx/interface/goals/focus_generic_polish_deal.dds"
+		texturefile = "gfx/interface/culture/culture_polish.dds"
 	}
 
 	spriteType = {
@@ -1211,7 +1211,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_polynesian"
-		texturefile = "gfx/interface/culture/culture_oceanian.dds"
+		texturefile = "gfx/interface/culture/culture_polynesian.dds"
 	}
 
 	spriteType = {
@@ -1226,32 +1226,32 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_quechua"
-		texturefile = "gfx/interface/culture/culture_aimara.dds"
+		texturefile = "gfx/interface/culture/culture_quechua.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_rajput"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_rajput.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_romanian"
-		texturefile = "gfx/interface/goals/focus_rom_preserve_romania.dds"
+		texturefile = "gfx/interface/culture/culture_romanian.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_ruanda"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_ruanda.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_rundi"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_rundi.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_russian"
-		texturefile = "gfx/interface/goals/focus_chi_mission_to_the_soviet_union.dds"
+		texturefile = "gfx/interface/culture/culture_russian.dds"
 	}
 
 	spriteType = {
@@ -1266,12 +1266,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_sara"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_sara.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_schwarzreicher"
-		texturefile = "gfx/interface/goals/focus_SAF_german_coup.dds"
+		texturefile = "gfx/interface/culture/culture_schwarzreicher.dds"
 	}
 
 	spriteType = {
@@ -1281,12 +1281,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_sena"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_sena.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_senufo"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_senufo.dds"
 	}
 
 	spriteType = {
@@ -1306,7 +1306,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_shona"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_shona.dds"
 	}
 
 	spriteType = {
@@ -1316,17 +1316,17 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_sidama"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_sidama.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_sindi"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_sindi.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_sinhala"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_sinhala.dds"
 	}
 
 	spriteType = {
@@ -1356,7 +1356,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_songhai"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_songhai.dds"
 	}
 
 	spriteType = {
@@ -1366,7 +1366,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_sotho"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_sotho.dds"
 	}
 
 	spriteType = {
@@ -1381,7 +1381,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_south_italian"
-		texturefile = "gfx/interface/goals/focus_generic_italy_first.dds"
+		texturefile = "gfx/interface/culture/culture_south_italian.dds"
 	}
 
 	spriteType = {
@@ -1401,7 +1401,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_sudreicher"
-		texturefile = "gfx/interface/ideas/idea_general_staff.dds"
+		texturefile = "gfx/interface/culture/culture_sudreicher.dds"
 	}
 
 	spriteType = {
@@ -1411,7 +1411,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_sukuma"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_sukuma.dds"
 	}
 
 	spriteType = {
@@ -1451,7 +1451,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_tamil"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_tamil.dds"
 	}
 
 	spriteType = {
@@ -1466,12 +1466,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_teda"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_teda.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_telegu"
-		texturefile = "gfx/interface/goals/focus_RAJ_two_nation_theory.dds"
+		texturefile = "gfx/interface/culture/culture_telegu.dds"
 	}
 
 	spriteType = {
@@ -1496,17 +1496,17 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_tigray"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_tigray.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_tiv"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_tiv.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_tonga"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_tonga.dds"
 	}
 
 	spriteType = {
@@ -1556,12 +1556,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_undead"
-		texturefile = "gfx/interface/lobby_player_mapmode_button_selected.dds"
+		texturefile = "gfx/interface/culture/culture_undead.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_unyamwezi"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_unyamwezi.dds"
 	}
 
 	spriteType = {
@@ -1601,17 +1601,17 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_western_slavic" #Chervenian/Red Ruthenian
-		texturefile = "gfx/interface/goals/focus_generic_polish_deal.dds"
+		texturefile = "gfx/interface/culture/culture_western_slavic.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_wolof"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_wolof.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_xhosa"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_xhosa.dds"
 	}
 
 	spriteType = {
@@ -1621,12 +1621,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_yankee"
-		texturefile = "gfx/interface/goals/focus_chi_mission_to_the_us.dds"
+		texturefile = "gfx/interface/culture/culture_yankee.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_yao"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_yao.dds"
 	}
 
 	spriteType = {
@@ -1636,17 +1636,17 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_yi"
-		texturefile = "gfx/interface/goals/focus_chi_proclaim_rival_government.dds"
+		texturefile = "gfx/interface/culture/culture_yi.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_yoruba"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_yoruba.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_yue"
-		texturefile = "gfx/interface/goals/focus_chi_proclaim_rival_government.dds"
+		texturefile = "gfx/interface/culture/culture_yue.dds"
 	}
 
 	spriteType = {
@@ -1661,7 +1661,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_zhuang"
-		texturefile = "gfx/interface/goals/focus_chi_proclaim_rival_government.dds"
+		texturefile = "gfx/interface/culture/culture_zhuang.dds"
 	}
 
 	spriteType = {
@@ -1708,25 +1708,25 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_swiss_french"
-		texturefile = "gfx/interface/culture/culture_swiss.dds"
+		texturefile = "gfx/interface/culture/culture_swiss_french.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_swiss_german"
-		texturefile = "gfx/interface/culture/culture_swiss.dds"
+		texturefile = "gfx/interface/culture/culture_swiss_german.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_swiss_italian"
-		texturefile = "gfx/interface/culture/culture_swiss.dds"
+		texturefile = "gfx/interface/culture/culture_swiss_italian.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_romansh"
-		texturefile = "gfx/interface/culture/culture_swiss.dds"
+		texturefile = "gfx/interface/culture/culture_romansh.dds"
 	}
 
 
@@ -1768,7 +1768,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_anglo_indian"
-		texturefile = "gfx/interface/goals/focus_RAJ_british_investors.dds"
+		texturefile = "gfx/interface/culture/culture_anglo_indian.dds"
 	}
 
 
@@ -1780,164 +1780,164 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_neo_zelandais"
-		texturefile = "gfx/interface/culture/culture_australienne.dds"
+		texturefile = "gfx/interface/culture/culture_neo_zelandais.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_louisianan"
-		texturefile = "gfx/interface/goals/goal_tfv_can_compromise_with_quebec.dds"
+		texturefile = "gfx/interface/culture/culture_louisianan.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_cajun"
-		texturefile = "gfx/interface/goals/goal_tfv_can_compromise_with_quebec.dds"
+		texturefile = "gfx/interface/culture/culture_cajun.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_french_australian"
-		texturefile = "gfx/interface/culture/culture_australienne.dds"
+		texturefile = "gfx/interface/culture/culture_french_australian.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_kreol"
-		texturefile = "gfx/interface/culture/culture_afro_antillean.dds"
+		texturefile = "gfx/interface/culture/culture_kreol.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_griqua"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_griqua.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_western_nigritic"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_western_nigritic.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_gur"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_gur.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_east_kwa"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_east_kwa.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_kuba"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_kuba.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_lendu"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_lendu.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_kingwana"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_kingwana.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_chokwe"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_chokwe.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_kavango"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_kavango.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_ubangian"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_ubangian.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_forest_bantu"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_forest_bantu.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_south_forest_bantu"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_south_forest_bantu.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_kilombero"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_kilombero.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_lacustrine_bantu"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_lacustrine_bantu.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_cushitic"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_cushitic.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_nilotic"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_nilotic.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_nyasa"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_nyasa.dds"
 	}
 
 
 	spriteType = {
 		name = "GFX_idea_culture_southern_bantu"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		texturefile = "gfx/interface/culture/culture_southern_bantu.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_afro_norse"
-		texturefile = "gfx/interface/goals/focus_SAF_german_coup.dds"
+		texturefile = "gfx/interface/culture/culture_afro_norse.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_afro_carpathian"
-		texturefile = "gfx/interface/culture/culture_negru.dds"
+		texturefile = "gfx/interface/culture/culture_afro_carpathian.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_afro_italian"
-		texturefile = "gfx/interface/culture/culture_africano.dds"
+		texturefile = "gfx/interface/culture/culture_afro_italian.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_afro_greek"
-		texturefile = "gfx/interface/culture/culture_mavro.dds"
+		texturefile = "gfx/interface/culture/culture_afro_greek.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_afro_slavic"
-		texturefile = "gfx/interface/culture/culture_smugly.dds"
+		texturefile = "gfx/interface/culture/culture_afro_slavic.dds"
 	}
 
 	spriteType = {
@@ -1957,12 +1957,12 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_dragon_culture"
-		texturefile = "gfx/interface/ideas/idea_man_low_legitimacy5.dds"
+		texturefile = "gfx/interface/culture/culture_dragon_culture.dds"
 	}
 
 	spriteType = {
 		name = "GFX_idea_culture_elephant_culture"
-		texturefile = "gfx/interface/ideas/wilkies_new_deal.dds"
+		texturefile = "gfx/interface/culture/culture_elephant_culture.dds"
 	}
 
 	spriteType = {
