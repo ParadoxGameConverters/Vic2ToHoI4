@@ -4122,3 +4122,124 @@ ostrogothic = {
 	naval_companies = { Germaniawerft "Blohm & Voss" }
 	aircraft_companies = { Messerschmitt Junkers "Focke Wulf" Heinkel Dornier }
 }
+cree = {
+	female_names = { Torotiy Meriy Elin Ashenee Astina Echa Kiche Kika Mati Matisa Matisoon Nichena Osceola Pamoon Paniya }
+	callsigns = { Iyiyiw Chisasibi Wemindji Whapmagoostui Mistissini Nemaska "Ouje-Bougoumou" Waskaganish Waswanipi Mosoni Maskekowak }
+	car_companies = { Sehkes }
+	weapon_companies = { Micimâpiskahikan }
+	aircraft_companies = { Pêcihâw }
+	naval_companies = { Mahkâskâw }
+	industry_companies = { Atoskewin }
+	electronic_companies = { Piyesiwak }
+}
+dakota = {
+	female_names = { Tasinasapewin Thasinamani Tasinahlahlawin Dohumme Chapa Chapawee Chumani Dowanhowee Ehawee Hantaywee Kimimela 
+			Macha Magaskawee Makawee Mika Ojinjintka Ptaysanwee Shappa Skah Wichahpi Winona Zitkala Zonta Mina Tahcawin 
+			Talutah Wachiwi Wasula Weayaya Wichapi }
+	callsigns = { Sichangu Oglala Itazipcho Hunkpapha Mnikhowozu Sihasapa Oohenunpa }
+	car_companies = { Iyeçiŋkopte }
+	weapon_companies = { Mazaoçeṭi }
+	aircraft_companies = { Watakiŋyaŋ }
+	naval_companies = { Wata-Wata }
+	industry_companies = { Ḣtani }
+	electronic_companies = { Wakiŋyaŋ }
+}
+dog_culture = {
+	female_names = { Carmen Eleanor Dolly Eve Fergie Golda Guinevere Indira Minerva Octavia Psyche Pluck Buckler Spigot Lance Lurcher Watch Keeper Brigade Fencer Butcher Blazer Prowess Craftsman
+			Forester Counsellor Spoiler Hurry Fury Growler Riot Bloomer Rome Blossom Hebe Hilary Jolity Gazer Eyebright Much Force Trooper Bustle Bubbler Rockdove Stubborn Yelp Killer
+			Pele-mele Sky Sunbeam Bodkin Wistful Gnome Tracks DashAnnie Swix Bella Xohla Lassie Laika Odine Inky Alice Good Bad Bubbles Dog Doggo Shadow Spot Babe Twiggy Nikki Nova Yippie
+			Kisha Tavi Naevia Alice Berta Domino Blondi Bella Lottie Danny Lyra Lady Nymeria Zoe Jemma Ronja Maus Bessie Flecka Tira Menchi Lily Gala Bitta Mia Laika Sadie Sue Sally Songster Wuffler }
+	callsigns = { "Good Boy" Shepherd Pinscher Schnauzer Terrier Dachshunds Spitz Bloodhound Tracker Pointer Retriever Companion Greyhound }
+	car_companies = { "Heat Inc." }
+	weapon_companies = { "Fetch & Pups" }
+	aircraft_companies = { Airdog }
+	naval_companies = { "Operation Seawoof" }
+	industry_companies = { "Human Works" }
+	electronic_companies = { "Thunderwoof" }
+}
+dragon_culture = {
+	female_names = { Tiomat Tintaglia Katla Drakaina Gegheiss Jesasdess Semoth Heirel Taynnelth Naga Tiki Nagi Myrrh Ninian Nah Nyx Teethless Smokey Bahamut Deathwing Quicksilver
+			"Grey Ghost" Seasmoke Puff Pyre Scorch Dragon Wyrm Lindwurm Dovah Stella Rakshesha Norberta Paksenarrion Saphira Aithusa Cordelia Rathian Charna Xanadu }
+	callsigns = { Leviathan Sathanas "Beowulf's Slayer" George Fáfnir Gawain Faustus "Daenerys Targaryen" "Jon Snow" }
+	car_companies = { "Fire Machines" }
+	weapon_companies = { "Cough Doctors" }
+	aircraft_companies = { "Wing Healthcare" }
+	naval_companies = { "Nessie & Hatchlings" }
+	industry_companies = { "Pile of Gold Inc." }
+	electronic_companies = { "Thunderstorm Inc." }
+}
+duck_culture = {
+	female_names = { Daisy Irynn Neilly Aves Winghelmina Beaktrice Molly Webbygail Bentina Goldie Jemima Cake Blunder Duck Quackers Pippi Face Grape Anaheim Feathers Kajsa Donna Hortensia Chickadee
+			Tyra Gullan Oona Umpa Gittan Lola Petunia Doris Matilda Lucinda Dumbella Selma Dora Fanny Kicki Titti Anki Gandra Gåsalin Gosalyn Ammonia Zeena }
+	callsigns = { "McDuck" Paperinik "de Spell" "von Drake" Pingu }
+	car_companies = { Fodder } #Pinguish random words
+	weapon_companies = { "Coo-coo" }
+	aircraft_companies = { Realvou }
+	naval_companies = { Fiss }
+	industry_companies = { Strawform }
+	electronic_companies = { Grorlip }
+}
+elephant_culture = {
+	female_names = { Doot Trumpo Snoot Pyyrhus Kandula Jumbo Elephant Setu Dhriti Bhaanu Bhadra Zain Barbar Pompadour Booper Dombo Celestial Hansken Ruby Miraan Moksha Dhruti
+			Zahara Yasha Jaina Fria Aashi Hruti Sia Daksha Zia Xara Zyva Okki }
+	callsigns = { Babar Jumbo "Lord Rataxes" Airavata Ganesha Gajendra Circus }
+	car_companies = { Safari }
+	weapon_companies = { "Trunk Armors" }
+	aircraft_companies = { "Jumbo Jets" }
+	naval_companies = { "10 Elephants Are Lighter Than 11 Archers" }
+	industry_companies = { "Dumbo's Circus" }
+	electronic_companies = { "Quake Energies" }
+}
+hedgehog_culture = {
+	female_names = { Erina Ekidney Leerix Algira Hemy Collie Daura Para Ventria Shaquilla Prickquille Splinthia Nimue Amy Nix Spike Pincushion Hedgehog Grumpy Pokey Crisp Pinecone Sam Wiggles
+			Rose Pebbles Peggy Hogatha Briar Flower Meg Scarlet Vendela Ginger Mena Tisha Oona Ursula Judit Tegan Sunshine }
+	callsigns = { Sonic Shadow "Mr. Pricklepants" }
+	car_companies = { "Sonikku-za-Hejjihoggu" }
+	weapon_companies = { "Eggman & Bots" }
+	aircraft_companies = { "Tails Inc." }
+	naval_companies = { "Water Spades GmbH" }
+	industry_companies = { "Chaos Emeralds" }
+	electronic_companies = { "House of Ivo Robotnik" }
+}
+inuit = {
+	female_names = { Ahnah Akna Chena Corazon Desna Kaskae Kaya Kirima Koko Malina Adlartok Ahnah Akiak Anana Anernerk Annakpok Aput 
+			Ataciare Atka Aukaneck Biisaiyowaq Buniq Chulyin Cikup Corazon Cupun Hey Iluak Iluq Imnek Ipiktok Iqniq Kakrayok  }
+	callsigns = { Eskimo Uyaquk Angakkuq Arnarsaq }
+	industry_companies = { IKinnaik }
+	car_companies = { AKutti }
+	electronic_companies = { Kalluk }
+	naval_companies = { Mallik }
+	weapon_companies = { Manitsautik }
+	aircraft_companies = { Auttutak }
+}
+navajo = {
+	female_names = { "Dahteste" "Ilthgozay" "Gouyen" "Lozen" "Tohayea" }
+	callsigns = { Navajo Begai "the American" "the White" Shaman }
+	industry_companies = { "Na'anish" }
+	electronic_companies = { "Ii'ni'" }
+	car_companies = { Chidi }
+	naval_companies = { "Tsin naa'eeł" }
+	weapon_companies = { Béésh }
+	aircraft_companies = { "Chidí Naatʼaʼí Ńdinibįįhígi" }
+}
+pueblo = {
+	female_names = { Ootcakao Kahavasooah Ootcakao Sacagawea Chipeta Tocmetone }
+	callsigns = { Acoma Cochiti Isleta Jemez Laguna Nambe "Ohkay Owingeh" Picuris Pojoaque Sandia 
+			Taos Tesuque Zia Zuni Hopi Piru }
+	industry_companies = { "K'áusam'é" }
+	electronic_companies = { Kâumûutsạ }
+	car_companies = { Tv́rv́rv́gá }
+	naval_companies = { Kụsrkáwatsịtạ }
+	weapon_companies = { "Ay'áat'idyv́vtsị" }
+	aircraft_companies = { Bíishbíiná }
+}
+tupinamba = {
+	female_names = { Bartira Potira Porasy Jougousa Azelene }
+	callsigns = { Piratininga Tabajara Temiminó Tamoio Tabajara Caeté Tupinaé Temiminó Tupina Aricobé }
+	car_companies = { APÉ }
+	weapon_companies = { ITÁ }
+	industry_companies = { GÛATÁ }
+	electronic_companies = { Ybytuaíba }
+	naval_companies = { "'Y" }
+	aircraft_companies = { Guirá }
+}
