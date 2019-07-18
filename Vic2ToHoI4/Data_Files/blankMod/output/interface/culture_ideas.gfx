@@ -1969,4 +1969,28 @@ spriteTypes = {
 		name = "GFX_idea_culture_hedgehog_culture"
 		texturefile = "gfx/interface/culture/culture_hedgehog_culture.dds"
 	}
+	spriteType = {
+		name = "GFX_idea_culture_cree"
+		texturefile = "gfx/interface/culture/culture_cree.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_dakota"
+		texturefile = "gfx/interface/culture/culture_dakota.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_inuit"
+		texturefile = "gfx/interface/culture/culture_inuit.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_navajo"
+		texturefile = "gfx/interface/culture/culture_navajo.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_pueblo"
+		texturefile = "gfx/interface/culture/culture_pueblo.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_tupinamba"
+		texturefile = "gfx/interface/culture/culture_tupinamba.dds"
+	}
 }
