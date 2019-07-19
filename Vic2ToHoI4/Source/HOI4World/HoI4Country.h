@@ -264,6 +264,8 @@ class HoI4Country
 
 		bool greatPower;
 
+		std::set<std::string> ideas;
+
 		// military stuff
 		HoI4::Army theArmy;
 		std::unique_ptr<HoI4::shipVariants> theShipVariants;
