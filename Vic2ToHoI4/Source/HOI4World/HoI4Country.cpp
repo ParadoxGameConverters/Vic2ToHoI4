@@ -148,6 +148,11 @@ void HoI4Country::initFromV2Country(const Vic2::World& _srcWorld, const Vic2::Co
 		}
 	}
 
+	for (auto flag: srcCountry->getFlags())
+	{
+		ideas.insert(flag);
+	}
+
 	convertLaws();
 	convertLeaders(theGraphics);
 	convertRelations(countryMap);
@@ -1089,6 +1094,11 @@ void HoI4Country::outputIdeas(ofstream& output) const
 	if (!civilized)
 	{
 		output << "\tuncivilized\n";
+	}
+
+	for (auto idea: ideas)
+	{
+		output << "\t" << idea << "\n";
 	}
 
 	output << "\t" << mobilizationLaw << "\n";

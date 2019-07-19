@@ -81,6 +81,7 @@ class Country: commonItems::parser
 		bool isAnAcceptedCulture(const std::string& culture) const { return (acceptedCultures.count(culture) > 0); }
 		std::set<std::string> getInventions() const { return discoveredInventions; }
 		std::string getGovernment() const { return government; }
+		std::set<std::string> getFlags() const { return flags; }
 		date getLastElection() const { return lastElection; }
 		int getCapital() const { return capital; }
 		std::set<std::string> getTechs() const { return techs; }
