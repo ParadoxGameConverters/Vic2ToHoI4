@@ -147,6 +147,8 @@ class Country: commonItems::parser
 		double badboy = 0.0;
 		double prestige = 0.0;
 
+		std::set<std::string> flags;
+
 		std::string government = "";
 		std::map<std::string, double> upperHouseComposition;
 		unsigned	int rulingPartyID = 0; 	// Bad value, but normal for Rebel faction.
