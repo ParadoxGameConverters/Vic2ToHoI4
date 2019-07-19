@@ -28,6 +28,9 @@
     <Filter Include="HoI4World\Decisions">
       <UniqueIdentifier>{7558d49c-6e86-4988-b8c9-8ec76c67f5e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mappers\FlagsToIdeas">
+      <UniqueIdentifier>{1e13ac9d-4a9c-4e91-9815-08b2ca5828c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -329,6 +332,9 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Decisions\IdeologicalDecisions.cpp">
       <Filter>HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.cpp">
+      <Filter>Mappers\FlagsToIdeas</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -634,6 +640,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Decisions\IdeologicalDecisions.h">
       <Filter>HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.h">
+      <Filter>Mappers\FlagsToIdeas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
