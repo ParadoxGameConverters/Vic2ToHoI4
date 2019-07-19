@@ -389,6 +389,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\IdeologicalDecisions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\FlagToIdeaMappingTests.cpp">
+      <Filter>MapperTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -432,6 +438,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\Decisions">
       <UniqueIdentifier>{c0b754b1-91b1-4d98-86f3-b85b17e16e95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\FlagsToIdeas">
+      <UniqueIdentifier>{37063ac5-594a-4948-9c5c-2c17277697ab}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

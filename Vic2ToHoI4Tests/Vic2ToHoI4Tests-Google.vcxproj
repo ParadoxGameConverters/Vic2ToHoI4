@@ -118,6 +118,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\SupplyZones.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Technologies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryMapping.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.cpp" />
@@ -170,6 +171,7 @@
     <ClCompile Include="HoI4WorldTests\UnitMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\UnitMappingTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4UnitTypeTests.cpp" />
+    <ClCompile Include="MapperTests\FlagToIdeaMappingTests.cpp" />
     <ClCompile Include="MapperTests\TechMapperTests.cpp" />
     <ClCompile Include="Mocks\TechnologiesMock.h" />
     <ClCompile Include="Vic2ToHoI4ConverterTests.cpp" />
