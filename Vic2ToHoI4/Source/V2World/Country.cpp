@@ -195,6 +195,14 @@ Vic2::Country::Country(const std::string& theTag, std::istream& theStream, const
 		State* newState = new State(theStream, tag);
 		states.push_back(newState);
 	});
+	registerKeyword(std::regex("flags"), [this](const std::string& unused, std::istream& theStream)
+	{
+		commonItems::assignments theFlags(theStream);
+		for (auto flag: theFlags.getAssignments())
+		{
+			flags.insert(flag.first);
+		}
+	});
 	registerKeyword(std::regex("[A-Za-z0-9_]+"), commonItems::ignoreItem);
 
 	parseStream(theStream);
