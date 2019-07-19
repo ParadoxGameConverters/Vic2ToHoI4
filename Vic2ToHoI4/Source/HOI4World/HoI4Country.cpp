@@ -93,8 +93,16 @@ HoI4Country::HoI4Country(const string& _tag, const HoI4::World* _theWorld):
 }
 
 
-void HoI4Country::initFromV2Country(const Vic2::World& _srcWorld, const Vic2::Country* _srcCountry, const map<int, int>& stateMap, const map<int, HoI4::State*>& states, HoI4::namesMapper& theNames, const graphicsMapper& theGraphics, const CountryMapper& countryMap)
-{
+void HoI4Country::initFromV2Country(
+	const Vic2::World& _srcWorld,
+	const Vic2::Country* _srcCountry,
+	const std::map<int, int>& stateMap,
+	const std::map<int, HoI4::State*>& states,
+	HoI4::namesMapper& theNames,
+	const graphicsMapper& theGraphics,
+	const CountryMapper& countryMap,
+	const mappers::FlagsToIdeasMapper& flagsToIdeasMapper
+) {
 	srcCountry = _srcCountry;
 
 	determineFilename();
@@ -150,7 +158,11 @@ void HoI4Country::initFromV2Country(const Vic2::World& _srcWorld, const Vic2::Co
 
 	for (auto flag: srcCountry->getFlags())
 	{
-		ideas.insert(flag);
+		auto possibleIdea = flagsToIdeasMapper.getIdea(flag);
+		if (possibleIdea)
+		{
+			ideas.insert(*possibleIdea);
+		}
 	}
 
 	convertLaws();

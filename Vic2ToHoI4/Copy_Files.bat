@@ -3,7 +3,9 @@ del "..\Release\Vic2ToHoI4\blankMod" /Q /S /F
 rmdir "..\Release\Vic2ToHoI4\blankMod" /Q /S
 xcopy "Data_Files\blankMod" "..\Release\Vic2ToHoI4\blankmod" /Y /E /I
 
+
 rem **Copy data files**
+mkdir "..\Release\Vic2ToHoI4\DataFiles"
 copy "Data_Files\ai_peaces.txt" "..\Release\Vic2ToHoI4\"
 copy "Data_Files\configuration.txt" "..\Release\Vic2ToHoI4\"
 copy "Data_Files\configuration.txt" "..\Release\Vic2ToHoI4\configuration-example.txt"
@@ -14,6 +16,7 @@ copy "Data_Files\converterLeaderTraits.txt" "..\Release\Vic2ToHoI4\"
 copy "Data_Files\country_mappings.txt" "..\Release\Vic2ToHoI4\"
 copy "Data_Files\cultureGroupToGraphics.txt" "..\Release\Vic2ToHoI4\"
 copy "Data_Files\FAQ.txt" "..\Release\Vic2ToHoI4\"
+copy "Data_Files\FlagsToIdeasMappings.txt" "..\Release\Vic2ToHoI4\DataFiles\FlagsToIdeasMappings.txt"
 copy "Data_Files\governmentMapping.txt" "..\Release\Vic2ToHoI4\"
 copy "Data_Files\HPM_province_mappings.txt" "..\Release\Vic2ToHoI4\"
 copy "Data_Files\ideologicalAdvisors.txt" "..\Release\Vic2ToHoI4\"

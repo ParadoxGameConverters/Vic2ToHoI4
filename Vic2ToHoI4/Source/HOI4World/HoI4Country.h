@@ -45,6 +45,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "Technologies.h"
 #include "../Color.h"
 #include "Date.h"
+#include "../Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "../V2World/Army.h"
 #include "../V2World/Party.h"
 #include <map>
@@ -96,7 +97,16 @@ class HoI4Country
 	public:
 		HoI4Country(const string& _tag, const HoI4::World* _theWorld);
 
-		void initFromV2Country(const Vic2::World& _srcWorld, const Vic2::Country* _srcCountry, const std::map<int, int>& stateMap, const std::map<int, HoI4::State*>& states, HoI4::namesMapper& theNames, const graphicsMapper& theGraphics, const CountryMapper& countryMap);
+		void initFromV2Country(
+			const Vic2::World& _srcWorld,
+			const Vic2::Country* _srcCountry,
+			const std::map<int, int>& stateMap,
+			const std::map<int, HoI4::State*>& states,
+			HoI4::namesMapper& theNames,
+			const graphicsMapper& theGraphics,
+			const CountryMapper& countryMap,
+			const mappers::FlagsToIdeasMapper& flagsToIdeasMapper
+		);
 		void setGovernmentToExistingIdeology(const set<string>& majorIdeologies, const map<string, HoI4Ideology*>& ideologies, const governmentMapper& governmentMap);
 		void convertGovernment(const Vic2::World& _srcWorld, const governmentMapper& governmentMap);
 		void convertParties(const set<string>& majorIdeologies, const governmentMapper& governmentMap);
