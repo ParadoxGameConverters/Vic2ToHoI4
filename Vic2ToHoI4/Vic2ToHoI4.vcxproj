@@ -251,6 +251,7 @@
     <ClCompile Include="Source\HOI4World\Technologies.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Mappers\CountryMapping.cpp" />
+    <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp" />
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.cpp" />
     <ClCompile Include="Source\Mappers\GovernmentMapper.cpp" />
     <ClCompile Include="Source\Mappers\GraphicsMapper.cpp" />
@@ -357,6 +358,7 @@
     <ClInclude Include="Source\HOI4World\StateCategories.h" />
     <ClInclude Include="Source\HOI4World\SupplyZones.h" />
     <ClInclude Include="Source\HOI4World\Technologies.h" />
+    <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.h" />
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.h" />
     <ClInclude Include="Source\Mappers\GraphicsMapper.h" />
     <ClInclude Include="Source\Mappers\MergeRules.h" />
