@@ -39,7 +39,7 @@ class FlagsToIdeasMapper: commonItems::parser
 	public:
 		FlagsToIdeasMapper(std::istream& theStream);
 
-		std::optional<std::string> getIdea(const std::string& flag);
+		std::optional<std::string> getIdea(const std::string& flag) const;
 
 	private:
 		std::map<std::string, std::string> mappings;

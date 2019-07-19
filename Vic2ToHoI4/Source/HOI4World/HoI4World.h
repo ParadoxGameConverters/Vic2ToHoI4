@@ -39,6 +39,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/GovernmentMapper.h"
 #include "../Mappers/GraphicsMapper.h"
+#include "../Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "newParser.h"
 #include <map>
 #include <optional>
@@ -112,7 +113,10 @@ class World: commonItems::parser
 		void convertNavalBases();
 
 		void convertCountries();
-		void convertCountry(pair<string, Vic2::Country*> country);
+		void convertCountry(
+			std::pair<std::string, Vic2::Country*> country,
+			const mappers::FlagsToIdeasMapper& flagsToIdeasMapper
+		);
 
 		void importIdeologies();
 		void importLeaderTraits();

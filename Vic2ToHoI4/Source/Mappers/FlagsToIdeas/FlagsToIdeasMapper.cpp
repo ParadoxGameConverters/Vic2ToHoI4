@@ -37,7 +37,7 @@ mappers::FlagsToIdeasMapper::FlagsToIdeasMapper(std::istream& theStream)
 }
 
 
-std::optional<std::string> mappers::FlagsToIdeasMapper::getIdea(const std::string& flag)
+std::optional<std::string> mappers::FlagsToIdeasMapper::getIdea(const std::string& flag) const
 {
 	auto mapping = mappings.find(flag);
 	if (mapping == mappings.end())

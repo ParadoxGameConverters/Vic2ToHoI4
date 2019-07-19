@@ -52,6 +52,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "SupplyZones.h"
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/TechMapper.h"
+#include "../Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "ParserHelpers.h"
 #include <fstream>
 using namespace std;
@@ -146,17 +147,23 @@ void HoI4::World::convertCountries()
 {
 	LOG(LogLevel::Info) << "Converting countries";
 
-	for (auto sourceItr : sourceWorld->getCountries())
+	std::ifstream flagToIdeasMappingFile("DataFiles/FlagsToIdeasMappings.txt");
+	mappers::FlagsToIdeasMapper flagsToIdeasMapper(flagToIdeasMappingFile);
+	flagToIdeasMappingFile.close();
+
+	for (auto sourceItr: sourceWorld->getCountries())
 	{
-		convertCountry(sourceItr);
+		convertCountry(sourceItr, flagsToIdeasMapper);
 	}
 
 	HoI4Localisation::addNonenglishCountryLocalisations();
 }
 
 
-void HoI4::World::convertCountry(pair<string, Vic2::Country*> country)
-{
+void HoI4::World::convertCountry(
+	std::pair<std::string, Vic2::Country*> country,
+	const mappers::FlagsToIdeasMapper& flagsToIdeasMapper
+) {
 	// don't convert rebels
 	if (country.first == "REB")
 	{
@@ -173,7 +180,15 @@ void HoI4::World::convertCountry(pair<string, Vic2::Country*> country)
 	{
 		destCountry = new HoI4Country(*possibleHoI4Tag, this);
 
-		destCountry->initFromV2Country(*sourceWorld, country.second, states->getProvinceToStateIDMap(), states->getStates(), theNames, theGraphics, countryMap);
+		destCountry->initFromV2Country(
+			*sourceWorld,
+			country.second,
+			states->getProvinceToStateIDMap(),
+			states->getStates(),
+			theNames, theGraphics,
+			countryMap,
+			flagsToIdeasMapper
+		);
 		countries.insert(make_pair(*possibleHoI4Tag, destCountry));
 		HoI4Localisation::createCountryLocalisations(make_pair(country.first, *possibleHoI4Tag), governmentMap);
 		HoI4Localisation::updateMainCountryLocalisation(destCountry->getTag() + "_" + destCountry->getGovernmentIdeology(), country.first, country.second->getGovernment());
