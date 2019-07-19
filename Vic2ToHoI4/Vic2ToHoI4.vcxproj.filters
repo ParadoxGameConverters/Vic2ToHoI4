@@ -336,6 +336,9 @@
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.cpp">
       <Filter>Mappers\FlagsToIdeas</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp">
+      <Filter>Mappers\FlagsToIdeas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -642,6 +645,9 @@
       <Filter>HoI4World\Decisions</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.h">
+      <Filter>Mappers\FlagsToIdeas</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.h">
       <Filter>Mappers\FlagsToIdeas</Filter>
     </ClInclude>
   </ItemGroup>
