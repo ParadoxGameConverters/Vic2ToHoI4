@@ -29,6 +29,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4Focus.h"
 #include "HoI4Leader.h"
 #include "HoI4Localisation.h"
+#include "HoI4War.h"
 #include "Names.h"
 #include "MilitaryMappings/MilitaryMappings.h"
 #include "../Mappers/CountryMapping.h"
@@ -82,9 +83,6 @@ HoI4Country::HoI4Country(const string& _tag, const HoI4::World* _theWorld):
 	civilianFactories(0.0),
 	dockyards(0.0),
 	threat(0.0),
-	mobilizationLaw("volunteer_only"),
-	economicLaw("civilian_economy"),
-	tradeLaw("export_focus"),
 	greatPower(false),
 	planes(),
 	equipmentStockpile(),
@@ -165,9 +163,11 @@ void HoI4Country::initFromV2Country(
 		}
 	}
 
+	atWar = srcCountry->isAtWar();
 	convertLaws();
 	convertLeaders(theGraphics);
 	convertRelations(countryMap);
+	convertWars((*_srcCountry), countryMap);
 
 	determineCapitalFromVic2(stateMap, states);
 	if (isThisStateOwnedByUs(capitalState))
@@ -287,6 +287,12 @@ void HoI4Country::convertLaws()
 		mobilizationLaw = "disarmed_nation";
 	}
 
+	// if at war, more ecomonic mobilization
+	if (atWar)
+	{
+		economicLaw = "low_economic_mobilisation";
+	}
+
 	// some ideologies have non-default laws
 	if (governmentIdeology == "fascism")
 	{
@@ -332,6 +338,16 @@ void HoI4Country::convertRelations(const CountryMapper& countryMap)
 			auto newRelation = new HoI4Relations(*HoI4Tag, srcRelation.second);
 			relations.insert(make_pair(*HoI4Tag, newRelation));
 		}
+	}
+}
+
+
+void HoI4Country::convertWars(const Vic2::Country& sourceCountry, const CountryMapper& countryMap)
+{
+	for (auto sourceWar: sourceCountry.getWars())
+	{
+		HoI4::War theWar(sourceWar, countryMap);
+		wars.push_back(theWar);
 	}
 }
 
@@ -821,10 +837,16 @@ void HoI4Country::output(const set<const HoI4::Advisor*, HoI4::advisorCompare>& 
 
 void HoI4Country::outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics) const
 {
-	ofstream output("output/" + theConfiguration.getOutputName() + "/history/countries/" + Utils::normalizeUTF8Path(filename));
+	ofstream output(
+		"output/" + theConfiguration.getOutputName() + "/history/countries/" + Utils::normalizeUTF8Path(filename)
+	);
 	if (!output.is_open())
 	{
-		Log(LogLevel::Error) << "Could not open output/" << theConfiguration.getOutputName() << "/history/countries/" << Utils::normalizeUTF8Path(filename);
+		Log(LogLevel::Error) <<
+			"Could not open output/" <<
+			theConfiguration.getOutputName() <<
+			"/history/countries/" <<
+			Utils::normalizeUTF8Path(filename);
 		exit(-1);
 	}
 	output << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
@@ -832,6 +854,7 @@ void HoI4Country::outputHistory(HoI4::namesMapper& theNames, graphicsMapper& the
 	outputCapital(output);
 	outputResearchSlots(output);
 	outputThreat(output);
+	outputWars(output);
 	outputOOBLines(output);
 	technologies->outputTechnology(output);
 	technologies->outputResearchBonuses(output);
@@ -893,6 +916,15 @@ void HoI4Country::outputThreat(ofstream& output) const
 		output << "add_named_threat = { threat = "<< threat << " name = infamy }\n";
 	}
 	output << "\n";
+}
+
+
+void HoI4Country::outputWars(ostream& output) const
+{
+	for (auto war: wars)
+	{
+		output << war;
+	}
 }
 
 
