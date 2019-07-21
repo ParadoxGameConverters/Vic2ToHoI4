@@ -44,9 +44,11 @@ class World;
 class CountryMapper: commonItems::parser
 {
 	public:
+		CountryMapper() = default;
+
 		explicit CountryMapper(const Vic2::World* srcWorld);
 
-		std::optional<std::string> getHoI4Tag(const std::string& V2Tag) const;
+		virtual std::optional<std::string> getHoI4Tag(const std::string& V2Tag) const;
 		std::optional<std::string> getVic2Tag(const std::string& HoI4Tag) const;
 
 	private:
@@ -68,8 +70,8 @@ class CountryMapper: commonItems::parser
 		std::map<std::string, std::string> V2TagToHoI4TagMap;
 		std::map<std::string, std::string> HoI4TagToV2TagMap;
 
-		char generatedHoI4TagPrefix;
-		int generatedHoI4TagSuffix;
+		char generatedHoI4TagPrefix = 'X';
+		int generatedHoI4TagSuffix = 0;
 };
 
 

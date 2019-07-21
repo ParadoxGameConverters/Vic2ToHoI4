@@ -58,11 +58,7 @@ countryMappingRule::countryMappingRule(std::istream& theStream)
 }
 
 
-CountryMapper::CountryMapper(const Vic2::World* srcWorld):
-	Vic2TagToHoI4TagsRules(),
-	V2TagToHoI4TagMap(),
-	generatedHoI4TagPrefix('X'),
-	generatedHoI4TagSuffix(0)
+CountryMapper::CountryMapper(const Vic2::World* srcWorld)
 {
 	LOG(LogLevel::Info) << "Getting country mappings";
 	readRules();

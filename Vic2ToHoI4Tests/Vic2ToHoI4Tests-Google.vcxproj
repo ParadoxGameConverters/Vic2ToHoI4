@@ -83,6 +83,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4StrategicRegion.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4SupplyZone.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HOI4Version.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4War.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4WarCreator.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4World.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Idea.cpp" />
@@ -156,6 +157,7 @@
     <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\HoI4WarTests.cpp" />
     <ClCompile Include="HoI4WorldTests\IdeologicalDecisionsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\LegacyNavyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappingTests.cpp" />
@@ -177,6 +179,7 @@
     <ClCompile Include="MapperTests\FlagsToIdeasMapperTests.cpp" />
     <ClCompile Include="MapperTests\FlagToIdeaMappingTests.cpp" />
     <ClCompile Include="MapperTests\TechMapperTests.cpp" />
+    <ClCompile Include="Mocks\CountryMapperMock.h" />
     <ClCompile Include="Mocks\TechnologiesMock.h" />
     <ClCompile Include="Vic2ToHoI4ConverterTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Vic2AgreementTests.cpp" />
