@@ -113,5 +113,6 @@ TEST(HoI4World_HoI4WarTests, warIsProperlyOutput)
 	expectedOutput << "\t\tenemy = ENG\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
 	ASSERT_EQ(output.str(), expectedOutput.str());
 }
