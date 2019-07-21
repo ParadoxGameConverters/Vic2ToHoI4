@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -29,6 +29,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Color.h"
 #include "Date.h"
 #include "Party.h"
+#include "Wars/War.h"
 #include "newParser.h"
 #include <functional>
 #include <map>
@@ -63,6 +64,8 @@ class Country: commonItems::parser
 		void addCore(Province* core) { cores.push_back(core); }
 		void replaceCores(std::vector<Province*> newCores) { cores.swap(newCores); }
 		void setShipNames(const std::map<std::string, std::vector<std::string>>& newShipNames) { shipNames = newShipNames; }
+		void addWar(const War& theWar) { wars.push_back(theWar); }
+		void setAtWar() { atWar = true; }
 
 		void eatCountry(Country* target);
 		void putProvincesInStates();
@@ -99,6 +102,8 @@ class Country: commonItems::parser
 		bool isCivilized() const { return civilized; }
 		bool isHuman() const { return human; }
 		std::map<std::string, double> getUpperHouseComposition() const { return upperHouseComposition; }
+		std::vector<War> getWars() const { return wars; }
+		bool isAtWar() const { return atWar; }
 
 		std::optional<std::string> getName(const std::string& language) const;
 		std::optional<std::string> getAdjective(const std::string& language) const;
@@ -163,6 +168,9 @@ class Country: commonItems::parser
 		std::map<std::string, std::vector<std::string> > shipNames;
 
 		bool human = false;
+
+		bool atWar = false;
+		std::vector<War> wars;
 };
 
 }

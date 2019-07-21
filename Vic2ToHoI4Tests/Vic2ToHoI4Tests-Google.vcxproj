@@ -147,6 +147,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Relations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\StateDefinitions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\War.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarGoal.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\World.cpp" />
     <ClCompile Include="DecisionsCategoryTests.cpp" />
     <ClCompile Include="DecisionTests.cpp" />
@@ -178,6 +180,8 @@
     <ClCompile Include="Mocks\TechnologiesMock.h" />
     <ClCompile Include="Vic2ToHoI4ConverterTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Vic2AgreementTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\WarGoalTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\WarTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Vic2ToHoI4\Vic2ToHoI4.vcxproj">

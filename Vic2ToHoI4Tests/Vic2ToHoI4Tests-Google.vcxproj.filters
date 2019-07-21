@@ -401,6 +401,18 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\War.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Wars</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\WarTests.cpp">
+      <Filter>Vic2WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarGoal.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Wars</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\WarGoalTests.cpp">
+      <Filter>Vic2WorldTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -447,6 +459,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Mappers\FlagsToIdeas">
       <UniqueIdentifier>{37063ac5-594a-4948-9c5c-2c17277697ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Wars">
+      <UniqueIdentifier>{5a89076d-8356-4cec-b27c-fb7a29f9b39b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
