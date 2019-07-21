@@ -36,6 +36,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4Province.h"
 #include "HoI4Relations.h"
 #include "HoI4State.h"
+#include "HoI4War.h"
 #include "MilitaryMappings/MtgUnitMappings.h"
 #include "MilitaryMappings/UnitMappings.h"
 #include "Navies/Navies.h"
@@ -187,6 +188,7 @@ class HoI4Country
 		void convertLaws();
 		void convertLeaders(const graphicsMapper& theGraphics);
 		void convertRelations(const CountryMapper& countryMap);
+		void convertWars(const Vic2::Country& sourceCountry, const CountryMapper& countryMap);
 		void determineCapitalFromVic2(const map<int, int>& provinceToStateIDMap, const map<int, HoI4::State*>& states);
 		bool isStateValidForCapital(int capitalState, const map<int, HoI4::State*>& states);
 		bool isThisStateOwnedByUs(const HoI4::State* state) const;
@@ -201,6 +203,7 @@ class HoI4Country
 		void outputCapital(ofstream& output) const;
 		void outputResearchSlots(ofstream& output) const;
 		void outputThreat(ofstream& output) const;
+		void outputWars(ostream& output) const;
 		void outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTemplates) const;
 		void outputConvoys(ofstream& output) const;
 		void outputEquipmentStockpile(ofstream& output) const;
@@ -268,13 +271,16 @@ class HoI4Country
 		double threat;
 
 		// laws
-		string mobilizationLaw;
-		string economicLaw;
-		string tradeLaw;
+		string mobilizationLaw = "volunteer_only";
+		string economicLaw = "civilian_economy";
+		string tradeLaw = "export_focus";
 
 		bool greatPower;
 
 		std::set<std::string> ideas;
+
+		bool atWar = false;
+		std::vector<HoI4::War> wars;
 
 		// military stuff
 		HoI4::Army theArmy;
