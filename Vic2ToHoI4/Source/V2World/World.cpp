@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -22,15 +22,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "World.h"
-#include <fstream>
-#include "Log.h"
-#include "OSCompatibilityLayer.h"
-#include "ParserHelpers.h"
 #include "CommonCountryData.h"
 #include "Country.h"
 #include "Diplomacy.h"
-#include "Issues.h"
 #include "Inventions.h"
+#include "Issues.h"
 #include "Party.h"
 #include "Province.h"
 #include "State.h"
@@ -38,6 +34,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/MergeRules.h"
 #include "../Mappers/Provinces/ProvinceMapper.h"
+#include "Log.h"
+#include "OSCompatibilityLayer.h"
+#include "ParserHelpers.h"
+#include <fstream>
 
 
 
@@ -71,10 +71,16 @@ Vic2::World::World(const std::string& filename)
 		countries[countryTag] = new Country(countryTag, theStream, theInventions, theCultureGroups);
 		tagsInOrder.push_back(countryTag);
 	});
-
 	registerKeyword(std::regex("diplomacy"), [this](const std::string& top, std::istream& theStream)
 	{
 		diplomacy = new Vic2::Diplomacy(theStream);
+	});
+
+	std::vector<War> wars;
+	registerKeyword(std::regex("active_war"), [&wars](const std::string& unused, std::istream& theStream)
+	{
+		War newWar(theStream);
+		wars.push_back(newWar);
 	});
 
 	registerKeyword(std::regex("[A-Za-z0-9_]+"), commonItems::ignoreItem);
@@ -95,6 +101,7 @@ Vic2::World::World(const std::string& filename)
 	determineEmployedWorkers();
 	removeEmptyNations();
 	determinePartialStates();
+	addWarsToCountries(wars);
 	if (diplomacy == nullptr)
 	{
 		diplomacy = new Vic2::Diplomacy();
@@ -252,6 +259,40 @@ void Vic2::World::determinePartialStates()
 		for (auto state: country.second->getStates())
 		{
 			state->determineIfPartialState();
+		}
+	}
+}
+
+
+void Vic2::World::addWarsToCountries(const std::vector<War>& wars)
+{
+	for (auto war: wars)
+	{
+		auto warStarter = countries.find(war.getOriginalAttacker());
+		if (warStarter == countries.end())
+		{
+			continue;
+		}
+		warStarter->second->addWar(war);
+
+		for (auto participant: war.getAttackers())
+		{
+			auto participantCountry = countries.find(participant);
+			if (participantCountry == countries.end())
+			{
+				continue;
+			}
+			participantCountry->second->setAtWar();
+		}
+
+		for (auto participant: war.getDefenders())
+		{
+			auto participantCountry = countries.find(participant);
+			if (participantCountry == countries.end())
+			{
+				continue;
+			}
+			participantCountry->second->setAtWar();
 		}
 	}
 }

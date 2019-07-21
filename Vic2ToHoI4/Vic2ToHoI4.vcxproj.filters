@@ -31,6 +31,9 @@
     <Filter Include="Mappers\FlagsToIdeas">
       <UniqueIdentifier>{1e13ac9d-4a9c-4e91-9815-08b2ca5828c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2World\Wars">
+      <UniqueIdentifier>{16f9981b-03b1-4244-bfcb-f95747be3705}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -338,6 +341,12 @@
     </ClCompile>
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp">
       <Filter>Mappers\FlagsToIdeas</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Wars\War.cpp">
+      <Filter>Vic2World\Wars</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Wars\WarGoal.cpp">
+      <Filter>Vic2World\Wars</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -649,6 +658,12 @@
     </ClInclude>
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.h">
       <Filter>Mappers\FlagsToIdeas</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Wars\War.h">
+      <Filter>Vic2World\Wars</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Wars\WarGoal.h">
+      <Filter>Vic2World\Wars</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

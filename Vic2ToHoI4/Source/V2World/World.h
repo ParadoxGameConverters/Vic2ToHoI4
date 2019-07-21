@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -29,6 +29,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "newParser.h"
 #include "CultureGroups.h"
 #include "Party.h"
+#include "Wars/War.h"
 #include <map>
 #include <optional>
 #include <string>
@@ -74,6 +75,7 @@ class World: commonItems::parser
 		void determineEmployedWorkers();
 		void removeEmptyNations();
 		void determinePartialStates();
+		void addWarsToCountries(const std::vector<War>& wars);
 
 		void overallMergeNations();
 		void mergeNations(const std::string& masterTag, const std::vector<std::string>& slaveTags);
