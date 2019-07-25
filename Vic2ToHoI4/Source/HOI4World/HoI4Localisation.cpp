@@ -373,7 +373,7 @@ void HoI4Localisation::AddStateLocalisations(const HoI4States* states)
 	{
 		for (auto Vic2NameInLanguage: V2Localisations::GetTextInEachLanguage(state.second->getSourceState()->getStateID()))
 		{
-			addStateLocalisationForLanguage(state.second, Vic2NameInLanguage);
+			addStateLocalisationForLanguage(*state.second, Vic2NameInLanguage);
 		}
 
 		int VPPositionInHoI4 = state.second->getVPLocation();
@@ -425,14 +425,15 @@ void HoI4Localisation::addDebugLocalisations(const pair<const int, HoI4::State*>
 }
 
 
-void HoI4Localisation::addStateLocalisationForLanguage(const HoI4::State* state, const pair<const string, string>& Vic2NameInLanguage)
-{
-	string key = string("STATE_") + to_string(state->getID());
-
+void HoI4Localisation::addStateLocalisationForLanguage(
+	const HoI4::State& state,
+	const pair<const string, string>& Vic2NameInLanguage
+) {
 	string localisedName = "";
-	if (state->getSourceState()->isPartialState())
+	if (state.getSourceState()->isPartialState())
 	{
-		auto possibleOwnerAdjective = V2Localisations::GetTextInLanguage(state->getSourceState()->getOwner() + "_ADJ", Vic2NameInLanguage.first);
+		auto possibleOwnerAdjective =
+			V2Localisations::GetTextInLanguage(state.getSourceState()->getOwner() + "_ADJ", Vic2NameInLanguage.first);
 		if (possibleOwnerAdjective)
 		{
 			localisedName += *possibleOwnerAdjective + " ";
@@ -440,7 +441,7 @@ void HoI4Localisation::addStateLocalisationForLanguage(const HoI4::State* state,
 	}
 	localisedName += Vic2NameInLanguage.second;
 
-	getExistingStateLocalisation(Vic2NameInLanguage.first).insert(make_pair(key, localisedName));
+	getExistingStateLocalisation(Vic2NameInLanguage.first).insert(make_pair(state.getID(), localisedName));
 }
 
 
@@ -450,7 +451,7 @@ void HoI4Localisation::addVPLocalisationForLanguage(const HoI4::State* state, co
 }
 
 
-keyToLocalisationMap& HoI4Localisation::getExistingStateLocalisation(const string& language)
+std::map<stateNumber, std::string>& HoI4Localisation::getExistingStateLocalisation(const string& language)
 {
 	auto existingLocalisation = stateLocalisations.find(language);
 	if (existingLocalisation == stateLocalisations.end())
@@ -478,7 +479,7 @@ keyToLocalisationMap& HoI4Localisation::getExistingVPLocalisation(const string& 
 
 void HoI4Localisation::addLanguageToStateLocalisations(const string& language)
 {
-	keyToLocalisationMap newLocalisation;
+	std::map<stateNumber, std::string> newLocalisation;
 	stateLocalisations[language] = newLocalisation;
 }
 
@@ -645,7 +646,26 @@ void HoI4Localisation::outputFocuses(const string& localisationPath) const
 
 void HoI4Localisation::outputStateLocalisations(const string& localisationPath) const
 {
-	outputLocalisations(localisationPath + "/state_names_l_", stateLocalisations);
+	for (auto languageToLocalisations: stateLocalisations)
+	{
+		if (languageToLocalisations.first == "")
+		{
+			continue;
+		}
+		ofstream localisationFile(localisationPath + "/state_names_l_" + languageToLocalisations.first + ".yml", ios_base::app);
+		if (!localisationFile.is_open())
+		{
+			LOG(LogLevel::Error) << "Could not update state localisation text file";
+			exit(-1);
+		}
+		localisationFile << "\xEF\xBB\xBF"; // output a BOM to make HoI4 happy
+		localisationFile << "l_" << languageToLocalisations.first << ":\n";
+
+		for (auto mapping : languageToLocalisations.second)
+		{
+			localisationFile << " STATE_" << mapping.first << ":10 \"" << mapping.second << "\"" << endl;
+		}
+	}
 }
 
 

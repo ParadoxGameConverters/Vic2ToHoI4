@@ -48,6 +48,9 @@ class governmentMapper;
 typedef std::map<std::string, std::string> keyToLocalisationMap; // key -> localisation
 typedef std::map<std::string, keyToLocalisationMap> languageToLocalisationsMap; // language -> (key -> localisation)
 
+typedef std::string language;
+typedef int stateNumber;
+
 
 
 
@@ -152,9 +155,12 @@ class HoI4Localisation
 		void CopyEventLocalisations(const std::string& oldKey, const std::string& newKey);
 
 		void AddStateLocalisations(const HoI4States* states);
-		void addStateLocalisationForLanguage(const HoI4::State* state, const std::pair<const std::string, std::string>& Vic2NameInLanguage);
+		void addStateLocalisationForLanguage(
+			const HoI4::State& state,
+			const std::pair<const std::string, std::string>& Vic2NameInLanguage
+		);
 		void addVPLocalisationForLanguage(const HoI4::State* state, const std::pair<const std::string, std::string>& Vic2NameInLanguage);
-		keyToLocalisationMap& getExistingStateLocalisation(const std::string& language);
+		std::map<stateNumber, std::string>& getExistingStateLocalisation(const std::string& language);
 		keyToLocalisationMap& getExistingVPLocalisation(const std::string& language);
 		void addLanguageToStateLocalisations(const std::string& language);
 		void addLanguageToVPLocalisations(const std::string& language);
@@ -181,7 +187,7 @@ class HoI4Localisation
 		void outputPoliticalPartyLocalisations(const std::string& localisationPath) const;
 		void outputLocalisations(const std::string& filenameStart, const languageToLocalisationsMap& localisations) const;
 
-		languageToLocalisationsMap stateLocalisations;
+		std::map<language, std::map< stateNumber, std::string>> stateLocalisations;
 		languageToLocalisationsMap VPLocalisations;
 		languageToLocalisationsMap countryLocalisations;
 		languageToLocalisationsMap originalFocuses;
