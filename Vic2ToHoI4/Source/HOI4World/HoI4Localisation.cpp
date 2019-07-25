@@ -27,6 +27,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Mappers/GovernmentMapper.h"
 #include "../Mappers/V2Localisations.h"
 #include "../V2World/Country.h"
+#include "../V2World/Province.h"
 #include "../V2World/State.h"
 #include "../Configuration.h"
 #include "Log.h"
@@ -430,16 +431,36 @@ void HoI4Localisation::addStateLocalisationForLanguage(
 	const pair<const string, string>& Vic2NameInLanguage
 ) {
 	string localisedName = "";
-	if (state.getSourceState()->isPartialState())
+	if (state.getProvinces().size() == 1)
+	{
+		const Vic2::Province* theProvince = *(state.getSourceState()->getProvinces().begin());
+		auto possibleProvinceName =
+			V2Localisations::GetTextInLanguage(
+				"PROV" + std::to_string(theProvince->getNumber()),
+				Vic2NameInLanguage.first
+			);
+		if (possibleProvinceName)
+		{
+			localisedName = *possibleProvinceName;
+		}
+		else
+		{
+			LOG(LogLevel::Warning) << "Could not find localization for province " << *state.getProvinces().begin();
+		}
+	}
+	else if (state.getSourceState()->isPartialState())
 	{
 		auto possibleOwnerAdjective =
 			V2Localisations::GetTextInLanguage(state.getSourceState()->getOwner() + "_ADJ", Vic2NameInLanguage.first);
 		if (possibleOwnerAdjective)
 		{
-			localisedName += *possibleOwnerAdjective + " ";
+			localisedName = *possibleOwnerAdjective + " " + Vic2NameInLanguage.second;
 		}
 	}
-	localisedName += Vic2NameInLanguage.second;
+	else
+	{
+		localisedName = Vic2NameInLanguage.second;
+	}
 
 	getExistingStateLocalisation(Vic2NameInLanguage.first).insert(make_pair(state.getID(), localisedName));
 }
