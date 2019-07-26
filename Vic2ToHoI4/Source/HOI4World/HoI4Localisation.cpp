@@ -29,6 +29,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../V2World/Country.h"
 #include "../V2World/Province.h"
 #include "../V2World/State.h"
+#include "../V2World/StateDefinitions.h"
 #include "../Configuration.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
@@ -447,6 +448,16 @@ void HoI4Localisation::addStateLocalisationForLanguage(
 		{
 			LOG(LogLevel::Warning) << "Could not find localization for province " << *state.getProvinces().begin();
 		}
+	}
+	else if (
+		state.getSourceState()->getProvinces().size() ==
+		(
+			Vic2::theStateDefinitions.getAllProvinces(
+				(*state.getSourceState()->getProvinces().begin()
+			)->getNumber()).size() - 1
+		)
+	) {
+		localisedName = Vic2NameInLanguage.second;
 	}
 	else if (state.getSourceState()->isPartialState())
 	{
