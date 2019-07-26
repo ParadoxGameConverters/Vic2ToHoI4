@@ -431,7 +431,7 @@ void HoI4Localisation::addStateLocalisationForLanguage(
 	const pair<const string, string>& Vic2NameInLanguage
 ) {
 	string localisedName = "";
-	if (state.getProvinces().size() == 1)
+	if (state.getSourceState()->getProvinces().size() == 1)
 	{
 		const Vic2::Province* theProvince = *(state.getSourceState()->getProvinces().begin());
 		auto possibleProvinceName =
