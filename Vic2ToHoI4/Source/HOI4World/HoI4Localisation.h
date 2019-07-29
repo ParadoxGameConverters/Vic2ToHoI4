@@ -26,6 +26,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
+#include "../V2World/State.h"
 #include <array>
 #include <iostream>
 #include <map>
@@ -167,6 +168,10 @@ class HoI4Localisation
 		void addNonenglishStateLocalisations();
 		void addNonenglishVPLocalisations();
 		void addDebugLocalisations(const std::pair<const int, HoI4::State*>& state);
+
+		bool sourceStateHasOneProvince(const Vic2::State& sourceState);
+		bool sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState);
+		bool stateHasAllDefinedProvincesAfterConversion(const HoI4::State& state);
 
 		void AddEventLocalisation(const std::string& event, const std::string& localisation);
 		void AddEventLocalisationFromVic2(const std::string& Vic2Key, const std::string& HoI4Key);

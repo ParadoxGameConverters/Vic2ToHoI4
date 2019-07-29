@@ -427,12 +427,55 @@ void HoI4Localisation::addDebugLocalisations(const pair<const int, HoI4::State*>
 }
 
 
+bool HoI4Localisation::sourceStateHasOneProvince(const Vic2::State& sourceState)
+{
+	return sourceState.getProvinces().size() == 1;
+}
+
+
+bool HoI4Localisation::sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState)
+{
+	return sourceState.getProvinces().size() ==
+		Vic2::theStateDefinitions.getAllProvinces((*sourceState.getProvinces().begin())->getNumber()).size() - 1;
+}
+
+
+bool HoI4Localisation::stateHasAllDefinedProvincesAfterConversion(const HoI4::State& state)
+{
+	std::set<int> stateDefintionDefinitionProvinces;
+
+	std::set<int> stateDefintionSourceProvinces =
+		Vic2::theStateDefinitions.getAllProvinces((*state.getSourceState()->getProvinces().begin())->getNumber());
+	for (auto sourceProvince: stateDefintionSourceProvinces)
+	{
+		auto possibleMappedProvinces = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince);
+		if (possibleMappedProvinces)
+		{
+			for (auto HoI4Province: *possibleMappedProvinces)
+			{
+				stateDefintionDefinitionProvinces.insert(HoI4Province);
+			}
+		}
+	}
+
+	for (auto definedProvince : stateDefintionDefinitionProvinces)
+	{
+		if (state.getProvinces().count(definedProvince) == 0)
+		{
+			return false;
+		}
+	}
+
+	return true;
+}
+
+
 void HoI4Localisation::addStateLocalisationForLanguage(
 	const HoI4::State& state,
 	const pair<const string, string>& Vic2NameInLanguage
 ) {
 	string localisedName = "";
-	if (state.getSourceState()->getProvinces().size() == 1)
+	if (sourceStateHasOneProvince(*state.getSourceState()))
 	{
 		const Vic2::Province* theProvince = *(state.getSourceState()->getProvinces().begin());
 		auto possibleProvinceName =
@@ -449,14 +492,12 @@ void HoI4Localisation::addStateLocalisationForLanguage(
 			LOG(LogLevel::Warning) << "Could not find localization for province " << *state.getProvinces().begin();
 		}
 	}
-	else if (
-		state.getSourceState()->getProvinces().size() ==
-		(
-			Vic2::theStateDefinitions.getAllProvinces(
-				(*state.getSourceState()->getProvinces().begin()
-			)->getNumber()).size() - 1
-		)
-	) {
+	else if (sourceStateHasAllButOneProvinceFromDefinition(*state.getSourceState()))
+	{
+		localisedName = Vic2NameInLanguage.second;
+	}
+	else if (stateHasAllDefinedProvincesAfterConversion(state))
+	{
 		localisedName = Vic2NameInLanguage.second;
 	}
 	else if (state.getSourceState()->isPartialState())
