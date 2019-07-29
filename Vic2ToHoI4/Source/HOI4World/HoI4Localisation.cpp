@@ -1,4 +1,4 @@
-/*Copyright (c) 2017 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -507,6 +507,24 @@ void HoI4Localisation::addStateLocalisationForLanguage(
 		if (possibleOwnerAdjective)
 		{
 			localisedName = *possibleOwnerAdjective + " " + Vic2NameInLanguage.second;
+		}
+	}
+	else if (state.isImpassable())
+	{
+		auto possibleWastelandName =
+			V2Localisations::GetTextInLanguage(
+				state.getSourceState()->getStateID() + "_WASTELAND", Vic2NameInLanguage.first
+			);
+		if (possibleWastelandName)
+		{
+			localisedName = *possibleWastelandName;
+		}
+		else
+		{
+			localisedName = Vic2NameInLanguage.second + " Wasteland";
+			LOG(LogLevel::Warning) << Vic2NameInLanguage.second
+				<< " had a wasteland section with no localisation. Add " << state.getSourceState()->getStateID()
+				<< "_WASTELAND to DataFiles/Vic2Localisations.csv for better conversion.";
 		}
 	}
 	else
