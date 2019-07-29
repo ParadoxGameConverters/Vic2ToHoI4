@@ -33,6 +33,7 @@ copy "Data_Files\shipTypes.txt" "..\Release\Vic2ToHoI4\"
 copy "Data_Files\SupportedConvertersDefault.xml" "..\Release\Configuration\"
 copy "Data_Files\tech_mapping.txt" "..\Release\Vic2ToHoI4\"
 copy "Data_Files\unit_mappings.txt" "..\Release\Vic2ToHoI4\"
+copy "Data_Files\Vic2Localisations.csv" "..\Release\Vic2ToHoI4\DataFiles\Vic2Localisations.csv"
 copy "Data_Files\Vic2toHoI4DefaultConfiguration.xml" "..\Release\Configuration\"
 
 rem **Copy flags**
