@@ -676,12 +676,12 @@ oceanic = {
 }
 native_american = {
 	leader_portraits = {
-		communism = { "gfx/leaders/South America/Portrait_South_America_Generic_1.dds" } #Revise
-		democratic = { "gfx/leaders/South America/Portrait_South_America_Generic_2.dds" } #Revise
-		fascism = { "gfx/leaders/South America/Portrait_South_America_Generic_3.dds" } #Revise
-		absolutist = { "gfx/leaders/SPR/Portrait_Spain_Francisco_Franco.dds" } #Revise
-		neutrality = { "gfx/leaders/South America/Portrait_South_America_Generic_2.dds" } #Revise
-		radical = { "gfx/leaders/South America/Portrait_South_America_Generic_3.dds" } #Revise
+		communism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		democratic = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		fascism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		absolutist = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		neutrality = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		radical = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
 	}
 	ideology_minister_portraits = 
 	{
@@ -697,12 +697,12 @@ native_american = {
 }
 native_central_american = {
 	leader_portraits = {
-		communism = { "gfx/leaders/South America/Portrait_South_America_Generic_1.dds" } #Revise
-		democratic = { "gfx/leaders/South America/Portrait_South_America_Generic_2.dds" } #Revise
-		fascism = { "gfx/leaders/South America/Portrait_South_America_Generic_3.dds" } #Revise
-		absolutist = { "gfx/leaders/SPR/Portrait_Spain_Francisco_Franco.dds" } #Revise
-		neutrality = { "gfx/leaders/South America/Portrait_South_America_Generic_2.dds" } #Revise
-		radical = { "gfx/leaders/South America/Portrait_South_America_Generic_3.dds" } #Revise
+		communism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		democratic = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		fascism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		absolutist = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		neutrality = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		radical = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
 	}
 	ideology_minister_portraits = 
 	{
@@ -718,12 +718,12 @@ native_central_american = {
 }
 native_south_american = {
 	leader_portraits = {
-		communism = { "gfx/leaders/South America/Portrait_South_America_Generic_1.dds" } #Revise
-		democratic = { "gfx/leaders/South America/Portrait_South_America_Generic_2.dds" } #Revise
-		fascism = { "gfx/leaders/South America/Portrait_South_America_Generic_3.dds" } #Revise
-		absolutist = { "gfx/leaders/SPR/Portrait_Spain_Francisco_Franco.dds" } #Revise
-		neutrality = { "gfx/leaders/South America/Portrait_South_America_Generic_2.dds" } #Revise
-		radical = { "gfx/leaders/South America/Portrait_South_America_Generic_3.dds" } #Revise
+		communism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		democratic = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		fascism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		absolutist = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		neutrality = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		radical = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
 	}
 	ideology_minister_portraits = 
 	{
@@ -739,12 +739,12 @@ native_south_american = {
 }
 native_north_american = {
 	leader_portraits = {
-		communism = { "gfx/leaders/South America/Portrait_South_America_Generic_1.dds" } #Revise
-		democratic = { "gfx/leaders/South America/Portrait_South_America_Generic_2.dds" } #Revise
-		fascism = { "gfx/leaders/South America/Portrait_South_America_Generic_3.dds" } #Revise
-		absolutist = { "gfx/leaders/SPR/Portrait_Spain_Francisco_Franco.dds" } #Revise
-		neutrality = { "gfx/leaders/South America/Portrait_South_America_Generic_2.dds" } #Revise
-		radical = { "gfx/leaders/South America/Portrait_South_America_Generic_3.dds" } #Revise
+		communism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		democratic = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		fascism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		absolutist = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		neutrality = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		radical = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
 	}
 	ideology_minister_portraits = 
 	{
@@ -760,12 +760,12 @@ native_north_american = {
 }
 native_carribean = {
 	leader_portraits = {
-		communism = { "gfx/leaders/South America/Portrait_South_America_Generic_1.dds" } #Revise
-		democratic = { "gfx/leaders/South America/Portrait_South_America_Generic_2.dds" } #Revise
-		fascism = { "gfx/leaders/South America/Portrait_South_America_Generic_3.dds" } #Revise
-		absolutist = { "gfx/leaders/SPR/Portrait_Spain_Francisco_Franco.dds" } #Revise
-		neutrality = { "gfx/leaders/South America/Portrait_South_America_Generic_2.dds" } #Revise
-		radical = { "gfx/leaders/South America/Portrait_South_America_Generic_3.dds" } #Revise
+		communism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		democratic = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		fascism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		absolutist = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		neutrality = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		radical = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
 	}
 	ideology_minister_portraits = 
 	{
