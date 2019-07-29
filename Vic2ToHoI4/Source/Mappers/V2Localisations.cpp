@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -45,6 +45,11 @@ V2Localisations::V2Localisations() noexcept:
 	{
 		LOG(LogLevel::Debug) << "Reading mod localisation";
 		ReadFromAllFilesInFolder(theConfiguration.getVic2Path() + "/mod/" + mod + "/localisation");
+	}
+
+	if (Utils::DoesFileExist("DataFiles/Vic2Localisations.csv"))
+	{
+		ReadFromFile("DataFiles/Vic2Localisations.csv");
 	}
 }
 
