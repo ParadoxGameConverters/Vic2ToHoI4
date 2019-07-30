@@ -19,7 +19,7 @@
 # THE SOFTWARE.
 
 # Those with "#Revise" after it refers to generic portraits that should get a replacement
-# Currently 174 needed
+# Currently 168 needed
 # I support the idea of giving an historical figure a wrong name rather than using
 # John Jackson Adams, 1st Baron thereof
 
@@ -697,12 +697,12 @@ native_american = {
 }
 native_central_american = {
 	leader_portraits = {
-		communism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		democratic = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		fascism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		absolutist = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		neutrality = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		radical = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		communism = { "gfx/leaders/OC/portrait_Apocalypto_communist.dds" }
+		democratic = { "gfx/leaders/OC/portrait_Apocalypto_democratic.dds" }
+		fascism = { "gfx/leaders/OC/portrait_Apocalypto_fascist.dds" }
+		absolutist = { "gfx/leaders/OC/portrait_Apocalypto_absolutist.dds" }
+		neutrality = { "gfx/leaders/OC/portrait_Apocalypto_neutral.dds" }
+		radical = { "gfx/leaders/OC/portrait_Apocalypto_radical.dds" }
 	}
 	ideology_minister_portraits = 
 	{
