@@ -19,7 +19,7 @@
 # THE SOFTWARE.
 
 # Those with "#Revise" after it refers to generic portraits that should get a replacement
-# Currently 168 needed
+# Currently 150 needed
 # I support the idea of giving an historical figure a wrong name rather than using
 # John Jackson Adams, 1st Baron thereof
 
@@ -676,12 +676,12 @@ oceanic = {
 }
 native_american = {
 	leader_portraits = {
-		communism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		democratic = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		fascism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		absolutist = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		neutrality = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		radical = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		communism = { "gfx/leaders/OC/portrait_nat_north_communist.dds" }
+		democratic = { "gfx/leaders/OC/portrait_nat_north_democratic.dds" }
+		fascism = { "gfx/leaders/OC/portrait_nat_north_fascist.dds" }
+		absolutist = { "gfx/leaders/OC/portrait_nat_north_absolutist.dds" }
+		neutrality = { "gfx/leaders/OC/portrait_nat_north_neutral.dds" }
+		radical = { "gfx/leaders/OC/portrait_nat_north_radical.dds" }
 	}
 	ideology_minister_portraits = 
 	{
@@ -718,12 +718,12 @@ native_central_american = {
 }
 native_south_american = {
 	leader_portraits = {
-		communism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		democratic = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		fascism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		absolutist = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		neutrality = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		radical = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		communism = { "gfx/leaders/OC/portrait_nat_south_communist.dds" }
+		democratic = { "gfx/leaders/OC/portrait_nat_south_democratic.dds" }
+		fascism = { "gfx/leaders/OC/portrait_nat_south_fascist.dds" }
+		absolutist = { "gfx/leaders/OC/portrait_nat_south_absolutist.dds" }
+		neutrality = { "gfx/leaders/OC/portrait_nat_south_neutral.dds" }
+		radical = { "gfx/leaders/OC/portrait_nat_south_radical.dds" }
 	}
 	ideology_minister_portraits = 
 	{
@@ -739,12 +739,12 @@ native_south_american = {
 }
 native_north_american = {
 	leader_portraits = {
-		communism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		democratic = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		fascism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		absolutist = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		neutrality = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		radical = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		communism = { "gfx/leaders/OC/portrait_nat_north_communist.dds" }
+		democratic = { "gfx/leaders/OC/portrait_nat_north_democratic.dds" }
+		fascism = { "gfx/leaders/OC/portrait_nat_north_fascist.dds" }
+		absolutist = { "gfx/leaders/OC/portrait_nat_north_absolutist.dds" }
+		neutrality = { "gfx/leaders/OC/portrait_nat_north_neutral.dds" }
+		radical = { "gfx/leaders/OC/portrait_nat_north_radical.dds" }
 	}
 	ideology_minister_portraits = 
 	{
@@ -760,12 +760,12 @@ native_north_american = {
 }
 native_carribean = {
 	leader_portraits = {
-		communism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		democratic = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		fascism = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		absolutist = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		neutrality = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
-		radical = { "gfx/leaders/OC/portrait_Native_American.dds" } #Revise
+		communism = { "gfx/leaders/OC/portrait_nat_carib_communist.dds" }
+		democratic = { "gfx/leaders/OC/portrait_nat_carib_democratic.dds" }
+		fascism = { "gfx/leaders/OC/portrait_nat_carib_fascist.dds" }
+		absolutist = { "gfx/leaders/OC/portrait_nat_carib_absolutist.dds" }
+		neutrality = { "gfx/leaders/OC/portrait_nat_carib_neutral.dds" }
+		radical = { "gfx/leaders/OC/portrait_nat_carib_radical.dds" }
 	}
 	ideology_minister_portraits = 
 	{
