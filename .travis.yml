@@ -20,6 +20,7 @@ before_install:
   - wget https://cmake.org/files/v3.10/cmake-3.10.0-rc1-Linux-x86_64.sh
   - chmod +x cmake-3.10.0-rc1-Linux-x86_64.sh
   - ./cmake-3.10.0-rc1-Linux-x86_64.sh --prefix=$HOME/usr --exclude-subdir --skip-license
+  - echo -n | openssl s_client -connect https://scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
 script:
   # Export CC and CXX to tell cmake which compiler to use
   - export CC=/usr/bin/gcc-7
@@ -30,3 +31,19 @@ script:
   - cd Vic2ToHoI4
   - cmake -H. -Bbuild
   - cmake --build ./build
+  
+  env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "p23d7GYtSUn/Sxbjb4WXY6esVepoCD7scS1OpmvQkGZqX6OvFjRR+I6df/huE0dDNpEO7oaC+/MY9CLwwa/EH2HIElbg3WgWygIOkGAm0U9fuE5B/EXHzUGzgbR8ueMxVS7ke38xd3MjVjWRWPEbUNlqz6FZaP1LEApAaKAWkW/o33cs8von3jtAWCEigv7aq2giIEItj0sOCs8cscjsXyJn9PnVr7OToPfnF0ldjLXLGylW+3Q8DsRU12939u3LAN8Slwk16kucb96SoU+LzppS1UHdnrCd4B4Gcx7S01tYzl1hySGliZNAkrds2f3yp2ygdMPZKka/4q32CWuE7zMK8iAWkW/6BUHsgPwCipKruaslTbdUwSPKCMFGiALLbAKWp7xJ7+UwD1qJu/Xw98TowW6HL/kH1pC98nW3u+c6i6lLPNshar1h1zpPRXUSpgoCAJh9tSQhMCDCh4Uinhnf1Hw8uIBjU4Q2qQuYLnd60SUSi4TNRtzsrpXUv5wKw+8iUUkjruRxLPP+fndYeU7IobGzKOQ8NTxUJbfFciump+WdUypWzKLoZq5LNw8aN+zavYYq1nUb94kVuyTSf0IMuBuyVSbEK/OlwIW5sX7K3RpE1lQDsZfssseifNdpqbH8nJ/e2FqWAOTRhfKF9pRpMf0mFz+G2dlm4jNg2Ng="
+
+addons:
+  coverity_scan:
+    project:
+      name: "Idhrendur/Vic2ToHoI4"
+      description: "<Your project description here>"
+    notification_email: idhrendur@hotmail.com
+    build_command_prepend: "<Your build preprocessing command here>"
+    build_command: "<Your build command here>"
+    branch_pattern: coverity_scan
