@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -61,19 +61,20 @@ class Province: commonItems::parser
 		void removeCore(Country* core) { cores.erase(core); }
 
 		int getNumber() const { return number; }
-		std::string getOwnerString() const { return ownerString; }
+		const std::string getOwnerString() const { return ownerString; }
 		const Country* getOwner() const { return owner; }
-		std::set<Country*> getCores() const { return cores; }
+		const std::string getController() const { return controller; }
+		const std::set<Country*> getCores() const { return cores; }
 		int getRailLevel() const { return railLevel; }
 		int getFortLevel() const { return fortLevel; }
 		int getNavalBaseLevel() const { return navalBaseLevel; }
-		std::vector<std::shared_ptr<const Pop>> getPops() const { return pops; }
+		const std::vector<std::shared_ptr<const Pop>> getPops() const { return pops; }
 
-                std::string getRgo() const { return rgo; }
-                std::string getName() const { return name; }
-                std::string getIdentifier() const { return identifier; }
+		const std::string getRgo() const { return rgo; }
+		const std::string getName() const { return name; }
+		const std::string getIdentifier() const { return identifier; }
 
-        private:
+	private:
 		Province(const Province&) = delete;
 		Province& operator=(const Province&) = delete;
 
@@ -81,9 +82,11 @@ class Province: commonItems::parser
 
 		int number;
 
-                std::string name = "";
-                std::string ownerString = "";
+		std::string name;
+		std::string ownerString;
 		const Country* owner = nullptr;
+
+		std::string controller;
 
 		std::set<std::string> coreStrings;
 		std::set<Country*> cores;
@@ -94,8 +97,8 @@ class Province: commonItems::parser
 		int navalBaseLevel = 0;
 		int railLevel = 0;
 
-                std::string rgo = "";
-                std::string identifier = "";
+		std::string rgo;
+		std::string identifier;
 };
 
 }
