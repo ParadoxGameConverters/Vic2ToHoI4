@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -32,107 +32,80 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 Vic2::Province::Province(const std::string& numberString, std::istream& theStream):
 	number(stoi(numberString))
 {
-	registerKeyword(std::regex("owner"), [this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("owner"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString ownerSingleString(theStream);
 		ownerString = ownerSingleString.getString();
-		if (ownerString.substr(0,1) == "\"")
-		{
-			ownerString = ownerString.substr(1, ownerString.size() - 2);
-		}
 	});
-	registerKeyword(std::regex("core"), [this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("core"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString coreString(theStream);
 		auto newCoreString = coreString.getString();
-		if (newCoreString.substr(0,1) == "\"")
-		{
-			newCoreString = newCoreString.substr(1, newCoreString.size() - 2);
-		}
 		coreStrings.insert(newCoreString);
 	});
-	registerKeyword(std::regex("fort"), [this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("fort"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::doubleList fortSizeList(theStream);
 		fortLevel = static_cast<int>(fortSizeList.getDoubles()[0]);
 	});
-	registerKeyword(std::regex("naval_base"), [this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("naval_base"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::doubleList navalBaseSizeList(theStream);
 		navalBaseLevel = static_cast<int>(navalBaseSizeList.getDoubles()[0]);
 	});
-	registerKeyword(std::regex("railroad"), [this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("railroad"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::doubleList railSizeList(theStream);
 		railLevel = static_cast<int>(railSizeList.getDoubles()[0]);
 	});
-	registerKeyword(std::regex("aristocrats"), [this](const std::string& popType, std::istream& theStream)
-	{
+	registerKeyword(std::regex("aristocrats"), [this](const std::string& popType, std::istream& theStream) {
 		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
 		pops.push_back(pop);
 	});
-	registerKeyword(std::regex("artisans"), [this](const std::string& popType, std::istream& theStream)
-	{
+	registerKeyword(std::regex("artisans"), [this](const std::string& popType, std::istream& theStream) {
 		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
 		pops.push_back(pop);
 	});
-	registerKeyword(std::regex("bureaucrats"), [this](const std::string& popType, std::istream& theStream)
-	{
+	registerKeyword(std::regex("bureaucrats"), [this](const std::string& popType, std::istream& theStream) {
 		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
 		pops.push_back(pop);
 	});
-	registerKeyword(std::regex("capitalists"), [this](const std::string& popType, std::istream& theStream)
-	{
+	registerKeyword(std::regex("capitalists"), [this](const std::string& popType, std::istream& theStream) {
 		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
 		pops.push_back(pop);
 	});
-	registerKeyword(std::regex("clergymen"), [this](const std::string& popType, std::istream& theStream)
-	{
+	registerKeyword(std::regex("clergymen"), [this](const std::string& popType, std::istream& theStream) {
 		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
 		pops.push_back(pop);
 	});
-	registerKeyword(std::regex("craftsmen"), [this](const std::string& popType, std::istream& theStream)
-	{
+	registerKeyword(std::regex("craftsmen"), [this](const std::string& popType, std::istream& theStream) {
 		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
 		pops.push_back(pop);
 	});
-	registerKeyword(std::regex("clerks"), [this](const std::string& popType, std::istream& theStream)
-	{
+	registerKeyword(std::regex("clerks"), [this](const std::string& popType, std::istream& theStream) {
 		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
 		pops.push_back(pop);
 	});
-	registerKeyword(std::regex("farmers"), [this](const std::string& popType, std::istream& theStream)
-	{
+	registerKeyword(std::regex("farmers"), [this](const std::string& popType, std::istream& theStream) {
 		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
 		pops.push_back(pop);
 	});
-	registerKeyword(std::regex("soldiers"), [this](const std::string& popType, std::istream& theStream)
-	{
+	registerKeyword(std::regex("soldiers"), [this](const std::string& popType, std::istream& theStream) {
 		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
 		pops.push_back(pop);
 	});
-	registerKeyword(std::regex("officers"), [this](const std::string& popType, std::istream& theStream)
-	{
+	registerKeyword(std::regex("officers"), [this](const std::string& popType, std::istream& theStream) {
 		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
 		pops.push_back(pop);
 	});
-	registerKeyword(std::regex("labourers"), [this](const std::string& popType, std::istream& theStream)
-	{
+	registerKeyword(std::regex("labourers"), [this](const std::string& popType, std::istream& theStream) {
 		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
 		pops.push_back(pop);
 	});
-	registerKeyword(std::regex("slaves"), [this](const std::string& popType, std::istream& theStream)
-	{
+	registerKeyword(std::regex("slaves"), [this](const std::string& popType, std::istream& theStream) {
 		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
 		pops.push_back(pop);
 	});
-	registerKeyword(std::regex("serfs"), [this](const std::string& popType, std::istream& theStream)
-	{
+	registerKeyword(std::regex("serfs"), [this](const std::string& popType, std::istream& theStream) {
 		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
 		pops.push_back(pop);
 	});	
-	registerKeyword(std::regex("goods_type"),  [this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("goods_type"),  [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString rgoString(theStream);
 		rgo = rgoString.getString();
 		if (rgo.substr(0, 1) == "\"")
@@ -140,14 +113,13 @@ Vic2::Province::Province(const std::string& numberString, std::istream& theStrea
 			rgo = rgo.substr(1, rgo.size() - 2);
 		}
 	});
-        registerKeyword(std::regex("name"),  [this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("name"),  [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString nameString(theStream);
 		name = nameString.getString();
 		if (name.substr(0, 1) == "\"")
 		{
-                        name = name.substr(1, name.size() - 2);
-                }
+			name = name.substr(1, name.size() - 2);
+		}
 	});
 
 	// ignored items
@@ -169,7 +141,7 @@ Vic2::Province::Province(const std::string& numberString, std::istream& theStrea
 	registerKeyword(std::regex("rgo"), commonItems::ignoreItem);
 
 	parseStream(theStream);
-        identifier = name + " (" + std::to_string(number) + ")";
+	identifier = name + " (" + std::to_string(number) + ")";
 }
 
 
