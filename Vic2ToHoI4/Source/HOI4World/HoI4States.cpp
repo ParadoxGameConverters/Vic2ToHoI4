@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -86,10 +86,11 @@ void HoI4States::determineOwnersAndCores(const CountryMapper& countryMap)
 			auto oldOwner = selectProvinceOwner(potentialOwners);
 
 
-			auto HoI4Tag = countryMap.getHoI4Tag(oldOwner->getTag());
+			auto HoI4Tag = countryMap.getHoI4Tag(oldOwner);
 			if (!HoI4Tag)
 			{
-				LOG(LogLevel::Warning) << "Could not map states owned by " << oldOwner->getTag() << " in Vic2, as there is no mathcing HoI4 country.";
+				LOG(LogLevel::Warning)
+					<< "Could not map states owned by " << oldOwner << " in Vic2, as there is no mathcing HoI4 country.";
 				continue;
 			}
 			ownersMap.insert(make_pair(provinceNumber, *HoI4Tag));
@@ -123,9 +124,10 @@ optional<vector<int>> HoI4States::retrieveSourceProvinceNums(int provNum) const
 }
 
 
-map<const Vic2::Country*, pair<int, int>> HoI4States::determinePotentialOwners(const vector<int>& sourceProvinceNums) const
-{
-	map<const Vic2::Country*, pair<int, int>> potentialOwners;
+const std::map<std::string, std::pair<int, int>> HoI4States::determinePotentialOwners(
+	const std::vector<int>& sourceProvinceNums
+) const {
+	std::map<std::string, std::pair<int, int>> potentialOwners;
 
 	for (auto srcProvNum: sourceProvinceNums)
 	{
@@ -135,8 +137,8 @@ map<const Vic2::Country*, pair<int, int>> HoI4States::determinePotentialOwners(c
 			LOG(LogLevel::Warning) << "Old province " << srcProvNum << " does not exist (bad mapping?)";
 			continue;
 		}
-		auto owner = (*srcProvince)->getOwner();
-		if (owner == nullptr)
+		auto owner = (*srcProvince)->getOwnerString();
+		if (owner == "")
 		{
 			continue;
 		}
@@ -153,14 +155,15 @@ map<const Vic2::Country*, pair<int, int>> HoI4States::determinePotentialOwners(c
 }
 
 
-const Vic2::Country* HoI4States::selectProvinceOwner(const map<const Vic2::Country*, pair<int, int>>& potentialOwners) const
-{
-	const Vic2::Country* oldOwner = nullptr;
+const std::string HoI4States::selectProvinceOwner(
+	const std::map<std::string, std::pair<int, int>>& potentialOwners
+) const {
+	std::string oldOwner;
 	for (auto potentialOwner: potentialOwners)
 	{
 		// I am the new owner if there is no current owner, or I have more provinces than the current owner,
 		// or I have the same number of provinces, but more population, than the current owner
-		if (	(oldOwner == nullptr) ||
+		if (	(oldOwner == "") ||
 				(potentialOwner.second.first > potentialOwners.find(oldOwner)->second.first) ||
 				(
 					(potentialOwner.second.first == potentialOwners.find(oldOwner)->second.first) &&
@@ -176,9 +179,13 @@ const Vic2::Country* HoI4States::selectProvinceOwner(const map<const Vic2::Count
 }
 
 
-vector<string> HoI4States::determineCores(const vector<int>& sourceProvinces, const Vic2::Country* Vic2Owner, const CountryMapper& countryMap, const std::string& newOwner) const
-{
-	vector<string> cores;
+std::vector<std::string> HoI4States::determineCores(
+	const std::vector<int>& sourceProvinces,
+	const std::string& Vic2Owner,
+	const CountryMapper& countryMap,
+	const std::string& newOwner
+) const {
+	std::vector<std::string> cores;
 
 	for (auto sourceProvinceNum: sourceProvinces)
 	{
@@ -190,7 +197,7 @@ vector<string> HoI4States::determineCores(const vector<int>& sourceProvinces, co
 
 		for (auto Vic2Core: (*sourceProvince)->getCores())
 		{
-			auto HoI4CoreTag = countryMap.getHoI4Tag(Vic2Core->getTag());
+			auto HoI4CoreTag = countryMap.getHoI4Tag(Vic2Core);
 			if (HoI4CoreTag)
 			{
 				// skip this core if the country is the owner of the V2 province but not the HoI4 province

@@ -22,7 +22,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "Province.h"
-#include "Pop.h"
 #include "Log.h"
 #include "ParserHelpers.h"
 #include <memory>
@@ -39,7 +38,7 @@ Vic2::Province::Province(const std::string& numberString, std::istream& theStrea
 	registerKeyword(std::regex("core"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString coreString(theStream);
 		auto newCoreString = coreString.getString();
-		coreStrings.insert(newCoreString);
+		cores.insert(newCoreString);
 	});
 	registerKeyword(std::regex("fort"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::doubleList fortSizeList(theStream);
@@ -54,55 +53,55 @@ Vic2::Province::Province(const std::string& numberString, std::istream& theStrea
 		railLevel = static_cast<int>(railSizeList.getDoubles()[0]);
 	});
 	registerKeyword(std::regex("aristocrats"), [this](const std::string& popType, std::istream& theStream) {
-		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
+		Pop pop(popType, theStream);
 		pops.push_back(pop);
 	});
 	registerKeyword(std::regex("artisans"), [this](const std::string& popType, std::istream& theStream) {
-		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
+		Pop pop(popType, theStream);
 		pops.push_back(pop);
 	});
 	registerKeyword(std::regex("bureaucrats"), [this](const std::string& popType, std::istream& theStream) {
-		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
+		Pop pop(popType, theStream);
 		pops.push_back(pop);
 	});
 	registerKeyword(std::regex("capitalists"), [this](const std::string& popType, std::istream& theStream) {
-		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
+		Pop pop(popType, theStream);
 		pops.push_back(pop);
 	});
 	registerKeyword(std::regex("clergymen"), [this](const std::string& popType, std::istream& theStream) {
-		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
+		Pop pop(popType, theStream);
 		pops.push_back(pop);
 	});
 	registerKeyword(std::regex("craftsmen"), [this](const std::string& popType, std::istream& theStream) {
-		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
+		Pop pop(popType, theStream);
 		pops.push_back(pop);
 	});
 	registerKeyword(std::regex("clerks"), [this](const std::string& popType, std::istream& theStream) {
-		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
+		Pop pop(popType, theStream);
 		pops.push_back(pop);
 	});
 	registerKeyword(std::regex("farmers"), [this](const std::string& popType, std::istream& theStream) {
-		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
+		Pop pop(popType, theStream);
 		pops.push_back(pop);
 	});
 	registerKeyword(std::regex("soldiers"), [this](const std::string& popType, std::istream& theStream) {
-		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
+		Pop pop(popType, theStream);
 		pops.push_back(pop);
 	});
 	registerKeyword(std::regex("officers"), [this](const std::string& popType, std::istream& theStream) {
-		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
+		Pop pop(popType, theStream);
 		pops.push_back(pop);
 	});
 	registerKeyword(std::regex("labourers"), [this](const std::string& popType, std::istream& theStream) {
-		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
+		Pop pop(popType, theStream);
 		pops.push_back(pop);
 	});
 	registerKeyword(std::regex("slaves"), [this](const std::string& popType, std::istream& theStream) {
-		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
+		Pop pop(popType, theStream);
 		pops.push_back(pop);
 	});
 	registerKeyword(std::regex("serfs"), [this](const std::string& popType, std::istream& theStream) {
-		std::shared_ptr<Pop> pop = std::make_shared<Pop>(popType, theStream);
+		Pop pop(popType, theStream);
 		pops.push_back(pop);
 	});	
 	registerKeyword(std::regex("goods_type"),  [this](const std::string& unused, std::istream& theStream) {
@@ -145,22 +144,6 @@ Vic2::Province::Province(const std::string& numberString, std::istream& theStrea
 }
 
 
-void Vic2::Province::setCores(const std::map<std::string, Vic2::Country*>& countries)
-{
-	for (auto coreString: coreStrings)
-	{
-		if (auto countryItr = countries.find(coreString); countryItr != countries.end())
-		{
-			cores.insert(countryItr->second);
-		}
-		else
-		{
-			LOG(LogLevel::Warning) << "Trying to set " << coreString << " as core of " << number << ", but country does not exist.";
-		}
-	}
-}
-
-
 int Vic2::Province::getTotalPopulation() const
 {
 	return getPopulation();
@@ -172,9 +155,9 @@ int Vic2::Province::getPopulation(std::optional<std::string> type) const
 	int totalPopulation = 0;
 	for (auto pop: pops)
 	{
-		if (!type || *type == pop->getType())
+		if (!type || *type == pop.getType())
 		{
-			totalPopulation += pop->getSize();
+			totalPopulation += pop.getSize();
 		}
 	}
 
@@ -187,7 +170,7 @@ int Vic2::Province::getLiteracyWeightedPopulation(std::optional<std::string> typ
 	int totalPopulation = 0;
 	for (auto pop: pops)
 	{
-		if (!type || *type == pop->getType())
+		if (!type || *type == pop.getType())
 		{
 			totalPopulation += calculateLiteracyWeightedPop(pop);
 		}
@@ -203,10 +186,10 @@ double Vic2::Province::getPercentageWithCultures(const std::set<std::string>& cu
 
 	for (auto pop: pops)
 	{
-		totalPopulation += pop->getSize();
-		if (cultures.count(pop->getCulture()) > 0)
+		totalPopulation += pop.getSize();
+		if (cultures.count(pop.getCulture()) > 0)
 		{
-			populationOfCultures += pop->getSize();
+			populationOfCultures += pop.getSize();
 		}
 	}
 
@@ -221,7 +204,7 @@ double Vic2::Province::getPercentageWithCultures(const std::set<std::string>& cu
 }
 
 
-int Vic2::Province::calculateLiteracyWeightedPop(const std::shared_ptr<const Pop> thePop) const
+int Vic2::Province::calculateLiteracyWeightedPop(const Pop& thePop) const
 {
-	return int(thePop->getSize() * (thePop->getLiteracy() * 0.9 + 0.1));
+	return int(thePop.getSize() * (thePop.getLiteracy() * 0.9 + 0.1));
 }

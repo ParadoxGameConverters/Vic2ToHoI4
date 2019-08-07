@@ -159,11 +159,14 @@ void Vic2::World::addProvinceCoreInfoToCountries()
 {
 	for (auto province: provinces)
 	{
-		province.second->setCores(countries);
 		auto provinceCores = province.second->getCores();
-		for (auto coreCountry: provinceCores)
+		for (auto coreCountryString: provinceCores)
 		{
-			coreCountry->addCore(province.second);
+			auto coreCountry = countries.find(coreCountryString);
+			if (coreCountry != countries.end())
+			{
+				coreCountry->second->addCore(province.second);
+			}
 		}
 	}
 }
@@ -183,8 +186,7 @@ void Vic2::World::removeSimpleLandlessNations()
 		{
 			if (shouldCoreBeRemoved(core, country.second))
 			{
-				core->removeCoreString(country.first);
-				core->removeCore(country.second);
+				core->removeCore(country.first);
 			}
 			else
 			{
