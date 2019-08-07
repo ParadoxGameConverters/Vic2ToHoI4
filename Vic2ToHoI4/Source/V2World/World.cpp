@@ -31,6 +31,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "Province.h"
 #include "State.h"
 #include "StateDefinitions.h"
+#include "../Configuration.h"
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/MergeRules.h"
 #include "../Mappers/Provinces/ProvinceMapper.h"

@@ -22,9 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "Province.h"
-#include "Log.h"
 #include "ParserHelpers.h"
-#include <memory>
 
 
 
@@ -39,10 +37,6 @@ Vic2::Province::Province(const std::string& numberString, std::istream& theStrea
 		commonItems::singleString coreString(theStream);
 		auto newCoreString = coreString.getString();
 		cores.insert(newCoreString);
-	});
-	registerKeyword(std::regex("fort"), [this](const std::string& unused, std::istream& theStream) {
-		commonItems::doubleList fortSizeList(theStream);
-		fortLevel = static_cast<int>(fortSizeList.getDoubles()[0]);
 	});
 	registerKeyword(std::regex("naval_base"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::doubleList navalBaseSizeList(theStream);
@@ -104,43 +98,9 @@ Vic2::Province::Province(const std::string& numberString, std::istream& theStrea
 		Pop pop(popType, theStream);
 		pops.push_back(pop);
 	});	
-	registerKeyword(std::regex("goods_type"),  [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString rgoString(theStream);
-		rgo = rgoString.getString();
-		if (rgo.substr(0, 1) == "\"")
-		{
-			rgo = rgo.substr(1, rgo.size() - 2);
-		}
-	});
-	registerKeyword(std::regex("name"),  [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString nameString(theStream);
-		name = nameString.getString();
-		if (name.substr(0, 1) == "\"")
-		{
-			name = name.substr(1, name.size() - 2);
-		}
-	});
-
-	// ignored items
-	registerKeyword(std::regex("controller"), commonItems::ignoreItem);
-	registerKeyword(std::regex("garrison"), commonItems::ignoreItem);
-	registerKeyword(std::regex("building_construction"), commonItems::ignoreItem);
-	registerKeyword(std::regex("life_rating"), commonItems::ignoreItem);
-	registerKeyword(std::regex("infrastructure"), commonItems::ignoreItem);
-	registerKeyword(std::regex("last_imigration"), commonItems::ignoreItem);
-	registerKeyword(std::regex("last_controller_change"), commonItems::ignoreItem);
-	registerKeyword(std::regex("unit_names"), commonItems::ignoreItem);
-	registerKeyword(std::regex("party_loyalty"), commonItems::ignoreItem);
-	registerKeyword(std::regex("modifier"), commonItems::ignoreItem);
-	registerKeyword(std::regex("military_construction"), commonItems::ignoreItem);
-	registerKeyword(std::regex("crime"), commonItems::ignoreItem);
-	registerKeyword(std::regex("nationalism"), commonItems::ignoreItem);
-	registerKeyword(std::regex("colonial"), commonItems::ignoreItem);
-	registerKeyword(std::regex("flags"), commonItems::ignoreItem);
-	registerKeyword(std::regex("rgo"), commonItems::ignoreItem);
+	registerKeyword(std::regex("[a-zA-Z0-9\\_]"), commonItems::ignoreItem);
 
 	parseStream(theStream);
-	identifier = name + " (" + std::to_string(number) + ")";
 }
 
 
