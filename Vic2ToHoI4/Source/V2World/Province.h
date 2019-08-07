@@ -27,10 +27,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "Pop.h"
-#include "../Configuration.h"
 #include "newParser.h"
-#include <map>
-#include <memory>
 #include <optional>
 #include <set>
 #include <string>
@@ -40,10 +37,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 namespace Vic2
 {
-
-class Country;
-class Pop;
-
 
 class Province: commonItems::parser
 {
@@ -63,23 +56,14 @@ class Province: commonItems::parser
 		const std::string getOwner() const { return owner; }
 		const std::string getController() const { return controller; }
 		const std::set<std::string> getCores() const { return cores; }
-		int getRailLevel() const { return railLevel; }
-		int getFortLevel() const { return fortLevel; }
-		int getNavalBaseLevel() const { return navalBaseLevel; }
 		const std::vector<Pop> getPops() const { return pops; }
-
-		const std::string getRgo() const { return rgo; }
-		const std::string getName() const { return name; }
-		const std::string getIdentifier() const { return identifier; }
+		int getNavalBaseLevel() const { return navalBaseLevel; }
+		int getRailLevel() const { return railLevel; }
 
 	private:
-		Province(const Province&) = delete;
-		Province& operator=(const Province&) = delete;
-
 		int calculateLiteracyWeightedPop(const Pop& thePop) const;
 
 		int number;
-		std::string name;
 
 		std::string owner;
 		std::string controller;
@@ -87,12 +71,8 @@ class Province: commonItems::parser
 
 		std::vector<Pop> pops;
 
-		int fortLevel = 0;
 		int navalBaseLevel = 0;
 		int railLevel = 0;
-
-		std::string rgo;
-		std::string identifier;
 };
 
 }
