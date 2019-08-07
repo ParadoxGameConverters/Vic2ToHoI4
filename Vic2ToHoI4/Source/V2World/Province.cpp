@@ -33,7 +33,7 @@ Vic2::Province::Province(const std::string& numberString, std::istream& theStrea
 {
 	registerKeyword(std::regex("owner"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString ownerSingleString(theStream);
-		ownerString = ownerSingleString.getString();
+		owner = ownerSingleString.getString();
 	});
 	registerKeyword(std::regex("core"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString coreString(theStream);

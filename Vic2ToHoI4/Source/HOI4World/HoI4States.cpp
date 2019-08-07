@@ -137,7 +137,7 @@ const std::map<std::string, std::pair<int, int>> HoI4States::determinePotentialO
 			LOG(LogLevel::Warning) << "Old province " << srcProvNum << " does not exist (bad mapping?)";
 			continue;
 		}
-		auto owner = (*srcProvince)->getOwnerString();
+		auto owner = (*srcProvince)->getOwner();
 		if (owner == "")
 		{
 			continue;
