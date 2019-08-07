@@ -133,19 +133,21 @@ void Vic2::World::setProvinceOwners()
 {
 	for (auto province: provinces)
 	{
-		if (province.second->getOwnerString() == "")
+		if (province.second->getOwner() == "")
 		{
 			continue;
 		}
 
-		if (auto country = countries.find(province.second->getOwnerString()); country != countries.end())
+		if (auto country = countries.find(province.second->getOwner()); country != countries.end())
 		{
 			country->second->addProvince(province);
-			province.second->setOwner(country->second);
+			province.second->setOwner(country->first);
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Trying to set " << province.second->getOwnerString() << " as owner of " << province.first << ", but country does not exist.";
+			LOG(LogLevel::Warning)
+				<< "Trying to set " << province.second->getOwner() << " as owner of "
+				<< province.first << ", but country does not exist.";
 		}
 	}
 	for (auto country: countries)
@@ -206,15 +208,21 @@ void Vic2::World::removeSimpleLandlessNations()
 
 bool Vic2::World::shouldCoreBeRemoved(const Province* core, const Country* country) const
 {
-	if (core->getOwner() == nullptr)
+	if (core->getOwner() == "")
 	{
 		return true;
 	}
-	else if (country->getPrimaryCulture() == core->getOwner()->getPrimaryCulture())
+
+	auto owner = countries.find(core->getOwner());
+	if (owner == countries.end())
 	{
 		return true;
 	}
-	else if (core->getOwner()->isAnAcceptedCulture(country->getPrimaryCulture()))
+	else if (country->getPrimaryCulture() == owner->second->getPrimaryCulture())
+	{
+		return true;
+	}
+	else if (owner->second->isAnAcceptedCulture(owner->second->getPrimaryCulture()))
 	{
 		return true;
 	}

@@ -55,13 +55,12 @@ class Province: commonItems::parser
 		int getLiteracyWeightedPopulation(std::optional<std::string> type = {}) const;
 		double getPercentageWithCultures(const std::set<std::string>& cultures) const;
 
-		void setOwner(const Country* _owner) { owner = _owner; }
+		void setOwner(const std::string& _owner) { owner = _owner; }
 		void addCore(const std::string& core) { cores.insert(core); }
 		void removeCore(const std::string& core) { cores.erase(core); }
 
 		int getNumber() const { return number; }
-		const std::string getOwnerString() const { return ownerString; }
-		const Country* getOwner() const { return owner; }
+		const std::string getOwner() const { return owner; }
 		const std::string getController() const { return controller; }
 		const std::set<std::string> getCores() const { return cores; }
 		int getRailLevel() const { return railLevel; }
@@ -80,13 +79,10 @@ class Province: commonItems::parser
 		int calculateLiteracyWeightedPop(const Pop& thePop) const;
 
 		int number;
-
 		std::string name;
-		std::string ownerString;
-		const Country* owner = nullptr;
 
+		std::string owner;
 		std::string controller;
-
 		std::set<std::string> cores;
 
 		std::vector<Pop> pops;

@@ -222,23 +222,19 @@ void Vic2::Country::eatCountry(Vic2::Country* target)
 		core->addCore(tag);
 		core->removeCore(target->tag);
 	}
-
 	for (auto provinceItr : target->provinces)
 	{
 		addProvince(provinceItr);
-		provinceItr.second->setOwner(this);
+		provinceItr.second->setOwner(tag);
 	}
-
 	for (auto tech: target->techs)
 	{
 		techs.insert(tech);
 	}
-
 	for (auto itr : target->discoveredInventions)
 	{
 		discoveredInventions.insert(itr);
 	}
-
 	armies.insert(armies.end(), target->armies.begin(), target->armies.end());
 
 	// coreless, landless countries will be cleaned up automatically
