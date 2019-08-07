@@ -53,9 +53,6 @@ namespace Vic2
 			int getID() const {return id;}
 
 		private:
-			Pop(const Pop&) = delete;
-			Pop& operator=(const Pop&) = delete;
-
 			int size = 0;
 			std::string type = "";
 			std::string culture = "no_culture";
