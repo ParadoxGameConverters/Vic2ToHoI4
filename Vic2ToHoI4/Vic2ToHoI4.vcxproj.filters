@@ -357,6 +357,9 @@
     <ClCompile Include="Source\HOI4World\States\DockyardProvince.cpp">
       <Filter>HoI4World\States</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\States\StateBuildings.cpp">
+      <Filter>HoI4World\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -678,6 +681,9 @@
       <Filter>HoI4World\States</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\States\DockyardProvince.h">
+      <Filter>HoI4World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\States\StateBuildings.h">
       <Filter>HoI4World\States</Filter>
     </ClInclude>
   </ItemGroup>

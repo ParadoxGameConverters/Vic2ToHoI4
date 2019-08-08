@@ -22,7 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "HoI4State.h"
-#include "DockyardProvince.h"
+#include "StateBuildings.h"
 #include "StateCategories.h"
 #include "../CoastalProvinces.h"
 #include "../../Configuration.h"
@@ -45,45 +45,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 std::map<int, int> HoI4::State::landFortLevels;
 std::map<int, int> HoI4::State::coastFortLevels;
 
-
-
-class stateBuildings: commonItems::parser
-{
-	public:
-		explicit stateBuildings(std::istream& theStream);
-
-		int getCivFactories() const { return civFactories; }
-		int getMilFactories() const { return milFactories; }
-		int getDockyards() const { return dockyards; }
-
-	private:
-		int civFactories = 0;
-		int milFactories = 0;
-		int dockyards = 0;
-};
-
-
-stateBuildings::stateBuildings(std::istream& theStream)
-{
-	registerKeyword(std::regex("industrial_complex"), [this](const std::string& unused, std::istream& theStream)
-	{
-		commonItems::singleInt factoryInt(theStream);
-		civFactories = factoryInt.getInt();
-	});
-	registerKeyword(std::regex("arms_factory"), [this](const std::string& unused, std::istream& theStream)
-	{
-		commonItems::singleInt factoryInt(theStream);
-		milFactories = factoryInt.getInt();
-	});
-	registerKeyword(std::regex("\\d+"), [this](const std::string& unused, std::istream& theStream)
-	{
-		HoI4::DockyardProvince province(theStream);
-		dockyards += province.getDockyardsLevel();
-	});
-	registerKeyword(std::regex("[a-zA-Z0-9_]+"), commonItems::ignoreItem);
-
-	parseStream(theStream);
-}
 
 
 class stateHistory: commonItems::parser
@@ -113,7 +74,7 @@ stateHistory::stateHistory(std::istream& theStream)
 	});
 	registerKeyword(std::regex("buildings"), [this](const std::string& unused, std::istream& theStream)
 	{
-		stateBuildings theBuildings(theStream);
+		HoI4::StateBuildings theBuildings(theStream);
 		civFactories = theBuildings.getCivFactories();
 		milFactories = theBuildings.getMilFactories();
 		dockyards = theBuildings.getDockyards();
