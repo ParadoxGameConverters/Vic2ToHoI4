@@ -22,19 +22,19 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "HoI4States.h"
-#include "ImpassableProvinces.h"
 #include "HoI4State.h"
+#include "../ImpassableProvinces.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
-#include "../Configuration.h"
-#include "../Mappers/CountryMapping.h"
-#include "../Mappers/ProvinceDefinitions.h"
-#include "../Mappers/V2Localisations.h"
-#include "../V2World/Country.h"
-#include "../V2World/Province.h"
-#include "../V2World/State.h"
-#include "../V2World/StateDefinitions.h"
-#include "../V2World/World.h"
+#include "../../Configuration.h"
+#include "../../Mappers/CountryMapping.h"
+#include "../../Mappers/ProvinceDefinitions.h"
+#include "../../Mappers/V2Localisations.h"
+#include "../../V2World/Country.h"
+#include "../../V2World/Province.h"
+#include "../../V2World/State.h"
+#include "../../V2World/StateDefinitions.h"
+#include "../../V2World/World.h"
 #include <fstream>
 
 

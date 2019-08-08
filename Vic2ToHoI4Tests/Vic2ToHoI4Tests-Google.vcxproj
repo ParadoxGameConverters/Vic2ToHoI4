@@ -78,8 +78,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Leader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Localisation.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Relations.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4State.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4States.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4StrategicRegion.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4SupplyZone.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HOI4Version.cpp" />
@@ -115,7 +113,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipModules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariant.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariants.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\StateCategories.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4State.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4States.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateCategories.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\SupplyZones.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Technologies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryMapping.cpp" />
