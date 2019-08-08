@@ -422,6 +422,9 @@
     <ClCompile Include="Vic2WorldTests\WarGoalTests.cpp">
       <Filter>Vic2WorldTests</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\ProvinceTests.cpp">
+      <Filter>Vic2WorldTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
