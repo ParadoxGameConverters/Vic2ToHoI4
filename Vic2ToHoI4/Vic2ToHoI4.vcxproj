@@ -248,6 +248,7 @@
     <ClCompile Include="Source\HOI4World\States\DockyardProvince.cpp" />
     <ClCompile Include="Source\HOI4World\States\HoI4State.cpp" />
     <ClCompile Include="Source\HOI4World\States\HoI4States.cpp" />
+    <ClCompile Include="Source\HOI4World\States\StateBuildings.cpp" />
     <ClCompile Include="Source\HOI4World\States\StateCategories.cpp" />
     <ClCompile Include="Source\HOI4World\SupplyZones.cpp" />
     <ClCompile Include="Source\HOI4World\Technologies.cpp" />
@@ -361,6 +362,7 @@
     <ClInclude Include="Source\HOI4World\States\DockyardProvince.h" />
     <ClInclude Include="Source\HOI4World\States\HoI4State.h" />
     <ClInclude Include="Source\HOI4World\States\HoI4States.h" />
+    <ClInclude Include="Source\HOI4World\States\StateBuildings.h" />
     <ClInclude Include="Source\HOI4World\States\StateCategories.h" />
     <ClInclude Include="Source\HOI4World\SupplyZones.h" />
     <ClInclude Include="Source\HOI4World\Technologies.h" />
