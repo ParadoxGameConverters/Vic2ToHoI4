@@ -67,6 +67,33 @@ TEST(Vic2World_ProvinceTests, ownerCanBeSet)
 }
 
 
+TEST(Vic2World_ProvinceTests, controllerDefaultsToBlank)
+{
+	std::stringstream input;
+	input << "=\n";
+	input << "{\n";
+	input << "}";
+
+	Vic2::Province theProvince("42", input);
+
+	ASSERT_EQ(theProvince.getController(), "");
+}
+
+
+TEST(Vic2World_ProvinceTests, controllerCanBeSet)
+{
+	std::stringstream input;
+	input << "=\n";
+	input << "{\n";
+	input << "\tcontroller=\"TAG\"";
+	input << "}";
+
+	Vic2::Province theProvince("42", input);
+
+	ASSERT_EQ(theProvince.getController(), "TAG");
+}
+
+
 TEST(Vic2World_ProvinceTests, ownerCanBeChanged)
 {
 	std::stringstream input;
