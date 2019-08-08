@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -22,13 +22,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "HoI4State.h"
-#include "CoastalProvinces.h"
 #include "StateCategories.h"
-#include "../Configuration.h"
-#include "../Mappers/Provinces/ProvinceMapper.h"
-#include "../V2World/StateDefinitions.h"
-#include "../V2World/Province.h"
-#include "../V2World/State.h"
+#include "../CoastalProvinces.h"
+#include "../../Configuration.h"
+#include "../../Mappers/Provinces/ProvinceMapper.h"
+#include "../../V2World/StateDefinitions.h"
+#include "../../V2World/Province.h"
+#include "../../V2World/State.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"

@@ -34,6 +34,9 @@
     <Filter Include="Vic2World\Wars">
       <UniqueIdentifier>{16f9981b-03b1-4244-bfcb-f95747be3705}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\States">
+      <UniqueIdentifier>{a406c7c1-4094-4e2c-b635-d37cc87ac449}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -69,9 +72,6 @@
     <ClCompile Include="Source\Color.cpp" />
     <ClCompile Include="Source\Configuration.cpp" />
     <ClCompile Include="Source\V2toHOI4Converter.cpp" />
-    <ClCompile Include="Source\HOI4World\HoI4State.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
     <ClCompile Include="..\common_items\WinUtils.cpp">
       <Filter>CommonItems</Filter>
     </ClCompile>
@@ -82,9 +82,6 @@
       <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\HoI4StrategicRegion.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\HoI4States.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\targa.cpp" />
@@ -214,9 +211,6 @@
     </ClCompile>
     <ClCompile Include="Source\V2World\StateDefinitions.cpp">
       <Filter>Vic2World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\StateCategories.cpp">
-      <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Names.cpp">
       <Filter>HoI4World</Filter>
@@ -351,6 +345,15 @@
     <ClCompile Include="Source\HOI4World\HoI4War.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\States\HoI4State.cpp">
+      <Filter>HoI4World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\States\HoI4States.cpp">
+      <Filter>HoI4World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\States\StateCategories.cpp">
+      <Filter>HoI4World\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -385,9 +388,6 @@
     </ClInclude>
     <ClInclude Include="Source\Color.h" />
     <ClInclude Include="Source\Configuration.h" />
-    <ClInclude Include="Source\HOI4World\HoI4State.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
     <ClInclude Include="..\common_items\OSCompatibilityLayer.h">
       <Filter>CommonItems</Filter>
     </ClInclude>
@@ -395,9 +395,6 @@
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\HoI4StrategicRegion.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\HoI4States.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\targa.h" />
@@ -531,9 +528,6 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\StateDefinitions.h">
       <Filter>Vic2World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\StateCategories.h">
-      <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Inventions.h">
       <Filter>Vic2World</Filter>
@@ -670,6 +664,15 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\HoI4War.h">
       <Filter>HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\States\HoI4State.h">
+      <Filter>HoI4World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\States\HoI4States.h">
+      <Filter>HoI4World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\States\StateCategories.h">
+      <Filter>HoI4World\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

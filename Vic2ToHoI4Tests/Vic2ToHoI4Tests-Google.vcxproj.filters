@@ -65,14 +65,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\V2Localisations.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4States.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryMapping.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4State.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ImpassableProvinces.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
@@ -94,9 +88,6 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Color.cpp">
       <Filter>Vic2ToHoI4 files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\StateCategories.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
@@ -425,6 +416,15 @@
     <ClCompile Include="Vic2WorldTests\ProvinceTests.cpp">
       <Filter>Vic2WorldTests</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4State.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4States.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateCategories.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -474,6 +474,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Vic2\Wars">
       <UniqueIdentifier>{5a89076d-8356-4cec-b27c-fb7a29f9b39b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\States">
+      <UniqueIdentifier>{25fa4931-200a-4006-91b0-965a66c7fa25}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
