@@ -113,6 +113,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipModules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariant.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariants.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\DockyardProvince.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4States.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateCategories.cpp" />
@@ -156,6 +157,7 @@
     <ClCompile Include="HoI4WorldTests\AllMilitaryMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\DockyardProvinceTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4WarTests.cpp" />
     <ClCompile Include="HoI4WorldTests\IdeologicalDecisionsTests.cpp" />

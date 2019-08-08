@@ -245,6 +245,7 @@
     <ClCompile Include="Source\HOI4World\ShipTypes\ShipModules.cpp" />
     <ClCompile Include="Source\HOI4World\ShipTypes\ShipVariant.cpp" />
     <ClCompile Include="Source\HOI4World\ShipTypes\ShipVariants.cpp" />
+    <ClCompile Include="Source\HOI4World\States\DockyardProvince.cpp" />
     <ClCompile Include="Source\HOI4World\States\HoI4State.cpp" />
     <ClCompile Include="Source\HOI4World\States\HoI4States.cpp" />
     <ClCompile Include="Source\HOI4World\States\StateCategories.cpp" />
@@ -357,6 +358,7 @@
     <ClInclude Include="Source\HOI4World\ShipTypes\ShipModules.h" />
     <ClInclude Include="Source\HOI4World\ShipTypes\ShipVariant.h" />
     <ClInclude Include="Source\HOI4World\ShipTypes\ShipVariants.h" />
+    <ClInclude Include="Source\HOI4World\States\DockyardProvince.h" />
     <ClInclude Include="Source\HOI4World\States\HoI4State.h" />
     <ClInclude Include="Source\HOI4World\States\HoI4States.h" />
     <ClInclude Include="Source\HOI4World\States\StateCategories.h" />
