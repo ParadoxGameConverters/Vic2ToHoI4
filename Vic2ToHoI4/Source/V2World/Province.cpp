@@ -38,6 +38,10 @@ Vic2::Province::Province(const std::string& numberString, std::istream& theStrea
 		auto newCoreString = coreString.getString();
 		cores.insert(newCoreString);
 	});
+	registerKeyword(std::regex("controller"), [this](const std::string& unused, std::istream& theStream) {
+		commonItems::singleString controllerSingleString(theStream);
+		controller = controllerSingleString.getString();
+	});
 	registerKeyword(std::regex("naval_base"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::doubleList navalBaseSizeList(theStream);
 		navalBaseLevel = static_cast<int>(navalBaseSizeList.getDoubles()[0]);
