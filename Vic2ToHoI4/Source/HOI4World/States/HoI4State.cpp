@@ -22,6 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "HoI4State.h"
+#include "DockyardProvince.h"
 #include "StateCategories.h"
 #include "../CoastalProvinces.h"
 #include "../../Configuration.h"
@@ -37,34 +38,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include <fstream>
 #include <random>
 
+
+
 // Currently not populated anywhere, so no forts will be created from them; they
 // exist for future support of forts.
 std::map<int, int> HoI4::State::landFortLevels;
 std::map<int, int> HoI4::State::coastFortLevels;
 
-class dockyardProvince: commonItems::parser
-{
-	public:
-		explicit dockyardProvince(std::istream& theStream);
-
-		int getDockyards() const { return dockyards; }
-
-	private:
-		int dockyards = 0;
-};
-
-
-dockyardProvince::dockyardProvince(std::istream& theStream)
-{
-	registerKeyword(std::regex("naval_base"), [this](const std::string& unused, std::istream& theStream)
-	{
-		commonItems::singleInt baseInt(theStream);
-		dockyards = baseInt.getInt();
-	});
-	registerKeyword(std::regex("[a-zA-Z0-9_]+"), commonItems::ignoreItem);
-
-	parseStream(theStream);
-}
 
 
 class stateBuildings: commonItems::parser
@@ -97,8 +77,8 @@ stateBuildings::stateBuildings(std::istream& theStream)
 	});
 	registerKeyword(std::regex("\\d+"), [this](const std::string& unused, std::istream& theStream)
 	{
-		dockyardProvince province(theStream);
-		dockyards += province.getDockyards();
+		HoI4::DockyardProvince province(theStream);
+		dockyards += province.getDockyardsLevel();
 	});
 	registerKeyword(std::regex("[a-zA-Z0-9_]+"), commonItems::ignoreItem);
 
