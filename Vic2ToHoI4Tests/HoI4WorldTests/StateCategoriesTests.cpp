@@ -21,44 +21,4 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "StateCategories.h"
-#include "StateCategoryFile.h"
-#include "OSCompatibilityLayer.h"
-#include "ParserHelpers.h"
-#include "../../Configuration.h"
-#include <set>
-
-
-
-HoI4::StateCategories::StateCategories()
-{
-	registerKeyword(std::regex("state_categories"), [this](const std::string& unused, std::istream& theStream) {
-		StateCategoryFile theFile(theStream);
-		for (auto category: theFile.getCategories())
-		{
-			theCategories.insert(category);
-		}
-	});
-
-	std::set<std::string> categoryFiles;
-	Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/common/state_category", categoryFiles);
-	for (auto file: categoryFiles)
-	{
-		parseFile(theConfiguration.getHoI4Path() + "/common/state_category/" + file);
-	}
-}
-
-
-std::string HoI4::StateCategories::getBestCategory(int numBuildingSlots) const
-{
-	std::string theCategory;
-	for (auto possibleCategory: theCategories)
-	{
-		if (numBuildingSlots >= possibleCategory.first)
-		{
-			theCategory = possibleCategory.second;
-		}
-	}
-
-	return theCategory;
-}
+// not tested, as it will require integration tests to do properly

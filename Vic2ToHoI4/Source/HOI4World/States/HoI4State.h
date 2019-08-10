@@ -45,7 +45,7 @@ namespace HoI4
 {
 
 class coastalProvinces;
-class stateCategories;
+class StateCategories;
 
 
 class State: commonItems::parser
@@ -89,7 +89,7 @@ class State: commonItems::parser
 		void tryToCreateVP();
 		void addManpower();
 
-		void convertIndustry(double workerFactoryRatio, const HoI4::stateCategories& theStateCategories, const coastalProvinces& theCoastalProvinces);
+		void convertIndustry(double workerFactoryRatio, const HoI4::StateCategories& theStateCategories, const coastalProvinces& theCoastalProvinces);
 
 	private:
 		State(const State&) = delete;
@@ -97,7 +97,7 @@ class State: commonItems::parser
 
 		int determineFactoryNumbers(double workerFactoryRatio);
 		int constrainFactoryNumbers(double rawFactories);
-		void determineCategory(int factories, const HoI4::stateCategories& theStateCategories);
+		void determineCategory(int factories, const HoI4::StateCategories& theStateCategories);
 		void setInfrastructure(int factories);
 		void setIndustry(int factories, const coastalProvinces& theCoastalProvinces);
 		bool amICoastal(const coastalProvinces& theCoastalProvinces);

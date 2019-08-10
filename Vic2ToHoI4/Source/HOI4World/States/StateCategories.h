@@ -35,17 +35,14 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 namespace HoI4
 {
 
-class stateCategories: commonItems::parser
+class StateCategories: commonItems::parser
 {
 	public:
-		stateCategories() noexcept;
+		StateCategories();
 
 		std::string getBestCategory(int numBuildingSlots) const;
 
 	private:
-		stateCategories(const stateCategories&) = delete;
-		stateCategories& operator=(const stateCategories&) = delete;
-
 		std::map<int, std::string> theCategories;
 };
 

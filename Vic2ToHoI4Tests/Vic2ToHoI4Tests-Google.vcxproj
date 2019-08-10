@@ -179,6 +179,7 @@
     <ClCompile Include="HoI4WorldTests\ShipVariantsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipVariantTests.cpp" />
     <ClCompile Include="HoI4WorldTests\StateBuildingsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\StateCategoriesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\StateCategoryFileTests.cpp" />
     <ClCompile Include="HoI4WorldTests\StateCategoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\StateHistoryTests.cpp" />

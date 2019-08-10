@@ -449,7 +449,7 @@ double HoI4::World::getWorldwideWorkerFactoryRatio(const map<string, double>& wo
 
 void HoI4::World::putIndustryInStates(const map<string, double>& factoryWorkerRatios)
 {
-	HoI4::stateCategories theStateCategories;
+	HoI4::StateCategories theStateCategories;
 
 	for (auto HoI4State : states->getStates())
 	{
