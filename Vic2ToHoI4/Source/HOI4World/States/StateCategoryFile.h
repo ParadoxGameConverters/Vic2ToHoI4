@@ -21,44 +21,33 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "StateCategories.h"
-#include "StateCategoryFile.h"
-#include "OSCompatibilityLayer.h"
-#include "ParserHelpers.h"
-#include "../../Configuration.h"
-#include <set>
+#ifndef HOI4_STATE_CATEGORY_FILE_H_
+#define HOI4_STATE_CATEGORY_FILE_H_
 
 
 
-HoI4::stateCategories::stateCategories() noexcept
+#include "newParser.h"
+#include <map>
+#include <string>
+
+
+
+namespace HoI4
 {
-	registerKeyword(std::regex("state_categories"), [this](const std::string& unused, std::istream& theStream){
-		StateCategoryFile theFile(theStream);
-		for (auto category: theFile.getCategories())
-		{
-			theCategories.insert(category);
-		}
-	});
 
-	std::set<std::string> categoryFiles;
-	Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/common/state_category", categoryFiles);
-	for (auto file: categoryFiles)
-	{
-		parseFile(theConfiguration.getHoI4Path() + "/common/state_category/" + file);
-	}
+class StateCategoryFile: commonItems::parser
+{
+	public:
+		explicit StateCategoryFile(std::istream& theStream);
+
+		auto getCategories() const { return theCategories; }
+
+	private:
+		std::map<int, std::string> theCategories;
+};
+
 }
 
 
-std::string HoI4::stateCategories::getBestCategory(int numBuildingSlots) const
-{
-	std::string theCategory;
-	for (auto possibleCategory: theCategories)
-	{
-		if (numBuildingSlots >= possibleCategory.first)
-		{
-			theCategory = possibleCategory.second;
-		}
-	}
 
-	return theCategory;
-}
+#endif // HOI4_STATE_CATEGORY_FILE_H_
