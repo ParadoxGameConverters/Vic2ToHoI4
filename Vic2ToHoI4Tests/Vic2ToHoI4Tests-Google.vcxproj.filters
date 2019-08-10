@@ -449,6 +449,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateCategory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateCategoryFile.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\StateCategoryFileTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
