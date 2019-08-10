@@ -436,7 +436,7 @@ void HoI4::State::addManpower()
 }
 
 
-void HoI4::State::convertIndustry(double workerFactoryRatio, const HoI4::stateCategories& theStateCategories, const coastalProvinces& theCoastalProvinces)
+void HoI4::State::convertIndustry(double workerFactoryRatio, const HoI4::StateCategories& theStateCategories, const coastalProvinces& theCoastalProvinces)
 {
 	int factories = determineFactoryNumbers(workerFactoryRatio);
 
@@ -478,7 +478,7 @@ int HoI4::State::constrainFactoryNumbers(double rawFactories)
 }
 
 
-void HoI4::State::determineCategory(int factories, const HoI4::stateCategories& theStateCategories)
+void HoI4::State::determineCategory(int factories, const HoI4::StateCategories& theStateCategories)
 {
 	if (capitalState)
 	{
