@@ -22,35 +22,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "StateCategories.h"
+#include "StateCategory.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 #include "../../Configuration.h"
 #include <set>
 
-
-
-class stateCategory: commonItems::parser
-{
-	public:
-		explicit stateCategory(std::istream& theStream);
-
-		auto getNumberOfSlots() const { return numberOfSlots; }
-
-	private:
-		int numberOfSlots = 0;
-};
-
-
-stateCategory::stateCategory(std::istream& theStream)
-{
-	registerKeyword(std::regex("local_building_slots"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleInt slotsInt(theStream);
-		numberOfSlots = slotsInt.getInt();
-	});
-	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), commonItems::ignoreItem);
-
-	parseStream(theStream);
-}
 
 
 class stateCategoryFile: commonItems::parser
@@ -68,7 +45,7 @@ class stateCategoryFile: commonItems::parser
 stateCategoryFile::stateCategoryFile(std::istream& theStream)
 {
 	registerKeyword(std::regex("[a-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream){
-		stateCategory category(theStream);
+		HoI4::StateCategory category(theStream);
 		theCategories.insert(make_pair(category.getNumberOfSlots(), categoryName));
 	});
 
