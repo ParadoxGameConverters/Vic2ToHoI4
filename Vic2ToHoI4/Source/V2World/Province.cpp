@@ -102,7 +102,7 @@ Vic2::Province::Province(const std::string& numberString, std::istream& theStrea
 		Pop pop(popType, theStream);
 		pops.push_back(pop);
 	});	
-	registerKeyword(std::regex("[a-zA-Z0-9\\_]"), commonItems::ignoreItem);
+	registerKeyword(std::regex("[a-zA-Z0-9\\_]+"), commonItems::ignoreItem);
 
 	parseStream(theStream);
 }
