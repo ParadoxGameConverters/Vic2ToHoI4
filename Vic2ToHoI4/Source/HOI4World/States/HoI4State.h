@@ -53,7 +53,7 @@ class State
 	public:
 		State(const Vic2::State* sourceState, int _ID, const std::string& _ownerTag);
 
-		void output(const std::string& filename) const;
+		void output(std::ostream& output) const;
 
 		void addProvince(int province) { provinces.insert(province); }
 		void setAsCapitalState() { capitalState = true; civFactories++; }
