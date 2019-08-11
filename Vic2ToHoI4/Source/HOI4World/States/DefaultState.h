@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -20,38 +20,42 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
-
-#ifndef IMPASSABLE_PROVINCES_H
-#define IMPASSABLE_PROVINCES_H
-
+#ifndef HOI4_DEFAULT_STATES_H_
+#define HOI4_DEFAULT_STATES_H_
 
 
-#include <map>
-#include <unordered_set>
+#include "newParser.h"
+#include <set>
+#include <string>
 
 
 
 namespace HoI4
 {
 
-class DefaultState;
-
-
-
-class impassableProvinces
+class DefaultState: commonItems::parser
 {
 	public:
-		explicit impassableProvinces(const std::map<int, HoI4::DefaultState>& states);
+		explicit DefaultState(std::istream& theStream);
 
-		bool isProvinceImpassable(int provinceNumber) const;
+		bool isImpassable() const { return impassable; }
+		std::string getOwner() const { return ownerTag; }
+		std::set<int> getProvinces() const { return provinces; }
+		int getCivFactories() const { return civFactories; }
+		int getMilFactories() const { return milFactories; }
+		int getDockyards() const { return dockyards; }
 
-	public:
-		std::unordered_set<int> impassibleProvinces;
+	private:
+		bool impassable = false;
+		std::string ownerTag;
+		std::set<int> provinces;
+		int civFactories = 0;
+		int milFactories = 0;
+		int dockyards = 0;
 };
 
 }
 
 
 
-#endif // IMPASSABLE_PROVINCES_H
-
+#endif // HOI4_DEFAULT_STATES_H_

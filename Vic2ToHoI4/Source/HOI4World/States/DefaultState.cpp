@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -21,37 +21,33 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef IMPASSABLE_PROVINCES_H
-#define IMPASSABLE_PROVINCES_H
+#include "DefaultState.h"
+#include "StateHistory.h"
+#include "ParserHelpers.h"
 
 
 
-#include <map>
-#include <unordered_set>
-
-
-
-namespace HoI4
+HoI4::DefaultState::DefaultState(std::istream& theStream)
 {
+	registerKeyword(std::regex("impassable"), [this](const std::string& unused, std::istream& theStream) {
+		impassable = true;
+		commonItems::ignoreItem(unused, theStream);
+	});
+	registerKeyword(std::regex("provinces"), [this](const std::string& unused, std::istream& theStream) {
+		commonItems::intList provinceNums(theStream);
+		for (auto province : provinceNums.getInts())
+		{
+			provinces.insert(province);
+		}
+	});
+	registerKeyword(std::regex("history"), [this](const std::string& unused, std::istream& theStream) {
+		StateHistory theHistory(theStream);
+		civFactories = theHistory.getCivFactories();
+		milFactories = theHistory.getMilFactories();
+		dockyards = theHistory.getDockyards();
+		ownerTag = theHistory.getOwner();
+	});
+	registerKeyword(std::regex("[a-zA-Z0-9_]+"), commonItems::ignoreItem);
 
-class DefaultState;
-
-
-
-class impassableProvinces
-{
-	public:
-		explicit impassableProvinces(const std::map<int, HoI4::DefaultState>& states);
-
-		bool isProvinceImpassable(int provinceNumber) const;
-
-	public:
-		std::unordered_set<int> impassibleProvinces;
-};
-
+	parseStream(theStream);
 }
-
-
-
-#endif // IMPASSABLE_PROVINCES_H
-

@@ -40,6 +40,7 @@ using namespace std;
 class CountryMapper;
 namespace HoI4
 {
+class DefaultState;
 class impassableProvinces;
 class State;
 }
@@ -57,7 +58,7 @@ class HoI4States: commonItems::parser
 	public:
 		explicit HoI4States(const Vic2::World* _sourceWorld, const CountryMapper& countryMap);
 
-		const map<int, HoI4::State*>& getDefaultStates() const { return defaultStates; }
+		const map<int, HoI4::DefaultState>& getDefaultStates() const { return defaultStates; }
 		const map<int, HoI4::State*>& getStates() const { return states; }
 		const map<int, int>& getProvinceToStateIDMap() const { return provinceToStateIDMap; }
 
@@ -95,7 +96,7 @@ class HoI4States: commonItems::parser
 		map<int, vector<string>> coresMap;
 		set<int> assignedProvinces;
 
-		map<int, HoI4::State*> defaultStates;
+		map<int, HoI4::DefaultState> defaultStates;
 		map<int, HoI4::State*> states;
 		map<int, int> provinceToStateIDMap;
 		int nextStateID = 1;
