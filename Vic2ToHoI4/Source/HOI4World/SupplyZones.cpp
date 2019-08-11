@@ -24,6 +24,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "SupplyZones.h"
 #include "../Configuration.h"
 #include "HoI4SupplyZone.h"
+#include "States/DefaultState.h"
 #include "States/HoI4State.h"
 #include "States/HoI4States.h"
 #include "Log.h"
@@ -68,7 +69,7 @@ supplyArea::supplyArea(std::istream& theStream)
 
 
 
-HoI4::SupplyZones::SupplyZones(const std::map<int, HoI4::State*>& defaultStates):
+HoI4::SupplyZones::SupplyZones(const std::map<int, HoI4::DefaultState>& defaultStates):
 	defaultStateToProvinceMap(),
 	supplyZonesFilenames(),
 	supplyZones(),
@@ -105,11 +106,11 @@ HoI4::SupplyZones::SupplyZones(const std::map<int, HoI4::State*>& defaultStates)
 }
 
 
-void HoI4::SupplyZones::importStates(const std::map<int, HoI4::State*>& defaultStates)
+void HoI4::SupplyZones::importStates(const std::map<int, HoI4::DefaultState>& defaultStates)
 {
 	for (auto state: defaultStates)
 	{
-		defaultStateToProvinceMap.insert(make_pair(state.first, state.second->getProvinces()));
+		defaultStateToProvinceMap.insert(make_pair(state.first, state.second.getProvinces()));
 	}
 }
 
@@ -133,9 +134,9 @@ void HoI4::SupplyZones::output()
 }
 
 
-void HoI4::SupplyZones::convertSupplyZones(const HoI4States* states)
+void HoI4::SupplyZones::convertSupplyZones(const HoI4States& states)
 {
-	for (auto state: states->getStates())
+	for (auto state: states.getStates())
 	{
 		for (auto province : state.second->getProvinces())
 		{

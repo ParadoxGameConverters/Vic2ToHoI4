@@ -48,10 +48,9 @@ class coastalProvinces;
 class StateCategories;
 
 
-class State: commonItems::parser
+class State
 {
 	public:
-		explicit State(std::istream& theStream);
 		State(const Vic2::State* sourceState, int _ID, const std::string& _ownerTag);
 
 		void output(const std::string& filename) const;

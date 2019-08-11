@@ -22,6 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "HoI4States.h"
+#include "DefaultState.h"
 #include "HoI4State.h"
 #include "../ImpassableProvinces.h"
 #include "Log.h"
@@ -51,7 +52,7 @@ HoI4States::HoI4States(const Vic2::World* _sourceWorld, const CountryMapper& cou
 
 	LOG(LogLevel::Info) << "Converting states";
 	registerKeyword(std::regex("state"), [this, &num](const std::string& unused, std::istream& theStream){
-		defaultStates.insert(make_pair(num, new HoI4::State(theStream)));
+		defaultStates.insert(std::make_pair(num, HoI4::DefaultState(theStream)));
 	});
 
 	LOG(LogLevel::Info) << "Finding impassable provinces";
