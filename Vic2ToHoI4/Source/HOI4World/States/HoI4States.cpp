@@ -426,6 +426,14 @@ void HoI4States::output() const
 	}
 	for (auto state: states)
 	{
-		state.second->output(to_string(state.first) + ".txt");
+		std::string filename("output/" + theConfiguration.getOutputName() + "/history/states/" + std::to_string(state.first) + ".txt");
+		std::ofstream out(filename);
+		if (!out.is_open())
+		{
+			std::runtime_error error("Could not open \"" + filename + "\"");
+			throw error;
+		}
+		state.second->output(out);
+		out.close();
 	}
 }

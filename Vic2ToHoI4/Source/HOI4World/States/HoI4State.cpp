@@ -52,16 +52,8 @@ HoI4::State::State(const Vic2::State* _sourceState, int _ID, const std::string& 
 {}
 
 
-void HoI4::State::output(const std::string& _filename) const
+void HoI4::State::output(std::ostream& out) const
 {
-	std::string filename("output/" + theConfiguration.getOutputName() + "/history/states/" + _filename);
-	std::ofstream out(filename);
-	if (!out.is_open())
-	{
-		LOG(LogLevel::Error) << "Could not open \"output/" + theConfiguration.getOutputName() + "/history/states/" + _filename;
-		exit(-1);
-	}
-
 	out << "\n";
 	out << "state={" << "\n";
 	out << "\tid=" << ID << "\n";
@@ -156,8 +148,6 @@ void HoI4::State::output(const std::string& _filename) const
 	out << "\tbuildings_max_level_factor=1.000\n";
 	out << "\tstate_category="<< category << "\n";
 	out << "}\n";
-
-	out.close();
 }
 
 
