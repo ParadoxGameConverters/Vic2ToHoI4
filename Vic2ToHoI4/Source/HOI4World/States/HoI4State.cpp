@@ -41,10 +41,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-// Currently not populated anywhere, so no forts will be created from them; they
-// exist for future support of forts.
-std::map<int, int> HoI4::State::landFortLevels;
-std::map<int, int> HoI4::State::coastFortLevels;
+const int POPULATION_PER_STATE_SLOT = 120000;
+
 
 
 HoI4::State::State(const Vic2::State* _sourceState, int _ID, const std::string& _ownerTag):
@@ -130,32 +128,10 @@ void HoI4::State::output(const std::string& _filename) const
 		out << "\t\t\tdockyard = " << dockyards << "\n";
 	}
 		
-	for (auto provnum : provinces)
+	for (auto navalBase: navalBases)
 	{
-                int naval = 0;
-                if (navalBases.find(provnum) != navalBases.end())
-                {
-                        naval = navalBases.at(provnum);
-                }
-                int bunker = landFortLevels[provnum];
-                int coastFort = coastFortLevels[provnum];
-                if (naval == 0 && bunker == 0 && coastFort == 0)
-                {
-                        continue;
-                }
-                out << "\t\t\t" << provnum << " = {\n";
-                if (naval != 0)
-                {
-                        out << "\t\t\t\tnaval_base = " << naval << "\n";
-                }
-                if (bunker != 0)
-                {
-                        out << "\t\t\t\tbunker = " << bunker << "\n";
-                }
-                if (coastFort != 0)
-                {
-                        out << "\t\t\t\tcoastal_bunker = " << coastFort << "\n";
-                }
+		out << "\t\t\t" << navalBase.first << " = {\n";
+		out << "\t\t\t\tnaval_base = " << navalBase.second << "\n";
 		out << "\t\t\t}\n";
 	}
 
@@ -189,13 +165,13 @@ void HoI4::State::convertNavalBases(const coastalProvinces& theCoastalProvinces)
 {
 	for (auto sourceProvince: sourceState->getProvinces())
 	{
-		int navalBaseLevel = determineNavalBaseLevel(sourceProvince);
+		int navalBaseLevel = determineNavalBaseLevel(*sourceProvince);
 		if (navalBaseLevel == 0)
 		{
 			continue;
 		}
 
-		auto navalBaseLocation = determineNavalBaseLocation(sourceProvince, theCoastalProvinces);
+		auto navalBaseLocation = determineNavalBaseLocation(*sourceProvince, theCoastalProvinces);
 		if (navalBaseLocation)
 		{
 			addNavalBase(navalBaseLevel, *navalBaseLocation);
@@ -204,9 +180,9 @@ void HoI4::State::convertNavalBases(const coastalProvinces& theCoastalProvinces)
 }
 
 
-int HoI4::State::determineNavalBaseLevel(const Vic2::Province* sourceProvince)
+int HoI4::State::determineNavalBaseLevel(const Vic2::Province& sourceProvince) const
 {
-	int navalBaseLevel = sourceProvince->getNavalBaseLevel() * 2;
+	int navalBaseLevel = sourceProvince.getNavalBaseLevel() * 2;
 	if (navalBaseLevel > 10)
 	{
 		navalBaseLevel = 10;
@@ -216,9 +192,11 @@ int HoI4::State::determineNavalBaseLevel(const Vic2::Province* sourceProvince)
 }
 
 
-std::optional<int> HoI4::State::determineNavalBaseLocation(const Vic2::Province* sourceProvince, const coastalProvinces& theCoastalProvinces)
-{
-	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince->getNumber()))
+std::optional<int> HoI4::State::determineNavalBaseLocation(
+	const Vic2::Province& sourceProvince,
+	const coastalProvinces& theCoastalProvinces
+) const {
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince.getNumber()))
 	{
 		for (auto HoI4ProvNum: *mapping)
 		{
@@ -237,8 +215,8 @@ void HoI4::State::addNavalBase(int level, int location)
 {
 	if ((level > 0) && (provinces.find(location) != provinces.end()))
 	{
-                navalBases[location] = level;
-        }
+		navalBases[location] = level;
+	}
 }
 
 
@@ -320,8 +298,7 @@ void HoI4::State::tryToCreateVP()
 				 (province->getPopulation("aristocrats") > 0) ||
 				 (province->getPopulation("bureaucrats") > 0) ||
 				 (province->getPopulation("capitalists") > 0)
-				)
-			{
+			) {
 				VPCreated = assignVPFromVic2Province(province->getNumber());
 				if (VPCreated)
 				{
@@ -407,8 +384,11 @@ void HoI4::State::addManpower()
 }
 
 
-void HoI4::State::convertIndustry(double workerFactoryRatio, const HoI4::StateCategories& theStateCategories, const coastalProvinces& theCoastalProvinces)
-{
+void HoI4::State::convertIndustry(
+	double workerFactoryRatio,
+	const HoI4::StateCategories& theStateCategories,
+	const coastalProvinces& theCoastalProvinces
+) {
 	int factories = determineFactoryNumbers(workerFactoryRatio);
 
 	determineCategory(factories, theStateCategories);
@@ -418,7 +398,7 @@ void HoI4::State::convertIndustry(double workerFactoryRatio, const HoI4::StateCa
 }
 
 
-int HoI4::State::determineFactoryNumbers(double workerFactoryRatio)
+int HoI4::State::determineFactoryNumbers(double workerFactoryRatio) const
 {
 	double rawFactories = sourceState->getEmployedWorkers() * workerFactoryRatio;
 	rawFactories = round(rawFactories);
@@ -426,7 +406,7 @@ int HoI4::State::determineFactoryNumbers(double workerFactoryRatio)
 }
 
 
-int HoI4::State::constrainFactoryNumbers(double rawFactories)
+int HoI4::State::constrainFactoryNumbers(double rawFactories) const
 {
 	int factories = static_cast<int>(rawFactories);
 
@@ -457,7 +437,7 @@ void HoI4::State::determineCategory(int factories, const HoI4::StateCategories& 
 	}
 
 	int population = sourceState->getPopulation();
-	int stateSlots = population / 120000;
+	int stateSlots = population / POPULATION_PER_STATE_SLOT;
 	if (factories >= stateSlots)
 	{
 		stateSlots = factories + 2;
@@ -536,7 +516,7 @@ void HoI4::State::setIndustry(int factories, const coastalProvinces& theCoastalP
 }
 
 
-bool HoI4::State::amICoastal(const coastalProvinces& theCoastalProvinces)
+bool HoI4::State::amICoastal(const coastalProvinces& theCoastalProvinces) const
 {
 	auto coastalProvinces = theCoastalProvinces.getCoastalProvinces();
 	for (auto province: provinces)
@@ -552,7 +532,7 @@ bool HoI4::State::amICoastal(const coastalProvinces& theCoastalProvinces)
 }
 
 
-bool HoI4::State::isProvinceInState(int provinceNum)
+bool HoI4::State::isProvinceInState(int provinceNum) const
 {
 	return (provinces.count(provinceNum) > 0);
 }

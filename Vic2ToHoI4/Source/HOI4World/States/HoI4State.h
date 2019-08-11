@@ -70,7 +70,7 @@ class State
 
 		const Vic2::State* getSourceState() const { return sourceState; }
 		int getID() const { return ID; }
-		std::set<int>	getProvinces() const { return provinces; }
+		std::set<int>getProvinces() const { return provinces; }
 		std::string getOwner() const { return ownerTag; }
 		std::set<std::string> getCores() const { return cores; }
 		bool isImpassable() const { return impassable; }
@@ -88,25 +88,29 @@ class State
 		void tryToCreateVP();
 		void addManpower();
 
-		void convertIndustry(double workerFactoryRatio, const HoI4::StateCategories& theStateCategories, const coastalProvinces& theCoastalProvinces);
+		void convertIndustry(
+			double workerFactoryRatio,
+			const HoI4::StateCategories& theStateCategories,
+			const coastalProvinces& theCoastalProvinces
+		);
 
 	private:
-		State(const State&) = delete;
-		State& operator=(const State&) = delete;
-
-		int determineFactoryNumbers(double workerFactoryRatio);
-		int constrainFactoryNumbers(double rawFactories);
+		int determineFactoryNumbers(double workerFactoryRatio) const;
+		int constrainFactoryNumbers(double rawFactories) const;
 		void determineCategory(int factories, const HoI4::StateCategories& theStateCategories);
 		void setInfrastructure(int factories);
 		void setIndustry(int factories, const coastalProvinces& theCoastalProvinces);
-		bool amICoastal(const coastalProvinces& theCoastalProvinces);
+		bool amICoastal(const coastalProvinces& theCoastalProvinces) const;
 
-		int determineNavalBaseLevel(const Vic2::Province* sourceProvince);
-		std::optional<int> determineNavalBaseLocation(const Vic2::Province* sourceProvince, const coastalProvinces& theCoastalProvinces);
+		int determineNavalBaseLevel(const Vic2::Province& sourceProvince) const;
+		std::optional<int> determineNavalBaseLocation(
+			const Vic2::Province& sourceProvince,
+			const coastalProvinces& theCoastalProvinces
+		) const;
 
 		bool assignVPFromVic2Province(int Vic2ProvinceNumber);
 		void assignVP(int location);
-		bool isProvinceInState(int provinceNum);
+		bool isProvinceInState(int provinceNum) const;
 		void addDebugVPs();
 
 		const Vic2::State* sourceState;
@@ -127,9 +131,9 @@ class State
 		std::string category = "pastoral";
 		int infrastructure = 0;
 
-                std::map<int, int> navalBases;
+		std::map<int, int> navalBases;
 
-                int airbaseLevel = 0;
+		int airbaseLevel = 0;
 
 		std::map<std::string, double> resources;
 
@@ -138,8 +142,8 @@ class State
 		std::set<int> debugVictoryPoints;
 		std::set<int> secondaryDebugVictoryPoints;
 
-                static std::map<int, int> landFortLevels;
-                static std::map<int, int> coastFortLevels;
+		std::map<int, int> landFortLevels;
+		std::map<int, int> coastFortLevels;
 };
 
 }
