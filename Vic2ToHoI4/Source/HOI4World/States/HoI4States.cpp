@@ -97,7 +97,7 @@ void HoI4States::determineOwnersAndCores(const CountryMapper& countryMap)
 			}
 			ownersMap.insert(make_pair(provinceNumber, *HoI4Tag));
 
-			vector<string> cores = determineCores(*sourceProvinceNums, oldOwner, countryMap, *HoI4Tag);
+			std::set<std::string> cores = determineCores(*sourceProvinceNums, oldOwner, countryMap, *HoI4Tag);
 			coresMap.insert(make_pair(provinceNumber, cores));
 		}
 	}
@@ -181,13 +181,13 @@ const std::string HoI4States::selectProvinceOwner(
 }
 
 
-std::vector<std::string> HoI4States::determineCores(
+std::set<std::string> HoI4States::determineCores(
 	const std::vector<int>& sourceProvinces,
 	const std::string& Vic2Owner,
 	const CountryMapper& countryMap,
 	const std::string& newOwner
 ) const {
-	std::vector<std::string> cores;
+	std::set<std::string> cores;
 
 	for (auto sourceProvinceNum: sourceProvinces)
 	{
@@ -210,7 +210,7 @@ std::vector<std::string> HoI4States::determineCores(
 					continue;
 				}
 
-				cores.push_back(*HoI4CoreTag);
+				cores.insert(*HoI4CoreTag);
 			}
 		}
 	}

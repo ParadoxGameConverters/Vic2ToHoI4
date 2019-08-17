@@ -74,7 +74,7 @@ class HoI4States: commonItems::parser
 			const std::vector<int>& sourceProvinceNums
 		) const;
 		const std::string selectProvinceOwner(const std::map<std::string, std::pair<int, int>>& potentialOwners) const;
-		std::vector<std::string> determineCores(
+		std::set<std::string> determineCores(
 			const std::vector<int>& sourceProvinces,
 			const std::string& Vic2Owner,
 			const CountryMapper& countryMap,
@@ -93,7 +93,7 @@ class HoI4States: commonItems::parser
 
 		const Vic2::World* sourceWorld = nullptr;
 		map<int, string> ownersMap;
-		map<int, vector<string>> coresMap;
+		std::map<int, std::set<std::string>> coresMap;
 		set<int> assignedProvinces;
 
 		map<int, HoI4::DefaultState> defaultStates;
