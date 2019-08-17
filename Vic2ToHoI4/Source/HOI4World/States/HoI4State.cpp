@@ -79,12 +79,12 @@ void HoI4::State::output(std::ostream& out) const
 	{
 		out << "\t\towner = " << ownerTag << "\n";
 	}
-	if ((victoryPointValue > 0) && (victoryPointPosition != 0))
+	if ((victoryPointValue > 0) && (victoryPointPosition))
 	{
 		if (theConfiguration.getDebug())
 		{
 			out << "\t\tvictory_points = {\n";
-			out << "\t\t\t" << victoryPointPosition << " " << (victoryPointValue + 10) << "\n";
+			out << "\t\t\t" << *victoryPointPosition << " " << (victoryPointValue + 10) << "\n";
 			out << "\t\t}\n";
 			for (auto VP: debugVictoryPoints)
 			{
@@ -107,7 +107,7 @@ void HoI4::State::output(std::ostream& out) const
 		else
 		{
 			out << "\t\tvictory_points = {\n";
-			out << "\t\t\t" << victoryPointPosition << " " << victoryPointValue << " \n";
+			out << "\t\t\t" << *victoryPointPosition << " " << victoryPointValue << " \n";
 			out << "\t\t}\n";
 		}
 	}
@@ -210,7 +210,7 @@ void HoI4::State::addNavalBase(int level, int location)
 }
 
 
-void HoI4::State::addCores(const std::vector<std::string>& newCores)
+void HoI4::State::addCores(const std::set<std::string>& newCores)
 {
 	for (auto newCore: newCores)
 	{

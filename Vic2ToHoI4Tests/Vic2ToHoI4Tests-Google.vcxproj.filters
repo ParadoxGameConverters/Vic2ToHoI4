@@ -464,6 +464,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\DefaultState.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\HoI4StateTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="Mocks\Vic2StateMock.h">
+      <Filter>Mocks</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -523,6 +529,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mocks\EventsMock.h">
+      <Filter>Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="Mocks\StateCategoriesMock.h">
       <Filter>Mocks</Filter>
     </ClInclude>
   </ItemGroup>

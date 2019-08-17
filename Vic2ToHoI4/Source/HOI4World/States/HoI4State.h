@@ -66,7 +66,7 @@ class State
 
 		void convertNavalBases(const coastalProvinces& theCoastalProvinces);
 		void addNavalBase(int level, int location);
-		void addCores(const std::vector<std::string>& newCores);
+		void addCores(const std::set<std::string>& newCores);
 
 		const Vic2::State* getSourceState() const { return sourceState; }
 		int getID() const { return ID; }
@@ -79,7 +79,7 @@ class State
 		int getMilFactories() const { return milFactories; }
 		int getInfrastructure() const { return infrastructure; }
 		int getManpower() const { return manpower; }
-		int getVPLocation() const { return victoryPointPosition; }
+		std::optional<int> getVPLocation() const { return victoryPointPosition; }
 		std::set<int> getDebugVPs() const { return debugVictoryPoints; }
 		std::set<int> getSecondaryDebugVPs() const { return secondaryDebugVictoryPoints; }
 
@@ -137,7 +137,7 @@ class State
 
 		std::map<std::string, double> resources;
 
-		int victoryPointPosition = 0;
+		std::optional<int> victoryPointPosition;
 		int victoryPointValue = 0;
 		std::set<int> debugVictoryPoints;
 		std::set<int> secondaryDebugVictoryPoints;

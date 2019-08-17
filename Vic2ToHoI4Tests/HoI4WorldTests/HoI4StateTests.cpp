@@ -22,188 +22,801 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "gtest/gtest.h"
-#include "../Vic2ToHoI4/Source/HOI4World/States/DefaultState.h"
-#include "../mocks/EventsMock.h"
+#include "../Mocks/Vic2StateMock.h"
+#include "../Mocks/StateCategoriesMock.h"
+#include "../Vic2ToHoI4/Source/HOI4World/CoastalProvinces.h"
+#include "../Vic2ToHoI4/Source/HOI4World/States/HoI4State.h"
+#include "../Vic2ToHoI4/Source/HoI4World/States/StateCategories.h"
+#include "../Vic2ToHoI4/Source/V2World/State.h"
 #include <sstream>
 
 
 
-TEST(HoI4World_DefaultStateTests, impassibleDefaultsToFalse)
+TEST(HoI4World_StateTests, sourceStateIsReturned)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	HoI4::DefaultState theState(input);
+	Vic2::State* sourceState = new Vic2::State(input, "");
+	HoI4::State theState(sourceState, 42, "TAG");
 
-	ASSERT_FALSE(theState.isImpassable());
+	ASSERT_EQ(theState.getSourceState(), sourceState);
 }
 
 
-TEST(HoI4World_DefaultStateTests, impassibleCanBeSet)
+TEST(HoI4World_StateTests, idIsReturned)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "\timpassable = yes\n";
-	input << "}";
-	HoI4::DefaultState theState(input);
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
 
-	ASSERT_TRUE(theState.isImpassable());
+	ASSERT_EQ(theState.getID(), 42);
 }
 
 
-TEST(HoI4World_DefaultStateTests, provincesDefaultToEmpty)
+TEST(HoI4World_StateTests, idIsOutput)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "}";
-	HoI4::DefaultState theState(input);
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "");
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "state={" << "\n";
+	expectedOutput << "\tid=42\n";
+	expectedOutput << "\tname=\"STATE_42\"\n";
+	expectedOutput << "\n";
+	expectedOutput << "\thistory={\n";
+	expectedOutput << "\t\tbuildings = {\n";
+	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tindustrial_complex = 0\n";
+	expectedOutput << "\t\t\tarms_factory = 0\n";
+	expectedOutput << "\t\t\tair_base = 0\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tprovinces={\n";
+	expectedOutput << "\t\t";
+	expectedOutput << "\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\tmanpower=0\n";
+	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
+	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "}\n";
+
+	std::stringstream output;
+	theState.output(output);
+
+	ASSERT_EQ(theState.getID(), 42);
+}
+
+
+TEST(HoI4World_StateTests, provincesDefaultToEmpty)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
 
 	ASSERT_EQ(theState.getProvinces().size(), 0);
 }
 
 
-TEST(HoI4World_DefaultStateTests, provincesCanBeSet)
+TEST(HoI4World_StateTests, provincesCanbeAdded)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "\tprovinces = {\n";
-	input << "\t\t1 2 3 4\n";
-	input << "\t}\n";
-	input << "}";
-	HoI4::DefaultState theState(input);
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
 
-	ASSERT_EQ(theState.getProvinces().size(), 4);
-	ASSERT_EQ(theState.getProvinces().count(1), 1);
-	ASSERT_EQ(theState.getProvinces().count(2), 1);
-	ASSERT_EQ(theState.getProvinces().count(3), 1);
-	ASSERT_EQ(theState.getProvinces().count(4), 1);
+	theState.addProvince(5);
+	theState.addProvince(13);
+
+	ASSERT_EQ(theState.getProvinces().size(), 2);
+	ASSERT_EQ(theState.getProvinces().count(5), 1);
+	ASSERT_EQ(theState.getProvinces().count(13), 1);
 }
 
 
-TEST(HoI4World_DefaultStateTests, ownerDefaultsToBlank)
+TEST(HoI4World_StateTests, provincesAreOutput)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "}";
-	HoI4::DefaultState theState(input);
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "");
+	theState.addProvince(5);
+	theState.addProvince(13);
 
-	ASSERT_EQ(theState.getOwner(), "");
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "state={" << "\n";
+	expectedOutput << "\tid=42\n";
+	expectedOutput << "\tname=\"STATE_42\"\n";
+	expectedOutput << "\n";
+	expectedOutput << "\thistory={\n";
+	expectedOutput << "\t\tbuildings = {\n";
+	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tindustrial_complex = 0\n";
+	expectedOutput << "\t\t\tarms_factory = 0\n";
+	expectedOutput << "\t\t\tair_base = 0\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tprovinces={\n";
+	expectedOutput << "\t\t5 13 \n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\tmanpower=0\n";
+	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
+	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "}\n";
+
+	std::stringstream output;
+	theState.output(output);
+
+	ASSERT_EQ(theState.getID(), 42);
 }
 
 
-TEST(HoI4World_DefaultStateTests, ownerCanBeSet)
+TEST(HoI4World_StateTests, ownerIsReturned)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "\thistory = {\n";
-	input << "\t\towner = TAG\n";
-	input << "\t}\n";
-	input << "}";
-	HoI4::DefaultState theState(input);
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
 
 	ASSERT_EQ(theState.getOwner(), "TAG");
 }
 
 
-TEST(HoI4World_DefaultStateTests, civFactoriesDefaultsToZero)
+TEST(HoI4World_StateTests, ownerIsOutput)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "}";
-	HoI4::DefaultState theState(input);
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "state={" << "\n";
+	expectedOutput << "\tid=42\n";
+	expectedOutput << "\tname=\"STATE_42\"\n";
+	expectedOutput << "\n";
+	expectedOutput << "\thistory={\n";
+	expectedOutput << "\t\towner = TAG\n";
+	expectedOutput << "\t\tbuildings = {\n";
+	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tindustrial_complex = 0\n";
+	expectedOutput << "\t\t\tarms_factory = 0\n";
+	expectedOutput << "\t\t\tair_base = 0\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tprovinces={\n";
+	expectedOutput << "\t\t";
+	expectedOutput << "\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\tmanpower=0\n";
+	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
+	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "}\n";
+
+	std::stringstream output;
+	theState.output(output);
+
+	ASSERT_EQ(theState.getID(), 42);
+}
+
+
+TEST(HoI4World_StateTests, coresDefaultToEmpty)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	ASSERT_EQ(theState.getCores().size(), 0);
+}
+
+
+TEST(HoI4World_StateTests, coresCanbeAdded)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	std::set<std::string> cores;
+	cores.insert("TAG");
+	cores.insert("COR");
+	theState.addCores(cores);
+
+	ASSERT_EQ(theState.getCores().size(), 2);
+	ASSERT_EQ(theState.getCores().count("TAG"), 1);
+	ASSERT_EQ(theState.getCores().count("COR"), 1);
+}
+
+
+TEST(HoI4World_StateTests, coresAreOutput)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	std::set<std::string> cores;
+	cores.insert("TAG");
+	cores.insert("COR");
+	theState.addCores(cores);
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "state={" << "\n";
+	expectedOutput << "\tid=42\n";
+	expectedOutput << "\tname=\"STATE_42\"\n";
+	expectedOutput << "\n";
+	expectedOutput << "\thistory={\n";
+	expectedOutput << "\t\towner = TAG\n";
+	expectedOutput << "\t\tbuildings = {\n";
+	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tindustrial_complex = 0\n";
+	expectedOutput << "\t\t\tarms_factory = 0\n";
+	expectedOutput << "\t\t\tair_base = 0\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t\tadd_core_of = COR\n";
+	expectedOutput << "\t\tadd_core_of = TAG\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tprovinces={\n";
+	expectedOutput << "\t\t";
+	expectedOutput << "\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\tmanpower=0\n";
+	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
+	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "}\n";
+
+	std::stringstream output;
+	theState.output(output);
+
+	ASSERT_EQ(theState.getID(), 42);
+}
+
+
+TEST(HoI4World_StateTests, impassableDefaultsToFalse)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	ASSERT_FALSE(theState.isImpassable());
+}
+
+
+TEST(HoI4World_StateTests, impassableCanBeSet)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	theState.makeImpassable();
+
+	ASSERT_TRUE(theState.isImpassable());
+}
+
+
+TEST(HoI4World_StateTests, impassableIsOutput)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "state={" << "\n";
+	expectedOutput << "\tid=42\n";
+	expectedOutput << "\tname=\"STATE_42\"\n";
+	expectedOutput << "\timpassable = yes\n";
+	expectedOutput << "\n";
+	expectedOutput << "\thistory={\n";
+	expectedOutput << "\t\towner = TAG\n";
+	expectedOutput << "\t\tbuildings = {\n";
+	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tindustrial_complex = 0\n";
+	expectedOutput << "\t\t\tarms_factory = 0\n";
+	expectedOutput << "\t\t\tair_base = 0\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tprovinces={\n";
+	expectedOutput << "\t\t";
+	expectedOutput << "\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\tmanpower=0\n";
+	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
+	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "}\n";
+
+	std::stringstream output;
+	theState.output(output);
+
+	ASSERT_EQ(theState.getID(), 42);
+}
+
+
+TEST(HoI4World_StateTests, dockyardsDefaultsToZero)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	ASSERT_EQ(theState.getDockyards(), 0);
+}
+
+
+TEST(HoI4World_StateTests, civFactoriesDefaultsToZero)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
 
 	ASSERT_EQ(theState.getCivFactories(), 0);
 }
 
 
-TEST(HoI4World_DefaultStateTests, civFactoriesCanBeSet)
+TEST(HoI4World_StateTests, milFactoriesDefaultsToZero)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "\thistory = {\n";
-	input << "\t\tbuildings = {\n";
-	input << "\t\t\tindustrial_complex = 5\n";
-	input << "\t\t}\n";
-	input << "\t}";
-	input << "}";
-	HoI4::DefaultState theState(input);
-
-	ASSERT_EQ(theState.getCivFactories(), 5);
-}
-
-
-TEST(HoI4World_DefaultStateTests, milFactoriesDefaultsToZero)
-{
-	std::stringstream input;
-	input << "= {\n";
-	input << "}";
-	HoI4::DefaultState theState(input);
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
 
 	ASSERT_EQ(theState.getMilFactories(), 0);
 }
 
 
-TEST(HoI4World_DefaultStateTests, milFactoriesCanBeSet)
+TEST(HoI4World_StateTests, totalFactoriesCanBeSet)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "\thistory = {\n";
-	input << "\t\tbuildings = {\n";
-	input << "\t\t\tarms_factory = 7\n";
-	input << "\t\t}\n";
-	input << "\t}";
-	input << "}";
-	HoI4::DefaultState theState(input);
+	mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(50000));
+	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(60000));
 
-	ASSERT_EQ(theState.getMilFactories(), 7);
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	mockStateCategories stateCategories;
+	EXPECT_CALL(stateCategories, getBestCategory(7)).WillOnce(testing::Return("mockedCategory"));
+
+	HoI4::coastalProvinces theCoastalProvinces;
+	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+
+	ASSERT_EQ(theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards(), 5);
 }
 
 
-TEST(HoI4World_DefaultStateTests, dockyardsDefaultsToZero)
+TEST(HoI4World_StateTests, totalFactoriesCappedAtTwelve)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "}";
-	HoI4::DefaultState theState(input);
+	mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(500000));
+	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(60000));
 
-	ASSERT_EQ(theState.getMilFactories(), 0);
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	mockStateCategories stateCategories;
+	EXPECT_CALL(stateCategories, getBestCategory(14)).WillOnce(testing::Return("mockedCategory"));
+
+	HoI4::coastalProvinces theCoastalProvinces;
+	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+
+	ASSERT_EQ(theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards(), 12);
 }
 
 
-TEST(HoI4World_DefaultStateTests, dockyardsCanBeSet)
+TEST(HoI4World_StateTests, categoryCanBeChanged)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "\thistory = {\n";
-	input << "\t\tbuildings = {\n";
-	input << "\t\t\t1234 = {\n";
-	input << "\t\t\t\tnaval_base = 1";
-	input << "\t\t\t}\n";
-	input << "\t\t}\n";
-	input << "\t}";
-	input << "}";
-	HoI4::DefaultState theState(input);
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(500000));
+	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(60000));
 
-	ASSERT_EQ(theState.getDockyards(), 1);
+	mockStateCategories stateCategories;
+	EXPECT_CALL(stateCategories, getBestCategory(14)).WillOnce(testing::Return("mockedCategory"));
+
+	HoI4::coastalProvinces theCoastalProvinces;
+	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "state={" << "\n";
+	expectedOutput << "\tid=42\n";
+	expectedOutput << "\tname=\"STATE_42\"\n";
+	expectedOutput << "\n";
+	expectedOutput << "\thistory={\n";
+	expectedOutput << "\t\towner = TAG\n";
+	expectedOutput << "\t\tbuildings = {\n";
+	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tindustrial_complex = 0\n";
+	expectedOutput << "\t\t\tarms_factory = 0\n";
+	expectedOutput << "\t\t\tair_base = 0\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tprovinces={\n";
+	expectedOutput << "\t\t";
+	expectedOutput << "\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\tmanpower=0\n";
+	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
+	expectedOutput << "\tstate_category=mockedCategory\n";
+	expectedOutput << "}\n";
+
+	std::stringstream output;
+	theState.output(output);
+
+	ASSERT_EQ(theState.getID(), 42);
 }
 
 
-TEST(HoI4World_DefaultStateTests, dockyardsCanBeAdded)
+TEST(HoI4World_StateTests, infrastructureDefaultsToZero)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "\thistory = {\n";
-	input << "\t\tbuildings = {\n";
-	input << "\t\t\t1234 = {\n";
-	input << "\t\t\t\tnaval_base = 1";
-	input << "\t\t\t}\n";
-	input << "\t\t\t5678 = {\n";
-	input << "\t\t\t\tnaval_base = 3";
-	input << "\t\t\t}\n";
-	input << "\t\t}\n";
-	input << "\t}";
-	input << "}";
-	HoI4::DefaultState theState(input);
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
 
-	ASSERT_EQ(theState.getDockyards(), 4);
+	ASSERT_EQ(theState.getInfrastructure(), 0);
+}
+
+
+TEST(HoI4World_StateTests, infrastructureCanBeSet)
+{
+	mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(0));
+	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(0));
+	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(0));
+
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	mockStateCategories stateCategories;
+	EXPECT_CALL(stateCategories, getBestCategory(2)).WillOnce(testing::Return("mockedCategory"));
+
+	HoI4::coastalProvinces theCoastalProvinces;
+	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+
+	ASSERT_EQ(theState.getInfrastructure(), 3);
+}
+
+
+TEST(HoI4World_StateTests, infrastructureIsOutput)
+{
+	mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(0));
+	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(0));
+	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(0));
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	mockStateCategories stateCategories;
+	EXPECT_CALL(stateCategories, getBestCategory(2)).WillOnce(testing::Return("mockedCategory"));
+
+	HoI4::coastalProvinces theCoastalProvinces;
+	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "state={" << "\n";
+	expectedOutput << "\tid=42\n";
+	expectedOutput << "\tname=\"STATE_42\"\n";
+	expectedOutput << "\timpassable = yes\n";
+	expectedOutput << "\n";
+	expectedOutput << "\thistory={\n";
+	expectedOutput << "\t\towner = TAG\n";
+	expectedOutput << "\t\tbuildings = {\n";
+	expectedOutput << "\t\t\tinfrastructure = 3\n";
+	expectedOutput << "\t\t\tindustrial_complex = 0\n";
+	expectedOutput << "\t\t\tarms_factory = 0\n";
+	expectedOutput << "\t\t\tair_base = 0\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tprovinces={\n";
+	expectedOutput << "\t\t";
+	expectedOutput << "\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\tmanpower=0\n";
+	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
+	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "}\n";
+
+	std::stringstream output;
+	theState.output(output);
+
+	ASSERT_EQ(theState.getID(), 42);
+}
+
+
+TEST(HoI4World_StateTests, infrastructureAddedPerTwoRailLevels)
+{
+	mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(0));
+	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(0));
+	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(6));
+
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	mockStateCategories stateCategories;
+	EXPECT_CALL(stateCategories, getBestCategory(2)).WillOnce(testing::Return("mockedCategory"));
+
+	HoI4::coastalProvinces theCoastalProvinces;
+	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+
+	ASSERT_EQ(theState.getInfrastructure(), 6);
+}
+
+
+TEST(HoI4World_StateTests, infrastructureForOverFourFactories)
+{
+	mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(50000));
+	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(100000));
+	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(6));
+
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	mockStateCategories stateCategories;
+	EXPECT_CALL(stateCategories, getBestCategory(7)).WillOnce(testing::Return("mockedCategory"));
+
+	HoI4::coastalProvinces theCoastalProvinces;
+	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+
+	ASSERT_EQ(theState.getInfrastructure(), 7);
+}
+
+
+TEST(HoI4World_StateTests, infrastructureForOverSixFactories)
+{
+	mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(70000));
+	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(100000));
+	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(6));
+
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	mockStateCategories stateCategories;
+	EXPECT_CALL(stateCategories, getBestCategory(9)).WillOnce(testing::Return("mockedCategory"));
+
+	HoI4::coastalProvinces theCoastalProvinces;
+	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+
+	ASSERT_EQ(theState.getInfrastructure(), 8);
+}
+
+
+TEST(HoI4World_StateTests, infrastructureForOverTenFactories)
+{
+	mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(110000));
+	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(100000));
+	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(6));
+
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	mockStateCategories stateCategories;
+	EXPECT_CALL(stateCategories, getBestCategory(13)).WillOnce(testing::Return("mockedCategory"));
+
+	HoI4::coastalProvinces theCoastalProvinces;
+	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+
+	ASSERT_EQ(theState.getInfrastructure(), 9);
+}
+
+
+TEST(HoI4World_StateTests, manpowerDefaultsToZero)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	ASSERT_EQ(theState.getManpower(), 0);
+}
+
+
+// Implementation is strange and hard to test. Clean up before testing
+/*TEST(HoI4World_StateTests, manpowerCanBeSet)
+{
+	mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(100000));
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	theState.addManpower();
+
+	ASSERT_EQ(theState.getManpower(), 400000);
+}*/
+
+
+TEST(HoI4World_StateTests, victoryPointPositionDefaultsToMissing)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	ASSERT_FALSE(theState.getVPLocation());
+}
+
+
+TEST(HoI4World_StateTests, victoryPointPositionCanBeSetManually)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	theState.setVPLocation(12);
+
+	ASSERT_EQ(theState.getVPLocation(), 12);
+}
+
+
+/* requires province mapper, so not easily tested
+TEST(HoI4World_StateTests, victoryPointPositionCanBeSetFromStateCapital)
+{
+	mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(12));
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	theState.tryToCreateVP();
+
+	ASSERT_EQ(theState.getVPLocation(), 12);
+}*/
+
+
+/* requires province mapper, so not easily tested
+TEST(HoI4World_StateTests, victoryPointPositionCanBeSetFromDetectedStateCapital)
+{
+	mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(12));
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	theState.tryToCreateVP();
+
+	ASSERT_EQ(theState.getVPLocation(), 12);
+}*/
+
+
+/* requires province mapper, so not easily tested
+TEST(HoI4World_StateTests, victoryPointPositionCanBeSetFromMostPopulousProvince)
+{
+	mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(12));
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	theState.tryToCreateVP();
+
+	ASSERT_EQ(theState.getVPLocation(), 12);
+}*/
+
+
+/* requires province mapper, so not easily tested
+TEST(HoI4World_StateTests, victoryPointPositionLoggedIfNotSet)
+{
+	mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(12));
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	theState.tryToCreateVP();
+
+	ASSERT_EQ(theState.getVPLocation(), 12);
+}*/
+
+
+/* requires province mapper, so not easily tested
+TEST(HoI4World_StateTests, debugVPsCanBeAdded)
+{
+	mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(12));
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	theState.tryToCreateVP();
+
+	ASSERT_EQ(theState.getVPLocation(), 12);
+}*/
+
+
+TEST(HoI4World_StateTests, mainNavalBaseLocationDefaultsToMissing)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	ASSERT_FALSE(theState.getMainNavalLocation());
+}
+
+
+TEST(HoI4World_StateTests, mainNavalBaseLocationCanBeAssigned)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	theState.addProvince(12);
+	theState.addNavalBase(1, 12);
+
+	ASSERT_EQ(*theState.getMainNavalLocation(), 12);
+}
+
+
+TEST(HoI4World_StateTests, mainNavalBaseLocationGoesToLargestBase)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+
+	theState.addProvince(12);
+	theState.addNavalBase(1, 12);
+	theState.addProvince(24);
+	theState.addNavalBase(5, 24);
+
+	ASSERT_EQ(*theState.getMainNavalLocation(), 24);
+}
+
+
+TEST(HoI4World_StateTests, navalBasesAreOutput)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+	theState.addProvince(12);
+	theState.addNavalBase(1, 12);
+	theState.addProvince(24);
+	theState.addNavalBase(5, 24);
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "state={" << "\n";
+	expectedOutput << "\tid=42\n";
+	expectedOutput << "\tname=\"STATE_42\"\n";
+	expectedOutput << "\n";
+	expectedOutput << "\thistory={\n";
+	expectedOutput << "\t\towner = TAG\n";
+	expectedOutput << "\t\tbuildings = {\n";
+	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tindustrial_complex = 0\n";
+	expectedOutput << "\t\t\tarms_factory = 0\n";
+	expectedOutput << "\t\t\t12 = {\n";
+	expectedOutput << "\t\t\t\tnaval_base = 1\n";
+	expectedOutput << "\t\t\t}\n";
+	expectedOutput << "\t\t\t24 = {\n";
+	expectedOutput << "\t\t\t\tnaval_base = 5\n";
+	expectedOutput << "\t\t\t}\n";
+	expectedOutput << "\t\t\tair_base = 0\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tprovinces={\n";
+	expectedOutput << "\t\t";
+	expectedOutput << "\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\tmanpower=0\n";
+	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
+	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "}\n";
+
+	std::stringstream output;
+	theState.output(output);
+
+	ASSERT_EQ(theState.getID(), 42);
+}
+
+
+TEST(HoI4World_StateTests, resourcesCanBeAdded)
+{
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+	theState.addResource("steel", 5.5);
+	theState.addResource("oil", 7.25);
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "state={" << "\n";
+	expectedOutput << "\tid=42\n";
+	expectedOutput << "\tname=\"STATE_42\"\n";
+	expectedOutput << "\tresources={\n";
+	expectedOutput << "\t\toil=5.500\n";
+	expectedOutput << "\t\tsteel=7.250\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "\thistory={\n";
+	expectedOutput << "\t\towner = TAG\n";
+	expectedOutput << "\t\tbuildings = {\n";
+	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tindustrial_complex = 0\n";
+	expectedOutput << "\t\t\tarms_factory = 0\n";
+	expectedOutput << "\t\t\tair_base = 0\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tprovinces={\n";
+	expectedOutput << "\t\t";
+	expectedOutput << "\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\tmanpower=0\n";
+	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
+	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "}\n";
+
+	std::stringstream output;
+	theState.output(output);
+
+	ASSERT_EQ(theState.getID(), 42);
 }

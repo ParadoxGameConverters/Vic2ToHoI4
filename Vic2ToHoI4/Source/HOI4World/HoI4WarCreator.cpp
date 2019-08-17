@@ -459,11 +459,18 @@ bool HoI4WarCreator::bothCountriesHaveCapitals(shared_ptr<HoI4Country> Country1,
 }
 
 
-pair<int, int> HoI4WarCreator::getCapitalPosition(shared_ptr<HoI4Country> country)
+std::pair<int, int> HoI4WarCreator::getCapitalPosition(std::shared_ptr<HoI4Country> country)
 {
 	auto capitalState = country->getCapitalState();
-	int capitalProvince = capitalState->getVPLocation();
-	return getProvincePosition(capitalProvince);
+	std::optional<int> capitalProvince = capitalState->getVPLocation();
+	if (capitalProvince)
+	{
+		return getProvincePosition(*capitalProvince);
+	}
+	else
+	{
+		return make_pair(65536, 65536);
+	}
 }
 
 
@@ -1335,24 +1342,35 @@ set<int> HoI4WarCreator::findBorderState(shared_ptr<HoI4Country> country, shared
 	return demandedStates;
 }
 
-vector<int> HoI4WarCreator::sortStatesByCapitalDistance(set<int> stateList, shared_ptr<HoI4Country> country, const HoI4::World* world)
-{
-	multimap<double, int> statesWithDistance;
-	pair<int, int> capitalCoords = getCapitalPosition(country);
-	map<int, HoI4::State*> statesMapping = world->getStates();
+std::vector<int> HoI4WarCreator::sortStatesByCapitalDistance(
+	std::set<int> stateList,
+	std::shared_ptr<HoI4Country> country,
+	const HoI4::World* world
+) {
+	std::multimap<double, int> statesWithDistance;
+	std::pair<int, int> capitalCoords = getCapitalPosition(country);
+	std::map<int, HoI4::State*> statesMapping = world->getStates();
 
 	for (int stateID : stateList)
 	{
 		HoI4::State* stateObj = statesMapping[stateID];
-		int provCapID = stateObj->getVPLocation();
-		pair<int, int> stateVPCoords = getProvincePosition(provCapID);
+		std::optional<int> provCapID = stateObj->getVPLocation();
+		std::pair<int, int> stateVPCoords;
+		if (provCapID)
+		{
+			stateVPCoords = getProvincePosition(*provCapID);
+		}
+		else
+		{
+			stateVPCoords = std::make_pair(65536, 65536);
+		}
 		double distanceSquared = pow(capitalCoords.first - stateVPCoords.first, 2)
 			+ pow(capitalCoords.second - stateVPCoords.second, 2);
-		statesWithDistance.insert(pair<double, int>(distanceSquared, stateID));
+		statesWithDistance.insert(std::pair<double, int>(distanceSquared, stateID));
 	}
 
-	vector<int> sortedStates;
-	for (pair<double, int> oneStateDistance : statesWithDistance)
+	std::vector<int> sortedStates;
+	for (std::pair<double, int> oneStateDistance: statesWithDistance)
 	{
 		sortedStates.push_back(oneStateDistance.second);
 	}

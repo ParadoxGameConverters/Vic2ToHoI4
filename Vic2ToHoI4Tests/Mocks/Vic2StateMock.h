@@ -21,33 +21,15 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef HOI4_STATE_CATEGORIES_H_
-#define HOI4_STATE_CATEGORIES_H_
+#include "gmock/gmock.h"
+#include "../../Vic2ToHoI4/Source/V2World/State.h"
 
 
 
-#include "newParser.h"
-#include <map>
-#include <string>
-
-
-
-namespace HoI4
-{
-
-class StateCategories: commonItems::parser
+class mockVic2State: public Vic2::State
 {
 	public:
-		StateCategories();
-
-		virtual std::string getBestCategory(int numBuildingSlots) const;
-
-	private:
-		std::map<int, std::string> theCategories;
+		MOCK_METHOD(int, getEmployedWorkers, (), (const, override));
+		MOCK_METHOD(int, getPopulation, (), (const, override));
+		MOCK_METHOD(int, getAverageRailLevel, (), (const, override));
 };
-
-}
-
-
-
-#endif // HOI4_STATE_CATEGORIES_H_
