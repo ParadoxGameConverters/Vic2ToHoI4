@@ -134,6 +134,15 @@ void HoI4::State::output(std::ostream& out) const
 	{
 		out << "\t\tadd_core_of = " << core << "\n";
 	}
+	for (auto countryControlledProvinces: controlledProvinces)
+	{
+		out << "\t\t" << countryControlledProvinces.first << " = {\n";
+		for (auto province : countryControlledProvinces.second)
+		{
+			out << "\t\t\tset_province_controller = " << province << "\n";
+		}
+		out << "\t\t}\n";
+	}
 	out << "\t}\n";
 	out << "\n";
 	out << "\tprovinces={\n";
@@ -215,6 +224,38 @@ void HoI4::State::addCores(const std::set<std::string>& newCores)
 	for (auto newCore: newCores)
 	{
 		cores.insert(newCore);
+	}
+}
+
+
+void HoI4::State::convertControlledProvinces()
+{
+	for (auto sourceProvince: sourceState->getProvinces())
+	{
+		if (sourceProvince->getOwner() != sourceProvince->getController())
+		{
+			std::string controller = sourceProvince->getController();
+			auto provinceMapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince->getNumber());
+			if (provinceMapping)
+			{
+				for (auto destinationProvince: *provinceMapping)
+				{
+					if (provinces.count(destinationProvince) > 0)
+					{
+						if (controlledProvinces.count(controller) == 0)
+						{
+							std::set<int> destinationProvinces;
+							destinationProvinces.insert(destinationProvince);
+							controlledProvinces.insert(std::make_pair(controller, destinationProvinces));
+						}
+						else
+						{
+							controlledProvinces.find(controller)->second.insert(destinationProvince);
+						}
+					}
+				}
+			}
+		}
 	}
 }
 

@@ -67,6 +67,7 @@ class State
 		void convertNavalBases(const coastalProvinces& theCoastalProvinces);
 		void addNavalBase(int level, int location);
 		void addCores(const std::set<std::string>& newCores);
+		void convertControlledProvinces();
 
 		const Vic2::State* getSourceState() const { return sourceState; }
 		int getID() const { return ID; }
@@ -119,6 +120,8 @@ class State
 		std::set<int> provinces;
 		std::string ownerTag;
 		std::set<std::string> cores;
+		std::map<std::string, std::set<int>> controlledProvinces;
+
 		bool capitalState = false;
 		bool impassable = false;
 		bool hadImpassablePart = false;
