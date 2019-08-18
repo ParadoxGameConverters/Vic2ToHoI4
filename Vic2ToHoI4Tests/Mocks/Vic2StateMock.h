@@ -32,4 +32,5 @@ class mockVic2State: public Vic2::State
 		MOCK_METHOD(int, getEmployedWorkers, (), (const, override));
 		MOCK_METHOD(int, getPopulation, (), (const, override));
 		MOCK_METHOD(int, getAverageRailLevel, (), (const, override));
+		MOCK_METHOD(std::set<const Vic2::Province*>, getProvinces, (), (const, override));
 };

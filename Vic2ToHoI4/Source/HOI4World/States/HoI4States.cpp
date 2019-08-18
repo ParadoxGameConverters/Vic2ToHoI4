@@ -302,7 +302,7 @@ void HoI4States::createMatchingHoI4State(const Vic2::State* vic2State, const str
 			newState->markHadImpassablePart();
 		}
 		addProvincesAndCoresToNewState(newState, passableProvinces);
-		newState->convertControlledProvinces();
+		newState->convertControlledProvinces(theProvinceMapper);
 		newState->tryToCreateVP();
 		newState->addManpower();
 		states.insert(make_pair(nextStateID, newState));

@@ -27,7 +27,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "StateHistory.h"
 #include "../CoastalProvinces.h"
 #include "../../Configuration.h"
-#include "../../Mappers/Provinces/ProvinceMapper.h"
 #include "../../V2World/StateDefinitions.h"
 #include "../../V2World/Province.h"
 #include "../../V2World/State.h"
@@ -228,13 +227,13 @@ void HoI4::State::addCores(const std::set<std::string>& newCores)
 }
 
 
-void HoI4::State::convertControlledProvinces()
+void HoI4::State::convertControlledProvinces(const provinceMapper& theProvinceMapper)
 {
 	for (auto sourceProvince: sourceState->getProvinces())
 	{
 		if (sourceProvince->getOwner() != sourceProvince->getController())
 		{
-			std::string controller = sourceProvince->getController();
+			const std::string controller = sourceProvince->getController();
 			auto provinceMapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince->getNumber());
 			if (provinceMapping)
 			{

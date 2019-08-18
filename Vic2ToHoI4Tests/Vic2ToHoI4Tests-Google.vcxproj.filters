@@ -534,5 +534,8 @@
     <ClInclude Include="Mocks\StateCategoriesMock.h">
       <Filter>Mocks</Filter>
     </ClInclude>
+    <ClInclude Include="Mocks\ProvinceMapperMock.h">
+      <Filter>Mocks</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -22,12 +22,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "gmock/gmock.h"
-#include "../../Vic2ToHoI4/Source/V2World/State.h"
+#include "../../Vic2ToHoI4/Source/Mappers/Provinces/ProvinceMapper.h"
 
 
 
-class mockVic2State: public Vic2::State
+class mockProvinceMapper: public provinceMapper
 {
 	public:
-		MOCK_METHOD(int, getEmployedWorkers, (), (const, override));
+		MOCK_METHOD(std::optional<std::vector<int>>, getVic2ToHoI4ProvinceMapping, (int Vic2Province), (const, override));
 };
