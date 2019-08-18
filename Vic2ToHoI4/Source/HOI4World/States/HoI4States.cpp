@@ -230,7 +230,7 @@ void HoI4States::createStates(const HoI4::impassableProvinces& theImpassables, c
 			auto possibleHoI4Owner = countryMap.getHoI4Tag(country.first);
 			if (possibleHoI4Owner)
 			{
-				createMatchingHoI4State(vic2State, *possibleHoI4Owner, theImpassables);
+				createMatchingHoI4State(vic2State, *possibleHoI4Owner, theImpassables, countryMap);
 				for (auto province: vic2State->getProvinces())
 				{
 					ownedProvinces.insert(province->getNumber());
@@ -269,7 +269,7 @@ void HoI4States::createStates(const HoI4::impassableProvinces& theImpassables, c
 		}
 
 		Vic2::State* newState = new Vic2::State(stateProvinces);
-		createMatchingHoI4State(newState, "", theImpassables);
+		createMatchingHoI4State(newState, "", theImpassables, countryMap);
 	}
 
 	unsigned int manpower = getTotalManpower();
@@ -277,8 +277,12 @@ void HoI4States::createStates(const HoI4::impassableProvinces& theImpassables, c
 }
 
 
-void HoI4States::createMatchingHoI4State(const Vic2::State* vic2State, const string& stateOwner, const HoI4::impassableProvinces& theImpassables)
-{
+void HoI4States::createMatchingHoI4State(
+	const Vic2::State* vic2State,
+	const string& stateOwner,
+	const HoI4::impassableProvinces& theImpassables,
+	const CountryMapper& countryMapper
+) {
 	unordered_set<int> passableProvinces;
 	unordered_set<int> impassableProvinces;
 	auto allProvinces = getProvincesInState(vic2State, stateOwner);
@@ -302,7 +306,7 @@ void HoI4States::createMatchingHoI4State(const Vic2::State* vic2State, const str
 			newState->markHadImpassablePart();
 		}
 		addProvincesAndCoresToNewState(newState, passableProvinces);
-		newState->convertControlledProvinces(theProvinceMapper);
+		newState->convertControlledProvinces(theProvinceMapper, countryMapper);
 		newState->tryToCreateVP();
 		newState->addManpower();
 		states.insert(make_pair(nextStateID, newState));

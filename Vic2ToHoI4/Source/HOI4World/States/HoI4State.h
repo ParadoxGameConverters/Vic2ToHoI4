@@ -27,6 +27,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "newParser.h"
+#include "../../Mappers/CountryMapping.h"
 #include "../../Mappers/Provinces/ProvinceMapper.h"
 #include <map>
 #include <optional>
@@ -68,7 +69,7 @@ class State
 		void convertNavalBases(const coastalProvinces& theCoastalProvinces);
 		void addNavalBase(int level, int location);
 		void addCores(const std::set<std::string>& newCores);
-		void convertControlledProvinces(const provinceMapper& theProvinceMapper);
+		void convertControlledProvinces(const provinceMapper& theProvinceMapper, const CountryMapper& countryMapper);
 
 		const Vic2::State* getSourceState() const { return sourceState; }
 		int getID() const { return ID; }
