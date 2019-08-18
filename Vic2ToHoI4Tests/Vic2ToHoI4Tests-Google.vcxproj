@@ -212,6 +212,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mocks\EventsMock.h" />
+    <ClInclude Include="Mocks\ProvinceMapperMock.h" />
     <ClInclude Include="Mocks\StateCategoriesMock.h" />
   </ItemGroup>
   <ItemDefinitionGroup />
