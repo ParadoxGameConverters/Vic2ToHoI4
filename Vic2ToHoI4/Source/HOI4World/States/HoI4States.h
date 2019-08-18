@@ -82,7 +82,12 @@ class HoI4States: commonItems::parser
 		) const;
 
 		void createStates(const HoI4::impassableProvinces& theImpassables, const CountryMapper& countryMap);
-		void createMatchingHoI4State(const Vic2::State* vic2State, const string& stateOwner, const HoI4::impassableProvinces& theImpassables);
+		void createMatchingHoI4State(
+			const Vic2::State* vic2State,
+			const string& stateOwner,
+			const HoI4::impassableProvinces& theImpassables,
+			const CountryMapper& countryMapper
+		);
 		std::unordered_set<int> getProvincesInState(const Vic2::State* vic2State, const string& owner);
 		void addProvincesAndCoresToNewState(HoI4::State* newState, unordered_set<int> provinces);
 		bool isProvinceValid(int provNum) const;

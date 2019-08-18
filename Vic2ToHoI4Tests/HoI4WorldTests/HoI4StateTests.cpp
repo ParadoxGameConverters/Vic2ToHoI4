@@ -22,6 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "gtest/gtest.h"
+#include "../Mocks/CountryMapperMock.h"
 #include "../Mocks/ProvinceMapperMock.h"
 #include "../Mocks/StateCategoriesMock.h"
 #include "../Mocks/Vic2StateMock.h"
@@ -824,7 +825,7 @@ TEST(HoI4World_StateTests, resourcesCanBeAdded)
 }
 
 
-TEST(HoI4World_StateTests, controllerssCanBeAdded)
+TEST(HoI4World_StateTests, controllersCanBeAdded)
 {
 	std::stringstream provinceInput;
 	provinceInput << "={\n";
@@ -847,7 +848,11 @@ TEST(HoI4World_StateTests, controllerssCanBeAdded)
 	possibleMappedProvinces = mappedProvinces;
 	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillOnce(testing::Return(possibleMappedProvinces));
 
-	theState.convertControlledProvinces(theProvinceMapper);
+	mockCountryMapper theCountryMapper;
+	std::optional<std::string> hoi4tag = "NOT";
+	EXPECT_CALL(theCountryMapper, getHoI4Tag("NOT")).WillOnce(testing::Return(hoi4tag));
+
+	theState.convertControlledProvinces(theProvinceMapper, theCountryMapper);
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\n";
@@ -865,6 +870,71 @@ TEST(HoI4World_StateTests, controllerssCanBeAdded)
 	expectedOutput << "\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t\tTAG = {\n";
+	expectedOutput << "\t\t\tset_province_controller = 12\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tprovinces={\n";
+	expectedOutput << "\t\t";
+	expectedOutput << "\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\tmanpower=0\n";
+	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
+	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "}\n";
+
+	std::stringstream output;
+	theState.output(output);
+
+	ASSERT_EQ(theState.getID(), 42);
+}
+
+
+TEST(HoI4World_StateTests, controllersConvertWithHoI4Tag)
+{
+	std::stringstream provinceInput;
+	provinceInput << "={\n";
+	provinceInput << "\towner=TAG\n";
+	provinceInput << "\tcontroller=NOT\n";
+	provinceInput << "}";
+	Vic2::Province* theProvince = new Vic2::Province("12", provinceInput);
+	std::set<const Vic2::Province*> provinces;
+	provinces.insert(theProvince);
+
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+	theState.addProvince(12);
+	EXPECT_CALL(sourceState, getProvinces()).WillOnce(testing::Return(provinces));
+
+	mockProvinceMapper theProvinceMapper;
+	std::optional<std::vector<int>> possibleMappedProvinces;
+	std::vector<int> mappedProvinces;
+	mappedProvinces.push_back(12);
+	possibleMappedProvinces = mappedProvinces;
+	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillOnce(testing::Return(possibleMappedProvinces));
+
+	mockCountryMapper theCountryMapper;
+	std::optional<std::string> hoi4tag = "HOI";
+	EXPECT_CALL(theCountryMapper, getHoI4Tag("NOT")).WillOnce(testing::Return(hoi4tag));
+
+	theState.convertControlledProvinces(theProvinceMapper, theCountryMapper);
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "state={" << "\n";
+	expectedOutput << "\tid=42\n";
+	expectedOutput << "\tname=\"STATE_42\"\n";
+	expectedOutput << "\n";
+	expectedOutput << "\thistory={\n";
+	expectedOutput << "\t\towner = TAG\n";
+	expectedOutput << "\t\tbuildings = {\n";
+	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tindustrial_complex = 0\n";
+	expectedOutput << "\t\t\tarms_factory = 0\n";
+	expectedOutput << "\t\t\tair_base = 0\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t\tHOI = {\n";
 	expectedOutput << "\t\t\tset_province_controller = 12\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
