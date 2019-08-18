@@ -952,5 +952,62 @@ TEST(HoI4World_StateTests, controllersConvertWithHoI4Tag)
 	std::stringstream output;
 	theState.output(output);
 
-	ASSERT_EQ(theState.getID(), 42);
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST(HoI4World_StateTests, controllersDontConvertForRebels)
+{
+	std::stringstream provinceInput;
+	provinceInput << "={\n";
+	provinceInput << "\towner=TAG\n";
+	provinceInput << "\tcontroller=REB\n";
+	provinceInput << "}";
+	Vic2::Province* theProvince = new Vic2::Province("12", provinceInput);
+	std::set<const Vic2::Province*> provinces;
+	provinces.insert(theProvince);
+
+	mockVic2State sourceState;
+	HoI4::State theState(&sourceState, 42, "TAG");
+	theState.addProvince(12);
+	EXPECT_CALL(sourceState, getProvinces()).WillOnce(testing::Return(provinces));
+
+	mockProvinceMapper theProvinceMapper;
+
+	mockCountryMapper theCountryMapper;
+	std::optional<std::string> hoi4tag = "REB";
+	EXPECT_CALL(theCountryMapper, getHoI4Tag("REB")).WillOnce(testing::Return(hoi4tag));
+
+	theState.convertControlledProvinces(theProvinceMapper, theCountryMapper);
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "state={" << "\n";
+	expectedOutput << "\tid=42\n";
+	expectedOutput << "\tname=\"STATE_42\"\n";
+	expectedOutput << "\n";
+	expectedOutput << "\thistory={\n";
+	expectedOutput << "\t\towner = TAG\n";
+	expectedOutput << "\t\tbuildings = {\n";
+	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tindustrial_complex = 0\n";
+	expectedOutput << "\t\t\tarms_factory = 0\n";
+	expectedOutput << "\t\t\tair_base = 0\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tprovinces={\n";
+	expectedOutput << "\t\t12 ";
+	expectedOutput << "\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\tmanpower=0\n";
+	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
+	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "}\n";
+
+	std::stringstream output;
+	theState.output(output);
+
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
