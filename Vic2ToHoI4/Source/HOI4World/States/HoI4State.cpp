@@ -236,7 +236,7 @@ void HoI4::State::convertControlledProvinces(
 		if (sourceProvince->getOwner() != sourceProvince->getController())
 		{
 			auto possibleController = countryMapper.getHoI4Tag(sourceProvince->getController());
-			if (!possibleController)
+			if ((!possibleController) || (*possibleController == "REB"))
 			{
 				continue;
 			}
