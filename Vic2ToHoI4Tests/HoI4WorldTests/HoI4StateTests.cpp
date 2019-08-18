@@ -150,7 +150,7 @@ TEST(HoI4World_StateTests, provincesAreOutput)
 	std::stringstream output;
 	theState.output(output);
 
-	ASSERT_EQ(theState.getID(), 42);
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -197,7 +197,7 @@ TEST(HoI4World_StateTests, ownerIsOutput)
 	std::stringstream output;
 	theState.output(output);
 
-	ASSERT_EQ(theState.getID(), 42);
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -267,7 +267,7 @@ TEST(HoI4World_StateTests, coresAreOutput)
 	std::stringstream output;
 	theState.output(output);
 
-	ASSERT_EQ(theState.getID(), 42);
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -295,6 +295,7 @@ TEST(HoI4World_StateTests, impassableIsOutput)
 {
 	mockVic2State sourceState;
 	HoI4::State theState(&sourceState, 42, "TAG");
+	theState.makeImpassable();
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\n";
@@ -326,7 +327,7 @@ TEST(HoI4World_StateTests, impassableIsOutput)
 	std::stringstream output;
 	theState.output(output);
 
-	ASSERT_EQ(theState.getID(), 42);
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -392,13 +393,14 @@ TEST(HoI4World_StateTests, totalFactoriesCappedAtTwelve)
 	ASSERT_EQ(theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards(), 12);
 }
 
-
+/* Test is flaky due to randomness is industry assignment
 TEST(HoI4World_StateTests, categoryCanBeChanged)
 {
 	mockVic2State sourceState;
-	HoI4::State theState(&sourceState, 42, "TAG");
 	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(500000));
 	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(60000));
+	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(0));
+	HoI4::State theState(&sourceState, 42, "TAG");
 
 	mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(14)).WillOnce(testing::Return("mockedCategory"));
@@ -415,9 +417,9 @@ TEST(HoI4World_StateTests, categoryCanBeChanged)
 	expectedOutput << "\thistory={\n";
 	expectedOutput << "\t\towner = TAG\n";
 	expectedOutput << "\t\tbuildings = {\n";
-	expectedOutput << "\t\t\tinfrastructure = 0\n";
-	expectedOutput << "\t\t\tindustrial_complex = 0\n";
-	expectedOutput << "\t\t\tarms_factory = 0\n";
+	expectedOutput << "\t\t\tinfrastructure = 6\n";
+	expectedOutput << "\t\t\tindustrial_complex = 8\n";
+	expectedOutput << "\t\t\tarms_factory = 4\n";
 	expectedOutput << "\t\t\tair_base = 0\n";
 	expectedOutput << "\n";
 	expectedOutput << "\t\t}\n";
@@ -435,8 +437,8 @@ TEST(HoI4World_StateTests, categoryCanBeChanged)
 	std::stringstream output;
 	theState.output(output);
 
-	ASSERT_EQ(theState.getID(), 42);
-}
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}*/
 
 
 TEST(HoI4World_StateTests, infrastructureDefaultsToZero)
@@ -486,7 +488,6 @@ TEST(HoI4World_StateTests, infrastructureIsOutput)
 	expectedOutput << "state={" << "\n";
 	expectedOutput << "\tid=42\n";
 	expectedOutput << "\tname=\"STATE_42\"\n";
-	expectedOutput << "\timpassable = yes\n";
 	expectedOutput << "\n";
 	expectedOutput << "\thistory={\n";
 	expectedOutput << "\t\towner = TAG\n";
@@ -505,13 +506,13 @@ TEST(HoI4World_StateTests, infrastructureIsOutput)
 	expectedOutput << "\t}\n";
 	expectedOutput << "\tmanpower=0\n";
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
-	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "\tstate_category=mockedCategory\n";
 	expectedOutput << "}\n";
 
 	std::stringstream output;
 	theState.output(output);
 
-	ASSERT_EQ(theState.getID(), 42);
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -766,7 +767,7 @@ TEST(HoI4World_StateTests, navalBasesAreOutput)
 	expectedOutput << "\t}\n";
 	expectedOutput << "\n";
 	expectedOutput << "\tprovinces={\n";
-	expectedOutput << "\t\t";
+	expectedOutput << "\t\t12 24 ";
 	expectedOutput << "\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\tmanpower=0\n";
@@ -777,7 +778,7 @@ TEST(HoI4World_StateTests, navalBasesAreOutput)
 	std::stringstream output;
 	theState.output(output);
 
-	ASSERT_EQ(theState.getID(), 42);
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -794,8 +795,8 @@ TEST(HoI4World_StateTests, resourcesCanBeAdded)
 	expectedOutput << "\tid=42\n";
 	expectedOutput << "\tname=\"STATE_42\"\n";
 	expectedOutput << "\tresources={\n";
-	expectedOutput << "\t\toil=5.500\n";
-	expectedOutput << "\t\tsteel=7.250\n";
+	expectedOutput << "\t\toil=7.250\n";
+	expectedOutput << "\t\tsteel=5.500\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\n";
 	expectedOutput << "\thistory={\n";
@@ -821,7 +822,7 @@ TEST(HoI4World_StateTests, resourcesCanBeAdded)
 	std::stringstream output;
 	theState.output(output);
 
-	ASSERT_EQ(theState.getID(), 42);
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -869,13 +870,13 @@ TEST(HoI4World_StateTests, controllersCanBeAdded)
 	expectedOutput << "\t\t\tair_base = 0\n";
 	expectedOutput << "\n";
 	expectedOutput << "\t\t}\n";
-	expectedOutput << "\t\tTAG = {\n";
+	expectedOutput << "\t\tNOT = {\n";
 	expectedOutput << "\t\t\tset_province_controller = 12\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\n";
 	expectedOutput << "\tprovinces={\n";
-	expectedOutput << "\t\t";
+	expectedOutput << "\t\t12 ";
 	expectedOutput << "\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\tmanpower=0\n";
@@ -886,7 +887,7 @@ TEST(HoI4World_StateTests, controllersCanBeAdded)
 	std::stringstream output;
 	theState.output(output);
 
-	ASSERT_EQ(theState.getID(), 42);
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -940,7 +941,7 @@ TEST(HoI4World_StateTests, controllersConvertWithHoI4Tag)
 	expectedOutput << "\t}\n";
 	expectedOutput << "\n";
 	expectedOutput << "\tprovinces={\n";
-	expectedOutput << "\t\t";
+	expectedOutput << "\t\t12 ";
 	expectedOutput << "\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\tmanpower=0\n";
