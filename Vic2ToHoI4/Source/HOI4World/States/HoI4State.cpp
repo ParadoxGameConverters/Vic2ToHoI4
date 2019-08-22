@@ -395,7 +395,7 @@ void HoI4::State::addDebugVPs()
 }
 
 
-void HoI4::State::addManpower()
+void HoI4::State::addManpower(const provinceMapper& theProvinceMapper, const Configuration& theConfiguration)
 {
 	for (auto sourceProvince: sourceState->getProvinces())
 	{
