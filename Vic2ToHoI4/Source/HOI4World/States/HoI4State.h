@@ -27,6 +27,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "newParser.h"
+#include "../../Configuration.h"
 #include "../../Mappers/CountryMapping.h"
 #include "../../Mappers/Provinces/ProvinceMapper.h"
 #include <map>
@@ -89,7 +90,7 @@ class State
 		std::optional<int> getMainNavalLocation() const;
 
 		void tryToCreateVP();
-		void addManpower();
+		void addManpower(const provinceMapper& theProvinceMapper, const Configuration& theConfiguration);
 
 		void convertIndustry(
 			double workerFactoryRatio,

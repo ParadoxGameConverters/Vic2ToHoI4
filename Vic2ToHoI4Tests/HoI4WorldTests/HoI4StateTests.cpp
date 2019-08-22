@@ -26,6 +26,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Mocks/ProvinceMapperMock.h"
 #include "../Mocks/StateCategoriesMock.h"
 #include "../Mocks/Vic2StateMock.h"
+#include "../Vic2ToHoI4/Source/Configuration.h"
 #include "../Vic2ToHoI4/Source/HOI4World/CoastalProvinces.h"
 #include "../Vic2ToHoI4/Source/HOI4World/States/HoI4State.h"
 #include "../Vic2ToHoI4/Source/HoI4World/States/StateCategories.h"
@@ -393,7 +394,7 @@ TEST(HoI4World_StateTests, totalFactoriesCappedAtTwelve)
 	ASSERT_EQ(theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards(), 12);
 }
 
-/* Test is flaky due to randomness is industry assignment
+/* Test is flaky due to randomness in industry assignment
 TEST(HoI4World_StateTests, categoryCanBeChanged)
 {
 	mockVic2State sourceState;
@@ -601,17 +602,38 @@ TEST(HoI4World_StateTests, manpowerDefaultsToZero)
 }
 
 
-// Implementation is strange and hard to test. Clean up before testing
-/*TEST(HoI4World_StateTests, manpowerCanBeSet)
+TEST(HoI4World_StateTests, manpowerCanBeSet)
 {
+	std::stringstream provinceInput;
+	provinceInput << "={\n";
+	provinceInput << "\towner=TAG\n";
+	provinceInput << "\tcontroller=REB\n";
+	provinceInput << "\tfarmers={\n";
+	provinceInput << "\t\tsize=12345\n";
+	provinceInput << "\t}\n";
+	provinceInput << "}";
+	Vic2::Province* theProvince = new Vic2::Province("12", provinceInput);
+	std::set<const Vic2::Province*> provinces;
+	provinces.insert(theProvince);
+
 	mockVic2State sourceState;
-	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(100000));
 	HoI4::State theState(&sourceState, 42, "TAG");
+	theState.addProvince(12);
+	EXPECT_CALL(sourceState, getProvinces()).WillOnce(testing::Return(provinces));
 
-	theState.addManpower();
+	mockProvinceMapper theProvinceMapper;
+	std::vector<int> mappingNums = { 12 };
+	std::optional<std::vector<int>> mapping = mappingNums;
+	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillOnce(testing::Return(mapping));
 
-	ASSERT_EQ(theState.getManpower(), 400000);
-}*/
+	std::stringstream configInput;
+	configInput << "manpower_factor = 1.0";
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+	theState.addManpower(theProvinceMapper, testConfig);
+
+	ASSERT_EQ(theState.getManpower(), 49380);
+}
 
 
 TEST(HoI4World_StateTests, victoryPointPositionDefaultsToMissing)
