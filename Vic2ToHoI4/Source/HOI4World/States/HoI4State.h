@@ -56,7 +56,7 @@ class State
 	public:
 		State(const Vic2::State* sourceState, int _ID, const std::string& _ownerTag);
 
-		void output(std::ostream& output) const;
+		void output(std::ostream& output, const Configuration& theConfiguration) const;
 
 		void addProvince(int province) { provinces.insert(province); }
 		void setAsCapitalState() { capitalState = true; civFactories++; }
@@ -89,7 +89,7 @@ class State
 
 		std::optional<int> getMainNavalLocation() const;
 
-		void tryToCreateVP();
+		void tryToCreateVP(const provinceMapper& theProvinceMapper);
 		void addManpower(const provinceMapper& theProvinceMapper, const Configuration& theConfiguration);
 
 		void convertIndustry(
@@ -112,10 +112,10 @@ class State
 			const coastalProvinces& theCoastalProvinces
 		) const;
 
-		bool assignVPFromVic2Province(int Vic2ProvinceNumber);
+		bool assignVPFromVic2Province(int Vic2ProvinceNumber, const provinceMapper& theProvinceMapper);
 		void assignVP(int location);
 		bool isProvinceInState(int provinceNum) const;
-		void addDebugVPs();
+		void addDebugVPs(const provinceMapper& theProvinceMapper);
 
 		const Vic2::State* sourceState;
 

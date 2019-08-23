@@ -307,7 +307,7 @@ void HoI4States::createMatchingHoI4State(
 		}
 		addProvincesAndCoresToNewState(newState, passableProvinces);
 		newState->convertControlledProvinces(theProvinceMapper, countryMapper);
-		newState->tryToCreateVP();
+		newState->tryToCreateVP(theProvinceMapper);
 		newState->addManpower(theProvinceMapper, theConfiguration);
 		states.insert(make_pair(nextStateID, newState));
 		nextStateID++;
@@ -318,7 +318,7 @@ void HoI4States::createMatchingHoI4State(
 		HoI4::State* newState = new HoI4::State(vic2State, nextStateID, stateOwner);
 		addProvincesAndCoresToNewState(newState, impassableProvinces);
 		newState->makeImpassable();
-		newState->tryToCreateVP();
+		newState->tryToCreateVP(theProvinceMapper);
 		newState->addManpower(theProvinceMapper, theConfiguration);
 		states.insert(make_pair(nextStateID, newState));
 		nextStateID++;
@@ -438,7 +438,7 @@ void HoI4States::output() const
 			std::runtime_error error("Could not open \"" + filename + "\"");
 			throw error;
 		}
-		state.second->output(out);
+		state.second->output(out, theConfiguration);
 		out.close();
 	}
 }
