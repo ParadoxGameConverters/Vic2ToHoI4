@@ -67,7 +67,7 @@ class State
 		void addVictoryPointValue(int additionalValue) { victoryPointValue += additionalValue; }
 		void setVPLocation(int province) { victoryPointPosition = province; }
 
-		void convertNavalBases(const coastalProvinces& theCoastalProvinces);
+		void convertNavalBases(const coastalProvinces& theCoastalProvinces, const provinceMapper& theProvinceMapper);
 		void addNavalBase(int level, int location);
 		void addCores(const std::set<std::string>& newCores);
 		void convertControlledProvinces(const provinceMapper& theProvinceMapper, const CountryMapper& countryMapper);
@@ -89,7 +89,7 @@ class State
 
 		std::optional<int> getMainNavalLocation() const;
 
-		void tryToCreateVP(const provinceMapper& theProvinceMapper);
+		void tryToCreateVP(const provinceMapper& theProvinceMapper, const Configuration& theConfiguration);
 		void addManpower(const provinceMapper& theProvinceMapper, const Configuration& theConfiguration);
 
 		void convertIndustry(
@@ -109,7 +109,8 @@ class State
 		int determineNavalBaseLevel(const Vic2::Province& sourceProvince) const;
 		std::optional<int> determineNavalBaseLocation(
 			const Vic2::Province& sourceProvince,
-			const coastalProvinces& theCoastalProvinces
+			const coastalProvinces& theCoastalProvinces,
+			const provinceMapper& theProvinceMapper
 		) const;
 
 		bool assignVPFromVic2Province(int Vic2ProvinceNumber, const provinceMapper& theProvinceMapper);

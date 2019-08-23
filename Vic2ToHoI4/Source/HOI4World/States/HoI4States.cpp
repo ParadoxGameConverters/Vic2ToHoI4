@@ -307,7 +307,7 @@ void HoI4States::createMatchingHoI4State(
 		}
 		addProvincesAndCoresToNewState(newState, passableProvinces);
 		newState->convertControlledProvinces(theProvinceMapper, countryMapper);
-		newState->tryToCreateVP(theProvinceMapper);
+		newState->tryToCreateVP(theProvinceMapper, theConfiguration);
 		newState->addManpower(theProvinceMapper, theConfiguration);
 		states.insert(make_pair(nextStateID, newState));
 		nextStateID++;
@@ -318,7 +318,7 @@ void HoI4States::createMatchingHoI4State(
 		HoI4::State* newState = new HoI4::State(vic2State, nextStateID, stateOwner);
 		addProvincesAndCoresToNewState(newState, impassableProvinces);
 		newState->makeImpassable();
-		newState->tryToCreateVP(theProvinceMapper);
+		newState->tryToCreateVP(theProvinceMapper, theConfiguration);
 		newState->addManpower(theProvinceMapper, theConfiguration);
 		states.insert(make_pair(nextStateID, newState));
 		nextStateID++;
