@@ -32,6 +32,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Vic2ToHoI4/Source/HoI4World/States/StateCategories.h"
 #include "../Vic2ToHoI4/Source/V2World/Province.h"
 #include "../Vic2ToHoI4/Source/V2World/State.h"
+#include <optional>
 #include <sstream>
 
 
@@ -87,10 +88,14 @@ TEST(HoI4World_StateTests, idIsOutput)
 	expectedOutput << "\tstate_category=pastoral\n";
 	expectedOutput << "}\n";
 
-	std::stringstream output;
-	theState.output(output);
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
 
-	ASSERT_EQ(theState.getID(), 42);
+	std::stringstream output;
+	theState.output(output, testConfig);
+
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -148,8 +153,12 @@ TEST(HoI4World_StateTests, provincesAreOutput)
 	expectedOutput << "\tstate_category=pastoral\n";
 	expectedOutput << "}\n";
 
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
 	std::stringstream output;
-	theState.output(output);
+	theState.output(output, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -195,8 +204,12 @@ TEST(HoI4World_StateTests, ownerIsOutput)
 	expectedOutput << "\tstate_category=pastoral\n";
 	expectedOutput << "}\n";
 
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
 	std::stringstream output;
-	theState.output(output);
+	theState.output(output, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -265,8 +278,12 @@ TEST(HoI4World_StateTests, coresAreOutput)
 	expectedOutput << "\tstate_category=pastoral\n";
 	expectedOutput << "}\n";
 
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
 	std::stringstream output;
-	theState.output(output);
+	theState.output(output, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -325,8 +342,12 @@ TEST(HoI4World_StateTests, impassableIsOutput)
 	expectedOutput << "\tstate_category=pastoral\n";
 	expectedOutput << "}\n";
 
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
 	std::stringstream output;
-	theState.output(output);
+	theState.output(output, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -510,8 +531,12 @@ TEST(HoI4World_StateTests, infrastructureIsOutput)
 	expectedOutput << "\tstate_category=mockedCategory\n";
 	expectedOutput << "}\n";
 
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
 	std::stringstream output;
-	theState.output(output);
+	theState.output(output, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -656,69 +681,340 @@ TEST(HoI4World_StateTests, victoryPointPositionCanBeSetManually)
 }
 
 
-/* requires province mapper, so not easily tested
 TEST(HoI4World_StateTests, victoryPointPositionCanBeSetFromStateCapital)
 {
 	mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(12));
 	HoI4::State theState(&sourceState, 42, "TAG");
+	theState.addProvince(12);
 
-	theState.tryToCreateVP();
+	mockProvinceMapper theProvinceMapper;
+	std::vector<int> mappingNums = { 12 };
+	std::optional<std::vector<int>> mapping = mappingNums;
+	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillOnce(testing::Return(mapping));
+
+	theState.tryToCreateVP(theProvinceMapper);
 
 	ASSERT_EQ(theState.getVPLocation(), 12);
-}*/
+}
 
 
-/* requires province mapper, so not easily tested
-TEST(HoI4World_StateTests, victoryPointPositionCanBeSetFromDetectedStateCapital)
+TEST(HoI4World_StateTests, victoryPointPositionCanBeSetFromStateCapitalDetectedViaAristocrats)
 {
+	std::stringstream provinceInput;
+	provinceInput << "={\n";
+	provinceInput << "\towner=TAG\n";
+	provinceInput << "\tcontroller=REB\n";
+	provinceInput << "\tfarmers={\n";
+	provinceInput << "\t\tsize=123456\n";
+	provinceInput << "\t}\n";
+	provinceInput << "}";
+	Vic2::Province* theProvince = new Vic2::Province("12", provinceInput);
+
+	std::stringstream provinceInput2;
+	provinceInput2 << "={\n";
+	provinceInput2 << "\towner=TAG\n";
+	provinceInput2 << "\tcontroller=REB\n";
+	provinceInput2 << "\taristocrats={\n";
+	provinceInput2 << "\t\tsize=12345\n";
+	provinceInput2 << "\t}\n";
+	provinceInput2 << "}";
+	Vic2::Province* anotherProvince = new Vic2::Province("24", provinceInput2);
+	std::set<const Vic2::Province*> provinces;
+	provinces.insert(theProvince);
+	provinces.insert(anotherProvince);
+
 	mockVic2State sourceState;
-	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(12));
+	EXPECT_CALL(sourceState, getProvinces()).WillOnce(testing::Return(provinces));
+	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(std::nullopt));
+
 	HoI4::State theState(&sourceState, 42, "TAG");
+	theState.addProvince(12);
+	theState.addProvince(24);
 
-	theState.tryToCreateVP();
+	mockProvinceMapper theProvinceMapper;
+	std::vector<int> mappingNums = { 24 };
+	std::optional<std::vector<int>> mapping = mappingNums;
+	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(24)).WillOnce(testing::Return(mapping));
 
-	ASSERT_EQ(theState.getVPLocation(), 12);
-}*/
+	theState.tryToCreateVP(theProvinceMapper);
+
+	ASSERT_EQ(theState.getVPLocation(), 24);
+}
 
 
-/* requires province mapper, so not easily tested
+TEST(HoI4World_StateTests, victoryPointPositionCanBeSetFromStateCapitalDetectedViaBureaucrats)
+{
+	std::stringstream provinceInput;
+	provinceInput << "={\n";
+	provinceInput << "\towner=TAG\n";
+	provinceInput << "\tcontroller=REB\n";
+	provinceInput << "\tfarmers={\n";
+	provinceInput << "\t\tsize=123456\n";
+	provinceInput << "\t}\n";
+	provinceInput << "}";
+	Vic2::Province* theProvince = new Vic2::Province("12", provinceInput);
+
+	std::stringstream provinceInput2;
+	provinceInput2 << "={\n";
+	provinceInput2 << "\towner=TAG\n";
+	provinceInput2 << "\tcontroller=REB\n";
+	provinceInput2 << "\tbureaucrats={\n";
+	provinceInput2 << "\t\tsize=12345\n";
+	provinceInput2 << "\t}\n";
+	provinceInput2 << "}";
+	Vic2::Province* anotherProvince = new Vic2::Province("24", provinceInput2);
+	std::set<const Vic2::Province*> provinces;
+	provinces.insert(theProvince);
+	provinces.insert(anotherProvince);
+
+	mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getProvinces()).WillOnce(testing::Return(provinces));
+	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(std::nullopt));
+
+	HoI4::State theState(&sourceState, 42, "TAG");
+	theState.addProvince(12);
+	theState.addProvince(24);
+
+	mockProvinceMapper theProvinceMapper;
+	std::vector<int> mappingNums = { 24 };
+	std::optional<std::vector<int>> mapping = mappingNums;
+	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(24)).WillOnce(testing::Return(mapping));
+
+	theState.tryToCreateVP(theProvinceMapper);
+
+	ASSERT_EQ(theState.getVPLocation(), 24);
+}
+
+
+TEST(HoI4World_StateTests, victoryPointPositionCanBeSetFromStateCapitalDetectedViaCapitalists)
+{
+	std::stringstream provinceInput;
+	provinceInput << "={\n";
+	provinceInput << "\towner=TAG\n";
+	provinceInput << "\tcontroller=REB\n";
+	provinceInput << "\tfarmers={\n";
+	provinceInput << "\t\tsize=123456\n";
+	provinceInput << "\t}\n";
+	provinceInput << "}";
+	Vic2::Province* theProvince = new Vic2::Province("12", provinceInput);
+
+	std::stringstream provinceInput2;
+	provinceInput2 << "={\n";
+	provinceInput2 << "\towner=TAG\n";
+	provinceInput2 << "\tcontroller=REB\n";
+	provinceInput2 << "\tcapitalists={\n";
+	provinceInput2 << "\t\tsize=12345\n";
+	provinceInput2 << "\t}\n";
+	provinceInput2 << "}";
+	Vic2::Province* anotherProvince = new Vic2::Province("24", provinceInput2);
+	std::set<const Vic2::Province*> provinces;
+	provinces.insert(theProvince);
+	provinces.insert(anotherProvince);
+
+	mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getProvinces()).WillOnce(testing::Return(provinces));
+	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(std::nullopt));
+
+	HoI4::State theState(&sourceState, 42, "TAG");
+	theState.addProvince(12);
+	theState.addProvince(24);
+
+	mockProvinceMapper theProvinceMapper;
+	std::vector<int> mappingNums = { 24 };
+	std::optional<std::vector<int>> mapping = mappingNums;
+	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(24)).WillOnce(testing::Return(mapping));
+
+	theState.tryToCreateVP(theProvinceMapper);
+
+	ASSERT_EQ(theState.getVPLocation(), 24);
+}
+
+
 TEST(HoI4World_StateTests, victoryPointPositionCanBeSetFromMostPopulousProvince)
 {
+	std::stringstream provinceInput;
+	provinceInput << "={\n";
+	provinceInput << "\towner=TAG\n";
+	provinceInput << "\tcontroller=REB\n";
+	provinceInput << "\tfarmers={\n";
+	provinceInput << "\t\tsize=12345\n";
+	provinceInput << "\t}\n";
+	provinceInput << "}";
+	Vic2::Province* theProvince = new Vic2::Province("12", provinceInput);
+
+	std::stringstream provinceInput2;
+	provinceInput2 << "={\n";
+	provinceInput2 << "\towner=TAG\n";
+	provinceInput2 << "\tcontroller=REB\n";
+	provinceInput2 << "\tfarmers={\n";
+	provinceInput2 << "\t\tsize=123456\n";
+	provinceInput2 << "\t}\n";
+	provinceInput2 << "}";
+	Vic2::Province* anotherProvince = new Vic2::Province("24", provinceInput2);
+	std::set<const Vic2::Province*> provinces;
+	provinces.insert(theProvince);
+	provinces.insert(anotherProvince);
+
 	mockVic2State sourceState;
-	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(12));
+	EXPECT_CALL(sourceState, getProvinces()).WillRepeatedly(testing::Return(provinces));
+	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(std::nullopt));
+
 	HoI4::State theState(&sourceState, 42, "TAG");
+	theState.addProvince(12);
+	theState.addProvince(24);
 
-	theState.tryToCreateVP();
+	mockProvinceMapper theProvinceMapper;
+	std::vector<int> mappingNums = { 24 };
+	std::optional<std::vector<int>> mapping = mappingNums;
+	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(24)).WillOnce(testing::Return(mapping));
 
-	ASSERT_EQ(theState.getVPLocation(), 12);
-}*/
+	theState.tryToCreateVP(theProvinceMapper);
+
+	ASSERT_EQ(theState.getVPLocation(), 24);
+}
 
 
-/* requires province mapper, so not easily tested
 TEST(HoI4World_StateTests, victoryPointPositionLoggedIfNotSet)
 {
+	std::set<const Vic2::Province*> provinces;
+
 	mockVic2State sourceState;
-	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(12));
+	EXPECT_CALL(sourceState, getProvinceNums()).WillRepeatedly(testing::Return(std::set<int>{}));
+	EXPECT_CALL(sourceState, getProvinces()).WillRepeatedly(testing::Return(provinces));
+	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(std::nullopt));
+
 	HoI4::State theState(&sourceState, 42, "TAG");
 
-	theState.tryToCreateVP();
+	mockProvinceMapper theProvinceMapper;
 
-	ASSERT_EQ(theState.getVPLocation(), 12);
-}*/
+	std::stringstream log;
+	std::streambuf* coutbuf = std::cout.rdbuf(); //save old buf
+	std::cout.rdbuf(log.rdbuf()); //redirect std::cout to log
+
+	theState.tryToCreateVP(theProvinceMapper);
+
+	std::cout.rdbuf(coutbuf); //reset to standard output again
+
+	ASSERT_EQ(theState.getVPLocation(), std::nullopt);
+	ASSERT_EQ("Could not create VP for state 42\n", log.str());
+}
 
 
-/* requires province mapper, so not easily tested
 TEST(HoI4World_StateTests, debugVPsCanBeAdded)
 {
 	mockVic2State sourceState;
-	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(12));
+	std::set<int> hoi4Provinces;
+	hoi4Provinces.insert(12);
+	EXPECT_CALL(sourceState, getProvinceNums()).WillOnce(testing::Return(hoi4Provinces));
+	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(std::nullopt));
+	std::set<const Vic2::Province*> provinces;
+	EXPECT_CALL(sourceState, getProvinces()).WillRepeatedly(testing::Return(provinces));
+
+	HoI4::State theState(&sourceState, 42, "TAG");
+	theState.addProvince(12);
+
+	mockProvinceMapper theProvinceMapper;
+	std::vector<int> mappingNums = { 12 };
+	std::optional<std::vector<int>> mapping = mappingNums;
+	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillOnce(testing::Return(mapping));
+	theState.tryToCreateVP(theProvinceMapper);
+
+	ASSERT_EQ(std::set<int>{12}, theState.getDebugVPs());
+}
+
+
+TEST(HoI4World_StateTests, secondaryDebugVPsCanBeAdded)
+{
+	mockVic2State sourceState;
+	std::set<int> hoi4Provinces;
+	hoi4Provinces.insert(12);
+	EXPECT_CALL(sourceState, getProvinceNums()).WillOnce(testing::Return(hoi4Provinces));
+	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(std::nullopt));
+	std::set<const Vic2::Province*> provinces;
+	EXPECT_CALL(sourceState, getProvinces()).WillRepeatedly(testing::Return(provinces));
+
 	HoI4::State theState(&sourceState, 42, "TAG");
 
-	theState.tryToCreateVP();
+	mockProvinceMapper theProvinceMapper;
+	std::vector<int> mappingNums = { 12, 13 };
+	std::optional<std::vector<int>> mapping = mappingNums;
+	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillOnce(testing::Return(mapping));
+	theState.tryToCreateVP(theProvinceMapper);
 
-	ASSERT_EQ(theState.getVPLocation(), 12);
-}*/
+	std::set<int> expectedVps{ 12, 13 };
+	ASSERT_EQ(expectedVps, theState.getSecondaryDebugVPs());
+}
+
+
+TEST(HoI4World_StateTests, debugVpsAreOutput)
+{
+	mockVic2State sourceState;
+	std::set<int> hoi4Provinces{ 12, 24 };
+	EXPECT_CALL(sourceState, getProvinceNums()).WillOnce(testing::Return(hoi4Provinces));
+	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(12));
+	std::set<const Vic2::Province*> provinces;
+	EXPECT_CALL(sourceState, getProvinces()).WillRepeatedly(testing::Return(provinces));
+
+	HoI4::State theState(&sourceState, 42, "TAG");
+	theState.addProvince(12);
+	theState.addProvince(13);
+	theState.addProvince(24);
+	theState.addProvince(25);
+
+	mockProvinceMapper theProvinceMapper;
+	std::vector<int> mappingNums = { 12, 13 };
+	std::optional<std::vector<int>> mapping = mappingNums;
+	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillRepeatedly(testing::Return(mapping));
+	std::vector<int> moreMappingNums = { 24, 25 };
+	std::optional<std::vector<int>> anotherMapping = moreMappingNums;
+	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(24)).WillRepeatedly(testing::Return(anotherMapping));
+	theState.tryToCreateVP(theProvinceMapper);
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "state={" << "\n";
+	expectedOutput << "\tid=42\n";
+	expectedOutput << "\tname=\"STATE_42\"\n";
+	expectedOutput << "\n";
+	expectedOutput << "\thistory={\n";
+	expectedOutput << "\t\towner = TAG\n";
+	expectedOutput << "\t\tvictory_points = {\n";
+	expectedOutput << "\t\t\t12 11\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t\tvictory_points = { 24 5\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\t\tvictory_points = { 13 1 }\n";
+	expectedOutput << "\t\tvictory_points = { 24 1 }\n";
+	expectedOutput << "\t\tvictory_points = { 25 1 }\n";
+	expectedOutput << "\t\tbuildings = {\n";
+	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tindustrial_complex = 0\n";
+	expectedOutput << "\t\t\tarms_factory = 0\n";
+	expectedOutput << "\t\t\tair_base = 0\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tprovinces={\n";
+	expectedOutput << "\t\t12 13 24 25 ";
+	expectedOutput << "\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\tmanpower=0\n";
+	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
+	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "}\n";
+
+	std::stringstream configInput;
+	configInput << "debug = yes";
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
+	std::stringstream output;
+	theState.output(output, testConfig);
+
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
 
 
 TEST(HoI4World_StateTests, mainNavalBaseLocationDefaultsToMissing)
@@ -797,8 +1093,12 @@ TEST(HoI4World_StateTests, navalBasesAreOutput)
 	expectedOutput << "\tstate_category=pastoral\n";
 	expectedOutput << "}\n";
 
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
 	std::stringstream output;
-	theState.output(output);
+	theState.output(output, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -841,8 +1141,12 @@ TEST(HoI4World_StateTests, resourcesCanBeAdded)
 	expectedOutput << "\tstate_category=pastoral\n";
 	expectedOutput << "}\n";
 
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
 	std::stringstream output;
-	theState.output(output);
+	theState.output(output, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -906,8 +1210,12 @@ TEST(HoI4World_StateTests, controllersCanBeAdded)
 	expectedOutput << "\tstate_category=pastoral\n";
 	expectedOutput << "}\n";
 
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
 	std::stringstream output;
-	theState.output(output);
+	theState.output(output, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -971,8 +1279,12 @@ TEST(HoI4World_StateTests, controllersConvertWithHoI4Tag)
 	expectedOutput << "\tstate_category=pastoral\n";
 	expectedOutput << "}\n";
 
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
 	std::stringstream output;
-	theState.output(output);
+	theState.output(output, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -1028,8 +1340,12 @@ TEST(HoI4World_StateTests, controllersDontConvertForRebels)
 	expectedOutput << "\tstate_category=pastoral\n";
 	expectedOutput << "}\n";
 
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
 	std::stringstream output;
-	theState.output(output);
+	theState.output(output, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }

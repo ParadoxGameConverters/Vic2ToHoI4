@@ -51,7 +51,7 @@ HoI4::State::State(const Vic2::State* _sourceState, int _ID, const std::string& 
 {}
 
 
-void HoI4::State::output(std::ostream& out) const
+void HoI4::State::output(std::ostream& out, const Configuration& theConfiguration) const
 {
 	out << "\n";
 	out << "state={" << "\n";
@@ -265,7 +265,7 @@ void HoI4::State::convertControlledProvinces(
 }
 
 
-bool HoI4::State::assignVPFromVic2Province(int Vic2ProvinceNumber)
+bool HoI4::State::assignVPFromVic2Province(int Vic2ProvinceNumber, const provinceMapper& theProvinceMapper)
 {
 	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(Vic2ProvinceNumber))
 	{
@@ -312,14 +312,14 @@ std::optional<int> HoI4::State::getMainNavalLocation() const
 }
 
 
-void HoI4::State::tryToCreateVP()
+void HoI4::State::tryToCreateVP(const provinceMapper& theProvinceMapper)
 {
 	bool VPCreated = false;
 
 	auto vic2CapitalProvince = sourceState->getCapitalProvince();
 	if (vic2CapitalProvince)
 	{
-		VPCreated = assignVPFromVic2Province(*vic2CapitalProvince);
+		VPCreated = assignVPFromVic2Province(*vic2CapitalProvince, theProvinceMapper);
 	}
 
 	if (!VPCreated)
@@ -335,7 +335,7 @@ void HoI4::State::tryToCreateVP()
 				 (province->getPopulation("bureaucrats") > 0) ||
 				 (province->getPopulation("capitalists") > 0)
 			) {
-				VPCreated = assignVPFromVic2Province(province->getNumber());
+				VPCreated = assignVPFromVic2Province(province->getNumber(), theProvinceMapper);
 				if (VPCreated)
 				{
 					break;
@@ -361,7 +361,7 @@ void HoI4::State::tryToCreateVP()
 		}
 		for (auto province: provincesOrderedByPopulation)
 		{
-			VPCreated = assignVPFromVic2Province(province->getNumber());
+			VPCreated = assignVPFromVic2Province(province->getNumber(), theProvinceMapper);
 			if (VPCreated)
 			{
 				break;
@@ -374,11 +374,11 @@ void HoI4::State::tryToCreateVP()
 		LOG(LogLevel::Warning) << "Could not create VP for state " << ID;
 	}
 
-	addDebugVPs();
+	addDebugVPs(theProvinceMapper);
 }
 
 
-void HoI4::State::addDebugVPs()
+void HoI4::State::addDebugVPs(const provinceMapper& theProvinceMapper)
 {
 	for (auto sourceProvinceNum: sourceState->getProvinceNums())
 	{
