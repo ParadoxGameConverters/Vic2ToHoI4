@@ -22,12 +22,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "HoI4State.h"
-#include "StateBuildings.h"
 #include "StateCategories.h"
-#include "StateHistory.h"
 #include "../CoastalProvinces.h"
 #include "../../Configuration.h"
-#include "../../V2World/StateDefinitions.h"
 #include "../../V2World/Province.h"
 #include "../../V2World/State.h"
 #include "Log.h"
@@ -159,8 +156,10 @@ void HoI4::State::output(std::ostream& out, const Configuration& theConfiguratio
 }
 
 
-void HoI4::State::convertNavalBases(const coastalProvinces& theCoastalProvinces)
-{
+void HoI4::State::convertNavalBases(
+	const coastalProvinces& theCoastalProvinces,
+	const provinceMapper& theProvinceMapper
+) {
 	for (auto sourceProvince: sourceState->getProvinces())
 	{
 		int navalBaseLevel = determineNavalBaseLevel(*sourceProvince);
@@ -169,7 +168,7 @@ void HoI4::State::convertNavalBases(const coastalProvinces& theCoastalProvinces)
 			continue;
 		}
 
-		auto navalBaseLocation = determineNavalBaseLocation(*sourceProvince, theCoastalProvinces);
+		auto navalBaseLocation = determineNavalBaseLocation(*sourceProvince, theCoastalProvinces, theProvinceMapper);
 		if (navalBaseLocation)
 		{
 			addNavalBase(navalBaseLevel, *navalBaseLocation);
@@ -192,7 +191,8 @@ int HoI4::State::determineNavalBaseLevel(const Vic2::Province& sourceProvince) c
 
 std::optional<int> HoI4::State::determineNavalBaseLocation(
 	const Vic2::Province& sourceProvince,
-	const coastalProvinces& theCoastalProvinces
+	const coastalProvinces& theCoastalProvinces,
+	const provinceMapper& theProvinceMapper
 ) const {
 	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince.getNumber()))
 	{
@@ -312,7 +312,7 @@ std::optional<int> HoI4::State::getMainNavalLocation() const
 }
 
 
-void HoI4::State::tryToCreateVP(const provinceMapper& theProvinceMapper)
+void HoI4::State::tryToCreateVP(const provinceMapper& theProvinceMapper, const Configuration& theConfiguration)
 {
 	bool VPCreated = false;
 

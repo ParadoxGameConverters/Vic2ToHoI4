@@ -693,7 +693,11 @@ TEST(HoI4World_StateTests, victoryPointPositionCanBeSetFromStateCapital)
 	std::optional<std::vector<int>> mapping = mappingNums;
 	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillOnce(testing::Return(mapping));
 
-	theState.tryToCreateVP(theProvinceMapper);
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
+	theState.tryToCreateVP(theProvinceMapper, testConfig);
 
 	ASSERT_EQ(theState.getVPLocation(), 12);
 }
@@ -737,7 +741,11 @@ TEST(HoI4World_StateTests, victoryPointPositionCanBeSetFromStateCapitalDetectedV
 	std::optional<std::vector<int>> mapping = mappingNums;
 	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(24)).WillOnce(testing::Return(mapping));
 
-	theState.tryToCreateVP(theProvinceMapper);
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
+	theState.tryToCreateVP(theProvinceMapper, testConfig);
 
 	ASSERT_EQ(theState.getVPLocation(), 24);
 }
@@ -781,7 +789,11 @@ TEST(HoI4World_StateTests, victoryPointPositionCanBeSetFromStateCapitalDetectedV
 	std::optional<std::vector<int>> mapping = mappingNums;
 	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(24)).WillOnce(testing::Return(mapping));
 
-	theState.tryToCreateVP(theProvinceMapper);
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
+	theState.tryToCreateVP(theProvinceMapper, testConfig);
 
 	ASSERT_EQ(theState.getVPLocation(), 24);
 }
@@ -825,7 +837,11 @@ TEST(HoI4World_StateTests, victoryPointPositionCanBeSetFromStateCapitalDetectedV
 	std::optional<std::vector<int>> mapping = mappingNums;
 	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(24)).WillOnce(testing::Return(mapping));
 
-	theState.tryToCreateVP(theProvinceMapper);
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
+	theState.tryToCreateVP(theProvinceMapper, testConfig);
 
 	ASSERT_EQ(theState.getVPLocation(), 24);
 }
@@ -869,7 +885,11 @@ TEST(HoI4World_StateTests, victoryPointPositionCanBeSetFromMostPopulousProvince)
 	std::optional<std::vector<int>> mapping = mappingNums;
 	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(24)).WillOnce(testing::Return(mapping));
 
-	theState.tryToCreateVP(theProvinceMapper);
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
+	theState.tryToCreateVP(theProvinceMapper, testConfig);
 
 	ASSERT_EQ(theState.getVPLocation(), 24);
 }
@@ -888,11 +908,15 @@ TEST(HoI4World_StateTests, victoryPointPositionLoggedIfNotSet)
 
 	mockProvinceMapper theProvinceMapper;
 
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
 	std::stringstream log;
 	std::streambuf* coutbuf = std::cout.rdbuf(); //save old buf
 	std::cout.rdbuf(log.rdbuf()); //redirect std::cout to log
 
-	theState.tryToCreateVP(theProvinceMapper);
+	theState.tryToCreateVP(theProvinceMapper, testConfig);
 
 	std::cout.rdbuf(coutbuf); //reset to standard output again
 
@@ -918,7 +942,12 @@ TEST(HoI4World_StateTests, debugVPsCanBeAdded)
 	std::vector<int> mappingNums = { 12 };
 	std::optional<std::vector<int>> mapping = mappingNums;
 	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillOnce(testing::Return(mapping));
-	theState.tryToCreateVP(theProvinceMapper);
+
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
+	theState.tryToCreateVP(theProvinceMapper, testConfig);
 
 	ASSERT_EQ(std::set<int>{12}, theState.getDebugVPs());
 }
@@ -940,7 +969,12 @@ TEST(HoI4World_StateTests, secondaryDebugVPsCanBeAdded)
 	std::vector<int> mappingNums = { 12, 13 };
 	std::optional<std::vector<int>> mapping = mappingNums;
 	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillOnce(testing::Return(mapping));
-	theState.tryToCreateVP(theProvinceMapper);
+
+	std::stringstream configInput;
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
+	theState.tryToCreateVP(theProvinceMapper, testConfig);
 
 	std::set<int> expectedVps{ 12, 13 };
 	ASSERT_EQ(expectedVps, theState.getSecondaryDebugVPs());
@@ -969,7 +1003,13 @@ TEST(HoI4World_StateTests, debugVpsAreOutput)
 	std::vector<int> moreMappingNums = { 24, 25 };
 	std::optional<std::vector<int>> anotherMapping = moreMappingNums;
 	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(24)).WillRepeatedly(testing::Return(anotherMapping));
-	theState.tryToCreateVP(theProvinceMapper);
+
+	std::stringstream configInput;
+	configInput << "debug = yes";
+	Configuration testConfig;
+	testConfig.instantiate(configInput);
+
+	theState.tryToCreateVP(theProvinceMapper, testConfig);
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\n";
@@ -1004,11 +1044,6 @@ TEST(HoI4World_StateTests, debugVpsAreOutput)
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
 	expectedOutput << "\tstate_category=pastoral\n";
 	expectedOutput << "}\n";
-
-	std::stringstream configInput;
-	configInput << "debug = yes";
-	Configuration testConfig;
-	testConfig.instantiate(configInput);
 
 	std::stringstream output;
 	theState.output(output, testConfig);

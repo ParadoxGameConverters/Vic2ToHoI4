@@ -139,7 +139,7 @@ void HoI4::World::convertNavalBases()
 {
 	for (auto state: states->getStates())
 	{
-		state.second->convertNavalBases(theCoastalProvinces);
+		state.second->convertNavalBases(theCoastalProvinces, theProvinceMapper);
 	}
 }
 
