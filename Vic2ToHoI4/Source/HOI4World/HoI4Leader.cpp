@@ -31,9 +31,24 @@ HoI4::General::General(const Vic2::Leader* srcLeader, const std::string& portrai
 	skill(static_cast<int>(srcLeader->getPrestige() * 22.5f) + 1),
 	picture(portrait)
 {
-	if (skill > 4)
+	if (skill > 5)
+	{
+		skill = 5;
+	}
+	else if (skill > 4)
 	{
 		skill = 4;
+	}
+	attackSkill = skill - 1;
+	defenseSkill = skill - 1;
+	planningSkill = skill - 1;
+	logisticsSkill = skill - 1;
+	if (attackSkill < 1)
+	{
+		attackSkill = 1;
+		defenseSkill = 1;
+		planningSkill = 1;
+		logisticsSkill = 1;
 	}
 
 	/*auto possiblePersonalities = landPersonalityMap.find(srcLeader->getPersonality());
@@ -76,9 +91,24 @@ HoI4::Admiral::Admiral(const Vic2::Leader* srcLeader, const std::string& portrai
 	skill(static_cast<int>(srcLeader->getPrestige() * 22.5f) + 1),
 	picture(portrait)
 {
-	if (skill > 4)
+	if (skill > 5)
+	{
+		skill = 5;
+	}
+	else if (skill > 4)
 	{
 		skill = 4;
+	}
+	attackSkill = skill - 1;
+	defenseSkill = skill - 1;
+	maneuveringSkill = skill - 1;
+	coordinationSkill = skill - 1;
+	if (attackSkill < 1)
+	{
+		attackSkill = 1;
+		defenseSkill = 1;
+		maneuveringSkill = 1;
+		coordinationSkill = 1;
 	}
 
 	/*auto possiblePersonalities = seaPersonalityMap.find(srcLeader->getPersonality());
@@ -106,6 +136,10 @@ std::ofstream& HoI4::operator<< (std::ofstream& output, const HoI4::Admiral& ins
 	}
 	output << "}\n";
 	output << "\tskill = " << instance.skill << "\n";
+	output << "\tattack_skill = " << instance.attackSkill << "\n";
+	output << "\tdefense_skill = " << instance.defenseSkill << "\n";
+	output << "\tmaneuvering_skill = " << instance.maneuveringSkill << "\n";
+	output << "\tcoordination_skill = " << instance.coordinationSkill << "\n";
 	output << "}\n";
 
 	return output;
