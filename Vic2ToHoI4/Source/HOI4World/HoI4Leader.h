@@ -74,6 +74,10 @@ class Admiral
 		std::string picture;
 		std::vector<std::string> traits;
 		int skill = 1;
+		int attackSkill = 1;
+		int defenseSkill = 1;
+		int maneuveringSkill = 1;
+		int coordinationSkill = 1;
 };
 
 
