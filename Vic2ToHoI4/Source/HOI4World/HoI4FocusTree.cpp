@@ -1166,6 +1166,7 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4Country> Home, const ve
 		newFocus->yPos = 1;
 		newFocus->completionReward += "= {\n";
 		newFocus->completionReward += "			add_named_threat = { threat = 2 name = " + newFocus->id + " }\n";
+		newFocus->completionReward += "			add_political_power = 150\n";
 		newFocus->completionReward += "		}";
 		//FIXME
 		//maybe add some claims?
