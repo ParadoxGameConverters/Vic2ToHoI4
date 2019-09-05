@@ -306,6 +306,35 @@ void HoI4::Events::createFactionEvents(std::shared_ptr<HoI4Country> Leader, std:
 }
 
 
+void HoI4::Events::createOlympicsEvents()
+{
+	Event newsEventOlympics;
+	newsEventOlympics.type = "news_event";
+	newsEventOlympics.id = "news." + to_string(newsEventNumber);
+	newsEventOlympics.title = "\"Olympics of 1936\"";
+	newsEventOlympics.descriptions.push_back("desc = \"Games of the XI Olympiad were held.\"");
+	newsEventOlympics.picture = "GFX_news_event_070";
+	newsEventOlympics.majorEvent = true;
+	newsEventOlympics.trigger = "= {\n";
+	newsEventOlympics.trigger += "		date > 1936.8.15\n";
+	newsEventOlympics.trigger += "		NOT = { has_global_flag = olympics_1936 }\n";
+	newsEventOlympics.trigger += "	}";
+	newsEventOlympics.meanTimeToHappen = "= {\n";
+	newsEventOlympics.meanTimeToHappen += "		days = 2\n";
+	newsEventOlympics.meanTimeToHappen += "	}";
+	newsEventOlympics.immediate = "= {\n";
+	newsEventOlympics.immediate += "		set_global_flag = olympics_1936\n";
+	newsEventOlympics.immediate += "	}";
+	std::string interestingOption = "= {\n";
+	interestingOption += "		name = \"Interesting\"\n";
+	interestingOption += "	}";
+	newsEventOlympics.options.push_back(interestingOption);
+	newsEvents.push_back(newsEventOlympics);
+
+	newsEventNumber += 1;
+}
+
+
 void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4Country> Annexer, std::shared_ptr<HoI4Country> Annexed)
 {
 	auto possibleAnnexerName = Annexer->getSourceCountry()->getName("english");
