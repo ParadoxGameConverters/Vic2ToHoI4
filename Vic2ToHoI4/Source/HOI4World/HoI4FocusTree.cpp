@@ -253,7 +253,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		newFocus->prerequisites.clear();
 		newFocus->prerequisites.push_back("= { " + ideolgicalFanaticsmPrereqs + " }");
 		newFocus->xPos = 0;
-		newFocus->yPos = 6;
+		newFocus->yPos = 5;
 		newFocus->relativePositionId = "collectivist_ethos";
 		focuses.push_back(newFocus);
 	}
@@ -1365,6 +1365,7 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4Country> Home, const 
 	newFocus->yPos = 0;
 	newFocus->completionReward += "= {\n";
 	newFocus->completionReward += "			add_named_threat = { threat = 3 name = " + newFocus->id + " }\n";//give some claims or cores
+	newFocus->completionReward += "			add_political_power = 150\n";
 	newFocus->completionReward += "		}";
 	addFocus(newFocus);
 
@@ -1462,6 +1463,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4Country> Home, const vector<sh
 		newFocus->yPos = 0;
 		newFocus->completionReward += "= {\n";
 		newFocus->completionReward += "			add_named_threat = { threat = 3 name = " + newFocus->id + " }\n";
+		newFocus->completionReward += "			add_political_power = 150\n";
 		newFocus->completionReward += "		}";
 		focuses.push_back(newFocus);
 	}
