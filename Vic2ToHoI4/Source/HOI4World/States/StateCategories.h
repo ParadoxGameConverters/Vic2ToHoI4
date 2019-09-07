@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -35,17 +35,14 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 namespace HoI4
 {
 
-class stateCategories: commonItems::parser
+class StateCategories: commonItems::parser
 {
 	public:
-		stateCategories() noexcept;
+		StateCategories();
 
-		std::string getBestCategory(int numBuildingSlots) const;
+		virtual std::string getBestCategory(int numBuildingSlots) const;
 
 	private:
-		stateCategories(const stateCategories&) = delete;
-		stateCategories& operator=(const stateCategories&) = delete;
-
 		std::map<int, std::string> theCategories;
 };
 

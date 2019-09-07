@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -21,37 +21,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef IMPASSABLE_PROVINCES_H
-#define IMPASSABLE_PROVINCES_H
+#include "gmock/gmock.h"
+#include "../../Vic2ToHoI4/Source/Mappers/Provinces/ProvinceMapper.h"
 
 
 
-#include <map>
-#include <unordered_set>
-
-
-
-namespace HoI4
-{
-
-class DefaultState;
-
-
-
-class impassableProvinces
+class mockProvinceMapper: public provinceMapper
 {
 	public:
-		explicit impassableProvinces(const std::map<int, HoI4::DefaultState>& states);
-
-		bool isProvinceImpassable(int provinceNumber) const;
-
-	public:
-		std::unordered_set<int> impassibleProvinces;
+		MOCK_METHOD(std::optional<std::vector<int>>, getVic2ToHoI4ProvinceMapping, (int Vic2Province), (const, override));
 };
-
-}
-
-
-
-#endif // IMPASSABLE_PROVINCES_H
-

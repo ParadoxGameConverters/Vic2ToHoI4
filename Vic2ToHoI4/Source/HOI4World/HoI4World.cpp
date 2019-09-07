@@ -43,12 +43,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4Localisation.h"
 #include "Names.h"
 #include "HoI4Province.h"
-#include "HoI4State.h"
 #include "HoI4StrategicRegion.h"
 #include "HoI4WarCreator.h"
 #include "Resources.h"
 #include "ShipTypes/PossibleShipVariants.h"
-#include "StateCategories.h"
+#include "States/DefaultState.h"
+#include "States/HoI4State.h"
+#include "States/StateCategories.h"
 #include "SupplyZones.h"
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/TechMapper.h"
@@ -81,7 +82,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	HoI4Localisation::addStateLocalisations(states);
 	convertIndustry();
 	convertResources();
-	supplyZones->convertSupplyZones(states);
+	supplyZones->convertSupplyZones(*states);
 	convertStrategicRegions();
 	convertDiplomacy();
 	convertTechs();
@@ -138,7 +139,7 @@ void HoI4::World::convertNavalBases()
 {
 	for (auto state: states->getStates())
 	{
-		state.second->convertNavalBases(theCoastalProvinces);
+		state.second->convertNavalBases(theCoastalProvinces, theProvinceMapper);
 	}
 }
 
@@ -449,7 +450,7 @@ double HoI4::World::getWorldwideWorkerFactoryRatio(const map<string, double>& wo
 
 void HoI4::World::putIndustryInStates(const map<string, double>& factoryWorkerRatios)
 {
-	HoI4::stateCategories theStateCategories;
+	HoI4::StateCategories theStateCategories;
 
 	for (auto HoI4State : states->getStates())
 	{
@@ -537,16 +538,17 @@ void HoI4::World::reportDefaultIndustry()
 }
 
 
-pair<string, array<int, 3>> HoI4::World::getDefaultStateIndustry(const HoI4::State* state)
+std::pair<std::string, std::array<int, 3>> HoI4::World::getDefaultStateIndustry(const HoI4::DefaultState& state)
 {
-	int civilianFactories = state->getCivFactories();
-	int militaryFactories = state->getMilFactories();
-	int dockyards = state->getDockyards();
+	int civilianFactories = state.getCivFactories();
+	int militaryFactories = state.getMilFactories();
+	int dockyards = state.getDockyards();
 
-	string owner = state->getOwner();
+	std::string owner = state.getOwner();
 
-	array<int, 3> industry = { militaryFactories, civilianFactories, dockyards };
-	pair<string, array<int, 3>> stateData = make_pair(owner, industry);
+	std::array<int, 3> industry = { militaryFactories, civilianFactories, dockyards };
+	std::pair<std::string, array<int, 3>> stateData = std::make_pair(owner, industry);
+
 	return stateData;
 }
 

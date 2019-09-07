@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -22,64 +22,18 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "StateCategories.h"
+#include "StateCategoryFile.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
-#include "../Configuration.h"
+#include "../../Configuration.h"
 #include <set>
 
 
 
-class stateCategory: commonItems::parser
+HoI4::StateCategories::StateCategories()
 {
-	public:
-		explicit stateCategory(std::istream& theStream);
-
-		auto getNumberOfSlots() const { return numberOfSlots; }
-
-	private:
-		int numberOfSlots = 0;
-};
-
-
-stateCategory::stateCategory(std::istream& theStream)
-{
-	registerKeyword(std::regex("local_building_slots"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleInt slotsInt(theStream);
-		numberOfSlots = slotsInt.getInt();
-	});
-	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), commonItems::ignoreItem);
-
-	parseStream(theStream);
-}
-
-
-class stateCategoryFile: commonItems::parser
-{
-	public:
-		explicit stateCategoryFile(std::istream& theStream);
-
-		auto getCategories() const { return theCategories; }
-
-	private:
-		std::map<int, std::string> theCategories;
-};
-
-
-stateCategoryFile::stateCategoryFile(std::istream& theStream)
-{
-	registerKeyword(std::regex("[a-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream){
-		stateCategory category(theStream);
-		theCategories.insert(make_pair(category.getNumberOfSlots(), categoryName));
-	});
-
-	parseStream(theStream);
-}
-
-
-HoI4::stateCategories::stateCategories() noexcept
-{
-	registerKeyword(std::regex("state_categories"), [this](const std::string& unused, std::istream& theStream){
-		stateCategoryFile theFile(theStream);
+	registerKeyword(std::regex("state_categories"), [this](const std::string& unused, std::istream& theStream) {
+		StateCategoryFile theFile(theStream);
 		for (auto category: theFile.getCategories())
 		{
 			theCategories.insert(category);
@@ -95,7 +49,7 @@ HoI4::stateCategories::stateCategories() noexcept
 }
 
 
-std::string HoI4::stateCategories::getBestCategory(int numBuildingSlots) const
+std::string HoI4::StateCategories::getBestCategory(int numBuildingSlots) const
 {
 	std::string theCategory;
 	for (auto possibleCategory: theCategories)

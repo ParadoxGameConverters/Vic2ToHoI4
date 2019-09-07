@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -22,18 +22,20 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "HoI4States.h"
-#include "ImpassableProvinces.h"
+#include "DefaultState.h"
 #include "HoI4State.h"
+#include "../ImpassableProvinces.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
-#include "../Mappers/CountryMapping.h"
-#include "../Mappers/ProvinceDefinitions.h"
-#include "../Mappers/V2Localisations.h"
-#include "../V2World/Country.h"
-#include "../V2World/Province.h"
-#include "../V2World/State.h"
-#include "../V2World/StateDefinitions.h"
-#include "../V2World/World.h"
+#include "../../Configuration.h"
+#include "../../Mappers/CountryMapping.h"
+#include "../../Mappers/ProvinceDefinitions.h"
+#include "../../Mappers/V2Localisations.h"
+#include "../../V2World/Country.h"
+#include "../../V2World/Province.h"
+#include "../../V2World/State.h"
+#include "../../V2World/StateDefinitions.h"
+#include "../../V2World/World.h"
 #include <fstream>
 
 
@@ -50,7 +52,7 @@ HoI4States::HoI4States(const Vic2::World* _sourceWorld, const CountryMapper& cou
 
 	LOG(LogLevel::Info) << "Converting states";
 	registerKeyword(std::regex("state"), [this, &num](const std::string& unused, std::istream& theStream){
-		defaultStates.insert(make_pair(num, new HoI4::State(theStream)));
+		defaultStates.insert(std::make_pair(num, HoI4::DefaultState(theStream)));
 	});
 
 	LOG(LogLevel::Info) << "Finding impassable provinces";
@@ -86,15 +88,16 @@ void HoI4States::determineOwnersAndCores(const CountryMapper& countryMap)
 			auto oldOwner = selectProvinceOwner(potentialOwners);
 
 
-			auto HoI4Tag = countryMap.getHoI4Tag(oldOwner->getTag());
+			auto HoI4Tag = countryMap.getHoI4Tag(oldOwner);
 			if (!HoI4Tag)
 			{
-				LOG(LogLevel::Warning) << "Could not map states owned by " << oldOwner->getTag() << " in Vic2, as there is no mathcing HoI4 country.";
+				LOG(LogLevel::Warning)
+					<< "Could not map states owned by " << oldOwner << " in Vic2, as there is no mathcing HoI4 country.";
 				continue;
 			}
 			ownersMap.insert(make_pair(provinceNumber, *HoI4Tag));
 
-			vector<string> cores = determineCores(*sourceProvinceNums, oldOwner, countryMap, *HoI4Tag);
+			std::set<std::string> cores = determineCores(*sourceProvinceNums, oldOwner, countryMap, *HoI4Tag);
 			coresMap.insert(make_pair(provinceNumber, cores));
 		}
 	}
@@ -123,9 +126,10 @@ optional<vector<int>> HoI4States::retrieveSourceProvinceNums(int provNum) const
 }
 
 
-map<const Vic2::Country*, pair<int, int>> HoI4States::determinePotentialOwners(const vector<int>& sourceProvinceNums) const
-{
-	map<const Vic2::Country*, pair<int, int>> potentialOwners;
+const std::map<std::string, std::pair<int, int>> HoI4States::determinePotentialOwners(
+	const std::vector<int>& sourceProvinceNums
+) const {
+	std::map<std::string, std::pair<int, int>> potentialOwners;
 
 	for (auto srcProvNum: sourceProvinceNums)
 	{
@@ -136,7 +140,7 @@ map<const Vic2::Country*, pair<int, int>> HoI4States::determinePotentialOwners(c
 			continue;
 		}
 		auto owner = (*srcProvince)->getOwner();
-		if (owner == nullptr)
+		if (owner == "")
 		{
 			continue;
 		}
@@ -153,14 +157,15 @@ map<const Vic2::Country*, pair<int, int>> HoI4States::determinePotentialOwners(c
 }
 
 
-const Vic2::Country* HoI4States::selectProvinceOwner(const map<const Vic2::Country*, pair<int, int>>& potentialOwners) const
-{
-	const Vic2::Country* oldOwner = nullptr;
+const std::string HoI4States::selectProvinceOwner(
+	const std::map<std::string, std::pair<int, int>>& potentialOwners
+) const {
+	std::string oldOwner;
 	for (auto potentialOwner: potentialOwners)
 	{
 		// I am the new owner if there is no current owner, or I have more provinces than the current owner,
 		// or I have the same number of provinces, but more population, than the current owner
-		if (	(oldOwner == nullptr) ||
+		if (	(oldOwner == "") ||
 				(potentialOwner.second.first > potentialOwners.find(oldOwner)->second.first) ||
 				(
 					(potentialOwner.second.first == potentialOwners.find(oldOwner)->second.first) &&
@@ -176,9 +181,13 @@ const Vic2::Country* HoI4States::selectProvinceOwner(const map<const Vic2::Count
 }
 
 
-vector<string> HoI4States::determineCores(const vector<int>& sourceProvinces, const Vic2::Country* Vic2Owner, const CountryMapper& countryMap, const std::string& newOwner) const
-{
-	vector<string> cores;
+std::set<std::string> HoI4States::determineCores(
+	const std::vector<int>& sourceProvinces,
+	const std::string& Vic2Owner,
+	const CountryMapper& countryMap,
+	const std::string& newOwner
+) const {
+	std::set<std::string> cores;
 
 	for (auto sourceProvinceNum: sourceProvinces)
 	{
@@ -190,7 +199,7 @@ vector<string> HoI4States::determineCores(const vector<int>& sourceProvinces, co
 
 		for (auto Vic2Core: (*sourceProvince)->getCores())
 		{
-			auto HoI4CoreTag = countryMap.getHoI4Tag(Vic2Core->getTag());
+			auto HoI4CoreTag = countryMap.getHoI4Tag(Vic2Core);
 			if (HoI4CoreTag)
 			{
 				// skip this core if the country is the owner of the V2 province but not the HoI4 province
@@ -201,7 +210,7 @@ vector<string> HoI4States::determineCores(const vector<int>& sourceProvinces, co
 					continue;
 				}
 
-				cores.push_back(*HoI4CoreTag);
+				cores.insert(*HoI4CoreTag);
 			}
 		}
 	}
@@ -221,7 +230,7 @@ void HoI4States::createStates(const HoI4::impassableProvinces& theImpassables, c
 			auto possibleHoI4Owner = countryMap.getHoI4Tag(country.first);
 			if (possibleHoI4Owner)
 			{
-				createMatchingHoI4State(vic2State, *possibleHoI4Owner, theImpassables);
+				createMatchingHoI4State(vic2State, *possibleHoI4Owner, theImpassables, countryMap);
 				for (auto province: vic2State->getProvinces())
 				{
 					ownedProvinces.insert(province->getNumber());
@@ -260,7 +269,7 @@ void HoI4States::createStates(const HoI4::impassableProvinces& theImpassables, c
 		}
 
 		Vic2::State* newState = new Vic2::State(stateProvinces);
-		createMatchingHoI4State(newState, "", theImpassables);
+		createMatchingHoI4State(newState, "", theImpassables, countryMap);
 	}
 
 	unsigned int manpower = getTotalManpower();
@@ -268,8 +277,12 @@ void HoI4States::createStates(const HoI4::impassableProvinces& theImpassables, c
 }
 
 
-void HoI4States::createMatchingHoI4State(const Vic2::State* vic2State, const string& stateOwner, const HoI4::impassableProvinces& theImpassables)
-{
+void HoI4States::createMatchingHoI4State(
+	const Vic2::State* vic2State,
+	const string& stateOwner,
+	const HoI4::impassableProvinces& theImpassables,
+	const CountryMapper& countryMapper
+) {
 	unordered_set<int> passableProvinces;
 	unordered_set<int> impassableProvinces;
 	auto allProvinces = getProvincesInState(vic2State, stateOwner);
@@ -293,8 +306,9 @@ void HoI4States::createMatchingHoI4State(const Vic2::State* vic2State, const str
 			newState->markHadImpassablePart();
 		}
 		addProvincesAndCoresToNewState(newState, passableProvinces);
-		newState->tryToCreateVP();
-		newState->addManpower();
+		newState->convertControlledProvinces(theProvinceMapper, countryMapper);
+		newState->tryToCreateVP(theProvinceMapper, theConfiguration);
+		newState->addManpower(theProvinceMapper, theConfiguration);
 		states.insert(make_pair(nextStateID, newState));
 		nextStateID++;
 	}
@@ -304,8 +318,8 @@ void HoI4States::createMatchingHoI4State(const Vic2::State* vic2State, const str
 		HoI4::State* newState = new HoI4::State(vic2State, nextStateID, stateOwner);
 		addProvincesAndCoresToNewState(newState, impassableProvinces);
 		newState->makeImpassable();
-		newState->tryToCreateVP();
-		newState->addManpower();
+		newState->tryToCreateVP(theProvinceMapper, theConfiguration);
+		newState->addManpower(theProvinceMapper, theConfiguration);
 		states.insert(make_pair(nextStateID, newState));
 		nextStateID++;
 	}
@@ -417,6 +431,14 @@ void HoI4States::output() const
 	}
 	for (auto state: states)
 	{
-		state.second->output(to_string(state.first) + ".txt");
+		std::string filename("output/" + theConfiguration.getOutputName() + "/history/states/" + std::to_string(state.first) + ".txt");
+		std::ofstream out(filename);
+		if (!out.is_open())
+		{
+			std::runtime_error error("Could not open \"" + filename + "\"");
+			throw error;
+		}
+		state.second->output(out, theConfiguration);
+		out.close();
 	}
 }
