@@ -26,10 +26,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "../Configuration.h"
+#include "Pop.h"
 #include "newParser.h"
-#include <map>
-#include <memory>
 #include <optional>
 #include <set>
 #include <string>
@@ -40,65 +38,41 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 namespace Vic2
 {
 
-class Country;
-class Pop;
-
-
 class Province: commonItems::parser
 {
 	public:
 		explicit Province(const std::string& numberString, std::istream& theStream);
-		void setCores(const std::map<std::string, Country*>& countries);
 
 		int getTotalPopulation() const;
 		int getPopulation(std::optional<std::string> type = {}) const;
 		int getLiteracyWeightedPopulation(std::optional<std::string> type = {}) const;
 		double getPercentageWithCultures(const std::set<std::string>& cultures) const;
 
-		void setOwner(const Country* _owner) { owner = _owner; }
-		void addCoreString(const std::string& coreString) { coreStrings.insert(coreString); }
-		void removeCoreString(const std::string& coreString) { coreStrings.erase(coreString); }
-		void removeCore(Country* core) { cores.erase(core); }
+		void setOwner(const std::string& _owner) { owner = _owner; }
+		void addCore(const std::string& core) { cores.insert(core); }
+		void removeCore(const std::string& core) { cores.erase(core); }
 
 		int getNumber() const { return number; }
-		const std::string getOwnerString() const { return ownerString; }
-		const Country* getOwner() const { return owner; }
+		const std::string getOwner() const { return owner; }
 		const std::string getController() const { return controller; }
-		const std::set<Country*> getCores() const { return cores; }
-		int getRailLevel() const { return railLevel; }
-		int getFortLevel() const { return fortLevel; }
+		const std::set<std::string> getCores() const { return cores; }
+		const std::vector<Pop> getPops() const { return pops; }
 		int getNavalBaseLevel() const { return navalBaseLevel; }
-		const std::vector<std::shared_ptr<const Pop>> getPops() const { return pops; }
-
-		const std::string getRgo() const { return rgo; }
-		const std::string getName() const { return name; }
-		const std::string getIdentifier() const { return identifier; }
+		int getRailLevel() const { return railLevel; }
 
 	private:
-		Province(const Province&) = delete;
-		Province& operator=(const Province&) = delete;
-
-		int calculateLiteracyWeightedPop(const std::shared_ptr<const Pop> thePop) const;
+		int calculateLiteracyWeightedPop(const Pop& thePop) const;
 
 		int number;
 
-		std::string name;
-		std::string ownerString;
-		const Country* owner = nullptr;
-
+		std::string owner;
 		std::string controller;
+		std::set<std::string> cores;
 
-		std::set<std::string> coreStrings;
-		std::set<Country*> cores;
+		std::vector<Pop> pops;
 
-		std::vector<std::shared_ptr<const Pop>> pops;
-
-		int fortLevel = 0;
 		int navalBaseLevel = 0;
 		int railLevel = 0;
-
-		std::string rgo;
-		std::string identifier;
 };
 
 }

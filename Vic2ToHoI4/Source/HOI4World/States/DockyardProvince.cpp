@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -21,37 +21,18 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef IMPASSABLE_PROVINCES_H
-#define IMPASSABLE_PROVINCES_H
+#include "DockyardProvince.h"
+#include "ParserHelpers.h"
 
 
 
-#include <map>
-#include <unordered_set>
-
-
-
-namespace HoI4
+HoI4::DockyardProvince::DockyardProvince(std::istream& theStream)
 {
+	registerKeyword(std::regex("naval_base"), [this](const std::string& unused, std::istream& theStream) {
+		commonItems::singleInt baseInt(theStream);
+		dockyardsLevel = baseInt.getInt();
+	});
+	registerKeyword(std::regex("[a-zA-Z0-9_]+"), commonItems::ignoreItem);
 
-class DefaultState;
-
-
-
-class impassableProvinces
-{
-	public:
-		explicit impassableProvinces(const std::map<int, HoI4::DefaultState>& states);
-
-		bool isProvinceImpassable(int provinceNumber) const;
-
-	public:
-		std::unordered_set<int> impassibleProvinces;
-};
-
+	parseStream(theStream);
 }
-
-
-
-#endif // IMPASSABLE_PROVINCES_H
-

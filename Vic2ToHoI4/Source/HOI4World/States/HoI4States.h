@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -25,7 +25,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "../Mappers/Provinces/ProvinceMapper.h"
+#include "../../Mappers/Provinces/ProvinceMapper.h"
 #include "newParser.h"
 #include <map>
 #include <optional>
@@ -40,6 +40,7 @@ using namespace std;
 class CountryMapper;
 namespace HoI4
 {
+class DefaultState;
 class impassableProvinces;
 class State;
 }
@@ -57,7 +58,7 @@ class HoI4States: commonItems::parser
 	public:
 		explicit HoI4States(const Vic2::World* _sourceWorld, const CountryMapper& countryMap);
 
-		const map<int, HoI4::State*>& getDefaultStates() const { return defaultStates; }
+		const map<int, HoI4::DefaultState>& getDefaultStates() const { return defaultStates; }
 		const map<int, HoI4::State*>& getStates() const { return states; }
 		const map<int, int>& getProvinceToStateIDMap() const { return provinceToStateIDMap; }
 
@@ -69,12 +70,24 @@ class HoI4States: commonItems::parser
 
 		void determineOwnersAndCores(const CountryMapper& countryMap);
 		optional<vector<int>> retrieveSourceProvinceNums(int provNum) const;
-		map<const Vic2::Country*, pair<int, int>> determinePotentialOwners(const vector<int>& sourceProvinceNums) const;
-		const Vic2::Country* selectProvinceOwner(const map<const Vic2::Country*, pair<int, int>>& potentialOwners) const;
-		vector<string> determineCores(const vector<int>& sourceProvinces, const Vic2::Country* oldOwner, const CountryMapper& countryMap, const std::string& newOwner) const;
+		const std::map<std::string, std::pair<int, int>> determinePotentialOwners(
+			const std::vector<int>& sourceProvinceNums
+		) const;
+		const std::string selectProvinceOwner(const std::map<std::string, std::pair<int, int>>& potentialOwners) const;
+		std::set<std::string> determineCores(
+			const std::vector<int>& sourceProvinces,
+			const std::string& Vic2Owner,
+			const CountryMapper& countryMap,
+			const std::string& newOwner
+		) const;
 
 		void createStates(const HoI4::impassableProvinces& theImpassables, const CountryMapper& countryMap);
-		void createMatchingHoI4State(const Vic2::State* vic2State, const string& stateOwner, const HoI4::impassableProvinces& theImpassables);
+		void createMatchingHoI4State(
+			const Vic2::State* vic2State,
+			const string& stateOwner,
+			const HoI4::impassableProvinces& theImpassables,
+			const CountryMapper& countryMapper
+		);
 		std::unordered_set<int> getProvincesInState(const Vic2::State* vic2State, const string& owner);
 		void addProvincesAndCoresToNewState(HoI4::State* newState, unordered_set<int> provinces);
 		bool isProvinceValid(int provNum) const;
@@ -85,10 +98,10 @@ class HoI4States: commonItems::parser
 
 		const Vic2::World* sourceWorld = nullptr;
 		map<int, string> ownersMap;
-		map<int, vector<string>> coresMap;
+		std::map<int, std::set<std::string>> coresMap;
 		set<int> assignedProvinces;
 
-		map<int, HoI4::State*> defaultStates;
+		map<int, HoI4::DefaultState> defaultStates;
 		map<int, HoI4::State*> states;
 		map<int, int> provinceToStateIDMap;
 		int nextStateID = 1;

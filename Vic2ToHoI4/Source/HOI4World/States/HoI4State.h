@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -27,6 +27,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "newParser.h"
+#include "../../Configuration.h"
+#include "../../Mappers/CountryMapping.h"
+#include "../../Mappers/Provinces/ProvinceMapper.h"
 #include <map>
 #include <optional>
 #include <set>
@@ -45,16 +48,15 @@ namespace HoI4
 {
 
 class coastalProvinces;
-class stateCategories;
+class StateCategories;
 
 
-class State: commonItems::parser
+class State
 {
 	public:
-		explicit State(std::istream& theStream);
 		State(const Vic2::State* sourceState, int _ID, const std::string& _ownerTag);
 
-		void output(const std::string& filename) const;
+		void output(std::ostream& output, const Configuration& theConfiguration) const;
 
 		void addProvince(int province) { provinces.insert(province); }
 		void setAsCapitalState() { capitalState = true; civFactories++; }
@@ -65,13 +67,14 @@ class State: commonItems::parser
 		void addVictoryPointValue(int additionalValue) { victoryPointValue += additionalValue; }
 		void setVPLocation(int province) { victoryPointPosition = province; }
 
-		void convertNavalBases(const coastalProvinces& theCoastalProvinces);
+		void convertNavalBases(const coastalProvinces& theCoastalProvinces, const provinceMapper& theProvinceMapper);
 		void addNavalBase(int level, int location);
-		void addCores(const std::vector<std::string>& newCores);
+		void addCores(const std::set<std::string>& newCores);
+		void convertControlledProvinces(const provinceMapper& theProvinceMapper, const CountryMapper& countryMapper);
 
 		const Vic2::State* getSourceState() const { return sourceState; }
 		int getID() const { return ID; }
-		std::set<int>	getProvinces() const { return provinces; }
+		std::set<int>getProvinces() const { return provinces; }
 		std::string getOwner() const { return ownerTag; }
 		std::set<std::string> getCores() const { return cores; }
 		bool isImpassable() const { return impassable; }
@@ -80,35 +83,40 @@ class State: commonItems::parser
 		int getMilFactories() const { return milFactories; }
 		int getInfrastructure() const { return infrastructure; }
 		int getManpower() const { return manpower; }
-		int getVPLocation() const { return victoryPointPosition; }
+		std::optional<int> getVPLocation() const { return victoryPointPosition; }
 		std::set<int> getDebugVPs() const { return debugVictoryPoints; }
 		std::set<int> getSecondaryDebugVPs() const { return secondaryDebugVictoryPoints; }
 
 		std::optional<int> getMainNavalLocation() const;
 
-		void tryToCreateVP();
-		void addManpower();
+		void tryToCreateVP(const provinceMapper& theProvinceMapper, const Configuration& theConfiguration);
+		void addManpower(const provinceMapper& theProvinceMapper, const Configuration& theConfiguration);
 
-		void convertIndustry(double workerFactoryRatio, const HoI4::stateCategories& theStateCategories, const coastalProvinces& theCoastalProvinces);
+		void convertIndustry(
+			double workerFactoryRatio,
+			const HoI4::StateCategories& theStateCategories,
+			const coastalProvinces& theCoastalProvinces
+		);
 
 	private:
-		State(const State&) = delete;
-		State& operator=(const State&) = delete;
-
-		int determineFactoryNumbers(double workerFactoryRatio);
-		int constrainFactoryNumbers(double rawFactories);
-		void determineCategory(int factories, const HoI4::stateCategories& theStateCategories);
+		int determineFactoryNumbers(double workerFactoryRatio) const;
+		int constrainFactoryNumbers(double rawFactories) const;
+		void determineCategory(int factories, const HoI4::StateCategories& theStateCategories);
 		void setInfrastructure(int factories);
 		void setIndustry(int factories, const coastalProvinces& theCoastalProvinces);
-		bool amICoastal(const coastalProvinces& theCoastalProvinces);
+		bool amICoastal(const coastalProvinces& theCoastalProvinces) const;
 
-		int determineNavalBaseLevel(const Vic2::Province* sourceProvince);
-		std::optional<int> determineNavalBaseLocation(const Vic2::Province* sourceProvince, const coastalProvinces& theCoastalProvinces);
+		int determineNavalBaseLevel(const Vic2::Province& sourceProvince) const;
+		std::optional<int> determineNavalBaseLocation(
+			const Vic2::Province& sourceProvince,
+			const coastalProvinces& theCoastalProvinces,
+			const provinceMapper& theProvinceMapper
+		) const;
 
-		bool assignVPFromVic2Province(int Vic2ProvinceNumber);
+		bool assignVPFromVic2Province(int Vic2ProvinceNumber, const provinceMapper& theProvinceMapper);
 		void assignVP(int location);
-		bool isProvinceInState(int provinceNum);
-		void addDebugVPs();
+		bool isProvinceInState(int provinceNum) const;
+		void addDebugVPs(const provinceMapper& theProvinceMapper);
 
 		const Vic2::State* sourceState;
 
@@ -116,6 +124,8 @@ class State: commonItems::parser
 		std::set<int> provinces;
 		std::string ownerTag;
 		std::set<std::string> cores;
+		std::map<std::string, std::set<int>> controlledProvinces;
+
 		bool capitalState = false;
 		bool impassable = false;
 		bool hadImpassablePart = false;
@@ -128,19 +138,19 @@ class State: commonItems::parser
 		std::string category = "pastoral";
 		int infrastructure = 0;
 
-                std::map<int, int> navalBases;
+		std::map<int, int> navalBases;
 
-                int airbaseLevel = 0;
+		int airbaseLevel = 0;
 
 		std::map<std::string, double> resources;
 
-		int victoryPointPosition = 0;
+		std::optional<int> victoryPointPosition;
 		int victoryPointValue = 0;
 		std::set<int> debugVictoryPoints;
 		std::set<int> secondaryDebugVictoryPoints;
 
-                static std::map<int, int> landFortLevels;
-                static std::map<int, int> coastFortLevels;
+		std::map<int, int> landFortLevels;
+		std::map<int, int> coastFortLevels;
 };
 
 }

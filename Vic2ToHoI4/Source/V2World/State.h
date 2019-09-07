@@ -52,29 +52,27 @@ typedef struct
 class State: commonItems::parser
 {
 	public:
+		State() = default;
 		State(std::istream& theStream, const std::string& ownerTag);
 		explicit State(std::set<std::pair<int, Province*>> theProvinces);
 
 		void determineEmployedWorkers();
 		void determineIfPartialState();
 
-		int getPopulation() const;
-		int getAverageRailLevel() const;
+		virtual int getPopulation() const;
+		virtual int getAverageRailLevel() const;
 
 		void addProvince(const Province* province) { provinces.insert(province); }
 
-		std::set<const Province*> getProvinces() const { return provinces; }
-		std::set<int> getProvinceNums() const { return provinceNums; }
+		virtual std::set<const Province*> getProvinces() const { return provinces; }
+		virtual std::set<int> getProvinceNums() const { return provinceNums; }
 		std::string getOwner() const { return owner; }
 		std::string getStateID() const { return stateID; }
-		std::optional<int> getCapitalProvince() const { return capitalProvince; }
+		virtual std::optional<int> getCapitalProvince() const { return capitalProvince; }
 		bool isPartialState() const { return partialState; }
-		int getEmployedWorkers() const { return employedWorkers; }
+		virtual int getEmployedWorkers() const { return employedWorkers; }
 
 	private:
-		State(const State&) = delete;
-		State& operator=(const State&) = delete;
-
 		void setID();
 		void setCapital();
 

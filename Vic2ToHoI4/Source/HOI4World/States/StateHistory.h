@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -21,52 +21,38 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef VIC2_POP_H_
-#define VIC2_POP_H_
+#ifndef STATE_HISTORY_H
+#define STATE_HISTORY_H
 
 
 
 #include "newParser.h"
-#include <map>
-#include <memory>
 #include <string>
 
 
 
-namespace Vic2
+namespace HoI4
 {
-	class Pop: commonItems::parser
-	{
-		public:
-			explicit Pop(const std::string& typeString, std::istream& theStream);
 
-			static Pop* getByID(const int idx);
+class StateHistory: commonItems::parser
+{
+	public:
+		explicit StateHistory(std::istream& theStream);
 
-			int getSize() const { return size; }
-			std::string getType() const { return type; }
-			std::string getCulture() const { return culture; }
-			double getLiteracy() const { return literacy; }
-			double getMilitancy() const { return militancy; }
-			std::map<std::string, float> getIssues() const { return popIssues; }
+		int getCivFactories() const { return civFactories; }
+		int getMilFactories() const { return milFactories; }
+		int getDockyards() const { return dockyards; }
+		std::string getOwner() const { return owner; }
 
-			float getIssue(const std::string& issueName) const;
-			int getID() const {return id;}
+	private:
+		int civFactories = 0;
+		int milFactories = 0;
+		int dockyards = 0;
+		std::string owner;
+};
 
-		private:
-			int size = 0;
-			std::string type = "";
-			std::string culture = "no_culture";
-			std::string religion = "";
-			double literacy = 0.0;
-			double consciousness = 0.0;
-			double militancy = 0.0;
-                        int id = 0;
-			std::map<std::string, float> popIssues;
-
-			static std::map<int, Pop*> pop_map;
-        };
 }
 
 
 
-#endif // VIC2_POP_H_
+#endif // STATE_HISTORY_H

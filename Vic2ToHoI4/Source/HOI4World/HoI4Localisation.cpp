@@ -22,8 +22,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "HoI4Localisation.h"
-#include "HoI4State.h"
-#include "HoI4States.h"
+#include "States/HoI4State.h"
+#include "States/HoI4States.h"
 #include "../Mappers/GovernmentMapper.h"
 #include "../Mappers/V2Localisations.h"
 #include "../V2World/Country.h"
@@ -373,18 +373,23 @@ void HoI4Localisation::AddStateLocalisations(const HoI4States* states)
 {
 	for (auto state: states->getStates())
 	{
-		for (auto Vic2NameInLanguage: V2Localisations::GetTextInEachLanguage(state.second->getSourceState()->getStateID()))
-		{
+		for (auto Vic2NameInLanguage:
+			V2Localisations::GetTextInEachLanguage(state.second->getSourceState()->getStateID())
+		) {
 			addStateLocalisationForLanguage(*state.second, Vic2NameInLanguage);
 		}
 
-		int VPPositionInHoI4 = state.second->getVPLocation();
-		auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(VPPositionInHoI4);
-		if (VPProvinceMapping && (VPProvinceMapping->size() > 0))
+		std::optional<int> VPPositionInHoI4 = state.second->getVPLocation();
+		if (VPPositionInHoI4)
 		{
-			for (auto Vic2NameInLanguage: V2Localisations::GetTextInEachLanguage("PROV" + to_string((*VPProvinceMapping)[0])))
+			auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(*VPPositionInHoI4);
+			if (VPProvinceMapping && (VPProvinceMapping->size() > 0))
 			{
-				addVPLocalisationForLanguage(state.second, Vic2NameInLanguage);
+				for (auto Vic2NameInLanguage:
+					V2Localisations::GetTextInEachLanguage("PROV" + to_string((*VPProvinceMapping)[0]))
+				) {
+					addVPLocalisationForLanguage(state.second, Vic2NameInLanguage);
+				}
 			}
 		}
 
@@ -536,9 +541,15 @@ void HoI4Localisation::addStateLocalisationForLanguage(
 }
 
 
-void HoI4Localisation::addVPLocalisationForLanguage(const HoI4::State* state, const pair<const string, string>& Vic2NameInLanguage)
-{
-	getExistingVPLocalisation(Vic2NameInLanguage.first).insert(make_pair("VICTORY_POINTS_" + to_string(state->getVPLocation()),	Vic2NameInLanguage.second));
+void HoI4Localisation::addVPLocalisationForLanguage(
+	const HoI4::State* state,
+	const std::pair<const std::string, std::string>& Vic2NameInLanguage
+) {
+	if (state->getVPLocation())
+	{
+		getExistingVPLocalisation(Vic2NameInLanguage.first)
+			.insert(make_pair("VICTORY_POINTS_" + std::to_string(*state->getVPLocation()), Vic2NameInLanguage.second));
+	}
 }
 
 
