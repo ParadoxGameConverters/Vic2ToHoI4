@@ -324,13 +324,6 @@ TEST(HoI4World_StateTests, impassableIsOutput)
 	expectedOutput << "\n";
 	expectedOutput << "\thistory={\n";
 	expectedOutput << "\t\towner = TAG\n";
-	expectedOutput << "\t\tbuildings = {\n";
-	expectedOutput << "\t\t\tinfrastructure = 0\n";
-	expectedOutput << "\t\t\tindustrial_complex = 0\n";
-	expectedOutput << "\t\t\tarms_factory = 0\n";
-	expectedOutput << "\t\t\tair_base = 0\n";
-	expectedOutput << "\n";
-	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\n";
 	expectedOutput << "\tprovinces={\n";

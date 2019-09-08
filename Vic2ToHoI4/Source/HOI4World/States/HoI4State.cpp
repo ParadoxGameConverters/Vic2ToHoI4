@@ -75,57 +75,63 @@ void HoI4::State::output(std::ostream& out, const Configuration& theConfiguratio
 	{
 		out << "\t\towner = " << ownerTag << "\n";
 	}
-	if ((victoryPointValue > 0) && (victoryPointPosition))
+	if (!impassable)
 	{
-		if (theConfiguration.getDebug())
+		if ((victoryPointValue > 0) && (victoryPointPosition))
 		{
-			out << "\t\tvictory_points = {\n";
-			out << "\t\t\t" << *victoryPointPosition << " " << (victoryPointValue + 10) << "\n";
-			out << "\t\t}\n";
-			for (auto VP: debugVictoryPoints)
+			if (theConfiguration.getDebug())
 			{
-				if (VP == victoryPointPosition)
+				out << "\t\tvictory_points = {\n";
+				out << "\t\t\t" << *victoryPointPosition << " " << (victoryPointValue + 10) << "\n";
+				out << "\t\t}\n";
+				for (auto VP : debugVictoryPoints)
 				{
-					continue;
+					if (VP == victoryPointPosition)
+					{
+						continue;
+					}
+					out << "\t\tvictory_points = { " << VP << " 5\n";
+					out << "\t}\n";
 				}
-				out << "\t\tvictory_points = { " << VP << " 5\n";
-				out << "\t}\n";
+				for (auto VP : secondaryDebugVictoryPoints)
+				{
+					if (VP == victoryPointPosition)
+					{
+						continue;
+					}
+					out << "\t\tvictory_points = { " << VP << " 1 }\n";
+				}
 			}
-			for (auto VP: secondaryDebugVictoryPoints)
+			else
 			{
-				if (VP == victoryPointPosition)
-				{
-					continue;
-				}
-				out << "\t\tvictory_points = { " << VP << " 1 }\n";
+				out << "\t\tvictory_points = {\n";
+				out << "\t\t\t" << *victoryPointPosition << " " << victoryPointValue << " \n";
+				out << "\t\t}\n";
 			}
 		}
-		else
+	}
+	if (!impassable)
+	{
+		out << "\t\tbuildings = {\n";
+		out << "\t\t\tinfrastructure = " << infrastructure << "\n";
+		out << "\t\t\tindustrial_complex = " << civFactories << "\n";
+		out << "\t\t\tarms_factory = " << milFactories << "\n";
+		if (dockyards > 0)
 		{
-			out << "\t\tvictory_points = {\n";
-			out << "\t\t\t" << *victoryPointPosition << " " << victoryPointValue << " \n";
-			out << "\t\t}\n";
+			out << "\t\t\tdockyard = " << dockyards << "\n";
 		}
-	}
-	out << "\t\tbuildings = {\n";
-	out << "\t\t\tinfrastructure = "<< infrastructure << "\n";
-	out << "\t\t\tindustrial_complex = " << civFactories << "\n";
-	out << "\t\t\tarms_factory = " << milFactories << "\n";
-	if (dockyards > 0)
-	{
-		out << "\t\t\tdockyard = " << dockyards << "\n";
-	}
-		
-	for (auto navalBase: navalBases)
-	{
-		out << "\t\t\t" << navalBase.first << " = {\n";
-		out << "\t\t\t\tnaval_base = " << navalBase.second << "\n";
-		out << "\t\t\t}\n";
-	}
 
-	out << "\t\t\tair_base = "<< airbaseLevel << "\n";
-	out << "\n";
-	out << "\t\t}\n";
+		for (auto navalBase : navalBases)
+		{
+			out << "\t\t\t" << navalBase.first << " = {\n";
+			out << "\t\t\t\tnaval_base = " << navalBase.second << "\n";
+			out << "\t\t\t}\n";
+		}
+
+		out << "\t\t\tair_base = " << airbaseLevel << "\n";
+		out << "\n";
+		out << "\t\t}\n";
+	}
 	for (auto core: cores)
 	{
 		out << "\t\tadd_core_of = " << core << "\n";
