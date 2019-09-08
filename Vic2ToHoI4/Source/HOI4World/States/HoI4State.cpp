@@ -479,7 +479,10 @@ void HoI4::State::determineCategory(int factories, const HoI4::StateCategories& 
 		stateSlots = factories + 2;
 	}
 
-	category = theStateCategories.getBestCategory(stateSlots);
+	if (!impassable)
+	{
+		category = theStateCategories.getBestCategory(stateSlots);
+	}
 }
 
 
