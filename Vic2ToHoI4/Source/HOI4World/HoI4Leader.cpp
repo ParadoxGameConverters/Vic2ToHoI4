@@ -39,17 +39,10 @@ HoI4::General::General(const Vic2::Leader* srcLeader, const std::string& portrai
 	{
 		skill = 4;
 	}
-	attackSkill = skill - 1;
-	defenseSkill = skill - 1;
-	planningSkill = skill - 1;
-	logisticsSkill = skill - 1;
-	if (attackSkill < 1)
-	{
-		attackSkill = 1;
-		defenseSkill = 1;
-		planningSkill = 1;
-		logisticsSkill = 1;
-	}
+	attackSkill = skill;
+	defenseSkill = skill;
+	planningSkill = skill;
+	logisticsSkill = skill;
 
 	/*auto possiblePersonalities = landPersonalityMap.find(srcLeader->getPersonality());
 	if ((possiblePersonalities != landPersonalityMap.end()) && (possiblePersonalities->second.size() > 0))
@@ -99,17 +92,10 @@ HoI4::Admiral::Admiral(const Vic2::Leader* srcLeader, const std::string& portrai
 	{
 		skill = 4;
 	}
-	attackSkill = skill - 1;
-	defenseSkill = skill - 1;
-	maneuveringSkill = skill - 1;
-	coordinationSkill = skill - 1;
-	if (attackSkill < 1)
-	{
-		attackSkill = 1;
-		defenseSkill = 1;
-		maneuveringSkill = 1;
-		coordinationSkill = 1;
-	}
+	attackSkill = skill;
+	defenseSkill = skill;
+	maneuveringSkill = skill;
+	coordinationSkill = skill;
 
 	/*auto possiblePersonalities = seaPersonalityMap.find(srcLeader->getPersonality());
 	if ((possiblePersonalities != seaPersonalityMap.end()) && (possiblePersonalities->second.size() > 0))
