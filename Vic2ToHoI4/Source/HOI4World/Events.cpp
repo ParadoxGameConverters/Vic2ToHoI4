@@ -305,7 +305,7 @@ void HoI4::Events::createFactionEvents(std::shared_ptr<HoI4Country> Leader, std:
 	newsEventNumber += 2;
 }
 
-
+/*
 void HoI4::Events::createOlympicsEvents()
 {
 	Event newsEventOlympics;
@@ -333,7 +333,7 @@ void HoI4::Events::createOlympicsEvents()
 
 	newsEventNumber += 1;
 }
-
+*/
 
 void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4Country> Annexer, std::shared_ptr<HoI4Country> Annexed)
 {
