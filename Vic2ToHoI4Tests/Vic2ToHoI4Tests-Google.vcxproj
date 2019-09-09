@@ -60,6 +60,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CoastalProvinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decisions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategories.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\IdeologicalDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Division.cpp" />
@@ -160,6 +161,7 @@
     <ClCompile Include="DecisionsCategoryTests.cpp" />
     <ClCompile Include="DecisionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\AllMilitaryMappingsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\DecisionsCategoriesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DockyardProvinceTests.cpp" />
