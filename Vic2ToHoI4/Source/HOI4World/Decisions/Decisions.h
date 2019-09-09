@@ -27,7 +27,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "newParser.h"
 #include "IdeologicalDecisions.h"
+#include "DecisionsCategories.h"
 #include "DecisionsCategory.h"
+#include <memory>
 #include <set>
 #include <string>
 #include <vector>
@@ -56,6 +58,8 @@ class decisions: commonItems::parser
 		std::string updateTimeoutEffect(std::string& originalEffect, const std::pair<std::string, std::string>& ideologiesForStabilityDecisions);
 
 		void updatePoliticalDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
+
+		std::unique_ptr<DecisionsCategories> decisionsCategories;
 
 		std::vector<decisionsCategory> stabilityDecisions;
 		std::vector<decisionsCategory> politicalDecisions;
