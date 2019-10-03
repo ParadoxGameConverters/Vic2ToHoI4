@@ -1418,7 +1418,9 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4Country> Home, const 
 			newFocus = loadedFocuses.find("_finish_")->second.makeCustomizedCopy(Home->getTag());
 			newFocus->id = Home->getTag() + "_finish_" + sudetenTargets[i]->getTag();
 			newFocus->text = "Fate of " + sudetenTargetCountryName;
-			newFocus->available = sudetenTargets[i]->getTag() + " = { is_in_faction = no }";
+			newFocus->available = "= {\n";
+			newFocus->available += "	" + sudetenTargets[i]->getTag() + " = { is_in_faction = no } }";
+			newFocus->available += "		}";
 			newFocus->prerequisites.push_back("= { focus =  " + Home->getTag() + "_sudeten_" + sudetenTargets[i]->getTag() + " }");
 			newFocus->xPos = nextFreeColumn + 2 * i;
 			newFocus->yPos = 2;
