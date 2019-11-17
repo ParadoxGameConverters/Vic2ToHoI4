@@ -100,6 +100,7 @@ Vic2::World::World(const std::string& filename)
 		removeSimpleLandlessNations();
 	}
 	determineEmployedWorkers();
+	overallMergeNations();
 	removeEmptyNations();
 	determinePartialStates();
 	addWarsToCountries(wars);
@@ -111,7 +112,6 @@ Vic2::World::World(const std::string& filename)
 	setLocalisations();
 	handleMissingCountryCultures();
 
-	overallMergeNations();
 	checkAllProvincesMapped();
 }
 
