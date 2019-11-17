@@ -78,8 +78,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Leader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Localisation.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Relations.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4State.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4States.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4StrategicRegion.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4SupplyZone.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HOI4Version.cpp" />
@@ -115,7 +113,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipModules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariant.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariants.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\StateCategories.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\DefaultState.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\DockyardProvince.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4State.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4States.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateBuildings.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateCategories.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateCategory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateCategoryFile.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateHistory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\SupplyZones.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Technologies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryMapping.cpp" />
@@ -156,7 +162,10 @@
     <ClCompile Include="HoI4WorldTests\AllMilitaryMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\DockyardProvinceTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\DefaultStateTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\HoI4StateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4WarTests.cpp" />
     <ClCompile Include="HoI4WorldTests\IdeologicalDecisionsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\LegacyNavyTests.cpp" />
@@ -172,6 +181,11 @@
     <ClCompile Include="HoI4WorldTests\LegacyShipTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipVariantsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipVariantTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\StateBuildingsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\StateCategoriesTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\StateCategoryFileTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\StateCategoryTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\StateHistoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\TechnologiesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\UnitMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\UnitMappingTests.cpp" />
@@ -181,7 +195,9 @@
     <ClCompile Include="MapperTests\TechMapperTests.cpp" />
     <ClCompile Include="Mocks\CountryMapperMock.h" />
     <ClCompile Include="Mocks\TechnologiesMock.h" />
+    <ClCompile Include="Mocks\Vic2StateMock.h" />
     <ClCompile Include="Vic2ToHoI4ConverterTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\ProvinceTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Vic2AgreementTests.cpp" />
     <ClCompile Include="Vic2WorldTests\WarGoalTests.cpp" />
     <ClCompile Include="Vic2WorldTests\WarTests.cpp" />
@@ -196,6 +212,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mocks\EventsMock.h" />
+    <ClInclude Include="Mocks\ProvinceMapperMock.h" />
+    <ClInclude Include="Mocks\StateCategoriesMock.h" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -29,11 +29,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "LegacyNavy.h"
 #include "MtgNavy.h"
 #include "../CoastalProvinces.h"
-#include "../HoI4State.h"
 #include "../MilitaryMappings/HoI4UnitType.h"
 #include "../MilitaryMappings/MtgUnitMappings.h"
 #include "../MilitaryMappings/UnitMappings.h"
 #include "../ShipTypes/ShipVariants.h"
+#include "../States/HoI4State.h"
 #include "../../V2World/Army.h"
 #include <map>
 #include <ostream>

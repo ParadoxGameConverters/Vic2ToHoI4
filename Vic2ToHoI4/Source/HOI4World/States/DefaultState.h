@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -20,53 +20,42 @@ TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
-
-#ifndef VIC2_POP_H_
-#define VIC2_POP_H_
-
+#ifndef HOI4_DEFAULT_STATES_H_
+#define HOI4_DEFAULT_STATES_H_
 
 
 #include "newParser.h"
-#include <map>
-#include <memory>
+#include <set>
 #include <string>
 
 
 
-namespace Vic2
+namespace HoI4
 {
-	class Pop: commonItems::parser
-	{
-		public:
-			explicit Pop(const std::string& typeString, std::istream& theStream);
 
-			static Pop* getByID(const int idx);
+class DefaultState: commonItems::parser
+{
+	public:
+		explicit DefaultState(std::istream& theStream);
 
-			int getSize() const { return size; }
-			std::string getType() const { return type; }
-			std::string getCulture() const { return culture; }
-			double getLiteracy() const { return literacy; }
-			double getMilitancy() const { return militancy; }
-			std::map<std::string, float> getIssues() const { return popIssues; }
+		bool isImpassable() const { return impassable; }
+		std::string getOwner() const { return ownerTag; }
+		std::set<int> getProvinces() const { return provinces; }
+		int getCivFactories() const { return civFactories; }
+		int getMilFactories() const { return milFactories; }
+		int getDockyards() const { return dockyards; }
 
-			float getIssue(const std::string& issueName) const;
-			int getID() const {return id;}
+	private:
+		bool impassable = false;
+		std::string ownerTag;
+		std::set<int> provinces;
+		int civFactories = 0;
+		int milFactories = 0;
+		int dockyards = 0;
+};
 
-		private:
-			int size = 0;
-			std::string type = "";
-			std::string culture = "no_culture";
-			std::string religion = "";
-			double literacy = 0.0;
-			double consciousness = 0.0;
-			double militancy = 0.0;
-                        int id = 0;
-			std::map<std::string, float> popIssues;
-
-			static std::map<int, Pop*> pop_map;
-        };
 }
 
 
 
-#endif // VIC2_POP_H_
+#endif // HOI4_DEFAULT_STATES_H_

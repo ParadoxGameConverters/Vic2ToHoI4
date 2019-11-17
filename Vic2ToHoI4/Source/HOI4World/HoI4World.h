@@ -32,10 +32,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "Ideas.h"
 #include "OnActions.h"
 #include "Names.h"
-#include "HoI4States.h"
 #include "MapData.h"
 #include "MilitaryMappings/AllMilitaryMappings.h"
 #include "MilitaryMappings/UnitMappings.h"
+#include "States/HoI4States.h"
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/GovernmentMapper.h"
 #include "../Mappers/GraphicsMapper.h"
@@ -80,6 +80,7 @@ namespace HoI4
 
 class Advisor;
 class Buildings;
+class DefaultState;
 class DivisionTemplateType;
 class Events;
 class State;
@@ -142,7 +143,7 @@ class World: commonItems::parser
 		void reportIndustryLevels();
 		void reportCountryIndustry();
 		void reportDefaultIndustry();
-		pair<string, array<int, 3>> getDefaultStateIndustry(const HoI4::State* state);
+		std::pair<std::string, std::array<int, 3>> getDefaultStateIndustry(const HoI4::DefaultState& state);
 		void reportDefaultIndustry(const map<string, array<int, 3>>& countryIndustry);
 
 		void convertResources();

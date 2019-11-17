@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -22,21 +22,21 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "ImpassableProvinces.h"
-#include "HoI4State.h"
+#include "States/DefaultState.h"
 #include "../Configuration.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 
 
 
-HoI4::impassableProvinces::impassableProvinces(const std::map<int, HoI4::State*>& states)
+HoI4::impassableProvinces::impassableProvinces(const std::map<int, HoI4::DefaultState>& states)
 {
 	LOG(LogLevel::Info) << "Finding impassable provinces";
 	for (auto state: states)
 	{
-		if (state.second->isImpassable())
+		if (state.second.isImpassable())
 		{
-			for (auto province: state.second->getProvinces())
+			for (auto province: state.second.getProvinces())
 			{
 				impassibleProvinces.insert(province);
 			}

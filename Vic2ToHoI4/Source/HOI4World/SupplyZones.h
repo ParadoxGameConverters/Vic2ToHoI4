@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -41,22 +41,22 @@ class HoI4SupplyZone;
 namespace HoI4
 {
 
-class State;
+class DefaultState;
 
 
 
 class SupplyZones: commonItems::parser
 {
 	public:
-		explicit SupplyZones(const std::map<int, HoI4::State*>& defaultStates);
+		explicit SupplyZones(const std::map<int, HoI4::DefaultState>& defaultStates);
 		void output();
-		void convertSupplyZones(const HoI4States* states);
+		void convertSupplyZones(const HoI4States& states);
 
 	private:
 		SupplyZones(const SupplyZones&) = delete;
 		SupplyZones& operator=(const SupplyZones&) = delete;
 
-		void importStates(const std::map<int, HoI4::State*>& defaultStates);
+		void importStates(const std::map<int, HoI4::DefaultState>& defaultStates);
 
 		std::map<int, std::set<int>> defaultStateToProvinceMap;
 		std::map<int, std::string> supplyZonesFilenames;

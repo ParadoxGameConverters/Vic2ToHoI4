@@ -572,12 +572,19 @@ void HoI4Country::convertAirforce(const HoI4::UnitMappings& unitMap)
 
 void HoI4Country::convertArmies(const HoI4::militaryMappings& theMilitaryMappings)
 {
-	int backupLocation = 0;
+	std::optional<int> backupLocation;
 	if (capitalState != nullptr)
 	{
 		backupLocation = capitalState->getVPLocation();
 	}
-	theArmy.convertArmies(theMilitaryMappings, backupLocation, theConfiguration.getForceMultiplier());
+	if (backupLocation)
+	{
+		theArmy.convertArmies(theMilitaryMappings, *backupLocation, theConfiguration.getForceMultiplier());
+	}
+	else
+	{
+		theArmy.convertArmies(theMilitaryMappings, 0, theConfiguration.getForceMultiplier());
+	}
 }
 
 

@@ -147,7 +147,7 @@ bool Vic2::State::ownerHasNoCores() const
 	{
 		for (auto country: province->getCores())
 		{
-			if (country->getTag() == owner)
+			if (country == owner)
 			{
 				return false;
 			}

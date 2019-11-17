@@ -1,4 +1,4 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
+/*Copyright (c) 2019 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -219,26 +219,22 @@ void Vic2::Country::eatCountry(Vic2::Country* target)
 	for (auto core : target->cores)
 	{
 		addCore(core);
-		core->addCoreString(tag);
-		core->removeCoreString(target->tag);
+		core->addCore(tag);
+		core->removeCore(target->tag);
 	}
-
 	for (auto provinceItr : target->provinces)
 	{
 		addProvince(provinceItr);
-		provinceItr.second->setOwner(this);
+		provinceItr.second->setOwner(tag);
 	}
-
 	for (auto tech: target->techs)
 	{
 		techs.insert(tech);
 	}
-
 	for (auto itr : target->discoveredInventions)
 	{
 		discoveredInventions.insert(itr);
 	}
-
 	armies.insert(armies.end(), target->armies.begin(), target->armies.end());
 
 	// coreless, landless countries will be cleaned up automatically
@@ -341,14 +337,14 @@ map<string, int> Vic2::Country::determineCultureSizes()
 	{
 		for (auto pop: province.second->getPops())
 		{
-			string popCulture = pop->getCulture();
+			string popCulture = pop.getCulture();
 			auto cultureSize = cultureSizes.find(popCulture);
 			if (cultureSize == cultureSizes.end())
 			{
 				cultureSizes.insert(make_pair(popCulture, 0));
 				cultureSize = cultureSizes.find(popCulture);
 			}
-			cultureSize->second += pop->getSize();
+			cultureSize->second += pop.getSize();
 		}
 	}
 
@@ -516,8 +512,8 @@ double Vic2::Country::getAverageMilitancy() const
 		auto pops = province.second->getPops();
 		for (auto pop: pops)
 		{
-			int size = pop->getSize();
-			totalMilitancy += pop->getMilitancy() * size;
+			int size = pop.getSize();
+			totalMilitancy += pop.getMilitancy() * size;
 			totalPopulation += size;
 		}
 	}
@@ -535,8 +531,8 @@ float Vic2::Country::getAverageIssueSupport(const std::string& issueName) const
 		auto pops = province.second->getPops();
 		for (auto pop: pops)
 		{
-			int size = pop->getSize();
-			totalSupport += pop->getIssue(issueName) * size;
+			int size = pop.getSize();
+			totalSupport += pop.getIssue(issueName) * size;
 			totalPopulation += size;
 		}
 	}
