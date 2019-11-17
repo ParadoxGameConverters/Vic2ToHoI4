@@ -1217,7 +1217,6 @@ void HoI4::World::output()
 	decisions->output();
 	events->output();
 	onActions->output(majorIdeologies);
-	decisions->output();
 	peaces->output(majorIdeologies);
 	outputIdeologies();
 	outputLeaderTraits();
