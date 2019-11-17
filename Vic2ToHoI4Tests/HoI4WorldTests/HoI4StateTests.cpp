@@ -85,7 +85,7 @@ TEST(HoI4World_StateTests, idIsOutput)
 	expectedOutput << "\t}\n";
 	expectedOutput << "\tmanpower=0\n";
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
-	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "\tstate_category=wasteland\n";
 	expectedOutput << "}\n";
 
 	std::stringstream configInput;
@@ -150,7 +150,7 @@ TEST(HoI4World_StateTests, provincesAreOutput)
 	expectedOutput << "\t}\n";
 	expectedOutput << "\tmanpower=0\n";
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
-	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "\tstate_category=wasteland\n";
 	expectedOutput << "}\n";
 
 	std::stringstream configInput;
@@ -201,7 +201,7 @@ TEST(HoI4World_StateTests, ownerIsOutput)
 	expectedOutput << "\t}\n";
 	expectedOutput << "\tmanpower=0\n";
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
-	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "\tstate_category=wasteland\n";
 	expectedOutput << "}\n";
 
 	std::stringstream configInput;
@@ -275,7 +275,7 @@ TEST(HoI4World_StateTests, coresAreOutput)
 	expectedOutput << "\t}\n";
 	expectedOutput << "\tmanpower=0\n";
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
-	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "\tstate_category=wasteland\n";
 	expectedOutput << "}\n";
 
 	std::stringstream configInput;
@@ -324,13 +324,6 @@ TEST(HoI4World_StateTests, impassableIsOutput)
 	expectedOutput << "\n";
 	expectedOutput << "\thistory={\n";
 	expectedOutput << "\t\towner = TAG\n";
-	expectedOutput << "\t\tbuildings = {\n";
-	expectedOutput << "\t\t\tinfrastructure = 0\n";
-	expectedOutput << "\t\t\tindustrial_complex = 0\n";
-	expectedOutput << "\t\t\tarms_factory = 0\n";
-	expectedOutput << "\t\t\tair_base = 0\n";
-	expectedOutput << "\n";
-	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\n";
 	expectedOutput << "\tprovinces={\n";
@@ -339,7 +332,7 @@ TEST(HoI4World_StateTests, impassableIsOutput)
 	expectedOutput << "\t}\n";
 	expectedOutput << "\tmanpower=0\n";
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
-	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "\tstate_category=wasteland\n";
 	expectedOutput << "}\n";
 
 	std::stringstream configInput;
@@ -1042,7 +1035,7 @@ TEST(HoI4World_StateTests, debugVpsAreOutput)
 	expectedOutput << "\t}\n";
 	expectedOutput << "\tmanpower=0\n";
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
-	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "\tstate_category=wasteland\n";
 	expectedOutput << "}\n";
 
 	std::stringstream output;
@@ -1125,7 +1118,7 @@ TEST(HoI4World_StateTests, navalBasesAreOutput)
 	expectedOutput << "\t}\n";
 	expectedOutput << "\tmanpower=0\n";
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
-	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "\tstate_category=wasteland\n";
 	expectedOutput << "}\n";
 
 	std::stringstream configInput;
@@ -1173,7 +1166,7 @@ TEST(HoI4World_StateTests, resourcesCanBeAdded)
 	expectedOutput << "\t}\n";
 	expectedOutput << "\tmanpower=0\n";
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
-	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "\tstate_category=wasteland\n";
 	expectedOutput << "}\n";
 
 	std::stringstream configInput;
@@ -1242,7 +1235,7 @@ TEST(HoI4World_StateTests, controllersCanBeAdded)
 	expectedOutput << "\t}\n";
 	expectedOutput << "\tmanpower=0\n";
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
-	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "\tstate_category=wasteland\n";
 	expectedOutput << "}\n";
 
 	std::stringstream configInput;
@@ -1311,7 +1304,7 @@ TEST(HoI4World_StateTests, controllersConvertWithHoI4Tag)
 	expectedOutput << "\t}\n";
 	expectedOutput << "\tmanpower=0\n";
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
-	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "\tstate_category=wasteland\n";
 	expectedOutput << "}\n";
 
 	std::stringstream configInput;
@@ -1372,7 +1365,7 @@ TEST(HoI4World_StateTests, controllersDontConvertForRebels)
 	expectedOutput << "\t}\n";
 	expectedOutput << "\tmanpower=0\n";
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
-	expectedOutput << "\tstate_category=pastoral\n";
+	expectedOutput << "\tstate_category=wasteland\n";
 	expectedOutput << "}\n";
 
 	std::stringstream configInput;

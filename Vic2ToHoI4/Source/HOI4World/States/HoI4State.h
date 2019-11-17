@@ -135,7 +135,7 @@ class State
 		int civFactories = 0;
 		int milFactories = 0;
 		int dockyards = 0;
-		std::string category = "pastoral";
+		std::string category = "wasteland";
 		int infrastructure = 0;
 
 		std::map<int, int> navalBases;
