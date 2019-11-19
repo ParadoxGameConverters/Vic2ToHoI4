@@ -429,7 +429,7 @@ TEST(HoI4World_DecisionsCategoryTests, HoldTheIdeologyNationalReferendumCanBeUpd
 	expectedOutput << "\thold_the_democratic_national_referendum = {\n";
 	expectedOutput << "\n";
 	expectedOutput << "\t\tcomplete_effect = {\n";
-	expectedOutput << "\t\t\tcountry_event = { id = political.122 }\n";
+	expectedOutput << "\t\t\tcountry_event = { id = conv.political.122 }\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";
