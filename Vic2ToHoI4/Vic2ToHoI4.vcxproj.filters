@@ -37,6 +37,9 @@
     <Filter Include="HoI4World\States">
       <UniqueIdentifier>{a406c7c1-4094-4e2c-b635-d37cc87ac449}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data Files">
+      <UniqueIdentifier>{bd1c48a8-9c17-428e-b26d-b22f3bf225c3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -716,5 +719,91 @@
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategories.h">
       <Filter>HoI4World\Decisions</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\ai_peaces.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configuration.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\converterFocuses.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\converterIdeas.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\converterIdeologies.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\converterLeaderTraits.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\country_mappings.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\cultureGroupToGraphics.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\FAQ.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\governmentMapping.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\HPM_province_mappings.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\ideologicalAdvisors.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\ideologicalDecisions.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\ideologicalIdeas.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\license.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\merge_nations.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\names.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\positions.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\province_mappings.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\ReadMe.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Resources.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\shipTypes.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\SupportedConvertersDefault.xml">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\tech_mapping.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\unit_mappings.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Vic2Localisations.csv">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Vic2toHoI4DefaultConfiguration.xml">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\FlagsToIdeasMappings.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>
