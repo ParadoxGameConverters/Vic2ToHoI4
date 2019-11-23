@@ -145,22 +145,23 @@ void clearOutputFolder()
 }
 
 
-void createModFile();
+void createModFiles();
 void renameOutputFolder();
 void output(HoI4::World& destWorld)
 {
-	createModFile();
+	createModFiles();
 	renameOutputFolder();
 	copyFlags(destWorld.getCountries());
 	destWorld.output();
 }
 
 
-void createModFile()
+void createModFiles()
 {
 	LOG(LogLevel::Info) << "Outputting mod";
 	if (!Utils::copyFolder("blankMod/output", "output/output"))
 	{
+		LOG(LogLevel::Error) << "Could not copy blankMod";
 		exit(-1);
 	}
 
@@ -171,20 +172,28 @@ void createModFile()
 		exit(-1);
 	}
 
-	HoI4::Version versionThatWantsBOM("1.3.3");
-	HoI4::Version thisVersion = theConfiguration.getHOI4Version();
-	if (thisVersion >= versionThatWantsBOM)
-	{
-		modFile << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
-	}
 	modFile << "name = \"Converted - " << theConfiguration.getOutputName() << "\"\n";
 	modFile << "path = \"mod/" << theConfiguration.getOutputName() << "/\"\n";
 	modFile << "user_dir = \"" << theConfiguration.getOutputName() << "_user_dir\"\n";
 	modFile << "replace_path=\"common/ideologies\"\n";
 	modFile << "replace_path=\"history/countries\"\n";
 	modFile << "replace_path=\"history/states\"\n";
-	modFile << "supported_version=\"" << thisVersion << "\"";
+	modFile << "supported_version=\"1.8.1\"";
 	modFile.close();
+
+	ofstream descriptorFile("output/output/descriptor.mod");
+	if (!descriptorFile.is_open())
+	{
+		LOG(LogLevel::Error) << "Could not create descriptor.mod";
+		exit(-1);
+	}
+	descriptorFile << "name = \"Converted - " << theConfiguration.getOutputName() << "\"\n";
+	descriptorFile << "user_dir = \"" << theConfiguration.getOutputName() << "_user_dir\"\n";
+	descriptorFile << "replace_path=\"common/ideologies\"\n";
+	descriptorFile << "replace_path=\"history/countries\"\n";
+	descriptorFile << "replace_path=\"history/states\"\n";
+	descriptorFile << "supported_version=\"1.8.1\"";
+	descriptorFile.close();
 }
 
 
