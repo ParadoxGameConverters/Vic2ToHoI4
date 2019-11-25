@@ -124,7 +124,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 }
 
 
-shared_ptr<HoI4Country> HoI4::World::findCountry(const string& countryTag)
+shared_ptr<HoI4::Country> HoI4::World::findCountry(const string& countryTag)
 {
 	auto country = countries.find(countryTag);
 	if (country == countries.end())
@@ -171,7 +171,7 @@ void HoI4::World::convertCountry(
 		return;
 	}
 
-	HoI4Country* destCountry = nullptr;
+	HoI4::Country* destCountry = nullptr;
 	auto possibleHoI4Tag = countryMap.getHoI4Tag(country.first);
 	if (!possibleHoI4Tag)
 	{
@@ -179,7 +179,7 @@ void HoI4::World::convertCountry(
 	}
 	else
 	{
-		destCountry = new HoI4Country(*possibleHoI4Tag, this);
+		destCountry = new HoI4::Country(*possibleHoI4Tag, this);
 
 		destCountry->initFromV2Country(
 			*sourceWorld,
@@ -940,7 +940,7 @@ double HoI4::World::getStrongestCountryStrength() const
 }
 
 
-int HoI4::World::calculateStrengthVPs(shared_ptr<HoI4Country> country, double greatestStrength) const
+int HoI4::World::calculateStrengthVPs(shared_ptr<HoI4::Country> country, double greatestStrength) const
 {
 	double relativeStrength = country->getStrengthOverTime(1.0) / greatestStrength;
 	return static_cast<int>(relativeStrength * 30.0);
@@ -1018,7 +1018,7 @@ void HoI4::World::createFactions()
 			factionsLog << "\n";
 		}
 
-		vector<shared_ptr<HoI4Country>> factionMembers;
+		vector<shared_ptr<HoI4::Country>> factionMembers;
 		factionMembers.push_back(leader);
 
 		string leaderIdeology = leader->getGovernmentIdeology();
@@ -1095,7 +1095,7 @@ void HoI4::World::createFactions()
 }
 
 
-void HoI4::World::logFactionMember(ofstream& factionsLog, shared_ptr<HoI4Country> member) const
+void HoI4::World::logFactionMember(ofstream& factionsLog, shared_ptr<HoI4::Country> member) const
 {
 	auto possibleName = member->getSourceCountry()->getName("english");
 	if (possibleName)
@@ -1113,7 +1113,7 @@ void HoI4::World::logFactionMember(ofstream& factionsLog, shared_ptr<HoI4Country
 }
 
 
-optional<string> HoI4::World::returnSphereLeader(shared_ptr<HoI4Country> possibleSphereling) const
+optional<string> HoI4::World::returnSphereLeader(shared_ptr<HoI4::Country> possibleSphereling) const
 {
 	for (auto greatPower: greatPowers)
 	{

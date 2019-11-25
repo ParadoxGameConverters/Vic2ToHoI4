@@ -38,7 +38,7 @@ static std::map<std::string, HoI4Focus> loadedFocuses;
 
 
 
-HoI4FocusTree::HoI4FocusTree(const HoI4Country& country) :
+HoI4FocusTree::HoI4FocusTree(const HoI4::Country& country):
 	srcCountryTag(country.getSourceCountry()->getTag()),
 	dstCountryTag(country.getTag())
 {
@@ -546,7 +546,7 @@ void HoI4FocusTree::addRadicalGenericFocuses(int relativePosition)
 }
 
 
-shared_ptr<HoI4FocusTree> HoI4FocusTree::makeCustomizedCopy(const HoI4Country& country) const
+shared_ptr<HoI4FocusTree> HoI4FocusTree::makeCustomizedCopy(const HoI4::Country& country) const
 {
 	auto newFocusTree = make_shared<HoI4FocusTree>(country);
 
@@ -561,7 +561,7 @@ shared_ptr<HoI4FocusTree> HoI4FocusTree::makeCustomizedCopy(const HoI4Country& c
 }
 
 
-void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4Country> Home, vector<shared_ptr<HoI4Country>>& CountriesToContain)
+void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home, vector<shared_ptr<HoI4::Country>>& CountriesToContain)
 {
 	double WTModifier = 1;
 	if (Home->getGovernmentIdeology() == "democratic")
@@ -715,7 +715,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4Country> Home, ve
 }
 
 
-void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4Country> Home, const vector<shared_ptr<HoI4Country>>& targetColonies, const vector<shared_ptr<HoI4Country>>& annexationTargets)
+void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& targetColonies, const vector<shared_ptr<HoI4::Country>>& annexationTargets)
 {
 	auto possibleHomeCountryAdjective = Home->getSourceCountry()->getAdjective("english");
 	string homeCountryAdjective;
@@ -1029,7 +1029,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4Country> H
 	}
 }
 
-void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4Country> Home, const vector<shared_ptr<HoI4Country>>& coupTargets, const std::set<std::string>& majorIdeologies)
+void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& coupTargets, const std::set<std::string>& majorIdeologies)
 {
 	if (coupTargets.size() > 0)
 	{
@@ -1149,7 +1149,7 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4Country> Home, const v
 	return;
 }
 
-void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4Country> Home, const vector<shared_ptr<HoI4Country>>& warTargets, HoI4::Events* events)
+void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& warTargets, HoI4::Events* events)
 {
 	if (warTargets.size() > 0)
 	{
@@ -1238,7 +1238,7 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4Country> Home, const ve
 	}
 }
 
-void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4Country> Home, const vector<shared_ptr<HoI4Country>>& annexationTargets, HoI4::Events* events)
+void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& annexationTargets, HoI4::Events* events)
 {
 	//The Following 'if' statement prevents converter from generating focuses if annexationTargets.size > 1
 	//Keep this 'if' statement off until we figure out how to handle Fascist NF's
@@ -1335,7 +1335,7 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4Country> Home, con
 	//}
 }
 
-void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4Country> Home, const vector<shared_ptr<HoI4Country>>& sudetenTargets, const vector<vector<int>>& demandedStates, const HoI4::World* world)
+void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& sudetenTargets, const vector<vector<int>>& demandedStates, const HoI4::World* world)
 {
 	HoI4::Events* events = world->getEvents();
 
@@ -1444,7 +1444,7 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4Country> Home, const 
 }
 
 
-void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4Country> Home, const vector<shared_ptr<HoI4Country>>& newAllies, const vector<shared_ptr<HoI4Country>>& GCTargets, const string& ideology, HoI4::Events* events)
+void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& newAllies, const vector<shared_ptr<HoI4::Country>>& GCTargets, const string& ideology, HoI4::Events* events)
 {
 	int numAllies = newAllies.size();
 	string ideologyShort = ideology.substr(0, 3);
@@ -1598,7 +1598,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4Country> Home, const vector<sh
 }
 
 
-void HoI4FocusTree::addNeighborWarBranch(const string& tag, const vector<shared_ptr<HoI4Country>>& weakNeighbors, const shared_ptr<HoI4Country>& targetNeighbors, const string targetName, const date startDate, int numWarsWithNeighbors)
+void HoI4FocusTree::addNeighborWarBranch(const string& tag, const vector<shared_ptr<HoI4::Country>>& weakNeighbors, const shared_ptr<HoI4::Country>& targetNeighbors, const string targetName, const date startDate, int numWarsWithNeighbors)
 {
 	shared_ptr<HoI4Focus> newFocus = loadedFocuses.find("NeighborWar")->second.makeCustomizedCopy(tag);
 	newFocus->id = "NeighborWar" + targetNeighbors->getTag() + tag;

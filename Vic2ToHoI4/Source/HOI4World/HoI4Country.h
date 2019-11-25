@@ -69,10 +69,13 @@ class graphicsMapper;
 
 
 
-class HoI4Country
+namespace HoI4
+{
+
+class Country
 {
 	public:
-		HoI4Country(const std::string& _tag, const HoI4::World* _theWorld): theWorld(_theWorld), tag(_tag) {};
+		Country(const std::string& _tag, const HoI4::World* _theWorld): theWorld(_theWorld), tag(_tag) {};
 
 		void initFromV2Country(
 			const Vic2::World& _srcWorld,
@@ -136,7 +139,7 @@ class HoI4Country
 		double getEconomicStrength(double years) const;
 
 		bool isHuman() const { return human; }
-		const std::map<std::string, HoI4Relations*>&	getRelations() const { return relations; }
+		const std::map<std::string, HoI4Relations*>& getRelations() const { return relations; }
 		std::set<int> getProvinces() const { return provinces; }
 		std::string getTag() const { return tag; }
 		const Vic2::Country* getSourceCountry() const { return srcCountry; }
@@ -152,7 +155,7 @@ class HoI4Country
 		int getCapitalStateNum() const { return capitalStateNum; }
 		const std::string getSphereLeader() const { return sphereLeader; }
 		const Vic2::Party getRulingParty() const { return rulingParty; }
-		std::set<Vic2::Party, std::function<bool (const Vic2::Party&, const Vic2::Party&)>>
+		std::set<Vic2::Party, std::function<bool(const Vic2::Party&, const Vic2::Party&)>>
 			getParties() const { return parties; }
 		std::map<int, HoI4::State*> getStates() const { return states; }
 		bool isInFaction() const { return faction != nullptr; }
@@ -164,8 +167,8 @@ class HoI4Country
 		std::set<std::string>& editAllies() { return allies; }
 
 	private:
-		HoI4Country(const HoI4Country&) = delete;
-		HoI4Country& operator=(const HoI4Country&) = delete;
+		Country(const Country&) = delete;
+		Country& operator=(const Country&) = delete;
 
 		void determineFilename();
 		void initIdeas(HoI4::namesMapper& theNames);
@@ -228,7 +231,7 @@ class HoI4Country
 		std::string governmentIdeology = "neutrality";
 		std::string leaderIdeology = "conservatism_neutral";
 		Vic2::Party rulingParty;
-		std::set<Vic2::Party, std::function<bool (const Vic2::Party&, const Vic2::Party&)>> parties;
+		std::set<Vic2::Party, std::function<bool(const Vic2::Party&, const Vic2::Party&)>> parties;
 		std::map<std::string, int> ideologySupport;
 		date lastElection;
 
@@ -258,7 +261,7 @@ class HoI4Country
 		bool civilized = false;
 		std::vector<int> brigs;
 		int convoys = 0;
-		
+
 		int provinceCount = 0;
 		long armyStrength = 0;
 		double militaryFactories = 0.0;
@@ -289,6 +292,8 @@ class HoI4Country
 
 		std::shared_ptr<HoI4FocusTree> nationalFocus;
 };
+
+}
 
 
 
