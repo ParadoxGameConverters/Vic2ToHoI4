@@ -31,7 +31,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 class group: commonItems::parser
 {
 	public:
-		group(std::istream& theStream);
+		explicit group(std::istream& theStream);
 
 		auto getCultures() const { return cultures; }
 

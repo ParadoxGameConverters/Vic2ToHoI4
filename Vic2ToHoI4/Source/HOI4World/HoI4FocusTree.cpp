@@ -1535,12 +1535,10 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4Country> Home, const vector<sh
 		}
 
 		string prereq = "";
-		int y2 = 1;
 		//figuring out location of WG
 		shared_ptr<HoI4Focus> newFocus = loadedFocuses.find("GP_War")->second.makeCustomizedCopy(Home->getTag());
 		if (newAllies.size() > 0)
 		{
-			y2 = 2;
 			for (unsigned int i2 = 0; i2 < newAllies.size(); i2++)
 			{
 				newFocus->prerequisites.push_back("= { focus = Alliance_" + newAllies[i2]->getTag() + Home->getTag() + " }");

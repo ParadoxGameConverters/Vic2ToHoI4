@@ -1140,7 +1140,6 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::communistWarCreator(shared_ptr<H
 			//TODO
 		}
 	}
-	int start = 0;
 	for (auto GC : GCTargets)
 	{
 		auto relations = Leader->getRelations(GC->getTag());

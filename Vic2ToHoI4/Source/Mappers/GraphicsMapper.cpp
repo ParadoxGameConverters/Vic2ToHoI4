@@ -30,7 +30,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 class ideologyToPortraitsMapping: commonItems::parser
 {
 	public:
-		ideologyToPortraitsMapping(std::istream& theStream);
+		explicit ideologyToPortraitsMapping(std::istream& theStream);
 
 		auto getMap() const { return theMap; }
 
@@ -54,7 +54,7 @@ ideologyToPortraitsMapping::ideologyToPortraitsMapping(std::istream& theStream)
 class graphicsCultureGroup: commonItems::parser
 {
 	public:
-	graphicsCultureGroup(std::istream& theStream);
+		explicit graphicsCultureGroup(std::istream& theStream);
 
 		auto getLeaderPortraits() const { return leaderPortraits; }
 		auto getIdeologyMinisterPortraits() const { return ideologyMinisterPortraits; }

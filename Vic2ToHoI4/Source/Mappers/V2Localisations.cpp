@@ -90,10 +90,8 @@ void V2Localisations::processLine(string line)
 	int division = line.find_first_of(';');
 	string key = line.substr(0, division);
 
-	bool pause = false;
 	for (auto language: languages)
 	{
-		pause = false;
 		string result = getNextLocalisation(line, division);
 		auto UTF8Result = Utils::convertWin1252ToUTF8(result);
 
