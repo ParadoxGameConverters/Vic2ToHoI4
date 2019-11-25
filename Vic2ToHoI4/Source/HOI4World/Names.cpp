@@ -65,47 +65,47 @@ class culture: commonItems::parser
 
 culture::culture(std::istream& theStream)
 {
-	registerKeyword(std::regex("first_names"), [this](const std::string unused, std::istream& theStream){
+	registerKeyword(std::regex("first_names"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::stringList firstNameStrings(theStream);
 		maleNames = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("last_names"), [this](const std::string unused, std::istream& theStream){
+	registerKeyword(std::regex("last_names"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::stringList firstNameStrings(theStream);
 		surnames = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("female_names"), [this](const std::string unused, std::istream& theStream){
+	registerKeyword(std::regex("female_names"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::stringList firstNameStrings(theStream);
 		femaleNames = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("female_surnames"), [this](const std::string unused, std::istream& theStream){
+	registerKeyword(std::regex("female_surnames"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::stringList firstNameStrings(theStream);
 		femaleSurnames = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("callsigns"), [this](const std::string unused, std::istream& theStream){
+	registerKeyword(std::regex("callsigns"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::stringList firstNameStrings(theStream);
 		callsigns = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("industry_companies"), [this](const std::string unused, std::istream& theStream){
+	registerKeyword(std::regex("industry_companies"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::stringList firstNameStrings(theStream);
 		industryCompanies = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("electronic_companies"), [this](const std::string unused, std::istream& theStream){
+	registerKeyword(std::regex("electronic_companies"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::stringList firstNameStrings(theStream);
 		electronicCompanies = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("car_companies"), [this](const std::string unused, std::istream& theStream){
+	registerKeyword(std::regex("car_companies"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::stringList firstNameStrings(theStream);
 		carCompanies = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("naval_companies"), [this](const std::string unused, std::istream& theStream){
+	registerKeyword(std::regex("naval_companies"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::stringList firstNameStrings(theStream);
 		navalCompanies = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("weapon_companies"), [this](const std::string unused, std::istream& theStream){
+	registerKeyword(std::regex("weapon_companies"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::stringList firstNameStrings(theStream);
 		weaponCompanies = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("aircraft_companies"), [this](const std::string unused, std::istream& theStream){
+	registerKeyword(std::regex("aircraft_companies"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::stringList firstNameStrings(theStream);
 		aircraftCompanies = firstNameStrings.getStrings();
 	});
