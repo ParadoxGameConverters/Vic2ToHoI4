@@ -32,7 +32,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 class culture: commonItems::parser
 {
 	public:
-		culture(std::istream& theStream);
+		explicit culture(std::istream& theStream);
 
 		void convertNamesToUTF8();
 
@@ -125,7 +125,7 @@ void::culture::convertNamesToUTF8()
 class cultureGroup: commonItems::parser
 {
 	public:
-		cultureGroup(std::istream& theStream);
+		explicit cultureGroup(std::istream& theStream);
 
 		auto getMaleNames() const { return maleNamesMap; }
 		auto getSurnames() const { return surnamesMap; }

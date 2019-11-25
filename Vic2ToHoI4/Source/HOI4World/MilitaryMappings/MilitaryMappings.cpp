@@ -62,7 +62,7 @@ namespace HoI4
 class DivisionTemplatesImporter: commonItems::parser
 {
 	public:
-		DivisionTemplatesImporter(std::istream& theStream);
+		explicit DivisionTemplatesImporter(std::istream& theStream);
 
 		auto getDivisionTemplates() const { return divisionTemplates; }
 
@@ -97,7 +97,7 @@ namespace HoI4
 class substitutesImporter: commonItems::parser
 {
 	public:
-		substitutesImporter(std::istream& theStream);
+		explicit substitutesImporter(std::istream& theStream);
 
 		auto getSubstitutes() const { return substitutes; }
 

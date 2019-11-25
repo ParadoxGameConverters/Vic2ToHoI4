@@ -28,7 +28,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 class actualResources: commonItems::parser
 {
 	public:
-		actualResources(std::istream& theStream);
+		explicit actualResources(std::istream& theStream);
 
 		auto getResources() const { return theResources; }
 
@@ -51,7 +51,7 @@ actualResources::actualResources(std::istream& theStream)
 class link: commonItems::parser
 {
 	public:
-		link(std::istream& theStream);
+		explicit link(std::istream& theStream);
 
 		auto getProvinceNum() const { return provinceNum; }
 		auto getResources() const { return theResources; }
