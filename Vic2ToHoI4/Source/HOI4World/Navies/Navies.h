@@ -65,8 +65,8 @@ class Navies
 		Navies& operator=(const Navies&) = default;
 		Navies& operator=(Navies&&) = default;
 
-		void outputLegacy(std::ostream& output);
-		void outputMtg(std::ostream& output);
+		void outputLegacy(std::ostream& output) const;
+		void outputMtg(std::ostream& output) const;
 
 	private:
 		std::vector<HoI4::LegacyNavy> legacyNavies;

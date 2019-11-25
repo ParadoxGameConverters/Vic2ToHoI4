@@ -476,6 +476,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategories.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Hoi4CountryOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -528,6 +531,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\States">
       <UniqueIdentifier>{25fa4931-200a-4006-91b0-965a66c7fa25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter">
+      <UniqueIdentifier>{dda4426a-5184-48ef-91a3-66ee0746d4c4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

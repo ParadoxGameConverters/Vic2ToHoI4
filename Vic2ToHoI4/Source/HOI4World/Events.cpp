@@ -235,7 +235,7 @@ void HoI4::Events::createFactionEvents(std::shared_ptr<HoI4::Country> Leader, st
 	nfEvent.triggeredOnly = true;
 	std::string yesOption = "= {\n";
 	yesOption += "		name = \"Yes\"\n";
-	if (Leader->getFaction() != nullptr)
+	if (Leader->isInFaction())
 	{
 		yesOption += "		" + newAlly->getTag() + " = {\n";
 		yesOption += "			add_ai_strategy = {\n";

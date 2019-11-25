@@ -839,7 +839,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4:
 	auto newAllies = GetMorePossibleAllies(Leader);
 	if (theConfiguration.getCreateFactions())
 	{
-		if (newAllies.size() > 0 && Leader->getFaction() == nullptr)
+		if (newAllies.size() > 0 && Leader->isInFaction())
 		{
 			vector<shared_ptr<HoI4::Country>> self;
 			self.push_back(Leader);
@@ -914,7 +914,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4:
 					}
 					if (theConfiguration.getCreateFactions())
 					{
-						if (GC->getFaction() == nullptr)
+						if (GC->isInFaction())
 						{
 							vector<shared_ptr<HoI4::Country>> self;
 							self.push_back(GC);

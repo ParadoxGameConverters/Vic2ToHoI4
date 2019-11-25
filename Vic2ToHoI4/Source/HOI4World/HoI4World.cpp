@@ -55,6 +55,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Mappers/TechMapper.h"
 #include "../Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "ParserHelpers.h"
+#include "../Hoi4Outputter/Hoi4CountryOutputter.h"
 #include <fstream>
 using namespace std;
 
@@ -1246,7 +1247,7 @@ void HoI4::World::outputCommonCountries() const
 	{
 		if (country.second->getCapitalStateNum() != 0)
 		{
-			country.second->outputToCommonCountriesFile(allCountriesFile);
+			outputToCommonCountriesFile(allCountriesFile, *country.second);
 		}
 	}
 
@@ -1275,7 +1276,7 @@ void HoI4::World::outputColorsfile() const
 	{
 		if (country.second->getCapitalStateNum() != 0)
 		{
-			country.second->outputColors(output);
+			outputColors(output, *country.second);
 		}
 	}
 
@@ -1298,7 +1299,7 @@ void HoI4::World::outputNames() const
 	{
 		if (country.second->getCapitalStateNum() != 0)
 		{
-			country.second->outputToNamesFiles(namesFile, theNames);
+			outputToNamesFiles(namesFile, theNames, *country.second);
 		}
 	}
 }
@@ -1318,7 +1319,7 @@ void HoI4::World::outputUnitNames() const
 	{
 		if (country.second->getCapitalStateNum() != 0)
 		{
-			country.second->outputToUnitNamesFiles(namesFile);
+			outputToUnitNamesFiles(namesFile, *country.second);
 		}
 	}
 }
@@ -1403,7 +1404,13 @@ void HoI4::World::outputCountries()
 		if (country.second->getCapitalStateNum() != 0)
 		{
 			const HoI4::militaryMappings& specificMilitaryMappings = theMilitaryMappings->getMilitaryMappings(theConfiguration.getVic2Mods());
-			country.second->output(activeIdeologicalAdvisors, specificMilitaryMappings.getDivisionTemplates(), theNames, theGraphics);
+			HoI4::outputCountry(
+				activeIdeologicalAdvisors,
+				specificMilitaryMappings.getDivisionTemplates(),
+				theNames,
+				theGraphics,
+				*country.second
+			);
 		}
 	}
 
@@ -1419,7 +1426,7 @@ void HoI4::World::outputCountries()
 	{
 		if (country.second->getCapitalStateNum() != 0)
 		{
-			country.second->outputIdeaGraphics(ideasFile, theGraphics);
+			outputIdeaGraphics(ideasFile, theGraphics, *country.second);
 		}
 	}
 	ideasFile << "\n";

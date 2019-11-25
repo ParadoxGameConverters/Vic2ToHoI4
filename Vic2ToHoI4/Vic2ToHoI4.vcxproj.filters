@@ -43,6 +43,9 @@
     <Filter Include="Flags">
       <UniqueIdentifier>{9832f529-79c1-4923-942d-74508654fa25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hoi4Outputter">
+      <UniqueIdentifier>{5e45f559-49a6-4b1e-b092-b60db525cf1b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -380,6 +383,9 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategories.cpp">
       <Filter>HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Hoi4CountryOutputter.cpp">
+      <Filter>Hoi4Outputter</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -721,6 +727,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategories.h">
       <Filter>HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Hoi4CountryOutputter.h">
+      <Filter>Hoi4Outputter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

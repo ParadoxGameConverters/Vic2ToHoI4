@@ -126,7 +126,7 @@ HoI4::Navies::Navies(
 }
 
 
-void HoI4::Navies::outputLegacy(std::ostream& output)
+void HoI4::Navies::outputLegacy(std::ostream& output) const
 {
 	output << "units = {\n";
 	for (auto navy: legacyNavies)
@@ -137,7 +137,7 @@ void HoI4::Navies::outputLegacy(std::ostream& output)
 }
 
 
-void HoI4::Navies::outputMtg(std::ostream& output)
+void HoI4::Navies::outputMtg(std::ostream& output) const
 {
 	output << "units = {\n";
 	for (auto navy: mtgNavies)

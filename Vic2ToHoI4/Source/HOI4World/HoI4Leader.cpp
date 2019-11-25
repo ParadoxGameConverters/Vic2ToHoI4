@@ -57,7 +57,7 @@ HoI4::General::General(const Vic2::Leader* srcLeader, const std::string& portrai
 }
 
 
-std::ofstream& HoI4::operator<< (std::ofstream& output, const HoI4::General& instance)
+std::ostream& HoI4::operator<<(std::ostream& output, const HoI4::General& instance)
 {
 	output << "create_corps_commander = {\n";
 	output << "\tname = \"" << instance.name << "\"\n";
@@ -110,7 +110,7 @@ HoI4::Admiral::Admiral(const Vic2::Leader* srcLeader, const std::string& portrai
 }
 
 
-std::ofstream& HoI4::operator<< (std::ofstream& output, const HoI4::Admiral& instance)
+std::ostream& HoI4::operator<<(std::ostream& output, const HoI4::Admiral& instance)
 {
 	output << "create_navy_leader = {\n";
 	output << "\tname = \"" << instance.name << "\"\n";
