@@ -1135,11 +1135,11 @@ void HoI4Country::outputWarSupport(ofstream& output) const
 }
 
 
-void HoI4Country::outputCountryLeader(ofstream& output, HoI4::namesMapper& theNames, graphicsMapper& theGraphics) const
+void HoI4Country::outputCountryLeader(std::ofstream& output, HoI4::namesMapper& theNames, graphicsMapper& theGraphics) const
 {
-	optional<string> firstName = theNames.getMaleName(srcCountry->getPrimaryCulture());
-	optional<string> surname = theNames.getSurname(srcCountry->getPrimaryCulture());
-	string portrait = theGraphics.getLeaderPortrait(srcCountry->getPrimaryCultureGroup(), governmentIdeology);
+	std::optional<std::string> firstName = theNames.getMaleName(srcCountry->getPrimaryCulture());
+	std::optional<std::string> surname = theNames.getSurname(srcCountry->getPrimaryCulture());
+	std::string portrait = theGraphics.getLeaderPortrait(srcCountry->getPrimaryCultureGroup(), governmentIdeology);
 
 	if (firstName && surname)
 	{
@@ -1164,7 +1164,7 @@ void HoI4Country::outputCountryLeader(ofstream& output, HoI4::namesMapper& theNa
 }
 
 
-void HoI4Country::outputCommanders(ofstream& output) const
+void HoI4Country::outputCommanders(std::ofstream& output) const
 {
 	for (auto general: generals)
 	{
@@ -1179,9 +1179,9 @@ void HoI4Country::outputCommanders(ofstream& output) const
 }
 
 
-void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTemplates) const
+void HoI4Country::outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates) const
 {
-	ofstream output("output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_OOB.txt");
+	std::ofstream output("output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_OOB.txt");
 	if (!output.is_open())
 	{
 		Log(LogLevel::Error) << "Could not open output/" << theConfiguration.getOutputName() << "/history/units/" << tag << "_OOB.txt";
@@ -1352,7 +1352,7 @@ void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTe
 
 void HoI4Country::outputCommonCountryFile() const
 {
-	ofstream output("output/" + theConfiguration.getOutputName() + "/common/countries/" + Utils::normalizeUTF8Path(commonCountryFile));
+	std::ofstream output("output/" + theConfiguration.getOutputName() + "/common/countries/" + Utils::normalizeUTF8Path(commonCountryFile));
 	if (!output.is_open())
 	{
 		Log(LogLevel::Error) << "Could not open " << "output/" << theConfiguration.getOutputName() << "/common/countries/" << Utils::normalizeUTF8Path(commonCountryFile);
@@ -1370,9 +1370,9 @@ void HoI4Country::outputCommonCountryFile() const
 }
 
 
-void HoI4Country::outputAdvisorIdeas(const set<const HoI4::Advisor*, HoI4::advisorCompare>& ideologicalAdvisors) const
+void HoI4Country::outputAdvisorIdeas(const std::set<const HoI4::Advisor*, HoI4::advisorCompare>& ideologicalAdvisors) const
 {
-	ofstream ideasFile("output/" + theConfiguration.getOutputName() + "/common/ideas/" + tag + ".txt");
+	std::ofstream ideasFile("output/" + theConfiguration.getOutputName() + "/common/ideas/" + tag + ".txt");
 	if (!ideasFile.is_open())
 	{
 		LOG(LogLevel::Error) << "Could not open output/" << theConfiguration.getOutputName() << "/common/ideas/" << tag << ".txt";
@@ -1588,7 +1588,7 @@ void HoI4Country::outputAdvisorIdeas(const set<const HoI4::Advisor*, HoI4::advis
 }
 
 
-void HoI4Country::outputIdeaGraphics(ofstream& ideasFile, graphicsMapper& graphics) const
+void HoI4Country::outputIdeaGraphics(std::ofstream& ideasFile, graphicsMapper& graphics) const
 {
 
 	ideasFile << "\tspriteType = {\n";
