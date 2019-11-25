@@ -47,50 +47,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-HoI4Country::HoI4Country(const string& _tag, const HoI4::World* _theWorld):
-	theWorld(_theWorld),
-	srcCountry(nullptr),
-	human(false),
-	governmentIdeology("neutrality"),
-	leaderIdeology("neutrality"),
-	rulingParty(),
-	parties(),
-	ideologySupport(),
-	lastElection(),
-	sphereLeader(""),
-	tag(_tag),
-	provinces(),
-	states(),
-	capitalStateNum(0),
-	capitalState(nullptr),
-	relations(),
-	color(),
-	faction(nullptr),
-	factionLeader(false),
-	allies(),
-	puppets(),
-	puppetMaster(""),
-	practicals(),
-	graphicalCulture("western_european_gfx"),
-	graphicalCulture2d("western_european_2d"),
-	majorNation(false),
-	civilized(false),
-	brigs(),
-	convoys(0),
-	provinceCount(0),
-	armyStrength(0),
-	militaryFactories(0.0),
-	civilianFactories(0.0),
-	dockyards(0.0),
-	threat(0.0),
-	greatPower(false),
-	planes(),
-	equipmentStockpile(),
-	nationalFocus(nullptr)
-{
-}
-
-
 void HoI4Country::initFromV2Country(
 	const Vic2::World& _srcWorld,
 	const Vic2::Country* _srcCountry,

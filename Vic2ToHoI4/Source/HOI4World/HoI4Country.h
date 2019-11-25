@@ -96,7 +96,7 @@ class graphicsMapper;
 class HoI4Country
 {
 	public:
-		HoI4Country(const string& _tag, const HoI4::World* _theWorld);
+		HoI4Country(const string& _tag, const HoI4::World* _theWorld): theWorld(_theWorld), tag(_tag) {};
 
 		void initFromV2Country(
 			const Vic2::World& _srcWorld,
@@ -223,25 +223,25 @@ class HoI4Country
 		void outputUnitType(ofstream& unitNamesFile, const string& sourceUnitType, const string& destUnitType, const string& defaultName) const;
 
 
-		const HoI4::World* theWorld;
-		const Vic2::Country* srcCountry;
+		const HoI4::World* theWorld = nullptr;
+		const Vic2::Country* srcCountry = nullptr;
 		string filename;
 
-		bool human;
+		bool human = false;
 
-		string governmentIdeology;
-		string leaderIdeology;
+		string governmentIdeology = "neutrality";
+		string leaderIdeology = "conservatism_neutral";
 		Vic2::Party rulingParty;
 		set<Vic2::Party, function<bool (const Vic2::Party&, const Vic2::Party&)>> parties;
 		map<string, int> ideologySupport;
 		date lastElection;
 
-		string sphereLeader = "";
+		string sphereLeader;
 		string								tag;
 		set<int>							provinces;
 		map<int, HoI4::State*> states;
-		int									capitalStateNum;
-		HoI4::State*							capitalState;
+		int									capitalStateNum = 0;
+		HoI4::State*							capitalState = nullptr;
 		string								commonCountryFile;
 
 		std::unique_ptr<HoI4::technologies> technologies;
@@ -251,31 +251,31 @@ class HoI4Country
 		double stability = 0.50;
 		double warSupport = 0.50;
 		shared_ptr<const HoI4Faction>	faction;
-		bool									factionLeader;
+		bool									factionLeader = false;
 		set<string>							allies;
 		set<string> puppets;
 		string puppetMaster;
 		map<string, double>				practicals;
-		string graphicalCulture;
-		string graphicalCulture2d;
-		bool									majorNation;
-		bool									civilized;
+		string graphicalCulture = "western_european_gfx";
+		string graphicalCulture2d = "western_european_2d";
+		bool									majorNation = false;
+		bool									civilized = false;
 		vector<int>							brigs;
-		int									convoys;
+		int									convoys = 0;
 		
 		int provinceCount = 0;
-		long armyStrength;
-		double militaryFactories;
-		double civilianFactories;
-		double dockyards;
-		double threat;
+		long armyStrength = 0;
+		double militaryFactories = 0.0;
+		double civilianFactories = 0.0;
+		double dockyards = 0.0;
+		double threat = 0.0;
 
 		// laws
 		string mobilizationLaw = "volunteer_only";
 		string economicLaw = "civilian_economy";
 		string tradeLaw = "export_focus";
 
-		bool greatPower;
+		bool greatPower = false;
 
 		std::set<std::string> ideas;
 
