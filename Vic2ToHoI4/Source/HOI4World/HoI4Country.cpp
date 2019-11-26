@@ -695,6 +695,19 @@ bool HoI4::Country::areElectionsAllowed() const
 }
 
 
+std::optional<HoI4Faction> HoI4::Country::getFaction() const
+{
+	if (faction)
+	{
+		return std::make_optional(*faction);
+	}
+	else
+	{
+		return nullopt;
+	}
+}
+
+
 std::optional<const HoI4::State> HoI4::Country::getCapitalState() const
 {
 	if (auto capitalState = states.find(capitalStateNum); capitalState != states.end())

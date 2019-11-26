@@ -120,6 +120,7 @@ class Country
 		double getMilitaryStrength() const;
 		double getEconomicStrength(double years) const;
 		bool areElectionsAllowed() const;
+		std::optional<HoI4Faction> getFaction() const;
 
 		const std::string& getTag() const { return tag; }
 		const Vic2::Country& getSourceCountry() const { return sourceCountry; }
@@ -171,7 +172,6 @@ class Country
 		const std::vector<HoI4::War>& getWars() const { return wars; }
 		double getThreat() const { return threat; }
 		bool isInFaction() const { return faction.operator bool(); }
-		std::optional<HoI4Faction> getFaction() const { return std::make_optional(*faction); }
 		const std::string& getSphereLeader() const { return sphereLeader; }
 		const std::set<std::string>& getAllies() const { return allies; }
 		const std::set<std::string>& getPuppets() const { return puppets; }
