@@ -9,6 +9,7 @@
 #include "../V2World/Country.h"
 #include "date.h"
 #include "OSCompatibilityLayer.h"
+#include <exception>
 #include <string>
 
 
@@ -313,12 +314,11 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 	);
 	if (!output.is_open())
 	{
-		Log(LogLevel::Error) <<
-			"Could not open output/" <<
-			theConfiguration.getOutputName() <<
-			"/history/countries/" <<
-			Utils::normalizeUTF8Path(theCountry.getFilename());
-		exit(-1);
+		std::runtime_error e(
+			"Could not open output/" + theConfiguration.getOutputName() + "/history/countries/"
+			+ Utils::normalizeUTF8Path(theCountry.getFilename())
+		);
+		throw e;
 	}
 	output << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 
@@ -737,9 +737,10 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 	std::ofstream output("output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_OOB.txt");
 	if (!output.is_open())
 	{
-		Log(LogLevel::Error) << 
-			"Could not open output/" << theConfiguration.getOutputName() << "/history/units/" << tag << "_OOB.txt";
-		exit(-1);
+		std::runtime_error e(
+			"Could not open output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_OOB.txt"
+		);
+		throw e;
 	}
 	output << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 
@@ -906,10 +907,11 @@ void outputCommonCountryFile(const HoI4::Country& theCountry)
 	);
 	if (!output.is_open())
 	{
-		Log(LogLevel::Error) <<
-			"Could not open output/" << theConfiguration.getOutputName() <<
-			"/common/countries/" << Utils::normalizeUTF8Path(commonCountryFile);
-		exit(-1);
+		std::runtime_error e(
+			"Could not open output/" + theConfiguration.getOutputName() +
+			"/common/countries/" + Utils::normalizeUTF8Path(commonCountryFile)
+		);
+		throw e;
 	}
 
 	auto& graphicalCulture = theCountry.getGraphicalCulture();
@@ -932,9 +934,10 @@ void outputAdvisorIdeas(
 	std::ofstream ideasFile("output/" + theConfiguration.getOutputName() + "/common/ideas/" + tag + ".txt");
 	if (!ideasFile.is_open())
 	{
-		LOG(LogLevel::Error) <<
-			"Could not open output/" << theConfiguration.getOutputName() << "/common/ideas/" << tag << ".txt";
-		exit(-1);
+		std::runtime_error e(
+			"Could not open output/" + theConfiguration.getOutputName() + "/common/ideas/" + tag + ".txt"
+		);
+		throw e;
 	}
 
 	ideasFile << "ideas = {\n";
