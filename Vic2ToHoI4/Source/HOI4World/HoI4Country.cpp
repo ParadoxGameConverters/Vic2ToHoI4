@@ -96,7 +96,6 @@ void HoI4::Country::initFromV2Country(
 		}
 	}
 
-	atWar = srcCountry->isAtWar();
 	convertLaws();
 	convertLeaders(theGraphics);
 	convertRelations(countryMap);
@@ -107,8 +106,6 @@ void HoI4::Country::initFromV2Country(
 	{
 		capitalState->setAsCapitalState();
 	}
-
-	majorNation = srcCountry->isGreatNation();
 
 	theArmy.addSourceArmies(srcCountry->getArmies());
 }
@@ -221,7 +218,7 @@ void HoI4::Country::convertLaws()
 	}
 
 	// if at war, more ecomonic mobilization
-	if (atWar)
+	if (srcCountry->isAtWar())
 	{
 		economicLaw = "low_economic_mobilisation";
 	}
@@ -535,7 +532,6 @@ void HoI4::Country::addState(HoI4::State* _state)
 	for (const auto province: _state->getProvinces())
 	{
 		addProvince(province);
-		provinceCount++;
 	}
 }
 
@@ -608,7 +604,7 @@ double HoI4::Country::getStrengthOverTime(double years) const
 
 double HoI4::Country::getMilitaryStrength() const
 {
-	return armyStrength;
+	return 0.0;
 }
 
 

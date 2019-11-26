@@ -278,7 +278,7 @@ void outputFactions(
 );
 void outputIdeas(
 	std::ostream& output,
-	bool majorNation,
+	bool greatPower,
 	bool civilized,
 	const std::set<std::string>& ideas,
 	const std::string& mobilizationLaw,
@@ -326,7 +326,7 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 	output << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 
 	outputCapital(output, theCountry.getCapitalStateNum(), theCountry.getStates());
-	outputResearchSlots(output, theCountry.getGreatPower(), theCountry.getCivilized());
+	outputResearchSlots(output, theCountry.isGreatPower(), theCountry.getCivilized());
 	outputThreat(output, theCountry.getThreat());
 	outputWars(output, theCountry.getWars());
 	outputOOBLines(output, tag);
@@ -352,7 +352,7 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 	outputFactions(output, tag, theCountry.getFaction(), theCountry.getSourceCountry()->getName("english"));
 	outputIdeas(
 		output,
-		theCountry.isMajorNation(),
+		theCountry.isGreatPower(),
 		theCountry.isCivilized(),
 		theCountry.getIdeas(),
 		theCountry.getMobilizationLaw(),
@@ -633,7 +633,7 @@ void outputFactions(
 
 void outputIdeas(
 	std::ostream& output,
-	bool majorNation,
+	bool greatPower,
 	bool civilized,
 	const std::set<std::string>& ideas,
 	const std::string& mobilizationLaw,
@@ -642,7 +642,7 @@ void outputIdeas(
 	const std::string& primaryCulture
 ) {
 	output << "add_ideas = {\n";
-	if (majorNation)
+	if (greatPower)
 	{
 		output << "\tgreat_power\n";
 	}

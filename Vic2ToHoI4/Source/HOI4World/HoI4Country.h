@@ -146,7 +146,7 @@ class Country
 		bool isInFaction() const { return faction != nullptr; }
 		bool isCivilized() const { return civilized; }
 		int getTechnologyCount() const { return technologies->getTechnologyCount(); }
-		bool hasProvinces() const { return provinceCount > 0; }
+		bool hasProvinces() const { return provinces.size() > 0; }
 		bool isGreatPower() const { return greatPower; }
 		std::string getCommonCountryFile() const { return commonCountryFile; }
 		ConverterColor::Color getColor() const { return color; }
@@ -157,7 +157,6 @@ class Country
 		const HoI4::Navies& getNavies() const { return *theNavies; }
 		const std::string& getGraphicalCulture() const { return graphicalCulture; }
 		const std::string& getGraphicalCulture2d() const { return graphicalCulture2d; }
-		bool getGreatPower() const { return greatPower; }
 		bool getCivilized() const { return civilized; }
 		double getThreat() const { return threat; }
 		const std::vector<HoI4::War>& getWars() const { return wars; }
@@ -165,7 +164,6 @@ class Country
 		const std::map<std::string, int>& getEquipmentStockpile() const { return equipmentStockpile; }
 		const date& getLastElection() const { return lastElection; }
 		const std::shared_ptr<HoI4FocusTree> getNationalFocus() const { return nationalFocus; }
-		bool isMajorNation() const { return majorNation; }
 		const std::set<std::string>& getIdeas() const { return ideas; }
 		const std::string& getMobilizationLaw() const { return mobilizationLaw; }
 		const std::string& getEconomicLaw() const { return economicLaw; }
