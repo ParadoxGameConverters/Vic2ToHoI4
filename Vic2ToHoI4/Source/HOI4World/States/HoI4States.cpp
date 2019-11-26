@@ -300,27 +300,27 @@ void HoI4States::createMatchingHoI4State(
 
 	if (passableProvinces.size() > 0)
 	{
-		HoI4::State* newState = new HoI4::State(vic2State, nextStateID, stateOwner);
+		HoI4::State newState(vic2State, nextStateID, stateOwner);
 		if (impassableProvinces.size() > 0)
 		{
-			newState->markHadImpassablePart();
+			newState.markHadImpassablePart();
 		}
 		addProvincesAndCoresToNewState(newState, passableProvinces);
-		newState->convertControlledProvinces(theProvinceMapper, countryMapper);
-		newState->tryToCreateVP(theProvinceMapper, theConfiguration);
-		newState->addManpower(theProvinceMapper, theConfiguration);
+		newState.convertControlledProvinces(theProvinceMapper, countryMapper);
+		newState.tryToCreateVP(theProvinceMapper, theConfiguration);
+		newState.addManpower(theProvinceMapper, theConfiguration);
 		states.insert(make_pair(nextStateID, newState));
 		nextStateID++;
 	}
 
 	if (impassableProvinces.size() > 0)
 	{
-		HoI4::State* newState = new HoI4::State(vic2State, nextStateID, stateOwner);
+		HoI4::State newState(vic2State, nextStateID, stateOwner);
 		addProvincesAndCoresToNewState(newState, impassableProvinces);
-		newState->makeImpassable();
-		newState->tryToCreateVP(theProvinceMapper, theConfiguration);
-		newState->addManpower(theProvinceMapper, theConfiguration);
-		states.insert(make_pair(nextStateID, newState));
+		newState.makeImpassable();
+		newState.tryToCreateVP(theProvinceMapper, theConfiguration);
+		newState.addManpower(theProvinceMapper, theConfiguration);
+		states.insert(std::make_pair(nextStateID, newState));
 		nextStateID++;
 	}
 }
@@ -353,16 +353,16 @@ unordered_set<int> HoI4States::getProvincesInState(const Vic2::State* vic2State,
 }
 
 
-void HoI4States::addProvincesAndCoresToNewState(HoI4::State* newState, unordered_set<int> provinces)
+void HoI4States::addProvincesAndCoresToNewState(HoI4::State& newState, unordered_set<int> provinces)
 {
 	for (auto province: provinces)
 	{
-		newState->addProvince(province);
-		provinceToStateIDMap.insert(make_pair(province, newState->getID()));
+		newState.addProvince(province);
+		provinceToStateIDMap.insert(std::make_pair(province, newState.getID()));
 		auto coresMapping = coresMap.find(province);
 		if (coresMapping != coresMap.end())
 		{
-			newState->addCores(coresMap.find(province)->second);
+			newState.addCores(coresMap.find(province)->second);
 		}
 	}
 }
@@ -413,7 +413,7 @@ unsigned int HoI4States::getTotalManpower() const
 	unsigned int totalManpower = 0;
 	for (auto state: states)
 	{
-		totalManpower += state.second->getManpower();
+		totalManpower += state.second.getManpower();
 	}
 
 	return totalManpower;
@@ -438,7 +438,7 @@ void HoI4States::output() const
 			std::runtime_error error("Could not open \"" + filename + "\"");
 			throw error;
 		}
-		state.second->output(out, theConfiguration);
+		state.second.output(out, theConfiguration);
 		out.close();
 	}
 }

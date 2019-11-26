@@ -56,7 +56,7 @@ class Navies
 			const HoI4::shipVariants& theShipVariants,
 			const HoI4::coastalProvinces& theCoastalProvinces,
 			const std::map<int, int>& provinceToStateIDMap,
-			std::map<int, HoI4::State*> states,
+			std::map<int, HoI4::State> states,
 			const std::string& tag);
 		Navies() = delete;
 		~Navies() = default;

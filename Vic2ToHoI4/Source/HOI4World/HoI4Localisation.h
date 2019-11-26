@@ -160,14 +160,14 @@ class HoI4Localisation
 			const HoI4::State& state,
 			const std::pair<const std::string, std::string>& Vic2NameInLanguage
 		);
-		void addVPLocalisationForLanguage(const HoI4::State* state, const std::pair<const std::string, std::string>& Vic2NameInLanguage);
+		void addVPLocalisationForLanguage(const HoI4::State& state, const std::pair<const std::string, std::string>& Vic2NameInLanguage);
 		std::map<stateNumber, std::string>& getExistingStateLocalisation(const std::string& language);
 		keyToLocalisationMap& getExistingVPLocalisation(const std::string& language);
 		void addLanguageToStateLocalisations(const std::string& language);
 		void addLanguageToVPLocalisations(const std::string& language);
 		void addNonenglishStateLocalisations();
 		void addNonenglishVPLocalisations();
-		void addDebugLocalisations(const std::pair<const int, HoI4::State*>& state);
+		void addDebugLocalisations(const std::pair<const int, HoI4::State>& state);
 
 		bool sourceStateHasOneProvince(const Vic2::State& sourceState);
 		bool sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState);

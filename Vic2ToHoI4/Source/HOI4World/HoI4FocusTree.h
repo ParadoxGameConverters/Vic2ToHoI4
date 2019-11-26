@@ -51,10 +51,16 @@ class World;
 class HoI4FocusTree: commonItems::parser
 {
 	public:
-		HoI4FocusTree() = default;
 		explicit HoI4FocusTree(const HoI4::Country& country);
 
-		std::shared_ptr<HoI4FocusTree> makeCustomizedCopy(const HoI4::Country& country) const;
+		HoI4FocusTree() = default;
+		HoI4FocusTree(const HoI4FocusTree&) = delete;
+		HoI4FocusTree& operator=(const HoI4FocusTree&) = delete;
+		HoI4FocusTree(HoI4FocusTree&&) = default;
+		HoI4FocusTree& operator=(HoI4FocusTree&&) = default;
+		~HoI4FocusTree() = default;
+
+		std::unique_ptr<HoI4FocusTree> makeCustomizedCopy(const HoI4::Country& country) const;
 		void setNextFreeColumn(int newFreeColumn) { nextFreeColumn = newFreeColumn; }
 
 		void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
@@ -74,8 +80,6 @@ class HoI4FocusTree: commonItems::parser
 		void addFocus(std::shared_ptr<HoI4Focus> newFocus) { focuses.push_back(newFocus); }
 
 	private:
-		HoI4FocusTree(const HoI4FocusTree&) = delete;
-		HoI4FocusTree& operator=(const HoI4FocusTree&) = delete;
 
 		void confirmLoadedFocuses();
 

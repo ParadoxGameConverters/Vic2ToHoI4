@@ -59,7 +59,7 @@ class HoI4States: commonItems::parser
 		explicit HoI4States(const Vic2::World* _sourceWorld, const CountryMapper& countryMap);
 
 		const map<int, HoI4::DefaultState>& getDefaultStates() const { return defaultStates; }
-		const map<int, HoI4::State*>& getStates() const { return states; }
+		const map<int, HoI4::State>& getStates() const { return states; }
 		const map<int, int>& getProvinceToStateIDMap() const { return provinceToStateIDMap; }
 
 		void output() const;
@@ -89,7 +89,7 @@ class HoI4States: commonItems::parser
 			const CountryMapper& countryMapper
 		);
 		std::unordered_set<int> getProvincesInState(const Vic2::State* vic2State, const string& owner);
-		void addProvincesAndCoresToNewState(HoI4::State* newState, unordered_set<int> provinces);
+		void addProvincesAndCoresToNewState(HoI4::State& newState, unordered_set<int> provinces);
 		bool isProvinceValid(int provNum) const;
 		bool isProvinceOwnedByCountry(int provNum, const string& stateOwner) const;
 		bool isProvinceNotAlreadyAssigned(int provNum) const;
@@ -102,7 +102,7 @@ class HoI4States: commonItems::parser
 		set<int> assignedProvinces;
 
 		map<int, HoI4::DefaultState> defaultStates;
-		map<int, HoI4::State*> states;
+		map<int, HoI4::State> states;
 		map<int, int> provinceToStateIDMap;
 		int nextStateID = 1;
 };

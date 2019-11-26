@@ -36,7 +36,7 @@ void outputNamesSet(
 );
 void HoI4::outputToNamesFiles(std::ostream& namesFile, const HoI4::namesMapper& theNames, const Country& theCountry)
 {
-	auto primaryCulture = theCountry.getSourceCountry()->getPrimaryCulture();
+	auto primaryCulture = theCountry.getSourceCountry().getPrimaryCulture();
 	auto femaleSurnames = theNames.getFemaleSurnames(primaryCulture);
 
 	namesFile << theCountry.getTag() << " = {\n";
@@ -121,17 +121,17 @@ void outputUnitType(
 
 void HoI4::outputToUnitNamesFiles(std::ostream& unitNamesFile, const Country& theCountry)
 {
-	auto sourceCountry = theCountry.getSourceCountry();
+	auto& sourceCountry = theCountry.getSourceCountry();
 
 	unitNamesFile << theCountry.getTag() << " = {\n";
 
-	outputUnitType(unitNamesFile, "frigate", "submarine", "Submarine", *sourceCountry);
-	outputUnitType(unitNamesFile, "monitor", "carrier", "Carrier", *sourceCountry);
-	outputUnitType(unitNamesFile, "dreadnought", "battleship", "Battleship", *sourceCountry);
-	outputUnitType(unitNamesFile, "ironclad", "battle_cruiser", "Battlecruiser", *sourceCountry);
-	outputUnitType(unitNamesFile, "manowar", "heavy_cruiser", "Heavy Cruiser", *sourceCountry);
-	outputUnitType(unitNamesFile, "cruiser", "destroyer", "Destroyer", *sourceCountry);
-	outputUnitType(unitNamesFile, "commerce_raider", "light_cruiser", "Light Cruiser", *sourceCountry);
+	outputUnitType(unitNamesFile, "frigate", "submarine", "Submarine", sourceCountry);
+	outputUnitType(unitNamesFile, "monitor", "carrier", "Carrier", sourceCountry);
+	outputUnitType(unitNamesFile, "dreadnought", "battleship", "Battleship", sourceCountry);
+	outputUnitType(unitNamesFile, "ironclad", "battle_cruiser", "Battlecruiser", sourceCountry);
+	outputUnitType(unitNamesFile, "manowar", "heavy_cruiser", "Heavy Cruiser", sourceCountry);
+	outputUnitType(unitNamesFile, "cruiser", "destroyer", "Destroyer", sourceCountry);
+	outputUnitType(unitNamesFile, "commerce_raider", "light_cruiser", "Light Cruiser", sourceCountry);
 
 	unitNamesFile << "}\n\n";
 }
@@ -168,7 +168,7 @@ void HoI4::outputIdeaGraphics(
 	const Country& theCountry
 ) {
 	const std::string& tag = theCountry.getTag();
-	const std::string& primaryCultureGroup = theCountry.getSourceCountry()->getPrimaryCultureGroup();
+	const std::string& primaryCultureGroup = theCountry.getSourceCountry().getPrimaryCultureGroup();
 
 	ideasFile << "\tspriteType = {\n";
 	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_communist_advisor\"\n";
@@ -213,11 +213,11 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 void outputCommonCountryFile(const HoI4::Country& theCountry);
 void outputAdvisorIdeas(
 	const std::string& tag,
-	const std::set<const HoI4::Advisor*, HoI4::advisorCompare>& ideologicalAdvisors
+	const std::set<HoI4::Advisor, HoI4::advisorCompare>& ideologicalAdvisors
 );
 
 void HoI4::outputCountry(
-	const std::set<const HoI4::Advisor*, HoI4::advisorCompare>& ideologicalMinisters,
+	const std::set<HoI4::Advisor, HoI4::advisorCompare>& ideologicalMinisters,
 	const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 	HoI4::namesMapper& theNames,
 	graphicsMapper& theGraphics,
@@ -230,17 +230,14 @@ void HoI4::outputCountry(
 		outputCommonCountryFile(theCountry);
 		outputAdvisorIdeas(theCountry.getTag(), ideologicalMinisters);
 
-		if (auto& nationalFocus = theCountry.getNationalFocus())
-		{
-			nationalFocus->output(
-				"output/" + theConfiguration.getOutputName() + "/common/national_focus/" + theCountry.getTag() + "_NF.txt"
-			);
-		}
+		theCountry.getNationalFocus().output(
+			"output/" + theConfiguration.getOutputName() + "/common/national_focus/" + theCountry.getTag() + "_NF.txt"
+		);
 	}
 }
 
 
-void outputCapital(std::ostream& output, int capitalStateNum, const std::map<int, HoI4::State*>& states);
+void outputCapital(std::ostream& output, int capitalStateNum, const std::map<int, HoI4::State>& states);
 void outputResearchSlots(std::ostream& output, bool greatPower, bool civilized);
 void outputThreat(std::ostream& output, double threat);
 void outputWars(std::ostream& output, const std::vector<HoI4::War>& wars);
@@ -268,12 +265,12 @@ void outputPolitics(
 void outputRelations(
 	std::ostream& output,
 	const std::string& tag,
-	const std::map<std::string, HoI4Relations*>& relations
+	const std::map<std::string, HoI4Relations>& relations
 );
 void outputFactions(
 	std::ostream& output,
 	const std::string& tag,
-	std::shared_ptr<const HoI4Faction> faction,
+	std::optional<HoI4Faction> faction,
 	std::optional<std::string> possibleLeaderName
 );
 void outputIdeas(
@@ -308,7 +305,7 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 {
 	const std::string& tag = theCountry.getTag();
 	const std::string& governmentIdeology = theCountry.getGovernmentIdeology();
-	const std::string& primaryCulture = theCountry.getSourceCountry()->getPrimaryCulture();
+	const std::string& primaryCulture = theCountry.getSourceCountry().getPrimaryCulture();
 
 	std::ofstream output(
 		"output/" + theConfiguration.getOutputName() +
@@ -349,7 +346,7 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 		theCountry.getIdeologySupport()
 	);
 	outputRelations(output, tag, theCountry.getRelations());
-	outputFactions(output, tag, theCountry.getFaction(), theCountry.getSourceCountry()->getName("english"));
+	outputFactions(output, tag, theCountry.getFaction(), theCountry.getSourceCountry().getName("english"));
 	outputIdeas(
 		output,
 		theCountry.isGreatPower(),
@@ -370,7 +367,7 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 		theNames,
 		theGraphics,
 		primaryCulture,
-		theCountry.getSourceCountry()->getPrimaryCultureGroup(),
+		theCountry.getSourceCountry().getPrimaryCultureGroup(),
 		governmentIdeology,
 		theCountry.getLeaderIdeology(),
 		tag
@@ -382,7 +379,7 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 }
 
 
-void outputCapital(std::ostream& output, int capitalStateNum, const std::map<int, HoI4::State*>& states)
+void outputCapital(std::ostream& output, int capitalStateNum, const std::map<int, HoI4::State>& states)
 {
 	if (capitalStateNum > 0)
 	{
@@ -575,18 +572,18 @@ void outputPolitics(
 void outputRelations(
 	std::ostream& output,
 	const std::string& tag,
-	const std::map<std::string, HoI4Relations*>& relations
+	const std::map<std::string, HoI4Relations>& relations
 ) {
-	for (auto relation: relations)
+	for (auto& relation: relations)
 	{
 		if (relation.first != tag)
 		{
-			if (relation.second->getRelations() == 0)
+			if (relation.second.getRelations() == 0)
 			{
 				continue;
 			}
 			output << "add_opinion_modifier = { target = " << relation.first << " modifier = ";
-			int relationsValue = relation.second->getRelations();
+			int relationsValue = relation.second.getRelations();
 			if (relationsValue < 0)
 			{
 				output << "negative_";
@@ -605,7 +602,7 @@ void outputRelations(
 void outputFactions(
 	std::ostream& output,
 	const std::string& tag,
-	std::shared_ptr<const HoI4Faction> faction,
+	std::optional<HoI4Faction> faction,
 	std::optional<std::string> possibleLeaderName
 ) {
 	if (faction && (faction->getLeader()->getTag() == tag))
@@ -930,7 +927,7 @@ void outputCommonCountryFile(const HoI4::Country& theCountry)
 
 void outputAdvisorIdeas(
 	const std::string& tag,
-	const std::set<const HoI4::Advisor*, HoI4::advisorCompare>& ideologicalAdvisors
+	const std::set<HoI4::Advisor, HoI4::advisorCompare>& ideologicalAdvisors
 ) {
 	std::ofstream ideasFile("output/" + theConfiguration.getOutputName() + "/common/ideas/" + tag + ".txt");
 	if (!ideasFile.is_open())
@@ -942,9 +939,9 @@ void outputAdvisorIdeas(
 
 	ideasFile << "ideas = {\n";
 	ideasFile << "\tpolitical_advisor = {\n";
-	for (auto ideologicalAdvisor : ideologicalAdvisors)
+	for (auto& ideologicalAdvisor: ideologicalAdvisors)
 	{
-		ideologicalAdvisor->output(ideasFile, tag);
+		ideologicalAdvisor.output(ideasFile, tag);
 	}
 	ideasFile << "\t}\n";
 

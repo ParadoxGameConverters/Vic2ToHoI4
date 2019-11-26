@@ -92,7 +92,7 @@ void HoI4WarCreator::addTargetsToWorldTargetMap(shared_ptr<HoI4::Country> countr
 					if (GC.second != country)
 					{
 						auto relations = country->getRelations(GC.second->getTag());
-						if ((relations) && ((*relations)->getRelations() < 0))
+						if ((relations) && (relations->getRelations() < 0))
 						{
 							vector<shared_ptr<HoI4::Country>> tempvector;
 							if (WorldTargetMap.find(GC.second) == WorldTargetMap.end())
@@ -223,7 +223,7 @@ void HoI4WarCreator::generateAdditionalWars(ofstream& AILog, set<shared_ptr<HoI4
 		{
 			if (theConfiguration.getDebug())
 			{
-				auto name = countriesEvilnessSorted[i]->getSourceCountry()->getName("english");
+				auto name = countriesEvilnessSorted[i]->getSourceCountry().getName("english");
 				if (name)
 				{
 					AILog << "Checking for war in " + *name << "\n";
@@ -301,9 +301,9 @@ void HoI4WarCreator::setSphereLeaders(const Vic2::World* sourceWorld)
 		auto relations = greatPower->getRelations();
 		for (auto relation : relations)
 		{
-			if (relation.second->getSphereLeader())
+			if (relation.second.getSphereLeader())
 			{
-				string tag = relation.second->getTag();
+				string tag = relation.second.getTag();
 				auto spheredcountry = theWorld->getCountries().find(tag);
 				if (spheredcountry != theWorld->getCountries().end())
 				{
@@ -404,7 +404,7 @@ vector<shared_ptr<HoI4::Country>> HoI4WarCreator::GetMorePossibleAllies(const sh
 				//for now can only ally with people not in a faction, and must be worth adding
 				if (relationsWithPossibleAlly)
 				{
-					int relationsValue = (*relationsWithPossibleAlly)->getRelations();
+					int relationsValue = relationsWithPossibleAlly->getRelations();
 					if ((relationsValue >= -50) && (findFaction(CountriesWithin1000Miles[i])->getMembers().size() <= 1))
 					{
 						//ok we dont hate each other, lets check how badly we need each other, well I do, the only reason I am here is im trying to conquer a neighbor and am not strong enough!
@@ -674,9 +674,9 @@ void HoI4WarCreator::determineProvinceOwners()
 {
 	for (auto state: theWorld->getStates())
 	{
-		for (auto province: state.second->getProvinces())
+		for (auto province: state.second.getProvinces())
 		{
-			string owner = state.second->getOwner();
+			string owner = state.second.getOwner();
 			provinceToOwnerMap.insert(make_pair(province, owner));
 		}
 	}
@@ -697,7 +697,7 @@ double HoI4WarCreator::GetFactionStrength(const shared_ptr<HoI4Faction> Faction,
 vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4::Country> Leader, ofstream& AILog, const HoI4::World* world, const HoI4::MapData& theMapData)
 {
 	vector<shared_ptr<HoI4Faction>> CountriesAtWar;
-	auto name = Leader->getSourceCountry()->getName("english");
+	auto name = Leader->getSourceCountry().getName("english");
 	if (name)
 	{
 		LOG(LogLevel::Info) << "Calculating AI for " + *name;
@@ -883,10 +883,10 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4:
 
 			for (auto GC: theWorld->getGreatPowers())
 			{
-				auto allyName = GC->getSourceCountry()->getName("english");
+				auto allyName = GC->getSourceCountry().getName("english");
 
 				auto relations = Leader->getRelations(GC->getTag());
-				if ((relations) && ((*relations)->getRelations() > 0) && (maxGCAlliance < 1))
+				if ((relations) && (relations->getRelations() > 0) && (maxGCAlliance < 1))
 				{
 					if (theConfiguration.getDebug())
 					{
@@ -956,7 +956,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4:
 		if (HowToTakeGC == "noactionneeded" || HowToTakeGC == "factionneeded" || HowToTakeGC == "morealliesneeded")
 		{
 			auto relations = Leader->getRelations(GC->getTag());
-			if ((GC != Leader) && (relations) && ((*relations)->getRelations() < 0))
+			if ((GC != Leader) && (relations) && (relations->getRelations() < 0))
 			{
 				if (GCTargets.size() < maxGCWars)
 				{
@@ -968,7 +968,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4:
 
 	FocusTree->addGPWarBranch(Leader, newAllies, GCTargets, "Fascist", theWorld->getEvents());
 
-	Leader->addNationalFocus(FocusTree);
+	Leader->giveNationalFocus(FocusTree);
 	return CountriesAtWar;
 }
 
@@ -977,7 +977,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::communistWarCreator(shared_ptr<H
 {
 	vector<shared_ptr<HoI4Faction>> CountriesAtWar;
 	//communism still needs great country war events
-	auto name = Leader->getSourceCountry()->getName("english");
+	auto name = Leader->getSourceCountry().getName("english");
 	if (name)
 	{
 		LOG(LogLevel::Info) << "Calculating AI for " + *name;
@@ -1144,7 +1144,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::communistWarCreator(shared_ptr<H
 	for (auto GC : GCTargets)
 	{
 		auto relations = Leader->getRelations(GC->getTag());
-		if ((relations) && ((*relations)->getRelations() < 0))
+		if ((relations) && (relations->getRelations() < 0))
 		{
 			GCTargets.push_back(GC);
 		}
@@ -1155,7 +1155,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::communistWarCreator(shared_ptr<H
 	FocusTree->addCommunistCoupBranch(Leader, forcedtakeover, majorIdeologies);
 	FocusTree->addCommunistWarBranch(Leader, TargetsByTech, theWorld->getEvents());
 	FocusTree->addGPWarBranch(Leader, newAllies, GCTargets, "Communist", theWorld->getEvents());
-	Leader->addNationalFocus(FocusTree);
+	Leader->giveNationalFocus(FocusTree);
 
 	return CountriesAtWar;
 }
@@ -1175,7 +1175,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::democracyWarCreator(shared_ptr<H
 		auto relations = Leader->getRelations(GC->getTag());
 		if (relations)
 		{
-			double relationVal = (*relations)->getRelations();
+			double relationVal = relations->getRelations();
 			if (relationVal < 100 && GC->getGovernmentIdeology() != "democratic" && std::find(Allies.begin(), Allies.end(), GC->getTag()) == Allies.end())
 			{
 				CountriesAtWar.push_back(findFaction(Leader));
@@ -1192,7 +1192,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::democracyWarCreator(shared_ptr<H
 		FocusTree->addDemocracyNationalFocuses(Leader, vCountriesToContain);
 	}
 
-	Leader->addNationalFocus(FocusTree);
+	Leader->giveNationalFocus(FocusTree);
 
 	return CountriesAtWar;
 }
@@ -1202,7 +1202,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::absolutistWarCreator(shared_ptr<
 {
 	auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
 
-	auto name = country->getSourceCountry()->getName("english");
+	auto name = country->getSourceCountry().getName("english");
 	if (name)
 	{
 		LOG(LogLevel::Info) << "Doing neighbor calcs for " + *name;
@@ -1217,10 +1217,10 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::absolutistWarCreator(shared_ptr<
 	focusTree->addAbsolutistEmpireNationalFocuses(country, weakColonies, weakNeighbors);
 
 	auto greatPowerTargets = getGreatPowerTargets(country);
-	auto CountriesAtWar = addGreatPowerWars(country, focusTree, greatPowerTargets);
+	auto CountriesAtWar = addGreatPowerWars(country, *focusTree, greatPowerTargets);
 	addTradeEvents(country, greatPowerTargets);
 
-	country->addNationalFocus(focusTree);
+	country->giveNationalFocus(focusTree);
 
 	return CountriesAtWar;
 }
@@ -1237,7 +1237,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<Ho
 
 	if (theConfiguration.getDebug())
 	{
-		auto name = country->getSourceCountry()->getName("english");
+		auto name = country->getSourceCountry().getName("english");
 		if (name)
 		{
 			AILog << "Look for neighbors to attack for " + *name << "\n";
@@ -1260,7 +1260,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<Ho
 		auto relationsObj = country->getRelations(target->getTag());
 		if (relationsObj)
 		{
-			relations = (*relationsObj)->getRelations();
+			relations = relationsObj->getRelations();
 		}
 
 		if (relations >= 0)
@@ -1273,7 +1273,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<Ho
 		startDate.increaseByMonths(relations / -4);
 		if (Allies.find(target->getTag()) == Allies.end())
 		{
-			auto possibleTargetName = target->getSourceCountry()->getName("english");
+			auto possibleTargetName = target->getSourceCountry().getName("english");
 			string targetName;
 			if (possibleTargetName)
 			{
@@ -1304,7 +1304,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<Ho
 		{
 			focusTree->addFocus(newFocus);
 		}
-		country->addNationalFocus(focusTree);
+		country->giveNationalFocus(focusTree);
 	}
 
 	return countriesAtWar;
@@ -1349,24 +1349,26 @@ std::vector<int> HoI4WarCreator::sortStatesByCapitalDistance(
 ) {
 	std::multimap<double, int> statesWithDistance;
 	std::pair<int, int> capitalCoords = getCapitalPosition(country);
-	std::map<int, HoI4::State*> statesMapping = world->getStates();
+	std::map<int, HoI4::State> statesMapping = world->getStates();
 
 	for (int stateID : stateList)
 	{
-		HoI4::State* stateObj = statesMapping[stateID];
-		std::optional<int> provCapID = stateObj->getVPLocation();
-		std::pair<int, int> stateVPCoords;
-		if (provCapID)
+		if (auto state = statesMapping.find(stateID); state != statesMapping.end())
 		{
-			stateVPCoords = getProvincePosition(*provCapID);
+			std::optional<int> provCapID = state->second.getVPLocation();
+			std::pair<int, int> stateVPCoords;
+			if (provCapID)
+			{
+				stateVPCoords = getProvincePosition(*provCapID);
+			}
+			else
+			{
+				stateVPCoords = std::make_pair(65536, 65536);
+			}
+			double distanceSquared = pow(capitalCoords.first - stateVPCoords.first, 2)
+				+ pow(capitalCoords.second - stateVPCoords.second, 2);
+			statesWithDistance.insert(std::pair<double, int>(distanceSquared, stateID));
 		}
-		else
-		{
-			stateVPCoords = std::make_pair(65536, 65536);
-		}
-		double distanceSquared = pow(capitalCoords.first - stateVPCoords.first, 2)
-			+ pow(capitalCoords.second - stateVPCoords.second, 2);
-		statesWithDistance.insert(std::pair<double, int>(distanceSquared, stateID));
 	}
 
 	std::vector<int> sortedStates;
@@ -1534,7 +1536,7 @@ map<double, shared_ptr<HoI4::Country>> HoI4WarCreator::getGPsByDistance(shared_p
 }
 
 
-vector<shared_ptr<HoI4Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<HoI4::Country> country, shared_ptr<HoI4FocusTree> FocusTree, vector<shared_ptr<HoI4::Country>>& greatPowerTargets)
+vector<shared_ptr<HoI4Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<HoI4::Country> country, HoI4FocusTree& FocusTree, vector<shared_ptr<HoI4::Country>>& greatPowerTargets)
 {
 	vector<shared_ptr<HoI4Faction>> countriesAtWar;
 
@@ -1547,7 +1549,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<HoI
 		}
 
 		auto relations = country->getRelations(target->getTag());
-		if ((!relations) || ((*relations)->getRelations() >= 0))
+		if ((!relations) || (relations->getRelations() >= 0))
 		{
 			continue;
 		}
@@ -1555,7 +1557,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<HoI
 		set<string> Allies = country->getAllies();
 		if (Allies.find(target->getTag()) == Allies.end())
 		{
-			auto possibleTargetName = target->getSourceCountry()->getName("english");
+			auto possibleTargetName = target->getSourceCountry().getName("english");
 			string targetName;
 			if (possibleTargetName)
 			{
@@ -1614,7 +1616,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<HoI
 			newFocus->completionReward += "				target = " + target->getTag() + "\n";
 			newFocus->completionReward += "			}\n";
 			newFocus->completionReward += "		}";
-			FocusTree->addFocus(newFocus);
+			FocusTree.addFocus(newFocus);
 
 			numWarsWithGreatPowers++;
 		}
@@ -1629,7 +1631,7 @@ void HoI4WarCreator::addTradeEvents(shared_ptr<HoI4::Country> country, const vec
 	for (auto greatPowerTarget: greatPowerTargets)
 	{
 		auto relations = country->getRelations(greatPowerTarget->getTag());
-		if ((!relations) || ((*relations)->getRelations() >= 0))
+		if ((!relations) || (relations->getRelations() >= 0))
 		{
 			continue;
 		}

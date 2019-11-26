@@ -29,7 +29,7 @@ void HoI4::Country::initFromV2Country(
 	const Vic2::World& _srcWorld,
 	const Vic2::Country* _srcCountry,
 	const std::map<int, int>& stateMap,
-	const std::map<int, HoI4::State*>& states,
+	const std::map<int, HoI4::State>& states,
 	HoI4::namesMapper& theNames,
 	const graphicsMapper& theGraphics,
 	const CountryMapper& countryMap,
@@ -104,10 +104,6 @@ void HoI4::Country::initFromV2Country(
 	convertWars((*_srcCountry), countryMap);
 
 	determineCapitalFromVic2(stateMap, states);
-	if (isThisStateOwnedByUs(capitalState))
-	{
-		capitalState->setAsCapitalState();
-	}
 
 	theArmy.addSourceArmies(srcCountry->getArmies());
 }
@@ -267,8 +263,8 @@ void HoI4::Country::convertRelations(const CountryMapper& countryMap)
 		auto HoI4Tag = countryMap.getHoI4Tag(srcRelation.second->getTag());
 		if (HoI4Tag)
 		{
-			auto newRelation = new HoI4Relations(*HoI4Tag, srcRelation.second);
-			relations.insert(make_pair(*HoI4Tag, newRelation));
+			HoI4Relations newRelation(*HoI4Tag, srcRelation.second);
+			relations.insert(make_pair(*HoI4Tag, std::move(newRelation)));
 		}
 	}
 }
@@ -284,7 +280,7 @@ void HoI4::Country::convertWars(const Vic2::Country& sourceCountry, const Countr
 }
 
 
-void HoI4::Country::determineCapitalFromVic2(const map<int, int>& provinceToStateIDMap, const map<int, HoI4::State*>& states)
+void HoI4::Country::determineCapitalFromVic2(const map<int, int>& provinceToStateIDMap, const map<int, HoI4::State>& states)
 {
 	int oldCapital = srcCountry->getCapital();
 	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital))
@@ -293,7 +289,6 @@ void HoI4::Country::determineCapitalFromVic2(const map<int, int>& provinceToStat
 		if (capitalStateMapping != provinceToStateIDMap.end() && isStateValidForCapital(capitalStateMapping->second, states))
 		{
 			capitalStateNum = capitalStateMapping->second;
-			capitalState = states.find(capitalStateNum)->second;
 			if (isThisStateOwnedByUs(states.find(capitalStateNum)->second))
 			{
 				setCapitalInCapitalState((*mapping)[0]);
@@ -307,22 +302,22 @@ void HoI4::Country::determineCapitalFromVic2(const map<int, int>& provinceToStat
 }
 
 
-bool HoI4::Country::isStateValidForCapital(int stateNum, const map<int, HoI4::State*>& states)
+bool HoI4::Country::isStateValidForCapital(int stateNum, const map<int, HoI4::State>& states)
 {
 	auto state = states.find(stateNum)->second;
 	return (isThisStateOwnedByUs(state) || isThisStateACoreWhileWeOwnNoStates(state));
 }
 
 
-bool HoI4::Country::isThisStateOwnedByUs(const HoI4::State* state) const
+bool HoI4::Country::isThisStateOwnedByUs(const HoI4::State& state) const
 {
-	return ((state != nullptr) && (state->getOwner() == tag));
+	return (state.getOwner() == tag);
 }
 
 
-bool HoI4::Country::isThisStateACoreWhileWeOwnNoStates(const HoI4::State* state) const
+bool HoI4::Country::isThisStateACoreWhileWeOwnNoStates(const HoI4::State& state) const
 {
-	for (auto core: state->getCores())
+	for (auto core: state.getCores())
 	{
 		if (core == tag)
 		{
@@ -336,9 +331,9 @@ bool HoI4::Country::isThisStateACoreWhileWeOwnNoStates(const HoI4::State* state)
 
 void HoI4::Country::setCapitalInCapitalState(int capitalProvince)
 {
-	if (capitalState != nullptr)
+	if (auto capitalState = states.find(capitalStateNum); capitalState != states.end())
 	{
-		capitalState->setVPLocation(capitalProvince);
+		capitalState->second.setVPLocation(capitalProvince);
 	}
 }
 
@@ -409,9 +404,9 @@ void HoI4::Country::convertNavies(
 	int backupNavalLocation = 0;
 	for (auto state: states)
 	{
-		if (state.second->getOwner() == tag)
+		if (state.second.getOwner() == tag)
 		{
-			auto mainNavalLocation = state.second->getMainNavalLocation();
+			auto mainNavalLocation = state.second.getMainNavalLocation();
 			if (mainNavalLocation)
 			{
 				// Mapped ships will be placed in a single large fleet
@@ -505,9 +500,9 @@ void HoI4::Country::convertAirforce(const HoI4::UnitMappings& unitMap)
 void HoI4::Country::convertArmies(const HoI4::militaryMappings& theMilitaryMappings)
 {
 	std::optional<int> backupLocation;
-	if (capitalState != nullptr)
+	if (auto capitalState = states.find(capitalStateNum); capitalState != states.end())
 	{
-		backupLocation = capitalState->getVPLocation();
+		backupLocation = capitalState->second.getVPLocation();
 	}
 	if (backupLocation)
 	{
@@ -520,18 +515,17 @@ void HoI4::Country::convertArmies(const HoI4::militaryMappings& theMilitaryMappi
 }
 
 
-void HoI4::Country::addState(HoI4::State* _state)
+void HoI4::Country::addState(HoI4::State& state)
 {
-	states.insert(make_pair(_state->getID(), _state));
+	states.insert(std::make_pair(state.getID(), state));
 
 	if (capitalStateNum == 0)
 	{
-		capitalState = _state;
-		capitalStateNum = _state->getID();
-		_state->setAsCapitalState();
+		capitalStateNum = state.getID();
+		state.setAsCapitalState();
 	}
 
-	for (const auto province: _state->getProvinces())
+	for (const auto province: state.getProvinces())
 	{
 		addProvince(province);
 	}
@@ -544,9 +538,9 @@ void HoI4::Country::addProvince(int _province)
 }
 
 
-optional<const HoI4Relations*> HoI4::Country::getRelations(string withWhom) const
+optional<HoI4Relations> HoI4::Country::getRelations(string withWhom) const
 {
-	map<string, HoI4Relations*>::const_iterator i = relations.find(withWhom);
+	map<string, HoI4Relations>::const_iterator i = relations.find(withWhom);
 	if (i != relations.end())
 	{
 		return i->second;
@@ -560,31 +554,31 @@ optional<const HoI4Relations*> HoI4::Country::getRelations(string withWhom) cons
 
 void HoI4::Country::calculateIndustry()
 {
-	for (auto state : states)
+	for (auto state: states)
 	{
-		civilianFactories += state.second->getCivFactories();
-		militaryFactories += state.second->getMilFactories();
-		dockyards += state.second->getDockyards();
+		civilianFactories += state.second.getCivFactories();
+		militaryFactories += state.second.getMilFactories();
+		dockyards += state.second.getDockyards();
 	}
 }
 
 
 void HoI4::Country::addVPsToCapital(int VPs)
 {
-	if (capitalState != nullptr)
+	if (auto capitalState = states.find(capitalStateNum); capitalState != states.end())
 	{
-		capitalState->addVictoryPointValue(VPs);
+		capitalState->second.addVictoryPointValue(VPs);
 	}
 }
 
 
-void HoI4::Country::addGenericFocusTree(const set<string>& majorIdeologies)
+void HoI4::Country::addGenericFocusTree(const std::set<string>& majorIdeologies)
 {
 	if (!nationalFocus)
 	{
 		HoI4FocusTree genericNationalFocus(*this);
 		genericNationalFocus.addGenericFocusTree(majorIdeologies);
-		nationalFocus = genericNationalFocus.makeCustomizedCopy(*this);
+		nationalFocus = std::move(genericNationalFocus.makeCustomizedCopy(*this));
 	}
 }
 
@@ -594,6 +588,15 @@ void HoI4::Country::adjustResearchFocuses()
 	if (greatPower && (nationalFocus != nullptr))
 	{
 		nationalFocus->removeFocus("extra_tech_slot_2" + tag);
+	}
+}
+
+
+void HoI4::Country::addAirbasesToCapital(int airbases)
+{
+	if (auto capitalState = states.find(capitalStateNum); capitalState != states.end())
+	{
+		capitalState->second.addAirBase(airbases);
 	}
 }
 
@@ -638,5 +641,18 @@ bool HoI4::Country::areElectionsAllowed() const
 	else
 	{
 		return false;
+	}
+}
+
+
+std::optional<const HoI4::State> HoI4::Country::getCapitalState() const
+{
+	if (auto capitalState = states.find(capitalStateNum); capitalState != states.end())
+	{
+		return capitalState->second;
+	}
+	else
+	{
+		return std::nullopt;
 	}
 }

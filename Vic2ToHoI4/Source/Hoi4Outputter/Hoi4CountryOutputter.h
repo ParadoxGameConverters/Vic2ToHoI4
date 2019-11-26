@@ -31,7 +31,7 @@ void outputIdeaGraphics(
 	const Country& theCountry
 );
 void outputCountry(
-	const std::set<const HoI4::Advisor*, HoI4::advisorCompare>& ideologicalMinisters,
+	const std::set<HoI4::Advisor, HoI4::advisorCompare>& ideologicalMinisters,
 	const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 	HoI4::namesMapper& theNames,
 	graphicsMapper& theGraphics,

@@ -36,7 +36,7 @@ HoI4::Navies::Navies(
 	const HoI4::shipVariants& theShipVariants,
 	const HoI4::coastalProvinces& theCoastalProvinces,
 	const std::map<int, int>& provinceToStateIDMap,
-	std::map<int, HoI4::State*> states,
+	std::map<int, HoI4::State> states,
 	const std::string& tag)
 {
 	for (auto army: srcArmies)
@@ -62,7 +62,7 @@ HoI4::Navies::Navies(
 						if (states.find(stateID) != states.end())
 						{
 							auto state = states.at(stateID);
-							auto mainNavalLocation = state->getMainNavalLocation();
+							auto mainNavalLocation = state.getMainNavalLocation();
 							if (mainNavalLocation)
 							{
 								navalLocation = *mainNavalLocation;

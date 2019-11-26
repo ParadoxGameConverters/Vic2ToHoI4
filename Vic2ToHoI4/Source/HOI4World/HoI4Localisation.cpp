@@ -374,12 +374,12 @@ void HoI4Localisation::AddStateLocalisations(const HoI4States* states)
 	for (auto state: states->getStates())
 	{
 		for (auto Vic2NameInLanguage:
-			V2Localisations::GetTextInEachLanguage(state.second->getSourceState()->getStateID())
+			V2Localisations::GetTextInEachLanguage(state.second.getSourceState()->getStateID())
 		) {
-			addStateLocalisationForLanguage(*state.second, Vic2NameInLanguage);
+			addStateLocalisationForLanguage(state.second, Vic2NameInLanguage);
 		}
 
-		std::optional<int> VPPositionInHoI4 = state.second->getVPLocation();
+		std::optional<int> VPPositionInHoI4 = state.second.getVPLocation();
 		if (VPPositionInHoI4)
 		{
 			auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(*VPPositionInHoI4);
@@ -404,9 +404,9 @@ void HoI4Localisation::AddStateLocalisations(const HoI4States* states)
 }
 
 
-void HoI4Localisation::addDebugLocalisations(const pair<const int, HoI4::State*>& state)
+void HoI4Localisation::addDebugLocalisations(const std::pair<const int, HoI4::State>& state)
 {
-	for (auto VPPositionInHoI4: state.second->getDebugVPs())
+	for (auto VPPositionInHoI4: state.second.getDebugVPs())
 	{
 		auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(VPPositionInHoI4);
 		if (VPProvinceMapping && (VPProvinceMapping->size() > 0))
@@ -418,7 +418,7 @@ void HoI4Localisation::addDebugLocalisations(const pair<const int, HoI4::State*>
 		}
 	}
 
-	for (auto VPPositionInHoI4: state.second->getSecondaryDebugVPs())
+	for (auto VPPositionInHoI4: state.second.getSecondaryDebugVPs())
 	{
 		auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(VPPositionInHoI4);
 		if (VPProvinceMapping && (VPProvinceMapping->size() > 0))
@@ -542,13 +542,13 @@ void HoI4Localisation::addStateLocalisationForLanguage(
 
 
 void HoI4Localisation::addVPLocalisationForLanguage(
-	const HoI4::State* state,
+	const HoI4::State& state,
 	const std::pair<const std::string, std::string>& Vic2NameInLanguage
 ) {
-	if (state->getVPLocation())
+	if (state.getVPLocation())
 	{
 		getExistingVPLocalisation(Vic2NameInLanguage.first)
-			.insert(make_pair("VICTORY_POINTS_" + std::to_string(*state->getVPLocation()), Vic2NameInLanguage.second));
+			.insert(std::make_pair("VICTORY_POINTS_" + std::to_string(*state.getVPLocation()), Vic2NameInLanguage.second));
 	}
 }
 

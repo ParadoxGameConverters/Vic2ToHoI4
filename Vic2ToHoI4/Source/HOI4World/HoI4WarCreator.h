@@ -87,7 +87,7 @@ class HoI4WarCreator
 		map<string, shared_ptr<HoI4::Country>> findFarNeighbors(shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData);
 		vector<shared_ptr<HoI4::Country>> getGreatPowerTargets(shared_ptr<HoI4::Country> country);
 		map<double, shared_ptr<HoI4::Country>> getGPsByDistance(shared_ptr<HoI4::Country> country);
-		vector<shared_ptr<HoI4Faction>> addGreatPowerWars(shared_ptr<HoI4::Country> country, shared_ptr<HoI4FocusTree> FocusTree, vector<shared_ptr<HoI4::Country>>& greatPowerTargets);
+		vector<shared_ptr<HoI4Faction>> addGreatPowerWars(shared_ptr<HoI4::Country> country, HoI4FocusTree& FocusTree, vector<shared_ptr<HoI4::Country>>& greatPowerTargets);
 		void addTradeEvents(shared_ptr<HoI4::Country> country, const vector<shared_ptr<HoI4::Country>>& greatPowerTargets);
 
 		void    setSphereLeaders(const Vic2::World* sourceWorld);

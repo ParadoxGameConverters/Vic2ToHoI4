@@ -49,9 +49,6 @@ class HoI4Faction
 		void addMember(shared_ptr<HoI4::Country> addedCon) { Factionmembers.push_back(addedCon); }
 
 	private:
-		HoI4Faction(const HoI4Faction&) = delete;
-		HoI4Faction& operator=(const HoI4Faction&) = delete;
-
 		shared_ptr<HoI4::Country> Factionleader;
 		vector<shared_ptr<HoI4::Country>> Factionmembers;
 

@@ -26,6 +26,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
+#include "Advisor.h"
 #include "AIPeaces.h"
 #include "CoastalProvinces.h"
 #include "Decisions/Decisions.h"
@@ -99,7 +100,7 @@ class World: commonItems::parser
 
 		map<string, shared_ptr<HoI4::Country>> getCountries()	const { return countries; }
 		vector<shared_ptr<HoI4::Country>> getGreatPowers() const { return greatPowers; }
-		map<int, HoI4::State*> getStates() const { return states->getStates(); }
+		map<int, HoI4::State> getStates() const { return states->getStates(); }
 		const map<int, int>& getProvinceToStateIDMap() const { return states->getProvinceToStateIDMap(); }
 		vector<shared_ptr<HoI4Faction>> getFactions() const { return factions; }
 		HoI4::Events* getEvents() const { return events; }
@@ -150,9 +151,9 @@ class World: commonItems::parser
 
 		void convertStrategicRegions();
 		map<int, int> importStrategicRegions();
-		map<int, int> determineUsedRegions(const HoI4::State* state, map<int, int>& provinceToStrategicRegionMap);
+		map<int, int> determineUsedRegions(const HoI4::State& state, map<int, int>& provinceToStrategicRegionMap);
 		optional<int> determineMostUsedRegion(const map<int, int>& usedRegions) const;
-		void addProvincesToRegion(const HoI4::State* state, int regionNum);
+		void addProvincesToRegion(const HoI4::State& state, int regionNum);
 		void addLeftoverProvincesToRegions(const map<int, int>& provinceToStrategicRegionMap);
 
 		void convertDiplomacy();
@@ -199,7 +200,7 @@ class World: commonItems::parser
 		void outputMap() const;
 		void outputGenericFocusTree() const;
 		void outputCountries();
-		set<const HoI4::Advisor*, HoI4::advisorCompare> getActiveIdeologicalAdvisors() const;
+		std::set<HoI4::Advisor, HoI4::advisorCompare> getActiveIdeologicalAdvisors() const;
 		void outputRelations() const;
 		void outputIdeologies() const;
 		void outputLeaderTraits() const;
@@ -232,7 +233,7 @@ class World: commonItems::parser
 		map<string, HoI4Ideology*> ideologies;
 		std::set<std::string> majorIdeologies;
 		std::map<std::string, vector<std::string>> ideologicalLeaderTraits;
-		map<std::string, HoI4::Advisor*> ideologicalAdvisors;
+		map<std::string, HoI4::Advisor> ideologicalAdvisors;
 		std::unique_ptr<HoI4::Ideas> theIdeas;
 		
 		vector<shared_ptr<HoI4Faction>> factions;
