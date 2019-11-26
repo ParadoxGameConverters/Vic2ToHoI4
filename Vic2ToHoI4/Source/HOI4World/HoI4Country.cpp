@@ -20,7 +20,6 @@
 #include "../Mappers/Provinces/ProvinceMapper.h"
 #include "OSCompatibilityLayer.h"
 #include <algorithm>
-#include <fstream>
 
 
 
@@ -568,19 +567,6 @@ void HoI4::Country::calculateIndustry()
 		civilianFactories += state.second->getCivFactories();
 		militaryFactories += state.second->getMilFactories();
 		dockyards += state.second->getDockyards();
-	}
-}
-
-
-void HoI4::Country::reportIndustry(ofstream& out)
-{
-	if (states.size() > 0)
-	{
-		out << tag << ',';
-		out << militaryFactories << ',';
-		out << civilianFactories << ',';
-		out << dockyards << ',';
-		out << militaryFactories + civilianFactories + dockyards << '\n';
 	}
 }
 

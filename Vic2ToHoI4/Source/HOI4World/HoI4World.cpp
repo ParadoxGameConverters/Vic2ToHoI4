@@ -508,7 +508,7 @@ void HoI4::World::reportCountryIndustry()
 	{
 		for (auto country: countries)
 		{
-			country.second->reportIndustry(report);
+			reportIndustry(report, *country.second);
 		}
 	}
 }

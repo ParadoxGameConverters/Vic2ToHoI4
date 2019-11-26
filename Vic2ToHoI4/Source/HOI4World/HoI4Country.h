@@ -108,7 +108,6 @@ class Country
 		void convertTechnology(std::unique_ptr<mappers::techMapper>& theTechMapper);
 		void addState(HoI4::State* _state);
 		void calculateIndustry();
-		void reportIndustry(std::ofstream& out);
 		void addVPsToCapital(int VPs);
 		void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
 		void adjustResearchFocuses();
