@@ -326,7 +326,7 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 	output << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 
 	outputCapital(output, theCountry.getCapitalStateNum(), theCountry.getStates());
-	outputResearchSlots(output, theCountry.isGreatPower(), theCountry.getCivilized());
+	outputResearchSlots(output, theCountry.isGreatPower(), theCountry.isCivilized());
 	outputThreat(output, theCountry.getThreat());
 	outputWars(output, theCountry.getWars());
 	outputOOBLines(output, tag);
