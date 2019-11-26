@@ -7,7 +7,7 @@
 #include "../HOI4World/Names.h"
 #include "../Mappers/GraphicsMapper.h"
 #include "../V2World/Country.h"
-#include "date.h"
+#include "Date.h"
 #include "OSCompatibilityLayer.h"
 #include <exception>
 #include <string>
