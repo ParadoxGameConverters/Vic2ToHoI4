@@ -122,7 +122,7 @@ class Country
 		bool areElectionsAllowed() const;
 
 		const std::string& getTag() const { return tag; }
-		const Vic2::Country& getSourceCountry() const { return *sourceCountry; }
+		const Vic2::Country& getSourceCountry() const { return sourceCountry; }
 		const std::string& getFilename() const { return filename; }
 		const std::string& getCommonCountryFile() const { return commonCountryFile; }
 		bool isHuman() const { return human; }
@@ -205,7 +205,7 @@ class Country
 		void addProvince(int _province);
 
 		std::string tag;
-		const Vic2::Country* sourceCountry;
+		const Vic2::Country& sourceCountry;
 		std::string filename;
 		std::string commonCountryFile;
 		bool human = false;
