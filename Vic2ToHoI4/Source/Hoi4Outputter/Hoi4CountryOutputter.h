@@ -38,6 +38,8 @@ void outputCountry(
 	const Country& theCountry
 );
 
+void reportIndustry(std::ostream& out, const Country& theCountry);
+
 }
 
 

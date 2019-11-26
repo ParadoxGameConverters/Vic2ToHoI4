@@ -1147,3 +1147,16 @@ void outputAdvisorIdeas(
 
 	ideasFile << "}\n";
 }
+
+
+void HoI4::reportIndustry(std::ostream& out, const Country& theCountry)
+{
+	if (theCountry.getStates().size() > 0)
+	{
+		out << theCountry.getTag() << ',';
+		out << theCountry.getMilitaryFactories() << ',';
+		out << theCountry.getCivilianFactories() << ',';
+		out << theCountry.getDockyards() << ',';
+		out << theCountry.getMilitaryFactories() + theCountry.getCivilianFactories() + theCountry.getDockyards() << '\n';
+	}
+}

@@ -369,7 +369,7 @@ vector<shared_ptr<HoI4::Country>> HoI4WarCreator::GetMorePossibleAllies(const sh
 	vector<shared_ptr<HoI4::Country>> CountriesWithin1000Miles; //Rename to actual distance
 	for (auto country : theWorld->getCountries())
 	{
-		if (country.second->getProvinceCount() != 0)
+		if (country.second->hasProvinces())
 		{
 			auto country2 = country.second;
 			auto distance = getDistanceBetweenCountries(CountryThatWantsAllies, country2);
@@ -658,7 +658,7 @@ map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::getNearbyCountries(shared
 			//IMPROVE
 			//need to get further neighbors, as well as countries without capital in an area
 			auto distance = getDistanceBetweenCountries(checkingCountry, country);
-			if (distance && (*distance <= 500) && (country->getProvinceCount() > 0))
+			if (distance && (*distance <= 500) && (country->hasProvinces()))
 			{
 				neighbors.insert(countryItr);
 			}
@@ -1482,7 +1482,7 @@ map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::findFarNeighbors(shared_p
 			if (otherCountry.second->getCapitalStateNum() != 0)
 			{
 				auto distance = getDistanceBetweenCountries(country, otherCountry.second);
-				if (distance && (*distance <= 1000) && (otherCountry.second->getProvinceCount() > 0))
+				if (distance && (*distance <= 1000) && (otherCountry.second->hasProvinces()))
 				{
 					farNeighbors.insert(otherCountry);
 				}

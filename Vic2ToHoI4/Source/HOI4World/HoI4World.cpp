@@ -180,7 +180,7 @@ void HoI4::World::convertCountry(
 	}
 	else
 	{
-		destCountry = new HoI4::Country(*possibleHoI4Tag, this);
+		destCountry = new HoI4::Country(*possibleHoI4Tag);
 
 		destCountry->initFromV2Country(
 			*sourceWorld,
