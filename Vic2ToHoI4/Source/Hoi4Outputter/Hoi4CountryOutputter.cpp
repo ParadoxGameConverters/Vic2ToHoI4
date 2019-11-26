@@ -247,14 +247,14 @@ void outputConvoys(std::ostream& output, int convoys);
 void outputEquipmentStockpile(
 	std::ostream& output,
 	const std::map<std::string, int>& equipmentStockpile,
-	const std::string tag
+	const std::string& tag
 );
 void outputPuppets(
 	std::ostream& output,
 	const std::string& tag,
 	const std::string& governmentIdeology,
 	const std::set<std::string>& puppets,
-	const std::string puppetMaster
+	const std::string& puppetMaster
 );
 void outputPolitics(
 	std::ostream& output,
@@ -457,7 +457,7 @@ void outputConvoys(std::ostream& output, int convoys)
 void outputEquipmentStockpile(
 	std::ostream& output,
 	const std::map<std::string, int>& equipmentStockpile,
-	const std::string tag
+	const std::string& tag
 ) {
 	for (auto eqp: equipmentStockpile)
 	{
@@ -473,7 +473,7 @@ void outputPuppets(
 	const std::string& tag,
 	const std::string& governmentIdeology,
 	const std::set<std::string>& puppets,
-	const std::string puppetMaster
+	const std::string& puppetMaster
 ) {
 	if (puppets.size() > 0)
 	{
