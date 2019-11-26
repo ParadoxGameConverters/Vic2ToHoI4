@@ -1157,7 +1157,10 @@ void HoI4::World::addFocusTrees()
 {
 	for (auto country: countries)
 	{
-		country.second->addGenericFocusTree(majorIdeologies);
+		if (country.second->isGreatPower() || (country.second->getStrengthOverTime(3) > 4500))
+		{
+			country.second->addGenericFocusTree(majorIdeologies);
+		}
 	}
 }
 
