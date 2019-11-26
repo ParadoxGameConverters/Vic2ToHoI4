@@ -68,20 +68,15 @@ HoI4::Country::Country(
 
 	if (sourceCountry.getProvinces().size() > 0)
 	{
-		/*stability -= (srcCountry->getAverageMilitancy() / 10 / 1.5);
-		if (stability < 0.15)
-		{
-			stability = 0.15;
-		}
-		LOG(LogLevel::Debug) << "stability," << tag << "," << stability;
-		*/
 		float warAttitude = sourceCountry.getAverageIssueSupport("jingoism");
 		warAttitude += sourceCountry.getAverageIssueSupport("pro_military") / 2;
 		warAttitude -= sourceCountry.getAverageIssueSupport("anti_military") / 2;
 		warAttitude -= sourceCountry.getAverageIssueSupport("pacifism");
 		warSupport += static_cast<int>(
-			(warAttitude * 0.375) + (sourceCountry.getRevanchism() / 5.0) - (sourceCountry.getWarExhaustion() / 100.0 / 2.5)
-			);
+			(warAttitude * 0.375)
+			+ (sourceCountry.getRevanchism() / 5.0)
+			- (sourceCountry.getWarExhaustion() / 100.0 / 2.5)
+		);
 		if (warSupport < 15)
 		{
 			warSupport = 15;
@@ -149,8 +144,11 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld, const gove
 	auto possibleRulingParty = sourceCountry.getRulingParty(sourceWorld.getParties());
 	if (!possibleRulingParty)
 	{
-		LOG(LogLevel::Error) << "Could not find the ruling party for " << sourceCountry.getTag() << ". Most likely a mod was not included.";
-		LOG(LogLevel::Error) << "Double-check your settings, and remember to include EU4 to Vic2 mods. See the FAQ for more information.";
+		LOG(LogLevel::Error)
+			<< "Could not find the ruling party for " << sourceCountry.getTag()
+			<< ". Most likely a mod was not included.";
+		LOG(LogLevel::Error)
+			<< "Double-check your settings, and remember to include EU4 to Vic2 mods. See the FAQ for more information.";
 		exit(-1);
 	}
 	else
@@ -176,7 +174,13 @@ void HoI4::Country::convertParties(const set<string>& majorIdeologies, const gov
 	{
 		for (auto party: parties)
 		{
-			if (governmentMap.getSupportedIdeology(governmentIdeology, party.getIdeology(), majorIdeologies) == HoI4Ideology)
+			if (
+				HoI4Ideology == governmentMap.getSupportedIdeology(
+					governmentIdeology,
+					party.getIdeology(),
+					majorIdeologies
+				)
+			)
 			{
 				HoI4Localisation::addPoliticalPartyLocalisation(party.getName(), tag + "_" + HoI4Ideology + "_party");
 			}
@@ -188,17 +192,39 @@ void HoI4::Country::convertParties(const set<string>& majorIdeologies, const gov
 
 void HoI4::Country::initIdeas(HoI4::namesMapper& theNames)
 {
-	HoI4Localisation::addIdeaLocalisation(tag + "_tank_manufacturer", theNames.takeCarCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_motorized_equipment_manufacturer", theNames.takeCarCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_infantry_equipment_manufacturer", theNames.takeWeaponCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_artillery_manufacturer", theNames.takeWeaponCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_light_aircraft_manufacturer", theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_medium_aircraft_manufacturer", theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_heavy_aircraft_manufacturer", theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_naval_aircraft_manufacturer", theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_naval_manufacturer", theNames.takeNavalCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_industrial_concern", theNames.takeIndustryCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_electronics_concern", theNames.takeElectronicCompanyName(sourceCountry.getPrimaryCulture()));
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_tank_manufacturer", theNames.takeCarCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_motorized_equipment_manufacturer", theNames.takeCarCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_infantry_equipment_manufacturer", theNames.takeWeaponCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_artillery_manufacturer", theNames.takeWeaponCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_light_aircraft_manufacturer", theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_medium_aircraft_manufacturer", theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_heavy_aircraft_manufacturer", theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_naval_aircraft_manufacturer", theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_naval_manufacturer", theNames.takeNavalCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_industrial_concern", theNames.takeIndustryCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_electronics_concern", theNames.takeElectronicCompanyName(sourceCountry.getPrimaryCulture())
+	);
 }
 
 
@@ -279,8 +305,10 @@ void HoI4::Country::convertWars(const Vic2::Country& sourceCountry, const Countr
 }
 
 
-void HoI4::Country::determineCapitalFromVic2(const map<int, int>& provinceToStateIDMap, const map<int, HoI4::State>& states)
-{
+void HoI4::Country::determineCapitalFromVic2(
+	const map<int, int>& provinceToStateIDMap,
+	const map<int, HoI4::State>& states
+) {
 	int oldCapital = sourceCountry.getCapital();
 	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital))
 	{
@@ -352,10 +380,22 @@ void HoI4::Country::convertTechnology(std::unique_ptr<mappers::techMapper>& theT
 }
 
 
-void HoI4::Country::setGovernmentToExistingIdeology(const set<string>& majorIdeologies, const map<string, HoI4Ideology*>& ideologies, const governmentMapper& governmentMap)
-{
-	governmentIdeology = governmentMap.getExistingIdeologyForCountry(sourceCountry, rulingParty.getIdeology(), majorIdeologies, ideologies);
-	leaderIdeology = governmentMap.getExistingLeaderIdeologyForCountry(sourceCountry, rulingParty.getIdeology(), majorIdeologies, ideologies);
+void HoI4::Country::setGovernmentToExistingIdeology(
+	const set<string>& majorIdeologies, const map<string, HoI4Ideology*>& ideologies,
+	const governmentMapper& governmentMap
+) {
+	governmentIdeology = governmentMap.getExistingIdeologyForCountry(
+		sourceCountry,
+		rulingParty.getIdeology(),
+		majorIdeologies,
+		ideologies
+	);
+	leaderIdeology = governmentMap.getExistingLeaderIdeologyForCountry(
+		sourceCountry,
+		rulingParty.getIdeology(),
+		majorIdeologies,
+		ideologies
+	);
 }
 
 
@@ -456,9 +496,9 @@ void HoI4::Country::convertConvoys(const HoI4::UnitMappings& unitMap)
 
 void HoI4::Country::convertAirforce(const HoI4::UnitMappings& unitMap)
 {
-        static std::map<std::string, vector<std::string>> backups = {
-            {"fighter_equipment_0", {"tac_bomber_equipment_0"}}};
-        for (auto army : sourceCountry.getArmies())
+	static std::map<std::string, vector<std::string>> backups = {
+		 {"fighter_equipment_0", {"tac_bomber_equipment_0"}} };
+	for (auto army : sourceCountry.getArmies())
 	{
 		for (auto regiment : army->getRegiments())
 		{
@@ -468,31 +508,31 @@ void HoI4::Country::convertAirforce(const HoI4::UnitMappings& unitMap)
 			{
 				HoI4::HoI4UnitType unitInfo = unitMap.getMatchingUnitInfo(type);
 
-                                if (unitInfo.getCategory() != "air")
-                                {
-                                        continue;
-                                }
+				if (unitInfo.getCategory() != "air")
+				{
+					continue;
+				}
 
-                                // Air units get placed in national stockpile.
-                                string equip = unitInfo.getEquipment();
-                                int amount = unitInfo.getSize();
-                                const auto& bkup = backups.find(equip);
-                                if (bkup != backups.end())
-                                {
-                                  amount /= (1 + bkup->second.size());
-                                        for (const auto& b : bkup->second)
-                                        {
-                                                equipmentStockpile[b] += amount;
-                                        }
-                                }
-                                equipmentStockpile[equip] += amount;
-                        }
-                        else
+				// Air units get placed in national stockpile.
+				string equip = unitInfo.getEquipment();
+				int amount = unitInfo.getSize();
+				const auto& bkup = backups.find(equip);
+				if (bkup != backups.end())
+				{
+					amount /= (1 + bkup->second.size());
+					for (const auto& b : bkup->second)
+					{
+						equipmentStockpile[b] += amount;
+					}
+				}
+				equipmentStockpile[equip] += amount;
+			}
+			else
 			{
 				LOG(LogLevel::Warning) << "Unknown unit type: " << type;
 			}
 		}
-	}	
+	}
 }
 
 
@@ -614,8 +654,20 @@ double HoI4::Country::getMilitaryStrength() const
 
 double HoI4::Country::getEconomicStrength(double years) const
 {
-	double militarySectorStrength = militaryFactories * 3 * 365 * years;
-	double civilianSectorStrength = civilianFactories * 0.469 * 0.5 * 3 * 365 * 0.5 * years * years; /*.469 is milfac per year, .5 since half are used by consumer goods*/
+	constexpr float militaryFactoriesPerYear = 0.469f;
+	constexpr float factoriesUsedForConsumerGoods = 0.5f;
+	constexpr int daysPerYear = 365;
+
+	double militarySectorStrength = militaryFactories * 3 * daysPerYear * years;
+	double civilianSectorStrength =
+		civilianFactories
+		* militaryFactoriesPerYear
+		* factoriesUsedForConsumerGoods
+		* factoriesUsedForConsumerGoods
+		* 3
+		* daysPerYear
+		* years
+		* years;
 
 	return militarySectorStrength + civilianSectorStrength;
 }
