@@ -15,8 +15,10 @@
 #include "../Mappers/ProvinceDefinitions.h"
 #include "../Mappers/TechMapper.h"
 #include "../Mappers/V2Localisations.h"
+#include "../V2World/Country.h"
 #include "../V2World/Relations.h"
 #include "../V2World/Party.h"
+#include "../V2World/World.h"
 #include "../Mappers/Provinces/ProvinceMapper.h"
 #include "OSCompatibilityLayer.h"
 #include <algorithm>

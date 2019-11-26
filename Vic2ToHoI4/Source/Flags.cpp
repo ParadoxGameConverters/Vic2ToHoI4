@@ -22,6 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "Flags.h"
+#include "V2World/Country.h"
 #include "targa.h"
 #include "Log.h"
 #include "Configuration.h"

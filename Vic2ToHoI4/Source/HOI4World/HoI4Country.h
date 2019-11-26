@@ -5,28 +5,20 @@
 
 #include "HoI4Airforce.h"
 #include "HoI4Army.h"
-#include "Division.h"
-#include "DivisionTemplate.h"
 #include "HoI4FocusTree.h"
 #include "HOI4Ideology.h"
 #include "HoI4Leader.h"
-#include "HoI4Province.h"
 #include "HoI4Relations.h"
 #include "HoI4War.h"
-#include "MilitaryMappings/MtgUnitMappings.h"
-#include "MilitaryMappings/UnitMappings.h"
 #include "Navies/Navies.h"
-#include "ShipTypes/PossibleShipVariants.h"
-#include "ShipTypes/ShipVariant.h"
 #include "ShipTypes/ShipVariants.h"
-#include "States/HoI4State.h"
 #include "Technologies.h"
 #include "../Color.h"
 #include "Date.h"
-#include "../Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
-#include "../V2World/Army.h"
 #include "../V2World/Party.h"
+#include <functional>
 #include <map>
+#include <memory>
 #include <optional>
 #include <set>
 #include <string>
@@ -47,18 +39,18 @@ class HoI4Ideology;
 
 namespace HoI4
 {
-class Advisor;
 class coastalProvinces;
+class MtgUnitMappings;
 class namesMapper;
+class ShipVariant;
 class State;
-class HoI4UnitType;
-class World;
-struct advisorCompare;
+class UnitMappings;
 }
 
 
 namespace mappers
 {
+class FlagsToIdeasMapper;
 class techMapper;
 }
 
@@ -66,6 +58,9 @@ class techMapper;
 class CountryMapper;
 class governmentMapper;
 class graphicsMapper;
+
+
+class Date;
 
 
 
