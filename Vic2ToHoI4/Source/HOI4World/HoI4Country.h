@@ -121,6 +121,7 @@ class Country
 		double getEconomicStrength(double years) const;
 		bool areElectionsAllowed() const;
 		std::optional<HoI4Faction> getFaction() const;
+		std::optional<HoI4FocusTree> getNationalFocus() const;
 
 		const std::string& getTag() const { return tag; }
 		const Vic2::Country& getSourceCountry() const { return sourceCountry; }
@@ -153,7 +154,6 @@ class Country
 		int getTechnologyCount() const { return technologies->getTechnologyCount(); }
 		const HoI4::technologies& getTechnologies() const { return *technologies; }
 		const std::set<std::string>& getIdeas() const { return ideas; }
-		const HoI4FocusTree& getNationalFocus() const { return *nationalFocus; }
 
 		double getMilitaryFactories() const { return militaryFactories; }
 		double getCivilianFactories() const { return civilianFactories; }

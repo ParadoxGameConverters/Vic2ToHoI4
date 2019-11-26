@@ -708,6 +708,19 @@ std::optional<HoI4Faction> HoI4::Country::getFaction() const
 }
 
 
+std::optional<HoI4FocusTree> HoI4::Country::getNationalFocus() const
+{
+	if (nationalFocus)
+	{
+		return std::make_optional(*nationalFocus);
+	}
+	else
+	{
+		return nullopt;
+	}
+}
+
+
 std::optional<const HoI4::State> HoI4::Country::getCapitalState() const
 {
 	if (auto capitalState = states.find(capitalStateNum); capitalState != states.end())

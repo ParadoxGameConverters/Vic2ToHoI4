@@ -231,9 +231,12 @@ void HoI4::outputCountry(
 		outputCommonCountryFile(theCountry);
 		outputAdvisorIdeas(theCountry.getTag(), ideologicalMinisters);
 
-		theCountry.getNationalFocus().output(
-			"output/" + theConfiguration.getOutputName() + "/common/national_focus/" + theCountry.getTag() + "_NF.txt"
-		);
+		if (auto nationalFocus = theCountry.getNationalFocus(); nationalFocus)
+		{
+			nationalFocus->output(
+				"output/" + theConfiguration.getOutputName() + "/common/national_focus/" + theCountry.getTag() + "_NF.txt"
+			);
+		}
 	}
 }
 

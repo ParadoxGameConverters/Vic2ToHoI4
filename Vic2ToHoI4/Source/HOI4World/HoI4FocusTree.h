@@ -54,8 +54,8 @@ class HoI4FocusTree: commonItems::parser
 		explicit HoI4FocusTree(const HoI4::Country& country);
 
 		HoI4FocusTree() = default;
-		HoI4FocusTree(const HoI4FocusTree&) = delete;
-		HoI4FocusTree& operator=(const HoI4FocusTree&) = delete;
+		HoI4FocusTree(const HoI4FocusTree&) = default;
+		HoI4FocusTree& operator=(const HoI4FocusTree&) = default;
 		HoI4FocusTree(HoI4FocusTree&&) = default;
 		HoI4FocusTree& operator=(HoI4FocusTree&&) = default;
 		~HoI4FocusTree() = default;
