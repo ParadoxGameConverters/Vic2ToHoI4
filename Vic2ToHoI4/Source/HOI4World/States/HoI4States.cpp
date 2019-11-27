@@ -438,7 +438,10 @@ void HoI4States::addCapitalAirBases(const std::map<std::string, std::shared_ptr<
 {
 	for (auto country: countries)
 	{
-		if (auto& capitalState = states.find(country.second->getCapitalStateNum()); capitalState != states.end())
+		if (
+			std::map<int, HoI4::State>::iterator capitalState = states.find(country.second->getCapitalStateNum());
+			capitalState != states.end()
+			)
 		{
 			capitalState->second.addAirBase(5);
 		}
@@ -450,7 +453,10 @@ void HoI4States::addGreatPowerAirBases(const std::vector<std::shared_ptr<HoI4::C
 {
 	for (auto greatPower: greatPowers)
 	{
-		if (auto& capitalState = states.find(greatPower->getCapitalStateNum()); capitalState != states.end())
+		if (
+			std::map<int, HoI4::State>::iterator capitalState = states.find(greatPower->getCapitalStateNum());
+			capitalState != states.end()
+			)
 		{
 			capitalState->second.addAirBase(5);
 		}
@@ -551,7 +557,10 @@ void HoI4States::addBasicCapitalVPs(const std::map<std::string, std::shared_ptr<
 {
 	for (auto country: countries)
 	{
-		if (auto& capitalState = states.find(country.second->getCapitalStateNum()); capitalState != states.end())
+		if (
+			std::map<int, HoI4::State>::iterator capitalState = states.find(country.second->getCapitalStateNum());
+			capitalState != states.end()
+			)
 		{
 			capitalState->second.addVictoryPointValue(5);
 		}
@@ -563,7 +572,10 @@ void HoI4States::addGreatPowerVPs(const std::vector<std::shared_ptr<HoI4::Countr
 {
 	for (auto greatPower: greatPowers)
 	{
-		if (auto& capitalState = states.find(greatPower->getCapitalStateNum()); capitalState != states.end())
+		if (
+			std::map<int, HoI4::State>::iterator capitalState = states.find(greatPower->getCapitalStateNum());
+			capitalState != states.end()
+			)
 		{
 			capitalState->second.addVictoryPointValue(5);
 		}
@@ -578,7 +590,10 @@ void HoI4States::addStrengthVPs(
 	for (auto country: countries)
 	{
 		int VPs = calculateStrengthVPs(*country.second, greatestStrength);
-		if (auto& capitalState = states.find(country.second->getCapitalStateNum()); capitalState != states.end())
+		if (
+			std::map<int, HoI4::State>::iterator capitalState = states.find(country.second->getCapitalStateNum());
+			capitalState != states.end()
+			)
 		{
 			capitalState->second.addVictoryPointValue(VPs);
 		}
