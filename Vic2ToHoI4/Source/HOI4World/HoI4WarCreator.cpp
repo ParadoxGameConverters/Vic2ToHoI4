@@ -462,8 +462,7 @@ bool HoI4WarCreator::bothCountriesHaveCapitals(shared_ptr<HoI4::Country> Country
 
 std::pair<int, int> HoI4WarCreator::getCapitalPosition(std::shared_ptr<HoI4::Country> country)
 {
-	auto capitalState = country->getCapitalState();
-	std::optional<int> capitalProvince = capitalState->getVPLocation();
+	auto capitalProvince = country->getCapitalProvince();
 	if (capitalProvince)
 	{
 		return getProvincePosition(*capitalProvince);

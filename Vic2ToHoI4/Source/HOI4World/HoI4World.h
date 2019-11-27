@@ -112,8 +112,6 @@ class World: commonItems::parser
 		World(const World&) = delete;
 		World& operator=(const World&) = delete;
 
-		void convertNavalBases();
-
 		void convertCountries();
 		void convertCountry(
 			std::pair<std::string, Vic2::Country*> country,
@@ -139,15 +137,12 @@ class World: commonItems::parser
 		double getTotalWorldWorkers(const map<string, double>& industrialWorkersPerCountry);
 		map<string, double> adjustWorkers(const map<string, double>& industrialWorkersPerCountry, double totalWorldWorkers);
 		double getWorldwideWorkerFactoryRatio(const map<string, double>& workersInCountries, double totalWorldWorkers);
-		void putIndustryInStates(const map<string, double>& factoryWorkerRatios);
 		void calculateIndustryInCountries();
 		void reportIndustryLevels();
 		void reportCountryIndustry();
 		void reportDefaultIndustry();
 		std::pair<std::string, std::array<int, 3>> getDefaultStateIndustry(const HoI4::DefaultState& state);
 		void reportDefaultIndustry(const map<string, array<int, 3>>& countryIndustry);
-
-		void convertResources();
 
 		void convertStrategicRegions();
 		map<int, int> importStrategicRegions();
@@ -171,17 +166,7 @@ class World: commonItems::parser
 
 		void determineGreatPowers();
 
-		void convertCapitalVPs();
-		void addBasicCapitalVPs();
-		void addGreatPowerVPs();
-		void addStrengthVPs();
 		double getStrongestCountryStrength() const;
-		int calculateStrengthVPs(shared_ptr<HoI4::Country> country, double greatestStrength) const;
-
-		void convertAirBases();
-		void addBasicAirBases();
-		void addCapitalAirBases();
-		void addGreatPowerAirBases();
 
 		void createFactions();
 		void logFactionMember(ofstream& factionsLog, shared_ptr<HoI4::Country> member) const;

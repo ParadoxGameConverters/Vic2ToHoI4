@@ -425,7 +425,7 @@ void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4::Country> Annexer, std:
 	acceptedOption += "		name = \"A stronger Union!\"\n";
 	for (auto state: Annexed->getStates())
 	{
-		acceptedOption += "		" + to_string(state.first) + " = {\n";
+		acceptedOption += "		" + to_string(state) + " = {\n";
 		acceptedOption += "			if = {\n";
 		acceptedOption += "				limit = { is_owned_by = " + Annexed->getTag() + " }\n";
 		acceptedOption += "				add_core_of = " + Annexer->getTag() + "\n";

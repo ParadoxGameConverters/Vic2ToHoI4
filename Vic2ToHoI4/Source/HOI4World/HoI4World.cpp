@@ -45,7 +45,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4Province.h"
 #include "HoI4StrategicRegion.h"
 #include "HoI4WarCreator.h"
-#include "Resources.h"
 #include "ShipTypes/PossibleShipVariants.h"
 #include "States/DefaultState.h"
 #include "States/HoI4State.h"
@@ -78,11 +77,12 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 
 	theCoastalProvinces.init(theMapData);
 	buildings = new Buildings(*states, theCoastalProvinces, theMapData),
-	convertNavalBases();
+	states->convertNavalBases(theCoastalProvinces);
 	convertCountries();
+	states->addCapitalsToStates(countries);
 	HoI4Localisation::addStateLocalisations(states);
 	convertIndustry();
-	convertResources();
+	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
 	convertStrategicRegions();
 	convertDiplomacy();
@@ -111,8 +111,8 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	peaces->updateAIPeaces(majorIdeologies);
 	addNeutrality();
 	convertIdeologySupport();
-	convertCapitalVPs();
-	convertAirBases();
+	states->convertCapitalVPs(countries, greatPowers, getStrongestCountryStrength());
+	states->convertAirBases(countries, greatPowers);
 	if (theConfiguration.getCreateFactions())
 	{
 		createFactions();
@@ -134,14 +134,6 @@ shared_ptr<HoI4::Country> HoI4::World::findCountry(const string& countryTag)
 	}
 
 	return country->second;
-}
-
-void HoI4::World::convertNavalBases()
-{
-	for (auto state: states->getStates())
-	{
-		state.second.convertNavalBases(theCoastalProvinces, theProvinceMapper);
-	}
 }
 
 
@@ -319,7 +311,7 @@ void HoI4::World::convertIndustry()
 	addStatesToCountries();
 
 	map<string, double> factoryWorkerRatios = calculateFactoryWorkerRatios();
-	putIndustryInStates(factoryWorkerRatios);
+	states->putIndustryInStates(factoryWorkerRatios, theCoastalProvinces);
 
 	calculateIndustryInCountries();
 	reportIndustryLevels();
@@ -448,28 +440,11 @@ double HoI4::World::getWorldwideWorkerFactoryRatio(const map<string, double>& wo
 }
 
 
-void HoI4::World::putIndustryInStates(const map<string, double>& factoryWorkerRatios)
-{
-	HoI4::StateCategories theStateCategories;
-
-	for (auto HoI4State : states->getStates())
-	{
-		auto ratioMapping = factoryWorkerRatios.find(HoI4State.second.getOwner());
-		if (ratioMapping == factoryWorkerRatios.end())
-		{
-			continue;
-		}
-
-		HoI4State.second.convertIndustry(ratioMapping->second, theStateCategories, theCoastalProvinces);
-	}
-}
-
-
 void HoI4::World::calculateIndustryInCountries()
 {
 	for (auto country: countries)
 	{
-		country.second->calculateIndustry();
+		country.second->calculateIndustry(states->getStates());
 	}
 }
 
@@ -566,23 +541,6 @@ void HoI4::World::reportDefaultIndustry(const map<string, array<int, 3>>& countr
 			report << country.second[1] << ',';
 			report << country.second[2] << ',';
 			report << country.second[0] + country.second[1] + country.second[2] << '\n';
-		}
-	}
-}
-
-
-void HoI4::World::convertResources()
-{
-	resources resourceMap;
-
-	for (auto state: states->getStates())
-	{
-		for (auto provinceNumber: state.second.getProvinces())
-		{
-			for (auto resource: resourceMap.getResourcesInProvince(provinceNumber))
-			{
-				state.second.addResource(resource.first, resource.second);
-			}
 		}
 	}
 }
@@ -850,7 +808,13 @@ void HoI4::World::convertNavies(
 	for (auto country : countries)
 	{
 		country.second->determineShipVariants(possibleVariants.getPossibleVariants());
-		country.second->convertNavies(unitMap, mtgUnitMap, theCoastalProvinces, states->getProvinceToStateIDMap());
+		country.second->convertNavies(
+			unitMap,
+			mtgUnitMap,
+			theCoastalProvinces,
+			states->getProvinceToStateIDMap(),
+			states->getStates()
+		);
 		country.second->convertConvoys(unitMap);
 	}
 }
@@ -885,45 +849,6 @@ void HoI4::World::determineGreatPowers()
 }
 
 
-void HoI4::World::convertCapitalVPs()
-{
-	LOG(LogLevel::Info) << "Adding bonuses to capitals";
-
-	addBasicCapitalVPs();
-	addGreatPowerVPs();
-	addStrengthVPs();
-}
-
-
-void HoI4::World::addBasicCapitalVPs()
-{
-	for (auto countryItr: countries)
-	{
-		countryItr.second->addVPsToCapital(5);
-	}
-}
-
-
-void HoI4::World::addGreatPowerVPs()
-{
-	for (auto greatPower: greatPowers)
-	{
-		greatPower->addVPsToCapital(5);
-	}
-}
-
-
-void HoI4::World::addStrengthVPs()
-{
-	double greatestStrength = getStrongestCountryStrength();
-	for (auto country: countries)
-	{
-		int VPs = calculateStrengthVPs(country.second, greatestStrength);
-		country.second->addVPsToCapital(VPs);
-	}
-}
-
-
 double HoI4::World::getStrongestCountryStrength() const
 {
 	double greatestStrength = 0.0;
@@ -937,54 +862,6 @@ double HoI4::World::getStrongestCountryStrength() const
 	}
 
 	return greatestStrength;
-}
-
-
-int HoI4::World::calculateStrengthVPs(shared_ptr<HoI4::Country> country, double greatestStrength) const
-{
-	double relativeStrength = country->getStrengthOverTime(1.0) / greatestStrength;
-	return static_cast<int>(relativeStrength * 30.0);
-}
-
-
-void HoI4::World::convertAirBases()
-{
-	addBasicAirBases();
-	addCapitalAirBases();
-	addGreatPowerAirBases();
-}
-
-
-void HoI4::World::addBasicAirBases()
-{
-	for (auto state: states->getStates())
-	{
-		int numFactories = (state.second.getCivFactories() + state.second.getMilFactories()) / 4;
-		state.second.addAirBase(numFactories);
-
-		if (state.second.getInfrastructure() > 5)
-		{
-			state.second.addAirBase(1);
-		}
-	}
-}
-
-
-void HoI4::World::addCapitalAirBases()
-{
-	for (auto country: countries)
-	{
-		country.second->addAirbasesToCapital(5);
-	}
-}
-
-
-void HoI4::World::addGreatPowerAirBases()
-{
-	for (auto greatPower: greatPowers)
-	{
-		greatPower->addAirbasesToCapital(5);
-	}
 }
 
 

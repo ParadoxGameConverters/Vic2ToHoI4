@@ -314,11 +314,8 @@ void HoI4::Country::determineCapitalFromVic2(
 		auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
 		if (capitalStateMapping != provinceToStateIDMap.end() && isStateValidForCapital(capitalStateMapping->second, states))
 		{
-			capitalStateNum = capitalStateMapping->second;
-			if (isThisStateOwnedByUs(states.find(capitalStateNum)->second))
-			{
-				setCapitalInCapitalState((*mapping)[0]);
-			}
+			capitalState = capitalStateMapping->second;
+			capitalProvince = (*mapping)[0];
 		}
 		else
 		{
@@ -355,18 +352,9 @@ bool HoI4::Country::isThisStateACoreWhileWeOwnNoStates(const HoI4::State& state)
 }
 
 
-void HoI4::Country::setCapitalInCapitalState(int capitalProvince)
-{
-	if (auto capitalState = states.find(capitalStateNum); capitalState != states.end())
-	{
-		capitalState->second.setVPLocation(capitalProvince);
-	}
-}
-
-
 void HoI4::Country::findBestCapital()
 {
-	capitalStateNum = 0;
+	capitalState = 0;
 	LOG(LogLevel::Warning) << "Could not properly set capital for " << tag;
 }
 
@@ -437,10 +425,11 @@ void HoI4::Country::convertNavies(
 	const HoI4::UnitMappings& unitMap,
 	const HoI4::MtgUnitMappings& mtgUnitMap,
 	const HoI4::coastalProvinces& theCoastalProvinces,
-	const std::map<int, int>& provinceToStateIDMap)
+	const std::map<int, int>& provinceToStateIDMap,
+	const std::map<int, HoI4::State>& allStates)
 {
 	int backupNavalLocation = 0;
-	for (auto state: states)
+	for (auto state: allStates)
 	{
 		if (state.second.getOwner() == tag)
 		{
@@ -461,7 +450,7 @@ void HoI4::Country::convertNavies(
 		*theShipVariants,
 		theCoastalProvinces,
 		provinceToStateIDMap,
-		states,
+		allStates,
 		tag);
 }
 
@@ -537,14 +526,9 @@ void HoI4::Country::convertAirforce(const HoI4::UnitMappings& unitMap)
 
 void HoI4::Country::convertArmies(const HoI4::militaryMappings& theMilitaryMappings)
 {
-	std::optional<int> backupLocation;
-	if (auto capitalState = states.find(capitalStateNum); capitalState != states.end())
+	if (capitalProvince)
 	{
-		backupLocation = capitalState->second.getVPLocation();
-	}
-	if (backupLocation)
-	{
-		theArmy.convertArmies(theMilitaryMappings, *backupLocation, theConfiguration.getForceMultiplier());
+		theArmy.convertArmies(theMilitaryMappings, *capitalProvince, theConfiguration.getForceMultiplier());
 	}
 	else
 	{
@@ -553,15 +537,9 @@ void HoI4::Country::convertArmies(const HoI4::militaryMappings& theMilitaryMappi
 }
 
 
-void HoI4::Country::addState(HoI4::State& state)
+void HoI4::Country::addState(const HoI4::State& state)
 {
-	states.insert(std::make_pair(state.getID(), state));
-
-	if (capitalStateNum == 0)
-	{
-		capitalStateNum = state.getID();
-		state.setAsCapitalState();
-	}
+	states.insert(state.getID());
 
 	for (const auto province: state.getProvinces())
 	{
@@ -590,22 +568,16 @@ optional<HoI4Relations> HoI4::Country::getRelations(string withWhom) const
 }
 
 
-void HoI4::Country::calculateIndustry()
+void HoI4::Country::calculateIndustry(const std::map<int, HoI4::State>& allStates)
 {
-	for (auto state: states)
+	for (auto state: allStates)
 	{
-		civilianFactories += state.second.getCivFactories();
-		militaryFactories += state.second.getMilFactories();
-		dockyards += state.second.getDockyards();
-	}
-}
-
-
-void HoI4::Country::addVPsToCapital(int VPs)
-{
-	if (auto capitalState = states.find(capitalStateNum); capitalState != states.end())
-	{
-		capitalState->second.addVictoryPointValue(VPs);
+		if (state.second.getOwner() == tag)
+		{
+			civilianFactories += state.second.getCivFactories();
+			militaryFactories += state.second.getMilFactories();
+			dockyards += state.second.getDockyards();
+		}
 	}
 }
 
@@ -626,15 +598,6 @@ void HoI4::Country::adjustResearchFocuses()
 	if (greatPower && (nationalFocus != nullptr))
 	{
 		nationalFocus->removeFocus("extra_tech_slot_2" + tag);
-	}
-}
-
-
-void HoI4::Country::addAirbasesToCapital(int airbases)
-{
-	if (auto capitalState = states.find(capitalStateNum); capitalState != states.end())
-	{
-		capitalState->second.addAirBase(airbases);
 	}
 }
 
@@ -717,18 +680,5 @@ std::optional<HoI4FocusTree> HoI4::Country::getNationalFocus() const
 	else
 	{
 		return nullopt;
-	}
-}
-
-
-std::optional<const HoI4::State> HoI4::Country::getCapitalState() const
-{
-	if (auto capitalState = states.find(capitalStateNum); capitalState != states.end())
-	{
-		return capitalState->second;
-	}
-	else
-	{
-		return std::nullopt;
 	}
 }

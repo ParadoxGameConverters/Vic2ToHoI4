@@ -40,6 +40,8 @@ using namespace std;
 class CountryMapper;
 namespace HoI4
 {
+class Country;
+class coastalProvinces;
 class DefaultState;
 class impassableProvinces;
 class State;
@@ -61,6 +63,23 @@ class HoI4States: commonItems::parser
 		const map<int, HoI4::DefaultState>& getDefaultStates() const { return defaultStates; }
 		const map<int, HoI4::State>& getStates() const { return states; }
 		const map<int, int>& getProvinceToStateIDMap() const { return provinceToStateIDMap; }
+
+		void convertAirBases(
+			const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+			const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers
+		);
+		void convertResources();
+		void putIndustryInStates(
+			const std::map<std::string, double>& factoryWorkerRatios,
+			const HoI4::coastalProvinces& theCoastalProvinces
+		);
+		void convertNavalBases(const HoI4::coastalProvinces& theCoastalProvinces);
+		void convertCapitalVPs(
+			const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+			const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers,
+			double greatestStrength
+		);
+		void addCapitalsToStates(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
 
 		void output() const;
 
@@ -94,6 +113,18 @@ class HoI4States: commonItems::parser
 		bool isProvinceOwnedByCountry(int provNum, const string& stateOwner) const;
 		bool isProvinceNotAlreadyAssigned(int provNum) const;
 		unsigned int getTotalManpower() const;
+
+		void addBasicAirBases();
+		void addCapitalAirBases(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
+		void addGreatPowerAirBases(const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers);
+
+		void addBasicCapitalVPs(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
+		void addGreatPowerVPs(const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers);
+		void addStrengthVPs(
+			const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+			double greatestStrength
+		);
+		int calculateStrengthVPs(const HoI4::Country& country, double greatestStrength) const;
 
 
 		const Vic2::World* sourceWorld = nullptr;

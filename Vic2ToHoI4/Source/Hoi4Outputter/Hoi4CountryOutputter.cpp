@@ -241,7 +241,7 @@ void HoI4::outputCountry(
 }
 
 
-void outputCapital(std::ostream& output, int capitalStateNum, const std::map<int, HoI4::State>& states);
+void outputCapital(std::ostream& output, int capitalStateNum);
 void outputResearchSlots(std::ostream& output, bool greatPower, bool civilized);
 void outputThreat(std::ostream& output, double threat);
 void outputWars(std::ostream& output, const std::vector<HoI4::War>& wars);
@@ -325,7 +325,7 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 	}
 	output << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 
-	outputCapital(output, theCountry.getCapitalStateNum(), theCountry.getStates());
+	outputCapital(output, theCountry.getCapitalStateNum());
 	outputResearchSlots(output, theCountry.isGreatPower(), theCountry.isCivilized());
 	outputThreat(output, theCountry.getThreat());
 	outputWars(output, theCountry.getWars());
@@ -360,7 +360,7 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 		theCountry.getTradeLaw(),
 		primaryCulture
 	);
-	if (theCountry.getStates().size() > 0)
+	if (theCountry.hasProvinces())
 	{
 		outputStability(output, theCountry.getStability());
 		outputWarSupport(output, theCountry.getWarSupport());
@@ -382,15 +382,11 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 }
 
 
-void outputCapital(std::ostream& output, int capitalStateNum, const std::map<int, HoI4::State>& states)
+void outputCapital(std::ostream& output, int capitalStateNum)
 {
 	if (capitalStateNum > 0)
 	{
 		output << "capital = " << capitalStateNum << '\n';
-	}
-	else if (states.size() > 0)
-	{
-		output << "capital = " << states.begin()->first << '\n';
 	}
 	else
 	{
@@ -1154,7 +1150,7 @@ void outputAdvisorIdeas(
 
 void HoI4::reportIndustry(std::ostream& out, const Country& theCountry)
 {
-	if (theCountry.getStates().size() > 0)
+	if (theCountry.hasProvinces())
 	{
 		out << theCountry.getTag() << ',';
 		out << theCountry.getMilitaryFactories() << ',';
