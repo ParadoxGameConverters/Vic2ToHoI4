@@ -31,7 +31,10 @@ using namespace std;
 
 
 
-class HoI4Country;
+namespace HoI4
+{
+class Country;
+}
 
 
 
@@ -39,18 +42,15 @@ class HoI4Faction
 {
 
 	public:
-		HoI4Faction(shared_ptr<HoI4Country> leader, const vector<shared_ptr<HoI4Country>>& members): Factionleader(leader), Factionmembers(members) {}
+		HoI4Faction(shared_ptr<HoI4::Country> leader, const vector<shared_ptr<HoI4::Country>>& members): Factionleader(leader), Factionmembers(members) {}
 
-		shared_ptr<HoI4Country> getLeader() const { return Factionleader; }
-		vector<shared_ptr<HoI4Country>> getMembers() const { return Factionmembers; }
-		void addMember(shared_ptr<HoI4Country> addedCon) { Factionmembers.push_back(addedCon); }
+		shared_ptr<HoI4::Country> getLeader() const { return Factionleader; }
+		vector<shared_ptr<HoI4::Country>> getMembers() const { return Factionmembers; }
+		void addMember(shared_ptr<HoI4::Country> addedCon) { Factionmembers.push_back(addedCon); }
 
 	private:
-		HoI4Faction(const HoI4Faction&) = delete;
-		HoI4Faction& operator=(const HoI4Faction&) = delete;
-
-		shared_ptr<HoI4Country> Factionleader;
-		vector<shared_ptr<HoI4Country>> Factionmembers;
+		shared_ptr<HoI4::Country> Factionleader;
+		vector<shared_ptr<HoI4::Country>> Factionmembers;
 
 };
 

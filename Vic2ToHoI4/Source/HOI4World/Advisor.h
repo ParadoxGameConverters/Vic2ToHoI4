@@ -47,9 +47,6 @@ class Advisor: commonItems::parser
 		std::string getIdeology() const { return ideology; }
 
 	private:
-		Advisor(const Advisor&) = delete;
-		Advisor& operator=(const Advisor&) = delete;
-
 		std::vector<std::string> traits;
 		std::string picture = "";
 		std::string ideology = "";
@@ -57,8 +54,8 @@ class Advisor: commonItems::parser
 
 
 struct advisorCompare {
-	bool operator() (const HoI4::Advisor* lhs, const HoI4::Advisor* rhs) const {
-		return lhs->getIdeology() < rhs->getIdeology();
+	bool operator() (const HoI4::Advisor& lhs, const HoI4::Advisor& rhs) const {
+		return lhs.getIdeology() < rhs.getIdeology();
 	}
 };
 

@@ -60,7 +60,6 @@ class Country: commonItems::parser
 
 		void addProvince(const std::pair<const int, Province*>& province) { provinces.insert(province); }
 		void setColor(const ConverterColor::Color& newColor) { color = newColor; }
-		void setAsGreatNation() { greatNation = true; }
 		void addCore(Province* core) { cores.push_back(core); }
 		void replaceCores(std::vector<Province*> newCores) { cores.swap(newCores); }
 		void setShipNames(const std::map<std::string, std::vector<std::string>>& newShipNames) { shipNames = newShipNames; }
@@ -95,7 +94,6 @@ class Country: commonItems::parser
 		double getWarExhaustion() const { return warExhaustion; }
 		double getBadBoy() const { return badboy; }
 		double getPrestige() const { return prestige; }
-		bool isGreatNation() const { return greatNation; }
 		std::map<int, Province*> getProvinces() const { return provinces; }
 		std::vector<Province*> getCores() const { return cores; }
 		bool isEmpty() const { return ((cores.size() == 0) && (provinces.size() == 0)); }
@@ -142,7 +140,6 @@ class Country: commonItems::parser
 		std::set<std::string> discoveredInventions;
 
 		std::map<std::string, const Relations*> relations;
-		bool greatNation = false;
 		bool civilized = false;
 
 		std::vector<const Army*> armies;

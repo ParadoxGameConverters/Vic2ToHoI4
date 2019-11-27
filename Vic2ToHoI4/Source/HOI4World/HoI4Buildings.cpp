@@ -174,9 +174,9 @@ void HoI4::Buildings::placeArmsFactories(const HoI4States& theStates, const MapD
 	for (auto state: theStates.getStates())
 	{
 		int numPlaced = 0;
-		for (auto theProvince: state.second->getProvinces())
+		for (auto theProvince: state.second.getProvinces())
 		{
-			auto possibleArmsFactory = defaultArmsFactories.find(make_pair(theProvince, 0));
+			auto possibleArmsFactory = defaultArmsFactories.find(std::make_pair(theProvince, 0));
 			if (possibleArmsFactory != defaultArmsFactories.end())
 			{
 				auto position = possibleArmsFactory->second;
@@ -192,7 +192,7 @@ void HoI4::Buildings::placeArmsFactories(const HoI4States& theStates, const MapD
 		}
 		while (numPlaced < 6)
 		{
-			for (auto theProvince: state.second->getProvinces())
+			for (auto theProvince: state.second.getProvinces())
 			{
 				auto theProvincePoints = theMapData.getProvincePoints(theProvince);
 				if (theProvincePoints)
@@ -228,9 +228,9 @@ void HoI4::Buildings::placeIndustrialComplexes(const HoI4States& theStates, cons
 	for (auto state: theStates.getStates())
 	{
 		int numPlaced = 0;
-		for (auto theProvince: state.second->getProvinces())
+		for (auto theProvince: state.second.getProvinces())
 		{
-			auto possibleIndustrialComplex = defaultIndustrialComplexes.find(make_pair(theProvince, 0));
+			auto possibleIndustrialComplex = defaultIndustrialComplexes.find(std::make_pair(theProvince, 0));
 			if (possibleIndustrialComplex != defaultIndustrialComplexes.end())
 			{
 				auto position = possibleIndustrialComplex->second;
@@ -246,7 +246,7 @@ void HoI4::Buildings::placeIndustrialComplexes(const HoI4States& theStates, cons
 		}
 		while (numPlaced < 6)
 		{
-			for (auto theProvince: state.second->getProvinces())
+			for (auto theProvince: state.second.getProvinces())
 			{
 				auto theProvincePoints = theMapData.getProvincePoints(theProvince);
 				if (theProvincePoints)
@@ -282,9 +282,9 @@ void HoI4::Buildings::placeAirports(const HoI4States& theStates, const MapData& 
 	for (auto state: theStates.getStates())
 	{
 		bool airportPlaced = false;
-		for (auto theProvince: state.second->getProvinces())
+		for (auto theProvince: state.second.getProvinces())
 		{
-			auto possibleAirbase = defaultAirBases.find(make_pair(theProvince, 0));
+			auto possibleAirbase = defaultAirBases.find(std::make_pair(theProvince, 0));
 			if (possibleAirbase != defaultAirBases.end())
 			{
 				auto position = possibleAirbase->second;
@@ -297,9 +297,9 @@ void HoI4::Buildings::placeAirports(const HoI4States& theStates, const MapData& 
 		}
 		if (!airportPlaced)
 		{
-			auto theProvince = *state.second->getProvinces().begin();
+			auto theProvince = *state.second.getProvinces().begin();
 			bool pause = false;
-			airportLocations.insert(make_pair(state.first, theProvince));
+			airportLocations.insert(std::make_pair(state.first, theProvince));
 
 			auto theProvincePoints = theMapData.getProvincePoints(theProvince);
 			if (theProvincePoints)
@@ -327,9 +327,9 @@ void HoI4::Buildings::placeAntiAir(const HoI4States& theStates, const MapData& t
 	for (auto state: theStates.getStates())
 	{
 		int numPlaced = 0;
-		for (auto theProvince: state.second->getProvinces())
+		for (auto theProvince: state.second.getProvinces())
 		{
-			auto possibleAntiAir = defaultAntiAirs.find(make_pair(theProvince, 0));
+			auto possibleAntiAir = defaultAntiAirs.find(std::make_pair(theProvince, 0));
 			if (possibleAntiAir != defaultAntiAirs.end())
 			{
 				auto position = possibleAntiAir->second;
@@ -345,7 +345,7 @@ void HoI4::Buildings::placeAntiAir(const HoI4States& theStates, const MapData& t
 		}
 		while (numPlaced < 3)
 		{
-			for (auto theProvince: state.second->getProvinces())
+			for (auto theProvince: state.second.getProvinces())
 			{
 				auto theProvincePoints = theMapData.getProvincePoints(theProvince);
 				if (theProvincePoints)
@@ -538,9 +538,9 @@ void HoI4::Buildings::placeDockyards(const HoI4States& theStates, const coastalP
 	for (auto state: theStates.getStates())
 	{
 		bool dockyardPlaced = false;
-		for (auto theProvince: state.second->getProvinces())
+		for (auto theProvince: state.second.getProvinces())
 		{
-			auto possibleDockyard = defaultDockyards.find(make_pair(theProvince, 0));
+			auto possibleDockyard = defaultDockyards.find(std::make_pair(theProvince, 0));
 			if (possibleDockyard != defaultDockyards.end())
 			{
 				auto position = possibleDockyard->second;
@@ -553,7 +553,7 @@ void HoI4::Buildings::placeDockyards(const HoI4States& theStates, const coastalP
 		if (!dockyardPlaced)
 		{
 			std::optional<int> theProvince;
-			for (auto possibleProvince: state.second->getProvinces())
+			for (auto possibleProvince: state.second.getProvinces())
 			{
 				if (theCoastalProvinces.isProvinceCoastal(possibleProvince))
 				{
@@ -593,9 +593,9 @@ void HoI4::Buildings::placeSyntheticRefineries(const HoI4States& theStates, cons
 	for (auto state: theStates.getStates())
 	{
 		bool refineryPlaced = false;
-		for (auto theProvince: state.second->getProvinces())
+		for (auto theProvince: state.second.getProvinces())
 		{
-			auto possibleRefinery = defaultSyntheticRefineries.find(make_pair(theProvince, 0));
+			auto possibleRefinery = defaultSyntheticRefineries.find(std::make_pair(theProvince, 0));
 			if (possibleRefinery != defaultSyntheticRefineries.end())
 			{
 				auto position = possibleRefinery->second;
@@ -607,7 +607,7 @@ void HoI4::Buildings::placeSyntheticRefineries(const HoI4States& theStates, cons
 		}
 		if (!refineryPlaced)
 		{
-			auto theProvince = *state.second->getProvinces().begin();
+			auto theProvince = *state.second.getProvinces().begin();
 			auto theProvincePoints = theMapData.getProvincePoints(theProvince);
 			if (theProvincePoints)
 			{
@@ -634,9 +634,9 @@ void HoI4::Buildings::placeNuclearReactors(const HoI4States& theStates, const Ma
 	for (auto state: theStates.getStates())
 	{
 		bool reactorPlaced = false;
-		for (auto theProvince: state.second->getProvinces())
+		for (auto theProvince: state.second.getProvinces())
 		{
-			auto possibleReactor = defaultNuclearReactors.find(make_pair(theProvince, 0));
+			auto possibleReactor = defaultNuclearReactors.find(std::make_pair(theProvince, 0));
 			if (possibleReactor != defaultNuclearReactors.end())
 			{
 				auto position = possibleReactor->second;
@@ -648,7 +648,7 @@ void HoI4::Buildings::placeNuclearReactors(const HoI4States& theStates, const Ma
 		}
 		if (!reactorPlaced)
 		{
-			auto theProvince = *state.second->getProvinces().begin();
+			auto theProvince = *state.second.getProvinces().begin();
 			auto theProvincePoints = theMapData.getProvincePoints(theProvince);
 			if (theProvincePoints)
 			{

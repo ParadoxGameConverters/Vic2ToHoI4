@@ -53,8 +53,6 @@ class HoI4Relations
 		bool		atWar()				const { return lastWar > truceUntil; };
 
 	private:
-		HoI4Relations(const HoI4Relations&) = delete;
-		HoI4Relations& operator=(const HoI4Relations&) = delete;
 
 		std::string	tag;
 		int		value;

@@ -156,70 +156,97 @@ governmentMapper::governmentMapper() noexcept
 }
 
 
-std::string governmentMapper::getIdeologyForCountry(const Vic2::Country* country, const std::string& Vic2RulingIdeology) const
+std::string governmentMapper::getIdeologyForCountry(
+	const Vic2::Country& country,
+	const std::string& Vic2RulingIdeology
+) const
 {
 	std::string ideology = "neutrality";
 	for (auto mapping: governmentMap)
 	{
-		if (governmentMatches(mapping, country->getGovernment()) &&	rulingIdeologyMatches(mapping, Vic2RulingIdeology))
+		if (governmentMatches(mapping, country.getGovernment()) &&	rulingIdeologyMatches(mapping, Vic2RulingIdeology))
 		{
 			ideology = mapping.HoI4GovernmentIdeology;
 			break;
 		}
 	}
 
-	LOG(LogLevel::Debug) << "Mapped " << country->getTag() << " government " << country->getGovernment() << " to " << ideology;
+	LOG(LogLevel::Debug)
+		<< "Mapped " << country.getTag() << " government " << country.getGovernment() << " to " << ideology;
 	return ideology;
 }
 
 
-std::string governmentMapper::getLeaderIdeologyForCountry(const Vic2::Country* country, const std::string& Vic2RulingIdeology) const
+std::string governmentMapper::getLeaderIdeologyForCountry(
+	const Vic2::Country& country,
+	const std::string& Vic2RulingIdeology
+) const
 {
 	std::string ideology = "neutrality";
 	for (auto mapping: governmentMap)
 	{
-		if (governmentMatches(mapping, country->getGovernment()) &&	rulingIdeologyMatches(mapping, Vic2RulingIdeology))
+		if (governmentMatches(mapping, country.getGovernment()) &&	rulingIdeologyMatches(mapping, Vic2RulingIdeology))
 		{
 			ideology = mapping.HoI4LeaderIdeology;
 			break;
 		}
 	}
 
-	LOG(LogLevel::Debug) << "Mapped " << country->getTag() << " leader " << country->getGovernment() << " to " << ideology;
+	LOG(LogLevel::Debug) << "Mapped " << country.getTag() << " leader " << country.getGovernment() << " to " << ideology;
 	return ideology;
 }
 
 
-std::string governmentMapper::getExistingIdeologyForCountry(const Vic2::Country* country, const std::string& Vic2RulingIdeology, const std::set<std::string>& majorIdeologies, const std::map<std::string, HoI4Ideology*>& ideologies) const
+std::string governmentMapper::getExistingIdeologyForCountry(
+	const Vic2::Country& country,
+	const std::string& Vic2RulingIdeology,
+	const std::set<std::string>& majorIdeologies,
+	const std::map<std::string, HoI4Ideology*>& ideologies
+) const
 {
 	std::string ideology = "neutrality";
 	for (auto mapping: governmentMap)
 	{
-		if (governmentMatches(mapping, country->getGovernment()) &&	rulingIdeologyMatches(mapping, Vic2RulingIdeology) && ideologyIsValid(mapping, majorIdeologies, ideologies))
+		if (
+			governmentMatches(mapping, country.getGovernment()) &&
+			rulingIdeologyMatches(mapping, Vic2RulingIdeology)
+			&& ideologyIsValid(mapping, majorIdeologies, ideologies)
+			)
 		{
 			ideology = mapping.HoI4GovernmentIdeology;
 			break;
 		}
 	}
 
-	LOG(LogLevel::Debug) << "Mapped " << country->getTag() << " government " << country->getGovernment() << " to " << ideology;
+	LOG(LogLevel::Debug)
+		<< "Mapped " << country.getTag() << " government " << country.getGovernment() << " to " << ideology;
 	return ideology;
 }
 
 
-std::string governmentMapper::getExistingLeaderIdeologyForCountry(const Vic2::Country* country, const std::string& Vic2RulingIdeology, const std::set<std::string>& majorIdeologies, const std::map<std::string, HoI4Ideology*>& ideologies) const
+std::string governmentMapper::getExistingLeaderIdeologyForCountry(
+	const Vic2::Country& country,
+	const std::string& Vic2RulingIdeology,
+	const std::set<std::string>& majorIdeologies,
+	const std::map<std::string, HoI4Ideology*>& ideologies
+) const
 {
 	std::string ideology = "neutrality";
 	for (auto mapping: governmentMap)
 	{
-		if (governmentMatches(mapping, country->getGovernment()) &&	rulingIdeologyMatches(mapping, Vic2RulingIdeology) && ideologyIsValid(mapping, majorIdeologies, ideologies))
+		if (
+			governmentMatches(mapping, country.getGovernment()) &&
+			rulingIdeologyMatches(mapping, Vic2RulingIdeology) &&
+			ideologyIsValid(mapping, majorIdeologies, ideologies)
+			)
 		{
 			ideology = mapping.HoI4LeaderIdeology;
 			break;
 		}
 	}
 
-	LOG(LogLevel::Debug) << "Mapped " << country->getTag() << " leader " << country->getGovernment() << " to " << ideology;
+	LOG(LogLevel::Debug)
+		<< "Mapped " << country.getTag() << " leader " << country.getGovernment() << " to " << ideology;
 	return ideology;
 }
 

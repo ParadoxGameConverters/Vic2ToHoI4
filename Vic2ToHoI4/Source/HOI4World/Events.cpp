@@ -31,6 +31,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 #include "../V2World/Party.h"
+#include "../V2World/Country.h"
 #include <fstream>
 
 
@@ -199,9 +200,9 @@ void HoI4::Events::outputStabilityEvents() const
 }
 
 
-void HoI4::Events::createFactionEvents(std::shared_ptr<HoI4Country> Leader, std::shared_ptr<HoI4Country> newAlly)
+void HoI4::Events::createFactionEvents(std::shared_ptr<HoI4::Country> Leader, std::shared_ptr<HoI4::Country> newAlly)
 {
-	auto possibleLeaderName = Leader->getSourceCountry()->getName("english");
+	auto possibleLeaderName = Leader->getSourceCountry().getName("english");
 	std::string leaderName;
 	if (possibleLeaderName)
 	{
@@ -213,7 +214,7 @@ void HoI4::Events::createFactionEvents(std::shared_ptr<HoI4Country> Leader, std:
 		leaderName = "";
 	}
 
-	auto possibleNewAllyName = newAlly->getSourceCountry()->getName("english");
+	auto possibleNewAllyName = newAlly->getSourceCountry().getName("english");
 	std::string newAllyName;
 	if (possibleNewAllyName)
 	{
@@ -235,7 +236,7 @@ void HoI4::Events::createFactionEvents(std::shared_ptr<HoI4Country> Leader, std:
 	nfEvent.triggeredOnly = true;
 	std::string yesOption = "= {\n";
 	yesOption += "		name = \"Yes\"\n";
-	if (Leader->getFaction() != nullptr)
+	if (Leader->isInFaction())
 	{
 		yesOption += "		" + newAlly->getTag() + " = {\n";
 		yesOption += "			add_ai_strategy = {\n";
@@ -306,9 +307,9 @@ void HoI4::Events::createFactionEvents(std::shared_ptr<HoI4Country> Leader, std:
 }
 
 
-void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4Country> Annexer, std::shared_ptr<HoI4Country> Annexed)
+void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4::Country> Annexer, std::shared_ptr<HoI4::Country> Annexed)
 {
-	auto possibleAnnexerName = Annexer->getSourceCountry()->getName("english");
+	auto possibleAnnexerName = Annexer->getSourceCountry().getName("english");
 	std::string annexerName;
 	if (possibleAnnexerName)
 	{
@@ -320,7 +321,7 @@ void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4Country> Annexer, std::s
 		annexerName = "";
 	}
 
-	auto possibleAnnexedName = Annexed->getSourceCountry()->getName("english");
+	auto possibleAnnexedName = Annexed->getSourceCountry().getName("english");
 	std::string annexedName;
 	if (possibleAnnexedName)
 	{
@@ -424,7 +425,7 @@ void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4Country> Annexer, std::s
 	acceptedOption += "		name = \"A stronger Union!\"\n";
 	for (auto state: Annexed->getStates())
 	{
-		acceptedOption += "		" + to_string(state.first) + " = {\n";
+		acceptedOption += "		" + to_string(state) + " = {\n";
 		acceptedOption += "			if = {\n";
 		acceptedOption += "				limit = { is_owned_by = " + Annexed->getTag() + " }\n";
 		acceptedOption += "				add_core_of = " + Annexer->getTag() + "\n";
@@ -447,10 +448,10 @@ void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4Country> Annexer, std::s
 }
 
 
-void HoI4::Events::createSudetenEvent(std::shared_ptr<HoI4Country> Annexer, std::shared_ptr<HoI4Country> Annexed, const std::vector<int>& claimedStates)
+void HoI4::Events::createSudetenEvent(std::shared_ptr<HoI4::Country> Annexer, std::shared_ptr<HoI4::Country> Annexed, const std::vector<int>& claimedStates)
 {
 	//flesh out this event more, possibly make it so allies have a chance to help?
-	auto possibleAnnexerName = Annexer->getSourceCountry()->getName("english");
+	auto possibleAnnexerName = Annexer->getSourceCountry().getName("english");
 	std::string annexerName;
 	if (possibleAnnexerName)
 	{
@@ -462,7 +463,7 @@ void HoI4::Events::createSudetenEvent(std::shared_ptr<HoI4Country> Annexer, std:
 		annexerName = "";
 	}
 
-	auto possibleAnnexerAdjective = Annexer->getSourceCountry()->getName("english");
+	auto possibleAnnexerAdjective = Annexer->getSourceCountry().getName("english");
 	std::string annexerAdjctive;
 	if (possibleAnnexerAdjective)
 	{
@@ -474,7 +475,7 @@ void HoI4::Events::createSudetenEvent(std::shared_ptr<HoI4Country> Annexer, std:
 		annexerAdjctive = "";
 	}
 
-	auto possibleAnnexedName = Annexed->getSourceCountry()->getName("english");
+	auto possibleAnnexedName = Annexed->getSourceCountry().getName("english");
 	std::string annexedName;
 	if (possibleAnnexedName)
 	{
@@ -594,9 +595,9 @@ void HoI4::Events::createSudetenEvent(std::shared_ptr<HoI4Country> Annexer, std:
 }
 
 
-void HoI4::Events::createTradeEvent(std::shared_ptr<HoI4Country> leader, std::shared_ptr<HoI4Country> GC)
+void HoI4::Events::createTradeEvent(std::shared_ptr<HoI4::Country> leader, std::shared_ptr<HoI4::Country> GC)
 {
-	auto possibleAggressorName = GC->getSourceCountry()->getName("english");
+	auto possibleAggressorName = GC->getSourceCountry().getName("english");
 	std::string aggressorName;
 	if (possibleAggressorName)
 	{

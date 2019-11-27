@@ -54,6 +54,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Color.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Configuration.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Flags.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Hoi4CountryOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Advisor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AIPeace.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AIPeaces.cpp" />
