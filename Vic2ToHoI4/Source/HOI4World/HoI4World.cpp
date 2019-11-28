@@ -79,6 +79,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	buildings = new Buildings(*states, theCoastalProvinces, theMapData),
 	states->convertNavalBases(theCoastalProvinces);
 	convertCountries();
+	addStatesToCountries();
 	states->addCapitalsToStates(countries);
 	HoI4Localisation::addStateLocalisations(states);
 	convertIndustry();
@@ -308,8 +309,6 @@ void HoI4::World::convertIndustry()
 {
 	LOG(LogLevel::Info) << "Converting industry";
 
-	addStatesToCountries();
-
 	map<string, double> factoryWorkerRatios = calculateFactoryWorkerRatios();
 	states->putIndustryInStates(factoryWorkerRatios, theCoastalProvinces);
 
@@ -335,6 +334,7 @@ void HoI4::World::addStatesToCountries()
 		{
 			landedCountries.insert(country);
 		}
+		country.second->determineCapitalFromVic2(states->getProvinceToStateIDMap(), states->getStates());
 	}
 }
 
