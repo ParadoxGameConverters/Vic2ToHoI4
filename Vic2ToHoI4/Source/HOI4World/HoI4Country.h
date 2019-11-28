@@ -158,8 +158,8 @@ class Country
 		[[nodiscard]] const std::string& getEconomicLaw() const { return economicLaw; }
 		[[nodiscard]] const std::string& getTradeLaw() const { return tradeLaw; }
 
-		[[nodiscard]] int getTechnologyCount() const { return technologies->getTechnologyCount(); }
-		[[nodiscard]] const technologies& getTechnologies() const { return *technologies; }
+		[[nodiscard]] int getTechnologyCount() const { return theTechnologies->getTechnologyCount(); }
+		[[nodiscard]] const technologies& getTechnologies() const { return *theTechnologies; }
 		[[nodiscard]] const std::set<std::string>& getIdeas() const { return ideas; }
 
 		[[nodiscard]] double getMilitaryFactories() const { return militaryFactories; }
@@ -233,7 +233,7 @@ class Country
 		std::string economicLaw = "civilian_economy";
 		std::string tradeLaw = "export_focus";
 
-		std::unique_ptr<technologies> technologies;
+		std::unique_ptr<technologies> theTechnologies;
 		std::set<std::string> ideas;
 		std::unique_ptr<HoI4FocusTree> nationalFocus;
 
