@@ -34,6 +34,7 @@ void outputNamesSet(
 	const std::optional<std::vector<std::string>>& names,
 	const std::string& tabs
 );
+
 void HoI4::outputToNamesFiles(std::ostream& namesFile, const namesMapper& theNames, const Country& theCountry)
 {
 	const auto primaryCulture = theCountry.getSourceCountry().getPrimaryCulture();
@@ -95,7 +96,7 @@ void outputNamesSet(
 			{
 				continue;
 			}
-			else if (((i + 1) % 10) == 0)
+			if (((i + 1) % 10) == 0)
 			{
 				namesFile << "\n";
 				namesFile << tabs;

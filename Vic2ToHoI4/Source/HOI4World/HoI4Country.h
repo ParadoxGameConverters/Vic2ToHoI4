@@ -84,7 +84,7 @@ class Country
 		Country(Country&&) = delete;
 		Country& operator=(Country&&) = delete;
 		~Country() = default;
-	
+
 		void determineCapitalFromVic2(
 			const std::map<int, int>& provinceToStateIDMap,
 			const std::map<int, State>& allStates
@@ -149,7 +149,7 @@ class Country
 		[[nodiscard]] const std::string& getLeaderIdeology() const { return leaderIdeology; }
 		[[nodiscard]] const Vic2::Party& getRulingParty() const { return rulingParty; }
 		[[nodiscard]] const std::set<Vic2::Party, std::function<bool(const Vic2::Party&, const Vic2::Party&)>>&
-			getParties() const { return parties; }
+		getParties() const { return parties; }
 		[[nodiscard]] const std::map<std::string, int>& getIdeologySupport() const { return ideologySupport; }
 		[[nodiscard]] const date& getLastElection() const { return lastElection; }
 		[[nodiscard]] int getStability() const { return stability; }
