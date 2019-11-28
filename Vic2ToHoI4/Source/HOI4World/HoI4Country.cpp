@@ -375,7 +375,7 @@ void HoI4::Country::convertTechnology(std::unique_ptr<mappers::techMapper>& theT
 {
 	auto oldTechs = sourceCountry.getTechs();
 	auto oldInventions = sourceCountry.getInventions();
-	technologies = std::make_unique<HoI4::technologies>(theTechMapper, oldTechs, oldInventions);
+	theTechnologies = std::make_unique<HoI4::technologies>(theTechMapper, oldTechs, oldInventions);
 }
 
 
@@ -434,7 +434,7 @@ void HoI4::Country::convertIdeologySupport(
 
 void HoI4::Country::determineShipVariants(const std::vector<shipVariant>& possibleVariants)
 {
-	theShipVariants = std::make_unique<shipVariants>(possibleVariants, *technologies, tag);
+	theShipVariants = std::make_unique<shipVariants>(possibleVariants, *theTechnologies, tag);
 }
 
 
