@@ -325,10 +325,10 @@ void HoI4::Country::determineCapitalFromVic2(
 }
 
 
-bool HoI4::Country::isStateValidForCapital(int stateNum, const map<int, HoI4::State>& states)
+bool HoI4::Country::isStateValidForCapital(int stateNum, const map<int, HoI4::State>& allStates)
 {
-	auto state = states.find(stateNum)->second;
-	return (isThisStateOwnedByUs(state) || isThisStateACoreWhileWeOwnNoStates(state));
+	auto state = allStates.find(stateNum)->second;
+	return (isThisStateOwnedByUs(state) || isThisStateACoreWhileWeOwnNoStates(state)) && !state.isImpassable();
 }
 
 
