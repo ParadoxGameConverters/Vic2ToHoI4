@@ -81,6 +81,10 @@ class Country
 			const CountryMapper& countryMap,
 			const mappers::FlagsToIdeasMapper& flagsToIdeasMapper
 		);
+		void determineCapitalFromVic2(
+			const std::map<int, int>& provinceTosIDMap,
+			const std::map<int, HoI4::State>& allStates
+		);
 		void setGovernmentToExistingIdeology(
 			const std::set<std::string>& majorIdeologies,
 			const std::map<std::string, HoI4Ideology*>& ideologies,
@@ -190,16 +194,12 @@ class Country
 		void convertLeaders(const graphicsMapper& theGraphics);
 		void convertRelations(const CountryMapper& countryMap);
 		void convertWars(const Vic2::Country& sourceCountry, const CountryMapper& countryMap);
-		void determineCapitalFromVic2(
-			const std::map<int, int>& provinceTosIDMap,
-			const std::map<int, HoI4::State>& states
-		);
 
-		bool isStateValidForCapital(int capitalState, const std::map<int, HoI4::State>& states);
+		bool isStateValidForCapital(int capitalState, const std::map<int, HoI4::State>& allStates);
 		bool isThisStateOwnedByUs(const HoI4::State& state) const;
 		bool isThisStateACoreWhileWeOwnNoStates(const HoI4::State& state) const;
 
-		void findBestCapital();
+		void findBestCapital(const map<int, HoI4::State>& allStates);
 		void addProvince(int _province);
 
 		std::string tag;

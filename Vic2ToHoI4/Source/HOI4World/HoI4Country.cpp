@@ -97,8 +97,6 @@ HoI4::Country::Country(
 	convertRelations(countryMap);
 	convertWars((*_srcCountry), countryMap);
 
-	determineCapitalFromVic2(stateMap, states);
-
 	theArmy.addSourceArmies(sourceCountry.getArmies());
 }
 
@@ -306,22 +304,24 @@ void HoI4::Country::convertWars(const Vic2::Country& sourceCountry, const Countr
 
 void HoI4::Country::determineCapitalFromVic2(
 	const map<int, int>& provinceToStateIDMap,
-	const map<int, HoI4::State>& states
+	const map<int, HoI4::State>& allStates
 ) {
 	int oldCapital = sourceCountry.getCapital();
-	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital))
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
 	{
 		auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
-		if (capitalStateMapping != provinceToStateIDMap.end() && isStateValidForCapital(capitalStateMapping->second, states))
+		if (
+			capitalStateMapping != provinceToStateIDMap.end() &&
+			isStateValidForCapital(capitalStateMapping->second, allStates)
+			)
 		{
 			capitalState = capitalStateMapping->second;
 			capitalProvince = (*mapping)[0];
-		}
-		else
-		{
-			findBestCapital();
+			return;
 		}
 	}
+
+	findBestCapital(allStates);
 }
 
 
@@ -352,8 +352,20 @@ bool HoI4::Country::isThisStateACoreWhileWeOwnNoStates(const HoI4::State& state)
 }
 
 
-void HoI4::Country::findBestCapital()
+void HoI4::Country::findBestCapital(const map<int, HoI4::State>& allStates)
 {
+	for (auto ownedStateNum: states)
+	{
+		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
+		{
+			if ((state->second.getOwner() == tag) && (isStateValidForCapital(ownedStateNum, allStates)))
+			{
+				capitalState = ownedStateNum;
+				return;
+			}
+		}
+	}
+
 	capitalState = 0;
 	LOG(LogLevel::Warning) << "Could not properly set capital for " << tag;
 }
