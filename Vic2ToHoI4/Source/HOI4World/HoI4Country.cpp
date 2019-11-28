@@ -498,7 +498,8 @@ void HoI4::Country::convertConvoys(const UnitMappings& unitMap)
 void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 {
 	static std::map<std::string, vector<std::string>> backups = {
-		 {"fighter_equipment_0", {"tac_bomber_equipment_0"}} };
+		{"fighter_equipment_0", {"tac_bomber_equipment_0"}}
+	};
 	for (auto army : sourceCountry.getArmies())
 	{
 		for (auto regiment : army->getRegiments())
