@@ -202,8 +202,12 @@ class Country
 		[[nodiscard]] bool isStateValidForCapital(const int& stateNum, const std::map<int, State>& allStates) const;
 		[[nodiscard]] bool isThisStateOwnedByUs(const State& state) const;
 		[[nodiscard]] bool isThisStateACoreWhileWeOwnNoStates(const State& state) const;
-
 		void findBestCapital(const map<int, State>& allStates);
+		bool attemptToPutCapitalInNonWastelandOwned(const map<int, State>& allStates);
+		bool attemptToPutCapitalInNonWastelandCored(const map<int, State>& allStates);
+		bool attemptToPutCapitalInAnyOwned(const map<int, State>& allStates);
+		bool attemptToPutCapitalInAnyCored(const map<int, State>& allStates);
+
 		void addProvince(const int& province);
 
 		std::string tag;
