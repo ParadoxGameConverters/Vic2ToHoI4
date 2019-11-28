@@ -175,11 +175,9 @@ void HoI4::World::convertCountry(
 	{
 		destCountry = new HoI4::Country(
 			*possibleHoI4Tag,
-			*sourceWorld,
 			country.second,
-			states->getProvinceToStateIDMap(),
-			states->getStates(),
-			theNames, theGraphics,
+			theNames,
+			theGraphics,
 			countryMap,
 			flagsToIdeasMapper
 		);
@@ -713,7 +711,7 @@ void HoI4::World::convertAgreements()
 		if (agreement->getType() == "vassal")
 		{
 			HoI4Country1->second->addPuppet(*possibleHoI4Tag2);
-			HoI4Country2->second->setPuppetmaster(*possibleHoI4Tag1);
+			HoI4Country2->second->setPuppetMaster(*possibleHoI4Tag1);
 		}
 	}
 }
@@ -826,7 +824,7 @@ void HoI4::World::convertAirforces(const UnitMappings& unitMap)
 
 	for (auto country : countries)
 	{
-		country.second->convertAirforce(unitMap);
+		country.second->convertAirForce(unitMap);
 	}
 }
 
