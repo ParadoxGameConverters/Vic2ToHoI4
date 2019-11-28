@@ -354,6 +354,29 @@ bool HoI4::Country::isThisStateACoreWhileWeOwnNoStates(const State& state) const
 
 void HoI4::Country::findBestCapital(const map<int, State>& allStates)
 {
+	bool success = attemptToPutCapitalInNonWastelandOwned(allStates);
+	if (!success)
+	{
+		attemptToPutCapitalInNonWastelandCored(allStates);
+	}
+	else if (!success)
+	{
+		attemptToPutCapitalInAnyOwned(allStates);
+	}
+	else if (!success)
+	{
+		attemptToPutCapitalInAnyCored(allStates);
+	}
+	else if (!success)
+	{
+		capitalState = 0;
+		LOG(LogLevel::Warning) << "Could not properly set capital for " << tag;
+	}
+}
+
+
+bool HoI4::Country::attemptToPutCapitalInNonWastelandOwned(const map<int, State>& allStates)
+{
 	for (auto ownedStateNum: states)
 	{
 		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
@@ -361,13 +384,70 @@ void HoI4::Country::findBestCapital(const map<int, State>& allStates)
 			if ((state->second.getOwner() == tag) && isStateValidForCapital(ownedStateNum, allStates))
 			{
 				capitalState = ownedStateNum;
-				return;
+				return true;
 			}
 		}
 	}
 
-	capitalState = 0;
-	LOG(LogLevel::Warning) << "Could not properly set capital for " << tag;
+	return false;
+}
+
+
+bool HoI4::Country::attemptToPutCapitalInNonWastelandCored(const map<int, State>& allStates)
+{
+	for (auto ownedStateNum: states)
+	{
+		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
+		{
+			if ((state->second.getCores().count(tag) > 0) && isStateValidForCapital(ownedStateNum, allStates))
+			{
+				capitalState = ownedStateNum;
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+
+bool HoI4::Country::attemptToPutCapitalInAnyOwned(const map<int, State>& allStates)
+{
+	for (auto ownedStateNum : states)
+	{
+		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
+		{
+			if (
+				(state->second.getOwner() == tag) &&
+				(isThisStateOwnedByUs(state->second) || isThisStateACoreWhileWeOwnNoStates(state->second)))
+			{
+				capitalState = ownedStateNum;
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+
+bool HoI4::Country::attemptToPutCapitalInAnyCored(const map<int, State>& allStates)
+{
+	for (auto ownedStateNum : states)
+	{
+		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
+		{
+			if (
+				(state->second.getCores().count(tag) > 0) &&
+				(isThisStateOwnedByUs(state->second) || isThisStateACoreWhileWeOwnNoStates(state->second)))
+			{
+				capitalState = ownedStateNum;
+				return true;
+			}
+		}
+	}
+
+	return false;
 }
 
 
