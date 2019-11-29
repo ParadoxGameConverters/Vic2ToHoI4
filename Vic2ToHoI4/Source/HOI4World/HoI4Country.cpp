@@ -41,18 +41,10 @@ HoI4::Country::Country(
 	{
 		graphicalCulture = *possibleGraphicalCulture;
 	}
-	else
-	{
-		graphicalCulture = "western_european_gfx";
-	}
 	auto possibleGraphicalCulture2d = theGraphics.get2dGraphicalCulture(sourceCountry.getPrimaryCultureGroup());
 	if (possibleGraphicalCulture2d)
 	{
 		graphicalCulture2d = *possibleGraphicalCulture2d;
-	}
-	else
-	{
-		graphicalCulture2d = "western_european_2d";
 	}
 	lastElection = sourceCountry.getLastElection();
 	initIdeas(theNames);

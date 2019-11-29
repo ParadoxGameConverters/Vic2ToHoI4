@@ -79,7 +79,7 @@ class Country: commonItems::parser
 		std::string getTag() const { return tag; }
                 std::string getIdentifier() const;
                 std::string getPrimaryCulture() const { return primaryCulture; }
-		std::string getPrimaryCultureGroup() const { return primaryCultureGroup; }
+		virtual std::string getPrimaryCultureGroup() const { return primaryCultureGroup; }
 		std::set<std::string> getAcceptedCultures() const { return acceptedCultures; }
 		bool isAnAcceptedCulture(const std::string& culture) const { return (acceptedCultures.count(culture) > 0); }
 		std::set<std::string> getInventions() const { return discoveredInventions; }

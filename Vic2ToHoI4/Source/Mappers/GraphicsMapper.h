@@ -48,11 +48,11 @@ class graphicsMapper: commonItems::parser
 		graphicsMapper() noexcept {};
 		void init();
 
-		virtual std::string getLeaderPortrait(const std::string& cultureGroup, const std::string& ideology);
+		std::string getLeaderPortrait(const std::string& cultureGroup, const std::string& ideology);
 		std::string getIdeologyMinisterPortrait(const std::string& cultureGroup, const std::string& ideology);
 		std::string getGeneralPortrait(const std::string& cultureGroup) const;
-		std::optional<std::string> getGraphicalCulture(const std::string& cultureGroup) const;
-		std::optional<std::string> get2dGraphicalCulture(const std::string& cultureGroup) const;
+		virtual std::optional<std::string> getGraphicalCulture(const std::string& cultureGroup) const;
+		virtual std::optional<std::string> get2dGraphicalCulture(const std::string& cultureGroup) const;
 
 	private:
 		graphicsMapper(const graphicsMapper&) = delete;

@@ -6,5 +6,16 @@
 class mockGraphicsMapper: public graphicsMapper
 {
 	public:
-		MOCK_METHOD(std::string, getLeaderPortrait, (const std::string& cultureGroup, const std::string& ideology), (override));
+		MOCK_METHOD(
+			std::optional<std::string>,
+			getGraphicalCulture,
+			(const std::string& cultureGroup),
+			(const, override)
+		);
+		MOCK_METHOD(
+			std::optional<std::string>,
+			get2dGraphicalCulture,
+			(const std::string& cultureGroup),
+			(const, override)
+		);
 };

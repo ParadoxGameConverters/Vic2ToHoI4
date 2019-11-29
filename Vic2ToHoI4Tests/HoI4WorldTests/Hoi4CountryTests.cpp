@@ -17,7 +17,7 @@ class HoI4World_HoI4CountryTests: public ::testing::Test
 		mockGraphicsMapper theGraphicsMapper;
 		mockCountryMapper theCountryMapper;
 		mockVic2Country sourceCountry;
-		std::unique_ptr<mappers::FlagsToIdeasMapper> theflagsToIdeasMapper;
+		std::unique_ptr<mappers::FlagsToIdeasMapper> theFlagsToIdeasMapper;
 
 		ConverterColor::Color defaultColor;
 };
@@ -26,11 +26,15 @@ class HoI4World_HoI4CountryTests: public ::testing::Test
 HoI4World_HoI4CountryTests::HoI4World_HoI4CountryTests()
 {
 	std::stringstream input;
-	theflagsToIdeasMapper = std::make_unique<mappers::FlagsToIdeasMapper>(input);
+	theFlagsToIdeasMapper = std::make_unique<mappers::FlagsToIdeasMapper>(input);
 
-	ON_CALL(sourceCountry, getName).WillByDefault(testing::Return(""));
+	ON_CALL(theGraphicsMapper, getGraphicalCulture).WillByDefault(testing::Return(std::nullopt));
+	ON_CALL(theGraphicsMapper, get2dGraphicalCulture).WillByDefault(testing::Return(std::nullopt));
+
+	ON_CALL(sourceCountry, getName).WillByDefault(testing::Return(std::nullopt));
 	ON_CALL(sourceCountry, isHuman).WillByDefault(testing::Return(false));
 	ON_CALL(sourceCountry, getColor).WillByDefault(testing::ReturnRef(defaultColor));
+	ON_CALL(sourceCountry, getPrimaryCultureGroup).WillByDefault(testing::Return(""));
 }
 
 
@@ -44,7 +48,7 @@ TEST_F(HoI4World_HoI4CountryTests, tagCanBeAssigned)
 		theNamesMapper,
 		theGraphicsMapper,
 		theCountryMapper,
-		*theflagsToIdeasMapper
+		*theFlagsToIdeasMapper
 	);
 	ASSERT_EQ(theCountry.getTag(), "TAG");
 }
@@ -60,7 +64,7 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesDefaultToTag)
 		theNamesMapper,
 		theGraphicsMapper,
 		theCountryMapper,
-		*theflagsToIdeasMapper
+		*theFlagsToIdeasMapper
 	);
 	ASSERT_EQ(theCountry.getFilename(), "TAG.txt");
 	ASSERT_EQ(theCountry.getCommonCountryFile(), "TAG.txt");
@@ -77,7 +81,7 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesBasedOnSourceCountryName)
 		theNamesMapper,
 		theGraphicsMapper,
 		theCountryMapper,
-		*theflagsToIdeasMapper
+		*theFlagsToIdeasMapper
 	);
 	ASSERT_EQ(theCountry.getFilename(), "TAG - source country name.txt");
 	ASSERT_EQ(theCountry.getCommonCountryFile(), "source country name.txt");
@@ -94,7 +98,7 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesReplaceBadCharacters)
 		theNamesMapper,
 		theGraphicsMapper,
 		theCountryMapper,
-		*theflagsToIdeasMapper
+		*theFlagsToIdeasMapper
 	);
 	ASSERT_EQ(theCountry.getFilename(), "TAG - hardname.txt");
 	ASSERT_EQ(theCountry.getCommonCountryFile(), "hardname.txt");
@@ -111,7 +115,7 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesConvertFrom1252ToUtf8)
 		theNamesMapper,
 		theGraphicsMapper,
 		theCountryMapper,
-		*theflagsToIdeasMapper
+		*theFlagsToIdeasMapper
 	);
 
 	ASSERT_EQ(theCountry.getFilename(), "TAG - 1252\xC3\x87.txt");
@@ -129,7 +133,7 @@ TEST_F(HoI4World_HoI4CountryTests, isHumanDefaultsToFalse)
 		theNamesMapper,
 		theGraphicsMapper,
 		theCountryMapper,
-		*theflagsToIdeasMapper
+		*theFlagsToIdeasMapper
 	);
 
 	ASSERT_EQ(theCountry.isHuman(), false);
@@ -146,7 +150,7 @@ TEST_F(HoI4World_HoI4CountryTests, isHumanCanBetSetTrue)
 		theNamesMapper,
 		theGraphicsMapper,
 		theCountryMapper,
-		*theflagsToIdeasMapper
+		*theFlagsToIdeasMapper
 	);
 
 	ASSERT_EQ(theCountry.isHuman(), true);
@@ -168,8 +172,50 @@ TEST_F(HoI4World_HoI4CountryTests, colorIsFromSourceCountry)
 		theNamesMapper,
 		theGraphicsMapper,
 		theCountryMapper,
-		*theflagsToIdeasMapper
+		*theFlagsToIdeasMapper
 	);
 
 	ASSERT_EQ(theCountry.getColor(), testColor);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, graphicalCultureDefaultsToWesternEuropean)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getGraphicalCulture(), "western_european_gfx");
+	ASSERT_EQ(theCountry.getGraphicalCulture2d(), "western_european_2d");
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, graphicalCultureIsFromSourceCountryCultureGroup)
+{
+	EXPECT_CALL(sourceCountry, getPrimaryCultureGroup).WillRepeatedly(testing::Return("testCultureGroup"));
+	EXPECT_CALL(
+		theGraphicsMapper,
+		getGraphicalCulture("testCultureGroup")).WillOnce(testing::Return("testGraphicalCulture")
+	);
+	EXPECT_CALL(
+		theGraphicsMapper,
+		get2dGraphicalCulture("testCultureGroup")).WillOnce(testing::Return("test2dGraphicalCulture")
+	);
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getGraphicalCulture(), "testGraphicalCulture");
+	ASSERT_EQ(theCountry.getGraphicalCulture2d(), "test2dGraphicalCulture");
 }
