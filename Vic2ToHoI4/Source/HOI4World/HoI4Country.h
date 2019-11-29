@@ -208,8 +208,6 @@ class Country
 		bool attemptToPutCapitalInAnyOwned(const map<int, State>& allStates);
 		bool attemptToPutCapitalInAnyCored(const map<int, State>& allStates);
 
-		void addProvince(const int& province);
-
 		std::string tag;
 		const Vic2::Country& sourceCountry;
 		std::string filename;

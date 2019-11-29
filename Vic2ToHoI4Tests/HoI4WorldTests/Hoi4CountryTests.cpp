@@ -3,6 +3,7 @@
 #include "../Vic2ToHoI4/Source/Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "../Mocks/CountryMapperMock.h"
 #include "../Mocks/GraphicsMapperMock.h"
+#include "../Mocks/Hoi4StateMock.h"
 #include "../Mocks/NamesMapperMock.h"
 #include "../Mocks/Vic2CountryMock.h"
 #include <sstream>
@@ -218,4 +219,58 @@ TEST_F(HoI4World_HoI4CountryTests, graphicalCultureIsFromSourceCountryCultureGro
 
 	ASSERT_EQ(theCountry.getGraphicalCulture(), "testGraphicalCulture");
 	ASSERT_EQ(theCountry.getGraphicalCulture2d(), "test2dGraphicalCulture");
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, hasProvincesDefaultsToFalse)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_FALSE(theCountry.hasProvinces());
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, getProvincesDefaultsToEmpty)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_TRUE(theCountry.getProvinces().empty());
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, provincesCanBeAdded)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	mockHoi4State state;
+	EXPECT_CALL(state, getID).WillOnce(testing::Return(0));
+	EXPECT_CALL(state, getProvinces).WillOnce(testing::Return(std::set<int>{1,2,3}));
+
+	theCountry.addState(state);
+
+	ASSERT_TRUE(theCountry.hasProvinces());
+	ASSERT_TRUE(theCountry.getProvinces().contains(1));
+	ASSERT_TRUE(theCountry.getProvinces().contains(2));
+	ASSERT_TRUE(theCountry.getProvinces().contains(3));
 }

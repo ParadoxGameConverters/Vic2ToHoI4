@@ -217,6 +217,7 @@
   <ItemGroup>
     <ClInclude Include="Mocks\EventsMock.h" />
     <ClInclude Include="Mocks\GraphicsMapperMock.h" />
+    <ClInclude Include="Mocks\Hoi4StateMock.h" />
     <ClInclude Include="Mocks\NamesMapperMock.h" />
     <ClInclude Include="Mocks\ProvinceMapperMock.h" />
     <ClInclude Include="Mocks\StateCategoriesMock.h" />

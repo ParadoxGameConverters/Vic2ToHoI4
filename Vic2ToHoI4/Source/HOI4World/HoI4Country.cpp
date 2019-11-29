@@ -626,14 +626,8 @@ void HoI4::Country::addState(const State& state)
 
 	for (const auto province: state.getProvinces())
 	{
-		addProvince(province);
+		provinces.insert(province);
 	}
-}
-
-
-void HoI4::Country::addProvince(const int& province)
-{
-	provinces.insert(province);
 }
 
 
