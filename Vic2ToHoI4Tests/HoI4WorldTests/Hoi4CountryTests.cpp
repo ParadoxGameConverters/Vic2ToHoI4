@@ -8,20 +8,38 @@
 #include <sstream>
 
 
-
-TEST(HoI4World_HoI4CountryTests, tagCanBeAssigned)
+class HoI4World_HoI4CountryTests: public ::testing::Test
 {
-	mockNamesMapper theNamesMapper;
-	mockGraphicsMapper theGraphicsMapper;
-	mockCountryMapper theCountryMapper;
+	protected:
+		HoI4World_HoI4CountryTests();
 
-	mockVic2Country sourceCountry;
+		mockNamesMapper theNamesMapper;
+		mockGraphicsMapper theGraphicsMapper;
+		mockCountryMapper theCountryMapper;
+		mockVic2Country sourceCountry;
+		std::unique_ptr<mappers::FlagsToIdeasMapper> theflagsToIdeasMapper;
+};
+
+
+HoI4World_HoI4CountryTests::HoI4World_HoI4CountryTests()
+{
+	std::stringstream input;
+	theflagsToIdeasMapper = std::make_unique<mappers::FlagsToIdeasMapper>(input);
+}
+
+
+
+TEST_F(HoI4World_HoI4CountryTests, tagCanBeAssigned)
+{
 	EXPECT_CALL(sourceCountry, getName("english")).WillOnce(testing::Return(""));
 
-	std::stringstream input;
-	mappers::FlagsToIdeasMapper theflagsToIdeasMapper(input);
-
-	
-	HoI4::Country theCountry("TAG", &sourceCountry, theNamesMapper, theGraphicsMapper, theCountryMapper, theflagsToIdeasMapper);
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theflagsToIdeasMapper
+	);
 	ASSERT_EQ(theCountry.getTag(), "TAG");
 }
