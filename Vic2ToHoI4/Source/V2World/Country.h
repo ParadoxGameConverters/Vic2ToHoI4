@@ -88,7 +88,7 @@ class Country: commonItems::parser
 		date getLastElection() const { return lastElection; }
 		int getCapital() const { return capital; }
 		std::set<std::string> getTechs() const { return techs; }
-		const ConverterColor::Color& getColor() const { return color; }
+		virtual const ConverterColor::Color& getColor() const { return color; }
 		std::vector<const Army*> getArmies() const { return armies; }
 		std::vector<const Leader*> getLeaders() const { return leaders; }
 		double getRevanchism() const { return revanchism; }

@@ -18,6 +18,8 @@ class HoI4World_HoI4CountryTests: public ::testing::Test
 		mockCountryMapper theCountryMapper;
 		mockVic2Country sourceCountry;
 		std::unique_ptr<mappers::FlagsToIdeasMapper> theflagsToIdeasMapper;
+
+		ConverterColor::Color defaultColor;
 };
 
 
@@ -25,8 +27,11 @@ HoI4World_HoI4CountryTests::HoI4World_HoI4CountryTests()
 {
 	std::stringstream input;
 	theflagsToIdeasMapper = std::make_unique<mappers::FlagsToIdeasMapper>(input);
-}
 
+	ON_CALL(sourceCountry, getName).WillByDefault(testing::Return(""));
+	ON_CALL(sourceCountry, isHuman).WillByDefault(testing::Return(false));
+	ON_CALL(sourceCountry, getColor).WillByDefault(testing::ReturnRef(defaultColor));
+}
 
 
 TEST_F(HoI4World_HoI4CountryTests, tagCanBeAssigned)
@@ -145,4 +150,26 @@ TEST_F(HoI4World_HoI4CountryTests, isHumanCanBetSetTrue)
 	);
 
 	ASSERT_EQ(theCountry.isHuman(), true);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, colorIsFromSourceCountry)
+{
+	ConverterColor::Color testColor(
+		ConverterColor::red(33),
+		ConverterColor::green(66),
+		ConverterColor::blue(99)
+	);
+	EXPECT_CALL(sourceCountry, getColor()).WillOnce(testing::ReturnRef(testColor));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theflagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getColor(), testColor);
 }
