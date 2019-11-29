@@ -99,7 +99,7 @@ class Country: commonItems::parser
 		std::vector<Province*> getCores() const { return cores; }
 		bool isEmpty() const { return ((cores.size() == 0) && (provinces.size() == 0)); }
 		bool isCivilized() const { return civilized; }
-		bool isHuman() const { return human; }
+		virtual bool isHuman() const { return human; }
 		std::map<std::string, double> getUpperHouseComposition() const { return upperHouseComposition; }
 		std::vector<War> getWars() const { return wars; }
 		bool isAtWar() const { return atWar; }

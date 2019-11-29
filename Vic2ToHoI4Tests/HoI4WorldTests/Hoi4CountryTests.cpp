@@ -109,8 +109,40 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesConvertFrom1252ToUtf8)
 		*theflagsToIdeasMapper
 	);
 
-	std::string filename = theCountry.getFilename();
-	ASSERT_EQ(filename, "TAG - 1252\xC3\x87.txt");
-	std::string commonCountryFilename = theCountry.getCommonCountryFile();
-	ASSERT_EQ(commonCountryFilename, "1252\xC3\x87.txt");
+	ASSERT_EQ(theCountry.getFilename(), "TAG - 1252\xC3\x87.txt");
+	ASSERT_EQ(theCountry.getCommonCountryFile(), "1252\xC3\x87.txt");
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, isHumanDefaultsToFalse)
+{
+	EXPECT_CALL(sourceCountry, isHuman()).WillOnce(testing::Return(false));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theflagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.isHuman(), false);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, isHumanCanBetSetTrue)
+{
+	EXPECT_CALL(sourceCountry, isHuman()).WillOnce(testing::Return(true));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theflagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.isHuman(), true);
 }
