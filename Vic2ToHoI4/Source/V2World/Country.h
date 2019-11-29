@@ -56,6 +56,7 @@ class State;
 class Country: commonItems::parser
 {
 	public:
+		Country() = default;
 		explicit Country(const std::string& theTag, std::istream& theStream, const inventions& theInventions, const cultureGroups& theCultureGroups);
 
 		void addProvince(const std::pair<const int, Province*>& province) { provinces.insert(province); }
@@ -103,7 +104,7 @@ class Country: commonItems::parser
 		std::vector<War> getWars() const { return wars; }
 		bool isAtWar() const { return atWar; }
 
-		std::optional<std::string> getName(const std::string& language) const;
+		virtual std::optional<std::string> getName(const std::string& language) const;
 		std::optional<std::string> getAdjective(const std::string& language) const;
 		double getUpperHousePercentage(const std::string& ideology) const;
 		long getEmployedWorkers() const;

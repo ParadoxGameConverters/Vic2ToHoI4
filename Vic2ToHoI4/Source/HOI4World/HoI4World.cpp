@@ -78,6 +78,8 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	theCoastalProvinces.init(theMapData);
 	buildings = new Buildings(*states, theCoastalProvinces, theMapData),
 	states->convertNavalBases(theCoastalProvinces);
+	theNames.init();
+	theGraphics.init();
 	convertCountries();
 	addStatesToCountries();
 	states->addCapitalsToStates(countries);

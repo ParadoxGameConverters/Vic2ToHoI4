@@ -168,6 +168,7 @@
     <ClCompile Include="HoI4WorldTests\DockyardProvinceTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DefaultStateTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4StateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4WarTests.cpp" />
     <ClCompile Include="HoI4WorldTests\IdeologicalDecisionsTests.cpp" />
@@ -215,8 +216,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mocks\EventsMock.h" />
+    <ClInclude Include="Mocks\GraphicsMapperMock.h" />
+    <ClInclude Include="Mocks\NamesMapperMock.h" />
     <ClInclude Include="Mocks\ProvinceMapperMock.h" />
     <ClInclude Include="Mocks\StateCategoriesMock.h" />
+    <ClInclude Include="Mocks\Vic2CountryMock.h" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
