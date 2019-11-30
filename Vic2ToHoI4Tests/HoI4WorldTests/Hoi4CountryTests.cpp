@@ -274,3 +274,39 @@ TEST_F(HoI4World_HoI4CountryTests, provincesCanBeAdded)
 	ASSERT_TRUE(theCountry.getProvinces().contains(2));
 	ASSERT_TRUE(theCountry.getProvinces().contains(3));
 }
+
+
+TEST_F(HoI4World_HoI4CountryTests, getStatesDefaultsToEmpty)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_TRUE(theCountry.getStates().empty());
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, statesCanBeAdded)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	mockHoi4State state;
+	EXPECT_CALL(state, getID).WillOnce(testing::Return(42));
+	EXPECT_CALL(state, getProvinces).WillOnce(testing::Return(std::set<int>{}));
+
+	theCountry.addState(state);
+
+	ASSERT_TRUE(theCountry.getStates().contains(42));
+}
