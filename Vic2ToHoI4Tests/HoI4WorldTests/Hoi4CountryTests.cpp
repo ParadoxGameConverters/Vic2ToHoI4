@@ -344,8 +344,6 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanBeSetInOwnedState)
 
 	mockHoi4State state("TAG");
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
-	EXPECT_CALL(state, getProvinces).WillOnce(testing::Return(std::set<int>{84}));
-	std::string owner = state.getOwner();
 
 	std::map<int, HoI4::State> allStates;
 	std::pair<int, HoI4::State> statePair(1, state);
@@ -364,4 +362,454 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanBeSetInOwnedState)
 	ASSERT_EQ(*theCountry.getCapitalState(), 1);
 	ASSERT_TRUE(theCountry.getCapitalProvince());
 	ASSERT_EQ(*theCountry.getCapitalProvince(), 84);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceIsImpassible)
+{
+	EXPECT_CALL(sourceCountry, getCapital).WillOnce(testing::Return(3));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	std::map<int, HoI4::State> allStates;
+	mockHoi4State state("TAG");
+	state.addCores(std::set<std::string>{"TAG"});
+	state.addProvince(10);
+	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	std::pair<int, HoI4::State> statePair(1, state);
+	allStates.insert(statePair);
+	theCountry.addState(state);
+
+	mockHoi4State state2("TAG");
+	state2.addCores(std::set<std::string>{"TAG"});
+	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
+	std::pair<int, HoI4::State> statePair2(2, state2);
+	allStates.insert(statePair2);
+	theCountry.addState(state2);
+
+	mockHoi4State state3("TAG");
+	state3.addCores(std::set<std::string>{"TAG"});
+	state3.makeImpassable();
+	std::pair<int, HoI4::State> statePair3(3, state3);
+	allStates.insert(statePair3);
+
+	std::map<int, int> provinceToStateIDMap;
+	provinceToStateIDMap.insert(std::make_pair(10, 1));
+	provinceToStateIDMap.insert(std::make_pair(20, 2));
+	provinceToStateIDMap.insert(std::make_pair(30, 3));
+
+	mockProvinceMapper aProvinceMapper;
+	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillOnce(testing::Return(std::vector<int>{30}));
+
+	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
+
+	ASSERT_TRUE(theCountry.getCapitalState());
+	ASSERT_EQ(*theCountry.getCapitalState(), 1);
+	ASSERT_TRUE(theCountry.getCapitalProvince());
+	ASSERT_EQ(*theCountry.getCapitalProvince(), 10);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceNotOwned)
+{
+	EXPECT_CALL(sourceCountry, getCapital).WillOnce(testing::Return(3));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	std::map<int, HoI4::State> allStates;
+	mockHoi4State state("TAG");
+	state.addCores(std::set<std::string>{"TAG"});
+	state.addProvince(10);
+	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	std::pair<int, HoI4::State> statePair(1, state);
+	allStates.insert(statePair);
+	theCountry.addState(state);
+
+	mockHoi4State state2("TAG");
+	state2.addCores(std::set<std::string>{"TAG"});
+	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
+	std::pair<int, HoI4::State> statePair2(2, state2);
+	allStates.insert(statePair2);
+	theCountry.addState(state2);
+
+	mockHoi4State state3("NON");
+	state3.addCores(std::set<std::string>{"TAG"});
+	std::pair<int, HoI4::State> statePair3(3, state3);
+	allStates.insert(statePair3);
+
+	std::map<int, int> provinceToStateIDMap;
+	provinceToStateIDMap.insert(std::make_pair(10, 1));
+	provinceToStateIDMap.insert(std::make_pair(20, 2));
+	provinceToStateIDMap.insert(std::make_pair(30, 3));
+
+	mockProvinceMapper aProvinceMapper;
+	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillOnce(testing::Return(std::vector<int>{30}));
+
+	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
+
+	ASSERT_TRUE(theCountry.getCapitalState());
+	ASSERT_EQ(*theCountry.getCapitalState(), 1);
+	ASSERT_TRUE(theCountry.getCapitalProvince());
+	ASSERT_EQ(*theCountry.getCapitalProvince(), 10);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInPreferredWastelandIfOnlyWastelandOwned)
+{
+	EXPECT_CALL(sourceCountry, getCapital).WillRepeatedly(testing::Return(3));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	std::map<int, HoI4::State> allStates;
+	mockHoi4State state("TAG");
+	state.makeImpassable();
+	state.addCores(std::set<std::string>{"TAG"});
+	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	std::pair<int, HoI4::State> statePair(1, state);
+	allStates.insert(statePair);
+	theCountry.addState(state);
+
+	mockHoi4State state2("TAG");
+	state2.makeImpassable();
+	state2.addCores(std::set<std::string>{"TAG"});
+	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
+	std::pair<int, HoI4::State> statePair2(2, state2);
+	allStates.insert(statePair2);
+	theCountry.addState(state2);
+
+	mockHoi4State state3("TAG");
+	state3.makeImpassable();
+	state3.addCores(std::set<std::string>{"TAG"});
+	std::pair<int, HoI4::State> statePair3(3, state3);
+	allStates.insert(statePair3);
+
+	std::map<int, int> provinceToStateIDMap;
+	provinceToStateIDMap.insert(std::make_pair(10, 1));
+	provinceToStateIDMap.insert(std::make_pair(20, 2));
+	provinceToStateIDMap.insert(std::make_pair(30, 3));
+
+	mockProvinceMapper aProvinceMapper;
+	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillRepeatedly(testing::Return(std::vector<int>{30}));
+
+	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
+
+	ASSERT_TRUE(theCountry.getCapitalState());
+	ASSERT_EQ(*theCountry.getCapitalState(), 3);
+	ASSERT_TRUE(theCountry.getCapitalProvince());
+	ASSERT_EQ(*theCountry.getCapitalProvince(), 30);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInOtherWastelandIfOnlyWastelandOwnedAndPreferredNotOwned)
+{
+	EXPECT_CALL(sourceCountry, getCapital).WillRepeatedly(testing::Return(3));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	std::map<int, HoI4::State> allStates;
+	mockHoi4State state("TAG");
+	state.makeImpassable();
+	state.addCores(std::set<std::string>{"TAG"});
+	state.addProvince(10);
+	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	std::pair<int, HoI4::State> statePair(1, state);
+	allStates.insert(statePair);
+	theCountry.addState(state);
+
+	mockHoi4State state2("TAG");
+	state2.makeImpassable();
+	state2.addCores(std::set<std::string>{"TAG"});
+	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
+	std::pair<int, HoI4::State> statePair2(2, state2);
+	allStates.insert(statePair2);
+	theCountry.addState(state2);
+
+	mockHoi4State state3("NON");
+	state3.makeImpassable();
+	state3.addCores(std::set<std::string>{"TAG"});
+	std::pair<int, HoI4::State> statePair3(3, state3);
+	allStates.insert(statePair3);
+
+	std::map<int, int> provinceToStateIDMap;
+	provinceToStateIDMap.insert(std::make_pair(10, 1));
+	provinceToStateIDMap.insert(std::make_pair(20, 2));
+	provinceToStateIDMap.insert(std::make_pair(30, 3));
+
+	mockProvinceMapper aProvinceMapper;
+	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillRepeatedly(testing::Return(std::vector<int>{30}));
+
+	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
+
+	ASSERT_TRUE(theCountry.getCapitalState());
+	ASSERT_EQ(*theCountry.getCapitalState(), 1);
+	ASSERT_TRUE(theCountry.getCapitalProvince());
+	ASSERT_EQ(*theCountry.getCapitalProvince(), 10);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredPreferredIfNoneOwned)
+{
+	EXPECT_CALL(sourceCountry, getCapital).WillRepeatedly(testing::Return(3));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	std::map<int, HoI4::State> allStates;
+	mockHoi4State state("NON");
+	state.addCores(std::set<std::string>{"TAG"});
+	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	std::pair<int, HoI4::State> statePair(1, state);
+	allStates.insert(statePair);
+	theCountry.addState(state);
+
+	mockHoi4State state2("NON");
+	state2.addCores(std::set<std::string>{"TAG"});
+	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
+	std::pair<int, HoI4::State> statePair2(2, state2);
+	allStates.insert(statePair2);
+	theCountry.addState(state2);
+
+	mockHoi4State state3("NON");
+	state3.addCores(std::set<std::string>{"TAG"});
+	std::pair<int, HoI4::State> statePair3(3, state3);
+	allStates.insert(statePair3);
+
+	std::map<int, int> provinceToStateIDMap;
+	provinceToStateIDMap.insert(std::make_pair(10, 1));
+	provinceToStateIDMap.insert(std::make_pair(20, 2));
+	provinceToStateIDMap.insert(std::make_pair(30, 3));
+
+	mockProvinceMapper aProvinceMapper;
+	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillRepeatedly(testing::Return(std::vector<int>{30}));
+
+	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
+
+	ASSERT_TRUE(theCountry.getCapitalState());
+	ASSERT_EQ(*theCountry.getCapitalState(), 3);
+	ASSERT_TRUE(theCountry.getCapitalProvince());
+	ASSERT_EQ(*theCountry.getCapitalProvince(), 30);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredNonWastelandIfNoneOwnedAndPreferredIsWasteland)
+{
+	EXPECT_CALL(sourceCountry, getCapital).WillRepeatedly(testing::Return(3));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	std::map<int, HoI4::State> allStates;
+	mockHoi4State state("NON");
+	state.addCores(std::set<std::string>{"TAG"});
+	state.addProvince(10);
+	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	std::pair<int, HoI4::State> statePair(1, state);
+	allStates.insert(statePair);
+	theCountry.addState(state);
+
+	mockHoi4State state2("NON");
+	state2.addCores(std::set<std::string>{"TAG"});
+	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
+	std::pair<int, HoI4::State> statePair2(2, state2);
+	allStates.insert(statePair2);
+	theCountry.addState(state2);
+
+	mockHoi4State state3("NON");
+	state3.addCores(std::set<std::string>{"TAG"});
+	state3.makeImpassable();
+	std::pair<int, HoI4::State> statePair3(3, state3);
+	allStates.insert(statePair3);
+
+	std::map<int, int> provinceToStateIDMap;
+	provinceToStateIDMap.insert(std::make_pair(10, 1));
+	provinceToStateIDMap.insert(std::make_pair(20, 2));
+	provinceToStateIDMap.insert(std::make_pair(30, 3));
+
+	mockProvinceMapper aProvinceMapper;
+	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillRepeatedly(testing::Return(std::vector<int>{30}));
+
+	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
+
+	ASSERT_TRUE(theCountry.getCapitalState());
+	ASSERT_EQ(*theCountry.getCapitalState(), 1);
+	ASSERT_TRUE(theCountry.getCapitalProvince());
+	ASSERT_EQ(*theCountry.getCapitalProvince(), 10);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, capitalGoesToPreferredWastelandIfNoneOwnedAndAllWasteland)
+{
+	EXPECT_CALL(sourceCountry, getCapital).WillRepeatedly(testing::Return(3));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	std::map<int, HoI4::State> allStates;
+	mockHoi4State state("NON");
+	state.addCores(std::set<std::string>{"TAG"});
+	state.makeImpassable();
+	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	std::pair<int, HoI4::State> statePair(1, state);
+	allStates.insert(statePair);
+	theCountry.addState(state);
+
+	mockHoi4State state2("NON");
+	state2.addCores(std::set<std::string>{"TAG"});
+	state2.makeImpassable();
+	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
+	std::pair<int, HoI4::State> statePair2(2, state2);
+	allStates.insert(statePair2);
+	theCountry.addState(state2);
+
+	mockHoi4State state3("NON");
+	state3.addCores(std::set<std::string>{"TAG"});
+	state3.addProvince(30);
+	state3.makeImpassable();
+	std::pair<int, HoI4::State> statePair3(3, state3);
+	allStates.insert(statePair3);
+
+	std::map<int, int> provinceToStateIDMap;
+	provinceToStateIDMap.insert(std::make_pair(10, 1));
+	provinceToStateIDMap.insert(std::make_pair(20, 2));
+	provinceToStateIDMap.insert(std::make_pair(30, 3));
+
+	mockProvinceMapper aProvinceMapper;
+	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillRepeatedly(testing::Return(std::vector<int>{30}));
+
+	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
+
+	ASSERT_TRUE(theCountry.getCapitalState());
+	ASSERT_EQ(*theCountry.getCapitalState(), 3);
+	ASSERT_TRUE(theCountry.getCapitalProvince());
+	ASSERT_EQ(*theCountry.getCapitalProvince(), 30);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, capitalGoesToAnyWastelandIfNoneOwnedAllWastelandAndPreferredNotCored)
+{
+	EXPECT_CALL(sourceCountry, getCapital).WillRepeatedly(testing::Return(3));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	std::map<int, HoI4::State> allStates;
+	mockHoi4State state("NON");
+	state.addCores(std::set<std::string>{"TAG"});
+	state.addProvince(10);
+	state.makeImpassable();
+	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	std::pair<int, HoI4::State> statePair(1, state);
+	allStates.insert(statePair);
+	theCountry.addState(state);
+
+	mockHoi4State state2("NON");
+	state2.addCores(std::set<std::string>{"TAG"});
+	state2.makeImpassable();
+	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
+	std::pair<int, HoI4::State> statePair2(2, state2);
+	allStates.insert(statePair2);
+	theCountry.addState(state2);
+
+	mockHoi4State state3("NON");
+	state3.makeImpassable();
+	std::pair<int, HoI4::State> statePair3(3, state3);
+	allStates.insert(statePair3);
+
+	std::map<int, int> provinceToStateIDMap;
+	provinceToStateIDMap.insert(std::make_pair(10, 1));
+	provinceToStateIDMap.insert(std::make_pair(20, 2));
+	provinceToStateIDMap.insert(std::make_pair(30, 3));
+
+	mockProvinceMapper aProvinceMapper;
+	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillRepeatedly(testing::Return(std::vector<int>{30}));
+
+	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
+
+	ASSERT_TRUE(theCountry.getCapitalState());
+	ASSERT_EQ(*theCountry.getCapitalState(), 1);
+	ASSERT_TRUE(theCountry.getCapitalProvince());
+	ASSERT_EQ(*theCountry.getCapitalProvince(), 10);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, capitalRemainsUnassignedIfNoCoresAndNoOwnedProvince)
+{
+	EXPECT_CALL(sourceCountry, getCapital).WillRepeatedly(testing::Return(3));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	std::map<int, HoI4::State> allStates;
+	mockHoi4State state3("NON");
+	std::pair<int, HoI4::State> statePair3(3, state3);
+	allStates.insert(statePair3);
+
+	std::map<int, int> provinceToStateIDMap;
+	provinceToStateIDMap.insert(std::make_pair(30, 3));
+
+	mockProvinceMapper aProvinceMapper;
+	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillRepeatedly(testing::Return(std::vector<int>{30}));
+
+	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
+
+	ASSERT_EQ(theCountry.getCapitalState(), std::nullopt);
+	ASSERT_EQ(theCountry.getCapitalProvince(), std::nullopt);
 }

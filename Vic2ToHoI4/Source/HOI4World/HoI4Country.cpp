@@ -297,65 +297,15 @@ void HoI4::Country::convertWars(const Vic2::Country& sourceCountry, const Countr
 
 void HoI4::Country::determineCapitalFromVic2(
 	const provinceMapper& theProvinceMapper,
-	const map<int, int>& provinceToStateIDMap,
-	const map<int, State>& allStates
-) {
-	const auto oldCapital = sourceCountry.getCapital();
-	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
-	{
-		const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
-		if (
-			capitalStateMapping != provinceToStateIDMap.end() &&
-			isStateValidForCapital(capitalStateMapping->second, allStates)
-			)
-		{
-			capitalState = capitalStateMapping->second;
-			capitalProvince = (*mapping)[0];
-			return;
-		}
-	}
-
-	findBestCapital(theProvinceMapper, provinceToStateIDMap, allStates);
-}
-
-
-bool HoI4::Country::isStateValidForCapital(const int& stateNum, const map<int, State>& allStates) const
-{
-	const auto& state = allStates.find(stateNum)->second;
-	return (isThisStateOwnedByUs(state) || isThisStateACoreWhileWeOwnNoStates(state)) && !state.isImpassable();
-}
-
-
-bool HoI4::Country::isThisStateOwnedByUs(const State& state) const
-{
-	return state.getOwner() == tag;
-}
-
-
-bool HoI4::Country::isThisStateACoreWhileWeOwnNoStates(const State& state) const
-{
-	if (states.empty())
-	{
-		for (const auto& core : state.getCores())
-		{
-			if (core == tag)
-			{
-				return true;
-			}
-		}
-	}
-
-	return false;
-}
-
-
-void HoI4::Country::findBestCapital(
-	const provinceMapper& theProvinceMapper,
 	const std::map<int, int>& provinceToStateIDMap,
 	const map<int, State>& allStates
 )
 {
-	bool success = attemptToPutCapitalInNonWastelandOwned(allStates);
+	bool success = attemptToPutCapitalInPreferredNonWastelandOwned(theProvinceMapper, provinceToStateIDMap, allStates);
+	if (!success)
+	{
+		success = attemptToPutCapitalInNonWastelandOwned(allStates);
+	}
 	if (!success)
 	{
 		success = attemptToPutCapitalInPreferredWastelandOwned(theProvinceMapper, provinceToStateIDMap, allStates);
@@ -385,6 +335,35 @@ void HoI4::Country::findBestCapital(
 		LOG(LogLevel::Warning) << "Could not properly set capital for " << tag;
 	}
 }
+
+
+bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandOwned(
+	const provinceMapper& theProvinceMapper,
+	const map<int, int>& provinceToStateIDMap,
+	const map<int, State>& allStates
+)
+{
+	const auto oldCapital = sourceCountry.getCapital();
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
+	{
+		if (
+			const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+			capitalStateMapping != provinceToStateIDMap.end()
+			)
+		{
+			const auto& state = allStates.find(capitalStateMapping->second)->second;
+			if ((state.getOwner() == tag) && !state.isImpassable())
+			{
+				capitalState = capitalStateMapping->second;
+				capitalProvince = (*mapping)[0];
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
 
 
 bool HoI4::Country::attemptToPutCapitalInNonWastelandOwned(const map<int, State>& allStates)
