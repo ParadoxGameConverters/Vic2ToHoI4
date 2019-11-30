@@ -456,7 +456,7 @@ optional<double> HoI4WarCreator::getDistanceBetweenCountries(shared_ptr<HoI4::Co
 
 bool HoI4WarCreator::bothCountriesHaveCapitals(shared_ptr<HoI4::Country> Country1, shared_ptr<HoI4::Country> Country2) const
 {
-	return (Country1->getCapitalStateNum() != 0) && (Country2->getCapitalStateNum() != 0);
+	return (Country1->getCapitalState()) && (Country2->getCapitalState());
 }
 
 
@@ -653,7 +653,7 @@ map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::getNearbyCountries(shared
 	for (auto countryItr: theWorld->getCountries())
 	{
 		auto country = countryItr.second;
-		if (country->getCapitalStateNum() != 0)
+		if (country->getCapitalState())
 		{
 			//IMPROVE
 			//need to get further neighbors, as well as countries without capital in an area
@@ -717,7 +717,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4:
 	//gets neighbors that are actually close to you
 	for (auto neigh: AllNeighbors)
 	{
-		if (neigh.second->getCapitalStateNum() != 0)
+		if (neigh.second->getCapitalState())
 		{
 			//IMPROVE
 			//need to get further neighbors, as well as countries without capital in an area
@@ -991,7 +991,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::communistWarCreator(shared_ptr<H
 	map<string, shared_ptr<HoI4::Country>> Neighbors;
 	for (auto neigh: AllNeighbors)
 	{
-		if (neigh.second->getCapitalStateNum() != 0)
+		if (neigh.second->getCapitalState())
 		{
 			//IMPROVE
 			//need to get further neighbors, as well as countries without capital in an area
@@ -1416,7 +1416,7 @@ map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::findCloseNeighbors(shared
 
 	for (auto neighbor: getNeighbors(country, theMapData))
 	{
-		if ((neighbor.second->getCapitalStateNum() != 0) && (neighbor.first != ""))
+		if ((neighbor.second->getCapitalState()) && (neighbor.first != ""))
 		{
 			auto distance = getDistanceBetweenCountries(country, neighbor.second);
 			if (distance && (*distance <= 500))
@@ -1467,7 +1467,7 @@ map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::findFarNeighbors(shared_p
 
 	for (auto neighbor: getNeighbors(country, theMapData))
 	{
-		if (neighbor.second->getCapitalStateNum() != 0)
+		if (neighbor.second->getCapitalState())
 		{
 			auto distance = getDistanceBetweenCountries(country, neighbor.second);
 			if (distance && (*distance > 500))
@@ -1481,7 +1481,7 @@ map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::findFarNeighbors(shared_p
 	{
 		for (auto otherCountry: theWorld->getCountries())
 		{
-			if (otherCountry.second->getCapitalStateNum() != 0)
+			if (otherCountry.second->getCapitalState())
 			{
 				auto distance = getDistanceBetweenCountries(country, otherCountry.second);
 				if (distance && (*distance <= 1000) && (otherCountry.second->hasProvinces()))

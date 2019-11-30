@@ -334,7 +334,11 @@ void HoI4::World::addStatesToCountries()
 		{
 			landedCountries.insert(country);
 		}
-		country.second->determineCapitalFromVic2(states->getProvinceToStateIDMap(), states->getStates());
+		country.second->determineCapitalFromVic2(
+			theProvinceMapper,
+			states->getProvinceToStateIDMap(),
+			states->getStates()
+		);
 	}
 }
 
@@ -1113,7 +1117,7 @@ void HoI4::World::outputCommonCountries() const
 
 	for (auto country: countries)
 	{
-		if (country.second->getCapitalStateNum() != 0)
+		if (country.second->getCapitalState())
 		{
 			outputToCommonCountriesFile(allCountriesFile, *country.second);
 		}
@@ -1142,7 +1146,7 @@ void HoI4::World::outputColorsfile() const
 	output << "#reload countrycolors\n";
 	for (auto country: countries)
 	{
-		if (country.second->getCapitalStateNum() != 0)
+		if (country.second->getCapitalState())
 		{
 			outputColors(output, *country.second);
 		}
@@ -1165,7 +1169,7 @@ void HoI4::World::outputNames() const
 
 	for (auto country: countries)
 	{
-		if (country.second->getCapitalStateNum() != 0)
+		if (country.second->getCapitalState())
 		{
 			outputToNamesFiles(namesFile, theNames, *country.second);
 		}
@@ -1185,7 +1189,7 @@ void HoI4::World::outputUnitNames() const
 
 	for (auto country : countries)
 	{
-		if (country.second->getCapitalStateNum() != 0)
+		if (country.second->getCapitalState())
 		{
 			outputToUnitNamesFiles(namesFile, *country.second);
 		}
@@ -1269,7 +1273,7 @@ void HoI4::World::outputCountries()
 	auto activeIdeologicalAdvisors = getActiveIdeologicalAdvisors();
 	for (auto country: countries)
 	{
-		if (country.second->getCapitalStateNum() != 0)
+		if (country.second->getCapitalState())
 		{
 			const HoI4::militaryMappings& specificMilitaryMappings = theMilitaryMappings->getMilitaryMappings(theConfiguration.getVic2Mods());
 			HoI4::outputCountry(
@@ -1292,7 +1296,7 @@ void HoI4::World::outputCountries()
 	ideasFile << "spriteTypes = {\n";
 	for (auto country: countries)
 	{
-		if (country.second->getCapitalStateNum() != 0)
+		if (country.second->getCapitalState())
 		{
 			outputIdeaGraphics(ideasFile, theGraphics, *country.second);
 		}

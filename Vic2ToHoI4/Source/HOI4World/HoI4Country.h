@@ -58,6 +58,7 @@ class techMapper;
 class CountryMapper;
 class governmentMapper;
 class graphicsMapper;
+class provinceMapper;
 
 
 class Date;
@@ -86,6 +87,7 @@ class Country
 		~Country() = default;
 
 		void determineCapitalFromVic2(
+			const provinceMapper& theProvinceMapper,
 			const std::map<int, int>& provinceToStateIDMap,
 			const std::map<int, State>& allStates
 		);
@@ -142,7 +144,7 @@ class Country
 		[[nodiscard]] bool hasProvinces() const { return !provinces.empty(); }
 		[[nodiscard]] const std::set<int>& getProvinces() const { return provinces; }
 		[[nodiscard]] const std::set<int>& getStates() const { return states; }
-		[[nodiscard]] int getCapitalStateNum() const { return capitalState; }
+		[[nodiscard]] std::optional<int> getCapitalState() const { return capitalState; }
 		[[nodiscard]] std::optional<int> getCapitalProvince() const { return capitalProvince; }
 
 		[[nodiscard]] const std::string& getGovernmentIdeology() const { return governmentIdeology; }
@@ -220,7 +222,7 @@ class Country
 
 		std::set<int> provinces;
 		std::set<int> states;
-		int capitalState = 0;
+		std::optional<int> capitalState;
 		std::optional<int> capitalProvince;
 
 		std::string governmentIdeology = "neutrality";

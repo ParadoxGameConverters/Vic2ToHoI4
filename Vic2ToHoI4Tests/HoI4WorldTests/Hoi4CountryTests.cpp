@@ -5,6 +5,7 @@
 #include "../Mocks/GraphicsMapperMock.h"
 #include "../Mocks/Hoi4StateMock.h"
 #include "../Mocks/NamesMapperMock.h"
+#include "../Mocks/ProvinceMapperMock.h"
 #include "../Mocks/Vic2CountryMock.h"
 #include <sstream>
 
@@ -263,7 +264,7 @@ TEST_F(HoI4World_HoI4CountryTests, provincesCanBeAdded)
 		*theFlagsToIdeasMapper
 	);
 
-	mockHoi4State state;
+	mockHoi4State state("TAG");
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(0));
 	EXPECT_CALL(state, getProvinces).WillOnce(testing::Return(std::set<int>{1,2,3}));
 
@@ -302,11 +303,65 @@ TEST_F(HoI4World_HoI4CountryTests, statesCanBeAdded)
 		*theFlagsToIdeasMapper
 	);
 
-	mockHoi4State state;
+	mockHoi4State state("");
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(42));
 	EXPECT_CALL(state, getProvinces).WillOnce(testing::Return(std::set<int>{}));
 
 	theCountry.addState(state);
 
 	ASSERT_TRUE(theCountry.getStates().contains(42));
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, capitalDefaultsToNone)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getCapitalState(), std::nullopt);
+	ASSERT_EQ(theCountry.getCapitalProvince(), std::nullopt);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, capitalCanBeSetInOwnedState)
+{
+	EXPECT_CALL(sourceCountry, getCapital).WillOnce(testing::Return(42));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	mockHoi4State state("TAG");
+	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	EXPECT_CALL(state, getProvinces).WillOnce(testing::Return(std::set<int>{84}));
+	std::string owner = state.getOwner();
+
+	std::map<int, HoI4::State> allStates;
+	std::pair<int, HoI4::State> statePair(1, state);
+	allStates.insert(statePair);
+	theCountry.addState(state);
+
+	std::map<int, int> provinceToStateIDMap;
+	provinceToStateIDMap.insert(std::make_pair(84, 1));
+
+	mockProvinceMapper aProvinceMapper;
+	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(42)).WillOnce(testing::Return(std::vector<int>{84}));
+
+	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
+
+	ASSERT_TRUE(theCountry.getCapitalState());
+	ASSERT_EQ(*theCountry.getCapitalState(), 1);
+	ASSERT_TRUE(theCountry.getCapitalProvince());
+	ASSERT_EQ(*theCountry.getCapitalProvince(), 84);
 }

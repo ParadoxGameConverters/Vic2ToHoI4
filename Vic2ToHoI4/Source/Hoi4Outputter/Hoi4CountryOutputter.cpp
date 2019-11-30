@@ -236,7 +236,7 @@ void HoI4::outputCountry(
 	graphicsMapper& theGraphics,
 	const Country& theCountry
 ) {
-	if (theCountry.getCapitalStateNum() != 0)
+	if (theCountry.getCapitalState())
 	{
 		outputHistory(theNames, theGraphics, theCountry);
 		outputOOB(divisionTemplates, theCountry);
@@ -254,7 +254,7 @@ void HoI4::outputCountry(
 }
 
 
-void outputCapital(std::ostream& output, const int& capitalStateNum);
+void outputCapital(std::ostream& output, const std::optional<int>& capitalStateNum);
 void outputResearchSlots(std::ostream& output, const bool& greatPower, const bool& civilized);
 void outputThreat(std::ostream& output, const double& threat);
 void outputWars(std::ostream& output, const std::vector<HoI4::War>& wars);
@@ -337,7 +337,7 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 	}
 	output << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 
-	outputCapital(output, theCountry.getCapitalStateNum());
+	outputCapital(output, theCountry.getCapitalState());
 	outputResearchSlots(output, theCountry.isGreatPower(), theCountry.isCivilized());
 	outputThreat(output, theCountry.getThreat());
 	outputWars(output, theCountry.getWars());
@@ -394,11 +394,11 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 }
 
 
-void outputCapital(std::ostream& output, const int& capitalStateNum)
+void outputCapital(std::ostream& output, const std::optional<int>& capitalStateNum)
 {
-	if (capitalStateNum > 0)
+	if (capitalStateNum)
 	{
-		output << "capital = " << capitalStateNum << '\n';
+		output << "capital = " << *capitalStateNum << '\n';
 	}
 	else
 	{
@@ -886,7 +886,7 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 	if (auto& planes = theCountry.getPlanes(); planes.size() > 0)
 	{
 		output << "air_wings = {\n";
-		output << "\t" << theCountry.getCapitalStateNum() << " = {\n";
+		output << "\t" << *theCountry.getCapitalState() << " = {\n";
 		for (auto& plane: planes)
 		{
 			output << plane;

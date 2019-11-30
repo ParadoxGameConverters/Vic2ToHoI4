@@ -10,4 +10,5 @@ class mockVic2Country: public Vic2::Country
 		MOCK_METHOD(bool, isHuman, (), (const, override));
 		MOCK_METHOD(const ConverterColor::Color&, getColor, (), (const, override));
 		MOCK_METHOD(std::string, getPrimaryCultureGroup, (), (const, override));
+		MOCK_METHOD(int, getCapital, (), (const, override));
 };

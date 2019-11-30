@@ -10,6 +10,7 @@
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/GovernmentMapper.h"
 #include "../Mappers/GraphicsMapper.h"
+#include "../Mappers/Provinces/ProvinceMapper.h"
 #include "../Mappers/TechMapper.h"
 #include "../V2World/Country.h"
 #include "../V2World/Relations.h"
@@ -295,6 +296,7 @@ void HoI4::Country::convertWars(const Vic2::Country& sourceCountry, const Countr
 
 
 void HoI4::Country::determineCapitalFromVic2(
+	const provinceMapper& theProvinceMapper,
 	const map<int, int>& provinceToStateIDMap,
 	const map<int, State>& allStates
 ) {
@@ -319,7 +321,7 @@ void HoI4::Country::determineCapitalFromVic2(
 
 bool HoI4::Country::isStateValidForCapital(const int& stateNum, const map<int, State>& allStates) const
 {
-	const auto state = allStates.find(stateNum)->second;
+	const auto& state = allStates.find(stateNum)->second;
 	return (isThisStateOwnedByUs(state) || isThisStateACoreWhileWeOwnNoStates(state)) && !state.isImpassable();
 }
 
