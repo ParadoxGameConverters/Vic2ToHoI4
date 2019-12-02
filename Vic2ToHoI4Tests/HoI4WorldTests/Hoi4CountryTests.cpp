@@ -872,3 +872,71 @@ TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesCanBeSet)
 	ASSERT_EQ(theCountry.getGovernmentIdeology(), "testGovernmentIdeology");
 	ASSERT_EQ(theCountry.getLeaderIdeology(), "testLeaderIdeology");
 }
+
+
+TEST_F(HoI4World_HoI4CountryTests, rulingPartyComesFromVic2Country)
+{
+	std::stringstream partyInput;
+	partyInput << "name = testParty\n";
+	partyInput << "ideology = testSourceIdeology";
+	Vic2::Party testParty(partyInput);
+
+	std::vector<Vic2::Party> testParties{ testParty };
+	EXPECT_CALL(
+		sourceCountry,
+		getRulingParty(testParties)
+	).WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	mockVic2World mockSourceWorld;
+	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
+
+	mockGovernmentMapper mockGovernmentMap;
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+		.WillOnce(testing::Return("testGovernmentIdeology")
+		);
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+		.WillOnce(testing::Return("testLeaderIdeology")
+		);
+
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap);
+	ASSERT_EQ(theCountry.getRulingParty(), testParty);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, missingRulingPartyThrowsException)
+{
+	std::vector<Vic2::Party> testParties{ };
+	EXPECT_CALL(
+		sourceCountry,
+		getRulingParty(testParties)
+	).WillOnce(testing::Return(std::nullopt));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	mockVic2World mockSourceWorld;
+	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
+
+	mockGovernmentMapper mockGovernmentMap;
+
+	EXPECT_THROW(theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap), std::runtime_error);
+}
