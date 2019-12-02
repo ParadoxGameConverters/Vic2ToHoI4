@@ -11,4 +11,12 @@ class mockVic2Country: public Vic2::Country
 		MOCK_METHOD(const ConverterColor::Color&, getColor, (), (const, override));
 		MOCK_METHOD(std::string, getPrimaryCultureGroup, (), (const, override));
 		MOCK_METHOD(int, getCapital, (), (const, override));
+		MOCK_METHOD(
+			std::optional<const Vic2::Party>,
+			getRulingParty,
+			(const std::vector<Vic2::Party>& allParties),
+			(const, override)
+		);
+		MOCK_METHOD(std::string, getTag, (), (const, override));
+		MOCK_METHOD(std::string, getGovernment, (), (const, override));
 };

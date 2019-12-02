@@ -136,8 +136,19 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld, const gove
 	}
 
 	rulingParty = *possibleRulingParty;
-	governmentIdeology = governmentMap.getIdeologyForCountry(sourceCountry, rulingParty.getIdeology());
-	leaderIdeology = governmentMap.getLeaderIdeologyForCountry(sourceCountry, rulingParty.getIdeology());
+	auto sourceTag = sourceCountry.getTag();
+	auto sourceGovernment = sourceCountry.getGovernment();
+	auto rulingIdeology = rulingParty.getIdeology();
+	governmentIdeology = governmentMap.getIdeologyForCountry(
+		sourceTag,
+		sourceGovernment,
+		rulingIdeology
+	);
+	leaderIdeology = governmentMap.getLeaderIdeologyForCountry(
+		sourceTag,
+		sourceGovernment,
+		rulingIdeology
+	);
 	parties = sourceCountry.getActiveParties(sourceWorld.getParties());
 	for (const auto& party: parties)
 	{
@@ -535,7 +546,8 @@ void HoI4::Country::convertTechnology(std::unique_ptr<mappers::techMapper>& theT
 
 
 void HoI4::Country::setGovernmentToExistingIdeology(
-	const set<string>& majorIdeologies, const map<string, HoI4Ideology*>& ideologies,
+	const set<string>& majorIdeologies,
+	const map<string, HoI4Ideology*>& ideologies,
 	const governmentMapper& governmentMap
 ) {
 	governmentIdeology = governmentMap.getExistingIdeologyForCountry(

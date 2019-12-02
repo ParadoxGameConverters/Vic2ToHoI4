@@ -1,12 +1,15 @@
 #include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/HoI4Country.h"
 #include "../Vic2ToHoI4/Source/Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
+#include "../Vic2ToHoI4/Source/V2World/Party.h"
 #include "../Mocks/CountryMapperMock.h"
+#include "../Mocks/GovermentMapperMock.h"
 #include "../Mocks/GraphicsMapperMock.h"
 #include "../Mocks/Hoi4StateMock.h"
 #include "../Mocks/NamesMapperMock.h"
 #include "../Mocks/ProvinceMapperMock.h"
 #include "../Mocks/Vic2CountryMock.h"
+#include "../Mocks/Vic2WorldMock.h"
 #include <sstream>
 
 
@@ -37,13 +40,13 @@ HoI4World_HoI4CountryTests::HoI4World_HoI4CountryTests()
 	ON_CALL(sourceCountry, isHuman).WillByDefault(testing::Return(false));
 	ON_CALL(sourceCountry, getColor).WillByDefault(testing::ReturnRef(defaultColor));
 	ON_CALL(sourceCountry, getPrimaryCultureGroup).WillByDefault(testing::Return(""));
+	ON_CALL(sourceCountry, getTag).WillByDefault(testing::Return("TAG"));
+	ON_CALL(sourceCountry, getGovernment).WillByDefault(testing::Return("testGovernment"));
 }
 
 
 TEST_F(HoI4World_HoI4CountryTests, tagCanBeAssigned)
 {
-	EXPECT_CALL(sourceCountry, getName("english")).WillOnce(testing::Return(std::nullopt));
-
 	HoI4::Country theCountry(
 		"TAG",
 		&sourceCountry,
@@ -58,8 +61,6 @@ TEST_F(HoI4World_HoI4CountryTests, tagCanBeAssigned)
 
 TEST_F(HoI4World_HoI4CountryTests, filenamesDefaultToTag)
 {
-	EXPECT_CALL(sourceCountry, getName("english")).WillOnce(testing::Return(std::nullopt));
-
 	HoI4::Country theCountry(
 		"TAG",
 		&sourceCountry,
@@ -202,12 +203,12 @@ TEST_F(HoI4World_HoI4CountryTests, graphicalCultureIsFromSourceCountryCultureGro
 	EXPECT_CALL(sourceCountry, getPrimaryCultureGroup).WillRepeatedly(testing::Return("testCultureGroup"));
 	EXPECT_CALL(
 		theGraphicsMapper,
-		getGraphicalCulture("testCultureGroup")).WillOnce(testing::Return("testGraphicalCulture")
-	);
+		getGraphicalCulture("testCultureGroup")
+	).WillOnce(testing::Return("testGraphicalCulture"));
 	EXPECT_CALL(
 		theGraphicsMapper,
-		get2dGraphicalCulture("testCultureGroup")).WillOnce(testing::Return("test2dGraphicalCulture")
-	);
+		get2dGraphicalCulture("testCultureGroup")
+	).WillOnce(testing::Return("test2dGraphicalCulture"));
 
 	HoI4::Country theCountry(
 		"TAG",
@@ -812,4 +813,62 @@ TEST_F(HoI4World_HoI4CountryTests, capitalRemainsUnassignedIfNoCoresAndNoOwnedPr
 
 	ASSERT_EQ(theCountry.getCapitalState(), std::nullopt);
 	ASSERT_EQ(theCountry.getCapitalProvince(), std::nullopt);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesDefaultsToNeutrality)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+	ASSERT_EQ(theCountry.getGovernmentIdeology(), "neutrality");
+	ASSERT_EQ(theCountry.getLeaderIdeology(), "conservatism_neutral");
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesCanBeSet)
+{
+	std::stringstream partyInput;
+	partyInput << "name = testParty\n";
+	partyInput << "ideology = testSourceIdeology";
+	Vic2::Party testParty(partyInput);
+
+	std::vector<Vic2::Party> testParties{ testParty };
+	EXPECT_CALL(
+		sourceCountry,
+		getRulingParty(testParties)
+	).WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	mockVic2World mockSourceWorld;
+	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
+
+	mockGovernmentMapper mockGovernmentMap;
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+			.WillOnce(testing::Return("testGovernmentIdeology")
+	);
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+			.WillOnce(testing::Return("testLeaderIdeology")
+	);
+
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap);
+	ASSERT_EQ(theCountry.getGovernmentIdeology(), "testGovernmentIdeology");
+	ASSERT_EQ(theCountry.getLeaderIdeology(), "testLeaderIdeology");
 }

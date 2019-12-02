@@ -76,14 +76,14 @@ class Country: commonItems::parser
 
 		std::map<std::string, const Relations*> getRelations() const { return relations; }
 		std::vector<State*> getStates() const { return states; }
-		std::string getTag() const { return tag; }
+		virtual std::string getTag() const { return tag; }
                 std::string getIdentifier() const;
                 std::string getPrimaryCulture() const { return primaryCulture; }
 		virtual std::string getPrimaryCultureGroup() const { return primaryCultureGroup; }
 		std::set<std::string> getAcceptedCultures() const { return acceptedCultures; }
 		bool isAnAcceptedCulture(const std::string& culture) const { return (acceptedCultures.count(culture) > 0); }
 		std::set<std::string> getInventions() const { return discoveredInventions; }
-		std::string getGovernment() const { return government; }
+		virtual std::string getGovernment() const { return government; }
 		std::set<std::string> getFlags() const { return flags; }
 		date getLastElection() const { return lastElection; }
 		virtual int getCapital() const { return capital; }
@@ -108,7 +108,7 @@ class Country: commonItems::parser
 		std::optional<std::string> getAdjective(const std::string& language) const;
 		double getUpperHousePercentage(const std::string& ideology) const;
 		long getEmployedWorkers() const;
-		std::optional<const Vic2::Party> getRulingParty(const std::vector<Vic2::Party>& allParties) const;
+		virtual std::optional<const Vic2::Party> getRulingParty(const std::vector<Vic2::Party>& allParties) const;
 		std::set<Vic2::Party, std::function<bool (const Vic2::Party&, const Vic2::Party&)>> getActiveParties(const std::vector<Vic2::Party>& allParties) const;
 		bool hasCoreOnCapital() const;
 		std::vector<std::string> getShipNames(std::string category) const;
@@ -116,9 +116,6 @@ class Country: commonItems::parser
 		float getAverageIssueSupport(const std::string& issueName) const;
 
 	private:
-		Country(const Country&) = delete;
-		Country& operator=(const Country&) = delete;
-
 		void setLocalisationName(const std::string& language, const std::string& name);
 		void setLocalisationAdjective(const std::string& language, const std::string& adjective);
 
@@ -170,6 +167,9 @@ class Country: commonItems::parser
 		bool atWar = false;
 		std::vector<War> wars;
 };
+
+
+bool operator==(const Country& one, const Country& other);
 
 }
 

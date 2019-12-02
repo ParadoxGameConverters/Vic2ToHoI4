@@ -49,6 +49,7 @@ class Province;
 class World: commonItems::parser
 {
 	public:
+		World() = default;
 		explicit World(const std::string& filename);
 
 		std::optional<const Province*> getProvince(int provNum) const;
@@ -56,7 +57,7 @@ class World: commonItems::parser
 		std::map<std::string, Country*> getCountries() const { return countries; }
 		const Diplomacy* getDiplomacy() const { return diplomacy; }
 		std::vector<std::string> getGreatPowers() const	{ return greatPowers; }
-		std::vector<Party> getParties() const { return parties; }
+		virtual std::vector<Party> getParties() const { return parties; }
 		auto getProvinces() const { return provinces; }
 
 	private:
