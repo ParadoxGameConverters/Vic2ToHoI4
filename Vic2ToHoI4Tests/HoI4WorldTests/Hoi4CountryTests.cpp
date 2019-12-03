@@ -940,3 +940,76 @@ TEST_F(HoI4World_HoI4CountryTests, missingRulingPartyThrowsException)
 
 	EXPECT_THROW(theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap), std::runtime_error);
 }
+
+
+TEST_F(HoI4World_HoI4CountryTests, partiesDefaultsToEmpty)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	EXPECT_TRUE(theCountry.getParties().empty());
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, partiesComeFromVic2Country)
+{
+	std::stringstream partyInput;
+	partyInput << "name = TAG_testParty\n";
+	partyInput << "ideology = testSourceIdeology";
+	Vic2::Party testParty(partyInput);
+
+	std::stringstream partyInput2;
+	partyInput2 << "name = TAG_testParty2\n";
+	partyInput2 << "ideology = testSourceIdeology";
+	Vic2::Party testParty2(partyInput2);
+
+	std::vector<Vic2::Party> testParties{ testParty, testParty2 };
+	EXPECT_CALL(
+		sourceCountry,
+		getRulingParty(testParties)
+	).WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+
+	set<Vic2::Party, function<bool(const Vic2::Party&, const Vic2::Party&)>> activeParties([](const Vic2::Party& first, const Vic2::Party& second)
+		{ return first.getName() < second.getName(); }
+	);
+	activeParties.insert(testParty);
+	activeParties.insert(testParty2);
+	EXPECT_CALL(
+		sourceCountry,
+		getActiveParties(testParties)
+	).WillOnce(testing::Return(activeParties));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	mockVic2World mockSourceWorld;
+	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
+
+	mockGovernmentMapper mockGovernmentMap;
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+		.WillOnce(testing::Return("testGovernmentIdeology")
+		);
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+		.WillOnce(testing::Return("testLeaderIdeology")
+		);
+
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap);
+	ASSERT_EQ(theCountry.getParties().count(testParty), 1);
+	ASSERT_EQ(theCountry.getParties().count(testParty2), 1);
+}
