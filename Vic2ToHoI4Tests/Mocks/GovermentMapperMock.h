@@ -18,4 +18,9 @@ class mockGovernmentMapper: public governmentMapper
 			(const std::string& sourceTag, const std::string& sourceGovernment, const std::string& Vic2RulingIdeology),
 			(const, override)
 		);
+		MOCK_METHOD(std::string,
+			getSupportedIdeology,
+			(const std::string& rulingIdeology, const std::string& Vic2Ideology, const std::set<std::string>& majorIdeologies),
+			(const, override)
+		);
 };

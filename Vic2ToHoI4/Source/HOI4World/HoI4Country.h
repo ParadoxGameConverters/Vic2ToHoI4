@@ -245,7 +245,7 @@ class Country
 		std::string leaderIdeology = "conservatism_neutral";
 		Vic2::Party rulingParty;
 		std::set<Vic2::Party, std::function<bool(const Vic2::Party&, const Vic2::Party&)>> parties;
-		std::map<std::string, int> ideologySupport;
+		std::map<std::string, int> ideologySupport{ std::make_pair("neutrality", 100) };
 		date lastElection;
 		int stability = 50;
 		int warSupport = 50;

@@ -26,4 +26,5 @@ class mockVic2Country: public Vic2::Country
 			(const std::vector<Vic2::Party>& allParties),
 			(const, override)
 		);
+		MOCK_METHOD((std::map<std::string, double>), getUpperHouseComposition, (), (const, override));
 };

@@ -1013,3 +1013,101 @@ TEST_F(HoI4World_HoI4CountryTests, partiesComeFromVic2Country)
 	ASSERT_EQ(theCountry.getParties().count(testParty), 1);
 	ASSERT_EQ(theCountry.getParties().count(testParty2), 1);
 }
+
+
+TEST_F(HoI4World_HoI4CountryTests, defaultIdeologicalSupportIsAllNeutrality)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	std::map<std::string, int> expectedSupport{ std::make_pair("neutrality", 100) };
+
+	ASSERT_EQ(theCountry.getIdeologySupport(), expectedSupport);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportWithNoIdeologiesIsAllNeutrality)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+
+	mockGovernmentMapper mockGovernmentMap;
+	theCountry.convertIdeologySupport({}, mockGovernmentMap);
+
+	std::map<std::string, int> expectedSupport{ std::make_pair("neutrality", 100) };
+	ASSERT_EQ(theCountry.getIdeologySupport(), expectedSupport);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportCanBeConverted)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	std::map<std::string, double> upperHouseComposition{ {"conservative", 0.30 }, { "liberal", 0.70 } };
+	EXPECT_CALL(sourceCountry, getUpperHouseComposition()).WillOnce(testing::Return(upperHouseComposition));
+
+	std::set<std::string> majorIdeologies{ "conservative" };
+
+	mockGovernmentMapper mockGovernmentMap;
+	EXPECT_CALL(mockGovernmentMap, getSupportedIdeology("neutrality", "conservative", majorIdeologies))
+	.WillOnce(testing::Return("conservative"));
+	EXPECT_CALL(mockGovernmentMap, getSupportedIdeology("neutrality", "liberal", majorIdeologies))
+		.WillOnce(testing::Return("neutrality"));
+
+	theCountry.convertIdeologySupport(majorIdeologies, mockGovernmentMap);
+
+	std::map<std::string, int> expectedSupport{
+		std::make_pair("neutrality", 70),
+		std::make_pair("conservative", 30)
+	};
+	ASSERT_EQ(theCountry.getIdeologySupport(), expectedSupport);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportCombinesSameIdeologies)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	std::map<std::string, double> upperHouseComposition{ {"conservative", 0.30 }, { "liberal", 0.70 } };
+	EXPECT_CALL(sourceCountry, getUpperHouseComposition()).WillOnce(testing::Return(upperHouseComposition));
+
+	std::set<std::string> majorIdeologies{ "conservative" };
+
+	mockGovernmentMapper mockGovernmentMap;
+	EXPECT_CALL(mockGovernmentMap, getSupportedIdeology("neutrality", "conservative", majorIdeologies))
+		.WillOnce(testing::Return("conservative"));
+	EXPECT_CALL(mockGovernmentMap, getSupportedIdeology("neutrality", "liberal", majorIdeologies))
+		.WillOnce(testing::Return("conservative"));
+
+	theCountry.convertIdeologySupport(majorIdeologies, mockGovernmentMap);
+
+	std::map<std::string, int> expectedSupport{ std::make_pair("conservative", 100) };
+	ASSERT_EQ(theCountry.getIdeologySupport(), expectedSupport);
+}

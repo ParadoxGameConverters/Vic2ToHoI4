@@ -569,11 +569,14 @@ void HoI4::Country::convertIdeologySupport(
 	const std::set<std::string>& majorIdeologies,
 	const governmentMapper& governmentMap
 ) {
+	ideologySupport.clear();
+
 	for (const auto& upperHouseIdeology: sourceCountry.getUpperHouseComposition())
 	{
 		auto ideology = governmentMap.getSupportedIdeology(
 			governmentIdeology,
-			upperHouseIdeology.first, majorIdeologies
+			upperHouseIdeology.first,
+			majorIdeologies
 		);
 		auto supportItr = ideologySupport.find(ideology);
 		if (supportItr == ideologySupport.end())
@@ -589,13 +592,16 @@ void HoI4::Country::convertIdeologySupport(
 	{
 		remainingSupport -= ideology.second;
 	}
-	auto supportItr = ideologySupport.find("neutrality");
-	if (supportItr == ideologySupport.end())
+	if (remainingSupport > 0)
 	{
-		ideologySupport.insert(make_pair("neutrality", 0));
-		supportItr = ideologySupport.find("neutrality");
+		auto supportItr = ideologySupport.find("neutrality");
+		if (supportItr == ideologySupport.end())
+		{
+			ideologySupport.insert(make_pair("neutrality", 0));
+			supportItr = ideologySupport.find("neutrality");
+		}
+		supportItr->second += remainingSupport;
 	}
-	supportItr->second += remainingSupport;
 }
 
 
