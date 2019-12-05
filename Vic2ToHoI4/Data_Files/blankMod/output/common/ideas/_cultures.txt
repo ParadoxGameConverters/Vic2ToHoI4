@@ -2817,5 +2817,101 @@ ideas = {
 				army_armor_speed_factor = 0.5
 			}
 		}
+
+		culture_cree = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_cree
+			modifier = { 
+			}
+		}
+
+		culture_dakota = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_dakota
+			modifier = { 
+			}
+		}
+
+		culture_inuit = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_inuit
+			modifier = { 
+			}
+		}
+
+		culture_navajo = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_navajo
+			modifier = { 
+			}
+		}
+
+		culture_pueblo = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_pueblo
+			modifier = { 
+			}
+		}
+
+		culture_tupinamba = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_tupinamba
+			modifier = { 
+			}
+		}
+
+		culture_yangichi = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_yangichi
+			modifier = { 
+			}
+		}
+
+		culture_janubi = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_janubi
+			modifier = { 
+			}
+		}
+
+		culture_afrigi = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_afrigi
+			modifier = { 
+			}
+		}
+
+		culture_pishgam = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_dinajidad
+			modifier = { 
+			}
+		}
+
+		culture_nimruzi = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_janub
+			modifier = { 
+			}
+		}
+
+		culture_afrighayi = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_saahi
+			modifier = { 
+			}
+		}
 	}
 }
