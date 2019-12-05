@@ -2,7 +2,6 @@
 #include "../../Vic2ToHoI4/Source/V2World/Country.h"
 
 
-
 class mockVic2Country: public Vic2::Country
 {
 	public:
@@ -27,4 +26,9 @@ class mockVic2Country: public Vic2::Country
 			(const, override)
 		);
 		MOCK_METHOD((std::map<std::string, double>), getUpperHouseComposition, (), (const, override));
+		MOCK_METHOD(date, getLastElection, (), (const, override));
+		MOCK_METHOD(double, getRevanchism, (), (const, override));
+		MOCK_METHOD(double, getWarExhaustion, (), (const, override));
+		MOCK_METHOD(float, getAverageIssueSupport, (const std::string& issueName), (const, override));
+		MOCK_METHOD((std::map<int, Vic2::Province*>), getProvinces, (), (const, override));
 };

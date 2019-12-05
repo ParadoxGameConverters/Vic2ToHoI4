@@ -42,6 +42,13 @@ HoI4World_HoI4CountryTests::HoI4World_HoI4CountryTests()
 	ON_CALL(sourceCountry, getPrimaryCultureGroup).WillByDefault(testing::Return(""));
 	ON_CALL(sourceCountry, getTag).WillByDefault(testing::Return("TAG"));
 	ON_CALL(sourceCountry, getGovernment).WillByDefault(testing::Return("testGovernment"));
+	ON_CALL(sourceCountry, getProvinces()).WillByDefault(testing::Return(std::map<int, Vic2::Province*>{}));
+	ON_CALL(sourceCountry, getRevanchism()).WillByDefault(testing::Return(0));
+	ON_CALL(sourceCountry, getWarExhaustion()).WillByDefault(testing::Return(0));
+	ON_CALL(sourceCountry, getAverageIssueSupport("jingoism")).WillByDefault(testing::Return(0.0f));
+	ON_CALL(sourceCountry, getAverageIssueSupport("pro_military")).WillByDefault(testing::Return(0.0f));
+	ON_CALL(sourceCountry, getAverageIssueSupport("anti_military")).WillByDefault(testing::Return(0.0f));
+	ON_CALL(sourceCountry, getAverageIssueSupport("pacifism")).WillByDefault(testing::Return(0.0f));
 }
 
 
@@ -1110,4 +1117,200 @@ TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportCombinesSameIdeologies)
 
 	std::map<std::string, int> expectedSupport{ std::make_pair("conservative", 100) };
 	ASSERT_EQ(theCountry.getIdeologySupport(), expectedSupport);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, lastElectionIsFromSourceCountry)
+{
+	EXPECT_CALL(sourceCountry, getLastElection()).WillOnce(testing::Return(date{ "1234.5.6" }));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getLastElection(), date{ "1234.5.6" });
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, stabilityDefaultsToSixty)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getStability(), 60);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, warSupportDefaultsToSixty)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getWarSupport(), 60);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByJingosim)
+{
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("jingoism")).WillOnce(testing::Return(8.0f));
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pro_military")).WillOnce(testing::Return(0.0f));
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("anti_military")).WillOnce(testing::Return(0.0f));
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pacifism")).WillOnce(testing::Return(0.0f));
+	EXPECT_CALL(sourceCountry, getProvinces())
+		.WillOnce(testing::Return(std::map<int, Vic2::Province*>{ { 1, nullptr }}));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getWarSupport(), 63);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByProMilitary)
+{
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("jingoism")).WillOnce(testing::Return(0.0f));
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pro_military")).WillOnce(testing::Return(16.0f));
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("anti_military")).WillOnce(testing::Return(0.0f));
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pacifism")).WillOnce(testing::Return(0.0f));
+	EXPECT_CALL(sourceCountry, getProvinces())
+		.WillOnce(testing::Return(std::map<int, Vic2::Province*>{ { 1, nullptr }}));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getWarSupport(), 63);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByAntiMilitary)
+{
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("jingoism")).WillOnce(testing::Return(0.0f));
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pro_military")).WillOnce(testing::Return(0.0f));
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("anti_military")).WillOnce(testing::Return(16.0f));
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pacifism")).WillOnce(testing::Return(0.0f));
+	EXPECT_CALL(sourceCountry, getProvinces())
+		.WillOnce(testing::Return(std::map<int, Vic2::Province*>{ { 1, nullptr }}));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getWarSupport(), 57);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByPacifism)
+{
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("jingoism")).WillOnce(testing::Return(0.0f));
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pro_military")).WillOnce(testing::Return(0.0f));
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("anti_military")).WillOnce(testing::Return(0.0f));
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pacifism")).WillOnce(testing::Return(8.0f));
+	EXPECT_CALL(sourceCountry, getProvinces())
+		.WillOnce(testing::Return(std::map<int, Vic2::Province*>{ { 1, nullptr }}));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getWarSupport(), 57);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByRevanchism)
+{
+	EXPECT_CALL(sourceCountry, getRevanchism()).WillOnce(testing::Return(100));
+	EXPECT_CALL(sourceCountry, getProvinces())
+		.WillOnce(testing::Return(std::map<int, Vic2::Province*>{ { 1, nullptr }}));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getWarSupport(), 80);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByWarExhaustion)
+{
+	EXPECT_CALL(sourceCountry, getWarExhaustion()).WillOnce(testing::Return(50));
+	EXPECT_CALL(sourceCountry, getProvinces())
+		.WillOnce(testing::Return(std::map<int, Vic2::Province*>{ { 1, nullptr }}));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getWarSupport(), 40);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, warSupportHasMinimumOfFifteen)
+{
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("jingoism")).WillOnce(testing::Return(0.0f));
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pro_military")).WillOnce(testing::Return(0.0f));
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("anti_military")).WillOnce(testing::Return(80.0f));
+	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pacifism")).WillOnce(testing::Return(80.0f));
+	EXPECT_CALL(sourceCountry, getWarExhaustion()).WillOnce(testing::Return(50));
+	EXPECT_CALL(sourceCountry, getProvinces())
+		.WillOnce(testing::Return(std::map<int, Vic2::Province*>{ { 1, nullptr }}));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getWarSupport(), 15);
 }

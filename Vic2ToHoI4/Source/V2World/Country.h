@@ -85,17 +85,17 @@ class Country: commonItems::parser
 		std::set<std::string> getInventions() const { return discoveredInventions; }
 		virtual std::string getGovernment() const { return government; }
 		std::set<std::string> getFlags() const { return flags; }
-		date getLastElection() const { return lastElection; }
+		virtual date getLastElection() const { return lastElection; }
 		virtual int getCapital() const { return capital; }
 		std::set<std::string> getTechs() const { return techs; }
 		virtual const ConverterColor::Color& getColor() const { return color; }
 		std::vector<const Army*> getArmies() const { return armies; }
 		std::vector<const Leader*> getLeaders() const { return leaders; }
-		double getRevanchism() const { return revanchism; }
-		double getWarExhaustion() const { return warExhaustion; }
+		virtual double getRevanchism() const { return revanchism; }
+		virtual double getWarExhaustion() const { return warExhaustion; }
 		double getBadBoy() const { return badboy; }
 		double getPrestige() const { return prestige; }
-		std::map<int, Province*> getProvinces() const { return provinces; }
+		virtual std::map<int, Province*> getProvinces() const { return provinces; }
 		std::vector<Province*> getCores() const { return cores; }
 		bool isEmpty() const { return ((cores.size() == 0) && (provinces.size() == 0)); }
 		bool isCivilized() const { return civilized; }
@@ -113,7 +113,7 @@ class Country: commonItems::parser
 		bool hasCoreOnCapital() const;
 		std::vector<std::string> getShipNames(std::string category) const;
 		double getAverageMilitancy() const;
-		float getAverageIssueSupport(const std::string& issueName) const;
+		virtual float getAverageIssueSupport(const std::string& issueName) const;
 
 	private:
 		void setLocalisationName(const std::string& language, const std::string& name);

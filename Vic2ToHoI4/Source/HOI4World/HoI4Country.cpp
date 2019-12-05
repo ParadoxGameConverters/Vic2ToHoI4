@@ -62,7 +62,7 @@ HoI4::Country::Country(
 		warSupport += static_cast<int>(
 			(warAttitude * 0.375)
 			+ (sourceCountry.getRevanchism() / 5.0)
-			- (sourceCountry.getWarExhaustion() / 100.0 / 2.5)
+			- (sourceCountry.getWarExhaustion() / 2.5)
 		);
 		if (warSupport < 15)
 		{
