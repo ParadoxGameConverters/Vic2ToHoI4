@@ -31,4 +31,5 @@ class mockVic2Country: public Vic2::Country
 		MOCK_METHOD(double, getWarExhaustion, (), (const, override));
 		MOCK_METHOD(float, getAverageIssueSupport, (const std::string& issueName), (const, override));
 		MOCK_METHOD((std::map<int, Vic2::Province*>), getProvinces, (), (const, override));
+		MOCK_METHOD(bool, isAtWar, (), (const, override));
 };

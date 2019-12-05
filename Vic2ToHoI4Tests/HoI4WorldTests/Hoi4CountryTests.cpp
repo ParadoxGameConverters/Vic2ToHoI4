@@ -49,6 +49,7 @@ HoI4World_HoI4CountryTests::HoI4World_HoI4CountryTests()
 	ON_CALL(sourceCountry, getAverageIssueSupport("pro_military")).WillByDefault(testing::Return(0.0f));
 	ON_CALL(sourceCountry, getAverageIssueSupport("anti_military")).WillByDefault(testing::Return(0.0f));
 	ON_CALL(sourceCountry, getAverageIssueSupport("pacifism")).WillByDefault(testing::Return(0.0f));
+	ON_CALL(sourceCountry, isAtWar()).WillByDefault(testing::Return(false));
 }
 
 
@@ -1313,4 +1314,321 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportHasMinimumOfFifteen)
 	);
 
 	ASSERT_EQ(theCountry.getWarSupport(), 15);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDefaultsToVolunteerOnly)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getMobilizationLaw(), "volunteer_only");
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, mobilizationLawIncreasesIfRulingPartyJingoistic)
+{
+	std::stringstream partyInput;
+	partyInput << "name = testParty\n";
+	partyInput << "ideology = testSourceIdeology\n";
+	partyInput << "war_policy = jingoism";
+	Vic2::Party testParty(partyInput);
+
+	std::vector<Vic2::Party> testParties{ testParty };
+	EXPECT_CALL(
+		sourceCountry,
+		getRulingParty(testParties)
+	).WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	mockVic2World mockSourceWorld;
+	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
+
+	mockGovernmentMapper mockGovernmentMap;
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+		.WillOnce(testing::Return("testGovernmentIdeology")
+		);
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+		.WillOnce(testing::Return("testLeaderIdeology")
+		);
+
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap);
+
+	ASSERT_EQ(theCountry.getMobilizationLaw(), "limited_conscription");
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDecreasesIfRulingPartyPacifistic)
+{
+	std::stringstream partyInput;
+	partyInput << "name = testParty\n";
+	partyInput << "ideology = testSourceIdeology\n";
+	partyInput << "war_policy = pacifism";
+	Vic2::Party testParty(partyInput);
+
+	std::vector<Vic2::Party> testParties{ testParty };
+	EXPECT_CALL(
+		sourceCountry,
+		getRulingParty(testParties)
+	).WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	mockVic2World mockSourceWorld;
+	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
+
+	mockGovernmentMapper mockGovernmentMap;
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+		.WillOnce(testing::Return("testGovernmentIdeology")
+		);
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+		.WillOnce(testing::Return("testLeaderIdeology")
+		);
+
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap);
+
+	ASSERT_EQ(theCountry.getMobilizationLaw(), "disarmed_nation");
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, economicLawDefaultsToCivilian)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getEconomicLaw(), "civilian_economy");
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfAtWar)
+{
+	EXPECT_CALL(sourceCountry, isAtWar()).WillOnce(testing::Return(true));
+
+	std::stringstream partyInput;
+	partyInput << "name = testParty\n";
+	partyInput << "ideology = testSourceIdeology\n";
+	partyInput << "war_policy = jingoism";
+	Vic2::Party testParty(partyInput);
+
+	std::vector<Vic2::Party> testParties{ testParty };
+	EXPECT_CALL(
+		sourceCountry,
+		getRulingParty(testParties)
+	).WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	mockVic2World mockSourceWorld;
+	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
+
+	mockGovernmentMapper mockGovernmentMap;
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+		.WillOnce(testing::Return("testGovernmentIdeology")
+		);
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+		.WillOnce(testing::Return("testLeaderIdeology")
+		);
+
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap);
+
+	ASSERT_EQ(theCountry.getEconomicLaw(), "low_economic_mobilisation");
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfFascist)
+{
+	EXPECT_CALL(sourceCountry, isAtWar()).WillOnce(testing::Return(true));
+
+	std::stringstream partyInput;
+	partyInput << "name = testParty\n";
+	partyInput << "ideology = fascism\n";
+	partyInput << "war_policy = jingoism";
+	Vic2::Party testParty(partyInput);
+
+	std::vector<Vic2::Party> testParties{ testParty };
+	EXPECT_CALL(
+		sourceCountry,
+		getRulingParty(testParties)
+	).WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	mockVic2World mockSourceWorld;
+	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
+
+	mockGovernmentMapper mockGovernmentMap;
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getIdeologyForCountry("TAG", "testGovernment", "fascism"))
+		.WillOnce(testing::Return("fascism")
+		);
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getLeaderIdeologyForCountry("TAG", "testGovernment", "fascism"))
+		.WillOnce(testing::Return("fascism")
+		);
+
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap);
+
+	ASSERT_EQ(theCountry.getEconomicLaw(), "partial_economic_mobilisation");
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, tradeLawDefaultsToExport)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getTradeLaw(), "export_focus");
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfFascist)
+{
+	EXPECT_CALL(sourceCountry, isAtWar()).WillOnce(testing::Return(true));
+
+	std::stringstream partyInput;
+	partyInput << "name = testParty\n";
+	partyInput << "ideology = fascism\n";
+	partyInput << "war_policy = jingoism";
+	Vic2::Party testParty(partyInput);
+
+	std::vector<Vic2::Party> testParties{ testParty };
+	EXPECT_CALL(
+		sourceCountry,
+		getRulingParty(testParties)
+	).WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	mockVic2World mockSourceWorld;
+	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
+
+	mockGovernmentMapper mockGovernmentMap;
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getIdeologyForCountry("TAG", "testGovernment", "fascism"))
+		.WillOnce(testing::Return("fascism")
+		);
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getLeaderIdeologyForCountry("TAG", "testGovernment", "fascism"))
+		.WillOnce(testing::Return("fascism")
+		);
+
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap);
+
+	ASSERT_EQ(theCountry.getTradeLaw(), "limited_exports");
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfRadical)
+{
+	EXPECT_CALL(sourceCountry, isAtWar()).WillOnce(testing::Return(true));
+
+	std::stringstream partyInput;
+	partyInput << "name = testParty\n";
+	partyInput << "ideology = radical\n";
+	partyInput << "war_policy = jingoism";
+	Vic2::Party testParty(partyInput);
+
+	std::vector<Vic2::Party> testParties{ testParty };
+	EXPECT_CALL(
+		sourceCountry,
+		getRulingParty(testParties)
+	).WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	mockVic2World mockSourceWorld;
+	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
+
+	mockGovernmentMapper mockGovernmentMap;
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getIdeologyForCountry("TAG", "testGovernment", "radical"))
+		.WillOnce(testing::Return("radical")
+		);
+	EXPECT_CALL(
+		mockGovernmentMap,
+		getLeaderIdeologyForCountry("TAG", "testGovernment", "radical"))
+		.WillOnce(testing::Return("radical")
+		);
+
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap);
+
+	ASSERT_EQ(theCountry.getTradeLaw(), "free_trade");
 }

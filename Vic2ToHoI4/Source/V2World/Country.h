@@ -102,7 +102,7 @@ class Country: commonItems::parser
 		virtual bool isHuman() const { return human; }
 		virtual std::map<std::string, double> getUpperHouseComposition() const { return upperHouseComposition; }
 		std::vector<War> getWars() const { return wars; }
-		bool isAtWar() const { return atWar; }
+		virtual bool isAtWar() const { return atWar; }
 
 		virtual std::optional<std::string> getName(const std::string& language) const;
 		std::optional<std::string> getAdjective(const std::string& language) const;

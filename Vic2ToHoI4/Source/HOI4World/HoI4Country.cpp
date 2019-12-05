@@ -79,7 +79,6 @@ HoI4::Country::Country(
 		}
 	}
 
-	convertLaws();
 	convertLeaders(theGraphics);
 	convertRelations(countryMap);
 	convertWars(*srcCountry, countryMap);
@@ -156,6 +155,8 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld, const gove
 		auto trimmedName = partyName.substr(4, partyName.size());
 		HoI4Localisation::addPoliticalPartyLocalisation(partyName, tag + "_" + trimmedName + "_party");
 	}
+
+	convertLaws();
 }
 
 
