@@ -769,7 +769,7 @@ void HoI4::World::convertTechs()
 
 	for (auto country: countries)
 	{
-		country.second->convertTechnology(techMap);
+		country.second->convertTechnology(*techMap);
 	}
 }
 

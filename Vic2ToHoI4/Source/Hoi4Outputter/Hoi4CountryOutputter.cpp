@@ -342,8 +342,11 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 	outputThreat(output, theCountry.getThreat());
 	outputWars(output, theCountry.getWars());
 	outputOOBLines(output, tag);
-	theCountry.getTechnologies().outputTechnology(output);
-	theCountry.getTechnologies().outputResearchBonuses(output);
+	if (theCountry.getTechnologies())
+	{
+		theCountry.getTechnologies()->outputTechnology(output);
+		theCountry.getTechnologies()->outputResearchBonuses(output);
+	}
 	outputConvoys(output, theCountry.getConvoys());
 	outputEquipmentStockpile(output, theCountry.getEquipmentStockpile(), tag);
 	outputPuppets(
@@ -743,7 +746,6 @@ void outputCommanders(
 void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates, const HoI4::Country& theCountry)
 {
 	const auto& tag = theCountry.getTag();
-	const auto& technologies = theCountry.getTechnologies();
 
 	std::ofstream output("output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_OOB.txt");
 	if (!output.is_open())
@@ -760,115 +762,120 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 		output << divisionTemplate;
 		output << "\n";
 	}
-	output << "### No BHU air forces ###\n";
-	output << "instant_effect = {\n";
-	if (technologies.hasTechnology("infantry_weapons1"))
+
+	const auto& technologies = theCountry.getTechnologies();
+	if (technologies)
 	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = infantry_equipment_1\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 5\n";
-		output << "\t\tprogress = 0.88\n";
-		output << "\t\tefficiency = 100\n";
-		output << "\t}\n";
-	}
-	else
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = infantry_equipment_0\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 5\n";
-		output << "\t\tprogress = 0.88\n";
-		output << "\t\tefficiency = 100\n";
-		output << "\t}\n";
-	}
-	if (technologies.hasTechnology("gw_artillery"))
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = artillery_equipment_1\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 2\n";
-		output << "\t\tprogress = 0.88\n";
-		output << "\t\tefficiency = 100\n";
-		output << "\t}\n";
-	}
-	if (technologies.hasTechnology("fighter1"))
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = fighter_equipment_1\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 5\n";
-		output << "\t\tprogress = 0.88\n";
-		output << "\t\tefficiency = 100\n";
-		output << "\t}\n";
-	}
-	else if (technologies.hasTechnology("early_fighter"))
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = fighter_equipment_0\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 5\n";
-		output << "\t\tprogress = 0.88\n";
-		output << "\t\tefficiency = 100\n";
-		output << "\t}\n";
-	}
-	if (technologies.hasTechnology("basic_destroyer"))
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = destroyer_2\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 3\n";
-		output << "\t\tprogress = 0.25\n";
-		output << "\t\tamount = 10\n";
-		output << "\t}\n";
-	}
-	else if (technologies.hasTechnology("early_destroyer"))
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = destroyer_1\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 3\n";
-		output << "\t\tprogress = 0.25\n";
-		output << "\t\tamount = 10\n";
-		output << "\t}\n";
-	}
-	if (technologies.hasTechnology("basic_battleship"))
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = battleship_2\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 8\n";
-		output << "\t\tprogress = 0.25\n";
-		output << "\t\tamount = 3\n";
-		output << "\t}\n";
-	}
-	else if (technologies.hasTechnology("early_battleship"))
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = battleship_1\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 8\n";
-		output << "\t\tprogress = 0.25\n";
-		output << "\t\tamount = 3\n";
-		output << "\t}\n";
+		output << "### No BHU air forces ###\n";
+		output << "instant_effect = {\n";
+		if (technologies->hasTechnology("infantry_weapons1"))
+		{
+			output << "\tadd_equipment_production = {\n";
+			output << "\t\tequipment = {\n";
+			output << "\t\t\ttype = infantry_equipment_1\n";
+			output << "\t\t\tcreator = \"" << tag << "\"\n";
+			output << "\t\t}\n";
+			output << "\t\trequested_factories = 5\n";
+			output << "\t\tprogress = 0.88\n";
+			output << "\t\tefficiency = 100\n";
+			output << "\t}\n";
+		}
+		else
+		{
+			output << "\tadd_equipment_production = {\n";
+			output << "\t\tequipment = {\n";
+			output << "\t\t\ttype = infantry_equipment_0\n";
+			output << "\t\t\tcreator = \"" << tag << "\"\n";
+			output << "\t\t}\n";
+			output << "\t\trequested_factories = 5\n";
+			output << "\t\tprogress = 0.88\n";
+			output << "\t\tefficiency = 100\n";
+			output << "\t}\n";
+		}
+		if (technologies->hasTechnology("gw_artillery"))
+		{
+			output << "\tadd_equipment_production = {\n";
+			output << "\t\tequipment = {\n";
+			output << "\t\t\ttype = artillery_equipment_1\n";
+			output << "\t\t\tcreator = \"" << tag << "\"\n";
+			output << "\t\t}\n";
+			output << "\t\trequested_factories = 2\n";
+			output << "\t\tprogress = 0.88\n";
+			output << "\t\tefficiency = 100\n";
+			output << "\t}\n";
+		}
+		if (technologies->hasTechnology("fighter1"))
+		{
+			output << "\tadd_equipment_production = {\n";
+			output << "\t\tequipment = {\n";
+			output << "\t\t\ttype = fighter_equipment_1\n";
+			output << "\t\t\tcreator = \"" << tag << "\"\n";
+			output << "\t\t}\n";
+			output << "\t\trequested_factories = 5\n";
+			output << "\t\tprogress = 0.88\n";
+			output << "\t\tefficiency = 100\n";
+			output << "\t}\n";
+		}
+		else if (technologies->hasTechnology("early_fighter"))
+		{
+			output << "\tadd_equipment_production = {\n";
+			output << "\t\tequipment = {\n";
+			output << "\t\t\ttype = fighter_equipment_0\n";
+			output << "\t\t\tcreator = \"" << tag << "\"\n";
+			output << "\t\t}\n";
+			output << "\t\trequested_factories = 5\n";
+			output << "\t\tprogress = 0.88\n";
+			output << "\t\tefficiency = 100\n";
+			output << "\t}\n";
+		}
+		if (technologies->hasTechnology("basic_destroyer"))
+		{
+			output << "\tadd_equipment_production = {\n";
+			output << "\t\tequipment = {\n";
+			output << "\t\t\ttype = destroyer_2\n";
+			output << "\t\t\tcreator = \"" << tag << "\"\n";
+			output << "\t\t}\n";
+			output << "\t\trequested_factories = 3\n";
+			output << "\t\tprogress = 0.25\n";
+			output << "\t\tamount = 10\n";
+			output << "\t}\n";
+		}
+		else if (technologies->hasTechnology("early_destroyer"))
+		{
+			output << "\tadd_equipment_production = {\n";
+			output << "\t\tequipment = {\n";
+			output << "\t\t\ttype = destroyer_1\n";
+			output << "\t\t\tcreator = \"" << tag << "\"\n";
+			output << "\t\t}\n";
+			output << "\t\trequested_factories = 3\n";
+			output << "\t\tprogress = 0.25\n";
+			output << "\t\tamount = 10\n";
+			output << "\t}\n";
+		}
+		if (technologies->hasTechnology("basic_battleship"))
+		{
+			output << "\tadd_equipment_production = {\n";
+			output << "\t\tequipment = {\n";
+			output << "\t\t\ttype = battleship_2\n";
+			output << "\t\t\tcreator = \"" << tag << "\"\n";
+			output << "\t\t}\n";
+			output << "\t\trequested_factories = 8\n";
+			output << "\t\tprogress = 0.25\n";
+			output << "\t\tamount = 3\n";
+			output << "\t}\n";
+		}
+		else if (technologies->hasTechnology("early_battleship"))
+		{
+			output << "\tadd_equipment_production = {\n";
+			output << "\t\tequipment = {\n";
+			output << "\t\t\ttype = battleship_1\n";
+			output << "\t\t\tcreator = \"" << tag << "\"\n";
+			output << "\t\t}\n";
+			output << "\t\trequested_factories = 8\n";
+			output << "\t\tprogress = 0.25\n";
+			output << "\t\tamount = 3\n";
+			output << "\t}\n";
+		}
 	}
 	output << "\tadd_equipment_production = {\n";
 	output << "\t\tequipment = {\n";

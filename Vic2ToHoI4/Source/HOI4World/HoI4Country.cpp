@@ -538,11 +538,11 @@ bool HoI4::Country::attemptToPutCapitalInAnyCored(const map<int, State>& allStat
 }
 
 
-void HoI4::Country::convertTechnology(std::unique_ptr<mappers::techMapper>& theTechMapper)
+void HoI4::Country::convertTechnology(const mappers::techMapper& theTechMapper)
 {
 	auto oldTechs = sourceCountry.getTechs();
 	auto oldInventions = sourceCountry.getInventions();
-	theTechnologies = std::make_unique<HoI4::technologies>(theTechMapper, oldTechs, oldInventions);
+	theTechnologies = HoI4::technologies(theTechMapper, oldTechs, oldInventions);
 }
 
 

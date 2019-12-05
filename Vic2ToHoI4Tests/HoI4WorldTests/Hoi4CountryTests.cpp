@@ -1632,3 +1632,63 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfRadical)
 
 	ASSERT_EQ(theCountry.getTradeLaw(), "free_trade");
 }
+
+
+TEST_F(HoI4World_HoI4CountryTests, technologyCountDefaultsToZero)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_EQ(theCountry.getTechnologyCount(), 0);
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, technologiesDefaultToNullopt)
+{
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	ASSERT_FALSE(theCountry.getTechnologies());
+}
+
+
+TEST_F(HoI4World_HoI4CountryTests, technologyCanBeConverted)
+{
+	EXPECT_CALL(sourceCountry, getTechs()).WillOnce(testing::Return(std::set<std::string>{"testTech"}));
+	EXPECT_CALL(sourceCountry, getInventions()).WillOnce(testing::Return(std::set<std::string>{"testInvention"}));
+
+	HoI4::Country theCountry(
+		"TAG",
+		&sourceCountry,
+		theNamesMapper,
+		theGraphicsMapper,
+		theCountryMapper,
+		*theFlagsToIdeasMapper
+	);
+
+	std::map<std::string, std::set<std::string>> techMap;
+	std::set<std::string> convertedTech{ "convertedTech" };
+	techMap.insert(std::make_pair("testTech", convertedTech));
+	mappers::techMapper theTechMapper(
+		techMap,
+		std::map<std::string, std::set<std::string>>{},
+		std::map<std::string, std::set<std::string>>{},
+		std::map<std::string, std::map<std::string, int>>{}
+	);
+	theCountry.convertTechnology(theTechMapper);
+
+	ASSERT_EQ(theCountry.getTechnologyCount(), 1);
+	ASSERT_TRUE(theCountry.getTechnologies()->hasTechnology("convertedTech"));
+}

@@ -82,12 +82,12 @@ class Country: commonItems::parser
 		virtual std::string getPrimaryCultureGroup() const { return primaryCultureGroup; }
 		std::set<std::string> getAcceptedCultures() const { return acceptedCultures; }
 		bool isAnAcceptedCulture(const std::string& culture) const { return (acceptedCultures.count(culture) > 0); }
-		std::set<std::string> getInventions() const { return discoveredInventions; }
+		virtual std::set<std::string> getInventions() const { return discoveredInventions; }
 		virtual std::string getGovernment() const { return government; }
 		std::set<std::string> getFlags() const { return flags; }
 		virtual date getLastElection() const { return lastElection; }
 		virtual int getCapital() const { return capital; }
-		std::set<std::string> getTechs() const { return techs; }
+		virtual std::set<std::string> getTechs() const { return techs; }
 		virtual const ConverterColor::Color& getColor() const { return color; }
 		std::vector<const Army*> getArmies() const { return armies; }
 		std::vector<const Leader*> getLeaders() const { return leaders; }

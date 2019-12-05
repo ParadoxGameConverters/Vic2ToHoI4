@@ -110,7 +110,7 @@ class Country
 		void convertConvoys(const UnitMappings& unitMap);
 		void convertAirForce(const UnitMappings& unitMap);
 		void convertArmies(const militaryMappings& theMilitaryMappings);
-		void convertTechnology(std::unique_ptr<mappers::techMapper>& theTechMapper);
+		void convertTechnology(const mappers::techMapper& theTechMapper);
 		void addState(const State& state);
 		void calculateIndustry(const std::map<int, State>& allStates);
 		void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
@@ -160,8 +160,18 @@ class Country
 		[[nodiscard]] const std::string& getEconomicLaw() const { return economicLaw; }
 		[[nodiscard]] const std::string& getTradeLaw() const { return tradeLaw; }
 
-		[[nodiscard]] int getTechnologyCount() const { return theTechnologies->getTechnologyCount(); }
-		[[nodiscard]] const technologies& getTechnologies() const { return *theTechnologies; }
+		[[nodiscard]] int getTechnologyCount() const
+		{
+			if (theTechnologies)
+			{
+				return theTechnologies->getTechnologyCount();
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		[[nodiscard]] const std::optional<technologies>& getTechnologies() const { return theTechnologies; }
 		[[nodiscard]] const std::set<std::string>& getIdeas() const { return ideas; }
 
 		[[nodiscard]] double getMilitaryFactories() const { return militaryFactories; }
@@ -253,7 +263,7 @@ class Country
 		std::string economicLaw = "civilian_economy";
 		std::string tradeLaw = "export_focus";
 
-		std::unique_ptr<technologies> theTechnologies;
+		std::optional<technologies> theTechnologies;
 		std::set<std::string> ideas;
 		std::unique_ptr<HoI4FocusTree> nationalFocus;
 
