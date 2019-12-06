@@ -1993,4 +1993,16 @@ spriteTypes = {
 		name = "GFX_idea_culture_tupinamba"
 		texturefile = "gfx/interface/culture/culture_tupinamba.dds"
 	}
+	spriteType = {
+		name = "GFX_idea_culture_yangichi"
+		texturefile = "gfx/interface/culture/culture_yangichi.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_janubi"
+		texturefile = "gfx/interface/culture/culture_janubi.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_afrigi"
+		texturefile = "gfx/interface/culture/culture_afrigi.dds"
+	}
 }
