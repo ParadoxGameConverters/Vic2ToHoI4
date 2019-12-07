@@ -44,6 +44,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 Vic2::World::World(const std::string& filename)
 {
+	theCultureGroups.init();
 	issuesInstance.instantiate();
 	theStateDefinitions.initialize();
 	inventions theInventions;

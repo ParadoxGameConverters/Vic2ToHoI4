@@ -539,3 +539,9 @@ float Vic2::Country::getAverageIssueSupport(const std::string& issueName) const
 
 	return totalSupport / totalPopulation;
 }
+
+
+bool Vic2::operator==(const Vic2::Country& one, const Vic2::Country& other)
+{
+	return one.getTag() == other.getTag();
+}

@@ -140,7 +140,7 @@ partyMappings::partyMappings(std::istream& theStream)
 }
 
 
-governmentMapper::governmentMapper() noexcept
+void governmentMapper::init()
 {
 	registerKeyword(std::regex("government_mappings"), [this](const std::string& unused, std::istream& theStream){
 		governmentMappings mappings(theStream);
@@ -157,42 +157,43 @@ governmentMapper::governmentMapper() noexcept
 
 
 std::string governmentMapper::getIdeologyForCountry(
-	const Vic2::Country& country,
+	const std::string& sourceTag,
+	const std::string& sourceGovernment,
 	const std::string& Vic2RulingIdeology
 ) const
 {
 	std::string ideology = "neutrality";
 	for (auto mapping: governmentMap)
 	{
-		if (governmentMatches(mapping, country.getGovernment()) &&	rulingIdeologyMatches(mapping, Vic2RulingIdeology))
+		if (governmentMatches(mapping, sourceGovernment) && rulingIdeologyMatches(mapping, Vic2RulingIdeology))
 		{
 			ideology = mapping.HoI4GovernmentIdeology;
 			break;
 		}
 	}
 
-	LOG(LogLevel::Debug)
-		<< "Mapped " << country.getTag() << " government " << country.getGovernment() << " to " << ideology;
+	LOG(LogLevel::Debug) << "Mapped " << sourceTag << " government " << sourceGovernment << " to " << ideology;
 	return ideology;
 }
 
 
 std::string governmentMapper::getLeaderIdeologyForCountry(
-	const Vic2::Country& country,
+	const std::string& sourceTag,
+	const std::string& sourceGovernment,
 	const std::string& Vic2RulingIdeology
 ) const
 {
 	std::string ideology = "neutrality";
 	for (auto mapping: governmentMap)
 	{
-		if (governmentMatches(mapping, country.getGovernment()) &&	rulingIdeologyMatches(mapping, Vic2RulingIdeology))
+		if (governmentMatches(mapping, sourceGovernment) &&	rulingIdeologyMatches(mapping, Vic2RulingIdeology))
 		{
 			ideology = mapping.HoI4LeaderIdeology;
 			break;
 		}
 	}
 
-	LOG(LogLevel::Debug) << "Mapped " << country.getTag() << " leader " << country.getGovernment() << " to " << ideology;
+	LOG(LogLevel::Debug) << "Mapped " << sourceTag << " leader " << sourceGovernment << " to " << ideology;
 	return ideology;
 }
 

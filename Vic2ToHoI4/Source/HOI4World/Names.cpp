@@ -153,8 +153,7 @@ cultureGroup::cultureGroup(std::istream& theStream)
 }
 
 
-HoI4::namesMapper::namesMapper() noexcept:
-	rng()
+void HoI4::namesMapper::init()
 {
 	LOG(LogLevel::Info) << "Parsing names";
 

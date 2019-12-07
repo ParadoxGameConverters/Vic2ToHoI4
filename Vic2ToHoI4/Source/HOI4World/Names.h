@@ -41,8 +41,10 @@ namespace HoI4
 class namesMapper: commonItems::parser
 {
 	public:
-		namesMapper() noexcept;
-		std::optional<std::vector<std::string>> getMaleNames(const std::string& culture) const;
+		namesMapper() noexcept {};
+		void init();
+
+		virtual std::optional<std::vector<std::string>> getMaleNames(const std::string& culture) const;
 		std::optional<std::vector<std::string>> getFemaleNames(const std::string& culture) const;
 		std::optional<std::vector<std::string>> getSurnames(const std::string& culture) const;
 		std::optional<std::vector<std::string>> getFemaleSurnames(const std::string& culture) const;

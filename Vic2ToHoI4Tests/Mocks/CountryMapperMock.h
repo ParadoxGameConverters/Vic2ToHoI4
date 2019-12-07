@@ -29,5 +29,5 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 class mockCountryMapper: public CountryMapper
 {
 	public:
-		MOCK_CONST_METHOD1(getHoI4Tag, std::optional<std::string>(const std::string&));
+		MOCK_METHOD(std::optional<std::string>, getHoI4Tag, (const std::string&), (const, override));
 };

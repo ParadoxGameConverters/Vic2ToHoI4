@@ -25,9 +25,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-HoI4::technologies::technologies(std::unique_ptr<mappers::techMapper>& theTechMapper, const std::set<std::string>& oldTechs, const std::set<std::string>& oldInventions)
+HoI4::technologies::technologies(
+	const mappers::techMapper& theTechMapper,
+	const std::set<std::string>& oldTechs,
+	const std::set<std::string>& oldInventions
+)
 {
-	for (auto techMapping: theTechMapper->getAllTechMappings())
+	for (auto techMapping: theTechMapper.getAllTechMappings())
 	{
 		if ((oldTechs.count(techMapping.first) > 0) || (oldInventions.count(techMapping.first) > 0))
 		{
@@ -38,7 +42,7 @@ HoI4::technologies::technologies(std::unique_ptr<mappers::techMapper>& theTechMa
 		}
 	}
 
-	for (auto techMapping: theTechMapper->getAllNonMtgNavalTechMappings())
+	for (auto techMapping: theTechMapper.getAllNonMtgNavalTechMappings())
 	{
 		if ((oldTechs.count(techMapping.first) > 0) || (oldInventions.count(techMapping.first) > 0))
 		{
@@ -49,7 +53,7 @@ HoI4::technologies::technologies(std::unique_ptr<mappers::techMapper>& theTechMa
 		}
 	}
 
-	for (auto techMapping: theTechMapper->getAllMtgNavalTechMappings())
+	for (auto techMapping: theTechMapper.getAllMtgNavalTechMappings())
 	{
 		if ((oldTechs.count(techMapping.first) > 0) || (oldInventions.count(techMapping.first) > 0))
 		{
@@ -60,7 +64,7 @@ HoI4::technologies::technologies(std::unique_ptr<mappers::techMapper>& theTechMa
 		}
 	}
 
-	for (auto bonusMapping: theTechMapper->getAllResearchBonuses())
+	for (auto bonusMapping: theTechMapper.getAllResearchBonuses())
 	{
 		if ((oldTechs.count(bonusMapping.first) > 0) || (oldInventions.count(bonusMapping.first) > 0))
 		{

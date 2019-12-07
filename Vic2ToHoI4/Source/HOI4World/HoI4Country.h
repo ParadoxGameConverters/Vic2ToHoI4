@@ -58,6 +58,7 @@ class techMapper;
 class CountryMapper;
 class governmentMapper;
 class graphicsMapper;
+class provinceMapper;
 
 
 class Date;
@@ -86,6 +87,7 @@ class Country
 		~Country() = default;
 
 		void determineCapitalFromVic2(
+			const provinceMapper& theProvinceMapper,
 			const std::map<int, int>& provinceToStateIDMap,
 			const std::map<int, State>& allStates
 		);
@@ -108,7 +110,7 @@ class Country
 		void convertConvoys(const UnitMappings& unitMap);
 		void convertAirForce(const UnitMappings& unitMap);
 		void convertArmies(const militaryMappings& theMilitaryMappings);
-		void convertTechnology(std::unique_ptr<mappers::techMapper>& theTechMapper);
+		void convertTechnology(const mappers::techMapper& theTechMapper);
 		void addState(const State& state);
 		void calculateIndustry(const std::map<int, State>& allStates);
 		void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
@@ -142,7 +144,7 @@ class Country
 		[[nodiscard]] bool hasProvinces() const { return !provinces.empty(); }
 		[[nodiscard]] const std::set<int>& getProvinces() const { return provinces; }
 		[[nodiscard]] const std::set<int>& getStates() const { return states; }
-		[[nodiscard]] int getCapitalStateNum() const { return capitalState; }
+		[[nodiscard]] std::optional<int> getCapitalState() const { return capitalState; }
 		[[nodiscard]] std::optional<int> getCapitalProvince() const { return capitalProvince; }
 
 		[[nodiscard]] const std::string& getGovernmentIdeology() const { return governmentIdeology; }
@@ -158,8 +160,18 @@ class Country
 		[[nodiscard]] const std::string& getEconomicLaw() const { return economicLaw; }
 		[[nodiscard]] const std::string& getTradeLaw() const { return tradeLaw; }
 
-		[[nodiscard]] int getTechnologyCount() const { return theTechnologies->getTechnologyCount(); }
-		[[nodiscard]] const technologies& getTechnologies() const { return *theTechnologies; }
+		[[nodiscard]] int getTechnologyCount() const
+		{
+			if (theTechnologies)
+			{
+				return theTechnologies->getTechnologyCount();
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		[[nodiscard]] const std::optional<technologies>& getTechnologies() const { return theTechnologies; }
 		[[nodiscard]] const std::set<std::string>& getIdeas() const { return ideas; }
 
 		[[nodiscard]] double getMilitaryFactories() const { return militaryFactories; }
@@ -199,16 +211,30 @@ class Country
 		void convertRelations(const CountryMapper& countryMap);
 		void convertWars(const Vic2::Country& sourceCountry, const CountryMapper& countryMap);
 
-		[[nodiscard]] bool isStateValidForCapital(const int& stateNum, const std::map<int, State>& allStates) const;
-		[[nodiscard]] bool isThisStateOwnedByUs(const State& state) const;
-		[[nodiscard]] bool isThisStateACoreWhileWeOwnNoStates(const State& state) const;
-		void findBestCapital(const map<int, State>& allStates);
+		bool attemptToPutCapitalInPreferredNonWastelandOwned(
+			const provinceMapper& theProvinceMapper,
+			const map<int, int>& provinceToStateIDMap,
+			const map<int, State>& allStates
+		);
 		bool attemptToPutCapitalInNonWastelandOwned(const map<int, State>& allStates);
-		bool attemptToPutCapitalInNonWastelandCored(const map<int, State>& allStates);
+		bool attemptToPutCapitalInPreferredWastelandOwned(
+			const provinceMapper& theProvinceMapper,
+			const std::map<int, int>& provinceToStateIDMap,
+			const map<int, State>& allStates
+		);
 		bool attemptToPutCapitalInAnyOwned(const map<int, State>& allStates);
+		bool attemptToPutCapitalInPreferredNonWastelandCored(
+			const provinceMapper& theProvinceMapper,
+			const std::map<int, int>& provinceToStateIDMap,
+			const map<int, State>& allStates
+		);
+		bool attemptToPutCapitalInAnyNonWastelandCored(const map<int, State>& allStates);
+		bool attemptToPutCapitalInPreferredWastelandCored(
+			const provinceMapper& theProvinceMapper,
+			const std::map<int, int>& provinceToStateIDMap,
+			const map<int, State>& allStates
+		);
 		bool attemptToPutCapitalInAnyCored(const map<int, State>& allStates);
-
-		void addProvince(const int& province);
 
 		std::string tag;
 		const Vic2::Country& sourceCountry;
@@ -222,14 +248,14 @@ class Country
 
 		std::set<int> provinces;
 		std::set<int> states;
-		int capitalState = 0;
+		std::optional<int> capitalState;
 		std::optional<int> capitalProvince;
 
 		std::string governmentIdeology = "neutrality";
 		std::string leaderIdeology = "conservatism_neutral";
 		Vic2::Party rulingParty;
 		std::set<Vic2::Party, std::function<bool(const Vic2::Party&, const Vic2::Party&)>> parties;
-		std::map<std::string, int> ideologySupport;
+		std::map<std::string, int> ideologySupport{ std::make_pair("neutrality", 100) };
 		date lastElection;
 		int stability = 50;
 		int warSupport = 50;
@@ -237,7 +263,7 @@ class Country
 		std::string economicLaw = "civilian_economy";
 		std::string tradeLaw = "export_focus";
 
-		std::unique_ptr<technologies> theTechnologies;
+		std::optional<technologies> theTechnologies;
 		std::set<std::string> ideas;
 		std::unique_ptr<HoI4FocusTree> nationalFocus;
 

@@ -10,6 +10,7 @@
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/GovernmentMapper.h"
 #include "../Mappers/GraphicsMapper.h"
+#include "../Mappers/Provinces/ProvinceMapper.h"
 #include "../Mappers/TechMapper.h"
 #include "../V2World/Country.h"
 #include "../V2World/Relations.h"
@@ -41,18 +42,10 @@ HoI4::Country::Country(
 	{
 		graphicalCulture = *possibleGraphicalCulture;
 	}
-	else
-	{
-		graphicalCulture = "western_european_gfx";
-	}
 	auto possibleGraphicalCulture2d = theGraphics.get2dGraphicalCulture(sourceCountry.getPrimaryCultureGroup());
 	if (possibleGraphicalCulture2d)
 	{
 		graphicalCulture2d = *possibleGraphicalCulture2d;
-	}
-	else
-	{
-		graphicalCulture2d = "western_european_2d";
 	}
 	lastElection = sourceCountry.getLastElection();
 	initIdeas(theNames);
@@ -69,7 +62,7 @@ HoI4::Country::Country(
 		warSupport += static_cast<int>(
 			(warAttitude * 0.375)
 			+ (sourceCountry.getRevanchism() / 5.0)
-			- (sourceCountry.getWarExhaustion() / 100.0 / 2.5)
+			- (sourceCountry.getWarExhaustion() / 2.5)
 		);
 		if (warSupport < 15)
 		{
@@ -86,7 +79,6 @@ HoI4::Country::Country(
 		}
 	}
 
-	convertLaws();
 	convertLeaders(theGraphics);
 	convertRelations(countryMap);
 	convertWars(*srcCountry, countryMap);
@@ -143,8 +135,19 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld, const gove
 	}
 
 	rulingParty = *possibleRulingParty;
-	governmentIdeology = governmentMap.getIdeologyForCountry(sourceCountry, rulingParty.getIdeology());
-	leaderIdeology = governmentMap.getLeaderIdeologyForCountry(sourceCountry, rulingParty.getIdeology());
+	auto sourceTag = sourceCountry.getTag();
+	auto sourceGovernment = sourceCountry.getGovernment();
+	auto rulingIdeology = rulingParty.getIdeology();
+	governmentIdeology = governmentMap.getIdeologyForCountry(
+		sourceTag,
+		sourceGovernment,
+		rulingIdeology
+	);
+	leaderIdeology = governmentMap.getLeaderIdeologyForCountry(
+		sourceTag,
+		sourceGovernment,
+		rulingIdeology
+	);
 	parties = sourceCountry.getActiveParties(sourceWorld.getParties());
 	for (const auto& party: parties)
 	{
@@ -152,6 +155,8 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld, const gove
 		auto trimmedName = partyName.substr(4, partyName.size());
 		HoI4Localisation::addPoliticalPartyLocalisation(partyName, tag + "_" + trimmedName + "_party");
 	}
+
+	convertLaws();
 }
 
 
@@ -303,87 +308,66 @@ void HoI4::Country::convertWars(const Vic2::Country& sourceCountry, const Countr
 
 
 void HoI4::Country::determineCapitalFromVic2(
-	const map<int, int>& provinceToStateIDMap,
+	const provinceMapper& theProvinceMapper,
+	const std::map<int, int>& provinceToStateIDMap,
 	const map<int, State>& allStates
-) {
-	const auto oldCapital = sourceCountry.getCapital();
-	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
-	{
-		const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
-		if (
-			capitalStateMapping != provinceToStateIDMap.end() &&
-			isStateValidForCapital(capitalStateMapping->second, allStates)
-			)
-		{
-			capitalState = capitalStateMapping->second;
-			capitalProvince = (*mapping)[0];
-			return;
-		}
-	}
-
-	findBestCapital(allStates);
-}
-
-
-bool HoI4::Country::isStateValidForCapital(const int& stateNum, const map<int, State>& allStates) const
+)
 {
-	const auto state = allStates.find(stateNum)->second;
-	return (isThisStateOwnedByUs(state) || isThisStateACoreWhileWeOwnNoStates(state)) && !state.isImpassable();
-}
-
-
-bool HoI4::Country::isThisStateOwnedByUs(const State& state) const
-{
-	return state.getOwner() == tag;
-}
-
-
-bool HoI4::Country::isThisStateACoreWhileWeOwnNoStates(const State& state) const
-{
-	for (const auto& core: state.getCores())
-	{
-		if (core == tag)
-		{
-			return true;
-		}
-	}
-
-	return false;
-}
-
-
-void HoI4::Country::findBestCapital(const map<int, State>& allStates)
-{
-	bool success = attemptToPutCapitalInNonWastelandOwned(allStates);
+	bool success = attemptToPutCapitalInPreferredNonWastelandOwned(theProvinceMapper, provinceToStateIDMap, allStates);
 	if (!success)
 	{
-		attemptToPutCapitalInNonWastelandCored(allStates);
+		success = attemptToPutCapitalInNonWastelandOwned(allStates);
 	}
-	else if (!success)
+	if (!success)
 	{
-		attemptToPutCapitalInAnyOwned(allStates);
+		success = attemptToPutCapitalInPreferredWastelandOwned(theProvinceMapper, provinceToStateIDMap, allStates);
 	}
-	else if (!success)
+	if (!success)
 	{
-		attemptToPutCapitalInAnyCored(allStates);
+		success = attemptToPutCapitalInAnyOwned(allStates);
 	}
-	else if (!success)
+	if (!success)
 	{
-		capitalState = 0;
+		success = attemptToPutCapitalInPreferredNonWastelandCored(theProvinceMapper, provinceToStateIDMap, allStates);
+	}
+	if (!success)
+	{
+		success = attemptToPutCapitalInAnyNonWastelandCored(allStates);
+	}
+	if (!success)
+	{
+		success = attemptToPutCapitalInPreferredWastelandCored(theProvinceMapper, provinceToStateIDMap, allStates);
+	}
+	if (!success)
+	{
+		success = attemptToPutCapitalInAnyCored(allStates);
+	}
+	if (!success)
+	{
 		LOG(LogLevel::Warning) << "Could not properly set capital for " << tag;
 	}
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInNonWastelandOwned(const map<int, State>& allStates)
+bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandOwned(
+	const provinceMapper& theProvinceMapper,
+	const map<int, int>& provinceToStateIDMap,
+	const map<int, State>& allStates
+)
 {
-	for (auto ownedStateNum: states)
+	const auto oldCapital = sourceCountry.getCapital();
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
 	{
-		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
+		if (
+			const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+			capitalStateMapping != provinceToStateIDMap.end()
+			)
 		{
-			if ((state->second.getOwner() == tag) && isStateValidForCapital(ownedStateNum, allStates))
+			const auto& state = allStates.find(capitalStateMapping->second)->second;
+			if ((state.getOwner() == tag) && !state.isImpassable())
 			{
-				capitalState = ownedStateNum;
+				capitalState = capitalStateMapping->second;
+				capitalProvince = (*mapping)[0];
 				return true;
 			}
 		}
@@ -393,15 +377,45 @@ bool HoI4::Country::attemptToPutCapitalInNonWastelandOwned(const map<int, State>
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInNonWastelandCored(const map<int, State>& allStates)
+
+bool HoI4::Country::attemptToPutCapitalInNonWastelandOwned(const map<int, State>& allStates)
 {
-	for (auto ownedStateNum: states)
+	for (auto ownedStateNum : states)
 	{
 		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
 		{
-			if ((state->second.getCores().count(tag) > 0) && isStateValidForCapital(ownedStateNum, allStates))
+			if ((state->second.getOwner() == tag) && !state->second.isImpassable())
 			{
 				capitalState = ownedStateNum;
+				capitalProvince = *state->second.getProvinces().begin();
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+
+bool HoI4::Country::attemptToPutCapitalInPreferredWastelandOwned(
+	const provinceMapper& theProvinceMapper,
+	const std::map<int, int>& provinceToStateIDMap,
+	const map<int, State>& allStates
+)
+{
+	const auto oldCapital = sourceCountry.getCapital();
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
+	{
+		if (
+			const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+			capitalStateMapping != provinceToStateIDMap.end()
+			)
+		{
+			const auto& state = allStates.find(capitalStateMapping->second)->second;
+			if (state.getOwner() == tag)
+			{
+				capitalState = capitalStateMapping->second;
+				capitalProvince = (*mapping)[0];
 				return true;
 			}
 		}
@@ -417,11 +431,85 @@ bool HoI4::Country::attemptToPutCapitalInAnyOwned(const map<int, State>& allStat
 	{
 		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
 		{
-			if (
-				(state->second.getOwner() == tag) &&
-				(isThisStateOwnedByUs(state->second) || isThisStateACoreWhileWeOwnNoStates(state->second)))
+			if (state->second.getOwner() == tag)
 			{
 				capitalState = ownedStateNum;
+				capitalProvince = *state->second.getProvinces().begin();
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+
+bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandCored(
+	const provinceMapper& theProvinceMapper,
+	const std::map<int, int>& provinceToStateIDMap,
+	const map<int, State>& allStates
+)
+{
+	const auto oldCapital = sourceCountry.getCapital();
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
+	{
+		if (
+			const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+			capitalStateMapping != provinceToStateIDMap.end()
+			)
+		{
+			const auto& state = allStates.find(capitalStateMapping->second)->second;
+			if ((state.getCores().count(tag) > 0) && !state.isImpassable())
+			{
+				capitalState = capitalStateMapping->second;
+				capitalProvince = (*mapping)[0];
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+
+bool HoI4::Country::attemptToPutCapitalInAnyNonWastelandCored(const map<int, State>& allStates)
+{
+	for (auto ownedStateNum: states)
+	{
+		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
+		{
+			if ((state->second.getCores().count(tag) > 0) && !state->second.isImpassable())
+			{
+				capitalState = ownedStateNum;
+				capitalProvince = *state->second.getProvinces().begin();
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+
+bool HoI4::Country::attemptToPutCapitalInPreferredWastelandCored(
+	const provinceMapper& theProvinceMapper,
+	const std::map<int, int>& provinceToStateIDMap,
+	const map<int, State>& allStates
+)
+{
+	const auto oldCapital = sourceCountry.getCapital();
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
+	{
+		if (
+			const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+			capitalStateMapping != provinceToStateIDMap.end()
+			)
+		{
+			const auto& state = allStates.find(capitalStateMapping->second)->second;
+			if (state.getCores().count(tag) > 0)
+			{
+				capitalState = capitalStateMapping->second;
+				capitalProvince = (*mapping)[0];
 				return true;
 			}
 		}
@@ -433,15 +521,14 @@ bool HoI4::Country::attemptToPutCapitalInAnyOwned(const map<int, State>& allStat
 
 bool HoI4::Country::attemptToPutCapitalInAnyCored(const map<int, State>& allStates)
 {
-	for (auto ownedStateNum : states)
+	for (auto ownedStateNum: states)
 	{
 		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
 		{
-			if (
-				(state->second.getCores().count(tag) > 0) &&
-				(isThisStateOwnedByUs(state->second) || isThisStateACoreWhileWeOwnNoStates(state->second)))
+			if (state->second.getCores().count(tag) > 0)
 			{
 				capitalState = ownedStateNum;
+				capitalProvince = *state->second.getProvinces().begin();
 				return true;
 			}
 		}
@@ -451,16 +538,17 @@ bool HoI4::Country::attemptToPutCapitalInAnyCored(const map<int, State>& allStat
 }
 
 
-void HoI4::Country::convertTechnology(std::unique_ptr<mappers::techMapper>& theTechMapper)
+void HoI4::Country::convertTechnology(const mappers::techMapper& theTechMapper)
 {
 	auto oldTechs = sourceCountry.getTechs();
 	auto oldInventions = sourceCountry.getInventions();
-	theTechnologies = std::make_unique<HoI4::technologies>(theTechMapper, oldTechs, oldInventions);
+	theTechnologies = HoI4::technologies(theTechMapper, oldTechs, oldInventions);
 }
 
 
 void HoI4::Country::setGovernmentToExistingIdeology(
-	const set<string>& majorIdeologies, const map<string, HoI4Ideology*>& ideologies,
+	const set<string>& majorIdeologies,
+	const map<string, HoI4Ideology*>& ideologies,
 	const governmentMapper& governmentMap
 ) {
 	governmentIdeology = governmentMap.getExistingIdeologyForCountry(
@@ -482,11 +570,14 @@ void HoI4::Country::convertIdeologySupport(
 	const std::set<std::string>& majorIdeologies,
 	const governmentMapper& governmentMap
 ) {
+	ideologySupport.clear();
+
 	for (const auto& upperHouseIdeology: sourceCountry.getUpperHouseComposition())
 	{
 		auto ideology = governmentMap.getSupportedIdeology(
 			governmentIdeology,
-			upperHouseIdeology.first, majorIdeologies
+			upperHouseIdeology.first,
+			majorIdeologies
 		);
 		auto supportItr = ideologySupport.find(ideology);
 		if (supportItr == ideologySupport.end())
@@ -502,13 +593,16 @@ void HoI4::Country::convertIdeologySupport(
 	{
 		remainingSupport -= ideology.second;
 	}
-	auto supportItr = ideologySupport.find("neutrality");
-	if (supportItr == ideologySupport.end())
+	if (remainingSupport > 0)
 	{
-		ideologySupport.insert(make_pair("neutrality", 0));
-		supportItr = ideologySupport.find("neutrality");
+		auto supportItr = ideologySupport.find("neutrality");
+		if (supportItr == ideologySupport.end())
+		{
+			ideologySupport.insert(make_pair("neutrality", 0));
+			supportItr = ideologySupport.find("neutrality");
+		}
+		supportItr->second += remainingSupport;
 	}
-	supportItr->second += remainingSupport;
 }
 
 
@@ -634,14 +728,8 @@ void HoI4::Country::addState(const State& state)
 
 	for (const auto province: state.getProvinces())
 	{
-		addProvince(province);
+		provinces.insert(province);
 	}
-}
-
-
-void HoI4::Country::addProvince(const int& province)
-{
-	provinces.insert(province);
 }
 
 

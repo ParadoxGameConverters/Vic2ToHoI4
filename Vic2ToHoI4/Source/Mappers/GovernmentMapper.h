@@ -63,14 +63,17 @@ typedef struct partyMapping
 class governmentMapper: commonItems::parser
 {
 	public:
-		governmentMapper() noexcept;
+		governmentMapper() = default;
+		void init();
 
-		std::string getIdeologyForCountry(
-			const Vic2::Country& country,
+		virtual std::string getIdeologyForCountry(
+			const std::string& sourceTag,
+			const std::string& sourceGovernment,
 			const std::string& Vic2RulingIdeology
 		) const;
-		std::string getLeaderIdeologyForCountry(
-			const Vic2::Country& country,
+		virtual std::string getLeaderIdeologyForCountry(
+			const std::string& sourceTag,
+			const std::string& sourceGovernment,
 			const std::string& Vic2RulingIdeology
 		) const;
 		std::string getExistingIdeologyForCountry(
@@ -85,7 +88,11 @@ class governmentMapper: commonItems::parser
 			const std::set<std::string>& majorIdeologies,
 			const std::map<std::string, HoI4Ideology*>& ideologies
 		) const;
-		std::string getSupportedIdeology(const std::string& rulingIdeology, const std::string& Vic2Ideology, const std::set<std::string>& majorIdeologies) const;
+		virtual std::string getSupportedIdeology(
+			const std::string& rulingIdeology,
+			const std::string& Vic2Ideology,
+			const std::set<std::string>& majorIdeologies
+		) const;
 
 		auto getGovernmentMappings() const { return governmentMap; }
 

@@ -38,6 +38,10 @@ class Party: commonItems::parser
 {
 	public:
 		Party() = default;
+		Party(const Party&) = default;
+		Party& operator=(const Party&) = default;
+		Party(Party&&) = default;
+		Party& operator=(Party&&) = default;
 		explicit Party(std::istream& theStream);
 
 		std::string getName() const { return name; }
@@ -53,6 +57,8 @@ class Party: commonItems::parser
 		std::string citizenship_policy = "residency";
 		std::string warPolicy = "pro_military";
 };
+
+bool operator==(const Party& one, const Party& other);
 
 }
 

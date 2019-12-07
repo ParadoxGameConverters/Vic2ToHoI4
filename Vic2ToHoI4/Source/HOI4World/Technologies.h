@@ -43,7 +43,11 @@ class technologies
 		technologies() = default;
 		virtual ~technologies() = default;
 
-		technologies(std::unique_ptr<mappers::techMapper>& theTechMapper, const std::set<std::string>& oldTechs, const std::set<std::string>& oldInventions);
+		technologies(
+			const mappers::techMapper& theTechMapper,
+			const std::set<std::string>& oldTechs,
+			const std::set<std::string>& oldInventions
+		);
 
 		void setResearchBonus(const std::string& tech, int bonus);
 

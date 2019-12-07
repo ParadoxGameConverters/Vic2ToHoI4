@@ -21,9 +21,9 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{a302cb0c-8de3-4cbd-a974-282c1c7ae62d}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ConfigurationType>Application</ConfigurationType>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
     <ProjectName>Vic2ToHoI4Tests</ProjectName>
   </PropertyGroup>
@@ -168,6 +168,7 @@
     <ClCompile Include="HoI4WorldTests\DockyardProvinceTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DefaultStateTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4StateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4WarTests.cpp" />
     <ClCompile Include="HoI4WorldTests\IdeologicalDecisionsTests.cpp" />
@@ -215,8 +216,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Mocks\EventsMock.h" />
+    <ClInclude Include="Mocks\GovermentMapperMock.h" />
+    <ClInclude Include="Mocks\GraphicsMapperMock.h" />
+    <ClInclude Include="Mocks\Hoi4StateMock.h" />
+    <ClInclude Include="Mocks\NamesMapperMock.h" />
     <ClInclude Include="Mocks\ProvinceMapperMock.h" />
     <ClInclude Include="Mocks\StateCategoriesMock.h" />
+    <ClInclude Include="Mocks\Vic2CountryMock.h" />
+    <ClInclude Include="Mocks\Vic2WorldMock.h" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

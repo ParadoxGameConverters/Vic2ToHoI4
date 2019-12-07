@@ -56,6 +56,7 @@ class State;
 class Country: commonItems::parser
 {
 	public:
+		Country() = default;
 		explicit Country(const std::string& theTag, std::istream& theStream, const inventions& theInventions, const cultureGroups& theCultureGroups);
 
 		void addProvince(const std::pair<const int, Province*>& province) { provinces.insert(province); }
@@ -75,49 +76,46 @@ class Country: commonItems::parser
 
 		std::map<std::string, const Relations*> getRelations() const { return relations; }
 		std::vector<State*> getStates() const { return states; }
-		std::string getTag() const { return tag; }
+		virtual std::string getTag() const { return tag; }
                 std::string getIdentifier() const;
                 std::string getPrimaryCulture() const { return primaryCulture; }
-		std::string getPrimaryCultureGroup() const { return primaryCultureGroup; }
+		virtual std::string getPrimaryCultureGroup() const { return primaryCultureGroup; }
 		std::set<std::string> getAcceptedCultures() const { return acceptedCultures; }
 		bool isAnAcceptedCulture(const std::string& culture) const { return (acceptedCultures.count(culture) > 0); }
-		std::set<std::string> getInventions() const { return discoveredInventions; }
-		std::string getGovernment() const { return government; }
+		virtual std::set<std::string> getInventions() const { return discoveredInventions; }
+		virtual std::string getGovernment() const { return government; }
 		std::set<std::string> getFlags() const { return flags; }
-		date getLastElection() const { return lastElection; }
-		int getCapital() const { return capital; }
-		std::set<std::string> getTechs() const { return techs; }
-		const ConverterColor::Color& getColor() const { return color; }
+		virtual date getLastElection() const { return lastElection; }
+		virtual int getCapital() const { return capital; }
+		virtual std::set<std::string> getTechs() const { return techs; }
+		virtual const ConverterColor::Color& getColor() const { return color; }
 		std::vector<const Army*> getArmies() const { return armies; }
 		std::vector<const Leader*> getLeaders() const { return leaders; }
-		double getRevanchism() const { return revanchism; }
-		double getWarExhaustion() const { return warExhaustion; }
+		virtual double getRevanchism() const { return revanchism; }
+		virtual double getWarExhaustion() const { return warExhaustion; }
 		double getBadBoy() const { return badboy; }
 		double getPrestige() const { return prestige; }
-		std::map<int, Province*> getProvinces() const { return provinces; }
+		virtual std::map<int, Province*> getProvinces() const { return provinces; }
 		std::vector<Province*> getCores() const { return cores; }
 		bool isEmpty() const { return ((cores.size() == 0) && (provinces.size() == 0)); }
 		bool isCivilized() const { return civilized; }
-		bool isHuman() const { return human; }
-		std::map<std::string, double> getUpperHouseComposition() const { return upperHouseComposition; }
+		virtual bool isHuman() const { return human; }
+		virtual std::map<std::string, double> getUpperHouseComposition() const { return upperHouseComposition; }
 		std::vector<War> getWars() const { return wars; }
-		bool isAtWar() const { return atWar; }
+		virtual bool isAtWar() const { return atWar; }
 
-		std::optional<std::string> getName(const std::string& language) const;
+		virtual std::optional<std::string> getName(const std::string& language) const;
 		std::optional<std::string> getAdjective(const std::string& language) const;
 		double getUpperHousePercentage(const std::string& ideology) const;
 		long getEmployedWorkers() const;
-		std::optional<const Vic2::Party> getRulingParty(const std::vector<Vic2::Party>& allParties) const;
-		std::set<Vic2::Party, std::function<bool (const Vic2::Party&, const Vic2::Party&)>> getActiveParties(const std::vector<Vic2::Party>& allParties) const;
+		virtual std::optional<const Vic2::Party> getRulingParty(const std::vector<Vic2::Party>& allParties) const;
+		virtual std::set<Vic2::Party, std::function<bool (const Vic2::Party&, const Vic2::Party&)>> getActiveParties(const std::vector<Vic2::Party>& allParties) const;
 		bool hasCoreOnCapital() const;
 		std::vector<std::string> getShipNames(std::string category) const;
 		double getAverageMilitancy() const;
-		float getAverageIssueSupport(const std::string& issueName) const;
+		virtual float getAverageIssueSupport(const std::string& issueName) const;
 
 	private:
-		Country(const Country&) = delete;
-		Country& operator=(const Country&) = delete;
-
 		void setLocalisationName(const std::string& language, const std::string& name);
 		void setLocalisationAdjective(const std::string& language, const std::string& adjective);
 
@@ -169,6 +167,9 @@ class Country: commonItems::parser
 		bool atWar = false;
 		std::vector<War> wars;
 };
+
+
+bool operator==(const Country& one, const Country& other);
 
 }
 
