@@ -15,6 +15,11 @@ HoI4::decisionsCategory::decisionsCategory(const std::string& categoryName, std:
 }
 
 
+void updateOpenUpPoliticalDiscourse(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies);
+void updateDiscreditGovernment(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies);
+void updateInstitutePressCensorship(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies);
+void updateIgniteTheIdeologyCivilWar(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies);
+
 void HoI4::decisionsCategory::updatePoliticalDecisions(
 	const std::set<std::string>& majorIdeologies,
 	const Events& theEvents
@@ -45,10 +50,8 @@ void HoI4::decisionsCategory::updatePoliticalDecisions(
 }
 
 
-void HoI4::decisionsCategory::updateOpenUpPoliticalDiscourse(
-	decision& decisionToUpdate,
-	const std::set<std::string>& majorIdeologies
-) {
+void updateOpenUpPoliticalDiscourse(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies)
+{
 	std::string available = "= {\n";
 	for (const auto& ideology: majorIdeologies)
 	{
@@ -59,10 +62,8 @@ void HoI4::decisionsCategory::updateOpenUpPoliticalDiscourse(
 }
 
 
-void HoI4::decisionsCategory::updateDiscreditGovernment(
-	decision& decisionToUpdate,
-	const std::set<std::string>& majorIdeologies
-) {
+void updateDiscreditGovernment(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies)
+{
 	const auto decisionIdeology = decisionToUpdate.getName().substr(21, decisionToUpdate.getName().length());
 	std::string available = "= {\n";
 	for (const auto& ideology: majorIdeologies)
@@ -95,10 +96,8 @@ void HoI4::decisionsCategory::updateDiscreditGovernment(
 }
 
 
-void HoI4::decisionsCategory::updateInstitutePressCensorship(
-	decision& decisionToUpdate,
-	const std::set<std::string>& majorIdeologies
-) {
+void updateInstitutePressCensorship(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies)
+{
 	auto decisionIdeology = decisionToUpdate.getName().substr(27, decisionToUpdate.getName().length());
 	decisionIdeology = decisionIdeology.substr(0, decisionIdeology.find_last_of('_'));
 	std::string modifier = "= {\n";
@@ -118,10 +117,8 @@ void HoI4::decisionsCategory::updateInstitutePressCensorship(
 }
 
 
-void HoI4::decisionsCategory::updateIgniteTheIdeologyCivilWar(
-	decision& decisionToUpdate,
-	const std::set<std::string>& majorIdeologies
-) {
+void updateIgniteTheIdeologyCivilWar(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies)
+{
 	auto decisionIdeology = decisionToUpdate.getName().substr(11, decisionToUpdate.getName().length());
 	decisionIdeology = decisionIdeology.substr(0, decisionIdeology.find_first_of('_'));
 	std::string completeEffect = "= {\n";
