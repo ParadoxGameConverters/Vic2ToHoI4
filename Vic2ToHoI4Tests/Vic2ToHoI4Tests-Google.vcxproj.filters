@@ -470,6 +470,18 @@
     <ClCompile Include="Mocks\Vic2StateMock.h">
       <Filter>Mocks</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\DecisionsCategoriesTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategories.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Hoi4CountryOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -523,6 +535,9 @@
     <Filter Include="Vic2ToHoI4 files\HoI4\States">
       <UniqueIdentifier>{25fa4931-200a-4006-91b0-965a66c7fa25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter">
+      <UniqueIdentifier>{dda4426a-5184-48ef-91a3-66ee0746d4c4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -535,6 +550,24 @@
       <Filter>Mocks</Filter>
     </ClInclude>
     <ClInclude Include="Mocks\ProvinceMapperMock.h">
+      <Filter>Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="Mocks\NamesMapperMock.h">
+      <Filter>Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="Mocks\GraphicsMapperMock.h">
+      <Filter>Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="Mocks\Vic2CountryMock.h">
+      <Filter>Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="Mocks\Hoi4StateMock.h">
+      <Filter>Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="Mocks\Vic2WorldMock.h">
+      <Filter>Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="Mocks\GovermentMapperMock.h">
       <Filter>Mocks</Filter>
     </ClInclude>
   </ItemGroup>

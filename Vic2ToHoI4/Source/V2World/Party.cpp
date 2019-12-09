@@ -60,3 +60,9 @@ Vic2::Party::Party(std::istream& theStream)
 
 	parseStream(theStream);
 }
+
+
+bool Vic2::operator==(const Vic2::Party& one, const Vic2::Party& other)
+{
+	return one.getName() == other.getName();
+}

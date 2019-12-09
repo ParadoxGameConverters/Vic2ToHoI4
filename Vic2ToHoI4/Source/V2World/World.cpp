@@ -44,6 +44,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 Vic2::World::World(const std::string& filename)
 {
+	theCultureGroups.init();
 	issuesInstance.instantiate();
 	theStateDefinitions.initialize();
 	inventions theInventions;
@@ -100,6 +101,7 @@ Vic2::World::World(const std::string& filename)
 		removeSimpleLandlessNations();
 	}
 	determineEmployedWorkers();
+	overallMergeNations();
 	removeEmptyNations();
 	determinePartialStates();
 	addWarsToCountries(wars);
@@ -111,7 +113,6 @@ Vic2::World::World(const std::string& filename)
 	setLocalisations();
 	handleMissingCountryCultures();
 
-	overallMergeNations();
 	checkAllProvincesMapped();
 }
 
@@ -122,10 +123,6 @@ void Vic2::World::setGreatPowerStatus(const std::vector<int>& GPIndexes, const s
 	{
 		auto tag = tagsInOrder.at(index);
 		greatPowers.push_back(tag);
-		if (auto country = countries.find(tag); country != countries.end())
-		{
-			country->second->setAsGreatNation();
-		}
 	}
 }
 

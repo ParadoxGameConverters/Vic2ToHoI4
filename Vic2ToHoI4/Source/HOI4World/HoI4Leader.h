@@ -40,7 +40,7 @@ class General
 		General(const Vic2::Leader* srcLeader, const std::string& portrait);
 		General(const General&) = default;
 
-		friend std::ofstream& operator << (std::ofstream& output, const General& instance);
+		friend std::ostream& operator<<(std::ostream& output, const General& instance);
 
 	private:
 		General& operator=(const General&) = delete;
@@ -56,7 +56,7 @@ class General
 };
 
 
-std::ofstream& operator << (std::ofstream& output, const General& instance);
+std::ostream& operator<<(std::ostream& output, const General& instance);
 
 
 class Admiral
@@ -65,7 +65,7 @@ class Admiral
 		Admiral(const Vic2::Leader* srcLeader, const std::string& portrait);
 		Admiral(const Admiral&) = default;
 
-		friend std::ofstream& operator << (std::ofstream& output, const Admiral& instance);
+		friend std::ostream& operator<<(std::ostream& output, const Admiral& instance);
 
 	private:
 		Admiral& operator=(const Admiral&) = delete;
@@ -74,10 +74,14 @@ class Admiral
 		std::string picture;
 		std::vector<std::string> traits;
 		int skill = 1;
+		int attackSkill = 1;
+		int defenseSkill = 1;
+		int maneuveringSkill = 1;
+		int coordinationSkill = 1;
 };
 
 
-std::ofstream& operator << (std::ofstream& output, const Admiral& instance);
+std::ostream& operator<<(std::ostream& output, const Admiral& instance);
 
 }
 

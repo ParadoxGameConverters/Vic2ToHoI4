@@ -53,6 +53,8 @@ void HoI4::decisions::updateDecisions(const std::set<std::string>& majorIdeologi
 {
 	updateStabilityDecisions(majorIdeologies);
 	updatePoliticalDecisions(majorIdeologies, theEvents);
+
+	decisionsCategories = std::make_unique<DecisionsCategories>(majorIdeologies);
 }
 
 
@@ -193,8 +195,13 @@ void HoI4::decisions::updatePoliticalDecisions(const std::set<std::string>& majo
 void HoI4::decisions::output()
 {
 	std::ofstream outStream(
-		"output/" + theConfiguration.getOutputName() + "/common/decisions/stability_war_support.txt"
+		"output/" + theConfiguration.getOutputName() + "/common/decisions/categories/00_decision_categories.txt",
+		std::ostream::app
 	);
+	outStream << *decisionsCategories;
+	outStream.close();
+
+	outStream.open("output/" + theConfiguration.getOutputName() + "/common/decisions/stability_war_support.txt");
 	for (auto category: stabilityDecisions)
 	{
 		outStream << category;

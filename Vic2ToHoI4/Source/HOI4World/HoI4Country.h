@@ -1,60 +1,29 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
-#ifndef HoI4COUNTRY_H_
-#define HoI4COUNTRY_H_
+#ifndef HOI4_COUNTRY_H_
+#define HOI4_COUNTRY_H_
 
 
 
 #include "HoI4Airforce.h"
 #include "HoI4Army.h"
-#include "Division.h"
-#include "DivisionTemplate.h"
+#include "HoI4Faction.h"
 #include "HoI4FocusTree.h"
 #include "HOI4Ideology.h"
 #include "HoI4Leader.h"
-#include "HoI4Province.h"
 #include "HoI4Relations.h"
 #include "HoI4War.h"
-#include "MilitaryMappings/MtgUnitMappings.h"
-#include "MilitaryMappings/UnitMappings.h"
 #include "Navies/Navies.h"
-#include "ShipTypes/PossibleShipVariants.h"
-#include "ShipTypes/ShipVariant.h"
 #include "ShipTypes/ShipVariants.h"
-#include "States/HoI4State.h"
 #include "Technologies.h"
 #include "../Color.h"
 #include "Date.h"
-#include "../Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
-#include "../V2World/Army.h"
 #include "../V2World/Party.h"
+#include <functional>
 #include <map>
+#include <memory>
 #include <optional>
 #include <set>
 #include <string>
 #include <vector>
-using namespace std;
 
 
 
@@ -65,24 +34,23 @@ class World;
 }
 
 
-class HoI4Faction;
 class HoI4Ideology;
 
 
 namespace HoI4
 {
-class Advisor;
 class coastalProvinces;
+class MtgUnitMappings;
 class namesMapper;
+class ShipVariant;
 class State;
-class HoI4UnitType;
-class World;
-struct advisorCompare;
+class UnitMappings;
 }
 
 
 namespace mappers
 {
+class FlagsToIdeasMapper;
 class techMapper;
 }
 
@@ -90,209 +58,242 @@ class techMapper;
 class CountryMapper;
 class governmentMapper;
 class graphicsMapper;
+class provinceMapper;
+
+
+class Date;
 
 
 
-class HoI4Country
+namespace HoI4
+{
+
+class Country
 {
 	public:
-		HoI4Country(const string& _tag, const HoI4::World* _theWorld);
-
-		void initFromV2Country(
-			const Vic2::World& _srcWorld,
-			const Vic2::Country* _srcCountry,
-			const std::map<int, int>& stateMap,
-			const std::map<int, HoI4::State*>& states,
-			HoI4::namesMapper& theNames,
+		explicit Country(
+			std::string tag,
+			const Vic2::Country* srcCountry,
+			namesMapper& theNames,
 			const graphicsMapper& theGraphics,
 			const CountryMapper& countryMap,
 			const mappers::FlagsToIdeasMapper& flagsToIdeasMapper
 		);
-		void setGovernmentToExistingIdeology(const set<string>& majorIdeologies, const map<string, HoI4Ideology*>& ideologies, const governmentMapper& governmentMap);
-		void convertGovernment(const Vic2::World& _srcWorld, const governmentMapper& governmentMap);
-		void convertParties(const set<string>& majorIdeologies, const governmentMapper& governmentMap);
-		void convertIdeologySupport(const set<string>& majorIdeologies, const governmentMapper& governmentMap);
-		void determineShipVariants(const std::vector<HoI4::shipVariant>& possibleVariants);
-		void convertNavies(
-			const HoI4::UnitMappings& unitMap,
-			const HoI4::MtgUnitMappings& mtgUnitMap,
-			const HoI4::coastalProvinces& theCoastalProvinces,
-			const std::map<int, int>& provinceToStateIDMap
+		Country() = delete;
+		Country(const Country&) = delete;
+		Country& operator=(const Country&) = delete;
+		Country(Country&&) = delete;
+		Country& operator=(Country&&) = delete;
+		~Country() = default;
+
+		void determineCapitalFromVic2(
+			const provinceMapper& theProvinceMapper,
+			const std::map<int, int>& provinceToStateIDMap,
+			const std::map<int, State>& allStates
 		);
-		void convertConvoys(const HoI4::UnitMappings& unitMap);
-		void convertAirforce(const HoI4::UnitMappings& unitMap);
-		void convertArmies(const HoI4::militaryMappings& theMilitaryMappings);
-		void convertTechnology(std::unique_ptr<mappers::techMapper>& theTechMapper);
-		void addState(HoI4::State* _state);
-		void calculateIndustry();
-		void reportIndustry(ofstream& out);
-		void addVPsToCapital(int VPs);
-		void addGenericFocusTree(const set<string>& majorIdeologies);
-		void adjustResearchFocuses();
-		void outputToCommonCountriesFile(ofstream& countriesFile) const;
-		void outputColors(ofstream& out) const;
-		void outputToNamesFiles(ofstream& namesFile, const HoI4::namesMapper& theNames) const;
-		void outputToUnitNamesFiles(ofstream& unitNamesFile) const;
-		void output(const set<const HoI4::Advisor*, HoI4::advisorCompare>& ideologicalMinisters, const vector<HoI4::DivisionTemplateType>& divisionTemplates, HoI4::namesMapper& theNames, graphicsMapper& theGraphics) const;
-		void outputIdeaGraphics(ofstream& ideasFile, graphicsMapper& graphics) const;
+		void setGovernmentToExistingIdeology(
+			const std::set<std::string>& majorIdeologies,
+			const std::map<std::string, HoI4Ideology*>& ideologies,
+			const governmentMapper& governmentMap
+		);
+		void convertGovernment(const Vic2::World& sourceWorld, const governmentMapper& governmentMap);
+		void convertParties(const std::set<std::string>& majorIdeologies, const governmentMapper& governmentMap);
+		void convertIdeologySupport(const std::set<std::string>& majorIdeologies, const governmentMapper& governmentMap);
+		void determineShipVariants(const std::vector<shipVariant>& possibleVariants);
+		void convertNavies(
+			const UnitMappings& unitMap,
+			const MtgUnitMappings& mtgUnitMap,
+			const coastalProvinces& theCoastalProvinces,
+			const std::map<int, int>& provinceToStateIDMap,
+			const std::map<int, State>& allStates
+		);
+		void convertConvoys(const UnitMappings& unitMap);
+		void convertAirForce(const UnitMappings& unitMap);
+		void convertArmies(const militaryMappings& theMilitaryMappings);
+		void convertTechnology(const mappers::techMapper& theTechMapper);
+		void addState(const State& state);
+		void calculateIndustry(const std::map<int, State>& allStates);
+		void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
+		void adjustResearchFocuses() const;
 
-		void setSphereLeader(const string& SphereLeader) { sphereLeader = SphereLeader; }
-		void		setFaction(shared_ptr<const HoI4Faction> newFaction) { faction = newFaction; }
-		void		setFactionLeader() { factionLeader = true; }
-		void addNationalFocus(shared_ptr<HoI4FocusTree> NF) { nationalFocus = NF; }
+		void setSphereLeader(const std::string& SphereLeader) { sphereLeader = SphereLeader; }
+		void setFaction(const std::shared_ptr<const HoI4Faction>& newFaction) { faction = newFaction; }
+		void giveNationalFocus(std::unique_ptr<HoI4FocusTree>& NF) { nationalFocus = std::move(NF); }
 		void setGreatPower() { greatPower = true; }
+		void setPuppetMaster(const std::string& _master) { puppetMaster = _master; }
+		void addPuppet(const std::string& countryTag) { puppets.insert(countryTag); }
 
-		optional<const HoI4Relations*> getRelations(string withWhom) const;
-		double getStrengthOverTime(double years) const;
-		double getMilitaryStrength() const;
-		double getEconomicStrength(double years) const;
+		[[nodiscard]] std::optional<HoI4Relations> getRelations(const std::string& withWhom) const;
+		[[nodiscard]] double getStrengthOverTime(const double& years) const;
+		static double getMilitaryStrength();
+		[[nodiscard]] double getEconomicStrength(const double& years) const;
+		[[nodiscard]] bool areElectionsAllowed() const;
+		[[nodiscard]] std::optional<HoI4Faction> getFaction() const;
+		[[nodiscard]] std::optional<HoI4FocusTree> getNationalFocus() const;
 
-		bool isHuman() const { return human; }
-		const map<string, HoI4Relations*>&	getRelations() const { return relations; }
-		set<int>									getProvinces() const { return provinces; }
-		string										getTag() const { return tag; }
-		const Vic2::Country*							getSourceCountry() const { return srcCountry; }
-		shared_ptr<const HoI4Faction> getFaction() const { return faction; }
-		string getGovernmentIdeology() const { return governmentIdeology; }
-		map<string, int> getIdeologySupport() const { return ideologySupport; }
-		const set<string>&						getAllies() const { return allies; }
-		const set<string>&							getPuppets() const { return puppets; }
-		const string&								getPuppetmaster() const { return puppetMaster; }
-		const map<string, double>&						getPracticals() const { return practicals; }
-		vector<int>									getBrigs() const { return brigs; }
-		HoI4::State* getCapitalState() const { return capitalState; }
-		int											getCapitalStateNum() const { return capitalStateNum; }
-		const string									getSphereLeader() const { return sphereLeader; }
-		const Vic2::Party getRulingParty() const { return rulingParty; }
-		set<Vic2::Party, function<bool (const Vic2::Party&, const Vic2::Party&)>> getParties() const { return parties; }
-		map<int, HoI4::State*> getStates() const { return states; }
-		bool isInFaction() const { return faction != nullptr; }
-		bool isCivilized() const { return civilized; }
+		[[nodiscard]] const std::string& getTag() const { return tag; }
+		[[nodiscard]] const Vic2::Country& getSourceCountry() const { return sourceCountry; }
+		[[nodiscard]] const std::string& getFilename() const { return filename; }
+		[[nodiscard]] const std::string& getCommonCountryFile() const { return commonCountryFile; }
+		[[nodiscard]] bool isHuman() const { return human; }
 
-		int getTechnologyCount() const { return technologies->getTechnologyCount(); }
-		int getProvinceCount() const { return provinceCount; }
-		bool isGreatPower() const { return greatPower; }
+		[[nodiscard]] const ConverterColor::Color& getColor() const { return color; }
+		[[nodiscard]] const std::string& getGraphicalCulture() const { return graphicalCulture; }
+		[[nodiscard]] const std::string& getGraphicalCulture2d() const { return graphicalCulture2d; }
 
-		void setProvinceCount(int count) { provinceCount = count; }
-		void setPuppetmaster(const string& _master) { puppetMaster = _master; }
-		void addPuppet(const string& countryTag) { puppets.insert(countryTag); }
+		[[nodiscard]] bool hasProvinces() const { return !provinces.empty(); }
+		[[nodiscard]] const std::set<int>& getProvinces() const { return provinces; }
+		[[nodiscard]] const std::set<int>& getStates() const { return states; }
+		[[nodiscard]] std::optional<int> getCapitalState() const { return capitalState; }
+		[[nodiscard]] std::optional<int> getCapitalProvince() const { return capitalProvince; }
 
-		set<string>&								editAllies() { return allies; }
+		[[nodiscard]] const std::string& getGovernmentIdeology() const { return governmentIdeology; }
+		[[nodiscard]] const std::string& getLeaderIdeology() const { return leaderIdeology; }
+		[[nodiscard]] const Vic2::Party& getRulingParty() const { return rulingParty; }
+		[[nodiscard]] const std::set<Vic2::Party, std::function<bool(const Vic2::Party&, const Vic2::Party&)>>&
+		getParties() const { return parties; }
+		[[nodiscard]] const std::map<std::string, int>& getIdeologySupport() const { return ideologySupport; }
+		[[nodiscard]] const date& getLastElection() const { return lastElection; }
+		[[nodiscard]] int getStability() const { return stability; }
+		[[nodiscard]] int getWarSupport() const { return warSupport; }
+		[[nodiscard]] const std::string& getMobilizationLaw() const { return mobilizationLaw; }
+		[[nodiscard]] const std::string& getEconomicLaw() const { return economicLaw; }
+		[[nodiscard]] const std::string& getTradeLaw() const { return tradeLaw; }
+
+		[[nodiscard]] int getTechnologyCount() const
+		{
+			if (theTechnologies)
+			{
+				return theTechnologies->getTechnologyCount();
+			}
+			else
+			{
+				return 0;
+			}
+		}
+		[[nodiscard]] const std::optional<technologies>& getTechnologies() const { return theTechnologies; }
+		[[nodiscard]] const std::set<std::string>& getIdeas() const { return ideas; }
+
+		[[nodiscard]] double getMilitaryFactories() const { return militaryFactories; }
+		[[nodiscard]] double getCivilianFactories() const { return civilianFactories; }
+		[[nodiscard]] double getDockyards() const { return dockyards; }
+
+		[[nodiscard]] const Army& getArmy() const { return theArmy; }
+		[[nodiscard]] const shipVariants& getTheShipVariants() const { return *theShipVariants; }
+		[[nodiscard]] const Navies& getNavies() const { return *theNavies; }
+		[[nodiscard]] int getConvoys() const { return convoys; }
+		[[nodiscard]] const std::vector<HoI4Airplane>& getPlanes() const { return planes; }
+		[[nodiscard]] const std::map<std::string, unsigned int>& getEquipmentStockpile() const
+		{
+			return equipmentStockpile;
+		}
+		[[nodiscard]] const std::vector<General>& getGenerals() const { return generals; }
+		[[nodiscard]] const std::vector<Admiral>& getAdmirals() const { return admirals; }
+
+		[[nodiscard]] const std::map<std::string, HoI4Relations>& getRelations() const { return relations; }
+		[[nodiscard]] const std::vector<War>& getWars() const { return wars; }
+		[[nodiscard]] double getThreat() const { return threat; }
+		[[nodiscard]] bool isInFaction() const { return faction.operator bool(); }
+		[[nodiscard]] const std::string& getSphereLeader() const { return sphereLeader; }
+		[[nodiscard]] const std::set<std::string>& getAllies() const { return allies; }
+		[[nodiscard]] const std::set<std::string>& getPuppets() const { return puppets; }
+		[[nodiscard]] const std::string& getPuppetMaster() const { return puppetMaster; }
+		[[nodiscard]] bool isGreatPower() const { return greatPower; }
+		[[nodiscard]] bool isCivilized() const { return civilized; }
+
+		std::set<std::string>& editAllies() { return allies; }
 
 	private:
-		HoI4Country(const HoI4Country&) = delete;
-		HoI4Country& operator=(const HoI4Country&) = delete;
-
 		void determineFilename();
-		void initIdeas(HoI4::namesMapper& theNames);
+		void initIdeas(namesMapper& theNames) const;
 		void convertLaws();
 		void convertLeaders(const graphicsMapper& theGraphics);
 		void convertRelations(const CountryMapper& countryMap);
 		void convertWars(const Vic2::Country& sourceCountry, const CountryMapper& countryMap);
-		void determineCapitalFromVic2(const map<int, int>& provinceToStateIDMap, const map<int, HoI4::State*>& states);
-		bool isStateValidForCapital(int capitalState, const map<int, HoI4::State*>& states);
-		bool isThisStateOwnedByUs(const HoI4::State* state) const;
-		bool isThisStateACoreWhileWeOwnNoStates(const HoI4::State* state) const;
-		void setCapitalInCapitalState(int capitalProvince);
-		void findBestCapital();
 
-		void addProvince(int _province);
+		bool attemptToPutCapitalInPreferredNonWastelandOwned(
+			const provinceMapper& theProvinceMapper,
+			const map<int, int>& provinceToStateIDMap,
+			const map<int, State>& allStates
+		);
+		bool attemptToPutCapitalInNonWastelandOwned(const map<int, State>& allStates);
+		bool attemptToPutCapitalInPreferredWastelandOwned(
+			const provinceMapper& theProvinceMapper,
+			const std::map<int, int>& provinceToStateIDMap,
+			const map<int, State>& allStates
+		);
+		bool attemptToPutCapitalInAnyOwned(const map<int, State>& allStates);
+		bool attemptToPutCapitalInPreferredNonWastelandCored(
+			const provinceMapper& theProvinceMapper,
+			const std::map<int, int>& provinceToStateIDMap,
+			const map<int, State>& allStates
+		);
+		bool attemptToPutCapitalInAnyNonWastelandCored(const map<int, State>& allStates);
+		bool attemptToPutCapitalInPreferredWastelandCored(
+			const provinceMapper& theProvinceMapper,
+			const std::map<int, int>& provinceToStateIDMap,
+			const map<int, State>& allStates
+		);
+		bool attemptToPutCapitalInAnyCored(const map<int, State>& allStates);
 
-		void outputNamesSet(ofstream& namesFile, const optional<vector<string>>& names, const string& tabs) const;
-		void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics) const;
-		void outputCapital(ofstream& output) const;
-		void outputResearchSlots(ofstream& output) const;
-		void outputThreat(ofstream& output) const;
-		void outputWars(ostream& output) const;
-		void outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTemplates) const;
-		void outputConvoys(ofstream& output) const;
-		void outputEquipmentStockpile(ofstream& output) const;
-		void outputPuppets(ofstream& output) const;
-		void outputPolitics(ofstream& output) const;
-		void outputRelations(ofstream& output) const;
-		bool areElectionsAllowed(void) const;
-		void outputFactions(ofstream& output) const;
-		void outputIdeas(ofstream& output) const;
-		void outputStability(ofstream& output) const;
-		void outputWarSupport(ofstream& output) const;
-		void outputCountryLeader(ofstream& output, HoI4::namesMapper& theNames, graphicsMapper& theGraphics) const;
-		void outputCommanders(ofstream& output) const;
-		void outputOOBLines(ostream& output) const;
-		void outputCommonCountryFile() const;
-		void outputAdvisorIdeas(const set<const HoI4::Advisor*, HoI4::advisorCompare>& ideologicalAdvisors) const;
-		void outputUnitType(ofstream& unitNamesFile, const string& sourceUnitType, const string& destUnitType, const string& defaultName) const;
+		std::string tag;
+		const Vic2::Country& sourceCountry;
+		std::string filename;
+		std::string commonCountryFile;
+		bool human = false;
 
-
-		const HoI4::World* theWorld;
-		const Vic2::Country* srcCountry;
-		string filename;
-
-		bool human;
-
-		string governmentIdeology;
-		string leaderIdeology;
-		Vic2::Party rulingParty;
-		set<Vic2::Party, function<bool (const Vic2::Party&, const Vic2::Party&)>> parties;
-		map<string, int> ideologySupport;
-		date lastElection;
-
-		string sphereLeader = "";
-		string								tag;
-		set<int>							provinces;
-		map<int, HoI4::State*> states;
-		int									capitalStateNum;
-		HoI4::State*							capitalState;
-		string								commonCountryFile;
-
-		std::unique_ptr<HoI4::technologies> technologies;
-
-		map<string, HoI4Relations*>	relations;
 		ConverterColor::Color color;
-		double stability = 0.50;
-		double warSupport = 0.50;
-		shared_ptr<const HoI4Faction>	faction;
-		bool									factionLeader;
-		set<string>							allies;
-		set<string> puppets;
-		string puppetMaster;
-		map<string, double>				practicals;
-		string graphicalCulture;
-		string graphicalCulture2d;
-		bool									majorNation;
-		bool									civilized;
-		vector<int>							brigs;
-		int									convoys;
-		
-		int provinceCount = 0;
-		long armyStrength;
-		double militaryFactories;
-		double civilianFactories;
-		double dockyards;
-		double threat;
+		std::string graphicalCulture = "western_european_gfx";
+		std::string graphicalCulture2d = "western_european_2d";
 
-		// laws
-		string mobilizationLaw = "volunteer_only";
-		string economicLaw = "civilian_economy";
-		string tradeLaw = "export_focus";
+		std::set<int> provinces;
+		std::set<int> states;
+		std::optional<int> capitalState;
+		std::optional<int> capitalProvince;
 
-		bool greatPower;
+		std::string governmentIdeology = "neutrality";
+		std::string leaderIdeology = "conservatism_neutral";
+		Vic2::Party rulingParty;
+		std::set<Vic2::Party, std::function<bool(const Vic2::Party&, const Vic2::Party&)>> parties;
+		std::map<std::string, int> ideologySupport{ std::make_pair("neutrality", 100) };
+		date lastElection;
+		int stability = 50;
+		int warSupport = 50;
+		std::string mobilizationLaw = "volunteer_only";
+		std::string economicLaw = "civilian_economy";
+		std::string tradeLaw = "export_focus";
 
+		std::optional<technologies> theTechnologies;
 		std::set<std::string> ideas;
+		std::unique_ptr<HoI4FocusTree> nationalFocus;
 
-		bool atWar = false;
-		std::vector<HoI4::War> wars;
+		double militaryFactories = 0.0;
+		double civilianFactories = 0.0;
+		double dockyards = 0.0;
 
-		// military stuff
-		HoI4::Army theArmy;
-		std::unique_ptr<HoI4::shipVariants> theShipVariants;
-		std::unique_ptr<HoI4::Navies> theNavies;
-		vector<HoI4Airplane> planes;
-		map<string, int> equipmentStockpile;
-		std::vector<HoI4::General> generals;
-		std::vector<HoI4::Admiral> admirals;
+		Army theArmy;
+		std::unique_ptr<shipVariants> theShipVariants;
+		std::unique_ptr<Navies> theNavies;
+		int convoys = 0;
+		std::vector<HoI4Airplane> planes;
+		std::map<std::string, unsigned int> equipmentStockpile;
+		std::vector<General> generals;
+		std::vector<Admiral> admirals;
 
-		shared_ptr<HoI4FocusTree> nationalFocus;
+		std::map<std::string, HoI4Relations> relations;
+		std::vector<War> wars;
+		double threat = 0.0;
+		std::shared_ptr<const HoI4Faction> faction;
+		std::string sphereLeader;
+		std::set<std::string> allies;
+		std::set<std::string> puppets;
+		std::string puppetMaster;
+		bool greatPower = false;
+		bool civilized = false;
 };
 
-#endif	// HoI4COUNTRY_H_
+}
 
+
+
+#endif	// HOI4_COUNTRY_H_

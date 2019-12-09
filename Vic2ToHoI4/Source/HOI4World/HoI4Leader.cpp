@@ -31,10 +31,18 @@ HoI4::General::General(const Vic2::Leader* srcLeader, const std::string& portrai
 	skill(static_cast<int>(srcLeader->getPrestige() * 22.5f) + 1),
 	picture(portrait)
 {
-	if (skill > 4)
+	if (skill > 5)
+	{
+		skill = 5;
+	}
+	else if (skill > 4)
 	{
 		skill = 4;
 	}
+	attackSkill = skill;
+	defenseSkill = skill;
+	planningSkill = skill;
+	logisticsSkill = skill;
 
 	/*auto possiblePersonalities = landPersonalityMap.find(srcLeader->getPersonality());
 	if ((possiblePersonalities != landPersonalityMap.end()) && (possiblePersonalities->second.size() > 0))
@@ -49,7 +57,7 @@ HoI4::General::General(const Vic2::Leader* srcLeader, const std::string& portrai
 }
 
 
-std::ofstream& HoI4::operator<< (std::ofstream& output, const HoI4::General& instance)
+std::ostream& HoI4::operator<<(std::ostream& output, const HoI4::General& instance)
 {
 	output << "create_corps_commander = {\n";
 	output << "\tname = \"" << instance.name << "\"\n";
@@ -76,10 +84,18 @@ HoI4::Admiral::Admiral(const Vic2::Leader* srcLeader, const std::string& portrai
 	skill(static_cast<int>(srcLeader->getPrestige() * 22.5f) + 1),
 	picture(portrait)
 {
-	if (skill > 4)
+	if (skill > 5)
+	{
+		skill = 5;
+	}
+	else if (skill > 4)
 	{
 		skill = 4;
 	}
+	attackSkill = skill;
+	defenseSkill = skill;
+	maneuveringSkill = skill;
+	coordinationSkill = skill;
 
 	/*auto possiblePersonalities = seaPersonalityMap.find(srcLeader->getPersonality());
 	if ((possiblePersonalities != seaPersonalityMap.end()) && (possiblePersonalities->second.size() > 0))
@@ -94,7 +110,7 @@ HoI4::Admiral::Admiral(const Vic2::Leader* srcLeader, const std::string& portrai
 }
 
 
-std::ofstream& HoI4::operator<< (std::ofstream& output, const HoI4::Admiral& instance)
+std::ostream& HoI4::operator<<(std::ostream& output, const HoI4::Admiral& instance)
 {
 	output << "create_navy_leader = {\n";
 	output << "\tname = \"" << instance.name << "\"\n";
@@ -106,6 +122,10 @@ std::ofstream& HoI4::operator<< (std::ofstream& output, const HoI4::Admiral& ins
 	}
 	output << "}\n";
 	output << "\tskill = " << instance.skill << "\n";
+	output << "\tattack_skill = " << instance.attackSkill << "\n";
+	output << "\tdefense_skill = " << instance.defenseSkill << "\n";
+	output << "\tmaneuvering_skill = " << instance.maneuveringSkill << "\n";
+	output << "\tcoordination_skill = " << instance.coordinationSkill << "\n";
 	output << "}\n";
 
 	return output;

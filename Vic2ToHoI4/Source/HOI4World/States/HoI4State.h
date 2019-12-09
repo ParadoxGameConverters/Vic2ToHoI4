@@ -54,6 +54,7 @@ class StateCategories;
 class State
 {
 	public:
+		State() = default;
 		State(const Vic2::State* sourceState, int _ID, const std::string& _ownerTag);
 
 		void output(std::ostream& output, const Configuration& theConfiguration) const;
@@ -73,8 +74,8 @@ class State
 		void convertControlledProvinces(const provinceMapper& theProvinceMapper, const CountryMapper& countryMapper);
 
 		const Vic2::State* getSourceState() const { return sourceState; }
-		int getID() const { return ID; }
-		std::set<int>getProvinces() const { return provinces; }
+		virtual int getID() const { return ID; }
+		virtual std::set<int>getProvinces() const { return provinces; }
 		std::string getOwner() const { return ownerTag; }
 		std::set<std::string> getCores() const { return cores; }
 		bool isImpassable() const { return impassable; }
@@ -135,7 +136,7 @@ class State
 		int civFactories = 0;
 		int milFactories = 0;
 		int dockyards = 0;
-		std::string category = "pastoral";
+		std::string category = "wasteland";
 		int infrastructure = 0;
 
 		std::map<int, int> navalBases;

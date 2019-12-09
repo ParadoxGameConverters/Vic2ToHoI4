@@ -22,6 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "Flags.h"
+#include "V2World/Country.h"
 #include "targa.h"
 #include "Log.h"
 #include "Configuration.h"
@@ -30,8 +31,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-void processFlagsForCountry(const pair<string, shared_ptr<HoI4Country>>& country);
-void copyFlags(const map<string, shared_ptr<HoI4Country>>& countries)
+void processFlagsForCountry(const pair<string, shared_ptr<HoI4::Country>>& country);
+void copyFlags(const map<string, shared_ptr<HoI4::Country>>& countries)
 {
 	LOG(LogLevel::Info) << "Copying flags";
 
@@ -82,9 +83,9 @@ tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsign
 void createBigFlag(tga_image* sourceFlag, const string& filename);
 void createMediumFlag(tga_image* sourceFlag, const string& filename);
 void createSmallFlag(tga_image* sourceFlag, const string& filename);
-void processFlagsForCountry(const pair<string, shared_ptr<HoI4Country>>& country)
+void processFlagsForCountry(const pair<string, shared_ptr<HoI4::Country>>& country)
 {
-	vector<string> sourcePath = getSourceFlagPaths(country.second->getSourceCountry()->getTag());
+	vector<string> sourcePath = getSourceFlagPaths(country.second->getSourceCountry().getTag());
 	for (unsigned int i = BASE_FLAG; i < FLAG_END; i++)
 	{
 		if (sourcePath[i] != "")

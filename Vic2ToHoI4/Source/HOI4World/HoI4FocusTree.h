@@ -36,12 +36,12 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-class HoI4Country;
 class HoI4Focus;
 
 
 namespace HoI4
 {
+class Country;
 class Events;
 class World;
 }
@@ -51,22 +51,28 @@ class World;
 class HoI4FocusTree: commonItems::parser
 {
 	public:
-		HoI4FocusTree() = default;
-		explicit HoI4FocusTree(const HoI4Country& country);
+		explicit HoI4FocusTree(const HoI4::Country& country);
 
-		std::shared_ptr<HoI4FocusTree> makeCustomizedCopy(const HoI4Country& country) const;
+		HoI4FocusTree() = default;
+		HoI4FocusTree(const HoI4FocusTree&) = default;
+		HoI4FocusTree& operator=(const HoI4FocusTree&) = default;
+		HoI4FocusTree(HoI4FocusTree&&) = default;
+		HoI4FocusTree& operator=(HoI4FocusTree&&) = default;
+		~HoI4FocusTree() = default;
+
+		std::unique_ptr<HoI4FocusTree> makeCustomizedCopy(const HoI4::Country& country) const;
 		void setNextFreeColumn(int newFreeColumn) { nextFreeColumn = newFreeColumn; }
 
 		void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
 
-		void addDemocracyNationalFocuses(std::shared_ptr<HoI4Country> Home, std::vector<std::shared_ptr<HoI4Country>>& CountriesToContain);
-		void addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4Country> country, const std::vector<std::shared_ptr<HoI4Country>>& targetColonies, const std::vector<std::shared_ptr<HoI4Country>>& annexationTargets);
-		void addCommunistCoupBranch(std::shared_ptr<HoI4Country> Home, const std::vector<std::shared_ptr<HoI4Country>>& coupTargets, const std::set<std::string>& majorIdeologies);
-		void addCommunistWarBranch(std::shared_ptr<HoI4Country> Home, const std::vector<std::shared_ptr<HoI4Country>>& warTargets, HoI4::Events* events);
-		void addFascistAnnexationBranch(std::shared_ptr<HoI4Country> Home, const std::vector<std::shared_ptr<HoI4Country>>& annexationTargets, HoI4::Events* events);
-		void addFascistSudetenBranch(std::shared_ptr<HoI4Country> Home, const std::vector<std::shared_ptr<HoI4Country>>& sudetenTargets, const std::vector<std::vector<int>>& demandedStates, const HoI4::World* world);
-		void addGPWarBranch(std::shared_ptr<HoI4Country> Home, const std::vector<std::shared_ptr<HoI4Country>>& newAllies, const std::vector<std::shared_ptr<HoI4Country>>& GCTargets, const std::string& ideology, HoI4::Events* events);
-		void addNeighborWarBranch(const std::string& tag, const std::vector<std::shared_ptr<HoI4Country>>& weakNeighbors, const std::shared_ptr<HoI4Country>& targetNeighbors, const std::string targetName, const date startDate, int numWarsWithNeighbors);
+		void addDemocracyNationalFocuses(std::shared_ptr<HoI4::Country> Home, std::vector<std::shared_ptr<HoI4::Country>>& CountriesToContain);
+		void addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Country> country, const std::vector<std::shared_ptr<HoI4::Country>>& targetColonies, const std::vector<std::shared_ptr<HoI4::Country>>& annexationTargets);
+		void addCommunistCoupBranch(std::shared_ptr<HoI4::Country> Home, const std::vector<std::shared_ptr<HoI4::Country>>& coupTargets, const std::set<std::string>& majorIdeologies);
+		void addCommunistWarBranch(std::shared_ptr<HoI4::Country> Home, const std::vector<std::shared_ptr<HoI4::Country>>& warTargets, HoI4::Events* events);
+		void addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Home, const std::vector<std::shared_ptr<HoI4::Country>>& annexationTargets, HoI4::Events* events);
+		void addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home, const std::vector<std::shared_ptr<HoI4::Country>>& sudetenTargets, const std::vector<std::vector<int>>& demandedStates, const HoI4::World* world);
+		void addGPWarBranch(std::shared_ptr<HoI4::Country> Home, const std::vector<std::shared_ptr<HoI4::Country>>& newAllies, const std::vector<std::shared_ptr<HoI4::Country>>& GCTargets, const std::string& ideology, HoI4::Events* events);
+		void addNeighborWarBranch(const std::string& tag, const std::vector<std::shared_ptr<HoI4::Country>>& weakNeighbors, const std::shared_ptr<HoI4::Country>& targetNeighbors, const std::string targetName, const date startDate, int numWarsWithNeighbors);
 		void removeFocus(const std::string& id);
 
 		void output(const std::string& filename) const;
@@ -74,8 +80,6 @@ class HoI4FocusTree: commonItems::parser
 		void addFocus(std::shared_ptr<HoI4Focus> newFocus) { focuses.push_back(newFocus); }
 
 	private:
-		HoI4FocusTree(const HoI4FocusTree&) = delete;
-		HoI4FocusTree& operator=(const HoI4FocusTree&) = delete;
 
 		void confirmLoadedFocuses();
 

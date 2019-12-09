@@ -29,8 +29,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 HoI4::IdeologicalAdvisors::IdeologicalAdvisors() noexcept
 {
 	registerKeyword(std::regex("[a-z]+"), [this](const std::string& ideology, std::istream& theStream){
-		Advisor* newAdvisor = new Advisor(ideology, theStream);
-		theAdvisors.insert(make_pair(ideology, newAdvisor));
+		Advisor newAdvisor(ideology, theStream);
+		theAdvisors.insert(std::make_pair(ideology, newAdvisor));
 	});
 
 	parseFile("ideologicalAdvisors.txt");

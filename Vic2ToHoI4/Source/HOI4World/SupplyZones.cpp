@@ -138,7 +138,7 @@ void HoI4::SupplyZones::convertSupplyZones(const HoI4States& states)
 {
 	for (auto state: states.getStates())
 	{
-		for (auto province : state.second->getProvinces())
+		for (auto province : state.second.getProvinces())
 		{
 			auto mapping = provinceToSupplyZoneMap.find(province);
 			if (mapping != provinceToSupplyZoneMap.end())

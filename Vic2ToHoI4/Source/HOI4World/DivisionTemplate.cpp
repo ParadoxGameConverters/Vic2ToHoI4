@@ -32,7 +32,7 @@ namespace HoI4
 class RegimentTypeGroup: commonItems::parser
 {
 	public:
-		RegimentTypeGroup(std::istream& theStream);
+		explicit RegimentTypeGroup(std::istream& theStream) ;
 
 		auto getRegimentTypes() const { return regimentTypes; }
 

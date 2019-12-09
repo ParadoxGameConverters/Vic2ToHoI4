@@ -1,32 +1,7 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "HoI4Country.h"
 #include "Advisor.h"
 #include "HoI4World.h"
 #include "Log.h"
-#include "HoI4Faction.h"
-#include "HoI4Focus.h"
 #include "HoI4Leader.h"
 #include "HoI4Localisation.h"
 #include "HoI4War.h"
@@ -35,126 +10,67 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/GovernmentMapper.h"
 #include "../Mappers/GraphicsMapper.h"
-#include "../Mappers/ProvinceDefinitions.h"
+#include "../Mappers/Provinces/ProvinceMapper.h"
 #include "../Mappers/TechMapper.h"
-#include "../Mappers/V2Localisations.h"
+#include "../V2World/Country.h"
 #include "../V2World/Relations.h"
 #include "../V2World/Party.h"
+#include "../V2World/World.h"
 #include "../Mappers/Provinces/ProvinceMapper.h"
 #include "OSCompatibilityLayer.h"
 #include <algorithm>
-#include <fstream>
 
 
 
-HoI4Country::HoI4Country(const string& _tag, const HoI4::World* _theWorld):
-	theWorld(_theWorld),
-	srcCountry(nullptr),
-	human(false),
-	governmentIdeology("neutrality"),
-	leaderIdeology("neutrality"),
-	rulingParty(),
-	parties(),
-	ideologySupport(),
-	lastElection(),
-	sphereLeader(""),
-	tag(_tag),
-	provinces(),
-	states(),
-	capitalStateNum(0),
-	capitalState(nullptr),
-	relations(),
-	color(),
-	faction(nullptr),
-	factionLeader(false),
-	allies(),
-	puppets(),
-	puppetMaster(""),
-	practicals(),
-	graphicalCulture("western_european_gfx"),
-	graphicalCulture2d("western_european_2d"),
-	majorNation(false),
-	civilized(false),
-	brigs(),
-	convoys(0),
-	provinceCount(0),
-	armyStrength(0),
-	militaryFactories(0.0),
-	civilianFactories(0.0),
-	dockyards(0.0),
-	threat(0.0),
-	greatPower(false),
-	planes(),
-	equipmentStockpile(),
-	nationalFocus(nullptr)
-{
-}
-
-
-void HoI4Country::initFromV2Country(
-	const Vic2::World& _srcWorld,
-	const Vic2::Country* _srcCountry,
-	const std::map<int, int>& stateMap,
-	const std::map<int, HoI4::State*>& states,
-	HoI4::namesMapper& theNames,
+HoI4::Country::Country(
+	std::string tag,
+	const Vic2::Country* srcCountry,
+	namesMapper& theNames,
 	const graphicsMapper& theGraphics,
 	const CountryMapper& countryMap,
 	const mappers::FlagsToIdeasMapper& flagsToIdeasMapper
-) {
-	srcCountry = _srcCountry;
-
+): tag(std::move(tag)), sourceCountry(*srcCountry)
+{
 	determineFilename();
 
-	human = srcCountry->isHuman();
-	color = srcCountry->getColor();
-	civilized = srcCountry->isCivilized();
-	threat = srcCountry->getBadBoy() / 10.0;
-	auto possibleGraphicalCulture = theGraphics.getGraphicalCulture(srcCountry->getPrimaryCultureGroup());
+	human = sourceCountry.isHuman();
+	color = sourceCountry.getColor();
+	civilized = sourceCountry.isCivilized();
+	threat = sourceCountry.getBadBoy() / 10.0;
+	auto possibleGraphicalCulture = theGraphics.getGraphicalCulture(sourceCountry.getPrimaryCultureGroup());
 	if (possibleGraphicalCulture)
 	{
 		graphicalCulture = *possibleGraphicalCulture;
 	}
-	else
-	{
-		graphicalCulture = "western_european_gfx";
-	}
-	auto possibleGraphicalCulture2d = theGraphics.get2dGraphicalCulture(srcCountry->getPrimaryCultureGroup());
+	auto possibleGraphicalCulture2d = theGraphics.get2dGraphicalCulture(sourceCountry.getPrimaryCultureGroup());
 	if (possibleGraphicalCulture2d)
 	{
 		graphicalCulture2d = *possibleGraphicalCulture2d;
 	}
-	else
-	{
-		graphicalCulture2d = "western_european_2d";
-	}
-	lastElection = srcCountry->getLastElection();
+	lastElection = sourceCountry.getLastElection();
 	initIdeas(theNames);
 
-	stability = 0.6;
-	warSupport = 0.6;
+	stability = 60;
+	warSupport = 60;
 
-	if (srcCountry->getProvinces().size() > 0)
+	if (!sourceCountry.getProvinces().empty())
 	{
-		/*stability -= (srcCountry->getAverageMilitancy() / 10 / 1.5);
-		if (stability < 0.15)
+		auto warAttitude = sourceCountry.getAverageIssueSupport("jingoism");
+		warAttitude += sourceCountry.getAverageIssueSupport("pro_military") / 2;
+		warAttitude -= sourceCountry.getAverageIssueSupport("anti_military") / 2;
+		warAttitude -= sourceCountry.getAverageIssueSupport("pacifism");
+		warSupport += static_cast<int>(
+			(warAttitude * 0.375)
+			+ (sourceCountry.getRevanchism() / 5.0)
+			- (sourceCountry.getWarExhaustion() / 2.5)
+		);
+		if (warSupport < 15)
 		{
-			stability = 0.15;
-		}
-		LOG(LogLevel::Debug) << "stability," << tag << "," << stability;
-		*/
-		float warAttitude = srcCountry->getAverageIssueSupport("jingoism");
-		warAttitude += srcCountry->getAverageIssueSupport("pro_military") / 2;
-		warAttitude -= srcCountry->getAverageIssueSupport("anti_military") / 2;
-		warAttitude -= srcCountry->getAverageIssueSupport("pacifism");
-		warSupport += warAttitude * 0.00375;
-		warSupport += (srcCountry->getRevanchism() / 5.0) - (srcCountry->getWarExhaustion() / 100.0 / 2.5);
-		if (warSupport < 0.15)
-		{
-			warSupport = 0.15;
+			warSupport = 15;
 		}
 	}
 
-	for (auto flag: srcCountry->getFlags())
+	for (const auto& flag: sourceCountry.getFlags())
 	{
 		auto possibleIdea = flagsToIdeasMapper.getIdea(flag);
 		if (possibleIdea)
@@ -163,43 +79,33 @@ void HoI4Country::initFromV2Country(
 		}
 	}
 
-	atWar = srcCountry->isAtWar();
-	convertLaws();
 	convertLeaders(theGraphics);
 	convertRelations(countryMap);
-	convertWars((*_srcCountry), countryMap);
+	convertWars(*srcCountry, countryMap);
 
-	determineCapitalFromVic2(stateMap, states);
-	if (isThisStateOwnedByUs(capitalState))
-	{
-		capitalState->setAsCapitalState();
-	}
-
-	majorNation = srcCountry->isGreatNation();
-
-	theArmy.addSourceArmies(srcCountry->getArmies());
+	theArmy.addSourceArmies(sourceCountry.getArmies());
 }
 
 
-void HoI4Country::determineFilename()
+void HoI4::Country::determineFilename()
 {
-	auto possibleFilename = srcCountry->getName("english");
+	auto possibleFilename = sourceCountry.getName("english");
 	if (possibleFilename)
 	{
 		filename = Utils::convertWin1252ToUTF8(*possibleFilename);
-		int pipe = filename.find_first_of('|');
+		auto pipe = filename.find_first_of('|');
 		while (pipe != string::npos)
 		{
 			filename.replace(pipe, 1, "");
 			pipe = filename.find_first_of('|');
 		}
-		int greater = filename.find_first_of('>');
+		auto greater = filename.find_first_of('>');
 		while (greater != string::npos)
 		{
 			filename.replace(greater, 1, "");
 			greater = filename.find_first_of('>');
 		}
-		int lesser = filename.find_first_of('<');
+		auto lesser = filename.find_first_of('<');
 		while (lesser != string::npos)
 		{
 			filename.replace(lesser, 1, "");
@@ -217,65 +123,114 @@ void HoI4Country::determineFilename()
 }
 
 
-void HoI4Country::convertGovernment(const Vic2::World& sourceWorld, const governmentMapper& governmentMap)
+void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld, const governmentMapper& governmentMap)
 {
-	auto possibleRulingParty = srcCountry->getRulingParty(sourceWorld.getParties());
+	auto possibleRulingParty = sourceCountry.getRulingParty(sourceWorld.getParties());
 	if (!possibleRulingParty)
 	{
-		LOG(LogLevel::Error) << "Could not find the ruling party for " << srcCountry->getTag() << ". Most likely a mod was not included.";
-		LOG(LogLevel::Error) << "Double-check your settings, and remember to include EU4 to Vic2 mods. See the FAQ for more information.";
-		exit(-1);
-	}
-	else
-	{
-		rulingParty = *possibleRulingParty;
+		throw std::runtime_error("Could not find the ruling party for " + sourceCountry.getTag() + ". "
+			+ "Most likely a mod was not included.\n"
+			+ "Double-check your settings, and remember to include EU4 to Vic2 mods. See the FAQ for more information."
+		);
 	}
 
-	governmentIdeology = governmentMap.getIdeologyForCountry(srcCountry, rulingParty.getIdeology());
-	leaderIdeology = governmentMap.getLeaderIdeologyForCountry(srcCountry, rulingParty.getIdeology());
-	parties = srcCountry->getActiveParties(sourceWorld.getParties());
-	for (auto party: parties)
+	rulingParty = *possibleRulingParty;
+	auto sourceTag = sourceCountry.getTag();
+	auto sourceGovernment = sourceCountry.getGovernment();
+	auto rulingIdeology = rulingParty.getIdeology();
+	governmentIdeology = governmentMap.getIdeologyForCountry(
+		sourceTag,
+		sourceGovernment,
+		rulingIdeology
+	);
+	leaderIdeology = governmentMap.getLeaderIdeologyForCountry(
+		sourceTag,
+		sourceGovernment,
+		rulingIdeology
+	);
+	parties = sourceCountry.getActiveParties(sourceWorld.getParties());
+	for (const auto& party: parties)
 	{
-		string partyName = party.getName();
-		string trimmedName = partyName.substr(4, partyName.size());
+		auto partyName = party.getName();
+		auto trimmedName = partyName.substr(4, partyName.size());
 		HoI4Localisation::addPoliticalPartyLocalisation(partyName, tag + "_" + trimmedName + "_party");
 	}
+
+	convertLaws();
 }
 
 
-void HoI4Country::convertParties(const set<string>& majorIdeologies, const governmentMapper& governmentMap)
+void HoI4::Country::convertParties(const set<string>& majorIdeologies, const governmentMapper& governmentMap)
 {
-	for (auto HoI4Ideology: majorIdeologies)
+	for (const auto& HoI4Ideology: majorIdeologies)
 	{
-		for (auto party: parties)
+		for (const auto& party: parties)
 		{
-			if (governmentMap.getSupportedIdeology(governmentIdeology, party.getIdeology(), majorIdeologies) == HoI4Ideology)
+			if (
+				HoI4Ideology == governmentMap.getSupportedIdeology(
+					governmentIdeology,
+					party.getIdeology(),
+					majorIdeologies
+				)
+			)
 			{
-				HoI4Localisation::addPoliticalPartyLocalisation(party.getName(), tag + "_" + HoI4Ideology + "_party");
+				HoI4Localisation::addPoliticalPartyLocalisation(
+					party.getName(), tag + "_" + HoI4Ideology + "_party"
+				);
 			}
 		}
 	}
-	HoI4Localisation::addPoliticalPartyLocalisation(rulingParty.getName(), tag + "_" + governmentIdeology + "_party");
+	HoI4Localisation::addPoliticalPartyLocalisation(
+		rulingParty.getName(), tag + "_" + governmentIdeology + "_party"
+	);
 }
 
 
-void HoI4Country::initIdeas(HoI4::namesMapper& theNames)
+void HoI4::Country::initIdeas(namesMapper& theNames) const
 {
-	HoI4Localisation::addIdeaLocalisation(tag + "_tank_manufacturer", theNames.takeCarCompanyName(srcCountry->getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_motorized_equipment_manufacturer", theNames.takeCarCompanyName(srcCountry->getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_infantry_equipment_manufacturer", theNames.takeWeaponCompanyName(srcCountry->getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_artillery_manufacturer", theNames.takeWeaponCompanyName(srcCountry->getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_light_aircraft_manufacturer", theNames.takeAircraftCompanyName(srcCountry->getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_medium_aircraft_manufacturer", theNames.takeAircraftCompanyName(srcCountry->getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_heavy_aircraft_manufacturer", theNames.takeAircraftCompanyName(srcCountry->getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_naval_aircraft_manufacturer", theNames.takeAircraftCompanyName(srcCountry->getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_naval_manufacturer", theNames.takeNavalCompanyName(srcCountry->getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_industrial_concern", theNames.takeIndustryCompanyName(srcCountry->getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_electronics_concern", theNames.takeElectronicCompanyName(srcCountry->getPrimaryCulture()));
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_tank_manufacturer", theNames.takeCarCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_motorized_equipment_manufacturer",
+		theNames.takeCarCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_infantry_equipment_manufacturer",
+		theNames.takeWeaponCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_artillery_manufacturer", theNames.takeWeaponCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_light_aircraft_manufacturer",
+		theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_medium_aircraft_manufacturer",
+		theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_heavy_aircraft_manufacturer",
+		theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_naval_aircraft_manufacturer",
+		theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_naval_manufacturer", theNames.takeNavalCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_industrial_concern", theNames.takeIndustryCompanyName(sourceCountry.getPrimaryCulture())
+	);
+	HoI4Localisation::addIdeaLocalisation(
+		tag + "_electronics_concern", theNames.takeElectronicCompanyName(sourceCountry.getPrimaryCulture())
+	);
 }
 
 
-void HoI4Country::convertLaws()
+void HoI4::Country::convertLaws()
 {
 	// mobilization laws are based on the ruling party's war policy
 	if (rulingParty.getWarPolicy() == "jingoism")
@@ -287,8 +242,8 @@ void HoI4Country::convertLaws()
 		mobilizationLaw = "disarmed_nation";
 	}
 
-	// if at war, more ecomonic mobilization
-	if (atWar)
+	// if at war, more economic mobilization
+	if (sourceCountry.isAtWar())
 	{
 		economicLaw = "low_economic_mobilisation";
 	}
@@ -306,19 +261,19 @@ void HoI4Country::convertLaws()
 }
 
 
-void HoI4Country::convertLeaders(const graphicsMapper& theGraphics)
+void HoI4::Country::convertLeaders(const graphicsMapper& theGraphics)
 {
-	auto srcLeaders = srcCountry->getLeaders();
+	auto srcLeaders = sourceCountry.getLeaders();
 	for (auto srcLeader: srcLeaders)
 	{
 		if (srcLeader->getType() == "land")
 		{
-			HoI4::General newLeader(srcLeader, theGraphics.getGeneralPortrait(graphicalCulture));
+			General newLeader(srcLeader, theGraphics.getGeneralPortrait(graphicalCulture));
 			generals.push_back(newLeader);
 		}
 		else if (srcLeader->getType() == "sea")
 		{
-			HoI4::Admiral newLeader(srcLeader, theGraphics.getGeneralPortrait(graphicalCulture));
+			Admiral newLeader(srcLeader, theGraphics.getGeneralPortrait(graphicalCulture));
 			admirals.push_back(newLeader);
 		}
 	}
@@ -327,74 +282,94 @@ void HoI4Country::convertLeaders(const graphicsMapper& theGraphics)
 }
 
 
-void HoI4Country::convertRelations(const CountryMapper& countryMap)
+void HoI4::Country::convertRelations(const CountryMapper& countryMap)
 {
-	auto srcRelations = srcCountry->getRelations();
-	for (auto srcRelation: srcRelations)
+	auto srcRelations = sourceCountry.getRelations();
+	for (const auto& srcRelation: srcRelations)
 	{
 		auto HoI4Tag = countryMap.getHoI4Tag(srcRelation.second->getTag());
 		if (HoI4Tag)
 		{
-			auto newRelation = new HoI4Relations(*HoI4Tag, srcRelation.second);
-			relations.insert(make_pair(*HoI4Tag, newRelation));
+			HoI4Relations newRelation(*HoI4Tag, srcRelation.second);
+			relations.insert(make_pair(*HoI4Tag, std::move(newRelation)));
 		}
 	}
 }
 
 
-void HoI4Country::convertWars(const Vic2::Country& sourceCountry, const CountryMapper& countryMap)
+void HoI4::Country::convertWars(const Vic2::Country& sourceCountry, const CountryMapper& countryMap)
 {
-	for (auto sourceWar: sourceCountry.getWars())
+	for (const auto& sourceWar: sourceCountry.getWars())
 	{
-		HoI4::War theWar(sourceWar, countryMap);
+		War theWar(sourceWar, countryMap);
 		wars.push_back(theWar);
 	}
 }
 
 
-void HoI4Country::determineCapitalFromVic2(const map<int, int>& provinceToStateIDMap, const map<int, HoI4::State*>& states)
+void HoI4::Country::determineCapitalFromVic2(
+	const provinceMapper& theProvinceMapper,
+	const std::map<int, int>& provinceToStateIDMap,
+	const map<int, State>& allStates
+)
 {
-	int oldCapital = srcCountry->getCapital();
-	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital))
+	bool success = attemptToPutCapitalInPreferredNonWastelandOwned(theProvinceMapper, provinceToStateIDMap, allStates);
+	if (!success)
 	{
-		auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
-		if (capitalStateMapping != provinceToStateIDMap.end() && isStateValidForCapital(capitalStateMapping->second, states))
-		{
-			capitalStateNum = capitalStateMapping->second;
-			capitalState = states.find(capitalStateNum)->second;
-			if (isThisStateOwnedByUs(states.find(capitalStateNum)->second))
-			{
-				setCapitalInCapitalState((*mapping)[0]);
-			}
-		}
-		else
-		{
-			findBestCapital();
-		}
+		success = attemptToPutCapitalInNonWastelandOwned(allStates);
+	}
+	if (!success)
+	{
+		success = attemptToPutCapitalInPreferredWastelandOwned(theProvinceMapper, provinceToStateIDMap, allStates);
+	}
+	if (!success)
+	{
+		success = attemptToPutCapitalInAnyOwned(allStates);
+	}
+	if (!success)
+	{
+		success = attemptToPutCapitalInPreferredNonWastelandCored(theProvinceMapper, provinceToStateIDMap, allStates);
+	}
+	if (!success)
+	{
+		success = attemptToPutCapitalInAnyNonWastelandCored(allStates);
+	}
+	if (!success)
+	{
+		success = attemptToPutCapitalInPreferredWastelandCored(theProvinceMapper, provinceToStateIDMap, allStates);
+	}
+	if (!success)
+	{
+		success = attemptToPutCapitalInAnyCored(allStates);
+	}
+	if (!success)
+	{
+		LOG(LogLevel::Warning) << "Could not properly set capital for " << tag;
 	}
 }
 
 
-bool HoI4Country::isStateValidForCapital(int stateNum, const map<int, HoI4::State*>& states)
+bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandOwned(
+	const provinceMapper& theProvinceMapper,
+	const map<int, int>& provinceToStateIDMap,
+	const map<int, State>& allStates
+)
 {
-	auto state = states.find(stateNum)->second;
-	return (isThisStateOwnedByUs(state) || isThisStateACoreWhileWeOwnNoStates(state));
-}
-
-
-bool HoI4Country::isThisStateOwnedByUs(const HoI4::State* state) const
-{
-	return ((state != nullptr) && (state->getOwner() == tag));
-}
-
-
-bool HoI4Country::isThisStateACoreWhileWeOwnNoStates(const HoI4::State* state) const
-{
-	for (auto core: state->getCores())
+	const auto oldCapital = sourceCountry.getCapital();
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
 	{
-		if (core == tag)
+		if (
+			const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+			capitalStateMapping != provinceToStateIDMap.end()
+			)
 		{
-			return true;
+			const auto& state = allStates.find(capitalStateMapping->second)->second;
+			if ((state.getOwner() == tag) && !state.isImpassable())
+			{
+				capitalState = capitalStateMapping->second;
+				capitalProvince = (*mapping)[0];
+				return true;
+			}
 		}
 	}
 
@@ -402,42 +377,208 @@ bool HoI4Country::isThisStateACoreWhileWeOwnNoStates(const HoI4::State* state) c
 }
 
 
-void HoI4Country::setCapitalInCapitalState(int capitalProvince)
+
+bool HoI4::Country::attemptToPutCapitalInNonWastelandOwned(const map<int, State>& allStates)
 {
-	if (capitalState != nullptr)
+	for (auto ownedStateNum : states)
 	{
-		capitalState->setVPLocation(capitalProvince);
+		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
+		{
+			if ((state->second.getOwner() == tag) && !state->second.isImpassable())
+			{
+				capitalState = ownedStateNum;
+				capitalProvince = *state->second.getProvinces().begin();
+				return true;
+			}
+		}
 	}
+
+	return false;
 }
 
 
-void HoI4Country::findBestCapital()
+bool HoI4::Country::attemptToPutCapitalInPreferredWastelandOwned(
+	const provinceMapper& theProvinceMapper,
+	const std::map<int, int>& provinceToStateIDMap,
+	const map<int, State>& allStates
+)
 {
-	capitalStateNum = 0;
-	LOG(LogLevel::Warning) << "Could not properly set capital for " << tag;
-}
-
-
-void HoI4Country::convertTechnology(std::unique_ptr<mappers::techMapper>& theTechMapper)
-{
-	auto oldTechs = srcCountry->getTechs();
-	auto oldInventions = srcCountry->getInventions();
-	technologies = std::make_unique<HoI4::technologies>(theTechMapper, oldTechs, oldInventions);
-}
-
-
-void HoI4Country::setGovernmentToExistingIdeology(const set<string>& majorIdeologies, const map<string, HoI4Ideology*>& ideologies, const governmentMapper& governmentMap)
-{
-	governmentIdeology = governmentMap.getExistingIdeologyForCountry(srcCountry, rulingParty.getIdeology(), majorIdeologies, ideologies);
-	leaderIdeology = governmentMap.getExistingLeaderIdeologyForCountry(srcCountry, rulingParty.getIdeology(), majorIdeologies, ideologies);
-}
-
-
-void HoI4Country::convertIdeologySupport(const set<string>& majorIdeologies, const governmentMapper& governmentMap)
-{
-	for (auto upperHouseIdeology: srcCountry->getUpperHouseComposition())
+	const auto oldCapital = sourceCountry.getCapital();
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
 	{
-		string ideology = governmentMap.getSupportedIdeology(governmentIdeology, upperHouseIdeology.first, majorIdeologies);
+		if (
+			const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+			capitalStateMapping != provinceToStateIDMap.end()
+			)
+		{
+			const auto& state = allStates.find(capitalStateMapping->second)->second;
+			if (state.getOwner() == tag)
+			{
+				capitalState = capitalStateMapping->second;
+				capitalProvince = (*mapping)[0];
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+
+bool HoI4::Country::attemptToPutCapitalInAnyOwned(const map<int, State>& allStates)
+{
+	for (auto ownedStateNum : states)
+	{
+		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
+		{
+			if (state->second.getOwner() == tag)
+			{
+				capitalState = ownedStateNum;
+				capitalProvince = *state->second.getProvinces().begin();
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+
+bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandCored(
+	const provinceMapper& theProvinceMapper,
+	const std::map<int, int>& provinceToStateIDMap,
+	const map<int, State>& allStates
+)
+{
+	const auto oldCapital = sourceCountry.getCapital();
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
+	{
+		if (
+			const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+			capitalStateMapping != provinceToStateIDMap.end()
+			)
+		{
+			const auto& state = allStates.find(capitalStateMapping->second)->second;
+			if ((state.getCores().count(tag) > 0) && !state.isImpassable())
+			{
+				capitalState = capitalStateMapping->second;
+				capitalProvince = (*mapping)[0];
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+
+bool HoI4::Country::attemptToPutCapitalInAnyNonWastelandCored(const map<int, State>& allStates)
+{
+	for (auto ownedStateNum: states)
+	{
+		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
+		{
+			if ((state->second.getCores().count(tag) > 0) && !state->second.isImpassable())
+			{
+				capitalState = ownedStateNum;
+				capitalProvince = *state->second.getProvinces().begin();
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+
+bool HoI4::Country::attemptToPutCapitalInPreferredWastelandCored(
+	const provinceMapper& theProvinceMapper,
+	const std::map<int, int>& provinceToStateIDMap,
+	const map<int, State>& allStates
+)
+{
+	const auto oldCapital = sourceCountry.getCapital();
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
+	{
+		if (
+			const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+			capitalStateMapping != provinceToStateIDMap.end()
+			)
+		{
+			const auto& state = allStates.find(capitalStateMapping->second)->second;
+			if (state.getCores().count(tag) > 0)
+			{
+				capitalState = capitalStateMapping->second;
+				capitalProvince = (*mapping)[0];
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+
+bool HoI4::Country::attemptToPutCapitalInAnyCored(const map<int, State>& allStates)
+{
+	for (auto ownedStateNum: states)
+	{
+		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
+		{
+			if (state->second.getCores().count(tag) > 0)
+			{
+				capitalState = ownedStateNum;
+				capitalProvince = *state->second.getProvinces().begin();
+				return true;
+			}
+		}
+	}
+
+	return false;
+}
+
+
+void HoI4::Country::convertTechnology(const mappers::techMapper& theTechMapper)
+{
+	auto oldTechs = sourceCountry.getTechs();
+	auto oldInventions = sourceCountry.getInventions();
+	theTechnologies = HoI4::technologies(theTechMapper, oldTechs, oldInventions);
+}
+
+
+void HoI4::Country::setGovernmentToExistingIdeology(
+	const set<string>& majorIdeologies,
+	const map<string, HoI4Ideology*>& ideologies,
+	const governmentMapper& governmentMap
+) {
+	governmentIdeology = governmentMap.getExistingIdeologyForCountry(
+		sourceCountry,
+		rulingParty.getIdeology(),
+		majorIdeologies,
+		ideologies
+	);
+	leaderIdeology = governmentMap.getExistingLeaderIdeologyForCountry(
+		sourceCountry,
+		rulingParty.getIdeology(),
+		majorIdeologies,
+		ideologies
+	);
+}
+
+
+void HoI4::Country::convertIdeologySupport(
+	const std::set<std::string>& majorIdeologies,
+	const governmentMapper& governmentMap
+) {
+	ideologySupport.clear();
+
+	for (const auto& upperHouseIdeology: sourceCountry.getUpperHouseComposition())
+	{
+		auto ideology = governmentMap.getSupportedIdeology(
+			governmentIdeology,
+			upperHouseIdeology.first,
+			majorIdeologies
+		);
 		auto supportItr = ideologySupport.find(ideology);
 		if (supportItr == ideologySupport.end())
 		{
@@ -447,39 +588,43 @@ void HoI4Country::convertIdeologySupport(const set<string>& majorIdeologies, con
 		supportItr->second += static_cast<int>(upperHouseIdeology.second * 100);
 	}
 
-	int remainingSupport = 100;
-	for (auto ideology: ideologySupport)
+	auto remainingSupport = 100;
+	for (const auto& ideology: ideologySupport)
 	{
 		remainingSupport -= ideology.second;
 	}
-	auto supportItr = ideologySupport.find("neutrality");
-	if (supportItr == ideologySupport.end())
+	if (remainingSupport > 0)
 	{
-		ideologySupport.insert(make_pair("neutrality", 0));
-		supportItr = ideologySupport.find("neutrality");
-	}
-	supportItr->second += remainingSupport;
-}
-
-
-void HoI4Country::determineShipVariants(const std::vector<HoI4::shipVariant>& possibleVariants)
-{
-	theShipVariants = std::make_unique<HoI4::shipVariants>(possibleVariants, *technologies, tag);
-}
-
-
-void HoI4Country::convertNavies(
-	const HoI4::UnitMappings& unitMap,
-	const HoI4::MtgUnitMappings& mtgUnitMap,
-	const HoI4::coastalProvinces& theCoastalProvinces,
-	const std::map<int, int>& provinceToStateIDMap)
-{
-	int backupNavalLocation = 0;
-	for (auto state: states)
-	{
-		if (state.second->getOwner() == tag)
+		auto supportItr = ideologySupport.find("neutrality");
+		if (supportItr == ideologySupport.end())
 		{
-			auto mainNavalLocation = state.second->getMainNavalLocation();
+			ideologySupport.insert(make_pair("neutrality", 0));
+			supportItr = ideologySupport.find("neutrality");
+		}
+		supportItr->second += remainingSupport;
+	}
+}
+
+
+void HoI4::Country::determineShipVariants(const std::vector<shipVariant>& possibleVariants)
+{
+	theShipVariants = std::make_unique<shipVariants>(possibleVariants, *theTechnologies, tag);
+}
+
+
+void HoI4::Country::convertNavies(
+	const UnitMappings& unitMap,
+	const MtgUnitMappings& mtgUnitMap,
+	const coastalProvinces& theCoastalProvinces,
+	const std::map<int, int>& provinceToStateIDMap,
+	const std::map<int, State>& allStates)
+{
+	auto backupNavalLocation = 0;
+	for (const auto& state: allStates)
+	{
+		if (state.second.getOwner() == tag)
+		{
+			auto mainNavalLocation = state.second.getMainNavalLocation();
 			if (mainNavalLocation)
 			{
 				// Mapped ships will be placed in a single large fleet
@@ -488,32 +633,28 @@ void HoI4Country::convertNavies(
 		}
 	}
 
-	theNavies = std::make_unique<HoI4::Navies>(
-		srcCountry->getArmies(),
+	theNavies = std::make_unique<Navies>(
+		sourceCountry.getArmies(),
 		backupNavalLocation,
 		unitMap,
 		mtgUnitMap,
 		*theShipVariants,
 		theCoastalProvinces,
 		provinceToStateIDMap,
-		states,
+		allStates,
 		tag);
 }
 
 
-void HoI4Country::convertConvoys(const HoI4::UnitMappings& unitMap)
+void HoI4::Country::convertConvoys(const UnitMappings& unitMap)
 {
-	for (auto army : srcCountry->getArmies())
+	for (auto army : sourceCountry.getArmies())
 	{
 		for (auto regiment : army->getRegiments())
 		{
-			string type = regiment->getType();
-
-			if (unitMap.hasMatchingType(type))
+			if (auto type = regiment->getType(); unitMap.hasMatchingType(type))
 			{
-				HoI4::HoI4UnitType unitInfo = unitMap.getMatchingUnitInfo(type);
-
-				if (unitInfo.getCategory() == "convoy")
+				if (auto unitInfo = unitMap.getMatchingUnitInfo(type); unitInfo.getCategory() == "convoy")
 				{
 					// Convoys get placed in national stockpile
 					convoys = convoys + unitInfo.getSize();
@@ -528,58 +669,51 @@ void HoI4Country::convertConvoys(const HoI4::UnitMappings& unitMap)
 }
 
 
-void HoI4Country::convertAirforce(const HoI4::UnitMappings& unitMap)
+void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 {
-        static std::map<std::string, vector<std::string>> backups = {
-            {"fighter_equipment_0", {"tac_bomber_equipment_0"}}};
-        for (auto army : srcCountry->getArmies())
+	static std::map<std::string, vector<std::string>> backups = {
+		{"fighter_equipment_0", {"tac_bomber_equipment_0"}}
+	};
+	for (auto army : sourceCountry.getArmies())
 	{
 		for (auto regiment : army->getRegiments())
 		{
-			string type = regiment->getType();
-
-			if (unitMap.hasMatchingType(type))
+			if (auto type = regiment->getType(); unitMap.hasMatchingType(type))
 			{
-				HoI4::HoI4UnitType unitInfo = unitMap.getMatchingUnitInfo(type);
+				auto unitInfo = unitMap.getMatchingUnitInfo(type);
+				if (unitInfo.getCategory() != "air")
+				{
+					continue;
+				}
 
-                                if (unitInfo.getCategory() != "air")
-                                {
-                                        continue;
-                                }
-
-                                // Air units get placed in national stockpile.
-                                string equip = unitInfo.getEquipment();
-                                int amount = unitInfo.getSize();
-                                const auto& bkup = backups.find(equip);
-                                if (bkup != backups.end())
-                                {
-                                  amount /= (1 + bkup->second.size());
-                                        for (const auto& b : bkup->second)
-                                        {
-                                                equipmentStockpile[b] += amount;
-                                        }
-                                }
-                                equipmentStockpile[equip] += amount;
-                        }
-                        else
+				// Air units get placed in national stockpile.
+				auto equip = unitInfo.getEquipment();
+				unsigned int amount = unitInfo.getSize();
+				const auto& backup = backups.find(equip);
+				if (backup != backups.end())
+				{
+					amount /= (1 + backup->second.size());
+					for (const auto& b : backup->second)
+					{
+						equipmentStockpile[b] += amount;
+					}
+				}
+				equipmentStockpile[equip] += amount;
+			}
+			else
 			{
 				LOG(LogLevel::Warning) << "Unknown unit type: " << type;
 			}
 		}
-	}	
+	}
 }
 
 
-void HoI4Country::convertArmies(const HoI4::militaryMappings& theMilitaryMappings)
+void HoI4::Country::convertArmies(const militaryMappings& theMilitaryMappings)
 {
-	std::optional<int> backupLocation;
-	if (capitalState != nullptr)
+	if (capitalProvince)
 	{
-		backupLocation = capitalState->getVPLocation();
-	}
-	if (backupLocation)
-	{
-		theArmy.convertArmies(theMilitaryMappings, *backupLocation, theConfiguration.getForceMultiplier());
+		theArmy.convertArmies(theMilitaryMappings, *capitalProvince, theConfiguration.getForceMultiplier());
 	}
 	else
 	{
@@ -588,37 +722,22 @@ void HoI4Country::convertArmies(const HoI4::militaryMappings& theMilitaryMapping
 }
 
 
-void HoI4Country::addState(HoI4::State* _state)
+void HoI4::Country::addState(const State& state)
 {
-	states.insert(make_pair(_state->getID(), _state));
+	states.insert(state.getID());
 
-	if (capitalStateNum == 0)
+	for (const auto province: state.getProvinces())
 	{
-		capitalState = _state;
-		capitalStateNum = _state->getID();
-		_state->setAsCapitalState();
-	}
-
-	for (const auto province: _state->getProvinces())
-	{
-		addProvince(province);
-		provinceCount++;
+		provinces.insert(province);
 	}
 }
 
 
-void HoI4Country::addProvince(int _province)
+std::optional<HoI4Relations> HoI4::Country::getRelations(const std::string& withWhom) const
 {
-	provinces.insert(_province);
-}
-
-
-optional<const HoI4Relations*> HoI4Country::getRelations(string withWhom) const
-{
-	map<string, HoI4Relations*>::const_iterator i = relations.find(withWhom);
-	if (i != relations.end())
+	if (const auto theRelations = relations.find(withWhom); theRelations != relations.end())
 	{
-		return i->second;
+		return theRelations->second;
 	}
 	else
 	{
@@ -627,40 +746,21 @@ optional<const HoI4Relations*> HoI4Country::getRelations(string withWhom) const
 }
 
 
-void HoI4Country::calculateIndustry()
+void HoI4::Country::calculateIndustry(const std::map<int, State>& allStates)
 {
-	for (auto state : states)
+	for (const auto& state: allStates)
 	{
-		civilianFactories += state.second->getCivFactories();
-		militaryFactories += state.second->getMilFactories();
-		dockyards += state.second->getDockyards();
+		if (state.second.getOwner() == tag)
+		{
+			civilianFactories += state.second.getCivFactories();
+			militaryFactories += state.second.getMilFactories();
+			dockyards += state.second.getDockyards();
+		}
 	}
 }
 
 
-void HoI4Country::reportIndustry(ofstream& out)
-{
-	if (states.size() > 0)
-	{
-		out << tag << ',';
-		out << militaryFactories << ',';
-		out << civilianFactories << ',';
-		out << dockyards << ',';
-		out << militaryFactories + civilianFactories + dockyards << '\n';
-	}
-}
-
-
-void HoI4Country::addVPsToCapital(int VPs)
-{
-	if (capitalState != nullptr)
-	{
-		capitalState->addVictoryPointValue(VPs);
-	}
-}
-
-
-void HoI4Country::addGenericFocusTree(const set<string>& majorIdeologies)
+void HoI4::Country::addGenericFocusTree(const std::set<string>& majorIdeologies)
 {
 	if (!nationalFocus)
 	{
@@ -671,1001 +771,84 @@ void HoI4Country::addGenericFocusTree(const set<string>& majorIdeologies)
 }
 
 
-void HoI4Country::adjustResearchFocuses()
+void HoI4::Country::adjustResearchFocuses() const
 {
-	if (greatPower && (nationalFocus != nullptr))
+	if (greatPower && nationalFocus)
 	{
 		nationalFocus->removeFocus("extra_tech_slot_2" + tag);
 	}
 }
 
 
-double HoI4Country::getStrengthOverTime(double years) const
+double HoI4::Country::getStrengthOverTime(const double& years) const
 {
 	return getMilitaryStrength() + getEconomicStrength(years);
 }
 
 
-double HoI4Country::getMilitaryStrength() const
+double HoI4::Country::getMilitaryStrength()
 {
-	return armyStrength;
+	return 0.0;
 }
 
 
-double HoI4Country::getEconomicStrength(double years) const
+double HoI4::Country::getEconomicStrength(const double& years) const
 {
-	double militarySectorStrength = militaryFactories * 3 * 365 * years;
-	double civilianSectorStrength = civilianFactories * 0.469 * 0.5 * 3 * 365 * 0.5 * years * years; /*.469 is milfac per year, .5 since half are used by consumer goods*/
+	constexpr auto militaryFactoriesPerYear = 0.469f;
+	constexpr auto factoriesUsedForConsumerGoods = 0.5f;
+	constexpr auto daysPerYear = 365;
+
+	const auto militarySectorStrength = militaryFactories * 3 * daysPerYear * years;
+	const auto civilianSectorStrength =
+		civilianFactories
+		* militaryFactoriesPerYear
+		* factoriesUsedForConsumerGoods
+		* factoriesUsedForConsumerGoods
+		* 3
+		* daysPerYear
+		* years
+		* years;
 
 	return militarySectorStrength + civilianSectorStrength;
 }
 
 
-void HoI4Country::outputToCommonCountriesFile(ofstream& countriesFile) const
+bool HoI4::Country::areElectionsAllowed() const
 {
-	countriesFile << tag.c_str() << " = \"countries/" << Utils::normalizeUTF8Path(commonCountryFile) << "\"\n";
-}
-
-
-void HoI4Country::outputColors(ofstream& out) const
-{
-	out << tag << " = {\n";
-	out << "\tcolor = rgb { " << color << " }\n";
-	out << "\tcolor_ui = rgb { " << color << " }";
-	out << "}\n";
-}
-
-
-void HoI4Country::outputToNamesFiles(ofstream& namesFile, const HoI4::namesMapper& theNames) const
-{
-	auto femaleSurnames = theNames.getFemaleSurnames(srcCountry->getPrimaryCulture());
-
-	namesFile << tag << " = {\n";
-
-	namesFile << "\tmale = {\n";
-	namesFile << "\t\tnames = {\n";
-	outputNamesSet(namesFile, theNames.getMaleNames(srcCountry->getPrimaryCulture()), "\t\t\t");
-	namesFile << "\t\t}\n";
-	if (femaleSurnames->size() > 0)
-	{
-		namesFile << "\t\tsurnames = {\n";
-		outputNamesSet(namesFile, theNames.getSurnames(srcCountry->getPrimaryCulture()), "\t\t");
-		namesFile << "\t\t}\n";
-	}
-	namesFile << "\t}\n";
-
-	namesFile << "\tfemale = {\n";
-	namesFile << "\t\tnames = {\n";
-	outputNamesSet(namesFile, theNames.getFemaleNames(srcCountry->getPrimaryCulture()), "\t\t\t");
-	namesFile << "\t\t}\n";
-	if (femaleSurnames->size() > 0)
-	{
-		namesFile << "\t\tsurnames = {\n";
-		outputNamesSet(namesFile, femaleSurnames, "\t\t");
-		namesFile << "\t}\n";
-	}
-	namesFile << "\t}\n";
-
-	if (femaleSurnames->size() == 0)
-	{
-		namesFile << "\tsurnames = {\n";
-		outputNamesSet(namesFile, theNames.getSurnames(srcCountry->getPrimaryCulture()), "\t\t");
-		namesFile << "\t}\n";
-	}
-
-	namesFile << "\tcallsigns = {\n";
-	outputNamesSet(namesFile, theNames.getCallsigns(srcCountry->getPrimaryCulture()), "\t\t");
-	namesFile << "\t}\n";
-
-	namesFile << "}\n";
-}
-
-void HoI4Country::outputUnitType(ofstream& unitNamesFile, const string& sourceUnitType, const string& destUnitType, const string& defaultName) const
-{
-	unitNamesFile << "\t" << destUnitType << " = {\n";
-	unitNamesFile << "\t\tprefix = \"\"\n";
-	unitNamesFile << "\t\tgeneric = { \""<< defaultName <<"\" }\n";
-	unitNamesFile << "\t\tunique = {\n";
-
-	unitNamesFile << "\t\t\t";
-	for (string shipName : srcCountry->getShipNames(sourceUnitType))
-	{
-		unitNamesFile << "\"" << shipName << "\" ";
-	}
-	unitNamesFile << "\n";
-
-	unitNamesFile << "\t\t}\n";
-	unitNamesFile << "\t}\n";
-	unitNamesFile << "\n";
-}
-
-void HoI4Country::outputToUnitNamesFiles(ofstream& unitNamesFile) const
-{
-	unitNamesFile << tag << " = {\n";
-
-	outputUnitType(unitNamesFile, "frigate", "submarine", "Submarine");
-	outputUnitType(unitNamesFile, "monitor", "carrier", "Carrier");
-
-	outputUnitType(unitNamesFile, "dreadnought", "battleship", "Battleship");
-	outputUnitType(unitNamesFile, "ironclad", "battle_cruiser", "Battlecruiser");
-	outputUnitType(unitNamesFile, "manowar", "heavy_cruiser", "Heavy Cruiser");
-
-	outputUnitType(unitNamesFile, "cruiser", "destroyer", "Destroyer");
-	outputUnitType(unitNamesFile, "commerce_raider", "light_cruiser", "Light Cruiser");
-
-	unitNamesFile << "}\n\n";
-}
-
-void HoI4Country::outputNamesSet(ofstream& namesFile, const optional<vector<string>>& names, const string& tabs) const
-{
-	if (names)
-	{
-		namesFile << tabs;
-
-		for (unsigned int i = 0; i < names->size(); i++)
-		{
-			namesFile << '\"' << (*names)[i] << '\"';
-			if ((i + 1) == names->size())
-			{
-				continue;
-			}
-			else if (((i + 1) % 10) == 0)
-			{
-				namesFile << "\n";
-				namesFile << tabs;
-			}
-			else
-			{
-				namesFile << " ";
-			}
-		}
-
-		namesFile << '\n';
-	}
-}
-
-
-void HoI4Country::output(const set<const HoI4::Advisor*, HoI4::advisorCompare>& ideologicalMinisters, const vector<HoI4::DivisionTemplateType>& divisionTemplates, HoI4::namesMapper& theNames, graphicsMapper& theGraphics) const
-{
-	if (capitalStateNum != 0)
-	{
-		outputHistory(theNames, theGraphics);
-		outputOOB(divisionTemplates);
-		outputCommonCountryFile();
-		outputAdvisorIdeas(ideologicalMinisters);
-
-		if (nationalFocus != nullptr)
-		{
-			nationalFocus->output("output/" + theConfiguration.getOutputName() + "/common/national_focus/" + tag + "_NF.txt");
-		}
-	}
-}
-
-
-void HoI4Country::outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics) const
-{
-	ofstream output(
-		"output/" + theConfiguration.getOutputName() + "/history/countries/" + Utils::normalizeUTF8Path(filename)
-	);
-	if (!output.is_open())
-	{
-		Log(LogLevel::Error) <<
-			"Could not open output/" <<
-			theConfiguration.getOutputName() <<
-			"/history/countries/" <<
-			Utils::normalizeUTF8Path(filename);
-		exit(-1);
-	}
-	output << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
-
-	outputCapital(output);
-	outputResearchSlots(output);
-	outputThreat(output);
-	outputWars(output);
-	outputOOBLines(output);
-	technologies->outputTechnology(output);
-	technologies->outputResearchBonuses(output);
-	outputConvoys(output);
-	outputEquipmentStockpile(output);
-	outputPuppets(output);
-	outputPolitics(output);
-	outputRelations(output);
-	outputFactions(output);
-	outputIdeas(output);
-	outputStability(output);
-	outputWarSupport(output);
-	outputCountryLeader(output, theNames, theGraphics);
-	outputCommanders(output);
-	output << *theShipVariants;
-
-	output.close();
-}
-
-
-void HoI4Country::outputCapital(ofstream& output) const
-{
-	if (capitalStateNum > 0)
-	{
-		output << "capital = " << capitalStateNum << '\n';
-	}
-	else if (states.size() > 0)
-	{
-		output << "capital = " << states.begin()->first << '\n';
-	}
-	else
-	{
-		output << "capital = 1\n";
-	}
-}
-
-
-void HoI4Country::outputResearchSlots(ofstream& output) const
-{
-	if (greatPower)
-	{
-		output << "set_research_slots = 4\n";
-	}
-	else if (civilized)
-	{
-		output << "set_research_slots = 3\n";
-	}
-	else
-	{
-		output << "set_research_slots = 2\n";
-	}
-}
-
-
-void HoI4Country::outputThreat(ofstream& output) const
-{
-	if (threat != 0.0)
-	{
-		output << "add_named_threat = { threat = "<< threat << " name = infamy }\n";
-	}
-	output << "\n";
-}
-
-
-void HoI4Country::outputWars(ostream& output) const
-{
-	for (auto war: wars)
-	{
-		output << war;
-	}
-}
-
-
-void HoI4Country::outputOOBLines(ostream& output) const
-{
-	output << "oob = \"" << tag << "_OOB\"\n";
-	output << "if = {\n";
-	output << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-	output << "\t\tset_naval_oob = \"" << tag << "_1936_naval_mtg\"\n";
-	output << "\telse = { \n";
-	output << "\t\tset_naval_oob = \"" << tag << "_1936_naval_legacy\"\n";
-	output << "\t}\n";
-	output << "}\n";
-
-	output << "\n";
-}
-
-
-void HoI4Country::outputConvoys(ofstream& output) const
-{
-	output << "set_convoys = " << convoys << '\n';
-	output << "\n";
-}
-
-
-void HoI4Country::outputEquipmentStockpile(ofstream& output) const
-{
-	for (auto eqp: equipmentStockpile)
-	{
-		output << "add_equipment_to_stockpile = { type = " << eqp.first << " amount = " << eqp.second << " producer = " << tag << " }\n";
-	}	
-	output << "\n";
-}
-
-
-void HoI4Country::outputPuppets(ofstream& output) const
-{
-	if (puppets.size() > 0)
-	{
-		output << "# DIPLOMACY\n";
-		output << "if = {\n";
-		output << "    limit = {\n";
-		output << "        has_dlc = \"Together for Victory\"\n";
-		output << "    }\n";
-		for (auto puppet : puppets)
-		{
-			if (governmentIdeology == "fascism")
-			{
-				output << "    set_autonomy = {\n";
-				output << "        target = " << puppet << "\n";
-				output << "        autonomous_state = autonomy_integrated_puppet\n";
-				output << "    }\n";
-			}
-			else
-			{
-				output << "    set_autonomy = {\n";
-				output << "        target = " << puppet << "\n";
-				output << "        autonomous_state = autonomy_dominion\n";
-				output << "        freedom_level = 0.4\n";
-				output << "    }\n";
-			}
-		}
-		output << "    else = {\n";
-		for (auto puppet : puppets)
-		{
-			if (governmentIdeology == "fascism")
-			{
-				output << "        set_autonomy = {\n";
-				output << "            target = " << puppet << "\n";
-				output << "            autonomous_state = autonomy_puppet\n";
-				output << "        }\n";
-			}
-			else
-			{
-				output << "        puppet = " << puppet << "\n";
-			}
-		}
-		output << "    }\n";
-		output << "}\n";
-		output << "\n";
-
-		output << "if = {\n";
-		output << "    limit = {has_dlc = \"Together for Victory\" }\n";
-		output << "\n";
-		output << "    add_to_tech_sharing_group = " << tag <<"_research\n";
-		output << "}\n\n";
-	}
-
-	if (puppetMaster != "")
-	{
-		output << "if = {\n";
-		output << "    limit = {has_dlc = \"Together for Victory\" }\n";
-		output << "\n";
-		output << "    add_to_tech_sharing_group = " << puppetMaster << "_research\n";
-		output << "}\n\n";
-	}
-}
-
-
-void HoI4Country::outputPolitics(ofstream& output) const
-{
-	output << "set_politics = {\n";
-	output << "    ruling_party = " << governmentIdeology << "\n";
-	output << "    last_election = \"" << lastElection << "\"\n";
-	output << "    election_frequency = 48\n";
-	if (areElectionsAllowed())
-	{
-		output << "    elections_allowed = yes\n";
-	}
-	else
-	{
-		output << "    elections_allowed = no\n";
-	}
-	output << "}\n";
-	output << "\n";
-
-	output << "set_popularities = {\n";
-	for (auto ideology: ideologySupport)
-	{
-		output << "	" << ideology.first << " = " << ideology.second << "\n";
-	}
-	output << "}\n";
-	output << "\n";
-
-}
-
-
-void HoI4Country::outputRelations(ofstream& output) const
-{
-	for (auto relation: relations)
-	{
-		if (relation.first != tag)
-		{
-			if (relation.second->getRelations() == 0)
-			{
-				continue;
-			}
-			output << "add_opinion_modifier = { target = " << relation.first << " modifier = ";
-			int relationsValue = relation.second->getRelations();
-			if (relationsValue < 0)
-			{
-				output << "negative_";
-			}
-			else
-			{
-				output << "positive_";
-			}
-			output << abs(relationsValue) << " }\n";
-		}
-	}
-	output << "\n";
-}
-
-
-bool HoI4Country::areElectionsAllowed(void) const
-{
-	if (
-			(governmentIdeology == "democratic") ||
+	return
+		(governmentIdeology == "democratic") ||
+		(
+			(governmentIdeology == "neutrality") &&
 			(
-				(governmentIdeology == "neutrality") &&
-				(
-					(leaderIdeology == "conservatism_neutral") ||
-					(leaderIdeology == "liberalism_neutral") ||
-					(leaderIdeology == "socialism_neutral")
-				)
+				(leaderIdeology == "conservatism_neutral") ||
+				(leaderIdeology == "liberalism_neutral") ||
+				(leaderIdeology == "socialism_neutral")
 			)
-		)
+		);
+}
+
+
+std::optional<HoI4Faction> HoI4::Country::getFaction() const
+{
+	if (faction)
 	{
-		return true;
+		return std::make_optional(*faction);
 	}
 	else
 	{
-		return false;
+		return nullopt;
 	}
 }
 
 
-void HoI4Country::outputFactions(ofstream& output) const
+std::optional<HoI4FocusTree> HoI4::Country::getNationalFocus() const
 {
-	if ((faction != nullptr) && (faction->getLeader()->getTag() == tag))
+	if (nationalFocus)
 	{
-		string allianceName;
-		auto possibleLeaderName = getSourceCountry()->getName("english");
-		if (possibleLeaderName)
-		{
-			allianceName = "Alliance of " + *possibleLeaderName;
-		}
-		else
-		{
-			LOG(LogLevel::Warning) << "Could not name alliance";
-			allianceName = "faction";
-		}
-		output << "create_faction = \"" + allianceName + "\"\n";
-		for (auto factionMember : faction->getMembers())
-		{
-			output << "add_to_faction = " + factionMember->getTag() + "\n";
-		}
-	}
-
-	output << '\n';
-}
-
-
-void HoI4Country::outputIdeas(ofstream& output) const
-{
-	output << "add_ideas = {\n";
-	if (majorNation)
-	{
-		output << "\tgreat_power\n";
-	}
-	if (!civilized)
-	{
-		output << "\tuncivilized\n";
-	}
-
-	for (auto idea: ideas)
-	{
-		output << "\t" << idea << "\n";
-	}
-
-	output << "\t" << mobilizationLaw << "\n";
-	output << "\t" << economicLaw << "\n";
-	output << "\t" << tradeLaw << "\n";
-	output << "\tculture_" << srcCountry->getPrimaryCulture() << "\n";
-
-	output << "}\n";
-}
-
-
-void HoI4Country::outputStability(ofstream& output) const
-{
-	if (states.size() > 0)
-	{
-		output << "set_stability = 0." << int(stability * 100) << "\n";
-	}
-}
-
-
-void HoI4Country::outputWarSupport(ofstream& output) const
-{
-	if (states.size() > 0)
-	{
-		output << "set_war_support = 0." << int(warSupport * 100) << "\n";
-	}
-}
-
-
-void HoI4Country::outputCountryLeader(ofstream& output, HoI4::namesMapper& theNames, graphicsMapper& theGraphics) const
-{
-	optional<string> firstName = theNames.getMaleName(srcCountry->getPrimaryCulture());
-	optional<string> surname = theNames.getSurname(srcCountry->getPrimaryCulture());
-	string portrait = theGraphics.getLeaderPortrait(srcCountry->getPrimaryCultureGroup(), governmentIdeology);
-
-	if (firstName && surname)
-	{
-		string upperFirstName = *firstName;
-		std::transform(upperFirstName.begin(), upperFirstName.end(), upperFirstName.begin(), ::toupper);
-		string upperSurname = *surname;
-		std::transform(upperSurname.begin(), upperSurname.end(), upperSurname.begin(), ::toupper);
-		output << "create_country_leader = {\n";
-		output << "    name = \"" << *firstName << " " << *surname << "\"\n";
-		output << "    desc = \"POLITICS_" << upperFirstName << "_" << upperSurname << "_DESC\"\n";
-		output << "    picture = \"" << portrait << "\"\n";
-		output << "    expire = \"1965.1.1\"\n";
-		output << "    ideology = " << leaderIdeology << "\n";
-		output << "    traits = {\n";
-		output << "    }\n";
-		output << "}\n";
+		return std::make_optional(*nationalFocus);
 	}
 	else
 	{
-		LOG(LogLevel::Warning) << "Could not set leader for " + tag + ", as there were no names.";
+		return nullopt;
 	}
-}
-
-
-void HoI4Country::outputCommanders(ofstream& output) const
-{
-	for (auto general: generals)
-	{
-		output << general;
-		output << "\n";
-	}
-	for (auto admiral: admirals)
-	{
-		output << admiral;
-		output << "\n";
-	}
-}
-
-
-void HoI4Country::outputOOB(const vector<HoI4::DivisionTemplateType>& divisionTemplates) const
-{
-	ofstream output("output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_OOB.txt");
-	if (!output.is_open())
-	{
-		Log(LogLevel::Error) << "Could not open output/" << theConfiguration.getOutputName() << "/history/units/" << tag << "_OOB.txt";
-		exit(-1);
-	}
-	output << "\xEF\xBB\xBF";	// add the BOM to make HoI4 happy
-
-										/*for (auto armyItr: armies)
-										{
-										if (armyItr->getProductionQueue())
-										{
-										armyItr->outputIntoProductionQueue(output, tag);
-										}
-										else
-										{
-										armyItr->output(output);
-										}
-										}*/
-	output << "start_equipment_factor = 0\n";
-	for (auto& divisionTemplate : divisionTemplates)
-	{
-		output << divisionTemplate;
-		output << "\n";
-	}
-	output << "### No BHU air forces ###\n";
-	output << "instant_effect = {\n";
-	if (technologies->hasTechnology("infantry_weapons1"))
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = infantry_equipment_1\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 5\n";
-		output << "\t\tprogress = 0.88\n";
-		output << "\t\tefficiency = 100\n";
-		output << "\t}\n";
-	}
-	else
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = infantry_equipment_0\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 5\n";
-		output << "\t\tprogress = 0.88\n";
-		output << "\t\tefficiency = 100\n";
-		output << "\t}\n";
-	}
-	if (technologies->hasTechnology("gw_artillery"))
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = artillery_equipment_1\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 2\n";
-		output << "\t\tprogress = 0.88\n";
-		output << "\t\tefficiency = 100\n";
-		output << "\t}\n";
-	}
-	if (technologies->hasTechnology("fighter1"))
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = fighter_equipment_1\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 5\n";
-		output << "\t\tprogress = 0.88\n";
-		output << "\t\tefficiency = 100\n";
-		output << "\t}\n";
-	}
-	else if (technologies->hasTechnology("early_fighter"))
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = fighter_equipment_0\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 5\n";
-		output << "\t\tprogress = 0.88\n";
-		output << "\t\tefficiency = 100\n";
-		output << "\t}\n";
-	}
-	if (technologies->hasTechnology("basic_destroyer"))
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = destroyer_2\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 3\n";
-		output << "\t\tprogress = 0.25\n";
-		output << "\t\tamount = 10\n";
-		output << "\t}\n";
-	}
-	else if (technologies->hasTechnology("early_destroyer"))
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = destroyer_1\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 3\n";
-		output << "\t\tprogress = 0.25\n";
-		output << "\t\tamount = 10\n";
-		output << "\t}\n";
-	}
-	if (technologies->hasTechnology("basic_battleship"))
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = battleship_2\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 8\n";
-		output << "\t\tprogress = 0.25\n";
-		output << "\t\tamount = 3\n";
-		output << "\t}\n";
-	}
-	else if (technologies->hasTechnology("early_battleship"))
-	{
-		output << "\tadd_equipment_production = {\n";
-		output << "\t\tequipment = {\n";
-		output << "\t\t\ttype = battleship_1\n";
-		output << "\t\t\tcreator = \"" << tag << "\"\n";
-		output << "\t\t}\n";
-		output << "\t\trequested_factories = 8\n";
-		output << "\t\tprogress = 0.25\n";
-		output << "\t\tamount = 3\n";
-		output << "\t}\n";
-	}
-	output << "\tadd_equipment_production = {\n";
-	output << "\t\tequipment = {\n";
-	output << "\t\t\ttype = convoy_1\n";
-	output << "\t\t\tcreator = \"" << tag << "\"\n";
-	output << "\t\t}\n";
-	output << "\t\trequested_factories = 10\n";
-	output << "\t\tprogress = 0.50\n";
-	output << "\t\tamount = 100\n";
-	output << "\t}\n";
-	output << "}\n";
-	output << "units = {\n";
-	output << theArmy;
-	output << "}\n";
-	if (planes.size() > 0)
-	{
-		output << "air_wings = {\n";
-		output << "\t" << capitalStateNum << " = {\n";
-		for (auto& plane: planes)
-		{
-			output << plane;
-		}
-		output << "\t}\n";
-		output << "}\n";
-	}
-	output.close();
-
-	std::ofstream legacyNavy("output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_legacy.txt");
-	theNavies->outputLegacy(legacyNavy);
-
-	std::ofstream mtgNavy("output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_mtg.txt");
-	theNavies->outputMtg(mtgNavy);
-}
-
-
-void HoI4Country::outputCommonCountryFile() const
-{
-	ofstream output("output/" + theConfiguration.getOutputName() + "/common/countries/" + Utils::normalizeUTF8Path(commonCountryFile));
-	if (!output.is_open())
-	{
-		Log(LogLevel::Error) << "Could not open " << "output/" << theConfiguration.getOutputName() << "/common/countries/" << Utils::normalizeUTF8Path(commonCountryFile);
-		exit(-1);
-	}
-
-	if ((graphicalCulture != "") && (graphicalCulture2d != ""))
-	{
-		output << "graphical_culture = " << graphicalCulture << "\n";
-		output << "graphical_culture_2d = " << graphicalCulture2d << "\n";
-	}
-	output << "color = { " << color << " }\n";
-
-	output.close();
-}
-
-
-void HoI4Country::outputAdvisorIdeas(const set<const HoI4::Advisor*, HoI4::advisorCompare>& ideologicalAdvisors) const
-{
-	ofstream ideasFile("output/" + theConfiguration.getOutputName() + "/common/ideas/" + tag + ".txt");
-	if (!ideasFile.is_open())
-	{
-		LOG(LogLevel::Error) << "Could not open output/" << theConfiguration.getOutputName() << "/common/ideas/" << tag << ".txt";
-		exit(-1);
-	}
-
-	ideasFile << "ideas = {\n";
-	ideasFile << "\tpolitical_advisor = {\n";
-	for (auto ideologicalAdvisor: ideologicalAdvisors)
-	{
-		ideologicalAdvisor->output(ideasFile, tag);
-	}
-	ideasFile << "\t}\n";
-
-	ideasFile << "\ttank_manufacturer = { \n";
-	ideasFile << "\t\tdesigner = yes\n";
-	ideasFile << "\t\t\n";
-	ideasFile << "\t\t" << tag << "_tank_manufacturer = {\n";
-	ideasFile << "\t\t\tpicture = generic_tank_manufacturer_1\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tarmor = 0.10\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\ttraits = { tank_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\t}\n";
-	ideasFile << "\tnaval_manufacturer = { \n";
-	ideasFile << "\t\tdesigner = yes\n";
-	ideasFile << "\t\t" << tag << "_naval_manufacturer = {\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tpicture = generic_naval_manufacturer_1\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tnaval_equipment = 0.10\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\ttraits = { naval_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\t}\n";
-	ideasFile << "\taircraft_manufacturer = { \n";
-	ideasFile << "\t\tdesigner = yes\n";
-	ideasFile << "\t\t" << tag << "_light_aircraft_manufacturer = {\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tpicture = generic_air_manufacturer_1\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tair_equipment = 0.10\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\ttraits = { light_aircraft_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\t\t\n";
-	ideasFile << "\t\t" << tag << "_medium_aircraft_manufacturer = {\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tpicture = generic_air_manufacturer_3\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tair_equipment = 0.10\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\ttraits = { medium_aircraft_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\t\t\n";
-	ideasFile << "\t\t" << tag << "_heavy_aircraft_manufacturer = {\n";
-	ideasFile << "\t\t\tpicture = generic_air_manufacturer_2\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tair_equipment = 0.10\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\ttraits = { heavy_aircraft_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\t\t\n";
-	ideasFile << "\t\t" << tag << "_naval_aircraft_manufacturer = {\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tpicture = generic_naval_manufacturer_2\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tair_equipment = 0.10\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\ttraits = { naval_aircraft_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\t}\n";
-	ideasFile << "\tindustrial_concern = {\n";
-	ideasFile << "\t\t" << tag << "_industrial_concern = {\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tpicture = generic_industrial_concern_1\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tindustry = 0.10\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\ttraits = { industrial_concern }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\t\t" << tag << "_electronics_concern = {\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tpicture = generic_electronics_concern_1\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\telectronics = 0.10\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\ttraits = { electronics_concern }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\t}\n";
-	ideasFile << "\tmateriel_manufacturer = {\n";
-	ideasFile << "\t\tdesigner = yes\n";
-	ideasFile << "\t\t" << tag << "_motorized_equipment_manufacturer = {\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tpicture = generic_motorized_equipment_manufacturer_3\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tmotorized_equipment = 0.10\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\ttraits = { motorized_equipment_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\t\t\n";
-	ideasFile << "\t\t" << tag << "_infantry_equipment_manufacturer = {\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tpicture = generic_infantry_equipment_manufacturer_2\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tinfantry_weapons = 0.10\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\ttraits = { infantry_equipment_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\t\t\n";
-	ideasFile << "\t\t" << tag << "_artillery_manufacturer = {\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tpicture = generic_artillery_manufacturer_2\n";
-	ideasFile << "\t\t\tallowed = {\n";
-	ideasFile << "\t\t\t\toriginal_tag = " << tag << "\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tcost = 150\n";
-	ideasFile << "\t\t\tremoval_cost = 10\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\tresearch_bonus = {\n";
-	ideasFile << "\t\t\t\tartillery = 0.10\n";
-	ideasFile << "\t\t\t}\n";
-	ideasFile << "\t\t\t\n";
-	ideasFile << "\t\t\ttraits = { artillery_manufacturer }\n";
-	ideasFile << "\t\t}\n";
-	ideasFile << "\t}\n";
-
-	ideasFile << "}\n";
-}
-
-
-void HoI4Country::outputIdeaGraphics(ofstream& ideasFile, graphicsMapper& graphics) const
-{
-
-	ideasFile << "\tspriteType = {\n";
-	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_communist_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(srcCountry->getPrimaryCultureGroup(), "communism") << "\"\n";
-	ideasFile << "\t}\n";
-
-
-	ideasFile << "\tspriteType = {\n";
-	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_democratic_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(srcCountry->getPrimaryCultureGroup(), "democratic") << "\"\n";
-	ideasFile << "\t}\n";
-
-
-	ideasFile << "\tspriteType = {\n";
-	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_neutrality_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(srcCountry->getPrimaryCultureGroup(), "neutrality") << "\"\n";
-	ideasFile << "\t}\n";
-	
-	ideasFile << "\tspriteType = {\n";
-	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_absolutist_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(srcCountry->getPrimaryCultureGroup(), "absolutist") << "\"\n";
-	ideasFile << "\t}\n";
-
-
-	ideasFile << "\tspriteType = {\n";
-	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_radical_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(srcCountry->getPrimaryCultureGroup(), "radical") << "\"\n";
-	ideasFile << "\t}\n";
-
-
-	ideasFile << "\tspriteType = {\n";
-	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_fascist_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(srcCountry->getPrimaryCultureGroup(), "fascism") << "\"\n";
-	ideasFile << "\t}\n";
 }

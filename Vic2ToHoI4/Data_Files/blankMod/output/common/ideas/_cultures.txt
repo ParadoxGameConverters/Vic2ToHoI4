@@ -2913,8 +2913,8 @@ ideas = {
 			modifier = { 
 			}
 		}
-		
-		culture_coptic = {
+
+    culture_coptic = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_coptic
@@ -2969,5 +2969,4 @@ ideas = {
 			picture = culture_australus
 			modifier = { }
 		}
-	}
 }

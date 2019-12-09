@@ -37,14 +37,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-class HoI4Country;
-
-
-
 namespace HoI4
 {
 
-	class OnActions;
+class OnActions;
+class Country;
 
 class Events: commonItems::parser
 {
@@ -52,10 +49,10 @@ class Events: commonItems::parser
 		Events() = default;
 
 		void output() const;
-		void createFactionEvents(std::shared_ptr<HoI4Country> Leader, std::shared_ptr<HoI4Country> newAlly);
-		void createAnnexEvent(std::shared_ptr<HoI4Country> Annexer, std::shared_ptr<HoI4Country> Annexed);
-		void createSudetenEvent(std::shared_ptr<HoI4Country> Annexer, std::shared_ptr<HoI4Country> Annexed, const std::vector<int>& claimedStates);
-		void createTradeEvent(std::shared_ptr<HoI4Country> leader, std::shared_ptr<HoI4Country> GC);
+		void createFactionEvents(std::shared_ptr<HoI4::Country> Leader, std::shared_ptr<HoI4::Country> newAlly);
+		void createAnnexEvent(std::shared_ptr<HoI4::Country> Annexer, std::shared_ptr<HoI4::Country> Annexed);
+		void createSudetenEvent(std::shared_ptr<HoI4::Country> Annexer, std::shared_ptr<HoI4::Country> Annexed, const std::vector<int>& claimedStates);
+		void createTradeEvent(std::shared_ptr<HoI4::Country> leader, std::shared_ptr<HoI4::Country> GC);
 		void createPoliticalEvents(const std::set<std::string>& majorIdeologies);
 		void createWarJustificationEvents(const std::set<std::string>& majorIdeologies);
 		void importElectionEvents(const std::set<std::string>& majorIdeologies, HoI4::OnActions& onActions);

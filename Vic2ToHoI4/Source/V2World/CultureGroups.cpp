@@ -31,7 +31,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 class group: commonItems::parser
 {
 	public:
-		group(std::istream& theStream);
+		explicit group(std::istream& theStream);
 
 		auto getCultures() const { return cultures; }
 
@@ -56,7 +56,7 @@ group::group(std::istream& theStream)
 
 
 
-Vic2::cultureGroups::cultureGroups() noexcept
+void Vic2::cultureGroups::init()
 {
 	registerKeyword(std::regex("[a-zA-Z_]+"), [this](const std::string& groupName, std::istream& theStream){
 		group newCultureGroup(theStream);

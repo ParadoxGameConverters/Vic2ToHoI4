@@ -24,7 +24,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4States.h"
 #include "DefaultState.h"
 #include "HoI4State.h"
+#include "StateCategories.h"
+#include "../CoastalProvinces.h"
+#include "../HoI4Country.h"
 #include "../ImpassableProvinces.h"
+#include "../Resources.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "../../Configuration.h"
@@ -300,27 +304,27 @@ void HoI4States::createMatchingHoI4State(
 
 	if (passableProvinces.size() > 0)
 	{
-		HoI4::State* newState = new HoI4::State(vic2State, nextStateID, stateOwner);
+		HoI4::State newState(vic2State, nextStateID, stateOwner);
 		if (impassableProvinces.size() > 0)
 		{
-			newState->markHadImpassablePart();
+			newState.markHadImpassablePart();
 		}
 		addProvincesAndCoresToNewState(newState, passableProvinces);
-		newState->convertControlledProvinces(theProvinceMapper, countryMapper);
-		newState->tryToCreateVP(theProvinceMapper, theConfiguration);
-		newState->addManpower(theProvinceMapper, theConfiguration);
+		newState.convertControlledProvinces(theProvinceMapper, countryMapper);
+		newState.tryToCreateVP(theProvinceMapper, theConfiguration);
+		newState.addManpower(theProvinceMapper, theConfiguration);
 		states.insert(make_pair(nextStateID, newState));
 		nextStateID++;
 	}
 
 	if (impassableProvinces.size() > 0)
 	{
-		HoI4::State* newState = new HoI4::State(vic2State, nextStateID, stateOwner);
+		HoI4::State newState(vic2State, nextStateID, stateOwner);
 		addProvincesAndCoresToNewState(newState, impassableProvinces);
-		newState->makeImpassable();
-		newState->tryToCreateVP(theProvinceMapper, theConfiguration);
-		newState->addManpower(theProvinceMapper, theConfiguration);
-		states.insert(make_pair(nextStateID, newState));
+		newState.makeImpassable();
+		newState.tryToCreateVP(theProvinceMapper, theConfiguration);
+		newState.addManpower(theProvinceMapper, theConfiguration);
+		states.insert(std::make_pair(nextStateID, newState));
 		nextStateID++;
 	}
 }
@@ -353,16 +357,16 @@ unordered_set<int> HoI4States::getProvincesInState(const Vic2::State* vic2State,
 }
 
 
-void HoI4States::addProvincesAndCoresToNewState(HoI4::State* newState, unordered_set<int> provinces)
+void HoI4States::addProvincesAndCoresToNewState(HoI4::State& newState, unordered_set<int> provinces)
 {
 	for (auto province: provinces)
 	{
-		newState->addProvince(province);
-		provinceToStateIDMap.insert(make_pair(province, newState->getID()));
+		newState.addProvince(province);
+		provinceToStateIDMap.insert(std::make_pair(province, newState.getID()));
 		auto coresMapping = coresMap.find(province);
 		if (coresMapping != coresMap.end())
 		{
-			newState->addCores(coresMap.find(province)->second);
+			newState.addCores(coresMap.find(province)->second);
 		}
 	}
 }
@@ -413,10 +417,194 @@ unsigned int HoI4States::getTotalManpower() const
 	unsigned int totalManpower = 0;
 	for (auto state: states)
 	{
-		totalManpower += state.second->getManpower();
+		totalManpower += state.second.getManpower();
 	}
 
 	return totalManpower;
+}
+
+
+void HoI4States::convertAirBases(
+	const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers
+) {
+	addBasicAirBases();
+	addCapitalAirBases(countries);
+	addGreatPowerAirBases(greatPowers);
+}
+
+
+void HoI4States::addCapitalAirBases(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
+{
+	for (auto country: countries)
+	{
+		if (
+			std::map<int, HoI4::State>::iterator capitalState = states.find(*country.second->getCapitalState());
+			capitalState != states.end()
+			)
+		{
+			capitalState->second.addAirBase(5);
+		}
+	}
+}
+
+
+void HoI4States::addGreatPowerAirBases(const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers)
+{
+	for (auto greatPower: greatPowers)
+	{
+		if (
+			std::map<int, HoI4::State>::iterator capitalState = states.find(*greatPower->getCapitalState());
+			capitalState != states.end()
+			)
+		{
+			capitalState->second.addAirBase(5);
+		}
+	}
+}
+
+
+void HoI4States::addBasicAirBases()
+{
+	for (auto& state: states)
+	{
+		int numFactories = (state.second.getCivFactories() + state.second.getMilFactories()) / 4;
+		state.second.addAirBase(numFactories);
+
+		if (state.second.getInfrastructure() > 5)
+		{
+			state.second.addAirBase(1);
+		}
+	}
+}
+
+
+void HoI4States::convertResources()
+{
+	resources resourceMap;
+
+	for (auto& state: states)
+	{
+		for (auto provinceNumber: state.second.getProvinces())
+		{
+			for (auto resource: resourceMap.getResourcesInProvince(provinceNumber))
+			{
+				state.second.addResource(resource.first, resource.second);
+			}
+		}
+	}
+}
+
+
+void HoI4States::putIndustryInStates(
+	const std::map<std::string, double>& factoryWorkerRatios,
+	const HoI4::coastalProvinces& theCoastalProvinces
+) {
+	HoI4::StateCategories theStateCategories;
+
+	for (auto& HoI4State: states)
+	{
+		auto ratioMapping = factoryWorkerRatios.find(HoI4State.second.getOwner());
+		if (ratioMapping == factoryWorkerRatios.end())
+		{
+			continue;
+		}
+
+		HoI4State.second.convertIndustry(ratioMapping->second, theStateCategories, theCoastalProvinces);
+	}
+}
+
+
+void HoI4States::convertNavalBases(const HoI4::coastalProvinces& theCoastalProvinces)
+{
+	for (auto& state: states)
+	{
+		state.second.convertNavalBases(theCoastalProvinces, theProvinceMapper);
+	}
+}
+
+
+void HoI4States::convertCapitalVPs(
+	const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers,
+	double greatestStrength
+) {
+	LOG(LogLevel::Info) << "Adding bonuses to capitals";
+
+	addBasicCapitalVPs(countries);
+	addGreatPowerVPs(greatPowers);
+	addStrengthVPs(countries, greatestStrength);
+}
+
+
+void HoI4States::addCapitalsToStates(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
+{
+	for (auto country: countries)
+	{
+		if (auto capitalState = states.find(*country.second->getCapitalState()); capitalState != states.end())
+		{
+			capitalState->second.setAsCapitalState();
+			if (auto capitalProvince = country.second->getCapitalProvince(); capitalProvince)
+			{
+				capitalState->second.setVPLocation(*capitalProvince);
+			}
+		}
+	}
+}
+
+
+void HoI4States::addBasicCapitalVPs(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
+{
+	for (auto country: countries)
+	{
+		if (
+			std::map<int, HoI4::State>::iterator capitalState = states.find(*country.second->getCapitalState());
+			capitalState != states.end()
+			)
+		{
+			capitalState->second.addVictoryPointValue(5);
+		}
+	}
+}
+
+
+void HoI4States::addGreatPowerVPs(const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers)
+{
+	for (auto greatPower: greatPowers)
+	{
+		if (
+			std::map<int, HoI4::State>::iterator capitalState = states.find(*greatPower->getCapitalState());
+			capitalState != states.end()
+			)
+		{
+			capitalState->second.addVictoryPointValue(5);
+		}
+	}
+}
+
+
+void HoI4States::addStrengthVPs(
+	const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	double greatestStrength
+) {
+	for (auto country: countries)
+	{
+		int VPs = calculateStrengthVPs(*country.second, greatestStrength);
+		if (
+			std::map<int, HoI4::State>::iterator capitalState = states.find(*country.second->getCapitalState());
+			capitalState != states.end()
+			)
+		{
+			capitalState->second.addVictoryPointValue(VPs);
+		}
+	}
+}
+
+
+int HoI4States::calculateStrengthVPs(const HoI4::Country& country, double greatestStrength) const
+{
+	double relativeStrength = country.getStrengthOverTime(1.0) / greatestStrength;
+	return static_cast<int>(relativeStrength * 30.0);
 }
 
 
@@ -438,7 +626,7 @@ void HoI4States::output() const
 			std::runtime_error error("Could not open \"" + filename + "\"");
 			throw error;
 		}
-		state.second->output(out, theConfiguration);
+		state.second.output(out, theConfiguration);
 		out.close();
 	}
 }

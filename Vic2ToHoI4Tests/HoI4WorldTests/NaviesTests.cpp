@@ -104,7 +104,7 @@ TEST_F(HoI4World_NaviesTests, BlankNaviesOutputLegacyProperly)
 	HoI4::MtgUnitMappings mtgUnitMap(input);
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
-	std::map<int, HoI4::State*> states;
+	std::map<int, HoI4::State> states;
 	std::string tag;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, tag);
@@ -157,7 +157,7 @@ TEST_F(HoI4World_NaviesTests, ConvertedNaviesOutputLegacyProperly)
 	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
-	std::map<int, HoI4::State*> states;
+	std::map<int, HoI4::State> states;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
@@ -208,7 +208,7 @@ TEST_F(HoI4World_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
 	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
-	std::map<int, HoI4::State*> states;
+	std::map<int, HoI4::State> states;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
@@ -258,7 +258,7 @@ TEST_F(HoI4World_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
 	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
-	std::map<int, HoI4::State*> states;
+	std::map<int, HoI4::State> states;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
@@ -310,7 +310,7 @@ TEST_F(HoI4World_NaviesTests, LegacyNavyNamesConvert)
 	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
-	std::map<int, HoI4::State*> states;
+	std::map<int, HoI4::State> states;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
@@ -341,7 +341,7 @@ TEST_F(HoI4World_NaviesTests, BlankNaviesOutputMtgProperly)
 	HoI4::MtgUnitMappings mtgUnitMap(input);
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
-	std::map<int, HoI4::State*> states;
+	std::map<int, HoI4::State> states;
 	std::string tag;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, tag);
@@ -394,7 +394,7 @@ TEST_F(HoI4World_NaviesTests, ConvertedNaviesOutputMtgProperly)
 
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
-	std::map<int, HoI4::State*> states;
+	std::map<int, HoI4::State> states;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
@@ -462,7 +462,7 @@ TEST_F(HoI4World_NaviesTests, OnlyConvertToAvailableMtgShipType)
 
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
-	std::map<int, HoI4::State*> states;
+	std::map<int, HoI4::State> states;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *limitedShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
@@ -523,7 +523,7 @@ TEST_F(HoI4World_NaviesTests, ConvertedNaviesGetExperience)
 
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
-	std::map<int, HoI4::State*> states;
+	std::map<int, HoI4::State> states;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
@@ -576,7 +576,7 @@ TEST_F(HoI4World_NaviesTests, NaviesWithoutShipsDontConvertToMtg)
 
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
-	std::map<int, HoI4::State*> states;
+	std::map<int, HoI4::State> states;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
@@ -628,7 +628,7 @@ TEST_F(HoI4World_NaviesTests, NonNavalUnitsArentAddedToMtgNavy)
 
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
-	std::map<int, HoI4::State*> states;
+	std::map<int, HoI4::State> states;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
@@ -680,7 +680,7 @@ TEST_F(HoI4World_NaviesTests, MtgNavyNamesConvert)
 
 	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
-	std::map<int, HoI4::State*> states;
+	std::map<int, HoI4::State> states;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;

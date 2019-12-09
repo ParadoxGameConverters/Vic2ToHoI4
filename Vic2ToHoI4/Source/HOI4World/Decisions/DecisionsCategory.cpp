@@ -208,7 +208,7 @@ void HoI4::decisionsCategory::updateHoldTheIdeologyNationalReferendum(
 	if (eventNumber)
 	{
 		std::string completeEffect = "= {\n";
-		completeEffect += "\t\t\tcountry_event = { id = political." + std::to_string(*eventNumber) + " }\n";
+		completeEffect += "\t\t\tcountry_event = { id = conv.political." + std::to_string(*eventNumber) + " }\n";
 		completeEffect += "\t\t}";
 		decisionToUpdate.setCompleteEffect(completeEffect);
 	}
