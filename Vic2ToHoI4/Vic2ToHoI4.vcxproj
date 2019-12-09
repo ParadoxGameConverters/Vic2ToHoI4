@@ -187,6 +187,7 @@
     <ClCompile Include="Source\Configuration.cpp" />
     <ClCompile Include="Source\Flags.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionOutputter.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Hoi4CountryOutputter.cpp" />
     <ClCompile Include="Source\HOI4World\Advisor.cpp" />
     <ClCompile Include="Source\HOI4World\AIPeace.cpp" />
@@ -307,6 +308,7 @@
     <ClInclude Include="Source\Configuration.h" />
     <ClInclude Include="Source\Flags.h" />
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Hoi4CountryOutputter.h" />
     <ClInclude Include="Source\HOI4World\Advisor.h" />
     <ClInclude Include="Source\HOI4World\AIPeace.h" />

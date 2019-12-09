@@ -393,6 +393,9 @@
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionOutputter.cpp">
       <Filter>Hoi4Outputter\Decisions</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp">
+      <Filter>Hoi4Outputter\Decisions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -738,6 +741,9 @@
       <Filter>Hoi4Outputter</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionOutputter.h">
+      <Filter>Hoi4Outputter\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.h">
       <Filter>Hoi4Outputter\Decisions</Filter>
     </ClInclude>
   </ItemGroup>

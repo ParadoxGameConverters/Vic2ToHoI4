@@ -485,6 +485,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionOutputter.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Decisions</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Decisions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

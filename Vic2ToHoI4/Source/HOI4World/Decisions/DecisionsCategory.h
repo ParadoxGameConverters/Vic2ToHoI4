@@ -53,8 +53,9 @@ class decisionsCategory: commonItems::parser
 
 		void updatePoliticalDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
 
-		friend std::ostream& operator<<(std::ostream& outStream, const decisionsCategory& outCategory);
 		bool operator==(const decisionsCategory& otherCategory);
+
+		friend std::ostream& operator<<(std::ostream& outStream, const decisionsCategory& outCategory);
 
 	private:
 		std::string name = "";
@@ -66,8 +67,6 @@ class decisionsCategory: commonItems::parser
 		void updateIgniteTheIdeologyCivilWar(decision& decisionToUpdate, const std::set<std::string>& majorIdeologies);
 		void updateHoldTheIdeologyNationalReferendum(decision& decisionToUpdate, const Events& theEvents);
 };
-
-std::ostream& operator<<(std::ostream& outStream, const decisionsCategory& outCategory);
 
 }
 

@@ -23,7 +23,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "DecisionsCategory.h"
 #include "../Events.h"
-#include "../../Hoi4Outputter/Decisions/DecisionOutputter.h"
 
 
 
@@ -213,24 +212,6 @@ void HoI4::decisionsCategory::updateHoldTheIdeologyNationalReferendum(
 		completeEffect += "\t\t}";
 		decisionToUpdate.setCompleteEffect(completeEffect);
 	}
-}
-
-
-std::ostream& HoI4::operator<<(std::ostream& outStream, const decisionsCategory& outCategory)
-{
-	outStream << outCategory.name << " = {\n";
-	for (auto decision: outCategory.theDecisions)
-	{
-		outStream << decision << "\n";
-	}
-	if (outCategory.theDecisions.size() == 0)
-	{
-		outStream << "\n";
-	}
-	outStream << "}\n";
-	outStream << "\n";
-
-	return outStream;
 }
 
 
