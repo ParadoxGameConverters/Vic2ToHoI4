@@ -45,9 +45,6 @@ class DecisionsCategories: commonItems::parser
 		std::set<std::string> majorIdeologies;
 };
 
-
-std::ostream& operator<<(std::ostream& out, const DecisionsCategories& theCategories);
-
 }
 
 

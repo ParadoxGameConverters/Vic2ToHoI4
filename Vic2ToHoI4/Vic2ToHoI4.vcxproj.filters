@@ -384,9 +384,6 @@
     <ClCompile Include="Source\HOI4World\States\DefaultState.cpp">
       <Filter>HoI4World\States</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategories.cpp">
-      <Filter>HoI4World\Decisions</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Hoi4CountryOutputter.cpp">
       <Filter>Hoi4Outputter</Filter>
     </ClCompile>
@@ -394,6 +391,9 @@
       <Filter>Hoi4Outputter\Decisions</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp">
+      <Filter>Hoi4Outputter\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.cpp">
       <Filter>Hoi4Outputter\Decisions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -744,6 +744,9 @@
       <Filter>Hoi4Outputter\Decisions</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.h">
+      <Filter>Hoi4Outputter\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.h">
       <Filter>Hoi4Outputter\Decisions</Filter>
     </ClInclude>
   </ItemGroup>
