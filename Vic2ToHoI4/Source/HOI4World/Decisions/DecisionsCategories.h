@@ -12,7 +12,7 @@
 namespace HoI4
 {
 
-class DecisionsCategories: commonItems::parser
+class DecisionsCategories
 {
 	public:
 		explicit DecisionsCategories(
