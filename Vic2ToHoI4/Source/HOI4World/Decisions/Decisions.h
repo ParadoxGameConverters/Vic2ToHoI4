@@ -49,7 +49,9 @@ class decisions: commonItems::parser
 
 		void updateDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
 
-		void output();
+		const DecisionsCategories& getDecisionsCategories() const { return *decisionsCategories; }
+		const std::vector<decisionsCategory>& getStabilityDecisions() const { return stabilityDecisions; }
+		const std::vector<decisionsCategory>& getPoliticalDecisions() const { return politicalDecisions; }
 
 	private:
 		void updateStabilityDecisions(const std::set<std::string>& majorIdeologies);

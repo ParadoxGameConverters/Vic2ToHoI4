@@ -190,28 +190,3 @@ void HoI4::decisions::updatePoliticalDecisions(const std::set<std::string>& majo
 		decisionsByIdeology.updatePoliticalDecisions(majorIdeologies, theEvents);
 	}
 }
-
-
-void HoI4::decisions::output()
-{
-	std::ofstream outStream(
-		"output/" + theConfiguration.getOutputName() + "/common/decisions/categories/00_decision_categories.txt",
-		std::ostream::app
-	);
-	outStream << *decisionsCategories;
-	outStream.close();
-
-	outStream.open("output/" + theConfiguration.getOutputName() + "/common/decisions/stability_war_support.txt");
-	for (auto category: stabilityDecisions)
-	{
-		outStream << category;
-	}
-	outStream.close();
-
-	outStream.open("output/" + theConfiguration.getOutputName() + "/common/decisions/political_decisions.txt");
-	for (auto category: politicalDecisions)
-	{
-		outStream << category;
-	}
-	outStream.close();
-}

@@ -57,6 +57,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Hoi4CountryOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Advisor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AIPeace.cpp" />

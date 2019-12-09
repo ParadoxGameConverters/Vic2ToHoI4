@@ -55,6 +55,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "ParserHelpers.h"
 #include "../Hoi4Outputter/Hoi4CountryOutputter.h"
+#include "../Hoi4Outputter/Decisions/DecisionsOutputter.h"
 #include <fstream>
 using namespace std;
 
@@ -1088,7 +1089,7 @@ void HoI4::World::output()
 	outputGenericFocusTree();
 	outputCountries();
 	buildings->output();
-	decisions->output();
+	outputDecisions(*decisions, theConfiguration);
 	events->output();
 	onActions->output(majorIdeologies);
 	peaces->output(majorIdeologies);
