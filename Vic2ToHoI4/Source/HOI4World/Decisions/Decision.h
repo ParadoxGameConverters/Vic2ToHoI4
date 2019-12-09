@@ -16,15 +16,15 @@ class decision: commonItems::parser
 	public:
 		decision(const std::string& decisionName, std::istream& theStream);
 
-		std::string getName() const { return name; }
-		std::string getTimeoutEffect() const { return timeoutEffect; }
+		[[nodiscard]] std::string getName() const { return name; }
+		[[nodiscard]] std::string getTimeoutEffect() const { return timeoutEffect; }
 
 		void setAvailable(const std::string& newAvailable) { available = newAvailable; }
 		void setCompleteEffect(const std::string& newEffect) { completeEffect = newEffect; }
 		void setTimeoutEffect(const std::string& newEffect) { timeoutEffect = newEffect; }
 		void setModifier(const std::string& newModifier) { modifier = newModifier; }
 
-		bool operator==(const HoI4::decision& otherDecision);
+		bool operator==(const decision& otherDecision) const;
 
 		friend std::ostream& operator<<(std::ostream& outStream, const decision& outDecision);
 
