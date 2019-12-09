@@ -1,26 +1,3 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "DecisionsCategory.h"
 #include "../Events.h"
 
@@ -30,7 +7,7 @@ HoI4::decisionsCategory::decisionsCategory(const std::string& categoryName, std:
 	name(categoryName)
 {
 	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), [this](const std::string& decisionName, std::istream& theStream)	{
-		decision theDecision(decisionName, theStream);
+		const decision theDecision(decisionName, theStream);
 		theDecisions.push_back(theDecision);
 	});
 
@@ -73,7 +50,7 @@ void HoI4::decisionsCategory::updateOpenUpPoliticalDiscourse(
 	const std::set<std::string>& majorIdeologies
 ) {
 	std::string available = "= {\n";
-	for (auto ideology : majorIdeologies)
+	for (const auto& ideology: majorIdeologies)
 	{
 		available += "\t\t\t" + ideology + " < 0.9\n";
 	}
@@ -86,9 +63,9 @@ void HoI4::decisionsCategory::updateDiscreditGovernment(
 	decision& decisionToUpdate,
 	const std::set<std::string>& majorIdeologies
 ) {
-	std::string decisionIdeology = decisionToUpdate.getName().substr(21, decisionToUpdate.getName().length());
+	const auto decisionIdeology = decisionToUpdate.getName().substr(21, decisionToUpdate.getName().length());
 	std::string available = "= {\n";
-	for (auto ideology : majorIdeologies)
+	for (const auto& ideology: majorIdeologies)
 	{
 		available += "\t\t\t" + ideology + " < 0.8\n";
 	}
@@ -97,7 +74,7 @@ void HoI4::decisionsCategory::updateDiscreditGovernment(
 	decisionToUpdate.setAvailable(available);
 	std::string completeEffect = "= {\n";
 	completeEffect += "\t\t\tadd_stability = -0.010\n";
-	for (auto ideology : majorIdeologies)
+	for (const auto& ideology: majorIdeologies)
 	{
 		if (ideology == decisionIdeology)
 		{
@@ -122,10 +99,10 @@ void HoI4::decisionsCategory::updateInstitutePressCensorship(
 	decision& decisionToUpdate,
 	const std::set<std::string>& majorIdeologies
 ) {
-	std::string decisionIdeology = decisionToUpdate.getName().substr(27, decisionToUpdate.getName().length());
+	auto decisionIdeology = decisionToUpdate.getName().substr(27, decisionToUpdate.getName().length());
 	decisionIdeology = decisionIdeology.substr(0, decisionIdeology.find_last_of('_'));
 	std::string modifier = "= {\n";
-	for (auto ideology : majorIdeologies)
+	for (const auto& ideology: majorIdeologies)
 	{
 		if (ideology == decisionIdeology)
 		{
@@ -145,10 +122,10 @@ void HoI4::decisionsCategory::updateIgniteTheIdeologyCivilWar(
 	decision& decisionToUpdate,
 	const std::set<std::string>& majorIdeologies
 ) {
-	std::string decisionIdeology = decisionToUpdate.getName().substr(11, decisionToUpdate.getName().length());
+	auto decisionIdeology = decisionToUpdate.getName().substr(11, decisionToUpdate.getName().length());
 	decisionIdeology = decisionIdeology.substr(0, decisionIdeology.find_first_of('_'));
 	std::string completeEffect = "= {\n";
-	for (auto ideology : majorIdeologies)
+	for (const auto& ideology: majorIdeologies)
 	{
 		if (ideology == decisionIdeology)
 		{
@@ -201,8 +178,9 @@ void HoI4::decisionsCategory::updateIgniteTheIdeologyCivilWar(
 void HoI4::decisionsCategory::updateHoldTheIdeologyNationalReferendum(
 	decision& decisionToUpdate,
 	const Events& theEvents
-) {
-	std::string decisionIdeology = decisionToUpdate.getName().substr(9, decisionToUpdate.getName().length());
+) const
+{
+	auto decisionIdeology = decisionToUpdate.getName().substr(9, decisionToUpdate.getName().length());
 	decisionIdeology = decisionIdeology.substr(0, decisionIdeology.find_first_of('_'));
 	auto eventNumber = theEvents.getEventNumber("fiftyPercent" + decisionIdeology);
 	if (eventNumber)
@@ -215,7 +193,7 @@ void HoI4::decisionsCategory::updateHoldTheIdeologyNationalReferendum(
 }
 
 
-bool HoI4::decisionsCategory::operator==(const decisionsCategory& otherCategory)
+bool HoI4::decisionsCategory::operator==(const decisionsCategory& otherCategory) const
 {
 	return (name == otherCategory.name);
 }
