@@ -23,6 +23,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "DecisionsCategory.h"
 #include "../Events.h"
+#include "../../Hoi4Outputter/Decisions/DecisionOutputter.h"
 
 
 

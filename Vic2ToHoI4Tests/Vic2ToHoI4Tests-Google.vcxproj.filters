@@ -482,6 +482,9 @@
     <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Decisions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -537,6 +540,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Hoi4Outputter">
       <UniqueIdentifier>{dda4426a-5184-48ef-91a3-66ee0746d4c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Decisions">
+      <UniqueIdentifier>{e6230754-cb95-4f0f-b5ba-d0403ab31ecc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
