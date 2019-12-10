@@ -13,7 +13,7 @@ HoI4::decisions::decisions(const Configuration& theConfiguration) noexcept
 		const decisionsCategory category(categoryName, theStream);
 		stabilityDecisions.push_back(category);
 	});
-	parseFile("blankmod/output/common/decisions/stability_war_support.txt");
+	parseFile(theConfiguration.getHoI4Path() + "/common/decisions/stability_war_support.txt");
 
 	clearRegisteredKeywords();
 
