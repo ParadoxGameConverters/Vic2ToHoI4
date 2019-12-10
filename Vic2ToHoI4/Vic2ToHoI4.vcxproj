@@ -186,6 +186,10 @@
     <ClCompile Include="Source\Color.cpp" />
     <ClCompile Include="Source\Configuration.cpp" />
     <ClCompile Include="Source\Flags.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionOutputter.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Hoi4CountryOutputter.cpp" />
     <ClCompile Include="Source\HOI4World\Advisor.cpp" />
     <ClCompile Include="Source\HOI4World\AIPeace.cpp" />
@@ -193,7 +197,6 @@
     <ClCompile Include="Source\HOI4World\CoastalProvinces.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\Decision.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\Decisions.cpp" />
-    <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategories.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\IdeologicalDecisions.cpp" />
     <ClCompile Include="Source\HOI4World\Division.cpp" />
@@ -305,6 +308,10 @@
     <ClInclude Include="Source\Color.h" />
     <ClInclude Include="Source\Configuration.h" />
     <ClInclude Include="Source\Flags.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Hoi4CountryOutputter.h" />
     <ClInclude Include="Source\HOI4World\Advisor.h" />
     <ClInclude Include="Source\HOI4World\AIPeace.h" />

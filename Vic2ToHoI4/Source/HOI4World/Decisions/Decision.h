@@ -1,26 +1,3 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #ifndef HOI4_DECISION_H
 #define HOI4_DECISION_H
 
@@ -39,16 +16,20 @@ class decision: commonItems::parser
 	public:
 		decision(const std::string& decisionName, std::istream& theStream);
 
-		std::string getName() const { return name; }
-		std::string getTimeoutEffect() const { return timeoutEffect; }
+		[[nodiscard]] std::string getName() const { return name; }
+		[[nodiscard]] std::string getTimeoutEffect() const { return timeoutEffect; }
 
 		void setAvailable(const std::string& newAvailable) { available = newAvailable; }
+		void setTargetTrigger(const std::string& newTargetTrigger) { targetTrigger = newTargetTrigger; }
+		void setVisible(const std::string& newVisible) { visible = newVisible; }
 		void setCompleteEffect(const std::string& newEffect) { completeEffect = newEffect; }
 		void setTimeoutEffect(const std::string& newEffect) { timeoutEffect = newEffect; }
+		void setTargetedModifier(const std::string& newTargetedModifier) { targetedModifier = newTargetedModifier; }
 		void setModifier(const std::string& newModifier) { modifier = newModifier; }
 
-		friend std::ostream& operator<<(std::ostream& outStream, const HoI4::decision& outDecision);
-		bool operator==(const HoI4::decision& otherDecision);
+		bool operator==(const decision& otherDecision) const;
+
+		friend std::ostream& operator<<(std::ostream& outStream, const decision& outDecision);
 
 	private:
 		std::string name;
@@ -58,11 +39,17 @@ class decision: commonItems::parser
 		std::string available;
 		std::optional<int> daysMissionTimeout;
 		std::string activation;
+		std::string targets;
+		std::string targetArray;
+		std::string targetRootTrigger;
 		std::string targetTrigger;
 		std::string removeTrigger;
+		std::string customCostTrigger;
+		std::string customCostText;
 		std::string visible;
 		std::string cancelTrigger;
 		std::string completeEffect;
+		std::string targetedModifier;
 		std::string removeEffect;
 		std::string timeoutEffect;
 		std::string aiWillDo;
@@ -72,8 +59,6 @@ class decision: commonItems::parser
 		std::optional<int> cost;
 		std::string modifier;
 };
-
-std::ostream& operator<<(std::ostream& outStream, const HoI4::decision& outDecision);
 
 }
 

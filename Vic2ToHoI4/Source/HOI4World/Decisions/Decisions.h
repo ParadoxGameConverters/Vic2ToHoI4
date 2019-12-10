@@ -1,26 +1,3 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #ifndef HOI4_DECISIONS_H
 #define HOI4_DECISIONS_H
 
@@ -29,6 +6,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "IdeologicalDecisions.h"
 #include "DecisionsCategories.h"
 #include "DecisionsCategory.h"
+#include "../../Configuration.h"
 #include <memory>
 #include <set>
 #include <string>
@@ -45,24 +23,28 @@ class Events;
 class decisions: commonItems::parser
 {
 	public:
-		decisions() noexcept;
+		explicit decisions(const Configuration& theConfiguration) noexcept;
 
 		void updateDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
 
-		void output();
+		[[nodiscard]] const DecisionsCategories& getDecisionsCategories() const { return *decisionsCategories; }
+		[[nodiscard]] const std::vector<decisionsCategory>& getStabilityDecisions() const { return stabilityDecisions; }
+		[[nodiscard]] const std::vector<decisionsCategory>& getPoliticalDecisions() const { return politicalDecisions; }
+		[[nodiscard]] const std::vector<decisionsCategory>& getExiledGovernmentsDecisions() const
+		{
+			return exiledGovernmentsDecisions;
+		}
 
 	private:
 		void updateStabilityDecisions(const std::set<std::string>& majorIdeologies);
-		bool stabilityDecisionToUpdate(const std::string& decisionName);
-		std::pair<std::string, std::string> determineIdeologiesForStabilityDecisions(const std::set<std::string>& majorIdeologies);
-		std::string updateTimeoutEffect(std::string& originalEffect, const std::pair<std::string, std::string>& ideologiesForStabilityDecisions);
-
 		void updatePoliticalDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
+		void updateExiledGovernmentDecisions(const std::set<std::string>& majorIdeologies);
 
 		std::unique_ptr<DecisionsCategories> decisionsCategories;
 
 		std::vector<decisionsCategory> stabilityDecisions;
 		std::vector<decisionsCategory> politicalDecisions;
+		std::vector<decisionsCategory> exiledGovernmentsDecisions;
 
 		std::vector<IdeologicalDecisions> allIdeologicalDecisions;
 };
