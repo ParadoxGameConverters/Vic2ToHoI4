@@ -23,7 +23,7 @@ class Events;
 class decisions: commonItems::parser
 {
 	public:
-		decisions(const Configuration& theConfiguration) noexcept;
+		explicit decisions(const Configuration& theConfiguration) noexcept;
 
 		void updateDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
 
