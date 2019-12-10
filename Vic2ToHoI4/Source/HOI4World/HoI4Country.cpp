@@ -654,10 +654,10 @@ void HoI4::Country::convertConvoys(const UnitMappings& unitMap)
 		{
 			if (auto type = regiment->getType(); unitMap.hasMatchingType(type))
 			{
-				if (auto unitInfo = unitMap.getMatchingUnitInfo(type); unitInfo.getCategory() == "convoy")
+				if (auto unitInfo = unitMap.getMatchingUnitInfo(type); unitInfo && unitInfo->getCategory() == "convoy")
 				{
 					// Convoys get placed in national stockpile
-					convoys = convoys + unitInfo.getSize();
+					convoys = convoys + unitInfo->getSize();
 				}
 			}
 			else
@@ -681,14 +681,14 @@ void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 			if (auto type = regiment->getType(); unitMap.hasMatchingType(type))
 			{
 				auto unitInfo = unitMap.getMatchingUnitInfo(type);
-				if (unitInfo.getCategory() != "air")
+				if (!unitInfo || unitInfo->getCategory() != "air")
 				{
 					continue;
 				}
 
 				// Air units get placed in national stockpile.
-				auto equip = unitInfo.getEquipment();
-				unsigned int amount = unitInfo.getSize();
+				auto equip = unitInfo->getEquipment();
+				unsigned int amount = unitInfo->getSize();
 				const auto& backup = backups.find(equip);
 				if (backup != backups.end())
 				{

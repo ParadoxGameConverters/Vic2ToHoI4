@@ -28,6 +28,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "HoI4UnitType.h"
 #include "newParser.h"
+#include <optional>
 
 
 
@@ -39,11 +40,11 @@ class UnitMapping: commonItems::parser
 	public:
 		UnitMapping(std::istream& theStream);
 
-		auto getMappings() const { return std::make_pair(Vic2Type, HoI4Type); }
+		std::optional<std::pair<std::string, HoI4UnitType>> getMappings() const;
 
 	private:
-		std::string Vic2Type;
-		HoI4UnitType HoI4Type;
+		std::optional<std::string> Vic2Type;
+		std::optional<HoI4UnitType> HoI4Type;
 };
 
 }

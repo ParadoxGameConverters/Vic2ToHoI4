@@ -41,3 +41,16 @@ HoI4::UnitMapping::UnitMapping(std::istream& theStream)
 
 	parseStream(theStream);
 }
+
+
+std::optional<std::pair<std::string, HoI4::HoI4UnitType>> HoI4::UnitMapping::getMappings() const
+{
+	if (Vic2Type && HoI4Type)
+	{
+		return std::make_pair(*Vic2Type, *HoI4Type);
+	}
+	else
+	{
+		return std::nullopt;
+	}
+}

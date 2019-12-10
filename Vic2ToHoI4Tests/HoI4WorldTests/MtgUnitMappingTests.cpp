@@ -60,7 +60,6 @@ TEST(HoI4World_mtgUnitMappingTests, noHoI4MeansEmptyVector)
 	input << "\t}";
 
 	HoI4::MtgUnitMapping theMapping(input);
-	HoI4::HoI4UnitType blankHoI4Type;
 
 	ASSERT_TRUE(theMapping.getMapping().second.empty());
 }

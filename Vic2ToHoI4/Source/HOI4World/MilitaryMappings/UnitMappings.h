@@ -29,6 +29,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4UnitType.h"
 #include "newParser.h"
 #include <map>
+#include <optional>
 
 
 
@@ -47,7 +48,7 @@ class UnitMappings: commonItems::parser
 		UnitMappings& operator=(UnitMappings&&) = default;
 
 		bool hasMatchingType(const std::string& Vic2Type) const;
-		HoI4::HoI4UnitType getMatchingUnitInfo(const std::string& Vic2Type) const;
+		std::optional<HoI4::HoI4UnitType> getMatchingUnitInfo(const std::string& Vic2Type) const;
 
 	private:
 		std::map<std::string, HoI4::HoI4UnitType> unitMap;

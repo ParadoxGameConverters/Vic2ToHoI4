@@ -50,15 +50,15 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings, int 
 
 			if (theMilitaryMappings.getUnitMappings().hasMatchingType(Vic2Type))
 			{
-				HoI4::HoI4UnitType unitInfo = theMilitaryMappings.getUnitMappings().getMatchingUnitInfo(Vic2Type);
+				auto unitInfo = theMilitaryMappings.getUnitMappings().getMatchingUnitInfo(Vic2Type);
 
-				if (unitInfo.getCategory() == "land")
+				if (unitInfo && unitInfo->getCategory() == "land")
 				{
 					// Calculate how many Battalions and Companies are available after mapping Vic2 armies
 					sizedRegiment theRegiment;
-					theRegiment.unitSize = unitInfo.getSize() * forceMultiplier;
+					theRegiment.unitSize = unitInfo->getSize() * forceMultiplier;
 					theRegiment.regiment = regiment;
-					localBattalionsAndCompanies[unitInfo.getType()].push_back(theRegiment);
+					localBattalionsAndCompanies[unitInfo->getType()].push_back(theRegiment);
 				}
 			}
 			else

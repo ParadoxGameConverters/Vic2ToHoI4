@@ -31,7 +31,11 @@ HoI4::UnitMappings::UnitMappings(std::istream& theStream)
 	registerKeyword(std::regex("link"), [this](const std::string & unused, std::istream & theStream)
 	{
 		UnitMapping newMapping(theStream);
-		unitMap.insert(newMapping.getMappings());
+		auto mapping = newMapping.getMappings();
+		if (mapping)
+		{
+			unitMap.insert(*mapping);
+		}
 	});
 
 	parseStream(theStream);
@@ -44,7 +48,7 @@ bool HoI4::UnitMappings::hasMatchingType(const std::string& Vic2Type) const
 }
 
 
-HoI4::HoI4UnitType HoI4::UnitMappings::getMatchingUnitInfo(const std::string& Vic2Type) const
+std::optional<HoI4::HoI4UnitType> HoI4::UnitMappings::getMatchingUnitInfo(const std::string& Vic2Type) const
 {
 	if (hasMatchingType(Vic2Type))
 	{
@@ -52,7 +56,6 @@ HoI4::HoI4UnitType HoI4::UnitMappings::getMatchingUnitInfo(const std::string& Vi
 	}
 	else
 	{
-		HoI4UnitType unitMap;
-		return unitMap;
+		return std::nullopt;
 	}
 }

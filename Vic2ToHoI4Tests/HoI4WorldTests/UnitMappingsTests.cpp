@@ -65,5 +65,8 @@ TEST(HoI4World_unitMappingsTests, UnitMappingHandlesFilledHoI4UnitTypeCorrectly)
 		"}"
 	);
 	HoI4::UnitMappings theMappings(input);
-	ASSERT_EQ(std::string("land"), theMappings.getMatchingUnitInfo("infantry").getType());
+
+	auto mapping = theMappings.getMatchingUnitInfo("infantry");
+	ASSERT_TRUE(mapping);
+	ASSERT_EQ(std::string("land"), mapping->getType());
 }

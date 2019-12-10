@@ -83,11 +83,14 @@ HoI4::Navies::Navies(
 			std::string type = regiment->getType();
 			if (unitMap.hasMatchingType(type))
 			{
-				HoI4::HoI4UnitType unitInfo = unitMap.getMatchingUnitInfo(type);
-
-				if (unitInfo.getCategory() == "naval")
+				if (auto unitInfo = unitMap.getMatchingUnitInfo(type); unitInfo && unitInfo->getCategory() == "naval")
 				{
-					HoI4::LegacyShip newLegacyShip(regiment->getName(), unitInfo.getType(), unitInfo.getEquipment(), tag);
+					HoI4::LegacyShip newLegacyShip(
+						regiment->getName(),
+						unitInfo->getType(),
+						unitInfo->getEquipment(),
+						tag
+					);
 					newLegacyNavy.addShip(newLegacyShip);
 				}
 			}
