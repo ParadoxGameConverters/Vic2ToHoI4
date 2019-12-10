@@ -68,7 +68,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	states(new HoI4States(sourceWorld, countryMap)),
 	supplyZones(new HoI4::SupplyZones(states->getDefaultStates())),
 	theIdeas(std::make_unique<HoI4::Ideas>()),
-	decisions(make_unique<HoI4::decisions>()),
+	decisions(make_unique<HoI4::decisions>(theConfiguration)),
 	peaces(make_unique<HoI4::AIPeaces>()),
 	diplomacy(new HoI4Diplomacy),
 	events(new HoI4::Events),

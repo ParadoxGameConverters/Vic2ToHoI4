@@ -30,6 +30,18 @@ HoI4::decision::decision(const std::string& decisionName, std::istream& theStrea
 		const commonItems::stringOfObject theActivation(theStream);
 		activation = theActivation.getString();
 	});
+	registerKeyword(std::regex("targets"), [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::stringOfObject theTargets(theStream);
+		targets = theTargets.getString();
+	});
+	registerKeyword(std::regex("target_array"), [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::stringOfItem theTargetArray(theStream);
+		targetArray = theTargetArray.getString();
+	});
+	registerKeyword(std::regex("target_root_trigger"), [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::stringOfObject theTargetRootTrigger(theStream);
+		targetRootTrigger = theTargetRootTrigger.getString();
+	});
 	registerKeyword(std::regex("target_trigger"), [this](const std::string& unused, std::istream& theStream){
 		const commonItems::stringOfObject theTargetTrigger(theStream);
 		targetTrigger = theTargetTrigger.getString();
@@ -42,9 +54,21 @@ HoI4::decision::decision(const std::string& decisionName, std::istream& theStrea
 		const commonItems::stringOfObject theCancelTrigger(theStream);
 		cancelTrigger = theCancelTrigger.getString();
 	});
+	registerKeyword(std::regex("targeted_modifier"), [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::stringOfObject theTargetedModifier(theStream);
+		targetedModifier = theTargetedModifier.getString();
+	});
 	registerKeyword(std::regex("remove_trigger"), [this](const std::string& unused, std::istream& theStream){
 		const commonItems::stringOfObject theRemoveTrigger(theStream);
 		removeTrigger = theRemoveTrigger.getString();
+	});
+	registerKeyword(std::regex("custom_cost_trigger"), [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::stringOfObject theCustomCostTrigger(theStream);
+		customCostTrigger = theCustomCostTrigger.getString();
+	});
+	registerKeyword(std::regex("custom_cost_text"), [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::stringOfItem theCustomCostText(theStream);
+		customCostText = theCustomCostText.getString();
 	});
 	registerKeyword(std::regex("complete_effect"), [this](const std::string& unused, std::istream& theStream){
 		const commonItems::stringOfObject theCompleteEffect(theStream);

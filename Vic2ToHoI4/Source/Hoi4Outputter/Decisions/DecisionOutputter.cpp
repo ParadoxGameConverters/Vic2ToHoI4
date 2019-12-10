@@ -29,6 +29,18 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecis
 	{
 		outStream << "\n\t\tactivation " << outDecision.activation << "\n";
 	}
+	if (!outDecision.targets.empty())
+	{
+		outStream << "\n\t\ttargets " << outDecision.targets << "\n";
+	}
+	if (!outDecision.targetArray.empty())
+	{
+		outStream << "\n\t\ttarget_array " << outDecision.targetArray << "\n";
+	}
+	if (!outDecision.targetRootTrigger.empty())
+	{
+		outStream << "\n\t\ttarget_root_trigger " << outDecision.targetRootTrigger << "\n";
+	}
 	if (!outDecision.targetTrigger.empty())
 	{
 		outStream << "\n\t\ttarget_trigger " << outDecision.targetTrigger << "\n";
@@ -44,6 +56,14 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecis
 	if (!outDecision.removeTrigger.empty())
 	{
 		outStream << "\n\t\tremove_trigger " << outDecision.removeTrigger << "\n";
+	}
+	if (!outDecision.customCostTrigger.empty())
+	{
+		outStream << "\n\t\tcustom_cost_trigger " << outDecision.customCostTrigger << "\n";
+	}
+	if (!outDecision.customCostText.empty())
+	{
+		outStream << "\n\t\tcustom_cost_text " << outDecision.customCostText << "\n";
 	}
 	if (!outDecision.fireOnlyOnce.empty())
 	{
@@ -68,6 +88,10 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecis
 	if (!outDecision.completeEffect.empty())
 	{
 		outStream << "\n\t\tcomplete_effect " << outDecision.completeEffect << "\n";
+	}
+	if (!outDecision.targetedModifier.empty())
+	{
+		outStream << "\n\t\ttargeted_modifier " << outDecision.targetedModifier << "\n";
 	}
 	if (!outDecision.removeEffect.empty())
 	{

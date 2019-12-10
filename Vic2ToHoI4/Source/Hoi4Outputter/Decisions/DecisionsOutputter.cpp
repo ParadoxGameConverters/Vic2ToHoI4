@@ -25,4 +25,11 @@ void HoI4::outputDecisions(const decisions& theDecisions, const Configuration& t
 		outStream << category;
 	}
 	outStream.close();
+
+	outStream.open("output/" + theConfiguration.getOutputName() + "/common/decisions/_exiled_governments_decisions.txt");
+	for (const auto& category : theDecisions.getExiledGovernmentsDecisions())
+	{
+		outStream << category;
+	}
+	outStream.close();
 }

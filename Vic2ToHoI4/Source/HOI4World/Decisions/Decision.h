@@ -20,8 +20,11 @@ class decision: commonItems::parser
 		[[nodiscard]] std::string getTimeoutEffect() const { return timeoutEffect; }
 
 		void setAvailable(const std::string& newAvailable) { available = newAvailable; }
+		void setTargetTrigger(const std::string& newTargetTrigger) { targetTrigger = newTargetTrigger; }
+		void setVisible(const std::string& newVisible) { visible = newVisible; }
 		void setCompleteEffect(const std::string& newEffect) { completeEffect = newEffect; }
 		void setTimeoutEffect(const std::string& newEffect) { timeoutEffect = newEffect; }
+		void setTargetedModifier(const std::string& newTargetedModifier) { targetedModifier = newTargetedModifier; }
 		void setModifier(const std::string& newModifier) { modifier = newModifier; }
 
 		bool operator==(const decision& otherDecision) const;
@@ -36,11 +39,17 @@ class decision: commonItems::parser
 		std::string available;
 		std::optional<int> daysMissionTimeout;
 		std::string activation;
+		std::string targets;
+		std::string targetArray;
+		std::string targetRootTrigger;
 		std::string targetTrigger;
 		std::string removeTrigger;
+		std::string customCostTrigger;
+		std::string customCostText;
 		std::string visible;
 		std::string cancelTrigger;
 		std::string completeEffect;
+		std::string targetedModifier;
 		std::string removeEffect;
 		std::string timeoutEffect;
 		std::string aiWillDo;
