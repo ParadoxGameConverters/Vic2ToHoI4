@@ -22,6 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "MilitaryMappings.h"
+#include "DivisionTemplatesImporter.h"
 #include "UnitMappings.h"
 #include "ParserHelpers.h"
 
@@ -53,34 +54,6 @@ HoI4::militaryMappings::militaryMappings(const std::string& name, std::istream& 
 	{
 		throw std::invalid_argument("No mtg unit mappings were included! Check unit_mappings.txt for correctness.");
 	}
-}
-
-
-namespace HoI4
-{
-
-class DivisionTemplatesImporter: commonItems::parser
-{
-	public:
-		explicit DivisionTemplatesImporter(std::istream& theStream);
-
-		auto getDivisionTemplates() const { return divisionTemplates; }
-
-	private:
-		std::vector<HoI4::DivisionTemplateType> divisionTemplates;
-};
-
-}
-
-HoI4::DivisionTemplatesImporter::DivisionTemplatesImporter(std::istream& theStream)
-{
-	registerKeyword(std::regex("division_template"), [this](const std::string& unused, std::istream& theStream)
-	{
-		HoI4::DivisionTemplateType newTemplate(theStream);
-		divisionTemplates.push_back(newTemplate);
-	});
-
-	parseStream(theStream);
 }
 
 

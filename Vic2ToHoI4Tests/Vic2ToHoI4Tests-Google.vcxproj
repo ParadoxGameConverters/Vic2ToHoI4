@@ -94,6 +94,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ImpassableProvinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MapData.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\DivisionTemplatesImporter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MilitaryMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\HoI4UnitType.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MilitaryMappingsFile.cpp" />

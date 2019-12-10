@@ -227,6 +227,7 @@
     <ClCompile Include="Source\HOI4World\ImpassableProvinces.cpp" />
     <ClCompile Include="Source\HOI4World\MapData.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp" />
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\DivisionTemplatesImporter.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\HoI4UnitType.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\MilitaryMappings.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\MilitaryMappingsFile.cpp" />
@@ -348,6 +349,7 @@
     <ClInclude Include="Source\HOI4World\ImpassableProvinces.h" />
     <ClInclude Include="Source\HOI4World\MapData.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.h" />
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\DivisionTemplatesImporter.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\MilitaryMappings.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\HoI4UnitType.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\MilitaryMappingsFile.h" />
