@@ -14,7 +14,6 @@
 namespace HoI4
 {
 
-
 class allMilitaryMappings: commonItems::parser
 {
 	public:
@@ -25,19 +24,6 @@ class allMilitaryMappings: commonItems::parser
 	private:
 		std::map<std::string, militaryMappings> theMappings;
 };
-
-
-class militaryMappingsFile: commonItems::parser
-{
-	public:
-		militaryMappingsFile();
-
-		auto takeAllMilitaryMappings() { return std::move(theMilitaryMappings); }
-
-	private:
-		std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
-};
-
 
 }
 

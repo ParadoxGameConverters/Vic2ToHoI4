@@ -387,6 +387,9 @@
     <ClCompile Include="Source\Hoi4Outputter\Hoi4CountryOutputter.cpp">
       <Filter>Hoi4Outputter</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\MilitaryMappingsFile.cpp">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -730,6 +733,9 @@
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Hoi4CountryOutputter.h">
       <Filter>Hoi4Outputter</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\MilitaryMappingsFile.h">
+      <Filter>HoI4World\MilitaryMappings</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
