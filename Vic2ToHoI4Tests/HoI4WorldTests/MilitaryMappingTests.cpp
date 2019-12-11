@@ -48,7 +48,7 @@ TEST(HoI4World_militaryMappingsTests, unitMapSectionCanBeInput)
 	input << "}";
 	HoI4::militaryMappings theMappings(std::string(""), input);
 
-	ASSERT_NO_THROW(theMappings.getUnitMappings());
+	ASSERT_NO_THROW(auto unused = theMappings.getUnitMappings());
 }
 
 
@@ -73,7 +73,7 @@ TEST(HoI4World_militaryMappingsTests, MapSectionCanBeInput)
 	input << "}";
 	HoI4::militaryMappings theMappings(std::string(""), input);
 
-	ASSERT_NO_THROW(theMappings.getMtgUnitMappings());
+	ASSERT_NO_THROW(auto unused = theMappings.getMtgUnitMappings());
 }
 
 
