@@ -24,7 +24,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "MilitaryMappings.h"
 #include "DivisionTemplatesImporter.h"
 #include "UnitMappings.h"
-#include "ParserHelpers.h"
+#include "SubstitutesImporter.h"
 
 
 
@@ -61,35 +61,6 @@ void HoI4::militaryMappings::importDivisionTemplates(std::istream& theStream)
 {
 	DivisionTemplatesImporter importer(theStream);
 	divisionTemplates = importer.getDivisionTemplates();
-}
-
-
-namespace HoI4
-{
-
-class substitutesImporter: commonItems::parser
-{
-	public:
-		explicit substitutesImporter(std::istream& theStream);
-
-		auto getSubstitutes() const { return substitutes; }
-
-	private:
-		std::map<std::string, std::string> substitutes;
-};
-
-}
-
-
-HoI4::substitutesImporter::substitutesImporter(std::istream& theStream)
-{
-	registerKeyword(std::regex("[a-zA-Z_]+"), [this](const std::string& left, std::istream& theStream)
-	{
-		commonItems::singleString right(theStream);
-		substitutes.insert(std::make_pair(left, right.getString()));
-	});
-
-	parseStream(theStream);
 }
 
 
