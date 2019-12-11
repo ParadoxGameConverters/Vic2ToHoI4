@@ -26,7 +26,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-TEST(HoI4World_unitMappingTests, defaultVic2TypeIsBlank)
+TEST(HoI4World_unitMappingTests, nulloptOnNoVic2Type)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -34,7 +34,7 @@ TEST(HoI4World_unitMappingTests, defaultVic2TypeIsBlank)
 
 	HoI4::UnitMapping theMapping(input);
 
-	ASSERT_EQ(theMapping.getMappings().first, "");
+	ASSERT_EQ(theMapping.getMappings(), std::nullopt);
 }
 
 
@@ -44,25 +44,29 @@ TEST(HoI4World_unitMappingTests, Vic2TypeCanBeSet)
 	input << "= {\n";
 	input << "\t\tlink = {\n";
 	input << "\t\t\tvic = irregular\n";
+	input << "\t\t\thoi = {\n";
+	input << "\t\t\t\ttype = land\n";
+	input << "\t\t\t}\n";
 	input << "\t\t}\n";
 	input << "\t}";
 
 	HoI4::UnitMapping theMapping(input);
 
-	ASSERT_EQ(theMapping.getMappings().first, "irregular");
+	auto mapping = theMapping.getMappings();
+	ASSERT_TRUE(mapping);
+	ASSERT_EQ(mapping->first, "irregular");
 }
 
 
-TEST(HoI4World_unitMappingTests, defaultHoI4TypeIsBlank)
+TEST(HoI4World_unitMappingTests, nulloptOnNoHoI4Type)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "\t}";
 
 	HoI4::UnitMapping theMapping(input);
-	HoI4::HoI4UnitType blankHoI4Type;
 
-	ASSERT_TRUE(theMapping.getMappings().second == blankHoI4Type);
+	ASSERT_EQ(theMapping.getMappings(), std::nullopt);
 }
 
 
@@ -81,5 +85,8 @@ TEST(HoI4World_unitMappingTests, UnitMappingHandlesFilledHoI4UnitTypeCorrectly)
 	input << "}";
 
 	HoI4::UnitMapping theMapping(input);
-	ASSERT_EQ(std::string("land"), theMapping.getMappings().second.getType());
+
+	auto mapping = theMapping.getMappings();
+	ASSERT_TRUE(mapping);
+	ASSERT_EQ(std::string("land"), mapping->second.getType());
 }

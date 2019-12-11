@@ -23,33 +23,38 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/MilitaryMappings/HoI4UnitType.h"
+#include <sstream>
 
 
 
 TEST(HoI4World_HoI4UnitTypeTests, defaultUnitMapCategoryIsBlank)
 {
-	HoI4::HoI4UnitType theMap;
+	std::stringstream input;
+	HoI4::HoI4UnitType theMap(input);
 	ASSERT_EQ(std::string(""), theMap.getCategory());
 }
 
 
 TEST(HoI4World_HoI4UnitTypeTests, defaultUnitMapTypeIsBlank)
 {
-	HoI4::HoI4UnitType theMap;
+	std::stringstream input;
+	HoI4::HoI4UnitType theMap(input);
 	ASSERT_EQ(std::string(""), theMap.getType());
 }
 
 
 TEST(HoI4World_HoI4UnitTypeTests, defaultUnitMapEquipmentIsBlank)
 {
-	HoI4::HoI4UnitType theMap;
+	std::stringstream input;
+	HoI4::HoI4UnitType theMap(input);
 	ASSERT_EQ(std::string(""), theMap.getEquipment());
 }
 
 
 TEST(HoI4World_HoI4UnitTypeTests, defaultUnitMapSizeIsZero)
 {
-	HoI4::HoI4UnitType theMap;
+	std::stringstream input;
+	HoI4::HoI4UnitType theMap(input);
 	ASSERT_EQ(0, theMap.getSize());
 }
 

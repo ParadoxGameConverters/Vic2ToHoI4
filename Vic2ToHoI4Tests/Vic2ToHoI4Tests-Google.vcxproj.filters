@@ -479,6 +479,14 @@
     <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MilitaryMappingsFile.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\DivisionTemplatesImporter.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\SubstitutesImporter.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionOutputter.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Decisions</Filter>
     </ClCompile>

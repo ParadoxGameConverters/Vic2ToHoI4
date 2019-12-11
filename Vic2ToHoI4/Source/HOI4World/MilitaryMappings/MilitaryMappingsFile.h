@@ -1,0 +1,30 @@
+#ifndef MILITARY_MAPPINGS_FILE
+#define MILITARY_MAPPINGS_FILE
+
+
+
+#include "AllMilitaryMappings.h"
+#include "newParser.h"
+#include <memory>
+
+
+
+namespace HoI4
+{
+	
+class militaryMappingsFile: commonItems::parser
+{
+	public:
+		militaryMappingsFile();
+
+		auto takeAllMilitaryMappings() { return std::move(theMilitaryMappings); }
+
+	private:
+		std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
+};
+	
+}
+
+
+
+#endif // MILITARY_MAPPINGS_FILE

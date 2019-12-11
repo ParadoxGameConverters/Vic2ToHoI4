@@ -387,6 +387,14 @@
     <ClCompile Include="Source\Hoi4Outputter\Hoi4CountryOutputter.cpp">
       <Filter>Hoi4Outputter</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\MilitaryMappingsFile.cpp">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\DivisionTemplatesImporter.cpp">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\MilitaryMappings\SubstitutesImporter.cpp">
+      <Filter>HoI4World\MilitaryMappings</Filter>
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionOutputter.cpp">
       <Filter>Hoi4Outputter\Decisions</Filter>
     </ClCompile>
@@ -743,6 +751,14 @@
     <ClInclude Include="Source\Hoi4Outputter\Hoi4CountryOutputter.h">
       <Filter>Hoi4Outputter</Filter>
     </ClInclude>
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\MilitaryMappingsFile.h">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\DivisionTemplatesImporter.h">
+      <Filter>HoI4World\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\MilitaryMappings\SubstitutesImporter.h">
+      <Filter>HoI4World\MilitaryMappings</Filter>
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionOutputter.h">
       <Filter>Hoi4Outputter\Decisions</Filter>
     </ClInclude>
