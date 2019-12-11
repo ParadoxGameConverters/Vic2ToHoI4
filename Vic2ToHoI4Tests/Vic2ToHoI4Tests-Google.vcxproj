@@ -54,6 +54,10 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Color.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Configuration.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Flags.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionOutputter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Hoi4CountryOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Advisor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AIPeace.cpp" />
@@ -61,7 +65,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CoastalProvinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decisions.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategories.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\IdeologicalDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Division.cpp" />

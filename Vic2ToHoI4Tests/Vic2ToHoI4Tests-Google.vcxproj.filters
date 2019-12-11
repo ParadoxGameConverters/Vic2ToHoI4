@@ -473,9 +473,6 @@
     <ClCompile Include="HoI4WorldTests\DecisionsCategoriesTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategories.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Hoi4CountryOutputter.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter</Filter>
     </ClCompile>
@@ -490,6 +487,17 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\SubstitutesImporter.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Decisions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -546,6 +554,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Hoi4Outputter">
       <UniqueIdentifier>{dda4426a-5184-48ef-91a3-66ee0746d4c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Decisions">
+      <UniqueIdentifier>{e6230754-cb95-4f0f-b5ba-d0403ab31ecc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

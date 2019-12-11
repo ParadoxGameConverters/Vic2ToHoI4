@@ -46,6 +46,9 @@
     <Filter Include="Hoi4Outputter">
       <UniqueIdentifier>{5e45f559-49a6-4b1e-b092-b60db525cf1b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hoi4Outputter\Decisions">
+      <UniqueIdentifier>{b198d911-63be-41f0-b3a6-2d98785193ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -381,9 +384,6 @@
     <ClCompile Include="Source\HOI4World\States\DefaultState.cpp">
       <Filter>HoI4World\States</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategories.cpp">
-      <Filter>HoI4World\Decisions</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Hoi4CountryOutputter.cpp">
       <Filter>Hoi4Outputter</Filter>
     </ClCompile>
@@ -395,6 +395,17 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\MilitaryMappings\SubstitutesImporter.cpp">
       <Filter>HoI4World\MilitaryMappings</Filter>
+    <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionOutputter.cpp">
+      <Filter>Hoi4Outputter\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp">
+      <Filter>Hoi4Outputter\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.cpp">
+      <Filter>Hoi4Outputter\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.cpp">
+      <Filter>Hoi4Outputter\Decisions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -748,6 +759,17 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\MilitaryMappings\SubstitutesImporter.h">
       <Filter>HoI4World\MilitaryMappings</Filter>
+    <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionOutputter.h">
+      <Filter>Hoi4Outputter\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.h">
+      <Filter>Hoi4Outputter\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.h">
+      <Filter>Hoi4Outputter\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.h">
+      <Filter>Hoi4Outputter\Decisions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

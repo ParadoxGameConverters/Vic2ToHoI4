@@ -56,6 +56,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "ParserHelpers.h"
 #include "../Hoi4Outputter/Hoi4CountryOutputter.h"
+#include "../Hoi4Outputter/Decisions/DecisionsOutputter.h"
 #include <fstream>
 using namespace std;
 
@@ -68,7 +69,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	states(new HoI4States(sourceWorld, countryMap)),
 	supplyZones(new HoI4::SupplyZones(states->getDefaultStates())),
 	theIdeas(std::make_unique<HoI4::Ideas>()),
-	decisions(make_unique<HoI4::decisions>()),
+	decisions(make_unique<HoI4::decisions>(theConfiguration)),
 	peaces(make_unique<HoI4::AIPeaces>()),
 	diplomacy(new HoI4Diplomacy),
 	events(new HoI4::Events),
@@ -1089,7 +1090,7 @@ void HoI4::World::output()
 	outputGenericFocusTree();
 	outputCountries();
 	buildings->output();
-	decisions->output();
+	outputDecisions(*decisions, theConfiguration);
 	events->output();
 	onActions->output(majorIdeologies);
 	peaces->output(majorIdeologies);
