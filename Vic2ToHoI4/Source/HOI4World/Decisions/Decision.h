@@ -17,6 +17,7 @@ class decision: commonItems::parser
 		decision(const std::string& decisionName, std::istream& theStream);
 
 		[[nodiscard]] std::string getName() const { return name; }
+		[[nodiscard]] std::string getVisible() const { return visible; }
 		[[nodiscard]] std::string getTimeoutEffect() const { return timeoutEffect; }
 
 		void setAvailable(const std::string& newAvailable) { available = newAvailable; }
