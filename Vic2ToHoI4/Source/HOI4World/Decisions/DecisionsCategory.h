@@ -26,6 +26,7 @@ class decisionsCategory: commonItems::parser
 		void replaceDecision(const decision& theDecision) {
 			std::replace(theDecisions.begin(), theDecisions.end(), theDecision, theDecision);
 		}
+		void replaceDecisions(const std::vector<decision>& newDecisions) { theDecisions = newDecisions; }
 		void addDecision(decision& theDecision) { theDecisions.push_back(theDecision); }
 
 		void updatePoliticalDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
