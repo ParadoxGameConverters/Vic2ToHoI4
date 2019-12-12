@@ -31,6 +31,14 @@ HoI4::decisions::decisions(const Configuration& theConfiguration) noexcept
 		exiledGovernmentsDecisions.push_back(category);
 	});
 	parseFile(theConfiguration.getHoI4Path() + "/common/decisions/_exiled_governments_decisions.txt");
+
+	clearRegisteredKeywords();
+	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream)
+	{
+		const decisionsCategory category(categoryName, theStream);
+		foreignInfluenceDecisions.push_back(category);
+	});
+	parseFile(theConfiguration.getHoI4Path() + "/common/decisions/foreign_influence.txt");
 }
 
 
