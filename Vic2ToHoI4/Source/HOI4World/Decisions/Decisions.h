@@ -43,6 +43,7 @@ class decisions: commonItems::parser
 		void updateStabilityDecisions(const std::set<std::string>& majorIdeologies);
 		void updatePoliticalDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
 		void updateExiledGovernmentDecisions(const std::set<std::string>& majorIdeologies);
+		void updateForeignInfluenceDecisions(const std::set<std::string>& majorIdeologies);
 
 		std::unique_ptr<DecisionsCategories> decisionsCategories;
 

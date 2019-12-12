@@ -2,6 +2,7 @@
 #include "Decision.h"
 #include "../Events.h"
 #include <sstream>
+#include <regex>
 
 
 
@@ -47,6 +48,7 @@ void HoI4::decisions::updateDecisions(const std::set<std::string>& majorIdeologi
 	updateStabilityDecisions(majorIdeologies);
 	updatePoliticalDecisions(majorIdeologies, theEvents);
 	updateExiledGovernmentDecisions(majorIdeologies);
+	updateForeignInfluenceDecisions(majorIdeologies);
 
 	decisionsCategories = std::make_unique<DecisionsCategories>(majorIdeologies);
 }
@@ -275,4 +277,43 @@ void HoI4::decisions::updateExiledGovernmentDecisions(const std::set<std::string
 bool exiledGovernmentDecisionToUpdate(const std::string& decisionName)
 {
 	return (decisionName == "purge_infiltrators");
+}
+
+
+std::regex createIdeologyRegex(const std::set<std::string>& majorIdeologies);
+
+
+void HoI4::decisions::updateForeignInfluenceDecisions(const std::set<std::string>& majorIdeologies)
+{
+	const auto ideologyRegex = createIdeologyRegex(majorIdeologies);
+	for (auto& category: foreignInfluenceDecisions)
+	{
+		std::smatch match;
+		auto decisions = category.getDecisions();
+		decisions.erase(
+			std::remove_if(
+				decisions.begin(),
+				decisions.end(),
+				[&match, &ideologyRegex](auto& decision)
+				{
+					auto visible = decision.getVisible();
+					return !std::regex_search(visible, match, ideologyRegex);
+				}
+			),
+			decisions.end());
+		category.replaceDecisions(decisions);
+	}
+}
+
+
+std::regex createIdeologyRegex(const std::set<std::string>& majorIdeologies)
+{
+	std::string regexString{ "(" };
+	for (const auto& ideology: majorIdeologies)
+	{
+		regexString += ideology + "|";
+	}
+	regexString.pop_back();
+	regexString += ")";
+	return std::regex{ regexString };
 }
