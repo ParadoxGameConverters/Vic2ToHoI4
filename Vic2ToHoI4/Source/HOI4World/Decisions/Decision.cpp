@@ -3,8 +3,8 @@
 
 
 
-HoI4::decision::decision(const std::string& decisionName, std::istream& theStream):
-	name(decisionName)
+HoI4::decision::decision(std::string decisionName, std::istream& theStream):
+	name(std::move(decisionName))
 {
 	registerKeyword(std::regex("icon"), [this](const std::string& unused, std::istream& theStream){
 		const commonItems::singleString theIcon(theStream);

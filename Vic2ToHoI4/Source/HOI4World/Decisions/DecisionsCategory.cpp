@@ -3,8 +3,8 @@
 
 
 
-HoI4::decisionsCategory::decisionsCategory(const std::string& categoryName, std::istream& theStream):
-	name(categoryName)
+HoI4::decisionsCategory::decisionsCategory(std::string categoryName, std::istream& theStream):
+	name(std::move(categoryName))
 {
 	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), [this](const std::string& decisionName, std::istream& theStream)	{
 		const decision theDecision(decisionName, theStream);

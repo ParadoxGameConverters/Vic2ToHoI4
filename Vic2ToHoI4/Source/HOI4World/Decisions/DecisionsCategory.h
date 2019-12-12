@@ -18,7 +18,7 @@ class Events;
 class decisionsCategory: commonItems::parser
 {
 	public:
-		decisionsCategory(const std::string& categoryName, std::istream& theStream);
+		decisionsCategory(std::string categoryName, std::istream& theStream);
 
 		[[nodiscard]] std::vector<decision> getDecisions() const { return theDecisions; }
 		[[nodiscard]] std::string getName() const { return name; }
