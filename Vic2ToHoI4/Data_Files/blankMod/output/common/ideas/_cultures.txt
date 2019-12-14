@@ -2913,5 +2913,60 @@ ideas = {
 			modifier = { 
 			}
 		}
-	}
+
+    culture_coptic = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_coptic
+			modifier = { }
+		}
+		
+		culture_latin = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_latin
+			modifier = { }
+		}
+		
+		culture_xliponian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_xliponian
+			modifier = { }
+		}
+		
+		culture_wenedyk = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_wenedyk
+			modifier = { }
+		}
+		
+		culture_bazramani = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_bazramani
+			modifier = { }
+		}
+		
+		culture_foederatus = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_foederatus
+			modifier = { }
+		}
+		
+		culture_afer = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_afer
+			modifier = { }
+		}
+		
+		culture_australus = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_australus
+			modifier = { }
+		}
 }
