@@ -17170,5 +17170,8 @@
     <CopyFileToFolders Include="Data_Files\flags\ZZZ_republic.tga">
       <Filter>Flags</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\foreignInfluenceDecisions.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

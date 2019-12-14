@@ -485,6 +485,21 @@ absolutist = {
 				enemy_partisan_effect = -0.1
 			}
 		}
+
+		absolutist_military_parade = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = absolutist
+			}
+			removal_cost = -1
+			picture = generic_pp_unity_bonus
+			modifier = {
+				absolutist_drift = 0.1
+				mobilization_speed = 0.15
+			}
+		}
 }
 
 radical = {
@@ -629,6 +644,21 @@ radical = {
 	
 			modifier = {
 				conscription = 0.025
+			}
+		}
+
+		committee_of_public_safety = {
+			allowed = {
+				always = no
+			}
+			allowed_civil_war = {
+				has_government = radical
+			}
+			removal_cost = -1
+			picture = generic_communism_drift_bonus
+			modifier = {
+				radical_drift = 0.1
+				research_speed_factor = 0.035
 			}
 		}
 }

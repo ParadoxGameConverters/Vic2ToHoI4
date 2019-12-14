@@ -1,0 +1,209 @@
+foreign_influence = {
+
+	absolutist_military_parade = {
+
+		icon = eng_propaganda_campaigns
+
+		days_remove = 120
+		
+		available = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+			FROM = {
+				absolutist < 0.9
+			}
+			OR = {
+				political_power_daily > 0.5
+				has_political_power > 60
+			}
+		}
+
+		visible = {
+			has_government = absolutist
+			FROM = {
+				is_puppet_of = ROOT
+				absolutist < 0.99
+			}
+		}
+
+		target_array = subjects
+
+		target_trigger = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+		}
+
+		complete_effect = {
+			FROM = { add_timed_idea = { idea = absolutist_military_parade days = 120 } }
+		}
+
+		modifier = {
+			political_power_cost = 0.5
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	committee_of_public_safety = {
+
+		icon = eng_propaganda_campaigns
+
+		days_remove = 120
+		
+		available = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+			FROM = {
+				radical < 0.9
+			}
+			OR = {
+				political_power_daily > 0.5
+				has_political_power > 60
+			}
+		}
+
+		visible = {
+			has_government = radical
+			FROM = {
+				is_puppet_of = ROOT
+				radical < 0.99
+			}
+		}
+
+		target_array = subjects
+
+		target_trigger = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+		}
+
+		complete_effect = {
+			FROM = {
+				add_timed_idea = { idea = committee_of_public_safety days = 120 }
+			}
+		}
+		modifier = {
+			political_power_cost = 0.5
+		}
+
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	dictatorship = {
+
+		icon = generic_prepare_civil_war
+		
+		cost = 50
+		
+		available = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+			FROM = {
+				democratic > 0.6
+			}
+			FROM = {
+				NOT = { has_government = absolutist }
+			}
+		}
+
+		visible = {
+			has_government = absolutist
+			FROM = {
+				is_puppet_of = ROOT
+				NOT = { has_government = absolutist }
+			}
+		}
+
+		target_array = subjects
+
+		target_trigger = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+		}
+
+		complete_effect = {
+			FROM = { country_event = { id = mtg_generic.1 } }
+			FROM = {
+				add_timed_idea = {
+					idea = political_turmoil
+					days = 365
+				}
+			}
+			FROM = {
+				set_politics = {
+					ruling_party = absolutist
+					elections_allowed = yes
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
+	national_convention = {
+
+		icon = generic_prepare_civil_war
+		
+		cost = 50
+		
+		available = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+			FROM = {
+				communism > 0.6
+			}
+			FROM = {
+				NOT = { has_government = radical }
+			}
+		}
+
+		visible = {
+			has_government = radical
+			FROM = {
+				is_puppet_of = ROOT
+				NOT = { has_government = radical }
+			}
+		}
+
+		target_array = subjects
+
+		target_trigger = {
+			FROM = {
+				is_puppet_of = ROOT
+			}
+		}
+
+		complete_effect = {
+			FROM = { country_event = { id = mtg_generic.1 } }
+			FROM = {
+				add_timed_idea = {
+					idea = political_turmoil
+					days = 365
+				}
+			}
+			FROM = {
+				set_politics = {
+					ruling_party = radical
+					elections_allowed = no
+				}
+			}
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+}
