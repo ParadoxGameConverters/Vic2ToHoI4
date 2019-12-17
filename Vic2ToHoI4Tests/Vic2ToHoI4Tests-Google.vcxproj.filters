@@ -500,6 +500,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\MtgShipOutputter.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

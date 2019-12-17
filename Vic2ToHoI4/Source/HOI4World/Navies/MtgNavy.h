@@ -55,9 +55,6 @@ class MtgNavy: public Navy
 		std::vector<MtgShip> ships;
 };
 
-
-std::ostream& operator << (std::ostream& output, const MtgNavy& instance);
-
 }
 
 
