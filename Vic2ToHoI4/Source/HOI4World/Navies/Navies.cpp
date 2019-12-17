@@ -20,8 +20,7 @@ HoI4::Navies::Navies(
 		auto navalLocation = backupNavalLocation;
 		auto base = backupNavalLocation;
 
-		auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(army->getLocation());
-		if (mapping)
+		if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(army->getLocation()); mapping)
 		{
 			for (auto possibleProvince: *mapping)
 			{
@@ -30,14 +29,11 @@ HoI4::Navies::Navies(
 					navalLocation = possibleProvince;
 					break;
 				}
-				else if (provinceToStateIDMap.find(possibleProvince) != provinceToStateIDMap.end())
+				else if (auto stateID = provinceToStateIDMap.find(possibleProvince); stateID != provinceToStateIDMap.end())
 				{
-					auto stateID = provinceToStateIDMap.at(possibleProvince);
-					if (states.find(stateID) != states.end())
+					if (auto state = states.find(stateID->second); state != states.end())
 					{
-						auto state = states.at(stateID);
-						auto mainNavalLocation = state.getMainNavalLocation();
-						if (mainNavalLocation)
+						if (auto mainNavalLocation = state->second.getMainNavalLocation(); mainNavalLocation)
 						{
 							navalLocation = *mainNavalLocation;
 							base = *mainNavalLocation;
@@ -51,19 +47,14 @@ HoI4::Navies::Navies(
 		LegacyNavy newLegacyNavy(army->getName(), navalLocation, base);
 		MtgNavy newMtgNavy(army->getName(), navalLocation, base);
 
-		for (auto regiment : army->getRegiments())
+		for (auto regiment: army->getRegiments())
 		{
 			auto type = regiment->getType();
 			if (unitMap.hasMatchingType(type))
 			{
 				if (auto unitInfo = unitMap.getMatchingUnitInfo(type); unitInfo && unitInfo->getCategory() == "naval")
 				{
-					LegacyShip newLegacyShip(
-						regiment->getName(),
-						unitInfo->getType(),
-						unitInfo->getEquipment(),
-						tag
-					);
+					LegacyShip newLegacyShip(regiment->getName(), unitInfo->getType(), unitInfo->getEquipment(), tag);
 					newLegacyNavy.addShip(newLegacyShip);
 				}
 			}
@@ -79,7 +70,14 @@ HoI4::Navies::Navies(
 					if ((unitInfo.getCategory() == "naval") && theShipVariants.hasVariant(unitInfo.getVersion()))
 					{
 						auto experience = static_cast<float>(regiment->getExperience() / 100);
-						MtgShip newMtgShip(regiment->getName(), unitInfo.getType(), unitInfo.getEquipment(), tag, unitInfo.getVersion(), experience);
+						MtgShip newMtgShip(
+							regiment->getName(),
+							unitInfo.getType(),
+							unitInfo.getEquipment(),
+							tag,
+							unitInfo.getVersion(),
+							experience
+						);
 						newMtgNavy.addShip(newMtgShip);
 					}
 				}
