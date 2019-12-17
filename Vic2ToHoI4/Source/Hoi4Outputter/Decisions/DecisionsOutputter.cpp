@@ -32,4 +32,11 @@ void HoI4::outputDecisions(const decisions& theDecisions, const Configuration& t
 		outStream << category;
 	}
 	outStream.close();
+
+	outStream.open("output/" + theConfiguration.getOutputName() + "/common/decisions/foreign_influence.txt");
+	for (const auto& category : theDecisions.getForeignInfluenceDecisions())
+	{
+		outStream << category;
+	}
+	outStream.close();
 }

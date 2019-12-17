@@ -124,6 +124,38 @@ TEST(HoI4World_DecisionsCategoryTests, DecisionCanBeReplaced)
 }
 
 
+TEST(HoI4World_DecisionsCategoryTests, DecisionsCanBeReplaced)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\tdecision={}\n";
+	input << "}";
+	HoI4::decisionsCategory theDecisionsCategory("decisionsCategoryName", input);
+
+	std::stringstream decisionInput;
+	decisionInput << "= { cost = 50 }";
+	HoI4::decision newDecision("decision", decisionInput);
+	std::vector<HoI4::decision> newDecisions;
+	newDecisions.push_back(newDecision);
+
+	theDecisionsCategory.replaceDecisions(newDecisions);
+
+	std::stringstream output;
+	output << theDecisionsCategory;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "decisionsCategoryName = {\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tdecision = {\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\tcost = 50\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	ASSERT_EQ(output.str(), expectedOutput.str());
+}
+
+
 TEST(HoI4World_DecisionsCategoryTests, ReplacingNonexistentDecisionDoesNotAddIt)
 {
 	std::stringstream input;
