@@ -639,7 +639,6 @@ void HoI4::Country::convertNavies(
 		unitMap,
 		mtgUnitMap,
 		*theShipVariants,
-		theCoastalProvinces,
 		provinceToStateIDMap,
 		allStates,
 		tag);
