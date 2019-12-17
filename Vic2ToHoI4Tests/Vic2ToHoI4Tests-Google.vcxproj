@@ -108,7 +108,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\UnitMapping.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\UnitMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\LegacyNavy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\LegacyShip.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgNavy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgShip.cpp" />

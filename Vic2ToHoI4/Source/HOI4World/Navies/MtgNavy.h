@@ -47,7 +47,7 @@ class MtgNavy: public Navy
 
 		void addShip(Ship& newShip) { ships.push_back(dynamic_cast<MtgShip&>(newShip)); }
 
-		int getNumShips() const { return ships.size(); }
+		size_t getNumShips() const { return ships.size(); }
 
 		friend std::ostream& operator << (std::ostream& output, const MtgNavy& instance);
 

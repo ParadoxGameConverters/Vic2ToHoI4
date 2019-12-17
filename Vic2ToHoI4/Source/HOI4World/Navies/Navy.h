@@ -42,7 +42,7 @@ class Navy
 	public:
 		Navy(const std::string& _name, int _location, int _base);
 		Navy() = delete;
-		~Navy() = default;
+		virtual ~Navy() = default;
 		Navy(const Navy&) = default;
 		Navy(Navy&&) = default;
 		Navy& operator=(const Navy&) = default;
@@ -50,7 +50,7 @@ class Navy
 
 		virtual void addShip(Ship& newShip) = 0;
 
-		virtual int getNumShips() const = 0;
+		virtual size_t getNumShips() const = 0;
 
 	protected:
 		std::string name;
