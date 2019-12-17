@@ -303,9 +303,6 @@
     <ClCompile Include="Source\HOI4World\Navies\Navy.cpp">
       <Filter>HoI4World\Navies</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Navies\MtgNavy.cpp">
-      <Filter>HoI4World\Navies</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Navies\Navies.cpp">
       <Filter>HoI4World\Navies</Filter>
     </ClCompile>

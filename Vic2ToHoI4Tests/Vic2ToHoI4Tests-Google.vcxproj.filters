@@ -311,9 +311,6 @@
     <ClCompile Include="HoI4WorldTests\LegacyNavyTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgNavy.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
-    </ClCompile>
     <ClCompile Include="HoI4WorldTests\MtgNavyTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
