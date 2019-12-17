@@ -5,6 +5,7 @@
 
 #include "LegacyShip.h"
 #include "Navy.h"
+#include <vector>
 
 
 

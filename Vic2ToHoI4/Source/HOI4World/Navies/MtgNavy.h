@@ -5,6 +5,7 @@
 
 #include "MtgShip.h"
 #include "Navy.h"
+#include <vector>
 
 
 

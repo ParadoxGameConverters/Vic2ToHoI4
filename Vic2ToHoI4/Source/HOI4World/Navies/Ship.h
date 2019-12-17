@@ -2,7 +2,6 @@
 #define SHIP_H
 
 
-#include <ostream>
 #include <string>
 
 
