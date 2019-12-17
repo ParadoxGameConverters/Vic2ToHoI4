@@ -53,9 +53,6 @@ class LegacyShip: public Ship
 		friend std::ostream& operator << (std::ostream& output, const LegacyShip& instance);
 };
 
-
-std::ostream& operator << (std::ostream& output, const LegacyShip& instance);
-
 }
 
 
