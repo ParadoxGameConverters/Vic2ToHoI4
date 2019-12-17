@@ -59,9 +59,6 @@ class MtgShip: public Ship
 		float experience = 0.0;
 };
 
-
-std::ostream& operator << (std::ostream& output, const MtgShip& instance);
-
 }
 
 

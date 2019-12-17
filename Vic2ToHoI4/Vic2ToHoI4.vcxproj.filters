@@ -411,6 +411,9 @@
     <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp">
       <Filter>Hoi4Outputter\Navies</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Navies\MtgShipOutputter.cpp">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -780,6 +783,9 @@
       <Filter>Hoi4Outputter\Navies</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.h">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Navies\MtgShipOutputter.h">
       <Filter>Hoi4Outputter\Navies</Filter>
     </ClInclude>
   </ItemGroup>
