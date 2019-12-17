@@ -1,34 +1,12 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "gtest/gtest.h"
-#include "../Vic2ToHoI4/Source/HoI4World/Navies/LegacyNavy.h"
+#include "../Vic2ToHoI4/Source/HOI4World/Navies/LegacyNavy.h"
+#include "../Vic2ToHoI4/Source/Hoi4Outputter/Navies/LegacyNavyOutputter.h"
 
 
 
-TEST(HoI4World_LegacyNavyTests, BlankNavyOutputsProperly)
+TEST(HoI4World_Navies_LegacyNavyTests, BlankNavyOutputsProperly)
 {
-	HoI4::LegacyNavy navy("", 0, 0);
+	const HoI4::LegacyNavy navy("", 0, 0);
 	std::ostringstream output;
 	output << navy;
 
@@ -45,9 +23,9 @@ TEST(HoI4World_LegacyNavyTests, BlankNavyOutputsProperly)
 }
 
 
-TEST(HoI4World_LegacyNavyTests, ZeroShipsByDefault)
+TEST(HoI4World_Navies_LegacyNavyTests, ZeroShipsByDefault)
 {
-	HoI4::LegacyNavy navy("", 0, 0);
+	const HoI4::LegacyNavy navy("", 0, 0);
 	std::ostringstream output;
 	output << navy;
 
@@ -55,7 +33,7 @@ TEST(HoI4World_LegacyNavyTests, ZeroShipsByDefault)
 }
 
 
-TEST(HoI4World_LegacyNavyTests, ShipsAreCountedProperly)
+TEST(HoI4World_Navies_LegacyNavyTests, ShipsAreCountedProperly)
 {
 	HoI4::LegacyNavy navy("", 0, 0);
 	std::ostringstream output;
@@ -70,7 +48,7 @@ TEST(HoI4World_LegacyNavyTests, ShipsAreCountedProperly)
 }
 
 
-TEST(HoI4World_LegacyNavyTests, ShipsAreOutputProperly)
+TEST(HoI4World_Navies_LegacyNavyTests, ShipsAreOutputProperly)
 {
 	HoI4::LegacyNavy navy("", 0, 0);
 
@@ -89,17 +67,19 @@ TEST(HoI4World_LegacyNavyTests, ShipsAreOutputProperly)
 	expectedOutput << "\t\ttask_force = {\n";
 	expectedOutput << "\t\t\tname = \"\"\n";
 	expectedOutput << "\t\t\tlocation = 0\n";
-	expectedOutput << "\t\t\tship = { name = \"ship1\" definition = type1 equipment = { equip1 = { amount = 1 owner = OWN } } }\n";
-	expectedOutput << "\t\t\tship = { name = \"ship2\" definition = type2 equipment = { equip2 = { amount = 1 owner = PWN } } }\n";
+	expectedOutput <<
+		"\t\t\tship = { name = \"ship1\" definition = type1 equipment = { equip1 = { amount = 1 owner = OWN } } }\n";
+	expectedOutput <<
+		"\t\t\tship = { name = \"ship2\" definition = type2 equipment = { equip2 = { amount = 1 owner = PWN } } }\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
-TEST(HoI4World_LegacyNavyTests, NameCanBeSet)
+TEST(HoI4World_Navies_LegacyNavyTests, NameCanBeSet)
 {
-	HoI4::LegacyNavy navy("theName", 0, 0);
+	const HoI4::LegacyNavy navy("theName", 0, 0);
 	std::ostringstream output;
 	output << navy;
 
@@ -116,9 +96,9 @@ TEST(HoI4World_LegacyNavyTests, NameCanBeSet)
 }
 
 
-TEST(HoI4World_LegacyNavyTests, LocationCanBeSet)
+TEST(HoI4World_Navies_LegacyNavyTests, LocationCanBeSet)
 {
-	HoI4::LegacyNavy navy("", 15, 0);
+	const HoI4::LegacyNavy navy("", 15, 0);
 	std::ostringstream output;
 	output << navy;
 
@@ -135,9 +115,9 @@ TEST(HoI4World_LegacyNavyTests, LocationCanBeSet)
 }
 
 
-TEST(HoI4World_LegacyNavyTests, BaseCanBeSet)
+TEST(HoI4World_Navies_LegacyNavyTests, BaseCanBeSet)
 {
-	HoI4::LegacyNavy navy("", 0, 12);
+	const HoI4::LegacyNavy navy("", 0, 12);
 	std::ostringstream output;
 	output << navy;
 
