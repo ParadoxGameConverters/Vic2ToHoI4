@@ -36,7 +36,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../States/HoI4State.h"
 #include "../../V2World/Army.h"
 #include <map>
-#include <ostream>
 #include <string>
 #include <vector>
 
@@ -65,8 +64,8 @@ class Navies
 		Navies& operator=(const Navies&) = default;
 		Navies& operator=(Navies&&) = default;
 
-		void outputLegacy(std::ostream& output) const;
-		void outputMtg(std::ostream& output) const;
+		const auto& getLegacyNavies() const { return legacyNavies; }
+		const auto& getMtgNavies() const { return mtgNavies; }
 
 	private:
 		std::vector<HoI4::LegacyNavy> legacyNavies;

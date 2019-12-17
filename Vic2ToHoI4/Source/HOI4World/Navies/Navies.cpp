@@ -127,25 +127,3 @@ HoI4::Navies::Navies(
 		}
 	}
 }
-
-
-void HoI4::Navies::outputLegacy(std::ostream& output) const
-{
-	output << "units = {\n";
-	for (auto navy: legacyNavies)
-	{
-		output << navy;
-	}
-	output << "}\n";
-}
-
-
-void HoI4::Navies::outputMtg(std::ostream& output) const
-{
-	output << "units = {\n";
-	for (auto navy: mtgNavies)
-	{
-		output << navy;
-	}
-	output << "}\n";
-}

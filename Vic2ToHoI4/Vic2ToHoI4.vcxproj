@@ -195,6 +195,7 @@
     <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\MtgShipOutputter.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Navies\NaviesOutputter.cpp" />
     <ClCompile Include="Source\HOI4World\Advisor.cpp" />
     <ClCompile Include="Source\HOI4World\AIPeace.cpp" />
     <ClCompile Include="Source\HOI4World\AIPeaces.cpp" />
@@ -318,6 +319,7 @@
     <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\MtgShipOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Navies\NaviesOutputter.h" />
     <ClInclude Include="Source\HOI4World\Advisor.h" />
     <ClInclude Include="Source\HOI4World\AIPeace.h" />
     <ClInclude Include="Source\HOI4World\AIPeaces.h" />
