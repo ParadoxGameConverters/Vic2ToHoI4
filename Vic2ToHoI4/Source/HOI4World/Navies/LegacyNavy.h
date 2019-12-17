@@ -55,9 +55,6 @@ class LegacyNavy: public Navy
 		std::vector<LegacyShip> ships;
 };
 
-
-std::ostream& operator << (std::ostream& output, const LegacyNavy& instance);
-
 }
 
 
