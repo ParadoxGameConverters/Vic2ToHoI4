@@ -220,9 +220,6 @@
     </ClCompile>
     <ClCompile Include="..\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="..\googletest\googletest\src\gtest-all.cc" />
-    <ClCompile Include="HoI4WorldTests\AllMilitaryMappingsTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
@@ -230,9 +227,6 @@
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\MilitaryMappingTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\RegimentTests.cpp">
@@ -265,18 +259,6 @@
     <ClCompile Include="HoI4WorldTests\TechnologiesTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\ShipVariantTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\ShipModulesTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\ShipVariantsTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\PossibleShipVariantTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="Mocks\TechnologiesMock.h">
       <Filter>Mocks</Filter>
     </ClCompile>
@@ -293,29 +275,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariants.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\NaviesTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\MtgShipTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\LegacyShipTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\LegacyNavyTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\MtgNavyTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\Navies.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\UnitMappingsTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\UnitMappingTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\UnitMapping.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
@@ -326,17 +287,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\HoI4UnitType.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\HoI4UnitTypeTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MtgUnitMappings.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\MtgUnitMappingsTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\MtgUnitMappingTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MtgUnitMapping.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
@@ -347,17 +299,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decisions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="DecisionTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
-    </ClCompile>
-    <ClCompile Include="DecisionsCategoryTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\IdeologicalDecisionsTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\IdeologicalDecisions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
@@ -410,23 +353,11 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\DockyardProvince.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\DockyardProvinceTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateBuildings.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\StateBuildingsTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateHistory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\StateHistoryTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\StateCategoryTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateCategory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
@@ -434,26 +365,11 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateCategoryFile.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\StateCategoryFileTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\StateCategoriesTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\DefaultStateTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\DefaultState.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\HoI4StateTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="Mocks\Vic2StateMock.h">
       <Filter>Mocks</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\DecisionsCategoriesTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Hoi4CountryOutputter.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter</Filter>
@@ -496,6 +412,90 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\NaviesOutputter.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Decisions\DecisionsCategoriesTests.cpp">
+      <Filter>HoI4WorldTests\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Decisions\DecisionsCategoryTests.cpp">
+      <Filter>HoI4WorldTests\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Decisions\DecisionTests.cpp">
+      <Filter>HoI4WorldTests\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Decisions\IdeologicalDecisionsTests.cpp">
+      <Filter>HoI4WorldTests\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\MilitaryMappings\AllMilitaryMappingsTests.cpp">
+      <Filter>HoI4WorldTests\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\MilitaryMappings\HoI4UnitTypeTests.cpp">
+      <Filter>HoI4WorldTests\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\MilitaryMappings\MilitaryMappingTests.cpp">
+      <Filter>HoI4WorldTests\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\MilitaryMappings\MtgUnitMappingsTests.cpp">
+      <Filter>HoI4WorldTests\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\MilitaryMappings\MtgUnitMappingTests.cpp">
+      <Filter>HoI4WorldTests\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\MilitaryMappings\UnitMappingsTests.cpp">
+      <Filter>HoI4WorldTests\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\MilitaryMappings\UnitMappingTests.cpp">
+      <Filter>HoI4WorldTests\MilitaryMappings</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Navies\LegacyNavyTests.cpp">
+      <Filter>HoI4WorldTests\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Navies\LegacyShipTests.cpp">
+      <Filter>HoI4WorldTests\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Navies\MtgNavyTests.cpp">
+      <Filter>HoI4WorldTests\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Navies\MtgShipTests.cpp">
+      <Filter>HoI4WorldTests\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Navies\NaviesTests.cpp">
+      <Filter>HoI4WorldTests\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\ShipTypes\PossibleShipVariantTests.cpp">
+      <Filter>HoI4WorldTests\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\ShipTypes\ShipModulesTests.cpp">
+      <Filter>HoI4WorldTests\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\ShipTypes\ShipVariantsTests.cpp">
+      <Filter>HoI4WorldTests\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\ShipTypes\ShipVariantTests.cpp">
+      <Filter>HoI4WorldTests\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\States\DefaultStateTests.cpp">
+      <Filter>HoI4WorldTests\States</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\States\DockyardProvinceTests.cpp">
+      <Filter>HoI4WorldTests\States</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\States\HoI4StateTests.cpp">
+      <Filter>HoI4WorldTests\States</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\States\StateBuildingsTests.cpp">
+      <Filter>HoI4WorldTests\States</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\States\StateCategoriesTests.cpp">
+      <Filter>HoI4WorldTests\States</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\States\StateCategoryTests.cpp">
+      <Filter>HoI4WorldTests\States</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\States\StateCategoryFileTests.cpp">
+      <Filter>HoI4WorldTests\States</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\States\StateHistoryTests.cpp">
+      <Filter>HoI4WorldTests\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -558,6 +558,21 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Navies">
       <UniqueIdentifier>{57176155-a8f4-40d2-9f58-2ffeaa57dcb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\Decisions">
+      <UniqueIdentifier>{6c30ff4f-33f5-4956-ac67-5750f0242685}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\MilitaryMappings">
+      <UniqueIdentifier>{5e433971-93e8-41d4-af5f-b059bf2d75de}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\Navies">
+      <UniqueIdentifier>{6e7a3829-66a6-41e8-b86d-0e7de889c974}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\ShipTypes">
+      <UniqueIdentifier>{2e0abc33-805c-4ae9-9968-0e02edb0c37a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\States">
+      <UniqueIdentifier>{c10e58fb-ad11-413c-965f-7c114e869836}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

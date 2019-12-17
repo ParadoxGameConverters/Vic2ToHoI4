@@ -24,7 +24,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HoI4World/Navies/Navies.h"
 #include "../Vic2ToHoI4/Source/Hoi4Outputter/Navies/NaviesOutputter.h"
-#include "../Mocks/TechnologiesMock.h"
+#include "../../Mocks/TechnologiesMock.h"
 
 
 class HoI4World_NaviesTests: public ::testing::Test
