@@ -19,6 +19,7 @@ TEST(HoI4World_MilitaryMappings_unitMappingsTests, Vic2UnitAddedToUnitMapping)
 		"= {\n"\
 		"\t\tlink = {\n"\
 		"\t\t\tvic = irregular\n"\
+		"\t\t\thoi = { type = foo }\n"\
 		"\t\t}\n"\
 		"\t}"
 	);
