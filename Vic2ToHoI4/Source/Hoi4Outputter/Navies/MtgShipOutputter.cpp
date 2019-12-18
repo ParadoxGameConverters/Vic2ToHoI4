@@ -1,4 +1,5 @@
 #include "MtgShipOutputter.h"
+#include <limits>
 
 
 
@@ -6,7 +7,7 @@ std::ostream& HoI4::operator<<(std::ostream& output, const MtgShip& instance)
 {
 	output << "\t\t\tship = { name = \"" << instance.name;
 	output << "\" definition = " << instance.type;
-	if (instance.experience > FLT_EPSILON)
+	if (instance.experience > std::numeric_limits<float>::epsilon())
 	{
 		output << " start_experience_factor = " << instance.experience;
 	}
