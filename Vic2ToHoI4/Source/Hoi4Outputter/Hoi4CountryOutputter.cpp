@@ -1,4 +1,5 @@
 #include "Hoi4CountryOutputter.h"
+#include "Navies/NaviesOutputter.h"
 #include "../HOI4World/Advisor.h"
 #include "../HOI4World/DivisionTemplate.h"
 #include "../HOI4World/HoI4Country.h"
@@ -907,12 +908,12 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 	std::ofstream legacyNavy(
 		"output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_legacy.txt"
 	);
-	navies.outputLegacy(legacyNavy);
+	HoI4::outputLegacyNavies(navies, legacyNavy);
 
 	std::ofstream mtgNavy(
 		"output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_mtg.txt"
 	);
-	navies.outputMtg(mtgNavy);
+	HoI4::outputMtgNavies(navies, mtgNavy);
 }
 
 

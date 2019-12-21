@@ -49,6 +49,9 @@
     <Filter Include="Hoi4Outputter\Decisions">
       <UniqueIdentifier>{b198d911-63be-41f0-b3a6-2d98785193ea}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hoi4Outputter\Navies">
+      <UniqueIdentifier>{9a173023-f3eb-4316-b355-2b514e1c7033}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -294,24 +297,6 @@
     <ClCompile Include="Source\HOI4World\ShipTypes\ShipModules.cpp">
       <Filter>HoI4World\ShipTypes</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Navies\MtgShip.cpp">
-      <Filter>HoI4World\Navies</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Navies\Ship.cpp">
-      <Filter>HoI4World\Navies</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Navies\LegacyShip.cpp">
-      <Filter>HoI4World\Navies</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Navies\Navy.cpp">
-      <Filter>HoI4World\Navies</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Navies\LegacyNavy.cpp">
-      <Filter>HoI4World\Navies</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Navies\MtgNavy.cpp">
-      <Filter>HoI4World\Navies</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Navies\Navies.cpp">
       <Filter>HoI4World\Navies</Filter>
     </ClCompile>
@@ -407,6 +392,21 @@
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.cpp">
       <Filter>Hoi4Outputter\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.cpp">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Navies\MtgShipOutputter.cpp">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Navies\NaviesOutputter.cpp">
+      <Filter>Hoi4Outputter\Navies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -772,6 +772,21 @@
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.h">
       <Filter>Hoi4Outputter\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.h">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.h">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Navies\MtgShipOutputter.h">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.h">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Navies\NaviesOutputter.h">
+      <Filter>Hoi4Outputter\Navies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

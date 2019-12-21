@@ -22,10 +22,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "gtest/gtest.h"
-#include "../Mocks/CountryMapperMock.h"
-#include "../Mocks/ProvinceMapperMock.h"
-#include "../Mocks/StateCategoriesMock.h"
-#include "../Mocks/Vic2StateMock.h"
+#include "../../Mocks/CountryMapperMock.h"
+#include "../../Mocks/ProvinceMapperMock.h"
+#include "../../Mocks/StateCategoriesMock.h"
+#include "../../Mocks/Vic2StateMock.h"
 #include "../Vic2ToHoI4/Source/Configuration.h"
 #include "../Vic2ToHoI4/Source/HOI4World/CoastalProvinces.h"
 #include "../Vic2ToHoI4/Source/HOI4World/States/HoI4State.h"

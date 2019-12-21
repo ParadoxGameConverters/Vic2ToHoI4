@@ -23,7 +23,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/Decisions/DecisionsCategory.h"
-#include "mocks/EventsMock.h"
+#include "../../mocks/EventsMock.h"
 #include <sstream>
 
 

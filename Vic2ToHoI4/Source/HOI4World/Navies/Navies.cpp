@@ -1,26 +1,3 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "Navies.h"
 #include "../../Mappers/ProvinceDefinitions.h"
 #include "../../Mappers/Provinces/ProvinceMapper.h"
@@ -29,23 +6,21 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 HoI4::Navies::Navies(
-	std::vector<const Vic2::Army*> srcArmies,
+	const std::vector<const Vic2::Army*>& srcArmies,
 	int backupNavalLocation,
 	const UnitMappings& unitMap,
 	const MtgUnitMappings& mtgUnitMap,
-	const HoI4::shipVariants& theShipVariants,
-	const HoI4::coastalProvinces& theCoastalProvinces,
+	const shipVariants& theShipVariants,
 	const std::map<int, int>& provinceToStateIDMap,
-	std::map<int, HoI4::State> states,
+	std::map<int, State> states,
 	const std::string& tag)
 {
 	for (auto army: srcArmies)
 	{
-		int navalLocation = backupNavalLocation;
-		int base = backupNavalLocation;
+		auto navalLocation = backupNavalLocation;
+		auto base = backupNavalLocation;
 
-		auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(army->getLocation());
-		if (mapping)
+		if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(army->getLocation()); mapping)
 		{
 			for (auto possibleProvince: *mapping)
 			{
@@ -54,43 +29,32 @@ HoI4::Navies::Navies(
 					navalLocation = possibleProvince;
 					break;
 				}
-				else
+				else if (auto stateID = provinceToStateIDMap.find(possibleProvince); stateID != provinceToStateIDMap.end())
 				{
-					if (provinceToStateIDMap.find(possibleProvince) != provinceToStateIDMap.end())
+					if (auto state = states.find(stateID->second); state != states.end())
 					{
-						int stateID = provinceToStateIDMap.at(possibleProvince);
-						if (states.find(stateID) != states.end())
+						if (auto mainNavalLocation = state->second.getMainNavalLocation(); mainNavalLocation)
 						{
-							auto state = states.at(stateID);
-							auto mainNavalLocation = state.getMainNavalLocation();
-							if (mainNavalLocation)
-							{
-								navalLocation = *mainNavalLocation;
-								base = *mainNavalLocation;
-								break;
-							}
+							navalLocation = *mainNavalLocation;
+							base = *mainNavalLocation;
+							break;
 						}
 					}
 				}
 			}
 		}
 
-		HoI4::LegacyNavy newLegacyNavy(army->getName(), navalLocation, base);
-		HoI4::MtgNavy newMtgNavy(army->getName(), navalLocation, base);
+		LegacyNavy newLegacyNavy(army->getName(), navalLocation, base);
+		MtgNavy newMtgNavy(army->getName(), navalLocation, base);
 
-		for (auto regiment : army->getRegiments())
+		for (auto regiment: army->getRegiments())
 		{
-			std::string type = regiment->getType();
+			auto type = regiment->getType();
 			if (unitMap.hasMatchingType(type))
 			{
 				if (auto unitInfo = unitMap.getMatchingUnitInfo(type); unitInfo && unitInfo->getCategory() == "naval")
 				{
-					HoI4::LegacyShip newLegacyShip(
-						regiment->getName(),
-						unitInfo->getType(),
-						unitInfo->getEquipment(),
-						tag
-					);
+					LegacyShip newLegacyShip(regiment->getName(), unitInfo->getType(), unitInfo->getEquipment(), tag);
 					newLegacyNavy.addShip(newLegacyShip);
 				}
 			}
@@ -100,13 +64,20 @@ HoI4::Navies::Navies(
 			}
 			if (mtgUnitMap.hasMatchingType(type))
 			{
-				std::vector<HoI4::HoI4UnitType> unitInfos = mtgUnitMap.getMatchingUnitInfo(type);
-				for (auto unitInfo: unitInfos)
+				auto unitInfos = mtgUnitMap.getMatchingUnitInfo(type);
+				for (const auto& unitInfo: unitInfos)
 				{
 					if ((unitInfo.getCategory() == "naval") && theShipVariants.hasVariant(unitInfo.getVersion()))
 					{
-						float experience = static_cast<float>(regiment->getExperience() / 100);
-						HoI4::MtgShip newMtgShip(regiment->getName(), unitInfo.getType(), unitInfo.getEquipment(), tag, unitInfo.getVersion(), experience);
+						auto experience = static_cast<float>(regiment->getExperience() / 100);
+						MtgShip newMtgShip(
+							regiment->getName(),
+							unitInfo.getType(),
+							unitInfo.getEquipment(),
+							tag,
+							unitInfo.getVersion(),
+							experience
+						);
 						newMtgNavy.addShip(newMtgShip);
 					}
 				}
@@ -126,26 +97,4 @@ HoI4::Navies::Navies(
 			mtgNavies.push_back(newMtgNavy);
 		}
 	}
-}
-
-
-void HoI4::Navies::outputLegacy(std::ostream& output) const
-{
-	output << "units = {\n";
-	for (auto navy: legacyNavies)
-	{
-		output << navy;
-	}
-	output << "}\n";
-}
-
-
-void HoI4::Navies::outputMtg(std::ostream& output) const
-{
-	output << "units = {\n";
-	for (auto navy: mtgNavies)
-	{
-		output << navy;
-	}
-	output << "}\n";
 }

@@ -1,42 +1,20 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "gtest/gtest.h"
-#include "../Vic2ToHoI4/Source/HoI4World/Navies/Navies.h"
-#include "../Mocks/TechnologiesMock.h"
+#include "../Vic2ToHoI4/Source/HOI4World/Navies/Navies.h"
+#include "../Vic2ToHoI4/Source/Hoi4Outputter/Navies/NaviesOutputter.h"
+#include "../../Mocks/TechnologiesMock.h"
 
 
-class HoI4World_NaviesTests: public ::testing::Test
+class HoI4World_Navies_NaviesTests: public testing::Test
 {
 	protected:
-		HoI4World_NaviesTests();
+		HoI4World_Navies_NaviesTests();
 
 		std::unique_ptr<HoI4::shipVariants> theShipVariants;
 		std::unique_ptr<HoI4::shipVariants> limitedShipVariants;
 };
 
 
-HoI4World_NaviesTests::HoI4World_NaviesTests()
+HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests()
 {
 	std::vector< HoI4::shipVariant> possibleVariants;
 	std::stringstream earlyDestroyerInput;
@@ -87,7 +65,7 @@ HoI4World_NaviesTests::HoI4World_NaviesTests()
 
 	mockTechnologies ownedTechs;
 	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_light")).WillRepeatedly(testing::Return(true));
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light")).WillOnce(testing::Return(true)).WillOnce(testing::Return(false)); 
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light")).WillOnce(testing::Return(true)).WillOnce(testing::Return(false));
 
 	theShipVariants = std::make_unique<HoI4::shipVariants>(possibleVariants, ownedTechs, "");
 	limitedShipVariants = std::make_unique<HoI4::shipVariants>(possibleVariants, ownedTechs, "");
@@ -95,21 +73,20 @@ HoI4World_NaviesTests::HoI4World_NaviesTests()
 
 
 
-TEST_F(HoI4World_NaviesTests, BlankNaviesOutputLegacyProperly)
+TEST_F(HoI4World_Navies_NaviesTests, BlankNaviesOutputLegacyProperly)
 {
 	std::vector<const Vic2::Army*> sourceArmies;
 
 	std::stringstream input;
 	HoI4::UnitMappings unitMap(input);
 	HoI4::MtgUnitMappings mtgUnitMap(input);
-	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 	std::string tag;
 
-	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, tag);
+	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, tag);
 	std::ostringstream output;
-	navies.outputLegacy(output);
+	outputLegacyNavies(navies, output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -118,7 +95,7 @@ TEST_F(HoI4World_NaviesTests, BlankNaviesOutputLegacyProperly)
 }
 
 
-TEST_F(HoI4World_NaviesTests, ConvertedNaviesOutputLegacyProperly)
+TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesOutputLegacyProperly)
 {
 	std::vector<const Vic2::Army*> sourceArmies;
 	std::stringstream armyStream;
@@ -136,7 +113,7 @@ TEST_F(HoI4World_NaviesTests, ConvertedNaviesOutputLegacyProperly)
 	armyStream << "	}\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	Vic2::Army* navy = new Vic2::Army("navy", armyStream);
+	auto navy = new Vic2::Army("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream unitMappingsStream;
@@ -155,13 +132,12 @@ TEST_F(HoI4World_NaviesTests, ConvertedNaviesOutputLegacyProperly)
 
 	std::stringstream mtgUnitMappingStream;
 	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
-	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 
-	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
+	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	navies.outputLegacy(output);
+	outputLegacyNavies(navies, output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -179,7 +155,7 @@ TEST_F(HoI4World_NaviesTests, ConvertedNaviesOutputLegacyProperly)
 }
 
 
-TEST_F(HoI4World_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
+TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
 {
 	std::vector<const Vic2::Army*> sourceArmies;
 	std::stringstream armyStream;
@@ -189,7 +165,7 @@ TEST_F(HoI4World_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
 	armyStream << "	supplies = 1.000\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	Vic2::Army* navy = new Vic2::Army("navy", armyStream);
+	auto navy = new Vic2::Army("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream unitMappingsStream;
@@ -206,13 +182,12 @@ TEST_F(HoI4World_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
 
 	std::stringstream mtgUnitMappingStream;
 	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
-	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 
-	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
+	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	navies.outputLegacy(output);
+	outputLegacyNavies(navies, output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -221,7 +196,7 @@ TEST_F(HoI4World_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
 }
 
 
-TEST_F(HoI4World_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
+TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
 {
 	std::vector<const Vic2::Army*> sourceArmies;
 	std::stringstream armyStream;
@@ -239,7 +214,7 @@ TEST_F(HoI4World_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
 	armyStream << "	}\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	Vic2::Army* navy = new Vic2::Army("navy", armyStream);
+	auto navy = new Vic2::Army("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream unitMappingsStream;
@@ -256,13 +231,12 @@ TEST_F(HoI4World_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
 
 	std::stringstream mtgUnitMappingStream;
 	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
-	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 
-	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
+	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	navies.outputLegacy(output);
+	outputLegacyNavies(navies, output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -271,7 +245,7 @@ TEST_F(HoI4World_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
 }
 
 
-TEST_F(HoI4World_NaviesTests, LegacyNavyNamesConvert)
+TEST_F(HoI4World_Navies_NaviesTests, LegacyNavyNamesConvert)
 {
 	std::vector<const Vic2::Army*> sourceArmies;
 	std::stringstream armyStream;
@@ -289,7 +263,7 @@ TEST_F(HoI4World_NaviesTests, LegacyNavyNamesConvert)
 	armyStream << "	}\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	Vic2::Army* navy = new Vic2::Army("navy", armyStream);
+	auto navy = new Vic2::Army("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream unitMappingsStream;
@@ -308,13 +282,12 @@ TEST_F(HoI4World_NaviesTests, LegacyNavyNamesConvert)
 
 	std::stringstream mtgUnitMappingStream;
 	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
-	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 
-	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
+	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	navies.outputLegacy(output);
+	outputLegacyNavies(navies, output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -332,21 +305,20 @@ TEST_F(HoI4World_NaviesTests, LegacyNavyNamesConvert)
 }
 
 
-TEST_F(HoI4World_NaviesTests, BlankNaviesOutputMtgProperly)
+TEST_F(HoI4World_Navies_NaviesTests, BlankNaviesOutputMtgProperly)
 {
 	std::vector<const Vic2::Army*> sourceArmies;
 
 	std::stringstream input;
 	HoI4::UnitMappings unitMap(input);
 	HoI4::MtgUnitMappings mtgUnitMap(input);
-	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 	std::string tag;
 
-	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, tag);
+	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, tag);
 	std::ostringstream output;
-	navies.outputMtg(output);
+	outputMtgNavies(navies, output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -355,7 +327,7 @@ TEST_F(HoI4World_NaviesTests, BlankNaviesOutputMtgProperly)
 }
 
 
-TEST_F(HoI4World_NaviesTests, ConvertedNaviesOutputMtgProperly)
+TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesOutputMtgProperly)
 {
 	std::vector<const Vic2::Army*> sourceArmies;
 	std::stringstream armyStream;
@@ -373,7 +345,7 @@ TEST_F(HoI4World_NaviesTests, ConvertedNaviesOutputMtgProperly)
 	armyStream << "	}\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	Vic2::Army* navy = new Vic2::Army("navy", armyStream);
+	auto navy = new Vic2::Army("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -392,13 +364,12 @@ TEST_F(HoI4World_NaviesTests, ConvertedNaviesOutputMtgProperly)
 	mtgUnitMappingStream << "}";
 	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 
-	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 
-	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
+	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	navies.outputMtg(output);
+	outputMtgNavies(navies, output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -416,7 +387,7 @@ TEST_F(HoI4World_NaviesTests, ConvertedNaviesOutputMtgProperly)
 }
 
 
-TEST_F(HoI4World_NaviesTests, OnlyConvertToAvailableMtgShipType)
+TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableMtgShipType)
 {
 	std::vector<const Vic2::Army*> sourceArmies;
 	std::stringstream armyStream;
@@ -434,7 +405,7 @@ TEST_F(HoI4World_NaviesTests, OnlyConvertToAvailableMtgShipType)
 	armyStream << "	}\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	Vic2::Army* navy = new Vic2::Army("navy", armyStream);
+	auto navy = new Vic2::Army("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -460,13 +431,12 @@ TEST_F(HoI4World_NaviesTests, OnlyConvertToAvailableMtgShipType)
 	mtgUnitMappingStream << "}";
 	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 
-	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 
-	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *limitedShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
+	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *limitedShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	navies.outputMtg(output);
+	outputMtgNavies(navies, output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -484,7 +454,7 @@ TEST_F(HoI4World_NaviesTests, OnlyConvertToAvailableMtgShipType)
 }
 
 
-TEST_F(HoI4World_NaviesTests, ConvertedNaviesGetExperience)
+TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesGetExperience)
 {
 	std::vector<const Vic2::Army*> sourceArmies;
 	std::stringstream armyStream;
@@ -502,7 +472,7 @@ TEST_F(HoI4World_NaviesTests, ConvertedNaviesGetExperience)
 	armyStream << "	}\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	Vic2::Army* navy = new Vic2::Army("navy", armyStream);
+	auto navy = new Vic2::Army("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -521,13 +491,12 @@ TEST_F(HoI4World_NaviesTests, ConvertedNaviesGetExperience)
 	mtgUnitMappingStream << "}";
 	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 
-	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 
-	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
+	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	navies.outputMtg(output);
+	outputMtgNavies(navies, output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -545,7 +514,7 @@ TEST_F(HoI4World_NaviesTests, ConvertedNaviesGetExperience)
 }
 
 
-TEST_F(HoI4World_NaviesTests, NaviesWithoutShipsDontConvertToMtg)
+TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToMtg)
 {
 	std::vector<const Vic2::Army*> sourceArmies;
 	std::stringstream armyStream;
@@ -555,7 +524,7 @@ TEST_F(HoI4World_NaviesTests, NaviesWithoutShipsDontConvertToMtg)
 	armyStream << "	supplies = 1.000\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	Vic2::Army* navy = new Vic2::Army("navy", armyStream);
+	auto navy = new Vic2::Army("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -574,13 +543,12 @@ TEST_F(HoI4World_NaviesTests, NaviesWithoutShipsDontConvertToMtg)
 	mtgUnitMappingStream << "}";
 	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 
-	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 
-	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
+	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	navies.outputMtg(output);
+	outputMtgNavies(navies, output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -589,7 +557,7 @@ TEST_F(HoI4World_NaviesTests, NaviesWithoutShipsDontConvertToMtg)
 }
 
 
-TEST_F(HoI4World_NaviesTests, NonNavalUnitsArentAddedToMtgNavy)
+TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToMtgNavy)
 {
 	std::vector<const Vic2::Army*> sourceArmies;
 	std::stringstream armyStream;
@@ -607,7 +575,7 @@ TEST_F(HoI4World_NaviesTests, NonNavalUnitsArentAddedToMtgNavy)
 	armyStream << "	}\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	Vic2::Army* navy = new Vic2::Army("navy", armyStream);
+	auto navy = new Vic2::Army("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -626,13 +594,12 @@ TEST_F(HoI4World_NaviesTests, NonNavalUnitsArentAddedToMtgNavy)
 	mtgUnitMappingStream << "}";
 	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 
-	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 
-	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
+	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	navies.outputMtg(output);
+	outputMtgNavies(navies, output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -641,7 +608,7 @@ TEST_F(HoI4World_NaviesTests, NonNavalUnitsArentAddedToMtgNavy)
 }
 
 
-TEST_F(HoI4World_NaviesTests, MtgNavyNamesConvert)
+TEST_F(HoI4World_Navies_NaviesTests, MtgNavyNamesConvert)
 {
 	std::vector<const Vic2::Army*> sourceArmies;
 	std::stringstream armyStream;
@@ -659,7 +626,7 @@ TEST_F(HoI4World_NaviesTests, MtgNavyNamesConvert)
 	armyStream << "	}\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	Vic2::Army* navy = new Vic2::Army("navy", armyStream);
+	auto navy = new Vic2::Army("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -678,13 +645,12 @@ TEST_F(HoI4World_NaviesTests, MtgNavyNamesConvert)
 	mtgUnitMappingStream << "}";
 	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
 
-	HoI4::coastalProvinces theCoastalProvinces;
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 
-	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, theCoastalProvinces, provinceToStateIDMap, states, "TAG");
+	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	navies.outputMtg(output);
+	outputMtgNavies(navies, output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -702,28 +668,28 @@ TEST_F(HoI4World_NaviesTests, MtgNavyNamesConvert)
 }
 
 
-TEST_F(HoI4World_NaviesTests, IfInSeaProvinceLocationConverts)
+TEST_F(HoI4World_Navies_NaviesTests, IfInSeaProvinceLocationConverts)
 {
 	// can't be tested due to province mappings implementation
 	ASSERT_TRUE(true);
 }
 
 
-TEST_F(HoI4World_NaviesTests, IfInSeaProvinceBaseUsesBackupLocation)
+TEST_F(HoI4World_Navies_NaviesTests, IfInSeaProvinceBaseUsesBackupLocation)
 {
 	// can't be tested due to province mappings implementation
 	ASSERT_TRUE(true);
 }
 
 
-TEST_F(HoI4World_NaviesTests, IfInPortLocationAndBaseConvert)
+TEST_F(HoI4World_Navies_NaviesTests, IfInPortLocationAndBaseConvert)
 {
 	// can't be tested due to province mappings implementation
 	ASSERT_TRUE(true);
 }
 
 
-TEST_F(HoI4World_NaviesTests, IfInBadLocationAndBaseUseBackup)
+TEST_F(HoI4World_Navies_NaviesTests, IfInBadLocationAndBaseUseBackup)
 {
 	// can't be tested due to province mappings implementation
 	ASSERT_TRUE(true);
