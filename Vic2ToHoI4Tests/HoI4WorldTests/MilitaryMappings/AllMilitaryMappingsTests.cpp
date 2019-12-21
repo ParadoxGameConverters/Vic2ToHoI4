@@ -6,7 +6,7 @@
 class HoI4World_MilitaryMappings_allMilitaryMappingsTests: public testing::Test
 {
 	protected:
-	HoI4World_MilitaryMappings_allMilitaryMappingsTests();
+		HoI4World_MilitaryMappings_allMilitaryMappingsTests();
 
 		std::unique_ptr<HoI4::allMilitaryMappings> allTheMappings;
 };
