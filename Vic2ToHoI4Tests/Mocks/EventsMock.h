@@ -29,5 +29,5 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 class mockEvents: public HoI4::Events
 {
 	public:
-		MOCK_CONST_METHOD1(getEventNumber, std::optional<int>(const std::string&));
+		MOCK_METHOD(std::optional<int>, getEventNumber, (const std::string& eventName), (const, override));
 };
