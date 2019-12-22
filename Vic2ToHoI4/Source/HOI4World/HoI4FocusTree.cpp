@@ -213,10 +213,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		if (majorIdeologies.count("fascism") > 0)
 		{
 			addFascistGenericFocuses(relativePosition, majorIdeologies);
-			if (ideolgicalFanaticsmPrereqs.size() > 0)
-			{
-				ideolgicalFanaticsmPrereqs += " ";
-			}
+			ideolgicalFanaticsmPrereqs += " ";
 			ideolgicalFanaticsmPrereqs += "focus = paramilitarism";
 			relativePosition += 2;
 		}
@@ -1535,7 +1532,6 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<
 			warTargetCountryName = "";
 		}
 
-		string prereq = "";
 		//figuring out location of WG
 		shared_ptr<HoI4Focus> newFocus = loadedFocuses.find("GP_War")->second.makeCustomizedCopy(Home->getTag());
 		if (newAllies.size() > 0)

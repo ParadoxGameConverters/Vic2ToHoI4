@@ -59,7 +59,7 @@ Vic2::Pop::Pop(const std::string& typeString, std::istream& theStream):
 		auto possibleIssue = getNextTokenWithoutMatching(theStream);
 		while (possibleIssue != "}")
 		{
-			auto equals = getNextTokenWithoutMatching(theStream);
+			auto equalsSign = getNextTokenWithoutMatching(theStream);
 			auto issueSupport = getNextTokenWithoutMatching(theStream);
 
 			std::string issueName = issuesInstance.getIssueName(std::stoi(*possibleIssue));

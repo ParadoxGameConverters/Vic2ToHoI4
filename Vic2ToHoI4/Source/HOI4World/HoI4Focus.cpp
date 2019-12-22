@@ -198,7 +198,7 @@ void HoI4Focus::customizePrerequisite(std::shared_ptr<HoI4Focus> newFocus, std::
 		int focusPosition = prerequisite.find(" focus = ", stringPosition);
 		if (focusPosition != std::string::npos)
 		{
-			auto spacePosition = prerequisite.find(" ", focusPosition + 9);
+			auto spacePosition = prerequisite.find(' ', focusPosition + 9);
 			prerequisite.insert(spacePosition, country);
 			stringPosition = focusPosition + country.size() + 9;
 		}

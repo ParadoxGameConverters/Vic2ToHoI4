@@ -99,11 +99,12 @@ void V2Localisations::processLine(string line)
 		{
 			localisationToKeyMap[UTF8Result] = key;
 		}
+
 		if (!UTF8Result.empty())
 		{
 			localisations[key][language] = UTF8Result;
 		}
-		else if ((language != "english") || (language == "x"))
+		else if (language != "english")
 		{
 			localisations[key][language] = localisations[key]["english"];
 		}

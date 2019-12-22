@@ -706,7 +706,6 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4:
 		LOG(LogLevel::Info) << "Calculating AI";
 	}
 	//too many lists, need to clean up
-	vector<shared_ptr<HoI4::Country>> Targets;
 	vector<shared_ptr<HoI4::Country>> Anschluss;
 	vector<shared_ptr<HoI4::Country>> Sudeten;
 	vector<shared_ptr<HoI4::Country>> EqualTargets;
@@ -778,15 +777,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4:
 		}
 	}
 	//string that contains all events
-	string Events;
-	string s;
-	map<string, vector<HoI4::Country*>> TargetMap;
-	vector<shared_ptr<HoI4::Country>> anchlussnan;
-	vector<shared_ptr<HoI4::Country>> sudatennan;
 	vector<shared_ptr<HoI4::Country>> nan;
-	vector<shared_ptr<HoI4::Country>> fn;
-	vector<shared_ptr<HoI4::Country>> man;
-	vector<shared_ptr<HoI4::Country>> coup;
 
 	//look through every anchluss and see its difficulty
 	for (auto target : Anschluss)
@@ -877,7 +868,6 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4:
 		}
 		if (FactionsAttackingMeStrength > GetFactionStrength(findFaction(Leader), 3))
 		{
-			vector<HoI4::Country*> GCAllies;
 			int maxGCAlliance = 0;
 
 			for (auto GC: theWorld->getGreatPowers())
@@ -1003,8 +993,6 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::communistWarCreator(shared_ptr<H
 		}
 	}
 	set<string> Allies = Leader->getAllies();
-	vector<shared_ptr<HoI4::Country>> Targets;
-	map<string, vector<shared_ptr<HoI4::Country>>> NationalFocusesMap;
 	vector<shared_ptr<HoI4::Country>> coups;
 	vector<shared_ptr<HoI4::Country>> forcedtakeover;
 
@@ -1049,7 +1037,6 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::communistWarCreator(shared_ptr<H
 	//	Events / Focuses to increase Industrialization and defense of the country, becomes Isolationist
 	//	Eventually gets events to drop Socialism in One state and switch to permanant revolution(Maybe ? )
 
-	string s;
 	map<string, vector<shared_ptr<HoI4::Country>>> TargetMap;
 	vector<shared_ptr<HoI4::Country>> nan;
 	vector<shared_ptr<HoI4::Country>> fn;
@@ -1128,7 +1115,6 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::communistWarCreator(shared_ptr<H
 	vector<shared_ptr<HoI4::Country>> GCTargets;
 	for (auto GC : GCDistanceSorted)
 	{
-		string thetag = GC->getTag();
 		string HowToTakeGC = HowToTakeLand(GC, Leader, 3);
 		if (HowToTakeGC == "noactionneeded" || HowToTakeGC == "factionneeded")
 		{
@@ -1140,20 +1126,21 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::communistWarCreator(shared_ptr<H
 			//TODO
 		}
 	}
-	for (auto GC : GCTargets)
+	std::vector<std::shared_ptr<HoI4::Country>> finalTargets;
+	for (auto GC: GCTargets)
 	{
 		auto relations = Leader->getRelations(GC->getTag());
 		if ((relations) && (relations->getRelations() < 0))
 		{
-			GCTargets.push_back(GC);
+			finalTargets.push_back(GC);
 		}
-		if (GCTargets.size() >= maxGCWars) break;
+		if (finalTargets.size() >= maxGCWars) break;
 	}
 
 	auto FocusTree = genericFocusTree->makeCustomizedCopy(*Leader);
 	FocusTree->addCommunistCoupBranch(Leader, forcedtakeover, majorIdeologies);
 	FocusTree->addCommunistWarBranch(Leader, TargetsByTech, theWorld->getEvents());
-	FocusTree->addGPWarBranch(Leader, newAllies, GCTargets, "Communist", theWorld->getEvents());
+	FocusTree->addGPWarBranch(Leader, newAllies, finalTargets, "Communist", theWorld->getEvents());
 	Leader->giveNationalFocus(FocusTree);
 
 	return CountriesAtWar;

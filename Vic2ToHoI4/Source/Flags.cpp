@@ -300,8 +300,9 @@ void createBigFlag(tga_image* sourceFlag, const string& filename)
 	FILE* outputFile;
 	if (fopen_s(&outputFile, ("output/" + theConfiguration.getOutputName() + "/gfx/flags/" + filename).c_str(), "w+b") != 0)
 	{
-		LOG(LogLevel::Warning) << "Could not create output/" << theConfiguration.getOutputName() << "/gfx/flags/" << filename;
-		return;
+		tga_free_buffers(destFlag);
+		delete destFlag;
+		throw std::runtime_error("Could not create output/" + theConfiguration.getOutputName() + "/gfx/flags/" + filename);
 	}
 	tga_write_to_FILE(outputFile, destFlag);
 	fclose(outputFile);
@@ -316,8 +317,9 @@ void createMediumFlag(tga_image* sourceFlag, const string& filename)
 	FILE* outputFile;
 	if (fopen_s(&outputFile, ("output/" + theConfiguration.getOutputName() + "/gfx/flags/medium/" + filename).c_str(), "w+b") != 0)
 	{
-		LOG(LogLevel::Warning) << "Could not create output/" << theConfiguration.getOutputName() << "/gfx/flags/medium/" << filename;
-		return;
+		tga_free_buffers(destFlag);
+		delete destFlag;
+		throw std::runtime_error("Could not create output/" + theConfiguration.getOutputName() + "/gfx/flags/medium/" + filename);
 	}
 	tga_write_to_FILE(outputFile, destFlag);
 	fclose(outputFile);
@@ -332,8 +334,9 @@ void createSmallFlag(tga_image* sourceFlag, const string& filename)
 	FILE* outputFile;
 	if (fopen_s(&outputFile, ("output/" + theConfiguration.getOutputName() + "/gfx/flags/small/" + filename).c_str(), "w+b") != 0)
 	{
-		LOG(LogLevel::Warning) << "Could not create output/" << theConfiguration.getOutputName() << "/gfx/flags/small/" << filename;
-		return;
+		tga_free_buffers(destFlag);
+		delete destFlag;
+		throw std::runtime_error("Could not create output/" + theConfiguration.getOutputName() + "/gfx/flags/small/" + filename);
 	}
 	tga_write_to_FILE(outputFile, destFlag);
 	fclose(outputFile);

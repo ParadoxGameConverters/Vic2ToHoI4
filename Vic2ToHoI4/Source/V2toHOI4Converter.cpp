@@ -95,8 +95,8 @@ void setOutputName(const std::string& V2SaveFileName)
 		return;
 	}
 
-	const int lastBackslash = V2SaveFileName.find_last_of("\\");
-	const int lastSlash = V2SaveFileName.find_last_of("/");
+	const int lastBackslash = V2SaveFileName.find_last_of('\\');
+	const int lastSlash = V2SaveFileName.find_last_of('/');
 	if ((lastBackslash == std::string::npos) && (lastSlash != std::string::npos))
 	{
 		outputName = outputName.substr(lastSlash + 1, outputName.length());
@@ -115,7 +115,7 @@ void setOutputName(const std::string& V2SaveFileName)
 		// no change, but explicitly considered
 	}
 
-	const int length = outputName.find_first_of(".");
+	const int length = outputName.find_first_of('.');
 	if ((length == std::string::npos) || (".v2" != outputName.substr(length, outputName.length())))
 	{
 		std::invalid_argument theException("The save was not a Vic2 save. Choose a save ending in '.v2' and convert again.");
