@@ -23,9 +23,9 @@ bool HoI4::MtgUnitMappings::hasMatchingType(const std::string& Vic2Type) const
 
 std::vector<HoI4::HoI4UnitType> HoI4::MtgUnitMappings::getMatchingUnitInfo(const std::string& Vic2Type) const
 {
-	if (hasMatchingType(Vic2Type))
+	if (auto matchingUnit = unitMaps.find(Vic2Type); matchingUnit != unitMaps.end())
 	{
-		return unitMaps.find(Vic2Type)->second;
+		return matchingUnit->second;
 	}
 	else
 	{

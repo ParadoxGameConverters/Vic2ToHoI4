@@ -115,7 +115,10 @@ class HoI4WarCreator
 		shared_ptr<HoI4Faction> findFaction(shared_ptr<HoI4::Country> checkingCountry);
 
 		map<string, shared_ptr<HoI4::Country>> getNeighbors(shared_ptr<HoI4::Country> checkingCountry, const HoI4::MapData& theMapData);
-		map<string, shared_ptr<HoI4::Country>> getImmediateNeighbors(shared_ptr<HoI4::Country> checkingCountry, const HoI4::MapData& theMapData);
+		std::map<std::string, std::shared_ptr<HoI4::Country>> getImmediateNeighbors(
+			std::shared_ptr<HoI4::Country> checkingCountry,
+			const HoI4::MapData& theMapData
+		);
 		map<string, shared_ptr<HoI4::Country>> getNearbyCountries(shared_ptr<HoI4::Country> checkingCountry);
 
 

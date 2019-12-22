@@ -430,7 +430,7 @@ void outputResearchSlots(std::ostream& output, const bool& greatPower, const boo
 
 void outputThreat(std::ostream& output, const double& threat)
 {
-	if (threat != 0.0)
+	if (threat > std::numeric_limits<float>::epsilon())
 	{
 		output << "add_named_threat = { threat = " << threat << " name = infamy }\n";
 	}

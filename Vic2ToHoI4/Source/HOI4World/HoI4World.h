@@ -158,7 +158,7 @@ class World: commonItems::parser
 		void convertTechs();
 
 		void convertMilitaries();
-		void convertArmies(const militaryMappings& theMilitaryMappings);
+		void convertArmies(const militaryMappings& localMilitaryMappings);
 		void convertNavies(
 			const UnitMappings& unitMap,
 			const MtgUnitMappings& mtgUnitMap);
@@ -176,7 +176,7 @@ class World: commonItems::parser
 		void addFocusTrees();
 		void adjustResearchFocuses();
 
-		void addCountryElectionEvents(const set<string>& majorIdeologies);
+		void addCountryElectionEvents(const std::set<string>& theMajorIdeologies);
 
 		void outputCommonCountries() const;
 		void outputColorsfile() const;

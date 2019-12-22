@@ -297,9 +297,9 @@ void HoI4::Country::convertRelations(const CountryMapper& countryMap)
 }
 
 
-void HoI4::Country::convertWars(const Vic2::Country& sourceCountry, const CountryMapper& countryMap)
+void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry, const CountryMapper& countryMap)
 {
-	for (const auto& sourceWar: sourceCountry.getWars())
+	for (const auto& sourceWar: theSourceCountry.getWars())
 	{
 		War theWar(sourceWar, countryMap);
 		wars.push_back(theWar);

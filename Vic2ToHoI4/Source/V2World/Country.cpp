@@ -79,7 +79,7 @@ Vic2::Country::Country(const std::string& theTag, std::istream& theStream, const
 	registerKeyword(std::regex("domain_region"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::singleString regionString(theStream);
 		domainName = regionString.getString();
-		domainAdjective = regionString.getString();
+		domainAdjective = domainName;
 	});
 	registerKeyword(std::regex("human"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::ignoreItem(unused, theStream);

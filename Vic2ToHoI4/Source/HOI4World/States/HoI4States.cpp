@@ -163,21 +163,30 @@ const std::map<std::string, std::pair<int, int>> HoI4States::determinePotentialO
 
 const std::string HoI4States::selectProvinceOwner(
 	const std::map<std::string, std::pair<int, int>>& potentialOwners
-) const {
+) const
+{
 	std::string oldOwner;
-	for (auto potentialOwner: potentialOwners)
+	std::pair<int, int> oldOwnerStats;
+	for (const auto& potentialOwner: potentialOwners)
 	{
-		// I am the new owner if there is no current owner, or I have more provinces than the current owner,
-		// or I have the same number of provinces, but more population, than the current owner
-		if (	(oldOwner.empty()) ||
-				(potentialOwner.second.first > potentialOwners.find(oldOwner)->second.first) ||
+		// I am the new owner if there is no current owner
+		if (oldOwner.empty())
+		{
+			oldOwner = potentialOwner.first;
+			oldOwnerStats = potentialOwner.second;
+		}
+
+		// I am the new owner if I have more provinces than the current owner,
+		// or I have the same number of provinces but more population than the current owner
+		if (	(potentialOwner.second.first > oldOwnerStats.first) ||
 				(
-					(potentialOwner.second.first == potentialOwners.find(oldOwner)->second.first) &&
-					(potentialOwner.second.second > potentialOwners.find(oldOwner)->second.second)
+					(potentialOwner.second.first == oldOwnerStats.first) &&
+					(potentialOwner.second.second > oldOwnerStats.second)
 				)
 			)
 		{
 			oldOwner = potentialOwner.first;
+			oldOwnerStats = potentialOwner.second;
 		}
 	}
 
@@ -363,10 +372,9 @@ void HoI4States::addProvincesAndCoresToNewState(HoI4::State& newState, const std
 	{
 		newState.addProvince(province);
 		provinceToStateIDMap.insert(std::make_pair(province, newState.getID()));
-		auto coresMapping = coresMap.find(province);
-		if (coresMapping != coresMap.end())
+		if (auto coresMapping = coresMap.find(province); coresMapping != coresMap.end())
 		{
-			newState.addCores(coresMap.find(province)->second);
+			newState.addCores(coresMapping->second);
 		}
 	}
 }

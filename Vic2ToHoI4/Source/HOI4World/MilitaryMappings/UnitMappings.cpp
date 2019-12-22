@@ -26,9 +26,9 @@ bool HoI4::UnitMappings::hasMatchingType(const std::string& Vic2Type) const
 
 std::optional<HoI4::HoI4UnitType> HoI4::UnitMappings::getMatchingUnitInfo(const std::string& Vic2Type) const
 {
-	if (hasMatchingType(Vic2Type))
+	if (const auto& matchingUnit = unitMap.find(Vic2Type); matchingUnit != unitMap.end())
 	{
-		return unitMap.find(Vic2Type)->second;
+		return matchingUnit->second;
 	}
 	else
 	{

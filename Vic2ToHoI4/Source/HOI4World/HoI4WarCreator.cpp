@@ -618,9 +618,12 @@ map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::getNeighbors(shared_ptr<H
 }
 
 
-map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::getImmediateNeighbors(shared_ptr<HoI4::Country> checkingCountry, const HoI4::MapData& theMapData)
+std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4WarCreator::getImmediateNeighbors(
+	std::shared_ptr<HoI4::Country> checkingCountry,
+	const HoI4::MapData& theMapData
+)
 {
-	map<string, shared_ptr<HoI4::Country>> neighbors;
+	std::map<std::string, std::shared_ptr<HoI4::Country>> neighbors;
 
 	for (auto province: checkingCountry->getProvinces())
 	{
@@ -637,11 +640,16 @@ map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::getImmediateNeighbors(sha
 				continue;
 			}
 
-			string ownerTag = provinceToOwnerItr->second;
-			auto ownerCountry = theWorld->getCountries().find(ownerTag)->second;
-			if (ownerCountry != checkingCountry)
+			auto ownerTag = provinceToOwnerItr->second;
+			if (ownerTag == checkingCountry->getTag())
 			{
-				neighbors.insert(make_pair(ownerTag, ownerCountry));
+				continue;
+			}
+
+			auto countries = theWorld->getCountries();
+			if (auto ownerCountry = countries.find(ownerTag); ownerCountry != countries.end())
+			{
+				neighbors.insert(make_pair(ownerTag, ownerCountry->second));
 			}
 		}
 	}
