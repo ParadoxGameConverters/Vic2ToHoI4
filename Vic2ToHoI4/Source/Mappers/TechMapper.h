@@ -42,7 +42,7 @@ class techMapper: commonItems::parser
 		techMapper(const std::map<std::string, std::set<std::string>>& _techMap,
 					  const std::map<std::string, std::set<std::string>>& _nonMtgNavalTechMap,
 					  const std::map<std::string, std::set<std::string>>& _mtgNavalTechMap,
-					  const std::map<std::string, std::map<std::string, int>> _researchBonusMap):
+					  const std::map<std::string, std::map<std::string, int>>& _researchBonusMap):
 			techMap(_techMap),
 			researchBonusMap(_researchBonusMap),
 			nonMtgNavalTechMap(_nonMtgNavalTechMap),

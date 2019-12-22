@@ -60,7 +60,7 @@ class Color: commonItems::parser
 {
 	public:
 		Color() = default;
-		explicit Color(red r, green g, blue b);
+		explicit Color(const red& r, const green& g, const blue& b);
 		explicit Color(std::istream& theStream);
 		Color(const Color&) = default;
 		Color(Color&&) = default;

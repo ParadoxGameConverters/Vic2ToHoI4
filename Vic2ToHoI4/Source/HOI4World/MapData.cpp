@@ -222,7 +222,11 @@ ConverterColor::Color HoI4::MapData::getRightColor(point position, int width)
 }
 
 
-void HoI4::MapData::handleNeighbor(ConverterColor::Color centerColor, ConverterColor::Color otherColor, const point& position)
+void HoI4::MapData::handleNeighbor(
+	const ConverterColor::Color& centerColor,
+	const ConverterColor::Color& otherColor,
+	const point& position
+)
 {
 	auto centerProvince = provinceDefinitions::getProvinceFromColor(centerColor);
 	auto otherProvince = provinceDefinitions::getProvinceFromColor(otherColor);

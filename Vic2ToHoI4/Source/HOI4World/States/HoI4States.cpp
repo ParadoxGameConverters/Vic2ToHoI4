@@ -169,7 +169,7 @@ const std::string HoI4States::selectProvinceOwner(
 	{
 		// I am the new owner if there is no current owner, or I have more provinces than the current owner,
 		// or I have the same number of provinces, but more population, than the current owner
-		if (	(oldOwner == "") ||
+		if (	(oldOwner.empty()) ||
 				(potentialOwner.second.first > potentialOwners.find(oldOwner)->second.first) ||
 				(
 					(potentialOwner.second.first == potentialOwners.find(oldOwner)->second.first) &&
@@ -287,8 +287,8 @@ void HoI4States::createMatchingHoI4State(
 	const HoI4::impassableProvinces& theImpassables,
 	const CountryMapper& countryMapper
 ) {
-	unordered_set<int> passableProvinces;
-	unordered_set<int> impassableProvinces;
+	std::set<int> passableProvinces;
+	std::set<int> impassableProvinces;
 	auto allProvinces = getProvincesInState(vic2State, stateOwner);
 	for (auto province: allProvinces)
 	{
@@ -357,7 +357,7 @@ unordered_set<int> HoI4States::getProvincesInState(const Vic2::State* vic2State,
 }
 
 
-void HoI4States::addProvincesAndCoresToNewState(HoI4::State& newState, unordered_set<int> provinces)
+void HoI4States::addProvincesAndCoresToNewState(HoI4::State& newState, const std::set<int>& provinces)
 {
 	for (auto province: provinces)
 	{

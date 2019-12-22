@@ -85,7 +85,7 @@ void V2Localisations::ReadFromFile(const string& fileName)
 
 
 const string languages[] = { "english", "french", "german", "polish", "spanish", "italian", "swedish", "czech", "hungarian", "dutch", "braz_por", "russian", "finnish" };
-void V2Localisations::processLine(string line)
+void V2Localisations::processLine(const std::string& line)
 {
 	int division = line.find_first_of(';');
 	string key = line.substr(0, division);
@@ -112,7 +112,7 @@ void V2Localisations::processLine(string line)
 }
 
 
-string V2Localisations::getNextLocalisation(string line, int& division)
+string V2Localisations::getNextLocalisation(const std::string& line, int& division)
 {
 	int frontDivision = division + 1;
 	division = line.find_first_of(';', frontDivision);

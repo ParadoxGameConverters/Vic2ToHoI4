@@ -209,7 +209,7 @@ void HoI4Localisation::addLocalisationsInAllLanguages(const string& destTag, con
 		auto existingLanguage = getExistingLocalisationsInLanguage(nameInLanguage.first);
 
 		string newKey = destTag + "_" + HoI4GovernmentIdeology + suffixes.first;
-		addLocalisation(newKey, existingLanguage, nameInLanguage.second, suffixes.second);
+		addLocalisation(newKey, existingLanguage->second, nameInLanguage.second, suffixes.second);
 	}
 }
 
@@ -224,7 +224,7 @@ bool HoI4Localisation::addNeutralLocalisation(const pair<const string&, const st
 			auto existingLanguage = getExistingLocalisationsInLanguage(nameInLanguage.first);
 
 			string newKey = tags.second + "_neutrality" + suffixes.first;
-			addLocalisation(newKey, existingLanguage, nameInLanguage.second, suffixes.second);
+			addLocalisation(newKey, existingLanguage->second, nameInLanguage.second, suffixes.second);
 		}
 		return true;
 	}
@@ -249,23 +249,27 @@ languageToLocalisationsMap::iterator HoI4Localisation::getExistingLocalisationsI
 }
 
 
-void HoI4Localisation::addLocalisation(const string& newKey, languageToLocalisationsMap::iterator& existingLanguage, const string& localisation, const string& HoI4Suffix)
+void HoI4Localisation::addLocalisation(
+	const string& newKey,
+	keyToLocalisationMap& existingLanguage,
+	const string& localisation,
+	const string& HoI4Suffix
+)
 {
-	auto existingLocalisation = existingLanguage->second.find(newKey);
-	if (existingLocalisation == existingLanguage->second.end())
+	if (auto existingLocalisation = existingLanguage.find(newKey); existingLocalisation == existingLanguage.end())
 	{
-		existingLanguage->second.insert(make_pair(newKey, localisation));
+		existingLanguage.insert(make_pair(newKey, localisation));
 		if (HoI4Suffix != "")
 		{
-			existingLanguage->second.insert(make_pair(newKey + HoI4Suffix, localisation));
+			existingLanguage.insert(make_pair(newKey + HoI4Suffix, localisation));
 		}
 	}
 	else
 	{
-		existingLanguage->second[newKey] = localisation;
+		existingLanguage[newKey] = localisation;
 		if (HoI4Suffix != "")
 		{
-			existingLanguage->second[newKey + HoI4Suffix] = localisation;
+			existingLanguage[newKey + HoI4Suffix] = localisation;
 		}
 	}
 }

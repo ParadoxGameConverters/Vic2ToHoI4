@@ -78,7 +78,7 @@ const char* hoi4Suffixes[FLAG_END] = {
 
 
 vector<string> getSourceFlagPaths(const string& Vic2Tag);
-optional<tga_image*> readFlag(string path);
+std::optional<tga_image*> readFlag(const std::string& path);
 tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsigned int sizeY);
 void createBigFlag(tga_image* sourceFlag, const string& filename);
 void createMediumFlag(tga_image* sourceFlag, const string& filename);
@@ -88,7 +88,7 @@ void processFlagsForCountry(const pair<string, shared_ptr<HoI4::Country>>& count
 	vector<string> sourcePath = getSourceFlagPaths(country.second->getSourceCountry().getTag());
 	for (unsigned int i = BASE_FLAG; i < FLAG_END; i++)
 	{
-		if (sourcePath[i] != "")
+		if (!sourcePath[i].empty())
 		{
 			auto sourceFlag = readFlag(sourcePath[i]);
 			if (!sourceFlag)
@@ -226,7 +226,7 @@ optional<string> getAllowModFlags(const string& flagFilename)
 }
 
 
-optional<tga_image*> readFlag(string path)
+std::optional<tga_image*> readFlag(const std::string& path)
 {
 	FILE* flagFile;
 	if (fopen_s(&flagFile, path.c_str(), "r+b") != 0)
@@ -281,7 +281,7 @@ tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsign
 			int sourceBytesPerPixel = sourceFlag->pixel_depth / 8;
 			int sourceIndex = (sourceY * sourceFlag->width + sourceX) * sourceBytesPerPixel;
 
-			int destIndex = (y * sizeX + x) * 4;
+			size_t destIndex = (y * sizeX + x) * 4;
 
 			destFlag->image_data[destIndex + 0] = sourceFlag->image_data[sourceIndex + 0];
 			destFlag->image_data[destIndex + 1] = sourceFlag->image_data[sourceIndex + 1];

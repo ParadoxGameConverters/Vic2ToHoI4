@@ -87,7 +87,7 @@ void HoI4::technologies::setResearchBonus(const std::string& tech, int bonus)
 }
 
 
-bool HoI4::technologies::hasTechnology(std::string technology) const
+bool HoI4::technologies::hasTechnology(const std::string& technology) const
 {
 	return (mainTechnologies.count(technology) > 0) || (nonMtgNavalTechnologies.count(technology) > 0) || (mtgNavalTechnologies.count(technology) > 0);
 }

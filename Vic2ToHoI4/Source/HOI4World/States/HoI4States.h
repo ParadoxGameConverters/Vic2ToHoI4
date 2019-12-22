@@ -108,7 +108,7 @@ class HoI4States: commonItems::parser
 			const CountryMapper& countryMapper
 		);
 		std::unordered_set<int> getProvincesInState(const Vic2::State* vic2State, const string& owner);
-		void addProvincesAndCoresToNewState(HoI4::State& newState, unordered_set<int> provinces);
+		void addProvincesAndCoresToNewState(HoI4::State& newState, const std::set<int>& provinces);
 		bool isProvinceValid(int provNum) const;
 		bool isProvinceOwnedByCountry(int provNum, const string& stateOwner) const;
 		bool isProvinceNotAlreadyAssigned(int provNum) const;

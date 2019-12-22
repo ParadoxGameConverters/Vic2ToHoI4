@@ -1213,6 +1213,7 @@ void HoI4::Events::importElectionEvents(const std::set<std::string>& majorIdeolo
 }
 
 
+constexpr int tagAndDashSize = 4;
 void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag, const std::set<Vic2::Party, std::function<bool (const Vic2::Party&, const Vic2::Party&)>>& parties, HoI4::OnActions& onActions, const set<string>& majorIdeologies)
 {
 	Event partyChoiceEvent;
@@ -1247,7 +1248,7 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag, const std:
 		if ((party.getIdeology() == "conservative"))
 		{
 			std::string partyName = party.getName();
-			std::string trimmedName = partyName.substr(4, partyName.size());
+			std::string trimmedName = partyName.substr(tagAndDashSize, partyName.size());
 
 			std::string optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
 			std::string option = "= {\n";
@@ -1272,7 +1273,7 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag, const std:
 		if ((party.getIdeology() == "liberal"))
 		{
 			std::string partyName = party.getName();
-			std::string trimmedName = partyName.substr(4, partyName.size());
+			std::string trimmedName = partyName.substr(tagAndDashSize, partyName.size());
 
 			std::string optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
 			std::string option = "= {\n";
@@ -1297,7 +1298,7 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag, const std:
 		if ((party.getIdeology() == "socialist"))
 		{
 			std::string partyName = party.getName();
-			std::string trimmedName = partyName.substr(4, partyName.size());
+			std::string trimmedName = partyName.substr(tagAndDashSize, partyName.size());
 
 			std::string optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
 			std::string option = "= {\n";

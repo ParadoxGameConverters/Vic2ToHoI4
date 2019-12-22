@@ -362,7 +362,7 @@ string HoI4WarCreator::HowToTakeLand(shared_ptr<HoI4::Country> TargetCountry, sh
 	}
 	return type;
 }
-vector<shared_ptr<HoI4::Country>> HoI4WarCreator::GetMorePossibleAllies(const shared_ptr<HoI4::Country> CountryThatWantsAllies)
+vector<shared_ptr<HoI4::Country>> HoI4WarCreator::GetMorePossibleAllies(const shared_ptr<HoI4::Country>& CountryThatWantsAllies)
 {
 	int maxcountries = 0;
 	vector<shared_ptr<HoI4::Country>> newPossibleAllies;
@@ -411,7 +411,7 @@ vector<shared_ptr<HoI4::Country>> HoI4WarCreator::GetMorePossibleAllies(const sh
 						//if (GetFactionStrength(findFaction(country)) < 20000) //maybe also check if he has any fascist/comm neighbors he doesnt like later?
 
 						//well that ally is weak, he probably wants some friends
-						if ((relationsValue >= -50) && (relationsValue < 0))
+						if (relationsValue < 0)
 						{
 							//will take some NF to ally
 							newPossibleAllies.push_back(CountriesWithin1000Miles[i]);
@@ -550,7 +550,11 @@ double HoI4WarCreator::getDistanceBetweenPoints(pair<int, int> point1, pair<int,
 }
 
 
-double HoI4WarCreator::GetFactionStrengthWithDistance(shared_ptr<HoI4::Country> HomeCountry, vector<shared_ptr<HoI4::Country>> Faction, double time)
+double HoI4WarCreator::GetFactionStrengthWithDistance(
+	std::shared_ptr<HoI4::Country> HomeCountry,
+	const std::vector<std::shared_ptr<HoI4::Country>>& Faction,
+	double time
+)
 {
 	double strength = 0.0;
 	for (auto country: Faction)
@@ -682,7 +686,7 @@ void HoI4WarCreator::determineProvinceOwners()
 }
 
 
-double HoI4WarCreator::GetFactionStrength(const shared_ptr<HoI4Faction> Faction, int years) const
+double HoI4WarCreator::GetFactionStrength(const shared_ptr<HoI4Faction>& Faction, int years) const
 {
 	double strength = 0;
 	for (auto country : Faction->getMembers())
@@ -1268,7 +1272,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<Ho
 			else
 			{
 				LOG(LogLevel::Warning) << "Could not set target name in neighbor war creator";
-				targetName = "";
+				targetName.clear();
 			}
 
 			countriesAtWar.push_back(findFaction(country));
@@ -1329,7 +1333,7 @@ set<int> HoI4WarCreator::findBorderState(shared_ptr<HoI4::Country> country, shar
 }
 
 std::vector<int> HoI4WarCreator::sortStatesByCapitalDistance(
-	std::set<int> stateList,
+	const std::set<int>& stateList,
 	std::shared_ptr<HoI4::Country> country,
 	const HoI4::World* world
 ) {
@@ -1552,7 +1556,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<HoI
 			else
 			{
 				LOG(LogLevel::Warning) << "Could not set target name in great power war creator";
-				targetName = "";
+				targetName.clear();
 			}
 
 			countriesAtWar.push_back(findFaction(country));

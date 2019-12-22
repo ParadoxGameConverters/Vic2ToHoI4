@@ -98,11 +98,19 @@ class Buildings
 		void placeArmsFactories(const HoI4States& theStates, const MapData& theMapData);
 		void placeIndustrialComplexes(const HoI4States& theStates, const MapData& theMapData);
 		void placeAirports(const HoI4States& theStates, const MapData& theMapData);
-		void placeNavalBases(const std::map<int, int>& provinceToStateIDMap, std::map<int, std::vector<int>> actualCoastalProvinces, const MapData& theMapData);
+		void placeNavalBases(
+			const std::map<int, int>& provinceToStateIDMap,
+			const std::map<int, std::vector<int>>& actualCoastalProvinces,
+			const MapData& theMapData
+		);
 		void addNavalBase(int stateID, const std::pair<int, std::vector<int>>& province, const MapData& theMapData);
 		void placeBunkers(const std::map<int, int>& provinceToStateIDMap, const MapData& theMapData);
 		void addBunker(int stateID, int province, const MapData& theMapData);
-		void placeCoastalBunkers(const std::map<int, int>& provinceToStateIDMap, std::map<int, std::vector<int>> actualCoastalProvinces, const MapData& theMapData);
+		void placeCoastalBunkers(
+			const std::map<int, int>& provinceToStateIDMap,
+			const std::map<int, std::vector<int>>& actualCoastalProvinces,
+			const MapData& theMapData
+		);
 		void addCoastalBunker(int stateID, const std::pair<int, std::vector<int>>& province, const MapData& theMapData);
 		void placeDockyards(const HoI4States& theStates, const coastalProvinces& theCoastalProvinces, std::map<int, std::vector<int>> actualCoastalProvinces, const MapData& theMapData);
 		void placeAntiAir(const HoI4States& theStates, const MapData& theMapData);

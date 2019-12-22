@@ -42,7 +42,7 @@ class IdeaGroup: commonItems::parser
 
 		std::string getName() const { return name; }
 		std::optional<Idea> getIdea(const std::string& ideaName);
-		void replaceIdea(Idea newIdea);
+		void replaceIdea(const Idea& newIdea);
 
 		auto getIdeas() const { return ideas; }
 

@@ -82,7 +82,7 @@ std::map<int, HoI4::province> HoI4::coastalProvinces::getProvinces() const
 			break;
 		}
 
-		int IDSeparator = line.find_first_of(';');
+		size_t IDSeparator = line.find_first_of(';');
 		int ID = stoi(line.substr(0, IDSeparator));
 		if (ID == 0)
 		{
@@ -90,29 +90,29 @@ std::map<int, HoI4::province> HoI4::coastalProvinces::getProvinces() const
 		}
 		line = line.substr(IDSeparator + 1, line.size());
 
-		int redSeparator = line.find_first_of(';');
+		size_t redSeparator = line.find_first_of(';');
 		line = line.substr(redSeparator + 1, line.size());
 
-		int greenSeparator = line.find_first_of(';');
+		size_t greenSeparator = line.find_first_of(';');
 		line = line.substr(greenSeparator + 1, line.size());
 
-		int blueSeparator = line.find_first_of(';');
+		size_t blueSeparator = line.find_first_of(';');
 		line = line.substr(blueSeparator + 1, line.size());
 
-		int landSeaSeparator = line.find_first_of(';');
+		size_t landSeaSeparator = line.find_first_of(';');
 		std::string landOrSea = line.substr(0, landSeaSeparator);
 		bool isLand = (landOrSea == "land");
 		line = line.substr(landSeaSeparator + 1, line.size());
 
-		int boolSeparator = line.find_first_of(';');
+		size_t boolSeparator = line.find_first_of(';');
 		line = line.substr(boolSeparator + 1, line.size());
 
-		int typeSeparator = line.find_first_of(';');
+		size_t typeSeparator = line.find_first_of(';');
 		std::string type = line.substr(0, typeSeparator);
 
 		province newProvince;
 		newProvince.isLand = isLand;
-		newProvince.type = type;
+		newProvince.type = std::move(type);
 		provinces.insert(std::make_pair(ID, newProvince));
 	}
 

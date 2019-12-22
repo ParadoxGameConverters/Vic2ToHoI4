@@ -82,7 +82,11 @@ class MapData
 		ConverterColor::Color getBelowColor(point position, int height);
 		ConverterColor::Color getLeftColor(point position, int width);
 		ConverterColor::Color getRightColor(point position, int width);
-		void handleNeighbor(ConverterColor::Color centerColor, ConverterColor::Color otherColor, const point& position);
+		void handleNeighbor(
+			const ConverterColor::Color& centerColor,
+			const ConverterColor::Color& otherColor,
+			const point& position
+		);
 		void addNeighbor(int mainProvince, int neighborProvince);
 		void addPointToBorder(int mainProvince, int neighborProvince, point position);
 

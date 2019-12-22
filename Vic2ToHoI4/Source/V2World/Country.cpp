@@ -492,7 +492,7 @@ bool Vic2::Country::hasCoreOnCapital() const
 	return false;
 }
 
-vector<string> Vic2::Country::getShipNames(string category) const
+vector<string> Vic2::Country::getShipNames(const string& category) const
 {
 	auto foundShipNames = shipNames.find(category);
 	if (foundShipNames == shipNames.end())
