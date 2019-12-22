@@ -17,7 +17,7 @@ class UnitMapping: commonItems::parser
 	public:
 		explicit UnitMapping(std::istream& theStream);
 
-		[[nodiscard]] std::optional<std::pair<std::string, HoI4UnitType>> getMappings() const;
+		[[nodiscard]] std::optional<std::pair<std::string, std::optional<HoI4UnitType>>> getMappings() const;
 
 	private:
 		std::optional<std::string> Vic2Type;

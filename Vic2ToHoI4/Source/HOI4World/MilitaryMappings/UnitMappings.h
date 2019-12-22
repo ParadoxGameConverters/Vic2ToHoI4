@@ -22,7 +22,7 @@ class UnitMappings: commonItems::parser
 		[[nodiscard]] std::optional<HoI4UnitType> getMatchingUnitInfo(const std::string& Vic2Type) const;
 
 	private:
-		std::map<std::string, HoI4UnitType> unitMap;
+		std::map<std::string, std::optional<HoI4UnitType>> unitMap;
 };
 
 }

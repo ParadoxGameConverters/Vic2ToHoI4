@@ -5,12 +5,12 @@
 
 HoI4::UnitMapping::UnitMapping(std::istream& theStream)
 {
-	registerKeyword(std::regex("vic"), [this](const std::string & unused, std::istream & theStream)
+	registerKeyword(std::regex("vic"), [this](const std::string & unused, std::istream& theStream)
 	{
 		const commonItems::singleString typeString(theStream);
 		Vic2Type = typeString.getString();
 	});
-	registerKeyword(std::regex("hoi"), [this](const std::string & unused, std::istream & theStream)
+	registerKeyword(std::regex("hoi"), [this](const std::string & unused, std::istream& theStream)
 	{
 		HoI4UnitType theUnit(theStream);
 		HoI4Type = theUnit;
@@ -20,11 +20,11 @@ HoI4::UnitMapping::UnitMapping(std::istream& theStream)
 }
 
 
-std::optional<std::pair<std::string, HoI4::HoI4UnitType>> HoI4::UnitMapping::getMappings() const
+std::optional<std::pair<std::string, std::optional<HoI4::HoI4UnitType>>> HoI4::UnitMapping::getMappings() const
 {
-	if (Vic2Type && HoI4Type)
+	if (Vic2Type)
 	{
-		return std::make_pair(*Vic2Type, *HoI4Type);
+		return std::make_pair(*Vic2Type, HoI4Type);
 	}
 	else
 	{
