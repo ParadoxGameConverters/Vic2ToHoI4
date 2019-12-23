@@ -339,9 +339,9 @@ void HoI4States::createMatchingHoI4State(
 }
 
 
-unordered_set<int> HoI4States::getProvincesInState(const Vic2::State* vic2State, const string& owner)
+std::set<int> HoI4States::getProvincesInState(const Vic2::State* vic2State, const string& owner)
 {
-	unordered_set<int> provinces;
+	std::set<int> provinces;
 	for (auto vic2ProvinceNum: vic2State->getProvinceNums())
 	{
 		if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(vic2ProvinceNum))

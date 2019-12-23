@@ -31,7 +31,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include <optional>
 #include <set>
 #include <string>
-#include <unordered_set>
 #include <vector>
 using namespace std;
 
@@ -107,7 +106,7 @@ class HoI4States: commonItems::parser
 			const HoI4::impassableProvinces& theImpassables,
 			const CountryMapper& countryMapper
 		);
-		std::unordered_set<int> getProvincesInState(const Vic2::State* vic2State, const string& owner);
+		std::set<int> getProvincesInState(const Vic2::State* vic2State, const string& owner);
 		void addProvincesAndCoresToNewState(HoI4::State& newState, const std::set<int>& provinces);
 		bool isProvinceValid(int provNum) const;
 		bool isProvinceOwnedByCountry(int provNum, const string& stateOwner) const;
