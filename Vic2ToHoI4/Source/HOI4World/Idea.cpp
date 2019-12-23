@@ -29,6 +29,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 HoI4::Idea::Idea(const std::string& ideaName, std::istream& theStream):
 	name(ideaName)
 {
+	registerKeyword(std::regex("name"), [this](const std::string& unused, std::istream& theStream) {
+		commonItems::singleString nameString(theStream);
+		altName = nameString.getString();
+	});
 	registerKeyword(std::regex("cost"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::singleInt costString(theStream);
 		cost = costString.getInt();
@@ -109,6 +113,10 @@ HoI4::Idea::Idea(const std::string& ideaName, std::istream& theStream):
 std::ostream& HoI4::operator<<(std::ostream& outStream, const HoI4::Idea& outIdea)
 {
 	outStream << "		" << outIdea.name << " = {\n";
+	if (!outIdea.altName.empty())
+	{
+		outStream << "			name = " << outIdea.altName << "\n";
+	}
 	if (outIdea.cost)
 	{
 		outStream << "			cost = " << *(outIdea.cost) << "\n";
