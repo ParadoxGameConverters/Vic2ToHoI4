@@ -90,7 +90,7 @@ void setOutputName(const std::string& V2SaveFileName)
 {
 	std::string outputName = V2SaveFileName;
 
-	if (outputName == "")
+	if (outputName.empty())
 	{
 		return;
 	}

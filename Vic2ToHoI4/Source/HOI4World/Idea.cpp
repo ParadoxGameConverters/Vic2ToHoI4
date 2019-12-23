@@ -121,55 +121,55 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const HoI4::Idea& outIde
 	{
 		outStream << "			level = " << *(outIdea.level) << "\n";
 	}
-	if (outIdea.allowed != "")
+	if (!outIdea.allowed.empty())
 	{
 		outStream << "			allowed " << outIdea.allowed << "\n";
 	}
-	if (outIdea.allowedCivilWar != "")
+	if (!outIdea.allowedCivilWar.empty())
 	{
 		outStream << "			allowed_civil_war " << outIdea.allowedCivilWar << "\n";
 	}
-	if (outIdea.cancel != "")
+	if (!outIdea.cancel.empty())
 	{
 		outStream << "			cancel " << outIdea.cancel << "\n";
 	}
-	if (outIdea.available != "")
+	if (!outIdea.available.empty())
 	{
 		outStream << "			available " << outIdea.available << "\n";
 	}
-	if (outIdea.aiWillDo != "")
+	if (!outIdea.aiWillDo.empty())
 	{
 		outStream << "			ai_will_do " << outIdea.aiWillDo << "\n";
 	}
-	if (outIdea.picture != "")
+	if (!outIdea.picture.empty())
 	{
 		outStream << "			picture " << outIdea.picture << "\n";
 	}
-	if (outIdea.rule != "")
+	if (!outIdea.rule.empty())
 	{
 		outStream << "			rule " << outIdea.rule << "\n";
 	}
-	if (outIdea.modifier != "")
+	if (!outIdea.modifier.empty())
 	{
 		outStream << "			modifier " << outIdea.modifier << "\n";
 	}
-	if (outIdea.researchBonus != "")
+	if (!outIdea.researchBonus.empty())
 	{
 		outStream << "			research_bonus " << outIdea.researchBonus << "\n";
 	}
-	if (outIdea.equipmentBonus != "")
+	if (!outIdea.equipmentBonus.empty())
 	{
 		outStream << "			equipment_bonus " << outIdea.equipmentBonus << "\n";
 	}
-	if (outIdea.traits != "")
+	if (!outIdea.traits.empty())
 	{
 		outStream << "			traits " << outIdea.traits << "\n";
 	}
-	if (outIdea.onAdd != "")
+	if (!outIdea.onAdd.empty())
 	{
 		outStream << "			on_add " << outIdea.onAdd << "\n";
 	}
-	if (outIdea.allowedToRemove != "")
+	if (!outIdea.allowedToRemove.empty())
 	{
 		outStream << "			allowed_to_remove " << outIdea.allowedToRemove << "\n";
 	}

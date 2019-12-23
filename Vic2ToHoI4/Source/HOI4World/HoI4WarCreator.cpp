@@ -1248,7 +1248,6 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<Ho
 
 	for (auto target : weakNeighbors)
 	{
-		auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
 		if (numWarsWithNeighbors >= 2)
 		{
 			break;
@@ -1289,7 +1288,15 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<Ho
 				AILog << "Creating focus to attack " + targetName << "\n";
 			}
 
-			focusTree->addNeighborWarBranch(country->getTag(), weakNeighbors, target, targetName, startDate, numWarsWithNeighbors);
+			auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
+			focusTree->addNeighborWarBranch(
+				country->getTag(),
+				weakNeighbors,
+				target,
+				targetName,
+				startDate,
+				numWarsWithNeighbors
+			);
 
 			numWarsWithNeighbors++;
 		}

@@ -169,20 +169,21 @@ void HoI4Focus::customizeMutualExclusion(std::shared_ptr<HoI4Focus> newFocus, co
 	unsigned int stringPosition = 0;
 	do
 	{
-		int focusPosition = newFocus->mutuallyExclusive.find(" focus = ", stringPosition);
+		auto& mutuallyExclusive = newFocus->mutuallyExclusive;
+		int focusPosition = mutuallyExclusive.find(" focus = ", stringPosition);
 		if (focusPosition != std::string::npos)
 		{
-			int spacePosition = newFocus->mutuallyExclusive.find(" ", focusPosition + 9);
+			int spacePosition = mutuallyExclusive.find(" ", focusPosition + 9);
 			if (spacePosition == std::string::npos)
 			{
-				spacePosition = newFocus->mutuallyExclusive.find("}", focusPosition + 9);
+				spacePosition = mutuallyExclusive.find("}", focusPosition + 9);
 			}
-			newFocus->mutuallyExclusive.insert(spacePosition, country);
+			mutuallyExclusive.insert(spacePosition, country);
 			stringPosition = focusPosition + country.size() + 9;
 		}
 		else
 		{
-			stringPosition = newFocus->mutuallyExclusive.size();
+			stringPosition = mutuallyExclusive.size();
 		}
 	}
 	while(stringPosition < newFocus->mutuallyExclusive.size());
@@ -217,7 +218,7 @@ std::ostream& operator << (std::ostream& output, const HoI4Focus& focus)
 	output << "	focus = {\n";
 	output << "		id = " << focus.id << "\n";
 	output << "		icon = " << focus.icon << "\n";
-	if (focus.text != "")
+	if (!focus.text.empty())
 	{
 		output << "		text = \"" << focus.text << "\"\n";
 	}
@@ -225,17 +226,17 @@ std::ostream& operator << (std::ostream& output, const HoI4Focus& focus)
 	{
 		output << "		prerequisite " << prerequisite << "\n";
 	}
-	if (focus.mutuallyExclusive != "")
+	if (!focus.mutuallyExclusive.empty())
 	{
 		output << "		mutually_exclusive " << focus.mutuallyExclusive << "\n";
 	}
-	if (focus.bypass != "")
+	if (!focus.bypass.empty())
 	{
 		output << "		bypass " << focus.bypass << "\n";
 	}
 	output << "		x = " << focus.xPos << "\n";
 	output << "		y = " << focus.yPos << "\n";
-	if (focus.relativePositionId != "")
+	if (!focus.relativePositionId.empty())
 	{
 		output << "		relative_position_id = " << focus.relativePositionId << "\n";
 	}
@@ -244,24 +245,24 @@ std::ostream& operator << (std::ostream& output, const HoI4Focus& focus)
 	{
 		output << "		available_if_capitulated = yes\n";
 	}
-	if (focus.available != "")
+	if (!focus.available.empty())
 	{
 		output << "		available " << focus.available << "\n";
 	}
-	if (focus.cancelIfInvalid != "")
+	if (!focus.cancelIfInvalid.empty())
 	{
 		output << "		cancel_if_invalid = " << focus.cancelIfInvalid << "\n";
 	}
-	if (focus.continueIfInvalid != "")
+	if (!focus.continueIfInvalid.empty())
 	{
 		output << "		continue_if_invalid = " << focus.continueIfInvalid << "\n";
 	}
-	if (focus.completeTooltip != "")
+	if (!focus.completeTooltip.empty())
 	{
 		output << "		complete_tooltip " << focus.completeTooltip << "\n";
 	}
 	output << "		completion_reward " << focus.completionReward << "\n";
-	if (focus.aiWillDo != "")
+	if (!focus.aiWillDo.empty())
 	{
 		output << "		ai_will_do " << focus.aiWillDo << "\n";
 	}

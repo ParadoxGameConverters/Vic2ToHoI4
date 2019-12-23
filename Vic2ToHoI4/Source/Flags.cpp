@@ -112,7 +112,7 @@ vector<string> getSourceFlagPaths(const string& Vic2Tag)
 {
 	vector<string> paths;
 	paths.resize(FLAG_END);
-	paths[BASE_FLAG] = "";
+	paths[BASE_FLAG].clear();
 
 	for (unsigned int i = BASE_FLAG; i < FLAG_END; i++)
 	{

@@ -1214,7 +1214,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 	else
 	{
 		LOG(LogLevel::Warning) << "Could not determine home country adjective for absolutist focuses";
-		homeCountryAdjective = "";
+		homeCountryAdjective.clear();
 	}
 
 	if (const auto& originalFocus = loadedFocuses.find("EmpireGlory"); originalFocus != loadedFocuses.end())
@@ -1324,7 +1324,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 		else
 		{
 			LOG(LogLevel::Warning) << "Could not determine protectorate country name for absolutist focuses";
-			protectorateCountryName = "";
+			protectorateCountryName.clear();
 		}
 
 		if (const auto& originalFocus = loadedFocuses.find("Protectorate"); originalFocus != loadedFocuses.end())
@@ -1381,7 +1381,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 		else
 		{
 			LOG(LogLevel::Warning) << "Could not determine protectorate country name for absolutist focuses";
-			protectorateCountryName = "";
+			protectorateCountryName.clear();
 		}
 
 		if (const auto& originalFocus = loadedFocuses.find("Protectorate"); originalFocus != loadedFocuses.end())
@@ -1532,7 +1532,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 		else
 		{
 			LOG(LogLevel::Warning) << "Could not determine target country name for absolutist focuses";
-			targetCountryName = "";
+			targetCountryName.clear();
 		}
 
 		if (const auto& originalFocus = loadedFocuses.find("Annex"); originalFocus != loadedFocuses.end())
@@ -1589,7 +1589,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 		else
 		{
 			LOG(LogLevel::Warning) << "Could not determine target country name for absolutist focuses";
-			targetCountryName = "";
+			targetCountryName.clear();
 		}
 
 		if (const auto& originalFocus = loadedFocuses.find("Annex"); originalFocus != loadedFocuses.end())
@@ -2379,7 +2379,7 @@ void HoI4FocusTree::output(const string& filename) const
 	}
 
 	out << "focus_tree = {\n";
-	if (dstCountryTag != "")
+	if (!dstCountryTag.empty())
 	{
 		out << "	id = " << dstCountryTag + "_focus\n";
 		out << "	\n";

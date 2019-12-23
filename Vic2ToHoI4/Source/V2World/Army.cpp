@@ -59,7 +59,7 @@ Vic2::Regiment::Regiment(std::istream& theStream)
 
 	parseStream(theStream);
 
-	if (type == "")
+	if (type.empty())
 	{
 		LOG(LogLevel::Warning) << "Regiment or Ship " << name << " has no type";
 	}

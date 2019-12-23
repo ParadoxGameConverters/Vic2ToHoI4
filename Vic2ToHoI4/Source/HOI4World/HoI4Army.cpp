@@ -134,8 +134,10 @@ void HoI4::Army::convertArmyDivisions(const militaryMappings& theMilitaryMapping
 						totalExperience += decreaseAmount * regiment.regiment->getExperience();
 					}
 				}
-				if ((theMilitaryMappings.getSubstitutes().count(requirement.first)) &&
-					 (BattalionsAndCompanies.count(theMilitaryMappings.getSubstitutes().at(requirement.first)))
+				if (const auto& substitutes = theMilitaryMappings.getSubstitutes();
+					(
+						substitutes.count(requirement.first)) &&
+						BattalionsAndCompanies.count(substitutes.at(requirement.first))
 					)
 				{
 					for (auto& regiment: BattalionsAndCompanies[theMilitaryMappings.getSubstitutes().at(requirement.first)])

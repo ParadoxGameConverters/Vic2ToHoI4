@@ -382,12 +382,13 @@ bool HoI4::Country::attemptToPutCapitalInNonWastelandOwned(const map<int, State>
 {
 	for (auto ownedStateNum : states)
 	{
-		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
+		if (auto stateAndNum = allStates.find(ownedStateNum); stateAndNum != allStates.end())
 		{
-			if ((state->second.getOwner() == tag) && !state->second.isImpassable())
+			const auto& state = stateAndNum->second;
+			if ((state.getOwner() == tag) && !state.isImpassable())
 			{
 				capitalState = ownedStateNum;
-				capitalProvince = *state->second.getProvinces().begin();
+				capitalProvince = *state.getProvinces().begin();
 				return true;
 			}
 		}
@@ -476,12 +477,13 @@ bool HoI4::Country::attemptToPutCapitalInAnyNonWastelandCored(const map<int, Sta
 {
 	for (auto ownedStateNum: states)
 	{
-		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
+		if (auto stateAndNum = allStates.find(ownedStateNum); stateAndNum != allStates.end())
 		{
-			if ((state->second.getCores().count(tag) > 0) && !state->second.isImpassable())
+			auto state = stateAndNum->second;
+			if ((state.getCores().count(tag) > 0) && !state.isImpassable())
 			{
 				capitalState = ownedStateNum;
-				capitalProvince = *state->second.getProvinces().begin();
+				capitalProvince = *state.getProvinces().begin();
 				return true;
 			}
 		}
