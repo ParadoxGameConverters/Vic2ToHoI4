@@ -53,7 +53,7 @@ class technologies
 
 		int getTechnologyCount() const { return mainTechnologies.size() + nonMtgNavalTechnologies.size() + mtgNavalTechnologies.size(); }
 
-		virtual bool hasTechnology(std::string technology) const;
+		virtual bool hasTechnology(const std::string& technology) const;
 
 		void outputTechnology(std::ostream& output) const;
 		void outputResearchBonuses(std::ostream& output) const;

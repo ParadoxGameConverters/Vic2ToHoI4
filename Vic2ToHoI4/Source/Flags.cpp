@@ -78,7 +78,7 @@ const char* hoi4Suffixes[FLAG_END] = {
 
 
 vector<string> getSourceFlagPaths(const string& Vic2Tag);
-optional<tga_image*> readFlag(string path);
+std::optional<tga_image*> readFlag(const std::string& path);
 tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsigned int sizeY);
 void createBigFlag(tga_image* sourceFlag, const string& filename);
 void createMediumFlag(tga_image* sourceFlag, const string& filename);
@@ -88,7 +88,7 @@ void processFlagsForCountry(const pair<string, shared_ptr<HoI4::Country>>& count
 	vector<string> sourcePath = getSourceFlagPaths(country.second->getSourceCountry().getTag());
 	for (unsigned int i = BASE_FLAG; i < FLAG_END; i++)
 	{
-		if (sourcePath[i] != "")
+		if (!sourcePath[i].empty())
 		{
 			auto sourceFlag = readFlag(sourcePath[i]);
 			if (!sourceFlag)
@@ -112,7 +112,7 @@ vector<string> getSourceFlagPaths(const string& Vic2Tag)
 {
 	vector<string> paths;
 	paths.resize(FLAG_END);
-	paths[BASE_FLAG] = "";
+	paths[BASE_FLAG].clear();
 
 	for (unsigned int i = BASE_FLAG; i < FLAG_END; i++)
 	{
@@ -226,7 +226,7 @@ optional<string> getAllowModFlags(const string& flagFilename)
 }
 
 
-optional<tga_image*> readFlag(string path)
+std::optional<tga_image*> readFlag(const std::string& path)
 {
 	FILE* flagFile;
 	if (fopen_s(&flagFile, path.c_str(), "r+b") != 0)
@@ -281,7 +281,7 @@ tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsign
 			int sourceBytesPerPixel = sourceFlag->pixel_depth / 8;
 			int sourceIndex = (sourceY * sourceFlag->width + sourceX) * sourceBytesPerPixel;
 
-			int destIndex = (y * sizeX + x) * 4;
+			size_t destIndex = (y * sizeX + x) * 4;
 
 			destFlag->image_data[destIndex + 0] = sourceFlag->image_data[sourceIndex + 0];
 			destFlag->image_data[destIndex + 1] = sourceFlag->image_data[sourceIndex + 1];
@@ -300,8 +300,9 @@ void createBigFlag(tga_image* sourceFlag, const string& filename)
 	FILE* outputFile;
 	if (fopen_s(&outputFile, ("output/" + theConfiguration.getOutputName() + "/gfx/flags/" + filename).c_str(), "w+b") != 0)
 	{
-		LOG(LogLevel::Warning) << "Could not create output/" << theConfiguration.getOutputName() << "/gfx/flags/" << filename;
-		return;
+		tga_free_buffers(destFlag);
+		delete destFlag;
+		throw std::runtime_error("Could not create output/" + theConfiguration.getOutputName() + "/gfx/flags/" + filename);
 	}
 	tga_write_to_FILE(outputFile, destFlag);
 	fclose(outputFile);
@@ -316,8 +317,9 @@ void createMediumFlag(tga_image* sourceFlag, const string& filename)
 	FILE* outputFile;
 	if (fopen_s(&outputFile, ("output/" + theConfiguration.getOutputName() + "/gfx/flags/medium/" + filename).c_str(), "w+b") != 0)
 	{
-		LOG(LogLevel::Warning) << "Could not create output/" << theConfiguration.getOutputName() << "/gfx/flags/medium/" << filename;
-		return;
+		tga_free_buffers(destFlag);
+		delete destFlag;
+		throw std::runtime_error("Could not create output/" + theConfiguration.getOutputName() + "/gfx/flags/medium/" + filename);
 	}
 	tga_write_to_FILE(outputFile, destFlag);
 	fclose(outputFile);
@@ -332,8 +334,9 @@ void createSmallFlag(tga_image* sourceFlag, const string& filename)
 	FILE* outputFile;
 	if (fopen_s(&outputFile, ("output/" + theConfiguration.getOutputName() + "/gfx/flags/small/" + filename).c_str(), "w+b") != 0)
 	{
-		LOG(LogLevel::Warning) << "Could not create output/" << theConfiguration.getOutputName() << "/gfx/flags/small/" << filename;
-		return;
+		tga_free_buffers(destFlag);
+		delete destFlag;
+		throw std::runtime_error("Could not create output/" + theConfiguration.getOutputName() + "/gfx/flags/small/" + filename);
 	}
 	tga_write_to_FILE(outputFile, destFlag);
 	fclose(outputFile);

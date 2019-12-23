@@ -163,21 +163,30 @@ const std::map<std::string, std::pair<int, int>> HoI4States::determinePotentialO
 
 const std::string HoI4States::selectProvinceOwner(
 	const std::map<std::string, std::pair<int, int>>& potentialOwners
-) const {
+) const
+{
 	std::string oldOwner;
-	for (auto potentialOwner: potentialOwners)
+	std::pair<int, int> oldOwnerStats;
+	for (const auto& potentialOwner: potentialOwners)
 	{
-		// I am the new owner if there is no current owner, or I have more provinces than the current owner,
-		// or I have the same number of provinces, but more population, than the current owner
-		if (	(oldOwner == "") ||
-				(potentialOwner.second.first > potentialOwners.find(oldOwner)->second.first) ||
+		// I am the new owner if there is no current owner
+		if (oldOwner.empty())
+		{
+			oldOwner = potentialOwner.first;
+			oldOwnerStats = potentialOwner.second;
+		}
+
+		// I am the new owner if I have more provinces than the current owner,
+		// or I have the same number of provinces but more population than the current owner
+		if (	(potentialOwner.second.first > oldOwnerStats.first) ||
 				(
-					(potentialOwner.second.first == potentialOwners.find(oldOwner)->second.first) &&
-					(potentialOwner.second.second > potentialOwners.find(oldOwner)->second.second)
+					(potentialOwner.second.first == oldOwnerStats.first) &&
+					(potentialOwner.second.second > oldOwnerStats.second)
 				)
 			)
 		{
 			oldOwner = potentialOwner.first;
+			oldOwnerStats = potentialOwner.second;
 		}
 	}
 
@@ -287,8 +296,8 @@ void HoI4States::createMatchingHoI4State(
 	const HoI4::impassableProvinces& theImpassables,
 	const CountryMapper& countryMapper
 ) {
-	unordered_set<int> passableProvinces;
-	unordered_set<int> impassableProvinces;
+	std::set<int> passableProvinces;
+	std::set<int> impassableProvinces;
 	auto allProvinces = getProvincesInState(vic2State, stateOwner);
 	for (auto province: allProvinces)
 	{
@@ -330,9 +339,9 @@ void HoI4States::createMatchingHoI4State(
 }
 
 
-unordered_set<int> HoI4States::getProvincesInState(const Vic2::State* vic2State, const string& owner)
+std::set<int> HoI4States::getProvincesInState(const Vic2::State* vic2State, const string& owner)
 {
-	unordered_set<int> provinces;
+	std::set<int> provinces;
 	for (auto vic2ProvinceNum: vic2State->getProvinceNums())
 	{
 		if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(vic2ProvinceNum))
@@ -357,16 +366,15 @@ unordered_set<int> HoI4States::getProvincesInState(const Vic2::State* vic2State,
 }
 
 
-void HoI4States::addProvincesAndCoresToNewState(HoI4::State& newState, unordered_set<int> provinces)
+void HoI4States::addProvincesAndCoresToNewState(HoI4::State& newState, const std::set<int>& provinces)
 {
 	for (auto province: provinces)
 	{
 		newState.addProvince(province);
 		provinceToStateIDMap.insert(std::make_pair(province, newState.getID()));
-		auto coresMapping = coresMap.find(province);
-		if (coresMapping != coresMap.end())
+		if (auto coresMapping = coresMap.find(province); coresMapping != coresMap.end())
 		{
-			newState.addCores(coresMap.find(province)->second);
+			newState.addCores(coresMapping->second);
 		}
 	}
 }

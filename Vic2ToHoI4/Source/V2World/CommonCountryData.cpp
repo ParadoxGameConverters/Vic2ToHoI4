@@ -61,7 +61,7 @@ Vic2::commonCountryData::commonCountryData(const std::string& filename, const st
 	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), commonItems::ignoreItem);
 
 	bool parsedFile = false;
-	if (mod != "")
+	if (!mod.empty())
 	{
 		std::string file = theConfiguration.getVic2Path() + "/mod/" + mod + "/common/countries/" + filename;
 		if (Utils::DoesFileExist(file))

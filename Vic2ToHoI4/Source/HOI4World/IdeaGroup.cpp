@@ -60,9 +60,14 @@ std::optional<HoI4::Idea> HoI4::IdeaGroup::getIdea(const std::string& ideaName)
 }
 
 
-void HoI4::IdeaGroup::replaceIdea(Idea newIdea)
+void HoI4::IdeaGroup::replaceIdea(const Idea& newIdea)
 {
-	std::replace_if(ideas.begin(), ideas.end(), [newIdea](const Idea& theIdea){ return theIdea.getName() == newIdea.getName(); }, newIdea);
+	std::replace_if(
+		ideas.begin(),
+		ideas.end(),
+		[newIdea](const Idea& theIdea){ return theIdea.getName() == newIdea.getName(); },
+		newIdea
+	);
 }
 
 

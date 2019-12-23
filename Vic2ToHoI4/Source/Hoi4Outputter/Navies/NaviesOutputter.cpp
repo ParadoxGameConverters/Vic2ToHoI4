@@ -5,7 +5,7 @@
 void HoI4::outputLegacyNavies(const HoI4::Navies& navies, std::ostream& output)
 {
 	output << "units = {\n";
-	for (const auto& navy: navies.getMtgNavies())
+	for (const auto& navy: navies.getLegacyNavies())
 	{
 		output << navy;
 	}
@@ -16,7 +16,7 @@ void HoI4::outputLegacyNavies(const HoI4::Navies& navies, std::ostream& output)
 void HoI4::outputMtgNavies(const HoI4::Navies& navies, std::ostream& output)
 {
 	output << "units = {\n";
-	for (const auto& navy: navies.getLegacyNavies())
+	for (const auto& navy: navies.getMtgNavies())
 	{
 		output << navy;
 	}

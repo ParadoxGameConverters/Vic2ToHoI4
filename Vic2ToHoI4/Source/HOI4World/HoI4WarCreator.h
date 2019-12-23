@@ -80,7 +80,11 @@ class HoI4WarCreator
 		vector<shared_ptr<HoI4::Country>> findEvilCountries() const;
 
 		set<int> findBorderState(shared_ptr<HoI4::Country> country, shared_ptr<HoI4::Country> neighbor, const HoI4::World* world, const HoI4::MapData& theMapData);
-		vector<int> sortStatesByCapitalDistance(set<int> stateList, shared_ptr<HoI4::Country> country, const HoI4::World* world);
+		vector<int> sortStatesByCapitalDistance(
+			const std::set<int>& stateList,
+			std::shared_ptr<HoI4::Country> country,
+			const HoI4::World* world
+		);
 		vector<shared_ptr<HoI4::Country>> findWeakNeighbors(shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData);
 		map<string, shared_ptr<HoI4::Country>> findCloseNeighbors(shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData);
 		vector<shared_ptr<HoI4::Country>> findWeakColonies(shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData);
@@ -91,9 +95,9 @@ class HoI4WarCreator
 		void addTradeEvents(shared_ptr<HoI4::Country> country, const vector<shared_ptr<HoI4::Country>>& greatPowerTargets);
 
 		void    setSphereLeaders(const Vic2::World* sourceWorld);
-		double    GetFactionStrength(const shared_ptr<HoI4Faction> Faction, int years) const;
+		double GetFactionStrength(const shared_ptr<HoI4Faction>& Faction, int years) const;
 		string HowToTakeLand(shared_ptr<HoI4::Country> TargetCountry, shared_ptr<HoI4::Country> AttackingCountry, double time);
-		vector<shared_ptr<HoI4::Country>> GetMorePossibleAllies(shared_ptr<HoI4::Country> CountryThatWantsAllies);
+		vector<shared_ptr<HoI4::Country>> GetMorePossibleAllies(const shared_ptr<HoI4::Country>& CountryThatWantsAllies);
 		optional<double> getDistanceBetweenCountries(shared_ptr<HoI4::Country> Country1, shared_ptr<HoI4::Country> Country2);
 		bool bothCountriesHaveCapitals(shared_ptr<HoI4::Country> Country1, shared_ptr<HoI4::Country> Country2) const;
 		pair<int, int> getCapitalPosition(shared_ptr<HoI4::Country> country);
@@ -103,11 +107,18 @@ class HoI4WarCreator
 		vector<string> tokenizeLine(const string& line);
 		void addProvincePosition(const vector<string>& tokenizedLine);
 		double getDistanceBetweenPoints(pair<int, int> point1, pair<int, int> point2) const;
-		double GetFactionStrengthWithDistance(shared_ptr<HoI4::Country> HomeCountry, vector<shared_ptr<HoI4::Country>> Faction, double time);
+		double GetFactionStrengthWithDistance(
+			std::shared_ptr<HoI4::Country> HomeCountry,
+			const std::vector<std::shared_ptr<HoI4::Country>>& Faction,
+			double time
+		);
 		shared_ptr<HoI4Faction> findFaction(shared_ptr<HoI4::Country> checkingCountry);
 
 		map<string, shared_ptr<HoI4::Country>> getNeighbors(shared_ptr<HoI4::Country> checkingCountry, const HoI4::MapData& theMapData);
-		map<string, shared_ptr<HoI4::Country>> getImmediateNeighbors(shared_ptr<HoI4::Country> checkingCountry, const HoI4::MapData& theMapData);
+		std::map<std::string, std::shared_ptr<HoI4::Country>> getImmediateNeighbors(
+			std::shared_ptr<HoI4::Country> checkingCountry,
+			const HoI4::MapData& theMapData
+		);
 		map<string, shared_ptr<HoI4::Country>> getNearbyCountries(shared_ptr<HoI4::Country> checkingCountry);
 
 

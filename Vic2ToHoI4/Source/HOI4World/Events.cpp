@@ -211,7 +211,7 @@ void HoI4::Events::createFactionEvents(std::shared_ptr<HoI4::Country> Leader, st
 	else
 	{
 		Log(LogLevel::Warning) << "Could not determine leader name for faction events";
-		leaderName = "";
+		leaderName.clear();
 	}
 
 	auto possibleNewAllyName = newAlly->getSourceCountry().getName("english");
@@ -318,7 +318,7 @@ void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4::Country> Annexer, std:
 	else
 	{
 		Log(LogLevel::Warning) << "Could not determine annexer name for annexation events";
-		annexerName = "";
+		annexerName.clear();
 	}
 
 	auto possibleAnnexedName = Annexed->getSourceCountry().getName("english");
@@ -330,7 +330,7 @@ void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4::Country> Annexer, std:
 	else
 	{
 		Log(LogLevel::Warning) << "Could not determine annexed country name for annexation events";
-		annexedName = "";
+		annexedName.clear();
 	}
 
 	Event annexEvent;
@@ -460,7 +460,7 @@ void HoI4::Events::createSudetenEvent(std::shared_ptr<HoI4::Country> Annexer, st
 	else
 	{
 		Log(LogLevel::Warning) << "Could not determine annexer name for sudeten events";
-		annexerName = "";
+		annexerName.clear();
 	}
 
 	auto possibleAnnexerAdjective = Annexer->getSourceCountry().getName("english");
@@ -472,7 +472,7 @@ void HoI4::Events::createSudetenEvent(std::shared_ptr<HoI4::Country> Annexer, st
 	else
 	{
 		Log(LogLevel::Warning) << "Could not determine annexer adjective for sudeten events";
-		annexerAdjctive = "";
+		annexerAdjctive.clear();
 	}
 
 	auto possibleAnnexedName = Annexed->getSourceCountry().getName("english");
@@ -484,7 +484,7 @@ void HoI4::Events::createSudetenEvent(std::shared_ptr<HoI4::Country> Annexer, st
 	else
 	{
 		Log(LogLevel::Warning) << "Could not determine annexed country name for sudeten events";
-		annexedName = "";
+		annexedName.clear();
 	}
 
 	Event sudetenEvent;
@@ -606,7 +606,7 @@ void HoI4::Events::createTradeEvent(std::shared_ptr<HoI4::Country> leader, std::
 	else
 	{
 		Log(LogLevel::Warning) << "Could not determine aggressor name for trade events";
-		aggressorName = "";
+		aggressorName.clear();
 	}
 
 	Event tradeIncidentEvent;
@@ -1213,6 +1213,7 @@ void HoI4::Events::importElectionEvents(const std::set<std::string>& majorIdeolo
 }
 
 
+constexpr int tagAndDashSize = 4;
 void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag, const std::set<Vic2::Party, std::function<bool (const Vic2::Party&, const Vic2::Party&)>>& parties, HoI4::OnActions& onActions, const set<string>& majorIdeologies)
 {
 	Event partyChoiceEvent;
@@ -1247,7 +1248,7 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag, const std:
 		if ((party.getIdeology() == "conservative"))
 		{
 			std::string partyName = party.getName();
-			std::string trimmedName = partyName.substr(4, partyName.size());
+			std::string trimmedName = partyName.substr(tagAndDashSize, partyName.size());
 
 			std::string optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
 			std::string option = "= {\n";
@@ -1272,7 +1273,7 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag, const std:
 		if ((party.getIdeology() == "liberal"))
 		{
 			std::string partyName = party.getName();
-			std::string trimmedName = partyName.substr(4, partyName.size());
+			std::string trimmedName = partyName.substr(tagAndDashSize, partyName.size());
 
 			std::string optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
 			std::string option = "= {\n";
@@ -1297,7 +1298,7 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag, const std:
 		if ((party.getIdeology() == "socialist"))
 		{
 			std::string partyName = party.getName();
-			std::string trimmedName = partyName.substr(4, partyName.size());
+			std::string trimmedName = partyName.substr(tagAndDashSize, partyName.size());
 
 			std::string optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
 			std::string option = "= {\n";

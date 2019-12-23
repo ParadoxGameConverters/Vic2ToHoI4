@@ -66,7 +66,7 @@ void HoI4Province::output() const
 			LOG(LogLevel::Error) << "Could not create province history file output/" << theConfiguration.getOutputName() << "/history/provinces/" << filename.first << " - " << Utils::GetLastErrorString();
 			exit(-1);
 		}
-		if (owner != "")
+		if (!owner.empty())
 		{
 			fprintf_s(output, "owner = %s\n", owner.c_str());
 			fprintf_s(output, "controller = %s\n", owner.c_str());

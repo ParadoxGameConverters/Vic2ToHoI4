@@ -43,7 +43,7 @@ class Ideas: commonItems::parser
 	public:
 		Ideas() noexcept;
 
-		void updateIdeas(std::set<std::string> majorIdeologies);
+		void updateIdeas(const std::set<std::string>& majorIdeologies);
 
 		void output(const std::set<std::string>& majorIdeologies) const;
 
@@ -51,7 +51,7 @@ class Ideas: commonItems::parser
 		void importIdeologicalIdeas();
 		void importGeneralIdeas();
 
-		void outputIdeologicalIdeas(std::set<std::string> majorIdeologies) const;
+		void outputIdeologicalIdeas(const std::set<std::string>& majorIdeologies) const;
 		void outputGeneralIdeas() const;
 
 		std::ofstream openIdeaFile(const std::string& fileName) const;

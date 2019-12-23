@@ -145,7 +145,12 @@ class HoI4Localisation
 		void addLocalisationsForAllGovernments(const std::pair<const std::string&, const std::string&>& tags, const std::pair<const std::string&, const std::string&>& suffixes, const governmentMapper& governmentMap);
 		void addLocalisationsInAllLanguages(const std::string& destTag, const std::pair<const std::string&, const std::string&>& suffixes, const std::string& HoI4GovernmentIdeology, const keyToLocalisationMap& namesInLanguage);
 		languageToLocalisationsMap::iterator getExistingLocalisationsInLanguage(const std::string& language);
-		void addLocalisation(const std::string& newKey, languageToLocalisationsMap::iterator& existingLanguage, const std::string& localisation, const std::string& HoI4Suffix);
+		void addLocalisation(
+			const std::string& newKey,
+			keyToLocalisationMap& existingLanguage,
+			const std::string& localisation,
+			const std::string& HoI4Suffix
+		);
 		bool addNeutralLocalisation(const std::pair<const std::string&, const std::string&>& tags, const std::pair<const std::string&, const std::string&>& suffixes);
 
 		void UpdateMainCountryLocalisation(const std::string& HoI4Key, const std::string& Vic2Tag, const std::string& Vic2Government);

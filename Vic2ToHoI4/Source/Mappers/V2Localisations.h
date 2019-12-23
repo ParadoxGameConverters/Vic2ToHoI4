@@ -64,8 +64,8 @@ class V2Localisations
 		V2Localisations() noexcept;
 		void ReadFromAllFilesInFolder(const string& folderPath);
 		void ReadFromFile(const string& fileName);
-		void processLine(string line);
-		string getNextLocalisation(string line, int& division);
+		void processLine(const std::string& line);
+		string getNextLocalisation(const std::string& line, int& division);
 
 		V2Localisations(const V2Localisations&) = delete;
 		V2Localisations& operator=(const V2Localisations&) = delete;

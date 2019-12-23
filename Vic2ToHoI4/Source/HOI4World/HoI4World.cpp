@@ -786,13 +786,13 @@ void HoI4::World::convertMilitaries()
 }
 
 
-void HoI4::World::convertArmies(const militaryMappings& theMilitaryMappings)
+void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings)
 {
 	LOG(LogLevel::Info) << "Converting armies";
 
 	for (auto country: countries)
 	{
-		country.second->convertArmies(theMilitaryMappings);
+		country.second->convertArmies(localMilitaryMappings);
 	}
 }
 
@@ -1058,11 +1058,11 @@ void HoI4::World::adjustResearchFocuses()
 }
 
 
-void HoI4::World::addCountryElectionEvents(const set<string>& majorIdeologies)
+void HoI4::World::addCountryElectionEvents(const std::set<string>&theMajorIdeologies)
 {
 	for (auto country: countries)
 	{
-		events->addPartyChoiceEvent(country.first, country.second->getParties(), *onActions, majorIdeologies);
+		events->addPartyChoiceEvent(country.first, country.second->getParties(), *onActions, theMajorIdeologies);
 	}
 }
 

@@ -55,7 +55,7 @@ void HoI4::Advisor::output(std::ofstream& output, const std::string& tag) const
 		output << trait << " ";
 	}
 	output << "}\n";
-	if (picture != "")
+	if (!picture.empty())
 	{
 		output << "\t\t\tpicture = " << picture << "\n";
 	}

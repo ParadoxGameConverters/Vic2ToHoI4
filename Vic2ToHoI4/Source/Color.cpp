@@ -29,7 +29,7 @@ using namespace ConverterColor;
 
 
 
-Color::Color(const red r, const green g, const blue b)
+Color::Color(const red& r, const green& g, const blue& b)
 : initialized(true), c({ r.Red, g.Green, b.Blue })
 {}
 

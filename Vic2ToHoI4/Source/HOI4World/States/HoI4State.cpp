@@ -71,7 +71,7 @@ void HoI4::State::output(std::ostream& out, const Configuration& theConfiguratio
 	}
 	out << "\n";
 	out << "\thistory={\n";
-	if (ownerTag != "")
+	if (!ownerTag.empty())
 	{
 		out << "\t\towner = " << ownerTag << "\n";
 	}

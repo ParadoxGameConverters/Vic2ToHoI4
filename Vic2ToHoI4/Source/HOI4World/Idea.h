@@ -46,6 +46,7 @@ class Idea: commonItems::parser
 
 	private:
 		std::string name;
+		std::string altName;
 
 		std::optional<int> cost;
 		std::optional<int> removalCost;

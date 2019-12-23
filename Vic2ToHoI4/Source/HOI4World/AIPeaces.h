@@ -42,7 +42,7 @@ class AIPeaces: commonItems::parser
 	public:
 		AIPeaces() noexcept;
 
-		void updateAIPeaces(std::set<std::string> majorIdeologies);
+		void updateAIPeaces(const std::set<std::string>& majorIdeologies);
 
 		void output(std::set<std::string> majorIdeologies);
 

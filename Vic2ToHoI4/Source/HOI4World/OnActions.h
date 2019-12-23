@@ -42,7 +42,7 @@ class OnActions
 
 		void output(const std::set<std::string>& majorIdeologies) const;
 
-		void addElectionEvent(std::string electionEvent) { electionEvents.push_back(electionEvent); }
+		void addElectionEvent(const std::string& electionEvent) { electionEvents.push_back(electionEvent); }
 
 	private:
 		OnActions(const OnActions&) = delete;

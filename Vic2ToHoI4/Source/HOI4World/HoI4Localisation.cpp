@@ -174,14 +174,14 @@ void HoI4Localisation::prepareIdeaLocalisations()
 
 void HoI4Localisation::CreateCountryLocalisations(const pair<const string&, const string&>& tags, const governmentMapper& governmentMap)
 {
-	addLocalisationsForAllGovernments(tags, make_pair(string(""), string("_DEF")), governmentMap);
-	addLocalisationsForAllGovernments(tags, make_pair(string("_ADJ"), string("")), governmentMap);
+	addLocalisationsForAllGovernments(tags, std::make_pair(std::string(), std::string("_DEF")), governmentMap);
+	addLocalisationsForAllGovernments(tags, std::make_pair(std::string("_ADJ"), std::string()), governmentMap);
 
-	if (!addNeutralLocalisation(tags, make_pair(string(""), string("_DEF"))))
+	if (!addNeutralLocalisation(tags, std::make_pair(std::string(), std::string("_DEF"))))
 	{
 		LOG(LogLevel::Warning) << "Could not find plain localisation for " << tags.first;
 	}
-	if (!addNeutralLocalisation(tags, make_pair(string("_ADJ"), string(""))))
+	if (!addNeutralLocalisation(tags, std::make_pair(std::string("_ADJ"), std::string())))
 	{
 		LOG(LogLevel::Warning) << "Could not find plain adjective localisation for " << tags.first;
 	}
@@ -209,7 +209,7 @@ void HoI4Localisation::addLocalisationsInAllLanguages(const string& destTag, con
 		auto existingLanguage = getExistingLocalisationsInLanguage(nameInLanguage.first);
 
 		string newKey = destTag + "_" + HoI4GovernmentIdeology + suffixes.first;
-		addLocalisation(newKey, existingLanguage, nameInLanguage.second, suffixes.second);
+		addLocalisation(newKey, existingLanguage->second, nameInLanguage.second, suffixes.second);
 	}
 }
 
@@ -224,7 +224,7 @@ bool HoI4Localisation::addNeutralLocalisation(const pair<const string&, const st
 			auto existingLanguage = getExistingLocalisationsInLanguage(nameInLanguage.first);
 
 			string newKey = tags.second + "_neutrality" + suffixes.first;
-			addLocalisation(newKey, existingLanguage, nameInLanguage.second, suffixes.second);
+			addLocalisation(newKey, existingLanguage->second, nameInLanguage.second, suffixes.second);
 		}
 		return true;
 	}
@@ -249,23 +249,27 @@ languageToLocalisationsMap::iterator HoI4Localisation::getExistingLocalisationsI
 }
 
 
-void HoI4Localisation::addLocalisation(const string& newKey, languageToLocalisationsMap::iterator& existingLanguage, const string& localisation, const string& HoI4Suffix)
+void HoI4Localisation::addLocalisation(
+	const string& newKey,
+	keyToLocalisationMap& existingLanguage,
+	const string& localisation,
+	const string& HoI4Suffix
+)
 {
-	auto existingLocalisation = existingLanguage->second.find(newKey);
-	if (existingLocalisation == existingLanguage->second.end())
+	if (auto existingLocalisation = existingLanguage.find(newKey); existingLocalisation == existingLanguage.end())
 	{
-		existingLanguage->second.insert(make_pair(newKey, localisation));
-		if (HoI4Suffix != "")
+		existingLanguage.insert(make_pair(newKey, localisation));
+		if (!HoI4Suffix.empty())
 		{
-			existingLanguage->second.insert(make_pair(newKey + HoI4Suffix, localisation));
+			existingLanguage.insert(make_pair(newKey + HoI4Suffix, localisation));
 		}
 	}
 	else
 	{
-		existingLanguage->second[newKey] = localisation;
-		if (HoI4Suffix != "")
+		existingLanguage[newKey] = localisation;
+		if (!HoI4Suffix.empty())
 		{
-			existingLanguage->second[newKey + HoI4Suffix] = localisation;
+			existingLanguage[newKey + HoI4Suffix] = localisation;
 		}
 	}
 }
@@ -480,9 +484,10 @@ void HoI4Localisation::addStateLocalisationForLanguage(
 	const pair<const string, string>& Vic2NameInLanguage
 ) {
 	string localisedName = "";
-	if (sourceStateHasOneProvince(*state.getSourceState()))
+	auto sourceState = state.getSourceState();
+	if (sourceStateHasOneProvince(*sourceState))
 	{
-		const Vic2::Province* theProvince = *(state.getSourceState()->getProvinces().begin());
+		const Vic2::Province* theProvince = *(sourceState->getProvinces().begin());
 		auto possibleProvinceName =
 			V2Localisations::GetTextInLanguage(
 				"PROV" + std::to_string(theProvince->getNumber()),
@@ -497,7 +502,7 @@ void HoI4Localisation::addStateLocalisationForLanguage(
 			LOG(LogLevel::Warning) << "Could not find localization for province " << *state.getProvinces().begin();
 		}
 	}
-	else if (sourceStateHasAllButOneProvinceFromDefinition(*state.getSourceState()))
+	else if (sourceStateHasAllButOneProvinceFromDefinition(*sourceState))
 	{
 		localisedName = Vic2NameInLanguage.second;
 	}
@@ -505,10 +510,10 @@ void HoI4Localisation::addStateLocalisationForLanguage(
 	{
 		localisedName = Vic2NameInLanguage.second;
 	}
-	else if (state.getSourceState()->isPartialState())
+	else if (sourceState->isPartialState())
 	{
 		auto possibleOwnerAdjective =
-			V2Localisations::GetTextInLanguage(state.getSourceState()->getOwner() + "_ADJ", Vic2NameInLanguage.first);
+			V2Localisations::GetTextInLanguage(sourceState->getOwner() + "_ADJ", Vic2NameInLanguage.first);
 		if (possibleOwnerAdjective)
 		{
 			localisedName = *possibleOwnerAdjective + " " + Vic2NameInLanguage.second;
@@ -518,7 +523,7 @@ void HoI4Localisation::addStateLocalisationForLanguage(
 	{
 		auto possibleWastelandName =
 			V2Localisations::GetTextInLanguage(
-				state.getSourceState()->getStateID() + "_WASTELAND", Vic2NameInLanguage.first
+				sourceState->getStateID() + "_WASTELAND", Vic2NameInLanguage.first
 			);
 		if (possibleWastelandName)
 		{
@@ -528,7 +533,7 @@ void HoI4Localisation::addStateLocalisationForLanguage(
 		{
 			localisedName = Vic2NameInLanguage.second + " Wasteland";
 			LOG(LogLevel::Warning) << Vic2NameInLanguage.second
-				<< " had a wasteland section with no localisation. Add " << state.getSourceState()->getStateID()
+				<< " had a wasteland section with no localisation. Add " << sourceState->getStateID()
 				<< "_WASTELAND to DataFiles/Vic2Localisations.csv for better conversion.";
 		}
 	}

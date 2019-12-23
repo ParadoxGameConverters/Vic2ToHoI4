@@ -59,7 +59,7 @@ class Army
 	public:
 		Army() = default;
 
-		void addSourceArmies(std::vector<const Vic2::Army*> _sourceArmies) { sourceArmies = _sourceArmies; }
+		void addSourceArmies(std::vector<const Vic2::Army*> _sourceArmies) { sourceArmies = std::move(_sourceArmies); }
 
 		void convertArmies(const militaryMappings& theMilitaryMappings, int backupLocation, double forceMultiplier);
 

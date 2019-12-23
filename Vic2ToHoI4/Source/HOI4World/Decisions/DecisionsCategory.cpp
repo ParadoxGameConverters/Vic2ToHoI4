@@ -26,23 +26,24 @@ void HoI4::decisionsCategory::updatePoliticalDecisions(
 ) {
 	for (auto& theDecision : theDecisions)
 	{
-		if (theDecision.getName().substr(0, 28) == "open_up_political_discourse_")
+		const auto& decisionName = theDecision.getName();
+		if (decisionName.substr(0, 28) == "open_up_political_discourse_")
 		{
 			updateOpenUpPoliticalDiscourse(theDecision, majorIdeologies);
 		}
-		if (theDecision.getName().substr(0, 21) == "discredit_government_")
+		if (decisionName.substr(0, 21) == "discredit_government_")
 		{
 			updateDiscreditGovernment(theDecision, majorIdeologies);
 		}
-		if (theDecision.getName().substr(0, 27) == "institute_press_censorship_")
+		if (decisionName.substr(0, 27) == "institute_press_censorship_")
 		{
 			updateInstitutePressCensorship(theDecision, majorIdeologies);
 		}
-		if (theDecision.getName().substr(0, 11) == "ignite_the_")
+		if (decisionName.substr(0, 11) == "ignite_the_")
 		{
 			updateIgniteTheIdeologyCivilWar(theDecision, majorIdeologies);
 		}
-		if (theDecision.getName().substr(0, 9) == "hold_the_")
+		if (decisionName.substr(0, 9) == "hold_the_")
 		{
 			updateHoldTheIdeologyNationalReferendum(theDecision, theEvents);
 		}

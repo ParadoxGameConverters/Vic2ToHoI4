@@ -79,7 +79,7 @@ Vic2::Country::Country(const std::string& theTag, std::istream& theStream, const
 	registerKeyword(std::regex("domain_region"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::singleString regionString(theStream);
 		domainName = regionString.getString();
-		domainAdjective = regionString.getString();
+		domainAdjective = domainName;
 	});
 	registerKeyword(std::regex("human"), [this](const std::string& unused, std::istream& theStream){
 		commonItems::ignoreItem(unused, theStream);
@@ -101,7 +101,7 @@ Vic2::Country::Country(const std::string& theTag, std::istream& theStream, const
 		}
 		else
 		{
-			primaryCultureGroup = "";
+			primaryCultureGroup.clear();
 		}
 	});
 	registerKeyword(std::regex("culture"), [this](const std::string& unused, std::istream& theStream){
@@ -275,7 +275,7 @@ void Vic2::Country::determineEmployedWorkers()
 
 void Vic2::Country::setLocalisationNames()
 {
-	if (domainName != "")
+	if (!domainName.empty())
 	{
 		V2Localisations::UpdateDomainCountry(tag, domainName);
 	}
@@ -289,11 +289,11 @@ void Vic2::Country::setLocalisationNames()
 
 void Vic2::Country::setLocalisationName(const string& language, const string& name)
 {
-	if (domainName != "")
+	if (!domainName.empty())
 	{
 		namesByLanguage[language] = domainName;
 	}
-	else if (name != "")
+	else if (!name.empty())
 	{
 		namesByLanguage[language] = name;
 	}
@@ -312,7 +312,7 @@ void Vic2::Country::setLocalisationAdjectives()
 
 void Vic2::Country::handleMissingCulture(const cultureGroups& theCultureGroups)
 {
-	if (primaryCulture == "")
+	if (primaryCulture.empty())
 	{
 		auto cultureSizes = determineCultureSizes();
 		primaryCulture = selectLargestCulture(cultureSizes);
@@ -371,11 +371,11 @@ string Vic2::Country::selectLargestCulture(const map<string, int>& cultureSizes)
 
 void Vic2::Country::setLocalisationAdjective(const string& language, const string& adjective)
 {
-	if (domainAdjective != "") // Domains have their adjective set from domain_region
+	if (!domainAdjective.empty()) // Domains have their adjective set from domain_region
 	{
 		adjectivesByLanguage[language] = domainAdjective;
 	}
-	else if (adjective != "")
+	else if (!adjective.empty())
 	{
 		adjectivesByLanguage[language] = adjective;
 	}
@@ -492,7 +492,7 @@ bool Vic2::Country::hasCoreOnCapital() const
 	return false;
 }
 
-vector<string> Vic2::Country::getShipNames(string category) const
+vector<string> Vic2::Country::getShipNames(const string& category) const
 {
 	auto foundShipNames = shipNames.find(category);
 	if (foundShipNames == shipNames.end())

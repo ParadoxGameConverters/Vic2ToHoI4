@@ -43,7 +43,7 @@ TEST(HoI4World_MilitaryMappings_unitMappingTests, nulloptOnNoHoI4Type)
 
 	const HoI4::UnitMapping theMapping(input);
 
-	ASSERT_EQ(theMapping.getMappings(), std::nullopt);
+	ASSERT_EQ(theMapping.getMappings()->second, std::nullopt);
 }
 
 
@@ -65,5 +65,5 @@ TEST(HoI4World_MilitaryMappings_unitMappingTests, UnitMappingHandlesFilledHoI4Un
 
 	auto mapping = theMapping.getMappings();
 	ASSERT_TRUE(mapping);
-	ASSERT_EQ(std::string("land"), mapping->second.getType());
+	ASSERT_EQ(std::string("land"), mapping->second->getType());
 }

@@ -376,7 +376,11 @@ void HoI4::Buildings::placeAntiAir(const HoI4States& theStates, const MapData& t
 }
 
 
-void HoI4::Buildings::placeNavalBases(const std::map<int, int>& provinceToStateIDMap, std::map<int, std::vector<int>> actualCoastalProvinces, const MapData& theMapData)
+void HoI4::Buildings::placeNavalBases(
+	const std::map<int, int>& provinceToStateIDMap,
+	const std::map<int, std::vector<int>>& actualCoastalProvinces,
+	const MapData& theMapData
+)
 {
 	for (auto province: actualCoastalProvinces)
 	{
@@ -480,7 +484,11 @@ void HoI4::Buildings::addBunker(int stateID, int province, const MapData& theMap
 }
 
 
-void HoI4::Buildings::placeCoastalBunkers(const std::map<int, int>& provinceToStateIDMap, std::map<int, std::vector<int>> actualCoastalProvinces, const MapData& theMapData)
+void HoI4::Buildings::placeCoastalBunkers(
+	const std::map<int, int>& provinceToStateIDMap,
+	const std::map<int, std::vector<int>>& actualCoastalProvinces,
+	const MapData& theMapData
+)
 {
 	for (auto province: actualCoastalProvinces)
 	{

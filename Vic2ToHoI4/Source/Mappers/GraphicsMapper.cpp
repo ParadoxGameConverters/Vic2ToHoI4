@@ -108,7 +108,10 @@ void graphicsMapper::init()
 }
 
 
-void graphicsMapper::loadLeaderPortraitMappings(const std::string& cultureGroup, std::map<std::string, std::vector<std::string>> portraitMappings)
+void graphicsMapper::loadLeaderPortraitMappings(
+	const std::string& cultureGroup,
+	const std::map<std::string, std::vector<std::string>>& portraitMappings
+)
 {
 	auto cultureGroupMappings = leaderPortraitMappings.find(cultureGroup);
 	if (cultureGroupMappings == leaderPortraitMappings.end())
@@ -125,7 +128,10 @@ void graphicsMapper::loadLeaderPortraitMappings(const std::string& cultureGroup,
 }
 
 
-void graphicsMapper::loadIdeologyMinisterPortraitMappings(const std::string& cultureGroup, std::map<std::string, std::vector<std::string>> portraitMappings)
+void graphicsMapper::loadIdeologyMinisterPortraitMappings(
+	const std::string& cultureGroup,
+	const std::map<std::string, std::vector<std::string>>& portraitMappings
+)
 {
 	auto cultureGroupMappings = ideologyMinisterMappings.find(cultureGroup);
 	if (cultureGroupMappings == ideologyMinisterMappings.end())

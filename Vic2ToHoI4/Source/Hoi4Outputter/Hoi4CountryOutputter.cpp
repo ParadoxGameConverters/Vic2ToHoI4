@@ -319,6 +319,7 @@ void outputCommanders(
 	const std::vector<HoI4::Admiral>& admirals
 );
 
+
 void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, const HoI4::Country& theCountry)
 {
 	const auto& tag = theCountry.getTag();
@@ -430,7 +431,7 @@ void outputResearchSlots(std::ostream& output, const bool& greatPower, const boo
 
 void outputThreat(std::ostream& output, const double& threat)
 {
-	if (threat != 0.0)
+	if (threat > std::numeric_limits<float>::epsilon())
 	{
 		output << "add_named_threat = { threat = " << threat << " name = infamy }\n";
 	}
@@ -541,7 +542,7 @@ void outputPuppets(
 		output << "}\n\n";
 	}
 
-	if (puppetMaster != "")
+	if (!puppetMaster.empty())
 	{
 		output << "if = {\n";
 		output << "    limit = {has_dlc = \"Together for Victory\" }\n";
@@ -701,10 +702,9 @@ void outputCountryLeader(
 ) {
 	auto firstName = theNames.getMaleName(primaryCulture);
 	auto surname = theNames.getSurname(primaryCulture);
-	const auto portrait = theGraphics.getLeaderPortrait(primaryCultureGroup, governmentIdeology);
-
 	if (firstName && surname)
 	{
+		const auto portrait = theGraphics.getLeaderPortrait(primaryCultureGroup, governmentIdeology);
 		auto upperFirstName = *firstName;
 		std::transform(upperFirstName.begin(), upperFirstName.end(), upperFirstName.begin(), ::toupper);
 		auto upperSurname = *surname;
@@ -934,7 +934,7 @@ void outputCommonCountryFile(const HoI4::Country& theCountry)
 
 	auto& graphicalCulture = theCountry.getGraphicalCulture();
 	auto& graphicalCulture2d = theCountry.getGraphicalCulture2d();
-	if ((graphicalCulture != "") && (graphicalCulture2d != ""))
+	if (!graphicalCulture.empty() && !graphicalCulture2d.empty())
 	{
 		output << "graphical_culture = " << graphicalCulture << "\n";
 		output << "graphical_culture_2d = " << graphicalCulture2d << "\n";

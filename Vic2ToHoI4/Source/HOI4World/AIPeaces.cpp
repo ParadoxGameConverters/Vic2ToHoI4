@@ -38,7 +38,7 @@ HoI4::AIPeaces::AIPeaces() noexcept
 }
 
 
-void HoI4::AIPeaces::updateAIPeaces(std::set<std::string> majorIdeologies)
+void HoI4::AIPeaces::updateAIPeaces(const std::set<std::string>& majorIdeologies)
 {
 	auto fascistPeace = std::find_if(thePeaces.begin(), thePeaces.end(), [](auto& thePeace){ return (thePeace.getName() == "fascist_peace"); });
 	if (fascistPeace != thePeaces.end())

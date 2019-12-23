@@ -81,7 +81,7 @@ HoI4::AIPeace::AIPeace(const std::string& theName, std::istream& theStream):
 std::ostream& HoI4::operator<<(std::ostream& outStream, const HoI4::AIPeace& outPeace)
 {
 	outStream << outPeace.name << " = {\n";
-	if (outPeace.enable != "")
+	if (!outPeace.enable.empty())
 	{
 		outStream << "	enable " << outPeace.enable << "\n";
 	}

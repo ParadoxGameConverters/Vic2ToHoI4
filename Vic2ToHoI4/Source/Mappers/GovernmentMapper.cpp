@@ -254,13 +254,13 @@ std::string governmentMapper::getExistingLeaderIdeologyForCountry(
 
 bool governmentMapper::governmentMatches(const governmentMapping& mapping, const std::string& government) const
 {
-	return ((mapping.vic2Government == "") || (mapping.vic2Government == government));
+	return ((mapping.vic2Government.empty()) || (mapping.vic2Government == government));
 }
 
 
 bool governmentMapper::rulingIdeologyMatches(const governmentMapping& mapping, const std::string& rulingIdeology) const
 {
-	return ((mapping.rulingPartyRequired == "") || (mapping.rulingPartyRequired == rulingIdeology));
+	return ((mapping.rulingPartyRequired.empty()) || (mapping.rulingPartyRequired == rulingIdeology));
 }
 
 

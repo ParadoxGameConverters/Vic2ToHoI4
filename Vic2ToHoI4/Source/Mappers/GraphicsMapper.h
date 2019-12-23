@@ -58,8 +58,14 @@ class graphicsMapper: commonItems::parser
 		graphicsMapper(const graphicsMapper&) = delete;
 		graphicsMapper& operator=(const graphicsMapper&) = delete;
 
-		void loadLeaderPortraitMappings(const std::string& cultureGroup, std::map<std::string, std::vector<std::string>> portraitMappings);
-		void loadIdeologyMinisterPortraitMappings(const std::string& cultureGroup, std::map<std::string, std::vector<std::string>> portraitMappings);
+		void loadLeaderPortraitMappings(
+			const std::string& cultureGroup,
+			const std::map<std::string, std::vector<std::string>>& portraitMappings
+		);
+		void loadIdeologyMinisterPortraitMappings(
+			const std::string& cultureGroup,
+			const std::map<std::string, std::vector<std::string>>& portraitMappings
+		);
 
 		std::optional<std::vector<std::string>> getLeaderPortraits(const std::string& cultureGroup, const std::string& ideology) const;
 		std::optional<std::vector<std::string>> getIdeologyMinisterPortraits(const std::string& cultureGroup, const std::string& ideology) const;

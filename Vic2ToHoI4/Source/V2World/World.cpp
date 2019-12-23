@@ -206,7 +206,7 @@ void Vic2::World::removeSimpleLandlessNations()
 
 bool Vic2::World::shouldCoreBeRemoved(const Province* core, const Country* country) const
 {
-	if (core->getOwner() == "")
+	if (core->getOwner().empty())
 	{
 		return true;
 	}

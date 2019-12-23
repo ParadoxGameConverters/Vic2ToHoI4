@@ -125,19 +125,19 @@ std::ofstream& HoI4::operator << (std::ofstream& out, const Event& theEvent)
 		out << "	hidden = yes\n";
 	}
 
-	if (theEvent.trigger != "")
+	if (!theEvent.trigger.empty())
 	{
 		out << "\n";
 		out << "	trigger " << theEvent.trigger << "\n";
 	}
 
-	if (theEvent.meanTimeToHappen != "")
+	if (!theEvent.meanTimeToHappen.empty())
 	{
 		out << "\n";
 		out << "	mean_time_to_happen " << theEvent.meanTimeToHappen << "\n";
 	}
 
-	if (theEvent.immediate != "")
+	if (!theEvent.immediate.empty())
 	{
 		out << "\n";
 		out << "	immediate " << theEvent.immediate << "\n";

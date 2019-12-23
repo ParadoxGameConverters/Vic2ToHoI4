@@ -56,7 +56,7 @@ void HoI4::Ideas::importGeneralIdeas()
 }
 
 
-void HoI4::Ideas::updateIdeas(std::set<std::string> majorIdeologies)
+void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 {
 	auto foundGroup = std::find_if(generalIdeas.begin(), generalIdeas.end(), [](auto& theGroup){ return (theGroup->getName() == "mobilization_laws"); });
 	auto serviceByRequirement = (*foundGroup)->getIdea("service_by_requirement");
@@ -280,7 +280,7 @@ void HoI4::Ideas::output(const std::set<std::string>& majorIdeologies) const
 }
 
 
-void HoI4::Ideas::outputIdeologicalIdeas(std::set<std::string> majorIdeologies) const
+void HoI4::Ideas::outputIdeologicalIdeas(const std::set<std::string>& majorIdeologies) const
 {
 	std::ofstream ideasFile("output/" + theConfiguration.getOutputName() + "/common/ideas/convertedIdeas.txt");
 	ideasFile << "ideas = {\n";
