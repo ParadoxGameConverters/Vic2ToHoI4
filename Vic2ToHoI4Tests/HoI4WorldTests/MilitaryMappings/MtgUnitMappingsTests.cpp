@@ -26,7 +26,7 @@ TEST(HoI4World_MilitaryMappings_mtgUnitMappingsTests, Vic2UnitAddedToMtgUnitMapp
 }
 
 
-TEST(HoI4WorldMilitaryMappings__mtgUnitMappingsTests, MtgUnitMappingHandlesFilledHoI4UnitTypeCorrectly)
+TEST(HoI4World_MilitaryMappings_mtgUnitMappingsTests, MtgUnitMappingHandlesFilledHoI4UnitTypeCorrectly)
 {
 	std::stringstream input;
 	input << "= {\n";
