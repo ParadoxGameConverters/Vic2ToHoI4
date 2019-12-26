@@ -52,6 +52,9 @@
     <Filter Include="Hoi4Outputter\Navies">
       <UniqueIdentifier>{9a173023-f3eb-4316-b355-2b514e1c7033}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hoi4Outputter\ScriptedLocalisations">
+      <UniqueIdentifier>{84f40834-bcc8-4682-9c54-57152c91e7ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -407,6 +410,9 @@
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Navies\NaviesOutputter.cpp">
       <Filter>Hoi4Outputter\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.cpp">
+      <Filter>Hoi4Outputter\ScriptedLocalisations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -787,6 +793,9 @@
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Navies\NaviesOutputter.h">
       <Filter>Hoi4Outputter\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.h">
+      <Filter>Hoi4Outputter\ScriptedLocalisations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

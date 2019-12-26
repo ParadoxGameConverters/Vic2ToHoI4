@@ -57,6 +57,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "ParserHelpers.h"
 #include "../Hoi4Outputter/Hoi4CountryOutputter.h"
 #include "../Hoi4Outputter/Decisions/DecisionsOutputter.h"
+#include "../Hoi4Outputter/ScriptedLocalisations/ScriptedLocalisationsOutputter.h"
 #include <fstream>
 using namespace std;
 
@@ -1099,6 +1100,7 @@ void HoI4::World::output()
 	outputIdeas();
 	outputScriptedTriggers();
 	outputBookmarks();
+	outputScriptedLocalisations(theConfiguration);
 }
 
 

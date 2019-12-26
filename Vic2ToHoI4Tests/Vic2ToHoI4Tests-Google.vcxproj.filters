@@ -497,6 +497,9 @@
     <ClCompile Include="HoI4WorldTests\States\StateHistoryTests.cpp">
       <Filter>HoI4WorldTests\States</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ScriptedLocalisations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -573,6 +576,9 @@
     </Filter>
     <Filter Include="HoI4WorldTests\States">
       <UniqueIdentifier>{c10e58fb-ad11-413c-965f-7c114e869836}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\ScriptedLocalisations">
+      <UniqueIdentifier>{8a103c1a-6fa4-49eb-bf2d-e69090e1aa91}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
