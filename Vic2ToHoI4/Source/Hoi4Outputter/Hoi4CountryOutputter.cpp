@@ -653,7 +653,15 @@ void outputIdeas(
 	const std::string& economicLaw,
 	const std::string& tradeLaw,
 	const std::string& primaryCulture
-) {
+)
+{
+	if (greatPower)
+	{
+		output << "if = {\n";
+		output << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
+		output << "\tadd_ideas = MTG_naval_treaty_adherent\n";
+		output << "}\n";
+	}
 	output << "add_ideas = {\n";
 	if (greatPower)
 	{
