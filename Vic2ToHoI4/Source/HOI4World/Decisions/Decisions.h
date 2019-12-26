@@ -38,12 +38,17 @@ class decisions: commonItems::parser
 		{
 			return foreignInfluenceDecisions;
 		}
+		[[nodiscard]] const std::vector<decisionsCategory>& getMtgNavalTreatyDecisions() const
+		{
+			return mtgNavalTreatyDecisions;
+		}
 
 	private:
 		void updateStabilityDecisions(const std::set<std::string>& majorIdeologies);
 		void updatePoliticalDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
 		void updateExiledGovernmentDecisions(const std::set<std::string>& majorIdeologies);
 		void updateForeignInfluenceDecisions(const std::set<std::string>& majorIdeologies);
+		void updateMtgNavalTreatyDecisions(const std::set<std::string>& majorIdeologies);
 
 		std::unique_ptr<DecisionsCategories> decisionsCategories;
 
@@ -51,6 +56,7 @@ class decisions: commonItems::parser
 		std::vector<decisionsCategory> politicalDecisions;
 		std::vector<decisionsCategory> exiledGovernmentsDecisions;
 		std::vector<decisionsCategory> foreignInfluenceDecisions;
+		std::vector<decisionsCategory> mtgNavalTreatyDecisions;
 
 		std::vector<IdeologicalDecisions> allIdeologicalDecisions;
 };

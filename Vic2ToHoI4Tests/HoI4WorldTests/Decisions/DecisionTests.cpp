@@ -28,7 +28,7 @@ TEST(HoI4World_DecisionTests, DecisionNameCanBeSet)
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	HoI4::decision theDecision("decisionName", input);
+	const HoI4::decision theDecision("decisionName", input);
 
 	ASSERT_EQ(theDecision.getName(), "decisionName");
 }
@@ -761,6 +761,31 @@ TEST(HoI4World_DecisionTests, AiWillDoCanBeSet)
 }
 
 
+TEST(HoI4World_DecisionTests, AiWillDoCanBeChanged)
+{
+	std::stringstream input;
+	HoI4::decision theDecision("decisionName", input);
+
+	std::string newAiWillDo = "= {\n";
+	newAiWillDo += "\t\tfactor = 1\n";
+	newAiWillDo += "\t}";
+	theDecision.setAiWillDo(newAiWillDo);
+
+	std::stringstream output;
+	output << theDecision;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "\tdecisionName = {\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\tai_will_do = {\n";
+	expectedOutput << "\t\tfactor = 1\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\t}";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
 TEST(HoI4World_DecisionTests, FireOnlyOnceCanBeSet)
 {
 	std::stringstream input;
@@ -905,8 +930,8 @@ TEST(HoI4World_DecisionTests, ModfierCanBeChanged)
 TEST(HoI4World_DecisionTests, EqualDecisionsAreEqual)
 {
 	std::stringstream input;
-	HoI4::decision theDecision("decisionName", input);
-	HoI4::decision secondDecision("decisionName", input);
+	const HoI4::decision theDecision("decisionName", input);
+	const HoI4::decision secondDecision("decisionName", input);
 
 	ASSERT_TRUE(theDecision == secondDecision);
 }
@@ -915,8 +940,8 @@ TEST(HoI4World_DecisionTests, EqualDecisionsAreEqual)
 TEST(HoI4World_DecisionTests, UnequalDecisionsAreUnequal)
 {
 	std::stringstream input;
-	HoI4::decision theDecision("decisionName", input);
-	HoI4::decision secondDecision("decisionName2", input);
+	const HoI4::decision theDecision("decisionName", input);
+	const HoI4::decision secondDecision("decisionName2", input);
 
 	ASSERT_FALSE(theDecision == secondDecision);
 }
