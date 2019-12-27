@@ -23,6 +23,8 @@ class MtgShip final: public Ship
 			const float& experience
 		): Ship(name, type, equipment, owner), version(std::move(version)), experience(experience) {}
 
+		[[nodiscard]] float getStrength() const;
+
 		friend std::ostream& operator << (std::ostream& output, const MtgShip& instance);
 
 	private:

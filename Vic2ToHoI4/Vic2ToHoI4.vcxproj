@@ -247,6 +247,8 @@
     <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMapping.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMappings.cpp" />
     <ClCompile Include="Source\HOI4World\Names.cpp" />
+    <ClCompile Include="Source\HOI4World\Navies\MtgNavy.cpp" />
+    <ClCompile Include="Source\HOI4World\Navies\MtgShip.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\Navies.cpp" />
     <ClCompile Include="Source\HOI4World\OnActions.cpp" />
     <ClCompile Include="Source\HOI4World\Regiment.cpp" />

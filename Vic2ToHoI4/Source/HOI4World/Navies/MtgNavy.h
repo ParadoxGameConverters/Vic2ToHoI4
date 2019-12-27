@@ -21,6 +21,8 @@ class MtgNavy final: public Navy
 
 		[[nodiscard]] size_t getNumShips() const override { return ships.size(); }
 
+		[[nodiscard]] float getStrength() const;
+
 		friend std::ostream& operator << (std::ostream& output, const MtgNavy& instance);
 
 	private:

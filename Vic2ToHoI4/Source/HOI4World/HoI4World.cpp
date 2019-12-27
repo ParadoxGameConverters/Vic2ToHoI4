@@ -76,9 +76,14 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	theMilitaryMappings = importedMilitaryMappings.takeAllMilitaryMappings();
 	convertMilitaries();
 
-	scriptedLocalisations.initialize("ENG", "USA");
-
 	determineGreatPowers();
+
+	std::optional<std::pair<std::string, std::string>> strongestGpNavies = getStrongestNavyGps();
+	if (strongestGpNavies)
+	{
+		scriptedLocalisations.initialize(strongestGpNavies->first, strongestGpNavies->second);
+	}
+
 	importIdeologies();
 	importLeaderTraits();
 	convertGovernments();
@@ -1536,6 +1541,40 @@ void HoI4::World::outputBookmarks() const
 	bookmarkFile << "	}\n";
 	bookmarkFile << "}\n";
 	bookmarkFile.close();
+}
+
+
+std::optional<std::pair<std::string, std::string>> HoI4::World::getStrongestNavyGps()
+{
+	std::pair<std::string, std::string> strongestNavies;
+	float strongestNavy = 0;
+	float secondStrongestNavy = 0;
+
+	for (auto greatPower: greatPowers)
+	{
+		float navyStrength = greatPower->getNavalStrength();
+		if (navyStrength > strongestNavy)
+		{
+			strongestNavies.second = strongestNavies.first;
+			secondStrongestNavy = strongestNavy;
+			strongestNavies.first = greatPower->getTag();
+			strongestNavy = navyStrength;
+		}
+		else if (navyStrength > secondStrongestNavy)
+		{
+			strongestNavies.second = greatPower->getTag();
+			secondStrongestNavy = navyStrength;
+		}
+	}
+
+	if ((strongestNavy > 0) && (secondStrongestNavy > 0))
+	{
+		return strongestNavies;
+	}
+	else
+	{
+		return std::nullopt;
+	}
 }
 
 

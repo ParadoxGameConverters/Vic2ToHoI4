@@ -171,6 +171,8 @@ class World: commonItems::parser
 		void outputScriptedTriggers() const;
 		void outputBookmarks() const;
 
+		std::optional<std::pair<std::string, std::string>> getStrongestNavyGps();
+
 		/*vector<int> getPortLocationCandidates(const vector<int>& locationCandidates, const HoI4AdjacencyMapping& HoI4AdjacencyMap);
 		vector<int> getPortProvinces(const vector<int>& locationCandidates);
 		int getAirLocation(HoI4Province* locationProvince, const HoI4AdjacencyMapping& HoI4AdjacencyMap, string owner);*/

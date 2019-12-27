@@ -126,6 +126,7 @@ class Country
 		[[nodiscard]] std::optional<HoI4Relations> getRelations(const std::string& withWhom) const;
 		[[nodiscard]] double getStrengthOverTime(const double& years) const;
 		static double getMilitaryStrength();
+		[[nodiscard]] float getNavalStrength() const;
 		[[nodiscard]] double getEconomicStrength(const double& years) const;
 		[[nodiscard]] bool areElectionsAllowed() const;
 		[[nodiscard]] std::optional<HoI4Faction> getFaction() const;

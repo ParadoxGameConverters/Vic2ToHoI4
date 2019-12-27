@@ -506,6 +506,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationOutputter.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\ScriptedLocalisations</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgNavy.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgShip.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

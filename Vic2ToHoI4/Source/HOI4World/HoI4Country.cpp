@@ -793,6 +793,19 @@ double HoI4::Country::getMilitaryStrength()
 }
 
 
+float HoI4::Country::getNavalStrength() const
+{
+	float navalStrength = 0.0f;
+
+	for (auto navy: theNavies->getMtgNavies())
+	{
+		navalStrength += navy.getStrength();
+	}
+
+	return navalStrength;
+}
+
+
 double HoI4::Country::getEconomicStrength(const double& years) const
 {
 	constexpr auto militaryFactoriesPerYear = 0.469f;

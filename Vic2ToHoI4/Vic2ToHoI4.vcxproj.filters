@@ -423,6 +423,12 @@
     <ClCompile Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationOutputter.cpp">
       <Filter>Hoi4Outputter\ScriptedLocalisations</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Navies\MtgNavy.cpp">
+      <Filter>HoI4World\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Navies\MtgShip.cpp">
+      <Filter>HoI4World\Navies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
