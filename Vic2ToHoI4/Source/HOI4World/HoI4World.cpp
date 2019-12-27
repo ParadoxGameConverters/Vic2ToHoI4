@@ -82,6 +82,13 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	if (strongestGpNavies)
 	{
 		scriptedLocalisations.initialize(strongestGpNavies->first, strongestGpNavies->second);
+		HoI4Localisation::addDecisionLocalisation(
+			strongestGpNavies->first + "_Naval_treaty_nation",
+			"@" + strongestGpNavies->first + " [" + strongestGpNavies->first + ".GetName]"
+		); HoI4Localisation::addDecisionLocalisation(
+			strongestGpNavies->second + "_Naval_treaty_nation",
+			"@" + strongestGpNavies->second + " [" + strongestGpNavies->second + ".GetName]"
+		);
 	}
 
 	importIdeologies();
