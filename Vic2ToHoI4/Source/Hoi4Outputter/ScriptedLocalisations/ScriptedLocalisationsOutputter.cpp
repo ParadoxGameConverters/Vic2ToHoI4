@@ -1,4 +1,5 @@
 #include "ScriptedLocalisationsOutputter.h"
+#include "ScriptedLocalisationOutputter.h"
 #include <fstream>
 
 
@@ -15,15 +16,7 @@ void HoI4::outputScriptedLocalisations(
 
 	for (auto localisation: scriptedLocalisations.getLocalisations())
 	{
-		scriptedLocalisationsFile << "defined_text = {\n";
-		scriptedLocalisationsFile << "\tname = " << localisation.getName() << "\n";
-		for (auto text: localisation.getTexts())
-		{
-			scriptedLocalisationsFile << "\ttext = {\n";
-			scriptedLocalisationsFile << text;
-			scriptedLocalisationsFile << "\t}\n";
-		}
-		scriptedLocalisationsFile << "}\n";
+		scriptedLocalisationsFile << localisation;
 	}
 
 	scriptedLocalisationsFile.close();

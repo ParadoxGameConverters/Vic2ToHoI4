@@ -500,6 +500,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\ScriptedLocalisations</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisations.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedLocalisations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ScriptedLocalisations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -579,6 +585,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\ScriptedLocalisations">
       <UniqueIdentifier>{8a103c1a-6fa4-49eb-bf2d-e69090e1aa91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\ScriptedLocalisations">
+      <UniqueIdentifier>{9dfaf1cb-e2d9-4428-baea-9a996c8e5840}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
