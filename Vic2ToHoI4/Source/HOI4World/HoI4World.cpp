@@ -1,26 +1,3 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "HoI4World.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
@@ -57,6 +34,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "ParserHelpers.h"
 #include "../Hoi4Outputter/Hoi4CountryOutputter.h"
 #include "../Hoi4Outputter/Decisions/DecisionsOutputter.h"
+#include "../Hoi4Outputter/ScriptedLocalisations/ScriptedLocalisationsOutputter.h"
 #include <fstream>
 using namespace std;
 
@@ -98,9 +76,10 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	theMilitaryMappings = importedMilitaryMappings.takeAllMilitaryMappings();
 	convertMilitaries();
 
-	//convertArmies();
-	//convertAirforces();
 	determineGreatPowers();
+
+	setupNavalTreaty();
+
 	importIdeologies();
 	importLeaderTraits();
 	convertGovernments();
@@ -856,6 +835,23 @@ void HoI4::World::determineGreatPowers()
 }
 
 
+void HoI4::World::setupNavalTreaty()
+{
+	std::optional<std::pair<std::string, std::string>> strongestGpNavies = getStrongestNavyGps();
+	if (strongestGpNavies)
+	{
+		scriptedLocalisations.initialize(strongestGpNavies->first, strongestGpNavies->second);
+		HoI4Localisation::addDecisionLocalisation(
+			strongestGpNavies->first + "_Naval_treaty_nation",
+			"@" + strongestGpNavies->first + " [" + strongestGpNavies->first + ".GetName]"
+		); HoI4Localisation::addDecisionLocalisation(
+			strongestGpNavies->second + "_Naval_treaty_nation",
+			"@" + strongestGpNavies->second + " [" + strongestGpNavies->second + ".GetName]"
+		);
+	}
+}
+
+
 double HoI4::World::getStrongestCountryStrength() const
 {
 	double greatestStrength = 0.0;
@@ -1099,6 +1095,7 @@ void HoI4::World::output()
 	outputIdeas();
 	outputScriptedTriggers();
 	outputBookmarks();
+	outputScriptedLocalisations(theConfiguration, scriptedLocalisations);
 }
 
 
@@ -1557,6 +1554,40 @@ void HoI4::World::outputBookmarks() const
 	bookmarkFile << "	}\n";
 	bookmarkFile << "}\n";
 	bookmarkFile.close();
+}
+
+
+std::optional<std::pair<std::string, std::string>> HoI4::World::getStrongestNavyGps()
+{
+	std::pair<std::string, std::string> strongestNavies;
+	float strongestNavy = 0;
+	float secondStrongestNavy = 0;
+
+	for (auto greatPower: greatPowers)
+	{
+		float navyStrength = greatPower->getNavalStrength();
+		if (navyStrength > strongestNavy)
+		{
+			strongestNavies.second = strongestNavies.first;
+			secondStrongestNavy = strongestNavy;
+			strongestNavies.first = greatPower->getTag();
+			strongestNavy = navyStrength;
+		}
+		else if (navyStrength > secondStrongestNavy)
+		{
+			strongestNavies.second = greatPower->getTag();
+			secondStrongestNavy = navyStrength;
+		}
+	}
+
+	if ((strongestNavy > 0) && (secondStrongestNavy > 0))
+	{
+		return strongestNavies;
+	}
+	else
+	{
+		return std::nullopt;
+	}
 }
 
 

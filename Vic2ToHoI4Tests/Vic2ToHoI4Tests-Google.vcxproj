@@ -64,6 +64,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\MtgShipOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\NaviesOutputter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationOutputter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Advisor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AIPeace.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AIPeaces.cpp" />
@@ -112,10 +114,13 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\UnitMapping.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\UnitMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgNavy.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgShip.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\Navies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OnActions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regiment.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Resources.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\PossibleShipVariants.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipModules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariant.cpp" />
@@ -186,6 +191,8 @@
     <ClCompile Include="HoI4WorldTests\Navies\MtgShipTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\NaviesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\RegimentTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipTypes\PossibleShipVariantTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipTypes\ShipModulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipTypes\ShipVariantsTests.cpp" />

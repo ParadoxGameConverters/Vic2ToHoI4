@@ -108,6 +108,11 @@ class HoI4Localisation
 			getInstance()->AddPoliticalPartyLocalisation(Vic2Key, HoI4Key);
 		}
 
+		static void addDecisionLocalisation(const std::string& key, const std::optional<std::string>& localisation)
+		{
+			getInstance()->AddDecisionLocalisation(key, localisation);
+		}
+
 		static void updateLocalisationWithCountry(const std::string& key, const std::string& oldText, const std::string& newTextLocalisationKey)
 		{
 			getInstance()->UpdateLocalisationWithCountry(key, oldText, newTextLocalisationKey);
@@ -134,7 +139,7 @@ class HoI4Localisation
 		void importGenericIdeaLocalisations(const std::string& filename);
 		void importEventLocalisations(const std::string& filename);
 		void importLocalisationFile(const std::string& filename, languageToLocalisationsMap& localisations);
-		void prepareIdeaLocalisations();
+		void prepareBlankLocalisations();
 
 		HoI4Localisation(const HoI4Localisation&) = delete;
 		HoI4Localisation& operator=(const HoI4Localisation&) = delete;
@@ -184,6 +189,7 @@ class HoI4Localisation
 		void AddIdeaLocalisation(const std::string& idea, const std::optional<std::string>& localisation);
 
 		void AddPoliticalPartyLocalisation(const std::string& Vic2Key, const std::string& HoI4Key);
+		void AddDecisionLocalisation(const std::string& key, const std::optional<std::string>& localisation);
 
 		void UpdateLocalisationWithCountry(const std::string& key, const std::string& oldText, const std::string& newTextLocalisationKey);
 
@@ -195,6 +201,7 @@ class HoI4Localisation
 		void outputIdeaLocalisations(const std::string& localisationPath) const;
 		void outputEventLocalisations(const std::string& localisationPath) const;
 		void outputPoliticalPartyLocalisations(const std::string& localisationPath) const;
+		void outputDecisionLocalisations(const std::string& localisationPath) const;
 		void outputLocalisations(const std::string& filenameStart, const languageToLocalisationsMap& localisations) const;
 
 		std::map<language, std::map< stateNumber, std::string>> stateLocalisations;
@@ -207,6 +214,7 @@ class HoI4Localisation
 		languageToLocalisationsMap originalEventLocalisations;
 		languageToLocalisationsMap newEventLocalisations;
 		languageToLocalisationsMap politicalPartyLocalisations;
+		languageToLocalisationsMap decisionLocalisations;
 };
 
 

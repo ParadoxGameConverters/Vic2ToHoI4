@@ -26,6 +26,7 @@ class decision: commonItems::parser
 		void setCompleteEffect(const std::string& newEffect) { completeEffect = newEffect; }
 		void setTimeoutEffect(const std::string& newEffect) { timeoutEffect = newEffect; }
 		void setTargetedModifier(const std::string& newTargetedModifier) { targetedModifier = newTargetedModifier; }
+		void setAiWillDo(const std::string& newAiWillDo) { aiWillDo = newAiWillDo; }
 		void setModifier(const std::string& newModifier) { modifier = newModifier; }
 
 		bool operator==(const decision& otherDecision) const;

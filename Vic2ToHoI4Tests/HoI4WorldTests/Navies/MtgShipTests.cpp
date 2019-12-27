@@ -131,3 +131,53 @@ TEST(HoI4World_Navies_MtgShipTests, AirWingsOwnerCanBeSet)
 	expectedOutput << "\t\t\t}\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
+
+
+TEST(HoI4World_Navies_MtgShipTests, StrengthIsPointFiveForCarriers)
+{
+	const HoI4::MtgShip ship("", "carrier", "", "", "", 0.0);
+	std::ostringstream output;
+	output << ship;
+
+	ASSERT_NEAR(0.5, ship.getStrength(), 0.00001);
+}
+
+
+TEST(HoI4World_Navies_MtgShipTests, StrengthIsOneForBattleships)
+{
+	const HoI4::MtgShip ship("", "battleship", "", "", "", 0.0);
+	std::ostringstream output;
+	output << ship;
+
+	ASSERT_NEAR(1.0, ship.getStrength(), 0.00001);
+}
+
+
+TEST(HoI4World_Navies_MtgShipTests, StrengthIsPointEightForBattlecruisers)
+{
+	const HoI4::MtgShip ship("", "battle_cruiser", "", "", "", 0.0);
+	std::ostringstream output;
+	output << ship;
+
+	ASSERT_NEAR(0.8, ship.getStrength(), 0.00001);
+}
+
+
+TEST(HoI4World_Navies_MtgShipTests, StrengthIsPointFiveForHeavyCruisers)
+{
+	const HoI4::MtgShip ship("", "heavy_cruiser", "", "", "", 0.0);
+	std::ostringstream output;
+	output << ship;
+
+	ASSERT_NEAR(0.5, ship.getStrength(), 0.00001);
+}
+
+
+TEST(HoI4World_Navies_MtgShipTests, StrengthIsZeroForOthers)
+{
+	const HoI4::MtgShip ship("", "", "", "", "", 0.0);
+	std::ostringstream output;
+	output << ship;
+
+	ASSERT_NEAR(0.0, ship.getStrength(), 0.00001);
+}
