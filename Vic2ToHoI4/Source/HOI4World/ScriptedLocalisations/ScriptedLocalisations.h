@@ -3,7 +3,8 @@
 
 
 
-#include <string>
+#include "ScriptedLocalisation.h"
+#include <vector>
 
 
 
@@ -13,7 +14,11 @@ namespace HoI4
 class ScriptedLocalisations
 {
 	public:
-		std::string getLocalisations() const;
+		ScriptedLocalisations();
+		std::vector<ScriptedLocalisation> getLocalisations() const { return scriptedLocalistions; }
+
+	private:
+		std::vector<ScriptedLocalisation> scriptedLocalistions;
 };
 
 }

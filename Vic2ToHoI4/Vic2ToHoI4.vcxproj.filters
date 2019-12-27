@@ -803,6 +803,9 @@
     <ClInclude Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.h">
       <Filter>Hoi4Outputter\ScriptedLocalisations</Filter>
     </ClInclude>
+    <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.h">
+      <Filter>HoI4World\ScriptedLocalisations</Filter>
+    </ClInclude>
     <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisations.h">
       <Filter>HoI4World\ScriptedLocalisations</Filter>
     </ClInclude>

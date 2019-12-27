@@ -384,6 +384,7 @@
     <ClInclude Include="Source\HOI4World\OnActions.h" />
     <ClInclude Include="Source\HOI4World\Regiment.h" />
     <ClInclude Include="Source\HOI4World\Resources.h" />
+    <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.h" />
     <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisations.h" />
     <ClInclude Include="Source\HOI4World\ShipTypes\PossibleShipVariants.h" />
     <ClInclude Include="Source\HOI4World\ShipTypes\ShipModules.h" />

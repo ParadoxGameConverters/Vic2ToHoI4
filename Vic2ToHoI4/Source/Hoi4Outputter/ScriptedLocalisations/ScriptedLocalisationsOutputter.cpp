@@ -13,7 +13,18 @@ void HoI4::outputScriptedLocalisations(
 		std::ofstream::app
 	);
 
-	scriptedLocalisationsFile << scriptedLocalisations.getLocalisations();
+	for (auto localisation: scriptedLocalisations.getLocalisations())
+	{
+		scriptedLocalisationsFile << "defined_text = {\n";
+		scriptedLocalisationsFile << "\tname = " << localisation.getName() << "\n";
+		for (auto text: localisation.getTexts())
+		{
+			scriptedLocalisationsFile << "\ttext = {\n";
+			scriptedLocalisationsFile << text;
+			scriptedLocalisationsFile << "\t}\n";
+		}
+		scriptedLocalisationsFile << "}\n";
+	}
 
 	scriptedLocalisationsFile.close();
 }
