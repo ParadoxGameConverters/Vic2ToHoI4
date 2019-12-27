@@ -4,12 +4,13 @@
 
 
 #include "../../Configuration.h"
+#include "../../HOI4World/ScriptedLocalisations/ScriptedLocalisations.h"
 
 
 
 namespace HoI4
 {
-void outputScriptedLocalisations(const Configuration& theConfiguration);
+void outputScriptedLocalisations(const Configuration& theConfiguration, const ScriptedLocalisations& scriptedLocalisations);
 }
 
 
