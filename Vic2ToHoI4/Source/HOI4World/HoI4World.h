@@ -144,6 +144,8 @@ class World: commonItems::parser
 
 		void determineGreatPowers();
 
+		void setupNavalTreaty();
+
 		double getStrongestCountryStrength() const;
 
 		void createFactions();

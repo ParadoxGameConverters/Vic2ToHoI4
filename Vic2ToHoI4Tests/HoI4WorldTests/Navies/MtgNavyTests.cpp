@@ -48,6 +48,31 @@ TEST(HoI4World_Navies_MtgNavyTests, ShipsAreCountedProperly)
 }
 
 
+TEST(HoI4World_Navies_MtgNavyTests, ZeroStrentghByDefault)
+{
+	const HoI4::MtgNavy navy("", 0, 0);
+	std::ostringstream output;
+	output << navy;
+
+	ASSERT_NEAR(navy.getStrength(), 0.0, 0.00001);
+}
+
+
+TEST(HoI4World_Navies_MtgNavyTests, ShipsAddStrengthToNavy)
+{
+	HoI4::MtgNavy navy("", 0, 0);
+	std::ostringstream output;
+	output << navy;
+
+	HoI4::MtgShip ship1("", "carrier", "", "", "", 0);
+	HoI4::MtgShip ship2("", "battleship", "", "", "", 0);
+	navy.addShip(ship1);
+	navy.addShip(ship2);
+
+	ASSERT_NEAR(navy.getStrength(), 1.5, 0.00001);
+}
+
+
 TEST(HoI4World_Navies_MtgNavyTests, ShipsAreOutputProperly)
 {
 	HoI4::MtgNavy navy("", 0, 0);

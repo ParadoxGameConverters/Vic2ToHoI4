@@ -512,6 +512,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgShip.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationTests.cpp">
+      <Filter>HoI4WorldTests\ScriptedLocalisations</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationsTests.cpp">
+      <Filter>HoI4WorldTests\ScriptedLocalisations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -594,6 +600,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\ScriptedLocalisations">
       <UniqueIdentifier>{9dfaf1cb-e2d9-4428-baea-9a996c8e5840}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\ScriptedLocalisations">
+      <UniqueIdentifier>{5b01e8cb-be3d-4905-9b6a-7e7de7f4007f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

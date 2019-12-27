@@ -14,7 +14,7 @@ void HoI4::outputScriptedLocalisations(
 		std::ofstream::app
 	);
 
-	for (auto localisation: scriptedLocalisations.getLocalisations())
+	for (const auto& localisation: scriptedLocalisations.getLocalisations())
 	{
 		scriptedLocalisationsFile << localisation;
 	}

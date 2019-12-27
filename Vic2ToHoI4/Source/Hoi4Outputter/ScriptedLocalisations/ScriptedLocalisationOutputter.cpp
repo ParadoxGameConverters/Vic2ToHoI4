@@ -6,7 +6,7 @@ std::ostream& HoI4::operator<<(std::ostream& out, const ScriptedLocalisation& lo
 {
 	out << "defined_text = {\n";
 	out << "\tname = " << localisation.getName() << "\n";
-	for (auto text : localisation.getTexts())
+	for (const auto& text : localisation.getTexts())
 	{
 		out << "\ttext = {\n";
 		out << text;

@@ -164,7 +164,7 @@ void HoI4Localisation::importLocalisationFile(const string& filename, languageTo
 
 void HoI4Localisation::prepareBlankLocalisations()
 {
-	for (auto genericLocalisationsInLanguage: genericIdeaLocalisations)
+	for (const auto& genericLocalisationsInLanguage: genericIdeaLocalisations)
 	{
 		keyToLocalisationMap newLocalisationsMap;
 		ideaLocalisations.insert(make_pair(genericLocalisationsInLanguage.first, newLocalisationsMap));
@@ -697,7 +697,7 @@ void HoI4Localisation::AddPoliticalPartyLocalisation(const string& Vic2Key, cons
 
 void HoI4Localisation::AddDecisionLocalisation(const std::string& key, const std::optional<std::string>& localisation)
 {
-	for (auto localisationInLanguage: decisionLocalisations)
+	for (const auto& localisationInLanguage: decisionLocalisations)
 	{
 		if (localisation)
 		{
@@ -708,7 +708,7 @@ void HoI4Localisation::AddDecisionLocalisation(const std::string& key, const std
 			auto genericLocalisationsInLanguage = genericIdeaLocalisations.find(localisationInLanguage.first);
 			if (genericLocalisationsInLanguage != genericIdeaLocalisations.end())
 			{
-				string genericIdeaStr = "generic" + key.substr(3, key.size());
+				auto genericIdeaStr = "generic" + key.substr(3, key.size());
 				auto genericIdea = genericLocalisationsInLanguage->second.find(genericIdeaStr);
 				if (genericIdea != genericLocalisationsInLanguage->second.end())
 				{

@@ -191,6 +191,8 @@
     <ClCompile Include="HoI4WorldTests\Navies\MtgShipTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\NaviesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\RegimentTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipTypes\PossibleShipVariantTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipTypes\ShipModulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipTypes\ShipVariantsTests.cpp" />

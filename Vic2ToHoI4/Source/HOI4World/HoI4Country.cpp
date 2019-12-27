@@ -795,9 +795,9 @@ double HoI4::Country::getMilitaryStrength()
 
 float HoI4::Country::getNavalStrength() const
 {
-	float navalStrength = 0.0f;
+	auto navalStrength = 0.0f;
 
-	for (auto navy: theNavies->getMtgNavies())
+	for (const auto& navy: theNavies->getMtgNavies())
 	{
 		navalStrength += navy.getStrength();
 	}
