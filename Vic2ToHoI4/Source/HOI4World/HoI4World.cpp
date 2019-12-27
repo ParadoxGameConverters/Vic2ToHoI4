@@ -76,8 +76,8 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	theMilitaryMappings = importedMilitaryMappings.takeAllMilitaryMappings();
 	convertMilitaries();
 
-	//convertArmies();
-	//convertAirforces();
+	scriptedLocalisations.initialize("ENG", "USA");
+
 	determineGreatPowers();
 	importIdeologies();
 	importLeaderTraits();

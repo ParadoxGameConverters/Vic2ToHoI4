@@ -2,16 +2,16 @@
 
 
 
-HoI4::ScriptedLocalisations::ScriptedLocalisations()
+void HoI4::ScriptedLocalisations::initialize(const std::string& strongestNavyTag, const std::string& secondStrongestNavyTag)
 {
 	ScriptedLocalisation GetStrengthRatioBritain;
 	GetStrengthRatioBritain.setName("GetStrengthRatioBritain");
 	std::string text;
 	text += "trigger = { \n";
 	text += "if = { \n";
-	text += "limit = { ENG = { has_naval_treaty_trigger = yes } }\n";
+	text += "limit = { " + strongestNavyTag + " = { has_naval_treaty_trigger = yes } }\n";
 	text += "naval_strength_comparison = { \n";
-	text += "other = ENG\n";
+	text += "other = " + strongestNavyTag + "\n";
 	text += "ratio < 1\n";
 	text += "sub_unit_def_weights = { \n";
 	text += "carrier = 0.5\n";
@@ -21,7 +21,7 @@ HoI4::ScriptedLocalisations::ScriptedLocalisations()
 	text += "}\n";
 	text += "}\n";
 	text += "naval_strength_comparison = { \n";
-	text += "other = ENG\n";
+	text += "other = " + strongestNavyTag + "\n";
 	text += "ratio > 0.9\n";
 	text += "sub_unit_def_weights = { \n";
 	text += "carrier = 0.5\n";
@@ -32,9 +32,9 @@ HoI4::ScriptedLocalisations::ScriptedLocalisations()
 	text += "}\n";
 	text += "}\n";
 	text += "else_if = { \n";
-	text += "limit = { USA = { has_naval_treaty_trigger = yes } }\n";
+	text += "limit = { " + secondStrongestNavyTag + " = { has_naval_treaty_trigger = yes } }\n";
 	text += "naval_strength_comparison = { \n";
-	text += "other = USA\n";
+	text += "other = " + secondStrongestNavyTag + "\n";
 	text += "ratio < 1\n";
 	text += "sub_unit_def_weights = { \n";
 	text += "carrier = 0.5\n";
@@ -44,7 +44,7 @@ HoI4::ScriptedLocalisations::ScriptedLocalisations()
 	text += "}\n";
 	text += "}\n";
 	text += "naval_strength_comparison = { \n";
-	text += "other = USA\n";
+	text += "other = " + secondStrongestNavyTag + "\n";
 	text += "ratio > 0.9\n";
 	text += "sub_unit_def_weights = { \n";
 	text += "carrier = 0.5\n";
@@ -60,9 +60,9 @@ HoI4::ScriptedLocalisations::ScriptedLocalisations()
 
 	text = "trigger = { \n";
 	text += "if = { \n";
-	text += "limit = { ENG = { has_naval_treaty_trigger = yes } }\n";
+	text += "limit = { " + strongestNavyTag + " = { has_naval_treaty_trigger = yes } }\n";
 	text += "naval_strength_comparison = { \n";
-	text += "other = ENG\n";
+	text += "other = " + strongestNavyTag + "\n";
 	text += "ratio < 0.9\n";
 	text += "sub_unit_def_weights = { \n";
 	text += "carrier = 0.5\n";
@@ -72,7 +72,7 @@ HoI4::ScriptedLocalisations::ScriptedLocalisations()
 	text += "}\n";
 	text += "}\n";
 	text += "naval_strength_comparison = { \n";
-	text += "other = ENG\n";
+	text += "other = " + strongestNavyTag + "\n";
 	text += "ratio > 0.75\n";
 	text += "sub_unit_def_weights = { \n";
 	text += "carrier = 0.5\n";
@@ -83,9 +83,9 @@ HoI4::ScriptedLocalisations::ScriptedLocalisations()
 	text += "}\n";
 	text += "}\n";
 	text += "else_if = { \n";
-	text += "limit = { USA = { has_naval_treaty_trigger = yes } }\n";
+	text += "limit = { " + secondStrongestNavyTag + " = { has_naval_treaty_trigger = yes } }\n";
 	text += "naval_strength_comparison = { \n";
-	text += "other = USA\n";
+	text += "other = " + secondStrongestNavyTag + "\n";
 	text += "ratio < 0.9\n";
 	text += "sub_unit_def_weights = { \n";
 	text += "carrier = 0.5\n";
@@ -95,7 +95,7 @@ HoI4::ScriptedLocalisations::ScriptedLocalisations()
 	text += "}\n";
 	text += "}\n";
 	text += "naval_strength_comparison = { \n";
-	text += "other = USA\n";
+	text += "other = " + secondStrongestNavyTag + "\n";
 	text += "ratio > 0.75\n";
 	text += "sub_unit_def_weights = { \n";
 	text += "carrier = 0.5\n";
@@ -111,9 +111,9 @@ HoI4::ScriptedLocalisations::ScriptedLocalisations()
 
 	text = "trigger = { \n";
 	text += "if = { \n";
-	text += "limit = { ENG = { has_naval_treaty_trigger = yes } }\n";
+	text += "limit = { " + strongestNavyTag + " = { has_naval_treaty_trigger = yes } }\n";
 	text += "naval_strength_comparison = { \n";
-	text += "other = ENG\n";
+	text += "other = " + strongestNavyTag + "\n";
 	text += "ratio < 0.75\n";
 	text += "sub_unit_def_weights = { \n";
 	text += "carrier = 0.5\n";
@@ -123,7 +123,7 @@ HoI4::ScriptedLocalisations::ScriptedLocalisations()
 	text += "}\n";
 	text += "}\n";
 	text += "naval_strength_comparison = { \n";
-	text += "other = ENG\n";
+	text += "other = " + strongestNavyTag + "\n";
 	text += "ratio > 0.5\n";
 	text += "sub_unit_def_weights = { \n";
 	text += "carrier = 0.5\n";
@@ -134,9 +134,9 @@ HoI4::ScriptedLocalisations::ScriptedLocalisations()
 	text += "}\n";
 	text += "}\n";
 	text += "else_if = { \n";
-	text += "limit = { USA = { has_naval_treaty_trigger = yes } }\n";
+	text += "limit = { " + secondStrongestNavyTag + " = { has_naval_treaty_trigger = yes } }\n";
 	text += "			naval_strength_comparison = { \n";
-	text += "other = USA\n";
+	text += "other = " + secondStrongestNavyTag + "\n";
 	text += "ratio < 0.75\n";
 	text += "sub_unit_def_weights = { \n";
 	text += "carrier = 0.5\n";
@@ -146,7 +146,7 @@ HoI4::ScriptedLocalisations::ScriptedLocalisations()
 	text += "}\n";
 	text += "}\n";
 	text += "naval_strength_comparison = { \n";
-	text += "other = USA\n";
+	text += "other = " + secondStrongestNavyTag + "\n";
 	text += "ratio > 0.5\n";
 	text += "sub_unit_def_weights = { \n";
 	text += "carrier = 0.5\n";
@@ -162,9 +162,9 @@ HoI4::ScriptedLocalisations::ScriptedLocalisations()
 
 	text = "trigger = { \n";
 	text += "if = { \n";
-	text += "limit = { ENG = { has_naval_treaty_trigger = yes } }\n";
+	text += "limit = { " + strongestNavyTag + " = { has_naval_treaty_trigger = yes } }\n";
 	text += "naval_strength_comparison = { \n";
-	text += "other = ENG\n";
+	text += "other = " + strongestNavyTag + "\n";
 	text += "ratio < 0.5\n";
 	text += "sub_unit_def_weights = { \n";
 	text += "carrier = 0.5\n";
@@ -175,9 +175,9 @@ HoI4::ScriptedLocalisations::ScriptedLocalisations()
 	text += "}\n";
 	text += "}\n";
 	text += "else_if = { \n";
-	text += "limit = { USA = { has_naval_treaty_trigger = yes } }\n";
+	text += "limit = { " + secondStrongestNavyTag + " = { has_naval_treaty_trigger = yes } }\n";
 	text += "naval_strength_comparison = { \n";
-	text += "other = USA\n";
+	text += "other = " + secondStrongestNavyTag + "\n";
 	text += "ratio < 0.5\n";
 	text += "sub_unit_def_weights = { \n";
 	text += "carrier = 0.5\n";
@@ -193,9 +193,9 @@ HoI4::ScriptedLocalisations::ScriptedLocalisations()
 
 	text = "trigger = { \n";
 	text += "if = { \n";
-	text += "limit = { ENG = { has_naval_treaty_trigger = yes } }\n";
+	text += "limit = { " + strongestNavyTag + " = { has_naval_treaty_trigger = yes } }\n";
 	text += "naval_strength_comparison = { \n";
-	text += "other = ENG\n";
+	text += "other = " + strongestNavyTag + "\n";
 	text += "ratio > 1\n";
 	text += "sub_unit_def_weights = { \n";
 	text += "carrier = 0.5\n";
@@ -206,9 +206,9 @@ HoI4::ScriptedLocalisations::ScriptedLocalisations()
 	text += "}\n";
 	text += "}\n";
 	text += "else_if = { \n";
-	text += "limit = { USA = { has_naval_treaty_trigger = yes } }\n";
+	text += "limit = { " + secondStrongestNavyTag + " = { has_naval_treaty_trigger = yes } }\n";
 	text += "naval_strength_comparison = { \n";
-	text += "other = USA\n";
+	text += "other = " + secondStrongestNavyTag + "\n";
 	text += "ratio > 1\n";
 	text += "sub_unit_def_weights = { \n";
 	text += "carrier = 0.5\n";
@@ -226,22 +226,22 @@ HoI4::ScriptedLocalisations::ScriptedLocalisations()
 	ScriptedLocalisation GetRelevantNavalTreatyNation;
 	GetRelevantNavalTreatyNation.setName("GetRelevantNavalTreatyNation");
 	text = "trigger = { \n";
-	text += "ENG = { \n";
+	text += "" + strongestNavyTag + " = { \n";
 	text += "has_naval_treaty_trigger = yes\n";
 	text += "}\n";
 	text += "}\n";
-	text += "localization_key = ENG_Naval_treaty_nation\n";
+	text += "localization_key = " + strongestNavyTag + "_Naval_treaty_nation\n";
 	GetRelevantNavalTreatyNation.addText(text);
 
 	text = "trigger = { \n";
-	text += "ENG = { \n";
+	text += "" + strongestNavyTag + " = { \n";
 	text += "not = { has_naval_treaty_trigger = yes }\n";
 	text += "}\n";
-	text += "USA = { \n";
+	text += "" + secondStrongestNavyTag + " = { \n";
 	text += "has_naval_treaty_trigger = yes\n";
 	text += "}\n";
 	text += "}\n";
-	text += "localization_key = USA_Naval_treaty_nation\n";
+	text += "localization_key = " + secondStrongestNavyTag + "_Naval_treaty_nation\n";
 	GetRelevantNavalTreatyNation.addText(text);
 	scriptedLocalistions.push_back(GetRelevantNavalTreatyNation);
 }

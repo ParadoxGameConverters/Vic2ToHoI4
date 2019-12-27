@@ -14,7 +14,8 @@ namespace HoI4
 class ScriptedLocalisations
 {
 	public:
-		ScriptedLocalisations();
+		void initialize(const std::string& strongestNavyTag, const std::string& secondStrongestNavyTag);
+
 		std::vector<ScriptedLocalisation> getLocalisations() const { return scriptedLocalistions; }
 
 	private:
