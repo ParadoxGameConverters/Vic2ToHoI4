@@ -36,18 +36,3 @@ HoI4::shipVariants::shipVariants(const std::vector<shipVariant>& possibleVariant
 		}
 	}
 }
-
-
-std::ostream& HoI4::operator<<(std::ostream& output, const HoI4::shipVariants& theVariants)
-{
-	output << "### VARIANTS ###\n";
-	output << "if = {\n";
-	output << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-	for (auto variant: theVariants.variants)
-	{
-		output << variant.second;
-	}
-	output << "}\n";
-
-	return output;
-}

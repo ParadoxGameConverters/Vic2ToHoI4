@@ -1,5 +1,6 @@
 #include "Hoi4CountryOutputter.h"
 #include "Navies/NaviesOutputter.h"
+#include "ShipTypes/ShipVariantsOutputter.h"
 #include "../HOI4World/Advisor.h"
 #include "../HOI4World/DivisionTemplate.h"
 #include "../HOI4World/HoI4Country.h"

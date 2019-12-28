@@ -57,9 +57,6 @@ class shipVariants
 		std::map<std::string, shipVariant> variants;
 };
 
-
-std::ostream& operator << (std::ostream& output, const shipVariants& theVariants);
-
 }
 
 
