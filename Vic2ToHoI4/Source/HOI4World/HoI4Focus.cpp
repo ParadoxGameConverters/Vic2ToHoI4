@@ -158,8 +158,6 @@ std::shared_ptr<HoI4Focus> HoI4Focus::makeCustomizedCopy(const std::string& coun
 		customizePrerequisite(newFocus, prerequisite, country);
 	}
 
-	//HoI4Localisation::copyFocusLocalisations(id, newFocus->id);
-
 	return newFocus;
 }
 
@@ -187,8 +185,6 @@ std::shared_ptr<HoI4Focus> HoI4Focus::makeTargetedCopy(const std::string& countr
 	{
 		customizePrerequisite(newFocus, prerequisite, country);
 	}
-
-	//HoI4Localisation::copyFocusLocalisations(id, newFocus->id);
 
 	return newFocus;
 }

@@ -1581,7 +1581,6 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<HoI
 			newFocus->id       = "War_with" + target->getTag() + country->getTag();
 			newFocus->icon     = "GFX_goal_generic_major_war";
 			newFocus->text     = "War_with" + target->getTag();
-			//newFocus->text     = "War with " + targetName;//change to faction name later
 			newFocus->available = "= {\n";
 			newFocus->available += "			has_war = no\n";
 			newFocus->available += "			date > 1939.1.1\n";
