@@ -1624,7 +1624,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<HoI
 			newFocus->completionReward += "		}";
 			FocusTree.addFocus(newFocus);
 			HoI4Localisation::copyFocusLocalisations("War_with", newFocus->text);
-			HoI4Localisation::updateLocalisationWithCountry(newFocus->text, "$TARGET", target->getTag() + "_neutrality");
+			HoI4Localisation::updateLocalisationWithCountry(newFocus->text, "$TARGET", target->getTag());
 
 			numWarsWithGreatPowers++;
 		}

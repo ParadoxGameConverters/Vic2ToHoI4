@@ -2269,7 +2269,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<
 			newFocus->completionReward += "		}";
 			focuses.push_back(newFocus);
 			HoI4Localisation::copyFocusLocalisations("GPWar", newFocus->text);
-			HoI4Localisation::updateLocalisationWithLocalizedCountry(newFocus->text, "$TARGET", GC->getTag() + "_neutrality");
+			HoI4Localisation::updateLocalisationWithCountry(newFocus->text, "$TARGET", GC->getTag());
 			i++;
 		}
 		else
