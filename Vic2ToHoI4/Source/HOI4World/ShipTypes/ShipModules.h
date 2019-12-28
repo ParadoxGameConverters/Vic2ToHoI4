@@ -15,14 +15,7 @@ namespace HoI4
 class shipModules: commonItems::parser
 {
 	public:
-		shipModules(std::istream& theStream);
-
-		shipModules() = delete;
-		~shipModules() = default;
-		shipModules(const shipModules&) = default;
-		shipModules(shipModules&&) = default;
-		shipModules& operator=(const shipModules&) = default;
-		shipModules& operator=(shipModules&&) = default;
+		explicit shipModules(std::istream& theStream);
 
 		friend std::ostream& operator<<(std::ostream& output, const shipModules& theModules);
 

@@ -18,20 +18,20 @@ namespace HoI4
 class shipVariant: commonItems::parser
 {
 	public:
-		shipVariant(std::istream& theStream);
+		explicit shipVariant(std::istream& theStream);
 
-		shipVariant() = delete;
+		shipVariant() = default;
 		~shipVariant() = default;
 		shipVariant(const shipVariant& source);
+		shipVariant& operator=(const shipVariant&);
 		shipVariant(shipVariant&&) = default;
-		shipVariant& operator=(const shipVariant&) = default;
 		shipVariant& operator=(shipVariant&&) = default;
 
 		void setOwningCountryTag(const std::string& tag);
 
-		bool isValidVariant(const technologies& ownedTechs) const;
+		[[nodiscard]] bool isValidVariant(const technologies& ownedTechs) const;
 
-		std::string getName() const { return name; }
+		[[nodiscard]] std::string getName() const { return name; }
 
 		friend std::ostream& operator << (std::ostream& output, shipVariant& theVariant);
 

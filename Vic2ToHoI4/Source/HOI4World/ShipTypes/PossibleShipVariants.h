@@ -15,7 +15,7 @@ namespace HoI4
 class possibleShipVariants: commonItems::parser
 {
 	public:
-		possibleShipVariants(std::istream& theStream);
+		explicit possibleShipVariants(std::istream& theStream);
 
 		possibleShipVariants() = delete;
 		~possibleShipVariants() = default;
@@ -24,7 +24,7 @@ class possibleShipVariants: commonItems::parser
 		possibleShipVariants& operator=(const possibleShipVariants&) = default;
 		possibleShipVariants& operator=(possibleShipVariants&&) = default;
 
-		auto getPossibleVariants() const { return theVariants; }
+		[[nodiscard]] auto getPossibleVariants() const { return theVariants; }
 
 	private:
 		std::vector<shipVariant> theVariants;

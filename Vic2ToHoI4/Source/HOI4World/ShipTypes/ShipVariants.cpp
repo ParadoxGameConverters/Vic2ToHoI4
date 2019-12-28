@@ -7,7 +7,7 @@ HoI4::shipVariants::shipVariants(const std::vector<shipVariant>& possibleVariant
 	{
 		if (possibleVariant.isValidVariant(ownedTechs))
 		{
-			shipVariant newVariant(possibleVariant);
+			auto newVariant(possibleVariant);
 			newVariant.setOwningCountryTag(countryTag);
 			variants.insert(make_pair(newVariant.getName(), newVariant));
 		}
