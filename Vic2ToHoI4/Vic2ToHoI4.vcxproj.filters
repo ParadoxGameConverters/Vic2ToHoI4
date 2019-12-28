@@ -435,6 +435,9 @@
     <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.cpp">
       <Filter>Hoi4Outputter\ShipTypes</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipVariantOutputter.cpp">
+      <Filter>Hoi4Outputter\ShipTypes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -828,6 +831,9 @@
       <Filter>Hoi4Outputter\ScriptedLocalisations</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.h">
+      <Filter>Hoi4Outputter\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipVariantOutputter.h">
       <Filter>Hoi4Outputter\ShipTypes</Filter>
     </ClInclude>
   </ItemGroup>

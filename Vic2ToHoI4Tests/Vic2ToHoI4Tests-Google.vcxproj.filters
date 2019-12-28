@@ -521,6 +521,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipModules</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipVariantOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipModules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

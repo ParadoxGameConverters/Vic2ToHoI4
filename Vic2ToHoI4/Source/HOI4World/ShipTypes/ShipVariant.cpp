@@ -105,23 +105,3 @@ bool HoI4::shipVariant::isValidVariant(const technologies& ownedTechs) const
 
 	return true;
 }
-
-
-std::ostream& HoI4::operator<<(std::ostream& output, HoI4::shipVariant& theVariant)
-{
-	output << "\tcreate_equipment_variant = {\n";
-	output << "\t\tname = \"" << theVariant.name << "\"\n";
-	output << "\t\ttype = " << theVariant.type << "\n";
-	output << "\t\tname_group = " << theVariant.owningCountryTag << "_" << theVariant.nameGroup << "\n";
-	output << "\t\tparent_version = 0\n";
-	if (theVariant.modules)
-	{
-		output << *(theVariant.modules);
-	}
-	if (theVariant.obsolete)
-	{
-		output << "\t\tobsolete = yes\n";
-	}
-	output << "\t}\n";
-	return output;
-}
