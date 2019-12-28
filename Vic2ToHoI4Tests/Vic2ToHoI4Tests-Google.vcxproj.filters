@@ -519,13 +519,13 @@
       <Filter>HoI4WorldTests\ScriptedLocalisations</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipModules</Filter>
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipTypes</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipVariantOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipModules</Filter>
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipTypes</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipModules</Filter>
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipTypes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -613,7 +613,7 @@
     <Filter Include="HoI4WorldTests\ScriptedLocalisations">
       <UniqueIdentifier>{5b01e8cb-be3d-4905-9b6a-7e7de7f4007f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\ShipModules">
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\ShipTypes">
       <UniqueIdentifier>{e537248d-9d51-4dd4-b9f3-b3dfd4add998}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
