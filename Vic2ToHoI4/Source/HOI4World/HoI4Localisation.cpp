@@ -837,7 +837,7 @@ void HoI4Localisation::outputPoliticalPartyLocalisations(const string& localisat
 
 void HoI4Localisation::outputDecisionLocalisations(const string& localisationPath) const
 {
-	outputLocalisations(localisationPath + "/decisions2_l_", decisionLocalisations);
+	outputLocalisations(localisationPath + "/decisions3_l_", decisionLocalisations);
 }
 
 
