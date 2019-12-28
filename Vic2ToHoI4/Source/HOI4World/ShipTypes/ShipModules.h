@@ -53,9 +53,6 @@ class shipModules: commonItems::parser
 		std::map<std::string, std::string> modules;
 };
 
-
-std::ostream& operator<<(std::ostream& output, const shipModules& theModules);
-
 }
 
 

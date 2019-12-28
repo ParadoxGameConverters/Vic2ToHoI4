@@ -58,6 +58,9 @@
     <Filter Include="HoI4World\ScriptedLocalisations">
       <UniqueIdentifier>{e9a00c1c-cf76-4630-a043-e9498b7f9fca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hoi4Outputter\ShipTypes">
+      <UniqueIdentifier>{69709241-2173-457e-a3b2-75766d91c549}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -428,6 +431,9 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Navies\MtgShip.cpp">
       <Filter>HoI4World\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.cpp">
+      <Filter>Hoi4Outputter\ShipTypes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -820,6 +826,9 @@
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationOutputter.h">
       <Filter>Hoi4Outputter\ScriptedLocalisations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.h">
+      <Filter>Hoi4Outputter\ShipTypes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

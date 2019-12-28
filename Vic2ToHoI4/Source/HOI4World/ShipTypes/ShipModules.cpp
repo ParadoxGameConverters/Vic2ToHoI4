@@ -35,16 +35,3 @@ HoI4::shipModules::shipModules(std::istream& theStream)
 
 	parseStream(theStream);
 }
-
-
-std::ostream& HoI4::operator<<(std::ostream& output, const HoI4::shipModules& theModules)
-{
-	output << "\t\tmodules = {\n";
-	for (auto module: theModules.modules)
-	{
-		output << "\t\t\t" << module.first << " = " << module.second << "\n";
-	}
-	output << "\t\t}\n";
-
-	return output;
-}
