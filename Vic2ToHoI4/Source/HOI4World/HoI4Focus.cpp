@@ -168,7 +168,7 @@ std::shared_ptr<HoI4Focus> HoI4Focus::makeTargetedCopy(const std::string& countr
 
 	newFocus->text = id + target;
 	HoI4Localisation::copyFocusLocalisations(newFocus->id, newFocus->text);
-	HoI4Localisation::updateLocalisationWithCountry(newFocus->text, "$TARGET", target);
+	HoI4Localisation::updateLocalisationWithLocalizedCountry(newFocus->text, "$TARGET", target + "_neutrality");
 	newFocus->id += country + target;
 
 	if (newFocus->relativePositionId != "")
