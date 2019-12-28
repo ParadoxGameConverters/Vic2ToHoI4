@@ -1,26 +1,3 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 #include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/ShipVariants.h"
@@ -30,15 +7,15 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-TEST(HoI4World_shipVariantsTests, noInputGivesDefaultOutput)
+TEST(HoI4World_ShipTypes_shipVariantsTests, noInputGivesDefaultOutput)
 {
 	std::vector<HoI4::shipVariant> possibleVariants;
 	mockTechnologies ownedTechs;
 
-	HoI4::shipVariants theVaraiants(possibleVariants, ownedTechs, std::string(""));
+	HoI4::shipVariants theVariants(possibleVariants, ownedTechs, std::string(""));
 
 	std::stringstream output;
-	output << theVaraiants;
+	output << theVariants;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "### VARIANTS ###\n";
@@ -49,7 +26,7 @@ TEST(HoI4World_shipVariantsTests, noInputGivesDefaultOutput)
 }
 
 
-TEST(HoI4World_shipVariantsTests, canReceiveVariant)
+TEST(HoI4World_ShipTypes_shipVariantsTests, canReceiveVariant)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -69,10 +46,10 @@ TEST(HoI4World_shipVariantsTests, canReceiveVariant)
 
 	mockTechnologies ownedTechs;
 
-	HoI4::shipVariants theVaraiants(possibleVariants, ownedTechs, "TAG");
+	HoI4::shipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	std::stringstream output;
-	output << theVaraiants;
+	output << theVariants;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "### VARIANTS ###\n";
@@ -95,7 +72,7 @@ TEST(HoI4World_shipVariantsTests, canReceiveVariant)
 }
 
 
-TEST(HoI4World_shipVariantsTests, heldVaraintIsIdentified)
+TEST(HoI4World_ShipTypes_shipVariantsTests, heldVaraintIsIdentified)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -109,19 +86,19 @@ TEST(HoI4World_shipVariantsTests, heldVaraintIsIdentified)
 	input << "\t}\n";
 	input << "\tobsolete = yes\n";
 	input << "}\n";
-	HoI4::shipVariant theShipVariant(input);
+	const HoI4::shipVariant theShipVariant(input);
 	std::vector<HoI4::shipVariant> possibleVariants;
 	possibleVariants.push_back(theShipVariant);
 
-	mockTechnologies ownedTechs;
+	const mockTechnologies ownedTechs;
 
-	HoI4::shipVariants theVaraiants(possibleVariants, ownedTechs, "TAG");
+	const HoI4::shipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
-	ASSERT_TRUE(theVaraiants.hasVariant("Early submarine"));
+	ASSERT_TRUE(theVariants.hasVariant("Early submarine"));
 }
 
 
-TEST(HoI4World_shipVariantsTests, missingVaraintIsNotIdentified)
+TEST(HoI4World_ShipTypes_shipVariantsTests, missingVaraintIsNotIdentified)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -135,19 +112,19 @@ TEST(HoI4World_shipVariantsTests, missingVaraintIsNotIdentified)
 	input << "\t}\n";
 	input << "\tobsolete = yes\n";
 	input << "}\n";
-	HoI4::shipVariant theShipVariant(input);
+	const HoI4::shipVariant theShipVariant(input);
 	std::vector<HoI4::shipVariant> possibleVariants;
 	possibleVariants.push_back(theShipVariant);
 
-	mockTechnologies ownedTechs;
+	const mockTechnologies ownedTechs;
 
-	HoI4::shipVariants theVaraiants(possibleVariants, ownedTechs, "TAG");
+	const HoI4::shipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
-	ASSERT_FALSE(theVaraiants.hasVariant("1936 submarine"));
+	ASSERT_FALSE(theVariants.hasVariant("1936 submarine"));
 }
 
 
-TEST(HoI4World_shipVariantsTests, variantsNeedRequiredTechs)
+TEST(HoI4World_ShipTypes_shipVariantsTests, variantsNeedRequiredTechs)
 {
 	std::vector<HoI4::shipVariant> possibleVariants;
 
@@ -191,10 +168,10 @@ TEST(HoI4World_shipVariantsTests, variantsNeedRequiredTechs)
 	EXPECT_CALL(ownedTechs, hasTechnology("tech1")).WillOnce(testing::Return(false));
 	EXPECT_CALL(ownedTechs, hasTechnology("tech2")).WillOnce(testing::Return(true));
 
-	HoI4::shipVariants theVaraiants(possibleVariants, ownedTechs, "TAG");
+	HoI4::shipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	std::stringstream output;
-	output << theVaraiants;
+	output << theVariants;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "### VARIANTS ###\n";
@@ -217,7 +194,7 @@ TEST(HoI4World_shipVariantsTests, variantsNeedRequiredTechs)
 }
 
 
-TEST(HoI4World_shipVariantsTests, variantsCanBeBlocked)
+TEST(HoI4World_ShipTypes_shipVariantsTests, variantsCanBeBlocked)
 {
 	std::vector<HoI4::shipVariant> possibleVariants;
 
@@ -261,10 +238,10 @@ TEST(HoI4World_shipVariantsTests, variantsCanBeBlocked)
 	EXPECT_CALL(ownedTechs, hasTechnology("tech1")).WillOnce(testing::Return(false));
 	EXPECT_CALL(ownedTechs, hasTechnology("tech2")).WillOnce(testing::Return(true));
 
-	HoI4::shipVariants theVaraiants(possibleVariants, ownedTechs, "TAG");
+	HoI4::shipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	std::stringstream output;
-	output << theVaraiants;
+	output << theVariants;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "### VARIANTS ###\n";

@@ -1,26 +1,3 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 #include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/ShipVariant.h"
@@ -29,7 +6,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-TEST(HoI4World_shipVariantTests, noInputGivesDefaultOutput)
+TEST(HoI4World_ShipTypes_shipVariantTests, noInputGivesDefaultOutput)
 {
 	std::stringstream input;
 	input << "";
@@ -49,7 +26,7 @@ TEST(HoI4World_shipVariantTests, noInputGivesDefaultOutput)
 }
 
 
-TEST(HoI4World_shipVariantTests, nameCanBeInput)
+TEST(HoI4World_ShipTypes_shipVariantTests, nameCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -71,19 +48,19 @@ TEST(HoI4World_shipVariantTests, nameCanBeInput)
 }
 
 
-TEST(HoI4World_shipVariantTests, canGetName)
+TEST(HoI4World_ShipTypes_shipVariantTests, canGetName)
 {
 	std::stringstream input;
 	input << " = {\n";
 	input << "\tname = \"ship_name\"\n";
 	input << "}";
-	HoI4::shipVariant theShipVariant(input);
+	const HoI4::shipVariant theShipVariant(input);
 
 	ASSERT_EQ(std::string("ship_name"), theShipVariant.getName());
 }
 
 
-TEST(HoI4World_shipVariantTests, typeCanBeInput)
+TEST(HoI4World_ShipTypes_shipVariantTests, typeCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -105,7 +82,7 @@ TEST(HoI4World_shipVariantTests, typeCanBeInput)
 }
 
 
-TEST(HoI4World_shipVariantTests, nameGroupCanBeInput)
+TEST(HoI4World_ShipTypes_shipVariantTests, nameGroupCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -127,7 +104,7 @@ TEST(HoI4World_shipVariantTests, nameGroupCanBeInput)
 }
 
 
-TEST(HoI4World_shipVariantTests, owningCountryTagCanBeInput)
+TEST(HoI4World_ShipTypes_shipVariantTests, owningCountryTagCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -150,7 +127,7 @@ TEST(HoI4World_shipVariantTests, owningCountryTagCanBeInput)
 }
 
 
-TEST(HoI4World_shipVariantTests, modulesCanBeInput)
+TEST(HoI4World_ShipTypes_shipVariantTests, modulesCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -179,7 +156,7 @@ TEST(HoI4World_shipVariantTests, modulesCanBeInput)
 }
 
 
-TEST(HoI4World_shipVariantTests, canBeSetObsolete)
+TEST(HoI4World_ShipTypes_shipVariantTests, canBeSetObsolete)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -202,7 +179,7 @@ TEST(HoI4World_shipVariantTests, canBeSetObsolete)
 }
 
 
-TEST(HoI4World_shipVariantTests, onlySetObsoleteByYes)
+TEST(HoI4World_ShipTypes_shipVariantTests, onlySetObsoleteByYes)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -224,20 +201,20 @@ TEST(HoI4World_shipVariantTests, onlySetObsoleteByYes)
 }
 
 
-TEST(HoI4World_shipVariantTests, noRequiredTechsMeansVariantIsValid)
+TEST(HoI4World_ShipTypes_shipVariantTests, noRequiredTechsMeansVariantIsValid)
 {
 	std::stringstream input;
 	input << " = {\n";
 	input << "}";
-	HoI4::shipVariant theShipVariant(input);
+	const HoI4::shipVariant theShipVariant(input);
 
-	mockTechnologies countrytechs;
+	const mockTechnologies countryTechs;
 
-	ASSERT_TRUE(theShipVariant.isValidVariant(countrytechs));
+	ASSERT_TRUE(theShipVariant.isValidVariant(countryTechs));
 }
 
 
-TEST(HoI4World_shipVariantTests, missingRequiredTechMeansVariantIsInvalid)
+TEST(HoI4World_ShipTypes_shipVariantTests, missingRequiredTechMeansVariantIsInvalid)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -245,15 +222,15 @@ TEST(HoI4World_shipVariantTests, missingRequiredTechMeansVariantIsInvalid)
 	input << "\t\trequired_tech1\n";
 	input << "\t}\n";
 	input << "}";
-	HoI4::shipVariant theShipVariant(input);
+	const HoI4::shipVariant theShipVariant(input);
 
-	mockTechnologies countrytechs;
+	const mockTechnologies countryTechs;
 
-	ASSERT_FALSE(theShipVariant.isValidVariant(countrytechs));
+	ASSERT_FALSE(theShipVariant.isValidVariant(countryTechs));
 }
 
 
-TEST(HoI4World_shipVariantTests, havingRequiredTechsMeansVariantIsValid)
+TEST(HoI4World_ShipTypes_shipVariantTests, havingRequiredTechsMeansVariantIsValid)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -261,16 +238,16 @@ TEST(HoI4World_shipVariantTests, havingRequiredTechsMeansVariantIsValid)
 	input << "\t\trequired_tech1\n";
 	input << "\t}\n";
 	input << "}";
-	HoI4::shipVariant theShipVariant(input);
+	const HoI4::shipVariant theShipVariant(input);
 
-	mockTechnologies mockTechs;
+	const mockTechnologies mockTechs;
 	EXPECT_CALL(mockTechs, hasTechnology("required_tech1")).WillOnce(testing::Return(true));
 
 	ASSERT_TRUE(theShipVariant.isValidVariant(mockTechs));
 }
 
 
-TEST(HoI4World_shipVariantTests, havingOnlySomeRequiredTechsMeansVariantIsInvalid)
+TEST(HoI4World_ShipTypes_shipVariantTests, havingOnlySomeRequiredTechsMeansVariantIsInvalid)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -279,9 +256,9 @@ TEST(HoI4World_shipVariantTests, havingOnlySomeRequiredTechsMeansVariantIsInvali
 	input << "\t\trequired_tech2\n";
 	input << "\t}\n";
 	input << "}";
-	HoI4::shipVariant theShipVariant(input);
+	const HoI4::shipVariant theShipVariant(input);
 
-	mockTechnologies mockTechs;
+	const mockTechnologies mockTechs;
 	EXPECT_CALL(mockTechs, hasTechnology("required_tech1")).WillOnce(testing::Return(true));
 	EXPECT_CALL(mockTechs, hasTechnology("required_tech2")).WillOnce(testing::Return(false));
 
@@ -289,7 +266,7 @@ TEST(HoI4World_shipVariantTests, havingOnlySomeRequiredTechsMeansVariantIsInvali
 }
 
 
-TEST(HoI4World_shipVariantTests, havingBlockingTechsMeansVariantIsInvalid)
+TEST(HoI4World_ShipTypes_shipVariantTests, havingBlockingTechsMeansVariantIsInvalid)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -297,16 +274,16 @@ TEST(HoI4World_shipVariantTests, havingBlockingTechsMeansVariantIsInvalid)
 	input << "\t\trequired_tech1\n";
 	input << "\t}\n";
 	input << "}";
-	HoI4::shipVariant theShipVariant(input);
+	const HoI4::shipVariant theShipVariant(input);
 
-	mockTechnologies mockTechs;
+	const mockTechnologies mockTechs;
 	EXPECT_CALL(mockTechs, hasTechnology("required_tech1")).WillOnce(testing::Return(true));
 
 	ASSERT_FALSE(theShipVariant.isValidVariant(mockTechs));
 }
 
 
-TEST(HoI4World_shipVariantTests, havingNoBlockingTechsMeansVariantIsValid)
+TEST(HoI4World_ShipTypes_shipVariantTests, havingNoBlockingTechsMeansVariantIsValid)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -314,9 +291,9 @@ TEST(HoI4World_shipVariantTests, havingNoBlockingTechsMeansVariantIsValid)
 	input << "\t\trequired_tech1\n";
 	input << "\t}\n";
 	input << "}";
-	HoI4::shipVariant theShipVariant(input);
+	const HoI4::shipVariant theShipVariant(input);
 
-	mockTechnologies countryTechs;
+	const mockTechnologies countryTechs;
 
 	ASSERT_TRUE(theShipVariant.isValidVariant(countryTechs));
 }
