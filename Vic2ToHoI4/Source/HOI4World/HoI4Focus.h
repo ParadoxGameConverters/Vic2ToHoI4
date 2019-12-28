@@ -42,6 +42,7 @@ class HoI4Focus: commonItems::parser
 		friend std::ostream& operator << (std::ostream& output, const HoI4Focus& focus);
 
 		std::shared_ptr<HoI4Focus> makeCustomizedCopy(const std::string& country) const;
+		std::shared_ptr<HoI4Focus> makeTargetedCopy(const std::string& country, const std::string& target) const;
 
 		std::string id;
 		std::string icon;

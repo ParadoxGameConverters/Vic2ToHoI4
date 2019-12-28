@@ -26,6 +26,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4Faction.h"
 #include "HoI4Focus.h"
 #include "HoI4World.h"
+#include "HoI4Localisation.h"
 #include "MapData.h"
 #include "../Mappers/ProvinceDefinitions.h"
 #include "../V2World/Country.h"
@@ -1577,9 +1578,10 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<HoI
 			countriesAtWar.push_back(findFaction(country));
 
 			shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>();
-			newFocus->id       = "War" + target->getTag() + country->getTag();
+			newFocus->id       = "War_with" + target->getTag() + country->getTag();
 			newFocus->icon     = "GFX_goal_generic_major_war";
-			newFocus->text     = "War with " + targetName;//change to faction name later
+			newFocus->text     = "War_with" + target->getTag();
+			//newFocus->text     = "War with " + targetName;//change to faction name later
 			newFocus->available = "= {\n";
 			newFocus->available += "			has_war = no\n";
 			newFocus->available += "			date > 1939.1.1\n";
@@ -1622,6 +1624,8 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<HoI
 			newFocus->completionReward += "			}\n";
 			newFocus->completionReward += "		}";
 			FocusTree.addFocus(newFocus);
+			HoI4Localisation::copyFocusLocalisations("War_with", newFocus->text);
+			HoI4Localisation::updateLocalisationWithCountry(newFocus->text, "$TARGET", target->getTag());
 
 			numWarsWithGreatPowers++;
 		}

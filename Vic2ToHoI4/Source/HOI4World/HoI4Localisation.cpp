@@ -746,7 +746,7 @@ void HoI4Localisation::UpdateLocalisationWithCountry(const std::string& key, con
 			if (auto focusText = focusesInLanguage->second.find(key); focusText != focusesInLanguage->second.end())
 			{
 				auto position = focusText->second.find(oldText);
-				focusText->second.replace(position, oldText.size(), newText);
+				focusText->second.replace(position, oldText.size(), newTextLocalisationKey);
 			}
 		}
 	}
