@@ -122,15 +122,6 @@ class HoI4Localisation
 			getInstance()->UpdateLocalisationWithCountry(key, oldText, newText);
 		}
 
-		static void updateLocalisationWithLocalizedCountry(
-			const std::string& key,
-			const std::string& oldText,
-			const std::string& newTextLocalisationKey
-		)
-		{
-			getInstance()->UpdateLocalisationWithLocalizedCountry(key, oldText, newTextLocalisationKey);
-		}
-
 		static void output()
 		{
 			getInstance()->Output();
@@ -208,11 +199,6 @@ class HoI4Localisation
 			const std::string& key,
 			const std::string& oldText,
 			const std::string& newText
-		);
-		void UpdateLocalisationWithLocalizedCountry(
-			const std::string& key,
-			const std::string& oldText,
-			const std::string& newTextLocalisationKey
 		);
 
 		void Output() const;
