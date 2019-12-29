@@ -749,8 +749,10 @@ void HoI4Localisation::UpdateLocalisationWithCountry(
 		{
 			if (auto focusText = focusesInLanguage->second.find(key); focusText != focusesInLanguage->second.end())
 			{
-				auto position = focusText->second.find(oldText);
-				focusText->second.replace(position, oldText.size(), newText);
+				if (auto position = focusText->second.find(oldText); position != string::npos)
+				{
+					focusText->second.replace(position, oldText.size(), newText);
+				}
 			}
 		}
 	}
