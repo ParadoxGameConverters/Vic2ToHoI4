@@ -255,36 +255,78 @@ bool HoI4WarCreator::isImportantCountry(shared_ptr<HoI4::Country> country)
 }
 
 
-vector<shared_ptr<HoI4::Country>> HoI4WarCreator::findEvilCountries() const
+std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findEvilCountries() const
 {
-	map<double, shared_ptr<HoI4::Country>> countryEvilness;
-	vector<shared_ptr<HoI4::Country>> countriesEvilnessSorted;
+	std::multimap<double, std::shared_ptr<HoI4::Country>> countryEvilness;
+	std::vector<std::shared_ptr<HoI4::Country>> countriesEvilnessSorted;
 
-	for (auto country : theWorld->getCountries())
+	for (auto country: theWorld->getCountries())
 	{
 		double evilness = 0.5;
-		if (country.second->getGovernmentIdeology() == "fascism")
+		auto ideology = country.second->getGovernmentIdeology();
+		if (ideology == "fascism")
+		{
 			evilness += 5;
-		if (country.second->getGovernmentIdeology() == "absolutist")
+		}
+		else if (ideology == "absolutist")
+		{
 			evilness += 3;
-		if (country.second->getGovernmentIdeology() == "communist")
+		}
+		else if (ideology == "communism")
+		{
 			evilness += 3;
-		if (country.second->getGovernmentIdeology() == "anarcho_liberal")
+		}
+		else if (ideology == "radical")
+		{
 			evilness += 3;
-		auto countryrulingparty = country.second->getRulingParty();
-	
-		if (countryrulingparty.getWarPolicy() == "jingoism")
+		}
+		else if (ideology == "neutrality")
+		{
+			auto leaderIdeology = country.second->getLeaderIdeology();
+			if (leaderIdeology == "fascism_ideology_neutral")
+			{
+				evilness += 5;
+			}
+			else if (
+				(leaderIdeology == "prussian_const_neutral") ||
+				(leaderIdeology == "absolute_monarchy_neutral") ||
+				(leaderIdeology == "dictatorship_neutral") ||
+				(leaderIdeology == "theocracy_neutral") ||
+				(leaderIdeology == "despotism")
+				)
+			{
+				evilness += 3;
+			}
+			else if (leaderIdeology == "leninism_neutral")
+			{
+				evilness += 5;
+			}
+			else if ((leaderIdeology == "minarchism_neutral") || (leaderIdeology == "oligarchism"))
+			{
+				evilness += 5;
+			}
+		}
+
+		auto warPolicy = country.second->getRulingParty().getWarPolicy();
+		if (warPolicy == "jingoism")
+		{
 			evilness += 3;
-		else if (countryrulingparty.getWarPolicy() == "pro_military")
+		}
+		else if (warPolicy == "pro_military")
+		{
 			evilness += 2;
-		else if (countryrulingparty.getWarPolicy() == "anti_military")
+		}
+		else if (warPolicy == "anti_military")
+		{
 			evilness -= 1;
+		}
 	
 		if (evilness > 2)
 		{
 			countryEvilness.insert(make_pair(evilness, country.second));
 		}
 	}
+
 	//put them into a vector so we know their order
 	for (auto iterator = countryEvilness.begin(); iterator != countryEvilness.end(); ++iterator)
 	{
@@ -1225,15 +1267,11 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::absolutistWarCreator(shared_ptr<
 }
 
 
-vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<HoI4::Country> country, ofstream & AILog, const HoI4::MapData& theMapData)
+std::vector<std::shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(
+	std::shared_ptr<HoI4::Country> country,
+	std::ofstream & AILog, const HoI4::MapData& theMapData
+)
 {
-	// add small wars against neigbors for non-great powers
-	vector<shared_ptr<HoI4Faction>> countriesAtWar;
-	auto weakNeighbors = findWeakNeighbors(country, theMapData);
-
-	int numWarsWithNeighbors = 0;
-	vector<shared_ptr<HoI4Focus>> newFocuses;
-
 	if (theConfiguration.getDebug())
 	{
 		auto name = country->getSourceCountry().getName("english");
@@ -1247,40 +1285,40 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<Ho
 		}
 	}
 
-	for (auto target : weakNeighbors)
+	std::vector<std::shared_ptr<HoI4Faction>> countriesAtWar;
+
+	auto weakNeighbors = findWeakNeighbors(country, theMapData);
+	if (weakNeighbors.empty())
+	{
+		return countriesAtWar;
+	}
+
+	int numWarsWithNeighbors = 0;
+	auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
+
+	for (auto target: weakNeighbors)
 	{
 		if (numWarsWithNeighbors >= 2)
 		{
 			break;
 		}
 
-		int relations = 0;
-		auto relationsObj = country->getRelations(target->getTag());
-		if (relationsObj)
-		{
-			relations = relationsObj->getRelations();
-		}
-
-		if (relations >= 0)
+		auto relations = country->getRelations(target->getTag());
+		if (!relations || (relations->getRelations() > 0))
 		{
 			continue;
 		}
 
-		set<string> Allies = country->getAllies();
-		date startDate = date("1937.01.01");
-		startDate.increaseByMonths(relations / -4);
-		if (Allies.find(target->getTag()) == Allies.end())
+		if (auto allies = country->getAllies(); allies.count(target->getTag()) == 0)
 		{
-			auto possibleTargetName = target->getSourceCountry().getName("english");
-			string targetName;
-			if (possibleTargetName)
+			std::string targetName;
+			if (auto possibleTargetName = target->getSourceCountry().getName("english"); possibleTargetName)
 			{
 				targetName = *possibleTargetName;
 			}
 			else
 			{
 				LOG(LogLevel::Warning) << "Could not set target name in neighbor war creator";
-				targetName.clear();
 			}
 
 			countriesAtWar.push_back(findFaction(country));
@@ -1289,7 +1327,8 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<Ho
 				AILog << "Creating focus to attack " + targetName << "\n";
 			}
 
-			auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
+			date startDate = date("1937.01.01");
+			startDate.increaseByMonths(relations->getRelations() / -4);
 			focusTree->addNeighborWarBranch(
 				country->getTag(),
 				weakNeighbors,
@@ -1305,11 +1344,6 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<Ho
 
 	if (numWarsWithNeighbors > 0)
 	{
-		auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
-		for (auto newFocus: newFocuses)
-		{
-			focusTree->addFocus(newFocus);
-		}
 		country->giveNationalFocus(focusTree);
 	}
 
