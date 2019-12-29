@@ -734,7 +734,7 @@ void HoI4Localisation::AddDecisionLocalisation(const std::string& key, const std
 }
 
 
-void HoI4Localisation::UpdateLocalisationWithCountry(
+void HoI4Localisation::UpdateLocalisationText(
 	const std::string& key,
 	const std::string& oldText,
 	const std::string& newText
