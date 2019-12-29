@@ -4,7 +4,7 @@
 
 
 
-TEST(HoI4World_DecisionsCategoriesTests, noOutputByDefault)
+TEST(HoI4World_Decisions_DecisionsCategoriesTests, noOutputByDefault)
 {
 	std::set<std::string> majorIdeologies;
 	HoI4::DecisionsCategories theCategories(majorIdeologies);
@@ -17,7 +17,7 @@ TEST(HoI4World_DecisionsCategoriesTests, noOutputByDefault)
 }
 
 
-TEST(HoI4World_DecisionsCategoriesTests, fascismCanBeOutput)
+TEST(HoI4World_Decisions_DecisionsCategoriesTests, fascismCanBeOutput)
 {
 	std::set<std::string> majorIdeologies;
 	majorIdeologies.insert("fascism");
@@ -44,7 +44,7 @@ TEST(HoI4World_DecisionsCategoriesTests, fascismCanBeOutput)
 }
 
 
-TEST(HoI4World_DecisionsCategoriesTests, absolutistCanBeOutput)
+TEST(HoI4World_Decisions_DecisionsCategoriesTests, absolutistCanBeOutput)
 {
 	std::set<std::string> majorIdeologies;
 	majorIdeologies.insert("absolutist");
@@ -71,7 +71,7 @@ TEST(HoI4World_DecisionsCategoriesTests, absolutistCanBeOutput)
 }
 
 
-TEST(HoI4World_DecisionsCategoriesTests, democraticCanBeOutput)
+TEST(HoI4World_Decisions_DecisionsCategoriesTests, democraticCanBeOutput)
 {
 	std::set<std::string> majorIdeologies;
 	majorIdeologies.insert("democratic");
@@ -98,7 +98,7 @@ TEST(HoI4World_DecisionsCategoriesTests, democraticCanBeOutput)
 }
 
 
-TEST(HoI4World_DecisionsCategoriesTests, communismCanBeOutput)
+TEST(HoI4World_Decisions_DecisionsCategoriesTests, communismCanBeOutput)
 {
 	std::set<std::string> majorIdeologies;
 	majorIdeologies.insert("communism");
@@ -125,7 +125,7 @@ TEST(HoI4World_DecisionsCategoriesTests, communismCanBeOutput)
 }
 
 
-TEST(HoI4World_DecisionsCategoriesTests, radicalCanBeOutput)
+TEST(HoI4World_Decisions_DecisionsCategoriesTests, radicalCanBeOutput)
 {
 	std::set<std::string> majorIdeologies;
 	majorIdeologies.insert("radical");
@@ -152,7 +152,7 @@ TEST(HoI4World_DecisionsCategoriesTests, radicalCanBeOutput)
 }
 
 
-TEST(HoI4World_DecisionsCategoriesTests, allCanBeOutputTogether)
+TEST(HoI4World_Decisions_DecisionsCategoriesTests, allCanBeOutputTogether)
 {
 	std::set<std::string> majorIdeologies;
 	majorIdeologies.insert("fascism");

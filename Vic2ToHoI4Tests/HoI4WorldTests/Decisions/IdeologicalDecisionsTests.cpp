@@ -4,7 +4,7 @@
 
 
 
-TEST(HoI4World_IdeologicalDecisionsTests, defaultsToEmptyList)
+TEST(HoI4World_Decisions_IdeologicalDecisionsTests, defaultsToEmptyList)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -15,7 +15,7 @@ TEST(HoI4World_IdeologicalDecisionsTests, defaultsToEmptyList)
 }
 
 
-TEST(HoI4World_IdeologicalDecisionsTests, categoriesCanBeInput)
+TEST(HoI4World_Decisions_IdeologicalDecisionsTests, categoriesCanBeInput)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -28,7 +28,7 @@ TEST(HoI4World_IdeologicalDecisionsTests, categoriesCanBeInput)
 }
 
 
-TEST(HoI4World_IdeologicalDecisionsTests, handlesNoRequiredIdeologies)
+TEST(HoI4World_Decisions_IdeologicalDecisionsTests, handlesNoRequiredIdeologies)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -40,7 +40,7 @@ TEST(HoI4World_IdeologicalDecisionsTests, handlesNoRequiredIdeologies)
 }
 
 
-TEST(HoI4World_IdeologicalDecisionsTests, falseIfRequiredIdeologyMissing)
+TEST(HoI4World_Decisions_IdeologicalDecisionsTests, falseIfRequiredIdeologyMissing)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -55,7 +55,7 @@ TEST(HoI4World_IdeologicalDecisionsTests, falseIfRequiredIdeologyMissing)
 }
 
 
-TEST(HoI4World_IdeologicalDecisionsTests, trueIfRequiredIdeologyPresent)
+TEST(HoI4World_Decisions_IdeologicalDecisionsTests, trueIfRequiredIdeologyPresent)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -71,7 +71,7 @@ TEST(HoI4World_IdeologicalDecisionsTests, trueIfRequiredIdeologyPresent)
 }
 
 
-TEST(HoI4World_IdeologicalDecisionsTests, falseIfAnyRequiredIdeologyMissing)
+TEST(HoI4World_Decisions_IdeologicalDecisionsTests, falseIfAnyRequiredIdeologyMissing)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -88,7 +88,7 @@ TEST(HoI4World_IdeologicalDecisionsTests, falseIfAnyRequiredIdeologyMissing)
 }
 
 
-TEST(HoI4World_IdeologicalDecisionsTests, trueIfAllRequiredIdeologiesPresent)
+TEST(HoI4World_Decisions_IdeologicalDecisionsTests, trueIfAllRequiredIdeologiesPresent)
 {
 	std::stringstream input;
 	input << "= {\n";
