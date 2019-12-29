@@ -140,6 +140,7 @@ std::shared_ptr<HoI4Focus> HoI4Focus::makeCustomizedCopy(const std::string& coun
 {
 	auto newFocus = std::make_shared<HoI4Focus>(*this);
 
+	newFocus->text = id;
 	newFocus->id += country;
 
 	if (newFocus->relativePositionId != "")
@@ -157,7 +158,33 @@ std::shared_ptr<HoI4Focus> HoI4Focus::makeCustomizedCopy(const std::string& coun
 		customizePrerequisite(newFocus, prerequisite, country);
 	}
 
-	HoI4Localisation::copyFocusLocalisations(id, newFocus->id);
+	return newFocus;
+}
+
+
+std::shared_ptr<HoI4Focus> HoI4Focus::makeTargetedCopy(const std::string& country, const std::string& target) const
+{
+	auto newFocus = std::make_shared<HoI4Focus>(*this);
+
+	newFocus->text = id + target;
+	HoI4Localisation::copyFocusLocalisations(newFocus->id, newFocus->text);
+	HoI4Localisation::updateLocalisationWithCountry(newFocus->text, "$TARGET", target);
+	newFocus->id += country + target;
+
+	if (newFocus->relativePositionId != "")
+	{
+		newFocus->relativePositionId += country;
+	}
+	if (newFocus->mutuallyExclusive != "")
+	{
+		customizeMutualExclusion(newFocus, country);
+	}
+
+	newFocus->prerequisites.clear();
+	for (auto prerequisite: prerequisites)
+	{
+		customizePrerequisite(newFocus, prerequisite, country);
+	}
 
 	return newFocus;
 }
@@ -220,7 +247,7 @@ std::ostream& operator << (std::ostream& output, const HoI4Focus& focus)
 	output << "		icon = " << focus.icon << "\n";
 	if (!focus.text.empty())
 	{
-		output << "		text = \"" << focus.text << "\"\n";
+		output << "		text = " << focus.text << "\n";
 	}
 	for (auto prerequisite: focus.prerequisites)
 	{

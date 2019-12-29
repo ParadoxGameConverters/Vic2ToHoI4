@@ -1088,9 +1088,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home, 
 
 		if (const auto& originalFocus = loadedFocuses.find("WarPlan"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-			newFocus->id += country->getTag();
-			newFocus->text = "War Plan " + containedCountryName;
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), country->getTag());
 			newFocus->bypass = "= {\n";
 			newFocus->bypass += "			has_war_with = " + country->getTag() + "\n";
 			newFocus->bypass += "		}";
@@ -1108,8 +1106,6 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home, 
 			newFocus->available += "			}\n";
 			newFocus->available += "		}";
 			focuses.push_back(newFocus);
-			HoI4Localisation::copyFocusLocalisations("WarPlan", newFocus->id);
-			HoI4Localisation::updateLocalisationWithCountry(newFocus->id, "$TARGET", country->getTag() + "_neutrality");
 		}
 		else
 		{
@@ -1118,9 +1114,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home, 
 
 		if (const auto& originalFocus = loadedFocuses.find("Embargo"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-			newFocus->id += country->getTag();
-			newFocus->text = "Embargo " + containedCountryName;
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), country->getTag());
 			newFocus->prerequisites.clear();
 			newFocus->prerequisites.push_back("= { focus =  WarPlan" + Home->getTag() + country->getTag() + " }");
 			newFocus->bypass = "= {\n";
@@ -1146,8 +1140,6 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home, 
 			newFocus->completionReward += "			}\n";
 			newFocus->completionReward += "		}";
 			focuses.push_back(newFocus);
-			HoI4Localisation::copyFocusLocalisations("Embargo", newFocus->id);
-			HoI4Localisation::updateLocalisationWithCountry(newFocus->id, "$TARGET", country->getTag() + "_neutrality");
 		}
 		else
 		{
@@ -1156,9 +1148,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home, 
 
 		if (const auto& originalFocus = loadedFocuses.find("WAR"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-			newFocus->id += country->getTag();
-			newFocus->text = "Enact War Plan " + containedCountryName;
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), country->getTag());
 			newFocus->prerequisites.clear();
 			newFocus->prerequisites.push_back("= { focus =  Embargo" + Home->getTag() + country->getTag() + " }");
 			newFocus->prerequisites.push_back("= { focus =  Lim" + Home->getTag() + " }");
@@ -1190,8 +1180,6 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home, 
 			newFocus->completionReward += "			}\n";
 			newFocus->completionReward += "		}";
 			focuses.push_back(newFocus);
-			HoI4Localisation::copyFocusLocalisations("WAR", newFocus->id);
-			HoI4Localisation::updateLocalisationWithCountry(newFocus->id, "$TARGET", country->getTag() + "_neutrality");
 
 			relavtivePos += 4;
 		}
@@ -1329,9 +1317,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 
 		if (const auto& originalFocus = loadedFocuses.find("Protectorate"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag());
 			newFocus->id = "Protectorate" + Home->getTag() + target->getTag();
-			newFocus->text += "Establish Protectorate over " + protectorateCountryName;
 			newFocus->available += "= {\n";
 			newFocus->available += "			" + target->getTag() + " = { is_in_faction = no }\n";
 			newFocus->available += "		}";
@@ -1386,9 +1373,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 
 		if (const auto& originalFocus = loadedFocuses.find("Protectorate"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag());
 			newFocus->id = "Protectorate" + Home->getTag() + target->getTag();
-			newFocus->text += "Establish Protectorate over " + protectorateCountryName;
 			newFocus->available += "= {\n";
 			newFocus->available += "			" + target->getTag() + " = { is_in_faction = no }\n";
 			newFocus->available += "		}";
@@ -1429,7 +1415,6 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 	if (const auto& originalFocus = loadedFocuses.find("TradeEmpire"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		newFocus->text += "Fund the " + homeCountryAdjective + " Colonial Trade Corporation";
 		newFocus->relativePositionId = "ColonialInd" + Home->getTag();
 		newFocus->xPos = -1;
 		newFocus->yPos = 2;
@@ -1537,9 +1522,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 
 		if (const auto& originalFocus = loadedFocuses.find("Annex"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag());
 			newFocus->id = "Annex" + Home->getTag() + target->getTag();
-			newFocus->text += "Conquer " + targetCountryName;
 			newFocus->available += "= {\n";
 			newFocus->available += "			" + target->getTag() + " = { is_in_faction = no }\n";
 			newFocus->available += "		}";
@@ -1594,9 +1578,8 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 
 		if (const auto& originalFocus = loadedFocuses.find("Annex"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), target->getTag());
 			newFocus->id = "Annex" + Home->getTag() + target->getTag();
-			newFocus->text += "Conquer " + targetCountryName;
 			newFocus->available += "= {\n";
 			newFocus->available += "			\"" + target->getTag() + "\" = { is_in_faction = no }\n";
 			newFocus->available += "		}";
@@ -1669,9 +1652,8 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home, const
 
 				if (const auto& originalFocus = loadedFocuses.find("Influence_"); originalFocus != loadedFocuses.end())
 				{
-					auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+					auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), coupTargets[i]->getTag());
 					newFocus->id = "Influence_" + coupTargets[i]->getTag() + "_" + Home->getTag();
-					newFocus->text = "Influence " + coupCountryName;
 					newFocus->xPos = nextFreeColumn + i * 2;
 					newFocus->yPos = 1;
 					newFocus->completionReward += "= {\n";
@@ -1743,9 +1725,8 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home, const
 
 				if (const auto& originalFocus = loadedFocuses.find("Coup_"); originalFocus != loadedFocuses.end())
 				{
-					auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+					auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), coupTargets[i]->getTag());
 					newFocus->id = "Coup_" + coupTargets[i]->getTag() + "_" + Home->getTag();
-					newFocus->text = "Civil War in " + coupCountryName;
 					newFocus->prerequisites.push_back("= { focus = Influence_" + coupTargets[i]->getTag() + "_" + Home->getTag() + " }");
 					newFocus->relativePositionId = "Influence_" + coupTargets[i]->getTag() + "_" + Home->getTag();
 					newFocus->xPos = 0;
@@ -1830,9 +1811,8 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home, const 
 				int v2 = rand() % 12 + 1;
 				if (const auto& originalFocus = loadedFocuses.find("War"); originalFocus != loadedFocuses.end())
 				{
-					auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+					auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), warTargets[i]->getTag());
 					newFocus->id = "War" + warTargets[i]->getTag() + Home->getTag();
-					newFocus->text = "War with " + warTargetCountryName;//change to faction name later
 					newFocus->available = "= {\n";
 					newFocus->available += "			date > 1938." + to_string(v1) + "." + to_string(v2) + "\n";
 					newFocus->available += "		}";
@@ -1952,9 +1932,8 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home, c
 
 		if (const auto& originalFocus = loadedFocuses.find("_anschluss_"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), annexationTargets[i]->getTag());
 			newFocus->id = Home->getTag() + "_anschluss_" + annexationTargets[i]->getTag();
-			newFocus->text = "Union with " + annexationTargetCountryName;
 			newFocus->available += "= {\n";
 			newFocus->available += "			" + annexationTargets[i]->getTag() + " = {\n";
 			newFocus->available += "				is_in_faction = no\n";
@@ -2005,7 +1984,6 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home, cons
 	if (const auto& originalFocus = loadedFocuses.find("expand_the_reich"); originalFocus != loadedFocuses.end())
 	{
 		shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-		//newFocus->icon = "GFX_goal_generic_political_pressure";  //something about claiming land
 		if (sudetenTargets.size() == 1 || sudetenTargets.size() >= 2)
 		{
 			//if there are anschlusses, make this event require at least 1 anschluss, else, its the start of a tree
@@ -2055,9 +2033,8 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home, cons
 
 		if (const auto& originalFocus = loadedFocuses.find("_sudeten_"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), sudetenTargets[i]->getTag());
 			newFocus->id = Home->getTag() + "_sudeten_" + sudetenTargets[i]->getTag();
-			newFocus->text = "Demand Territory from " + sudetenTargetCountryName;
 			newFocus->available = "= {\n";
 			newFocus->available += "			is_puppet = no\n";
 			newFocus->available += "			date > 1938." + to_string(v1) + "." + to_string(v2) + "\n";
@@ -2089,11 +2066,10 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home, cons
 		//FINISH HIM
 		if (const auto& originalFocus = loadedFocuses.find("_finish_"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), sudetenTargets[i]->getTag());
 			newFocus->id = Home->getTag() + "_finish_" + sudetenTargets[i]->getTag();
-			newFocus->text = "Fate of " + sudetenTargetCountryName;
 			newFocus->available = "= {\n";
-			newFocus->available += "	" + sudetenTargets[i]->getTag() + " = { is_in_faction = no } }";
+			newFocus->available += "	" + sudetenTargets[i]->getTag() + " = { is_in_faction = no }\n";
 			newFocus->available += "		}";
 			newFocus->prerequisites.push_back("= { focus =  " + Home->getTag() + "_sudeten_" + sudetenTargets[i]->getTag() + " }");
 			newFocus->xPos = nextFreeColumn + 2 * i;
@@ -2132,7 +2108,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<
 		{
 			shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
 			newFocus->id = ideologyShort + "_Summit" + Home->getTag();
-			newFocus->text = "Call for the " + ideology + " Summit";
+			newFocus->text = ideology + "_Summit";
 			if (numAllies == 0)
 			{
 				newFocus->xPos = nextFreeColumn + newAllies.size();
@@ -2147,6 +2123,8 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<
 			newFocus->completionReward += "			add_political_power = 150\n";
 			newFocus->completionReward += "		}";
 			focuses.push_back(newFocus);
+			HoI4Localisation::copyFocusLocalisations("_Summit", newFocus->text);
+			HoI4Localisation::updateLocalisationWithCountry(newFocus->text, "$TARGET", ideology);
 		}
 		else
 		{
@@ -2171,9 +2149,8 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<
 		
 		if (const auto& originalFocus = loadedFocuses.find("Alliance_"); originalFocus != loadedFocuses.end())
 		{
-			shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
+			shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), newAlly->getTag());
 			newFocus->id = "Alliance_" + newAlly->getTag() + Home->getTag();
-			newFocus->text = "Alliance with " + allyCountryName;
 			newFocus->prerequisites.push_back("= { focus = " + ideologyShort + "_Summit" + Home->getTag() + " }");
 			newFocus->relativePositionId = ideologyShort + "_Summit" + Home->getTag();
 			if (numAllies == 1)
@@ -2238,14 +2215,22 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<
 			int v1 = rand() % 12 + 1;
 			int v2 = rand() % 12 + 1;
 			newFocus->id = "GP_War" + GC->getTag() + Home->getTag();
-			newFocus->text = "War with " + warTargetCountryName;//change to faction name later
+			newFocus->text += GC->getTag();
 			newFocus->available = "= {\n";
 			newFocus->available += "			has_war = no\n";
 			newFocus->available += "			date > 1939." + to_string(v1) + "." + to_string(v2) + "\n";
 			newFocus->available += "		}";
-			newFocus->relativePositionId = ideologyShort + "_Summit" + Home->getTag();
-			newFocus->xPos = 0;
-			newFocus->yPos = 2;
+			if (newAllies.size() > 0)
+			{
+				newFocus->relativePositionId = ideologyShort + "_Summit" + Home->getTag();
+				newFocus->xPos = 0;
+				newFocus->yPos = 2;
+			}
+			else
+			{
+				newFocus->xPos = nextFreeColumn;
+				newFocus->yPos = 0;
+			}
 			newFocus->bypass = "= {\n";
 			newFocus->bypass += "		   has_war_with = " + GC->getTag() + "\n";
 			newFocus->bypass += "		}";
@@ -2283,6 +2268,8 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<
 			newFocus->completionReward += "			}\n";
 			newFocus->completionReward += "		}";
 			focuses.push_back(newFocus);
+			HoI4Localisation::copyFocusLocalisations("GPWar", newFocus->text);
+			HoI4Localisation::updateLocalisationWithCountry(newFocus->text, "$TARGET", GC->getTag());
 			i++;
 		}
 		else
@@ -2305,9 +2292,8 @@ void HoI4FocusTree::addNeighborWarBranch(
 {
 	if (const auto& originalFocus = loadedFocuses.find("NeighborWar"); originalFocus != loadedFocuses.end())
 	{
-		shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(tag);
+		shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeTargetedCopy(tag, targetNeighbors->getTag());
 		newFocus->id = "NeighborWar" + targetNeighbors->getTag() + tag;
-		newFocus->text = "War with " + targetName;//change to faction name later
 		newFocus->available = "= {\n";
 		newFocus->available += "			has_war = no\n";
 		newFocus->available += "			date > " + startDate.toString() + "\n";
