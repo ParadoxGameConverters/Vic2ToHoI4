@@ -2124,7 +2124,8 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<
 			newFocus->completionReward += "		}";
 			focuses.push_back(newFocus);
 			HoI4Localisation::copyFocusLocalisations("_Summit", newFocus->text);
-			HoI4Localisation::updateLocalisationWithCountry(newFocus->text, "$TARGET", ideology);
+			HoI4Localisation::updateLocalisationText(newFocus->text, "$TARGET", ideology);
+			HoI4Localisation::updateLocalisationText(newFocus->text + "_desc", "$TARGET", ideology);
 		}
 		else
 		{
@@ -2269,7 +2270,8 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<
 			newFocus->completionReward += "		}";
 			focuses.push_back(newFocus);
 			HoI4Localisation::copyFocusLocalisations("GPWar", newFocus->text);
-			HoI4Localisation::updateLocalisationWithCountry(newFocus->text, "$TARGET", GC->getTag());
+			HoI4Localisation::updateLocalisationText(newFocus->text, "$TARGET", GC->getTag());
+			HoI4Localisation::updateLocalisationText(newFocus->text + "_desc", "$TARGET", GC->getTag());
 			i++;
 		}
 		else

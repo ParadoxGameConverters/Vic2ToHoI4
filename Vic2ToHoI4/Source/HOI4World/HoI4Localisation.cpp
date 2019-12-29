@@ -345,6 +345,12 @@ void HoI4Localisation::CopyFocusLocalisations(const string& oldKey, const string
 		{
 			LOG(LogLevel::Warning) << "Could not find original localisation for " << oldKey << " in " << languageLocalisations.first;
 		}
+
+		auto oldLocalisationDescription = languageLocalisations.second.find(oldKey + "_desc");
+		if (oldLocalisationDescription != languageLocalisations.second.end())
+		{
+			newLanguage->second[newKey + "_desc"] = oldLocalisationDescription->second;
+		}
 	}
 }
 
@@ -728,7 +734,7 @@ void HoI4Localisation::AddDecisionLocalisation(const std::string& key, const std
 }
 
 
-void HoI4Localisation::UpdateLocalisationWithCountry(
+void HoI4Localisation::UpdateLocalisationText(
 	const std::string& key,
 	const std::string& oldText,
 	const std::string& newText
@@ -743,46 +749,10 @@ void HoI4Localisation::UpdateLocalisationWithCountry(
 		{
 			if (auto focusText = focusesInLanguage->second.find(key); focusText != focusesInLanguage->second.end())
 			{
-				auto position = focusText->second.find(oldText);
-				focusText->second.replace(position, oldText.size(), newText);
-			}
-		}
-	}
-}
-
-
-void HoI4Localisation::UpdateLocalisationWithLocalizedCountry(
-	const std::string& key,
-	const std::string& oldText,
-	const std::string& newTextLocalisationKey
-)
-{
-	for (auto localisationsInLanguage: newFocuses)
-	{
-		std::string newText = "";
-		if (
-			auto countriesInLanguage = countryLocalisations.find(localisationsInLanguage.first);
-			countriesInLanguage != countryLocalisations.end()
-			)
-		{
-			if (
-				auto countryText = countriesInLanguage->second.find(newTextLocalisationKey);
-				countryText != countriesInLanguage->second.end()
-				)
-			{
-				newText = countryText->second;
-			}
-		}
-
-		if (
-			auto focusesInLanguage = newFocuses.find(localisationsInLanguage.first);
-			focusesInLanguage != newFocuses.end()
-			)
-		{
-			if (auto focusText = focusesInLanguage->second.find(key); focusText != focusesInLanguage->second.end())
-			{
-				auto position = focusText->second.find(oldText);
-				focusText->second.replace(position, oldText.size(), newText);
+				if (auto position = focusText->second.find(oldText); position != string::npos)
+				{
+					focusText->second.replace(position, oldText.size(), newText);
+				}
 			}
 		}
 	}
