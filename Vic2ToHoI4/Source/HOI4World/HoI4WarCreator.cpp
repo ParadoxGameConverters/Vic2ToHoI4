@@ -255,21 +255,29 @@ bool HoI4WarCreator::isImportantCountry(shared_ptr<HoI4::Country> country)
 }
 
 
-vector<shared_ptr<HoI4::Country>> HoI4WarCreator::findEvilCountries() const
+std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findEvilCountries() const
 {
-	map<double, shared_ptr<HoI4::Country>> countryEvilness;
-	vector<shared_ptr<HoI4::Country>> countriesEvilnessSorted;
+	std::map<double, std::shared_ptr<HoI4::Country>> countryEvilness;
+	std::vector<std::shared_ptr<HoI4::Country>> countriesEvilnessSorted;
 
-	for (auto country : theWorld->getCountries())
+	for (auto country: theWorld->getCountries())
 	{
 		double evilness = 0.5;
-		if (country.second->getGovernmentIdeology() == "fascism")
+		auto ideology = country.second->getGovernmentIdeology();
+		if (ideology == "fascism")
+		{
 			evilness += 5;
-		if (country.second->getGovernmentIdeology() == "absolutist")
+		}
+		else if (ideology == "absolutist")
+		{
 			evilness += 3;
-		if (country.second->getGovernmentIdeology() == "communist")
+		}
+		else if (ideology == "communism")
+		{
 			evilness += 3;
-		if (country.second->getGovernmentIdeology() == "anarcho_liberal")
+		}
+		else if (ideology == "radical")
+		{
 			evilness += 3;
 		auto countryrulingparty = country.second->getRulingParty();
 	
