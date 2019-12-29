@@ -91,6 +91,7 @@ void HoI4::decisions::updateDecisions(const std::set<std::string>& majorIdeologi
 	updateExiledGovernmentDecisions(majorIdeologies);
 	updateForeignInfluenceDecisions(majorIdeologies);
 	updateMtgNavalTreatyDecisions(majorIdeologies);
+	updateGenericDecisions(majorIdeologies);
 
 	decisionsCategories = std::make_unique<DecisionsCategories>(majorIdeologies);
 }
@@ -566,5 +567,25 @@ void HoI4::decisions::updateMtgNavalTreatyDecisions(const std::set<std::string>&
 				decisionsCategory.replaceDecision(decision);
 			}
 		}
+	}
+}
+
+
+void HoI4::decisions::updateGenericDecisions(const std::set<std::string>& majorIdeologies)
+{
+	for (auto& category : genericDecisions)
+	{
+		auto decisions = category.getDecisions();
+		decisions.erase(
+			std::remove_if(
+				decisions.begin(),
+				decisions.end(),
+				[](auto& decision)
+				{
+					return decision.getName() == "dismantle_maginot";
+				}
+			),
+			decisions.end());
+		category.replaceDecisions(decisions);
 	}
 }
