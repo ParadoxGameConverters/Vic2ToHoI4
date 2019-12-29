@@ -279,20 +279,28 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findEvilCountries() 
 		else if (ideology == "radical")
 		{
 			evilness += 3;
-		auto countryrulingparty = country.second->getRulingParty();
-	
-		if (countryrulingparty.getWarPolicy() == "jingoism")
+		}
+
+		auto warPolicy = country.second->getRulingParty().getWarPolicy();
+		if (warPolicy == "jingoism")
+		{
 			evilness += 3;
-		else if (countryrulingparty.getWarPolicy() == "pro_military")
+		}
+		else if (warPolicy == "pro_military")
+		{
 			evilness += 2;
-		else if (countryrulingparty.getWarPolicy() == "anti_military")
+		}
+		else if (warPolicy == "anti_military")
+		{
 			evilness -= 1;
+		}
 	
 		if (evilness > 2)
 		{
 			countryEvilness.insert(make_pair(evilness, country.second));
 		}
 	}
+
 	//put them into a vector so we know their order
 	for (auto iterator = countryEvilness.begin(); iterator != countryEvilness.end(); ++iterator)
 	{
