@@ -1267,15 +1267,11 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::absolutistWarCreator(shared_ptr<
 }
 
 
-vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<HoI4::Country> country, ofstream & AILog, const HoI4::MapData& theMapData)
+std::vector<std::shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(
+	std::shared_ptr<HoI4::Country> country,
+	std::ofstream & AILog, const HoI4::MapData& theMapData
+)
 {
-	// add small wars against neigbors for non-great powers
-	vector<shared_ptr<HoI4Faction>> countriesAtWar;
-	auto weakNeighbors = findWeakNeighbors(country, theMapData);
-
-	int numWarsWithNeighbors = 0;
-	vector<shared_ptr<HoI4Focus>> newFocuses;
-
 	if (theConfiguration.getDebug())
 	{
 		auto name = country->getSourceCountry().getName("english");
@@ -1289,40 +1285,40 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<Ho
 		}
 	}
 
-	for (auto target : weakNeighbors)
+	std::vector<std::shared_ptr<HoI4Faction>> countriesAtWar;
+
+	auto weakNeighbors = findWeakNeighbors(country, theMapData);
+	if (weakNeighbors.empty())
+	{
+		return countriesAtWar;
+	}
+
+	int numWarsWithNeighbors = 0;
+	auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
+
+	for (auto target: weakNeighbors)
 	{
 		if (numWarsWithNeighbors >= 2)
 		{
 			break;
 		}
 
-		int relations = 0;
-		auto relationsObj = country->getRelations(target->getTag());
-		if (relationsObj)
-		{
-			relations = relationsObj->getRelations();
-		}
-
-		if (relations >= 0)
+		auto relations = country->getRelations(target->getTag());
+		if (!relations || (relations->getRelations() > 0))
 		{
 			continue;
 		}
 
-		set<string> Allies = country->getAllies();
-		date startDate = date("1937.01.01");
-		startDate.increaseByMonths(relations / -4);
-		if (Allies.find(target->getTag()) == Allies.end())
+		if (auto allies = country->getAllies(); allies.count(target->getTag()) == 0)
 		{
-			auto possibleTargetName = target->getSourceCountry().getName("english");
-			string targetName;
-			if (possibleTargetName)
+			std::string targetName;
+			if (auto possibleTargetName = target->getSourceCountry().getName("english"); possibleTargetName)
 			{
 				targetName = *possibleTargetName;
 			}
 			else
 			{
 				LOG(LogLevel::Warning) << "Could not set target name in neighbor war creator";
-				targetName.clear();
 			}
 
 			countriesAtWar.push_back(findFaction(country));
@@ -1331,7 +1327,8 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<Ho
 				AILog << "Creating focus to attack " + targetName << "\n";
 			}
 
-			auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
+			date startDate = date("1937.01.01");
+			startDate.increaseByMonths(relations->getRelations() / -4);
 			focusTree->addNeighborWarBranch(
 				country->getTag(),
 				weakNeighbors,
@@ -1347,11 +1344,6 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(shared_ptr<Ho
 
 	if (numWarsWithNeighbors > 0)
 	{
-		auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
-		for (auto newFocus: newFocuses)
-		{
-			focusTree->addFocus(newFocus);
-		}
 		country->giveNationalFocus(focusTree);
 	}
 
