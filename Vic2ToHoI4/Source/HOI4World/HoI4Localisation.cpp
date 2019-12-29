@@ -345,6 +345,12 @@ void HoI4Localisation::CopyFocusLocalisations(const string& oldKey, const string
 		{
 			LOG(LogLevel::Warning) << "Could not find original localisation for " << oldKey << " in " << languageLocalisations.first;
 		}
+
+		auto oldLocalisationDescription = languageLocalisations.second.find(oldKey + "_desc");
+		if (oldLocalisationDescription != languageLocalisations.second.end())
+		{
+			newLanguage->second[newKey + "_desc"] = oldLocalisationDescription->second;
+		}
 	}
 }
 
