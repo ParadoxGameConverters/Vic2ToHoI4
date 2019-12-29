@@ -6,20 +6,20 @@ float HoI4::MtgShip::getStrength() const
 {
 	if (type == "carrier")
 	{
-		return 0.5;
+		return 0.5f;
 	}
 	if (type == "battleship")
 	{
-		return 1.0;
+		return 1.0f;
 	}
 	if (type == "battle_cruiser")
 	{
-		return 0.8;
+		return 0.8f;
 	}
 	if (type == "heavy_cruiser")
 	{
-		return 0.5;
+		return 0.5f;
 	}
 
-	return 0.0;
+	return 0.0f;
 }
