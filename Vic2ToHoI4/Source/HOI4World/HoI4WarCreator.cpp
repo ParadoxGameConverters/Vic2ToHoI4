@@ -280,6 +280,32 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findEvilCountries() 
 		{
 			evilness += 3;
 		}
+		else if (ideology == "neutrality")
+		{
+			auto leaderIdeology = country.second->getLeaderIdeology();
+			if (leaderIdeology == "fascism_ideology_neutral")
+			{
+				evilness += 5;
+			}
+			else if (
+				(leaderIdeology == "prussian_const_neutral") ||
+				(leaderIdeology == "absolute_monarchy_neutral") ||
+				(leaderIdeology == "dictatorship_neutral") ||
+				(leaderIdeology == "theocracy_neutral") ||
+				(leaderIdeology == "despotism")
+				)
+			{
+				evilness += 3;
+			}
+			else if (leaderIdeology == "leninism_neutral")
+			{
+				evilness += 5;
+			}
+			else if ((leaderIdeology == "minarchism_neutral") || (leaderIdeology == "oligarchism"))
+			{
+				evilness += 5;
+			}
+		}
 
 		auto warPolicy = country.second->getRulingParty().getWarPolicy();
 		if (warPolicy == "jingoism")
