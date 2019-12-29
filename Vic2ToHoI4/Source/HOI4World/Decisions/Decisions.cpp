@@ -73,6 +73,14 @@ HoI4::decisions::decisions(const Configuration& theConfiguration) noexcept
 		mtgNavalTreatyDecisions.push_back(category);
 	});
 	parseFile(theConfiguration.getHoI4Path() + "/common/decisions/MTG_naval_treaty.txt");
+
+	clearRegisteredKeywords();
+	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream)
+	{
+		const decisionsCategory category(categoryName, theStream);
+		genericDecisions.push_back(category);
+	});
+	parseFile(theConfiguration.getHoI4Path() + "/common/decisions/_generic_decisions.txt");
 }
 
 

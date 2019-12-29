@@ -27,21 +27,28 @@ void HoI4::outputDecisions(const decisions& theDecisions, const Configuration& t
 	outStream.close();
 
 	outStream.open("output/" + theConfiguration.getOutputName() + "/common/decisions/_exiled_governments_decisions.txt");
-	for (const auto& category : theDecisions.getExiledGovernmentsDecisions())
+	for (const auto& category: theDecisions.getExiledGovernmentsDecisions())
 	{
 		outStream << category;
 	}
 	outStream.close();
 
 	outStream.open("output/" + theConfiguration.getOutputName() + "/common/decisions/foreign_influence.txt");
-	for (const auto& category : theDecisions.getForeignInfluenceDecisions())
+	for (const auto& category: theDecisions.getForeignInfluenceDecisions())
 	{
 		outStream << category;
 	}
 	outStream.close();
 
 	outStream.open("output/" + theConfiguration.getOutputName() + "/common/decisions/MTG_naval_treaty.txt");
-	for (const auto& category : theDecisions.getMtgNavalTreatyDecisions())
+	for (const auto& category: theDecisions.getMtgNavalTreatyDecisions())
+	{
+		outStream << category;
+	}
+	outStream.close();
+
+	outStream.open("output/" + theConfiguration.getOutputName() + "/common/decisions/_generic_decisions.txt");
+	for (const auto& category: theDecisions.getGenericDecisions())
 	{
 		outStream << category;
 	}
