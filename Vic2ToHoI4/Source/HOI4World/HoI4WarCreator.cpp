@@ -257,7 +257,7 @@ bool HoI4WarCreator::isImportantCountry(shared_ptr<HoI4::Country> country)
 
 std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findEvilCountries() const
 {
-	std::map<double, std::shared_ptr<HoI4::Country>> countryEvilness;
+	std::multimap<double, std::shared_ptr<HoI4::Country>> countryEvilness;
 	std::vector<std::shared_ptr<HoI4::Country>> countriesEvilnessSorted;
 
 	for (auto country: theWorld->getCountries())
