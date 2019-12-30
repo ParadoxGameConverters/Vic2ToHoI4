@@ -7,6 +7,7 @@
 #include "DecisionsCategories.h"
 #include "DecisionsCategory.h"
 #include "../../Configuration.h"
+#include <map>
 #include <memory>
 #include <set>
 #include <string>
@@ -25,7 +26,11 @@ class decisions: commonItems::parser
 	public:
 		explicit decisions(const Configuration& theConfiguration) noexcept;
 
-		void updateDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
+		void updateDecisions(
+			const std::set<std::string>& majorIdeologies,
+			const std::map<int, int>& provinceToStateIdMap,
+			const Events& theEvents
+		);
 
 		[[nodiscard]] const DecisionsCategories& getDecisionsCategories() const { return *decisionsCategories; }
 		[[nodiscard]] const std::vector<decisionsCategory>& getStabilityDecisions() const { return stabilityDecisions; }
@@ -50,7 +55,10 @@ class decisions: commonItems::parser
 		void updateExiledGovernmentDecisions(const std::set<std::string>& majorIdeologies);
 		void updateForeignInfluenceDecisions(const std::set<std::string>& majorIdeologies);
 		void updateMtgNavalTreatyDecisions(const std::set<std::string>& majorIdeologies);
-		void updateGenericDecisions(const std::set<std::string>& majorIdeologies);
+		void updateGenericDecisions(
+			const std::map<int, int>& provinceToStateIdMap,
+			const std::set<std::string>& majorIdeologies
+		);
 
 		std::unique_ptr<DecisionsCategories> decisionsCategories;
 
