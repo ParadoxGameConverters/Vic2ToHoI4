@@ -852,7 +852,7 @@ TEST(HoI4World_Decisions_DecisionTests, CostCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
-	input << "\tcost = 50\n";
+	input << "\tcost = var:war_propaganda_cost?75\n";
 	input << "}";
 	HoI4::decision theDecision("decisionName", input);
 
@@ -863,7 +863,7 @@ TEST(HoI4World_Decisions_DecisionTests, CostCanBeSet)
 	expectedOutput << "\n";
 	expectedOutput << "\tdecisionName = {\n";
 	expectedOutput << "\n";
-	expectedOutput << "\t\tcost = 50\n";
+	expectedOutput << "\t\tcost = var:war_propaganda_cost?75\n";
 	expectedOutput << "\t}";
 	ASSERT_EQ(output.str(), expectedOutput.str());
 }
