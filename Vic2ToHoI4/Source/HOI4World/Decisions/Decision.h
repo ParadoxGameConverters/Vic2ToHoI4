@@ -58,7 +58,7 @@ class decision: commonItems::parser
 		std::string fireOnlyOnce;
 		std::optional<int> daysRemove;
 		std::optional<int> daysReEnable;
-		std::optional<int> cost;
+		std::optional<std::string> cost;
 		std::string modifier;
 };
 
