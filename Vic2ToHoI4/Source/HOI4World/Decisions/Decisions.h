@@ -6,6 +6,7 @@
 #include "IdeologicalDecisions.h"
 #include "DecisionsCategories.h"
 #include "DecisionsCategory.h"
+#include "StabilityWarSupportDecisions.h"
 #include "../../Configuration.h"
 #include <map>
 #include <memory>
@@ -24,7 +25,7 @@ class Events;
 class decisions: commonItems::parser
 {
 	public:
-		explicit decisions(const Configuration& theConfiguration) noexcept;
+		explicit decisions(const Configuration& theConfiguration);
 
 		void updateDecisions(
 			const std::set<std::string>& majorIdeologies,
@@ -33,7 +34,10 @@ class decisions: commonItems::parser
 		);
 
 		[[nodiscard]] const DecisionsCategories& getDecisionsCategories() const { return *decisionsCategories; }
-		[[nodiscard]] const std::vector<decisionsCategory>& getStabilityDecisions() const { return stabilityDecisions; }
+		[[nodiscard]] const std::vector<decisionsCategory>& getStabilityDecisions() const
+		{
+			return stabilityDecisions->getDecisions();
+		}
 		[[nodiscard]] const std::vector<decisionsCategory>& getPoliticalDecisions() const { return politicalDecisions; }
 		[[nodiscard]] const std::vector<decisionsCategory>& getExiledGovernmentsDecisions() const
 		{
@@ -50,7 +54,6 @@ class decisions: commonItems::parser
 		[[nodiscard]] const std::vector<decisionsCategory>& getGenericDecisions() const { return genericDecisions; }
 
 	private:
-		void updateStabilityDecisions(const std::set<std::string>& majorIdeologies);
 		void updatePoliticalDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
 		void updateExiledGovernmentDecisions(const std::set<std::string>& majorIdeologies);
 		void updateForeignInfluenceDecisions(const std::set<std::string>& majorIdeologies);
@@ -62,7 +65,7 @@ class decisions: commonItems::parser
 
 		std::unique_ptr<DecisionsCategories> decisionsCategories;
 
-		std::vector<decisionsCategory> stabilityDecisions;
+		std::unique_ptr<StabilityWarSupportDecisions> stabilityDecisions;
 		std::vector<decisionsCategory> politicalDecisions;
 		std::vector<decisionsCategory> exiledGovernmentsDecisions;
 		std::vector<decisionsCategory> foreignInfluenceDecisions;

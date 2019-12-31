@@ -6,16 +6,19 @@
 
 
 
-HoI4::decisions::decisions(const Configuration& theConfiguration) noexcept
+HoI4::decisions::decisions(const Configuration& theConfiguration)
 {
-	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream)
+	std::ifstream stabilityWarSupportFile(
+		theConfiguration.getHoI4Path() + "/common/decisions/stability_war_support.txt"
+	);
+	if (!stabilityWarSupportFile.is_open())
 	{
-		const decisionsCategory category(categoryName, theStream);
-		stabilityDecisions.push_back(category);
-	});
-	parseFile(theConfiguration.getHoI4Path() + "/common/decisions/stability_war_support.txt");
-
-	clearRegisteredKeywords();
+		throw std::runtime_error(
+			"Could not open " + theConfiguration.getHoI4Path() + "/common/decisions/stability_war_support.txt"
+		);
+	}
+	stabilityDecisions = std::make_unique<StabilityWarSupportDecisions>(stabilityWarSupportFile);
+	stabilityWarSupportFile.close();
 
 	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& unused, std::istream& theStream)
 	{
@@ -90,7 +93,7 @@ void HoI4::decisions::updateDecisions(
 	const Events& theEvents
 )
 {
-	updateStabilityDecisions(majorIdeologies);
+	stabilityDecisions->updateDecisions(majorIdeologies);
 	updatePoliticalDecisions(majorIdeologies, theEvents);
 	updateExiledGovernmentDecisions(majorIdeologies);
 	updateForeignInfluenceDecisions(majorIdeologies);
@@ -98,111 +101,6 @@ void HoI4::decisions::updateDecisions(
 	updateGenericDecisions(provinceToStateIdMap, majorIdeologies);
 
 	decisionsCategories = std::make_unique<DecisionsCategories>(majorIdeologies);
-}
-
-
-bool stabilityDecisionToUpdate(const std::string& decisionName);
-std::pair<std::string, std::string> determineIdeologiesForStabilityDecisions(
-	const std::set<std::string>& majorIdeologies
-);
-std::string updateTimeoutEffect(
-	std::string& originalEffect,
-	const std::pair<std::string, std::string>& ideologiesForStabilityDecisions
-);
-
-
-void HoI4::decisions::updateStabilityDecisions(const std::set<std::string>& majorIdeologies)
-{
-	const auto ideologiesForStabilityDecisions = determineIdeologiesForStabilityDecisions(majorIdeologies);
-
-	for (auto category: stabilityDecisions)
-	{
-		auto updated = false;
-		for (auto decision: category.getDecisions())
-		{
-			if (stabilityDecisionToUpdate(decision.getName()))
-			{
-				auto timeoutEffect = decision.getTimeoutEffect();
-				timeoutEffect = updateTimeoutEffect(timeoutEffect, ideologiesForStabilityDecisions);
-				decision.setTimeoutEffect(timeoutEffect);
-				category.replaceDecision(decision);
-				updated = true;
-			}
-		}
-		if (updated)
-		{
-			std::replace(stabilityDecisions.begin(), stabilityDecisions.end(), category, category);
-		}
-	}
-}
-
-
-bool stabilityDecisionToUpdate(const std::string& decisionName)
-{
-	return
-		decisionName == "draft_dodging_mission" ||
-		decisionName == "strikes_mission" ||
-		decisionName == "mutiny_mission" ||
-		decisionName == "demob_economic_mission" ||
-		decisionName == "demob_manpower_mission";
-}
-
-
-std::pair<std::string, std::string> determineIdeologiesForStabilityDecisions(
-	const std::set<std::string>& majorIdeologies
-)
-{
-	std::pair<std::string, std::string> theIdeologies;
-
-	if (majorIdeologies.count("communism") > 0)
-	{
-		theIdeologies.first = "communism";
-	}
-	else if (majorIdeologies.count("absolutist") > 0)
-	{
-		theIdeologies.first = "absolutist";
-	}
-	else
-	{
-		theIdeologies.first = "neutrality";
-	}
-
-	if (majorIdeologies.count("democratic") > 0)
-	{
-		theIdeologies.second = "democratic";
-	}
-	else if (majorIdeologies.count("radical") > 0)
-	{
-		theIdeologies.second = "radical";
-	}
-	else
-	{
-		theIdeologies.second = "neutrality";
-	}
-
-	return theIdeologies;
-}
-
-
-std::string updateTimeoutEffect(
-	std::string& originalEffect,
-	const std::pair<std::string, std::string>& ideologiesForStabilityDecisions
-) {
-	auto index = originalEffect.find("communism");
-	while (index != std::string::npos)
-	{
-		originalEffect.replace(index, 9, ideologiesForStabilityDecisions.first);
-		index = originalEffect.find("communism", index + ideologiesForStabilityDecisions.first.length());
-	}
-
-	index = originalEffect.find("democratic");
-	while (index != std::string::npos)
-	{
-		originalEffect.replace(index, 10, ideologiesForStabilityDecisions.second);
-		index = originalEffect.find("democratic", index + ideologiesForStabilityDecisions.second.length());
-	}
-
-	return originalEffect;
 }
 
 

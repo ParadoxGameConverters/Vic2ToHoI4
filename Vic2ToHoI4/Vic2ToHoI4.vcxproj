@@ -212,6 +212,7 @@
     <ClCompile Include="Source\HOI4World\Decisions\Decisions.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\IdeologicalDecisions.cpp" />
+    <ClCompile Include="Source\HOI4World\Decisions\StabilityWarSupportDecisions.cpp" />
     <ClCompile Include="Source\HOI4World\Division.cpp" />
     <ClCompile Include="Source\HOI4World\DivisionTemplate.cpp" />
     <ClCompile Include="Source\HOI4World\Event.cpp" />
@@ -345,6 +346,7 @@
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategories.h" />
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategory.h" />
     <ClInclude Include="Source\HOI4World\Decisions\IdeologicalDecisions.h" />
+    <ClInclude Include="Source\HOI4World\Decisions\StabilityWarSupportDecisions.h" />
     <ClInclude Include="Source\HOI4World\Division.h" />
     <ClInclude Include="Source\HOI4World\DivisionTemplate.h" />
     <ClInclude Include="Source\HOI4World\Event.h" />
