@@ -215,6 +215,7 @@
     <ClCompile Include="Source\HOI4World\Decisions\ExiledGovernmentsDecisions.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\ForeignInfluenceDecisions.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\IdeologicalDecisions.cpp" />
+    <ClCompile Include="Source\HOI4World\Decisions\NavalTreatyDecisions.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\PoliticalDecisions.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\StabilityWarSupportDecisions.cpp" />
     <ClCompile Include="Source\HOI4World\Division.cpp" />
@@ -353,6 +354,7 @@
     <ClInclude Include="Source\HOI4World\Decisions\ExiledGovernmentsDecisions.h" />
     <ClInclude Include="Source\HOI4World\Decisions\ForeignInfluenceDecisions.h" />
     <ClInclude Include="Source\HOI4World\Decisions\IdeologicalDecisions.h" />
+    <ClInclude Include="Source\HOI4World\Decisions\NavalTreatyDecisions.h" />
     <ClInclude Include="Source\HOI4World\Decisions\PoliticalDecisions.h" />
     <ClInclude Include="Source\HOI4World\Decisions\StabilityWarSupportDecisions.h" />
     <ClInclude Include="Source\HOI4World\Division.h" />
