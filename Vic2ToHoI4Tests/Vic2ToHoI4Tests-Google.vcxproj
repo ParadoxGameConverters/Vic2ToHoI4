@@ -80,6 +80,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsFile.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\ExiledGovernmentsDecisions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\ForeignInfluenceDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\IdeologicalDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\PoliticalDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\StabilityWarSupportDecisions.cpp" />
