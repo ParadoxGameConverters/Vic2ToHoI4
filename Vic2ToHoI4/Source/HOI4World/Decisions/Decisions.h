@@ -36,7 +36,7 @@ class decisions: commonItems::parser
 		[[nodiscard]] const DecisionsCategories& getDecisionsCategories() const { return *decisionsCategories; }
 		[[nodiscard]] const std::vector<decisionsCategory>& getStabilityDecisions() const
 		{
-			return stabilityDecisions->getDecisions();
+			return stabilityDecisions.getDecisions();
 		}
 		[[nodiscard]] const std::vector<decisionsCategory>& getPoliticalDecisions() const { return politicalDecisions; }
 		[[nodiscard]] const std::vector<decisionsCategory>& getExiledGovernmentsDecisions() const
@@ -65,7 +65,7 @@ class decisions: commonItems::parser
 
 		std::unique_ptr<DecisionsCategories> decisionsCategories;
 
-		std::unique_ptr<StabilityWarSupportDecisions> stabilityDecisions;
+		StabilityWarSupportDecisions stabilityDecisions;
 		std::vector<decisionsCategory> politicalDecisions;
 		std::vector<decisionsCategory> exiledGovernmentsDecisions;
 		std::vector<decisionsCategory> foreignInfluenceDecisions;

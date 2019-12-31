@@ -17,7 +17,7 @@ HoI4::decisions::decisions(const Configuration& theConfiguration)
 			"Could not open " + theConfiguration.getHoI4Path() + "/common/decisions/stability_war_support.txt"
 		);
 	}
-	stabilityDecisions = std::make_unique<StabilityWarSupportDecisions>(stabilityWarSupportFile);
+	stabilityDecisions.importDecisions(stabilityWarSupportFile);
 	stabilityWarSupportFile.close();
 
 	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& unused, std::istream& theStream)
@@ -93,7 +93,7 @@ void HoI4::decisions::updateDecisions(
 	const Events& theEvents
 )
 {
-	stabilityDecisions->updateDecisions(majorIdeologies);
+	stabilityDecisions.updateDecisions(majorIdeologies);
 	updatePoliticalDecisions(majorIdeologies, theEvents);
 	updateExiledGovernmentDecisions(majorIdeologies);
 	updateForeignInfluenceDecisions(majorIdeologies);

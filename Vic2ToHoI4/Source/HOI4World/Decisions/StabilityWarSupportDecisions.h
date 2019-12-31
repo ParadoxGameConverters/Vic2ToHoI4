@@ -3,8 +3,7 @@
 
 
 
-#include"DecisionsCategory.h"
-#include "newParser.h"
+#include "DecisionsFile.h"
 #include <set>
 #include <string>
 #include <vector>
@@ -14,17 +13,10 @@
 namespace HoI4
 {
 
-class StabilityWarSupportDecisions: commonItems::parser
+class StabilityWarSupportDecisions: public DecisionsFile
 {
 	public:
-		StabilityWarSupportDecisions(std::istream& theStream);
-
 		void updateDecisions(const std::set<std::string>& majorIdeologies);
-
-		[[nodiscard]] const std::vector<decisionsCategory>& getDecisions() const { return decisions; }
-
-	private:
-		std::vector<decisionsCategory> decisions;
 };
 
 }
