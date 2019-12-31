@@ -1037,7 +1037,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home, 
 		newFocus->available = "= {\n";
 		newFocus->available += "			threat > " + to_string(0.20 * WTModifier / 1000) + "\n";
 		newFocus->available += "		}";
-		newFocus->xPos = nextFreeColumn + (CountriesToContain.size() * 2) - 1;
+		newFocus->xPos = nextFreeColumn + CountriesToContain.size() - 1;
 		focuses.push_back(newFocus);
 	}
 	else
@@ -1071,7 +1071,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home, 
 		throw std::runtime_error("Could not load focus Lim");
 	}
 
-	int relavtivePos = 1 - (CountriesToContain.size() * 2);
+	int relavtivePos = 1 - CountriesToContain.size();
 	for (auto country : CountriesToContain)
 	{
 		auto possibleContainedCountryName = country->getSourceCountry().getName("english");
@@ -1151,7 +1151,6 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home, 
 			auto newFocus = originalFocus->second.makeTargetedCopy(Home->getTag(), country->getTag());
 			newFocus->prerequisites.clear();
 			newFocus->prerequisites.push_back("= { focus =  Embargo" + Home->getTag() + country->getTag() + " }");
-			newFocus->prerequisites.push_back("= { focus =  Lim" + Home->getTag() + " }");
 			newFocus->bypass = "= {\n";
 			newFocus->bypass += "			has_war_with = " + country->getTag() + "\n";
 			newFocus->bypass += "		}";
@@ -1181,7 +1180,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home, 
 			newFocus->completionReward += "		}";
 			focuses.push_back(newFocus);
 
-			relavtivePos += 4;
+			relavtivePos += 2;
 		}
 		else
 		{
@@ -2115,7 +2114,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<
 			}
 			else
 			{
-				newFocus->xPos = nextFreeColumn + newAllies.size() + 1;
+				newFocus->xPos = nextFreeColumn + newAllies.size() - 1;
 			}
 			newFocus->yPos = 0;
 			newFocus->completionReward += "= {\n";
@@ -2342,6 +2341,7 @@ void HoI4FocusTree::addNeighborWarBranch(
 	{
 		throw std::runtime_error("Could not load focus NeighborWar");
 	}
+	nextFreeColumn += 2;
 }
 
 void HoI4FocusTree::removeFocus(const string& id)
