@@ -7,6 +7,7 @@
 #include "DecisionsCategory.h"
 #include "ExiledGovernmentsDecisions.h"
 #include "ForeignInfluenceDecisions.h"
+#include "GenericDecisions.h"
 #include "NavalTreatyDecisions.h"
 #include "PoliticalDecisions.h"
 #include "StabilityWarSupportDecisions.h"
@@ -55,20 +56,18 @@ class decisions: commonItems::parser
 		{
 			return navalTreatyDecisions.getDecisions();
 		}
-		[[nodiscard]] const std::vector<decisionsCategory>& getGenericDecisions() const { return genericDecisions; }
+		[[nodiscard]] const std::vector<decisionsCategory>& getGenericDecisions() const
+		{
+			return genericDecisions.getDecisions();
+		}
 
 	private:
-		void updateGenericDecisions(
-			const std::map<int, int>& provinceToStateIdMap,
-			const std::set<std::string>& majorIdeologies
-		);
-
 		StabilityWarSupportDecisions stabilityDecisions;
 		PoliticalDecisions politicalDecisions;
 		ExiledGovernmentsDecisions exiledGovernmentsDecisions;
 		ForeignInfluenceDecisions foreignInfluenceDecisions;
 		NavalTreatyDecisions navalTreatyDecisions;
-		std::vector<decisionsCategory> genericDecisions;
+		GenericDecisions genericDecisions;
 };
 
 }
