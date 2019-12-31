@@ -6,6 +6,7 @@
 #include "IdeologicalDecisions.h"
 #include "DecisionsCategories.h"
 #include "DecisionsCategory.h"
+#include "PoliticalDecisions.h"
 #include "StabilityWarSupportDecisions.h"
 #include "../../Configuration.h"
 #include <map>
@@ -38,7 +39,10 @@ class decisions: commonItems::parser
 		{
 			return stabilityDecisions.getDecisions();
 		}
-		[[nodiscard]] const std::vector<decisionsCategory>& getPoliticalDecisions() const { return politicalDecisions; }
+		[[nodiscard]] const std::vector<decisionsCategory>& getPoliticalDecisions() const
+		{
+			return politicalDecisions.getDecisions();
+		}
 		[[nodiscard]] const std::vector<decisionsCategory>& getExiledGovernmentsDecisions() const
 		{
 			return exiledGovernmentsDecisions;
@@ -54,7 +58,6 @@ class decisions: commonItems::parser
 		[[nodiscard]] const std::vector<decisionsCategory>& getGenericDecisions() const { return genericDecisions; }
 
 	private:
-		void updatePoliticalDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
 		void updateExiledGovernmentDecisions(const std::set<std::string>& majorIdeologies);
 		void updateForeignInfluenceDecisions(const std::set<std::string>& majorIdeologies);
 		void updateMtgNavalTreatyDecisions(const std::set<std::string>& majorIdeologies);
@@ -66,13 +69,11 @@ class decisions: commonItems::parser
 		std::unique_ptr<DecisionsCategories> decisionsCategories;
 
 		StabilityWarSupportDecisions stabilityDecisions;
-		std::vector<decisionsCategory> politicalDecisions;
+		PoliticalDecisions politicalDecisions;
 		std::vector<decisionsCategory> exiledGovernmentsDecisions;
 		std::vector<decisionsCategory> foreignInfluenceDecisions;
 		std::vector<decisionsCategory> mtgNavalTreatyDecisions;
 		std::vector<decisionsCategory> genericDecisions;
-
-		std::vector<IdeologicalDecisions> allIdeologicalDecisions;
 };
 
 }
