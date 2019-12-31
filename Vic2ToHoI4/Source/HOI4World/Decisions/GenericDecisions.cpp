@@ -37,23 +37,25 @@ void HoI4::GenericDecisions::updateDecisions(
 }
 
 
+std::set<int> getRelevantStatesFromProvinces(
+	const std::set<int>& provinces,
+	const std::set<int> statesToExclude,
+	const std::map<int, int>& provinceToStateIdMap
+);
+
+
 HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::map<int, int>& provinceToStateIdMap)
 {
-	std::set<int> relevantSelfProvinces{
-					12049, // north-west suez canal
-					4073, // south-west suez canal
-					1155, // north-east suez canal
-					9947 // south-east suez canal
-	};
-
-	std::set<int> relevantSelfStates;
-	for (const auto& province : relevantSelfProvinces)
-	{
-		if (auto mapping = provinceToStateIdMap.find(province); mapping != provinceToStateIdMap.end())
+	std::set<int> relevantSelfStates = getRelevantStatesFromProvinces(
 		{
-			relevantSelfStates.insert(mapping->second);
-		}
-	}
+			12049, // north-west suez canal
+			4073, // south-west suez canal
+			1155, // north-east suez canal
+			9947 // south-east suez canal
+		},
+		{},
+		provinceToStateIdMap
+	);
 
 	std::set<int> relevantOtherProvinces{
 		7079, 5078, 9989, 12033, 11967, 12091, 10061, 7148, 11910, // Marsa Matruh (452)
@@ -66,56 +68,44 @@ HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::ma
 		7170, 7001, 1544, 4440, 7151, 4574, 10089, 4017, 4591, 4562, 4115, 11976, 4603 // Jordan (455)
 	};
 
-	std::set<int> relevantOtherStates;
-	for (const auto& province : relevantOtherProvinces)
-	{
-		if (
-			auto mapping = provinceToStateIdMap.find(province);
-			mapping != provinceToStateIdMap.end() && (relevantSelfStates.count(mapping->second) == 0)
-			)
+	std::set<int> relevantOtherStates = getRelevantStatesFromProvinces(
 		{
-			relevantOtherStates.insert(mapping->second);
-		}
-	}
+			7079, 5078, 9989, 12033, 11967, 12091, 10061, 7148, 11910, // Marsa Matruh (452)
+			1071, 4145, 4076, 7164, 7091, 10073, 11964, // Alexandria (447)
+			992, 7117, 3996, 4055, 1068, 10031, 10005, 7011, 12004, 4143, 7188, // Cairo (446)
+			7144, 7030, 11974, 10028, 12044, 1151, 10097, 7073, 12071, 1028, 1064, 11999, 1206, 12771, 10844, // Aswan (456)
+			10126, 1080, 9957, 12002, 12889, 4068, 7156, 5069, 4910, // Eastern Desert (457)
+			11979, 4161, 11922, 10002, 1112, 12073, 10099, // Sinai (453)
+			1065, 1201, 4206, 4088, 11970, 7107, 1086, 7176, 1015, // Palestine (454)
+			7170, 7001, 1544, 4440, 7151, 4574, 10089, 4017, 4591, 4562, 4115, 11976, 4603 // Jordan (455)
+		},
+		relevantSelfStates,
+		provinceToStateIdMap
+	);
 
-	std::set<int> relevantNileProvinces{
+	std::set<int> relevantNileStates = getRelevantStatesFromProvinces(
+		{
 		7144, 7030, 11974, 10028, 12044, 1151, 10097, 7073, 12071, 1028, 1064, 11999, 1206, 12771, 10844, // Aswan (456)
 		10126, 1080, 9957, 12002, 12889, 4068, 7156, 5069, 4910, // Eastern Desert (457)
-	};
+		},
+		{},
+		provinceToStateIdMap
+	);
 
-	std::set<int> relevantNileStates;
-	for (const auto& province : relevantNileProvinces)
-	{
-		if (auto mapping = provinceToStateIdMap.find(province); mapping != provinceToStateIdMap.end())
+	std::set<int> relevantLandRouteStates = getRelevantStatesFromProvinces(
+		{ 1977, 12725, 2003 }, // Khartoum
+		{},
+		provinceToStateIdMap
+	);
+
+	std::set<int> relevantSupplyStates = getRelevantStatesFromProvinces(
 		{
-			relevantNileStates.insert(mapping->second);
-		}
-	}
-
-	std::set<int> relevantLandRouteProvinces{ 1977, 12725, 2003 }; // Khartoum
-
-	std::set<int> relevantLandRouteStates;
-	for (const auto& province : relevantLandRouteProvinces)
-	{
-		if (auto mapping = provinceToStateIdMap.find(province); mapping != provinceToStateIdMap.end())
-		{
-			relevantLandRouteStates.insert(mapping->second);
-		}
-	}
-
-	std::set<int> relevantSupplyProvinces{
 		5047, 5091, 12766, 8043, // Eritria
 		4985, 8124, 10777, 10833, 12759, 10921, 1966, 10891, 10818, 12840, 5065, 12991, 10928, 8164, 12941 // Somaliland
-	};
-
-	std::set<int> relevantSupplyStates;
-	for (const auto& province : relevantSupplyProvinces)
-	{
-		if (auto mapping = provinceToStateIdMap.find(province); mapping != provinceToStateIdMap.end())
-		{
-			relevantSupplyStates.insert(mapping->second);
-		}
-	}
+		},
+		{},
+		provinceToStateIdMap
+	);
 
 	std::optional<int> gibraltar;
 	if (auto mapping = provinceToStateIdMap.find(4135); mapping != provinceToStateIdMap.end())
@@ -254,4 +244,26 @@ HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::ma
 	blowSuezDecision.setAiWillDo(aiWillDo);
 
 	return std::move(blowSuezDecision);
+}
+
+
+std::set<int> getRelevantStatesFromProvinces(
+	const std::set<int>& provinces,
+	const std::set<int> statesToExclude,
+	const std::map<int, int>& provinceToStateIdMap
+)
+{
+	std::set<int> relevantStates;
+	for (const auto& province: provinces)
+	{
+		if (
+			auto mapping = provinceToStateIdMap.find(province);
+			mapping != provinceToStateIdMap.end() && (statesToExclude.count(mapping->second) == 0)
+			)
+		{
+			relevantStates.insert(mapping->second);
+		}
+	}
+
+	return relevantStates;
 }
