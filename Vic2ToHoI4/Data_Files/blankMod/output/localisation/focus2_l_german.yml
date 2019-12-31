@@ -52,4 +52,5 @@
  NeighborWar:0 "Krieg mit [$TARGET.GetName]"
  _Summit:0 "Aufruf zum [$TARGET.GetName] Gipfel"
  Alliance_:0 "Allianz mit [$TARGET.GetName]"
- GP_War:0 "Krieg mit [$TARGET.GetName]"
+ GPWar:0 "Krieg mit [$TARGET.GetName]"
+ War_with:0 "Krieg mit [$TARGET.GetName]"
