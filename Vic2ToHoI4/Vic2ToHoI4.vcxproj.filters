@@ -449,6 +449,9 @@
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.cpp">
       <Filter>Hoi4Outputter\States</Filter>
+	</ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\StabilityWarSupportDecisions.cpp">
+      <Filter>HoI4World\Decisions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -856,6 +859,9 @@
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.h">
       <Filter>Hoi4Outputter\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\StabilityWarSupportDecisions.h">
+      <Filter>HoI4World\Decisions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
