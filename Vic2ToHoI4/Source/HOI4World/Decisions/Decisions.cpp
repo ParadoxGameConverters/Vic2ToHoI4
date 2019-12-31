@@ -40,40 +40,25 @@ HoI4::decisions::decisions(const Configuration& theConfiguration)
 	exiledGovernmentsDecisions.importDecisions(exiledGovernmentsFile);
 	exiledGovernmentsFile.close();
 
-	clearRegisteredKeywords();
-	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream)
+	std::ifstream foreignInfluenceFile(
+		theConfiguration.getHoI4Path() + "/common/decisions/foreign_influence.txt"
+	);
+	if (!foreignInfluenceFile.is_open())
 	{
-		const decisionsCategory category(categoryName, theStream);
-		foreignInfluenceDecisions.push_back(category);
-	});
-	parseFile(theConfiguration.getHoI4Path() + "/common/decisions/foreign_influence.txt");
-
-	clearRegisteredKeywords();
-	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream)
+		throw std::runtime_error(
+			"Could not open " + theConfiguration.getHoI4Path() + "/common/decisions/foreign_influence.txt"
+		);
+	}
+	foreignInfluenceDecisions.importDecisions(foreignInfluenceFile);
+	foreignInfluenceFile.close();
+	foreignInfluenceFile.open("DataFiles/foreignInfluenceDecisions.txt");
+	if (!foreignInfluenceFile.is_open())
 	{
-		const decisionsCategory category(categoryName, theStream);
+		throw std::runtime_error("Could not open DataFiles/foreignInfluenceDecisions.txt");
+	}
+	foreignInfluenceDecisions.importDecisions(foreignInfluenceFile);
+	foreignInfluenceFile.close();
 
-		auto categoryMerged = false;
-		for (auto& oldCategory: foreignInfluenceDecisions)
-		{
-			if (oldCategory.getName() == category.getName())
-			{
-				for (auto decision: category.getDecisions())
-				{
-					oldCategory.addDecision(decision);
-				}
-				categoryMerged = true;
-			}
-		}
-
-		if (!categoryMerged)
-		{
-			foreignInfluenceDecisions.push_back(category);
-		}
-	});
-	parseFile("DataFiles/foreignInfluenceDecisions.txt");
-
-	clearRegisteredKeywords();
 	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream)
 	{
 		const decisionsCategory category(categoryName, theStream);
@@ -100,7 +85,7 @@ void HoI4::decisions::updateDecisions(
 	stabilityDecisions.updateDecisions(majorIdeologies);
 	politicalDecisions.updateDecisions(majorIdeologies, theEvents);
 	exiledGovernmentsDecisions.updateDecisions(majorIdeologies);
-	updateForeignInfluenceDecisions(majorIdeologies);
+	foreignInfluenceDecisions.updateDecisions(majorIdeologies);
 	updateMtgNavalTreatyDecisions(majorIdeologies);
 	updateGenericDecisions(provinceToStateIdMap, majorIdeologies);
 
@@ -111,75 +96,7 @@ void HoI4::decisions::updateDecisions(
 
 
 
-std::regex createIdeologyRegex(const std::set<std::string>& majorIdeologies);
 
-
-void HoI4::decisions::updateForeignInfluenceDecisions(const std::set<std::string>& majorIdeologies)
-{
-	const auto ideologyRegex = createIdeologyRegex(majorIdeologies);
-	for (auto& category: foreignInfluenceDecisions)
-	{
-		std::smatch ideologyMatch;
-		auto decisions = category.getDecisions();
-		decisions.erase(
-			std::remove_if(
-				decisions.begin(),
-				decisions.end(),
-				[&ideologyMatch, &ideologyRegex](auto& decision)
-				{
-					auto visible = decision.getVisible();
-					return !std::regex_search(visible, ideologyMatch, ideologyRegex);
-				}
-			),
-			decisions.end());
-		category.replaceDecisions(decisions);
-
-		for (auto decision: category.getDecisions())
-		{
-			auto visible = decision.getVisible();
-			std::regex_search(visible, ideologyMatch, ideologyRegex);
-
-			std::string newVisible;
-			std::smatch typeMatch;
-			if (std::regex_search(visible, typeMatch, std::regex("99")))
-			{
-				newVisible += "= {\n";
-				newVisible += "\t\t\thas_government = " + ideologyMatch.str() + "\n";
-				newVisible += "\t\t\tFROM = {\n";
-				newVisible += "\t\t\t\tis_puppet_of = ROOT\n";
-				newVisible += "\t\t\t\t" + ideologyMatch.str() + " < 0.99\n";
-				newVisible += "\t\t\t}\n";
-				newVisible += "\t\t}";
-			}
-			else
-			{
-				newVisible += "= {\n";
-				newVisible += "\t\t\thas_government = " + ideologyMatch.str() + "\n";
-				newVisible += "\t\t\tFROM = {\n";
-				newVisible += "\t\t\t\tis_puppet_of = ROOT\n";
-				newVisible += "\t\t\t\tNOT = { has_government = " + ideologyMatch.str() + " }\n";
-				newVisible += "\t\t\t}\n";
-				newVisible += "\t\t}";
-			}
-
-			decision.setVisible(newVisible);
-			category.replaceDecision(decision);
-		}
-	}
-}
-
-
-std::regex createIdeologyRegex(const std::set<std::string>& majorIdeologies)
-{
-	std::string regexString{ "(" };
-	for (const auto& ideology: majorIdeologies)
-	{
-		regexString += ideology + "|";
-	}
-	regexString.pop_back();
-	regexString += ")";
-	return std::regex{ regexString };
-}
 
 
 void HoI4::decisions::updateMtgNavalTreatyDecisions(const std::set<std::string>& majorIdeologies)
