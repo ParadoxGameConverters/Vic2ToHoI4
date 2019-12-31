@@ -41,7 +41,7 @@ void HoI4::outputDecisions(const decisions& theDecisions, const Configuration& t
 	outStream.close();
 
 	outStream.open("output/" + theConfiguration.getOutputName() + "/common/decisions/MTG_naval_treaty.txt");
-	for (const auto& category: theDecisions.getMtgNavalTreatyDecisions())
+	for (const auto& category: theDecisions.getNavalTreatyDecisions())
 	{
 		outStream << category;
 	}

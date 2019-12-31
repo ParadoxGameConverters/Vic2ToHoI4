@@ -8,6 +8,7 @@
 #include "DecisionsCategory.h"
 #include "ExiledGovernmentsDecisions.h"
 #include "ForeignInfluenceDecisions.h"
+#include "NavalTreatyDecisions.h"
 #include "PoliticalDecisions.h"
 #include "StabilityWarSupportDecisions.h"
 #include "../../Configuration.h"
@@ -53,14 +54,13 @@ class decisions: commonItems::parser
 		{
 			return foreignInfluenceDecisions.getDecisions();
 		}
-		[[nodiscard]] const std::vector<decisionsCategory>& getMtgNavalTreatyDecisions() const
+		[[nodiscard]] const std::vector<decisionsCategory>& getNavalTreatyDecisions() const
 		{
-			return mtgNavalTreatyDecisions;
+			return navalTreatyDecisions.getDecisions();
 		}
 		[[nodiscard]] const std::vector<decisionsCategory>& getGenericDecisions() const { return genericDecisions; }
 
 	private:
-		void updateMtgNavalTreatyDecisions(const std::set<std::string>& majorIdeologies);
 		void updateGenericDecisions(
 			const std::map<int, int>& provinceToStateIdMap,
 			const std::set<std::string>& majorIdeologies
@@ -72,7 +72,7 @@ class decisions: commonItems::parser
 		PoliticalDecisions politicalDecisions;
 		ExiledGovernmentsDecisions exiledGovernmentsDecisions;
 		ForeignInfluenceDecisions foreignInfluenceDecisions;
-		std::vector<decisionsCategory> mtgNavalTreatyDecisions;
+		NavalTreatyDecisions navalTreatyDecisions;
 		std::vector<decisionsCategory> genericDecisions;
 };
 
