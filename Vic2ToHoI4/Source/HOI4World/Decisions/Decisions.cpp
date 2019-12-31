@@ -28,12 +28,17 @@ HoI4::decisions::decisions(const Configuration& theConfiguration)
 	politicalDecisions.importDecisions(ideologicalDecisionsFile);
 	ideologicalDecisionsFile.close();
 
-	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream)
+	std::ifstream exiledGovernmentsFile(
+		theConfiguration.getHoI4Path() + "/common/decisions/_exiled_governments_decisions.txt"
+	);
+	if (!exiledGovernmentsFile.is_open())
 	{
-		const decisionsCategory category(categoryName, theStream);
-		exiledGovernmentsDecisions.push_back(category);
-	});
-	parseFile(theConfiguration.getHoI4Path() + "/common/decisions/_exiled_governments_decisions.txt");
+		throw std::runtime_error(
+			"Could not open " + theConfiguration.getHoI4Path() + "/common/decisions/_exiled_governments_decisions.txt"
+		);
+	}
+	exiledGovernmentsDecisions.importDecisions(exiledGovernmentsFile);
+	exiledGovernmentsFile.close();
 
 	clearRegisteredKeywords();
 	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream)
@@ -94,7 +99,7 @@ void HoI4::decisions::updateDecisions(
 {
 	stabilityDecisions.updateDecisions(majorIdeologies);
 	politicalDecisions.updateDecisions(majorIdeologies, theEvents);
-	updateExiledGovernmentDecisions(majorIdeologies);
+	exiledGovernmentsDecisions.updateDecisions(majorIdeologies);
 	updateForeignInfluenceDecisions(majorIdeologies);
 	updateMtgNavalTreatyDecisions(majorIdeologies);
 	updateGenericDecisions(provinceToStateIdMap, majorIdeologies);
@@ -103,93 +108,7 @@ void HoI4::decisions::updateDecisions(
 }
 
 
-bool exiledGovernmentDecisionToUpdate(const std::string& decisionName);
 
-
-void HoI4::decisions::updateExiledGovernmentDecisions(const std::set<std::string>& majorIdeologies)
-{
-	for (auto category: exiledGovernmentsDecisions)
-	{
-		auto updated = false;
-		for (auto decision: category.getDecisions())
-		{
-			if (exiledGovernmentDecisionToUpdate(decision.getName()))
-			{
-				std::stringstream available;
-				available << "{\n";
-				available << "\t\t\tFROM = {\n";
-				available << "\t\t\t\thas_legitimacy > 50\n";
-				available << "\t\t\t\tOR = {\n";
-				for (const auto& ideology: majorIdeologies)
-				{
-					if ((ideology == "democratic") || (ideology == "neutrality"))
-					{
-						continue;
-					}
-					available << "\t\t\t\t\t" << ideology << " > 0.1\n";
-				}
-				available << "\t\t\t\t}\n";
-				available << "\t\t\t}\n";
-				available << "\t\t}";
-				decision.setAvailable(available.str());
-
-				std::stringstream visibleAndTT;
-				visibleAndTT << "{\n";
-				visibleAndTT << "\t\t\tFROM = {\n";
-				visibleAndTT << "\t\t\t\tis_exiled_in = ROOT\n";
-				visibleAndTT << "\t\t\t\thas_legitimacy > 40\n";
-				visibleAndTT << "\t\t\t\tOR = {\n";
-				for (const auto& ideology: majorIdeologies)
-				{
-					if ((ideology == "democratic") || (ideology == "neutrality"))
-					{
-						continue;
-					}
-					visibleAndTT << "\t\t\t\t\t" << ideology << " > 0.05\n";
-				}
-				visibleAndTT << "\t\t\t\t}\n";
-				visibleAndTT << "\t\t\t}\n";
-				visibleAndTT << "\t\t}";
-				decision.setVisible(visibleAndTT.str());
-				decision.setTargetTrigger(visibleAndTT.str());
-
-				std::stringstream targetedModifier;
-				targetedModifier << "{\n";
-				targetedModifier << "\t\t\ttag = FROM\n";
-				targetedModifier << "\t\t\ttargeted_legitimacy_daily = -1\n";
-				if (majorIdeologies.count("democratic") > 0)
-				{
-					targetedModifier << "\t\t\tdemocratic_drift = 0.05\n";
-				}
-				else
-				{
-					targetedModifier << "\t\t\tneutrality_drift = 0.05\n";
-				}
-				targetedModifier << "\t\t}";
-				decision.setTargetedModifier(targetedModifier.str());
-
-				category.replaceDecision(decision);
-				updated = true;
-				break;
-			}
-		}
-		if (updated)
-		{
-			std::replace(
-				exiledGovernmentsDecisions.begin(),
-				exiledGovernmentsDecisions.end(),
-				category,
-				category
-			);
-		}
-	}
-}
-
-
-bool exiledGovernmentDecisionToUpdate(const std::string& decisionName)
-{
-	return (decisionName == "purge_infiltrators");
-}
 
 
 std::regex createIdeologyRegex(const std::set<std::string>& majorIdeologies);
