@@ -180,7 +180,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\War.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarGoal.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\World.cpp" />
-    <ClCompile Include="HoI4WorldTests\Decisions\DecisionsCategoriesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Decisions\DecisionsCategoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Decisions\DecisionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Decisions\IdeologicalDecisionsTests.cpp" />

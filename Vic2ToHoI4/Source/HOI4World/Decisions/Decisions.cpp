@@ -92,8 +92,6 @@ void HoI4::decisions::updateDecisions(
 	foreignInfluenceDecisions.updateDecisions(majorIdeologies);
 	navalTreatyDecisions.updateDecisions(majorIdeologies);
 	updateGenericDecisions(provinceToStateIdMap, majorIdeologies);
-
-	decisionsCategories = std::make_unique<DecisionsCategories>(majorIdeologies);
 }
 
 

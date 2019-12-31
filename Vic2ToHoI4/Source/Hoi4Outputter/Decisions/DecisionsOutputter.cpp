@@ -1,15 +1,20 @@
 #include "DecisionsOutputter.h"
+#include "DecisionsCategoriesOutputter.h"
 #include <fstream>
 
 
 
-void HoI4::outputDecisions(const decisions& theDecisions, const Configuration& theConfiguration)
+void HoI4::outputDecisions(
+	const decisions& theDecisions,
+	const std::set<std::string>& majorIdeologies,
+	const Configuration& theConfiguration
+)
 {
 	std::ofstream outStream(
 		"output/" + theConfiguration.getOutputName() + "/common/decisions/categories/00_decision_categories.txt",
 		std::ostream::app
 	);
-	outStream << theDecisions.getDecisionsCategories();
+	outputDecisionCategories(outStream, majorIdeologies);
 	outStream.close();
 
 	outStream.open("output/" + theConfiguration.getOutputName() + "/common/decisions/stability_war_support.txt");
