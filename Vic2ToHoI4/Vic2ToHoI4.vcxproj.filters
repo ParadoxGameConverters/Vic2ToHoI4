@@ -459,6 +459,9 @@
     <ClCompile Include="Source\HOI4World\Decisions\NavalTreatyDecisions.cpp">
       <Filter>HoI4World\Decisions</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\GenericDecisions.cpp">
+      <Filter>Hoi4Outputter\Decisions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -874,6 +877,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Decisions\NavalTreatyDecisions.h">
       <Filter>HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\GenericDecisions.h">
+      <Filter>Hoi4Outputter\Decisions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
