@@ -2,9 +2,9 @@
 
 
 
-std::ostream& HoI4::operator<<(std::ostream& out, const DecisionsCategories& theCategories)
+void HoI4::outputDecisionCategories(std::ostream& out, const std::set<std::string>& majorIdeologies)
 {
-	if (theCategories.majorIdeologies.count("fascism") > 0)
+	if (majorIdeologies.count("fascism") > 0)
 	{
 		out << "fascism_on_the_rise = {\n";
 		out << "\ticon = generic_fascism\n";
@@ -20,7 +20,7 @@ std::ostream& HoI4::operator<<(std::ostream& out, const DecisionsCategories& the
 		out << "}\n";
 		out << "\n";
 	}
-	if (theCategories.majorIdeologies.count("absolutist") > 0)
+	if (majorIdeologies.count("absolutist") > 0)
 	{
 		out << "absolutist_on_the_rise = {\n";
 		out << "\ticon = generic_fascism\n";
@@ -36,7 +36,7 @@ std::ostream& HoI4::operator<<(std::ostream& out, const DecisionsCategories& the
 		out << "}\n";
 		out << "\n";
 	}
-	if (theCategories.majorIdeologies.count("democratic") > 0)
+	if (majorIdeologies.count("democratic") > 0)
 	{
 		out << "democratic_on_the_rise = {\n";
 		out << "\ticon = generic_democracy\n";
@@ -52,7 +52,7 @@ std::ostream& HoI4::operator<<(std::ostream& out, const DecisionsCategories& the
 		out << "}\n";
 		out << "\n";
 	}
-	if (theCategories.majorIdeologies.count("communism") > 0)
+	if (majorIdeologies.count("communism") > 0)
 	{
 		out << "communism_on_the_rise = {\n";
 		out << "\ticon = generic_communism\n";
@@ -68,7 +68,7 @@ std::ostream& HoI4::operator<<(std::ostream& out, const DecisionsCategories& the
 		out << "}\n";
 		out << "\n";
 	}
-	if (theCategories.majorIdeologies.count("radical") > 0)
+	if (majorIdeologies.count("radical") > 0)
 	{
 		out << "radical_on_the_rise = {\n";
 		out << "\ticon = generic_communism\n";
@@ -84,6 +84,4 @@ std::ostream& HoI4::operator<<(std::ostream& out, const DecisionsCategories& the
 		out << "}\n";
 		out << "\n";
 	}
-
-	return out;
 }

@@ -4,7 +4,6 @@
 
 #include "newParser.h"
 #include "IdeologicalDecisions.h"
-#include "DecisionsCategories.h"
 #include "DecisionsCategory.h"
 #include "ExiledGovernmentsDecisions.h"
 #include "ForeignInfluenceDecisions.h"
@@ -13,7 +12,6 @@
 #include "StabilityWarSupportDecisions.h"
 #include "../../Configuration.h"
 #include <map>
-#include <memory>
 #include <set>
 #include <string>
 #include <vector>
@@ -37,7 +35,6 @@ class decisions: commonItems::parser
 			const Events& theEvents
 		);
 
-		[[nodiscard]] const DecisionsCategories& getDecisionsCategories() const { return *decisionsCategories; }
 		[[nodiscard]] const std::vector<decisionsCategory>& getStabilityDecisions() const
 		{
 			return stabilityDecisions.getDecisions();
@@ -65,8 +62,6 @@ class decisions: commonItems::parser
 			const std::map<int, int>& provinceToStateIdMap,
 			const std::set<std::string>& majorIdeologies
 		);
-
-		std::unique_ptr<DecisionsCategories> decisionsCategories;
 
 		StabilityWarSupportDecisions stabilityDecisions;
 		PoliticalDecisions politicalDecisions;

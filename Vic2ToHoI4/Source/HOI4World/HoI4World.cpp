@@ -1086,7 +1086,7 @@ void HoI4::World::output()
 	outputGenericFocusTree();
 	outputCountries();
 	buildings->output();
-	outputDecisions(*decisions, theConfiguration);
+	outputDecisions(*decisions, majorIdeologies, theConfiguration);
 	events->output();
 	onActions->output(majorIdeologies);
 	peaces->output(majorIdeologies);

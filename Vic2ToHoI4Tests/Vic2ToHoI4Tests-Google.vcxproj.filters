@@ -413,9 +413,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\NaviesOutputter.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Decisions\DecisionsCategoriesTests.cpp">
-      <Filter>HoI4WorldTests\Decisions</Filter>
-    </ClCompile>
     <ClCompile Include="HoI4WorldTests\Decisions\DecisionsCategoryTests.cpp">
       <Filter>HoI4WorldTests\Decisions</Filter>
     </ClCompile>
