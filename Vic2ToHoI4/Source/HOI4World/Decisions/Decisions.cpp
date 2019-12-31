@@ -20,14 +20,13 @@ HoI4::decisions::decisions(const Configuration& theConfiguration)
 	stabilityDecisions.importDecisions(stabilityWarSupportFile);
 	stabilityWarSupportFile.close();
 
-	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& unused, std::istream& theStream)
+	std::ifstream ideologicalDecisionsFile("ideologicalDecisions.txt");
+	if (!ideologicalDecisionsFile.is_open())
 	{
-		const IdeologicalDecisions ideologicalDecisions(theStream);
-		allIdeologicalDecisions.push_back(ideologicalDecisions);
-	});
-	parseFile("ideologicalDecisions.txt");
-
-	clearRegisteredKeywords();
+		throw std::runtime_error("Could not open ideologicalDecisions.txt");
+	}
+	politicalDecisions.importDecisions(ideologicalDecisionsFile);
+	ideologicalDecisionsFile.close();
 
 	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream)
 	{
@@ -94,45 +93,13 @@ void HoI4::decisions::updateDecisions(
 )
 {
 	stabilityDecisions.updateDecisions(majorIdeologies);
-	updatePoliticalDecisions(majorIdeologies, theEvents);
+	politicalDecisions.updateDecisions(majorIdeologies, theEvents);
 	updateExiledGovernmentDecisions(majorIdeologies);
 	updateForeignInfluenceDecisions(majorIdeologies);
 	updateMtgNavalTreatyDecisions(majorIdeologies);
 	updateGenericDecisions(provinceToStateIdMap, majorIdeologies);
 
 	decisionsCategories = std::make_unique<DecisionsCategories>(majorIdeologies);
-}
-
-
-void HoI4::decisions::updatePoliticalDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents)
-{
-	for (auto ideologicalDecisions: allIdeologicalDecisions)
-	{
-		if (ideologicalDecisions.requiredIdeologiesExist(majorIdeologies))
-		{
-			for (const auto& category: ideologicalDecisions.getCategories())
-			{
-				auto existingCategory = std::find(politicalDecisions.begin(), politicalDecisions.end(), category);
-				if (existingCategory == politicalDecisions.end())
-				{
-					politicalDecisions.push_back(category);
-				}
-				else
-				{
-					auto theDecisions = category.getDecisions();
-					for (auto& theDecision: theDecisions)
-					{
-						existingCategory->addDecision(theDecision);
-					}
-				}
-			}
-		}
-	}
-
-	for (auto& decisionsByIdeology: politicalDecisions)
-	{
-		decisionsByIdeology.updatePoliticalDecisions(majorIdeologies, theEvents);
-	}
 }
 
 
