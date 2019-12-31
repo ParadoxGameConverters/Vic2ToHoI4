@@ -444,6 +444,9 @@
     <ClCompile Include="Source\HOI4World\Decisions\StabilityWarSupportDecisions.cpp">
       <Filter>HoI4World\Decisions</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\DecisionsFile.cpp">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -846,6 +849,9 @@
       <Filter>Hoi4Outputter\ShipTypes</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Decisions\StabilityWarSupportDecisions.h">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\DecisionsFile.h">
       <Filter>HoI4World\Decisions</Filter>
     </ClInclude>
   </ItemGroup>

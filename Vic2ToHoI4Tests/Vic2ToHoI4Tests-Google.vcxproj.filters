@@ -527,6 +527,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipTypes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\StabilityWarSupportDecisions.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsFile.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

@@ -2,18 +2,6 @@
 
 
 
-HoI4::StabilityWarSupportDecisions::StabilityWarSupportDecisions(std::istream& theStream)
-{
-	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream)
-	{
-		const decisionsCategory category(categoryName, theStream);
-		decisions.push_back(category);
-	});
-
-	parseStream(theStream);
-}
-
-
 std::pair<std::string, std::string> determineIdeologiesForStabilityDecisions(
 	const std::set<std::string>& majorIdeologies
 );
