@@ -3,6 +3,7 @@
 
 
 HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::map<int, int>& provinceToStateIdMap);
+HoI4::decision&& updateBlowPanama(HoI4::decision&& blowSuezDecision, const std::map<int, int>& provinceToStateIdMap);
 
 
 
@@ -31,6 +32,10 @@ void HoI4::GenericDecisions::updateDecisions(
 			if (decision.getName() == "blow_suez_canal")
 			{
 				category.replaceDecision(updateBlowSuez(std::move(decision), provinceToStateIdMap));
+			}
+			else if (decision.getName() == "blow_panama_canal")
+			{
+				category.replaceDecision(updateBlowPanama(std::move(decision), provinceToStateIdMap));
 			}
 		}
 	}
@@ -244,6 +249,100 @@ HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::ma
 	blowSuezDecision.setAiWillDo(aiWillDo);
 
 	return std::move(blowSuezDecision);
+}
+
+
+HoI4::decision&& updateBlowPanama(HoI4::decision&& blowPanamaDecision, const std::map<int, int>& provinceToStateIdMap)
+{
+	std::set<int> canalState = getRelevantStatesFromProvinces(
+		{
+			7617 // Panama province
+		},
+		{},
+		provinceToStateIdMap
+	);
+
+	std::set<int> peninsulaState = getRelevantStatesFromProvinces(
+		{
+			10482, 7630, 7617, 4624, 1633, 4611 // Panama state
+		},
+		{},
+		provinceToStateIdMap
+	);
+
+	std::string available;
+	available += "= {\n";
+	for (const auto state: canalState)
+	{
+		available += "\t\t\thas_full_control_of_state = " + std::to_string(state) + "\n";
+	}
+	available += "\t\t}";
+	blowPanamaDecision.setAvailable(available);
+
+	std::string completeEffect;
+	completeEffect += "= {\n";
+	completeEffect += "\t\t\thidden_effect = {\n";
+	completeEffect += "\t\t\t\tif = {\n";
+	completeEffect += "\t\t\t\t\tlimit = {\n";
+	completeEffect += "\t\t\t\t\t\tNOT = {\n";
+	for (const auto state: canalState)
+	{
+		completeEffect += "\t\t\t\t\t\t\towns_state = " + std::to_string(state) + "\n";
+	}
+	completeEffect += "\t\t\t\t\t\t}\n";
+	completeEffect += "\t\t\t\t\t}\n";
+	completeEffect += "\t\t\t\t\trandom_country = {\n";
+	completeEffect += "\t\t\t\t\t\tlimit = {\n";
+	for (const auto state: canalState)
+	{
+		completeEffect += "\t\t\t\t\t\t\towns_state = " + std::to_string(state) + "\n";
+	}
+	completeEffect += "\t\t\t\t\t\t}\n";
+	completeEffect += "\t\t\t\t\t\tcountry_event = { id = generic.13 days = 1 }\n";
+	completeEffect += "\t\t\t\t\t}\n";
+	completeEffect += "\t\t\t\t}\n";
+	completeEffect += "\t\t\t}\n";
+	completeEffect += "\t\t}";
+	blowPanamaDecision.setCompleteEffect(completeEffect);
+
+	std::string removeEffect;
+	removeEffect += "= {\n";
+	removeEffect += "\t\t\tif = {\n";
+	removeEffect += "\t\t\t\tlimit = {\n";
+	removeEffect += "\t\t\t\t\tOR = {\n";
+	for (const auto state: peninsulaState)
+	{
+		removeEffect += "\t\t\t\t\t\thas_full_control_of_state = " + std::to_string(state) + "\n";
+	}
+	removeEffect += "\t\t\t\t\t}\n";
+	removeEffect += "\t\t\t\t}\n";
+	removeEffect += "\t\t\t\tset_country_flag = blew_up_panama\n";
+	removeEffect += "\t\t\t\tset_global_flag = PANAMA_CANAL_BLOCKED\n";
+	removeEffect += "\t\t\t\tcountry_event = { id = wtt_news.41 hours = 6}\n";
+	removeEffect += "\t\t\t}\n";
+	removeEffect += "\t\t}";
+	blowPanamaDecision.setRemoveEffect(removeEffect);
+
+	std::string aiWillDo;
+	aiWillDo += "= {\n";
+	aiWillDo += "\t\t\tfactor = 1\n";
+	aiWillDo += "\t\t\tmodifier = {\n";
+	aiWillDo += "\t\t\t\tfactor = 0\n";
+	aiWillDo += "\t\t\t\thas_navy_size = {\n";
+	aiWillDo += "\t\t\t\t\tsize > 50\n";
+	aiWillDo += "\t\t\t\t}\n";
+	aiWillDo += "\t\t\t\tNOT = {\n";
+	aiWillDo += "\t\t\t\t\tany_enemy_country = {\n";
+	aiWillDo += "\t\t\t\t\t\thas_navy_size = {\n";
+	aiWillDo += "\t\t\t\t\t\t\tsize > 50\n";
+	aiWillDo += "\t\t\t\t\t\t}\n";
+	aiWillDo += "\t\t\t\t\t}\n";
+	aiWillDo += "\t\t\t\t}\n";
+	aiWillDo += "\t\t\t}\n";
+	aiWillDo += "\t\t}\n";
+	blowPanamaDecision.setAiWillDo(aiWillDo);
+
+	return std::move(blowPanamaDecision);
 }
 
 
