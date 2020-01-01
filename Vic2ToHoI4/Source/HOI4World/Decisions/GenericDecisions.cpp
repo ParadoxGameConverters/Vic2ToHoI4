@@ -12,6 +12,10 @@ HoI4::decision&& updateRebuildPanama(
 	HoI4::decision&& rebuildPanamaDecision,
 	const std::map<int, int>& provinceToStateIdMap
 );
+HoI4::decision&& updateWomenInTheWorkforce(
+	HoI4::decision&& womenInTheWorkforceDecision,
+	const std::set<std::string>& majorIdeologies
+);
 
 
 
@@ -52,6 +56,10 @@ void HoI4::GenericDecisions::updateDecisions(
 			else if (decision.getName() == "rebuild_panama_canal")
 			{
 				category.replaceDecision(updateRebuildPanama(std::move(decision), provinceToStateIdMap));
+			}
+			else if (decision.getName() == "women_in_the_workforce")
+			{
+				category.replaceDecision(updateWomenInTheWorkforce(std::move(decision), majorIdeologies));
 			}
 		}
 	}
@@ -523,4 +531,45 @@ HoI4::decision&& updateRebuildPanama(
 	rebuildPanamaDecision.setAiWillDo(aiWillDo);
 
 	return std::move(rebuildPanamaDecision);
+}
+
+
+HoI4::decision&& updateWomenInTheWorkforce(
+	HoI4::decision&& womenInTheWorkforceDecision,
+	const std::set<std::string>& majorIdeologies
+)
+{
+	std::string available;
+	available += "= {\n";
+	available += "\t\t\thas_war = yes\n";
+	available += "\t\t\thas_idea = tot_economic_mobilisation\n";
+	available += "\t\t\tOR = {\n";
+	for (const auto& ideology: majorIdeologies)
+	{
+		if (ideology == "neutrality")
+		{
+			continue;
+		}
+
+		available += "\t\t\t\tAND = {\n";
+		available += "\t\t\t\t\thas_government = " + ideology + "\n";
+		available += "\t\t\t\t\thas_war_support > 0.79\n";
+		if (ideology == "fascism")
+		{
+			available += "\t\t\t\t\tsurrender_progress > 0\n";
+		}
+		available += "\t\t\t\t}\n";
+	}
+	available += "\t\t\t\tAND = {\n";
+	available += "\t\t\t\t\thas_government = neutrality\n";
+	available += "\t\t\t\t\thas_war_support > 0.84\n";
+	available += "\t\t\t\t\thas_stability > 0.7\n";
+	available += "\t\t\t\t}\n";
+	available += "\t\t\t}\n";
+	available += "\t\t}\n";
+	womenInTheWorkforceDecision.setAvailable(available);
+
+	womenInTheWorkforceDecision.setCompleteEffect("= {\n\t\t}");
+
+	return std::move(womenInTheWorkforceDecision);
 }
