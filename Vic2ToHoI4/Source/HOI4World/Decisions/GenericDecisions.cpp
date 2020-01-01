@@ -4,6 +4,10 @@
 
 HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::map<int, int>& provinceToStateIdMap);
 HoI4::decision&& updateBlowPanama(HoI4::decision&& blowSuezDecision, const std::map<int, int>& provinceToStateIdMap);
+HoI4::decision&& updateRebuildSuez(
+	HoI4::decision&& rebuildSuezDecision,
+	const std::map<int, int>& provinceToStateIdMap
+);
 
 
 
@@ -37,6 +41,10 @@ void HoI4::GenericDecisions::updateDecisions(
 			{
 				category.replaceDecision(updateBlowPanama(std::move(decision), provinceToStateIdMap));
 			}
+			else if (decision.getName() == "rebuild_suez_canal")
+			{
+				category.replaceDecision(updateRebuildSuez(std::move(decision), provinceToStateIdMap));
+			}
 		}
 	}
 }
@@ -51,7 +59,7 @@ std::set<int> getRelevantStatesFromProvinces(
 
 HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::map<int, int>& provinceToStateIdMap)
 {
-	std::set<int> relevantSelfStates = getRelevantStatesFromProvinces(
+	std::set<int> relevantCanalStates = getRelevantStatesFromProvinces(
 		{
 			12049, // north-west suez canal
 			4073, // south-west suez canal
@@ -84,7 +92,7 @@ HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::ma
 			1065, 1201, 4206, 4088, 11970, 7107, 1086, 7176, 1015, // Palestine (454)
 			7170, 7001, 1544, 4440, 7151, 4574, 10089, 4017, 4591, 4562, 4115, 11976, 4603 // Jordan (455)
 		},
-		relevantSelfStates,
+		relevantCanalStates,
 		provinceToStateIdMap
 	);
 
@@ -120,20 +128,20 @@ HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::ma
 
 	std::string available;
 	available += "= {\n";
-	for (const auto state : relevantSelfStates)
+	for (const auto state: relevantCanalStates)
 	{
 		available += "\t\t\tcontrols_state = " + std::to_string(state) + "\n";
 	}
 	available += "\t\t\tOR = { \n";
 	available += "\t\t\t\tNOT = { \n";
-	for (const auto state : relevantSelfStates)
+	for (const auto state: relevantCanalStates)
 	{
 		available += "\t\t\t\t\towns_state = " + std::to_string(state) + "\n";
 	}
 	available += "\t\t\t\t}\n";
 	available += "\t\t\t\tany_enemy_country = { \n";
 	available += "\t\t\t\t\tOR = { \n";
-	for (const auto state : relevantOtherStates)
+	for (const auto state: relevantOtherStates)
 	{
 		available += "\t\t\t\t\t\tcontrols_state = " + std::to_string(state) + "\n";
 	}
@@ -149,7 +157,7 @@ HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::ma
 	completeEffect += "\t\t\t\tif = { \n";
 	completeEffect += "\t\t\t\t\tlimit = { \n";
 	completeEffect += "\t\t\t\t\t\tNOT = { \n";
-	for (const auto state : relevantSelfStates)
+	for (const auto state: relevantCanalStates)
 	{
 		completeEffect += "\t\t\t\t\t\t\towns_state = " + std::to_string(state) + "\n";
 	}
@@ -157,7 +165,7 @@ HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::ma
 	completeEffect += "\t\t\t\t\t}\n";
 	completeEffect += "\t\t\t\t\trandom_country = { \n";
 	completeEffect += "\t\t\t\t\t\tlimit = { \n";
-	for (const auto state : relevantSelfStates)
+	for (const auto state: relevantCanalStates)
 	{
 		completeEffect += "\t\t\t\t\t\t\towns_state = " + std::to_string(state) + "\n";
 	}
@@ -174,7 +182,7 @@ HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::ma
 	removeEffect += "\t\t\tif = { \n";
 	removeEffect += "\t\t\t\tlimit = { \n";
 	removeEffect += "\t\t\t\t\tOR = { \n";
-	for (const auto state : relevantSelfStates)
+	for (const auto state: relevantCanalStates)
 	{
 		removeEffect += "\t\t\t\t\t\thas_full_control_of_state = " + std::to_string(state) + "\n";
 	}
@@ -195,12 +203,12 @@ HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::ma
 	aiWillDo += "\t\t\t\tNOT = { \n";
 	aiWillDo += "\t\t\t\t\tany_enemy_country = { \n";
 	aiWillDo += "\t\t\t\t\t\tOR = { \n";
-	for (const auto state : relevantOtherStates)
+	for (const auto state: relevantOtherStates)
 	{
 		aiWillDo += "\t\t\t\t\t\t\tcontrols_state = " + std::to_string(state) + "\n";
 	}
 	aiWillDo += "\t\t\t\t\t\t\tOR = { \n";
-	for (const auto state : relevantOtherStates)
+	for (const auto state: relevantOtherStates)
 	{
 		aiWillDo += "\t\t\t\t\t\t\t\tdivisions_in_state = { state = " + std::to_string(state) + " size > 2 }\n";
 	}
@@ -214,18 +222,18 @@ HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::ma
 	aiWillDo += "\t\t\t\tany_allied_country = { \n";
 	aiWillDo += "\t\t\t\t\tNOT = { \n";
 	aiWillDo += "\t\t\t\t\t\tOR = { \n";
-	for (const auto state : relevantNileStates)
+	for (const auto state: relevantNileStates)
 	{
 		aiWillDo += "\t\t\t\t\t\t\thas_full_control_of_state = " + std::to_string(state) + "\n";
 	}
 	aiWillDo += "\t\t\t\t\t\t}\n";
 	aiWillDo += "\t\t\t\t\t}\n";
-	for (const auto& state : relevantLandRouteStates)
+	for (const auto& state: relevantLandRouteStates)
 	{
 		aiWillDo += "\t\t\t\t\tNOT = { has_full_control_of_state = " + std::to_string(state) + " }\n";
 	}
 	aiWillDo += "\t\t\t\t\tOR = { \n";
-	for (const auto& state : relevantSupplyStates)
+	for (const auto& state: relevantSupplyStates)
 	{
 		aiWillDo += "\t\t\t\t\t\tdivisions_in_state = { state = " + std::to_string(state) + " size > 0 }\n";
 	}
@@ -339,7 +347,7 @@ HoI4::decision&& updateBlowPanama(HoI4::decision&& blowPanamaDecision, const std
 	aiWillDo += "\t\t\t\t\t}\n";
 	aiWillDo += "\t\t\t\t}\n";
 	aiWillDo += "\t\t\t}\n";
-	aiWillDo += "\t\t}\n";
+	aiWillDo += "\t\t}";
 	blowPanamaDecision.setAiWillDo(aiWillDo);
 
 	return std::move(blowPanamaDecision);
@@ -365,4 +373,64 @@ std::set<int> getRelevantStatesFromProvinces(
 	}
 
 	return relevantStates;
+}
+
+
+HoI4::decision&& updateRebuildSuez(
+	HoI4::decision&& rebuildSuezDecision,
+	const std::map<int, int>& provinceToStateIdMap
+)
+{
+	std::set<int> relevantCanalStates = getRelevantStatesFromProvinces(
+		{
+			12049, // north-west suez canal
+			4073, // south-west suez canal
+			1155, // north-east suez canal
+			9947 // south-east suez canal
+		},
+		{},
+		provinceToStateIdMap
+	);
+
+	std::string available;
+	available += "= {\n";
+	for (const auto& state: relevantCanalStates)
+	{
+		available += "\t\t\thas_full_control_of_state = " + std::to_string(state) + "\n";
+	}
+	available += "\t\t\tnum_of_civilian_factories > 15\n";
+	available += "\t\t}";
+	rebuildSuezDecision.setAvailable(available);
+
+	std::string removeEffect;
+	removeEffect += "= {\n";
+	removeEffect += "\t\t\tif = {\n";
+	removeEffect += "\t\t\t\tlimit = {\n";
+	for (const auto& state : relevantCanalStates)
+	{
+		removeEffect += "\t\t\t\thas_full_control_of_state = " + std::to_string(state) + "\n";
+	}
+	removeEffect += "\t\t\t\t}\n";
+	removeEffect += "\t\t\t\tset_country_flag = rebuilt_suez\n";
+	removeEffect += "\t\t\t\tclr_global_flag = SUEZ_CANAL_BLOCKED\n";
+	removeEffect += "\t\t\t\tcountry_event = { id = wtt_news.42 hours = 6}\n";
+	removeEffect += "\t\t\t}\n";
+	removeEffect += "\t\t}";
+	rebuildSuezDecision.setRemoveEffect(removeEffect);
+
+	std::string aiWillDo;
+	aiWillDo += "= {\n";
+	aiWillDo += "\t\t\tfactor = 1\n";
+	aiWillDo += "\t\t\tmodifier = {\n";
+	aiWillDo += "\t\t\t\tfactor = 0 # Don't bother if your navy is weak\n";
+	aiWillDo += "\t\t\t\thas_navy_size = { size < 100 }\n";
+	aiWillDo += "\t\t\t}\n";
+	aiWillDo += "\t\t\tmodifier = {\n";
+	aiWillDo += "\t\t\t\tfactor = 10 # Prioritize if not at war\n";
+	aiWillDo += "\t\t\t\thas_war = no\n";
+	aiWillDo += "\t\t\t}\n";
+	aiWillDo += "\t\t}\n";
+	rebuildSuezDecision.setAiWillDo(aiWillDo);
+
+	return std::move(rebuildSuezDecision);
 }
