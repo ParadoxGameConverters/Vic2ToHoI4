@@ -16,6 +16,7 @@ HoI4::decision&& updateWomenInTheWorkforce(
 	HoI4::decision&& womenInTheWorkforceDecision,
 	const std::set<std::string>& majorIdeologies
 );
+HoI4::decision&& updateWarBonds(HoI4::decision&& warBondsDecision, const std::set<std::string>& majorIdeologies);
 
 
 
@@ -60,6 +61,10 @@ void HoI4::GenericDecisions::updateDecisions(
 			else if (decision.getName() == "women_in_the_workforce")
 			{
 				category.replaceDecision(updateWomenInTheWorkforce(std::move(decision), majorIdeologies));
+			}
+			else if (decision.getName() == "war_bonds")
+			{
+				category.replaceDecision(updateWarBonds(std::move(decision), majorIdeologies));
 			}
 		}
 	}
@@ -566,10 +571,55 @@ HoI4::decision&& updateWomenInTheWorkforce(
 	available += "\t\t\t\t\thas_stability > 0.7\n";
 	available += "\t\t\t\t}\n";
 	available += "\t\t\t}\n";
-	available += "\t\t}\n";
+	available += "\t\t}";
 	womenInTheWorkforceDecision.setAvailable(available);
 
 	womenInTheWorkforceDecision.setCompleteEffect("= {\n\t\t}");
 
 	return std::move(womenInTheWorkforceDecision);
+}
+
+
+HoI4::decision&& updateWarBonds(HoI4::decision&& warBondsDecision, const std::set<std::string>& majorIdeologies)
+{
+	std::string available;
+	available += "= {\n";
+	available += "\t\t\thas_war = yes\n";
+	available += "\t\t\tOR = {\n";
+	for (const auto& ideology : majorIdeologies)
+	{
+		if (ideology == "neutrality")
+		{
+			continue;
+		}
+
+		available += "\t\t\t\tAND = {\n";
+		available += "\t\t\t\t\thas_government = " + ideology + "\n";
+		available += "\t\t\t\t\thas_war_support > 0.79\n";
+		if (ideology == "fascism")
+		{
+			available += "\t\t\t\t\tsurrender_progress > 0\n";
+		}
+		available += "\t\t\t\t}\n";
+	}
+	available += "\t\t\t\tAND = {\n";
+	available += "\t\t\t\t\thas_government = neutrality\n";
+	available += "\t\t\t\t\thas_war_support > 0.84\n";
+	available += "\t\t\t\t\thas_stability > 0.7\n";
+	available += "\t\t\t\t}\n";
+	available += "\t\t\t}\n";
+	available += "\t\t}";
+	warBondsDecision.setAvailable(available);
+
+	std::string aiWillDo;
+	aiWillDo += "= {\n";
+	aiWillDo += "\t\t\tfactor = 1\n";
+	aiWillDo += "\t\t\tmodifier = {\n";
+	aiWillDo += "\t\t\t\thas_political_power < 100\n";
+	aiWillDo += "\t\t\t\tfactor = 0 #use as pp dump\n";
+	aiWillDo += "\t\t\t}\n";
+	aiWillDo += "\t\t}";
+	warBondsDecision.setAiWillDo(aiWillDo);
+
+	return std::move(warBondsDecision);
 }
