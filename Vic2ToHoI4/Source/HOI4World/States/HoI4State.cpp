@@ -1,15 +1,11 @@
 #include "HoI4State.h"
 #include "StateCategories.h"
 #include "../CoastalProvinces.h"
-#include "../../Configuration.h"
 #include "../../V2World/Province.h"
 #include "../../V2World/State.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
-#include <iomanip>
-#include <ios>
-#include <fstream>
 #include <random>
 
 
@@ -23,120 +19,6 @@ HoI4::State::State(const Vic2::State* _sourceState, int _ID, const std::string& 
 	ID(_ID),
 	ownerTag(_ownerTag)
 {}
-
-
-void HoI4::State::output(std::ostream& out, const Configuration& theConfiguration) const
-{
-	out << "\n";
-	out << "state={" << "\n";
-	out << "\tid=" << ID << "\n";
-	out << "\tname=\"STATE_" << ID << "\"\n";
-	if (resources.size() > 0)
-	{
-		out << "\tresources={\n";
-		out << std::fixed;
-		out << std::setprecision(3);
-		for (auto resource: resources)
-		{
-			out << "\t\t" << resource.first << "=" << resource.second << "\n";
-		}
-		out << "\t}\n";
-	}
-	if (impassable)
-	{
-		out << "\timpassable = yes\n";
-	}
-	out << "\n";
-	out << "\thistory={\n";
-	if (!ownerTag.empty())
-	{
-		out << "\t\towner = " << ownerTag << "\n";
-	}
-	if (!impassable)
-	{
-		if ((victoryPointValue > 0) && (victoryPointPosition))
-		{
-			if (theConfiguration.getDebug())
-			{
-				out << "\t\tvictory_points = {\n";
-				out << "\t\t\t" << *victoryPointPosition << " " << (victoryPointValue + 10) << "\n";
-				out << "\t\t}\n";
-				for (auto VP : debugVictoryPoints)
-				{
-					if (VP == victoryPointPosition)
-					{
-						continue;
-					}
-					out << "\t\tvictory_points = { " << VP << " 5\n";
-					out << "\t}\n";
-				}
-				for (auto VP : secondaryDebugVictoryPoints)
-				{
-					if (VP == victoryPointPosition)
-					{
-						continue;
-					}
-					out << "\t\tvictory_points = { " << VP << " 1 }\n";
-				}
-			}
-			else
-			{
-				out << "\t\tvictory_points = {\n";
-				out << "\t\t\t" << *victoryPointPosition << " " << victoryPointValue << " \n";
-				out << "\t\t}\n";
-			}
-		}
-	}
-	if (!impassable)
-	{
-		out << "\t\tbuildings = {\n";
-		out << "\t\t\tinfrastructure = " << infrastructure << "\n";
-		out << "\t\t\tindustrial_complex = " << civFactories << "\n";
-		out << "\t\t\tarms_factory = " << milFactories << "\n";
-		if (dockyards > 0)
-		{
-			out << "\t\t\tdockyard = " << dockyards << "\n";
-		}
-
-		for (auto navalBase : navalBases)
-		{
-			out << "\t\t\t" << navalBase.first << " = {\n";
-			out << "\t\t\t\tnaval_base = " << navalBase.second << "\n";
-			out << "\t\t\t}\n";
-		}
-
-		out << "\t\t\tair_base = " << airbaseLevel << "\n";
-		out << "\n";
-		out << "\t\t}\n";
-	}
-	for (auto core: cores)
-	{
-		out << "\t\tadd_core_of = " << core << "\n";
-	}
-	for (auto countryControlledProvinces: controlledProvinces)
-	{
-		out << "\t\t" << countryControlledProvinces.first << " = {\n";
-		for (auto province : countryControlledProvinces.second)
-		{
-			out << "\t\t\tset_province_controller = " << province << "\n";
-		}
-		out << "\t\t}\n";
-	}
-	out << "\t}\n";
-	out << "\n";
-	out << "\tprovinces={\n";
-	out << "\t\t";
-	for (auto provnum : provinces)
-	{
-		out << provnum << " ";
-	}
-	out << "\n";
-	out << "\t}\n";
-	out << "\tmanpower=" << manpower << "\n";
-	out << "\tbuildings_max_level_factor=1.000\n";
-	out << "\tstate_category="<< category << "\n";
-	out << "}\n";
-}
 
 
 void HoI4::State::convertNavalBases(

@@ -11,7 +11,7 @@
 #include <optional>
 #include <set>
 #include <string>
-#include <vector>
+
 
 
 namespace Vic2
@@ -34,8 +34,6 @@ class State
 		State() = default;
 		State(const Vic2::State* sourceState, int _ID, const std::string& _ownerTag);
 
-		void output(std::ostream& output, const Configuration& theConfiguration) const;
-
 		void addProvince(int province) { provinces.insert(province); }
 		void setAsCapitalState() { capitalState = true; civFactories++; }
 		void makeImpassable() { impassable = true; }
@@ -55,13 +53,20 @@ class State
 		virtual std::set<int>getProvinces() const { return provinces; }
 		std::string getOwner() const { return ownerTag; }
 		std::set<std::string> getCores() const { return cores; }
+		const std::map<std::string, std::set<int>>& getControlledProvinces() const { return controlledProvinces; }
 		bool isImpassable() const { return impassable; }
 		int getDockyards() const { return dockyards; }
 		int getCivFactories() const { return civFactories; }
 		int getMilFactories() const { return milFactories; }
+		const std::string& getCategory() const { return category; }
 		int getInfrastructure() const { return infrastructure; }
+		const std::map<int, int>& getNavalBases() const { return navalBases; }
+		int getAirbaseLevel() const { return airbaseLevel; }
 		int getManpower() const { return manpower; }
+		bool hasResources() const { return !resources.empty(); }
+		const std::map<std::string, double>& getResources() const { return resources; }
 		std::optional<int> getVPLocation() const { return victoryPointPosition; }
+		int getVpValue() const { return victoryPointValue; }
 		std::set<int> getDebugVPs() const { return debugVictoryPoints; }
 		std::set<int> getSecondaryDebugVPs() const { return secondaryDebugVictoryPoints; }
 

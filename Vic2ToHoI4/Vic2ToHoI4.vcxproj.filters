@@ -61,6 +61,9 @@
     <Filter Include="Hoi4Outputter\ShipTypes">
       <UniqueIdentifier>{69709241-2173-457e-a3b2-75766d91c549}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hoi4Outputter\States">
+      <UniqueIdentifier>{17b00305-129e-49d6-a5b2-b90221c4a66a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -440,6 +443,9 @@
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.cpp">
       <Filter>Hoi4Outputter\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\States\HoI4StateOutputter.cpp">
+      <Filter>Hoi4Outputter\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -841,6 +847,9 @@
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.h">
       <Filter>Hoi4Outputter\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\States\HoI4StateOutputter.h">
+      <Filter>Hoi4Outputter\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -9,6 +9,7 @@
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "../../Configuration.h"
+#include "../../Hoi4Outputter/States/HoI4StateOutputter.h"
 #include "../../Mappers/CountryMapping.h"
 #include "../../Mappers/ProvinceDefinitions.h"
 #include "../../Mappers/V2Localisations.h"
@@ -611,7 +612,7 @@ void HoI4States::output() const
 			std::runtime_error error("Could not open \"" + filename + "\"");
 			throw error;
 		}
-		state.second.output(out, theConfiguration);
+		HoI4::outputHoI4State(out, state.second, theConfiguration);
 		out.close();
 	}
 }

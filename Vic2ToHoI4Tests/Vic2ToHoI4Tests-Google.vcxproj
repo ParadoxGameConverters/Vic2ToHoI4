@@ -69,6 +69,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipVariantOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\States\HoI4StateOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Advisor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AIPeace.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AIPeaces.cpp" />

@@ -27,6 +27,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../../Mocks/StateCategoriesMock.h"
 #include "../../Mocks/Vic2StateMock.h"
 #include "../Vic2ToHoI4/Source/Configuration.h"
+#include "../Vic2ToHoI4/Source/Hoi4Outputter/States/HoI4StateOutputter.h"
 #include "../Vic2ToHoI4/Source/HOI4World/CoastalProvinces.h"
 #include "../Vic2ToHoI4/Source/HOI4World/States/HoI4State.h"
 #include "../Vic2ToHoI4/Source/HoI4World/States/StateCategories.h"
@@ -93,7 +94,7 @@ TEST(HoI4World_StateTests, idIsOutput)
 	testConfig.instantiate(configInput);
 
 	std::stringstream output;
-	theState.output(output, testConfig);
+	HoI4::outputHoI4State(output, theState, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -158,7 +159,7 @@ TEST(HoI4World_StateTests, provincesAreOutput)
 	testConfig.instantiate(configInput);
 
 	std::stringstream output;
-	theState.output(output, testConfig);
+	HoI4::outputHoI4State(output, theState, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -209,7 +210,7 @@ TEST(HoI4World_StateTests, ownerIsOutput)
 	testConfig.instantiate(configInput);
 
 	std::stringstream output;
-	theState.output(output, testConfig);
+	HoI4::outputHoI4State(output, theState, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -283,7 +284,7 @@ TEST(HoI4World_StateTests, coresAreOutput)
 	testConfig.instantiate(configInput);
 
 	std::stringstream output;
-	theState.output(output, testConfig);
+	HoI4::outputHoI4State(output, theState, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -340,7 +341,7 @@ TEST(HoI4World_StateTests, impassableIsOutput)
 	testConfig.instantiate(configInput);
 
 	std::stringstream output;
-	theState.output(output, testConfig);
+	HoI4::outputHoI4State(output, theState, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -529,7 +530,7 @@ TEST(HoI4World_StateTests, infrastructureIsOutput)
 	testConfig.instantiate(configInput);
 
 	std::stringstream output;
-	theState.output(output, testConfig);
+	HoI4::outputHoI4State(output, theState, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -1039,7 +1040,7 @@ TEST(HoI4World_StateTests, debugVpsAreOutput)
 	expectedOutput << "}\n";
 
 	std::stringstream output;
-	theState.output(output, testConfig);
+	HoI4::outputHoI4State(output, theState, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -1126,7 +1127,7 @@ TEST(HoI4World_StateTests, navalBasesAreOutput)
 	testConfig.instantiate(configInput);
 
 	std::stringstream output;
-	theState.output(output, testConfig);
+	HoI4::outputHoI4State(output, theState, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -1174,7 +1175,7 @@ TEST(HoI4World_StateTests, resourcesCanBeAdded)
 	testConfig.instantiate(configInput);
 
 	std::stringstream output;
-	theState.output(output, testConfig);
+	HoI4::outputHoI4State(output, theState, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -1243,7 +1244,7 @@ TEST(HoI4World_StateTests, controllersCanBeAdded)
 	testConfig.instantiate(configInput);
 
 	std::stringstream output;
-	theState.output(output, testConfig);
+	HoI4::outputHoI4State(output, theState, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -1312,7 +1313,7 @@ TEST(HoI4World_StateTests, controllersConvertWithHoI4Tag)
 	testConfig.instantiate(configInput);
 
 	std::stringstream output;
-	theState.output(output, testConfig);
+	HoI4::outputHoI4State(output, theState, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -1373,7 +1374,7 @@ TEST(HoI4World_StateTests, controllersDontConvertForRebels)
 	testConfig.instantiate(configInput);
 
 	std::stringstream output;
-	theState.output(output, testConfig);
+	HoI4::outputHoI4State(output, theState, testConfig);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
