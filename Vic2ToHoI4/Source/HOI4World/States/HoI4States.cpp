@@ -592,27 +592,3 @@ int HoI4States::calculateStrengthVPs(const HoI4::Country& country, double greate
 	double relativeStrength = country.getStrengthOverTime(1.0) / greatestStrength;
 	return static_cast<int>(relativeStrength * 30.0);
 }
-
-
-void HoI4States::output() const
-{
-	LOG(LogLevel::Debug) << "Writing states";
-
-	if (!Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/history/states"))
-	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + theConfiguration.getOutputName() + "/history/states";
-		exit(-1);
-	}
-	for (auto state: states)
-	{
-		std::string filename("output/" + theConfiguration.getOutputName() + "/history/states/" + std::to_string(state.first) + ".txt");
-		std::ofstream out(filename);
-		if (!out.is_open())
-		{
-			std::runtime_error error("Could not open \"" + filename + "\"");
-			throw error;
-		}
-		HoI4::outputHoI4State(out, state.second, theConfiguration);
-		out.close();
-	}
-}

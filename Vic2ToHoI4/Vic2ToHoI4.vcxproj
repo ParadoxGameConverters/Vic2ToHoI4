@@ -205,6 +205,7 @@
     <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipVariantOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\States\HoI4StateOutputter.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.cpp" />
     <ClCompile Include="Source\HOI4World\Advisor.cpp" />
     <ClCompile Include="Source\HOI4World\AIPeace.cpp" />
     <ClCompile Include="Source\HOI4World\AIPeaces.cpp" />
@@ -338,6 +339,7 @@
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipVariantOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\States\HoI4StateOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.h" />
     <ClInclude Include="Source\HOI4World\Advisor.h" />
     <ClInclude Include="Source\HOI4World\AIPeace.h" />
     <ClInclude Include="Source\HOI4World\AIPeaces.h" />

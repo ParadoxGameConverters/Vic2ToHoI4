@@ -35,6 +35,7 @@
 #include "../Hoi4Outputter/Hoi4CountryOutputter.h"
 #include "../Hoi4Outputter/Decisions/DecisionsOutputter.h"
 #include "../Hoi4Outputter/ScriptedLocalisations/ScriptedLocalisationsOutputter.h"
+#include "../Hoi4Outputter/States/HoI4StatesOutputter.h"
 #include <fstream>
 using namespace std;
 
@@ -1078,7 +1079,7 @@ void HoI4::World::output()
 	outputNames();
 	outputUnitNames();
 	HoI4Localisation::output();
-	states->output();
+	outputStates(*states, theConfiguration);
 	diplomacy->output();
 	outputMap();
 	supplyZones->output();

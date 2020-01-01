@@ -447,6 +447,9 @@
     <ClCompile Include="Source\Hoi4Outputter\States\HoI4StateOutputter.cpp">
       <Filter>Hoi4Outputter\States</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.cpp">
+      <Filter>Hoi4Outputter\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -849,6 +852,9 @@
       <Filter>Hoi4Outputter\ShipTypes</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\States\HoI4StateOutputter.h">
+      <Filter>Hoi4Outputter\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.h">
       <Filter>Hoi4Outputter\States</Filter>
     </ClInclude>
   </ItemGroup>

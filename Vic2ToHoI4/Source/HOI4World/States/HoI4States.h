@@ -58,8 +58,6 @@ class HoI4States: commonItems::parser
 		);
 		void addCapitalsToStates(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
 
-		void output() const;
-
 	private:
 		HoI4States(const HoI4States&) = delete;
 		HoI4States& operator=(const HoI4States&) = delete;
