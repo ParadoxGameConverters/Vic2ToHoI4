@@ -27,18 +27,21 @@ void HoI4::GenericDecisions::updateDecisions(
 {
 	for (auto& category: decisions)
 	{
-		auto decisions = category.getDecisions();
-		decisions.erase(
-			std::remove_if(
-				decisions.begin(),
-				decisions.end(),
-				[](auto& decision)
-				{
-					return decision.getName() == "dismantle_maginot";
-				}
-			),
-			decisions.end());
-		category.replaceDecisions(decisions);
+		if (category.getName() == "economy_decisions")
+		{
+			auto decisions = category.getDecisions();
+			decisions.erase(
+				std::remove_if(
+					decisions.begin(),
+					decisions.end(),
+					[](auto& decision)
+					{
+						return decision.getName() == "dismantle_maginot";
+					}
+				),
+				decisions.end());
+			category.replaceDecisions(decisions);
+		}
 
 		for (auto& decision: category.getDecisions())
 		{
@@ -68,6 +71,18 @@ void HoI4::GenericDecisions::updateDecisions(
 			}
 		}
 	}
+
+	decisions.erase(
+		std::remove_if(
+			decisions.begin(),
+			decisions.end(),
+			[](auto& decisionCategory)
+			{
+				return decisionCategory.getName() == "foreign_support";
+			}
+		),
+		decisions.end()
+	);
 }
 
 
