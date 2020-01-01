@@ -88,7 +88,7 @@ void HoI4::GenericDecisions::updateDecisions(
 
 std::set<int> getRelevantStatesFromProvinces(
 	const std::set<int>& provinces,
-	const std::set<int> statesToExclude,
+	const std::set<int>& statesToExclude,
 	const std::map<int, int>& provinceToStateIdMap
 );
 
@@ -105,17 +105,6 @@ HoI4::decision&& updateBlowSuez(HoI4::decision&& blowSuezDecision, const std::ma
 		{},
 		provinceToStateIdMap
 	);
-
-	std::set<int> relevantOtherProvinces{
-		7079, 5078, 9989, 12033, 11967, 12091, 10061, 7148, 11910, // Marsa Matruh (452)
-		1071, 4145, 4076, 7164, 7091, 10073, 11964, // Alexandria (447)
-		992, 7117, 3996, 4055, 1068, 10031, 10005, 7011, 12004, 4143, 7188, // Cairo (446)
-		7144, 7030, 11974, 10028, 12044, 1151, 10097, 7073, 12071, 1028, 1064, 11999, 1206, 12771, 10844, // Aswan (456)
-		10126, 1080, 9957, 12002, 12889, 4068, 7156, 5069, 4910, // Eastern Desert (457)
-		11979, 4161, 11922, 10002, 1112, 12073, 10099, // Sinai (453)
-		1065, 1201, 4206, 4088, 11970, 7107, 1086, 7176, 1015, // Palestine (454)
-		7170, 7001, 1544, 4440, 7151, 4574, 10089, 4017, 4591, 4562, 4115, 11976, 4603 // Jordan (455)
-	};
 
 	std::set<int> relevantOtherStates = getRelevantStatesFromProvinces(
 		{
@@ -392,7 +381,7 @@ HoI4::decision&& updateBlowPanama(HoI4::decision&& blowPanamaDecision, const std
 
 std::set<int> getRelevantStatesFromProvinces(
 	const std::set<int>& provinces,
-	const std::set<int> statesToExclude,
+	const std::set<int>& statesToExclude,
 	const std::map<int, int>& provinceToStateIdMap
 )
 {
