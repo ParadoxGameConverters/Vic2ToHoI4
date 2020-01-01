@@ -8,6 +8,10 @@ HoI4::decision&& updateRebuildSuez(
 	HoI4::decision&& rebuildSuezDecision,
 	const std::map<int, int>& provinceToStateIdMap
 );
+HoI4::decision&& updateRebuildPanama(
+	HoI4::decision&& rebuildPanamaDecision,
+	const std::map<int, int>& provinceToStateIdMap
+);
 
 
 
@@ -44,6 +48,10 @@ void HoI4::GenericDecisions::updateDecisions(
 			else if (decision.getName() == "rebuild_suez_canal")
 			{
 				category.replaceDecision(updateRebuildSuez(std::move(decision), provinceToStateIdMap));
+			}
+			else if (decision.getName() == "rebuild_panama_canal")
+			{
+				category.replaceDecision(updateRebuildPanama(std::move(decision), provinceToStateIdMap));
 			}
 		}
 	}
@@ -406,7 +414,7 @@ HoI4::decision&& updateRebuildSuez(
 	removeEffect += "= {\n";
 	removeEffect += "\t\t\tif = {\n";
 	removeEffect += "\t\t\t\tlimit = {\n";
-	for (const auto& state : relevantCanalStates)
+	for (const auto& state: relevantCanalStates)
 	{
 		removeEffect += "\t\t\t\thas_full_control_of_state = " + std::to_string(state) + "\n";
 	}
@@ -429,8 +437,90 @@ HoI4::decision&& updateRebuildSuez(
 	aiWillDo += "\t\t\t\tfactor = 10 # Prioritize if not at war\n";
 	aiWillDo += "\t\t\t\thas_war = no\n";
 	aiWillDo += "\t\t\t}\n";
-	aiWillDo += "\t\t}\n";
+	aiWillDo += "\t\t}";
 	rebuildSuezDecision.setAiWillDo(aiWillDo);
 
 	return std::move(rebuildSuezDecision);
+}
+
+
+HoI4::decision&& updateRebuildPanama(
+	HoI4::decision&& rebuildPanamaDecision,
+	const std::map<int, int>& provinceToStateIdMap
+)
+{
+	std::set<int> canalState = getRelevantStatesFromProvinces(
+		{
+			7617 // Panama province
+		},
+		{},
+		provinceToStateIdMap
+	);
+
+	std::set<int> peninsulaState = getRelevantStatesFromProvinces(
+		{
+			10482, 7630, 7617, 4624, 1633, 4611 // Panama state
+		},
+		canalState,
+		provinceToStateIdMap
+	);
+
+	std::string available;
+	available += "= {\n";
+	for (const auto& state: canalState)
+	{
+		available += "\t\t\thas_full_control_of_state = " + std::to_string(state) + "\n";
+	}
+	available += "\t\t\tNOT = {\n";
+	available += "\t\t\t\tany_enemy_country = {\n";
+	for (const auto& state: peninsulaState)
+	{
+		available += "\t\t\t\t\tcontrols_state = " + std::to_string(state) + "\n";
+	}
+	available += "\t\t\t\t}\n";
+	available += "\t\t\t}\n";
+	available += "\t\t\tnum_of_civilian_factories > 25\n";
+	available += "\t\t}";
+	rebuildPanamaDecision.setAvailable(available);
+
+	std::string removeEffect;
+	removeEffect += "= {\n";
+	removeEffect += "\t\t\tif = {\n";
+	removeEffect += "\t\t\t\tlimit = {\n";
+	for (const auto& state: canalState)
+	{
+		removeEffect += "\t\t\t\t\thas_full_control_of_state = " + std::to_string(state) + "\n";
+	}
+	removeEffect += "\t\t\t\t\tNOT = {\n";
+	removeEffect += "\t\t\t\t\t\tany_enemy_country = {\n";
+	for (const auto& state: peninsulaState)
+	{
+		removeEffect += "\t\t\t\t\t\t\tcontrols_state = " + std::to_string(state) + "\n";
+	}
+	removeEffect += "\t\t\t\t\t\t}\n";
+	removeEffect += "\t\t\t\t\t}\n";
+	removeEffect += "\t\t\t\t}\n";
+	removeEffect += "\t\t\t\tset_country_flag = rebuilt_panama\n";
+	removeEffect += "\t\t\t\tclr_global_flag = PANAMA_CANAL_BLOCKED\n";
+	removeEffect += "\t\t\t\tcountry_event = { id = wtt_news.43 hours = 6 }\n";
+	removeEffect += "\t\t\t}\n";
+	removeEffect += "\t\t}";
+	rebuildPanamaDecision.setRemoveEffect(removeEffect);
+
+	std::string aiWillDo;
+	aiWillDo += "= {\n";
+	aiWillDo += "\t\t\tfactor = 1\n";
+	aiWillDo += "\t\t\tmodifier = {\n";
+	aiWillDo += "\t\t\t\tfactor = 0 # Don't bother if your navy is weak\n";
+	aiWillDo += "\t\t\t\thas_navy_size = { size < 50 }\n";
+	aiWillDo += "\t\t\t\thas_war = yes\n";
+	aiWillDo += "\t\t\t}\n";
+	aiWillDo += "\t\t\tmodifier = {\n";
+	aiWillDo += "\t\t\t\tfactor = 10 # Prioritize if not at war\n";
+	aiWillDo += "\t\t\t\thas_war = no\n";
+	aiWillDo += "\t\t\t}\n";
+	aiWillDo += "\t\t}";
+	rebuildPanamaDecision.setAiWillDo(aiWillDo);
+
+	return std::move(rebuildPanamaDecision);
 }
