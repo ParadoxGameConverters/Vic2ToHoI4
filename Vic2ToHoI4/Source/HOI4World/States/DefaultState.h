@@ -1,5 +1,5 @@
-#ifndef HOI4_DEFAULT_STATES_H_
-#define HOI4_DEFAULT_STATES_H_
+#ifndef HOI4_DEFAULT_STATES_H
+#define HOI4_DEFAULT_STATES_H
 
 
 #include "newParser.h"
@@ -17,8 +17,8 @@ class DefaultState: commonItems::parser
 		explicit DefaultState(std::istream& theStream);
 
 		bool isImpassable() const { return impassable; }
-		std::string getOwner() const { return ownerTag; }
-		std::set<int> getProvinces() const { return provinces; }
+		const std::string& getOwner() const { return ownerTag; }
+		const std::set<int>& getProvinces() const { return provinces; }
 		int getCivFactories() const { return civFactories; }
 		int getMilFactories() const { return milFactories; }
 		int getDockyards() const { return dockyards; }
@@ -36,4 +36,4 @@ class DefaultState: commonItems::parser
 
 
 
-#endif // HOI4_DEFAULT_STATES_H_
+#endif // HOI4_DEFAULT_STATES_H
