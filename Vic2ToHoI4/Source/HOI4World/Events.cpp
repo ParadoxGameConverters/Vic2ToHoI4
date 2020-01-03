@@ -436,7 +436,7 @@ void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4::Country> Annexer, std:
 	acceptedOption += "\n";
 	acceptedOption += "		annex_country = { target = " + Annexed->getTag() + " transfer_troops = yes }\n";
 	acceptedOption += "		add_political_power = 50\n";
-	acceptedOption += "		add_named_threat = { threat = 2 name = \"" + annexedName + " annexed " + annexedName + "\" }\n";
+	acceptedOption += "		add_named_threat = { threat = 2 name = \"" + annexerName + " annexed " + annexedName + "\" }\n";
 	acceptedOption += "		set_country_flag = " + Annexed->getTag() + "_annexed\n";
 	acceptedOption += "	}";
 	acceptedEvent.options.push_back(acceptedOption);

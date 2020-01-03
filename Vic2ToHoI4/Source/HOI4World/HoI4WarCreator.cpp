@@ -1650,7 +1650,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<HoI
 			newFocus->bypass += " 		has_war_with = " + target->getTag() + "\n";
 			newFocus->bypass += " 	}";
 			newFocus->completionReward += "= {\n";
-			newFocus->completionReward += "			add_named_threat = { threat = 5 name = " + newFocus->id + " }\n";
+			newFocus->completionReward += "			add_named_threat = { threat = 5 name = \"War with " + targetName + "\" }\n";
 			newFocus->completionReward += "			declare_war_on = {\n";
 			newFocus->completionReward += "				type = annex_everything\n";
 			newFocus->completionReward += "				target = " + target->getTag() + "\n";

@@ -1778,7 +1778,7 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home, const 
 			newFocus->xPos = 0;
 			newFocus->yPos = 1;
 			newFocus->completionReward += "= {\n";
-			newFocus->completionReward += "			add_named_threat = { threat = 2 name = " + newFocus->id + " }\n";
+			newFocus->completionReward += "			add_named_threat = { threat = 2 name = " + newFocus->text + " }\n";
 			newFocus->completionReward += "			add_political_power = 150\n";
 			newFocus->completionReward += "		}";
 			//FIXME
@@ -1844,7 +1844,7 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home, const 
 					newFocus->aiWillDo += "		}";
 
 					newFocus->completionReward += "= {\n";
-					newFocus->completionReward += "			add_named_threat = { threat = 3 name = " + newFocus->id + " }\n";
+					newFocus->completionReward += "			add_named_threat = { threat = 3 name = \"War with " + warTargetCountryName + "\" }\n";
 					newFocus->completionReward += "			create_wargoal = {\n";
 					newFocus->completionReward += "				type = puppet_wargoal_focus\n";
 					newFocus->completionReward += "				target = " + warTargets[i]->getTag() + "\n";
@@ -1887,7 +1887,7 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home, c
 		//in modified generic focus? (tk)
 		//newFocus->completionReward += "			drift_defence_factor = 0.5\n";
 		newFocus->completionReward += "= {\n";
-		newFocus->completionReward += "			add_named_threat = { threat = 2 name = " + newFocus->id + " }\n";
+		newFocus->completionReward += "			add_named_threat = { threat = 2 name = " + newFocus->text + " }\n";
 		newFocus->completionReward += "			add_ideas = fascist_influence\n";
 		newFocus->completionReward += "		}";
 		focuses.push_back(newFocus);
@@ -1943,7 +1943,7 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home, c
 			newFocus->xPos = nextFreeColumn + i * 2;
 			newFocus->yPos = 2;
 			newFocus->completionReward += "= {\n";
-			newFocus->completionReward += "			add_named_threat = { threat = 2 name = " + newFocus->id + " }\n";
+			newFocus->completionReward += "			add_named_threat = { threat = 2 name = \"Union with " + annexationTargetCountryName + "\" }\n";
 			newFocus->completionReward += "			army_experience = 10\n";
 			newFocus->completionReward += "			if = {\n";
 			newFocus->completionReward += "				limit = {\n";
@@ -2003,7 +2003,7 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home, cons
 		}
 		newFocus->yPos = 0;
 		newFocus->completionReward += "= {\n";
-		newFocus->completionReward += "			add_named_threat = { threat = 3 name = " + newFocus->id + " }\n";//give some claims or cores
+		newFocus->completionReward += "			add_named_threat = { threat = 3 name = " + newFocus->text + " }\n";//give some claims or cores
 		newFocus->completionReward += "			add_political_power = 150\n";
 		newFocus->completionReward += "		}";
 		addFocus(newFocus);
@@ -2044,7 +2044,7 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home, cons
 			newFocus->bypass += "  has_war_with = " + sudetenTargets[i]->getTag() + "\n";
 			newFocus->bypass += "}";
 			newFocus->completionReward += "= {\n";
-			newFocus->completionReward += "			add_named_threat = { threat = 2 name = " + newFocus->id + " }\n";
+			newFocus->completionReward += "			add_named_threat = { threat = 2 name = \"Demand Territory from " + sudetenTargetCountryName + "\" }\n";
 			newFocus->completionReward += "			army_experience = 10\n";
 			newFocus->completionReward += "			if = {\n";
 			newFocus->completionReward += "				limit = {\n";
@@ -2077,7 +2077,7 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home, cons
 			newFocus->bypass += "		has_war_with = " + sudetenTargets[i]->getTag() + "\n";
 			newFocus->bypass += "	}";
 			newFocus->completionReward += "= {\n";
-			newFocus->completionReward += "			add_named_threat = { threat = 3 name = " + newFocus->id + " }\n";
+			newFocus->completionReward += "			add_named_threat = { threat = 3 name = \"Fate of " + sudetenTargetCountryName + "\" }\n";
 			newFocus->completionReward += "			create_wargoal = {\n";
 			newFocus->completionReward += "				type = annex_everything\n";
 			newFocus->completionReward += "				target = " + sudetenTargets[i]->getTag() + "\n";
@@ -2118,7 +2118,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<
 			}
 			newFocus->yPos = 0;
 			newFocus->completionReward += "= {\n";
-			newFocus->completionReward += "			add_named_threat = { threat = 3 name = " + newFocus->id + " }\n";
+			newFocus->completionReward += "			add_named_threat = { threat = 3 name = \"Call for the " + ideology + " Summit\" }\n";
 			newFocus->completionReward += "			add_political_power = 150\n";
 			newFocus->completionReward += "		}";
 			focuses.push_back(newFocus);
@@ -2261,7 +2261,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<
 			newFocus->aiWillDo += "\n";
 			newFocus->aiWillDo += "		}";
 			newFocus->completionReward += "= {\n";
-			newFocus->completionReward += "			add_named_threat = { threat = 5 name = " + newFocus->id + " }\n";
+			newFocus->completionReward += "			add_named_threat = { threat = 5 name = \"War with " + warTargetCountryName + "\" }\n";
 			newFocus->completionReward += "			declare_war_on = {\n";
 			newFocus->completionReward += "				type = puppet_wargoal_focus\n";
 			newFocus->completionReward += "				target = " + GC->getTag() + "\n";
@@ -2329,7 +2329,7 @@ void HoI4FocusTree::addNeighborWarBranch(
 		newFocus->aiWillDo += "\n";
 		newFocus->aiWillDo += "		}";
 		newFocus->completionReward += "= {\n";
-		newFocus->completionReward += "			add_named_threat = { threat = 3 name = " + newFocus->id + " }\n";
+		newFocus->completionReward += "			add_named_threat = { threat = 3 name = \"War with " + targetName + "\" }\n";
 		newFocus->completionReward += "			create_wargoal = {\n";
 		newFocus->completionReward += "				type = annex_everything\n";
 		newFocus->completionReward += "				target = " + targetNeighbors->getTag() + "\n";
