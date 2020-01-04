@@ -291,7 +291,7 @@ void HoI4States::createMatchingHoI4State(
 
 	if (passableProvinces.size() > 0)
 	{
-		HoI4::State newState(vic2State, nextStateID, stateOwner);
+		HoI4::State newState(*vic2State, nextStateID, stateOwner);
 		if (impassableProvinces.size() > 0)
 		{
 			newState.markHadImpassablePart();
@@ -306,7 +306,7 @@ void HoI4States::createMatchingHoI4State(
 
 	if (impassableProvinces.size() > 0)
 	{
-		HoI4::State newState(vic2State, nextStateID, stateOwner);
+		HoI4::State newState(*vic2State, nextStateID, stateOwner);
 		addProvincesAndCoresToNewState(newState, impassableProvinces);
 		newState.makeImpassable();
 		newState.tryToCreateVP(theProvinceMapper, theConfiguration);

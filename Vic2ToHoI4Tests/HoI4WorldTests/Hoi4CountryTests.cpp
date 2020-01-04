@@ -2,6 +2,7 @@
 #include "../Vic2ToHoI4/Source/HOI4World/HoI4Country.h"
 #include "../Vic2ToHoI4/Source/Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "../Vic2ToHoI4/Source/V2World/Party.h"
+#include "../Vic2ToHoI4/Source/V2World/State.h"
 #include "../Mocks/CountryMapperMock.h"
 #include "../Mocks/GovermentMapperMock.h"
 #include "../Mocks/GraphicsMapperMock.h"
@@ -273,9 +274,11 @@ TEST_F(HoI4World_HoI4CountryTests, provincesCanBeAdded)
 		*theFlagsToIdeasMapper
 	);
 
-	const mockHoi4State state("TAG");
+	Vic2::State foo;
+	const mockHoi4State state(foo, "TAG");
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(0));
-	EXPECT_CALL(state, getProvinces).WillOnce(testing::Return(std::set<int>{1,2,3}));
+	std::set<int> testProvinces{ 1, 2, 3 };
+	EXPECT_CALL(state, getProvinces).WillOnce(testing::ReturnRef(testProvinces));
 
 	theCountry.addState(state);
 
@@ -312,9 +315,11 @@ TEST_F(HoI4World_HoI4CountryTests, statesCanBeAdded)
 		*theFlagsToIdeasMapper
 	);
 
-	const mockHoi4State state("");
+	Vic2::State foo;
+	const mockHoi4State state(foo, "");
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(42));
-	EXPECT_CALL(state, getProvinces).WillOnce(testing::Return(std::set<int>{}));
+	std::set<int> testProvinces;
+	EXPECT_CALL(state, getProvinces).WillOnce(testing::ReturnRef(testProvinces));
 
 	theCountry.addState(state);
 
@@ -351,7 +356,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanBeSetInOwnedState)
 		*theFlagsToIdeasMapper
 	);
 
-	mockHoi4State state("TAG");
+	Vic2::State foo;
+	mockHoi4State state(foo, "TAG");
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
 
 	std::map<int, HoI4::State> allStates;
@@ -388,7 +394,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceIsImp
 	);
 
 	std::map<int, HoI4::State> allStates;
-	mockHoi4State state("TAG");
+	Vic2::State foo;
+	mockHoi4State state(foo, "TAG");
 	state.addCores(std::set<std::string>{"TAG"});
 	state.addProvince(10);
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
@@ -396,14 +403,14 @@ TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceIsImp
 	allStates.insert(statePair);
 	theCountry.addState(state);
 
-	mockHoi4State state2("TAG");
+	mockHoi4State state2(foo, "TAG");
 	state2.addCores(std::set<std::string>{"TAG"});
 	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
 	std::pair<int, HoI4::State> statePair2(2, state2);
 	allStates.insert(statePair2);
 	theCountry.addState(state2);
 
-	mockHoi4State state3("TAG");
+	mockHoi4State state3(foo, "TAG");
 	state3.addCores(std::set<std::string>{"TAG"});
 	state3.makeImpassable();
 	std::pair<int, HoI4::State> statePair3(3, state3);
@@ -439,8 +446,9 @@ TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceNotOw
 		*theFlagsToIdeasMapper
 	);
 
+	Vic2::State foo;
 	std::map<int, HoI4::State> allStates;
-	mockHoi4State state("TAG");
+	mockHoi4State state(foo, "TAG");
 	state.addCores(std::set<std::string>{"TAG"});
 	state.addProvince(10);
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
@@ -448,14 +456,14 @@ TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceNotOw
 	allStates.insert(statePair);
 	theCountry.addState(state);
 
-	mockHoi4State state2("TAG");
+	mockHoi4State state2(foo, "TAG");
 	state2.addCores(std::set<std::string>{"TAG"});
 	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
 	std::pair<int, HoI4::State> statePair2(2, state2);
 	allStates.insert(statePair2);
 	theCountry.addState(state2);
 
-	mockHoi4State state3("NON");
+	mockHoi4State state3(foo, "NON");
 	state3.addCores(std::set<std::string>{"TAG"});
 	std::pair<int, HoI4::State> statePair3(3, state3);
 	allStates.insert(statePair3);
@@ -490,8 +498,9 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInPreferredWastelandIfOnlyWastela
 		*theFlagsToIdeasMapper
 	);
 
+	Vic2::State foo;
 	std::map<int, HoI4::State> allStates;
-	mockHoi4State state("TAG");
+	mockHoi4State state(foo, "TAG");
 	state.makeImpassable();
 	state.addCores(std::set<std::string>{"TAG"});
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
@@ -499,7 +508,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInPreferredWastelandIfOnlyWastela
 	allStates.insert(statePair);
 	theCountry.addState(state);
 
-	mockHoi4State state2("TAG");
+	mockHoi4State state2(foo, "TAG");
 	state2.makeImpassable();
 	state2.addCores(std::set<std::string>{"TAG"});
 	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
@@ -507,7 +516,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInPreferredWastelandIfOnlyWastela
 	allStates.insert(statePair2);
 	theCountry.addState(state2);
 
-	mockHoi4State state3("TAG");
+	mockHoi4State state3(foo, "TAG");
 	state3.makeImpassable();
 	state3.addCores(std::set<std::string>{"TAG"});
 	std::pair<int, HoI4::State> statePair3(3, state3);
@@ -543,8 +552,9 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInOtherWastelandIfOnlyWastelandOw
 		*theFlagsToIdeasMapper
 	);
 
+	Vic2::State foo;
 	std::map<int, HoI4::State> allStates;
-	mockHoi4State state("TAG");
+	mockHoi4State state(foo, "TAG");
 	state.makeImpassable();
 	state.addCores(std::set<std::string>{"TAG"});
 	state.addProvince(10);
@@ -553,7 +563,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInOtherWastelandIfOnlyWastelandOw
 	allStates.insert(statePair);
 	theCountry.addState(state);
 
-	mockHoi4State state2("TAG");
+	mockHoi4State state2(foo, "TAG");
 	state2.makeImpassable();
 	state2.addCores(std::set<std::string>{"TAG"});
 	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
@@ -561,7 +571,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInOtherWastelandIfOnlyWastelandOw
 	allStates.insert(statePair2);
 	theCountry.addState(state2);
 
-	mockHoi4State state3("NON");
+	mockHoi4State state3(foo, "NON");
 	state3.makeImpassable();
 	state3.addCores(std::set<std::string>{"TAG"});
 	std::pair<int, HoI4::State> statePair3(3, state3);
@@ -597,22 +607,23 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredPreferredIfNoneOwned)
 		*theFlagsToIdeasMapper
 	);
 
+	Vic2::State foo;
 	std::map<int, HoI4::State> allStates;
-	mockHoi4State state("NON");
+	mockHoi4State state(foo, "NON");
 	state.addCores(std::set<std::string>{"TAG"});
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
 	std::pair<int, HoI4::State> statePair(1, state);
 	allStates.insert(statePair);
 	theCountry.addState(state);
 
-	mockHoi4State state2("NON");
+	mockHoi4State state2(foo, "NON");
 	state2.addCores(std::set<std::string>{"TAG"});
 	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
 	std::pair<int, HoI4::State> statePair2(2, state2);
 	allStates.insert(statePair2);
 	theCountry.addState(state2);
 
-	mockHoi4State state3("NON");
+	mockHoi4State state3(foo, "NON");
 	state3.addCores(std::set<std::string>{"TAG"});
 	std::pair<int, HoI4::State> statePair3(3, state3);
 	allStates.insert(statePair3);
@@ -647,8 +658,9 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredNonWastelandIfNoneOwnedAndP
 		*theFlagsToIdeasMapper
 	);
 
+	Vic2::State foo;
 	std::map<int, HoI4::State> allStates;
-	mockHoi4State state("NON");
+	mockHoi4State state(foo, "NON");
 	state.addCores(std::set<std::string>{"TAG"});
 	state.addProvince(10);
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
@@ -656,14 +668,14 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredNonWastelandIfNoneOwnedAndP
 	allStates.insert(statePair);
 	theCountry.addState(state);
 
-	mockHoi4State state2("NON");
+	mockHoi4State state2(foo, "NON");
 	state2.addCores(std::set<std::string>{"TAG"});
 	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
 	std::pair<int, HoI4::State> statePair2(2, state2);
 	allStates.insert(statePair2);
 	theCountry.addState(state2);
 
-	mockHoi4State state3("NON");
+	mockHoi4State state3(foo, "NON");
 	state3.addCores(std::set<std::string>{"TAG"});
 	state3.makeImpassable();
 	std::pair<int, HoI4::State> statePair3(3, state3);
@@ -699,8 +711,9 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToPreferredWastelandIfNoneOwnedAnd
 		*theFlagsToIdeasMapper
 	);
 
+	Vic2::State foo;
 	std::map<int, HoI4::State> allStates;
-	mockHoi4State state("NON");
+	mockHoi4State state(foo, "NON");
 	state.addCores(std::set<std::string>{"TAG"});
 	state.makeImpassable();
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
@@ -708,7 +721,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToPreferredWastelandIfNoneOwnedAnd
 	allStates.insert(statePair);
 	theCountry.addState(state);
 
-	mockHoi4State state2("NON");
+	mockHoi4State state2(foo, "NON");
 	state2.addCores(std::set<std::string>{"TAG"});
 	state2.makeImpassable();
 	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
@@ -716,7 +729,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToPreferredWastelandIfNoneOwnedAnd
 	allStates.insert(statePair2);
 	theCountry.addState(state2);
 
-	mockHoi4State state3("NON");
+	mockHoi4State state3(foo, "NON");
 	state3.addCores(std::set<std::string>{"TAG"});
 	state3.addProvince(30);
 	state3.makeImpassable();
@@ -753,8 +766,9 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToAnyWastelandIfNoneOwnedAllWastel
 		*theFlagsToIdeasMapper
 	);
 
+	Vic2::State foo;
 	std::map<int, HoI4::State> allStates;
-	mockHoi4State state("NON");
+	mockHoi4State state(foo, "NON");
 	state.addCores(std::set<std::string>{"TAG"});
 	state.addProvince(10);
 	state.makeImpassable();
@@ -763,7 +777,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToAnyWastelandIfNoneOwnedAllWastel
 	allStates.insert(statePair);
 	theCountry.addState(state);
 
-	mockHoi4State state2("NON");
+	mockHoi4State state2(foo, "NON");
 	state2.addCores(std::set<std::string>{"TAG"});
 	state2.makeImpassable();
 	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
@@ -771,7 +785,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToAnyWastelandIfNoneOwnedAllWastel
 	allStates.insert(statePair2);
 	theCountry.addState(state2);
 
-	mockHoi4State state3("NON");
+	mockHoi4State state3(foo, "NON");
 	state3.makeImpassable();
 	std::pair<int, HoI4::State> statePair3(3, state3);
 	allStates.insert(statePair3);
@@ -806,8 +820,9 @@ TEST_F(HoI4World_HoI4CountryTests, capitalRemainsUnassignedIfNoCoresAndNoOwnedPr
 		*theFlagsToIdeasMapper
 	);
 
+	Vic2::State foo;
 	std::map<int, HoI4::State> allStates;
-	mockHoi4State state3("NON");
+	mockHoi4State state3(foo, "NON");
 	std::pair<int, HoI4::State> statePair3(3, state3);
 	allStates.insert(statePair3);
 

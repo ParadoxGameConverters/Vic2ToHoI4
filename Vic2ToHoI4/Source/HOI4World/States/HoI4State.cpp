@@ -14,7 +14,7 @@ const int POPULATION_PER_STATE_SLOT = 120000;
 
 
 
-HoI4::State::State(const Vic2::State* _sourceState, int _ID, const std::string& _ownerTag):
+HoI4::State::State(const Vic2::State& _sourceState, int _ID, const std::string& _ownerTag):
 	sourceState(_sourceState),
 	ID(_ID),
 	ownerTag(_ownerTag)
@@ -25,7 +25,7 @@ void HoI4::State::convertNavalBases(
 	const coastalProvinces& theCoastalProvinces,
 	const provinceMapper& theProvinceMapper
 ) {
-	for (auto sourceProvince: sourceState->getProvinces())
+	for (auto sourceProvince: sourceState.getProvinces())
 	{
 		int navalBaseLevel = determineNavalBaseLevel(*sourceProvince);
 		if (navalBaseLevel == 0)
@@ -96,7 +96,7 @@ void HoI4::State::convertControlledProvinces(
 	const provinceMapper& theProvinceMapper,
 	const CountryMapper& countryMapper
 ) {
-	for (auto sourceProvince: sourceState->getProvinces())
+	for (auto sourceProvince: sourceState.getProvinces())
 	{
 		if (sourceProvince->getOwner() != sourceProvince->getController())
 		{
@@ -181,7 +181,7 @@ void HoI4::State::tryToCreateVP(const provinceMapper& theProvinceMapper, const C
 {
 	bool VPCreated = false;
 
-	auto vic2CapitalProvince = sourceState->getCapitalProvince();
+	auto vic2CapitalProvince = sourceState.getCapitalProvince();
 	if (vic2CapitalProvince)
 	{
 		VPCreated = assignVPFromVic2Province(*vic2CapitalProvince, theProvinceMapper);
@@ -189,11 +189,11 @@ void HoI4::State::tryToCreateVP(const provinceMapper& theProvinceMapper, const C
 
 	if (!VPCreated)
 	{
-		if (theConfiguration.getDebug() && !sourceState->isPartialState() && !impassable && !hadImpassablePart)
+		if (theConfiguration.getDebug() && !sourceState.isPartialState() && !impassable && !hadImpassablePart)
 		{
 			LOG(LogLevel::Warning) << "Could not initially create VP for state " << ID << ", but state is not split.";
 		}
-		for (auto province: sourceState->getProvinces())
+		for (auto province: sourceState.getProvinces())
 		{
 			if (
 				 (province->getPopulation("aristocrats") > 0) ||
@@ -212,7 +212,7 @@ void HoI4::State::tryToCreateVP(const provinceMapper& theProvinceMapper, const C
 	if (!VPCreated)
 	{
 		std::list<const Vic2::Province*> provincesOrderedByPopulation;
-		for (auto province: sourceState->getProvinces())
+		for (auto province: sourceState.getProvinces())
 		{
 			provincesOrderedByPopulation.insert(
 				std::upper_bound(	provincesOrderedByPopulation.begin(),
@@ -245,7 +245,7 @@ void HoI4::State::tryToCreateVP(const provinceMapper& theProvinceMapper, const C
 
 void HoI4::State::addDebugVPs(const provinceMapper& theProvinceMapper)
 {
-	for (auto sourceProvinceNum: sourceState->getProvinceNums())
+	for (auto sourceProvinceNum: sourceState.getProvinceNums())
 	{
 		auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvinceNum);
 		if (mapping && (isProvinceInState((*mapping)[0])))
@@ -262,7 +262,7 @@ void HoI4::State::addDebugVPs(const provinceMapper& theProvinceMapper)
 
 void HoI4::State::addManpower(const provinceMapper& theProvinceMapper, const Configuration& theConfiguration)
 {
-	for (auto sourceProvince: sourceState->getProvinces())
+	for (auto sourceProvince: sourceState.getProvinces())
 	{
 		bool provinceIsInState = false;
 		if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince->getNumber()))
@@ -301,7 +301,7 @@ void HoI4::State::convertIndustry(
 
 int HoI4::State::determineFactoryNumbers(double workerFactoryRatio) const
 {
-	double rawFactories = sourceState->getEmployedWorkers() * workerFactoryRatio;
+	double rawFactories = sourceState.getEmployedWorkers() * workerFactoryRatio;
 	rawFactories = round(rawFactories);
 	return constrainFactoryNumbers(rawFactories);
 }
@@ -337,7 +337,7 @@ void HoI4::State::determineCategory(int factories, const HoI4::StateCategories& 
 		factories++;
 	}
 
-	int population = sourceState->getPopulation();
+	int population = sourceState.getPopulation();
 	int stateSlots = population / POPULATION_PER_STATE_SLOT;
 	if (factories >= stateSlots)
 	{
@@ -354,7 +354,7 @@ void HoI4::State::determineCategory(int factories, const HoI4::StateCategories& 
 void HoI4::State::setInfrastructure(int factories)
 {
 	infrastructure = 3;
-	infrastructure += sourceState->getAverageRailLevel() / 2;
+	infrastructure += sourceState.getAverageRailLevel() / 2;
 
 	if (factories > 4)
 	{

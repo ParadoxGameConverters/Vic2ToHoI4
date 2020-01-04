@@ -32,7 +32,7 @@ class State
 {
 	public:
 		State() = default;
-		State(const Vic2::State* sourceState, int _ID, const std::string& _ownerTag);
+		State(const Vic2::State& sourceState, int _ID, const std::string& _ownerTag);
 
 		void addProvince(int province) { provinces.insert(province); }
 		void setAsCapitalState() { capitalState = true; civFactories++; }
@@ -48,11 +48,11 @@ class State
 		void addCores(const std::set<std::string>& newCores);
 		void convertControlledProvinces(const provinceMapper& theProvinceMapper, const CountryMapper& countryMapper);
 
-		const Vic2::State* getSourceState() const { return sourceState; }
+		const Vic2::State& getSourceState() const { return sourceState; }
 		virtual int getID() const { return ID; }
-		virtual std::set<int>getProvinces() const { return provinces; }
-		std::string getOwner() const { return ownerTag; }
-		std::set<std::string> getCores() const { return cores; }
+		virtual const std::set<int>& getProvinces() const { return provinces; }
+		const std::string& getOwner() const { return ownerTag; }
+		const std::set<std::string>& getCores() const { return cores; }
 		const std::map<std::string, std::set<int>>& getControlledProvinces() const { return controlledProvinces; }
 		bool isImpassable() const { return impassable; }
 		int getDockyards() const { return dockyards; }
@@ -67,8 +67,8 @@ class State
 		const std::map<std::string, double>& getResources() const { return resources; }
 		std::optional<int> getVPLocation() const { return victoryPointPosition; }
 		int getVpValue() const { return victoryPointValue; }
-		std::set<int> getDebugVPs() const { return debugVictoryPoints; }
-		std::set<int> getSecondaryDebugVPs() const { return secondaryDebugVictoryPoints; }
+		const std::set<int>& getDebugVPs() const { return debugVictoryPoints; }
+		const std::set<int>& getSecondaryDebugVPs() const { return secondaryDebugVictoryPoints; }
 
 		std::optional<int> getMainNavalLocation() const;
 
@@ -101,7 +101,7 @@ class State
 		bool isProvinceInState(int provinceNum) const;
 		void addDebugVPs(const provinceMapper& theProvinceMapper);
 
-		const Vic2::State* sourceState;
+		const Vic2::State& sourceState;
 
 		int ID = 0;
 		std::set<int> provinces;
