@@ -27,7 +27,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-TEST(HoI4World_DockyardProvinceTests, dockyardsLevelDefaultsToZero)
+TEST(HoI4World_States_DockyardProvinceTests, dockyardsLevelDefaultsToZero)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -38,7 +38,7 @@ TEST(HoI4World_DockyardProvinceTests, dockyardsLevelDefaultsToZero)
 }
 
 
-TEST(HoI4World_DockyardProvinceTests, dockyardsLevelCanBeSet)
+TEST(HoI4World_States_DockyardProvinceTests, dockyardsLevelCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";

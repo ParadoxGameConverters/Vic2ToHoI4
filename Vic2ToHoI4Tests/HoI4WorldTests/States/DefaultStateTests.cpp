@@ -27,7 +27,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-TEST(HoI4World_DefaultStateTests, impassibleDefaultsToFalse)
+TEST(HoI4World_States_DefaultStateTests, impassibleDefaultsToFalse)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -38,7 +38,7 @@ TEST(HoI4World_DefaultStateTests, impassibleDefaultsToFalse)
 }
 
 
-TEST(HoI4World_DefaultStateTests, impassibleCanBeSet)
+TEST(HoI4World_States_DefaultStateTests, impassibleCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -50,7 +50,7 @@ TEST(HoI4World_DefaultStateTests, impassibleCanBeSet)
 }
 
 
-TEST(HoI4World_DefaultStateTests, provincesDefaultToEmpty)
+TEST(HoI4World_States_DefaultStateTests, provincesDefaultToEmpty)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -61,7 +61,7 @@ TEST(HoI4World_DefaultStateTests, provincesDefaultToEmpty)
 }
 
 
-TEST(HoI4World_DefaultStateTests, provincesCanBeSet)
+TEST(HoI4World_States_DefaultStateTests, provincesCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -79,7 +79,7 @@ TEST(HoI4World_DefaultStateTests, provincesCanBeSet)
 }
 
 
-TEST(HoI4World_DefaultStateTests, ownerDefaultsToBlank)
+TEST(HoI4World_States_DefaultStateTests, ownerDefaultsToBlank)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -90,7 +90,7 @@ TEST(HoI4World_DefaultStateTests, ownerDefaultsToBlank)
 }
 
 
-TEST(HoI4World_DefaultStateTests, ownerCanBeSet)
+TEST(HoI4World_States_DefaultStateTests, ownerCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -104,7 +104,7 @@ TEST(HoI4World_DefaultStateTests, ownerCanBeSet)
 }
 
 
-TEST(HoI4World_DefaultStateTests, civFactoriesDefaultsToZero)
+TEST(HoI4World_States_DefaultStateTests, civFactoriesDefaultsToZero)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -115,7 +115,7 @@ TEST(HoI4World_DefaultStateTests, civFactoriesDefaultsToZero)
 }
 
 
-TEST(HoI4World_DefaultStateTests, civFactoriesCanBeSet)
+TEST(HoI4World_States_DefaultStateTests, civFactoriesCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -131,7 +131,7 @@ TEST(HoI4World_DefaultStateTests, civFactoriesCanBeSet)
 }
 
 
-TEST(HoI4World_DefaultStateTests, milFactoriesDefaultsToZero)
+TEST(HoI4World_States_DefaultStateTests, milFactoriesDefaultsToZero)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -142,7 +142,7 @@ TEST(HoI4World_DefaultStateTests, milFactoriesDefaultsToZero)
 }
 
 
-TEST(HoI4World_DefaultStateTests, milFactoriesCanBeSet)
+TEST(HoI4World_States_DefaultStateTests, milFactoriesCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -158,7 +158,7 @@ TEST(HoI4World_DefaultStateTests, milFactoriesCanBeSet)
 }
 
 
-TEST(HoI4World_DefaultStateTests, dockyardsDefaultsToZero)
+TEST(HoI4World_States_DefaultStateTests, dockyardsDefaultsToZero)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -169,7 +169,7 @@ TEST(HoI4World_DefaultStateTests, dockyardsDefaultsToZero)
 }
 
 
-TEST(HoI4World_DefaultStateTests, dockyardsCanBeSet)
+TEST(HoI4World_States_DefaultStateTests, dockyardsCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -187,7 +187,7 @@ TEST(HoI4World_DefaultStateTests, dockyardsCanBeSet)
 }
 
 
-TEST(HoI4World_DefaultStateTests, dockyardsCanBeAdded)
+TEST(HoI4World_States_DefaultStateTests, dockyardsCanBeAdded)
 {
 	std::stringstream input;
 	input << "= {\n";

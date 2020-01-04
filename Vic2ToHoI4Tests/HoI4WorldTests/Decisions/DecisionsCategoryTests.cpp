@@ -5,7 +5,7 @@
 
 
 
-TEST(HoI4World_DecisionsCategoryTests, NameDefaultsToBlank)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, NameDefaultsToBlank)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -16,7 +16,7 @@ TEST(HoI4World_DecisionsCategoryTests, NameDefaultsToBlank)
 }
 
 
-TEST(HoI4World_DecisionsCategoryTests, NameCanBeSet)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, NameCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -27,7 +27,7 @@ TEST(HoI4World_DecisionsCategoryTests, NameCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionsCategoryTests, DecisionsDefaultsToEmpty)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionsDefaultsToEmpty)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -38,7 +38,7 @@ TEST(HoI4World_DecisionsCategoryTests, DecisionsDefaultsToEmpty)
 }
 
 
-TEST(HoI4World_DecisionsCategoryTests, DecisionsCanBeImported)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionsCanBeImported)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -50,7 +50,7 @@ TEST(HoI4World_DecisionsCategoryTests, DecisionsCanBeImported)
 }
 
 
-TEST(HoI4World_DecisionsCategoryTests, DecisionCategorycanBeOutput)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionCategorycanBeOutput)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -72,7 +72,7 @@ TEST(HoI4World_DecisionsCategoryTests, DecisionCategorycanBeOutput)
 }
 
 
-TEST(HoI4World_DecisionsCategoryTests, DecisionCanBeReplaced)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionCanBeReplaced)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -101,7 +101,7 @@ TEST(HoI4World_DecisionsCategoryTests, DecisionCanBeReplaced)
 }
 
 
-TEST(HoI4World_DecisionsCategoryTests, DecisionsCanBeReplaced)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionsCanBeReplaced)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -133,7 +133,7 @@ TEST(HoI4World_DecisionsCategoryTests, DecisionsCanBeReplaced)
 }
 
 
-TEST(HoI4World_DecisionsCategoryTests, ReplacingNonexistentDecisionDoesNotAddIt)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, ReplacingNonexistentDecisionDoesNotAddIt)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -157,7 +157,7 @@ TEST(HoI4World_DecisionsCategoryTests, ReplacingNonexistentDecisionDoesNotAddIt)
 }
 
 
-TEST(HoI4World_DecisionsCategoryTests, DecisionCanBeAdded)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionCanBeAdded)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -185,7 +185,7 @@ TEST(HoI4World_DecisionsCategoryTests, DecisionCanBeAdded)
 }
 
 
-TEST(HoI4World_DecisionsCategoryTests, EqualCategoriesAreEqual)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, EqualCategoriesAreEqual)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -197,7 +197,7 @@ TEST(HoI4World_DecisionsCategoryTests, EqualCategoriesAreEqual)
 }
 
 
-TEST(HoI4World_DecisionsCategoryTests, UnequalCategoriesAreUnequal)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, UnequalCategoriesAreUnequal)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -209,7 +209,7 @@ TEST(HoI4World_DecisionsCategoryTests, UnequalCategoriesAreUnequal)
 }
 
 
-TEST(HoI4World_DecisionsCategoryTests, OpenUpPoliticalDiscourseCanBeUpdatedWithIdeologies)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, OpenUpPoliticalDiscourseCanBeUpdatedWithIdeologies)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -244,7 +244,7 @@ TEST(HoI4World_DecisionsCategoryTests, OpenUpPoliticalDiscourseCanBeUpdatedWithI
 }
 
 
-TEST(HoI4World_DecisionsCategoryTests, DiscreditGovernmentCanBeUpdatedWithIdeologies)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, DiscreditGovernmentCanBeUpdatedWithIdeologies)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -302,7 +302,7 @@ TEST(HoI4World_DecisionsCategoryTests, DiscreditGovernmentCanBeUpdatedWithIdeolo
 }
 
 
-TEST(HoI4World_DecisionsCategoryTests, InstituePressCensorshipCanBeUpdatedWithIdeologies)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, InstituePressCensorshipCanBeUpdatedWithIdeologies)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -337,7 +337,7 @@ TEST(HoI4World_DecisionsCategoryTests, InstituePressCensorshipCanBeUpdatedWithId
 }
 
 
-TEST(HoI4World_DecisionsCategoryTests, IgniteTheIdeologyCivilWarCanBeUpdatedWithIdeologies)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, IgniteTheIdeologyCivilWarCanBeUpdatedWithIdeologies)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -416,7 +416,7 @@ TEST(HoI4World_DecisionsCategoryTests, IgniteTheIdeologyCivilWarCanBeUpdatedWith
 }
 
 
-TEST(HoI4World_DecisionsCategoryTests, HoldTheIdeologyNationalReferendumCanBeUpdatedWithEvents)
+TEST(HoI4World_Decisions_DecisionsCategoryTests, HoldTheIdeologyNationalReferendumCanBeUpdatedWithEvents)
 {
 	std::stringstream input;
 	input << "= {\n";
