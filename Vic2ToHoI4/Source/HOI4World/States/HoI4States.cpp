@@ -23,6 +23,11 @@
 
 
 
+constexpr int NUM_FACTORIES_PER_AIRBASE = 4;
+constexpr int AIRBASES_FOR_INFRASTRUCTURE_LEVEL = 6;
+
+
+
 HoI4::States::States(
 	const Vic2::World* sourceWorld,
 	const CountryMapper& countryMap,
@@ -223,8 +228,8 @@ std::set<std::string> HoI4::States::determineCores(
 
 
 void HoI4::States::createStates(
-	const std::map<std::string, Vic2::Country*> sourceCountries,
-	const std::map<int, Vic2::Province*> sourceProvinces,
+	const std::map<std::string, Vic2::Country*>& sourceCountries,
+	const std::map<int, Vic2::Province*>& sourceProvinces,
 	const HoI4::impassableProvinces& theImpassables,
 	const CountryMapper& countryMap,
 	const HoI4::coastalProvinces& theCoastalProvinces
@@ -477,10 +482,11 @@ void HoI4::States::addBasicAirBases()
 {
 	for (auto& state: states)
 	{
-		int numFactories = (state.second.getCivFactories() + state.second.getMilFactories()) / 4;
-		state.second.addAirBase(numFactories);
+		int numAirbases = 
+			(state.second.getCivFactories() + state.second.getMilFactories()) / NUM_FACTORIES_PER_AIRBASE;
+		state.second.addAirBase(numAirbases);
 
-		if (state.second.getInfrastructure() > 5)
+		if (state.second.getInfrastructure() >= AIRBASES_FOR_INFRASTRUCTURE_LEVEL)
 		{
 			state.second.addAirBase(1);
 		}

@@ -81,8 +81,8 @@ class States: commonItems::parser
 		) const;
 
 		void createStates(
-			const std::map<std::string, Vic2::Country*> sourceCountries,
-			const std::map<int, Vic2::Province*> sourceProvinces,
+			const std::map<std::string, Vic2::Country*>& sourceCountries,
+			const std::map<int, Vic2::Province*>& sourceProvinces,
 			const HoI4::impassableProvinces& theImpassables,
 			const CountryMapper& countryMap,
 			const HoI4::coastalProvinces& theCoastalProvinces

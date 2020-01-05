@@ -10,7 +10,11 @@
 
 
 
-const int POPULATION_PER_STATE_SLOT = 120000;
+constexpr int POP_CONVERSION_FACTOR = 4;
+constexpr int POPULATION_PER_STATE_SLOT = 120000;
+constexpr int FIRST_INFRASTRUCTURE_REWARD_LEVEL = 4;
+constexpr int SECOND_INFRASTRUCTURE_REWARD_LEVEL = 6;
+constexpr int THIRD_INFRASTRUCTURE_REWARD_LEVEL = 10;
 
 
 
@@ -30,7 +34,7 @@ HoI4::State::State(const Vic2::State& sourceState, int _ID, const std::string& _
 
 
 void HoI4::State::convertNavalBases(
-	const std::set<const Vic2::Province*> sourceProvinces,
+	const std::set<const Vic2::Province*>& sourceProvinces,
 	const coastalProvinces& theCoastalProvinces,
 	const provinceMapper& theProvinceMapper
 ) {
@@ -102,7 +106,7 @@ void HoI4::State::addCores(const std::set<std::string>& newCores)
 
 
 void HoI4::State::convertControlledProvinces(
-	const std::set<const Vic2::Province*> sourceProvinces,
+	const std::set<const Vic2::Province*>& sourceProvinces,
 	const provinceMapper& theProvinceMapper,
 	const CountryMapper& countryMapper
 ) {
@@ -257,7 +261,7 @@ void HoI4::State::tryToCreateVP(
 }
 
 
-void HoI4::State::addDebugVPs(const Vic2::State sourceState, const provinceMapper& theProvinceMapper)
+void HoI4::State::addDebugVPs(const Vic2::State& sourceState, const provinceMapper& theProvinceMapper)
 {
 	for (auto sourceProvinceNum: sourceState.getProvinceNums())
 	{
@@ -275,7 +279,7 @@ void HoI4::State::addDebugVPs(const Vic2::State sourceState, const provinceMappe
 
 
 void HoI4::State::addManpower(
-	const std::set<const Vic2::Province*> sourceProvinces,
+	const std::set<const Vic2::Province*>& sourceProvinces,
 	const provinceMapper& theProvinceMapper,
 	const Configuration& theConfiguration
 )
@@ -297,7 +301,12 @@ void HoI4::State::addManpower(
 
 		if (provinceIsInState)
 		{
-			manpower += static_cast<int>(sourceProvince->getTotalPopulation() * 4 * theConfiguration.getManpowerFactor());
+			manpower +=
+				static_cast<int>(
+					sourceProvince->getTotalPopulation() *
+					POP_CONVERSION_FACTOR *
+					theConfiguration.getManpowerFactor()
+				);
 		}
 	}
 }
@@ -376,15 +385,15 @@ void HoI4::State::addInfrastructureFromRails(float averageRailLevels)
 
 void HoI4::State::addInfrastructureFromFactories(int factories)
 {
-	if (factories > 4)
+	if (factories > FIRST_INFRASTRUCTURE_REWARD_LEVEL)
 	{
 		infrastructure++;
 	}
-	if (factories > 6)
+	if (factories > SECOND_INFRASTRUCTURE_REWARD_LEVEL)
 	{
 		infrastructure++;
 	}
-	if (factories > 10)
+	if (factories > THIRD_INFRASTRUCTURE_REWARD_LEVEL)
 	{
 		infrastructure++;
 	}

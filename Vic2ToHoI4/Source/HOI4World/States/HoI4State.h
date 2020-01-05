@@ -44,14 +44,14 @@ class State
 		void setVPLocation(int province) { victoryPointPosition = province; }
 
 		void convertNavalBases(
-			const std::set<const Vic2::Province*> sourceProvinces,
+			const std::set<const Vic2::Province*>& sourceProvinces,
 			const coastalProvinces& theCoastalProvinces,
 			const provinceMapper& theProvinceMapper
 		);
 		void addNavalBase(int level, int location);
 		void addCores(const std::set<std::string>& newCores);
 		void convertControlledProvinces(
-			const std::set<const Vic2::Province*> sourceProvinces,
+			const std::set<const Vic2::Province*>& sourceProvinces,
 			const provinceMapper& theProvinceMapper,
 			const CountryMapper& countryMapper
 		);
@@ -85,7 +85,7 @@ class State
 			const Configuration& theConfiguration
 		);
 		void addManpower(
-			const std::set<const Vic2::Province*> sourceProvinces,
+			const std::set<const Vic2::Province*>& sourceProvinces,
 			const provinceMapper& theProvinceMapper,
 			const Configuration& theConfiguration
 		);
@@ -115,7 +115,7 @@ class State
 		bool assignVPFromVic2Province(int Vic2ProvinceNumber, const provinceMapper& theProvinceMapper);
 		void assignVP(int location);
 		bool isProvinceInState(int provinceNum) const;
-		void addDebugVPs(const Vic2::State sourceState, const provinceMapper& theProvinceMapper);
+		void addDebugVPs(const Vic2::State& sourceState, const provinceMapper& theProvinceMapper);
 
 		int population = 0;
 		long employedWorkers = 0;
