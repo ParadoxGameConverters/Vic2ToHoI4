@@ -24,11 +24,10 @@
 
 
 HoI4States::HoI4States(
-	const Vic2::World* _sourceWorld,
+	const Vic2::World* sourceWorld,
 	const CountryMapper& countryMap,
 	const HoI4::coastalProvinces& theCoastalProvinces
 ):
-	sourceWorld(_sourceWorld),
 	ownersMap(),
 	coresMap(),
 	assignedProvinces(),
@@ -54,19 +53,25 @@ HoI4States::HoI4States(
 
 	HoI4::impassableProvinces theImpassables(defaultStates);
 
-	determineOwnersAndCores(countryMap);
-	createStates(theImpassables, countryMap, theCoastalProvinces);
+	determineOwnersAndCores(countryMap, *sourceWorld);
+	createStates(
+		sourceWorld->getCountries(),
+		sourceWorld->getProvinces(),
+		theImpassables,
+		countryMap,
+		theCoastalProvinces
+	);
 }
 
 
-void HoI4States::determineOwnersAndCores(const CountryMapper& countryMap)
+void HoI4States::determineOwnersAndCores(const CountryMapper& countryMap, const Vic2::World& sourceWorld)
 {
 	for (auto provinceNumber: provinceDefinitions::getLandProvinces())
 	{
 		auto sourceProvinceNums = retrieveSourceProvinceNums(provinceNumber);
 		if (sourceProvinceNums)
 		{
-			auto potentialOwners = determinePotentialOwners(*sourceProvinceNums);
+			auto potentialOwners = determinePotentialOwners(*sourceProvinceNums, sourceWorld);
 			if (potentialOwners.size() == 0)
 			{
 				ownersMap.insert(make_pair(provinceNumber, ""));
@@ -84,14 +89,14 @@ void HoI4States::determineOwnersAndCores(const CountryMapper& countryMap)
 			}
 			ownersMap.insert(make_pair(provinceNumber, *HoI4Tag));
 
-			std::set<std::string> cores = determineCores(*sourceProvinceNums, oldOwner, countryMap, *HoI4Tag);
+			std::set<std::string> cores = determineCores(*sourceProvinceNums, oldOwner, countryMap, *HoI4Tag, sourceWorld);
 			coresMap.insert(make_pair(provinceNumber, cores));
 		}
 	}
 }
 
 
-optional<vector<int>> HoI4States::retrieveSourceProvinceNums(int provNum) const
+std::optional<std::vector<int>> HoI4States::retrieveSourceProvinceNums(int provNum) const
 {
 	auto provinceLink = theProvinceMapper.getHoI4ToVic2ProvinceMapping(provNum);
 	if (provinceLink && (provinceLink->size() > 0))
@@ -114,13 +119,14 @@ optional<vector<int>> HoI4States::retrieveSourceProvinceNums(int provNum) const
 
 
 const std::map<std::string, std::pair<int, int>> HoI4States::determinePotentialOwners(
-	const std::vector<int>& sourceProvinceNums
+	const std::vector<int>& sourceProvinceNums,
+	const Vic2::World& sourceWorld
 ) const {
 	std::map<std::string, std::pair<int, int>> potentialOwners;
 
 	for (auto srcProvNum: sourceProvinceNums)
 	{
-		auto srcProvince = sourceWorld->getProvince(srcProvNum);
+		auto srcProvince = sourceWorld.getProvince(srcProvNum);
 		if (!srcProvince)
 		{
 			LOG(LogLevel::Warning) << "Old province " << srcProvNum << " does not exist (bad mapping?)";
@@ -181,13 +187,14 @@ std::set<std::string> HoI4States::determineCores(
 	const std::vector<int>& sourceProvinces,
 	const std::string& Vic2Owner,
 	const CountryMapper& countryMap,
-	const std::string& newOwner
+	const std::string& newOwner,
+	const Vic2::World& sourceWorld
 ) const {
 	std::set<std::string> cores;
 
 	for (auto sourceProvinceNum: sourceProvinces)
 	{
-		auto sourceProvince = sourceWorld->getProvince(sourceProvinceNum);
+		auto sourceProvince = sourceWorld.getProvince(sourceProvinceNum);
 		if (!sourceProvince)
 		{
 			continue;
@@ -216,6 +223,8 @@ std::set<std::string> HoI4States::determineCores(
 
 
 void HoI4States::createStates(
+	const std::map<std::string, Vic2::Country*> sourceCountries,
+	const std::map<int, Vic2::Province*> sourceProvinces,
 	const HoI4::impassableProvinces& theImpassables,
 	const CountryMapper& countryMap,
 	const HoI4::coastalProvinces& theCoastalProvinces
@@ -223,7 +232,7 @@ void HoI4States::createStates(
 {
 	std::set<int> ownedProvinces;
 
-	for (auto country: sourceWorld->getCountries())
+	for (auto country: sourceCountries)
 	{
 		for (auto vic2State: country.second->getStates())
 		{
@@ -240,7 +249,7 @@ void HoI4States::createStates(
 	}
 
 	std::map<int, Vic2::Province*> unownedProvinces;
-	for (auto vic2Province: sourceWorld->getProvinces())
+	for (auto vic2Province: sourceProvinces)
 	{
 		if (ownedProvinces.count(vic2Province.first) == 0)
 		{

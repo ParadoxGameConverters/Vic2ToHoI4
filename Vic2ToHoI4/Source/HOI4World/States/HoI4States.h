@@ -25,6 +25,7 @@ class State;
 namespace Vic2
 {
 class Country;
+class Province;
 class State;
 class World;
 }
@@ -35,7 +36,7 @@ class HoI4States: commonItems::parser
 {
 	public:
 		explicit HoI4States(
-			const Vic2::World* _sourceWorld,
+			const Vic2::World* sourceWorld,
 			const CountryMapper& countryMap,
 			const HoI4::coastalProvinces& theCoastalProvinces
 		);
@@ -61,20 +62,24 @@ class HoI4States: commonItems::parser
 		void addCapitalsToStates(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
 
 	private:
-		void determineOwnersAndCores(const CountryMapper& countryMap);
+		void determineOwnersAndCores(const CountryMapper& countryMap, const Vic2::World& sourceWorld);
 		std::optional<std::vector<int>> retrieveSourceProvinceNums(int provNum) const;
 		const std::map<std::string, std::pair<int, int>> determinePotentialOwners(
-			const std::vector<int>& sourceProvinceNums
+			const std::vector<int>& sourceProvinceNums,
+			const Vic2::World& sourceWorld
 		) const;
 		const std::string selectProvinceOwner(const std::map<std::string, std::pair<int, int>>& potentialOwners) const;
 		std::set<std::string> determineCores(
 			const std::vector<int>& sourceProvinces,
 			const std::string& Vic2Owner,
 			const CountryMapper& countryMap,
-			const std::string& newOwner
+			const std::string& newOwner,
+			const Vic2::World& sourceWorld
 		) const;
 
 		void createStates(
+			const std::map<std::string, Vic2::Country*> sourceCountries,
+			const std::map<int, Vic2::Province*> sourceProvinces,
 			const HoI4::impassableProvinces& theImpassables,
 			const CountryMapper& countryMap,
 			const HoI4::coastalProvinces& theCoastalProvinces
@@ -105,8 +110,6 @@ class HoI4States: commonItems::parser
 		);
 		int calculateStrengthVPs(const HoI4::Country& country, double greatestStrength) const;
 
-
-		const Vic2::World* sourceWorld = nullptr;
 		std::map<int, std::string> ownersMap;
 		std::map<int, std::set<std::string>> coresMap;
 		std::set<int> assignedProvinces;
