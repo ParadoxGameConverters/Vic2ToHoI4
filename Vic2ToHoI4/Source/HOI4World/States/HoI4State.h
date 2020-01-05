@@ -48,7 +48,6 @@ class State
 		void addCores(const std::set<std::string>& newCores);
 		void convertControlledProvinces(const provinceMapper& theProvinceMapper, const CountryMapper& countryMapper);
 
-		const Vic2::State& getSourceState() const { return sourceState; }
 		virtual int getID() const { return ID; }
 		virtual const std::set<int>& getProvinces() const { return provinces; }
 		const std::string& getOwner() const { return ownerTag; }

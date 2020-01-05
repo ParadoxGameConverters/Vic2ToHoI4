@@ -4,6 +4,7 @@
 #include "StateCategories.h"
 #include "../CoastalProvinces.h"
 #include "../HoI4Country.h"
+#include "../HoI4Localisation.h"
 #include "../ImpassableProvinces.h"
 #include "../Resources.h"
 #include "Log.h"
@@ -302,6 +303,7 @@ void HoI4States::createMatchingHoI4State(
 		newState.addManpower(theProvinceMapper, theConfiguration);
 		states.insert(make_pair(nextStateID, newState));
 		nextStateID++;
+		HoI4Localisation::addStateLocalisation(newState, *vic2State);
 	}
 
 	if (impassableProvinces.size() > 0)
@@ -313,6 +315,7 @@ void HoI4States::createMatchingHoI4State(
 		newState.addManpower(theProvinceMapper, theConfiguration);
 		states.insert(std::make_pair(nextStateID, newState));
 		nextStateID++;
+		HoI4Localisation::addStateLocalisation(newState, *vic2State);
 	}
 }
 

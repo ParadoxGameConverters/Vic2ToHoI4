@@ -38,18 +38,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-TEST(HoI4World_States_StateTests, sourceStateIsReturned)
-{
-	std::stringstream input;
-	input << "= {\n";
-	input << "}";
-	Vic2::State sourceState(input, "");
-	HoI4::State theState(sourceState, 42, "TAG");
-
-	ASSERT_EQ(theState.getSourceState().getStateID(), sourceState.getStateID());
-}
-
-
 TEST(HoI4World_States_StateTests, idIsReturned)
 {
 	mockVic2State sourceState;

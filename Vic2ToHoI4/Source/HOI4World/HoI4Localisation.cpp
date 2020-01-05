@@ -380,16 +380,19 @@ void HoI4Localisation::CopyEventLocalisations(const string& oldKey, const string
 }
 
 
+void HoI4Localisation::AddStateLocalisation(const HoI4::State& hoi4State, const Vic2::State& vic2State)
+{
+	for (auto Vic2NameInLanguage: V2Localisations::GetTextInEachLanguage(vic2State.getStateID()))
+	{
+		addStateLocalisationForLanguage(hoi4State, vic2State, Vic2NameInLanguage);
+	}
+}
+
+
 void HoI4Localisation::AddStateLocalisations(const HoI4States* states)
 {
 	for (auto state: states->getStates())
 	{
-		for (auto Vic2NameInLanguage:
-			V2Localisations::GetTextInEachLanguage(state.second.getSourceState().getStateID())
-		) {
-			addStateLocalisationForLanguage(state.second, Vic2NameInLanguage);
-		}
-
 		std::optional<int> VPPositionInHoI4 = state.second.getVPLocation();
 		if (VPPositionInHoI4)
 		{
@@ -456,12 +459,15 @@ bool HoI4Localisation::sourceStateHasAllButOneProvinceFromDefinition(const Vic2:
 }
 
 
-bool HoI4Localisation::stateHasAllDefinedProvincesAfterConversion(const HoI4::State& state)
+bool HoI4Localisation::stateHasAllDefinedProvincesAfterConversion(
+	const HoI4::State& state,
+	const Vic2::State& sourceState
+)
 {
 	std::set<int> stateDefintionDefinitionProvinces;
 
 	std::set<int> stateDefintionSourceProvinces =
-		Vic2::theStateDefinitions.getAllProvinces((*state.getSourceState().getProvinces().begin())->getNumber());
+		Vic2::theStateDefinitions.getAllProvinces((*sourceState.getProvinces().begin())->getNumber());
 	for (auto sourceProvince: stateDefintionSourceProvinces)
 	{
 		auto possibleMappedProvinces = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince);
@@ -487,14 +493,14 @@ bool HoI4Localisation::stateHasAllDefinedProvincesAfterConversion(const HoI4::St
 
 
 void HoI4Localisation::addStateLocalisationForLanguage(
-	const HoI4::State& state,
+	const HoI4::State& hoi4State,
+	const Vic2::State& vic2State,
 	const pair<const string, string>& Vic2NameInLanguage
 ) {
 	string localisedName = "";
-	auto sourceState = state.getSourceState();
-	if (sourceStateHasOneProvince(sourceState))
+	if (sourceStateHasOneProvince(vic2State))
 	{
-		const Vic2::Province* theProvince = *(sourceState.getProvinces().begin());
+		const Vic2::Province* theProvince = *(vic2State.getProvinces().begin());
 		auto possibleProvinceName =
 			V2Localisations::GetTextInLanguage(
 				"PROV" + std::to_string(theProvince->getNumber()),
@@ -506,31 +512,31 @@ void HoI4Localisation::addStateLocalisationForLanguage(
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not find localization for province " << *state.getProvinces().begin();
+			LOG(LogLevel::Warning) << "Could not find localization for Vic2 province " << theProvince->getNumber();
 		}
 	}
-	else if (sourceStateHasAllButOneProvinceFromDefinition(sourceState))
+	else if (sourceStateHasAllButOneProvinceFromDefinition(vic2State))
 	{
 		localisedName = Vic2NameInLanguage.second;
 	}
-	else if (stateHasAllDefinedProvincesAfterConversion(state))
+	else if (stateHasAllDefinedProvincesAfterConversion(hoi4State, vic2State))
 	{
 		localisedName = Vic2NameInLanguage.second;
 	}
-	else if (sourceState.isPartialState())
+	else if (vic2State.isPartialState())
 	{
 		auto possibleOwnerAdjective =
-			V2Localisations::GetTextInLanguage(sourceState.getOwner() + "_ADJ", Vic2NameInLanguage.first);
+			V2Localisations::GetTextInLanguage(vic2State.getOwner() + "_ADJ", Vic2NameInLanguage.first);
 		if (possibleOwnerAdjective)
 		{
 			localisedName = *possibleOwnerAdjective + " " + Vic2NameInLanguage.second;
 		}
 	}
-	else if (state.isImpassable())
+	else if (hoi4State.isImpassable())
 	{
 		auto possibleWastelandName =
 			V2Localisations::GetTextInLanguage(
-				sourceState.getStateID() + "_WASTELAND", Vic2NameInLanguage.first
+				vic2State.getStateID() + "_WASTELAND", Vic2NameInLanguage.first
 			);
 		if (possibleWastelandName)
 		{
@@ -540,7 +546,7 @@ void HoI4Localisation::addStateLocalisationForLanguage(
 		{
 			localisedName = Vic2NameInLanguage.second + " Wasteland";
 			LOG(LogLevel::Warning) << Vic2NameInLanguage.second
-				<< " had a wasteland section with no localisation. Add " << sourceState.getStateID()
+				<< " had a wasteland section with no localisation. Add " << vic2State.getStateID()
 				<< "_WASTELAND to DataFiles/Vic2Localisations.csv for better conversion.";
 		}
 	}
@@ -549,7 +555,7 @@ void HoI4Localisation::addStateLocalisationForLanguage(
 		localisedName = Vic2NameInLanguage.second;
 	}
 
-	getExistingStateLocalisation(Vic2NameInLanguage.first).insert(make_pair(state.getID(), localisedName));
+	getExistingStateLocalisation(Vic2NameInLanguage.first).insert(std::make_pair(hoi4State.getID(), localisedName));
 }
 
 
