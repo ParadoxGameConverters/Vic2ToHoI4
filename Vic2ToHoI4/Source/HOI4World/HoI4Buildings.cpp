@@ -290,7 +290,7 @@ void HoI4::Buildings::placeAirports(const HoI4States& theStates, const MapData& 
 				auto position = possibleAirbase->second;
 				HoI4::Building* newBuilding = new HoI4::Building(state.first, "air_base", position, 0);
 				buildings.insert(std::make_pair(state.first, newBuilding));
-				airportLocations.insert(make_pair(state.first, theProvince));
+				airportLocations.insert(std::make_pair(state.first, theProvince));
 				airportPlaced = true;
 				break;
 			}
@@ -693,7 +693,7 @@ void HoI4::Buildings::output() const
 	}
 	out.close();
 
-	ofstream airportsFile("output/" + theConfiguration.getOutputName() + "/map/airports.txt");
+	std::ofstream airportsFile("output/" + theConfiguration.getOutputName() + "/map/airports.txt");
 	if (!airportsFile.is_open())
 	{
 		LOG(LogLevel::Error) << "Could not create output/" << theConfiguration.getOutputName() << "/map/airports.txt";

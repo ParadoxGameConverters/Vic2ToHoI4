@@ -76,15 +76,15 @@ class World: commonItems::parser
 
 		void output();
 
-		map<string, shared_ptr<HoI4::Country>> getCountries()	const { return countries; }
-		vector<shared_ptr<HoI4::Country>> getGreatPowers() const { return greatPowers; }
-		map<int, HoI4::State> getStates() const { return states->getStates(); }
-		const map<int, int>& getProvinceToStateIDMap() const { return states->getProvinceToStateIDMap(); }
-		vector<shared_ptr<HoI4Faction>> getFactions() const { return factions; }
+		std::map<std::string, std::shared_ptr<HoI4::Country>> getCountries()	const { return countries; }
+		std::vector<std::shared_ptr<HoI4::Country>> getGreatPowers() const { return greatPowers; }
+		std::map<int, HoI4::State> getStates() const { return states->getStates(); }
+		const std::map<int, int>& getProvinceToStateIDMap() const { return states->getProvinceToStateIDMap(); }
+		std::vector<std::shared_ptr<HoI4Faction>> getFactions() const { return factions; }
 		HoI4::Events* getEvents() const { return events; }
-		set<string> getMajorIdeologies() const { return majorIdeologies; }
+		std::set<std::string> getMajorIdeologies() const { return majorIdeologies; }
 
-		shared_ptr<HoI4::Country> findCountry(const string& countryTag);
+		std::shared_ptr<HoI4::Country> findCountry(const std::string& countryTag);
 
 	private:
 		World(const World&) = delete;
@@ -110,24 +110,33 @@ class World: commonItems::parser
 
 		void convertIndustry();
 		void addStatesToCountries();
-		map<string, double> calculateFactoryWorkerRatios();
-		map<string, double> getIndustrialWorkersPerCountry();
-		double getTotalWorldWorkers(const map<string, double>& industrialWorkersPerCountry);
-		map<string, double> adjustWorkers(const map<string, double>& industrialWorkersPerCountry, double totalWorldWorkers);
-		double getWorldwideWorkerFactoryRatio(const map<string, double>& workersInCountries, double totalWorldWorkers);
+		std::map<std::string, double> calculateFactoryWorkerRatios();
+		std::map<std::string, double> getIndustrialWorkersPerCountry();
+		double getTotalWorldWorkers(const std::map<std::string, double>& industrialWorkersPerCountry);
+		std::map<std::string, double> adjustWorkers(
+			const std::map<std::string, double>& industrialWorkersPerCountry,
+			double totalWorldWorkers
+		);
+		double getWorldwideWorkerFactoryRatio(
+			const std::map<std::string, double>& workersInCountries,
+			double totalWorldWorkers
+		);
 		void calculateIndustryInCountries();
 		void reportIndustryLevels();
 		void reportCountryIndustry();
 		void reportDefaultIndustry();
 		std::pair<std::string, std::array<int, 3>> getDefaultStateIndustry(const HoI4::DefaultState& state);
-		void reportDefaultIndustry(const map<string, array<int, 3>>& countryIndustry);
+		void reportDefaultIndustry(const std::map<std::string, std::array<int, 3>>& countryIndustry);
 
 		void convertStrategicRegions();
-		map<int, int> importStrategicRegions();
-		map<int, int> determineUsedRegions(const HoI4::State& state, map<int, int>& provinceToStrategicRegionMap);
-		optional<int> determineMostUsedRegion(const map<int, int>& usedRegions) const;
+		std::map<int, int> importStrategicRegions();
+		std::map<int, int> determineUsedRegions(
+			const HoI4::State& state,
+			std::map<int, int>& provinceToStrategicRegionMap
+		);
+		std::optional<int> determineMostUsedRegion(const std::map<int, int>& usedRegions) const;
 		void addProvincesToRegion(const HoI4::State& state, int regionNum);
-		void addLeftoverProvincesToRegions(const map<int, int>& provinceToStrategicRegionMap);
+		void addLeftoverProvincesToRegions(const std::map<int, int>& provinceToStrategicRegionMap);
 
 		void convertDiplomacy();
 		void convertAgreements();
@@ -149,14 +158,14 @@ class World: commonItems::parser
 		double getStrongestCountryStrength() const;
 
 		void createFactions();
-		void logFactionMember(ofstream& factionsLog, shared_ptr<HoI4::Country> member) const;
-		optional<string> returnSphereLeader(shared_ptr<HoI4::Country> possibleSphereling) const;
-		bool governmentsAllowFaction(const string& leaderGovernment, const string& allyGovernment) const;
+		void logFactionMember(std::ofstream& factionsLog, std::shared_ptr<HoI4::Country> member) const;
+		std::optional<std::string> returnSphereLeader(std::shared_ptr<HoI4::Country> possibleSphereling) const;
+		bool governmentsAllowFaction(const std::string& leaderGovernment, const std::string& allyGovernment) const;
 
 		void addFocusTrees();
 		void adjustResearchFocuses();
 
-		void addCountryElectionEvents(const std::set<string>& theMajorIdeologies);
+		void addCountryElectionEvents(const std::set<std::string>& theMajorIdeologies);
 
 		void outputCommonCountries() const;
 		void outputColorsfile() const;
@@ -190,20 +199,20 @@ class World: commonItems::parser
 		//map<int, HoI4Province*> provinces;
 
 		HoI4::SupplyZones* supplyZones = nullptr;
-		map<int, HoI4StrategicRegion*> strategicRegions;
+		std::map<int, HoI4StrategicRegion*> strategicRegions;
 		Buildings* buildings = nullptr;
 
-		map<string, shared_ptr<HoI4::Country>> countries;
-		map<string, shared_ptr<HoI4::Country>> landedCountries;
-		vector<shared_ptr<HoI4::Country>> greatPowers;
+		std::map<std::string, std::shared_ptr<HoI4::Country>> countries;
+		std::map<std::string, std::shared_ptr<HoI4::Country>> landedCountries;
+		std::vector<std::shared_ptr<HoI4::Country>> greatPowers;
 
-		map<string, HoI4Ideology*> ideologies;
+		std::map<std::string, HoI4Ideology*> ideologies;
 		std::set<std::string> majorIdeologies;
-		std::map<std::string, vector<std::string>> ideologicalLeaderTraits;
-		map<std::string, HoI4::Advisor> ideologicalAdvisors;
+		std::map<std::string, std::vector<std::string>> ideologicalLeaderTraits;
+		std::map<std::string, HoI4::Advisor> ideologicalAdvisors;
 		std::unique_ptr<HoI4::Ideas> theIdeas;
 		
-		vector<shared_ptr<HoI4Faction>> factions;
+		std::vector<std::shared_ptr<HoI4Faction>> factions;
 		HoI4Diplomacy* diplomacy = nullptr;
 		std::unique_ptr<HoI4::decisions> decisions;
 		std::unique_ptr<HoI4::AIPeaces> peaces;

@@ -10,7 +10,6 @@
 #include <set>
 #include <string>
 #include <vector>
-using namespace std;
 
 
 
@@ -37,9 +36,9 @@ class HoI4States: commonItems::parser
 	public:
 		explicit HoI4States(const Vic2::World* _sourceWorld, const CountryMapper& countryMap);
 
-		const map<int, HoI4::DefaultState>& getDefaultStates() const { return defaultStates; }
-		const map<int, HoI4::State>& getStates() const { return states; }
-		const map<int, int>& getProvinceToStateIDMap() const { return provinceToStateIDMap; }
+		const std::map<int, HoI4::DefaultState>& getDefaultStates() const { return defaultStates; }
+		const std::map<int, HoI4::State>& getStates() const { return states; }
+		const std::map<int, int>& getProvinceToStateIDMap() const { return provinceToStateIDMap; }
 
 		void convertAirBases(
 			const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
@@ -59,11 +58,8 @@ class HoI4States: commonItems::parser
 		void addCapitalsToStates(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
 
 	private:
-		HoI4States(const HoI4States&) = delete;
-		HoI4States& operator=(const HoI4States&) = delete;
-
 		void determineOwnersAndCores(const CountryMapper& countryMap);
-		optional<vector<int>> retrieveSourceProvinceNums(int provNum) const;
+		std::optional<std::vector<int>> retrieveSourceProvinceNums(int provNum) const;
 		const std::map<std::string, std::pair<int, int>> determinePotentialOwners(
 			const std::vector<int>& sourceProvinceNums
 		) const;
@@ -78,14 +74,14 @@ class HoI4States: commonItems::parser
 		void createStates(const HoI4::impassableProvinces& theImpassables, const CountryMapper& countryMap);
 		void createMatchingHoI4State(
 			const Vic2::State* vic2State,
-			const string& stateOwner,
+			const std::string& stateOwner,
 			const HoI4::impassableProvinces& theImpassables,
 			const CountryMapper& countryMapper
 		);
-		std::set<int> getProvincesInState(const Vic2::State* vic2State, const string& owner);
+		std::set<int> getProvincesInState(const Vic2::State* vic2State, const std::string& owner);
 		void addProvincesAndCoresToNewState(HoI4::State& newState, const std::set<int>& provinces);
 		bool isProvinceValid(int provNum) const;
-		bool isProvinceOwnedByCountry(int provNum, const string& stateOwner) const;
+		bool isProvinceOwnedByCountry(int provNum, const std::string& stateOwner) const;
 		bool isProvinceNotAlreadyAssigned(int provNum) const;
 		unsigned int getTotalManpower() const;
 
@@ -103,13 +99,13 @@ class HoI4States: commonItems::parser
 
 
 		const Vic2::World* sourceWorld = nullptr;
-		map<int, string> ownersMap;
+		std::map<int, std::string> ownersMap;
 		std::map<int, std::set<std::string>> coresMap;
-		set<int> assignedProvinces;
+		std::set<int> assignedProvinces;
 
-		map<int, HoI4::DefaultState> defaultStates;
-		map<int, HoI4::State> states;
-		map<int, int> provinceToStateIDMap;
+		std::map<int, HoI4::DefaultState> defaultStates;
+		std::map<int, HoI4::State> states;
+		std::map<int, int> provinceToStateIDMap;
 		int nextStateID = 1;
 };
 
