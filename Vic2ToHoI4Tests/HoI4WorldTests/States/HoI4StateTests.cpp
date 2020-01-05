@@ -403,7 +403,7 @@ TEST(HoI4World_States_StateTests, categoryCanBeChanged)
 	mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(500000));
 	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(60000));
-	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(0));
+	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(0.0f));
 	HoI4::State theState(sourceState, 42, "TAG");
 
 	mockStateCategories stateCategories;
@@ -459,7 +459,7 @@ TEST(HoI4World_States_StateTests, infrastructureCanBeSet)
 	mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(0));
 	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(0));
-	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(0));
+	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(0.0f));
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
@@ -478,7 +478,7 @@ TEST(HoI4World_States_StateTests, infrastructureIsOutput)
 	mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(0));
 	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(0));
-	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(0));
+	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(0.0f));
 	HoI4::State theState(sourceState, 42, "TAG");
 
 	mockStateCategories stateCategories;
@@ -529,7 +529,7 @@ TEST(HoI4World_States_StateTests, infrastructureAddedPerTwoRailLevels)
 	mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(0));
 	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(0));
-	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(6));
+	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(6.0f));
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
@@ -548,7 +548,7 @@ TEST(HoI4World_States_StateTests, infrastructureForOverFourFactories)
 	mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(50000));
 	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(100000));
-	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(6));
+	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(6.0f));
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
@@ -567,7 +567,7 @@ TEST(HoI4World_States_StateTests, infrastructureForOverSixFactories)
 	mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(70000));
 	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(100000));
-	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(6));
+	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(6.0f));
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
@@ -586,7 +586,7 @@ TEST(HoI4World_States_StateTests, infrastructureForOverTenFactories)
 	mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(110000));
 	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(100000));
-	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(6));
+	EXPECT_CALL(sourceState, getAverageRailLevel()).WillOnce(testing::Return(6.0f));
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
