@@ -115,7 +115,7 @@ void setOutputName(const std::string& V2SaveFileName)
 		// no change, but explicitly considered
 	}
 
-	const int length = outputName.find_first_of('.');
+	const int length = outputName.find_last_of('.');
 	if ((length == std::string::npos) || (".v2" != outputName.substr(length, outputName.length())))
 	{
 		std::invalid_argument theException("The save was not a Vic2 save. Choose a save ending in '.v2' and convert again.");
