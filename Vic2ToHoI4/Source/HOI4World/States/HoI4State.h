@@ -36,7 +36,7 @@ class State
 
 		void addProvince(int province) { provinces.insert(province); }
 		void setAsCapitalState() { capitalState = true; civFactories++; }
-		void makeImpassable() { impassable = true; }
+		void makeImpassable() { impassable = true; infrastructure = 0; }
 		void markHadImpassablePart() { hadImpassablePart = true; }
 		void addResource(const std::string& resource, double amount)	{ resources[resource] += amount; }
 		void addAirBase(int newAirBase) { airbaseLevel += newAirBase; if (airbaseLevel > 10) airbaseLevel = 10; }
@@ -84,7 +84,8 @@ class State
 		int determineFactoryNumbers(double workerFactoryRatio) const;
 		int constrainFactoryNumbers(double rawFactories) const;
 		void determineCategory(int factories, const HoI4::StateCategories& theStateCategories);
-		void setInfrastructure(int factories);
+		void addInfrastructureFromRails(float averageRailLevel);
+		void addInfrastructureFromFactories(int factories);
 		void setIndustry(int factories, const coastalProvinces& theCoastalProvinces);
 		bool amICoastal(const coastalProvinces& theCoastalProvinces) const;
 
@@ -118,7 +119,7 @@ class State
 		int milFactories = 0;
 		int dockyards = 0;
 		std::string category = "wasteland";
-		int infrastructure = 0;
+		int infrastructure = 3;
 
 		std::map<int, int> navalBases;
 

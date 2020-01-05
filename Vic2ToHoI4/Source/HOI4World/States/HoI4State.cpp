@@ -18,7 +18,13 @@ HoI4::State::State(const Vic2::State& _sourceState, int _ID, const std::string& 
 	sourceState(_sourceState),
 	ID(_ID),
 	ownerTag(_ownerTag)
-{}
+{
+	if (ownerTag.empty())
+	{
+		infrastructure = 0;
+	}
+	addInfrastructureFromRails(_sourceState.getAverageRailLevel());
+}
 
 
 void HoI4::State::convertNavalBases(
@@ -293,7 +299,7 @@ void HoI4::State::convertIndustry(
 	int factories = determineFactoryNumbers(workerFactoryRatio);
 
 	determineCategory(factories, theStateCategories);
-	setInfrastructure(factories);
+	addInfrastructureFromFactories(factories);
 	setIndustry(factories, theCoastalProvinces);
 	addVictoryPointValue(factories / 2);
 }
@@ -351,11 +357,14 @@ void HoI4::State::determineCategory(int factories, const HoI4::StateCategories& 
 }
 
 
-void HoI4::State::setInfrastructure(int factories)
+void HoI4::State::addInfrastructureFromRails(float averageRailLevels)
 {
-	infrastructure = 3;
-	infrastructure += sourceState.getAverageRailLevel() / 2;
+	infrastructure += static_cast<int>(averageRailLevels / 2);
+}
 
+
+void HoI4::State::addInfrastructureFromFactories(int factories)
+{
 	if (factories > 4)
 	{
 		infrastructure++;
