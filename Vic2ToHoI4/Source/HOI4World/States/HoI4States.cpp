@@ -23,7 +23,11 @@
 
 
 
-HoI4States::HoI4States(const Vic2::World* _sourceWorld, const CountryMapper& countryMap):
+HoI4States::HoI4States(
+	const Vic2::World* _sourceWorld,
+	const CountryMapper& countryMap,
+	const HoI4::coastalProvinces& theCoastalProvinces
+):
 	sourceWorld(_sourceWorld),
 	ownersMap(),
 	coresMap(),
@@ -51,7 +55,7 @@ HoI4States::HoI4States(const Vic2::World* _sourceWorld, const CountryMapper& cou
 	HoI4::impassableProvinces theImpassables(defaultStates);
 
 	determineOwnersAndCores(countryMap);
-	createStates(theImpassables, countryMap);
+	createStates(theImpassables, countryMap, theCoastalProvinces);
 }
 
 
@@ -211,7 +215,11 @@ std::set<std::string> HoI4States::determineCores(
 }
 
 
-void HoI4States::createStates(const HoI4::impassableProvinces& theImpassables, const CountryMapper& countryMap)
+void HoI4States::createStates(
+	const HoI4::impassableProvinces& theImpassables,
+	const CountryMapper& countryMap,
+	const HoI4::coastalProvinces& theCoastalProvinces
+)
 {
 	std::set<int> ownedProvinces;
 
@@ -222,7 +230,7 @@ void HoI4States::createStates(const HoI4::impassableProvinces& theImpassables, c
 			auto possibleHoI4Owner = countryMap.getHoI4Tag(country.first);
 			if (possibleHoI4Owner)
 			{
-				createMatchingHoI4State(vic2State, *possibleHoI4Owner, theImpassables, countryMap);
+				createMatchingHoI4State(vic2State, *possibleHoI4Owner, theImpassables, countryMap, theCoastalProvinces);
 				for (auto province: vic2State->getProvinces())
 				{
 					ownedProvinces.insert(province->getNumber());
@@ -261,7 +269,7 @@ void HoI4States::createStates(const HoI4::impassableProvinces& theImpassables, c
 		}
 
 		Vic2::State* newState = new Vic2::State(stateProvinces);
-		createMatchingHoI4State(newState, "", theImpassables, countryMap);
+		createMatchingHoI4State(newState, "", theImpassables, countryMap, theCoastalProvinces);
 	}
 
 	unsigned int manpower = getTotalManpower();
@@ -273,7 +281,8 @@ void HoI4States::createMatchingHoI4State(
 	const Vic2::State* vic2State,
 	const string& stateOwner,
 	const HoI4::impassableProvinces& theImpassables,
-	const CountryMapper& countryMapper
+	const CountryMapper& countryMapper,
+	const HoI4::coastalProvinces& theCoastalProvinces
 ) {
 	std::set<int> passableProvinces;
 	std::set<int> impassableProvinces;
@@ -301,6 +310,7 @@ void HoI4States::createMatchingHoI4State(
 		newState.convertControlledProvinces(theProvinceMapper, countryMapper);
 		newState.tryToCreateVP(*vic2State, theProvinceMapper, theConfiguration);
 		newState.addManpower(theProvinceMapper, theConfiguration);
+		newState.convertNavalBases(vic2State->getProvinces(), theCoastalProvinces, theProvinceMapper);
 		states.insert(make_pair(nextStateID, newState));
 		nextStateID++;
 		HoI4Localisation::addStateLocalisation(newState, *vic2State);
@@ -313,6 +323,7 @@ void HoI4States::createMatchingHoI4State(
 		newState.makeImpassable();
 		newState.tryToCreateVP(*vic2State, theProvinceMapper, theConfiguration);
 		newState.addManpower(theProvinceMapper, theConfiguration);
+		newState.convertNavalBases(vic2State->getProvinces(), theCoastalProvinces, theProvinceMapper);
 		states.insert(std::make_pair(nextStateID, newState));
 		nextStateID++;
 		HoI4Localisation::addStateLocalisation(newState, *vic2State);
@@ -500,15 +511,6 @@ void HoI4States::putIndustryInStates(
 		}
 
 		HoI4State.second.convertIndustry(ratioMapping->second, theStateCategories, theCoastalProvinces);
-	}
-}
-
-
-void HoI4States::convertNavalBases(const HoI4::coastalProvinces& theCoastalProvinces)
-{
-	for (auto& state: states)
-	{
-		state.second.convertNavalBases(theCoastalProvinces, theProvinceMapper);
 	}
 }
 

@@ -43,7 +43,11 @@ class State
 		void addVictoryPointValue(int additionalValue) { victoryPointValue += additionalValue; }
 		void setVPLocation(int province) { victoryPointPosition = province; }
 
-		void convertNavalBases(const coastalProvinces& theCoastalProvinces, const provinceMapper& theProvinceMapper);
+		void convertNavalBases(
+			const std::set<const Vic2::Province*> sourceProvinces,
+			const coastalProvinces& theCoastalProvinces,
+			const provinceMapper& theProvinceMapper
+		);
 		void addNavalBase(int level, int location);
 		void addCores(const std::set<std::string>& newCores);
 		void convertControlledProvinces(const provinceMapper& theProvinceMapper, const CountryMapper& countryMapper);

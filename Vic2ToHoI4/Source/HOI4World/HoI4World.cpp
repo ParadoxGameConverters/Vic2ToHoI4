@@ -45,8 +45,6 @@ using namespace std;
 HoI4::World::World(const Vic2::World* _sourceWorld):
 	sourceWorld(_sourceWorld),
 	countryMap(_sourceWorld),
-	states(new HoI4States(sourceWorld, countryMap)),
-	supplyZones(new HoI4::SupplyZones(states->getDefaultStates())),
 	theIdeas(std::make_unique<HoI4::Ideas>()),
 	decisions(make_unique<HoI4::decisions>(theConfiguration)),
 	peaces(make_unique<HoI4::AIPeaces>()),
@@ -57,8 +55,9 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	LOG(LogLevel::Info) << "Parsing HoI4 data";
 
 	theCoastalProvinces.init(theMapData);
+	states = new HoI4States(sourceWorld, countryMap, theCoastalProvinces);
+	supplyZones = new HoI4::SupplyZones(states->getDefaultStates());
 	buildings = new Buildings(*states, theCoastalProvinces, theMapData),
-	states->convertNavalBases(theCoastalProvinces);
 	theNames.init();
 	theGraphics.init();
 	governmentMap.init();

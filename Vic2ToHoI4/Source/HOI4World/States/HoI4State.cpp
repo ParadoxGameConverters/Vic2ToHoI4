@@ -28,10 +28,11 @@ HoI4::State::State(const Vic2::State& _sourceState, int _ID, const std::string& 
 
 
 void HoI4::State::convertNavalBases(
+	const std::set<const Vic2::Province*> sourceProvinces,
 	const coastalProvinces& theCoastalProvinces,
 	const provinceMapper& theProvinceMapper
 ) {
-	for (auto sourceProvince: sourceState.getProvinces())
+	for (auto sourceProvince: sourceProvinces)
 	{
 		int navalBaseLevel = determineNavalBaseLevel(*sourceProvince);
 		if (navalBaseLevel == 0)
