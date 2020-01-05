@@ -55,7 +55,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	LOG(LogLevel::Info) << "Parsing HoI4 data";
 
 	theCoastalProvinces.init(theMapData);
-	states = new States(sourceWorld, countryMap, theCoastalProvinces);
+	states = std::make_unique<States>(sourceWorld, countryMap, theCoastalProvinces);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates());
 	buildings = new Buildings(*states, theCoastalProvinces, theMapData),
 	theNames.init();
@@ -64,7 +64,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	convertCountries();
 	addStatesToCountries();
 	states->addCapitalsToStates(countries);
-	HoI4Localisation::addStateLocalisations(states);
+	HoI4Localisation::addStateLocalisations(*states);
 	convertIndustry();
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);

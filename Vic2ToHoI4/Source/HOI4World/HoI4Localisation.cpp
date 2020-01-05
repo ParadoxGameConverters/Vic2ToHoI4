@@ -389,9 +389,9 @@ void HoI4Localisation::AddStateLocalisation(const HoI4::State& hoi4State, const 
 }
 
 
-void HoI4Localisation::AddStateLocalisations(const HoI4::States* states)
+void HoI4Localisation::AddStateLocalisations(const HoI4::States& states)
 {
-	for (auto state: states->getStates())
+	for (auto state: states.getStates())
 	{
 		std::optional<int> VPPositionInHoI4 = state.second.getVPLocation();
 		if (VPPositionInHoI4)

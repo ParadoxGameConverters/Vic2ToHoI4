@@ -195,7 +195,7 @@ class World: commonItems::parser
 
 		const Vic2::World* sourceWorld = nullptr;
 
-		States* states = nullptr;
+		std::unique_ptr<States> states;
 		//map<int, HoI4Province*> provinces;
 
 		HoI4::SupplyZones* supplyZones = nullptr;

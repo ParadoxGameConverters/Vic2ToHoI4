@@ -62,7 +62,7 @@ class HoI4Localisation
 			getInstance()->AddStateLocalisation(hoi4State, vic2State);
 		}
 
-		static void addStateLocalisations(const HoI4::States* states)
+		static void addStateLocalisations(const HoI4::States& states)
 		{
 			getInstance()->AddStateLocalisations(states);
 		}
@@ -174,7 +174,7 @@ class HoI4Localisation
 		void CopyEventLocalisations(const std::string& oldKey, const std::string& newKey);
 
 		void AddStateLocalisation(const HoI4::State& hoi4State, const Vic2::State& vic2State);
-		void AddStateLocalisations(const HoI4::States* states);
+		void AddStateLocalisations(const HoI4::States& states);
 		void addStateLocalisationForLanguage(
 			const HoI4::State& hoi4State,
 			const Vic2::State& vic2State,

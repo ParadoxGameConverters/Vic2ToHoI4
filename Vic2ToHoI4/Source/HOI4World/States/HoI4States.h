@@ -3,6 +3,7 @@
 
 
 
+#include "DefaultState.h"
 #include "../../Mappers/Provinces/ProvinceMapper.h"
 #include "newParser.h"
 #include <map>
@@ -30,7 +31,6 @@ namespace HoI4
 
 class Country;
 class coastalProvinces;
-class DefaultState;
 class impassableProvinces;
 class State;
 
