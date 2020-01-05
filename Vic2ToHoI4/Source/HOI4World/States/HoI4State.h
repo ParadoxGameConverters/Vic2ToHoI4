@@ -84,7 +84,11 @@ class State
 			const provinceMapper& theProvinceMapper,
 			const Configuration& theConfiguration
 		);
-		void addManpower(const provinceMapper& theProvinceMapper, const Configuration& theConfiguration);
+		void addManpower(
+			const std::set<const Vic2::Province*> sourceProvinces,
+			const provinceMapper& theProvinceMapper,
+			const Configuration& theConfiguration
+		);
 
 		void convertIndustry(
 			double workerFactoryRatio,

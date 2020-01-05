@@ -626,7 +626,6 @@ TEST(HoI4World_States_StateTests, manpowerCanBeSet)
 	mockVic2State sourceState;
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
-	EXPECT_CALL(sourceState, getProvinces()).WillOnce(testing::Return(provinces));
 
 	mockProvinceMapper theProvinceMapper;
 	std::vector<int> mappingNums = { 12 };
@@ -637,7 +636,7 @@ TEST(HoI4World_States_StateTests, manpowerCanBeSet)
 	configInput << "manpower_factor = 1.0";
 	Configuration testConfig;
 	testConfig.instantiate(configInput);
-	theState.addManpower(theProvinceMapper, testConfig);
+	theState.addManpower(provinces, theProvinceMapper, testConfig);
 
 	ASSERT_EQ(theState.getManpower(), 49380);
 }

@@ -272,9 +272,13 @@ void HoI4::State::addDebugVPs(const Vic2::State sourceState, const provinceMappe
 }
 
 
-void HoI4::State::addManpower(const provinceMapper& theProvinceMapper, const Configuration& theConfiguration)
+void HoI4::State::addManpower(
+	const std::set<const Vic2::Province*> sourceProvinces,
+	const provinceMapper& theProvinceMapper,
+	const Configuration& theConfiguration
+)
 {
-	for (auto sourceProvince: sourceState.getProvinces())
+	for (auto sourceProvince: sourceProvinces)
 	{
 		bool provinceIsInState = false;
 		if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince->getNumber()))

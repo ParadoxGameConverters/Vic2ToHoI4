@@ -309,7 +309,7 @@ void HoI4States::createMatchingHoI4State(
 		addProvincesAndCoresToNewState(newState, passableProvinces);
 		newState.convertControlledProvinces(vic2State->getProvinces(), theProvinceMapper, countryMapper);
 		newState.tryToCreateVP(*vic2State, theProvinceMapper, theConfiguration);
-		newState.addManpower(theProvinceMapper, theConfiguration);
+		newState.addManpower(vic2State->getProvinces(), theProvinceMapper, theConfiguration);
 		newState.convertNavalBases(vic2State->getProvinces(), theCoastalProvinces, theProvinceMapper);
 		states.insert(make_pair(nextStateID, newState));
 		nextStateID++;
@@ -322,7 +322,7 @@ void HoI4States::createMatchingHoI4State(
 		addProvincesAndCoresToNewState(newState, impassableProvinces);
 		newState.makeImpassable();
 		newState.tryToCreateVP(*vic2State, theProvinceMapper, theConfiguration);
-		newState.addManpower(theProvinceMapper, theConfiguration);
+		newState.addManpower(vic2State->getProvinces(), theProvinceMapper, theConfiguration);
 		newState.convertNavalBases(vic2State->getProvinces(), theCoastalProvinces, theProvinceMapper);
 		states.insert(std::make_pair(nextStateID, newState));
 		nextStateID++;
