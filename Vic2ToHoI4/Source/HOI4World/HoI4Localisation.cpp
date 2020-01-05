@@ -389,7 +389,7 @@ void HoI4Localisation::AddStateLocalisation(const HoI4::State& hoi4State, const 
 }
 
 
-void HoI4Localisation::AddStateLocalisations(const HoI4States* states)
+void HoI4Localisation::AddStateLocalisations(const HoI4::States* states)
 {
 	for (auto state: states->getStates())
 	{

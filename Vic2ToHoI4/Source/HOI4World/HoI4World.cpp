@@ -55,7 +55,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	LOG(LogLevel::Info) << "Parsing HoI4 data";
 
 	theCoastalProvinces.init(theMapData);
-	states = new HoI4States(sourceWorld, countryMap, theCoastalProvinces);
+	states = new States(sourceWorld, countryMap, theCoastalProvinces);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates());
 	buildings = new Buildings(*states, theCoastalProvinces, theMapData),
 	theNames.init();

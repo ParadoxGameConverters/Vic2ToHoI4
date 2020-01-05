@@ -134,7 +134,7 @@ void HoI4::SupplyZones::output()
 }
 
 
-void HoI4::SupplyZones::convertSupplyZones(const HoI4States& states)
+void HoI4::SupplyZones::convertSupplyZones(const States& states)
 {
 	for (auto state: states.getStates())
 	{

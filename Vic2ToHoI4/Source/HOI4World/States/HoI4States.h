@@ -14,14 +14,8 @@
 
 
 class CountryMapper;
-namespace HoI4
-{
-class Country;
-class coastalProvinces;
-class DefaultState;
-class impassableProvinces;
-class State;
-}
+
+
 namespace Vic2
 {
 class Country;
@@ -31,11 +25,20 @@ class World;
 }
 
 
+namespace HoI4
+{
 
-class HoI4States: commonItems::parser
+class Country;
+class coastalProvinces;
+class DefaultState;
+class impassableProvinces;
+class State;
+
+
+class States: commonItems::parser
 {
 	public:
-		explicit HoI4States(
+		explicit States(
 			const Vic2::World* sourceWorld,
 			const CountryMapper& countryMap,
 			const HoI4::coastalProvinces& theCoastalProvinces
@@ -119,6 +122,8 @@ class HoI4States: commonItems::parser
 		std::map<int, int> provinceToStateIDMap;
 		int nextStateID = 1;
 };
+
+}
 
 
 

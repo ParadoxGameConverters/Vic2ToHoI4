@@ -32,7 +32,6 @@ class HoI4Diplomacy;
 class HoI4Faction;
 class HoI4Ideology;
 class HoI4Province;
-class HoI4States;
 class HoI4StrategicRegion;
 
 
@@ -63,6 +62,7 @@ class DefaultState;
 class DivisionTemplateType;
 class Events;
 class State;
+class States;
 class SupplyZones;
 class HoI4UnitType;
 struct advisorCompare;
@@ -195,7 +195,7 @@ class World: commonItems::parser
 
 		const Vic2::World* sourceWorld = nullptr;
 
-		HoI4States* states = nullptr;
+		States* states = nullptr;
 		//map<int, HoI4Province*> provinces;
 
 		HoI4::SupplyZones* supplyZones = nullptr;

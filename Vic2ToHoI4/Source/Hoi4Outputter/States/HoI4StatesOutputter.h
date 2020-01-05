@@ -11,7 +11,7 @@
 namespace HoI4
 {
 
-void outputStates(const HoI4States& theStates, const Configuration& theConfiguration);
+void outputStates(const States& theStates, const Configuration& theConfiguration);
 
 }
 

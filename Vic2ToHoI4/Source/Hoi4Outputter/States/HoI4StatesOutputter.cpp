@@ -7,7 +7,7 @@
 
 
 
-void HoI4::outputStates(const HoI4States& theStates, const Configuration& theConfiguration)
+void HoI4::outputStates(const States& theStates, const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Debug) << "Writing states";
 
