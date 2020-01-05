@@ -14,16 +14,18 @@ const int POPULATION_PER_STATE_SLOT = 120000;
 
 
 
-HoI4::State::State(const Vic2::State& _sourceState, int _ID, const std::string& _ownerTag):
-	sourceState(_sourceState),
+HoI4::State::State(const Vic2::State& sourceState, int _ID, const std::string& _ownerTag):
 	ID(_ID),
 	ownerTag(_ownerTag)
 {
+	population = sourceState.getPopulation();
+	employedWorkers = sourceState.getEmployedWorkers();
+
 	if (ownerTag.empty())
 	{
 		infrastructure = 0;
 	}
-	addInfrastructureFromRails(_sourceState.getAverageRailLevel());
+	addInfrastructureFromRails(sourceState.getAverageRailLevel());
 }
 
 
@@ -317,7 +319,7 @@ void HoI4::State::convertIndustry(
 
 int HoI4::State::determineFactoryNumbers(double workerFactoryRatio) const
 {
-	double rawFactories = sourceState.getEmployedWorkers() * workerFactoryRatio;
+	double rawFactories = employedWorkers * workerFactoryRatio;
 	rawFactories = round(rawFactories);
 	return constrainFactoryNumbers(rawFactories);
 }
@@ -353,7 +355,6 @@ void HoI4::State::determineCategory(int factories, const HoI4::StateCategories& 
 		factories++;
 	}
 
-	int population = sourceState.getPopulation();
 	int stateSlots = population / POPULATION_PER_STATE_SLOT;
 	if (factories >= stateSlots)
 	{

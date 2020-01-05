@@ -117,7 +117,8 @@ class State
 		bool isProvinceInState(int provinceNum) const;
 		void addDebugVPs(const Vic2::State sourceState, const provinceMapper& theProvinceMapper);
 
-		const Vic2::State& sourceState;
+		int population = 0;
+		long employedWorkers = 0;
 
 		int ID = 0;
 		std::set<int> provinces;
