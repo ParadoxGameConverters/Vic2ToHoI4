@@ -100,10 +100,11 @@ void HoI4::State::addCores(const std::set<std::string>& newCores)
 
 
 void HoI4::State::convertControlledProvinces(
+	const std::set<const Vic2::Province*> sourceProvinces,
 	const provinceMapper& theProvinceMapper,
 	const CountryMapper& countryMapper
 ) {
-	for (auto sourceProvince: sourceState.getProvinces())
+	for (auto sourceProvince: sourceProvinces)
 	{
 		if (sourceProvince->getOwner() != sourceProvince->getController())
 		{

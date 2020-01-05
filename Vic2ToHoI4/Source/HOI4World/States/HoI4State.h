@@ -50,7 +50,11 @@ class State
 		);
 		void addNavalBase(int level, int location);
 		void addCores(const std::set<std::string>& newCores);
-		void convertControlledProvinces(const provinceMapper& theProvinceMapper, const CountryMapper& countryMapper);
+		void convertControlledProvinces(
+			const std::set<const Vic2::Province*> sourceProvinces,
+			const provinceMapper& theProvinceMapper,
+			const CountryMapper& countryMapper
+		);
 
 		virtual int getID() const { return ID; }
 		virtual const std::set<int>& getProvinces() const { return provinces; }

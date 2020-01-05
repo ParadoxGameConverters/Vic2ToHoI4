@@ -307,7 +307,7 @@ void HoI4States::createMatchingHoI4State(
 			newState.markHadImpassablePart();
 		}
 		addProvincesAndCoresToNewState(newState, passableProvinces);
-		newState.convertControlledProvinces(theProvinceMapper, countryMapper);
+		newState.convertControlledProvinces(vic2State->getProvinces(), theProvinceMapper, countryMapper);
 		newState.tryToCreateVP(*vic2State, theProvinceMapper, theConfiguration);
 		newState.addManpower(theProvinceMapper, theConfiguration);
 		newState.convertNavalBases(vic2State->getProvinces(), theCoastalProvinces, theProvinceMapper);

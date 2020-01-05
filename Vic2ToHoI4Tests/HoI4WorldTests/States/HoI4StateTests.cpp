@@ -1183,7 +1183,6 @@ TEST(HoI4World_States_StateTests, controllersCanBeAdded)
 	mockVic2State sourceState;
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
-	EXPECT_CALL(sourceState, getProvinces()).WillOnce(testing::Return(provinces));
 
 	mockProvinceMapper theProvinceMapper;
 	std::optional<std::vector<int>> possibleMappedProvinces;
@@ -1196,7 +1195,7 @@ TEST(HoI4World_States_StateTests, controllersCanBeAdded)
 	std::optional<std::string> hoi4tag = "NOT";
 	EXPECT_CALL(theCountryMapper, getHoI4Tag("NOT")).WillOnce(testing::Return(hoi4tag));
 
-	theState.convertControlledProvinces(theProvinceMapper, theCountryMapper);
+	theState.convertControlledProvinces(provinces, theProvinceMapper, theCountryMapper);
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\n";
@@ -1252,7 +1251,6 @@ TEST(HoI4World_States_StateTests, controllersConvertWithHoI4Tag)
 	mockVic2State sourceState;
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
-	EXPECT_CALL(sourceState, getProvinces()).WillOnce(testing::Return(provinces));
 
 	mockProvinceMapper theProvinceMapper;
 	std::optional<std::vector<int>> possibleMappedProvinces;
@@ -1265,7 +1263,7 @@ TEST(HoI4World_States_StateTests, controllersConvertWithHoI4Tag)
 	std::optional<std::string> hoi4tag = "HOI";
 	EXPECT_CALL(theCountryMapper, getHoI4Tag("NOT")).WillOnce(testing::Return(hoi4tag));
 
-	theState.convertControlledProvinces(theProvinceMapper, theCountryMapper);
+	theState.convertControlledProvinces(provinces, theProvinceMapper, theCountryMapper);
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\n";
@@ -1321,7 +1319,6 @@ TEST(HoI4World_States_StateTests, controllersDontConvertForRebels)
 	mockVic2State sourceState;
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
-	EXPECT_CALL(sourceState, getProvinces()).WillOnce(testing::Return(provinces));
 
 	mockProvinceMapper theProvinceMapper;
 
@@ -1329,7 +1326,7 @@ TEST(HoI4World_States_StateTests, controllersDontConvertForRebels)
 	std::optional<std::string> hoi4tag = "REB";
 	EXPECT_CALL(theCountryMapper, getHoI4Tag("REB")).WillOnce(testing::Return(hoi4tag));
 
-	theState.convertControlledProvinces(theProvinceMapper, theCountryMapper);
+	theState.convertControlledProvinces(provinces, theProvinceMapper, theCountryMapper);
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\n";
