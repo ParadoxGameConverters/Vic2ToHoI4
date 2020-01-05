@@ -71,7 +71,11 @@ class State
 
 		std::optional<int> getMainNavalLocation() const;
 
-		void tryToCreateVP(const provinceMapper& theProvinceMapper, const Configuration& theConfiguration);
+		void tryToCreateVP(
+			const Vic2::State& sourceState,
+			const provinceMapper& theProvinceMapper,
+			const Configuration& theConfiguration
+		);
 		void addManpower(const provinceMapper& theProvinceMapper, const Configuration& theConfiguration);
 
 		void convertIndustry(
@@ -99,7 +103,7 @@ class State
 		bool assignVPFromVic2Province(int Vic2ProvinceNumber, const provinceMapper& theProvinceMapper);
 		void assignVP(int location);
 		bool isProvinceInState(int provinceNum) const;
-		void addDebugVPs(const provinceMapper& theProvinceMapper);
+		void addDebugVPs(const Vic2::State sourceState, const provinceMapper& theProvinceMapper);
 
 		const Vic2::State& sourceState;
 

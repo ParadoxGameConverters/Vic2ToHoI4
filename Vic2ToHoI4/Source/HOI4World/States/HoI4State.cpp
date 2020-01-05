@@ -183,7 +183,11 @@ std::optional<int> HoI4::State::getMainNavalLocation() const
 }
 
 
-void HoI4::State::tryToCreateVP(const provinceMapper& theProvinceMapper, const Configuration& theConfiguration)
+void HoI4::State::tryToCreateVP(
+	const Vic2::State& sourceState,
+	const provinceMapper& theProvinceMapper,
+	const Configuration& theConfiguration
+)
 {
 	bool VPCreated = false;
 
@@ -245,11 +249,11 @@ void HoI4::State::tryToCreateVP(const provinceMapper& theProvinceMapper, const C
 		LOG(LogLevel::Warning) << "Could not create VP for state " << ID;
 	}
 
-	addDebugVPs(theProvinceMapper);
+	addDebugVPs(sourceState, theProvinceMapper);
 }
 
 
-void HoI4::State::addDebugVPs(const provinceMapper& theProvinceMapper)
+void HoI4::State::addDebugVPs(const Vic2::State sourceState, const provinceMapper& theProvinceMapper)
 {
 	for (auto sourceProvinceNum: sourceState.getProvinceNums())
 	{

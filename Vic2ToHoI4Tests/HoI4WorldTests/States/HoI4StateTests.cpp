@@ -679,7 +679,7 @@ TEST(HoI4World_States_StateTests, victoryPointPositionCanBeSetFromStateCapital)
 	Configuration testConfig;
 	testConfig.instantiate(configInput);
 
-	theState.tryToCreateVP(theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
 
 	ASSERT_EQ(theState.getVPLocation(), 12);
 }
@@ -727,7 +727,7 @@ TEST(HoI4World_States_StateTests, victoryPointPositionCanBeSetFromStateCapitalDe
 	Configuration testConfig;
 	testConfig.instantiate(configInput);
 
-	theState.tryToCreateVP(theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
 
 	ASSERT_EQ(theState.getVPLocation(), 24);
 }
@@ -775,7 +775,7 @@ TEST(HoI4World_States_StateTests, victoryPointPositionCanBeSetFromStateCapitalDe
 	Configuration testConfig;
 	testConfig.instantiate(configInput);
 
-	theState.tryToCreateVP(theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
 
 	ASSERT_EQ(theState.getVPLocation(), 24);
 }
@@ -823,7 +823,7 @@ TEST(HoI4World_States_StateTests, victoryPointPositionCanBeSetFromStateCapitalDe
 	Configuration testConfig;
 	testConfig.instantiate(configInput);
 
-	theState.tryToCreateVP(theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
 
 	ASSERT_EQ(theState.getVPLocation(), 24);
 }
@@ -871,7 +871,7 @@ TEST(HoI4World_States_StateTests, victoryPointPositionCanBeSetFromMostPopulousPr
 	Configuration testConfig;
 	testConfig.instantiate(configInput);
 
-	theState.tryToCreateVP(theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
 
 	ASSERT_EQ(theState.getVPLocation(), 24);
 }
@@ -898,7 +898,7 @@ TEST(HoI4World_States_StateTests, victoryPointPositionLoggedIfNotSet)
 	std::streambuf* coutbuf = std::cout.rdbuf(); //save old buf
 	std::cout.rdbuf(log.rdbuf()); //redirect std::cout to log
 
-	theState.tryToCreateVP(theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
 
 	std::cout.rdbuf(coutbuf); //reset to standard output again
 
@@ -929,7 +929,7 @@ TEST(HoI4World_States_StateTests, debugVPsCanBeAdded)
 	Configuration testConfig;
 	testConfig.instantiate(configInput);
 
-	theState.tryToCreateVP(theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
 
 	ASSERT_EQ(std::set<int>{12}, theState.getDebugVPs());
 }
@@ -956,7 +956,7 @@ TEST(HoI4World_States_StateTests, secondaryDebugVPsCanBeAdded)
 	Configuration testConfig;
 	testConfig.instantiate(configInput);
 
-	theState.tryToCreateVP(theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
 
 	std::set<int> expectedVps{ 12, 13 };
 	ASSERT_EQ(expectedVps, theState.getSecondaryDebugVPs());
@@ -991,7 +991,7 @@ TEST(HoI4World_States_StateTests, debugVpsAreOutput)
 	Configuration testConfig;
 	testConfig.instantiate(configInput);
 
-	theState.tryToCreateVP(theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\n";
