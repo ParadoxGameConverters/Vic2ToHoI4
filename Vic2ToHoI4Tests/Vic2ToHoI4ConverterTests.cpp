@@ -1,26 +1,3 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/Configuration.h"
 
@@ -37,12 +14,14 @@ TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameEmptyWhenGivenNoInput)
 	ASSERT_EQ(std::string(""), theConfiguration.getOutputName());
 }
 
+
 TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameCorrectWhenSimplyAName)
 {
 	std::string inputName = "hoi4.v2";
 	setOutputName(inputName);
 	ASSERT_EQ(std::string("hoi4"), theConfiguration.getOutputName());
 }
+
 
 TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameExtractedWithWindowsPath)
 {
@@ -51,12 +30,14 @@ TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameExtractedWithWindowsPath)
 	ASSERT_EQ(std::string("hoi4"), theConfiguration.getOutputName());
 }
 
+
 TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameExtractedWithLinuxPath)
 {
 	std::string inputName = "/Users/Cosmostarr/Documents/Paradox Interactive/Victoria II/save games/hoi4.v2";
 	setOutputName(inputName);
 	ASSERT_EQ(std::string("hoi4"), theConfiguration.getOutputName());
 }
+
 
 TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameExtractedWithMixedPathEndingLinuxStyle)
 {
@@ -65,12 +46,14 @@ TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameExtractedWithMixedPathEndin
 	ASSERT_EQ(std::string("hoi4"), theConfiguration.getOutputName());
 }
 
+
 TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameExtractedWithMixedPathEndingWindowsStyle)
 {
 	std::string inputName = "/Users/Cosmostarr/Documents/Paradox Interactive/Victoria II/save games\\hoi4.v2";
 	setOutputName(inputName);
 	ASSERT_EQ(std::string("hoi4"), theConfiguration.getOutputName());
 }
+
 
 TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameHasDashesReplaced)
 {
@@ -79,6 +62,7 @@ TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameHasDashesReplaced)
 	ASSERT_EQ(std::string("hoi4_something"), theConfiguration.getOutputName());
 }
 
+
 TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameHasSpacesReplaced)
 {
 	std::string inputName = "hoi4 something.v2";
@@ -86,14 +70,24 @@ TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameHasSpacesReplaced)
 	ASSERT_EQ(std::string("hoi4_something"), theConfiguration.getOutputName());
 }
 
+
 TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameHasNoExtension)
 {
 	std::string inputName = "hoi4";
 	EXPECT_THROW(setOutputName(inputName), std::invalid_argument);
 }
 
+
 TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameHasAnInvalidExtension)
 {
 	std::string inputName = "hoi4.eu4";
 	EXPECT_THROW(setOutputName(inputName), std::invalid_argument);
+}
+
+
+TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameHasMultiplePeriods)
+{
+	std::string inputName = "hoi4.eu4.v2";
+	setOutputName(inputName);
+	ASSERT_EQ(std::string("hoi4.eu4"), theConfiguration.getOutputName());
 }
