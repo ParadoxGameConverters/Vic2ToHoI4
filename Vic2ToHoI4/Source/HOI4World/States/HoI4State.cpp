@@ -1,172 +1,44 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "HoI4State.h"
 #include "StateCategories.h"
 #include "../CoastalProvinces.h"
-#include "../../Configuration.h"
 #include "../../V2World/Province.h"
 #include "../../V2World/State.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
-#include <iomanip>
-#include <ios>
-#include <fstream>
 #include <random>
 
 
 
-const int POPULATION_PER_STATE_SLOT = 120000;
+constexpr int POP_CONVERSION_FACTOR = 4;
+constexpr int POPULATION_PER_STATE_SLOT = 120000;
+constexpr int FIRST_INFRASTRUCTURE_REWARD_LEVEL = 4;
+constexpr int SECOND_INFRASTRUCTURE_REWARD_LEVEL = 6;
+constexpr int THIRD_INFRASTRUCTURE_REWARD_LEVEL = 10;
 
 
 
-HoI4::State::State(const Vic2::State* _sourceState, int _ID, const std::string& _ownerTag):
-	sourceState(_sourceState),
+HoI4::State::State(const Vic2::State& sourceState, int _ID, const std::string& _ownerTag):
 	ID(_ID),
 	ownerTag(_ownerTag)
-{}
-
-
-void HoI4::State::output(std::ostream& out, const Configuration& theConfiguration) const
 {
-	out << "\n";
-	out << "state={" << "\n";
-	out << "\tid=" << ID << "\n";
-	out << "\tname=\"STATE_" << ID << "\"\n";
-	if (resources.size() > 0)
-	{
-		out << "\tresources={\n";
-		out << std::fixed;
-		out << std::setprecision(3);
-		for (auto resource: resources)
-		{
-			out << "\t\t" << resource.first << "=" << resource.second << "\n";
-		}
-		out << "\t}\n";
-	}
-	if (impassable)
-	{
-		out << "\timpassable = yes\n";
-	}
-	out << "\n";
-	out << "\thistory={\n";
-	if (!ownerTag.empty())
-	{
-		out << "\t\towner = " << ownerTag << "\n";
-	}
-	if (!impassable)
-	{
-		if ((victoryPointValue > 0) && (victoryPointPosition))
-		{
-			if (theConfiguration.getDebug())
-			{
-				out << "\t\tvictory_points = {\n";
-				out << "\t\t\t" << *victoryPointPosition << " " << (victoryPointValue + 10) << "\n";
-				out << "\t\t}\n";
-				for (auto VP : debugVictoryPoints)
-				{
-					if (VP == victoryPointPosition)
-					{
-						continue;
-					}
-					out << "\t\tvictory_points = { " << VP << " 5\n";
-					out << "\t}\n";
-				}
-				for (auto VP : secondaryDebugVictoryPoints)
-				{
-					if (VP == victoryPointPosition)
-					{
-						continue;
-					}
-					out << "\t\tvictory_points = { " << VP << " 1 }\n";
-				}
-			}
-			else
-			{
-				out << "\t\tvictory_points = {\n";
-				out << "\t\t\t" << *victoryPointPosition << " " << victoryPointValue << " \n";
-				out << "\t\t}\n";
-			}
-		}
-	}
-	if (!impassable)
-	{
-		out << "\t\tbuildings = {\n";
-		out << "\t\t\tinfrastructure = " << infrastructure << "\n";
-		out << "\t\t\tindustrial_complex = " << civFactories << "\n";
-		out << "\t\t\tarms_factory = " << milFactories << "\n";
-		if (dockyards > 0)
-		{
-			out << "\t\t\tdockyard = " << dockyards << "\n";
-		}
+	population = sourceState.getPopulation();
+	employedWorkers = sourceState.getEmployedWorkers();
 
-		for (auto navalBase : navalBases)
-		{
-			out << "\t\t\t" << navalBase.first << " = {\n";
-			out << "\t\t\t\tnaval_base = " << navalBase.second << "\n";
-			out << "\t\t\t}\n";
-		}
-
-		out << "\t\t\tair_base = " << airbaseLevel << "\n";
-		out << "\n";
-		out << "\t\t}\n";
-	}
-	for (auto core: cores)
+	if (ownerTag.empty())
 	{
-		out << "\t\tadd_core_of = " << core << "\n";
+		infrastructure = 0;
 	}
-	for (auto countryControlledProvinces: controlledProvinces)
-	{
-		out << "\t\t" << countryControlledProvinces.first << " = {\n";
-		for (auto province : countryControlledProvinces.second)
-		{
-			out << "\t\t\tset_province_controller = " << province << "\n";
-		}
-		out << "\t\t}\n";
-	}
-	out << "\t}\n";
-	out << "\n";
-	out << "\tprovinces={\n";
-	out << "\t\t";
-	for (auto provnum : provinces)
-	{
-		out << provnum << " ";
-	}
-	out << "\n";
-	out << "\t}\n";
-	out << "\tmanpower=" << manpower << "\n";
-	out << "\tbuildings_max_level_factor=1.000\n";
-	out << "\tstate_category="<< category << "\n";
-	out << "}\n";
+	addInfrastructureFromRails(sourceState.getAverageRailLevel());
 }
 
 
 void HoI4::State::convertNavalBases(
+	const std::set<const Vic2::Province*>& sourceProvinces,
 	const coastalProvinces& theCoastalProvinces,
 	const provinceMapper& theProvinceMapper
 ) {
-	for (auto sourceProvince: sourceState->getProvinces())
+	for (auto sourceProvince: sourceProvinces)
 	{
 		int navalBaseLevel = determineNavalBaseLevel(*sourceProvince);
 		if (navalBaseLevel == 0)
@@ -234,10 +106,11 @@ void HoI4::State::addCores(const std::set<std::string>& newCores)
 
 
 void HoI4::State::convertControlledProvinces(
+	const std::set<const Vic2::Province*>& sourceProvinces,
 	const provinceMapper& theProvinceMapper,
 	const CountryMapper& countryMapper
 ) {
-	for (auto sourceProvince: sourceState->getProvinces())
+	for (auto sourceProvince: sourceProvinces)
 	{
 		if (sourceProvince->getOwner() != sourceProvince->getController())
 		{
@@ -318,11 +191,15 @@ std::optional<int> HoI4::State::getMainNavalLocation() const
 }
 
 
-void HoI4::State::tryToCreateVP(const provinceMapper& theProvinceMapper, const Configuration& theConfiguration)
+void HoI4::State::tryToCreateVP(
+	const Vic2::State& sourceState,
+	const provinceMapper& theProvinceMapper,
+	const Configuration& theConfiguration
+)
 {
 	bool VPCreated = false;
 
-	auto vic2CapitalProvince = sourceState->getCapitalProvince();
+	auto vic2CapitalProvince = sourceState.getCapitalProvince();
 	if (vic2CapitalProvince)
 	{
 		VPCreated = assignVPFromVic2Province(*vic2CapitalProvince, theProvinceMapper);
@@ -330,11 +207,11 @@ void HoI4::State::tryToCreateVP(const provinceMapper& theProvinceMapper, const C
 
 	if (!VPCreated)
 	{
-		if (theConfiguration.getDebug() && !sourceState->isPartialState() && !impassable && !hadImpassablePart)
+		if (theConfiguration.getDebug() && !sourceState.isPartialState() && !impassable && !hadImpassablePart)
 		{
 			LOG(LogLevel::Warning) << "Could not initially create VP for state " << ID << ", but state is not split.";
 		}
-		for (auto province: sourceState->getProvinces())
+		for (auto province: sourceState.getProvinces())
 		{
 			if (
 				 (province->getPopulation("aristocrats") > 0) ||
@@ -353,7 +230,7 @@ void HoI4::State::tryToCreateVP(const provinceMapper& theProvinceMapper, const C
 	if (!VPCreated)
 	{
 		std::list<const Vic2::Province*> provincesOrderedByPopulation;
-		for (auto province: sourceState->getProvinces())
+		for (auto province: sourceState.getProvinces())
 		{
 			provincesOrderedByPopulation.insert(
 				std::upper_bound(	provincesOrderedByPopulation.begin(),
@@ -380,13 +257,13 @@ void HoI4::State::tryToCreateVP(const provinceMapper& theProvinceMapper, const C
 		LOG(LogLevel::Warning) << "Could not create VP for state " << ID;
 	}
 
-	addDebugVPs(theProvinceMapper);
+	addDebugVPs(sourceState, theProvinceMapper);
 }
 
 
-void HoI4::State::addDebugVPs(const provinceMapper& theProvinceMapper)
+void HoI4::State::addDebugVPs(const Vic2::State& sourceState, const provinceMapper& theProvinceMapper)
 {
-	for (auto sourceProvinceNum: sourceState->getProvinceNums())
+	for (auto sourceProvinceNum: sourceState.getProvinceNums())
 	{
 		auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvinceNum);
 		if (mapping && (isProvinceInState((*mapping)[0])))
@@ -401,9 +278,13 @@ void HoI4::State::addDebugVPs(const provinceMapper& theProvinceMapper)
 }
 
 
-void HoI4::State::addManpower(const provinceMapper& theProvinceMapper, const Configuration& theConfiguration)
+void HoI4::State::addManpower(
+	const std::set<const Vic2::Province*>& sourceProvinces,
+	const provinceMapper& theProvinceMapper,
+	const Configuration& theConfiguration
+)
 {
-	for (auto sourceProvince: sourceState->getProvinces())
+	for (auto sourceProvince: sourceProvinces)
 	{
 		bool provinceIsInState = false;
 		if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince->getNumber()))
@@ -420,7 +301,12 @@ void HoI4::State::addManpower(const provinceMapper& theProvinceMapper, const Con
 
 		if (provinceIsInState)
 		{
-			manpower += static_cast<int>(sourceProvince->getTotalPopulation() * 4 * theConfiguration.getManpowerFactor());
+			manpower +=
+				static_cast<int>(
+					sourceProvince->getTotalPopulation() *
+					POP_CONVERSION_FACTOR *
+					theConfiguration.getManpowerFactor()
+				);
 		}
 	}
 }
@@ -434,7 +320,7 @@ void HoI4::State::convertIndustry(
 	int factories = determineFactoryNumbers(workerFactoryRatio);
 
 	determineCategory(factories, theStateCategories);
-	setInfrastructure(factories);
+	addInfrastructureFromFactories(factories);
 	setIndustry(factories, theCoastalProvinces);
 	addVictoryPointValue(factories / 2);
 }
@@ -442,7 +328,7 @@ void HoI4::State::convertIndustry(
 
 int HoI4::State::determineFactoryNumbers(double workerFactoryRatio) const
 {
-	double rawFactories = sourceState->getEmployedWorkers() * workerFactoryRatio;
+	double rawFactories = employedWorkers * workerFactoryRatio;
 	rawFactories = round(rawFactories);
 	return constrainFactoryNumbers(rawFactories);
 }
@@ -478,7 +364,6 @@ void HoI4::State::determineCategory(int factories, const HoI4::StateCategories& 
 		factories++;
 	}
 
-	int population = sourceState->getPopulation();
 	int stateSlots = population / POPULATION_PER_STATE_SLOT;
 	if (factories >= stateSlots)
 	{
@@ -492,20 +377,23 @@ void HoI4::State::determineCategory(int factories, const HoI4::StateCategories& 
 }
 
 
-void HoI4::State::setInfrastructure(int factories)
+void HoI4::State::addInfrastructureFromRails(float averageRailLevels)
 {
-	infrastructure = 3;
-	infrastructure += sourceState->getAverageRailLevel() / 2;
+	infrastructure += static_cast<int>(averageRailLevels / 2);
+}
 
-	if (factories > 4)
+
+void HoI4::State::addInfrastructureFromFactories(int factories)
+{
+	if (factories > FIRST_INFRASTRUCTURE_REWARD_LEVEL)
 	{
 		infrastructure++;
 	}
-	if (factories > 6)
+	if (factories > SECOND_INFRASTRUCTURE_REWARD_LEVEL)
 	{
 		infrastructure++;
 	}
-	if (factories > 10)
+	if (factories > THIRD_INFRASTRUCTURE_REWARD_LEVEL)
 	{
 		infrastructure++;
 	}

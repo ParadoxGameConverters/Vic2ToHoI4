@@ -5,7 +5,7 @@
 
 
 
-TEST(HoI4World_DecisionTests, EverythingDefaultsToEmptyOrBlank)
+TEST(HoI4World_Decisions_DecisionTests, EverythingDefaultsToEmptyOrBlank)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -23,7 +23,7 @@ TEST(HoI4World_DecisionTests, EverythingDefaultsToEmptyOrBlank)
 }
 
 
-TEST(HoI4World_DecisionTests, DecisionNameCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, DecisionNameCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -34,7 +34,7 @@ TEST(HoI4World_DecisionTests, DecisionNameCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, DecisionNameCanBeOutput)
+TEST(HoI4World_Decisions_DecisionTests, DecisionNameCanBeOutput)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -52,7 +52,7 @@ TEST(HoI4World_DecisionTests, DecisionNameCanBeOutput)
 }
 
 
-TEST(HoI4World_DecisionTests, IconCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, IconCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -73,7 +73,7 @@ TEST(HoI4World_DecisionTests, IconCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, IsGoodCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, IsGoodCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -94,7 +94,7 @@ TEST(HoI4World_DecisionTests, IsGoodCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, AllowedCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, AllowedCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -119,7 +119,7 @@ TEST(HoI4World_DecisionTests, AllowedCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, AvailableCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, AvailableCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -146,7 +146,7 @@ TEST(HoI4World_DecisionTests, AvailableCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, AvailableCanBeChanged)
+TEST(HoI4World_Decisions_DecisionTests, AvailableCanBeChanged)
 {
 	std::stringstream input;
 	HoI4::decision theDecision("decisionName", input);
@@ -173,7 +173,7 @@ TEST(HoI4World_DecisionTests, AvailableCanBeChanged)
 }
 
 
-TEST(HoI4World_DecisionTests, DaysMissionTimeoutCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, DaysMissionTimeoutCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -194,7 +194,7 @@ TEST(HoI4World_DecisionTests, DaysMissionTimeoutCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, ActivationCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, ActivationCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -220,7 +220,7 @@ TEST(HoI4World_DecisionTests, ActivationCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, TargetsCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, TargetsCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -241,7 +241,7 @@ TEST(HoI4World_DecisionTests, TargetsCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, TargetArrayCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, TargetArrayCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -262,7 +262,7 @@ TEST(HoI4World_DecisionTests, TargetArrayCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, TargetRootTriggerCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, TargetRootTriggerCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -288,7 +288,7 @@ TEST(HoI4World_DecisionTests, TargetRootTriggerCanBeSet)
 	ASSERT_EQ(output.str(), expectedOutput.str());
 }
 
-TEST(HoI4World_DecisionTests, TargetTriggerCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, TargetTriggerCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -317,7 +317,7 @@ TEST(HoI4World_DecisionTests, TargetTriggerCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, TargetTriggerCanBeChanged)
+TEST(HoI4World_Decisions_DecisionTests, TargetTriggerCanBeChanged)
 {
 	std::stringstream input;
 	HoI4::decision theDecision("decisionName", input);
@@ -356,7 +356,7 @@ TEST(HoI4World_DecisionTests, TargetTriggerCanBeChanged)
 }
 
 
-TEST(HoI4World_DecisionTests, RemoveTriggerCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, RemoveTriggerCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -381,7 +381,7 @@ TEST(HoI4World_DecisionTests, RemoveTriggerCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, CustomCostTriggerCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, CustomCostTriggerCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -406,7 +406,7 @@ TEST(HoI4World_DecisionTests, CustomCostTriggerCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, CustomCostTextCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, CustomCostTextCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -427,7 +427,7 @@ TEST(HoI4World_DecisionTests, CustomCostTextCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, VisibleCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, VisibleCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -454,7 +454,7 @@ TEST(HoI4World_DecisionTests, VisibleCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, VisibleCanBeChanged)
+TEST(HoI4World_Decisions_DecisionTests, VisibleCanBeChanged)
 {
 	std::stringstream input;
 	HoI4::decision theDecision("decisionName", input);
@@ -481,7 +481,7 @@ TEST(HoI4World_DecisionTests, VisibleCanBeChanged)
 }
 
 
-TEST(HoI4World_DecisionTests, CancelTriggerCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, CancelTriggerCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -510,7 +510,7 @@ TEST(HoI4World_DecisionTests, CancelTriggerCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, CompleteEffectCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, CompleteEffectCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -535,7 +535,7 @@ TEST(HoI4World_DecisionTests, CompleteEffectCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, TargetedModifierCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, TargetedModifierCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -564,7 +564,7 @@ TEST(HoI4World_DecisionTests, TargetedModifierCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, TargetedModifierCanBeChanged)
+TEST(HoI4World_Decisions_DecisionTests, TargetedModifierCanBeChanged)
 {
 	std::stringstream input;
 	HoI4::decision theDecision("decisionName", input);
@@ -593,7 +593,7 @@ TEST(HoI4World_DecisionTests, TargetedModifierCanBeChanged)
 }
 
 
-TEST(HoI4World_DecisionTests, CompleteEffectCanBeChanged)
+TEST(HoI4World_Decisions_DecisionTests, CompleteEffectCanBeChanged)
 {
 	std::stringstream input;
 	HoI4::decision theDecision("decisionName", input);
@@ -618,7 +618,7 @@ TEST(HoI4World_DecisionTests, CompleteEffectCanBeChanged)
 }
 
 
-TEST(HoI4World_DecisionTests, RemoveEffectCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, RemoveEffectCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -669,7 +669,7 @@ TEST(HoI4World_DecisionTests, RemoveEffectCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, TimeoutEffectCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, TimeoutEffectCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -690,7 +690,7 @@ TEST(HoI4World_DecisionTests, TimeoutEffectCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, TimeoutEffectCanBeChanged)
+TEST(HoI4World_Decisions_DecisionTests, TimeoutEffectCanBeChanged)
 {
 	std::stringstream input;
 	HoI4::decision theDecision("decisionName", input);
@@ -711,7 +711,7 @@ TEST(HoI4World_DecisionTests, TimeoutEffectCanBeChanged)
 }
 
 
-TEST(HoI4World_DecisionTests, TimeoutEffectCanBeOutput)
+TEST(HoI4World_Decisions_DecisionTests, TimeoutEffectCanBeOutput)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -736,7 +736,7 @@ TEST(HoI4World_DecisionTests, TimeoutEffectCanBeOutput)
 }
 
 
-TEST(HoI4World_DecisionTests, AiWillDoCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, AiWillDoCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -761,7 +761,7 @@ TEST(HoI4World_DecisionTests, AiWillDoCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, AiWillDoCanBeChanged)
+TEST(HoI4World_Decisions_DecisionTests, AiWillDoCanBeChanged)
 {
 	std::stringstream input;
 	HoI4::decision theDecision("decisionName", input);
@@ -786,7 +786,7 @@ TEST(HoI4World_DecisionTests, AiWillDoCanBeChanged)
 }
 
 
-TEST(HoI4World_DecisionTests, FireOnlyOnceCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, FireOnlyOnceCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -807,7 +807,7 @@ TEST(HoI4World_DecisionTests, FireOnlyOnceCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, DaysRemoveCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, DaysRemoveCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -828,7 +828,7 @@ TEST(HoI4World_DecisionTests, DaysRemoveCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, DaysReEnableCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, DaysReEnableCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -848,7 +848,7 @@ TEST(HoI4World_DecisionTests, DaysReEnableCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, CostCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, CostCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -869,7 +869,7 @@ TEST(HoI4World_DecisionTests, CostCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, ModfierCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, ModfierCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -898,7 +898,7 @@ TEST(HoI4World_DecisionTests, ModfierCanBeSet)
 }
 
 
-TEST(HoI4World_DecisionTests, ModfierCanBeChanged)
+TEST(HoI4World_Decisions_DecisionTests, ModfierCanBeChanged)
 {
 	std::stringstream input;
 	HoI4::decision theDecision("decisionName", input);
@@ -927,7 +927,7 @@ TEST(HoI4World_DecisionTests, ModfierCanBeChanged)
 }
 
 
-TEST(HoI4World_DecisionTests, EqualDecisionsAreEqual)
+TEST(HoI4World_Decisions_DecisionTests, EqualDecisionsAreEqual)
 {
 	std::stringstream input;
 	const HoI4::decision theDecision("decisionName", input);
@@ -937,7 +937,7 @@ TEST(HoI4World_DecisionTests, EqualDecisionsAreEqual)
 }
 
 
-TEST(HoI4World_DecisionTests, UnequalDecisionsAreUnequal)
+TEST(HoI4World_Decisions_DecisionTests, UnequalDecisionsAreUnequal)
 {
 	std::stringstream input;
 	const HoI4::decision theDecision("decisionName", input);

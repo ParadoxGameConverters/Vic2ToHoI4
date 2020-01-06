@@ -35,6 +35,7 @@
 #include "../Hoi4Outputter/Hoi4CountryOutputter.h"
 #include "../Hoi4Outputter/Decisions/DecisionsOutputter.h"
 #include "../Hoi4Outputter/ScriptedLocalisations/ScriptedLocalisationsOutputter.h"
+#include "../Hoi4Outputter/States/HoI4StatesOutputter.h"
 #include <fstream>
 using namespace std;
 
@@ -44,8 +45,6 @@ using namespace std;
 HoI4::World::World(const Vic2::World* _sourceWorld):
 	sourceWorld(_sourceWorld),
 	countryMap(_sourceWorld),
-	states(new HoI4States(sourceWorld, countryMap)),
-	supplyZones(new HoI4::SupplyZones(states->getDefaultStates())),
 	theIdeas(std::make_unique<HoI4::Ideas>()),
 	decisions(make_unique<HoI4::decisions>(theConfiguration)),
 	peaces(make_unique<HoI4::AIPeaces>()),
@@ -56,15 +55,16 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	LOG(LogLevel::Info) << "Parsing HoI4 data";
 
 	theCoastalProvinces.init(theMapData);
+	states = std::make_unique<States>(sourceWorld, countryMap, theCoastalProvinces);
+	supplyZones = new HoI4::SupplyZones(states->getDefaultStates());
 	buildings = new Buildings(*states, theCoastalProvinces, theMapData),
-	states->convertNavalBases(theCoastalProvinces);
 	theNames.init();
 	theGraphics.init();
 	governmentMap.init();
 	convertCountries();
 	addStatesToCountries();
 	states->addCapitalsToStates(countries);
-	HoI4Localisation::addStateLocalisations(states);
+	HoI4Localisation::addStateLocalisations(*states);
 	convertIndustry();
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
@@ -1078,7 +1078,7 @@ void HoI4::World::output()
 	outputNames();
 	outputUnitNames();
 	HoI4Localisation::output();
-	states->output();
+	outputStates(*states, theConfiguration);
 	diplomacy->output();
 	outputMap();
 	supplyZones->output();

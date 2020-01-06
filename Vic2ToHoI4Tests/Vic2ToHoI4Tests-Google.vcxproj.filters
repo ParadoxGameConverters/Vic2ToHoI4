@@ -527,6 +527,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipTypes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\States\HoI4StateOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\States\HoI4StatesOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -615,6 +621,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\ShipTypes">
       <UniqueIdentifier>{e537248d-9d51-4dd4-b9f3-b3dfd4add998}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\States">
+      <UniqueIdentifier>{a5590f90-a463-43dc-8490-47e4b191d7d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

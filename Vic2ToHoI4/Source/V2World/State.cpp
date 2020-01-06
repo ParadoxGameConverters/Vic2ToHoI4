@@ -186,9 +186,9 @@ int Vic2::State::getPopulation() const
 }
 
 
-int Vic2::State::getAverageRailLevel() const
+float Vic2::State::getAverageRailLevel() const
 {
-	int totalRailLevel = 0;
+	float totalRailLevel = 0;
 	for (auto province: provinces)
 	{
 		totalRailLevel += province->getRailLevel();
@@ -200,6 +200,6 @@ int Vic2::State::getAverageRailLevel() const
 	}
 	else
 	{
-		return 0;
+		return 0.0f;
 	}
 }

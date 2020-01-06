@@ -33,7 +33,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-class HoI4States;
 class HoI4SupplyZone;
 
 
@@ -42,6 +41,7 @@ namespace HoI4
 {
 
 class DefaultState;
+class States;
 
 
 
@@ -50,7 +50,7 @@ class SupplyZones: commonItems::parser
 	public:
 		explicit SupplyZones(const std::map<int, HoI4::DefaultState>& defaultStates);
 		void output();
-		void convertSupplyZones(const HoI4States& states);
+		void convertSupplyZones(const States& states);
 
 	private:
 		SupplyZones(const SupplyZones&) = delete;

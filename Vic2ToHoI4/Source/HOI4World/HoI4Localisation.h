@@ -36,11 +36,10 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-class HoI4States;
-
 namespace HoI4
 {
 class State;
+class States;
 }
 class governmentMapper;
 
@@ -58,7 +57,12 @@ typedef int stateNumber;
 class HoI4Localisation
 {
 	public:
-		static void addStateLocalisations(const HoI4States* states)
+		static void addStateLocalisation(const HoI4::State& hoi4State, const Vic2::State& vic2State)
+		{
+			getInstance()->AddStateLocalisation(hoi4State, vic2State);
+		}
+
+		static void addStateLocalisations(const HoI4::States& states)
 		{
 			getInstance()->AddStateLocalisations(states);
 		}
@@ -169,9 +173,11 @@ class HoI4Localisation
 
 		void CopyEventLocalisations(const std::string& oldKey, const std::string& newKey);
 
-		void AddStateLocalisations(const HoI4States* states);
+		void AddStateLocalisation(const HoI4::State& hoi4State, const Vic2::State& vic2State);
+		void AddStateLocalisations(const HoI4::States& states);
 		void addStateLocalisationForLanguage(
-			const HoI4::State& state,
+			const HoI4::State& hoi4State,
+			const Vic2::State& vic2State,
 			const std::pair<const std::string, std::string>& Vic2NameInLanguage
 		);
 		void addVPLocalisationForLanguage(const HoI4::State& state, const std::pair<const std::string, std::string>& Vic2NameInLanguage);
@@ -185,7 +191,7 @@ class HoI4Localisation
 
 		bool sourceStateHasOneProvince(const Vic2::State& sourceState);
 		bool sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState);
-		bool stateHasAllDefinedProvincesAfterConversion(const HoI4::State& state);
+		bool stateHasAllDefinedProvincesAfterConversion(const HoI4::State& state, const Vic2::State& sourceState);
 
 		void AddEventLocalisation(const std::string& event, const std::string& localisation);
 		void AddEventLocalisationFromVic2(const std::string& Vic2Key, const std::string& HoI4Key);
