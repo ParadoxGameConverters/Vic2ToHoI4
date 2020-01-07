@@ -216,6 +216,7 @@ class HoI4Localisation
 		void outputEventLocalisations(const std::string& localisationPath) const;
 		void outputPoliticalPartyLocalisations(const std::string& localisationPath) const;
 		void outputDecisionLocalisations(const std::string& localisationPath) const;
+		void outputCustomLocalisations(const std::string& localisationPath) const;
 		void outputLocalisations(const std::string& filenameStart, const languageToLocalisationsMap& localisations) const;
 
 		std::map<language, std::map< stateNumber, std::string>> stateLocalisations;
@@ -229,6 +230,7 @@ class HoI4Localisation
 		languageToLocalisationsMap newEventLocalisations;
 		languageToLocalisationsMap politicalPartyLocalisations;
 		languageToLocalisationsMap decisionLocalisations;
+		languageToLocalisationsMap customLocalisations;
 };
 
 

@@ -783,6 +783,7 @@ void HoI4Localisation::Output() const
 	outputEventLocalisations(localisationPath);
 	outputPoliticalPartyLocalisations(localisationPath);
 	outputDecisionLocalisations(localisationPath);
+	outputCustomLocalisations(localisationPath);
 }
 
 
@@ -850,6 +851,12 @@ void HoI4Localisation::outputPoliticalPartyLocalisations(const string& localisat
 void HoI4Localisation::outputDecisionLocalisations(const string& localisationPath) const
 {
 	outputLocalisations(localisationPath + "/decisions3_l_", decisionLocalisations);
+}
+
+
+void HoI4Localisation::outputCustomLocalisations(const std::string& localisationPath) const
+{
+	outputLocalisations(localisationPath + "/custom_localization_converter_l_", customLocalisations);
 }
 
 
