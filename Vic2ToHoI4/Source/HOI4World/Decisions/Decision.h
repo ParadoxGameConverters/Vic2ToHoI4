@@ -24,6 +24,7 @@ class decision: commonItems::parser
 		void setTargetTrigger(const std::string& newTargetTrigger) { targetTrigger = newTargetTrigger; }
 		void setVisible(const std::string& newVisible) { visible = newVisible; }
 		void setCompleteEffect(const std::string& newEffect) { completeEffect = newEffect; }
+		void setRemoveEffect(const std::string& newEffect) { removeEffect = newEffect; }
 		void setTimeoutEffect(const std::string& newEffect) { timeoutEffect = newEffect; }
 		void setTargetedModifier(const std::string& newTargetedModifier) { targetedModifier = newTargetedModifier; }
 		void setAiWillDo(const std::string& newAiWillDo) { aiWillDo = newAiWillDo; }
@@ -58,7 +59,7 @@ class decision: commonItems::parser
 		std::string fireOnlyOnce;
 		std::optional<int> daysRemove;
 		std::optional<int> daysReEnable;
-		std::optional<int> cost;
+		std::optional<std::string> cost;
 		std::string modifier;
 };
 

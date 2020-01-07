@@ -92,7 +92,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	addCountryElectionEvents(majorIdeologies);
 	events->createStabilityEvents(majorIdeologies);
 	theIdeas->updateIdeas(majorIdeologies);
-	decisions->updateDecisions(majorIdeologies, *events);
+	decisions->updateDecisions(majorIdeologies, states->getProvinceToStateIDMap(), *events);
 	peaces->updateAIPeaces(majorIdeologies);
 	addNeutrality();
 	convertIdeologySupport();
@@ -1086,7 +1086,7 @@ void HoI4::World::output()
 	outputGenericFocusTree();
 	outputCountries();
 	buildings->output();
-	outputDecisions(*decisions, theConfiguration);
+	outputDecisions(*decisions, majorIdeologies, theConfiguration);
 	events->output();
 	onActions->output(majorIdeologies);
 	peaces->output(majorIdeologies);

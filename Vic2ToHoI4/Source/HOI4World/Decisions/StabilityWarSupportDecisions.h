@@ -1,0 +1,25 @@
+#ifndef STABILITY_WAR_SUPPORT_DECISIONS_H
+#define STABILITY_WAR_SUPPORT_DECISIONS_H
+
+
+
+#include "DecisionsFile.h"
+#include <set>
+#include <string>
+#include <vector>
+
+
+
+namespace HoI4
+{
+
+class StabilityWarSupportDecisions: public DecisionsFile
+{
+	public:
+		void updateDecisions(const std::set<std::string>& majorIdeologies);
+};
+
+}
+
+
+#endif // STABILITY_WAR_SUPPORT_DECISIONS_H

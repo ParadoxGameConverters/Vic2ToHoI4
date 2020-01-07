@@ -4,10 +4,15 @@
 
 #include "newParser.h"
 #include "IdeologicalDecisions.h"
-#include "DecisionsCategories.h"
 #include "DecisionsCategory.h"
+#include "ExiledGovernmentsDecisions.h"
+#include "ForeignInfluenceDecisions.h"
+#include "GenericDecisions.h"
+#include "NavalTreatyDecisions.h"
+#include "PoliticalDecisions.h"
+#include "StabilityWarSupportDecisions.h"
 #include "../../Configuration.h"
-#include <memory>
+#include <map>
 #include <set>
 #include <string>
 #include <vector>
@@ -23,42 +28,46 @@ class Events;
 class decisions: commonItems::parser
 {
 	public:
-		explicit decisions(const Configuration& theConfiguration) noexcept;
+		explicit decisions(const Configuration& theConfiguration);
 
-		void updateDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
+		void updateDecisions(
+			const std::set<std::string>& majorIdeologies,
+			const std::map<int, int>& provinceToStateIdMap,
+			const Events& theEvents
+		);
 
-		[[nodiscard]] const DecisionsCategories& getDecisionsCategories() const { return *decisionsCategories; }
-		[[nodiscard]] const std::vector<decisionsCategory>& getStabilityDecisions() const { return stabilityDecisions; }
-		[[nodiscard]] const std::vector<decisionsCategory>& getPoliticalDecisions() const { return politicalDecisions; }
+		[[nodiscard]] const std::vector<decisionsCategory>& getStabilityDecisions() const
+		{
+			return stabilityDecisions.getDecisions();
+		}
+		[[nodiscard]] const std::vector<decisionsCategory>& getPoliticalDecisions() const
+		{
+			return politicalDecisions.getDecisions();
+		}
 		[[nodiscard]] const std::vector<decisionsCategory>& getExiledGovernmentsDecisions() const
 		{
-			return exiledGovernmentsDecisions;
+			return exiledGovernmentsDecisions.getDecisions();
 		}
 		[[nodiscard]] const std::vector<decisionsCategory>& getForeignInfluenceDecisions() const
 		{
-			return foreignInfluenceDecisions;
+			return foreignInfluenceDecisions.getDecisions();
 		}
-		[[nodiscard]] const std::vector<decisionsCategory>& getMtgNavalTreatyDecisions() const
+		[[nodiscard]] const std::vector<decisionsCategory>& getNavalTreatyDecisions() const
 		{
-			return mtgNavalTreatyDecisions;
+			return navalTreatyDecisions.getDecisions();
+		}
+		[[nodiscard]] const std::vector<decisionsCategory>& getGenericDecisions() const
+		{
+			return genericDecisions.getDecisions();
 		}
 
 	private:
-		void updateStabilityDecisions(const std::set<std::string>& majorIdeologies);
-		void updatePoliticalDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
-		void updateExiledGovernmentDecisions(const std::set<std::string>& majorIdeologies);
-		void updateForeignInfluenceDecisions(const std::set<std::string>& majorIdeologies);
-		void updateMtgNavalTreatyDecisions(const std::set<std::string>& majorIdeologies);
-
-		std::unique_ptr<DecisionsCategories> decisionsCategories;
-
-		std::vector<decisionsCategory> stabilityDecisions;
-		std::vector<decisionsCategory> politicalDecisions;
-		std::vector<decisionsCategory> exiledGovernmentsDecisions;
-		std::vector<decisionsCategory> foreignInfluenceDecisions;
-		std::vector<decisionsCategory> mtgNavalTreatyDecisions;
-
-		std::vector<IdeologicalDecisions> allIdeologicalDecisions;
+		StabilityWarSupportDecisions stabilityDecisions;
+		PoliticalDecisions politicalDecisions;
+		ExiledGovernmentsDecisions exiledGovernmentsDecisions;
+		ForeignInfluenceDecisions foreignInfluenceDecisions;
+		NavalTreatyDecisions navalTreatyDecisions;
+		GenericDecisions genericDecisions;
 };
 
 }

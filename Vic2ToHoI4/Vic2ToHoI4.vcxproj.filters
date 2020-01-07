@@ -449,6 +449,27 @@
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.cpp">
       <Filter>Hoi4Outputter\States</Filter>
+	</ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\StabilityWarSupportDecisions.cpp">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\DecisionsFile.cpp">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\PoliticalDecisions.cpp">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\ExiledGovernmentsDecisions.cpp">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\ForeignInfluenceDecisions.cpp">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\NavalTreatyDecisions.cpp">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\GenericDecisions.cpp">
+      <Filter>HoI4World\Decisions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -788,9 +809,6 @@
     <ClInclude Include="Source\HOI4World\States\DefaultState.h">
       <Filter>HoI4World\States</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategories.h">
-      <Filter>HoI4World\Decisions</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Hoi4CountryOutputter.h">
       <Filter>Hoi4Outputter</Filter>
     </ClInclude>
@@ -856,6 +874,27 @@
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.h">
       <Filter>Hoi4Outputter\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\StabilityWarSupportDecisions.h">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\PoliticalDecisions.h">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\DecisionsFile.h">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\ExiledGovernmentsDecisions.h">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\ForeignInfluenceDecisions.h">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\NavalTreatyDecisions.h">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\GenericDecisions.h">
+      <Filter>HoI4World\Decisions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

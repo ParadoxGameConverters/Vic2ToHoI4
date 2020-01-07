@@ -95,8 +95,8 @@ HoI4::decision::decision(std::string decisionName, std::istream& theStream):
 		daysReEnable = theDaysReEnable.getInt();
 	});
 	registerKeyword(std::regex("cost"), [this](const std::string& unused, std::istream& theStream){
-		const commonItems::singleInt theCost(theStream);
-		cost = theCost.getInt();
+		const commonItems::singleString theCost(theStream);
+		cost = theCost.getString();
 	});
 	registerKeyword(std::regex("fire_only_once"), [this](const std::string& unused, std::istream& theStream){
 		const commonItems::singleString theFire(theStream);

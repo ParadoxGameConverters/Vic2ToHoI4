@@ -3,13 +3,15 @@
 
 
 
-#include "../../HOI4World/Decisions/DecisionsCategories.h"
+#include <ostream>
+#include <set>
+#include <string>
 
 
 
 namespace HoI4
 {
-std::ostream& operator<<(std::ostream& out, const DecisionsCategories& theCategories);
+void outputDecisionCategories(std::ostream& out, const std::set<std::string>& majorIdeologies);
 }
 
 
