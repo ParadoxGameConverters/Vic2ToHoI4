@@ -2,7 +2,7 @@
 
 
 
-void HoI4::DecisionsFile::importDecisions(std::istream& theStream)
+void HoI4::DecisionsFile::importDecisions(const std::string& filename)
 {
 	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream)
 	{
@@ -27,5 +27,5 @@ void HoI4::DecisionsFile::importDecisions(std::istream& theStream)
 		}
 	});
 
-	parseStream(theStream);
+	parseFile(filename);
 }

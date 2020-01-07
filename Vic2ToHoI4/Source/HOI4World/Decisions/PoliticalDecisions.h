@@ -14,7 +14,7 @@ namespace HoI4
 class PoliticalDecisions: commonItems::parser
 {
 	public:
-		void importDecisions(std::istream& theStream);
+		void importDecisions(const std::string& filename);
 
 		[[nodiscard]] const std::vector<decisionsCategory>& getDecisions() const { return decisions; }
 
