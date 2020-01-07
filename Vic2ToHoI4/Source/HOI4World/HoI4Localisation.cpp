@@ -740,6 +740,40 @@ void HoI4Localisation::AddDecisionLocalisation(const std::string& key, const std
 }
 
 
+void HoI4Localisation::GenerateCustomLocalisations()
+{
+	for (const auto& localisationsInLanguage: countryLocalisations)
+	{
+		if (localisationsInLanguage.first != "french")
+		{
+			continue;
+		}
+
+		for (const auto& localisation: localisationsInLanguage.second)
+		{
+			std::regex same{ "^De (.+)" };
+			std::regex change{"(.+)er$"};
+
+			std::smatch match;
+			if (std::regex_match(localisation.second, match, same))
+			{
+				customLocalisations[localisationsInLanguage.first][localisation.first + "_MS"] = localisation.second;
+				customLocalisations[localisationsInLanguage.first][localisation.first + "_FS"] = localisation.second;
+				customLocalisations[localisationsInLanguage.first][localisation.first + "_MP"] = localisation.second;
+				customLocalisations[localisationsInLanguage.first][localisation.first + "_FP"] = localisation.second;
+			}
+			else if (std::regex_match(localisation.second, match, change))
+			{
+				customLocalisations[localisationsInLanguage.first][localisation.first + "_MS"] = std::regex_replace(localisation.second, change, "$1er");
+				customLocalisations[localisationsInLanguage.first][localisation.first + "_FS"] = std::regex_replace(localisation.second, change, "$1re");
+				customLocalisations[localisationsInLanguage.first][localisation.first + "_MP"] = std::regex_replace(localisation.second, change, "$1ers");
+				customLocalisations[localisationsInLanguage.first][localisation.first + "_FP"] = std::regex_replace(localisation.second, change, "$1ères");
+			}
+		}
+	}
+}
+
+
 void HoI4Localisation::UpdateLocalisationText(
 	const std::string& key,
 	const std::string& oldText,

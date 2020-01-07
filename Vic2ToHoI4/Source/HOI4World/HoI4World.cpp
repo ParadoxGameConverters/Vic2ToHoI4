@@ -107,6 +107,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 
 	addFocusTrees();
 	adjustResearchFocuses();
+	HoI4Localisation::generateCustomLocalisations();
 }
 
 
