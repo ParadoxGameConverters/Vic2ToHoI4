@@ -2,7 +2,7 @@
 
 
 
-void HoI4::PoliticalDecisions::importDecisions(std::istream& theStream)
+void HoI4::PoliticalDecisions::importDecisions(const std::string& filename)
 {
 	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream)
 	{
@@ -10,7 +10,7 @@ void HoI4::PoliticalDecisions::importDecisions(std::istream& theStream)
 		allIdeologicalDecisions.push_back(ideologicalDecisions);
 	});
 
-	parseStream(theStream);
+	parseFile(filename);
 }
 
 
