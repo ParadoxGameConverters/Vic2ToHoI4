@@ -486,6 +486,9 @@
     <ClCompile Include="..\common_items\StringUtils.cpp">
       <Filter>CommonItems</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Localisations\AllReplacementRules.cpp">
+      <Filter>HoI4World\Localisations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -922,6 +925,9 @@
     </ClInclude>
     <ClInclude Include="..\common_items\StringUtils.h">
       <Filter>CommonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Localisations\AllReplacementRules.h">
+      <Filter>HoI4World\Localisations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,5 @@
 #include "HoI4Localisation.h"
-#include "Localisations/LanguageReplacementRules.h"
+#include "Localisations/AllReplacementRules.h"
 #include "States/HoI4State.h"
 #include "States/HoI4States.h"
 #include "../Mappers/GovernmentMapper.h"
@@ -721,34 +721,36 @@ void HoI4Localisation::AddDecisionLocalisation(const std::string& key, const std
 
 void HoI4Localisation::GenerateCustomLocalisations()
 {
+	std::stringstream rulesStream;
+	rulesStream << "french = {\n";
+	rulesStream << "\t\"^de (.+)\" = {\n";
+	rulesStream << "\t\t_MS = $0\n";
+	rulesStream << "\t\t_FS = $0\n";
+	rulesStream << "\t\t_MP = $0\n";
+	rulesStream << "\t\t_FP = $0\n";
+	rulesStream << "\t}\n";
+	rulesStream << "\n";
+	rulesStream << "\t\"(.+)er$\" = {\n";
+	rulesStream << "\t\t_MS = $1er\n";
+	rulesStream << "\t\t_FS = $1\xC3\xA8re\n";
+	rulesStream << "\t\t_MP = $1ers\n";
+	rulesStream << "\t\t_FP = $1\xC3\xA8res\n";
+	rulesStream << "\t}\n";
+	rulesStream << "}";
+	HoI4::AllReplacementRules replacementRules(rulesStream);
+
 	for (const auto& localisationsInLanguage: countryLocalisations)
 	{
-		if (localisationsInLanguage.first != "french")
+		auto rules = replacementRules.getRulesForLanguage(localisationsInLanguage.first);
+		if (!rules)
 		{
 			continue;
 		}
 
 		for (const auto& localisation: localisationsInLanguage.second)
 		{
-			std::stringstream rulesStream;
-			rulesStream << "\"^de (.+)\" = {\n";
-			rulesStream << "\t_MS = $0\n";
-			rulesStream << "\t_FS = $0\n";
-			rulesStream << "\t_MP = $0\n";
-			rulesStream << "\t_FP = $0\n";
-			rulesStream << "}\n";
-			rulesStream << "\n";
-			rulesStream << "\"(.+)er$\" = {\n";
-			rulesStream << "\t_MS = $1er\n";
-			rulesStream << "\t_FS = $1\xC3\xA8re\n";
-			rulesStream << "\t_MP = $1ers\n";
-			rulesStream << "\t_FP = $1\xC3\xA8res\n";
-			rulesStream << "}";
-
-			HoI4::LanguageReplacementRules replacementRules(rulesStream);
-
 			std::smatch match;
-			for (const auto& rule: replacementRules.getTheRules())
+			for (const auto& rule: rules->getTheRules())
 			{
 				if (std::regex_match(localisation.second, match, rule.getMatcher()))
 				{

@@ -115,6 +115,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeologicalAdvisors.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeologyFile.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ImpassableProvinces.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\AllReplacementRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacementRule.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacementRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacements.cpp" />
@@ -193,6 +194,7 @@
     <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4WarTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Localisations\AllReplacementRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRuleTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementsTests.cpp" />

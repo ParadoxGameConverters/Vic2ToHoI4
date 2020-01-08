@@ -572,6 +572,12 @@
     <ClCompile Include="..\common_items\StringUtils.cpp">
       <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\AllReplacementRules.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Localisations\AllReplacementRulesTests.cpp">
+      <Filter>HoI4WorldTests\Localisations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
