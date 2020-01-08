@@ -721,23 +721,13 @@ void HoI4Localisation::AddDecisionLocalisation(const std::string& key, const std
 
 void HoI4Localisation::GenerateCustomLocalisations()
 {
-	std::stringstream rulesStream;
-	rulesStream << "french = {\n";
-	rulesStream << "\t\"^de (.+)\" = {\n";
-	rulesStream << "\t\t_MS = $0\n";
-	rulesStream << "\t\t_FS = $0\n";
-	rulesStream << "\t\t_MP = $0\n";
-	rulesStream << "\t\t_FP = $0\n";
-	rulesStream << "\t}\n";
-	rulesStream << "\n";
-	rulesStream << "\t\"(.+)er$\" = {\n";
-	rulesStream << "\t\t_MS = $1er\n";
-	rulesStream << "\t\t_FS = $1\xC3\xA8re\n";
-	rulesStream << "\t\t_MP = $1ers\n";
-	rulesStream << "\t\t_FP = $1\xC3\xA8res\n";
-	rulesStream << "\t}\n";
-	rulesStream << "}";
-	HoI4::AllReplacementRules replacementRules(rulesStream);
+	std::ifstream languageReplacementsFile("DataFiles/languageReplacements.txt");
+	if (!languageReplacementsFile.is_open())
+	{
+		return;
+	}
+	HoI4::AllReplacementRules replacementRules(languageReplacementsFile);
+	languageReplacementsFile.close();
 
 	for (const auto& localisationsInLanguage: countryLocalisations)
 	{
