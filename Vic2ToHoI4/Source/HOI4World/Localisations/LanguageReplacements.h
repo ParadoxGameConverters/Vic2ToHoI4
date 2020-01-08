@@ -1,5 +1,5 @@
-#ifndef LANGUAGE_REPLACEMENTS
-#define LANGUAGE_REPLACEMENTS
+#ifndef LANGUAGE_REPLACEMENTS_H
+#define LANGUAGE_REPLACEMENTS_H
 
 
 
@@ -28,4 +28,4 @@ class LanguageReplacements: commonItems::parser
 
 
 
-#endif // LANGUAGE_REPLACEMENTS
+#endif // LANGUAGE_REPLACEMENTS_H

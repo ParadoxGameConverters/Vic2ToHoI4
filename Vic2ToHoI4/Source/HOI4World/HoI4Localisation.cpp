@@ -1,5 +1,5 @@
 #include "HoI4Localisation.h"
-#include "Localisations/LanguageReplacements.h"
+#include "Localisations/LanguageReplacementRule.h"
 #include "States/HoI4State.h"
 #include "States/HoI4States.h"
 #include "../Mappers/GovernmentMapper.h"
@@ -730,33 +730,42 @@ void HoI4Localisation::GenerateCustomLocalisations()
 
 		for (const auto& localisation: localisationsInLanguage.second)
 		{
-			std::regex same{ "^De (.+)" };
-			std::regex change{"(.+)er$"};
+			
+			std::regex change{};
+
+
+			std::string sameMatch{ "^De (.+)" };
+			std::stringstream sameRulesStream;
+			sameRulesStream << "= {\n";
+			sameRulesStream << "\t_MS = $0\n";
+			sameRulesStream << "\t_FS = $0\n";
+			sameRulesStream << "\t_MP = $0\n";
+			sameRulesStream << "\t_FP = $0\n";
+			sameRulesStream << "}";
+			HoI4::LanguageReplacementRule sameRule(sameMatch, sameRulesStream);
+
+			std::string changeMatch{ "(.+)er$" };
+			std::stringstream changeRulesStream;
+			changeRulesStream << "= {\n";
+			changeRulesStream << "\t_MS = $1er\n";
+			changeRulesStream << "\t_FS = $1\xC3\xA8re\n";
+			changeRulesStream << "\t_MP = $1ers\n";
+			changeRulesStream << "\t_FP = $1\xC3\xA8res\n";
+			changeRulesStream << "}";
+			HoI4::LanguageReplacementRule changeRule(changeMatch, changeRulesStream);
 
 			std::smatch match;
-			if (std::regex_match(localisation.second, match, same))
+			if (std::regex_match(localisation.second, match, sameRule.getMatcher()))
 			{
-				std::stringstream rulesStream;
-				rulesStream << "_MS = $0\n";
-				rulesStream << "_FS = $0\n";
-				rulesStream << "_MP = $0\n";
-				rulesStream << "_FP = $0\n";
-				HoI4::LanguageReplacements theReplacements(rulesStream);
-				for (const auto& replacement: theReplacements.getReplacements())
+				for (const auto& replacement: sameRule.getReplacements())
 				{
 					customLocalisations[localisationsInLanguage.first][localisation.first + replacement.first]
 						= std::regex_replace(localisation.second, change, replacement.second);
 				}
 			}
-			else if (std::regex_match(localisation.second, match, change))
+			else if (std::regex_match(localisation.second, match, changeRule.getMatcher()))
 			{
-				std::stringstream rulesStream;
-				rulesStream << "_MS = $1er\n";
-				rulesStream << "_FS = $1\xC3\xA8re\n";
-				rulesStream << "_MP = $1ers\n";
-				rulesStream << "_FP = $1\xC3\xA8res\n";
-				HoI4::LanguageReplacements theReplacements(rulesStream);
-				for (const auto& replacement : theReplacements.getReplacements())
+				for (const auto& replacement: changeRule.getReplacements())
 				{
 					customLocalisations[localisationsInLanguage.first][localisation.first + replacement.first]
 						= std::regex_replace(localisation.second, change, replacement.second);

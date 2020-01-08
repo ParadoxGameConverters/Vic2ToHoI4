@@ -250,6 +250,7 @@
     <ClCompile Include="Source\HOI4World\IdeologicalAdvisors.cpp" />
     <ClCompile Include="Source\HOI4World\IdeologyFile.cpp" />
     <ClCompile Include="Source\HOI4World\ImpassableProvinces.cpp" />
+    <ClCompile Include="Source\HOI4World\Localisations\LanguageReplacementRule.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\LanguageReplacements.cpp" />
     <ClCompile Include="Source\HOI4World\MapData.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp" />
@@ -393,6 +394,7 @@
     <ClInclude Include="Source\HOI4World\IdeologicalAdvisors.h" />
     <ClInclude Include="Source\HOI4World\IdeologyFile.h" />
     <ClInclude Include="Source\HOI4World\ImpassableProvinces.h" />
+    <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacementRule.h" />
     <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacements.h" />
     <ClInclude Include="Source\HOI4World\MapData.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.h" />

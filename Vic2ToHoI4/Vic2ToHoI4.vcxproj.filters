@@ -477,6 +477,9 @@
     <ClCompile Include="Source\HOI4World\Localisations\LanguageReplacements.cpp">
       <Filter>HoI4World\Localisations</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Localisations\LanguageReplacementRule.cpp">
+      <Filter>HoI4World\Localisations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -903,6 +906,9 @@
       <Filter>HoI4World\Decisions</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacements.h">
+      <Filter>HoI4World\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacementRule.h">
       <Filter>HoI4World\Localisations</Filter>
     </ClInclude>
   </ItemGroup>
