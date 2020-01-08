@@ -551,6 +551,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\GenericDecisions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementsTests.cpp">
+      <Filter>HoI4WorldTests\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacements.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -642,6 +648,12 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\States">
       <UniqueIdentifier>{a5590f90-a463-43dc-8490-47e4b191d7d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\Localisations">
+      <UniqueIdentifier>{d6118e17-3f48-4e3d-b723-248ce3f8b76f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Localisations">
+      <UniqueIdentifier>{2504e409-d763-455b-b90f-ca1679bdb2a1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

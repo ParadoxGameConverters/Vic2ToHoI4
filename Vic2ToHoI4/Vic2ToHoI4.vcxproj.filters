@@ -64,6 +64,9 @@
     <Filter Include="Hoi4Outputter\States">
       <UniqueIdentifier>{17b00305-129e-49d6-a5b2-b90221c4a66a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\Localisations">
+      <UniqueIdentifier>{53f15651-fa5b-405e-ba4a-d03897054408}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -449,7 +452,7 @@
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.cpp">
       <Filter>Hoi4Outputter\States</Filter>
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="Source\HOI4World\Decisions\StabilityWarSupportDecisions.cpp">
       <Filter>HoI4World\Decisions</Filter>
     </ClCompile>
@@ -470,6 +473,9 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Decisions\GenericDecisions.cpp">
       <Filter>HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Localisations\LanguageReplacements.cpp">
+      <Filter>HoI4World\Localisations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -895,6 +901,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Decisions\GenericDecisions.h">
       <Filter>HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacements.h">
+      <Filter>HoI4World\Localisations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

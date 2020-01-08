@@ -1,27 +1,5 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "HoI4Localisation.h"
+#include "Localisations/LanguageReplacements.h"
 #include "States/HoI4State.h"
 #include "States/HoI4States.h"
 #include "../Mappers/GovernmentMapper.h"
@@ -34,6 +12,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include <fstream>
+#include <sstream>
 
 
 
@@ -757,13 +736,13 @@ void HoI4Localisation::GenerateCustomLocalisations()
 			std::smatch match;
 			if (std::regex_match(localisation.second, match, same))
 			{
-				std::map<std::string, std::string> replacements{
-					{ "_MS", "$0" },
-					{ "_FS", "$0" },
-					{ "_MP", "$0" },
-					{ "_FP", "$0" }
-				};
-				for (const auto& replacement : replacements)
+				std::stringstream rulesStream;
+				rulesStream << "_MS = $0\n";
+				rulesStream << "_FS = $0\n";
+				rulesStream << "_MP = $0\n";
+				rulesStream << "_FP = $0\n";
+				HoI4::LanguageReplacements theReplacements(rulesStream);
+				for (const auto& replacement: theReplacements.getReplacements())
 				{
 					customLocalisations[localisationsInLanguage.first][localisation.first + replacement.first]
 						= std::regex_replace(localisation.second, change, replacement.second);
@@ -771,13 +750,13 @@ void HoI4Localisation::GenerateCustomLocalisations()
 			}
 			else if (std::regex_match(localisation.second, match, change))
 			{
-				std::map<std::string, std::string> replacements{
-					{ "_MS", "$1er" },
-					{ "_FS", "$1\xC3\xA8re" },
-					{ "_MP", "$1ers" },
-					{ "_FP", "$1\xC3\xA8res" }
-				};
-				for (const auto& replacement: replacements)
+				std::stringstream rulesStream;
+				rulesStream << "_MS = $1er\n";
+				rulesStream << "_FS = $1\xC3\xA8re\n";
+				rulesStream << "_MP = $1ers\n";
+				rulesStream << "_FP = $1\xC3\xA8res\n";
+				HoI4::LanguageReplacements theReplacements(rulesStream);
+				for (const auto& replacement : theReplacements.getReplacements())
 				{
 					customLocalisations[localisationsInLanguage.first][localisation.first + replacement.first]
 						= std::regex_replace(localisation.second, change, replacement.second);
