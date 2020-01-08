@@ -757,17 +757,31 @@ void HoI4Localisation::GenerateCustomLocalisations()
 			std::smatch match;
 			if (std::regex_match(localisation.second, match, same))
 			{
-				customLocalisations[localisationsInLanguage.first][localisation.first + "_MS"] = localisation.second;
-				customLocalisations[localisationsInLanguage.first][localisation.first + "_FS"] = localisation.second;
-				customLocalisations[localisationsInLanguage.first][localisation.first + "_MP"] = localisation.second;
-				customLocalisations[localisationsInLanguage.first][localisation.first + "_FP"] = localisation.second;
+				std::map<std::string, std::string> replacements{
+					{ "_MS", "$0" },
+					{ "_FS", "$0" },
+					{ "_MP", "$0" },
+					{ "_FP", "$0" }
+				};
+				for (const auto& replacement : replacements)
+				{
+					customLocalisations[localisationsInLanguage.first][localisation.first + replacement.first]
+						= std::regex_replace(localisation.second, change, replacement.second);
+				}
 			}
 			else if (std::regex_match(localisation.second, match, change))
 			{
-				customLocalisations[localisationsInLanguage.first][localisation.first + "_MS"] = std::regex_replace(localisation.second, change, "$1er");
-				customLocalisations[localisationsInLanguage.first][localisation.first + "_FS"] = std::regex_replace(localisation.second, change, "$1re");
-				customLocalisations[localisationsInLanguage.first][localisation.first + "_MP"] = std::regex_replace(localisation.second, change, "$1ers");
-				customLocalisations[localisationsInLanguage.first][localisation.first + "_FP"] = std::regex_replace(localisation.second, change, "$1ères");
+				std::map<std::string, std::string> replacements{
+					{ "_MS", "$1er" },
+					{ "_FS", "$1\xC3\xA8re" },
+					{ "_MP", "$1ers" },
+					{ "_FP", "$1\xC3\xA8res" }
+				};
+				for (const auto& replacement: replacements)
+				{
+					customLocalisations[localisationsInLanguage.first][localisation.first + replacement.first]
+						= std::regex_replace(localisation.second, change, replacement.second);
+				}
 			}
 		}
 	}
