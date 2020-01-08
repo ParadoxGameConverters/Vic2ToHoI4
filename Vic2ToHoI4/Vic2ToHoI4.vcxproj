@@ -185,6 +185,7 @@
     <ClCompile Include="..\common_items\Log.cpp" />
     <ClCompile Include="..\common_items\newParser.cpp" />
     <ClCompile Include="..\common_items\ParserHelpers.cpp" />
+    <ClCompile Include="..\common_items\StringUtils.cpp" />
     <ClCompile Include="..\common_items\WinUtils.cpp" />
     <ClCompile Include="Source\Color.cpp" />
     <ClCompile Include="Source\Configuration.cpp" />
@@ -251,6 +252,7 @@
     <ClCompile Include="Source\HOI4World\IdeologyFile.cpp" />
     <ClCompile Include="Source\HOI4World\ImpassableProvinces.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\LanguageReplacementRule.cpp" />
+    <ClCompile Include="Source\HOI4World\Localisations\LanguageReplacementRules.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\LanguageReplacements.cpp" />
     <ClCompile Include="Source\HOI4World\MapData.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp" />
@@ -328,6 +330,7 @@
     <ClInclude Include="..\common_items\newParser.h" />
     <ClInclude Include="..\common_items\OSCompatibilityLayer.h" />
     <ClInclude Include="..\common_items\ParserHelpers.h" />
+    <ClInclude Include="..\common_items\StringUtils.h" />
     <ClInclude Include="Source\bitmap_image.hpp" />
     <ClInclude Include="Source\Color.h" />
     <ClInclude Include="Source\Configuration.h" />
@@ -395,6 +398,7 @@
     <ClInclude Include="Source\HOI4World\IdeologyFile.h" />
     <ClInclude Include="Source\HOI4World\ImpassableProvinces.h" />
     <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacementRule.h" />
+    <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacementRules.h" />
     <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacements.h" />
     <ClInclude Include="Source\HOI4World\MapData.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.h" />

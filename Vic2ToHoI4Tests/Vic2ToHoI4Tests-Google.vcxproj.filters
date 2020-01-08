@@ -563,6 +563,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacementRule.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Localisations</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRulesTests.cpp">
+      <Filter>HoI4WorldTests\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacementRules.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\StringUtils.cpp">
+      <Filter>Vic2ToHoI4 files\common items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

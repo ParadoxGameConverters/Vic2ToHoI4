@@ -480,6 +480,12 @@
     <ClCompile Include="Source\HOI4World\Localisations\LanguageReplacementRule.cpp">
       <Filter>HoI4World\Localisations</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Localisations\LanguageReplacementRules.cpp">
+      <Filter>HoI4World\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\StringUtils.cpp">
+      <Filter>CommonItems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -910,6 +916,12 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacementRule.h">
       <Filter>HoI4World\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacementRules.h">
+      <Filter>HoI4World\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common_items\StringUtils.h">
+      <Filter>CommonItems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

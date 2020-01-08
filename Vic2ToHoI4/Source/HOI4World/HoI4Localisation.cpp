@@ -1,5 +1,5 @@
 #include "HoI4Localisation.h"
-#include "Localisations/LanguageReplacementRule.h"
+#include "Localisations/LanguageReplacementRules.h"
 #include "States/HoI4State.h"
 #include "States/HoI4States.h"
 #include "../Mappers/GovernmentMapper.h"
@@ -730,45 +730,34 @@ void HoI4Localisation::GenerateCustomLocalisations()
 
 		for (const auto& localisation: localisationsInLanguage.second)
 		{
-			
-			std::regex change{};
+			std::stringstream rulesStream;
+			rulesStream << "\"^de (.+)\" = {\n";
+			rulesStream << "\t_MS = $0\n";
+			rulesStream << "\t_FS = $0\n";
+			rulesStream << "\t_MP = $0\n";
+			rulesStream << "\t_FP = $0\n";
+			rulesStream << "}\n";
+			rulesStream << "\n";
+			rulesStream << "\"(.+)er$\" = {\n";
+			rulesStream << "\t_MS = $1er\n";
+			rulesStream << "\t_FS = $1\xC3\xA8re\n";
+			rulesStream << "\t_MP = $1ers\n";
+			rulesStream << "\t_FP = $1\xC3\xA8res\n";
+			rulesStream << "}";
 
-
-			std::string sameMatch{ "^De (.+)" };
-			std::stringstream sameRulesStream;
-			sameRulesStream << "= {\n";
-			sameRulesStream << "\t_MS = $0\n";
-			sameRulesStream << "\t_FS = $0\n";
-			sameRulesStream << "\t_MP = $0\n";
-			sameRulesStream << "\t_FP = $0\n";
-			sameRulesStream << "}";
-			HoI4::LanguageReplacementRule sameRule(sameMatch, sameRulesStream);
-
-			std::string changeMatch{ "(.+)er$" };
-			std::stringstream changeRulesStream;
-			changeRulesStream << "= {\n";
-			changeRulesStream << "\t_MS = $1er\n";
-			changeRulesStream << "\t_FS = $1\xC3\xA8re\n";
-			changeRulesStream << "\t_MP = $1ers\n";
-			changeRulesStream << "\t_FP = $1\xC3\xA8res\n";
-			changeRulesStream << "}";
-			HoI4::LanguageReplacementRule changeRule(changeMatch, changeRulesStream);
+			HoI4::LanguageReplacementRules replacementRules(rulesStream);
 
 			std::smatch match;
-			if (std::regex_match(localisation.second, match, sameRule.getMatcher()))
+			for (const auto& rule: replacementRules.getTheRules())
 			{
-				for (const auto& replacement: sameRule.getReplacements())
+				if (std::regex_match(localisation.second, match, rule.getMatcher()))
 				{
-					customLocalisations[localisationsInLanguage.first][localisation.first + replacement.first]
-						= std::regex_replace(localisation.second, change, replacement.second);
-				}
-			}
-			else if (std::regex_match(localisation.second, match, changeRule.getMatcher()))
-			{
-				for (const auto& replacement: changeRule.getReplacements())
-				{
-					customLocalisations[localisationsInLanguage.first][localisation.first + replacement.first]
-						= std::regex_replace(localisation.second, change, replacement.second);
+					for (const auto& replacement: rule.getReplacements())
+					{
+						customLocalisations[localisationsInLanguage.first][localisation.first + replacement.first]
+							= std::regex_replace(localisation.second, rule.getMatcher(), replacement.second);
+					}
+					break;
 				}
 			}
 		}
