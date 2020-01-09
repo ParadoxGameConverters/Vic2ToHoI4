@@ -29,4 +29,4 @@ class PoliticalDecisions: commonItems::parser
 
 
 
-#endif POLITICAL_DECISIONS_H
+#endif // POLITICAL_DECISIONS_H
