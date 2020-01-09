@@ -1,3 +1,35 @@
+# Language replacement rules are done by language and use regexes: http://www.cplusplus.com/reference/regex/ECMAScript/
+# They have the following general structure:
+#	language = {
+#		matcher = {
+#			suffix = replacement_rule
+#			suffix = replacement_rule
+#			...
+#		}
+#	}
+#
+# Language should match the localisation files (eg. 'french', 'german', 'english')
+# Matcher determines if to apply rules to an adjective, and is case insensitive.
+#	The first matcher to match is the only one applied for a localisation.
+#	It must be a regex, and must be in quotes
+#		"^de (.+)" would match all adjectives beginning with "de "
+#		"(.+)er$" would match all adjectives ending with "er"
+# Suffix is added to the end of the localisation key.
+#	_MS would make dfsdf become sfdfdf_MS
+# Replacement rule is a regex replacement rule applied to the matched adjective.
+#	If the matcher is written to only match some of the adjective ("er$"),
+#	the replacement rule will only replace that part.
+#	If the matcher is written to match the whole adjective ("(.+)er$"),
+#	the replacement will replace the whole thing.
+#	There are some special things with replacements: $0 will match the whole matched item,
+#	so can be used to construct rules that just add a localisation as-is.
+#	If a matcher has items in parenthesis, those become groups that can be accessed
+#	with $1, $2, etc. This can be used to bring in portions of matched adjectives.
+
+
+
+
+
 french = {
 	"^de (.+)" = {
 		_MS = $0
