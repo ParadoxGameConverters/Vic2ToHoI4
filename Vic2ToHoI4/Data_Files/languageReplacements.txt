@@ -1,3 +1,20 @@
+#################################
+#  Gender-adjusting adjectives  #
+#################################
+#   written for FR, IT, ES, PT  #
+#################################
+
+#Notes to self:
+#-add list of states that need this or that adjective
+#-add rules of whether adjectives go before or after
+#-add rules to make the game understand which adj. to use
+
+#The braces define the language
+#When it's "^X(.+)", it means "all adjectives starting with X"
+#When it's "(.+)er$", it means "all adjectives ending with X"
+#$1Y means, let's say it's AX, "write AY"
+#First rule to fit is the first rule that gets applied
+
 # Language replacement rules are done by language and use regexes: http://www.cplusplus.com/reference/regex/ECMAScript/
 # They have the following general structure:
 #	language = {
@@ -27,21 +44,857 @@
 #	with $1, $2, etc. This can be used to bring in portions of matched adjectives.
 
 
-
-
-
 french = {
+#_MS, _FS, _MP, _FP are respectively m. sing., f. sing., m. pl., f. pl.
+#_FR is added because of the language
+#Default adjective in French is m. sing.
+
+	#Not-adjectives (i.e. literally "of X")
 	"^de (.+)" = {
-		_MS = $0
-		_FS = $0
-		_MP = $0
-		_FP = $0
+		_MS_FR = "de $1"
+		_FS_FR = "de $1"
+		_MP_FR = "de $1"
+		_FP_FR = "de $1"
+	}
+	"^du (.+)" = {
+		_MS_FR = "du $1"
+		_FS_FR = "du $1"
+		_MP_FR = "du $1"
+		_FP_FR = "du $1"
+	}
+	"^des (.+)" = {
+		_MS_FR = "des $1"
+		_FS_FR = "des $1"
+		_MP_FR = "des $1"
+		_FP_FR = "des $1"
 	}
 	
+	#Special rules
+	"turc" = { #Turkish
+		_MS_FR = Turc
+		_FS_FR = Turque
+		_MP_FR = Turcs
+		_FP_FR = Turque
+	}
+	"grec" = { #Greek
+		_MS_FR = Grec
+		_FS_FR = Grecque
+		_MP_FR = Grecs
+		_FP_FR = Grecques
+	}
+	"kazakh" = { #Kazakh
+		_MS_FR = Kazakh
+		_FS_FR = Kazakhe
+		_MP_FR = Kazakhs
+		_FP_FR = Kazakhes
+	}
+	"ouzbek" = { #Uzbek
+		_MS_FR = Ouzbek
+		_FS_FR = Ouzbèke
+		_MP_FR = Ouzbeks
+		_FP_FR = Ouzbèkes
+	}
+	"karabaghtsie" = { #Karabakhi
+		_MS_FR = Karabaghiote
+		_FS_FR = Karabaghiote
+		_MP_FR = Karabaghiotes
+		_FP_FR = Karabaghiotes
+	}
+	"luang prabangi" = { #Laotian
+		_MS_FR = Laotien
+		_FS_FR = Laotienne
+		_MP_FR = Laotiens
+		_FP_FR = Laotiennes
+	}
+	
+	#Actual adjectives
+	"(.+)e$" = {
+		_MS_FR = $1e
+		_FS_FR = $1e
+		_MP_FR = $1es
+		_FP_FR = $1es
+	}
+	"(.+)é$" = {
+		_MS_FR = $1é
+		_FS_FR = $1ée
+		_MP_FR = $1és
+		_FP_FR = $1ées
+	}
+	"(.+)ès$" = {
+		_MS_FR = $1ès
+		_FS_FR = $1èse
+		_MP_FR = $1ès
+		_FP_FR = $1èses
+	}
+	"(.+)an$" = {
+		_MS_FR = $1an
+		_FS_FR = $1ane
+		_MP_FR = $1ans
+		_FP_FR = $1anes
+	}	
+	"(.+)el$" = {
+		_MS_FR = $1el
+		_FS_FR = $1elle
+		_MP_FR = $1els
+		_FP_FR = $1elles
+	}	
 	"(.+)er$" = {
-		_MS = $1er
-		_FS = $1ère
-		_MP = $1ers
-		_FP = $1ères
+		_MS_FR = $1er
+		_FS_FR = $1ère
+		_MP_FR = $1ers
+		_FP_FR = $1ères
+	}
+	"(.+)g$" = {
+		_MS_FR = $1g
+		_FS_FR = $1gue
+		_MP_FR = $1gs
+		_FP_FR = $1gues
+	}
+	"(.+)k$" = {
+		_MS_FR = $1k
+		_FS_FR = $1ke
+		_MP_FR = $1ks
+		_FP_FR = $1kes
+	}
+	"(.+)en$" = {
+		_MS_FR = $1en
+		_FS_FR = $1enne
+		_MP_FR = $1ens
+		_FP_FR = $1ennes
+	}
+	"(.+)ain$" = {
+		_MS_FR = $1ain
+		_FS_FR = $1aine
+		_MP_FR = $1ains
+		_FP_FR = $1aines
+	}
+	"(.+)in$" = {
+		_MS_FR = $1in
+		_FS_FR = $1ine
+		_MP_FR = $1ins
+		_FP_FR = $1ines
+	}
+	"(.+)ïn$" = {
+		_MS_FR = $1ïn
+		_FS_FR = $1ïne
+		_MP_FR = $1ïns
+		_FP_FR = $1ïnes
+	}
+	"(.+)on$" = {
+		_MS_FR = $1on
+		_FS_FR = $1onne
+		_MP_FR = $1ons
+		_FP_FR = $1onnes
+	}
+	"(.+)teur$" = {
+		_MS_FR = $1teur
+		_FS_FR = $1trice
+		_MP_FR = $1teurs
+		_FP_FR = $1trices
+	}
+	"(.+)eur$" = {
+		_MS_FR = $1eur
+		_FS_FR = $1euse
+		_MP_FR = $1eurs
+		_FP_FR = $1euses
+	}
+	"(.+)aux$" = {
+		_MS_FR = $1aux
+		_FS_FR = $1ausse
+		_MP_FR = $1aux
+		_FP_FR = $1ausses
+	}
+	"(.+)eux$" = {
+		_MS_FR = $1eux
+		_FS_FR = $1euse
+		_MP_FR = $1eux
+		_FP_FR = $1euses
+	}
+	"(.+)x$" = {
+		_MS_FR = $1x
+		_FS_FR = $1ce
+		_MP_FR = $1x
+		_FP_FR = $1ces
+	}
+	"(.+)c$" = {
+		_MS_FR = $1c
+		_FS_FR = $1che
+		_MP_FR = $1cs
+		_FP_FR = $1ches
+	}
+	"(.+)d$" = {
+		_MS_FR = $1d
+		_FS_FR = $1de
+		_MP_FR = $1ds
+		_FP_FR = $1des
+	}
+	"(.+)et$" = {
+		_MS_FR = $1et
+		_FS_FR = $1ette
+		_MP_FR = $1ets
+		_FP_FR = $1ettes
+	}
+	"(.+)ais$" = {
+		_MS_FR = $1ais
+		_FS_FR = $1aise
+		_MP_FR = $1ais
+		_FP_FR = $1aises
+	}
+	"(.+)ois$" = {
+		_MS_FR = $1ois
+		_FS_FR = $1oise
+		_MP_FR = $1ois
+		_FP_FR = $1oises
+	}
+	"(.+)s$" = {
+		_MS_FR = $1s
+		_FS_FR = $1sse
+		_MP_FR = $1s
+		_FP_FR = $1sses
+	}
+	"(.+)al$" = {
+		_MS_FR = $1al
+		_FS_FR = $1ale
+		_MP_FR = $1aux
+		_FP_FR = $1ales
+	}
+	"(.+)ol$" = {
+		_MS_FR = $1ol
+		_FS_FR = $1ole
+		_MP_FR = $1ols
+		_FP_FR = $1oles
+	}
+	
+	#Fallback
+	"^(.+)$" = {
+		_MS = $1
+		_FS = $1
+		_MP = $1s
+		_FP = $1s
+	}
+}
+
+italian = {
+#_MS, _FS, _MP, _FP are respectively m. sing., f. sing., m. pl., f. pl.
+#_IT is added because of the language code
+#Default adjective in Italian is f. sing.
+
+	#Not-adjectives (i.e. literally "of X")
+	"^di (.+)" = {
+		_MS_IT = "di $1"
+		_FS_IT = "di $1"
+		_MP_IT = "di $1"
+		_FP_IT = "di $1"
+	}
+	"^d' (.+)" = {
+		_MS_IT = "d' $1"
+		_FS_IT = "d' $1"
+		_MP_IT = "d' $1"
+		_FP_IT = "d' $1"
+	}
+	"^del (.+)" = {
+		_MS_IT = "del $1"
+		_FS_IT = "del $1"
+		_MP_IT = "del $1"
+		_FP_IT = "del $1"
+	}
+	"^della (.+)" = {
+		_MS_IT = "della $1"
+		_FS_IT = "della $1"
+		_MP_IT = "della $1"
+		_FP_IT = "della $1"
+	}
+	"(.+)é$" = { #Burkinabé (of Burkina Faso)
+		_MS_IT = $1é
+		_FS_IT = $1é
+		_MP_IT = $1é
+		_FP_IT = $1é
+	}
+	"congolesi" = { #Special rule: Congolese (wrongly used in m. pl.)
+		_MS_IT = "Congolese"
+		_FS_IT = "Congolese"
+		_MP_IT = "Congolesi"
+		_FP_IT = "Congolesi"
+	}
+	"indiani" = { #Special rule: Indian (wrongly used in m. pl.)
+		_MS_IT = "Indiano"
+		_FS_IT = "Indiana"
+		_MP_IT = "Indiani"
+		_FP_IT = "Indiane"
+	}
+	"luang prabangi" = { #Special rule: Laotian
+		_MS_IT = "Laotiano"
+		_FS_IT = "Laotiana"
+		_MP_IT = "Laotiani"
+		_FP_IT = "Laotiane"
+	}
+	"(.+)i$" = {
+		_MS_IT = $1i
+		_FS_IT = $1i
+		_MP_IT = $1i
+		_FP_IT = $1i
+	}
+	
+	#Special rules
+	"belga" = { #Belgian
+		_MS_IT = "Belga"
+		_FS_IT = "Belga"
+		_MP_IT = "Belgi"
+		_FP_IT = "Belghe"
+	}
+	"austriaca" = { #Austrian
+		_MS_IT = "Austriaco"
+		_FS_IT = "Austriaca"
+		_MP_IT = "Austriaci"
+		_FP_IT = "Austriache"
+	}
+	"britannica" = { #British
+		_MS_IT = "Britannico"
+		_FS_IT = "Britannica"
+		_MP_IT = "Britannici"
+		_FP_IT = "Britanniche"
+	}
+	"greca" = { #Greek
+		_MS_IT = "Greco"
+		_FS_IT = "Greca"
+		_MP_IT = "Greci"
+		_FP_IT = "Greche"
+	}
+	"sahariana occidentale" = { #Western Saharan
+		_MS_IT = "Sahariano Occidentale"
+		_FS_IT = "Sahariana Occidentale"
+		_MP_IT = "Sahariani Occidentali"
+		_FP_IT = "Sahariane Occidentali"
+	}
+	"bengalesee" = { #Wrong spelling
+		_MS_IT = "Bengalese"
+		_FS_IT = "Bengalese"
+		_MP_IT = "Bengalesi"
+		_FP_IT = "Bengalesi"
+	}
+	"bosniaca" = { #Bosniak
+		_MS_IT = "Bosniaco"
+		_FS_IT = "Bosniaca"
+		_MP_IT = "Bosniaci"
+		_FP_IT = "Bosniache"
+	}
+	"libica" = { #Lybian
+		_MS_IT = "Libico"
+		_FS_IT = "Libica"
+		_MP_IT = "Libici"
+		_FP_IT = "Libiche"
+	}
+	
+	#Actual adjectives
+	"(.+)ana$" = {
+		_MS_IT = $1ano
+		_FS_IT = $1ana
+		_MP_IT = $1ani
+		_FP_IT = $1ane
+	}
+	"(.+)ano$" = { #Wrong use of m. sing.
+		_MS_IT = $1ano
+		_FS_IT = $1ana
+		_MP_IT = $1ani
+		_FP_IT = $1ane
+	}
+	"(.+)an$" = { #Fallback from English localisation
+		_MS_IT = $1ano
+		_FS_IT = $1ana
+		_MP_IT = $1ani
+		_FP_IT = $1ane
+	}
+	"(.+)ese$" = {
+		_MS_IT = $1ese
+		_FS_IT = $1ese
+		_MP_IT = $1esi
+		_FP_IT = $1esi
+	}
+	"(.+)ense$" = {
+		_MS_IT = $1ense
+		_FS_IT = $1ense
+		_MP_IT = $1ensi
+		_FP_IT = $1ensi
+	}
+	"(.+)ina$" = {
+		_MS_IT = $1ino
+		_FS_IT = $1ina
+		_MP_IT = $1ini
+		_FP_IT = $1ine
+	}
+	"(.+)ena$" = {
+		_MS_IT = $1eno
+		_FS_IT = $1ena
+		_MP_IT = $1eni
+		_FP_IT = $1ene
+	}
+	"(.+)ita$" = {
+		_MS_IT = $1ita
+		_FS_IT = $1ita
+		_MP_IT = $1iti
+		_FP_IT = $1ite
+	}
+	"(.+)egna$" = {
+		_MS_IT = $1egno
+		_FS_IT = $1egna
+		_MP_IT = $1egni
+		_FP_IT = $1egne
+	}
+	"(.+)egno$" = { #Wrong use of m. sing.
+		_MS_IT = $1egno
+		_FS_IT = $1egna
+		_MP_IT = $1egni
+		_FP_IT = $1egne
+	}
+	"(.+)ota$" = {
+		_MS_IT = $1ota
+		_FS_IT = $1ota
+		_MP_IT = $1oti
+		_FP_IT = $1ote
+	}
+	"(.+)ca$" = {
+		_MS_IT = $1co
+		_FS_IT = $1ca
+		_MP_IT = $1chi
+		_FP_IT = $1che
+	}
+	"(.+)co$" = { #Wrong use of m. sing.
+		_MS_IT = $1co
+		_FS_IT = $1ca
+		_MP_IT = $1chi
+		_FP_IT = $1che
+	}
+	"(.+)cia$" = {
+		_MS_IT = $1cio
+		_FS_IT = $1cia
+		_MP_IT = $1ci
+		_FP_IT = $1ce
+	}
+	"(.+)ista$" = {
+		_MS_IT = $1ista
+		_FS_IT = $1ista
+		_MP_IT = $1isti
+		_FP_IT = $1iste
+	}
+	"(.+)ia$" = {
+		_MS_IT = $1io
+		_FS_IT = $1ia
+		_MP_IT = $1i
+		_FP_IT = $1ie
+	}
+	"(.+)a$" = {
+		_MS_IT = $1o
+		_FS_IT = $1a
+		_MP_IT = $1i
+		_FP_IT = $1e
+	}
+	"(.+)e$" = {
+		_MS_IT = $1e
+		_FS_IT = $1e
+		_MP_IT = $1i
+		_FP_IT = $1i
+	}
+	"(.+)o$" = { #In case, by error, a masculine adjective has been used
+		_MS_IT = $1o
+		_FS_IT = $1a
+		_MP_IT = $1i
+		_FP_IT = $1e
+	}
+	
+	#Fallback
+	"^(.+)$" = {
+		_MS_IT = $1
+		_FS_IT = $1
+		_MP_IT = $1
+		_FP_IT = $1
+	}
+}
+
+spanish = {
+#_MS, _FS, _MP, _FP are respectively m. sing., f. sing., m. pl., f. pl.
+#_ES is used because of the language code
+#Default adjective in Spanish is f. sing.
+
+	#Not-adjectives (i.e. literally "of X")
+	"^de (.+)" = {
+		_MS_ES = "de $1"
+		_FS_ES = "de $1"
+		_MP_ES = "de $1"
+		_FP_ES = "de $1"
+	}
+	"^del (.+)" = {
+		_MS_ES = "del $1"
+		_FS_ES = "del $1"
+		_MP_ES = "del $1"
+		_FP_ES = "del $1"
+	}
+	
+	#Special rules
+	"alemana" = { #German
+		_MS_ES = "Alemán"
+		_FS_ES = "Alemana"
+		_MP_ES = "Alemanes"
+		_FP_ES = "Alemanas"
+	}
+	"belga" = { #Belgian
+		_MS_ES = "Belga"
+		_FS_ES = "Belga"
+		_MP_ES = "Belgas"
+		_FP_ES = "Belgas"
+	}
+	"croata" = { #Croat
+		_MS_ES = "Croata"
+		_FS_ES = "Croata"
+		_MP_ES = "Croatas"
+		_FP_ES = "Croatas"
+	}
+	"^luang prabang(.+)" = { #Laotian
+		_MS_ES = "Laosiano"
+		_FS_ES = "Laosiana"
+		_MP_ES = "Laosianos"
+		_FP_ES = "Laosianas"
+	}
+	"byelorussian" = { #Byelorussian, from English
+		_MS_ES = "Bielorruso"
+		_FS_ES = "Bielorrusa"
+		_MP_ES = "Bielorrusos"
+		_FP_ES = "Bielorrusas"
+	}
+	"nueva zelanda" = { #New Zealandese, wrong name
+		_MS_ES = "Neozelandés"
+		_FS_ES = "Neozelandesa"
+		_MP_ES = "Neozelandeses"
+		_FP_ES = "Neozelandesas"
+	}
+	"arab" = { #Saudi Arab, from English
+		_MS_ES = "Árabe"
+		_FS_ES = "Árabe"
+		_MP_ES = "Árabes"
+		_FP_ES = "Árabes"
+	}
+	"eslovaca " = { #Slovak, uses space
+		_MS_ES = "Eslovaco"
+		_FS_ES = "Eslovaca"
+		_MP_ES = "Eslovacos"
+		_FP_ES = "Eslovacas"
+	}
+	"spanish" = { #Spanish, from English
+		_MS_ES = "Español"
+		_FS_ES = "Española"
+		_MP_ES = "Españoles"
+		_FP_ES = "Españolas"
+	}
+	"sahara occidental" = { #Western Saharan
+		_MS_ES = "Saharaui"
+		_FS_ES = "Saharaui"
+		_MP_ES = "Saharauis"
+		_FP_ES = "Saharauis"
+	}
+	
+	#Actual adjectives
+	"(.+)stán$" = { 
+		_MS_ES = "de $1stán"
+		_FS_ES = "de $1stán"
+		_MP_ES = "de $1stán"
+		_FP_ES = "de $1stán"
+	}
+	"(.+)i$" = { 
+		_MS_ES = $1í
+		_FS_ES = $1í
+		_MP_ES = $1íes
+		_FP_ES = $1íes
+	}
+	"(.+)í$" = { 
+		_MS_ES = $1í
+		_FS_ES = $1í
+		_MP_ES = $1íes
+		_FP_ES = $1íes
+	}
+	"(.+)al$" = { 
+		_MS_ES = $1al
+		_FS_ES = $1al
+		_MP_ES = $1ales
+		_FP_ES = $1ales
+	}
+	"(.+)e$" = { 
+		_MS_ES = $1e
+		_FS_ES = $1e
+		_MP_ES = $1es
+		_FP_ES = $1es
+	}
+	"(.+)esa$" = { 
+		_MS_ES = $1és
+		_FS_ES = $1esa
+		_MP_ES = $1eses
+		_FP_ES = $1esas
+	}
+	"(.+)és$" = { #Wrongly used masculine
+		_MS_ES = $1és
+		_FS_ES = $1esa
+		_MP_ES = $1eses
+		_FP_ES = $1esas
+	}
+	"(.+)ola$" = { 
+		_MS_ES = $1ol
+		_FS_ES = $1ola
+		_MP_ES = $1oles
+		_FP_ES = $1olas
+	}
+	"(.+)ol$" = { #Wrongly used masculine
+		_MS_ES = $1ol
+		_FS_ES = $1ola
+		_MP_ES = $1oles
+		_FP_ES = $1olas
+	}
+	"(.+)ona$" = { 
+		_MS_ES = $1ón
+		_FS_ES = $1ona
+		_MP_ES = $1ones
+		_FP_ES = $1onas
+	}
+	"(.+)ón$" = { #Wrongly used masculine
+		_MS_ES = $1ón
+		_FS_ES = $1ona
+		_MP_ES = $1ones
+		_FP_ES = $1onas
+	}
+	"(.+)ita$" = { 
+		_MS_ES = $1ita
+		_FS_ES = $1ita
+		_MP_ES = $1itas
+		_FP_ES = $1itas
+	}
+	"(.+)ota$" = { 
+		_MS_ES = $1ota
+		_FS_ES = $1ota
+		_MP_ES = $1otas
+		_FP_ES = $1otas
+	}
+	"(.+)ista$" = { 
+		_MS_ES = $1ista
+		_FS_ES = $1ista
+		_MP_ES = $1istas
+		_FP_ES = $1istas
+	}
+	"(.+)a$" = { 
+		_MS_ES = $1o
+		_FS_ES = $1a
+		_MP_ES = $1os
+		_FP_ES = $1as
+	}
+	"(.+)o$" = { #Wrongly used masculine
+		_MS_ES = $1o
+		_FS_ES = $1a
+		_MP_ES = $1os
+		_FP_ES = $1as
+	}
+	"(.+)an$" = { #Fallback from English translation
+		_MS_ES = $1eño
+		_FS_ES = $1eña
+		_MP_ES = $1eños
+		_FP_ES = $1eñas
+	}
+	
+	#Fallback
+	"(.+)ch$" = {
+		_MS_ES = $1ch
+		_FS_ES = $1ch
+		_MP_ES = $1ches
+		_FP_ES = $1ches
+	}
+	"(.+)d$" = {
+		_MS_ES = $1d
+		_FS_ES = $1d
+		_MP_ES = $1des
+		_FP_ES = $1des
+	}
+	"(.+)j$" = {
+		_MS_ES = $1j
+		_FS_ES = $1j
+		_MP_ES = $1jes
+		_FP_ES = $1jes
+	}
+	"(.+)l$" = {
+		_MS_ES = $1l
+		_FS_ES = $1l
+		_MP_ES = $1les
+		_FP_ES = $1les
+	}
+	"(.+)n$" = {
+		_MS_ES = $1n
+		_FS_ES = $1na
+		_MP_ES = $1nes
+		_FP_ES = $1nas
+	}
+	"(.+)r$" = {
+		_MS_ES = $1r
+		_FS_ES = $1r
+		_MP_ES = $1res
+		_FP_ES = $1res
+	}
+	"(.+)s$" = {
+		_MS_ES = $1s
+		_FS_ES = $1s
+		_MP_ES = $1ses
+		_FP_ES = $1ses
+	}
+	"(.+)x$" = {
+		_MS_ES = $1x
+		_FS_ES = $1x
+		_MP_ES = $1xes
+		_FP_ES = $1xes
+	}
+	"(.+)y$" = {
+		_MS_ES = $1y
+		_FS_ES = $1y
+		_MP_ES = $1yes
+		_FP_ES = $1yes
+	}
+	"(.+)z$" = {
+		_MS_ES = $1z
+		_FS_ES = $1z
+		_MP_ES = $1zes
+		_FP_ES = $1zes
+	}
+	"^(.+)$" = {
+		_MS_ES = $1
+		_FS_ES = $1
+		_MP_ES = $1s
+		_FP_ES = $1s
+	}
+}
+
+braz_por = {
+#_MS, _FS, _MP, _FP are respectively m. sing., f. sing., m. pl., f. pl.
+#_PT is used because of the language code
+#Default adjective in Portuguese is m. sing.
+#Impossible to test because of lack of Portuguese adjectives in Vic2
+
+	#Not-adjectives (i.e. literally "of X")
+	"^de (.+)" = {
+		_MS_PT = "de $1"
+		_FS_PT = "de $1"
+		_MP_PT = "de $1"
+		_FP_PT = "de $1"
+	}
+	"^d'(.+)" = {
+		_MS_PT = "d'$1"
+		_FS_PT = "d'$1"
+		_MP_PT = "d'$1"
+		_FP_PT = "d'$1"
+	}
+	"^dele (.+)" = {
+		_MS_PT = "dele $1"
+		_FS_PT = "dele $1"
+		_MP_PT = "dele $1"
+		_FP_PT = "dele $1"
+	}
+	"^dela (.+)" = {
+		_MS_PT = "dela $1"
+		_FS_PT = "dela $1"
+		_MP_PT = "dela $1"
+		_FP_PT = "dela $1"
+	}
+	"^delas (.+)" = {
+		_MS_PT = "delas $1"
+		_FS_PT = "delas $1"
+		_MP_PT = "delas $1"
+		_FP_PT = "delas $1"
+	}
+	
+	#Special rules
+	"belga" = { #Belgian
+		_MS_PT = "Belga"
+		_FS_PT = "Belga"
+		_MP_PT = "Belgas"
+		_FP_PT = "Belgas"
+	}
+	"croata" = { #Croatian
+		_MS_PT = "Croata"
+		_FS_PT = "Croata"
+		_MP_PT = "Croatas"
+		_FP_PT = "Croatas"
+	}
+	
+	#Actual adjectives
+	"(.+)ota$" = {
+		_MS_PT = $1ota
+		_FS_PT = $1ota
+		_MP_PT = $1otas
+		_FP_PT = $1otas
+	}
+	"(.+)ita$" = {
+		_MS_PT = $1ita
+		_FS_PT = $1ita
+		_MP_PT = $1itas
+		_FP_PT = $1itas
+	}
+	"(.+)ol$" = {
+		_MS_PT = $1ol
+		_FS_PT = $1ol
+		_MP_PT = $1óis
+		_FP_PT = $1óis
+	}
+	"(.+)i$" = {
+		_MS_PT = $1i
+		_FS_PT = $1i
+		_MP_PT = $1is
+		_FP_PT = $1is
+	}
+	"(.+)o$" = {
+		_MS_PT = $1o
+		_FS_PT = $1a
+		_MP_PT = $1os
+		_FP_PT = $1es
+	}
+	"(.+)u$" = {
+		_MS_PT = $1u
+		_FS_PT = $1ia
+		_MP_PT = $1us
+		_FP_PT = $1ias
+	}
+	"(.+)ês$" = {
+		_MS_PT = $1ês
+		_FS_PT = $1esa
+		_MP_PT = $1eses
+		_FP_PT = $1esas
+	}
+	"(.+)ol$" = {
+		_MS_PT = $1ol
+		_FS_PT = $1ola
+		_MP_PT = $1óis
+		_FP_PT = $1olas
+	}
+	"(.+)e$" = {
+		_MS_PT = $1e
+		_FS_PT = $1e
+		_MP_PT = $1es
+		_FP_PT = $1es
+	}
+	"(.+)mão$" = {
+		_MS_PT = $1mão
+		_FS_PT = $1mã
+		_MP_PT = $1mães
+		_FP_PT = $1mãs
+	}
+	"(.+)tão$" = {
+		_MS_PT = $1tão
+		_FS_PT = $1tã
+		_MP_PT = $1tões
+		_FP_PT = $1tãs
+	}
+	"(.+)ão$" = {
+		_MS_PT = $1ão
+		_FS_PT = $1ã
+		_MP_PT = $1ãos
+		_FP_PT = $1ãs
+	}
+	
+	#Fallback
+	"^(.+)$" = {
+		_MS_PT = $1
+		_FS_PT = $1
+		_MP_PT = $1's
+		_FP_PT = $1's
 	}
 }
