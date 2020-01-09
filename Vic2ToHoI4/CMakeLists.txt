@@ -41,6 +41,7 @@ set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/LinuxUtils.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Log.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/newParser.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ParserHelpers.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/StringUtils.cpp")
 
 add_executable(
 	Vic2ToHoi4Converter
