@@ -739,6 +739,11 @@ void HoI4Localisation::GenerateCustomLocalisations()
 
 		for (const auto& localisation: localisationsInLanguage.second)
 		{
+			if (localisation.first.find("_ADJ") == std::string::npos)
+			{
+				continue;
+			}
+
 			std::smatch match;
 			for (const auto& rule: rules->getTheRules())
 			{
