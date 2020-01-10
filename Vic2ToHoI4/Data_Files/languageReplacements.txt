@@ -38,8 +38,7 @@
 #	the replacement rule will only replace that part.
 #	If the matcher is written to match the whole adjective ("(.+)er$"),
 #	the replacement will replace the whole thing.
-#	There are some special things with replacements: $0 will match the whole matched item,
-#	so can be used to construct rules that just add a localisation as-is.
+#	There are some special things with replacements:
 #	If a matcher has items in parenthesis, those become groups that can be accessed
 #	with $1, $2, etc. This can be used to bring in portions of matched adjectives.
 
