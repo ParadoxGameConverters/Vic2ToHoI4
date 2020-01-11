@@ -22,7 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "gmock/gmock.h"
-#include "../../Vic2ToHoI4/Source/HOI4World/Events.h"
+#include "../../Vic2ToHoI4/Source/HOI4World/Events/Events.h"
 
 
 
