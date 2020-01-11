@@ -1,27 +1,5 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "HoI4Localisation.h"
+#include "Localisations/AllReplacementRules.h"
 #include "States/HoI4State.h"
 #include "States/HoI4States.h"
 #include "../Mappers/GovernmentMapper.h"
@@ -34,6 +12,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include <fstream>
+#include <sstream>
 
 
 
@@ -740,6 +719,49 @@ void HoI4Localisation::AddDecisionLocalisation(const std::string& key, const std
 }
 
 
+void HoI4Localisation::GenerateCustomLocalisations()
+{
+	std::ifstream languageReplacementsFile("DataFiles/languageReplacements.txt");
+	if (!languageReplacementsFile.is_open())
+	{
+		return;
+	}
+	HoI4::AllReplacementRules replacementRules(languageReplacementsFile);
+	languageReplacementsFile.close();
+
+	for (const auto& localisationsInLanguage: countryLocalisations)
+	{
+		auto rules = replacementRules.getRulesForLanguage(localisationsInLanguage.first);
+		if (!rules)
+		{
+			continue;
+		}
+
+		for (const auto& localisation: localisationsInLanguage.second)
+		{
+			if (localisation.first.find("_ADJ") == std::string::npos)
+			{
+				continue;
+			}
+
+			std::smatch match;
+			for (const auto& rule: rules->getTheRules())
+			{
+				if (std::regex_match(localisation.second, match, rule.getMatcher()))
+				{
+					for (const auto& replacement: rule.getReplacements())
+					{
+						customLocalisations[localisationsInLanguage.first][localisation.first + replacement.first]
+							= std::regex_replace(localisation.second, rule.getMatcher(), replacement.second);
+					}
+					break;
+				}
+			}
+		}
+	}
+}
+
+
 void HoI4Localisation::UpdateLocalisationText(
 	const std::string& key,
 	const std::string& oldText,
@@ -783,6 +805,7 @@ void HoI4Localisation::Output() const
 	outputEventLocalisations(localisationPath);
 	outputPoliticalPartyLocalisations(localisationPath);
 	outputDecisionLocalisations(localisationPath);
+	outputCustomLocalisations(localisationPath);
 }
 
 
@@ -850,6 +873,12 @@ void HoI4Localisation::outputPoliticalPartyLocalisations(const string& localisat
 void HoI4Localisation::outputDecisionLocalisations(const string& localisationPath) const
 {
 	outputLocalisations(localisationPath + "/decisions3_l_", decisionLocalisations);
+}
+
+
+void HoI4Localisation::outputCustomLocalisations(const std::string& localisationPath) const
+{
+	outputLocalisations(localisationPath + "/custom_localization_converter_l_", customLocalisations);
 }
 
 

@@ -47,6 +47,7 @@
     <ClCompile Include="..\common_items\Log.cpp" />
     <ClCompile Include="..\common_items\newParser.cpp" />
     <ClCompile Include="..\common_items\ParserHelpers.cpp" />
+    <ClCompile Include="..\common_items\StringUtils.cpp" />
     <ClCompile Include="..\common_items\WinUtils.cpp" />
     <ClCompile Include="..\googletest\googlemock\src\gmock-all.cc" />
     <ClCompile Include="..\googletest\googletest\src\gtest-all.cc" />
@@ -114,6 +115,10 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeologicalAdvisors.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeologyFile.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ImpassableProvinces.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\AllReplacementRules.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacementRule.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacementRules.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacements.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MapData.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\DivisionTemplatesImporter.cpp" />
@@ -189,6 +194,10 @@
     <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4WarTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Localisations\AllReplacementRulesTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRulesTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRuleTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\AllMilitaryMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\HoI4UnitTypeTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\MilitaryMappingTests.cpp" />
