@@ -1,4 +1,5 @@
 #include "AllReplacementRules.h"
+#include "ParserHelpers.h"
 
 
 
@@ -9,6 +10,7 @@ HoI4::AllReplacementRules::AllReplacementRules(std::istream& theStream)
 		LanguageReplacementRules theRules(theStream);
 		rulesInLanguages.insert(std::make_pair(language, theRules));
 	});
+	registerKeyword(std::regex("[a-zA-Z0-9_\\.:]+"), commonItems::ignoreItem);
 
 	parseStream(theStream);
 }
