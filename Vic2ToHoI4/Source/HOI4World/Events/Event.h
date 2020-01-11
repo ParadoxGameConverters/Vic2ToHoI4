@@ -39,8 +39,6 @@ class Event: commonItems::parser
 		Event& operator=(const Event&) = delete;
 };
 
-std::ofstream& operator << (std::ofstream& out, const Event& theEvent);
-
 }
 
 

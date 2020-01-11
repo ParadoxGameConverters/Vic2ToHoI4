@@ -194,6 +194,7 @@
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Events\EventOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Hoi4CountryOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp" />
@@ -340,6 +341,7 @@
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Events\EventOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Hoi4CountryOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.h" />

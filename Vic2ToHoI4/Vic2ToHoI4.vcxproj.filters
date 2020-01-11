@@ -70,6 +70,9 @@
     <Filter Include="HoI4World\Events">
       <UniqueIdentifier>{4eea27b0-091e-4534-b314-1b415a0035cc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hoi4Outputter\Events">
+      <UniqueIdentifier>{f71d37c0-a289-421c-b944-31a6b535e0b6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -491,6 +494,9 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Events\Events.cpp">
       <Filter>HoI4World\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Events\EventOutputter.cpp">
+      <Filter>Hoi4Outputter\Events</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -931,6 +937,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Events\Events.h">
       <Filter>HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Events\EventOutputter.h">
+      <Filter>Hoi4Outputter\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
