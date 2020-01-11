@@ -21,7 +21,7 @@ HoI4::Event::Event(const std::string& theType, std::istream& theStream):
 	registerKeyword("desc", [this](const std::string& unused, std::istream& theStream)
 		{
 			commonItems::stringOfItem descriptionString(theStream);
-			descriptions.push_back("desc " + descriptionString.getString());
+			descriptions.push_back(descriptionString.getString());
 		}
 	);
 	registerKeyword("picture", [this](const std::string& unused, std::istream& theStream)

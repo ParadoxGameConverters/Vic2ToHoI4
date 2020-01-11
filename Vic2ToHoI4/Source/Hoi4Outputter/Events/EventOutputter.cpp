@@ -9,7 +9,7 @@ std::ostream& HoI4::operator << (std::ostream& out, const Event& theEvent)
 	out << "	title = " << theEvent.title << "\n";
 	for (auto description: theEvent.descriptions)
 	{
-		out << "\t" << description << "\n";
+		out << "\tdesc " << description << "\n";
 	}
 	out << "	picture = " << theEvent.picture << "\n";
 	if (theEvent.majorEvent)

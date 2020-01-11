@@ -41,7 +41,7 @@ void HoI4::Events::createFactionEvents(const HoI4::Country& leader, const HoI4::
 	nfEvent.type = "country_event";
 	nfEvent.id = "NFEvents." + std::to_string(nationalFocusEventNumber++);
 	nfEvent.title = "\"Alliance Offer\"";
-	nfEvent.descriptions.push_back("desc = \"We have been invited to an alliance with " + leaderName + ". Should we accept the invitation?\"");
+	nfEvent.descriptions.push_back("= \"We have been invited to an alliance with " + leaderName + ". Should we accept the invitation?\"");
 	nfEvent.picture = "news_event_generic_sign_treaty1";
 	nfEvent.majorEvent = false;
 	nfEvent.triggeredOnly = true;
@@ -90,7 +90,7 @@ void HoI4::Events::createFactionEvents(const HoI4::Country& leader, const HoI4::
 	newsEventYes.type = "news_event";
 	newsEventYes.id = "news." + to_string(newsEventNumber);
 	newsEventYes.title = "\"" + newAllyName + " formalizes alliance with " + leaderName + "\"";
-	newsEventYes.descriptions.push_back("desc = \"The leaders of both countries have announced their intent of military cooperation.\"");
+	newsEventYes.descriptions.push_back("= \"The leaders of both countries have announced their intent of military cooperation.\"");
 	newsEventYes.picture = "news_event_generic_sign_treaty1";
 	newsEventYes.majorEvent = true;
 	newsEventYes.triggeredOnly = true;
@@ -104,7 +104,7 @@ void HoI4::Events::createFactionEvents(const HoI4::Country& leader, const HoI4::
 	newsEventNo.type = "news_event";
 	newsEventNo.id = "news." + to_string(newsEventNumber + 1);
 	newsEventNo.title = "\"" + newAllyName + " refuses the alliance offer of " + leaderName + "\"";
-	newsEventNo.descriptions.push_back("desc = \"The alliance negotiations ended in disagreement.\"");
+	newsEventNo.descriptions.push_back("= \"The alliance negotiations ended in disagreement.\"");
 	newsEventNo.picture = "news_event_generic_sign_treaty1";
 	newsEventNo.majorEvent = true;
 	newsEventNo.triggeredOnly = true;
@@ -148,7 +148,7 @@ void HoI4::Events::createAnnexEvent(const HoI4::Country& annexer, const HoI4::Co
 	annexEvent.type = "country_event";
 	annexEvent.id = "NFEvents." + to_string(nationalFocusEventNumber);
 	annexEvent.title = "\"" + annexerName + " Demands " + annexedName + "!\"";
-	std::string description = "desc = \"Today " + annexerName + " sent an envoy to us with a proposition of an union. We are alone and in this world, and a union with " + annexerName + " might prove to be fruiteful.";
+	std::string description = "= \"Today " + annexerName + " sent an envoy to us with a proposition of an union. We are alone and in this world, and a union with " + annexerName + " might prove to be fruiteful.";
 	description += " Our people would be safe with the mighty army of " + annexerName + " and we could possibly flourish with their established economy. Or we could refuse the union which would surely lead to war, but maybe we can hold them off!\"";
 	annexEvent.descriptions.push_back(description);
 	annexEvent.picture = "GFX_report_event_hitler_parade";
@@ -206,7 +206,7 @@ void HoI4::Events::createAnnexEvent(const HoI4::Country& annexer, const HoI4::Co
 	refusedEvent.type = "country_event";
 	refusedEvent.id = "NFEvents." + to_string(nationalFocusEventNumber + 2);
 	refusedEvent.title = "\"" + annexedName + " Refuses!\"";
-	refusedEvent.descriptions.push_back("desc = \"" + annexedName + " Refused our proposed union! This is an insult to us that cannot go unanswered!\"");
+	refusedEvent.descriptions.push_back("= \"" + annexedName + " Refused our proposed union! This is an insult to us that cannot go unanswered!\"");
 	refusedEvent.picture = "GFX_report_event_german_troops";
 	refusedEvent.majorEvent = false;
 	refusedEvent.triggeredOnly = true;
@@ -227,7 +227,7 @@ void HoI4::Events::createAnnexEvent(const HoI4::Country& annexer, const HoI4::Co
 	acceptedEvent.type = "country_event";
 	acceptedEvent.id = "NFEvents." + to_string(nationalFocusEventNumber + 1);
 	acceptedEvent.title = "\"" + annexedName + " accepts!\"";
-	acceptedEvent.descriptions.push_back("desc = \"" + annexedName + " accepted our proposed union, their added strength will push us to greatness!\"");
+	acceptedEvent.descriptions.push_back("= \"" + annexedName + " accepted our proposed union, their added strength will push us to greatness!\"");
 	acceptedEvent.picture = "GFX_report_event_german_speech";
 	acceptedEvent.majorEvent = false;
 	acceptedEvent.triggeredOnly = true;
@@ -306,7 +306,7 @@ void HoI4::Events::createSudetenEvent(
 	sudetenEvent.type = "country_event";
 	sudetenEvent.id = "NFEvents." + to_string(nationalFocusEventNumber);
 	sudetenEvent.title = annexerName + " Demands " + annexedName + "!";
-	std::string description = "desc = \"" + annexerName + " has recently been making claims to our bordering states, saying that these states are full of " + annexerAdjctive + " people and that the territory should be given to them. Although it ";
+	std::string description = "= \"" + annexerName + " has recently been making claims to our bordering states, saying that these states are full of " + annexerAdjctive + " people and that the territory should be given to them. Although it ";
 	description += "is true that recently our neighboring states have had an influx of " + annexerAdjctive + " people in the recent years, we cannot give up our lands because a few " + annexerAdjctive + " settled down in our land. ";
 	description += "In response " + annexerName + " has called for a conference, demanding their territory in exchange for peace. How do we resond? ";
 	description += " Our people would be safe with the mighty army of " + annexerName + " and we could possibly flourish with their established economy. Or we could refuse the union which would surely lead to war, but maybe we can hold them off!\"";
@@ -366,7 +366,7 @@ void HoI4::Events::createSudetenEvent(
 	refusedEvent.type = "country_event";
 	refusedEvent.id = "NFEvents." + to_string(nationalFocusEventNumber + 2);
 	refusedEvent.title = "\"" + annexedName + " Refuses!\"";
-	refusedEvent.descriptions.push_back("desc = \"" + annexedName + " Refused our proposed proposition! This is an insult to us that cannot go unanswered!\"");
+	refusedEvent.descriptions.push_back("= \"" + annexedName + " Refused our proposed proposition! This is an insult to us that cannot go unanswered!\"");
 	refusedEvent.picture = "GFX_report_event_german_troops";
 	refusedEvent.majorEvent = false;
 	refusedEvent.triggeredOnly = true;
@@ -387,7 +387,7 @@ void HoI4::Events::createSudetenEvent(
 	acceptedEvent.type = "country_event";
 	acceptedEvent.id = "NFEvents." + to_string(nationalFocusEventNumber + 1);
 	acceptedEvent.title = "\"" + annexedName + " accepts!\"";
-	acceptedEvent.descriptions.push_back("desc = \"" + annexedName + " accepted our proposed demands, the added lands will push us to greatness!\"");
+	acceptedEvent.descriptions.push_back("= \"" + annexedName + " accepted our proposed demands, the added lands will push us to greatness!\"");
 	acceptedEvent.picture = "GFX_report_event_german_speech";
 	acceptedEvent.majorEvent = false;
 	acceptedEvent.triggeredOnly = true;
@@ -428,7 +428,7 @@ void HoI4::Events::createTradeEvent(const HoI4::Country& leader, const HoI4::Cou
 	tradeIncidentEvent.type = "country_event";
 	tradeIncidentEvent.id = "NFEvents." + std::to_string(nationalFocusEventNumber++);
 	tradeIncidentEvent.title = "\"Trade Incident\"";
-	tradeIncidentEvent.descriptions.push_back("desc = \"One of our convoys was sunk by " + aggressorName + "\"");
+	tradeIncidentEvent.descriptions.push_back("= \"One of our convoys was sunk by " + aggressorName + "\"");
 	tradeIncidentEvent.picture = "GFX_report_event_chinese_soldiers_fighting";
 	tradeIncidentEvent.majorEvent = false;
 	tradeIncidentEvent.triggeredOnly = true;
@@ -480,7 +480,7 @@ void HoI4::Events::addMinisterRevolutionEvents(const std::set<std::string>& majo
 		addPopularity.title = "conv.political." + std::to_string(politicalEventNumber) + ".t";
 		HoI4Localisation::copyEventLocalisations(ideology + "_add_popularity.t", addPopularity.title);
 		std::string description = "conv.political." + std::to_string(politicalEventNumber) + ".d";
-		addPopularity.descriptions.push_back("desc = " + description);
+		addPopularity.descriptions.push_back("= " + description);
 		HoI4Localisation::copyEventLocalisations(ideology + "_add_popularity.d", description);
 		addPopularity.picture = getIdeologicalPicture(ideology);
 		addPopularity.majorEvent = false;
@@ -518,7 +518,7 @@ void HoI4::Events::addMinisterRevolutionEvents(const std::set<std::string>& majo
 		militaryDefections.title = "conv.political." + std::to_string(politicalEventNumber) + ".t";
 		HoI4Localisation::copyEventLocalisations(ideology + "_military_defections.t", militaryDefections.title);
 		std::string description2 = "conv.political." + std::to_string(politicalEventNumber) + ".d";
-		militaryDefections.descriptions.push_back("desc = " + description2);
+		militaryDefections.descriptions.push_back("= " + description2);
 		HoI4Localisation::copyEventLocalisations(ideology + "_military_defections.d", description2);
 		militaryDefections.picture = getIdeologicalPicture(ideology);
 		militaryDefections.majorEvent = false;
@@ -567,7 +567,7 @@ void HoI4::Events::addDemocraticMinisterRevolutionEvents(const std::set<std::str
 	opposition.title = "conv.political." + std::to_string(politicalEventNumber) + ".t";
 	HoI4Localisation::copyEventLocalisations("democratic_opposition_forming.t", opposition.title);
 	std::string description = "conv.political." + std::to_string(politicalEventNumber) + ".d";
-	opposition.descriptions.push_back("desc = " + description);
+	opposition.descriptions.push_back("= " + description);
 	HoI4Localisation::copyEventLocalisations("democratic_opposition_forming.d", description);
 	opposition.picture = getIdeologicalPicture("democratic");
 	opposition.majorEvent = false;
@@ -607,7 +607,7 @@ void HoI4::Events::addDemocraticMinisterRevolutionEvents(const std::set<std::str
 	callForElections.title = "conv.political." + to_string(politicalEventNumber) + ".t";
 	HoI4Localisation::copyEventLocalisations("democratic_call_for_elections.t", callForElections.title);
 	std::string description2 = "conv.political." + to_string(politicalEventNumber) + ".d";
-	callForElections.descriptions.push_back("desc = " + description2);
+	callForElections.descriptions.push_back("= " + description2);
 	HoI4Localisation::copyEventLocalisations("democratic_call_for_elections.d", description2);
 	callForElections.picture = getIdeologicalPicture("democratic");
 	callForElections.majorEvent = false;
@@ -657,7 +657,7 @@ void HoI4::Events::addFiftyPercentEvents(const std::set<std::string>& majorIdeol
 		fiftyPercentEvent.title = "conv.political." + std::to_string(politicalEventNumber) + ".t";
 		HoI4Localisation::copyEventLocalisations(ideology + "_fifty_percent.t", fiftyPercentEvent.title);
 		std::string description = "conv.political." + std::to_string(politicalEventNumber) + ".d";
-		fiftyPercentEvent.descriptions.push_back("desc = " + description);
+		fiftyPercentEvent.descriptions.push_back("= " + description);
 		HoI4Localisation::copyEventLocalisations(ideology + "_fifty_percent.d", description);
 		fiftyPercentEvent.picture = getIdeologicalPicture(ideology);
 		fiftyPercentEvent.majorEvent = false;
@@ -715,7 +715,7 @@ void HoI4::Events::addRevolutionEvents(const std::set<std::string>& majorIdeolog
 		revolutionEvent.title = "conv.political." + std::to_string(politicalEventNumber) + ".t";
 		HoI4Localisation::copyEventLocalisations(ideology + "_revolution_event.t", revolutionEvent.title);
 		std::string description = "conv.political." + std::to_string(politicalEventNumber) + ".d";
-		revolutionEvent.descriptions.push_back("desc = " + description);
+		revolutionEvent.descriptions.push_back("= " + description);
 		HoI4Localisation::copyEventLocalisations(ideology + "_revolution_event.d", description);
 		revolutionEvent.picture = getIdeologicalPicture(ideology);
 		revolutionEvent.majorEvent = false;
@@ -798,7 +798,7 @@ void HoI4::Events::addSuppressedEvents(const std::set<std::string>& majorIdeolog
 		suppressedEvent.title = "conv.political." + std::to_string(politicalEventNumber) + ".t";
 		HoI4Localisation::copyEventLocalisations(ideology + "_suppressed_event.t", suppressedEvent.title);
 		std::string description = "conv.political." + std::to_string(politicalEventNumber) + ".d";
-		suppressedEvent.descriptions.push_back("desc = " + description);
+		suppressedEvent.descriptions.push_back("= " + description);
 		HoI4Localisation::copyEventLocalisations(ideology + "_suppressed_event.d", description);
 		suppressedEvent.picture = getIdeologicalPicture(ideology);
 		suppressedEvent.majorEvent = false;
@@ -844,7 +844,7 @@ void HoI4::Events::addSuppressedEvents(const std::set<std::string>& majorIdeolog
 			{
 				continue;
 			}
-			std::string description = "desc = {\n";
+			std::string description = "= {\n";
 			description += "		text = political." + std::to_string(politicalEventNumber) + ".d_" + ideology + "\n";
 			description += "		trigger = { has_government = " + ideology + " }\n";
 			description += "	}";
@@ -927,7 +927,7 @@ void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& maj
 			warJustification.type = "country_event";
 			warJustification.id = "war_justification." + std::to_string(i);
 			warJustification.title = "war_justification." + std::to_string(i) + ".t";
-			warJustification.descriptions.push_back("desc = war_justification." + std::to_string(i) + ".d");
+			warJustification.descriptions.push_back("= war_justification." + std::to_string(i) + ".d");
 			warJustification.picture = "GFX_report_event_iww_demonstration";
 			warJustification.majorEvent = false;
 			warJustification.triggeredOnly = true;
@@ -955,7 +955,7 @@ void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& maj
 			warJustification2.type = "country_event";
 			warJustification2.id = "war_justification." + std::to_string(200 + i);
 			warJustification2.title = "war_justification." + std::to_string(200 + i) + ".t";
-			warJustification2.descriptions.push_back("desc = war_justification." + std::to_string(200 + i) + ".d");
+			warJustification2.descriptions.push_back("= war_justification." + std::to_string(200 + i) + ".d");
 			warJustification2.picture = "GFX_report_event_iww_demonstration";
 			warJustification2.majorEvent = false;
 			warJustification2.triggeredOnly = true;
@@ -976,7 +976,7 @@ void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& maj
 	wargoalExpired.type = "country_event";
 	wargoalExpired.id = "war_justification.301";
 	wargoalExpired.title = "war_justification.301.t";
-	wargoalExpired.descriptions.push_back("desc = war_justification.301.d");
+	wargoalExpired.descriptions.push_back("= war_justification.301.d");
 	wargoalExpired.picture = "GFX_report_event_iww_demonstration";
 	wargoalExpired.majorEvent = false;
 	wargoalExpired.triggeredOnly = true;
@@ -1043,7 +1043,7 @@ void HoI4::Events::addPartyChoiceEvent(
 	partyChoiceEvent.title = "election." + std::to_string(electionEventNumber) + ".t";
 	HoI4Localisation::copyEventLocalisations("party_choice.t", partyChoiceEvent.title);
 	std::string description = "election." + std::to_string(electionEventNumber) + ".d";
-	partyChoiceEvent.descriptions.push_back("desc = " + description);
+	partyChoiceEvent.descriptions.push_back("= " + description);
 	HoI4Localisation::copyEventLocalisations("party_choice.d", description);
 	partyChoiceEvent.picture = "GFX_report_event_usa_election_generic";
 	partyChoiceEvent.triggeredOnly = true;
