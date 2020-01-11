@@ -74,4 +74,5 @@ HoI4::Event::Event(const std::string& theType, std::istream& theStream):
 	);
 
 	parseStream(theStream);
+	clearRegisteredKeywords();
 }

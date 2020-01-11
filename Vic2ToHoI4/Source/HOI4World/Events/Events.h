@@ -25,7 +25,6 @@ class Events: commonItems::parser
 	public:
 		Events() = default;
 
-		void output() const;
 		void createFactionEvents(std::shared_ptr<HoI4::Country> Leader, std::shared_ptr<HoI4::Country> newAlly);
 		void createAnnexEvent(std::shared_ptr<HoI4::Country> Annexer, std::shared_ptr<HoI4::Country> Annexed);
 		void createSudetenEvent(std::shared_ptr<HoI4::Country> Annexer, std::shared_ptr<HoI4::Country> Annexed, const std::vector<int>& claimedStates);
@@ -39,18 +38,19 @@ class Events: commonItems::parser
 		virtual std::optional<int> getEventNumber(const std::string& eventName) const;
 
 		int getCurrentNationFocusEventNum() const { return nationalFocusEventNumber; }
+		const auto& getNationalFocusEvents() const { return nationalFocusEvents; }
+		const auto& getNewsEvents() const { return newsEvents; }
+		const auto& getPoliticalEvents() const { return politicalEvents; }
+		const auto& getWarJustificationEvents() const { return warJustificationEvents; }
+		const auto& getElectionsEvents() const { return electionEvents; }
+		const auto& getStabilityEvents() const { return stabilityEvents; }
+		const auto& getStrikesEvents() const { return strikesEvents; }
+		const auto& getMutinyEvents() const { return mutinyEvents; }
 
 
 	private:
 		Events(const Events&) = delete;
 		Events& operator=(const Events&) = delete;
-
-		void outputNationalFocusEvents() const;
-		void outputNewsEvents() const;
-		void outputPoliticalEvents() const;
-		void outputWarJustificationEvents() const;
-		void outputElectionEvents() const;
-		void outputStabilityEvents() const;
 
 		void addMinisterRevolutionEvents(const std::set<std::string>& majorIdeologies);
 		void addDemocraticMinisterRevolutionEvents(const std::set<std::string>& majorIdeologies);
