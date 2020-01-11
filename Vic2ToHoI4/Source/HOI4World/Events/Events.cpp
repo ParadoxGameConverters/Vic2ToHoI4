@@ -1029,7 +1029,12 @@ void HoI4::Events::importElectionEvents(const std::set<std::string>& majorIdeolo
 
 
 constexpr int tagAndDashSize = 4;
-void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag, const std::set<Vic2::Party, std::function<bool (const Vic2::Party&, const Vic2::Party&)>>& parties, HoI4::OnActions& onActions, const set<string>& majorIdeologies)
+void HoI4::Events::addPartyChoiceEvent(
+	const std::string& countryTag,
+	const std::set<Vic2::Party>& parties,
+	HoI4::OnActions& onActions,
+	const set<string>& majorIdeologies
+)
 {
 	Event partyChoiceEvent;
 
