@@ -2,7 +2,7 @@
 
 
 
-std::ofstream& HoI4::operator << (std::ofstream& out, const Event& theEvent)
+std::ostream& HoI4::operator << (std::ostream& out, const Event& theEvent)
 {
 	out << theEvent.type << " = {\n";
 	out << "	id = " << theEvent.id << "\n";

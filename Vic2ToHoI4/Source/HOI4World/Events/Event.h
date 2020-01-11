@@ -4,7 +4,7 @@
 
 
 #include "newParser.h"
-#include <fstream>
+#include <ostream>
 #include <string>
 #include <vector>
 
@@ -18,25 +18,21 @@ class Event: commonItems::parser
 	public:
 		Event() = default;
 		Event(const std::string& type, std::istream& theStream);
-		Event(const Event&) = default;
 
-		friend std::ofstream& operator << (std::ofstream& out, const Event& theEvent);
+		friend std::ostream& operator << (std::ostream& out, const Event& theEvent);
 
-		std::string type = "";
-		std::string id = "";
-		std::string title = "";
+		std::string type;
+		std::string id;
+		std::string title;
 		std::vector<std::string> descriptions;
-		std::string picture = "";
+		std::string picture;
 		bool majorEvent = false;
 		bool triggeredOnly = false;
 		bool hidden = false;
-		std::string trigger = "";
-		std::string meanTimeToHappen = "";
-		std::string immediate = "";
+		std::string trigger;
+		std::string meanTimeToHappen;
+		std::string immediate;
 		std::vector<std::string> options;
-
-	private:
-		Event& operator=(const Event&) = delete;
 };
 
 }

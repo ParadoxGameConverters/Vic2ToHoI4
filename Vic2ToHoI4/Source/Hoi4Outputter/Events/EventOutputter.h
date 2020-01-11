@@ -10,7 +10,7 @@
 
 namespace HoI4
 {
-std::ofstream& operator << (std::ofstream& out, const Event& theEvent);
+std::ostream& operator << (std::ostream& out, const Event& theEvent);
 }
 
 
