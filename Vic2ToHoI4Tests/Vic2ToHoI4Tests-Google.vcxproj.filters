@@ -584,6 +584,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventsOutputter.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Events</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventOption.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventOptionOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

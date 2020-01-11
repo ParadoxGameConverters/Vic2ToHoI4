@@ -68,8 +68,8 @@ HoI4::Event::Event(const std::string& theType, std::istream& theStream):
 	);
 	registerKeyword("option", [this](const std::string& unused, std::istream& theStream)
 		{
-			commonItems::stringOfObject optionString(theStream);
-			options.push_back(optionString.getString());
+			EventOption theOption(theStream);
+			options.push_back(theOption);
 		}
 	);
 

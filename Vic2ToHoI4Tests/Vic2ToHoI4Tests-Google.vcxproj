@@ -59,6 +59,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsOutputter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventOptionOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventsOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Hoi4CountryOutputter.cpp" />
@@ -92,6 +93,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Division.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\DivisionTemplate.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventOption.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Agreement.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Airforce.cpp" />

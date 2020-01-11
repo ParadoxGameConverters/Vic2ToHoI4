@@ -45,45 +45,42 @@ void HoI4::Events::createFactionEvents(const HoI4::Country& leader, const HoI4::
 	nfEvent.picture = "news_event_generic_sign_treaty1";
 	nfEvent.majorEvent = false;
 	nfEvent.triggeredOnly = true;
-	std::string yesOption = "= {\n";
-	yesOption += "		name = \"Yes\"\n";
+	EventOption yesOption;
+	yesOption.giveName("\"Yes\"");
 	if (leader.isInFaction())
 	{
-		yesOption += "		" + newAlly.getTag() + " = {\n";
-		yesOption += "			add_ai_strategy = {\n";
-		yesOption += "				type = alliance\n";
-		yesOption += "				id = \"" + leader.getTag() + "\"\n";
-		yesOption += "				value = 200\n";
-		yesOption += "			}\n";
-		yesOption += "			dismantle_faction = yes\n";
-		yesOption += "		}\n";
-		yesOption += "		if = {\n";
-		yesOption += "			limit = {\n";
-		yesOption += "				" + leader.getTag() + " = {\n";
-		yesOption += "					is_in_faction = no\n";
-		yesOption += "				}\n";
-		yesOption += "			}\n";
-		yesOption += "			" + leader.getTag() + " = {\n";
-		yesOption += "				create_faction = \"" + leaderName + "\"\n";
-		yesOption += "			}\n";
-		yesOption += "		}\n";
-		yesOption += "		" + leader.getTag() + " = {\n";
-		yesOption += "			add_to_faction = " + newAlly.getTag() + "\n";
-		yesOption += "		}\n";
+		std::string allyStrategy = newAlly.getTag() + " = {\n";
+		allyStrategy += "			add_ai_strategy = {\n";
+		allyStrategy += "				type = alliance\n";
+		allyStrategy += "				id = \"" + leader.getTag() + "\"\n";
+		allyStrategy += "				value = 200\n";
+		allyStrategy += "			}\n";
+		allyStrategy += "			dismantle_faction = yes\n";
+		allyStrategy += "		}";
+		yesOption.giveScriptBlock(std::move(allyStrategy));
+		std::string createFaction = "if = {\n";
+		createFaction += "			limit = {\n";
+		createFaction += "				" + leader.getTag() + " = {\n";
+		createFaction += "					is_in_faction = no\n";
+		createFaction += "				}\n";
+		createFaction += "			}\n";
+		createFaction += "			" + leader.getTag() + " = {\n";
+		createFaction += "				create_faction = \"" + leaderName + "\"\n";
+		createFaction += "			}\n";
+		createFaction += "		}";
+		yesOption.giveScriptBlock(std::move(createFaction));
+		std::string addToFaction = leader.getTag() + " = {\n";
+		addToFaction += "			add_to_faction = " + newAlly.getTag() + "\n";
+		addToFaction += "		}";
+		yesOption.giveScriptBlock(std::move(addToFaction));
 	}
-	yesOption += "		hidden_effect = {\n";
-	yesOption += "			news_event = { id = news." + to_string(newsEventNumber) + " }\n";
-	yesOption += "		}\n";
-	yesOption += "	}";
-	nfEvent.options.push_back(yesOption);
-	std::string noOption = "= {\n";
-	noOption += "		name = \"No\"\n";
-	noOption += "		ai_chance = { factor = 0 }\n";
-	noOption += "		hidden_effect = {\n";
-	noOption += "			news_event = { id = news." + to_string(newsEventNumber + 1) + " }\n";
-	noOption += "		}\n";
-	noOption += "	}";
-	nfEvent.options.push_back(noOption);
+	yesOption.giveHiddenEffect("\t\t\tnews_event = { id = news." + to_string(newsEventNumber) + " }\n");
+	nfEvent.giveOption(std::move(yesOption));
+	EventOption noOption;
+	noOption.giveName("\"No\"");
+	noOption.giveAiChance("= { factor = 0 }");
+	noOption.giveHiddenEffect("\t\t\tnews_event = { id = news." + to_string(newsEventNumber + 1) + " }\n");
+	nfEvent.giveOption(std::move(noOption));
 	nationalFocusEvents.push_back(nfEvent);
 
 	Event newsEventYes;
@@ -94,10 +91,9 @@ void HoI4::Events::createFactionEvents(const HoI4::Country& leader, const HoI4::
 	newsEventYes.picture = "news_event_generic_sign_treaty1";
 	newsEventYes.majorEvent = true;
 	newsEventYes.triggeredOnly = true;
-	std::string interestingOption = "= {\n";
-	interestingOption += "		name = \"Interesting\"\n";
-	interestingOption += "	}";
-	newsEventYes.options.push_back(interestingOption);
+	EventOption interestingOption;
+	interestingOption.giveName("\"Interesting\"");
+	newsEventYes.giveOption(std::move(interestingOption));
 	newsEvents.push_back(newsEventYes);
 
 	Event newsEventNo;
@@ -108,10 +104,9 @@ void HoI4::Events::createFactionEvents(const HoI4::Country& leader, const HoI4::
 	newsEventNo.picture = "news_event_generic_sign_treaty1";
 	newsEventNo.majorEvent = true;
 	newsEventNo.triggeredOnly = true;
-	interestingOption = "= {\n";
-	interestingOption += "		name = \"Interesting\"\n";
-	interestingOption += "	}";
-	newsEventNo.options.push_back(interestingOption);
+	EventOption interestingOption2;
+	interestingOption2.giveName("\"Interesting\"");
+	newsEventNo.giveOption(std::move(interestingOption2));
 	newsEvents.push_back(newsEventNo);
 
 	newsEventNumber += 2;
@@ -155,49 +150,52 @@ void HoI4::Events::createAnnexEvent(const HoI4::Country& annexer, const HoI4::Co
 	annexEvent.majorEvent = false;
 	annexEvent.triggeredOnly = true;
 
-	std::string acceptOption = "= {\n";
-	acceptOption += "		name = \"We accept the Union\"\n";
-	acceptOption += "		ai_chance = {\n";
-	acceptOption += "			base = 30\n";
-	acceptOption += "			modifier = {\n";
-	acceptOption += "				add = -15\n";
-	acceptOption += "				" + annexed.getTag() + " = { has_army_size = { size < 40 } }\n";
-	acceptOption += "			}\n";
-	acceptOption += "			modifier = {\n";
-	acceptOption += "				add = 45\n";
-	acceptOption += "				" + annexed.getTag() + " = { has_army_size = { size > 39 } }\n";
-	acceptOption += "			}\n";
-	acceptOption += "		}\n";
-	acceptOption += "		" + annexed.getTag() + " = {\n";
-	acceptOption += "			country_event = { hours = 2 id = NFEvents." + to_string(nationalFocusEventNumber + 1) + " }\n";//+1 accept
-	acceptOption += "		}\n";
-	acceptOption += "		custom_effect_tooltip = GAME_OVER_TT\n";
-	acceptOption += "	}";
-	annexEvent.options.push_back(acceptOption);
+	EventOption acceptOption;
+	acceptOption.giveName("We accept the Union");
+	std::string acceptAiChance = "\n";
+	acceptAiChance += "			base = 30\n";
+	acceptAiChance += "			modifier = {\n";
+	acceptAiChance += "				add = -15\n";
+	acceptAiChance += "				" + annexed.getTag() + " = { has_army_size = { size < 40 } }\n";
+	acceptAiChance += "			}\n";
+	acceptAiChance += "			modifier = {\n";
+	acceptAiChance += "				add = 45\n";
+	acceptAiChance += "				" + annexed.getTag() + " = { has_army_size = { size > 39 } }\n";
+	acceptAiChance += "			}\n";
+	acceptOption.giveAiChance(std::move(acceptAiChance));
+	std::string acceptNewsEvent = "		" + annexed.getTag() + " = {\n";
+	acceptNewsEvent += "			country_event = { hours = 2 id = NFEvents." + to_string(nationalFocusEventNumber + 1) + " }\n";//+1 accept
+	acceptNewsEvent += "		}\n";
+	acceptNewsEvent += "		custom_effect_tooltip = GAME_OVER_TT\n";
+	acceptNewsEvent += "	}";
+	acceptOption.giveScriptBlock(std::move(acceptNewsEvent));
+	annexEvent.giveOption(std::move(acceptOption));
 
-	std::string refuseOption = "= {\n";
-	refuseOption += "		name = \"We Refuse!\"\n";
-	refuseOption += "		ai_chance = {\n";
-	refuseOption += "			base = 10\n";
-	refuseOption += "\n";
-	refuseOption += "			modifier = {\n";
-	refuseOption += "				factor = 0\n";
-	refuseOption += "				" + annexed.getTag() + " = { has_army_size = { size > 39 } }\n";
-	refuseOption += "			}\n";
-	refuseOption += "			modifier = {\n";
-	refuseOption += "				add = 20\n";
-	refuseOption += "				" + annexed.getTag() + " = { has_army_size = { size < 30 } }\n";
-	refuseOption += "			}\n";
-	refuseOption += "		}\n";
-	refuseOption += "		" + annexed.getTag() + " = {\n";
-	refuseOption += "			country_event = { hours = 2 id = NFEvents." + to_string(nationalFocusEventNumber + 2) + " }\n";//+2 refuse
-	refuseOption += "			if = {\n";
-	refuseOption += "				limit = { is_in_faction_with = " + annexed.getTag() + " }\n";
-	refuseOption += "				remove_from_faction = " + annexed.getTag() + "\n";
-	refuseOption += "			}\n";
-	refuseOption += "		}\n";
-	refuseOption += "	}";
-	annexEvent.options.push_back(refuseOption);
+	EventOption refuseOption;
+	refuseOption.giveName("We Refuse!");
+	std::string refuseAiChance = "n";
+	refuseAiChance += "			base = 10\n";
+	refuseAiChance += "\n";
+	refuseAiChance += "			modifier = {\n";
+	refuseAiChance += "				factor = 0\n";
+	refuseAiChance += "				" + annexed.getTag() + " = { has_army_size = { size > 39 } }\n";
+	refuseAiChance += "			}\n";
+	refuseAiChance += "			modifier = {\n";
+	refuseAiChance += "				add = 20\n";
+	refuseAiChance += "				" + annexed.getTag() + " = { has_army_size = { size < 30 } }\n";
+	refuseAiChance += "			}\n";
+	refuseAiChance += "\t\t";
+	acceptOption.giveAiChance(std::move(refuseAiChance));
+	std::string removeFromFaction = "		" + annexed.getTag() + " = {\n";
+	removeFromFaction += "			country_event = { hours = 2 id = NFEvents." + to_string(nationalFocusEventNumber + 2) + " }\n";//+2 refuse
+	removeFromFaction += "			if = {\n";
+	removeFromFaction += "				limit = { is_in_faction_with = " + annexed.getTag() + " }\n";
+	removeFromFaction += "				remove_from_faction = " + annexed.getTag() + "\n";
+	removeFromFaction += "			}\n";
+	removeFromFaction += "		}\n";
+	removeFromFaction += "	}";
+	refuseOption.giveScriptBlock(std::move(removeFromFaction));
+	annexEvent.giveOption(std::move(refuseOption));
 
 	nationalFocusEvents.push_back(annexEvent);
 
@@ -211,14 +209,15 @@ void HoI4::Events::createAnnexEvent(const HoI4::Country& annexer, const HoI4::Co
 	refusedEvent.majorEvent = false;
 	refusedEvent.triggeredOnly = true;
 
-	std::string refusedOption = "= {\n";
-	refusedOption += "		name = \"It's time for war\"\n";
-	refusedOption += "		create_wargoal = {\n";
-	refusedOption += "			type = annex_everything\n";
-	refusedOption += "			target = " + annexed.getTag() + "\n";
-	refusedOption += "		}\n";
-	refusedOption += "	}";
-	refusedEvent.options.push_back(refusedOption);
+	EventOption refusedOption;
+	refusedOption.giveName("\"It's time for war\"");
+	std::string wargoal = "create_wargoal = {\n";
+	wargoal += "			type = annex_everything\n";
+	wargoal += "			target = " + annexed.getTag() + "\n";
+	wargoal += "		}\n";
+	wargoal += "	}";
+	refusedOption.giveScriptBlock(std::move(wargoal));
+	refusedEvent.giveOption(std::move(refusedOption));
 
 	nationalFocusEvents.push_back(refusedEvent);
 
@@ -232,25 +231,23 @@ void HoI4::Events::createAnnexEvent(const HoI4::Country& annexer, const HoI4::Co
 	acceptedEvent.majorEvent = false;
 	acceptedEvent.triggeredOnly = true;
 
-	std::string acceptedOption = "= {\n";
-	acceptedOption += "		name = \"A stronger Union!\"\n";
+	EventOption acceptedOption;
+	acceptedOption.giveName("\"A stronger Union!\"");
 	for (auto state: annexed.getStates())
 	{
-		acceptedOption += "		" + to_string(state) + " = {\n";
-		acceptedOption += "			if = {\n";
-		acceptedOption += "				limit = { is_owned_by = " + annexed.getTag() + " }\n";
-		acceptedOption += "				add_core_of = " + annexed.getTag() + "\n";
-		acceptedOption += "			}\n";
-		acceptedOption += "		}\n";
-
+		std::string addCore = "		" + to_string(state) + " = {\n";
+		addCore += "			if = {\n";
+		addCore += "				limit = { is_owned_by = " + annexed.getTag() + " }\n";
+		addCore += "				add_core_of = " + annexed.getTag() + "\n";
+		addCore += "			}\n";
+		addCore += "		}";
+		acceptedOption.giveScriptBlock(std::move(addCore));
 	}
-	acceptedOption += "\n";
-	acceptedOption += "		annex_country = { target = " + annexed.getTag() + " transfer_troops = yes }\n";
-	acceptedOption += "		add_political_power = 50\n";
-	acceptedOption += "		add_named_threat = { threat = 2 name = \"" + annexerName + " annexed " + annexedName + "\" }\n";
-	acceptedOption += "		set_country_flag = " + annexed.getTag() + "_annexed\n";
-	acceptedOption += "	}";
-	acceptedEvent.options.push_back(acceptedOption);
+	acceptedOption.giveScriptBlock("		annex_country = { target = " + annexed.getTag() + " transfer_troops = yes }");
+	acceptedOption.giveScriptBlock("		add_political_power = 50");
+	acceptedOption.giveScriptBlock("		add_named_threat = { threat = 2 name = \"" + annexerName + " annexed " + annexedName + "\" }");
+	acceptedOption.giveScriptBlock("		set_country_flag = " + annexed.getTag() + "_annexed");
+	acceptedEvent.giveOption(std::move(acceptedOption));
 
 	nationalFocusEvents.push_back(acceptedEvent);
 
@@ -315,49 +312,53 @@ void HoI4::Events::createSudetenEvent(
 	sudetenEvent.majorEvent = false;
 	sudetenEvent.triggeredOnly = true;
 
-	std::string acceptOption = "= {\n";
-	acceptOption += "		name = \"We Accept\"\n";
-	acceptOption += "		ai_chance = {\n";
-	acceptOption += "			base = 30\n";
-	acceptOption += "			modifier = {\n";
-	acceptOption += "				add = -15\n";
-	acceptOption += "				" + annexer.getTag() + " = { has_army_size = { size < 40 } }\n";
-	acceptOption += "			}\n";
-	acceptOption += "			modifier = {\n";
-	acceptOption += "				add = 45\n";
-	acceptOption += "				" + annexer.getTag() + " = { has_army_size = { size > 39 } }\n";
-	acceptOption += "			}\n";
-	acceptOption += "		}\n";
-	acceptOption += "		" + annexer.getTag() + " = {\n";
-	acceptOption += "			country_event = { hours = 2 id = NFEvents." + to_string(nationalFocusEventNumber + 1) + " }\n";
-	acceptOption += "		}\n";
-	acceptOption += "	}";
-	sudetenEvent.options.push_back(acceptOption);
+	EventOption acceptOption;
+	acceptOption.giveName("\"We Accept\"");
+	std::string acceptAiChance = " = {\n";
+	acceptAiChance += "			base = 30\n";
+	acceptAiChance += "			modifier = {\n";
+	acceptAiChance += "				add = -15\n";
+	acceptAiChance += "				" + annexer.getTag() + " = { has_army_size = { size < 40 } }\n";
+	acceptAiChance += "			}\n";
+	acceptAiChance += "			modifier = {\n";
+	acceptAiChance += "				add = 45\n";
+	acceptAiChance += "				" + annexer.getTag() + " = { has_army_size = { size > 39 } }\n";
+	acceptAiChance += "			}\n";
+	acceptAiChance += "		}";
+	acceptOption.giveAiChance(std::move(acceptAiChance));
+	std::string acceptNewsEvent = "		" + annexer.getTag() + " = {\n";
+	acceptNewsEvent += "			country_event = { hours = 2 id = NFEvents." + to_string(nationalFocusEventNumber + 1) + " }\n";
+	acceptNewsEvent += "		}\n";
+	acceptNewsEvent += "	}";
+	acceptOption.giveScriptBlock(std::move(acceptNewsEvent));
+	sudetenEvent.giveOption(std::move(acceptOption));
 
-	std::string refuseOption = "= {\n";
-	refuseOption += "		name = \"We Refuse!\"\n";
-	refuseOption += "		ai_chance = {\n";
-	refuseOption += "			base = 10\n";
-	refuseOption += "\n";
-	refuseOption += "			modifier = {\n";
-	refuseOption += "				factor = 0\n";
-	refuseOption += "				" + annexer.getTag() + " = { has_army_size = { size > 39 } }\n";
-	refuseOption += "			}\n";
-	refuseOption += "			modifier = {\n";
-	refuseOption += "				add = 20\n";
-	refuseOption += "				" + annexer.getTag() + " = { has_army_size = { size < 30 } }\n";
-	refuseOption += "			}\n";
-	refuseOption += "		}\n";
-	refuseOption += "		" + annexer.getTag() + " = {\n";
-	//refuseOption += "			add_opinion_modifier = { target = ROOT modifier = " + annexer->getTag() + "_anschluss_rejected }\n";
-	refuseOption += "			country_event = { hours = 2 id = NFEvents." + to_string(nationalFocusEventNumber + 2) + " }\n";
-	refuseOption += "			if = {\n";
-	refuseOption += "				limit = { is_in_faction_with = " + annexed.getTag() + " }\n";
-	refuseOption += "				remove_from_faction = " + annexed.getTag() + "\n";
-	refuseOption += "			}\n";
-	refuseOption += "		}\n";
-	refuseOption += "	}";
-	sudetenEvent.options.push_back(refuseOption);
+	EventOption refuseOption;
+	refuseOption.giveName("\"We Refuse!\"");
+	std::string refuseAiChance = " = {\n";
+	refuseAiChance += "			base = 10\n";
+	refuseAiChance += "\n";
+	refuseAiChance += "			modifier = {\n";
+	refuseAiChance += "				factor = 0\n";
+	refuseAiChance += "				" + annexer.getTag() + " = { has_army_size = { size > 39 } }\n";
+	refuseAiChance += "			}\n";
+	refuseAiChance += "			modifier = {\n";
+	refuseAiChance += "				add = 20\n";
+	refuseAiChance += "				" + annexer.getTag() + " = { has_army_size = { size < 30 } }\n";
+	refuseAiChance += "			}\n";
+	refuseAiChance += "		}";
+	refuseOption.giveAiChance(std::move(refuseAiChance));
+	std::string removeFromFaction = annexer.getTag() + " = {\n";
+	//removeFromFaction += "			add_opinion_modifier = { target = ROOT modifier = " + annexer->getTag() + "_anschluss_rejected }\n";
+	removeFromFaction += "			country_event = { hours = 2 id = NFEvents." + to_string(nationalFocusEventNumber + 2) + " }\n";
+	removeFromFaction += "			if = {\n";
+	removeFromFaction += "				limit = { is_in_faction_with = " + annexed.getTag() + " }\n";
+	removeFromFaction += "				remove_from_faction = " + annexed.getTag() + "\n";
+	removeFromFaction += "			}\n";
+	removeFromFaction += "		}\n";
+	removeFromFaction += "	}";
+	refuseOption.giveScriptBlock(std::move(removeFromFaction));
+	sudetenEvent.giveOption(std::move(refuseOption));
 
 	nationalFocusEvents.push_back(sudetenEvent);
 
@@ -371,14 +372,15 @@ void HoI4::Events::createSudetenEvent(
 	refusedEvent.majorEvent = false;
 	refusedEvent.triggeredOnly = true;
 
-	std::string refusedOption = "= {\n";
-	refusedOption += "		name = \"It's time for war\"\n";
-	refusedOption += "		create_wargoal = {\n";
-	refusedOption += "				type = annex_everything\n";
-	refusedOption += "			target = " + annexed.getTag() + "\n";
-	refusedOption += "		}\n";
-	refusedOption += "	}";
-	refusedEvent.options.push_back(refusedOption);
+	EventOption refusedOption;
+	refusedOption.giveName("\"It's time for war\"");
+	std::string createWargoal = "create_wargoal = {\n";
+	createWargoal += "				type = annex_everything\n";
+	createWargoal += "			target = " + annexed.getTag() + "\n";
+	createWargoal += "		}\n";
+	createWargoal += "	}";
+	refusedOption.giveScriptBlock(std::move(createWargoal));
+	refusedEvent.giveOption(std::move(refusedOption));
 
 	nationalFocusEvents.push_back(refusedEvent);
 
@@ -392,16 +394,15 @@ void HoI4::Events::createSudetenEvent(
 	acceptedEvent.majorEvent = false;
 	acceptedEvent.triggeredOnly = true;
 
-	std::string acceptedOption = "= {\n";
-	acceptedOption += "		name = \"A stronger Union!\"\n";
+	EventOption acceptedOption;
+	acceptedOption.giveName("\"A stronger Union!\"");
 	for (unsigned int i = 0; i <= 1 && i < claimedStates.size(); i++)
 	{
-		acceptedOption += "		" + to_string(claimedStates[i]) + " = { add_core_of = " + annexer.getTag() + " }\n";
-		acceptedOption += "		" + annexer.getTag() + " = { transfer_state =  " + to_string(claimedStates[i]) + " }\n";
+		acceptedOption.giveScriptBlock(to_string(claimedStates[i]) + " = { add_core_of = " + annexer.getTag() + " }");
+		acceptedOption.giveScriptBlock(annexer.getTag() + " = { transfer_state =  " + to_string(claimedStates[i]) + " }");
 	}
-	acceptedOption += "		set_country_flag = " + annexed.getTag() + "_demanded\n";
-	acceptedOption += "	}";
-	acceptedEvent.options.push_back(acceptedOption);
+	acceptedOption.giveScriptBlock("set_country_flag = " + annexed.getTag() + "_demanded");
+	acceptedEvent.giveOption(std::move(acceptedOption));
 
 	nationalFocusEvents.push_back(acceptedEvent);
 
@@ -437,20 +438,20 @@ void HoI4::Events::createTradeEvent(const HoI4::Country& leader, const HoI4::Cou
 	tradeIncidentEvent.trigger += "		NOT = { has_country_flag = established_traders_activated }\n";
 	tradeIncidentEvent.trigger += "	}";
 
-	std::string option = "= {\n";
-	option += "		name = \"They will Pay!\"\n";
-	option += "		ai_chance = { factor = 85 }\n";
-	option += "		effect_tooltip = {\n";
-	option += "			" + leader.getTag() + " = {\n";
-	option += "				set_country_flag = established_traders_activated\n";
-	option += "				create_wargoal = {\n";
-	option += "					type = annex_everything\n";
-	option += "					target = " + greatPower.getTag() + "\n";
-	option += "				}\n";
-	option += "			}\n";
-	option += "		}\n";
-	option += "	}";
-	tradeIncidentEvent.options.push_back(option);
+	EventOption option;
+	option.giveName("\"They will Pay!\"");
+	option.giveAiChance("= { factor = 85 }");
+	std::string effectTooltip = "effect_tooltip = {\n";
+	effectTooltip += "			" + leader.getTag() + " = {\n";
+	effectTooltip += "				set_country_flag = established_traders_activated\n";
+	effectTooltip += "				create_wargoal = {\n";
+	effectTooltip += "					type = annex_everything\n";
+	effectTooltip += "					target = " + greatPower.getTag() + "\n";
+	effectTooltip += "				}\n";
+	effectTooltip += "			}\n";
+	effectTooltip += "		}";
+	option.giveScriptBlock(std::move(effectTooltip));
+	tradeIncidentEvent.giveOption(std::move(option));
 
 	nationalFocusEvents.push_back(tradeIncidentEvent);
 }
@@ -497,18 +498,17 @@ void HoI4::Events::addMinisterRevolutionEvents(const std::set<std::string>& majo
 		addPopularity.meanTimeToHappen += "			has_country_flag = " + ideology + "_popular_movement\n";
 		addPopularity.meanTimeToHappen += "		}\n";
 		addPopularity.meanTimeToHappen += "	}";
-		std::string optionA = "= {\n";
-		optionA += "		name = ";
+		EventOption addPopularityOptionA;
 		std::string optionName = "conv.political." + std::to_string(politicalEventNumber) + ".a";
 		HoI4Localisation::copyEventLocalisations(ideology + "_add_popularity.a", optionName);
-		optionA += optionName + "\n";
-		optionA += "		add_popularity = {\n";
-		optionA += "			ideology = " + ideology + "\n";
-		optionA += "			popularity = 0.05\n";
-		optionA += "		}\n";
-		optionA += "		add_stability = -0.05\n";
-		optionA += "	}";
-		addPopularity.options.push_back(optionA);
+		addPopularityOptionA.giveName(std::move(optionName));
+		std::string addPopularityEffect = "add_popularity = {\n";
+		addPopularityEffect += "			ideology = " + ideology + "\n";
+		addPopularityEffect += "			popularity = 0.05\n";
+		addPopularityEffect += "		}";
+		addPopularityOptionA.giveScriptBlock(std::move(addPopularityEffect));
+		addPopularityOptionA.giveScriptBlock("add_stability = -0.05");
+		addPopularity.giveOption(std::move(addPopularityOptionA));
 		politicalEvents.push_back(addPopularity);
 		politicalEventNumber++;
 
@@ -536,18 +536,17 @@ void HoI4::Events::addMinisterRevolutionEvents(const std::set<std::string>& majo
 		militaryDefections.meanTimeToHappen += "			has_country_flag = " + ideology + "_popular_movement\n";
 		militaryDefections.meanTimeToHappen += "		}\n";
 		militaryDefections.meanTimeToHappen += "	}";
-		optionA = "= {\n";
-		optionA += "		name = ";
+		EventOption militaryDefectionsOptionA;
 		optionName = "conv.political." + std::to_string(politicalEventNumber) + ".a";
 		HoI4Localisation::copyEventLocalisations(ideology + "_military_defections.a", optionName);
-		optionA += optionName + "\n";
-		optionA += "		add_popularity = {\n";
-		optionA += "			ideology = " + ideology + "\n";
-		optionA += "			popularity = 0.05\n";
-		optionA += "		}\n";
-		optionA += "		add_ideas = " + ideology + "_partisans_recruiting\n";
-		optionA += "	}";
-		militaryDefections.options.push_back(optionA);
+		militaryDefectionsOptionA.giveName(std::move(optionName));
+		std::string militaryDefectionsAddPopularity = "add_popularity = {\n";
+		militaryDefectionsAddPopularity += "			ideology = " + ideology + "\n";
+		militaryDefectionsAddPopularity += "			popularity = 0.05\n";
+		militaryDefectionsAddPopularity += "		}";
+		militaryDefectionsOptionA.giveScriptBlock(std::move(militaryDefectionsAddPopularity));
+		militaryDefectionsOptionA.giveScriptBlock("add_ideas = " + ideology + "_partisans_recruiting");
+		militaryDefections.giveOption(std::move(militaryDefectionsOptionA));
 		politicalEvents.push_back(militaryDefections);
 		politicalEventNumber++;
 	}
@@ -585,19 +584,18 @@ void HoI4::Events::addDemocraticMinisterRevolutionEvents(const std::set<std::str
 	opposition.meanTimeToHappen += "			has_country_flag = democracy_popular_movement\n";
 	opposition.meanTimeToHappen += "		}\n";
 	opposition.meanTimeToHappen += "	}";
-	std::string optionA = "= {\n";
-	optionA += "		name = ";
+	EventOption oppositionOptionA;
 	std::string optionName = "conv.political." + std::to_string(politicalEventNumber) + ".a";
-	optionA += optionName + "\n";
 	HoI4Localisation::copyEventLocalisations("democratic_opposition_forming.a", optionName);
-	optionA += "		add_popularity = {\n";
-	optionA += "			ideology = democratic\n";
-	optionA += "			popularity = 0.05\n";
-	optionA += "		}\n";
-	optionA += "		add_stability = -0.05\n";
-	optionA += "		set_country_flag = democracy_opposition_formed\n";
-	optionA += "	}";
-	opposition.options.push_back(optionA);
+	oppositionOptionA.giveName(std::move(optionName));
+	std::string addPopularity = "add_popularity = {\n";
+	addPopularity += "			ideology = democratic\n";
+	addPopularity += "			popularity = 0.05\n";
+	addPopularity += "		}";
+	oppositionOptionA.giveScriptBlock(std::move(addPopularity));
+	oppositionOptionA.giveScriptBlock("add_stability = -0.05");
+	oppositionOptionA.giveScriptBlock("set_country_flag = democracy_opposition_formed");
+	opposition.giveOption(std::move(oppositionOptionA));
 	politicalEvents.push_back(opposition);
 	politicalEventNumber++;
 
@@ -621,22 +619,18 @@ void HoI4::Events::addDemocraticMinisterRevolutionEvents(const std::set<std::str
 	callForElections.meanTimeToHappen = "= {\n";
 	callForElections.meanTimeToHappen += "		days = 150\n";
 	callForElections.meanTimeToHappen += "	}";
-	optionA = "= {\n";
-	optionA += "		name = ";
+	EventOption callForElectionsOptionA;
 	optionName = "conv.political." + to_string(politicalEventNumber) + ".a";
-	optionA += optionName + "\n";
 	HoI4Localisation::copyEventLocalisations("democratic_call_for_elections.a", optionName);
-	optionA += "	}";
-	callForElections.options.push_back(optionA);
-	std::string optionB = "= {\n";
-	optionB += "		name = ";
+	callForElectionsOptionA.giveName(std::move(optionName));
+	callForElections.giveOption(std::move(callForElectionsOptionA));
+	EventOption callForElectionsOptionB;
 	optionName = "conv.political." + to_string(politicalEventNumber) + ".b";
-	optionB += optionName + "\n";
 	HoI4Localisation::copyEventLocalisations("democratic_call_for_elections.b", optionName);
-	optionB += "		add_political_power = -20\n";
-	optionB += "		add_ideas = democratic_opposition_voicing_protests\n";
-	optionB += "	}";
-	callForElections.options.push_back(optionB);
+	callForElectionsOptionB.giveName(std::move(optionName));
+	callForElectionsOptionB.giveScriptBlock("add_political_power = -20");
+	callForElectionsOptionB.giveScriptBlock("add_ideas = democratic_opposition_voicing_protests");
+	callForElections.giveOption(std::move(callForElectionsOptionB));
 	politicalEvents.push_back(callForElections);
 	politicalEventNumber++;
 }
@@ -662,10 +656,9 @@ void HoI4::Events::addFiftyPercentEvents(const std::set<std::string>& majorIdeol
 		fiftyPercentEvent.picture = getIdeologicalPicture(ideology);
 		fiftyPercentEvent.majorEvent = false;
 		fiftyPercentEvent.triggeredOnly = true;
-		std::string optionC = "= {\n";
-		optionC += "		name = ";
+		EventOption optionC;
 		std::string optionName = "conv.political." + std::to_string(politicalEventNumber) + ".c";
-		optionC += optionName + "\n";
+		optionC.giveName(std::move(optionName));
 		HoI4Localisation::copyEventLocalisations(ideology + "_fifty_percent.c", optionName);
 		if (ideology == "democratic")
 		{
@@ -675,24 +668,25 @@ void HoI4::Events::addFiftyPercentEvents(const std::set<std::string>& majorIdeol
 				{
 					continue;
 				}
-				optionC += "		if = {\n";
-				optionC += "			limit = { has_government = " + ideology2 + " }\n";
-				optionC += "			add_timed_idea = { idea = " + ideology2 + "_defeated days = 730 }\n";
-				optionC += "		}\n";
+				std::string timedIdeaScript = "if = {\n";
+				timedIdeaScript += "			limit = { has_government = " + ideology2 + " }\n";
+				timedIdeaScript += "			add_timed_idea = { idea = " + ideology2 + "_defeated days = 730 }\n";
+				timedIdeaScript += "		}";
+				optionC.giveScriptBlock(std::move(timedIdeaScript));
 			}
 		}
-		optionC += "		set_politics = {\n";
-		optionC += "			ruling_party = " + ideology + "\n";
-		optionC += "			elections_allowed = ";
-		(ideology == "democratic") ? optionC += "yes\n" : optionC += "no\n";
-		optionC += "		}\n";
+		std::string setPoliticsScript = "set_politics = {\n";
+		setPoliticsScript += "			ruling_party = " + ideology + "\n";
+		setPoliticsScript += "			elections_allowed = ";
+		(ideology == "democratic") ? setPoliticsScript += "yes\n" : setPoliticsScript += "no\n";
+		setPoliticsScript += "		}";
+		optionC.giveScriptBlock(std::move(setPoliticsScript));
 		if (ideology == "democratic")
 		{
-			optionC += "		hold_election = ROOT\n";
+			optionC.giveScriptBlock("hold_election = ROOT");
 		}
-		optionC += "		add_stability = -0.05\n";
-		optionC += "	}";
-		fiftyPercentEvent.options.push_back(optionC);
+		optionC.giveScriptBlock("add_stability = -0.05");
+		fiftyPercentEvent.giveOption(std::move(optionC));
 		politicalEvents.push_back(fiftyPercentEvent);
 		eventNumbers.insert(make_pair(std::string("fiftyPercent") + ideology, politicalEventNumber));
 		politicalEventNumber++;
@@ -732,24 +726,23 @@ void HoI4::Events::addRevolutionEvents(const std::set<std::string>& majorIdeolog
 		revolutionEvent.immediate = "= {\n";
 		revolutionEvent.immediate += "		hidden_effect = { remove_ideas = " + ideology + "_revolutionaries }\n";
 		revolutionEvent.immediate += "	}";
-		std::string optionA = "= {\n";
-		optionA += "		name = ";
+		EventOption optionA;
 		string optionName = "conv.political." + to_string(politicalEventNumber) + ".a";
-		optionA += optionName + "\n";
 		HoI4Localisation::copyEventLocalisations(ideology + "_revolution_event.a", optionName);
-		optionA += "		ai_chance = {\n";
-		optionA += "			factor = 0\n";
-		optionA += "		}\n";
-		optionA += "		start_civil_war = {\n";
-		optionA += "			ideology = " + ideology + "\n";
-		optionA += "			size = 0.5\n";
-		optionA += "		}\n";
-		optionA += "	}";
-		revolutionEvent.options.push_back(optionA);
-		std::string optionB = "= {\n";
-		optionB += "		name = ";
+		optionA.giveName(std::move(optionName));
+		std::string aiChance = "= {\n";
+		aiChance += "			factor = 0\n";
+		aiChance += "		}";
+		optionA.giveAiChance(std::move(aiChance));
+		std::string startCivilWar = "start_civil_war = {\n";
+		startCivilWar += "			ideology = " + ideology + "\n";
+		startCivilWar += "			size = 0.5\n";
+		startCivilWar += "		}";
+		optionA.giveScriptBlock(std::move(startCivilWar));
+		revolutionEvent.giveOption(std::move(optionA));
+		EventOption optionB;
 		optionName = "conv.political." + std::to_string(politicalEventNumber) + ".b";
-		optionB += optionName + "\n";
+		optionB.giveName(std::move(optionName));
 		HoI4Localisation::copyEventLocalisations(ideology + "_revolution_event.b", optionName);
 		for (auto ideology2: majorIdeologies)
 		{
@@ -757,27 +750,27 @@ void HoI4::Events::addRevolutionEvents(const std::set<std::string>& majorIdeolog
 			{
 				continue;
 			}
-			optionB += "		if = {\n";
-			optionB += "			limit = {\n";
-			optionB += "				has_government = " + ideology2 + "\n";
-			optionB += "			}\n";
+			std::string startCivilWar2 = "if = {\n";
+			startCivilWar2 += "			limit = {\n";
+			startCivilWar2 += "				has_government = " + ideology2 + "\n";
+			startCivilWar2 += "			}\n";
 			if ((ideology == "democratic") && (ideology2 != "neutrality"))
 			{
-				optionB += "			add_timed_idea = { idea = " + ideology2 + "_defeated days = 730 }\n";
+				startCivilWar2 += "			add_timed_idea = { idea = " + ideology2 + "_defeated days = 730 }\n";
 			}
-			optionB += "			start_civil_war = {\n";
-			optionB += "				ruling_party = " + ideology + "\n";
-			optionB += "				ideology = " + ideology2 + "\n";
-			optionB += "				size = 0.5\n";
-			optionB += "			}\n";
+			startCivilWar2 += "			start_civil_war = {\n";
+			startCivilWar2 += "				ruling_party = " + ideology + "\n";
+			startCivilWar2 += "				ideology = " + ideology2 + "\n";
+			startCivilWar2 += "				size = 0.5\n";
+			startCivilWar2 += "			}\n";
 			if (ideology == "democratic")
 			{
-				optionB += "			hold_election = ROOT\n";
+				startCivilWar2 += "			hold_election = ROOT\n";
 			}
-			optionB += "		}\n";
+			startCivilWar2 += "		}";
+			optionB.giveScriptBlock(std::move(startCivilWar2));
 		}
-		optionB += "	}";
-		revolutionEvent.options.push_back(optionB);
+		revolutionEvent.giveOption(std::move(optionB));
 		politicalEvents.push_back(revolutionEvent);
 		politicalEventNumber++;
 	}
@@ -810,14 +803,12 @@ void HoI4::Events::addSuppressedEvents(const std::set<std::string>& majorIdeolog
 		suppressedEvent.meanTimeToHappen = "= {\n";
 		suppressedEvent.meanTimeToHappen += "		days = 2\n";
 		suppressedEvent.meanTimeToHappen += "	}";
-		std::string option = "= {\n";
-		option += "		name = ";
+		EventOption option;
 		std::string optionName = "conv.political." + std::to_string(politicalEventNumber) + ".a";
-		option += optionName + "\n";
+		option.giveName(std::move(optionName));
 		HoI4Localisation::copyEventLocalisations(ideology + "_suppressed_event.a", optionName);
-		option += "		remove_ideas = " + ideology + "_revolutionaries\n";
-		option += "	}";
-		suppressedEvent.options.push_back(option);
+		option.giveScriptBlock("remove_ideas = " + ideology + "_revolutionaries");
+		suppressedEvent.giveOption(std::move(option));
 		politicalEvents.push_back(suppressedEvent);
 		politicalEventNumber++;
 	}
@@ -874,14 +865,12 @@ void HoI4::Events::addSuppressedEvents(const std::set<std::string>& majorIdeolog
 		removeNeutral.meanTimeToHappen = "= {\n";
 		removeNeutral.meanTimeToHappen += "		days = 2\n";
 		removeNeutral.meanTimeToHappen += "	}";
-		std::string option = "= {\n";
-		option += "		name = ";
+		EventOption option;
 		std::string optionName = "conv.political." + std::to_string(politicalEventNumber) + ".a";
-		option += optionName + "\n";
 		HoI4Localisation::copyEventLocalisations("abandon_neutral.a", optionName);
-		option += "		remove_ideas = neutrality_idea\n";
-		option += "	}";
-		removeNeutral.options.push_back(option);
+		option.giveName(std::move(optionName));
+		option.giveScriptBlock("remove_ideas = neutrality_idea");
+		removeNeutral.giveOption(std::move(option));
 		politicalEvents.push_back(removeNeutral);
 	}
 }
@@ -936,16 +925,15 @@ void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& maj
 			warJustification.trigger += "		FROM = { has_government = " + majorIdeology2 + " }\n";
 			warJustification.trigger += "		NOT = { has_country_flag = war_justification_last_event_political }\n";
 			warJustification.trigger += "	}";
-			std::string option = "= {\n";
-			option += "		name = war_justification." + std::to_string(i) + ".a\n";
-			option += "		FROM = { country_event = { id = war_justification." + std::to_string(i + 200) + " } }\n";
-			option += "		set_country_flag = war_justification_last_event_political\n";
-			option += "		clr_country_flag = war_justification_last_event_generic\n";
-			option += "		clr_country_flag = war_justification_last_event_neighbor\n";
-			option += "		clr_country_flag = war_justification_last_event_mobilized\n";
-			option += "		clr_country_flag = war_justification_last_event_borderthreat\n";
-			option += "	}";
-			warJustification.options.push_back(option);
+			EventOption option;
+			option.giveName("war_justification." + std::to_string(i) + ".a");
+			option.giveScriptBlock("FROM = { country_event = { id = war_justification." + std::to_string(i + 200) + " } }");
+			option.giveScriptBlock("set_country_flag = war_justification_last_event_political");
+			option.giveScriptBlock("clr_country_flag = war_justification_last_event_generic");
+			option.giveScriptBlock("clr_country_flag = war_justification_last_event_neighbor");
+			option.giveScriptBlock("clr_country_flag = war_justification_last_event_mobilized");
+			option.giveScriptBlock("clr_country_flag = war_justification_last_event_borderthreat");
+			warJustification.giveOption(std::move(option));
 			warJustificationEvents.push_back(warJustification);
 			HoI4Localisation::copyEventLocalisations("war_justification." + majorIdeology + majorIdeology2 + ".t", "war_justification." + std::to_string(i) + ".t");
 			HoI4Localisation::copyEventLocalisations("war_justification." + majorIdeology + majorIdeology2 + ".d", "war_justification." + std::to_string(i) + ".d");
@@ -959,10 +947,9 @@ void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& maj
 			warJustification2.picture = "GFX_report_event_iww_demonstration";
 			warJustification2.majorEvent = false;
 			warJustification2.triggeredOnly = true;
-			std::string option2 = "= {\n";
-			option2 += "		name = war_justification." + std::to_string(200 + i) + ".a\n";
-			option2 += "	}";
-			warJustification2.options.push_back(option2);
+			EventOption option2;
+			option2.giveName("war_justification." + std::to_string(200 + i) + ".a");
+			warJustification2.giveOption(std::move(option2));
 			warJustificationEvents.push_back(warJustification2);
 			HoI4Localisation::copyEventLocalisations("war_justification." + majorIdeology + majorIdeology2 + "200.t", "war_justification." + std::to_string(200 + i) + ".t");
 			HoI4Localisation::copyEventLocalisations("war_justification." + majorIdeology + majorIdeology2 + "200.d", "war_justification." + std::to_string(200 + i) + ".d");
@@ -987,20 +974,20 @@ void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& maj
 	char letter = 'a';
 	for (auto ideology: majorIdeologies)
 	{
-		std::string option = "= {\n";
-		option += "		name = war_justification.301." + std::string(1, letter) + "\n";
-		option += "		trigger = { has_government = " + ideology + " }\n";
-		option += "		add_political_power = -30\n";
-		option += "		add_war_support = -0.03\n";
+		EventOption option;
+		option.giveName("war_justification.301." + std::string(1, letter));
+		option.giveScriptBlock("trigger = { has_government = " + ideology + " }");
+		option.giveScriptBlock("add_political_power = -30");
+		option.giveScriptBlock("add_war_support = -0.03");
 		if (ideology != "neutrality")
 		{
-			option += "		add_popularity = {\n";
-			option += "			ideology = " + ideology + "\n";
-			option += "			popularity = -0.05\n";
-			option += "		}\n";
+			std::string addPopularity = "add_popularity = {\n";
+			addPopularity += "			ideology = " + ideology + "\n";
+			addPopularity += "			popularity = -0.05\n";
+			addPopularity += "		}";
+			option.giveScriptBlock(std::move(addPopularity));
 		}
-		option += "	}";
-		wargoalExpired.options.push_back(option);
+		wargoalExpired.giveOption(std::move(option));
 		letter++;
 	}
 	warJustificationEvents.push_back(wargoalExpired);
@@ -1071,22 +1058,21 @@ void HoI4::Events::addPartyChoiceEvent(
 			std::string trimmedName = partyName.substr(tagAndDashSize, partyName.size());
 
 			std::string optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
-			std::string option = "= {\n";
-			option += "		name = " + optionName + "\n";
+			EventOption option;
+			option.giveName(std::move(optionName));
 			if (majorIdeologies.count("democratic") > 0)
 			{
-				option += "		set_party_name = { ideology = democratic long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }\n";
-				option += "		retire_country_leader = yes\n";
-				option += "		set_country_leader_ideology = conservatism\n";
+				option.giveScriptBlock("set_party_name = { ideology = democratic long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }");
+				option.giveScriptBlock("retire_country_leader = yes");
+				option.giveScriptBlock("set_country_leader_ideology = conservatism");
 			}
 			else
 			{
-				option += "		set_party_name = { ideology = neutrality long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }\n";
-				option += "		retire_country_leader = yes\n";
-				option += "		set_country_leader_ideology = conservatism_neutral\n";
+				option.giveScriptBlock("set_party_name = { ideology = neutrality long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }");
+				option.giveScriptBlock("retire_country_leader = yes");
+				option.giveScriptBlock("set_country_leader_ideology = conservatism_neutral");
 			}
-			option += "	}";
-			partyChoiceEvent.options.push_back(option);
+			partyChoiceEvent.giveOption(std::move(option));
 			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName);
 			optionLetter++;
 		}
@@ -1096,22 +1082,21 @@ void HoI4::Events::addPartyChoiceEvent(
 			std::string trimmedName = partyName.substr(tagAndDashSize, partyName.size());
 
 			std::string optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
-			std::string option = "= {\n";
-			option += "		name = " + optionName + "\n";
+			EventOption option;
+			option.giveName(std::move(optionName));
 			if (majorIdeologies.count("democratic") > 0)
 			{
-				option += "		set_party_name = { ideology = democratic long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }\n";
-				option += "		retire_country_leader = yes\n";
-				option += "		set_country_leader_ideology = liberalism\n";
+				option.giveScriptBlock("set_party_name = { ideology = democratic long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }");
+				option.giveScriptBlock("retire_country_leader = yes");
+				option.giveScriptBlock("set_country_leader_ideology = liberalism");
 			}
 			else
 			{
-				option += "		set_party_name = { ideology = neutrality long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }\n";
-				option += "		retire_country_leader = yes\n";
-				option += "		set_country_leader_ideology = liberalism_neutral\n";
+				option.giveScriptBlock("set_party_name = { ideology = neutrality long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }");
+				option.giveScriptBlock("retire_country_leader = yes");
+				option.giveScriptBlock("set_country_leader_ideology = liberalism_neutral");
 			}
-			option += "	}";
-			partyChoiceEvent.options.push_back(option);
+			partyChoiceEvent.giveOption(std::move(option));
 			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName);
 			optionLetter++;
 		}
@@ -1121,22 +1106,21 @@ void HoI4::Events::addPartyChoiceEvent(
 			std::string trimmedName = partyName.substr(tagAndDashSize, partyName.size());
 
 			std::string optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
-			std::string option = "= {\n";
-			option += "		name = " + optionName + "\n";
+			EventOption option;
+			option.giveName(std::move(optionName));
 			if (majorIdeologies.count("democratic") > 0)
 			{
-				option += "		set_party_name = { ideology = democratic long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }\n";
-				option += "		retire_country_leader = yes\n";
-				option += "		set_country_leader_ideology = socialism\n";
+				option.giveScriptBlock("set_party_name = { ideology = democratic long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }");
+				option.giveScriptBlock("retire_country_leader = yes");
+				option.giveScriptBlock("set_country_leader_ideology = socialism");
 			}
 			else
 			{
-				option += "		set_party_name = { ideology = neutrality long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }\n";
-				option += "		retire_country_leader = yes\n";
-				option += "		set_country_leader_ideology = socialism_neutral\n";
+				option.giveScriptBlock("set_party_name = { ideology = neutrality long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }");
+				option.giveScriptBlock("retire_country_leader = yes");
+				option.giveScriptBlock("set_country_leader_ideology = socialism_neutral");
 			}
-			option += "	}";
-			partyChoiceEvent.options.push_back(option);
+			partyChoiceEvent.giveOption(std::move(option));
 			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName);
 			optionLetter++;
 		}
@@ -1195,40 +1179,41 @@ void HoI4::Events::createStabilityEvents(const std::set<std::string>& majorIdeol
 	}
 
 	auto conscriptionRebellion = stabilityEvents.find("stability.33");
-	conscriptionRebellion->second.options.clear();
-	std::string option = "= {\n";
-	option += "		name = stability.33.a\n";
-	option += "		if = {\n";
+	conscriptionRebellion->second.clearOptions();
+	EventOption option;
+	option.giveName("stability.33.a");
+	std::string startExtermistCivilWar = "if = {\n";
 	if (majorIdeologies.count("democratic") > 0)
 	{
-		option += "			limit = { has_government = democratic }\n";
+		startExtermistCivilWar += "			limit = { has_government = democratic }\n";
 	}
 	else
 	{
-		option += "			limit = { has_government = neutrality }\n";
+		startExtermistCivilWar += "			limit = { has_government = neutrality }\n";
 	}
 	if (majorIdeologies.count("communism") > 0)
 	{
-		option += "			start_civil_war = { ideology = communism size = 0.35 }\n";
+		startExtermistCivilWar += "			start_civil_war = { ideology = communism size = 0.35 }\n";
 	}
 	else if (majorIdeologies.count("radical") > 0)
 	{
-		option += "			start_civil_war = { ideology = radical size = 0.35 }\n";
+		startExtermistCivilWar += "			start_civil_war = { ideology = radical size = 0.35 }\n";
 	}
 	else if (majorIdeologies.count("fascism") > 0)
 	{
-		option += "			start_civil_war = { ideology = fascism size = 0.35 }\n";
+		startExtermistCivilWar += "			start_civil_war = { ideology = fascism size = 0.35 }\n";
 	}
 	else if (majorIdeologies.count("absolutist") > 0)
 	{
-		option += "			start_civil_war = { ideology = absolutist size = 0.35 }\n";
+		startExtermistCivilWar += "			start_civil_war = { ideology = absolutist size = 0.35 }\n";
 	}
-	option += "		}\n";
+	startExtermistCivilWar += "		}";
+	option.giveScriptBlock(std::move(startExtermistCivilWar));
 	if (majorIdeologies.count("democratic") > 0)
 	{
-		option += "		if = {\n";
-		option += "			limit = { \n";
-		option += "				OR = {\n";
+		std::string startDemocraticCivilWar = "if = {\n";
+		startDemocraticCivilWar += "			limit = { \n";
+		startDemocraticCivilWar += "				OR = {\n";
 		for (auto majorIdeology: majorIdeologies)
 		{
 			if ((majorIdeology == "democratic") || (majorIdeology == "neutrality"))
@@ -1236,18 +1221,18 @@ void HoI4::Events::createStabilityEvents(const std::set<std::string>& majorIdeol
 				continue;
 			}
 
-			option += "					has_government = " + majorIdeology + "\n";
+			startDemocraticCivilWar += "					has_government = " + majorIdeology + "\n";
 		}
-		option += "				} \n";
-		option += "			}\n";
-		option += "			start_civil_war = { ideology = democratic size = 0.45 }\n";
-		option += "		}\n";
+		startDemocraticCivilWar += "				} \n";
+		startDemocraticCivilWar += "			}\n";
+		startDemocraticCivilWar += "			start_civil_war = { ideology = democratic size = 0.45 }\n";
+		startDemocraticCivilWar += "		}\n";
+		option.giveScriptBlock(std::move(startDemocraticCivilWar));
 	}
-	option += "		clr_country_flag = crisis_in_progress\n";
-	option += "		clr_country_flag = crisis_solution_in_progress\n";
-	option += "		set_country_flag = { flag = draft_dodging_resolved days = 90 }\n";
-	option += "	}";
-	conscriptionRebellion->second.options.push_back(option);
+	option.giveScriptBlock("clr_country_flag = crisis_in_progress");
+	option.giveScriptBlock("clr_country_flag = crisis_solution_in_progress");
+	option.giveScriptBlock("set_country_flag = { flag = draft_dodging_resolved days = 90 }");
+	conscriptionRebellion->second.giveOption(std::move(option));
 }
 
 

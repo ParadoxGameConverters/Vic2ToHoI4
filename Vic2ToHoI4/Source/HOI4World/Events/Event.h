@@ -3,6 +3,7 @@
 
 
 
+#include "EventOption.h"
 #include "newParser.h"
 #include <ostream>
 #include <string>
@@ -19,6 +20,10 @@ class Event: commonItems::parser
 		Event() = default;
 		Event(const std::string& type, std::istream& theStream);
 
+		void giveOption(EventOption&& theOption) { options.push_back(theOption); }
+
+		void clearOptions() { options.clear(); }
+
 		friend std::ostream& operator << (std::ostream& out, const Event& theEvent);
 
 		std::string type;
@@ -32,7 +37,9 @@ class Event: commonItems::parser
 		std::string trigger;
 		std::string meanTimeToHappen;
 		std::string immediate;
-		std::vector<std::string> options;
+
+	private:
+		std::vector<EventOption> options;
 };
 
 }

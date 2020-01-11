@@ -1,4 +1,5 @@
 #include "EventOutputter.h"
+#include "EventOptionOutputter.h"
 
 
 
@@ -48,7 +49,7 @@ std::ostream& HoI4::operator << (std::ostream& out, const Event& theEvent)
 	for (auto option: theEvent.options)
 	{
 		out << "\n";
-		out << "	option " << option << "\n";
+		out << option << "\n";
 	}
 
 	out << "}\n";

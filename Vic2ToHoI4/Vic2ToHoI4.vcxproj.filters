@@ -501,6 +501,12 @@
     <ClCompile Include="Source\Hoi4Outputter\Events\EventsOutputter.cpp">
       <Filter>Hoi4Outputter\Events</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Events\EventOptionOutputter.cpp">
+      <Filter>Hoi4Outputter\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Events\EventOption.cpp">
+      <Filter>HoI4World\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -945,6 +951,12 @@
       <Filter>Hoi4Outputter\Events</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Events\EventsOutputter.h">
+      <Filter>Hoi4Outputter\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Events\EventOption.h">
+      <Filter>HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Events\EventOptionOutputter.h">
       <Filter>Hoi4Outputter\Events</Filter>
     </ClInclude>
   </ItemGroup>
