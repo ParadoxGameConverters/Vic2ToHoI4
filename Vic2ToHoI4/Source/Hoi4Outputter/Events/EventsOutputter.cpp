@@ -66,7 +66,7 @@ void outputActualEvents(
 
 	outEvents << "\xEF\xBB\xBF";
 	outEvents << "add_namespace = " + eventNamespace + "\n";
-	for (auto& theEvent: events)
+	for (const auto& theEvent: events)
 	{
 		outEvents << "\n";
 		outEvents << theEvent;
@@ -89,7 +89,7 @@ void outputWarJustificationEvents(
 		throw std::runtime_error("Could not open WarJustification.txt");
 	}
 
-	for (auto& theEvent: warJustificationEvents)
+	for (const auto& theEvent: warJustificationEvents)
 	{
 		outWarJustificationEvents << "\n";
 		outWarJustificationEvents << theEvent;
@@ -109,12 +109,10 @@ void outputStabilityEvents(
 	std::ofstream outStabilityEvents("output/" + theConfiguration.getOutputName() + "/events/stability_events.txt");
 	if (!outStabilityEvents.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not open StabilityEvents.txt";
-		exit(-1);
+		throw std::runtime_error("Could not open StabilityEvents.txt");
 	}
 
 	outStabilityEvents << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
-
 	outStabilityEvents << "###########################\n";
 	outStabilityEvents << "#stability events\n";
 	outStabilityEvents << "###########################\n";
@@ -122,21 +120,21 @@ void outputStabilityEvents(
 	outStabilityEvents << "add_namespace = stability\n";
 	outStabilityEvents << "\n";
 
-	for (auto& theEvent: stabilityEvents)
+	for (const auto& theEvent: stabilityEvents)
 	{
 		outStabilityEvents << "\n";
 		outStabilityEvents << theEvent.second;
 	}
 
 	outStabilityEvents << "add_namespace = strikes_event\n";
-	for (auto& theEvent: strikesEvents)
+	for (const auto& theEvent: strikesEvents)
 	{
 		outStabilityEvents << "\n";
 		outStabilityEvents << theEvent.second;
 	}
 
 	outStabilityEvents << "add_namespace = mutiny_event\n";
-	for (auto& theEvent: mutinyEvents)
+	for (const auto& theEvent: mutinyEvents)
 	{
 		outStabilityEvents << "\n";
 		outStabilityEvents << theEvent.second;
