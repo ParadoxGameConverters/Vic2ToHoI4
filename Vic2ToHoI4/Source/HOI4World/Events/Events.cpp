@@ -11,13 +11,13 @@
 
 
 
-void HoI4::Events::createFactionEvents(std::shared_ptr<HoI4::Country> Leader, std::shared_ptr<HoI4::Country> newAlly)
+void HoI4::Events::createFactionEvents(const HoI4::Country& leader, const HoI4::Country& newAlly)
 {
-	auto possibleLeaderName = Leader->getSourceCountry().getName("english");
+	auto possibleleaderName = leader.getSourceCountry().getName("english");
 	std::string leaderName;
-	if (possibleLeaderName)
+	if (possibleleaderName)
 	{
-		leaderName = *possibleLeaderName;
+		leaderName = *possibleleaderName;
 	}
 	else
 	{
@@ -25,7 +25,7 @@ void HoI4::Events::createFactionEvents(std::shared_ptr<HoI4::Country> Leader, st
 		leaderName.clear();
 	}
 
-	auto possibleNewAllyName = newAlly->getSourceCountry().getName("english");
+	auto possibleNewAllyName = newAlly.getSourceCountry().getName("english");
 	std::string newAllyName;
 	if (possibleNewAllyName)
 	{
@@ -47,28 +47,28 @@ void HoI4::Events::createFactionEvents(std::shared_ptr<HoI4::Country> Leader, st
 	nfEvent.triggeredOnly = true;
 	std::string yesOption = "= {\n";
 	yesOption += "		name = \"Yes\"\n";
-	if (Leader->isInFaction())
+	if (leader.isInFaction())
 	{
-		yesOption += "		" + newAlly->getTag() + " = {\n";
+		yesOption += "		" + newAlly.getTag() + " = {\n";
 		yesOption += "			add_ai_strategy = {\n";
 		yesOption += "				type = alliance\n";
-		yesOption += "				id = \"" + Leader->getTag() + "\"\n";
+		yesOption += "				id = \"" + leader.getTag() + "\"\n";
 		yesOption += "				value = 200\n";
 		yesOption += "			}\n";
 		yesOption += "			dismantle_faction = yes\n";
 		yesOption += "		}\n";
 		yesOption += "		if = {\n";
 		yesOption += "			limit = {\n";
-		yesOption += "				" + Leader->getTag() + " = {\n";
+		yesOption += "				" + leader.getTag() + " = {\n";
 		yesOption += "					is_in_faction = no\n";
 		yesOption += "				}\n";
 		yesOption += "			}\n";
-		yesOption += "			" + Leader->getTag() + " = {\n";
+		yesOption += "			" + leader.getTag() + " = {\n";
 		yesOption += "				create_faction = \"" + leaderName + "\"\n";
 		yesOption += "			}\n";
 		yesOption += "		}\n";
-		yesOption += "		" + Leader->getTag() + " = {\n";
-		yesOption += "			add_to_faction = " + newAlly->getTag() + "\n";
+		yesOption += "		" + leader.getTag() + " = {\n";
+		yesOption += "			add_to_faction = " + newAlly.getTag() + "\n";
 		yesOption += "		}\n";
 	}
 	yesOption += "		hidden_effect = {\n";
@@ -118,13 +118,13 @@ void HoI4::Events::createFactionEvents(std::shared_ptr<HoI4::Country> Leader, st
 }
 
 
-void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4::Country> Annexer, std::shared_ptr<HoI4::Country> Annexed)
+void HoI4::Events::createAnnexEvent(const HoI4::Country& annexer, const HoI4::Country& annexed)
 {
-	auto possibleAnnexerName = Annexer->getSourceCountry().getName("english");
+	auto possibleannexerName = annexer.getSourceCountry().getName("english");
 	std::string annexerName;
-	if (possibleAnnexerName)
+	if (possibleannexerName)
 	{
-		annexerName = *possibleAnnexerName;
+		annexerName = *possibleannexerName;
 	}
 	else
 	{
@@ -132,11 +132,11 @@ void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4::Country> Annexer, std:
 		annexerName.clear();
 	}
 
-	auto possibleAnnexedName = Annexed->getSourceCountry().getName("english");
+	auto possibleannexedName = annexed.getSourceCountry().getName("english");
 	std::string annexedName;
-	if (possibleAnnexedName)
+	if (possibleannexedName)
 	{
-		annexedName = *possibleAnnexedName;
+		annexedName = *possibleannexedName;
 	}
 	else
 	{
@@ -161,14 +161,14 @@ void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4::Country> Annexer, std:
 	acceptOption += "			base = 30\n";
 	acceptOption += "			modifier = {\n";
 	acceptOption += "				add = -15\n";
-	acceptOption += "				" + Annexer->getTag() + " = { has_army_size = { size < 40 } }\n";
+	acceptOption += "				" + annexed.getTag() + " = { has_army_size = { size < 40 } }\n";
 	acceptOption += "			}\n";
 	acceptOption += "			modifier = {\n";
 	acceptOption += "				add = 45\n";
-	acceptOption += "				" + Annexer->getTag() + " = { has_army_size = { size > 39 } }\n";
+	acceptOption += "				" + annexed.getTag() + " = { has_army_size = { size > 39 } }\n";
 	acceptOption += "			}\n";
 	acceptOption += "		}\n";
-	acceptOption += "		" + Annexer->getTag() + " = {\n";
+	acceptOption += "		" + annexed.getTag() + " = {\n";
 	acceptOption += "			country_event = { hours = 2 id = NFEvents." + to_string(nationalFocusEventNumber + 1) + " }\n";//+1 accept
 	acceptOption += "		}\n";
 	acceptOption += "		custom_effect_tooltip = GAME_OVER_TT\n";
@@ -182,18 +182,18 @@ void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4::Country> Annexer, std:
 	refuseOption += "\n";
 	refuseOption += "			modifier = {\n";
 	refuseOption += "				factor = 0\n";
-	refuseOption += "				" + Annexer->getTag() + " = { has_army_size = { size > 39 } }\n";
+	refuseOption += "				" + annexed.getTag() + " = { has_army_size = { size > 39 } }\n";
 	refuseOption += "			}\n";
 	refuseOption += "			modifier = {\n";
 	refuseOption += "				add = 20\n";
-	refuseOption += "				" + Annexer->getTag() + " = { has_army_size = { size < 30 } }\n";
+	refuseOption += "				" + annexed.getTag() + " = { has_army_size = { size < 30 } }\n";
 	refuseOption += "			}\n";
 	refuseOption += "		}\n";
-	refuseOption += "		" + Annexer->getTag() + " = {\n";
+	refuseOption += "		" + annexed.getTag() + " = {\n";
 	refuseOption += "			country_event = { hours = 2 id = NFEvents." + to_string(nationalFocusEventNumber + 2) + " }\n";//+2 refuse
 	refuseOption += "			if = {\n";
-	refuseOption += "				limit = { is_in_faction_with = " + Annexed->getTag() + " }\n";
-	refuseOption += "				remove_from_faction = " + Annexed->getTag() + "\n";
+	refuseOption += "				limit = { is_in_faction_with = " + annexed.getTag() + " }\n";
+	refuseOption += "				remove_from_faction = " + annexed.getTag() + "\n";
 	refuseOption += "			}\n";
 	refuseOption += "		}\n";
 	refuseOption += "	}";
@@ -215,7 +215,7 @@ void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4::Country> Annexer, std:
 	refusedOption += "		name = \"It's time for war\"\n";
 	refusedOption += "		create_wargoal = {\n";
 	refusedOption += "			type = annex_everything\n";
-	refusedOption += "			target = " + Annexed->getTag() + "\n";
+	refusedOption += "			target = " + annexed.getTag() + "\n";
 	refusedOption += "		}\n";
 	refusedOption += "	}";
 	refusedEvent.options.push_back(refusedOption);
@@ -234,21 +234,21 @@ void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4::Country> Annexer, std:
 
 	std::string acceptedOption = "= {\n";
 	acceptedOption += "		name = \"A stronger Union!\"\n";
-	for (auto state: Annexed->getStates())
+	for (auto state: annexed.getStates())
 	{
 		acceptedOption += "		" + to_string(state) + " = {\n";
 		acceptedOption += "			if = {\n";
-		acceptedOption += "				limit = { is_owned_by = " + Annexed->getTag() + " }\n";
-		acceptedOption += "				add_core_of = " + Annexer->getTag() + "\n";
+		acceptedOption += "				limit = { is_owned_by = " + annexed.getTag() + " }\n";
+		acceptedOption += "				add_core_of = " + annexed.getTag() + "\n";
 		acceptedOption += "			}\n";
 		acceptedOption += "		}\n";
 
 	}
 	acceptedOption += "\n";
-	acceptedOption += "		annex_country = { target = " + Annexed->getTag() + " transfer_troops = yes }\n";
+	acceptedOption += "		annex_country = { target = " + annexed.getTag() + " transfer_troops = yes }\n";
 	acceptedOption += "		add_political_power = 50\n";
 	acceptedOption += "		add_named_threat = { threat = 2 name = \"" + annexerName + " annexed " + annexedName + "\" }\n";
-	acceptedOption += "		set_country_flag = " + Annexed->getTag() + "_annexed\n";
+	acceptedOption += "		set_country_flag = " + annexed.getTag() + "_annexed\n";
 	acceptedOption += "	}";
 	acceptedEvent.options.push_back(acceptedOption);
 
@@ -259,14 +259,18 @@ void HoI4::Events::createAnnexEvent(std::shared_ptr<HoI4::Country> Annexer, std:
 }
 
 
-void HoI4::Events::createSudetenEvent(std::shared_ptr<HoI4::Country> Annexer, std::shared_ptr<HoI4::Country> Annexed, const std::vector<int>& claimedStates)
+void HoI4::Events::createSudetenEvent(
+	const HoI4::Country& annexer,
+	const HoI4::Country& annexed,
+	const std::vector<int>& claimedStates
+)
 {
 	//flesh out this event more, possibly make it so allies have a chance to help?
-	auto possibleAnnexerName = Annexer->getSourceCountry().getName("english");
+	auto possibleannexerName = annexer.getSourceCountry().getName("english");
 	std::string annexerName;
-	if (possibleAnnexerName)
+	if (possibleannexerName)
 	{
-		annexerName = *possibleAnnexerName;
+		annexerName = *possibleannexerName;
 	}
 	else
 	{
@@ -274,11 +278,11 @@ void HoI4::Events::createSudetenEvent(std::shared_ptr<HoI4::Country> Annexer, st
 		annexerName.clear();
 	}
 
-	auto possibleAnnexerAdjective = Annexer->getSourceCountry().getName("english");
+	auto possibleannexerAdjective = annexer.getSourceCountry().getName("english");
 	std::string annexerAdjctive;
-	if (possibleAnnexerAdjective)
+	if (possibleannexerAdjective)
 	{
-		annexerAdjctive = *possibleAnnexerAdjective;
+		annexerAdjctive = *possibleannexerAdjective;
 	}
 	else
 	{
@@ -286,11 +290,11 @@ void HoI4::Events::createSudetenEvent(std::shared_ptr<HoI4::Country> Annexer, st
 		annexerAdjctive.clear();
 	}
 
-	auto possibleAnnexedName = Annexed->getSourceCountry().getName("english");
+	auto possibleannexedName = annexed.getSourceCountry().getName("english");
 	std::string annexedName;
-	if (possibleAnnexedName)
+	if (possibleannexedName)
 	{
-		annexedName = *possibleAnnexedName;
+		annexedName = *possibleannexedName;
 	}
 	else
 	{
@@ -317,14 +321,14 @@ void HoI4::Events::createSudetenEvent(std::shared_ptr<HoI4::Country> Annexer, st
 	acceptOption += "			base = 30\n";
 	acceptOption += "			modifier = {\n";
 	acceptOption += "				add = -15\n";
-	acceptOption += "				" + Annexer->getTag() + " = { has_army_size = { size < 40 } }\n";
+	acceptOption += "				" + annexer.getTag() + " = { has_army_size = { size < 40 } }\n";
 	acceptOption += "			}\n";
 	acceptOption += "			modifier = {\n";
 	acceptOption += "				add = 45\n";
-	acceptOption += "				" + Annexer->getTag() + " = { has_army_size = { size > 39 } }\n";
+	acceptOption += "				" + annexer.getTag() + " = { has_army_size = { size > 39 } }\n";
 	acceptOption += "			}\n";
 	acceptOption += "		}\n";
-	acceptOption += "		" + Annexer->getTag() + " = {\n";
+	acceptOption += "		" + annexer.getTag() + " = {\n";
 	acceptOption += "			country_event = { hours = 2 id = NFEvents." + to_string(nationalFocusEventNumber + 1) + " }\n";
 	acceptOption += "		}\n";
 	acceptOption += "	}";
@@ -337,19 +341,19 @@ void HoI4::Events::createSudetenEvent(std::shared_ptr<HoI4::Country> Annexer, st
 	refuseOption += "\n";
 	refuseOption += "			modifier = {\n";
 	refuseOption += "				factor = 0\n";
-	refuseOption += "				" + Annexer->getTag() + " = { has_army_size = { size > 39 } }\n";
+	refuseOption += "				" + annexer.getTag() + " = { has_army_size = { size > 39 } }\n";
 	refuseOption += "			}\n";
 	refuseOption += "			modifier = {\n";
 	refuseOption += "				add = 20\n";
-	refuseOption += "				" + Annexer->getTag() + " = { has_army_size = { size < 30 } }\n";
+	refuseOption += "				" + annexer.getTag() + " = { has_army_size = { size < 30 } }\n";
 	refuseOption += "			}\n";
 	refuseOption += "		}\n";
-	refuseOption += "		" + Annexer->getTag() + " = {\n";
-	//refuseOption += "			add_opinion_modifier = { target = ROOT modifier = " + Annexer->getTag() + "_anschluss_rejected }\n";
+	refuseOption += "		" + annexer.getTag() + " = {\n";
+	//refuseOption += "			add_opinion_modifier = { target = ROOT modifier = " + annexer->getTag() + "_anschluss_rejected }\n";
 	refuseOption += "			country_event = { hours = 2 id = NFEvents." + to_string(nationalFocusEventNumber + 2) + " }\n";
 	refuseOption += "			if = {\n";
-	refuseOption += "				limit = { is_in_faction_with = " + Annexed->getTag() + " }\n";
-	refuseOption += "				remove_from_faction = " + Annexed->getTag() + "\n";
+	refuseOption += "				limit = { is_in_faction_with = " + annexed.getTag() + " }\n";
+	refuseOption += "				remove_from_faction = " + annexed.getTag() + "\n";
 	refuseOption += "			}\n";
 	refuseOption += "		}\n";
 	refuseOption += "	}";
@@ -371,7 +375,7 @@ void HoI4::Events::createSudetenEvent(std::shared_ptr<HoI4::Country> Annexer, st
 	refusedOption += "		name = \"It's time for war\"\n";
 	refusedOption += "		create_wargoal = {\n";
 	refusedOption += "				type = annex_everything\n";
-	refusedOption += "			target = " + Annexed->getTag() + "\n";
+	refusedOption += "			target = " + annexed.getTag() + "\n";
 	refusedOption += "		}\n";
 	refusedOption += "	}";
 	refusedEvent.options.push_back(refusedOption);
@@ -392,10 +396,10 @@ void HoI4::Events::createSudetenEvent(std::shared_ptr<HoI4::Country> Annexer, st
 	acceptedOption += "		name = \"A stronger Union!\"\n";
 	for (unsigned int i = 0; i <= 1 && i < claimedStates.size(); i++)
 	{
-		acceptedOption += "		" + to_string(claimedStates[i]) + " = { add_core_of = " + Annexer->getTag() + " }\n";
-		acceptedOption += "		" + Annexer->getTag() + " = { transfer_state =  " + to_string(claimedStates[i]) + " }\n";
+		acceptedOption += "		" + to_string(claimedStates[i]) + " = { add_core_of = " + annexer.getTag() + " }\n";
+		acceptedOption += "		" + annexer.getTag() + " = { transfer_state =  " + to_string(claimedStates[i]) + " }\n";
 	}
-	acceptedOption += "		set_country_flag = " + Annexed->getTag() + "_demanded\n";
+	acceptedOption += "		set_country_flag = " + annexed.getTag() + "_demanded\n";
 	acceptedOption += "	}";
 	acceptedEvent.options.push_back(acceptedOption);
 
@@ -406,9 +410,9 @@ void HoI4::Events::createSudetenEvent(std::shared_ptr<HoI4::Country> Annexer, st
 }
 
 
-void HoI4::Events::createTradeEvent(std::shared_ptr<HoI4::Country> leader, std::shared_ptr<HoI4::Country> GC)
+void HoI4::Events::createTradeEvent(const HoI4::Country& leader, const HoI4::Country& greatPower)
 {
-	auto possibleAggressorName = GC->getSourceCountry().getName("english");
+	auto possibleAggressorName = greatPower.getSourceCountry().getName("english");
 	std::string aggressorName;
 	if (possibleAggressorName)
 	{
@@ -437,11 +441,11 @@ void HoI4::Events::createTradeEvent(std::shared_ptr<HoI4::Country> leader, std::
 	option += "		name = \"They will Pay!\"\n";
 	option += "		ai_chance = { factor = 85 }\n";
 	option += "		effect_tooltip = {\n";
-	option += "			" + leader->getTag() + " = {\n";
+	option += "			" + leader.getTag() + " = {\n";
 	option += "				set_country_flag = established_traders_activated\n";
 	option += "				create_wargoal = {\n";
 	option += "					type = annex_everything\n";
-	option += "					target = " + GC->getTag() + "\n";
+	option += "					target = " + greatPower.getTag() + "\n";
 	option += "				}\n";
 	option += "			}\n";
 	option += "		}\n";

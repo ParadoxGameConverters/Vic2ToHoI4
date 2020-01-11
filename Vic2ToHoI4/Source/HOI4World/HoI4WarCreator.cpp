@@ -966,7 +966,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4:
 							auto newFaction = make_shared<HoI4Faction>(GC, self);
 							GC->setFaction(newFaction);
 						}
-						theWorld->getEvents()->createFactionEvents(Leader, GC);
+						theWorld->getEvents()->createFactionEvents(*Leader, *GC);
 					}
 					newAllies.push_back(GC);
 					maxGCAlliance++;
@@ -1679,6 +1679,6 @@ void HoI4WarCreator::addTradeEvents(shared_ptr<HoI4::Country> country, const vec
 			continue;
 		}
 
-		theWorld->getEvents()->createTradeEvent(country, greatPowerTarget);
+		theWorld->getEvents()->createTradeEvent(*country, *greatPowerTarget);
 	}
 }
