@@ -89,8 +89,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\StabilityWarSupportDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Division.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\DivisionTemplate.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Event.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Agreement.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Airforce.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Army.cpp" />
@@ -247,6 +247,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.h" />
     <ClInclude Include="Mocks\EventsMock.h" />
     <ClInclude Include="Mocks\GovermentMapperMock.h" />
     <ClInclude Include="Mocks\GraphicsMapperMock.h" />

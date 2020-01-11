@@ -27,7 +27,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "Event.h"
-#include "../V2World/Party.h"
+#include "../../V2World/Party.h"
 #include "newParser.h"
 #include <functional>
 #include <map>

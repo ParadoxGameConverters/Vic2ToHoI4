@@ -22,16 +22,16 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "Events.h"
-#include "HoI4Country.h"
-#include "HoI4Faction.h"
-#include "HoI4Localisation.h"
-#include "OnActions.h"
-#include "../Configuration.h"
+#include "../HoI4Country.h"
+#include "../HoI4Faction.h"
+#include "../HoI4Localisation.h"
+#include "../OnActions.h"
+#include "../../Configuration.h"
+#include "../../V2World/Party.h"
+#include "../../V2World/Country.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
-#include "../V2World/Party.h"
-#include "../V2World/Country.h"
 #include <fstream>
 
 

@@ -22,7 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "HoI4WarCreator.h"
-#include "Events.h"
+#include "Events/Events.h"
 #include "HoI4Faction.h"
 #include "HoI4Focus.h"
 #include "HoI4World.h"

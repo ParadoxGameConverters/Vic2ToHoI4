@@ -67,6 +67,9 @@
     <Filter Include="HoI4World\Localisations">
       <UniqueIdentifier>{53f15651-fa5b-405e-ba4a-d03897054408}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\Events">
+      <UniqueIdentifier>{4eea27b0-091e-4534-b314-1b415a0035cc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -215,9 +218,6 @@
     <ClCompile Include="Source\HOI4World\Advisor.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Events.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Ideas.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
@@ -231,9 +231,6 @@
       <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\AIPeace.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Event.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\OnActions.cpp">
@@ -489,6 +486,12 @@
     <ClCompile Include="Source\HOI4World\Localisations\AllReplacementRules.cpp">
       <Filter>HoI4World\Localisations</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Events\Event.cpp">
+      <Filter>HoI4World\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Events\Events.cpp">
+      <Filter>HoI4World\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -637,9 +640,6 @@
     <ClInclude Include="Source\HOI4World\Advisor.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Events.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Ideas.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
@@ -653,9 +653,6 @@
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\AIPeace.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\Event.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\OnActions.h">
@@ -928,6 +925,12 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Localisations\AllReplacementRules.h">
       <Filter>HoI4World\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Events\Event.h">
+      <Filter>HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Events\Events.h">
+      <Filter>HoI4World\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

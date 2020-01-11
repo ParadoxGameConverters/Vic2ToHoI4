@@ -10,7 +10,7 @@
 #include "HoI4Country.h"
 #include "Decisions/Decisions.h"
 #include "HoI4Diplomacy.h"
-#include "Events.h"
+#include "Events/Events.h"
 #include "HoI4Faction.h"
 #include "HoI4FocusTree.h"
 #include "Ideas.h"
