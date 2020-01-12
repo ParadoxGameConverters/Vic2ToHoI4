@@ -20,12 +20,26 @@ class Event: commonItems::parser
 		Event() = default;
 		Event(const std::string& type, std::istream& theStream);
 
+		void giveType(std::string&& newType) { type = newType; }
+		void giveId(std::string&& newId) { id = newId; }
+		void giveTitle(std::string&& newTitle) { title = newTitle; }
+		void giveDescription(std::string&& description) { descriptions.push_back(description); }
+		void givePicture(std::string&& newPicture) { picture = newPicture; }
+		void setMajor() { majorEvent = true; }
+		void setTriggeredOnly() { triggeredOnly = true; }
+		void giveTrigger(std::string&& newTrigger) { trigger = newTrigger; }
+		void giveMeanTimeToHappen(std::string&& newMttH) { meanTimeToHappen = newMttH; }
+		void giveImmediate(std::string&& newImmediate) { immediate = newImmediate; }
 		void giveOption(EventOption&& theOption) { options.push_back(theOption); }
 
 		void clearOptions() { options.clear(); }
 
-		friend std::ostream& operator << (std::ostream& out, const Event& theEvent);
+		const std::string& getId() const { return id; }
+		const std::string& getTitle() const { return title; }
 
+		friend std::ostream& operator << (std::ostream& out, const Event& theEvent);
+		
+	private:
 		std::string type;
 		std::string id;
 		std::string title;
@@ -37,8 +51,6 @@ class Event: commonItems::parser
 		std::string trigger;
 		std::string meanTimeToHappen;
 		std::string immediate;
-
-	private:
 		std::vector<EventOption> options;
 };
 
