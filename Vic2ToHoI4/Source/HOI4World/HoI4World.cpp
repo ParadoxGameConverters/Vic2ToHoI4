@@ -1242,7 +1242,7 @@ void HoI4::World::outputGenericFocusTree() const
 
 	HoI4FocusTree genericFocusTree;
 	genericFocusTree.addGenericFocusTree(majorIdeologies);
-	genericFocusTree.output("output/" + theConfiguration.getOutputName() + "/common/national_focus/generic.txt");
+	genericFocusTree.generateSharedFocuses("output/" + theConfiguration.getOutputName() + "/common/national_focus/shared_focuses.txt");
 }
 
 

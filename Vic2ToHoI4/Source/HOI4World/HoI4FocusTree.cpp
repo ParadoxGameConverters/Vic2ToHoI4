@@ -50,394 +50,13 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 {
 	confirmLoadedFocuses();
 
-	if (const auto& originalFocus = loadedFocuses.find("army_effort"); originalFocus != loadedFocuses.end())
-	{
-		shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus army_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("equipment_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus equipment_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("motorization_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus motorization_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("doctrine_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus doctrine_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("equipment_effort_2"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus equipment_effort_2");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("mechanization_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus mechanization_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("doctrine_effort_2"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus doctrine_effort_2");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("equipment_effort_3"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus equipment_effort_3");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("armor_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus armor_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("special_forces"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus special_forces");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("aviation_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus aviation_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("fighter_focus"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus fighter_focus");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("bomber_focus"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus bomber_focus");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("aviation_effort_2"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus aviation_effort_2");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("CAS_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus CAS_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("rocket_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus rocket_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("NAV_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus NAV_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("naval_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus naval_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("flexible_navy"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus flexible_navy");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("large_navy"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus large_navy");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("submarine_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus submarine_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("cruiser_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus cruiser_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("destroyer_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus destroyer_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("capital_ships_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus capital_ships_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("industrial_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		newFocus->aiWillDo = "= {\n";
-		newFocus->aiWillDo += "			factor = 3\n";
-		newFocus->aiWillDo += "			modifier = {\n";
-		newFocus->aiWillDo += "				factor = 0\n";
-		newFocus->aiWillDo += "				date < 1939.1.1\n";
-		newFocus->aiWillDo += "				OR = {\n";
-		newFocus->aiWillDo += "					# we also dont want tiny nations to go crazy with slots right away\n";
-		newFocus->aiWillDo += "					num_of_controlled_states < 2\n";
-		newFocus->aiWillDo += "				}\n";
-		newFocus->aiWillDo += "			}\n";
-		newFocus->aiWillDo += "		}";
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus industrial_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("construction_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus construction_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("production_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus production_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("construction_effort_2"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus construction_effort_2");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("production_effort_2"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus production_effort_2");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("infrastructure_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus infrastructure_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("production_effort_3"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus production_effort_3");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("infrastructure_effort_2"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus infrastructure_effort_2");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("construction_effort_3"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus construction_effort_3");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("nuclear_effort"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus nuclear_effort");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("extra_tech_slot"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus extra_tech_slot");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("extra_tech_slot_2"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus extra_tech_slot_2");
-	}
-
-	if (const auto& originalFocus = loadedFocuses.find("secret_weapons"); originalFocus != loadedFocuses.end())
-	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
-	}
-	else
-	{
-		throw std::runtime_error("Could not load focus secret_weapons");
-	}
-
 	int numCollectovistIdeologies = calculateNumCollectovistIdeologies(majorIdeologies);
 
 	if (const auto& originalFocus = loadedFocuses.find("political_effort"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
 		newFocus->xPos = static_cast<int>((numCollectovistIdeologies * 1.5) + 16);
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -472,7 +91,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 				newFocus->completionReward += "			add_ideas = collectivist_ethos_focus_neutral\n";
 			}
 			newFocus->completionReward += "		}";
-			focuses.push_back(newFocus);
+			sharedFocuses.push_back(newFocus);
 		}
 		else
 		{
@@ -528,7 +147,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 			newFocus->xPos = 0;
 			newFocus->yPos = 5;
 			newFocus->relativePositionId = "collectivist_ethos";
-			focuses.push_back(newFocus);
+			sharedFocuses.push_back(newFocus);
 		}
 		else
 		{
@@ -578,7 +197,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		}
 		newFocus->aiWillDo += "			}\n";
 		newFocus->aiWillDo += "		}";
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -595,7 +214,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		newFocus->aiWillDo = "= {\n";
 		newFocus->aiWillDo += "			factor = 1\n";
 		newFocus->aiWillDo += "		}";
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -605,7 +224,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 	if (const auto& originalFocus = loadedFocuses.find("deterrence"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -617,7 +236,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		if (const auto& originalFocus = loadedFocuses.find("interventionism_focus"); originalFocus != loadedFocuses.end())
 		{
 			auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-			focuses.push_back(newFocus);
+			sharedFocuses.push_back(newFocus);
 		}
 		else
 		{
@@ -627,7 +246,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		if (const auto& originalFocus = loadedFocuses.find("volunteer_corps"); originalFocus != loadedFocuses.end())
 		{
 			auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-			focuses.push_back(newFocus);
+			sharedFocuses.push_back(newFocus);
 		}
 		else
 		{
@@ -637,7 +256,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		if (const auto& originalFocus = loadedFocuses.find("foreign_expeditions"); originalFocus != loadedFocuses.end())
 		{
 			auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-			focuses.push_back(newFocus);
+			sharedFocuses.push_back(newFocus);
 		}
 		else
 		{
@@ -653,7 +272,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 			newFocus->prerequisites.clear();
 			newFocus->prerequisites.push_back("= { focus = deterrence }");
 		}
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -669,7 +288,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 			newFocus->prerequisites.push_back("= { focus = why_we_fight }");
 		}
 		newFocus->xPos = numCollectovistIdeologies;
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -695,8 +314,13 @@ void HoI4FocusTree::confirmLoadedFocuses()
 			loadedFocuses.insert(make_pair(newFocus.id, newFocus));
 		}
 		);
+		registerKeyword(std::regex("shared_focus"), [this](const std::string& unused, std::istream& theStream)
+		{
+			HoI4Focus newFocus(theStream);
+			loadedFocuses.insert(make_pair(newFocus.id, newFocus));
+		}
+		);
 
-		parseFile(theConfiguration.getHoI4Path() + "/common/national_focus/generic.txt");
 		parseFile("converterFocuses.txt");
 	}
 }
@@ -785,7 +409,7 @@ void HoI4FocusTree::addFascistGenericFocuses(int relativePosition, const std::se
 		shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>(originalFocus->second);
 		newFocus->mutuallyExclusive = "= { " + fascistMutualExlusions + " }";
 		newFocus->xPos = relativePosition;
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -795,7 +419,7 @@ void HoI4FocusTree::addFascistGenericFocuses(int relativePosition, const std::se
 	if (const auto& originalFocus = loadedFocuses.find("militarism"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -818,7 +442,7 @@ void HoI4FocusTree::addFascistGenericFocuses(int relativePosition, const std::se
 			newFocus->completionReward += "			}\n";
 		}
 		newFocus->completionReward += "		}";
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -828,7 +452,7 @@ void HoI4FocusTree::addFascistGenericFocuses(int relativePosition, const std::se
 	if (const auto& originalFocus = loadedFocuses.find("paramilitarism"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -850,7 +474,7 @@ void HoI4FocusTree::addCommunistGenericFocuses(int relativePosition)
 		newFocus->available += "			}\n";
 		newFocus->available += "		}";
 		newFocus->xPos = relativePosition;
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -860,7 +484,7 @@ void HoI4FocusTree::addCommunistGenericFocuses(int relativePosition)
 	if (const auto& originalFocus = loadedFocuses.find("political_correctness"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -870,7 +494,7 @@ void HoI4FocusTree::addCommunistGenericFocuses(int relativePosition)
 	if (const auto& originalFocus = loadedFocuses.find("indoctrination_focus"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -891,7 +515,7 @@ void HoI4FocusTree::addCommunistGenericFocuses(int relativePosition)
 		newFocus->completionReward += "			}\n";
 		newFocus->completionReward += "			add_political_power = 200\n";
 		newFocus->completionReward += "		}";
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -907,7 +531,7 @@ void HoI4FocusTree::addAbsolutistGenericFocuses(int relativePosition)
 		shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>(originalFocus->second);
 		newFocus->mutuallyExclusive = "= { " + absolutistMutualExlusions + " }";
 		newFocus->xPos = relativePosition;
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -917,7 +541,7 @@ void HoI4FocusTree::addAbsolutistGenericFocuses(int relativePosition)
 	if (const auto& originalFocus = loadedFocuses.find("royal_dictatorship_focus"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -927,7 +551,7 @@ void HoI4FocusTree::addAbsolutistGenericFocuses(int relativePosition)
 	if (const auto& originalFocus = loadedFocuses.find("royal_army_tradition_focus"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -937,7 +561,7 @@ void HoI4FocusTree::addAbsolutistGenericFocuses(int relativePosition)
 	if (const auto& originalFocus = loadedFocuses.find("historical_claims_focus"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -953,7 +577,7 @@ void HoI4FocusTree::addRadicalGenericFocuses(int relativePosition)
 		shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>(originalFocus->second);
 		newFocus->mutuallyExclusive = "= { " + radicalMutualExclusions + " }";
 		newFocus->xPos = relativePosition;
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -963,7 +587,7 @@ void HoI4FocusTree::addRadicalGenericFocuses(int relativePosition)
 	if (const auto& originalFocus = loadedFocuses.find("private_channels_focus"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -973,7 +597,7 @@ void HoI4FocusTree::addRadicalGenericFocuses(int relativePosition)
 	if (const auto& originalFocus = loadedFocuses.find("hardfought_market_focus"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -983,7 +607,7 @@ void HoI4FocusTree::addRadicalGenericFocuses(int relativePosition)
 	if (const auto& originalFocus = loadedFocuses.find("army_provides_focus"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
-		focuses.push_back(newFocus);
+		sharedFocuses.push_back(newFocus);
 	}
 	else
 	{
@@ -2381,18 +2005,12 @@ void HoI4FocusTree::output(const string& filename) const
 		out << "	}\n";
 		out << "	\n";
 		out << "	default = no\n";
-		out << "\n";
-	}
-	else
-	{
-		out << "	id = generic_focus\n";
 		out << "	\n";
-		out << "	country = {\n";
-		out << "		factor = 1\n";
-		out << "	}\n";
-		out << "	\n";
-		out << "	default = yes\n";
-		out << "	reset_on_civilwar = no\n";
+		out << "	shared_focus = army_effort\n";
+		out << "	shared_focus = aviation_effort\n";
+		out << "	shared_focus = naval_effort\n";
+		out << "	shared_focus = industrial_effort\n";
+		out << "	shared_focus = political_effort\n";
 		out << "\n";
 	}
 
@@ -2405,4 +2023,81 @@ void HoI4FocusTree::output(const string& filename) const
 	out << "}";
 
 	out.close();
+}
+
+void outputShared(std::ostream& output, const HoI4Focus& focus)
+{
+	output << "shared_focus = {\n";
+	output << "	id = " << focus.id << "\n";
+	output << "	icon = " << focus.icon << "\n";
+	if (!focus.text.empty())
+	{
+		output << "	text = " << focus.text << "\n";
+	}
+	for (auto prerequisite: focus.prerequisites)
+	{
+		output << "	prerequisite " << prerequisite << "\n";
+	}
+	if (!focus.mutuallyExclusive.empty())
+	{
+		output << "	mutually_exclusive " << focus.mutuallyExclusive << "\n";
+	}
+	if (!focus.bypass.empty())
+	{
+		output << "	bypass " << focus.bypass << "\n";
+	}
+	output << "	x = " << focus.xPos << "\n";
+	output << "	y = " << focus.yPos << "\n";
+	if (!focus.relativePositionId.empty())
+	{
+		output << "	relative_position_id = " << focus.relativePositionId << "\n";
+	}
+	output << "	cost = " << focus.cost << "\n";
+	if (focus.availableIfCapitulated)
+	{
+		output << "	available_if_capitulated = yes\n";
+	}
+	if (!focus.available.empty())
+	{
+		output << "	available " << focus.available << "\n";
+	}
+	if (!focus.cancelIfInvalid.empty())
+	{
+		output << "	cancel_if_invalid = " << focus.cancelIfInvalid << "\n";
+	}
+	if (!focus.continueIfInvalid.empty())
+	{
+		output << "	continue_if_invalid = " << focus.continueIfInvalid << "\n";
+	}
+	if (!focus.completeTooltip.empty())
+	{
+		output << "	complete_tooltip " << focus.completeTooltip << "\n";
+	}
+	output << "	completion_reward " << focus.completionReward << "\n";
+	if (!focus.aiWillDo.empty())
+	{
+		output << "	ai_will_do " << focus.aiWillDo << "\n";
+	}
+
+	output << "}\n";
+	output << "\n";
+
+	//return output;
+}
+
+void HoI4FocusTree::generateSharedFocuses(const string& filename) const
+{
+	ofstream SharedFoci(filename);
+	if (!SharedFoci.is_open())
+	{
+		LOG(LogLevel::Error) << "Could not create " << filename;
+		exit(-1);
+	}
+
+	for (auto focus : sharedFocuses)
+	{
+		outputShared(SharedFoci, *focus);
+	}
+
+	SharedFoci.close();
 }

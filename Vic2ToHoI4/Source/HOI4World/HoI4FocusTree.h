@@ -83,6 +83,7 @@ class HoI4FocusTree: commonItems::parser
 		void removeFocus(const std::string& id);
 
 		void output(const std::string& filename) const;
+		void generateSharedFocuses(const std::string& filename) const;
 
 		void addFocus(std::shared_ptr<HoI4Focus> newFocus) { focuses.push_back(newFocus); }
 
@@ -100,6 +101,7 @@ class HoI4FocusTree: commonItems::parser
 		std::string srcCountryTag = "";
 		std::string dstCountryTag = "";
 		std::vector<std::shared_ptr<HoI4Focus>> focuses;
+		std::vector<std::shared_ptr<HoI4Focus>> sharedFocuses;
 		int nextFreeColumn = 0;
 
 		std::string fascistMutualExlusions = "";
