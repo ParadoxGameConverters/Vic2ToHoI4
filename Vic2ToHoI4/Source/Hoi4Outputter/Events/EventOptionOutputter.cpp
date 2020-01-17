@@ -16,9 +16,7 @@ std::ostream& HoI4::operator << (std::ostream& out, const EventOption& theOption
 	}
 	if (!theOption.hiddenEffect.empty())
 	{
-		out << "\t\thidden_effect = {\n";
-		out << theOption.hiddenEffect;
-		out << "\t\t}\n";
+		out << "\t\thidden_effect " << theOption.hiddenEffect << "\n";
 	}
 	out << "\t}";
 
