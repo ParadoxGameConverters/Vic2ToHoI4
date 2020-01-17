@@ -41,7 +41,9 @@ void HoI4::Events::createFactionEvents(const HoI4::Country& leader, const HoI4::
 	nfEvent.giveType("country_event");
 	nfEvent.giveId("NFEvents." + std::to_string(nationalFocusEventNumber++));
 	nfEvent.giveTitle("\"Alliance Offer\"");
-	nfEvent.giveDescription("= \"We have been invited to an alliance with " + leaderName + ". Should we accept the invitation?\"");
+	nfEvent.giveDescription(
+		"= \"We have been invited to an alliance with " + leaderName + ". Should we accept the invitation?\""
+	);
 	nfEvent.givePicture("news_event_generic_sign_treaty1");
 	nfEvent.setTriggeredOnly();
 	EventOption yesOption;
@@ -86,7 +88,9 @@ void HoI4::Events::createFactionEvents(const HoI4::Country& leader, const HoI4::
 	newsEventYes.giveType("news_event");
 	newsEventYes.giveId("news." + to_string(newsEventNumber));
 	newsEventYes.giveTitle("\"" + newAllyName + " formalizes alliance with " + leaderName + "\"");
-	newsEventYes.giveDescription("= \"The leaders of both countries have announced their intent of military cooperation.\"");
+	newsEventYes.giveDescription(
+		"= \"The leaders of both countries have announced their intent of military cooperation.\""
+	);
 	newsEventYes.givePicture("news_event_generic_sign_treaty1");
 	newsEventYes.setMajor();
 	newsEventYes.setTriggeredOnly();
@@ -142,8 +146,11 @@ void HoI4::Events::createAnnexEvent(const HoI4::Country& annexer, const HoI4::Co
 	annexEvent.giveType("country_event");
 	annexEvent.giveId("NFEvents." + to_string(nationalFocusEventNumber));
 	annexEvent.giveTitle("\"" + annexerName + " Demands " + annexedName + "!\"");
-	std::string description = "= \"Today " + annexerName + " sent an envoy to us with a proposition of an union. We are alone and in this world, and a union with " + annexerName + " might prove to be fruiteful.";
-	description += " Our people would be safe with the mighty army of " + annexerName + " and we could possibly flourish with their established economy. Or we could refuse the union which would surely lead to war, but maybe we can hold them off!\"";
+	std::string description = "= \"Today " + annexerName + " sent an envoy to us with a proposition of an union. ";
+	description += "We are alone and in this world, and a union with " + annexerName + " might prove to be fruiteful. ";
+	description += "Our people would be safe with the mighty army of " + annexerName + 
+		" and we could possibly flourish with their established economy. ";
+	description += "Or we could refuse the union which would surely lead to war, but maybe we can hold them off!\"";
 	annexEvent.giveDescription(std::move(description));
 	annexEvent.givePicture("GFX_report_event_hitler_parade");
 	annexEvent.setTriggeredOnly();
@@ -162,7 +169,10 @@ void HoI4::Events::createAnnexEvent(const HoI4::Country& annexer, const HoI4::Co
 	acceptAiChance += "			}\n";
 	acceptOption.giveAiChance(std::move(acceptAiChance));
 	std::string acceptNewsEvent = "		" + annexed.getTag() + " = {\n";
-	acceptNewsEvent += "			country_event = { hours = 2 id = NFEvents." + to_string(nationalFocusEventNumber + 1) + " }\n";//+1 accept
+	acceptNewsEvent += "			country_event = { " \
+			"hours = 2 " \
+			"id = NFEvents." + std::to_string(nationalFocusEventNumber + 1) + " " \
+		"}\n";
 	acceptNewsEvent += "		}\n";
 	acceptNewsEvent += "		custom_effect_tooltip = GAME_OVER_TT\n";
 	acceptNewsEvent += "	}";
@@ -185,7 +195,10 @@ void HoI4::Events::createAnnexEvent(const HoI4::Country& annexer, const HoI4::Co
 	refuseAiChance += "\t\t";
 	acceptOption.giveAiChance(std::move(refuseAiChance));
 	std::string removeFromFaction = "		" + annexed.getTag() + " = {\n";
-	removeFromFaction += "			country_event = { hours = 2 id = NFEvents." + to_string(nationalFocusEventNumber + 2) + " }\n";//+2 refuse
+	removeFromFaction += "			country_event = { " \
+			"hours = 2 " \
+			"id = NFEvents." + std::to_string(nationalFocusEventNumber + 2) + " " \
+		"}\n";
 	removeFromFaction += "			if = {\n";
 	removeFromFaction += "				limit = { is_in_faction_with = " + annexed.getTag() + " }\n";
 	removeFromFaction += "				remove_from_faction = " + annexed.getTag() + "\n";
@@ -202,7 +215,9 @@ void HoI4::Events::createAnnexEvent(const HoI4::Country& annexer, const HoI4::Co
 	refusedEvent.giveType("country_event");
 	refusedEvent.giveId("NFEvents." + to_string(nationalFocusEventNumber + 2));
 	refusedEvent.giveTitle("\"" + annexedName + " Refuses!\"");
-	refusedEvent.giveDescription("= \"" + annexedName + " Refused our proposed union! This is an insult to us that cannot go unanswered!\"");
+	refusedEvent.giveDescription(
+		"= \"" + annexedName + " Refused our proposed union! This is an insult to us that cannot go unanswered!\""
+	);
 	refusedEvent.givePicture("GFX_report_event_german_troops");
 	refusedEvent.setTriggeredOnly();
 
@@ -223,7 +238,9 @@ void HoI4::Events::createAnnexEvent(const HoI4::Country& annexer, const HoI4::Co
 	acceptedEvent.giveType("country_event");
 	acceptedEvent.giveId("NFEvents." + to_string(nationalFocusEventNumber + 1));
 	acceptedEvent.giveTitle("\"" + annexedName + " accepts!\"");
-	acceptedEvent.giveDescription("= \"" + annexedName + " accepted our proposed union, their added strength will push us to greatness!\"");
+	acceptedEvent.giveDescription(
+		"= \"" + annexedName + " accepted our proposed union, their added strength will push us to greatness!\""
+	);
 	acceptedEvent.givePicture("GFX_report_event_german_speech");
 	acceptedEvent.setTriggeredOnly();
 
@@ -241,7 +258,9 @@ void HoI4::Events::createAnnexEvent(const HoI4::Country& annexer, const HoI4::Co
 	}
 	acceptedOption.giveScriptBlock("		annex_country = { target = " + annexed.getTag() + " transfer_troops = yes }");
 	acceptedOption.giveScriptBlock("		add_political_power = 50");
-	acceptedOption.giveScriptBlock("		add_named_threat = { threat = 2 name = \"" + annexerName + " annexed " + annexedName + "\" }");
+	acceptedOption.giveScriptBlock(
+		"		add_named_threat = { threat = 2 name = \"" + annexerName + " annexed " + annexedName + "\" }"
+	);
 	acceptedOption.giveScriptBlock("		set_country_flag = " + annexed.getTag() + "_annexed");
 	acceptedEvent.giveOption(std::move(acceptedOption));
 
@@ -258,7 +277,6 @@ void HoI4::Events::createSudetenEvent(
 	const std::vector<int>& claimedStates
 )
 {
-	//flesh out this event more, possibly make it so allies have a chance to help?
 	auto possibleannexerName = annexer.getSourceCountry().getName("english");
 	std::string annexerName;
 	if (possibleannexerName)
@@ -299,10 +317,17 @@ void HoI4::Events::createSudetenEvent(
 	sudetenEvent.giveType("country_event");
 	sudetenEvent.giveId("NFEvents." + to_string(nationalFocusEventNumber));
 	sudetenEvent.giveTitle(annexerName + " Demands " + annexedName + "!");
-	std::string description = "= \"" + annexerName + " has recently been making claims to our bordering states, saying that these states are full of " + annexerAdjctive + " people and that the territory should be given to them. Although it ";
-	description += "is true that recently our neighboring states have had an influx of " + annexerAdjctive + " people in the recent years, we cannot give up our lands because a few " + annexerAdjctive + " settled down in our land. ";
-	description += "In response " + annexerName + " has called for a conference, demanding their territory in exchange for peace. How do we resond? ";
-	description += " Our people would be safe with the mighty army of " + annexerName + " and we could possibly flourish with their established economy. Or we could refuse the union which would surely lead to war, but maybe we can hold them off!\"";
+	std::string description = "= \"" + annexerName + " has recently been making claims to our bordering states, ";
+	description += "saying that these states are full of " + annexerAdjctive + 
+		" people and that the territory should be given to them. ";
+	description += "Although it is true that recently our neighboring states have had an influx of " + annexerAdjctive + 
+		" people in the recent years, ";
+	description += "we cannot give up our lands because a few " + annexerAdjctive + " settled down in our land. ";
+	description += "In response " + annexerName + 
+		" has called for a conference, demanding their territory in exchange for peace. How do we respond? ";
+	description += "Our people would be safe with the mighty army of " + annexerName + 
+		" and we could possibly flourish with their established economy. ";
+	description += "Or we could refuse the union which would surely lead to war, but maybe we can hold them off!\"";
 	sudetenEvent.giveDescription(std::move(description));
 	sudetenEvent.givePicture("GFX_report_event_hitler_parade");
 	sudetenEvent.setTriggeredOnly();
@@ -322,7 +347,10 @@ void HoI4::Events::createSudetenEvent(
 	acceptAiChance += "		}";
 	acceptOption.giveAiChance(std::move(acceptAiChance));
 	std::string acceptNewsEvent = "		" + annexer.getTag() + " = {\n";
-	acceptNewsEvent += "			country_event = { hours = 2 id = NFEvents." + to_string(nationalFocusEventNumber + 1) + " }\n";
+	acceptNewsEvent += "			country_event = { " \
+			"hours = 2 " \
+			"id = NFEvents." + to_string(nationalFocusEventNumber + 1) + " " \
+		"}\n";
 	acceptNewsEvent += "		}\n";
 	acceptNewsEvent += "	}";
 	acceptOption.giveScriptBlock(std::move(acceptNewsEvent));
@@ -344,8 +372,10 @@ void HoI4::Events::createSudetenEvent(
 	refuseAiChance += "		}";
 	refuseOption.giveAiChance(std::move(refuseAiChance));
 	std::string removeFromFaction = annexer.getTag() + " = {\n";
-	//removeFromFaction += "			add_opinion_modifier = { target = ROOT modifier = " + annexer->getTag() + "_anschluss_rejected }\n";
-	removeFromFaction += "			country_event = { hours = 2 id = NFEvents." + to_string(nationalFocusEventNumber + 2) + " }\n";
+	removeFromFaction += "			country_event = { " \
+			"hours = 2 " \
+			"id = NFEvents." + std::to_string(nationalFocusEventNumber + 2) + " " \
+		"}\n";
 	removeFromFaction += "			if = {\n";
 	removeFromFaction += "				limit = { is_in_faction_with = " + annexed.getTag() + " }\n";
 	removeFromFaction += "				remove_from_faction = " + annexed.getTag() + "\n";
@@ -362,7 +392,9 @@ void HoI4::Events::createSudetenEvent(
 	refusedEvent.giveType("country_event");
 	refusedEvent.giveId("NFEvents." + to_string(nationalFocusEventNumber + 2));
 	refusedEvent.giveTitle("\"" + annexedName + " Refuses!\"");
-	refusedEvent.giveDescription("= \"" + annexedName + " Refused our proposed proposition! This is an insult to us that cannot go unanswered!\"");
+	refusedEvent.giveDescription(
+		"= \"" + annexedName + " Refused our proposed proposition! This is an insult to us that cannot go unanswered!\""
+	);
 	refusedEvent.givePicture("GFX_report_event_german_troops");
 	refusedEvent.setTriggeredOnly();
 
@@ -383,7 +415,9 @@ void HoI4::Events::createSudetenEvent(
 	acceptedEvent.giveType("country_event");
 	acceptedEvent.giveId("NFEvents." + to_string(nationalFocusEventNumber + 1));
 	acceptedEvent.giveTitle("\"" + annexedName + " accepts!\"");
-	acceptedEvent.giveDescription("= \"" + annexedName + " accepted our proposed demands, the added lands will push us to greatness!\"");
+	acceptedEvent.giveDescription(
+		"= \"" + annexedName + " accepted our proposed demands, the added lands will push us to greatness!\""
+	);
 	acceptedEvent.givePicture("GFX_report_event_german_speech");
 	acceptedEvent.setTriggeredOnly();
 
@@ -392,7 +426,9 @@ void HoI4::Events::createSudetenEvent(
 	for (unsigned int i = 0; i <= 1 && i < claimedStates.size(); i++)
 	{
 		acceptedOption.giveScriptBlock(to_string(claimedStates[i]) + " = { add_core_of = " + annexer.getTag() + " }");
-		acceptedOption.giveScriptBlock(annexer.getTag() + " = { transfer_state =  " + to_string(claimedStates[i]) + " }");
+		acceptedOption.giveScriptBlock(
+			annexer.getTag() + " = { transfer_state =  " + to_string(claimedStates[i]) + " }"
+		);
 	}
 	acceptedOption.giveScriptBlock("set_country_flag = " + annexed.getTag() + "_demanded");
 	acceptedEvent.giveOption(std::move(acceptedOption));
@@ -833,7 +869,9 @@ void HoI4::Events::addSuppressedEvents(const std::set<std::string>& majorIdeolog
 			description += "		trigger = { has_government = " + ideology + " }\n";
 			description += "	}";
 			removeNeutral.giveDescription(std::move(description));
-			HoI4Localisation::copyEventLocalisations("abandon_neutral.d_" + ideology, "conv.political." + std::to_string(politicalEventNumber) + "_" + ideology);
+			HoI4Localisation::copyEventLocalisations(
+				"abandon_neutral.d_" + ideology, "conv.political." + std::to_string(politicalEventNumber) + "_" + ideology
+			);
 		}
 		removeNeutral.givePicture("GFX_report_event_journalists_speech");
 		std::string trigger = "= {\n";
@@ -916,7 +954,9 @@ void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& maj
 			warJustification.giveTrigger(std::move(trigger));
 			EventOption option;
 			option.giveName("war_justification." + std::to_string(i) + ".a");
-			option.giveScriptBlock("FROM = { country_event = { id = war_justification." + std::to_string(i + 200) + " } }");
+			option.giveScriptBlock(
+				"FROM = { country_event = { id = war_justification." + std::to_string(i + 200) + " } }"
+			);
 			option.giveScriptBlock("set_country_flag = war_justification_last_event_political");
 			option.giveScriptBlock("clr_country_flag = war_justification_last_event_generic");
 			option.giveScriptBlock("clr_country_flag = war_justification_last_event_neighbor");
@@ -924,9 +964,18 @@ void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& maj
 			option.giveScriptBlock("clr_country_flag = war_justification_last_event_borderthreat");
 			warJustification.giveOption(std::move(option));
 			warJustificationEvents.push_back(warJustification);
-			HoI4Localisation::copyEventLocalisations("war_justification." + majorIdeology + majorIdeology2 + ".t", "war_justification." + std::to_string(i) + ".t");
-			HoI4Localisation::copyEventLocalisations("war_justification." + majorIdeology + majorIdeology2 + ".d", "war_justification." + std::to_string(i) + ".d");
-			HoI4Localisation::copyEventLocalisations("war_justification." + majorIdeology + majorIdeology2 + ".a", "war_justification." + std::to_string(i) + ".a");
+			HoI4Localisation::copyEventLocalisations(
+				"war_justification." + majorIdeology + majorIdeology2 + ".t",
+				"war_justification." + std::to_string(i) + ".t"
+			);
+			HoI4Localisation::copyEventLocalisations(
+				"war_justification." + majorIdeology + majorIdeology2 + ".d",
+				"war_justification." + std::to_string(i) + ".d"
+			);
+			HoI4Localisation::copyEventLocalisations(
+				"war_justification." + majorIdeology + majorIdeology2 + ".a",
+				"war_justification." + std::to_string(i) + ".a"
+			);
 
 			Event warJustification2;
 			warJustification2.giveType("country_event");
@@ -939,9 +988,18 @@ void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& maj
 			option2.giveName("war_justification." + std::to_string(200 + i) + ".a");
 			warJustification2.giveOption(std::move(option2));
 			warJustificationEvents.push_back(warJustification2);
-			HoI4Localisation::copyEventLocalisations("war_justification." + majorIdeology + majorIdeology2 + "200.t", "war_justification." + std::to_string(200 + i) + ".t");
-			HoI4Localisation::copyEventLocalisations("war_justification." + majorIdeology + majorIdeology2 + "200.d", "war_justification." + std::to_string(200 + i) + ".d");
-			HoI4Localisation::copyEventLocalisations("war_justification." + majorIdeology + majorIdeology2 + "200.a", "war_justification." + std::to_string(200 + i) + ".a");
+			HoI4Localisation::copyEventLocalisations(
+				"war_justification." + majorIdeology + majorIdeology2 + "200.t",
+				"war_justification." + std::to_string(200 + i) + ".t"
+			);
+			HoI4Localisation::copyEventLocalisations(
+				"war_justification." + majorIdeology + majorIdeology2 + "200.d",
+				"war_justification." + std::to_string(200 + i) + ".d"
+			);
+			HoI4Localisation::copyEventLocalisations(
+				"war_justification." + majorIdeology + majorIdeology2 + "200.a",
+				"war_justification." + std::to_string(200 + i) + ".a"
+			);
 
 			i++;
 		}
@@ -985,13 +1043,16 @@ void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& maj
 void HoI4::Events::importElectionEvents(const std::set<std::string>& majorIdeologies, HoI4::OnActions& onActions)
 {
 	clearRegisteredKeywords();
-	registerKeyword(std::regex("country_event"), [this, majorIdeologies](const std::string& type, std::istream& theStream){
-		Event electionEvent(type, theStream);
-		if ((majorIdeologies.count("democratic") > 0) || (electionEvent.getId() != "election.3"))
-		{
-			electionEvents.push_back(electionEvent);
+	registerKeyword(
+		std::regex("country_event"),
+		[this, majorIdeologies](const std::string& type, std::istream& theStream){
+			Event electionEvent(type, theStream);
+			if ((majorIdeologies.count("democratic") > 0) || (electionEvent.getId() != "election.3"))
+			{
+				electionEvents.push_back(electionEvent);
+			}
 		}
-	});
+	);
 	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), commonItems::ignoreItem);
 
 	parseFile("blankmod/output/events/ElectionEvents.txt");
@@ -1051,13 +1112,25 @@ void HoI4::Events::addPartyChoiceEvent(
 			option.giveName(std::move(optionName));
 			if (majorIdeologies.count("democratic") > 0)
 			{
-				option.giveScriptBlock("set_party_name = { ideology = democratic long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }");
+				option.giveScriptBlock(
+					"set_party_name = { " \
+						"ideology = democratic " \
+						"long_name = " + countryTag + "_" + trimmedName + "_party " +
+						"name = " + countryTag + "_" + trimmedName + "_party" \
+					"}"
+				);
 				option.giveScriptBlock("retire_country_leader = yes");
 				option.giveScriptBlock("set_country_leader_ideology = conservatism");
 			}
 			else
 			{
-				option.giveScriptBlock("set_party_name = { ideology = neutrality long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }");
+				option.giveScriptBlock(
+					"set_party_name = { " \
+						"ideology = neutrality " \
+						"long_name = " + countryTag + "_" + trimmedName + "_party " +
+						"name = " + countryTag + "_" + trimmedName + "_party " \
+					"}"
+				);
 				option.giveScriptBlock("retire_country_leader = yes");
 				option.giveScriptBlock("set_country_leader_ideology = conservatism_neutral");
 			}
@@ -1075,13 +1148,25 @@ void HoI4::Events::addPartyChoiceEvent(
 			option.giveName(std::move(optionName));
 			if (majorIdeologies.count("democratic") > 0)
 			{
-				option.giveScriptBlock("set_party_name = { ideology = democratic long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }");
+				option.giveScriptBlock(
+					"set_party_name = { " \
+						"ideology = democratic " \
+						"long_name = " + countryTag + "_" + trimmedName + "_party " +
+						"name = " + countryTag + "_" + trimmedName + "_party " \
+					"}"
+				);
 				option.giveScriptBlock("retire_country_leader = yes");
 				option.giveScriptBlock("set_country_leader_ideology = liberalism");
 			}
 			else
 			{
-				option.giveScriptBlock("set_party_name = { ideology = neutrality long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }");
+				option.giveScriptBlock(
+					"set_party_name = { " \
+						"ideology = neutrality " \
+						"long_name = " + countryTag + "_" + trimmedName + "_party " +
+						"name = " + countryTag + "_" + trimmedName + "_party " \
+					"}"
+				);
 				option.giveScriptBlock("retire_country_leader = yes");
 				option.giveScriptBlock("set_country_leader_ideology = liberalism_neutral");
 			}
@@ -1099,13 +1184,25 @@ void HoI4::Events::addPartyChoiceEvent(
 			option.giveName(std::move(optionName));
 			if (majorIdeologies.count("democratic") > 0)
 			{
-				option.giveScriptBlock("set_party_name = { ideology = democratic long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }");
+				option.giveScriptBlock(
+					"set_party_name = { " \
+						"ideology = democratic " \
+						"long_name = " + countryTag + "_" + trimmedName + "_party " +
+						"name = " + countryTag + "_" + trimmedName + "_party " \
+					"}"
+				);
 				option.giveScriptBlock("retire_country_leader = yes");
 				option.giveScriptBlock("set_country_leader_ideology = socialism");
 			}
 			else
 			{
-				option.giveScriptBlock("set_party_name = { ideology = neutrality long_name = " + countryTag + "_" + trimmedName + "_party " + "name = " + countryTag + "_" + trimmedName + "_party }");
+				option.giveScriptBlock(
+					"set_party_name = { " \
+						"ideology = neutrality " \
+						"long_name = " + countryTag + "_" + trimmedName + "_party " +
+						"name = " + countryTag + "_" + trimmedName + "_party " \
+					"}"
+				);
 				option.giveScriptBlock("retire_country_leader = yes");
 				option.giveScriptBlock("set_country_leader_ideology = socialism_neutral");
 			}
