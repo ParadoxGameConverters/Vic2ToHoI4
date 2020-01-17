@@ -75,12 +75,20 @@ void HoI4::Events::createFactionEvents(const HoI4::Country& leader, const HoI4::
 		addToFaction += "		}";
 		yesOption.giveScriptBlock(std::move(addToFaction));
 	}
-	yesOption.giveHiddenEffect("\t\t\tnews_event = { id = news." + to_string(newsEventNumber) + " }\n");
+	yesOption.giveHiddenEffect(
+		"= {\n" \
+		"\t\t\tnews_event = { id = news." + to_string(newsEventNumber) + " }\n" \
+		"\t\t}"
+	);
 	nfEvent.giveOption(std::move(yesOption));
 	EventOption noOption;
 	noOption.giveName("\"No\"");
 	noOption.giveAiChance("= { factor = 0 }");
-	noOption.giveHiddenEffect("\t\t\tnews_event = { id = news." + to_string(newsEventNumber + 1) + " }\n");
+	noOption.giveHiddenEffect(
+		"= {\n" \
+		"\t\t\tnews_event = { id = news." + to_string(newsEventNumber + 1) + " }\n" \
+		"\t\t}"
+	);
 	nfEvent.giveOption(std::move(noOption));
 	nationalFocusEvents.push_back(nfEvent);
 
@@ -1116,7 +1124,7 @@ void HoI4::Events::addPartyChoiceEvent(
 					"set_party_name = { " \
 						"ideology = democratic " \
 						"long_name = " + countryTag + "_" + trimmedName + "_party " +
-						"name = " + countryTag + "_" + trimmedName + "_party" \
+						"name = " + countryTag + "_" + trimmedName + "_party " \
 					"}"
 				);
 				option.giveScriptBlock("retire_country_leader = yes");
