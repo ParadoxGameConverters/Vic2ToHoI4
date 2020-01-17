@@ -835,10 +835,6 @@ void HoI4::Events::addSuppressedEvents(const std::set<std::string>& majorIdeolog
 			removeNeutral.giveDescription(std::move(description));
 			HoI4Localisation::copyEventLocalisations("abandon_neutral.d_" + ideology, "conv.political." + std::to_string(politicalEventNumber) + "_" + ideology);
 		}
-		/*if (removeNeutral.description.size() > 0)
-		{
-			removeNeutral.description = removeNeutral.description.substr(8, removeNeutral.description.size() - 9);
-		}*/
 		removeNeutral.givePicture("GFX_report_event_journalists_speech");
 		std::string trigger = "= {\n";
 		trigger += "		OR = {\n";
