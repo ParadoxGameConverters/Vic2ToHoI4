@@ -195,6 +195,7 @@
     <ClCompile Include="HoI4WorldTests\Decisions\IdeologicalDecisionsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Events\EventOptionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4WarTests.cpp" />
