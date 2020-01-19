@@ -593,6 +593,9 @@
     <ClCompile Include="HoI4WorldTests\Events\EventOptionTests.cpp">
       <Filter>HoI4WorldTests\Events</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Events\EventTests.cpp">
+      <Filter>HoI4WorldTests\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
