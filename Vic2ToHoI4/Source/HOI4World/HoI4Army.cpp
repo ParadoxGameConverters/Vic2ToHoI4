@@ -24,6 +24,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4Army.h"
 #include "Division.h"
 #include "MilitaryMappings/UnitMappings.h"
+#include "States/HoI4State.h"
 #include "../Configuration.h"
 #include "../Mappers/Provinces/ProvinceMapper.h"
 #include "../V2World/Army.h"
@@ -31,15 +32,42 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings, int backupLocation, double forceMultiplier)
+void HoI4::Army::convertArmies(
+	const militaryMappings& theMilitaryMappings,
+	int backupLocation,
+	double forceMultiplier,
+	const HoI4::States& theStates
+)
 {
 	std::map<std::string, std::vector<sizedRegiment>> remainingBattalionsAndCompanies;
 
 	for (auto army: sourceArmies)
 	{
 		auto provinceMapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(army->getLocation());
-		if (!provinceMapping)
+		if (!provinceMapping || isWastelandProvince(*provinceMapping->begin(), theStates))
 		{
+			for (auto regiment : army->getRegiments())
+			{
+				std::string Vic2Type = regiment->getType();
+
+				if (theMilitaryMappings.getUnitMappings().hasMatchingType(Vic2Type))
+				{
+					auto unitInfo = theMilitaryMappings.getUnitMappings().getMatchingUnitInfo(Vic2Type);
+
+					if (unitInfo && unitInfo->getCategory() == "land")
+					{
+						// Calculate how many Battalions and Companies are available after mapping Vic2 armies
+						sizedRegiment theRegiment;
+						theRegiment.unitSize = unitInfo->getSize() * forceMultiplier;
+						theRegiment.regiment = regiment;
+						remainingBattalionsAndCompanies[unitInfo->getType()].push_back(theRegiment);
+					}
+				}
+				else
+				{
+					LOG(LogLevel::Warning) << "Unknown unit type: " << Vic2Type;
+				}
+			}
 			continue;
 		}
 
@@ -192,6 +220,22 @@ bool HoI4::Army::sufficientUnits(const std::map<std::string, std::vector<sizedRe
 		if (available < requiredUnit.second)
 		{
 			return false;
+		}
+	}
+
+	return true;
+}
+
+
+bool HoI4::Army::isWastelandProvince(int provinceNum, const HoI4::States& theStates)
+{
+	auto provinceToStateIDMap = theStates.getProvinceToStateIDMap();
+	if (const auto& stateNum = provinceToStateIDMap.find(provinceNum); stateNum != provinceToStateIDMap.end())
+	{
+		const auto& states = theStates.getStates();
+		if (const auto& state = states.find(stateNum->second); state != states.end())
+		{
+			return state->second.getCategory() == "wasteland";
 		}
 	}
 

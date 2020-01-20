@@ -710,15 +710,24 @@ void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 }
 
 
-void HoI4::Country::convertArmies(const militaryMappings& theMilitaryMappings)
+void HoI4::Country::convertArmies(const militaryMappings& theMilitaryMappings, const HoI4::States& theStates)
 {
 	if (capitalProvince)
 	{
-		theArmy.convertArmies(theMilitaryMappings, *capitalProvince, theConfiguration.getForceMultiplier());
+		theArmy.convertArmies(
+			theMilitaryMappings,
+			*capitalProvince,
+			theConfiguration.getForceMultiplier(),
+			theStates);
 	}
 	else
 	{
-		theArmy.convertArmies(theMilitaryMappings, 0, theConfiguration.getForceMultiplier());
+		theArmy.convertArmies(
+			theMilitaryMappings,
+			0,
+			theConfiguration.getForceMultiplier(),
+			theStates
+		);
 	}
 }
 
