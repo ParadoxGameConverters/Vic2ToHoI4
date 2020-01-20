@@ -18,7 +18,7 @@ class Event: commonItems::parser
 {
 	public:
 		Event() = default;
-		Event(const std::string& type, std::istream& theStream);
+		Event(const std::string& _type, std::istream& theStream);
 
 		void giveType(std::string&& newType) { type = newType; }
 		void giveId(std::string&& newId) { id = newId; }
@@ -34,8 +34,8 @@ class Event: commonItems::parser
 
 		void clearOptions() { options.clear(); }
 
-		const std::string& getId() const { return id; }
-		const std::string& getTitle() const { return title; }
+		[[nodiscard]] const std::string& getId() const { return id; }
+		[[nodiscard]] const std::string& getTitle() const { return title; }
 
 		friend std::ostream& operator << (std::ostream& out, const Event& theEvent);
 		
@@ -58,4 +58,4 @@ class Event: commonItems::parser
 
 
 
-#endif // #ifndef HOI4_EVENT_H
+#endif // HOI4_EVENT_H

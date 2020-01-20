@@ -15,7 +15,7 @@ class EventOption: commonItems::parser
 {
 	public:
 		EventOption() = default;
-		EventOption(std::istream& theStream);
+		explicit EventOption(std::istream& theStream);
 
 		void giveName(std::string&& newName) { name = newName; }
 		void giveAiChance(std::string&& newChance) { aiChance = newChance; }
