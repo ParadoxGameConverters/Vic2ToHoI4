@@ -10,7 +10,6 @@
 #include <map>
 #include <optional>
 #include <string>
-#include <vector>
 
 
 
@@ -35,6 +34,12 @@ typedef int stateNumber;
 class HoI4Localisation
 {
 	public:
+		HoI4Localisation(const HoI4Localisation&) = delete;
+		HoI4Localisation(HoI4Localisation&&) = delete;
+		HoI4Localisation& operator=(const HoI4Localisation&) = delete;
+		HoI4Localisation& operator=(HoI4Localisation&&) = delete;
+		~HoI4Localisation() = default;
+	
 		static void addStateLocalisation(const HoI4::State& hoi4State, const Vic2::State& vic2State)
 		{
 			getInstance()->AddStateLocalisation(hoi4State, vic2State);
@@ -129,11 +134,8 @@ class HoI4Localisation
 		void importFocusLocalisations(const std::string& filename);
 		void importGenericIdeaLocalisations(const std::string& filename);
 		void importEventLocalisations(const std::string& filename);
-		void importLocalisationFile(const std::string& filename, languageToLocalisationsMap& localisations);
+		static void importLocalisationFile(const std::string& filename, languageToLocalisationsMap& localisations);
 		void prepareBlankLocalisations();
-
-		HoI4Localisation(const HoI4Localisation&) = delete;
-		HoI4Localisation& operator=(const HoI4Localisation&) = delete;
 
 		void AddNonenglishCountryLocalisations();
 
@@ -141,7 +143,7 @@ class HoI4Localisation
 		void addLocalisationsForAllGovernments(const std::pair<const std::string&, const std::string&>& tags, const std::pair<const std::string&, const std::string&>& suffixes, const governmentMapper& governmentMap);
 		void addLocalisationsInAllLanguages(const std::string& destTag, const std::pair<const std::string&, const std::string&>& suffixes, const std::string& HoI4GovernmentIdeology, const keyToLocalisationMap& namesInLanguage);
 		languageToLocalisationsMap::iterator getExistingLocalisationsInLanguage(const std::string& language);
-		void addLocalisation(
+		static void addLocalisation(
 			const std::string& newKey,
 			keyToLocalisationMap& existingLanguage,
 			const std::string& localisation,
@@ -172,9 +174,9 @@ class HoI4Localisation
 		void addNonenglishVPLocalisations();
 		void addDebugLocalisations(const std::pair<const int, HoI4::State>& state);
 
-		bool sourceStateHasOneProvince(const Vic2::State& sourceState);
-		bool sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState);
-		bool stateHasAllDefinedProvincesAfterConversion(const HoI4::State& state, const Vic2::State& sourceState);
+		static bool sourceStateHasOneProvince(const Vic2::State& sourceState);
+		static bool sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState);
+		static bool stateHasAllDefinedProvincesAfterConversion(const HoI4::State& state, const Vic2::State& sourceState);
 
 		void AddEventLocalisation(const std::string& event, const std::string& localisation);
 		void AddEventLocalisationFromVic2(const std::string& Vic2Key, const std::string& HoI4Key);
@@ -197,7 +199,7 @@ class HoI4Localisation
 			const std::string& localisationKey,
 			const std::string& replacementKey,
 			HoI4::ScriptedLocalisation& scriptedLocalisation
-		);
+		) const;
 
 		void Output() const;
 		void outputCountries(const std::string& localisationPath) const;
@@ -209,7 +211,7 @@ class HoI4Localisation
 		void outputPoliticalPartyLocalisations(const std::string& localisationPath) const;
 		void outputDecisionLocalisations(const std::string& localisationPath) const;
 		void outputCustomLocalisations(const std::string& localisationPath) const;
-		void outputLocalisations(const std::string& filenameStart, const languageToLocalisationsMap& localisations) const;
+		static void outputLocalisations(const std::string& filenameStart, const languageToLocalisationsMap& localisations);
 
 		std::map<language, std::map< stateNumber, std::string>> stateLocalisations;
 		languageToLocalisationsMap VPLocalisations;
