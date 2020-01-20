@@ -110,7 +110,7 @@ void HoI4Localisation::importLocalisationFile(const string& filename, languageTo
 			continue;
 		}
 
-		int colon = line.find(':');
+		std::size_t colon = line.find(':');
 		if (colon == string::npos)
 		{
 			continue;
@@ -118,7 +118,7 @@ void HoI4Localisation::importLocalisationFile(const string& filename, languageTo
 		string key = line.substr(1, colon - 1);
 
 		line = line.substr(colon, line.length());
-		int quote = line.find('\"');
+		std::size_t quote = line.find('\"');
 		string value = line.substr(quote + 1, (line.length() - quote - 2));
 
 		newLocalisations[key] = value;
