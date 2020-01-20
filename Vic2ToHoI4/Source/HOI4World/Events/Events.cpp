@@ -694,8 +694,8 @@ void HoI4::Events::addFiftyPercentEvents(const std::set<std::string>& majorIdeol
 		fiftyPercentEvent.setTriggeredOnly();
 		EventOption optionC;
 		std::string optionName = "conv.political." + std::to_string(politicalEventNumber) + ".c";
-		optionC.giveName(std::move(optionName));
 		HoI4Localisation::copyEventLocalisations(ideology + "_fifty_percent.c", optionName);
+		optionC.giveName(std::move(optionName));
 		if (ideology == "democratic")
 		{
 			for (auto ideology2: majorIdeologies)
@@ -779,8 +779,8 @@ void HoI4::Events::addRevolutionEvents(const std::set<std::string>& majorIdeolog
 		revolutionEvent.giveOption(std::move(optionA));
 		EventOption optionB;
 		optionName = "conv.political." + std::to_string(politicalEventNumber) + ".b";
-		optionB.giveName(std::move(optionName));
 		HoI4Localisation::copyEventLocalisations(ideology + "_revolution_event.b", optionName);
+		optionB.giveName(std::move(optionName));
 		for (auto ideology2: majorIdeologies)
 		{
 			if (ideology2 == ideology)
@@ -842,8 +842,8 @@ void HoI4::Events::addSuppressedEvents(const std::set<std::string>& majorIdeolog
 		suppressedEvent.giveMeanTimeToHappen(std::move(mtth));
 		EventOption option;
 		std::string optionName = "conv.political." + std::to_string(politicalEventNumber) + ".a";
-		option.giveName(std::move(optionName));
 		HoI4Localisation::copyEventLocalisations(ideology + "_suppressed_event.a", optionName);
+		option.giveName(std::move(optionName));
 		option.giveScriptBlock("remove_ideas = " + ideology + "_revolutionaries");
 		suppressedEvent.giveOption(std::move(option));
 		politicalEvents.push_back(suppressedEvent);
@@ -1116,6 +1116,7 @@ void HoI4::Events::addPartyChoiceEvent(
 			std::string trimmedName = partyName.substr(tagAndDashSize, partyName.size());
 
 			std::string optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
+			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName);
 			EventOption option;
 			option.giveName(std::move(optionName));
 			if (majorIdeologies.count("democratic") > 0)
@@ -1143,7 +1144,6 @@ void HoI4::Events::addPartyChoiceEvent(
 				option.giveScriptBlock("set_country_leader_ideology = conservatism_neutral");
 			}
 			partyChoiceEvent.giveOption(std::move(option));
-			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName);
 			optionLetter++;
 		}
 		if ((party.getIdeology() == "liberal"))
@@ -1153,6 +1153,7 @@ void HoI4::Events::addPartyChoiceEvent(
 
 			std::string optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
 			EventOption option;
+			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName);
 			option.giveName(std::move(optionName));
 			if (majorIdeologies.count("democratic") > 0)
 			{
@@ -1179,7 +1180,6 @@ void HoI4::Events::addPartyChoiceEvent(
 				option.giveScriptBlock("set_country_leader_ideology = liberalism_neutral");
 			}
 			partyChoiceEvent.giveOption(std::move(option));
-			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName);
 			optionLetter++;
 		}
 		if ((party.getIdeology() == "socialist"))
@@ -1188,6 +1188,7 @@ void HoI4::Events::addPartyChoiceEvent(
 			std::string trimmedName = partyName.substr(tagAndDashSize, partyName.size());
 
 			std::string optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
+			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName);
 			EventOption option;
 			option.giveName(std::move(optionName));
 			if (majorIdeologies.count("democratic") > 0)
@@ -1215,7 +1216,6 @@ void HoI4::Events::addPartyChoiceEvent(
 				option.giveScriptBlock("set_country_leader_ideology = socialism_neutral");
 			}
 			partyChoiceEvent.giveOption(std::move(option));
-			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName);
 			optionLetter++;
 		}
 	}
