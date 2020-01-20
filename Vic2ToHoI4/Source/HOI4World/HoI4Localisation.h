@@ -50,12 +50,19 @@ class HoI4Localisation
 			getInstance()->AddStateLocalisations(states);
 		}
 
-		static void createCountryLocalisations(const std::pair<const std::string&, const std::string&>& tags, const governmentMapper& governmentMap)
+		static void createCountryLocalisations(
+			const std::pair<const std::string&, const std::string&>& tags,
+			const governmentMapper& governmentMap
+		)
 		{
 			getInstance()->CreateCountryLocalisations(tags, governmentMap);
 		}
 
-		static void updateMainCountryLocalisation(const std::string& HoI4Key, const std::string& Vic2Tag, const std::string& Vic2Government)
+		static void updateMainCountryLocalisation(
+			const std::string& HoI4Key,
+			const std::string& Vic2Tag,
+			const std::string& Vic2Government
+		)
 		{
 			getInstance()->UpdateMainCountryLocalisation(HoI4Key, Vic2Tag, Vic2Government);
 		}
@@ -139,9 +146,21 @@ class HoI4Localisation
 
 		void AddNonenglishCountryLocalisations();
 
-		void CreateCountryLocalisations(const std::pair<const std::string&, const std::string&>& tags, const governmentMapper& governmentMap);
-		void addLocalisationsForAllGovernments(const std::pair<const std::string&, const std::string&>& tags, const std::pair<const std::string&, const std::string&>& suffixes, const governmentMapper& governmentMap);
-		void addLocalisationsInAllLanguages(const std::string& destTag, const std::pair<const std::string&, const std::string&>& suffixes, const std::string& HoI4GovernmentIdeology, const keyToLocalisationMap& namesInLanguage);
+		void CreateCountryLocalisations(
+			const std::pair<const std::string&, const std::string&>& tags,
+			const governmentMapper& governmentMap
+		);
+		void addLocalisationsForAllGovernments(
+			const std::pair<const std::string&, const std::string&>& tags,
+			const std::pair<const std::string&, const std::string&>& suffixes,
+			const governmentMapper& governmentMap
+		);
+		void addLocalisationsInAllLanguages(
+			const std::string& destTag,
+			const std::pair<const std::string&, const std::string&>& suffixes,
+			const std::string& HoI4GovernmentIdeology,
+			const keyToLocalisationMap& namesInLanguage
+		);
 		languageToLocalisationsMap::iterator getExistingLocalisationsInLanguage(const std::string& language);
 		static void addLocalisation(
 			const std::string& newKey,
@@ -149,9 +168,16 @@ class HoI4Localisation
 			const std::string& localisation,
 			const std::string& HoI4Suffix
 		);
-		bool addNeutralLocalisation(const std::pair<const std::string&, const std::string&>& tags, const std::pair<const std::string&, const std::string&>& suffixes);
+		bool addNeutralLocalisation(
+			const std::pair<const std::string&, const std::string&>& tags,
+			const std::pair<const std::string&, const std::string&>& suffixes
+		);
 
-		void UpdateMainCountryLocalisation(const std::string& HoI4Key, const std::string& Vic2Tag, const std::string& Vic2Government);
+		void UpdateMainCountryLocalisation(
+			const std::string& HoI4Key,
+			const std::string& Vic2Tag,
+			const std::string& Vic2Government
+		);
 		bool attemptToUpdateMainCountryLocalisation(const std::string& HoI4Key, const std::string& Vic2Key);
 
 		void CopyFocusLocalisations(const std::string& oldKey, const std::string& newKey);
@@ -165,7 +191,10 @@ class HoI4Localisation
 			const Vic2::State& vic2State,
 			const std::pair<const std::string, std::string>& Vic2NameInLanguage
 		);
-		void addVPLocalisationForLanguage(const HoI4::State& state, const std::pair<const std::string, std::string>& Vic2NameInLanguage);
+		void addVPLocalisationForLanguage(
+			const HoI4::State& state,
+			const std::pair<const std::string, std::string>& Vic2NameInLanguage
+		);
 		std::map<stateNumber, std::string>& getExistingStateLocalisation(const std::string& language);
 		keyToLocalisationMap& getExistingVPLocalisation(const std::string& language);
 		void addLanguageToStateLocalisations(const std::string& language);
