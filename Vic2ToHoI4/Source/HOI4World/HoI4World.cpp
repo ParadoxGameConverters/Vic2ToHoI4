@@ -772,7 +772,7 @@ void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings)
 
 	for (auto country: countries)
 	{
-		country.second->convertArmies(localMilitaryMappings);
+		country.second->convertArmies(localMilitaryMappings, *states);
 	}
 }
 

@@ -38,6 +38,7 @@ class State;
 class States: commonItems::parser
 {
 	public:
+		States() = default;
 		explicit States(
 			const Vic2::World* sourceWorld,
 			const CountryMapper& countryMap,
