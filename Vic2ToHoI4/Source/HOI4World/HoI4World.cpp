@@ -1119,7 +1119,15 @@ void HoI4::World::outputCommonCountries() const
 
 	for (auto country: countries)
 	{
-		if (country.second->getCapitalState())
+		if (country.second->isGreatPower() && country.second->getCapitalState())
+		{
+			outputToCommonCountriesFile(allCountriesFile, *country.second);
+		}
+	}
+
+	for (auto country: countries)
+	{
+		if (!country.second->isGreatPower() && country.second->getCapitalState())
 		{
 			outputToCommonCountriesFile(allCountriesFile, *country.second);
 		}

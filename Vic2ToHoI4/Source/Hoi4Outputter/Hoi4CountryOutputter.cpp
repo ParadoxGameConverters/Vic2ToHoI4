@@ -272,7 +272,9 @@ void outputPuppets(
 	const std::string& tag,
 	const std::string& governmentIdeology,
 	const std::set<std::string>& puppets,
-	const std::string& puppetMaster
+	const std::string& puppetMaster,
+	const std::map<std::string, HoI4Relations>& relations,
+	const bool& greatPower
 );
 void outputPolitics(
 	std::ostream& output,
@@ -357,7 +359,9 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 		tag,
 		governmentIdeology,
 		theCountry.getPuppets(),
-		theCountry.getPuppetMaster()
+		theCountry.getPuppetMaster(),
+		theCountry.getRelations(),
+		theCountry.isGreatPower()
 	);
 	outputPolitics(
 		output,
@@ -490,33 +494,56 @@ void outputPuppets(
 	const std::string& tag,
 	const std::string& governmentIdeology,
 	const std::set<std::string>& puppets,
-	const std::string& puppetMaster
+	const std::string& puppetMaster,
+	const std::map<std::string, HoI4Relations>& relations,
+	const bool& greatPower
 ) {
-	if (puppets.size() > 0)
+	if (puppets.size() > 0 || greatPower)
 	{
 		output << "# DIPLOMACY\n";
 		output << "if = {\n";
-		output << "    limit = {\n";
-		output << "        has_dlc = \"Together for Victory\"\n";
-		output << "    }\n";
-		for (const auto& puppet: puppets)
+		output << "\tlimit = {\n";
+		output << "\t\tOR = {\n";
+		output << "\t\t\thas_dlc = \"Together for Victory\"\n";
+		output << "\t\t\thas_dlc = \"Man the Guns\"\n";
+		output << "\t\t}\n";
+		output << "\t}\n";
+		if (puppets.size() > 0)
 		{
-			if (governmentIdeology == "fascism")
+			for (const auto& puppet: puppets)
 			{
-				output << "    set_autonomy = {\n";
-				output << "        target = " << puppet << "\n";
-				output << "        autonomous_state = autonomy_integrated_puppet\n";
-				output << "    }\n";
-			}
-			else
-			{
-				output << "    set_autonomy = {\n";
-				output << "        target = " << puppet << "\n";
-				output << "        autonomous_state = autonomy_dominion\n";
-				output << "        freedom_level = 0.4\n";
-				output << "    }\n";
+				if (governmentIdeology == "fascism")
+				{
+					output << "    set_autonomy = {\n";
+					output << "        target = " << puppet << "\n";
+					output << "        autonomous_state = autonomy_integrated_puppet\n";
+					output << "    }\n";
+				}
+				else
+				{
+					output << "    set_autonomy = {\n";
+					output << "        target = " << puppet << "\n";
+					output << "        autonomous_state = autonomy_dominion\n";
+					output << "        freedom_level = 0.4\n";
+					output << "    }\n";
+				}
 			}
 		}
+
+		for (auto& relationItr: relations)
+		{
+			auto spherelingTag = relationItr.first;
+			auto spherelingRelations = relationItr.second;
+			auto sphereLeader = spherelingRelations.getSphereLeader();
+			if (sphereLeader && puppets.find(spherelingTag) == puppets.end())
+			{
+				output << "\tset_autonomy = {\n";
+				output << "\t\ttarget = " << spherelingTag << "\n";
+				output << "\t\tautonomous_state = autonomy_sphereling\n";
+				output << "\t}\n";
+			}
+		}
+		
 		output << "    else = {\n";
 		for (const auto& puppet: puppets)
 		{
