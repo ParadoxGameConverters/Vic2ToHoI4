@@ -731,6 +731,15 @@ void HoI4Localisation::GenerateCustomLocalisations(HoI4::ScriptedLocalisations& 
 
 	for (const auto& localisationsInLanguage: countryLocalisations)
 	{
+		HoI4::ScriptedLocalisation masculineSingular;
+		masculineSingular.setName(getLanguageCode(localisationsInLanguage.first) + "GetAdjMS");
+		HoI4::ScriptedLocalisation masculinePlural;
+		masculinePlural.setName(getLanguageCode(localisationsInLanguage.first) + "GetAdjMP");
+		HoI4::ScriptedLocalisation feminineSingular;
+		feminineSingular.setName(getLanguageCode(localisationsInLanguage.first) + "GetAdjFS");
+		HoI4::ScriptedLocalisation femininePlural;
+		femininePlural.setName(getLanguageCode(localisationsInLanguage.first) + "GetAdjFP");
+		
 		auto rules = replacementRules.getRulesForLanguage(localisationsInLanguage.first);
 		if (!rules)
 		{
@@ -753,11 +762,85 @@ void HoI4Localisation::GenerateCustomLocalisations(HoI4::ScriptedLocalisations& 
 					{
 						customLocalisations[localisationsInLanguage.first][localisation.first + replacement.first]
 							= std::regex_replace(localisation.second, rule.getMatcher(), replacement.second);
+
+						if (replacement.first == "_MS_" + getLanguageCode(localisationsInLanguage.first))
+						{
+							std::regex extractRegex("([A-Z]+)_([a-z]+)_ADJ");
+
+							std::smatch match;
+							std::regex_match(localisation.first, match, extractRegex);
+							std::string tag = match[1];
+							std::string ideology = match[2];
+							
+							std::string text;
+							text += "\t\ttrigger = {\n";
+							text += "\t\t\tOR = { tag = " + tag + " original_tag = " + tag + " }\n";
+							text += "\t\t\thas_government = " + ideology + "\n";
+							text += "\t\t}\n";
+							text += "\t\tlocalization_key = " + localisation.first + replacement.first + "\n";
+							masculineSingular.addText(text);
+						}
+						else if (replacement.first == "_MP_" + getLanguageCode(localisationsInLanguage.first))
+						{
+							std::regex extractRegex("([A-Z]+)_([a-z]+)_ADJ");
+
+							std::smatch match;
+							std::regex_match(localisation.first, match, extractRegex);
+							std::string tag = match[1];
+							std::string ideology = match[2];
+
+							std::string text;
+							text += "\t\ttrigger = {\n";
+							text += "\t\t\tOR = { tag = " + tag + " original_tag = " + tag + " }\n";
+							text += "\t\t\thas_government = " + ideology + "\n";
+							text += "\t\t}\n";
+							text += "\t\tlocalization_key = " + localisation.first + replacement.first + "\n";
+							masculinePlural.addText(text);
+						}
+						else if (replacement.first == "_FS_" + getLanguageCode(localisationsInLanguage.first))
+						{
+							std::regex extractRegex("([A-Z]+)_([a-z]+)_ADJ");
+
+							std::smatch match;
+							std::regex_match(localisation.first, match, extractRegex);
+							std::string tag = match[1];
+							std::string ideology = match[2];
+
+							std::string text;
+							text += "\t\ttrigger = {\n";
+							text += "\t\t\tOR = { tag = " + tag + " original_tag = " + tag + " }\n";
+							text += "\t\t\thas_government = " + ideology + "\n";
+							text += "\t\t}\n";
+							text += "\t\tlocalization_key = " + localisation.first + replacement.first + "\n";
+							feminineSingular.addText(text);
+						}
+						else if (replacement.first == "_FP_" + getLanguageCode(localisationsInLanguage.first))
+						{
+							std::regex extractRegex("([A-Z]+)_([a-z]+)_ADJ");
+
+							std::smatch match;
+							std::regex_match(localisation.first, match, extractRegex);
+							std::string tag = match[1];
+							std::string ideology = match[2];
+
+							std::string text;
+							text += "\t\ttrigger = {\n";
+							text += "\t\t\tOR = { tag = " + tag + " original_tag = " + tag + " }\n";
+							text += "\t\t\thas_government = " + ideology + "\n";
+							text += "\t\t}\n";
+							text += "\t\tlocalization_key = " + localisation.first + replacement.first + "\n";
+							femininePlural.addText(text);
+						}
 					}
 					break;
 				}
 			}
 		}
+
+		scriptedLocalisations.giveAdjectiveLocalisation(getLanguageCode(localisationsInLanguage.first), std::move(masculineSingular));
+		scriptedLocalisations.giveAdjectiveLocalisation(getLanguageCode(localisationsInLanguage.first), std::move(masculinePlural));
+		scriptedLocalisations.giveAdjectiveLocalisation(getLanguageCode(localisationsInLanguage.first), std::move(feminineSingular));
+		scriptedLocalisations.giveAdjectiveLocalisation(getLanguageCode(localisationsInLanguage.first), std::move(femininePlural));
 	}
 }
 
@@ -784,6 +867,29 @@ void HoI4Localisation::UpdateLocalisationText(
 			}
 		}
 	}
+}
+
+
+std::string HoI4Localisation::getLanguageCode(const std::string& language)
+{
+	if (language == "braz_por")
+	{
+		return "PT";
+	}
+	if (language == "french")
+	{
+		return "FR";
+	}
+	if (language == "italian")
+	{
+		return "IT";
+	}
+	if (language == "spanish")
+	{
+		return "ES";
+	}
+
+	return "";
 }
 
 

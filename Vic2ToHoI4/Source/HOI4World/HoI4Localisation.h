@@ -215,6 +215,8 @@ class HoI4Localisation
 			const std::string& newText
 		);
 
+		static std::string getLanguageCode(const std::string& language);
+
 		void Output() const;
 		void outputCountries(const std::string& localisationPath) const;
 		void outputFocuses(const std::string& localisationPath) const;
