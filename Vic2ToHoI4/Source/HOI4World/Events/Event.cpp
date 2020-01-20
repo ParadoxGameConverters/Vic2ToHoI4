@@ -72,6 +72,7 @@ HoI4::Event::Event(const std::string& theType, std::istream& theStream):
 			options.push_back(theOption);
 		}
 	);
+	registerRegex("[a-zA-Z0-9_\\.]+", commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();
