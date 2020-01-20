@@ -216,6 +216,11 @@ class HoI4Localisation
 		);
 
 		static std::string getLanguageCode(const std::string& language);
+		void insertScriptedLocalisation(
+			const std::string& localisationKey,
+			const std::string& replacementKey,
+			HoI4::ScriptedLocalisation& scriptedLocalisation
+		);
 
 		void Output() const;
 		void outputCountries(const std::string& localisationPath) const;
