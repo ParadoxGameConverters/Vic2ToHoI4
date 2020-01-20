@@ -719,7 +719,7 @@ void HoI4Localisation::AddDecisionLocalisation(const std::string& key, const std
 }
 
 
-void HoI4Localisation::GenerateCustomLocalisations()
+void HoI4Localisation::GenerateCustomLocalisations(HoI4::ScriptedLocalisations& scriptedLocalisations)
 {
 	std::ifstream languageReplacementsFile("DataFiles/languageReplacements.txt");
 	if (!languageReplacementsFile.is_open())

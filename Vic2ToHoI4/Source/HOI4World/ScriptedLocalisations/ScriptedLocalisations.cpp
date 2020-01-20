@@ -221,7 +221,7 @@ void HoI4::ScriptedLocalisations::initialize(const std::string& strongestNavyTag
 	text += "\t\t}\n";
 	text += "\t\tlocalization_key = Naval_treaty_over_100\n";
 	GetStrengthRatioBritain.addText(text);
-	scriptedLocalistions.push_back(GetStrengthRatioBritain);
+	scriptedLocalisations.push_back(GetStrengthRatioBritain);
 
 	ScriptedLocalisation GetRelevantNavalTreatyNation;
 	GetRelevantNavalTreatyNation.setName("GetRelevantNavalTreatyNation");
@@ -243,5 +243,25 @@ void HoI4::ScriptedLocalisations::initialize(const std::string& strongestNavyTag
 	text += "\t\t}\n";
 	text += "\t\tlocalization_key = " + secondStrongestNavyTag + "_Naval_treaty_nation\n";
 	GetRelevantNavalTreatyNation.addText(text);
-	scriptedLocalistions.push_back(GetRelevantNavalTreatyNation);
+	scriptedLocalisations.push_back(GetRelevantNavalTreatyNation);
+}
+
+
+void HoI4::ScriptedLocalisations::giveAdjectiveLocalisation(
+	const std::string& language,
+	ScriptedLocalisation&& localisation
+)
+{
+	if (
+		auto& languageAdjectives = adjectiveLocalisations.find(language);
+		languageAdjectives != adjectiveLocalisations.end()
+		)
+	{
+		languageAdjectives->second.push_back(localisation);
+	}
+	else
+	{
+		std::vector<ScriptedLocalisation> localisations{ localisation };
+		adjectiveLocalisations.insert(std::make_pair(language, localisations));
+	}
 }

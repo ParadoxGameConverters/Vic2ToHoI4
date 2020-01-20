@@ -26,6 +26,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
+#include "ScriptedLocalisations/ScriptedLocalisations.h"
 #include "../V2World/State.h"
 #include <array>
 #include <iostream>
@@ -117,9 +118,9 @@ class HoI4Localisation
 			getInstance()->AddDecisionLocalisation(key, localisation);
 		}
 
-		static void generateCustomLocalisations()
+		static void generateCustomLocalisations(HoI4::ScriptedLocalisations& scriptedLocalisations)
 		{
-			getInstance()->GenerateCustomLocalisations();
+			getInstance()->GenerateCustomLocalisations(scriptedLocalisations);
 		}
 
 		static void updateLocalisationText(
@@ -206,7 +207,7 @@ class HoI4Localisation
 		void AddPoliticalPartyLocalisation(const std::string& Vic2Key, const std::string& HoI4Key);
 		void AddDecisionLocalisation(const std::string& key, const std::optional<std::string>& localisation);
 
-		void GenerateCustomLocalisations();
+		void GenerateCustomLocalisations(HoI4::ScriptedLocalisations& scriptedLocalisations);
 
 		void UpdateLocalisationText(
 			const std::string& key,
