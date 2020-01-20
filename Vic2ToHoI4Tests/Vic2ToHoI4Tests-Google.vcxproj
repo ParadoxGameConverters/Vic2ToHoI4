@@ -59,6 +59,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsOutputter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventOptionOutputter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventOutputter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventsOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Hoi4CountryOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\LegacyNavyOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp" />
@@ -89,8 +92,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\StabilityWarSupportDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Division.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\DivisionTemplate.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Event.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventOption.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Agreement.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Airforce.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Army.cpp" />
@@ -191,6 +195,8 @@
     <ClCompile Include="HoI4WorldTests\Decisions\IdeologicalDecisionsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Events\EventOptionTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Events\EventTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4WarTests.cpp" />
@@ -247,6 +253,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.h" />
     <ClInclude Include="Mocks\EventsMock.h" />
     <ClInclude Include="Mocks\GovermentMapperMock.h" />
     <ClInclude Include="Mocks\GraphicsMapperMock.h" />

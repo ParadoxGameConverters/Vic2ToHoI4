@@ -457,13 +457,11 @@ optional<const Vic2::Party> Vic2::Country::getRulingParty(const vector<Vic2::Par
 }
 
 
-set<Vic2::Party, function<bool (const Vic2::Party&, const Vic2::Party&)>> Vic2::Country::getActiveParties(const vector<Vic2::Party>& allParties) const
+std::set<Vic2::Party> Vic2::Country::getActiveParties(const std::vector<Vic2::Party>& allParties) const
 {
-	set<Vic2::Party, function<bool (const Vic2::Party&, const Vic2::Party&)>> activeParties([](const Vic2::Party& first, const Vic2::Party& second)
-		{ return first.getName() < second.getName(); }
-	);
+	std::set<Vic2::Party> activeParties;
 
-	for (auto ID : activePartyIDs)
+	for (auto ID: activePartyIDs)
 	{
 		if (ID < allParties.size())
 		{

@@ -38,9 +38,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MapData.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AIPeaces.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
@@ -48,9 +45,6 @@
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OnActions.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Event.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Localisation.cpp">
@@ -578,6 +572,30 @@
     <ClCompile Include="HoI4WorldTests\Localisations\AllReplacementRulesTests.cpp">
       <Filter>HoI4WorldTests\Localisations</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventsOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventOption.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventOptionOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Events\EventOptionTests.cpp">
+      <Filter>HoI4WorldTests\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Events\EventTests.cpp">
+      <Filter>HoI4WorldTests\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -676,6 +694,15 @@
     <Filter Include="Vic2ToHoI4 files\HoI4\Localisations">
       <UniqueIdentifier>{2504e409-d763-455b-b90f-ca1679bdb2a1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Events">
+      <UniqueIdentifier>{b7a84375-5eb0-4b27-aa39-43b51ed8427a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Events">
+      <UniqueIdentifier>{b592cd8a-fcca-4b83-8e19-0ce38f1af3c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\Events">
+      <UniqueIdentifier>{ffe08428-d407-4da1-93a9-8512ccc69546}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -707,6 +734,12 @@
     </ClInclude>
     <ClInclude Include="Mocks\GovermentMapperMock.h">
       <Filter>Mocks</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

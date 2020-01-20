@@ -10,7 +10,7 @@
 #include "HoI4Country.h"
 #include "Decisions/Decisions.h"
 #include "HoI4Diplomacy.h"
-#include "Events.h"
+#include "Events/Events.h"
 #include "HoI4Faction.h"
 #include "HoI4FocusTree.h"
 #include "Ideas.h"
@@ -34,6 +34,7 @@
 #include "ParserHelpers.h"
 #include "../Hoi4Outputter/Hoi4CountryOutputter.h"
 #include "../Hoi4Outputter/Decisions/DecisionsOutputter.h"
+#include "../Hoi4Outputter/Events/EventsOutputter.h"
 #include "../Hoi4Outputter/ScriptedLocalisations/ScriptedLocalisationsOutputter.h"
 #include "../Hoi4Outputter/States/HoI4StatesOutputter.h"
 #include <fstream>
@@ -1088,7 +1089,7 @@ void HoI4::World::output()
 	outputCountries();
 	buildings->output();
 	outputDecisions(*decisions, majorIdeologies, theConfiguration);
-	events->output();
+	outputEvents(*events, theConfiguration);
 	onActions->output(majorIdeologies);
 	peaces->output(majorIdeologies);
 	outputIdeologies();

@@ -998,9 +998,7 @@ TEST_F(HoI4World_HoI4CountryTests, partiesComeFromVic2Country)
 		getRulingParty(testParties)
 	).WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
 
-	set<Vic2::Party, function<bool(const Vic2::Party&, const Vic2::Party&)>> activeParties([](const Vic2::Party& first, const Vic2::Party& second)
-		{ return first.getName() < second.getName(); }
-	);
+	std::set<Vic2::Party> activeParties;
 	activeParties.insert(testParty);
 	activeParties.insert(testParty2);
 	EXPECT_CALL(

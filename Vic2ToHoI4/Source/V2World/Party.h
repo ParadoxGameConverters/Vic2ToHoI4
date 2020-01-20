@@ -59,6 +59,7 @@ class Party: commonItems::parser
 };
 
 bool operator==(const Party& one, const Party& other);
+bool operator<(const Party& one, const Party& other);
 
 }
 

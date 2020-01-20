@@ -1580,7 +1580,7 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home, c
 			newFocus->completionReward += "		}";
 			focuses.push_back(newFocus);
 
-			events->createAnnexEvent(Home, annexationTargets[i]);
+			events->createAnnexEvent(*Home, *annexationTargets[i]);
 		}
 		else
 		{
@@ -1715,7 +1715,7 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home, cons
 		}
 
 		//events
-		events->createSudetenEvent(Home, sudetenTargets[i], demandedStates[i]);
+		events->createSudetenEvent(*Home, *sudetenTargets[i], demandedStates[i]);
 	}
 	nextFreeColumn += 2 * sudetenTargets.size();
 }
@@ -1801,7 +1801,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<
 			newFocus->completionReward += "		}";
 			focuses.push_back(newFocus);
 
-			events->createFactionEvents(Home, newAlly);
+			events->createFactionEvents(*Home, *newAlly);
 			i++;
 		}
 		else
