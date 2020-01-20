@@ -24,7 +24,7 @@ void HoI4::outputScriptedLocalisations(
 
 	for (const auto& localisationsInLanguage: scriptedLocalisations.getAdjectiveLocalisations())
 	{
-		std::string filename{
+		auto filename{
 			"output/" +
 			theConfiguration.getOutputName() +
 			"/common/scripted_localisation/000_scripted_localisation_" +

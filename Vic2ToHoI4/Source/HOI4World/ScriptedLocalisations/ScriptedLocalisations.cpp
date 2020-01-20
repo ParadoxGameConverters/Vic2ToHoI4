@@ -253,7 +253,7 @@ void HoI4::ScriptedLocalisations::giveAdjectiveLocalisation(
 )
 {
 	if (
-		auto& languageAdjectives = adjectiveLocalisations.find(language);
+		auto languageAdjectives = adjectiveLocalisations.find(language);
 		languageAdjectives != adjectiveLocalisations.end()
 		)
 	{
