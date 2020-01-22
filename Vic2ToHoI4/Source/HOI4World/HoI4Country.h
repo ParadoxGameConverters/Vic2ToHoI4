@@ -208,7 +208,6 @@ class Country
 
 		[[nodiscard]] const std::vector<std::string>& getSpherelings() const { return spherelings; }
 		void addSphereling(std::string Sphereling) { spherelings.push_back(Sphereling); }
-		[[nodiscard]] std::optional<HoI4Relations> getAllRelationsWith(const std::string& withWhom);
 
 	private:
 		void determineFilename();

@@ -67,7 +67,7 @@ class HoI4Relations
 		int			influenceValue;
 		bool		guarantee;
 		bool		sphereLeader;
-		double		spherelingAutonomy;
+		double		spherelingAutonomy = 0.5;
 };
 
 
