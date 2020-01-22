@@ -86,6 +86,13 @@ class World: commonItems::parser
 
 		std::shared_ptr<HoI4::Country> findCountry(const std::string& countryTag);
 
+		void processInfluence() const;
+		void logInfluence() const;
+		void determineSpherelings();
+		void logSpherelings() const;
+		void calculateSpherelingAutonomy();
+		void logSpherelingAutonomy() const;
+
 	private:
 		World(const World&) = delete;
 		World& operator=(const World&) = delete;

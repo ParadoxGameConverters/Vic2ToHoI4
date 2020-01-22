@@ -534,12 +534,13 @@ void outputPuppets(
 		{
 			auto spherelingTag = relationItr.first;
 			auto spherelingRelations = relationItr.second;
-			auto sphereLeader = spherelingRelations.getSphereLeader();
+			bool sphereLeader = spherelingRelations.getSphereLeader();
 			if (sphereLeader && puppets.find(spherelingTag) == puppets.end())
 			{
 				output << "\tset_autonomy = {\n";
 				output << "\t\ttarget = " << spherelingTag << "\n";
 				output << "\t\tautonomous_state = autonomy_sphereling\n";
+				output << "\t\tfreedom_level = " << spherelingRelations.getSpherelingAutonomy() << "\n";
 				output << "\t}\n";
 			}
 		}
@@ -611,7 +612,6 @@ void outputPolitics(
 	output << "}\n";
 	output << "\n";
 }
-
 
 void outputRelations(
 	std::ostream& output,

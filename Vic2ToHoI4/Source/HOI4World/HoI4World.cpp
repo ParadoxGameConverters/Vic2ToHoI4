@@ -109,6 +109,13 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	addFocusTrees();
 	adjustResearchFocuses();
 	HoI4Localisation::generateCustomLocalisations();
+
+	processInfluence();
+	logInfluence();
+	determineSpherelings();
+	logSpherelings();
+	calculateSpherelingAutonomy();
+	logSpherelingAutonomy();
 }
 
 
@@ -1677,3 +1684,123 @@ closedProvinces.insert(make_pair(thisAdjacency.to, thisAdjacency.to));
 return -1;
 
 }*/
+
+void HoI4::World::processInfluence() const
+{
+	for (auto GP: greatPowers)
+	{
+		LOG(LogLevel::Info) << "Processing influence for " << GP->getTag();
+		for (auto& relationItr: GP->getRelations())
+		{
+			auto influencedCountry = relationItr.first;
+			auto influenceValue = relationItr.second.getInfluenceValue();
+			for (auto& country: countries)
+			{
+				if (country.first == influencedCountry)
+				{
+					country.second->addGPInfluence(GP->getTag(), influenceValue);
+				}
+			}
+		}
+	}
+}
+
+void HoI4::World::logInfluence() const
+{
+	for (auto country: countries)
+	{
+		LOG(LogLevel::Info) << "GP influences on " << country.first;
+		for (auto influence: country.second->getGPInfluences())
+		{
+			LOG(LogLevel::Info) << "\t" << influence.first << ": " << influence.second;
+		}
+	}
+}
+
+void HoI4::World::determineSpherelings()
+{
+	for (auto GP: greatPowers)
+	{
+		LOG(LogLevel::Info) << "Determining spherelings for " << GP->getTag();
+		for (auto relationItr: GP->getRelations())
+		{
+			bool isSphereLeader = relationItr.second.getSphereLeader();
+			bool notPuppet = (GP->getPuppets().find(relationItr.first) == GP->getPuppets().end());
+			if (isSphereLeader && notPuppet)
+			{
+				GP->addSphereling(relationItr.first);
+				LOG(LogLevel::Info) << "\t" << relationItr.first << " added to spherelings";
+			}
+		}
+	}
+}
+
+void HoI4::World::logSpherelings() const
+{
+	for (auto GP: greatPowers)
+	{
+		LOG(LogLevel::Info) << GP->getTag() << " spherelings";
+		for (auto sphereling: GP->getSpherelings())
+		{
+			LOG(LogLevel::Info) << "\t" << sphereling;
+		}
+	}
+}
+
+void HoI4::World::calculateSpherelingAutonomy()
+{
+	for (auto GP: greatPowers)
+	{
+		LOG(LogLevel::Info) << GP->getTag() << " spherelings autonomy calculation";
+		int influenceFactor = 1;
+		for (auto spherelingItr: GP->getSpherelings())
+		{
+			double spherelingAutonomy = influenceFactor / 10;
+			influenceFactor++;
+			LOG(LogLevel::Info) << "\t" << spherelingItr;
+			/*auto spherelingCountry = findCountry(spherelingItr);
+			double influenceFactor = 0;
+			double spherelingAutonomy = 0;
+			auto GPInfluences = spherelingCountry->getGPInfluences();
+			for (auto& influenceItr: GPInfluences)
+			{
+				auto influencer = findCountry(influenceItr.first);
+				bool friendlyInfluencer = influencer->getAllRelationsWith(spherelingItr)->getGuarantee();
+				if (influencer != GP && friendlyInfluencer)
+				{
+					LOG(LogLevel::Info) << "\t\t" << influenceItr.first << " +" << influenceItr.second;
+					influenceFactor += influenceItr.second;
+				}
+				if (influencer == GP)
+				{
+					LOG(LogLevel::Info) << "\t\t" << "Lea -" << 1.5 * influenceItr.second;
+					influenceFactor -= 1.5 * influenceItr.second;
+				}
+			}
+			LOG(LogLevel::Info) << "\t\tTot " << influenceFactor;
+			spherelingAutonomy = 3.6 * influenceFactor / 400;
+			LOG(LogLevel::Info) << "\tFinal " << spherelingItr << " autonomy with " << GP->getTag() << ": " << spherelingAutonomy;
+			if (spherelingAutonomy < 0) spherelingAutonomy = 0;
+			if (spherelingAutonomy > 0.9) spherelingAutonomy = 0.9;*/
+			GP->getAllRelationsWith(spherelingItr)->setSpherelingAutonomy(spherelingAutonomy);
+		}
+	}
+}
+
+void HoI4::World::logSpherelingAutonomy() const
+{
+	for (auto GP: greatPowers)
+	{
+		LOG(LogLevel::Info) << GP->getTag() << " spherelings";
+		for (auto sphereling: GP->getSpherelings())
+		{
+			for (auto relationItr: GP->getRelations())
+			{
+				if (sphereling == relationItr.first)
+				{
+					LOG(LogLevel::Info) << "\t" << relationItr.first << " autonomy: " << relationItr.second.getSpherelingAutonomy();
+				}
+			}
+		}
+	}
+}

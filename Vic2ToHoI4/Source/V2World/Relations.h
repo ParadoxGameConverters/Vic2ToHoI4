@@ -47,6 +47,7 @@ class Relations: commonItems::parser
 		const date getDiplomatLastSent() const { return lastSentDiplomat; }
 		const date getLastWar() const { return lastWar; }
 		const date getTruceUntil() const { return truceUntil; }
+		int getInfluenceValue() const { return influenceValue; }
 
 	private:
 		Relations(const Relations&) = delete;
@@ -60,6 +61,7 @@ class Relations: commonItems::parser
 		date lastSentDiplomat;
 		date lastWar;
 		date truceUntil;
+		int influenceValue = 0;
 };
 
 }

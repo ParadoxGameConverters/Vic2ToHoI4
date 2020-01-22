@@ -203,6 +203,13 @@ class Country
 
 		std::set<std::string>& editAllies() { return allies; }
 
+		[[nodiscard]] std::map<std::string, int> getGPInfluences() const { return GPInfluences; }
+		void addGPInfluence(std::string GPTag, int influenceValue) { GPInfluences.insert({GPTag, influenceValue}); }
+
+		[[nodiscard]] const std::vector<std::string>& getSpherelings() const { return spherelings; }
+		void addSphereling(std::string Sphereling) { spherelings.push_back(Sphereling); }
+		[[nodiscard]] std::optional<HoI4Relations> getAllRelationsWith(const std::string& withWhom);
+
 	private:
 		void determineFilename();
 		void initIdeas(namesMapper& theNames) const;
@@ -290,6 +297,9 @@ class Country
 		std::string puppetMaster;
 		bool greatPower = false;
 		bool civilized = false;
+
+		std::map<std::string, int> GPInfluences;
+		std::vector<std::string> spherelings;
 };
 
 }

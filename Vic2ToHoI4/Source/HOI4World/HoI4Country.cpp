@@ -863,6 +863,16 @@ std::optional<HoI4Faction> HoI4::Country::getFaction() const
 	}
 }
 
+std::optional<HoI4Relations> HoI4::Country::getAllRelationsWith(const std::string& withWhom)
+{
+	for (auto relationItr: relations)
+	{
+		if (relationItr.first == withWhom)
+		{
+			return relationItr.second;
+		}
+	}
+}
 
 std::optional<HoI4FocusTree> HoI4::Country::getNationalFocus() const
 {
