@@ -3,13 +3,13 @@
 
 
 
-std::ostream& HoI4::operator<<(std::ostream& output, const HoI4::Admiral& instance)
+std::ostream& HoI4::operator<<(std::ostream& output, const Admiral& instance)
 {
 	output << "create_navy_leader = {\n";
 	output << "\tname = \"" << instance.name << "\"\n";
 	output << "\tpicture = \"" << instance.picture << "\"\n";
 	output << "\ttraits = { ";
-	for (auto trait : instance.traits)
+	for (const auto& trait : instance.traits)
 	{
 		output << trait << " ";
 	}
