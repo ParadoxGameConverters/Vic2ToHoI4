@@ -20,15 +20,4 @@ HoI4::General::General(const Vic2::Leader* srcLeader, const std::string& portrai
 	defenseSkill = skill;
 	planningSkill = skill;
 	logisticsSkill = skill;
-
-	/*auto possiblePersonalities = landPersonalityMap.find(srcLeader->getPersonality());
-	if ((possiblePersonalities != landPersonalityMap.end()) && (possiblePersonalities->second.size() > 0))
-	{
-		traits.push_back(possiblePersonalities->second[rand() % possiblePersonalities->second.size()]);
-	}
-	auto possibleBackgrounds = landBackgroundMap.find(srcLeader->getBackground());
-	if ((possibleBackgrounds != landBackgroundMap.end()) && (possibleBackgrounds->second.size() > 0))
-	{
-		traits.push_back(possibleBackgrounds->second[rand() % possibleBackgrounds->second.size()]);
-	}*/
 }
