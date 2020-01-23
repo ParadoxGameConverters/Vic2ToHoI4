@@ -3,16 +3,16 @@
 
 
 
-#include "Advisor.h"
 #include "AIPeaces.h"
 #include "CoastalProvinces.h"
 #include "Decisions/Decisions.h"
 #include "Ideas.h"
-#include "OnActions.h"
-#include "Names.h"
+#include "Leaders/Advisor.h"
 #include "MapData.h"
 #include "MilitaryMappings/AllMilitaryMappings.h"
 #include "MilitaryMappings/UnitMappings.h"
+#include "Names.h"
+#include "OnActions.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
 #include "States/HoI4States.h"
 #include "../Mappers/CountryMapping.h"
