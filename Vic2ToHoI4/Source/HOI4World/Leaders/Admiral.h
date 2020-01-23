@@ -17,13 +17,10 @@ class Admiral
 {
 	public:
 		Admiral(const Vic2::Leader* srcLeader, const std::string& portrait);
-		Admiral(const Admiral&) = default;
 
 		friend std::ostream& operator<<(std::ostream& output, const Admiral& instance);
 
 	private:
-		Admiral& operator=(const Admiral&) = delete;
-
 		std::string name;
 		std::string picture;
 		std::vector<std::string> traits;

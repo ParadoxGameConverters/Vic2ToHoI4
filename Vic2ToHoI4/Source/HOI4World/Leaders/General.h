@@ -17,13 +17,10 @@ class General
 {
 	public:
 		General(const Vic2::Leader* srcLeader, const std::string& portrait);
-		General(const General&) = default;
 
 		friend std::ostream& operator<<(std::ostream& output, const General& instance);
 
 	private:
-		General& operator=(const General&) = delete;
-
 		std::string name;
 		std::string picture;
 		std::vector<std::string> traits;

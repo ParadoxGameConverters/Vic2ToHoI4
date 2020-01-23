@@ -4,9 +4,6 @@
 
 
 #include "newParser.h"
-#include <fstream>
-#include <memory>
-#include <set>
 #include <string>
 #include <vector>
 
@@ -20,9 +17,9 @@ class Advisor: commonItems::parser
 	public:
 		explicit Advisor(const std::string& ideology, std::istream& theStream);
 
-		const std::vector<std::string>& getTraits() const { return traits; }
-		const std::string& getPicture() const { return picture; }
-		const std::string& getIdeology() const { return ideology; }
+		[[nodiscard]] const std::vector<std::string>& getTraits() const { return traits; }
+		[[nodiscard]] const std::string& getPicture() const { return picture; }
+		[[nodiscard]] const std::string& getIdeology() const { return ideology; }
 
 	private:
 		std::vector<std::string> traits;
@@ -32,7 +29,7 @@ class Advisor: commonItems::parser
 
 
 struct advisorCompare {
-	bool operator() (const HoI4::Advisor& lhs, const HoI4::Advisor& rhs) const {
+	bool operator() (const Advisor& lhs, const Advisor& rhs) const {
 		return lhs.getIdeology() < rhs.getIdeology();
 	}
 };

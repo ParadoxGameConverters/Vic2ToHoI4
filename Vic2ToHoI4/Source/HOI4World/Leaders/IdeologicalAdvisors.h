@@ -18,10 +18,10 @@ class IdeologicalAdvisors: commonItems::parser
 	public:
 		IdeologicalAdvisors() noexcept;
 
-		auto getAdvisors() { return theAdvisors; }
+		[[nodiscard]] const auto& getAdvisors() const { return theAdvisors; }
 
 	private:
-		std::map<std::string, HoI4::Advisor> theAdvisors;
+		std::map<std::string, Advisor> theAdvisors;
 };
 
 }
