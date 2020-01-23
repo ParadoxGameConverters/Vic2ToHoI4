@@ -1,4 +1,5 @@
 #include "Hoi4CountryOutputter.h"
+#include "Leaders/OutAdvisor.h"
 #include "Navies/NaviesOutputter.h"
 #include "ShipTypes/ShipVariantsOutputter.h"
 #include "../HOI4World/DivisionTemplate.h"
@@ -970,7 +971,7 @@ void outputAdvisorIdeas(
 	ideasFile << "\tpolitical_advisor = {\n";
 	for (auto& ideologicalAdvisor: ideologicalAdvisors)
 	{
-		ideologicalAdvisor.output(ideasFile, tag);
+		outputAdvisor(ideasFile, tag, ideologicalAdvisor);
 	}
 	ideasFile << "\t}\n";
 
