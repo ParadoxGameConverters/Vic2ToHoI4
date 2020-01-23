@@ -41,31 +41,3 @@ HoI4::Advisor::Advisor(const std::string& ideology, std::istream& theStream):
 
 	parseStream(theStream);
 }
-
-
-void HoI4::Advisor::output(std::ofstream& output, const std::string& tag) const
-{
-	output << "\t\t" << tag << "_" << ideology << "_advisor = {\n";
-	output << "\t\t\tallowed = {\n";
-	output << "\t\t\t\toriginal_tag = \"" << tag << "\"\n";
-	output << "\t\t\t}\n";
-	output << "\t\t\ttraits = { ";
-	for (auto trait: traits)
-	{
-		output << trait << " ";
-	}
-	output << "}\n";
-	if (!picture.empty())
-	{
-		output << "\t\t\tpicture = " << picture << "\n";
-	}
-	output << "\t\t\tdo_effect = {\n";
-	output << "\t\t\t\tNOT = {\n";
-	output << "\t\t\t\t\thas_government = " << ideology << "\n";
-	output << "\t\t\t\t}\n";
-	output << "\t\t\t}\n";
-	output << "\t\t\tai_will_do = {\n";
-	output << "\t\t\t\tfactor = 0\n";
-	output << "\t\t\t}\n";
-	output << "\t\t}\n";
-}

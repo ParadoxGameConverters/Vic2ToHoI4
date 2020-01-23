@@ -605,6 +605,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\IdeologicalAdvisors.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutAdvisor.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Leaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

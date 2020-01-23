@@ -64,6 +64,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventsOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Hoi4CountryOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutAdmiral.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutAdvisor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutGeneral.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\LegacyNavyOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp" />

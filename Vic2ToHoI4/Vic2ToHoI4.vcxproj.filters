@@ -522,6 +522,9 @@
     <ClCompile Include="Source\HOI4World\Leaders\IdeologicalAdvisors.cpp">
       <Filter>HoI4World\Leaders</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Leaders\OutAdvisor.cpp">
+      <Filter>Hoi4Outputter\Leaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -976,6 +979,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Leaders\IdeologicalAdvisors.h">
       <Filter>HoI4World\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Leaders\OutAdvisor.h">
+      <Filter>Hoi4Outputter\Leaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

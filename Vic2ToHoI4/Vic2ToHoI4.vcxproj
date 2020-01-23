@@ -199,6 +199,7 @@
     <ClCompile Include="Source\Hoi4Outputter\Events\EventsOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Hoi4CountryOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Leaders\OutAdmiral.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Leaders\OutAdvisor.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Leaders\OutGeneral.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp" />
@@ -351,6 +352,7 @@
     <ClInclude Include="Source\Hoi4Outputter\Events\EventOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Events\EventsOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Hoi4CountryOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Leaders\OutAdvisor.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.h" />

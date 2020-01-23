@@ -42,9 +42,10 @@ class Advisor: commonItems::parser
 {
 	public:
 		explicit Advisor(const std::string& ideology, std::istream& theStream);
-		void output(std::ofstream& output, const std::string& tag) const;
 
-		std::string getIdeology() const { return ideology; }
+		const std::vector<std::string>& getTraits() const { return traits; }
+		const std::string& getPicture() const { return picture; }
+		const std::string& getIdeology() const { return ideology; }
 
 	private:
 		std::vector<std::string> traits;
