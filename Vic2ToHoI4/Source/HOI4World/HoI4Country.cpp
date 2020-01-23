@@ -900,3 +900,32 @@ void HoI4::Country::setSpherelingAutonomy(std::string spherelingTag, double auto
 		sphereling->second = autonomy;
 	}
 }
+
+double HoI4::Country::calculateInfluenceFactor()
+{
+	double influenceFactor = 0.0;
+	auto GPInfluences = getGPInfluences();
+	if (sphereLeader.empty())
+	{
+		LOG(LogLevel::Debug) << tag << " has no sphere leader set";
+		return 0.3;
+	}
+	else
+	{
+		for (auto& influenceItr: GPInfluences)
+		{
+			if (influenceItr.first != sphereLeader)
+			{
+				LOG(LogLevel::Info) << "\t\t" << influenceItr.first << " +" << influenceItr.second;
+				influenceFactor += influenceItr.second;
+			}
+			if (influenceItr.first == sphereLeader)
+			{
+				LOG(LogLevel::Info) << "\t\t" << "Lea -" << 1.5 * influenceItr.second;
+				influenceFactor -= 1.5 * influenceItr.second;
+			}
+		}
+		return influenceFactor;
+		LOG(LogLevel::Info) << "\t\tTot " << influenceFactor;
+	}
+}

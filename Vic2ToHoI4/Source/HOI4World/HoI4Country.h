@@ -211,6 +211,7 @@ class Country
 
 		double getSpherelingAutonomy(std::string) const;
 		void setSpherelingAutonomy(std::string spherelingTag, double autonomy);
+		double calculateInfluenceFactor();
 
 	private:
 		void determineFilename();

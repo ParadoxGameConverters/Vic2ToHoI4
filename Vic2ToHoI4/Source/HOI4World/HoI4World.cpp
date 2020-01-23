@@ -110,6 +110,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	adjustResearchFocuses();
 	HoI4Localisation::generateCustomLocalisations();
 
+	setSphereLeaders();
 	processInfluence();
 	logInfluence();
 	determineSpherelings();
@@ -1685,6 +1686,21 @@ return -1;
 
 }*/
 
+void HoI4::World::setSphereLeaders()
+{
+	for (auto GP: greatPowers)
+	{
+		for (auto& relationItr: GP->getRelations())
+		{
+			if (relationItr.second.getSphereLeader())
+			{
+				auto sphereling = findCountry(relationItr.first);
+				sphereling->setSphereLeader(GP->getTag());
+			}
+		}
+	}
+}
+
 void HoI4::World::processInfluence() const
 {
 	for (auto GP: greatPowers)
@@ -1693,10 +1709,11 @@ void HoI4::World::processInfluence() const
 		for (auto& relationItr: GP->getRelations())
 		{
 			auto influencedCountry = relationItr.first;
+			auto friendlyCountry = relationItr.second.getGuarantee();
 			auto influenceValue = relationItr.second.getInfluenceValue();
 			for (auto& country: countries)
 			{
-				if (country.first == influencedCountry)
+				if (country.first == influencedCountry && friendlyCountry)
 				{
 					country.second->addGPInfluence(GP->getTag(), influenceValue);
 				}
@@ -1751,37 +1768,19 @@ void HoI4::World::calculateSpherelingAutonomy()
 {
 	for (auto& GP: greatPowers)
 	{
-		//LOG(LogLevel::Info) << GP->getTag() << " spherelings autonomy calculation";
-		int influenceFactor = 1;
+		LOG(LogLevel::Info) << GP->getTag() << " spherelings autonomy calculation";
+		double spherelingAutonomy = 0.0;
 		for (auto& sphereling: GP->getSpherelings())
 		{
-			int spherelingAutonomy = influenceFactor * 10;
-			influenceFactor++;
-			//LOG(LogLevel::Info) << "\t" << sphereling.first;
-			/*auto spherelingCountry = findCountry(sphereling.first);
-			double influenceFactor = 0;
-			double spherelingAutonomy = 0;
-			auto GPInfluences = spherelingCountry->getGPInfluences();
-			for (auto& influenceItr: GPInfluences)
-			{
-				auto influencer = findCountry(influenceItr.first);
-				bool friendlyInfluencer = influencer->getAllRelationsWith(sphereling.first)->getGuarantee();
-				if (influencer != GP && friendlyInfluencer)
-				{
-					LOG(LogLevel::Info) << "\t\t" << influenceItr.first << " +" << influenceItr.second;
-					influenceFactor += influenceItr.second;
-				}
-				if (influencer == GP)
-				{
-					LOG(LogLevel::Info) << "\t\t" << "Lea -" << 1.5 * influenceItr.second;
-					influenceFactor -= 1.5 * influenceItr.second;
-				}
-			}
-			LOG(LogLevel::Info) << "\t\tTot " << influenceFactor;
+			LOG(LogLevel::Info) << "\t" << sphereling.first;
+			auto spherelingCountry = findCountry(sphereling.first);
+
+			double influenceFactor = spherelingCountry->calculateInfluenceFactor();
 			spherelingAutonomy = 3.6 * influenceFactor / 400;
 			LOG(LogLevel::Info) << "\tFinal " << sphereling.first << " autonomy with " << GP->getTag() << ": " << spherelingAutonomy;
 			if (spherelingAutonomy < 0) spherelingAutonomy = 0;
-			if (spherelingAutonomy > 0.9) spherelingAutonomy = 0.9;*/
+			if (spherelingAutonomy > 0.9) spherelingAutonomy = 0.9;
+			
 			GP->setSpherelingAutonomy(sphereling.first, spherelingAutonomy);
 		}
 	}
