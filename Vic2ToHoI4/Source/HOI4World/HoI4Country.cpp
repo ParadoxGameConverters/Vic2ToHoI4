@@ -903,7 +903,6 @@ void HoI4::Country::setSpherelingAutonomy(std::string spherelingTag, double auto
 
 double HoI4::Country::calculateInfluenceFactor()
 {
-	double influenceFactor = 0.0;
 	auto GPInfluences = getGPInfluences();
 	if (sphereLeader.empty())
 	{
@@ -912,26 +911,25 @@ double HoI4::Country::calculateInfluenceFactor()
 	}
 	else
 	{
+		double influenceFactor = 0;
 		for (auto& influenceItr: GPInfluences)
 		{
 			if (influenceItr.first != sphereLeader)
 			{
-				LOG(LogLevel::Info) << "\t\t" << influenceItr.first << " +" << influenceItr.second;
 				influenceFactor += influenceItr.second;
 			}
 			if (influenceItr.first == sphereLeader)
 			{
-				LOG(LogLevel::Info) << "\t\t" << "Lea -" << 1.5 * influenceItr.second;
 				influenceFactor -= 1.5 * influenceItr.second;
 			}
 		}
-		LOG(LogLevel::Info) << "\t\tTot " << influenceFactor;
 		//1 is used because if freedom_level is too close to 0 (how close?)
 		//it's displayed ingame as being halfway: 0.5 instead of 0.0000something
 		double minInfluenceFactor = 1;
 		if (influenceFactor < minInfluenceFactor) influenceFactor = minInfluenceFactor;
 		double maxInfluenceFactor = 100;
 		if (influenceFactor > maxInfluenceFactor) influenceFactor = maxInfluenceFactor;
+
 		return influenceFactor;
 	}
 }

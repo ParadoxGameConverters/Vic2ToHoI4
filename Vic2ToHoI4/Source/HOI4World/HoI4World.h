@@ -88,11 +88,8 @@ class World: commonItems::parser
 
 		void setSphereLeaders();
 		void processInfluence();
-		void logInfluence() const;
 		void determineSpherelings();
-		void logSpherelings() const;
 		void calculateSpherelingAutonomy();
-		void logSpherelingAutonomy() const;
 
 	private:
 		World(const World&) = delete;
