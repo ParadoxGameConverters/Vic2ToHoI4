@@ -4,6 +4,7 @@
 
 
 #include "ScriptedLocalisation.h"
+#include <map>
 #include <vector>
 
 
@@ -16,10 +17,17 @@ class ScriptedLocalisations
 	public:
 		void initialize(const std::string& strongestNavyTag, const std::string& secondStrongestNavyTag);
 
-		[[nodiscard]] std::vector<ScriptedLocalisation> getLocalisations() const { return scriptedLocalistions; }
+		void giveAdjectiveLocalisation(const std::string& language, ScriptedLocalisation&& localisation);
+
+		[[nodiscard]] std::vector<ScriptedLocalisation> getLocalisations() const { return scriptedLocalisations; }
+		[[nodiscard]] std::map<std::string, std::vector<ScriptedLocalisation>> getAdjectiveLocalisations() const
+		{
+			return adjectiveLocalisations;
+		}
 
 	private:
-		std::vector<ScriptedLocalisation> scriptedLocalistions;
+		std::vector<ScriptedLocalisation> scriptedLocalisations;
+		std::map<std::string, std::vector<ScriptedLocalisation>> adjectiveLocalisations;
 };
 
 }

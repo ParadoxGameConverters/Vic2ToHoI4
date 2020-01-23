@@ -20,4 +20,23 @@ void HoI4::outputScriptedLocalisations(
 	}
 
 	scriptedLocalisationsFile.close();
+
+
+	for (const auto& localisationsInLanguage: scriptedLocalisations.getAdjectiveLocalisations())
+	{
+		auto filename{
+			"output/" +
+			theConfiguration.getOutputName() +
+			"/common/scripted_localisation/000_scripted_localisation_" +
+			localisationsInLanguage.first + "_loc.txt"
+		};
+		std::ofstream adjectiveLocalisationsFile(filename, std::ofstream::app);
+
+		for (const auto& localisation : localisationsInLanguage.second)
+		{
+			adjectiveLocalisationsFile << localisation;
+		}
+
+		adjectiveLocalisationsFile.close();
+	}
 }
