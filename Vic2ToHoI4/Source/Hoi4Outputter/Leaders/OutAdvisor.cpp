@@ -2,7 +2,7 @@
 
 
 
-void HoI4::outputAdvisor(std::ofstream& output, const std::string& tag, const Advisor& theAdvisor)
+void HoI4::outputAdvisor(std::ostream& output, const std::string& tag, const Advisor& theAdvisor)
 {
 	output << "\t\t" << tag << "_" << theAdvisor.getIdeology() << "_advisor = {\n";
 	output << "\t\t\tallowed = {\n";
