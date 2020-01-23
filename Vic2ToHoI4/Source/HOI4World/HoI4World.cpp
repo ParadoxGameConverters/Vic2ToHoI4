@@ -1308,9 +1308,9 @@ void HoI4::World::outputCountries()
 }
 
 
-std::set<HoI4::Advisor, HoI4::advisorCompare> HoI4::World::getActiveIdeologicalAdvisors() const
+std::set<HoI4::Advisor> HoI4::World::getActiveIdeologicalAdvisors() const
 {
-	std::set<HoI4::Advisor, HoI4::advisorCompare> theAdvisors;
+	std::set<HoI4::Advisor> theAdvisors;
 	for (auto ideology: majorIdeologies)
 	{
 		auto ideologicalAdvisor = ideologicalAdvisors.find(ideology);

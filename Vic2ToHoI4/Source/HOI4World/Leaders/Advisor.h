@@ -21,17 +21,15 @@ class Advisor: commonItems::parser
 		[[nodiscard]] const std::string& getPicture() const { return picture; }
 		[[nodiscard]] const std::string& getIdeology() const { return ideology; }
 
+		bool operator<(const Advisor& rhs) const
+		{
+			return ideology < rhs.getIdeology();
+		}
+
 	private:
 		std::vector<std::string> traits;
 		std::string picture = "";
 		std::string ideology = "";
-};
-
-
-struct advisorCompare {
-	bool operator() (const Advisor& lhs, const Advisor& rhs) const {
-		return lhs.getIdeology() < rhs.getIdeology();
-	}
 };
 
 }

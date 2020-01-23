@@ -229,11 +229,11 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 void outputCommonCountryFile(const HoI4::Country& theCountry);
 void outputAdvisorIdeas(
 	const std::string& tag,
-	const std::set<HoI4::Advisor, HoI4::advisorCompare>& ideologicalAdvisors
+	const std::set<HoI4::Advisor>& ideologicalAdvisors
 );
 
 void HoI4::outputCountry(
-	const std::set<Advisor, advisorCompare>& ideologicalMinisters,
+	const std::set<Advisor>& ideologicalMinisters,
 	const std::vector<DivisionTemplateType>& divisionTemplates,
 	namesMapper& theNames,
 	graphicsMapper& theGraphics,
@@ -957,7 +957,7 @@ void outputCommonCountryFile(const HoI4::Country& theCountry)
 
 void outputAdvisorIdeas(
 	const std::string& tag,
-	const std::set<HoI4::Advisor, HoI4::advisorCompare>& ideologicalAdvisors
+	const std::set<HoI4::Advisor>& ideologicalAdvisors
 ) {
 	std::ofstream ideasFile("output/" + theConfiguration.getOutputName() + "/common/ideas/" + tag + ".txt");
 	if (!ideasFile.is_open())
