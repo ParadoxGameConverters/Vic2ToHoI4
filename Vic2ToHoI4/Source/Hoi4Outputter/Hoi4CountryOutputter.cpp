@@ -501,7 +501,7 @@ void outputPuppets(
 	const bool& greatPower,
 	const std::map<std::string, double>& spherelings
 ) {
-	if (puppets.size() > 0 || greatPower)
+	if (!puppets.empty() || !spherelings.empty())
 	{
 		output << "# DIPLOMACY\n";
 		output << "if = {\n";
@@ -511,7 +511,7 @@ void outputPuppets(
 		output << "\t\t\thas_dlc = \"Man the Guns\"\n";
 		output << "\t\t}\n";
 		output << "\t}\n";
-		if (puppets.size() > 0)
+		if (!puppets.empty())
 		{
 			for (const auto& puppet: puppets)
 			{
@@ -533,34 +533,22 @@ void outputPuppets(
 			}
 		}
 
-		for (auto& sphereling: spherelings)
+		if (!spherelings.empty())
 		{
-			bool notPuppet = (puppets.find(sphereling.first) == puppets.end());
-			if (notPuppet)
+			for (auto& sphereling: spherelings)
 			{
-				output << "\tset_autonomy = {\n";
-				output << "\t\ttarget = " << sphereling.first << "\n";
-				output << "\t\tautonomous_state = autonomy_sphereling\n";
-				output << "\t\tfreedom_level = " << sphereling.second << "\n";
-				output << "\t}\n";
+				bool notPuppet = (puppets.find(sphereling.first) == puppets.end());
+				if (notPuppet)
+				{
+					output << "\tset_autonomy = {\n";
+					output << "\t\ttarget = " << sphereling.first << "\n";
+					output << "\t\tautonomous_state = autonomy_sphereling\n";
+					output << "\t\tfreedom_level = " << sphereling.second << "\n";
+					output << "\t}\n";
+				}
 			}
 		}
 
-		/*for (auto& relationItr: relations)
-		{
-			auto spherelingTag = relationItr.first;
-			auto spherelingRelations = relationItr.second;
-			bool sphereLeader = spherelingRelations.getSphereLeader();
-			if (sphereLeader && puppets.find(spherelingTag) == puppets.end())
-			{
-				output << "\tset_autonomy = {\n";
-				output << "\t\ttarget = " << spherelingTag << "\n";
-				output << "\t\tautonomous_state = autonomy_sphereling\n";
-				output << "\t\tfreedom_level = " << spherelingRelations.getSpherelingAutonomy() << "\n";
-				output << "\t}\n";
-			}
-		}*/
-		
 		output << "    else = {\n";
 		for (const auto& puppet: puppets)
 		{

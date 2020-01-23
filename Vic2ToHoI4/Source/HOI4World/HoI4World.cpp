@@ -1701,22 +1701,19 @@ void HoI4::World::setSphereLeaders()
 	}
 }
 
-void HoI4::World::processInfluence() const
+void HoI4::World::processInfluence()
 {
 	for (auto GP: greatPowers)
 	{
-		//LOG(LogLevel::Info) << "Processing influence for " << GP->getTag();
 		for (auto& relationItr: GP->getRelations())
 		{
-			auto influencedCountry = relationItr.first;
-			auto friendlyCountry = relationItr.second.getGuarantee();
+			auto influencedCountry = findCountry(relationItr.first);
+			bool isFriendlyCountry = relationItr.second.getGuarantee();
 			auto influenceValue = relationItr.second.getInfluenceValue();
-			for (auto& country: countries)
+
+			if (isFriendlyCountry)
 			{
-				if (country.first == influencedCountry && friendlyCountry)
-				{
-					country.second->addGPInfluence(GP->getTag(), influenceValue);
-				}
+				influencedCountry->addGPInfluence(GP->getTag(), influenceValue);
 			}
 		}
 	}
@@ -1738,7 +1735,6 @@ void HoI4::World::determineSpherelings()
 {
 	for (auto& GP: greatPowers)
 	{
-		//LOG(LogLevel::Info) << "Determining spherelings for " << GP->getTag();
 		for (auto relationItr: GP->getRelations())
 		{
 			bool isSphereLeader = relationItr.second.getSphereLeader();
@@ -1746,7 +1742,6 @@ void HoI4::World::determineSpherelings()
 			if (isSphereLeader && notPuppet)
 			{
 				GP->addSphereling(relationItr.first);
-				//LOG(LogLevel::Info) << "\t" << relationItr.first << " added to spherelings";
 			}
 		}
 	}
@@ -1768,6 +1763,7 @@ void HoI4::World::calculateSpherelingAutonomy()
 {
 	for (auto& GP: greatPowers)
 	{
+		LOG(LogLevel::Info) << "\n";
 		LOG(LogLevel::Info) << GP->getTag() << " spherelings autonomy calculation";
 		double spherelingAutonomy = 0.0;
 		for (auto& sphereling: GP->getSpherelings())
@@ -1776,10 +1772,9 @@ void HoI4::World::calculateSpherelingAutonomy()
 			auto spherelingCountry = findCountry(sphereling.first);
 
 			double influenceFactor = spherelingCountry->calculateInfluenceFactor();
+
 			spherelingAutonomy = 3.6 * influenceFactor / 400;
-			LOG(LogLevel::Info) << "\tFinal " << sphereling.first << " autonomy with " << GP->getTag() << ": " << spherelingAutonomy;
-			if (spherelingAutonomy < 0) spherelingAutonomy = 0;
-			if (spherelingAutonomy > 0.9) spherelingAutonomy = 0.9;
+			LOG(LogLevel::Info) << "\t" << sphereling.first << " autonomy: " << spherelingAutonomy;
 			
 			GP->setSpherelingAutonomy(sphereling.first, spherelingAutonomy);
 		}

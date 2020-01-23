@@ -869,7 +869,7 @@ std::optional<HoI4FocusTree> HoI4::Country::getNationalFocus() const
 
 void HoI4::Country::addSphereling(std::string Sphereling)
 {
-	double defaultAutonomy = 0.1;
+	double defaultAutonomy = 0.5;
 	spherelings.insert(make_pair(Sphereling, defaultAutonomy));
 }
 
@@ -879,7 +879,7 @@ double HoI4::Country::getSpherelingAutonomy(std::string spherelingTag) const
 	if (sphereling == spherelings.end())
 	{
 		LOG(LogLevel::Debug) << "Could not find " << sphereling->first << " in spherelings";
-		return 0;
+		return 0.5;
 	}
 	else
 	{
@@ -893,7 +893,7 @@ void HoI4::Country::setSpherelingAutonomy(std::string spherelingTag, double auto
 	if (sphereling == spherelings.end())
 	{
 		LOG(LogLevel::Debug) << "Could not find " << sphereling->first << " in spherelings";
-		sphereling->second = 0;
+		sphereling->second = 0.5;
 	}
 	else
 	{
@@ -908,7 +908,7 @@ double HoI4::Country::calculateInfluenceFactor()
 	if (sphereLeader.empty())
 	{
 		LOG(LogLevel::Debug) << tag << " has no sphere leader set";
-		return 0.3;
+		return 55.5;
 	}
 	else
 	{
@@ -925,7 +925,13 @@ double HoI4::Country::calculateInfluenceFactor()
 				influenceFactor -= 1.5 * influenceItr.second;
 			}
 		}
-		return influenceFactor;
 		LOG(LogLevel::Info) << "\t\tTot " << influenceFactor;
+		//1 is used because if freedom_level is too close to 0 (how close?)
+		//it's displayed ingame as being halfway: 0.5 instead of 0.0000something
+		double minInfluenceFactor = 1;
+		if (influenceFactor < minInfluenceFactor) influenceFactor = minInfluenceFactor;
+		double maxInfluenceFactor = 100;
+		if (influenceFactor > maxInfluenceFactor) influenceFactor = maxInfluenceFactor;
+		return influenceFactor;
 	}
 }

@@ -87,7 +87,7 @@ class World: commonItems::parser
 		std::shared_ptr<HoI4::Country> findCountry(const std::string& countryTag);
 
 		void setSphereLeaders();
-		void processInfluence() const;
+		void processInfluence();
 		void logInfluence() const;
 		void determineSpherelings();
 		void logSpherelings() const;
