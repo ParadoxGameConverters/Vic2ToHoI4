@@ -16,7 +16,7 @@ namespace HoI4
 class Admiral
 {
 	public:
-		Admiral(const Vic2::Leader* srcLeader, const std::string& portrait);
+		Admiral(const Vic2::Leader& srcLeader, const std::string& portrait);
 
 		friend std::ostream& operator<<(std::ostream& output, const Admiral& instance);
 

@@ -16,7 +16,7 @@ namespace HoI4
 class General
 {
 	public:
-		General(const Vic2::Leader* srcLeader, const std::string& portrait);
+		General(const Vic2::Leader& srcLeader, const std::string& portrait);
 
 		friend std::ostream& operator<<(std::ostream& output, const General& instance);
 
