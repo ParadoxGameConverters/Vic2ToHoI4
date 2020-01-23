@@ -206,8 +206,11 @@ class Country
 		[[nodiscard]] std::map<std::string, int> getGPInfluences() const { return GPInfluences; }
 		void addGPInfluence(std::string GPTag, int influenceValue) { GPInfluences.insert({GPTag, influenceValue}); }
 
-		[[nodiscard]] const std::vector<std::string>& getSpherelings() const { return spherelings; }
-		void addSphereling(std::string Sphereling) { spherelings.push_back(Sphereling); }
+		[[nodiscard]] const std::map<std::string, double>& getSpherelings() const { return spherelings; }
+		void addSphereling(std::string);
+
+		double getSpherelingAutonomy(std::string) const;
+		void setSpherelingAutonomy(std::string spherelingTag, double autonomy);
 
 	private:
 		void determineFilename();
@@ -298,7 +301,7 @@ class Country
 		bool civilized = false;
 
 		std::map<std::string, int> GPInfluences;
-		std::vector<std::string> spherelings;
+		std::map<std::string, double> spherelings;
 };
 
 }

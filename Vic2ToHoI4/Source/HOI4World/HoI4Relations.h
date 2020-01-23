@@ -53,9 +53,6 @@ class HoI4Relations
 		int			getInfluenceValue()		const { return influenceValue; };
 		bool		atWar()				const { return lastWar > truceUntil; };
 
-		double getSpherelingAutonomy() { return spherelingAutonomy; }
-		void setSpherelingAutonomy(double autonomy) { spherelingAutonomy = autonomy; }
-
 	private:
 
 		std::string	tag;

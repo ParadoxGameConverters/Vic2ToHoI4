@@ -710,24 +710,15 @@ void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 }
 
 
-void HoI4::Country::convertArmies(const militaryMappings& theMilitaryMappings, const HoI4::States& theStates)
+void HoI4::Country::convertArmies(const militaryMappings& theMilitaryMappings)
 {
 	if (capitalProvince)
 	{
-		theArmy.convertArmies(
-			theMilitaryMappings,
-			*capitalProvince,
-			theConfiguration.getForceMultiplier(),
-			theStates);
+		theArmy.convertArmies(theMilitaryMappings, *capitalProvince, theConfiguration.getForceMultiplier());
 	}
 	else
 	{
-		theArmy.convertArmies(
-			theMilitaryMappings,
-			0,
-			theConfiguration.getForceMultiplier(),
-			theStates
-		);
+		theArmy.convertArmies(theMilitaryMappings, 0, theConfiguration.getForceMultiplier());
 	}
 }
 
@@ -863,16 +854,6 @@ std::optional<HoI4Faction> HoI4::Country::getFaction() const
 	}
 }
 
-std::optional<HoI4Relations> HoI4::Country::getAllRelationsWith(const std::string& withWhom)
-{
-	for (auto relationItr: relations)
-	{
-		if (relationItr.first == withWhom)
-		{
-			return relationItr.second;
-		}
-	}
-}
 
 std::optional<HoI4FocusTree> HoI4::Country::getNationalFocus() const
 {
@@ -883,5 +864,39 @@ std::optional<HoI4FocusTree> HoI4::Country::getNationalFocus() const
 	else
 	{
 		return nullopt;
+	}
+}
+
+void HoI4::Country::addSphereling(std::string Sphereling)
+{
+	double defaultAutonomy = 0.1;
+	spherelings.insert(make_pair(Sphereling, defaultAutonomy));
+}
+
+double HoI4::Country::getSpherelingAutonomy(std::string spherelingTag) const
+{
+	auto sphereling = spherelings.find(spherelingTag);
+	if (sphereling == spherelings.end())
+	{
+		LOG(LogLevel::Debug) << "Could not find " << sphereling->first << " in spherelings";
+		return 0;
+	}
+	else
+	{
+		return sphereling->second;
+	}
+}
+
+void HoI4::Country::setSpherelingAutonomy(std::string spherelingTag, double autonomy)
+{
+	auto sphereling = spherelings.find(spherelingTag);
+	if (sphereling == spherelings.end())
+	{
+		LOG(LogLevel::Debug) << "Could not find " << sphereling->first << " in spherelings";
+		sphereling->second = 0;
+	}
+	else
+	{
+		sphereling->second = autonomy;
 	}
 }

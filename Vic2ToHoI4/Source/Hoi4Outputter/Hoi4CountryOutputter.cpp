@@ -274,7 +274,8 @@ void outputPuppets(
 	const std::set<std::string>& puppets,
 	const std::string& puppetMaster,
 	const std::map<std::string, HoI4Relations>& relations,
-	const bool& greatPower
+	const bool& greatPower,
+	const std::map<std::string, double>& spherelings
 );
 void outputPolitics(
 	std::ostream& output,
@@ -361,7 +362,8 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 		theCountry.getPuppets(),
 		theCountry.getPuppetMaster(),
 		theCountry.getRelations(),
-		theCountry.isGreatPower()
+		theCountry.isGreatPower(),
+		theCountry.getSpherelings()
 	);
 	outputPolitics(
 		output,
@@ -496,7 +498,8 @@ void outputPuppets(
 	const std::set<std::string>& puppets,
 	const std::string& puppetMaster,
 	const std::map<std::string, HoI4Relations>& relations,
-	const bool& greatPower
+	const bool& greatPower,
+	const std::map<std::string, double>& spherelings
 ) {
 	if (puppets.size() > 0 || greatPower)
 	{
@@ -530,7 +533,20 @@ void outputPuppets(
 			}
 		}
 
-		for (auto& relationItr: relations)
+		for (auto& sphereling: spherelings)
+		{
+			bool notPuppet = (puppets.find(sphereling.first) == puppets.end());
+			if (notPuppet)
+			{
+				output << "\tset_autonomy = {\n";
+				output << "\t\ttarget = " << sphereling.first << "\n";
+				output << "\t\tautonomous_state = autonomy_sphereling\n";
+				output << "\t\tfreedom_level = " << sphereling.second << "\n";
+				output << "\t}\n";
+			}
+		}
+
+		/*for (auto& relationItr: relations)
 		{
 			auto spherelingTag = relationItr.first;
 			auto spherelingRelations = relationItr.second;
@@ -543,7 +559,7 @@ void outputPuppets(
 				output << "\t\tfreedom_level = " << spherelingRelations.getSpherelingAutonomy() << "\n";
 				output << "\t}\n";
 			}
-		}
+		}*/
 		
 		output << "    else = {\n";
 		for (const auto& puppet: puppets)
