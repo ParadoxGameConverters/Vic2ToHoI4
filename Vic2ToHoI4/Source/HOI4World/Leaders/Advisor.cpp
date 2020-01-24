@@ -3,8 +3,8 @@
 
 
 
-HoI4::Advisor::Advisor(const std::string& ideology, std::istream& theStream):
-	ideology(ideology)
+HoI4::Advisor::Advisor(std::string ideology, std::istream& theStream):
+	ideology(std::move(ideology))
 {
 	registerKeyword("traits", [this](const std::string& unused, std::istream& theStream){
 		const commonItems::stringList traitString(theStream);

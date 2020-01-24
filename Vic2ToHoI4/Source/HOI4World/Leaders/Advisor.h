@@ -15,7 +15,7 @@ namespace HoI4
 class Advisor: commonItems::parser
 {
 	public:
-		explicit Advisor(const std::string& ideology, std::istream& theStream);
+		explicit Advisor(std::string ideology, std::istream& theStream);
 
 		[[nodiscard]] const std::vector<std::string>& getTraits() const { return traits; }
 		[[nodiscard]] const std::string& getPicture() const { return picture; }
