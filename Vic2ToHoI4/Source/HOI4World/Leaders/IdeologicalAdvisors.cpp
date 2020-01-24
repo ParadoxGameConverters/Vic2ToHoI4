@@ -6,7 +6,7 @@
 
 HoI4::IdeologicalAdvisors::IdeologicalAdvisors() noexcept
 {
-	registerRegex("[a-z]+", [this](const std::string& ideology, std::istream& theStream){
+	registerRegex("[a-z_]+", [this](const std::string& ideology, std::istream& theStream){
 		Advisor newAdvisor(ideology, theStream);
 		theAdvisors.insert(std::make_pair(ideology, newAdvisor));
 	});
