@@ -1722,12 +1722,18 @@ void HoI4::World::determineSpherelings()
 	{
 		for (auto relationItr: GP->getRelations())
 		{
-			bool isSphereLeader = relationItr.second.getSphereLeader();
+			bool isInSphere = relationItr.second.getSphereLeader();
 			bool notPuppet = (GP->getPuppets().find(relationItr.first) == GP->getPuppets().end());
+			auto allies = GP->getAllies();
+			bool isAlly = (allies.find(relationItr.first), allies.find(relationItr.first) != allies.end());
 			
-			if (isSphereLeader && notPuppet)
+			if (isInSphere && notPuppet && isAlly)
 			{
 				GP->addSphereling(relationItr.first);
+			}
+			if (isInSphere && notPuppet && !isAlly)
+			{
+				GP->addGuaranteed(relationItr.first);
 			}
 		}
 	}

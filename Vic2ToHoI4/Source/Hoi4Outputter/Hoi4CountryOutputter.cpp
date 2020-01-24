@@ -295,6 +295,10 @@ void outputFactions(
 	std::optional<HoI4Faction> faction,
 	std::optional<std::string> possibleLeaderName
 );
+void outputGuaranteedSpherelings(
+	std::ostream& output,
+	std::vector<std::string> guaranteed
+);
 void outputIdeas(
 	std::ostream& output,
 	const bool& greatPower,
@@ -374,6 +378,7 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 	);
 	outputRelations(output, tag, theCountry.getRelations());
 	outputFactions(output, tag, theCountry.getFaction(), theCountry.getSourceCountry().getName("english"));
+	outputGuaranteedSpherelings(output, theCountry.getGuaranteed());
 	outputIdeas(
 		output,
 		theCountry.isGreatPower(),
@@ -673,6 +678,17 @@ void outputFactions(
 	}
 
 	output << '\n';
+}
+
+void outputGuaranteedSpherelings(
+	std::ostream& output,
+	std::vector<std::string> guaranteed
+) {
+	for (auto guaranteedTag: guaranteed)
+	{
+		output << "give_guarantee = " + guaranteedTag + "\n";
+	}
+	output << "\n";
 }
 
 

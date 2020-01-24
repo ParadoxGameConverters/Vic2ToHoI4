@@ -210,6 +210,8 @@ class Country
 		double getSpherelingAutonomy(std::string) const;
 		void setSpherelingAutonomy(std::string spherelingTag, double autonomy);
 		double calculateInfluenceFactor();
+		std::vector<std::string> getGuaranteed() const { return guaranteed; }
+		void addGuaranteed(std::string guaranteedTag) { guaranteed.push_back(guaranteedTag); }
 
 	private:
 		void determineFilename();
@@ -301,6 +303,7 @@ class Country
 
 		std::map<std::string, int> GPInfluences;
 		std::map<std::string, double> spherelings;
+		std::vector<std::string> guaranteed;
 };
 
 }
