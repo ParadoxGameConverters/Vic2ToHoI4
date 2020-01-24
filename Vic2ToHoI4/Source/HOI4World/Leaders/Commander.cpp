@@ -1,5 +1,7 @@
 #include "Commander.h"
 #include "OSCompatibilityLayer.h"
+#include <algorithm>
+#include <random>
 
 
 
@@ -16,6 +18,17 @@ skill(static_cast<int>(srcLeader.getPrestige() * 22.5f) + 1)
 	{
 		skill = 4;
 	}
-	attackSkill = skill;
-	defenseSkill = skill;
+	attackSkill = varySkill(skill);
+	defenseSkill = varySkill(skill);
 }
+
+
+static std::mt19937 randomnessEngine;
+static std::uniform_int_distribution<> numberDistributor(-1, 2); // due to int truncation, this is -1 to 1 in practice
+
+int HoI4::Commander::varySkill(int skill) const
+{
+	skill += numberDistributor(randomnessEngine) - 1;
+	return std::clamp(skill, 1, 5);
+}
+

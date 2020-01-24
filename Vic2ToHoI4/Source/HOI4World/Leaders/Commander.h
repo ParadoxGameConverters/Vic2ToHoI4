@@ -18,6 +18,8 @@ class Commander
 		Commander(const Vic2::Leader& srcLeader, const std::string& portrait);
 
 	protected:
+		int varySkill(int skill) const;
+	
 		std::string name;
 		std::string picture;
 		std::vector<std::string> traits;
