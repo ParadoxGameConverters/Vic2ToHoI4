@@ -257,6 +257,7 @@
     <ClCompile Include="Source\HOI4World\ImpassableProvinces.cpp" />
     <ClCompile Include="Source\HOI4World\Leaders\Admiral.cpp" />
     <ClCompile Include="Source\HOI4World\Leaders\Advisor.cpp" />
+    <ClCompile Include="Source\HOI4World\Leaders\Commander.cpp" />
     <ClCompile Include="Source\HOI4World\Leaders\General.cpp" />
     <ClCompile Include="Source\HOI4World\Leaders\IdeologicalAdvisors.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\AllReplacementRules.cpp" />
@@ -410,6 +411,7 @@
     <ClInclude Include="Source\HOI4World\ImpassableProvinces.h" />
     <ClInclude Include="Source\HOI4World\Leaders\Admiral.h" />
     <ClInclude Include="Source\HOI4World\Leaders\Advisor.h" />
+    <ClInclude Include="Source\HOI4World\Leaders\Commander.h" />
     <ClInclude Include="Source\HOI4World\Leaders\General.h" />
     <ClInclude Include="Source\HOI4World\Leaders\IdeologicalAdvisors.h" />
     <ClInclude Include="Source\HOI4World\Localisations\AllReplacementRules.h" />

@@ -121,6 +121,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ImpassableProvinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Admiral.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Advisor.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Commander.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\General.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\IdeologicalAdvisors.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\AllReplacementRules.cpp" />

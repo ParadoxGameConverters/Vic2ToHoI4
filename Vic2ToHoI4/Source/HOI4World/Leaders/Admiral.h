@@ -3,17 +3,14 @@
 
 
 
-#include "../../V2World/Leader.h"
-#include <ostream>
-#include <string>
-#include <vector>
+#include "Commander.h"
 
 
 
 namespace HoI4
 {
 	
-class Admiral
+class Admiral: Commander
 {
 	public:
 		Admiral(const Vic2::Leader& srcLeader, const std::string& portrait);
@@ -21,12 +18,6 @@ class Admiral
 		friend std::ostream& operator<<(std::ostream& output, const Admiral& instance);
 
 	private:
-		std::string name;
-		std::string picture;
-		std::vector<std::string> traits;
-		int skill = 1;
-		int attackSkill = 1;
-		int defenseSkill = 1;
 		int maneuveringSkill = 1;
 		int coordinationSkill = 1;
 };
