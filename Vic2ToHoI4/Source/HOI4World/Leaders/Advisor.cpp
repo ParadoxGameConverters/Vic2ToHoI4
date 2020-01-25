@@ -17,4 +17,5 @@ HoI4::Advisor::Advisor(std::string ideology, std::istream& theStream):
 	registerRegex("[A-Za-z0-9_]+", commonItems::ignoreItem);
 
 	parseStream(theStream);
+	clearRegisteredKeywords();
 }

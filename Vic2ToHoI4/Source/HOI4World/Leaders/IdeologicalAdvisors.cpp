@@ -13,4 +13,5 @@ HoI4::IdeologicalAdvisors::IdeologicalAdvisors() noexcept
 	registerRegex("[A-Za-z0-9_]+", commonItems::ignoreItem);
 
 	parseFile("ideologicalAdvisors.txt");
+	clearRegisteredKeywords();
 }
