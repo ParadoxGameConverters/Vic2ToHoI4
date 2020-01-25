@@ -17,15 +17,12 @@ class HoI4StrategicRegion: commonItems::parser
 		explicit HoI4StrategicRegion(const std::string& _filename);
 		void output(const std::string& path) const;
 
-		int getID() const { return ID; }
-		std::vector<int>	getOldProvinces() const	{ return oldProvinces; }
+		[[nodiscard]] int getID() const { return ID; }
+		[[nodiscard]] std::vector<int>	getOldProvinces() const	{ return oldProvinces; }
 
-		void addNewProvince(int province) { newProvinces.push_back(province); }
+		void addNewProvince(const int province) { newProvinces.push_back(province); }
 
 	private:
-		HoI4StrategicRegion(const HoI4StrategicRegion&) = delete;
-		HoI4StrategicRegion& operator=(const HoI4StrategicRegion&) = delete;
-
 		std::string filename;
 		int ID = 0;
 		std::string name;

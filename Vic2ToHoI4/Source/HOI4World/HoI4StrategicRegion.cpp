@@ -12,12 +12,12 @@ class region: commonItems::parser
 	public:
 		explicit region(std::istream& theStream);
 
-		auto getID() const { return ID; }
-		auto getName() const { return name; }
-		auto getStaticModifiers() const { return staticModifiers; }
-		auto getProvinces() const { return provinces; }
-		auto getNavalTerrain() const { return navalTerrain; }
-		auto getWeather() const { return weather; }
+		[[nodiscard]] auto getID() const { return ID; }
+		[[nodiscard]] auto getName() const { return name; }
+		[[nodiscard]] auto getStaticModifiers() const { return staticModifiers; }
+		[[nodiscard]] auto getProvinces() const { return provinces; }
+		[[nodiscard]] auto getNavalTerrain() const { return navalTerrain; }
+		[[nodiscard]] auto getWeather() const { return weather; }
 
 	private:
 		int ID = 0;
@@ -32,27 +32,27 @@ class region: commonItems::parser
 region::region(std::istream& theStream)
 {
 	registerKeyword("id", [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleInt idString(theStream);
+		const commonItems::singleInt idString(theStream);
 		ID = idString.getInt();
 	});
 	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString nameString(theStream);
+		const commonItems::singleString nameString(theStream);
 		name = nameString.getString();
 	});
 	registerKeyword("provinces", [this](const std::string& unused, std::istream& theStream){
-		commonItems::intList provinceInts(theStream);
-		provinces = provinceInts.getInts();
+		const commonItems::intList provinceNumbers(theStream);
+		provinces = provinceNumbers.getInts();
 	});
 	registerKeyword("static_modifiers", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::assignments staticModifierStrings(theStream);
+		const commonItems::assignments staticModifierStrings(theStream);
 		staticModifiers = staticModifierStrings.getAssignments();
 	});
 	registerKeyword("naval_terrain", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString terrainString(theStream);
+		const commonItems::singleString terrainString(theStream);
 		navalTerrain = terrainString.getString();
 	});
 	registerKeyword("weather", [this](const std::string& unused, std::istream& theStream){
-		commonItems::stringOfItem weatherString(theStream);
+		const commonItems::stringOfItem weatherString(theStream);
 		weather = weatherString.getString();
 	});
 	//registerKeyword(std::regex("[a-zA-Z0-9_]+"), commonItems::ignoreItem);
@@ -66,7 +66,7 @@ HoI4StrategicRegion::HoI4StrategicRegion(const std::string& _filename):
 	filename(_filename)
 {
 	registerKeyword(std::regex("strategic_region"), [this](const std::string& unused, std::istream& theStream){
-		region theRegion(theStream);
+		const region theRegion(theStream);
 		ID = theRegion.getID();
 		name = theRegion.getName();
 		oldProvinces = theRegion.getProvinces();
