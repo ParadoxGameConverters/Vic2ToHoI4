@@ -53,7 +53,7 @@ Vic2::Relations::Relations(const std::string& theTag, std::istream& theStream):
 		commonItems::singleString dateString(theStream);
 		truceUntil = date(dateString.getString());
 	});
-	registerKeyword(std::regex("influence_value"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("influence_value", [this](const std::string& unused, std::istream& theStream){
 		commonItems::singleInt valueInt(theStream);
 		influenceValue = valueInt.getInt();
 	});

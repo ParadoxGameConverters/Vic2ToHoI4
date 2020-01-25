@@ -1745,11 +1745,10 @@ void HoI4::World::calculateSpherelingAutonomy()
 	{
 		for (auto& sphereling: GP->getSpherelings())
 		{
-			double spherelingAutonomy = 0;
 			auto spherelingCountry = findCountry(sphereling.first);
 			double influenceFactor = spherelingCountry->calculateInfluenceFactor();
 
-			spherelingAutonomy = 3.6 * influenceFactor / 400;
+			double spherelingAutonomy = 3.6 * influenceFactor / 400;
 			
 			GP->setSpherelingAutonomy(sphereling.first, spherelingAutonomy);
 		}
