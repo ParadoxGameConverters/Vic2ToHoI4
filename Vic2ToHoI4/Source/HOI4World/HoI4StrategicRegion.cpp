@@ -37,6 +37,7 @@ class region: commonItems::parser
 
 		auto getID() const { return ID; }
 		auto getName() const { return name; }
+		auto getStaticModifiers() const { return staticModifiers; }
 		auto getProvinces() const { return provinces; }
 		auto getNavalTerrain() const { return navalTerrain; }
 		auto getWeather() const { return weather; }
@@ -45,6 +46,7 @@ class region: commonItems::parser
 		int ID = 0;
 		std::string name;
 		std::vector<int> provinces;
+		std::map<std::string, std::string> staticModifiers;
 		std::optional<std::string> navalTerrain;
 		std::string weather;
 };
@@ -63,6 +65,10 @@ region::region(std::istream& theStream)
 	registerKeyword("provinces", [this](const std::string& unused, std::istream& theStream){
 		commonItems::intList provinceInts(theStream);
 		provinces = provinceInts.getInts();
+	});
+	registerKeyword("static_modifiers", [this](const std::string& unused, std::istream& theStream) {
+		commonItems::assignments staticModifierStrings(theStream);
+		staticModifiers = staticModifierStrings.getAssignments();
 	});
 	registerKeyword("naval_terrain", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString terrainString(theStream);
@@ -88,6 +94,7 @@ HoI4StrategicRegion::HoI4StrategicRegion(const std::string& _filename):
 		name = theRegion.getName();
 		oldProvinces = theRegion.getProvinces();
 		navalTerrain = theRegion.getNavalTerrain();
+		staticModifiers = theRegion.getStaticModifiers();
 		weather = theRegion.getWeather();
 	});
 
@@ -117,6 +124,16 @@ void HoI4StrategicRegion::output(const std::string& path) const
 	}
 	out << "\n";
 	out << "\t}\n";
+	if (!staticModifiers.empty())
+	{
+		out << "\tstatic_modifiers={\n";
+		for (const auto& modifier: staticModifiers)
+		{
+			out << "\t\t" << modifier.first << "=" << modifier.second << "\n";
+		}
+		out << "\n";
+		out << "\t}\n";
+	}
 	if (navalTerrain)
 	{
 		out << "\tnaval_terrain=" << *navalTerrain << "\n";
