@@ -1,12 +1,13 @@
 #include "Hoi4CountryOutputter.h"
+#include "Leaders/OutAdvisor.h"
 #include "Navies/NaviesOutputter.h"
 #include "ShipTypes/ShipVariantsOutputter.h"
-#include "../HOI4World/Advisor.h"
 #include "../HOI4World/DivisionTemplate.h"
 #include "../HOI4World/HoI4Country.h"
 #include "../HOI4World/HoI4Faction.h"
 #include "../HOI4World/HoI4FocusTree.h"
 #include "../HOI4World/Names.h"
+#include "../HOI4World/Leaders/Advisor.h"
 #include "../Mappers/GraphicsMapper.h"
 #include "../V2World/Country.h"
 #include "Date.h"
@@ -228,11 +229,11 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 void outputCommonCountryFile(const HoI4::Country& theCountry);
 void outputAdvisorIdeas(
 	const std::string& tag,
-	const std::set<HoI4::Advisor, HoI4::advisorCompare>& ideologicalAdvisors
+	const std::set<HoI4::Advisor>& ideologicalAdvisors
 );
 
 void HoI4::outputCountry(
-	const std::set<Advisor, advisorCompare>& ideologicalMinisters,
+	const std::set<Advisor>& ideologicalMinisters,
 	const std::vector<DivisionTemplateType>& divisionTemplates,
 	namesMapper& theNames,
 	graphicsMapper& theGraphics,
@@ -1003,7 +1004,7 @@ void outputCommonCountryFile(const HoI4::Country& theCountry)
 
 void outputAdvisorIdeas(
 	const std::string& tag,
-	const std::set<HoI4::Advisor, HoI4::advisorCompare>& ideologicalAdvisors
+	const std::set<HoI4::Advisor>& ideologicalAdvisors
 ) {
 	std::ofstream ideasFile("output/" + theConfiguration.getOutputName() + "/common/ideas/" + tag + ".txt");
 	if (!ideasFile.is_open())
@@ -1017,7 +1018,7 @@ void outputAdvisorIdeas(
 	ideasFile << "\tpolitical_advisor = {\n";
 	for (auto& ideologicalAdvisor: ideologicalAdvisors)
 	{
-		ideologicalAdvisor.output(ideasFile, tag);
+		outputAdvisor(ideasFile, tag, ideologicalAdvisor);
 	}
 	ideasFile << "\t}\n";
 

@@ -73,6 +73,12 @@
     <Filter Include="Hoi4Outputter\Events">
       <UniqueIdentifier>{f71d37c0-a289-421c-b944-31a6b535e0b6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\Leaders">
+      <UniqueIdentifier>{005bcb86-e037-441a-8e21-55c53faf5e1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hoi4Outputter\Leaders">
+      <UniqueIdentifier>{69fbb089-5506-421f-aea7-d63468feba05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -88,9 +94,6 @@
       <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\HoI4Diplomacy.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\HoI4Leader.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\HoI4Localisation.cpp">
@@ -214,12 +217,6 @@
     </ClCompile>
     <ClCompile Include="Source\V2World\Party.cpp">
       <Filter>Vic2World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\IdeologicalAdvisors.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Advisor.cpp">
-      <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Ideas.cpp">
       <Filter>HoI4World</Filter>
@@ -507,6 +504,30 @@
     <ClCompile Include="Source\HOI4World\Events\EventOption.cpp">
       <Filter>HoI4World\Events</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Leaders\General.cpp">
+      <Filter>HoI4World\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Leaders\Admiral.cpp">
+      <Filter>HoI4World\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Leaders\OutAdmiral.cpp">
+      <Filter>Hoi4Outputter\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Leaders\OutGeneral.cpp">
+      <Filter>Hoi4Outputter\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Leaders\Advisor.cpp">
+      <Filter>HoI4World\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Leaders\IdeologicalAdvisors.cpp">
+      <Filter>HoI4World\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Leaders\OutAdvisor.cpp">
+      <Filter>Hoi4Outputter\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Leaders\Commander.cpp">
+      <Filter>HoI4World\Leaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -522,9 +543,6 @@
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\HoI4Diplomacy.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\HoI4Leader.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\HoI4Localisation.h">
@@ -648,12 +666,6 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Party.h">
       <Filter>Vic2World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\IdeologicalAdvisors.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\Advisor.h">
-      <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Ideas.h">
       <Filter>HoI4World</Filter>
@@ -958,6 +970,24 @@
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Events\EventOptionOutputter.h">
       <Filter>Hoi4Outputter\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Leaders\General.h">
+      <Filter>HoI4World\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Leaders\Admiral.h">
+      <Filter>HoI4World\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Leaders\Advisor.h">
+      <Filter>HoI4World\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Leaders\IdeologicalAdvisors.h">
+      <Filter>HoI4World\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Leaders\OutAdvisor.h">
+      <Filter>Hoi4Outputter\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Leaders\Commander.h">
+      <Filter>HoI4World\Leaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

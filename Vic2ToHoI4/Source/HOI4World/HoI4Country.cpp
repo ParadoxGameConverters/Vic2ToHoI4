@@ -1,10 +1,9 @@
 #include "HoI4Country.h"
-#include "Advisor.h"
 #include "HoI4World.h"
 #include "Log.h"
-#include "HoI4Leader.h"
 #include "HoI4Localisation.h"
 #include "HoI4War.h"
+#include "Leaders/Advisor.h"
 #include "Names.h"
 #include "MilitaryMappings/MilitaryMappings.h"
 #include "../Mappers/CountryMapping.h"
@@ -268,12 +267,12 @@ void HoI4::Country::convertLeaders(const graphicsMapper& theGraphics)
 	{
 		if (srcLeader->getType() == "land")
 		{
-			General newLeader(srcLeader, theGraphics.getGeneralPortrait(graphicalCulture));
+			General newLeader(*srcLeader, theGraphics.getGeneralPortrait(graphicalCulture));
 			generals.push_back(newLeader);
 		}
 		else if (srcLeader->getType() == "sea")
 		{
-			Admiral newLeader(srcLeader, theGraphics.getGeneralPortrait(graphicalCulture));
+			Admiral newLeader(*srcLeader, theGraphics.getGeneralPortrait(graphicalCulture));
 			admirals.push_back(newLeader);
 		}
 	}

@@ -18,7 +18,6 @@ class Advisor;
 class Country;
 class DivisionTemplateType;
 class namesMapper;
-struct advisorCompare;
 
 
 void outputToCommonCountriesFile(std::ostream& countriesFile, const Country& theCountry);
@@ -31,7 +30,7 @@ void outputIdeaGraphics(
 	const Country& theCountry
 );
 void outputCountry(
-	const std::set<Advisor, advisorCompare>& ideologicalMinisters,
+	const std::set<Advisor>& ideologicalMinisters,
 	const std::vector<DivisionTemplateType>& divisionTemplates,
 	namesMapper& theNames,
 	graphicsMapper& theGraphics,

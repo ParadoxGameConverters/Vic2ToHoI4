@@ -3,16 +3,16 @@
 
 
 
-#include "Advisor.h"
 #include "AIPeaces.h"
 #include "CoastalProvinces.h"
 #include "Decisions/Decisions.h"
 #include "Ideas.h"
-#include "OnActions.h"
-#include "Names.h"
+#include "Leaders/Advisor.h"
 #include "MapData.h"
 #include "MilitaryMappings/AllMilitaryMappings.h"
 #include "MilitaryMappings/UnitMappings.h"
+#include "Names.h"
+#include "OnActions.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
 #include "States/HoI4States.h"
 #include "../Mappers/CountryMapping.h"
@@ -65,7 +65,6 @@ class State;
 class States;
 class SupplyZones;
 class HoI4UnitType;
-struct advisorCompare;
 
 
 class World: commonItems::parser
@@ -179,7 +178,7 @@ class World: commonItems::parser
 		void outputMap() const;
 		void outputGenericFocusTree() const;
 		void outputCountries();
-		std::set<HoI4::Advisor, HoI4::advisorCompare> getActiveIdeologicalAdvisors() const;
+		std::set<HoI4::Advisor> getActiveIdeologicalAdvisors() const;
 		void outputRelations() const;
 		void outputIdeologies() const;
 		void outputLeaderTraits() const;

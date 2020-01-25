@@ -4,7 +4,6 @@
 #include "../Configuration.h"
 #include "../V2World/Diplomacy.h"
 #include "../V2World/Party.h"
-#include "Advisor.h"
 #include "HoI4Agreement.h"
 #include "HoI4Buildings.h"
 #include "HoI4Country.h"
@@ -13,11 +12,12 @@
 #include "Events/Events.h"
 #include "HoI4Faction.h"
 #include "HoI4FocusTree.h"
-#include "Ideas.h"
-#include "IdeologicalAdvisors.h"
 #include "HOI4Ideology.h"
-#include "IdeologyFile.h"
 #include "HoI4Localisation.h"
+#include "Ideas.h"
+#include "IdeologyFile.h"
+#include "Leaders/Advisor.h"
+#include "Leaders/IdeologicalAdvisors.h"
 #include "Names.h"
 #include "HoI4Province.h"
 #include "HoI4StrategicRegion.h"
@@ -1321,9 +1321,9 @@ void HoI4::World::outputCountries()
 }
 
 
-std::set<HoI4::Advisor, HoI4::advisorCompare> HoI4::World::getActiveIdeologicalAdvisors() const
+std::set<HoI4::Advisor> HoI4::World::getActiveIdeologicalAdvisors() const
 {
-	std::set<HoI4::Advisor, HoI4::advisorCompare> theAdvisors;
+	std::set<HoI4::Advisor> theAdvisors;
 	for (auto ideology: majorIdeologies)
 	{
 		auto ideologicalAdvisor = ideologicalAdvisors.find(ideology);

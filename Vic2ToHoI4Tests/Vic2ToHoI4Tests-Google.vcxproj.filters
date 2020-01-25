@@ -107,9 +107,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4StrategicRegion.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeologicalAdvisors.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeologyFile.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
@@ -140,13 +137,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Division.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Leader.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Relations.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Advisor.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Focus.cpp">
@@ -596,6 +587,30 @@
     <ClCompile Include="HoI4WorldTests\Events\EventTests.cpp">
       <Filter>HoI4WorldTests\Events</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Admiral.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\General.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutAdmiral.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutGeneral.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Advisor.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\IdeologicalAdvisors.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutAdvisor.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Commander.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -702,6 +717,12 @@
     </Filter>
     <Filter Include="HoI4WorldTests\Events">
       <UniqueIdentifier>{ffe08428-d407-4da1-93a9-8512ccc69546}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Leaders">
+      <UniqueIdentifier>{27fdb0ff-a80d-4958-8027-4cb689ba4819}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Leaders">
+      <UniqueIdentifier>{841f7351-9b4b-4ae6-baa9-bbdca1d71aaf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

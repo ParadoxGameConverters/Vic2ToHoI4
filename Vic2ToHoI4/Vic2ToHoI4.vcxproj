@@ -198,6 +198,9 @@
     <ClCompile Include="Source\Hoi4Outputter\Events\EventOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Events\EventsOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Hoi4CountryOutputter.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Leaders\OutAdmiral.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Leaders\OutAdvisor.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Leaders\OutGeneral.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp" />
@@ -210,7 +213,6 @@
     <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\States\HoI4StateOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.cpp" />
-    <ClCompile Include="Source\HOI4World\Advisor.cpp" />
     <ClCompile Include="Source\HOI4World\AIPeace.cpp" />
     <ClCompile Include="Source\HOI4World\AIPeaces.cpp" />
     <ClCompile Include="Source\HOI4World\CoastalProvinces.cpp" />
@@ -239,7 +241,6 @@
     <ClCompile Include="Source\HOI4World\HoI4Focus.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4FocusTree.cpp" />
     <ClCompile Include="Source\HOI4World\HOI4Ideology.cpp" />
-    <ClCompile Include="Source\HOI4World\HoI4Leader.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Localisation.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Province.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Relations.cpp" />
@@ -252,9 +253,13 @@
     <ClCompile Include="Source\HOI4World\Idea.cpp" />
     <ClCompile Include="Source\HOI4World\IdeaGroup.cpp" />
     <ClCompile Include="Source\HOI4World\Ideas.cpp" />
-    <ClCompile Include="Source\HOI4World\IdeologicalAdvisors.cpp" />
     <ClCompile Include="Source\HOI4World\IdeologyFile.cpp" />
     <ClCompile Include="Source\HOI4World\ImpassableProvinces.cpp" />
+    <ClCompile Include="Source\HOI4World\Leaders\Admiral.cpp" />
+    <ClCompile Include="Source\HOI4World\Leaders\Advisor.cpp" />
+    <ClCompile Include="Source\HOI4World\Leaders\Commander.cpp" />
+    <ClCompile Include="Source\HOI4World\Leaders\General.cpp" />
+    <ClCompile Include="Source\HOI4World\Leaders\IdeologicalAdvisors.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\AllReplacementRules.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\LanguageReplacementRule.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\LanguageReplacementRules.cpp" />
@@ -348,6 +353,7 @@
     <ClInclude Include="Source\Hoi4Outputter\Events\EventOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Events\EventsOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Hoi4CountryOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Leaders\OutAdvisor.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.h" />
@@ -360,7 +366,6 @@
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\States\HoI4StateOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.h" />
-    <ClInclude Include="Source\HOI4World\Advisor.h" />
     <ClInclude Include="Source\HOI4World\AIPeace.h" />
     <ClInclude Include="Source\HOI4World\AIPeaces.h" />
     <ClInclude Include="Source\HOI4World\CoastalProvinces.h" />
@@ -390,7 +395,6 @@
     <ClInclude Include="Source\HOI4World\HoI4Focus.h" />
     <ClInclude Include="Source\HOI4World\HoI4FocusTree.h" />
     <ClInclude Include="Source\HOI4World\HOI4Ideology.h" />
-    <ClInclude Include="Source\HOI4World\HoI4Leader.h" />
     <ClInclude Include="Source\HOI4World\HoI4Localisation.h" />
     <ClInclude Include="Source\HOI4World\HoI4Province.h" />
     <ClInclude Include="Source\HOI4World\HoI4Relations.h" />
@@ -403,9 +407,13 @@
     <ClInclude Include="Source\HOI4World\Idea.h" />
     <ClInclude Include="Source\HOI4World\IdeaGroup.h" />
     <ClInclude Include="Source\HOI4World\Ideas.h" />
-    <ClInclude Include="Source\HOI4World\IdeologicalAdvisors.h" />
     <ClInclude Include="Source\HOI4World\IdeologyFile.h" />
     <ClInclude Include="Source\HOI4World\ImpassableProvinces.h" />
+    <ClInclude Include="Source\HOI4World\Leaders\Admiral.h" />
+    <ClInclude Include="Source\HOI4World\Leaders\Advisor.h" />
+    <ClInclude Include="Source\HOI4World\Leaders\Commander.h" />
+    <ClInclude Include="Source\HOI4World\Leaders\General.h" />
+    <ClInclude Include="Source\HOI4World\Leaders\IdeologicalAdvisors.h" />
     <ClInclude Include="Source\HOI4World\Localisations\AllReplacementRules.h" />
     <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacementRule.h" />
     <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacementRules.h" />
