@@ -55,7 +55,7 @@ region::region(std::istream& theStream)
 		const commonItems::stringOfItem weatherString(theStream);
 		weather = weatherString.getString();
 	});
-	//registerKeyword(std::regex("[a-zA-Z0-9_]+"), commonItems::ignoreItem);
+	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();
@@ -65,7 +65,7 @@ region::region(std::istream& theStream)
 HoI4StrategicRegion::HoI4StrategicRegion(const std::string& _filename):
 	filename(_filename)
 {
-	registerKeyword(std::regex("strategic_region"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("strategic_region", [this](const std::string& unused, std::istream& theStream){
 		const region theRegion(theStream);
 		ID = theRegion.getID();
 		name = theRegion.getName();
