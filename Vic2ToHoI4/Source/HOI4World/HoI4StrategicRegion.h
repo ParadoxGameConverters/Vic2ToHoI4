@@ -27,6 +27,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "newParser.h"
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -49,8 +50,10 @@ class HoI4StrategicRegion: commonItems::parser
 
 		std::string filename;
 		int ID = 0;
+		std::string name;
 		std::vector<int> oldProvinces;
 		std::vector<int> newProvinces;
+		std::optional<std::string> navalTerrain;
 		std::string weather;
 };
 

@@ -36,33 +36,46 @@ class region: commonItems::parser
 		explicit region(std::istream& theStream);
 
 		auto getID() const { return ID; }
+		auto getName() const { return name; }
 		auto getProvinces() const { return provinces; }
+		auto getNavalTerrain() const { return navalTerrain; }
 		auto getWeather() const { return weather; }
 
 	private:
 		int ID = 0;
+		std::string name;
 		std::vector<int> provinces;
+		std::optional<std::string> navalTerrain;
 		std::string weather;
 };
 
 
 region::region(std::istream& theStream)
 {
-	registerKeyword(std::regex("id"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("id", [this](const std::string& unused, std::istream& theStream){
 		commonItems::singleInt idString(theStream);
 		ID = idString.getInt();
 	});
-	registerKeyword(std::regex("provinces"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
+		commonItems::singleString nameString(theStream);
+		name = nameString.getString();
+	});
+	registerKeyword("provinces", [this](const std::string& unused, std::istream& theStream){
 		commonItems::intList provinceInts(theStream);
 		provinces = provinceInts.getInts();
 	});
-	registerKeyword(std::regex("weather"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("naval_terrain", [this](const std::string& unused, std::istream& theStream) {
+		commonItems::singleString terrainString(theStream);
+		navalTerrain = terrainString.getString();
+	});
+	registerKeyword("weather", [this](const std::string& unused, std::istream& theStream){
 		commonItems::stringOfItem weatherString(theStream);
 		weather = weatherString.getString();
 	});
-	registerKeyword(std::regex("[a-zA-Z0-9_]+"), commonItems::ignoreItem);
+	//registerKeyword(std::regex("[a-zA-Z0-9_]+"), commonItems::ignoreItem);
 
 	parseStream(theStream);
+	clearRegisteredKeywords();
 }
 
 
@@ -72,11 +85,14 @@ HoI4StrategicRegion::HoI4StrategicRegion(const std::string& _filename):
 	registerKeyword(std::regex("strategic_region"), [this](const std::string& unused, std::istream& theStream){
 		region theRegion(theStream);
 		ID = theRegion.getID();
+		name = theRegion.getName();
 		oldProvinces = theRegion.getProvinces();
+		navalTerrain = theRegion.getNavalTerrain();
 		weather = theRegion.getWeather();
 	});
 
 	parseFile(theConfiguration.getHoI4Path() + "/map/strategicregions/" + _filename);
+	clearRegisteredKeywords();
 }
 
 
@@ -92,7 +108,7 @@ void HoI4StrategicRegion::output(const std::string& path) const
 	out << "\n";
 	out << "strategic_region={\n";
 	out << "\tid=" << ID << "\n";
-	out << "\tname=\"STRATEGICREGION_" << ID << "\"\n";
+	out << "\tname=\"" << name << "\"\n";
 	out << "\tprovinces={\n";
 	out << "\t\t";
 	for (auto province: newProvinces)
@@ -101,6 +117,10 @@ void HoI4StrategicRegion::output(const std::string& path) const
 	}
 	out << "\n";
 	out << "\t}\n";
+	if (navalTerrain)
+	{
+		out << "\tnaval_terrain=" << *navalTerrain << "\n";
+	}
 	out << "\tweather" << weather << "\n";
 	out << "}";
 
