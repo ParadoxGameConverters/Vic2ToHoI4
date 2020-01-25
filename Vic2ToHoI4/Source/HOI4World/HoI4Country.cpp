@@ -876,39 +876,7 @@ std::optional<HoI4FocusTree> HoI4::Country::getNationalFocus() const
 	}
 }
 
-void HoI4::Country::addSphereling(std::string Sphereling)
-{
-	double defaultAutonomy = 0.5;
-	spherelings.insert(make_pair(Sphereling, defaultAutonomy));
-}
-
-double HoI4::Country::getSpherelingAutonomy(std::string spherelingTag) const
-{
-	if (auto sphereling = spherelings.find(spherelingTag); sphereling == spherelings.end())
-	{
-		LOG(LogLevel::Debug) << "Could not find " << sphereling->first << " in spherelings";
-		return 0.5;
-	}
-	else
-	{
-		return sphereling->second;
-	}
-}
-
-void HoI4::Country::setSpherelingAutonomy(std::string spherelingTag, double autonomy)
-{
-	auto sphereling = spherelings.find(spherelingTag);
-	if (sphereling == spherelings.end())
-	{
-		LOG(LogLevel::Debug) << "Could not find " << sphereling->first << " in spherelings";
-		sphereling->second = 0.5;
-	}
-	else
-	{
-		sphereling->second = autonomy;
-	}
-}
-
+//Calculates Influence Factor = Σ Outside Influence - 1.5 * Leader Influence
 double HoI4::Country::calculateInfluenceFactor()
 {
 	if (sphereLeader.empty())

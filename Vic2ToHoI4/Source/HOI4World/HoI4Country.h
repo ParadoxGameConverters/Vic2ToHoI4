@@ -205,9 +205,8 @@ class Country
 
 		void addGPInfluence(std::string GPTag, int influenceValue) { GPInfluences.insert({GPTag, influenceValue}); }
 		[[nodiscard]] const std::map<std::string, double>& getSpherelings() const { return spherelings; }
-		void addSphereling(std::string);
-		double getSpherelingAutonomy(std::string) const;
-		void setSpherelingAutonomy(std::string spherelingTag, double autonomy);
+		void addSphereling(std::string sphereling) { spherelings.insert(make_pair(sphereling, 0.5)); }
+		void setSpherelingAutonomy(std::string sphereling, double autonomy) { spherelings.find(sphereling)->second = autonomy; }
 		double calculateInfluenceFactor();
 		std::vector<std::string> getGuaranteed() const { return guaranteed; }
 		void addGuaranteed(std::string guaranteedTag) { guaranteed.push_back(guaranteedTag); }
