@@ -5,9 +5,9 @@
 
 
 
-HoI4::Commander::Commander(const Vic2::Leader& srcLeader, const std::string& portrait):
+HoI4::Commander::Commander(const Vic2::Leader& srcLeader, std::string portrait):
 	name(Utils::convertWin1252ToUTF8(srcLeader.getName())),
-	picture(portrait),
+	picture(std::move(portrait)),
 skill(static_cast<int>(srcLeader.getPrestige() * 22.5f) + 1)
 {
 	if (skill > 5)

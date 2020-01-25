@@ -15,7 +15,7 @@ namespace HoI4
 class Commander
 {
 	public:
-		Commander(const Vic2::Leader& srcLeader, const std::string& portrait);
+		Commander(const Vic2::Leader& srcLeader, std::string portrait);
 
 	protected:
 		[[nodiscard]] int varySkill(int skill) const;
