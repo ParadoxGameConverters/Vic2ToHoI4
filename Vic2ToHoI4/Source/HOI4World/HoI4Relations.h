@@ -50,6 +50,7 @@ class HoI4Relations
 		bool		getSphereLeader()		const { return sphereLeader; };
 		date		getLastWar()		const { return lastWar; };
 		date		getTruceUntil()	const { return truceUntil; };
+		int			getInfluenceValue()		const { return influenceValue; };
 		bool		atWar()				const { return lastWar > truceUntil; };
 
 	private:
@@ -60,8 +61,10 @@ class HoI4Relations
 		date		lastSendDiplomat;
 		date		lastWar;
 		date		truceUntil;
+		int			influenceValue;
 		bool		guarantee;
 		bool		sphereLeader;
+		double		spherelingAutonomy = 0.5;
 };
 
 

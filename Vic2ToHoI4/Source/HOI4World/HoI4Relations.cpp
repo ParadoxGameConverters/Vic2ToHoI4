@@ -33,6 +33,7 @@ HoI4Relations::HoI4Relations(const std::string& newTag):
 	lastSendDiplomat(date()),
 	lastWar(date()),
 	truceUntil(date()),
+	influenceValue(0),
 	guarantee(false),
 	sphereLeader(false)
 {
@@ -46,7 +47,7 @@ HoI4Relations::HoI4Relations(const std::string& newTag, const Vic2::Relations* o
 	lastSendDiplomat(oldRelations->getDiplomatLastSent()),
 	lastWar(oldRelations->getLastWar()),
 	truceUntil(oldRelations->getTruceUntil()),
+	influenceValue(oldRelations->getInfluenceValue()),
 	guarantee(oldRelations->getLevel() >= 4),
 	sphereLeader(oldRelations->getLevel() >= 5)
 {}
-

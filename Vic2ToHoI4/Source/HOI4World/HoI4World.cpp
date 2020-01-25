@@ -109,6 +109,11 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	addFocusTrees();
 	adjustResearchFocuses();
 	HoI4Localisation::generateCustomLocalisations(scriptedLocalisations);
+    
+	setSphereLeaders();
+	processInfluence();
+	determineSpherelings();
+	calculateSpherelingAutonomy();
 }
 
 
@@ -1119,7 +1124,15 @@ void HoI4::World::outputCommonCountries() const
 
 	for (auto country: countries)
 	{
-		if (country.second->getCapitalState())
+		if (country.second->isGreatPower() && country.second->getCapitalState())
+		{
+			outputToCommonCountriesFile(allCountriesFile, *country.second);
+		}
+	}
+
+	for (auto country: countries)
+	{
+		if (!country.second->isGreatPower() && country.second->getCapitalState())
 		{
 			outputToCommonCountriesFile(allCountriesFile, *country.second);
 		}
@@ -1669,3 +1682,76 @@ closedProvinces.insert(make_pair(thisAdjacency.to, thisAdjacency.to));
 return -1;
 
 }*/
+
+void HoI4::World::setSphereLeaders()
+{
+	for (auto GP: greatPowers)
+	{
+		for (auto& relationItr: GP->getRelations())
+		{
+			if (relationItr.second.getSphereLeader())
+			{
+				auto sphereling = findCountry(relationItr.first);
+				sphereling->setSphereLeader(GP->getTag());
+			}
+		}
+	}
+}
+
+void HoI4::World::processInfluence()
+{
+	for (auto GP: greatPowers)
+	{
+		for (auto& relationItr: GP->getRelations())
+		{
+			auto influencedCountry = findCountry(relationItr.first);
+			bool isFriendlyCountry = relationItr.second.getGuarantee();
+			auto influenceValue = relationItr.second.getInfluenceValue();
+
+			if (isFriendlyCountry)
+			{
+				influencedCountry->addGPInfluence(GP->getTag(), influenceValue);
+			}
+		}
+	}
+}
+
+void HoI4::World::determineSpherelings()
+{
+	for (auto& GP: greatPowers)
+	{
+		for (auto relationItr: GP->getRelations())
+		{
+			bool isInSphere = relationItr.second.getSphereLeader();
+			bool notPuppet = (GP->getPuppets().find(relationItr.first) == GP->getPuppets().end());
+			auto allies = GP->getAllies();
+			bool isAlly = allies.count(relationItr.first);
+			
+			if (isInSphere && notPuppet && isAlly)
+			{
+				GP->addSphereling(relationItr.first);
+			}
+			if (isInSphere && notPuppet && !isAlly)
+			{
+				GP->addGuaranteed(relationItr.first);
+			}
+		}
+	}
+}
+
+void HoI4::World::calculateSpherelingAutonomy()
+{
+	for (auto& GP: greatPowers)
+	{
+		for (auto& sphereling: GP->getSpherelings())
+		{
+			auto spherelingCountry = findCountry(sphereling.first);
+			double influenceFactor = spherelingCountry->calculateInfluenceFactor();
+
+			double spherelingAutonomy = 3.6 * influenceFactor / 400;
+			
+			GP->setSpherelingAutonomy(sphereling.first, spherelingAutonomy);
+		}
+	}
+}
+

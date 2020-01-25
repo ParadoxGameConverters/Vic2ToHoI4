@@ -272,7 +272,10 @@ void outputPuppets(
 	const std::string& tag,
 	const std::string& governmentIdeology,
 	const std::set<std::string>& puppets,
-	const std::string& puppetMaster
+	const std::string& puppetMaster,
+	const std::map<std::string, HoI4Relations>& relations,
+	const bool& greatPower,
+	const std::map<std::string, double>& spherelings
 );
 void outputPolitics(
 	std::ostream& output,
@@ -291,6 +294,10 @@ void outputFactions(
 	const std::string& tag,
 	std::optional<HoI4Faction> faction,
 	std::optional<std::string> possibleLeaderName
+);
+void outputGuaranteedSpherelings(
+	std::ostream& output,
+	std::vector<std::string> guaranteed
 );
 void outputIdeas(
 	std::ostream& output,
@@ -357,7 +364,10 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 		tag,
 		governmentIdeology,
 		theCountry.getPuppets(),
-		theCountry.getPuppetMaster()
+		theCountry.getPuppetMaster(),
+		theCountry.getRelations(),
+		theCountry.isGreatPower(),
+		theCountry.getSpherelings()
 	);
 	outputPolitics(
 		output,
@@ -368,6 +378,7 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 	);
 	outputRelations(output, tag, theCountry.getRelations());
 	outputFactions(output, tag, theCountry.getFaction(), theCountry.getSourceCountry().getName("english"));
+	outputGuaranteedSpherelings(output, theCountry.getGuaranteed());
 	outputIdeas(
 		output,
 		theCountry.isGreatPower(),
@@ -490,33 +501,59 @@ void outputPuppets(
 	const std::string& tag,
 	const std::string& governmentIdeology,
 	const std::set<std::string>& puppets,
-	const std::string& puppetMaster
+	const std::string& puppetMaster,
+	const std::map<std::string, HoI4Relations>& relations,
+	const bool& greatPower,
+	const std::map<std::string, double>& spherelings
 ) {
-	if (puppets.size() > 0)
+	if (!puppets.empty() || !spherelings.empty())
 	{
 		output << "# DIPLOMACY\n";
 		output << "if = {\n";
-		output << "    limit = {\n";
-		output << "        has_dlc = \"Together for Victory\"\n";
-		output << "    }\n";
-		for (const auto& puppet: puppets)
+		output << "\tlimit = {\n";
+		output << "\t\tOR = {\n";
+		output << "\t\t\thas_dlc = \"Together for Victory\"\n";
+		output << "\t\t\thas_dlc = \"Man the Guns\"\n";
+		output << "\t\t}\n";
+		output << "\t}\n";
+		if (!puppets.empty())
 		{
-			if (governmentIdeology == "fascism")
+			for (const auto& puppet: puppets)
 			{
-				output << "    set_autonomy = {\n";
-				output << "        target = " << puppet << "\n";
-				output << "        autonomous_state = autonomy_integrated_puppet\n";
-				output << "    }\n";
-			}
-			else
-			{
-				output << "    set_autonomy = {\n";
-				output << "        target = " << puppet << "\n";
-				output << "        autonomous_state = autonomy_dominion\n";
-				output << "        freedom_level = 0.4\n";
-				output << "    }\n";
+				if (governmentIdeology == "fascism")
+				{
+					output << "    set_autonomy = {\n";
+					output << "        target = " << puppet << "\n";
+					output << "        autonomous_state = autonomy_integrated_puppet\n";
+					output << "    }\n";
+				}
+				else
+				{
+					output << "    set_autonomy = {\n";
+					output << "        target = " << puppet << "\n";
+					output << "        autonomous_state = autonomy_dominion\n";
+					output << "        freedom_level = 0.4\n";
+					output << "    }\n";
+				}
 			}
 		}
+
+		if (!spherelings.empty())
+		{
+			for (auto& sphereling: spherelings)
+			{
+				bool notPuppet = (puppets.find(sphereling.first) == puppets.end());
+				if (notPuppet)
+				{
+					output << "\tset_autonomy = {\n";
+					output << "\t\ttarget = " << sphereling.first << "\n";
+					output << "\t\tautonomous_state = autonomy_sphereling\n";
+					output << "\t\tfreedom_level = " << sphereling.second << "\n";
+					output << "\t}\n";
+				}
+			}
+		}
+
 		output << "    else = {\n";
 		for (const auto& puppet: puppets)
 		{
@@ -585,7 +622,6 @@ void outputPolitics(
 	output << "\n";
 }
 
-
 void outputRelations(
 	std::ostream& output,
 	const std::string& tag,
@@ -642,6 +678,17 @@ void outputFactions(
 	}
 
 	output << '\n';
+}
+
+void outputGuaranteedSpherelings(
+	std::ostream& output,
+	std::vector<std::string> guaranteed
+) {
+	for (auto guaranteedTag: guaranteed)
+	{
+		output << "give_guarantee = " + guaranteedTag + "\n";
+	}
+	output << "\n";
 }
 
 
