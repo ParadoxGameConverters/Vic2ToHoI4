@@ -125,9 +125,6 @@ void HoI4::OnActions::output(const std::set<std::string>& majorIdeologies) const
 	{
 		onActionsFile << "			100 = war_justification." << i << "\n";
 	}
-	onActionsFile << "			100 = war_justification.37\n";
-	onActionsFile << "			100 = war_justification.38\n";
-	onActionsFile << "			100 = war_justification.39\n";
 	onActionsFile << "			17000 = 0\n";
 	onActionsFile << "		}\n";
 	onActionsFile << "	}\n";
