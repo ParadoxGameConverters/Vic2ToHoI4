@@ -948,7 +948,7 @@ void HoI4Localisation::insertScriptedLocalisation(
 	HoI4::ScriptedLocalisation& scriptedLocalisation
 ) const
 {
-	const std::regex extractRegex("([A-Z]+)_([a-z]+)_ADJ");
+	const std::regex extractRegex("([A-Z0-9]+)_([a-z]+)_ADJ");
 
 	std::smatch match;
 	std::regex_match(localisationKey, match, extractRegex);
