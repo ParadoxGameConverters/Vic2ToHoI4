@@ -107,9 +107,12 @@ class HoI4Localisation
 			getInstance()->AddDecisionLocalisation(key, localisation);
 		}
 
-		static void generateCustomLocalisations(HoI4::ScriptedLocalisations& scriptedLocalisations)
+		static void generateCustomLocalisations(
+			HoI4::ScriptedLocalisations& scriptedLocalisations,
+			const std::set<std::string>& majorIdeologies
+		)
 		{
-			getInstance()->GenerateCustomLocalisations(scriptedLocalisations);
+			getInstance()->GenerateCustomLocalisations(scriptedLocalisations, majorIdeologies);
 		}
 
 		static void updateLocalisationText(
@@ -215,7 +218,10 @@ class HoI4Localisation
 		void AddPoliticalPartyLocalisation(const std::string& Vic2Key, const std::string& HoI4Key);
 		void AddDecisionLocalisation(const std::string& key, const std::optional<std::string>& localisation);
 
-		void GenerateCustomLocalisations(HoI4::ScriptedLocalisations& scriptedLocalisations);
+		void GenerateCustomLocalisations(
+			HoI4::ScriptedLocalisations& scriptedLocalisations,
+			const std::set<std::string>& majorIdeologies
+		);
 
 		void UpdateLocalisationText(
 			const std::string& key,
@@ -227,7 +233,8 @@ class HoI4Localisation
 		void insertScriptedLocalisation(
 			const std::string& localisationKey,
 			const std::string& replacementKey,
-			HoI4::ScriptedLocalisation& scriptedLocalisation
+			HoI4::ScriptedLocalisation& scriptedLocalisation,
+			const std::set<std::string>& majorIdeologies
 		) const;
 
 		void Output() const;
