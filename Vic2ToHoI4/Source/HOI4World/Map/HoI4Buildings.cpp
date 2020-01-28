@@ -22,12 +22,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "HoI4Buildings.h"
-#include "HoI4Province.h"
 #include "CoastalProvinces.h"
 #include "MapData.h"
-#include "States/HoI4States.h"
-#include "States/HoI4State.h"
-#include "../Configuration.h"
+#include "../States/HoI4States.h"
+#include "../States/HoI4State.h"
+#include "../../Configuration.h"
 #include "Log.h"
 #include <iomanip>
 

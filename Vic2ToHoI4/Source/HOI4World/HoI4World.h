@@ -4,11 +4,11 @@
 
 
 #include "AIPeaces.h"
-#include "CoastalProvinces.h"
 #include "Decisions/Decisions.h"
 #include "Ideas.h"
 #include "Leaders/Advisor.h"
-#include "MapData.h"
+#include "Map/CoastalProvinces.h"
+#include "Map/MapData.h"
 #include "MilitaryMappings/AllMilitaryMappings.h"
 #include "MilitaryMappings/UnitMappings.h"
 #include "Names.h"
@@ -31,7 +31,6 @@
 class HoI4Diplomacy;
 class HoI4Faction;
 class HoI4Ideology;
-class HoI4Province;
 class HoI4StrategicRegion;
 
 
@@ -188,9 +187,7 @@ class World: commonItems::parser
 
 		std::optional<std::pair<std::string, std::string>> getStrongestNavyGps();
 
-		/*vector<int> getPortLocationCandidates(const vector<int>& locationCandidates, const HoI4AdjacencyMapping& HoI4AdjacencyMap);
-		vector<int> getPortProvinces(const vector<int>& locationCandidates);
-		int getAirLocation(HoI4Province* locationProvince, const HoI4AdjacencyMapping& HoI4AdjacencyMap, string owner);*/
+		//vector<int> getPortLocationCandidates(const vector<int>& locationCandidates, const HoI4AdjacencyMapping& HoI4AdjacencyMap);
 
 		HoI4::namesMapper theNames;
 		graphicsMapper theGraphics;
@@ -200,7 +197,6 @@ class World: commonItems::parser
 		const Vic2::World* sourceWorld = nullptr;
 
 		std::unique_ptr<States> states;
-		//map<int, HoI4Province*> provinces;
 
 		HoI4::SupplyZones* supplyZones = nullptr;
 		std::map<int, HoI4StrategicRegion*> strategicRegions;

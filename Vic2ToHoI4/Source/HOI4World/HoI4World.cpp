@@ -5,7 +5,6 @@
 #include "../V2World/Diplomacy.h"
 #include "../V2World/Party.h"
 #include "HoI4Agreement.h"
-#include "HoI4Buildings.h"
 #include "HoI4Country.h"
 #include "Decisions/Decisions.h"
 #include "HoI4Diplomacy.h"
@@ -19,15 +18,17 @@
 #include "Leaders/Advisor.h"
 #include "Leaders/IdeologicalAdvisors.h"
 #include "Names.h"
-#include "HoI4Province.h"
-#include "HoI4StrategicRegion.h"
 #include "HoI4WarCreator.h"
+#include "Map/HoI4Buildings.h"
+#include "Map/HoI4StrategicRegion.h"
+#include "Map/SupplyZones.h"
 #include "MilitaryMappings/MilitaryMappingsFile.h"
 #include "ShipTypes/PossibleShipVariants.h"
 #include "States/DefaultState.h"
 #include "States/HoI4State.h"
 #include "States/StateCategories.h"
-#include "SupplyZones.h"
+#include "../V2World/Country.h"
+#include "../V2World/World.h"
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/TechMapper.h"
 #include "../Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
@@ -1629,58 +1630,6 @@ portLocationCandidates.push_back(newCandidate.to);
 }
 }
 return portLocationCandidates;
-}
-
-
-vector<int> HoI4::World::getPortProvinces(const vector<int>& locationCandidates)
-{
-vector<int> newLocationCandidates;
-for (auto litr : locationCandidates)
-{
-map<int, HoI4Province*>::const_iterator provinceItr = provinces.find(litr);
-if ((provinceItr != provinces.end()) && (provinceItr->second->hasNavalBase()))
-{
-newLocationCandidates.push_back(litr);
-}
-}
-
-return newLocationCandidates;
-}
-
-
-int HoI4::World::getAirLocation(HoI4Province* locationProvince, const HoI4AdjacencyMapping& HoI4AdjacencyMap, string owner)
-{
-queue<int>		openProvinces;
-map<int, int>	closedProvinces;
-openProvinces.push(locationProvince->getNum());
-closedProvinces.insert(make_pair(locationProvince->getNum(), locationProvince->getNum()));
-while (openProvinces.size() > 0)
-{
-int provNum = openProvinces.front();
-openProvinces.pop();
-
-auto province = provinces.find(provNum);
-if ((province != provinces.end()) && (province->second->getOwner() == owner) && (province->second->getAirBase() > 0))
-{
-return provNum;
-}
-else
-{
-auto adjacencies = HoI4AdjacencyMap[provNum];
-for (auto thisAdjacency : adjacencies)
-{
-auto closed = closedProvinces.find(thisAdjacency.to);
-if (closed == closedProvinces.end())
-{
-openProvinces.push(thisAdjacency.to);
-closedProvinces.insert(make_pair(thisAdjacency.to, thisAdjacency.to));
-}
-}
-}
-}
-
-return -1;
-
 }*/
 
 void HoI4::World::setSphereLeaders()

@@ -29,8 +29,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include <optional>
 #include <map>
 #include <set>
-#include "../bitmap_image.hpp"
-#include "../Color.h"
+#include "../../bitmap_image.hpp"
+#include "../../Color.h"
 
 
 

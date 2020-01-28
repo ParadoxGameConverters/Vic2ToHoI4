@@ -1,4 +1,4 @@
-#include "../Configuration.h"
+#include "../../Configuration.h"
 #include "HoI4StrategicRegion.h"
 #include "Log.h"
 #include "newParser.h"

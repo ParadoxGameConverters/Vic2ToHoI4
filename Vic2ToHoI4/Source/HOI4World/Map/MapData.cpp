@@ -22,9 +22,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "MapData.h"
-#include "../Mappers/ProvinceDefinitions.h"
-#include "../Color.h"
-#include "../Configuration.h"
+#include "../../Mappers/ProvinceDefinitions.h"
+#include "../../Color.h"
+#include "../../Configuration.h"
 #include "Log.h"
 
 
