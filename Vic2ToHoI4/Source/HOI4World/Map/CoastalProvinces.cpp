@@ -1,4 +1,5 @@
 #include "CoastalProvinces.h"
+#include "Hoi4Province.h"
 #include "MapData.h"
 #include "Log.h"
 #include "../../Configuration.h"
@@ -12,7 +13,7 @@ void HoI4::coastalProvinces::init(const MapData& theMapData)
 
 	for (auto province: provinces)
 	{
-		if (!province.second.isLand)
+		if (!province.second.isLandProvince())
 		{
 			continue;
 		}
@@ -21,7 +22,7 @@ void HoI4::coastalProvinces::init(const MapData& theMapData)
 		for (auto adjProvinceNum: neighbors)
 		{
 			auto adjProvince = provinces.find(adjProvinceNum);
-			if ((adjProvince != provinces.end()) && (adjProvince->second.type == "ocean"))
+			if ((adjProvince != provinces.end()) && (adjProvince->second.getType() == "ocean"))
 			{
 				auto coastalProvince = theCoastalProvinces.find(province.first);
 				if (coastalProvince == theCoastalProvinces.end())
@@ -40,7 +41,7 @@ void HoI4::coastalProvinces::init(const MapData& theMapData)
 }
 
 
-std::map<int, HoI4::province> HoI4::coastalProvinces::getProvinces() const
+std::map<int, HoI4::Province> HoI4::coastalProvinces::getProvinces() const
 {
 	std::ifstream provinceDefinitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
 	if (!provinceDefinitions.is_open())
@@ -49,7 +50,7 @@ std::map<int, HoI4::province> HoI4::coastalProvinces::getProvinces() const
 		exit(-1);
 	}
 
-	std::map<int, province> provinces;
+	std::map<int, Province> provinces;
 	while (!provinceDefinitions.eof())
 	{
 		std::string line;
@@ -87,9 +88,7 @@ std::map<int, HoI4::province> HoI4::coastalProvinces::getProvinces() const
 		size_t typeSeparator = line.find_first_of(';');
 		std::string type = line.substr(0, typeSeparator);
 
-		province newProvince;
-		newProvince.isLand = isLand;
-		newProvince.type = std::move(type);
+		Province newProvince(isLand, type);
 		provinces.insert(std::make_pair(ID, newProvince));
 	}
 

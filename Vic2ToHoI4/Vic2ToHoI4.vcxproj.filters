@@ -986,6 +986,9 @@
     <ClInclude Include="Source\HOI4World\Map\SupplyZones.h">
       <Filter>HoI4World\Map</Filter>
     </ClInclude>
+    <ClInclude Include="Source\HOI4World\Map\Hoi4Province.h">
+      <Filter>HoI4World\Map</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\ai_peaces.txt">

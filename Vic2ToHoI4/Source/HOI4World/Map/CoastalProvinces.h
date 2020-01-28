@@ -13,12 +13,7 @@ namespace HoI4
 {
 
 class MapData;
-
-typedef struct province
-{
-	bool isLand = false;
-	std::string type;
-} province;
+class Province;
 
 
 class coastalProvinces
@@ -34,7 +29,7 @@ class coastalProvinces
 		coastalProvinces(const coastalProvinces&) = delete;
 		coastalProvinces& operator=(const coastalProvinces&) = delete;
 
-		std::map<int, province> getProvinces() const;
+		std::map<int, Province> getProvinces() const;
 
 		std::map<int, std::vector<int>> theCoastalProvinces;	// province, connecting sea provinces
 };

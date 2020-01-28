@@ -413,6 +413,7 @@
     <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacements.h" />
     <ClInclude Include="Source\HOI4World\Map\CoastalProvinces.h" />
     <ClInclude Include="Source\HOI4World\Map\HoI4Buildings.h" />
+    <ClInclude Include="Source\HOI4World\Map\Hoi4Province.h" />
     <ClInclude Include="Source\HOI4World\Map\HoI4StrategicRegion.h" />
     <ClInclude Include="Source\HOI4World\Map\HoI4SupplyZone.h" />
     <ClInclude Include="Source\HOI4World\Map\ImpassableProvinces.h" />
