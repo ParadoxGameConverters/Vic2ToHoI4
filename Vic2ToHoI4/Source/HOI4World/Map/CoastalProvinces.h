@@ -1,5 +1,5 @@
-#ifndef COASTAL_PROVINCES_H_
-#define COASTAL_PROVINCES_H_
+#ifndef COASTAL_PROVINCES_H
+#define COASTAL_PROVINCES_H
 
 
 
@@ -43,4 +43,4 @@ class coastalProvinces
 
 
 
-#endif // COASTAL_PROVINCES_H_
+#endif // COASTAL_PROVINCES_H

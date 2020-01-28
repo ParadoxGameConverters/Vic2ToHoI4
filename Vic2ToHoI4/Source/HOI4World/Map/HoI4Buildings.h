@@ -1,5 +1,5 @@
-#ifndef HOI4_BUILDINGS_H_
-#define HOI4_BUILDINGS_H_
+#ifndef HOI4_BUILDINGS_H
+#define HOI4_BUILDINGS_H
 
 
 
@@ -122,4 +122,4 @@ class Buildings
 
 
 
-#endif // HOI4_BUILDINGS_H_
+#endif // HOI4_BUILDINGS_H

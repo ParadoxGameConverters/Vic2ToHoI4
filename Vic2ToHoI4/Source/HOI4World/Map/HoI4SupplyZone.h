@@ -1,5 +1,5 @@
-#ifndef HOI4_SUPPLY_ZONE_H_
-#define HOI4_SUPPLY_ZONE_H_
+#ifndef HOI4_SUPPLY_ZONE_H
+#define HOI4_SUPPLY_ZONE_H
 
 
 
@@ -28,4 +28,4 @@ class HoI4SupplyZone
 };
 
 
-#endif
+#endif // HOI4_SUPPLY_ZONE_H
