@@ -28,7 +28,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../../Mocks/Vic2StateMock.h"
 #include "../Vic2ToHoI4/Source/Configuration.h"
 #include "../Vic2ToHoI4/Source/Hoi4Outputter/States/HoI4StateOutputter.h"
-#include "../Vic2ToHoI4/Source/HOI4World/CoastalProvinces.h"
+#include "../Vic2ToHoI4/Source/HOI4World/Map/CoastalProvinces.h"
 #include "../Vic2ToHoI4/Source/HOI4World/States/HoI4State.h"
 #include "../Vic2ToHoI4/Source/HoI4World/States/StateCategories.h"
 #include "../Vic2ToHoI4/Source/V2World/Province.h"
@@ -373,7 +373,7 @@ TEST(HoI4World_States_StateTests, totalFactoriesCanBeSet)
 	mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(7)).WillOnce(testing::Return("mockedCategory"));
 
-	HoI4::coastalProvinces theCoastalProvinces;
+	HoI4::CoastalProvinces theCoastalProvinces;
 	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
 
 	ASSERT_EQ(theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards(), 5);
@@ -391,7 +391,7 @@ TEST(HoI4World_States_StateTests, totalFactoriesCappedAtTwelve)
 	mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(14)).WillOnce(testing::Return("mockedCategory"));
 
-	HoI4::coastalProvinces theCoastalProvinces;
+	HoI4::CoastalProvinces theCoastalProvinces;
 	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
 
 	ASSERT_EQ(theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards(), 12);
@@ -466,7 +466,7 @@ TEST(HoI4World_States_StateTests, infrastructureCanBeSet)
 	mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(2)).WillOnce(testing::Return("mockedCategory"));
 
-	HoI4::coastalProvinces theCoastalProvinces;
+	HoI4::CoastalProvinces theCoastalProvinces;
 	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
 
 	ASSERT_EQ(theState.getInfrastructure(), 3);
@@ -484,7 +484,7 @@ TEST(HoI4World_States_StateTests, infrastructureIsOutput)
 	mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(2)).WillOnce(testing::Return("mockedCategory"));
 
-	HoI4::coastalProvinces theCoastalProvinces;
+	HoI4::CoastalProvinces theCoastalProvinces;
 	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
 
 	std::stringstream expectedOutput;
@@ -536,7 +536,7 @@ TEST(HoI4World_States_StateTests, infrastructureAddedPerTwoRailLevels)
 	mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(2)).WillOnce(testing::Return("mockedCategory"));
 
-	HoI4::coastalProvinces theCoastalProvinces;
+	HoI4::CoastalProvinces theCoastalProvinces;
 	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
 
 	ASSERT_EQ(theState.getInfrastructure(), 6);
@@ -555,7 +555,7 @@ TEST(HoI4World_States_StateTests, infrastructureForOverFourFactories)
 	mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(7)).WillOnce(testing::Return("mockedCategory"));
 
-	HoI4::coastalProvinces theCoastalProvinces;
+	HoI4::CoastalProvinces theCoastalProvinces;
 	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
 
 	ASSERT_EQ(theState.getInfrastructure(), 7);
@@ -574,7 +574,7 @@ TEST(HoI4World_States_StateTests, infrastructureForOverSixFactories)
 	mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(9)).WillOnce(testing::Return("mockedCategory"));
 
-	HoI4::coastalProvinces theCoastalProvinces;
+	HoI4::CoastalProvinces theCoastalProvinces;
 	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
 
 	ASSERT_EQ(theState.getInfrastructure(), 8);
@@ -593,7 +593,7 @@ TEST(HoI4World_States_StateTests, infrastructureForOverTenFactories)
 	mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(13)).WillOnce(testing::Return("mockedCategory"));
 
-	HoI4::coastalProvinces theCoastalProvinces;
+	HoI4::CoastalProvinces theCoastalProvinces;
 	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
 
 	ASSERT_EQ(theState.getInfrastructure(), 9);

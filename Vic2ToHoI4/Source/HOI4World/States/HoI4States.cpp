@@ -31,7 +31,7 @@ constexpr int AIRBASES_FOR_INFRASTRUCTURE_LEVEL = 6;
 HoI4::States::States(
 	const Vic2::World* sourceWorld,
 	const CountryMapper& countryMap,
-	const HoI4::coastalProvinces& theCoastalProvinces
+	const HoI4::CoastalProvinces& theCoastalProvinces
 ):
 	ownersMap(),
 	coresMap(),
@@ -232,7 +232,7 @@ void HoI4::States::createStates(
 	const std::map<int, Vic2::Province*>& sourceProvinces,
 	const HoI4::impassableProvinces& theImpassables,
 	const CountryMapper& countryMap,
-	const HoI4::coastalProvinces& theCoastalProvinces
+	const HoI4::CoastalProvinces& theCoastalProvinces
 )
 {
 	std::set<int> ownedProvinces;
@@ -296,7 +296,7 @@ void HoI4::States::createMatchingHoI4State(
 	const string& stateOwner,
 	const HoI4::impassableProvinces& theImpassables,
 	const CountryMapper& countryMapper,
-	const HoI4::coastalProvinces& theCoastalProvinces
+	const HoI4::CoastalProvinces& theCoastalProvinces
 ) {
 	std::set<int> passableProvinces;
 	std::set<int> impassableProvinces;
@@ -513,7 +513,7 @@ void HoI4::States::convertResources()
 
 void HoI4::States::putIndustryInStates(
 	const std::map<std::string, double>& factoryWorkerRatios,
-	const HoI4::coastalProvinces& theCoastalProvinces
+	const HoI4::CoastalProvinces& theCoastalProvinces
 ) {
 	HoI4::StateCategories theStateCategories;
 

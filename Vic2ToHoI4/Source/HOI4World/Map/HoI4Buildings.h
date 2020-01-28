@@ -16,7 +16,7 @@
 namespace HoI4
 {
 
-class coastalProvinces;
+class CoastalProvinces;
 class MapData;
 class States;
 
@@ -57,7 +57,7 @@ typedef std::map<std::pair<int, int>, buildingPosition> defaultPositions;
 class Buildings
 {
 	public:
-		explicit Buildings(const States& theStates, const coastalProvinces& theCoastalProvinces, MapData& theMapData);
+		explicit Buildings(const States& theStates, const CoastalProvinces& theCoastalProvinces, MapData& theMapData);
 
 		void output() const;
 
@@ -71,7 +71,7 @@ class Buildings
 
 		void placeBuildings(
 			const States& theStates,
-			const coastalProvinces& theCoastalProvinces,
+			const CoastalProvinces& theCoastalProvinces,
 			const MapData& theMapData
 		);
 		void placeArmsFactories(const States& theStates, const MapData& theMapData);
@@ -93,7 +93,7 @@ class Buildings
 		void addCoastalBunker(int stateID, const std::pair<int, std::vector<int>>& province, const MapData& theMapData);
 		void placeDockyards(
 			const States& theStates,
-			const coastalProvinces& theCoastalProvinces,
+			const CoastalProvinces& theCoastalProvinces,
 			std::map<int, std::vector<int>> actualCoastalProvinces,
 			const MapData& theMapData
 		);

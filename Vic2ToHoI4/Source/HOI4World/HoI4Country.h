@@ -40,7 +40,7 @@ class HoI4Ideology;
 
 namespace HoI4
 {
-class coastalProvinces;
+class CoastalProvinces;
 class MtgUnitMappings;
 class namesMapper;
 class ShipVariant;
@@ -104,7 +104,7 @@ class Country
 		void convertNavies(
 			const UnitMappings& unitMap,
 			const MtgUnitMappings& mtgUnitMap,
-			const coastalProvinces& theCoastalProvinces,
+			const CoastalProvinces& theCoastalProvinces,
 			const std::map<int, int>& provinceToStateIDMap,
 			const std::map<int, State>& allStates
 		);

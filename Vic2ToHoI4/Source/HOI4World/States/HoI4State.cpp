@@ -1,6 +1,6 @@
 #include "HoI4State.h"
 #include "StateCategories.h"
-#include "../CoastalProvinces.h"
+#include "../Map/CoastalProvinces.h"
 #include "../../V2World/Province.h"
 #include "../../V2World/State.h"
 #include "Log.h"
@@ -35,7 +35,7 @@ HoI4::State::State(const Vic2::State& sourceState, int _ID, const std::string& _
 
 void HoI4::State::convertNavalBases(
 	const std::set<const Vic2::Province*>& sourceProvinces,
-	const coastalProvinces& theCoastalProvinces,
+	const CoastalProvinces& theCoastalProvinces,
 	const provinceMapper& theProvinceMapper
 ) {
 	for (auto sourceProvince: sourceProvinces)
@@ -69,7 +69,7 @@ int HoI4::State::determineNavalBaseLevel(const Vic2::Province& sourceProvince) c
 
 std::optional<int> HoI4::State::determineNavalBaseLocation(
 	const Vic2::Province& sourceProvince,
-	const coastalProvinces& theCoastalProvinces,
+	const CoastalProvinces& theCoastalProvinces,
 	const provinceMapper& theProvinceMapper
 ) const {
 	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince.getNumber()))
@@ -315,7 +315,7 @@ void HoI4::State::addManpower(
 void HoI4::State::convertIndustry(
 	double workerFactoryRatio,
 	const HoI4::StateCategories& theStateCategories,
-	const coastalProvinces& theCoastalProvinces
+	const CoastalProvinces& theCoastalProvinces
 ) {
 	int factories = determineFactoryNumbers(workerFactoryRatio);
 
@@ -402,7 +402,7 @@ void HoI4::State::addInfrastructureFromFactories(int factories)
 
 static std::mt19937 randomnessEngine;
 static std::uniform_int_distribution<> numberDistributor(0, 99);
-void HoI4::State::setIndustry(int factories, const coastalProvinces& theCoastalProvinces)
+void HoI4::State::setIndustry(int factories, const CoastalProvinces& theCoastalProvinces)
 {
 	if (amICoastal(theCoastalProvinces))
 	{
@@ -449,7 +449,7 @@ void HoI4::State::setIndustry(int factories, const coastalProvinces& theCoastalP
 }
 
 
-bool HoI4::State::amICoastal(const coastalProvinces& theCoastalProvinces) const
+bool HoI4::State::amICoastal(const CoastalProvinces& theCoastalProvinces) const
 {
 	auto coastalProvinces = theCoastalProvinces.getCoastalProvinces();
 	for (auto province: provinces)

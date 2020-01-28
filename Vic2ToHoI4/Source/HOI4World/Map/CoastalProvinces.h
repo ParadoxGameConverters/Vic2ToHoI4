@@ -3,7 +3,6 @@
 
 
 
-#include <string>
 #include <vector>
 #include <map>
 
@@ -16,20 +15,16 @@ class MapData;
 class Province;
 
 
-class coastalProvinces
+class CoastalProvinces
 {
 	public:
-		coastalProvinces() = default;
 		void init(const MapData& theMapData);
 
-		auto getCoastalProvinces() const { return theCoastalProvinces; }
-		bool isProvinceCoastal(int provinceNum) const;
+		[[nodiscard]] auto getCoastalProvinces() const { return theCoastalProvinces; }
+		[[nodiscard]] bool isProvinceCoastal(int provinceNum) const;
 
 	private:
-		coastalProvinces(const coastalProvinces&) = delete;
-		coastalProvinces& operator=(const coastalProvinces&) = delete;
-
-		std::map<int, Province> getProvinces() const;
+		[[nodiscard]] std::map<int, Province> importProvinces() const;
 
 		std::map<int, std::vector<int>> theCoastalProvinces;	// province, connecting sea provinces
 };

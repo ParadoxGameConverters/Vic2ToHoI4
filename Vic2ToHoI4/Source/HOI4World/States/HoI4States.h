@@ -30,7 +30,7 @@ namespace HoI4
 {
 
 class Country;
-class coastalProvinces;
+class CoastalProvinces;
 class impassableProvinces;
 class State;
 
@@ -42,7 +42,7 @@ class States: commonItems::parser
 		explicit States(
 			const Vic2::World* sourceWorld,
 			const CountryMapper& countryMap,
-			const HoI4::coastalProvinces& theCoastalProvinces
+			const HoI4::CoastalProvinces& theCoastalProvinces
 		);
 
 		const std::map<int, HoI4::DefaultState>& getDefaultStates() const { return defaultStates; }
@@ -56,7 +56,7 @@ class States: commonItems::parser
 		void convertResources();
 		void putIndustryInStates(
 			const std::map<std::string, double>& factoryWorkerRatios,
-			const HoI4::coastalProvinces& theCoastalProvinces
+			const HoI4::CoastalProvinces& theCoastalProvinces
 		);
 		void convertCapitalVPs(
 			const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
@@ -86,14 +86,14 @@ class States: commonItems::parser
 			const std::map<int, Vic2::Province*>& sourceProvinces,
 			const HoI4::impassableProvinces& theImpassables,
 			const CountryMapper& countryMap,
-			const HoI4::coastalProvinces& theCoastalProvinces
+			const HoI4::CoastalProvinces& theCoastalProvinces
 		);
 		void createMatchingHoI4State(
 			const Vic2::State* vic2State,
 			const std::string& stateOwner,
 			const HoI4::impassableProvinces& theImpassables,
 			const CountryMapper& countryMapper,
-			const HoI4::coastalProvinces& theCoastalProvinces
+			const HoI4::CoastalProvinces& theCoastalProvinces
 		);
 		std::set<int> getProvincesInState(const Vic2::State* vic2State, const std::string& owner);
 		void addProvincesAndCoresToNewState(HoI4::State& newState, const std::set<int>& provinces);

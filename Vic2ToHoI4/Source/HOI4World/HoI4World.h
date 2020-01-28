@@ -221,7 +221,7 @@ class World: commonItems::parser
 
 		std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
 
-		coastalProvinces theCoastalProvinces;
+		CoastalProvinces theCoastalProvinces;
 		MapData theMapData;
 
 		ScriptedLocalisations scriptedLocalisations;

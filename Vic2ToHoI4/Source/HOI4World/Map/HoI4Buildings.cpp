@@ -31,7 +31,7 @@ std::ostream& HoI4::operator << (std::ostream& out, const HoI4::Building& buildi
 }
 
 
-HoI4::Buildings::Buildings(const States& theStates, const coastalProvinces& theCoastalProvinces, MapData& theMapData)
+HoI4::Buildings::Buildings(const States& theStates, const CoastalProvinces& theCoastalProvinces, MapData& theMapData)
 {
 	LOG(LogLevel::Info) << "Creating buildings";
 
@@ -127,7 +127,7 @@ void HoI4::Buildings::importDefaultBuilding(const std::smatch& matches, defaultP
 }
 
 
-void HoI4::Buildings::placeBuildings(const HoI4::States& theStates, const coastalProvinces& theCoastalProvinces, const MapData& theMapData)
+void HoI4::Buildings::placeBuildings(const HoI4::States& theStates, const CoastalProvinces& theCoastalProvinces, const MapData& theMapData)
 {
 	auto provinceToStateIDMap = theStates.getProvinceToStateIDMap();
 	auto actualCoastalProvinces = theCoastalProvinces.getCoastalProvinces();
@@ -517,7 +517,7 @@ void HoI4::Buildings::addCoastalBunker(int stateID, const std::pair<int, std::ve
 }
 
 
-void HoI4::Buildings::placeDockyards(const States& theStates, const coastalProvinces& theCoastalProvinces, std::map<int, std::vector<int>> actualCoastalProvinces, const MapData& theMapData)
+void HoI4::Buildings::placeDockyards(const States& theStates, const CoastalProvinces& theCoastalProvinces, std::map<int, std::vector<int>> actualCoastalProvinces, const MapData& theMapData)
 {
 	for (auto state: theStates.getStates())
 	{
