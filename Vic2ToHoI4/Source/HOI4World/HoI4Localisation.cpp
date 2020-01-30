@@ -962,7 +962,7 @@ void HoI4Localisation::insertScriptedLocalisation(
 	std::regex_match(localisationKey, match, extractRegex);
 	const std::string tag = match[1];
 	const std::string ideology = match[2];
-	if (!majorIdeologies.contains(ideology))
+	if (!majorIdeologies.count(ideology))
 	{
 		return;
 	}
