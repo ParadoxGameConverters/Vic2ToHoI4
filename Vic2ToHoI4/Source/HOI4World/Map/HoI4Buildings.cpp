@@ -90,7 +90,7 @@ void HoI4::Buildings::importDefaultBuilding(
 	const std::smatch& matches,
 	defaultPositions& positions,
 	MapData& theMapData
-)
+) const
 {
 	buildingPosition position;
 	position.xCoordinate = stof(matches[3].str());

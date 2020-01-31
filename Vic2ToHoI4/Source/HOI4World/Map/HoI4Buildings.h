@@ -39,7 +39,7 @@ class Buildings
 			const std::smatch& matches,
 			defaultPositions& positions,
 			MapData& theMapData
-		);
+		) const;
 
 		void placeBuildings(
 			const States& theStates,
