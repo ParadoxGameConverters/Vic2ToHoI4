@@ -792,7 +792,10 @@ void HoI4Localisation::AddDecisionLocalisation(const std::string& key, const std
 }
 
 
-void HoI4Localisation::GenerateCustomLocalisations(HoI4::ScriptedLocalisations& scriptedLocalisations)
+void HoI4Localisation::GenerateCustomLocalisations(
+	HoI4::ScriptedLocalisations& scriptedLocalisations,
+	const std::set<std::string>& majorIdeologies
+)
 {
 	std::ifstream languageReplacementsFile("DataFiles/languageReplacements.txt");
 	if (!languageReplacementsFile.is_open())
@@ -841,7 +844,8 @@ void HoI4Localisation::GenerateCustomLocalisations(HoI4::ScriptedLocalisations& 
 							insertScriptedLocalisation(
 								localisation.first,
 								replacement.first,
-								masculineSingular
+								masculineSingular,
+								majorIdeologies
 							);
 						}
 						else if (replacement.first == "_MP_" + getLanguageCode(localisationsInLanguage.first))
@@ -849,7 +853,8 @@ void HoI4Localisation::GenerateCustomLocalisations(HoI4::ScriptedLocalisations& 
 							insertScriptedLocalisation(
 								localisation.first,
 								replacement.first,
-								masculinePlural
+								masculinePlural,
+								majorIdeologies
 							);
 						}
 						else if (replacement.first == "_FS_" + getLanguageCode(localisationsInLanguage.first))
@@ -857,7 +862,8 @@ void HoI4Localisation::GenerateCustomLocalisations(HoI4::ScriptedLocalisations& 
 							insertScriptedLocalisation(
 								localisation.first,
 								replacement.first,
-								feminineSingular
+								feminineSingular,
+								majorIdeologies
 							);
 						}
 						else if (replacement.first == "_FP_" + getLanguageCode(localisationsInLanguage.first))
@@ -865,7 +871,8 @@ void HoI4Localisation::GenerateCustomLocalisations(HoI4::ScriptedLocalisations& 
 							insertScriptedLocalisation(
 								localisation.first,
 								replacement.first,
-								femininePlural
+								femininePlural,
+								majorIdeologies
 							);
 						}
 					}
@@ -945,15 +952,20 @@ std::string HoI4Localisation::getLanguageCode(const std::string& language)
 void HoI4Localisation::insertScriptedLocalisation(
 	const std::string& localisationKey,
 	const std::string& replacementKey,
-	HoI4::ScriptedLocalisation& scriptedLocalisation
+	HoI4::ScriptedLocalisation& scriptedLocalisation,
+	const std::set<std::string>& majorIdeologies
 ) const
 {
-	const std::regex extractRegex("([A-Z]+)_([a-z]+)_ADJ");
+	const std::regex extractRegex("([A-Z0-9]{3})_([a-z]+)_ADJ");
 
 	std::smatch match;
 	std::regex_match(localisationKey, match, extractRegex);
 	const std::string tag = match[1];
 	const std::string ideology = match[2];
+	if (!majorIdeologies.count(ideology))
+	{
+		return;
+	}
 
 	std::string text;
 	text += "\t\ttrigger = {\n";

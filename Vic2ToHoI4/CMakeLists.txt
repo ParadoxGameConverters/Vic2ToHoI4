@@ -2,13 +2,13 @@ cmake_minimum_required(VERSION 3.5)
 #set(CMAKE_VERBOSE_MAKEFILE on)
 
 project(Vic2ToHoI4)
-SET(CMAKE_CXX_COMPILER g++-7)
+SET(CMAKE_CXX_COMPILER g++-8)
 set(CMAKE_BINARY_DIR ${CMAKE_SOURCE_DIR}/Source)
 set(PROJECT_SOURCE_DIR ${CMAKE_SOURCE_DIR}/Source)
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/Release-Linux)
 set(LIBRARY_OUTPUT_PATH ${CMAKE_SOURCE_DIR}/Release-Linux)
 
-add_compile_options("-std=c++17")
+add_compile_options("-std=c++2a")
 add_compile_options("-g")
 
 include_directories("../common_items")
