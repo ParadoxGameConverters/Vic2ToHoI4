@@ -11,7 +11,7 @@
 namespace HoI4
 {
 
-void outputBuildings(const HoI4::Buildings& buildings, const Configuration& theConfiguration);
+void outputBuildings(const Buildings& buildings, const Configuration& theConfiguration);
 
 }
 
