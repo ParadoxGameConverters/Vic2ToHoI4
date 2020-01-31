@@ -2,7 +2,12 @@
 
 
 
-HoI4::Building::Building(int _stateID, const std::string& _type, buildingPosition& _position, std::optional<int> _connectingSeaProvince):
+HoI4::Building::Building(
+	const int _stateID,
+	const std::string& _type,
+	const buildingPosition& _position,
+	std::optional<int> _connectingSeaProvince
+):
 	stateID(_stateID),
 	type(_type),
 	position(_position)

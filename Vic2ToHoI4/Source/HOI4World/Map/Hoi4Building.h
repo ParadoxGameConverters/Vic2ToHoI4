@@ -15,14 +15,16 @@ namespace HoI4
 class Building
 {
 	public:
-		explicit Building(int _stateID, const std::string& _type, buildingPosition& _position, std::optional<int> _connectingSeaProvince);
+		explicit Building(
+			int _stateID,
+			const std::string& _type,
+			const buildingPosition& _position,
+			std::optional<int> _connectingSeaProvince
+		);
 
 		friend std::ostream& operator << (std::ostream& out, const Building& building);
 
 	private:
-		Building(const Building&) = delete;
-		Building& operator=(const Building&) = delete;
-
 		int stateID = 0;
 		std::string type;
 		buildingPosition position;
