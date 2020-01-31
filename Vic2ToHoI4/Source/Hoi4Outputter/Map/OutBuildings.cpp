@@ -1,6 +1,6 @@
 #include "OutBuildings.h"
 #include "OutBuilding.h"
-#include "Log.h"
+#include <fstream>
 
 
 
@@ -15,7 +15,7 @@ void HoI4::outputBuildings(const Buildings& buildings, const Configuration& theC
 	}
 	for (const auto& building: buildings.getBuildings())
 	{
-		out << *building.second;
+		out << building.second;
 	}
 	out.close();
 

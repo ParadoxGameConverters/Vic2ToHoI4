@@ -4,11 +4,9 @@
 
 
 #include "BuildingPosition.h"
-#include <fstream>
 #include <map>
 #include <optional>
 #include <regex>
-#include <set>
 #include <string>
 #include <vector>
 
@@ -31,16 +29,17 @@ class Buildings
 	public:
 		explicit Buildings(const States& theStates, const CoastalProvinces& theCoastalProvinces, MapData& theMapData);
 
-		const auto& getBuildings() const { return buildings; }
-		const auto& getAirportLocations() const { return airportLocations; }
+		[[nodiscard]] const auto& getBuildings() const { return buildings; }
+		[[nodiscard]] const auto& getAirportLocations() const { return airportLocations; }
 
 	private:
-		Buildings(const Buildings&) = delete;
-		Buildings& operator=(const Buildings&) = delete;
-
 		void importDefaultBuildings(MapData& theMapData);
 		void processLine(const std::string& line, MapData& theMapData);
-		void importDefaultBuilding(const std::smatch& matches, defaultPositions& positions, MapData& theMapData);
+		void importDefaultBuilding(
+			const std::smatch& matches,
+			defaultPositions& positions,
+			MapData& theMapData
+		);
 
 		void placeBuildings(
 			const States& theStates,
@@ -74,7 +73,7 @@ class Buildings
 		void placeSyntheticRefineries(const States& theStates, const MapData& theMapData);
 		void placeNuclearReactors(const States& theStates, const MapData& theMapData);
 
-		std::multimap<int, Building*> buildings;
+		std::multimap<int, Building> buildings;
 
 		defaultPositions defaultArmsFactories;
 		defaultPositions defaultIndustrialComplexes;
