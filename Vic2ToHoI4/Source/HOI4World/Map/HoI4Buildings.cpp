@@ -1,34 +1,12 @@
 #include "HoI4Buildings.h"
 #include "CoastalProvinces.h"
+#include "Hoi4Building.h"
 #include "MapData.h"
 #include "../States/HoI4States.h"
 #include "../States/HoI4State.h"
 #include "../../Configuration.h"
 #include "Log.h"
 #include <iomanip>
-
-
-
-HoI4::Building::Building(int _stateID, const std::string& _type, buildingPosition& _position, std::optional<int> _connectingSeaProvince):
-	stateID(_stateID),
-	type(_type),
-	position(_position)
-{
-	if (_connectingSeaProvince)
-	{
-		connectingSeaProvince = *_connectingSeaProvince;
-	}
-}
-
-
-std::ostream& HoI4::operator << (std::ostream& out, const HoI4::Building& building)
-{
-	out << building.stateID << ";" << building.type << ";";
-	out << std::fixed << std::setprecision(2) << building.position.xCoordinate << ';' << building.position.yCoordinate << ';' << building.position.zCoordinate << ';' << building.position.rotation << ';';
-	out << building.connectingSeaProvince << '\n';
-
-	return out;
-}
 
 
 HoI4::Buildings::Buildings(const States& theStates, const CoastalProvinces& theCoastalProvinces, MapData& theMapData)
@@ -651,33 +629,4 @@ void HoI4::Buildings::placeNuclearReactors(const States& theStates, const MapDat
 			}
 		}
 	}
-}
-
-
-void HoI4::Buildings::output() const
-{
-	std::ofstream out("output/" + theConfiguration.getOutputName() + "/map/buildings.txt");
-	if (!out.is_open())
-	{
-		LOG(LogLevel::Error) << "Could not open output/" << theConfiguration.getOutputName() << "/map/buildings.txt";
-		exit(-1);
-	}
-
-	for (auto building: buildings)
-	{
-		out << *(building.second);
-	}
-	out.close();
-
-	std::ofstream airportsFile("output/" + theConfiguration.getOutputName() + "/map/airports.txt");
-	if (!airportsFile.is_open())
-	{
-		LOG(LogLevel::Error) << "Could not create output/" << theConfiguration.getOutputName() << "/map/airports.txt";
-		exit(-1);
-	}
-	for (auto airportLocation: airportLocations)
-	{
-		airportsFile << airportLocation.first << "={" << airportLocation.second << " }\n";
-	}
-	airportsFile.close();
 }

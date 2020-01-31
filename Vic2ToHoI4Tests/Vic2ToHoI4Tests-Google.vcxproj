@@ -66,6 +66,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutAdmiral.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutAdvisor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutGeneral.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutBuilding.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutBuildings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\LegacyNavyOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp" />
@@ -124,6 +126,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacementRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacements.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\CoastalProvinces.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Hoi4Building.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Buildings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4StrategicRegion.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4SupplyZone.cpp" />

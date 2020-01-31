@@ -3,6 +3,7 @@
 
 
 
+#include "BuildingPosition.h"
 #include <fstream>
 #include <map>
 #include <optional>
@@ -16,39 +17,10 @@
 namespace HoI4
 {
 
+class Building;
 class CoastalProvinces;
 class MapData;
 class States;
-
-
-struct buildingPosition
-{
-	double xCoordinate = 0.0;
-	double yCoordinate = 0.0;
-	double zCoordinate = 0.0;
-	double rotation = 0.0;
-};
-
-
-class Building
-{
-	public:
-		explicit Building(int _stateID, const std::string& _type, buildingPosition& _position, std::optional<int> _connectingSeaProvince);
-
-		friend std::ostream& operator << (std::ostream& out, const Building& building);
-
-	private:
-		Building(const Building&) = delete;
-		Building& operator=(const Building&) = delete;
-
-		int stateID = 0;
-		std::string type;
-		buildingPosition position;
-		int connectingSeaProvince = 0;
-};
-
-
-std::ostream& operator << (std::ostream& out, const Building& building);
 
 
 typedef std::map<std::pair<int, int>, buildingPosition> defaultPositions;
@@ -59,7 +31,8 @@ class Buildings
 	public:
 		explicit Buildings(const States& theStates, const CoastalProvinces& theCoastalProvinces, MapData& theMapData);
 
-		void output() const;
+		const auto& getBuildings() const { return buildings; }
+		const auto& getAirportLocations() const { return airportLocations; }
 
 	private:
 		Buildings(const Buildings&) = delete;

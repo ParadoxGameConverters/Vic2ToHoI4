@@ -36,6 +36,7 @@
 #include "../Hoi4Outputter/Hoi4CountryOutputter.h"
 #include "../Hoi4Outputter/Decisions/DecisionsOutputter.h"
 #include "../Hoi4Outputter/Events/EventsOutputter.h"
+#include "../Hoi4Outputter/Map/OutBuildings.h"
 #include "../Hoi4Outputter/ScriptedLocalisations/ScriptedLocalisationsOutputter.h"
 #include "../Hoi4Outputter/States/HoI4StatesOutputter.h"
 #include <fstream>
@@ -1093,7 +1094,7 @@ void HoI4::World::output()
 	outputRelations();
 	outputGenericFocusTree();
 	outputCountries();
-	buildings->output();
+	outputBuildings(*buildings, theConfiguration);
 	outputDecisions(*decisions, majorIdeologies, theConfiguration);
 	outputEvents(*events, theConfiguration);
 	onActions->output(majorIdeologies);

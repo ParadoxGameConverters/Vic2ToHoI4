@@ -82,6 +82,9 @@
     <Filter Include="HoI4World\Map">
       <UniqueIdentifier>{4746abd5-b60d-4386-884d-07d0f03815bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hoi4Outputter\Map">
+      <UniqueIdentifier>{7c4001c2-aa42-4f6c-a79f-a6597c8ce482}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -527,6 +530,15 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Map\SupplyZones.cpp">
       <Filter>HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Map\Hoi4Building.cpp">
+      <Filter>HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Map\OutBuilding.cpp">
+      <Filter>Hoi4Outputter\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Map\OutBuildings.cpp">
+      <Filter>Hoi4Outputter\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -988,6 +1000,18 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Map\Hoi4Province.h">
       <Filter>HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Map\BuildingPosition.h">
+      <Filter>HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Map\Hoi4Building.h">
+      <Filter>HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Map\OutBuilding.h">
+      <Filter>Hoi4Outputter\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Map\OutBuildings.h">
+      <Filter>Hoi4Outputter\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

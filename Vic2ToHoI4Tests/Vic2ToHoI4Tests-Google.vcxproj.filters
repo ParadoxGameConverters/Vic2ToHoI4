@@ -611,6 +611,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyZones.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutBuilding.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutBuildings.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Hoi4Building.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -726,6 +735,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\Map">
       <UniqueIdentifier>{1ec5bcc9-3e6c-41a9-84af-834c21242320}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Map">
+      <UniqueIdentifier>{5a86d658-b4d2-4c22-ab8a-2c4b1b2b0bb4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
