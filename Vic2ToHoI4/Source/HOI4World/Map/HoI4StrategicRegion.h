@@ -11,10 +11,13 @@
 
 
 
-class HoI4StrategicRegion: commonItems::parser
+namespace HoI4
+{
+
+class StrategicRegion: commonItems::parser
 {
 	public:
-		explicit HoI4StrategicRegion(const std::string& _filename);
+		explicit StrategicRegion(const std::string& _filename);
 
 		[[nodiscard]] const auto& getFilename() const { return filename; }
 		[[nodiscard]] int getID() const { return ID; }
@@ -38,6 +41,8 @@ class HoI4StrategicRegion: commonItems::parser
 		std::optional<std::string> navalTerrain;
 		std::string weather;
 };
+
+}
 
 
 

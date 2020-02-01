@@ -31,7 +31,6 @@
 class HoI4Diplomacy;
 class HoI4Faction;
 class HoI4Ideology;
-class HoI4StrategicRegion;
 
 
 namespace mappers
@@ -62,6 +61,7 @@ class DivisionTemplateType;
 class Events;
 class State;
 class States;
+class StrategicRegion;
 class SupplyZones;
 class HoI4UnitType;
 
@@ -199,7 +199,7 @@ class World: commonItems::parser
 		std::unique_ptr<States> states;
 
 		HoI4::SupplyZones* supplyZones = nullptr;
-		std::map<int, HoI4StrategicRegion*> strategicRegions;
+		std::map<int, HoI4::StrategicRegion*> strategicRegions;
 		Buildings* buildings = nullptr;
 
 		std::map<std::string, std::shared_ptr<HoI4::Country>> countries;

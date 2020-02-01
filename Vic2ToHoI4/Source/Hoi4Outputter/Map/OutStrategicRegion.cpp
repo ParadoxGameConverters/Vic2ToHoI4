@@ -3,7 +3,7 @@
 
 
 
-void HoI4::outputStrategicRegion(const HoI4StrategicRegion& strategicRegion, const std::string& path)
+void HoI4::outputStrategicRegion(const StrategicRegion& strategicRegion, const std::string& path)
 {
 	std::ofstream out(path + strategicRegion.getFilename());
 	if (!out.is_open())

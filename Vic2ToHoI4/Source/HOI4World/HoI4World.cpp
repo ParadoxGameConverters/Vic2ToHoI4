@@ -567,7 +567,7 @@ map<int, int> HoI4::World::importStrategicRegions()
 	Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/map/strategicregions/", filenames);
 	for (auto filename: filenames)
 	{
-		HoI4StrategicRegion* newRegion = new HoI4StrategicRegion(filename);
+		HoI4::StrategicRegion* newRegion = new HoI4::StrategicRegion(filename);
 		strategicRegions.insert(make_pair(newRegion->getID(), newRegion));
 
 		for (auto province: newRegion->getOldProvinces())
