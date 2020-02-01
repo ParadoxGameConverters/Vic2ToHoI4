@@ -18,7 +18,7 @@ class Building
 		explicit Building(
 			int _stateID,
 			const std::string& _type,
-			const buildingPosition& _position,
+			const BuildingPosition& _position,
 			std::optional<int> _connectingSeaProvince
 		);
 
@@ -27,7 +27,7 @@ class Building
 	private:
 		int stateID = 0;
 		std::string type;
-		buildingPosition position;
+		BuildingPosition position;
 		int connectingSeaProvince = 0;
 };
 

@@ -92,7 +92,7 @@ void HoI4::Buildings::importDefaultBuilding(
 	MapData& theMapData
 ) const
 {
-	buildingPosition position;
+	BuildingPosition position;
 	position.xCoordinate = stof(matches[3].str());
 	position.yCoordinate = stof(matches[4].str());
 	position.zCoordinate = stof(matches[5].str());
@@ -164,7 +164,7 @@ void HoI4::Buildings::placeArmsFactories(const States& theStates, const MapData&
 				if (theProvincePoints)
 				{
 					const auto centermostPoint = theProvincePoints->getCentermostPoint();
-					buildingPosition thePosition;
+					BuildingPosition thePosition;
 					thePosition.xCoordinate = centermostPoint.first;
 					thePosition.yCoordinate = 11.0;
 					thePosition.zCoordinate = centermostPoint.second;
@@ -228,7 +228,7 @@ void HoI4::Buildings::placeIndustrialComplexes(const States& theStates, const Ma
 				if (theProvincePoints)
 				{
 					const auto centermostPoint = theProvincePoints->getCentermostPoint();
-					buildingPosition thePosition;
+					BuildingPosition thePosition;
 					thePosition.xCoordinate = centermostPoint.first;
 					thePosition.yCoordinate = 11.0;
 					thePosition.zCoordinate = centermostPoint.second;
@@ -290,7 +290,7 @@ void HoI4::Buildings::placeAirports(const States& theStates, const MapData& theM
 			if (theProvincePoints)
 			{
 				const auto centermostPoint = theProvincePoints->getCentermostPoint();
-				buildingPosition thePosition;
+				BuildingPosition thePosition;
 				thePosition.xCoordinate = centermostPoint.first;
 				thePosition.yCoordinate = 11.0;
 				thePosition.zCoordinate = centermostPoint.second;
@@ -345,7 +345,7 @@ void HoI4::Buildings::placeAntiAir(const States& theStates, const MapData& theMa
 				if (theProvincePoints)
 				{
 					const auto centermostPoint = theProvincePoints->getCentermostPoint();
-					buildingPosition thePosition;
+					BuildingPosition thePosition;
 					thePosition.xCoordinate = centermostPoint.first;
 					thePosition.yCoordinate = 11.0;
 					thePosition.zCoordinate = centermostPoint.second;
@@ -411,7 +411,7 @@ void HoI4::Buildings::addNavalBase(
 	const MapData& theMapData
 )
 {
-	buildingPosition position;
+	BuildingPosition position;
 	auto positionUnset = true;
 	auto connectingSeaProvince = 0;
 	for (auto seaProvince: province.second)
@@ -458,7 +458,7 @@ void HoI4::Buildings::addNavalBase(
 
 void HoI4::Buildings::addBunker(int stateID, int province, const MapData& theMapData)
 {
-	buildingPosition position;
+	BuildingPosition position;
 	auto positionUnset = true;
 
 	const auto defaultBunker = defaultBunkers.find(std::make_pair(province, 0));
@@ -522,7 +522,7 @@ void HoI4::Buildings::addCoastalBunker(
 	const MapData& theMapData
 )
 {
-	buildingPosition position;
+	BuildingPosition position;
 	auto positionUnset = true;
 
 	const auto defaultBunker = defaultCoastalBunkers.find(std::make_pair(province.first, 0));
@@ -608,7 +608,7 @@ void HoI4::Buildings::placeDockyards(
 						theMapData.getSpecifiedBorderCenter(*theProvince, connectingSeaProvinces->second[0]);
 					if (centermostPoint)
 					{
-						buildingPosition thePosition;
+						BuildingPosition thePosition;
 						thePosition.xCoordinate = centermostPoint->first;
 						thePosition.yCoordinate = 11.0;
 						thePosition.zCoordinate = centermostPoint->second;
@@ -661,7 +661,7 @@ void HoI4::Buildings::placeSyntheticRefineries(const States& theStates, const Ma
 			if (theProvincePoints)
 			{
 				const auto centermostPoint = theProvincePoints->getCentermostPoint();
-				buildingPosition thePosition;
+				BuildingPosition thePosition;
 				thePosition.xCoordinate = centermostPoint.first;
 				thePosition.yCoordinate = 11.0;
 				thePosition.zCoordinate = centermostPoint.second;
@@ -712,7 +712,7 @@ void HoI4::Buildings::placeNuclearReactors(const States& theStates, const MapDat
 			if (theProvincePoints)
 			{
 				const auto centermostPoint = theProvincePoints->getCentermostPoint();
-				buildingPosition thePosition;
+				BuildingPosition thePosition;
 				thePosition.xCoordinate = centermostPoint.first;
 				thePosition.yCoordinate = 11.0;
 				thePosition.zCoordinate = centermostPoint.second;

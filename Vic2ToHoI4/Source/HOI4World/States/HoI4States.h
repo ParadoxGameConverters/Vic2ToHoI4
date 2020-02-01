@@ -31,7 +31,7 @@ namespace HoI4
 
 class Country;
 class CoastalProvinces;
-class impassableProvinces;
+class ImpassableProvinces;
 class State;
 
 
@@ -84,14 +84,14 @@ class States: commonItems::parser
 		void createStates(
 			const std::map<std::string, Vic2::Country*>& sourceCountries,
 			const std::map<int, Vic2::Province*>& sourceProvinces,
-			const HoI4::impassableProvinces& theImpassables,
+			const HoI4::ImpassableProvinces& theImpassables,
 			const CountryMapper& countryMap,
 			const HoI4::CoastalProvinces& theCoastalProvinces
 		);
 		void createMatchingHoI4State(
 			const Vic2::State* vic2State,
 			const std::string& stateOwner,
-			const HoI4::impassableProvinces& theImpassables,
+			const HoI4::ImpassableProvinces& theImpassables,
 			const CountryMapper& countryMapper,
 			const HoI4::CoastalProvinces& theCoastalProvinces
 		);

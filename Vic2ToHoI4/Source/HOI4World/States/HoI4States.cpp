@@ -56,7 +56,7 @@ HoI4::States::States(
 		parseFile(theConfiguration.getHoI4Path() + "/history/states/" + stateFile);
 	}
 
-	HoI4::impassableProvinces theImpassables(defaultStates);
+	HoI4::ImpassableProvinces theImpassables(defaultStates);
 
 	determineOwnersAndCores(countryMap, *sourceWorld);
 	createStates(
@@ -230,7 +230,7 @@ std::set<std::string> HoI4::States::determineCores(
 void HoI4::States::createStates(
 	const std::map<std::string, Vic2::Country*>& sourceCountries,
 	const std::map<int, Vic2::Province*>& sourceProvinces,
-	const HoI4::impassableProvinces& theImpassables,
+	const HoI4::ImpassableProvinces& theImpassables,
 	const CountryMapper& countryMap,
 	const HoI4::CoastalProvinces& theCoastalProvinces
 )
@@ -294,7 +294,7 @@ void HoI4::States::createStates(
 void HoI4::States::createMatchingHoI4State(
 	const Vic2::State* vic2State,
 	const string& stateOwner,
-	const HoI4::impassableProvinces& theImpassables,
+	const HoI4::ImpassableProvinces& theImpassables,
 	const CountryMapper& countryMapper,
 	const HoI4::CoastalProvinces& theCoastalProvinces
 ) {

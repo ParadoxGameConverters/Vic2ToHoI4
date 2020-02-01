@@ -6,7 +6,7 @@
 namespace  HoI4
 {
 	
-struct buildingPosition
+struct BuildingPosition
 {
 	double xCoordinate = 0.0;
 	double yCoordinate = 0.0;

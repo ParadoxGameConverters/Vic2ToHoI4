@@ -15,10 +15,10 @@ class DefaultState;
 
 
 
-class impassableProvinces
+class ImpassableProvinces
 {
 	public:
-		explicit impassableProvinces(const std::map<int, DefaultState>& states);
+		explicit ImpassableProvinces(const std::map<int, DefaultState>& states);
 
 		[[nodiscard]] bool isProvinceImpassable(int provinceNumber) const;
 

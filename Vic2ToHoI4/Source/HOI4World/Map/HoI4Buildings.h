@@ -21,7 +21,7 @@ class MapData;
 class States;
 
 
-typedef std::map<std::pair<int, int>, buildingPosition> defaultPositions;
+typedef std::map<std::pair<int, int>, BuildingPosition> defaultPositions;
 
 
 class Buildings
