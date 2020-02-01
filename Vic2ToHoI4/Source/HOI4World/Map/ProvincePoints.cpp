@@ -2,7 +2,7 @@
 
 
 
-void HoI4::provincePoints::addPoint(const point& thePoint)
+void HoI4::ProvincePoints::addPoint(const point& thePoint)
 {
 	thePoints.emplace(thePoint);
 	if (thePoint.first < leftmostPoint.first)
@@ -25,7 +25,7 @@ void HoI4::provincePoints::addPoint(const point& thePoint)
 
 
 double calculateDistanceSquared(int pointX, int pointY, int centerX, int centerY);
-point HoI4::provincePoints::getCentermostPoint() const
+point HoI4::ProvincePoints::getCentermostPoint() const
 {
 	point possibleCenter;
 	possibleCenter.first = (leftmostPoint.first + rightmostPoint.first) / 2;

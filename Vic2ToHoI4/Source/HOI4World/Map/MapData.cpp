@@ -57,7 +57,7 @@ HoI4::MapData::MapData() noexcept:
 				}
 				else
 				{
-					provincePoints theNewPoints;
+					ProvincePoints theNewPoints;
 					theNewPoints.addPoint(position);
 					theProvincePoints.insert(make_pair(*province, theNewPoints));
 				}
@@ -272,7 +272,7 @@ optional<int> HoI4::MapData::getProvinceNumber(double x, double y)
 }
 
 
-std::optional<HoI4::provincePoints> HoI4::MapData::getProvincePoints(int provinceNum) const
+std::optional<HoI4::ProvincePoints> HoI4::MapData::getProvincePoints(int provinceNum) const
 {
 	auto possiblePoints = theProvincePoints.find(provinceNum);
 	if (possiblePoints != theProvincePoints.end())

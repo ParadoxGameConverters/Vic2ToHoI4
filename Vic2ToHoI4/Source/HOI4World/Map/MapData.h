@@ -30,7 +30,7 @@ class MapData
 		std::optional<point> getAnyBorderCenter(int province) const;
 		std::optional<int> getProvinceNumber(double x, double y);
 
-		std::optional<provincePoints> getProvincePoints(int provinceNum) const;
+		std::optional<ProvincePoints> getProvincePoints(int provinceNum) const;
 
 	private:
 		MapData(const MapData&) = delete;
@@ -51,7 +51,7 @@ class MapData
 
 		std::map<int, std::set<int>> provinceNeighbors;
 		std::map<int, bordersWith> borders;
-		std::map<int, provincePoints> theProvincePoints;
+		std::map<int, ProvincePoints> theProvincePoints;
 
 		bitmap_image provinceMap;
 };

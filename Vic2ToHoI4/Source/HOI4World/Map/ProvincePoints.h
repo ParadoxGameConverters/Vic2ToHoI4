@@ -14,11 +14,9 @@ typedef std::pair<int, int> point;
 namespace HoI4
 {
 
-class provincePoints
+class ProvincePoints
 {
 	public:
-		provincePoints() = default;
-
 		void addPoint(const point& thePoint);
 
 		[[nodiscard]] point getCentermostPoint() const;
