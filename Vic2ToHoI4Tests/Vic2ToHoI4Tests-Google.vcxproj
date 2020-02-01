@@ -34,11 +34,11 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>../common_items;../googletest/googletest;../googletest/googletest/include;../googletest/googlemock;../googletest/googlemock/include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <IncludePath>../common_items;../bitmap;../googletest/googletest;../googletest/googletest/include;../googletest/googlemock;../googletest/googlemock/include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <OutDir>$(ProjectDir)$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>../common_items;../googletest/googletest;../googletest/googletest/include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>../common_items;../bitmap;../googletest/googletest;../googletest/googletest/include;../googletest/googlemock;../googletest/googlemock/include;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
     <OutDir>$(ProjectDir)$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemGroup>
