@@ -28,7 +28,7 @@ class MapData
 		[[nodiscard]] std::set<int> getNeighbors(int province) const;
 		[[nodiscard]] std::optional<point> getSpecifiedBorderCenter(int mainProvince, int neighbor) const;
 		[[nodiscard]] std::optional<point> getAnyBorderCenter(int province) const;
-		[[nodiscard]] std::optional<int> getProvinceNumber(double x, double y);
+		[[nodiscard]] std::optional<int> getProvinceNumber(double x, double y) const;
 
 		[[nodiscard]] std::optional<ProvincePoints> getProvincePoints(int provinceNum) const;
 

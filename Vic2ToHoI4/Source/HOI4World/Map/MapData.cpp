@@ -286,7 +286,7 @@ std::optional<point> HoI4::MapData::getAnyBorderCenter(const int province) const
 }
 
 
-std::optional<int> HoI4::MapData::getProvinceNumber(const double x, const double y)
+std::optional<int> HoI4::MapData::getProvinceNumber(const double x, const double y) const
 {
 	rgb_t color{0,0,0};
 	provinceMap.get_pixel(
