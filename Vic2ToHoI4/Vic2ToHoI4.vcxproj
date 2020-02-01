@@ -60,7 +60,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IntDir>$(SolutionDir)$(Configuration)Intermediate\</IntDir>
-    <IncludePath>$(UniversalCRT_IncludePath);$(VCInstallDir)include;$(WindowsSdkDir)include;..\common_items;$(IncludePath)</IncludePath>
+    <IncludePath>$(UniversalCRT_IncludePath);$(VCInstallDir)include;$(WindowsSdkDir)include;..\common_items;..\bitmap;$(IncludePath)</IncludePath>
     <TargetName>V2ToHoI4Converter</TargetName>
     <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
@@ -70,7 +70,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IntDir>$(SolutionDir)$(Configuration)Intermediate\</IntDir>
-    <IncludePath>$(UniversalCRT_IncludePath);$(VCInstallDir)include;$(WindowsSdkDir)include;..\common_items;$(IncludePath)</IncludePath>
+    <IncludePath>$(UniversalCRT_IncludePath);$(VCInstallDir)include;$(WindowsSdkDir)include;..\common_items;..\bitmap;$(IncludePath)</IncludePath>
     <TargetName>V2ToHoI4Converter</TargetName>
     <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>false</RunCodeAnalysis>
@@ -80,7 +80,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IntDir>$(SolutionDir)$(Configuration)Intermediate\</IntDir>
-    <IncludePath>$(UniversalCRT_IncludePath);$(VCInstallDir)include;$(WindowsSdkDir)include;..\common_items;$(IncludePath)</IncludePath>
+    <IncludePath>$(UniversalCRT_IncludePath);$(VCInstallDir)include;$(WindowsSdkDir)include;..\common_items;..\bitmap;$(IncludePath)</IncludePath>
     <TargetName>V2ToHoI4Converter</TargetName>
     <CodeAnalysisRuleSet>NativeRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <RunCodeAnalysis>true</RunCodeAnalysis>
