@@ -27,7 +27,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4Focus.h"
 #include "HoI4World.h"
 #include "HoI4Localisation.h"
-#include "MapData.h"
+#include "Map/MapData.h"
 #include "../Mappers/ProvinceDefinitions.h"
 #include "../V2World/Country.h"
 #include "../V2World/Party.h"

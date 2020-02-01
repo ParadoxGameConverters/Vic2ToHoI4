@@ -7,3 +7,6 @@
 [submodule "googletest"]
 	path = googletest
 	url = https://github.com/abseil/googletest
+[submodule "bitmap"]
+	path = bitmap
+	url = https://github.com/ParadoxGameConverters/bitmap.git

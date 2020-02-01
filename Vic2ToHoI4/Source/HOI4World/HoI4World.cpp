@@ -5,7 +5,6 @@
 #include "../V2World/Diplomacy.h"
 #include "../V2World/Party.h"
 #include "HoI4Agreement.h"
-#include "HoI4Buildings.h"
 #include "HoI4Country.h"
 #include "Decisions/Decisions.h"
 #include "HoI4Diplomacy.h"
@@ -19,15 +18,17 @@
 #include "Leaders/Advisor.h"
 #include "Leaders/IdeologicalAdvisors.h"
 #include "Names.h"
-#include "HoI4Province.h"
-#include "HoI4StrategicRegion.h"
 #include "HoI4WarCreator.h"
+#include "Map/Buildings.h"
+#include "Map/StrategicRegion.h"
+#include "Map/SupplyZones.h"
 #include "MilitaryMappings/MilitaryMappingsFile.h"
 #include "ShipTypes/PossibleShipVariants.h"
 #include "States/DefaultState.h"
 #include "States/HoI4State.h"
 #include "States/StateCategories.h"
-#include "SupplyZones.h"
+#include "../V2World/Country.h"
+#include "../V2World/World.h"
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/TechMapper.h"
 #include "../Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
@@ -35,6 +36,9 @@
 #include "../Hoi4Outputter/Hoi4CountryOutputter.h"
 #include "../Hoi4Outputter/Decisions/DecisionsOutputter.h"
 #include "../Hoi4Outputter/Events/EventsOutputter.h"
+#include "../Hoi4Outputter/Map/OutBuildings.h"
+#include "../Hoi4Outputter/Map/OutStrategicRegion.h"
+#include "../Hoi4Outputter/Map/OutSupplyZones.h"
 #include "../Hoi4Outputter/ScriptedLocalisations/ScriptedLocalisationsOutputter.h"
 #include "../Hoi4Outputter/States/HoI4StatesOutputter.h"
 #include <fstream>
@@ -564,7 +568,7 @@ map<int, int> HoI4::World::importStrategicRegions()
 	Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/map/strategicregions/", filenames);
 	for (auto filename: filenames)
 	{
-		HoI4StrategicRegion* newRegion = new HoI4StrategicRegion(filename);
+		HoI4::StrategicRegion* newRegion = new HoI4::StrategicRegion(filename);
 		strategicRegions.insert(make_pair(newRegion->getID(), newRegion));
 
 		for (auto province: newRegion->getOldProvinces())
@@ -1088,11 +1092,11 @@ void HoI4::World::output()
 	outputStates(*states, theConfiguration);
 	diplomacy->output();
 	outputMap();
-	supplyZones->output();
+	outputSupplyZones(*supplyZones, theConfiguration);
 	outputRelations();
 	outputGenericFocusTree();
 	outputCountries();
-	buildings->output();
+	outputBuildings(*buildings, theConfiguration);
 	outputDecisions(*decisions, majorIdeologies, theConfiguration);
 	outputEvents(*events, theConfiguration);
 	onActions->output(majorIdeologies);
@@ -1242,7 +1246,7 @@ void HoI4::World::outputMap() const
 	}
 	for (auto strategicRegion: strategicRegions)
 	{
-		strategicRegion.second->output("output/" + theConfiguration.getOutputName() + "/map/strategicregions/");
+		outputStrategicRegion(*strategicRegion.second, "output/" + theConfiguration.getOutputName() + "/map/strategicregions/");
 	}
 }
 
@@ -1629,58 +1633,6 @@ portLocationCandidates.push_back(newCandidate.to);
 }
 }
 return portLocationCandidates;
-}
-
-
-vector<int> HoI4::World::getPortProvinces(const vector<int>& locationCandidates)
-{
-vector<int> newLocationCandidates;
-for (auto litr : locationCandidates)
-{
-map<int, HoI4Province*>::const_iterator provinceItr = provinces.find(litr);
-if ((provinceItr != provinces.end()) && (provinceItr->second->hasNavalBase()))
-{
-newLocationCandidates.push_back(litr);
-}
-}
-
-return newLocationCandidates;
-}
-
-
-int HoI4::World::getAirLocation(HoI4Province* locationProvince, const HoI4AdjacencyMapping& HoI4AdjacencyMap, string owner)
-{
-queue<int>		openProvinces;
-map<int, int>	closedProvinces;
-openProvinces.push(locationProvince->getNum());
-closedProvinces.insert(make_pair(locationProvince->getNum(), locationProvince->getNum()));
-while (openProvinces.size() > 0)
-{
-int provNum = openProvinces.front();
-openProvinces.pop();
-
-auto province = provinces.find(provNum);
-if ((province != provinces.end()) && (province->second->getOwner() == owner) && (province->second->getAirBase() > 0))
-{
-return provNum;
-}
-else
-{
-auto adjacencies = HoI4AdjacencyMap[provNum];
-for (auto thisAdjacency : adjacencies)
-{
-auto closed = closedProvinces.find(thisAdjacency.to);
-if (closed == closedProvinces.end())
-{
-openProvinces.push(thisAdjacency.to);
-closedProvinces.insert(make_pair(thisAdjacency.to, thisAdjacency.to));
-}
-}
-}
-}
-
-return -1;
-
 }*/
 
 void HoI4::World::setSphereLeaders()

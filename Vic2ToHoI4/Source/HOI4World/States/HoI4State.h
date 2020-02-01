@@ -25,7 +25,7 @@ class State;
 namespace HoI4
 {
 
-class coastalProvinces;
+class CoastalProvinces;
 class StateCategories;
 
 
@@ -46,7 +46,7 @@ class State
 
 		void convertNavalBases(
 			const std::set<const Vic2::Province*>& sourceProvinces,
-			const coastalProvinces& theCoastalProvinces,
+			const CoastalProvinces& theCoastalProvinces,
 			const provinceMapper& theProvinceMapper
 		);
 		void addNavalBase(int level, int location);
@@ -94,7 +94,7 @@ class State
 		void convertIndustry(
 			double workerFactoryRatio,
 			const HoI4::StateCategories& theStateCategories,
-			const coastalProvinces& theCoastalProvinces
+			const CoastalProvinces& theCoastalProvinces
 		);
 
 	private:
@@ -103,13 +103,13 @@ class State
 		void determineCategory(int factories, const HoI4::StateCategories& theStateCategories);
 		void addInfrastructureFromRails(float averageRailLevel);
 		void addInfrastructureFromFactories(int factories);
-		void setIndustry(int factories, const coastalProvinces& theCoastalProvinces);
-		bool amICoastal(const coastalProvinces& theCoastalProvinces) const;
+		void setIndustry(int factories, const CoastalProvinces& theCoastalProvinces);
+		bool amICoastal(const CoastalProvinces& theCoastalProvinces) const;
 
 		int determineNavalBaseLevel(const Vic2::Province& sourceProvince) const;
 		std::optional<int> determineNavalBaseLocation(
 			const Vic2::Province& sourceProvince,
-			const coastalProvinces& theCoastalProvinces,
+			const CoastalProvinces& theCoastalProvinces,
 			const provinceMapper& theProvinceMapper
 		) const;
 
