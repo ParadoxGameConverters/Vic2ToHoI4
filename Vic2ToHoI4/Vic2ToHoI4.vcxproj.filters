@@ -85,6 +85,9 @@
     <Filter Include="Hoi4Outputter\Map">
       <UniqueIdentifier>{7c4001c2-aa42-4f6c-a79f-a6597c8ce482}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Bitmap">
+      <UniqueIdentifier>{042f08d9-26f1-4dc4-972f-08c1cb7d7b07}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -627,7 +630,6 @@
     <ClInclude Include="Source\Mappers\ProvinceDefinitions.h">
       <Filter>Mappers</Filter>
     </ClInclude>
-    <ClInclude Include="Source\bitmap_image.hpp" />
     <ClInclude Include="Source\HOI4World\HoI4Agreement.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
@@ -1057,6 +1059,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Map\SupplyZone.h">
       <Filter>HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\bitmap\bitmap_image.hpp">
+      <Filter>Bitmap</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

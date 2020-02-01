@@ -7,7 +7,7 @@
 #include <optional>
 #include <map>
 #include <set>
-#include "../../bitmap_image.hpp"
+#include "../../../../bitmap/bitmap_image.hpp"
 #include "../../Color.h"
 
 
