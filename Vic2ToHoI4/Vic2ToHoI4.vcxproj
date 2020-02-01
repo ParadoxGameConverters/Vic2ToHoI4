@@ -266,7 +266,6 @@
     <ClCompile Include="Source\HOI4World\Map\CoastalProvinces.cpp" />
     <ClCompile Include="Source\HOI4World\Map\HoI4Buildings.cpp" />
     <ClCompile Include="Source\HOI4World\Map\HoI4StrategicRegion.cpp" />
-    <ClCompile Include="Source\HOI4World\Map\HoI4SupplyZone.cpp" />
     <ClCompile Include="Source\HOI4World\Map\ImpassableProvinces.cpp" />
     <ClCompile Include="Source\HOI4World\Map\MapData.cpp" />
     <ClCompile Include="Source\HOI4World\Map\Region.cpp" />

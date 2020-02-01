@@ -4,7 +4,7 @@
 
 
 void HoI4::outputSupplyZone(
-	const HoI4SupplyZone& supplyZone,
+	const SupplyZone& supplyZone,
 	const std::string& filename,
 	const Configuration& theConfiguration
 )

@@ -516,9 +516,6 @@
     <ClCompile Include="Source\HOI4World\Map\HoI4StrategicRegion.cpp">
       <Filter>HoI4World\Map</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Map\HoI4SupplyZone.cpp">
-      <Filter>HoI4World\Map</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Map\ImpassableProvinces.cpp">
       <Filter>HoI4World\Map</Filter>
     </ClCompile>

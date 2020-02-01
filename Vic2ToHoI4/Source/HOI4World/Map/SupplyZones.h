@@ -10,15 +10,12 @@
 
 
 
-class HoI4SupplyZone;
-
-
-
 namespace HoI4
 {
 
 class DefaultState;
 class States;
+class SupplyZone;
 
 
 
@@ -37,7 +34,7 @@ class SupplyZones: commonItems::parser
 
 		std::map<int, std::set<int>> defaultStateToProvinceMap;
 		std::map<int, std::string> supplyZonesFilenames;
-		std::map<int, HoI4SupplyZone*> supplyZones;
+		std::map<int, SupplyZone*> supplyZones;
 		std::map<int, int> provinceToSupplyZoneMap;
 };
 

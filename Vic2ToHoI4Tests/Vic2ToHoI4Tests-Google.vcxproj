@@ -131,7 +131,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Hoi4Building.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Buildings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4StrategicRegion.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4SupplyZone.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\ImpassableProvinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapData.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Region.cpp" />

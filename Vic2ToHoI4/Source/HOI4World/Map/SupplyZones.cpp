@@ -60,15 +60,15 @@ HoI4::SupplyZones::SupplyZones(const std::map<int, HoI4::DefaultState>& defaultS
 		supplyArea area(theStream);
 		auto ID = area.getID();
 
-		HoI4SupplyZone* newSupplyZone = new HoI4SupplyZone(ID, area.getValue());
-		supplyZones.insert(make_pair(ID, newSupplyZone));
+		SupplyZone* newSupplyZone = new SupplyZone(ID, area.getValue());
+		supplyZones.insert(std::make_pair(ID, newSupplyZone));
 
 		for (auto state: area.getStates())
 		{
 			auto mapping = defaultStateToProvinceMap.find(state);
 			for (auto province : mapping->second)
 			{
-				provinceToSupplyZoneMap.insert(make_pair(province, ID));
+				provinceToSupplyZoneMap.insert(std::make_pair(province, ID));
 			}
 		}
 	});

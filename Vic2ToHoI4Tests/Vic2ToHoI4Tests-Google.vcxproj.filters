@@ -596,9 +596,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4StrategicRegion.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4SupplyZone.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\ImpassableProvinces.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClCompile>
