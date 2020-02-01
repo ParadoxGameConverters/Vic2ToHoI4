@@ -204,6 +204,7 @@
     <ClCompile Include="Source\Hoi4Outputter\Map\OutBuilding.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Map\OutBuildings.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Map\OutStrategicRegion.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Map\OutSupplyZone.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp" />
@@ -361,6 +362,7 @@
     <ClInclude Include="Source\Hoi4Outputter\Map\OutBuilding.h" />
     <ClInclude Include="Source\Hoi4Outputter\Map\OutBuildings.h" />
     <ClInclude Include="Source\Hoi4Outputter\Map\OutStrategicRegion.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Map\OutSupplyZone.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.h" />

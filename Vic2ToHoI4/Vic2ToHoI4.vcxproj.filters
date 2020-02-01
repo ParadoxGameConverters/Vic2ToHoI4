@@ -546,6 +546,9 @@
     <ClCompile Include="Source\Hoi4Outputter\Map\OutStrategicRegion.cpp">
       <Filter>Hoi4Outputter\Map</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Map\OutSupplyZone.cpp">
+      <Filter>Hoi4Outputter\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1023,6 +1026,9 @@
       <Filter>HoI4World\Map</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Map\OutStrategicRegion.h">
+      <Filter>Hoi4Outputter\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Map\OutSupplyZone.h">
       <Filter>Hoi4Outputter\Map</Filter>
     </ClInclude>
   </ItemGroup>

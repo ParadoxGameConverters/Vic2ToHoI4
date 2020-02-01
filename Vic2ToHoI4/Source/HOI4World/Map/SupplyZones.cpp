@@ -7,6 +7,7 @@
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
+#include "../../Hoi4Outputter/Map/OutSupplyZone.h"
 
 
 class supplyArea: commonItems::parser
@@ -105,7 +106,7 @@ void HoI4::SupplyZones::output()
 		auto filenameMap = supplyZonesFilenames.find(zone.first);
 		if (filenameMap != supplyZonesFilenames.end())
 		{
-			zone.second->output(filenameMap->second);
+			outputSupplyZone(*zone.second, filenameMap->second, theConfiguration);
 		}
 	}
 }
