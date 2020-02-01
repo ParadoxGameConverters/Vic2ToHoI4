@@ -12,6 +12,7 @@ add_compile_options("-std=c++2a")
 add_compile_options("-g")
 
 include_directories("../common_items")
+include_directories("../bitmap")
 include_directories("${PROJECT_SOURCE_DIR}")
 
 file(GLOB MAIN_SOURCES "${PROJECT_SOURCE_DIR}/*.cpp")
