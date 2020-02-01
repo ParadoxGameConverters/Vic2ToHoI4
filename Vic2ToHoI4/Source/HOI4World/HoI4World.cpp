@@ -37,6 +37,7 @@
 #include "../Hoi4Outputter/Decisions/DecisionsOutputter.h"
 #include "../Hoi4Outputter/Events/EventsOutputter.h"
 #include "../Hoi4Outputter/Map/OutBuildings.h"
+#include "../Hoi4Outputter/Map/OutStrategicRegion.h"
 #include "../Hoi4Outputter/ScriptedLocalisations/ScriptedLocalisationsOutputter.h"
 #include "../Hoi4Outputter/States/HoI4StatesOutputter.h"
 #include <fstream>
@@ -1244,7 +1245,7 @@ void HoI4::World::outputMap() const
 	}
 	for (auto strategicRegion: strategicRegions)
 	{
-		strategicRegion.second->output("output/" + theConfiguration.getOutputName() + "/map/strategicregions/");
+		outputStrategicRegion(*strategicRegion.second, "output/" + theConfiguration.getOutputName() + "/map/strategicregions/");
 	}
 }
 

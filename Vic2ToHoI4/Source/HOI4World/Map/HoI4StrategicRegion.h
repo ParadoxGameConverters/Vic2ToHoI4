@@ -15,10 +15,16 @@ class HoI4StrategicRegion: commonItems::parser
 {
 	public:
 		explicit HoI4StrategicRegion(const std::string& _filename);
-		void output(const std::string& path) const;
 
+		[[nodiscard]] const auto& getFilename() const { return filename; }
 		[[nodiscard]] int getID() const { return ID; }
+		[[nodiscard]] std::string_view getName() const { return name; }
 		[[nodiscard]] std::vector<int> getOldProvinces() const { return oldProvinces; }
+		[[nodiscard]] const auto& getNewProvinces() const { return newProvinces; }
+		[[nodiscard]] bool hasStaticModifiers() const { return !staticModifiers.empty(); }
+		[[nodiscard]] const auto& getStaticModifiers() const { return staticModifiers; }
+		[[nodiscard]] std::optional<std::string> getNavalTerrain() const { return navalTerrain; }
+		[[nodiscard]] const auto& getWeather() const { return weather; }
 
 		void addNewProvince(const int province) { newProvinces.push_back(province); }
 

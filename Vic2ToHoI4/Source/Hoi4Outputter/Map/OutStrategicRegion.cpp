@@ -1,45 +1,44 @@
 #include "OutStrategicRegion.h"
-#include "Log.h"
 #include <fstream>
 
 
 
-void HoI4StrategicRegion::output(const std::string& path) const
+void HoI4::outputStrategicRegion(const HoI4StrategicRegion& strategicRegion, const std::string& path)
 {
-	std::ofstream out(path + filename);
+	std::ofstream out(path + strategicRegion.getFilename());
 	if (!out.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not open " << path << filename;
-		exit(-1);
+		throw std::runtime_error("Could not open " + path + strategicRegion.getFilename());
 	}
 
 	out << "\n";
 	out << "strategic_region={\n";
-	out << "\tid=" << ID << "\n";
-	out << "\tname=\"" << name << "\"\n";
+	out << "\tid=" << strategicRegion.getID() << "\n";
+	out << "\tname=\"" << strategicRegion.getName() << "\"\n";
 	out << "\tprovinces={\n";
 	out << "\t\t";
-	for (auto province : newProvinces)
+	for (auto province: strategicRegion.getNewProvinces())
 	{
 		out << province << " ";
 	}
 	out << "\n";
 	out << "\t}\n";
-	if (!staticModifiers.empty())
+	if (strategicRegion.hasStaticModifiers())
 	{
 		out << "\tstatic_modifiers={\n";
-		for (const auto& modifier : staticModifiers)
+		for (const auto& modifier: strategicRegion.getStaticModifiers())
 		{
 			out << "\t\t" << modifier.first << "=" << modifier.second << "\n";
 		}
 		out << "\n";
 		out << "\t}\n";
 	}
+	auto navalTerrain = strategicRegion.getNavalTerrain();
 	if (navalTerrain)
 	{
 		out << "\tnaval_terrain=" << *navalTerrain << "\n";
 	}
-	out << "\tweather" << weather << "\n";
+	out << "\tweather" << strategicRegion.getWeather() << "\n";
 	out << "}";
 
 	out.close();

@@ -10,7 +10,7 @@
 namespace HoI4
 {
 
-void outputStrategicRegion(const HoI4StrategicRegion& strategicRegion);
+void outputStrategicRegion(const HoI4StrategicRegion& strategicRegion, const std::string& path);
 
 }
 
