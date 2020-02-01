@@ -6,60 +6,6 @@
 
 
 
-void HoI4::provincePoints::addPoint(const point& thePoint)
-{
-	thePoints.emplace(thePoint);
-	if (thePoint.first < leftmostPoint.first)
-	{
-		leftmostPoint = thePoint;
-	}
-	if (thePoint.first > rightmostPoint.first)
-	{
-		rightmostPoint = thePoint;
-	}
-	if (thePoint.second < lowestPoint.second)
-	{
-		lowestPoint = thePoint;
-	}
-	if (thePoint.second > highestPoint.second)
-	{
-		highestPoint = thePoint;
-	}
-}
-
-
-point HoI4::provincePoints::getCentermostPoint()
-{
-	point possibleCenter;
-	possibleCenter.first = (leftmostPoint.first + rightmostPoint.first) / 2;
-	possibleCenter.second = (lowestPoint.second + highestPoint.second) / 2;
-	if (thePoints.count(possibleCenter) > 0)
-	{
-		return possibleCenter;
-	}
-	else
-	{
-		float shortestDistance = 1000000;
-		point closestPoint;
-		for (auto possiblePoint: thePoints)
-		{
-			float distanceSquared;
-			float deltaX = static_cast<float>(possiblePoint.first - possibleCenter.first);
-			distanceSquared = deltaX * deltaX;
-			float deltaY = static_cast<float>(possiblePoint.second - possibleCenter.second);
-			distanceSquared += deltaY * deltaY;
-
-			if (distanceSquared < shortestDistance)
-			{
-				shortestDistance = distanceSquared;
-				closestPoint = possiblePoint;
-			}
-		}
-		return closestPoint;
-	}
-}
-
-
 HoI4::MapData::MapData() noexcept:
 	provinceMap(theConfiguration.getHoI4Path() + "/map/provinces.bmp")
 {

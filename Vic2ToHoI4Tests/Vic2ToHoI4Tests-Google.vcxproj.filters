@@ -626,6 +626,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutSupplyZone.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Map</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\ProvincePoints.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

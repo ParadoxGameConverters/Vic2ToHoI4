@@ -3,6 +3,7 @@
 
 
 
+#include "ProvincePoints.h"
 #include <optional>
 #include <map>
 #include <set>
@@ -11,7 +12,6 @@
 
 
 
-typedef std::pair<int, int> point;
 typedef std::vector<point> borderPoints;
 typedef std::map<int, borderPoints> bordersWith;
 
@@ -19,24 +19,6 @@ typedef std::map<int, borderPoints> bordersWith;
 
 namespace HoI4
 {
-
-class provincePoints
-{
-	public:
-		provincePoints() = default;
-
-		void addPoint(const point& thePoint);
-
-		point getCentermostPoint();
-
-	private:
-		std::set<point> thePoints;
-		point leftmostPoint = {1000000, 0};
-		point rightmostPoint = {-1, 0};
-		point highestPoint = {0, -1};
-		point lowestPoint = {0, 1000000};
-};
-
 
 class MapData
 {
