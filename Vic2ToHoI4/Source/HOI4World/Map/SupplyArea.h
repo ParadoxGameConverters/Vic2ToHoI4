@@ -14,7 +14,7 @@ class SupplyArea: commonItems::parser
 
 		[[nodiscard]] auto getID() const { return ID; }
 		[[nodiscard]] auto getValue() const { return value; }
-		[[nodiscard]] auto getStates() const { return states; }
+		[[nodiscard]] const auto& getStates() const { return states; }
 
 	private:
 		int ID = 0;

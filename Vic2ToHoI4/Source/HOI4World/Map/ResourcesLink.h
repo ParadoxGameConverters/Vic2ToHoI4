@@ -12,8 +12,8 @@ class ResourcesLink: commonItems::parser
 	public:
 		explicit ResourcesLink(std::istream& theStream);
 
-		[[nodiscard]] auto getProvinceNum() const { return provinceNum; }
-		[[nodiscard]] auto getResources() const { return theResources; }
+		[[nodiscard]] int getProvinceNum() const { return provinceNum; }
+		[[nodiscard]] auto takeResources() { return std::move(theResources); }
 
 	private:
 		int provinceNum = 0;

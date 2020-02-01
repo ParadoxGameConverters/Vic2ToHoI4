@@ -11,8 +11,8 @@ ResourcesLink::ResourcesLink(std::istream& theStream)
 		provinceNum = theProvinceNum.getInt();
 	});
 	registerKeyword(std::regex("resources"), [this](const std::string& unused, std::istream& theStream) {
-		const ActualResources theActualResources(theStream);
-		theResources = theActualResources.getResources();
+		ActualResources theActualResources(theStream);
+		theResources = theActualResources.takeResources();
 	});
 	registerRegex("[a-zA-z0-9_]+", commonItems::ignoreItem);
 

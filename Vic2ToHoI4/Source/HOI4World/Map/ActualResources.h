@@ -12,7 +12,7 @@ class ActualResources: commonItems::parser
 	public:
 		explicit ActualResources(std::istream& theStream);
 
-		[[nodiscard]] auto getResources() const { return theResources; }
+		[[nodiscard]] auto takeResources() { return std::move(theResources); }
 
 	private:
 		std::map<std::string, double> theResources;

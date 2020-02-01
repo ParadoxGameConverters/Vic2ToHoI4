@@ -16,11 +16,11 @@ class Region: commonItems::parser
 		explicit Region(std::istream& theStream);
 
 		[[nodiscard]] auto getID() const { return ID; }
-		[[nodiscard]] auto getName() const { return name; }
-		[[nodiscard]] auto getProvinces() const { return provinces; }
-		[[nodiscard]] auto getNavalTerrain() const { return navalTerrain; }
-		[[nodiscard]] auto getStaticModifiers() const { return staticModifiers; }
-		[[nodiscard]] auto getWeather() const { return weather; }
+		[[nodiscard]] auto takeName() { return std::move(name); }
+		[[nodiscard]] auto takeProvinces() { return std::move(provinces); }
+		[[nodiscard]] auto takeNavalTerrain() { return std::move(navalTerrain); }
+		[[nodiscard]] auto takeStaticModifiers() { return std::move(staticModifiers); }
+		[[nodiscard]] auto takeWeather() { return std::move(weather); }
 
 	private:
 		int ID = 0;
