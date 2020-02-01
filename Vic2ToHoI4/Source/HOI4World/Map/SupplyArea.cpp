@@ -5,15 +5,15 @@
 
 SupplyArea::SupplyArea(std::istream& theStream)
 {
-	registerKeyword(std::regex("id"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("id", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleInt idInt(theStream);
 		ID = idInt.getInt();
 	});
-	registerKeyword(std::regex("value"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("value", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleInt valueInt(theStream);
 		value = valueInt.getInt();
 	});
-	registerKeyword(std::regex("states"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("states", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::intList stateIntList(theStream);
 		states = stateIntList.getInts();
 	});

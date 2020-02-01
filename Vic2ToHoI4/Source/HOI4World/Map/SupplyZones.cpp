@@ -17,7 +17,7 @@ HoI4::SupplyZones::SupplyZones(const std::map<int, DefaultState>& defaultStates)
 	LOG(LogLevel::Info) << "Importing supply zones";
 	importStates(defaultStates);
 
-	registerKeyword(std::regex("supply_area"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("supply_area", [this](const std::string& unused, std::istream& theStream){
 		const SupplyArea area(theStream);
 		auto ID = area.getID();
 
