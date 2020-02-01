@@ -266,8 +266,8 @@
     <ClCompile Include="Source\HOI4World\Map\ActualResources.cpp" />
     <ClCompile Include="Source\HOI4World\Map\Hoi4Building.cpp" />
     <ClCompile Include="Source\HOI4World\Map\CoastalProvinces.cpp" />
-    <ClCompile Include="Source\HOI4World\Map\HoI4Buildings.cpp" />
-    <ClCompile Include="Source\HOI4World\Map\HoI4StrategicRegion.cpp" />
+    <ClCompile Include="Source\HOI4World\Map\Buildings.cpp" />
+    <ClCompile Include="Source\HOI4World\Map\StrategicRegion.cpp" />
     <ClCompile Include="Source\HOI4World\Map\ImpassableProvinces.cpp" />
     <ClCompile Include="Source\HOI4World\Map\MapData.cpp" />
     <ClCompile Include="Source\HOI4World\Map\ProvincePoints.cpp" />
@@ -430,10 +430,10 @@
     <ClInclude Include="Source\HOI4World\Map\Hoi4Building.h" />
     <ClInclude Include="Source\HOI4World\Map\BuildingPosition.h" />
     <ClInclude Include="Source\HOI4World\Map\CoastalProvinces.h" />
-    <ClInclude Include="Source\HOI4World\Map\HoI4Buildings.h" />
+    <ClInclude Include="Source\HOI4World\Map\Buildings.h" />
     <ClInclude Include="Source\HOI4World\Map\Hoi4Province.h" />
-    <ClInclude Include="Source\HOI4World\Map\HoI4StrategicRegion.h" />
-    <ClInclude Include="Source\HOI4World\Map\HoI4SupplyZone.h" />
+    <ClInclude Include="Source\HOI4World\Map\StrategicRegion.h" />
+    <ClInclude Include="Source\HOI4World\Map\SupplyZone.h" />
     <ClInclude Include="Source\HOI4World\Map\ImpassableProvinces.h" />
     <ClInclude Include="Source\HOI4World\Map\MapData.h" />
     <ClInclude Include="Source\HOI4World\Map\ProvincePoints.h" />

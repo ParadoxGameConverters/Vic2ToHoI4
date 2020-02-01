@@ -2,7 +2,8 @@
 #define OUT_SUPPLY_ZONE_H
 
 
-#include "../../HOI4World/Map/HoI4SupplyZone.h"
+
+#include "../../HOI4World/Map/SupplyZone.h"
 #include "../../Configuration.h"
 
 

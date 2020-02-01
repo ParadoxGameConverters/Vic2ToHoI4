@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/Map/HoI4StrategicRegion.h"
+#include "../../HOI4World/Map/StrategicRegion.h"
 
 
 

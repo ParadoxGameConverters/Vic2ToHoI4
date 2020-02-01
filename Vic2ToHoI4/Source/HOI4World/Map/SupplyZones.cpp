@@ -1,6 +1,6 @@
 #include "SupplyZones.h"
-#include "HoI4SupplyZone.h"
 #include "SupplyArea.h"
+#include "SupplyZone.h"
 #include "../../Configuration.h"
 #include "../States/DefaultState.h"
 #include "../States/HoI4State.h"

@@ -590,12 +590,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\CoastalProvinces.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Buildings.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4StrategicRegion.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\ImpassableProvinces.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClCompile>
@@ -640,6 +634,12 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutSupplyZones.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Buildings.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegion.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

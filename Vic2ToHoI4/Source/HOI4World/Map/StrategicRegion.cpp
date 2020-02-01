@@ -1,6 +1,6 @@
 #include "../../Configuration.h"
-#include "HoI4StrategicRegion.h"
 #include "Region.h"
+#include "StrategicRegion.h"
 #include "newParser.h"
 #include <fstream>
 
