@@ -217,7 +217,7 @@ void HoI4::MapData::addPointToBorder(int mainProvince, int neighborProvince, con
 		border = bordersWithNeighbors->second.find(neighborProvince);
 	}
 
-	if (border->second.size() == 0)
+	if (border->second.empty())
 	{
 		border->second.push_back(position);
 	}
