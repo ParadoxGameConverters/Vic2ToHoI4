@@ -262,6 +262,7 @@
     <ClCompile Include="Source\HOI4World\Localisations\LanguageReplacementRule.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\LanguageReplacementRules.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\LanguageReplacements.cpp" />
+    <ClCompile Include="Source\HOI4World\Map\ActualResources.cpp" />
     <ClCompile Include="Source\HOI4World\Map\Hoi4Building.cpp" />
     <ClCompile Include="Source\HOI4World\Map\CoastalProvinces.cpp" />
     <ClCompile Include="Source\HOI4World\Map\HoI4Buildings.cpp" />
@@ -271,6 +272,7 @@
     <ClCompile Include="Source\HOI4World\Map\ProvincePoints.cpp" />
     <ClCompile Include="Source\HOI4World\Map\Region.cpp" />
     <ClCompile Include="Source\HOI4World\Map\Resources.cpp" />
+    <ClCompile Include="Source\HOI4World\Map\ResourcesLink.cpp" />
     <ClCompile Include="Source\HOI4World\Map\SupplyZones.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\DivisionTemplatesImporter.cpp" />
@@ -421,6 +423,7 @@
     <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacementRule.h" />
     <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacementRules.h" />
     <ClInclude Include="Source\HOI4World\Localisations\LanguageReplacements.h" />
+    <ClInclude Include="Source\HOI4World\Map\ActualResources.h" />
     <ClInclude Include="Source\HOI4World\Map\Hoi4Building.h" />
     <ClInclude Include="Source\HOI4World\Map\BuildingPosition.h" />
     <ClInclude Include="Source\HOI4World\Map\CoastalProvinces.h" />
@@ -433,6 +436,7 @@
     <ClInclude Include="Source\HOI4World\Map\ProvincePoints.h" />
     <ClInclude Include="Source\HOI4World\Map\Region.h" />
     <ClInclude Include="Source\HOI4World\Map\Resources.h" />
+    <ClInclude Include="Source\HOI4World\Map\ResourcesLink.h" />
     <ClInclude Include="Source\HOI4World\Map\SupplyZones.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\DivisionTemplatesImporter.h" />
@@ -569,7 +573,7 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)\..</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Resources.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/DataFiles</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\shipTypes.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)</DestinationFolders>

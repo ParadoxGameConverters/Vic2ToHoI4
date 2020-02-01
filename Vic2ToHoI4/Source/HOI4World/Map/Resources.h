@@ -8,10 +8,11 @@
 #include <string>
 
 
-class resources: commonItems::parser
+
+class Resources: commonItems::parser
 {
 	public:
-		resources() noexcept;
+		Resources() noexcept;
 
 		std::map<std::string, double> getResourcesInProvince(int provinceNum);
 

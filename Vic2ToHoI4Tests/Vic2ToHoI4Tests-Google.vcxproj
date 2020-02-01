@@ -127,6 +127,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacementRule.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacementRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacements.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\ActualResources.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\CoastalProvinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Hoi4Building.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Buildings.cpp" />
@@ -136,6 +137,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\ProvincePoints.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Region.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Resources.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\ResourcesLink.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyZones.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\DivisionTemplatesImporter.cpp" />

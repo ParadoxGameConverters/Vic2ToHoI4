@@ -549,6 +549,12 @@
     <ClCompile Include="Source\HOI4World\Map\ProvincePoints.cpp">
       <Filter>HoI4World\Map</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Map\ResourcesLink.cpp">
+      <Filter>HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Map\ActualResources.cpp">
+      <Filter>HoI4World\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1032,6 +1038,12 @@
       <Filter>Hoi4Outputter\Map</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Map\ProvincePoints.h">
+      <Filter>HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Map\ResourcesLink.h">
+      <Filter>HoI4World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Map\ActualResources.h">
       <Filter>HoI4World\Map</Filter>
     </ClInclude>
   </ItemGroup>

@@ -496,7 +496,7 @@ void HoI4::States::addBasicAirBases()
 
 void HoI4::States::convertResources()
 {
-	resources resourceMap;
+	Resources resourceMap;
 
 	for (auto& state: states)
 	{
