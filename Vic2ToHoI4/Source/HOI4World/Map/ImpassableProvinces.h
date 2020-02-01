@@ -18,11 +18,11 @@ class DefaultState;
 class impassableProvinces
 {
 	public:
-		explicit impassableProvinces(const std::map<int, HoI4::DefaultState>& states);
+		explicit impassableProvinces(const std::map<int, DefaultState>& states);
 
-		bool isProvinceImpassable(int provinceNumber) const;
+		[[nodiscard]] bool isProvinceImpassable(int provinceNumber) const;
 
-	public:
+	private:
 		std::unordered_set<int> impassibleProvinces;
 };
 
