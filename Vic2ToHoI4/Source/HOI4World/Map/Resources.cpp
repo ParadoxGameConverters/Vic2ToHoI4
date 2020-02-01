@@ -15,7 +15,7 @@ Resources::Resources() noexcept
 }
 
 
-std::map<std::string, double> Resources::getResourcesInProvince(int provinceNum)
+std::map<std::string, double> Resources::getResourcesInProvince(const int provinceNum) const
 {
 	if (const auto mapping = resourceMap.find(provinceNum); mapping != resourceMap.end())
 	{

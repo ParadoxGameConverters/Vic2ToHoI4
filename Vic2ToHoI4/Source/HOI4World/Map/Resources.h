@@ -14,7 +14,7 @@ class Resources: commonItems::parser
 	public:
 		Resources() noexcept;
 
-		std::map<std::string, double> getResourcesInProvince(int provinceNum);
+		[[nodiscard]] std::map<std::string, double> getResourcesInProvince(int provinceNum) const;
 
 	private:
 		std::map<int, std::map<std::string, double>> resourceMap;

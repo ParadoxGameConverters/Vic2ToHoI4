@@ -14,6 +14,7 @@ ResourcesLink::ResourcesLink(std::istream& theStream)
 		const ActualResources theActualResources(theStream);
 		theResources = theActualResources.getResources();
 	});
+	registerRegex("[a-zA-z0-9_]+", commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();
