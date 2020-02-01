@@ -18,7 +18,7 @@ class HoI4StrategicRegion: commonItems::parser
 		void output(const std::string& path) const;
 
 		[[nodiscard]] int getID() const { return ID; }
-		[[nodiscard]] std::vector<int>	getOldProvinces() const	{ return oldProvinces; }
+		[[nodiscard]] std::vector<int> getOldProvinces() const { return oldProvinces; }
 
 		void addNewProvince(const int province) { newProvinces.push_back(province); }
 

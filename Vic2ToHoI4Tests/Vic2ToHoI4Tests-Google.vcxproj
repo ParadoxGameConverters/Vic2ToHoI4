@@ -68,6 +68,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutGeneral.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutBuilding.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutBuildings.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutStrategicRegion.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\LegacyNavyOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp" />
@@ -132,6 +133,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4SupplyZone.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\ImpassableProvinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapData.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Region.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Resources.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyZones.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp" />

@@ -203,6 +203,7 @@
     <ClCompile Include="Source\Hoi4Outputter\Leaders\OutGeneral.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Map\OutBuilding.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Map\OutBuildings.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Map\OutStrategicRegion.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp" />
@@ -267,6 +268,7 @@
     <ClCompile Include="Source\HOI4World\Map\HoI4SupplyZone.cpp" />
     <ClCompile Include="Source\HOI4World\Map\ImpassableProvinces.cpp" />
     <ClCompile Include="Source\HOI4World\Map\MapData.cpp" />
+    <ClCompile Include="Source\HOI4World\Map\Region.cpp" />
     <ClCompile Include="Source\HOI4World\Map\Resources.cpp" />
     <ClCompile Include="Source\HOI4World\Map\SupplyZones.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp" />
@@ -358,6 +360,7 @@
     <ClInclude Include="Source\Hoi4Outputter\Leaders\OutAdvisor.h" />
     <ClInclude Include="Source\Hoi4Outputter\Map\OutBuilding.h" />
     <ClInclude Include="Source\Hoi4Outputter\Map\OutBuildings.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Map\OutStrategicRegion.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.h" />
@@ -425,6 +428,7 @@
     <ClInclude Include="Source\HOI4World\Map\HoI4SupplyZone.h" />
     <ClInclude Include="Source\HOI4World\Map\ImpassableProvinces.h" />
     <ClInclude Include="Source\HOI4World\Map\MapData.h" />
+    <ClInclude Include="Source\HOI4World\Map\Region.h" />
     <ClInclude Include="Source\HOI4World\Map\Resources.h" />
     <ClInclude Include="Source\HOI4World\Map\SupplyZones.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.h" />
