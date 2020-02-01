@@ -23,24 +23,16 @@ namespace HoI4
 class MapData
 {
 	public:
-		MapData() noexcept;
+		MapData();
 
-		std::set<int> getNeighbors(int province) const;
-		std::optional<point> getSpecifiedBorderCenter(int mainProvince, int neighbor) const;
-		std::optional<point> getAnyBorderCenter(int province) const;
-		std::optional<int> getProvinceNumber(double x, double y);
+		[[nodiscard]] std::set<int> getNeighbors(int province) const;
+		[[nodiscard]] std::optional<point> getSpecifiedBorderCenter(int mainProvince, int neighbor) const;
+		[[nodiscard]] std::optional<point> getAnyBorderCenter(int province) const;
+		[[nodiscard]] std::optional<int> getProvinceNumber(double x, double y);
 
-		std::optional<ProvincePoints> getProvincePoints(int provinceNum) const;
+		[[nodiscard]] std::optional<ProvincePoints> getProvincePoints(int provinceNum) const;
 
 	private:
-		MapData(const MapData&) = delete;
-		MapData& operator=(const MapData&) = delete;
-
-		ConverterColor::Color getCenterColor(point position);
-		ConverterColor::Color getAboveColor(point position, int height);
-		ConverterColor::Color getBelowColor(point position, int height);
-		ConverterColor::Color getLeftColor(point position, int width);
-		ConverterColor::Color getRightColor(point position, int width);
 		void handleNeighbor(
 			const ConverterColor::Color& centerColor,
 			const ConverterColor::Color& otherColor,
