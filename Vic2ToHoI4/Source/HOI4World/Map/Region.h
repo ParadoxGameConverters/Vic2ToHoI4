@@ -17,17 +17,17 @@ class Region: commonItems::parser
 
 		[[nodiscard]] auto getID() const { return ID; }
 		[[nodiscard]] auto getName() const { return name; }
-		[[nodiscard]] auto getStaticModifiers() const { return staticModifiers; }
 		[[nodiscard]] auto getProvinces() const { return provinces; }
 		[[nodiscard]] auto getNavalTerrain() const { return navalTerrain; }
+		[[nodiscard]] auto getStaticModifiers() const { return staticModifiers; }
 		[[nodiscard]] auto getWeather() const { return weather; }
 
 	private:
 		int ID = 0;
 		std::string name;
 		std::vector<int> provinces;
-		std::map<std::string, std::string> staticModifiers;
 		std::optional<std::string> navalTerrain;
+		std::map<std::string, std::string> staticModifiers;
 		std::string weather;
 };
 	
