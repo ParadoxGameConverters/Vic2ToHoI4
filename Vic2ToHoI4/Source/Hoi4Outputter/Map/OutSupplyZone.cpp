@@ -1,5 +1,4 @@
 #include "OutSupplyZone.h"
-#include "Log.h"
 #include <fstream>
 
 
@@ -10,27 +9,26 @@ void HoI4::outputSupplyZone(
 	const Configuration& theConfiguration
 )
 {
-	std::string fullFilename("output/" + theConfiguration.getOutputName() + "/map/supplyareas/" + filename);
+	const auto fullFilename("output/" + theConfiguration.getOutputName() + "/map/supplyareas/" + filename);
 	std::ofstream out(fullFilename);
 	if (!out.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not open \"output/input/map/supplyareas/" + filename;
-		exit(-1);
+		throw std::runtime_error("Could not open \"output/input/map/supplyareas/" + filename);
 	}
 	out << "\n";
-	out << "supply_area={" << std::endl;
-	out << "\tid=" << supplyZone.getId() << std::endl;
-	out << "\tname=\"SUPPLYAREA_" << supplyZone.getId() << "\"" << std::endl;
-	out << "\tvalue=" << supplyZone.getValue() << std::endl;
-	out << "\tstates={" << std::endl;
+	out << "supply_area={\n";
+	out << "\tid=" << supplyZone.getId() << "\n";
+	out << "\tname=\"SUPPLYAREA_" << supplyZone.getId() << "\"\n";
+	out << "\tvalue=" << supplyZone.getValue() << "\n";
+	out << "\tstates={\n";
 	out << "\t\t";
 	for (auto stateNum: supplyZone.getStates())
 	{
 		out << stateNum << " ";
 	}
 	out << std::endl;
-	out << "\t}" << std::endl;
-	out << "}" << std::endl;
+	out << "\t}\n";
+	out << "}\n";
 
 	out.close();
 }
