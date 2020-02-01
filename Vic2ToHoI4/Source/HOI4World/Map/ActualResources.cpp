@@ -9,6 +9,7 @@ ActualResources::ActualResources(std::istream& theStream)
 		const commonItems::singleDouble resourceAmount(theStream);
 		theResources.insert(std::make_pair(resourceName, resourceAmount.getDouble()));
 	});
+	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();

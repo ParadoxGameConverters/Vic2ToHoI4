@@ -7,6 +7,7 @@
 #include "../States/HoI4States.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
+#include "ParserHelpers.h"
 
 
 
@@ -32,6 +33,7 @@ HoI4::SupplyZones::SupplyZones(const std::map<int, DefaultState>& defaultStates)
 			}
 		}
 	});
+	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
 
 	std::set<std::string> supplyZonesFiles;
 	Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/map/supplyareas", supplyZonesFiles);

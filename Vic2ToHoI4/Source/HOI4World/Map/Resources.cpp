@@ -1,5 +1,6 @@
 #include "Resources.h"
 #include "ResourcesLink.h"
+#include "ParserHelpers.h"
 
 
 
@@ -9,6 +10,7 @@ Resources::Resources() noexcept
 		ResourcesLink theLink(theStream);
 		resourceMap.insert(std::make_pair(theLink.getProvinceNum(), theLink.takeResources()));
 	});
+	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
 
 	parseFile("DataFiles/resources.txt");
 	clearRegisteredKeywords();
