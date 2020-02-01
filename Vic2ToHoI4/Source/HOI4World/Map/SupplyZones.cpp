@@ -1,66 +1,26 @@
 #include "SupplyZones.h"
-#include "../../Configuration.h"
 #include "HoI4SupplyZone.h"
+#include "SupplyArea.h"
+#include "../../Configuration.h"
 #include "../States/DefaultState.h"
 #include "../States/HoI4State.h"
 #include "../States/HoI4States.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
-#include "ParserHelpers.h"
-#include "../../Hoi4Outputter/Map/OutSupplyZone.h"
-
-
-class supplyArea: commonItems::parser
-{
-	public:
-		explicit supplyArea(std::istream& theStream);
-
-		auto getID() const { return ID; }
-		auto getValue() const { return value; }
-		auto getStates() const { return states; }
-
-	private:
-		int ID = 0;
-		int value = 0;
-		std::vector<int> states;
-};
-
-
-supplyArea::supplyArea(std::istream& theStream)
-{
-	registerKeyword(std::regex("id"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleInt idInt(theStream);
-		ID = idInt.getInt();
-	});
-	registerKeyword(std::regex("value"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleInt valueInt(theStream);
-		value = valueInt.getInt();
-	});
-	registerKeyword(std::regex("states"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::intList stateInts(theStream);
-		states = stateInts.getInts();
-	});
-	registerKeyword(std::regex("[a-zA-Z0-9_]+"), commonItems::ignoreItem);
-
-	parseStream(theStream);
-}
 
 
 
-HoI4::SupplyZones::SupplyZones(const std::map<int, HoI4::DefaultState>& defaultStates):
-	defaultStateToProvinceMap(),
-	supplyZonesFilenames(),
-	supplyZones(),
-	provinceToSupplyZoneMap()
+
+HoI4::SupplyZones::SupplyZones(const std::map<int, DefaultState>& defaultStates)
 {
 	LOG(LogLevel::Info) << "Importing supply zones";
 	importStates(defaultStates);
 
 	registerKeyword(std::regex("supply_area"), [this](const std::string& unused, std::istream& theStream){
-		supplyArea area(theStream);
+		const SupplyArea area(theStream);
 		auto ID = area.getID();
 
-		SupplyZone* newSupplyZone = new SupplyZone(ID, area.getValue());
+		SupplyZone newSupplyZone(ID, area.getValue());
 		supplyZones.insert(std::make_pair(ID, newSupplyZone));
 
 		for (auto state: area.getStates())
@@ -75,59 +35,51 @@ HoI4::SupplyZones::SupplyZones(const std::map<int, HoI4::DefaultState>& defaultS
 
 	std::set<std::string> supplyZonesFiles;
 	Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/map/supplyareas", supplyZonesFiles);
-	for (auto supplyZonesFile: supplyZonesFiles)
+	for (const auto& supplyZonesFile: supplyZonesFiles)
 	{
-		int num = stoi(supplyZonesFile.substr(0, supplyZonesFile.find_first_of('-')));
-		supplyZonesFilenames.insert(make_pair(num, supplyZonesFile));
+		auto num = stoi(supplyZonesFile.substr(0, supplyZonesFile.find_first_of('-')));
+		supplyZonesFileNames.insert(make_pair(num, supplyZonesFile));
 		parseFile(theConfiguration.getHoI4Path() + "/map/supplyareas/" + supplyZonesFile);
 	}
+
+	clearRegisteredKeywords();
 }
 
 
-void HoI4::SupplyZones::importStates(const std::map<int, HoI4::DefaultState>& defaultStates)
+void HoI4::SupplyZones::importStates(const std::map<int, DefaultState>& defaultStates)
 {
-	for (auto state: defaultStates)
+	for (const auto& state: defaultStates)
 	{
 		defaultStateToProvinceMap.insert(make_pair(state.first, state.second.getProvinces()));
 	}
 }
 
 
-void HoI4::SupplyZones::output()
-{
-	if (!Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/map/supplyareas"))
-	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + theConfiguration.getOutputName() + "/map/supplyareas";
-		exit(-1);
-	}
-
-	for (auto zone: supplyZones)
-	{
-		auto filenameMap = supplyZonesFilenames.find(zone.first);
-		if (filenameMap != supplyZonesFilenames.end())
-		{
-			outputSupplyZone(*zone.second, filenameMap->second, theConfiguration);
-		}
-	}
-}
-
-
 void HoI4::SupplyZones::convertSupplyZones(const States& states)
 {
-	for (auto state: states.getStates())
+	for (const auto& state: states.getStates())
 	{
-		for (auto province : state.second.getProvinces())
+		for (auto province: state.second.getProvinces())
 		{
-			auto mapping = provinceToSupplyZoneMap.find(province);
-			if (mapping != provinceToSupplyZoneMap.end())
+			if (auto mapping = provinceToSupplyZoneMap.find(province); mapping != provinceToSupplyZoneMap.end())
 			{
-				auto supplyZone = supplyZones.find(mapping->second);
-				if (supplyZone != supplyZones.end())
+				if (auto supplyZone = supplyZones.find(mapping->second); supplyZone != supplyZones.end())
 				{
-					supplyZone->second->addState(state.first);
+					supplyZone->second.addState(state.first);
 					break;
 				}
 			}
 		}
 	}
+}
+
+
+std::optional<std::string> HoI4::SupplyZones::getSupplyZoneFileName(const int supplyZoneNum) const
+{
+	if (const auto filenameMap = supplyZonesFileNames.find(supplyZoneNum); filenameMap != supplyZonesFileNames.end())
+	{
+		return filenameMap->second;
+	}
+
+	return std::nullopt;
 }

@@ -22,19 +22,20 @@ class SupplyZone;
 class SupplyZones: commonItems::parser
 {
 	public:
-		explicit SupplyZones(const std::map<int, HoI4::DefaultState>& defaultStates);
-		void output();
+		explicit SupplyZones(const std::map<int, DefaultState>& defaultStates);
+
 		void convertSupplyZones(const States& states);
 
-	private:
-		SupplyZones(const SupplyZones&) = delete;
-		SupplyZones& operator=(const SupplyZones&) = delete;
+		[[nodiscard]] const auto& getSupplyZones() const { return supplyZones; }
 
-		void importStates(const std::map<int, HoI4::DefaultState>& defaultStates);
+		[[nodiscard]] std::optional<std::string> getSupplyZoneFileName(int supplyZoneNum) const;
+
+	private:
+		void importStates(const std::map<int, DefaultState>& defaultStates);
 
 		std::map<int, std::set<int>> defaultStateToProvinceMap;
-		std::map<int, std::string> supplyZonesFilenames;
-		std::map<int, SupplyZone*> supplyZones;
+		std::map<int, std::string> supplyZonesFileNames;
+		std::map<int, SupplyZone> supplyZones;
 		std::map<int, int> provinceToSupplyZoneMap;
 };
 

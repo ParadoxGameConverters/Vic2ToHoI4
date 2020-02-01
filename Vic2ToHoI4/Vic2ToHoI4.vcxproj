@@ -205,6 +205,7 @@
     <ClCompile Include="Source\Hoi4Outputter\Map\OutBuildings.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Map\OutStrategicRegion.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Map\OutSupplyZone.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Map\OutSupplyZones.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp" />
@@ -273,6 +274,7 @@
     <ClCompile Include="Source\HOI4World\Map\Region.cpp" />
     <ClCompile Include="Source\HOI4World\Map\Resources.cpp" />
     <ClCompile Include="Source\HOI4World\Map\ResourcesLink.cpp" />
+    <ClCompile Include="Source\HOI4World\Map\SupplyArea.cpp" />
     <ClCompile Include="Source\HOI4World\Map\SupplyZones.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\DivisionTemplatesImporter.cpp" />
@@ -365,6 +367,7 @@
     <ClInclude Include="Source\Hoi4Outputter\Map\OutBuildings.h" />
     <ClInclude Include="Source\Hoi4Outputter\Map\OutStrategicRegion.h" />
     <ClInclude Include="Source\Hoi4Outputter\Map\OutSupplyZone.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Map\OutSupplyZones.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.h" />
@@ -437,6 +440,7 @@
     <ClInclude Include="Source\HOI4World\Map\Region.h" />
     <ClInclude Include="Source\HOI4World\Map\Resources.h" />
     <ClInclude Include="Source\HOI4World\Map\ResourcesLink.h" />
+    <ClInclude Include="Source\HOI4World\Map\SupplyArea.h" />
     <ClInclude Include="Source\HOI4World\Map\SupplyZones.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\AllMilitaryMappings.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\DivisionTemplatesImporter.h" />

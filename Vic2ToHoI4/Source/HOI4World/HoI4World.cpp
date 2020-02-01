@@ -38,6 +38,7 @@
 #include "../Hoi4Outputter/Events/EventsOutputter.h"
 #include "../Hoi4Outputter/Map/OutBuildings.h"
 #include "../Hoi4Outputter/Map/OutStrategicRegion.h"
+#include "../Hoi4Outputter/Map/OutSupplyZones.h"
 #include "../Hoi4Outputter/ScriptedLocalisations/ScriptedLocalisationsOutputter.h"
 #include "../Hoi4Outputter/States/HoI4StatesOutputter.h"
 #include <fstream>
@@ -1091,7 +1092,7 @@ void HoI4::World::output()
 	outputStates(*states, theConfiguration);
 	diplomacy->output();
 	outputMap();
-	supplyZones->output();
+	outputSupplyZones(*supplyZones, theConfiguration);
 	outputRelations();
 	outputGenericFocusTree();
 	outputCountries();
