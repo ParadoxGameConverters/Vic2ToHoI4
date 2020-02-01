@@ -25,7 +25,6 @@ void HoI4::outputBuildings(const Buildings& buildings, const Configuration& theC
 		throw std::runtime_error(
 			"Could not create output/" + theConfiguration.getOutputName() + "/map/airports.txt"
 		);
-		exit(-1);
 	}
 	for (const auto& airportLocation: buildings.getAirportLocations())
 	{
