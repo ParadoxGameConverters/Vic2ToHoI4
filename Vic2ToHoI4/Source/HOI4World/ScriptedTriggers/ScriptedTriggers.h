@@ -6,6 +6,7 @@
 #include "ScriptedTrigger.h"
 #include "../../Configuration.h"
 #include "newParser.h"
+#include <map>
 #include <set>
 #include <vector>
 
@@ -17,6 +18,11 @@ class ScriptedTriggers: commonItems::parser
 {
 	public:
 		void importScriptedTriggers(const Configuration& theConfiguration);
+
+		void replaceIdeologyScriptedTrigger(std::string_view name, const std::string& replacementBody);
+		void replaceElectionsScriptedTrigger(std::string_view name, const std::string& replacementBody);
+		void replaceLawsWarSupportTriggers(const std::map<std::string_view, std::string>& replacements);
+
 		void updateScriptedTriggers(const std::set<std::string>& majorIdeologies);
 
 		[[nodiscard]] const auto& getIdeologyScriptedTriggers() const { return ideologyScriptedTriggers; }

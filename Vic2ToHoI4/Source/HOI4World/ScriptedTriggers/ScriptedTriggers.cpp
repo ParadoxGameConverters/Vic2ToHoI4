@@ -37,6 +37,50 @@ void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConf
 }
 
 
+void HoI4::ScriptedTriggers::replaceIdeologyScriptedTrigger(
+	const std::string_view name,
+	const std::string& replacementBody
+)
+{
+	for (auto& scriptedTrigger: ideologyScriptedTriggers)
+	{
+		if (scriptedTrigger.getName() == name)
+		{
+			scriptedTrigger.setBody(replacementBody);
+			break;
+		}
+	}
+}
+
+
+void HoI4::ScriptedTriggers::replaceElectionsScriptedTrigger(
+	const std::string_view name,
+	const std::string& replacementBody
+)
+{
+	for (auto& scriptedTrigger: electionsScriptedTriggers)
+	{
+		if (scriptedTrigger.getName() == name)
+		{
+			scriptedTrigger.setBody(replacementBody);
+			break;
+		}
+	}
+}
+
+
+void HoI4::ScriptedTriggers::replaceLawsWarSupportTriggers(const std::map<std::string_view, std::string>& replacements)
+{
+	for (auto& scriptedTrigger: lawsWarSupportTriggers)
+	{
+		if (auto replacement = replacements.find(scriptedTrigger.getName()); replacement != replacements.end())
+		{
+			scriptedTrigger.setBody(replacement->second);
+		}
+	}
+}
+
+
 void HoI4::ScriptedTriggers::updateScriptedTriggers(const std::set<std::string>& majorIdeologies)
 {
 	updateIdeologyScriptedTriggers(majorIdeologies);
@@ -47,69 +91,59 @@ void HoI4::ScriptedTriggers::updateScriptedTriggers(const std::set<std::string>&
 
 void HoI4::ScriptedTriggers::updateIdeologyScriptedTriggers(const std::set<std::string>& majorIdeologies)
 {
-	for (auto& scriptedTrigger: ideologyScriptedTriggers)
+	std::string body = "= {\n";
+	body += "\tOR = {\n";
+	for (const auto& ideology : majorIdeologies)
 	{
-		if (scriptedTrigger.getName() == "is_enemy_ideology")
+		if (ideology == "neutrality")
 		{
-			std::string body = "= {\n";
-			body += "\tOR = {\n";
-			for (const auto& ideology : majorIdeologies)
-			{
-				if (ideology == "neutrality")
-				{
-					continue;
-				}
-				body += "\t\tAND = {\n";
-				body += "\t\t\thas_government = " + ideology + "\n";
-				body += "\t\t\tROOT = {\n";
-				body += "\t\t\t\tOR = {\n";
-				for (const auto& secondIdeology : majorIdeologies)
-				{
-					if ((secondIdeology == ideology) || (secondIdeology == "neutrality"))
-					{
-						continue;
-					}
-					body += "\t\t\t\t\thas_government = " + secondIdeology + "\n";
-				}
-				body += "\t\t\t\t}\n";
-				body += "\t\t\t}\n";
-				body += "\t\t}\n";
-			}
-			body += "\t}\n";
-			body += "}";
-			scriptedTrigger.setBody(body);
+			continue;
 		}
+		body += "\t\tAND = {\n";
+		body += "\t\t\thas_government = " + ideology + "\n";
+		body += "\t\t\tROOT = {\n";
+		body += "\t\t\t\tOR = {\n";
+		for (const auto& secondIdeology : majorIdeologies)
+		{
+			if ((secondIdeology == ideology) || (secondIdeology == "neutrality"))
+			{
+				continue;
+			}
+			body += "\t\t\t\t\thas_government = " + secondIdeology + "\n";
+		}
+		body += "\t\t\t\t}\n";
+		body += "\t\t\t}\n";
+		body += "\t\t}\n";
 	}
+	body += "\t}\n";
+	body += "}";
+
+	replaceIdeologyScriptedTrigger("is_enemy_ideology", body);
 }
 
 
 
 void HoI4::ScriptedTriggers::updateElectionsScriptedTriggers(const std::set<std::string>& majorIdeologies)
 {
-	for (auto& scriptedTrigger: electionsScriptedTriggers)
+	std::string supportBody = "= {\n";
+	for (const auto& ideology : majorIdeologies)
 	{
-		if (scriptedTrigger.getName() == "can_lose_democracy_support")
+		if (ideology == "neutrality")
 		{
-			std::string supportBody = "= {\n";
-			for (const auto& ideology : majorIdeologies)
-			{
-				if (ideology == "neutrality")
-				{
-					continue;
-				}
-				if (ideology == "democratic")
-				{
-					supportBody += "\tdemocratic > 0.65\n";
-				}
-				else
-				{
-					supportBody += "\t" + ideology + " < 0.18\n";
-				}
-			}
-			supportBody += "}";
-			scriptedTrigger.setBody(supportBody);
+			continue;
+		}
+		if (ideology == "democratic")
+		{
+			supportBody += "\tdemocratic > 0.65\n";
+		}
+		else
+		{
+			supportBody += "\t" + ideology + " < 0.18\n";
 		}
 	}
+	supportBody += "}";
+
+	replaceElectionsScriptedTrigger("can_lose_democracy_support", supportBody);
 }
 
 
@@ -117,17 +151,15 @@ std::string getHasUnsupportedManpowerLawBody(const std::set<std::string>& majorI
 std::string getHasExcessiveArmySizeBody(const std::set<std::string>& majorIdeologies);
 void HoI4::ScriptedTriggers::updateLawsWarSupportTriggers(const std::set<std::string>& majorIdeologies)
 {
-	for (auto& scriptedTrigger: lawsWarSupportTriggers)
-	{
-		if (scriptedTrigger.getName() == "has_unsupported_manpower_law")
-		{
-			scriptedTrigger.setBody(getHasUnsupportedManpowerLawBody(majorIdeologies));
-		}
-		if (scriptedTrigger.getName() == "has_excessive_army_size")
-		{
-			scriptedTrigger.setBody(getHasExcessiveArmySizeBody(majorIdeologies));
-		}
-	}
+	std::map<std::string_view, std::string> replacements;
+	replacements.insert(
+		std::make_pair(
+			"has_unsupported_manpower_law",
+			getHasUnsupportedManpowerLawBody(majorIdeologies)
+		)
+	);
+	replacements.insert(std::make_pair("has_excessive_army_size", getHasExcessiveArmySizeBody(majorIdeologies)));
+	replaceLawsWarSupportTriggers(replacements);
 }
 
 
