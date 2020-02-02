@@ -116,54 +116,21 @@ void outputNamesSet(
 	}
 }
 
-
-void outputUnitType(
-	std::ostream& unitNamesFile,
-	const std::string& sourceUnitType,
-	const std::string& destUnitType,
-	const std::string& defaultName,
-	const Vic2::Country& sourceCountry
-);
-
 void HoI4::outputToUnitNamesFiles(std::ostream& unitNamesFile, const Country& theCountry)
 {
 	auto& sourceCountry = theCountry.getSourceCountry();
 
 	unitNamesFile << theCountry.getTag() << " = {\n";
 
-	outputUnitType(unitNamesFile, "frigate", "submarine", "Submarine", sourceCountry);
-	outputUnitType(unitNamesFile, "monitor", "carrier", "Carrier", sourceCountry);
-	outputUnitType(
-		unitNamesFile, "dreadnought", "battleship", "Battleship", sourceCountry
-	);
-	outputUnitType(
-		unitNamesFile, "ironclad", "battle_cruiser", "Battlecruiser", sourceCountry
-	);
-	outputUnitType(
-		unitNamesFile, "manowar", "heavy_cruiser", "Heavy Cruiser", sourceCountry
-	);
-	outputUnitType(unitNamesFile, "cruiser", "destroyer", "Destroyer", sourceCountry);
-	outputUnitType(
-		unitNamesFile,
-		"commerce_raider",
-		"light_cruiser",
-		"Light Cruiser",
-		sourceCountry
-	);
+	HoI4::outLegacyShipTypeNames(unitNamesFile, HoI4::ShipTypeNames{ "submarine", "Submarine", sourceCountry.getShipNames("frigate") });
+	HoI4::outLegacyShipTypeNames(unitNamesFile, HoI4::ShipTypeNames{ "carrier", "Carrier", sourceCountry.getShipNames("monitor") });
+	HoI4::outLegacyShipTypeNames(unitNamesFile, HoI4::ShipTypeNames{ "battleship", "Battleship", sourceCountry.getShipNames("dreadnought") });
+	HoI4::outLegacyShipTypeNames(unitNamesFile, HoI4::ShipTypeNames{ "battle_cruiser", "Battlecruiser", sourceCountry.getShipNames("ironclad") });
+	HoI4::outLegacyShipTypeNames(unitNamesFile, HoI4::ShipTypeNames{ "heavy_cruiser", "Heavy Cruiser", sourceCountry.getShipNames("manowar") });
+	HoI4::outLegacyShipTypeNames(unitNamesFile, HoI4::ShipTypeNames{ "destroyer", "Destroyer", sourceCountry.getShipNames("cruiser") });
+	HoI4::outLegacyShipTypeNames(unitNamesFile, HoI4::ShipTypeNames{ "light_cruiser","Light Cruiser", sourceCountry.getShipNames("commerce_raider") });
 
 	unitNamesFile << "}\n\n";
-}
-
-
-void outputUnitType(
-	std::ostream& unitNamesFile,
-	const std::string& sourceUnitType,
-	const std::string& destUnitType,
-	const std::string& defaultName,
-	const Vic2::Country& sourceCountry
-) {
-	HoI4::ShipTypeNames shipTypeNames(destUnitType, defaultName, sourceCountry.getShipNames(sourceUnitType));
-	HoI4::outLegacyShipTypeNames(unitNamesFile, shipTypeNames);
 }
 
 
