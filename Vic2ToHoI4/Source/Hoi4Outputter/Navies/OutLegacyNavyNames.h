@@ -1,9 +1,10 @@
-#ifndef OUT_LEGACY_NAME_NAMES_H
-#define OUT_LEGACY_NAME_NAMES_H
+#ifndef OUT_LEGACY_NAVY_NAMES_H
+#define OUT_LEGACY_NAVY_NAMES_H
 
 
 
 #include <ostream>
+#include <set>
 #include <string>
 
 
@@ -11,12 +12,12 @@
 namespace HoI4
 {
 
-class NavyNames;
+class ShipTypeNames;
 
-void outLegacyNavyNames(std::ostream& out, const NavyNames& navyNames, std::string_view tag);
+void outLegacyNavyNames(std::ostream& out, const std::set<ShipTypeNames>& navyNames, std::string_view tag);
 
 }
 
 
 
-#endif // OUT_LEGACY_NAME_NAMES_H
+#endif // OUT_LEGACY_NAVY_NAMES_H

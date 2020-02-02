@@ -129,7 +129,7 @@ void HoI4::outputToUnitNamesFiles(const Country& theCountry)
 		throw std::runtime_error("Could not open output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt");
 	}
 	
-	outLegacyNavyNames(legacyUnitNamesFile, theCountry.getNavyNames(), tag);
+	outLegacyNavyNames(legacyUnitNamesFile, theCountry.getNavyNames().getShipTypeNames(), tag);
 
 	legacyUnitNamesFile.close();
 
