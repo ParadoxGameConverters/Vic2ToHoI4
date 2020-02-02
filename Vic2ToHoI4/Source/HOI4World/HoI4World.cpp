@@ -1201,20 +1201,11 @@ void HoI4::World::outputNames() const
 
 void HoI4::World::outputUnitNames() const
 {
-	ofstream namesFile("output/" + theConfiguration.getOutputName() + "/common/units/names/01_names.txt");
-	namesFile << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
-
-	if (!namesFile.is_open())
-	{
-		Log(LogLevel::Error) << "Could not open output/" << theConfiguration.getOutputName() << "/common/units/names/01_names.txt";
-		exit(-1);
-	}
-
-	for (auto country : countries)
+	for (auto country: countries)
 	{
 		if (country.second->getCapitalState())
 		{
-			outputToUnitNamesFiles(namesFile, *country.second);
+			outputToUnitNamesFiles(*country.second);
 		}
 	}
 }

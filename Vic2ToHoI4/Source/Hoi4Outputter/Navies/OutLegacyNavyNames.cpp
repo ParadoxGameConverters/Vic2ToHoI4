@@ -12,5 +12,4 @@ void HoI4::outLegacyNavyNames(std::ostream& out, const NavyNames& navyNames, con
 		outLegacyShipTypeNames(out, shipTypeNames);
 	}
 	out << "}\n";
-	out << "\n";
 }

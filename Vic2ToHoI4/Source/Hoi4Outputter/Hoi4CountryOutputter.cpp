@@ -117,9 +117,20 @@ void outputNamesSet(
 	}
 }
 
-void HoI4::outputToUnitNamesFiles(std::ostream& unitNamesFile, const Country& theCountry)
+void HoI4::outputToUnitNamesFiles(const Country& theCountry)
 {
-	HoI4::outLegacyNavyNames(unitNamesFile, theCountry.getNavyNames(), theCountry.getTag());
+	const auto tag = theCountry.getTag();
+
+	std::ofstream unitNamesFile("output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt");
+	unitNamesFile << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
+	if (!unitNamesFile.is_open())
+	{
+		throw std::runtime_error("Could not open output/" + theConfiguration.getOutputName() + "/common/units/names/01_names.txt");
+	}
+	
+	outLegacyNavyNames(unitNamesFile, theCountry.getNavyNames(), tag);
+
+	unitNamesFile.close();
 }
 
 
