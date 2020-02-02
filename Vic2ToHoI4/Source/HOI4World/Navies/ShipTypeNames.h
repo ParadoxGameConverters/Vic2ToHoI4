@@ -3,6 +3,7 @@
 
 
 
+#include <compare>
 #include <string>
 #include <vector>
 
@@ -17,6 +18,8 @@ class ShipTypeNames
 		explicit ShipTypeNames(std::string _type, std::string _genericName, std::vector<std::string> _names):
 			type(std::move(_type)), genericName(std::move(_genericName)), names(std::move(_names)) 
 		{}
+
+		bool operator<(const ShipTypeNames& rhs) const { return type < rhs.type; }
 	
 		[[nodiscard]] std::string_view getType() const { return type; }
 		[[nodiscard]] std::string_view getPrefix() const { return ""; }

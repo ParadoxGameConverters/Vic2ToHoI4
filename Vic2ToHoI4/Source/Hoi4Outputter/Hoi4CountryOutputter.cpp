@@ -1,7 +1,7 @@
 #include "Hoi4CountryOutputter.h"
 #include "Leaders/OutAdvisor.h"
 #include "Navies/NaviesOutputter.h"
-#include "Navies/OutLegacyShipTypeNames.h"
+#include "Navies/OutLegacyNavyNames.h"
 #include "ShipTypes/ShipVariantsOutputter.h"
 #include "../HOI4World/DivisionTemplate.h"
 #include "../HOI4World/HoI4Country.h"
@@ -9,6 +9,7 @@
 #include "../HOI4World/HoI4FocusTree.h"
 #include "../HOI4World/Names.h"
 #include "../HOI4World/Navies/ShipTypeNames.h"
+#include "../HOI4World/Navies/NavyNames.h"
 #include "../HOI4World/Leaders/Advisor.h"
 #include "../Mappers/GraphicsMapper.h"
 #include "../V2World/Country.h"
@@ -118,19 +119,18 @@ void outputNamesSet(
 
 void HoI4::outputToUnitNamesFiles(std::ostream& unitNamesFile, const Country& theCountry)
 {
+	HoI4::NavyNames navyNames;
+	
 	auto& sourceCountry = theCountry.getSourceCountry();
+	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "submarine", "Submarine", sourceCountry.getShipNames("frigate") });
+	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "carrier", "Carrier", sourceCountry.getShipNames("monitor") });
+	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "battleship", "Battleship", sourceCountry.getShipNames("dreadnought") });
+	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "battle_cruiser", "Battlecruiser", sourceCountry.getShipNames("ironclad") });
+	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "heavy_cruiser", "Heavy Cruiser", sourceCountry.getShipNames("manowar") });
+	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "destroyer", "Destroyer", sourceCountry.getShipNames("cruiser") });
+	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "light_cruiser","Light Cruiser", sourceCountry.getShipNames("commerce_raider") });
 
-	unitNamesFile << theCountry.getTag() << " = {\n";
-
-	HoI4::outLegacyShipTypeNames(unitNamesFile, HoI4::ShipTypeNames{ "submarine", "Submarine", sourceCountry.getShipNames("frigate") });
-	HoI4::outLegacyShipTypeNames(unitNamesFile, HoI4::ShipTypeNames{ "carrier", "Carrier", sourceCountry.getShipNames("monitor") });
-	HoI4::outLegacyShipTypeNames(unitNamesFile, HoI4::ShipTypeNames{ "battleship", "Battleship", sourceCountry.getShipNames("dreadnought") });
-	HoI4::outLegacyShipTypeNames(unitNamesFile, HoI4::ShipTypeNames{ "battle_cruiser", "Battlecruiser", sourceCountry.getShipNames("ironclad") });
-	HoI4::outLegacyShipTypeNames(unitNamesFile, HoI4::ShipTypeNames{ "heavy_cruiser", "Heavy Cruiser", sourceCountry.getShipNames("manowar") });
-	HoI4::outLegacyShipTypeNames(unitNamesFile, HoI4::ShipTypeNames{ "destroyer", "Destroyer", sourceCountry.getShipNames("cruiser") });
-	HoI4::outLegacyShipTypeNames(unitNamesFile, HoI4::ShipTypeNames{ "light_cruiser","Light Cruiser", sourceCountry.getShipNames("commerce_raider") });
-
-	unitNamesFile << "}\n\n";
+	HoI4::outLegacyNavyNames(unitNamesFile, navyNames, theCountry.getTag());
 }
 
 
