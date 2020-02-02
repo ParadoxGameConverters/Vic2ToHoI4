@@ -119,18 +119,7 @@ void outputNamesSet(
 
 void HoI4::outputToUnitNamesFiles(std::ostream& unitNamesFile, const Country& theCountry)
 {
-	HoI4::NavyNames navyNames;
-	
-	auto& sourceCountry = theCountry.getSourceCountry();
-	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "submarine", "Submarine", sourceCountry.getShipNames("frigate") });
-	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "carrier", "Carrier", sourceCountry.getShipNames("monitor") });
-	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "battleship", "Battleship", sourceCountry.getShipNames("dreadnought") });
-	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "battle_cruiser", "Battlecruiser", sourceCountry.getShipNames("ironclad") });
-	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "heavy_cruiser", "Heavy Cruiser", sourceCountry.getShipNames("manowar") });
-	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "destroyer", "Destroyer", sourceCountry.getShipNames("cruiser") });
-	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "light_cruiser","Light Cruiser", sourceCountry.getShipNames("commerce_raider") });
-
-	HoI4::outLegacyNavyNames(unitNamesFile, navyNames, theCountry.getTag());
+	HoI4::outLegacyNavyNames(unitNamesFile, theCountry.getNavyNames(), theCountry.getTag());
 }
 
 
