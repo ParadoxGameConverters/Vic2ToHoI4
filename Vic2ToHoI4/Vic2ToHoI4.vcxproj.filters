@@ -588,6 +588,12 @@
     <ClCompile Include="Source\Hoi4Outputter\Navies\OutLegacyShipTypeNames.cpp">
       <Filter>Hoi4Outputter\Navies</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Navies\OutMtgShipTypeNames.cpp">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Navies\OutMtgNavyNames.cpp">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1112,6 +1118,15 @@
       <Filter>HoI4World\Navies</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Navies\OutLegacyShipTypeNames.h">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Navies\OutMtgShipTypeNames.h">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Navies\MtgShipTypeNames.h">
+      <Filter>HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Navies\OutMtgNavyNames.h">
       <Filter>Hoi4Outputter\Navies</Filter>
     </ClInclude>
   </ItemGroup>

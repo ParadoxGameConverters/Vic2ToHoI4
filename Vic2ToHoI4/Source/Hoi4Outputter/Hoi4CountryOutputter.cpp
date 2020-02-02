@@ -2,6 +2,7 @@
 #include "Leaders/OutAdvisor.h"
 #include "Navies/NaviesOutputter.h"
 #include "Navies/OutLegacyNavyNames.h"
+#include "Navies/OutMtgNavyNames.h"
 #include "ShipTypes/ShipVariantsOutputter.h"
 #include "../HOI4World/DivisionTemplate.h"
 #include "../HOI4World/HoI4Country.h"
@@ -121,16 +122,27 @@ void HoI4::outputToUnitNamesFiles(const Country& theCountry)
 {
 	const auto tag = theCountry.getTag();
 
-	std::ofstream unitNamesFile("output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt");
-	unitNamesFile << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
-	if (!unitNamesFile.is_open())
+	std::ofstream legacyUnitNamesFile("output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt");
+	legacyUnitNamesFile << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
+	if (!legacyUnitNamesFile.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + theConfiguration.getOutputName() + "/common/units/names/01_names.txt");
+		throw std::runtime_error("Could not open output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt");
 	}
 	
-	outLegacyNavyNames(unitNamesFile, theCountry.getNavyNames(), tag);
+	outLegacyNavyNames(legacyUnitNamesFile, theCountry.getNavyNames(), tag);
 
-	unitNamesFile.close();
+	legacyUnitNamesFile.close();
+
+	std::ofstream mtgUnitNamesFile("output/" + theConfiguration.getOutputName() + "/common/units/names_ships/" + tag + "_ship_names.txt");
+	mtgUnitNamesFile << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
+	if (!mtgUnitNamesFile.is_open())
+	{
+		throw std::runtime_error("Could not open output/" + theConfiguration.getOutputName() + "/common/units/names_ships/" + tag + "_ship_names.txt");
+	}
+
+	outMtgNavyNames(mtgUnitNamesFile, theCountry.getNavyNames().getMtgShipTypeNames(), tag);
+
+	mtgUnitNamesFile.close();
 }
 
 

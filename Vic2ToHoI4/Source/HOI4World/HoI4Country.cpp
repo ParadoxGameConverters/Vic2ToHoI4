@@ -651,6 +651,16 @@ void HoI4::Country::convertNavies(
 	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "heavy_cruiser", "Heavy Cruiser", sourceCountry.getShipNames("manowar") });
 	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "destroyer", "Destroyer", sourceCountry.getShipNames("cruiser") });
 	navyNames.addShipTypeNames(HoI4::ShipTypeNames{ "light_cruiser","Light Cruiser", sourceCountry.getShipNames("commerce_raider") });
+
+	navyNames.addMtgShipTypeNames(
+		HoI4::MtgShipTypeNames{
+			tag + "_DD_HISTORICAL",
+			"NAME_THEME_HISTORICAL_DESTROYERS",
+			std::set<std::string>{"ship_hull_light destroyer"},
+			"Destroyer DD-%d",
+			sourceCountry.getShipNames("commerce_raider")
+		}
+	);
 }
 
 
