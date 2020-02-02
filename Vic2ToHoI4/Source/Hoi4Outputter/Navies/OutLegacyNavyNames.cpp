@@ -4,7 +4,11 @@
 
 
 
-void HoI4::outLegacyNavyNames(std::ostream& out, const std::set<ShipTypeNames>& navyNames, const std::string_view tag)
+void HoI4::outLegacyNavyNames(
+	std::ostream& out,
+	const std::set<LegacyShipTypeNames>& navyNames,
+	const std::string_view tag
+)
 {
 	out << tag << " = {\n";
 	for (const auto& shipTypeNames: navyNames)

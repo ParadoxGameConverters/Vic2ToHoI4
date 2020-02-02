@@ -1,9 +1,9 @@
 #include "OutLegacyShipTypeNames.h"
-#include "../../HOI4World/Navies/ShipTypeNames.h"
+#include "../../HOI4World/Navies/LegacyShipTypeNames.h"
 
 
 
-void HoI4::outLegacyShipTypeNames(std::ostream& out, const ShipTypeNames& shipTypeNames)
+void HoI4::outLegacyShipTypeNames(std::ostream& out, const LegacyShipTypeNames& shipTypeNames)
 {
 	out << "\t" << shipTypeNames.getType() << " = {\n";
 	out << "\t\tprefix = \"" << shipTypeNames.getPrefix() << "\"\n";

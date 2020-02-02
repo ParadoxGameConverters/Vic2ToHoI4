@@ -10,9 +10,9 @@
 namespace HoI4
 {
 
-class ShipTypeNames;
+class LegacyShipTypeNames;
 
-void outLegacyShipTypeNames(std::ostream& out, const ShipTypeNames& shipTypeNames);
+void outLegacyShipTypeNames(std::ostream& out, const LegacyShipTypeNames& shipTypeNames);
 
 }
 

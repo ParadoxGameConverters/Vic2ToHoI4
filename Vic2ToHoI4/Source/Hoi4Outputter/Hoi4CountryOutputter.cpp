@@ -9,7 +9,7 @@
 #include "../HOI4World/HoI4Faction.h"
 #include "../HOI4World/HoI4FocusTree.h"
 #include "../HOI4World/Names.h"
-#include "../HOI4World/Navies/ShipTypeNames.h"
+#include "../HOI4World/Navies/LegacyShipTypeNames.h"
 #include "../HOI4World/Navies/NavyNames.h"
 #include "../HOI4World/Leaders/Advisor.h"
 #include "../Mappers/GraphicsMapper.h"
@@ -129,7 +129,7 @@ void HoI4::outputToUnitNamesFiles(const Country& theCountry)
 		throw std::runtime_error("Could not open output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt");
 	}
 	
-	outLegacyNavyNames(legacyUnitNamesFile, theCountry.getNavyNames().getShipTypeNames(), tag);
+	outLegacyNavyNames(legacyUnitNamesFile, theCountry.getNavyNames().getLegacyShipTypeNames(), tag);
 
 	legacyUnitNamesFile.close();
 

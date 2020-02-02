@@ -476,7 +476,7 @@
     <ClInclude Include="Source\HOI4World\Navies\Navy.h" />
     <ClInclude Include="Source\HOI4World\Navies\NavyNames.h" />
     <ClInclude Include="Source\HOI4World\Navies\Ship.h" />
-    <ClInclude Include="Source\HOI4World\Navies\ShipTypeNames.h" />
+    <ClInclude Include="Source\HOI4World\Navies\LegacyShipTypeNames.h" />
     <ClInclude Include="Source\HOI4World\OnActions.h" />
     <ClInclude Include="Source\HOI4World\Regiment.h" />
     <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.h" />

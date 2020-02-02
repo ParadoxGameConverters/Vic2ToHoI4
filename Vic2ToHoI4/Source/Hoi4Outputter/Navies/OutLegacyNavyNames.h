@@ -12,9 +12,9 @@
 namespace HoI4
 {
 
-class ShipTypeNames;
+class LegacyShipTypeNames;
 
-void outLegacyNavyNames(std::ostream& out, const std::set<ShipTypeNames>& navyNames, std::string_view tag);
+void outLegacyNavyNames(std::ostream& out, const std::set<LegacyShipTypeNames>& navyNames, std::string_view tag);
 
 }
 
