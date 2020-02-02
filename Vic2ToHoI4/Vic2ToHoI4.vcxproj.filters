@@ -579,6 +579,9 @@
     <ClCompile Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTriggers.cpp">
       <Filter>Hoi4Outputter\ScriptedTriggers</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.cpp">
+      <Filter>HoI4World\ScriptedTriggers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1089,6 +1092,9 @@
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTriggers.h">
       <Filter>Hoi4Outputter\ScriptedTriggers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.h">
+      <Filter>HoI4World\ScriptedTriggers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -650,6 +650,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTriggers.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\ScriptedTriggers</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedTriggers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

@@ -23,6 +23,7 @@
 #include "Map/StrategicRegion.h"
 #include "Map/SupplyZones.h"
 #include "MilitaryMappings/MilitaryMappingsFile.h"
+#include "ScriptedTriggers/ScriptedTriggersUpdater.h"
 #include "ShipTypes/PossibleShipVariants.h"
 #include "States/DefaultState.h"
 #include "States/HoI4State.h"
@@ -120,7 +121,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	determineSpherelings();
 	calculateSpherelingAutonomy();
 	scriptedTriggers.importScriptedTriggers(theConfiguration);
-	scriptedTriggers.updateScriptedTriggers(majorIdeologies);
+	updateScriptedTriggers(scriptedTriggers, majorIdeologies);
 }
 
 
