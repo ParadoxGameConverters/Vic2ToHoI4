@@ -105,7 +105,6 @@ class Country
 		void convertNavies(
 			const UnitMappings& unitMap,
 			const MtgUnitMappings& mtgUnitMap,
-			const CoastalProvinces& theCoastalProvinces,
 			const std::map<int, int>& provinceToStateIDMap,
 			const std::map<int, State>& allStates
 		);

@@ -3,7 +3,7 @@
 
 
 
-void HoI4::outMtgShipTypeNames(std::ostream& out, const MtgShipTypeNames& shipTypeNames, std::string_view tag)
+void HoI4::outMtgShipTypeNames(std::ostream& out, const MtgShipTypeNames& shipTypeNames, const std::string_view tag)
 {
 	out << shipTypeNames.getType() << " = {\n";
 	out << "\tname = " << shipTypeNames.getTheme() << "\n";

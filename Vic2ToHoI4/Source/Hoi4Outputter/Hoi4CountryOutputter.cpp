@@ -119,7 +119,7 @@ void outputNamesSet(
 
 void HoI4::outputToUnitNamesFiles(const Country& theCountry)
 {
-	const auto tag = theCountry.getTag();
+	const auto& tag = theCountry.getTag();
 
 	std::ofstream legacyUnitNamesFile(
 		"output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt"
