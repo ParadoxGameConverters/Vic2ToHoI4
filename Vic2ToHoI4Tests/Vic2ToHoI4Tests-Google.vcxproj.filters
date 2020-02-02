@@ -641,6 +641,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegion.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedTriggers\ScriptedTriggers.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedTriggers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTrigger.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ScriptedTriggers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTriggers.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ScriptedTriggers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -759,6 +768,12 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Map">
       <UniqueIdentifier>{5a86d658-b4d2-4c22-ab8a-2c4b1b2b0bb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\ScriptedTriggers">
+      <UniqueIdentifier>{9343c6bf-846f-4157-b760-b491ff2e174c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\ScriptedTriggers">
+      <UniqueIdentifier>{34eb4487-02aa-4592-8ac3-139c16c32cfe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

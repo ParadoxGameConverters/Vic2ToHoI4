@@ -40,6 +40,7 @@
 #include "../Hoi4Outputter/Map/OutStrategicRegion.h"
 #include "../Hoi4Outputter/Map/OutSupplyZones.h"
 #include "../Hoi4Outputter/ScriptedLocalisations/ScriptedLocalisationsOutputter.h"
+#include "../Hoi4Outputter/ScriptedTriggers/OutScriptedTriggers.h"
 #include "../Hoi4Outputter/States/HoI4StatesOutputter.h"
 #include <fstream>
 using namespace std;
@@ -118,6 +119,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	processInfluence();
 	determineSpherelings();
 	calculateSpherelingAutonomy();
+	scriptedTriggers.createScriptedTriggers(majorIdeologies);
 }
 
 
@@ -1107,6 +1109,7 @@ void HoI4::World::output()
 	outputScriptedTriggers();
 	outputBookmarks();
 	outputScriptedLocalisations(theConfiguration, scriptedLocalisations);
+	HoI4::outputScriptedTriggers(scriptedTriggers, theConfiguration);
 }
 
 

@@ -213,6 +213,8 @@
     <ClCompile Include="Source\Hoi4Outputter\Navies\NaviesOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTrigger.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTriggers.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipVariantOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.cpp" />
@@ -293,6 +295,7 @@
     <ClCompile Include="Source\HOI4World\OnActions.cpp" />
     <ClCompile Include="Source\HOI4World\Regiment.cpp" />
     <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisations.cpp" />
+    <ClCompile Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggers.cpp" />
     <ClCompile Include="Source\HOI4World\ShipTypes\PossibleShipVariants.cpp" />
     <ClCompile Include="Source\HOI4World\ShipTypes\ShipModules.cpp" />
     <ClCompile Include="Source\HOI4World\ShipTypes\ShipVariant.cpp" />
@@ -375,6 +378,8 @@
     <ClInclude Include="Source\Hoi4Outputter\Navies\NaviesOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTrigger.h" />
+    <ClInclude Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTriggers.h" />
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipVariantOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.h" />
@@ -464,6 +469,8 @@
     <ClInclude Include="Source\HOI4World\Regiment.h" />
     <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.h" />
     <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisations.h" />
+    <ClInclude Include="Source\HOI4World\ScriptedTriggers\ScriptedTrigger.h" />
+    <ClInclude Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggers.h" />
     <ClInclude Include="Source\HOI4World\ShipTypes\PossibleShipVariants.h" />
     <ClInclude Include="Source\HOI4World\ShipTypes\ShipModules.h" />
     <ClInclude Include="Source\HOI4World\ShipTypes\ShipVariant.h" />
