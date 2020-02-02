@@ -812,7 +812,6 @@ void HoI4::World::convertNavies(
 		country.second->convertNavies(
 			unitMap,
 			mtgUnitMap,
-			theCoastalProvinces,
 			states->getProvinceToStateIDMap(),
 			states->getStates()
 		);
