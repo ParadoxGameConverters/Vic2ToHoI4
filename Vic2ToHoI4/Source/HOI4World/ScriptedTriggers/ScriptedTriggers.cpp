@@ -14,8 +14,17 @@ void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConf
 	});
 	parseFile(theConfiguration.getHoI4Path() + "/common/scripted_triggers/ideology_scripted_triggers.txt");
 	clearRegisteredKeywords();
-}
 
+	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& name, std::istream& theStream)
+	{
+		ScriptedTrigger scriptedTrigger(name);
+		const commonItems::stringOfObject bodyString(theStream);
+		scriptedTrigger.setBody(bodyString.getString());
+		electionsScriptedTriggers.push_back(scriptedTrigger);
+	});
+	parseFile(theConfiguration.getHoI4Path() + "/common/scripted_triggers/Elections_scripted_triggers.txt");
+	clearRegisteredKeywords();
+}
 
 
 void HoI4::ScriptedTriggers::updateScriptedTriggers(const std::set<std::string>& majorIdeologies)
@@ -31,7 +40,8 @@ void HoI4::ScriptedTriggers::updateIdeologyScriptedTriggers(const std::set<std::
 	{
 		if (scriptedTrigger.getName() == "is_enemy_ideology")
 		{
-			std::string body = "\tOR = {\n";
+			std::string body = "= {\n";
+			body += "\tOR = {\n";
 			for (const auto& ideology : majorIdeologies)
 			{
 				if (ideology == "neutrality")
@@ -54,7 +64,8 @@ void HoI4::ScriptedTriggers::updateIdeologyScriptedTriggers(const std::set<std::
 				body += "\t\t\t}\n";
 				body += "\t\t}\n";
 			}
-			body += "\t}";
+			body += "\t}\n";
+			body += "}";
 			scriptedTrigger.setBody(body);
 		}
 	}
@@ -64,35 +75,28 @@ void HoI4::ScriptedTriggers::updateIdeologyScriptedTriggers(const std::set<std::
 
 void HoI4::ScriptedTriggers::updateElectionsScriptedTriggers(const std::set<std::string>& majorIdeologies)
 {
-	std::string unityBody = "\thas_stability > 60\n";
-	unityBody += "\tOR = {\n";
-	unityBody += "\t\thas_war = no\n";
-	unityBody += "\t\tAND = {\n";
-	unityBody += "\t\t\thas_war = yes\n";
-	unityBody += "\t\t\tsurrender_progress < 0.1\n";
-	unityBody += "\t\t}\n";
-	unityBody += "\t}";
-	ScriptedTrigger canLoseUnity("can_lose_unity");
-	canLoseUnity.setBody(unityBody);
-	electionsScriptedTriggers.push_back(canLoseUnity);
-
-	std::string supportBody;
-	for (const auto& ideology: majorIdeologies)
+	for (auto& scriptedTrigger: electionsScriptedTriggers)
 	{
-		if (ideology == "neutrality")
+		if (scriptedTrigger.getName() == "can_lose_democracy_support")
 		{
-			continue;
-		}
-		if (ideology == "democratic")
-		{
-			supportBody += "\tdemocratic > 0.65\n";
-		}
-		else
-		{
-			supportBody += "\t" + ideology + " < 0.18\n";
+			std::string supportBody = "= {\n";
+			for (const auto& ideology : majorIdeologies)
+			{
+				if (ideology == "neutrality")
+				{
+					continue;
+				}
+				if (ideology == "democratic")
+				{
+					supportBody += "\tdemocratic > 0.65\n";
+				}
+				else
+				{
+					supportBody += "\t" + ideology + " < 0.18\n";
+				}
+			}
+			supportBody += "}";
+			scriptedTrigger.setBody(supportBody);
 		}
 	}
-	ScriptedTrigger canLoseDemocracySupport("can_lose_democracy_support");
-	canLoseDemocracySupport.setBody(supportBody);
-	electionsScriptedTriggers.push_back(canLoseDemocracySupport);
 }
