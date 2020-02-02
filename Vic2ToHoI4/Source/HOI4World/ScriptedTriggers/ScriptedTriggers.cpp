@@ -1,50 +1,68 @@
 #include "ScriptedTriggers.h"
+#include "ParserHelpers.h"
 
 
 
-void HoI4::ScriptedTriggers::createScriptedTriggers(const std::set<std::string>& majorIdeologies)
+void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConfiguration)
 {
-	createIdeologyScriptedTriggers(majorIdeologies);
-	createElectionsScriptedTriggers(majorIdeologies);
-}
-
-
-void HoI4::ScriptedTriggers::createIdeologyScriptedTriggers(const std::set<std::string>& majorIdeologies)
-{
-	std::string body = "\tOR = {\n";
-	for (const auto& ideology : majorIdeologies)
+	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& name, std::istream& theStream)
 	{
-		if (ideology == "neutrality")
-		{
-			continue;
-		}
-		body += "\t\tAND = {\n";
-		body += "\t\t\thas_government = " + ideology + "\n";
-		body += "\t\t\tROOT = {\n";
-		body += "\t\t\t\tOR = {\n";
-		for (const auto& secondIdeology: majorIdeologies)
-		{
-			if ((secondIdeology == ideology) || (secondIdeology == "neutrality"))
-			{
-				continue;
-			}
-			body += "\t\t\t\t\thas_government = " + secondIdeology + "\n";
-		}
-		body += "\t\t\t\t}\n";
-		body += "\t\t\t}\n";
-		body += "\t\t}\n";
-	}
-	body += "\t}";
-
-	ScriptedTrigger isEnemyIdeology("is_enemy_ideology");
-	isEnemyIdeology.setBody(body);
-
-	ideologyScriptedTriggers.push_back(isEnemyIdeology);
+		ScriptedTrigger scriptedTrigger(name);
+		const commonItems::stringOfObject bodyString(theStream);
+		scriptedTrigger.setBody(bodyString.getString());
+		ideologyScriptedTriggers.push_back(scriptedTrigger);
+	});
+	parseFile(theConfiguration.getHoI4Path() + "/common/scripted_triggers/ideology_scripted_triggers.txt");
+	clearRegisteredKeywords();
 }
 
 
 
-void HoI4::ScriptedTriggers::createElectionsScriptedTriggers(const std::set<std::string>& majorIdeologies)
+void HoI4::ScriptedTriggers::updateScriptedTriggers(const std::set<std::string>& majorIdeologies)
+{
+	updateIdeologyScriptedTriggers(majorIdeologies);
+	updateElectionsScriptedTriggers(majorIdeologies);
+}
+
+
+void HoI4::ScriptedTriggers::updateIdeologyScriptedTriggers(const std::set<std::string>& majorIdeologies)
+{
+	for (auto& scriptedTrigger: ideologyScriptedTriggers)
+	{
+		if (scriptedTrigger.getName() == "is_enemy_ideology")
+		{
+			std::string body = "\tOR = {\n";
+			for (const auto& ideology : majorIdeologies)
+			{
+				if (ideology == "neutrality")
+				{
+					continue;
+				}
+				body += "\t\tAND = {\n";
+				body += "\t\t\thas_government = " + ideology + "\n";
+				body += "\t\t\tROOT = {\n";
+				body += "\t\t\t\tOR = {\n";
+				for (const auto& secondIdeology : majorIdeologies)
+				{
+					if ((secondIdeology == ideology) || (secondIdeology == "neutrality"))
+					{
+						continue;
+					}
+					body += "\t\t\t\t\thas_government = " + secondIdeology + "\n";
+				}
+				body += "\t\t\t\t}\n";
+				body += "\t\t\t}\n";
+				body += "\t\t}\n";
+			}
+			body += "\t}";
+			scriptedTrigger.setBody(body);
+		}
+	}
+}
+
+
+
+void HoI4::ScriptedTriggers::updateElectionsScriptedTriggers(const std::set<std::string>& majorIdeologies)
 {
 	std::string unityBody = "\thas_stability > 60\n";
 	unityBody += "\tOR = {\n";

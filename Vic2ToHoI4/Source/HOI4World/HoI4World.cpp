@@ -119,7 +119,8 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	processInfluence();
 	determineSpherelings();
 	calculateSpherelingAutonomy();
-	scriptedTriggers.createScriptedTriggers(majorIdeologies);
+	scriptedTriggers.importScriptedTriggers(theConfiguration);
+	scriptedTriggers.updateScriptedTriggers(majorIdeologies);
 }
 
 

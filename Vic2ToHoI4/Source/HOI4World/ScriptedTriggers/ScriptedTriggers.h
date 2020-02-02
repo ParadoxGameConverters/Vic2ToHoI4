@@ -4,6 +4,8 @@
 
 
 #include "ScriptedTrigger.h"
+#include "../../Configuration.h"
+#include "newParser.h"
 #include <set>
 #include <vector>
 
@@ -11,17 +13,18 @@
 namespace HoI4
 {
 
-class ScriptedTriggers
+class ScriptedTriggers: commonItems::parser
 {
 	public:
-		void createScriptedTriggers(const std::set<std::string>& majorIdeologies);
+		void importScriptedTriggers(const Configuration& theConfiguration);
+		void updateScriptedTriggers(const std::set<std::string>& majorIdeologies);
 
 		[[nodiscard]] const auto& getIdeologyScriptedTriggers() const { return ideologyScriptedTriggers; }
 		[[nodiscard]] const auto& getElectionsScriptedTriggers() const { return electionsScriptedTriggers; }
 	
 	private:
-		void createIdeologyScriptedTriggers(const std::set<std::string>& majorIdeologies);
-		void createElectionsScriptedTriggers(const std::set<std::string>& majorIdeologies);
+		void updateIdeologyScriptedTriggers(const std::set<std::string>& majorIdeologies);
+		void updateElectionsScriptedTriggers(const std::set<std::string>& majorIdeologies);
 	
 		std::vector<ScriptedTrigger> ideologyScriptedTriggers;
 		std::vector<ScriptedTrigger> electionsScriptedTriggers;

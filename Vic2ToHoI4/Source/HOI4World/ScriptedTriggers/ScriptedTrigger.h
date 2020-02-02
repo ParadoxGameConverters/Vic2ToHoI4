@@ -18,6 +18,8 @@ class ScriptedTrigger
 
 		void setBody(const std::string& newBody) { body = newBody; }
 
+		[[nodiscard]] std::string_view getName() const { return name; }
+
 		friend std::ostream& operator<<(std::ostream& output, const ScriptedTrigger& scriptedTrigger);
 
 	private:
