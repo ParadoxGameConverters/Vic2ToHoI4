@@ -1450,20 +1450,6 @@ void HoI4::World::outputScriptedTriggers() const
 {
 	ofstream triggersFile("output/" + theConfiguration.getOutputName() + "/common/scripted_triggers/convertedTriggers.txt");
 
-	triggersFile << "can_lose_democracy_support = {\n";
-	for (auto ideology: majorIdeologies)
-	{
-		if (ideology == "democratic")
-		{
-			triggersFile << "\tdemocratic > 0.65\n";
-		}
-		else
-		{
-			triggersFile << "\t" << ideology << " < 0.18\n";
-		}
-	}
-	triggersFile << "}\n";
-
 	triggersFile << "has_unsupported_manpower_law = {\n";
 	triggersFile << "	if = {\n";
 	triggersFile << "		limit = {\n";
