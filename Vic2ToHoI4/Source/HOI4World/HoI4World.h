@@ -14,6 +14,7 @@
 #include "Names.h"
 #include "OnActions.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
+#include "ScriptedTriggers/ScriptedTriggers.h"
 #include "States/HoI4States.h"
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/GovernmentMapper.h"
@@ -182,7 +183,6 @@ class World: commonItems::parser
 		void outputIdeologies() const;
 		void outputLeaderTraits() const;
 		void outputIdeas() const;
-		void outputScriptedTriggers() const;
 		void outputBookmarks() const;
 
 		std::optional<std::pair<std::string, std::string>> getStrongestNavyGps();
@@ -225,6 +225,7 @@ class World: commonItems::parser
 		MapData theMapData;
 
 		ScriptedLocalisations scriptedLocalisations;
+		ScriptedTriggers scriptedTriggers;
 };
 
 }

@@ -78,6 +78,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\NaviesOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTrigger.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTriggers.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipVariantOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.cpp" />
@@ -158,6 +160,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OnActions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regiment.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisations.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedTriggers\ScriptedTriggers.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\PossibleShipVariants.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipModules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariant.cpp" />

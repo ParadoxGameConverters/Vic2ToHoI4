@@ -88,6 +88,12 @@
     <Filter Include="Bitmap">
       <UniqueIdentifier>{042f08d9-26f1-4dc4-972f-08c1cb7d7b07}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\ScriptedTriggers">
+      <UniqueIdentifier>{437f8927-6c91-4c94-8a68-c9f93c60ac22}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hoi4Outputter\ScriptedTriggers">
+      <UniqueIdentifier>{dcc00db9-91ca-4d39-816a-75b884ceb428}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -563,6 +569,18 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Map\StrategicRegion.cpp">
       <Filter>HoI4World\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggers.cpp">
+      <Filter>HoI4World\ScriptedTriggers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTrigger.cpp">
+      <Filter>Hoi4Outputter\ScriptedTriggers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTriggers.cpp">
+      <Filter>Hoi4Outputter\ScriptedTriggers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.cpp">
+      <Filter>HoI4World\ScriptedTriggers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1062,6 +1080,21 @@
     </ClInclude>
     <ClInclude Include="..\bitmap\bitmap_image.hpp">
       <Filter>Bitmap</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\ScriptedTriggers\ScriptedTrigger.h">
+      <Filter>HoI4World\ScriptedTriggers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggers.h">
+      <Filter>HoI4World\ScriptedTriggers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTrigger.h">
+      <Filter>Hoi4Outputter\ScriptedTriggers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTriggers.h">
+      <Filter>Hoi4Outputter\ScriptedTriggers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.h">
+      <Filter>HoI4World\ScriptedTriggers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

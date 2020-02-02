@@ -23,6 +23,7 @@
 #include "Map/StrategicRegion.h"
 #include "Map/SupplyZones.h"
 #include "MilitaryMappings/MilitaryMappingsFile.h"
+#include "ScriptedTriggers/ScriptedTriggersUpdater.h"
 #include "ShipTypes/PossibleShipVariants.h"
 #include "States/DefaultState.h"
 #include "States/HoI4State.h"
@@ -40,6 +41,7 @@
 #include "../Hoi4Outputter/Map/OutStrategicRegion.h"
 #include "../Hoi4Outputter/Map/OutSupplyZones.h"
 #include "../Hoi4Outputter/ScriptedLocalisations/ScriptedLocalisationsOutputter.h"
+#include "../Hoi4Outputter/ScriptedTriggers/OutScriptedTriggers.h"
 #include "../Hoi4Outputter/States/HoI4StatesOutputter.h"
 #include <fstream>
 using namespace std;
@@ -118,6 +120,8 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	processInfluence();
 	determineSpherelings();
 	calculateSpherelingAutonomy();
+	scriptedTriggers.importScriptedTriggers(theConfiguration);
+	updateScriptedTriggers(scriptedTriggers, majorIdeologies);
 }
 
 
@@ -1104,9 +1108,9 @@ void HoI4::World::output()
 	outputIdeologies();
 	outputLeaderTraits();
 	outputIdeas();
-	outputScriptedTriggers();
 	outputBookmarks();
 	outputScriptedLocalisations(theConfiguration, scriptedLocalisations);
+	outputScriptedTriggers(scriptedTriggers, theConfiguration);
 }
 
 
@@ -1440,85 +1444,6 @@ void HoI4::World::outputLeaderTraits() const
 void HoI4::World::outputIdeas() const
 {
 	theIdeas->output(majorIdeologies);
-}
-
-
-void HoI4::World::outputScriptedTriggers() const
-{
-	ofstream triggersFile("output/" + theConfiguration.getOutputName() + "/common/scripted_triggers/convertedTriggers.txt");
-
-	triggersFile << "can_lose_democracy_support = {\n";
-	for (auto ideology: majorIdeologies)
-	{
-		if (ideology == "democratic")
-		{
-			triggersFile << "\tdemocratic > 0.65\n";
-		}
-		else
-		{
-			triggersFile << "\t" << ideology << " < 0.18\n";
-		}
-	}
-	triggersFile << "}\n";
-
-	triggersFile << "has_unsupported_manpower_law = {\n";
-	triggersFile << "	if = {\n";
-	triggersFile << "		limit = {\n";
-	triggersFile << "			has_idea = limited_conscription\n";
-	triggersFile << "		}\n";
-	triggersFile << "		has_idea = limited_conscription\n";
-	triggersFile << "		has_war_support < 0.1\n";
-	triggersFile << "	}\n";
-	triggersFile << "	else_if = {\n";
-	triggersFile << "		limit = {\n";
-	triggersFile << "			has_idea = extensive_conscription\n";
-	triggersFile << "		}\n";
-	triggersFile << "		has_idea = extensive_conscription\n";
-	triggersFile << "		has_war_support < 0.2\n";
-	for (auto majorIdeology: majorIdeologies)
-	{
-		if ((majorIdeology == "democratic") || (majorIdeology == "neutrality"))
-		{
-			 continue;
-		}
-
-		triggersFile << "		NOT = { has_government = " << majorIdeology << " }\n";
-	}
-	triggersFile << "	}\n";
-	triggersFile << "	else_if = {\n";
-	triggersFile << "		limit = {\n";
-	triggersFile << "			has_idea = service_by_requirement\n";
-	triggersFile << "		}\n";
-	triggersFile << "		has_idea = service_by_requirement\n";
-	triggersFile << "		has_war_support < 0.6\n";
-	for (auto majorIdeology: majorIdeologies)
-	{
-		if ((majorIdeology == "democratic") || (majorIdeology == "neutrality"))
-		{
-			continue;
-		}
-
-		triggersFile << "		NOT = { has_government = " << majorIdeology << " }\n";
-	}
-	triggersFile << "	}\n";
-	triggersFile << "	else_if = {\n";
-	triggersFile << "		limit = {\n";
-	triggersFile << "			has_idea = all_adults_serve\n";
-	triggersFile << "		}\n";
-	triggersFile << "		has_idea = all_adults_serve\n";
-	triggersFile << "	}\n";
-	triggersFile << "	else_if = {\n";
-	triggersFile << "		limit = {\n";
-	triggersFile << "			has_idea = scraping_the_barrel\n";
-	triggersFile << "		}\n";
-	triggersFile << "		has_idea = scraping_the_barrel\n";
-	triggersFile << "	}\n";
-	triggersFile << "	else = {\n";
-	triggersFile << "		always = no\n";
-	triggersFile << "	}\n";
-	triggersFile << "}\n";
-
-	triggersFile.close();
 }
 
 
