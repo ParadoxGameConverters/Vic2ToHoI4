@@ -1,12 +1,14 @@
 #include "Hoi4CountryOutputter.h"
 #include "Leaders/OutAdvisor.h"
 #include "Navies/NaviesOutputter.h"
+#include "Navies/OutLegacyShipTypeNames.h"
 #include "ShipTypes/ShipVariantsOutputter.h"
 #include "../HOI4World/DivisionTemplate.h"
 #include "../HOI4World/HoI4Country.h"
 #include "../HOI4World/HoI4Faction.h"
 #include "../HOI4World/HoI4FocusTree.h"
 #include "../HOI4World/Names.h"
+#include "../HOI4World/Navies/ShipTypeNames.h"
 #include "../HOI4World/Leaders/Advisor.h"
 #include "../Mappers/GraphicsMapper.h"
 #include "../V2World/Country.h"
@@ -160,21 +162,8 @@ void outputUnitType(
 	const std::string& defaultName,
 	const Vic2::Country& sourceCountry
 ) {
-	unitNamesFile << "\t" << destUnitType << " = {\n";
-	unitNamesFile << "\t\tprefix = \"\"\n";
-	unitNamesFile << "\t\tgeneric = { \"" << defaultName << "\" }\n";
-	unitNamesFile << "\t\tunique = {\n";
-
-	unitNamesFile << "\t\t\t";
-	for (const auto& shipName: sourceCountry.getShipNames(sourceUnitType))
-	{
-		unitNamesFile << "\"" << shipName << "\" ";
-	}
-	unitNamesFile << "\n";
-
-	unitNamesFile << "\t\t}\n";
-	unitNamesFile << "\t}\n";
-	unitNamesFile << "\n";
+	HoI4::ShipTypeNames shipTypeNames(destUnitType, defaultName, sourceCountry.getShipNames(sourceUnitType));
+	HoI4::outLegacyShipTypeNames(unitNamesFile, shipTypeNames);
 }
 
 

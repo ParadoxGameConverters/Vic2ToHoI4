@@ -582,6 +582,12 @@
     <ClCompile Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.cpp">
       <Filter>HoI4World\ScriptedTriggers</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Navies\OutLegacyNavyNames.cpp">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Navies\OutLegacyShipTypeNames.cpp">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1095,6 +1101,18 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.h">
       <Filter>HoI4World\ScriptedTriggers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Navies\OutLegacyNavyNames.h">
+      <Filter>Hoi4Outputter\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Navies\NavyNames.h">
+      <Filter>HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Navies\ShipTypeNames.h">
+      <Filter>HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Navies\OutLegacyShipTypeNames.h">
+      <Filter>Hoi4Outputter\Navies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

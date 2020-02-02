@@ -211,6 +211,8 @@
     <ClCompile Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\MtgShipOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\NaviesOutputter.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Navies\OutLegacyNavyNames.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Navies\OutLegacyShipTypeNames.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTrigger.cpp" />
@@ -377,6 +379,8 @@
     <ClInclude Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\MtgShipOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\NaviesOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Navies\OutLegacyNavyNames.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Navies\OutLegacyShipTypeNames.h" />
     <ClInclude Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTrigger.h" />
@@ -465,7 +469,9 @@
     <ClInclude Include="Source\HOI4World\Navies\MtgShip.h" />
     <ClInclude Include="Source\HOI4World\Navies\Navies.h" />
     <ClInclude Include="Source\HOI4World\Navies\Navy.h" />
+    <ClInclude Include="Source\HOI4World\Navies\NavyNames.h" />
     <ClInclude Include="Source\HOI4World\Navies\Ship.h" />
+    <ClInclude Include="Source\HOI4World\Navies\ShipTypeNames.h" />
     <ClInclude Include="Source\HOI4World\OnActions.h" />
     <ClInclude Include="Source\HOI4World\Regiment.h" />
     <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.h" />
