@@ -3,8 +3,8 @@
 
 
 
-#include "MtgShipTypeNames.h"
 #include "LegacyShipTypeNames.h"
+#include "MtgShipTypeNames.h"
 #include <set>
 
 

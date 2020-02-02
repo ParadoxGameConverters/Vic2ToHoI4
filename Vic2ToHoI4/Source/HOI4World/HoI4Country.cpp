@@ -644,13 +644,55 @@ void HoI4::Country::convertNavies(
 		allStates,
 		tag);
 
-	navyNames.addLegacyShipTypeNames(HoI4::LegacyShipTypeNames{ "submarine", "Submarine", sourceCountry.getShipNames("frigate") });
-	navyNames.addLegacyShipTypeNames(HoI4::LegacyShipTypeNames{ "carrier", "Carrier", sourceCountry.getShipNames("monitor") });
-	navyNames.addLegacyShipTypeNames(HoI4::LegacyShipTypeNames{ "battleship", "Battleship", sourceCountry.getShipNames("dreadnought") });
-	navyNames.addLegacyShipTypeNames(HoI4::LegacyShipTypeNames{ "battle_cruiser", "Battlecruiser", sourceCountry.getShipNames("ironclad") });
-	navyNames.addLegacyShipTypeNames(HoI4::LegacyShipTypeNames{ "heavy_cruiser", "Heavy Cruiser", sourceCountry.getShipNames("manowar") });
-	navyNames.addLegacyShipTypeNames(HoI4::LegacyShipTypeNames{ "destroyer", "Destroyer", sourceCountry.getShipNames("cruiser") });
-	navyNames.addLegacyShipTypeNames(HoI4::LegacyShipTypeNames{ "light_cruiser","Light Cruiser", sourceCountry.getShipNames("commerce_raider") });
+	navyNames.addLegacyShipTypeNames(
+		HoI4::LegacyShipTypeNames{
+			"submarine",
+			"Submarine",
+			sourceCountry.getShipNames("frigate")
+		}
+	);
+	navyNames.addLegacyShipTypeNames(
+		HoI4::LegacyShipTypeNames{
+			"carrier",
+			"Carrier",
+			sourceCountry.getShipNames("monitor")
+		}
+	);
+	navyNames.addLegacyShipTypeNames(
+		HoI4::LegacyShipTypeNames{
+			"battleship",
+			"Battleship",
+			sourceCountry.getShipNames("dreadnought")
+		}
+	);
+	navyNames.addLegacyShipTypeNames(
+		HoI4::LegacyShipTypeNames{
+			"battle_cruiser",
+			"Battlecruiser",
+			sourceCountry.getShipNames("ironclad")
+		}
+	);
+	navyNames.addLegacyShipTypeNames(
+		HoI4::LegacyShipTypeNames{
+			"heavy_cruiser",
+			"Heavy Cruiser",
+			sourceCountry.getShipNames("manowar")
+		}
+	);
+	navyNames.addLegacyShipTypeNames(
+		HoI4::LegacyShipTypeNames{
+			"destroyer",
+			"Destroyer",
+			sourceCountry.getShipNames("cruiser")
+		}
+	);
+	navyNames.addLegacyShipTypeNames(
+		HoI4::LegacyShipTypeNames{
+			"light_cruiser",
+			"Light Cruiser",
+			sourceCountry.getShipNames("commerce_raider")
+		}
+	);
 
 	navyNames.addMtgShipTypeNames(
 		HoI4::MtgShipTypeNames{

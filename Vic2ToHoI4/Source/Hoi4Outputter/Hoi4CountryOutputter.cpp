@@ -9,7 +9,6 @@
 #include "../HOI4World/HoI4Faction.h"
 #include "../HOI4World/HoI4FocusTree.h"
 #include "../HOI4World/Names.h"
-#include "../HOI4World/Navies/LegacyShipTypeNames.h"
 #include "../HOI4World/Navies/NavyNames.h"
 #include "../HOI4World/Leaders/Advisor.h"
 #include "../Mappers/GraphicsMapper.h"
@@ -122,26 +121,30 @@ void HoI4::outputToUnitNamesFiles(const Country& theCountry)
 {
 	const auto tag = theCountry.getTag();
 
-	std::ofstream legacyUnitNamesFile("output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt");
-	legacyUnitNamesFile << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
+	std::ofstream legacyUnitNamesFile(
+		"output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt"
+	);
 	if (!legacyUnitNamesFile.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt");
+		throw std::runtime_error(
+			"Could not open output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt"
+		);
 	}
-	
+	legacyUnitNamesFile << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
 	outLegacyNavyNames(legacyUnitNamesFile, theCountry.getNavyNames().getLegacyShipTypeNames(), tag);
-
 	legacyUnitNamesFile.close();
 
-	std::ofstream mtgUnitNamesFile("output/" + theConfiguration.getOutputName() + "/common/units/names_ships/" + tag + "_ship_names.txt");
-	mtgUnitNamesFile << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
+	std::ofstream mtgUnitNamesFile(
+		"output/" + theConfiguration.getOutputName() + "/common/units/names_ships/" + tag + "_ship_names.txt"
+	);
 	if (!mtgUnitNamesFile.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + theConfiguration.getOutputName() + "/common/units/names_ships/" + tag + "_ship_names.txt");
+		throw std::runtime_error(
+			"Could not open output/" + theConfiguration.getOutputName() + "/common/units/names_ships/" + tag + "_ship_names.txt"
+		);
 	}
-
+	mtgUnitNamesFile << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
 	outMtgNavyNames(mtgUnitNamesFile, theCountry.getNavyNames().getMtgShipTypeNames(), tag);
-
 	mtgUnitNamesFile.close();
 }
 
