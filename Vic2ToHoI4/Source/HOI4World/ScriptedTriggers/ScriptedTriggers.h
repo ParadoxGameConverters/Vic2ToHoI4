@@ -21,13 +21,16 @@ class ScriptedTriggers: commonItems::parser
 
 		[[nodiscard]] const auto& getIdeologyScriptedTriggers() const { return ideologyScriptedTriggers; }
 		[[nodiscard]] const auto& getElectionsScriptedTriggers() const { return electionsScriptedTriggers; }
+		[[nodiscard]] const auto& getLawsWarSupportTriggers() const { return lawsWarSupportTriggers; }
 	
 	private:
 		void updateIdeologyScriptedTriggers(const std::set<std::string>& majorIdeologies);
 		void updateElectionsScriptedTriggers(const std::set<std::string>& majorIdeologies);
+		void updateLawsWarSupportTriggers(const std::set<std::string>& majorIdeologies);
 	
 		std::vector<ScriptedTrigger> ideologyScriptedTriggers;
 		std::vector<ScriptedTrigger> electionsScriptedTriggers;
+		std::vector<ScriptedTrigger> lawsWarSupportTriggers;
 };
 
 }

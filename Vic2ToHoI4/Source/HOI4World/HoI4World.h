@@ -183,7 +183,6 @@ class World: commonItems::parser
 		void outputIdeologies() const;
 		void outputLeaderTraits() const;
 		void outputIdeas() const;
-		void outputScriptedTriggers() const;
 		void outputBookmarks() const;
 
 		std::optional<std::pair<std::string, std::string>> getStrongestNavyGps();

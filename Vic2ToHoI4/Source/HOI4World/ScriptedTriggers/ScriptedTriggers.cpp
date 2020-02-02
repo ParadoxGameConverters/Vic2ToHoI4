@@ -24,6 +24,16 @@ void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConf
 	});
 	parseFile(theConfiguration.getHoI4Path() + "/common/scripted_triggers/Elections_scripted_triggers.txt");
 	clearRegisteredKeywords();
+
+	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& name, std::istream& theStream)
+	{
+		ScriptedTrigger scriptedTrigger(name);
+		const commonItems::stringOfObject bodyString(theStream);
+		scriptedTrigger.setBody(bodyString.getString());
+		lawsWarSupportTriggers.push_back(scriptedTrigger);
+	});
+	parseFile(theConfiguration.getHoI4Path() + "/common/scripted_triggers/laws_war_support.txt");
+	clearRegisteredKeywords();
 }
 
 
@@ -31,6 +41,7 @@ void HoI4::ScriptedTriggers::updateScriptedTriggers(const std::set<std::string>&
 {
 	updateIdeologyScriptedTriggers(majorIdeologies);
 	updateElectionsScriptedTriggers(majorIdeologies);
+	updateLawsWarSupportTriggers(majorIdeologies);
 }
 
 
@@ -99,4 +110,187 @@ void HoI4::ScriptedTriggers::updateElectionsScriptedTriggers(const std::set<std:
 			scriptedTrigger.setBody(supportBody);
 		}
 	}
+}
+
+
+std::string getHasUnsupportedManpowerLawBody(const std::set<std::string>& majorIdeologies);
+std::string getHasExcessiveArmySizeBody(const std::set<std::string>& majorIdeologies);
+void HoI4::ScriptedTriggers::updateLawsWarSupportTriggers(const std::set<std::string>& majorIdeologies)
+{
+	for (auto& scriptedTrigger: lawsWarSupportTriggers)
+	{
+		if (scriptedTrigger.getName() == "has_unsupported_manpower_law")
+		{
+			scriptedTrigger.setBody(getHasUnsupportedManpowerLawBody(majorIdeologies));
+		}
+		if (scriptedTrigger.getName() == "has_excessive_army_size")
+		{
+			scriptedTrigger.setBody(getHasExcessiveArmySizeBody(majorIdeologies));
+		}
+	}
+}
+
+
+std::string getHasUnsupportedManpowerLawBody(const std::set<std::string>& majorIdeologies)
+{
+	std::string unsupportedManpowerBody = "= {\n";
+	unsupportedManpowerBody += "\tif = {\n";
+	unsupportedManpowerBody += "\t\tlimit = {\n";
+	unsupportedManpowerBody += "\t\t\thas_idea = limited_conscription\n";
+	unsupportedManpowerBody += "\t\t}\n";
+	unsupportedManpowerBody += "\t\thas_idea = limited_conscription\n";
+	unsupportedManpowerBody += "\t\thas_war_support < 0.1\n";
+	unsupportedManpowerBody += "\t}\n";
+	unsupportedManpowerBody += "\telse_if = {\n";
+	unsupportedManpowerBody += "\t\tlimit = {\n";
+	unsupportedManpowerBody += "\t\t\thas_idea = extensive_conscription\n";
+	unsupportedManpowerBody += "\t\t}\n";
+	unsupportedManpowerBody += "\t\thas_idea = extensive_conscription\n";
+	unsupportedManpowerBody += "\t\thas_war_support < 0.2\n";
+	for (const auto& majorIdeology : majorIdeologies)
+	{
+		if ((majorIdeology == "democratic") || (majorIdeology == "neutrality"))
+		{
+			continue;
+		}
+
+		unsupportedManpowerBody += "\t\tNOT = { has_government = " + majorIdeology + " }\n";
+	}
+	unsupportedManpowerBody += "\t}\n";
+	unsupportedManpowerBody += "\telse_if = {\n";
+	unsupportedManpowerBody += "\t\tlimit = {\n";
+	unsupportedManpowerBody += "\t\t\thas_idea = service_by_requirement\n";
+	unsupportedManpowerBody += "\t\t}\n";
+	unsupportedManpowerBody += "\t\thas_idea = service_by_requirement\n";
+	unsupportedManpowerBody += "\t\thas_war_support < 0.6\n";
+	for (const auto& majorIdeology : majorIdeologies)
+	{
+		if ((majorIdeology == "democratic") || (majorIdeology == "neutrality"))
+		{
+			continue;
+		}
+
+		unsupportedManpowerBody += "\t\tNOT = { has_government = " + majorIdeology + " }\n";
+	}
+	unsupportedManpowerBody += "\t}\n";
+	unsupportedManpowerBody += "\telse_if = {\n";
+	unsupportedManpowerBody += "\t\tlimit = {\n";
+	unsupportedManpowerBody += "\t\t\thas_idea = all_adults_serve\n";
+	unsupportedManpowerBody += "\t\t}\n";
+	unsupportedManpowerBody += "\t\thas_idea = all_adults_serve\n";
+	unsupportedManpowerBody += "\t}\n";
+	unsupportedManpowerBody += "\telse_if = {\n";
+	unsupportedManpowerBody += "\t\tlimit = {\n";
+	unsupportedManpowerBody += "\t\t\thas_idea = scraping_the_barrel\n";
+	unsupportedManpowerBody += "\t\t}\n";
+	unsupportedManpowerBody += "\t\thas_idea = scraping_the_barrel\n";
+	unsupportedManpowerBody += "\t}\n";
+	unsupportedManpowerBody += "\telse = {\n";
+	unsupportedManpowerBody += "\t\talways = no\n";
+	unsupportedManpowerBody += "\t}\n";
+	unsupportedManpowerBody += "}\n";
+	return unsupportedManpowerBody;
+}
+
+
+std::string getHasExcessiveArmySizeBody(const std::set<std::string>& majorIdeologies)
+{
+	std::string body = "= {\n";
+	body += "\tOR = {\n";
+	body += "\t\tAND = {\n";
+	body += "\t\t\tnum_of_factories < 25\n";
+	body += "\t\t\thas_army_manpower = { size = 250000 }\n";
+	body += "\t\t\thas_manpower < 1\n";
+	if (majorIdeologies.count("communism"))
+	{
+		body += "\t\t\tNOT = {\n";
+		body += "\t\t\t\thas_government = communism\n";
+		body += "\t\t\t}\n";
+	}
+	if (majorIdeologies.count("radical"))
+	{
+		body += "\t\t\tNOT = {\n";
+		body += "\t\t\t\thas_government = radical\n";
+		body += "\t\t\t}\n";
+	}
+	body += "\t\t}\n";
+	body += "\t\tAND = {\n";
+	body += "\t\tnum_of_factories < 50\n";
+	body += "\t\thas_army_manpower = { size = 500000 }\n";
+	body += "\t\thas_manpower < 1\n";
+	if (majorIdeologies.count("communism"))
+	{
+		body += "\t\t\tNOT = {\n";
+		body += "\t\t\t\thas_government = communism\n";
+		body += "\t\t\t}\n";
+	}
+	if (majorIdeologies.count("radical"))
+	{
+		body += "\t\t\tNOT = {\n";
+		body += "\t\t\t\thas_government = radical\n";
+		body += "\t\t\t}\n";
+	}
+	body += "\t\t}\n";
+	body += "\t\tAND = {\n";
+	body += "\t\t\tnum_of_factories < 75\n";
+	body += "\t\t\thas_army_manpower = { size = 750000 }\n";
+	body += "\t\t\thas_manpower < 1\n";
+	if (majorIdeologies.count("communism"))
+	{
+		body += "\t\t\tNOT = {\n";
+		body += "\t\t\t\thas_government = communism\n";
+		body += "\t\t\t}\n";
+	}
+	if (majorIdeologies.count("radical"))
+	{
+		body += "\t\t\tNOT = {\n";
+		body += "\t\t\t\thas_government = radical\n";
+		body += "\t\t\t}\n";
+	}
+	body += "\t\t}\n";
+	body += "\t\tAND = {\n";
+	body += "\t\t\tnum_of_factories < 100\n";
+	body += "\t\t\thas_army_manpower = { size = 1000000 }\n";
+	body += "\t\t\thas_manpower < 1\n";
+	if (majorIdeologies.count("communism"))
+	{
+		body += "\t\t\tNOT = {\n";
+		body += "\t\t\t\thas_government = communism\n";
+		body += "\t\t\t}\n";
+	}
+	if (majorIdeologies.count("radical"))
+	{
+		body += "\t\t\tNOT = {\n";
+		body += "\t\t\t\thas_government = radical\n";
+		body += "\t\t\t}\n";
+	}
+	body += "\t\t}\n";
+	if (majorIdeologies.count("democratic"))
+	{
+		body += "\t\tAND = {\n";
+		body += "\t\t\thas_army_manpower = { size = 2500000 }\n";
+		body += "\t\t\thas_manpower < 1\n";
+		body += "\t\t\thas_government = democratic\n";
+		body += "\t\t}\n";
+	}
+	if (majorIdeologies.count("fascism"))
+	{
+		body += "\t\tAND = {\n";
+		body += "\t\t\thas_army_manpower = { size = 3000000 }\n";
+		body += "\t\t\thas_manpower < 1\n";
+		body += "\t\t\thas_government = fascism\n";
+		body += "\t\t}\n";
+		body += "\t}\n";
+	}
+	if (majorIdeologies.count("absolutist"))
+	{
+		body += "\t\tAND = {\n";
+		body += "\t\t\thas_army_manpower = { size = 3000000 }\n";
+		body += "\t\t\thas_manpower < 1\n";
+		body += "\t\t\thas_government = absolutist\n";
+		body += "\t\t}\n";
+		body += "\t}\n";
+	}
+	body += "}\n";
+	return body;
 }
