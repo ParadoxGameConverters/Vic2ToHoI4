@@ -1,5 +1,5 @@
-#ifndef HOI4_AI_PEACE
-#define HOI4_AI_PEACE
+#ifndef AI_PEACE_H
+#define AI_PEACE_H
 
 
 
@@ -16,11 +16,11 @@ class AIPeace: commonItems::parser
 	public:
 		AIPeace(const std::string& theName, std::istream& theStream);
 
-		std::string getName() const { return name; }
+		[[nodiscard]] std::string_view getName() const { return name; }
 
 		void replaceEnable(const std::string& newEnable) { enable = newEnable; }
 
-		friend std::ostream& operator<<(std::ostream& outStream, const HoI4::AIPeace& outPeace);
+		friend std::ostream& operator<<(std::ostream& outStream, const AIPeace& outPeace);
 
 	private:
 		std::string name;
@@ -40,10 +40,8 @@ class AIPeace: commonItems::parser
 		std::string forceGovernment;
 };
 
-std::ostream& operator<<(std::ostream& outStream, const HoI4::AIPeace& outPeace);
-
 }
 
 
 
-#endif // HOI4_AI_PEACES
+#endif // AI_PEACE_H

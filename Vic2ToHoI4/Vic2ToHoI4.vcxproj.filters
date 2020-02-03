@@ -97,6 +97,9 @@
     <Filter Include="HoI4World\Diplomacy">
       <UniqueIdentifier>{380fc73c-dfd8-40bc-b0f0-ea0b3d25f1d6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hoi4Outputter\Diplomacy">
+      <UniqueIdentifier>{2663a559-a624-41b2-b071-3c7754193b4f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -596,6 +599,9 @@
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Navies\OutMtgNavyNames.cpp">
       <Filter>Hoi4Outputter\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAiPeace.cpp">
+      <Filter>Hoi4Outputter\Diplomacy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1131,6 +1137,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Navies\LegacyShipTypeNames.h">
       <Filter>HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAiPeace.h">
+      <Filter>Hoi4Outputter\Diplomacy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

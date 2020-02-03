@@ -665,6 +665,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\OutMtgShipTypeNames.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Diplomacy\OutAiPeace.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Diplomacy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -792,6 +795,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\Diplomacy">
       <UniqueIdentifier>{1fc5e546-8513-4bb9-84e6-9632b33b31c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Diplomacy">
+      <UniqueIdentifier>{acdd379f-fe68-4bb5-a509-0e018164eac1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
