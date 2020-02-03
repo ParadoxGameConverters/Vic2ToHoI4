@@ -573,9 +573,6 @@
     <ClCompile Include="Source\HOI4World\Diplomacy\AIPeaces.cpp">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Diplomacy\HoI4Relations.cpp">
-      <Filter>HoI4World\Diplomacy</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4War.cpp">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClCompile>

@@ -323,8 +323,7 @@ void HoI4WarCreator::setSphereLeaders(const Vic2::World* sourceWorld)
 		{
 			if (relation.second.getSphereLeader())
 			{
-				string tag = relation.second.getTag();
-				auto spheredcountry = theWorld->getCountries().find(tag);
+				auto spheredcountry = theWorld->getCountries().find(relation.second.getTag());
 				if (spheredcountry != theWorld->getCountries().end())
 				{
 					spheredcountry->second->setSphereLeader(greatPower->getTag());

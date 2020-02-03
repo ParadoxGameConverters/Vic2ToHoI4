@@ -245,7 +245,7 @@ void outputPuppets(
 	const std::string& governmentIdeology,
 	const std::set<std::string>& puppets,
 	const std::string& puppetMaster,
-	const std::map<std::string, HoI4Relations>& relations,
+	const std::map<std::string, HoI4::Relations>& relations,
 	const bool& greatPower,
 	const std::map<std::string, double>& spherelings
 );
@@ -259,7 +259,7 @@ void outputPolitics(
 void outputRelations(
 	std::ostream& output,
 	const std::string& tag,
-	const std::map<std::string, HoI4Relations>& relations
+	const std::map<std::string, HoI4::Relations>& relations
 );
 void outputFactions(
 	std::ostream& output,
@@ -474,7 +474,7 @@ void outputPuppets(
 	const std::string& governmentIdeology,
 	const std::set<std::string>& puppets,
 	const std::string& puppetMaster,
-	const std::map<std::string, HoI4Relations>& relations,
+	const std::map<std::string, HoI4::Relations>& relations,
 	const bool& greatPower,
 	const std::map<std::string, double>& spherelings
 ) {
@@ -597,7 +597,7 @@ void outputPolitics(
 void outputRelations(
 	std::ostream& output,
 	const std::string& tag,
-	const std::map<std::string, HoI4Relations>& relations
+	const std::map<std::string, HoI4::Relations>& relations
 ) {
 	for (auto& relation: relations)
 	{

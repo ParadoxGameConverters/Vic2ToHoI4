@@ -3,46 +3,47 @@
 
 
 
-#include "Date.h"
+#include "../../V2World/Relations.h"
 
 
-namespace Vic2
+
+namespace HoI4
 {
 
-class Relations;
-
-}
-
-
-
-class HoI4Relations
+class Relations
 {
 	public:
-		explicit HoI4Relations(const std::string& newTag);
-		HoI4Relations(const std::string& newTag, const Vic2::Relations* oldRelations);
+		explicit Relations(std::string newTag):
+			tag(std::move(newTag)),
+			value(0),
+			guarantee(false),
+			sphereLeader(false),
+			influenceValue(0)
+		{}
 
-		std::string	getTag()				const { return tag; };
-		int		getRelations()		const { return value; };
-		bool		getGuarantee()		const { return guarantee; };
-		bool		getSphereLeader()		const { return sphereLeader; };
-		date		getLastWar()		const { return lastWar; };
-		date		getTruceUntil()	const { return truceUntil; };
-		int			getInfluenceValue()		const { return influenceValue; };
-		bool		atWar()				const { return lastWar > truceUntil; };
+		Relations( std::string newTag, const Vic2::Relations& oldRelations):
+			tag(std::move(newTag)),
+			value(oldRelations.getRelations()),
+			guarantee(oldRelations.getLevel() >= 4),
+			sphereLeader(oldRelations.getLevel() >= 5),
+			influenceValue(oldRelations.getInfluenceValue())
+		{}
+
+		[[nodiscard]] const auto& getTag() const { return tag; }
+		[[nodiscard]] int getRelations() const { return value; }
+		[[nodiscard]] bool getGuarantee() const { return guarantee; }
+		[[nodiscard]] bool getSphereLeader() const { return sphereLeader; }
+		[[nodiscard]] int getInfluenceValue() const { return influenceValue; }
 
 	private:
-
 		std::string	tag;
-		int		value;
-		bool		militaryAccess;
-		date		lastSendDiplomat;
-		date		lastWar;
-		date		truceUntil;
-		int			influenceValue;
-		bool		guarantee;
-		bool		sphereLeader;
-		double		spherelingAutonomy = 0.5;
+		int value;
+		bool guarantee;
+		bool sphereLeader;
+		int influenceValue;
 };
+
+}
 
 
 

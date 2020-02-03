@@ -240,7 +240,6 @@
     <ClCompile Include="Source\HOI4World\Diplomacy\AIPeace.cpp" />
     <ClCompile Include="Source\HOI4World\Diplomacy\AIPeaces.cpp" />
     <ClCompile Include="Source\HOI4World\Diplomacy\AiPeacesUpdater.cpp" />
-    <ClCompile Include="Source\HOI4World\Diplomacy\HoI4Relations.cpp" />
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4War.cpp" />
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4WarCreator.cpp" />
     <ClCompile Include="Source\HOI4World\Division.cpp" />

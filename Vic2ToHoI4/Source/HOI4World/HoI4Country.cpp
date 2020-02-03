@@ -289,7 +289,7 @@ void HoI4::Country::convertRelations(const CountryMapper& countryMap)
 		auto HoI4Tag = countryMap.getHoI4Tag(srcRelation.second->getTag());
 		if (HoI4Tag)
 		{
-			HoI4Relations newRelation(*HoI4Tag, srcRelation.second);
+			HoI4::Relations newRelation(*HoI4Tag, *srcRelation.second);
 			relations.insert(make_pair(*HoI4Tag, std::move(newRelation)));
 		}
 	}
@@ -900,7 +900,7 @@ void HoI4::Country::addState(const State& state)
 }
 
 
-std::optional<HoI4Relations> HoI4::Country::getRelations(const std::string& withWhom) const
+std::optional<HoI4::Relations> HoI4::Country::getRelations(const std::string& withWhom) const
 {
 	if (const auto theRelations = relations.find(withWhom); theRelations != relations.end())
 	{

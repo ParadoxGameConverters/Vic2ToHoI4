@@ -124,7 +124,7 @@ class Country
 		void setPuppetMaster(const std::string& _master) { puppetMaster = _master; }
 		void addPuppet(const std::string& countryTag) { puppets.insert(countryTag); }
 
-		[[nodiscard]] std::optional<HoI4Relations> getRelations(const std::string& withWhom) const;
+		[[nodiscard]] std::optional<HoI4::Relations> getRelations(const std::string& withWhom) const;
 		[[nodiscard]] double getStrengthOverTime(const double& years) const;
 		static double getMilitaryStrength();
 		[[nodiscard]] float getNavalStrength() const;
@@ -192,7 +192,7 @@ class Country
 		[[nodiscard]] const std::vector<General>& getGenerals() const { return generals; }
 		[[nodiscard]] const std::vector<Admiral>& getAdmirals() const { return admirals; }
 
-		[[nodiscard]] const std::map<std::string, HoI4Relations>& getRelations() const { return relations; }
+		[[nodiscard]] const std::map<std::string, HoI4::Relations>& getRelations() const { return relations; }
 		[[nodiscard]] const std::vector<War>& getWars() const { return wars; }
 		[[nodiscard]] double getThreat() const { return threat; }
 		[[nodiscard]] bool isInFaction() const { return faction.operator bool(); }
@@ -291,7 +291,7 @@ class Country
 		std::vector<General> generals;
 		std::vector<Admiral> admirals;
 
-		std::map<std::string, HoI4Relations> relations;
+		std::map<std::string, HoI4::Relations> relations;
 		std::vector<War> wars;
 		double threat = 0.0;
 		std::shared_ptr<const HoI4Faction> faction;
