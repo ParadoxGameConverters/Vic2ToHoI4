@@ -76,6 +76,10 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\MtgShipOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\NaviesOutputter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\OutLegacyNavyNames.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\OutLegacyShipTypeNames.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\OutMtgNavyNames.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\OutMtgShipTypeNames.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTrigger.cpp" />

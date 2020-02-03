@@ -1,12 +1,15 @@
 #include "Hoi4CountryOutputter.h"
 #include "Leaders/OutAdvisor.h"
 #include "Navies/NaviesOutputter.h"
+#include "Navies/OutLegacyNavyNames.h"
+#include "Navies/OutMtgNavyNames.h"
 #include "ShipTypes/ShipVariantsOutputter.h"
 #include "../HOI4World/DivisionTemplate.h"
 #include "../HOI4World/HoI4Country.h"
 #include "../HOI4World/HoI4Faction.h"
 #include "../HOI4World/HoI4FocusTree.h"
 #include "../HOI4World/Names.h"
+#include "../HOI4World/Navies/NavyNames.h"
 #include "../HOI4World/Leaders/Advisor.h"
 #include "../Mappers/GraphicsMapper.h"
 #include "../V2World/Country.h"
@@ -114,67 +117,35 @@ void outputNamesSet(
 	}
 }
 
-
-void outputUnitType(
-	std::ostream& unitNamesFile,
-	const std::string& sourceUnitType,
-	const std::string& destUnitType,
-	const std::string& defaultName,
-	const Vic2::Country& sourceCountry
-);
-
-void HoI4::outputToUnitNamesFiles(std::ostream& unitNamesFile, const Country& theCountry)
+void HoI4::outputToUnitNamesFiles(const Country& theCountry)
 {
-	auto& sourceCountry = theCountry.getSourceCountry();
+	const auto& tag = theCountry.getTag();
 
-	unitNamesFile << theCountry.getTag() << " = {\n";
-
-	outputUnitType(unitNamesFile, "frigate", "submarine", "Submarine", sourceCountry);
-	outputUnitType(unitNamesFile, "monitor", "carrier", "Carrier", sourceCountry);
-	outputUnitType(
-		unitNamesFile, "dreadnought", "battleship", "Battleship", sourceCountry
+	std::ofstream legacyUnitNamesFile(
+		"output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt"
 	);
-	outputUnitType(
-		unitNamesFile, "ironclad", "battle_cruiser", "Battlecruiser", sourceCountry
-	);
-	outputUnitType(
-		unitNamesFile, "manowar", "heavy_cruiser", "Heavy Cruiser", sourceCountry
-	);
-	outputUnitType(unitNamesFile, "cruiser", "destroyer", "Destroyer", sourceCountry);
-	outputUnitType(
-		unitNamesFile,
-		"commerce_raider",
-		"light_cruiser",
-		"Light Cruiser",
-		sourceCountry
-	);
-
-	unitNamesFile << "}\n\n";
-}
-
-
-void outputUnitType(
-	std::ostream& unitNamesFile,
-	const std::string& sourceUnitType,
-	const std::string& destUnitType,
-	const std::string& defaultName,
-	const Vic2::Country& sourceCountry
-) {
-	unitNamesFile << "\t" << destUnitType << " = {\n";
-	unitNamesFile << "\t\tprefix = \"\"\n";
-	unitNamesFile << "\t\tgeneric = { \"" << defaultName << "\" }\n";
-	unitNamesFile << "\t\tunique = {\n";
-
-	unitNamesFile << "\t\t\t";
-	for (const auto& shipName: sourceCountry.getShipNames(sourceUnitType))
+	if (!legacyUnitNamesFile.is_open())
 	{
-		unitNamesFile << "\"" << shipName << "\" ";
+		throw std::runtime_error(
+			"Could not open output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt"
+		);
 	}
-	unitNamesFile << "\n";
+	legacyUnitNamesFile << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
+	outLegacyNavyNames(legacyUnitNamesFile, theCountry.getNavyNames().getLegacyShipTypeNames(), tag);
+	legacyUnitNamesFile.close();
 
-	unitNamesFile << "\t\t}\n";
-	unitNamesFile << "\t}\n";
-	unitNamesFile << "\n";
+	std::ofstream mtgUnitNamesFile(
+		"output/" + theConfiguration.getOutputName() + "/common/units/names_ships/" + tag + "_ship_names.txt"
+	);
+	if (!mtgUnitNamesFile.is_open())
+	{
+		throw std::runtime_error(
+			"Could not open output/" + theConfiguration.getOutputName() + "/common/units/names_ships/" + tag + "_ship_names.txt"
+		);
+	}
+	mtgUnitNamesFile << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
+	outMtgNavyNames(mtgUnitNamesFile, theCountry.getNavyNames().getMtgShipTypeNames(), tag);
+	mtgUnitNamesFile.close();
 }
 
 

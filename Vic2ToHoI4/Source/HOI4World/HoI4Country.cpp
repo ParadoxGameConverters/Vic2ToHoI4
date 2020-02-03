@@ -616,7 +616,6 @@ void HoI4::Country::determineShipVariants(const std::vector<shipVariant>& possib
 void HoI4::Country::convertNavies(
 	const UnitMappings& unitMap,
 	const MtgUnitMappings& mtgUnitMap,
-	const CoastalProvinces& theCoastalProvinces,
 	const std::map<int, int>& provinceToStateIDMap,
 	const std::map<int, State>& allStates)
 {
@@ -643,6 +642,165 @@ void HoI4::Country::convertNavies(
 		provinceToStateIDMap,
 		allStates,
 		tag);
+
+	navyNames.addLegacyShipTypeNames(
+		LegacyShipTypeNames{
+			"submarine",
+			"Submarine",
+			sourceCountry.getShipNames("frigate")
+		}
+	);
+	navyNames.addLegacyShipTypeNames(
+		LegacyShipTypeNames{
+			"carrier",
+			"Carrier",
+			sourceCountry.getShipNames("monitor")
+		}
+	);
+	navyNames.addLegacyShipTypeNames(
+		LegacyShipTypeNames{
+			"battleship",
+			"Battleship",
+			sourceCountry.getShipNames("dreadnought")
+		}
+	);
+	navyNames.addLegacyShipTypeNames(
+		LegacyShipTypeNames{
+			"battle_cruiser",
+			"Battlecruiser",
+			sourceCountry.getShipNames("ironclad")
+		}
+	);
+	navyNames.addLegacyShipTypeNames(
+		LegacyShipTypeNames{
+			"heavy_cruiser",
+			"Heavy Cruiser",
+			sourceCountry.getShipNames("manowar")
+		}
+	);
+	navyNames.addLegacyShipTypeNames(
+		LegacyShipTypeNames{
+			"destroyer",
+			"Destroyer",
+			sourceCountry.getShipNames("cruiser")
+		}
+	);
+	navyNames.addLegacyShipTypeNames(
+		LegacyShipTypeNames{
+			"light_cruiser",
+			"Light Cruiser",
+			sourceCountry.getShipNames("commerce_raider")
+		}
+	);
+
+	navyNames.addMtgShipTypeNames(
+		MtgShipTypeNames{
+			tag + "_DD_HISTORICAL",
+			"NAME_THEME_HISTORICAL_DESTROYERS",
+			std::set<std::string>{"ship_hull_light destroyer"},
+			"Destroyer DD-%d",
+			sourceCountry.getShipNames("cruiser")
+		}
+	);
+	navyNames.addMtgShipTypeNames(
+		MtgShipTypeNames{
+			tag + "_DE_HISTORICAL",
+			"NAME_THEME_HISTORICAL_DE",
+			std::set<std::string>{"ship_hull_light destroyer"},
+			"Destroyer Escort DE-%d",
+			sourceCountry.getShipNames("cruiser")
+		}
+	);
+	navyNames.addMtgShipTypeNames(
+		MtgShipTypeNames{
+			tag + "_CL_HISTORICAL",
+			"NAME_THEME_HISTORICAL_CL",
+			std::set<std::string>{"ship_hull_cruiser light_cruiser"},
+			"Light Cruiser CL-%d",
+			sourceCountry.getShipNames("commerce_raider")
+		}
+	);
+	navyNames.addMtgShipTypeNames(
+		MtgShipTypeNames{
+			tag + "_CL_HISTORICAL",
+			"NAME_THEME_HISTORICAL_CL",
+			std::set<std::string>{"ship_hull_cruiser light_cruiser"},
+			"Light Cruiser CL-%d",
+			sourceCountry.getShipNames("commerce_raider")
+		}
+	);
+	navyNames.addMtgShipTypeNames(
+		MtgShipTypeNames{
+			tag + "_CA_HISTORICAL",
+			"NAME_THEME_HISTORICAL_CA",
+			std::set<std::string>{"ship_hull_cruiser heavy_cruiser"},
+			"Heavy Cruiser CA-%d",
+			sourceCountry.getShipNames("manowar")
+		}
+	);
+	navyNames.addMtgShipTypeNames(
+		MtgShipTypeNames{
+			tag + "_CLAA_HISTORICAL",
+			"NAME_THEME_HISTORICAL_CLAA",
+			std::set<std::string>{"ship_hull_cruiser light_cruiser"},
+			"Light Cruiser CLAA-%d",
+			sourceCountry.getShipNames("commerce_raider")
+		}
+	);
+	navyNames.addMtgShipTypeNames(
+		MtgShipTypeNames{
+			tag + "_MINELAYERS_HISTORICAL",
+			"NAME_THEME_HISTORICAL_MINELAYERS",
+			std::set<std::string>{"ship_hull_cruiser light_cruiser", "ship_hull_light destroyer" },
+			"Minelayer CM-%d",
+			sourceCountry.getShipNames("commerce_raider")
+		}
+	);
+	navyNames.addMtgShipTypeNames(
+		MtgShipTypeNames{
+			tag + "_BB_HISTORICAL",
+			"NAME_THEME_HISTORICAL_BB",
+			std::set<std::string>{"ship_hull_heavy battleship" },
+			"Battleship BB-%d",
+			sourceCountry.getShipNames("dreadnought")
+		}
+	);
+	navyNames.addMtgShipTypeNames(
+		MtgShipTypeNames{
+			tag + "_BC_HISTORICAL",
+			"NAME_THEME_HISTORICAL_BC",
+			std::set<std::string>{"ship_hull_heavy battle_cruiser" },
+			"Battlecruiser BC-%d",
+			sourceCountry.getShipNames("ironclad")
+		}
+	);
+	navyNames.addMtgShipTypeNames(
+		MtgShipTypeNames{
+			tag + "_CV_HISTORICAL",
+			"NAME_THEME_HISTORICAL_CARRIERS",
+			std::set<std::string>{"ship_hull_carrier carrier" },
+			"Carrier CV-%d",
+			sourceCountry.getShipNames("monitor")
+		}
+	);
+	navyNames.addMtgShipTypeNames(
+		MtgShipTypeNames{
+			tag + "_CVL_HISTORICAL",
+			"NAME_THEME_HISTORICAL_CVL",
+			std::set<std::string>{"ship_hull_carrier carrier" },
+			"Carrier CVL-%d",
+			sourceCountry.getShipNames("monitor")
+		}
+	);
+	navyNames.addMtgShipTypeNames(
+		MtgShipTypeNames{
+			tag + "_SS_HISTORICAL",
+			"NAME_THEME_HISTORICAL_SUBMARINES",
+			std::set<std::string>{"ship_hull_submarine submarine" },
+			"Submarine SS-%d",
+			sourceCountry.getShipNames("frigate")
+		}
+	);
 }
 
 

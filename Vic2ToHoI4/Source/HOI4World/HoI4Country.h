@@ -13,6 +13,7 @@
 #include "Leaders/Admiral.h"
 #include "Leaders/General.h"
 #include "Navies/Navies.h"
+#include "Navies/NavyNames.h"
 #include "ShipTypes/ShipVariants.h"
 #include "Technologies.h"
 #include "../Color.h"
@@ -104,7 +105,6 @@ class Country
 		void convertNavies(
 			const UnitMappings& unitMap,
 			const MtgUnitMappings& mtgUnitMap,
-			const CoastalProvinces& theCoastalProvinces,
 			const std::map<int, int>& provinceToStateIDMap,
 			const std::map<int, State>& allStates
 		);
@@ -182,6 +182,7 @@ class Country
 		[[nodiscard]] const Army& getArmy() const { return theArmy; }
 		[[nodiscard]] const shipVariants& getTheShipVariants() const { return *theShipVariants; }
 		[[nodiscard]] const Navies& getNavies() const { return *theNavies; }
+		[[nodiscard]] const auto& getNavyNames() const { return navyNames; }
 		[[nodiscard]] int getConvoys() const { return convoys; }
 		[[nodiscard]] const std::vector<HoI4Airplane>& getPlanes() const { return planes; }
 		[[nodiscard]] const std::map<std::string, unsigned int>& getEquipmentStockpile() const
@@ -283,6 +284,7 @@ class Country
 		Army theArmy;
 		std::unique_ptr<shipVariants> theShipVariants;
 		std::unique_ptr<Navies> theNavies;
+		NavyNames navyNames;
 		int convoys = 0;
 		std::vector<HoI4Airplane> planes;
 		std::map<std::string, unsigned int> equipmentStockpile;

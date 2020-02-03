@@ -653,6 +653,18 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ScriptedTriggers</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\OutLegacyNavyNames.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\OutLegacyShipTypeNames.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\OutMtgNavyNames.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\OutMtgShipTypeNames.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
