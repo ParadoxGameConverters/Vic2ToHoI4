@@ -105,7 +105,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AIPeace.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AIPeaces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AiPeacesUpdater.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4Diplomacy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4Relations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4War.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4WarCreator.cpp" />

@@ -29,7 +29,6 @@
 
 
 
-class HoI4Diplomacy;
 class HoI4Faction;
 class HoI4Ideology;
 
@@ -144,7 +143,6 @@ class World: commonItems::parser
 
 		void convertDiplomacy();
 		void convertAgreements();
-		void convertRelations();
 
 		void convertTechs();
 
@@ -213,7 +211,6 @@ class World: commonItems::parser
 		std::unique_ptr<HoI4::Ideas> theIdeas;
 		
 		std::vector<std::shared_ptr<HoI4Faction>> factions;
-		HoI4Diplomacy* diplomacy = nullptr;
 		std::unique_ptr<HoI4::decisions> decisions;
 		std::unique_ptr<HoI4::AiPeaces> peaces;
 		HoI4::Events* events = nullptr;

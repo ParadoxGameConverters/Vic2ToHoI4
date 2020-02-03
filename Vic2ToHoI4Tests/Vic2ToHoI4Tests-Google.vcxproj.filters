@@ -638,9 +638,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AIPeaces.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4Diplomacy.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4Relations.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
     </ClCompile>
