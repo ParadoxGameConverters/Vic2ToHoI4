@@ -194,6 +194,7 @@
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAgreement.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAiPeace.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAiPeaces.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Events\EventOptionOutputter.cpp" />
@@ -240,7 +241,6 @@
     <ClCompile Include="Source\HOI4World\Diplomacy\AIPeace.cpp" />
     <ClCompile Include="Source\HOI4World\Diplomacy\AIPeaces.cpp" />
     <ClCompile Include="Source\HOI4World\Diplomacy\AiPeacesUpdater.cpp" />
-    <ClCompile Include="Source\HOI4World\Diplomacy\HoI4Agreement.cpp" />
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4Diplomacy.cpp" />
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4Relations.cpp" />
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4War.cpp" />
@@ -369,6 +369,7 @@
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAgreement.h" />
     <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAiPeace.h" />
     <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAiPeaces.h" />
     <ClInclude Include="Source\Hoi4Outputter\Events\EventOptionOutputter.h" />
@@ -413,7 +414,7 @@
     <ClInclude Include="Source\HOI4World\Diplomacy\AIPeace.h" />
     <ClInclude Include="Source\HOI4World\Diplomacy\AIPeaces.h" />
     <ClInclude Include="Source\HOI4World\Diplomacy\AiPeacesUpdater.h" />
-    <ClInclude Include="Source\HOI4World\Diplomacy\HoI4Agreement.h" />
+    <ClInclude Include="Source\HOI4World\Diplomacy\Agreement.h" />
     <ClInclude Include="Source\HOI4World\Diplomacy\HoI4Diplomacy.h" />
     <ClInclude Include="Source\HOI4World\Diplomacy\HoI4Faction.h" />
     <ClInclude Include="Source\HOI4World\Diplomacy\HoI4Relations.h" />

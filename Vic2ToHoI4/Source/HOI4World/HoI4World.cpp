@@ -1,5 +1,5 @@
 #include "Diplomacy/AiPeacesUpdater.h"
-#include "Diplomacy/HoI4Agreement.h"
+#include "Diplomacy/Agreement.h"
 #include "Diplomacy/HoI4Diplomacy.h"
 #include "Diplomacy/HoI4Faction.h"
 #include "Diplomacy/HoI4WarCreator.h"
@@ -703,7 +703,7 @@ void HoI4::World::convertAgreements()
 
 		if ((agreement->getType() == "alliance") || (agreement->getType() == "vassal"))
 		{
-			HoI4Agreement* HoI4a = new HoI4Agreement(*possibleHoI4Tag1, *possibleHoI4Tag2, agreement);
+			HoI4::Agreement* HoI4a = new HoI4::Agreement(*possibleHoI4Tag1, *possibleHoI4Tag2, *agreement);
 			diplomacy->addAgreement(HoI4a);
 		}
 
@@ -740,17 +740,17 @@ void HoI4::World::convertRelations()
 				country1 = country.first;
 			}
 
-			HoI4Agreement* HoI4a = new HoI4Agreement(country1, country2, "relation", relationItr.second.getRelations(), date("1936.1.1"));
+			HoI4::Agreement* HoI4a = new HoI4::Agreement(country1, country2, "relation", relationItr.second.getRelations(), date("1936.1.1"));
 			diplomacy->addAgreement(HoI4a);
 
 			if (relationItr.second.getGuarantee())
 			{
-				HoI4Agreement* HoI4a = new HoI4Agreement(country.first, relationItr.first, "guarantee", 0, date("1936.1.1"));
+				HoI4::Agreement* HoI4a = new HoI4::Agreement(country.first, relationItr.first, "guarantee", 0, date("1936.1.1"));
 				diplomacy->addAgreement(HoI4a);
 			}
 			if (relationItr.second.getSphereLeader())
 			{
-				HoI4Agreement* HoI4a = new HoI4Agreement(country.first, relationItr.first, "sphere", 0, date("1936.1.1"));
+				HoI4::Agreement* HoI4a = new HoI4::Agreement(country.first, relationItr.first, "sphere", 0, date("1936.1.1"));
 				diplomacy->addAgreement(HoI4a);
 			}
 		}

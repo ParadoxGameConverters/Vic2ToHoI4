@@ -1,5 +1,5 @@
 #include "HoI4Diplomacy.h"
-#include "HoI4Agreement.h"
+#include "Agreement.h"
 #include "Log.h"
 #include "../../Configuration.h"
 #include "OSCompatibilityLayer.h"
@@ -70,7 +70,7 @@ void HoI4Diplomacy::output() const
 }
 
 
-void HoI4Diplomacy::addAgreement(const HoI4Agreement* agr)
+void HoI4Diplomacy::addAgreement(const HoI4::Agreement* agr)
 {
 	bool alreadyExists = false;
 

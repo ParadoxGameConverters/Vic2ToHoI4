@@ -573,9 +573,6 @@
     <ClCompile Include="Source\HOI4World\Diplomacy\AIPeaces.cpp">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Diplomacy\HoI4Agreement.cpp">
-      <Filter>HoI4World\Diplomacy</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4Diplomacy.cpp">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClCompile>
@@ -608,6 +605,9 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Diplomacy\AiPeacesUpdater.cpp">
       <Filter>HoI4World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAgreement.cpp">
+      <Filter>Hoi4Outputter\Diplomacy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1105,9 +1105,6 @@
     <ClInclude Include="Source\HOI4World\Diplomacy\AIPeaces.h">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Diplomacy\HoI4Agreement.h">
-      <Filter>HoI4World\Diplomacy</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Diplomacy\HoI4Diplomacy.h">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClInclude>
@@ -1151,6 +1148,12 @@
       <Filter>Hoi4Outputter\Diplomacy</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Diplomacy\AiPeacesUpdater.h">
+      <Filter>HoI4World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAgreement.h">
+      <Filter>Hoi4Outputter\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Diplomacy\Agreement.h">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClInclude>
   </ItemGroup>
