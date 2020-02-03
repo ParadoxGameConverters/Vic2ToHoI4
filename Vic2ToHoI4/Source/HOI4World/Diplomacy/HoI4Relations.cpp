@@ -22,7 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "HoI4Relations.h"
-#include "../V2World/Relations.h"
+#include "../../V2World/Relations.h"
 
 
 

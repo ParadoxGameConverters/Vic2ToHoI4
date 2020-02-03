@@ -3,8 +3,8 @@
 
 
 
-#include "AIPeaces.h"
 #include "Decisions/Decisions.h"
+#include "Diplomacy/AIPeaces.h"
 #include "Ideas.h"
 #include "Leaders/Advisor.h"
 #include "Map/CoastalProvinces.h"

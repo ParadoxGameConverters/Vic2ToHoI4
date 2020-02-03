@@ -25,7 +25,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include <optional>
 #include <map>
 #include <string>
-#include "HoI4Country.h"
+#include "../HoI4Country.h"
 using namespace std;
 
 

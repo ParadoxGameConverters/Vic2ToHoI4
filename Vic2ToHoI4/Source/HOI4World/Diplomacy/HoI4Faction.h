@@ -1,4 +1,4 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
+/*Copyright (c) 2017 The Paradox Game Converters Project
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
@@ -21,42 +21,40 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#ifndef HOI4_WAR_H
-#define HOI4_WAR_H
+#ifndef HOI4_FACTION_H
+#define HOI4_FACTION_H
 
 
 
-#include "../V2World/Wars/War.h"
-#include "../Mappers/CountryMapping.h"
-#include <ostream>
-#include <set>
-#include <string>
+#include <memory>
+#include <vector>
+using namespace std;
 
 
 
 namespace HoI4
 {
-
-class War
-{
-	public:
-		War(const Vic2::War& sourceWar, const CountryMapper& countryMapper);
-
-		friend std::ostream& operator<<(std::ostream& outstream, const War& theWar);
-
-	private:
-		std::string originalDefender;
-		std::string CB;
-		std::set<std::string> extraDefenders;
-		std::string originalAttacker;
-		std::set<std::string> extraAttackers;
-};
-
-
-std::ostream& operator<<(std::ostream& outstream, const War& theWar);
-
+class Country;
 }
 
 
 
-#endif // HOI4_WAR_H
+class HoI4Faction
+{
+
+	public:
+		HoI4Faction(shared_ptr<HoI4::Country> leader, const vector<shared_ptr<HoI4::Country>>& members): Factionleader(leader), Factionmembers(members) {}
+
+		shared_ptr<HoI4::Country> getLeader() const { return Factionleader; }
+		vector<shared_ptr<HoI4::Country>> getMembers() const { return Factionmembers; }
+		void addMember(shared_ptr<HoI4::Country> addedCon) { Factionmembers.push_back(addedCon); }
+
+	private:
+		shared_ptr<HoI4::Country> Factionleader;
+		vector<shared_ptr<HoI4::Country>> Factionmembers;
+
+};
+
+
+
+#endif // HOI4_FACTION_H

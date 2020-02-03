@@ -3,13 +3,13 @@
 
 
 
+#include "Diplomacy/HoI4Faction.h"
+#include "Diplomacy/HoI4Relations.h"
+#include "Diplomacy/HoI4War.h"
 #include "HoI4Airforce.h"
 #include "HoI4Army.h"
-#include "HoI4Faction.h"
 #include "HoI4FocusTree.h"
 #include "HOI4Ideology.h"
-#include "HoI4Relations.h"
-#include "HoI4War.h"
 #include "Leaders/Admiral.h"
 #include "Leaders/General.h"
 #include "Navies/Navies.h"

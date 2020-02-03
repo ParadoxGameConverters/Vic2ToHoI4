@@ -22,7 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "AIPeaces.h"
-#include "../Configuration.h"
+#include "../../Configuration.h"
 #include <fstream>
 
 
