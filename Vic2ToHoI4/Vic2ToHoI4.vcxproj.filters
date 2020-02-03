@@ -603,6 +603,12 @@
     <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAiPeace.cpp">
       <Filter>Hoi4Outputter\Diplomacy</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAiPeaces.cpp">
+      <Filter>Hoi4Outputter\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Diplomacy\AiPeacesUpdater.cpp">
+      <Filter>HoI4World\Diplomacy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1140,6 +1146,12 @@
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAiPeace.h">
       <Filter>Hoi4Outputter\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAiPeaces.h">
+      <Filter>Hoi4Outputter\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Diplomacy\AiPeacesUpdater.h">
+      <Filter>HoI4World\Diplomacy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

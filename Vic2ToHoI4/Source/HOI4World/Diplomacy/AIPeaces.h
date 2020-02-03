@@ -1,11 +1,10 @@
-#ifndef HOI4_AI_PEACES
-#define HOI4_AI_PEACES
+#ifndef AI_PEACES_H
+#define AI_PEACES_H
 
 
 
 #include "AIPeace.h"
 #include "newParser.h"
-#include <set>
 #include <string>
 #include <vector>
 
@@ -14,21 +13,21 @@
 namespace HoI4
 {
 
-class AIPeaces: commonItems::parser
+class AiPeaces: commonItems::parser
 {
 	public:
-		AIPeaces() noexcept;
+		AiPeaces() noexcept;
 
-		void updateAIPeaces(const std::set<std::string>& majorIdeologies);
+		void updateAiPeace(std::string_view name, const std::string& replacementEnable);
 
-		void output(std::set<std::string> majorIdeologies);
+		[[nodiscard]] const auto& getThePeaces() const { return thePeaces; }
 
 	private:
-		std::vector<AIPeace> thePeaces;
+		std::vector<AiPeace> thePeaces;
 };
 
 }
 
 
 
-#endif // HOI4_AI_PEACES
+#endif // AI_PEACES_H

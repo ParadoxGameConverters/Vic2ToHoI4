@@ -215,7 +215,7 @@ class World: commonItems::parser
 		std::vector<std::shared_ptr<HoI4Faction>> factions;
 		HoI4Diplomacy* diplomacy = nullptr;
 		std::unique_ptr<HoI4::decisions> decisions;
-		std::unique_ptr<HoI4::AIPeaces> peaces;
+		std::unique_ptr<HoI4::AiPeaces> peaces;
 		HoI4::Events* events = nullptr;
 		std::unique_ptr<HoI4::OnActions> onActions;
 

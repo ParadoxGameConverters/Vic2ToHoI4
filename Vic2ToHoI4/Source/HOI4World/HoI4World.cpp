@@ -1,3 +1,4 @@
+#include "Diplomacy/AiPeacesUpdater.h"
 #include "Diplomacy/HoI4Agreement.h"
 #include "Diplomacy/HoI4Diplomacy.h"
 #include "Diplomacy/HoI4Faction.h"
@@ -36,6 +37,7 @@
 #include "ParserHelpers.h"
 #include "../Hoi4Outputter/Hoi4CountryOutputter.h"
 #include "../Hoi4Outputter/Decisions/DecisionsOutputter.h"
+#include "../Hoi4Outputter/Diplomacy/OutAiPeaces.h"
 #include "../Hoi4Outputter/Events/EventsOutputter.h"
 #include "../Hoi4Outputter/Map/OutBuildings.h"
 #include "../Hoi4Outputter/Map/OutStrategicRegion.h"
@@ -54,7 +56,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	countryMap(_sourceWorld),
 	theIdeas(std::make_unique<HoI4::Ideas>()),
 	decisions(make_unique<HoI4::decisions>(theConfiguration)),
-	peaces(make_unique<HoI4::AIPeaces>()),
+	peaces(make_unique<HoI4::AiPeaces>()),
 	diplomacy(new HoI4Diplomacy),
 	events(new HoI4::Events),
 	onActions(make_unique<HoI4::OnActions>())
@@ -100,7 +102,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	events->createStabilityEvents(majorIdeologies);
 	theIdeas->updateIdeas(majorIdeologies);
 	decisions->updateDecisions(majorIdeologies, states->getProvinceToStateIDMap(), *events);
-	peaces->updateAIPeaces(majorIdeologies);
+	updateAiPeaces(*peaces, majorIdeologies);
 	addNeutrality();
 	convertIdeologySupport();
 	states->convertCapitalVPs(countries, greatPowers, getStrongestCountryStrength());
@@ -1103,7 +1105,7 @@ void HoI4::World::output()
 	outputDecisions(*decisions, majorIdeologies, theConfiguration);
 	outputEvents(*events, theConfiguration);
 	onActions->output(majorIdeologies);
-	peaces->output(majorIdeologies);
+	outAiPeaces(*peaces, majorIdeologies, theConfiguration);
 	outputIdeologies();
 	outputLeaderTraits();
 	outputIdeas();

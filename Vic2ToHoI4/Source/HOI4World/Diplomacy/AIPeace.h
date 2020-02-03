@@ -11,16 +11,16 @@
 namespace HoI4
 {
 
-class AIPeace: commonItems::parser
+class AiPeace: commonItems::parser
 {
 	public:
-		AIPeace(const std::string& theName, std::istream& theStream);
+		AiPeace(const std::string& theName, std::istream& theStream);
 
 		[[nodiscard]] std::string_view getName() const { return name; }
 
 		void replaceEnable(const std::string& newEnable) { enable = newEnable; }
 
-		friend std::ostream& operator<<(std::ostream& outStream, const AIPeace& outPeace);
+		friend std::ostream& operator<<(std::ostream& outStream, const AiPeace& outPeace);
 
 	private:
 		std::string name;

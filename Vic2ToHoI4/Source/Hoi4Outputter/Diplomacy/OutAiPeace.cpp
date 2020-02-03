@@ -2,7 +2,7 @@
 
 
 
-std::ostream& HoI4::operator<<(std::ostream& outStream, const AIPeace& outPeace)
+std::ostream& HoI4::operator<<(std::ostream& outStream, const AiPeace& outPeace)
 {
 	outStream << outPeace.name << " = {\n";
 	if (!outPeace.enable.empty())

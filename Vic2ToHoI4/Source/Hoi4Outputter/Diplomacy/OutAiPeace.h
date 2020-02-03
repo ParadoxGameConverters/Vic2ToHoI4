@@ -11,7 +11,7 @@
 namespace HoI4
 {
 
-std::ostream& operator<<(std::ostream& outStream, const AIPeace& outPeace);
+std::ostream& operator<<(std::ostream& outStream, const AiPeace& outPeace);
 
 }
 

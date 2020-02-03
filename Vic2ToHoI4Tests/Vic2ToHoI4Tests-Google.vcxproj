@@ -60,6 +60,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Diplomacy\OutAiPeace.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Diplomacy\OutAiPeaces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventOptionOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventsOutputter.cpp" />
@@ -103,6 +104,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\StabilityWarSupportDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AIPeace.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AIPeaces.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AiPeacesUpdater.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4Agreement.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4Diplomacy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4Relations.cpp" />

@@ -3,7 +3,7 @@
 
 
 
-HoI4::AIPeace::AIPeace(const std::string& theName, std::istream& theStream):
+HoI4::AiPeace::AiPeace(const std::string& theName, std::istream& theStream):
 	name(theName)
 {
 	registerKeyword("enable", [this](const std::string& unused, std::istream& theStream){
