@@ -196,6 +196,7 @@
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAiPeace.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAiPeaces.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutWar.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Events\EventOptionOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Events\EventOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Events\EventsOutputter.cpp" />
@@ -368,6 +369,7 @@
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAiPeace.h" />
     <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAiPeaces.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutWar.h" />
     <ClInclude Include="Source\Hoi4Outputter\Events\EventOptionOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Events\EventOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Events\EventsOutputter.h" />

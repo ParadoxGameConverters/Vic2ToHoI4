@@ -19,7 +19,7 @@ class War
 	public:
 		War(const Vic2::War& sourceWar, const CountryMapper& countryMapper);
 
-		friend std::ostream& operator<<(std::ostream& outstream, const War& theWar);
+		friend std::ostream& operator<<(std::ostream& out, const War& theWar);
 
 	private:
 		std::string originalDefender;
@@ -28,9 +28,6 @@ class War
 		std::string originalAttacker;
 		std::set<std::string> extraAttackers;
 };
-
-
-std::ostream& operator<<(std::ostream& outstream, const War& theWar);
 
 }
 

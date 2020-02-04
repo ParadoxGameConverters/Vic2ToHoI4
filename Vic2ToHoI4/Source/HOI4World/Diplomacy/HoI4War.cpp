@@ -5,10 +5,10 @@
 
 HoI4::War::War(const Vic2::War& sourceWar, const CountryMapper& countryMapper)
 {
-	auto posssibleOriginalDefender = countryMapper.getHoI4Tag(sourceWar.getOriginalDefender());
-	if (posssibleOriginalDefender)
+	auto possibleOriginalDefender = countryMapper.getHoI4Tag(sourceWar.getOriginalDefender());
+	if (possibleOriginalDefender)
 	{
-		originalDefender = *posssibleOriginalDefender;
+		originalDefender = *possibleOriginalDefender;
 	}
 	else
 	{
@@ -17,14 +17,14 @@ HoI4::War::War(const Vic2::War& sourceWar, const CountryMapper& countryMapper)
 
 	CB = "annex_everything";
 
-	for (auto defender: sourceWar.getDefenders())
+	for (const auto& defender: sourceWar.getDefenders())
 	{
 		if (defender != sourceWar.getOriginalDefender())
 		{
-			auto posssibleDefender = countryMapper.getHoI4Tag(defender);
-			if (posssibleDefender)
+			auto possibleDefender = countryMapper.getHoI4Tag(defender);
+			if (possibleDefender)
 			{
-				extraDefenders.insert(*posssibleDefender);
+				extraDefenders.insert(*possibleDefender);
 			}
 			else
 			{
@@ -33,24 +33,24 @@ HoI4::War::War(const Vic2::War& sourceWar, const CountryMapper& countryMapper)
 		}
 	}
 
-	auto posssibleOriginalAttacker = countryMapper.getHoI4Tag(sourceWar.getOriginalAttacker());
-	if (posssibleOriginalAttacker)
+	auto possibleOriginalAttacker = countryMapper.getHoI4Tag(sourceWar.getOriginalAttacker());
+	if (possibleOriginalAttacker)
 	{
-		originalAttacker = *posssibleOriginalAttacker;
+		originalAttacker = *possibleOriginalAttacker;
 	}
 	else
 	{
 		LOG(LogLevel::Warning) << "Could not map " << sourceWar.getOriginalAttacker() << ", original attacker in a war";
 	}
 
-	for (auto attacker: sourceWar.getAttackers())
+	for (const auto& attacker: sourceWar.getAttackers())
 	{
 		if (attacker != sourceWar.getOriginalAttacker())
 		{
-			auto posssibleAttacker = countryMapper.getHoI4Tag(attacker);
-			if (posssibleAttacker)
+			auto possibleAttacker = countryMapper.getHoI4Tag(attacker);
+			if (possibleAttacker)
 			{
-				extraAttackers.insert(*posssibleAttacker);
+				extraAttackers.insert(*possibleAttacker);
 			}
 			else
 			{
@@ -58,38 +58,4 @@ HoI4::War::War(const Vic2::War& sourceWar, const CountryMapper& countryMapper)
 			}
 		}
 	}
-}
-
-
-
-std::ostream& HoI4::operator<<(std::ostream& outstream, const War& theWar)
-{
-	outstream << "declare_war_on = {\n";
-	outstream << "\ttarget = " << theWar.originalDefender << "\n";
-	outstream << "\ttype = " << theWar.CB << "\n";
-	outstream << "}\n";
-
-	for (auto extraAttacker: theWar.extraAttackers)
-	{
-		outstream << extraAttacker << " = {\n";
-		outstream << "\tadd_to_war = {\n";
-		outstream << "\t\ttargeted_alliance = " << theWar.originalAttacker << "\n";
-		outstream << "\t\tenemy = " << theWar.originalDefender << "\n";
-		outstream << "\t}\n";
-		outstream << "}\n";
-	}
-
-	for (auto extraDefender : theWar.extraDefenders)
-	{
-		outstream << extraDefender << " = {\n";
-		outstream << "\tadd_to_war = {\n";
-		outstream << "\t\ttargeted_alliance = " << theWar.originalDefender << "\n";
-		outstream << "\t\tenemy = " << theWar.originalAttacker << "\n";
-		outstream << "\t}\n";
-		outstream << "}\n";
-	}
-
-	outstream << "\n";
-
-	return outstream;
 }
