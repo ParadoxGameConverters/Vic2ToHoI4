@@ -3,7 +3,7 @@
 
 
 
-#include "Diplomacy/HoI4Faction.h"
+#include "Diplomacy/Faction.h"
 #include "Diplomacy/HoI4Relations.h"
 #include "Diplomacy/HoI4War.h"
 #include "HoI4Airforce.h"
@@ -118,7 +118,7 @@ class Country
 		void adjustResearchFocuses() const;
 
 		void setSphereLeader(const std::string& SphereLeader) { sphereLeader = SphereLeader; }
-		void setFaction(const std::shared_ptr<const HoI4Faction>& newFaction) { faction = newFaction; }
+		void setFaction(const std::shared_ptr<const Faction>& newFaction) { faction = newFaction; }
 		void giveNationalFocus(std::unique_ptr<HoI4FocusTree>& NF) { nationalFocus = std::move(NF); }
 		void setGreatPower() { greatPower = true; }
 		void setPuppetMaster(const std::string& _master) { puppetMaster = _master; }
@@ -130,7 +130,7 @@ class Country
 		[[nodiscard]] float getNavalStrength() const;
 		[[nodiscard]] double getEconomicStrength(const double& years) const;
 		[[nodiscard]] bool areElectionsAllowed() const;
-		[[nodiscard]] std::optional<HoI4Faction> getFaction() const;
+		[[nodiscard]] std::optional<Faction> getFaction() const;
 		[[nodiscard]] std::optional<HoI4FocusTree> getNationalFocus() const;
 
 		[[nodiscard]] const std::string& getTag() const { return tag; }
@@ -294,7 +294,7 @@ class Country
 		std::map<std::string, HoI4::Relations> relations;
 		std::vector<War> wars;
 		double threat = 0.0;
-		std::shared_ptr<const HoI4Faction> faction;
+		std::shared_ptr<const Faction> faction;
 		std::string sphereLeader;
 		std::set<std::string> allies;
 		std::set<std::string> puppets;

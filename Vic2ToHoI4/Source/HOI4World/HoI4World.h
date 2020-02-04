@@ -29,7 +29,6 @@
 
 
 
-class HoI4Faction;
 class HoI4Ideology;
 
 
@@ -44,6 +43,7 @@ namespace Vic2
 {
 
 class Country;
+class Faction;
 class World;
 
 }
@@ -78,7 +78,7 @@ class World: commonItems::parser
 		std::vector<std::shared_ptr<HoI4::Country>> getGreatPowers() const { return greatPowers; }
 		std::map<int, HoI4::State> getStates() const { return states->getStates(); }
 		const std::map<int, int>& getProvinceToStateIDMap() const { return states->getProvinceToStateIDMap(); }
-		std::vector<std::shared_ptr<HoI4Faction>> getFactions() const { return factions; }
+		std::vector<std::shared_ptr<Faction>> getFactions() const { return factions; }
 		HoI4::Events* getEvents() const { return events; }
 		std::set<std::string> getMajorIdeologies() const { return majorIdeologies; }
 
@@ -210,7 +210,7 @@ class World: commonItems::parser
 		std::map<std::string, HoI4::Advisor> ideologicalAdvisors;
 		std::unique_ptr<HoI4::Ideas> theIdeas;
 		
-		std::vector<std::shared_ptr<HoI4Faction>> factions;
+		std::vector<std::shared_ptr<Faction>> factions;
 		std::unique_ptr<HoI4::decisions> decisions;
 		std::unique_ptr<HoI4::AiPeaces> peaces;
 		HoI4::Events* events = nullptr;

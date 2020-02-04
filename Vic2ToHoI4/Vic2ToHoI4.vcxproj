@@ -412,7 +412,7 @@
     <ClInclude Include="Source\HOI4World\Diplomacy\AIPeace.h" />
     <ClInclude Include="Source\HOI4World\Diplomacy\AIPeaces.h" />
     <ClInclude Include="Source\HOI4World\Diplomacy\AiPeacesUpdater.h" />
-    <ClInclude Include="Source\HOI4World\Diplomacy\HoI4Faction.h" />
+    <ClInclude Include="Source\HOI4World\Diplomacy\Faction.h" />
     <ClInclude Include="Source\HOI4World\Diplomacy\HoI4Relations.h" />
     <ClInclude Include="Source\HOI4World\Diplomacy\HoI4War.h" />
     <ClInclude Include="Source\HOI4World\Diplomacy\HoI4WarCreator.h" />

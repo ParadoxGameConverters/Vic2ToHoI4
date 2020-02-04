@@ -1008,7 +1008,7 @@ bool HoI4::Country::areElectionsAllowed() const
 }
 
 
-std::optional<HoI4Faction> HoI4::Country::getFaction() const
+std::optional<HoI4::Faction> HoI4::Country::getFaction() const
 {
 	if (faction)
 	{

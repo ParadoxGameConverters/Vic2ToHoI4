@@ -42,17 +42,17 @@ class HoI4WarCreator
 		void addTargetsToWorldTargetMap(shared_ptr<HoI4::Country> country);
 		map<double, shared_ptr<HoI4::Country>> getDistancesToGreatPowers(shared_ptr<HoI4::Country> country);
 		double calculateWorldStrength(ofstream& AILog) const;
-		void generateMajorWars(ofstream& AILog, set<shared_ptr<HoI4Faction>>& factionsAtWar, const std::set<std::string>& majorIdeologies, const HoI4::World* world, const HoI4::MapData& theMapData);
-		double calculatePercentOfWorldAtWar(ofstream& AILog, const set<shared_ptr<HoI4Faction>>& factionsAtWar, double worldStrength) const;
-		void generateAdditionalWars(ofstream& AILog, set<shared_ptr<HoI4Faction>>& factionsAtWar, double worldStrength, const HoI4::MapData& theMapData);
+		void generateMajorWars(ofstream& AILog, set<shared_ptr<HoI4::Faction>>& factionsAtWar, const std::set<std::string>& majorIdeologies, const HoI4::World* world, const HoI4::MapData& theMapData);
+		double calculatePercentOfWorldAtWar(ofstream& AILog, const set<shared_ptr<HoI4::Faction>>& factionsAtWar, double worldStrength) const;
+		void generateAdditionalWars(ofstream& AILog, set<shared_ptr<HoI4::Faction>>& factionsAtWar, double worldStrength, const HoI4::MapData& theMapData);
 		bool isImportantCountry(shared_ptr<HoI4::Country> country);
 
-		vector<shared_ptr<HoI4Faction>> fascistWarMaker(shared_ptr<HoI4::Country> country, ofstream& AILog, const HoI4::World *world, const HoI4::MapData& theMapData);
-		vector<shared_ptr<HoI4Faction>> communistWarCreator(shared_ptr<HoI4::Country> country, const std::set<std::string>& majorIdeologies, ofstream& AILog, const HoI4::MapData& theMapData);
-		vector<shared_ptr<HoI4Faction>> democracyWarCreator(shared_ptr<HoI4::Country> country);
-		vector<shared_ptr<HoI4Faction>> absolutistWarCreator(shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData);
-		vector<shared_ptr<HoI4Faction>> neighborWarCreator(shared_ptr<HoI4::Country> country, ofstream& AILog, const HoI4::MapData& theMapData);
-		vector<shared_ptr<HoI4Faction>> radicalWarCreator(shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData);
+		vector<shared_ptr<HoI4::Faction>> fascistWarMaker(shared_ptr<HoI4::Country> country, ofstream& AILog, const HoI4::World *world, const HoI4::MapData& theMapData);
+		vector<shared_ptr<HoI4::Faction>> communistWarCreator(shared_ptr<HoI4::Country> country, const std::set<std::string>& majorIdeologies, ofstream& AILog, const HoI4::MapData& theMapData);
+		vector<shared_ptr<HoI4::Faction>> democracyWarCreator(shared_ptr<HoI4::Country> country);
+		vector<shared_ptr<HoI4::Faction>> absolutistWarCreator(shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData);
+		vector<shared_ptr<HoI4::Faction>> neighborWarCreator(shared_ptr<HoI4::Country> country, ofstream& AILog, const HoI4::MapData& theMapData);
+		vector<shared_ptr<HoI4::Faction>> radicalWarCreator(shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData);
 
 		vector<shared_ptr<HoI4::Country>> findEvilCountries() const;
 
@@ -68,11 +68,11 @@ class HoI4WarCreator
 		map<string, shared_ptr<HoI4::Country>> findFarNeighbors(shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData);
 		vector<shared_ptr<HoI4::Country>> getGreatPowerTargets(shared_ptr<HoI4::Country> country);
 		map<double, shared_ptr<HoI4::Country>> getGPsByDistance(shared_ptr<HoI4::Country> country);
-		vector<shared_ptr<HoI4Faction>> addGreatPowerWars(shared_ptr<HoI4::Country> country, HoI4FocusTree& FocusTree, vector<shared_ptr<HoI4::Country>>& greatPowerTargets);
+		vector<shared_ptr<HoI4::Faction>> addGreatPowerWars(shared_ptr<HoI4::Country> country, HoI4FocusTree& FocusTree, vector<shared_ptr<HoI4::Country>>& greatPowerTargets);
 		void addTradeEvents(shared_ptr<HoI4::Country> country, const vector<shared_ptr<HoI4::Country>>& greatPowerTargets);
 
 		void    setSphereLeaders(const Vic2::World* sourceWorld);
-		double GetFactionStrength(const shared_ptr<HoI4Faction>& Faction, int years) const;
+		double GetFactionStrength(const shared_ptr<HoI4::Faction>& Faction, int years) const;
 		string HowToTakeLand(shared_ptr<HoI4::Country> TargetCountry, shared_ptr<HoI4::Country> AttackingCountry, double time);
 		vector<shared_ptr<HoI4::Country>> GetMorePossibleAllies(const shared_ptr<HoI4::Country>& CountryThatWantsAllies);
 		optional<double> getDistanceBetweenCountries(shared_ptr<HoI4::Country> Country1, shared_ptr<HoI4::Country> Country2);
@@ -89,7 +89,7 @@ class HoI4WarCreator
 			const std::vector<std::shared_ptr<HoI4::Country>>& Faction,
 			double time
 		);
-		shared_ptr<HoI4Faction> findFaction(shared_ptr<HoI4::Country> checkingCountry);
+		shared_ptr<HoI4::Faction> findFaction(shared_ptr<HoI4::Country> checkingCountry);
 
 		map<string, shared_ptr<HoI4::Country>> getNeighbors(shared_ptr<HoI4::Country> checkingCountry, const HoI4::MapData& theMapData);
 		std::map<std::string, std::shared_ptr<HoI4::Country>> getImmediateNeighbors(

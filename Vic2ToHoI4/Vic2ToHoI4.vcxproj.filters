@@ -1105,9 +1105,6 @@
     <ClInclude Include="Source\HOI4World\Diplomacy\HoI4WarCreator.h">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Diplomacy\HoI4Faction.h">
-      <Filter>HoI4World\Diplomacy</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Navies\OutLegacyNavyNames.h">
       <Filter>Hoi4Outputter\Navies</Filter>
     </ClInclude>
@@ -1142,6 +1139,9 @@
       <Filter>Hoi4Outputter\Diplomacy</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Diplomacy\HoI4War.h">
+      <Filter>HoI4World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Diplomacy\Faction.h">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClInclude>
   </ItemGroup>

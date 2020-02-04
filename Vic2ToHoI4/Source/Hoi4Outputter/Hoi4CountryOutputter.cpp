@@ -4,7 +4,7 @@
 #include "Navies/OutLegacyNavyNames.h"
 #include "Navies/OutMtgNavyNames.h"
 #include "ShipTypes/ShipVariantsOutputter.h"
-#include "../HOI4World/Diplomacy/HoI4Faction.h"
+#include "../HOI4World/Diplomacy/Faction.h"
 #include "../HOI4World/DivisionTemplate.h"
 #include "../HOI4World/HoI4Country.h"
 #include "../HOI4World/HoI4FocusTree.h"
@@ -264,7 +264,7 @@ void outputRelations(
 void outputFactions(
 	std::ostream& output,
 	const std::string& tag,
-	std::optional<HoI4Faction> faction,
+	std::optional<HoI4::Faction> faction,
 	std::optional<std::string> possibleLeaderName
 );
 void outputGuaranteedSpherelings(
@@ -627,7 +627,7 @@ void outputRelations(
 void outputFactions(
 	std::ostream& output,
 	const std::string& tag,
-	std::optional<HoI4Faction> faction,
+	std::optional<HoI4::Faction> faction,
 	std::optional<std::string> possibleLeaderName
 ) {
 	if (faction && (faction->getLeader()->getTag() == tag))
