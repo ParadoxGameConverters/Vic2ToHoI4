@@ -100,6 +100,9 @@
     <Filter Include="Hoi4Outputter\Diplomacy">
       <UniqueIdentifier>{2663a559-a624-41b2-b071-3c7754193b4f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\WarCreator">
+      <UniqueIdentifier>{74101746-ca0c-4e12-b303-f1baedf6c90a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -573,9 +576,6 @@
     <ClCompile Include="Source\HOI4World\Diplomacy\AIPeaces.cpp">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Diplomacy\HoI4WarCreator.cpp">
-      <Filter>HoI4World\Diplomacy</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Navies\OutLegacyNavyNames.cpp">
       <Filter>Hoi4Outputter\Navies</Filter>
     </ClCompile>
@@ -602,6 +602,9 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4War.cpp">
       <Filter>HoI4World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\WarCreator\HoI4WarCreator.cpp">
+      <Filter>HoI4World\WarCreator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1102,9 +1105,6 @@
     <ClInclude Include="Source\HOI4World\Diplomacy\HoI4Relations.h">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Diplomacy\HoI4WarCreator.h">
-      <Filter>HoI4World\Diplomacy</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Navies\OutLegacyNavyNames.h">
       <Filter>Hoi4Outputter\Navies</Filter>
     </ClInclude>
@@ -1143,6 +1143,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Diplomacy\Faction.h">
       <Filter>HoI4World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\WarCreator\HoI4WarCreator.h">
+      <Filter>HoI4World\WarCreator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

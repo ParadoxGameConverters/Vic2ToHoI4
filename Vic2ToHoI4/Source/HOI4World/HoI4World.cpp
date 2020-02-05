@@ -1,7 +1,7 @@
 #include "Diplomacy/AiPeacesUpdater.h"
-#include "Diplomacy/HoI4Faction.h"
-#include "Diplomacy/HoI4WarCreator.h"
+#include "Diplomacy/Faction.h"
 #include "HoI4World.h"
+#include "WarCreator/HoI4WarCreator.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "../Configuration.h"
@@ -917,7 +917,7 @@ void HoI4::World::createFactions()
 
 		if (factionMembers.size() > 1)
 		{
-			auto newFaction = make_shared<HoI4Faction>(leader, factionMembers);
+			auto newFaction = make_shared<HoI4::Faction>(leader, factionMembers);
 			for (auto member : factionMembers)
 			{
 				member->setFaction(newFaction);

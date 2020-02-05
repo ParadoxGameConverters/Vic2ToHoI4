@@ -242,7 +242,6 @@
     <ClCompile Include="Source\HOI4World\Diplomacy\AIPeaces.cpp" />
     <ClCompile Include="Source\HOI4World\Diplomacy\AiPeacesUpdater.cpp" />
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4War.cpp" />
-    <ClCompile Include="Source\HOI4World\Diplomacy\HoI4WarCreator.cpp" />
     <ClCompile Include="Source\HOI4World\Division.cpp" />
     <ClCompile Include="Source\HOI4World\DivisionTemplate.cpp" />
     <ClCompile Include="Source\HOI4World\Events\Event.cpp" />
@@ -316,6 +315,7 @@
     <ClCompile Include="Source\HOI4World\States\StateCategoryFile.cpp" />
     <ClCompile Include="Source\HOI4World\States\StateHistory.cpp" />
     <ClCompile Include="Source\HOI4World\Technologies.cpp" />
+    <ClCompile Include="Source\HOI4World\WarCreator\HoI4WarCreator.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Mappers\CountryMapping.cpp" />
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp" />
@@ -415,7 +415,6 @@
     <ClInclude Include="Source\HOI4World\Diplomacy\Faction.h" />
     <ClInclude Include="Source\HOI4World\Diplomacy\HoI4Relations.h" />
     <ClInclude Include="Source\HOI4World\Diplomacy\HoI4War.h" />
-    <ClInclude Include="Source\HOI4World\Diplomacy\HoI4WarCreator.h" />
     <ClInclude Include="Source\HOI4World\Division.h" />
     <ClInclude Include="Source\HOI4World\DivisionTemplate.h" />
     <ClInclude Include="Source\HOI4World\Events\Event.h" />
@@ -501,6 +500,7 @@
     <ClInclude Include="Source\HOI4World\States\StateCategoryFile.h" />
     <ClInclude Include="Source\HOI4World\States\StateHistory.h" />
     <ClInclude Include="Source\HOI4World\Technologies.h" />
+    <ClInclude Include="Source\HOI4World\WarCreator\HoI4WarCreator.h" />
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.h" />
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.h" />
     <ClInclude Include="Source\Mappers\GraphicsMapper.h" />

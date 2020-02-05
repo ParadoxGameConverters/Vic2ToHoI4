@@ -1,5 +1,5 @@
 #include "HoI4WarCreator.h"
-#include "Faction.h"
+#include "../Diplomacy/Faction.h"
 #include "../Events/Events.h"
 #include "../HoI4Focus.h"
 #include "../HoI4Localisation.h"
@@ -1184,8 +1184,6 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::democracyWarCreator(shared_ptr
 	map<int, shared_ptr<HoI4::Country>> CountriesToContain;
 	vector<shared_ptr<HoI4::Country>> vCountriesToContain;
 	set<string> Allies = Leader->getAllies();
-	int v1 = rand() % 100;
-	v1 = v1 / 100;
 	auto FocusTree = genericFocusTree->makeCustomizedCopy(*Leader);
 	for (auto GC: theWorld->getGreatPowers())
 	{
@@ -1196,7 +1194,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::democracyWarCreator(shared_ptr
 			if (relationVal < 100 && GC->getGovernmentIdeology() != "democratic" && std::find(Allies.begin(), Allies.end(), GC->getTag()) == Allies.end())
 			{
 				CountriesAtWar.push_back(findFaction(Leader));
-				CountriesToContain.insert(make_pair(static_cast<int>(relationVal + v1), GC));
+				CountriesToContain.insert(make_pair(static_cast<int>(relationVal), GC));
 			}
 		}
 	}

@@ -107,7 +107,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AIPeaces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AiPeacesUpdater.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4War.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4WarCreator.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Division.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\DivisionTemplate.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.cpp" />
@@ -181,6 +180,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateCategoryFile.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateHistory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Technologies.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\HoI4WarCreator.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryMapping.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.cpp" />
