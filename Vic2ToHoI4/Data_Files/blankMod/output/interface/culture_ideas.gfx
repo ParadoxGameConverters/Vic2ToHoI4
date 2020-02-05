@@ -2037,4 +2037,8 @@ spriteTypes = {
 		name = "GFX_idea_culture_australus"
 		texturefile = "gfx/interface/culture/culture_australus.dds"
 	}
+	spriteType = {
+		name = "GFX_idea_culture_meashighcaw"
+		texturefile = "gfx/interface/culture/culture_meashighcaw.dds"
+	}
 }
