@@ -52,6 +52,13 @@ void HoI4::outputDecisions(
 	}
 	outStream.close();
 
+	outStream.open("output/" + theConfiguration.getOutputName() + "/common/decisions/resource_prospecting.txt");
+	for (const auto& category : theDecisions.getResourceProspectingDecisions())
+	{
+		outStream << category;
+	}
+	outStream.close();
+
 	outStream.open("output/" + theConfiguration.getOutputName() + "/common/decisions/_generic_decisions.txt");
 	for (const auto& category: theDecisions.getGenericDecisions())
 	{

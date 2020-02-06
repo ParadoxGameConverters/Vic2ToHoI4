@@ -18,6 +18,9 @@ HoI4::decisions::decisions(const Configuration& theConfiguration)
 	);
 	foreignInfluenceDecisions.importDecisions("DataFiles/foreignInfluenceDecisions.txt");
 	navalTreatyDecisions.importDecisions(theConfiguration.getHoI4Path() + "/common/decisions/MTG_naval_treaty.txt");
+	resourceProspectingDecisons.importDecisions(
+		theConfiguration.getHoI4Path() + "/common/decisions/resource_prospecting.txt"
+	);
 	genericDecisions.importDecisions(theConfiguration.getHoI4Path() + "/common/decisions/_generic_decisions.txt");
 }
 

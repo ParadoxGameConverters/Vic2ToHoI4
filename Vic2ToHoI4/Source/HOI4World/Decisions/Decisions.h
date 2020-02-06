@@ -56,6 +56,10 @@ class decisions: commonItems::parser
 		{
 			return navalTreatyDecisions.getDecisions();
 		}
+		[[nodiscard]] const std::vector<decisionsCategory>& getResourceProspectingDecisions() const
+		{
+			return resourceProspectingDecisons.getDecisions();
+		}
 		[[nodiscard]] const std::vector<decisionsCategory>& getGenericDecisions() const
 		{
 			return genericDecisions.getDecisions();
@@ -67,6 +71,7 @@ class decisions: commonItems::parser
 		ExiledGovernmentsDecisions exiledGovernmentsDecisions;
 		ForeignInfluenceDecisions foreignInfluenceDecisions;
 		NavalTreatyDecisions navalTreatyDecisions;
+		DecisionsFile resourceProspectingDecisons;
 		GenericDecisions genericDecisions;
 };
 
