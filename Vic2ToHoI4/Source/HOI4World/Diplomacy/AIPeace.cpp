@@ -50,6 +50,7 @@ HoI4::AiPeace::AiPeace(const std::string& theName, std::istream& theStream):
 		const commonItems::stringOfItem forceGovernmentString(theStream);
 		forceGovernment = forceGovernmentString.getString();
 	});
+	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();
