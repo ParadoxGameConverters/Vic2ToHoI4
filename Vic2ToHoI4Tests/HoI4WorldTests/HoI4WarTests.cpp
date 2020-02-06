@@ -22,7 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "gtest/gtest.h"
-#include "../Vic2ToHoI4/Source/HOI4World/HoI4War.h"
+#include "../Vic2ToHoI4/Source/HOI4World/Diplomacy/HoI4War.h"
 #include "../Mocks/CountryMapperMock.h"
 #include <sstream>
 

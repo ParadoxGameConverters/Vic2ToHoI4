@@ -94,6 +94,15 @@
     <Filter Include="Hoi4Outputter\ScriptedTriggers">
       <UniqueIdentifier>{dcc00db9-91ca-4d39-816a-75b884ceb428}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\Diplomacy">
+      <UniqueIdentifier>{380fc73c-dfd8-40bc-b0f0-ea0b3d25f1d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hoi4Outputter\Diplomacy">
+      <UniqueIdentifier>{2663a559-a624-41b2-b071-3c7754193b4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4World\WarCreator">
+      <UniqueIdentifier>{74101746-ca0c-4e12-b303-f1baedf6c90a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -108,13 +117,7 @@
     <ClCompile Include="Source\HOI4World\HoI4Country.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\HoI4Diplomacy.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\HoI4Localisation.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\HoI4Relations.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\HoI4World.cpp">
@@ -152,17 +155,11 @@
     <ClCompile Include="Source\HOI4World\HoI4Focus.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\HoI4WarCreator.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
     <ClCompile Include="..\common_items\CardinalToOrdinal.cpp">
       <Filter>CommonItems</Filter>
     </ClCompile>
     <ClCompile Include="Source\Mappers\ProvinceDefinitions.cpp">
       <Filter>Mappers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\HoI4Agreement.cpp">
-      <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\Mappers\GraphicsMapper.cpp">
       <Filter>Mappers</Filter>
@@ -228,12 +225,6 @@
       <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\IdeaGroup.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\AIPeaces.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\AIPeace.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\OnActions.cpp">
@@ -338,9 +329,6 @@
     </ClCompile>
     <ClCompile Include="Source\V2World\Wars\WarGoal.cpp">
       <Filter>Vic2World\Wars</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\HoI4War.cpp">
-      <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\States\HoI4State.cpp">
       <Filter>HoI4World\States</Filter>
@@ -582,6 +570,12 @@
     <ClCompile Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.cpp">
       <Filter>HoI4World\ScriptedTriggers</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Diplomacy\AIPeace.cpp">
+      <Filter>HoI4World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Diplomacy\AIPeaces.cpp">
+      <Filter>HoI4World\Diplomacy</Filter>
+    </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Navies\OutLegacyNavyNames.cpp">
       <Filter>Hoi4Outputter\Navies</Filter>
     </ClCompile>
@@ -593,6 +587,24 @@
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Navies\OutMtgNavyNames.cpp">
       <Filter>Hoi4Outputter\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAiPeace.cpp">
+      <Filter>Hoi4Outputter\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAiPeaces.cpp">
+      <Filter>Hoi4Outputter\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Diplomacy\AiPeacesUpdater.cpp">
+      <Filter>HoI4World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutWar.cpp">
+      <Filter>Hoi4Outputter\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Diplomacy\HoI4War.cpp">
+      <Filter>HoI4World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\WarCreator\HoI4WarCreator.cpp">
+      <Filter>HoI4World\WarCreator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -608,13 +620,7 @@
     <ClInclude Include="Source\HOI4World\HoI4Country.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\HoI4Diplomacy.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\HoI4Localisation.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\HoI4Relations.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\HoI4World.h">
@@ -642,16 +648,10 @@
     <ClInclude Include="Source\HOI4World\HOI4Version.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\HoI4Faction.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\HoI4FocusTree.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\HoI4Focus.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\HoI4WarCreator.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="..\common_items\CardinalToOrdinal.h">
@@ -659,9 +659,6 @@
     </ClInclude>
     <ClInclude Include="Source\Mappers\ProvinceDefinitions.h">
       <Filter>Mappers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\HoI4Agreement.h">
-      <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\GraphicsMapper.h">
       <Filter>Mappers</Filter>
@@ -727,12 +724,6 @@
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\IdeaGroup.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\AIPeaces.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\AIPeace.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\OnActions.h">
@@ -858,9 +849,6 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Wars\WarGoal.h">
       <Filter>Vic2World\Wars</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\HoI4War.h">
-      <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\States\HoI4State.h">
       <Filter>HoI4World\States</Filter>
@@ -1108,6 +1096,15 @@
     <ClInclude Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.h">
       <Filter>HoI4World\ScriptedTriggers</Filter>
     </ClInclude>
+    <ClInclude Include="Source\HOI4World\Diplomacy\AIPeace.h">
+      <Filter>HoI4World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Diplomacy\AIPeaces.h">
+      <Filter>HoI4World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Diplomacy\HoI4Relations.h">
+      <Filter>HoI4World\Diplomacy</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Navies\OutLegacyNavyNames.h">
       <Filter>Hoi4Outputter\Navies</Filter>
     </ClInclude>
@@ -1128,6 +1125,27 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Navies\LegacyShipTypeNames.h">
       <Filter>HoI4World\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAiPeace.h">
+      <Filter>Hoi4Outputter\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAiPeaces.h">
+      <Filter>Hoi4Outputter\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Diplomacy\AiPeacesUpdater.h">
+      <Filter>HoI4World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutWar.h">
+      <Filter>Hoi4Outputter\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Diplomacy\HoI4War.h">
+      <Filter>HoI4World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Diplomacy\Faction.h">
+      <Filter>HoI4World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\WarCreator\HoI4WarCreator.h">
+      <Filter>HoI4World\WarCreator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

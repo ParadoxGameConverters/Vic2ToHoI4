@@ -1,37 +1,14 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "HoI4WarCreator.h"
-#include "Events/Events.h"
-#include "HoI4Faction.h"
-#include "HoI4Focus.h"
-#include "HoI4World.h"
-#include "HoI4Localisation.h"
-#include "Map/MapData.h"
-#include "../Mappers/ProvinceDefinitions.h"
-#include "../V2World/Country.h"
-#include "../V2World/Party.h"
-#include "../V2World/World.h"
+#include "../Diplomacy/Faction.h"
+#include "../Events/Events.h"
+#include "../HoI4Focus.h"
+#include "../HoI4Localisation.h"
+#include "../HoI4World.h"
+#include "../Map/MapData.h"
+#include "../../Mappers/ProvinceDefinitions.h"
+#include "../../V2World/Country.h"
+#include "../../V2World/Party.h"
+#include "../../V2World/World.h"
 #include "Log.h"
 
 
@@ -56,7 +33,7 @@ HoI4WarCreator::HoI4WarCreator(const HoI4::World* world, const HoI4::MapData& th
 	addAllTargetsToWorldTargetMap();
 	double worldStrength = calculateWorldStrength(AILog);
 
-	set<shared_ptr<HoI4Faction>> factionsAtWar;
+	set<shared_ptr<HoI4::Faction>> factionsAtWar;
 	LOG(LogLevel::Info) << "Generating major wars";
 	generateMajorWars(AILog, factionsAtWar, world->getMajorIdeologies(), world, theMapData);
 	LOG(LogLevel::Info) << "Generating additional wars";
@@ -155,7 +132,7 @@ double HoI4WarCreator::calculateWorldStrength(ofstream& AILog) const
 }
 
 
-void HoI4WarCreator::generateMajorWars(ofstream& AILog, set<shared_ptr<HoI4Faction>>& factionsAtWar, const std::set<std::string>& majorIdeologies, const HoI4::World* world, const HoI4::MapData& theMapData)
+void HoI4WarCreator::generateMajorWars(ofstream& AILog, set<shared_ptr<HoI4::Faction>>& factionsAtWar, const std::set<std::string>& majorIdeologies, const HoI4::World* world, const HoI4::MapData& theMapData)
 {
 	if (theConfiguration.getDebug())
 	{
@@ -166,7 +143,7 @@ void HoI4WarCreator::generateMajorWars(ofstream& AILog, set<shared_ptr<HoI4Facti
 	{
 		if (isImportantCountry(country.second))
 		{
-			vector<shared_ptr<HoI4Faction>> newFactionsAtWar;
+			vector<shared_ptr<HoI4::Faction>> newFactionsAtWar;
 
 			if (country.second->getGovernmentIdeology() == "fascism")
 			{
@@ -196,7 +173,7 @@ void HoI4WarCreator::generateMajorWars(ofstream& AILog, set<shared_ptr<HoI4Facti
 }
 
 
-double HoI4WarCreator::calculatePercentOfWorldAtWar(ofstream& AILog, const set<shared_ptr<HoI4Faction>>& factionsAtWar, double worldStrength) const
+double HoI4WarCreator::calculatePercentOfWorldAtWar(ofstream& AILog, const set<shared_ptr<HoI4::Faction>>& factionsAtWar, double worldStrength) const
 {
 	double countriesAtWarStrength = 0.0;
 	for (auto faction : factionsAtWar)
@@ -214,7 +191,7 @@ double HoI4WarCreator::calculatePercentOfWorldAtWar(ofstream& AILog, const set<s
 }
 
 
-void HoI4WarCreator::generateAdditionalWars(ofstream& AILog, set<shared_ptr<HoI4Faction>>& factionsAtWar, double worldStrength, const HoI4::MapData& theMapData)
+void HoI4WarCreator::generateAdditionalWars(ofstream& AILog, set<shared_ptr<HoI4::Faction>>& factionsAtWar, double worldStrength, const HoI4::MapData& theMapData)
 {
 	auto countriesEvilnessSorted = findEvilCountries();
 
@@ -230,7 +207,7 @@ void HoI4WarCreator::generateAdditionalWars(ofstream& AILog, set<shared_ptr<HoI4
 					AILog << "Checking for war in " + *name << "\n";
 				}
 			}
-			vector<shared_ptr<HoI4Faction>> newCountriesatWar;
+			vector<shared_ptr<HoI4::Faction>> newCountriesatWar;
 			newCountriesatWar = neighborWarCreator(countriesEvilnessSorted[i], AILog, theMapData);
 
 			for (auto addedFactions : newCountriesatWar)
@@ -346,8 +323,7 @@ void HoI4WarCreator::setSphereLeaders(const Vic2::World* sourceWorld)
 		{
 			if (relation.second.getSphereLeader())
 			{
-				string tag = relation.second.getTag();
-				auto spheredcountry = theWorld->getCountries().find(tag);
+				auto spheredcountry = theWorld->getCountries().find(relation.second.getTag());
 				if (spheredcountry != theWorld->getCountries().end())
 				{
 					spheredcountry->second->setSphereLeader(greatPower->getTag());
@@ -631,7 +607,7 @@ double HoI4WarCreator::GetFactionStrengthWithDistance(
 }
 
 
-shared_ptr<HoI4Faction> HoI4WarCreator::findFaction(shared_ptr<HoI4::Country> CheckingCountry)
+shared_ptr<HoI4::Faction> HoI4WarCreator::findFaction(shared_ptr<HoI4::Country> CheckingCountry)
 {
 	for (auto faction : theWorld->getFactions())
 	{
@@ -645,7 +621,7 @@ shared_ptr<HoI4Faction> HoI4WarCreator::findFaction(shared_ptr<HoI4::Country> Ch
 
 	vector<shared_ptr<HoI4::Country>> myself;
 	myself.push_back(CheckingCountry);
-	return make_shared<HoI4Faction>(CheckingCountry, myself);
+	return make_shared<HoI4::Faction>(CheckingCountry, myself);
 }
 
 
@@ -737,7 +713,7 @@ void HoI4WarCreator::determineProvinceOwners()
 }
 
 
-double HoI4WarCreator::GetFactionStrength(const shared_ptr<HoI4Faction>& Faction, int years) const
+double HoI4WarCreator::GetFactionStrength(const shared_ptr<HoI4::Faction>& Faction, int years) const
 {
 	double strength = 0;
 	for (auto country : Faction->getMembers())
@@ -748,9 +724,9 @@ double HoI4WarCreator::GetFactionStrength(const shared_ptr<HoI4Faction>& Faction
 }
 
 
-vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4::Country> Leader, ofstream& AILog, const HoI4::World* world, const HoI4::MapData& theMapData)
+vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4::Country> Leader, ofstream& AILog, const HoI4::World* world, const HoI4::MapData& theMapData)
 {
-	vector<shared_ptr<HoI4Faction>> CountriesAtWar;
+	vector<shared_ptr<HoI4::Faction>> CountriesAtWar;
 	auto name = Leader->getSourceCountry().getName("english");
 	if (name)
 	{
@@ -889,12 +865,12 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4:
 		{
 			vector<shared_ptr<HoI4::Country>> self;
 			self.push_back(Leader);
-			auto newFaction = make_shared<HoI4Faction>(Leader, self);
+			auto newFaction = make_shared<HoI4::Faction>(Leader, self);
 			Leader->setFaction(newFaction);
 		}
 	}
 
-	vector<shared_ptr<HoI4Faction>> FactionsAttackingMe;
+	vector<shared_ptr<HoI4::Faction>> FactionsAttackingMe;
 	if (WorldTargetMap.find(Leader) != WorldTargetMap.end())
 	{
 		for (auto country: WorldTargetMap.find(Leader)->second)
@@ -963,7 +939,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4:
 						{
 							vector<shared_ptr<HoI4::Country>> self;
 							self.push_back(GC);
-							auto newFaction = make_shared<HoI4Faction>(GC, self);
+							auto newFaction = make_shared<HoI4::Faction>(GC, self);
 							GC->setFaction(newFaction);
 						}
 						theWorld->getEvents()->createFactionEvents(*Leader, *GC);
@@ -1017,9 +993,9 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI4:
 }
 
 
-vector<shared_ptr<HoI4Faction>> HoI4WarCreator::communistWarCreator(shared_ptr<HoI4::Country> Leader, const std::set<std::string>& majorIdeologies, ofstream& AILog, const HoI4::MapData& theMapData)
+vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(shared_ptr<HoI4::Country> Leader, const std::set<std::string>& majorIdeologies, ofstream& AILog, const HoI4::MapData& theMapData)
 {
-	vector<shared_ptr<HoI4Faction>> CountriesAtWar;
+	vector<shared_ptr<HoI4::Faction>> CountriesAtWar;
 	//communism still needs great country war events
 	auto name = Leader->getSourceCountry().getName("english");
 	if (name)
@@ -1202,14 +1178,12 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::communistWarCreator(shared_ptr<H
 }
 
 
-vector<shared_ptr<HoI4Faction>> HoI4WarCreator::democracyWarCreator(shared_ptr<HoI4::Country> Leader)
+vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::democracyWarCreator(shared_ptr<HoI4::Country> Leader)
 {
-	vector<shared_ptr<HoI4Faction>> CountriesAtWar;
+	vector<shared_ptr<HoI4::Faction>> CountriesAtWar;
 	map<int, shared_ptr<HoI4::Country>> CountriesToContain;
 	vector<shared_ptr<HoI4::Country>> vCountriesToContain;
 	set<string> Allies = Leader->getAllies();
-	int v1 = rand() % 100;
-	v1 = v1 / 100;
 	auto FocusTree = genericFocusTree->makeCustomizedCopy(*Leader);
 	for (auto GC: theWorld->getGreatPowers())
 	{
@@ -1220,7 +1194,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::democracyWarCreator(shared_ptr<H
 			if (relationVal < 100 && GC->getGovernmentIdeology() != "democratic" && std::find(Allies.begin(), Allies.end(), GC->getTag()) == Allies.end())
 			{
 				CountriesAtWar.push_back(findFaction(Leader));
-				CountriesToContain.insert(make_pair(static_cast<int>(relationVal + v1), GC));
+				CountriesToContain.insert(make_pair(static_cast<int>(relationVal), GC));
 			}
 		}
 	}
@@ -1239,7 +1213,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::democracyWarCreator(shared_ptr<H
 }
 
 
-vector<shared_ptr<HoI4Faction>> HoI4WarCreator::absolutistWarCreator(shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData)
+vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::absolutistWarCreator(shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData)
 {
 	auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
 
@@ -1267,7 +1241,7 @@ vector<shared_ptr<HoI4Faction>> HoI4WarCreator::absolutistWarCreator(shared_ptr<
 }
 
 
-std::vector<std::shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(
+std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(
 	std::shared_ptr<HoI4::Country> country,
 	std::ofstream & AILog, const HoI4::MapData& theMapData
 )
@@ -1285,7 +1259,7 @@ std::vector<std::shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(
 		}
 	}
 
-	std::vector<std::shared_ptr<HoI4Faction>> countriesAtWar;
+	std::vector<std::shared_ptr<HoI4::Faction>> countriesAtWar;
 
 	auto weakNeighbors = findWeakNeighbors(country, theMapData);
 	if (weakNeighbors.empty())
@@ -1351,7 +1325,7 @@ std::vector<std::shared_ptr<HoI4Faction>> HoI4WarCreator::neighborWarCreator(
 }
 
 
-vector<shared_ptr<HoI4Faction>> HoI4WarCreator::radicalWarCreator(shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData)
+vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::radicalWarCreator(shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData)
 {
 	return absolutistWarCreator(country, theMapData);
 }
@@ -1576,9 +1550,9 @@ map<double, shared_ptr<HoI4::Country>> HoI4WarCreator::getGPsByDistance(shared_p
 }
 
 
-vector<shared_ptr<HoI4Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<HoI4::Country> country, HoI4FocusTree& FocusTree, vector<shared_ptr<HoI4::Country>>& greatPowerTargets)
+vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<HoI4::Country> country, HoI4FocusTree& FocusTree, vector<shared_ptr<HoI4::Country>>& greatPowerTargets)
 {
-	vector<shared_ptr<HoI4Faction>> countriesAtWar;
+	vector<shared_ptr<HoI4::Faction>> countriesAtWar;
 
 	int numWarsWithGreatPowers = 0;
 	for (auto target: greatPowerTargets)

@@ -1,15 +1,15 @@
+#include "Diplomacy/AiPeacesUpdater.h"
+#include "Diplomacy/Faction.h"
 #include "HoI4World.h"
+#include "WarCreator/HoI4WarCreator.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "../Configuration.h"
 #include "../V2World/Diplomacy.h"
 #include "../V2World/Party.h"
-#include "HoI4Agreement.h"
 #include "HoI4Country.h"
 #include "Decisions/Decisions.h"
-#include "HoI4Diplomacy.h"
 #include "Events/Events.h"
-#include "HoI4Faction.h"
 #include "HoI4FocusTree.h"
 #include "HOI4Ideology.h"
 #include "HoI4Localisation.h"
@@ -18,7 +18,6 @@
 #include "Leaders/Advisor.h"
 #include "Leaders/IdeologicalAdvisors.h"
 #include "Names.h"
-#include "HoI4WarCreator.h"
 #include "Map/Buildings.h"
 #include "Map/StrategicRegion.h"
 #include "Map/SupplyZones.h"
@@ -28,6 +27,7 @@
 #include "States/DefaultState.h"
 #include "States/HoI4State.h"
 #include "States/StateCategories.h"
+#include "../V2World/Agreement.h"
 #include "../V2World/Country.h"
 #include "../V2World/World.h"
 #include "../Mappers/CountryMapping.h"
@@ -36,6 +36,7 @@
 #include "ParserHelpers.h"
 #include "../Hoi4Outputter/Hoi4CountryOutputter.h"
 #include "../Hoi4Outputter/Decisions/DecisionsOutputter.h"
+#include "../Hoi4Outputter/Diplomacy/OutAiPeaces.h"
 #include "../Hoi4Outputter/Events/EventsOutputter.h"
 #include "../Hoi4Outputter/Map/OutBuildings.h"
 #include "../Hoi4Outputter/Map/OutStrategicRegion.h"
@@ -54,8 +55,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	countryMap(_sourceWorld),
 	theIdeas(std::make_unique<HoI4::Ideas>()),
 	decisions(make_unique<HoI4::decisions>(theConfiguration)),
-	peaces(make_unique<HoI4::AIPeaces>()),
-	diplomacy(new HoI4Diplomacy),
+	peaces(make_unique<HoI4::AiPeaces>()),
 	events(new HoI4::Events),
 	onActions(make_unique<HoI4::OnActions>())
 {
@@ -100,7 +100,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	events->createStabilityEvents(majorIdeologies);
 	theIdeas->updateIdeas(majorIdeologies);
 	decisions->updateDecisions(majorIdeologies, states->getProvinceToStateIDMap(), *events);
-	peaces->updateAIPeaces(majorIdeologies);
+	updateAiPeaces(*peaces, majorIdeologies);
 	addNeutrality();
 	convertIdeologySupport();
 	states->convertCapitalVPs(countries, greatPowers, getStrongestCountryStrength());
@@ -667,13 +667,12 @@ void HoI4::World::convertDiplomacy()
 {
 	LOG(LogLevel::Info) << "Converting diplomacy";
 	convertAgreements();
-	convertRelations();
 }
 
 
 void HoI4::World::convertAgreements()
 {
-	for (auto agreement : sourceWorld->getDiplomacy()->getAgreements())
+	for (auto agreement: sourceWorld->getDiplomacy()->getAgreements())
 	{
 		auto possibleHoI4Tag1 = countryMap.getHoI4Tag(agreement->getCountry1());
 		if (!possibleHoI4Tag1)
@@ -699,12 +698,6 @@ void HoI4::World::convertAgreements()
 			continue;
 		}
 
-		if ((agreement->getType() == "alliance") || (agreement->getType() == "vassal"))
-		{
-			HoI4Agreement* HoI4a = new HoI4Agreement(*possibleHoI4Tag1, *possibleHoI4Tag2, agreement);
-			diplomacy->addAgreement(HoI4a);
-		}
-
 		if (agreement->getType() == "alliance")
 		{
 			HoI4Country1->second->editAllies().insert(*possibleHoI4Tag2);
@@ -715,42 +708,6 @@ void HoI4::World::convertAgreements()
 		{
 			HoI4Country1->second->addPuppet(*possibleHoI4Tag2);
 			HoI4Country2->second->setPuppetMaster(*possibleHoI4Tag1);
-		}
-	}
-}
-
-
-void HoI4::World::convertRelations()
-{
-	for (auto country: countries)
-	{
-		for (auto relationItr: country.second->getRelations())
-		{
-			string country1, country2;
-			if (country.first < relationItr.first) // Put it in order to eliminate duplicate relations entries
-			{
-				country1 = country.first;
-				country2 = relationItr.first;
-			}
-			else
-			{
-				country2 = relationItr.first;
-				country1 = country.first;
-			}
-
-			HoI4Agreement* HoI4a = new HoI4Agreement(country1, country2, "relation", relationItr.second.getRelations(), date("1936.1.1"));
-			diplomacy->addAgreement(HoI4a);
-
-			if (relationItr.second.getGuarantee())
-			{
-				HoI4Agreement* HoI4a = new HoI4Agreement(country.first, relationItr.first, "guarantee", 0, date("1936.1.1"));
-				diplomacy->addAgreement(HoI4a);
-			}
-			if (relationItr.second.getSphereLeader())
-			{
-				HoI4Agreement* HoI4a = new HoI4Agreement(country.first, relationItr.first, "sphere", 0, date("1936.1.1"));
-				diplomacy->addAgreement(HoI4a);
-			}
 		}
 	}
 }
@@ -960,7 +917,7 @@ void HoI4::World::createFactions()
 
 		if (factionMembers.size() > 1)
 		{
-			auto newFaction = make_shared<HoI4Faction>(leader, factionMembers);
+			auto newFaction = make_shared<HoI4::Faction>(leader, factionMembers);
 			for (auto member : factionMembers)
 			{
 				member->setFaction(newFaction);
@@ -1093,7 +1050,6 @@ void HoI4::World::output()
 	outputUnitNames();
 	HoI4Localisation::output();
 	outputStates(*states, theConfiguration);
-	diplomacy->output();
 	outputMap();
 	outputSupplyZones(*supplyZones, theConfiguration);
 	outputRelations();
@@ -1103,7 +1059,7 @@ void HoI4::World::output()
 	outputDecisions(*decisions, majorIdeologies, theConfiguration);
 	outputEvents(*events, theConfiguration);
 	onActions->output(majorIdeologies);
-	peaces->output(majorIdeologies);
+	outAiPeaces(*peaces, majorIdeologies, theConfiguration);
 	outputIdeologies();
 	outputLeaderTraits();
 	outputIdeas();

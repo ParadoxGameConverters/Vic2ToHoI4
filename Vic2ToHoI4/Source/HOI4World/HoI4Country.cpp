@@ -1,8 +1,8 @@
+#include "Diplomacy/HoI4War.h"
 #include "HoI4Country.h"
 #include "HoI4World.h"
 #include "Log.h"
 #include "HoI4Localisation.h"
-#include "HoI4War.h"
 #include "Leaders/Advisor.h"
 #include "Names.h"
 #include "MilitaryMappings/MilitaryMappings.h"
@@ -289,7 +289,7 @@ void HoI4::Country::convertRelations(const CountryMapper& countryMap)
 		auto HoI4Tag = countryMap.getHoI4Tag(srcRelation.second->getTag());
 		if (HoI4Tag)
 		{
-			HoI4Relations newRelation(*HoI4Tag, srcRelation.second);
+			HoI4::Relations newRelation(*HoI4Tag, *srcRelation.second);
 			relations.insert(make_pair(*HoI4Tag, std::move(newRelation)));
 		}
 	}
@@ -900,7 +900,7 @@ void HoI4::Country::addState(const State& state)
 }
 
 
-std::optional<HoI4Relations> HoI4::Country::getRelations(const std::string& withWhom) const
+std::optional<HoI4::Relations> HoI4::Country::getRelations(const std::string& withWhom) const
 {
 	if (const auto theRelations = relations.find(withWhom); theRelations != relations.end())
 	{
@@ -1008,7 +1008,7 @@ bool HoI4::Country::areElectionsAllowed() const
 }
 
 
-std::optional<HoI4Faction> HoI4::Country::getFaction() const
+std::optional<HoI4::Faction> HoI4::Country::getFaction() const
 {
 	if (faction)
 	{

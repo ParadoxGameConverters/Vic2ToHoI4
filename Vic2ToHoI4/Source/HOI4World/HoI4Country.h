@@ -3,13 +3,13 @@
 
 
 
+#include "Diplomacy/Faction.h"
+#include "Diplomacy/HoI4Relations.h"
+#include "Diplomacy/HoI4War.h"
 #include "HoI4Airforce.h"
 #include "HoI4Army.h"
-#include "HoI4Faction.h"
 #include "HoI4FocusTree.h"
 #include "HOI4Ideology.h"
-#include "HoI4Relations.h"
-#include "HoI4War.h"
 #include "Leaders/Admiral.h"
 #include "Leaders/General.h"
 #include "Navies/Navies.h"
@@ -118,19 +118,19 @@ class Country
 		void adjustResearchFocuses() const;
 
 		void setSphereLeader(const std::string& SphereLeader) { sphereLeader = SphereLeader; }
-		void setFaction(const std::shared_ptr<const HoI4Faction>& newFaction) { faction = newFaction; }
+		void setFaction(const std::shared_ptr<const Faction>& newFaction) { faction = newFaction; }
 		void giveNationalFocus(std::unique_ptr<HoI4FocusTree>& NF) { nationalFocus = std::move(NF); }
 		void setGreatPower() { greatPower = true; }
 		void setPuppetMaster(const std::string& _master) { puppetMaster = _master; }
 		void addPuppet(const std::string& countryTag) { puppets.insert(countryTag); }
 
-		[[nodiscard]] std::optional<HoI4Relations> getRelations(const std::string& withWhom) const;
+		[[nodiscard]] std::optional<HoI4::Relations> getRelations(const std::string& withWhom) const;
 		[[nodiscard]] double getStrengthOverTime(const double& years) const;
 		static double getMilitaryStrength();
 		[[nodiscard]] float getNavalStrength() const;
 		[[nodiscard]] double getEconomicStrength(const double& years) const;
 		[[nodiscard]] bool areElectionsAllowed() const;
-		[[nodiscard]] std::optional<HoI4Faction> getFaction() const;
+		[[nodiscard]] std::optional<Faction> getFaction() const;
 		[[nodiscard]] std::optional<HoI4FocusTree> getNationalFocus() const;
 
 		[[nodiscard]] const std::string& getTag() const { return tag; }
@@ -192,7 +192,7 @@ class Country
 		[[nodiscard]] const std::vector<General>& getGenerals() const { return generals; }
 		[[nodiscard]] const std::vector<Admiral>& getAdmirals() const { return admirals; }
 
-		[[nodiscard]] const std::map<std::string, HoI4Relations>& getRelations() const { return relations; }
+		[[nodiscard]] const std::map<std::string, HoI4::Relations>& getRelations() const { return relations; }
 		[[nodiscard]] const std::vector<War>& getWars() const { return wars; }
 		[[nodiscard]] double getThreat() const { return threat; }
 		[[nodiscard]] bool isInFaction() const { return faction.operator bool(); }
@@ -291,10 +291,10 @@ class Country
 		std::vector<General> generals;
 		std::vector<Admiral> admirals;
 
-		std::map<std::string, HoI4Relations> relations;
+		std::map<std::string, HoI4::Relations> relations;
 		std::vector<War> wars;
 		double threat = 0.0;
-		std::shared_ptr<const HoI4Faction> faction;
+		std::shared_ptr<const Faction> faction;
 		std::string sphereLeader;
 		std::set<std::string> allies;
 		std::set<std::string> puppets;

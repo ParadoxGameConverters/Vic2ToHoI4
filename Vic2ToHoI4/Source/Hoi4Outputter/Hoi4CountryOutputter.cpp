@@ -4,9 +4,9 @@
 #include "Navies/OutLegacyNavyNames.h"
 #include "Navies/OutMtgNavyNames.h"
 #include "ShipTypes/ShipVariantsOutputter.h"
+#include "../HOI4World/Diplomacy/Faction.h"
 #include "../HOI4World/DivisionTemplate.h"
 #include "../HOI4World/HoI4Country.h"
-#include "../HOI4World/HoI4Faction.h"
 #include "../HOI4World/HoI4FocusTree.h"
 #include "../HOI4World/Names.h"
 #include "../HOI4World/Navies/NavyNames.h"
@@ -245,7 +245,7 @@ void outputPuppets(
 	const std::string& governmentIdeology,
 	const std::set<std::string>& puppets,
 	const std::string& puppetMaster,
-	const std::map<std::string, HoI4Relations>& relations,
+	const std::map<std::string, HoI4::Relations>& relations,
 	const bool& greatPower,
 	const std::map<std::string, double>& spherelings
 );
@@ -259,12 +259,12 @@ void outputPolitics(
 void outputRelations(
 	std::ostream& output,
 	const std::string& tag,
-	const std::map<std::string, HoI4Relations>& relations
+	const std::map<std::string, HoI4::Relations>& relations
 );
 void outputFactions(
 	std::ostream& output,
 	const std::string& tag,
-	std::optional<HoI4Faction> faction,
+	std::optional<HoI4::Faction> faction,
 	std::optional<std::string> possibleLeaderName
 );
 void outputGuaranteedSpherelings(
@@ -474,7 +474,7 @@ void outputPuppets(
 	const std::string& governmentIdeology,
 	const std::set<std::string>& puppets,
 	const std::string& puppetMaster,
-	const std::map<std::string, HoI4Relations>& relations,
+	const std::map<std::string, HoI4::Relations>& relations,
 	const bool& greatPower,
 	const std::map<std::string, double>& spherelings
 ) {
@@ -597,7 +597,7 @@ void outputPolitics(
 void outputRelations(
 	std::ostream& output,
 	const std::string& tag,
-	const std::map<std::string, HoI4Relations>& relations
+	const std::map<std::string, HoI4::Relations>& relations
 ) {
 	for (auto& relation: relations)
 	{
@@ -627,7 +627,7 @@ void outputRelations(
 void outputFactions(
 	std::ostream& output,
 	const std::string& tag,
-	std::optional<HoI4Faction> faction,
+	std::optional<HoI4::Faction> faction,
 	std::optional<std::string> possibleLeaderName
 ) {
 	if (faction && (faction->getLeader()->getTag() == tag))

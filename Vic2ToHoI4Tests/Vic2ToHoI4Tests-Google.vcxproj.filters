@@ -29,12 +29,6 @@
     <ClCompile Include="..\common_items\ParserHelpers.cpp">
       <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AIPeace.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\AIPeaces.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
@@ -80,22 +74,13 @@
     <ClCompile Include="..\common_items\Date.cpp">
       <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Agreement.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Country.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4FocusTree.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Diplomacy.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeologyFile.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4WarCreator.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\TechMapper.cpp">
@@ -114,9 +99,6 @@
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Division.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Relations.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Focus.cpp">
@@ -286,9 +268,6 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarGoal.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Wars</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4War.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\HoI4WarTests.cpp">
       <Filter>HoI4WorldTests</Filter>
@@ -653,6 +632,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ScriptedTriggers</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AIPeace.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AIPeaces.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4War.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
+    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\OutLegacyNavyNames.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
     </ClCompile>
@@ -664,6 +652,21 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\OutMtgShipTypeNames.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Diplomacy\OutAiPeace.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Diplomacy\OutAiPeaces.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AiPeacesUpdater.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Diplomacy\OutWar.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\HoI4WarCreator.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\WarCreator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -789,6 +792,15 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\ScriptedTriggers">
       <UniqueIdentifier>{34eb4487-02aa-4592-8ac3-139c16c32cfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Diplomacy">
+      <UniqueIdentifier>{1fc5e546-8513-4bb9-84e6-9632b33b31c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Diplomacy">
+      <UniqueIdentifier>{acdd379f-fe68-4bb5-a509-0e018164eac1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\WarCreator">
+      <UniqueIdentifier>{1d9c307a-30c6-4539-bea7-df6fb723991e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
