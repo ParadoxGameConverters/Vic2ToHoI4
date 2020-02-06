@@ -17,6 +17,10 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecis
 	{
 		outStream << "\n\t\tallowed " << outDecision.allowed << "\n";
 	}
+	if (!outDecision.highlightStates.empty())
+	{
+		outStream << "\n\t\thighlight_states " << outDecision.highlightStates << "\n";
+	}
 	if (!outDecision.available.empty())
 	{
 		outStream << "\n\t\tavailable " << outDecision.available << "\n";

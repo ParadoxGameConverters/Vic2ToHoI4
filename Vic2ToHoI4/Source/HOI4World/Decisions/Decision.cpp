@@ -18,6 +18,10 @@ HoI4::decision::decision(std::string decisionName, std::istream& theStream):
 		const commonItems::stringOfObject theAllowed(theStream);
 		allowed = theAllowed.getString();
 	});
+	registerKeyword(std::regex("highlight_states"), [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::stringOfObject theHighlightStates(theStream);
+		highlightStates = theHighlightStates.getString();
+	});
 	registerKeyword(std::regex("available"), [this](const std::string& unused, std::istream& theStream){
 		const commonItems::stringOfObject theAvailable(theStream);
 		available = theAvailable.getString();

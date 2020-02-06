@@ -21,6 +21,7 @@ class decision: commonItems::parser
 		[[nodiscard]] std::string getTimeoutEffect() const { return timeoutEffect; }
 
 		void setAvailable(const std::string& newAvailable) { available = newAvailable; }
+		void setHighlightStates(const std::string& newHighlightStates) { highlightStates = newHighlightStates; }
 		void setTargetTrigger(const std::string& newTargetTrigger) { targetTrigger = newTargetTrigger; }
 		void setVisible(const std::string& newVisible) { visible = newVisible; }
 		void setCompleteEffect(const std::string& newEffect) { completeEffect = newEffect; }
@@ -39,6 +40,7 @@ class decision: commonItems::parser
 		std::string icon;
 		std::string isGood;
 		std::string allowed;
+		std::string highlightStates;
 		std::string available;
 		std::optional<int> daysMissionTimeout;
 		std::string activation;
