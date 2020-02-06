@@ -5,7 +5,6 @@
 
 #include"DecisionsCategory.h"
 #include "newParser.h"
-#include <set>
 #include <string>
 #include <vector>
 
@@ -19,7 +18,7 @@ class DecisionsFile: commonItems::parser
 	public:
 		void importDecisions(const std::string& filename);
 
-		[[nodiscard]] const std::vector<decisionsCategory>& getDecisions() const { return decisions; }
+		[[nodiscard]] std::vector<decisionsCategory>& getDecisions() { return decisions; }
 
 	protected:
 		std::vector<decisionsCategory> decisions;
