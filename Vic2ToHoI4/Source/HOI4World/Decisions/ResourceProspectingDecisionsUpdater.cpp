@@ -1,145 +1,110 @@
 #include "ResourceProspectingDecisionsUpdater.h"
 #include <functional>
 #include <map>
+#include <regex>
 #include <string>
 
 
-// todo: this is duplicated from GenericDecisions.cpp. Move both to a common file
-std::set<int> getRelevantStatesFromProvinces2(
-	const std::set<int>& provinces,
-	const std::set<int>& statesToExclude,
-	const std::map<int, int>& provinceToStateIdMap
+
+std::optional<int> getRelevantStateFromOldState(
+	const int oldStateNum,
+	const std::map<int, int>& provinceToStateIdMap,
+	const std::map<int, HoI4::DefaultState>& defaultStates
 )
 {
-	std::set<int> relevantStates;
-	for (const auto& province : provinces)
+	const auto& oldState = defaultStates.find(oldStateNum);
+	if (oldState == defaultStates.end())
 	{
-		if (
-			auto mapping = provinceToStateIdMap.find(province);
-			mapping != provinceToStateIdMap.end() && (statesToExclude.count(mapping->second) == 0)
-			)
-		{
-			relevantStates.insert(mapping->second);
-		}
+		return std::nullopt;
+	}
+	
+	auto provinces = oldState->second.getProvinces();
+	if (provinces.empty())
+	{
+		return std::nullopt;
 	}
 
-	return relevantStates;
+	const auto& mapping = provinceToStateIdMap.find(*provinces.begin());
+	if (mapping == provinceToStateIdMap.end())
+	{
+		return std::nullopt;
+	}
+
+	return mapping->second;
 }
 
 
-
-HoI4::decision updateDevelopShandongAluminiumDeposits(HoI4::decision&& decisionToUpdate, const std::map<int, int>& provinceToStateIdMap)
+HoI4::decision updateDecision(
+	HoI4::decision&& decisionToUpdate,
+	const std::map<int, int>& provinceToStateIdMap,
+	const std::map<int, HoI4::DefaultState>& defaultStates
+)
 {
-	int shandongState = *getRelevantStatesFromProvinces2({ 1069 }, {}, provinceToStateIdMap).begin();
+	std::string highlightStates = decisionToUpdate.getHighlightStates();
 
-	std::string highlightStates = "= {\n";
-	highlightStates += "\t\t\tstate = " + std::to_string(shandongState) + "\n";
-	highlightStates += "\t\t}\n";
-	decisionToUpdate.setHighlightStates(highlightStates);
+	std::regex stateNumRegex(".+ (\\d+).*");
+	std::smatch match;
+	std::regex_search(highlightStates, match, stateNumRegex);
+	int oldStateNum = std::stoi(match[1]);
 
-	std::string available = "= {\n";
-	available += "\t\t\thas_tech = excavation3\n";
-	available += "\t\t\tnum_of_civilian_factories_available_for_projects > 2\n";
-	available += "\t\t\towns_state = " + std::to_string(shandongState) + "\n";
-	available += "\t\t\tcontrols_state = " + std::to_string(shandongState) + "\n";
-	available += "\t\t}";
-	decisionToUpdate.setAvailable(available);
+	auto possibleNewStateNum = getRelevantStateFromOldState(oldStateNum, provinceToStateIdMap, defaultStates);
+	if (!possibleNewStateNum)
+	{
+		return std::move(decisionToUpdate);
+	}
+	auto newStateNum = *possibleNewStateNum;
 
-	std::string visible = "= {\n";
-	visible += "\t\t\towns_state = " + std::to_string(shandongState) + "\n";
-	visible += "\t\t\tcontrols_state = " + std::to_string(shandongState) + "\n";
-	visible += "\t\t\t" + std::to_string(shandongState) + " = {\n";
-	visible += "\t\t\t\tNOT = {\n";
-	visible += "\t\t\t\t\thas_state_flag = shandong_aluminium_developed\n";
-	visible += "\t\t\t\t}\n";
-	visible += "\t\t\t}\n";
-	visible += "\t\t}";
-	decisionToUpdate.setVisible(visible);
+	std::string newHightlightStates = 
+		std::regex_replace(
+			highlightStates,
+			std::regex(std::to_string(oldStateNum)),
+			std::to_string(newStateNum)
+		);
+	decisionToUpdate.setHighlightStates(newHightlightStates);
 
-	std::string removeEffect = "= {\n";
-	removeEffect += "\t\t\t" + std::to_string(shandongState) + " = { set_state_flag = shandong_aluminium_developed }\n";
-	removeEffect += "\t\t\t" + std::to_string(shandongState) + " = {\n";
-	removeEffect += "\t\t\t\tadd_resource = {\n";
-	removeEffect += "\t\t\t\t\ttype = aluminium\n";
-	removeEffect += "\t\t\t\t\tamount = 12\n";
-	removeEffect += "\t\t\t\t}\n";
-	removeEffect += "\t\t\t}\n";
-	removeEffect += "\t\t}";
-	decisionToUpdate.setRemoveEffect(removeEffect);
+	std::string available = decisionToUpdate.getAvailable();
+	std::string newAvailable =
+		std::regex_replace(
+			available,
+			std::regex(std::to_string(oldStateNum)),
+			std::to_string(newStateNum)
+		);
+	decisionToUpdate.setAvailable(newAvailable);
+
+	std::string visible = decisionToUpdate.getVisible();
+	std::string newVisible =
+		std::regex_replace(
+			visible,
+			std::regex(std::to_string(oldStateNum)),
+			std::to_string(newStateNum)
+		);
+	decisionToUpdate.setVisible(newVisible);
+
+	std::string removeEffect = decisionToUpdate.getRemoveEffect();
+	std::string newRemoveEffect =
+		std::regex_replace(
+			removeEffect,
+			std::regex(std::to_string(oldStateNum)),
+			std::to_string(newStateNum)
+		);
+	decisionToUpdate.setRemoveEffect(newRemoveEffect);
 	
-	return std::move(decisionToUpdate);
-}
-
-
-HoI4::decision updateDevelopSuiyuanSteelDeposits(HoI4::decision&& decisionToUpdate, const std::map<int, int>& provinceToStateIdMap)
-{
-	int suiyuanState = *getRelevantStatesFromProvinces2({ 2087 }, {}, provinceToStateIdMap).begin();
-
-	std::string highlightStates = "= {\n";
-	highlightStates += "\t\t\tstate = " + std::to_string(suiyuanState) + "\n";
-	highlightStates += "\t\t}\n";
-	decisionToUpdate.setHighlightStates(highlightStates);
-
-	std::string available = "= {\n";
-	available += "\t\t\thas_tech = excavation2\n";
-	available += "\t\t\tnum_of_civilian_factories_available_for_projects > 2\n";
-	available += "\t\t\towns_state = " + std::to_string(suiyuanState) + "\n";
-	available += "\t\t\tcontrols_state = " + std::to_string(suiyuanState) + "\n";
-	available += "\t\t}";
-	decisionToUpdate.setAvailable(available);
-
-	std::string visible = "= {\n";
-	visible += "\t\t\towns_state = " + std::to_string(suiyuanState) + "\n";
-	visible += "\t\t\tcontrols_state = " + std::to_string(suiyuanState) + "\n";
-	visible += "\t\t\t" + std::to_string(suiyuanState) + " = {\n";
-	visible += "\t\t\t\tNOT = {\n";
-	visible += "\t\t\t\t\thas_state_flag = suiyuan_steel_developed\n";
-	visible += "\t\t\t\t}\n";
-	visible += "\t\t\t}\n";
-	visible += "\t\t}";
-	decisionToUpdate.setVisible(visible);
-
-	std::string removeEffect = "= {\n";
-	removeEffect += "\t\t\t" + std::to_string(suiyuanState) + " = { set_state_flag = suiyuan_steel_developed }\n";
-	removeEffect += "\t\t\t" + std::to_string(suiyuanState) + " = {\n";
-	removeEffect += "\t\t\t\tadd_resource = {\n";
-	removeEffect += "\t\t\t\t\ttype = steel\n";
-	removeEffect += "\t\t\t\t\tamount = 8\n";
-	removeEffect += "\t\t\t\t}\n";
-	removeEffect += "\t\t\t}\n";
-	removeEffect += "\t\t}";
-	decisionToUpdate.setRemoveEffect(removeEffect);
-
 	return std::move(decisionToUpdate);
 }
 
 
 void HoI4::updateResourceProspectingDecisions(
 	DecisionsFile& resourceProspectingDecisions,
-	const std::map<int, int>& _provinceToStateIdMap
+	const std::map<int, int>& _provinceToStateIdMap,
+	const std::map<int, HoI4::DefaultState>& defaultStates
 )
 {
-	std::map<
-		std::string,
-		std::function<decision(decision&& decisionToUpdate, const std::map<int, int>& provinceToStateIdMap)>
-	> decisionsUpdaterMap;
 
-	decisionsUpdaterMap.insert(
-		std::make_pair("develop_shandong_aluminium_deposits", updateDevelopShandongAluminiumDeposits)
-	);
-	decisionsUpdaterMap.insert(
-		std::make_pair("develop_suiyuan_steel_deposits", updateDevelopSuiyuanSteelDeposits)
-	);
-	
 	for (auto& category: resourceProspectingDecisions.getDecisions())
 	{
 		for (auto& decisionToUpdate: category.getDecisions())
 		{
-			auto name = decisionToUpdate.getName();
-			if (auto mapping = decisionsUpdaterMap.find(name); mapping != decisionsUpdaterMap.end())
-			{
-				category.replaceDecision(mapping->second(std::move(decisionToUpdate), _provinceToStateIdMap));
-			}
+			category.replaceDecision(updateDecision(std::move(decisionToUpdate), _provinceToStateIdMap, defaultStates));
 		}
 	}
 }

@@ -4,6 +4,7 @@
 
 
 #include "DecisionsFile.h"
+#include "../States/DefaultState.h"
 
 
 
@@ -12,7 +13,8 @@ namespace HoI4
 
 void updateResourceProspectingDecisions(
 	DecisionsFile& resourceProspectingDecisions,
-	const std::map<int, int>& _provinceToStateIdMap
+	const std::map<int, int>& _provinceToStateIdMap,
+	const std::map<int, HoI4::DefaultState>& defaultStates
 );
 
 }
