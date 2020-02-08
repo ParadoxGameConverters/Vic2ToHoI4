@@ -4,6 +4,72 @@
 #include <string>
 
 
+// todo: this is duplicated from GenericDecisions.cpp. Move both to a common file
+std::set<int> getRelevantStatesFromProvinces2(
+	const std::set<int>& provinces,
+	const std::set<int>& statesToExclude,
+	const std::map<int, int>& provinceToStateIdMap
+)
+{
+	std::set<int> relevantStates;
+	for (const auto& province : provinces)
+	{
+		if (
+			auto mapping = provinceToStateIdMap.find(province);
+			mapping != provinceToStateIdMap.end() && (statesToExclude.count(mapping->second) == 0)
+			)
+		{
+			relevantStates.insert(mapping->second);
+		}
+	}
+
+	return relevantStates;
+}
+
+
+
+HoI4::decision updateDevelopShandongAluminiumDeposits(HoI4::decision&& decisionToUpdate, const std::map<int, int>& provinceToStateIdMap)
+{
+	int shandongState = *getRelevantStatesFromProvinces2({ 1069 }, {}, provinceToStateIdMap).begin();
+
+	std::string highlightStates = "= {\n";
+	highlightStates += "\t\t\tstate = " + std::to_string(shandongState) + "\n";
+	highlightStates += "\t\t}\n";
+	decisionToUpdate.setHighlightStates(highlightStates);
+
+	std::string available = "= {\n";
+	available += "\t\t\thas_tech = excavation3\n";
+	available += "\t\t\tnum_of_civilian_factories_available_for_projects > 2\n";
+	available += "\t\t\towns_state = " + std::to_string(shandongState) + "\n";
+	available += "\t\t\tcontrols_state = " + std::to_string(shandongState) + "\n";
+	available += "\t\t}";
+	decisionToUpdate.setAvailable(available);
+
+	std::string visible = "= {\n";
+	visible += "\t\t\towns_state = " + std::to_string(shandongState) + "\n";
+	visible += "\t\t\tcontrols_state = " + std::to_string(shandongState) + "\n";
+	visible += "\t\t\t" + std::to_string(shandongState) + " = {\n";
+	visible += "\t\t\t\tNOT = {\n";
+	visible += "\t\t\t\t\thas_state_flag = shandong_aluminium_developed\n";
+	visible += "\t\t\t\t}\n";
+	visible += "\t\t\t}\n";
+	visible += "\t\t}";
+	decisionToUpdate.setVisible(visible);
+
+	std::string removeEffect = "= {\n";
+	removeEffect += "\t\t\t" + std::to_string(shandongState) + " = { set_state_flag = shandong_aluminium_developed }\n";
+	removeEffect += "\t\t\t" + std::to_string(shandongState) + " = {\n";
+	removeEffect += "\t\t\t\tadd_resource = {\n";
+	removeEffect += "\t\t\t\t\ttype = aluminium\n";
+	removeEffect += "\t\t\t\t\tamount = 12\n";
+	removeEffect += "\t\t\t\t}\n";
+	removeEffect += "\t\t\t}\n";
+	removeEffect += "\t\t}";
+	decisionToUpdate.setRemoveEffect(removeEffect);
+	
+	return std::move(decisionToUpdate);
+}
+
 
 void HoI4::updateResourceProspectingDecisions(
 	DecisionsFile& resourceProspectingDecisions,
@@ -14,6 +80,10 @@ void HoI4::updateResourceProspectingDecisions(
 		std::string,
 		std::function<decision(decision&& decisionToUpdate, const std::map<int, int>& provinceToStateIdMap)>
 	> decisionsUpdaterMap;
+
+	decisionsUpdaterMap.insert(
+		std::make_pair("develop_shandong_aluminium_deposits", updateDevelopShandongAluminiumDeposits)
+	);
 	
 	for (auto& category: resourceProspectingDecisions.getDecisions())
 	{
