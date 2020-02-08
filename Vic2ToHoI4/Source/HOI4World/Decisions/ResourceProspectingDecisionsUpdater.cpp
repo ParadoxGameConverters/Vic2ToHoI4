@@ -34,6 +34,31 @@ std::optional<int> getRelevantStateFromOldState(
 }
 
 
+bool aiWillDoNeedsStripping(const std::string_view decisionName)
+{
+	return
+		decisionName == "develop_nauru_tungsten_deposits" ||
+		decisionName == "develop_nigeria_rubber_plantations" ||
+		decisionName == "develop_newfoundland_steel" ||
+		decisionName == "develop_stalingrad_aluminium_deposits" ||
+		decisionName == "develop_kyzyl_tungsten_deposits" ||
+		decisionName == "develop_chelyabinsk_steel_deposits" ||
+		decisionName == "develop_zlatoust_steel_deposits_1" ||
+		decisionName == "develop_zlatoust_steel_deposits_2" ||
+		decisionName == "develop_kursk_steel_deposits" ||
+		decisionName == "develop_kursk_steel_deposits_2" ||
+		decisionName == "develop_kursk_steel_deposits_3" ||
+		decisionName == "develop_Belgorod_steel_deposits" ||
+		decisionName == "develop_Belgorod_steel_deposits_2" ||
+		decisionName == "develop_Belgorod_steel_deposits_3" ||
+		decisionName == "develop_uralsk_chromium_deposits_1" ||
+		decisionName == "develop_uralsk_chromium_deposits_2" ||
+		decisionName == "develop_cornwall_tungsten_deposits_1" ||
+		decisionName == "develop_caucasus_tungsten_deposits_1" ||
+		decisionName == "develop_caucasus_tungsten_deposits_2";
+}
+
+
 HoI4::decision updateDecision(
 	HoI4::decision&& decisionToUpdate,
 	const std::map<int, int>& provinceToStateIdMap,
@@ -88,6 +113,11 @@ HoI4::decision updateDecision(
 			std::to_string(newStateNum)
 		);
 	decisionToUpdate.setRemoveEffect(newRemoveEffect);
+
+	if (aiWillDoNeedsStripping(decisionToUpdate.getName()))
+	{
+		decisionToUpdate.setAiWillDo("= {\n\t\t\tfactor = 1\n\t\t}");
+	}
 	
 	return std::move(decisionToUpdate);
 }
