@@ -34,7 +34,7 @@ class decisions: commonItems::parser
 		void updateDecisions(
 			const std::set<std::string>& majorIdeologies,
 			const std::map<int, int>& provinceToStateIdMap,
-			const std::map<int, HoI4::DefaultState>& defaultStates,
+			const std::map<int, DefaultState>& defaultStates,
 			const Events& theEvents
 		);
 

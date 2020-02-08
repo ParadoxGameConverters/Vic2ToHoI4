@@ -74,12 +74,12 @@ HoI4::decision updateDecision(
 	const std::map<int, HoI4::DefaultState>& defaultStates
 )
 {
-	std::string highlightStates = decisionToUpdate.getHighlightStates();
+	auto highlightStates = decisionToUpdate.getHighlightStates();
 
 	std::regex stateNumRegex(".+ (\\d+).*");
 	std::smatch match;
 	std::regex_search(highlightStates, match, stateNumRegex);
-	int oldStateNum = std::stoi(match[1]);
+	auto oldStateNum = std::stoi(match[1]);
 
 	auto possibleNewStateNum = getRelevantStateFromOldState(oldStateNum, provinceToStateIdMap, defaultStates);
 	if (!possibleNewStateNum)
@@ -88,21 +88,21 @@ HoI4::decision updateDecision(
 	}
 	auto newStateNum = *possibleNewStateNum;
 
-	std::string newHightlightStates = 
+	auto newHighlightStates =
 		std::regex_replace(
 			highlightStates,
 			std::regex(std::to_string(oldStateNum)),
 			std::to_string(newStateNum)
 		);
-	decisionToUpdate.setHighlightStates(newHightlightStates);
+	decisionToUpdate.setHighlightStates(newHighlightStates);
 
 	if (allowedNeedsStripping(decisionToUpdate.getName()))
 	{
 		decisionToUpdate.setAllowed("= {\n\n\t\t}");
 	}
 
-	std::string available = decisionToUpdate.getAvailable();
-	std::string newAvailable =
+	auto available = decisionToUpdate.getAvailable();
+	auto newAvailable =
 		std::regex_replace(
 			available,
 			std::regex(std::to_string(oldStateNum)),
@@ -110,8 +110,8 @@ HoI4::decision updateDecision(
 		);
 	decisionToUpdate.setAvailable(newAvailable);
 
-	std::string visible = decisionToUpdate.getVisible();
-	std::string newVisible =
+	auto visible = decisionToUpdate.getVisible();
+	auto newVisible =
 		std::regex_replace(
 			visible,
 			std::regex(std::to_string(oldStateNum)),
@@ -119,8 +119,8 @@ HoI4::decision updateDecision(
 		);
 	decisionToUpdate.setVisible(newVisible);
 
-	std::string removeEffect = decisionToUpdate.getRemoveEffect();
-	std::string newRemoveEffect =
+	auto removeEffect = decisionToUpdate.getRemoveEffect();
+	auto newRemoveEffect =
 		std::regex_replace(
 			removeEffect,
 			std::regex(std::to_string(oldStateNum)),
@@ -140,7 +140,7 @@ HoI4::decision updateDecision(
 void HoI4::updateResourceProspectingDecisions(
 	DecisionsFile& resourceProspectingDecisions,
 	const std::map<int, int>& _provinceToStateIdMap,
-	const std::map<int, HoI4::DefaultState>& defaultStates
+	const std::map<int, DefaultState>& defaultStates
 )
 {
 

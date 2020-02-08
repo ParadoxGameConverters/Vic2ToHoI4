@@ -14,7 +14,7 @@ namespace HoI4
 void updateResourceProspectingDecisions(
 	DecisionsFile& resourceProspectingDecisions,
 	const std::map<int, int>& _provinceToStateIdMap,
-	const std::map<int, HoI4::DefaultState>& defaultStates
+	const std::map<int, DefaultState>& defaultStates
 );
 
 }
