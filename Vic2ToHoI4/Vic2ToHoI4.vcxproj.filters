@@ -606,6 +606,9 @@
     <ClCompile Include="Source\HOI4World\WarCreator\HoI4WarCreator.cpp">
       <Filter>HoI4World\WarCreator</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\DifficultySettings.cpp">
+      <Filter>Hoi4Outputter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1146,6 +1149,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\WarCreator\HoI4WarCreator.h">
       <Filter>HoI4World\WarCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\DifficultySettings.h">
+      <Filter>Hoi4Outputter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

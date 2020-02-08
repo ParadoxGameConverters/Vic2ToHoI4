@@ -194,6 +194,7 @@
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\DifficultySettings.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAiPeace.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAiPeaces.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutWar.cpp" />
@@ -367,6 +368,7 @@
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\DifficultySettings.h" />
     <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAiPeace.h" />
     <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAiPeaces.h" />
     <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutWar.h" />

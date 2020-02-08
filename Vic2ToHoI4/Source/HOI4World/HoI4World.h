@@ -88,6 +88,7 @@ class World: commonItems::parser
 		void processInfluence();
 		void determineSpherelings();
 		void calculateSpherelingAutonomy();
+		std::string difficultySettings();
 
 	private:
 		World(const World&) = delete;
