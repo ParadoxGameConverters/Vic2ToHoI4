@@ -62,7 +62,7 @@ class decision: commonItems::parser
 		std::string timeoutEffect;
 		std::string aiWillDo;
 		std::string fireOnlyOnce;
-		std::optional<int> daysRemove;
+		std::optional<std::string> daysRemove;
 		std::optional<int> daysReEnable;
 		std::optional<std::string> cost;
 		std::string modifier;

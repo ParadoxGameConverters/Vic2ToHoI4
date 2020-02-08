@@ -91,8 +91,8 @@ HoI4::decision::decision(std::string decisionName, std::istream& theStream):
 		aiWillDo = theAiWillDo.getString();
 	});
 	registerKeyword(std::regex("days_remove"), [this](const std::string& unused, std::istream& theStream){
-		const commonItems::singleInt theDaysRemove(theStream);
-		daysRemove = theDaysRemove.getInt();
+		const commonItems::singleString theDaysRemove(theStream);
+		daysRemove = theDaysRemove.getString();
 	});
 	registerKeyword(std::regex("days_re_enable"), [this](const std::string& unused, std::istream& theStream){
 		const commonItems::singleInt theDaysReEnable(theStream);
