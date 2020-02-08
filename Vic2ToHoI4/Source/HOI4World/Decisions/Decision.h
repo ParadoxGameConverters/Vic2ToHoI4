@@ -23,6 +23,7 @@ class decision: commonItems::parser
 		[[nodiscard]] std::string getRemoveEffect() const { return removeEffect; }
 		[[nodiscard]] std::string getTimeoutEffect() const { return timeoutEffect; }
 
+		void setAllowed(const std::string& newAllowed) { allowed = newAllowed; }
 		void setAvailable(const std::string& newAvailable) { available = newAvailable; }
 		void setHighlightStates(const std::string& newHighlightStates) { highlightStates = newHighlightStates; }
 		void setTargetTrigger(const std::string& newTargetTrigger) { targetTrigger = newTargetTrigger; }

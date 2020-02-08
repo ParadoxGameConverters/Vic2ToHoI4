@@ -59,6 +59,15 @@ bool aiWillDoNeedsStripping(const std::string_view decisionName)
 }
 
 
+bool allowedNeedsStripping(const std::string_view decisionName)
+{
+	return
+		decisionName == "develop_kirin_aluminium_deposits" ||
+		decisionName == "develop_sirte_oil_fields" ||
+		decisionName == "develop_benghazi_oil_fields";
+}
+
+
 HoI4::decision updateDecision(
 	HoI4::decision&& decisionToUpdate,
 	const std::map<int, int>& provinceToStateIdMap,
@@ -86,6 +95,11 @@ HoI4::decision updateDecision(
 			std::to_string(newStateNum)
 		);
 	decisionToUpdate.setHighlightStates(newHightlightStates);
+
+	if (allowedNeedsStripping(decisionToUpdate.getName()))
+	{
+		decisionToUpdate.setAllowed("= {\n\n\t\t}");
+	}
 
 	std::string available = decisionToUpdate.getAvailable();
 	std::string newAvailable =
