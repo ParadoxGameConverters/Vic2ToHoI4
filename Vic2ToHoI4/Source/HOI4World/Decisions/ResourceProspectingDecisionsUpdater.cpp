@@ -71,6 +71,49 @@ HoI4::decision updateDevelopShandongAluminiumDeposits(HoI4::decision&& decisionT
 }
 
 
+HoI4::decision updateDevelopSuiyuanSteelDeposits(HoI4::decision&& decisionToUpdate, const std::map<int, int>& provinceToStateIdMap)
+{
+	int suiyuanState = *getRelevantStatesFromProvinces2({ 2087 }, {}, provinceToStateIdMap).begin();
+
+	std::string highlightStates = "= {\n";
+	highlightStates += "\t\t\tstate = " + std::to_string(suiyuanState) + "\n";
+	highlightStates += "\t\t}\n";
+	decisionToUpdate.setHighlightStates(highlightStates);
+
+	std::string available = "= {\n";
+	available += "\t\t\thas_tech = excavation2\n";
+	available += "\t\t\tnum_of_civilian_factories_available_for_projects > 2\n";
+	available += "\t\t\towns_state = " + std::to_string(suiyuanState) + "\n";
+	available += "\t\t\tcontrols_state = " + std::to_string(suiyuanState) + "\n";
+	available += "\t\t}";
+	decisionToUpdate.setAvailable(available);
+
+	std::string visible = "= {\n";
+	visible += "\t\t\towns_state = " + std::to_string(suiyuanState) + "\n";
+	visible += "\t\t\tcontrols_state = " + std::to_string(suiyuanState) + "\n";
+	visible += "\t\t\t" + std::to_string(suiyuanState) + " = {\n";
+	visible += "\t\t\t\tNOT = {\n";
+	visible += "\t\t\t\t\thas_state_flag = suiyuan_steel_developed\n";
+	visible += "\t\t\t\t}\n";
+	visible += "\t\t\t}\n";
+	visible += "\t\t}";
+	decisionToUpdate.setVisible(visible);
+
+	std::string removeEffect = "= {\n";
+	removeEffect += "\t\t\t" + std::to_string(suiyuanState) + " = { set_state_flag = suiyuan_steel_developed }\n";
+	removeEffect += "\t\t\t" + std::to_string(suiyuanState) + " = {\n";
+	removeEffect += "\t\t\t\tadd_resource = {\n";
+	removeEffect += "\t\t\t\t\ttype = steel\n";
+	removeEffect += "\t\t\t\t\tamount = 8\n";
+	removeEffect += "\t\t\t\t}\n";
+	removeEffect += "\t\t\t}\n";
+	removeEffect += "\t\t}";
+	decisionToUpdate.setRemoveEffect(removeEffect);
+
+	return std::move(decisionToUpdate);
+}
+
+
 void HoI4::updateResourceProspectingDecisions(
 	DecisionsFile& resourceProspectingDecisions,
 	const std::map<int, int>& _provinceToStateIdMap
@@ -83,6 +126,9 @@ void HoI4::updateResourceProspectingDecisions(
 
 	decisionsUpdaterMap.insert(
 		std::make_pair("develop_shandong_aluminium_deposits", updateDevelopShandongAluminiumDeposits)
+	);
+	decisionsUpdaterMap.insert(
+		std::make_pair("develop_suiyuan_steel_deposits", updateDevelopSuiyuanSteelDeposits)
 	);
 	
 	for (auto& category: resourceProspectingDecisions.getDecisions())
