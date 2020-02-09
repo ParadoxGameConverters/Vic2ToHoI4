@@ -18,7 +18,7 @@ class DecisionsFile: commonItems::parser
 	public:
 		void importDecisions(const std::string& filename);
 
-		[[nodiscard]] std::vector<decisionsCategory>& getDecisions() { return decisions; }
+		[[nodiscard]] const std::vector<decisionsCategory>& getDecisions() const { return decisions; }
 
 	protected:
 		std::vector<decisionsCategory> decisions;

@@ -606,7 +606,7 @@
     <ClCompile Include="Source\HOI4World\WarCreator\HoI4WarCreator.cpp">
       <Filter>HoI4World\WarCreator</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Decisions\ResourceProspectingDecisionsUpdater.cpp">
+    <ClCompile Include="Source\HOI4World\Decisions\ResourceProspectingDecisions.cpp">
       <Filter>HoI4World\Decisions</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1150,7 +1150,7 @@
     <ClInclude Include="Source\HOI4World\WarCreator\HoI4WarCreator.h">
       <Filter>HoI4World\WarCreator</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Decisions\ResourceProspectingDecisionsUpdater.h">
+    <ClInclude Include="Source\HOI4World\Decisions\ResourceProspectingDecisions.h">
       <Filter>HoI4World\Decisions</Filter>
     </ClInclude>
   </ItemGroup>

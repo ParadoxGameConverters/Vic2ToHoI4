@@ -668,7 +668,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\HoI4WarCreator.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\WarCreator</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\ResourceProspectingDecisionsUpdater.cpp">
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\ResourceProspectingDecisions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
     </ClCompile>
   </ItemGroup>

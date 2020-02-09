@@ -10,6 +10,7 @@
 #include "GenericDecisions.h"
 #include "NavalTreatyDecisions.h"
 #include "PoliticalDecisions.h"
+#include "ResourceProspectingDecisions.h"
 #include "StabilityWarSupportDecisions.h"
 #include "../States/DefaultState.h"
 #include "../../Configuration.h"
@@ -38,7 +39,7 @@ class decisions: commonItems::parser
 			const Events& theEvents
 		);
 
-		[[nodiscard]] std::vector<decisionsCategory>& getStabilityDecisions()
+		[[nodiscard]] const std::vector<decisionsCategory>& getStabilityDecisions() const
 		{
 			return stabilityDecisions.getDecisions();
 		}
@@ -46,23 +47,23 @@ class decisions: commonItems::parser
 		{
 			return politicalDecisions.getDecisions();
 		}
-		[[nodiscard]] std::vector<decisionsCategory>& getExiledGovernmentsDecisions()
+		[[nodiscard]] const std::vector<decisionsCategory>& getExiledGovernmentsDecisions() const
 		{
 			return exiledGovernmentsDecisions.getDecisions();
 		}
-		[[nodiscard]] std::vector<decisionsCategory>& getForeignInfluenceDecisions()
+		[[nodiscard]] const std::vector<decisionsCategory>& getForeignInfluenceDecisions() const
 		{
 			return foreignInfluenceDecisions.getDecisions();
 		}
-		[[nodiscard]] std::vector<decisionsCategory>& getNavalTreatyDecisions()
+		[[nodiscard]] const std::vector<decisionsCategory>& getNavalTreatyDecisions() const
 		{
 			return navalTreatyDecisions.getDecisions();
 		}
-		[[nodiscard]] std::vector<decisionsCategory>& getResourceProspectingDecisions()
+		[[nodiscard]] const std::vector<decisionsCategory>& getResourceProspectingDecisions() const
 		{
 			return resourceProspectingDecisions.getDecisions();
 		}
-		[[nodiscard]] std::vector<decisionsCategory>& getGenericDecisions()
+		[[nodiscard]] const std::vector<decisionsCategory>& getGenericDecisions() const
 		{
 			return genericDecisions.getDecisions();
 		}
@@ -73,7 +74,7 @@ class decisions: commonItems::parser
 		ExiledGovernmentsDecisions exiledGovernmentsDecisions;
 		ForeignInfluenceDecisions foreignInfluenceDecisions;
 		NavalTreatyDecisions navalTreatyDecisions;
-		DecisionsFile resourceProspectingDecisions;
+		ResourceProspectingDecisions resourceProspectingDecisions;
 		GenericDecisions genericDecisions;
 };
 

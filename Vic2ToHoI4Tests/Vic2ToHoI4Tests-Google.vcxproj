@@ -102,7 +102,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\IdeologicalDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\NavalTreatyDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\PoliticalDecisions.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\ResourceProspectingDecisionsUpdater.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\ResourceProspectingDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\StabilityWarSupportDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AIPeace.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AIPeaces.cpp" />

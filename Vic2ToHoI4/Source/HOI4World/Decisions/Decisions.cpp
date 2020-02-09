@@ -1,5 +1,4 @@
 #include "Decisions.h"
-#include "ResourceProspectingDecisionsUpdater.h"
 #include "../Events/Events.h"
 #include <regex>
 
@@ -36,6 +35,6 @@ void HoI4::decisions::updateDecisions(
 	exiledGovernmentsDecisions.updateDecisions(majorIdeologies);
 	foreignInfluenceDecisions.updateDecisions(majorIdeologies);
 	navalTreatyDecisions.updateDecisions(majorIdeologies);
-	updateResourceProspectingDecisions(resourceProspectingDecisions, provinceToStateIdMap, defaultStates);
+	resourceProspectingDecisions.updateDecisions(provinceToStateIdMap, defaultStates);
 	genericDecisions.updateDecisions(provinceToStateIdMap, majorIdeologies);
 }

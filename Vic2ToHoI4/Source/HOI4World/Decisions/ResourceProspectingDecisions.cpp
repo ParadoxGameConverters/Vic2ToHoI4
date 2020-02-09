@@ -1,5 +1,4 @@
-#include "ResourceProspectingDecisionsUpdater.h"
-#include <functional>
+#include "ResourceProspectingDecisions.h"
 #include <map>
 #include <regex>
 #include <string>
@@ -69,7 +68,7 @@ bool allowedNeedsStripping(const std::string_view decisionName)
 
 
 HoI4::decision updateDecision(
-	HoI4::decision&& decisionToUpdate,
+	HoI4::decision decisionToUpdate,
 	const std::map<int, int>& provinceToStateIdMap,
 	const std::map<int, HoI4::DefaultState>& defaultStates
 )
@@ -84,7 +83,7 @@ HoI4::decision updateDecision(
 	auto possibleNewStateNum = getRelevantStateFromOldState(oldStateNum, provinceToStateIdMap, defaultStates);
 	if (!possibleNewStateNum)
 	{
-		return std::move(decisionToUpdate);
+		return decisionToUpdate;
 	}
 	auto newStateNum = *possibleNewStateNum;
 
@@ -133,22 +132,20 @@ HoI4::decision updateDecision(
 		decisionToUpdate.setAiWillDo("= {\n\t\t\tfactor = 1\n\t\t}");
 	}
 	
-	return std::move(decisionToUpdate);
+	return decisionToUpdate;
 }
 
 
-void HoI4::updateResourceProspectingDecisions(
-	DecisionsFile& resourceProspectingDecisions,
+void HoI4::ResourceProspectingDecisions::updateDecisions(
 	const std::map<int, int>& _provinceToStateIdMap,
 	const std::map<int, DefaultState>& defaultStates
 )
 {
-
-	for (auto& category: resourceProspectingDecisions.getDecisions())
+	for (auto& category: decisions)
 	{
-		for (auto& decisionToUpdate: category.getDecisions())
+		for (const auto& decisionToUpdate: category.getDecisions())
 		{
-			category.replaceDecision(updateDecision(std::move(decisionToUpdate), _provinceToStateIdMap, defaultStates));
+			category.replaceDecision(updateDecision(decisionToUpdate, _provinceToStateIdMap, defaultStates));
 		}
 	}
 }
