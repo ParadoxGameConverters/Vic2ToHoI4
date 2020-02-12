@@ -45,7 +45,7 @@
 #include "../Hoi4Outputter/ScriptedTriggers/OutScriptedTriggers.h"
 #include "../Hoi4Outputter/States/HoI4StatesOutputter.h"
 #include <fstream>
-#include "../Hoi4Outputter/DifficultySettings.h"
+#include "../Hoi4Outputter/outDifficultySettings.cpp"
 using namespace std;
 
 
@@ -1067,7 +1067,7 @@ void HoI4::World::output()
 	outputBookmarks();
 	outputScriptedLocalisations(theConfiguration, scriptedLocalisations);
 	outputScriptedTriggers(scriptedTriggers, theConfiguration);
-	outputDifficultySettings(difficultySettings(), theConfiguration);
+	outputDifficultySettings(greatPowers, theConfiguration);
 }
 
 
@@ -1578,20 +1578,4 @@ void HoI4::World::calculateSpherelingAutonomy()
 			GP->setSpherelingAutonomy(sphereling.first, spherelingAutonomy);
 		}
 	}
-}
-
-std::string HoI4::World::difficultySettings()
-{
-	std::string diffSet = "";
-	for (const auto& GP: greatPowers)
-	{
-		diffSet += "\tdifficulty_setting = {\n";
-		diffSet += "\t\tkey = \"custom_diff_strong_" + GP->getTag() + "\"\n";
-		diffSet += "\t\tmodifier = diff_strong_ai_generic\n";
-		diffSet += "\t\tcountries = { " + GP->getTag() + " }\n";
-		diffSet += "\t\tmultiplier = 2.0\n";
-		diffSet += "\t}\n";
-	}
-
-	return diffSet;
 }

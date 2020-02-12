@@ -194,7 +194,6 @@
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.cpp" />
-    <ClCompile Include="Source\Hoi4Outputter\DifficultySettings.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAiPeace.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAiPeaces.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutWar.cpp" />
@@ -219,6 +218,7 @@
     <ClCompile Include="Source\Hoi4Outputter\Navies\OutLegacyShipTypeNames.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\OutMtgNavyNames.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\OutMtgShipTypeNames.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\outDifficultySettings.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTrigger.cpp" />
@@ -368,7 +368,6 @@
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.h" />
-    <ClInclude Include="Source\Hoi4Outputter\DifficultySettings.h" />
     <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAiPeace.h" />
     <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAiPeaces.h" />
     <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutWar.h" />
