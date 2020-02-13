@@ -110,6 +110,7 @@ HoI4::decision::decision(std::string decisionName, std::istream& theStream):
 		const commonItems::stringOfObject theModifier(theStream);
 		modifier = theModifier.getString();
 	});
+	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();
