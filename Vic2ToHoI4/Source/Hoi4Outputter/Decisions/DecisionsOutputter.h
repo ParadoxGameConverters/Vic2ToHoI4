@@ -12,7 +12,7 @@ namespace HoI4
 {
 	
 void outputDecisions(
-	const decisions& theDecisions,
+	decisions& theDecisions,
 	const std::set<std::string>& majorIdeologies,
 	const Configuration& theConfiguration
 );

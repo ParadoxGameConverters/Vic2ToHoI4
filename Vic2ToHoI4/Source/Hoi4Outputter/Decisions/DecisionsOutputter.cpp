@@ -5,7 +5,7 @@
 
 
 void HoI4::outputDecisions(
-	const decisions& theDecisions,
+	decisions& theDecisions,
 	const std::set<std::string>& majorIdeologies,
 	const Configuration& theConfiguration
 )
@@ -47,6 +47,13 @@ void HoI4::outputDecisions(
 
 	outStream.open("output/" + theConfiguration.getOutputName() + "/common/decisions/MTG_naval_treaty.txt");
 	for (const auto& category: theDecisions.getNavalTreatyDecisions())
+	{
+		outStream << category;
+	}
+	outStream.close();
+
+	outStream.open("output/" + theConfiguration.getOutputName() + "/common/decisions/resource_prospecting.txt");
+	for (const auto& category : theDecisions.getResourceProspectingDecisions())
 	{
 		outStream << category;
 	}
