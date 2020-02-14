@@ -9,16 +9,15 @@ build_script:
     msbuild Vic2ToHoI4.sln /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
 
     msbuild Vic2ToHoI4Tests/Vic2ToHoI4Tests-Google.vcxproj /logger:"C:\Program Files\AppVeyor\BuildAgent\Appveyor.MSBuildLogger.dll"
-test: off
-#test_script:
-#- ps: >-
-#    vstest.console /logger:Appveyor frontend\Frontend.Core.Tests\bin\Release\Frontend.Core.Tests.dll
-#
-#    cd Release\Vic2ToHoI4
-#
-#    ..\..\Vic2ToHoI4Tests\Release\Vic2ToHoI4Tests.exe --gtest_output=xml:tests.xml
-#
-#    (new-object net.webclient).UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\tests.xml))
+test_script:
+- ps: >-
+    vstest.console /logger:Appveyor frontend\Frontend.Core.Tests\bin\Release\Frontend.Core.Tests.dll
+
+    cd Release\Vic2ToHoI4
+
+    ..\..\Vic2ToHoI4Tests\Release\Vic2ToHoI4Tests.exe --gtest_output=xml:tests.xml
+
+    (new-object net.webclient).UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\tests.xml))
 artifacts:
 - path: Release
   name: Vic2ToHoI4
