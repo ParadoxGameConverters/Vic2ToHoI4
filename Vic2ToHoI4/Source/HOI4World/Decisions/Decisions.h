@@ -2,15 +2,17 @@
 #define HOI4_DECISIONS_H
 
 
+
 #include "newParser.h"
-#include "IdeologicalDecisions.h"
 #include "DecisionsCategory.h"
 #include "ExiledGovernmentsDecisions.h"
 #include "ForeignInfluenceDecisions.h"
 #include "GenericDecisions.h"
 #include "NavalTreatyDecisions.h"
 #include "PoliticalDecisions.h"
+#include "ResourceProspectingDecisions.h"
 #include "StabilityWarSupportDecisions.h"
+#include "../States/DefaultState.h"
 #include "../../Configuration.h"
 #include <map>
 #include <set>
@@ -33,6 +35,7 @@ class decisions: commonItems::parser
 		void updateDecisions(
 			const std::set<std::string>& majorIdeologies,
 			const std::map<int, int>& provinceToStateIdMap,
+			const std::map<int, DefaultState>& defaultStates,
 			const Events& theEvents
 		);
 
@@ -56,6 +59,10 @@ class decisions: commonItems::parser
 		{
 			return navalTreatyDecisions.getDecisions();
 		}
+		[[nodiscard]] const std::vector<decisionsCategory>& getResourceProspectingDecisions() const
+		{
+			return resourceProspectingDecisions.getDecisions();
+		}
 		[[nodiscard]] const std::vector<decisionsCategory>& getGenericDecisions() const
 		{
 			return genericDecisions.getDecisions();
@@ -67,6 +74,7 @@ class decisions: commonItems::parser
 		ExiledGovernmentsDecisions exiledGovernmentsDecisions;
 		ForeignInfluenceDecisions foreignInfluenceDecisions;
 		NavalTreatyDecisions navalTreatyDecisions;
+		ResourceProspectingDecisions resourceProspectingDecisions;
 		GenericDecisions genericDecisions;
 };
 

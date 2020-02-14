@@ -17,10 +17,15 @@ class decision: commonItems::parser
 		decision(std::string decisionName, std::istream& theStream);
 
 		[[nodiscard]] std::string getName() const { return name; }
+		[[nodiscard]] std::string getHighlightStates() const { return highlightStates; }
+		[[nodiscard]] std::string getAvailable() const { return available; }
 		[[nodiscard]] std::string getVisible() const { return visible; }
+		[[nodiscard]] std::string getRemoveEffect() const { return removeEffect; }
 		[[nodiscard]] std::string getTimeoutEffect() const { return timeoutEffect; }
 
+		void setAllowed(const std::string& newAllowed) { allowed = newAllowed; }
 		void setAvailable(const std::string& newAvailable) { available = newAvailable; }
+		void setHighlightStates(const std::string& newHighlightStates) { highlightStates = newHighlightStates; }
 		void setTargetTrigger(const std::string& newTargetTrigger) { targetTrigger = newTargetTrigger; }
 		void setVisible(const std::string& newVisible) { visible = newVisible; }
 		void setCompleteEffect(const std::string& newEffect) { completeEffect = newEffect; }
@@ -39,6 +44,7 @@ class decision: commonItems::parser
 		std::string icon;
 		std::string isGood;
 		std::string allowed;
+		std::string highlightStates;
 		std::string available;
 		std::optional<int> daysMissionTimeout;
 		std::string activation;
@@ -57,7 +63,7 @@ class decision: commonItems::parser
 		std::string timeoutEffect;
 		std::string aiWillDo;
 		std::string fireOnlyOnce;
-		std::optional<int> daysRemove;
+		std::optional<std::string> daysRemove;
 		std::optional<int> daysReEnable;
 		std::optional<std::string> cost;
 		std::string modifier;

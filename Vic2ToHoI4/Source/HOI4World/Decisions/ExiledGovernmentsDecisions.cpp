@@ -11,12 +11,12 @@ void HoI4::ExiledGovernmentsDecisions::updateDecisions(const std::set<std::strin
 	for (auto category: decisions)
 	{
 		auto updated = false;
-		for (auto decision : category.getDecisions())
+		for (auto decision: category.getDecisions())
 		{
 			if (exiledGovernmentDecisionToUpdate(decision.getName()))
 			{
 				std::stringstream available;
-				available << "{\n";
+				available << "= {\n";
 				available << "\t\t\tFROM = {\n";
 				available << "\t\t\t\thas_legitimacy > 50\n";
 				available << "\t\t\t\tOR = {\n";
@@ -34,7 +34,7 @@ void HoI4::ExiledGovernmentsDecisions::updateDecisions(const std::set<std::strin
 				decision.setAvailable(available.str());
 
 				std::stringstream visibleAndTT;
-				visibleAndTT << "{\n";
+				visibleAndTT << "= {\n";
 				visibleAndTT << "\t\t\tFROM = {\n";
 				visibleAndTT << "\t\t\t\tis_exiled_in = ROOT\n";
 				visibleAndTT << "\t\t\t\thas_legitimacy > 40\n";
