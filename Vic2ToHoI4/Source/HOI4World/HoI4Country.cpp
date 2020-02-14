@@ -427,7 +427,7 @@ bool HoI4::Country::attemptToPutCapitalInPreferredWastelandOwned(
 
 bool HoI4::Country::attemptToPutCapitalInAnyOwned(const map<int, State>& allStates)
 {
-	for (auto ownedStateNum : states)
+	for (auto ownedStateNum: states)
 	{
 		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
 		{

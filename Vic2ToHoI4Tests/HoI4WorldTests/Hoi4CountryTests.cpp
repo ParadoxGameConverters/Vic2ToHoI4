@@ -359,6 +359,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanBeSetInOwnedState)
 	Vic2::State foo;
 	mockHoi4State state(foo, "TAG");
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	EXPECT_CALL(state, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{}));
 
 	std::map<int, HoI4::State> allStates;
 	std::pair<int, HoI4::State> statePair(1, state);
@@ -399,6 +400,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceIsImp
 	state.addCores(std::set<std::string>{"TAG"});
 	state.addProvince(10);
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	EXPECT_CALL(state, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{10}));
 	std::pair<int, HoI4::State> statePair(1, state);
 	allStates.insert(statePair);
 	theCountry.addState(state);
@@ -406,6 +408,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceIsImp
 	mockHoi4State state2(foo, "TAG");
 	state2.addCores(std::set<std::string>{"TAG"});
 	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
+	EXPECT_CALL(state2, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{}));
 	std::pair<int, HoI4::State> statePair2(2, state2);
 	allStates.insert(statePair2);
 	theCountry.addState(state2);
@@ -452,6 +455,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceNotOw
 	state.addCores(std::set<std::string>{"TAG"});
 	state.addProvince(10);
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	EXPECT_CALL(state, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{10}));
 	std::pair<int, HoI4::State> statePair(1, state);
 	allStates.insert(statePair);
 	theCountry.addState(state);
@@ -459,6 +463,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceNotOw
 	mockHoi4State state2(foo, "TAG");
 	state2.addCores(std::set<std::string>{"TAG"});
 	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
+	EXPECT_CALL(state2, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{}));
 	std::pair<int, HoI4::State> statePair2(2, state2);
 	allStates.insert(statePair2);
 	theCountry.addState(state2);
@@ -504,6 +509,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInPreferredWastelandIfOnlyWastela
 	state.makeImpassable();
 	state.addCores(std::set<std::string>{"TAG"});
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	EXPECT_CALL(state, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{}));
 	std::pair<int, HoI4::State> statePair(1, state);
 	allStates.insert(statePair);
 	theCountry.addState(state);
@@ -512,6 +518,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInPreferredWastelandIfOnlyWastela
 	state2.makeImpassable();
 	state2.addCores(std::set<std::string>{"TAG"});
 	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
+	EXPECT_CALL(state2, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{}));
 	std::pair<int, HoI4::State> statePair2(2, state2);
 	allStates.insert(statePair2);
 	theCountry.addState(state2);
@@ -559,6 +566,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInOtherWastelandIfOnlyWastelandOw
 	state.addCores(std::set<std::string>{"TAG"});
 	state.addProvince(10);
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	EXPECT_CALL(state, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{10}));
 	std::pair<int, HoI4::State> statePair(1, state);
 	allStates.insert(statePair);
 	theCountry.addState(state);
@@ -567,6 +575,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInOtherWastelandIfOnlyWastelandOw
 	state2.makeImpassable();
 	state2.addCores(std::set<std::string>{"TAG"});
 	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
+	EXPECT_CALL(state2, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{}));
 	std::pair<int, HoI4::State> statePair2(2, state2);
 	allStates.insert(statePair2);
 	theCountry.addState(state2);
@@ -612,6 +621,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredPreferredIfNoneOwned)
 	mockHoi4State state(foo, "NON");
 	state.addCores(std::set<std::string>{"TAG"});
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	EXPECT_CALL(state, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{}));
 	std::pair<int, HoI4::State> statePair(1, state);
 	allStates.insert(statePair);
 	theCountry.addState(state);
@@ -619,6 +629,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredPreferredIfNoneOwned)
 	mockHoi4State state2(foo, "NON");
 	state2.addCores(std::set<std::string>{"TAG"});
 	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
+	EXPECT_CALL(state2, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{}));
 	std::pair<int, HoI4::State> statePair2(2, state2);
 	allStates.insert(statePair2);
 	theCountry.addState(state2);
@@ -664,6 +675,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredNonWastelandIfNoneOwnedAndP
 	state.addCores(std::set<std::string>{"TAG"});
 	state.addProvince(10);
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	EXPECT_CALL(state, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{10}));
 	std::pair<int, HoI4::State> statePair(1, state);
 	allStates.insert(statePair);
 	theCountry.addState(state);
@@ -671,6 +683,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredNonWastelandIfNoneOwnedAndP
 	mockHoi4State state2(foo, "NON");
 	state2.addCores(std::set<std::string>{"TAG"});
 	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
+	EXPECT_CALL(state2, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{}));
 	std::pair<int, HoI4::State> statePair2(2, state2);
 	allStates.insert(statePair2);
 	theCountry.addState(state2);
@@ -717,6 +730,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToPreferredWastelandIfNoneOwnedAnd
 	state.addCores(std::set<std::string>{"TAG"});
 	state.makeImpassable();
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	EXPECT_CALL(state, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{}));
 	std::pair<int, HoI4::State> statePair(1, state);
 	allStates.insert(statePair);
 	theCountry.addState(state);
@@ -725,6 +739,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToPreferredWastelandIfNoneOwnedAnd
 	state2.addCores(std::set<std::string>{"TAG"});
 	state2.makeImpassable();
 	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
+	EXPECT_CALL(state2, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{}));
 	std::pair<int, HoI4::State> statePair2(2, state2);
 	allStates.insert(statePair2);
 	theCountry.addState(state2);
@@ -773,6 +788,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToAnyWastelandIfNoneOwnedAllWastel
 	state.addProvince(10);
 	state.makeImpassable();
 	EXPECT_CALL(state, getID).WillOnce(testing::Return(1));
+	EXPECT_CALL(state, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{10}));
 	std::pair<int, HoI4::State> statePair(1, state);
 	allStates.insert(statePair);
 	theCountry.addState(state);
@@ -781,6 +797,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToAnyWastelandIfNoneOwnedAllWastel
 	state2.addCores(std::set<std::string>{"TAG"});
 	state2.makeImpassable();
 	EXPECT_CALL(state2, getID).WillOnce(testing::Return(2));
+	EXPECT_CALL(state2, getProvinces).WillOnce(testing::ReturnRefOfCopy(std::set<int>{}));
 	std::pair<int, HoI4::State> statePair2(2, state2);
 	allStates.insert(statePair2);
 	theCountry.addState(state2);
