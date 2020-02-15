@@ -4,6 +4,7 @@
 #include "../../Mocks/TechnologiesMock.h"
 
 
+
 class HoI4World_Navies_NaviesTests: public testing::Test
 {
 	protected:
@@ -70,7 +71,6 @@ HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests()
 	theShipVariants = std::make_unique<HoI4::shipVariants>(possibleVariants, ownedTechs, "");
 	limitedShipVariants = std::make_unique<HoI4::shipVariants>(possibleVariants, ownedTechs, "");
 }
-
 
 
 TEST_F(HoI4World_Navies_NaviesTests, BlankNaviesOutputLegacyProperly)

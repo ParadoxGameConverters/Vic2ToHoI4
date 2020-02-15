@@ -176,7 +176,7 @@ TEST(HoI4World_States_StateTests, ownerIsOutput)
 	expectedOutput << "\thistory={\n";
 	expectedOutput << "\t\towner = TAG\n";
 	expectedOutput << "\t\tbuildings = {\n";
-	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tinfrastructure = 3\n";
 	expectedOutput << "\t\t\tindustrial_complex = 0\n";
 	expectedOutput << "\t\t\tarms_factory = 0\n";
 	expectedOutput << "\t\t\tair_base = 0\n";
@@ -248,7 +248,7 @@ TEST(HoI4World_States_StateTests, coresAreOutput)
 	expectedOutput << "\thistory={\n";
 	expectedOutput << "\t\towner = TAG\n";
 	expectedOutput << "\t\tbuildings = {\n";
-	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tinfrastructure = 3\n";
 	expectedOutput << "\t\t\tindustrial_complex = 0\n";
 	expectedOutput << "\t\t\tarms_factory = 0\n";
 	expectedOutput << "\t\t\tair_base = 0\n";
@@ -445,12 +445,12 @@ TEST(HoI4World_States_StateTests, categoryCanBeChanged)
 }*/
 
 
-TEST(HoI4World_States_StateTests, infrastructureDefaultsToZero)
+TEST(HoI4World_States_StateTests, infrastructureDefaultsToThree)
 {
 	mockVic2State sourceState;
 	HoI4::State theState(sourceState, 42, "TAG");
 
-	ASSERT_EQ(theState.getInfrastructure(), 0);
+	ASSERT_EQ(theState.getInfrastructure(), 3);
 }
 
 
@@ -1009,7 +1009,7 @@ TEST(HoI4World_States_StateTests, debugVpsAreOutput)
 	expectedOutput << "\t\tvictory_points = { 24 1 }\n";
 	expectedOutput << "\t\tvictory_points = { 25 1 }\n";
 	expectedOutput << "\t\tbuildings = {\n";
-	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tinfrastructure = 3\n";
 	expectedOutput << "\t\t\tindustrial_complex = 0\n";
 	expectedOutput << "\t\t\tarms_factory = 0\n";
 	expectedOutput << "\t\t\tair_base = 0\n";
@@ -1086,7 +1086,7 @@ TEST(HoI4World_States_StateTests, navalBasesAreOutput)
 	expectedOutput << "\thistory={\n";
 	expectedOutput << "\t\towner = TAG\n";
 	expectedOutput << "\t\tbuildings = {\n";
-	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tinfrastructure = 3\n";
 	expectedOutput << "\t\t\tindustrial_complex = 0\n";
 	expectedOutput << "\t\t\tarms_factory = 0\n";
 	expectedOutput << "\t\t\t12 = {\n";
@@ -1140,7 +1140,7 @@ TEST(HoI4World_States_StateTests, resourcesCanBeAdded)
 	expectedOutput << "\thistory={\n";
 	expectedOutput << "\t\towner = TAG\n";
 	expectedOutput << "\t\tbuildings = {\n";
-	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tinfrastructure = 3\n";
 	expectedOutput << "\t\t\tindustrial_complex = 0\n";
 	expectedOutput << "\t\t\tarms_factory = 0\n";
 	expectedOutput << "\t\t\tair_base = 0\n";
@@ -1205,7 +1205,7 @@ TEST(HoI4World_States_StateTests, controllersCanBeAdded)
 	expectedOutput << "\thistory={\n";
 	expectedOutput << "\t\towner = TAG\n";
 	expectedOutput << "\t\tbuildings = {\n";
-	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tinfrastructure = 3\n";
 	expectedOutput << "\t\t\tindustrial_complex = 0\n";
 	expectedOutput << "\t\t\tarms_factory = 0\n";
 	expectedOutput << "\t\t\tair_base = 0\n";
@@ -1273,7 +1273,7 @@ TEST(HoI4World_States_StateTests, controllersConvertWithHoI4Tag)
 	expectedOutput << "\thistory={\n";
 	expectedOutput << "\t\towner = TAG\n";
 	expectedOutput << "\t\tbuildings = {\n";
-	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tinfrastructure = 3\n";
 	expectedOutput << "\t\t\tindustrial_complex = 0\n";
 	expectedOutput << "\t\t\tarms_factory = 0\n";
 	expectedOutput << "\t\t\tair_base = 0\n";
@@ -1336,7 +1336,7 @@ TEST(HoI4World_States_StateTests, controllersDontConvertForRebels)
 	expectedOutput << "\thistory={\n";
 	expectedOutput << "\t\towner = TAG\n";
 	expectedOutput << "\t\tbuildings = {\n";
-	expectedOutput << "\t\t\tinfrastructure = 0\n";
+	expectedOutput << "\t\t\tinfrastructure = 3\n";
 	expectedOutput << "\t\t\tindustrial_complex = 0\n";
 	expectedOutput << "\t\t\tarms_factory = 0\n";
 	expectedOutput << "\t\t\tair_base = 0\n";

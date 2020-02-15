@@ -146,7 +146,7 @@ TEST(HoI4World_HoI4ArmyTests, SufficientDivisionsConvert)
 	mappingsInput << "\t}\n";
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
-	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, theStates);
+	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates);
 
 	std::ostringstream output;
 	output << theArmy;
@@ -225,7 +225,7 @@ TEST(HoI4World_HoI4ArmyTests, ExperienceConverts)
 	mappingsInput << "\t}\n";
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
-	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, theStates);
+	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates);
 
 	std::ostringstream output;
 	output << theArmy;
@@ -311,7 +311,7 @@ TEST(HoI4World_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 	mappingsInput << "\t}\n";
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
-	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, theStates);
+	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates);
 
 	std::ostringstream output;
 	output << theArmy;
@@ -400,7 +400,7 @@ TEST(HoI4World_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 	mappingsInput << "\t}\n";
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
-	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, theStates);
+	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates);
 
 	std::ostringstream output;
 	output << theArmy;

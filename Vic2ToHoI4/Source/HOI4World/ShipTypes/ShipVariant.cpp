@@ -83,7 +83,7 @@ bool HoI4::shipVariant::isValidVariant(const technologies& ownedTechs) const
 {
 	for (const auto& requiredTechnology: requiredTechnologies)
 	{
-		if (ownedTechs.hasTechnology(requiredTechnology) == 0)
+		if (!ownedTechs.hasTechnology(requiredTechnology))
 		{
 			return false;
 		}
@@ -91,7 +91,7 @@ bool HoI4::shipVariant::isValidVariant(const technologies& ownedTechs) const
 
 	for (const auto& blockingTechnology: blockingTechnologies)
 	{
-		if (ownedTechs.hasTechnology(blockingTechnology) != 0)
+		if (ownedTechs.hasTechnology(blockingTechnology))
 		{
 			return false;
 		}
