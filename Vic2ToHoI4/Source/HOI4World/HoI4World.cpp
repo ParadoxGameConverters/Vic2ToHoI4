@@ -45,6 +45,7 @@
 #include "../Hoi4Outputter/ScriptedTriggers/OutScriptedTriggers.h"
 #include "../Hoi4Outputter/States/HoI4StatesOutputter.h"
 #include <fstream>
+#include "../Hoi4Outputter/outDifficultySettings.h"
 using namespace std;
 
 
@@ -1066,6 +1067,7 @@ void HoI4::World::output()
 	outputBookmarks();
 	outputScriptedLocalisations(theConfiguration, scriptedLocalisations);
 	outputScriptedTriggers(scriptedTriggers, theConfiguration);
+	outputDifficultySettings(greatPowers, theConfiguration);
 }
 
 
@@ -1577,4 +1579,3 @@ void HoI4::World::calculateSpherelingAutonomy()
 		}
 	}
 }
-
