@@ -1,6 +1,6 @@
-#include "gtest/gtest.h"
+#include "../../Mocks/EventsMock.h"
 #include "../Vic2ToHoI4/Source/HOI4World/Decisions/DecisionsCategory.h"
-#include "../../mocks/EventsMock.h"
+#include "gtest/gtest.h"
 #include <sstream>
 
 
@@ -10,7 +10,7 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, NameDefaultsToBlank)
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	HoI4::decisionsCategory theDecisionsCategory("", input);
+	const HoI4::decisionsCategory theDecisionsCategory("", input);
 
 	ASSERT_EQ(theDecisionsCategory.getName(), "");
 }
@@ -21,7 +21,7 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, NameCanBeSet)
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	HoI4::decisionsCategory theDecisionsCategory("decisionsCategoryName", input);
+	const HoI4::decisionsCategory theDecisionsCategory("decisionsCategoryName", input);
 
 	ASSERT_EQ(theDecisionsCategory.getName(), "decisionsCategoryName");
 }
@@ -32,7 +32,7 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionsDefaultsToEmpty)
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	HoI4::decisionsCategory theDecisionsCategory("", input);
+	const HoI4::decisionsCategory theDecisionsCategory("", input);
 
 	ASSERT_EQ(theDecisionsCategory.getDecisions().size(), 0);
 }
@@ -44,31 +44,9 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionsCanBeImported)
 	input << "= {\n";
 	input << "\tdecision={}\n";
 	input << "}";
-	HoI4::decisionsCategory theDecisionsCategory("", input);
+	const HoI4::decisionsCategory theDecisionsCategory("", input);
 
 	ASSERT_EQ(theDecisionsCategory.getDecisions().size(), 1);
-}
-
-
-TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionCategorycanBeOutput)
-{
-	std::stringstream input;
-	input << "= {\n";
-	input << "\tdecision={}\n";
-	input << "}";
-	HoI4::decisionsCategory theDecisionsCategory("decisionsCategoryName", input);
-
-	std::stringstream output;
-	output << theDecisionsCategory;
-
-	std::stringstream expectedOutput;
-	expectedOutput << "decisionsCategoryName = {\n";
-	expectedOutput << "\n";
-	expectedOutput << "\tdecision = {\n";
-	expectedOutput << "\t}\n";
-	expectedOutput << "}\n";
-	expectedOutput << "\n";
-	ASSERT_EQ(output.str(), expectedOutput.str());
 }
 
 
