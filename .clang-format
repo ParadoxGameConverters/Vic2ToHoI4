@@ -1,7 +1,7 @@
 BasedOnStyle: Microsoft
 Language: Cpp
 
-AccessModifierOffset: 0
+AccessModifierOffset: -1
 AlignAfterOpenBracket: DontAlign
 AllowAllArgumentsOnNextLine: false
 AllowAllConstructorInitializersOnNextLine: false

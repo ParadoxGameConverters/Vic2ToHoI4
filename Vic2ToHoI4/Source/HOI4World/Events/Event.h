@@ -16,45 +16,47 @@ namespace HoI4
 
 class Event: commonItems::parser
 {
-	public:
-		Event() = default;
-		Event(const std::string& _type, std::istream& theStream);
+  public:
+	Event() = default;
+	Event(const std::string& _type, std::istream& theStream);
 
-		void giveType(std::string&& newType) { type = newType; }
-		void giveId(std::string&& newId) { id = newId; }
-		void giveTitle(std::string&& newTitle) { title = newTitle; }
-		void giveDescription(std::string&& description) { descriptions.push_back(description); }
-		void givePicture(std::string&& newPicture) { picture = newPicture; }
-		void setMajor() { majorEvent = true; }
-		void setTriggeredOnly() { triggeredOnly = true; }
-		void giveTrigger(std::string&& newTrigger) { trigger = newTrigger; }
-		void giveMeanTimeToHappen(std::string&& newMttH) { meanTimeToHappen = newMttH; }
-		void giveImmediate(std::string&& newImmediate) { immediate = newImmediate; }
-		void giveOption(EventOption&& theOption) { options.push_back(theOption); }
+	void giveType(std::string&& newType) { type = newType; }
+	void giveId(std::string&& newId) { id = newId; }
+	void giveTitle(std::string&& newTitle) { title = newTitle; }
+	void giveDescription(std::string&& description) { descriptions.push_back(description); }
+	void givePicture(std::string&& newPicture) { picture = newPicture; }
+	void setMajor() { majorEvent = true; }
+	void setTriggeredOnly() { triggeredOnly = true; }
+	void giveTrigger(std::string&& newTrigger) { trigger = newTrigger; }
+	void setFireOnlyOnce() { fireOnlyOnce = true; }
+	void giveMeanTimeToHappen(std::string&& newMttH) { meanTimeToHappen = newMttH; }
+	void giveImmediate(std::string&& newImmediate) { immediate = newImmediate; }
+	void giveOption(EventOption&& theOption) { options.push_back(theOption); }
 
-		void clearOptions() { options.clear(); }
+	void clearOptions() { options.clear(); }
 
-		[[nodiscard]] const std::string& getId() const { return id; }
-		[[nodiscard]] const std::string& getTitle() const { return title; }
+	[[nodiscard]] const std::string& getId() const { return id; }
+	[[nodiscard]] const std::string& getTitle() const { return title; }
 
-		friend std::ostream& operator << (std::ostream& out, const Event& theEvent);
-		
-	private:
-		std::string type;
-		std::string id;
-		std::string title;
-		std::vector<std::string> descriptions;
-		std::string picture;
-		bool majorEvent = false;
-		bool triggeredOnly = false;
-		bool hidden = false;
-		std::string trigger;
-		std::string meanTimeToHappen;
-		std::string immediate;
-		std::vector<EventOption> options;
+	friend std::ostream& operator<<(std::ostream& out, const Event& theEvent);
+
+  private:
+	std::string type;
+	std::string id;
+	std::string title;
+	std::vector<std::string> descriptions;
+	std::string picture;
+	bool majorEvent = false;
+	bool triggeredOnly = false;
+	bool hidden = false;
+	std::string trigger;
+	bool fireOnlyOnce = false;
+	std::string meanTimeToHappen;
+	std::string immediate;
+	std::vector<EventOption> options;
 };
 
-}
+} // namespace HoI4
 
 
 

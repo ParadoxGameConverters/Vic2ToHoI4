@@ -2,10 +2,16 @@
 
 
 
-std::ostream& HoI4::operator << (std::ostream& out, const EventOption& theOption)
+std::ostream& HoI4::operator<<(std::ostream& out, const EventOption& theOption)
 {
 	out << "\toption = {\n";
 	out << "\t\tname = " << theOption.name << "\n";
+	if (!theOption.trigger.empty())
+	{
+		out << "\t\ttrigger = {\n";
+		out << "\t\t\t" << theOption.trigger << "\n";
+		out << "\t\t}\n";
+	}
 	if (!theOption.aiChance.empty())
 	{
 		out << "\t\tai_chance " << theOption.aiChance << "\n";
