@@ -1118,18 +1118,17 @@ void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& maj
 
 void HoI4::Events::importElectionEvents(const std::set<std::string>& majorIdeologies, OnActions& onActions)
 {
-	clearRegisteredKeywords();
-	registerKeyword(std::regex("country_event"),
-		 [this, majorIdeologies](const std::string& type, std::istream& theStream) {
-			 const Event electionEvent(type, theStream);
-			 if ((majorIdeologies.count("democratic") > 0) || (electionEvent.getId() != "election.3"))
-			 {
-				 electionEvents.push_back(electionEvent);
-			 }
-		 });
+	registerKeyword("country_event", [this, majorIdeologies](const std::string& type, std::istream& theStream) {
+		const Event electionEvent(type, theStream);
+		if ((majorIdeologies.count("democratic") > 0) || (electionEvent.getId() != "election.3"))
+		{
+			electionEvents.push_back(electionEvent);
+		}
+	});
 	registerRegex("[A-Za-z0-9\\_]+", commonItems::ignoreItem);
 
 	parseFile("blankmod/output/events/ElectionEvents.txt");
+	clearRegisteredKeywords();
 
 	if (majorIdeologies.count("democratic") > 0)
 	{
