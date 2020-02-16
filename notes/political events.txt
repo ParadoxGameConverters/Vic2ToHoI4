@@ -1,0 +1,75 @@
+Converter created events:
+	onTheRise - corresponds to 1, 7, 14
+	addPopularity - corresponds to original 4, 11
+	militaryDefections - corresponds to original 5, 12
+	opposition - corresponds to original 15
+	callForElections - corresponds to original 16
+	fiftyPercent - correspond to original 18-20
+	revolution - correspond to original 21, 22, 23
+	suppressedEvent - correspond to original 24, 25, 26, 27
+
+Blank mod events:
+	Absorb revolter of same ideology - corresponds to 28
+
+Original events:
+	Communism on the Rise (1)
+		Happens if communism support high enough (0.6 - 0.7)
+		Can switch to communism
+	Class conflicts (4)
+		triggers if has communism minister and communism support 0.2-0.59
+		adds popularity to communism, decreases stability
+	Soldiers desert (5)
+		Happens if has communism minister and communism support 0.3-0.59
+		Increases communism popularity and adds idea that increases communism drift and decreases conscription
+	Communism civil war (22)
+		Happens if communism popularity > 0.7 and no existing civil war
+		Choice between starting civil war as Communism, starting civil war as old ideology, or switching to Communism
+
+	Fascism on the rise (7)
+		Happens if fascism support 0.6-0.7
+		Can switch to fascism
+	Fascist assualt divisions (11)
+		Happens if fascism minister and fascism support 0.3-0.59
+		adds popularity to fascism and adds idea that increases fascism drift, increases conscription, and lowers stability
+	Threat of communism (12)
+		Happens if fascism minister, fascism support 0.25-0.59, and neighbors a communist country
+		adds popularity to fascism
+	Fascism revolution (21)
+		Happens if fascissm support > 0.7 and no existing civil war
+		Choice between starting civil war as fascist, starting civil war as old ideology, or switching to fascism
+
+	Ruling party debates Democracy (14)
+		Happens if democracy support 0.6-0.7
+		can switch to democracy
+	Democratic Opposition Forming (15)
+		Happens if democratic minister and democratic support 0-0.59
+		adds popularity to democratic and decreases stability
+	Public call for elections (16)
+		Happens if democratic minister and last event happened
+		Decreases PP and adds event that increases democratic drift and decreases PP generation
+	Democratic revolution (23)
+		Happens if Democratic support > 0.7 and no existing civil war
+		Choice between starting civil war as Democratic, starting civil war as old ideology, or switching to Democratic
+		
+	Fascists Demand Referendum (18)
+		triggered by decision
+		switches to fascism, disables elections, and decreases stability
+	Communist referendum (19)
+		triggered by decision
+		switches to communism, disables elections, and decreases stability
+	Democratic referendum (20)
+		triggered by decision
+		switches to democracy, enables elections, decreases stability, and adds idea for defeating other ideologies
+		
+	Remove fascist revolutionaries (24)
+		removes the fascist_revolutionaries idea, which looks like it is never set
+	Remove Communist revolutionaries (25)
+		removes the communist_revolutionaries idea, which looks like it is never set
+	Remove Democratic revolutionaries (26)
+		removes the democratic_revolutionaries idea, which looks like it is never set
+
+	Remove neutral foreign policy (27)
+		Happens if fascism or communism and has neutrality_idea (starting idea or can be added by focus)
+		Removes neutrality_idea
+
+	Absorb revolter of same ideology (28)
