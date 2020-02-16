@@ -1,5 +1,5 @@
-#include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/Decisions/IdeologicalDecisions.h"
+#include "gtest/gtest.h"
 #include <sstream>
 
 
@@ -9,9 +9,9 @@ TEST(HoI4World_Decisions_IdeologicalDecisionsTests, defaultsToEmptyList)
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	HoI4::IdeologicalDecisions ideologicalDecisions(input);
+	const HoI4::IdeologicalDecisions ideologicalDecisions(input);
 
-	ASSERT_EQ(ideologicalDecisions.getCategories().size(), 0);
+	ASSERT_TRUE(ideologicalDecisions.getCategories().empty());
 }
 
 
@@ -22,7 +22,7 @@ TEST(HoI4World_Decisions_IdeologicalDecisionsTests, categoriesCanBeInput)
 	input << "\tcategoryOne = {}\n";
 	input << "\tcategoryTwo = {}\n";
 	input << "}";
-	HoI4::IdeologicalDecisions ideologicalDecisions(input);
+	const HoI4::IdeologicalDecisions ideologicalDecisions(input);
 
 	ASSERT_EQ(ideologicalDecisions.getCategories().size(), 2);
 }
@@ -35,7 +35,7 @@ TEST(HoI4World_Decisions_IdeologicalDecisionsTests, handlesNoRequiredIdeologies)
 	input << "}";
 	HoI4::IdeologicalDecisions ideologicalDecisions(input);
 
-	std::set<std::string> majorIdeologies;
+	const std::set<std::string> majorIdeologies;
 	ASSERT_TRUE(ideologicalDecisions.requiredIdeologiesExist(majorIdeologies));
 }
 
@@ -50,7 +50,7 @@ TEST(HoI4World_Decisions_IdeologicalDecisionsTests, falseIfRequiredIdeologyMissi
 	input << "}";
 	HoI4::IdeologicalDecisions ideologicalDecisions(input);
 
-	std::set<std::string> majorIdeologies;
+	const std::set<std::string> majorIdeologies;
 	ASSERT_FALSE(ideologicalDecisions.requiredIdeologiesExist(majorIdeologies));
 }
 
