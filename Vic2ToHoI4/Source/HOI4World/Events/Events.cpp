@@ -499,11 +499,70 @@ void HoI4::Events::createTradeEvent(const Country& leader, const Country& greatP
 
 void HoI4::Events::createPoliticalEvents(const std::set<std::string>& majorIdeologies)
 {
+	addOnTheRise(majorIdeologies);
 	addMinisterRevolutionEvents(majorIdeologies);
 	addFiftyPercentEvents(majorIdeologies);
 	addRevolutionEvents(majorIdeologies);
 	addSuppressedEvents(majorIdeologies);
 }
+
+
+void HoI4::Events::addOnTheRise(const std::set<std::string>& majorIdeologies)
+{
+	for (const auto& ideology: majorIdeologies)
+	{
+		if (ideology == "neutrality")
+		{
+			continue;
+		}
+
+		Event onTheRise;
+		onTheRise.giveType("country_event");
+		onTheRise.giveId("conv.political." + std::to_string(politicalEventNumber));
+		onTheRise.giveTitle("conv.political." + std::to_string(politicalEventNumber) + ".t");
+		HoI4Localisation::copyEventLocalisations(ideology + "_on_the_rise.t", onTheRise.getTitle());
+		auto description = "conv.political." + std::to_string(politicalEventNumber) + ".d";
+		onTheRise.giveDescription("= " + description);
+		HoI4Localisation::copyEventLocalisations(ideology + "_on_the_rise.d", description);
+		onTheRise.givePicture(getIdeologicalPicture(ideology));
+		std::string addOnTheRiseTrigger = "= {\n";
+		addOnTheRiseTrigger += "\t\tNOT = { has_government = " + ideology + " }\n";
+		addOnTheRiseTrigger += "\t\t" + ideology + " > 0.6\n";
+		addOnTheRiseTrigger += "\t\tNOT = { " + ideology + " > 0.7 }\n";
+		addOnTheRiseTrigger += "\t}";
+		onTheRise.giveTrigger(std::move(addOnTheRiseTrigger));
+		onTheRise.setFireOnlyOnce();
+		std::string onTheRiseMtth = "= {\n";
+		onTheRiseMtth += "\t\tdays = 30\n";
+		onTheRiseMtth += "\t}";
+		onTheRise.giveMeanTimeToHappen(std::move(onTheRiseMtth));
+
+		EventOption onTheRiseOptionA;
+		auto optionAName = "conv.political." + std::to_string(politicalEventNumber) + ".a";
+		HoI4Localisation::copyEventLocalisations(ideology + "_on_the_rise.a", optionAName);
+		onTheRiseOptionA.giveName(std::move(optionAName));
+		onTheRiseOptionA.giveScriptBlock("add_political_power = -100");
+		std::string setPoliticsEffect = "set_politics = {\n";
+		setPoliticsEffect += "\t\t\truling_party = " + ideology + "\n";
+		setPoliticsEffect += "\t\t\telections_allowed = ";
+		(ideology == "democratic") ? setPoliticsEffect += "yes\n" : setPoliticsEffect += "no\n";
+		setPoliticsEffect += "\t\t}";
+		onTheRiseOptionA.giveScriptBlock(std::move(setPoliticsEffect));
+		onTheRise.giveOption(std::move(onTheRiseOptionA));
+
+		EventOption onTheRiseOptionB;
+		auto optionBName = "conv.political." + std::to_string(politicalEventNumber) + ".b";
+		HoI4Localisation::copyEventLocalisations(ideology + "_on_the_rise.b", optionBName);
+		onTheRiseOptionB.giveName(std::move(optionBName));
+		onTheRiseOptionB.giveAiChance("= {\n\t\t\tfactor = 0\n\t\t}");
+		onTheRiseOptionB.giveScriptBlock("custom_effect_tooltip = impending_civil_war_tt");
+		onTheRise.giveOption(std::move(onTheRiseOptionB));
+
+		politicalEvents.push_back(onTheRise);
+		politicalEventNumber++;
+	}
+}
+
 
 
 void HoI4::Events::addMinisterRevolutionEvents(const std::set<std::string>& majorIdeologies)
