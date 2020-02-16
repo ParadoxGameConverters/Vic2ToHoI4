@@ -3,12 +3,12 @@
 
 
 
-std::ostream& HoI4::operator << (std::ostream& out, const Event& theEvent)
+std::ostream& HoI4::operator<<(std::ostream& out, const Event& theEvent)
 {
 	out << theEvent.type << " = {\n";
 	out << "	id = " << theEvent.id << "\n";
 	out << "	title = " << theEvent.title << "\n";
-	for (auto description: theEvent.descriptions)
+	for (const auto& description: theEvent.descriptions)
 	{
 		out << "\tdesc " << description << "\n";
 	}
@@ -34,6 +34,12 @@ std::ostream& HoI4::operator << (std::ostream& out, const Event& theEvent)
 		out << "	trigger " << theEvent.trigger << "\n";
 	}
 
+	if (theEvent.fireOnlyOnce)
+	{
+		out << "\n";
+		out << "\tfire_only_once = yes\n";
+	}
+
 	if (!theEvent.meanTimeToHappen.empty())
 	{
 		out << "\n";
@@ -46,7 +52,7 @@ std::ostream& HoI4::operator << (std::ostream& out, const Event& theEvent)
 		out << "	immediate " << theEvent.immediate << "\n";
 	}
 
-	for (auto option: theEvent.options)
+	for (const auto& option: theEvent.options)
 	{
 		out << "\n";
 		out << option << "\n";
