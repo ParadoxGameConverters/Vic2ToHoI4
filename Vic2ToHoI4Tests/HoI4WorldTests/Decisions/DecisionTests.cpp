@@ -1,6 +1,6 @@
-#include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/Decisions/Decision.h"
 #include "../Vic2ToHoI4/Source/Hoi4Outputter/Decisions/DecisionOutputter.h"
+#include "gtest/gtest.h"
 #include <sstream>
 
 
@@ -23,7 +23,7 @@ TEST(HoI4World_Decisions_DecisionTests, EverythingDefaultsToEmptyOrBlank)
 }
 
 
-TEST(HoI4World_Decisions_DecisionTests, DecisionNameCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, NameCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -31,24 +31,6 @@ TEST(HoI4World_Decisions_DecisionTests, DecisionNameCanBeSet)
 	const HoI4::decision theDecision("decisionName", input);
 
 	ASSERT_EQ(theDecision.getName(), "decisionName");
-}
-
-
-TEST(HoI4World_Decisions_DecisionTests, DecisionNameCanBeOutput)
-{
-	std::stringstream input;
-	input << "= {\n";
-	input << "}";
-	HoI4::decision theDecision("decisionName", input);
-
-	std::stringstream output;
-	output << theDecision;
-
-	std::stringstream expectedOutput;
-	expectedOutput << "\n";
-	expectedOutput << "\tdecisionName = {\n";
-	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
 }
 
 
@@ -99,7 +81,7 @@ TEST(HoI4World_Decisions_DecisionTests, AllowedCanBeSet)
 	std::stringstream input;
 	input << "= {\n";
 	input << "\tallowed = {\n";
-	input << "\t\talways = yes\n";
+	input << "\t\t\talways = yes\n";
 	input << "\t}\n";
 	input << "}";
 	HoI4::decision theDecision("decisionName", input);
@@ -112,23 +94,23 @@ TEST(HoI4World_Decisions_DecisionTests, AllowedCanBeSet)
 	expectedOutput << "\tdecisionName = {\n";
 	expectedOutput << "\n";
 	expectedOutput << "\t\tallowed = {\n";
-	expectedOutput << "\t\talways = yes\n";
+	expectedOutput << "\t\t\talways = yes\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\t}";
 	ASSERT_EQ(output.str(), expectedOutput.str());
 }
 
 
-TEST(HoI4World_Decisions_DecisionTests, AvailableCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, AllowedCanBeChanged)
 {
 	std::stringstream input;
 	input << "= {\n";
-	input << "\tavailable = {\n";
-	input << "\t\thas_unsupported_economic_law = yes\n";
-	input << "\t\thas_war = no\n";
+	input << "\tallowed = {\n";
+	input << "\t\talways = yes\n";
 	input << "\t}\n";
 	input << "}";
 	HoI4::decision theDecision("decisionName", input);
+	theDecision.setAllowed("= {\n\t\t\talways = no\n\t\t}");
 
 	std::stringstream output;
 	output << theDecision;
@@ -137,12 +119,52 @@ TEST(HoI4World_Decisions_DecisionTests, AvailableCanBeSet)
 	expectedOutput << "\n";
 	expectedOutput << "\tdecisionName = {\n";
 	expectedOutput << "\n";
-	expectedOutput << "\t\tavailable = {\n";
-	expectedOutput << "\t\thas_unsupported_economic_law = yes\n";
-	expectedOutput << "\t\thas_war = no\n";
-	expectedOutput << "\t}\n";
+	expectedOutput << "\t\tallowed = {\n";
+	expectedOutput << "\t\t\talways = no\n";
+	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}";
 	ASSERT_EQ(output.str(), expectedOutput.str());
+}
+
+
+TEST(HoI4World_Decisions_DecisionTests, HighlightStatesCanBeSet)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\t\thighlight_states = {\n";
+	input << "\t\t\tstate = 105\n";
+	input << "\t\t}\n";
+	input << "\t}";
+	const HoI4::decision theDecision("decisionName", input);
+
+	ASSERT_EQ("= {\n\t\t\tstate = 105\n\t\t}", theDecision.getHighlightStates());
+}
+
+
+TEST(HoI4World_Decisions_DecisionTests, HighlightStatesCanBeChanged)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "}";
+	HoI4::decision theDecision("decisionName", input);
+	theDecision.setHighlightStates("= {\n\t\t\tstate = 609\n\t\t}");
+
+	ASSERT_EQ("= {\n\t\t\tstate = 609\n\t\t}", theDecision.getHighlightStates());
+}
+
+
+TEST(HoI4World_Decisions_DecisionTests, AvailableCanBeSet)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\t\tavailable = {\n";
+	input << "\t\t\thas_unsupported_economic_law = yes\n";
+	input << "\t\t\thas_war = no\n";
+	input << "\t\t}\n";
+	input << "\t}";
+	const HoI4::decision theDecision("decisionName", input);
+
+	ASSERT_EQ("= {\n\t\t\thas_unsupported_economic_law = yes\n\t\t\thas_war = no\n\t\t}", theDecision.getAvailable());
 }
 
 
@@ -152,24 +174,12 @@ TEST(HoI4World_Decisions_DecisionTests, AvailableCanBeChanged)
 	HoI4::decision theDecision("decisionName", input);
 
 	std::string newAvailable = "= {\n";
-	newAvailable += "\t\thas_unsupported_economic_law = yes\n";
-	newAvailable += "\t\thas_war = no\n";
-	newAvailable += "\t}";
+	newAvailable += "\t\t\thas_unsupported_economic_law = yes\n";
+	newAvailable += "\t\t\thas_war = no\n";
+	newAvailable += "\t\t}";
 	theDecision.setAvailable(newAvailable);
 
-	std::stringstream output;
-	output << theDecision;
-
-	std::stringstream expectedOutput;
-	expectedOutput << "\n";
-	expectedOutput << "\tdecisionName = {\n";
-	expectedOutput << "\n";
-	expectedOutput << "\t\tavailable = {\n";
-	expectedOutput << "\t\thas_unsupported_economic_law = yes\n";
-	expectedOutput << "\t\thas_war = no\n";
-	expectedOutput << "\t}\n";
-	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ("= {\n\t\t\thas_unsupported_economic_law = yes\n\t\t\thas_war = no\n\t\t}", theDecision.getAvailable());
 }
 
 
@@ -431,26 +441,14 @@ TEST(HoI4World_Decisions_DecisionTests, VisibleCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
-	input << "\tvisible = {\n";
-	input << "\t\thas_war = no\n";
-	input << "\t\thas_unsupported_economic_law = yes\n";
-	input << "\t}\n";
+	input << "\t\tvisible = {\n";
+	input << "\t\t\thas_war = no\n";
+	input << "\t\t\thas_unsupported_economic_law = yes\n";
+	input << "\t\t}\n";
 	input << "}";
-	HoI4::decision theDecision("decisionName", input);
+	const HoI4::decision theDecision("decisionName", input);
 
-	std::stringstream output;
-	output << theDecision;
-
-	std::stringstream expectedOutput;
-	expectedOutput << "\n";
-	expectedOutput << "\tdecisionName = {\n";
-	expectedOutput << "\n";
-	expectedOutput << "\t\tvisible = {\n";
-	expectedOutput << "\t\thas_war = no\n";
-	expectedOutput << "\t\thas_unsupported_economic_law = yes\n";
-	expectedOutput << "\t}\n";
-	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ("= {\n\t\t\thas_war = no\n\t\t\thas_unsupported_economic_law = yes\n\t\t}", theDecision.getVisible());
 }
 
 
@@ -464,20 +462,7 @@ TEST(HoI4World_Decisions_DecisionTests, VisibleCanBeChanged)
 	newVisible += "\t\t\thas_unsupported_economic_law = yes\n";
 	newVisible += "\t\t}";
 	theDecision.setVisible(newVisible);
-
-	std::stringstream output;
-	output << theDecision;
-
-	std::stringstream expectedOutput;
-	expectedOutput << "\n";
-	expectedOutput << "\tdecisionName = {\n";
-	expectedOutput << "\n";
-	expectedOutput << "\t\tvisible = {\n";
-	expectedOutput << "\t\t\thas_war = no\n";
-	expectedOutput << "\t\t\thas_unsupported_economic_law = yes\n";
-	expectedOutput << "\t\t}\n";
-	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ("= {\n\t\t\thas_war = no\n\t\t\thas_unsupported_economic_law = yes\n\t\t}", theDecision.getVisible());
 }
 
 
@@ -519,6 +504,31 @@ TEST(HoI4World_Decisions_DecisionTests, CompleteEffectCanBeSet)
 	input << "\t}\n";
 	input << "}";
 	HoI4::decision theDecision("decisionName", input);
+
+	std::stringstream output;
+	output << theDecision;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "\tdecisionName = {\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\tcomplete_effect = {\n";
+	expectedOutput << "\t\tcountry_event = stability.21\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\t}";
+	ASSERT_EQ(output.str(), expectedOutput.str());
+}
+
+
+TEST(HoI4World_Decisions_DecisionTests, CompleteEffectCanBeChanged)
+{
+	std::stringstream input;
+	HoI4::decision theDecision("decisionName", input);
+
+	std::string newCompleteEffect = "= {\n";
+	newCompleteEffect += "\t\tcountry_event = stability.21\n";
+	newCompleteEffect += "\t}";
+	theDecision.setCompleteEffect(newCompleteEffect);
 
 	std::stringstream output;
 	output << theDecision;
@@ -593,79 +603,29 @@ TEST(HoI4World_Decisions_DecisionTests, TargetedModifierCanBeChanged)
 }
 
 
-TEST(HoI4World_Decisions_DecisionTests, CompleteEffectCanBeChanged)
-{
-	std::stringstream input;
-	HoI4::decision theDecision("decisionName", input);
-
-	std::string newCompleteEffect = "= {\n";
-	newCompleteEffect += "\t\tcountry_event = stability.21\n";
-	newCompleteEffect += "\t}";
-	theDecision.setCompleteEffect(newCompleteEffect);
-
-	std::stringstream output;
-	output << theDecision;
-
-	std::stringstream expectedOutput;
-	expectedOutput << "\n";
-	expectedOutput << "\tdecisionName = {\n";
-	expectedOutput << "\n";
-	expectedOutput << "\t\tcomplete_effect = {\n";
-	expectedOutput << "\t\tcountry_event = stability.21\n";
-	expectedOutput << "\t}\n";
-	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
-}
-
-
 TEST(HoI4World_Decisions_DecisionTests, RemoveEffectCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
-	input << "\tremove_effect = {\n";
-	input << "\t\tif = { \n";
-	input << "\t\t\tlimit = {\n";
-	input << "\t\t\t\tcheck_variable = { var = army_support_var value = 0.1 compare = less_than }\n";
-	input << "\t\t\t}\n";
-	input << "\t\t\tset_variable = { var = army_support_var value = 0.1 }\n";
+	input << "\t\tremove_effect = {\n";
+	input << "\t\t\tno_effect\n";
 	input << "\t\t}\n";
-	input << "\t\tif = { \n";
-	input << "\t\t\tlimit = {\n";
-	input << "\t\t\t\tcheck_variable = { var = army_support_var value = 0.1 compare = greater_than_or_equals }\n";
-	input << "\t\t\t}\n";
-	input << "\t\t\tadd_to_variable = { var = army_support_var value = 0.1 }\n";
-	input << "\t\t}\n";
-	input << "\t\tset_country_flag = military_support_for_fascism_civil_war\n";
-	input << "\t\tcustom_effect_tooltip = army_support_TT\n";
-	input << "\t}\n";
+	input << "\t}";
+	const HoI4::decision theDecision("decisionName", input);
+
+	ASSERT_EQ("= {\n\t\t\tno_effect\n\t\t}", theDecision.getRemoveEffect());
+}
+
+
+TEST(HoI4World_Decisions_DecisionTests, RemoveEffectCanBeChanged)
+{
+	std::stringstream input;
+	input << "= {\n";
 	input << "}";
 	HoI4::decision theDecision("decisionName", input);
+	theDecision.setRemoveEffect("= {\n\t\t\tno_effect\n\t\t}");
 
-	std::stringstream output;
-	output << theDecision;
-
-	std::stringstream expectedOutput;
-	expectedOutput << "\n";
-	expectedOutput << "\tdecisionName = {\n";
-	expectedOutput << "\n";
-	expectedOutput << "\t\tremove_effect = {\n";
-	expectedOutput << "\t\tif = { \n";
-	expectedOutput << "\t\t\tlimit = {\n";
-	expectedOutput << "\t\t\t\tcheck_variable = { var = army_support_var value = 0.1 compare = less_than }\n";
-	expectedOutput << "\t\t\t}\n";
-	expectedOutput << "\t\t\tset_variable = { var = army_support_var value = 0.1 }\n";
-	expectedOutput << "\t\t}\n";
-	expectedOutput << "\t\tif = { \n";
-	expectedOutput << "\t\t\tlimit = {\n";
-	expectedOutput << "\t\t\t\tcheck_variable = { var = army_support_var value = 0.1 compare = greater_than_or_equals }\n";
-	expectedOutput << "\t\t\t}\n";
-	expectedOutput << "\t\t\tadd_to_variable = { var = army_support_var value = 0.1 }\n";
-	expectedOutput << "\t\t}\n";
-	expectedOutput << "\t\tset_country_flag = military_support_for_fascism_civil_war\n";
-	expectedOutput << "\t\tcustom_effect_tooltip = army_support_TT\n";
-	expectedOutput << "\t}\n";
-	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ("= {\n\t\t\tno_effect\n\t\t}", theDecision.getRemoveEffect());
 }
 
 
@@ -708,31 +668,6 @@ TEST(HoI4World_Decisions_DecisionTests, TimeoutEffectCanBeChanged)
 	expectedOutput << "\t\tadd_stability = -0.1 #naughty\n";
 	expectedOutput << "\t}";
 	ASSERT_EQ(theDecision.getTimeoutEffect(), expectedOutput.str());
-}
-
-
-TEST(HoI4World_Decisions_DecisionTests, TimeoutEffectCanBeOutput)
-{
-	std::stringstream input;
-	input << "= {\n";
-	input << "\ttimeout_effect = {\n";
-	input << "\t\tadd_stability = -0.1 #naughty\n";
-	input << "\t}\n";
-	input << "}";
-	HoI4::decision theDecision("decisionName", input);
-
-	std::stringstream output;
-	output << theDecision;
-
-	std::stringstream expectedOutput;
-	expectedOutput << "\n";
-	expectedOutput << "\tdecisionName = {\n";
-	expectedOutput << "\n";
-	expectedOutput << "\t\ttimeout_effect = {\n";
-	expectedOutput << "\t\tadd_stability = -0.1 #naughty\n";
-	expectedOutput << "\t}\n";
-	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
 }
 
 
