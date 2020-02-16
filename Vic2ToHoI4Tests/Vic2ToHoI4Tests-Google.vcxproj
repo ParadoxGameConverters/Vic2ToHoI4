@@ -219,6 +219,7 @@
     <ClCompile Include="HoI4WorldTests\Decisions\DecisionsCategoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Decisions\DecisionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Decisions\IdeologicalDecisionsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Diplomacy\AiPeaceTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Events\EventOptionTests.cpp" />

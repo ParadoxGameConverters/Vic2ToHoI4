@@ -674,6 +674,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\outDifficultySettings.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Diplomacy\AiPeaceTests.cpp">
+      <Filter>HoI4WorldTests\Diplomacy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -807,6 +810,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\WarCreator">
       <UniqueIdentifier>{1d9c307a-30c6-4539-bea7-df6fb723991e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\Diplomacy">
+      <UniqueIdentifier>{d16cac58-4cf2-4cef-8e17-246304361e6e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
