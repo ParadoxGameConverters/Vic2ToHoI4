@@ -683,6 +683,9 @@
     <ClCompile Include="HoI4WorldTests\Leader\AdvisorTests.cpp">
       <Filter>HoI4WorldTests\Leaders</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Leader\ActualResourcesTests.cpp">
+      <Filter>HoI4WorldTests\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -822,6 +825,9 @@
     </Filter>
     <Filter Include="HoI4WorldTests\Leaders">
       <UniqueIdentifier>{a53aff48-6721-4b6e-a40a-e1709c0d5b03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\Map">
+      <UniqueIdentifier>{51070351-ee1e-4785-878c-eee974f66ef0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

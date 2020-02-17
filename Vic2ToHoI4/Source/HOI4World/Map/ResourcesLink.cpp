@@ -11,7 +11,7 @@ ResourcesLink::ResourcesLink(std::istream& theStream)
 		provinceNum = theProvinceNum.getInt();
 	});
 	registerKeyword("resources", [this](const std::string& unused, std::istream& theStream) {
-		ActualResources theActualResources(theStream);
+		HoI4::ActualResources theActualResources(theStream);
 		theResources = theActualResources.takeResources();
 	});
 	registerRegex("[a-zA-z0-9_]+", commonItems::ignoreItem);

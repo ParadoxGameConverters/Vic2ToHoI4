@@ -3,7 +3,7 @@
 
 
 
-ActualResources::ActualResources(std::istream& theStream)
+HoI4::ActualResources::ActualResources(std::istream& theStream)
 {
 	registerRegex("[a-z_]+", [this](const std::string& resourceName, std::istream& theStream) {
 		const commonItems::singleDouble resourceAmount(theStream);
