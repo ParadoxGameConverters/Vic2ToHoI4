@@ -677,6 +677,9 @@
     <ClCompile Include="HoI4WorldTests\Diplomacy\AiPeaceTests.cpp">
       <Filter>HoI4WorldTests\Diplomacy</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Diplomacy\Hoi4RelationsTests.cpp">
+      <Filter>HoI4WorldTests\Diplomacy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
