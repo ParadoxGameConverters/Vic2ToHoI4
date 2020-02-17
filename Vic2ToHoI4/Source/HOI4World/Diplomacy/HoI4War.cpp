@@ -15,8 +15,6 @@ HoI4::War::War(const Vic2::War& sourceWar, const CountryMapper& countryMapper)
 		LOG(LogLevel::Warning) << "Could not map " << sourceWar.getOriginalDefender() << ", original defender in a war";
 	}
 
-	CB = "annex_everything";
-
 	for (const auto& defender: sourceWar.getDefenders())
 	{
 		if (defender != sourceWar.getOriginalDefender())

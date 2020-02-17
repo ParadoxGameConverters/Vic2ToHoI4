@@ -221,13 +221,13 @@
     <ClCompile Include="HoI4WorldTests\Decisions\IdeologicalDecisionsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Diplomacy\AiPeaceTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Diplomacy\Hoi4RelationsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Diplomacy\Hoi4WarTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\DivisionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Events\EventOptionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Events\EventTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\HoI4WarTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\AllReplacementRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRuleTests.cpp" />

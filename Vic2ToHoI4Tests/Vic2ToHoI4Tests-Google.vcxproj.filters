@@ -269,9 +269,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarGoal.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Wars</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\HoI4WarTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="Mocks\CountryMapperMock.h">
       <Filter>Mocks</Filter>
     </ClCompile>
@@ -678,6 +675,9 @@
       <Filter>HoI4WorldTests\Diplomacy</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\Diplomacy\Hoi4RelationsTests.cpp">
+      <Filter>HoI4WorldTests\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Diplomacy\Hoi4WarTests.cpp">
       <Filter>HoI4WorldTests\Diplomacy</Filter>
     </ClCompile>
   </ItemGroup>
