@@ -1,12 +1,12 @@
-#include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/Events/Event.h"
+#include "gtest/gtest.h"
 #include <sstream>
 
 
 
 TEST(HoI4World_Events_EventTests, TypeDefaultsToBlank)
 {
-	HoI4::Event theEvent;
+	const HoI4::Event theEvent;
 
 	std::stringstream actualOutput;
 	actualOutput << theEvent;
@@ -23,7 +23,7 @@ TEST(HoI4World_Events_EventTests, TypeDefaultsToBlank)
 }
 
 
-TEST(HoI4World_Events_EventTests, NameCanBeGiven)
+TEST(HoI4World_Events_EventTests, TypeCanBeGiven)
 {
 	HoI4::Event theEvent;
 	theEvent.giveType("eventType");
@@ -43,7 +43,7 @@ TEST(HoI4World_Events_EventTests, NameCanBeGiven)
 }
 
 
-TEST(HoI4World_Events_EventTests, NameCanBeInput)
+TEST(HoI4World_Events_EventTests, TypeCanBeInput)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -67,7 +67,7 @@ TEST(HoI4World_Events_EventTests, NameCanBeInput)
 
 TEST(HoI4World_Events_EventTests, IdDefaultsToBlank)
 {
-	HoI4::Event theEvent;
+	const HoI4::Event theEvent;
 	ASSERT_EQ(theEvent.getId(), "");
 }
 
@@ -87,7 +87,7 @@ TEST(HoI4World_Events_EventTests, IdCanBeInput)
 	input << "= {\n";
 	input << "\tid = testId\n";
 	input << "}";
-	HoI4::Event theEvent("eventType", input);
+	const HoI4::Event theEvent("eventType", input);
 
 	ASSERT_EQ(theEvent.getId(), "testId");
 }
@@ -95,7 +95,7 @@ TEST(HoI4World_Events_EventTests, IdCanBeInput)
 
 TEST(HoI4World_Events_EventTests, TitleDefaultsToBlank)
 {
-	HoI4::Event theEvent;
+	const HoI4::Event theEvent;
 
 	ASSERT_EQ(theEvent.getTitle(), "");
 }
@@ -116,15 +116,15 @@ TEST(HoI4World_Events_EventTests, TitleCanBeInput)
 	input << "= {\n";
 	input << "\ttitle = eventTitle\n";
 	input << "}";
-	HoI4::Event theEvent("eventType", input);
+	const HoI4::Event theEvent("eventType", input);
 
 	ASSERT_EQ(theEvent.getTitle(), "eventTitle");
 }
 
 
-TEST(HoI4World_Events_EventTests, DescriptionsDefaultsToBlank)
+TEST(HoI4World_Events_EventTests, DescriptionsDefaultToEmpty)
 {
-	HoI4::Event theEvent;
+	const HoI4::Event theEvent;
 
 	std::stringstream actualOutput;
 	actualOutput << theEvent;
@@ -211,7 +211,7 @@ TEST(HoI4World_Events_EventTests, DescriptionsCanBeInput)
 
 TEST(HoI4World_Events_EventTests, PictureDefaultsToBlank)
 {
-	HoI4::Event theEvent;
+	const HoI4::Event theEvent;
 
 	std::stringstream actualOutput;
 	actualOutput << theEvent;
@@ -273,7 +273,7 @@ TEST(HoI4World_Events_EventTests, PictureCanBeInput)
 
 TEST(HoI4World_Events_EventTests, MajorEventDefaultsToFalse)
 {
-	HoI4::Event theEvent;
+	const HoI4::Event theEvent;
 
 	std::stringstream actualOutput;
 	actualOutput << theEvent;
@@ -339,7 +339,7 @@ TEST(HoI4World_Events_EventTests, MajorEventCanBeInput)
 
 TEST(HoI4World_Events_EventTests, TriggeredOnlyDefaultsToFalse)
 {
-	HoI4::Event theEvent;
+	const HoI4::Event theEvent;
 
 	std::stringstream actualOutput;
 	actualOutput << theEvent;
@@ -403,7 +403,7 @@ TEST(HoI4World_Events_EventTests, TriggeredOnlyCanBeInput)
 
 TEST(HoI4World_Events_EventTests, HiddenDefaultsToFalse)
 {
-	HoI4::Event theEvent;
+	const HoI4::Event theEvent;
 
 	std::stringstream actualOutput;
 	actualOutput << theEvent;
@@ -446,7 +446,7 @@ TEST(HoI4World_Events_EventTests, HiddenCanBeInput)
 
 TEST(HoI4World_Events_EventTests, TriggerDefaultsToEmpty)
 {
-	HoI4::Event theEvent;
+	const HoI4::Event theEvent;
 
 	std::stringstream actualOutput;
 	actualOutput << theEvent;
@@ -466,10 +466,10 @@ TEST(HoI4World_Events_EventTests, TriggerDefaultsToEmpty)
 TEST(HoI4World_Events_EventTests, TriggerCanBeGiven)
 {
 	HoI4::Event theEvent;
-	theEvent.giveTrigger("= {\n" \
-		"\t\tfoo = bar\n" \
-		"\t}"
-	);
+	theEvent.giveTrigger(
+		 "= {\n"
+		 "\t\tfoo = bar\n"
+		 "\t}");
 
 	std::stringstream actualOutput;
 	actualOutput << theEvent;
@@ -519,9 +519,73 @@ TEST(HoI4World_Events_EventTests, TriggerCanBeInput)
 }
 
 
-TEST(HoI4World_Events_EventTests, MeanTimeToHappenDefaultsToEmpty)
+TEST(HoI4World_Events_EventTests, FireOnlyOnceDefaultsToFalse)
+{
+	const HoI4::Event theEvent;
+
+	std::stringstream actualOutput;
+	actualOutput << theEvent;
+
+	std::string expectedOutput;
+	expectedOutput += " = {\n";
+	expectedOutput += "\tid = \n";
+	expectedOutput += "\ttitle = \n";
+	expectedOutput += "\tpicture = \n";
+	expectedOutput += "\n";
+	expectedOutput += "}\n";
+
+	ASSERT_EQ(actualOutput.str(), expectedOutput);
+}
+
+
+TEST(HoI4World_Events_EventTests, FireOnlyOnceCanBeSet)
 {
 	HoI4::Event theEvent;
+	theEvent.setFireOnlyOnce();
+
+	std::stringstream actualOutput;
+	actualOutput << theEvent;
+
+	std::string expectedOutput;
+	expectedOutput += " = {\n";
+	expectedOutput += "\tid = \n";
+	expectedOutput += "\ttitle = \n";
+	expectedOutput += "\tpicture = \n";
+	expectedOutput += "\n\n";
+	expectedOutput += "\tfire_only_once = yes\n";
+	expectedOutput += "}\n";
+
+	ASSERT_EQ(actualOutput.str(), expectedOutput);
+}
+
+
+TEST(HoI4World_Events_EventTests, FireOnlyOnceCanBeInput)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\tfire_only_once = yes\n";
+	input << "}";
+	HoI4::Event theEvent("eventType", input);
+
+	std::stringstream actualOutput;
+	actualOutput << theEvent;
+
+	std::string expectedOutput;
+	expectedOutput += "eventType = {\n";
+	expectedOutput += "\tid = \n";
+	expectedOutput += "\ttitle = \n";
+	expectedOutput += "\tpicture = \n";
+	expectedOutput += "\n\n";
+	expectedOutput += "\tfire_only_once = yes\n";
+	expectedOutput += "}\n";
+
+	ASSERT_EQ(actualOutput.str(), expectedOutput);
+}
+
+
+TEST(HoI4World_Events_EventTests, MeanTimeToHappenDefaultsToEmpty)
+{
+	const HoI4::Event theEvent;
 
 	std::stringstream actualOutput;
 	actualOutput << theEvent;
@@ -541,10 +605,10 @@ TEST(HoI4World_Events_EventTests, MeanTimeToHappenDefaultsToEmpty)
 TEST(HoI4World_Events_EventTests, MeanTimeToHappenCanBeGiven)
 {
 	HoI4::Event theEvent;
-	theEvent.giveMeanTimeToHappen("= {\n" \
-		"\t\tdays = 150\n" \
-		"\t}"
-	);
+	theEvent.giveMeanTimeToHappen(
+		 "= {\n"
+		 "\t\tdays = 150\n"
+		 "\t}");
 
 	std::stringstream actualOutput;
 	actualOutput << theEvent;
@@ -596,7 +660,7 @@ TEST(HoI4World_Events_EventTests, MeanTimeToHappenCanBeInput)
 
 TEST(HoI4World_Events_EventTests, ImmediateDefaultsToEmpty)
 {
-	HoI4::Event theEvent;
+	const HoI4::Event theEvent;
 
 	std::stringstream actualOutput;
 	actualOutput << theEvent;
@@ -616,10 +680,10 @@ TEST(HoI4World_Events_EventTests, ImmediateDefaultsToEmpty)
 TEST(HoI4World_Events_EventTests, ImmediateCanBeGiven)
 {
 	HoI4::Event theEvent;
-	theEvent.giveImmediate("= {\n" \
-		"\t\tfoo = bar\n" \
-		"\t}"
-	);
+	theEvent.giveImmediate(
+		 "= {\n"
+		 "\t\tfoo = bar\n"
+		 "\t}");
 
 	std::stringstream actualOutput;
 	actualOutput << theEvent;
@@ -671,7 +735,7 @@ TEST(HoI4World_Events_EventTests, ImmediateCanBeInput)
 
 TEST(HoI4World_Events_EventTests, OptionsDefaultToEmpty)
 {
-	HoI4::Event theEvent;
+	const HoI4::Event theEvent;
 
 	std::stringstream actualOutput;
 	actualOutput << theEvent;
@@ -749,7 +813,7 @@ TEST(HoI4World_Events_EventTests, OptionsCanBeInput)
 	std::stringstream input;
 	input << "= {\n";
 	input << "\toption = {\n";
-	input << "\t\tname = optionaName\n";
+	input << "\t\tname = optionalName\n";
 	input << "\t}";
 	input << "}";
 	HoI4::Event theEvent("eventType", input);
@@ -765,7 +829,7 @@ TEST(HoI4World_Events_EventTests, OptionsCanBeInput)
 	expectedOutput += "\n";
 	expectedOutput += "\n";
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = optionaName\n";
+	expectedOutput += "\t\tname = optionalName\n";
 	expectedOutput += "\t}\n";
 	expectedOutput += "}\n";
 
