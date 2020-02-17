@@ -680,6 +680,9 @@
     <ClCompile Include="HoI4WorldTests\Diplomacy\Hoi4WarTests.cpp">
       <Filter>HoI4WorldTests\Diplomacy</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Leader\AdvisorTests.cpp">
+      <Filter>HoI4WorldTests\Leaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -816,6 +819,9 @@
     </Filter>
     <Filter Include="HoI4WorldTests\Diplomacy">
       <UniqueIdentifier>{d16cac58-4cf2-4cef-8e17-246304361e6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\Leaders">
+      <UniqueIdentifier>{a53aff48-6721-4b6e-a40a-e1709c0d5b03}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
