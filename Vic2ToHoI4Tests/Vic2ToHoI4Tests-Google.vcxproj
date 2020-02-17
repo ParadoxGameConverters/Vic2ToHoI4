@@ -228,13 +228,14 @@
     <ClCompile Include="HoI4WorldTests\Events\EventTests.cpp" />
     <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\Leader\ActualResourcesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Leader\AdvisorTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\Leader\Hoi4BuildingTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\AllReplacementRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRuleTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Map\ActualResourcesTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Map\Hoi4BuildingTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Map\ImpassibleProvincesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\AllMilitaryMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\HoI4UnitTypeTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\MilitaryMappingTests.cpp" />

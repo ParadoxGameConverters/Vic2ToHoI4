@@ -683,10 +683,13 @@
     <ClCompile Include="HoI4WorldTests\Leader\AdvisorTests.cpp">
       <Filter>HoI4WorldTests\Leaders</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Leader\ActualResourcesTests.cpp">
+    <ClCompile Include="HoI4WorldTests\Map\ImpassibleProvincesTests.cpp">
       <Filter>HoI4WorldTests\Map</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Leader\Hoi4BuildingTests.cpp">
+    <ClCompile Include="HoI4WorldTests\Map\ActualResourcesTests.cpp">
+      <Filter>HoI4WorldTests\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Map\Hoi4BuildingTests.cpp">
       <Filter>HoI4WorldTests\Map</Filter>
     </ClCompile>
   </ItemGroup>
