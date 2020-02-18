@@ -235,7 +235,7 @@
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\ActualResourcesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\Hoi4BuildingTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\Map\ImpassibleProvincesTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Map\ImpassableProvincesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\AllMilitaryMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\HoI4UnitTypeTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\MilitaryMappingTests.cpp" />
