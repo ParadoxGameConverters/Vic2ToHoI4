@@ -11,6 +11,7 @@ TEST(HoI4World_Map_ProvincePoints, CentermostIsOriginIfNoPoints)
 	ASSERT_EQ(expectedPoint, provincePoints.getCentermostPoint());
 }
 
+
 TEST(HoI4World_Map_ProvincePoints, CenterPointIsAverageLatitude)
 {
 	HoI4::ProvincePoints provincePoints;

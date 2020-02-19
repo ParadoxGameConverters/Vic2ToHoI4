@@ -695,6 +695,9 @@
     <ClCompile Include="HoI4WorldTests\Map\ProvincePointsTests.cpp">
       <Filter>HoI4WorldTests\Map</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Map\RegionTests.cpp">
+      <Filter>HoI4WorldTests\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
