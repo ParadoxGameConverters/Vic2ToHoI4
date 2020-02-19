@@ -9,17 +9,21 @@
 
 
 
+namespace HoI4
+{
+
 class Resources: commonItems::parser
 {
-	public:
-		Resources() noexcept;
+  public:
+	Resources() noexcept;
 
-		[[nodiscard]] std::map<std::string, double> getResourcesInProvince(int provinceNum) const;
+	[[nodiscard]] std::map<std::string, double> getResourcesInProvince(int provinceNum) const;
 
-	private:
-		std::map<int, std::map<std::string, double>> resourceMap;
+  private:
+	std::map<int, std::map<std::string, double>> resourceMap;
 };
 
+} // namespace HoI4
 
 
 

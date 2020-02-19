@@ -1,12 +1,12 @@
 #include "Resources.h"
-#include "ResourcesLink.h"
 #include "ParserHelpers.h"
+#include "ResourcesLink.h"
 
 
 
-Resources::Resources() noexcept
+HoI4::Resources::Resources() noexcept
 {
-	registerKeyword("link", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("link", [this](const std::string& unused, std::istream& theStream) {
 		ResourcesLink theLink(theStream);
 		resourceMap.insert(std::make_pair(theLink.getProvinceNum(), theLink.takeResources()));
 	});
@@ -17,7 +17,7 @@ Resources::Resources() noexcept
 }
 
 
-std::map<std::string, double> Resources::getResourcesInProvince(const int provinceNum) const
+std::map<std::string, double> HoI4::Resources::getResourcesInProvince(const int provinceNum) const
 {
 	if (const auto mapping = resourceMap.find(provinceNum); mapping != resourceMap.end())
 	{
