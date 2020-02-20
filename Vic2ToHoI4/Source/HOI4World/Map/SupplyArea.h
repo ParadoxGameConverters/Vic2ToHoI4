@@ -7,21 +7,25 @@
 
 
 
+namespace HoI4
+{
+
 class SupplyArea: commonItems::parser
 {
-	public:
-		explicit SupplyArea(std::istream& theStream);
+  public:
+	explicit SupplyArea(std::istream& theStream);
 
-		[[nodiscard]] auto getID() const { return ID; }
-		[[nodiscard]] auto getValue() const { return value; }
-		[[nodiscard]] const auto& getStates() const { return states; }
+	[[nodiscard]] auto getID() const { return ID; }
+	[[nodiscard]] auto getValue() const { return value; }
+	[[nodiscard]] const auto& getStates() const { return states; }
 
-	private:
-		int ID = 0;
-		int value = 0;
-		std::vector<int> states;
+  private:
+	int ID = 0;
+	int value = 0;
+	std::vector<int> states;
 };
 
+} // namespace HoI4
 
 
 

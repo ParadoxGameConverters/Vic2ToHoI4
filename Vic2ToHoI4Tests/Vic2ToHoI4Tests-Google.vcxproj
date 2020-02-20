@@ -239,6 +239,7 @@
     <ClCompile Include="HoI4WorldTests\Map\ProvincePointsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\RegionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\ResourcesLinkTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Map\SupplyAreaTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\AllMilitaryMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\HoI4UnitTypeTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\MilitaryMappingTests.cpp" />
