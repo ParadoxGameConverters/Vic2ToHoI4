@@ -707,6 +707,9 @@
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\DivisionTemplateImporterTests.cpp">
       <Filter>HoI4WorldTests\MilitaryMappings</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\MilitaryMappings\SubstitutesImporterTests.cpp">
+      <Filter>HoI4WorldTests\MilitaryMappings</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

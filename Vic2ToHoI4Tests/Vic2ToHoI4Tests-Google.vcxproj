@@ -246,6 +246,7 @@
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\MilitaryMappingTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\MtgUnitMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\MtgUnitMappingTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\MilitaryMappings\SubstitutesImporterTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\UnitMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\UnitMappingTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyNavyTests.cpp" />
