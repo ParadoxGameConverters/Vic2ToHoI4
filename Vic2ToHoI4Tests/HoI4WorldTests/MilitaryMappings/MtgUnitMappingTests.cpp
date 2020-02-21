@@ -1,5 +1,5 @@
-#include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/MilitaryMappings/MtgUnitMapping.h"
+#include "gtest/gtest.h"
 
 
 
@@ -11,7 +11,7 @@ TEST(HoI4World_MilitaryMappings_mtgUnitMappingTests, defaultVic2TypeIsBlank)
 
 	const HoI4::MtgUnitMapping theMapping(input);
 
-	ASSERT_EQ(theMapping.getMapping().first, "");
+	ASSERT_EQ("", theMapping.getMapping().first);
 }
 
 
@@ -26,11 +26,11 @@ TEST(HoI4World_MilitaryMappings_mtgUnitMappingTests, Vic2TypeCanBeSet)
 
 	const HoI4::MtgUnitMapping theMapping(input);
 
-	ASSERT_EQ(theMapping.getMapping().first, "irregular");
+	ASSERT_EQ("irregular", theMapping.getMapping().first);
 }
 
 
-TEST(HoI4World_MilitaryMappings_mtgUnitMappingTests, noHoI4MeansEmptyVector)
+TEST(HoI4World_MilitaryMappings_mtgUnitMappingTests, DefaultHoI4TypeIsEmpty)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -57,7 +57,7 @@ TEST(HoI4World_MilitaryMappings_mtgUnitMappingTests, MtgUnitMappingHandlesFilled
 	input << "}";
 
 	const HoI4::MtgUnitMapping theMapping(input);
-	ASSERT_EQ(std::string("land"), theMapping.getMapping().second[0].getType());
+	ASSERT_EQ("land", theMapping.getMapping().second[0].getType());
 }
 
 
@@ -79,5 +79,5 @@ TEST(HoI4World_MilitaryMappings_mtgUnitMappingTests, MtgUnitMappingHandlesMultip
 	input << "}";
 
 	const HoI4::MtgUnitMapping theMapping(input);
-	ASSERT_EQ(std::string("sea"), theMapping.getMapping().second[1].getType());
+	ASSERT_EQ("sea", theMapping.getMapping().second[1].getType());
 }
