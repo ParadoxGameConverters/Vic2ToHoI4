@@ -251,8 +251,10 @@
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\UnitMappingTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyNavyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyShipTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Navies\LegacyShipTypeNamesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\MtgNavyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\MtgShipTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Navies\MtgShipTypeNamesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\NaviesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\RegimentTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationsTests.cpp" />

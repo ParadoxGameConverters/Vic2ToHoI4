@@ -710,6 +710,12 @@
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\SubstitutesImporterTests.cpp">
       <Filter>HoI4WorldTests\MilitaryMappings</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Navies\LegacyShipTypeNamesTests.cpp">
+      <Filter>HoI4WorldTests\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Navies\MtgShipTypeNamesTests.cpp">
+      <Filter>HoI4WorldTests\Navies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
