@@ -1,5 +1,5 @@
-#include "gtest/gtest.h"
 #include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/PossibleShipVariants.h"
+#include "gtest/gtest.h"
 #include <sstream>
 
 
