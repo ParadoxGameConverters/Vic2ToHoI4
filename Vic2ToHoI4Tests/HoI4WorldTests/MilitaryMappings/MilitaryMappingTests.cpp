@@ -1,5 +1,6 @@
-#include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/MilitaryMappings/MilitaryMappings.h"
+#include "gtest/gtest.h"
+
 
 
 TEST(HoI4World_MilitaryMappings_militaryMappingsTests, missingUnitMapSectionThrowsError)
@@ -54,98 +55,75 @@ TEST(HoI4World_MilitaryMappings_militaryMappingsTests, MapSectionCanBeInput)
 }
 
 
-TEST(HoI4World_MilitaryMappings_militaryMappingsTests, emptyDivisionTemplatesStaysEmpty)
+TEST(HoI4World_MilitaryMappings_militaryMappingsTests, DefaultDivisionTemplatesIsEmpty)
 {
 	std::stringstream input(
-		"= {\n"\
-		"\tunit_map = {}\n"\
-		"\tmtg_unit_map = {}\n"\
-		"\tdivision_templates = {\n"\
-		"\t}"\
-		"}"
-	);
+		 "= {\n"
+		 "\tunit_map = {}\n"
+		 "\tmtg_unit_map = {}\n"
+		 "\tdivision_templates = {\n"
+		 "\t}"
+		 "}");
 	const HoI4::militaryMappings theMappings("", input);
-	ASSERT_EQ(size_t(0), theMappings.getDivisionTemplates().size());
+	ASSERT_TRUE(theMappings.getDivisionTemplates().empty());
 }
 
 
-TEST(HoI4World_MilitaryMappings_militaryMappingsTests, TemplateAddedToDivisionTemplateMapping)
+TEST(HoI4World_MilitaryMappings_militaryMappingsTests, TemplateCanBeAddedToDivisionTemplateMapping)
 {
 	std::stringstream input(
-		"= {\n"\
-		"\tunit_map = {}\n"\
-		"\tmtg_unit_map = {}\n"\
-		"\tdivision_templates = {\n"\
-		"\t\tdivision_template = {\n"\
-		"\t\t\tname = \"Light Infantry Brigade\"\n"\
-		"\t\t}\n"\
-		"\t}"\
-		"}"
-	);
+		 "= {\n"
+		 "\tunit_map = {}\n"
+		 "\tmtg_unit_map = {}\n"
+		 "\tdivision_templates = {\n"
+		 "\t\tdivision_template = {\n"
+		 "\t\t\tname = \"Light Infantry Brigade\"\n"
+		 "\t\t}\n"
+		 "\t}"
+		 "}");
 	const HoI4::militaryMappings theMappings("", input);
 	auto templates = theMappings.getDivisionTemplates();
 	ASSERT_FALSE(std::find(templates.begin(), templates.end(), "Light Infantry Brigade") == templates.end());
 }
 
 
-TEST(HoI4World_MilitaryMappings_militaryMappingsTests, emptySubstitutesStaysEmpty)
+TEST(HoI4World_MilitaryMappings_militaryMappingsTests, DefaultSubstitutesIsEmpty)
 {
 	std::stringstream input(
-		"= {\n"\
-		"\tunit_map = {}\n"\
-		"\tmtg_unit_map = {}\n"\
-		"\tsubstitutes = {\n"\
-		"\t}"\
-		"}"
-	);
+		 "= {\n"
+		 "\tunit_map = {}\n"
+		 "\tmtg_unit_map = {}\n"
+		 "}");
 	const HoI4::militaryMappings theMappings("", input);
-	ASSERT_EQ(size_t(0), theMappings.getSubstitutes().size());
+	ASSERT_TRUE(theMappings.getSubstitutes().empty());
 }
 
 
-TEST(HoI4World_MilitaryMappings_militaryMappingsTests, substituteAddedToSubstitutes)
+TEST(HoI4World_MilitaryMappings_militaryMappingsTests, SubstituteCanBeAddedToSubstitutes)
 {
 	std::stringstream input(
-		"= {\n"\
-		"\tunit_map = {}\n"\
-		"\tmtg_unit_map = {}\n"\
-		"\tsubstitutes = {\n"\
-		"\t\tartillery = artillery_brigade\n"\
-		"\t}"\
-		"}"
-	);
+		 "= {\n"
+		 "\tunit_map = {}\n"
+		 "\tmtg_unit_map = {}\n"
+		 "\tsubstitutes = {\n"
+		 "\t\tartillery = artillery_brigade\n"
+		 "\t}"
+		 "}");
 	const HoI4::militaryMappings theMappings("", input);
-	ASSERT_EQ(size_t(1), theMappings.getSubstitutes().size());
-}
-
-
-TEST(HoI4World_MilitaryMappings_militaryMappingsTests, substituteNameInList)
-{
-	std::stringstream input(
-		"= {\n"\
-		"\tunit_map = {}\n"\
-		"\tmtg_unit_map = {}\n"\
-		"\tsubstitutes = {\n"\
-		"\t\tartillery = artillery_brigade\n"\
-		"\t}"\
-		"}"
-	);
-	const HoI4::militaryMappings theMappings("", input);
-	ASSERT_EQ(size_t(1), theMappings.getSubstitutes().count("artillery"));
+	ASSERT_EQ(1, theMappings.getSubstitutes().count("artillery"));
 }
 
 
 TEST(HoI4World_MilitaryMappings_militaryMappingsTests, substituteAlternateInMapping)
 {
 	std::stringstream input(
-		"= {\n"\
-		"\tunit_map = {}\n"\
-		"\tmtg_unit_map = {}\n"\
-		"\tsubstitutes = {\n"\
-		"\t\tartillery = artillery_brigade\n"\
-		"\t}"\
-		"}"
-	);
+		 "= {\n"
+		 "\tunit_map = {}\n"
+		 "\tmtg_unit_map = {}\n"
+		 "\tsubstitutes = {\n"
+		 "\t\tartillery = artillery_brigade\n"
+		 "\t}"
+		 "}");
 	const HoI4::militaryMappings theMappings("", input);
-	ASSERT_EQ(std::string("artillery_brigade"), theMappings.getSubstitutes().at("artillery"));
+	ASSERT_EQ("artillery_brigade", theMappings.getSubstitutes().at("artillery"));
 }
