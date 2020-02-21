@@ -716,6 +716,9 @@
     <ClCompile Include="HoI4WorldTests\Navies\MtgShipTypeNamesTests.cpp">
       <Filter>HoI4WorldTests\Navies</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\ScriptedTriggers\ScriptedTriggerTests.cpp">
+      <Filter>HoI4WorldTests\ScriptedTriggers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -858,6 +861,9 @@
     </Filter>
     <Filter Include="HoI4WorldTests\Map">
       <UniqueIdentifier>{51070351-ee1e-4785-878c-eee974f66ef0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\ScriptedTriggers">
+      <UniqueIdentifier>{aa1e860a-b137-4602-8133-04acf706a1d5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
