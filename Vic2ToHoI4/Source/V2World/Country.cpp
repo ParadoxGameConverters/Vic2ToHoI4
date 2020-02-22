@@ -249,7 +249,7 @@ void Vic2::Country::putProvincesInStates()
 {
 	for (auto state : states)
 	{
-		for (auto provinceNum : state->getProvinceNums())
+		for (auto provinceNum : state->getProvinceNumbers())
 		{
 			auto province = provinces.find(provinceNum);
 			if (province == provinces.end())

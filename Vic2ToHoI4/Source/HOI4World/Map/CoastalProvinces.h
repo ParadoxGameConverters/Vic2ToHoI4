@@ -3,8 +3,8 @@
 
 
 
-#include <vector>
 #include <map>
+#include <vector>
 
 
 
@@ -17,19 +17,22 @@ class Province;
 
 class CoastalProvinces
 {
-	public:
-		void init(const MapData& theMapData);
+  public:
+	CoastalProvinces() = default;
+	virtual ~CoastalProvinces() = default;
 
-		[[nodiscard]] auto getCoastalProvinces() const { return theCoastalProvinces; }
-		[[nodiscard]] bool isProvinceCoastal(int provinceNum) const;
+	void init(const MapData& theMapData);
 
-	private:
-		[[nodiscard]] std::map<int, Province> importProvinces() const;
+	[[nodiscard]] auto getCoastalProvinces() const { return theCoastalProvinces; }
+	[[nodiscard]] virtual bool isProvinceCoastal(int provinceNum) const;
 
-		std::map<int, std::vector<int>> theCoastalProvinces;	// province, connecting sea provinces
+  private:
+	[[nodiscard]] std::map<int, Province> importProvinces() const;
+
+	std::map<int, std::vector<int>> theCoastalProvinces; // province, connecting sea provinces
 };
 
-}
+} // namespace HoI4
 
 
 

@@ -348,7 +348,7 @@ void HoI4::States::createMatchingHoI4State(
 std::set<int> HoI4::States::getProvincesInState(const Vic2::State* vic2State, const string& owner)
 {
 	std::set<int> provinces;
-	for (auto vic2ProvinceNum: vic2State->getProvinceNums())
+	for (auto vic2ProvinceNum: vic2State->getProvinceNumbers())
 	{
 		if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(vic2ProvinceNum))
 		{

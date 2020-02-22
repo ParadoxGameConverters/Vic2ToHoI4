@@ -263,7 +263,7 @@ void HoI4::State::tryToCreateVP(
 
 void HoI4::State::addDebugVPs(const Vic2::State& sourceState, const provinceMapper& theProvinceMapper)
 {
-	for (auto sourceProvinceNum: sourceState.getProvinceNums())
+	for (auto sourceProvinceNum: sourceState.getProvinceNumbers())
 	{
 		auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvinceNum);
 		if (mapping && (isProvinceInState((*mapping)[0])))

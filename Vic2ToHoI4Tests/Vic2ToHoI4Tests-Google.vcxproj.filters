@@ -419,9 +419,6 @@
     <ClCompile Include="HoI4WorldTests\States\StateBuildingsTests.cpp">
       <Filter>HoI4WorldTests\States</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\States\StateCategoriesTests.cpp">
-      <Filter>HoI4WorldTests\States</Filter>
-    </ClCompile>
     <ClCompile Include="HoI4WorldTests\States\StateCategoryTests.cpp">
       <Filter>HoI4WorldTests\States</Filter>
     </ClCompile>
@@ -902,6 +899,9 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.h">
       <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Mocks\CoastalProvincesMock.h">
+      <Filter>Mocks</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

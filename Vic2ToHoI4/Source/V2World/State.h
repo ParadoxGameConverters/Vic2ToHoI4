@@ -65,7 +65,7 @@ class State: commonItems::parser
 		void addProvince(const Province* province) { provinces.insert(province); }
 
 		virtual std::set<const Province*> getProvinces() const { return provinces; }
-		virtual std::set<int> getProvinceNums() const { return provinceNums; }
+		virtual std::set<int> getProvinceNumbers() const { return provinceNums; }
 		std::string getOwner() const { return owner; }
 		std::string getStateID() const { return stateID; }
 		virtual std::optional<int> getCapitalProvince() const { return capitalProvince; }
