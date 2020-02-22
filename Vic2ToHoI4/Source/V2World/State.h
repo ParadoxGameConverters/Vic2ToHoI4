@@ -55,6 +55,7 @@ class State: commonItems::parser
 		State() = default;
 		State(std::istream& theStream, const std::string& ownerTag);
 		explicit State(std::set<std::pair<int, Province*>> theProvinces);
+		virtual ~State() = default;
 
 		void determineEmployedWorkers();
 		void determineIfPartialState();

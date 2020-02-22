@@ -3,15 +3,15 @@
 
 
 
-#include "gmock/gmock.h"
 #include "../../Vic2ToHoI4/Source/HOI4World/Technologies.h"
+#include "gmock/gmock.h"
 
 
 
-class mockTechnologies: public HoI4::technologies
+class mockTechnologies final: public HoI4::technologies
 {
-	public:
-		MOCK_METHOD(bool, hasTechnology, (const std::string&), (const, override));
+  public:
+	MOCK_METHOD(bool, hasTechnology, (const std::string&), (const, override));
 };
 
 

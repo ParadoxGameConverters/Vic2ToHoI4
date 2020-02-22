@@ -51,6 +51,7 @@ class World: commonItems::parser
 	public:
 		World() = default;
 		explicit World(const std::string& filename);
+		virtual ~World() = default;
 
 		std::optional<const Province*> getProvince(int provNum) const;
 		

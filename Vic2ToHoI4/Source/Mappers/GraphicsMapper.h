@@ -47,6 +47,7 @@ class graphicsMapper: commonItems::parser
 	public:
 		graphicsMapper() noexcept {};
 		void init();
+		virtual ~graphicsMapper() = default;
 
 		std::string getLeaderPortrait(const std::string& cultureGroup, const std::string& ideology);
 		std::string getIdeologyMinisterPortrait(const std::string& cultureGroup, const std::string& ideology);
