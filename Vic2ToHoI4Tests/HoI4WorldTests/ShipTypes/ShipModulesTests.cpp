@@ -1,10 +1,10 @@
-#include "gtest/gtest.h"
 #include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/ShipModules.h"
+#include "gtest/gtest.h"
 #include <sstream>
 
 
 
-TEST(HoI4World_ShipTypes_shipModulesTests, noInputGivesDefaultOutput)
+TEST(HoI4World_ShipTypes_shipModulesTests, modulesDefaultToEmpty)
 {
 	std::stringstream input;
 	input << "";

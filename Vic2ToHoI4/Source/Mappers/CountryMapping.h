@@ -45,6 +45,7 @@ class CountryMapper: commonItems::parser
 {
 	public:
 		CountryMapper() = default;
+		virtual ~CountryMapper() = default;
 
 		explicit CountryMapper(const Vic2::World* srcWorld);
 

@@ -1,5 +1,5 @@
-#include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/ScriptedLocalisations/ScriptedLocalisations.h"
+#include "gtest/gtest.h"
 
 
 
@@ -17,7 +17,7 @@ TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationsTests, GetStrengthRatio
 	theLocalisations.initialize("TAG", "TWO");
 
 	ASSERT_TRUE(!theLocalisations.getLocalisations().empty());
-	ASSERT_EQ(theLocalisations.getLocalisations()[0].getName(), "GetStrengthRatioBritain");
+	ASSERT_EQ("GetStrengthRatioBritain", theLocalisations.getLocalisations()[0].getName());
 }
 
 
@@ -27,7 +27,7 @@ TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationsTests, GetRelevantNaval
 	theLocalisations.initialize("TAG", "TWO");
 
 	ASSERT_TRUE(theLocalisations.getLocalisations().size() > 1);
-	ASSERT_EQ(theLocalisations.getLocalisations()[1].getName(), "GetRelevantNavalTreatyNation");
+	ASSERT_EQ("GetRelevantNavalTreatyNation", theLocalisations.getLocalisations()[1].getName());
 }
 
 
@@ -48,5 +48,5 @@ TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationsTests, TagsGetApplied)
 	textTwo += "\t\t\t}\n";
 	textTwo += "\t\t}\n";
 	textTwo += "\t\tlocalization_key = TWO_Naval_treaty_nation\n";
-	ASSERT_EQ(theLocalisations.getLocalisations()[1].getTexts()[1], textTwo);
+	ASSERT_EQ(textTwo, theLocalisations.getLocalisations()[1].getTexts()[1]);
 }

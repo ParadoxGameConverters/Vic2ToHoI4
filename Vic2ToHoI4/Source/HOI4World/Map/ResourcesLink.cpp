@@ -4,7 +4,7 @@
 
 
 
-ResourcesLink::ResourcesLink(std::istream& theStream)
+HoI4::ResourcesLink::ResourcesLink(std::istream& theStream)
 {
 	registerKeyword("province", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleInt theProvinceNum(theStream);

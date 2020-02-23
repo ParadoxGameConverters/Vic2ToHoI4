@@ -1,12 +1,12 @@
-#include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/Events/EventOption.h"
+#include "gtest/gtest.h"
 #include <sstream>
 
 
 
 TEST(HoI4World_Events_EventOptionTests, NameDefaultsToBlank)
 {
-	HoI4::EventOption theOption;
+	const HoI4::EventOption theOption;
 
 	std::stringstream actualOutput;
 	actualOutput << theOption;
@@ -43,7 +43,7 @@ TEST(HoI4World_Events_EventOptionTests, NameCanBeInput)
 	input << "= {\n";
 	input << "\tname = optionName\n";
 	input << "}";
-	HoI4::EventOption theOption(input);
+	const HoI4::EventOption theOption(input);
 
 	std::stringstream actualOutput;
 	actualOutput << theOption;
@@ -57,9 +57,71 @@ TEST(HoI4World_Events_EventOptionTests, NameCanBeInput)
 }
 
 
-TEST(HoI4World_Events_EventOptionTests, AiChanceDefaultsToBlank)
+TEST(HoI4World_Events_EventOptionTests, TriggerDefaultsToBlank)
+{
+	const HoI4::EventOption theOption;
+
+	std::stringstream actualOutput;
+	actualOutput << theOption;
+
+	std::string expectedOutput;
+	expectedOutput += "\toption = {\n";
+	expectedOutput += "\t\tname = \n";
+	expectedOutput += "\t}";
+
+	ASSERT_EQ(actualOutput.str(), expectedOutput);
+}
+
+
+TEST(HoI4World_Events_EventOptionTests, TriggerCanBeGiven)
 {
 	HoI4::EventOption theOption;
+	theOption.giveTrigger("triggerText");
+
+	std::stringstream actualOutput;
+	actualOutput << theOption;
+
+	std::string expectedOutput;
+	expectedOutput += "\toption = {\n";
+	expectedOutput += "\t\tname = \n";
+	expectedOutput += "\t\ttrigger = {\n";
+	expectedOutput += "\t\t\ttriggerText\n";
+	expectedOutput += "\t\t}\n";
+	expectedOutput += "\t}";
+
+	ASSERT_EQ(actualOutput.str(), expectedOutput);
+}
+
+
+TEST(HoI4World_Events_EventOptionTests, TriggerCanBeInput)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\t\ttrigger = {\n";
+	input << "\t\t\ttriggerText\n";
+	input << "\t\t}\n";
+	input << "}";
+	HoI4::EventOption theOption(input);
+
+	std::stringstream actualOutput;
+	actualOutput << theOption;
+
+	std::string expectedOutput;
+	expectedOutput += "\toption = {\n";
+	expectedOutput += "\t\tname = \n";
+	expectedOutput += "\t\ttrigger = {\n";
+	expectedOutput += "\t\t\ttriggerText\n";
+	expectedOutput += "\t\t}\n";
+	expectedOutput += "\n";
+	expectedOutput += "\t}";
+
+	ASSERT_EQ(actualOutput.str(), expectedOutput);
+}
+
+
+TEST(HoI4World_Events_EventOptionTests, AiChanceDefaultsToBlank)
+{
+	const HoI4::EventOption theOption;
 
 	std::stringstream actualOutput;
 	actualOutput << theOption;
@@ -97,7 +159,7 @@ TEST(HoI4World_Events_EventOptionTests, AiChanceCanBeInput)
 	input << "= {\n";
 	input << "\tai_chance = { factor = 0 }\n";
 	input << "}";
-	HoI4::EventOption theOption(input);
+	const HoI4::EventOption theOption(input);
 
 	std::stringstream actualOutput;
 	actualOutput << theOption;
@@ -114,7 +176,7 @@ TEST(HoI4World_Events_EventOptionTests, AiChanceCanBeInput)
 
 TEST(HoI4World_Events_EventOptionTests, ScriptBlocksDefaultToEmpty)
 {
-	HoI4::EventOption theOption;
+	const HoI4::EventOption theOption;
 
 	std::stringstream actualOutput;
 	actualOutput << theOption;
@@ -131,10 +193,10 @@ TEST(HoI4World_Events_EventOptionTests, ScriptBlocksDefaultToEmpty)
 TEST(HoI4World_Events_EventOptionTests, ScriptBlocksCanBeGiven)
 {
 	HoI4::EventOption theOption;
-	theOption.giveScriptBlock("TAG = {\n" \
-		"\t\t\tadd_to_faction = NEW\n" \
-		"\t\t}"
-	);
+	theOption.giveScriptBlock(
+		 "TAG = {\n"
+		 "\t\t\tadd_to_faction = NEW\n"
+		 "\t\t}");
 
 	std::stringstream actualOutput;
 	actualOutput << theOption;
@@ -154,14 +216,14 @@ TEST(HoI4World_Events_EventOptionTests, ScriptBlocksCanBeGiven)
 TEST(HoI4World_Events_EventOptionTests, ScriptBlocksCanBeGivenRepeatedly)
 {
 	HoI4::EventOption theOption;
-	theOption.giveScriptBlock("TAG = {\n" \
-		"\t\t\tadd_to_faction = ONE\n" \
-		"\t\t}"
-	);
-	theOption.giveScriptBlock("TAG = {\n" \
-		"\t\t\tadd_to_faction = TWO\n" \
-		"\t\t}"
-	);
+	theOption.giveScriptBlock(
+		 "TAG = {\n"
+		 "\t\t\tadd_to_faction = ONE\n"
+		 "\t\t}");
+	theOption.giveScriptBlock(
+		 "TAG = {\n"
+		 "\t\t\tadd_to_faction = TWO\n"
+		 "\t\t}");
 
 	std::stringstream actualOutput;
 	actualOutput << theOption;
@@ -209,7 +271,7 @@ TEST(HoI4World_Events_EventOptionTests, ScriptBlocksCanBeInput)
 
 TEST(HoI4World_Events_EventOptionTests, HiddenEffectDefaultsToEmpty)
 {
-	HoI4::EventOption theOption;
+	const HoI4::EventOption theOption;
 
 	std::stringstream actualOutput;
 	actualOutput << theOption;
@@ -227,10 +289,9 @@ TEST(HoI4World_Events_EventOptionTests, HiddenEffectCanBeGiven)
 {
 	HoI4::EventOption theOption;
 	theOption.giveHiddenEffect(
-		"= {\n" \
-		"\t\t\tnews_event = { id = news.42 }\n" \
-		"\t\t}"
-	);
+		 "= {\n"
+		 "\t\t\tnews_event = { id = news.42 }\n"
+		 "\t\t}");
 
 	std::stringstream actualOutput;
 	actualOutput << theOption;

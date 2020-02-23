@@ -1,5 +1,5 @@
+#include "../Vic2ToHoI4/Source/HOI4World/Localisations/AllReplacementRules.h"
 #include "gtest/gtest.h"
-#include "../Vic2ToHoI4/Source/HoI4World/Localisations/AllReplacementRules.h"
 #include <sstream>
 
 

@@ -1,5 +1,5 @@
-#include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/ScriptedLocalisations/ScriptedLocalisation.h"
+#include "gtest/gtest.h"
 
 
 
@@ -7,7 +7,7 @@ TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationTests, NameDefaultsToBla
 {
 	const HoI4::ScriptedLocalisation theLocalisation;
 
-	ASSERT_EQ(std::string(""), theLocalisation.getName());
+	ASSERT_EQ("", theLocalisation.getName());
 }
 
 
@@ -16,7 +16,7 @@ TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationTests, NameCanBeSet)
 	HoI4::ScriptedLocalisation theLocalisation;
 	theLocalisation.setName("test");
 
-	ASSERT_EQ(std::string("test"), theLocalisation.getName());
+	ASSERT_EQ("test", theLocalisation.getName());
 }
 
 
@@ -34,5 +34,5 @@ TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationTests, TextsCanBeAdded)
 	theLocalisation.addText("test");
 
 	ASSERT_EQ(1, theLocalisation.getTexts().size());
-	ASSERT_EQ(theLocalisation.getTexts()[0], "test");
+	ASSERT_EQ("test", theLocalisation.getTexts()[0]);
 }

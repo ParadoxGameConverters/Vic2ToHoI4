@@ -1,17 +1,20 @@
-#include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/MilitaryMappings/UnitMapping.h"
+#include "gtest/gtest.h"
 
 
 
-TEST(HoI4World_MilitaryMappings_unitMappingTests, nulloptOnNoVic2Type)
+TEST(HoI4World_MilitaryMappings_unitMappingTests, NulloptOnNoVic2Type)
 {
 	std::stringstream input;
 	input << "= {\n";
+	input << "\t\t\thoi = {\n";
+	input << "\t\t\t\ttype = land\n";
+	input << "\t\t\t}\n";
 	input << "\t}";
 
 	const HoI4::UnitMapping theMapping(input);
 
-	ASSERT_EQ(theMapping.getMappings(), std::nullopt);
+	ASSERT_EQ(std::nullopt, theMapping.getMappings());
 }
 
 
@@ -31,19 +34,20 @@ TEST(HoI4World_MilitaryMappings_unitMappingTests, Vic2TypeCanBeSet)
 
 	auto mapping = theMapping.getMappings();
 	ASSERT_TRUE(mapping);
-	ASSERT_EQ(mapping->first, "irregular");
+	ASSERT_EQ("irregular", mapping->first);
 }
 
 
-TEST(HoI4World_MilitaryMappings_unitMappingTests, nulloptOnNoHoI4Type)
+TEST(HoI4World_MilitaryMappings_unitMappingTests, NulloptOnNoHoI4Type)
 {
 	std::stringstream input;
 	input << "= {\n";
+	input << "\t\t\tvic = irregular\n";
 	input << "\t}";
 
 	const HoI4::UnitMapping theMapping(input);
 
-	ASSERT_EQ(theMapping.getMappings()->second, std::nullopt);
+	ASSERT_EQ(std::nullopt, theMapping.getMappings()->second);
 }
 
 
@@ -65,5 +69,5 @@ TEST(HoI4World_MilitaryMappings_unitMappingTests, UnitMappingHandlesFilledHoI4Un
 
 	auto mapping = theMapping.getMappings();
 	ASSERT_TRUE(mapping);
-	ASSERT_EQ(std::string("land"), mapping->second->getType());
+	ASSERT_EQ("land", mapping->second->getType());
 }

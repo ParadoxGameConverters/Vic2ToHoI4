@@ -34,6 +34,7 @@ class State
 	public:
 		State() = default;
 		State(const Vic2::State& sourceState, int _ID, const std::string& _ownerTag);
+		virtual ~State() = default;
 
 		void addProvince(int province) { provinces.insert(province); }
 		void setAsCapitalState() { capitalState = true; civFactories++; }

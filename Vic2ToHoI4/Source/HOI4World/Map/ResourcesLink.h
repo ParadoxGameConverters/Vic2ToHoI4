@@ -7,18 +7,23 @@
 
 
 
+namespace HoI4
+{
+
 class ResourcesLink: commonItems::parser
 {
-	public:
-		explicit ResourcesLink(std::istream& theStream);
+  public:
+	explicit ResourcesLink(std::istream& theStream);
 
-		[[nodiscard]] int getProvinceNum() const { return provinceNum; }
-		[[nodiscard]] auto takeResources() { return std::move(theResources); }
+	[[nodiscard]] int getProvinceNum() const { return provinceNum; }
+	[[nodiscard]] auto takeResources() { return std::move(theResources); }
 
-	private:
-		int provinceNum = 0;
-		std::map<std::string, double> theResources;
+  private:
+	int provinceNum = 0;
+	std::map<std::string, double> theResources;
 };
+
+} // namespace HoI4
 
 
 

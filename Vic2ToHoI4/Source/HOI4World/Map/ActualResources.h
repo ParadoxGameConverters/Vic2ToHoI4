@@ -7,16 +7,21 @@
 
 
 
+namespace HoI4
+{
+
 class ActualResources: commonItems::parser
 {
-	public:
-		explicit ActualResources(std::istream& theStream);
+  public:
+	explicit ActualResources(std::istream& theStream);
 
-		[[nodiscard]] auto takeResources() { return std::move(theResources); }
+	[[nodiscard]] auto takeResources() { return std::move(theResources); }
 
-	private:
-		std::map<std::string, double> theResources;
+  private:
+	std::map<std::string, double> theResources;
 };
+
+} // namespace HoI4
 
 
 

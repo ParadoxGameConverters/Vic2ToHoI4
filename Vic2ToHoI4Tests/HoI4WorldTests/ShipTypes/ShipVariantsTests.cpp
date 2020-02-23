@@ -1,12 +1,12 @@
-#include "gtest/gtest.h"
-#include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/ShipVariants.h"
-#include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/ShipVariant.h"
 #include "../../Mocks/TechnologiesMock.h"
+#include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/ShipVariant.h"
+#include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/ShipVariants.h"
+#include "gtest/gtest.h"
 #include <sstream>
 
 
 
-TEST(HoI4World_ShipTypes_shipVariantsTests, noInputGivesDefaultOutput)
+TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsDefaultsToEmpty)
 {
 	std::vector<HoI4::shipVariant> possibleVariants;
 	mockTechnologies ownedTechs;
@@ -25,7 +25,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, noInputGivesDefaultOutput)
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantsTests, canReceiveVariant)
+TEST(HoI4World_ShipTypes_shipVariantsTests, CanReceiveVariant)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -71,7 +71,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, canReceiveVariant)
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantsTests, heldVaraintIsIdentified)
+TEST(HoI4World_ShipTypes_shipVariantsTests, HeldVaraintIsIdentified)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -97,7 +97,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, heldVaraintIsIdentified)
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantsTests, missingVaraintIsNotIdentified)
+TEST(HoI4World_ShipTypes_shipVariantsTests, MissingVaraintIsNotIdentified)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -123,7 +123,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, missingVaraintIsNotIdentified)
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantsTests, variantsNeedRequiredTechs)
+TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsNeedRequiredTechs)
 {
 	std::vector<HoI4::shipVariant> possibleVariants;
 
@@ -193,7 +193,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, variantsNeedRequiredTechs)
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantsTests, variantsCanBeBlocked)
+TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsCanBeBlocked)
 {
 	std::vector<HoI4::shipVariant> possibleVariants;
 

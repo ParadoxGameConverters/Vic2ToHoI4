@@ -3,7 +3,7 @@
 
 
 
-SupplyArea::SupplyArea(std::istream& theStream)
+HoI4::SupplyArea::SupplyArea(std::istream& theStream)
 {
 	registerKeyword("id", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleInt idInt(theStream);

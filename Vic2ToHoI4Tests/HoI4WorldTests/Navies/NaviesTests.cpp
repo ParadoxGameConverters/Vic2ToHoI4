@@ -1,23 +1,23 @@
-#include "gtest/gtest.h"
+#include "../../Mocks/TechnologiesMock.h"
 #include "../Vic2ToHoI4/Source/HOI4World/Navies/Navies.h"
 #include "../Vic2ToHoI4/Source/Hoi4Outputter/Navies/NaviesOutputter.h"
-#include "../../Mocks/TechnologiesMock.h"
+#include "gtest/gtest.h"
 
 
 
 class HoI4World_Navies_NaviesTests: public testing::Test
 {
-	protected:
-		HoI4World_Navies_NaviesTests();
+  protected:
+	HoI4World_Navies_NaviesTests();
 
-		std::unique_ptr<HoI4::shipVariants> theShipVariants;
-		std::unique_ptr<HoI4::shipVariants> limitedShipVariants;
+	std::unique_ptr<HoI4::shipVariants> theShipVariants;
+	std::unique_ptr<HoI4::shipVariants> limitedShipVariants;
 };
 
 
 HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests()
 {
-	std::vector< HoI4::shipVariant> possibleVariants;
+	std::vector<HoI4::shipVariant> possibleVariants;
 	std::stringstream earlyDestroyerInput;
 	earlyDestroyerInput << "= {\n";
 	earlyDestroyerInput << "	required_techs = { \n";
@@ -66,36 +66,16 @@ HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests()
 
 	mockTechnologies ownedTechs;
 	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_light")).WillRepeatedly(testing::Return(true));
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light")).WillOnce(testing::Return(true)).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light"))
+		 .WillOnce(testing::Return(true))
+		 .WillOnce(testing::Return(false));
 
 	theShipVariants = std::make_unique<HoI4::shipVariants>(possibleVariants, ownedTechs, "");
 	limitedShipVariants = std::make_unique<HoI4::shipVariants>(possibleVariants, ownedTechs, "");
 }
 
 
-TEST_F(HoI4World_Navies_NaviesTests, BlankNaviesOutputLegacyProperly)
-{
-	std::vector<const Vic2::Army*> sourceArmies;
-
-	std::stringstream input;
-	HoI4::UnitMappings unitMap(input);
-	HoI4::MtgUnitMappings mtgUnitMap(input);
-	std::map<int, int> provinceToStateIDMap;
-	std::map<int, HoI4::State> states;
-	std::string tag;
-
-	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, tag);
-	std::ostringstream output;
-	outputLegacyNavies(navies, output);
-
-	std::ostringstream expectedOutput;
-	expectedOutput << "units = {\n";
-	expectedOutput << "}\n";
-	ASSERT_EQ(expectedOutput.str(), output.str());
-}
-
-
-TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesOutputLegacyProperly)
+TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToLegacy)
 {
 	std::vector<const Vic2::Army*> sourceArmies;
 	std::stringstream armyStream;
@@ -135,7 +115,8 @@ TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesOutputLegacyProperly)
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 
-	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	HoI4::Navies
+		 navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
 	outputLegacyNavies(navies, output);
 
@@ -147,7 +128,8 @@ TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesOutputLegacyProperly)
 	expectedOutput << "\t\ttask_force = {\n";
 	expectedOutput << "\t\t\tname = \"2nd Fleet\"\n";
 	expectedOutput << "\t\t\tlocation = 0\n";
-	expectedOutput << "\t\t\tship = { name = \"Tigray\" definition = destroyer equipment = { destroyer_1 = { amount = 1 owner = TAG } } }\n";
+	expectedOutput << "\t\t\tship = { name = \"Tigray\" definition = destroyer equipment = { destroyer_1 = { amount = 1 "
+							"owner = TAG } } }\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";
@@ -185,7 +167,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 
-	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	HoI4::Navies
+		 navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
 	outputLegacyNavies(navies, output);
 
@@ -234,7 +217,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 
-	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	HoI4::Navies
+		 navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
 	outputLegacyNavies(navies, output);
 
@@ -285,7 +269,8 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyNavyNamesConvert)
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 
-	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	HoI4::Navies
+		 navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
 	outputLegacyNavies(navies, output);
 
@@ -297,7 +282,8 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyNavyNamesConvert)
 	expectedOutput << "\t\ttask_force = {\n";
 	expectedOutput << "\t\t\tname = \"Renamed Fleet\"\n";
 	expectedOutput << "\t\t\tlocation = 0\n";
-	expectedOutput << "\t\t\tship = { name = \"Tigray\" definition = destroyer equipment = { destroyer_1 = { amount = 1 owner = TAG } } }\n";
+	expectedOutput << "\t\t\tship = { name = \"Tigray\" definition = destroyer equipment = { destroyer_1 = { amount = 1 "
+							"owner = TAG } } }\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";
@@ -305,29 +291,7 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyNavyNamesConvert)
 }
 
 
-TEST_F(HoI4World_Navies_NaviesTests, BlankNaviesOutputMtgProperly)
-{
-	std::vector<const Vic2::Army*> sourceArmies;
-
-	std::stringstream input;
-	HoI4::UnitMappings unitMap(input);
-	HoI4::MtgUnitMappings mtgUnitMap(input);
-	std::map<int, int> provinceToStateIDMap;
-	std::map<int, HoI4::State> states;
-	std::string tag;
-
-	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, tag);
-	std::ostringstream output;
-	outputMtgNavies(navies, output);
-
-	std::ostringstream expectedOutput;
-	expectedOutput << "units = {\n";
-	expectedOutput << "}\n";
-	ASSERT_EQ(expectedOutput.str(), output.str());
-}
-
-
-TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesOutputMtgProperly)
+TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToMtg)
 {
 	std::vector<const Vic2::Army*> sourceArmies;
 	std::stringstream armyStream;
@@ -379,7 +343,8 @@ TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesOutputMtgProperly)
 	expectedOutput << "\t\ttask_force = {\n";
 	expectedOutput << "\t\t\tname = \"2nd Fleet\"\n";
 	expectedOutput << "\t\t\tlocation = 0\n";
-	expectedOutput << "\t\t\tship = { name = \"Tigray\" definition = destroyer equipment = { ship_hull_light_2 = { amount = 1 owner = TAG version_name = \"1936 Destroyer\" } } }\n";
+	expectedOutput << "\t\t\tship = { name = \"Tigray\" definition = destroyer equipment = { ship_hull_light_2 = { "
+							"amount = 1 owner = TAG version_name = \"1936 Destroyer\" } } }\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";
@@ -446,7 +411,8 @@ TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableMtgShipType)
 	expectedOutput << "\t\ttask_force = {\n";
 	expectedOutput << "\t\t\tname = \"2nd Fleet\"\n";
 	expectedOutput << "\t\t\tlocation = 0\n";
-	expectedOutput << "\t\t\tship = { name = \"Tigray\" definition = destroyer equipment = { ship_hull_light_1 = { amount = 1 owner = TAG version_name = \"Early Destroyer\" } } }\n";
+	expectedOutput << "\t\t\tship = { name = \"Tigray\" definition = destroyer equipment = { ship_hull_light_1 = { "
+							"amount = 1 owner = TAG version_name = \"Early Destroyer\" } } }\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";
@@ -506,7 +472,8 @@ TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesGetExperience)
 	expectedOutput << "\t\ttask_force = {\n";
 	expectedOutput << "\t\t\tname = \"2nd Fleet\"\n";
 	expectedOutput << "\t\t\tlocation = 0\n";
-	expectedOutput << "\t\t\tship = { name = \"Tigray\" definition = destroyer start_experience_factor = 0.2 equipment = { ship_hull_light_2 = { amount = 1 owner = TAG version_name = \"1936 Destroyer\" } } }\n";
+	expectedOutput << "\t\t\tship = { name = \"Tigray\" definition = destroyer start_experience_factor = 0.2 equipment "
+							"= { ship_hull_light_2 = { amount = 1 owner = TAG version_name = \"1936 Destroyer\" } } }\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";
@@ -660,7 +627,8 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgNavyNamesConvert)
 	expectedOutput << "\t\ttask_force = {\n";
 	expectedOutput << "\t\t\tname = \"Renamed Fleet\"\n";
 	expectedOutput << "\t\t\tlocation = 0\n";
-	expectedOutput << "\t\t\tship = { name = \"Tigray\" definition = destroyer equipment = { ship_hull_light_1 = { amount = 1 owner = TAG version_name = \"Early Destroyer\" } } }\n";
+	expectedOutput << "\t\t\tship = { name = \"Tigray\" definition = destroyer equipment = { ship_hull_light_1 = { "
+							"amount = 1 owner = TAG version_name = \"Early Destroyer\" } } }\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";

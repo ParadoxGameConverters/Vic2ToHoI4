@@ -1,19 +1,7 @@
-#include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/Navies/LegacyShip.h"
 #include "../Vic2ToHoI4/Source/Hoi4Outputter/Navies/LegacyShipOutputter.h"
+#include "gtest/gtest.h"
 
-
-
-TEST(HoI4World_Navies_LegacyShipTests, BlankShipOutputsProperly)
-{
-	HoI4::LegacyShip ship("", "", "", "");
-	std::ostringstream output;
-	output << ship;
-
-	std::ostringstream expectedOutput;
-	expectedOutput << "\t\t\tship = { name = \"\" definition =  equipment = {  = { amount = 1 owner =  } } }\n";
-	ASSERT_EQ(expectedOutput.str(), output.str());
-}
 
 
 TEST(HoI4World_Navies_LegacyShipTests, NameCanBeSet)
@@ -47,8 +35,8 @@ TEST(HoI4World_Navies_LegacyShipTests, EquipmentCanBeSet)
 	output << ship;
 
 	std::ostringstream expectedOutput;
-	expectedOutput <<
-		"\t\t\tship = { name = \"\" definition =  equipment = { theEquipment = { amount = 1 owner =  } } }\n";
+	expectedOutput
+		 << "\t\t\tship = { name = \"\" definition =  equipment = { theEquipment = { amount = 1 owner =  } } }\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 

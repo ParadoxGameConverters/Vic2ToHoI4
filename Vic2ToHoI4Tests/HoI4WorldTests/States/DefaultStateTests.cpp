@@ -1,28 +1,5 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
-#include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/States/DefaultState.h"
+#include "gtest/gtest.h"
 #include <sstream>
 
 
@@ -32,7 +9,7 @@ TEST(HoI4World_States_DefaultStateTests, impassibleDefaultsToFalse)
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	HoI4::DefaultState theState(input);
+	const HoI4::DefaultState theState(input);
 
 	ASSERT_FALSE(theState.isImpassable());
 }
@@ -44,7 +21,7 @@ TEST(HoI4World_States_DefaultStateTests, impassibleCanBeSet)
 	input << "= {\n";
 	input << "\timpassable = yes\n";
 	input << "}";
-	HoI4::DefaultState theState(input);
+	const HoI4::DefaultState theState(input);
 
 	ASSERT_TRUE(theState.isImpassable());
 }
@@ -55,9 +32,9 @@ TEST(HoI4World_States_DefaultStateTests, provincesDefaultToEmpty)
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	HoI4::DefaultState theState(input);
+	const HoI4::DefaultState theState(input);
 
-	ASSERT_EQ(theState.getProvinces().size(), 0);
+	ASSERT_TRUE(theState.getProvinces().empty());
 }
 
 
@@ -71,22 +48,22 @@ TEST(HoI4World_States_DefaultStateTests, provincesCanBeSet)
 	input << "}";
 	HoI4::DefaultState theState(input);
 
-	ASSERT_EQ(theState.getProvinces().size(), 4);
-	ASSERT_EQ(theState.getProvinces().count(1), 1);
-	ASSERT_EQ(theState.getProvinces().count(2), 1);
-	ASSERT_EQ(theState.getProvinces().count(3), 1);
-	ASSERT_EQ(theState.getProvinces().count(4), 1);
+	ASSERT_EQ(4, theState.getProvinces().size());
+	ASSERT_EQ(1, theState.getProvinces().count(1));
+	ASSERT_EQ(1, theState.getProvinces().count(2));
+	ASSERT_EQ(1, theState.getProvinces().count(3));
+	ASSERT_EQ(1, theState.getProvinces().count(4));
 }
 
 
-TEST(HoI4World_States_DefaultStateTests, ownerDefaultsToBlank)
+TEST(HoI4World_States_DefaultStateTests, ownerDefaultsToEmpty)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	HoI4::DefaultState theState(input);
+	const HoI4::DefaultState theState(input);
 
-	ASSERT_EQ(theState.getOwner(), "");
+	ASSERT_TRUE(theState.getOwner().empty());
 }
 
 
@@ -98,9 +75,9 @@ TEST(HoI4World_States_DefaultStateTests, ownerCanBeSet)
 	input << "\t\towner = TAG\n";
 	input << "\t}\n";
 	input << "}";
-	HoI4::DefaultState theState(input);
+	const HoI4::DefaultState theState(input);
 
-	ASSERT_EQ(theState.getOwner(), "TAG");
+	ASSERT_EQ("TAG", theState.getOwner());
 }
 
 
@@ -109,9 +86,9 @@ TEST(HoI4World_States_DefaultStateTests, civFactoriesDefaultsToZero)
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	HoI4::DefaultState theState(input);
+	const HoI4::DefaultState theState(input);
 
-	ASSERT_EQ(theState.getCivFactories(), 0);
+	ASSERT_EQ(0, theState.getCivFactories());
 }
 
 
@@ -125,9 +102,9 @@ TEST(HoI4World_States_DefaultStateTests, civFactoriesCanBeSet)
 	input << "\t\t}\n";
 	input << "\t}";
 	input << "}";
-	HoI4::DefaultState theState(input);
+	const HoI4::DefaultState theState(input);
 
-	ASSERT_EQ(theState.getCivFactories(), 5);
+	ASSERT_EQ(5, theState.getCivFactories());
 }
 
 
@@ -136,9 +113,9 @@ TEST(HoI4World_States_DefaultStateTests, milFactoriesDefaultsToZero)
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	HoI4::DefaultState theState(input);
+	const HoI4::DefaultState theState(input);
 
-	ASSERT_EQ(theState.getMilFactories(), 0);
+	ASSERT_EQ(0, theState.getMilFactories());
 }
 
 
@@ -152,9 +129,9 @@ TEST(HoI4World_States_DefaultStateTests, milFactoriesCanBeSet)
 	input << "\t\t}\n";
 	input << "\t}";
 	input << "}";
-	HoI4::DefaultState theState(input);
+	const HoI4::DefaultState theState(input);
 
-	ASSERT_EQ(theState.getMilFactories(), 7);
+	ASSERT_EQ(7, theState.getMilFactories());
 }
 
 
@@ -163,9 +140,9 @@ TEST(HoI4World_States_DefaultStateTests, dockyardsDefaultsToZero)
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	HoI4::DefaultState theState(input);
+	const HoI4::DefaultState theState(input);
 
-	ASSERT_EQ(theState.getMilFactories(), 0);
+	ASSERT_EQ(0, theState.getMilFactories());
 }
 
 
@@ -181,9 +158,9 @@ TEST(HoI4World_States_DefaultStateTests, dockyardsCanBeSet)
 	input << "\t\t}\n";
 	input << "\t}";
 	input << "}";
-	HoI4::DefaultState theState(input);
+	const HoI4::DefaultState theState(input);
 
-	ASSERT_EQ(theState.getDockyards(), 1);
+	ASSERT_EQ(1, theState.getDockyards());
 }
 
 
@@ -202,7 +179,7 @@ TEST(HoI4World_States_DefaultStateTests, dockyardsCanBeAdded)
 	input << "\t\t}\n";
 	input << "\t}";
 	input << "}";
-	HoI4::DefaultState theState(input);
+	const HoI4::DefaultState theState(input);
 
-	ASSERT_EQ(theState.getDockyards(), 4);
+	ASSERT_EQ(4, theState.getDockyards());
 }

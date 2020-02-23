@@ -43,6 +43,7 @@ class namesMapper: commonItems::parser
 	public:
 		namesMapper() noexcept {};
 		void init();
+		virtual ~namesMapper() = default;
 
 		virtual std::optional<std::vector<std::string>> getMaleNames(const std::string& culture) const;
 		std::optional<std::vector<std::string>> getFemaleNames(const std::string& culture) const;

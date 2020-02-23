@@ -1,5 +1,5 @@
+#include "../Vic2ToHoI4/Source/HOI4World/Localisations/LanguageReplacementRule.h"
 #include "gtest/gtest.h"
-#include "../Vic2ToHoI4/Source/HoI4World/Localisations/LanguageReplacementRule.h"
 #include <sstream>
 
 
@@ -7,7 +7,7 @@
 TEST(HoI4World_Localisations_LanguageReplacementRule, ReplacementsDefaultToEmpty)
 {
 	std::stringstream input;
-	HoI4::LanguageReplacementRule rule("match", input);
+	const HoI4::LanguageReplacementRule rule("match", input);
 
 	ASSERT_EQ(rule.getReplacements().size(), 0);
 }
@@ -19,7 +19,7 @@ TEST(HoI4World_Localisations_LanguageReplacementRule, ReplacementCanBeAdded)
 	input << " = {\n";
 	input << "\t_MS = $1er\n";
 	input << "}";
-	HoI4::LanguageReplacementRule rule("match", input);
+	const HoI4::LanguageReplacementRule rule("match", input);
 
 	const auto& actualReplacements = rule.getReplacements();
 	ASSERT_EQ(actualReplacements.size(), 1);

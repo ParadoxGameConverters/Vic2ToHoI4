@@ -58,6 +58,7 @@ class Country: commonItems::parser
 	public:
 		Country() = default;
 		explicit Country(const std::string& theTag, std::istream& theStream, const inventions& theInventions, const cultureGroups& theCultureGroups);
+		virtual ~Country() = default;
 
 		void addProvince(const std::pair<const int, Province*>& province) { provinces.insert(province); }
 		void setColor(const ConverterColor::Color& newColor) { color = newColor; }
