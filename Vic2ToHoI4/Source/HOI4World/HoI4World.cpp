@@ -99,6 +99,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	events->importElectionEvents(majorIdeologies, *onActions);
 	addCountryElectionEvents(majorIdeologies);
 	events->createStabilityEvents(majorIdeologies);
+	events->generateGenericEvents(theConfiguration, majorIdeologies);
 	theIdeas->updateIdeas(majorIdeologies);
 	decisions->updateDecisions(majorIdeologies, states->getProvinceToStateIDMap(), states->getDefaultStates(), *events);
 	updateAiPeaces(*peaces, majorIdeologies);

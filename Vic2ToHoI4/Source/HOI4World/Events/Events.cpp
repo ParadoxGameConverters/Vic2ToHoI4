@@ -5,8 +5,10 @@
 #include "../HoI4Country.h"
 #include "../HoI4Localisation.h"
 #include "../OnActions.h"
+#include "EventsFile.h"
 #include "Log.h"
 #include "ParserHelpers.h"
+#include <fstream>
 
 
 
@@ -1402,4 +1404,20 @@ std::optional<int> HoI4::Events::getEventNumber(const std::string& eventName) co
 	{
 		return std::nullopt;
 	}
+}
+
+
+void HoI4::Events::generateGenericEvents(const Configuration& theConfiguration,
+	 const std::set<std::string>& majorIdeologies)
+{
+	std::ifstream genericEventsFileStream(theConfiguration.getHoI4Path() + "/events/Generic.txt");
+	if (!genericEventsFileStream.is_open())
+	{
+		throw std::runtime_error("Could not open " + theConfiguration.getHoI4Path() + "/events/Generic.txt");
+	}
+
+	EventsFile genericEventsFile(genericEventsFileStream);
+	genericEvents = genericEventsFile.takeEvents();
+
+	genericEventsFileStream.close();
 }
