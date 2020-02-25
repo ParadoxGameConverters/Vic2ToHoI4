@@ -1420,4 +1420,22 @@ void HoI4::Events::generateGenericEvents(const Configuration& theConfiguration,
 	genericEvents = genericEventsFile.takeEvents();
 
 	genericEventsFileStream.close();
+
+	for (auto& genericEvent: genericEvents)
+	{
+		if (genericEvent.getId() == "generic.1")
+		{
+			genericEvent.clearOptions();
+
+			EventOption optionA;
+			optionA.giveName("generic.1.a");
+			optionA.giveTrigger("has_government = FROM");
+			genericEvent.giveOption(std::move(optionA));
+
+			EventOption optionB;
+			optionB.giveName("generic.1.b");
+			optionB.giveTrigger("NOT = { has_government = FROM }");
+			genericEvent.giveOption(std::move(optionB));
+		}
+	}
 }
