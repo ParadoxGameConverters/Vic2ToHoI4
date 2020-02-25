@@ -33,6 +33,7 @@ class Event: commonItems::parser
 	void giveImmediate(std::string&& newImmediate) { immediate = newImmediate; }
 	void giveOption(EventOption&& theOption) { options.push_back(theOption); }
 
+	void clearDescriptions() { descriptions.clear(); }
 	void clearOptions() { options.clear(); }
 
 	[[nodiscard]] const std::string& getId() const { return id; }
