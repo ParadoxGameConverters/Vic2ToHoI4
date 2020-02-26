@@ -25,6 +25,7 @@
 #link = { vic = ENG hoi = ENG }	# Great Britain	=> United Kingdom
 
 link = { vic = REB hoi = REB } # Rebels
+link = { vic = ADU hoi = ADU } # Andalusia
 link = { vic = AFG hoi = AFG } # Afghanistan
 link = { vic = ALB hoi = ALB } # Albania
 link = { vic = ALD hoi = ALG } # Algeria
@@ -38,6 +39,7 @@ link = { vic = AZB hoi = AZR } # Azerbaijan
 link = { vic = BHM hoi = BAH } # The Bahamas
 link = { vic = BNG hoi = BAN } # Bengal => Bangladesh
 link = { vic = CRB hoi = BAS } # The Caribbean => British Antilles
+link = { vic = BAV hoi = BAY } # Bavaria
 link = { vic = BEL hoi = BEL } # Belgium
 link = { vic = BLZ hoi = BLZ } # Belize
 link = { vic = BHU hoi = BHU } # Bhutan
@@ -52,6 +54,7 @@ link = { vic = BUL hoi = BUL } # Bulgaria
 link = { vic = CAM hoi = CAM } # Cambodia
 link = { vic = CAN hoi = CAN } # Canada
 link = { vic = CAR hoi = CAR } # Equatorial Africa => Central African Republic
+link = { vic = CAT hoi = CAT } # Catalonia
 #link = { vic = ? hoi = CAY } # Cayenne
 link = { vic = CHD hoi = CHA } # Chad
 link = { vic = CHI hoi = CHI } # China
@@ -79,24 +82,30 @@ link = { vic = ENG hoi = ENG } # United Kingdom
 link = { vic = EQG hoi = EQG } # Equatorial Guinea
 link = { vic = ERI hoi = ERI } # Eritrea
 link = { vic = EST hoi = EST } # Estonia
+link = { vic = IBR hoi = ESU } # Iberia
 link = { vic = ETH hoi = ETH } # Ethiopia
 link = { vic = FIJ hoi = FIJ } # Fiji
 link = { vic = FIN hoi = FIN } # Finland
 link = { vic = FRA hoi = FRA } # France
+#link = { vic = ? hoi = FSM } # Micronesia
 link = { vic = GAB hoi = GAB } # Gabon
 link = { vic = GMB hoi = GAM } # Gambia
 link = { vic = GDL hoi = GDL } # Guadeloupe
 link = { vic = GEO hoi = GEO } # Georgia
 link = { vic = GER hoi = GER } # Germany
 link = { vic = GHN hoi = GHA } # Ghana
+link = { vic = GAL hoi = GLC } # Galicia
 link = { vic = GNE hoi = GNA } # Guinea
 link = { vic = GBI hoi = GNB } # Guinea-Bissau
 link = { vic = GRE hoi = GRE } # Greece
 link = { vic = GUA hoi = GUA } # Guatemala
+#link = { vic = ? hoi = GUM } # Guam
 link = { vic = GUY hoi = GUY } # Guyana
 link = { vic = GXI hoi = GXC } # Guangxi
 link = { vic = GUY hoi = GYA } # Guyana
 link = { vic = HAI hoi = HAI } # Haiti
+link = { vic = HAN hoi = HAN } # Hannover
+link = { vic = HAW hoi = HAW } # Hawaii
 link = { vic = NET hoi = HOL } # Netherlands
 link = { vic = HON hoi = HON } # Honduras
 link = { vic = HUN hoi = HUN } # Hungary
@@ -131,6 +140,7 @@ link = { vic = MCD hoi = MAC } # Macedonia TFYR
 link = { vic = MAD hoi = MAD } # Madagascar
 link = { vic = MLY hoi = MAL } # Malaya => Malaysia
 link = { vic = MCK hoi = MAN } # Manchukuo
+link = { vic = MEC hoi = MEK } # Mecklenburg
 link = { vic = MEX hoi = MEX } # Mexico
 link = { vic = MLD hoi = MLD } # Maldives
 link = { vic = MLI hoi = MLI } # Mali
@@ -143,6 +153,7 @@ link = { vic = MGL hoi = MON } # Mongolia
 link = { vic = MOR hoi = MOR } # Morocco
 link = { vic = TRZ hoi = MRT } # Mauritania
 link = { vic = MOZ hoi = MZB } # Mozambique
+link = { vic = NAV hoi = NAV } # Navarra
 link = { vic = NEP hoi = NEP } # Nepal
 link = { vic = NGR hoi = NGA } # Nigeria
 link = { vic = SOK hoi = NGA } # Sokoto => Nigeria
@@ -167,6 +178,7 @@ link = { vic = POL hoi = POL } # Poland
 link = { vic = POR hoi = POR } # Portugal
 #link = { vic = CHI hoi = PRC } # China (already used)
 #link = { vic = KOR hoi = PRK } # Korea (already used)
+link = { vic = PRU hoi = PRE } # Prussia
 link = { vic = PEU hoi = PRU } # Peru
 link = { vic = PRI hoi = PUE } # Puerto Rico
 link = { vic = QAT hoi = QAT } # Qatar
@@ -175,17 +187,21 @@ link = { vic = CGO hoi = RCG } # Congo-Brazzaville
 link = { vic = ROM hoi = ROM } # Romania
 #link = { vic = ITA hoi = RSI } # Italian Social Republic
 link = { vic = RWA hoi = RWA } # Rwanda
+#link = { vic = ? hoi = SAM } # Samoa
 link = { vic = SAF hoi = SAF } # South Africa
 link = { vic = ARA hoi = SAU } # (Saudi) Arabia
+link = { vic = SAX hoi = SAX } # Saxony
 link = { vic = SCO hoi = SCO } # Scotland
 link = { vic = SNG hoi = SEN } # Senegal
 link = { vic = SER hoi = SER } # Serbia
+link = { vic = HOL hoi = SHL } # (Schleswig-)Holstein
 link = { vic = SXI hoi = SHX } # Shanxi
 link = { vic = SIA hoi = SIA } # Siam
 link = { vic = SLE hoi = SIE } # Sierra Leone
 link = { vic = XIN hoi = SIK } # Xinjiang => Sinkiang
 link = { vic = SLV hoi = SLO } # Slovakia
 link = { vic = SLO hoi = SLV } # Slovenia
+#link = { vic = ? hoi = SOL } # Solomon Islands
 link = { vic = SOM hoi = SOM } # Somalia
 link = { vic = RUS hoi = SOV } # Russia
 link = { vic = SPA hoi = SPR } # Spain
@@ -196,6 +212,7 @@ link = { vic = NUB hoi = SUD } # Funj => Sudan
 link = { vic = SWE hoi = SWE } # Sweden
 link = { vic = SWI hoi = SWI } # Switzerland
 link = { vic = SYR hoi = SYR } # Syria
+link = { vic = TAH hoi = TAH } # Tahiti
 link = { vic = TAJ hoi = TAJ } # Tajikistan
 link = { vic = TNT hoi = TAN } # Tannu Tuva
 link = { vic = TIB hoi = TIB } # Tibet
@@ -211,7 +228,7 @@ link = { vic = BUG hoi = UGA } # (B)uganda
 link = { vic = UKR hoi = UKR } # Ukraine
 link = { vic = URU hoi = URG } # Uruguay
 link = { vic = USA hoi = USA } # USA
-#link = { vic = ? hoi = USB } # Unaligned States of America
+link = { vic = FSA hoi = USB } # Free States of America => Unaligned States of America
 link = { vic = UZB hoi = UZB } # Uzbekistan (PDM)
 link = { vic = BUK hoi = UZB } # Bukkhara => Uzbekistan
 link = { vic = VNZ hoi = VEN } # Venezuela
@@ -221,6 +238,7 @@ link = { vic = MOS hoi = VOL } # Mossi Kingdom => Upper Volta
 link = { vic = WSH hoi = WES } # Western Sahara
 link = { vic = NGF hoi = WGR } # North => West Germany
 link = { vic = WHA hoi = WLS } # Wales
+link = { vic = WUR hoi = WUR } # Württemberg
 link = { vic = XBI hoi = XSM } # Xibei San Ma
 link = { vic = YEM hoi = YEM } # Yemen
 link = { vic = YUG hoi = YUG } # Yugoslavia
