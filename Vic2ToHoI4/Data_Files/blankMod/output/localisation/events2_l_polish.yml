@@ -500,3 +500,7 @@
  anti_fascism_raids_desc:0 "Zdumiewająco wysoka popularność [Root.GetFascistParty] może nas tylko obawiać, podczas gdy rząd [Root.GetRulingIdeology] ryzykuje utratę władzy. To oczywiste, że coś trzeba zrobić."
  ban_fascism_party:0 "Zakaz [Root.GetFascistParty]"
  ban_fascism_party_desc:0 "Wspierany przez [?party_popularity@fascism|%R1] naszej populacji, Czarne Zagrożenie musi zostać wykorzenione z naszej polityki."
+ generic.2.d.f:0 "[alliance_applicant.GetName] wie, że musi działać wspólnie z innymi republikami, żeby wzmocnić pozycję radykalizm na świecie. Zgadzając się na naszą wiodącą rolę w handlu międzynarodowym, naród [alliance_applicant.GetAdjective] wnioskuje o formalne zawarcie z nami sojuszu."
+ generic.2.d.g:0 "Nasza walka o zachowanie porządku światowego nie umknęła myślom podobnie myślących krajów. Naród [alliance_applicant.GetAdjective] wie, że największe szanse na dostatnią przyszłość da mu sojusz z nami podczas zbliżającego się konfliktu, dlatego formalnie proponuje przyłączenie się do walki z naszymi wrogami."
+ generic.2.g:0 "Jeżeli będziemy działać razem, rewolucja zwycięży."
+ generic.2.h:0 "Świat należy do silnych!"

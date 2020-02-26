@@ -500,3 +500,7 @@
  anti_fascism_raids_desc:0 "La sorprendente popularidad de la [Root.GetFascistParty] solo puede hacernos temer mientras que el gobierno [Root.GetRulingIdeology] se arriesga a perder su poder. Es obvio que hay que hacer algo."
  ban_fascism_party:0 "Ban [Root.GetFascistParty]"
  ban_fascism_party_desc:0 "Apoyada por el [?party_popularity@fascism|%R1] de nuestra población, la amenaza negra debe ser erradicada de nuestra política."
+ generic.2.d.f:0 "[alliance_applicant.GetName] ha reconocido que debe unirse a sus repúblicas hermanas para fortalecer el lugar que ocupa el radicalismo en el mundo. Después de aceptar nuestro liderazgo en comercio internacional, los [alliance_applicant.GetAdjective] piden ahora entrar formalmente en una alianza con nosotros."
+ generic.2.d.g:0 "Our plight to preserve the current world order has not escaped the notice of like-minded nations. The [alliance_applicant.GetAdjective] recognize that their best chance to maintain a prosperous future for themselves is to align with us in the coming conflict, and they have therefore offered to formally join us against our enemies."
+ generic.2.g:0 "Si estamos unidos, la evolución triunfará."
+ generic.2.h:0 "¡El mundo pertenece a todos los que somos fuertes!"

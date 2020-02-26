@@ -1437,5 +1437,358 @@ void HoI4::Events::generateGenericEvents(const Configuration& theConfiguration,
 			optionB.giveTrigger("NOT = { has_government = FROM }");
 			genericEvent.giveOption(std::move(optionB));
 		}
+		else if (genericEvent.getId() == "generic.2")
+		{
+			genericEvent.clearDescriptions();
+
+			if (majorIdeologies.count("democratic"))
+			{
+				std::string description = "= {\n";
+				description += "\t\ttext = generic.2.d.a\n";
+				description += "\t\ttrigger = {\n";
+				description += "\t\t\tAND = {\n";
+				description += "\t\t\t\tFROM = {\n";
+				description += "\t\t\t\t\thas_government = democratic\n";
+				description += "\t\t\t\t}\n";
+				description += "\t\t\t\thas_government = democratic\n";
+				description += "\t\t\t}\n";
+				description += "\t\t}\n";
+				description += "\t}";
+				genericEvent.giveDescription(std::move(description));
+			}
+			if (majorIdeologies.count("fascism"))
+			{
+				std::string description = "= {\n";
+				description += "\t\ttext = generic.2.d.b\n";
+				description += "\t\ttrigger = {\n";
+				description += "\t\t\tAND = {\n";
+				description += "\t\t\t\tFROM = {\n";
+				description += "\t\t\t\t\thas_government = fascism\n";
+				description += "\t\t\t\t}\n";
+				description += "\t\t\t\thas_government = fascism\n";
+				description += "\t\t\t}\n";
+				description += "\t\t}\n";
+				description += "\t}";
+				genericEvent.giveDescription(std::move(description));
+			}
+			if (majorIdeologies.count("communism"))
+			{
+				std::string description = "= {\n";
+				description += "\t\ttext = generic.2.d.c\n";
+				description += "\t\ttrigger = {\n";
+				description += "\t\t\tAND = {\n";
+				description += "\t\t\t\tFROM = {\n";
+				description += "\t\t\t\t\thas_government = communism\n";
+				description += "\t\t\t\t}\n";
+				description += "\t\t\t\thas_government = communism\n";
+				description += "\t\t\t}\n";
+				description += "\t\t}\n";
+				description += "\t}";
+				genericEvent.giveDescription(std::move(description));
+			}
+			if (majorIdeologies.count("radical"))
+			{
+				std::string description = "= {\n";
+				description += "\t\ttext = generic.2.d.f\n";
+				description += "\t\ttrigger = {\n";
+				description += "\t\t\tAND = {\n";
+				description += "\t\t\t\tFROM = {\n";
+				description += "\t\t\t\t\thas_government = radical\n";
+				description += "\t\t\t\t}\n";
+				description += "\t\t\t\thas_government = radical\n";
+				description += "\t\t\t}\n";
+				description += "\t\t}\n";
+				description += "\t}";
+				genericEvent.giveDescription(std::move(description));
+			}
+			if (majorIdeologies.count("absolutist"))
+			{
+				std::string description = "= {\n";
+				description += "\t\ttext = generic.2.d.g\n";
+				description += "\t\ttrigger = {\n";
+				description += "\t\t\tAND = {\n";
+				description += "\t\t\t\tFROM = {\n";
+				description += "\t\t\t\t\thas_government = absolutist\n";
+				description += "\t\t\t\t}\n";
+				description += "\t\t\t\thas_government = absolutist\n";
+				description += "\t\t\t}\n";
+				description += "\t\t}\n";
+				description += "\t}";
+				genericEvent.giveDescription(std::move(description));
+			}
+
+			std::string description = "= {\n";
+			description += "\t\ttext = generic.2.d.e\n";
+			description += "\t\ttrigger = {\n";
+			description += "\t\t\tNOT = {\n";
+			for (const auto& ideology : majorIdeologies)
+			{
+				if (ideology == "neutrality")
+				{
+					continue;
+				}
+				description += "\t\t\t\tAND = {\n";
+				description += "\t\t\t\t\tFROM = {\n";
+				description += "\t\t\t\t\t\thas_government = " + ideology + "\n";
+				description += "\t\t\t\t\t}\n";
+				description += "\t\t\t\t\thas_government = " + ideology + "\n";
+				description += "\t\t\t\t}\n";
+			}
+			description += "\t\t\t}\n";
+			description += "\t\t}\n";
+			description += "\t}";
+			genericEvent.giveDescription(std::move(description));
+
+			genericEvent.clearOptions();
+			if (majorIdeologies.count("democratic"))
+			{
+				EventOption option;
+				option.giveName("generic.2.a");
+				option.giveTrigger(
+					"AND = {\n"
+					"\t\t\t\tFROM = {\n"
+					"\t\t\t\t\thas_government = democratic\n"
+					"\t\t\t\t}\n"
+					"\t\t\t\thas_government = democratic\n"
+					"\t\t\t}");
+				option.giveAiChance(
+					"= {\n"
+					"\t\t\tbase = 100\n"
+					"\t\t}");
+				option.giveScriptBlock("add_to_faction = FROM");
+				option.giveScriptBlock("FROM = { country_event = { id = generic.3 hours = 6 } }");
+				option.giveHiddenEffect(
+					"= {\n"
+					"\t\t\tset_country_flag = alliance_inviter@ROOT\n"
+					"\t\t\tFROM = { set_country_flag = alliance_applicant@ROOT }\n"
+					"\t\t\tnews_event = { id = news.289 hours = 12 }\n"
+					"\t\t}");
+
+				genericEvent.giveOption(std::move(option));
+			}
+			if (majorIdeologies.count("fascism"))
+			{
+				EventOption option;
+				option.giveName("generic.2.b");
+				option.giveTrigger(
+					"AND = {\n"
+					"\t\t\t\tFROM = {\n"
+					"\t\t\t\t\thas_government = fascism\n"
+					"\t\t\t\t}\n"
+					"\t\t\t\thas_government = fascism\n"
+					"\t\t\t}");
+				option.giveAiChance(
+					"= {\n"
+					"\t\t\tbase = 100\n"
+					"\t\t}");
+				option.giveScriptBlock("add_to_faction = FROM");
+				option.giveScriptBlock("FROM = { country_event = { id = generic.3 hours = 6 } }");
+				option.giveHiddenEffect(
+					"= {\n"
+					"\t\t\tset_country_flag = alliance_inviter@ROOT\n"
+					"\t\t\tFROM = { set_country_flag = alliance_applicant@ROOT }\n"
+					"\t\t\tnews_event = { id = news.289 hours = 12 }\n"
+					"\t\t}");
+
+				genericEvent.giveOption(std::move(option));
+			}
+			if (majorIdeologies.count("communism"))
+			{
+				EventOption option;
+				option.giveName("generic.2.c");
+				option.giveTrigger(
+					"AND = {\n"
+					"\t\t\t\tFROM = {\n"
+					"\t\t\t\t\thas_government = communism\n"
+					"\t\t\t\t}\n"
+					"\t\t\t\thas_government = communism\n"
+					"\t\t\t}");
+				option.giveAiChance(
+					"= {\n"
+					"\t\t\tbase = 100\n"
+					"\t\t}");
+				option.giveScriptBlock("add_to_faction = FROM");
+				option.giveScriptBlock("FROM = { country_event = { id = generic.3 hours = 6 } }");
+				option.giveHiddenEffect(
+					"= {\n"
+					"\t\t\tset_country_flag = alliance_inviter@ROOT\n"
+					"\t\t\tFROM = { set_country_flag = alliance_applicant@ROOT }\n"
+					"\t\t\tnews_event = { id = news.289 hours = 12 }\n"
+					"\t\t}");
+
+				genericEvent.giveOption(std::move(option));
+			}
+			if (majorIdeologies.count("radical"))
+			{
+				EventOption option;
+				option.giveName("generic.2.g");
+				option.giveTrigger(
+					"AND = {\n"
+					"\t\t\t\tFROM = {\n"
+					"\t\t\t\t\thas_government = radical\n"
+					"\t\t\t\t}\n"
+					"\t\t\t\thas_government = radical\n"
+					"\t\t\t}");
+				option.giveAiChance(
+					"= {\n"
+					"\t\t\tbase = 100\n"
+					"\t\t}");
+				option.giveScriptBlock("add_to_faction = FROM");
+				option.giveScriptBlock("FROM = { country_event = { id = generic.3 hours = 6 } }");
+				option.giveHiddenEffect(
+					"= {\n"
+					"\t\t\tset_country_flag = alliance_inviter@ROOT\n"
+					"\t\t\tFROM = { set_country_flag = alliance_applicant@ROOT }\n"
+					"\t\t\tnews_event = { id = news.289 hours = 12 }\n"
+					"\t\t}");
+
+				genericEvent.giveOption(std::move(option));
+			}
+			if (majorIdeologies.count("absolutist"))
+			{
+				EventOption option;
+				option.giveName("generic.2.h");
+				option.giveTrigger(
+					"AND = {\n"
+					"\t\t\t\tFROM = {\n"
+					"\t\t\t\t\thas_government = absolutist\n"
+					"\t\t\t\t}\n"
+					"\t\t\t\thas_government = absolutist\n"
+					"\t\t\t}");
+				option.giveAiChance(
+					"= {\n"
+					"\t\t\tbase = 100\n"
+					"\t\t}");
+				option.giveScriptBlock("add_to_faction = FROM");
+				option.giveScriptBlock("FROM = { country_event = { id = generic.3 hours = 6 } }");
+				option.giveHiddenEffect(
+					"= {\n"
+					"\t\t\tset_country_flag = alliance_inviter@ROOT\n"
+					"\t\t\tFROM = { set_country_flag = alliance_applicant@ROOT }\n"
+					"\t\t\tnews_event = { id = news.289 hours = 12 }\n"
+					"\t\t}");
+
+				genericEvent.giveOption(std::move(option));
+			}
+
+			EventOption bothDifferent;
+			bothDifferent.giveName("generic.2.e");
+			std::string trigger = "NOT = {\n";
+			for (const auto& ideology : majorIdeologies)
+			{
+				if (ideology == "neutrality")
+				{
+					continue;
+				}
+				trigger += "\t\t\t\tAND = {\n";
+				trigger += "\t\t\t\t\tFROM = {\n";
+				trigger += "\t\t\t\t\t\thas_government = " + ideology + "\n";
+				trigger += "\t\t\t\t\t}\n";
+				trigger += "\t\t\t\t\thas_government = " + ideology + "\n";
+				trigger += "\t\t\t\t}\n";
+			}
+			trigger += "\t\t\t}";
+			bothDifferent.giveTrigger(std::move(trigger));
+			bothDifferent.giveAiChance(
+				"= {\n"
+				"\t\t\tbase = 100\n"
+				"\t\t\tmodifier = {\n"
+				"\t\t\t\tfactor = 0.5\n"
+				"\t\t\t\thas_war = no\n"
+				"\t\t\t\tFROM = {\n"
+				"\t\t\t\t\thas_war = yes\n"
+				"\t\t\t\t}\n"
+				"\t\t\t}\n"
+				"\t\t\tmodifier = {\n"
+				"\t\t\t\tfactor = 0.5\n"
+				"\t\t\t\tNOT = {\n"
+				"\t\t\t\t\thas_government = neutrality\n"
+				"\t\t\t\t}\n"
+				"\t\t\t}\n"
+				"\t\t\tmodifier = {\n"
+				"\t\t\t\tfactor = 0.75\n"
+				"\t\t\t\tFROM = {\n"
+				"\t\t\t\t\tis_major = no\n"
+				"\t\t\t\t}\n"
+				"\t\t\t}\n"
+				"\t\t}");
+			bothDifferent.giveScriptBlock("add_to_faction = FROM");
+			bothDifferent.giveScriptBlock("FROM = { country_event = { id = generic.3 hours = 6 } }");
+			bothDifferent.giveHiddenEffect(
+				"= {\n"
+				"\t\t\tset_country_flag = alliance_inviter@ROOT\n"
+				"\t\t\tFROM = { set_country_flag = alliance_applicant@ROOT }\n"
+				"\t\t\tnews_event = { id = news.289 hours = 12 }\n"
+				"\t\t}");
+			bothDifferent.giveScriptBlock(
+				"FROM = {\n"
+				"\t\t\tadd_ai_strategy = {\n"
+				"\t\t\t\ttype = alliance\n"
+				"\t\t\t\tid = ROOT\n"
+				"\t\t\t\tvalue = 200\n"
+				"\t\t\t}\n"
+				"\t\t}");
+			genericEvent.giveOption(std::move(bothDifferent));
+
+			EventOption reject;
+			reject.giveName("generic.2.f");
+			reject.giveAiChance(
+				"= {\n"
+				"\t\t\tfactor = 50\n"
+				"\t\t\tmodifier = {\n"
+				"\t\t\t\tfactor = 0.5\n"
+				"\t\t\t\thas_opinion = {\n"
+				"\t\t\t\t\ttarget = FROM\n"
+				"\t\t\t\t\tvalue > 65\n"
+				"\t\t\t\t}\n"
+				"\t\t\t}\n"
+				"\t\t\tmodifier = {\n"
+				"\t\t\t\tfactor = 0.5\n"
+				"\t\t\t\thas_opinion = {\n"
+				"\t\t\t\t\ttarget = FROM\n"
+				"\t\t\t\t\tvalue > 35\n"
+				"\t\t\t\t}\n"
+				"\t\t\t}\n"
+				"\t\t\tmodifier = {\n"
+				"\t\t\t\tfactor = 0.5\n"
+				"\t\t\t\thas_opinion = {\n"
+				"\t\t\t\t\ttarget = FROM\n"
+				"\t\t\t\t\tvalue > 5\n"
+				"\t\t\t\t}\n"
+				"\t\t\t}\n"
+				"\t\t\tmodifier = {\n"
+				"\t\t\t\tfactor = 2.0\n"
+				"\t\t\t\thas_opinion = {\n"
+				"\t\t\t\t\ttarget = FROM\n"
+				"\t\t\t\t\tvalue < 35\n"
+				"\t\t\t\t}\n"
+				"\t\t\t}\n"
+				"\t\t\tmodifier = {\n"
+				"\t\t\t\tfactor = 2.0\n"
+				"\t\t\t\thas_opinion = {\n"
+				"\t\t\t\t\ttarget = FROM\n"
+				"\t\t\t\t\tvalue < 65\n"
+				"\t\t\t\t}\n"
+				"\t\t\t}\n"
+				"\t\t\tmodifier = {\n"
+				"\t\t\t\tfactor = 0.1\n"
+				"\t\t\t\thas_war = yes\n"
+				"\t\t\t\tFROM = {\n"
+				"\t\t\t\t\thas_war = no\n"
+				"\t\t\t\t}\n"
+				"\t\t\t}\n"
+				"\t\t\tmodifier = {\n"
+				"\t\t\t\tfactor = 0.1\n"
+				"\t\t\t\tFROM = {\n"
+				"\t\t\t\t\tis_major = yes\n"
+				"\t\t\t\t}\n"
+				"\t\t\t}\n"
+				"\t\t}");
+			reject.giveScriptBlock(
+				"FROM = {\n"
+				"\t\t\tcountry_event = { id = generic.4 hours = 6 }\n"
+				"\t\t}");
+			genericEvent.giveOption(std::move(reject));
+		}
 	}
 }
