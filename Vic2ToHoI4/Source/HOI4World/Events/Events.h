@@ -66,6 +66,9 @@ class Events: commonItems::parser
 
 	static std::string getIdeologicalPicture(const std::string& ideology);
 
+	void updateGenericEventOne(Event& eventOne) const;
+	void updateGenericEventTwo(Event& eventTwo, const std::set<std::string>& majorIdeologies) const;
+
 	std::vector<Event> newsEvents;
 	int newsEventNumber = 237;
 	std::vector<Event> nationalFocusEvents;
