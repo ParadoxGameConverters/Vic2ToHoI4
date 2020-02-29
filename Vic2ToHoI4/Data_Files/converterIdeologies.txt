@@ -96,7 +96,6 @@ ideologies = {
 		can_collaborate = yes
 		
 		modifiers = {
-			join_faction_tension = 0.20
 			justify_war_goal_when_in_major_war_time = -0.80
 			army_intel_to_others = 10.0
 			navy_intel_to_others = 10.0
