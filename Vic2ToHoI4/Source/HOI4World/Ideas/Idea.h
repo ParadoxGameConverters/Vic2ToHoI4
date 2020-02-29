@@ -12,43 +12,43 @@ namespace HoI4
 
 class Idea: commonItems::parser
 {
-	public:
-		Idea(const std::string& ideaName, std::istream& theStream);
+  public:
+	Idea(std::string ideaName, std::istream& theStream);
 
-		friend std::ostream& operator<<(std::ostream& outStream, const HoI4::Idea& outIdea);
+	friend std::ostream& operator<<(std::ostream& outStream, const Idea& outIdea);
 
-		std::string getName() const { return name; }
+	[[nodiscard]] std::string getName() const { return name; }
 
-		void setAvailable(const std::string& newAvailable) { available = newAvailable; }
-		void setAllowedCivilWar(const std::string& newAllowedCivilWar) { allowedCivilWar = newAllowedCivilWar; }
+	void setAvailable(const std::string& newAvailable) { available = newAvailable; }
+	void setAllowedCivilWar(const std::string& newAllowedCivilWar) { allowedCivilWar = newAllowedCivilWar; }
 
-	private:
-		std::string name;
-		std::string altName;
+  private:
+	std::string name;
+	std::string altName;
 
-		std::optional<int> cost;
-		std::optional<int> removalCost;
-		std::optional<int> level;
+	std::optional<int> cost;
+	std::optional<int> removalCost;
+	std::optional<int> level;
 
-		std::string allowed;
-		std::string allowedCivilWar;
-		std::string cancel;
-		std::string available;
-		std::string aiWillDo;
-		std::string picture;
-		std::string rule;
-		std::string modifier;
-		std::string researchBonus;
-		std::string equipmentBonus;
-		std::string traits;
-		std::string onAdd;
-		std::string allowedToRemove;
+	std::string allowed;
+	std::string allowedCivilWar;
+	std::string cancel;
+	std::string available;
+	std::string aiWillDo;
+	std::string picture;
+	std::string rule;
+	std::string modifier;
+	std::string researchBonus;
+	std::string equipmentBonus;
+	std::string traits;
+	std::string onAdd;
+	std::string allowedToRemove;
 
-		bool isDefault = false;
-		std::optional<bool> cancelIfInvalid;
+	bool isDefault = false;
+	std::optional<bool> cancelIfInvalid;
 };
 
-}
+} // namespace HoI4
 
 
 
