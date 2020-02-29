@@ -984,3 +984,239 @@ void HoI4::updateGenericEventSeven(Event& event, const std::set<std::string>& ma
 
 	event.giveOption(std::move(option));
 }
+
+
+void HoI4::updateGenericEventFourteen(Event& event, const std::set<std::string>& majorIdeologies)
+{
+	event.clearOptions();
+	
+	EventOption optionA;
+	optionA.giveName("generic.14.a");
+	optionA.giveAiChance(
+		"= {\n"
+		"\t\t\tbase = 80\n"
+		"\t\t\tmodifier = {\n"
+		"\t\t\t\tfactor = 1.5\n"
+		"\t\t\t\thas_opinion = { target = FROM value > 50 }\n"
+		"\t\t\t}\n"
+		"\t\t\tmodifier = {\n"
+		"\t\t\t\tfactor = 1.5\n"
+		"\t\t\t\thas_opinion = { target = FROM value > 75 }\n"
+		"\t\t\t}\n"
+		"\t\t}");
+	optionA.giveScriptBlock(
+		"random_other_country = {\n"
+		"\t\t\tlimit = {\n"
+		"\t\t\t\thas_war_with = FROM\n"
+		"\t\t\t\thas_attache_from = ROOT\n"
+		"\t\t\t}\n"
+		"\t\t\tROOT = { recall_attache = PREV }\n"
+		"\t\t}");
+	optionA.giveScriptBlock(
+		"FROM = {\n"
+		"\t\t\tcountry_event = { id = generic.15 days = 1 }\n"
+		"\t\t}\n");
+	optionA.giveScriptBlock("clr_country_flag = object_attache_going_on");
+	event.giveOption(std::move(optionA));
+
+	EventOption optionB;
+	optionB.giveName("generic.14.b");
+	optionB.giveAiChance(
+		"= {\n"
+		"\t\t\tbase = 20\n"
+		"\t\t\tmodifier = {\n"
+		"\t\t\t\tfactor = 2\n"
+		"\t\t\t\thas_opinion = { target = FROM value < 0 }\n"
+		"\t\t\t}\n"
+		"\t\t\tmodifier = {\n"
+		"\t\t\t\tfactor = 3\n"
+		"\t\t\t\thas_opinion = { target = FROM value < -20 }\n"
+		"\t\t\t}\n"
+		"\t\t\tmodifier = {\n"
+		"\t\t\t\tfactor = 3\n"
+		"\t\t\t\thas_opinion = { target = FROM value < -50 }\n"
+		"\t\t\t}\n"
+		"\t\t}");
+	optionB.giveScriptBlock("custom_effect_tooltip = attache_political_power_tt");
+	optionB.giveScriptBlock("if = {\n"
+		"\t\t\tlimit = {\n"
+		"\t\t\t\tNOT = { strength_ratio = { tag = FROM ratio < 3 } }\n"
+		"\t\t\t}\n"
+		"\t\t\tif = {\n"
+		"\t\t\t\tlimit = {\n"
+		"\t\t\t\t\thas_opinion = { target = FROM value > -25 }\n"
+		"\t\t\t\t\tNOT = { has_opinion = { target = FROM value > 0 } }\n"
+		"\t\t\t\t}\n"
+		"\t\t\t\tadd_political_power = -5\n"
+		"\t\t\t}\n"
+		"\t\t\tif = {\n"
+		"\t\t\t\tlimit = {\n"
+		"\t\t\t\t\thas_opinion = { target = FROM value > 0 }\n"
+		"\t\t\t\t\tNOT = { has_opinion = { target = FROM value > 50 } }\n"
+		"\t\t\t\t}\n"
+		"\t\t\t\tadd_political_power = -10\n"
+		"\t\t\t}\n"
+		"\t\t\tif = {\n"
+		"\t\t\t\tlimit = { has_opinion = { target = FROM value > 50 } }\n"
+		"\t\t\t\tadd_political_power = -15\n"
+		"\t\t\t}\n"
+		"\t\t}");
+	optionB.giveScriptBlock("if = {\n"
+		"\t\t\tlimit = {\n"
+		"\t\t\t\tstrength_ratio = { tag = FROM ratio < 3 }\n"
+		"\t\t\t\tNOT = { strength_ratio = { tag = FROM ratio < 2.5 } }\n"
+		"\t\t\t}\n"
+		"\t\t\tif = {\n"
+		"\t\t\t\tlimit = {\n"
+		"\t\t\t\t\thas_opinion = { target = FROM value > -25 }\n"
+		"\t\t\t\t\tNOT = { has_opinion = { target = FROM value > 0 } }\n"
+		"\t\t\t\t}\n"
+		"\t\t\t\tadd_political_power = -10\n"
+		"\t\t\t}\n"
+		"\t\t\tif = {\n"
+		"\t\t\t\tlimit = {\n"
+		"\t\t\t\t\thas_opinion = { target = FROM value > 0 }\n"
+		"\t\t\t\t\tNOT = { has_opinion = { target = FROM value > 50 } }\n"
+		"\t\t\t\t}\n"
+		"\t\t\t\tadd_political_power = -20\n"
+		"\t\t\t}\n"
+		"\t\t\tif = {\n"
+		"\t\t\t\tlimit = { has_opinion = { target = FROM value > 50 } }\n"
+		"\t\t\t\tadd_political_power = -30\n"
+		"\t\t\t}\n"
+		"\t\t}");
+	optionB.giveScriptBlock("if = {\n"
+		"\t\t\tlimit = {\n"
+		"\t\t\t\tstrength_ratio = { tag = FROM ratio < 2.5 }\n"
+		"\t\t\t\tNOT = { strength_ratio = { tag = FROM ratio < 2 } }\n"
+		"\t\t\t}\n"
+		"\t\t\tif = {\n"
+		"\t\t\t\tlimit = {\n"
+		"\t\t\t\t\thas_opinion = { target = FROM value > -25 }\n"
+		"\t\t\t\t\tNOT = { has_opinion = { target = FROM value > 0 } }\n"
+		"\t\t\t\t}\n"
+		"\t\t\t\tadd_political_power = -15\n"
+		"\t\t\t}\n"
+		"\t\t\tif = {\n"
+		"\t\t\t\tlimit = {\n"
+		"\t\t\t\t\thas_opinion = { target = FROM value > 0 }\n"
+		"\t\t\t\t\tNOT = { has_opinion = { target = FROM value > 50 } }\n"
+		"\t\t\t\t}\n"
+		"\t\t\t\tadd_political_power = -30\n"
+		"\t\t\t}\n"
+		"\t\t\tif = {\n"
+		"\t\t\t\tlimit = { has_opinion = { target = FROM value > 50 } }\n"
+		"\t\t\t\tadd_political_power = -45\n"
+		"\t\t\t}\n"
+		"\t\t}");
+	optionB.giveScriptBlock("if = {\n"
+		"\t\t\tlimit = {\n"
+		"\t\t\t\tstrength_ratio = { tag = FROM ratio < 2 }\n"
+		"\t\t\t\tNOT = { strength_ratio = { tag = FROM ratio < 1.5 } }\n"
+		"\t\t\t}\n"
+		"\t\t\tif = {\n"
+		"\t\t\t\tlimit = {\n"
+		"\t\t\t\t\thas_opinion = { target = FROM value > -25 }\n"
+		"\t\t\t\t\tNOT = { has_opinion = { target = FROM value > 0 } }\n"
+		"\t\t\t\t}\n"
+		"\t\t\t\tadd_political_power = -20\n"
+		"\t\t\t}\n"
+		"\t\t\tif = {\n"
+		"\t\t\t\tlimit = {\n"
+		"\t\t\t\t\thas_opinion = { target = FROM value > 0 }\n"
+		"\t\t\t\t\tNOT = { has_opinion = { target = FROM value > 50 } }\n"
+		"\t\t\t\t}\n"
+		"\t\t\t\tadd_political_power = -40\n"
+		"\t\t\t}\n"
+		"\t\t\tif = {\n"
+		"\t\t\t\tlimit = { has_opinion = { target = FROM value > 50 } }\n"
+		"\t\t\t\tadd_political_power = -60\n"
+		"\t\t\t}\n"
+		"\t\t}");
+	optionB.giveScriptBlock("if = {\n"
+		"\t\t\tlimit = {\n"
+		"\t\t\t\tstrength_ratio = { tag = FROM ratio < 1.5 }\n"
+		"\t\t\t}\n"
+		"\t\t\tif = {\n"
+		"\t\t\t\tlimit = {\n"
+		"\t\t\t\t\thas_opinion = { target = FROM value > -25 }\n"
+		"\t\t\t\t\tNOT = { has_opinion = { target = FROM value > 0 } }\n"
+		"\t\t\t\t}\n"
+		"\t\t\t\tadd_political_power = -25\n"
+		"\t\t\t}\n"
+		"\t\t\tif = {\n"
+		"\t\t\t\tlimit = {\n"
+		"\t\t\t\t\thas_opinion = { target = FROM value > 0 }\n"
+		"\t\t\t\t\tNOT = { has_opinion = { target = FROM value > 50 } }\n"
+		"\t\t\t\t}\n"
+		"\t\t\t\tadd_political_power = -50\n"
+		"\t\t\t}\n"
+		"\t\t\tif = {\n"
+		"\t\t\t\tlimit = { has_opinion = { target = FROM value > 50 } }\n"
+		"\t\t\t\tadd_political_power = -75\n"
+		"\t\t\t}\n"
+		"\t\t}");
+	optionB.giveScriptBlock("FROM = {\n"
+		"\t\t\tadd_opinion_modifier = { target = ROOT modifier = rejected_demands }\n"
+		"\t\t\tcountry_event = { id = generic.16 days = 1 }\n"
+		"\t\t}");
+
+	for (const auto& ideology: majorIdeologies)
+	{
+		if (ideology == "neutrality")
+		{
+			continue;
+		}
+		optionB.giveScriptBlock("if = {\n"
+			"\t\t\tlimit = {\n"
+			"\t\t\t\tFROM = { has_government = " + ideology + " }\n"
+			"\t\t\t\tNOT = { has_government = " + ideology + " }\n"
+			"\t\t\t\t" + ideology + " > 0.1\n"
+			"\t\t\t\tNOT = { " + ideology + " > 0.2 }\n"
+			"\t\t\t\tstrength_ratio = { tag = FROM ratio < 1.2 }\n"
+			"\t\t\t}\n"
+			"\t\t\tcustom_effect_tooltip = attache_" + ideology + "_tt\n"
+			"\t\t\tadd_stability = -0.025\n"
+			"\t\t}");
+		optionB.giveScriptBlock("if = {\n"
+			"\t\t\tlimit = {\n"
+			"\t\t\t\tFROM = { has_government = " + ideology + " }\n"
+			"\t\t\t\tNOT = { has_government = " + ideology + " }\n"
+			"\t\t\t\t" + ideology + " > 0.2\n"
+			"\t\t\t\tNOT = { " + ideology + " > 0.3 }\n"
+			"\t\t\t\tstrength_ratio = { tag = FROM ratio < 1.2 }\n"
+			"\t\t\t}\n"
+			"\t\t\tcustom_effect_tooltip = attache_" + ideology + "_tt\n"
+			"\t\t\tadd_stability = -0.05\n"
+			"\t\t}");
+		optionB.giveScriptBlock("if = {\n"
+			"\t\t\tlimit = {\n"
+			"\t\t\t\tFROM = { has_government = " + ideology + " }\n"
+			"\t\t\t\tNOT = { has_government = " + ideology + " }\n"
+			"\t\t\t\t" + ideology + " > 0.3\n"
+			"\t\t\t\tNOT = { " + ideology + " > 0.4 }\n"
+			"\t\t\t\tstrength_ratio = { tag = FROM ratio < 1.2 }\n"
+			"\t\t\t}\n"
+			"\t\t\tcustom_effect_tooltip = attache_" + ideology + "_tt\n"
+			"\t\t\tadd_stability = -0.075\n"
+			"\t\t}");
+		optionB.giveScriptBlock("if = {\n"
+			"\t\t\tlimit = {\n"
+			"\t\t\t\tFROM = { has_government = " + ideology + " }\n"
+			"\t\t\t\tNOT = { has_government = " + ideology + " }\n"
+			"\t\t\t\t" + ideology + " > 0.4\n"
+			"\t\t\t\tstrength_ratio = { tag = FROM ratio < 1.2 }\n"
+			"\t\t\t}\n"
+			"\t\t\tcustom_effect_tooltip = attache_" + ideology + "_tt\n"
+			"\t\t\tadd_stability = -0.1\n"
+			"\t\t}");
+	}
+	optionB.giveHiddenEffect("= {\n"
+		"\t\t\tset_country_flag = { flag = rejected_withdrawing_attache value = 1 days = 90 }\n"
+		"\t\t\tset_country_flag = { flag = rejected_withdrawing_attache@FROM value = 1 days = 365 }\n"
+		"\t\t\tclr_country_flag = object_attache_going_on\n"
+		"\t\t}");
+
+
+	event.giveOption(std::move(optionB));
+}
