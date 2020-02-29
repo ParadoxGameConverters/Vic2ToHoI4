@@ -5,7 +5,7 @@
 
 #include "Decisions/Decisions.h"
 #include "Diplomacy/AIPeaces.h"
-#include "Ideas.h"
+#include "Ideas/Ideas.h"
 #include "Leaders/Advisor.h"
 #include "Map/CoastalProvinces.h"
 #include "Map/MapData.h"

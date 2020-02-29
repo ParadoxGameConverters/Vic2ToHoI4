@@ -13,7 +13,7 @@
 #include "HoI4FocusTree.h"
 #include "HOI4Ideology.h"
 #include "HoI4Localisation.h"
-#include "Ideas.h"
+#include "Ideas/Ideas.h"
 #include "IdeologyFile.h"
 #include "Leaders/Advisor.h"
 #include "Leaders/IdeologicalAdvisors.h"
