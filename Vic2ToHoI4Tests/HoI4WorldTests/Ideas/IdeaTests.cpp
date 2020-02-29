@@ -462,3 +462,23 @@ TEST(HoI4World_Ideas_IdeaTests, CancelIfInvalidCanBeSet)
 
 	ASSERT_EQ(expectedOutput.str(), actualOutput.str());
 }
+
+
+TEST(HoI4World_Ideas_IdeaTests, CancelIfInvalidCanBeSetToNo)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\tcancel_if_invalid = no";
+	input << "}";
+	const HoI4::Idea theIdea("theIdea", input);
+
+	std::stringstream actualOutput;
+	actualOutput << theIdea;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\t\ttheIdea = {\n";
+	expectedOutput << "\t\t\tcancel_if_invalid = no\n";
+	expectedOutput << "\t\t}\n";
+
+	ASSERT_EQ(expectedOutput.str(), actualOutput.str());
+}
