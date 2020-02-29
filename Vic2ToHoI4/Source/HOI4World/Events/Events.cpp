@@ -1434,15 +1434,19 @@ void HoI4::Events::generateGenericEvents(const Configuration& theConfiguration,
 		}
 		else if (genericEvent.getId() == "generic.3")
 		{
-			updateGenericEventsThreeAndFour(genericEvent, 3, majorIdeologies);
+			updateGenericEventsThreeFourAndSix(genericEvent, 3, majorIdeologies);
 		}
 		else if (genericEvent.getId() == "generic.4")
 		{
-			updateGenericEventsThreeAndFour(genericEvent, 4, majorIdeologies);
+			updateGenericEventsThreeFourAndSix(genericEvent, 4, majorIdeologies);
 		}
 		else if (genericEvent.getId() == "generic.5")
 		{
 			updateGenericEventFive(genericEvent, majorIdeologies);
+		}
+		else if (genericEvent.getId() == "generic.6")
+		{
+			updateGenericEventsThreeFourAndSix(genericEvent, 3, majorIdeologies);
 		}
 	}
 }

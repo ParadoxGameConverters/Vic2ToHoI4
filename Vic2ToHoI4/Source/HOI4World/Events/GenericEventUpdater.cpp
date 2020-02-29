@@ -375,7 +375,7 @@ void HoI4::updateGenericEventTwo(Event& eventTwo, const std::set<std::string>& m
 }
 
 
-void HoI4::updateGenericEventsThreeAndFour(Event& event, int eventNum, const std::set<std::string>& majorIdeologies)
+void HoI4::updateGenericEventsThreeFourAndSix(Event& event, int eventNum, const std::set<std::string>& majorIdeologies)
 {
 	event.clearOptions();
 	if (majorIdeologies.count("democratic"))
