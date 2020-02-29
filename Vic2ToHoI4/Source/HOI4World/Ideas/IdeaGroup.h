@@ -18,7 +18,7 @@ class IdeaGroup: commonItems::parser
 		IdeaGroup(const std::string& ideaGroupName, std::istream& theStream);
 
 		std::string getName() const { return name; }
-		std::optional<Idea> getIdea(const std::string& ideaName);
+		std::optional<Idea> getIdea(const std::string& ideaName) const;
 		void replaceIdea(const Idea& newIdea);
 
 		auto getIdeas() const { return ideas; }

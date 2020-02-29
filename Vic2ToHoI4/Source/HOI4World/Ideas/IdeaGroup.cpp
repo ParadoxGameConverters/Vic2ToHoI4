@@ -23,7 +23,7 @@ HoI4::IdeaGroup::IdeaGroup(const std::string& ideaGroupName, std::istream& theSt
 }
 
 
-std::optional<HoI4::Idea> HoI4::IdeaGroup::getIdea(const std::string& ideaName)
+std::optional<HoI4::Idea> HoI4::IdeaGroup::getIdea(const std::string& ideaName) const
 {
 	for (auto idea: ideas)
 	{
