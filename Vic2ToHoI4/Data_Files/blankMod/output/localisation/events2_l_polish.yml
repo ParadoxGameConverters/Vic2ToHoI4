@@ -508,3 +508,7 @@
  generic.3.g:0 "Nikt nas nie powstrzyma!"
  generic.4.f:0 "Zbyt wiele nas różni."
  generic.4.g:0 "Zbyt wiele nas różni."
+ generic.5.d.f:0 "[alliance_inviter.GetName], nasz ideologiczny sojusznik, docenia nasz wielki wkład w handel międzynarodowy, dlatego dziś rano otrzymaliśmy zaproszenie do frakcji [alliance_inviter.GetFactionName]. Stojąc u boku innych republik, będziemy mogli krzewić ideały rewolucji ze zdwojoną siłą."
+ generic.5.d.g:0 "Zdawszy sobie sprawę, że nawet silni potrzebują sojuszników, naród [alliance_inviter.GetAdjective] zaprasza nas do frakcji [alliance_inviter.GetFactionName]. Jeżeli się zgodzimy, być może zagwarantujemy sobie dostatnią przyszłość."
+ generic.5.h:0 "Staniemy do walki u boku naszych towarzyszy!"
+ generic.5.i:0 "Potrzebujemy tylko kilku tysięcy poległych..."

@@ -508,3 +508,7 @@
  generic.3.g:0 "Ninguém pode nos derrubar!"
  generic.4.f:0 "Nossas diferenças eram muito grandes."
  generic.4.g:0 "Nossas diferenças eram muito grandes."
+ generic.5.d.f:0 "Nossos aliados ideológicos [alliance_inviter.GetName] tomaram nota de nossas contribuições para o comércio internacional e essa manhã recebemos um convite para nos juntarmos à  [alliance_inviter.GetFactionName]. Lutando juntos de outras repúblicas nós poderíamos espalhar a revolução com uma força renovada."
+ generic.5.d.g:0 "Reconhecendo que às vezes até mesmo os mais fortes precisam de aliados, [alliance_inviter.GetAdjective] nos convidou para nos juntarmos à [alliance_inviter.GetFactionName]. Se escolhermos aceitar, isso pode fornecer uma oportunidade para encontrarmos nossa sombra e água fresca."
+ generic.5.h:0 "Lutaremos juntos de nossos camaradas!"
+ generic.5.i:0 "Só precisamos de alguns milhares de mortos..."

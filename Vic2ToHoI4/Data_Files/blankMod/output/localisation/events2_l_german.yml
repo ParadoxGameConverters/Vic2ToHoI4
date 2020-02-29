@@ -508,3 +508,7 @@
  generic.3.g:0 "Niemand kann sich gegen uns stellen!"
  generic.4.f:0 "Unsere Differenzen waren zu groß."
  generic.4.g:0 "Unsere Differenzen waren zu groß."
+ generic.5.d.f:0 "Unsere ideologischen Verbündeten in [alliance_inviter.GetName] haben unseren wertvollen Beitrag zum internationalen Handel bemerkt. Wir haben heute eine Einladung erhalten, [alliance_inviter.GetFactionName]-Mitglied zu werden. Wenn wir uns mit anderen Republiken verbünden, können wir die Revolution mit neuer Kraft und Stärke vorantreiben."
+ generic.5.d.g:0 "Manchmal braucht selbst der Starke Verbündete, weshalb die [alliance_inviter.GetAdjective]en Anführer uns eingeladen haben, [alliance_inviter.GetFactionName]-Mitglied zu werden. Wenn wir zustimmen, könnte das für uns eine hervorragende Gelegenheit sein, unseren Platz an der Sonne zu sichern."
+ generic.5.h:0 "Wir werden an der Seite unserer Genossen kämpfen!"
+ generic.5.i:0 "Wir brauchen nur ein paar tausend Tote ..."

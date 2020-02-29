@@ -1439,6 +1439,10 @@ void HoI4::Events::generateGenericEvents(const Configuration& theConfiguration,
 		{
 			updateGenericEventsThreeAndFour(genericEvent, 4, majorIdeologies);
 		}
+		else if (genericEvent.getId() == "generic.5")
+		{
+			updateGenericEventFive(genericEvent, majorIdeologies);
+		}
 	}
 }
 
@@ -1908,4 +1912,421 @@ void HoI4::Events::updateGenericEventsThreeAndFour(Event& event, int eventNum, c
 	option.giveTrigger(std::move(trigger));
 
 	event.giveOption(std::move(option));
+}
+
+
+void HoI4::Events::updateGenericEventFive(Event& eventFive, const std::set<std::string>& majorIdeologies) const
+{
+	eventFive.clearDescriptions();
+
+	if (majorIdeologies.count("democratic"))
+	{
+		std::string description = "= {\n";
+		description += "\t\ttext = generic.5.d.a\n";
+		description += "\t\ttrigger = {\n";
+		description += "\t\t\tAND = {\n";
+		description += "\t\t\t\tFROM = {\n";
+		description += "\t\t\t\t\thas_government = democratic\n";
+		description += "\t\t\t\t}\n";
+		description += "\t\t\t\thas_government = democratic\n";
+		description += "\t\t\t}\n";
+		description += "\t\t}\n";
+		description += "\t}";
+		eventFive.giveDescription(std::move(description));
+	}
+	if (majorIdeologies.count("fascism"))
+	{
+		std::string description = "= {\n";
+		description += "\t\ttext = generic.5.d.b\n";
+		description += "\t\ttrigger = {\n";
+		description += "\t\t\tAND = {\n";
+		description += "\t\t\t\tFROM = {\n";
+		description += "\t\t\t\t\thas_government = fascism\n";
+		description += "\t\t\t\t}\n";
+		description += "\t\t\t\thas_government = fascism\n";
+		description += "\t\t\t}\n";
+		description += "\t\t}\n";
+		description += "\t}";
+		eventFive.giveDescription(std::move(description));
+	}
+	if (majorIdeologies.count("communism"))
+	{
+		std::string description = "= {\n";
+		description += "\t\ttext = generic.5.d.c\n";
+		description += "\t\ttrigger = {\n";
+		description += "\t\t\tAND = {\n";
+		description += "\t\t\t\tFROM = {\n";
+		description += "\t\t\t\t\thas_government = communism\n";
+		description += "\t\t\t\t}\n";
+		description += "\t\t\t\thas_government = communism\n";
+		description += "\t\t\t}\n";
+		description += "\t\t}\n";
+		description += "\t}";
+		eventFive.giveDescription(std::move(description));
+	}
+	if (majorIdeologies.count("radical"))
+	{
+		std::string description = "= {\n";
+		description += "\t\ttext = generic.5.d.f\n";
+		description += "\t\ttrigger = {\n";
+		description += "\t\t\tAND = {\n";
+		description += "\t\t\t\tFROM = {\n";
+		description += "\t\t\t\t\thas_government = radical\n";
+		description += "\t\t\t\t}\n";
+		description += "\t\t\t\thas_government = radical\n";
+		description += "\t\t\t}\n";
+		description += "\t\t}\n";
+		description += "\t}";
+		eventFive.giveDescription(std::move(description));
+	}
+	if (majorIdeologies.count("absolutist"))
+	{
+		std::string description = "= {\n";
+		description += "\t\ttext = generic.5.d.g\n";
+		description += "\t\ttrigger = {\n";
+		description += "\t\t\tAND = {\n";
+		description += "\t\t\t\tFROM = {\n";
+		description += "\t\t\t\t\thas_government = absolutist\n";
+		description += "\t\t\t\t}\n";
+		description += "\t\t\t\thas_government = absolutist\n";
+		description += "\t\t\t}\n";
+		description += "\t\t}\n";
+		description += "\t}";
+		eventFive.giveDescription(std::move(description));
+	}
+
+	std::string description = "= {\n";
+	description += "\t\ttext = generic.5.d.e\n";
+	description += "\t\ttrigger = {\n";
+	description += "\t\t\tNOT = {\n";
+	for (const auto& ideology : majorIdeologies)
+	{
+		if (ideology == "neutrality")
+		{
+			continue;
+		}
+		description += "\t\t\t\tAND = {\n";
+		description += "\t\t\t\t\tFROM = {\n";
+		description += "\t\t\t\t\t\thas_government = " + ideology + "\n";
+		description += "\t\t\t\t\t}\n";
+		description += "\t\t\t\t\thas_government = " + ideology + "\n";
+		description += "\t\t\t\t}\n";
+	}
+	description += "\t\t\t}\n";
+	description += "\t\t}\n";
+	description += "\t}";
+	eventFive.giveDescription(std::move(description));
+
+	eventFive.clearOptions();
+	if (majorIdeologies.count("democratic"))
+	{
+		EventOption option;
+		option.giveName("generic.5.a");
+		option.giveTrigger(
+			"is_in_faction = no\n"
+			"\t\t\tAND = {\n"
+			"\t\t\t\tFROM = {\n"
+			"\t\t\t\t\thas_government = democratic\n"
+			"\t\t\t\t}\n"
+			"\t\t\t\thas_government = democratic\n"
+			"\t\t\t}");
+		option.giveAiChance(
+			"= {\n"
+			"\t\t\tbase = 100\n"
+			"\t\t}");
+		option.giveScriptBlock("FROM = {\n"
+			"\t\t\tadd_to_faction = ROOT\n"
+			"\t\t\tcountry_event = { id = generic.6 hours = 6 }\n"
+			"\t\t}"
+		);
+		option.giveScriptBlock("add_ai_strategy = {\n"
+			"\t\t\ttype = alliance\n"
+			"\t\t\tid = FROM\n"
+			"\t\t\tvalue = 200\n"
+			"\t\t}\n"
+		);
+		option.giveHiddenEffect(
+			"= {\n"
+			"\t\t\tset_country_flag = alliance_applicant@ROOT\n"
+			"\t\t\tFROM = { set_country_flag = alliance_inviter@ROOT }\n"
+			"\t\t\tnews_event = { id = news.289 hours = 12 }\n"
+			"\t\t}");
+
+		eventFive.giveOption(std::move(option));
+	}
+	if (majorIdeologies.count("fascism"))
+	{
+		EventOption option;
+		option.giveName("generic.5.b");
+		option.giveTrigger(
+			"is_in_faction = no\n"
+			"\t\t\tAND = {\n"
+			"\t\t\t\tFROM = {\n"
+			"\t\t\t\t\thas_government = fascism\n"
+			"\t\t\t\t}\n"
+			"\t\t\t\thas_government = fascism\n"
+			"\t\t\t}");
+		option.giveAiChance(
+			"= {\n"
+			"\t\t\tbase = 100\n"
+			"\t\t}");
+		option.giveScriptBlock("FROM = {\n"
+			"\t\t\tadd_to_faction = ROOT\n"
+			"\t\t\tcountry_event = { id = generic.6 hours = 6 }\n"
+			"\t\t}"
+		);
+		option.giveScriptBlock("add_ai_strategy = {\n"
+			"\t\t\ttype = alliance\n"
+			"\t\t\tid = FROM\n"
+			"\t\t\tvalue = 200\n"
+			"\t\t}\n"
+		);
+		option.giveHiddenEffect(
+			"= {\n"
+			"\t\t\tset_country_flag = alliance_applicant@ROOT\n"
+			"\t\t\tFROM = { set_country_flag = alliance_inviter@ROOT }\n"
+			"\t\t\tnews_event = { id = news.289 hours = 12 }\n"
+			"\t\t}");
+
+		eventFive.giveOption(std::move(option));
+	}
+	if (majorIdeologies.count("communism"))
+	{
+		EventOption option;
+		option.giveName("generic.5.c");
+		option.giveTrigger(
+			"is_in_faction = no\n"
+			"\t\t\tAND = {\n"
+			"\t\t\t\tFROM = {\n"
+			"\t\t\t\t\thas_government = communism\n"
+			"\t\t\t\t}\n"
+			"\t\t\t\thas_government = communism\n"
+			"\t\t\t}");
+		option.giveAiChance(
+			"= {\n"
+			"\t\t\tbase = 100\n"
+			"\t\t}");
+		option.giveScriptBlock("FROM = {\n"
+			"\t\t\tadd_to_faction = ROOT\n"
+			"\t\t\tcountry_event = { id = generic.6 hours = 6 }\n"
+			"\t\t}"
+		);
+		option.giveScriptBlock("add_ai_strategy = {\n"
+			"\t\t\ttype = alliance\n"
+			"\t\t\tid = FROM\n"
+			"\t\t\tvalue = 200\n"
+			"\t\t\t}\n"
+		);
+		option.giveHiddenEffect(
+			"= {\n"
+			"\t\t\tset_country_flag = alliance_applicant@ROOT\n"
+			"\t\t\tFROM = { set_country_flag = alliance_inviter@ROOT }\n"
+			"\t\t\tnews_event = { id = news.289 hours = 12 }\n"
+			"\t\t}");
+
+		eventFive.giveOption(std::move(option));
+	}
+	if (majorIdeologies.count("radical"))
+	{
+		EventOption option;
+		option.giveName("generic.5.h");
+		option.giveTrigger(
+			"is_in_faction = no\n"
+			"\t\t\tAND = {\n"
+			"\t\t\t\tFROM = {\n"
+			"\t\t\t\t\thas_government = radical\n"
+			"\t\t\t\t}\n"
+			"\t\t\t\thas_government = radical\n"
+			"\t\t\t}");
+		option.giveAiChance(
+			"= {\n"
+			"\t\t\tbase = 100\n"
+			"\t\t}");
+		option.giveScriptBlock("FROM = {\n"
+			"\t\t\tadd_to_faction = ROOT\n"
+			"\t\t\tcountry_event = { id = generic.6 hours = 6 }\n"
+			"\t\t}"
+		);
+		option.giveScriptBlock("add_ai_strategy = {\n"
+			"\t\t\ttype = alliance\n"
+			"\t\t\tid = FROM\n"
+			"\t\t\tvalue = 200\n"
+			"\t\t}\n"
+		);
+		option.giveHiddenEffect(
+			"= {\n"
+			"\t\t\tset_country_flag = alliance_applicant@ROOT\n"
+			"\t\t\tFROM = { set_country_flag = alliance_inviter@ROOT }\n"
+			"\t\t\tnews_event = { id = news.289 hours = 12 }\n"
+			"\t\t}");
+
+		eventFive.giveOption(std::move(option));
+	}
+	if (majorIdeologies.count("absolutist"))
+	{
+		EventOption option;
+		option.giveName("generic.5.i");
+		option.giveTrigger(
+			"is_in_faction = no\n"
+			"\t\t\tAND = {\n"
+			"\t\t\t\tFROM = {\n"
+			"\t\t\t\t\thas_government = absolutist\n"
+			"\t\t\t\t}\n"
+			"\t\t\t\thas_government = absolutist\n"
+			"\t\t\t}");
+		option.giveAiChance(
+			"= {\n"
+			"\t\t\tbase = 100\n"
+			"\t\t}");
+		option.giveScriptBlock("FROM = {\n"
+			"\t\t\tadd_to_faction = ROOT\n"
+			"\t\t\tcountry_event = { id = generic.6 hours = 6 }\n"
+			"\t\t}"
+		);
+		option.giveScriptBlock("add_ai_strategy = {\n"
+			"\t\t\ttype = alliance\n"
+			"\t\t\tid = FROM\n"
+			"\t\t\tvalue = 200\n"
+			"\t\t}\n"
+		);
+		option.giveHiddenEffect(
+			"= {\n"
+			"\t\t\tset_country_flag = alliance_applicant@ROOT\n"
+			"\t\t\tFROM = { set_country_flag = alliance_inviter@ROOT }\n"
+			"\t\t\tnews_event = { id = news.289 hours = 12 }\n"
+			"\t\t}");
+
+		eventFive.giveOption(std::move(option));
+	}
+
+	EventOption bothDifferent;
+	bothDifferent.giveName("generic.5.e");
+	std::string trigger = "is_in_faction = no\n"
+	"\t\t\tNOT = {\n";
+	for (const auto& ideology : majorIdeologies)
+	{
+		if (ideology == "neutrality")
+		{
+			continue;
+		}
+		trigger += "\t\t\t\tAND = {\n";
+		trigger += "\t\t\t\t\tFROM = {\n";
+		trigger += "\t\t\t\t\t\thas_government = " + ideology + "\n";
+		trigger += "\t\t\t\t\t}\n";
+		trigger += "\t\t\t\t\thas_government = " + ideology + "\n";
+		trigger += "\t\t\t\t}\n";
+	}
+	trigger += "\t\t\t}";
+	bothDifferent.giveTrigger(std::move(trigger));
+	bothDifferent.giveAiChance(
+		"= {\n"
+		"\t\t\tbase = 100\n"
+		"\t\t\tmodifier = {\n"
+		"\t\t\t\tfactor = 0.5\n"
+		"\t\t\t\thas_war = no\n"
+		"\t\t\t\tFROM = {\n"
+		"\t\t\t\t\thas_war = yes\n"
+		"\t\t\t\t}\n"
+		"\t\t\t}\n"
+		"\t\t\tmodifier = {\n"
+		"\t\t\t\tfactor = 0.5\n"
+		"\t\t\t\tNOT = {\n"
+		"\t\t\t\t\thas_government = neutrality\n"
+		"\t\t\t\t}\n"
+		"\t\t\t}\n"
+		"\t\t\tmodifier = {\n"
+		"\t\t\t\tfactor = 0.75\n"
+		"\t\t\t\tFROM = {\n"
+		"\t\t\t\t\tis_major = no\n"
+		"\t\t\t\t}\n"
+		"\t\t\t}\n"
+		"\t\t}");
+	bothDifferent.giveScriptBlock("FROM = {\n"
+		"\t\t\tadd_to_faction = ROOT\n"
+		"\t\t\tcountry_event = { id = generic.6 hours = 6 } }\n"
+	"\t\t}"
+	);
+	bothDifferent.giveHiddenEffect(
+		"= {\n"
+		"\t\t\tset_country_flag = alliance_applicant@ROOT\n"
+		"\t\t\tFROM = { set_country_flag = alliance_inviter@ROOT }\n"
+		"\t\t\tnews_event = { id = news.289 hours = 12 }\n"
+		"\t\t}");
+	bothDifferent.giveScriptBlock(
+		"add_ai_strategy = {\n"
+		"\t\t\ttype = alliance\n"
+		"\t\t\tid = FROM\n"
+		"\t\t\tvalue = 200\n"
+		"\t\t}");
+	eventFive.giveOption(std::move(bothDifferent));
+
+	EventOption reject;
+	reject.giveName("generic.2.f");
+	reject.giveAiChance(
+		"= {\n"
+		"\t\t\tfactor = 50\n"
+		"\t\t\tmodifier = {\n"
+		"\t\t\t\tfactor = 0.5\n"
+		"\t\t\t\thas_opinion = {\n"
+		"\t\t\t\t\ttarget = FROM\n"
+		"\t\t\t\t\tvalue > 65\n"
+		"\t\t\t\t}\n"
+		"\t\t\t}\n"
+		"\t\t\tmodifier = {\n"
+		"\t\t\t\tfactor = 0.5\n"
+		"\t\t\t\thas_opinion = {\n"
+		"\t\t\t\t\ttarget = FROM\n"
+		"\t\t\t\t\tvalue > 35\n"
+		"\t\t\t\t}\n"
+		"\t\t\t}\n"
+		"\t\t\tmodifier = {\n"
+		"\t\t\t\tfactor = 0.5\n"
+		"\t\t\t\thas_opinion = {\n"
+		"\t\t\t\t\ttarget = FROM\n"
+		"\t\t\t\t\tvalue > 5\n"
+		"\t\t\t\t}\n"
+		"\t\t\t}\n"
+		"\t\t\tmodifier = {\n"
+		"\t\t\t\tfactor = 2.0\n"
+		"\t\t\t\thas_opinion = {\n"
+		"\t\t\t\t\ttarget = FROM\n"
+		"\t\t\t\t\tvalue < 35\n"
+		"\t\t\t\t}\n"
+		"\t\t\t}\n"
+		"\t\t\tmodifier = {\n"
+		"\t\t\t\tfactor = 2.0\n"
+		"\t\t\t\thas_opinion = {\n"
+		"\t\t\t\t\ttarget = FROM\n"
+		"\t\t\t\t\tvalue < 65\n"
+		"\t\t\t\t}\n"
+		"\t\t\t}\n"
+		"\t\t\tmodifier = {\n"
+		"\t\t\t\tfactor = 0.1\n"
+		"\t\t\t\thas_war = yes\n"
+		"\t\t\t\tFROM = {\n"
+		"\t\t\t\t\thas_war = no\n"
+		"\t\t\t\t}\n"
+		"\t\t\t}\n"
+		"\t\t\tmodifier = {\n"
+		"\t\t\t\tfactor = 0.1\n"
+		"\t\t\t\tFROM = {\n"
+		"\t\t\t\t\tis_major = yes\n"
+		"\t\t\t\t}\n"
+		"\t\t\t}\n"
+		"\t\t}");
+	reject.giveScriptBlock(
+		"FROM = {\n"
+		"\t\t\tcountry_event = { id = generic.7 hours = 6 }\n"
+		"\t\t}");
+	reject.giveTrigger("is_in_faction = no");
+	eventFive.giveOption(std::move(reject));
+
+	EventOption rejectIfInFaction;
+	rejectIfInFaction.giveName("generic.2.g");
+	rejectIfInFaction.giveScriptBlock(
+		"FROM = {\n"
+		"\t\t\tcountry_event = { id = generic.7 hours = 6 }\n"
+		"\t\t}");
+	rejectIfInFaction.giveTrigger("is_in_faction = yes");
+	eventFive.giveOption(std::move(rejectIfInFaction));
 }
