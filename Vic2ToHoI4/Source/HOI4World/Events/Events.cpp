@@ -6,10 +6,10 @@
 #include "../HoI4Localisation.h"
 #include "../OnActions.h"
 #include "EventsFile.h"
+#include "GenericEventUpdaters.h"
 #include "Log.h"
 #include "ParserHelpers.h"
 #include <fstream>
-#include "GenericEventUpdaters.h"
 
 
 
