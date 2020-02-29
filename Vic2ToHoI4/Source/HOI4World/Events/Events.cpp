@@ -1448,5 +1448,9 @@ void HoI4::Events::generateGenericEvents(const Configuration& theConfiguration,
 		{
 			updateGenericEventsThreeFourAndSix(genericEvent, 3, majorIdeologies);
 		}
+		else if (genericEvent.getId() == "generic.7")
+		{
+			updateGenericEventSeven(genericEvent, majorIdeologies);
+		}
 	}
 }

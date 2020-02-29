@@ -887,3 +887,100 @@ void HoI4::updateGenericEventFive(Event& eventFive, const std::set<std::string>&
 	rejectIfInFaction.giveTrigger("is_in_faction = yes");
 	eventFive.giveOption(std::move(rejectIfInFaction));
 }
+
+
+void HoI4::updateGenericEventSeven(Event& event, const std::set<std::string>& majorIdeologies)
+{
+	event.clearOptions();
+	if (majorIdeologies.count("democratic"))
+	{
+		EventOption option;
+		option.giveName("generic.7.a");
+		option.giveTrigger(
+			"AND = {\n"
+			"\t\t\t\tFROM = {\n"
+			"\t\t\t\t\thas_government = democratic\n"
+			"\t\t\t\t}\n"
+			"\t\t\t\thas_government = democratic\n"
+			"\t\t\t}");
+
+		event.giveOption(std::move(option));
+	}
+	if (majorIdeologies.count("fascism"))
+	{
+		EventOption option;
+		option.giveName("generic.4.b");
+		option.giveTrigger(
+			"AND = {\n"
+			"\t\t\t\tFROM = {\n"
+			"\t\t\t\t\thas_government = fascism\n"
+			"\t\t\t\t}\n"
+			"\t\t\t\thas_government = fascism\n"
+			"\t\t\t}");
+
+		event.giveOption(std::move(option));
+	}
+	if (majorIdeologies.count("communism"))
+	{
+		EventOption option;
+		option.giveName("generic.4.c");
+		option.giveTrigger(
+			"AND = {\n"
+			"\t\t\t\tFROM = {\n"
+			"\t\t\t\t\thas_government = communism\n"
+			"\t\t\t\t}\n"
+			"\t\t\t\thas_government = communism\n"
+			"\t\t\t}");
+
+		event.giveOption(std::move(option));
+	}
+	if (majorIdeologies.count("radical"))
+	{
+		EventOption option;
+		option.giveName("generic.4.f");
+		option.giveTrigger(
+			"AND = {\n"
+			"\t\t\t\tFROM = {\n"
+			"\t\t\t\t\thas_government = radical\n"
+			"\t\t\t\t}\n"
+			"\t\t\t\thas_government = radical\n"
+			"\t\t\t}");
+
+		event.giveOption(std::move(option));
+	}
+	if (majorIdeologies.count("absolutist"))
+	{
+		EventOption option;
+		option.giveName("generic.4.g");
+		option.giveTrigger(
+			"AND = {\n"
+			"\t\t\t\tFROM = {\n"
+			"\t\t\t\t\thas_government = absolutist\n"
+			"\t\t\t\t}\n"
+			"\t\t\t\thas_government = absolutist\n"
+			"\t\t\t}");
+
+		event.giveOption(std::move(option));
+	}
+
+	EventOption option;
+	option.giveName("generic.4.e");
+	std::string trigger = "NOT = {\n";
+	for (const auto& ideology : majorIdeologies)
+	{
+		if (ideology == "neutrality")
+		{
+			continue;
+		}
+		trigger +=
+			"\t\t\t\tAND = {\n"
+			"\t\t\t\t\tFROM = {\n"
+			"\t\t\t\t\t\thas_government = " + ideology + "\n"
+			"\t\t\t\t\t}\n"
+			"\t\t\t\t\thas_government = " + ideology + "\n"
+			"\t\t\t\t}\n";
+	}
+	option.giveTrigger(std::move(trigger));
+
+	event.giveOption(std::move(option));
+}
