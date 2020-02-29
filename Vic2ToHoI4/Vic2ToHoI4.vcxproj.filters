@@ -612,6 +612,12 @@
     <ClCompile Include="Source\Hoi4Outputter\outDifficultySettings.cpp">
       <Filter>Hoi4Outputter</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Events\EventsFile.cpp">
+      <Filter>HoI4World\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Events\GenericEventUpdater.cpp">
+      <Filter>HoI4World\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1158,6 +1164,12 @@
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\outDifficultySettings.h">
       <Filter>Hoi4Outputter</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Events\EventsFile.h">
+      <Filter>HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Events\GenericEventUpdaters.h">
+      <Filter>HoI4World\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

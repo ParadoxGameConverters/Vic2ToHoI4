@@ -716,6 +716,15 @@
     <ClCompile Include="HoI4WorldTests\ScriptedTriggers\ScriptedTriggerTests.cpp">
       <Filter>HoI4WorldTests\ScriptedTriggers</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Events\EventsFileTests.cpp">
+      <Filter>HoI4WorldTests\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventsFile.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\GenericEventUpdater.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

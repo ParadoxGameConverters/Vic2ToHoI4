@@ -5,8 +5,11 @@
 #include "../HoI4Country.h"
 #include "../HoI4Localisation.h"
 #include "../OnActions.h"
+#include "EventsFile.h"
+#include "GenericEventUpdaters.h"
 #include "Log.h"
 #include "ParserHelpers.h"
+#include <fstream>
 
 
 
@@ -1401,5 +1404,57 @@ std::optional<int> HoI4::Events::getEventNumber(const std::string& eventName) co
 	else
 	{
 		return std::nullopt;
+	}
+}
+
+
+void HoI4::Events::generateGenericEvents(const Configuration& theConfiguration,
+	 const std::set<std::string>& majorIdeologies)
+{
+	std::ifstream genericEventsFileStream(theConfiguration.getHoI4Path() + "/events/Generic.txt");
+	if (!genericEventsFileStream.is_open())
+	{
+		throw std::runtime_error("Could not open " + theConfiguration.getHoI4Path() + "/events/Generic.txt");
+	}
+
+	EventsFile genericEventsFile(genericEventsFileStream);
+	genericEvents = genericEventsFile.takeEvents();
+
+	genericEventsFileStream.close();
+
+	for (auto& genericEvent: genericEvents)
+	{
+		if (genericEvent.getId() == "generic.1")
+		{
+			updateGenericEventOne(genericEvent);
+		}
+		else if (genericEvent.getId() == "generic.2")
+		{
+			updateGenericEventTwo(genericEvent, majorIdeologies);
+		}
+		else if (genericEvent.getId() == "generic.3")
+		{
+			updateGenericEventsThreeFourAndSix(genericEvent, 3, majorIdeologies);
+		}
+		else if (genericEvent.getId() == "generic.4")
+		{
+			updateGenericEventsThreeFourAndSix(genericEvent, 4, majorIdeologies);
+		}
+		else if (genericEvent.getId() == "generic.5")
+		{
+			updateGenericEventFive(genericEvent, majorIdeologies);
+		}
+		else if (genericEvent.getId() == "generic.6")
+		{
+			updateGenericEventsThreeFourAndSix(genericEvent, 3, majorIdeologies);
+		}
+		else if (genericEvent.getId() == "generic.7")
+		{
+			updateGenericEventSeven(genericEvent, majorIdeologies);
+		}
+		else if (genericEvent.getId() == "generic.14")
+		{
+			updateGenericEventFourteen(genericEvent, majorIdeologies);
+		}
 	}
 }

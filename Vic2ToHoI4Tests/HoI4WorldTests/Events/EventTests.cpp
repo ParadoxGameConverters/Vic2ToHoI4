@@ -141,6 +141,27 @@ TEST(HoI4World_Events_EventTests, DescriptionsDefaultToEmpty)
 }
 
 
+TEST(HoI4World_Events_EventTests, DescriptionsCanBeCleared)
+{
+	HoI4::Event theEvent;
+	theEvent.giveDescription("= \"description one\"");
+	theEvent.clearDescriptions();
+
+	std::stringstream actualOutput;
+	actualOutput << theEvent;
+
+	std::string expectedOutput;
+	expectedOutput += " = {\n";
+	expectedOutput += "\tid = \n";
+	expectedOutput += "\ttitle = \n";
+	expectedOutput += "\tpicture = \n";
+	expectedOutput += "\n";
+	expectedOutput += "}\n";
+
+	ASSERT_EQ(actualOutput.str(), expectedOutput);
+}
+
+
 TEST(HoI4World_Events_EventTests, DescriptionsCanBeGiven)
 {
 	HoI4::Event theEvent;
