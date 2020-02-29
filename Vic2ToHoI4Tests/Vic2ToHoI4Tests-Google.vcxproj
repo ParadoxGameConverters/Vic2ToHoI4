@@ -115,6 +115,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventOption.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventsFile.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\GenericEventUpdater.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Airforce.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Army.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Country.cpp" />

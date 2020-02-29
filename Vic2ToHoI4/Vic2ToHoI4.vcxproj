@@ -250,6 +250,7 @@
     <ClCompile Include="Source\HOI4World\Events\EventOption.cpp" />
     <ClCompile Include="Source\HOI4World\Events\Events.cpp" />
     <ClCompile Include="Source\HOI4World\Events\EventsFile.cpp" />
+    <ClCompile Include="Source\HOI4World\Events\GenericEventUpdater.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Airforce.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Army.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Country.cpp" />
@@ -426,6 +427,7 @@
     <ClInclude Include="Source\HOI4World\Events\EventOption.h" />
     <ClInclude Include="Source\HOI4World\Events\Events.h" />
     <ClInclude Include="Source\HOI4World\Events\EventsFile.h" />
+    <ClInclude Include="Source\HOI4World\Events\GenericEventUpdaters.h" />
     <ClInclude Include="Source\HOI4World\HoI4Airforce.h" />
     <ClInclude Include="Source\HOI4World\HoI4Army.h" />
     <ClInclude Include="Source\HOI4World\HoI4Country.h" />
