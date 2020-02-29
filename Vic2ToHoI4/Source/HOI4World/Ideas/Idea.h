@@ -2,6 +2,7 @@
 #define HOI4_IDEA_H
 
 
+
 #include "newParser.h"
 
 
@@ -46,8 +47,6 @@ class Idea: commonItems::parser
 		bool isDefault = false;
 		std::optional<bool> cancelIfInvalid;
 };
-
-std::ostream& operator<<(std::ostream& outStream, const HoI4::Idea& outIdea);
 
 }
 

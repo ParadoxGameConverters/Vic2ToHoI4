@@ -38,6 +38,7 @@
 #include "../Hoi4Outputter/Decisions/DecisionsOutputter.h"
 #include "../Hoi4Outputter/Diplomacy/OutAiPeaces.h"
 #include "../Hoi4Outputter/Events/EventsOutputter.h"
+#include "../Hoi4Outputter/Ideas/OutIdeas.h"
 #include "../Hoi4Outputter/Map/OutBuildings.h"
 #include "../Hoi4Outputter/Map/OutStrategicRegion.h"
 #include "../Hoi4Outputter/Map/OutSupplyZones.h"
@@ -1064,7 +1065,7 @@ void HoI4::World::output()
 	outAiPeaces(*peaces, majorIdeologies, theConfiguration);
 	outputIdeologies();
 	outputLeaderTraits();
-	outputIdeas();
+	outIdeas(*theIdeas, majorIdeologies, theConfiguration);
 	outputBookmarks();
 	outputScriptedLocalisations(theConfiguration, scriptedLocalisations);
 	outputScriptedTriggers(scriptedTriggers, theConfiguration);
@@ -1387,12 +1388,6 @@ void HoI4::World::outputLeaderTraits() const
 	}
 	traitsFile << "}";
 	traitsFile.close();
-}
-
-
-void HoI4::World::outputIdeas() const
-{
-	theIdeas->output(majorIdeologies);
 }
 
 

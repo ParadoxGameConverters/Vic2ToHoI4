@@ -201,6 +201,9 @@
     <ClCompile Include="Source\Hoi4Outputter\Events\EventOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Events\EventsOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Hoi4CountryOutputter.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdea.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdeaGroup.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdeas.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Leaders\OutAdmiral.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Leaders\OutAdvisor.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Leaders\OutGeneral.cpp" />
@@ -378,6 +381,9 @@
     <ClInclude Include="Source\Hoi4Outputter\Events\EventOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Events\EventsOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Hoi4CountryOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdea.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdeaGroup.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdeas.h" />
     <ClInclude Include="Source\Hoi4Outputter\Leaders\OutAdvisor.h" />
     <ClInclude Include="Source\Hoi4Outputter\Map\OutBuilding.h" />
     <ClInclude Include="Source\Hoi4Outputter\Map\OutBuildings.h" />

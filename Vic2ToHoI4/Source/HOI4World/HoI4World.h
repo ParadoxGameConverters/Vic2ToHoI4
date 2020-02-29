@@ -180,7 +180,6 @@ class World: commonItems::parser
 		void outputRelations() const;
 		void outputIdeologies() const;
 		void outputLeaderTraits() const;
-		void outputIdeas() const;
 		void outputBookmarks() const;
 
 		std::optional<std::pair<std::string, std::string>> getStrongestNavyGps();

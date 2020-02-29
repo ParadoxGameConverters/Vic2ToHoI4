@@ -1,6 +1,5 @@
 #include "Ideas.h"
 #include "IdeaGroup.h"
-#include "../../Configuration.h"
 #include <fstream>
 
 
@@ -247,76 +246,4 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 		indoctrinationFocus->setAllowedCivilWar(allowedCivilWar);
 		(*foundGroup)->replaceIdea(*indoctrinationFocus);
 	}
-}
-
-
-void HoI4::Ideas::output(const std::set<std::string>& majorIdeologies) const
-{
-	outputIdeologicalIdeas(majorIdeologies);
-	outputGeneralIdeas();
-}
-
-
-void HoI4::Ideas::outputIdeologicalIdeas(const std::set<std::string>& majorIdeologies) const
-{
-	std::ofstream ideasFile("output/" + theConfiguration.getOutputName() + "/common/ideas/convertedIdeas.txt");
-	ideasFile << "ideas = {\n";
-	ideasFile << "\tcountry = {\n";
-	for (auto majorIdeology: majorIdeologies)
-	{
-		auto ideologicalIdea = ideologicalIdeas.find(majorIdeology);
-		if (ideologicalIdea != ideologicalIdeas.end())
-		{
-			for (auto idea: ideologicalIdea->second.getIdeas())
-			{
-				ideasFile << idea;
-				ideasFile << "\n";
-			}
-		}
-	}
-	ideasFile << "\t}\n";
-	ideasFile << "}";
-	ideasFile.close();
-}
-
-
-void HoI4::Ideas::outputGeneralIdeas() const
-{
-	auto manpowerFile = openIdeaFile("output/" + theConfiguration.getOutputName() + "/common/ideas/_manpower.txt");
-	auto economicFile = openIdeaFile("output/" + theConfiguration.getOutputName() + "/common/ideas/_economic.txt");
-	auto genericFile = openIdeaFile("output/" + theConfiguration.getOutputName() + "/common/ideas/zzz_generic.txt");
-
-	std::for_each(generalIdeas.begin(), generalIdeas.end(), [&manpowerFile, &economicFile, &genericFile](auto& theGroup){
-		if (theGroup->getName() == "mobilization_laws")
-		{
-			manpowerFile << *theGroup;
-		}
-		else if ((theGroup->getName() == "economy") || (theGroup->getName() == "trade_laws"))
-		{
-			economicFile << *theGroup;
-		}
-		else
-		{
-			genericFile << *theGroup;
-		}
-	});
-
-	closeIdeaFile(manpowerFile);
-	closeIdeaFile(economicFile);
-	closeIdeaFile(genericFile);
-}
-
-
-std::ofstream HoI4::Ideas::openIdeaFile(const std::string& fileName) const
-{
-	std::ofstream theFile(fileName);
-	theFile << "ideas = {\n";
-	return theFile;
-}
-
-
-void HoI4::Ideas::closeIdeaFile(std::ofstream& fileStream) const
-{
-	fileStream << "}";
-	fileStream.close();
 }

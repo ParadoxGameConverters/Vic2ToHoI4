@@ -716,6 +716,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\Ideas.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Ideas</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdea.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdeaGroup.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdeas.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Ideas</Filter>
+    </ClCompile>
     <ClCompile Include="HoI4WorldTests\Events\EventsFileTests.cpp">
       <Filter>HoI4WorldTests\Events</Filter>
     </ClCompile>
@@ -873,6 +882,12 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\Ideas">
       <UniqueIdentifier>{84ba41fe-0357-4dfc-8dfd-e477561d8f4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\Ideas">
+      <UniqueIdentifier>{9bf70b07-a865-4ec0-b5ee-42a2b7acd854}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Ideas">
+      <UniqueIdentifier>{a1c58a1d-d1e4-4c60-9702-bf9c1c7e59b0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

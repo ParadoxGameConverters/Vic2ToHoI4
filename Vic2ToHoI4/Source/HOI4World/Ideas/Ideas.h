@@ -2,6 +2,7 @@
 #define HOI4_IDEAS_H
 
 
+
 #include "IdeaGroup.h"
 #include "newParser.h"
 #include <map>
@@ -22,17 +23,12 @@ class Ideas: commonItems::parser
 
 		void updateIdeas(const std::set<std::string>& majorIdeologies);
 
-		void output(const std::set<std::string>& majorIdeologies) const;
+		const auto& getIdeologicalIdeas() const { return ideologicalIdeas; }
+		const auto& getGeneralIdeas() const { return generalIdeas; }
 
 	private:
 		void importIdeologicalIdeas();
 		void importGeneralIdeas();
-
-		void outputIdeologicalIdeas(const std::set<std::string>& majorIdeologies) const;
-		void outputGeneralIdeas() const;
-
-		std::ofstream openIdeaFile(const std::string& fileName) const;
-		void closeIdeaFile(std::ofstream& fileStream) const;
 
 		std::map<std::string, IdeaGroup> ideologicalIdeas;
 		std::vector<std::unique_ptr<IdeaGroup>> generalIdeas;
