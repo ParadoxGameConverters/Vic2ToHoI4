@@ -3,7 +3,7 @@
 
 
 
-std::ostream& HoI4::operator<<(std::ostream& outStream, const HoI4::Idea& outIdea)
+std::ostream& HoI4::operator<<(std::ostream& outStream, const Idea& outIdea)
 {
 	outStream << "\t\t" << outIdea.name << " = {\n";
 	if (!outIdea.altName.empty())
@@ -12,15 +12,15 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const HoI4::Idea& outIde
 	}
 	if (outIdea.cost)
 	{
-		outStream << "\t\t\tcost = " << *(outIdea.cost) << "\n";
+		outStream << "\t\t\tcost = " << *outIdea.cost << "\n";
 	}
 	if (outIdea.removalCost)
 	{
-		outStream << "\t\t\tremoval_cost = " << *(outIdea.removalCost) << "\n";
+		outStream << "\t\t\tremoval_cost = " << *outIdea.removalCost << "\n";
 	}
 	if (outIdea.level)
 	{
-		outStream << "\t\t\tlevel = " << *(outIdea.level) << "\n";
+		outStream << "\t\t\tlevel = " << *outIdea.level << "\n";
 	}
 	if (!outIdea.allowed.empty())
 	{
