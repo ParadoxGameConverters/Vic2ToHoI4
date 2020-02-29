@@ -68,7 +68,7 @@ class Events: commonItems::parser
 
 	void updateGenericEventOne(Event& eventOne) const;
 	void updateGenericEventTwo(Event& eventTwo, const std::set<std::string>& majorIdeologies) const;
-	void updateGenericEventThree(Event& eventThree, const std::set<std::string>& majorIdeologies) const;
+	void updateGenericEventsThreeAndFour(Event& event, int eventNum, const std::set<std::string>& majorIdeologies) const;
 
 	std::vector<Event> newsEvents;
 	int newsEventNumber = 237;

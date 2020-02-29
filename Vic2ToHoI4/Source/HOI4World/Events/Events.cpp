@@ -1433,7 +1433,11 @@ void HoI4::Events::generateGenericEvents(const Configuration& theConfiguration,
 		}
 		else if (genericEvent.getId() == "generic.3")
 		{
-			updateGenericEventThree(genericEvent, majorIdeologies);
+			updateGenericEventsThreeAndFour(genericEvent, 3, majorIdeologies);
+		}
+		else if (genericEvent.getId() == "generic.4")
+		{
+			updateGenericEventsThreeAndFour(genericEvent, 4, majorIdeologies);
 		}
 	}
 }
@@ -1810,13 +1814,13 @@ void HoI4::Events::updateGenericEventTwo(Event& eventTwo, const std::set<std::st
 }
 
 
-void HoI4::Events::updateGenericEventThree(Event& eventThree, const std::set<std::string>& majorIdeologies) const
+void HoI4::Events::updateGenericEventsThreeAndFour(Event& event, int eventNum, const std::set<std::string>& majorIdeologies) const
 {
-	eventThree.clearOptions();
+	event.clearOptions();
 	if (majorIdeologies.count("democratic"))
 	{
 		EventOption option;
-		option.giveName("generic.3.a");
+		option.giveName("generic." + std::to_string(eventNum) + ".a");
 		option.giveTrigger(
 			 "AND = {\n"
 			 "\t\t\t\tFROM = {\n"
@@ -1825,12 +1829,12 @@ void HoI4::Events::updateGenericEventThree(Event& eventThree, const std::set<std
 			 "\t\t\t\thas_government = democratic\n"
 			 "\t\t\t}");
 
-		eventThree.giveOption(std::move(option));
+		event.giveOption(std::move(option));
 	}
 	if (majorIdeologies.count("fascism"))
 	{
 		EventOption option;
-		option.giveName("generic.3.b");
+		option.giveName("generic." + std::to_string(eventNum) + ".b");
 		option.giveTrigger(
 			 "AND = {\n"
 			 "\t\t\t\tFROM = {\n"
@@ -1839,12 +1843,12 @@ void HoI4::Events::updateGenericEventThree(Event& eventThree, const std::set<std
 			 "\t\t\t\thas_government = fascism\n"
 			 "\t\t\t}");
 
-		eventThree.giveOption(std::move(option));
+		event.giveOption(std::move(option));
 	}
 	if (majorIdeologies.count("communism"))
 	{
 		EventOption option;
-		option.giveName("generic.3.c");
+		option.giveName("generic." + std::to_string(eventNum) + ".c");
 		option.giveTrigger(
 			 "AND = {\n"
 			 "\t\t\t\tFROM = {\n"
@@ -1853,12 +1857,12 @@ void HoI4::Events::updateGenericEventThree(Event& eventThree, const std::set<std
 			 "\t\t\t\thas_government = communism\n"
 			 "\t\t\t}");
 
-		eventThree.giveOption(std::move(option));
+		event.giveOption(std::move(option));
 	}
 	if (majorIdeologies.count("radical"))
 	{
 		EventOption option;
-		option.giveName("generic.3.f");
+		option.giveName("generic." + std::to_string(eventNum) + ".f");
 		option.giveTrigger(
 			 "AND = {\n"
 			 "\t\t\t\tFROM = {\n"
@@ -1867,12 +1871,12 @@ void HoI4::Events::updateGenericEventThree(Event& eventThree, const std::set<std
 			 "\t\t\t\thas_government = radical\n"
 			 "\t\t\t}");
 
-		eventThree.giveOption(std::move(option));
+		event.giveOption(std::move(option));
 	}
 	if (majorIdeologies.count("absolutist"))
 	{
 		EventOption option;
-		option.giveName("generic.3.g");
+		option.giveName("generic." + std::to_string(eventNum) + ".g");
 		option.giveTrigger(
 			 "AND = {\n"
 			 "\t\t\t\tFROM = {\n"
@@ -1881,11 +1885,11 @@ void HoI4::Events::updateGenericEventThree(Event& eventThree, const std::set<std
 			 "\t\t\t\thas_government = absolutist\n"
 			 "\t\t\t}");
 
-		eventThree.giveOption(std::move(option));
+		event.giveOption(std::move(option));
 	}
 
 	EventOption option;
-	option.giveName("generic.3.e");
+	option.giveName("generic." + std::to_string(eventNum) + ".e");
 	std::string trigger = "NOT = {\n";
 	for (const auto& ideology: majorIdeologies)
 	{
@@ -1903,5 +1907,5 @@ void HoI4::Events::updateGenericEventThree(Event& eventThree, const std::set<std
 	}
 	option.giveTrigger(std::move(trigger));
 
-	eventThree.giveOption(std::move(option));
+	event.giveOption(std::move(option));
 }
