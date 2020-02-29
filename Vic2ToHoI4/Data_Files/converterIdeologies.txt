@@ -5,6 +5,9 @@ ideologies = {
 		
 			minarchism = {
 			}
+			
+			anarchist_communism = {
+			}
 		}
 		
 		dynamic_faction_names = {
@@ -27,9 +30,11 @@ ideologies = {
 			can_force_government = no
 			can_send_volunteers = yes
 			can_puppet = no
-			can_only_justify_war_on_threat_country = yes
-			can_guarantee_other_ideologies = no
+			can_only_justify_war_on_threat_country = no
+			can_guarantee_other_ideologies = yes
 		}
+		
+		can_collaborate = no
 		
 		modifiers = {
 			generate_wargoal_tension = 1.00
@@ -39,6 +44,11 @@ ideologies = {
 			guarantee_tension = 0.25
 			take_states_cost_factor = 0.25
 			annex_cost_factor = 0.5
+			civilian_intel_to_others = 10.0
+			army_intel_to_others = 7.5
+			navy_intel_to_others = 12.5
+			airforce_intel_to_others = 7.5
+			hidden_modifier = { join_faction_tension = -0.1 }
 		}
 		
 		faction_modifiers = {
@@ -78,14 +88,19 @@ ideologies = {
 		faction_impact_on_world_tension = 1.0
 		
 		rules = {
-			can_force_government = no
+			can_force_government = yes #Install Kingdoms
 			can_send_volunteers = yes
 			can_puppet = yes
 		}
 		
+		can_collaborate = yes
+		
 		modifiers = {
-				join_faction_tension = 0.20
 			justify_war_goal_when_in_major_war_time = -0.80
+			army_intel_to_others = 10.0
+			navy_intel_to_others = 10.0
+			airforce_intel_to_others = 10.0
+			hidden_modifier = { join_faction_tension = -0.1 }
 		}
 
 		ai_fascist = yes # uses the fascist AI behaviour
@@ -149,6 +164,9 @@ ideologies = {
 			can_send_volunteers = no
 		}
 		
+		can_collaborate = yes
+		can_be_boosted = no
+		
 		modifiers = {
 			#increased_influence_factor = 0.3 #30% easier to influence
 			generate_wargoal_tension = 0.5
@@ -157,13 +175,14 @@ ideologies = {
 			send_volunteers_tension = 0.4
 			guarantee_tension = 0.4
 			drift_defence_factor = -0.3	
+			civilian_intel_to_others = 20.0
+			army_intel_to_others = 10.0
+			navy_intel_to_others = 20.0
+			airforce_intel_to_others = 10.0
 		}
 		
 		faction_modifiers = {
 		}
-
-		can_be_boosted = no
-		can_collaborate = yes
 
 		ai_neutral = yes # 
 	}
