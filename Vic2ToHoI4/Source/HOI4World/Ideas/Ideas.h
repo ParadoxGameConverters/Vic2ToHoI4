@@ -17,23 +17,23 @@ namespace HoI4
 
 class Ideas: commonItems::parser
 {
-	public:
-		Ideas() noexcept;
+  public:
+	Ideas() noexcept;
 
-		void updateIdeas(const std::set<std::string>& majorIdeologies);
+	void updateIdeas(const std::set<std::string>& majorIdeologies);
 
-		[[nodiscard]] const auto& getIdeologicalIdeas() const { return ideologicalIdeas; }
-		[[nodiscard]] const auto& getGeneralIdeas() const { return generalIdeas; }
+	[[nodiscard]] const auto& getIdeologicalIdeas() const { return ideologicalIdeas; }
+	[[nodiscard]] const auto& getGeneralIdeas() const { return generalIdeas; }
 
-	private:
-		void importIdeologicalIdeas();
-		void importGeneralIdeas();
+  private:
+	void importIdeologicalIdeas();
+	void importGeneralIdeas();
 
-		std::map<std::string, IdeaGroup> ideologicalIdeas;
-		std::vector<IdeaGroup> generalIdeas;
+	std::map<std::string, IdeaGroup> ideologicalIdeas;
+	std::vector<IdeaGroup> generalIdeas;
 };
 
-}
+} // namespace HoI4
 
 
 

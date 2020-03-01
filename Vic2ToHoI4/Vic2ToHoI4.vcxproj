@@ -266,6 +266,7 @@
     <ClCompile Include="Source\HOI4World\Ideas\Idea.cpp" />
     <ClCompile Include="Source\HOI4World\Ideas\IdeaGroup.cpp" />
     <ClCompile Include="Source\HOI4World\Ideas\Ideas.cpp" />
+    <ClCompile Include="Source\HOI4World\Ideas\IdeaUpdaters.cpp" />
     <ClCompile Include="Source\HOI4World\IdeologyFile.cpp" />
     <ClCompile Include="Source\HOI4World\Leaders\Admiral.cpp" />
     <ClCompile Include="Source\HOI4World\Leaders\Advisor.cpp" />
@@ -446,6 +447,7 @@
     <ClInclude Include="Source\HOI4World\Ideas\Idea.h" />
     <ClInclude Include="Source\HOI4World\Ideas\IdeaGroup.h" />
     <ClInclude Include="Source\HOI4World\Ideas\Ideas.h" />
+    <ClInclude Include="Source\HOI4World\Ideas\IdeaUpdaters.h" />
     <ClInclude Include="Source\HOI4World\IdeologyFile.h" />
     <ClInclude Include="Source\HOI4World\Leaders\Admiral.h" />
     <ClInclude Include="Source\HOI4World\Leaders\Advisor.h" />
