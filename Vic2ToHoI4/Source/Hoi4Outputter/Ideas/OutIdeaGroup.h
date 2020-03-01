@@ -12,9 +12,9 @@ namespace HoI4
 
 class IdeaGroup;
 
-std::ostream& operator<<(std::ostream& outStream, const HoI4::IdeaGroup& outIdeaGroup);
+std::ostream& operator<<(std::ostream& outStream, const IdeaGroup& outIdeaGroup);
 
-}
+} // namespace HoI4
 
 
 

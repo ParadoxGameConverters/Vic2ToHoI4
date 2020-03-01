@@ -3,23 +3,23 @@
 
 
 
-std::ostream& HoI4::operator<<(std::ostream& outStream, const HoI4::IdeaGroup& outIdeaGroup)
+std::ostream& HoI4::operator<<(std::ostream& outStream, const IdeaGroup& outIdeaGroup)
 {
-	outStream << "	" << outIdeaGroup.name << " = {\n";
+	outStream << "\t" << outIdeaGroup.name << " = {\n";
 	if (outIdeaGroup.law)
 	{
-		outStream << "		law = yes\n";
+		outStream << "\t\tlaw = yes\n";
 	}
 	if (outIdeaGroup.designer)
 	{
-		outStream << "		designer = yes\n";
+		outStream << "\t\tdesigner = yes\n";
 	}
-	for (auto idea : outIdeaGroup.ideas)
+	for (const auto& idea: outIdeaGroup.ideas)
 	{
 		outStream << "\n";
 		outStream << idea;
 	}
-	outStream << "	}\n";
+	outStream << "\t}\n";
 
 	return outStream;
 }
