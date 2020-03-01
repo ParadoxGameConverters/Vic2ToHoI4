@@ -1133,9 +1133,18 @@ void HoI4::Events::importElectionEvents(const std::set<std::string>& majorIdeolo
 	parseFile("blankmod/output/events/ElectionEvents.txt");
 	clearRegisteredKeywords();
 
-	if (majorIdeologies.count("democratic") > 0)
+	if (majorIdeologies.count("democratic"))
 	{
 		onActions.addElectionEvent("election.3");
+	}
+	else
+	{
+		electionEvents.erase(std::remove_if(electionEvents.begin(),
+										 electionEvents.end(),
+										 [](Event& theEvent) {
+											 return theEvent.getId() == "elections.3";
+										 }),
+			 electionEvents.end());
 	}
 }
 
