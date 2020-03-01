@@ -5,7 +5,7 @@
 
 #include "Decisions/Decisions.h"
 #include "Diplomacy/AIPeaces.h"
-#include "Ideas.h"
+#include "Ideas/Ideas.h"
 #include "Leaders/Advisor.h"
 #include "Map/CoastalProvinces.h"
 #include "Map/MapData.h"
@@ -180,7 +180,6 @@ class World: commonItems::parser
 		void outputRelations() const;
 		void outputIdeologies() const;
 		void outputLeaderTraits() const;
-		void outputIdeas() const;
 		void outputBookmarks() const;
 
 		std::optional<std::pair<std::string, std::string>> getStrongestNavyGps();

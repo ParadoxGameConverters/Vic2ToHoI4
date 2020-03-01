@@ -201,6 +201,9 @@
     <ClCompile Include="Source\Hoi4Outputter\Events\EventOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Events\EventsOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Hoi4CountryOutputter.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdea.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdeaGroup.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdeas.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Leaders\OutAdmiral.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Leaders\OutAdvisor.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Leaders\OutGeneral.cpp" />
@@ -260,9 +263,10 @@
     <ClCompile Include="Source\HOI4World\HoI4Localisation.cpp" />
     <ClCompile Include="Source\HOI4World\HOI4Version.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4World.cpp" />
-    <ClCompile Include="Source\HOI4World\Idea.cpp" />
-    <ClCompile Include="Source\HOI4World\IdeaGroup.cpp" />
-    <ClCompile Include="Source\HOI4World\Ideas.cpp" />
+    <ClCompile Include="Source\HOI4World\Ideas\Idea.cpp" />
+    <ClCompile Include="Source\HOI4World\Ideas\IdeaGroup.cpp" />
+    <ClCompile Include="Source\HOI4World\Ideas\Ideas.cpp" />
+    <ClCompile Include="Source\HOI4World\Ideas\IdeaUpdaters.cpp" />
     <ClCompile Include="Source\HOI4World\IdeologyFile.cpp" />
     <ClCompile Include="Source\HOI4World\Leaders\Admiral.cpp" />
     <ClCompile Include="Source\HOI4World\Leaders\Advisor.cpp" />
@@ -378,6 +382,9 @@
     <ClInclude Include="Source\Hoi4Outputter\Events\EventOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Events\EventsOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Hoi4CountryOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdea.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdeaGroup.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdeas.h" />
     <ClInclude Include="Source\Hoi4Outputter\Leaders\OutAdvisor.h" />
     <ClInclude Include="Source\Hoi4Outputter\Map\OutBuilding.h" />
     <ClInclude Include="Source\Hoi4Outputter\Map\OutBuildings.h" />
@@ -437,9 +444,10 @@
     <ClInclude Include="Source\HOI4World\HoI4Localisation.h" />
     <ClInclude Include="Source\HOI4World\HOI4Version.h" />
     <ClInclude Include="Source\HOI4World\HoI4World.h" />
-    <ClInclude Include="Source\HOI4World\Idea.h" />
-    <ClInclude Include="Source\HOI4World\IdeaGroup.h" />
-    <ClInclude Include="Source\HOI4World\Ideas.h" />
+    <ClInclude Include="Source\HOI4World\Ideas\Idea.h" />
+    <ClInclude Include="Source\HOI4World\Ideas\IdeaGroup.h" />
+    <ClInclude Include="Source\HOI4World\Ideas\Ideas.h" />
+    <ClInclude Include="Source\HOI4World\Ideas\IdeaUpdaters.h" />
     <ClInclude Include="Source\HOI4World\IdeologyFile.h" />
     <ClInclude Include="Source\HOI4World\Leaders\Admiral.h" />
     <ClInclude Include="Source\HOI4World\Leaders\Advisor.h" />

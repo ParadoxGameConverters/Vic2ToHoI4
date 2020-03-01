@@ -103,6 +103,12 @@
     <Filter Include="HoI4World\WarCreator">
       <UniqueIdentifier>{74101746-ca0c-4e12-b303-f1baedf6c90a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\Ideas">
+      <UniqueIdentifier>{663daec6-d575-4dc0-8ded-9d62ede1d283}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hoi4Outputter\Ideas">
+      <UniqueIdentifier>{004ecc51-d089-4e50-970f-7640d1406bab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -217,15 +223,6 @@
     </ClCompile>
     <ClCompile Include="Source\V2World\Party.cpp">
       <Filter>Vic2World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Ideas.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Idea.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\IdeaGroup.cpp">
-      <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\OnActions.cpp">
       <Filter>HoI4World</Filter>
@@ -612,11 +609,32 @@
     <ClCompile Include="Source\Hoi4Outputter\outDifficultySettings.cpp">
       <Filter>Hoi4Outputter</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Ideas\Idea.cpp">
+      <Filter>HoI4World\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Ideas\IdeaGroup.cpp">
+      <Filter>HoI4World\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Ideas\Ideas.cpp">
+      <Filter>HoI4World\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdea.cpp">
+      <Filter>Hoi4Outputter\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdeaGroup.cpp">
+      <Filter>Hoi4Outputter\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdeas.cpp">
+      <Filter>Hoi4Outputter\Ideas</Filter>
+    </ClCompile>
     <ClCompile Include="Source\HOI4World\Events\EventsFile.cpp">
       <Filter>HoI4World\Events</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Events\GenericEventUpdater.cpp">
       <Filter>HoI4World\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Ideas\IdeaUpdaters.cpp">
+      <Filter>HoI4World\Ideas</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -728,15 +746,6 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Party.h">
       <Filter>Vic2World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\Ideas.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\Idea.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\IdeaGroup.h">
-      <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\OnActions.h">
       <Filter>HoI4World</Filter>
@@ -1165,11 +1174,32 @@
     <ClInclude Include="Source\Hoi4Outputter\outDifficultySettings.h">
       <Filter>Hoi4Outputter</Filter>
     </ClInclude>
+    <ClInclude Include="Source\HOI4World\Ideas\Idea.h">
+      <Filter>HoI4World\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Ideas\IdeaGroup.h">
+      <Filter>HoI4World\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Ideas\Ideas.h">
+      <Filter>HoI4World\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdea.h">
+      <Filter>Hoi4Outputter\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdeaGroup.h">
+      <Filter>Hoi4Outputter\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdeas.h">
+      <Filter>Hoi4Outputter\Ideas</Filter>
+    </ClInclude>
     <ClInclude Include="Source\HOI4World\Events\EventsFile.h">
       <Filter>HoI4World\Events</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Events\GenericEventUpdaters.h">
       <Filter>HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Ideas\IdeaUpdaters.h">
+      <Filter>HoI4World\Ideas</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -29,9 +29,6 @@
     <ClCompile Include="..\common_items\ParserHelpers.cpp">
       <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OnActions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
@@ -104,14 +101,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Focus.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeaGroup.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\common_items\CommonUtils.cpp">
       <Filter>Vic2ToHoI4 files\common items</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Idea.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Flags.cpp">
       <Filter>Vic2ToHoI4 files</Filter>
@@ -716,6 +707,24 @@
     <ClCompile Include="HoI4WorldTests\ScriptedTriggers\ScriptedTriggerTests.cpp">
       <Filter>HoI4WorldTests\ScriptedTriggers</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\Idea.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\IdeaGroup.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\Ideas.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdea.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdeaGroup.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdeas.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Ideas</Filter>
+    </ClCompile>
     <ClCompile Include="HoI4WorldTests\Events\EventsFileTests.cpp">
       <Filter>HoI4WorldTests\Events</Filter>
     </ClCompile>
@@ -724,6 +733,15 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\GenericEventUpdater.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Ideas\IdeaTests.cpp">
+      <Filter>HoI4WorldTests\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Ideas\IdeaGroupTests.cpp">
+      <Filter>HoI4WorldTests\Ideas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\IdeaUpdaters.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideas</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -870,6 +888,15 @@
     </Filter>
     <Filter Include="HoI4WorldTests\ScriptedTriggers">
       <UniqueIdentifier>{aa1e860a-b137-4602-8133-04acf706a1d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Ideas">
+      <UniqueIdentifier>{84ba41fe-0357-4dfc-8dfd-e477561d8f4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\Ideas">
+      <UniqueIdentifier>{9bf70b07-a865-4ec0-b5ee-42a2b7acd854}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Ideas">
+      <UniqueIdentifier>{a1c58a1d-d1e4-4c60-9702-bf9c1c7e59b0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
