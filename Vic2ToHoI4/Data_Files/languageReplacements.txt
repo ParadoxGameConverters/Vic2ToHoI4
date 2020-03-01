@@ -385,6 +385,12 @@ italian = {
 	}
 	
 	#Actual adjectives
+	"(.+)ita$" = {
+		_MS_IT = $1ita
+		_FS_IT = $1ita
+		_MP_IT = $1iti
+		_FP_IT = $1ite
+	}
 	"(.+)ana$" = {
 		_MS_IT = $1ano
 		_FS_IT = $1ana
@@ -800,6 +806,24 @@ braz_por = {
 		_MP_PT = "delas $1"
 		_FP_PT = "delas $1"
 	}
+	"^do (.+)" = {
+		_MS_PT = "do $1"
+		_FS_PT = "do $1"
+		_MP_PT = "do $1"
+		_FP_PT = "do $1"
+	}
+	"^da (.+)" = {
+		_MS_PT = "da $1"
+		_FS_PT = "da $1"
+		_MP_PT = "da $1"
+		_FP_PT = "da $1"
+	}
+	"^dos (.+)" = {
+		_MS_PT = "dos $1"
+		_FS_PT = "dos $1"
+		_MP_PT = "dos $1"
+		_FP_PT = "dos $1"
+	}
 	
 	#Special rules
 	"belga" = { #Belgian
@@ -813,6 +837,12 @@ braz_por = {
 		_FS_PT = "Croata"
 		_MP_PT = "Croatas"
 		_FP_PT = "Croatas"
+	}
+	"letão" = { #Latvian
+		_MS_PT = letão
+		_FS_PT = letã
+		_MP_PT = latões
+		_FP_PT = letãs
 	}
 	
 	#Actual adjectives
@@ -839,12 +869,6 @@ braz_por = {
 		_FS_PT = $1i
 		_MP_PT = $1is
 		_FP_PT = $1is
-	}
-	"(.+)o$" = {
-		_MS_PT = $1o
-		_FS_PT = $1a
-		_MP_PT = $1os
-		_FP_PT = $1es
 	}
 	"(.+)u$" = {
 		_MS_PT = $1u
@@ -887,6 +911,18 @@ braz_por = {
 		_FS_PT = $1ã
 		_MP_PT = $1ãos
 		_FP_PT = $1ãs
+	}
+	"(.+)o$" = {
+		_MS_PT = $1o
+		_FS_PT = $1a
+		_MP_PT = $1os
+		_FP_PT = $1as
+	}
+	"(.+)a$" = {
+		_MS_PT = $1a
+		_FS_PT = $1a
+		_MP_PT = $1as
+		_FP_PT = $1as
 	}
 	
 	#Fallback
