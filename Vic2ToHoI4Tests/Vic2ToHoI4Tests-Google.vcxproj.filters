@@ -743,6 +743,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\IdeaUpdaters.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Ideas</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeologyModifiers.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\IdeologyModifiersTests.cpp">
+      <Filter>HoI4WorldTests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

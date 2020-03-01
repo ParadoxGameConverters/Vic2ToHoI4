@@ -64,7 +64,7 @@ class HoI4Ideology: commonItems::parser
 		std::map<std::string, std::string> rules;
 		float warImpactOnWorldTension = 0.0;
 		float factionImpactOnWorldTension = 0.0;
-		std::map<std::string, float> modifiers;
+		std::map<std::string, std::string> modifiers;
 		std::map<std::string, float> factionModifiers;
 		std::map<std::string, std::string> cans;
 		std::string AI;

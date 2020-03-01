@@ -25,6 +25,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "../Color.h"
 #include "ParserHelpers.h"
 #include <iomanip>
+#include "IdeologyModifiers.h"
 
 
 
@@ -61,16 +62,9 @@ HoI4Ideology::HoI4Ideology(const std::string& _ideologyName, std::istream& theSt
 			key = getNextTokenWithoutMatching(theStream);
 		}
 	});
-	registerKeyword(std::regex("modifiers"), [this](const std::string& unused, std::istream& theStream){
-		auto equals = getNextTokenWithoutMatching(theStream);
-		auto brace = getNextTokenWithoutMatching(theStream);
-		auto key = getNextTokenWithoutMatching(theStream);
-		while (key != "}")
-		{
-			commonItems::singleDouble leaf(theStream);
-			modifiers.insert(std::make_pair(*key, static_cast<float>(leaf.getDouble())));
-			key = getNextTokenWithoutMatching(theStream);
-		}
+	registerKeyword("modifiers", [this](const std::string& unused, std::istream& theStream) {
+		HoI4::IdeologyModifiers importedModifiers(theStream);
+		modifiers = importedModifiers.takeModifiers();
 	});
 	registerKeyword(std::regex("faction_modifiers"), [this](const std::string& unused, std::istream& theStream){
 		auto equals = getNextTokenWithoutMatching(theStream);
@@ -173,7 +167,7 @@ void HoI4Ideology::outputModifiers(std::ofstream& file) const
 	file << "\t\tmodifiers = {\n";
 	for (auto modifier: modifiers)
 	{
-		file << "\t\t\t" << modifier.first << " = " << modifier.second << "\n";
+		file << "\t\t\t" << modifier.first << " " << modifier.second << "\n";
 	}
 	file << "\t\t}\n";
 	file << "\t\t\n";
