@@ -636,6 +636,9 @@
     <ClCompile Include="Source\HOI4World\Ideas\IdeaUpdaters.cpp">
       <Filter>HoI4World\Ideas</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\IdeologyModifiers.cpp">
+      <Filter>HoI4World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1200,6 +1203,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Ideas\IdeaUpdaters.h">
       <Filter>HoI4World\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\IdeologyModifiers.h">
+      <Filter>HoI4World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
