@@ -3,9 +3,10 @@
 
 
 
+#include "../../Configuration.h"
 #include <set>
 #include <string>
-#include "../../Configuration.h"
+
 
 
 namespace HoI4
@@ -15,9 +16,7 @@ class Ideas;
 
 void outIdeas(const Ideas& ideas, const std::set<std::string>& majorIdeologies, const Configuration& theConfiguration);
 
-}
-
-
+} // namespace HoI4
 
 
 

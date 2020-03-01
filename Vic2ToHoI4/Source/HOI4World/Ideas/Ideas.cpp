@@ -13,35 +13,39 @@ HoI4::Ideas::Ideas() noexcept
 
 void HoI4::Ideas::importIdeologicalIdeas()
 {
-	registerKeyword(std::regex("[a-zA-Z_]+"), [this](const std::string& ideology, std::istream& theStream){
+	registerRegex("[a-zA-Z_]+", [this](const std::string& ideology, std::istream& theStream) {
 		ideologicalIdeas.insert(make_pair(ideology, IdeaGroup(ideology, theStream)));
 	});
 
 	parseFile("ideologicalIdeas.txt");
+	clearRegisteredKeywords();
 }
 
 
 void HoI4::Ideas::importGeneralIdeas()
 {
-	clearRegisteredKeywords();
-	registerKeyword(std::regex("[a-zA-Z_]+"), [this](const std::string& ideaGroupName, std::istream& theStream){
-		generalIdeas.push_back(std::make_unique<IdeaGroup>(ideaGroupName, theStream));
+	registerKeyword(std::regex("[a-zA-Z_]+"), [this](const std::string& ideaGroupName, std::istream& theStream) {
+		generalIdeas.push_back(IdeaGroup{ideaGroupName, theStream});
 	});
 
 	parseFile("converterIdeas.txt");
+	clearRegisteredKeywords();
 }
 
 
 void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 {
-	auto foundGroup = std::find_if(generalIdeas.begin(), generalIdeas.end(), [](auto& theGroup){ return (theGroup->getName() == "mobilization_laws"); });
-	auto serviceByRequirement = (*foundGroup)->getIdea("service_by_requirement");
+	auto foundGroup = std::find_if(generalIdeas.begin(), generalIdeas.end(), [](auto& theGroup) {
+		return (theGroup.getName() == "mobilization_laws");
+	});
+
+	auto serviceByRequirement = foundGroup->getIdea("service_by_requirement");
 	if (serviceByRequirement)
 	{
 		std::string available = "= {\n";
 		available += "				#has_manpower_for_recruit_change_to =  { value = 0.1 group = mobilization_laws }\n";
 		available += "				OR = {\n";
-		for (auto ideology: majorIdeologies)
+		for (const auto& ideology: majorIdeologies)
 		{
 			if ((ideology != "neutrality") && (ideology != "democratic"))
 			{
@@ -65,16 +69,16 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 		available += "				}\n";
 		available += "			}";
 		serviceByRequirement->setAvailable(available);
-		(*foundGroup)->replaceIdea(*serviceByRequirement);
+		foundGroup->replaceIdea(*serviceByRequirement);
 	}
 
-	auto extensiveConscription = (*foundGroup)->getIdea("extensive_conscription");
+	auto extensiveConscription = foundGroup->getIdea("extensive_conscription");
 	if (extensiveConscription)
 	{
 		std::string available = "= {\n";
 		available += "				#has_manpower_for_recruit_change_to = { value = 0.05 group = mobilization_laws }\n";
 		available += "				OR = {\n";
-		for (auto ideology: majorIdeologies)
+		for (const auto& ideology: majorIdeologies)
 		{
 			if ((ideology != "neutrality") && (ideology != "democratic"))
 			{
@@ -95,17 +99,19 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 		available += "				has_war_support > 0.2\n";
 		available += "			}";
 		extensiveConscription->setAvailable(available);
-		(*foundGroup)->replaceIdea(*extensiveConscription);
+		foundGroup->replaceIdea(*extensiveConscription);
 	}
 
-	foundGroup = std::find_if(generalIdeas.begin(), generalIdeas.end(), [](auto& theGroup){ return (theGroup->getName() == "economy"); });
-	auto warEconomy = (*foundGroup)->getIdea("war_economy");
+	foundGroup = std::find_if(generalIdeas.begin(), generalIdeas.end(), [](auto& theGroup) {
+		return (theGroup.getName() == "economy");
+	});
+	auto warEconomy = foundGroup->getIdea("war_economy");
 	if (warEconomy)
 	{
 		std::string available = "= {\n";
 		available += "				has_war_support > 0.5\n";
 		available += "				OR = {\n";
-		for (auto ideology: majorIdeologies)
+		for (const auto& ideology: majorIdeologies)
 		{
 			if ((ideology != "neutrality") && (ideology != "democratic"))
 			{
@@ -125,17 +131,19 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 		available += "				}\n";
 		available += "			}";
 		warEconomy->setAvailable(available);
-		(*foundGroup)->replaceIdea(*warEconomy);
+		foundGroup->replaceIdea(*warEconomy);
 	}
 
-	foundGroup = std::find_if(generalIdeas.begin(), generalIdeas.end(), [](auto& theGroup){ return (theGroup->getName() == "trade_laws"); });
-	auto closedEconomy = (*foundGroup)->getIdea("closed_economy");
+	foundGroup = std::find_if(generalIdeas.begin(), generalIdeas.end(), [](auto& theGroup) {
+		return (theGroup.getName() == "trade_laws");
+	});
+	auto closedEconomy = foundGroup->getIdea("closed_economy");
 	if (closedEconomy)
 	{
 		std::string available = "= {\n";
 		available += "				has_war = yes\n";
 		available += "				OR = {\n";
-		for (auto ideology: majorIdeologies)
+		for (const auto& ideology: majorIdeologies)
 		{
 			if ((ideology != "neutrality") && (ideology != "democratic"))
 			{
@@ -149,10 +157,10 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 		available += "				}\n";
 		available += "			}";
 		closedEconomy->setAvailable(available);
-		(*foundGroup)->replaceIdea(*closedEconomy);
+		foundGroup->replaceIdea(*closedEconomy);
 	}
 
-	auto limitedExports = (*foundGroup)->getIdea("limited_exports");
+	auto limitedExports = foundGroup->getIdea("limited_exports");
 	if (limitedExports)
 	{
 		std::string available = "= {\n";
@@ -189,16 +197,18 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 		}
 		available += "			}";
 		limitedExports->setAvailable(available);
-		(*foundGroup)->replaceIdea(*limitedExports);
+		foundGroup->replaceIdea(*limitedExports);
 	}
 
-	foundGroup = std::find_if(generalIdeas.begin(), generalIdeas.end(), [](auto& theGroup){ return (theGroup->getName() == "country"); });
-	auto militaryYouthFocus = (*foundGroup)->getIdea("military_youth_focus");
+	foundGroup = std::find_if(generalIdeas.begin(), generalIdeas.end(), [](auto& theGroup) {
+		return (theGroup.getName() == "country");
+	});
+	auto militaryYouthFocus = foundGroup->getIdea("military_youth_focus");
 	if (militaryYouthFocus)
 	{
 		std::string allowedCivilWar = "= {\n";
 		allowedCivilWar += "				OR = {\n";
-		for (auto ideology: majorIdeologies)
+		for (const auto& ideology: majorIdeologies)
 		{
 			if ((ideology != "neutrality") && (ideology != "democratic"))
 			{
@@ -208,15 +218,15 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 		allowedCivilWar += "				}\n";
 		allowedCivilWar += "			}";
 		militaryYouthFocus->setAllowedCivilWar(allowedCivilWar);
-		(*foundGroup)->replaceIdea(*militaryYouthFocus);
+		foundGroup->replaceIdea(*militaryYouthFocus);
 	}
 
-	auto paramilitarismFocus = (*foundGroup)->getIdea("paramilitarism_focus");
+	auto paramilitarismFocus = foundGroup->getIdea("paramilitarism_focus");
 	if (paramilitarismFocus)
 	{
 		std::string allowedCivilWar = "= {\n";
 		allowedCivilWar += "				OR = {\n";
-		for (auto ideology: majorIdeologies)
+		for (const auto& ideology: majorIdeologies)
 		{
 			if ((ideology != "neutrality") && (ideology != "democratic"))
 			{
@@ -226,15 +236,15 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 		allowedCivilWar += "				}\n";
 		allowedCivilWar += "			}";
 		paramilitarismFocus->setAllowedCivilWar(allowedCivilWar);
-		(*foundGroup)->replaceIdea(*paramilitarismFocus);
+		foundGroup->replaceIdea(*paramilitarismFocus);
 	}
 
-	auto indoctrinationFocus = (*foundGroup)->getIdea("indoctrination_focus");
+	auto indoctrinationFocus = foundGroup->getIdea("indoctrination_focus");
 	if (indoctrinationFocus)
 	{
 		std::string allowedCivilWar = "= {\n";
 		allowedCivilWar += "				OR = {\n";
-		for (auto ideology: majorIdeologies)
+		for (const auto& ideology: majorIdeologies)
 		{
 			if ((ideology != "neutrality") && (ideology != "democratic"))
 			{
@@ -244,6 +254,6 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 		allowedCivilWar += "				}\n";
 		allowedCivilWar += "			}";
 		indoctrinationFocus->setAllowedCivilWar(allowedCivilWar);
-		(*foundGroup)->replaceIdea(*indoctrinationFocus);
+		foundGroup->replaceIdea(*indoctrinationFocus);
 	}
 }

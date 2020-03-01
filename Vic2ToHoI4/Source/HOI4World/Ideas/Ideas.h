@@ -6,7 +6,6 @@
 #include "IdeaGroup.h"
 #include "newParser.h"
 #include <map>
-#include <memory>
 #include <set>
 #include <string>
 #include <vector>
@@ -23,15 +22,15 @@ class Ideas: commonItems::parser
 
 		void updateIdeas(const std::set<std::string>& majorIdeologies);
 
-		const auto& getIdeologicalIdeas() const { return ideologicalIdeas; }
-		const auto& getGeneralIdeas() const { return generalIdeas; }
+		[[nodiscard]] const auto& getIdeologicalIdeas() const { return ideologicalIdeas; }
+		[[nodiscard]] const auto& getGeneralIdeas() const { return generalIdeas; }
 
 	private:
 		void importIdeologicalIdeas();
 		void importGeneralIdeas();
 
 		std::map<std::string, IdeaGroup> ideologicalIdeas;
-		std::vector<std::unique_ptr<IdeaGroup>> generalIdeas;
+		std::vector<IdeaGroup> generalIdeas;
 };
 
 }
