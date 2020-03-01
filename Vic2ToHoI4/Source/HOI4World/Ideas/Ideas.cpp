@@ -25,7 +25,7 @@ void HoI4::Ideas::importIdeologicalIdeas()
 void HoI4::Ideas::importGeneralIdeas()
 {
 	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& ideaGroupName, std::istream& theStream) {
-		generalIdeas.push_back(IdeaGroup{ideaGroupName, theStream});
+		generalIdeas.emplace_back(IdeaGroup{ideaGroupName, theStream});
 	});
 
 	parseFile("converterIdeas.txt");
@@ -43,31 +43,31 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 	if (serviceByRequirement)
 	{
 		std::string available = "= {\n";
-		available += "				#has_manpower_for_recruit_change_to =  { value = 0.1 group = mobilization_laws }\n";
-		available += "				OR = {\n";
+		available += "\t\t\t\t#has_manpower_for_recruit_change_to =  { value = 0.1 group = mobilization_laws }\n";
+		available += "\t\t\t\tOR = {\n";
 		for (const auto& ideology: majorIdeologies)
 		{
 			if ((ideology != "neutrality") && (ideology != "democratic"))
 			{
-				available += "					has_government = " + ideology + "\n";
+				available += "\t\t\t\t\thas_government = " + ideology + "\n";
 			}
 		}
-		available += "					AND = {\n";
-		available += "						has_war = yes\n";
-		available += "						enemies_strength_ratio > 0.6\n";
-		available += "						#any_enemy_country = {\n";
-		available += "						#	strength_ratio = {\n";
-		available += "						#		tag = ROOT \n";
-		available += "						#		ratio > 0.6\n";
-		available += "						#	}\n";
-		available += "						#}\n";
-		available += "					}\n";
-		available += "				}\n";
-		available += "				OR = {\n";
-		available += "					has_war_support > 0.6\n";
-		available += "					surrender_progress > 0\n";
-		available += "				}\n";
-		available += "			}";
+		available += "\t\t\t\t\tAND = {\n";
+		available += "\t\t\t\t\t\thas_war = yes\n";
+		available += "\t\t\t\t\t\tenemies_strength_ratio > 0.6\n";
+		available += "\t\t\t\t\t\t#any_enemy_country = {\n";
+		available += "\t\t\t\t\t\t#\tstrength_ratio = {\n";
+		available += "\t\t\t\t\t\t#\t\ttag = ROOT \n";
+		available += "\t\t\t\t\t\t#\t\tratio > 0.6\n";
+		available += "\t\t\t\t\t\t#\t}\n";
+		available += "\t\t\t\t\t\t#}\n";
+		available += "\t\t\t\t\t}\n";
+		available += "\t\t\t\t}\n";
+		available += "\t\t\t\tOR = {\n";
+		available += "\t\t\t\t\thas_war_support > 0.6\n";
+		available += "\t\t\t\t\tsurrender_progress > 0\n";
+		available += "\t\t\t\t}\n";
+		available += "\t\t\t}";
 		serviceByRequirement->setAvailable(available);
 		foundGroup->replaceIdea(*serviceByRequirement);
 	}
@@ -76,28 +76,28 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 	if (extensiveConscription)
 	{
 		std::string available = "= {\n";
-		available += "				#has_manpower_for_recruit_change_to = { value = 0.05 group = mobilization_laws }\n";
-		available += "				OR = {\n";
+		available += "\t\t\t\t#has_manpower_for_recruit_change_to = { value = 0.05 group = mobilization_laws }\n";
+		available += "\t\t\t\tOR = {\n";
 		for (const auto& ideology: majorIdeologies)
 		{
 			if ((ideology != "neutrality") && (ideology != "democratic"))
 			{
-				available += "					has_government = " + ideology + "\n";
+				available += "\t\t\t\t\thas_government = " + ideology + "\n";
 			}
 		}
-		available += "					AND = {\n";
-		available += "						has_war = yes\n";
-		available += "						enemies_strength_ratio > 0.5\n";
-		available += "						#any_enemy_country = {\n";
-		available += "						#	strength_ratio = {\n";
-		available += "						#		tag = ROOT \n";
-		available += "						#		ratio > 0.5\n";
-		available += "						#	}\n";
-		available += "						#}\n";
-		available += "					}\n";
-		available += "				}\n";
-		available += "				has_war_support > 0.2\n";
-		available += "			}";
+		available += "\t\t\t\t\tAND = {\n";
+		available += "\t\t\t\t\t\thas_war = yes\n";
+		available += "\t\t\t\t\t\tenemies_strength_ratio > 0.5\n";
+		available += "\t\t\t\t\t\t#any_enemy_country = {\n";
+		available += "\t\t\t\t\t\t#\tstrength_ratio = {\n";
+		available += "\t\t\t\t\t\t#\t\ttag = ROOT \n";
+		available += "\t\t\t\t\t\t#\t\tratio > 0.5\n";
+		available += "\t\t\t\t\t\t#\t}\n";
+		available += "\t\t\t\t\t\t#}\n";
+		available += "\t\t\t\t\t}\n";
+		available += "\t\t\t\t}\n";
+		available += "\t\t\t\thas_war_support > 0.2\n";
+		available += "\t\t\t}";
 		extensiveConscription->setAvailable(available);
 		foundGroup->replaceIdea(*extensiveConscription);
 	}
@@ -109,27 +109,27 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 	if (warEconomy)
 	{
 		std::string available = "= {\n";
-		available += "				has_war_support > 0.5\n";
-		available += "				OR = {\n";
+		available += "\t\t\t\thas_war_support > 0.5\n";
+		available += "\t\t\t\tOR = {\n";
 		for (const auto& ideology: majorIdeologies)
 		{
 			if ((ideology != "neutrality") && (ideology != "democratic"))
 			{
-				available += "					has_government = " + ideology + "\n";
+				available += "\t\t\t\t\thas_government = " + ideology + "\n";
 			}
 		}
-		available += "					custom_trigger_tooltip = { tooltip = or_clarification_tooltip always = no }\n";
-		available += "					AND = {\n";
-		available += "						has_war = yes\n";
-		available += "						any_enemy_country = {\n";
-		available += "							ic_ratio = { \n";
-		available += "								tag = ROOT \n";
-		available += "								ratio > 0.4\n";
-		available += "							}\n";
-		available += "						}\n";
-		available += "					}\n";
-		available += "				}\n";
-		available += "			}";
+		available += "\t\t\t\t\tcustom_trigger_tooltip = { tooltip = or_clarification_tooltip always = no }\n";
+		available += "\t\t\t\t\tAND = {\n";
+		available += "\t\t\t\t\t\thas_war = yes\n";
+		available += "\t\t\t\t\t\tany_enemy_country = {\n";
+		available += "\t\t\t\t\t\t\tic_ratio = { \n";
+		available += "\t\t\t\t\t\t\t\ttag = ROOT \n";
+		available += "\t\t\t\t\t\t\t\tratio > 0.4\n";
+		available += "\t\t\t\t\t\t\t}\n";
+		available += "\t\t\t\t\t\t}\n";
+		available += "\t\t\t\t\t}\n";
+		available += "\t\t\t\t}\n";
+		available += "\t\t\t}";
 		warEconomy->setAvailable(available);
 		foundGroup->replaceIdea(*warEconomy);
 	}
@@ -141,21 +141,21 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 	if (closedEconomy)
 	{
 		std::string available = "= {\n";
-		available += "				has_war = yes\n";
-		available += "				OR = {\n";
+		available += "\t\t\t\thas_war = yes\n";
+		available += "\t\t\t\tOR = {\n";
 		for (const auto& ideology: majorIdeologies)
 		{
 			if ((ideology != "neutrality") && (ideology != "democratic"))
 			{
-				available += "					has_government = " + ideology + "\n";
+				available += "\t\t\t\t\thas_government = " + ideology + "\n";
 			}
 		}
-		available += "				}\n";
-		available += "				OR = {\n";
-		available += "					has_idea = war_economy\n";
-		available += "					has_idea = tot_economic_mobilisation\n";
-		available += "				}\n";
-		available += "			}";
+		available += "\t\t\t\t}\n";
+		available += "\t\t\t\tOR = {\n";
+		available += "\t\t\t\t\thas_idea = war_economy\n";
+		available += "\t\t\t\t\thas_idea = tot_economic_mobilisation\n";
+		available += "\t\t\t\t}\n";
+		available += "\t\t\t}";
 		closedEconomy->setAvailable(available);
 		foundGroup->replaceIdea(*closedEconomy);
 	}
@@ -166,36 +166,36 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 		std::string available = "= {\n";
 		if (majorIdeologies.count("democratic") > 0)
 		{
-			available += "				OR = {\n";
-			available += "					AND = {\n";
-			available += "						has_government = democratic\n";
-			available += "						has_war = yes\n";
-			available += "						any_enemy_country = {\n";
-			available += "							ic_ratio = { \n";
-			available += "								tag = ROOT \n";
-			available += "								ratio > 0.2\n";
-			available += "							}\n";
-			available += "						}\n";
-			available += "					}\n";
-			available += "					AND = {\n";
-			available += "						NOT = { has_government = democratic }\n";
-			available += "						OR = {\n";
-			available += "							has_idea = partial_economic_mobilisation\n";
-			available += "							has_idea = war_economy\n";
-			available += "							has_idea = tot_economic_mobilisation\n";
-			available += "						}\n";
-			available += "					}\n";
-			available += "				}\n";
+			available += "\t\t\t\tOR = {\n";
+			available += "\t\t\t\t\tAND = {\n";
+			available += "\t\t\t\t\t\thas_government = democratic\n";
+			available += "\t\t\t\t\t\thas_war = yes\n";
+			available += "\t\t\t\t\t\tany_enemy_country = {\n";
+			available += "\t\t\t\t\t\t\tic_ratio = { \n";
+			available += "\t\t\t\t\t\t\t\ttag = ROOT \n";
+			available += "\t\t\t\t\t\t\t\tratio > 0.2\n";
+			available += "\t\t\t\t\t\t\t}\n";
+			available += "\t\t\t\t\t\t}\n";
+			available += "\t\t\t\t\t}\n";
+			available += "\t\t\t\t\tAND = {\n";
+			available += "\t\t\t\t\t\tNOT = { has_government = democratic }\n";
+			available += "\t\t\t\t\t\tOR = {\n";
+			available += "\t\t\t\t\t\t\thas_idea = partial_economic_mobilisation\n";
+			available += "\t\t\t\t\t\t\thas_idea = war_economy\n";
+			available += "\t\t\t\t\t\t\thas_idea = tot_economic_mobilisation\n";
+			available += "\t\t\t\t\t\t}\n";
+			available += "\t\t\t\t\t}\n";
+			available += "\t\t\t\t}\n";
 		}
 		else
 		{
-			available += "				OR = {\n";
-			available += "					has_idea = partial_economic_mobilisation\n";
-			available += "					has_idea = war_economy\n";
-			available += "					has_idea = tot_economic_mobilisation\n";
-			available += "				}\n";
+			available += "\t\t\t\tOR = {\n";
+			available += "\t\t\t\t\thas_idea = partial_economic_mobilisation\n";
+			available += "\t\t\t\t\thas_idea = war_economy\n";
+			available += "\t\t\t\t\thas_idea = tot_economic_mobilisation\n";
+			available += "\t\t\t\t}\n";
 		}
-		available += "			}";
+		available += "\t\t\t}";
 		limitedExports->setAvailable(available);
 		foundGroup->replaceIdea(*limitedExports);
 	}
@@ -207,16 +207,16 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 	if (militaryYouthFocus)
 	{
 		std::string allowedCivilWar = "= {\n";
-		allowedCivilWar += "				OR = {\n";
+		allowedCivilWar += "\t\t\t\tOR = {\n";
 		for (const auto& ideology: majorIdeologies)
 		{
 			if ((ideology != "neutrality") && (ideology != "democratic"))
 			{
-				allowedCivilWar += "					has_government = " + ideology + "\n";
+				allowedCivilWar += "\t\t\t\t\thas_government = " + ideology + "\n";
 			}
 		}
-		allowedCivilWar += "				}\n";
-		allowedCivilWar += "			}";
+		allowedCivilWar += "\t\t\t\t}\n";
+		allowedCivilWar += "\t\t\t}";
 		militaryYouthFocus->setAllowedCivilWar(allowedCivilWar);
 		foundGroup->replaceIdea(*militaryYouthFocus);
 	}
@@ -225,16 +225,16 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 	if (paramilitarismFocus)
 	{
 		std::string allowedCivilWar = "= {\n";
-		allowedCivilWar += "				OR = {\n";
+		allowedCivilWar += "\t\t\t\tOR = {\n";
 		for (const auto& ideology: majorIdeologies)
 		{
 			if ((ideology != "neutrality") && (ideology != "democratic"))
 			{
-				allowedCivilWar += "					has_government = " + ideology + "\n";
+				allowedCivilWar += "\t\t\t\t\thas_government = " + ideology + "\n";
 			}
 		}
-		allowedCivilWar += "				}\n";
-		allowedCivilWar += "			}";
+		allowedCivilWar += "\t\t\t\t}\n";
+		allowedCivilWar += "\t\t\t}";
 		paramilitarismFocus->setAllowedCivilWar(allowedCivilWar);
 		foundGroup->replaceIdea(*paramilitarismFocus);
 	}
@@ -243,16 +243,16 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 	if (indoctrinationFocus)
 	{
 		std::string allowedCivilWar = "= {\n";
-		allowedCivilWar += "				OR = {\n";
+		allowedCivilWar += "\t\t\t\tOR = {\n";
 		for (const auto& ideology: majorIdeologies)
 		{
 			if ((ideology != "neutrality") && (ideology != "democratic"))
 			{
-				allowedCivilWar += "					has_government = " + ideology + "\n";
+				allowedCivilWar += "\t\t\t\t\thas_government = " + ideology + "\n";
 			}
 		}
-		allowedCivilWar += "				}\n";
-		allowedCivilWar += "			}";
+		allowedCivilWar += "\t\t\t\t}\n";
+		allowedCivilWar += "\t\t\t}";
 		indoctrinationFocus->setAllowedCivilWar(allowedCivilWar);
 		foundGroup->replaceIdea(*indoctrinationFocus);
 	}
