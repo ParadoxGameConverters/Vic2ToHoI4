@@ -33,7 +33,7 @@ std::optional<HoI4::Idea> HoI4::IdeaGroup::getIdea(const std::string& ideaName) 
 		}
 	}
 
-	return {};
+	return std::nullopt;
 }
 
 

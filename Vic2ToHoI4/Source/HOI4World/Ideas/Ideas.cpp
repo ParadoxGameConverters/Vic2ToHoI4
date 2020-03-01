@@ -13,7 +13,7 @@ HoI4::Ideas::Ideas() noexcept
 
 void HoI4::Ideas::importIdeologicalIdeas()
 {
-	registerRegex("[a-zA-Z_]+", [this](const std::string& ideology, std::istream& theStream) {
+	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& ideology, std::istream& theStream) {
 		ideologicalIdeas.insert(make_pair(ideology, IdeaGroup(ideology, theStream)));
 	});
 
@@ -24,7 +24,7 @@ void HoI4::Ideas::importIdeologicalIdeas()
 
 void HoI4::Ideas::importGeneralIdeas()
 {
-	registerKeyword(std::regex("[a-zA-Z_]+"), [this](const std::string& ideaGroupName, std::istream& theStream) {
+	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& ideaGroupName, std::istream& theStream) {
 		generalIdeas.push_back(IdeaGroup{ideaGroupName, theStream});
 	});
 
