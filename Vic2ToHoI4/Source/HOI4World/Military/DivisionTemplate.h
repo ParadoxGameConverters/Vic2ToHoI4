@@ -23,7 +23,7 @@ class DivisionTemplateType: commonItems::parser
 		DivisionTemplateType(const DivisionTemplateType&) = default;
 		DivisionTemplateType& operator=(const DivisionTemplateType&) = delete;
 
-		bool operator==(const std::string& rhs) { return name == rhs; }
+		bool operator==(const std::string& rhs) const { return name == rhs; }
 
 		friend std::ostream& operator << (std::ostream& out, const DivisionTemplateType& rhs);
 

@@ -1,48 +1,39 @@
-#include "../Vic2ToHoI4/Source/HoI4World/Military/DivisionTemplate.h"
+#include "../Vic2ToHoI4/Source/HOI4World/Military/DivisionTemplate.h"
 #include "gtest/gtest.h"
 
 
 
-TEST(HoI4World_DivisionTemplateTests, DivisionTempateNameDefaultsToBlank)
+TEST(HoI4World_Military_DivisionTemplateTests, NameDefaultsToBlank)
 {
-	std::istringstream input("");
-	HoI4::DivisionTemplateType divisionTemplate(input);
-	ASSERT_EQ(std::string(""), divisionTemplate.getName());
+	std::istringstream input;
+	const HoI4::DivisionTemplateType divisionTemplate(input);
+
+	ASSERT_EQ("", divisionTemplate.getName());
 }
 
 
-TEST(HoI4World_DivisionTemplateTests, DivisionTempateNameCanBeImported)
-{
-	std::istringstream input(
-		 "= {\n"
-		 "\t\t\tname = \"Light Infantry Brigade\"\n"
-		 "\t\t}\n");
-	HoI4::DivisionTemplateType divisionTemplate(input);
-	ASSERT_EQ(std::string("Light Infantry Brigade"), divisionTemplate.getName());
-}
-
-
-TEST(HoI4World_DivisionTemplateTests, DivisionTempateNameCopiedWithCopyConstructor)
+TEST(HoI4World_Military_DivisionTemplateTests, NameCanBeSet)
 {
 	std::istringstream input(
 		 "= {\n"
 		 "\t\t\tname = \"Light Infantry Brigade\"\n"
 		 "\t\t}\n");
-	HoI4::DivisionTemplateType divisionTemplate(input);
-	HoI4::DivisionTemplateType divisionTemplate2(divisionTemplate);
-	ASSERT_EQ(divisionTemplate.getName(), divisionTemplate2.getName());
+	const HoI4::DivisionTemplateType divisionTemplate(input);
+
+	ASSERT_EQ("Light Infantry Brigade", divisionTemplate.getName());
 }
 
 
-TEST(HoI4World_DivisionTemplateTests, DivisionTempateRegimentsDefaultToEmpty)
+TEST(HoI4World_Military_DivisionTemplateTests, RegimentsDefaultToEmpty)
 {
-	std::istringstream input("");
-	HoI4::DivisionTemplateType divisionTemplate(input);
-	ASSERT_EQ(size_t(0), divisionTemplate.getRegiments().size());
+	std::istringstream input;
+	const HoI4::DivisionTemplateType divisionTemplate(input);
+
+	ASSERT_TRUE(divisionTemplate.getRegiments().empty());
 }
 
 
-TEST(HoI4World_DivisionTemplateTests, DivisionTempateRegimentsCanBeImported)
+TEST(HoI4World_Military_DivisionTemplateTests, RegimentsCanBeSet)
 {
 	std::istringstream input(
 		 "= {\n"
@@ -51,33 +42,22 @@ TEST(HoI4World_DivisionTemplateTests, DivisionTempateRegimentsCanBeImported)
 		 "\t\t\t}\n"
 		 "\t\t}\n");
 	HoI4::DivisionTemplateType divisionTemplate(input);
-	ASSERT_EQ(size_t(1), divisionTemplate.getRegiments().size());
+
+	ASSERT_EQ(1, divisionTemplate.getRegiments().size());
+	ASSERT_EQ("infantry", divisionTemplate.getRegiments()[0].getType());
 }
 
 
-TEST(HoI4World_DivisionTemplateTests, DivisionTempateRegimentsCopiedWithCopyConstructor)
+TEST(HoI4World_Military_DivisionTemplateTests, SupportRegimentsDefaultToEmpty)
 {
-	std::istringstream input(
-		 "= {\n"
-		 "\t\t\tregiments = {\n"
-		 "\t\t\t\tinfantry = { x = 0 y = 0 }\n"
-		 "\t\t\t}\n"
-		 "\t\t}\n");
-	HoI4::DivisionTemplateType divisionTemplate(input);
-	HoI4::DivisionTemplateType divisionTemplate2(divisionTemplate);
-	ASSERT_EQ(divisionTemplate.getRegiments().size(), divisionTemplate2.getRegiments().size());
+	std::istringstream input;
+	const HoI4::DivisionTemplateType divisionTemplate(input);
+
+	ASSERT_TRUE(divisionTemplate.getSupportRegiments().empty());
 }
 
 
-TEST(HoI4World_DivisionTemplateTests, DivisionTempateSupportRegimentsDefaultToEmpty)
-{
-	std::istringstream input("");
-	HoI4::DivisionTemplateType divisionTemplate(input);
-	ASSERT_EQ(size_t(0), divisionTemplate.getSupportRegiments().size());
-}
-
-
-TEST(HoI4World_DivisionTemplateTests, DivisionTempateSupportRegimentsCanBeImported)
+TEST(HoI4World_Military_DivisionTemplateTests, SupportRegimentsCanBeSet)
 {
 	std::istringstream input(
 		 "= {\n"
@@ -85,113 +65,32 @@ TEST(HoI4World_DivisionTemplateTests, DivisionTempateSupportRegimentsCanBeImport
 		 "\t\t\t\tinfantry = { x = 0 y = 0 }\n"
 		 "\t\t\t}\n"
 		 "\t\t}\n");
-	HoI4::DivisionTemplateType divisionTemplate(input);
-	ASSERT_EQ(size_t(1), divisionTemplate.getSupportRegiments().size());
+	const HoI4::DivisionTemplateType divisionTemplate(input);
+
+	ASSERT_EQ(1, divisionTemplate.getSupportRegiments().size());
+	ASSERT_EQ("infantry", divisionTemplate.getSupportRegiments()[0].getType());
 }
 
 
-TEST(HoI4World_DivisionTemplateTests, DivisionTempateSupportRegimentsCopiedWithCopyConstructor)
-{
-	std::istringstream input(
-		 "= {\n"
-		 "\t\t\tsupport = {\n"
-		 "\t\t\t\tinfantry = { x = 0 y = 0 }\n"
-		 "\t\t\t}\n"
-		 "\t\t}\n");
-	HoI4::DivisionTemplateType divisionTemplate(input);
-	HoI4::DivisionTemplateType divisionTemplate2(divisionTemplate);
-	ASSERT_EQ(divisionTemplate.getSupportRegiments().size(), divisionTemplate2.getSupportRegiments().size());
-}
-
-
-TEST(HoI4World_DivisionTemplateTests, BlankDivisionTemplateOutputsProperly)
-{
-	std::istringstream input("");
-	HoI4::DivisionTemplateType divisionTemplate(input);
-	std::ostringstream output;
-	output << divisionTemplate;
-
-	std::string outputString(
-		 "division_template = {\n"
-		 "\tname = \"\"\n"
-		 "\n"
-		 "\tregiments = {\n"
-		 "\t}\n"
-		 "\tsupport = {\n"
-		 "\t}\n"
-		 "}\n");
-	ASSERT_EQ(outputString, output.str());
-}
-
-
-TEST(HoI4World_DivisionTemplateTests, ImportedDivisionTemplateOutputsProperly)
-{
-	std::istringstream input(
-		 "= {\n"
-		 "\t\t\tname = \"Light Infantry Brigade\"\n"
-		 "\t\t\tregiments = {\n"
-		 "\t\t\t\tinfantry = { x = 0 y = 0 }\n"
-		 "\t\t\t}\n"
-		 "\t\t\tsupport = {\n"
-		 "\t\t\t\trecon = { x = 0 y = 0 }\n"
-		 "\t\t\t}\n"
-		 "\t\t}\n");
-	HoI4::DivisionTemplateType divisionTemplate(input);
-	std::ostringstream output;
-	output << divisionTemplate;
-
-	std::string outputString(
-		 "division_template = {\n"
-		 "\tname = \"Light Infantry Brigade\"\n"
-		 "\n"
-		 "\tregiments = {\n"
-		 "\t\tinfantry = { x = 0 y = 0 }\n"
-		 "\t}\n"
-		 "\tsupport = {\n"
-		 "\t\trecon = { x = 0 y = 0 }\n"
-		 "\t}\n"
-		 "}\n");
-	ASSERT_EQ(outputString, output.str());
-}
-
-
-TEST(HoI4World_DivisionTemplateTests, CopiedDivisionTemplateOutputsProperly)
-{
-	std::istringstream input("");
-	HoI4::DivisionTemplateType divisionTemplate(input);
-	std::ostringstream output;
-	output << divisionTemplate;
-
-	std::string outputString(
-		 "division_template = {\n"
-		 "\tname = \"\"\n"
-		 "\n"
-		 "\tregiments = {\n"
-		 "\t}\n"
-		 "\tsupport = {\n"
-		 "\t}\n"
-		 "}\n");
-	ASSERT_EQ(outputString, output.str());
-}
-
-
-TEST(HoI4World_DivisionTemplateTests, DivisionTempatesWithDifferentNamesNotEqual)
+TEST(HoI4World_Military_DivisionTemplateTests, DivisionTemplatesWithDifferentNamesNotEqual)
 {
 	std::istringstream input(
 		 "= {\n"
 		 "\t\t\tname = \"Light Infantry Brigade\"\n"
 		 "\t\t}\n");
-	HoI4::DivisionTemplateType divisionTemplate(input);
+	const HoI4::DivisionTemplateType divisionTemplate(input);
+
 	ASSERT_FALSE(divisionTemplate == std::string("Light Infantry Brigade2"));
 }
 
 
-TEST(HoI4World_DivisionTemplateTests, DivisionTempatesWithSameNamesEqual)
+TEST(HoI4World_Military_DivisionTemplateTests, DivisionTemplatesWithSameNamesEqual)
 {
 	std::istringstream input(
 		 "= {\n"
 		 "\t\t\tname = \"Light Infantry Brigade\"\n"
 		 "\t\t}\n");
-	HoI4::DivisionTemplateType divisionTemplate(input);
-	ASSERT_TRUE(divisionTemplate == std::string("Light Infantry Brigade"));
+	const HoI4::DivisionTemplateType divisionTemplate(input);
+
+	ASSERT_EQ(divisionTemplate, std::string("Light Infantry Brigade"));
 }
