@@ -28,9 +28,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "Division.h"
 #include "DivisionTemplate.h"
-#include "MilitaryMappings/MilitaryMappings.h"
-#include "States/HoI4States.h"
-#include "../V2World/Army.h"
+#include "../MilitaryMappings/MilitaryMappings.h"
+#include "../States/HoI4States.h"
+#include "../../V2World/Army.h"
 #include <string>
 #include <map>
 #include <vector>

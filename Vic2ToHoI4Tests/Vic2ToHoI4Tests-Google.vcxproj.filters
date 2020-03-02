@@ -83,21 +83,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\TechMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Airforce.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\DivisionTemplate.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Army.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regiment.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Division.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Focus.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
@@ -749,6 +734,21 @@
     <ClCompile Include="HoI4WorldTests\IdeologyModifiersTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\Division.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\DivisionTemplate.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\HoI4Airforce.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\HoI4Army.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\Regiment.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -903,6 +903,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Ideas">
       <UniqueIdentifier>{a1c58a1d-d1e4-4c60-9702-bf9c1c7e59b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Military">
+      <UniqueIdentifier>{9cb897ec-4ed8-416a-8f94-5218dcae5e50}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -23,11 +23,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "HoI4Army.h"
 #include "Division.h"
-#include "MilitaryMappings/UnitMappings.h"
-#include "States/HoI4State.h"
-#include "../Configuration.h"
-#include "../Mappers/Provinces/ProvinceMapper.h"
-#include "../V2World/Army.h"
+#include "../MilitaryMappings/UnitMappings.h"
+#include "../States/HoI4State.h"
+#include "../../Configuration.h"
+#include "../../Mappers/Provinces/ProvinceMapper.h"
+#include "../../V2World/Army.h"
 #include "Log.h"
 
 
