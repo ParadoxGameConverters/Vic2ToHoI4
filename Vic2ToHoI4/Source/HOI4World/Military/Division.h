@@ -28,9 +28,6 @@ class DivisionType
 		double experience;
 };
 
-
-std::ostream& operator << (std::ostream& out, const DivisionType&);
-
 }
 
 
