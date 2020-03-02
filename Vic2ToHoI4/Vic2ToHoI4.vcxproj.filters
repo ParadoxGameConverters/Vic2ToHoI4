@@ -112,6 +112,9 @@
     <Filter Include="HoI4World\Military">
       <UniqueIdentifier>{ecb90897-9357-4c32-b772-b474078e30f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hoi4Outputter\Military">
+      <UniqueIdentifier>{ddcf1619-ab27-4090-9efa-db5ce2c865fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -641,6 +644,9 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Military\Regiment.cpp">
       <Filter>HoI4World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Military\OutRegiment.cpp">
+      <Filter>Hoi4Outputter\Military</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1209,6 +1215,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Military\Regiment.h">
       <Filter>HoI4World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Military\OutRegiment.h">
+      <Filter>Hoi4Outputter\Military</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

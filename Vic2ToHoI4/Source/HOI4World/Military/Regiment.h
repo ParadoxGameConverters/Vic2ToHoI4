@@ -31,9 +31,6 @@ class RegimentType: commonItems::parser
 		int y = 0;
 };
 
-
-std::ostream& operator << (std::ostream& out, const RegimentType& regiment);
-
 }
 
 

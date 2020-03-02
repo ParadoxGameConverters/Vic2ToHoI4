@@ -77,6 +77,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutStrategicRegion.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutSupplyZone.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutSupplyZones.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutRegiment.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\LegacyNavyOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp" />

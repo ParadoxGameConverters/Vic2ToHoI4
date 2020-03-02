@@ -749,6 +749,9 @@
     <ClCompile Include="HoI4WorldTests\Military\RegimentTests.cpp">
       <Filter>HoI4WorldTests\Military</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutRegiment.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -909,6 +912,9 @@
     </Filter>
     <Filter Include="HoI4WorldTests\Military">
       <UniqueIdentifier>{f585e1ec-20e0-4f2d-bdb8-49e18eb0db75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Military">
+      <UniqueIdentifier>{e6b6046a-7440-425b-bb61-6d6a5c67bd24}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
