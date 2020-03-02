@@ -19,7 +19,7 @@ class Airplane
 	{
 	}
 
-	friend std::ofstream& operator<<(std::ofstream& output, const Airplane& instance);
+	friend std::ostream& operator<<(std::ostream& output, const Airplane& instance);
 
   private:
 	std::string type;

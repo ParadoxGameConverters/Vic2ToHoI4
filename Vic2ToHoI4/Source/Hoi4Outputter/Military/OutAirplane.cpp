@@ -2,7 +2,7 @@
 
 
 
-std::ofstream& HoI4::operator<<(std::ofstream& output, const Airplane& instance)
+std::ostream& HoI4::operator<<(std::ostream& output, const Airplane& instance)
 {
 	output << "\t\t" << instance.type << " = {\n";
 	output << "\t\t\towner = \"" << instance.owner << "\"\n";

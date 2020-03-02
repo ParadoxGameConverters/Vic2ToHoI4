@@ -761,6 +761,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutAirplane.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Military\AirplaneTests.cpp">
+      <Filter>HoI4WorldTests\Military</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

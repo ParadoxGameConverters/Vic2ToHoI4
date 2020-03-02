@@ -260,6 +260,7 @@
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\SubstitutesImporterTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\UnitMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\UnitMappingTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Military\AirplaneTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Military\DivisionTemplateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Military\DivisionTypeTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Military\HoI4ArmyTests.cpp" />
