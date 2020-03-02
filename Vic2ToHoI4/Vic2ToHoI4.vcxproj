@@ -304,6 +304,7 @@
     <ClCompile Include="Source\HOI4World\Military\HoI4Airforce.cpp" />
     <ClCompile Include="Source\HOI4World\Military\HoI4Army.cpp" />
     <ClCompile Include="Source\HOI4World\Military\Regiment.cpp" />
+    <ClCompile Include="Source\HOI4World\Military\RegimentTypeGroup.cpp" />
     <ClCompile Include="Source\HOI4World\Names.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\MtgNavy.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\MtgShip.cpp" />
@@ -492,6 +493,7 @@
     <ClInclude Include="Source\HOI4World\Military\HoI4Airforce.h" />
     <ClInclude Include="Source\HOI4World\Military\HoI4Army.h" />
     <ClInclude Include="Source\HOI4World\Military\Regiment.h" />
+    <ClInclude Include="Source\HOI4World\Military\RegimentTypeGroup.h" />
     <ClInclude Include="Source\HOI4World\Names.h" />
     <ClInclude Include="Source\HOI4World\Navies\LegacyNavy.h" />
     <ClInclude Include="Source\HOI4World\Navies\LegacyShip.h" />

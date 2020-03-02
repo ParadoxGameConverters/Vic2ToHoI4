@@ -169,6 +169,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\HoI4Airforce.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\HoI4Army.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\Regiment.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\RegimentTypeGroup.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgNavy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgShip.cpp" />
@@ -263,6 +264,7 @@
     <ClCompile Include="HoI4WorldTests\Military\DivisionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Military\HoI4ArmyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Military\RegimentTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Military\RegimentTypeGroupTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyNavyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyShipTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyShipTypeNamesTests.cpp" />
