@@ -3,17 +3,17 @@
 
 
 
-HoI4::RegimentType::RegimentType(const std::string& _type, std::istream& theStream):
-	type(_type)
+HoI4::RegimentType::RegimentType(const std::string& _type, std::istream& theStream): type(_type)
 {
-	registerKeyword(std::regex("x"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleInt xInt(theStream);
+	registerKeyword("x", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleInt xInt(theStream);
 		x = xInt.getInt();
 	});
-	registerKeyword(std::regex("y"), [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleInt yInt(theStream);
+	registerKeyword("y", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleInt yInt(theStream);
 		y = yInt.getInt();
 	});
 
 	parseStream(theStream);
+	clearRegisteredKeywords();
 }

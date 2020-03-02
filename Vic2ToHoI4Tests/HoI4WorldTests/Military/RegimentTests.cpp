@@ -26,7 +26,7 @@ TEST(HoI4World_Military_RegimentTests, RegimentTypeTypeCopiedByCopyConstructor)
 {
 	std::stringstream input("= { x = 0 y = 0 }");
 	const HoI4::RegimentType regimentType("infantry", input);
-	const HoI4::RegimentType regimentType2(regimentType);
+	const auto regimentType2(regimentType);
 
 	ASSERT_EQ(regimentType.getType(), regimentType2.getType());
 }
