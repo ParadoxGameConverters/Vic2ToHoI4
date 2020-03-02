@@ -213,6 +213,7 @@
     <ClCompile Include="Source\Hoi4Outputter\Map\OutSupplyZone.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Map\OutSupplyZones.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Military\OutAirplane.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Military\OutArmy.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Military\OutDivisionType.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Military\OutDivisionTemplate.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Military\OutRegimentType.cpp" />
@@ -396,6 +397,7 @@
     <ClInclude Include="Source\Hoi4Outputter\Map\OutSupplyZone.h" />
     <ClInclude Include="Source\Hoi4Outputter\Map\OutSupplyZones.h" />
     <ClInclude Include="Source\Hoi4Outputter\Military\OutAirplane.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Military\OutArmy.h" />
     <ClInclude Include="Source\Hoi4Outputter\Military\OutDivisionType.h" />
     <ClInclude Include="Source\Hoi4Outputter\Military\OutDivisionTemplate.h" />
     <ClInclude Include="Source\Hoi4Outputter\Military\OutRegimentType.h" />

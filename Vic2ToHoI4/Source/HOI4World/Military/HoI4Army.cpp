@@ -218,14 +218,3 @@ bool HoI4::Army::isWastelandProvince(int provinceNum, const HoI4::States& theSta
 
 	return true;
 }
-
-
-std::ostream& HoI4::operator << (std::ostream& output, const HoI4::Army& theArmy)
-{
-	for (auto& division: theArmy.divisions)
-	{
-		output << division;
-	}
-
-	return output;
-}

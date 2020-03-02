@@ -78,6 +78,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutSupplyZone.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutSupplyZones.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutAirplane.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutArmy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutDivisionTemplate.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutDivisionType.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutRegimentType.cpp" />

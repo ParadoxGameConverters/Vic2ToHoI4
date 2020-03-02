@@ -57,8 +57,6 @@ class Army
 		std::vector<DivisionType> divisions;
 };
 
-std::ostream& operator << (std::ostream& output, const Army& theArmy);
-
 }
 
 
