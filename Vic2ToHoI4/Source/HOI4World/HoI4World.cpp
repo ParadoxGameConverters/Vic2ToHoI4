@@ -101,6 +101,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	addCountryElectionEvents(majorIdeologies);
 	events->createStabilityEvents(majorIdeologies);
 	events->generateGenericEvents(theConfiguration, majorIdeologies);
+	events->createGovernmentInExileEvent(majorIdeologies);
 	theIdeas->updateIdeas(majorIdeologies);
 	decisions->updateDecisions(majorIdeologies, states->getProvinceToStateIDMap(), states->getDefaultStates(), *events);
 	updateAiPeaces(*peaces, majorIdeologies);

@@ -13,6 +13,13 @@
 
 
 
+std::string getElectionsAllowedString(const std::string& ideology)
+{
+	return (ideology == "democratic") ? "yes\n" : "no\n";
+}
+
+
+
 void HoI4::Events::createFactionEvents(const Country& leader, const Country& newAlly)
 {
 	auto possibleLeaderName = leader.getSourceCountry().getName("english");
@@ -547,8 +554,7 @@ void HoI4::Events::addOnTheRise(const std::set<std::string>& majorIdeologies)
 		onTheRiseOptionA.giveScriptBlock("add_political_power = -100");
 		std::string setPoliticsEffect = "set_politics = {\n";
 		setPoliticsEffect += "\t\t\truling_party = " + ideology + "\n";
-		setPoliticsEffect += "\t\t\telections_allowed = ";
-		(ideology == "democratic") ? setPoliticsEffect += "yes\n" : setPoliticsEffect += "no\n";
+		setPoliticsEffect += "\t\t\telections_allowed = " + getElectionsAllowedString(ideology);
 		setPoliticsEffect += "\t\t}";
 		onTheRiseOptionA.giveScriptBlock(std::move(setPoliticsEffect));
 		onTheRise.giveOption(std::move(onTheRiseOptionA));
@@ -781,8 +787,7 @@ void HoI4::Events::addFiftyPercentEvents(const std::set<std::string>& majorIdeol
 		}
 		std::string setPoliticsScript = "set_politics = {\n";
 		setPoliticsScript += "\t\t\truling_party = " + ideology + "\n";
-		setPoliticsScript += "\t\t\telections_allowed = ";
-		(ideology == "democratic") ? setPoliticsScript += "yes\n" : setPoliticsScript += "no\n";
+		setPoliticsScript += "\t\t\telections_allowed = " + getElectionsAllowedString(ideology);
 		setPoliticsScript += "\t\t}";
 		optionC.giveScriptBlock(std::move(setPoliticsScript));
 		if (ideology == "democratic")
@@ -889,8 +894,7 @@ void HoI4::Events::addRevolutionEvents(const std::set<std::string>& majorIdeolog
 		optionC.giveScriptBlock("add_political_power = -100");
 		std::string setPoliticsScript = "set_politics = {\n";
 		setPoliticsScript += "\t\t\truling_party = " + ideology + "\n";
-		setPoliticsScript += "\t\t\telections_allowed = ";
-		(ideology == "democratic") ? setPoliticsScript += "yes\n" : setPoliticsScript += "no\n";
+		setPoliticsScript += "\t\t\telections_allowed = " + getElectionsAllowedString(ideology);
 		setPoliticsScript += "\t\t}";
 		optionC.giveScriptBlock(std::move(setPoliticsScript));
 		revolutionEvent.giveOption(std::move(optionC));
@@ -1466,4 +1470,46 @@ void HoI4::Events::generateGenericEvents(const Configuration& theConfiguration,
 			updateGenericEventFourteen(genericEvent, majorIdeologies);
 		}
 	}
+}
+
+
+void HoI4::Events::createGovernmentInExileEvent(const std::set<std::string>& majorIdeologies)
+{
+	governmentInExileEvent.giveType("country_event");
+	governmentInExileEvent.giveId("mtg_generic.1");
+	governmentInExileEvent.giveTitle("mtg_generic.1.title");
+	governmentInExileEvent.giveDescription("= mtg_generic.1.desc");
+	governmentInExileEvent.givePicture("GFX_report_event_generic_parliament");
+	governmentInExileEvent.setTriggeredOnly();
+
+	EventOption option;
+	option.giveName("mtg_generic.1.a");
+	for (const auto& ideology: majorIdeologies)
+	{
+		option.giveScriptBlock(
+			 "if = {\n"
+			 "\t\t\tlimit = {\n"
+			 "\t\t\t\tFROM = {\n"
+			 "\t\t\t\t\thas_government = " +
+			 ideology +
+			 "\n"
+			 "\t\t\t\t}\n"
+			 "\t\t\t}\n"
+			 "\t\t\teffect_tooltip = {\n"
+			 "\t\t\t\tadd_timed_idea = {\n"
+			 "\t\t\t\t\tidea = political_turmoil\n"
+			 "\t\t\t\t\tdays = 365\n"
+			 "\t\t\t\t}\n"
+			 "\t\t\t\tset_politics = {\n"
+			 "\t\t\t\t\truling_party = " +
+			 ideology +
+			 "\n"
+			 "\t\t\t\t\telections_allowed = " +
+			 getElectionsAllowedString(ideology) +
+			 "\t\t\t\t}\n"
+			 "\t\t\t}\n"
+			 "\t\t}");
+	}
+
+	governmentInExileEvent.giveOption(std::move(option));
 }

@@ -42,6 +42,7 @@ class Events: commonItems::parser
 		 const std::set<std::string>& majorIdeologies);
 	void createStabilityEvents(const std::set<std::string>& majorIdeologies);
 	void generateGenericEvents(const Configuration& theConfiguration, const std::set<std::string>& majorIdeologies);
+	void createGovernmentInExileEvent(const std::set<std::string>& majorIdeologies);
 
 	[[nodiscard]] virtual std::optional<int> getEventNumber(const std::string& eventName) const;
 
@@ -55,6 +56,7 @@ class Events: commonItems::parser
 	[[nodiscard]] const auto& getStrikesEvents() const { return strikesEvents; }
 	[[nodiscard]] const auto& getMutinyEvents() const { return mutinyEvents; }
 	[[nodiscard]] const auto& getGenericEvents() const { return genericEvents; }
+	[[nodiscard]] const auto& getGovernmentInExileEvent() const { return governmentInExileEvent; }
 
   private:
 	void addOnTheRise(const std::set<std::string>& majorIdeologies);
@@ -79,6 +81,7 @@ class Events: commonItems::parser
 	std::map<std::string, Event> strikesEvents;
 	std::map<std::string, Event> mutinyEvents;
 	std::vector<Event> genericEvents;
+	Event governmentInExileEvent;
 
 	std::map<std::string, int> eventNumbers;
 };

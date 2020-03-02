@@ -14,6 +14,7 @@ void outputStabilityEvents(const std::map<std::string, HoI4::Event>& stabilityEv
 	 const std::map<std::string, HoI4::Event>& strikesEvents,
 	 const std::map<std::string, HoI4::Event>& mutinyEvents,
 	 const Configuration& theConfiguration);
+void outputGovernmentInExileDecision(const HoI4::Event& governmentInExileEvent);
 
 
 
@@ -39,6 +40,7 @@ void HoI4::outputEvents(const Events& theEvents, const Configuration& theConfigu
 		 theEvents.getMutinyEvents(),
 		 theConfiguration);
 	outputActualEvents("Generic.txt", "generic", theEvents.getGenericEvents(), theConfiguration);
+	outputGovernmentInExileDecision(theEvents.getGovernmentInExileEvent());
 }
 
 
@@ -126,4 +128,18 @@ void outputStabilityEvents(const std::map<std::string, HoI4::Event>& stabilityEv
 	}
 
 	outStabilityEvents.close();
+}
+
+
+void outputGovernmentInExileDecision(const HoI4::Event& governmentInExileEvent)
+{
+	std::ofstream outEvents("output/" + theConfiguration.getOutputName() + "/events/MTG_generic.txt",
+		 std::ofstream::app);
+	if (!outEvents.is_open())
+	{
+		throw std::runtime_error("Could not add to MTG_generic.txt");
+	}
+
+	outEvents << governmentInExileEvent;
+	outEvents.close();
 }
