@@ -1,61 +1,56 @@
-#include "../Vic2ToHoI4/Source/HoI4World/Military/Regiment.h"
+#include "../Vic2ToHoI4/Source/HOI4World/Military/Regiment.h"
 #include "gtest/gtest.h"
+#include <sstream>
 
 
 
-TEST(HoI4World_RegimentTests, RegimentTypeTypeDefaultsToBlank)
+TEST(HoI4World_Military_RegimentTests, RegimentTypeTypeDefaultsToBlank)
 {
-	std::istringstream input("");
-	HoI4::RegimentType regimentType("", input);
-	ASSERT_EQ(std::string(""), regimentType.getType());
+	std::stringstream input;
+	const HoI4::RegimentType regimentType("", input);
+
+	ASSERT_EQ("", regimentType.getType());
 }
 
 
-TEST(HoI4World_RegimentTests, RegimentTypeTypeCanBeImported)
+TEST(HoI4World_Military_RegimentTests, RegimentTypeTypeCanBeImported)
 {
-	std::istringstream input("= { x = 0 y = 0 }");
-	HoI4::RegimentType regimentType("infantry", input);
-	ASSERT_EQ(std::string("infantry"), regimentType.getType());
+	std::stringstream input;
+	const HoI4::RegimentType regimentType("infantry", input);
+
+	ASSERT_EQ("infantry", regimentType.getType());
 }
 
 
-TEST(HoI4World_RegimentTests, RegimentTypeTypeCopiedByCopyConstructor)
+TEST(HoI4World_Military_RegimentTests, RegimentTypeTypeCopiedByCopyConstructor)
 {
-	std::istringstream input("= { x = 0 y = 0 }");
-	HoI4::RegimentType regimentType("infantry", input);
-	HoI4::RegimentType regimentType2(regimentType);
+	std::stringstream input("= { x = 0 y = 0 }");
+	const HoI4::RegimentType regimentType("infantry", input);
+	const HoI4::RegimentType regimentType2(regimentType);
+
 	ASSERT_EQ(regimentType.getType(), regimentType2.getType());
 }
 
 
-TEST(HoI4World_RegimentTests, BlankRegimentTypeOutputsProperly)
+TEST(HoI4World_Military_RegimentTests, PositionDefaultsToOrigin)
 {
-	std::istringstream input("");
-	HoI4::RegimentType regimentType("", input);
+	std::stringstream input;
+	HoI4::RegimentType regimentType("infantry", input);
+
 	std::ostringstream output;
 	output << regimentType;
-	ASSERT_EQ(std::string("\t\t = { x = 0 y = 0 }\n"), output.str());
+
+	ASSERT_EQ("\t\tinfantry = { x = 0 y = 0 }\n", output.str());
 }
 
 
-TEST(HoI4World_RegimentTests, ImportedRegimentTypeOutputsProperly)
+TEST(HoI4World_Military_RegimentTests, PositionCanBeInput)
 {
-	std::istringstream input("= { x = 1 y = 2 }");
+	std::stringstream input("= { x = 1 y = 2 }");
 	HoI4::RegimentType regimentType("infantry", input);
+
 	std::ostringstream output;
 	output << regimentType;
-	ASSERT_EQ(std::string("\t\tinfantry = { x = 1 y = 2 }\n"), output.str());
-}
 
-
-TEST(HoI4World_RegimentTests, CopiedRegimentTypeOutputsProperly)
-{
-	std::istringstream input("= { x = 1 y = 2 }");
-	HoI4::RegimentType regimentType("infantry", input);
-	std::ostringstream output;
-	output << regimentType;
-	HoI4::RegimentType regimentType2(regimentType);
-	std::ostringstream output2;
-	output2 << regimentType2;
-	ASSERT_EQ(output.str(), output2.str());
+	ASSERT_EQ("\t\tinfantry = { x = 1 y = 2 }\n", output.str());
 }
