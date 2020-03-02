@@ -1,24 +1,24 @@
 #include "../../Vic2ToHoI4/Source/HOI4World/MilitaryMappings/MilitaryMappings.h"
-#include "../Vic2ToHoI4/Source/HoI4World/HoI4Version.h"
-#include "../Vic2ToHoI4/Source/HoI4World/Military/HoI4Army.h"
-#include "../Vic2ToHoI4/Source/HoI4World/States/HoI4State.h"
-#include "../Vic2ToHoI4/Source/HoI4World/States/HoI4States.h"
+#include "../Vic2ToHoI4/Source/HOI4World/Military/HoI4Army.h"
+#include "../Vic2ToHoI4/Source/HOI4World/States/HoI4State.h"
+#include "../Vic2ToHoI4/Source/HOI4World/States/HoI4States.h"
 #include "../Vic2ToHoI4/Source/Mappers/Provinces/ProvinceMapper.h"
 #include "../Vic2ToHoI4/Source/V2World/Army.h"
 #include "gtest/gtest.h"
 
 
-TEST(HoI4World_HoI4ArmyTests, ArmyStartsEmpty)
+TEST(HoI4World_Military_HoI4ArmyTests, ArmyStartsEmpty)
 {
-	HoI4::Army theArmy;
+	const HoI4::Army theArmy;
 
 	std::ostringstream output;
 	output << theArmy;
-	ASSERT_EQ(std::string(""), output.str());
+
+	ASSERT_EQ("", output.str());
 }
 
 
-TEST(HoI4World_HoI4ArmyTests, EmptyArmyStaysEmpty)
+TEST(HoI4World_Military_HoI4ArmyTests, EmptyArmyStaysEmpty)
 {
 	HoI4::States theStates;
 	HoI4::Army theArmy;
@@ -28,16 +28,18 @@ TEST(HoI4World_HoI4ArmyTests, EmptyArmyStaysEmpty)
 	mappingsInput << "\tunit_map = {}\n";
 	mappingsInput << "\tmtg_unit_map = {}\n";
 	mappingsInput << "}";
-	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
+	HoI4::militaryMappings theMilitaryMappings("default", mappingsInput);
+
 	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, theStates);
 
 	std::ostringstream output;
 	output << theArmy;
-	ASSERT_EQ(std::string(""), output.str());
+
+	ASSERT_EQ("", output.str());
 }
 
 
-TEST(HoI4World_HoI4ArmyTests, InsufficientDivisionsBecomeNothing)
+TEST(HoI4World_Military_HoI4ArmyTests, InsufficientDivisionsBecomeNothing)
 {
 	HoI4::States theStates;
 	HoI4::Army theArmy;
@@ -66,19 +68,20 @@ TEST(HoI4World_HoI4ArmyTests, InsufficientDivisionsBecomeNothing)
 	mappingsInput << "\t}\n";
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
+
 	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, theStates);
 
 	std::ostringstream output;
 	output << theArmy;
-	ASSERT_EQ(std::string(""), output.str());
+
+	ASSERT_EQ("", output.str());
 }
 
 
-TEST(HoI4World_HoI4ArmyTests, SufficientDivisionsConvert)
+TEST(HoI4World_Military_HoI4ArmyTests, SufficientDivisionsConvert)
 {
 	HoI4::States theStates;
 
-	HoI4::Version version;
 	std::istringstream provinceMapperInput("0.0.0 = { link = { vic2 = 496 hoi4 = 11821 } }");
 	theProvinceMapper.initialize(provinceMapperInput);
 
@@ -96,7 +99,7 @@ TEST(HoI4World_HoI4ArmyTests, SufficientDivisionsConvert)
 		 "\t\t\ttype=infantry\n"
 		 "\t\t}\n"
 		 "\t}");
-	Vic2::Army* Vic2Army = new Vic2::Army("army", armyInput);
+	auto Vic2Army = new Vic2::Army("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
@@ -124,6 +127,7 @@ TEST(HoI4World_HoI4ArmyTests, SufficientDivisionsConvert)
 	mappingsInput << "\t}\n";
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
+
 	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates);
 
 	std::ostringstream output;
@@ -155,11 +159,10 @@ TEST(HoI4World_HoI4ArmyTests, SufficientDivisionsConvert)
 }
 
 
-TEST(HoI4World_HoI4ArmyTests, ExperienceConverts)
+TEST(HoI4World_Military_HoI4ArmyTests, ExperienceConverts)
 {
 	HoI4::States theStates;
 
-	HoI4::Version version;
 	std::istringstream provinceMapperInput("0.0.0 = { link = { vic2 = 496 hoi4 = 11821 } }");
 	theProvinceMapper.initialize(provinceMapperInput);
 
@@ -177,7 +180,7 @@ TEST(HoI4World_HoI4ArmyTests, ExperienceConverts)
 		 "\t\t\ttype=infantry\n"
 		 "\t\t}\n"
 		 "\t}");
-	Vic2::Army* Vic2Army = new Vic2::Army("army", armyInput);
+	auto Vic2Army = new Vic2::Army("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
@@ -205,6 +208,7 @@ TEST(HoI4World_HoI4ArmyTests, ExperienceConverts)
 	mappingsInput << "\t}\n";
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
+
 	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates);
 
 	std::ostringstream output;
@@ -236,11 +240,10 @@ TEST(HoI4World_HoI4ArmyTests, ExperienceConverts)
 }
 
 
-TEST(HoI4World_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
+TEST(HoI4World_Military_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 {
 	HoI4::States theStates;
 
-	HoI4::Version version;
 	std::istringstream provinceMapperInput("0.0.0 = { link = { vic2 = 496 hoi4 = 11821 } }");
 	theProvinceMapper.initialize(provinceMapperInput);
 
@@ -258,7 +261,7 @@ TEST(HoI4World_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 		 "\t\t\ttype=infantry\n"
 		 "\t\t}\n"
 		 "\t}");
-	Vic2::Army* Vic2Army = new Vic2::Army("army", armyInput);
+	auto Vic2Army = new Vic2::Army("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
@@ -293,6 +296,7 @@ TEST(HoI4World_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 	mappingsInput << "\t}\n";
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
+
 	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates);
 
 	std::ostringstream output;
@@ -317,7 +321,7 @@ TEST(HoI4World_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 }
 
 
-TEST(HoI4World_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
+TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 {
 	HoI4::States theStates;
 
@@ -341,7 +345,7 @@ TEST(HoI4World_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 		 "\t\t\ttype=artillery\n"
 		 "\t\t}\n"
 		 "\t}");
-	Vic2::Army* Vic2Army = new Vic2::Army("army", armyInput);
+	auto Vic2Army = new Vic2::Army("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
@@ -384,6 +388,7 @@ TEST(HoI4World_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 	mappingsInput << "\t}\n";
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
+
 	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates);
 
 	std::ostringstream output;
@@ -401,11 +406,10 @@ TEST(HoI4World_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 }
 
 
-TEST(HoI4World_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
+TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 {
 	HoI4::States theStates;
 
-	HoI4::Version version;
 	std::istringstream provinceMapperInput(
 		 "0.0.0 = {\n"
 		 "\tlink = { vic2 = 496 hoi4 = 11821 }\n"
@@ -427,7 +431,7 @@ TEST(HoI4World_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 		 "\t\t\ttype=infantry\n"
 		 "\t\t}\n"
 		 "\t}");
-	Vic2::Army* Vic2Army = new Vic2::Army("army", armyInput);
+	auto Vic2Army = new Vic2::Army("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	std::istringstream armyInput2(
 		 "=\n"
@@ -441,7 +445,7 @@ TEST(HoI4World_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 		 "\t\t\ttype=infantry\n"
 		 "\t\t}\n"
 		 "\t}");
-	Vic2::Army* Vic2Army2 = new Vic2::Army("army", armyInput2);
+	auto Vic2Army2 = new Vic2::Army("army", armyInput2);
 	Vic2Armies.push_back(Vic2Army2);
 	theArmy.addSourceArmies(Vic2Armies);
 
@@ -470,6 +474,7 @@ TEST(HoI4World_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 	mappingsInput << "\t}\n";
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
+
 	theArmy.convertArmies(theMilitaryMappings, 1, 1.0, theStates);
 
 	std::ostringstream output;
