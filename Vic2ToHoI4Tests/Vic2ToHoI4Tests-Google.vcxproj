@@ -229,12 +229,9 @@
     <ClCompile Include="HoI4WorldTests\Diplomacy\AiPeaceTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Diplomacy\Hoi4RelationsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Diplomacy\Hoi4WarTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\DivisionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Events\EventOptionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Events\EventsFileTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Events\EventTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideas\IdeaGroupTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideas\IdeaTests.cpp" />
@@ -260,6 +257,10 @@
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\SubstitutesImporterTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\UnitMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\UnitMappingTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Military\DivisionTemplateTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Military\DivisionTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Military\HoI4ArmyTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Military\RegimentTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyNavyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyShipTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyShipTypeNamesTests.cpp" />
@@ -267,7 +268,6 @@
     <ClCompile Include="HoI4WorldTests\Navies\MtgShipTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\MtgShipTypeNamesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\NaviesTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\RegimentTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedTriggers\ScriptedTriggerTests.cpp" />
