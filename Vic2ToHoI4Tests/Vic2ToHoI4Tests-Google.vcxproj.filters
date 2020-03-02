@@ -725,9 +725,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\DivisionTemplate.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\HoI4Airforce.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\HoI4Army.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
     </ClCompile>
@@ -759,6 +756,9 @@
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\RegimentType.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\Airplane.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
     </ClCompile>
   </ItemGroup>

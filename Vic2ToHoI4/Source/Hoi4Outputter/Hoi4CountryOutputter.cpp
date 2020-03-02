@@ -632,7 +632,7 @@ void outputFactions(
 ) {
 	if (faction && (faction->getLeader()->getTag() == tag))
 	{
-		string allianceName;
+		std::string allianceName;
 		if (possibleLeaderName)
 		{
 			allianceName = "Alliance of " + *possibleLeaderName;

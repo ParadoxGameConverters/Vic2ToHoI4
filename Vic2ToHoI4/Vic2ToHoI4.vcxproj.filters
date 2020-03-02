@@ -633,9 +633,6 @@
     <ClCompile Include="Source\HOI4World\Military\DivisionTemplate.cpp">
       <Filter>HoI4World\Military</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Military\HoI4Airforce.cpp">
-      <Filter>HoI4World\Military</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Military\HoI4Army.cpp">
       <Filter>HoI4World\Military</Filter>
     </ClCompile>
@@ -652,6 +649,9 @@
       <Filter>Hoi4Outputter\Military</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Military\RegimentType.cpp">
+      <Filter>HoI4World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Military\Airplane.cpp">
       <Filter>HoI4World\Military</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1210,9 +1210,6 @@
     <ClInclude Include="Source\HOI4World\Military\DivisionTemplate.h">
       <Filter>HoI4World\Military</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Military\HoI4Airforce.h">
-      <Filter>HoI4World\Military</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Military\HoI4Army.h">
       <Filter>HoI4World\Military</Filter>
     </ClInclude>
@@ -1232,6 +1229,9 @@
       <Filter>Hoi4Outputter\Military</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Military\RegimentType.h">
+      <Filter>HoI4World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Military\Airplane.h">
       <Filter>HoI4World\Military</Filter>
     </ClInclude>
   </ItemGroup>

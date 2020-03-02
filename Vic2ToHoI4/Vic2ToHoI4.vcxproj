@@ -301,7 +301,7 @@
     <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMapping.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMappings.cpp" />
     <ClCompile Include="Source\HOI4World\Military\DivisionTemplate.cpp" />
-    <ClCompile Include="Source\HOI4World\Military\HoI4Airforce.cpp" />
+    <ClCompile Include="Source\HOI4World\Military\Airplane.cpp" />
     <ClCompile Include="Source\HOI4World\Military\HoI4Army.cpp" />
     <ClCompile Include="Source\HOI4World\Military\RegimentType.cpp" />
     <ClCompile Include="Source\HOI4World\Military\RegimentTypeGroup.cpp" />
@@ -490,7 +490,7 @@
     <ClInclude Include="Source\HOI4World\MilitaryMappings\UnitMappings.h" />
     <ClInclude Include="Source\HOI4World\Military\DivisionType.h" />
     <ClInclude Include="Source\HOI4World\Military\DivisionTemplate.h" />
-    <ClInclude Include="Source\HOI4World\Military\HoI4Airforce.h" />
+    <ClInclude Include="Source\HOI4World\Military\Airplane.h" />
     <ClInclude Include="Source\HOI4World\Military\HoI4Army.h" />
     <ClInclude Include="Source\HOI4World\Military\RegimentType.h" />
     <ClInclude Include="Source\HOI4World\Military\RegimentTypeGroup.h" />
