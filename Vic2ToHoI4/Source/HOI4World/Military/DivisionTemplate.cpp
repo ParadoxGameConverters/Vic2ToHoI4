@@ -49,26 +49,3 @@ HoI4::DivisionTemplateType::DivisionTemplateType(std::istream& theStream)
 
 	parseStream(theStream);
 }
-
-
-std::ostream& HoI4::operator << (std::ostream& out, const HoI4::DivisionTemplateType& rhs)
-{
-	out << "division_template = {\n";
-	out << "\tname = \"" << rhs.name << "\"\n";
-	out << "\n";
-	out << "\tregiments = {\n";
-	for (auto regiment: rhs.regiments)
-	{
-		out << regiment;
-	}
-	out << "\t}\n";
-	out << "\tsupport = {\n";
-	for (auto regiment: rhs.supportRegiments)
-	{
-		out << regiment;
-	}
-	out << "\t}\n";
-	out << "}\n";
-
-	return out;
-}

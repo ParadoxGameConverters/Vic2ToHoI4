@@ -37,10 +37,6 @@ class DivisionTemplateType: commonItems::parser
 		std::vector<RegimentType> supportRegiments;
 };
 
-
-std::ostream& operator << (std::ostream& out, const DivisionTemplateType& rhs);
-
-
 }
 
 
