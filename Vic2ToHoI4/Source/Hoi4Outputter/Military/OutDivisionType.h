@@ -2,7 +2,7 @@
 #define OUT_DIVISION_H
 
 
-#include "../../HOI4World/Military/Division.h"
+#include "../../HOI4World/Military/DivisionType.h"
 
 
 

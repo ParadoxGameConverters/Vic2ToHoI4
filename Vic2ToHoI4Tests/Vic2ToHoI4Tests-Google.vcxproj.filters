@@ -731,26 +731,11 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\HoI4Army.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\Regiment.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
-    </ClCompile>
     <ClCompile Include="HoI4WorldTests\Military\DivisionTemplateTests.cpp">
-      <Filter>HoI4WorldTests\Military</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Military\DivisionTests.cpp">
       <Filter>HoI4WorldTests\Military</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\Military\HoI4ArmyTests.cpp">
       <Filter>HoI4WorldTests\Military</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Military\RegimentTests.cpp">
-      <Filter>HoI4WorldTests\Military</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutRegiment.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutDivision.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutDivisionTemplate.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
@@ -760,6 +745,21 @@
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\Military\RegimentTypeGroupTests.cpp">
       <Filter>HoI4WorldTests\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Military\DivisionTypeTests.cpp">
+      <Filter>HoI4WorldTests\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Military\RegimentTypeTests.cpp">
+      <Filter>HoI4WorldTests\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutDivisionType.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutRegimentType.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\RegimentType.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

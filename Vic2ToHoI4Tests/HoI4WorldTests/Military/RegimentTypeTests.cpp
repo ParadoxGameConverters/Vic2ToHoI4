@@ -1,10 +1,10 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Military/Regiment.h"
+#include "../Vic2ToHoI4/Source/HOI4World/Military/RegimentType.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
 
 
-TEST(HoI4World_Military_RegimentTests, RegimentTypeTypeDefaultsToBlank)
+TEST(HoI4World_Military_RegimentTests, TypeDefaultsToBlank)
 {
 	std::stringstream input;
 	const HoI4::RegimentType regimentType("", input);
@@ -13,22 +13,12 @@ TEST(HoI4World_Military_RegimentTests, RegimentTypeTypeDefaultsToBlank)
 }
 
 
-TEST(HoI4World_Military_RegimentTests, RegimentTypeTypeCanBeImported)
+TEST(HoI4World_Military_RegimentTests, TypeCanBeImported)
 {
 	std::stringstream input;
 	const HoI4::RegimentType regimentType("infantry", input);
 
 	ASSERT_EQ("infantry", regimentType.getType());
-}
-
-
-TEST(HoI4World_Military_RegimentTests, RegimentTypeTypeCopiedByCopyConstructor)
-{
-	std::stringstream input("= { x = 0 y = 0 }");
-	const HoI4::RegimentType regimentType("infantry", input);
-	const auto regimentType2(regimentType);
-
-	ASSERT_EQ(regimentType.getType(), regimentType2.getType());
 }
 
 

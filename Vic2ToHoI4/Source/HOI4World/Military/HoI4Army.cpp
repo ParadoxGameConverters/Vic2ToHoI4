@@ -1,5 +1,5 @@
 #include "HoI4Army.h"
-#include "Division.h"
+#include "DivisionType.h"
 #include "../MilitaryMappings/UnitMappings.h"
 #include "../States/HoI4State.h"
 #include "../../Configuration.h"

@@ -1,9 +1,9 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Military/Division.h"
+#include "../Vic2ToHoI4/Source/HOI4World/Military/DivisionType.h"
 #include "gtest/gtest.h"
 
 
 
-TEST(HoI4World_Military_DivisionTests, AllItemsAreAsSet)
+TEST(HoI4World_Military_DivisionTypeTests, AllItemsAreAsSet)
 {
 	const HoI4::DivisionType division("Test Division", "Light Infantry Brigade", 42, 0.3);
 	std::ostringstream output;

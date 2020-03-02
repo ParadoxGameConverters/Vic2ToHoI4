@@ -4,7 +4,7 @@
 
 
 #include "newParser.h"
-#include "Regiment.h"
+#include "RegimentType.h"
 #include <istream>
 #include <ostream>
 #include <string>

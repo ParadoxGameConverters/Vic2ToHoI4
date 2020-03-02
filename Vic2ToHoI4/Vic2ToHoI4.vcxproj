@@ -212,9 +212,9 @@
     <ClCompile Include="Source\Hoi4Outputter\Map\OutStrategicRegion.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Map\OutSupplyZone.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Map\OutSupplyZones.cpp" />
-    <ClCompile Include="Source\Hoi4Outputter\Military\OutDivision.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Military\OutDivisionType.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Military\OutDivisionTemplate.cpp" />
-    <ClCompile Include="Source\Hoi4Outputter\Military\OutRegiment.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Military\OutRegimentType.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp" />
@@ -303,7 +303,7 @@
     <ClCompile Include="Source\HOI4World\Military\DivisionTemplate.cpp" />
     <ClCompile Include="Source\HOI4World\Military\HoI4Airforce.cpp" />
     <ClCompile Include="Source\HOI4World\Military\HoI4Army.cpp" />
-    <ClCompile Include="Source\HOI4World\Military\Regiment.cpp" />
+    <ClCompile Include="Source\HOI4World\Military\RegimentType.cpp" />
     <ClCompile Include="Source\HOI4World\Military\RegimentTypeGroup.cpp" />
     <ClCompile Include="Source\HOI4World\Names.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\MtgNavy.cpp" />
@@ -395,9 +395,9 @@
     <ClInclude Include="Source\Hoi4Outputter\Map\OutStrategicRegion.h" />
     <ClInclude Include="Source\Hoi4Outputter\Map\OutSupplyZone.h" />
     <ClInclude Include="Source\Hoi4Outputter\Map\OutSupplyZones.h" />
-    <ClInclude Include="Source\Hoi4Outputter\Military\OutDivision.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Military\OutDivisionType.h" />
     <ClInclude Include="Source\Hoi4Outputter\Military\OutDivisionTemplate.h" />
-    <ClInclude Include="Source\Hoi4Outputter\Military\OutRegiment.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Military\OutRegimentType.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.h" />
@@ -488,11 +488,11 @@
     <ClInclude Include="Source\HOI4World\MilitaryMappings\SubstitutesImporter.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\UnitMapping.h" />
     <ClInclude Include="Source\HOI4World\MilitaryMappings\UnitMappings.h" />
-    <ClInclude Include="Source\HOI4World\Military\Division.h" />
+    <ClInclude Include="Source\HOI4World\Military\DivisionType.h" />
     <ClInclude Include="Source\HOI4World\Military\DivisionTemplate.h" />
     <ClInclude Include="Source\HOI4World\Military\HoI4Airforce.h" />
     <ClInclude Include="Source\HOI4World\Military\HoI4Army.h" />
-    <ClInclude Include="Source\HOI4World\Military\Regiment.h" />
+    <ClInclude Include="Source\HOI4World\Military\RegimentType.h" />
     <ClInclude Include="Source\HOI4World\Military\RegimentTypeGroup.h" />
     <ClInclude Include="Source\HOI4World\Names.h" />
     <ClInclude Include="Source\HOI4World\Navies\LegacyNavy.h" />

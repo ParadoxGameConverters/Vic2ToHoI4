@@ -3,7 +3,7 @@
 
 
 
-#include "Division.h"
+#include "DivisionType.h"
 #include "DivisionTemplate.h"
 #include "../MilitaryMappings/MilitaryMappings.h"
 #include "../States/HoI4States.h"

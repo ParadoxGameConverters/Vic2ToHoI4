@@ -3,7 +3,7 @@
 
 
 
-#include "Regiment.h"
+#include "RegimentType.h"
 #include "newParser.h"
 
 

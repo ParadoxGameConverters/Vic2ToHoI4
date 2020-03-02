@@ -1,4 +1,4 @@
-#include "Regiment.h"
+#include "RegimentType.h"
 #include "ParserHelpers.h"
 
 

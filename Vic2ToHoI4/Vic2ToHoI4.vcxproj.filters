@@ -639,19 +639,19 @@
     <ClCompile Include="Source\HOI4World\Military\HoI4Army.cpp">
       <Filter>HoI4World\Military</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Military\Regiment.cpp">
-      <Filter>HoI4World\Military</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\Military\OutRegiment.cpp">
-      <Filter>Hoi4Outputter\Military</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\Military\OutDivision.cpp">
-      <Filter>Hoi4Outputter\Military</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Military\OutDivisionTemplate.cpp">
       <Filter>Hoi4Outputter\Military</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Military\RegimentTypeGroup.cpp">
+      <Filter>HoI4World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Military\OutDivisionType.cpp">
+      <Filter>Hoi4Outputter\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Military\OutRegimentType.cpp">
+      <Filter>Hoi4Outputter\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Military\RegimentType.cpp">
       <Filter>HoI4World\Military</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1207,9 +1207,6 @@
     <ClInclude Include="Source\HOI4World\IdeologyModifiers.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Military\Division.h">
-      <Filter>HoI4World\Military</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Military\DivisionTemplate.h">
       <Filter>HoI4World\Military</Filter>
     </ClInclude>
@@ -1219,19 +1216,22 @@
     <ClInclude Include="Source\HOI4World\Military\HoI4Army.h">
       <Filter>HoI4World\Military</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Military\Regiment.h">
-      <Filter>HoI4World\Military</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\Military\OutRegiment.h">
-      <Filter>Hoi4Outputter\Military</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\Military\OutDivision.h">
-      <Filter>Hoi4Outputter\Military</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Military\OutDivisionTemplate.h">
       <Filter>Hoi4Outputter\Military</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Military\RegimentTypeGroup.h">
+      <Filter>HoI4World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Military\OutDivisionType.h">
+      <Filter>Hoi4Outputter\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Military\DivisionType.h">
+      <Filter>HoI4World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Military\OutRegimentType.h">
+      <Filter>Hoi4Outputter\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Military\RegimentType.h">
       <Filter>HoI4World\Military</Filter>
     </ClInclude>
   </ItemGroup>

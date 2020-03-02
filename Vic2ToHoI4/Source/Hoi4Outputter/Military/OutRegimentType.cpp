@@ -1,5 +1,5 @@
-#include "OutRegiment.h"
-
+#include "OutRegimentType.h"
+#include <ostream>
 
 
 std::ostream& HoI4::operator<<(std::ostream& out, const RegimentType& regiment)

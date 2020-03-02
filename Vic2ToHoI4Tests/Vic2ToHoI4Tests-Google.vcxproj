@@ -77,9 +77,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutStrategicRegion.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutSupplyZone.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutSupplyZones.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutDivision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutDivisionTemplate.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutRegiment.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutDivisionType.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutRegimentType.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\LegacyNavyOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp" />
@@ -168,7 +168,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\DivisionTemplate.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\HoI4Airforce.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\HoI4Army.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\Regiment.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\RegimentType.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\RegimentTypeGroup.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgNavy.cpp" />
@@ -261,9 +261,9 @@
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\UnitMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\UnitMappingTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Military\DivisionTemplateTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\Military\DivisionTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Military\DivisionTypeTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Military\HoI4ArmyTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\Military\RegimentTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Military\RegimentTypeTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Military\RegimentTypeGroupTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyNavyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyShipTests.cpp" />

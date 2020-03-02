@@ -2,7 +2,7 @@
 #define OUT_REGIMENT_H
 
 
-#include "../../HOI4World/Military/Regiment.h"
+#include "../../HOI4World/Military/RegimentType.h"
 #include <ostream>
 
 
