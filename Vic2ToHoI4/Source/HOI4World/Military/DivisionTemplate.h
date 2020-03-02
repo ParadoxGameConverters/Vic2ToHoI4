@@ -3,9 +3,8 @@
 
 
 
-#include "newParser.h"
 #include "RegimentType.h"
-#include <istream>
+#include "newParser.h"
 #include <ostream>
 #include <string>
 #include <vector>
@@ -18,26 +17,24 @@ namespace HoI4
 
 class DivisionTemplateType: commonItems::parser
 {
-	public:
-		explicit DivisionTemplateType(std::istream& theStream);
-		DivisionTemplateType(const DivisionTemplateType&) = default;
-		DivisionTemplateType& operator=(const DivisionTemplateType&) = delete;
+  public:
+	explicit DivisionTemplateType(std::istream& theStream);
 
-		bool operator==(const std::string& rhs) const { return name == rhs; }
+	bool operator==(const std::string& rhs) const { return name == rhs; }
 
-		friend std::ostream& operator << (std::ostream& out, const DivisionTemplateType& rhs);
+	friend std::ostream& operator<<(std::ostream& out, const DivisionTemplateType& rhs);
 
-		std::string getName() const { return name; }
-		std::vector<RegimentType> getRegiments() const { return regiments; }
-		std::vector<RegimentType> getSupportRegiments() const { return supportRegiments; }
+	[[nodiscard]] std::string getName() const { return name; }
+	[[nodiscard]] std::vector<RegimentType> getRegiments() const { return regiments; }
+	[[nodiscard]] std::vector<RegimentType> getSupportRegiments() const { return supportRegiments; }
 
-	private:
-		std::string name;
-		std::vector<RegimentType> regiments;
-		std::vector<RegimentType> supportRegiments;
+  private:
+	std::string name;
+	std::vector<RegimentType> regiments;
+	std::vector<RegimentType> supportRegiments;
 };
 
-}
+} // namespace HoI4
 
 
 
