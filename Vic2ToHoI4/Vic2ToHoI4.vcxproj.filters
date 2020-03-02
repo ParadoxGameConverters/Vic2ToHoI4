@@ -630,9 +630,6 @@
     <ClCompile Include="Source\HOI4World\IdeologyModifiers.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Military\Division.cpp">
-      <Filter>HoI4World\Military</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Military\DivisionTemplate.cpp">
       <Filter>HoI4World\Military</Filter>
     </ClCompile>

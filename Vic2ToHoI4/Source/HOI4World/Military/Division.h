@@ -13,22 +13,22 @@ namespace HoI4
 
 class DivisionType
 {
-	public:
-		DivisionType(const std::string& name, const std::string& type, int location, double experience);
-		DivisionType(const DivisionType&) = default;
+  public:
+	DivisionType(std::string _name, std::string _type, const int _location, const double _experience):
+		 name(std::move(_name)), type(std::move(_type)), location(_location), experience(_experience)
+	{
+	}
 
-		friend std::ostream& operator << (std::ostream& out, const DivisionType&);
+	friend std::ostream& operator<<(std::ostream& out, const DivisionType&);
 
-	private:
-		DivisionType& operator=(const DivisionType&) = delete;
-
-		std::string	name;
-		std::string	type;
-		int location = 0;
-		double experience;
+  private:
+	std::string name;
+	std::string type;
+	int location = 0;
+	double experience = 0.0;
 };
 
-}
+} // namespace HoI4
 
 
 

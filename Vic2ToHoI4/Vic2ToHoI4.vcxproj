@@ -299,7 +299,6 @@
     <ClCompile Include="Source\HOI4World\MilitaryMappings\SubstitutesImporter.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMapping.cpp" />
     <ClCompile Include="Source\HOI4World\MilitaryMappings\UnitMappings.cpp" />
-    <ClCompile Include="Source\HOI4World\Military\Division.cpp" />
     <ClCompile Include="Source\HOI4World\Military\DivisionTemplate.cpp" />
     <ClCompile Include="Source\HOI4World\Military\HoI4Airforce.cpp" />
     <ClCompile Include="Source\HOI4World\Military\HoI4Army.cpp" />
