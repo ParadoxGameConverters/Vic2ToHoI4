@@ -1,5 +1,5 @@
-#ifndef HOI4_ARMY_H_
-#define HOI4_ARMY_H_
+#ifndef HOI4_ARMY_H
+#define HOI4_ARMY_H
 
 
 
@@ -27,8 +27,8 @@ namespace HoI4
 
 typedef struct
 {
-	double unitSize;
-	Vic2::Regiment* regiment;
+	double unitSize = 0.0;
+	double experience = 0.0;
 } SizedRegiment;
 
 
@@ -59,4 +59,4 @@ class Army
 
 
 
-#endif // HOI4_ARMY_H_
+#endif // HOI4_ARMY_H

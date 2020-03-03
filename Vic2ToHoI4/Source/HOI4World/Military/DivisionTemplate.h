@@ -1,5 +1,5 @@
-#ifndef HOI4_DIVISION_TEMPLATE_H_
-#define HOI4_DIVISION_TEMPLATE_H_
+#ifndef HOI4_DIVISION_TEMPLATE_H
+#define HOI4_DIVISION_TEMPLATE_H
 
 
 
@@ -24,9 +24,9 @@ class DivisionTemplateType: commonItems::parser
 
 	friend std::ostream& operator<<(std::ostream& out, const DivisionTemplateType& rhs);
 
-	[[nodiscard]] std::string getName() const { return name; }
-	[[nodiscard]] std::vector<RegimentType> getRegiments() const { return regiments; }
-	[[nodiscard]] std::vector<RegimentType> getSupportRegiments() const { return supportRegiments; }
+	[[nodiscard]] const auto& getName() const { return name; }
+	[[nodiscard]] const auto& getRegiments() const { return regiments; }
+	[[nodiscard]] const auto& getSupportRegiments() const { return supportRegiments; }
 
   private:
 	std::string name;
@@ -38,4 +38,4 @@ class DivisionTemplateType: commonItems::parser
 
 
 
-#endif // HOI4_DIVISION_TEMPLATE_H_
+#endif // HOI4_DIVISION_TEMPLATE_H

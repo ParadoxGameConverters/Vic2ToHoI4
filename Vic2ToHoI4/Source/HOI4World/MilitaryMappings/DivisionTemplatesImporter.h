@@ -16,7 +16,7 @@ class DivisionTemplatesImporter: commonItems::parser
   public:
 	explicit DivisionTemplatesImporter(std::istream& theStream);
 
-	[[nodiscard]] auto getDivisionTemplates() const { return divisionTemplates; }
+	[[nodiscard]] auto&& takeDivisionTemplates() const { return std::move(divisionTemplates); }
 
   private:
 	std::vector<DivisionTemplateType> divisionTemplates;

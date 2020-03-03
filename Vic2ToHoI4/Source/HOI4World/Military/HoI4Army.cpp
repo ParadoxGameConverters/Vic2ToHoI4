@@ -25,7 +25,7 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings,
 {
 	std::map<std::string, std::vector<SizedRegiment>> remainingBattalionsAndCompanies;
 
-	for (auto army: sourceArmies)
+	for (const auto& army: sourceArmies)
 	{
 		auto provinceMapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(army->getLocation());
 		if (!provinceMapping || isWastelandProvince(*provinceMapping->begin(), theStates))
@@ -69,7 +69,7 @@ void addAvailableBattalionsAndCompanies(
 	 const HoI4::militaryMappings& theMilitaryMappings,
 	 const double forceMultiplier)
 {
-	for (auto regiment: sourceArmy.getRegiments())
+	for (const auto& regiment: sourceArmy.getRegiments())
 	{
 		auto Vic2Type = regiment->getType();
 
@@ -81,7 +81,7 @@ void addAvailableBattalionsAndCompanies(
 			{
 				HoI4::SizedRegiment theRegiment;
 				theRegiment.unitSize = unitInfo->getSize() * forceMultiplier;
-				theRegiment.regiment = regiment;
+				theRegiment.experience = regiment->getExperience();
 				availableBattalionsAndCompanies[unitInfo->getType()].push_back(theRegiment);
 			}
 		}
@@ -100,7 +100,7 @@ void addRemainingBattalionsAndCompanies(
 	for (const auto& unit: localBattalionsAndCompanies)
 	{
 		std::vector<HoI4::SizedRegiment> remainingRegiments;
-		for (auto regiment: unit.second)
+		for (const auto& regiment: unit.second)
 		{
 			if (regiment.unitSize > 0)
 			{
@@ -111,7 +111,7 @@ void addRemainingBattalionsAndCompanies(
 		if (auto remainingUnit = remainingBattalionsAndCompanies.find(unit.first);
 			 remainingUnit != remainingBattalionsAndCompanies.end())
 		{
-			for (auto regiment: remainingRegiments)
+			for (const auto& regiment: remainingRegiments)
 			{
 				remainingUnit->second.push_back(regiment);
 			}
@@ -184,7 +184,7 @@ bool sufficientUnits(const std::map<std::string, std::vector<HoI4::SizedRegiment
 
 		if (auto unit = units.find(requiredUnit.first); unit != units.end())
 		{
-			for (auto sizedRegiment: unit->second)
+			for (const auto& sizedRegiment: unit->second)
 			{
 				available += sizedRegiment.unitSize;
 			}
@@ -193,7 +193,7 @@ bool sufficientUnits(const std::map<std::string, std::vector<HoI4::SizedRegiment
 		{
 			if (auto unit = units.find(substitute->second); unit != units.end())
 			{
-				for (auto sizedRegiment: unit->second)
+				for (const auto& sizedRegiment: unit->second)
 				{
 					available += sizedRegiment.unitSize;
 				}
@@ -231,7 +231,7 @@ HoI4::DivisionType createDivision(const std::map<std::string, int>& templateRequ
 				regiment.unitSize -= decreaseAmount;
 				remainingRequirement -= decreaseAmount;
 
-				totalExperience += decreaseAmount * regiment.regiment->getExperience();
+				totalExperience += decreaseAmount * regiment.experience;
 			}
 		}
 		if (const auto& substitutes = theMilitaryMappings.getSubstitutes();
@@ -245,7 +245,7 @@ HoI4::DivisionType createDivision(const std::map<std::string, int>& templateRequ
 					regiment.unitSize -= decreaseAmount;
 					remainingRequirement -= decreaseAmount;
 
-					totalExperience += decreaseAmount * regiment.regiment->getExperience();
+					totalExperience += decreaseAmount * regiment.experience;
 				}
 			}
 		}

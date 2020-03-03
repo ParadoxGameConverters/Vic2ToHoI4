@@ -1,5 +1,5 @@
-#ifndef HOI4_DIVISION_H_
-#define HOI4_DIVISION_H_
+#ifndef HOI4_DIVISION_TYPE_H
+#define HOI4_DIVISION_TYPE_H
 
 
 
@@ -32,4 +32,4 @@ class DivisionType
 
 
 
-#endif // HOI4_DIVISION_H_
+#endif // HOI4_DIVISION_TYPE_H

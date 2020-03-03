@@ -1,5 +1,5 @@
-#ifndef HOI4_REGIMENT_H
-#define HOI4_REGIMENT_H
+#ifndef HOI4_REGIMENT_TYPE_H
+#define HOI4_REGIMENT_TYPE_H
 
 
 
@@ -31,4 +31,4 @@ class RegimentType: commonItems::parser
 
 
 
-#endif // HOI4_REGIMENT_H
+#endif // HOI4_REGIMENT_TYPE_H

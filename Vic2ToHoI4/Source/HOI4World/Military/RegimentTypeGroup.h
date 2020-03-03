@@ -1,5 +1,5 @@
-#ifndef REGIMENT_TYPE_GROUP
-#define REGIMENT_TYPE_GROUP
+#ifndef REGIMENT_TYPE_GROUP_H
+#define REGIMENT_TYPE_GROUP_H
 
 
 
@@ -26,4 +26,4 @@ class RegimentTypeGroup: commonItems::parser
 
 
 
-#endif // REGIMENT_TYPE_GROUP
+#endif // REGIMENT_TYPE_GROUP_H
