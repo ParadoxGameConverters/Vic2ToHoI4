@@ -37,7 +37,7 @@ class Army
   public:
 	Army() = default;
 
-	void addSourceArmies(std::vector<const Vic2::Army*> _sourceArmies) { sourceArmies = std::move(_sourceArmies); }
+	void addSourceArmies(const std::vector<Vic2::Army>& _sourceArmies) { sourceArmies = _sourceArmies; }
 
 	void convertArmies(const militaryMappings& theMilitaryMappings,
 		 int backupLocation,
@@ -51,7 +51,7 @@ class Army
 		 std::map<std::string, std::vector<SizedRegiment>>& BattalionsAndCompanies,
 		 int location);
 
-	std::vector<const Vic2::Army*> sourceArmies;
+	std::vector<Vic2::Army> sourceArmies;
 	std::vector<DivisionType> divisions;
 };
 

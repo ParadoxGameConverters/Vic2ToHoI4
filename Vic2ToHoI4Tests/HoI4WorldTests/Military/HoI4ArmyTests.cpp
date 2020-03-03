@@ -86,7 +86,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SufficientDivisionsConvert)
 	theProvinceMapper.initialize(provinceMapperInput);
 
 	HoI4::Army theArmy;
-	std::vector<const Vic2::Army*> Vic2Armies;
+	std::vector<Vic2::Army> Vic2Armies;
 	std::istringstream armyInput(
 		 "=\n"
 		 "\t{\n"
@@ -99,7 +99,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SufficientDivisionsConvert)
 		 "\t\t\ttype=infantry\n"
 		 "\t\t}\n"
 		 "\t}");
-	auto Vic2Army = new Vic2::Army("army", armyInput);
+	Vic2::Army Vic2Army("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
@@ -154,8 +154,6 @@ TEST(HoI4World_Military_HoI4ArmyTests, SufficientDivisionsConvert)
 								 "\t\tstart_equipment_factor = 0.7\n"
 								 "\t}\n"),
 		 output.str());
-
-	delete Vic2Army;
 }
 
 
@@ -167,7 +165,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, ExperienceConverts)
 	theProvinceMapper.initialize(provinceMapperInput);
 
 	HoI4::Army theArmy;
-	std::vector<const Vic2::Army*> Vic2Armies;
+	std::vector<Vic2::Army> Vic2Armies;
 	std::istringstream armyInput(
 		 "=\n"
 		 "\t{\n"
@@ -180,7 +178,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, ExperienceConverts)
 		 "\t\t\ttype=infantry\n"
 		 "\t\t}\n"
 		 "\t}");
-	auto Vic2Army = new Vic2::Army("army", armyInput);
+	Vic2::Army Vic2Army("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
@@ -235,8 +233,6 @@ TEST(HoI4World_Military_HoI4ArmyTests, ExperienceConverts)
 								 "\t\tstart_equipment_factor = 0.7\n"
 								 "\t}\n"),
 		 output.str());
-
-	delete Vic2Army;
 }
 
 
@@ -248,7 +244,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 	theProvinceMapper.initialize(provinceMapperInput);
 
 	HoI4::Army theArmy;
-	std::vector<const Vic2::Army*> Vic2Armies;
+	std::vector<Vic2::Army> Vic2Armies;
 	std::istringstream armyInput(
 		 "=\n"
 		 "\t{\n"
@@ -261,7 +257,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 		 "\t\t\ttype=infantry\n"
 		 "\t\t}\n"
 		 "\t}");
-	auto Vic2Army = new Vic2::Army("army", armyInput);
+	Vic2::Army Vic2Army("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
@@ -316,8 +312,6 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 								 "\t\tstart_equipment_factor = 0.7\n"
 								 "\t}\n"),
 		 output.str());
-
-	delete Vic2Army;
 }
 
 
@@ -326,7 +320,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 	HoI4::States theStates;
 
 	HoI4::Army theArmy;
-	std::vector<const Vic2::Army*> Vic2Armies;
+	std::vector<Vic2::Army> Vic2Armies;
 	std::istringstream armyInput(
 		 "=\n"
 		 "\t{\n"
@@ -345,7 +339,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 		 "\t\t\ttype=artillery\n"
 		 "\t\t}\n"
 		 "\t}");
-	auto Vic2Army = new Vic2::Army("army", armyInput);
+	Vic2::Army Vic2Army("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
@@ -401,8 +395,6 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 								 "\t\tstart_equipment_factor = 0.7\n"
 								 "\t}\n"),
 		 output.str());
-
-	delete Vic2Army;
 }
 
 
@@ -418,7 +410,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 	theProvinceMapper.initialize(provinceMapperInput);
 
 	HoI4::Army theArmy;
-	std::vector<const Vic2::Army*> Vic2Armies;
+	std::vector<Vic2::Army> Vic2Armies;
 	std::istringstream armyInput(
 		 "=\n"
 		 "\t{\n"
@@ -431,7 +423,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 		 "\t\t\ttype=infantry\n"
 		 "\t\t}\n"
 		 "\t}");
-	auto Vic2Army = new Vic2::Army("army", armyInput);
+	Vic2::Army Vic2Army("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	std::istringstream armyInput2(
 		 "=\n"
@@ -445,7 +437,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 		 "\t\t\ttype=infantry\n"
 		 "\t\t}\n"
 		 "\t}");
-	auto Vic2Army2 = new Vic2::Army("army", armyInput2);
+	Vic2::Army Vic2Army2("army", armyInput2);
 	Vic2Armies.push_back(Vic2Army2);
 	theArmy.addSourceArmies(Vic2Armies);
 
@@ -487,6 +479,4 @@ TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 								 "\t\tstart_equipment_factor = 0.7\n"
 								 "\t}\n"),
 		 output.str());
-
-	delete Vic2Army;
 }

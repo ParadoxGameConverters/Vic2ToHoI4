@@ -808,7 +808,7 @@ void HoI4::Country::convertConvoys(const UnitMappings& unitMap)
 {
 	for (auto army : sourceCountry.getArmies())
 	{
-		for (auto regiment : army->getRegiments())
+		for (auto regiment : army.getRegiments())
 		{
 			if (auto type = regiment->getType(); unitMap.hasMatchingType(type))
 			{
@@ -834,7 +834,7 @@ void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 	};
 	for (auto army : sourceCountry.getArmies())
 	{
-		for (auto regiment : army->getRegiments())
+		for (auto regiment : army.getRegiments())
 		{
 			if (auto type = regiment->getType(); unitMap.hasMatchingType(type))
 			{

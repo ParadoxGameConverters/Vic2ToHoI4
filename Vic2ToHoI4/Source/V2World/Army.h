@@ -71,19 +71,16 @@ class Army: commonItems::parser // also Navy
 		int isAtSea() const { return atSea; }
 		int getLocation() const { return location; }
 		std::vector<Regiment*> getRegiments() const { return regiments; }
-		std::vector<Army*> getTransportedArmies() const { return transportedArmies; }
+		std::vector<Army> getTransportedArmies() const { return transportedArmies; }
 
 	private:
-		Army(const Army&) = delete;
-		Army& operator=(const Army&) = delete;
-
 		std::string name = "";
 		int location = -1;
 		std::vector<Regiment*> regiments;
 		double supplies = 0.0;
 		int atSea = 0;
 		bool navy = false;
-		std::vector<Army*> transportedArmies;
+		std::vector<Army> transportedArmies;
 };
 
 }

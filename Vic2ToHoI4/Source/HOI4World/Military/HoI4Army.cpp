@@ -27,17 +27,17 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings,
 
 	for (const auto& army: sourceArmies)
 	{
-		auto provinceMapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(army->getLocation());
+		auto provinceMapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(army.getLocation());
 		if (!provinceMapping || isWastelandProvince(*provinceMapping->begin(), theStates))
 		{
 			addAvailableBattalionsAndCompanies(remainingBattalionsAndCompanies,
-				 *army,
+				 army,
 				 theMilitaryMappings,
 				 forceMultiplier);
 			continue;
 		}
 		std::map<std::string, std::vector<SizedRegiment>> localBattalionsAndCompanies;
-		addAvailableBattalionsAndCompanies(localBattalionsAndCompanies, *army, theMilitaryMappings, forceMultiplier);
+		addAvailableBattalionsAndCompanies(localBattalionsAndCompanies, army, theMilitaryMappings, forceMultiplier);
 
 		convertArmyDivisions(theMilitaryMappings, localBattalionsAndCompanies, *provinceMapping->begin());
 		addRemainingBattalionsAndCompanies(remainingBattalionsAndCompanies, localBattalionsAndCompanies);
