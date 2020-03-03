@@ -109,6 +109,12 @@
     <Filter Include="Hoi4Outputter\Ideas">
       <UniqueIdentifier>{004ecc51-d089-4e50-970f-7640d1406bab}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\Military">
+      <UniqueIdentifier>{ecb90897-9357-4c32-b772-b474078e30f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hoi4Outputter\Military">
+      <UniqueIdentifier>{ddcf1619-ab27-4090-9efa-db5ce2c865fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -116,9 +122,6 @@
     </ClCompile>
     <ClCompile Include="..\common_items\Log.cpp">
       <Filter>CommonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\HoI4Army.cpp">
-      <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\HoI4Country.cpp">
       <Filter>HoI4World</Filter>
@@ -140,9 +143,6 @@
     </ClCompile>
     <ClCompile Include="Source\targa.cpp" />
     <ClCompile Include="Source\Flags.cpp" />
-    <ClCompile Include="Source\HOI4World\HoI4Airforce.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Mappers\GovernmentMapper.cpp">
       <Filter>Mappers</Filter>
     </ClCompile>
@@ -243,15 +243,6 @@
       <Filter>Mappers</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\IdeologyFile.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Regiment.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\DivisionTemplate.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Division.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\main.cpp" />
@@ -639,6 +630,33 @@
     <ClCompile Include="Source\HOI4World\IdeologyModifiers.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Military\DivisionTemplate.cpp">
+      <Filter>HoI4World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Military\HoI4Army.cpp">
+      <Filter>HoI4World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Military\OutDivisionTemplate.cpp">
+      <Filter>Hoi4Outputter\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Military\RegimentTypeGroup.cpp">
+      <Filter>HoI4World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Military\OutDivisionType.cpp">
+      <Filter>Hoi4Outputter\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Military\OutRegimentType.cpp">
+      <Filter>Hoi4Outputter\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Military\RegimentType.cpp">
+      <Filter>HoI4World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Military\OutAirplane.cpp">
+      <Filter>Hoi4Outputter\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Military\OutArmy.cpp">
+      <Filter>Hoi4Outputter\Military</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -646,9 +664,6 @@
     </ClInclude>
     <ClInclude Include="..\common_items\Log.h">
       <Filter>CommonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\HoI4Army.h">
-      <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\HoI4Country.h">
       <Filter>HoI4World</Filter>
@@ -666,9 +681,6 @@
     </ClInclude>
     <ClInclude Include="Source\targa.h" />
     <ClInclude Include="Source\Flags.h" />
-    <ClInclude Include="Source\HOI4World\HoI4Airforce.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Mappers\GovernmentMapper.h">
       <Filter>Mappers</Filter>
     </ClInclude>
@@ -766,15 +778,6 @@
       <Filter>Mappers</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\IdeologyFile.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\Regiment.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\DivisionTemplate.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\Division.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\Vic2ToHoI4Converter.h" />
@@ -1206,6 +1209,39 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\IdeologyModifiers.h">
       <Filter>HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Military\DivisionTemplate.h">
+      <Filter>HoI4World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Military\HoI4Army.h">
+      <Filter>HoI4World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Military\OutDivisionTemplate.h">
+      <Filter>Hoi4Outputter\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Military\RegimentTypeGroup.h">
+      <Filter>HoI4World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Military\OutDivisionType.h">
+      <Filter>Hoi4Outputter\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Military\DivisionType.h">
+      <Filter>HoI4World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Military\OutRegimentType.h">
+      <Filter>Hoi4Outputter\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Military\RegimentType.h">
+      <Filter>HoI4World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Military\Airplane.h">
+      <Filter>HoI4World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Military\OutAirplane.h">
+      <Filter>Hoi4Outputter\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Military\OutArmy.h">
+      <Filter>Hoi4Outputter\Military</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

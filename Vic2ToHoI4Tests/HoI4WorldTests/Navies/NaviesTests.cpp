@@ -77,7 +77,7 @@ HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests()
 
 TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToLegacy)
 {
-	std::vector<const Vic2::Army*> sourceArmies;
+	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
 	armyStream << "{\n";
 	armyStream << "	name = \"2nd Fleet\"\n";
@@ -93,7 +93,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToLegacy)
 	armyStream << "	}\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	auto navy = new Vic2::Army("navy", armyStream);
+	Vic2::Army navy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream unitMappingsStream;
@@ -139,7 +139,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToLegacy)
 
 TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
 {
-	std::vector<const Vic2::Army*> sourceArmies;
+	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
 	armyStream << "{\n";
 	armyStream << "	name = \"2nd Fleet\"\n";
@@ -147,7 +147,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
 	armyStream << "	supplies = 1.000\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	auto navy = new Vic2::Army("navy", armyStream);
+	Vic2::Army navy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream unitMappingsStream;
@@ -181,7 +181,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
 
 TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
 {
-	std::vector<const Vic2::Army*> sourceArmies;
+	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
 	armyStream << "{\n";
 	armyStream << "	name = \"2nd Fleet\"\n";
@@ -197,7 +197,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
 	armyStream << "	}\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	auto navy = new Vic2::Army("navy", armyStream);
+	Vic2::Army navy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream unitMappingsStream;
@@ -231,7 +231,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
 
 TEST_F(HoI4World_Navies_NaviesTests, LegacyNavyNamesConvert)
 {
-	std::vector<const Vic2::Army*> sourceArmies;
+	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
 	armyStream << "{\n";
 	armyStream << "	name = \"Renamed Fleet\"\n";
@@ -247,7 +247,7 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyNavyNamesConvert)
 	armyStream << "	}\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	auto navy = new Vic2::Army("navy", armyStream);
+	Vic2::Army navy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream unitMappingsStream;
@@ -293,7 +293,7 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyNavyNamesConvert)
 
 TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToMtg)
 {
-	std::vector<const Vic2::Army*> sourceArmies;
+	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
 	armyStream << "{\n";
 	armyStream << "	name = \"2nd Fleet\"\n";
@@ -309,7 +309,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToMtg)
 	armyStream << "	}\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	auto navy = new Vic2::Army("navy", armyStream);
+	Vic2::Army navy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -354,7 +354,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToMtg)
 
 TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableMtgShipType)
 {
-	std::vector<const Vic2::Army*> sourceArmies;
+	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
 	armyStream << "{\n";
 	armyStream << "	name = \"2nd Fleet\"\n";
@@ -370,7 +370,7 @@ TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableMtgShipType)
 	armyStream << "	}\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	auto navy = new Vic2::Army("navy", armyStream);
+	Vic2::Army navy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -422,7 +422,7 @@ TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableMtgShipType)
 
 TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesGetExperience)
 {
-	std::vector<const Vic2::Army*> sourceArmies;
+	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
 	armyStream << "{\n";
 	armyStream << "	name = \"2nd Fleet\"\n";
@@ -438,7 +438,7 @@ TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesGetExperience)
 	armyStream << "	}\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	auto navy = new Vic2::Army("navy", armyStream);
+	Vic2::Army navy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -483,7 +483,7 @@ TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesGetExperience)
 
 TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToMtg)
 {
-	std::vector<const Vic2::Army*> sourceArmies;
+	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
 	armyStream << "{\n";
 	armyStream << "	name = \"2nd Fleet\"\n";
@@ -491,7 +491,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToMtg)
 	armyStream << "	supplies = 1.000\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	auto navy = new Vic2::Army("navy", armyStream);
+	Vic2::Army navy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -526,7 +526,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToMtg)
 
 TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToMtgNavy)
 {
-	std::vector<const Vic2::Army*> sourceArmies;
+	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
 	armyStream << "{\n";
 	armyStream << "	name = \"2nd Fleet\"\n";
@@ -542,7 +542,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToMtgNavy)
 	armyStream << "	}\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	auto navy = new Vic2::Army("navy", armyStream);
+	Vic2::Army navy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -577,7 +577,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToMtgNavy)
 
 TEST_F(HoI4World_Navies_NaviesTests, MtgNavyNamesConvert)
 {
-	std::vector<const Vic2::Army*> sourceArmies;
+	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
 	armyStream << "{\n";
 	armyStream << "	name = \"Renamed Fleet\"\n";
@@ -593,7 +593,7 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgNavyNamesConvert)
 	armyStream << "	}\n";
 	armyStream << "	at_sea = 0\n";
 	armyStream << "}";
-	auto navy = new Vic2::Army("navy", armyStream);
+	Vic2::Army navy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
