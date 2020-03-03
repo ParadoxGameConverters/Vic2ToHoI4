@@ -42,7 +42,8 @@ class Events: commonItems::parser
 		 const std::set<std::string>& majorIdeologies);
 	void createStabilityEvents(const std::set<std::string>& majorIdeologies);
 	void generateGenericEvents(const Configuration& theConfiguration, const std::set<std::string>& majorIdeologies);
-	void createGovernmentInExileEvent(const std::set<std::string>& majorIdeologies);
+
+	void giveGovernmentInExileEvent(Event&& gieEvent) { governmentInExileEvent = gieEvent; }
 
 	[[nodiscard]] virtual std::optional<int> getEventNumber(const std::string& eventName) const;
 

@@ -115,10 +115,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Division.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\DivisionTemplate.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventHelpers.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventOption.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventsFile.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\GenericEventUpdater.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\GovernmentInExileEvent.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Airforce.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Army.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Country.cpp" />
