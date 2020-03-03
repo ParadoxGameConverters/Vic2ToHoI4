@@ -7,16 +7,30 @@
 #include "Log.h"
 
 
+namespace HoI4
+{
 
-bool isWastelandProvince(int provinceNum, const HoI4::States& theStates);
+bool isWastelandProvince(int provinceNum, const States& theStates);
 void addAvailableBattalionsAndCompanies(
-	 std::map<std::string, std::vector<HoI4::SizedRegiment>>& availableBattalionsAndCompanies,
+	 std::map<std::string, std::vector<SizedRegiment>>& availableBattalionsAndCompanies,
 	 const Vic2::Army& sourceArmy,
-	 const HoI4::militaryMappings& theMilitaryMappings,
+	 const militaryMappings& theMilitaryMappings,
 	 double forceMultiplier);
 void addRemainingBattalionsAndCompanies(
-	 std::map<std::string, std::vector<HoI4::SizedRegiment>>& remainingBattalionsAndCompanies,
-	 const std::map<std::string, std::vector<HoI4::SizedRegiment>>& localBattalionsAndCompanies);
+	 std::map<std::string, std::vector<SizedRegiment>>& remainingBattalionsAndCompanies,
+	 const std::map<std::string, std::vector<SizedRegiment>>& localBattalionsAndCompanies);
+std::map<std::string, int> determineTemplateRequirements(const DivisionTemplateType& divisionTemplate);
+bool sufficientUnits(const std::map<std::string, std::vector<SizedRegiment>>& units,
+	 const std::map<std::string, std::string>& substitutes,
+	 const std::map<std::string, int>& requiredUnits);
+DivisionType createDivision(const std::map<std::string, int>& templateRequirements,
+	 std::map<std::string, std::vector<SizedRegiment>>& BattalionsAndCompanies,
+	 const militaryMappings& theMilitaryMappings,
+	 int divisionCounter,
+	 const DivisionTemplateType& divisionTemplate,
+	 int location);
+
+} // namespace HoI4
 
 void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings,
 	 const int backupLocation,
@@ -47,7 +61,7 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings,
 }
 
 
-bool isWastelandProvince(const int provinceNum, const HoI4::States& theStates)
+bool HoI4::isWastelandProvince(const int provinceNum, const States& theStates)
 {
 	auto provinceToStateIDMap = theStates.getProvinceToStateIDMap();
 	if (const auto& stateNum = provinceToStateIDMap.find(provinceNum); stateNum != provinceToStateIDMap.end())
@@ -63,10 +77,10 @@ bool isWastelandProvince(const int provinceNum, const HoI4::States& theStates)
 }
 
 
-void addAvailableBattalionsAndCompanies(
-	 std::map<std::string, std::vector<HoI4::SizedRegiment>>& availableBattalionsAndCompanies,
+void HoI4::addAvailableBattalionsAndCompanies(
+	 std::map<std::string, std::vector<SizedRegiment>>& availableBattalionsAndCompanies,
 	 const Vic2::Army& sourceArmy,
-	 const HoI4::militaryMappings& theMilitaryMappings,
+	 const militaryMappings& theMilitaryMappings,
 	 const double forceMultiplier)
 {
 	for (const auto& regiment: sourceArmy.getRegiments())
@@ -79,7 +93,7 @@ void addAvailableBattalionsAndCompanies(
 
 			if (unitInfo && unitInfo->getCategory() == "land")
 			{
-				HoI4::SizedRegiment theRegiment;
+				SizedRegiment theRegiment;
 				theRegiment.unitSize = unitInfo->getSize() * forceMultiplier;
 				theRegiment.experience = regiment->getExperience();
 				availableBattalionsAndCompanies[unitInfo->getType()].push_back(theRegiment);
@@ -93,13 +107,13 @@ void addAvailableBattalionsAndCompanies(
 }
 
 
-void addRemainingBattalionsAndCompanies(
-	 std::map<std::string, std::vector<HoI4::SizedRegiment>>& remainingBattalionsAndCompanies,
-	 const std::map<std::string, std::vector<HoI4::SizedRegiment>>& localBattalionsAndCompanies)
+void HoI4::addRemainingBattalionsAndCompanies(
+	 std::map<std::string, std::vector<SizedRegiment>>& remainingBattalionsAndCompanies,
+	 const std::map<std::string, std::vector<SizedRegiment>>& localBattalionsAndCompanies)
 {
 	for (const auto& unit: localBattalionsAndCompanies)
 	{
-		std::vector<HoI4::SizedRegiment> remainingRegiments;
+		std::vector<SizedRegiment> remainingRegiments;
 		for (const auto& regiment: unit.second)
 		{
 			if (regiment.unitSize > 0)
@@ -124,17 +138,6 @@ void addRemainingBattalionsAndCompanies(
 }
 
 
-std::map<std::string, int> determineTemplateRequirements(const HoI4::DivisionTemplateType& divisionTemplate);
-bool sufficientUnits(const std::map<std::string, std::vector<HoI4::SizedRegiment>>& units,
-	 const std::map<std::string, std::string>& substitutes,
-	 const std::map<std::string, int>& requiredUnits);
-HoI4::DivisionType createDivision(const std::map<std::string, int>& templateRequirements,
-	 std::map<std::string, std::vector<HoI4::SizedRegiment>>& BattalionsAndCompanies,
-	 const HoI4::militaryMappings& theMilitaryMappings,
-	 int divisionCounter,
-	 const HoI4::DivisionTemplateType& divisionTemplate,
-	 int location);
-
 void HoI4::Army::convertArmyDivisions(const militaryMappings& theMilitaryMappings,
 	 std::map<std::string, std::vector<SizedRegiment>>& BattalionsAndCompanies,
 	 const int location)
@@ -158,7 +161,7 @@ void HoI4::Army::convertArmyDivisions(const militaryMappings& theMilitaryMapping
 }
 
 
-std::map<std::string, int> determineTemplateRequirements(const HoI4::DivisionTemplateType& divisionTemplate)
+std::map<std::string, int> HoI4::determineTemplateRequirements(const DivisionTemplateType& divisionTemplate)
 {
 	std::map<std::string, int> templateRequirements;
 	for (const auto& regiment: divisionTemplate.getRegiments())
@@ -174,7 +177,7 @@ std::map<std::string, int> determineTemplateRequirements(const HoI4::DivisionTem
 }
 
 
-bool sufficientUnits(const std::map<std::string, std::vector<HoI4::SizedRegiment>>& units,
+bool HoI4::sufficientUnits(const std::map<std::string, std::vector<SizedRegiment>>& units,
 	 const std::map<std::string, std::string>& substitutes,
 	 const std::map<std::string, int>& requiredUnits)
 {
@@ -210,11 +213,11 @@ bool sufficientUnits(const std::map<std::string, std::vector<HoI4::SizedRegiment
 }
 
 
-HoI4::DivisionType createDivision(const std::map<std::string, int>& templateRequirements,
-	 std::map<std::string, std::vector<HoI4::SizedRegiment>>& BattalionsAndCompanies,
-	 const HoI4::militaryMappings& theMilitaryMappings,
+HoI4::DivisionType HoI4::createDivision(const std::map<std::string, int>& templateRequirements,
+	 std::map<std::string, std::vector<SizedRegiment>>& BattalionsAndCompanies,
+	 const militaryMappings& theMilitaryMappings,
 	 const int divisionCounter,
-	 const HoI4::DivisionTemplateType& divisionTemplate,
+	 const DivisionTemplateType& divisionTemplate,
 	 const int location)
 {
 	auto totalExperience = 0.0;
@@ -257,7 +260,7 @@ HoI4::DivisionType createDivision(const std::map<std::string, int>& templateRequ
 		actualExperience = 1.0;
 	}
 
-	return HoI4::DivisionType(std::to_string(divisionCounter) + ". " + divisionTemplate.getName(),
+	return DivisionType(std::to_string(divisionCounter) + ". " + divisionTemplate.getName(),
 		 divisionTemplate.getName(),
 		 location,
 		 actualExperience);
