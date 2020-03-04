@@ -10,6 +10,7 @@
 #include "HoI4Country.h"
 #include "Decisions/Decisions.h"
 #include "Events/Events.h"
+#include "Events/GovernmentInExileEvent.h"
 #include "HoI4FocusTree.h"
 #include "HOI4Ideology.h"
 #include "HoI4Localisation.h"
@@ -101,6 +102,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	addCountryElectionEvents(majorIdeologies);
 	events->createStabilityEvents(majorIdeologies);
 	events->generateGenericEvents(theConfiguration, majorIdeologies);
+	events->giveGovernmentInExileEvent(createGovernmentInExileEvent(majorIdeologies));
 	theIdeas->updateIdeas(majorIdeologies);
 	decisions->updateDecisions(majorIdeologies, states->getProvinceToStateIDMap(), states->getDefaultStates(), *events);
 	updateAiPeaces(*peaces, majorIdeologies);

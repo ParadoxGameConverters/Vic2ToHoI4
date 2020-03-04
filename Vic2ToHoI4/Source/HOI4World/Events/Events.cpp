@@ -5,6 +5,7 @@
 #include "../HoI4Country.h"
 #include "../HoI4Localisation.h"
 #include "../OnActions.h"
+#include "EventHelpers.h"
 #include "EventsFile.h"
 #include "GenericEventUpdaters.h"
 #include "Log.h"
@@ -549,8 +550,7 @@ void HoI4::Events::addOnTheRise(const std::set<std::string>& majorIdeologies)
 		onTheRiseOptionA.giveScriptBlock("add_political_power = -100");
 		std::string setPoliticsEffect = "set_politics = {\n";
 		setPoliticsEffect += "\t\t\truling_party = " + ideology + "\n";
-		setPoliticsEffect += "\t\t\telections_allowed = ";
-		(ideology == "democratic") ? setPoliticsEffect += "yes\n" : setPoliticsEffect += "no\n";
+		setPoliticsEffect += "\t\t\telections_allowed = " + getElectionsAllowedString(ideology);
 		setPoliticsEffect += "\t\t}";
 		onTheRiseOptionA.giveScriptBlock(std::move(setPoliticsEffect));
 		onTheRise.giveOption(std::move(onTheRiseOptionA));
@@ -783,8 +783,7 @@ void HoI4::Events::addFiftyPercentEvents(const std::set<std::string>& majorIdeol
 		}
 		std::string setPoliticsScript = "set_politics = {\n";
 		setPoliticsScript += "\t\t\truling_party = " + ideology + "\n";
-		setPoliticsScript += "\t\t\telections_allowed = ";
-		(ideology == "democratic") ? setPoliticsScript += "yes\n" : setPoliticsScript += "no\n";
+		setPoliticsScript += "\t\t\telections_allowed = " + getElectionsAllowedString(ideology);
 		setPoliticsScript += "\t\t}";
 		optionC.giveScriptBlock(std::move(setPoliticsScript));
 		if (ideology == "democratic")
@@ -891,8 +890,7 @@ void HoI4::Events::addRevolutionEvents(const std::set<std::string>& majorIdeolog
 		optionC.giveScriptBlock("add_political_power = -100");
 		std::string setPoliticsScript = "set_politics = {\n";
 		setPoliticsScript += "\t\t\truling_party = " + ideology + "\n";
-		setPoliticsScript += "\t\t\telections_allowed = ";
-		(ideology == "democratic") ? setPoliticsScript += "yes\n" : setPoliticsScript += "no\n";
+		setPoliticsScript += "\t\t\telections_allowed = " + getElectionsAllowedString(ideology);
 		setPoliticsScript += "\t\t}";
 		optionC.giveScriptBlock(std::move(setPoliticsScript));
 		revolutionEvent.giveOption(std::move(optionC));

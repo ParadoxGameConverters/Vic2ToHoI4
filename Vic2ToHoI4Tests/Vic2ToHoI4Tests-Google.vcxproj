@@ -118,10 +118,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AiPeacesUpdater.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4War.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventHelpers.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventOption.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventsFile.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\GenericEventUpdater.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\GovernmentInExileEvent.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Country.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Focus.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4FocusTree.cpp" />

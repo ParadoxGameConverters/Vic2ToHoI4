@@ -253,10 +253,12 @@
     <ClCompile Include="Source\HOI4World\Diplomacy\AiPeacesUpdater.cpp" />
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4War.cpp" />
     <ClCompile Include="Source\HOI4World\Events\Event.cpp" />
+    <ClCompile Include="Source\HOI4World\Events\EventHelpers.cpp" />
     <ClCompile Include="Source\HOI4World\Events\EventOption.cpp" />
     <ClCompile Include="Source\HOI4World\Events\Events.cpp" />
     <ClCompile Include="Source\HOI4World\Events\EventsFile.cpp" />
     <ClCompile Include="Source\HOI4World\Events\GenericEventUpdater.cpp" />
+    <ClCompile Include="Source\HOI4World\Events\GovernmentInExileEvent.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Country.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Focus.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4FocusTree.cpp" />
@@ -439,10 +441,12 @@
     <ClInclude Include="Source\HOI4World\Diplomacy\HoI4Relations.h" />
     <ClInclude Include="Source\HOI4World\Diplomacy\HoI4War.h" />
     <ClInclude Include="Source\HOI4World\Events\Event.h" />
+    <ClInclude Include="Source\HOI4World\Events\EventHelpers.h" />
     <ClInclude Include="Source\HOI4World\Events\EventOption.h" />
     <ClInclude Include="Source\HOI4World\Events\Events.h" />
     <ClInclude Include="Source\HOI4World\Events\EventsFile.h" />
     <ClInclude Include="Source\HOI4World\Events\GenericEventUpdaters.h" />
+    <ClInclude Include="Source\HOI4World\Events\GovernmentInExileEvent.h" />
     <ClInclude Include="Source\HOI4World\HoI4Country.h" />
     <ClInclude Include="Source\HOI4World\HoI4Focus.h" />
     <ClInclude Include="Source\HOI4World\HoI4FocusTree.h" />
