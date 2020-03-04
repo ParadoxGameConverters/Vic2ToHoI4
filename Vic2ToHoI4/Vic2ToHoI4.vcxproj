@@ -259,8 +259,6 @@
     <ClCompile Include="Source\HOI4World\Events\EventsFile.cpp" />
     <ClCompile Include="Source\HOI4World\Events\GenericEventUpdater.cpp" />
     <ClCompile Include="Source\HOI4World\Events\GovernmentInExileEvent.cpp" />
-    <ClCompile Include="Source\HOI4World\HoI4Airforce.cpp" />
-    <ClCompile Include="Source\HOI4World\HoI4Army.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Country.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Focus.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4FocusTree.cpp" />
