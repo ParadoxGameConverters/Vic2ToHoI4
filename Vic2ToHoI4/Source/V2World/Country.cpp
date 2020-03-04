@@ -25,7 +25,6 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "CultureGroups.h"
 #include "Log.h"
 #include "../Mappers/V2Localisations.h"
-#include "Army.h"
 #include "Inventions.h"
 #include "Leader.h"
 #include "Party.h"
@@ -172,15 +171,15 @@ Vic2::Country::Country(const std::string& theTag, std::istream& theStream, const
 	});
 	registerKeyword(std::regex("army"), [this](const std::string& type, std::istream& theStream)
 	{
-		Army* army = new Army(type, theStream);
+		Army army(type, theStream);
 		armies.push_back(army);
 	});
 	registerKeyword(std::regex("navy"), [this](const std::string& type, std::istream& theStream)
 	{
-		Army* navy = new Army(type, theStream);
+		Army navy(type, theStream);
 		armies.push_back(navy);
 
-		for (auto transportedArmy: navy->getTransportedArmies())
+		for (auto transportedArmy: navy.getTransportedArmies())
 		{
 			armies.push_back(transportedArmy);
 		}

@@ -3,7 +3,7 @@
 
 
 
-#include "../DivisionTemplate.h"
+#include "../Military/DivisionTemplate.h"
 #include "newParser.h"
 
 
@@ -13,16 +13,16 @@ namespace HoI4
 
 class DivisionTemplatesImporter: commonItems::parser
 {
-	public:
-		explicit DivisionTemplatesImporter(std::istream& theStream);
+  public:
+	explicit DivisionTemplatesImporter(std::istream& theStream);
 
-		[[nodiscard]] auto getDivisionTemplates() const { return divisionTemplates; }
+	[[nodiscard]] auto&& takeDivisionTemplates() const { return std::move(divisionTemplates); }
 
-	private:
-		std::vector<DivisionTemplateType> divisionTemplates;
+  private:
+	std::vector<DivisionTemplateType> divisionTemplates;
 };
 
-}
+} // namespace HoI4
 
 
 

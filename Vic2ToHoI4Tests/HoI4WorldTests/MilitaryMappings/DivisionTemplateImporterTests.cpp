@@ -9,7 +9,7 @@ TEST(HoI4World_MilitaryMappings_DivisionTemplateImporterTests, DivisionTemplates
 	std::stringstream input;
 	const HoI4::DivisionTemplatesImporter divisionTemplatesImporter(input);
 
-	ASSERT_TRUE(divisionTemplatesImporter.getDivisionTemplates().empty());
+	ASSERT_TRUE(divisionTemplatesImporter.takeDivisionTemplates().empty());
 }
 
 
@@ -21,5 +21,5 @@ TEST(HoI4World_MilitaryMappings_DivisionTemplateImporterTests, DivisionTemplates
 	input << "}";
 	const HoI4::DivisionTemplatesImporter divisionTemplatesImporter(input);
 
-	ASSERT_EQ(1, divisionTemplatesImporter.getDivisionTemplates().size());
+	ASSERT_EQ(1, divisionTemplatesImporter.takeDivisionTemplates().size());
 }

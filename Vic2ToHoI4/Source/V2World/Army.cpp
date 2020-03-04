@@ -107,7 +107,7 @@ Vic2::Army::Army(const std::string& type, std::istream& theStream):
 		atSea = locationInt.getInt();
 	});
 	registerKeyword(std::regex("army"), [this](const std::string& type, std::istream& theStream){
-		Army* transportedArmy = new Army(type, theStream);
+		Army transportedArmy(type, theStream);
 		transportedArmies.push_back(transportedArmy);
 	});
 	registerKeyword(std::regex("[A-Za-z0-9_]+"), commonItems::ignoreItem);

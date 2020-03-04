@@ -5,22 +5,21 @@
 
 
 
-HoI4::Navies::Navies(
-	const std::vector<const Vic2::Army*>& srcArmies,
-	int backupNavalLocation,
-	const UnitMappings& unitMap,
-	const MtgUnitMappings& mtgUnitMap,
-	const shipVariants& theShipVariants,
-	const std::map<int, int>& provinceToStateIDMap,
-	std::map<int, State> states,
-	const std::string& tag)
+HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
+	 int backupNavalLocation,
+	 const UnitMappings& unitMap,
+	 const MtgUnitMappings& mtgUnitMap,
+	 const shipVariants& theShipVariants,
+	 const std::map<int, int>& provinceToStateIDMap,
+	 std::map<int, State> states,
+	 const std::string& tag)
 {
 	for (auto army: srcArmies)
 	{
 		auto navalLocation = backupNavalLocation;
 		auto base = backupNavalLocation;
 
-		if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(army->getLocation()); mapping)
+		if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(army.getLocation()); mapping)
 		{
 			for (auto possibleProvince: *mapping)
 			{
@@ -44,10 +43,10 @@ HoI4::Navies::Navies(
 			}
 		}
 
-		LegacyNavy newLegacyNavy(army->getName(), navalLocation, base);
-		MtgNavy newMtgNavy(army->getName(), navalLocation, base);
+		LegacyNavy newLegacyNavy(army.getName(), navalLocation, base);
+		MtgNavy newMtgNavy(army.getName(), navalLocation, base);
 
-		for (auto regiment: army->getRegiments())
+		for (auto regiment: army.getRegiments())
 		{
 			auto type = regiment->getType();
 			if (unitMap.hasMatchingType(type))
@@ -70,14 +69,12 @@ HoI4::Navies::Navies(
 					if ((unitInfo.getCategory() == "naval") && theShipVariants.hasVariant(unitInfo.getVersion()))
 					{
 						auto experience = static_cast<float>(regiment->getExperience() / 100);
-						MtgShip newMtgShip(
-							regiment->getName(),
-							unitInfo.getType(),
-							unitInfo.getEquipment(),
-							tag,
-							unitInfo.getVersion(),
-							experience
-						);
+						MtgShip newMtgShip(regiment->getName(),
+							 unitInfo.getType(),
+							 unitInfo.getEquipment(),
+							 tag,
+							 unitInfo.getVersion(),
+							 experience);
 						newMtgNavy.addShip(newMtgShip);
 					}
 				}

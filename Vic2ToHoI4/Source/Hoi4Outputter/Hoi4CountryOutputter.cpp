@@ -5,7 +5,7 @@
 #include "Navies/OutMtgNavyNames.h"
 #include "ShipTypes/ShipVariantsOutputter.h"
 #include "../HOI4World/Diplomacy/Faction.h"
-#include "../HOI4World/DivisionTemplate.h"
+#include "../HOI4World/Military/DivisionTemplate.h"
 #include "../HOI4World/HoI4Country.h"
 #include "../HOI4World/HoI4FocusTree.h"
 #include "../HOI4World/Names.h"
@@ -632,7 +632,7 @@ void outputFactions(
 ) {
 	if (faction && (faction->getLeader()->getTag() == tag))
 	{
-		string allianceName;
+		std::string allianceName;
 		if (possibleLeaderName)
 		{
 			allianceName = "Alliance of " + *possibleLeaderName;

@@ -83,21 +83,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\TechMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Airforce.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\DivisionTemplate.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Army.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regiment.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Division.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Focus.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
@@ -154,18 +139,6 @@
     </ClCompile>
     <ClCompile Include="..\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="..\googletest\googletest\src\gtest-all.cc" />
-    <ClCompile Include="HoI4WorldTests\DivisionTemplateTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\DivisionTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\HoI4ArmyTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\RegimentTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
     </ClCompile>
@@ -754,6 +727,50 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\GovernmentInExileEvent.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\DivisionTemplate.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\HoI4Army.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Military\DivisionTemplateTests.cpp">
+      <Filter>HoI4WorldTests\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Military\HoI4ArmyTests.cpp">
+      <Filter>HoI4WorldTests\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutDivisionTemplate.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\RegimentTypeGroup.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Military\RegimentTypeGroupTests.cpp">
+      <Filter>HoI4WorldTests\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Military\DivisionTypeTests.cpp">
+      <Filter>HoI4WorldTests\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Military\RegimentTypeTests.cpp">
+      <Filter>HoI4WorldTests\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutDivisionType.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutRegimentType.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\RegimentType.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutAirplane.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Military\AirplaneTests.cpp">
+      <Filter>HoI4WorldTests\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutArmy.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -909,6 +926,15 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Ideas">
       <UniqueIdentifier>{a1c58a1d-d1e4-4c60-9702-bf9c1c7e59b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Military">
+      <UniqueIdentifier>{9cb897ec-4ed8-416a-8f94-5218dcae5e50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\Military">
+      <UniqueIdentifier>{f585e1ec-20e0-4f2d-bdb8-49e18eb0db75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Military">
+      <UniqueIdentifier>{e6b6046a-7440-425b-bb61-6d6a5c67bd24}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

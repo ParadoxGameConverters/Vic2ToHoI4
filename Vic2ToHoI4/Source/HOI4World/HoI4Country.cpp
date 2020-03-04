@@ -93,19 +93,19 @@ void HoI4::Country::determineFilename()
 	{
 		filename = Utils::convertWin1252ToUTF8(*possibleFilename);
 		auto pipe = filename.find_first_of('|');
-		while (pipe != string::npos)
+		while (pipe != std::string::npos)
 		{
 			filename.replace(pipe, 1, "");
 			pipe = filename.find_first_of('|');
 		}
 		auto greater = filename.find_first_of('>');
-		while (greater != string::npos)
+		while (greater != std::string::npos)
 		{
 			filename.replace(greater, 1, "");
 			greater = filename.find_first_of('>');
 		}
 		auto lesser = filename.find_first_of('<');
-		while (lesser != string::npos)
+		while (lesser != std::string::npos)
 		{
 			filename.replace(lesser, 1, "");
 			lesser = filename.find_first_of('>');
@@ -159,7 +159,7 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld, const gove
 }
 
 
-void HoI4::Country::convertParties(const set<string>& majorIdeologies, const governmentMapper& governmentMap)
+void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies, const governmentMapper& governmentMap)
 {
 	for (const auto& HoI4Ideology: majorIdeologies)
 	{
@@ -309,7 +309,7 @@ void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry, const Cou
 void HoI4::Country::determineCapitalFromVic2(
 	const provinceMapper& theProvinceMapper,
 	const std::map<int, int>& provinceToStateIDMap,
-	const map<int, State>& allStates
+	const std::map<int, State>& allStates
 )
 {
 	bool success = attemptToPutCapitalInPreferredNonWastelandOwned(theProvinceMapper, provinceToStateIDMap, allStates);
@@ -350,8 +350,8 @@ void HoI4::Country::determineCapitalFromVic2(
 
 bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandOwned(
 	const provinceMapper& theProvinceMapper,
-	const map<int, int>& provinceToStateIDMap,
-	const map<int, State>& allStates
+	const std::map<int, int>& provinceToStateIDMap,
+	const std::map<int, State>& allStates
 )
 {
 	const auto oldCapital = sourceCountry.getCapital();
@@ -377,7 +377,7 @@ bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandOwned(
 
 
 
-bool HoI4::Country::attemptToPutCapitalInNonWastelandOwned(const map<int, State>& allStates)
+bool HoI4::Country::attemptToPutCapitalInNonWastelandOwned(const std::map<int, State>& allStates)
 {
 	for (auto ownedStateNum : states)
 	{
@@ -400,7 +400,7 @@ bool HoI4::Country::attemptToPutCapitalInNonWastelandOwned(const map<int, State>
 bool HoI4::Country::attemptToPutCapitalInPreferredWastelandOwned(
 	const provinceMapper& theProvinceMapper,
 	const std::map<int, int>& provinceToStateIDMap,
-	const map<int, State>& allStates
+	const std::map<int, State>& allStates
 )
 {
 	const auto oldCapital = sourceCountry.getCapital();
@@ -425,7 +425,7 @@ bool HoI4::Country::attemptToPutCapitalInPreferredWastelandOwned(
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInAnyOwned(const map<int, State>& allStates)
+bool HoI4::Country::attemptToPutCapitalInAnyOwned(const std::map<int, State>& allStates)
 {
 	for (auto ownedStateNum: states)
 	{
@@ -447,7 +447,7 @@ bool HoI4::Country::attemptToPutCapitalInAnyOwned(const map<int, State>& allStat
 bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandCored(
 	const provinceMapper& theProvinceMapper,
 	const std::map<int, int>& provinceToStateIDMap,
-	const map<int, State>& allStates
+	const std::map<int, State>& allStates
 )
 {
 	const auto oldCapital = sourceCountry.getCapital();
@@ -472,7 +472,7 @@ bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandCored(
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInAnyNonWastelandCored(const map<int, State>& allStates)
+bool HoI4::Country::attemptToPutCapitalInAnyNonWastelandCored(const std::map<int, State>& allStates)
 {
 	for (auto ownedStateNum: states)
 	{
@@ -495,7 +495,7 @@ bool HoI4::Country::attemptToPutCapitalInAnyNonWastelandCored(const map<int, Sta
 bool HoI4::Country::attemptToPutCapitalInPreferredWastelandCored(
 	const provinceMapper& theProvinceMapper,
 	const std::map<int, int>& provinceToStateIDMap,
-	const map<int, State>& allStates
+	const std::map<int, State>& allStates
 )
 {
 	const auto oldCapital = sourceCountry.getCapital();
@@ -520,7 +520,7 @@ bool HoI4::Country::attemptToPutCapitalInPreferredWastelandCored(
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInAnyCored(const map<int, State>& allStates)
+bool HoI4::Country::attemptToPutCapitalInAnyCored(const std::map<int, State>& allStates)
 {
 	for (auto ownedStateNum: states)
 	{
@@ -548,8 +548,8 @@ void HoI4::Country::convertTechnology(const mappers::techMapper& theTechMapper)
 
 
 void HoI4::Country::setGovernmentToExistingIdeology(
-	const set<string>& majorIdeologies,
-	const map<string, HoI4Ideology*>& ideologies,
+	const std::set<std::string>& majorIdeologies,
+	const std::map<std::string, HoI4Ideology*>& ideologies,
 	const governmentMapper& governmentMap
 ) {
 	governmentIdeology = governmentMap.getExistingIdeologyForCountry(
@@ -599,7 +599,7 @@ void HoI4::Country::convertIdeologySupport(
 		auto supportItr = ideologySupport.find("neutrality");
 		if (supportItr == ideologySupport.end())
 		{
-			ideologySupport.insert(make_pair("neutrality", 0));
+			ideologySupport.insert(std::make_pair("neutrality", 0));
 			supportItr = ideologySupport.find("neutrality");
 		}
 		supportItr->second += remainingSupport;
@@ -808,7 +808,7 @@ void HoI4::Country::convertConvoys(const UnitMappings& unitMap)
 {
 	for (auto army : sourceCountry.getArmies())
 	{
-		for (auto regiment : army->getRegiments())
+		for (auto regiment : army.getRegiments())
 		{
 			if (auto type = regiment->getType(); unitMap.hasMatchingType(type))
 			{
@@ -829,12 +829,12 @@ void HoI4::Country::convertConvoys(const UnitMappings& unitMap)
 
 void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 {
-	static std::map<std::string, vector<std::string>> backups = {
+	static std::map<std::string, std::vector<std::string>> backups = {
 		{"fighter_equipment_0", {"tac_bomber_equipment_0"}}
 	};
 	for (auto army : sourceCountry.getArmies())
 	{
-		for (auto regiment : army->getRegiments())
+		for (auto regiment : army.getRegiments())
 		{
 			if (auto type = regiment->getType(); unitMap.hasMatchingType(type))
 			{
@@ -927,7 +927,7 @@ void HoI4::Country::calculateIndustry(const std::map<int, State>& allStates)
 }
 
 
-void HoI4::Country::addGenericFocusTree(const std::set<string>& majorIdeologies)
+void HoI4::Country::addGenericFocusTree(const std::set<std::string>& majorIdeologies)
 {
 	if (!nationalFocus)
 	{
@@ -1016,7 +1016,7 @@ std::optional<HoI4::Faction> HoI4::Country::getFaction() const
 	}
 	else
 	{
-		return nullopt;
+		return std::nullopt;
 	}
 }
 
@@ -1029,7 +1029,7 @@ std::optional<HoI4FocusTree> HoI4::Country::getNationalFocus() const
 	}
 	else
 	{
-		return nullopt;
+		return std::nullopt;
 	}
 }
 

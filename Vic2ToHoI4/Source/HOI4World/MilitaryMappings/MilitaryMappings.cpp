@@ -16,7 +16,7 @@ HoI4::militaryMappings::militaryMappings(std::string name, std::istream& theStre
 	});
 	registerKeyword(std::regex("division_templates"), [this](const std::string& unused, std::istream& theStream){
 		const DivisionTemplatesImporter importer(theStream);
-		divisionTemplates = importer.getDivisionTemplates();
+		divisionTemplates = importer.takeDivisionTemplates();
 	});
 	registerKeyword(std::regex("substitutes"), [this](const std::string& unused, std::istream& theStream){
 		const substitutesImporter importer(theStream);
