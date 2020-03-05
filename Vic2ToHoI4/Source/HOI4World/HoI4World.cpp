@@ -194,8 +194,7 @@ void HoI4::World::convertCountry(
 
 void HoI4::World::importIdeologies()
 {
-	clearRegisteredKeywords();
-	registerKeyword(std::regex("ideologies"), [this](const std::string& unused, std::istream& theStream)
+	registerKeyword("ideologies", [this](const std::string& unused, std::istream& theStream)
 	{
 		IdeologyFile theFile(theStream);
 		for (auto ideology: theFile.getIdeologies())
@@ -209,6 +208,7 @@ void HoI4::World::importIdeologies()
 		parseFile("converterIdeologies.txt");
 	}
 	parseFile(theConfiguration.getHoI4Path() + "/common/ideologies/00_ideologies.txt");
+	clearRegisteredKeywords();
 }
 
 

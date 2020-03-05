@@ -9,26 +9,26 @@
 HoI4Ideology::HoI4Ideology(const std::string& _ideologyName, std::istream& theStream):
 	ideologyName(_ideologyName)
 {
-	registerKeyword(std::regex("types"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("types", [this](const std::string& unused, std::istream& theStream){
 		commonItems::stringsOfItemNames typesStrings(theStream);
 		types = typesStrings.getStrings();
 	});
-	registerKeyword(std::regex("dynamic_faction_names"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("dynamic_faction_names", [this](const std::string& unused, std::istream& theStream){
 		commonItems::stringList namesStrings(theStream);
 		dynamicFactionNames = namesStrings.getStrings();
 	});
-	registerKeyword(std::regex("color"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("color", [this](const std::string& unused, std::istream& theStream){
 		theColor = new ConverterColor::Color(theStream);
 	});
-	registerKeyword(std::regex("war_impact_on_world_tension"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("war_impact_on_world_tension", [this](const std::string& unused, std::istream& theStream){
 		commonItems::singleDouble impactNum(theStream);
 		warImpactOnWorldTension = static_cast<float>(impactNum.getDouble());
 	});
-	registerKeyword(std::regex("faction_impact_on_world_tension"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("faction_impact_on_world_tension", [this](const std::string& unused, std::istream& theStream){
 		commonItems::singleDouble impactNum(theStream);
 		factionImpactOnWorldTension = static_cast<float>(impactNum.getDouble());
 	});
-	registerKeyword(std::regex("rules"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("rules", [this](const std::string& unused, std::istream& theStream){
 		auto equals = getNextTokenWithoutMatching(theStream);
 		auto brace = getNextTokenWithoutMatching(theStream);
 		auto key = getNextTokenWithoutMatching(theStream);
@@ -43,7 +43,7 @@ HoI4Ideology::HoI4Ideology(const std::string& _ideologyName, std::istream& theSt
 		HoI4::IdeologyModifiers importedModifiers(theStream);
 		modifiers = importedModifiers.takeModifiers();
 	});
-	registerKeyword(std::regex("faction_modifiers"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("faction_modifiers", [this](const std::string& unused, std::istream& theStream){
 		auto equals = getNextTokenWithoutMatching(theStream);
 		auto brace = getNextTokenWithoutMatching(theStream);
 		auto key = getNextTokenWithoutMatching(theStream);
@@ -54,16 +54,17 @@ HoI4Ideology::HoI4Ideology(const std::string& _ideologyName, std::istream& theSt
 			key = getNextTokenWithoutMatching(theStream);
 		}
 	});
-	registerKeyword(std::regex("ai_[a-z]+"), [this](const std::string& aiString, std::istream& theStream){
+	registerRegex("ai_[a-z]+", [this](const std::string& aiString, std::istream& theStream){
 		AI = aiString;
 		commonItems::ignoreItem(aiString, theStream);
 	});
-	registerKeyword(std::regex("can_[a-z_]+"), [this](const std::string& canString, std::istream& theStream){
+	registerRegex("can_[a-z_]+", [this](const std::string& canString, std::istream& theStream){
 		commonItems::singleString yesNo(theStream);
 		cans.insert(std::make_pair(canString, yesNo.getString()));
 	});
 
 	parseStream(theStream);
+	clearRegisteredKeywords();
 }
 
 
