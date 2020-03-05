@@ -9,7 +9,7 @@
 #include "Military/Airplane.h"
 #include "Military/HoI4Army.h"
 #include "HoI4FocusTree.h"
-#include "HOI4Ideology.h"
+#include "Ideologies/HOI4Ideology.h"
 #include "Leaders/Admiral.h"
 #include "Leaders/General.h"
 #include "Navies/Navies.h"

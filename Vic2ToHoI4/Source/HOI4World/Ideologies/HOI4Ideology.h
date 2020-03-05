@@ -27,7 +27,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "newParser.h"
-#include "../Color.h"
+#include "../../Color.h"
 #include <fstream>
 #include <map>
 #include <string>

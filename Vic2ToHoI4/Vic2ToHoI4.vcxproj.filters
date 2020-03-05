@@ -115,6 +115,9 @@
     <Filter Include="Hoi4Outputter\Military">
       <UniqueIdentifier>{ddcf1619-ab27-4090-9efa-db5ce2c865fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\Ideologies">
+      <UniqueIdentifier>{5ca39d58-45d2-4dcb-bd6a-9fd4b774d4a8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -169,9 +172,6 @@
     </ClCompile>
     <ClCompile Include="Source\Mappers\GraphicsMapper.cpp">
       <Filter>Mappers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\HOI4Ideology.cpp">
-      <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="..\common_items\newParser.cpp">
       <Filter>CommonItems</Filter>
@@ -241,9 +241,6 @@
     </ClCompile>
     <ClCompile Include="Source\Mappers\TechMapper.cpp">
       <Filter>Mappers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\IdeologyFile.cpp">
-      <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMapper.cpp">
@@ -627,15 +624,12 @@
     <ClCompile Include="Source\HOI4World\Ideas\IdeaUpdaters.cpp">
       <Filter>HoI4World\Ideas</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\IdeologyModifiers.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Events\GovernmentInExileEvent.cpp">
       <Filter>HoI4World\Events</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Events\EventHelpers.cpp">
       <Filter>HoI4World\Events</Filter>
-	</ClCompile>
+    </ClCompile>
     <ClCompile Include="Source\HOI4World\Military\DivisionTemplate.cpp">
       <Filter>HoI4World\Military</Filter>
     </ClCompile>
@@ -662,6 +656,15 @@
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Military\OutArmy.cpp">
       <Filter>Hoi4Outputter\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Ideologies\HOI4Ideology.cpp">
+      <Filter>HoI4World\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Ideologies\IdeologyFile.cpp">
+      <Filter>HoI4World\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Ideologies\IdeologyModifiers.cpp">
+      <Filter>HoI4World\Ideologies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -713,9 +716,6 @@
     </ClInclude>
     <ClInclude Include="Source\Mappers\GraphicsMapper.h">
       <Filter>Mappers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\HOI4Ideology.h">
-      <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="..\common_items\newParser.h">
       <Filter>CommonItems</Filter>
@@ -782,9 +782,6 @@
     </ClInclude>
     <ClInclude Include="Source\Mappers\TechMapper.h">
       <Filter>Mappers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\IdeologyFile.h">
-      <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\Vic2ToHoI4Converter.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapper.h">
@@ -1213,15 +1210,12 @@
     <ClInclude Include="Source\HOI4World\Ideas\IdeaUpdaters.h">
       <Filter>HoI4World\Ideas</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\IdeologyModifiers.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Events\GovernmentInExileEvent.h">
       <Filter>HoI4World\Events</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Events\EventHelpers.h">
       <Filter>HoI4World\Events</Filter>
-	</ClInclude>
+    </ClInclude>
     <ClInclude Include="Source\HOI4World\Military\DivisionTemplate.h">
       <Filter>HoI4World\Military</Filter>
     </ClInclude>
@@ -1254,6 +1248,15 @@
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Military\OutArmy.h">
       <Filter>Hoi4Outputter\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Ideologies\HOI4Ideology.h">
+      <Filter>HoI4World\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Ideologies\IdeologyFile.h">
+      <Filter>HoI4World\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Ideologies\IdeologyModifiers.h">
+      <Filter>HoI4World\Ideologies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

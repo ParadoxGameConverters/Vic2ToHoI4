@@ -262,7 +262,6 @@
     <ClCompile Include="Source\HOI4World\HoI4Country.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Focus.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4FocusTree.cpp" />
-    <ClCompile Include="Source\HOI4World\HOI4Ideology.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Localisation.cpp" />
     <ClCompile Include="Source\HOI4World\HOI4Version.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4World.cpp" />
@@ -270,8 +269,9 @@
     <ClCompile Include="Source\HOI4World\Ideas\IdeaGroup.cpp" />
     <ClCompile Include="Source\HOI4World\Ideas\Ideas.cpp" />
     <ClCompile Include="Source\HOI4World\Ideas\IdeaUpdaters.cpp" />
-    <ClCompile Include="Source\HOI4World\IdeologyFile.cpp" />
-    <ClCompile Include="Source\HOI4World\IdeologyModifiers.cpp" />
+    <ClCompile Include="Source\HOI4World\Ideologies\HOI4Ideology.cpp" />
+    <ClCompile Include="Source\HOI4World\Ideologies\IdeologyFile.cpp" />
+    <ClCompile Include="Source\HOI4World\Ideologies\IdeologyModifiers.cpp" />
     <ClCompile Include="Source\HOI4World\Leaders\Admiral.cpp" />
     <ClCompile Include="Source\HOI4World\Leaders\Advisor.cpp" />
     <ClCompile Include="Source\HOI4World\Leaders\Commander.cpp" />
@@ -450,7 +450,6 @@
     <ClInclude Include="Source\HOI4World\HoI4Country.h" />
     <ClInclude Include="Source\HOI4World\HoI4Focus.h" />
     <ClInclude Include="Source\HOI4World\HoI4FocusTree.h" />
-    <ClInclude Include="Source\HOI4World\HOI4Ideology.h" />
     <ClInclude Include="Source\HOI4World\HoI4Localisation.h" />
     <ClInclude Include="Source\HOI4World\HOI4Version.h" />
     <ClInclude Include="Source\HOI4World\HoI4World.h" />
@@ -458,8 +457,9 @@
     <ClInclude Include="Source\HOI4World\Ideas\IdeaGroup.h" />
     <ClInclude Include="Source\HOI4World\Ideas\Ideas.h" />
     <ClInclude Include="Source\HOI4World\Ideas\IdeaUpdaters.h" />
-    <ClInclude Include="Source\HOI4World\IdeologyFile.h" />
-    <ClInclude Include="Source\HOI4World\IdeologyModifiers.h" />
+    <ClInclude Include="Source\HOI4World\Ideologies\HOI4Ideology.h" />
+    <ClInclude Include="Source\HOI4World\Ideologies\IdeologyFile.h" />
+    <ClInclude Include="Source\HOI4World\Ideologies\IdeologyModifiers.h" />
     <ClInclude Include="Source\HOI4World\Leaders\Admiral.h" />
     <ClInclude Include="Source\HOI4World\Leaders\Advisor.h" />
     <ClInclude Include="Source\HOI4World\Leaders\Commander.h" />

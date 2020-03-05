@@ -26,7 +26,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "../HOI4World/HOI4Ideology.h"
+#include "../HOI4World/Ideologies/HOI4Ideology.h"
 #include "newParser.h"
 #include <memory>
 #include <set>

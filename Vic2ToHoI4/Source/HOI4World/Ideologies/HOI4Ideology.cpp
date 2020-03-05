@@ -22,7 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "HOI4Ideology.h"
-#include "../Color.h"
+#include "../../Color.h"
 #include "ParserHelpers.h"
 #include <iomanip>
 #include "IdeologyModifiers.h"
