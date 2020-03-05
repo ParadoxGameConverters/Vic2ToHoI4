@@ -773,6 +773,9 @@
     <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyModifiersTests.cpp">
       <Filter>HoI4WorldTests\Ideologies</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideologies.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

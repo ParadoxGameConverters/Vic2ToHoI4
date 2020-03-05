@@ -135,6 +135,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\Ideas.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\IdeaUpdaters.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\HOI4Ideology.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideologies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyFile.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyModifiers.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Admiral.cpp" />

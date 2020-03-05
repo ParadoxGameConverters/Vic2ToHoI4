@@ -547,23 +547,18 @@ void HoI4::Country::convertTechnology(const mappers::techMapper& theTechMapper)
 }
 
 
-void HoI4::Country::setGovernmentToExistingIdeology(
-	const std::set<std::string>& majorIdeologies,
-	const std::map<std::string, HoI4Ideology*>& ideologies,
-	const governmentMapper& governmentMap
-) {
-	governmentIdeology = governmentMap.getExistingIdeologyForCountry(
-		sourceCountry,
-		rulingParty.getIdeology(),
-		majorIdeologies,
-		ideologies
-	);
-	leaderIdeology = governmentMap.getExistingLeaderIdeologyForCountry(
-		sourceCountry,
-		rulingParty.getIdeology(),
-		majorIdeologies,
-		ideologies
-	);
+void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>& majorIdeologies,
+	 const Ideologies& ideologies,
+	 const governmentMapper& governmentMap)
+{
+	governmentIdeology = governmentMap.getExistingIdeologyForCountry(sourceCountry,
+		 rulingParty.getIdeology(),
+		 majorIdeologies,
+		 ideologies);
+	leaderIdeology = governmentMap.getExistingLeaderIdeologyForCountry(sourceCountry,
+		 rulingParty.getIdeology(),
+		 majorIdeologies,
+		 ideologies);
 }
 
 

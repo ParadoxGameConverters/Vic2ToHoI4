@@ -666,6 +666,9 @@
     <ClCompile Include="Source\HOI4World\Ideologies\IdeologyModifiers.cpp">
       <Filter>HoI4World\Ideologies</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Ideologies\Ideologies.cpp">
+      <Filter>HoI4World\Ideologies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1256,6 +1259,9 @@
       <Filter>HoI4World\Ideologies</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Ideologies\IdeologyModifiers.h">
+      <Filter>HoI4World\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Ideologies\Ideologies.h">
       <Filter>HoI4World\Ideologies</Filter>
     </ClInclude>
   </ItemGroup>
