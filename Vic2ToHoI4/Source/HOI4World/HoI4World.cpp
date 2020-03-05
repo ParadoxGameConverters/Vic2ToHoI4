@@ -12,7 +12,7 @@
 #include "Events/Events.h"
 #include "Events/GovernmentInExileEvent.h"
 #include "HoI4FocusTree.h"
-#include "Ideologies/HOI4Ideology.h"
+#include "Ideologies/Ideology.h"
 #include "HoI4Localisation.h"
 #include "Ideas/Ideas.h"
 #include "Ideologies/IdeologyFile.h"

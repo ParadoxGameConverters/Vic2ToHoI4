@@ -269,8 +269,8 @@
     <ClCompile Include="Source\HOI4World\Ideas\IdeaGroup.cpp" />
     <ClCompile Include="Source\HOI4World\Ideas\Ideas.cpp" />
     <ClCompile Include="Source\HOI4World\Ideas\IdeaUpdaters.cpp" />
-    <ClCompile Include="Source\HOI4World\Ideologies\HOI4Ideology.cpp" />
     <ClCompile Include="Source\HOI4World\Ideologies\Ideologies.cpp" />
+    <ClCompile Include="Source\HOI4World\Ideologies\Ideology.cpp" />
     <ClCompile Include="Source\HOI4World\Ideologies\IdeologyFile.cpp" />
     <ClCompile Include="Source\HOI4World\Ideologies\IdeologyModifiers.cpp" />
     <ClCompile Include="Source\HOI4World\Leaders\Admiral.cpp" />
@@ -458,8 +458,8 @@
     <ClInclude Include="Source\HOI4World\Ideas\IdeaGroup.h" />
     <ClInclude Include="Source\HOI4World\Ideas\Ideas.h" />
     <ClInclude Include="Source\HOI4World\Ideas\IdeaUpdaters.h" />
-    <ClInclude Include="Source\HOI4World\Ideologies\HOI4Ideology.h" />
     <ClInclude Include="Source\HOI4World\Ideologies\Ideologies.h" />
+    <ClInclude Include="Source\HOI4World\Ideologies\Ideology.h" />
     <ClInclude Include="Source\HOI4World\Ideologies\IdeologyFile.h" />
     <ClInclude Include="Source\HOI4World\Ideologies\IdeologyModifiers.h" />
     <ClInclude Include="Source\HOI4World\Leaders\Admiral.h" />

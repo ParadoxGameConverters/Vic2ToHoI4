@@ -657,9 +657,6 @@
     <ClCompile Include="Source\Hoi4Outputter\Military\OutArmy.cpp">
       <Filter>Hoi4Outputter\Military</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Ideologies\HOI4Ideology.cpp">
-      <Filter>HoI4World\Ideologies</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Ideologies\IdeologyFile.cpp">
       <Filter>HoI4World\Ideologies</Filter>
     </ClCompile>
@@ -667,6 +664,9 @@
       <Filter>HoI4World\Ideologies</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Ideologies\Ideologies.cpp">
+      <Filter>HoI4World\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Ideologies\Ideology.cpp">
       <Filter>HoI4World\Ideologies</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1252,9 +1252,6 @@
     <ClInclude Include="Source\Hoi4Outputter\Military\OutArmy.h">
       <Filter>Hoi4Outputter\Military</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Ideologies\HOI4Ideology.h">
-      <Filter>HoI4World\Ideologies</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Ideologies\IdeologyFile.h">
       <Filter>HoI4World\Ideologies</Filter>
     </ClInclude>
@@ -1262,6 +1259,9 @@
       <Filter>HoI4World\Ideologies</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Ideologies\Ideologies.h">
+      <Filter>HoI4World\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Ideologies\Ideology.h">
       <Filter>HoI4World\Ideologies</Filter>
     </ClInclude>
   </ItemGroup>

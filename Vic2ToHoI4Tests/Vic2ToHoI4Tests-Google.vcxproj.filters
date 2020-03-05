@@ -761,9 +761,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutArmy.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\HOI4Ideology.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyFile.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
     </ClCompile>
@@ -774,6 +771,9 @@
       <Filter>HoI4WorldTests\Ideologies</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideologies.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideology.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
     </ClCompile>
   </ItemGroup>

@@ -10,7 +10,7 @@
 #include "Diplomacy/HoI4Relations.h"
 #include "Diplomacy/HoI4War.h"
 #include "HoI4FocusTree.h"
-#include "Ideologies/HOI4Ideology.h"
+#include "Ideologies/Ideology.h"
 #include "Leaders/Admiral.h"
 #include "Leaders/General.h"
 #include "Military/Airplane.h"

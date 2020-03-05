@@ -1,4 +1,4 @@
-#include "HOI4Ideology.h"
+#include "Ideology.h"
 #include "../../Color.h"
 #include "ParserHelpers.h"
 #include <iomanip>

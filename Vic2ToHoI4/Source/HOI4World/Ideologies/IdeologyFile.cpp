@@ -1,5 +1,5 @@
 #include "IdeologyFile.h"
-#include "HOI4Ideology.h"
+#include "Ideology.h"
 
 
 

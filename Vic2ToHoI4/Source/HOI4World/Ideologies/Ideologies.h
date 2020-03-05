@@ -5,7 +5,7 @@
 
 #include "../../Configuration.h"
 #include "../HoI4Country.h"
-#include "HOI4Ideology.h"
+#include "Ideology.h"
 #include "newParser.h"
 #include <map>
 #include <set>
