@@ -1,34 +1,33 @@
 #include "Ideology.h"
 #include "../../Color.h"
+#include "IdeologyModifiers.h"
 #include "ParserHelpers.h"
 #include <iomanip>
-#include "IdeologyModifiers.h"
 
 
 
-HoI4Ideology::HoI4Ideology(const std::string& _ideologyName, std::istream& theStream):
-	ideologyName(_ideologyName)
+HoI4::Ideology::Ideology(const std::string& _ideologyName, std::istream& theStream): ideologyName(_ideologyName)
 {
-	registerKeyword("types", [this](const std::string& unused, std::istream& theStream){
-		commonItems::stringsOfItemNames typesStrings(theStream);
+	registerKeyword("types", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::stringsOfItemNames typesStrings(theStream);
 		types = typesStrings.getStrings();
 	});
-	registerKeyword("dynamic_faction_names", [this](const std::string& unused, std::istream& theStream){
-		commonItems::stringList namesStrings(theStream);
+	registerKeyword("dynamic_faction_names", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::stringList namesStrings(theStream);
 		dynamicFactionNames = namesStrings.getStrings();
 	});
-	registerKeyword("color", [this](const std::string& unused, std::istream& theStream){
-		theColor = new ConverterColor::Color(theStream);
+	registerKeyword("color", [this](const std::string& unused, std::istream& theStream) {
+		theColor = std::make_unique<ConverterColor::Color>(theStream);
 	});
-	registerKeyword("war_impact_on_world_tension", [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleDouble impactNum(theStream);
+	registerKeyword("war_impact_on_world_tension", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleDouble impactNum(theStream);
 		warImpactOnWorldTension = static_cast<float>(impactNum.getDouble());
 	});
-	registerKeyword("faction_impact_on_world_tension", [this](const std::string& unused, std::istream& theStream){
-		commonItems::singleDouble impactNum(theStream);
+	registerKeyword("faction_impact_on_world_tension", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleDouble impactNum(theStream);
 		factionImpactOnWorldTension = static_cast<float>(impactNum.getDouble());
 	});
-	registerKeyword("rules", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("rules", [this](const std::string& unused, std::istream& theStream) {
 		auto equals = getNextTokenWithoutMatching(theStream);
 		auto brace = getNextTokenWithoutMatching(theStream);
 		auto key = getNextTokenWithoutMatching(theStream);
@@ -40,10 +39,10 @@ HoI4Ideology::HoI4Ideology(const std::string& _ideologyName, std::istream& theSt
 		}
 	});
 	registerKeyword("modifiers", [this](const std::string& unused, std::istream& theStream) {
-		HoI4::IdeologyModifiers importedModifiers(theStream);
+		IdeologyModifiers importedModifiers(theStream);
 		modifiers = importedModifiers.takeModifiers();
 	});
-	registerKeyword("faction_modifiers", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("faction_modifiers", [this](const std::string& unused, std::istream& theStream) {
 		auto equals = getNextTokenWithoutMatching(theStream);
 		auto brace = getNextTokenWithoutMatching(theStream);
 		auto key = getNextTokenWithoutMatching(theStream);
@@ -54,21 +53,22 @@ HoI4Ideology::HoI4Ideology(const std::string& _ideologyName, std::istream& theSt
 			key = getNextTokenWithoutMatching(theStream);
 		}
 	});
-	registerRegex("ai_[a-z]+", [this](const std::string& aiString, std::istream& theStream){
+	registerRegex("ai_[a-z]+", [this](const std::string& aiString, std::istream& theStream) {
 		AI = aiString;
 		commonItems::ignoreItem(aiString, theStream);
 	});
-	registerRegex("can_[a-z_]+", [this](const std::string& canString, std::istream& theStream){
-		commonItems::singleString yesNo(theStream);
+	registerRegex("can_[a-z_]+", [this](const std::string& canString, std::istream& theStream) {
+		const commonItems::singleString yesNo(theStream);
 		cans.insert(std::make_pair(canString, yesNo.getString()));
 	});
+	registerRegex("[a-zA-Z0-9]+", commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();
 }
 
 
-void HoI4Ideology::output(std::ofstream& file) const
+void HoI4::Ideology::output(std::ostream& file) const
 {
 	file << "\t" << ideologyName << " = {\n";
 	file << "\t\n";
@@ -86,11 +86,11 @@ void HoI4Ideology::output(std::ofstream& file) const
 }
 
 
-void HoI4Ideology::outputTypes(std::ofstream& file) const
+void HoI4::Ideology::outputTypes(std::ostream& file) const
 {
 	file << "\t\ttypes = {\n";
 	file << "\t";
-	for (auto type: types)
+	for (const auto& type: types)
 	{
 		file << "\t\t\n";
 		file << "\t\t\t" << type << " = {\n";
@@ -101,10 +101,10 @@ void HoI4Ideology::outputTypes(std::ofstream& file) const
 }
 
 
-void HoI4Ideology::outputDynamicFactionNames(std::ofstream& file) const
+void HoI4::Ideology::outputDynamicFactionNames(std::ostream& file) const
 {
 	file << "\t\tdynamic_faction_names = {\n";
-	for (auto dynamicFactionName: dynamicFactionNames)
+	for (const auto& dynamicFactionName: dynamicFactionNames)
 	{
 		file << "\t\t\t\"" << dynamicFactionName << "\"\n";
 	}
@@ -113,17 +113,17 @@ void HoI4Ideology::outputDynamicFactionNames(std::ofstream& file) const
 }
 
 
-void HoI4Ideology::outputTheColor(std::ofstream& file) const
+void HoI4::Ideology::outputTheColor(std::ostream& file) const
 {
-	file << "\t\tcolor = { " << (*theColor) << " }\n";
+	file << "\t\tcolor = { " << *theColor << " }\n";
 	file << "\t\t\n";
 }
 
 
-void HoI4Ideology::outputRules(std::ofstream& file) const
+void HoI4::Ideology::outputRules(std::ostream& file) const
 {
 	file << "\t\trules = {\n";
-	for (auto rule: rules)
+	for (const auto& rule: rules)
 	{
 		file << "\t\t\t" << rule.first << " = " << rule.second << "\n";
 	}
@@ -132,7 +132,7 @@ void HoI4Ideology::outputRules(std::ofstream& file) const
 }
 
 
-void HoI4Ideology::outputOnWorldTension(std::ofstream& file) const
+void HoI4::Ideology::outputOnWorldTension(std::ostream& file) const
 {
 	file << "\t\twar_impact_on_world_tension = " << warImpactOnWorldTension << "\n";
 	file << "\t\tfaction_impact_on_world_tension = " << factionImpactOnWorldTension << "\n";
@@ -140,10 +140,10 @@ void HoI4Ideology::outputOnWorldTension(std::ofstream& file) const
 }
 
 
-void HoI4Ideology::outputModifiers(std::ofstream& file) const
+void HoI4::Ideology::outputModifiers(std::ostream& file) const
 {
 	file << "\t\tmodifiers = {\n";
-	for (auto modifier: modifiers)
+	for (const auto& modifier: modifiers)
 	{
 		file << "\t\t\t" << modifier.first << " " << modifier.second << "\n";
 	}
@@ -152,10 +152,10 @@ void HoI4Ideology::outputModifiers(std::ofstream& file) const
 }
 
 
-void HoI4Ideology::outputFactionModifiers(std::ofstream& file) const
+void HoI4::Ideology::outputFactionModifiers(std::ostream& file) const
 {
 	file << "\t\tfaction_modifiers = {\n";
-	for (auto factionModifier: factionModifiers)
+	for (const auto& factionModifier: factionModifiers)
 	{
 		file << "\t\t\t" << factionModifier.first << " = " << factionModifier.second << "\n";
 	}
@@ -163,13 +163,13 @@ void HoI4Ideology::outputFactionModifiers(std::ofstream& file) const
 }
 
 
-void HoI4Ideology::outputCans(std::ofstream& file) const
+void HoI4::Ideology::outputCans(std::ostream& file) const
 {
 	if (cans.size() > 0)
 	{
 		file << "\n";
 	}
-	for (auto can: cans)
+	for (const auto& can: cans)
 	{
 		file << "\t\t" << can.first << " = " << can.second << "\n";
 	}
@@ -180,7 +180,7 @@ void HoI4Ideology::outputCans(std::ofstream& file) const
 }
 
 
-void HoI4Ideology::outputAI(std::ofstream& file) const
+void HoI4::Ideology::outputAI(std::ostream& file) const
 {
 	file << "\t\t" << AI << " = yes\n";
 }

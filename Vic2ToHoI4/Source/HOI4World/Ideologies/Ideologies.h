@@ -28,7 +28,7 @@ class Ideologies: commonItems::parser
 	const auto& getMajorIdeologies() const { return majorIdeologies; }
 
   private:
-	std::map<std::string, HoI4Ideology*> ideologies;
+	std::map<std::string, Ideology*> ideologies;
 	std::set<std::string> majorIdeologies;
 };
 

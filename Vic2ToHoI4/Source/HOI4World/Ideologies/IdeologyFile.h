@@ -8,25 +8,23 @@
 
 
 
-class HoI4Ideology;
-
-
-
 namespace HoI4
 {
 
+class Ideology;
+
 class IdeologyFile: commonItems::parser
 {
-	public:
-		explicit IdeologyFile(std::istream& theStream);
+  public:
+	explicit IdeologyFile(std::istream& theStream);
 
-		auto getIdeologies() const { return ideologies; }
+	auto getIdeologies() const { return ideologies; }
 
-	private:
-		std::map<std::string, HoI4Ideology*> ideologies;
+  private:
+	std::map<std::string, Ideology*> ideologies;
 };
 
-}
+} // namespace HoI4
 
 
 
