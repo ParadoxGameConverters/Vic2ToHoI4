@@ -7,9 +7,9 @@
 TEST(HoI4World_Ideologies_IdeologyItemsTests, ItemsDefaultsToEmpty)
 {
 	std::stringstream input;
-	HoI4::IdeologyItems ideologyModifiers(input);
+	HoI4::IdeologyItems ideologyItems(input);
 
-	ASSERT_TRUE(ideologyModifiers.takeItems().empty());
+	ASSERT_TRUE(ideologyItems.takeItems().empty());
 }
 
 
@@ -20,9 +20,9 @@ TEST(HoI4World_Ideologies_IdeologyItemsTests, ItemsCanBeAdded)
 	input << "\tkey = value\n";
 	input << "\tkey2 = { complex value }\n";
 	input << "}";
-	HoI4::IdeologyItems ideologyModifiers(input);
+	HoI4::IdeologyItems ideologyItems(input);
 
-	const std::map<std::string, std::string> expectedModifiers{{"key", "= value"}, {"key2", "= { complex value }"}};
+	const std::map<std::string, std::string> expectedItems{{"key", "= value"}, {"key2", "= { complex value }"}};
 
-	ASSERT_EQ(expectedModifiers, ideologyModifiers.takeItems());
+	ASSERT_EQ(expectedItems, ideologyItems.takeItems());
 }

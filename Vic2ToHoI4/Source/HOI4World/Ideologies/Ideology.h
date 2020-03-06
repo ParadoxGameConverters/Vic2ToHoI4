@@ -19,7 +19,11 @@ class Ideology: commonItems::parser
 {
   public:
 	explicit Ideology(const std::string& _ideologyName, std::istream& theStream);
+	~Ideology() = default;
 	Ideology(const Ideology& other);
+	Ideology( Ideology&& other) = default;
+	Ideology& operator=(const Ideology& other);
+	Ideology& operator=(Ideology&& other) = default;
 
 	[[nodiscard]] std::vector<std::string> getTypes() const { return types; }
 

@@ -2,7 +2,6 @@
 #include "../../Color.h"
 #include "IdeologyItems.h"
 #include "ParserHelpers.h"
-#include <iomanip>
 
 
 
@@ -47,14 +46,14 @@ HoI4::Ideology::Ideology(const std::string& _ideologyName, std::istream& theStre
 		const commonItems::singleString yesNo(theStream);
 		cans.insert(std::make_pair(canString, yesNo.getString()));
 	});
-	registerRegex("[a-zA-Z0-9]+", commonItems::ignoreItem);
+	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();
 }
 
 
-HoI4::Ideology::Ideology(const Ideology& other): commonItems::parser(other)
+HoI4::Ideology::Ideology(const Ideology& other): parser(other)
 {
 	ideologyName = other.ideologyName;
 	types = other.types;
@@ -67,4 +66,22 @@ HoI4::Ideology::Ideology(const Ideology& other): commonItems::parser(other)
 	factionModifiers = other.factionModifiers;
 	cans = other.cans;
 	AI = other.AI;
+}
+
+
+HoI4::Ideology& HoI4::Ideology::operator=(const Ideology& other)
+{
+	ideologyName = other.ideologyName;
+	types = other.types;
+	dynamicFactionNames = other.dynamicFactionNames;
+	theColor = std::make_unique<ConverterColor::Color>(*other.theColor);
+	rules = other.rules;
+	warImpactOnWorldTension = other.warImpactOnWorldTension;
+	factionImpactOnWorldTension = other.factionImpactOnWorldTension;
+	modifiers = other.modifiers;
+	factionModifiers = other.factionModifiers;
+	cans = other.cans;
+	AI = other.AI;
+
+	return *this;
 }
