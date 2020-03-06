@@ -69,6 +69,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdea.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdeaGroup.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdeas.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideologies\OutIdeologies.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideologies\OutIdeology.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutAdmiral.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutAdvisor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutGeneral.cpp" />

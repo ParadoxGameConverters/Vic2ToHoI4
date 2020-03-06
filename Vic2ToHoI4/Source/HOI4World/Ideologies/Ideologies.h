@@ -8,6 +8,7 @@
 #include "Ideology.h"
 #include "newParser.h"
 #include <map>
+#include <optional>
 #include <set>
 #include <string>
 
@@ -23,7 +24,8 @@ class Ideologies: commonItems::parser
 	void identifyMajorIdeologies(const std::vector<std::shared_ptr<HoI4::Country>> greatPowers,
 		 std::map<std::string, std::shared_ptr<HoI4::Country>> countries);
 	bool subIdeologyIsValid(const std::string& ideologyName, std::string_view subIdeology) const;
-	void output();
+
+	std::optional<Ideology> getIdeology(const std::string& ideologyName) const;
 
 	const auto& getMajorIdeologies() const { return majorIdeologies; }
 

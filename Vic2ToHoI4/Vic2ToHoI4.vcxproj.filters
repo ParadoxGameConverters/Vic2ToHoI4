@@ -118,6 +118,9 @@
     <Filter Include="HoI4World\Ideologies">
       <UniqueIdentifier>{5ca39d58-45d2-4dcb-bd6a-9fd4b774d4a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Hoi4Outputter\Ideologies">
+      <UniqueIdentifier>{6fc8d6c8-1ae7-4ab9-b6b3-7865848dcf79}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -668,6 +671,12 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Ideologies\Ideology.cpp">
       <Filter>HoI4World\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Ideologies\OutIdeology.cpp">
+      <Filter>Hoi4Outputter\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Ideologies\OutIdeologies.cpp">
+      <Filter>Hoi4Outputter\Ideologies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1263,6 +1272,12 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Ideologies\Ideology.h">
       <Filter>HoI4World\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Ideologies\OutIdeology.h">
+      <Filter>Hoi4Outputter\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Ideologies\OutIdeologies.h">
+      <Filter>Hoi4Outputter\Ideologies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

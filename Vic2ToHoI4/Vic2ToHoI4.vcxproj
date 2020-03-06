@@ -204,6 +204,8 @@
     <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdea.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdeaGroup.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdeas.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Ideologies\OutIdeologies.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Ideologies\OutIdeology.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Leaders\OutAdmiral.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Leaders\OutAdvisor.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Leaders\OutGeneral.cpp" />
@@ -393,6 +395,8 @@
     <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdea.h" />
     <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdeaGroup.h" />
     <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdeas.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Ideologies\OutIdeologies.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Ideologies\OutIdeology.h" />
     <ClInclude Include="Source\Hoi4Outputter\Leaders\OutAdvisor.h" />
     <ClInclude Include="Source\Hoi4Outputter\Map\OutBuilding.h" />
     <ClInclude Include="Source\Hoi4Outputter\Map\OutBuildings.h" />

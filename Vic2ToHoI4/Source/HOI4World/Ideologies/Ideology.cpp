@@ -68,119 +68,17 @@ HoI4::Ideology::Ideology(const std::string& _ideologyName, std::istream& theStre
 }
 
 
-void HoI4::Ideology::output(std::ostream& file) const
+HoI4::Ideology::Ideology(const Ideology& other): commonItems::parser(other)
 {
-	file << "\t" << ideologyName << " = {\n";
-	file << "\t\n";
-	outputTypes(file);
-	outputDynamicFactionNames(file);
-	outputTheColor(file);
-	outputRules(file);
-	outputOnWorldTension(file);
-	outputModifiers(file);
-	outputFactionModifiers(file);
-	outputCans(file);
-	outputAI(file);
-	file << "\t}\n";
-	file << "\n\n\n";
-}
-
-
-void HoI4::Ideology::outputTypes(std::ostream& file) const
-{
-	file << "\t\ttypes = {\n";
-	file << "\t";
-	for (const auto& type: types)
-	{
-		file << "\t\t\n";
-		file << "\t\t\t" << type << " = {\n";
-		file << "\t\t\t}\n";
-	}
-	file << "\t\t}\n";
-	file << "\t\t\n";
-}
-
-
-void HoI4::Ideology::outputDynamicFactionNames(std::ostream& file) const
-{
-	file << "\t\tdynamic_faction_names = {\n";
-	for (const auto& dynamicFactionName: dynamicFactionNames)
-	{
-		file << "\t\t\t\"" << dynamicFactionName << "\"\n";
-	}
-	file << "\t\t}\n";
-	file << "\t\t\n";
-}
-
-
-void HoI4::Ideology::outputTheColor(std::ostream& file) const
-{
-	file << "\t\tcolor = { " << *theColor << " }\n";
-	file << "\t\t\n";
-}
-
-
-void HoI4::Ideology::outputRules(std::ostream& file) const
-{
-	file << "\t\trules = {\n";
-	for (const auto& rule: rules)
-	{
-		file << "\t\t\t" << rule.first << " = " << rule.second << "\n";
-	}
-	file << "\t\t}\n";
-	file << "\t\t\n";
-}
-
-
-void HoI4::Ideology::outputOnWorldTension(std::ostream& file) const
-{
-	file << "\t\twar_impact_on_world_tension = " << warImpactOnWorldTension << "\n";
-	file << "\t\tfaction_impact_on_world_tension = " << factionImpactOnWorldTension << "\n";
-	file << "\t\t\n";
-}
-
-
-void HoI4::Ideology::outputModifiers(std::ostream& file) const
-{
-	file << "\t\tmodifiers = {\n";
-	for (const auto& modifier: modifiers)
-	{
-		file << "\t\t\t" << modifier.first << " " << modifier.second << "\n";
-	}
-	file << "\t\t}\n";
-	file << "\t\t\n";
-}
-
-
-void HoI4::Ideology::outputFactionModifiers(std::ostream& file) const
-{
-	file << "\t\tfaction_modifiers = {\n";
-	for (const auto& factionModifier: factionModifiers)
-	{
-		file << "\t\t\t" << factionModifier.first << " = " << factionModifier.second << "\n";
-	}
-	file << "\t\t}\n";
-}
-
-
-void HoI4::Ideology::outputCans(std::ostream& file) const
-{
-	if (cans.size() > 0)
-	{
-		file << "\n";
-	}
-	for (const auto& can: cans)
-	{
-		file << "\t\t" << can.first << " = " << can.second << "\n";
-	}
-	if (cans.size() > 0)
-	{
-		file << "\n";
-	}
-}
-
-
-void HoI4::Ideology::outputAI(std::ostream& file) const
-{
-	file << "\t\t" << AI << " = yes\n";
+	ideologyName = other.ideologyName;
+	types = other.types;
+	dynamicFactionNames = other.dynamicFactionNames;
+	theColor = std::make_unique<ConverterColor::Color>(*other.theColor);
+	rules = other.rules;
+	warImpactOnWorldTension = other.warImpactOnWorldTension;
+	factionImpactOnWorldTension = other.factionImpactOnWorldTension;
+	modifiers = other.modifiers;
+	factionModifiers = other.factionModifiers;
+	cans = other.cans;
+	AI = other.AI;
 }

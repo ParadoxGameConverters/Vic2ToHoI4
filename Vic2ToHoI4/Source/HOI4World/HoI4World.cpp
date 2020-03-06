@@ -48,6 +48,7 @@
 #include "../Hoi4Outputter/States/HoI4StatesOutputter.h"
 #include <fstream>
 #include "../Hoi4Outputter/outDifficultySettings.h"
+#include "../Hoi4Outputter/Ideologies/OutIdeologies.h"
 using namespace std;
 
 
@@ -1005,7 +1006,7 @@ void HoI4::World::output()
 	outputEvents(*events, theConfiguration);
 	onActions->output(ideologies->getMajorIdeologies());
 	outAiPeaces(*peaces, ideologies->getMajorIdeologies(), theConfiguration);
-	ideologies->output();
+	outputIdeologies(*ideologies);
 	outputLeaderTraits();
 	outIdeas(*theIdeas, ideologies->getMajorIdeologies(), theConfiguration);
 	outputBookmarks();

@@ -80,24 +80,14 @@ bool HoI4::Ideologies::subIdeologyIsValid(const std::string& ideologyName, std::
 }
 
 
-void HoI4::Ideologies::output()
+std::optional<HoI4::Ideology> HoI4::Ideologies::getIdeology(const std::string& ideologyName) const
 {
-	if (!Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/common/ideologies/"))
+	if (auto ideology = ideologies.find(ideologyName); ideology != ideologies.end())
 	{
-		Log(LogLevel::Error) << "Could not create output/" + theConfiguration.getOutputName() + "/common/ideologies/";
+		return *(ideology->second);
 	}
-	std::ofstream ideologyFile("output/" + theConfiguration.getOutputName() + "/common/ideologies/00_ideologies.txt");
-	ideologyFile << "ideologies = {\n";
-	ideologyFile << "\t\n";
-	for (auto ideologyName : majorIdeologies)
+	else
 	{
-		auto ideology = ideologies.find(ideologyName);
-		if (ideology != ideologies.end())
-		{
-			ideology->second->output(ideologyFile);
-		}
+		return std::nullopt;
 	}
-	ideologyFile << "}";
-	ideologyFile.close();
 }
-

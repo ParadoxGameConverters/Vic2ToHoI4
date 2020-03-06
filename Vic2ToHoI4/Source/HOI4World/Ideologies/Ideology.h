@@ -19,22 +19,13 @@ class Ideology: commonItems::parser
 {
   public:
 	explicit Ideology(const std::string& _ideologyName, std::istream& theStream);
-
-	void output(std::ostream& file) const;
+	Ideology(const Ideology& other);
 
 	[[nodiscard]] std::vector<std::string> getTypes() const { return types; }
 
-  private:
-	void outputTypes(std::ostream& file) const;
-	void outputDynamicFactionNames(std::ostream& file) const;
-	void outputTheColor(std::ostream& file) const;
-	void outputRules(std::ostream& file) const;
-	void outputOnWorldTension(std::ostream& file) const;
-	void outputModifiers(std::ostream& file) const;
-	void outputFactionModifiers(std::ostream& file) const;
-	void outputCans(std::ostream& file) const;
-	void outputAI(std::ostream& file) const;
+	friend std::ostream& operator<<(std::ostream& out, const Ideology& ideology);
 
+  private:
 	std::string ideologyName;
 	std::vector<std::string> types;
 	std::vector<std::string> dynamicFactionNames;
