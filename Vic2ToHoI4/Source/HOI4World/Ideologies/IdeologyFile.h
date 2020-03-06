@@ -2,6 +2,7 @@
 #define HOI4_IDEOLOGY_FILE
 
 
+#include "Ideology.h"
 #include "newParser.h"
 #include <map>
 #include <string>
@@ -11,17 +12,15 @@
 namespace HoI4
 {
 
-class Ideology;
-
 class IdeologyFile: commonItems::parser
 {
   public:
 	explicit IdeologyFile(std::istream& theStream);
 
-	auto getIdeologies() const { return ideologies; }
+	[[nodiscard]] auto getIdeologies() const { return ideologies; }
 
   private:
-	std::map<std::string, Ideology*> ideologies;
+	std::map<std::string, Ideology> ideologies;
 };
 
 } // namespace HoI4

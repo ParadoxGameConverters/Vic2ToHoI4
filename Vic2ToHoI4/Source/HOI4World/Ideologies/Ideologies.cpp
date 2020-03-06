@@ -67,7 +67,7 @@ bool HoI4::Ideologies::subIdeologyIsValid(const std::string& ideologyName, std::
 	auto ideology = ideologies.find(ideologyName);
 	if (ideology != ideologies.end())
 	{
-		for (auto type : ideology->second->getTypes())
+		for (auto type : ideology->second.getTypes())
 		{
 			if (subIdeology == type)
 			{
@@ -84,7 +84,7 @@ std::optional<HoI4::Ideology> HoI4::Ideologies::getIdeology(const std::string& i
 {
 	if (auto ideology = ideologies.find(ideologyName); ideology != ideologies.end())
 	{
-		return *(ideology->second);
+		return ideology->second;
 	}
 	else
 	{

@@ -244,6 +244,7 @@
     <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideas\IdeaGroupTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideas\IdeaTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyFileTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyItemsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Leader\AdvisorTests.cpp" />
