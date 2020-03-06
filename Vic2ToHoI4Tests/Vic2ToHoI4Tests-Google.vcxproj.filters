@@ -764,12 +764,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyFile.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyModifiers.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyModifiersTests.cpp">
-      <Filter>HoI4WorldTests\Ideologies</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideologies.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
     </ClCompile>
@@ -781,6 +775,12 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideologies\OutIdeology.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyItems.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyItemsTests.cpp">
+      <Filter>HoI4WorldTests\Ideologies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

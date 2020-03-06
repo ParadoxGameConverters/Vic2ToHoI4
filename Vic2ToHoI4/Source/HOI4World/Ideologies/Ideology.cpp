@@ -1,6 +1,6 @@
 #include "Ideology.h"
 #include "../../Color.h"
-#include "IdeologyModifiers.h"
+#include "IdeologyItems.h"
 #include "ParserHelpers.h"
 #include <iomanip>
 
@@ -28,30 +28,16 @@ HoI4::Ideology::Ideology(const std::string& _ideologyName, std::istream& theStre
 		factionImpactOnWorldTension = static_cast<float>(impactNum.getDouble());
 	});
 	registerKeyword("rules", [this](const std::string& unused, std::istream& theStream) {
-		auto equals = getNextTokenWithoutMatching(theStream);
-		auto brace = getNextTokenWithoutMatching(theStream);
-		auto key = getNextTokenWithoutMatching(theStream);
-		while (key && (*key != "}"))
-		{
-			commonItems::singleString leaf(theStream);
-			rules.insert(std::make_pair(*key, leaf.getString()));
-			key = getNextTokenWithoutMatching(theStream);
-		}
+		IdeologyItems importedRules(theStream);
+		rules = importedRules.takeItems();
 	});
 	registerKeyword("modifiers", [this](const std::string& unused, std::istream& theStream) {
-		IdeologyModifiers importedModifiers(theStream);
-		modifiers = importedModifiers.takeModifiers();
+		IdeologyItems importedModifiers(theStream);
+		modifiers = importedModifiers.takeItems();
 	});
 	registerKeyword("faction_modifiers", [this](const std::string& unused, std::istream& theStream) {
-		auto equals = getNextTokenWithoutMatching(theStream);
-		auto brace = getNextTokenWithoutMatching(theStream);
-		auto key = getNextTokenWithoutMatching(theStream);
-		while (key != "}")
-		{
-			commonItems::singleDouble leaf(theStream);
-			factionModifiers.insert(std::make_pair(*key, static_cast<float>(leaf.getDouble())));
-			key = getNextTokenWithoutMatching(theStream);
-		}
+		IdeologyItems importedModifiers(theStream);
+		factionModifiers = importedModifiers.takeItems();
 	});
 	registerRegex("ai_[a-z]+", [this](const std::string& aiString, std::istream& theStream) {
 		AI = aiString;

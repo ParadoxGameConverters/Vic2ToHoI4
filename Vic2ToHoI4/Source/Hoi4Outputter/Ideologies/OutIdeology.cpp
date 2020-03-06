@@ -28,7 +28,7 @@ std::ostream& HoI4::operator<<(std::ostream& out, const Ideology& ideology)
 	out << "\t\trules = {\n";
 	for (const auto& rule: ideology.rules)
 	{
-		out << "\t\t\t" << rule.first << " = " << rule.second << "\n";
+		out << "\t\t\t" << rule.first << " " << rule.second << "\n";
 	}
 	out << "\t\t}\n";
 	out << "\t\t\n";
@@ -45,7 +45,7 @@ std::ostream& HoI4::operator<<(std::ostream& out, const Ideology& ideology)
 	out << "\t\tfaction_modifiers = {\n";
 	for (const auto& factionModifier: ideology.factionModifiers)
 	{
-		out << "\t\t\t" << factionModifier.first << " = " << factionModifier.second << "\n";
+		out << "\t\t\t" << factionModifier.first << " " << factionModifier.second << "\n";
 	}
 	out << "\t\t}\n";
 	if (!ideology.cans.empty())

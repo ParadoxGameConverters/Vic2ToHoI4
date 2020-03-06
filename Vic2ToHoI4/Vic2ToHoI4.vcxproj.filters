@@ -663,9 +663,6 @@
     <ClCompile Include="Source\HOI4World\Ideologies\IdeologyFile.cpp">
       <Filter>HoI4World\Ideologies</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Ideologies\IdeologyModifiers.cpp">
-      <Filter>HoI4World\Ideologies</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Ideologies\Ideologies.cpp">
       <Filter>HoI4World\Ideologies</Filter>
     </ClCompile>
@@ -677,6 +674,9 @@
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Ideologies\OutIdeologies.cpp">
       <Filter>Hoi4Outputter\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Ideologies\IdeologyItems.cpp">
+      <Filter>HoI4World\Ideologies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1264,9 +1264,6 @@
     <ClInclude Include="Source\HOI4World\Ideologies\IdeologyFile.h">
       <Filter>HoI4World\Ideologies</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Ideologies\IdeologyModifiers.h">
-      <Filter>HoI4World\Ideologies</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Ideologies\Ideologies.h">
       <Filter>HoI4World\Ideologies</Filter>
     </ClInclude>
@@ -1278,6 +1275,9 @@
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Ideologies\OutIdeologies.h">
       <Filter>Hoi4Outputter\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Ideologies\IdeologyItems.h">
+      <Filter>HoI4World\Ideologies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
