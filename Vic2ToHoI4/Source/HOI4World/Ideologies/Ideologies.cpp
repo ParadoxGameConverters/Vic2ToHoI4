@@ -1,20 +1,20 @@
 #include "Ideologies.h"
 #include "IdeologyFile.h"
 #include "Log.h"
-#include "OSCompatibilityLayer.h"
+#include "ParserHelpers.h"
 
 
 
 HoI4::Ideologies::Ideologies(const Configuration& theConfiguration)
 {
-	registerKeyword("ideologies", [this](const std::string& unused, std::istream& theStream)
-	{
-		IdeologyFile theFile(theStream);
-		for (auto ideology : theFile.getIdeologies())
+	registerKeyword("ideologies", [this](const std::string& unused, std::istream& theStream) {
+		const IdeologyFile theFile(theStream);
+		for (const auto& ideology: theFile.getIdeologies())
 		{
 			ideologies.insert(ideology);
 		}
 	});
+	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
 
 	if (theConfiguration.getIdeologiesOptions() != ideologyOptions::keep_default)
 	{
@@ -25,16 +25,16 @@ HoI4::Ideologies::Ideologies(const Configuration& theConfiguration)
 }
 
 
-void HoI4::Ideologies::identifyMajorIdeologies(std::vector<std::shared_ptr<HoI4::Country>> greatPowers, std::map<std::string, std::shared_ptr<HoI4::Country>> countries)
+void HoI4::Ideologies::identifyMajorIdeologies(const std::vector<std::shared_ptr<Country>>& greatPowers,
+	 const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
 	if (theConfiguration.getIdeologiesOptions() == ideologyOptions::keep_major)
 	{
-		for (auto greatPower : greatPowers)
+		for (const auto& greatPower: greatPowers)
 		{
 			majorIdeologies.insert(greatPower->getGovernmentIdeology());
 		}
-
-		for (auto country : countries)
+		for (const auto& country: countries)
 		{
 			if (country.second->isHuman())
 			{
@@ -45,7 +45,7 @@ void HoI4::Ideologies::identifyMajorIdeologies(std::vector<std::shared_ptr<HoI4:
 	}
 	else if (theConfiguration.getIdeologiesOptions() == ideologyOptions::specified)
 	{
-		for (auto ideology : theConfiguration.getSpecifiedIdeologies())
+		for (const auto& ideology: theConfiguration.getSpecifiedIdeologies())
 		{
 			majorIdeologies.insert(ideology);
 		}
@@ -54,7 +54,7 @@ void HoI4::Ideologies::identifyMajorIdeologies(std::vector<std::shared_ptr<HoI4:
 	//		all ideologies the converter knows for both keep_default and keep_all
 	else
 	{
-		for (auto ideology : ideologies)
+		for (const auto& ideology: ideologies)
 		{
 			majorIdeologies.insert(ideology.first);
 		}
@@ -62,12 +62,11 @@ void HoI4::Ideologies::identifyMajorIdeologies(std::vector<std::shared_ptr<HoI4:
 }
 
 
-bool HoI4::Ideologies::subIdeologyIsValid(const std::string& ideologyName, std::string_view subIdeology) const
+bool HoI4::Ideologies::subIdeologyIsValid(const std::string& ideologyName, const std::string_view subIdeology) const
 {
-	auto ideology = ideologies.find(ideologyName);
-	if (ideology != ideologies.end())
+	if (const auto ideology = ideologies.find(ideologyName); ideology != ideologies.end())
 	{
-		for (auto type : ideology->second.getTypes())
+		for (const auto& type: ideology->second.getTypes())
 		{
 			if (subIdeology == type)
 			{
@@ -82,7 +81,7 @@ bool HoI4::Ideologies::subIdeologyIsValid(const std::string& ideologyName, std::
 
 std::optional<HoI4::Ideology> HoI4::Ideologies::getIdeology(const std::string& ideologyName) const
 {
-	if (auto ideology = ideologies.find(ideologyName); ideology != ideologies.end())
+	if (const auto ideology = ideologies.find(ideologyName); ideology != ideologies.end())
 	{
 		return ideology->second;
 	}

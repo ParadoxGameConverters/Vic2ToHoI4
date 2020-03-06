@@ -20,14 +20,15 @@ namespace HoI4
 class Ideologies: commonItems::parser
 {
   public:
-	Ideologies(const Configuration& theConfiguration);
-	void identifyMajorIdeologies(const std::vector<std::shared_ptr<HoI4::Country>> greatPowers,
-		 std::map<std::string, std::shared_ptr<HoI4::Country>> countries);
-	bool subIdeologyIsValid(const std::string& ideologyName, std::string_view subIdeology) const;
+	explicit Ideologies(const Configuration& theConfiguration);
 
-	std::optional<Ideology> getIdeology(const std::string& ideologyName) const;
+	void identifyMajorIdeologies(const std::vector<std::shared_ptr<Country>>& greatPowers,
+		 const std::map<std::string, std::shared_ptr<Country>>& countries);
 
-	const auto& getMajorIdeologies() const { return majorIdeologies; }
+	[[nodiscard]] bool subIdeologyIsValid(const std::string& ideologyName, std::string_view subIdeology) const;
+	[[nodiscard]] std::optional<Ideology> getIdeology(const std::string& ideologyName) const;
+
+	[[nodiscard]] const auto& getMajorIdeologies() const { return majorIdeologies; }
 
   private:
 	std::map<std::string, Ideology> ideologies;
