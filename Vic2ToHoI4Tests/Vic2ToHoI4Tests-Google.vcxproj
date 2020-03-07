@@ -69,6 +69,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdea.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdeaGroup.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdeas.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideologies\OutIdeologies.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideologies\OutIdeology.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutAdmiral.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutAdvisor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutGeneral.cpp" />
@@ -127,7 +129,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Country.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Focus.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4FocusTree.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HOI4Ideology.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Localisation.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HOI4Version.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4World.cpp" />
@@ -135,8 +136,10 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\IdeaGroup.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\Ideas.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\IdeaUpdaters.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeologyFile.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeologyModifiers.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideologies.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideology.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyFile.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyItems.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Admiral.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Advisor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Commander.cpp" />
@@ -241,7 +244,9 @@
     <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideas\IdeaGroupTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideas\IdeaTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\IdeologyModifiersTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyFileTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyItemsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Leader\AdvisorTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\AllReplacementRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRulesTests.cpp" />

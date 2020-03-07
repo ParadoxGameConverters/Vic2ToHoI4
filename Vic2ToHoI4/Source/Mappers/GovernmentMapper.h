@@ -26,9 +26,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "../HOI4World/HOI4Ideology.h"
+#include "../HOI4World/Ideologies/Ideologies.h"
 #include "newParser.h"
-#include <memory>
 #include <set>
 #include <string>
 #include <vector>
@@ -77,18 +76,14 @@ class governmentMapper: commonItems::parser
 			const std::string& sourceGovernment,
 			const std::string& Vic2RulingIdeology
 		) const;
-		std::string getExistingIdeologyForCountry(
-			const Vic2::Country& country,
-			const std::string& Vic2RulingIdeology,
-			const std::set<std::string>& majorIdeologies,
-			const std::map<std::string, HoI4Ideology*>& ideologies
-		) const;
-		std::string getExistingLeaderIdeologyForCountry(
-			const Vic2::Country& country,
-			const std::string& Vic2RulingIdeology,
-			const std::set<std::string>& majorIdeologies,
-			const std::map<std::string, HoI4Ideology*>& ideologies
-		) const;
+		std::string getExistingIdeologyForCountry(const Vic2::Country& country,
+			 const std::string& Vic2RulingIdeology,
+			 const std::set<std::string>& majorIdeologies,
+			 const HoI4::Ideologies& ideologies) const;
+		std::string getExistingLeaderIdeologyForCountry(const Vic2::Country& country,
+			 const std::string& Vic2RulingIdeology,
+			 const std::set<std::string>& majorIdeologies,
+			 const HoI4::Ideologies& ideologies) const;
 		virtual std::string getSupportedIdeology(
 			const std::string& rulingIdeology,
 			const std::string& Vic2Ideology,
@@ -103,7 +98,9 @@ class governmentMapper: commonItems::parser
 
 		bool governmentMatches(const governmentMapping& mapping, const std::string& government) const;
 		bool rulingIdeologyMatches(const governmentMapping& mapping, const std::string& rulingIdeology) const;
-		bool ideologyIsValid(const governmentMapping& mapping, const std::set<std::string>& majorIdeologies, const std::map<std::string, HoI4Ideology*>& ideologies) const;
+		static bool ideologyIsValid(const governmentMapping& mapping,
+			 const std::set<std::string>& majorIdeologies,
+			 const HoI4::Ideologies& ideologies);
 
 		std::vector<governmentMapping> governmentMap;
 		std::vector<partyMapping> partyMap;

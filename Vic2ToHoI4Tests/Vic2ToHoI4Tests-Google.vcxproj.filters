@@ -59,9 +59,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HOI4Ideology.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Color.cpp">
       <Filter>Vic2ToHoI4 files</Filter>
     </ClCompile>
@@ -75,9 +72,6 @@
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4FocusTree.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeologyFile.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\TechMapper.cpp">
@@ -716,17 +710,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\IdeaUpdaters.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Ideas</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IdeologyModifiers.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="HoI4WorldTests\IdeologyModifiersTests.cpp">
-      <Filter>HoI4WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventHelpers.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\GovernmentInExileEvent.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\DivisionTemplate.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
     </ClCompile>
@@ -771,6 +760,33 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutArmy.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyFile.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideologies.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideology.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideologies\OutIdeologies.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideologies\OutIdeology.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyItems.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyItemsTests.cpp">
+      <Filter>HoI4WorldTests\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyTests.cpp">
+      <Filter>HoI4WorldTests\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyFileTests.cpp">
+      <Filter>HoI4WorldTests\Ideologies</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -935,6 +951,15 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Military">
       <UniqueIdentifier>{e6b6046a-7440-425b-bb61-6d6a5c67bd24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Ideologies">
+      <UniqueIdentifier>{ae287c5d-388f-4bb7-af78-227cb2d78902}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\Ideologies">
+      <UniqueIdentifier>{39e98c18-db17-4b92-b5a1-7a97a282d97e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Ideologies">
+      <UniqueIdentifier>{3f760eb7-1c8d-4ebd-acef-73a1b4ba95b5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
