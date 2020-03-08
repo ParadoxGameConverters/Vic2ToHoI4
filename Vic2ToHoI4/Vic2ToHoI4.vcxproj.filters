@@ -678,6 +678,15 @@
     <ClCompile Include="Source\Hoi4Outputter\ShipTypes\OutMtgShipVariant.cpp">
       <Filter>Hoi4Outputter\ShipTypes</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\ShipTypes\OutLegacyShipVariant.cpp">
+      <Filter>Hoi4Outputter\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\ShipTypes\LegacyShipVariant.cpp">
+      <Filter>HoI4World\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\ShipTypes\ShipUpgrades.cpp">
+      <Filter>HoI4World\ShipTypes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1278,6 +1287,15 @@
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\OutMtgShipVariant.h">
       <Filter>Hoi4Outputter\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\ShipTypes\LegacyShipVariant.h">
+      <Filter>HoI4World\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\ShipTypes\OutLegacyShipVariant.h">
+      <Filter>Hoi4Outputter\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\ShipTypes\ShipUpgrades.h">
+      <Filter>HoI4World\ShipTypes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

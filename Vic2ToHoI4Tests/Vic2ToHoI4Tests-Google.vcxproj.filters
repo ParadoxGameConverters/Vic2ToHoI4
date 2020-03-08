@@ -788,6 +788,21 @@
     <ClCompile Include="HoI4WorldTests\ShipTypes\MtgShipVariantTests.cpp">
       <Filter>HoI4WorldTests\ShipTypes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\LegacyShipVariant.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\ShipTypes\LegacyShipVariantTests.cpp">
+      <Filter>HoI4WorldTests\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\OutLegacyShipVariant.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipUpgrades.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\ShipTypes\ShipUpgradesTests.cpp">
+      <Filter>HoI4WorldTests\ShipTypes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

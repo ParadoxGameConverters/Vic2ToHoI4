@@ -5,7 +5,7 @@
 
 
 
-TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, DefaultsSetCorrectly)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, DefaultsSetCorrectly)
 {
 	std::stringstream input;
 	input << "";
@@ -25,7 +25,7 @@ TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, DefaultsSetCorrectly)
 }
 
 
-TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, NameCanBeInput)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, NameCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -37,7 +37,7 @@ TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, NameCanBeInput)
 }
 
 
-TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, TypeCanBeInput)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, TypeCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -59,7 +59,7 @@ TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, TypeCanBeInput)
 }
 
 
-TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, NameGroupCanBeInput)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, NameGroupCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -81,7 +81,7 @@ TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, NameGroupCanBeInput)
 }
 
 
-TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, OwningCountryTagCanBeInput)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, OwningCountryTagCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -104,7 +104,7 @@ TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, OwningCountryTagCanBeInput)
 }
 
 
-TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, ModulesCanBeInput)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, ModulesCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -133,7 +133,7 @@ TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, ModulesCanBeInput)
 }
 
 
-TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, CanBeSetObsolete)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, CanBeSetObsolete)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -156,7 +156,7 @@ TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, CanBeSetObsolete)
 }
 
 
-TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, OnlySetObsoleteByYes)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, OnlySetObsoleteByYes)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -178,7 +178,7 @@ TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, OnlySetObsoleteByYes)
 }
 
 
-TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, NoRequiredTechsMeansVariantIsValid)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, NoRequiredTechsMeansVariantIsValid)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -191,7 +191,7 @@ TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, NoRequiredTechsMeansVariantIsVa
 }
 
 
-TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, MissingRequiredTechMeansVariantIsInvalid)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, MissingRequiredTechMeansVariantIsInvalid)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -207,7 +207,7 @@ TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, MissingRequiredTechMeansVariant
 }
 
 
-TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, HavingRequiredTechsMeansVariantIsValid)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, HavingRequiredTechsMeansVariantIsValid)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -224,7 +224,7 @@ TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, HavingRequiredTechsMeansVariant
 }
 
 
-TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, HavingOnlySomeRequiredTechsMeansVariantIsInvalid)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, HavingOnlySomeRequiredTechsMeansVariantIsInvalid)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -243,7 +243,7 @@ TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, HavingOnlySomeRequiredTechsMean
 }
 
 
-TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, HavingBlockingTechsMeansVariantIsInvalid)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, HavingBlockingTechsMeansVariantIsInvalid)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -260,7 +260,7 @@ TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, HavingBlockingTechsMeansVariant
 }
 
 
-TEST(HoI4World_ShipTypes_MtgMtgShipVariantTests, HavingNoBlockingTechsMeansVariantIsValid)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, HavingNoBlockingTechsMeansVariantIsValid)
 {
 	std::stringstream input;
 	input << " = {\n";
