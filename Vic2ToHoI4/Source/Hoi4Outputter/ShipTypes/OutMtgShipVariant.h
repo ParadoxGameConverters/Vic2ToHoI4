@@ -1,5 +1,5 @@
-#ifndef SHIP_VARIANT_OUTPUTTER_H
-#define SHIP_VARIANT_OUTPUTTER_H
+#ifndef OUT_MTG_SHIP_VARIANT
+#define OUT_MTG_SHIP_VARIANT
 
 
 
@@ -17,4 +17,4 @@ std::ostream& operator<<(std::ostream& output, MtgShipVariant& theVariant);
 
 
 
-#endif // SHIP_VARIANT_OUTPUTTER_H
+#endif // OUT_MTG_SHIP_VARIANT

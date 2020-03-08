@@ -5,41 +5,43 @@
 
 HoI4::MtgShipVariant::MtgShipVariant(std::istream& theStream)
 {
-	registerKeyword(std::regex("name"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString nameString(theStream);
 		name = nameString.getString();
 	});
-	registerKeyword(std::regex("type"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("type", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString typeString(theStream);
 		type = typeString.getString();
 	});
-	registerKeyword(std::regex("name_group"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("name_group", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString nameGroupString(theStream);
 		nameGroup = nameGroupString.getString();
 	});
-	registerKeyword(std::regex("modules"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("modules", [this](const std::string& unused, std::istream& theStream) {
 		modules = std::make_unique<shipModules>(theStream);
 	});
-	registerKeyword(std::regex("obsolete"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("obsolete", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString obsoleteString(theStream);
 		obsolete = (obsoleteString.getString() == "yes");
 	});
-	registerKeyword(std::regex("required_techs"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("required_techs", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringList requiredTechsStrings(theStream);
 		for (const auto& requiredTech: requiredTechsStrings.getStrings())
 		{
 			requiredTechnologies.insert(requiredTech);
 		}
 	});
-	registerKeyword(std::regex("blocking_techs"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("blocking_techs", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringList blockingTechsStrings(theStream);
 		for (const auto& blockingTech: blockingTechsStrings.getStrings())
 		{
 			blockingTechnologies.insert(blockingTech);
 		}
 	});
+	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
 
 	parseStream(theStream);
+	clearRegisteredKeywords();
 }
 
 

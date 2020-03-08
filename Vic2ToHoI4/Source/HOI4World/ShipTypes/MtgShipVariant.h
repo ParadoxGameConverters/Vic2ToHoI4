@@ -1,5 +1,5 @@
-#ifndef SHIP_VARIANT_H
-#define SHIP_VARIANT_H
+#ifndef MTG_SHIP_VARIANT_H
+#define MTG_SHIP_VARIANT_H
 
 
 
@@ -53,4 +53,4 @@ class MtgShipVariant: commonItems::parser
 
 
 
-#endif // SHIP_VARIANT_H
+#endif // MTG_SHIP_VARIANT_H

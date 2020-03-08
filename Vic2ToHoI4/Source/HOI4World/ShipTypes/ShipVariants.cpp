@@ -2,11 +2,11 @@
 
 
 
-HoI4::shipVariants::shipVariants(const std::vector<MtgShipVariant>& possibleVariants,
+HoI4::shipVariants::shipVariants(const std::vector<MtgShipVariant>& possibleMtgVariants,
 	 const technologies& ownedTechs,
 	 const std::string& countryTag)
 {
-	for (auto& possibleVariant: possibleVariants)
+	for (auto& possibleVariant: possibleMtgVariants)
 	{
 		if (possibleVariant.isValidVariant(ownedTechs))
 		{
