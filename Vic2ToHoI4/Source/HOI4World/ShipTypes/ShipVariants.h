@@ -3,9 +3,9 @@
 
 
 
-#include "newParser.h"
 #include "../Technologies.h"
-#include "ShipVariant.h"
+#include "MtgShipVariant.h"
+#include "newParser.h"
 #include <string>
 #include <vector>
 
@@ -16,24 +16,23 @@ namespace HoI4
 
 class shipVariants
 {
-	public:
-		shipVariants(
-			const std::vector<shipVariant>& possibleVariants,
-			const technologies& ownedTechs, const std::string& countryTag
-		);
+  public:
+	shipVariants(const std::vector<MtgShipVariant>& possibleMtgVariants,
+		 const technologies& ownedTechs,
+		 const std::string& countryTag);
 
-		[[nodiscard]] bool hasVariant(const std::string& variantName) const
-		{
-			return variants.find(variantName) != variants.end();
-		}
+	[[nodiscard]] bool hasMtgVariant(const std::string& variantName) const
+	{
+		return mtgVariants.find(variantName) != mtgVariants.end();
+	}
 
-		friend std::ostream& operator << (std::ostream& output, const shipVariants& theVariants);
+	friend std::ostream& operator<<(std::ostream& output, const shipVariants& theVariants);
 
-	private:
-		std::map<std::string, shipVariant> variants;
+  private:
+	std::map<std::string, MtgShipVariant> mtgVariants;
 };
 
-}
+} // namespace HoI4
 
 
 

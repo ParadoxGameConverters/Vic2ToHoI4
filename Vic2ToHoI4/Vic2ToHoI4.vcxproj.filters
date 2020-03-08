@@ -267,9 +267,6 @@
     <ClCompile Include="Source\HOI4World\ShipTypes\PossibleShipVariants.cpp">
       <Filter>HoI4World\ShipTypes</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\ShipTypes\ShipVariant.cpp">
-      <Filter>HoI4World\ShipTypes</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\ShipTypes\ShipVariants.cpp">
       <Filter>HoI4World\ShipTypes</Filter>
     </ClCompile>
@@ -400,9 +397,6 @@
       <Filter>HoI4World\Navies</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.cpp">
-      <Filter>Hoi4Outputter\ShipTypes</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipVariantOutputter.cpp">
       <Filter>Hoi4Outputter\ShipTypes</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.cpp">
@@ -678,6 +672,12 @@
     <ClCompile Include="Source\HOI4World\Ideologies\IdeologyItems.cpp">
       <Filter>HoI4World\Ideologies</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\ShipTypes\MtgShipVariant.cpp">
+      <Filter>HoI4World\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\ShipTypes\OutMtgShipVariant.cpp">
+      <Filter>Hoi4Outputter\ShipTypes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -818,9 +818,6 @@
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\ShipTypes\PossibleShipVariants.h">
-      <Filter>HoI4World\ShipTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\ShipTypes\ShipVariant.h">
       <Filter>HoI4World\ShipTypes</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\ShipTypes\ShipVariants.h">
@@ -971,9 +968,6 @@
       <Filter>Hoi4Outputter\ScriptedLocalisations</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.h">
-      <Filter>Hoi4Outputter\ShipTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipVariantOutputter.h">
       <Filter>Hoi4Outputter\ShipTypes</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.h">
@@ -1278,6 +1272,12 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Ideologies\IdeologyItems.h">
       <Filter>HoI4World\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\ShipTypes\MtgShipVariant.h">
+      <Filter>HoI4World\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\ShipTypes\OutMtgShipVariant.h">
+      <Filter>Hoi4Outputter\ShipTypes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

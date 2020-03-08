@@ -17,7 +17,7 @@ class HoI4World_Navies_NaviesTests: public testing::Test
 
 HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests()
 {
-	std::vector<HoI4::shipVariant> possibleVariants;
+	std::vector<HoI4::MtgShipVariant> possibleVariants;
 	std::stringstream earlyDestroyerInput;
 	earlyDestroyerInput << "= {\n";
 	earlyDestroyerInput << "	required_techs = { \n";
@@ -38,7 +38,7 @@ HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests()
 	earlyDestroyerInput << "	}\n";
 	earlyDestroyerInput << "	obsolete = no\n";
 	earlyDestroyerInput << "}\n";
-	HoI4::shipVariant earlyDestroyer(earlyDestroyerInput);
+	HoI4::MtgShipVariant earlyDestroyer(earlyDestroyerInput);
 	possibleVariants.push_back(earlyDestroyer);
 
 	std::stringstream modernDestroyerInput;
@@ -61,7 +61,7 @@ HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests()
 	modernDestroyerInput << "	}\n";
 	modernDestroyerInput << "	obsolete = no\n";
 	modernDestroyerInput << "}\n";
-	HoI4::shipVariant modernDestroyer(modernDestroyerInput);
+	HoI4::MtgShipVariant modernDestroyer(modernDestroyerInput);
 	possibleVariants.push_back(modernDestroyer);
 
 	mockTechnologies ownedTechs;

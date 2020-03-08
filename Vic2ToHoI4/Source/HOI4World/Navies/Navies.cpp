@@ -66,7 +66,7 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 				auto unitInfos = mtgUnitMap.getMatchingUnitInfo(type);
 				for (const auto& unitInfo: unitInfos)
 				{
-					if ((unitInfo.getCategory() == "naval") && theShipVariants.hasVariant(unitInfo.getVersion()))
+					if ((unitInfo.getCategory() == "naval") && theShipVariants.hasMtgVariant(unitInfo.getVersion()))
 					{
 						auto experience = static_cast<float>(regiment->getExperience() / 100);
 						MtgShip newMtgShip(regiment->getName(),

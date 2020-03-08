@@ -3,8 +3,8 @@
 
 
 
+#include "MtgShipVariant.h"
 #include "newParser.h"
-#include "ShipVariant.h"
 #include <vector>
 
 
@@ -14,23 +14,23 @@ namespace HoI4
 
 class possibleShipVariants: commonItems::parser
 {
-	public:
-		explicit possibleShipVariants(std::istream& theStream);
+  public:
+	explicit possibleShipVariants(std::istream& theStream);
 
-		possibleShipVariants() = delete;
-		~possibleShipVariants() = default;
-		possibleShipVariants(const possibleShipVariants&) = default;
-		possibleShipVariants(possibleShipVariants&&) = default;
-		possibleShipVariants& operator=(const possibleShipVariants&) = default;
-		possibleShipVariants& operator=(possibleShipVariants&&) = default;
+	possibleShipVariants() = delete;
+	~possibleShipVariants() = default;
+	possibleShipVariants(const possibleShipVariants&) = default;
+	possibleShipVariants(possibleShipVariants&&) = default;
+	possibleShipVariants& operator=(const possibleShipVariants&) = default;
+	possibleShipVariants& operator=(possibleShipVariants&&) = default;
 
-		[[nodiscard]] auto getPossibleVariants() const { return theVariants; }
+	[[nodiscard]] auto getPossibleMtgVariants() const { return mtgVariants; }
 
-	private:
-		std::vector<shipVariant> theVariants;
+  private:
+	std::vector<MtgShipVariant> mtgVariants;
 };
 
-}
+} // namespace HoI4
 
 
 

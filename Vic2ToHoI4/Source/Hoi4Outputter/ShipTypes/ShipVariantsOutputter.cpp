@@ -7,7 +7,7 @@ std::ostream& HoI4::operator<<(std::ostream& output, const shipVariants& theVari
 	output << "### VARIANTS ###\n";
 	output << "if = {\n";
 	output << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-	for (auto variant : theVariants.variants)
+	for (auto variant: theVariants.mtgVariants)
 	{
 		output << variant.second;
 	}

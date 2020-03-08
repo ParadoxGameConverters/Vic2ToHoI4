@@ -170,9 +170,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipModules.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariant.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariants.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
     </ClCompile>
@@ -362,9 +359,6 @@
     <ClCompile Include="HoI4WorldTests\ShipTypes\ShipVariantsTests.cpp">
       <Filter>HoI4WorldTests\ShipTypes</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\ShipTypes\ShipVariantTests.cpp">
-      <Filter>HoI4WorldTests\ShipTypes</Filter>
-    </ClCompile>
     <ClCompile Include="HoI4WorldTests\States\DefaultStateTests.cpp">
       <Filter>HoI4WorldTests\States</Filter>
     </ClCompile>
@@ -408,9 +402,6 @@
       <Filter>HoI4WorldTests\ScriptedLocalisations</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipTypes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipVariantOutputter.cpp">
       <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipTypes</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.cpp">
@@ -787,6 +778,15 @@
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyFileTests.cpp">
       <Filter>HoI4WorldTests\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\MtgShipVariant.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\OutMtgShipVariant.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\ShipTypes\MtgShipVariantTests.cpp">
+      <Filter>HoI4WorldTests\ShipTypes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

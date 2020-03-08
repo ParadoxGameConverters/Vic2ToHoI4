@@ -98,8 +98,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTrigger.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTriggers.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\OutMtgShipVariant.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipVariantOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\States\HoI4StateOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\States\HoI4StatesOutputter.cpp" />
@@ -184,9 +184,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedTriggers\ScriptedTriggers.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\MtgShipVariant.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\PossibleShipVariants.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipModules.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariant.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariants.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\DefaultState.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\DockyardProvince.cpp" />
@@ -284,10 +284,10 @@
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedTriggers\ScriptedTriggerTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\ShipTypes\MtgShipVariantTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipTypes\PossibleShipVariantTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipTypes\ShipModulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipTypes\ShipVariantsTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\ShipTypes\ShipVariantTests.cpp" />
     <ClCompile Include="HoI4WorldTests\States\DefaultStateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\States\DockyardProvinceTests.cpp" />
     <ClCompile Include="HoI4WorldTests\States\HoI4StateTests.cpp" />

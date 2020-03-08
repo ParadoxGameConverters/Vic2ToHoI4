@@ -4,9 +4,9 @@
 
 HoI4::possibleShipVariants::possibleShipVariants(std::istream& theStream)
 {
-	registerKeyword(std::regex("ship_type"), [this](const std::string& unused, std::istream& theStream){
-		const shipVariant theShipVariant(theStream);
-		theVariants.push_back(theShipVariant);
+	registerKeyword(std::regex("ship_type"), [this](const std::string& unused, std::istream& theStream) {
+		const MtgShipVariant theShipVariant(theStream);
+		mtgVariants.push_back(theShipVariant);
 	});
 
 	parseStream(theStream);

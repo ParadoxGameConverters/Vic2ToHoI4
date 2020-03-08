@@ -33,5 +33,5 @@ TEST(HoI4World_ShipTypes_possibleShipVariantsTests, variantsCanBeLoaded)
 	input << "}\n";
 	const HoI4::possibleShipVariants theShipVariants(input);
 
-	ASSERT_EQ(theShipVariants.getPossibleVariants().size(), 2);
+	ASSERT_EQ(theShipVariants.getPossibleMtgVariants().size(), 2);
 }

@@ -1,5 +1,5 @@
 #include "../../Mocks/TechnologiesMock.h"
-#include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/ShipVariant.h"
+#include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/MtgShipVariant.h"
 #include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/ShipVariants.h"
 #include "gtest/gtest.h"
 #include <sstream>
@@ -8,7 +8,7 @@
 
 TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsDefaultsToEmpty)
 {
-	std::vector<HoI4::shipVariant> possibleVariants;
+	std::vector<HoI4::MtgShipVariant> possibleVariants;
 	mockTechnologies ownedTechs;
 
 	HoI4::shipVariants theVariants(possibleVariants, ownedTechs, std::string(""));
@@ -39,8 +39,8 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, CanReceiveVariant)
 	input << "\t}\n";
 	input << "\tobsolete = yes\n";
 	input << "}\n";
-	HoI4::shipVariant theShipVariant(input);
-	std::vector<HoI4::shipVariant> possibleVariants;
+	HoI4::MtgShipVariant theShipVariant(input);
+	std::vector<HoI4::MtgShipVariant> possibleVariants;
 	possibleVariants.push_back(theShipVariant);
 
 	mockTechnologies ownedTechs;
@@ -85,15 +85,15 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, HeldVaraintIsIdentified)
 	input << "\t}\n";
 	input << "\tobsolete = yes\n";
 	input << "}\n";
-	const HoI4::shipVariant theShipVariant(input);
-	std::vector<HoI4::shipVariant> possibleVariants;
+	const HoI4::MtgShipVariant theShipVariant(input);
+	std::vector<HoI4::MtgShipVariant> possibleVariants;
 	possibleVariants.push_back(theShipVariant);
 
 	const mockTechnologies ownedTechs;
 
 	const HoI4::shipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
-	ASSERT_TRUE(theVariants.hasVariant("Early submarine"));
+	ASSERT_TRUE(theVariants.hasMtgVariant("Early submarine"));
 }
 
 
@@ -111,21 +111,21 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, MissingVaraintIsNotIdentified)
 	input << "\t}\n";
 	input << "\tobsolete = yes\n";
 	input << "}\n";
-	const HoI4::shipVariant theShipVariant(input);
-	std::vector<HoI4::shipVariant> possibleVariants;
+	const HoI4::MtgShipVariant theShipVariant(input);
+	std::vector<HoI4::MtgShipVariant> possibleVariants;
 	possibleVariants.push_back(theShipVariant);
 
 	const mockTechnologies ownedTechs;
 
 	const HoI4::shipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
-	ASSERT_FALSE(theVariants.hasVariant("1936 submarine"));
+	ASSERT_FALSE(theVariants.hasMtgVariant("1936 submarine"));
 }
 
 
 TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsNeedRequiredTechs)
 {
-	std::vector<HoI4::shipVariant> possibleVariants;
+	std::vector<HoI4::MtgShipVariant> possibleVariants;
 
 	std::stringstream input;
 	input << " = {\n";
@@ -142,7 +142,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsNeedRequiredTechs)
 	input << "\t}\n";
 	input << "\tobsolete = yes\n";
 	input << "}\n";
-	HoI4::shipVariant theShipVariant(input);
+	HoI4::MtgShipVariant theShipVariant(input);
 	possibleVariants.push_back(theShipVariant);
 
 	std::stringstream input2;
@@ -160,7 +160,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsNeedRequiredTechs)
 	input2 << "\t}\n";
 	input2 << "\tobsolete = yes\n";
 	input2 << "}\n";
-	HoI4::shipVariant theShipVariant2(input2);
+	HoI4::MtgShipVariant theShipVariant2(input2);
 	possibleVariants.push_back(theShipVariant2);
 
 	mockTechnologies ownedTechs;
@@ -195,7 +195,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsNeedRequiredTechs)
 
 TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsCanBeBlocked)
 {
-	std::vector<HoI4::shipVariant> possibleVariants;
+	std::vector<HoI4::MtgShipVariant> possibleVariants;
 
 	std::stringstream input;
 	input << " = {\n";
@@ -212,7 +212,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsCanBeBlocked)
 	input << "\t}\n";
 	input << "\tobsolete = yes\n";
 	input << "}\n";
-	HoI4::shipVariant theShipVariant(input);
+	HoI4::MtgShipVariant theShipVariant(input);
 	possibleVariants.push_back(theShipVariant);
 
 	std::stringstream input2;
@@ -230,7 +230,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsCanBeBlocked)
 	input2 << "\t}\n";
 	input2 << "\tobsolete = yes\n";
 	input2 << "}\n";
-	HoI4::shipVariant theShipVariant2(input2);
+	HoI4::MtgShipVariant theShipVariant2(input2);
 	possibleVariants.push_back(theShipVariant2);
 
 	mockTechnologies ownedTechs;

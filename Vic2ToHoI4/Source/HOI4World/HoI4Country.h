@@ -97,7 +97,7 @@ class Country
 		void convertGovernment(const Vic2::World& sourceWorld, const governmentMapper& governmentMap);
 		void convertParties(const std::set<std::string>& majorIdeologies, const governmentMapper& governmentMap);
 		void convertIdeologySupport(const std::set<std::string>& majorIdeologies, const governmentMapper& governmentMap);
-		void determineShipVariants(const std::vector<shipVariant>& possibleVariants);
+		void determineShipVariants(const std::vector<MtgShipVariant>& possibleVariants);
 		void convertNavies(
 			const UnitMappings& unitMap,
 			const MtgUnitMappings& mtgUnitMap,

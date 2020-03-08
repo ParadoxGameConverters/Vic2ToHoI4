@@ -3,14 +3,16 @@
 
 
 
-#include "../../HOI4World//ShipTypes/ShipVariant.h"
+#include "../../HOI4World//ShipTypes/MtgShipVariant.h"
 #include <ostream>
 
 
 
 namespace HoI4
 {
-std::ostream& operator<<(std::ostream& output, shipVariant& theVariant);
+
+std::ostream& operator<<(std::ostream& output, MtgShipVariant& theVariant);
+
 }
 
 

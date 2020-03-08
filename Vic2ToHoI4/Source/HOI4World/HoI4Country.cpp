@@ -602,7 +602,7 @@ void HoI4::Country::convertIdeologySupport(
 }
 
 
-void HoI4::Country::determineShipVariants(const std::vector<shipVariant>& possibleVariants)
+void HoI4::Country::determineShipVariants(const std::vector<MtgShipVariant>& possibleVariants)
 {
 	theShipVariants = std::make_unique<shipVariants>(possibleVariants, *theTechnologies, tag);
 }

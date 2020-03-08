@@ -711,7 +711,7 @@ void HoI4::World::convertNavies(
 
 	for (auto country : countries)
 	{
-		country.second->determineShipVariants(possibleVariants.getPossibleVariants());
+		country.second->determineShipVariants(possibleVariants.getPossibleMtgVariants());
 		country.second->convertNavies(
 			unitMap,
 			mtgUnitMap,

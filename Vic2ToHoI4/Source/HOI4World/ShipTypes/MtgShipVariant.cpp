@@ -1,37 +1,37 @@
-#include "ShipVariant.h"
+#include "MtgShipVariant.h"
 #include "ParserHelpers.h"
 
 
 
-HoI4::shipVariant::shipVariant(std::istream& theStream)
+HoI4::MtgShipVariant::MtgShipVariant(std::istream& theStream)
 {
-	registerKeyword(std::regex("name"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("name"), [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString nameString(theStream);
 		name = nameString.getString();
 	});
-	registerKeyword(std::regex("type"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("type"), [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString typeString(theStream);
 		type = typeString.getString();
 	});
-	registerKeyword(std::regex("name_group"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("name_group"), [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString nameGroupString(theStream);
 		nameGroup = nameGroupString.getString();
 	});
-	registerKeyword(std::regex("modules"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("modules"), [this](const std::string& unused, std::istream& theStream) {
 		modules = std::make_unique<shipModules>(theStream);
 	});
-	registerKeyword(std::regex("obsolete"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("obsolete"), [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString obsoleteString(theStream);
 		obsolete = (obsoleteString.getString() == "yes");
 	});
-	registerKeyword(std::regex("required_techs"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("required_techs"), [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringList requiredTechsStrings(theStream);
 		for (const auto& requiredTech: requiredTechsStrings.getStrings())
 		{
 			requiredTechnologies.insert(requiredTech);
 		}
 	});
-	registerKeyword(std::regex("blocking_techs"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("blocking_techs"), [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringList blockingTechsStrings(theStream);
 		for (const auto& blockingTech: blockingTechsStrings.getStrings())
 		{
@@ -43,7 +43,7 @@ HoI4::shipVariant::shipVariant(std::istream& theStream)
 }
 
 
-HoI4::shipVariant::shipVariant(const shipVariant& source): parser(source)
+HoI4::MtgShipVariant::MtgShipVariant(const MtgShipVariant& source): parser(source)
 {
 	name = source.name;
 	type = source.type;
@@ -57,7 +57,7 @@ HoI4::shipVariant::shipVariant(const shipVariant& source): parser(source)
 }
 
 
-HoI4::shipVariant& HoI4::shipVariant::operator=(const shipVariant& source)
+HoI4::MtgShipVariant& HoI4::MtgShipVariant::operator=(const MtgShipVariant& source)
 {
 	name = source.name;
 	type = source.type;
@@ -73,13 +73,13 @@ HoI4::shipVariant& HoI4::shipVariant::operator=(const shipVariant& source)
 }
 
 
-void HoI4::shipVariant::setOwningCountryTag(const std::string& tag)
+void HoI4::MtgShipVariant::setOwningCountryTag(const std::string& tag)
 {
 	owningCountryTag = tag;
 }
 
 
-bool HoI4::shipVariant::isValidVariant(const technologies& ownedTechs) const
+bool HoI4::MtgShipVariant::isValidVariant(const technologies& ownedTechs) const
 {
 	for (const auto& requiredTechnology: requiredTechnologies)
 	{
