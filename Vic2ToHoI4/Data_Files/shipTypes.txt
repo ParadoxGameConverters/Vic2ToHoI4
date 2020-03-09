@@ -19,7 +19,7 @@
 # THE SOFTWARE.
 
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		early_ship_hull_submarine
 	}
@@ -37,7 +37,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		basic_ship_hull_submarine
 	}
@@ -52,7 +52,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		early_ship_hull_heavy
 	}
@@ -78,7 +78,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		basic_ship_hull_heavy
 	}
@@ -101,7 +101,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		early_ship_hull_light
 	}
@@ -124,7 +124,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		basic_ship_hull_light
 	}
@@ -144,7 +144,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		early_ship_hull_cruiser
 	}
@@ -169,7 +169,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		basic_ship_hull_cruiser
 	}
@@ -191,7 +191,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		early_ship_hull_cruiser
 	}
@@ -216,7 +216,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		basic_ship_hull_cruiser
 	}
