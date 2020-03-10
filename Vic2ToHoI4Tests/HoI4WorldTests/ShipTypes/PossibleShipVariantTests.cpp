@@ -7,7 +7,7 @@
 TEST(HoI4World_ShipTypes_possibleShipVariantsTests, mtgVariantsDefautlToEmpty)
 {
 	std::stringstream input;
-	const HoI4::possibleShipVariants theShipVariants(input);
+	const HoI4::PossibleShipVariants theShipVariants(input);
 
 	ASSERT_TRUE(theShipVariants.getPossibleMtgVariants().empty());
 }
@@ -40,7 +40,7 @@ TEST(HoI4World_ShipTypes_possibleShipVariantsTests, mtgVariantsCanBeLoaded)
 	input << "\t}\n";
 	input << "\tobsolete = yes\n";
 	input << "}\n";
-	const HoI4::possibleShipVariants theShipVariants(input);
+	const HoI4::PossibleShipVariants theShipVariants(input);
 
 	ASSERT_EQ(theShipVariants.getPossibleMtgVariants().size(), 2);
 }
@@ -49,7 +49,7 @@ TEST(HoI4World_ShipTypes_possibleShipVariantsTests, mtgVariantsCanBeLoaded)
 TEST(HoI4World_ShipTypes_possibleShipVariantsTests, legacyVariantsDefautlToEmpty)
 {
 	std::stringstream input;
-	const HoI4::possibleShipVariants theShipVariants(input);
+	const HoI4::PossibleShipVariants theShipVariants(input);
 
 	ASSERT_TRUE(theShipVariants.getPossibleLegacyVariants().empty());
 }
@@ -62,7 +62,7 @@ TEST(HoI4World_ShipTypes_possibleShipVariantsTests, legacyVariantsCanBeLoaded)
 	input << "}\n";
 	input << "legacy_ship_type = {\n";
 	input << "}\n";
-	const HoI4::possibleShipVariants theShipVariants(input);
+	const HoI4::PossibleShipVariants theShipVariants(input);
 
 	ASSERT_EQ(theShipVariants.getPossibleLegacyVariants().size(), 2);
 }

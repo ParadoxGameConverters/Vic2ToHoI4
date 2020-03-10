@@ -9,7 +9,7 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 	 int backupNavalLocation,
 	 const UnitMappings& unitMap,
 	 const MtgUnitMappings& mtgUnitMap,
-	 const shipVariants& theShipVariants,
+	 const ShipVariants& theShipVariants,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 std::map<int, State> states,
 	 const std::string& tag)

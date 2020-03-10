@@ -19,9 +19,11 @@ class LegacyShipVariant: commonItems::parser
   public:
 	LegacyShipVariant(std::istream& theStream);
 
-	friend std::ostream& operator<<(std::ostream& output, const LegacyShipVariant& theVariant);
+	[[nodiscard]] const auto& getName() const { return name; }
 
 	[[nodiscard]] bool isValidVariant(const technologies& ownedTechs) const;
+
+	friend std::ostream& operator<<(std::ostream& output, const LegacyShipVariant& theVariant);
 
   private:
 	std::string name;

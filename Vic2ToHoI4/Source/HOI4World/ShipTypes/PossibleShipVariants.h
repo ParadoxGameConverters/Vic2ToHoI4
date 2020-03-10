@@ -13,10 +13,10 @@
 namespace HoI4
 {
 
-class possibleShipVariants: commonItems::parser
+class PossibleShipVariants: commonItems::parser
 {
   public:
-	explicit possibleShipVariants(std::istream& theStream);
+	explicit PossibleShipVariants(std::istream& theStream);
 
 	[[nodiscard]] auto getPossibleMtgVariants() const { return mtgVariants; }
 	[[nodiscard]] auto getPossibleLegacyVariants() const { return legacyVariants; }

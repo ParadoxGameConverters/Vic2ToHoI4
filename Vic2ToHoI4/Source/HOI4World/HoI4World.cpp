@@ -706,12 +706,12 @@ void HoI4::World::convertNavies(
 		std::runtime_error e("Could not open shipTypes.txt. Double-check your converter installation");
 		throw e;
 	}
-	possibleShipVariants possibleVariants(variantsFile);
+	PossibleShipVariants possibleVariants(variantsFile);
 	variantsFile.close();
 
 	for (auto country : countries)
 	{
-		country.second->determineShipVariants(possibleVariants.getPossibleMtgVariants());
+		country.second->determineShipVariants(possibleVariants);
 		country.second->convertNavies(
 			unitMap,
 			mtgUnitMap,

@@ -3,7 +3,7 @@
 
 
 
-HoI4::possibleShipVariants::possibleShipVariants(std::istream& theStream)
+HoI4::PossibleShipVariants::PossibleShipVariants(std::istream& theStream)
 {
 	registerKeyword("mtg_ship_type", [this](const std::string& unused, std::istream& theStream) {
 		const MtgShipVariant theShipVariant(theStream);

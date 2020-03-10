@@ -4,20 +4,21 @@
 
 
 #include "../Technologies.h"
+#include "LegacyShipVariant.h"
 #include "MtgShipVariant.h"
+#include "PossibleShipVariants.h"
 #include "newParser.h"
 #include <string>
-#include <vector>
 
 
 
 namespace HoI4
 {
 
-class shipVariants
+class ShipVariants
 {
   public:
-	shipVariants(const std::vector<MtgShipVariant>& possibleMtgVariants,
+	ShipVariants(const PossibleShipVariants& possibleShipVariants,
 		 const technologies& ownedTechs,
 		 const std::string& countryTag);
 
@@ -26,10 +27,11 @@ class shipVariants
 		return mtgVariants.find(variantName) != mtgVariants.end();
 	}
 
-	friend std::ostream& operator<<(std::ostream& output, const shipVariants& theVariants);
+	friend std::ostream& operator<<(std::ostream& output, const ShipVariants& theVariants);
 
   private:
 	std::map<std::string, MtgShipVariant> mtgVariants;
+	std::map<std::string, LegacyShipVariant> legacyVariants;
 };
 
 } // namespace HoI4

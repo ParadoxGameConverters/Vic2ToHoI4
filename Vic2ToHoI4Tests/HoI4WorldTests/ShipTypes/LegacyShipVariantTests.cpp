@@ -34,19 +34,7 @@ TEST(HoI4World_ShipTypes_LegacyShipVariantTests, NameCanBeSet)
 	input << "}";
 	const HoI4::LegacyShipVariant theLegacyShipVariant(input);
 
-	std::stringstream output;
-	output << theLegacyShipVariant;
-
-	std::stringstream expectedOutput;
-	expectedOutput << "\tcreate_equipment_variant = {\n";
-	expectedOutput << "\t\tname = \"Test Class\"\n";
-	expectedOutput << "\t\ttype = \n";
-	expectedOutput << "\t\tupgrades = {\n";
-	expectedOutput << "\t\t}\n";
-	expectedOutput << "\t}\n";
-	expectedOutput << "\n";
-
-	ASSERT_EQ(expectedOutput.str(), output.str());
+	ASSERT_EQ("Test Class", theLegacyShipVariant.getName());
 }
 
 

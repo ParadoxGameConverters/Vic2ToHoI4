@@ -10,59 +10,53 @@ class HoI4World_Navies_NaviesTests: public testing::Test
   protected:
 	HoI4World_Navies_NaviesTests();
 
-	std::unique_ptr<HoI4::shipVariants> theShipVariants;
-	std::unique_ptr<HoI4::shipVariants> limitedShipVariants;
+	std::unique_ptr<HoI4::ShipVariants> theShipVariants;
+	std::unique_ptr<HoI4::ShipVariants> limitedShipVariants;
 };
 
 
 HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests()
 {
-	std::vector<HoI4::MtgShipVariant> possibleVariants;
-	std::stringstream earlyDestroyerInput;
-	earlyDestroyerInput << "= {\n";
-	earlyDestroyerInput << "	required_techs = { \n";
-	earlyDestroyerInput << "		early_ship_hull_light\n";
-	earlyDestroyerInput << "	}\n";
-	earlyDestroyerInput << "	name = \"Early Destroyer\"\n";
-	earlyDestroyerInput << "	type = ship_hull_light_1\n";
-	earlyDestroyerInput << "	name_group = DD_HISTORICAL\n";
-	earlyDestroyerInput << "	modules = { \n";
-	earlyDestroyerInput << "		fixed_ship_battery_slot = ship_light_battery_1\n";
-	earlyDestroyerInput << "		fixed_ship_anti_air_slot = ship_anti_air_1\n";
-	earlyDestroyerInput << "		fixed_ship_fire_control_system_slot = empty\n";
-	earlyDestroyerInput << "		fixed_ship_radar_slot = ship_sonar_1\n";
-	earlyDestroyerInput << "		fixed_ship_torpedo_slot = ship_torpedo_1\n";
-	earlyDestroyerInput << "		fixed_ship_engine_slot = light_ship_engine_1\n";
-	earlyDestroyerInput << "		mid_1_custom_slot = ship_depth_charge_1\n";
-	earlyDestroyerInput << "		rear_1_custom_slot = empty\n";
-	earlyDestroyerInput << "	}\n";
-	earlyDestroyerInput << "	obsolete = no\n";
-	earlyDestroyerInput << "}\n";
-	HoI4::MtgShipVariant earlyDestroyer(earlyDestroyerInput);
-	possibleVariants.push_back(earlyDestroyer);
-
-	std::stringstream modernDestroyerInput;
-	modernDestroyerInput << "= { \n";
-	modernDestroyerInput << "	required_techs = { \n";
-	modernDestroyerInput << "		basic_ship_hull_light\n";
-	modernDestroyerInput << "	}\n";
-	modernDestroyerInput << "	name = \"1936 Destroyer\"\n";
-	modernDestroyerInput << "	type = ship_hull_light_2\n";
-	modernDestroyerInput << "	name_group = DD_HISTORICAL\n";
-	modernDestroyerInput << "	modules = { \n";
-	modernDestroyerInput << "		fixed_ship_battery_slot = ship_light_battery_2\n";
-	modernDestroyerInput << "		fixed_ship_anti_air_slot = ship_anti_air_2\n";
-	modernDestroyerInput << "		fixed_ship_fire_control_system_slot = empty\n";
-	modernDestroyerInput << "		fixed_ship_radar_slot = ship_sonar_1\n";
-	modernDestroyerInput << "		fixed_ship_torpedo_slot = ship_torpedo_1\n";
-	modernDestroyerInput << "		fixed_ship_engine_slot = light_ship_engine_2\n";
-	modernDestroyerInput << "		mid_1_custom_slot = ship_depth_charge_1\n";
-	modernDestroyerInput << "		rear_1_custom_slot = empty\n";
-	modernDestroyerInput << "	}\n";
-	modernDestroyerInput << "	obsolete = no\n";
-	modernDestroyerInput << "}\n";
-	HoI4::MtgShipVariant modernDestroyer(modernDestroyerInput);
-	possibleVariants.push_back(modernDestroyer);
+	std::stringstream shipVariantsInput;
+	shipVariantsInput << "mtg_ship_type = {\n";
+	shipVariantsInput << "	required_techs = { \n";
+	shipVariantsInput << "		early_ship_hull_light\n";
+	shipVariantsInput << "	}\n";
+	shipVariantsInput << "	name = \"Early Destroyer\"\n";
+	shipVariantsInput << "	type = ship_hull_light_1\n";
+	shipVariantsInput << "	name_group = DD_HISTORICAL\n";
+	shipVariantsInput << "	modules = { \n";
+	shipVariantsInput << "		fixed_ship_battery_slot = ship_light_battery_1\n";
+	shipVariantsInput << "		fixed_ship_anti_air_slot = ship_anti_air_1\n";
+	shipVariantsInput << "		fixed_ship_fire_control_system_slot = empty\n";
+	shipVariantsInput << "		fixed_ship_radar_slot = ship_sonar_1\n";
+	shipVariantsInput << "		fixed_ship_torpedo_slot = ship_torpedo_1\n";
+	shipVariantsInput << "		fixed_ship_engine_slot = light_ship_engine_1\n";
+	shipVariantsInput << "		mid_1_custom_slot = ship_depth_charge_1\n";
+	shipVariantsInput << "		rear_1_custom_slot = empty\n";
+	shipVariantsInput << "	}\n";
+	shipVariantsInput << "	obsolete = no\n";
+	shipVariantsInput << "}\n";
+	shipVariantsInput << "mtg_ship_type = { \n";
+	shipVariantsInput << "	required_techs = { \n";
+	shipVariantsInput << "		basic_ship_hull_light\n";
+	shipVariantsInput << "	}\n";
+	shipVariantsInput << "	name = \"1936 Destroyer\"\n";
+	shipVariantsInput << "	type = ship_hull_light_2\n";
+	shipVariantsInput << "	name_group = DD_HISTORICAL\n";
+	shipVariantsInput << "	modules = { \n";
+	shipVariantsInput << "		fixed_ship_battery_slot = ship_light_battery_2\n";
+	shipVariantsInput << "		fixed_ship_anti_air_slot = ship_anti_air_2\n";
+	shipVariantsInput << "		fixed_ship_fire_control_system_slot = empty\n";
+	shipVariantsInput << "		fixed_ship_radar_slot = ship_sonar_1\n";
+	shipVariantsInput << "		fixed_ship_torpedo_slot = ship_torpedo_1\n";
+	shipVariantsInput << "		fixed_ship_engine_slot = light_ship_engine_2\n";
+	shipVariantsInput << "		mid_1_custom_slot = ship_depth_charge_1\n";
+	shipVariantsInput << "		rear_1_custom_slot = empty\n";
+	shipVariantsInput << "	}\n";
+	shipVariantsInput << "	obsolete = no\n";
+	shipVariantsInput << "}\n";
+	HoI4::PossibleShipVariants thePossibleVariants(shipVariantsInput);
 
 	mockTechnologies ownedTechs;
 	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_light")).WillRepeatedly(testing::Return(true));
@@ -70,8 +64,8 @@ HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests()
 		 .WillOnce(testing::Return(true))
 		 .WillOnce(testing::Return(false));
 
-	theShipVariants = std::make_unique<HoI4::shipVariants>(possibleVariants, ownedTechs, "");
-	limitedShipVariants = std::make_unique<HoI4::shipVariants>(possibleVariants, ownedTechs, "");
+	theShipVariants = std::make_unique<HoI4::ShipVariants>(thePossibleVariants, ownedTechs, "");
+	limitedShipVariants = std::make_unique<HoI4::ShipVariants>(thePossibleVariants, ownedTechs, "");
 }
 
 
