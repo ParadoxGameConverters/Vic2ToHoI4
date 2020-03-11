@@ -27,6 +27,11 @@ class ShipVariants
 		return mtgVariants.find(variantName) != mtgVariants.end();
 	}
 
+	[[nodiscard]] bool hasLegacyVariant(const std::string& variantName) const
+	{
+		return legacyVariants.find(variantName) != legacyVariants.end();
+	}
+
 	friend std::ostream& operator<<(std::ostream& output, const ShipVariants& theVariants);
 
   private:

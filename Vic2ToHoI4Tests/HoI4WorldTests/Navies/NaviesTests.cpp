@@ -99,6 +99,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToLegacy)
 	unitMappingsStream << "\t\t\ttype = destroyer\n";
 	unitMappingsStream << "\t\t\tequipment = destroyer_1\n";
 	unitMappingsStream << "\t\t\tsize = 1\n";
+	unitMappingsStream << "\t\t\tversion = \"1936 Destroyer\"\n";
 	unitMappingsStream << "\t\t}\n";
 	unitMappingsStream << "\t}\n";
 	unitMappingsStream << "}\n";
@@ -109,8 +110,16 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToLegacy)
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 
-	HoI4::Navies
-		 navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	std::stringstream input;
+	input << "legacy_ship_type = {\n";
+	input << "\tname = \"1936 Destroyer\"\n";
+	input << "\ttype = destroyer_1\n";
+	input << "}\n";
+	HoI4::PossibleShipVariants possibleVariants(input);
+	mockTechnologies ownedTechs;
+	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+
+	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, theVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
 	outputLegacyNavies(navies, output);
 
@@ -126,6 +135,58 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToLegacy)
 							"owner = TAG } } }\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
+	expectedOutput << "}\n";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableLegacyShipType)
+{
+	std::vector<Vic2::Army> sourceArmies;
+	std::stringstream armyStream;
+	armyStream << "{\n";
+	armyStream << "	name = \"2nd Fleet\"\n";
+	armyStream << "	location = 0\n";
+	armyStream << "	supplies = 1.000\n";
+	armyStream << "	ship = \n";
+	armyStream << "	{\n";
+	armyStream << "		name = \"Tigray\"\n";
+	armyStream << "		organisation = 82.355\n";
+	armyStream << "		strength = 100.000\n";
+	armyStream << "		experience = 00.000\n";
+	armyStream << "		type = commerce_raider\n";
+	armyStream << "	}\n";
+	armyStream << "	at_sea = 0\n";
+	armyStream << "}";
+	Vic2::Army navy("navy", armyStream);
+	sourceArmies.push_back(navy);
+
+	std::stringstream legacyUnitMappingStream;
+	legacyUnitMappingStream << "link = {\n";
+	legacyUnitMappingStream << "	vic = commerce_raider\n";
+	legacyUnitMappingStream << "	hoi = {\n";
+	legacyUnitMappingStream << "		category = naval\n";
+	legacyUnitMappingStream << "		type = destroyer\n";
+	legacyUnitMappingStream << "		equipment = ship_hull_light_2\n";
+	legacyUnitMappingStream << "		version = \"1936 Destroyer\"\n";
+	legacyUnitMappingStream << "		size = 1\n";
+	legacyUnitMappingStream << "	}\n";
+	legacyUnitMappingStream << "}";
+	HoI4::UnitMappings legacyUnitMap(legacyUnitMappingStream);
+
+	std::stringstream input;
+	HoI4::MtgUnitMappings unitMap(input);
+
+	std::map<int, int> provinceToStateIDMap;
+	std::map<int, HoI4::State> states;
+
+	HoI4::Navies
+		 navies(sourceArmies, 0, legacyUnitMap, unitMap, *limitedShipVariants, provinceToStateIDMap, states, "TAG");
+	std::ostringstream output;
+	outputMtgNavies(navies, output);
+
+	std::ostringstream expectedOutput;
+	expectedOutput << "units = {\n";
 	expectedOutput << "}\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -253,6 +314,7 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyNavyNamesConvert)
 	unitMappingsStream << "\t\t\ttype = destroyer\n";
 	unitMappingsStream << "\t\t\tequipment = destroyer_1\n";
 	unitMappingsStream << "\t\t\tsize = 1\n";
+	unitMappingsStream << "\t\t\tversion = \"1936 Destroyer\"\n";
 	unitMappingsStream << "\t\t}\n";
 	unitMappingsStream << "\t}\n";
 	unitMappingsStream << "}\n";
@@ -263,8 +325,16 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyNavyNamesConvert)
 	std::map<int, int> provinceToStateIDMap;
 	std::map<int, HoI4::State> states;
 
-	HoI4::Navies
-		 navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	std::stringstream input;
+	input << "legacy_ship_type = {\n";
+	input << "\tname = \"1936 Destroyer\"\n";
+	input << "\ttype = destroyer_1\n";
+	input << "}\n";
+	HoI4::PossibleShipVariants possibleVariants(input);
+	mockTechnologies ownedTechs;
+	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+
+	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, theVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
 	outputLegacyNavies(navies, output);
 

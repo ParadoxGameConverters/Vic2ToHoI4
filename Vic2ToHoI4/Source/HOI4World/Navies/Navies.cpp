@@ -51,7 +51,9 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 			auto type = regiment->getType();
 			if (unitMap.hasMatchingType(type))
 			{
-				if (auto unitInfo = unitMap.getMatchingUnitInfo(type); unitInfo && unitInfo->getCategory() == "naval")
+				if (auto unitInfo = unitMap.getMatchingUnitInfo(type);
+					 unitInfo && unitInfo->getCategory() == "naval" &&
+					 theShipVariants.hasLegacyVariant(unitInfo->getVersion()))
 				{
 					LegacyShip newLegacyShip(regiment->getName(), unitInfo->getType(), unitInfo->getEquipment(), tag);
 					newLegacyNavy.addShip(newLegacyShip);

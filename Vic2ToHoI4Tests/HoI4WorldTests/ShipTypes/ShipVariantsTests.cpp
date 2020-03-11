@@ -303,7 +303,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, CanReceiveLegacyVariant)
 }
 
 
-/*TEST(HoI4World_ShipTypes_shipVariantsTests, HeldLegacyVariantIsIdentified)
+TEST(HoI4World_ShipTypes_shipVariantsTests, HeldLegacyVariantIsIdentified)
 {
 	std::stringstream input;
 	input << "legacy_ship_type = {\n";
@@ -324,10 +324,10 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, CanReceiveLegacyVariant)
 	const HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	ASSERT_TRUE(theVariants.hasLegacyVariant("Early submarine"));
-}*/
+}
 
 
-/*TEST(HoI4World_ShipTypes_shipVariantsTests, MissingVariantIsNotIdentified)
+TEST(HoI4World_ShipTypes_shipVariantsTests, MissingVariantIsNotIdentified)
 {
 	std::stringstream input;
 	input << "legacy_ship_type = {\n";
@@ -347,8 +347,8 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, CanReceiveLegacyVariant)
 
 	const HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
-	ASSERT_FALSE(theVariants.hasMtgVariant("1936 submarine"));
-}*/
+	ASSERT_FALSE(theVariants.hasLegacyVariant("1936 submarine"));
+}
 
 
 TEST(HoI4World_ShipTypes_shipVariantsTests, LegacyVariantsNeedRequiredTechs)
