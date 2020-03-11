@@ -647,7 +647,9 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/DataFiles</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\shipTypes.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/DataFiles</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/DataFiles</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/DataFiles</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\tech_mapping.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)</DestinationFolders>

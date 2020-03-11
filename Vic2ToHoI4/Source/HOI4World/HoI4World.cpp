@@ -700,10 +700,10 @@ void HoI4::World::convertNavies(
 {
 	LOG(LogLevel::Info) << "Converting navies";
 
-	ifstream variantsFile("shipTypes.txt");
+	ifstream variantsFile("DataFiles/shipTypes.txt");
 	if (!variantsFile.is_open())
 	{
-		std::runtime_error e("Could not open shipTypes.txt. Double-check your converter installation");
+		std::runtime_error e("Could not open DataFiles/shipTypes.txt. Double-check your converter installation");
 		throw e;
 	}
 	PossibleShipVariants possibleVariants(variantsFile);
