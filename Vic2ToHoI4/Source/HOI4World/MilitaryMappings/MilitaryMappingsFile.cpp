@@ -5,7 +5,7 @@
 
 HoI4::militaryMappingsFile::militaryMappingsFile()
 {
-	std::ifstream unitMappingFile("unit_mappings.txt");
+	std::ifstream unitMappingFile("DataFiles/unit_mappings.txt");
 	if (unitMappingFile.is_open())
 	{
 		theMilitaryMappings = std::make_unique<allMilitaryMappings>(unitMappingFile);
@@ -13,6 +13,6 @@ HoI4::militaryMappingsFile::militaryMappingsFile()
 	}
 	else
 	{
-		throw std::runtime_error{ "Could not open unit_mappings.txt" };
+		throw std::runtime_error{ "Could not open DataFiles/unit_mappings.txt" };
 	}
 }
