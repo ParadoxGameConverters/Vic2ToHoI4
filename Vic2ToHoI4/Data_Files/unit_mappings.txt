@@ -307,6 +307,7 @@ hoi = {
 category = naval
 type = destroyer
 equipment = destroyer_1
+version = "Early Destroyer"
 size = 1
 }
 }
@@ -326,6 +327,7 @@ hoi = {
 category = naval
 type = light_cruiser
 equipment = light_cruiser_1
+version = "Early Light Cruiser"
 size = 1
 }
 }
@@ -337,6 +339,7 @@ hoi = {
 category = naval
 type = heavy_cruiser
 equipment = heavy_cruiser_1
+version = "Early Heavy Cruiser"
 size = 1
 }
 }
@@ -348,6 +351,7 @@ hoi = {
 category = naval
 type = battleship
 equipment = battleship_1
+version = "Early Battleship"
 size = 1
 }
 }
