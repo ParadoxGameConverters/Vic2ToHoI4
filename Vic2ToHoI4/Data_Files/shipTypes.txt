@@ -220,6 +220,39 @@ mtg_ship_type = {
 
 legacy_ship_type = {
 	required_techs = {
+		early_submarine
+	}
+	blocking_techs = {
+		basic_submarine
+	}
+	name = "Early Submarine"
+	type = submarine_1
+	upgrades = {
+		ship_reliability_upgrade = 1
+		sub_engine_upgrade = 1
+		sub_stealth_upgrade = 1
+		sub_torpedo_upgrade = 1
+	}
+}
+
+
+legacy_ship_type = {
+	required_techs = {
+		basic_submarine
+	}
+	name = "1936 Submarine"
+	type = submarine_2
+	upgrades = {
+		ship_reliability_upgrade = 1
+		sub_engine_upgrade = 1
+		sub_stealth_upgrade = 1
+		sub_torpedo_upgrade = 1
+	}
+}
+
+
+legacy_ship_type = {
+	required_techs = {
 		early_destroyer
 	}
 	blocking_techs = {
