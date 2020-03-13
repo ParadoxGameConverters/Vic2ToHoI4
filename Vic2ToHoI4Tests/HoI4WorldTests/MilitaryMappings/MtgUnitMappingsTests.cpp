@@ -26,7 +26,7 @@ TEST(HoI4World_MilitaryMappings_mtgUnitMappingsTests, MappingCanBeAdded)
 }
 
 
-TEST(HoI4World_MilitaryMappings_mtgUnitMappingsTests, UnmatchedMappingReturnsEmptyVector)
+TEST(HoI4World_MilitaryMappings_mtgUnitMappingsTests, UnmatchedMappingReturnsEmpty)
 {
 	std::stringstream input;
 	input << "= {\n";

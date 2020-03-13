@@ -89,14 +89,16 @@ void HoI4::addAvailableBattalionsAndCompanies(
 
 		if (theMilitaryMappings.getUnitMappings().hasMatchingType(Vic2Type))
 		{
-			auto unitInfo = theMilitaryMappings.getUnitMappings().getMatchingUnitInfo(Vic2Type);
-
-			if (unitInfo && unitInfo->getCategory() == "land")
+			for (const auto& unitInfo: theMilitaryMappings.getUnitMappings().getMatchingUnitInfo(Vic2Type))
 			{
-				SizedRegiment theRegiment;
-				theRegiment.unitSize = unitInfo->getSize() * forceMultiplier;
-				theRegiment.experience = regiment->getExperience();
-				availableBattalionsAndCompanies[unitInfo->getType()].push_back(theRegiment);
+				if (unitInfo.getCategory() == "land")
+				{
+					SizedRegiment theRegiment;
+					theRegiment.unitSize = unitInfo.getSize() * forceMultiplier;
+					theRegiment.experience = regiment->getExperience();
+					availableBattalionsAndCompanies[unitInfo.getType()].push_back(theRegiment);
+					break;
+				}
 			}
 		}
 		else

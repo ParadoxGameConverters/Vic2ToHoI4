@@ -801,16 +801,20 @@ void HoI4::Country::convertNavies(
 
 void HoI4::Country::convertConvoys(const UnitMappings& unitMap)
 {
-	for (auto army : sourceCountry.getArmies())
+	for (const auto& army: sourceCountry.getArmies())
 	{
-		for (auto regiment : army.getRegiments())
+		for (const auto& regiment: army.getRegiments())
 		{
-			if (auto type = regiment->getType(); unitMap.hasMatchingType(type))
+			if (const auto& type = regiment->getType(); unitMap.hasMatchingType(type))
 			{
-				if (auto unitInfo = unitMap.getMatchingUnitInfo(type); unitInfo && unitInfo->getCategory() == "convoy")
+				for (const auto& unitInfo: unitMap.getMatchingUnitInfo(type))
 				{
-					// Convoys get placed in national stockpile
-					convoys = convoys + unitInfo->getSize();
+					if (unitInfo.getCategory() == "convoy")
+					{
+						// Convoys get placed in national stockpile
+						convoys = convoys + unitInfo.getSize();
+						break;
+					}
 				}
 			}
 			else
@@ -825,33 +829,33 @@ void HoI4::Country::convertConvoys(const UnitMappings& unitMap)
 void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 {
 	static std::map<std::string, std::vector<std::string>> backups = {
-		{"fighter_equipment_0", {"tac_bomber_equipment_0"}}
-	};
-	for (auto army : sourceCountry.getArmies())
+		 {"fighter_equipment_0", {"tac_bomber_equipment_0"}}};
+	for (const auto& army: sourceCountry.getArmies())
 	{
-		for (auto regiment : army.getRegiments())
+		for (const auto& regiment: army.getRegiments())
 		{
-			if (auto type = regiment->getType(); unitMap.hasMatchingType(type))
+			if (const auto& type = regiment->getType(); unitMap.hasMatchingType(type))
 			{
-				auto unitInfo = unitMap.getMatchingUnitInfo(type);
-				if (!unitInfo || unitInfo->getCategory() != "air")
+				for (const auto& unitInfo: unitMap.getMatchingUnitInfo(type))
 				{
-					continue;
-				}
-
-				// Air units get placed in national stockpile.
-				auto equip = unitInfo->getEquipment();
-				unsigned int amount = unitInfo->getSize();
-				const auto& backup = backups.find(equip);
-				if (backup != backups.end())
-				{
-					amount /= (1 + backup->second.size());
-					for (const auto& b : backup->second)
+					if (unitInfo.getCategory() == "air")
 					{
-						equipmentStockpile[b] += amount;
+						// Air units get placed in national stockpile.
+						auto equip = unitInfo.getEquipment();
+						unsigned int amount = unitInfo.getSize();
+						const auto& backup = backups.find(equip);
+						if (backup != backups.end())
+						{
+							amount /= (1 + backup->second.size());
+							for (const auto& b: backup->second)
+							{
+								equipmentStockpile[b] += amount;
+							}
+						}
+						equipmentStockpile[equip] += amount;
+						break;
 					}
 				}
-				equipmentStockpile[equip] += amount;
 			}
 			else
 			{

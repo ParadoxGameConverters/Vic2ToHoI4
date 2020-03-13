@@ -12,19 +12,19 @@ HoI4::UnitMapping::UnitMapping(std::istream& theStream)
 	});
 	registerKeyword(std::regex("hoi"), [this](const std::string & unused, std::istream& theStream)
 	{
-		HoI4UnitType theUnit(theStream);
-		HoI4Type = theUnit;
+		const HoI4UnitType theUnit(theStream);
+		HoI4Types.push_back(theUnit);
 	});
 
 	parseStream(theStream);
 }
 
 
-std::optional<std::pair<std::string, std::optional<HoI4::HoI4UnitType>>> HoI4::UnitMapping::getMappings() const
+std::optional<std::pair<std::string, std::vector<HoI4::HoI4UnitType>>> HoI4::UnitMapping::getMappings() const
 {
 	if (Vic2Type)
 	{
-		return std::make_pair(*Vic2Type, HoI4Type);
+		return std::make_pair(*Vic2Type, HoI4Types);
 	}
 	else
 	{
