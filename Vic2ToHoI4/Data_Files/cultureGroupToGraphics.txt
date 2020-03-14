@@ -989,7 +989,28 @@ equine = {
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
 }
-non_human = {
+non_human = { #Animals
+	leader_portraits = {
+		communism = { "gfx/leaders/operative_unknown.dds" } 
+		democratic = { "gfx/leaders/operative_unknown.dds" } 
+		fascism = { "gfx/leaders/operative_unknown.dds" } 
+		absolutist = { "gfx/leaders/operative_unknown.dds" } 
+		neutrality = { "gfx/leaders/operative_unknown.dds" } 
+		radical = { "gfx/leaders/operative_unknown.dds" }
+	}
+	ideology_minister_portraits = 
+	{
+		communism = { "gfx/interface/spr_anarchist_society.dds" }
+		democratic = { "gfx/interface/spr_anarchist_society.dds" }
+		fascism = { "gfx/interface/spr_anarchist_society.dds" }
+		absolutist = { "gfx/interface/spr_anarchist_society.dds" }
+		neutrality = { "gfx/interface/spr_anarchist_society.dds" }
+		radical = { "gfx/interface/spr_anarchist_society.dds" }
+	}
+	graphical_culture = { western_european_gfx }
+	graphical_culture_2d = { western_european_2d }
+}
+anti_human = { #Aliens & Zombies
 	leader_portraits = {
 		communism = { "GFX_portrait_eng_fallen_government" } 
 		democratic = { "GFX_portrait_eng_fallen_government" } 
