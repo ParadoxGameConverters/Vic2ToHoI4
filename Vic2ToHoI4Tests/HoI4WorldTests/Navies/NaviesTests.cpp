@@ -121,7 +121,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToLegacy)
 
 	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, theVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	outputLegacyNavies(navies, output);
+	outputLegacyNavies(navies, std::nullopt, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -183,7 +183,7 @@ TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableLegacyShipType)
 	HoI4::Navies
 		 navies(sourceArmies, 0, legacyUnitMap, unitMap, *limitedShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	outputMtgNavies(navies, output);
+	outputMtgNavies(navies, std::nullopt, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -225,7 +225,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
 	HoI4::Navies
 		 navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	outputLegacyNavies(navies, output);
+	outputLegacyNavies(navies, std::nullopt, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -275,7 +275,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
 	HoI4::Navies
 		 navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	outputLegacyNavies(navies, output);
+	outputLegacyNavies(navies, std::nullopt, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -336,7 +336,7 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyNavyNamesConvert)
 
 	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, theVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	outputLegacyNavies(navies, output);
+	outputLegacyNavies(navies, std::nullopt, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -397,7 +397,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToMtg)
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	outputMtgNavies(navies, output);
+	outputMtgNavies(navies, std::nullopt, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -465,7 +465,7 @@ TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableMtgShipType)
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *limitedShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	outputMtgNavies(navies, output);
+	outputMtgNavies(navies, std::nullopt, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -526,7 +526,7 @@ TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesGetExperience)
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	outputMtgNavies(navies, output);
+	outputMtgNavies(navies, std::nullopt, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -579,7 +579,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToMtg)
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	outputMtgNavies(navies, output);
+	outputMtgNavies(navies, std::nullopt, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -630,7 +630,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToMtgNavy)
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	outputMtgNavies(navies, output);
+	outputMtgNavies(navies, std::nullopt, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -681,7 +681,7 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgNavyNamesConvert)
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	outputMtgNavies(navies, output);
+	outputMtgNavies(navies, std::nullopt, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
