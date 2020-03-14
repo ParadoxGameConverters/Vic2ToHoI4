@@ -21,14 +21,12 @@ TEST(HoI4World_MilitaryMappings_UnitMappingTests, NulloptOnNoVic2Type)
 TEST(HoI4World_MilitaryMappings_UnitMappingTests, Vic2TypeCanBeSet)
 {
 	std::stringstream input;
-	input << "= {\n";
-	input << "\t\tlink = {\n";
+	input << " = {\n";
 	input << "\t\t\tvic = irregular\n";
 	input << "\t\t\thoi = {\n";
 	input << "\t\t\t\ttype = land\n";
 	input << "\t\t\t}\n";
-	input << "\t\t}\n";
-	input << "\t}";
+	input << "\t\t}";
 
 	const HoI4::UnitMapping theMapping(input);
 
@@ -54,16 +52,12 @@ TEST(HoI4World_MilitaryMappings_UnitMappingTests, DefaultHoI4TypeIsEmpty)
 TEST(HoI4World_MilitaryMappings_UnitMappingTests, UnitMappingHandlesFilledHoI4UnitTypeCorrectly)
 {
 	std::stringstream input;
-	input << "= {\n";
-	input << "\tmap = {\n";
-	input << "\t\tlink = {\n";
+	input << " = {\n";
 	input << "\t\t\tvic = infantry\n";
 	input << "\t\t\thoi = {\n";
 	input << "\t\t\t\ttype = land\n";
 	input << "\t\t\t}\n";
-	input << "\t\t}\n";
-	input << "\t}";
-	input << "}";
+	input << "\t\t}";
 
 	const HoI4::UnitMapping theMapping(input);
 
@@ -76,9 +70,7 @@ TEST(HoI4World_MilitaryMappings_UnitMappingTests, UnitMappingHandlesFilledHoI4Un
 TEST(HoI4World_MilitaryMappings_UnitMappingTests, UnitMappingHandlesMultipleHoI4Type)
 {
 	std::stringstream input;
-	input << "= {\n";
-	input << "\tmap = {\n";
-	input << "\t\tlink = {\n";
+	input << " = {\n";
 	input << "\t\t\tvic = infantry\n";
 	input << "\t\t\thoi = {\n";
 	input << "\t\t\t\ttype = land\n";
@@ -86,9 +78,7 @@ TEST(HoI4World_MilitaryMappings_UnitMappingTests, UnitMappingHandlesMultipleHoI4
 	input << "\t\t\thoi = {\n";
 	input << "\t\t\t\ttype = sea\n";
 	input << "\t\t\t}\n";
-	input << "\t\t}\n";
-	input << "\t}";
-	input << "}";
+	input << "\t\t}";
 
 	const HoI4::UnitMapping theMapping(input);
 	ASSERT_EQ("sea", theMapping.getMappings()->second[1].getType());

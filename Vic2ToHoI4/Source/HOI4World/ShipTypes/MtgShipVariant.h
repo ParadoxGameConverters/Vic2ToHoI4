@@ -33,7 +33,7 @@ class MtgShipVariant: commonItems::parser
 
 	[[nodiscard]] std::string getName() const { return name; }
 
-	friend std::ostream& operator<<(std::ostream& output, MtgShipVariant& theVariant);
+	friend std::ostream& operator<<(std::ostream& output, const MtgShipVariant& theVariant);
 
   private:
 	std::string name;

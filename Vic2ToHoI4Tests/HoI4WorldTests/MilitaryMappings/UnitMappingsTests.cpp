@@ -41,15 +41,13 @@ TEST(HoI4World_MilitaryMappings_unitMappingsTests, MatchedMappingReturnsType)
 {
 	std::stringstream input(
 		 "= {\n"
-		 "\tmap = {\n"
 		 "\t\tlink = {\n"
 		 "\t\t\tvic = infantry\n"
 		 "\t\t\thoi = {\n"
 		 "\t\t\t\ttype = land\n"
 		 "\t\t\t}\n"
 		 "\t\t}\n"
-		 "\t}"
-		 "}");
+		 "\t}");
 	const HoI4::UnitMappings theMappings(input);
 
 	ASSERT_EQ("land", theMappings.getMatchingUnitInfo("infantry")[0].getType());

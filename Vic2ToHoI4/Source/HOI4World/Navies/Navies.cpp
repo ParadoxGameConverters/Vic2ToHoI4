@@ -46,7 +46,7 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 		LegacyNavy newLegacyNavy(army.getName(), navalLocation, base);
 		MtgNavy newMtgNavy(army.getName(), navalLocation, base);
 
-		for (auto regiment: army.getRegiments())
+		for (const auto& regiment: army.getRegiments())
 		{
 			auto type = regiment->getType();
 			if (unitMap.hasMatchingType(type))

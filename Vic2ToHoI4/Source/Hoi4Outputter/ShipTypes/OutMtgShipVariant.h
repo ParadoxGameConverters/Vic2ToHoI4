@@ -11,7 +11,7 @@
 namespace HoI4
 {
 
-std::ostream& operator<<(std::ostream& output, MtgShipVariant& theVariant);
+std::ostream& operator<<(std::ostream& output, const MtgShipVariant& theVariant);
 
 }
 
