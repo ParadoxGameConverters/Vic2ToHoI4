@@ -75,7 +75,7 @@ tech_map =
 
 	# HoI4 Great War Tank <- Vic2 Invention Army/Army Doctrine/Infiltration/Tank Experiments
 	link = {
-		vic2 = tank_exploits
+		vic2 = tank_experiments
 		hoi4 = gwtank
 	}
 
