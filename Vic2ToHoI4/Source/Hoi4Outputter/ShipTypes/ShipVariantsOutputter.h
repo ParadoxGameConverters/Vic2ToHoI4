@@ -10,7 +10,7 @@
 
 namespace HoI4
 {
-std::ostream& operator << (std::ostream& output, const shipVariants& theVariants);
+std::ostream& operator << (std::ostream& output, const ShipVariants& theVariants);
 }
 
 

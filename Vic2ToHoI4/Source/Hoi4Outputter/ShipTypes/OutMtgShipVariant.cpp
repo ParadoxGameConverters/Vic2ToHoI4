@@ -1,8 +1,8 @@
-#include "ShipVariantOutputter.h"
+#include "OutMtgShipVariant.h"
 
 
 
-std::ostream& HoI4::operator<<(std::ostream& output, shipVariant& theVariant)
+std::ostream& HoI4::operator<<(std::ostream& output, const MtgShipVariant& theVariant)
 {
 	output << "\tcreate_equipment_variant = {\n";
 	output << "\t\tname = \"" << theVariant.name << "\"\n";

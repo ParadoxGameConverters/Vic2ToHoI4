@@ -233,8 +233,9 @@
     <ClCompile Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTrigger.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTriggers.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\ShipTypes\OutLegacyShipVariant.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\ShipTypes\OutMtgShipVariant.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.cpp" />
-    <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipVariantOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\States\HoI4StateOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.cpp" />
@@ -319,9 +320,11 @@
     <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisations.cpp" />
     <ClCompile Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggers.cpp" />
     <ClCompile Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.cpp" />
+    <ClCompile Include="Source\HOI4World\ShipTypes\LegacyShipVariant.cpp" />
+    <ClCompile Include="Source\HOI4World\ShipTypes\MtgShipVariant.cpp" />
     <ClCompile Include="Source\HOI4World\ShipTypes\PossibleShipVariants.cpp" />
     <ClCompile Include="Source\HOI4World\ShipTypes\ShipModules.cpp" />
-    <ClCompile Include="Source\HOI4World\ShipTypes\ShipVariant.cpp" />
+    <ClCompile Include="Source\HOI4World\ShipTypes\ShipUpgrades.cpp" />
     <ClCompile Include="Source\HOI4World\ShipTypes\ShipVariants.cpp" />
     <ClCompile Include="Source\HOI4World\States\DefaultState.cpp" />
     <ClCompile Include="Source\HOI4World\States\DockyardProvince.cpp" />
@@ -422,8 +425,9 @@
     <ClInclude Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTrigger.h" />
     <ClInclude Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTriggers.h" />
+    <ClInclude Include="Source\Hoi4Outputter\ShipTypes\OutLegacyShipVariant.h" />
+    <ClInclude Include="Source\Hoi4Outputter\ShipTypes\OutMtgShipVariant.h" />
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.h" />
-    <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipVariantOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\States\HoI4StateOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.h" />
@@ -524,9 +528,11 @@
     <ClInclude Include="Source\HOI4World\ScriptedTriggers\ScriptedTrigger.h" />
     <ClInclude Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggers.h" />
     <ClInclude Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.h" />
+    <ClInclude Include="Source\HOI4World\ShipTypes\LegacyShipVariant.h" />
+    <ClInclude Include="Source\HOI4World\ShipTypes\MtgShipVariant.h" />
     <ClInclude Include="Source\HOI4World\ShipTypes\PossibleShipVariants.h" />
     <ClInclude Include="Source\HOI4World\ShipTypes\ShipModules.h" />
-    <ClInclude Include="Source\HOI4World\ShipTypes\ShipVariant.h" />
+    <ClInclude Include="Source\HOI4World\ShipTypes\ShipUpgrades.h" />
     <ClInclude Include="Source\HOI4World\ShipTypes\ShipVariants.h" />
     <ClInclude Include="Source\HOI4World\States\DefaultState.h" />
     <ClInclude Include="Source\HOI4World\States\DockyardProvince.h" />
@@ -641,13 +647,17 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/DataFiles</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\shipTypes.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/DataFiles</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/DataFiles</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/DataFiles</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\tech_mapping.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\unit_mappings.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/DataFiles</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/DataFiles</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/DataFiles</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>

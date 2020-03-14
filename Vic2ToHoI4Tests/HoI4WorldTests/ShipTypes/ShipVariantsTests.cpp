@@ -1,5 +1,5 @@
 #include "../../Mocks/TechnologiesMock.h"
-#include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/ShipVariant.h"
+#include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/MtgShipVariant.h"
 #include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/ShipVariants.h"
 #include "gtest/gtest.h"
 #include <sstream>
@@ -8,10 +8,11 @@
 
 TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsDefaultsToEmpty)
 {
-	std::vector<HoI4::shipVariant> possibleVariants;
+	std::stringstream input;
+	HoI4::PossibleShipVariants possibleVariants(input);
 	mockTechnologies ownedTechs;
 
-	HoI4::shipVariants theVariants(possibleVariants, ownedTechs, std::string(""));
+	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, std::string(""));
 
 	std::stringstream output;
 	output << theVariants;
@@ -19,16 +20,19 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsDefaultsToEmpty)
 	std::stringstream expectedOutput;
 	expectedOutput << "### VARIANTS ###\n";
 	expectedOutput << "if = {\n";
+	expectedOutput << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
+	expectedOutput << "}\n";
+	expectedOutput << "if = {\n";
 	expectedOutput << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
 	expectedOutput << "}\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantsTests, CanReceiveVariant)
+TEST(HoI4World_ShipTypes_shipVariantsTests, CanReceiveMtgVariant)
 {
 	std::stringstream input;
-	input << " = {\n";
+	input << "mtg_ship_type = {\n";
 	input << "\tname = \"Early submarine\"\n";
 	input << "\ttype = ship_hull_submarine_1\n";
 	input << "\tname_group = SS_HISTORICAL\n";
@@ -39,19 +43,20 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, CanReceiveVariant)
 	input << "\t}\n";
 	input << "\tobsolete = yes\n";
 	input << "}\n";
-	HoI4::shipVariant theShipVariant(input);
-	std::vector<HoI4::shipVariant> possibleVariants;
-	possibleVariants.push_back(theShipVariant);
+	HoI4::PossibleShipVariants possibleVariants(input);
 
 	mockTechnologies ownedTechs;
 
-	HoI4::shipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	std::stringstream output;
 	output << theVariants;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "### VARIANTS ###\n";
+	expectedOutput << "if = {\n";
+	expectedOutput << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
+	expectedOutput << "}\n";
 	expectedOutput << "if = {\n";
 	expectedOutput << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
 	expectedOutput << "\tcreate_equipment_variant = {\n";
@@ -71,10 +76,10 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, CanReceiveVariant)
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantsTests, HeldVaraintIsIdentified)
+TEST(HoI4World_ShipTypes_shipVariantsTests, HeldMtgVariantIsIdentified)
 {
 	std::stringstream input;
-	input << " = {\n";
+	input << "mtg_ship_type = {\n";
 	input << "\tname = \"Early submarine\"\n";
 	input << "\ttype = ship_hull_submarine_1\n";
 	input << "\tname_group = SS_HISTORICAL\n";
@@ -85,22 +90,20 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, HeldVaraintIsIdentified)
 	input << "\t}\n";
 	input << "\tobsolete = yes\n";
 	input << "}\n";
-	const HoI4::shipVariant theShipVariant(input);
-	std::vector<HoI4::shipVariant> possibleVariants;
-	possibleVariants.push_back(theShipVariant);
+	HoI4::PossibleShipVariants possibleVariants(input);
 
 	const mockTechnologies ownedTechs;
 
-	const HoI4::shipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+	const HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
-	ASSERT_TRUE(theVariants.hasVariant("Early submarine"));
+	ASSERT_TRUE(theVariants.hasMtgVariant("Early submarine"));
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantsTests, MissingVaraintIsNotIdentified)
+TEST(HoI4World_ShipTypes_shipVariantsTests, MissingMtgVariantIsNotIdentified)
 {
 	std::stringstream input;
-	input << " = {\n";
+	input << "mtg_ship_type = {\n";
 	input << "\tname = \"Early submarine\"\n";
 	input << "\ttype = ship_hull_submarine_1\n";
 	input << "\tname_group = SS_HISTORICAL\n";
@@ -111,24 +114,20 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, MissingVaraintIsNotIdentified)
 	input << "\t}\n";
 	input << "\tobsolete = yes\n";
 	input << "}\n";
-	const HoI4::shipVariant theShipVariant(input);
-	std::vector<HoI4::shipVariant> possibleVariants;
-	possibleVariants.push_back(theShipVariant);
+	HoI4::PossibleShipVariants possibleVariants(input);
 
 	const mockTechnologies ownedTechs;
 
-	const HoI4::shipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+	const HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
-	ASSERT_FALSE(theVariants.hasVariant("1936 submarine"));
+	ASSERT_FALSE(theVariants.hasMtgVariant("1936 submarine"));
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsNeedRequiredTechs)
+TEST(HoI4World_ShipTypes_shipVariantsTests, MtgVariantsNeedRequiredTechs)
 {
-	std::vector<HoI4::shipVariant> possibleVariants;
-
 	std::stringstream input;
-	input << " = {\n";
+	input << "mtg_ship_type = {\n";
 	input << "\trequired_techs = {\n";
 	input << "\t\ttech1\n";
 	input << "\t}\n";
@@ -142,38 +141,36 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsNeedRequiredTechs)
 	input << "\t}\n";
 	input << "\tobsolete = yes\n";
 	input << "}\n";
-	HoI4::shipVariant theShipVariant(input);
-	possibleVariants.push_back(theShipVariant);
-
-	std::stringstream input2;
-	input2 << " = {\n";
-	input2 << "\trequired_techs = {\n";
-	input2 << "\t\ttech2\n";
-	input2 << "\t}\n";
-	input2 << "\tname = \"Early submarine2\"\n";
-	input2 << "\ttype = ship_hull_submarine_1\n";
-	input2 << "\tname_group = SS_HISTORICAL\n";
-	input2 << "\t\tmodules = {\n";
-	input2 << "\t\tfixed_ship_torpedo_slot = ship_torpedo_sub_2\n";
-	input2 << "\t\tfixed_ship_engine_slot = sub_ship_engine_2\n";
-	input2 << "\t\trear_1_custom_slot = ship_torpedo_sub_2\n";
-	input2 << "\t}\n";
-	input2 << "\tobsolete = yes\n";
-	input2 << "}\n";
-	HoI4::shipVariant theShipVariant2(input2);
-	possibleVariants.push_back(theShipVariant2);
+	input << "mtg_ship_type = {\n";
+	input << "\trequired_techs = {\n";
+	input << "\t\ttech2\n";
+	input << "\t}\n";
+	input << "\tname = \"Early submarine2\"\n";
+	input << "\ttype = ship_hull_submarine_1\n";
+	input << "\tname_group = SS_HISTORICAL\n";
+	input << "\t\tmodules = {\n";
+	input << "\t\tfixed_ship_torpedo_slot = ship_torpedo_sub_2\n";
+	input << "\t\tfixed_ship_engine_slot = sub_ship_engine_2\n";
+	input << "\t\trear_1_custom_slot = ship_torpedo_sub_2\n";
+	input << "\t}\n";
+	input << "\tobsolete = yes\n";
+	input << "}\n";
+	HoI4::PossibleShipVariants possibleVariants(input);
 
 	mockTechnologies ownedTechs;
 	EXPECT_CALL(ownedTechs, hasTechnology("tech1")).WillOnce(testing::Return(false));
 	EXPECT_CALL(ownedTechs, hasTechnology("tech2")).WillOnce(testing::Return(true));
 
-	HoI4::shipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	std::stringstream output;
 	output << theVariants;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "### VARIANTS ###\n";
+	expectedOutput << "if = {\n";
+	expectedOutput << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
+	expectedOutput << "}\n";
 	expectedOutput << "if = {\n";
 	expectedOutput << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
 	expectedOutput << "\tcreate_equipment_variant = {\n";
@@ -193,12 +190,10 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsNeedRequiredTechs)
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsCanBeBlocked)
+TEST(HoI4World_ShipTypes_shipVariantsTests, MtgVariantsCanBeBlocked)
 {
-	std::vector<HoI4::shipVariant> possibleVariants;
-
 	std::stringstream input;
-	input << " = {\n";
+	input << "mtg_ship_type = {\n";
 	input << "\tblocking_techs = {\n";
 	input << "\t\ttech1\n";
 	input << "\t}\n";
@@ -212,38 +207,36 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsCanBeBlocked)
 	input << "\t}\n";
 	input << "\tobsolete = yes\n";
 	input << "}\n";
-	HoI4::shipVariant theShipVariant(input);
-	possibleVariants.push_back(theShipVariant);
-
-	std::stringstream input2;
-	input2 << " = {\n";
-	input2 << "\tblocking_techs = {\n";
-	input2 << "\t\ttech2\n";
-	input2 << "\t}\n";
-	input2 << "\tname = \"Early submarine2\"\n";
-	input2 << "\ttype = ship_hull_submarine_1\n";
-	input2 << "\tname_group = SS_HISTORICAL\n";
-	input2 << "\t\tmodules = {\n";
-	input2 << "\t\tfixed_ship_torpedo_slot = ship_torpedo_sub_2\n";
-	input2 << "\t\tfixed_ship_engine_slot = sub_ship_engine_2\n";
-	input2 << "\t\trear_1_custom_slot = ship_torpedo_sub_2\n";
-	input2 << "\t}\n";
-	input2 << "\tobsolete = yes\n";
-	input2 << "}\n";
-	HoI4::shipVariant theShipVariant2(input2);
-	possibleVariants.push_back(theShipVariant2);
+	input << "mtg_ship_type = {\n";
+	input << "\tblocking_techs = {\n";
+	input << "\t\ttech2\n";
+	input << "\t}\n";
+	input << "\tname = \"Early submarine2\"\n";
+	input << "\ttype = ship_hull_submarine_1\n";
+	input << "\tname_group = SS_HISTORICAL\n";
+	input << "\t\tmodules = {\n";
+	input << "\t\tfixed_ship_torpedo_slot = ship_torpedo_sub_2\n";
+	input << "\t\tfixed_ship_engine_slot = sub_ship_engine_2\n";
+	input << "\t\trear_1_custom_slot = ship_torpedo_sub_2\n";
+	input<< "\t}\n";
+	input << "\tobsolete = yes\n";
+	input << "}\n";
+	HoI4::PossibleShipVariants possibleVariants(input);
 
 	mockTechnologies ownedTechs;
 	EXPECT_CALL(ownedTechs, hasTechnology("tech1")).WillOnce(testing::Return(false));
 	EXPECT_CALL(ownedTechs, hasTechnology("tech2")).WillOnce(testing::Return(true));
 
-	HoI4::shipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	std::stringstream output;
 	output << theVariants;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "### VARIANTS ###\n";
+	expectedOutput << "if = {\n";
+	expectedOutput << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
+	expectedOutput << "}\n";
 	expectedOutput << "if = {\n";
 	expectedOutput << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
 	expectedOutput << "\tcreate_equipment_variant = {\n";
@@ -258,6 +251,233 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsCanBeBlocked)
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t\tobsolete = yes\n";
 	expectedOutput << "\t}\n";
+	expectedOutput << "}\n";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST(HoI4World_ShipTypes_shipVariantsTests, CanReceiveLegacyVariant)
+{
+	std::stringstream input;
+	input << "legacy_ship_type = {\n";
+	input << "\tname = \"Early submarine\"\n";
+	input << "\ttype = ship_hull_submarine_1\n";
+	input << "\tupgrades = {\n";
+	input << "\t\tship_reliability_upgrade = 1\n";
+	input << "\t\tsub_engine_upgrade = 1\n";
+	input << "\t\tsub_stealth_upgrade = 1\n";
+	input << "\t\tsub_torpedo_upgrade = 1\n";
+	input << "\t}\n";
+	input << "\tobsolete = yes\n";
+	input << "}\n";
+	HoI4::PossibleShipVariants possibleVariants(input);
+
+	mockTechnologies ownedTechs;
+
+	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+
+	std::stringstream output;
+	output << theVariants;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "### VARIANTS ###\n";
+	expectedOutput << "if = {\n";
+	expectedOutput << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
+	expectedOutput << "\tcreate_equipment_variant = {\n";
+	expectedOutput << "\t\tname = \"Early submarine\"\n";
+	expectedOutput << "\t\ttype = ship_hull_submarine_1\n";
+	expectedOutput << "\t\tupgrades = {\n";
+	expectedOutput << "\t\t\tship_reliability_upgrade = 1\n";
+	expectedOutput << "\t\t\tsub_engine_upgrade = 1\n";
+	expectedOutput << "\t\t\tsub_stealth_upgrade = 1\n";
+	expectedOutput << "\t\t\tsub_torpedo_upgrade = 1\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t\tobsolete = yes\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "}\n";
+	expectedOutput << "if = {\n";
+	expectedOutput << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
+	expectedOutput << "}\n";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST(HoI4World_ShipTypes_shipVariantsTests, HeldLegacyVariantIsIdentified)
+{
+	std::stringstream input;
+	input << "legacy_ship_type = {\n";
+	input << "\tname = \"Early submarine\"\n";
+	input << "\ttype = ship_hull_submarine_1\n";
+	input << "\tupgrades = {\n";
+	input << "\t\tship_reliability_upgrade = 1\n";
+	input << "\t\tsub_engine_upgrade = 1\n";
+	input << "\t\tsub_stealth_upgrade = 1\n";
+	input << "\t\tsub_torpedo_upgrade = 1\n";
+	input << "\t}\n";
+	input << "\tobsolete = yes\n";
+	input << "}\n";
+	HoI4::PossibleShipVariants possibleVariants(input);
+
+	const mockTechnologies ownedTechs;
+
+	const HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+
+	ASSERT_TRUE(theVariants.hasLegacyVariant("Early submarine"));
+}
+
+
+TEST(HoI4World_ShipTypes_shipVariantsTests, MissingVariantIsNotIdentified)
+{
+	std::stringstream input;
+	input << "legacy_ship_type = {\n";
+	input << "\tname = \"Early submarine\"\n";
+	input << "\ttype = ship_hull_submarine_1\n";
+	input << "\tupgrades = {\n";
+	input << "\t\tship_reliability_upgrade = 1\n";
+	input << "\t\tsub_engine_upgrade = 1\n";
+	input << "\t\tsub_stealth_upgrade = 1\n";
+	input << "\t\tsub_torpedo_upgrade = 1\n";
+	input << "\t}\n";
+	input << "\tobsolete = yes\n";
+	input << "}\n";
+	HoI4::PossibleShipVariants possibleVariants(input);
+
+	const mockTechnologies ownedTechs;
+
+	const HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+
+	ASSERT_FALSE(theVariants.hasLegacyVariant("1936 submarine"));
+}
+
+
+TEST(HoI4World_ShipTypes_shipVariantsTests, LegacyVariantsNeedRequiredTechs)
+{
+	std::stringstream input;
+	input << "legacy_ship_type = {\n";
+	input << "\trequired_techs = {\n";
+	input << "\t\ttech1\n";
+	input << "\t}\n";
+	input << "\tname = \"Early submarine\"\n";
+	input << "\ttype = ship_hull_submarine_1\n";
+	input << "\tupgrades = {\n";
+	input << "\t\tship_reliability_upgrade = 1\n";
+	input << "\t\tsub_engine_upgrade = 1\n";
+	input << "\t\tsub_stealth_upgrade = 1\n";
+	input << "\t\tsub_torpedo_upgrade = 1\n";
+	input << "\t}\n";
+	input << "\tobsolete = yes\n";
+	input << "}\n";
+	input << "legacy_ship_type = {\n";
+	input << "\trequired_techs = {\n";
+	input << "\t\ttech2\n";
+	input << "\t}\n";
+	input << "\tname = \"Early submarine2\"\n";
+	input << "\ttype = ship_hull_submarine_1\n";
+	input << "\tupgrades = {\n";
+	input << "\t\tship_reliability_upgrade = 2\n";
+	input << "\t\tsub_engine_upgrade = 2\n";
+	input << "\t\tsub_stealth_upgrade = 2\n";
+	input << "\t\tsub_torpedo_upgrade = 2\n";
+	input << "\t}\n";
+	input << "\tobsolete = yes\n";
+	input << "}\n";
+	HoI4::PossibleShipVariants possibleVariants(input);
+
+	mockTechnologies ownedTechs;
+	EXPECT_CALL(ownedTechs, hasTechnology("tech1")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("tech2")).WillOnce(testing::Return(true));
+
+	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+
+	std::stringstream output;
+	output << theVariants;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "### VARIANTS ###\n";
+	expectedOutput << "if = {\n";
+	expectedOutput << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
+	expectedOutput << "\tcreate_equipment_variant = {\n";
+	expectedOutput << "\t\tname = \"Early submarine2\"\n";
+	expectedOutput << "\t\ttype = ship_hull_submarine_1\n";
+	expectedOutput << "\t\tupgrades = {\n";
+	expectedOutput << "\t\t\tship_reliability_upgrade = 2\n";
+	expectedOutput << "\t\t\tsub_engine_upgrade = 2\n";
+	expectedOutput << "\t\t\tsub_stealth_upgrade = 2\n";
+	expectedOutput << "\t\t\tsub_torpedo_upgrade = 2\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t\tobsolete = yes\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "}\n";
+	expectedOutput << "if = {\n";
+	expectedOutput << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
+	expectedOutput << "}\n";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST(HoI4World_ShipTypes_shipVariantsTests, LegacyVariantsCanBeBlocked)
+{
+	std::stringstream input;
+	input << "legacy_ship_type = {\n";
+	input << "\tblocking_techs = {\n";
+	input << "\t\ttech1\n";
+	input << "\t}\n";
+	input << "\tname = \"Early submarine\"\n";
+	input << "\ttype = ship_hull_submarine_1\n";
+	input << "\tupgrades = {\n";
+	input << "\t\tship_reliability_upgrade = 1\n";
+	input << "\t\tsub_engine_upgrade = 1\n";
+	input << "\t\tsub_stealth_upgrade = 1\n";
+	input << "\t\tsub_torpedo_upgrade = 1\n";
+	input << "\t}\n";
+	input << "\tobsolete = yes\n";
+	input << "}\n";
+	input << "legacy_ship_type = {\n";
+	input << "\tblocking_techs = {\n";
+	input << "\t\ttech2\n";
+	input << "\t}\n";
+	input << "\tname = \"Early submarine2\"\n";
+	input << "\ttype = ship_hull_submarine_1\n";
+	input << "\tupgrades = {\n";
+	input << "\t\tship_reliability_upgrade = 2\n";
+	input << "\t\tsub_engine_upgrade = 2\n";
+	input << "\t\tsub_stealth_upgrade = 2\n";
+	input << "\t\tsub_torpedo_upgrade = 12n";
+	input << "\t}\n";
+	input << "\tobsolete = yes\n";
+	input << "}\n";
+	HoI4::PossibleShipVariants possibleVariants(input);
+
+	mockTechnologies ownedTechs;
+	EXPECT_CALL(ownedTechs, hasTechnology("tech1")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("tech2")).WillOnce(testing::Return(true));
+
+	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+
+	std::stringstream output;
+	output << theVariants;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "### VARIANTS ###\n";
+	expectedOutput << "if = {\n";
+	expectedOutput << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
+	expectedOutput << "\tcreate_equipment_variant = {\n";
+	expectedOutput << "\t\tname = \"Early submarine\"\n";
+	expectedOutput << "\t\ttype = ship_hull_submarine_1\n";
+	expectedOutput << "\t\tupgrades = {\n";
+	expectedOutput << "\t\t\tship_reliability_upgrade = 1\n";
+	expectedOutput << "\t\t\tsub_engine_upgrade = 1\n";
+	expectedOutput << "\t\t\tsub_stealth_upgrade = 1\n";
+	expectedOutput << "\t\t\tsub_torpedo_upgrade = 1\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t\tobsolete = yes\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "\n";
+	expectedOutput << "}\n";
+	expectedOutput << "if = {\n";
+	expectedOutput << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
 	expectedOutput << "}\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }

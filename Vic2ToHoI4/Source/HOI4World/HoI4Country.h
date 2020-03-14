@@ -97,7 +97,7 @@ class Country
 		void convertGovernment(const Vic2::World& sourceWorld, const governmentMapper& governmentMap);
 		void convertParties(const std::set<std::string>& majorIdeologies, const governmentMapper& governmentMap);
 		void convertIdeologySupport(const std::set<std::string>& majorIdeologies, const governmentMapper& governmentMap);
-		void determineShipVariants(const std::vector<shipVariant>& possibleVariants);
+		void determineShipVariants(const PossibleShipVariants& possibleVariants);
 		void convertNavies(
 			const UnitMappings& unitMap,
 			const MtgUnitMappings& mtgUnitMap,
@@ -176,7 +176,7 @@ class Country
 		[[nodiscard]] double getDockyards() const { return dockyards; }
 
 		[[nodiscard]] const Army& getArmy() const { return theArmy; }
-		[[nodiscard]] const shipVariants& getTheShipVariants() const { return *theShipVariants; }
+		[[nodiscard]] const ShipVariants& getTheShipVariants() const { return *theShipVariants; }
 		[[nodiscard]] const Navies& getNavies() const { return *theNavies; }
 		[[nodiscard]] const auto& getNavyNames() const { return navyNames; }
 		[[nodiscard]] int getConvoys() const { return convoys; }
@@ -278,7 +278,7 @@ class Country
 		double dockyards = 0.0;
 
 		Army theArmy;
-		std::unique_ptr<shipVariants> theShipVariants;
+		std::unique_ptr<ShipVariants> theShipVariants;
 		std::unique_ptr<Navies> theNavies;
 		NavyNames navyNames;
 		int convoys = 0;

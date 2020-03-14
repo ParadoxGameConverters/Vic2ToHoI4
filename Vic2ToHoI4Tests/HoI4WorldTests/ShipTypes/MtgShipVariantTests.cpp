@@ -1,18 +1,18 @@
 #include "../../Mocks/TechnologiesMock.h"
-#include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/ShipVariant.h"
+#include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/MtgShipVariant.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
 
 
-TEST(HoI4World_ShipTypes_shipVariantTests, DefaultsSetCorrectly)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, DefaultsSetCorrectly)
 {
 	std::stringstream input;
 	input << "";
-	HoI4::shipVariant theShipVariant(input);
+	HoI4::MtgShipVariant theMtgShipVariant(input);
 
 	std::stringstream output;
-	output << theShipVariant;
+	output << theMtgShipVariant;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\tcreate_equipment_variant = {\n";
@@ -25,28 +25,28 @@ TEST(HoI4World_ShipTypes_shipVariantTests, DefaultsSetCorrectly)
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantTests, NameCanBeInput)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, NameCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
 	input << "\tname = \"ship_name\"\n";
 	input << "}";
-	const HoI4::shipVariant theShipVariant(input);
+	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
-	ASSERT_EQ(std::string("ship_name"), theShipVariant.getName());
+	ASSERT_EQ(std::string("ship_name"), theMtgShipVariant.getName());
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantTests, TypeCanBeInput)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, TypeCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
 	input << "\ttype = \"ship_type\"\n";
 	input << "}";
-	HoI4::shipVariant theShipVariant(input);
+	HoI4::MtgShipVariant theMtgShipVariant(input);
 
 	std::stringstream output;
-	output << theShipVariant;
+	output << theMtgShipVariant;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\tcreate_equipment_variant = {\n";
@@ -59,16 +59,16 @@ TEST(HoI4World_ShipTypes_shipVariantTests, TypeCanBeInput)
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantTests, NameGroupCanBeInput)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, NameGroupCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
 	input << "\tname_group = NAME_GROUP\n";
 	input << "}";
-	HoI4::shipVariant theShipVariant(input);
+	HoI4::MtgShipVariant theMtgShipVariant(input);
 
 	std::stringstream output;
-	output << theShipVariant;
+	output << theMtgShipVariant;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\tcreate_equipment_variant = {\n";
@@ -81,17 +81,17 @@ TEST(HoI4World_ShipTypes_shipVariantTests, NameGroupCanBeInput)
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantTests, OwningCountryTagCanBeInput)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, OwningCountryTagCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
 	input << "\tname_group = NAME_GROUP\n";
 	input << "}";
-	HoI4::shipVariant theShipVariant(input);
-	theShipVariant.setOwningCountryTag("TAG");
+	HoI4::MtgShipVariant theMtgShipVariant(input);
+	theMtgShipVariant.setOwningCountryTag("TAG");
 
 	std::stringstream output;
-	output << theShipVariant;
+	output << theMtgShipVariant;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\tcreate_equipment_variant = {\n";
@@ -104,7 +104,7 @@ TEST(HoI4World_ShipTypes_shipVariantTests, OwningCountryTagCanBeInput)
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantTests, ModulesCanBeInput)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, ModulesCanBeInput)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -113,10 +113,10 @@ TEST(HoI4World_ShipTypes_shipVariantTests, ModulesCanBeInput)
 	input << "\t\tmoduleSpot2 = module2\n";
 	input << "\t}";
 	input << "}";
-	HoI4::shipVariant theShipVariant(input);
+	HoI4::MtgShipVariant theMtgShipVariant(input);
 
 	std::stringstream output;
-	output << theShipVariant;
+	output << theMtgShipVariant;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\tcreate_equipment_variant = {\n";
@@ -133,16 +133,16 @@ TEST(HoI4World_ShipTypes_shipVariantTests, ModulesCanBeInput)
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantTests, CanBeSetObsolete)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, CanBeSetObsolete)
 {
 	std::stringstream input;
 	input << " = {\n";
 	input << "\tobsolete = yes\n";
 	input << "}";
-	HoI4::shipVariant theShipVariant(input);
+	HoI4::MtgShipVariant theMtgShipVariant(input);
 
 	std::stringstream output;
-	output << theShipVariant;
+	output << theMtgShipVariant;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\tcreate_equipment_variant = {\n";
@@ -156,16 +156,16 @@ TEST(HoI4World_ShipTypes_shipVariantTests, CanBeSetObsolete)
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantTests, OnlySetObsoleteByYes)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, OnlySetObsoleteByYes)
 {
 	std::stringstream input;
 	input << " = {\n";
 	input << "\tobsolete = no\n";
 	input << "}";
-	HoI4::shipVariant theShipVariant(input);
+	HoI4::MtgShipVariant theMtgShipVariant(input);
 
 	std::stringstream output;
-	output << theShipVariant;
+	output << theMtgShipVariant;
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\tcreate_equipment_variant = {\n";
@@ -178,20 +178,20 @@ TEST(HoI4World_ShipTypes_shipVariantTests, OnlySetObsoleteByYes)
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantTests, NoRequiredTechsMeansVariantIsValid)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, NoRequiredTechsMeansVariantIsValid)
 {
 	std::stringstream input;
 	input << " = {\n";
 	input << "}";
-	const HoI4::shipVariant theShipVariant(input);
+	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
 	const mockTechnologies countryTechs;
 
-	ASSERT_TRUE(theShipVariant.isValidVariant(countryTechs));
+	ASSERT_TRUE(theMtgShipVariant.isValidVariant(countryTechs));
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantTests, MissingRequiredTechMeansVariantIsInvalid)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, MissingRequiredTechMeansVariantIsInvalid)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -199,15 +199,15 @@ TEST(HoI4World_ShipTypes_shipVariantTests, MissingRequiredTechMeansVariantIsInva
 	input << "\t\trequired_tech1\n";
 	input << "\t}\n";
 	input << "}";
-	const HoI4::shipVariant theShipVariant(input);
+	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
 	const mockTechnologies countryTechs;
 
-	ASSERT_FALSE(theShipVariant.isValidVariant(countryTechs));
+	ASSERT_FALSE(theMtgShipVariant.isValidVariant(countryTechs));
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantTests, HavingRequiredTechsMeansVariantIsValid)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, HavingRequiredTechsMeansVariantIsValid)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -215,16 +215,16 @@ TEST(HoI4World_ShipTypes_shipVariantTests, HavingRequiredTechsMeansVariantIsVali
 	input << "\t\trequired_tech1\n";
 	input << "\t}\n";
 	input << "}";
-	const HoI4::shipVariant theShipVariant(input);
+	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
 	const mockTechnologies mockTechs;
 	EXPECT_CALL(mockTechs, hasTechnology("required_tech1")).WillOnce(testing::Return(true));
 
-	ASSERT_TRUE(theShipVariant.isValidVariant(mockTechs));
+	ASSERT_TRUE(theMtgShipVariant.isValidVariant(mockTechs));
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantTests, HavingOnlySomeRequiredTechsMeansVariantIsInvalid)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, HavingOnlySomeRequiredTechsMeansVariantIsInvalid)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -233,17 +233,17 @@ TEST(HoI4World_ShipTypes_shipVariantTests, HavingOnlySomeRequiredTechsMeansVaria
 	input << "\t\trequired_tech2\n";
 	input << "\t}\n";
 	input << "}";
-	const HoI4::shipVariant theShipVariant(input);
+	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
 	const mockTechnologies mockTechs;
 	EXPECT_CALL(mockTechs, hasTechnology("required_tech1")).WillOnce(testing::Return(true));
 	EXPECT_CALL(mockTechs, hasTechnology("required_tech2")).WillOnce(testing::Return(false));
 
-	ASSERT_FALSE(theShipVariant.isValidVariant(mockTechs));
+	ASSERT_FALSE(theMtgShipVariant.isValidVariant(mockTechs));
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantTests, HavingBlockingTechsMeansVariantIsInvalid)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, HavingBlockingTechsMeansVariantIsInvalid)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -251,16 +251,16 @@ TEST(HoI4World_ShipTypes_shipVariantTests, HavingBlockingTechsMeansVariantIsInva
 	input << "\t\trequired_tech1\n";
 	input << "\t}\n";
 	input << "}";
-	const HoI4::shipVariant theShipVariant(input);
+	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
 	const mockTechnologies mockTechs;
 	EXPECT_CALL(mockTechs, hasTechnology("required_tech1")).WillOnce(testing::Return(true));
 
-	ASSERT_FALSE(theShipVariant.isValidVariant(mockTechs));
+	ASSERT_FALSE(theMtgShipVariant.isValidVariant(mockTechs));
 }
 
 
-TEST(HoI4World_ShipTypes_shipVariantTests, HavingNoBlockingTechsMeansVariantIsValid)
+TEST(HoI4World_ShipTypes_MtgShipVariantTests, HavingNoBlockingTechsMeansVariantIsValid)
 {
 	std::stringstream input;
 	input << " = {\n";
@@ -268,9 +268,9 @@ TEST(HoI4World_ShipTypes_shipVariantTests, HavingNoBlockingTechsMeansVariantIsVa
 	input << "\t\trequired_tech1\n";
 	input << "\t}\n";
 	input << "}";
-	const HoI4::shipVariant theShipVariant(input);
+	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
 	const mockTechnologies countryTechs;
 
-	ASSERT_TRUE(theShipVariant.isValidVariant(countryTechs));
+	ASSERT_TRUE(theMtgShipVariant.isValidVariant(countryTechs));
 }

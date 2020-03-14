@@ -1,25 +1,4 @@
-# Copyright (c) 2019 The Paradox Game Converters Project
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
-
-
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		early_ship_hull_submarine
 	}
@@ -37,7 +16,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		basic_ship_hull_submarine
 	}
@@ -52,7 +31,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		early_ship_hull_heavy
 	}
@@ -78,7 +57,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		basic_ship_hull_heavy
 	}
@@ -101,7 +80,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		early_ship_hull_light
 	}
@@ -124,7 +103,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		basic_ship_hull_light
 	}
@@ -144,7 +123,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		early_ship_hull_cruiser
 	}
@@ -169,7 +148,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		basic_ship_hull_cruiser
 	}
@@ -191,7 +170,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		early_ship_hull_cruiser
 	}
@@ -216,7 +195,7 @@ ship_type = {
 	obsolete = no
 }
 
-ship_type = {
+mtg_ship_type = {
 	required_techs = {
 		basic_ship_hull_cruiser
 	}
@@ -236,4 +215,162 @@ ship_type = {
 		rear_1_custom_slot = empty
 	}
 	obsolete = no
+}
+
+
+legacy_ship_type = {
+	required_techs = {
+		early_submarine
+	}
+	blocking_techs = {
+		basic_submarine
+	}
+	name = "Early Submarine"
+	type = submarine_1
+	upgrades = {
+		ship_reliability_upgrade = 1
+		sub_engine_upgrade = 1
+		sub_stealth_upgrade = 1
+		sub_torpedo_upgrade = 1
+	}
+}
+
+
+legacy_ship_type = {
+	required_techs = {
+		basic_submarine
+	}
+	name = "1936 Submarine"
+	type = submarine_2
+	upgrades = {
+		ship_reliability_upgrade = 1
+		sub_engine_upgrade = 1
+		sub_stealth_upgrade = 1
+		sub_torpedo_upgrade = 1
+	}
+}
+
+
+legacy_ship_type = {
+	required_techs = {
+		early_destroyer
+	}
+	blocking_techs = {
+		basic_destroyer
+	}
+	name = "Early Destroyer"
+	type = destroyer_1
+	upgrades = {
+		ship_torpedo_upgrade = 1
+		destroyer_engine_upgrade = 1
+		ship_ASW_upgrade = 1
+		ship_anti_air_upgrade = 1
+	}
+}
+
+legacy_ship_type = {
+	required_techs = {
+		early_light_cruiser
+	}
+	blocking_techs = {
+		basic_light_cruiser
+	}
+	name = "Early Light Cruiser"
+	type = light_cruiser_1
+	upgrades = {
+		ship_reliability_upgrade = 1
+		ship_engine_upgrade = 1
+		ship_gun_upgrade = 1
+		ship_anti_air_upgrade = 1
+	}
+}
+
+legacy_ship_type = {
+	required_techs = {
+		early_heavy_cruiser
+	}
+	blocking_techs = {
+		basic_heavy_cruiser
+	}
+	name = "Early Heavy Cruiser"
+	type = heavy_cruiser_1
+	upgrades = {
+		ship_reliability_upgrade = 1
+		ship_engine_upgrade = 1
+		ship_armor_upgrade = 1
+		ship_gun_upgrade = 1
+	}
+}
+
+legacy_ship_type = {
+	required_techs = {
+		early_battleship
+	}
+	blocking_techs = {
+		basic_battleship
+	}
+	name = "Early Battleship"
+	type = battleship_1
+	upgrades = {
+		ship_reliability_upgrade = 1
+		ship_engine_upgrade = 1
+		ship_armor_upgrade = 1
+		ship_gun_upgrade = 1
+	}
+}
+
+legacy_ship_type = {
+	required_techs = {
+		basic_destroyer
+	}
+	name = "1936 Destroyer"
+	type = destroyer_2
+	upgrades = {
+		ship_torpedo_upgrade = 1
+		destroyer_engine_upgrade = 1
+		ship_ASW_upgrade = 1
+		ship_anti_air_upgrade = 1
+	}
+}
+
+legacy_ship_type = {
+	required_techs = {
+		basic_light_cruiser
+	}
+	name = "1936 Light Cruiser"
+	type = light_cruiser_2
+	upgrades = {
+		ship_reliability_upgrade = 1
+		ship_engine_upgrade = 1
+		ship_gun_upgrade = 1
+		ship_anti_air_upgrade = 1
+	}
+}
+
+legacy_ship_type = {
+	required_techs = {
+		basic_heavy_cruiser
+	}
+	name = "1936 Heavy Cruiser"
+	type = heavy_cruiser_2
+	upgrades = {
+		ship_reliability_upgrade = 1
+		ship_engine_upgrade = 1
+		ship_armor_upgrade = 1
+		ship_gun_upgrade = 1
+	}
+}
+
+legacy_ship_type = {
+	required_techs = {
+		basic_battleship
+	}
+	name = "1936 Battleship"
+	type = battleship_2
+	upgrades = {
+		ship_reliability_upgrade = 1
+		ship_engine_upgrade = 1
+		ship_armor_upgrade = 1
+		ship_gun_upgrade = 1
+	}
 }

@@ -3,37 +3,43 @@
 
 
 
-#include "newParser.h"
 #include "../Technologies.h"
-#include "ShipVariant.h"
+#include "LegacyShipVariant.h"
+#include "MtgShipVariant.h"
+#include "PossibleShipVariants.h"
+#include "newParser.h"
 #include <string>
-#include <vector>
 
 
 
 namespace HoI4
 {
 
-class shipVariants
+class ShipVariants
 {
-	public:
-		shipVariants(
-			const std::vector<shipVariant>& possibleVariants,
-			const technologies& ownedTechs, const std::string& countryTag
-		);
+  public:
+	ShipVariants(const PossibleShipVariants& possibleShipVariants,
+		 const technologies& ownedTechs,
+		 const std::string& countryTag);
 
-		[[nodiscard]] bool hasVariant(const std::string& variantName) const
-		{
-			return variants.find(variantName) != variants.end();
-		}
+	[[nodiscard]] bool hasMtgVariant(const std::string& variantName) const
+	{
+		return mtgVariants.find(variantName) != mtgVariants.end();
+	}
 
-		friend std::ostream& operator << (std::ostream& output, const shipVariants& theVariants);
+	[[nodiscard]] bool hasLegacyVariant(const std::string& variantName) const
+	{
+		return legacyVariants.find(variantName) != legacyVariants.end();
+	}
 
-	private:
-		std::map<std::string, shipVariant> variants;
+	friend std::ostream& operator<<(std::ostream& output, const ShipVariants& theVariants);
+
+  private:
+	std::map<std::string, MtgShipVariant> mtgVariants;
+	std::map<std::string, LegacyShipVariant> legacyVariants;
 };
 
-}
+} // namespace HoI4
 
 
 

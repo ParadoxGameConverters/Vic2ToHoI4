@@ -27,13 +27,13 @@ TEST(HoI4World_MilitaryMappings_unitMappingsTests, MappingCanBeAdded)
 }
 
 
-TEST(HoI4World_MilitaryMappings_mtgUnitMappingsTests, UnmatchedMappingReturnsNullopt)
+TEST(HoI4World_MilitaryMappings_UnitMappingsTests, UnmatchedMappingReturnsEmpty)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
 	const HoI4::UnitMappings theMappings(input);
-	ASSERT_FALSE(theMappings.getMatchingUnitInfo("infantry"));
+	ASSERT_TRUE(theMappings.getMatchingUnitInfo("infantry").empty());
 }
 
 
@@ -41,18 +41,14 @@ TEST(HoI4World_MilitaryMappings_unitMappingsTests, MatchedMappingReturnsType)
 {
 	std::stringstream input(
 		 "= {\n"
-		 "\tmap = {\n"
 		 "\t\tlink = {\n"
 		 "\t\t\tvic = infantry\n"
 		 "\t\t\thoi = {\n"
 		 "\t\t\t\ttype = land\n"
 		 "\t\t\t}\n"
 		 "\t\t}\n"
-		 "\t}"
-		 "}");
+		 "\t}");
 	const HoI4::UnitMappings theMappings(input);
 
-	auto mapping = theMappings.getMatchingUnitInfo("infantry");
-	ASSERT_TRUE(mapping);
-	ASSERT_EQ("land", mapping->getType());
+	ASSERT_EQ("land", theMappings.getMatchingUnitInfo("infantry")[0].getType());
 }
