@@ -239,6 +239,7 @@
     <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\States\HoI4StateOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\Version\outVersion.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\Decision.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\Decisions.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategory.cpp" />
@@ -350,6 +351,7 @@
     <ClCompile Include="Source\Mappers\Provinces\VersionedMappings.cpp" />
     <ClCompile Include="Source\Mappers\TechMapper.cpp" />
     <ClCompile Include="Source\Mappers\V2Localisations.cpp" />
+    <ClCompile Include="Source\Mappers\VersionParser\VersionParser.cpp" />
     <ClCompile Include="Source\targa.cpp" />
     <ClCompile Include="Source\V2toHOI4Converter.cpp" />
     <ClCompile Include="Source\V2World\Agreement.cpp" />
@@ -431,6 +433,7 @@
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\States\HoI4StateOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Version\outVersion.h" />
     <ClInclude Include="Source\HOI4World\Decisions\Decision.h" />
     <ClInclude Include="Source\HOI4World\Decisions\Decisions.h" />
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategory.h" />
@@ -558,6 +561,7 @@
     <ClInclude Include="Source\Mappers\Provinces\VersionedMappings.h" />
     <ClInclude Include="Source\Mappers\TechMapper.h" />
     <ClInclude Include="Source\Mappers\V2Localisations.h" />
+    <ClInclude Include="Source\Mappers\VersionParser\VersionParser.h" />
     <ClInclude Include="Source\targa.h" />
     <ClInclude Include="Source\V2World\Agreement.h" />
     <ClInclude Include="Source\V2World\Army.h" />
@@ -17001,6 +17005,13 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\languageReplacements.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/DataFiles</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\version.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/DataFiles</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/DataFiles</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/DataFiles</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>

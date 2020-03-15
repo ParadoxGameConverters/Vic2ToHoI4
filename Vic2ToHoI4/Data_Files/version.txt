@@ -1,0 +1,5 @@
+# Version info
+
+version = "0.2L-prerelease"
+name = "Leopold III"
+descriptionLine = "compatible with 1.8.2"

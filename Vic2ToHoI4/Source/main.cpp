@@ -24,6 +24,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "Log.h"
 #include "Vic2ToHoI4Converter.h"
 #include "OSCompatibilityLayer.h"
+#include "Mappers/VersionParser/VersionParser.h"
 
 
 
@@ -31,8 +32,9 @@ int main(const int argc, const char* argv[])
 {
 	try
 	{
-		LOG(LogLevel::Info) << "Version 0.2K";
-		LOG(LogLevel::Info) << "Built on " << __DATE__ << " at " << __TIME__;
+		const mappers::VersionParser versionParser;
+		LOG(LogLevel::Info) << versionParser;
+		LOG(LogLevel::Info) << "Built on " << __TIMESTAMP__;
 		LOG(LogLevel::Info) << "Current directory is " << Utils::getCurrentDirectory();
 
 		const char* const defaultV2SaveFileName = "input.v2";
