@@ -33,6 +33,7 @@ cp "Data_Files/Resources.txt" "Release-Linux/resources.txt"
 cp "Data_Files/shipTypes.txt" "Release-Linux/shipTypes.txt"
 cp "Data_Files/tech_mapping.txt" "Release-Linux/tech_mapping.txt"
 cp "Data_Files/unit_mappings.txt" "Release-Linux/unit_mappings.txt"
+cp "Data_Files/version.txt" "Release-Linux/DataFiles/version.txt"
 cp "Data_Files/Vic2Localisations.csv" "Release-Linux/DataFilesVic2Localisations.csv"
 
 # **Copy flags**
