@@ -433,6 +433,7 @@
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\States\HoI4StateOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.h" />
+    <ClInclude Include="Source\Hoi4Outputter\Version\outVersion.h" />
     <ClInclude Include="Source\HOI4World\Decisions\Decision.h" />
     <ClInclude Include="Source\HOI4World\Decisions\Decisions.h" />
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategory.h" />

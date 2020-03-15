@@ -1312,6 +1312,9 @@
     <ClInclude Include="Source\Mappers\VersionParser\VersionParser.h">
       <Filter>Mappers\Versionparser</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Version\outVersion.h">
+      <Filter>Hoi4Outputter\Version</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\ai_peaces.txt">
@@ -17715,10 +17718,6 @@
     <CopyFileToFolders Include="Data_Files\languageReplacements.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Data_Files\version.txt">
-      <Filter>Data Files</Filter>
-    </Text>
+    <CopyFileToFolders Include="Data_Files\version.txt" />
   </ItemGroup>
 </Project>
