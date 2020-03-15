@@ -780,13 +780,12 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 	if (!output.is_open())
 	{
 		throw std::runtime_error(
-			"Could not open output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_OOB.txt"
-		);
+			 "Could not open output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_OOB.txt");
 	}
 	output << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 
 	output << "start_equipment_factor = 0\n";
-	for (auto& divisionTemplate : divisionTemplates)
+	for (auto& divisionTemplate: divisionTemplates)
 	{
 		output << divisionTemplate;
 		output << "\n";
@@ -857,54 +856,6 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 			output << "\t\tefficiency = 100\n";
 			output << "\t}\n";
 		}
-		if (technologies->hasTechnology("basic_destroyer"))
-		{
-			output << "\tadd_equipment_production = {\n";
-			output << "\t\tequipment = {\n";
-			output << "\t\t\ttype = destroyer_2\n";
-			output << "\t\t\tcreator = \"" << tag << "\"\n";
-			output << "\t\t}\n";
-			output << "\t\trequested_factories = 3\n";
-			output << "\t\tprogress = 0.25\n";
-			output << "\t\tamount = 10\n";
-			output << "\t}\n";
-		}
-		else if (technologies->hasTechnology("early_destroyer"))
-		{
-			output << "\tadd_equipment_production = {\n";
-			output << "\t\tequipment = {\n";
-			output << "\t\t\ttype = destroyer_1\n";
-			output << "\t\t\tcreator = \"" << tag << "\"\n";
-			output << "\t\t}\n";
-			output << "\t\trequested_factories = 3\n";
-			output << "\t\tprogress = 0.25\n";
-			output << "\t\tamount = 10\n";
-			output << "\t}\n";
-		}
-		if (technologies->hasTechnology("basic_battleship"))
-		{
-			output << "\tadd_equipment_production = {\n";
-			output << "\t\tequipment = {\n";
-			output << "\t\t\ttype = battleship_2\n";
-			output << "\t\t\tcreator = \"" << tag << "\"\n";
-			output << "\t\t}\n";
-			output << "\t\trequested_factories = 8\n";
-			output << "\t\tprogress = 0.25\n";
-			output << "\t\tamount = 3\n";
-			output << "\t}\n";
-		}
-		else if (technologies->hasTechnology("early_battleship"))
-		{
-			output << "\tadd_equipment_production = {\n";
-			output << "\t\tequipment = {\n";
-			output << "\t\t\ttype = battleship_1\n";
-			output << "\t\t\tcreator = \"" << tag << "\"\n";
-			output << "\t\t}\n";
-			output << "\t\trequested_factories = 8\n";
-			output << "\t\tprogress = 0.25\n";
-			output << "\t\tamount = 3\n";
-			output << "\t}\n";
-		}
 	}
 	output << "\tadd_equipment_production = {\n";
 	output << "\t\tequipment = {\n";
@@ -934,14 +885,12 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 
 	auto& navies = theCountry.getNavies();
 	std::ofstream legacyNavy(
-		"output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_legacy.txt"
-	);
-	HoI4::outputLegacyNavies(navies, legacyNavy);
+		 "output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_legacy.txt");
+	HoI4::outputLegacyNavies(navies, *technologies, tag, legacyNavy);
 
 	std::ofstream mtgNavy(
-		"output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_mtg.txt"
-	);
-	HoI4::outputMtgNavies(navies, mtgNavy);
+		 "output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_mtg.txt");
+	HoI4::outputMtgNavies(navies, *technologies, tag, mtgNavy);
 }
 
 
