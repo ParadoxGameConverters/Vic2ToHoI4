@@ -121,7 +121,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToLegacy)
 
 	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, theVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	outputLegacyNavies(navies, std::nullopt, "TAG", output);
+	outputLegacyNavies(navies, ownedTechs, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -136,6 +136,9 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToLegacy)
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "}";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
@@ -182,12 +185,16 @@ TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableLegacyShipType)
 
 	HoI4::Navies
 		 navies(sourceArmies, 0, legacyUnitMap, unitMap, *limitedShipVariants, provinceToStateIDMap, states, "TAG");
+	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputMtgNavies(navies, std::nullopt, "TAG", output);
+	outputMtgNavies(navies, ownedTechs, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "}";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
@@ -224,12 +231,16 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
 
 	HoI4::Navies
 		 navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputLegacyNavies(navies, std::nullopt, "TAG", output);
+	outputLegacyNavies(navies, ownedTechs, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "}";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
@@ -274,12 +285,16 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
 
 	HoI4::Navies
 		 navies(sourceArmies, 0, unitMappings, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputLegacyNavies(navies, std::nullopt, "TAG", output);
+	outputLegacyNavies(navies, ownedTechs, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "}";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
@@ -336,7 +351,7 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyNavyNamesConvert)
 
 	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, theVariants, provinceToStateIDMap, states, "TAG");
 	std::ostringstream output;
-	outputLegacyNavies(navies, std::nullopt, "TAG", output);
+	outputLegacyNavies(navies, ownedTechs, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -351,6 +366,195 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyNavyNamesConvert)
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "}";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHave1936DestroyerInProduction)
+{
+	std::vector<Vic2::Army> sourceArmies;
+	std::stringstream armyStream;
+	Vic2::Army navy("navy", armyStream);
+	sourceArmies.push_back(navy);
+
+	std::stringstream unitMappingsStream;
+	HoI4::UnitMappings unitMappings(unitMappingsStream);
+
+	std::stringstream mtgUnitMappingStream;
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
+	std::map<int, int> provinceToStateIDMap;
+	std::map<int, HoI4::State> states;
+
+	std::stringstream input;
+	HoI4::PossibleShipVariants possibleVariants(input);
+	mockTechnologies ownedTechs;
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_destroyer")).WillOnce(testing::Return(true));
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_battleship")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("early_battleship")).WillOnce(testing::Return(false));
+	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+
+	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, theVariants, provinceToStateIDMap, states, "TAG");
+	std::ostringstream output;
+	outputLegacyNavies(navies, ownedTechs, "TAG", output);
+
+	std::ostringstream expectedOutput;
+	expectedOutput << "units = {\n";
+	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "\tadd_equipment_production = {\n";
+	expectedOutput << "\t\tequipment = {\n";
+	expectedOutput << "\t\t\ttype = destroyer_2\n";
+	expectedOutput << "\t\t\tcreator = \"TAG\"\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t\trequested_factories = 3\n";
+	expectedOutput << "\t\tprogress = 0.25\n";
+	expectedOutput << "\t\tamount = 10\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "}";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHaveEarlyDestroyerInProduction)
+{
+	std::vector<Vic2::Army> sourceArmies;
+	std::stringstream armyStream;
+	Vic2::Army navy("navy", armyStream);
+	sourceArmies.push_back(navy);
+
+	std::stringstream unitMappingsStream;
+	HoI4::UnitMappings unitMappings(unitMappingsStream);
+
+	std::stringstream mtgUnitMappingStream;
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
+	std::map<int, int> provinceToStateIDMap;
+	std::map<int, HoI4::State> states;
+
+	std::stringstream input;
+	HoI4::PossibleShipVariants possibleVariants(input);
+	mockTechnologies ownedTechs;
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_destroyer")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("early_destroyer")).WillOnce(testing::Return(true));
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_battleship")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("early_battleship")).WillOnce(testing::Return(false));
+	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+
+	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, theVariants, provinceToStateIDMap, states, "TAG");
+	std::ostringstream output;
+	outputLegacyNavies(navies, ownedTechs, "TAG", output);
+
+	std::ostringstream expectedOutput;
+	expectedOutput << "units = {\n";
+	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "\tadd_equipment_production = {\n";
+	expectedOutput << "\t\tequipment = {\n";
+	expectedOutput << "\t\t\ttype = destroyer_1\n";
+	expectedOutput << "\t\t\tcreator = \"TAG\"\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t\trequested_factories = 3\n";
+	expectedOutput << "\t\tprogress = 0.25\n";
+	expectedOutput << "\t\tamount = 10\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "}";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHave1936BattleshipInProduction)
+{
+	std::vector<Vic2::Army> sourceArmies;
+	std::stringstream armyStream;
+	Vic2::Army navy("navy", armyStream);
+	sourceArmies.push_back(navy);
+
+	std::stringstream unitMappingsStream;
+	HoI4::UnitMappings unitMappings(unitMappingsStream);
+
+	std::stringstream mtgUnitMappingStream;
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
+	std::map<int, int> provinceToStateIDMap;
+	std::map<int, HoI4::State> states;
+
+	std::stringstream input;
+	HoI4::PossibleShipVariants possibleVariants(input);
+	mockTechnologies ownedTechs;
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_destroyer")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("early_destroyer")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_battleship")).WillOnce(testing::Return(true));
+	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+
+	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, theVariants, provinceToStateIDMap, states, "TAG");
+	std::ostringstream output;
+	outputLegacyNavies(navies, ownedTechs, "TAG", output);
+
+	std::ostringstream expectedOutput;
+	expectedOutput << "units = {\n";
+	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "\tadd_equipment_production = {\n";
+	expectedOutput << "\t\tequipment = {\n";
+	expectedOutput << "\t\t\ttype = battleship_2\n";
+	expectedOutput << "\t\t\tcreator = \"TAG\"\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t\trequested_factories = 8\n";
+	expectedOutput << "\t\tprogress = 0.25\n";
+	expectedOutput << "\t\tamount = 3\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "}";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHaveEarlyBattleshipInProduction)
+{
+	std::vector<Vic2::Army> sourceArmies;
+	std::stringstream armyStream;
+	Vic2::Army navy("navy", armyStream);
+	sourceArmies.push_back(navy);
+
+	std::stringstream unitMappingsStream;
+	HoI4::UnitMappings unitMappings(unitMappingsStream);
+
+	std::stringstream mtgUnitMappingStream;
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
+	std::map<int, int> provinceToStateIDMap;
+	std::map<int, HoI4::State> states;
+
+	std::stringstream input;
+	HoI4::PossibleShipVariants possibleVariants(input);
+	mockTechnologies ownedTechs;
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_destroyer")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("early_destroyer")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_battleship")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("early_battleship")).WillOnce(testing::Return(true));
+	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+
+	HoI4::Navies navies(sourceArmies, 0, unitMappings, mtgUnitMap, theVariants, provinceToStateIDMap, states, "TAG");
+	std::ostringstream output;
+	outputLegacyNavies(navies, ownedTechs, "TAG", output);
+
+	std::ostringstream expectedOutput;
+	expectedOutput << "units = {\n";
+	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "\tadd_equipment_production = {\n";
+	expectedOutput << "\t\tequipment = {\n";
+	expectedOutput << "\t\t\ttype = battleship_1\n";
+	expectedOutput << "\t\t\tcreator = \"TAG\"\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t\trequested_factories = 8\n";
+	expectedOutput << "\t\tprogress = 0.25\n";
+	expectedOutput << "\t\tamount = 3\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "}";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
@@ -396,8 +600,9 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToMtg)
 	std::map<int, HoI4::State> states;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputMtgNavies(navies, std::nullopt, "TAG", output);
+	outputMtgNavies(navies, ownedTechs, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -412,6 +617,9 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToMtg)
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "}";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
@@ -464,8 +672,9 @@ TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableMtgShipType)
 	std::map<int, HoI4::State> states;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *limitedShipVariants, provinceToStateIDMap, states, "TAG");
+	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputMtgNavies(navies, std::nullopt, "TAG", output);
+	outputMtgNavies(navies, ownedTechs, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -480,6 +689,9 @@ TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableMtgShipType)
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "}";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
@@ -525,8 +737,9 @@ TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesGetExperience)
 	std::map<int, HoI4::State> states;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputMtgNavies(navies, std::nullopt, "TAG", output);
+	outputMtgNavies(navies, ownedTechs, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -541,6 +754,9 @@ TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesGetExperience)
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "}";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
@@ -578,12 +794,16 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToMtg)
 	std::map<int, HoI4::State> states;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputMtgNavies(navies, std::nullopt, "TAG", output);
+	outputMtgNavies(navies, ownedTechs, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "}";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
@@ -629,12 +849,16 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToMtgNavy)
 	std::map<int, HoI4::State> states;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputMtgNavies(navies, std::nullopt, "TAG", output);
+	outputMtgNavies(navies, ownedTechs, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "}";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
@@ -680,8 +904,9 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgNavyNamesConvert)
 	std::map<int, HoI4::State> states;
 
 	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputMtgNavies(navies, std::nullopt, "TAG", output);
+	outputMtgNavies(navies, ownedTechs, "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -696,6 +921,187 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgNavyNamesConvert)
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "}";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST_F(HoI4World_Navies_NaviesTests, MtgCanHave1936DestroyerInProduction)
+{
+	std::vector<Vic2::Army> sourceArmies;
+	std::stringstream armyStream;
+	Vic2::Army navy("navy", armyStream);
+	sourceArmies.push_back(navy);
+
+	std::stringstream input;
+	HoI4::UnitMappings unitMap(input);
+
+	std::stringstream mtgUnitMappingStream;
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
+
+	std::map<int, int> provinceToStateIDMap;
+	std::map<int, HoI4::State> states;
+
+	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	mockTechnologies ownedTechs;
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light")).WillOnce(testing::Return(true));
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_heavy")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_heavy")).WillOnce(testing::Return(false));
+	std::ostringstream output;
+	outputMtgNavies(navies, ownedTechs, "TAG", output);
+
+	std::ostringstream expectedOutput;
+	expectedOutput << "units = {\n";
+	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "\tadd_equipment_production = {\n";
+	expectedOutput << "\t\tequipment = {\n";
+	expectedOutput << "\t\t\ttype = ship_hull_light_2\n";
+	expectedOutput << "\t\t\tcreator = \"TAG\"\n";
+	expectedOutput << "\t\t\tversion_name = \"1936 Destroyer\"\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t\trequested_factories = 3\n";
+	expectedOutput << "\t\tprogress = 0.25\n";
+	expectedOutput << "\t\tamount = 10\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "}";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST_F(HoI4World_Navies_NaviesTests, MtgCanHaveEarlyDestroyerInProduction)
+{
+	std::vector<Vic2::Army> sourceArmies;
+	std::stringstream armyStream;
+	Vic2::Army navy("navy", armyStream);
+	sourceArmies.push_back(navy);
+
+	std::stringstream input;
+	HoI4::UnitMappings unitMap(input);
+
+	std::stringstream mtgUnitMappingStream;
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
+
+	std::map<int, int> provinceToStateIDMap;
+	std::map<int, HoI4::State> states;
+
+	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	mockTechnologies ownedTechs;
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_light")).WillOnce(testing::Return(true));
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_heavy")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_heavy")).WillOnce(testing::Return(false));
+	std::ostringstream output;
+	outputMtgNavies(navies, ownedTechs, "TAG", output);
+
+	std::ostringstream expectedOutput;
+	expectedOutput << "units = {\n";
+	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "\tadd_equipment_production = {\n";
+	expectedOutput << "\t\tequipment = {\n";
+	expectedOutput << "\t\t\ttype = ship_hull_light_1\n";
+	expectedOutput << "\t\t\tcreator = \"TAG\"\n";
+	expectedOutput << "\t\t\tversion_name = \"Early Destroyer\"\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t\trequested_factories = 3\n";
+	expectedOutput << "\t\tprogress = 0.25\n";
+	expectedOutput << "\t\tamount = 10\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "}";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST_F(HoI4World_Navies_NaviesTests, MtgCanHave1936BattleshipInProduction)
+{
+	std::vector<Vic2::Army> sourceArmies;
+	std::stringstream armyStream;
+	Vic2::Army navy("navy", armyStream);
+	sourceArmies.push_back(navy);
+
+	std::stringstream input;
+	HoI4::UnitMappings unitMap(input);
+
+	std::stringstream mtgUnitMappingStream;
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
+
+	std::map<int, int> provinceToStateIDMap;
+	std::map<int, HoI4::State> states;
+
+	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	mockTechnologies ownedTechs;
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_light")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_heavy")).WillOnce(testing::Return(true));
+	std::ostringstream output;
+	outputMtgNavies(navies, ownedTechs, "TAG", output);
+
+	std::ostringstream expectedOutput;
+	expectedOutput << "units = {\n";
+	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "\tadd_equipment_production = {\n";
+	expectedOutput << "\t\tequipment = {\n";
+	expectedOutput << "\t\t\ttype = ship_hull_heavy_2\n";
+	expectedOutput << "\t\t\tcreator = \"TAG\"\n";
+	expectedOutput << "\t\t\tversion_name = \"1936 Battleship\"\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t\trequested_factories = 8\n";
+	expectedOutput << "\t\tprogress = 0.25\n";
+	expectedOutput << "\t\tamount = 3\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "}";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST_F(HoI4World_Navies_NaviesTests, MtgCanHaveEarlyBattleshipInProduction)
+{
+	std::vector<Vic2::Army> sourceArmies;
+	std::stringstream armyStream;
+	Vic2::Army navy("navy", armyStream);
+	sourceArmies.push_back(navy);
+
+	std::stringstream input;
+	HoI4::UnitMappings unitMap(input);
+
+	std::stringstream mtgUnitMappingStream;
+	HoI4::MtgUnitMappings mtgUnitMap(mtgUnitMappingStream);
+
+	std::map<int, int> provinceToStateIDMap;
+	std::map<int, HoI4::State> states;
+
+	HoI4::Navies navies(sourceArmies, 0, unitMap, mtgUnitMap, *theShipVariants, provinceToStateIDMap, states, "TAG");
+	mockTechnologies ownedTechs;
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_light")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_heavy")).WillOnce(testing::Return(false));
+	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_heavy")).WillOnce(testing::Return(true));
+	std::ostringstream output;
+	outputMtgNavies(navies, ownedTechs, "TAG", output);
+
+	std::ostringstream expectedOutput;
+	expectedOutput << "units = {\n";
+	expectedOutput << "}\n";
+	expectedOutput << "\n";
+	expectedOutput << "instant_effect = {\n";
+	expectedOutput << "\tadd_equipment_production = {\n";
+	expectedOutput << "\t\tequipment = {\n";
+	expectedOutput << "\t\t\ttype = ship_hull_heavy_1\n";
+	expectedOutput << "\t\t\tcreator = \"TAG\"\n";
+	expectedOutput << "\t\t\tversion_name = \"Early Battleship\"\n";
+	expectedOutput << "\t\t}\n";
+	expectedOutput << "\t\trequested_factories = 8\n";
+	expectedOutput << "\t\tprogress = 0.25\n";
+	expectedOutput << "\t\tamount = 3\n";
+	expectedOutput << "\t}\n";
+	expectedOutput << "}";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
