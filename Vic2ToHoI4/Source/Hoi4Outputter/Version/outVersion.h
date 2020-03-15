@@ -8,10 +8,10 @@
 
 
 
-namespace HoI4
+namespace mappers
 {
 
-std::ostream& mappers::operator<<(std::ostream& output, const mappers::VersionParser& versionParser);
+std::ostream& operator<<(std::ostream& output, const VersionParser& versionParser);
 
 }
 
