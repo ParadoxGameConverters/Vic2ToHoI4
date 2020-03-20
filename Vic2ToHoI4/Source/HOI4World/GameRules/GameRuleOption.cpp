@@ -3,7 +3,7 @@
 
 
 
-HoI4::GameRuleOption HoI4::GameRuleOption::Parser::parseOption(std::istream& theStream)
+HoI4::GameRuleOption HoI4::GameRuleOption::Parser::parseOption(const std::string& key, std::istream& theStream)
 {
 	std::string name;
 	std::string text;
@@ -28,5 +28,5 @@ HoI4::GameRuleOption HoI4::GameRuleOption::Parser::parseOption(std::istream& the
 	});
 	parseStream(theStream);
 
-	return GameRuleOption(name, text, description, allowAchievements);
+	return GameRuleOption(key == "default", name, text, description, allowAchievements);
 }

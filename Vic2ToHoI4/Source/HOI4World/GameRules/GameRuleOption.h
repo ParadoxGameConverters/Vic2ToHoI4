@@ -16,18 +16,21 @@ class GameRuleOption
 {
   public:
 	class Parser;
-	GameRuleOption(std::string _name,
+	GameRuleOption(bool _isDefault,
+		 std::string _name,
 		 std::string _text,
 		 std::string _description,
 		 const std::optional<bool>& _allowAchievements):
-		 name(std::move(_name)),
-		 text(std::move(_text)), description(std::move(_description)), allowAchievements(_allowAchievements)
+		 isDefault(_isDefault),
+		 name(std::move(_name)), text(std::move(_text)), description(std::move(_description)),
+		 allowAchievements(_allowAchievements)
 	{
 	}
 
 	friend std::ostream& operator<<(std::ostream& output, const GameRuleOption& option);
 
   private:
+	bool isDefault = false;
 	std::string name;
 	std::string text;
 	std::string description;
@@ -38,7 +41,7 @@ class GameRuleOption
 class GameRuleOption::Parser: commonItems::parser
 {
   public:
-	GameRuleOption parseOption(std::istream& theStream);
+	GameRuleOption parseOption(const std::string& key, std::istream& theStream);
 };
 
 } // namespace HoI4

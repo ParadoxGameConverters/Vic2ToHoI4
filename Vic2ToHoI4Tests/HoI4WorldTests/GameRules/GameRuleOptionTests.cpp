@@ -7,7 +7,7 @@
 
 TEST(HoI4World_GameRules_GameRuleOptionTests, DefaultsAreEmpty)
 {
-	HoI4::GameRuleOption option("", "", "", std::nullopt);
+	HoI4::GameRuleOption option(false, "", "", "", std::nullopt);
 
 	std::stringstream output;
 	output << option;
@@ -22,9 +22,47 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, DefaultsAreEmpty)
 }
 
 
+TEST(HoI4World_GameRules_GameRuleOptionTests, DefaultCanBeSet)
+{
+	HoI4::GameRuleOption option(true, "OPTION_NAME", "", "", std::nullopt);
+
+	std::stringstream output;
+	output << option;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\tdefault = {\n";
+	expectedOutput << "\t\tname = OPTION_NAME\n";
+	expectedOutput << "\t\ttext = \n";
+	expectedOutput << "\t\tdesc = \n";
+	expectedOutput << "\t}\n";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST(HoI4World_GameRules_GameRuleOptionTests, DefaultCanBeParsed)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\t\tname = OPTION_NAME\n";
+	input << "\t}";
+	auto option = HoI4::GameRuleOption::Parser{}.parseOption("default", input);
+
+	std::stringstream output;
+	output << option;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\tdefault = {\n";
+	expectedOutput << "\t\tname = OPTION_NAME\n";
+	expectedOutput << "\t\ttext = \n";
+	expectedOutput << "\t\tdesc = \n";
+	expectedOutput << "\t}\n";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
 TEST(HoI4World_GameRules_GameRuleOptionTests, NameCanBeSet)
 {
-	HoI4::GameRuleOption option("OPTION_NAME", "", "", std::nullopt);
+	HoI4::GameRuleOption option(false, "OPTION_NAME", "", "", std::nullopt);
 
 	std::stringstream output;
 	output << option;
@@ -45,7 +83,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, NameCanBeParsed)
 	input << "= {\n";
 	input << "\t\tname = OPTION_NAME\n";
 	input << "\t}";
-	auto option = HoI4::GameRuleOption::Parser{}.parseOption(input);
+	auto option = HoI4::GameRuleOption::Parser{}.parseOption("option", input);
 
 	std::stringstream output;
 	output << option;
@@ -62,7 +100,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, NameCanBeParsed)
 
 TEST(HoI4World_GameRules_GameRuleOptionTests, TextCanBeSet)
 {
-	HoI4::GameRuleOption option("", "OPTION_TEXT", "", std::nullopt);
+	HoI4::GameRuleOption option(false, "", "OPTION_TEXT", "", std::nullopt);
 
 	std::stringstream output;
 	output << option;
@@ -83,7 +121,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, TextCanBeParsed)
 	input << "= {\n";
 	input << "\t\ttext = OPTION_TEXT\n";
 	input << "\t}";
-	auto option = HoI4::GameRuleOption::Parser{}.parseOption(input);
+	auto option = HoI4::GameRuleOption::Parser{}.parseOption("option", input);
 
 	std::stringstream output;
 	output << option;
@@ -100,7 +138,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, TextCanBeParsed)
 
 TEST(HoI4World_GameRules_GameRuleOptionTests, DescriptionCanBeSet)
 {
-	HoI4::GameRuleOption option("", "", "OPTION_DESC", std::nullopt);
+	HoI4::GameRuleOption option(false, "", "", "OPTION_DESC", std::nullopt);
 
 	std::stringstream output;
 	output << option;
@@ -121,7 +159,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, DescriptionCanBeParsed)
 	input << "= {\n";
 	input << "\t\tdesc = OPTION_DESC\n";
 	input << "\t}";
-	auto option = HoI4::GameRuleOption::Parser{}.parseOption(input);
+	auto option = HoI4::GameRuleOption::Parser{}.parseOption("option", input);
 
 	std::stringstream output;
 	output << option;
@@ -138,7 +176,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, DescriptionCanBeParsed)
 
 TEST(HoI4World_GameRules_GameRuleOptionTests, AllowAchievementsCanBeSetToYes)
 {
-	HoI4::GameRuleOption option("", "", "", true);
+	HoI4::GameRuleOption option(false, "", "", "", true);
 
 	std::stringstream output;
 	output << option;
@@ -160,7 +198,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, AllowAchievementsCanBeParsedToYes)
 	input << "= {\n";
 	input << "\t\tallow_achievements = yes\n";
 	input << "\t}";
-	auto option = HoI4::GameRuleOption::Parser{}.parseOption(input);
+	auto option = HoI4::GameRuleOption::Parser{}.parseOption("option", input);
 
 	std::stringstream output;
 	output << option;
@@ -178,7 +216,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, AllowAchievementsCanBeParsedToYes)
 
 TEST(HoI4World_GameRules_GameRuleOptionTests, AllowAchievementsCanBeSetToNo)
 {
-	HoI4::GameRuleOption option("", "", "", false);
+	HoI4::GameRuleOption option(false, "", "", "", false);
 
 	std::stringstream output;
 	output << option;
@@ -200,7 +238,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, AllowAchievementsCanBeParsedToNo)
 	input << "= {\n";
 	input << "\t\tallow_achievements = no\n";
 	input << "\t}";
-	auto option = HoI4::GameRuleOption::Parser{}.parseOption(input);
+	auto option = HoI4::GameRuleOption::Parser{}.parseOption("option", input);
 
 	std::stringstream output;
 	output << option;
