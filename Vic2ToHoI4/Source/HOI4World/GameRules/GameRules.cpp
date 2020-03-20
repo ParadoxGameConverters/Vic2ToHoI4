@@ -15,3 +15,16 @@ HoI4::GameRules HoI4::GameRules::Parser::parseRulesFile(const std::string& filen
 
 	return GameRules(rules);
 }
+
+
+void HoI4::GameRules::updateRules()
+{
+	std::regex aiBehaviorRegex{"[A-Z]{3}_ai_behavior"};
+	gameRules.erase(std::remove_if(gameRules.begin(),
+							  gameRules.end(),
+							  [aiBehaviorRegex](auto& rule) {
+								  std::smatch matchResults;
+								  return std::regex_match(rule.getKey(), matchResults, aiBehaviorRegex);
+							  }),
+		 gameRules.end());
+}

@@ -35,5 +35,15 @@ TEST(HoI4World_GameRules_GameRulesTests, RulesCanBeParsed)
 	const HoI4::GameRules rules = HoI4::GameRules::Parser{}.parseRulesFile("GameRules.txt");
 
 	const auto& theRules = rules.getGameRules();
+	ASSERT_EQ(3, theRules.size());
+}
+
+
+TEST(HoI4World_GameRules_GameRulesTests, RulesCanBeRemoved)
+{
+	HoI4::GameRules rules = HoI4::GameRules::Parser{}.parseRulesFile("GameRules.txt");
+	rules.updateRules();
+
+	const auto& theRules = rules.getGameRules();
 	ASSERT_EQ(2, theRules.size());
 }

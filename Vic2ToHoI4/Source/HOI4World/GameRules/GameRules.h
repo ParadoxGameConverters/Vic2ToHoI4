@@ -21,6 +21,8 @@ class GameRules
 
 	[[nodiscard]] const auto& getGameRules() const { return gameRules; }
 
+	void updateRules();
+
   private:
 	std::vector<GameRule> gameRules;
 };

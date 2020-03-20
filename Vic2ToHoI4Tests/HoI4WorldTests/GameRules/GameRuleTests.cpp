@@ -34,6 +34,7 @@ TEST(HoI4World_GameRules_GameRuleTests, KeyCanBeSet)
 	expectedOutput << "\tgroup = \"\"\n";
 	expectedOutput << "}\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
+	ASSERT_EQ("test_rule", rule.getKey());
 }
 
 
@@ -51,6 +52,7 @@ TEST(HoI4World_GameRules_GameRuleTests, KeyCanBeParsed)
 	expectedOutput << "\tgroup = \"\"\n";
 	expectedOutput << "}\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
+	ASSERT_EQ("test_rule", rule.getKey());
 }
 
 

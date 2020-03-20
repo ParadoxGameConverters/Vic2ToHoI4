@@ -33,6 +33,8 @@ class GameRule
 
 	friend std::ostream& operator<<(std::ostream& output, const GameRule& rule);
 
+	[[nodiscard]] const auto& getKey() const { return key; }
+
   private:
 	std::string key;
 	std::string name;
