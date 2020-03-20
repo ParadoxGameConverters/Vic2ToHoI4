@@ -27,4 +27,13 @@ void HoI4::GameRules::updateRules()
 								  return std::regex_match(rule.getKey(), matchResults, aiBehaviorRegex);
 							  }),
 		 gameRules.end());
+
+	std::regex fragmentationStatusRegex{"[a-z]{3}_fragmentation_status"};
+	gameRules.erase(std::remove_if(gameRules.begin(),
+							  gameRules.end(),
+							  [fragmentationStatusRegex](auto& rule) {
+								  std::smatch matchResults;
+								  return std::regex_match(rule.getKey(), matchResults, fragmentationStatusRegex);
+							  }),
+		 gameRules.end());
 }
