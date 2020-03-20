@@ -22,7 +22,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, DefaultsAreEmpty)
 }
 
 
-TEST(HoI4World_GameRules_GameRuleOptionTests, DefaultCanBeSet)
+TEST(HoI4World_GameRules_GameRuleOptionTests, IsDefaultCanBeSet)
 {
 	HoI4::GameRuleOption option(true, "OPTION_NAME", "", "", std::nullopt);
 
@@ -39,7 +39,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, DefaultCanBeSet)
 }
 
 
-TEST(HoI4World_GameRules_GameRuleOptionTests, DefaultCanBeParsed)
+TEST(HoI4World_GameRules_GameRuleOptionTests, IsDefaultCanBeParsed)
 {
 	std::stringstream input;
 	input << "= {\n";

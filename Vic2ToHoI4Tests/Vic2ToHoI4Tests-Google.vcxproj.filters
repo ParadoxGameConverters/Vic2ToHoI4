@@ -812,6 +812,15 @@
     <ClCompile Include="HoI4WorldTests\GameRules\GameRuleOptionTests.cpp">
       <Filter>HoI4WorldTests\GameRules</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\GameRules\GameRuleTests.cpp">
+      <Filter>HoI4WorldTests\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\GameRules\GameRule.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\GameRules\OutGameRule.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\GameRules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

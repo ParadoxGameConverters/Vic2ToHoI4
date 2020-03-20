@@ -1,5 +1,5 @@
-#ifndef GAME_RULE_OPTION
-#define GAME_RULE_OPTION
+#ifndef GAME_RULE_OPTION_H
+#define GAME_RULE_OPTION_H
 
 
 
@@ -48,4 +48,4 @@ class GameRuleOption::Parser: commonItems::parser
 
 
 
-#endif // GAME_RULE_OPTION
+#endif // GAME_RULE_OPTION_H
