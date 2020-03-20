@@ -23,7 +23,7 @@ class GameRule
 		 std::string _name,
 		 std::optional<std::string> _requiredDlc,
 		 std::string _group,
-		 std::string _icon,
+		 std::optional<std::string> _icon,
 		 std::vector<GameRuleOption> _options):
 		 key(std::move(_key)),
 		 name(std::move(_name)), requiredDlc(std::move(_requiredDlc)), group(std::move(_group)), icon(std::move(_icon)),
@@ -38,7 +38,7 @@ class GameRule
 	std::string name;
 	std::optional<std::string> requiredDlc;
 	std::string group;
-	std::string icon;
+	std::optional<std::string> icon;
 	std::vector<GameRuleOption> options;
 };
 

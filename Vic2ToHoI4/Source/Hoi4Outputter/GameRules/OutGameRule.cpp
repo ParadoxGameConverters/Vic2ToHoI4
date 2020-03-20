@@ -11,7 +11,10 @@ std::ostream& HoI4::operator<<(std::ostream& output, const HoI4::GameRule& rule)
 		output << "\trequired_dlc = \"" << *rule.requiredDlc << "\"\n";
 	}
 	output << "\tgroup = \"" << rule.group << "\"\n";
-	output << "\ticon = \"" << rule.icon << "\"\n";
+	if (rule.icon)
+	{
+		output << "\ticon = \"" << *rule.icon << "\"\n";
+	}
 	for (const auto& option: rule.options)
 	{
 		output << option;

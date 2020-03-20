@@ -8,7 +8,7 @@ HoI4::GameRule HoI4::GameRule::Parser::parseRule(const std::string& key, std::is
 	std::string name;
 	std::optional<std::string> requiredDlc;
 	std::string group;
-	std::string icon;
+	std::optional<std::string> icon;
 	std::vector<GameRuleOption> options;
 
 	registerKeyword("name", [&name](const std::string& unused, std::istream& theStream) {

@@ -7,7 +7,7 @@
 
 TEST(HoI4World_GameRules_GameRuleTests, DefaultsAreEmpty)
 {
-	HoI4::GameRule rule("", "", std::nullopt, "", "", std::vector<HoI4::GameRuleOption>{});
+	HoI4::GameRule rule("", "", std::nullopt, "", std::nullopt, std::vector<HoI4::GameRuleOption>{});
 
 	std::stringstream output;
 	output << rule;
@@ -16,7 +16,6 @@ TEST(HoI4World_GameRules_GameRuleTests, DefaultsAreEmpty)
 	expectedOutput << " = {\n";
 	expectedOutput << "\tname = \"\"\n";
 	expectedOutput << "\tgroup = \"\"\n";
-	expectedOutput << "\ticon = \"\"\n";
 	expectedOutput << "}\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -24,7 +23,7 @@ TEST(HoI4World_GameRules_GameRuleTests, DefaultsAreEmpty)
 
 TEST(HoI4World_GameRules_GameRuleTests, KeyCanBeSet)
 {
-	HoI4::GameRule rule("test_rule", "", std::nullopt, "", "", std::vector<HoI4::GameRuleOption>{});
+	HoI4::GameRule rule("test_rule", "", std::nullopt, "", std::nullopt, std::vector<HoI4::GameRuleOption>{});
 
 	std::stringstream output;
 	output << rule;
@@ -33,7 +32,6 @@ TEST(HoI4World_GameRules_GameRuleTests, KeyCanBeSet)
 	expectedOutput << "test_rule = {\n";
 	expectedOutput << "\tname = \"\"\n";
 	expectedOutput << "\tgroup = \"\"\n";
-	expectedOutput << "\ticon = \"\"\n";
 	expectedOutput << "}\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -51,7 +49,6 @@ TEST(HoI4World_GameRules_GameRuleTests, KeyCanBeParsed)
 	expectedOutput << "test_rule = {\n";
 	expectedOutput << "\tname = \"\"\n";
 	expectedOutput << "\tgroup = \"\"\n";
-	expectedOutput << "\ticon = \"\"\n";
 	expectedOutput << "}\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -59,7 +56,7 @@ TEST(HoI4World_GameRules_GameRuleTests, KeyCanBeParsed)
 
 TEST(HoI4World_GameRules_GameRuleTests, NameCanBeSet)
 {
-	HoI4::GameRule rule("", "RULE_TEST", std::nullopt, "", "", std::vector<HoI4::GameRuleOption>{});
+	HoI4::GameRule rule("", "RULE_TEST", std::nullopt, "", std::nullopt, std::vector<HoI4::GameRuleOption>{});
 
 	std::stringstream output;
 	output << rule;
@@ -68,7 +65,6 @@ TEST(HoI4World_GameRules_GameRuleTests, NameCanBeSet)
 	expectedOutput << " = {\n";
 	expectedOutput << "\tname = \"RULE_TEST\"\n";
 	expectedOutput << "\tgroup = \"\"\n";
-	expectedOutput << "\ticon = \"\"\n";
 	expectedOutput << "}\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -89,7 +85,6 @@ TEST(HoI4World_GameRules_GameRuleTests, NameCanBeParsed)
 	expectedOutput << " = {\n";
 	expectedOutput << "\tname = \"RULE_TEST\"\n";
 	expectedOutput << "\tgroup = \"\"\n";
-	expectedOutput << "\ticon = \"\"\n";
 	expectedOutput << "}\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -97,7 +92,7 @@ TEST(HoI4World_GameRules_GameRuleTests, NameCanBeParsed)
 
 TEST(HoI4World_GameRules_GameRuleTests, RequiredDlcCanBeSet)
 {
-	HoI4::GameRule rule("", "", "Test Required DLC", "", "", std::vector<HoI4::GameRuleOption>{});
+	HoI4::GameRule rule("", "", "Test Required DLC", "", std::nullopt, std::vector<HoI4::GameRuleOption>{});
 
 	std::stringstream output;
 	output << rule;
@@ -107,7 +102,6 @@ TEST(HoI4World_GameRules_GameRuleTests, RequiredDlcCanBeSet)
 	expectedOutput << "\tname = \"\"\n";
 	expectedOutput << "\trequired_dlc = \"Test Required DLC\"\n";
 	expectedOutput << "\tgroup = \"\"\n";
-	expectedOutput << "\ticon = \"\"\n";
 	expectedOutput << "}\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -129,7 +123,6 @@ TEST(HoI4World_GameRules_GameRuleTests, RequiredDlcCanBeParsed)
 	expectedOutput << "\tname = \"\"\n";
 	expectedOutput << "\trequired_dlc = \"Test Required DLC\"\n";
 	expectedOutput << "\tgroup = \"\"\n";
-	expectedOutput << "\ticon = \"\"\n";
 	expectedOutput << "}\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -137,7 +130,7 @@ TEST(HoI4World_GameRules_GameRuleTests, RequiredDlcCanBeParsed)
 
 TEST(HoI4World_GameRules_GameRuleTests, GroupCanBeSet)
 {
-	HoI4::GameRule rule("", "", std::nullopt, "RULE_GROUP_TEST", "", std::vector<HoI4::GameRuleOption>{});
+	HoI4::GameRule rule("", "", std::nullopt, "RULE_GROUP_TEST", std::nullopt, std::vector<HoI4::GameRuleOption>{});
 
 	std::stringstream output;
 	output << rule;
@@ -146,7 +139,6 @@ TEST(HoI4World_GameRules_GameRuleTests, GroupCanBeSet)
 	expectedOutput << " = {\n";
 	expectedOutput << "\tname = \"\"\n";
 	expectedOutput << "\tgroup = \"RULE_GROUP_TEST\"\n";
-	expectedOutput << "\ticon = \"\"\n";
 	expectedOutput << "}\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -167,7 +159,6 @@ TEST(HoI4World_GameRules_GameRuleTests, GroupCanBeParsed)
 	expectedOutput << " = {\n";
 	expectedOutput << "\tname = \"\"\n";
 	expectedOutput << "\tgroup = \"RULE_GROUP_TEST\"\n";
-	expectedOutput << "\ticon = \"\"\n";
 	expectedOutput << "}\n";
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }
@@ -217,7 +208,7 @@ TEST(HoI4World_GameRules_GameRuleTests, OptionsCanBeSet)
 		 "",
 		 std::nullopt,
 		 "",
-		 "",
+		 std::nullopt,
 		 std::vector<HoI4::GameRuleOption>{HoI4::GameRuleOption{false, "", "", "", std::nullopt},
 			  HoI4::GameRuleOption{true, "", "", "", std::nullopt}});
 
@@ -228,7 +219,6 @@ TEST(HoI4World_GameRules_GameRuleTests, OptionsCanBeSet)
 	expectedOutput << " = {\n";
 	expectedOutput << "\tname = \"\"\n";
 	expectedOutput << "\tgroup = \"\"\n";
-	expectedOutput << "\ticon = \"\"\n";
 	expectedOutput << "\toption = {\n";
 	expectedOutput << "\t\tname = \n";
 	expectedOutput << "\t\ttext = \n";
@@ -248,7 +238,6 @@ TEST(HoI4World_GameRules_GameRuleTests, OptionsCanBeParsed)
 {
 	std::stringstream input;
 	input << " = {\n";
-	input << "\ticon = \"\"\n";
 	input << "\toption= {\n";
 	input << "\t}";
 	input << "\tdefault= {\n";
@@ -263,7 +252,6 @@ TEST(HoI4World_GameRules_GameRuleTests, OptionsCanBeParsed)
 	expectedOutput << " = {\n";
 	expectedOutput << "\tname = \"\"\n";
 	expectedOutput << "\tgroup = \"\"\n";
-	expectedOutput << "\ticon = \"\"\n";
 	expectedOutput << "\toption = {\n";
 	expectedOutput << "\t\tname = \n";
 	expectedOutput << "\t\ttext = \n";
