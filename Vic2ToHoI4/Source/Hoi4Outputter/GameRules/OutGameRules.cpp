@@ -5,7 +5,7 @@
 
 void HoI4::outputGameRules(const HoI4::GameRules& rules, const Configuration& theConfiguration)
 {
-	std::ofstream rulesFile("output/" + theConfiguration.getOutputName() + "/common/game_rules/convertedIdeas.txt");
+	std::ofstream rulesFile("output/" + theConfiguration.getOutputName() + "/common/game_rules/00_game_rules.txt");
 
 	for (const auto& rule: rules.getGameRules())
 	{

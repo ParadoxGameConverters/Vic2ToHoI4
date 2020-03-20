@@ -38,6 +38,7 @@
 #include "../Hoi4Outputter/Hoi4CountryOutputter.h"
 #include "../Hoi4Outputter/Decisions/DecisionsOutputter.h"
 #include "../Hoi4Outputter/Diplomacy/OutAiPeaces.h"
+#include "../Hoi4Outputter/GameRules/OutGameRules.h"
 #include "../Hoi4Outputter/Events/EventsOutputter.h"
 #include "../Hoi4Outputter/Ideas/OutIdeas.h"
 #include "../Hoi4Outputter/Map/OutBuildings.h"
@@ -125,6 +126,8 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	calculateSpherelingAutonomy();
 	scriptedTriggers.importScriptedTriggers(theConfiguration);
 	updateScriptedTriggers(scriptedTriggers, ideologies->getMajorIdeologies());
+
+	gameRules = std::make_unique<GameRules>(GameRules::Parser{}.parseRulesFile(theConfiguration.getHoI4Path() + "/common/game_rules/00_game_rules.txt"));
 }
 
 
@@ -1013,6 +1016,7 @@ void HoI4::World::output()
 	outputScriptedLocalisations(theConfiguration, scriptedLocalisations);
 	outputScriptedTriggers(scriptedTriggers, theConfiguration);
 	outputDifficultySettings(greatPowers, theConfiguration);
+	outputGameRules(*gameRules, theConfiguration);
 }
 
 

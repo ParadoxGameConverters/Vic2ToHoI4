@@ -5,6 +5,7 @@
 
 #include "Decisions/Decisions.h"
 #include "Diplomacy/AIPeaces.h"
+#include "GameRules/GameRules.h"
 #include "Ideas/Ideas.h"
 #include "Leaders/Advisor.h"
 #include "Map/CoastalProvinces.h"
@@ -219,6 +220,8 @@ class World: commonItems::parser
 
 		ScriptedLocalisations scriptedLocalisations;
 		ScriptedTriggers scriptedTriggers;
+
+		std::unique_ptr<GameRules> gameRules;
 };
 
 }
