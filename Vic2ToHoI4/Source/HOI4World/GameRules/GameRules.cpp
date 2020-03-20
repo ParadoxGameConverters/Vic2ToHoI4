@@ -36,4 +36,13 @@ void HoI4::GameRules::updateRules()
 								  return std::regex_match(rule.getKey(), matchResults, fragmentationStatusRegex);
 							  }),
 		 gameRules.end());
+
+	std::regex colonizationStatusRegex{"[a-z]+_colonization_status"};
+	gameRules.erase(std::remove_if(gameRules.begin(),
+							  gameRules.end(),
+							  [colonizationStatusRegex](auto& rule) {
+								  std::smatch matchResults;
+								  return std::regex_match(rule.getKey(), matchResults, colonizationStatusRegex);
+							  }),
+		 gameRules.end());
 }

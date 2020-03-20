@@ -6,3 +6,5 @@ ABC_ai_behavior = {
 }
 abc_fragmentation_status = {
 }
+continent_colonization_status = {
+}

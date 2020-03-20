@@ -35,7 +35,7 @@ TEST(HoI4World_GameRules_GameRulesTests, RulesCanBeParsed)
 	const HoI4::GameRules rules = HoI4::GameRules::Parser{}.parseRulesFile("GameRules.txt");
 
 	const auto& theRules = rules.getGameRules();
-	ASSERT_EQ(4, theRules.size());
+	ASSERT_EQ(5, theRules.size());
 }
 
 
