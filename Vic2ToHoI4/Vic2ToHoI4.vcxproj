@@ -202,6 +202,7 @@
     <ClCompile Include="Source\Hoi4Outputter\Events\EventsOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\GameRules\OutGameRule.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\GameRules\OutGameRuleOption.cpp" />
+    <ClCompile Include="Source\Hoi4Outputter\GameRules\OutGameRules.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Hoi4CountryOutputter.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdea.cpp" />
     <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdeaGroup.cpp" />
@@ -267,6 +268,7 @@
     <ClCompile Include="Source\HOI4World\Events\GovernmentInExileEvent.cpp" />
     <ClCompile Include="Source\HOI4World\GameRules\GameRule.cpp" />
     <ClCompile Include="Source\HOI4World\GameRules\GameRuleOption.cpp" />
+    <ClCompile Include="Source\HOI4World\GameRules\GameRules.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Country.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Focus.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4FocusTree.cpp" />
@@ -402,6 +404,7 @@
     <ClInclude Include="Source\Hoi4Outputter\Events\EventsOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\GameRules\OutGameRule.h" />
     <ClInclude Include="Source\Hoi4Outputter\GameRules\OutGameRuleOption.h" />
+    <ClInclude Include="Source\Hoi4Outputter\GameRules\OutGameRules.h" />
     <ClInclude Include="Source\Hoi4Outputter\Hoi4CountryOutputter.h" />
     <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdea.h" />
     <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdeaGroup.h" />
@@ -467,6 +470,7 @@
     <ClInclude Include="Source\HOI4World\Events\GovernmentInExileEvent.h" />
     <ClInclude Include="Source\HOI4World\GameRules\GameRule.h" />
     <ClInclude Include="Source\HOI4World\GameRules\GameRuleOption.h" />
+    <ClInclude Include="Source\HOI4World\GameRules\GameRules.h" />
     <ClInclude Include="Source\HOI4World\HoI4Country.h" />
     <ClInclude Include="Source\HOI4World\HoI4Focus.h" />
     <ClInclude Include="Source\HOI4World\HoI4FocusTree.h" />

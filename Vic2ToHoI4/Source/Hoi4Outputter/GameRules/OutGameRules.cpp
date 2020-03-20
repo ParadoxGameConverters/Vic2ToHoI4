@@ -1,0 +1,16 @@
+#include "OutGameRules.h"
+#include <fstream>
+
+
+
+void HoI4::outputGameRules(const HoI4::GameRules& rules, const Configuration& theConfiguration)
+{
+	std::ofstream rulesFile("output/" + theConfiguration.getOutputName() + "/common/game_rules/convertedIdeas.txt");
+
+	for (const auto& rule: rules.getGameRules())
+	{
+		rulesFile << rule;
+	}
+
+	rulesFile.close();
+}

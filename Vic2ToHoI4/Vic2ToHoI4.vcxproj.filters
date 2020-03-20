@@ -717,6 +717,12 @@
     <ClCompile Include="Source\Hoi4Outputter\GameRules\OutGameRule.cpp">
       <Filter>Hoi4Outputter\GameRules</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\GameRules\GameRules.cpp">
+      <Filter>HoI4World\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\GameRules\OutGameRules.cpp">
+      <Filter>Hoi4Outputter\GameRules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1343,6 +1349,12 @@
       <Filter>HoI4World\GameRules</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\GameRules\OutGameRule.h">
+      <Filter>Hoi4Outputter\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\GameRules\GameRules.h">
+      <Filter>HoI4World\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\GameRules\OutGameRules.h">
       <Filter>Hoi4Outputter\GameRules</Filter>
     </ClInclude>
   </ItemGroup>
