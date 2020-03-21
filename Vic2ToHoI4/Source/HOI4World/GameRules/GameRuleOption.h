@@ -16,7 +16,7 @@ class GameRuleOption
 {
   public:
 	class Parser;
-	GameRuleOption(bool _isDefault,
+	GameRuleOption(const bool _isDefault,
 		 std::string _name,
 		 std::string _text,
 		 std::string _description,

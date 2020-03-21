@@ -2,7 +2,7 @@
 
 
 
-std::ostream& HoI4::operator<<(std::ostream& output, const HoI4::GameRule& rule)
+std::ostream& HoI4::operator<<(std::ostream& output, const GameRule& rule)
 {
 	output << rule.key << " = {\n";
 	output << "\tname = \"" << rule.name << "\"\n";

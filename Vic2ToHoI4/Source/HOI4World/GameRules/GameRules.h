@@ -17,7 +17,7 @@ class GameRules
 {
   public:
 	class Parser;
-	GameRules(std::vector<GameRule> _gameRules): gameRules(std::move(_gameRules)) {}
+	explicit GameRules(std::vector<GameRule> _gameRules): gameRules(std::move(_gameRules)) {}
 
 	[[nodiscard]] const auto& getGameRules() const { return gameRules; }
 

@@ -3,7 +3,7 @@
 
 
 
-void HoI4::outputGameRules(const HoI4::GameRules& rules, const Configuration& theConfiguration)
+void HoI4::outputGameRules(const GameRules& rules, const Configuration& theConfiguration)
 {
 	std::ofstream rulesFile("output/" + theConfiguration.getOutputName() + "/common/game_rules/00_game_rules.txt");
 

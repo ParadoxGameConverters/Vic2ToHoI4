@@ -2,7 +2,7 @@
 
 
 
-std::ostream& HoI4::operator<<(std::ostream& output, const HoI4::GameRuleOption& option)
+std::ostream& HoI4::operator<<(std::ostream& output, const GameRuleOption& option)
 {
 	if (option.isDefault)
 	{
