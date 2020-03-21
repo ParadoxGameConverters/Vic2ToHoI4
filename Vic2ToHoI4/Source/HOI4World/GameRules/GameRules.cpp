@@ -1,4 +1,5 @@
 #include "GameRules.h"
+#include "ParserHelpers.h"
 
 
 
@@ -10,7 +11,7 @@ HoI4::GameRules HoI4::GameRules::Parser::parseRulesFile(const std::string& filen
 		const GameRule rule = GameRule::Parser{}.parseRule(ruleKey, theStream);
 		rules.push_back(rule);
 	});
-
+	registerRegex("[a-zA-Z0-9]+", commonItems::ignoreItem);
 	parseFile(filename);
 
 	return GameRules(rules);
