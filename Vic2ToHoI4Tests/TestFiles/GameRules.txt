@@ -1,0 +1,10 @@
+rule_1 = {
+}
+rule_2 = {
+}
+ABC_ai_behavior = {
+}
+abc_fragmentation_status = {
+}
+continent_colonization_status = {
+}

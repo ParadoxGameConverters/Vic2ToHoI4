@@ -127,6 +127,12 @@
     <Filter Include="Hoi4Outputter\Version">
       <UniqueIdentifier>{c0a59499-5a02-42d7-aca3-ac699087bab8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\GameRules">
+      <UniqueIdentifier>{86be07e0-2152-44da-8224-d6336c3f4257}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Hoi4Outputter\GameRules">
+      <UniqueIdentifier>{689b88ea-3de7-4920-8b8d-3876eadee40e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -698,6 +704,24 @@
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Version\outVersion.cpp">
       <Filter>Hoi4Outputter\Version</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\GameRules\GameRuleOption.cpp">
+      <Filter>HoI4World\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\GameRules\OutGameRuleOption.cpp">
+      <Filter>Hoi4Outputter\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\GameRules\GameRule.cpp">
+      <Filter>HoI4World\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\GameRules\OutGameRule.cpp">
+      <Filter>Hoi4Outputter\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\GameRules\GameRules.cpp">
+      <Filter>HoI4World\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\GameRules\OutGameRules.cpp">
+      <Filter>Hoi4Outputter\GameRules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1314,6 +1338,24 @@
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Version\outVersion.h">
       <Filter>Hoi4Outputter\Version</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\GameRules\GameRuleOption.h">
+      <Filter>HoI4World\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\GameRules\OutGameRuleOption.h">
+      <Filter>Hoi4Outputter\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\GameRules\GameRule.h">
+      <Filter>HoI4World\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\GameRules\OutGameRule.h">
+      <Filter>Hoi4Outputter\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\GameRules\GameRules.h">
+      <Filter>HoI4World\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\GameRules\OutGameRules.h">
+      <Filter>Hoi4Outputter\GameRules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

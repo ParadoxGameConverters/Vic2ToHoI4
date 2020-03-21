@@ -803,6 +803,33 @@
     <ClCompile Include="HoI4WorldTests\ShipTypes\ShipUpgradesTests.cpp">
       <Filter>HoI4WorldTests\ShipTypes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\GameRules\OutGameRuleOption.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\GameRules\GameRuleOption.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\GameRules\GameRuleOptionTests.cpp">
+      <Filter>HoI4WorldTests\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\GameRules\GameRuleTests.cpp">
+      <Filter>HoI4WorldTests\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\GameRules\GameRule.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\GameRules\OutGameRule.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\GameRules\OutGameRules.cpp">
+      <Filter>Vic2ToHoI4 files\Hoi4Outputter\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\GameRules\GameRules.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\GameRules\GameRulesTests.cpp">
+      <Filter>HoI4WorldTests\GameRules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -976,6 +1003,18 @@
     <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Ideologies">
       <UniqueIdentifier>{3f760eb7-1c8d-4ebd-acef-73a1b4ba95b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\GameRules">
+      <UniqueIdentifier>{3fc7f5ac-1916-4287-b36b-150e2ffb56fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\GameRules">
+      <UniqueIdentifier>{f5160324-48a3-4be0-aa47-e46e0c74cd23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\GameRules">
+      <UniqueIdentifier>{d97d3806-5bbe-4519-a8cd-40c8ceb5ecf1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles">
+      <UniqueIdentifier>{89fd2637-c5e8-43c6-a0cb-e58df4a6b60e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1017,5 +1056,13 @@
     <ClInclude Include="Mocks\CoastalProvincesMock.h">
       <Filter>Mocks</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TestFiles\GameRulesTestsEmpty.txt">
+      <Filter>TestFiles</Filter>
+    </Text>
+    <Text Include="TestFiles\GameRules.txt">
+      <Filter>TestFiles</Filter>
+    </Text>
   </ItemGroup>
 </Project>

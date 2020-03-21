@@ -65,6 +65,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventOptionOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventsOutputter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\GameRules\OutGameRule.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\GameRules\OutGameRuleOption.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\GameRules\OutGameRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Hoi4CountryOutputter.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdea.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdeaGroup.cpp" />
@@ -127,6 +130,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventsFile.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\GenericEventUpdater.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\GovernmentInExileEvent.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\GameRules\GameRule.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\GameRules\GameRuleOption.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\GameRules\GameRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Country.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Focus.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4FocusTree.cpp" />
@@ -244,6 +250,9 @@
     <ClCompile Include="HoI4WorldTests\Events\EventOptionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Events\EventsFileTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Events\EventTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\GameRules\GameRuleOptionTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\GameRules\GameRulesTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\GameRules\GameRuleTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideas\IdeaGroupTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideas\IdeaTests.cpp" />
@@ -334,6 +343,12 @@
     <ClInclude Include="Mocks\StateCategoriesMock.h" />
     <ClInclude Include="Mocks\Vic2CountryMock.h" />
     <ClInclude Include="Mocks\Vic2WorldMock.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\GameRulesEmpty.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\GameRules.txt" />
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
