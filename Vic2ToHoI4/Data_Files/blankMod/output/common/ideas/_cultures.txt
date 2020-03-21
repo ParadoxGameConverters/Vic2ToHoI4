@@ -2976,4 +2976,5 @@ ideas = {
 			picture = culture_meashighcaw
 			modifier = { }
 		}
+	}
 }
