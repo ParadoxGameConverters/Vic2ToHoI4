@@ -121,7 +121,7 @@ void HoI4::OnActions::output(const std::set<std::string>& majorIdeologies) const
 
 	onActionsFile << "	on_justifying_wargoal_pulse = {\n";
 	onActionsFile << "		random_events = {\n";
-	for (unsigned int i = 1; i < (majorIdeologies.size() * majorIdeologies.size()); i++)
+	for (unsigned int i = 17; i < (majorIdeologies.size() * majorIdeologies.size() + 4 + 17); i++)
 	{
 		onActionsFile << "			100 = war_justification." << i << "\n";
 	}
