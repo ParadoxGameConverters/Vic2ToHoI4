@@ -375,7 +375,9 @@ void HoI4::updateGenericEventTwo(Event& eventTwo, const std::set<std::string>& m
 }
 
 
-void HoI4::updateGenericEventsThreeFourAndSix(Event& event, const int eventNum, const std::set<std::string>& majorIdeologies)
+void HoI4::updateGenericEventsThreeFourAndSix(Event& event,
+	 const int eventNum,
+	 const std::set<std::string>& majorIdeologies)
 {
 	event.clearOptions();
 	if (majorIdeologies.count("democratic"))
@@ -470,6 +472,7 @@ void HoI4::updateGenericEventsThreeFourAndSix(Event& event, const int eventNum, 
 			 "\n"
 			 "\t\t\t\t}\n";
 	}
+	trigger += "\t\t\t}";
 	option.giveTrigger(std::move(trigger));
 
 	event.giveOption(std::move(option));
@@ -806,7 +809,7 @@ void HoI4::updateGenericEventFive(Event& eventFive, const std::set<std::string>&
 	bothDifferent.giveScriptBlock(
 		 "FROM = {\n"
 		 "\t\t\tadd_to_faction = ROOT\n"
-		 "\t\t\tcountry_event = { id = generic.6 hours = 6 } }\n"
+		 "\t\t\tcountry_event = { id = generic.6 hours = 6 }\n"
 		 "\t\t}");
 	bothDifferent.giveHiddenEffect(
 		 "= {\n"
@@ -989,6 +992,7 @@ void HoI4::updateGenericEventSeven(Event& eventSeven, const std::set<std::string
 			 "\n"
 			 "\t\t\t\t}\n";
 	}
+	trigger += "\t\t\t}";
 	option.giveTrigger(std::move(trigger));
 
 	eventSeven.giveOption(std::move(option));

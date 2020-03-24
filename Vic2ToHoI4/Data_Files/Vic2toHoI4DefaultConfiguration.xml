@@ -123,7 +123,7 @@
 					</preference>
 					<preference>
 						<name>debug</name>
-						<friendlyName>Debug?</friendlyName>
+						<friendlyName>Debug (for test/development only)</friendlyName>
 						<description>Whether or not to output a debug mod</description>
 						<entryOptions>
 							<entryOption>

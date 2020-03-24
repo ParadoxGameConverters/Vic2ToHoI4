@@ -1026,16 +1026,16 @@ std::string HoI4::Events::getIdeologicalPicture(const std::string& ideology)
 
 void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& majorIdeologies)
 {
-	auto i = 1;
+	auto eventNum = 21;
 	for (const auto& majorIdeology: majorIdeologies)
 	{
 		for (const auto& majorIdeology2: majorIdeologies)
 		{
 			Event warJustification;
 			warJustification.giveType("country_event");
-			warJustification.giveId("war_justification." + std::to_string(i));
-			warJustification.giveTitle("war_justification." + std::to_string(i) + ".t");
-			warJustification.giveDescription("= war_justification." + std::to_string(i) + ".d");
+			warJustification.giveId("war_justification." + std::to_string(eventNum));
+			warJustification.giveTitle("war_justification." + std::to_string(eventNum) + ".t");
+			warJustification.giveDescription("= war_justification." + std::to_string(eventNum) + ".d");
 			warJustification.givePicture("GFX_report_event_iww_demonstration");
 			warJustification.setTriggeredOnly();
 			std::string trigger = "= {\n";
@@ -1045,9 +1045,9 @@ void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& maj
 			trigger += "\t}";
 			warJustification.giveTrigger(std::move(trigger));
 			EventOption option;
-			option.giveName("war_justification." + std::to_string(i) + ".a");
+			option.giveName("war_justification." + std::to_string(eventNum) + ".a");
 			option.giveScriptBlock(
-				 "FROM = { country_event = { id = war_justification." + std::to_string(i + 200) + " } }");
+				 "FROM = { country_event = { id = war_justification." + std::to_string(eventNum + 200) + " } }");
 			option.giveScriptBlock("set_country_flag = war_justification_last_event_political");
 			option.giveScriptBlock("clr_country_flag = war_justification_last_event_generic");
 			option.giveScriptBlock("clr_country_flag = war_justification_last_event_neighbor");
@@ -1056,31 +1056,31 @@ void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& maj
 			warJustification.giveOption(std::move(option));
 			warJustificationEvents.push_back(warJustification);
 			HoI4Localisation::copyEventLocalisations("war_justification." + majorIdeology + majorIdeology2 + ".t",
-				 "war_justification." + std::to_string(i) + ".t");
+				 "war_justification." + std::to_string(eventNum) + ".t");
 			HoI4Localisation::copyEventLocalisations("war_justification." + majorIdeology + majorIdeology2 + ".d",
-				 "war_justification." + std::to_string(i) + ".d");
+				 "war_justification." + std::to_string(eventNum) + ".d");
 			HoI4Localisation::copyEventLocalisations("war_justification." + majorIdeology + majorIdeology2 + ".a",
-				 "war_justification." + std::to_string(i) + ".a");
+				 "war_justification." + std::to_string(eventNum) + ".a");
 
 			Event warJustification2;
 			warJustification2.giveType("country_event");
-			warJustification2.giveId("war_justification." + std::to_string(200 + i));
-			warJustification2.giveTitle("war_justification." + std::to_string(200 + i) + ".t");
-			warJustification2.giveDescription("= war_justification." + std::to_string(200 + i) + ".d");
+			warJustification2.giveId("war_justification." + std::to_string(200 + eventNum));
+			warJustification2.giveTitle("war_justification." + std::to_string(200 + eventNum) + ".t");
+			warJustification2.giveDescription("= war_justification." + std::to_string(200 + eventNum) + ".d");
 			warJustification2.givePicture("GFX_report_event_iww_demonstration");
 			warJustification2.setTriggeredOnly();
 			EventOption option2;
-			option2.giveName("war_justification." + std::to_string(200 + i) + ".a");
+			option2.giveName("war_justification." + std::to_string(200 + eventNum) + ".a");
 			warJustification2.giveOption(std::move(option2));
 			warJustificationEvents.push_back(warJustification2);
 			HoI4Localisation::copyEventLocalisations("war_justification." + majorIdeology + majorIdeology2 + "200.t",
-				 "war_justification." + std::to_string(200 + i) + ".t");
+				 "war_justification." + std::to_string(200 + eventNum) + ".t");
 			HoI4Localisation::copyEventLocalisations("war_justification." + majorIdeology + majorIdeology2 + "200.d",
-				 "war_justification." + std::to_string(200 + i) + ".d");
+				 "war_justification." + std::to_string(200 + eventNum) + ".d");
 			HoI4Localisation::copyEventLocalisations("war_justification." + majorIdeology + majorIdeology2 + "200.a",
-				 "war_justification." + std::to_string(200 + i) + ".a");
+				 "war_justification." + std::to_string(200 + eventNum) + ".a");
 
-			i++;
+			eventNum++;
 		}
 	}
 

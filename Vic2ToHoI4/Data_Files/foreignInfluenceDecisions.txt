@@ -97,7 +97,7 @@ foreign_influence = {
 		}
 	}
 	
-	dictatorship = {
+	dictatorship_decision = {
 
 		icon = generic_prepare_civil_war
 		

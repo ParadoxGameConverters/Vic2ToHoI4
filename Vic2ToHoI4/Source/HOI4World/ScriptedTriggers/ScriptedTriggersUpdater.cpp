@@ -236,7 +236,6 @@ std::string getHasExcessiveArmySizeBody(const std::set<std::string>& majorIdeolo
 		body += "\t\t\thas_manpower < 1\n";
 		body += "\t\t\thas_government = fascism\n";
 		body += "\t\t}\n";
-		body += "\t}\n";
 	}
 	if (majorIdeologies.count("absolutist"))
 	{
@@ -245,8 +244,8 @@ std::string getHasExcessiveArmySizeBody(const std::set<std::string>& majorIdeolo
 		body += "\t\t\thas_manpower < 1\n";
 		body += "\t\t\thas_government = absolutist\n";
 		body += "\t\t}\n";
-		body += "\t}\n";
 	}
+	body += "\t}\n";
 	body += "}\n";
 	return body;
 }

@@ -1362,10 +1362,11 @@ void HoI4::World::outputBookmarks() const
 		}
 	}
 
-	bookmarkFile << "effect = {\n";
-	bookmarkFile << "randomize_weather = 22345 # <-Obligatory in every bookmark !\n";
-	bookmarkFile << "#123 = { rain_light = yes }\n";
-	bookmarkFile << "	}\n";
+	bookmarkFile << "\t\teffect = {\n";
+	bookmarkFile << "\t\t\trandomize_weather = 22345 # <-Obligatory in every bookmark !\n";
+	bookmarkFile << "\t\t\t#123 = { rain_light = yes }\n";
+	bookmarkFile << "\t\t}\n";
+	bookmarkFile << "\t}\n";
 	bookmarkFile << "}\n";
 	bookmarkFile.close();
 }

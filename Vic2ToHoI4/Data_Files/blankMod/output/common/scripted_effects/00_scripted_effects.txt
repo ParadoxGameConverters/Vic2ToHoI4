@@ -160,4 +160,3 @@ remove_naval_treaty_effect = {
 	}
 	set_country_flag = MTG_naval_treaty_abandoned
 }
-}
