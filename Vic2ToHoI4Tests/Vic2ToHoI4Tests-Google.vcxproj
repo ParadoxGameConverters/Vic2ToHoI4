@@ -97,6 +97,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Navies\OutMtgShipTypeNames.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Navies\OutNavies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\outDifficultySettings.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFocus.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFocusTree.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoI4Version.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutLocalisation.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutOnActions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutTechnologies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ScriptedTriggers\OutScriptedTrigger.cpp" />

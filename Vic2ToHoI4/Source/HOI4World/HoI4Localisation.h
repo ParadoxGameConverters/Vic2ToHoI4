@@ -124,13 +124,19 @@ class HoI4Localisation
 			getInstance()->UpdateLocalisationText(key, oldText, newText);
 		}
 
-		static void output()
-		{
-			getInstance()->Output();
-		}
+		[[nodiscard]] const auto& getStateLocalisations() const { return getInstance()->stateLocalisations; }
+		[[nodiscard]] const auto& getVPLocalisations() const { return getInstance()->VPLocalisations; }
+		[[nodiscard]] const auto& getCountryLocalisations() const { return getInstance()->countryLocalisations; }
+		[[nodiscard]] const auto& getOriginalFocuses() const { return getInstance()->originalFocuses; }
+		[[nodiscard]] const auto& getNewFocuses() const { return getInstance()->newFocuses; }
+		[[nodiscard]] const auto& getIdeaLocalisations() const { return getInstance()->ideaLocalisations; }
+		[[nodiscard]] const auto& getGenericIdeaLocalisations() const { return getInstance()->genericIdeaLocalisations; }
+		[[nodiscard]] const auto& getOriginalEventLocalisations() const { return getInstance()->originalEventLocalisations; }
+		[[nodiscard]] const auto& getNewEventLocalisations() const { return getInstance()->newEventLocalisations; }
+		[[nodiscard]] const auto& getPoliticalPartyLocalisations() const { return getInstance()->politicalPartyLocalisations; }
+		[[nodiscard]] const auto& getDecisionLocalisations() const { return getInstance()->decisionLocalisations; }
+		[[nodiscard]] const auto& getCustomLocalisations() const { return getInstance()->customLocalisations; }
 
-	private:
-		static HoI4Localisation* instance;
 		static HoI4Localisation* getInstance()
 		{
 			if (instance == nullptr)
@@ -139,6 +145,10 @@ class HoI4Localisation
 			}
 			return instance;
 		}
+
+	private:
+		static HoI4Localisation* instance;
+	
 		HoI4Localisation() noexcept;
 		void importLocalisations();
 		void importFocusLocalisations(const std::string& filename);
@@ -236,18 +246,6 @@ class HoI4Localisation
 			HoI4::ScriptedLocalisation& scriptedLocalisation,
 			const std::set<std::string>& majorIdeologies
 		) const;
-
-		void Output() const;
-		void outputCountries(const std::string& localisationPath) const;
-		void outputFocuses(const std::string& localisationPath) const;
-		void outputStateLocalisations(const std::string& localisationPath) const;
-		void outputVPLocalisations(const std::string& localisationPath) const;
-		void outputIdeaLocalisations(const std::string& localisationPath) const;
-		void outputEventLocalisations(const std::string& localisationPath) const;
-		void outputPoliticalPartyLocalisations(const std::string& localisationPath) const;
-		void outputDecisionLocalisations(const std::string& localisationPath) const;
-		void outputCustomLocalisations(const std::string& localisationPath) const;
-		static void outputLocalisations(const std::string& filenameStart, const languageToLocalisationsMap& localisations);
 
 		std::map<language, std::map< stateNumber, std::string>> stateLocalisations;
 		languageToLocalisationsMap VPLocalisations;

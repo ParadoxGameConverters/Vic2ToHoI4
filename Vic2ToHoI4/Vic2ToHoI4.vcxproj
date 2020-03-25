@@ -232,6 +232,12 @@
     <ClCompile Include="Source\OutHoi4\Navies\OutMtgNavyNames.cpp" />
     <ClCompile Include="Source\OutHoi4\Navies\OutMtgShipTypeNames.cpp" />
     <ClCompile Include="Source\OutHoi4\outDifficultySettings.cpp" />
+    <ClCompile Include="Source\OutHoi4\OutFocus.cpp" />
+    <ClCompile Include="Source\OutHoi4\OutFocusTree.cpp" />
+    <ClCompile Include="Source\OutHoi4\OutHoI4Version.cpp" />
+    <ClCompile Include="Source\OutHoi4\OutLocalisation.cpp" />
+    <ClCompile Include="Source\OutHoi4\OutOnActions.cpp" />
+    <ClCompile Include="Source\OutHoi4\OutTechnologies.cpp" />
     <ClCompile Include="Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.cpp" />
     <ClCompile Include="Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisations.cpp" />
     <ClCompile Include="Source\OutHoi4\ScriptedTriggers\OutScriptedTrigger.cpp" />
@@ -432,6 +438,12 @@
     <ClInclude Include="Source\OutHoi4\Navies\OutMtgNavyNames.h" />
     <ClInclude Include="Source\OutHoi4\Navies\OutMtgShipTypeNames.h" />
     <ClInclude Include="Source\OutHoi4\outDifficultySettings.h" />
+    <ClInclude Include="Source\OutHoi4\OutFocus.h" />
+    <ClInclude Include="Source\OutHoi4\OutFocusTree.h" />
+    <ClInclude Include="Source\OutHoi4\OutHoI4Version.h" />
+    <ClInclude Include="Source\OutHoi4\OutLocalisation.h" />
+    <ClInclude Include="Source\OutHoi4\OutOnActions.h" />
+    <ClInclude Include="Source\OutHoi4\OutTechnologies.h" />
     <ClInclude Include="Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.h" />
     <ClInclude Include="Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisations.h" />
     <ClInclude Include="Source\OutHoi4\ScriptedTriggers\OutScriptedTrigger.h" />

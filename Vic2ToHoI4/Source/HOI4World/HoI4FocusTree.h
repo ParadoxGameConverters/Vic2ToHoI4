@@ -82,13 +82,13 @@ class HoI4FocusTree: commonItems::parser
 		);
 		void removeFocus(const std::string& id);
 
-		void output(const std::string& filename) const;
-		void generateSharedFocuses(const std::string& filename) const;
-
 		void addFocus(std::shared_ptr<HoI4Focus> newFocus) { focuses.push_back(newFocus); }
 
-	private:
+		[[nodiscard]] const auto& getDestinationCountryTag() const { return dstCountryTag; }
+		[[nodiscard]] const auto& getFocuses() const { return focuses; }
+		[[nodiscard]] const auto& getSharedFocuses() const { return sharedFocuses; }
 
+	private:
 		void confirmLoadedFocuses();
 
 		int calculateNumCollectovistIdeologies(const std::set<std::string>& majorIdeologies);

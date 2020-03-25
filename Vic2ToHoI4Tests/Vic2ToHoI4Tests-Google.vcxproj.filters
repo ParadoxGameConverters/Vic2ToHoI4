@@ -830,6 +830,24 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4States.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\States</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFocus.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFocusTree.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutLocalisation.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoI4Version.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutOnActions.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutTechnologies.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

@@ -723,6 +723,24 @@
     <ClCompile Include="Source\OutHoi4\States\OutHoI4States.cpp">
       <Filter>OutHoi4\States</Filter>
     </ClCompile>
+    <ClCompile Include="Source\OutHoi4\OutFocus.cpp">
+      <Filter>OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\OutFocusTree.cpp">
+      <Filter>OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\OutLocalisation.cpp">
+      <Filter>OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\OutHoI4Version.cpp">
+      <Filter>OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\OutOnActions.cpp">
+      <Filter>OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\OutTechnologies.cpp">
+      <Filter>OutHoi4</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1356,6 +1374,24 @@
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\States\OutHoI4States.h">
       <Filter>OutHoi4\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\OutFocus.h">
+      <Filter>OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\OutFocusTree.h">
+      <Filter>OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\OutLocalisation.h">
+      <Filter>OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\OutHoI4Version.h">
+      <Filter>OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\OutOnActions.h">
+      <Filter>OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\OutTechnologies.h">
+      <Filter>OutHoi4</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

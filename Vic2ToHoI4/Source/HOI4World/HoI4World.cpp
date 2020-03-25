@@ -50,6 +50,9 @@
 #include <fstream>
 #include "../OutHoi4/outDifficultySettings.h"
 #include "../OutHoi4/Ideologies/OutIdeologies.h"
+#include "../OutHoi4/OutFocusTree.h"
+#include "../OutHoi4/OutLocalisation.h"
+#include "../OutHoi4/OutOnActions.h"
 using namespace std;
 
 
@@ -998,7 +1001,7 @@ void HoI4::World::output()
 	outputColorsfile();
 	outputNames();
 	outputUnitNames();
-	HoI4Localisation::output();
+	outputLocalisation(*HoI4Localisation::getInstance(), theConfiguration);
 	outputStates(*states, theConfiguration);
 	outputMap();
 	outputSupplyZones(*supplyZones, theConfiguration);
@@ -1008,7 +1011,7 @@ void HoI4::World::output()
 	outputBuildings(*buildings, theConfiguration);
 	outputDecisions(*decisions, ideologies->getMajorIdeologies(), theConfiguration);
 	outputEvents(*events, theConfiguration);
-	onActions->output(ideologies->getMajorIdeologies());
+	outputOnActions(*onActions, ideologies->getMajorIdeologies(), theConfiguration);
 	outAiPeaces(*peaces, ideologies->getMajorIdeologies(), theConfiguration);
 	outputIdeologies(*ideologies);
 	outputLeaderTraits();
@@ -1163,7 +1166,7 @@ void HoI4::World::outputGenericFocusTree() const
 
 	HoI4FocusTree genericFocusTree;
 	genericFocusTree.addGenericFocusTree(ideologies->getMajorIdeologies());
-	genericFocusTree.generateSharedFocuses("output/" + theConfiguration.getOutputName() + "/common/national_focus/shared_focuses.txt");
+	outputSharedFocuses(genericFocusTree, "output/" + theConfiguration.getOutputName() + "/common/national_focus/shared_focuses.txt");
 }
 
 

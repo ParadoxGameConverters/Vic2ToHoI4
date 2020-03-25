@@ -16,7 +16,8 @@
 #include "Date.h"
 #include "OSCompatibilityLayer.h"
 #include <string>
-
+#include "OutFocusTree.h"
+#include "OutTechnologies.h"
 
 
 void HoI4::outputToCommonCountriesFile(std::ostream& countriesFile, const Country& theCountry)
@@ -219,10 +220,9 @@ void HoI4::outputCountry(
 
 		if (auto nationalFocus = theCountry.getNationalFocus(); nationalFocus)
 		{
-			nationalFocus->output(
-				"output/" + theConfiguration.getOutputName() +
-				"/common/national_focus/" + theCountry.getTag() + "_NF.txt"
-			);
+			outputFocusTree(*nationalFocus,
+				 "output/" + theConfiguration.getOutputName() + "/common/national_focus/" + theCountry.getTag() +
+					  "_NF.txt");
 		}
 	}
 }
@@ -324,10 +324,10 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 	outputThreat(output, theCountry.getThreat());
 	outputWars(output, theCountry.getWars());
 	outputOOBLines(output, tag);
-	if (theCountry.getTechnologies())
+	if (const auto theTechnologies = theCountry.getTechnologies(); theTechnologies)
 	{
-		theCountry.getTechnologies()->outputTechnology(output);
-		theCountry.getTechnologies()->outputResearchBonuses(output);
+		outputTechnology(*theTechnologies, output);
+		outputResearchBonuses(*theTechnologies, output);
 	}
 	outputConvoys(output, theCountry.getConvoys());
 	outputEquipmentStockpile(output, theCountry.getEquipmentStockpile(), tag);
