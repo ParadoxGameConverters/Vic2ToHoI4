@@ -178,7 +178,7 @@ void createModFiles()
 	modFile << "replace_path=\"common/ideologies\"\n";
 	modFile << "replace_path=\"history/countries\"\n";
 	modFile << "replace_path=\"history/states\"\n";
-	modFile << "supported_version=\"1.8.1\"";
+	modFile << "supported_version=\"1.9.0\"";
 	modFile.close();
 
 	ofstream descriptorFile("output/output/descriptor.mod");
@@ -192,7 +192,7 @@ void createModFiles()
 	descriptorFile << "replace_path=\"common/ideologies\"\n";
 	descriptorFile << "replace_path=\"history/countries\"\n";
 	descriptorFile << "replace_path=\"history/states\"\n";
-	descriptorFile << "supported_version=\"1.8.1\"";
+	descriptorFile << "supported_version=\"1.9.0\"";
 	descriptorFile.close();
 }
 
