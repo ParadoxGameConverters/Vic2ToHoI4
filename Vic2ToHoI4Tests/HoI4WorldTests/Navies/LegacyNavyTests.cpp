@@ -1,5 +1,5 @@
 #include "../Vic2ToHoI4/Source/HOI4World/Navies/LegacyNavy.h"
-#include "../Vic2ToHoI4/Source/Hoi4Outputter/Navies/LegacyNavyOutputter.h"
+#include "../Vic2ToHoI4/Source/OutHoi4/Navies/OutLegacyNavy.h"
 #include "gtest/gtest.h"
 
 

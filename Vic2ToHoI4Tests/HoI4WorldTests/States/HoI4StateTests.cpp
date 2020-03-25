@@ -6,7 +6,7 @@
 #include "../Vic2ToHoI4/Source/Configuration.h"
 #include "../Vic2ToHoI4/Source/HOI4World/Map/CoastalProvinces.h"
 #include "../Vic2ToHoI4/Source/HOI4World/States/HoI4State.h"
-#include "../Vic2ToHoI4/Source/Hoi4Outputter/States/HoI4StateOutputter.h"
+#include "../Vic2ToHoI4/Source/OutHoi4/States/OutHoI4State.h"
 #include "../Vic2ToHoI4/Source/V2World/Province.h"
 #include "gtest/gtest.h"
 #include <optional>

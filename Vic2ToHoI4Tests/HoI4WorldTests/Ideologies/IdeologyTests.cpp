@@ -1,5 +1,5 @@
 #include "../Vic2ToHoI4/Source/HOI4World/Ideologies/Ideology.h"
-#include "../Vic2ToHoI4/Source/Hoi4Outputter/Ideologies/OutIdeology.h"
+#include "../Vic2ToHoI4/Source/OutHoi4/Ideologies/OutIdeology.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

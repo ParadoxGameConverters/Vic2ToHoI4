@@ -24,4 +24,4 @@ void outputMtgNavies(const Navies& navies,
 
 
 
-#endif // NAVIES_OUTPUTTER
+#endif // OUT_NAVIES_H

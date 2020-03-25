@@ -263,8 +263,8 @@
     <ClCompile Include="Mocks\Vic2StateMock.h">
       <Filter>Mocks</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Hoi4CountryOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Hoi4CountryOutputter.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp">
       <Filter>HoI4WorldTests</Filter>
@@ -277,33 +277,6 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\SubstitutesImporter.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Decisions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Decisions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Decisions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Decisions\DecisionsOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Decisions</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\LegacyNavyOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\MtgShipOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\NaviesOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\Decisions\DecisionsCategoryTests.cpp">
       <Filter>HoI4WorldTests\Decisions</Filter>
@@ -380,14 +353,8 @@
     <ClCompile Include="HoI4WorldTests\States\StateHistoryTests.cpp">
       <Filter>HoI4WorldTests\States</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ScriptedLocalisations</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisations.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ScriptedLocalisations</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ScriptedLocalisations</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgNavy.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
@@ -400,18 +367,6 @@
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationsTests.cpp">
       <Filter>HoI4WorldTests\ScriptedLocalisations</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipTypes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipTypes</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\States\HoI4StateOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\States</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\States\HoI4StatesOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\States</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\StabilityWarSupportDecisions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
@@ -467,17 +422,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventsOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Events</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventOption.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Events\EventOptionOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Events</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\Events\EventOptionTests.cpp">
       <Filter>HoI4WorldTests\Events</Filter>
@@ -491,11 +437,11 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\General.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutAdmiral.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Leaders</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutAdmiral.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Leaders</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutGeneral.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Leaders</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutGeneral.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Leaders</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Advisor.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
@@ -503,8 +449,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\IdeologicalAdvisors.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Leaders\OutAdvisor.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Leaders</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutAdvisor.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Leaders</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Commander.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
@@ -524,11 +470,11 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyZones.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutBuilding.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Map</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuilding.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutBuildings.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Map</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutBuildings.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Hoi4Building.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
@@ -536,11 +482,11 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Region.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutStrategicRegion.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Map</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegion.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutSupplyZone.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Map</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyZone.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\ProvincePoints.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
@@ -554,8 +500,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyArea.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Map\OutSupplyZones.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Map</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutSupplyZones.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Buildings.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
@@ -566,11 +512,11 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedTriggers\ScriptedTriggers.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ScriptedTriggers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTrigger.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ScriptedTriggers</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ScriptedTriggers\OutScriptedTrigger.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\ScriptedTriggers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTriggers.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ScriptedTriggers</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ScriptedTriggers\OutScriptedTriggers.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\ScriptedTriggers</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ScriptedTriggers</Filter>
@@ -584,29 +530,29 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4War.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\OutLegacyNavyNames.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Navies\OutLegacyNavyNames.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Navies</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\OutLegacyShipTypeNames.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Navies\OutLegacyShipTypeNames.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Navies</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\OutMtgNavyNames.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Navies\OutMtgNavyNames.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Navies</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Navies\OutMtgShipTypeNames.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Navies</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Navies\OutMtgShipTypeNames.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Navies</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Diplomacy\OutAiPeace.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Diplomacy</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Diplomacy\OutAiPeace.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Diplomacy</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Diplomacy\OutAiPeaces.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Diplomacy</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Diplomacy\OutAiPeaces.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Diplomacy</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AiPeacesUpdater.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Diplomacy\OutWar.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Diplomacy</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Diplomacy\OutWar.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Diplomacy</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\HoI4WarCreator.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\WarCreator</Filter>
@@ -614,8 +560,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\ResourceProspectingDecisions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\outDifficultySettings.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\outDifficultySettings.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\Diplomacy\AiPeaceTests.cpp">
       <Filter>HoI4WorldTests\Diplomacy</Filter>
@@ -674,14 +620,14 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\Ideas.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Ideas</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdea.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Ideas</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Ideas\OutIdea.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Ideas</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdeaGroup.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Ideas</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Ideas\OutIdeaGroup.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Ideas</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideas\OutIdeas.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Ideas</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Ideas\OutIdeas.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Ideas</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\Events\EventsFileTests.cpp">
       <Filter>HoI4WorldTests\Events</Filter>
@@ -719,8 +665,8 @@
     <ClCompile Include="HoI4WorldTests\Military\HoI4ArmyTests.cpp">
       <Filter>HoI4WorldTests\Military</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutDivisionTemplate.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Military\OutDivisionTemplate.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Military</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\RegimentTypeGroup.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
@@ -734,23 +680,23 @@
     <ClCompile Include="HoI4WorldTests\Military\RegimentTypeTests.cpp">
       <Filter>HoI4WorldTests\Military</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutDivisionType.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Military\OutDivisionType.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Military</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutRegimentType.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Military\OutRegimentType.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Military</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\RegimentType.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutAirplane.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Military\OutAirplane.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Military</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\Military\AirplaneTests.cpp">
       <Filter>HoI4WorldTests\Military</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Military\OutArmy.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Military</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Military\OutArmy.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Military</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyFile.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
@@ -761,11 +707,11 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideology.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideologies\OutIdeologies.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Ideologies</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Ideologies\OutIdeologies.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Ideologies</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\Ideologies\OutIdeology.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\Ideologies</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Ideologies\OutIdeology.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Ideologies</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyItems.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
@@ -782,8 +728,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\MtgShipVariant.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\OutMtgShipVariant.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipTypes</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ShipTypes\OutMtgShipVariant.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\ShipTypes</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\ShipTypes\MtgShipVariantTests.cpp">
       <Filter>HoI4WorldTests\ShipTypes</Filter>
@@ -794,8 +740,8 @@
     <ClCompile Include="HoI4WorldTests\ShipTypes\LegacyShipVariantTests.cpp">
       <Filter>HoI4WorldTests\ShipTypes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\ShipTypes\OutLegacyShipVariant.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\ShipTypes</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ShipTypes\OutLegacyShipVariant.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\ShipTypes</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipUpgrades.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
@@ -803,8 +749,8 @@
     <ClCompile Include="HoI4WorldTests\ShipTypes\ShipUpgradesTests.cpp">
       <Filter>HoI4WorldTests\ShipTypes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\GameRules\OutGameRuleOption.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\GameRules</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRuleOption.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\GameRules</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\GameRules\GameRuleOption.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\GameRules</Filter>
@@ -818,17 +764,71 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\GameRules\GameRule.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\GameRules</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\GameRules\OutGameRule.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\GameRules</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRule.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\GameRules</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Hoi4Outputter\GameRules\OutGameRules.cpp">
-      <Filter>Vic2ToHoI4 files\Hoi4Outputter\GameRules</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRules.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\GameRules</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\GameRules\GameRules.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\GameRules</Filter>
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\GameRules\GameRulesTests.cpp">
       <Filter>HoI4WorldTests\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsCategories.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsCategory.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Events\OutEvent.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Events\OutEventOption.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Events\OutEvents.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Navies\OutLegacyNavy.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Navies\OutLegacyShip.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Navies\OutMtgNavy.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Navies\OutMtgShip.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Navies\OutNavies.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\ScriptedLocalisations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisations.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\ScriptedLocalisations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ShipTypes\OutShipModules.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ShipTypes\OutShipVariants.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4State.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4States.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -883,15 +883,6 @@
     <Filter Include="Vic2ToHoI4 files\HoI4\States">
       <UniqueIdentifier>{25fa4931-200a-4006-91b0-965a66c7fa25}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter">
-      <UniqueIdentifier>{dda4426a-5184-48ef-91a3-66ee0746d4c4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Decisions">
-      <UniqueIdentifier>{e6230754-cb95-4f0f-b5ba-d0403ab31ecc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Navies">
-      <UniqueIdentifier>{57176155-a8f4-40d2-9f58-2ffeaa57dcb4}</UniqueIdentifier>
-    </Filter>
     <Filter Include="HoI4WorldTests\Decisions">
       <UniqueIdentifier>{6c30ff4f-33f5-4956-ac67-5750f0242685}</UniqueIdentifier>
     </Filter>
@@ -907,20 +898,11 @@
     <Filter Include="HoI4WorldTests\States">
       <UniqueIdentifier>{c10e58fb-ad11-413c-965f-7c114e869836}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\ScriptedLocalisations">
-      <UniqueIdentifier>{8a103c1a-6fa4-49eb-bf2d-e69090e1aa91}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\ScriptedLocalisations">
       <UniqueIdentifier>{9dfaf1cb-e2d9-4428-baea-9a996c8e5840}</UniqueIdentifier>
     </Filter>
     <Filter Include="HoI4WorldTests\ScriptedLocalisations">
       <UniqueIdentifier>{5b01e8cb-be3d-4905-9b6a-7e7de7f4007f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\ShipTypes">
-      <UniqueIdentifier>{e537248d-9d51-4dd4-b9f3-b3dfd4add998}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\States">
-      <UniqueIdentifier>{a5590f90-a463-43dc-8490-47e4b191d7d4}</UniqueIdentifier>
     </Filter>
     <Filter Include="HoI4WorldTests\Localisations">
       <UniqueIdentifier>{d6118e17-3f48-4e3d-b723-248ce3f8b76f}</UniqueIdentifier>
@@ -931,35 +913,20 @@
     <Filter Include="Vic2ToHoI4 files\HoI4\Events">
       <UniqueIdentifier>{b7a84375-5eb0-4b27-aa39-43b51ed8427a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Events">
-      <UniqueIdentifier>{b592cd8a-fcca-4b83-8e19-0ce38f1af3c6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="HoI4WorldTests\Events">
       <UniqueIdentifier>{ffe08428-d407-4da1-93a9-8512ccc69546}</UniqueIdentifier>
     </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\Leaders">
       <UniqueIdentifier>{27fdb0ff-a80d-4958-8027-4cb689ba4819}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Leaders">
-      <UniqueIdentifier>{841f7351-9b4b-4ae6-baa9-bbdca1d71aaf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\Map">
       <UniqueIdentifier>{1ec5bcc9-3e6c-41a9-84af-834c21242320}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Map">
-      <UniqueIdentifier>{5a86d658-b4d2-4c22-ab8a-2c4b1b2b0bb4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\ScriptedTriggers">
       <UniqueIdentifier>{9343c6bf-846f-4157-b760-b491ff2e174c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\ScriptedTriggers">
-      <UniqueIdentifier>{34eb4487-02aa-4592-8ac3-139c16c32cfe}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\Diplomacy">
       <UniqueIdentifier>{1fc5e546-8513-4bb9-84e6-9632b33b31c5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Diplomacy">
-      <UniqueIdentifier>{acdd379f-fe68-4bb5-a509-0e018164eac1}</UniqueIdentifier>
     </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\WarCreator">
       <UniqueIdentifier>{1d9c307a-30c6-4539-bea7-df6fb723991e}</UniqueIdentifier>
@@ -982,29 +949,17 @@
     <Filter Include="HoI4WorldTests\Ideas">
       <UniqueIdentifier>{9bf70b07-a865-4ec0-b5ee-42a2b7acd854}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Ideas">
-      <UniqueIdentifier>{a1c58a1d-d1e4-4c60-9702-bf9c1c7e59b0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\Military">
       <UniqueIdentifier>{9cb897ec-4ed8-416a-8f94-5218dcae5e50}</UniqueIdentifier>
     </Filter>
     <Filter Include="HoI4WorldTests\Military">
       <UniqueIdentifier>{f585e1ec-20e0-4f2d-bdb8-49e18eb0db75}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Military">
-      <UniqueIdentifier>{e6b6046a-7440-425b-bb61-6d6a5c67bd24}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\Ideologies">
       <UniqueIdentifier>{ae287c5d-388f-4bb7-af78-227cb2d78902}</UniqueIdentifier>
     </Filter>
     <Filter Include="HoI4WorldTests\Ideologies">
       <UniqueIdentifier>{39e98c18-db17-4b92-b5a1-7a97a282d97e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\Ideologies">
-      <UniqueIdentifier>{3f760eb7-1c8d-4ebd-acef-73a1b4ba95b5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Vic2ToHoI4 files\Hoi4Outputter\GameRules">
-      <UniqueIdentifier>{3fc7f5ac-1916-4287-b36b-150e2ffb56fb}</UniqueIdentifier>
     </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\GameRules">
       <UniqueIdentifier>{f5160324-48a3-4be0-aa47-e46e0c74cd23}</UniqueIdentifier>
@@ -1014,6 +969,51 @@
     </Filter>
     <Filter Include="TestFiles">
       <UniqueIdentifier>{89fd2637-c5e8-43c6-a0cb-e58df4a6b60e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4">
+      <UniqueIdentifier>{dda4426a-5184-48ef-91a3-66ee0746d4c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\Decisions">
+      <UniqueIdentifier>{e6230754-cb95-4f0f-b5ba-d0403ab31ecc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\Navies">
+      <UniqueIdentifier>{57176155-a8f4-40d2-9f58-2ffeaa57dcb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\ScriptedLocalisations">
+      <UniqueIdentifier>{8a103c1a-6fa4-49eb-bf2d-e69090e1aa91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\ShipTypes">
+      <UniqueIdentifier>{e537248d-9d51-4dd4-b9f3-b3dfd4add998}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\States">
+      <UniqueIdentifier>{a5590f90-a463-43dc-8490-47e4b191d7d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\Events">
+      <UniqueIdentifier>{b592cd8a-fcca-4b83-8e19-0ce38f1af3c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\Leaders">
+      <UniqueIdentifier>{841f7351-9b4b-4ae6-baa9-bbdca1d71aaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\Map">
+      <UniqueIdentifier>{5a86d658-b4d2-4c22-ab8a-2c4b1b2b0bb4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\ScriptedTriggers">
+      <UniqueIdentifier>{34eb4487-02aa-4592-8ac3-139c16c32cfe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\Diplomacy">
+      <UniqueIdentifier>{acdd379f-fe68-4bb5-a509-0e018164eac1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\Ideas">
+      <UniqueIdentifier>{a1c58a1d-d1e4-4c60-9702-bf9c1c7e59b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\Military">
+      <UniqueIdentifier>{e6b6046a-7440-425b-bb61-6d6a5c67bd24}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\Ideologies">
+      <UniqueIdentifier>{3f760eb7-1c8d-4ebd-acef-73a1b4ba95b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\GameRules">
+      <UniqueIdentifier>{3fc7f5ac-1916-4287-b36b-150e2ffb56fb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1058,11 +1058,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="TestFiles\GameRulesTestsEmpty.txt">
-      <Filter>TestFiles</Filter>
-    </Text>
-    <Text Include="TestFiles\GameRules.txt">
-      <Filter>TestFiles</Filter>
-    </Text>
+    <CopyFileToFolders Include="TestFiles\GameRulesEmpty.txt" />
+    <CopyFileToFolders Include="TestFiles\GameRules.txt" />
   </ItemGroup>
 </Project>

@@ -1,5 +1,5 @@
 #include "../Vic2ToHoI4/Source/HOI4World/GameRules/GameRule.h"
-#include "../Vic2ToHoI4/Source/Hoi4Outputter/GameRules/OutGameRule.h"
+#include "../Vic2ToHoI4/Source/OutHoi4/GameRules/OutGameRule.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

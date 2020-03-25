@@ -1,6 +1,6 @@
 #include "../../Mocks/TechnologiesMock.h"
 #include "../Vic2ToHoI4/Source/HOI4World/Navies/Navies.h"
-#include "../Vic2ToHoI4/Source/Hoi4Outputter/Navies/NaviesOutputter.h"
+#include "../Vic2ToHoI4/Source/OutHoi4/Navies/OutNavies.h"
 #include "gtest/gtest.h"
 
 
