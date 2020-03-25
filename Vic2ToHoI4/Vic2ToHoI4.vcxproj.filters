@@ -43,26 +43,8 @@
     <Filter Include="Flags">
       <UniqueIdentifier>{9832f529-79c1-4923-942d-74508654fa25}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Hoi4Outputter">
-      <UniqueIdentifier>{5e45f559-49a6-4b1e-b092-b60db525cf1b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Hoi4Outputter\Decisions">
-      <UniqueIdentifier>{b198d911-63be-41f0-b3a6-2d98785193ea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Hoi4Outputter\Navies">
-      <UniqueIdentifier>{9a173023-f3eb-4316-b355-2b514e1c7033}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Hoi4Outputter\ScriptedLocalisations">
-      <UniqueIdentifier>{84f40834-bcc8-4682-9c54-57152c91e7ca}</UniqueIdentifier>
-    </Filter>
     <Filter Include="HoI4World\ScriptedLocalisations">
       <UniqueIdentifier>{e9a00c1c-cf76-4630-a043-e9498b7f9fca}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Hoi4Outputter\ShipTypes">
-      <UniqueIdentifier>{69709241-2173-457e-a3b2-75766d91c549}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Hoi4Outputter\States">
-      <UniqueIdentifier>{17b00305-129e-49d6-a5b2-b90221c4a66a}</UniqueIdentifier>
     </Filter>
     <Filter Include="HoI4World\Localisations">
       <UniqueIdentifier>{53f15651-fa5b-405e-ba4a-d03897054408}</UniqueIdentifier>
@@ -70,20 +52,11 @@
     <Filter Include="HoI4World\Events">
       <UniqueIdentifier>{4eea27b0-091e-4534-b314-1b415a0035cc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Hoi4Outputter\Events">
-      <UniqueIdentifier>{f71d37c0-a289-421c-b944-31a6b535e0b6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="HoI4World\Leaders">
       <UniqueIdentifier>{005bcb86-e037-441a-8e21-55c53faf5e1b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Hoi4Outputter\Leaders">
-      <UniqueIdentifier>{69fbb089-5506-421f-aea7-d63468feba05}</UniqueIdentifier>
-    </Filter>
     <Filter Include="HoI4World\Map">
       <UniqueIdentifier>{4746abd5-b60d-4386-884d-07d0f03815bf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Hoi4Outputter\Map">
-      <UniqueIdentifier>{7c4001c2-aa42-4f6c-a79f-a6597c8ce482}</UniqueIdentifier>
     </Filter>
     <Filter Include="Bitmap">
       <UniqueIdentifier>{042f08d9-26f1-4dc4-972f-08c1cb7d7b07}</UniqueIdentifier>
@@ -91,14 +64,8 @@
     <Filter Include="HoI4World\ScriptedTriggers">
       <UniqueIdentifier>{437f8927-6c91-4c94-8a68-c9f93c60ac22}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Hoi4Outputter\ScriptedTriggers">
-      <UniqueIdentifier>{dcc00db9-91ca-4d39-816a-75b884ceb428}</UniqueIdentifier>
-    </Filter>
     <Filter Include="HoI4World\Diplomacy">
       <UniqueIdentifier>{380fc73c-dfd8-40bc-b0f0-ea0b3d25f1d6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Hoi4Outputter\Diplomacy">
-      <UniqueIdentifier>{2663a559-a624-41b2-b071-3c7754193b4f}</UniqueIdentifier>
     </Filter>
     <Filter Include="HoI4World\WarCreator">
       <UniqueIdentifier>{74101746-ca0c-4e12-b303-f1baedf6c90a}</UniqueIdentifier>
@@ -106,31 +73,64 @@
     <Filter Include="HoI4World\Ideas">
       <UniqueIdentifier>{663daec6-d575-4dc0-8ded-9d62ede1d283}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Hoi4Outputter\Ideas">
-      <UniqueIdentifier>{004ecc51-d089-4e50-970f-7640d1406bab}</UniqueIdentifier>
-    </Filter>
     <Filter Include="HoI4World\Military">
       <UniqueIdentifier>{ecb90897-9357-4c32-b772-b474078e30f6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Hoi4Outputter\Military">
-      <UniqueIdentifier>{ddcf1619-ab27-4090-9efa-db5ce2c865fc}</UniqueIdentifier>
     </Filter>
     <Filter Include="HoI4World\Ideologies">
       <UniqueIdentifier>{5ca39d58-45d2-4dcb-bd6a-9fd4b774d4a8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Hoi4Outputter\Ideologies">
-      <UniqueIdentifier>{6fc8d6c8-1ae7-4ab9-b6b3-7865848dcf79}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Mappers\Versionparser">
       <UniqueIdentifier>{0c08d158-43c3-4134-987f-ed0267f4ab9d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Hoi4Outputter\Version">
-      <UniqueIdentifier>{c0a59499-5a02-42d7-aca3-ac699087bab8}</UniqueIdentifier>
     </Filter>
     <Filter Include="HoI4World\GameRules">
       <UniqueIdentifier>{86be07e0-2152-44da-8224-d6336c3f4257}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Hoi4Outputter\GameRules">
+    <Filter Include="OutHoi4">
+      <UniqueIdentifier>{5e45f559-49a6-4b1e-b092-b60db525cf1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\Decisions">
+      <UniqueIdentifier>{b198d911-63be-41f0-b3a6-2d98785193ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\Navies">
+      <UniqueIdentifier>{9a173023-f3eb-4316-b355-2b514e1c7033}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\ScriptedLocalisations">
+      <UniqueIdentifier>{84f40834-bcc8-4682-9c54-57152c91e7ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\ShipTypes">
+      <UniqueIdentifier>{69709241-2173-457e-a3b2-75766d91c549}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\States">
+      <UniqueIdentifier>{17b00305-129e-49d6-a5b2-b90221c4a66a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\Events">
+      <UniqueIdentifier>{f71d37c0-a289-421c-b944-31a6b535e0b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\Leaders">
+      <UniqueIdentifier>{69fbb089-5506-421f-aea7-d63468feba05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\Map">
+      <UniqueIdentifier>{7c4001c2-aa42-4f6c-a79f-a6597c8ce482}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\ScriptedTriggers">
+      <UniqueIdentifier>{dcc00db9-91ca-4d39-816a-75b884ceb428}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\Diplomacy">
+      <UniqueIdentifier>{2663a559-a624-41b2-b071-3c7754193b4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\Ideas">
+      <UniqueIdentifier>{004ecc51-d089-4e50-970f-7640d1406bab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\Military">
+      <UniqueIdentifier>{ddcf1619-ab27-4090-9efa-db5ce2c865fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\Ideologies">
+      <UniqueIdentifier>{6fc8d6c8-1ae7-4ab9-b6b3-7865848dcf79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\Version">
+      <UniqueIdentifier>{c0a59499-5a02-42d7-aca3-ac699087bab8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\GameRules">
       <UniqueIdentifier>{689b88ea-3de7-4920-8b8d-3876eadee40e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -355,7 +355,7 @@
       <Filter>HoI4World\States</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Hoi4CountryOutputter.cpp">
-      <Filter>Hoi4Outputter</Filter>
+      <Filter>OutHoi4</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\MilitaryMappings\MilitaryMappingsFile.cpp">
       <Filter>HoI4World\MilitaryMappings</Filter>
@@ -366,59 +366,14 @@
     <ClCompile Include="Source\HOI4World\MilitaryMappings\SubstitutesImporter.cpp">
       <Filter>HoI4World\MilitaryMappings</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionOutputter.cpp">
-      <Filter>Hoi4Outputter\Decisions</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.cpp">
-      <Filter>Hoi4Outputter\Decisions</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.cpp">
-      <Filter>Hoi4Outputter\Decisions</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.cpp">
-      <Filter>Hoi4Outputter\Decisions</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.cpp">
-      <Filter>Hoi4Outputter\Navies</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.cpp">
-      <Filter>Hoi4Outputter\Navies</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\Navies\MtgShipOutputter.cpp">
-      <Filter>Hoi4Outputter\Navies</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.cpp">
-      <Filter>Hoi4Outputter\Navies</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\Navies\NaviesOutputter.cpp">
-      <Filter>Hoi4Outputter\Navies</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.cpp">
-      <Filter>Hoi4Outputter\ScriptedLocalisations</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisations.cpp">
       <Filter>HoI4World\ScriptedLocalisations</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationOutputter.cpp">
-      <Filter>Hoi4Outputter\ScriptedLocalisations</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Navies\MtgNavy.cpp">
       <Filter>HoI4World\Navies</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Navies\MtgShip.cpp">
       <Filter>HoI4World\Navies</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.cpp">
-      <Filter>Hoi4Outputter\ShipTypes</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.cpp">
-      <Filter>Hoi4Outputter\ShipTypes</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\States\HoI4StateOutputter.cpp">
-      <Filter>Hoi4Outputter\States</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.cpp">
-      <Filter>Hoi4Outputter\States</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Decisions\StabilityWarSupportDecisions.cpp">
       <Filter>HoI4World\Decisions</Filter>
@@ -462,15 +417,6 @@
     <ClCompile Include="Source\HOI4World\Events\Events.cpp">
       <Filter>HoI4World\Events</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\Events\EventOutputter.cpp">
-      <Filter>Hoi4Outputter\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\Events\EventsOutputter.cpp">
-      <Filter>Hoi4Outputter\Events</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Hoi4Outputter\Events\EventOptionOutputter.cpp">
-      <Filter>Hoi4Outputter\Events</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Events\EventOption.cpp">
       <Filter>HoI4World\Events</Filter>
     </ClCompile>
@@ -481,10 +427,10 @@
       <Filter>HoI4World\Leaders</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Leaders\OutAdmiral.cpp">
-      <Filter>Hoi4Outputter\Leaders</Filter>
+      <Filter>OutHoi4\Leaders</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Leaders\OutGeneral.cpp">
-      <Filter>Hoi4Outputter\Leaders</Filter>
+      <Filter>OutHoi4\Leaders</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Leaders\Advisor.cpp">
       <Filter>HoI4World\Leaders</Filter>
@@ -493,7 +439,7 @@
       <Filter>HoI4World\Leaders</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Leaders\OutAdvisor.cpp">
-      <Filter>Hoi4Outputter\Leaders</Filter>
+      <Filter>OutHoi4\Leaders</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Leaders\Commander.cpp">
       <Filter>HoI4World\Leaders</Filter>
@@ -517,19 +463,19 @@
       <Filter>HoI4World\Map</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Map\OutBuilding.cpp">
-      <Filter>Hoi4Outputter\Map</Filter>
+      <Filter>OutHoi4\Map</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Map\OutBuildings.cpp">
-      <Filter>Hoi4Outputter\Map</Filter>
+      <Filter>OutHoi4\Map</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Map\Region.cpp">
       <Filter>HoI4World\Map</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Map\OutStrategicRegion.cpp">
-      <Filter>Hoi4Outputter\Map</Filter>
+      <Filter>OutHoi4\Map</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Map\OutSupplyZone.cpp">
-      <Filter>Hoi4Outputter\Map</Filter>
+      <Filter>OutHoi4\Map</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Map\ProvincePoints.cpp">
       <Filter>HoI4World\Map</Filter>
@@ -544,7 +490,7 @@
       <Filter>HoI4World\Map</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Map\OutSupplyZones.cpp">
-      <Filter>Hoi4Outputter\Map</Filter>
+      <Filter>OutHoi4\Map</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Map\Buildings.cpp">
       <Filter>HoI4World\Map</Filter>
@@ -556,10 +502,10 @@
       <Filter>HoI4World\ScriptedTriggers</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTrigger.cpp">
-      <Filter>Hoi4Outputter\ScriptedTriggers</Filter>
+      <Filter>OutHoi4\ScriptedTriggers</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTriggers.cpp">
-      <Filter>Hoi4Outputter\ScriptedTriggers</Filter>
+      <Filter>OutHoi4\ScriptedTriggers</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.cpp">
       <Filter>HoI4World\ScriptedTriggers</Filter>
@@ -571,28 +517,28 @@
       <Filter>HoI4World\Diplomacy</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Navies\OutLegacyNavyNames.cpp">
-      <Filter>Hoi4Outputter\Navies</Filter>
+      <Filter>OutHoi4\Navies</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Navies\OutLegacyShipTypeNames.cpp">
-      <Filter>Hoi4Outputter\Navies</Filter>
+      <Filter>OutHoi4\Navies</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Navies\OutMtgShipTypeNames.cpp">
-      <Filter>Hoi4Outputter\Navies</Filter>
+      <Filter>OutHoi4\Navies</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Navies\OutMtgNavyNames.cpp">
-      <Filter>Hoi4Outputter\Navies</Filter>
+      <Filter>OutHoi4\Navies</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAiPeace.cpp">
-      <Filter>Hoi4Outputter\Diplomacy</Filter>
+      <Filter>OutHoi4\Diplomacy</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutAiPeaces.cpp">
-      <Filter>Hoi4Outputter\Diplomacy</Filter>
+      <Filter>OutHoi4\Diplomacy</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Diplomacy\AiPeacesUpdater.cpp">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Diplomacy\OutWar.cpp">
-      <Filter>Hoi4Outputter\Diplomacy</Filter>
+      <Filter>OutHoi4\Diplomacy</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4War.cpp">
       <Filter>HoI4World\Diplomacy</Filter>
@@ -604,7 +550,7 @@
       <Filter>HoI4World\Decisions</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\outDifficultySettings.cpp">
-      <Filter>Hoi4Outputter</Filter>
+      <Filter>OutHoi4</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Ideas\Idea.cpp">
       <Filter>HoI4World\Ideas</Filter>
@@ -616,13 +562,13 @@
       <Filter>HoI4World\Ideas</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdea.cpp">
-      <Filter>Hoi4Outputter\Ideas</Filter>
+      <Filter>OutHoi4\Ideas</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdeaGroup.cpp">
-      <Filter>Hoi4Outputter\Ideas</Filter>
+      <Filter>OutHoi4\Ideas</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Ideas\OutIdeas.cpp">
-      <Filter>Hoi4Outputter\Ideas</Filter>
+      <Filter>OutHoi4\Ideas</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Events\EventsFile.cpp">
       <Filter>HoI4World\Events</Filter>
@@ -646,25 +592,25 @@
       <Filter>HoI4World\Military</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Military\OutDivisionTemplate.cpp">
-      <Filter>Hoi4Outputter\Military</Filter>
+      <Filter>OutHoi4\Military</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Military\RegimentTypeGroup.cpp">
       <Filter>HoI4World\Military</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Military\OutDivisionType.cpp">
-      <Filter>Hoi4Outputter\Military</Filter>
+      <Filter>OutHoi4\Military</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Military\OutRegimentType.cpp">
-      <Filter>Hoi4Outputter\Military</Filter>
+      <Filter>OutHoi4\Military</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Military\RegimentType.cpp">
       <Filter>HoI4World\Military</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Military\OutAirplane.cpp">
-      <Filter>Hoi4Outputter\Military</Filter>
+      <Filter>OutHoi4\Military</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Military\OutArmy.cpp">
-      <Filter>Hoi4Outputter\Military</Filter>
+      <Filter>OutHoi4\Military</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Ideologies\IdeologyFile.cpp">
       <Filter>HoI4World\Ideologies</Filter>
@@ -676,10 +622,10 @@
       <Filter>HoI4World\Ideologies</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Ideologies\OutIdeology.cpp">
-      <Filter>Hoi4Outputter\Ideologies</Filter>
+      <Filter>OutHoi4\Ideologies</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Ideologies\OutIdeologies.cpp">
-      <Filter>Hoi4Outputter\Ideologies</Filter>
+      <Filter>OutHoi4\Ideologies</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Ideologies\IdeologyItems.cpp">
       <Filter>HoI4World\Ideologies</Filter>
@@ -688,10 +634,10 @@
       <Filter>HoI4World\ShipTypes</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\ShipTypes\OutMtgShipVariant.cpp">
-      <Filter>Hoi4Outputter\ShipTypes</Filter>
+      <Filter>OutHoi4\ShipTypes</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\ShipTypes\OutLegacyShipVariant.cpp">
-      <Filter>Hoi4Outputter\ShipTypes</Filter>
+      <Filter>OutHoi4\ShipTypes</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\ShipTypes\LegacyShipVariant.cpp">
       <Filter>HoI4World\ShipTypes</Filter>
@@ -703,25 +649,79 @@
       <Filter>Mappers\Versionparser</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\Version\outVersion.cpp">
-      <Filter>Hoi4Outputter\Version</Filter>
+      <Filter>OutHoi4\Version</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\GameRules\GameRuleOption.cpp">
       <Filter>HoI4World\GameRules</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\GameRules\OutGameRuleOption.cpp">
-      <Filter>Hoi4Outputter\GameRules</Filter>
+      <Filter>OutHoi4\GameRules</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\GameRules\GameRule.cpp">
       <Filter>HoI4World\GameRules</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\GameRules\OutGameRule.cpp">
-      <Filter>Hoi4Outputter\GameRules</Filter>
+      <Filter>OutHoi4\GameRules</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\GameRules\GameRules.cpp">
       <Filter>HoI4World\GameRules</Filter>
     </ClCompile>
     <ClCompile Include="Source\Hoi4Outputter\GameRules\OutGameRules.cpp">
-      <Filter>Hoi4Outputter\GameRules</Filter>
+      <Filter>OutHoi4\GameRules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Decisions\OutDecision.cpp">
+      <Filter>OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Decisions\OutDecisionsCategories.cpp">
+      <Filter>OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Decisions\OutDecisionsCategory.cpp">
+      <Filter>OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Decisions\OutDecisions.cpp">
+      <Filter>OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Events\OutEventOption.cpp">
+      <Filter>OutHoi4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Events\OutEvent.cpp">
+      <Filter>OutHoi4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Events\OutEvents.cpp">
+      <Filter>OutHoi4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Navies\OutLegacyNavy.cpp">
+      <Filter>OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Navies\OutLegacyShip.cpp">
+      <Filter>OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Navies\OutMtgNavy.cpp">
+      <Filter>OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Navies\OutMtgShip.cpp">
+      <Filter>OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\Navies\OutNavies.cpp">
+      <Filter>OutHoi4\Navies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\ScriptedLocalisations\OutScriptedLocalisation.cpp">
+      <Filter>OutHoi4\ScriptedLocalisations</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\ScriptedLocalisations\OutScriptedLocalisations.cpp">
+      <Filter>OutHoi4\ScriptedLocalisations</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\ShipTypes\OutShipModules.cpp">
+      <Filter>OutHoi4\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\ShipTypes\OutShipVariants.cpp">
+      <Filter>OutHoi4\ShipTypes</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\States\OutHoI4State.cpp">
+      <Filter>OutHoi4\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Hoi4Outputter\States\OutHoI4States.cpp">
+      <Filter>OutHoi4\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -962,7 +962,7 @@
       <Filter>HoI4World\States</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Hoi4CountryOutputter.h">
-      <Filter>Hoi4Outputter</Filter>
+      <Filter>OutHoi4</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\MilitaryMappings\MilitaryMappingsFile.h">
       <Filter>HoI4World\MilitaryMappings</Filter>
@@ -973,56 +973,11 @@
     <ClInclude Include="Source\HOI4World\MilitaryMappings\SubstitutesImporter.h">
       <Filter>HoI4World\MilitaryMappings</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionOutputter.h">
-      <Filter>Hoi4Outputter\Decisions</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoryOutputter.h">
-      <Filter>Hoi4Outputter\Decisions</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsCategoriesOutputter.h">
-      <Filter>Hoi4Outputter\Decisions</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\Decisions\DecisionsOutputter.h">
-      <Filter>Hoi4Outputter\Decisions</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyNavyOutputter.h">
-      <Filter>Hoi4Outputter\Navies</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\Navies\LegacyShipOutputter.h">
-      <Filter>Hoi4Outputter\Navies</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\Navies\MtgShipOutputter.h">
-      <Filter>Hoi4Outputter\Navies</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\Navies\MtgNavyOutputter.h">
-      <Filter>Hoi4Outputter\Navies</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\Navies\NaviesOutputter.h">
-      <Filter>Hoi4Outputter\Navies</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationsOutputter.h">
-      <Filter>Hoi4Outputter\ScriptedLocalisations</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.h">
       <Filter>HoI4World\ScriptedLocalisations</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisations.h">
       <Filter>HoI4World\ScriptedLocalisations</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\ScriptedLocalisations\ScriptedLocalisationOutputter.h">
-      <Filter>Hoi4Outputter\ScriptedLocalisations</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipModulesOutputter.h">
-      <Filter>Hoi4Outputter\ShipTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\ShipTypes\ShipVariantsOutputter.h">
-      <Filter>Hoi4Outputter\ShipTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\States\HoI4StateOutputter.h">
-      <Filter>Hoi4Outputter\States</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\States\HoI4StatesOutputter.h">
-      <Filter>Hoi4Outputter\States</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Decisions\StabilityWarSupportDecisions.h">
       <Filter>HoI4World\Decisions</Filter>
@@ -1066,17 +1021,8 @@
     <ClInclude Include="Source\HOI4World\Events\Events.h">
       <Filter>HoI4World\Events</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\Events\EventOutputter.h">
-      <Filter>Hoi4Outputter\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\Events\EventsOutputter.h">
-      <Filter>Hoi4Outputter\Events</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\Events\EventOption.h">
       <Filter>HoI4World\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Hoi4Outputter\Events\EventOptionOutputter.h">
-      <Filter>Hoi4Outputter\Events</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Leaders\General.h">
       <Filter>HoI4World\Leaders</Filter>
@@ -1091,7 +1037,7 @@
       <Filter>HoI4World\Leaders</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Leaders\OutAdvisor.h">
-      <Filter>Hoi4Outputter\Leaders</Filter>
+      <Filter>OutHoi4\Leaders</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Leaders\Commander.h">
       <Filter>HoI4World\Leaders</Filter>
@@ -1121,19 +1067,19 @@
       <Filter>HoI4World\Map</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Map\OutBuilding.h">
-      <Filter>Hoi4Outputter\Map</Filter>
+      <Filter>OutHoi4\Map</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Map\OutBuildings.h">
-      <Filter>Hoi4Outputter\Map</Filter>
+      <Filter>OutHoi4\Map</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Map\Region.h">
       <Filter>HoI4World\Map</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Map\OutStrategicRegion.h">
-      <Filter>Hoi4Outputter\Map</Filter>
+      <Filter>OutHoi4\Map</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Map\OutSupplyZone.h">
-      <Filter>Hoi4Outputter\Map</Filter>
+      <Filter>OutHoi4\Map</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Map\ProvincePoints.h">
       <Filter>HoI4World\Map</Filter>
@@ -1148,7 +1094,7 @@
       <Filter>HoI4World\Map</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Map\OutSupplyZones.h">
-      <Filter>Hoi4Outputter\Map</Filter>
+      <Filter>OutHoi4\Map</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Map\Buildings.h">
       <Filter>HoI4World\Map</Filter>
@@ -1169,10 +1115,10 @@
       <Filter>HoI4World\ScriptedTriggers</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTrigger.h">
-      <Filter>Hoi4Outputter\ScriptedTriggers</Filter>
+      <Filter>OutHoi4\ScriptedTriggers</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\ScriptedTriggers\OutScriptedTriggers.h">
-      <Filter>Hoi4Outputter\ScriptedTriggers</Filter>
+      <Filter>OutHoi4\ScriptedTriggers</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.h">
       <Filter>HoI4World\ScriptedTriggers</Filter>
@@ -1187,37 +1133,37 @@
       <Filter>HoI4World\Diplomacy</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Navies\OutLegacyNavyNames.h">
-      <Filter>Hoi4Outputter\Navies</Filter>
+      <Filter>OutHoi4\Navies</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Navies\NavyNames.h">
       <Filter>HoI4World\Navies</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Navies\OutLegacyShipTypeNames.h">
-      <Filter>Hoi4Outputter\Navies</Filter>
+      <Filter>OutHoi4\Navies</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Navies\OutMtgShipTypeNames.h">
-      <Filter>Hoi4Outputter\Navies</Filter>
+      <Filter>OutHoi4\Navies</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Navies\MtgShipTypeNames.h">
       <Filter>HoI4World\Navies</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Navies\OutMtgNavyNames.h">
-      <Filter>Hoi4Outputter\Navies</Filter>
+      <Filter>OutHoi4\Navies</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Navies\LegacyShipTypeNames.h">
       <Filter>HoI4World\Navies</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAiPeace.h">
-      <Filter>Hoi4Outputter\Diplomacy</Filter>
+      <Filter>OutHoi4\Diplomacy</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutAiPeaces.h">
-      <Filter>Hoi4Outputter\Diplomacy</Filter>
+      <Filter>OutHoi4\Diplomacy</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Diplomacy\AiPeacesUpdater.h">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Diplomacy\OutWar.h">
-      <Filter>Hoi4Outputter\Diplomacy</Filter>
+      <Filter>OutHoi4\Diplomacy</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Diplomacy\HoI4War.h">
       <Filter>HoI4World\Diplomacy</Filter>
@@ -1232,7 +1178,7 @@
       <Filter>HoI4World\Decisions</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\outDifficultySettings.h">
-      <Filter>Hoi4Outputter</Filter>
+      <Filter>OutHoi4</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Ideas\Idea.h">
       <Filter>HoI4World\Ideas</Filter>
@@ -1244,13 +1190,13 @@
       <Filter>HoI4World\Ideas</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdea.h">
-      <Filter>Hoi4Outputter\Ideas</Filter>
+      <Filter>OutHoi4\Ideas</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdeaGroup.h">
-      <Filter>Hoi4Outputter\Ideas</Filter>
+      <Filter>OutHoi4\Ideas</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Ideas\OutIdeas.h">
-      <Filter>Hoi4Outputter\Ideas</Filter>
+      <Filter>OutHoi4\Ideas</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Events\EventsFile.h">
       <Filter>HoI4World\Events</Filter>
@@ -1274,19 +1220,19 @@
       <Filter>HoI4World\Military</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Military\OutDivisionTemplate.h">
-      <Filter>Hoi4Outputter\Military</Filter>
+      <Filter>OutHoi4\Military</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Military\RegimentTypeGroup.h">
       <Filter>HoI4World\Military</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Military\OutDivisionType.h">
-      <Filter>Hoi4Outputter\Military</Filter>
+      <Filter>OutHoi4\Military</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Military\DivisionType.h">
       <Filter>HoI4World\Military</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Military\OutRegimentType.h">
-      <Filter>Hoi4Outputter\Military</Filter>
+      <Filter>OutHoi4\Military</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Military\RegimentType.h">
       <Filter>HoI4World\Military</Filter>
@@ -1295,10 +1241,10 @@
       <Filter>HoI4World\Military</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Military\OutAirplane.h">
-      <Filter>Hoi4Outputter\Military</Filter>
+      <Filter>OutHoi4\Military</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Military\OutArmy.h">
-      <Filter>Hoi4Outputter\Military</Filter>
+      <Filter>OutHoi4\Military</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Ideologies\IdeologyFile.h">
       <Filter>HoI4World\Ideologies</Filter>
@@ -1310,10 +1256,10 @@
       <Filter>HoI4World\Ideologies</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Ideologies\OutIdeology.h">
-      <Filter>Hoi4Outputter\Ideologies</Filter>
+      <Filter>OutHoi4\Ideologies</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Ideologies\OutIdeologies.h">
-      <Filter>Hoi4Outputter\Ideologies</Filter>
+      <Filter>OutHoi4\Ideologies</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Ideologies\IdeologyItems.h">
       <Filter>HoI4World\Ideologies</Filter>
@@ -1322,13 +1268,13 @@
       <Filter>HoI4World\ShipTypes</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\OutMtgShipVariant.h">
-      <Filter>Hoi4Outputter\ShipTypes</Filter>
+      <Filter>OutHoi4\ShipTypes</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\ShipTypes\LegacyShipVariant.h">
       <Filter>HoI4World\ShipTypes</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\ShipTypes\OutLegacyShipVariant.h">
-      <Filter>Hoi4Outputter\ShipTypes</Filter>
+      <Filter>OutHoi4\ShipTypes</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\ShipTypes\ShipUpgrades.h">
       <Filter>HoI4World\ShipTypes</Filter>
@@ -1337,25 +1283,79 @@
       <Filter>Mappers\Versionparser</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\Version\outVersion.h">
-      <Filter>Hoi4Outputter\Version</Filter>
+      <Filter>OutHoi4\Version</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\GameRules\GameRuleOption.h">
       <Filter>HoI4World\GameRules</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\GameRules\OutGameRuleOption.h">
-      <Filter>Hoi4Outputter\GameRules</Filter>
+      <Filter>OutHoi4\GameRules</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\GameRules\GameRule.h">
       <Filter>HoI4World\GameRules</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\GameRules\OutGameRule.h">
-      <Filter>Hoi4Outputter\GameRules</Filter>
+      <Filter>OutHoi4\GameRules</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\GameRules\GameRules.h">
       <Filter>HoI4World\GameRules</Filter>
     </ClInclude>
     <ClInclude Include="Source\Hoi4Outputter\GameRules\OutGameRules.h">
-      <Filter>Hoi4Outputter\GameRules</Filter>
+      <Filter>OutHoi4\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Decisions\OutDecision.h">
+      <Filter>OutHoi4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Decisions\OutDecisionsCategories.h">
+      <Filter>OutHoi4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Decisions\OutDecisionsCategory.h">
+      <Filter>OutHoi4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Decisions\OutDecisions.h">
+      <Filter>OutHoi4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Events\OutEventOption.h">
+      <Filter>OutHoi4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Events\OutEvent.h">
+      <Filter>OutHoi4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Events\OutEvents.h">
+      <Filter>OutHoi4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Navies\OutLegacyNavy.h">
+      <Filter>OutHoi4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Navies\OutLegacyShip.h">
+      <Filter>OutHoi4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Navies\OutMtgNavy.h">
+      <Filter>OutHoi4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Navies\OutMtgShip.h">
+      <Filter>OutHoi4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\Navies\OutNavies.h">
+      <Filter>OutHoi4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\ScriptedLocalisations\OutScriptedLocalisation.h">
+      <Filter>OutHoi4\ScriptedLocalisations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\ScriptedLocalisations\OutScriptedLocalisations.h">
+      <Filter>OutHoi4\ScriptedLocalisations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\ShipTypes\OutShipModules.h">
+      <Filter>OutHoi4\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\ShipTypes\OutShipVariants.h">
+      <Filter>OutHoi4\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\States\OutHoI4State.h">
+      <Filter>OutHoi4\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Hoi4Outputter\States\OutHoI4States.h">
+      <Filter>OutHoi4\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

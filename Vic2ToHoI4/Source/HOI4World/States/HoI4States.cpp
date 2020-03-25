@@ -10,7 +10,7 @@
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "../../Configuration.h"
-#include "../../Hoi4Outputter/States/HoI4StateOutputter.h"
+#include "../../Hoi4Outputter/States/OutHoI4State.h"
 #include "../../Mappers/CountryMapping.h"
 #include "../../Mappers/ProvinceDefinitions.h"
 #include "../../Mappers/V2Localisations.h"
