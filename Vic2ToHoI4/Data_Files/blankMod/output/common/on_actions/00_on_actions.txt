@@ -38,12 +38,45 @@ on_actions = {
 		random_events = {
 			100 = ace_died.1
 		}
+	}	
+	# our ace died in accident
+	# country, FROM = ace
+	on_ace_killed_on_accident = {
+	
+	}
+	
+	# enemy ace is killed by our non name
+	# country, FROM = enemy ace
+	on_non_ace_killed_other_ace = {
+	
 	}
 
 	# During justifying wargoals
 	# triggered daily, so make sure there is a sink somewhere not firing events
 	# country, FROM = target nation
 	on_justifying_wargoal_pulse = {
+		random_events = {
+			100 = war_justification.1
+			100 = war_justification.2
+			100 = war_justification.3
+			100 = war_justification.4
+			100 = war_justification.5
+			100 = war_justification.6
+			100 = war_justification.7
+			100 = war_justification.8
+			100 = war_justification.9
+			100 = war_justification.10
+			100 = war_justification.11
+			100 = war_justification.12
+			100 = war_justification.13
+			100 = war_justification.14
+			100 = war_justification.15
+			100 = war_justification.16
+			100 = war_justification.17
+			100 = war_justification.18
+			100 = war_justification.19
+			17000 = 0
+		}
 	}
 
 	on_wargoal_expire = {
@@ -69,12 +102,12 @@ on_actions = {
 				goto_state = FROM
 				set_country_flag = achievement_has_dropped_nuke
 			}
-			if = {
-				limit = {
-					FROM = { state = 378 }					
-				}
-				set_country_flag = achievement_has_nuked_california
-			}
+			#if = {
+			#	limit = {
+			#		FROM = { state = 378 }					
+			#	}
+			#	set_country_flag = achievement_has_nuked_california
+			#}
 			news_event = { id = nuke_dropped.2 days = 1}
 			news_event = { id = nuke_dropped.3 days = 1}
 			news_event = { id = nuke_dropped.4 days = 1}
@@ -158,13 +191,116 @@ on_actions = {
 
 	#FROM is country getting invited.
 	on_offer_join_faction = {
-		effect = {
+		effect = {			#Give achievement to nation joining a faction, but not in one from game start
+			if = {
+				limit = {
+					date > 1936.01.02
+				}
+				FROM = {
+					if = {
+						limit = {
+							is_faction_leader = no
+						}
+						set_country_flag = achievement_has_joined_faction
+					}
+				}
+			}
+			#Remove anti_soviet_pact if joining commie Soviet in faction
+			#if = {
+			#	limit = {
+			#		original_tag = SOV
+			#		has_government = communism
+			#		FROM = {
+			#			has_idea = anti_soviet_pact 
+			#		}
+			#	}
+			#	FROM = {
+			#		remove_ideas = anti_soviet_pact
+			#	}
+			#}
+	
+			# Sunset invasion check
+			if = {
+				limit = {
+					is_puppet = no
+					OR = {
+						AND = {
+							#tag = MEX
+							FROM = {
+								capital_scope = {
+									NOT = { is_on_continent = south_america }
+								}
+							}
+						}
+						AND = {
+							#FROM = {
+							#	tag = MEX
+							#}
+							capital_scope = {
+								NOT = { is_on_continent = south_america }
+							}
+						}
+					}
+				}
+				set_country_flag = achievement_failed_sunset_invasion
+			}	
 		}
 	}
 
 	#FROM is faction leader on join faction requests. THIS DOES NOT FIRE ON ADD_TO_FACTION EFFECT! USE ON_OFFER_JOIN_FACTION!
 	on_join_faction = {
-		effect = {
+		effect = {			set_country_flag = achievement_has_joined_faction
+			#Remove anti_soviet_pact if joining commie Soviet in faction
+			#if = {
+			#	limit = {
+			#		has_idea = anti_soviet_pact 
+			#		FROM = {
+			#			original_tag = SOV
+			#			has_government = communism
+			#		}
+			#	}
+			#	remove_ideas = anti_soviet_pact
+			#}
+			# Sunset invasion check
+			if = {
+				limit = {
+					is_puppet = no
+					OR = {
+						AND = {
+							#tag = MEX
+							FROM = {
+								capital_scope = {
+									NOT = { is_on_continent = south_america }
+								}
+							}
+						}
+						AND = {
+							#FROM = {
+							#	tag = MEX
+							#}
+							capital_scope = {
+								NOT = { is_on_continent = south_america }
+							}
+						}
+					}
+				}
+				set_country_flag = achievement_failed_sunset_invasion
+			}
+			# Romania shouldn't declare war on Bulgaria on historical mode, if both are going to join the Axis
+			if = {
+				limit = {
+					original_tag = BUL
+					FROM = { original_tag = GER }
+					is_historical_focus_on = yes
+				}
+				ROM = {
+					add_ai_strategy = {
+						type = befriend
+						id = "BUL"
+						value = 200
+					}
+				}
+			}
 		}
 	}
 
@@ -188,7 +324,6 @@ on_actions = {
 					}
 				}
 			}
-
 			#If prepared with surprise attack plan, get bonus
 			if = {
 				limit = {
@@ -232,6 +367,22 @@ on_actions = {
 
 	on_government_change = {
 		effect = {
+		}
+	}
+	
+	on_coup_succeded = {
+		effect = {
+			#Turn elections on for democracies created from coup
+			random_other_country = {
+				limit = {
+					has_government = democratic
+					original_tag = ROOT
+				}
+				set_politics = {
+					ruling_party = democratic
+					elections_allowed = yes
+				}
+			}
 		}
 	}
 
@@ -367,6 +518,41 @@ on_actions = {
 			add_timed_unit_leader_trait = {
 				trait = recently_promoted
 				days = 100
+			}
+		}
+	}
+	
+	
+	# root country that invades
+	# scope state that is invaded
+	# from scope state that the invasion started
+	# on_naval_invasion = {
+	# 	effect = {
+	# 	}
+	# }
+	
+	
+	# root country that paradrops
+	# scope state that is paradroped into
+	# from scope state that the paradrop started
+	on_paradrop = {
+	    effect = {
+		    set_country_flag = has_paradropped_flag
+		}
+	}
+	on_ruling_party_change = { 
+		effect = {
+			every_owned_state = {
+				limit = {
+					is_controlled_by = ROOT
+					NOT = {
+						is_core_of = ROOT
+					}
+				}
+				set_temp_variable = { comp_change = random }
+				multiply_temp_variable = { comp_change = -15 }
+				add_to_temp_variable = { comp_change = -10 }
+				add_compliance = comp_change
 			}
 		}
 	}
