@@ -1,3 +1,233 @@
+add_namespace = news
+# Games of the XI Olympiad
+news_event = {
+	id = news.66 #Games of the XI Olympiad
+	title = news.66.t
+	desc = olympics.1936.d
+	picture = GFX_news_event_olympics_1940
+	
+	major = yes
+	
+	trigger = {
+		date > 1936.8.15
+		threat < 0.5
+		NOT = { has_global_flag = olympics_1936 }
+		OR = {
+			AND = {
+				is_faction_leader = yes
+				num_faction_members > 1
+				has_war = no
+			}
+			is_major = no
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+		modifier = {
+			factor = 10
+			is_major = no
+		}
+	}
+	
+	immediate = {
+		set_global_flag = olympics_1936 
+		FROM = { set_country_flag = olympics_1936 }
+	}
+	
+	option = {
+		name = news.66.a #The Games are concluded.
+	}
+}
+# Games of the XII Olympiad
+news_event = {
+	id = news.67
+	title = news.67.t #Games of the XII Olympiad
+	desc = olympics.1940.d
+	picture = GFX_news_event_olympics_1940
+	
+	major = yes
+	
+	trigger = {
+		date > 1940.10.5
+		threat < 0.5
+		NOT = { has_global_flag = olympics_1940 }
+		OR = {
+			AND = {
+				is_faction_leader = no
+				is_major = yes
+				has_war = no
+			}
+			is_major = no
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+		modifier = {
+			factor = 10
+			is_major = no
+		}
+	}
+	
+	immediate = {
+		set_global_flag = olympics_1940
+	}
+	
+	option = {
+		name = news.66.a #The Games are concluded.
+	}
+}
+# Games of the XIII Olympiad
+news_event = {
+	id = news.68
+	title = olympics.1944.t
+	desc = olympics.1944.d
+	picture = GFX_news_event_olympics_1940
+	
+	major = yes
+	
+	trigger = {
+		date > 1944.6.19
+		threat < 0.5
+		NOT = { has_global_flag = olympics_1944 }
+		OR = {
+			AND = {
+				is_faction_leader = yes
+				NOT = { has_country_flag = olympics_1936 }
+				has_war = no
+			}
+			is_major = no
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+		modifier = {
+			factor = 10
+			is_major = no
+		}
+	}
+	
+	immediate = {
+		set_global_flag = olympics_1944
+	}
+	
+	option = {
+		name = news.66.a #The Games are concluded.
+	}
+}
+# Games of the XIV Olympiad
+news_event = {
+	id = news.69
+	title = olympics.1948.t
+	desc = olympics.1948.d
+	picture = GFX_news_event_olympics_1940
+	
+	major = yes
+	
+	trigger = {
+		date > 1948.6.29
+		threat < 0.5
+		NOT = { has_global_flag = olympics_1948 }
+		OR = {
+			AND = {
+				is_faction_leader = yes
+				NOT = { has_country_flag = olympics_1936 }
+				has_war = no
+			}
+			is_major = no
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+		modifier = {
+			factor = 10
+			is_major = no
+		}
+	}
+	
+	immediate = {
+		set_global_flag = olympics_1948
+	}
+	
+	option = {
+		name = news.66.a #The Games are concluded.
+	}
+}
+#Games cancelled
+news_event = {
+	id = news.70
+	title = olympics.failed.t
+	desc = olympics.failed.d
+	picture = GFX_news_event_olympics_1940
+	
+	major = yes
+	
+	trigger = {
+		is_ai = no
+		OR = {
+			AND = {
+				date > 1936.10.15
+				NOT = { has_global_flag = olympics_1936 }		
+			}
+			AND = {
+				date > 1940.12.5
+				NOT = { has_global_flag = olympics_1940 }		
+			}
+			AND = {
+				date > 1944.8.19
+				NOT = { has_global_flag = olympics_1944 }		
+			}
+			AND = {
+				date > 1948.8.29
+				NOT = { has_global_flag = olympics_1948 }		
+			}
+		}
+		threat > 0.5
+		any_country = {
+			is_faction_leader = yes
+			has_war = yes
+		}
+	}
+	
+	mean_time_to_happen = {
+		days = 2
+	}
+	
+	option = {
+		name = olympics.failed.a
+		set_global_flag = olympics_1936
+		trigger = {
+			date > 1936.10.15
+			NOT = { date > 1940.10.5 }
+		}
+	}
+	option = {
+		name = olympics.failed.a
+		set_global_flag = olympics_1940
+		trigger = {
+			date > 1940.12.5
+			NOT = { date > 1944.6.19 }
+		}
+	}
+	option = {
+		name = olympics.failed.a
+		set_global_flag = olympics_1944
+		trigger = {
+			date > 1944.8.19
+			NOT = { date > 1948.6.29 }
+		}
+	}
+	option = {
+		name = olympics.failed.a
+		set_global_flag = olympics_1948
+		trigger = {
+			date > 1948.8.29
+		}
+	}
+}
 # Faction Founded!
 news_event = {
 	id = news.159
