@@ -103,11 +103,6 @@ spriteTypes = {
 		name = "GFX_autonomy_annex_icon"
 		textureFile = "gfx/interface/autonomy/autonomy_annex_icon.dds"
 	}
-	
-	spriteType = {
-		name = "GFX_autonomy_sphereling_icon"
-		textureFile = "gfx/interface/autonomy/autonomy_sphereling_icon.dds"
-	}
 
 	spriteType = {
 		name = "GFX_autonomy_dominion_icon"
@@ -127,6 +122,11 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_autonomy_integrated_puppet_icon"
 		textureFile = "gfx/interface/autonomy/autonomy_integrated_puppet_icon.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_autonomy_collaboration_government_icon"
+		textureFile = "gfx/interface/autonomy/autonomy_collaboration_government.dds"
 	}
 	
 	spriteType = {
@@ -184,7 +184,7 @@ spriteTypes = {
 		looping = yes
 		play_on_show = yes
 		pause_on_loop = 0.0
-		allwaystransparent = yes
+		alwaystransparent = yes
 		effectFile = "gfx/FX/buttonstate_blendframes.lua"
 	}	
 	
@@ -196,7 +196,7 @@ spriteTypes = {
 		looping = yes
 		play_on_show = yes
 		pause_on_loop = 0.0
-		allwaystransparent = yes
+		alwaystransparent = yes
 		effectFile = "gfx/FX/buttonstate_blendframes.lua"
 	}
 
@@ -213,7 +213,7 @@ spriteTypes = {
 		looping = yes
 		play_on_show = yes
 		pause_on_loop = 0.0
-		allwaystransparent = yes
+		alwaystransparent = yes
 		effectFile = "gfx/FX/buttonstate_blendframes.lua"
 	}
 
@@ -310,7 +310,7 @@ spriteTypes = {
 		looping = yes
 		play_on_show = yes
 		pause_on_loop = 0.0
-		allwaystransparent = yes
+		alwaystransparent = yes
 		effectFile = "gfx/FX/buttonstate_blendframes.lua"
 	}	
 	
@@ -399,6 +399,12 @@ spriteTypes = {
 		texturefile = "gfx/interface/idea_entry_bg_2.dds"
 		noOfFrames = 2
 	}
+	
+	spriteType = {
+		name = "GFX_idea_entry_bg_3"
+		texturefile = "gfx/interface/idea_entry_bg_3.dds"
+		noOfFrames = 2
+	}
 
 	spriteType = {
 		name = "GFX_pol_factions_strip"
@@ -411,6 +417,15 @@ spriteTypes = {
 		texturefile = "gfx/interface/icon_exiled_governments.dds"
 	}
 
+	spriteType = {
+		name = "GFX_icon_collaboration"
+		texturefile = "gfx/interface/occupation/collaboration_icon.dds"
+	}
+	spriteType = {
+		name = "GFX_icon_collaboration_and_exiles"
+		texturefile = "gfx/interface/occupation/collaboration_and_exiles_icon.dds"
+	}
+	
 	spriteType = {
 		name = "GFX_icon_manage_subjects"
 		texturefile = "gfx/interface/icon_manage_subjects.dds"
@@ -439,6 +454,11 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_ideology_democratic_group"
 		texturefile = "gfx/interface/ideologies/democratic_group.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_ideology_anarchism"
+		texturefile = "gfx/interface/ideologies/anarchism.dds"
 	}
 	
 	spriteType = {
@@ -564,6 +584,15 @@ spriteTypes = {
 		name = "GFX_political_chart_small"
 		size = 26
 	}	
+	
+	circularProgressBarType = {
+		name = "GFX_textured_pie_chart"
+		textureFile1 = "gfx/interface/ideas/idea_volunteer_only.dds"
+		textureFile2 = "gfx/interface/ideas/idea_extensive_conscription.dds"
+		size = 30
+		rotation = 90
+		amount = 75
+	}	
 
 	spriteType = {
 		name = "GFX_pol_goal_progress_frame"
@@ -604,12 +633,6 @@ spriteTypes = {
 		textureFile = "gfx//interface//occupation_policy_button_selected.dds"
 		effectFile = "gfx/FX/buttonstate_nodowneffect.lua"
 	}	
-	
-	spriteType = {
-		name = "GFX_occupation_policy_icon_strip"
-		textureFile = "gfx/interface/occupation_policy_icon_strip.dds"
-		noOfFrames = 4
-	}
 
 	frameAnimatedSpriteType = {
 		name = "GFX_tutorial_politics_icon_glow"
@@ -619,7 +642,7 @@ spriteTypes = {
 		looping = yes
 		play_on_show = yes
 		pause_on_loop = 0.0
-		allwaystransparent = yes
+		alwaystransparent = yes
 		effectFile = "gfx/FX/buttonstate_blendframes.lua"
 	}
 	
