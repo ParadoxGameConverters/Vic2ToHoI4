@@ -1,4 +1,11 @@
 add_namespace = news
+# About Olympic games:
+# HoI4 syntax did not allow me to tell "check if major country is X and, if you find no major country
+# like X, then take a random minor"
+# Furthermore, the hidden_effect thing is needed to show the event
+# also to the player. It does not interfere with whoever is hosting
+# the Olympic games. If you're playing Switzerland and Australia hosts the games,
+# you'll read of Australian Olympics, not of Swiss ones.
 # Games of the XI Olympiad
 news_event = {
 	id = news.66 #Games of the XI Olympiad
@@ -37,6 +44,11 @@ news_event = {
 	
 	option = {
 		name = news.66.a #The Games are concluded.
+		hidden_effect = {
+			every_other_country = {
+				country_event = news.66
+			}
+		}
 	}
 }
 # Games of the XII Olympiad
@@ -76,6 +88,11 @@ news_event = {
 	
 	option = {
 		name = news.66.a #The Games are concluded.
+		hidden_effect = {
+			every_other_country = {
+				country_event = news.67
+			}
+		}
 	}
 }
 # Games of the XIII Olympiad
@@ -115,6 +132,11 @@ news_event = {
 	
 	option = {
 		name = news.66.a #The Games are concluded.
+		hidden_effect = {
+			every_other_country = {
+				country_event = news.68
+			}
+		}
 	}
 }
 # Games of the XIV Olympiad
@@ -154,6 +176,11 @@ news_event = {
 	
 	option = {
 		name = news.66.a #The Games are concluded.
+		hidden_effect = {
+			every_other_country = {
+				country_event = news.69
+			}
+		}
 	}
 }
 #Games cancelled
