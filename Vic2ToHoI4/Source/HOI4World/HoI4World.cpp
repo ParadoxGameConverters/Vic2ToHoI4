@@ -35,7 +35,7 @@
 #include "../Mappers/TechMapper.h"
 #include "../Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "ParserHelpers.h"
-#include "../OutHoi4/Hoi4CountryOutputter.h"
+#include "../OutHoi4/OutHoi4Country.h"
 #include "../OutHoi4/Decisions/OutDecisions.h"
 #include "../OutHoi4/Diplomacy/OutAiPeaces.h"
 #include "../OutHoi4/GameRules/OutGameRules.h"

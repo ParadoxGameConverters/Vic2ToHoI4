@@ -263,9 +263,6 @@
     <ClCompile Include="Mocks\Vic2StateMock.h">
       <Filter>Mocks</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Hoi4CountryOutputter.cpp">
-      <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
-    </ClCompile>
     <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
@@ -846,6 +843,9 @@
       <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutTechnologies.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoi4Country.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
     </ClCompile>
   </ItemGroup>

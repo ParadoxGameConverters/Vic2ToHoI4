@@ -203,7 +203,6 @@
     <ClCompile Include="Source\OutHoi4\GameRules\OutGameRule.cpp" />
     <ClCompile Include="Source\OutHoi4\GameRules\OutGameRuleOption.cpp" />
     <ClCompile Include="Source\OutHoi4\GameRules\OutGameRules.cpp" />
-    <ClCompile Include="Source\OutHoi4\Hoi4CountryOutputter.cpp" />
     <ClCompile Include="Source\OutHoi4\Ideas\OutIdea.cpp" />
     <ClCompile Include="Source\OutHoi4\Ideas\OutIdeaGroup.cpp" />
     <ClCompile Include="Source\OutHoi4\Ideas\OutIdeas.cpp" />
@@ -234,6 +233,7 @@
     <ClCompile Include="Source\OutHoi4\outDifficultySettings.cpp" />
     <ClCompile Include="Source\OutHoi4\OutFocus.cpp" />
     <ClCompile Include="Source\OutHoi4\OutFocusTree.cpp" />
+    <ClCompile Include="Source\OutHoi4\OutHoi4Country.cpp" />
     <ClCompile Include="Source\OutHoi4\OutHoI4Version.cpp" />
     <ClCompile Include="Source\OutHoi4\OutLocalisation.cpp" />
     <ClCompile Include="Source\OutHoi4\OutOnActions.cpp" />
@@ -411,7 +411,7 @@
     <ClInclude Include="Source\OutHoi4\GameRules\OutGameRule.h" />
     <ClInclude Include="Source\OutHoi4\GameRules\OutGameRuleOption.h" />
     <ClInclude Include="Source\OutHoi4\GameRules\OutGameRules.h" />
-    <ClInclude Include="Source\OutHoi4\Hoi4CountryOutputter.h" />
+    <ClInclude Include="Source\OutHoi4\OutHoi4Country.h" />
     <ClInclude Include="Source\OutHoi4\Ideas\OutIdea.h" />
     <ClInclude Include="Source\OutHoi4\Ideas\OutIdeaGroup.h" />
     <ClInclude Include="Source\OutHoi4\Ideas\OutIdeas.h" />

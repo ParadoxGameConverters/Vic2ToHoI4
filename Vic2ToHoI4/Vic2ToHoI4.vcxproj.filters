@@ -354,9 +354,6 @@
     <ClCompile Include="Source\HOI4World\States\DefaultState.cpp">
       <Filter>HoI4World\States</Filter>
     </ClCompile>
-    <ClCompile Include="Source\OutHoi4\Hoi4CountryOutputter.cpp">
-      <Filter>OutHoi4</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\MilitaryMappings\MilitaryMappingsFile.cpp">
       <Filter>HoI4World\MilitaryMappings</Filter>
     </ClCompile>
@@ -741,6 +738,9 @@
     <ClCompile Include="Source\OutHoi4\OutTechnologies.cpp">
       <Filter>OutHoi4</Filter>
     </ClCompile>
+    <ClCompile Include="Source\OutHoi4\OutHoi4Country.cpp">
+      <Filter>OutHoi4</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -978,9 +978,6 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\States\DefaultState.h">
       <Filter>HoI4World\States</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\OutHoi4\Hoi4CountryOutputter.h">
-      <Filter>OutHoi4</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\MilitaryMappings\MilitaryMappingsFile.h">
       <Filter>HoI4World\MilitaryMappings</Filter>
@@ -1391,6 +1388,9 @@
       <Filter>OutHoi4</Filter>
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\OutTechnologies.h">
+      <Filter>OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\OutHoi4Country.h">
       <Filter>OutHoi4</Filter>
     </ClInclude>
   </ItemGroup>

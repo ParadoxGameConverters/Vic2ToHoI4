@@ -1,29 +1,30 @@
-#include "Hoi4CountryOutputter.h"
-#include "Leaders/OutAdvisor.h"
-#include "Navies/OutNavies.h"
-#include "Navies/OutLegacyNavyNames.h"
-#include "Navies/OutMtgNavyNames.h"
-#include "ShipTypes/OutShipVariants.h"
+#include "OutHoi4Country.h"
 #include "../HOI4World/Diplomacy/Faction.h"
-#include "../HOI4World/Military/DivisionTemplate.h"
 #include "../HOI4World/HoI4Country.h"
 #include "../HOI4World/HoI4FocusTree.h"
+#include "../HOI4World/Leaders/Advisor.h"
+#include "../HOI4World/Military/DivisionTemplate.h"
 #include "../HOI4World/Names.h"
 #include "../HOI4World/Navies/NavyNames.h"
-#include "../HOI4World/Leaders/Advisor.h"
 #include "../Mappers/GraphicsMapper.h"
 #include "../V2World/Country.h"
 #include "Date.h"
+#include "Leaders/OutAdvisor.h"
+#include "Navies/OutLegacyNavyNames.h"
+#include "Navies/OutMtgNavyNames.h"
+#include "Navies/OutNavies.h"
 #include "OSCompatibilityLayer.h"
-#include <string>
 #include "OutFocusTree.h"
 #include "OutTechnologies.h"
+#include "ShipTypes/OutShipVariants.h"
+#include <string>
+
 
 
 void HoI4::outputToCommonCountriesFile(std::ostream& countriesFile, const Country& theCountry)
 {
-	countriesFile << theCountry.getTag()
-		<< " = \"countries/" << Utils::normalizeUTF8Path(theCountry.getCommonCountryFile()) << "\"\n";
+	countriesFile << theCountry.getTag() << " = \"countries/"
+					  << Utils::normalizeUTF8Path(theCountry.getCommonCountryFile()) << "\"\n";
 }
 
 
@@ -36,11 +37,9 @@ void HoI4::outputColors(std::ostream& out, const Country& theCountry)
 }
 
 
-void outputNamesSet(
-	std::ostream& namesFile,
-	const std::optional<std::vector<std::string>>& names,
-	const std::string& tabs
-);
+void outputNamesSet(std::ostream& namesFile,
+	 const std::optional<std::vector<std::string>>& names,
+	 const std::string& tabs);
 
 void HoI4::outputToNamesFiles(std::ostream& namesFile, const namesMapper& theNames, const Country& theCountry)
 {
@@ -87,11 +86,10 @@ void HoI4::outputToNamesFiles(std::ostream& namesFile, const namesMapper& theNam
 }
 
 
-void outputNamesSet(
-	std::ostream& namesFile,
-	const std::optional<std::vector<std::string>>& names,
-	const std::string& tabs
-) {
+void outputNamesSet(std::ostream& namesFile,
+	 const std::optional<std::vector<std::string>>& names,
+	 const std::string& tabs)
+{
 	if (names)
 	{
 		namesFile << tabs;
@@ -123,75 +121,68 @@ void HoI4::outputToUnitNamesFiles(const Country& theCountry)
 	const auto& tag = theCountry.getTag();
 
 	std::ofstream legacyUnitNamesFile(
-		"output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt"
-	);
+		 "output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt");
 	if (!legacyUnitNamesFile.is_open())
 	{
 		throw std::runtime_error(
-			"Could not open output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt"
-		);
+			 "Could not open output/" + theConfiguration.getOutputName() + "/common/units/names/" + tag + "_names.txt");
 	}
-	legacyUnitNamesFile << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
+	legacyUnitNamesFile << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 	outLegacyNavyNames(legacyUnitNamesFile, theCountry.getNavyNames().getLegacyShipTypeNames(), tag);
 	legacyUnitNamesFile.close();
 
 	std::ofstream mtgUnitNamesFile(
-		"output/" + theConfiguration.getOutputName() + "/common/units/names_ships/" + tag + "_ship_names.txt"
-	);
+		 "output/" + theConfiguration.getOutputName() + "/common/units/names_ships/" + tag + "_ship_names.txt");
 	if (!mtgUnitNamesFile.is_open())
 	{
-		throw std::runtime_error(
-			"Could not open output/" + theConfiguration.getOutputName() + "/common/units/names_ships/" + tag + "_ship_names.txt"
-		);
+		throw std::runtime_error("Could not open output/" + theConfiguration.getOutputName() +
+										 "/common/units/names_ships/" + tag + "_ship_names.txt");
 	}
-	mtgUnitNamesFile << "\xEF\xBB\xBF";    // add the BOM to make HoI4 happy
+	mtgUnitNamesFile << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 	outMtgNavyNames(mtgUnitNamesFile, theCountry.getNavyNames().getMtgShipTypeNames(), tag);
 	mtgUnitNamesFile.close();
 }
 
 
-void HoI4::outputIdeaGraphics(
-	std::ostream& ideasFile,
-	graphicsMapper& graphics,
-	const Country& theCountry
-) {
+void HoI4::outputIdeaGraphics(std::ostream& ideasFile, graphicsMapper& graphics, const Country& theCountry)
+{
 	const auto& tag = theCountry.getTag();
 	const auto& primaryCultureGroup = theCountry.getSourceCountry().getPrimaryCultureGroup();
 
 	ideasFile << "\tspriteType = {\n";
 	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_communist_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" <<
-		graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "communism") << "\"\n";
+	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "communism")
+				 << "\"\n";
 	ideasFile << "\t}\n";
 
 	ideasFile << "\tspriteType = {\n";
 	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_democratic_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" <<
-		graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "democratic") << "\"\n";
+	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "democratic")
+				 << "\"\n";
 	ideasFile << "\t}\n";
 
 	ideasFile << "\tspriteType = {\n";
 	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_neutrality_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" <<
-		graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "neutrality") << "\"\n";
+	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "neutrality")
+				 << "\"\n";
 	ideasFile << "\t}\n";
 
 	ideasFile << "\tspriteType = {\n";
 	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_absolutist_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" <<
-		graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "absolutist") << "\"\n";
+	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "absolutist")
+				 << "\"\n";
 	ideasFile << "\t}\n";
 
 	ideasFile << "\tspriteType = {\n";
 	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_radical_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" <<
-		graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "radical") << "\"\n";
+	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "radical")
+				 << "\"\n";
 	ideasFile << "\t}\n";
 
 	ideasFile << "\tspriteType = {\n";
 	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_fascist_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" <<
-		graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "fascism") << "\"\n";
+	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "fascism")
+				 << "\"\n";
 	ideasFile << "\t}\n";
 }
 
@@ -199,18 +190,14 @@ void HoI4::outputIdeaGraphics(
 void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, const HoI4::Country& theCountry);
 void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates, const HoI4::Country& theCountry);
 void outputCommonCountryFile(const HoI4::Country& theCountry);
-void outputAdvisorIdeas(
-	const std::string& tag,
-	const std::set<HoI4::Advisor>& ideologicalAdvisors
-);
+void outputAdvisorIdeas(const std::string& tag, const std::set<HoI4::Advisor>& ideologicalAdvisors);
 
-void HoI4::outputCountry(
-	const std::set<Advisor>& ideologicalMinisters,
-	const std::vector<DivisionTemplateType>& divisionTemplates,
-	namesMapper& theNames,
-	graphicsMapper& theGraphics,
-	const Country& theCountry
-) {
+void HoI4::outputCountry(const std::set<Advisor>& ideologicalMinisters,
+	 const std::vector<DivisionTemplateType>& divisionTemplates,
+	 namesMapper& theNames,
+	 graphicsMapper& theGraphics,
+	 const Country& theCountry)
+{
 	if (theCountry.getCapitalState())
 	{
 		outputHistory(theNames, theGraphics, theCountry);
@@ -234,70 +221,51 @@ void outputThreat(std::ostream& output, const double& threat);
 void outputWars(std::ostream& output, const std::vector<HoI4::War>& wars);
 void outputOOBLines(std::ostream& output, const std::string& tag);
 void outputConvoys(std::ostream& output, const int& convoys);
-void outputEquipmentStockpile(
-	std::ostream& output,
-	const std::map<std::string, unsigned int>& equipmentStockpile,
-	const std::string& tag
-);
-void outputPuppets(
-	std::ostream& output,
-	const std::string& tag,
-	const std::string& governmentIdeology,
-	const std::set<std::string>& puppets,
-	const std::string& puppetMaster,
-	const std::map<std::string, HoI4::Relations>& relations,
-	const bool& greatPower,
-	const std::map<std::string, double>& spherelings
-);
-void outputPolitics(
-	std::ostream& output,
-	const std::string& governmentIdeology,
-	const date& lastElection,
-	const bool& areElectionsAllowed,
-	const std::map<std::string, int>& ideologySupport
-);
-void outputRelations(
-	std::ostream& output,
-	const std::string& tag,
-	const std::map<std::string, HoI4::Relations>& relations
-);
-void outputFactions(
-	std::ostream& output,
-	const std::string& tag,
-	std::optional<HoI4::Faction> faction,
-	std::optional<std::string> possibleLeaderName
-);
-void outputGuaranteedSpherelings(
-	std::ostream& output,
-	std::vector<std::string> guaranteed
-);
-void outputIdeas(
-	std::ostream& output,
-	const bool& greatPower,
-	const bool& civilized,
-	const std::set<std::string>& ideas,
-	const std::string& mobilizationLaw,
-	const std::string& economicLaw,
-	const std::string& tradeLaw,
-	const std::string& primaryCulture
-);
+void outputEquipmentStockpile(std::ostream& output,
+	 const std::map<std::string, unsigned int>& equipmentStockpile,
+	 const std::string& tag);
+void outputPuppets(std::ostream& output,
+	 const std::string& tag,
+	 const std::string& governmentIdeology,
+	 const std::set<std::string>& puppets,
+	 const std::string& puppetMaster,
+	 const std::map<std::string, HoI4::Relations>& relations,
+	 const bool& greatPower,
+	 const std::map<std::string, double>& spherelings);
+void outputPolitics(std::ostream& output,
+	 const std::string& governmentIdeology,
+	 const date& lastElection,
+	 const bool& areElectionsAllowed,
+	 const std::map<std::string, int>& ideologySupport);
+void outputRelations(std::ostream& output,
+	 const std::string& tag,
+	 const std::map<std::string, HoI4::Relations>& relations);
+void outputFactions(std::ostream& output,
+	 const std::string& tag,
+	 std::optional<HoI4::Faction> faction,
+	 std::optional<std::string> possibleLeaderName);
+void outputGuaranteedSpherelings(std::ostream& output, std::vector<std::string> guaranteed);
+void outputIdeas(std::ostream& output,
+	 const bool& greatPower,
+	 const bool& civilized,
+	 const std::set<std::string>& ideas,
+	 const std::string& mobilizationLaw,
+	 const std::string& economicLaw,
+	 const std::string& tradeLaw,
+	 const std::string& primaryCulture);
 void outputStability(std::ostream& output, const int& stability);
 void outputWarSupport(std::ostream& output, const int& warSupport);
-void outputCountryLeader(
-	std::ostream& output,
-	HoI4::namesMapper& theNames,
-	graphicsMapper& theGraphics,
-	const std::string& primaryCulture,
-	const std::string& primaryCultureGroup,
-	const std::string& governmentIdeology,
-	const std::string& leaderIdeology,
-	const std::string& tag
-);
-void outputCommanders(
-	std::ostream& output,
-	const std::vector<HoI4::General>& generals,
-	const std::vector<HoI4::Admiral>& admirals
-);
+void outputCountryLeader(std::ostream& output,
+	 HoI4::namesMapper& theNames,
+	 graphicsMapper& theGraphics,
+	 const std::string& primaryCulture,
+	 const std::string& primaryCultureGroup,
+	 const std::string& governmentIdeology,
+	 const std::string& leaderIdeology,
+	 const std::string& tag);
+void outputCommanders(std::ostream& output,
+	 const std::vector<HoI4::General>& generals,
+	 const std::vector<HoI4::Admiral>& admirals);
 
 
 void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, const HoI4::Country& theCountry)
@@ -306,16 +274,12 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 	const auto& governmentIdeology = theCountry.getGovernmentIdeology();
 	const auto& primaryCulture = theCountry.getSourceCountry().getPrimaryCulture();
 
-	std::ofstream output(
-		"output/" + theConfiguration.getOutputName() +
-		"/history/countries/" + Utils::normalizeUTF8Path(theCountry.getFilename())
-	);
+	std::ofstream output("output/" + theConfiguration.getOutputName() + "/history/countries/" +
+								Utils::normalizeUTF8Path(theCountry.getFilename()));
 	if (!output.is_open())
 	{
-		throw std::runtime_error(
-			"Could not open output/" + theConfiguration.getOutputName() + "/history/countries/"
-			+ Utils::normalizeUTF8Path(theCountry.getFilename())
-		);
+		throw std::runtime_error("Could not open output/" + theConfiguration.getOutputName() + "/history/countries/" +
+										 Utils::normalizeUTF8Path(theCountry.getFilename()));
 	}
 	output << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 
@@ -331,51 +295,43 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 	}
 	outputConvoys(output, theCountry.getConvoys());
 	outputEquipmentStockpile(output, theCountry.getEquipmentStockpile(), tag);
-	outputPuppets(
-		output,
-		tag,
-		governmentIdeology,
-		theCountry.getPuppets(),
-		theCountry.getPuppetMaster(),
-		theCountry.getRelations(),
-		theCountry.isGreatPower(),
-		theCountry.getSpherelings()
-	);
-	outputPolitics(
-		output,
-		governmentIdeology,
-		theCountry.getLastElection(),
-		theCountry.areElectionsAllowed(),
-		theCountry.getIdeologySupport()
-	);
+	outputPuppets(output,
+		 tag,
+		 governmentIdeology,
+		 theCountry.getPuppets(),
+		 theCountry.getPuppetMaster(),
+		 theCountry.getRelations(),
+		 theCountry.isGreatPower(),
+		 theCountry.getSpherelings());
+	outputPolitics(output,
+		 governmentIdeology,
+		 theCountry.getLastElection(),
+		 theCountry.areElectionsAllowed(),
+		 theCountry.getIdeologySupport());
 	outputRelations(output, tag, theCountry.getRelations());
 	outputFactions(output, tag, theCountry.getFaction(), theCountry.getSourceCountry().getName("english"));
 	outputGuaranteedSpherelings(output, theCountry.getGuaranteed());
-	outputIdeas(
-		output,
-		theCountry.isGreatPower(),
-		theCountry.isCivilized(),
-		theCountry.getIdeas(),
-		theCountry.getMobilizationLaw(),
-		theCountry.getEconomicLaw(),
-		theCountry.getTradeLaw(),
-		primaryCulture
-	);
+	outputIdeas(output,
+		 theCountry.isGreatPower(),
+		 theCountry.isCivilized(),
+		 theCountry.getIdeas(),
+		 theCountry.getMobilizationLaw(),
+		 theCountry.getEconomicLaw(),
+		 theCountry.getTradeLaw(),
+		 primaryCulture);
 	if (theCountry.hasProvinces())
 	{
 		outputStability(output, theCountry.getStability());
 		outputWarSupport(output, theCountry.getWarSupport());
 	}
-	outputCountryLeader(
-		output,
-		theNames,
-		theGraphics,
-		primaryCulture,
-		theCountry.getSourceCountry().getPrimaryCultureGroup(),
-		governmentIdeology,
-		theCountry.getLeaderIdeology(),
-		tag
-	);
+	outputCountryLeader(output,
+		 theNames,
+		 theGraphics,
+		 primaryCulture,
+		 theCountry.getSourceCountry().getPrimaryCultureGroup(),
+		 governmentIdeology,
+		 theCountry.getLeaderIdeology(),
+		 tag);
 	outputCommanders(output, theCountry.getGenerals(), theCountry.getAdmirals());
 	output << theCountry.getTheShipVariants();
 
@@ -454,11 +410,10 @@ void outputConvoys(std::ostream& output, const int& convoys)
 }
 
 
-void outputEquipmentStockpile(
-	std::ostream& output,
-	const std::map<std::string, unsigned int>& equipmentStockpile,
-	const std::string& tag
-) {
+void outputEquipmentStockpile(std::ostream& output,
+	 const std::map<std::string, unsigned int>& equipmentStockpile,
+	 const std::string& tag)
+{
 	for (const auto& eqp: equipmentStockpile)
 	{
 		output << "add_equipment_to_stockpile = ";
@@ -468,16 +423,15 @@ void outputEquipmentStockpile(
 }
 
 
-void outputPuppets(
-	std::ostream& output,
-	const std::string& tag,
-	const std::string& governmentIdeology,
-	const std::set<std::string>& puppets,
-	const std::string& puppetMaster,
-	const std::map<std::string, HoI4::Relations>& relations,
-	const bool& greatPower,
-	const std::map<std::string, double>& spherelings
-) {
+void outputPuppets(std::ostream& output,
+	 const std::string& tag,
+	 const std::string& governmentIdeology,
+	 const std::set<std::string>& puppets,
+	 const std::string& puppetMaster,
+	 const std::map<std::string, HoI4::Relations>& relations,
+	 const bool& greatPower,
+	 const std::map<std::string, double>& spherelings)
+{
 	if (!puppets.empty() || !spherelings.empty())
 	{
 		output << "# DIPLOMACY\n";
@@ -563,13 +517,12 @@ void outputPuppets(
 }
 
 
-void outputPolitics(
-	std::ostream& output,
-	const std::string& governmentIdeology,
-	const date& lastElection,
-	const bool& areElectionsAllowed,
-	const std::map<std::string, int>& ideologySupport
-) {
+void outputPolitics(std::ostream& output,
+	 const std::string& governmentIdeology,
+	 const date& lastElection,
+	 const bool& areElectionsAllowed,
+	 const std::map<std::string, int>& ideologySupport)
+{
 	output << "set_politics = {\n";
 	output << "    ruling_party = " << governmentIdeology << "\n";
 	output << "    last_election = \"" << lastElection << "\"\n";
@@ -594,11 +547,10 @@ void outputPolitics(
 	output << "\n";
 }
 
-void outputRelations(
-	std::ostream& output,
-	const std::string& tag,
-	const std::map<std::string, HoI4::Relations>& relations
-) {
+void outputRelations(std::ostream& output,
+	 const std::string& tag,
+	 const std::map<std::string, HoI4::Relations>& relations)
+{
 	for (auto& relation: relations)
 	{
 		if (relation.first != tag)
@@ -624,12 +576,11 @@ void outputRelations(
 }
 
 
-void outputFactions(
-	std::ostream& output,
-	const std::string& tag,
-	std::optional<HoI4::Faction> faction,
-	std::optional<std::string> possibleLeaderName
-) {
+void outputFactions(std::ostream& output,
+	 const std::string& tag,
+	 std::optional<HoI4::Faction> faction,
+	 std::optional<std::string> possibleLeaderName)
+{
 	if (faction && (faction->getLeader()->getTag() == tag))
 	{
 		std::string allianceName;
@@ -643,7 +594,7 @@ void outputFactions(
 			allianceName = "faction";
 		}
 		output << "create_faction = \"" + allianceName + "\"\n";
-		for (const auto& factionMember : faction->getMembers())
+		for (const auto& factionMember: faction->getMembers())
 		{
 			output << "add_to_faction = " + factionMember->getTag() + "\n";
 		}
@@ -652,10 +603,8 @@ void outputFactions(
 	output << '\n';
 }
 
-void outputGuaranteedSpherelings(
-	std::ostream& output,
-	std::vector<std::string> guaranteed
-) {
+void outputGuaranteedSpherelings(std::ostream& output, std::vector<std::string> guaranteed)
+{
 	for (auto guaranteedTag: guaranteed)
 	{
 		output << "give_guarantee = " + guaranteedTag + "\n";
@@ -664,16 +613,14 @@ void outputGuaranteedSpherelings(
 }
 
 
-void outputIdeas(
-	std::ostream& output,
-	const bool& greatPower,
-	const bool& civilized,
-	const std::set<std::string>& ideas,
-	const std::string& mobilizationLaw,
-	const std::string& economicLaw,
-	const std::string& tradeLaw,
-	const std::string& primaryCulture
-)
+void outputIdeas(std::ostream& output,
+	 const bool& greatPower,
+	 const bool& civilized,
+	 const std::set<std::string>& ideas,
+	 const std::string& mobilizationLaw,
+	 const std::string& economicLaw,
+	 const std::string& tradeLaw,
+	 const std::string& primaryCulture)
 {
 	if (greatPower)
 	{
@@ -692,7 +639,7 @@ void outputIdeas(
 		output << "\tuncivilized\n";
 	}
 
-	for (const auto& idea : ideas)
+	for (const auto& idea: ideas)
 	{
 		output << "\t" << idea << "\n";
 	}
@@ -718,16 +665,15 @@ void outputWarSupport(std::ostream& output, const int& warSupport)
 }
 
 
-void outputCountryLeader(
-	std::ostream& output,
-	HoI4::namesMapper& theNames,
-	graphicsMapper& theGraphics,
-	const std::string& primaryCulture,
-	const std::string& primaryCultureGroup,
-	const std::string& governmentIdeology,
-	const std::string& leaderIdeology,
-	const std::string& tag
-) {
+void outputCountryLeader(std::ostream& output,
+	 HoI4::namesMapper& theNames,
+	 graphicsMapper& theGraphics,
+	 const std::string& primaryCulture,
+	 const std::string& primaryCultureGroup,
+	 const std::string& governmentIdeology,
+	 const std::string& leaderIdeology,
+	 const std::string& tag)
+{
 	auto firstName = theNames.getMaleName(primaryCulture);
 	auto surname = theNames.getSurname(primaryCulture);
 	if (firstName && surname)
@@ -754,11 +700,10 @@ void outputCountryLeader(
 }
 
 
-void outputCommanders(
-	std::ostream& output,
-	const std::vector<HoI4::General>& generals,
-	const std::vector<HoI4::Admiral>& admirals
-) {
+void outputCommanders(std::ostream& output,
+	 const std::vector<HoI4::General>& generals,
+	 const std::vector<HoI4::Admiral>& admirals)
+{
 	for (const auto& general: generals)
 	{
 		output << general;
@@ -897,16 +842,12 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 void outputCommonCountryFile(const HoI4::Country& theCountry)
 {
 	const auto& commonCountryFile = theCountry.getCommonCountryFile();
-	std::ofstream output(
-		"output/" + theConfiguration.getOutputName() +
-		"/common/countries/" + Utils::normalizeUTF8Path(commonCountryFile)
-	);
+	std::ofstream output("output/" + theConfiguration.getOutputName() + "/common/countries/" +
+								Utils::normalizeUTF8Path(commonCountryFile));
 	if (!output.is_open())
 	{
-		throw std::runtime_error(
-			"Could not open output/" + theConfiguration.getOutputName() +
-			"/common/countries/" + Utils::normalizeUTF8Path(commonCountryFile)
-		);
+		throw std::runtime_error("Could not open output/" + theConfiguration.getOutputName() + "/common/countries/" +
+										 Utils::normalizeUTF8Path(commonCountryFile));
 	}
 
 	auto& graphicalCulture = theCountry.getGraphicalCulture();
@@ -922,16 +863,13 @@ void outputCommonCountryFile(const HoI4::Country& theCountry)
 }
 
 
-void outputAdvisorIdeas(
-	const std::string& tag,
-	const std::set<HoI4::Advisor>& ideologicalAdvisors
-) {
+void outputAdvisorIdeas(const std::string& tag, const std::set<HoI4::Advisor>& ideologicalAdvisors)
+{
 	std::ofstream ideasFile("output/" + theConfiguration.getOutputName() + "/common/ideas/" + tag + ".txt");
 	if (!ideasFile.is_open())
 	{
 		throw std::runtime_error(
-			"Could not open output/" + theConfiguration.getOutputName() + "/common/ideas/" + tag + ".txt"
-		);
+			 "Could not open output/" + theConfiguration.getOutputName() + "/common/ideas/" + tag + ".txt");
 	}
 
 	ideasFile << "ideas = {\n";

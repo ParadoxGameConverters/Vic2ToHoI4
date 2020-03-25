@@ -68,7 +68,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRule.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRuleOption.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRules.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Hoi4CountryOutputter.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoi4Country.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Ideas\OutIdea.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Ideas\OutIdeaGroup.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Ideas\OutIdeas.cpp" />
