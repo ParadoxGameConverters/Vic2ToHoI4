@@ -1,44 +1,17 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "Configuration.h"
-#include "Flags.h"
 #include "HOI4World/HoI4World.h"
 #include "Log.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "OSCompatibilityLayer.h"
-#include "OutHoi4/OutHoi4World.h"
+#include "OutHoi4/OutMod.h"
 #include "V2World/World.h"
 #include <algorithm>
-#include <fstream>
 #include <stdexcept>
 
 
 
 void checkMods();
 void setOutputName(const std::string& V2SaveFileName);
-void clearOutputFolder();
-void output(HoI4::World& destWorld);
 void ConvertV2ToHoI4(const string& V2SaveFileName)
 {
 	ConfigurationFile("configuration.txt");
@@ -108,7 +81,7 @@ void setOutputName(const std::string& V2SaveFileName)
 	}
 	else if ((lastBackslash != std::string::npos) && (lastSlash != std::string::npos))
 	{
-		const int slash = max(lastBackslash, lastSlash);
+		const int slash = std::max(lastBackslash, lastSlash);
 		outputName = outputName.substr(slash + 1, outputName.length());
 	}
 	else if ((lastBackslash == std::string::npos) && (lastSlash == std::string::npos))
@@ -129,80 +102,4 @@ void setOutputName(const std::string& V2SaveFileName)
 
 	theConfiguration.setOutputName(outputName);
 	LOG(LogLevel::Info) << "Using output name " << outputName;
-}
-
-
-void clearOutputFolder()
-{
-	string outputFolder = Utils::getCurrentDirectory() + "/output/" + theConfiguration.getOutputName();
-	if (Utils::doesFolderExist(outputFolder))
-	{
-		if (!Utils::deleteFolder(outputFolder))
-		{
-			LOG(LogLevel::Error) << "Could not remove pre-existing output folder " << output << ". Please delete folder and try converting again.";
-			exit(-1);
-		}
-	}
-}
-
-
-void createModFiles();
-void renameOutputFolder();
-void output(HoI4::World& destWorld)
-{
-	createModFiles();
-	renameOutputFolder();
-	copyFlags(destWorld.getCountries());
-	HoI4::OutputWorld(destWorld);
-}
-
-
-void createModFiles()
-{
-	LOG(LogLevel::Info) << "Outputting mod";
-	if (!Utils::copyFolder("blankMod/output", "output/output"))
-	{
-		LOG(LogLevel::Error) << "Could not copy blankMod";
-		exit(-1);
-	}
-
-	ofstream modFile("output/" + theConfiguration.getOutputName() + ".mod");
-	if (!modFile.is_open())
-	{
-		LOG(LogLevel::Error) << "Could not create .mod file";
-		exit(-1);
-	}
-
-	modFile << "name = \"Converted - " << theConfiguration.getOutputName() << "\"\n";
-	modFile << "path = \"mod/" << theConfiguration.getOutputName() << "/\"\n";
-	modFile << "user_dir = \"" << theConfiguration.getOutputName() << "_user_dir\"\n";
-	modFile << "replace_path=\"common/ideologies\"\n";
-	modFile << "replace_path=\"history/countries\"\n";
-	modFile << "replace_path=\"history/states\"\n";
-	modFile << "supported_version=\"1.9.0\"";
-	modFile.close();
-
-	ofstream descriptorFile("output/output/descriptor.mod");
-	if (!descriptorFile.is_open())
-	{
-		LOG(LogLevel::Error) << "Could not create descriptor.mod";
-		exit(-1);
-	}
-	descriptorFile << "name = \"Converted - " << theConfiguration.getOutputName() << "\"\n";
-	descriptorFile << "user_dir = \"" << theConfiguration.getOutputName() << "_user_dir\"\n";
-	descriptorFile << "replace_path=\"common/ideologies\"\n";
-	descriptorFile << "replace_path=\"history/countries\"\n";
-	descriptorFile << "replace_path=\"history/states\"\n";
-	descriptorFile << "supported_version=\"1.9.0\"";
-	descriptorFile.close();
-}
-
-
-void renameOutputFolder()
-{
-	if (!Utils::renameFolder("output/output", "output/" + theConfiguration.getOutputName()))
-	{
-		LOG(LogLevel::Error) << "Could not rename output folder!";
-		exit(-1);
-	}
 }

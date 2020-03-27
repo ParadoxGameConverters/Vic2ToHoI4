@@ -102,6 +102,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoI4Version.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoi4World.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutLocalisation.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutMod.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutOnActions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutTechnologies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.cpp" />
@@ -340,6 +341,7 @@
   <ItemGroup>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\OutMod.h" />
     <ClInclude Include="Mocks\CoastalProvincesMock.h" />
     <ClInclude Include="Mocks\EventsMock.h" />
     <ClInclude Include="Mocks\GovermentMapperMock.h" />
