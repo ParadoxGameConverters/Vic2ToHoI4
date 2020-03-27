@@ -1,5 +1,5 @@
 # Version info
 
-version = "0.2L"
-name = "Leopold III"
-descriptionLine = "compatible with 1.8.2"
+version = "0.2M"
+name = "Mussolini"
+descriptionLine = "compatible with 1.9.0"
