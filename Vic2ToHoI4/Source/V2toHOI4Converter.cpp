@@ -21,16 +21,17 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
+#include "Configuration.h"
+#include "Flags.h"
+#include "HOI4World/HoI4World.h"
+#include "Log.h"
+#include "Mappers/Provinces/ProvinceMapper.h"
+#include "OSCompatibilityLayer.h"
+#include "OutHoi4/OutHoi4World.h"
+#include "V2World/World.h"
 #include <algorithm>
 #include <fstream>
 #include <stdexcept>
-#include "Configuration.h"
-#include "Flags.h"
-#include "Log.h"
-#include "HOI4World/HoI4World.h"
-#include "V2World/World.h"
-#include "Mappers/Provinces/ProvinceMapper.h"
-#include "OSCompatibilityLayer.h"
 
 
 
@@ -152,7 +153,7 @@ void output(HoI4::World& destWorld)
 	createModFiles();
 	renameOutputFolder();
 	copyFlags(destWorld.getCountries());
-	destWorld.output();
+	HoI4::OutputWorld(destWorld);
 }
 
 

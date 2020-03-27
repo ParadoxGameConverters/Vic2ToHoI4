@@ -100,6 +100,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFocus.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFocusTree.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoI4Version.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoi4World.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutLocalisation.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutOnActions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutTechnologies.cpp" />

@@ -1378,7 +1378,7 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home, const
 	return;
 }
 
-void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& warTargets, HoI4::Events* events)
+void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& warTargets, HoI4::Events& events)
 {
 	if (warTargets.size() > 0)
 	{
@@ -1486,7 +1486,7 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home, const 
 	}
 }
 
-void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& annexationTargets, HoI4::Events* events)
+void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& annexationTargets, HoI4::Events& events)
 {
 	//The Following 'if' statement prevents converter from generating focuses if annexationTargets.size > 1
 	//Keep this 'if' statement off until we figure out how to handle Fascist NF's
@@ -1574,13 +1574,13 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home, c
 			newFocus->completionReward += "					country_exists = " + annexationTargets[i]->getTag() + "\n";
 			newFocus->completionReward += "				}\n";
 			newFocus->completionReward += "				" + annexationTargets[i]->getTag() + " = {\n";
-			newFocus->completionReward += "					country_event = NFEvents." + to_string(events->getCurrentNationFocusEventNum()) + "\n";
+			newFocus->completionReward += "					country_event = NFEvents." + to_string(events.getCurrentNationFocusEventNum()) + "\n";
 			newFocus->completionReward += "				}\n";
 			newFocus->completionReward += "			}\n";
 			newFocus->completionReward += "		}";
 			focuses.push_back(newFocus);
 
-			events->createAnnexEvent(*Home, *annexationTargets[i]);
+			events.createAnnexEvent(*Home, *annexationTargets[i]);
 		}
 		else
 		{
@@ -1598,9 +1598,9 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home, c
 	//}
 }
 
-void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& sudetenTargets, const vector<vector<int>>& demandedStates, const HoI4::World* world)
+void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& sudetenTargets, const vector<vector<int>>& demandedStates, HoI4::World& world)
 {
-	HoI4::Events* events = world->getEvents();
+	auto& events = world.getEvents();
 
 	//if it can easily take these targets as they are not in an alliance, you can get annexation event
 
@@ -1675,7 +1675,7 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home, cons
 			newFocus->completionReward += "					country_exists = " + sudetenTargets[i]->getTag() + "\n";
 			newFocus->completionReward += "				}\n";
 			newFocus->completionReward += "				" + sudetenTargets[i]->getTag() + " = {\n";
-			newFocus->completionReward += "					country_event = NFEvents." + to_string(events->getCurrentNationFocusEventNum()) + "\n";
+			newFocus->completionReward += "					country_event = NFEvents." + to_string(events.getCurrentNationFocusEventNum()) + "\n";
 			newFocus->completionReward += "				}\n";
 			newFocus->completionReward += "			}\n";
 			newFocus->completionReward += "		}";
@@ -1715,13 +1715,13 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home, cons
 		}
 
 		//events
-		events->createSudetenEvent(*Home, *sudetenTargets[i], demandedStates[i]);
+		events.createSudetenEvent(*Home, *sudetenTargets[i], demandedStates[i]);
 	}
 	nextFreeColumn += 2 * sudetenTargets.size();
 }
 
 
-void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& newAllies, const vector<shared_ptr<HoI4::Country>>& GCTargets, const string& ideology, HoI4::Events* events)
+void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& newAllies, const vector<shared_ptr<HoI4::Country>>& GCTargets, const string& ideology, HoI4::Events& events)
 {
 	int numAllies = newAllies.size();
 	string ideologyShort = ideology.substr(0, 3);
@@ -1795,13 +1795,13 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<
 			newFocus->bypass += "		}";
 			newFocus->completionReward += "= {\n";
 			newFocus->completionReward += "			" + newAlly->getTag() + " = {\n";
-			newFocus->completionReward += "				country_event = { hours = 6 id = NFEvents." + to_string(events->getCurrentNationFocusEventNum()) + " }\n";
+			newFocus->completionReward += "				country_event = { hours = 6 id = NFEvents." + to_string(events.getCurrentNationFocusEventNum()) + " }\n";
 			newFocus->completionReward += "				add_opinion_modifier = { target = " + Home->getTag() + " modifier = positive_50 }\n";
 			newFocus->completionReward += "			}\n";
 			newFocus->completionReward += "		}";
 			focuses.push_back(newFocus);
 
-			events->createFactionEvents(*Home, *newAlly);
+			events.createFactionEvents(*Home, *newAlly);
 			i++;
 		}
 		else

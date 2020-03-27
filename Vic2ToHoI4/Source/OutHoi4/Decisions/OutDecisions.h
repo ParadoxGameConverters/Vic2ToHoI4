@@ -11,7 +11,7 @@
 namespace HoI4
 {
 
-void outputDecisions(decisions& theDecisions,
+void outputDecisions(const decisions& theDecisions,
 	 const std::set<std::string>& majorIdeologies,
 	 const Configuration& theConfiguration);
 

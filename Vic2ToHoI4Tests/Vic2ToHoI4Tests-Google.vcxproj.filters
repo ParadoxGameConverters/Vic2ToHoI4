@@ -848,6 +848,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoi4Country.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoi4World.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

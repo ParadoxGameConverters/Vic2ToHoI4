@@ -4,7 +4,7 @@
 
 
 
-void HoI4::outputDecisions(decisions& theDecisions,
+void HoI4::outputDecisions(const decisions& theDecisions,
 	 const std::set<std::string>& majorIdeologies,
 	 const Configuration& theConfiguration)
 {

@@ -741,6 +741,9 @@
     <ClCompile Include="Source\OutHoi4\OutHoi4Country.cpp">
       <Filter>OutHoi4</Filter>
     </ClCompile>
+    <ClCompile Include="Source\OutHoi4\OutHoi4World.cpp">
+      <Filter>OutHoi4</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1391,6 +1394,9 @@
       <Filter>OutHoi4</Filter>
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\OutHoi4Country.h">
+      <Filter>OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\OutHoi4World.h">
       <Filter>OutHoi4</Filter>
     </ClInclude>
   </ItemGroup>

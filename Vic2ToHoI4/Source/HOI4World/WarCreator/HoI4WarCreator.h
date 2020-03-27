@@ -31,7 +31,7 @@ const int maxGCWars = 1;
 class HoI4WarCreator
 {
 	public:
-		explicit HoI4WarCreator(const HoI4::World* world, const HoI4::MapData& theMapData);
+		explicit HoI4WarCreator(HoI4::World* world, const HoI4::MapData& theMapData);
 
 	private:
 		HoI4WarCreator(const HoI4WarCreator&) = delete;
@@ -100,7 +100,7 @@ class HoI4WarCreator
 
 
 		HoI4FocusTree* genericFocusTree;
-		const HoI4::World* theWorld;
+		HoI4::World* theWorld;
 
 		vector<HoI4::Country*> AggressorFactions;
 		map<shared_ptr<HoI4::Country>, vector<shared_ptr<HoI4::Country>>> WorldTargetMap;
