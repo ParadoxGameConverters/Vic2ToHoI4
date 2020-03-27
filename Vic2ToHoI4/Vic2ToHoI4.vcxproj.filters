@@ -749,6 +749,9 @@
     <ClCompile Include="Source\OutHoi4\OutMod.cpp">
       <Filter>OutHoi4</Filter>
     </ClCompile>
+    <ClCompile Include="Source\OutHoi4\OutColor.cpp">
+      <Filter>OutHoi4</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1407,6 +1410,9 @@
       <Filter>OutHoi4</Filter>
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\OutMod.h">
+      <Filter>OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\OutColor.h">
       <Filter>OutHoi4</Filter>
     </ClInclude>
   </ItemGroup>
