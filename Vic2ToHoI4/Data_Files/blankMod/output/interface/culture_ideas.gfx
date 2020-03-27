@@ -16,7 +16,7 @@ spriteTypes = {
 
 	spriteType = {
 		name = "GFX_idea_culture_african_minor"
-		texturefile = "gfx/interface/culture/culture_african_minor.dds"
+		texturefile = "gfx/interface/culture/culture_african_native.dds"
 	}
 
 	spriteType = {
