@@ -27,7 +27,7 @@
 					</preference>
 					<preference>
 						<name>ic_factor</name>
-						<friendlyName>IC Factor</friendlyName>
+						<friendlyName>Factory Factor</friendlyName>
 						<description>How much to make the world's industry match default HoI4 industry. 1.0 = fully matched, 0.0 = no matching</description>
 						<hasDirectlyEditableValue>true</hasDirectlyEditableValue>
 						<value>0.1</value>
@@ -91,13 +91,13 @@
 							<entryOption>
 								<name>true</name>
 								<friendlyName>True</friendlyName>
-								<description>Remove cores that should be removed.</description>
+								<description>Remove cores from unlanded nations.</description>
 								<isDefault>true</isDefault>
 							</entryOption>
 							<entryOption>
 								<name>false</name>
 								<friendlyName>False</friendlyName>
-								<description>Don't remove cores that should be removed.</description>
+								<description>Keep all cores.</description>
 								<isDefault>false</isDefault>
 							</entryOption>
 						</entryOptions>
@@ -110,7 +110,7 @@
 							<entryOption>
 								<name>yes</name>
 								<friendlyName>Yes</friendlyName>
-								<description>Create factions</description>
+								<description>Create factions (currently named 'Alliance of X')</description>
 								<isDefault>true</isDefault>
 							</entryOption>
 							<entryOption>
@@ -179,7 +179,7 @@
 							<entryOption>
 								<name>radical</name>
 								<friendlyName>Radical</friendlyName>
-								<description>Radical</description>
+								<description>Radical (Anarcho-Liberals)</description>
 								<isDefault>true</isDefault>
 							</entryOption>
 						</entryOptions>
