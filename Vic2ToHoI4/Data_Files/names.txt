@@ -4243,3 +4243,257 @@ tupinamba = {
 	naval_companies = { "'Y" }
 	aircraft_companies = { Guirá }
 }
+latin = {
+	female_names = { Acilia Aebutia Aelia Aemilia Albia Amatia Annaea Anneia Annia Antonia Arria
+		Artoria Asinia Atilia Atia Aurelia Autronia Caecilia Caedicia Caelia Calidia
+		Calpurnia Cassia Claudia Cloelia Cocceia Cominia Cornelia Coruncania Curiatia
+		Curia Curtia Decia Didia Domitia Duilia Durmia Equitia Fabia Fabricia Fannia
+		Flavia Fulvia Furia Gabinia Galeria Gegania Gellia Geminia Genucia Gratia
+		Herennia Hirtia Horatia Hortensia Hostilia Iulia Iunia Iuventia Laelia Lartia
+		Licinia Livia Lucilia Lucretia Manlia Marcia Maria Memmia Menenia Minicia
+		Minia Minucia Modia Mucia Naevia Nautia Numeria Numicia Octavia Ovidia
+		Papiria Petronia Pinaria Pompeia Pompilia Pontia Popillia Porcia Postumia
+		Quinctilia Quinctia Rubellia Rufia Rutilia Sallustia Salonia Salvia Scribonia
+		Seia Sempronia Sentia Sergia Sertoria Servilia Sextia Sicinia Suetonia Sulpicia
+		Tarpeia Tarquitia Terentia Titinia Tituria Tuccia Tullia Ulpia Valeria Vedia
+		Velleia Vergilia Verginia Vibia Villia Vipsania Vitellia Vitruvia Volumnia }
+	female_surnames = { Aculeo Agricola Agrippa Ahala Ahenobarba Albina Alba Ambusta Annalis Aquila
+		Aquilina Arvina Asellio Asina Atella Avita Balba Barba Barbata Bassa Bestia
+		Bibacula Bibula Blaesa Broccha Bruta Bubulca Bucco Bulba Buteo Caeca Caepio
+		Caesar Calida Calvina Calva Camilla Canina Cana Capito Carbo Catilina Cato
+		Catula Celer Celsa Cethega Cicero Cicurina Cilo Cincinnata Cinna Corda Cornicen
+		Cornuta Corvina Corva Cossa Costa Cotta Crassipes Crassa Crispina Crispa Culleo
+		Curio Cursor Curva Dentata Denter Dento Dives Dolabella Dorsuo Drusa Figula Fimbria
+		Flacca Fava Flora Fronto Fullo Fusa Galeo Gemella Glabrio Graccha Gurges Habita
+		Helva Imperiosa Iulla Labeo Lactuca Laenas Lanata Laevina Laterensis Lentula Lepida
+		Libo Licina Longa Luculla Lupa Lurco Macer Macula Malleola Mamerca Marcella Maro
+		Merenda Merga Merula Messalla Metella Murena Ma Musca Nasica Naso Natta Nepos Nero
+		Nerva Niger Novella Ocella Pacila Paeta Pansa Papa Patercula Paulla Pavo Pera Pictor
+		Piso Planca Plauta Poplicola Postuma Potita Praeconina Praetextata Prisca Procula
+		Publicola Pulcher Pulla Pulvilla Purpureo Quadrata Ralla Regilla Regula Rufa Ruga Rulla
+		Rutila Salinator Saturnina Scaeva Scaevola Scapula Scaura Scipio Scrofa Seneca Severa
+		Silana Silo Sila Stolo Strabo Structa Sulla Sura Taura Triaria Trigemina Trio Tubero
+		Tuberta Tubula Tuditana Tulla Turda Varro Vara Vatia Verres Vespillo Veta Vitula
+		Volusa }
+	callsigns = { Germanicus Britannicus Dacicus Parthicus Optimus Armeniacus Medicus "Parthicus Maximus" Sarmaticus Arabicus Adiabenicus "Britannicus Maximus" "Germanicus Maximus" "Gothicus Maximus" Gothicus "Persicus Maximus" "Carpicus Maximus" Alamannicus Francicus Anticus Alanicus Vandalicus Africanus Erullicus Gypedicus Africus Isauricus Cilicius Dalmaticus Ugricus Bosniacus Chrobaticus Lazicus Ibericus Bulgaricus Serbicus Zikhicus Azaricus }
+	industry_companies = { "Caminus Hephaesti" }
+	electronic_companies = { "Olympus Jovis" }
+	car_companies = { Autocinetum }
+	naval_companies = { "Auxilio Neptuni" }
+	weapon_companies = { "Campus Martius" }
+	aircraft_companies = { "Ut Mercurio Talares" }
+}
+afer = {
+	female_names = { Acilia Aebutia Aelia Aemilia Albia Amatia Annaea Anneia Annia Antonia Arria
+		Artoria Asinia Atilia Atia Aurelia Autronia Caecilia Caedicia Caelia Calidia
+		Calpurnia Cassia Claudia Cloelia Cocceia Cominia Cornelia Coruncania Curiatia
+		Curia Curtia Decia Didia Domitia Duilia Durmia Equitia Fabia Fabricia Fannia
+		Flavia Fulvia Furia Gabinia Galeria Gegania Gellia Geminia Genucia Gratia
+		Herennia Hirtia Horatia Hortensia Hostilia Iulia Iunia Iuventia Laelia Lartia
+		Licinia Livia Lucilia Lucretia Manlia Marcia Maria Memmia Menenia Minicia
+		Minia Minucia Modia Mucia Naevia Nautia Numeria Numicia Octavia Ovidia
+		Papiria Petronia Pinaria Pompeia Pompilia Pontia Popillia Porcia Postumia
+		Quinctilia Quinctia Rubellia Rufia Rutilia Sallustia Salonia Salvia Scribonia
+		Seia Sempronia Sentia Sergia Sertoria Servilia Sextia Sicinia Suetonia Sulpicia
+		Tarpeia Tarquitia Terentia Titinia Tituria Tuccia Tullia Ulpia Valeria Vedia
+		Velleia Vergilia Verginia Vibia Villia Vipsania Vitellia Vitruvia Volumnia }
+	female_surnames = { Aculeo Agricola Agrippa Ahala Ahenobarba Albina Alba Ambusta Annalis Aquila
+		Aquilina Arvina Asellio Asina Atella Avita Balba Barba Barbata Bassa Bestia
+		Bibacula Bibula Blaesa Broccha Bruta Bubulca Bucco Bulba Buteo Caeca Caepio
+		Caesar Calida Calvina Calva Camilla Canina Cana Capito Carbo Catilina Cato
+		Catula Celer Celsa Cethega Cicero Cicurina Cilo Cincinnata Cinna Corda Cornicen
+		Cornuta Corvina Corva Cossa Costa Cotta Crassipes Crassa Crispina Crispa Culleo
+		Curio Cursor Curva Dentata Denter Dento Dives Dolabella Dorsuo Drusa Figula Fimbria
+		Flacca Fava Flora Fronto Fullo Fusa Galeo Gemella Glabrio Graccha Gurges Habita
+		Helva Imperiosa Iulla Labeo Lactuca Laenas Lanata Laevina Laterensis Lentula Lepida
+		Libo Licina Longa Luculla Lupa Lurco Macer Macula Malleola Mamerca Marcella Maro
+		Merenda Merga Merula Messalla Metella Murena Ma Musca Nasica Naso Natta Nepos Nero
+		Nerva Niger Novella Ocella Pacila Paeta Pansa Papa Patercula Paulla Pavo Pera Pictor
+		Piso Planca Plauta Poplicola Postuma Potita Praeconina Praetextata Prisca Procula
+		Publicola Pulcher Pulla Pulvilla Purpureo Quadrata Ralla Regilla Regula Rufa Ruga Rulla
+		Rutila Salinator Saturnina Scaeva Scaevola Scapula Scaura Scipio Scrofa Seneca Severa
+		Silana Silo Sila Stolo Strabo Structa Sulla Sura Taura Triaria Trigemina Trio Tubero
+		Tuberta Tubula Tuditana Tulla Turda Varro Vara Vatia Verres Vespillo Veta Vitula
+		Volusa }
+	callsigns = { Germanicus Britannicus Dacicus Parthicus Optimus Armeniacus Medicus "Parthicus Maximus" Sarmaticus Arabicus Adiabenicus "Britannicus Maximus" "Germanicus Maximus" "Gothicus Maximus" Gothicus "Persicus Maximus" "Carpicus Maximus" Alamannicus Francicus Anticus Alanicus Vandalicus Africanus Erullicus Gypedicus Africus Isauricus Cilicius Dalmaticus Ugricus Bosniacus Chrobaticus Lazicus Ibericus Bulgaricus Serbicus Zikhicus Azaricus }
+	industry_companies = { "Caminus Hephaesti" }
+	electronic_companies = { "Olympus Jovis" }
+	car_companies = { Autocinetum }
+	naval_companies = { "Auxilio Neptuni" }
+	weapon_companies = { "Campus Martius" }
+	aircraft_companies = { "Ut Mercurio Talares" }
+}
+australus = {
+	female_names = { Acilia Aebutia Aelia Aemilia Albia Amatia Annaea Anneia Annia Antonia Arria
+		Artoria Asinia Atilia Atia Aurelia Autronia Caecilia Caedicia Caelia Calidia
+		Calpurnia Cassia Claudia Cloelia Cocceia Cominia Cornelia Coruncania Curiatia
+		Curia Curtia Decia Didia Domitia Duilia Durmia Equitia Fabia Fabricia Fannia
+		Flavia Fulvia Furia Gabinia Galeria Gegania Gellia Geminia Genucia Gratia
+		Herennia Hirtia Horatia Hortensia Hostilia Iulia Iunia Iuventia Laelia Lartia
+		Licinia Livia Lucilia Lucretia Manlia Marcia Maria Memmia Menenia Minicia
+		Minia Minucia Modia Mucia Naevia Nautia Numeria Numicia Octavia Ovidia
+		Papiria Petronia Pinaria Pompeia Pompilia Pontia Popillia Porcia Postumia
+		Quinctilia Quinctia Rubellia Rufia Rutilia Sallustia Salonia Salvia Scribonia
+		Seia Sempronia Sentia Sergia Sertoria Servilia Sextia Sicinia Suetonia Sulpicia
+		Tarpeia Tarquitia Terentia Titinia Tituria Tuccia Tullia Ulpia Valeria Vedia
+		Velleia Vergilia Verginia Vibia Villia Vipsania Vitellia Vitruvia Volumnia }
+	female_surnames = { Aculeo Agricola Agrippa Ahala Ahenobarba Albina Alba Ambusta Annalis Aquila
+		Aquilina Arvina Asellio Asina Atella Avita Balba Barba Barbata Bassa Bestia
+		Bibacula Bibula Blaesa Broccha Bruta Bubulca Bucco Bulba Buteo Caeca Caepio
+		Caesar Calida Calvina Calva Camilla Canina Cana Capito Carbo Catilina Cato
+		Catula Celer Celsa Cethega Cicero Cicurina Cilo Cincinnata Cinna Corda Cornicen
+		Cornuta Corvina Corva Cossa Costa Cotta Crassipes Crassa Crispina Crispa Culleo
+		Curio Cursor Curva Dentata Denter Dento Dives Dolabella Dorsuo Drusa Figula Fimbria
+		Flacca Fava Flora Fronto Fullo Fusa Galeo Gemella Glabrio Graccha Gurges Habita
+		Helva Imperiosa Iulla Labeo Lactuca Laenas Lanata Laevina Laterensis Lentula Lepida
+		Libo Licina Longa Luculla Lupa Lurco Macer Macula Malleola Mamerca Marcella Maro
+		Merenda Merga Merula Messalla Metella Murena Ma Musca Nasica Naso Natta Nepos Nero
+		Nerva Niger Novella Ocella Pacila Paeta Pansa Papa Patercula Paulla Pavo Pera Pictor
+		Piso Planca Plauta Poplicola Postuma Potita Praeconina Praetextata Prisca Procula
+		Publicola Pulcher Pulla Pulvilla Purpureo Quadrata Ralla Regilla Regula Rufa Ruga Rulla
+		Rutila Salinator Saturnina Scaeva Scaevola Scapula Scaura Scipio Scrofa Seneca Severa
+		Silana Silo Sila Stolo Strabo Structa Sulla Sura Taura Triaria Trigemina Trio Tubero
+		Tuberta Tubula Tuditana Tulla Turda Varro Vara Vatia Verres Vespillo Veta Vitula
+		Volusa }
+	callsigns = { Germanicus Britannicus Dacicus Parthicus Optimus Armeniacus Medicus "Parthicus Maximus" Sarmaticus Arabicus Adiabenicus "Britannicus Maximus" "Germanicus Maximus" "Gothicus Maximus" Gothicus "Persicus Maximus" "Carpicus Maximus" Alamannicus Francicus Anticus Alanicus Vandalicus Africanus Erullicus Gypedicus Africus Isauricus Cilicius Dalmaticus Ugricus Bosniacus Chrobaticus Lazicus Ibericus Bulgaricus Serbicus Zikhicus Azaricus }
+	industry_companies = { "Caminus Hephaesti" }
+	electronic_companies = { "Olympus Jovis" }
+	car_companies = { Autocinetum }
+	naval_companies = { "Auxilio Neptuni" }
+	weapon_companies = { "Campus Martius" }
+	aircraft_companies = { "Ut Mercurio Talares" }
+}
+bazramani = {
+	female_names = { Aghhelida Yavuyida Yalida Yamelida Avida Amayida Anyaed Anyeida Anyida Andanida Arriah
+		Artarida Ahenida Ayelida Ayida Aralida Ahranida Kaghhelida Kayeghhida Kalida Kaleyiah
+		Kavurnida Kahhida Klayida Kloelida Kakhceida Kamenida Karnalida Karunganida Kuriayiah
+		Kurida Kurtida Daghhida Deyida Dameyida Duilida Durmida Yakhiyida Favida Favreghhida Fanyiah
+		Flavida Fuvida Furida Gavenida Galarida Gaghhanida Galida Gamenida Ganughhida Ghrayiah
+		Haranyida Hertida Harayida Hartanhida Hahtelida Eulida Eunida Euvandida Lalida Lartiah
+		Leghhenida Levida Lughhelida Lukhrayida Manlida Marcida Marida Mammida Mananida Meneghhiah
+		Menida Menughhida Mayida Mughhida Navida Nayida Numarida Numeghhida Vakhtavida Vaveyiah
+		Paverida Pahranida Penarida Pambeida Pambelida Pandida Pavelida Parcida Pahtumiah
+		Khinkhtelida Khinkhtida Ruvalida Rufida Ruyelida Haluhtida Halanida Havida Hkhrevaniah
+		Heida Hamfranida Handida Hargida Hartarida Harvelida Hahctida Heghhenida Hueyanida Huveghhiah
+		Tarpeida Tarquiyida Tarandida Teyenida Teyurida Tukhcida Tulida Ovida Valarida Vayiah
+		Valeida Vargelida Vargenida Vevida Velida Vefhanida Veyalida Vehruvida Valunyiah }
+	callsigns = { Germanicus Britannicus Dacicus Parthicus Optimus Armeniacus Medicus "Parthicus Maximus" Sarmaticus Arabicus Adiabenicus "Britannicus Maximus" "Germanicus Maximus" "Gothicus Maximus" Gothicus "Persicus Maximus" "Carpicus Maximus" Alamannicus Francicus Anticus Alanicus Vandalicus Africanus Erullicus Gypedicus Africus Isauricus Cilicius Dalmaticus Ugricus Bosniacus Chrobaticus Lazicus Ibericus Bulgaricus Serbicus Zikhicus Azaricus }
+	industry_companies = { "Caminus Hephaesti" }
+	electronic_companies = { "Olympus Jovis" }
+	car_companies = { Autocinetum }
+	naval_companies = { "Auxilio Neptuni" }
+	weapon_companies = { "Campus Martius" }
+	aircraft_companies = { "Ut Mercurio Talares" }
+}
+foederatus = {
+	female_names = { Acilia Aebutia Aelia Aemilia Albia Amatia Annaea Anneia Annia Antonia Arria
+		Artoria Asinia Atilia Atia Aurelia Autronia Caecilia Caedicia Caelia Calidia
+		Calpurnia Cassia Claudia Cloelia Cocceia Cominia Cornelia Coruncania Curiatia
+		Curia Curtia Decia Didia Domitia Duilia Durmia Equitia Fabia Fabricia Fannia
+		Flavia Fulvia Furia Gabinia Galeria Gegania Gellia Geminia Genucia Gratia
+		Herennia Hirtia Horatia Hortensia Hostilia Iulia Iunia Iuventia Laelia Lartia
+		Licinia Livia Lucilia Lucretia Manlia Marcia Maria Memmia Menenia Minicia
+		Minia Minucia Modia Mucia Naevia Nautia Numeria Numicia Octavia Ovidia
+		Papiria Petronia Pinaria Pompeia Pompilia Pontia Popillia Porcia Postumia
+		Quinctilia Quinctia Rubellia Rufia Rutilia Sallustia Salonia Salvia Scribonia
+		Seia Sempronia Sentia Sergia Sertoria Servilia Sextia Sicinia Suetonia Sulpicia
+		Tarpeia Tarquitia Terentia Titinia Tituria Tuccia Tullia Ulpia Valeria Vedia
+		Velleia Vergilia Verginia Vibia Villia Vipsania Vitellia Vitruvia Volumnia }
+	female_surnames = { Aculeo Agricola Agrippa Ahala Ahenobarba Albina Alba Ambusta Annalis Aquila
+		Aquilina Arvina Asellio Asina Atella Avita Balba Barba Barbata Bassa Bestia
+		Bibacula Bibula Blaesa Broccha Bruta Bubulca Bucco Bulba Buteo Caeca Caepio
+		Caesar Calida Calvina Calva Camilla Canina Cana Capito Carbo Catilina Cato
+		Catula Celer Celsa Cethega Cicero Cicurina Cilo Cincinnata Cinna Corda Cornicen
+		Cornuta Corvina Corva Cossa Costa Cotta Crassipes Crassa Crispina Crispa Culleo
+		Curio Cursor Curva Dentata Denter Dento Dives Dolabella Dorsuo Drusa Figula Fimbria
+		Flacca Fava Flora Fronto Fullo Fusa Galeo Gemella Glabrio Graccha Gurges Habita
+		Helva Imperiosa Iulla Labeo Lactuca Laenas Lanata Laevina Laterensis Lentula Lepida
+		Libo Licina Longa Luculla Lupa Lurco Macer Macula Malleola Mamerca Marcella Maro
+		Merenda Merga Merula Messalla Metella Murena Ma Musca Nasica Naso Natta Nepos Nero
+		Nerva Niger Novella Ocella Pacila Paeta Pansa Papa Patercula Paulla Pavo Pera Pictor
+		Piso Planca Plauta Poplicola Postuma Potita Praeconina Praetextata Prisca Procula
+		Publicola Pulcher Pulla Pulvilla Purpureo Quadrata Ralla Regilla Regula Rufa Ruga Rulla
+		Rutila Salinator Saturnina Scaeva Scaevola Scapula Scaura Scipio Scrofa Seneca Severa
+		Silana Silo Sila Stolo Strabo Structa Sulla Sura Taura Triaria Trigemina Trio Tubero
+		Tuberta Tubula Tuditana Tulla Turda Varro Vara Vatia Verres Vespillo Veta Vitula
+		Volusa }
+	callsigns = { Germanicus Britannicus Dacicus Parthicus Optimus Armeniacus Medicus "Parthicus Maximus" Sarmaticus Arabicus Adiabenicus "Britannicus Maximus" "Germanicus Maximus" "Gothicus Maximus" Gothicus "Persicus Maximus" "Carpicus Maximus" Alamannicus Francicus Anticus Alanicus Vandalicus Africanus Erullicus Gypedicus Africus Isauricus Cilicius Dalmaticus Ugricus Bosniacus Chrobaticus Lazicus Ibericus Bulgaricus Serbicus Zikhicus Azaricus }
+	industry_companies = { "Caminus Hephaesti" }
+	electronic_companies = { "Olympus Jovis" }
+	car_companies = { Autocinetum }
+	naval_companies = { "Auxilio Neptuni" }
+	weapon_companies = { "Campus Martius" }
+	aircraft_companies = { "Ut Mercurio Talares" }
+}
+wenedyk = {
+	female_names = { Akilëva Ajbušcëva "Al'jaëva" Ajajlëva Albëva Amašcëva Annaëva Anneëva Annëva Antuëva Arrëva
+		Artraëva Asinëva Aštilëva Aštëva "Orl'jaëva" Otruëva Kajkilëva Kajžkëva "Kal'jaëva" Kaližëva
+		Kalpurnëva Kassëva Kložëva Klajaëva Kokkeëva Kvinëva "Kranl'jaëva" Kronkanëva Kuriašcëva
+		Kurëva Kurštëva Dekëva Džëva Dvišcëva Dvilëva Durmëva Ekvišcëva Fabëva Fabrikëva Fannëva
+		Flavëva Fulvëva Furëva Gabinëva Galrjaëva Geganëva "Gl'jalëva" Gjajnëva Gjokëva Grašcëva
+		Rjajanëva Hiršcëva Raštëva Ratjasëva Hosštilëva Julëva Junëva Juvjašcëva "Lal'jaëva" Laršcëva
+		Likinëva Livëva Lukilëva Lukreštëva Manlëva Markëva Marëva Mjamëva Mjajaëva Minikëva
+		Minëva Minukëva Možëva Mukëva Najvëva Nošcëva Numrjaëva Numikëva Oktavëva Ovižëva
+		Papirëva Petruëva Pinarëva Pupeëva Pupilëva Pušcëva "Popil'ëva" Prakëva Postumëva
+		Kvinkštilëva Kvinkštëva "Rubl'jalëva" Rufëva Ruštilëva Sallusštëva Saluëva Salvëva Skribuëva
+		Seëva Sjapruëva Sjaštëva Srjažëva Srjatraëva Srjavilëva Sekštëva Sikinëva Svetuëva Sulpikëva
+		Tarpeëva Tarkvištëva Trjajaštëva Štištinëva Štiturëva Tukkëva Tullëva Ulpëva Valrjaëva Vežëva
+		"Vl'jaleëva" Vrjažlëva Vrjažnëva Vibëva Villëva Vipsanëva "Vitl'jalëva" Vitruvëva Vlomnjëva}
+	female_surnames = { Akulaja Agriklaja Agrippaja Ahalaja Ajavbarbskaja Albinskaja Albskaja Ambustskaja Annaliskaja Akvilaja
+		Aquilinskaja Arvinaja Asljalaja Asinaja "Atljal'skaja" Avitskaja Balbskaja Barbaja Barbatskaja Basskaja Beškaja
+		"Bibakul'skaja" "Bibul'skaja" Blajskaja Brohskaja Brutskaja "Bubul'skaja" Bukkjaja Bulbskaja Butejaja Kajkskaja Kajpjaja
+		Kajsar Kalidskaja Kalvinskaja Kalvskaja Kamil'skaja Kaninskaja Kanskaja Kapitjaja Karbjaja Kaštilinaja Katjaja
+		"Katul'skaja" Kjarjaja Kjasskaja Kefegskaja Kikrjajaja Kikurinskaja Kiljaja Kinkinnatskaja Kinnaja Kradskaja Kranikja
+		Kranutskaja Kravinskaja Kravskaja Kosskaja Kostaja Kottaja Krassipaja Krassskaja Krispinskaja Krispskaja Kullejaja
+		Kurijaja Kursraja Kurvskaja Žatatskaja Žatrjaja Žatjaja Žves "Dlabl'jalaja" Drasvjaja Druskaja "Figul'skaja" Fimbriaja
+		Flakskaja Favskaja Flaskaja Frutjaja Fulljaja Fuskaja Galejaja "Gjal'jal'skaja" Glabrijaja Grahskaja Gurgeskaja Habitskaja
+		"L'javaja" Imprjajoskaja "Jul'skaja" Labejaja Laktukaja Lajaskaja Lanatskaja Lajvinskaja Latrjajasiskaja "L'jatul'skaja" Lepidskaja
+		Libjaja Likinskaja Lugskaja "Lukul'skaja" Lupskaja Lurkjaja Makrjaja Makulaja Mallelaskaja Mamrjakskaja "Markljal'skaja" Marjaja
+		Mrjajadaja Mrjagskaja Mrjolaja Messallaja "Mecal'skaja" Murjaja Mskaja Muskaja Nasikaja Nasjaja Nattaja Neposkaja Njajaja
+		Njavaja Nigrjaja "Novljal'skaja" Okljalaja "Pakil'skaja" Pajtskaja Pansaja Papskaja "Patrjakul'skaja" "Pol'skaja" Pavjaja Prjaja Piktra
+		Pisjaja Plankskaja Plotskaja Popliklaaja Postumskaja Poštitskaja Prajkvinskaja Prajtekstatskaja Priskskaja Prokulskaja
+		Publiklaja Pulhaja "Pul'skaja" "Pulvil'skaja" Purpurejaja Kvadratskaja Rallaja "Režil'skaja" "Regul'skaja" Rufskaja Rugaja Rulluskaja
+		"Ruštil'skaja" Salinatraja Saturninskaja Skajvaja Skajvlaja Skapulaja Skorskaja Skipijaja Skrofaja Sjajkaja Sevrjoskaja
+		Silanskaja Siljaja "Sil'skaja" Stlajaja Strabjaja Strukskaja Sullaja Suraja Torskaja Triarev Trigjajnskaja Trjjaja Tubrjajaja
+		Tubrjatskaja "Tubul'skaja" Tužtanskaja "Tul'skaja" Turdskaja Varrjaja Varskaja Vašcaja Vjareskaja Vespilljaja Vetskaja "Vitul'skaja"
+		Vloskij }
+	callsigns = { Germanicus Britannicus Dacicus Parthicus Optimus Armeniacus Medicus "Parthicus Maximus" Sarmaticus Arabicus Adiabenicus "Britannicus Maximus" "Germanicus Maximus" "Gothicus Maximus" Gothicus "Persicus Maximus" "Carpicus Maximus" Alamannicus Francicus Anticus Alanicus Vandalicus Africanus Erullicus Gypedicus Africus Isauricus Cilicius Dalmaticus Ugricus Bosniacus Chrobaticus Lazicus Ibericus Bulgaricus Serbicus Zikhicus Azaricus }
+	industry_companies = { "Caminus Hephaesti" }
+	electronic_companies = { "Olympus Jovis" }
+	car_companies = { Autocinetum }
+	naval_companies = { "Auxilio Neptuni" }
+	weapon_companies = { "Campus Martius" }
+	aircraft_companies = { "Ut Mercurio Talares" }
+}
+xliponian = {
+	female_names = { Agilora Aibudora Ailora Aimilora Albora Amadora Annaora Anneora Annora Andonora Arrora
+		Ardorora Asinora Adilora Adora Aurelora Audronora Gaigilora Gaidigora Gailora Galidora
+		Galburnora Gassora Xaudora Xoilora Goggeora Gominora Gornelora Gorunganora Guriadora
+		Gurora Gurdora Degora Didora Domidora Duilora Durmora Equidora Babora Babrigora Bannora
+		Blabora Bulbora Burora Gabinora Galerora Geganora Gellora Geminora Genugora Gradora
+		Gerennora Girdora Goradora Gordensora Gosdilora Iulora Iunora Iubendora Lailora Lardora
+		Liginora Libora Lugilora Lugredora Manlora Margora Marora Memmora Menenora Minigora
+		Minora Minugora Modora Mugora Naibora Naudora Numerora Numigora Ogdabora Obidora
+		Babirora Bedronora Binarora Bombeora Bombilora Bondora Bobillora Borgora Bosdumora
+		Quingdilora Quingdora Rubellora Rubora Rudilora Sallusdora Salonora Salbora Sgribonora
+		Seora Sembronora Sendora Sergora Serdorora Serbilora Sexdora Siginora Suedonora Sulbigora
+		Darbeora Darquidora Derendora Didinora Didurora Duggora Dullora Ulbora Balerora Bedora
+		Belleora Bergilora Berginora Bibora Billora Bibsanora Bidellora Bidrubora Bolumnora }
+	callsigns = { Germanicus Britannicus Dacicus Parthicus Optimus Armeniacus Medicus "Parthicus Maximus" Sarmaticus Arabicus Adiabenicus "Britannicus Maximus" "Germanicus Maximus" "Gothicus Maximus" Gothicus "Persicus Maximus" "Carpicus Maximus" Alamannicus Francicus Anticus Alanicus Vandalicus Africanus Erullicus Gypedicus Africus Isauricus Cilicius Dalmaticus Ugricus Bosniacus Chrobaticus Lazicus Ibericus Bulgaricus Serbicus Zikhicus Azaricus }
+	industry_companies = { "Caminus Hephaesti" }
+	electronic_companies = { "Olympus Jovis" }
+	car_companies = { Autocinetum }
+	naval_companies = { "Auxilio Neptuni" }
+	weapon_companies = { "Campus Martius" }
+	aircraft_companies = { "Ut Mercurio Talares" }
+}
+coptic = {
+	female_names = { Cleopatra Anthelia Demiana Ese Fibruniyah Kattrin Lucra Ourt Tanoute Nephertiti }
+	callsigns = { Pharaoh Alexander Caesar Orisis Anubis Tutankhamen Moses }
+	industry_companies = { "Works of Moloch" }
+	electronic_companies = { "Nest of Horus" }
+	car_companies = { "Ubaste's House" }
+	naval_companies = { "Baal's Idols" }
+	weapon_companies = { ANHUR }
+	aircraft_companies = { "Thoth Scrolls" }
+}
