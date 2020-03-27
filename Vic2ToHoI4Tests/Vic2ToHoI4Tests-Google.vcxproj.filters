@@ -83,9 +83,6 @@
     <ClCompile Include="..\common_items\CommonUtils.cpp">
       <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Flags.cpp">
-      <Filter>Vic2ToHoI4 files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Army.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
@@ -854,6 +851,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutMod.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFlags.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1079,9 +1079,6 @@
     </ClInclude>
     <ClInclude Include="Mocks\CoastalProvincesMock.h">
       <Filter>Mocks</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\OutMod.h">
-      <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

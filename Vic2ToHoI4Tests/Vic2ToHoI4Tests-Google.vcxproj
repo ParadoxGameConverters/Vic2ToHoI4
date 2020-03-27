@@ -54,7 +54,6 @@
     <ClCompile Include="..\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Color.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Configuration.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Flags.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
@@ -68,6 +67,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRule.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRuleOption.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRules.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFlags.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoi4Country.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Ideas\OutIdea.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Ideas\OutIdeaGroup.cpp" />
@@ -341,7 +341,6 @@
   <ItemGroup>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\OutMod.h" />
     <ClInclude Include="Mocks\CoastalProvincesMock.h" />
     <ClInclude Include="Mocks\EventsMock.h" />
     <ClInclude Include="Mocks\GovermentMapperMock.h" />

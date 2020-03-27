@@ -189,7 +189,6 @@
     <ClCompile Include="..\common_items\WinUtils.cpp" />
     <ClCompile Include="Source\Color.cpp" />
     <ClCompile Include="Source\Configuration.cpp" />
-    <ClCompile Include="Source\Flags.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategory.cpp" />
@@ -231,12 +230,14 @@
     <ClCompile Include="Source\OutHoi4\Navies\OutMtgNavyNames.cpp" />
     <ClCompile Include="Source\OutHoi4\Navies\OutMtgShipTypeNames.cpp" />
     <ClCompile Include="Source\OutHoi4\outDifficultySettings.cpp" />
+    <ClCompile Include="Source\OutHoi4\OutFlags.cpp" />
     <ClCompile Include="Source\OutHoi4\OutFocus.cpp" />
     <ClCompile Include="Source\OutHoi4\OutFocusTree.cpp" />
     <ClCompile Include="Source\OutHoi4\OutHoi4Country.cpp" />
     <ClCompile Include="Source\OutHoi4\OutHoI4Version.cpp" />
     <ClCompile Include="Source\OutHoi4\OutHoi4World.cpp" />
     <ClCompile Include="Source\OutHoi4\OutLocalisation.cpp" />
+    <ClCompile Include="Source\OutHoi4\OutMod.cpp" />
     <ClCompile Include="Source\OutHoi4\OutOnActions.cpp" />
     <ClCompile Include="Source\OutHoi4\OutTechnologies.cpp" />
     <ClCompile Include="Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.cpp" />
@@ -398,7 +399,6 @@
     <ClInclude Include="..\common_items\StringUtils.h" />
     <ClInclude Include="Source\Color.h" />
     <ClInclude Include="Source\Configuration.h" />
-    <ClInclude Include="Source\Flags.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategories.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategory.h" />
@@ -412,6 +412,7 @@
     <ClInclude Include="Source\OutHoi4\GameRules\OutGameRule.h" />
     <ClInclude Include="Source\OutHoi4\GameRules\OutGameRuleOption.h" />
     <ClInclude Include="Source\OutHoi4\GameRules\OutGameRules.h" />
+    <ClInclude Include="Source\OutHoi4\OutFlags.h" />
     <ClInclude Include="Source\OutHoi4\OutHoi4Country.h" />
     <ClInclude Include="Source\OutHoi4\Ideas\OutIdea.h" />
     <ClInclude Include="Source\OutHoi4\Ideas\OutIdeaGroup.h" />
@@ -444,6 +445,7 @@
     <ClInclude Include="Source\OutHoi4\OutHoI4Version.h" />
     <ClInclude Include="Source\OutHoi4\OutHoi4World.h" />
     <ClInclude Include="Source\OutHoi4\OutLocalisation.h" />
+    <ClInclude Include="Source\OutHoi4\OutMod.h" />
     <ClInclude Include="Source\OutHoi4\OutOnActions.h" />
     <ClInclude Include="Source\OutHoi4\OutTechnologies.h" />
     <ClInclude Include="Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.h" />

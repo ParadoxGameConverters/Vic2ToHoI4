@@ -12,7 +12,7 @@
 
 void checkMods();
 void setOutputName(const std::string& V2SaveFileName);
-void ConvertV2ToHoI4(const string& V2SaveFileName)
+void ConvertV2ToHoI4(const std::string& V2SaveFileName)
 {
 	ConfigurationFile("configuration.txt");
 	checkMods();

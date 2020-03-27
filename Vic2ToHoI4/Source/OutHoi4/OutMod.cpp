@@ -1,10 +1,9 @@
 #include "OutMod.h"
-#include "../Flags.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
+#include "OutFlags.h"
 #include "OutHoi4World.h"
 #include <string>
-
 
 
 void createModFiles();
@@ -19,7 +18,7 @@ void clearOutputFolder()
 	{
 		if (!Utils::deleteFolder(outputFolder))
 		{
-			LOG(LogLevel::Error) << "Could not remove pre-existing output folder " << output
+			LOG(LogLevel::Error) << "Could not remove pre-existing output folder " << outputFolder
 										<< ". Please delete folder and try converting again.";
 			exit(-1);
 		}
@@ -45,7 +44,7 @@ void createModFiles()
 		exit(-1);
 	}
 
-	ofstream modFile("output/" + theConfiguration.getOutputName() + ".mod");
+	std::ofstream modFile("output/" + theConfiguration.getOutputName() + ".mod");
 	if (!modFile.is_open())
 	{
 		LOG(LogLevel::Error) << "Could not create .mod file";
@@ -61,7 +60,7 @@ void createModFiles()
 	modFile << "supported_version=\"1.8.1\"";
 	modFile.close();
 
-	ofstream descriptorFile("output/output/descriptor.mod");
+	std::ofstream descriptorFile("output/output/descriptor.mod");
 	if (!descriptorFile.is_open())
 	{
 		LOG(LogLevel::Error) << "Could not create descriptor.mod";

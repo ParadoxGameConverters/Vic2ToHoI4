@@ -160,7 +160,6 @@
       <Filter>CommonItems</Filter>
     </ClCompile>
     <ClCompile Include="Source\targa.cpp" />
-    <ClCompile Include="Source\Flags.cpp" />
     <ClCompile Include="Source\Mappers\GovernmentMapper.cpp">
       <Filter>Mappers</Filter>
     </ClCompile>
@@ -744,6 +743,12 @@
     <ClCompile Include="Source\OutHoi4\OutHoi4World.cpp">
       <Filter>OutHoi4</Filter>
     </ClCompile>
+    <ClCompile Include="Source\OutHoi4\OutFlags.cpp">
+      <Filter>OutHoi4</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\OutMod.cpp">
+      <Filter>OutHoi4</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -767,7 +772,6 @@
       <Filter>CommonItems</Filter>
     </ClInclude>
     <ClInclude Include="Source\targa.h" />
-    <ClInclude Include="Source\Flags.h" />
     <ClInclude Include="Source\Mappers\GovernmentMapper.h">
       <Filter>Mappers</Filter>
     </ClInclude>
@@ -1397,6 +1401,12 @@
       <Filter>OutHoi4</Filter>
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\OutHoi4World.h">
+      <Filter>OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\OutFlags.h">
+      <Filter>OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\OutMod.h">
       <Filter>OutHoi4</Filter>
     </ClInclude>
   </ItemGroup>
