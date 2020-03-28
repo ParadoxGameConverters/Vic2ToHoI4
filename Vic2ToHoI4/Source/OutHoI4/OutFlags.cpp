@@ -10,8 +10,13 @@
 
 
 void processFlagsForCountry(const std::pair<std::string, std::shared_ptr<HoI4::Country>>& country,
-	 const std::string& outputName);
-void copyFlags(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries, const std::string& outputName)
+	 const std::string& outputName,
+	 const std::vector<std::string>& vic2Mods,
+	 const std::string& vic2Path);
+void copyFlags(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::string& outputName,
+	 const std::vector<std::string>& vic2Mods,
+	 const std::string& vic2Path)
 {
 	LOG(LogLevel::Info) << "Copying flags";
 
@@ -21,7 +26,7 @@ void copyFlags(const std::map<std::string, std::shared_ptr<HoI4::Country>>& coun
 	Utils::TryCreateFolder("output/" + outputName + "/gfx/flags/small");
 	for (auto country: countries)
 	{
-		processFlagsForCountry(country, outputName);
+		processFlagsForCountry(country, outputName, vic2Mods, vic2Path);
 	}
 }
 
@@ -56,16 +61,21 @@ const char* hoi4Suffixes[FLAG_END] = {
 };
 
 
-std::vector<std::string> getSourceFlagPaths(const std::string& Vic2Tag);
+std::vector<std::string> getSourceFlagPaths(const std::string& Vic2Tag,
+	 const std::vector<std::string>& vic2Mods,
+	 const std::string& vic2Path);
 std::optional<tga_image*> readFlag(const std::string& path);
 tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsigned int sizeY);
 void createBigFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
 void createMediumFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
 void createSmallFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
 void processFlagsForCountry(const std::pair<std::string, std::shared_ptr<HoI4::Country>>& country,
-	 const std::string& outputName)
+	 const std::string& outputName,
+	 const std::vector<std::string>& vic2Mods,
+	 const std::string& vic2Path)
 {
-	std::vector<std::string> sourcePath = getSourceFlagPaths(country.second->getSourceCountry().getTag());
+	std::vector<std::string> sourcePath =
+		 getSourceFlagPaths(country.second->getSourceCountry().getTag(), vic2Mods, vic2Path);
 	for (unsigned int i = BASE_FLAG; i < FLAG_END; i++)
 	{
 		if (!sourcePath[i].empty())
@@ -87,8 +97,13 @@ void processFlagsForCountry(const std::pair<std::string, std::shared_ptr<HoI4::C
 }
 
 
-std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag, const std::string& sourceSuffix);
-std::vector<std::string> getSourceFlagPaths(const std::string& Vic2Tag)
+std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag,
+	 const std::string& sourceSuffix,
+	 const std::vector<std::string>& vic2Mods,
+	 const std::string& vic2Path);
+std::vector<std::string> getSourceFlagPaths(const std::string& Vic2Tag,
+	 const std::vector<std::string>& vic2Mods,
+	 const std::string& vic2Path)
 {
 	std::vector<std::string> paths;
 	paths.resize(FLAG_END);
@@ -96,7 +111,7 @@ std::vector<std::string> getSourceFlagPaths(const std::string& Vic2Tag)
 
 	for (unsigned int i = BASE_FLAG; i < FLAG_END; i++)
 	{
-		auto path = getSourceFlagPath(Vic2Tag, vic2Suffixes[i]);
+		auto path = getSourceFlagPath(Vic2Tag, vic2Suffixes[i], vic2Mods, vic2Path);
 		if (path)
 		{
 			paths[i] = *path;
@@ -113,9 +128,16 @@ std::vector<std::string> getSourceFlagPaths(const std::string& Vic2Tag)
 
 
 bool isThisAConvertedTag(const std::string& Vic2Tag);
-std::optional<std::string> getConversionModFlag(const std::string& flagFilename);
-std::optional<std::string> getAllowModFlags(const std::string& flagFilename);
-std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag, const std::string& sourceSuffix)
+std::optional<std::string> getConversionModFlag(const std::string& flagFilename,
+	 const std::vector<std::string>& vic2Mods,
+	 const std::string& vic2Path);
+std::optional<std::string> getAllowModFlags(const std::string& flagFilename,
+	 const std::vector<std::string>& vic2Mods,
+	 const std::string& vic2Path);
+std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag,
+	 const std::string& sourceSuffix,
+	 const std::vector<std::string>& vic2Mods,
+	 const std::string& vic2Path)
 {
 	std::string path = "flags/" + Vic2Tag + sourceSuffix;
 
@@ -123,7 +145,7 @@ std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag, const s
 	{
 		if (isThisAConvertedTag(Vic2Tag))
 		{
-			auto possiblePath = getConversionModFlag(Vic2Tag + sourceSuffix);
+			auto possiblePath = getConversionModFlag(Vic2Tag + sourceSuffix, vic2Mods, vic2Path);
 			if (possiblePath)
 			{
 				path = *possiblePath;
@@ -133,7 +155,7 @@ std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag, const s
 
 	if (!Utils::DoesFileExist(path))
 	{
-		auto possiblePath = getAllowModFlags(Vic2Tag + sourceSuffix);
+		auto possiblePath = getAllowModFlags(Vic2Tag + sourceSuffix, vic2Mods, vic2Path);
 		if (possiblePath)
 		{
 			path = *possiblePath;
@@ -142,7 +164,7 @@ std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag, const s
 
 	if (isThisAConvertedTag(Vic2Tag))
 	{
-		auto possiblePath = getConversionModFlag(Vic2Tag + ".tga");
+		auto possiblePath = getConversionModFlag(Vic2Tag + ".tga", vic2Mods, vic2Path);
 		if (possiblePath)
 		{
 			path = *possiblePath;
@@ -171,11 +193,13 @@ bool isThisAConvertedTag(const std::string& Vic2Tag)
 }
 
 
-std::optional<std::string> getConversionModFlag(const std::string& flagFilename)
+std::optional<std::string> getConversionModFlag(const std::string& flagFilename,
+	 const std::vector<std::string>& vic2Mods,
+	 const std::string& vic2Path)
 {
-	for (auto mod: theConfiguration.getVic2Mods())
+	for (auto mod: vic2Mods)
 	{
-		std::string path = theConfiguration.getVic2Path() + "/mod/" + mod + "/gfx/flags/" + flagFilename;
+		std::string path = vic2Path + "/mod/" + mod + "/gfx/flags/" + flagFilename;
 		if (Utils::DoesFileExist(path))
 		{
 			return path;
@@ -187,15 +211,17 @@ std::optional<std::string> getConversionModFlag(const std::string& flagFilename)
 
 
 static std::set<std::string> allowedMods = {"PDM", "NNM", "Divergences of Darkness"};
-std::optional<std::string> getAllowModFlags(const std::string& flagFilename)
+std::optional<std::string> getAllowModFlags(const std::string& flagFilename,
+	 const std::vector<std::string>& vic2Mods,
+	 const std::string& vic2Path)
 {
-	for (auto mod: theConfiguration.getVic2Mods())
+	for (auto mod: vic2Mods)
 	{
 		if (allowedMods.count(mod) == 0)
 		{
 			continue;
 		}
-		std::string path = theConfiguration.getVic2Path() + "/mod/" + mod + "/gfx/flags/" + flagFilename;
+		std::string path = vic2Path + "/mod/" + mod + "/gfx/flags/" + flagFilename;
 		if (Utils::DoesFileExist(path))
 		{
 			return path;

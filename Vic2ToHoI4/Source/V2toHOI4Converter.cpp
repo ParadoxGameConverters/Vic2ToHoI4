@@ -24,7 +24,11 @@ void ConvertV2ToHoI4(const std::string& V2SaveFileName)
 	Vic2::World sourceWorld(V2SaveFileName);
 	HoI4::World destWorld(&sourceWorld);
 
-	output(destWorld, theConfiguration.getOutputName(), theConfiguration.getDebug());
+	output(destWorld,
+		 theConfiguration.getOutputName(),
+		 theConfiguration.getDebug(),
+		 theConfiguration.getVic2Mods(),
+		 theConfiguration.getVic2Path());
 	LOG(LogLevel::Info) << "* Conversion complete *";
 }
 

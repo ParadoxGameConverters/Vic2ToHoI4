@@ -6,10 +6,14 @@
 #include "../HOI4World/HoI4Country.h"
 #include <map>
 #include <string>
+#include <vector>
 
 
 
-void copyFlags(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries, const std::string& outputName);
+void copyFlags(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::string& outputName,
+	 const std::vector<std::string>& vic2Mods,
+	 const std::string& vic2Path);
 
 
 
