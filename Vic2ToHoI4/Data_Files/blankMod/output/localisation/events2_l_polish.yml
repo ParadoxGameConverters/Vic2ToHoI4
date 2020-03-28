@@ -1,4 +1,4 @@
-﻿l_polish:
+l_polish:
  communism_on_the_rise.t:0 "Komunizm rośnie w siłę"
  communism_on_the_rise.d:0 ""Na całym świecie klasa robotnicza zrzuca jarzmo burżuazji, a tymczasem u nas ci, którzy rzekomo są świadomi walki klas, siedzą z założonymi rękami, czekając, aż ten wypaczony system polityczny sam się zreformuje. [Root.GetName] znajdzie ocalenie tylko w rewolucji!".\n\nTakie głosy można usłyszeć w [Root.GetAdjective] ruchu komunistycznym. Jego członkowie, według których [Root.GetRulingParty] reprezentuje dyktaturę bogaczy, nawołują do obalenia rządu wszelkimi dostępnymi metodami. Pytanie tylko, czy spróbują to zrobić od środka, czy raczej od zewnątrz."
  communism_on_the_rise.a:0 "Niektórzy członkowie rządu mogą popierać takie postulaty."
@@ -512,3 +512,12 @@
  generic.5.d.g:0 "Zdawszy sobie sprawę, że nawet silni potrzebują sojuszników, naród [alliance_inviter.GetAdjective] zaprasza nas do frakcji [alliance_inviter.GetFactionName]. Jeżeli się zgodzimy, być może zagwarantujemy sobie dostatnią przyszłość."
  generic.5.h:0 "Staniemy do walki u boku naszych towarzyszy!"
  generic.5.i:0 "Potrzebujemy tylko kilku tysięcy poległych..."
+ olympics.1936.d:10 "Niedawno odbyły się jedenaste Igrzyska Olimpijskie w [From.Capital.GetName]zie we [From.GetNameWithFlag]\n\nZ udziałem sportowców z 49 różnych narodów na całym świecie, Letnie Igrzyska Olimpijskie w 1936 roku były pierwszymi w historii, które cieszyły się ograniczoną transmisją telewizyjną na żywo. Igrzyska, symbol odnowionej [From.GetAdjective] jedności narodowej, były także znaczącym zwycięstwem propagandowym dla nowego [From.GetAdjective] reżimu, który hojnie spędził na imprezie.\n\n[From.GetAdjective] sportowcy odnieśli największy sukces, zdobywając 33 złote medale."
+ olympics.1940.d:10 "Dwunaste Igrzyska Olimpijskie odbyły się niedawno w [From.Capital.GetName]zie we [From.GetNameWithFlag].\n\nW świetle rosnących napięć międzynarodowych wielu obawiało się, że Igrzyska zostaną odwołane, ale okazało się, że tak nie jest.\n\nSpecjalnie zbudowany 269 samoloty dalekiego zasięgu niosły tam Płomień Olimpijski bez tankowania.\n\n[From.GetAdjective] sportowcy spisali się dobrze, a ich 14 złotych medali zapewniło im trzecie miejsce w rankingu medali."
+ olympics.1944.t:10 "Igrzyska XIII Olimpiady"
+ olympics.1944.d:10 "Trzynaste igrzyska olimpijskie odbyły się niedawno w [From.Capital.GetName]zie we [From.GetNameWithFlag].\n\nNie było to pierwsze miasto, w którym zaplanowano rozgrywki, ale z jakiegoś tajemniczego powodu Międzynarodowy Komitet Olimpijski przyznał je [From.Capital.GetName]owi.\n\nAteeterzy z [From.GetNameWithFlag] zdobył najwięcej medali."
+ olympics.1948.t:10 "Igrzyska Olimpijskie XIV"
+ olympics.1948.d:10 "Czternaste igrzyska olimpijskie odbyły się niedawno w [From.Capital.GetName]zie we [From.GetNameWithFlag].\n\nNa pochodzie olimpijskiej trzeba było ponownie zapalić po wiejącym wietrze.\n\n[Root.GetName] zdobyły najwięcej złotych medali."
+ olympics.failed.t:10 "Odwołanie Igrzysk Olimpijskich"
+ olympics.failed.d:10 "Ze względu na obecną sytuację międzynarodową Igrzyska Olimpijskie zaplanowane na [GetDateStringNoHour] nie mogły się odbyć."
+ olympics.failed.a:10 "Nie moja wina."

@@ -1,4 +1,4 @@
-﻿l_english:
+l_english:
  communism_on_the_rise.t:0 "Communism on the Rise"
  communism_on_the_rise.d:0 "'While workers rise up against their oppressors around the world, those who claim to have achieved class consciousness in [Root.GetName] sit idly by and wait for change to come from within a political system so thoroughly corrupt, only revolution could save us from it!'\n\nSo speak new voices in the [Root.GetAdjective] communist movement. Referring to the rule of [Root.GetRulingParty] as a dictatorship of the bourgeois, they have begun calling for it to be brought out of power by any means necessary. Whether those means will come from within or without remains to be seen."
  communism_on_the_rise.a:0 "There may be those in the government itself who support such ideas."
@@ -504,3 +504,12 @@
  generic.5.d.g:0 "Recognizing that sometimes even the strong need allies, the [alliance_inviter.GetAdjective] have invited us to join the [alliance_inviter.GetFactionName]. If we choose to accept, this may well provide ample opportunity for us to find our place in the sun."
  generic.5.h:0 "We will fight alongside our comrades!"
  generic.5.i:0 "We only need a few thousand dead..."
+ olympics.1936.d:10 "The eleventh Olympic Games were recently held in [From.Capital.GetName], [From.GetNameWithFlag]\n\nAttended by athletes from 49 different nations across the world, the 1936 Summer Olympics are the first in history to have enjoyed limited live television coverage. The games, a symbol of renewed [From.GetAdjective] national unity, were also a significant propaganda victory for the new [From.GetAdjective] regime, which spent lavishly on the event.\n\n[From.GetAdjective] athletes saw the most success, winning 33 gold medals."
+ olympics.1940.d:10 "The twelfth Olympic Games were recently held in [From.Capital.GetName], [From.GetNameWithFlag].\n\nIn light of rising international tensions, many feared the Games would be canceled, but this has proven not to be the case.\n\nA special purpose-built Me 261 long-range aircraft carried the Olympic Flame there without refueling.\n\n[From.GetAdjective] athletes did well, and their 14 gold medals earned them a third place in the medal count."
+ olympics.1944.t:10 "The Games of the XIII Olympiad"
+ olympics.1944.d:10 "The thirteenth Olympic Games were recently held in [From.Capital.GetName], [From.GetNameWithFlag].\n\nThis was not the first city the games were scheduled to be in, but for some mysterious reason the International Olympic Committee awarded them to [From.Capital.GetName] instead.\n\nAtheletes from [From.GetNameDef] won the most medals."
+ olympics.1948.t:10 "The Games of the XIV Olympiad"
+ olympics.1948.d:10 "The fourteenth Olympic Games were recently held in [From.Capital.GetName], [From.GetNameWithFlag].\n\nThe Olympic torch had to be lit again after the wind blew on it.\n\n[Root.GetNameWithFlag] won the most gold medals."
+ olympics.failed.t:10 "The Cancellation of the Olympic Games"
+ olympics.failed.d:10 "Due to the current international situation, the Olympic Games scheduled for [GetDateStringNoHour] could not be held."
+ olympics.failed.a:10 "Not my fault."

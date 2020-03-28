@@ -1,4 +1,4 @@
-﻿l_german:
+l_german:
  communism_on_the_rise.t:0 "Kommunismus auf dem Vormarsch"
  communism_on_the_rise.d:0 "'Während sich Arbeiter auf der ganzen Welt gegen ihre Unterdrücker erheben, sitzen jene, die behaupten, Klassenbewusstsein in [Root.GetName] erreicht zu haben, einfach nur untätig da und warten darauf, dass sich ein politisches System, das durch und durch so korrupt ist, dass uns nur eine Revolution von ihm erlösen kann, von innen heraus selbst ändert!'\n\nSolche Aussagen kommen von Mitgliedern der neuen [Root.GetAdjective]en Kommunistenbewegung. Sie bezeichnen die Herrschaft der [Root.GetRulingParty] als Diktatur des Spießbürgertums und haben zu fordern begonnen, dass sie mit allen notwendigen Mitteln gestürzt werden müsse. Ob es sich bei diesen Mitteln um in- oder ausländische Mittel handelt, wird man sehen."
  communism_on_the_rise.a:0 "Möglicherweise gibt es sogar in der Regierung selbst einige, die solche Ideen unterstützen."
@@ -512,3 +512,12 @@
  generic.5.d.g:0 "Manchmal braucht selbst der Starke Verbündete, weshalb die [alliance_inviter.GetAdjective]en Anführer uns eingeladen haben, [alliance_inviter.GetFactionName]-Mitglied zu werden. Wenn wir zustimmen, könnte das für uns eine hervorragende Gelegenheit sein, unseren Platz an der Sonne zu sichern."
  generic.5.h:0 "Wir werden an der Seite unserer Genossen kämpfen!"
  generic.5.i:0 "Wir brauchen nur ein paar tausend Tote ..."
+ olympics.1936.d:10 "Die elften Olympischen Spiele fanden kürzlich in [From.Capital.GetName], [From.GetNameWithFlag], statt.\n\nDie Olympischen Sommerspiele 1936 wurden von Athleten aus 49 verschiedenen Nationen auf der ganzen Welt besucht und waren die ersten in der Geschichte, die nur eine begrenzte Live-Fernsehberichterstattung hatten. Die Spiele, ein Symbol für die Erneuerung der nationalen Einheit [From.GetName]s, waren auch ein bedeutender Propagandasieg für das neue [From.GetAdjective]e Regime, das viel Geld für die Veranstaltung ausgab.\n\nDie [From.GetAdjective]en Athleten sahen den größten Erfolg und gewannen 33 Goldmedaillen."
+ olympics.1940.d:10 "Die zwölften Olympischen Spiele fanden kürzlich in [From.Capital.GetName], [From.GetNameWithFlag], statt.\n\nAngesichts der zunehmenden internationalen Spannungen befürchteten viele, dass die Spiele abgesagt würden, aber dies hat sich als nicht der Fall erwiesen.\n\nEin speziell gebautes Me 261 Langstreckenflugzeug trug die olympische Flamme ohne Auftanken dorthin.\n\nDie [From.GetAdjective]en Athleten machten es gut, und ihre 14 Goldmedaillen brachten ihnen einen dritten Platz in der Medaillenzahl ein."
+ olympics.1944.t:10 "Die Spiele der XIII. Olympiade"
+ olympics.1944.d:10 "Die dreizehnten Olympischen Spiele fanden kürzlich in [From.Capital.GetName], [From.GetNameWithFlag], statt.\n\nDies war nicht die erste Stadt, in der die Spiele stattfinden sollten, aber aus mysteriösen Gründen wurden sie vom Internationalen Olympischen Komitee stattdessen an [From.Capital.GetName] vergeben.\n\nDie Atheleten aus [From.GetNameWithFlag] gewann die meisten Medaillen."
+ olympics.1948.t:10 "Die Spiele der XIV. Olympiade"
+ olympics.1948.d:10 "Die vierzehnten Olympischen Spiele fanden kürzlich in [From.Capital.GetName], [From.GetNameWithFlag], statt.\n\nDie olympische Fackel musste erneut angezündet werden, nachdem der Wind darauf geweht hatte.\n\n[Root.GetName] gewann die meisten Goldmedaillen."
+ olympics.failed.t:10 "Die Absage der Olympischen Spiele"
+ olympics.failed.d:10 "Aufgrund der aktuellen internationalen Situation konnten die für [GetDateStringNoHour] geplanten Olympischen Spiele nicht abgehalten werden."
+ olympics.failed.a:10 "Ist nicht meine Schuld."

@@ -1,4 +1,4 @@
-﻿l_spanish:
+l_spanish:
  communism_on_the_rise.t:0 "Comunismo en aumento"
  communism_on_the_rise.d:0 "\\'¡Mientras que los trabajadores se levantan contra sus opresores por todo el mundo, los que dicen que han alcanzado conciencia de clase en [Root.GetName] cruzan de brazos y esperan que el cambio venga desde dentro de un sistema político totalmente corrupto que solo la revolución podría salvarnos de él!\\'\n\nAsí hablan nuevas voces del movimiento comunista [Root.GetAdjective]. Refiriéndose al gobierno del [Root.GetRulingParty] como una dictadura de la burguesía, han comenzado a llamar a su expulsión del poder por cualquier medio necesario. Si esos medios vendrán de dentro o fuera, aún está por ver."
  communism_on_the_rise.a:0 "Pueden haber quienes en el propio gobierno apoyen tales ideas."
@@ -512,3 +512,12 @@
  generic.5.d.g:0 "Reconociendo que algunas veces hasta los fuertes necesitan aliados, los [alliance_inviter.GetAdjective] nos han invitado a entrar en [alliance_inviter.GetFactionName]. Si aceptamos, puede que esto nos dé una gran oportunidad de encontrar nuestro lugar bajo el sol."
  generic.5.h:0 "¡Lucharemos junto a nuestros camaradas!"
  generic.5.i:0 "Solo necesitamos unos cuantos miles de muertos..."
+ olympics.1936.d:10 "Los undécimos Juegos Olímpicos se celebraron recientemente en [From.Capital.GetName], [From.GetNameWithFlag]\n\nAsistidos por atletas de 49 naciones diferentes en todo el mundo, los Juegos Olímpicos de verano de 1936 son los primeros en la historia en disfrutar de una cobertura televisiva en vivo limitada. Los juegos, un símbolo de la unidad nacional [From.GetAdjFS] renovada, también fueron una victoria de propaganda significativa para el nuevo régimen [From.GetAdjMS], que gastó generosamente en el evento.\n\nLos atletas [From.GetAdjMP] tuvieron el mayor éxito al ganar 33 medallas de oro."
+ olympics.1940.d:10 "Los duodécimos Juegos Olímpicos se celebraron recientemente en [From.Capital.GetName], [From.GetNameWithFlag].\n\nA la luz de las crecientes tensiones internacionales, muchos temían que los Juegos fueran cancelados, pero esto ha demostrado no ser el caso.\n\nUn avión de largo alcance Me 261 especialmente diseñado para este propósito llevó la Llama Olímpica allí sin reabastecerse de combustible.\n\nLos atletas [From.GetAdjMP] lo hicieron bien, y sus 14 medallas de oro les valieron un tercer lugar en el recuento de medallas."
+ olympics.1944.t:10 "Los juegos de la XIII Olimpiada"
+ olympics.1944.d:10 "Los decimoterceros Juegos Olímpicos se celebraron recientemente en [From.Capital.GetName], [From.GetNameWithFlag].\n\nEsta no fue la primera ciudad en la que estaban programados los juegos, pero por alguna misteriosa razón el Comité Olímpico Internacional se los otorgó a [From.Capital.GetName].\n\nLos atletas de [From.GetName] ganó la mayor cantidad de medallas."
+ olympics.1948.t:10 "Los juegos de la XIV Olimpiada"
+ olympics.1948.d:10 "Los catorce Juegos Olímpicos se celebraron recientemente en [From.Capital.GetName], [From.GetNameWithFlag].\n\nLa Llama olímpica tuvo que encenderse nuevamente después de que soplara el viento.\n\n[Root.GetName] ganó la mayor cantidad de medallas de oro."
+ olympics.failed.t:10 "La cancelación de los Juegos Olímpicos."
+ olympics.failed.d:10 "Debido a la situación internacional actual, los Juegos Olímpicos programados para [GetDateStringNoHour] no pudieron celebrarse."
+ olympics.failed.a:10 "No es mi culpa."

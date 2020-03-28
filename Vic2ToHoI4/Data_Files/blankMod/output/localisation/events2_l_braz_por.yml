@@ -1,4 +1,4 @@
-﻿l_braz_por:
+l_braz_por:
  communism_on_the_rise.t:0 "O aumento do Comunismo"
  communism_on_the_rise.d:0 ""Enquanto trabalhadores se levantam contra seus opressores ao redor do mundo, aqueles que afirmam ter atingido consciência de classe em [Root.GetName] aguardam sentados por uma mudança que venha de dentro de um sistema político tão corrupto do qual apenas a revolução poderia nos salvar!"\n\nEntão falem novas vozes no movimento comunista [Root.GetAdjective]. Se referindo ao governo de [Root.GetRulingParty] como ditadura dos burgueses, eles começaram afirmar que ela deve ser destituída por quaisquer meios necessários. Se esses meios virão de fora ou de dentro ainda veremos."
  communism_on_the_rise.a:0 "Pode haver aqueles no próprio governo que apoiem essas ideias."
@@ -512,3 +512,12 @@
  generic.5.d.g:0 "Reconhecendo que às vezes até mesmo os mais fortes precisam de aliados, [alliance_inviter.GetAdjective] nos convidou para nos juntarmos à [alliance_inviter.GetFactionName]. Se escolhermos aceitar, isso pode fornecer uma oportunidade para encontrarmos nossa sombra e água fresca."
  generic.5.h:0 "Lutaremos juntos de nossos camaradas!"
  generic.5.i:0 "Só precisamos de alguns milhares de mortos..."
+ olympics.1936.d:10 "Os décimos primeiros Jogos Olímpicos foram realizados recentemente em [From.Capital.GetName], [From.GetNameWithFlag]\n\nAtendidos por atletas de 49 nações diferentes do mundo, os Jogos Olímpicos de Verão de 1936 são os primeiros da história a ter cobertura limitada de televisão ao vivo. Os jogos, um símbolo da unidade nacional [From.GetAdjFS] renovada, também foram uma vitória de propaganda significativa para o novo regime [From.GetAdjMS], que gastou muito tempo no evento.\n\nOs atletas [From.GetAdjMP] obtiveram o maior sucesso, ganhando 33 medalhas de ouro."
+ olympics.1940.d:10 "Os décimos segundos Jogos Olímpicos foram realizados recentemente em [From.Capital.GetName], na [From.GetNameWithFlag].\n\nEm vista da crescente tensão internacional, muitos temiam que os Jogos fossem cancelados, mas isso provou não ser esse o caso.\n\nUm Me 261 especialmente criado aeronaves de longo alcance levavam a Chama Olímpica para lá sem reabastecer.\n\nOs atletas [From.GetAdjMP] se saíram bem e suas 14 medalhas de ouro conquistaram um terceiro lugar na contagem de medalhas."
+ olympics.1944.t:10 "Os Jogos da XIII Olimpíada"
+ olympics.1944.d:10 "Os XIII Jogos Olímpicos foram realizados recentemente em [From.Capital.GetName], [From.GetNameWithFlag].\n\nEsta não era a primeira cidade em que os jogos estavam programados, mas por algum motivo misterioso, o Comitê Olímpico Internacional os concedeu a [From.Capital.GetName].\n\nOs ateletes da [From.GetNameWithFlag] ganhou mais medalhas."
+ olympics.1948.t:10 "Os Jogos da XIV Olimpíada"
+ olympics.1948.d:10 "Os décimos quarto Jogos Olímpicos foram realizados recentemente em [From.Capital.GetName], [From.GetNameWithFlag].\n\nA tocha olímpica teve que acender novamente depois que o vento soprava sobre ela.\n\n[Root.GetName] ganhou mais medalhas de ouro."
+ olympics.failed.t:10 "O cancelamento dos Jogos Olímpicos"
+ olympics.failed.d:10 "Devido à atual situação internacional, os Jogos Olímpicos agendados para [GetDateStringNoHour] não puderam ser realizados."
+ olympics.failed.a:10 "Não é minha culpa."
