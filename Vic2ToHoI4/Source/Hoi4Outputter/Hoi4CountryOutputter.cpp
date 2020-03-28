@@ -756,7 +756,7 @@ void outputCountryLeader(
 		output << "    desc = \"POLITICS_NOMEN_NESCIO_DESC\"\n";
 		output << "    picture = \"gfx/leaders/ENG/portrait_eng_fallen_government.dds\"\n";
 		output << "    expire = \"1965.1.1\"\n";
-		output << "    ideology = anarchism\n";
+		output << "    ideology = " << leaderIdeology << "\n";
 		output << "    traits = {\n";
 		output << "    }\n";
 		output << "}\n";
