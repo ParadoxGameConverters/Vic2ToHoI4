@@ -413,6 +413,8 @@
     <ClInclude Include="Source\OutHoi4\GameRules\OutGameRule.h" />
     <ClInclude Include="Source\OutHoi4\GameRules\OutGameRuleOption.h" />
     <ClInclude Include="Source\OutHoi4\GameRules\OutGameRules.h" />
+    <ClInclude Include="Source\OutHoi4\Leaders\OutAdmiral.h" />
+    <ClInclude Include="Source\OutHoi4\Leaders\OutGeneral.h" />
     <ClInclude Include="Source\OutHoi4\OutColor.h" />
     <ClInclude Include="Source\OutHoi4\OutFlags.h" />
     <ClInclude Include="Source\OutHoi4\OutHoi4Country.h" />

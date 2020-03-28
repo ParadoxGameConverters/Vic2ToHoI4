@@ -1,4 +1,4 @@
-#include "../../HOI4World/Leaders/General.h"
+#include "OutGeneral.h"
 #include <ostream>
 
 
@@ -9,7 +9,7 @@ std::ostream& HoI4::operator<<(std::ostream& output, const General& instance)
 	output << "\tname = \"" << instance.name << "\"\n";
 	output << "\tpicture = \"" << instance.picture << "\"\n";
 	output << "\ttraits = { ";
-	for (const auto& trait : instance.traits)
+	for (const auto& trait: instance.traits)
 	{
 		output << trait << " ";
 	}
