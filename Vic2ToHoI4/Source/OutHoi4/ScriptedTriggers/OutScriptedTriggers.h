@@ -4,17 +4,15 @@
 
 
 #include "../../HOI4World/ScriptedTriggers/ScriptedTriggers.h"
-#include "../../Configuration.h"
 
 
 
 namespace HoI4
 {
 
-void outputScriptedTriggers(const ScriptedTriggers& scriptedTriggers, const Configuration& theConfiguration);
+void outputScriptedTriggers(const ScriptedTriggers& scriptedTriggers, const std::string& outputName);
 
 }
-
 
 
 

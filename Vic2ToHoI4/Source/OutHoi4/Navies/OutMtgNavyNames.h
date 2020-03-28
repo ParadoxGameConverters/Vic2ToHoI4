@@ -16,7 +16,7 @@ class MtgShipTypeNames;
 
 void outMtgNavyNames(std::ostream& out, const std::set<MtgShipTypeNames>& navyNames, std::string_view tag);
 
-}
+} // namespace HoI4
 
 
 

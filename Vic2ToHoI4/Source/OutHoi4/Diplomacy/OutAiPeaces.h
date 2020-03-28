@@ -4,7 +4,6 @@
 
 
 #include "../../HOI4World/Diplomacy/AIPeaces.h"
-#include "../../Configuration.h"
 #include <set>
 
 
@@ -15,7 +14,7 @@ namespace HoI4
 void outAiPeaces(
 	const AiPeaces& aiPeaces,
 	const std::set<std::string>& majorIdeologies,
-	const Configuration& theConfiguration
+	const std::string& outputName
 );
 
 }

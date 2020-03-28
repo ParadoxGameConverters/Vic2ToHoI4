@@ -1,6 +1,6 @@
 #include "OutFocusTree.h"
-#include "OutFocus.h"
 #include "Log.h"
+#include "OutFocus.h"
 #include <fstream>
 #include <string>
 
@@ -39,7 +39,7 @@ void HoI4::outputFocusTree(const HoI4FocusTree& focusTree, const std::string& fi
 		out << "\n";
 	}
 
-	for (const auto& focus : focusTree.getFocuses())
+	for (const auto& focus: focusTree.getFocuses())
 	{
 		out << *focus;
 		out << "\n";
@@ -60,7 +60,7 @@ void outputShared(std::ostream& output, const HoI4Focus& focus)
 	{
 		output << "	text = " << focus.text << "\n";
 	}
-	for (auto prerequisite : focus.prerequisites)
+	for (auto prerequisite: focus.prerequisites)
 	{
 		output << "	prerequisite " << prerequisite << "\n";
 	}
@@ -108,7 +108,7 @@ void outputShared(std::ostream& output, const HoI4Focus& focus)
 	output << "}\n";
 	output << "\n";
 
-	//return output;
+	// return output;
 }
 
 
@@ -121,7 +121,7 @@ void HoI4::outputSharedFocuses(const HoI4FocusTree& focusTree, const std::string
 		exit(-1);
 	}
 
-	for (auto focus : focusTree.getSharedFocuses())
+	for (auto focus: focusTree.getSharedFocuses())
 	{
 		outputShared(SharedFoci, *focus);
 	}

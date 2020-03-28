@@ -3,7 +3,6 @@
 
 
 
-#include "../../Configuration.h"
 #include "../../HOI4World/GameRules/GameRules.h"
 
 
@@ -11,7 +10,7 @@
 namespace HoI4
 {
 
-void outputGameRules(const GameRules& rules, const Configuration& theConfiguration);
+void outputGameRules(const GameRules& rules, const std::string& outputName);
 
 }
 

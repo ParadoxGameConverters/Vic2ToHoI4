@@ -14,7 +14,7 @@ namespace HoI4
 
 void outputOnActions(const OnActions& onActions,
 	 const std::set<std::string>& majorIdeologies,
-	 const Configuration& theConfiguration);
+	 const std::string& outputName);
 
 }
 

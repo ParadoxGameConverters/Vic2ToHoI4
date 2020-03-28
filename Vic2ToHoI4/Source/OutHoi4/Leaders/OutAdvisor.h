@@ -8,7 +8,7 @@
 namespace HoI4
 {
 
-void outputAdvisor(std::ostream& output, const std::string& tag, const Advisor& theAdvisor);
+void outputAdvisor(std::ostream& output, const std::string& tag, const Advisor& theAdvisor); //see if tag should be in the advisor
 
 }
 

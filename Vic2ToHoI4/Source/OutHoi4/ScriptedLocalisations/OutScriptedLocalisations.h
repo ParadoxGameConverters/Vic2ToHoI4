@@ -11,8 +11,7 @@
 namespace HoI4
 {
 
-void outputScriptedLocalisations(const Configuration& theConfiguration,
-	 const ScriptedLocalisations& scriptedLocalisations);
+void outputScriptedLocalisations(const std::string& outputName, const ScriptedLocalisations& scriptedLocalisations);
 
 }
 

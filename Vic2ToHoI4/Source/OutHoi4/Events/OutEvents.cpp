@@ -7,49 +7,46 @@
 void outputActualEvents(const std::string& eventsFileName,
 	 const std::string& eventNamespace,
 	 const std::vector<HoI4::Event>& events,
-	 const Configuration& theConfiguration);
+	 const std::string& outputName);
 void outputWarJustificationEvents(const std::vector<HoI4::Event>& warJustificationEvents,
-	 const Configuration& theConfiguration);
+	 const std::string& outputName);
 void outputStabilityEvents(const std::map<std::string, HoI4::Event>& stabilityEvents,
 	 const std::map<std::string, HoI4::Event>& strikesEvents,
 	 const std::map<std::string, HoI4::Event>& mutinyEvents,
-	 const Configuration& theConfiguration);
-void outputGovernmentInExileDecision(const HoI4::Event& governmentInExileEvent);
+	 const std::string& outputName);
+void outputGovernmentInExileDecision(const HoI4::Event& governmentInExileEvent, const std::string& outputName);
 
 
 
-void HoI4::outputEvents(const Events& theEvents, const Configuration& theConfiguration)
+void HoI4::outputEvents(const Events& theEvents, const std::string& outputName)
 {
-	const auto eventPath = "output/" + theConfiguration.getOutputName() + "/events";
+	const auto eventPath = "output/" + outputName + "/events";
 	if (!Utils::TryCreateFolder(eventPath))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + theConfiguration.getOutputName() + "/events\"";
+		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/events\"";
 		exit(-1);
 	}
 
-	outputActualEvents("NF_events.txt", "NFEvents", theEvents.getNationalFocusEvents(), theConfiguration);
-	outputActualEvents("newsEvents.txt", "news", theEvents.getNewsEvents(), theConfiguration);
-	outputActualEvents("converterPoliticalEvents.txt",
-		 "conv.political",
-		 theEvents.getPoliticalEvents(),
-		 theConfiguration);
-	outputWarJustificationEvents(theEvents.getWarJustificationEvents(), theConfiguration);
-	outputActualEvents("ElectionEvents.txt", "election", theEvents.getElectionsEvents(), theConfiguration);
+	outputActualEvents("NF_events.txt", "NFEvents", theEvents.getNationalFocusEvents(), outputName);
+	outputActualEvents("newsEvents.txt", "news", theEvents.getNewsEvents(), outputName);
+	outputActualEvents("converterPoliticalEvents.txt", "conv.political", theEvents.getPoliticalEvents(), outputName);
+	outputWarJustificationEvents(theEvents.getWarJustificationEvents(), outputName);
+	outputActualEvents("ElectionEvents.txt", "election", theEvents.getElectionsEvents(), outputName);
 	outputStabilityEvents(theEvents.getStabilityEvents(),
 		 theEvents.getStrikesEvents(),
 		 theEvents.getMutinyEvents(),
-		 theConfiguration);
-	outputActualEvents("Generic.txt", "generic", theEvents.getGenericEvents(), theConfiguration);
-	outputGovernmentInExileDecision(theEvents.getGovernmentInExileEvent());
+		 outputName);
+	outputActualEvents("Generic.txt", "generic", theEvents.getGenericEvents(), outputName);
+	outputGovernmentInExileDecision(theEvents.getGovernmentInExileEvent(), outputName);
 }
 
 
 void outputActualEvents(const std::string& eventsFileName,
 	 const std::string& eventNamespace,
 	 const std::vector<HoI4::Event>& events,
-	 const Configuration& theConfiguration)
+	 const std::string& outputName)
 {
-	std::ofstream outEvents("output/" + theConfiguration.getOutputName() + "/events/" + eventsFileName);
+	std::ofstream outEvents("output/" + outputName + "/events/" + eventsFileName);
 	if (!outEvents.is_open())
 	{
 		throw std::runtime_error("Could not create " + eventsFileName);
@@ -67,12 +64,9 @@ void outputActualEvents(const std::string& eventsFileName,
 }
 
 
-void outputWarJustificationEvents(const std::vector<HoI4::Event>& warJustificationEvents,
-	 const Configuration& theConfiguration)
+void outputWarJustificationEvents(const std::vector<HoI4::Event>& warJustificationEvents, const std::string& outputName)
 {
-	std::ofstream outWarJustificationEvents(
-		 "output/" + theConfiguration.getOutputName() + "/events/WarJustification.txt",
-		 std::ios_base::app);
+	std::ofstream outWarJustificationEvents("output/" + outputName + "/events/WarJustification.txt", std::ios_base::app);
 	if (!outWarJustificationEvents.is_open())
 	{
 		throw std::runtime_error("Could not open WarJustification.txt");
@@ -91,9 +85,9 @@ void outputWarJustificationEvents(const std::vector<HoI4::Event>& warJustificati
 void outputStabilityEvents(const std::map<std::string, HoI4::Event>& stabilityEvents,
 	 const std::map<std::string, HoI4::Event>& strikesEvents,
 	 const std::map<std::string, HoI4::Event>& mutinyEvents,
-	 const Configuration& theConfiguration)
+	 const std::string& outputName)
 {
-	std::ofstream outStabilityEvents("output/" + theConfiguration.getOutputName() + "/events/stability_events.txt");
+	std::ofstream outStabilityEvents("output/" + outputName + "/events/stability_events.txt");
 	if (!outStabilityEvents.is_open())
 	{
 		throw std::runtime_error("Could not open StabilityEvents.txt");
@@ -131,10 +125,9 @@ void outputStabilityEvents(const std::map<std::string, HoI4::Event>& stabilityEv
 }
 
 
-void outputGovernmentInExileDecision(const HoI4::Event& governmentInExileEvent)
+void outputGovernmentInExileDecision(const HoI4::Event& governmentInExileEvent, const std::string& outputName)
 {
-	std::ofstream outEvents("output/" + theConfiguration.getOutputName() + "/events/MTG_generic.txt",
-		 std::ofstream::app);
+	std::ofstream outEvents("output/" + outputName + "/events/MTG_generic.txt", std::ofstream::app);
 	if (!outEvents.is_open())
 	{
 		throw std::runtime_error("Could not add to MTG_generic.txt");

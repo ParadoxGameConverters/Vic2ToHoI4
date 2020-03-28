@@ -17,14 +17,14 @@ void ConvertV2ToHoI4(const std::string& V2SaveFileName)
 	ConfigurationFile("configuration.txt");
 	checkMods();
 	setOutputName(V2SaveFileName);
-	clearOutputFolder();
+	clearOutputFolder(theConfiguration.getOutputName());
 
 	theProvinceMapper.initialize();
 
 	Vic2::World sourceWorld(V2SaveFileName);
 	HoI4::World destWorld(&sourceWorld);
 
-	output(destWorld);
+	output(destWorld, theConfiguration.getOutputName(), theConfiguration.getDebug());
 	LOG(LogLevel::Info) << "* Conversion complete *";
 }
 
@@ -92,7 +92,8 @@ void setOutputName(const std::string& V2SaveFileName)
 	const int length = outputName.find_last_of('.');
 	if ((length == std::string::npos) || (".v2" != outputName.substr(length, outputName.length())))
 	{
-		std::invalid_argument theException("The save was not a Vic2 save. Choose a save ending in '.v2' and convert again.");
+		std::invalid_argument theException(
+			 "The save was not a Vic2 save. Choose a save ending in '.v2' and convert again.");
 		throw theException;
 	}
 	outputName = outputName.substr(0, length);

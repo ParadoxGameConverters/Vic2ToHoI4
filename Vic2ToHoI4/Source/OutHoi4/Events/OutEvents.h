@@ -3,7 +3,6 @@
 
 
 
-#include "../../Configuration.h"
 #include "../../HOI4World/Events/Events.h"
 
 
@@ -11,7 +10,7 @@
 namespace HoI4
 {
 
-void outputEvents(const Events& theEvents, const Configuration& theConfiguration);
+void outputEvents(const Events& theEvents, const std::string& outputName);
 
 }
 

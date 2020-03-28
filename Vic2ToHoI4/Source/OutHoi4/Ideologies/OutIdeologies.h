@@ -10,7 +10,7 @@
 namespace HoI4
 {
 
-void outputIdeologies(const Ideologies& ideologies);
+void outputIdeologies(const Ideologies& ideologies, const std::string& outputName);
 
 }
 

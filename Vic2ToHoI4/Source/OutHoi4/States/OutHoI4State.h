@@ -3,7 +3,6 @@
 
 
 
-#include "../../Configuration.h"
 #include "../../HOI4World/States/HoI4State.h"
 #include <ostream>
 
@@ -12,7 +11,7 @@
 namespace HoI4
 {
 
-void outputHoI4State(std::ostream& output, const HoI4::State& theState, const Configuration& theConfiguration);
+void outputHoI4State(std::ostream& output, const HoI4::State& theState, bool debugEnabled);
 
 }
 

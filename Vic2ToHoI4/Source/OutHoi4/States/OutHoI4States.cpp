@@ -1,5 +1,4 @@
 #include "OutHoI4States.h"
-#include "../../HOI4World/States/DefaultState.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "OutHoI4State.h"
@@ -7,26 +6,25 @@
 
 
 
-void HoI4::outputStates(const States& theStates, const Configuration& theConfiguration)
+void HoI4::outputStates(const States& theStates, const std::string& outputName, bool debugEnabled)
 {
 	LOG(LogLevel::Debug) << "Writing states";
 
-	if (!Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/history/states"))
+	if (!Utils::TryCreateFolder("output/" + outputName + "/history/states"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + theConfiguration.getOutputName() + "/history/states";
+		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/history/states";
 		exit(-1);
 	}
 	for (auto state: theStates.getStates())
 	{
-		std::string filename(
-			 "output/" + theConfiguration.getOutputName() + "/history/states/" + std::to_string(state.first) + ".txt");
+		std::string filename("output/" + outputName + "/history/states/" + std::to_string(state.first) + ".txt");
 		std::ofstream out(filename);
 		if (!out.is_open())
 		{
 			std::runtime_error error("Could not open \"" + filename + "\"");
 			throw error;
 		}
-		HoI4::outputHoI4State(out, state.second, theConfiguration);
+		HoI4::outputHoI4State(out, state.second, debugEnabled);
 		out.close();
 	}
 }

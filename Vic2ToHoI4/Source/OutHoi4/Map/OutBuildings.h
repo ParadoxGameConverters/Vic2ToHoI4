@@ -4,14 +4,13 @@
 
 
 #include "../../HOI4World/Map/Buildings.h"
-#include "../../Configuration.h"
 
 
 
 namespace HoI4
 {
 
-void outputBuildings(const Buildings& buildings, const Configuration& theConfiguration);
+void outputBuildings(const Buildings& buildings, const std::string& outputName);
 
 }
 

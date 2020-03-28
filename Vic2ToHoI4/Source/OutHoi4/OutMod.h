@@ -7,8 +7,8 @@
 
 
 
-void clearOutputFolder();
-void output(HoI4::World& destWorld);
+void clearOutputFolder(const std::string& outputName);
+void output(HoI4::World& destWorld, const std::string& outputName, bool debugEnabled);
 
 
 

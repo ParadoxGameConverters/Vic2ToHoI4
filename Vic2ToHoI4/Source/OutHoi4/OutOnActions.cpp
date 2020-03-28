@@ -6,10 +6,9 @@
 
 void HoI4::outputOnActions(const OnActions& onActions,
 	 const std::set<std::string>& majorIdeologies,
-	 const Configuration& theConfiguration)
+	 const std::string& outputName)
 {
-	std::ofstream onActionsFile(
-		 "output/" + theConfiguration.getOutputName() + "/common/on_actions/99_converter_on_actions.txt");
+	std::ofstream onActionsFile("output/" + outputName + "/common/on_actions/99_converter_on_actions.txt");
 	if (!onActionsFile.is_open())
 	{
 		LOG(LogLevel::Error) << "Could not create NF_events.txt";

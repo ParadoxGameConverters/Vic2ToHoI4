@@ -6,14 +6,15 @@
 #include <string>
 
 
-void createModFiles();
-void renameOutputFolder();
+
+void createModFiles(const std::string& outputName);
+void renameOutputFolder(const std::string& outputName);
 
 
 
-void clearOutputFolder()
+void clearOutputFolder(const std::string& outputName)
 {
-	const std::string outputFolder = Utils::getCurrentDirectory() + "/output/" + theConfiguration.getOutputName();
+	const std::string outputFolder = Utils::getCurrentDirectory() + "/output/" + outputName;
 	if (Utils::doesFolderExist(outputFolder))
 	{
 		if (!Utils::deleteFolder(outputFolder))
@@ -26,16 +27,16 @@ void clearOutputFolder()
 }
 
 
-void output(HoI4::World& destWorld)
+void output(HoI4::World& destWorld, const std::string& outputName, bool debugEnabled)
 {
-	createModFiles();
-	renameOutputFolder();
-	copyFlags(destWorld.getCountries());
-	HoI4::OutputWorld(destWorld);
+	createModFiles(outputName);
+	renameOutputFolder(outputName);
+	copyFlags(destWorld.getCountries(), outputName);
+	HoI4::OutputWorld(destWorld, outputName, debugEnabled);
 }
 
 
-void createModFiles()
+void createModFiles(const std::string& outputName)
 {
 	LOG(LogLevel::Info) << "Outputting mod";
 	if (!Utils::copyFolder("blankMod/output", "output/output"))
@@ -44,16 +45,16 @@ void createModFiles()
 		exit(-1);
 	}
 
-	std::ofstream modFile("output/" + theConfiguration.getOutputName() + ".mod");
+	std::ofstream modFile("output/" + outputName + ".mod");
 	if (!modFile.is_open())
 	{
 		LOG(LogLevel::Error) << "Could not create .mod file";
 		exit(-1);
 	}
 
-	modFile << "name = \"Converted - " << theConfiguration.getOutputName() << "\"\n";
-	modFile << "path = \"mod/" << theConfiguration.getOutputName() << "/\"\n";
-	modFile << "user_dir = \"" << theConfiguration.getOutputName() << "_user_dir\"\n";
+	modFile << "name = \"Converted - " << outputName << "\"\n";
+	modFile << "path = \"mod/" << outputName << "/\"\n";
+	modFile << "user_dir = \"" << outputName << "_user_dir\"\n";
 	modFile << "replace_path=\"common/ideologies\"\n";
 	modFile << "replace_path=\"history/countries\"\n";
 	modFile << "replace_path=\"history/states\"\n";
@@ -66,8 +67,8 @@ void createModFiles()
 		LOG(LogLevel::Error) << "Could not create descriptor.mod";
 		exit(-1);
 	}
-	descriptorFile << "name = \"Converted - " << theConfiguration.getOutputName() << "\"\n";
-	descriptorFile << "user_dir = \"" << theConfiguration.getOutputName() << "_user_dir\"\n";
+	descriptorFile << "name = \"Converted - " << outputName << "\"\n";
+	descriptorFile << "user_dir = \"" << outputName << "_user_dir\"\n";
 	descriptorFile << "replace_path=\"common/ideologies\"\n";
 	descriptorFile << "replace_path=\"history/countries\"\n";
 	descriptorFile << "replace_path=\"history/states\"\n";
@@ -76,9 +77,9 @@ void createModFiles()
 }
 
 
-void renameOutputFolder()
+void renameOutputFolder(const std::string& outputName)
 {
-	if (!Utils::renameFolder("output/output", "output/" + theConfiguration.getOutputName()))
+	if (!Utils::renameFolder("output/output", "output/" + outputName))
 	{
 		LOG(LogLevel::Error) << "Could not rename output folder!";
 		exit(-1);

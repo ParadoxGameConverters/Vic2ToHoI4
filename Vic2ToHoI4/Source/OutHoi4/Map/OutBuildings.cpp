@@ -4,14 +4,12 @@
 
 
 
-void HoI4::outputBuildings(const Buildings& buildings, const Configuration& theConfiguration)
+void HoI4::outputBuildings(const Buildings& buildings, const std::string& outputName)
 {
-	std::ofstream out("output/" + theConfiguration.getOutputName() + "/map/buildings.txt");
+	std::ofstream out("output/" + outputName + "/map/buildings.txt");
 	if (!out.is_open())
 	{
-		throw std::runtime_error(
-			"Could not open output/" + theConfiguration.getOutputName() + "/map/buildings.txt"
-		);
+		throw std::runtime_error("Could not open output/" + outputName + "/map/buildings.txt");
 	}
 	for (const auto& building: buildings.getBuildings())
 	{
@@ -19,12 +17,10 @@ void HoI4::outputBuildings(const Buildings& buildings, const Configuration& theC
 	}
 	out.close();
 
-	std::ofstream airportsFile("output/" + theConfiguration.getOutputName() + "/map/airports.txt");
+	std::ofstream airportsFile("output/" + outputName + "/map/airports.txt");
 	if (!airportsFile.is_open())
 	{
-		throw std::runtime_error(
-			"Could not create output/" + theConfiguration.getOutputName() + "/map/airports.txt"
-		);
+		throw std::runtime_error("Could not create output/" + outputName + "/map/airports.txt");
 	}
 	for (const auto& airportLocation: buildings.getAirportLocations())
 	{

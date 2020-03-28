@@ -9,7 +9,7 @@
 
 
 
-void copyFlags(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
+void copyFlags(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries, const std::string& outputName);
 
 
 

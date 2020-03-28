@@ -3,7 +3,7 @@
 
 
 
-void HoI4::outputHoI4State(std::ostream& output, const HoI4::State& theState, const Configuration& theConfiguration)
+void HoI4::outputHoI4State(std::ostream& output, const HoI4::State& theState, bool debugEnabled)
 {
 	output << "\n";
 	output << "state={"
@@ -35,7 +35,7 @@ void HoI4::outputHoI4State(std::ostream& output, const HoI4::State& theState, co
 	{
 		if ((theState.getVpValue() > 0) && (theState.getVPLocation()))
 		{
-			if (theConfiguration.getDebug())
+			if (debugEnabled)
 			{
 				output << "\t\tvictory_points = {\n";
 				output << "\t\t\t" << *theState.getVPLocation() << " " << (theState.getVpValue() + 10) << "\n";

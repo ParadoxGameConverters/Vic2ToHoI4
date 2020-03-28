@@ -1,67 +1,69 @@
 #include "OutFlags.h"
+#include "../Configuration.h"
+#include "../HOI4World/HoI4Country.h"
 #include "../V2World/Country.h"
 #include "../targa.h"
 #include "Log.h"
-#include "../Configuration.h"
 #include "OSCompatibilityLayer.h"
 #include <optional>
-#include "../HOI4World/HoI4Country.h"
 
 
 
-void processFlagsForCountry(const std::pair<std::string, std::shared_ptr<HoI4::Country>>& country);
-void copyFlags(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
+void processFlagsForCountry(const std::pair<std::string, std::shared_ptr<HoI4::Country>>& country,
+	 const std::string& outputName);
+void copyFlags(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries, const std::string& outputName)
 {
 	LOG(LogLevel::Info) << "Copying flags";
 
-	Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/gfx");
-	Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/gfx/flags");
-	Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/gfx/flags/medium");
-	Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/gfx/flags/small");
+	Utils::TryCreateFolder("output/" + outputName + "/gfx");
+	Utils::TryCreateFolder("output/" + outputName + "/gfx/flags");
+	Utils::TryCreateFolder("output/" + outputName + "/gfx/flags/medium");
+	Utils::TryCreateFolder("output/" + outputName + "/gfx/flags/small");
 	for (auto country: countries)
 	{
-		processFlagsForCountry(country);
+		processFlagsForCountry(country, outputName);
 	}
 }
 
 
 enum flagIdeologies
 {
-	BASE_FLAG			= 0,
-	COMMUNISM_FLAG		= 1,
-	DEMOCRATIC_FLAG	= 2,
-	FACISM_FLAG			= 3,
-	ABSOLUTIST_FLAG   = 4,
-	RADICAL_FLAG      = 5,
-	FLAG_END				= 6
+	BASE_FLAG = 0,
+	COMMUNISM_FLAG = 1,
+	DEMOCRATIC_FLAG = 2,
+	FACISM_FLAG = 3,
+	ABSOLUTIST_FLAG = 4,
+	RADICAL_FLAG = 5,
+	FLAG_END = 6
 };
 
 const char* vic2Suffixes[FLAG_END] = {
-	".tga",
-	"_communist.tga",
-	".tga",
-	"_fascist.tga",
-	"_monarchy.tga",
-	"_republic.tga",
+	 ".tga",
+	 "_communist.tga",
+	 ".tga",
+	 "_fascist.tga",
+	 "_monarchy.tga",
+	 "_republic.tga",
 };
 
 const char* hoi4Suffixes[FLAG_END] = {
-	".tga",
-	"_communism.tga",
-	"_democratic.tga",
-	"_fascism.tga",
-	"_absolutist.tga",
-	"_radical.tga",
+	 ".tga",
+	 "_communism.tga",
+	 "_democratic.tga",
+	 "_fascism.tga",
+	 "_absolutist.tga",
+	 "_radical.tga",
 };
 
 
 std::vector<std::string> getSourceFlagPaths(const std::string& Vic2Tag);
 std::optional<tga_image*> readFlag(const std::string& path);
 tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsigned int sizeY);
-void createBigFlag(tga_image* sourceFlag, const std::string& filename);
-void createMediumFlag(tga_image* sourceFlag, const std::string& filename);
-void createSmallFlag(tga_image* sourceFlag, const std::string& filename);
-void processFlagsForCountry(const std::pair<std::string, std::shared_ptr<HoI4::Country>>& country)
+void createBigFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
+void createMediumFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
+void createSmallFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
+void processFlagsForCountry(const std::pair<std::string, std::shared_ptr<HoI4::Country>>& country,
+	 const std::string& outputName)
 {
 	std::vector<std::string> sourcePath = getSourceFlagPaths(country.second->getSourceCountry().getTag());
 	for (unsigned int i = BASE_FLAG; i < FLAG_END; i++)
@@ -74,9 +76,9 @@ void processFlagsForCountry(const std::pair<std::string, std::shared_ptr<HoI4::C
 				return;
 			}
 
-			createBigFlag(*sourceFlag, country.first + hoi4Suffixes[i]);
-			createMediumFlag(*sourceFlag, country.first + hoi4Suffixes[i]);
-			createSmallFlag(*sourceFlag, country.first + hoi4Suffixes[i]);
+			createBigFlag(*sourceFlag, country.first + hoi4Suffixes[i], outputName);
+			createMediumFlag(*sourceFlag, country.first + hoi4Suffixes[i], outputName);
+			createSmallFlag(*sourceFlag, country.first + hoi4Suffixes[i], outputName);
 
 			tga_free_buffers(*sourceFlag);
 			delete *sourceFlag;
@@ -151,7 +153,7 @@ std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag, const s
 	{
 		path = "flags/" + Vic2Tag + ".tga";
 	}
-		
+
 	if (Utils::DoesFileExist(path))
 	{
 		return path;
@@ -184,7 +186,7 @@ std::optional<std::string> getConversionModFlag(const std::string& flagFilename)
 }
 
 
-static std::set<std::string> allowedMods = { "PDM", "NNM", "Divergences of Darkness" };
+static std::set<std::string> allowedMods = {"PDM", "NNM", "Divergences of Darkness"};
 std::optional<std::string> getAllowModFlags(const std::string& flagFilename)
 {
 	for (auto mod: theConfiguration.getVic2Mods())
@@ -217,7 +219,8 @@ std::optional<tga_image*> readFlag(const std::string& path)
 	tga_result result = tga_read_from_FILE(flag, flagFile);
 	if (result != TGA_NOERR)
 	{
-		LOG(LogLevel::Warning) << "Could not read flag " << path << ": " << tga_error(result) << ". FEOF: " << feof(flagFile) << ". Ferror: " << ferror(flagFile) << ".";
+		LOG(LogLevel::Warning) << "Could not read flag " << path << ": " << tga_error(result)
+									  << ". FEOF: " << feof(flagFile) << ". Ferror: " << ferror(flagFile) << ".";
 		delete flag;
 		flag = {};
 	}
@@ -272,15 +275,15 @@ tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsign
 }
 
 
-void createBigFlag(tga_image* sourceFlag, const std::string& filename)
+void createBigFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName)
 {
 	tga_image* destFlag = createNewFlag(sourceFlag, 82, 52);
 	FILE* outputFile;
-	if (fopen_s(&outputFile, ("output/" + theConfiguration.getOutputName() + "/gfx/flags/" + filename).c_str(), "w+b") != 0)
+	if (fopen_s(&outputFile, ("output/" + outputName + "/gfx/flags/" + filename).c_str(), "w+b") != 0)
 	{
 		tga_free_buffers(destFlag);
 		delete destFlag;
-		throw std::runtime_error("Could not create output/" + theConfiguration.getOutputName() + "/gfx/flags/" + filename);
+		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/" + filename);
 	}
 	tga_write_to_FILE(outputFile, destFlag);
 	fclose(outputFile);
@@ -289,15 +292,15 @@ void createBigFlag(tga_image* sourceFlag, const std::string& filename)
 }
 
 
-void createMediumFlag(tga_image* sourceFlag, const std::string& filename)
+void createMediumFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName)
 {
 	tga_image* destFlag = createNewFlag(sourceFlag, 41, 26);
 	FILE* outputFile;
-	if (fopen_s(&outputFile, ("output/" + theConfiguration.getOutputName() + "/gfx/flags/medium/" + filename).c_str(), "w+b") != 0)
+	if (fopen_s(&outputFile, ("output/" + outputName + "/gfx/flags/medium/" + filename).c_str(), "w+b") != 0)
 	{
 		tga_free_buffers(destFlag);
 		delete destFlag;
-		throw std::runtime_error("Could not create output/" + theConfiguration.getOutputName() + "/gfx/flags/medium/" + filename);
+		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/medium/" + filename);
 	}
 	tga_write_to_FILE(outputFile, destFlag);
 	fclose(outputFile);
@@ -306,15 +309,15 @@ void createMediumFlag(tga_image* sourceFlag, const std::string& filename)
 }
 
 
-void createSmallFlag(tga_image* sourceFlag, const std::string& filename)
+void createSmallFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName)
 {
 	tga_image* destFlag = createNewFlag(sourceFlag, 10, 7);
 	FILE* outputFile;
-	if (fopen_s(&outputFile, ("output/" + theConfiguration.getOutputName() + "/gfx/flags/small/" + filename).c_str(), "w+b") != 0)
+	if (fopen_s(&outputFile, ("output/" + outputName + "/gfx/flags/small/" + filename).c_str(), "w+b") != 0)
 	{
 		tga_free_buffers(destFlag);
 		delete destFlag;
-		throw std::runtime_error("Could not create output/" + theConfiguration.getOutputName() + "/gfx/flags/small/" + filename);
+		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/small/" + filename);
 	}
 	tga_write_to_FILE(outputFile, destFlag);
 	fclose(outputFile);

@@ -3,19 +3,15 @@
 
 
 
-#include "../../HOI4World/Map/SupplyZone.h"
 #include "../../Configuration.h"
+#include "../../HOI4World/Map/SupplyZone.h"
 
 
 
 namespace HoI4
 {
-	
-void outputSupplyZone(
-	const SupplyZone& supplyZone,
-	const std::string& filename,
-	const Configuration& theConfiguration
-);
+
+void outputSupplyZone(const SupplyZone& supplyZone, const std::string& filename, const std::string& outputName);
 
 }
 

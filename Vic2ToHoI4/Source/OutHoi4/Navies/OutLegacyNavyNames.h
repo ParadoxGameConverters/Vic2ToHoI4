@@ -16,7 +16,7 @@ class LegacyShipTypeNames;
 
 void outLegacyNavyNames(std::ostream& out, const std::set<LegacyShipTypeNames>& navyNames, std::string_view tag);
 
-}
+} // namespace HoI4
 
 
 

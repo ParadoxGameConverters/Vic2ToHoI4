@@ -14,8 +14,7 @@ class LegacyShipTypeNames;
 
 void outLegacyShipTypeNames(std::ostream& out, const LegacyShipTypeNames& shipTypeNames);
 
-}
-
+} // namespace HoI4
 
 
 

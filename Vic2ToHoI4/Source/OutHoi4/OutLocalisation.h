@@ -4,14 +4,13 @@
 
 
 #include "../HOI4World/HoI4Localisation.h"
-#include "../Configuration.h"
 
 
 
 namespace HoI4
 {
 
-void outputLocalisation(const HoI4Localisation& localisation, const Configuration& theConfiguration);
+void outputLocalisation(const HoI4Localisation& localisation, const std::string& outputName);
 
 }
 

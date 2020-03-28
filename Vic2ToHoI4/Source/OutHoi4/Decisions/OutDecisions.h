@@ -3,7 +3,6 @@
 
 
 
-#include "../../Configuration.h"
 #include "../../HOI4World/Decisions/Decisions.h"
 
 
@@ -13,7 +12,7 @@ namespace HoI4
 
 void outputDecisions(const decisions& theDecisions,
 	 const std::set<std::string>& majorIdeologies,
-	 const Configuration& theConfiguration);
+	 const std::string& outputName);
 
 }
 

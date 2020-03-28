@@ -4,11 +4,11 @@
 
 
 
-void HoI4::outputScriptedLocalisations(const Configuration& theConfiguration,
+void HoI4::outputScriptedLocalisations(const std::string& outputName,
 	 const ScriptedLocalisations& scriptedLocalisations)
 {
 	std::ofstream scriptedLocalisationsFile(
-		 "output/" + theConfiguration.getOutputName() + "/common/scripted_localisation/00_scripted_localisation.txt",
+		 "output/" + outputName + "/common/scripted_localisation/00_scripted_localisation.txt",
 		 std::ofstream::app);
 
 	for (const auto& localisation: scriptedLocalisations.getLocalisations())
@@ -21,9 +21,8 @@ void HoI4::outputScriptedLocalisations(const Configuration& theConfiguration,
 
 	for (const auto& localisationsInLanguage: scriptedLocalisations.getAdjectiveLocalisations())
 	{
-		auto filename{"output/" + theConfiguration.getOutputName() +
-						  "/common/scripted_localisation/000_scripted_localisation_" + localisationsInLanguage.first +
-						  "_loc.txt"};
+		auto filename{"output/" + outputName + "/common/scripted_localisation/000_scripted_localisation_" +
+						  localisationsInLanguage.first + "_loc.txt"};
 		std::ofstream adjectiveLocalisationsFile(filename, std::ofstream::app);
 
 		for (const auto& localisation: localisationsInLanguage.second)

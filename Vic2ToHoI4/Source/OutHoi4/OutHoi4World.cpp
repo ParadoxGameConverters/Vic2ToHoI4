@@ -31,23 +31,31 @@ void reportDefaultIndustry(const World& world);
 std::pair<std::string, std::array<int, 3>> getDefaultStateIndustry(const HoI4::DefaultState& state);
 void reportDefaultIndustry(const std::map<std::string, std::array<int, 3>>& countryIndustry);
 
-void outputCommonCountries(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
-void outputColorsFile(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
+void outputCommonCountries(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::string& outputName);
+void outputColorsFile(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::string& outputName);
 void outputNames(const HoI4::namesMapper& theNames,
-	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
+	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::string& outputName);
 void outputUnitNames(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
-void outputMap(const States& states, const std::map<int, HoI4::StrategicRegion*>& strategicRegions);
-void outputGenericFocusTree(const std::set<std::string>& majorIdeologies);
+void outputMap(const States& states,
+	 const std::map<int, HoI4::StrategicRegion*>& strategicRegions,
+	 const std::string& outputName);
+void outputGenericFocusTree(const std::set<std::string>& majorIdeologies, const std::string& outputName);
 void outputCountries(const std::set<HoI4::Advisor>& activeIdeologicalAdvisors,
 	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
 	 const allMilitaryMappings& theMilitaryMappings,
 	 HoI4::namesMapper& theNames,
-	 graphicsMapper& theGraphics);
-void outputRelations();
+	 graphicsMapper& theGraphics,
+	 const std::string& outputName);
+void outputRelations(const std::string& outputName);
 void outputLeaderTraits(const std::map<std::string, std::vector<std::string>>& ideologicalLeaderTraits,
-	 const std::set<std::string>& majorIdeologies);
+	 const std::set<std::string>& majorIdeologies,
+	 const std::string& outputName);
 void outputBookmarks(const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers,
-	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
+	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::string& outputName);
 
 } // namespace HoI4
 
@@ -149,61 +157,61 @@ std::pair<std::string, std::array<int, 3>> HoI4::getDefaultStateIndustry(const H
 }
 
 
-void HoI4::OutputWorld(World& world)
+void HoI4::OutputWorld(World& world, const std::string& outputName, bool debugEnabled)
 {
 	reportIndustryLevels(world);
 
 	LOG(LogLevel::Info) << "Outputting world";
 
-	if (!Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/history"))
+	if (!Utils::TryCreateFolder("output/" + outputName + "/history"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + theConfiguration.getOutputName() + "/history";
+		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/history";
 		exit(-1);
 	}
 
-	outputCommonCountries(world.getCountries());
-	outputColorsFile(world.getCountries());
-	outputNames(world.getNames(), world.getCountries());
+	outputCommonCountries(world.getCountries(), outputName);
+	outputColorsFile(world.getCountries(), outputName);
+	outputNames(world.getNames(), world.getCountries(), outputName);
 	outputUnitNames(world.getCountries());
-	outputLocalisation(*HoI4Localisation::getInstance(), theConfiguration);
-	outputStates(world.getTheStates(), theConfiguration);
-	outputMap(world.getTheStates(), world.getStrategicRegions());
-	outputSupplyZones(world.getSupplyZones(), theConfiguration);
-	outputRelations();
-	outputGenericFocusTree(world.getMajorIdeologies());
+	outputLocalisation(*HoI4Localisation::getInstance(), outputName);
+	outputStates(world.getTheStates(), outputName, debugEnabled);
+	outputMap(world.getTheStates(), world.getStrategicRegions(), outputName);
+	outputSupplyZones(world.getSupplyZones(), outputName);
+	outputRelations(outputName);
+	outputGenericFocusTree(world.getMajorIdeologies(), outputName);
 	outputCountries(world.getActiveIdeologicalAdvisors(),
 		 world.getCountries(),
 		 world.getMilitaryMappings(),
 		 world.getNames(),
-		 world.getGraphics());
-	outputBuildings(world.getBuildings(), theConfiguration);
-	outputDecisions(world.getDecisions(), world.getMajorIdeologies(), theConfiguration);
-	outputEvents(world.getEvents(), theConfiguration);
-	outputOnActions(world.getOnActions(), world.getMajorIdeologies(), theConfiguration);
-	outAiPeaces(world.getPeaces(), world.getMajorIdeologies(), theConfiguration);
-	outputIdeologies(world.getIdeologies());
-	outputLeaderTraits(world.getIdeologicalLeaderTraits(), world.getMajorIdeologies());
-	outIdeas(world.getTheIdeas(), world.getMajorIdeologies(), theConfiguration);
-	outputBookmarks(world.getGreatPowers(), world.getCountries());
-	outputScriptedLocalisations(theConfiguration, world.getScriptedLocalisations());
-	outputScriptedTriggers(world.getScriptedTriggers(), theConfiguration);
-	outputDifficultySettings(world.getGreatPowers(), theConfiguration);
-	outputGameRules(world.getGameRules(), theConfiguration);
+		 world.getGraphics(),
+		 outputName);
+	outputBuildings(world.getBuildings(), outputName);
+	outputDecisions(world.getDecisions(), world.getMajorIdeologies(), outputName);
+	outputEvents(world.getEvents(), outputName);
+	outputOnActions(world.getOnActions(), world.getMajorIdeologies(), outputName);
+	outAiPeaces(world.getPeaces(), world.getMajorIdeologies(), outputName);
+	outputIdeologies(world.getIdeologies(), outputName);
+	outputLeaderTraits(world.getIdeologicalLeaderTraits(), world.getMajorIdeologies(), outputName);
+	outIdeas(world.getTheIdeas(), world.getMajorIdeologies(), outputName);
+	outputBookmarks(world.getGreatPowers(), world.getCountries(), outputName);
+	outputScriptedLocalisations(outputName, world.getScriptedLocalisations());
+	outputScriptedTriggers(world.getScriptedTriggers(), outputName);
+	outputDifficultySettings(world.getGreatPowers(), outputName);
+	outputGameRules(world.getGameRules(), outputName);
 }
 
 
-void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
+void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::string& outputName)
 {
-	if (!Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/common/country_tags"))
+	if (!Utils::TryCreateFolder("output/" + outputName + "/common/country_tags"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + theConfiguration.getOutputName() +
-											 "/common/country_tags\"";
+		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/common/country_tags\"";
 		exit(-1);
 	}
 
 	LOG(LogLevel::Debug) << "Writing countries file";
-	std::ofstream allCountriesFile(
-		 "output/" + theConfiguration.getOutputName() + "/common/country_tags/00_countries.txt");
+	std::ofstream allCountriesFile("output/" + outputName + "/common/country_tags/00_countries.txt");
 	if (!allCountriesFile.is_open())
 	{
 		LOG(LogLevel::Error) << "Could not create countries file";
@@ -231,19 +239,19 @@ void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<HoI
 }
 
 
-void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
+void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::string& outputName)
 {
-	if (!Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/common/countries"))
+	if (!Utils::TryCreateFolder("output/" + outputName + "/common/countries"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + theConfiguration.getOutputName() + "/common/countries\"";
+		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/common/countries\"";
 		exit(-1);
 	}
 
-	std::ofstream output("output/" + theConfiguration.getOutputName() + "/common/countries/colors.txt");
+	std::ofstream output("output/" + outputName + "/common/countries/colors.txt");
 	if (!output.is_open())
 	{
-		Log(LogLevel::Error) << "Could not open output/" << theConfiguration.getOutputName()
-									<< "/common/countries/colors.txt";
+		Log(LogLevel::Error) << "Could not open output/" << outputName << "/common/countries/colors.txt";
 		exit(-1);
 	}
 
@@ -261,15 +269,15 @@ void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<HoI4::Co
 
 
 void HoI4::outputNames(const HoI4::namesMapper& theNames,
-	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
+	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::string& outputName)
 {
-	std::ofstream namesFile("output/" + theConfiguration.getOutputName() + "/common/names/01_names.txt");
+	std::ofstream namesFile("output/" + outputName + "/common/names/01_names.txt");
 	namesFile << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 
 	if (!namesFile.is_open())
 	{
-		Log(LogLevel::Error) << "Could not open output/" << theConfiguration.getOutputName()
-									<< "/common/names/01_names.txt";
+		Log(LogLevel::Error) << "Could not open output/" << outputName << "/common/names/01_names.txt";
 		exit(-1);
 	}
 
@@ -295,20 +303,22 @@ void HoI4::outputUnitNames(const std::map<std::string, std::shared_ptr<HoI4::Cou
 }
 
 
-void HoI4::outputMap(const States& states, const std::map<int, HoI4::StrategicRegion*>& strategicRegions)
+void HoI4::outputMap(const States& states,
+	 const std::map<int, HoI4::StrategicRegion*>& strategicRegions,
+	 const std::string& outputName)
 {
 	LOG(LogLevel::Debug) << "Writing Map Info";
 
-	if (!Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/map"))
+	if (!Utils::TryCreateFolder("output/" + outputName + "/map"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + theConfiguration.getOutputName() + "/map";
+		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/map";
 		exit(-1);
 	}
 
-	std::ofstream rocketSitesFile("output/" + theConfiguration.getOutputName() + "/map/rocketsites.txt");
+	std::ofstream rocketSitesFile("output/" + outputName + "/map/rocketsites.txt");
 	if (!rocketSitesFile.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not create output/" << theConfiguration.getOutputName() << "/map/rocketsites.txt";
+		LOG(LogLevel::Error) << "Could not create output/" << outputName << "/map/rocketsites.txt";
 		exit(-1);
 	}
 	for (auto state: states.getStates())
@@ -318,32 +328,29 @@ void HoI4::outputMap(const States& states, const std::map<int, HoI4::StrategicRe
 	}
 	rocketSitesFile.close();
 
-	if (!Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/map/strategicregions"))
+	if (!Utils::TryCreateFolder("output/" + outputName + "/map/strategicregions"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + theConfiguration.getOutputName() + "/map/strategicregions";
+		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/map/strategicregions";
 		exit(-1);
 	}
 	for (auto strategicRegion: strategicRegions)
 	{
-		outputStrategicRegion(*strategicRegion.second,
-			 "output/" + theConfiguration.getOutputName() + "/map/strategicregions/");
+		outputStrategicRegion(*strategicRegion.second, "output/" + outputName + "/map/strategicregions/");
 	}
 }
 
 
-void HoI4::outputGenericFocusTree(const std::set<std::string>& majorIdeologies)
+void HoI4::outputGenericFocusTree(const std::set<std::string>& majorIdeologies, const std::string& outputName)
 {
-	if (!Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/common/national_focus"))
+	if (!Utils::TryCreateFolder("output/" + outputName + "/common/national_focus"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + theConfiguration.getOutputName() +
-											 "/common/national_focus\"";
+		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/common/national_focus\"";
 		exit(-1);
 	}
 
 	HoI4FocusTree genericFocusTree;
 	genericFocusTree.addGenericFocusTree(majorIdeologies);
-	outputSharedFocuses(genericFocusTree,
-		 "output/" + theConfiguration.getOutputName() + "/common/national_focus/shared_focuses.txt");
+	outputSharedFocuses(genericFocusTree, "output/" + outputName + "/common/national_focus/shared_focuses.txt");
 }
 
 
@@ -351,27 +358,28 @@ void HoI4::outputCountries(const std::set<HoI4::Advisor>& activeIdeologicalAdvis
 	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
 	 const allMilitaryMappings& theMilitaryMappings,
 	 HoI4::namesMapper& theNames,
-	 graphicsMapper& theGraphics)
+	 graphicsMapper& theGraphics,
+	 const std::string& outputName)
 {
 	LOG(LogLevel::Debug) << "Writing countries";
-	if (!Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/history"))
+	if (!Utils::TryCreateFolder("output/" + outputName + "/history"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + theConfiguration.getOutputName() + "/history";
+		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/history";
 		exit(-1);
 	}
-	if (!Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/history/countries"))
+	if (!Utils::TryCreateFolder("output/" + outputName + "/history/countries"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + theConfiguration.getOutputName() + "/history";
+		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/history";
 		exit(-1);
 	}
-	if (!Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/history/states"))
+	if (!Utils::TryCreateFolder("output/" + outputName + "/history/states"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + theConfiguration.getOutputName() + "/history/states";
+		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/history/states";
 		exit(-1);
 	}
-	if (!Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/history/units"))
+	if (!Utils::TryCreateFolder("output/" + outputName + "/history/units"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + theConfiguration.getOutputName() + "/history/units";
+		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/history/units";
 		exit(-1);
 	}
 
@@ -389,10 +397,10 @@ void HoI4::outputCountries(const std::set<HoI4::Advisor>& activeIdeologicalAdvis
 		}
 	}
 
-	std::ofstream ideasFile("output/" + theConfiguration.getOutputName() + "/interface/converter_ideas.gfx");
+	std::ofstream ideasFile("output/" + outputName + "/interface/converter_ideas.gfx");
 	if (!ideasFile.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not open output/" << theConfiguration.getOutputName() << "/interface/ideas.gfx";
+		LOG(LogLevel::Error) << "Could not open output/" << outputName << "/interface/ideas.gfx";
 		exit(-1);
 	}
 
@@ -409,17 +417,15 @@ void HoI4::outputCountries(const std::set<HoI4::Advisor>& activeIdeologicalAdvis
 }
 
 
-void HoI4::outputRelations()
+void HoI4::outputRelations(const std::string& outputName)
 {
-	if (!Utils::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/common/opinion_modifiers"))
+	if (!Utils::TryCreateFolder("output/" + outputName + "/common/opinion_modifiers"))
 	{
-		Log(LogLevel::Error) << "Could not create output/" + theConfiguration.getOutputName() +
-											 "/common/opinion_modifiers/";
+		Log(LogLevel::Error) << "Could not create output/" + outputName + "/common/opinion_modifiers/";
 		exit(-1);
 	}
 
-	std::ofstream out(
-		 "output/" + theConfiguration.getOutputName() + "/common/opinion_modifiers/01_opinion_modifiers.txt");
+	std::ofstream out("output/" + outputName + "/common/opinion_modifiers/01_opinion_modifiers.txt");
 	if (!out.is_open())
 	{
 		LOG(LogLevel::Error) << "Could not create 01_opinion_modifiers.txt.";
@@ -465,10 +471,10 @@ void HoI4::outputRelations()
 
 
 void HoI4::outputLeaderTraits(const std::map<std::string, std::vector<std::string>>& ideologicalLeaderTraits,
-	 const std::set<std::string>& majorIdeologies)
+	 const std::set<std::string>& majorIdeologies,
+	 const std::string& outputName)
 {
-	std::ofstream traitsFile(
-		 "output/" + theConfiguration.getOutputName() + "/common/country_leader/converterTraits.txt");
+	std::ofstream traitsFile("output/" + outputName + "/common/country_leader/converterTraits.txt");
 	traitsFile << "leader_traits = {\n";
 	for (const auto& majorIdeology: majorIdeologies)
 	{
@@ -488,10 +494,10 @@ void HoI4::outputLeaderTraits(const std::map<std::string, std::vector<std::strin
 
 
 void HoI4::outputBookmarks(const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers,
-	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
+	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::string& outputName)
 {
-	std::ofstream bookmarkFile(
-		 "output/" + theConfiguration.getOutputName() + "/common/bookmarks/the_gathering_storm.txt");
+	std::ofstream bookmarkFile("output/" + outputName + "/common/bookmarks/the_gathering_storm.txt");
 
 	bookmarkFile << "bookmarks = {\n";
 	bookmarkFile << "	bookmark = {\n";

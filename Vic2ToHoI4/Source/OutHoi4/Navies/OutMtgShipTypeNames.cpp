@@ -23,7 +23,7 @@ void HoI4::outMtgShipTypeNames(std::ostream& out, const MtgShipTypeNames& shipTy
 	out << "\n";
 	out << "\tunique = {\n";
 	out << "\t\t";
-	for (const auto& name : shipTypeNames.getNames())
+	for (const auto& name: shipTypeNames.getNames())
 	{
 		out << "\"" << name << "\" ";
 	}

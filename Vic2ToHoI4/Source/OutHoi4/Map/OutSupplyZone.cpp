@@ -3,13 +3,9 @@
 
 
 
-void HoI4::outputSupplyZone(
-	const SupplyZone& supplyZone,
-	const std::string& filename,
-	const Configuration& theConfiguration
-)
+void HoI4::outputSupplyZone(const SupplyZone& supplyZone, const std::string& filename, const std::string& outputName)
 {
-	const auto fullFilename("output/" + theConfiguration.getOutputName() + "/map/supplyareas/" + filename);
+	const auto fullFilename("output/" + outputName + "/map/supplyareas/" + filename);
 	std::ofstream out(fullFilename);
 	if (!out.is_open())
 	{

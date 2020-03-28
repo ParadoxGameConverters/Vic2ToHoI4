@@ -1,13 +1,14 @@
 #include "outDifficultySettings.h"
 #include <fstream>
 
-void HoI4::outputDifficultySettings(
-	const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers,
-	const Configuration& theConfiguration
-) {
+
+
+void HoI4::outputDifficultySettings(const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers,
+	 const std::string& outputName)
+{
 	std::ofstream outStream;
 
-	outStream.open("output/" + theConfiguration.getOutputName() + "/common/difficulty_settings/00_difficulty.txt");
+	outStream.open("output/" + outputName + "/common/difficulty_settings/00_difficulty.txt");
 	outStream << "difficulty_settings = {\n";
 	for (const auto& GP: greatPowers)
 	{

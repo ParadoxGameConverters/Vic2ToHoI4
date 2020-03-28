@@ -3,14 +3,13 @@
 
 
 
+#include "../../HOI4World/Ideas/Idea.h"
 #include <ostream>
 
 
 
 namespace HoI4
 {
-
-class Idea;
 
 std::ostream& operator<<(std::ostream& outStream, const Idea& outIdea);
 

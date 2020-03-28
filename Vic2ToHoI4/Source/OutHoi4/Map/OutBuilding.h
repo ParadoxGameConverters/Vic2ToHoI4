@@ -10,7 +10,7 @@
 namespace HoI4
 {
 
-std::ostream& operator << (std::ostream& out, const Building& building);
+std::ostream& operator<<(std::ostream& out, const Building& building);
 
 }
 
