@@ -11,8 +11,7 @@ void HoI4::outputOnActions(const OnActions& onActions,
 	std::ofstream onActionsFile("output/" + outputName + "/common/on_actions/99_converter_on_actions.txt");
 	if (!onActionsFile.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not create NF_events.txt";
-		exit(-1);
+		throw std::runtime_error("Could not create NF_events.txt");
 	}
 
 	onActionsFile << "on_actions = {\n";

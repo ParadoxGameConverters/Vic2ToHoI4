@@ -17,8 +17,7 @@ void outputLocalisations(const std::string& filenameStart, const languageToLocal
 		std::ofstream localisationFile(filenameStart + languageToLocalisations.first + ".yml", std::ios_base::app);
 		if (!localisationFile.is_open())
 		{
-			LOG(LogLevel::Error) << "Could not update localisation text file";
-			exit(-1);
+			throw std::runtime_error("Could not update localisation text file");
 		}
 		localisationFile << "\xEF\xBB\xBF"; // output a BOM to make HoI4 happy
 		localisationFile << "l_" << languageToLocalisations.first << ":\n";
@@ -44,8 +43,7 @@ void outputStateLocalisations(const std::string& localisationPath,
 			 std::ios_base::app);
 		if (!localisationFile.is_open())
 		{
-			LOG(LogLevel::Error) << "Could not update state localisation text file";
-			exit(-1);
+			throw std::runtime_error("Could not update state localisation text file");
 		}
 		localisationFile << "\xEF\xBB\xBF"; // output a BOM to make HoI4 happy
 		localisationFile << "l_" << languageToLocalisations.first << ":\n";
@@ -64,8 +62,7 @@ void HoI4::outputLocalisation(const HoI4Localisation& localisation, const std::s
 	const auto localisationPath = "output/" + outputName + "/localisation";
 	if (!Utils::TryCreateFolder(localisationPath))
 	{
-		LOG(LogLevel::Error) << "Could not create localisation folder";
-		exit(-1);
+		throw std::runtime_error("Could not create localisation folder");
 	}
 
 	outputLocalisations(localisationPath + "/countries_mod_l_", localisation.getCountryLocalisations());

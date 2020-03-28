@@ -19,9 +19,8 @@ void clearOutputFolder(const std::string& outputName)
 	{
 		if (!Utils::deleteFolder(outputFolder))
 		{
-			LOG(LogLevel::Error) << "Could not remove pre-existing output folder " << outputFolder
-										<< ". Please delete folder and try converting again.";
-			exit(-1);
+			throw std::runtime_error("Could not remove pre-existing output folder " + outputFolder +
+											 ". Please delete folder and try converting again.");
 		}
 	}
 }
@@ -45,15 +44,13 @@ void createModFiles(const std::string& outputName)
 	LOG(LogLevel::Info) << "Outputting mod";
 	if (!Utils::copyFolder("blankMod/output", "output/output"))
 	{
-		LOG(LogLevel::Error) << "Could not copy blankMod";
-		exit(-1);
+		throw std::runtime_error("Could not copy blankMod");
 	}
 
 	std::ofstream modFile("output/" + outputName + ".mod");
 	if (!modFile.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not create .mod file";
-		exit(-1);
+		throw std::runtime_error("Could not create .mod file");
 	}
 
 	modFile << "name = \"Converted - " << outputName << "\"\n";
@@ -68,8 +65,7 @@ void createModFiles(const std::string& outputName)
 	std::ofstream descriptorFile("output/output/descriptor.mod");
 	if (!descriptorFile.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not create descriptor.mod";
-		exit(-1);
+		throw std::runtime_error("Could not create descriptor.mod");
 	}
 	descriptorFile << "name = \"Converted - " << outputName << "\"\n";
 	descriptorFile << "user_dir = \"" << outputName << "_user_dir\"\n";
@@ -85,7 +81,6 @@ void renameOutputFolder(const std::string& outputName)
 {
 	if (!Utils::renameFolder("output/output", "output/" + outputName))
 	{
-		LOG(LogLevel::Error) << "Could not rename output folder!";
-		exit(-1);
+		throw std::runtime_error("Could not rename output folder!");
 	}
 }

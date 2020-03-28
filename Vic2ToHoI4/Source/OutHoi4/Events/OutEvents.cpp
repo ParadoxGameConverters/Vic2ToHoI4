@@ -23,8 +23,7 @@ void HoI4::outputEvents(const Events& theEvents, const std::string& outputName)
 	const auto eventPath = "output/" + outputName + "/events";
 	if (!Utils::TryCreateFolder(eventPath))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/events\"";
-		exit(-1);
+		throw std::runtime_error("Could not create \"output/" + outputName + "/events\"");
 	}
 
 	outputActualEvents("NF_events.txt", "NFEvents", theEvents.getNationalFocusEvents(), outputName);

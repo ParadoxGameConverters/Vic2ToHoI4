@@ -164,8 +164,7 @@ void HoI4::OutputWorld(World& world, const std::string& outputName, const bool d
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/history"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/history";
-		exit(-1);
+		throw std::runtime_error("Could not create \"output/" + outputName + "/history");
 	}
 
 	outputCommonCountries(world.getCountries(), outputName);
@@ -205,16 +204,14 @@ void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<Cou
 {
 	if (!Utils::TryCreateFolder("output/" + outputName + "/common/country_tags"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/common/country_tags\"";
-		exit(-1);
+		throw std::runtime_error("Could not create \"output/" + outputName + "/common/country_tags\"");
 	}
 
 	LOG(LogLevel::Debug) << "Writing countries file";
 	std::ofstream allCountriesFile("output/" + outputName + "/common/country_tags/00_countries.txt");
 	if (!allCountriesFile.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not create countries file";
-		exit(-1);
+		throw std::runtime_error("Could not create countries file");
 	}
 
 	for (const auto& country: countries)
@@ -243,15 +240,13 @@ void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<Country>
 {
 	if (!Utils::TryCreateFolder("output/" + outputName + "/common/countries"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/common/countries\"";
-		exit(-1);
+		throw std::runtime_error("Could not create \"output/" + outputName + "/common/countries\"");
 	}
 
 	std::ofstream output("output/" + outputName + "/common/countries/colors.txt");
 	if (!output.is_open())
 	{
-		Log(LogLevel::Error) << "Could not open output/" << outputName << "/common/countries/colors.txt";
-		exit(-1);
+		throw std::runtime_error("Could not open output/" + outputName + "/common/countries/colors.txt");
 	}
 
 	output << "#reload countrycolors\n";
@@ -276,8 +271,7 @@ void HoI4::outputNames(const namesMapper& theNames,
 
 	if (!namesFile.is_open())
 	{
-		Log(LogLevel::Error) << "Could not open output/" << outputName << "/common/names/01_names.txt";
-		exit(-1);
+		throw std::runtime_error("Could not open output/" + outputName + "/common/names/01_names.txt");
 	}
 
 	for (const auto& country: countries)
@@ -310,15 +304,13 @@ void HoI4::outputMap(const States& states,
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/map"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/map";
-		exit(-1);
+		throw std::runtime_error("Could not create \"output/" + outputName + "/map");
 	}
 
 	std::ofstream rocketSitesFile("output/" + outputName + "/map/rocketsites.txt");
 	if (!rocketSitesFile.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not create output/" << outputName << "/map/rocketsites.txt";
-		exit(-1);
+		throw std::runtime_error("Could not create output/" + outputName + "/map/rocketsites.txt");
 	}
 	for (const auto& state: states.getStates())
 	{
@@ -329,8 +321,7 @@ void HoI4::outputMap(const States& states,
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/map/strategicregions"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/map/strategicregions";
-		exit(-1);
+		throw std::runtime_error("Could not create \"output/" + outputName + "/map/strategicregions");
 	}
 	for (const auto& strategicRegion: strategicRegions)
 	{
@@ -343,8 +334,7 @@ void HoI4::outputGenericFocusTree(const std::set<std::string>& majorIdeologies, 
 {
 	if (!Utils::TryCreateFolder("output/" + outputName + "/common/national_focus"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/common/national_focus\"";
-		exit(-1);
+		throw std::runtime_error("Could not create \"output/" + outputName + "/common/national_focus\"");
 	}
 
 	HoI4FocusTree genericFocusTree;
@@ -363,23 +353,19 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	LOG(LogLevel::Debug) << "Writing countries";
 	if (!Utils::TryCreateFolder("output/" + outputName + "/history"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/history";
-		exit(-1);
+		throw std::runtime_error("Could not create \"output/" + outputName + "/history");
 	}
 	if (!Utils::TryCreateFolder("output/" + outputName + "/history/countries"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/history";
-		exit(-1);
+		throw std::runtime_error("Could not create \"output/" + outputName + "/history");
 	}
 	if (!Utils::TryCreateFolder("output/" + outputName + "/history/states"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/history/states";
-		exit(-1);
+		throw std::runtime_error("Could not create \"output/" + outputName + "/history/states");
 	}
 	if (!Utils::TryCreateFolder("output/" + outputName + "/history/units"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/history/units";
-		exit(-1);
+		throw std::runtime_error("Could not create \"output/" + outputName + "/history/units");
 	}
 
 	for (const auto& country: countries)
@@ -398,8 +384,7 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	std::ofstream ideasFile("output/" + outputName + "/interface/converter_ideas.gfx");
 	if (!ideasFile.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not open output/" << outputName << "/interface/ideas.gfx";
-		exit(-1);
+		throw std::runtime_error("Could not open output/" + outputName + "/interface/ideas.gfx");
 	}
 
 	ideasFile << "spriteTypes = {\n";
@@ -419,15 +404,13 @@ void HoI4::outputRelations(const std::string& outputName)
 {
 	if (!Utils::TryCreateFolder("output/" + outputName + "/common/opinion_modifiers"))
 	{
-		Log(LogLevel::Error) << "Could not create output/" + outputName + "/common/opinion_modifiers/";
-		exit(-1);
+		throw std::runtime_error("Could not create output/" + outputName + "/common/opinion_modifiers/");
 	}
 
 	std::ofstream out("output/" + outputName + "/common/opinion_modifiers/01_opinion_modifiers.txt");
 	if (!out.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not create 01_opinion_modifiers.txt.";
-		exit(-1);
+		throw std::runtime_error("Could not create 01_opinion_modifiers.txt.");
 	}
 
 	out << "opinion_modifiers = {\n";

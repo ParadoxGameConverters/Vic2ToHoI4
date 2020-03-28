@@ -12,8 +12,7 @@ void HoI4::outputStates(const States& theStates, const std::string& outputName, 
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/history/states"))
 	{
-		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/history/states";
-		exit(-1);
+		throw std::runtime_error("Could not create \"output/" + outputName + "/history/states");
 	}
 	for (const auto& state: theStates.getStates())
 	{

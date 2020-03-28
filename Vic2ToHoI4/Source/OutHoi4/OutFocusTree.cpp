@@ -11,8 +11,7 @@ void HoI4::outputFocusTree(const HoI4FocusTree& focusTree, const std::string& fi
 	std::ofstream out(filename);
 	if (!out.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not create " << filename;
-		exit(-1);
+		throw std::runtime_error("Could not create " + filename);
 	}
 
 	out << "focus_tree = {\n";
@@ -117,8 +116,7 @@ void HoI4::outputSharedFocuses(const HoI4FocusTree& focusTree, const std::string
 	std::ofstream SharedFocuses(filename);
 	if (!SharedFocuses.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not create " << filename;
-		exit(-1);
+		throw std::runtime_error("Could not create " + filename);
 	}
 
 	for (const auto& focus: focusTree.getSharedFocuses())
