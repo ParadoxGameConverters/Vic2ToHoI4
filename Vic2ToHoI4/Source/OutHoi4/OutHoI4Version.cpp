@@ -3,7 +3,7 @@
 
 
 
-std::ostream& HoI4::operator<<(std::ostream& out, const HoI4::Version& version)
+std::ostream& HoI4::operator<<(std::ostream& out, const Version& version)
 {
 	out << version.first << '.' << version.second << '.' << version.third;
 

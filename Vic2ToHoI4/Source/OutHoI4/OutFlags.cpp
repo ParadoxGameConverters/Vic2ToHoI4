@@ -1,5 +1,4 @@
 #include "OutFlags.h"
-#include "../Configuration.h"
 #include "../HOI4World/HoI4Country.h"
 #include "../V2World/Country.h"
 #include "../targa.h"
@@ -24,7 +23,7 @@ void copyFlags(const std::map<std::string, std::shared_ptr<HoI4::Country>>& coun
 	Utils::TryCreateFolder("output/" + outputName + "/gfx/flags");
 	Utils::TryCreateFolder("output/" + outputName + "/gfx/flags/medium");
 	Utils::TryCreateFolder("output/" + outputName + "/gfx/flags/small");
-	for (auto country: countries)
+	for (const auto& country: countries)
 	{
 		processFlagsForCountry(country, outputName, vic2Mods, vic2Path);
 	}
@@ -36,7 +35,7 @@ enum flagIdeologies
 	BASE_FLAG = 0,
 	COMMUNISM_FLAG = 1,
 	DEMOCRATIC_FLAG = 2,
-	FACISM_FLAG = 3,
+	FASCISM_FLAG = 3,
 	ABSOLUTIST_FLAG = 4,
 	RADICAL_FLAG = 5,
 	FLAG_END = 6
@@ -74,8 +73,7 @@ void processFlagsForCountry(const std::pair<std::string, std::shared_ptr<HoI4::C
 	 const std::vector<std::string>& vic2Mods,
 	 const std::string& vic2Path)
 {
-	std::vector<std::string> sourcePath =
-		 getSourceFlagPaths(country.second->getSourceCountry().getTag(), vic2Mods, vic2Path);
+	auto sourcePath = getSourceFlagPaths(country.second->getSourceCountry().getTag(), vic2Mods, vic2Path);
 	for (unsigned int i = BASE_FLAG; i < FLAG_END; i++)
 	{
 		if (!sourcePath[i].empty())
@@ -139,7 +137,7 @@ std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag,
 	 const std::vector<std::string>& vic2Mods,
 	 const std::string& vic2Path)
 {
-	std::string path = "flags/" + Vic2Tag + sourceSuffix;
+	auto path = "flags/" + Vic2Tag + sourceSuffix;
 
 	if (!Utils::DoesFileExist(path))
 	{
@@ -189,7 +187,7 @@ std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag,
 
 bool isThisAConvertedTag(const std::string& Vic2Tag)
 {
-	return (isdigit(Vic2Tag[2]) != 0);
+	return std::isdigit(Vic2Tag[2]);
 }
 
 
@@ -197,9 +195,9 @@ std::optional<std::string> getConversionModFlag(const std::string& flagFilename,
 	 const std::vector<std::string>& vic2Mods,
 	 const std::string& vic2Path)
 {
-	for (auto mod: vic2Mods)
+	for (const auto& mod: vic2Mods)
 	{
-		std::string path = vic2Path + "/mod/" + mod + "/gfx/flags/" + flagFilename;
+		const auto path = vic2Path + "/mod/" + mod + "/gfx/flags/" + flagFilename;
 		if (Utils::DoesFileExist(path))
 		{
 			return path;
@@ -215,13 +213,13 @@ std::optional<std::string> getAllowModFlags(const std::string& flagFilename,
 	 const std::vector<std::string>& vic2Mods,
 	 const std::string& vic2Path)
 {
-	for (auto mod: vic2Mods)
+	for (const auto& mod: vic2Mods)
 	{
 		if (allowedMods.count(mod) == 0)
 		{
 			continue;
 		}
-		std::string path = vic2Path + "/mod/" + mod + "/gfx/flags/" + flagFilename;
+		const auto path = vic2Path + "/mod/" + mod + "/gfx/flags/" + flagFilename;
 		if (Utils::DoesFileExist(path))
 		{
 			return path;
@@ -241,8 +239,8 @@ std::optional<tga_image*> readFlag(const std::string& path)
 		return {};
 	}
 
-	tga_image* flag = new tga_image;
-	tga_result result = tga_read_from_FILE(flag, flagFile);
+	auto flag = new tga_image;
+	const auto result = tga_read_from_FILE(flag, flagFile);
 	if (result != TGA_NOERR)
 	{
 		LOG(LogLevel::Warning) << "Could not read flag " << path << ": " << tga_error(result)
@@ -256,9 +254,9 @@ std::optional<tga_image*> readFlag(const std::string& path)
 }
 
 
-tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsigned int sizeY)
+tga_image* createNewFlag(const tga_image* sourceFlag, const unsigned int sizeX, const unsigned int sizeY)
 {
-	tga_image* destFlag = new tga_image;
+	const auto destFlag = new tga_image;
 	destFlag->image_id_length = 0;
 	destFlag->color_map_type = TGA_COLOR_MAP_ABSENT;
 	destFlag->image_type = TGA_IMAGE_TYPE_BGR;
@@ -283,12 +281,12 @@ tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsign
 	{
 		for (unsigned int x = 0; x < sizeX; x++)
 		{
-			int sourceY = static_cast<int>(1.0 * y / sizeY * sourceFlag->height);
-			int sourceX = static_cast<int>(1.0 * x / sizeX * sourceFlag->width);
-			int sourceBytesPerPixel = sourceFlag->pixel_depth / 8;
-			int sourceIndex = (sourceY * sourceFlag->width + sourceX) * sourceBytesPerPixel;
+			const auto sourceY = static_cast<int>(1.0 * y / sizeY * sourceFlag->height);
+			const auto sourceX = static_cast<int>(1.0 * x / sizeX * sourceFlag->width);
+			const auto sourceBytesPerPixel = sourceFlag->pixel_depth / 8;
+			const auto sourceIndex = (sourceY * sourceFlag->width + sourceX) * sourceBytesPerPixel;
 
-			size_t destIndex = (y * sizeX + x) * 4;
+			const auto destIndex = (y * sizeX + x) * 4;
 
 			destFlag->image_data[destIndex + 0] = sourceFlag->image_data[sourceIndex + 0];
 			destFlag->image_data[destIndex + 1] = sourceFlag->image_data[sourceIndex + 1];
@@ -303,7 +301,7 @@ tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsign
 
 void createBigFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName)
 {
-	tga_image* destFlag = createNewFlag(sourceFlag, 82, 52);
+	const auto destFlag = createNewFlag(sourceFlag, 82, 52);
 	FILE* outputFile;
 	if (fopen_s(&outputFile, ("output/" + outputName + "/gfx/flags/" + filename).c_str(), "w+b") != 0)
 	{
@@ -320,7 +318,7 @@ void createBigFlag(tga_image* sourceFlag, const std::string& filename, const std
 
 void createMediumFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName)
 {
-	tga_image* destFlag = createNewFlag(sourceFlag, 41, 26);
+	const auto destFlag = createNewFlag(sourceFlag, 41, 26);
 	FILE* outputFile;
 	if (fopen_s(&outputFile, ("output/" + outputName + "/gfx/flags/medium/" + filename).c_str(), "w+b") != 0)
 	{
@@ -337,7 +335,7 @@ void createMediumFlag(tga_image* sourceFlag, const std::string& filename, const 
 
 void createSmallFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName)
 {
-	tga_image* destFlag = createNewFlag(sourceFlag, 10, 7);
+	const auto destFlag = createNewFlag(sourceFlag, 10, 7);
 	FILE* outputFile;
 	if (fopen_s(&outputFile, ("output/" + outputName + "/gfx/flags/small/" + filename).c_str(), "w+b") != 0)
 	{

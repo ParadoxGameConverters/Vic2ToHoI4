@@ -32,7 +32,7 @@ void outputLocalisations(const std::string& filenameStart, const languageToLocal
 
 
 void outputStateLocalisations(const std::string& localisationPath,
-	 const std::map<language, std::map<stateNumber, std::string>> stateLocalisations)
+	 const std::map<language, std::map<stateNumber, std::string>>& stateLocalisations)
 {
 	for (const auto& languageToLocalisations: stateLocalisations)
 	{

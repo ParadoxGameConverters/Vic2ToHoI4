@@ -10,7 +10,7 @@
 namespace HoI4
 {
 
-std::ostream& HoI4::operator<<(std::ostream& output, const General& instance);
+std::ostream& operator<<(std::ostream& output, const General& general);
 
 }
 

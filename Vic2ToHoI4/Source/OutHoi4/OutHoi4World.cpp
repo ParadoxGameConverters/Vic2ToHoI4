@@ -28,33 +28,32 @@ namespace HoI4
 void reportIndustryLevels(const World& world);
 void reportCountryIndustry(const World& world);
 void reportDefaultIndustry(const World& world);
-std::pair<std::string, std::array<int, 3>> getDefaultStateIndustry(const HoI4::DefaultState& state);
+std::pair<std::string, std::array<int, 3>> getDefaultStateIndustry(const DefaultState& state);
 void reportDefaultIndustry(const std::map<std::string, std::array<int, 3>>& countryIndustry);
 
-void outputCommonCountries(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+void outputCommonCountries(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName);
-void outputColorsFile(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+void outputColorsFile(const std::map<std::string, std::shared_ptr<Country>>& countries, const std::string& outputName);
+void outputNames(const namesMapper& theNames,
+	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName);
-void outputNames(const HoI4::namesMapper& theNames,
-	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
-	 const std::string& outputName);
-void outputUnitNames(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
+void outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>& countries);
 void outputMap(const States& states,
-	 const std::map<int, HoI4::StrategicRegion*>& strategicRegions,
+	 const std::map<int, StrategicRegion*>& strategicRegions,
 	 const std::string& outputName);
 void outputGenericFocusTree(const std::set<std::string>& majorIdeologies, const std::string& outputName);
-void outputCountries(const std::set<HoI4::Advisor>& activeIdeologicalAdvisors,
-	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+void outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
+	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const allMilitaryMappings& theMilitaryMappings,
-	 HoI4::namesMapper& theNames,
+	 namesMapper& theNames,
 	 graphicsMapper& theGraphics,
 	 const std::string& outputName);
 void outputRelations(const std::string& outputName);
 void outputLeaderTraits(const std::map<std::string, std::vector<std::string>>& ideologicalLeaderTraits,
 	 const std::set<std::string>& majorIdeologies,
 	 const std::string& outputName);
-void outputBookmarks(const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers,
-	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+void outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
+	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName);
 
 } // namespace HoI4
@@ -62,19 +61,19 @@ void outputBookmarks(const std::vector<std::shared_ptr<HoI4::Country>>& greatPow
 
 void HoI4::reportIndustryLevels(const World& world)
 {
-	int militaryFactories = 0;
-	int civilialFactories = 0;
-	int dockyards = 0;
-	for (auto state: world.getStates())
+	auto militaryFactories = 0;
+	auto civilianFactories = 0;
+	auto dockyards = 0;
+	for (const auto& state: world.getStates())
 	{
 		militaryFactories += state.second.getMilFactories();
-		civilialFactories += state.second.getCivFactories();
+		civilianFactories += state.second.getCivFactories();
 		dockyards += state.second.getDockyards();
 	}
 
-	LOG(LogLevel::Debug) << "Total factories: " << (militaryFactories + civilialFactories + dockyards);
+	LOG(LogLevel::Debug) << "Total factories: " << militaryFactories + civilianFactories + dockyards;
 	LOG(LogLevel::Debug) << "\t" << militaryFactories << " military factories";
-	LOG(LogLevel::Debug) << "\t" << civilialFactories << " civilian factories";
+	LOG(LogLevel::Debug) << "\t" << civilianFactories << " civilian factories";
 	LOG(LogLevel::Debug) << "\t" << dockyards << " dockyards";
 
 	if (theConfiguration.getDebug())
@@ -91,7 +90,7 @@ void HoI4::reportCountryIndustry(const World& world)
 	report << "tag,military factories,civilian factories,dockyards,total factories\n";
 	if (report.is_open())
 	{
-		for (auto country: world.getCountries())
+		for (const auto& country: world.getCountries())
 		{
 			reportIndustry(report, *country.second);
 		}
@@ -103,9 +102,9 @@ void HoI4::reportDefaultIndustry(const World& world)
 {
 	std::map<std::string, std::array<int, 3>> countryIndustry;
 
-	for (auto state: world.getTheStates().getDefaultStates())
+	for (const auto& state: world.getTheStates().getDefaultStates())
 	{
-		std::pair<std::string, std::array<int, 3>> stateData = getDefaultStateIndustry(state.second);
+		auto stateData = getDefaultStateIndustry(state.second);
 
 		auto country = countryIndustry.find(stateData.first);
 		if (country == countryIndustry.end())
@@ -142,22 +141,22 @@ void HoI4::reportDefaultIndustry(const std::map<std::string, std::array<int, 3>>
 }
 
 
-std::pair<std::string, std::array<int, 3>> HoI4::getDefaultStateIndustry(const HoI4::DefaultState& state)
+std::pair<std::string, std::array<int, 3>> HoI4::getDefaultStateIndustry(const DefaultState& state)
 {
-	int civilianFactories = state.getCivFactories();
-	int militaryFactories = state.getMilFactories();
-	int dockyards = state.getDockyards();
+	const auto civilianFactories = state.getCivFactories();
+	const auto militaryFactories = state.getMilFactories();
+	const auto dockyards = state.getDockyards();
 
-	std::string owner = state.getOwner();
+	auto owner = state.getOwner();
 
 	std::array<int, 3> industry = {militaryFactories, civilianFactories, dockyards};
-	std::pair<std::string, std::array<int, 3>> stateData = std::make_pair(owner, industry);
+	auto stateData = std::make_pair(owner, industry);
 
 	return stateData;
 }
 
 
-void HoI4::OutputWorld(World& world, const std::string& outputName, bool debugEnabled)
+void HoI4::OutputWorld(World& world, const std::string& outputName, const bool debugEnabled)
 {
 	reportIndustryLevels(world);
 
@@ -201,7 +200,7 @@ void HoI4::OutputWorld(World& world, const std::string& outputName, bool debugEn
 }
 
 
-void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName)
 {
 	if (!Utils::TryCreateFolder("output/" + outputName + "/common/country_tags"))
@@ -218,7 +217,7 @@ void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<HoI
 		exit(-1);
 	}
 
-	for (auto country: countries)
+	for (const auto& country: countries)
 	{
 		if (country.second->isGreatPower() && country.second->getCapitalState())
 		{
@@ -226,7 +225,7 @@ void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<HoI
 		}
 	}
 
-	for (auto country: countries)
+	for (const auto& country: countries)
 	{
 		if (!country.second->isGreatPower() && country.second->getCapitalState())
 		{
@@ -239,7 +238,7 @@ void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<HoI
 }
 
 
-void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName)
 {
 	if (!Utils::TryCreateFolder("output/" + outputName + "/common/countries"))
@@ -256,7 +255,7 @@ void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<HoI4::Co
 	}
 
 	output << "#reload countrycolors\n";
-	for (auto country: countries)
+	for (const auto& country: countries)
 	{
 		if (country.second->getCapitalState())
 		{
@@ -268,8 +267,8 @@ void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<HoI4::Co
 }
 
 
-void HoI4::outputNames(const HoI4::namesMapper& theNames,
-	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+void HoI4::outputNames(const namesMapper& theNames,
+	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName)
 {
 	std::ofstream namesFile("output/" + outputName + "/common/names/01_names.txt");
@@ -281,7 +280,7 @@ void HoI4::outputNames(const HoI4::namesMapper& theNames,
 		exit(-1);
 	}
 
-	for (auto country: countries)
+	for (const auto& country: countries)
 	{
 		if (country.second->getCapitalState())
 		{
@@ -291,9 +290,9 @@ void HoI4::outputNames(const HoI4::namesMapper& theNames,
 }
 
 
-void HoI4::outputUnitNames(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
+void HoI4::outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
-	for (auto country: countries)
+	for (const auto& country: countries)
 	{
 		if (country.second->getCapitalState())
 		{
@@ -304,7 +303,7 @@ void HoI4::outputUnitNames(const std::map<std::string, std::shared_ptr<HoI4::Cou
 
 
 void HoI4::outputMap(const States& states,
-	 const std::map<int, HoI4::StrategicRegion*>& strategicRegions,
+	 const std::map<int, StrategicRegion*>& strategicRegions,
 	 const std::string& outputName)
 {
 	LOG(LogLevel::Debug) << "Writing Map Info";
@@ -321,7 +320,7 @@ void HoI4::outputMap(const States& states,
 		LOG(LogLevel::Error) << "Could not create output/" << outputName << "/map/rocketsites.txt";
 		exit(-1);
 	}
-	for (auto state: states.getStates())
+	for (const auto& state: states.getStates())
 	{
 		auto provinces = state.second.getProvinces();
 		rocketSitesFile << state.second.getID() << "={" << *provinces.begin() << " }\n";
@@ -333,7 +332,7 @@ void HoI4::outputMap(const States& states,
 		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/map/strategicregions";
 		exit(-1);
 	}
-	for (auto strategicRegion: strategicRegions)
+	for (const auto& strategicRegion: strategicRegions)
 	{
 		outputStrategicRegion(*strategicRegion.second, "output/" + outputName + "/map/strategicregions/");
 	}
@@ -354,10 +353,10 @@ void HoI4::outputGenericFocusTree(const std::set<std::string>& majorIdeologies, 
 }
 
 
-void HoI4::outputCountries(const std::set<HoI4::Advisor>& activeIdeologicalAdvisors,
-	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
+	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const allMilitaryMappings& theMilitaryMappings,
-	 HoI4::namesMapper& theNames,
+	 namesMapper& theNames,
 	 graphicsMapper& theGraphics,
 	 const std::string& outputName)
 {
@@ -383,13 +382,12 @@ void HoI4::outputCountries(const std::set<HoI4::Advisor>& activeIdeologicalAdvis
 		exit(-1);
 	}
 
-	for (auto country: countries)
+	for (const auto& country: countries)
 	{
 		if (country.second->getCapitalState())
 		{
-			const HoI4::militaryMappings& specificMilitaryMappings =
-				 theMilitaryMappings.getMilitaryMappings(theConfiguration.getVic2Mods());
-			HoI4::outputCountry(activeIdeologicalAdvisors,
+			const auto& specificMilitaryMappings = theMilitaryMappings.getMilitaryMappings(theConfiguration.getVic2Mods());
+			outputCountry(activeIdeologicalAdvisors,
 				 specificMilitaryMappings.getDivisionTemplates(),
 				 theNames,
 				 theGraphics,
@@ -405,7 +403,7 @@ void HoI4::outputCountries(const std::set<HoI4::Advisor>& activeIdeologicalAdvis
 	}
 
 	ideasFile << "spriteTypes = {\n";
-	for (auto country: countries)
+	for (const auto& country: countries)
 	{
 		if (country.second->getCapitalState())
 		{
@@ -433,7 +431,7 @@ void HoI4::outputRelations(const std::string& outputName)
 	}
 
 	out << "opinion_modifiers = {\n";
-	for (int i = -200; i <= 200; i++)
+	for (auto i = -200; i <= 200; i++)
 	{
 		if (i < 0)
 		{
@@ -481,7 +479,7 @@ void HoI4::outputLeaderTraits(const std::map<std::string, std::vector<std::strin
 		auto ideologyTraits = ideologicalLeaderTraits.find(majorIdeology);
 		if (ideologyTraits != ideologicalLeaderTraits.end())
 		{
-			for (auto trait: ideologyTraits->second)
+			for (const auto& trait: ideologyTraits->second)
 			{
 				traitsFile << "\t";
 				traitsFile << trait;
@@ -493,8 +491,8 @@ void HoI4::outputLeaderTraits(const std::map<std::string, std::vector<std::strin
 }
 
 
-void HoI4::outputBookmarks(const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers,
-	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
+	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName)
 {
 	std::ofstream bookmarkFile("output/" + outputName + "/common/bookmarks/the_gathering_storm.txt");
@@ -514,7 +512,7 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<HoI4::Country>>& gr
 	bookmarkFile << "		default_country = \"---\"\n";
 	bookmarkFile << "		default = yes\n";
 
-	for (auto greatPower: greatPowers)
+	for (const auto& greatPower: greatPowers)
 	{
 		// Vic2 Great powers become majors in bookmark
 		bookmarkFile << "		" + greatPower->getTag() + "= {\n";
@@ -528,14 +526,15 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<HoI4::Country>>& gr
 	bookmarkFile << "			history = \"OTHER_GATHERING_STORM_DESC\"\n";
 	bookmarkFile << "		}\n";
 
-	for (auto country: countries)
+	for (const auto& country: countries)
 	{
 		if (country.second->isGreatPower() != true)
 		{
 			if (country.second->getStrengthOverTime(3) > 4500)
 			{
-				// add minor countries to the bookmark, only those with custom focustree are visible due to Hoi4 limitations
-				// Bookmark window has room for 22 minor countries, going over this seems to not cause any issues however
+				// add minor countries to the bookmark, only those with custom focus trees are visible due to Hoi4
+				// limitations Bookmark window has room for 22 minor countries, going over this seems to not cause any
+				// issues however
 				bookmarkFile << "		" + country.second->getTag() + " = {\n";
 				bookmarkFile << "			minor = yes\n";
 				bookmarkFile << "			history = \"OTHER_GATHERING_STORM_DESC\"\n";

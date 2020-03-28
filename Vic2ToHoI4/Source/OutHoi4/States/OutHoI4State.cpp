@@ -3,7 +3,7 @@
 
 
 
-void HoI4::outputHoI4State(std::ostream& output, const HoI4::State& theState, bool debugEnabled)
+void HoI4::outputHoI4State(std::ostream& output, const State& theState, const bool debugEnabled)
 {
 	output << "\n";
 	output << "state={"
@@ -15,7 +15,7 @@ void HoI4::outputHoI4State(std::ostream& output, const HoI4::State& theState, bo
 		output << "\tresources={\n";
 		output << std::fixed;
 		output << std::setprecision(3);
-		for (auto resource: theState.getResources())
+		for (const auto& resource: theState.getResources())
 		{
 			output << "\t\t" << resource.first << "=" << resource.second << "\n";
 		}
@@ -33,7 +33,7 @@ void HoI4::outputHoI4State(std::ostream& output, const HoI4::State& theState, bo
 	}
 	if (!theState.isImpassable())
 	{
-		if ((theState.getVpValue() > 0) && (theState.getVPLocation()))
+		if ((theState.getVpValue() > 0) && theState.getVPLocation())
 		{
 			if (debugEnabled)
 			{
@@ -77,7 +77,7 @@ void HoI4::outputHoI4State(std::ostream& output, const HoI4::State& theState, bo
 			output << "\t\t\tdockyard = " << theState.getDockyards() << "\n";
 		}
 
-		for (auto navalBase: theState.getNavalBases())
+		for (const auto& navalBase: theState.getNavalBases())
 		{
 			output << "\t\t\t" << navalBase.first << " = {\n";
 			output << "\t\t\t\tnaval_base = " << navalBase.second << "\n";
@@ -88,11 +88,11 @@ void HoI4::outputHoI4State(std::ostream& output, const HoI4::State& theState, bo
 		output << "\n";
 		output << "\t\t}\n";
 	}
-	for (auto core: theState.getCores())
+	for (const auto& core: theState.getCores())
 	{
 		output << "\t\tadd_core_of = " << core << "\n";
 	}
-	for (auto countryControlledProvinces: theState.getControlledProvinces())
+	for (const auto& countryControlledProvinces: theState.getControlledProvinces())
 	{
 		output << "\t\t" << countryControlledProvinces.first << " = {\n";
 		for (auto province: countryControlledProvinces.second)
@@ -105,9 +105,9 @@ void HoI4::outputHoI4State(std::ostream& output, const HoI4::State& theState, bo
 	output << "\n";
 	output << "\tprovinces={\n";
 	output << "\t\t";
-	for (auto provnum: theState.getProvinces())
+	for (auto provinceNumber: theState.getProvinces())
 	{
-		output << provnum << " ";
+		output << provinceNumber << " ";
 	}
 	output << "\n";
 	output << "\t}\n";

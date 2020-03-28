@@ -4,14 +4,13 @@
 
 
 #include "../../HOI4World/States/HoI4State.h"
-#include <ostream>
 
 
 
 namespace HoI4
 {
 
-void outputHoI4State(std::ostream& output, const HoI4::State& theState, bool debugEnabled);
+void outputHoI4State(std::ostream& output, const State& theState, bool debugEnabled);
 
 }
 

@@ -14,7 +14,7 @@ void renameOutputFolder(const std::string& outputName);
 
 void clearOutputFolder(const std::string& outputName)
 {
-	const std::string outputFolder = Utils::getCurrentDirectory() + "/output/" + outputName;
+	const auto outputFolder = Utils::getCurrentDirectory() + "/output/" + outputName;
 	if (Utils::doesFolderExist(outputFolder))
 	{
 		if (!Utils::deleteFolder(outputFolder))
@@ -29,14 +29,14 @@ void clearOutputFolder(const std::string& outputName)
 
 void output(HoI4::World& destWorld,
 	 const std::string& outputName,
-	 bool debugEnabled,
+	 const bool debugEnabled,
 	 const std::vector<std::string>& vic2Mods,
 	 const std::string& vic2Path)
 {
 	createModFiles(outputName);
 	renameOutputFolder(outputName);
 	copyFlags(destWorld.getCountries(), outputName, vic2Mods, vic2Path);
-	HoI4::OutputWorld(destWorld, outputName, debugEnabled);
+	OutputWorld(destWorld, outputName, debugEnabled);
 }
 
 

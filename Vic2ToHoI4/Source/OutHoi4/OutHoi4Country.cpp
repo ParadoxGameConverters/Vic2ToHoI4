@@ -1,7 +1,6 @@
 #include "OutHoi4Country.h"
 #include "../HOI4World/Diplomacy/Faction.h"
 #include "../HOI4World/HoI4Country.h"
-#include "../HOI4World/HoI4FocusTree.h"
 #include "../HOI4World/Leaders/Advisor.h"
 #include "../HOI4World/Military/DivisionTemplate.h"
 #include "../HOI4World/Names.h"
@@ -18,7 +17,6 @@
 #include "OSCompatibilityLayer.h"
 #include "OutFocusTree.h"
 #include "OutTechnologies.h"
-#include "ShipTypes/OutShipVariants.h"
 #include <string>
 
 
@@ -231,8 +229,6 @@ void outputPuppets(std::ostream& output,
 	 const std::string& governmentIdeology,
 	 const std::set<std::string>& puppets,
 	 const std::string& puppetMaster,
-	 const std::map<std::string, HoI4::Relations>& relations,
-	 const bool& greatPower,
 	 const std::map<std::string, double>& spherelings);
 void outputPolitics(std::ostream& output,
 	 const std::string& governmentIdeology,
@@ -246,7 +242,7 @@ void outputFactions(std::ostream& output,
 	 const std::string& tag,
 	 std::optional<HoI4::Faction> faction,
 	 std::optional<std::string> possibleLeaderName);
-void outputGuaranteedSpherelings(std::ostream& output, std::vector<std::string> guaranteed);
+void outputGuaranteedSpherelings(std::ostream& output, const std::vector<std::string>& guaranteed);
 void outputIdeas(std::ostream& output,
 	 const bool& greatPower,
 	 const bool& civilized,
@@ -290,7 +286,7 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 	outputThreat(output, theCountry.getThreat());
 	outputWars(output, theCountry.getWars());
 	outputOOBLines(output, tag);
-	if (const auto theTechnologies = theCountry.getTechnologies(); theTechnologies)
+	if (const auto& theTechnologies = theCountry.getTechnologies(); theTechnologies)
 	{
 		outputTechnology(*theTechnologies, output);
 		outputResearchBonuses(*theTechnologies, output);
@@ -302,8 +298,6 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 		 governmentIdeology,
 		 theCountry.getPuppets(),
 		 theCountry.getPuppetMaster(),
-		 theCountry.getRelations(),
-		 theCountry.isGreatPower(),
 		 theCountry.getSpherelings());
 	outputPolitics(output,
 		 governmentIdeology,
@@ -430,8 +424,6 @@ void outputPuppets(std::ostream& output,
 	 const std::string& governmentIdeology,
 	 const std::set<std::string>& puppets,
 	 const std::string& puppetMaster,
-	 const std::map<std::string, HoI4::Relations>& relations,
-	 const bool& greatPower,
 	 const std::map<std::string, double>& spherelings)
 {
 	if (!puppets.empty() || !spherelings.empty())
@@ -470,8 +462,7 @@ void outputPuppets(std::ostream& output,
 		{
 			for (auto& sphereling: spherelings)
 			{
-				bool notPuppet = (puppets.find(sphereling.first) == puppets.end());
-				if (notPuppet)
+				if (!puppets.count(sphereling.first))
 				{
 					output << "\tset_autonomy = {\n";
 					output << "\t\ttarget = " << sphereling.first << "\n";
@@ -605,9 +596,9 @@ void outputFactions(std::ostream& output,
 	output << '\n';
 }
 
-void outputGuaranteedSpherelings(std::ostream& output, std::vector<std::string> guaranteed)
+void outputGuaranteedSpherelings(std::ostream& output, const std::vector<std::string>& guaranteed)
 {
-	for (auto guaranteedTag: guaranteed)
+	for (const auto& guaranteedTag: guaranteed)
 	{
 		output << "give_guarantee = " + guaranteedTag + "\n";
 	}
@@ -682,9 +673,9 @@ void outputCountryLeader(std::ostream& output,
 	{
 		const auto portrait = theGraphics.getLeaderPortrait(primaryCultureGroup, governmentIdeology);
 		auto upperFirstName = *firstName;
-		std::transform(upperFirstName.begin(), upperFirstName.end(), upperFirstName.begin(), ::toupper);
+		std::transform(upperFirstName.begin(), upperFirstName.end(), upperFirstName.begin(), toupper);
 		auto upperSurname = *surname;
-		std::transform(upperSurname.begin(), upperSurname.end(), upperSurname.begin(), ::toupper);
+		std::transform(upperSurname.begin(), upperSurname.end(), upperSurname.begin(), toupper);
 		output << "create_country_leader = {\n";
 		output << "    name = \"" << *firstName << " " << *surname << "\"\n";
 		output << "    desc = \"POLITICS_" << upperFirstName << "_" << upperSurname << "_DESC\"\n";
@@ -833,11 +824,11 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 	auto& navies = theCountry.getNavies();
 	std::ofstream legacyNavy(
 		 "output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_legacy.txt");
-	HoI4::outputLegacyNavies(navies, *technologies, tag, legacyNavy);
+	outputLegacyNavies(navies, *technologies, tag, legacyNavy);
 
 	std::ofstream mtgNavy(
 		 "output/" + theConfiguration.getOutputName() + "/history/units/" + tag + "_1936_naval_mtg.txt");
-	HoI4::outputMtgNavies(navies, *technologies, tag, mtgNavy);
+	outputMtgNavies(navies, *technologies, tag, mtgNavy);
 }
 
 

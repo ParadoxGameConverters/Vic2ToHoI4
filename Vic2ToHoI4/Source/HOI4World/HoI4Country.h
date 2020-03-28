@@ -206,7 +206,7 @@ class Country
 		void addSphereling(std::string sphereling) { spherelings.insert(make_pair(sphereling, 0.5)); }
 		void setSpherelingAutonomy(std::string sphereling, double autonomy) { spherelings.find(sphereling)->second = autonomy; }
 		double calculateInfluenceFactor();
-		std::vector<std::string> getGuaranteed() const { return guaranteed; }
+		const auto& getGuaranteed() const { return guaranteed; }
 		void addGuaranteed(std::string guaranteedTag) { guaranteed.push_back(guaranteedTag); }
 
 	private:

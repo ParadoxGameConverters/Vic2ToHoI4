@@ -11,7 +11,7 @@ std::ostream& operator<<(std::ostream& output, const HoI4Focus& focus)
 	{
 		output << "		text = " << focus.text << "\n";
 	}
-	for (auto prerequisite: focus.prerequisites)
+	for (const auto& prerequisite: focus.prerequisites)
 	{
 		output << "		prerequisite " << prerequisite << "\n";
 	}

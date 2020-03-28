@@ -6,7 +6,7 @@
 
 
 
-void HoI4::outputStates(const States& theStates, const std::string& outputName, bool debugEnabled)
+void HoI4::outputStates(const States& theStates, const std::string& outputName, const bool debugEnabled)
 {
 	LOG(LogLevel::Debug) << "Writing states";
 
@@ -15,16 +15,15 @@ void HoI4::outputStates(const States& theStates, const std::string& outputName, 
 		LOG(LogLevel::Error) << "Could not create \"output/" + outputName + "/history/states";
 		exit(-1);
 	}
-	for (auto state: theStates.getStates())
+	for (const auto& state: theStates.getStates())
 	{
-		std::string filename("output/" + outputName + "/history/states/" + std::to_string(state.first) + ".txt");
+		auto filename("output/" + outputName + "/history/states/" + std::to_string(state.first) + ".txt");
 		std::ofstream out(filename);
 		if (!out.is_open())
 		{
-			std::runtime_error error("Could not open \"" + filename + "\"");
-			throw error;
+			throw std::runtime_error("Could not open \"" + filename + "\"");
 		}
-		HoI4::outputHoI4State(out, state.second, debugEnabled);
+		outputHoI4State(out, state.second, debugEnabled);
 		out.close();
 	}
 }

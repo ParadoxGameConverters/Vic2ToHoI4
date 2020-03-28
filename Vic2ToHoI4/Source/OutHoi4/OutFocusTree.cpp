@@ -60,7 +60,7 @@ void outputShared(std::ostream& output, const HoI4Focus& focus)
 	{
 		output << "	text = " << focus.text << "\n";
 	}
-	for (auto prerequisite: focus.prerequisites)
+	for (const auto& prerequisite: focus.prerequisites)
 	{
 		output << "	prerequisite " << prerequisite << "\n";
 	}
@@ -114,17 +114,17 @@ void outputShared(std::ostream& output, const HoI4Focus& focus)
 
 void HoI4::outputSharedFocuses(const HoI4FocusTree& focusTree, const std::string& filename)
 {
-	std::ofstream SharedFoci(filename);
-	if (!SharedFoci.is_open())
+	std::ofstream SharedFocuses(filename);
+	if (!SharedFocuses.is_open())
 	{
 		LOG(LogLevel::Error) << "Could not create " << filename;
 		exit(-1);
 	}
 
-	for (auto focus: focusTree.getSharedFocuses())
+	for (const auto& focus: focusTree.getSharedFocuses())
 	{
-		outputShared(SharedFoci, *focus);
+		outputShared(SharedFocuses, *focus);
 	}
 
-	SharedFoci.close();
+	SharedFocuses.close();
 }

@@ -19,7 +19,7 @@ void HoI4::outputOnActions(const OnActions& onActions,
 	onActionsFile << "	# country\n";
 	onActionsFile << "	on_new_term_election = {\n";
 	onActionsFile << "		random_events = {\n";
-	for (auto event: onActions.getElectionEvents())
+	for (const auto& event: onActions.getElectionEvents())
 	{
 		onActionsFile << "			100 = " << event << "\n";
 	}
@@ -27,7 +27,7 @@ void HoI4::outputOnActions(const OnActions& onActions,
 	onActionsFile << "	}\n";
 	onActionsFile << "	on_government_change = {\n";
 	onActionsFile << "		effect = {\n";
-	for (auto ideology: majorIdeologies)
+	for (const auto& ideology: majorIdeologies)
 	{
 		if ((ideology == "democratic") || (ideology == "neutrality"))
 		{

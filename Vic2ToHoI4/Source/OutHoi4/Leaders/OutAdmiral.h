@@ -10,7 +10,7 @@
 namespace HoI4
 {
 
-std::ostream& HoI4::operator<<(std::ostream& output, const Admiral& admiral);
+std::ostream& operator<<(std::ostream& output, const Admiral& admiral);
 
 }
 

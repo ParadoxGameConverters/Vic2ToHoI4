@@ -2,9 +2,9 @@
 
 
 
-void HoI4::outputLegacyNavies(const HoI4::Navies& navies,
+void HoI4::outputLegacyNavies(const Navies& navies,
 	 const technologies& technologies,
-	 std::string_view tag,
+	 const std::string_view tag,
 	 std::ostream& output)
 {
 	output << "units = {\n";
@@ -67,9 +67,9 @@ void HoI4::outputLegacyNavies(const HoI4::Navies& navies,
 }
 
 
-void HoI4::outputMtgNavies(const HoI4::Navies& navies,
+void HoI4::outputMtgNavies(const Navies& navies,
 	 const technologies& technologies,
-	 std::string_view tag,
+	 const std::string_view tag,
 	 std::ostream& output)
 {
 	output << "units = {\n";

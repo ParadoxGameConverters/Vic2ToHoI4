@@ -3,7 +3,7 @@
 
 
 
-void HoI4::outputDifficultySettings(const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers,
+void HoI4::outputDifficultySettings(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const std::string& outputName)
 {
 	std::ofstream outStream;
