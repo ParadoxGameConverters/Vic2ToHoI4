@@ -640,7 +640,7 @@ void outputFactions(
 		else
 		{
 			LOG(LogLevel::Warning) << "Could not name alliance";
-			allianceName = "faction";
+			allianceName = "The Alliance";
 		}
 		output << "create_faction = \"" + allianceName + "\"\n";
 		for (const auto& factionMember : faction->getMembers())
@@ -749,7 +749,17 @@ void outputCountryLeader(
 	}
 	else
 	{
+		// Have a fallback in case things go weird
 		LOG(LogLevel::Warning) << "Could not set leader for " + tag + ", as there were no names.";
+		output << "create_country_leader = {\n";
+		output << "    name = \"Nomen Nescio\"\n"; //"I don't know the name", equivalent of John Doe
+		output << "    desc = \"POLITICS_NOMEN_NESCIO_DESC\"\n";
+		output << "    picture = \"gfx/leaders/ENG/portrait_eng_fallen_government.dds\"\n";
+		output << "    expire = \"1965.1.1\"\n";
+		output << "    ideology = anarchism\n";
+		output << "    traits = {\n";
+		output << "    }\n";
+		output << "}\n";
 	}
 }
 
