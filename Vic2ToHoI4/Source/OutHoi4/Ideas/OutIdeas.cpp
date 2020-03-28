@@ -50,22 +50,21 @@ void outputGeneralIdeas(const std::vector<HoI4::IdeaGroup>& generalIdeas, const 
 	auto economicFile = openIdeaFile("output/" + outputName + "/common/ideas/_economic.txt");
 	auto genericFile = openIdeaFile("output/" + outputName + "/common/ideas/zzz_generic.txt");
 
-	std::for_each(generalIdeas.begin(),
-		 generalIdeas.end(),
-		 [&manpowerFile, &economicFile, &genericFile](auto& theGroup) {
-			 if (theGroup.getName() == "mobilization_laws")
-			 {
-				 manpowerFile << theGroup;
-			 }
-			 else if ((theGroup.getName() == "economy") || (theGroup.getName() == "trade_laws"))
-			 {
-				 economicFile << theGroup;
-			 }
-			 else
-			 {
-				 genericFile << theGroup;
-			 }
-		 });
+	for (const auto& theGroup: generalIdeas)
+	{
+		if (theGroup.getName() == "mobilization_laws")
+		{
+			manpowerFile << theGroup;
+		}
+		else if ((theGroup.getName() == "economy") || (theGroup.getName() == "trade_laws"))
+		{
+			economicFile << theGroup;
+		}
+		else
+		{
+			genericFile << theGroup;
+		}
+	}
 
 	closeIdeaFile(manpowerFile);
 	closeIdeaFile(economicFile);
