@@ -19,17 +19,17 @@ void HoI4::outputOnActions(const OnActions& onActions,
 	}
 
 	onActionsFile << "on_actions = {\n";
-	onActionsFile << "	# country\n";
-	onActionsFile << "	on_new_term_election = {\n";
-	onActionsFile << "		random_events = {\n";
+	onActionsFile << "\t# country\n";
+	onActionsFile << "\ton_new_term_election = {\n";
+	onActionsFile << "\t\trandom_events = {\n";
 	for (const auto& event: onActions.getElectionEvents())
 	{
-		onActionsFile << "			100 = " << event << "\n";
+		onActionsFile << "\t\t\t100 = " << event << "\n";
 	}
-	onActionsFile << "		}\n";
-	onActionsFile << "	}\n";
-	onActionsFile << "	on_government_change = {\n";
-	onActionsFile << "		effect = {\n";
+	onActionsFile << "\t\t}\n";
+	onActionsFile << "\t}\n";
+	onActionsFile << "\ton_government_change = {\n";
+	onActionsFile << "\t\teffect = {\n";
 	for (const auto& ideology: majorIdeologies)
 	{
 		if ((ideology == "democratic") || (ideology == "neutrality"))
@@ -37,100 +37,100 @@ void HoI4::outputOnActions(const OnActions& onActions,
 			continue;
 		}
 
-		onActionsFile << "			if = {\n";
-		onActionsFile << "				limit = { has_government = " + ideology + " }\n";
-		onActionsFile << "				if = {\n";
-		onActionsFile << "					limit = { has_idea = " + ideology + "_partisans_recruiting }\n";
-		onActionsFile << "					remove_ideas = " + ideology + "_partisans_recruiting\n";
-		onActionsFile << "				}\n";
-		onActionsFile << "				if = {\n";
-		onActionsFile << "					limit = { has_idea = " + ideology + "_revolutionaries }\n";
-		onActionsFile << "					remove_ideas = " + ideology + "_revolutionaries\n";
-		onActionsFile << "				}\n";
-		onActionsFile << "				if = {\n";
-		onActionsFile << "					limit = { has_idea = " + ideology + "_defeated }\n";
-		onActionsFile << "					remove_ideas = " + ideology + "_defeated\n";
-		onActionsFile << "				}\n";
-		onActionsFile << "			}\n";
+		onActionsFile << "\t\t\tif = {\n";
+		onActionsFile << "\t\t\t\tlimit = { has_government = " + ideology + " }\n";
+		onActionsFile << "\t\t\t\tif = {\n";
+		onActionsFile << "\t\t\t\t\tlimit = { has_idea = " + ideology + "_partisans_recruiting }\n";
+		onActionsFile << "\t\t\t\t\tremove_ideas = " + ideology + "_partisans_recruiting\n";
+		onActionsFile << "\t\t\t\t}\n";
+		onActionsFile << "\t\t\t\tif = {\n";
+		onActionsFile << "\t\t\t\t\tlimit = { has_idea = " + ideology + "_revolutionaries }\n";
+		onActionsFile << "\t\t\t\t\tremove_ideas = " + ideology + "_revolutionaries\n";
+		onActionsFile << "\t\t\t\t}\n";
+		onActionsFile << "\t\t\t\tif = {\n";
+		onActionsFile << "\t\t\t\t\tlimit = { has_idea = " + ideology + "_defeated }\n";
+		onActionsFile << "\t\t\t\t\tremove_ideas = " + ideology + "_defeated\n";
+		onActionsFile << "\t\t\t\t}\n";
+		onActionsFile << "\t\t\t}\n";
 	}
 
 	if (majorIdeologies.count("democratic") > 0)
 	{
-		onActionsFile << "			if = {\n";
-		onActionsFile << "				limit = { has_government = democratic }\n";
-		onActionsFile << "				set_politics = {\n";
-		onActionsFile << "					elections_allowed = yes\n";
-		onActionsFile << "				}\n";
-		onActionsFile << "				if = {\n";
-		onActionsFile << "					limit = { has_idea = democratic_opposition_voicing_protests }\n";
-		onActionsFile << "					remove_ideas = democratic_opposition_voicing_protests\n";
-		onActionsFile << "				}\n";
-		onActionsFile << "				if = {\n";
-		onActionsFile << "					limit = { has_idea = democratic_revolutionaries }\n";
-		onActionsFile << "					remove_ideas = democratic_revolutionaries\n";
-		onActionsFile << "				}\n";
-		onActionsFile << "				if = {\n";
-		onActionsFile << "					limit = { has_idea = reign_of_terror }\n";
-		onActionsFile << "					remove_ideas = reign_of_terror\n";
-		onActionsFile << "				}\n";
-		onActionsFile << "			}\n";
+		onActionsFile << "\t\t\tif = {\n";
+		onActionsFile << "\t\t\t\tlimit = { has_government = democratic }\n";
+		onActionsFile << "\t\t\t\tset_politics = {\n";
+		onActionsFile << "\t\t\t\t\telections_allowed = yes\n";
+		onActionsFile << "\t\t\t\t}\n";
+		onActionsFile << "\t\t\t\tif = {\n";
+		onActionsFile << "\t\t\t\t\tlimit = { has_idea = democratic_opposition_voicing_protests }\n";
+		onActionsFile << "\t\t\t\t\tremove_ideas = democratic_opposition_voicing_protests\n";
+		onActionsFile << "\t\t\t\t}\n";
+		onActionsFile << "\t\t\t\tif = {\n";
+		onActionsFile << "\t\t\t\t\tlimit = { has_idea = democratic_revolutionaries }\n";
+		onActionsFile << "\t\t\t\t\tremove_ideas = democratic_revolutionaries\n";
+		onActionsFile << "\t\t\t\t}\n";
+		onActionsFile << "\t\t\t\tif = {\n";
+		onActionsFile << "\t\t\t\t\tlimit = { has_idea = reign_of_terror }\n";
+		onActionsFile << "\t\t\t\t\tremove_ideas = reign_of_terror\n";
+		onActionsFile << "\t\t\t\t}\n";
+		onActionsFile << "\t\t\t}\n";
 	}
-	onActionsFile << "		}\n";
-	onActionsFile << "	}\n";
+	onActionsFile << "\t\t}\n";
+	onActionsFile << "\t}\n";
 
 	if (majorIdeologies.count("democratic") > 0)
 	{
-		onActionsFile << "	on_coup_succeeded = {\n";
-		onActionsFile << "		effect = {\n";
-		onActionsFile << "			#Turn elections on for democracies created from coup\n";
-		onActionsFile << "			random_other_country = {\n";
-		onActionsFile << "				limit = {\n";
-		onActionsFile << "					has_government = democratic\n";
-		onActionsFile << "					original_tag = ROOT\n";
-		onActionsFile << "				}\n";
-		onActionsFile << "				set_politics = {\n";
-		onActionsFile << "					elections_allowed = yes\n";
-		onActionsFile << "				}\n";
-		onActionsFile << "			}\n";
-		onActionsFile << "		}\n";
-		onActionsFile << "	}\n";
+		onActionsFile << "\ton_coup_succeeded = {\n";
+		onActionsFile << "\t\teffect = {\n";
+		onActionsFile << "\t\t\t#Turn elections on for democracies created from coup\n";
+		onActionsFile << "\t\t\trandom_other_country = {\n";
+		onActionsFile << "\t\t\t\tlimit = {\n";
+		onActionsFile << "\t\t\t\t\thas_government = democratic\n";
+		onActionsFile << "\t\t\t\t\toriginal_tag = ROOT\n";
+		onActionsFile << "\t\t\t\t}\n";
+		onActionsFile << "\t\t\t\tset_politics = {\n";
+		onActionsFile << "\t\t\t\t\telections_allowed = yes\n";
+		onActionsFile << "\t\t\t\t}\n";
+		onActionsFile << "\t\t\t}\n";
+		onActionsFile << "\t\t}\n";
+		onActionsFile << "\t}\n";
 	}
 
-	onActionsFile << "	on_justifying_wargoal_pulse = {\n";
-	onActionsFile << "		random_events = {\n";
+	onActionsFile << "\ton_justifying_wargoal_pulse = {\n";
+	onActionsFile << "\t\trandom_events = {\n";
 	for (unsigned int i = firstWarJustificationEvent;
 		  i < (majorIdeologies.size() * majorIdeologies.size() + numNonIdeologicalEvents + firstWarJustificationEvent);
 		  i++)
 	{
-		onActionsFile << "			100 = war_justification." << i << "\n";
+		onActionsFile << "\t\t\t100 = war_justification." << i << "\n";
 	}
-	onActionsFile << "			17000 = 0\n";
-	onActionsFile << "		}\n";
-	onActionsFile << "	}\n";
+	onActionsFile << "\t\t\t17000 = 0\n";
+	onActionsFile << "\t\t}\n";
+	onActionsFile << "\t}\n";
 
-	onActionsFile << "	on_startup = {\n";
-	onActionsFile << "		effect = {\n";
-	onActionsFile << "			set_province_name = { id = 587 name = \"Köln\"} #Cologne\n";
-	onActionsFile << "			set_province_name = { id = 957 name = \"Vladivostok\"} #Haishenwai\n";
-	onActionsFile << "			set_province_name = { id = 1025 name = \"Kokura\"} #Fukuoka\n";
-	onActionsFile << "			set_province_name = { id = 1047 name = \"Guangzhou\"} #Canton\n";
-	onActionsFile << "			set_province_name = { id = 1182 name = \"Tokyo\"} #Edo\n";
-	onActionsFile << "			set_province_name = { id = 1440 name = \"San Juan\"} #Puerto Rico\n";
-	onActionsFile << "			set_province_name = { id = 1843 name = \"Miami\"} #Tampa\n";
-	onActionsFile << "			set_province_name = { id = 3151 name = \"Leningrad\"} #Saint Petersburg\n";
-	onActionsFile << "			set_province_name = { id = 3152 name = \"Tallinn\"} #Reval\n";
-	onActionsFile << "			set_province_name = { id = 3529 name = \"Stalingrad\"} #Tsaritsyn\n";
-	onActionsFile << "			set_province_name = { id = 4180 name = \"Honolulu\"} #Hawaii\n";
-	onActionsFile << "			set_province_name = { id = 4268 name = \"Nouméa\"} #New Caledonia\n";
-	onActionsFile << "			set_province_name = { id = 4333 name = \"Astana\"} #Qaraganda\n";
-	onActionsFile << "			set_province_name = { id = 4709 name = \"Ürümqi\"} #Díhuà\n";
-	onActionsFile << "			set_province_name = { id = 4801 name = \"Ulaanbaatar\"} #Urga\n";
-	onActionsFile << "			set_province_name = { id = 6115 name = \"Oslo\"} #Christiania\n";
-	onActionsFile << "			set_province_name = { id = 7371 name = \"Kuching\"} #Brunei\n";
-	onActionsFile << "			set_province_name = { id = 11437 name = \"Dnipropetrovsk\"} #Ekaterinoslav\n";
-	onActionsFile << "			set_province_name = { id = 12674 name = \"Reykjavik\"} #Iceland\n";
-	onActionsFile << "		}\n";
-	onActionsFile << "	}\n";
+	onActionsFile << "\ton_startup = {\n";
+	onActionsFile << "\t\teffect = {\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 587 name = \"Köln\"} #Cologne\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 957 name = \"Vladivostok\"} #Haishenwai\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 1025 name = \"Kokura\"} #Fukuoka\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 1047 name = \"Guangzhou\"} #Canton\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 1182 name = \"Tokyo\"} #Edo\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 1440 name = \"San Juan\"} #Puerto Rico\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 1843 name = \"Miami\"} #Tampa\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 3151 name = \"Leningrad\"} #Saint Petersburg\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 3152 name = \"Tallinn\"} #Reval\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 3529 name = \"Stalingrad\"} #Tsaritsyn\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 4180 name = \"Honolulu\"} #Hawaii\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 4268 name = \"Nouméa\"} #New Caledonia\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 4333 name = \"Astana\"} #Qaraganda\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 4709 name = \"Ürümqi\"} #Díhuà\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 4801 name = \"Ulaanbaatar\"} #Urga\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 6115 name = \"Oslo\"} #Christiania\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 7371 name = \"Kuching\"} #Brunei\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 11437 name = \"Dnipropetrovsk\"} #Ekaterinoslav\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 12674 name = \"Reykjavik\"} #Iceland\n";
+	onActionsFile << "\t\t}\n";
+	onActionsFile << "\t}\n";
 
 	onActionsFile << "}\n";
 

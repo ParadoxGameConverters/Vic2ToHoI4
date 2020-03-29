@@ -481,33 +481,33 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 	std::ofstream bookmarkFile("output/" + outputName + "/common/bookmarks/the_gathering_storm.txt");
 
 	bookmarkFile << "bookmarks = {\n";
-	bookmarkFile << "	bookmark = {\n";
-	bookmarkFile << "		name = "
+	bookmarkFile << "\tbookmark = {\n";
+	bookmarkFile << "\t\tname = "
 						 "GATHERING_STORM_NAME"
 						 "\n";
-	bookmarkFile << "		desc = "
+	bookmarkFile << "\t\tdesc = "
 						 "GATHERING_STORM_DESC"
 						 "\n";
-	bookmarkFile << "		date = 1936.1.1.12\n";
-	bookmarkFile << "		picture = "
+	bookmarkFile << "\t\tdate = 1936.1.1.12\n";
+	bookmarkFile << "\t\tpicture = "
 						 "GFX_select_date_1936"
 						 "\n";
-	bookmarkFile << "		default_country = \"---\"\n";
-	bookmarkFile << "		default = yes\n";
+	bookmarkFile << "\t\tdefault_country = \"---\"\n";
+	bookmarkFile << "\t\tdefault = yes\n";
 
 	for (const auto& greatPower: greatPowers)
 	{
 		// Vic2 Great powers become majors in bookmark
-		bookmarkFile << "		" + greatPower->getTag() + "= {\n";
-		bookmarkFile << "			history = \"OTHER_GATHERING_STORM_DESC\"\n";
-		bookmarkFile << "			ideology = " + greatPower->getGovernmentIdeology() + "\n";
-		bookmarkFile << "			ideas = { great_power }\n";
-		bookmarkFile << "		}\n";
+		bookmarkFile << "\t\t" + greatPower->getTag() + "= {\n";
+		bookmarkFile << "\t\t\thistory = \"OTHER_GATHERING_STORM_DESC\"\n";
+		bookmarkFile << "\t\t\tideology = " + greatPower->getGovernmentIdeology() + "\n";
+		bookmarkFile << "\t\t\tideas = { great_power }\n";
+		bookmarkFile << "\t\t}\n";
 	}
 
-	bookmarkFile << "		\"---\"= {\n";
-	bookmarkFile << "			history = \"OTHER_GATHERING_STORM_DESC\"\n";
-	bookmarkFile << "		}\n";
+	bookmarkFile << "\t\t\"---\"= {\n";
+	bookmarkFile << "\t\t\thistory = \"OTHER_GATHERING_STORM_DESC\"\n";
+	bookmarkFile << "\t\t}\n";
 
 	for (const auto& country: countries)
 	{
@@ -518,12 +518,12 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 				// add minor countries to the bookmark, only those with custom focus trees are visible due to Hoi4
 				// limitations Bookmark window has room for 22 minor countries, going over this seems to not cause any
 				// issues however
-				bookmarkFile << "		" + country.second->getTag() + " = {\n";
-				bookmarkFile << "			minor = yes\n";
-				bookmarkFile << "			history = \"OTHER_GATHERING_STORM_DESC\"\n";
-				bookmarkFile << "			ideology = " + country.second->getGovernmentIdeology() + "\n";
-				bookmarkFile << "			ideas = { }\n";
-				bookmarkFile << "		}\n";
+				bookmarkFile << "\t\t" + country.second->getTag() + " = {\n";
+				bookmarkFile << "\t\t\tminor = yes\n";
+				bookmarkFile << "\t\t\thistory = \"OTHER_GATHERING_STORM_DESC\"\n";
+				bookmarkFile << "\t\t\tideology = " + country.second->getGovernmentIdeology() + "\n";
+				bookmarkFile << "\t\t\tideas = { }\n";
+				bookmarkFile << "\t\t}\n";
 			}
 		}
 	}

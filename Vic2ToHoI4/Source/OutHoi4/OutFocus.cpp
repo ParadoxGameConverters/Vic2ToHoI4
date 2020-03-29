@@ -4,59 +4,59 @@
 
 std::ostream& operator<<(std::ostream& output, const HoI4Focus& focus)
 {
-	output << "	focus = {\n";
-	output << "		id = " << focus.id << "\n";
-	output << "		icon = " << focus.icon << "\n";
+	output << "\tfocus = {\n";
+	output << "\t\tid = " << focus.id << "\n";
+	output << "\t\ticon = " << focus.icon << "\n";
 	if (!focus.text.empty())
 	{
-		output << "		text = " << focus.text << "\n";
+		output << "\t\ttext = " << focus.text << "\n";
 	}
 	for (const auto& prerequisite: focus.prerequisites)
 	{
-		output << "		prerequisite " << prerequisite << "\n";
+		output << "\t\tprerequisite " << prerequisite << "\n";
 	}
 	if (!focus.mutuallyExclusive.empty())
 	{
-		output << "		mutually_exclusive " << focus.mutuallyExclusive << "\n";
+		output << "\t\tmutually_exclusive " << focus.mutuallyExclusive << "\n";
 	}
 	if (!focus.bypass.empty())
 	{
-		output << "		bypass " << focus.bypass << "\n";
+		output << "\t\tbypass " << focus.bypass << "\n";
 	}
-	output << "		x = " << focus.xPos << "\n";
-	output << "		y = " << focus.yPos << "\n";
+	output << "\t\tx = " << focus.xPos << "\n";
+	output << "\t\ty = " << focus.yPos << "\n";
 	if (!focus.relativePositionId.empty())
 	{
-		output << "		relative_position_id = " << focus.relativePositionId << "\n";
+		output << "\t\trelative_position_id = " << focus.relativePositionId << "\n";
 	}
-	output << "		cost = " << focus.cost << "\n";
+	output << "\t\tcost = " << focus.cost << "\n";
 	if (focus.availableIfCapitulated)
 	{
-		output << "		available_if_capitulated = yes\n";
+		output << "\t\tavailable_if_capitulated = yes\n";
 	}
 	if (!focus.available.empty())
 	{
-		output << "		available " << focus.available << "\n";
+		output << "\t\tavailable " << focus.available << "\n";
 	}
 	if (!focus.cancelIfInvalid.empty())
 	{
-		output << "		cancel_if_invalid = " << focus.cancelIfInvalid << "\n";
+		output << "\t\tcancel_if_invalid = " << focus.cancelIfInvalid << "\n";
 	}
 	if (!focus.continueIfInvalid.empty())
 	{
-		output << "		continue_if_invalid = " << focus.continueIfInvalid << "\n";
+		output << "\t\tcontinue_if_invalid = " << focus.continueIfInvalid << "\n";
 	}
 	if (!focus.completeTooltip.empty())
 	{
-		output << "		complete_tooltip " << focus.completeTooltip << "\n";
+		output << "\t\tcomplete_tooltip " << focus.completeTooltip << "\n";
 	}
-	output << "		completion_reward " << focus.completionReward << "\n";
+	output << "\t\tcompletion_reward " << focus.completionReward << "\n";
 	if (!focus.aiWillDo.empty())
 	{
-		output << "		ai_will_do " << focus.aiWillDo << "\n";
+		output << "\t\tai_will_do " << focus.aiWillDo << "\n";
 	}
 
-	output << "	}\n";
+	output << "\t}\n";
 
 	return output;
 }

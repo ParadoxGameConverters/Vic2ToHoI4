@@ -16,24 +16,24 @@ void HoI4::outputFocusTree(const HoI4FocusTree& focusTree, const std::string& fi
 	out << "focus_tree = {\n";
 	if (!focusTree.getDestinationCountryTag().empty())
 	{
-		out << "	id = " << focusTree.getDestinationCountryTag() + "_focus\n";
-		out << "	\n";
-		out << "	country = {\n";
-		out << "		factor = 0\n";
-		out << "		\n";
-		out << "		modifier = {\n";
-		out << "			add = 10\n";
-		out << "			tag = " << focusTree.getDestinationCountryTag() << "\n";
-		out << "		}\n";
-		out << "	}\n";
-		out << "	\n";
-		out << "	default = no\n";
-		out << "	\n";
-		out << "	shared_focus = army_effort\n";
-		out << "	shared_focus = aviation_effort\n";
-		out << "	shared_focus = naval_effort\n";
-		out << "	shared_focus = industrial_effort\n";
-		out << "	shared_focus = political_effort\n";
+		out << "\tid = " << focusTree.getDestinationCountryTag() + "_focus\n";
+		out << "\t\n";
+		out << "\tcountry = {\n";
+		out << "\t\tfactor = 0\n";
+		out << "\t\t\n";
+		out << "\t\tmodifier = {\n";
+		out << "\t\t\tadd = 10\n";
+		out << "\t\t\ttag = " << focusTree.getDestinationCountryTag() << "\n";
+		out << "\t\t}\n";
+		out << "\t}\n";
+		out << "\t\n";
+		out << "\tdefault = no\n";
+		out << "\t\n";
+		out << "\tshared_focus = army_effort\n";
+		out << "\tshared_focus = aviation_effort\n";
+		out << "\tshared_focus = naval_effort\n";
+		out << "\tshared_focus = industrial_effort\n";
+		out << "\tshared_focus = political_effort\n";
 		out << "\n";
 	}
 
@@ -48,59 +48,59 @@ void HoI4::outputFocusTree(const HoI4FocusTree& focusTree, const std::string& fi
 	out.close();
 }
 
-
+// move this to its own file
 void outputShared(std::ostream& output, const HoI4Focus& focus)
 {
 	output << "shared_focus = {\n";
-	output << "	id = " << focus.id << "\n";
-	output << "	icon = " << focus.icon << "\n";
+	output << "\tid = " << focus.id << "\n";
+	output << "\ticon = " << focus.icon << "\n";
 	if (!focus.text.empty())
 	{
-		output << "	text = " << focus.text << "\n";
+		output << "\ttext = " << focus.text << "\n";
 	}
 	for (const auto& prerequisite: focus.prerequisites)
 	{
-		output << "	prerequisite " << prerequisite << "\n";
+		output << "\tprerequisite " << prerequisite << "\n";
 	}
 	if (!focus.mutuallyExclusive.empty())
 	{
-		output << "	mutually_exclusive " << focus.mutuallyExclusive << "\n";
+		output << "\tmutually_exclusive " << focus.mutuallyExclusive << "\n";
 	}
 	if (!focus.bypass.empty())
 	{
-		output << "	bypass " << focus.bypass << "\n";
+		output << "\tbypass " << focus.bypass << "\n";
 	}
-	output << "	x = " << focus.xPos << "\n";
-	output << "	y = " << focus.yPos << "\n";
+	output << "\tx = " << focus.xPos << "\n";
+	output << "\ty = " << focus.yPos << "\n";
 	if (!focus.relativePositionId.empty())
 	{
-		output << "	relative_position_id = " << focus.relativePositionId << "\n";
+		output << "\trelative_position_id = " << focus.relativePositionId << "\n";
 	}
-	output << "	cost = " << focus.cost << "\n";
+	output << "\tcost = " << focus.cost << "\n";
 	if (focus.availableIfCapitulated)
 	{
-		output << "	available_if_capitulated = yes\n";
+		output << "\tavailable_if_capitulated = yes\n";
 	}
 	if (!focus.available.empty())
 	{
-		output << "	available " << focus.available << "\n";
+		output << "\tavailable " << focus.available << "\n";
 	}
 	if (!focus.cancelIfInvalid.empty())
 	{
-		output << "	cancel_if_invalid = " << focus.cancelIfInvalid << "\n";
+		output << "\tcancel_if_invalid = " << focus.cancelIfInvalid << "\n";
 	}
 	if (!focus.continueIfInvalid.empty())
 	{
-		output << "	continue_if_invalid = " << focus.continueIfInvalid << "\n";
+		output << "\tcontinue_if_invalid = " << focus.continueIfInvalid << "\n";
 	}
 	if (!focus.completeTooltip.empty())
 	{
-		output << "	complete_tooltip " << focus.completeTooltip << "\n";
+		output << "\tcomplete_tooltip " << focus.completeTooltip << "\n";
 	}
-	output << "	completion_reward " << focus.completionReward << "\n";
+	output << "\tcompletion_reward " << focus.completionReward << "\n";
 	if (!focus.aiWillDo.empty())
 	{
-		output << "	ai_will_do " << focus.aiWillDo << "\n";
+		output << "\tai_will_do " << focus.aiWillDo << "\n";
 	}
 
 	output << "}\n";
