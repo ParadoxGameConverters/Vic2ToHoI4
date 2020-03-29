@@ -1,6 +1,10 @@
 #include "OutOnActions.h"
-#include "Log.h"
 #include <fstream>
+
+
+
+constexpr int firstWarJustificationEvent = 17;
+constexpr int numNonIdeologicalEvents = 4;
 
 
 
@@ -49,6 +53,7 @@ void HoI4::outputOnActions(const OnActions& onActions,
 		onActionsFile << "				}\n";
 		onActionsFile << "			}\n";
 	}
+
 	if (majorIdeologies.count("democratic") > 0)
 	{
 		onActionsFile << "			if = {\n";
@@ -93,7 +98,9 @@ void HoI4::outputOnActions(const OnActions& onActions,
 
 	onActionsFile << "	on_justifying_wargoal_pulse = {\n";
 	onActionsFile << "		random_events = {\n";
-	for (unsigned int i = 17; i < (majorIdeologies.size() * majorIdeologies.size() + 4 + 17); i++)
+	for (unsigned int i = firstWarJustificationEvent;
+		  i < (majorIdeologies.size() * majorIdeologies.size() + numNonIdeologicalEvents + firstWarJustificationEvent);
+		  i++)
 	{
 		onActionsFile << "			100 = war_justification." << i << "\n";
 	}

@@ -1,5 +1,4 @@
 #include "OutFocusTree.h"
-#include "Log.h"
 #include "OutFocus.h"
 #include <fstream>
 #include <string>
@@ -106,8 +105,6 @@ void outputShared(std::ostream& output, const HoI4Focus& focus)
 
 	output << "}\n";
 	output << "\n";
-
-	// return output;
 }
 
 

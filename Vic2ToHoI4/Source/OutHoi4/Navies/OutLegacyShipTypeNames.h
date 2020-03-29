@@ -3,14 +3,13 @@
 
 
 
+#include "../../HOI4World/Navies/LegacyShipTypeNames.h"
 #include <ostream>
 
 
 
 namespace HoI4
 {
-
-class LegacyShipTypeNames;
 
 void outLegacyShipTypeNames(std::ostream& out, const LegacyShipTypeNames& shipTypeNames);
 

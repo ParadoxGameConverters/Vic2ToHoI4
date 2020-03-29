@@ -3,15 +3,13 @@
 
 
 
+#include "../../HOI4World/Navies/MtgShipTypeNames.h"
 #include <ostream>
-#include <string>
 
 
 
 namespace HoI4
 {
-
-class MtgShipTypeNames;
 
 void outMtgShipTypeNames(std::ostream& out, const MtgShipTypeNames& shipTypeNames, std::string_view tag);
 

@@ -116,6 +116,7 @@ void outputNamesSet(std::ostream& namesFile,
 	}
 }
 
+
 void HoI4::outputToUnitNamesFiles(const Country& theCountry)
 {
 	const auto& tag = theCountry.getTag();

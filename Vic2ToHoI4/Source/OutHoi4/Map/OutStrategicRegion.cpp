@@ -17,7 +17,7 @@ void HoI4::outputStrategicRegion(const StrategicRegion& strategicRegion, const s
 	out << "\tname=\"" << strategicRegion.getName() << "\"\n";
 	out << "\tprovinces={\n";
 	out << "\t\t";
-	for (auto province: strategicRegion.getNewProvinces())
+	for (const auto& province: strategicRegion.getNewProvinces())
 	{
 		out << province << " ";
 	}

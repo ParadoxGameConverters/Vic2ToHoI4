@@ -105,7 +105,7 @@ void HoI4::outputHoI4State(std::ostream& output, const State& theState, const bo
 	output << "\n";
 	output << "\tprovinces={\n";
 	output << "\t\t";
-	for (auto provinceNumber: theState.getProvinces())
+	for (const auto& provinceNumber: theState.getProvinces())
 	{
 		output << provinceNumber << " ";
 	}

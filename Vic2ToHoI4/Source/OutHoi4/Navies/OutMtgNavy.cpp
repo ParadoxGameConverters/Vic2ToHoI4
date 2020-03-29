@@ -10,7 +10,7 @@ std::ostream& HoI4::operator<<(std::ostream& output, const MtgNavy& instance)
 	output << "\t\ttask_force = {\n";
 	output << "\t\t\tname = \"" << instance.name << "\"\n";
 	output << "\t\t\tlocation = " << instance.location << "\n";
-	for (auto& ship: instance.ships)
+	for (const auto& ship: instance.ships)
 	{
 		output << ship;
 	}

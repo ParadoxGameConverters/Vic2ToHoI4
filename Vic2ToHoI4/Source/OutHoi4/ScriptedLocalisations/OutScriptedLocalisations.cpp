@@ -18,7 +18,6 @@ void HoI4::outputScriptedLocalisations(const std::string& outputName,
 
 	scriptedLocalisationsFile.close();
 
-
 	for (const auto& localisationsInLanguage: scriptedLocalisations.getAdjectiveLocalisations())
 	{
 		auto filename{"output/" + outputName + "/common/scripted_localisation/000_scripted_localisation_" +
