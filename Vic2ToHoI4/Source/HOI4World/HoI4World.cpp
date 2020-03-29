@@ -75,6 +75,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	convertGovernments();
 	ideologies = std::make_unique<Ideologies>(theConfiguration);
 	ideologies->identifyMajorIdeologies(greatPowers, countries);
+	genericFocusTree.addGenericFocusTree(ideologies->getMajorIdeologies());
 	importIdeologicalMinisters();
 	convertParties();
 	events->createPoliticalEvents(ideologies->getMajorIdeologies());

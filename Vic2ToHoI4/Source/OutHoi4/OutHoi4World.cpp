@@ -41,7 +41,7 @@ void outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>& coun
 void outputMap(const States& states,
 	 const std::map<int, StrategicRegion*>& strategicRegions,
 	 const std::string& outputName);
-void outputGenericFocusTree(const std::set<std::string>& majorIdeologies, const std::string& outputName);
+void outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const std::string& outputName);
 void outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const allMilitaryMappings& theMilitaryMappings,
@@ -179,7 +179,7 @@ void HoI4::OutputWorld(const World& world, const std::string& outputName, const 
 	outputMap(world.getTheStates(), world.getStrategicRegions(), outputName);
 	outputSupplyZones(world.getSupplyZones(), outputName);
 	outputRelations(outputName);
-	outputGenericFocusTree(world.getMajorIdeologies(), outputName);
+	outputGenericFocusTree(world.getGenericFocusTree(), outputName);
 	outputCountries(world.getActiveIdeologicalAdvisors(), world.getCountries(), world.getMilitaryMappings(), outputName);
 	outputBuildings(world.getBuildings(), outputName);
 	outputDecisions(world.getDecisions(), world.getMajorIdeologies(), outputName);
@@ -334,7 +334,7 @@ void HoI4::outputMap(const States& states,
 }
 
 
-void HoI4::outputGenericFocusTree(const std::set<std::string>& majorIdeologies, const std::string& outputName)
+void HoI4::outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const std::string& outputName)
 {
 	LOG(LogLevel::Info) << "\tWriting generic focus tree";
 
@@ -343,8 +343,6 @@ void HoI4::outputGenericFocusTree(const std::set<std::string>& majorIdeologies, 
 		throw std::runtime_error("Could not create output/" + outputName + "/common/national_focus");
 	}
 
-	HoI4FocusTree genericFocusTree;
-	genericFocusTree.addGenericFocusTree(majorIdeologies);
 	outputSharedFocuses(genericFocusTree, "output/" + outputName + "/common/national_focus/shared_focuses.txt");
 }
 
