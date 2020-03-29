@@ -78,6 +78,7 @@ class World: commonItems::parser
 	~World() = default;
 
 	[[nodiscard]] auto& getNames() { return theNames; }
+	[[nodiscard]] const auto& getNames() const { return theNames; }
 	[[nodiscard]] const auto& getTheStates() const { return *states; }
 	[[nodiscard]] const auto& getStrategicRegions() const { return strategicRegions; }
 	[[nodiscard]] const auto& getCountries() const { return countries; }
@@ -89,6 +90,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getBuildings() const { return *buildings; }
 	[[nodiscard]] const auto& getDecisions() const { return *theDecisions; }
 	[[nodiscard]] auto& getEvents() { return *events; }
+	[[nodiscard]] const auto& getEvents() const { return *events; }
 	[[nodiscard]] const auto& getOnActions() const { return *onActions; }
 	[[nodiscard]] const auto& getPeaces() const { return *peaces; }
 	[[nodiscard]] const auto& getIdeologies() const { return *ideologies; }

@@ -154,7 +154,7 @@ std::pair<std::string, std::array<int, 3>> HoI4::getDefaultStateIndustry(const D
 }
 
 
-void HoI4::OutputWorld(World& world, const std::string& outputName, const bool debugEnabled)
+void HoI4::OutputWorld(const World& world, const std::string& outputName, const bool debugEnabled)
 {
 	reportIndustryLevels(world);
 
