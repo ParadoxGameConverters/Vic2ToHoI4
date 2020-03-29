@@ -124,6 +124,11 @@ void HoI4::reportDefaultIndustry(const World& world)
 void HoI4::reportDefaultIndustry(const std::map<std::string, std::array<int, 3>>& countryIndustry)
 {
 	std::ofstream report("defaultIndustry.csv");
+	if (!report.is_open())
+	{
+		throw std::runtime_error("Could not open defaultIndustry.csv");
+	}
+
 	report << "tag,military factories,civilian factories,dockyards,total factories\n";
 	if (report.is_open())
 	{
@@ -162,7 +167,7 @@ void HoI4::OutputWorld(const World& world, const std::string& outputName, const 
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/history"))
 	{
-		throw std::runtime_error("Could not create \"output/" + outputName + "/history");
+		throw std::runtime_error("Could not create output/" + outputName + "/history");
 	}
 
 	outputCommonCountries(world.getCountries(), outputName);
@@ -198,13 +203,13 @@ void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<Cou
 	LOG(LogLevel::Info) << "\tCreating country tags";
 	if (!Utils::TryCreateFolder("output/" + outputName + "/common/country_tags"))
 	{
-		throw std::runtime_error("Could not create \"output/" + outputName + "/common/country_tags\"");
+		throw std::runtime_error("Could not create output/" + outputName + "/common/country_tags");
 	}
 
 	std::ofstream allCountriesFile("output/" + outputName + "/common/country_tags/00_countries.txt");
 	if (!allCountriesFile.is_open())
 	{
-		throw std::runtime_error("Could not create countries file");
+		throw std::runtime_error("Could not create output/" + outputName + "/common/country_tags/00_countries.txt");
 	}
 
 	for (const auto& country: countries)
@@ -235,7 +240,7 @@ void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<Country>
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/common/countries"))
 	{
-		throw std::runtime_error("Could not create \"output/" + outputName + "/common/countries\"");
+		throw std::runtime_error("Could not create output/" + outputName + "/common/countries");
 	}
 
 	std::ofstream output("output/" + outputName + "/common/countries/colors.txt");
@@ -264,12 +269,12 @@ void HoI4::outputNames(const namesMapper& theNames,
 	LOG(LogLevel::Info) << "\tWriting names";
 
 	std::ofstream namesFile("output/" + outputName + "/common/names/01_names.txt");
-	namesFile << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
-
 	if (!namesFile.is_open())
 	{
 		throw std::runtime_error("Could not open output/" + outputName + "/common/names/01_names.txt");
 	}
+
+	namesFile << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 
 	for (const auto& country: countries)
 	{
@@ -303,7 +308,7 @@ void HoI4::outputMap(const States& states,
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/map"))
 	{
-		throw std::runtime_error("Could not create \"output/" + outputName + "/map");
+		throw std::runtime_error("Could not create output/" + outputName + "/map");
 	}
 
 	std::ofstream rocketSitesFile("output/" + outputName + "/map/rocketsites.txt");
@@ -320,7 +325,7 @@ void HoI4::outputMap(const States& states,
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/map/strategicregions"))
 	{
-		throw std::runtime_error("Could not create \"output/" + outputName + "/map/strategicregions");
+		throw std::runtime_error("Could not create output/" + outputName + "/map/strategicregions");
 	}
 	for (const auto& strategicRegion: strategicRegions)
 	{
@@ -335,7 +340,7 @@ void HoI4::outputGenericFocusTree(const std::set<std::string>& majorIdeologies, 
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/common/national_focus"))
 	{
-		throw std::runtime_error("Could not create \"output/" + outputName + "/common/national_focus\"");
+		throw std::runtime_error("Could not create output/" + outputName + "/common/national_focus");
 	}
 
 	HoI4FocusTree genericFocusTree;
@@ -353,19 +358,19 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/history"))
 	{
-		throw std::runtime_error("Could not create \"output/" + outputName + "/history");
+		throw std::runtime_error("Could not create output/" + outputName + "/history");
 	}
 	if (!Utils::TryCreateFolder("output/" + outputName + "/history/countries"))
 	{
-		throw std::runtime_error("Could not create \"output/" + outputName + "/history");
+		throw std::runtime_error("Could not create output/" + outputName + "/history/countries");
 	}
 	if (!Utils::TryCreateFolder("output/" + outputName + "/history/states"))
 	{
-		throw std::runtime_error("Could not create \"output/" + outputName + "/history/states");
+		throw std::runtime_error("Could not create output/" + outputName + "/history/states");
 	}
 	if (!Utils::TryCreateFolder("output/" + outputName + "/history/units"))
 	{
-		throw std::runtime_error("Could not create \"output/" + outputName + "/history/units");
+		throw std::runtime_error("Could not create output/" + outputName + "/history/units");
 	}
 
 	for (const auto& country: countries)
@@ -380,7 +385,7 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	std::ofstream ideasFile("output/" + outputName + "/interface/converter_ideas.gfx");
 	if (!ideasFile.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + outputName + "/interface/ideas.gfx");
+		throw std::runtime_error("Could not open output/" + outputName + "/interface/converter_ideas.gfx");
 	}
 
 	ideasFile << "spriteTypes = {\n";
@@ -404,11 +409,11 @@ void HoI4::outputRelations(const std::string& outputName)
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/common/opinion_modifiers/");
 	}
-
 	std::ofstream out("output/" + outputName + "/common/opinion_modifiers/01_opinion_modifiers.txt");
 	if (!out.is_open())
 	{
-		throw std::runtime_error("Could not create 01_opinion_modifiers.txt.");
+		throw std::runtime_error(
+			 "Could not create output/" + outputName + "/common/opinion_modifiers/01_opinion_modifiers.txt");
 	}
 
 	out << "opinion_modifiers = {\n";
@@ -456,6 +461,11 @@ void HoI4::outputLeaderTraits(const std::map<std::string, std::vector<std::strin
 	LOG(LogLevel::Info) << "\tWriting leader traits";
 
 	std::ofstream traitsFile("output/" + outputName + "/common/country_leader/converterTraits.txt");
+	if (!traitsFile.is_open())
+	{
+		throw std::runtime_error("Could not create output/" + outputName + "/common/country_leader/converterTraits.txt");
+	}
+
 	traitsFile << "leader_traits = {\n";
 	for (const auto& majorIdeology: majorIdeologies)
 	{
@@ -481,6 +491,10 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 	LOG(LogLevel::Info) << "\tWriting bookmarks";
 
 	std::ofstream bookmarkFile("output/" + outputName + "/common/bookmarks/the_gathering_storm.txt");
+	if (!bookmarkFile.is_open())
+	{
+		throw std::runtime_error("Could not create output/" + outputName + "/common/bookmarks/the_gathering_storm.txt");
+	}
 
 	bookmarkFile << "bookmarks = {\n";
 	bookmarkFile << "\tbookmark = {\n";
