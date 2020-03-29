@@ -91,6 +91,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 		 *events);
 	updateAiPeaces(*peaces, ideologies->getMajorIdeologies());
 	addNeutrality();
+	addLeaders();
 	convertIdeologySupport();
 	states->convertCapitalVPs(countries, greatPowers, getStrongestCountryStrength());
 	states->convertAirBases(countries, greatPowers);
@@ -224,6 +225,15 @@ void HoI4::World::addNeutrality()
 		{
 			country.second->setGovernmentToExistingIdeology(ideologies->getMajorIdeologies(), *ideologies, governmentMap);
 		}
+	}
+}
+
+
+void HoI4::World::addLeaders()
+{
+	for (auto country: countries)
+	{
+		country.second->addLeader(theNames, theGraphics);
 	}
 }
 

@@ -145,63 +145,55 @@ void HoI4::outputToUnitNamesFiles(const Country& theCountry)
 }
 
 
-void HoI4::outputIdeaGraphics(std::ostream& ideasFile, graphicsMapper& graphics, const Country& theCountry)
+void HoI4::outputIdeaGraphics(std::ostream& ideasFile, const Country& theCountry)
 {
 	const auto& tag = theCountry.getTag();
 	const auto& primaryCultureGroup = theCountry.getSourceCountry().getPrimaryCultureGroup();
 
 	ideasFile << "\tspriteType = {\n";
 	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_communist_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "communism")
-				 << "\"\n";
+	ideasFile << "\t\ttexturefile = \"" << theCountry.getCommunistAdvisorPortrait() << "\"\n";
 	ideasFile << "\t}\n";
 
 	ideasFile << "\tspriteType = {\n";
 	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_democratic_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "democratic")
-				 << "\"\n";
+	ideasFile << "\t\ttexturefile = \"" << theCountry.getDemocraticAdvisorPortrait() << "\"\n";
 	ideasFile << "\t}\n";
 
 	ideasFile << "\tspriteType = {\n";
 	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_neutrality_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "neutrality")
-				 << "\"\n";
+	ideasFile << "\t\ttexturefile = \"" << theCountry.getNeutralityAdvisorPortrait() << "\"\n";
 	ideasFile << "\t}\n";
 
 	ideasFile << "\tspriteType = {\n";
 	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_absolutist_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "absolutist")
-				 << "\"\n";
+	ideasFile << "\t\ttexturefile = \"" << theCountry.getAbsolutistAdvisorPortrait() << "\"\n";
 	ideasFile << "\t}\n";
 
 	ideasFile << "\tspriteType = {\n";
 	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_radical_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "radical")
-				 << "\"\n";
+	ideasFile << "\t\ttexturefile = \"" << theCountry.getRadicalAdvisorPortrait() << "\"\n";
 	ideasFile << "\t}\n";
 
 	ideasFile << "\tspriteType = {\n";
 	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_fascist_advisor\"\n";
-	ideasFile << "\t\ttexturefile = \"" << graphics.getIdeologyMinisterPortrait(primaryCultureGroup, "fascism")
-				 << "\"\n";
+	ideasFile << "\t\ttexturefile = \"" << theCountry.getFascistAdvisorPortrait() << "\"\n";
 	ideasFile << "\t}\n";
 }
 
 
-void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, const HoI4::Country& theCountry);
+void outputHistory(const HoI4::Country& theCountry);
 void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates, const HoI4::Country& theCountry);
 void outputCommonCountryFile(const HoI4::Country& theCountry);
 void outputAdvisorIdeas(const std::string& tag, const std::set<HoI4::Advisor>& ideologicalAdvisors);
 
 void HoI4::outputCountry(const std::set<Advisor>& ideologicalMinisters,
 	 const std::vector<DivisionTemplateType>& divisionTemplates,
-	 namesMapper& theNames,
-	 graphicsMapper& theGraphics,
 	 const Country& theCountry)
 {
 	if (theCountry.getCapitalState())
 	{
-		outputHistory(theNames, theGraphics, theCountry);
+		outputHistory(theCountry);
 		outputOOB(divisionTemplates, theCountry);
 		outputCommonCountryFile(theCountry);
 		outputAdvisorIdeas(theCountry.getTag(), ideologicalMinisters);
@@ -241,8 +233,8 @@ void outputRelations(std::ostream& output,
 	 const std::map<std::string, HoI4::Relations>& relations);
 void outputFactions(std::ostream& output,
 	 const std::string& tag,
-	 std::optional<HoI4::Faction> faction,
-	 std::optional<std::string> possibleLeaderName);
+	 const std::optional<HoI4::Faction>& faction,
+	 const std::optional<std::string>& possibleLeaderName);
 void outputGuaranteedSpherelings(std::ostream& output, const std::vector<std::string>& guaranteed);
 void outputIdeas(std::ostream& output,
 	 const bool& greatPower,
@@ -255,11 +247,9 @@ void outputIdeas(std::ostream& output,
 void outputStability(std::ostream& output, const int& stability);
 void outputWarSupport(std::ostream& output, const int& warSupport);
 void outputCountryLeader(std::ostream& output,
-	 HoI4::namesMapper& theNames,
-	 graphicsMapper& theGraphics,
-	 const std::string& primaryCulture,
-	 const std::string& primaryCultureGroup,
-	 const std::string& governmentIdeology,
+	 const std::string& leaderPortrait,
+	 const std::string& leaderName,
+	 const std::string& leaderSurname,
 	 const std::string& leaderIdeology,
 	 const std::string& tag);
 void outputCommanders(std::ostream& output,
@@ -267,7 +257,7 @@ void outputCommanders(std::ostream& output,
 	 const std::vector<HoI4::Admiral>& admirals);
 
 
-void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, const HoI4::Country& theCountry)
+void outputHistory(const HoI4::Country& theCountry)
 {
 	const auto& tag = theCountry.getTag();
 	const auto& governmentIdeology = theCountry.getGovernmentIdeology();
@@ -322,11 +312,9 @@ void outputHistory(HoI4::namesMapper& theNames, graphicsMapper& theGraphics, con
 		outputWarSupport(output, theCountry.getWarSupport());
 	}
 	outputCountryLeader(output,
-		 theNames,
-		 theGraphics,
-		 primaryCulture,
-		 theCountry.getSourceCountry().getPrimaryCultureGroup(),
-		 governmentIdeology,
+		 theCountry.getLeaderPortrait(),
+		 theCountry.getLeaderName(),
+		 theCountry.getLeaderSurname(),
 		 theCountry.getLeaderIdeology(),
 		 tag);
 	outputCommanders(output, theCountry.getGenerals(), theCountry.getAdmirals());
@@ -535,7 +523,7 @@ void outputPolitics(std::ostream& output,
 	output << "set_popularities = {\n";
 	for (const auto& ideology: ideologySupport)
 	{
-		output << "	" << ideology.first << " = " << ideology.second << "\n";
+		output << "\t" << ideology.first << " = " << ideology.second << "\n";
 	}
 	output << "}\n";
 	output << "\n";
@@ -572,8 +560,8 @@ void outputRelations(std::ostream& output,
 
 void outputFactions(std::ostream& output,
 	 const std::string& tag,
-	 std::optional<HoI4::Faction> faction,
-	 std::optional<std::string> possibleLeaderName)
+	 const std::optional<HoI4::Faction>& faction,
+	 const std::optional<std::string>& possibleLeaderName)
 {
 	if (faction && (faction->getLeader()->getTag() == tag))
 	{
@@ -660,36 +648,27 @@ void outputWarSupport(std::ostream& output, const int& warSupport)
 
 
 void outputCountryLeader(std::ostream& output,
-	 HoI4::namesMapper& theNames,
-	 graphicsMapper& theGraphics,
-	 const std::string& primaryCulture,
-	 const std::string& primaryCultureGroup,
-	 const std::string& governmentIdeology,
+	 const std::string& leaderPortrait,
+	 const std::string& leaderName,
+	 const std::string& leaderSurname,
 	 const std::string& leaderIdeology,
 	 const std::string& tag)
 {
-	auto firstName = theNames.getMaleName(primaryCulture);
-	auto surname = theNames.getSurname(primaryCulture);
-	if (firstName && surname)
+	if (!leaderName.empty() && !leaderSurname.empty() && !leaderPortrait.empty())
 	{
-		const auto portrait = theGraphics.getLeaderPortrait(primaryCultureGroup, governmentIdeology);
-		auto upperFirstName = *firstName;
+		auto upperFirstName = leaderName;
 		std::transform(upperFirstName.begin(), upperFirstName.end(), upperFirstName.begin(), toupper);
-		auto upperSurname = *surname;
+		auto upperSurname = leaderSurname;
 		std::transform(upperSurname.begin(), upperSurname.end(), upperSurname.begin(), toupper);
 		output << "create_country_leader = {\n";
-		output << "    name = \"" << *firstName << " " << *surname << "\"\n";
+		output << "    name = \"" << leaderName << " " << leaderSurname << "\"\n";
 		output << "    desc = \"POLITICS_" << upperFirstName << "_" << upperSurname << "_DESC\"\n";
-		output << "    picture = \"" << portrait << "\"\n";
+		output << "    picture = \"" << leaderPortrait << "\"\n";
 		output << "    expire = \"1965.1.1\"\n";
 		output << "    ideology = " << leaderIdeology << "\n";
 		output << "    traits = {\n";
 		output << "    }\n";
 		output << "}\n";
-	}
-	else
-	{
-		LOG(LogLevel::Warning) << "Could not set leader for " + tag + ", as there were no names.";
 	}
 }
 

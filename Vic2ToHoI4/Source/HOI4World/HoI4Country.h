@@ -75,7 +75,7 @@ class Country
 			std::string tag,
 			const Vic2::Country* srcCountry,
 			namesMapper& theNames,
-			const graphicsMapper& theGraphics,
+			graphicsMapper& theGraphics,
 			const CountryMapper& countryMap,
 			const mappers::FlagsToIdeasMapper& flagsToIdeasMapper
 		);
@@ -94,6 +94,7 @@ class Country
 		void setGovernmentToExistingIdeology(const std::set<std::string>& majorIdeologies,
 			 const Ideologies& ideologies,
 			 const governmentMapper& governmentMap);
+		void addLeader(HoI4::namesMapper& theNames, graphicsMapper& theGraphics);
 		void convertGovernment(const Vic2::World& sourceWorld, const governmentMapper& governmentMap);
 		void convertParties(const std::set<std::string>& majorIdeologies, const governmentMapper& governmentMap);
 		void convertIdeologySupport(const std::set<std::string>& majorIdeologies, const governmentMapper& governmentMap);
@@ -138,6 +139,12 @@ class Country
 		[[nodiscard]] const ConverterColor::Color& getColor() const { return color; }
 		[[nodiscard]] const std::string& getGraphicalCulture() const { return graphicalCulture; }
 		[[nodiscard]] const std::string& getGraphicalCulture2d() const { return graphicalCulture2d; }
+		[[nodiscard]] const auto& getCommunistAdvisorPortrait() const { return communistAdvisorPortrait; }
+		[[nodiscard]] const auto& getDemocraticAdvisorPortrait() const { return democraticAdvisorPortrait; }
+		[[nodiscard]] const auto& getNeutralityAdvisorPortrait() const { return neutralityAdvisorPortrait; }
+		[[nodiscard]] const auto& getAbsolutistAdvisorPortrait() const { return absolutistAdvisorPortrait; }
+		[[nodiscard]] const auto& getRadicalAdvisorPortrait() const { return radicalAdvisorPortrait; }
+		[[nodiscard]] const auto& getFascistAdvisorPortrait() const { return fascistAdvisorPortrait; }
 
 		[[nodiscard]] bool hasProvinces() const { return !provinces.empty(); }
 		[[nodiscard]] const std::set<int>& getProvinces() const { return provinces; }
@@ -156,6 +163,9 @@ class Country
 		[[nodiscard]] const std::string& getMobilizationLaw() const { return mobilizationLaw; }
 		[[nodiscard]] const std::string& getEconomicLaw() const { return economicLaw; }
 		[[nodiscard]] const std::string& getTradeLaw() const { return tradeLaw; }
+		[[nodiscard]] const auto& getLeaderPortrait() const { return leaderPortrait; }
+		[[nodiscard]] const auto& getLeaderName() const { return leaderName; }
+		[[nodiscard]] const auto& getLeaderSurname() const { return leaderSurname; }
 
 		[[nodiscard]] int getTechnologyCount() const
 		{
@@ -251,6 +261,12 @@ class Country
 		ConverterColor::Color color;
 		std::string graphicalCulture = "western_european_gfx";
 		std::string graphicalCulture2d = "western_european_2d";
+		std::string communistAdvisorPortrait;
+		std::string democraticAdvisorPortrait;
+		std::string neutralityAdvisorPortrait;
+		std::string absolutistAdvisorPortrait;
+		std::string radicalAdvisorPortrait;
+		std::string fascistAdvisorPortrait;
 
 		std::set<int> provinces;
 		std::set<int> states;
@@ -268,6 +284,10 @@ class Country
 		std::string mobilizationLaw = "volunteer_only";
 		std::string economicLaw = "civilian_economy";
 		std::string tradeLaw = "export_focus";
+
+		std::string leaderPortrait;
+		std::string leaderName;
+		std::string leaderSurname;
 
 		std::optional<technologies> theTechnologies;
 		std::set<std::string> ideas;

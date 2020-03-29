@@ -45,8 +45,6 @@ void outputGenericFocusTree(const std::set<std::string>& majorIdeologies, const 
 void outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const allMilitaryMappings& theMilitaryMappings,
-	 namesMapper& theNames,
-	 graphicsMapper& theGraphics,
 	 const std::string& outputName);
 void outputRelations(const std::string& outputName);
 void outputLeaderTraits(const std::map<std::string, std::vector<std::string>>& ideologicalLeaderTraits,
@@ -177,12 +175,7 @@ void HoI4::OutputWorld(World& world, const std::string& outputName, const bool d
 	outputSupplyZones(world.getSupplyZones(), outputName);
 	outputRelations(outputName);
 	outputGenericFocusTree(world.getMajorIdeologies(), outputName);
-	outputCountries(world.getActiveIdeologicalAdvisors(),
-		 world.getCountries(),
-		 world.getMilitaryMappings(),
-		 world.getNames(),
-		 world.getGraphics(),
-		 outputName);
+	outputCountries(world.getActiveIdeologicalAdvisors(), world.getCountries(), world.getMilitaryMappings(), outputName);
 	outputBuildings(world.getBuildings(), outputName);
 	outputDecisions(world.getDecisions(), world.getMajorIdeologies(), outputName);
 	outputEvents(world.getEvents(), outputName);
@@ -346,8 +339,6 @@ void HoI4::outputGenericFocusTree(const std::set<std::string>& majorIdeologies, 
 void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const allMilitaryMappings& theMilitaryMappings,
-	 namesMapper& theNames,
-	 graphicsMapper& theGraphics,
 	 const std::string& outputName)
 {
 	LOG(LogLevel::Debug) << "Writing countries";
@@ -375,8 +366,6 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 			const auto& specificMilitaryMappings = theMilitaryMappings.getMilitaryMappings(theConfiguration.getVic2Mods());
 			outputCountry(activeIdeologicalAdvisors,
 				 specificMilitaryMappings.getDivisionTemplates(),
-				 theNames,
-				 theGraphics,
 				 *country.second);
 		}
 	}
@@ -392,7 +381,7 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	{
 		if (country.second->getCapitalState())
 		{
-			outputIdeaGraphics(ideasFile, theGraphics, *country.second);
+			outputIdeaGraphics(ideasFile, *country.second);
 		}
 	}
 	ideasFile << "\n";

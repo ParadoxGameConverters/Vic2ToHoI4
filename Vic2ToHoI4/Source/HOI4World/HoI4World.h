@@ -126,6 +126,7 @@ class World: commonItems::parser
 	void convertParties();
 
 	void addNeutrality();
+	void addLeaders();
 	void convertIdeologySupport();
 
 	void convertIndustry();

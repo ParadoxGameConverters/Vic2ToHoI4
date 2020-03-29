@@ -25,7 +25,7 @@ HoI4::Country::Country(
 	std::string tag,
 	const Vic2::Country* srcCountry,
 	namesMapper& theNames,
-	const graphicsMapper& theGraphics,
+	graphicsMapper& theGraphics,
 	const CountryMapper& countryMap,
 	const mappers::FlagsToIdeasMapper& flagsToIdeasMapper
 ): tag(std::move(tag)), sourceCountry(*srcCountry)
@@ -36,16 +36,26 @@ HoI4::Country::Country(
 	color = sourceCountry.getColor();
 	civilized = sourceCountry.isCivilized();
 	threat = sourceCountry.getBadBoy() / 10.0;
-	auto possibleGraphicalCulture = theGraphics.getGraphicalCulture(sourceCountry.getPrimaryCultureGroup());
+
+	const auto primaryCultureGroup = sourceCountry.getPrimaryCultureGroup();
+	auto possibleGraphicalCulture = theGraphics.getGraphicalCulture(primaryCultureGroup);
 	if (possibleGraphicalCulture)
 	{
 		graphicalCulture = *possibleGraphicalCulture;
 	}
-	auto possibleGraphicalCulture2d = theGraphics.get2dGraphicalCulture(sourceCountry.getPrimaryCultureGroup());
+	auto possibleGraphicalCulture2d = theGraphics.get2dGraphicalCulture(primaryCultureGroup);
 	if (possibleGraphicalCulture2d)
 	{
 		graphicalCulture2d = *possibleGraphicalCulture2d;
 	}
+	communistAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "communism");
+	democraticAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "democratic");
+	neutralityAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "neutrality");
+	absolutistAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "absolutist");
+	radicalAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "radical");
+	fascistAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "fascism");
+
+	
 	lastElection = sourceCountry.getLastElection();
 	initIdeas(theNames);
 
@@ -559,6 +569,24 @@ void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>&
 		 rulingParty.getIdeology(),
 		 majorIdeologies,
 		 ideologies);
+}
+
+
+void HoI4::Country::addLeader(HoI4::namesMapper& theNames, graphicsMapper& theGraphics)
+{
+	const auto primaryCulture = sourceCountry.getPrimaryCulture();
+	const auto firstName = theNames.getMaleName(primaryCulture);
+	const auto surname = theNames.getSurname(primaryCulture);
+	if (firstName && surname)
+	{
+		leaderPortrait = theGraphics.getLeaderPortrait(sourceCountry.getPrimaryCultureGroup(), governmentIdeology);
+		leaderName = *firstName;
+		leaderSurname = *surname;
+	}
+	else
+	{
+		LOG(LogLevel::Warning) << "Could not set leader for " + tag + ", as there were no names.";
+	}
 }
 
 
