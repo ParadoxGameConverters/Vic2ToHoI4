@@ -8,21 +8,61 @@
 
 
 
-void processFlagsForCountry(const std::pair<std::string, std::shared_ptr<HoI4::Country>>& country,
+namespace HoI4
+{
+
+void processFlagsForCountry(const std::pair<std::string, std::shared_ptr<Country>>& country,
 	 const std::string& outputName,
 	 const std::vector<std::string>& vic2Mods,
 	 const std::string& vic2Path);
-void copyFlags(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+std::vector<std::string> getSourceFlagPaths(const std::string& Vic2Tag,
+	 const std::vector<std::string>& vic2Mods,
+	 const std::string& vic2Path);
+std::optional<tga_image*> readFlag(const std::string& path);
+tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsigned int sizeY);
+void createBigFlag(const tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
+void createMediumFlag(const tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
+void createSmallFlag(const tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
+std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag,
+	 const std::string& sourceSuffix,
+	 const std::vector<std::string>& vic2Mods,
+	 const std::string& vic2Path);
+bool isThisAConvertedTag(const std::string& Vic2Tag);
+std::optional<std::string> getConversionModFlag(const std::string& flagFilename,
+	 const std::vector<std::string>& vic2Mods,
+	 const std::string& vic2Path);
+std::optional<std::string> getAllowModFlags(const std::string& flagFilename,
+	 const std::vector<std::string>& vic2Mods,
+	 const std::string& vic2Path);
+
+} // namespace HoI4
+
+
+
+void HoI4::copyFlags(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName,
 	 const std::vector<std::string>& vic2Mods,
 	 const std::string& vic2Path)
 {
-	LOG(LogLevel::Info) << "Copying flags";
+	LOG(LogLevel::Info) << "Creating flags";
 
-	Utils::TryCreateFolder("output/" + outputName + "/gfx");
-	Utils::TryCreateFolder("output/" + outputName + "/gfx/flags");
-	Utils::TryCreateFolder("output/" + outputName + "/gfx/flags/medium");
-	Utils::TryCreateFolder("output/" + outputName + "/gfx/flags/small");
+	if (!Utils::TryCreateFolder("output/" + outputName + "/gfx"))
+	{
+		throw std::runtime_error("Could not create output/" + outputName + "/gfx");
+	}
+	if (!Utils::TryCreateFolder("output/" + outputName + "/gfx/flags"))
+	{
+		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags");
+	}
+	if (!Utils::TryCreateFolder("output/" + outputName + "/gfx/flags/medium"))
+	{
+		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/medium");
+	}
+	if (!Utils::TryCreateFolder("output/" + outputName + "/gfx/flags/small"))
+	{
+		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/small");
+	}
+
 	for (const auto& country: countries)
 	{
 		processFlagsForCountry(country, outputName, vic2Mods, vic2Path);
@@ -30,55 +70,38 @@ void copyFlags(const std::map<std::string, std::shared_ptr<HoI4::Country>>& coun
 }
 
 
-enum flagIdeologies
-{
-	BASE_FLAG = 0,
-	COMMUNISM_FLAG = 1,
-	DEMOCRATIC_FLAG = 2,
-	FASCISM_FLAG = 3,
-	ABSOLUTIST_FLAG = 4,
-	RADICAL_FLAG = 5,
-	FLAG_END = 6
+const std::vector<std::string> vic2Suffixes{
+	 ".tga",				 // base flag
+	 "_communist.tga", // communism flag
+	 ".tga",				 // democratic flag
+	 "_fascist.tga",	 // fascism flag
+	 "_monarchy.tga",	 // absolutist flag
+	 "_republic.tga",	 // radical flag
 };
 
-const char* vic2Suffixes[FLAG_END] = {
-	 ".tga",
-	 "_communist.tga",
-	 ".tga",
-	 "_fascist.tga",
-	 "_monarchy.tga",
-	 "_republic.tga",
+const std::vector<std::string> hoi4Suffixes{
+	 ".tga",				  // base flag
+	 "_communism.tga",  // communism flag
+	 "_democratic.tga", // democratic flag
+	 "_fascism.tga",	  // fascism flag
+	 "_absolutist.tga", // absolutist flag
+	 "_radical.tga",	  // radical flag
 };
 
-const char* hoi4Suffixes[FLAG_END] = {
-	 ".tga",
-	 "_communism.tga",
-	 "_democratic.tga",
-	 "_fascism.tga",
-	 "_absolutist.tga",
-	 "_radical.tga",
-};
+static std::set<std::string> allowedMods = {"PDM", "NNM", "Divergences of Darkness"};
 
 
-std::vector<std::string> getSourceFlagPaths(const std::string& Vic2Tag,
-	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path);
-std::optional<tga_image*> readFlag(const std::string& path);
-tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsigned int sizeY);
-void createBigFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
-void createMediumFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
-void createSmallFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
-void processFlagsForCountry(const std::pair<std::string, std::shared_ptr<HoI4::Country>>& country,
+void HoI4::processFlagsForCountry(const std::pair<std::string, std::shared_ptr<Country>>& country,
 	 const std::string& outputName,
 	 const std::vector<std::string>& vic2Mods,
 	 const std::string& vic2Path)
 {
-	auto sourcePath = getSourceFlagPaths(country.second->getSourceCountry().getTag(), vic2Mods, vic2Path);
-	for (unsigned int i = BASE_FLAG; i < FLAG_END; i++)
+	const auto sourcePaths = getSourceFlagPaths(country.second->getSourceCountry().getTag(), vic2Mods, vic2Path);
+	for (size_t i = 0; i < sourcePaths.size(); i++)
 	{
-		if (!sourcePath[i].empty())
+		if (!sourcePaths[i].empty())
 		{
-			auto sourceFlag = readFlag(sourcePath[i]);
+			auto sourceFlag = readFlag(sourcePaths[i]);
 			if (!sourceFlag)
 			{
 				return;
@@ -95,29 +118,30 @@ void processFlagsForCountry(const std::pair<std::string, std::shared_ptr<HoI4::C
 }
 
 
-std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag,
-	 const std::string& sourceSuffix,
-	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path);
-std::vector<std::string> getSourceFlagPaths(const std::string& Vic2Tag,
+std::vector<std::string> HoI4::getSourceFlagPaths(const std::string& Vic2Tag,
 	 const std::vector<std::string>& vic2Mods,
 	 const std::string& vic2Path)
 {
 	std::vector<std::string> paths;
-	paths.resize(FLAG_END);
-	paths[BASE_FLAG].clear();
 
-	for (unsigned int i = BASE_FLAG; i < FLAG_END; i++)
+	for (const auto& vic2Suffix: vic2Suffixes)
 	{
-		auto path = getSourceFlagPath(Vic2Tag, vic2Suffixes[i], vic2Mods, vic2Path);
+		auto path = getSourceFlagPath(Vic2Tag, vic2Suffix, vic2Mods, vic2Path);
 		if (path)
 		{
-			paths[i] = *path;
+			paths.push_back(*path);
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not find source flag: " << Vic2Tag << vic2Suffixes[i];
-			paths[i] = paths[BASE_FLAG];
+			LOG(LogLevel::Warning) << "Could not find source flag: " << Vic2Tag << vic2Suffix;
+			if (paths.size() > 0)
+			{
+				paths.push_back(*paths.begin());
+			}
+			else
+			{
+				paths.push_back("");
+			}
 		}
 	}
 
@@ -125,73 +149,58 @@ std::vector<std::string> getSourceFlagPaths(const std::string& Vic2Tag,
 }
 
 
-bool isThisAConvertedTag(const std::string& Vic2Tag);
-std::optional<std::string> getConversionModFlag(const std::string& flagFilename,
-	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path);
-std::optional<std::string> getAllowModFlags(const std::string& flagFilename,
-	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path);
-std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag,
+std::optional<std::string> HoI4::getSourceFlagPath(const std::string& Vic2Tag,
 	 const std::string& sourceSuffix,
 	 const std::vector<std::string>& vic2Mods,
 	 const std::string& vic2Path)
 {
 	auto path = "flags/" + Vic2Tag + sourceSuffix;
-
-	if (!Utils::DoesFileExist(path))
-	{
-		if (isThisAConvertedTag(Vic2Tag))
-		{
-			auto possiblePath = getConversionModFlag(Vic2Tag + sourceSuffix, vic2Mods, vic2Path);
-			if (possiblePath)
-			{
-				path = *possiblePath;
-			}
-		}
-	}
-
-	if (!Utils::DoesFileExist(path))
-	{
-		auto possiblePath = getAllowModFlags(Vic2Tag + sourceSuffix, vic2Mods, vic2Path);
-		if (possiblePath)
-		{
-			path = *possiblePath;
-		}
-	}
-
-	if (isThisAConvertedTag(Vic2Tag))
-	{
-		auto possiblePath = getConversionModFlag(Vic2Tag + ".tga", vic2Mods, vic2Path);
-		if (possiblePath)
-		{
-			path = *possiblePath;
-		}
-	}
-
-	if (!Utils::DoesFileExist(path))
-	{
-		path = "flags/" + Vic2Tag + ".tga";
-	}
-
 	if (Utils::DoesFileExist(path))
 	{
 		return path;
 	}
-	else
+
+	if (isThisAConvertedTag(Vic2Tag))
 	{
-		return {};
+		if (auto possiblePath = getConversionModFlag(Vic2Tag + sourceSuffix, vic2Mods, vic2Path);
+			 Utils::DoesFileExist(*possiblePath))
+		{
+			return *possiblePath;
+		}
 	}
+
+	if (auto possiblePath = getAllowModFlags(Vic2Tag + sourceSuffix, vic2Mods, vic2Path);
+		 Utils::DoesFileExist(*possiblePath))
+	{
+		return *possiblePath;
+	}
+
+	if (isThisAConvertedTag(Vic2Tag))
+	{
+		if (auto possiblePath = getConversionModFlag(Vic2Tag + ".tga", vic2Mods, vic2Path);
+			 Utils::DoesFileExist(*possiblePath))
+		{
+			return *possiblePath;
+		}
+	}
+
+	path = "flags/" + Vic2Tag + ".tga";
+	if (Utils::DoesFileExist(path))
+	{
+		return path;
+	}
+
+	return {};
 }
 
 
-bool isThisAConvertedTag(const std::string& Vic2Tag)
+bool HoI4::isThisAConvertedTag(const std::string& Vic2Tag)
 {
-	return std::isdigit(Vic2Tag[2]);
+	return (Vic2Tag.size() == 3) && std::isdigit(Vic2Tag[2]);
 }
 
 
-std::optional<std::string> getConversionModFlag(const std::string& flagFilename,
+std::optional<std::string> HoI4::getConversionModFlag(const std::string& flagFilename,
 	 const std::vector<std::string>& vic2Mods,
 	 const std::string& vic2Path)
 {
@@ -208,8 +217,7 @@ std::optional<std::string> getConversionModFlag(const std::string& flagFilename,
 }
 
 
-static std::set<std::string> allowedMods = {"PDM", "NNM", "Divergences of Darkness"};
-std::optional<std::string> getAllowModFlags(const std::string& flagFilename,
+std::optional<std::string> HoI4::getAllowModFlags(const std::string& flagFilename,
 	 const std::vector<std::string>& vic2Mods,
 	 const std::string& vic2Path)
 {
@@ -230,7 +238,7 @@ std::optional<std::string> getAllowModFlags(const std::string& flagFilename,
 }
 
 
-std::optional<tga_image*> readFlag(const std::string& path)
+std::optional<tga_image*> HoI4::readFlag(const std::string& path)
 {
 	FILE* flagFile;
 	if (fopen_s(&flagFile, path.c_str(), "r+b") != 0)
@@ -254,7 +262,7 @@ std::optional<tga_image*> readFlag(const std::string& path)
 }
 
 
-tga_image* createNewFlag(const tga_image* sourceFlag, const unsigned int sizeX, const unsigned int sizeY)
+tga_image* HoI4::createNewFlag(const tga_image* const sourceFlag, const unsigned int sizeX, const unsigned int sizeY)
 {
 	const auto destFlag = new tga_image;
 	destFlag->image_id_length = 0;
@@ -299,9 +307,10 @@ tga_image* createNewFlag(const tga_image* sourceFlag, const unsigned int sizeX, 
 }
 
 
-void createBigFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName)
+void HoI4::createBigFlag(const tga_image* const sourceFlag, const std::string& filename, const std::string& outputName)
 {
 	const auto destFlag = createNewFlag(sourceFlag, 82, 52);
+
 	FILE* outputFile;
 	if (fopen_s(&outputFile, ("output/" + outputName + "/gfx/flags/" + filename).c_str(), "w+b") != 0)
 	{
@@ -309,16 +318,21 @@ void createBigFlag(tga_image* sourceFlag, const std::string& filename, const std
 		delete destFlag;
 		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/" + filename);
 	}
+
 	tga_write_to_FILE(outputFile, destFlag);
+
 	fclose(outputFile);
 	tga_free_buffers(destFlag);
 	delete destFlag;
 }
 
 
-void createMediumFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName)
+void HoI4::createMediumFlag(const tga_image* const sourceFlag,
+	 const std::string& filename,
+	 const std::string& outputName)
 {
 	const auto destFlag = createNewFlag(sourceFlag, 41, 26);
+
 	FILE* outputFile;
 	if (fopen_s(&outputFile, ("output/" + outputName + "/gfx/flags/medium/" + filename).c_str(), "w+b") != 0)
 	{
@@ -326,16 +340,21 @@ void createMediumFlag(tga_image* sourceFlag, const std::string& filename, const 
 		delete destFlag;
 		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/medium/" + filename);
 	}
+
 	tga_write_to_FILE(outputFile, destFlag);
+
 	fclose(outputFile);
 	tga_free_buffers(destFlag);
 	delete destFlag;
 }
 
 
-void createSmallFlag(tga_image* sourceFlag, const std::string& filename, const std::string& outputName)
+void HoI4::createSmallFlag(const tga_image* const sourceFlag,
+	 const std::string& filename,
+	 const std::string& outputName)
 {
 	const auto destFlag = createNewFlag(sourceFlag, 10, 7);
+
 	FILE* outputFile;
 	if (fopen_s(&outputFile, ("output/" + outputName + "/gfx/flags/small/" + filename).c_str(), "w+b") != 0)
 	{
@@ -343,7 +362,9 @@ void createSmallFlag(tga_image* sourceFlag, const std::string& filename, const s
 		delete destFlag;
 		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/small/" + filename);
 	}
+
 	tga_write_to_FILE(outputFile, destFlag);
+
 	fclose(outputFile);
 	tga_free_buffers(destFlag);
 	delete destFlag;
