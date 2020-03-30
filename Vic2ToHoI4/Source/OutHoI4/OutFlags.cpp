@@ -44,7 +44,7 @@ void HoI4::copyFlags(const std::map<std::string, std::shared_ptr<Country>>& coun
 	 const std::vector<std::string>& vic2Mods,
 	 const std::string& vic2Path)
 {
-	LOG(LogLevel::Info) << "Creating flags";
+	LOG(LogLevel::Info) << "\tCreating flags";
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/gfx"))
 	{
