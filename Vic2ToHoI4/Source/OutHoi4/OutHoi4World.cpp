@@ -132,7 +132,7 @@ void HoI4::reportDefaultIndustry(const std::map<std::string, std::array<int, 3>>
 	report << "tag,military factories,civilian factories,dockyards,total factories\n";
 	if (report.is_open())
 	{
-		for (auto country: countryIndustry)
+		for (const auto& country: countryIndustry)
 		{
 			report << country.first << ',';
 			report << country.second[0] << ',';
@@ -318,8 +318,10 @@ void HoI4::outputMap(const States& states,
 	}
 	for (const auto& state: states.getStates())
 	{
-		auto provinces = state.second.getProvinces();
-		rocketSitesFile << state.second.getID() << "={" << *provinces.begin() << " }\n";
+		if (auto provinces = state.second.getProvinces(); !provinces.empty())
+		{
+			rocketSitesFile << state.second.getID() << "={" << *provinces.cbegin() << " }\n";
+		}
 	}
 	rocketSitesFile.close();
 
@@ -496,16 +498,10 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 
 	bookmarkFile << "bookmarks = {\n";
 	bookmarkFile << "\tbookmark = {\n";
-	bookmarkFile << "\t\tname = "
-						 "GATHERING_STORM_NAME"
-						 "\n";
-	bookmarkFile << "\t\tdesc = "
-						 "GATHERING_STORM_DESC"
-						 "\n";
+	bookmarkFile << "\t\tname = GATHERING_STORM_NAME\n";
+	bookmarkFile << "\t\tdesc = GATHERING_STORM_DESC\n";
 	bookmarkFile << "\t\tdate = 1936.1.1.12\n";
-	bookmarkFile << "\t\tpicture = "
-						 "GFX_select_date_1936"
-						 "\n";
+	bookmarkFile << "\t\tpicture = GFX_select_date_1936\n";
 	bookmarkFile << "\t\tdefault_country = \"---\"\n";
 	bookmarkFile << "\t\tdefault = yes\n";
 

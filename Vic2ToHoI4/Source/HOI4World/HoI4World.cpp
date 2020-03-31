@@ -232,7 +232,7 @@ void HoI4::World::addNeutrality()
 
 void HoI4::World::addLeaders()
 {
-	for (auto country: countries)
+	for (auto& country: countries)
 	{
 		country.second->addLeader(theNames, theGraphics);
 	}
