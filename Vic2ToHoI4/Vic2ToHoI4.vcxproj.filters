@@ -752,6 +752,9 @@
     <ClCompile Include="Source\OutHoi4\OutColor.cpp">
       <Filter>OutHoi4</Filter>
     </ClCompile>
+    <ClCompile Include="Source\OutHoI4\OutSharedFocus.cpp">
+      <Filter>OutHoi4</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1420,6 +1423,12 @@
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\Leaders\OutGeneral.h">
       <Filter>OutHoi4\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\SharedFocus.h">
+      <Filter>HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoI4\OutSharedFocus.h">
+      <Filter>OutHoi4</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

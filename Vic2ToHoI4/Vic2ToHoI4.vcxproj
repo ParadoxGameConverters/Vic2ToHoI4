@@ -240,6 +240,7 @@
     <ClCompile Include="Source\OutHoi4\OutLocalisation.cpp" />
     <ClCompile Include="Source\OutHoi4\OutMod.cpp" />
     <ClCompile Include="Source\OutHoi4\OutOnActions.cpp" />
+    <ClCompile Include="Source\OutHoI4\OutSharedFocus.cpp" />
     <ClCompile Include="Source\OutHoi4\OutTechnologies.cpp" />
     <ClCompile Include="Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.cpp" />
     <ClCompile Include="Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisations.cpp" />
@@ -400,6 +401,7 @@
     <ClInclude Include="..\common_items\StringUtils.h" />
     <ClInclude Include="Source\Color.h" />
     <ClInclude Include="Source\Configuration.h" />
+    <ClInclude Include="Source\HOI4World\SharedFocus.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategories.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategory.h" />
@@ -451,6 +453,7 @@
     <ClInclude Include="Source\OutHoi4\OutLocalisation.h" />
     <ClInclude Include="Source\OutHoi4\OutMod.h" />
     <ClInclude Include="Source\OutHoi4\OutOnActions.h" />
+    <ClInclude Include="Source\OutHoI4\OutSharedFocus.h" />
     <ClInclude Include="Source\OutHoi4\OutTechnologies.h" />
     <ClInclude Include="Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.h" />
     <ClInclude Include="Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisations.h" />

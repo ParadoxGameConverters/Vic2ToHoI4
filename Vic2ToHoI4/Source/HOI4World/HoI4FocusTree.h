@@ -43,6 +43,7 @@ namespace HoI4
 {
 class Country;
 class Events;
+class SharedFocus;
 class World;
 }
 
@@ -101,7 +102,7 @@ class HoI4FocusTree: commonItems::parser
 		std::string srcCountryTag = "";
 		std::string dstCountryTag = "";
 		std::vector<std::shared_ptr<HoI4Focus>> focuses;
-		std::vector<std::shared_ptr<HoI4Focus>> sharedFocuses;
+		std::vector<std::shared_ptr<HoI4::SharedFocus>> sharedFocuses;
 		int nextFreeColumn = 0;
 
 		std::string fascistMutualExlusions = "";

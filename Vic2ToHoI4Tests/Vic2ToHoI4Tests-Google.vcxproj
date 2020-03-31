@@ -105,6 +105,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutLocalisation.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutMod.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutOnActions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoI4\OutSharedFocus.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutTechnologies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisations.cpp" />
