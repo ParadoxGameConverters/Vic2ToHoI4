@@ -26,10 +26,10 @@ namespace HoI4
 {
 
 void reportIndustryLevels(const World& world);
-void reportCountryIndustry(const World& world);
+void reportcountriesIndustry(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
 void reportDefaultIndustry(const World& world);
 std::pair<std::string, std::array<int, 3>> getDefaultStateIndustry(const DefaultState& state);
-void reportDefaultIndustry(const std::map<std::string, std::array<int, 3>>& countryIndustry);
+void reportDefaultIndustry(const std::map<std::string, std::array<int, 3>>& countriesIndustry);
 
 void outputCommonCountries(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName);
@@ -59,36 +59,21 @@ void outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 
 void HoI4::reportIndustryLevels(const World& world)
 {
-	auto militaryFactories = 0;
-	auto civilianFactories = 0;
-	auto dockyards = 0;
-	for (const auto& state: world.getStates())
-	{
-		militaryFactories += state.second.getMilFactories();
-		civilianFactories += state.second.getCivFactories();
-		dockyards += state.second.getDockyards();
-	}
-
-	LOG(LogLevel::Debug) << "Total factories: " << militaryFactories + civilianFactories + dockyards;
-	LOG(LogLevel::Debug) << "\t" << militaryFactories << " military factories";
-	LOG(LogLevel::Debug) << "\t" << civilianFactories << " civilian factories";
-	LOG(LogLevel::Debug) << "\t" << dockyards << " dockyards";
-
 	if (theConfiguration.getDebug())
 	{
-		reportCountryIndustry(world);
+		reportcountriesIndustry(world.getCountries());
 		reportDefaultIndustry(world);
 	}
 }
 
 
-void HoI4::reportCountryIndustry(const World& world)
+void HoI4::reportcountriesIndustry(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
 {
 	std::ofstream report("convertedIndustry.csv");
-	report << "tag,military factories,civilian factories,dockyards,total factories\n";
 	if (report.is_open())
 	{
-		for (const auto& country: world.getCountries())
+		report << "tag,military factories,civilian factories,dockyards,total factories\n";
+		for (const auto& country: countries)
 		{
 			reportIndustry(report, *country.second);
 		}
@@ -98,30 +83,28 @@ void HoI4::reportCountryIndustry(const World& world)
 
 void HoI4::reportDefaultIndustry(const World& world)
 {
-	std::map<std::string, std::array<int, 3>> countryIndustry;
+	std::map<std::string, std::array<int, 3>> countriesIndustry;
 
 	for (const auto& state: world.getTheStates().getDefaultStates())
 	{
 		auto stateData = getDefaultStateIndustry(state.second);
-
-		auto country = countryIndustry.find(stateData.first);
-		if (country == countryIndustry.end())
+		if (auto countryIndustry = countriesIndustry.find(stateData.first); countryIndustry == countriesIndustry.end())
 		{
-			countryIndustry.insert(make_pair(stateData.first, stateData.second));
+			countriesIndustry.insert(make_pair(stateData.first, stateData.second));
 		}
 		else
 		{
-			country->second[0] += stateData.second[0];
-			country->second[1] += stateData.second[1];
-			country->second[2] += stateData.second[2];
+			countryIndustry->second[0] += stateData.second[0];
+			countryIndustry->second[1] += stateData.second[1];
+			countryIndustry->second[2] += stateData.second[2];
 		}
 	}
 
-	reportDefaultIndustry(countryIndustry);
+	reportDefaultIndustry(countriesIndustry);
 }
 
 
-void HoI4::reportDefaultIndustry(const std::map<std::string, std::array<int, 3>>& countryIndustry)
+void HoI4::reportDefaultIndustry(const std::map<std::string, std::array<int, 3>>& countriesIndustry)
 {
 	std::ofstream report("defaultIndustry.csv");
 	if (!report.is_open())
@@ -129,10 +112,10 @@ void HoI4::reportDefaultIndustry(const std::map<std::string, std::array<int, 3>>
 		throw std::runtime_error("Could not open defaultIndustry.csv");
 	}
 
-	report << "tag,military factories,civilian factories,dockyards,total factories\n";
 	if (report.is_open())
 	{
-		for (const auto& country: countryIndustry)
+		report << "tag,military factories,civilian factories,dockyards,total factories\n";
+		for (const auto& country: countriesIndustry)
 		{
 			report << country.first << ',';
 			report << country.second[0] << ',';

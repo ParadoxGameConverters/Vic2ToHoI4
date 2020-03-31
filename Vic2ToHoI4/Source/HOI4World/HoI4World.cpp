@@ -256,6 +256,7 @@ void HoI4::World::convertIndustry()
 	states->putIndustryInStates(factoryWorkerRatios, theCoastalProvinces);
 
 	calculateIndustryInCountries();
+	reportIndustryLevels();
 }
 
 
@@ -392,6 +393,25 @@ void HoI4::World::calculateIndustryInCountries()
 	{
 		country.second->calculateIndustry(states->getStates());
 	}
+}
+
+
+void HoI4::World::reportIndustryLevels() const
+{
+	auto militaryFactories = 0;
+	auto civilianFactories = 0;
+	auto dockyards = 0;
+	for (const auto& state: states->getStates())
+	{
+		militaryFactories += state.second.getMilFactories();
+		civilianFactories += state.second.getCivFactories();
+		dockyards += state.second.getDockyards();
+	}
+
+	LOG(LogLevel::Debug) << "Total factories: " << militaryFactories + civilianFactories + dockyards;
+	LOG(LogLevel::Debug) << "\t" << militaryFactories << " military factories";
+	LOG(LogLevel::Debug) << "\t" << civilianFactories << " civilian factories";
+	LOG(LogLevel::Debug) << "\t" << dockyards << " dockyards";
 }
 
 

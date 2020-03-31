@@ -142,6 +142,7 @@ class World: commonItems::parser
 	double getWorldwideWorkerFactoryRatio(const std::map<std::string, double>& workersInCountries,
 		 double totalWorldWorkers);
 	void calculateIndustryInCountries();
+	void reportIndustryLevels() const;
 
 	void convertStrategicRegions();
 	std::map<int, int> importStrategicRegions();
