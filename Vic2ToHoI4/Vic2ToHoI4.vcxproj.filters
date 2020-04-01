@@ -755,6 +755,9 @@
     <ClCompile Include="Source\OutHoI4\OutSharedFocus.cpp">
       <Filter>OutHoi4</Filter>
     </ClCompile>
+    <ClCompile Include="..\common_items\iconvlite.cpp">
+      <Filter>CommonItems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1429,6 +1432,9 @@
     </ClInclude>
     <ClInclude Include="Source\OutHoI4\OutSharedFocus.h">
       <Filter>OutHoi4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common_items\iconvlite.h">
+      <Filter>CommonItems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
