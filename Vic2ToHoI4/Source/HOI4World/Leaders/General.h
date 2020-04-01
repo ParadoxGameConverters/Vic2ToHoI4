@@ -15,7 +15,7 @@ class General: Commander
 	public:
 		General(const Vic2::Leader& srcLeader, const std::string& portrait);
 
-		friend std::ostream& operator<<(std::ostream& output, const General& instance);
+		friend std::ostream& operator<<(std::ostream& output, const General& general);
 
 	private:
 		int planningSkill = 1;

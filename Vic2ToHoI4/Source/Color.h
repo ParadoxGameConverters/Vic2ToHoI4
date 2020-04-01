@@ -88,8 +88,6 @@ class Color: commonItems::parser
 		std::array<int, 3> c = {0,0,0};
 };
 
-std::ostream& operator<<(std::ostream& out, const Color& color);
-
 }
 
 

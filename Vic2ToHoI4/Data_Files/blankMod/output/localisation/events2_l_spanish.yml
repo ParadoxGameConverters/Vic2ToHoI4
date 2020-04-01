@@ -1,4 +1,4 @@
-l_spanish:
+﻿l_spanish:
  communism_on_the_rise.t:0 "Comunismo en aumento"
  communism_on_the_rise.d:0 "\\'¡Mientras que los trabajadores se levantan contra sus opresores por todo el mundo, los que dicen que han alcanzado conciencia de clase en [Root.GetName] cruzan de brazos y esperan que el cambio venga desde dentro de un sistema político totalmente corrupto que solo la revolución podría salvarnos de él!\\'\n\nAsí hablan nuevas voces del movimiento comunista [Root.GetAdjective]. Refiriéndose al gobierno del [Root.GetRulingParty] como una dictadura de la burguesía, han comenzado a llamar a su expulsión del poder por cualquier medio necesario. Si esos medios vendrán de dentro o fuera, aún está por ver."
  communism_on_the_rise.a:0 "Pueden haber quienes en el propio gobierno apoyen tales ideas."

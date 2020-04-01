@@ -1,4 +1,4 @@
-l_german:
+﻿l_german:
  communism_on_the_rise.t:0 "Kommunismus auf dem Vormarsch"
  communism_on_the_rise.d:0 "'Während sich Arbeiter auf der ganzen Welt gegen ihre Unterdrücker erheben, sitzen jene, die behaupten, Klassenbewusstsein in [Root.GetName] erreicht zu haben, einfach nur untätig da und warten darauf, dass sich ein politisches System, das durch und durch so korrupt ist, dass uns nur eine Revolution von ihm erlösen kann, von innen heraus selbst ändert!'\n\nSolche Aussagen kommen von Mitgliedern der neuen [Root.GetAdjective]en Kommunistenbewegung. Sie bezeichnen die Herrschaft der [Root.GetRulingParty] als Diktatur des Spießbürgertums und haben zu fordern begonnen, dass sie mit allen notwendigen Mitteln gestürzt werden müsse. Ob es sich bei diesen Mitteln um in- oder ausländische Mittel handelt, wird man sehen."
  communism_on_the_rise.a:0 "Möglicherweise gibt es sogar in der Regierung selbst einige, die solche Ideen unterstützen."

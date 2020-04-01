@@ -64,11 +64,3 @@ bool HoI4::Version::operator >= (const HoI4::Version& rhs) const
 		return false;
 	}
 }
-
-
-std::ostream& HoI4::operator << (std::ostream& out, const HoI4::Version& version)
-{
-	out << version.first << '.' << version.second << '.' << version.third;
-
-	return out;
-}

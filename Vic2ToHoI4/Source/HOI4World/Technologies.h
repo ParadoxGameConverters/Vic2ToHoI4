@@ -55,8 +55,11 @@ class technologies
 
 		virtual bool hasTechnology(const std::string& technology) const;
 
-		void outputTechnology(std::ostream& output) const;
-		void outputResearchBonuses(std::ostream& output) const;
+
+		[[nodiscard]] const auto& getMainTechnologies() const { return mainTechnologies; }
+		[[nodiscard]] const auto& getNonMtgNavalTechnologies() const { return nonMtgNavalTechnologies; }
+		[[nodiscard]] const auto& getMtgNavalTechnologies() const { return mtgNavalTechnologies; }
+		[[nodiscard]] const auto& getResearchBonuses() const { return researchBonuses; }
 
 	private:
 		std::set<std::string> mainTechnologies;

@@ -23,6 +23,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #include "HoI4Focus.h"
 #include "HoI4Localisation.h"
 #include "HoI4World.h"
+#include "SharedFocus.h"
 #include "../Configuration.h"
 #include "../V2World/Party.h"
 #include "../V2World/Country.h"
@@ -54,7 +55,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 
 	if (const auto& originalFocus = loadedFocuses.find("political_effort"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		newFocus->xPos = static_cast<int>((numCollectovistIdeologies * 1.5) + 16);
 		sharedFocuses.push_back(newFocus);
 	}
@@ -67,7 +68,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 	{
 		if (const auto& originalFocus = loadedFocuses.find("collectivist_ethos"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+			auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 			newFocus->available = "= {\n";
 			newFocus->available += "			OR = {\n";
 			for (auto majorIdeology : majorIdeologies)
@@ -141,7 +142,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 
 		if (const auto& originalFocus = loadedFocuses.find("ideological_fanaticism"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+			auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 			newFocus->prerequisites.clear();
 			newFocus->prerequisites.push_back("= { " + ideolgicalFanaticsmPrereqs + " }");
 			newFocus->xPos = 0;
@@ -157,7 +158,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 
 	if (const auto& originalFocus = loadedFocuses.find("liberty_ethos"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		if (numCollectovistIdeologies == 0)
 		{
 			newFocus->mutuallyExclusive.clear();
@@ -206,7 +207,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 
 	if (const auto& originalFocus = loadedFocuses.find("neutrality_focus"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		if (majorIdeologies.count("democratic") == 0)
 		{
 			newFocus->mutuallyExclusive.clear();
@@ -223,7 +224,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 
 	if (const auto& originalFocus = loadedFocuses.find("deterrence"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		sharedFocuses.push_back(newFocus);
 	}
 	else
@@ -235,7 +236,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 	{
 		if (const auto& originalFocus = loadedFocuses.find("interventionism_focus"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+			auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 			sharedFocuses.push_back(newFocus);
 		}
 		else
@@ -245,7 +246,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 
 		if (const auto& originalFocus = loadedFocuses.find("volunteer_corps"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+			auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 			sharedFocuses.push_back(newFocus);
 		}
 		else
@@ -255,7 +256,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 
 		if (const auto& originalFocus = loadedFocuses.find("foreign_expeditions"); originalFocus != loadedFocuses.end())
 		{
-			auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+			auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 			sharedFocuses.push_back(newFocus);
 		}
 		else
@@ -266,7 +267,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 
 	if (const auto& originalFocus = loadedFocuses.find("why_we_fight"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		if (majorIdeologies.count("democratic") == 0)
 		{
 			newFocus->prerequisites.clear();
@@ -281,7 +282,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 
 	if (const auto& originalFocus = loadedFocuses.find("technology_sharing"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		if (numCollectovistIdeologies == 0)
 		{
 			newFocus->prerequisites.clear();
@@ -406,7 +407,7 @@ void HoI4FocusTree::addFascistGenericFocuses(int relativePosition, const std::se
 {
 	if (const auto& originalFocus = loadedFocuses.find("nationalism_focus"); originalFocus != loadedFocuses.end())
 	{
-		shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		const auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		newFocus->mutuallyExclusive = "= { " + fascistMutualExlusions + " }";
 		newFocus->xPos = relativePosition;
 		sharedFocuses.push_back(newFocus);
@@ -418,7 +419,7 @@ void HoI4FocusTree::addFascistGenericFocuses(int relativePosition, const std::se
 
 	if (const auto& originalFocus = loadedFocuses.find("militarism"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		sharedFocuses.push_back(newFocus);
 	}
 	else
@@ -428,7 +429,7 @@ void HoI4FocusTree::addFascistGenericFocuses(int relativePosition, const std::se
 
 	if (const auto& originalFocus = loadedFocuses.find("military_youth"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		newFocus->completionReward = "= {\n";
 		newFocus->completionReward += "			add_ideas = military_youth_focus\n";
 		for (auto ideology : majorIdeologies)
@@ -451,7 +452,7 @@ void HoI4FocusTree::addFascistGenericFocuses(int relativePosition, const std::se
 
 	if (const auto& originalFocus = loadedFocuses.find("paramilitarism"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		sharedFocuses.push_back(newFocus);
 	}
 	else
@@ -465,7 +466,7 @@ void HoI4FocusTree::addCommunistGenericFocuses(int relativePosition)
 {
 	if (const auto& originalFocus = loadedFocuses.find("internationalism_focus"); originalFocus != loadedFocuses.end())
 	{
-		shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		const auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		newFocus->mutuallyExclusive = "= { " + communistMutualExclusions + " }";
 		newFocus->available = "= {\n";
 		newFocus->available += "			OR = {\n";
@@ -483,7 +484,7 @@ void HoI4FocusTree::addCommunistGenericFocuses(int relativePosition)
 
 	if (const auto& originalFocus = loadedFocuses.find("political_correctness"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		sharedFocuses.push_back(newFocus);
 	}
 	else
@@ -493,7 +494,7 @@ void HoI4FocusTree::addCommunistGenericFocuses(int relativePosition)
 
 	if (const auto& originalFocus = loadedFocuses.find("indoctrination_focus"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		sharedFocuses.push_back(newFocus);
 	}
 	else
@@ -503,7 +504,7 @@ void HoI4FocusTree::addCommunistGenericFocuses(int relativePosition)
 
 	if (const auto& originalFocus = loadedFocuses.find("political_commissars"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		newFocus->completionReward = "= {\n";
 		newFocus->completionReward += "			add_ideas = political_commissars_focus\n";
 		newFocus->completionReward += "			if = {\n";
@@ -528,7 +529,7 @@ void HoI4FocusTree::addAbsolutistGenericFocuses(int relativePosition)
 {
 	if (const auto& originalFocus = loadedFocuses.find("absolutism_focus"); originalFocus != loadedFocuses.end())
 	{
-		shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		const auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		newFocus->mutuallyExclusive = "= { " + absolutistMutualExlusions + " }";
 		newFocus->xPos = relativePosition;
 		sharedFocuses.push_back(newFocus);
@@ -540,7 +541,7 @@ void HoI4FocusTree::addAbsolutistGenericFocuses(int relativePosition)
 
 	if (const auto& originalFocus = loadedFocuses.find("royal_dictatorship_focus"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		sharedFocuses.push_back(newFocus);
 	}
 	else
@@ -550,7 +551,7 @@ void HoI4FocusTree::addAbsolutistGenericFocuses(int relativePosition)
 
 	if (const auto& originalFocus = loadedFocuses.find("royal_army_tradition_focus"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		sharedFocuses.push_back(newFocus);
 	}
 	else
@@ -560,7 +561,7 @@ void HoI4FocusTree::addAbsolutistGenericFocuses(int relativePosition)
 
 	if (const auto& originalFocus = loadedFocuses.find("historical_claims_focus"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		sharedFocuses.push_back(newFocus);
 	}
 	else
@@ -574,7 +575,7 @@ void HoI4FocusTree::addRadicalGenericFocuses(int relativePosition)
 {
 	if (const auto& originalFocus = loadedFocuses.find("radical_focus"); originalFocus != loadedFocuses.end())
 	{
-		shared_ptr<HoI4Focus> newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		const auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		newFocus->mutuallyExclusive = "= { " + radicalMutualExclusions + " }";
 		newFocus->xPos = relativePosition;
 		sharedFocuses.push_back(newFocus);
@@ -586,7 +587,7 @@ void HoI4FocusTree::addRadicalGenericFocuses(int relativePosition)
 
 	if (const auto& originalFocus = loadedFocuses.find("private_channels_focus"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		sharedFocuses.push_back(newFocus);
 	}
 	else
@@ -596,7 +597,7 @@ void HoI4FocusTree::addRadicalGenericFocuses(int relativePosition)
 
 	if (const auto& originalFocus = loadedFocuses.find("hardfought_market_focus"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		sharedFocuses.push_back(newFocus);
 	}
 	else
@@ -606,7 +607,7 @@ void HoI4FocusTree::addRadicalGenericFocuses(int relativePosition)
 
 	if (const auto& originalFocus = loadedFocuses.find("army_provides_focus"); originalFocus != loadedFocuses.end())
 	{
-		auto newFocus = make_shared<HoI4Focus>(originalFocus->second);
+		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
 		sharedFocuses.push_back(newFocus);
 	}
 	else
@@ -1378,7 +1379,7 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home, const
 	return;
 }
 
-void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& warTargets, HoI4::Events* events)
+void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& warTargets, HoI4::Events& events)
 {
 	if (warTargets.size() > 0)
 	{
@@ -1486,7 +1487,7 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home, const 
 	}
 }
 
-void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& annexationTargets, HoI4::Events* events)
+void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& annexationTargets, HoI4::Events& events)
 {
 	//The Following 'if' statement prevents converter from generating focuses if annexationTargets.size > 1
 	//Keep this 'if' statement off until we figure out how to handle Fascist NF's
@@ -1574,13 +1575,13 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home, c
 			newFocus->completionReward += "					country_exists = " + annexationTargets[i]->getTag() + "\n";
 			newFocus->completionReward += "				}\n";
 			newFocus->completionReward += "				" + annexationTargets[i]->getTag() + " = {\n";
-			newFocus->completionReward += "					country_event = NFEvents." + to_string(events->getCurrentNationFocusEventNum()) + "\n";
+			newFocus->completionReward += "					country_event = NFEvents." + to_string(events.getCurrentNationFocusEventNum()) + "\n";
 			newFocus->completionReward += "				}\n";
 			newFocus->completionReward += "			}\n";
 			newFocus->completionReward += "		}";
 			focuses.push_back(newFocus);
 
-			events->createAnnexEvent(*Home, *annexationTargets[i]);
+			events.createAnnexEvent(*Home, *annexationTargets[i]);
 		}
 		else
 		{
@@ -1598,9 +1599,9 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home, c
 	//}
 }
 
-void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& sudetenTargets, const vector<vector<int>>& demandedStates, const HoI4::World* world)
+void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& sudetenTargets, const vector<vector<int>>& demandedStates, HoI4::World& world)
 {
-	HoI4::Events* events = world->getEvents();
+	auto& events = world.getEvents();
 
 	//if it can easily take these targets as they are not in an alliance, you can get annexation event
 
@@ -1675,7 +1676,7 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home, cons
 			newFocus->completionReward += "					country_exists = " + sudetenTargets[i]->getTag() + "\n";
 			newFocus->completionReward += "				}\n";
 			newFocus->completionReward += "				" + sudetenTargets[i]->getTag() + " = {\n";
-			newFocus->completionReward += "					country_event = NFEvents." + to_string(events->getCurrentNationFocusEventNum()) + "\n";
+			newFocus->completionReward += "					country_event = NFEvents." + to_string(events.getCurrentNationFocusEventNum()) + "\n";
 			newFocus->completionReward += "				}\n";
 			newFocus->completionReward += "			}\n";
 			newFocus->completionReward += "		}";
@@ -1715,13 +1716,13 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home, cons
 		}
 
 		//events
-		events->createSudetenEvent(*Home, *sudetenTargets[i], demandedStates[i]);
+		events.createSudetenEvent(*Home, *sudetenTargets[i], demandedStates[i]);
 	}
 	nextFreeColumn += 2 * sudetenTargets.size();
 }
 
 
-void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& newAllies, const vector<shared_ptr<HoI4::Country>>& GCTargets, const string& ideology, HoI4::Events* events)
+void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<shared_ptr<HoI4::Country>>& newAllies, const vector<shared_ptr<HoI4::Country>>& GCTargets, const string& ideology, HoI4::Events& events)
 {
 	int numAllies = newAllies.size();
 	string ideologyShort = ideology.substr(0, 3);
@@ -1795,13 +1796,13 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home, const vector<
 			newFocus->bypass += "		}";
 			newFocus->completionReward += "= {\n";
 			newFocus->completionReward += "			" + newAlly->getTag() + " = {\n";
-			newFocus->completionReward += "				country_event = { hours = 6 id = NFEvents." + to_string(events->getCurrentNationFocusEventNum()) + " }\n";
+			newFocus->completionReward += "				country_event = { hours = 6 id = NFEvents." + to_string(events.getCurrentNationFocusEventNum()) + " }\n";
 			newFocus->completionReward += "				add_opinion_modifier = { target = " + Home->getTag() + " modifier = positive_50 }\n";
 			newFocus->completionReward += "			}\n";
 			newFocus->completionReward += "		}";
 			focuses.push_back(newFocus);
 
-			events->createFactionEvents(*Home, *newAlly);
+			events.createFactionEvents(*Home, *newAlly);
 			i++;
 		}
 		else
@@ -1978,126 +1979,4 @@ void HoI4FocusTree::removeFocus(const string& id)
 		),
 		focuses.end()
 	);
-}
-
-
-void HoI4FocusTree::output(const string& filename) const
-{
-	ofstream out(filename);
-	if (!out.is_open())
-	{
-		LOG(LogLevel::Error) << "Could not create " << filename;
-		exit(-1);
-	}
-
-	out << "focus_tree = {\n";
-	if (!dstCountryTag.empty())
-	{
-		out << "	id = " << dstCountryTag + "_focus\n";
-		out << "	\n";
-		out << "	country = {\n";
-		out << "		factor = 0\n";
-		out << "		\n";
-		out << "		modifier = {\n";
-		out << "			add = 10\n";
-		out << "			tag = " << dstCountryTag << "\n";
-		out << "		}\n";
-		out << "	}\n";
-		out << "	\n";
-		out << "	default = no\n";
-		out << "	\n";
-		out << "	shared_focus = army_effort\n";
-		out << "	shared_focus = aviation_effort\n";
-		out << "	shared_focus = naval_effort\n";
-		out << "	shared_focus = industrial_effort\n";
-		out << "	shared_focus = political_effort\n";
-		out << "\n";
-	}
-
-	for (auto focus : focuses)
-	{
-		out << *focus;
-		out << "\n";
-	}
-
-	out << "}";
-
-	out.close();
-}
-
-void outputShared(std::ostream& output, const HoI4Focus& focus)
-{
-	output << "shared_focus = {\n";
-	output << "	id = " << focus.id << "\n";
-	output << "	icon = " << focus.icon << "\n";
-	if (!focus.text.empty())
-	{
-		output << "	text = " << focus.text << "\n";
-	}
-	for (auto prerequisite: focus.prerequisites)
-	{
-		output << "	prerequisite " << prerequisite << "\n";
-	}
-	if (!focus.mutuallyExclusive.empty())
-	{
-		output << "	mutually_exclusive " << focus.mutuallyExclusive << "\n";
-	}
-	if (!focus.bypass.empty())
-	{
-		output << "	bypass " << focus.bypass << "\n";
-	}
-	output << "	x = " << focus.xPos << "\n";
-	output << "	y = " << focus.yPos << "\n";
-	if (!focus.relativePositionId.empty())
-	{
-		output << "	relative_position_id = " << focus.relativePositionId << "\n";
-	}
-	output << "	cost = " << focus.cost << "\n";
-	if (focus.availableIfCapitulated)
-	{
-		output << "	available_if_capitulated = yes\n";
-	}
-	if (!focus.available.empty())
-	{
-		output << "	available " << focus.available << "\n";
-	}
-	if (!focus.cancelIfInvalid.empty())
-	{
-		output << "	cancel_if_invalid = " << focus.cancelIfInvalid << "\n";
-	}
-	if (!focus.continueIfInvalid.empty())
-	{
-		output << "	continue_if_invalid = " << focus.continueIfInvalid << "\n";
-	}
-	if (!focus.completeTooltip.empty())
-	{
-		output << "	complete_tooltip " << focus.completeTooltip << "\n";
-	}
-	output << "	completion_reward " << focus.completionReward << "\n";
-	if (!focus.aiWillDo.empty())
-	{
-		output << "	ai_will_do " << focus.aiWillDo << "\n";
-	}
-
-	output << "}\n";
-	output << "\n";
-
-	//return output;
-}
-
-void HoI4FocusTree::generateSharedFocuses(const string& filename) const
-{
-	ofstream SharedFoci(filename);
-	if (!SharedFoci.is_open())
-	{
-		LOG(LogLevel::Error) << "Could not create " << filename;
-		exit(-1);
-	}
-
-	for (auto focus : sharedFocuses)
-	{
-		outputShared(SharedFoci, *focus);
-	}
-
-	SharedFoci.close();
 }

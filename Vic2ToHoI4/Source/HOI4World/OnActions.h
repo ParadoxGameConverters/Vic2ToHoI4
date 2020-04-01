@@ -40,9 +40,9 @@ class OnActions
 	public:
 		OnActions() noexcept;
 
-		void output(const std::set<std::string>& majorIdeologies) const;
-
 		void addElectionEvent(const std::string& electionEvent) { electionEvents.push_back(electionEvent); }
+
+		[[nodiscard]] const auto& getElectionEvents() const { return electionEvents; }
 
 	private:
 		OnActions(const OnActions&) = delete;

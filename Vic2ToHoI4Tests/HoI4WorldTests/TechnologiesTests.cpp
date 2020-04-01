@@ -21,20 +21,20 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "gtest/gtest.h"
 #include "../../Vic2ToHoI4/Source/Mappers/TechMapper.h"
+#include "../../Vic2ToHoI4/Source/OutHoi4/OutTechnologies.h"
 #include "../Vic2ToHoI4/Source/HOI4World/Technologies.h"
+#include "gtest/gtest.h"
 #include <memory>
 #include <sstream>
 
 
-
 class HoI4World_technologiesTests: public ::testing::Test
 {
-	protected:
-		HoI4World_technologiesTests();
+  protected:
+	HoI4World_technologiesTests();
 
-		std::unique_ptr<mappers::techMapper> theTechMapper;
+	std::unique_ptr<mappers::techMapper> theTechMapper;
 };
 
 
@@ -80,7 +80,8 @@ HoI4World_technologiesTests::HoI4World_technologiesTests()
 	researchBonuses2.insert(std::make_pair("bonus3_doctrine", 70));
 	researchBonusMappings.insert(std::make_pair("Vic2_invention", researchBonuses2));
 
-	theTechMapper = std::make_unique<mappers::techMapper>(techMappings, nonMtgTechMappings, mtgTechMappings, researchBonusMappings);
+	theTechMapper =
+		 std::make_unique<mappers::techMapper>(techMappings, nonMtgTechMappings, mtgTechMappings, researchBonusMappings);
 }
 
 
@@ -91,7 +92,7 @@ TEST_F(HoI4World_technologiesTests, noVic2TechsOrInventionsGiveNoHoI4Techs)
 	HoI4::technologies theTechnologies(*theTechMapper, oldTechs, oldInventions);
 
 	std::stringstream outputStream;
-	theTechnologies.outputTechnology(outputStream);
+	outputTechnology(theTechnologies, outputStream);
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
@@ -121,7 +122,7 @@ TEST_F(HoI4World_technologiesTests, nonMatchingVic2TechsOrInventionsGiveNoHoI4Te
 	HoI4::technologies theTechnologies(*theTechMapper, oldTechs, oldInventions);
 
 	std::stringstream outputStream;
-	theTechnologies.outputTechnology(outputStream);
+	outputTechnology(theTechnologies, outputStream);
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
@@ -150,7 +151,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2TechGivesHoI4Techs)
 	HoI4::technologies theTechnologies(*theTechMapper, oldTechs, oldInventions);
 
 	std::stringstream outputStream;
-	theTechnologies.outputTechnology(outputStream);
+	outputTechnology(theTechnologies, outputStream);
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
@@ -181,7 +182,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2InventionGivesHoI4Techs)
 	HoI4::technologies theTechnologies(*theTechMapper, oldTechs, oldInventions);
 
 	std::stringstream outputStream;
-	theTechnologies.outputTechnology(outputStream);
+	outputTechnology(theTechnologies, outputStream);
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
@@ -213,7 +214,7 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachTech)
 	HoI4::technologies theTechnologies(*theTechMapper, oldTechs, oldInventions);
 
 	std::stringstream outputStream;
-	theTechnologies.outputTechnology(outputStream);
+	outputTechnology(theTechnologies, outputStream);
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
@@ -245,7 +246,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2TechGivesNonMtgNavalTechs)
 	HoI4::technologies theTechnologies(*theTechMapper, oldTechs, oldInventions);
 
 	std::stringstream outputStream;
-	theTechnologies.outputTechnology(outputStream);
+	outputTechnology(theTechnologies, outputStream);
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
@@ -276,7 +277,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2InventionGivesNonMtgNavalTechs)
 	HoI4::technologies theTechnologies(*theTechMapper, oldTechs, oldInventions);
 
 	std::stringstream outputStream;
-	theTechnologies.outputTechnology(outputStream);
+	outputTechnology(theTechnologies, outputStream);
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
@@ -308,7 +309,7 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachNonMtgNavalTech)
 	HoI4::technologies theTechnologies(*theTechMapper, oldTechs, oldInventions);
 
 	std::stringstream outputStream;
-	theTechnologies.outputTechnology(outputStream);
+	outputTechnology(theTechnologies, outputStream);
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
@@ -340,7 +341,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2TechGivesMtgNavalTechs)
 	HoI4::technologies theTechnologies(*theTechMapper, oldTechs, oldInventions);
 
 	std::stringstream outputStream;
-	theTechnologies.outputTechnology(outputStream);
+	outputTechnology(theTechnologies, outputStream);
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
@@ -371,7 +372,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2InventionGivesMtgNavalTechs)
 	HoI4::technologies theTechnologies(*theTechMapper, oldTechs, oldInventions);
 
 	std::stringstream outputStream;
-	theTechnologies.outputTechnology(outputStream);
+	outputTechnology(theTechnologies, outputStream);
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
@@ -403,7 +404,7 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachMtgNavalTech)
 	HoI4::technologies theTechnologies(*theTechMapper, oldTechs, oldInventions);
 
 	std::stringstream outputStream;
-	theTechnologies.outputTechnology(outputStream);
+	outputTechnology(theTechnologies, outputStream);
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
@@ -434,7 +435,7 @@ TEST_F(HoI4World_technologiesTests, noVic2TechsOrInventionsGiveNoResearchBonuses
 	HoI4::technologies theTechnologies(*theTechMapper, oldTechs, oldInventions);
 
 	std::stringstream outputStream;
-	theTechnologies.outputResearchBonuses(outputStream);
+	outputResearchBonuses(theTechnologies, outputStream);
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Research Bonuses\n";
@@ -451,7 +452,7 @@ TEST_F(HoI4World_technologiesTests, nonMatchingVic2TechsOrInventionsGiveNoResear
 	HoI4::technologies theTechnologies(*theTechMapper, oldTechs, oldInventions);
 
 	std::stringstream outputStream;
-	theTechnologies.outputResearchBonuses(outputStream);
+	outputResearchBonuses(theTechnologies, outputStream);
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Research Bonuses\n";
@@ -467,7 +468,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2TechGivesResearchBonuses)
 	HoI4::technologies theTechnologies(*theTechMapper, oldTechs, oldInventions);
 
 	std::stringstream outputStream;
-	theTechnologies.outputResearchBonuses(outputStream);
+	outputResearchBonuses(theTechnologies, outputStream);
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Research Bonuses\n";
@@ -485,7 +486,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2InventionGivesResearchBonuses)
 	HoI4::technologies theTechnologies(*theTechMapper, oldTechs, oldInventions);
 
 	std::stringstream outputStream;
-	theTechnologies.outputResearchBonuses(outputStream);
+	outputResearchBonuses(theTechnologies, outputStream);
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Research Bonuses\n";
@@ -504,7 +505,7 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachResearchBonuses)
 	HoI4::technologies theTechnologies(*theTechMapper, oldTechs, oldInventions);
 
 	std::stringstream outputStream;
-	theTechnologies.outputResearchBonuses(outputStream);
+	outputResearchBonuses(theTechnologies, outputStream);
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Research Bonuses\n";

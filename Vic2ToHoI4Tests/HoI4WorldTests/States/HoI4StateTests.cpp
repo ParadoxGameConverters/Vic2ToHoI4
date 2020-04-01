@@ -6,7 +6,7 @@
 #include "../Vic2ToHoI4/Source/Configuration.h"
 #include "../Vic2ToHoI4/Source/HOI4World/Map/CoastalProvinces.h"
 #include "../Vic2ToHoI4/Source/HOI4World/States/HoI4State.h"
-#include "../Vic2ToHoI4/Source/Hoi4Outputter/States/HoI4StateOutputter.h"
+#include "../Vic2ToHoI4/Source/OutHoi4/States/OutHoI4State.h"
 #include "../Vic2ToHoI4/Source/V2World/Province.h"
 #include "gtest/gtest.h"
 #include <optional>
@@ -552,12 +552,8 @@ TEST(HoI4World_States_StateTests, ResourcesCanBeAdded)
 	expectedOutput << "\tstate_category=wasteland\n";
 	expectedOutput << "}\n";
 
-	std::stringstream configInput;
-	Configuration testConfig;
-	testConfig.instantiate(configInput);
-
 	std::stringstream output;
-	outputHoI4State(output, theState, testConfig);
+	outputHoI4State(output, theState, false);
 
 	ASSERT_TRUE(theState.hasResources());
 	ASSERT_EQ(expectedOutput.str(), output.str());
@@ -950,7 +946,7 @@ TEST(HoI4World_States_StateTests, DebugVpsAreOutput)
 	expectedOutput << "}\n";
 
 	std::stringstream output;
-	outputHoI4State(output, theState, testConfig);
+	outputHoI4State(output, theState, true);
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
 }

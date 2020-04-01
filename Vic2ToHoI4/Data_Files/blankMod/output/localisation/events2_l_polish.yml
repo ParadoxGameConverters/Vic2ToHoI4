@@ -1,4 +1,4 @@
-l_polish:
+﻿l_polish:
  communism_on_the_rise.t:0 "Komunizm rośnie w siłę"
  communism_on_the_rise.d:0 ""Na całym świecie klasa robotnicza zrzuca jarzmo burżuazji, a tymczasem u nas ci, którzy rzekomo są świadomi walki klas, siedzą z założonymi rękami, czekając, aż ten wypaczony system polityczny sam się zreformuje. [Root.GetName] znajdzie ocalenie tylko w rewolucji!".\n\nTakie głosy można usłyszeć w [Root.GetAdjective] ruchu komunistycznym. Jego członkowie, według których [Root.GetRulingParty] reprezentuje dyktaturę bogaczy, nawołują do obalenia rządu wszelkimi dostępnymi metodami. Pytanie tylko, czy spróbują to zrobić od środka, czy raczej od zewnątrz."
  communism_on_the_rise.a:0 "Niektórzy członkowie rządu mogą popierać takie postulaty."

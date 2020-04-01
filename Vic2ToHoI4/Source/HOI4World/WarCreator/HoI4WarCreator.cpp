@@ -13,7 +13,7 @@
 
 
 
-HoI4WarCreator::HoI4WarCreator(const HoI4::World* world, const HoI4::MapData& theMapData):
+HoI4WarCreator::HoI4WarCreator(HoI4::World* world, const HoI4::MapData& theMapData):
 	genericFocusTree(new HoI4FocusTree),
 	theWorld(world),
 	AggressorFactions(),
@@ -854,7 +854,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI
 		set<int> borderStates = findBorderState(Leader, nan[i], world, theMapData);
 		demandedStates.push_back(sortStatesByCapitalDistance(borderStates, Leader, world));
 	}
-	FocusTree->addFascistSudetenBranch(Leader, nan, demandedStates, theWorld);
+	FocusTree->addFascistSudetenBranch(Leader, nan, demandedStates, *theWorld);
 	nan.clear();
 
 	//events for allies
@@ -942,7 +942,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI
 							auto newFaction = make_shared<HoI4::Faction>(GC, self);
 							GC->setFaction(newFaction);
 						}
-						theWorld->getEvents()->createFactionEvents(*Leader, *GC);
+						theWorld->getEvents().createFactionEvents(*Leader, *GC);
 					}
 					newAllies.push_back(GC);
 					maxGCAlliance++;
@@ -1653,6 +1653,6 @@ void HoI4WarCreator::addTradeEvents(shared_ptr<HoI4::Country> country, const vec
 			continue;
 		}
 
-		theWorld->getEvents()->createTradeEvent(*country, *greatPowerTarget);
+		theWorld->getEvents().createTradeEvent(*country, *greatPowerTarget);
 	}
 }

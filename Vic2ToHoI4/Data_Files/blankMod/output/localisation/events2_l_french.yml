@@ -1,4 +1,4 @@
-l_french:
+﻿l_french:
  communism_on_the_rise.t:0 "Essor du communisme"
  communism_on_the_rise.d:0 "Alors que partout dans le monde, les ouvriers se dressent contre leurs oppresseurs, ceux qui prétendent avoir atteint une conscience de classe [Root.GetAuEnANP] [Root.GetName] se contentent d'attendre un changement de la part d'un système politique corrompu dont seule la révolution pourrait nous sauver !'\n\nVoilà la manière dont s'expriment les nouvelles voix du mouvement communiste [Root.GetAdjFS]. Traitant l'administration du [Root.GetRulingParty] de dictature bourgeoise, ils ont commencé à appeler à sa destitution et ce, par tous les moyens nécessaires. Reste à savoir si ces moyens viendront de l'intérieur ou de l'extérieur."
  communism_on_the_rise.a:0 "Au sein même du gouvernement, certains soutiennent de telles idées."

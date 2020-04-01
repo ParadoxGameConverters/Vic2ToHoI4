@@ -15,7 +15,7 @@ class Admiral: Commander
 	public:
 		Admiral(const Vic2::Leader& srcLeader, const std::string& portrait);
 
-		friend std::ostream& operator<<(std::ostream& output, const Admiral& instance);
+		friend std::ostream& operator<<(std::ostream& output, const Admiral& admiral);
 
 	private:
 		int maneuveringSkill = 1;
