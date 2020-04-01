@@ -44,6 +44,7 @@
   <ItemGroup>
     <ClCompile Include="..\common_items\CommonUtils.cpp" />
     <ClCompile Include="..\common_items\Date.cpp" />
+    <ClCompile Include="..\common_items\iconvlite.cpp" />
     <ClCompile Include="..\common_items\Log.cpp" />
     <ClCompile Include="..\common_items\newParser.cpp" />
     <ClCompile Include="..\common_items\ParserHelpers.cpp" />

@@ -860,6 +860,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoI4\OutSharedFocus.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
     </ClCompile>
+    <ClCompile Include="..\common_items\iconvlite.cpp">
+      <Filter>Vic2ToHoI4 files\common items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
