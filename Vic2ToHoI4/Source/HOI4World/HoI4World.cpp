@@ -1354,7 +1354,7 @@ void HoI4::World::outputBookmarks() const
 				//Bookmark window has room for 22 minor countries, going over this seems to not cause any issues however
 				bookmarkFile << "		" + country.second->getTag() + " = {\n";
 				bookmarkFile << "			minor = yes\n";
-				bookmarkFile << "			history = \"" + greatPower->getGovernmentIdeology() + "_SP_CONV_DESC\"\n";
+				bookmarkFile << "			history = \"" + country.second->getGovernmentIdeology() + "_SP_CONV_DESC\"\n";
 				bookmarkFile << "			ideology = " + country.second->getGovernmentIdeology() + "\n";
 				bookmarkFile << "			ideas = { }\n";
 				bookmarkFile << "		}\n";
