@@ -326,7 +326,7 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 	Event sudetenEvent;
 	sudetenEvent.giveType("country_event");
 	sudetenEvent.giveId("NFEvents." + std::to_string(nationalFocusEventNumber));
-	sudetenEvent.giveTitle(annexerName + " Demands " + annexedName + "!");
+	sudetenEvent.giveTitle("\"" + annexerName + " Demands " + annexedName + "!\"");
 	auto description = "= \"" + annexerName + " has recently been making claims to our bordering states, ";
 	description += "saying that these states are full of " + annexerAdjective +
 						" people and that the territory should be given to them. ";
@@ -344,7 +344,7 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 
 	EventOption acceptOption;
 	acceptOption.giveName("\"We Accept\"");
-	std::string acceptAiChance = " = {\n";
+	std::string acceptAiChance = "= {\n";
 	acceptAiChance += "\t\t\tbase = 30\n";
 	acceptAiChance += "\t\t\tmodifier = {\n";
 	acceptAiChance += "\t\t\t\tadd = -15\n";
@@ -356,7 +356,7 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 	acceptAiChance += "\t\t\t}\n";
 	acceptAiChance += "\t\t}";
 	acceptOption.giveAiChance(std::move(acceptAiChance));
-	auto acceptNewsEvent = "\t\t" + annexer.getTag() + " = {\n";
+	auto acceptNewsEvent = annexer.getTag() + " = {\n";
 	acceptNewsEvent +=
 		 "\t\t\tcountry_event = { "
 		 "hours = 2 "
@@ -364,8 +364,7 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 		 std::to_string(nationalFocusEventNumber + 1) +
 		 " "
 		 "}\n";
-	acceptNewsEvent += "\t\t}\n";
-	acceptNewsEvent += "\t}";
+	acceptNewsEvent += "\t\t}";
 	acceptOption.giveScriptBlock(std::move(acceptNewsEvent));
 	sudetenEvent.giveOption(std::move(acceptOption));
 
@@ -373,7 +372,6 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 	refuseOption.giveName("\"We Refuse!\"");
 	std::string refuseAiChance = " = {\n";
 	refuseAiChance += "\t\t\tbase = 10\n";
-	refuseAiChance += "\n";
 	refuseAiChance += "\t\t\tmodifier = {\n";
 	refuseAiChance += "\t\t\t\tfactor = 0\n";
 	refuseAiChance += "\t\t\t\t" + annexer.getTag() + " = { has_army_size = { size > 39 } }\n";
@@ -396,8 +394,7 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 	removeFromFaction += "\t\t\t\tlimit = { is_in_faction_with = " + annexed.getTag() + " }\n";
 	removeFromFaction += "\t\t\t\tremove_from_faction = " + annexed.getTag() + "\n";
 	removeFromFaction += "\t\t\t}\n";
-	removeFromFaction += "\t\t}\n";
-	removeFromFaction += "\t}";
+	removeFromFaction += "\t\t}";
 	refuseOption.giveScriptBlock(std::move(removeFromFaction));
 	sudetenEvent.giveOption(std::move(refuseOption));
 
@@ -417,10 +414,9 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 	EventOption refusedOption;
 	refusedOption.giveName("\"It's time for war\"");
 	std::string createWargoal = "create_wargoal = {\n";
-	createWargoal += "\t\t\t\ttype = annex_everything\n";
+	createWargoal += "\t\t\ttype = annex_everything\n";
 	createWargoal += "\t\t\ttarget = " + annexed.getTag() + "\n";
-	createWargoal += "\t\t}\n";
-	createWargoal += "\t}";
+	createWargoal += "\t\t}";
 	refusedOption.giveScriptBlock(std::move(createWargoal));
 	refusedEvent.giveOption(std::move(refusedOption));
 
@@ -443,7 +439,7 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 		acceptedOption.giveScriptBlock(
 			 std::to_string(claimedStates[i]) + " = { add_core_of = " + annexer.getTag() + " }");
 		acceptedOption.giveScriptBlock(
-			 annexer.getTag() + " = { transfer_state =  " + std::to_string(claimedStates[i]) + " }");
+			 annexer.getTag() + " = { transfer_state = " + std::to_string(claimedStates[i]) + " }");
 	}
 	acceptedOption.giveScriptBlock("set_country_flag = " + annexed.getTag() + "_demanded");
 	acceptedEvent.giveOption(std::move(acceptedOption));
