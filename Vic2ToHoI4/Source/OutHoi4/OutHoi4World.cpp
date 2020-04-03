@@ -492,7 +492,7 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 	{
 		// Vic2 Great powers become majors in bookmark
 		bookmarkFile << "\t\t" + greatPower->getTag() + "= {\n";
-		bookmarkFile << "\t\t\thistory = \"OTHER_GATHERING_STORM_DESC\"\n";
+		bookmarkFile << "\t\t\thistory = \"" + greatPower->getGovernmentIdeology() + "_GP_CONV_DESC\"\n";
 		bookmarkFile << "\t\t\tideology = " + greatPower->getGovernmentIdeology() + "\n";
 		bookmarkFile << "\t\t\tideas = { great_power }\n";
 		bookmarkFile << "\t\t}\n";
@@ -511,7 +511,7 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 			// issues however
 			bookmarkFile << "\t\t" + country.second->getTag() + " = {\n";
 			bookmarkFile << "\t\t\tminor = yes\n";
-			bookmarkFile << "\t\t\thistory = \"OTHER_GATHERING_STORM_DESC\"\n";
+			bookmarkFile << "\t\t\thistory = \"" + country.second->getGovernmentIdeology() + "_SP_CONV_DESC\"\n";
 			bookmarkFile << "\t\t\tideology = " + country.second->getGovernmentIdeology() + "\n";
 			bookmarkFile << "\t\t\tideas = { }\n";
 			bookmarkFile << "\t\t}\n";
