@@ -586,9 +586,9 @@ void HoI4::Country::addLeader(HoI4::namesMapper& theNames, graphicsMapper& theGr
 	else
 	{
 		LOG(LogLevel::Warning) << "Could not set leader for " + tag + ", as there were no names.";
-		leaderPortrait = "\"gfx/leaders/ENG/portrait_eng_fallen_government.dds\""
-		leaderName = "Nomen"
-		leaderSurname = "Nescio"
+		leaderPortrait = "\"gfx/leaders/ENG/portrait_eng_fallen_government.dds\"";
+		leaderName = "Nomen";
+		leaderSurname = "Nescio";
 		// Nescio Nomen (or N.N.) literally means "I don't know the name" and is sometimes used when the name of a person is unknown
 	}
 }
