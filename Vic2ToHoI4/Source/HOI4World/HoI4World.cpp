@@ -1334,14 +1334,14 @@ void HoI4::World::outputBookmarks() const
 	{
 		//Vic2 Great powers become majors in bookmark
 		bookmarkFile << "		" + greatPower->getTag() + "= {\n";
-		bookmarkFile << "			history = \"OTHER_GATHERING_STORM_DESC\"\n";
+		bookmarkFile << "			history = \"" + greatPower->getGovernmentIdeology() + "_GP_CONV_DESC\"\n";
 		bookmarkFile << "			ideology = " + greatPower->getGovernmentIdeology() + "\n";
 		bookmarkFile << "			ideas = { great_power }\n";
 		bookmarkFile << "		}\n";
 	}
 	
 	bookmarkFile << "		\"---\"= {\n";
-	bookmarkFile << "			history = \"" + greatPower->getGovernmentIdeology() + "_GP_CONV_DESC\"\n";
+	bookmarkFile << "			history = \"OTHER_GATHERING_STORM_DESC\"\n";
 	bookmarkFile << "		}\n";
 
 	for (auto country : countries)
