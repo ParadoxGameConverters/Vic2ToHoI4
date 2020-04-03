@@ -93,8 +93,21 @@ void V2Localisations::processLine(const std::string& line)
 	for (auto language: languages)
 	{
 		string result = getNextLocalisation(line, division);
-		auto UTF8Result = Utils::convertWin1252ToUTF8(result);
-
+		std::string UTF8Result;
+		
+		if ( language == "english" || language == "french" || language == "german" || language == "spanish" || language == "italian" || language == "dutch" || language == "braz_por" || language == "finnish" )
+		{
+			UTF8Result = Utils::convertWin1252ToUTF8(result);
+		}
+		if ( language == "polish" || language == "swedish" || language == "czech" || language == "hungarian" ) //Swedish = Hungarian again
+		{
+			UTF8Result = Utils::convertWin1250ToUTF8(result);
+		}
+		if ( language == "russian" )
+		{
+			UTF8Result = Utils::convertWin1251ToUTF8(result);
+		}
+			
 		if (language == "english")
 		{
 			localisationToKeyMap[UTF8Result] = key;
