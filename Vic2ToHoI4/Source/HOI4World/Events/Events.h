@@ -72,7 +72,7 @@ class Events: commonItems::parser
 	std::vector<Event> newsEvents;
 	int newsEventNumber = 237;
 	std::vector<Event> nationalFocusEvents;
-	int nationalFocusEventNumber = 0;
+	int nationalFocusEventNumber = 1;
 	std::vector<Event> politicalEvents;
 	int politicalEventNumber = 1;
 	std::vector<Event> warJustificationEvents;

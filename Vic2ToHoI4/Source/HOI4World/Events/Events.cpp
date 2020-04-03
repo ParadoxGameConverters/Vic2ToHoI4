@@ -167,8 +167,8 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 	annexEvent.setTriggeredOnly();
 
 	EventOption acceptOption;
-	acceptOption.giveName("We accept the Union");
-	std::string acceptAiChance = "\n";
+	acceptOption.giveName("\"We accept the Union\"");
+	std::string acceptAiChance = "= {\n";
 	acceptAiChance += "\t\t\tbase = 30\n";
 	acceptAiChance += "\t\t\tmodifier = {\n";
 	acceptAiChance += "\t\t\t\tadd = -15\n";
@@ -178,8 +178,9 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 	acceptAiChance += "\t\t\t\tadd = 45\n";
 	acceptAiChance += "\t\t\t\t" + annexed.getTag() + " = { has_army_size = { size > 39 } }\n";
 	acceptAiChance += "\t\t\t}\n";
+	acceptAiChance += "\t\t}";
 	acceptOption.giveAiChance(std::move(acceptAiChance));
-	auto acceptNewsEvent = "\t\t" + annexed.getTag() + " = {\n";
+	auto acceptNewsEvent = annexed.getTag() + " = {\n";
 	acceptNewsEvent +=
 		 "\t\t\tcountry_event = { "
 		 "hours = 2 "
@@ -187,17 +188,16 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 		 std::to_string(nationalFocusEventNumber + 1) +
 		 " "
 		 "}\n";
-	acceptNewsEvent += "\t\t}\n";
-	acceptNewsEvent += "\t\tcustom_effect_tooltip = GAME_OVER_TT\n";
-	acceptNewsEvent += "\t}";
+	acceptNewsEvent += "\t\t}";
 	acceptOption.giveScriptBlock(std::move(acceptNewsEvent));
+	std::string tooltip = "custom_effect_tooltip = GAME_OVER_TT";
+	acceptOption.giveScriptBlock(std::move(tooltip));
 	annexEvent.giveOption(std::move(acceptOption));
 
 	EventOption refuseOption;
-	refuseOption.giveName("We Refuse!");
-	std::string refuseAiChance = "n";
+	refuseOption.giveName("\"We Refuse!\"");
+	std::string refuseAiChance = "= {\n";
 	refuseAiChance += "\t\t\tbase = 10\n";
-	refuseAiChance += "\n";
 	refuseAiChance += "\t\t\tmodifier = {\n";
 	refuseAiChance += "\t\t\t\tfactor = 0\n";
 	refuseAiChance += "\t\t\t\t" + annexed.getTag() + " = { has_army_size = { size > 39 } }\n";
@@ -206,9 +206,9 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 	refuseAiChance += "\t\t\t\tadd = 20\n";
 	refuseAiChance += "\t\t\t\t" + annexed.getTag() + " = { has_army_size = { size < 30 } }\n";
 	refuseAiChance += "\t\t\t}\n";
-	refuseAiChance += "\t\t";
+	refuseAiChance += "\t\t}";
 	refuseOption.giveAiChance(std::move(refuseAiChance));
-	auto removeFromFaction = "\t\t" + annexed.getTag() + " = {\n";
+	auto removeFromFaction = annexed.getTag() + " = {\n";
 	removeFromFaction +=
 		 "\t\t\tcountry_event = { "
 		 "hours = 2 "
@@ -220,8 +220,7 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 	removeFromFaction += "\t\t\t\tlimit = { is_in_faction_with = " + annexed.getTag() + " }\n";
 	removeFromFaction += "\t\t\t\tremove_from_faction = " + annexed.getTag() + "\n";
 	removeFromFaction += "\t\t\t}\n";
-	removeFromFaction += "\t\t}\n";
-	removeFromFaction += "\t}";
+	removeFromFaction += "\t\t}";
 	refuseOption.giveScriptBlock(std::move(removeFromFaction));
 	annexEvent.giveOption(std::move(refuseOption));
 
@@ -242,8 +241,7 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 	std::string wargoal = "create_wargoal = {\n";
 	wargoal += "\t\t\ttype = annex_everything\n";
 	wargoal += "\t\t\ttarget = " + annexed.getTag() + "\n";
-	wargoal += "\t\t}\n";
-	wargoal += "\t}";
+	wargoal += "\t\t}";
 	refusedOption.giveScriptBlock(std::move(wargoal));
 	refusedEvent.giveOption(std::move(refusedOption));
 
@@ -263,7 +261,7 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 	acceptedOption.giveName("\"A stronger Union!\"");
 	for (auto state: annexed.getStates())
 	{
-		auto addCore = "\t\t" + std::to_string(state) + " = {\n";
+		auto addCore = std::to_string(state) + " = {\n";
 		addCore += "\t\t\tif = {\n";
 		addCore += "\t\t\t\tlimit = { is_owned_by = " + annexed.getTag() + " }\n";
 		addCore += "\t\t\t\tadd_core_of = " + annexed.getTag() + "\n";
@@ -271,11 +269,11 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 		addCore += "\t\t}";
 		acceptedOption.giveScriptBlock(std::move(addCore));
 	}
-	acceptedOption.giveScriptBlock("\t\tannex_country = { target = " + annexed.getTag() + " transfer_troops = yes }");
-	acceptedOption.giveScriptBlock("\t\tadd_political_power = 50");
+	acceptedOption.giveScriptBlock("annex_country = { target = " + annexed.getTag() + " transfer_troops = yes }");
+	acceptedOption.giveScriptBlock("add_political_power = 50");
 	acceptedOption.giveScriptBlock(
-		 "\t\tadd_named_threat = { threat = 2 name = \"" + annexerName + " annexed " + annexedName + "\" }");
-	acceptedOption.giveScriptBlock("\t\tset_country_flag = " + annexed.getTag() + "_annexed");
+		 "add_named_threat = { threat = 2 name = \"" + annexerName + " annexed " + annexedName + "\" }");
+	acceptedOption.giveScriptBlock("set_country_flag = " + annexed.getTag() + "_annexed");
 	acceptedEvent.giveOption(std::move(acceptedOption));
 
 	nationalFocusEvents.push_back(acceptedEvent);
