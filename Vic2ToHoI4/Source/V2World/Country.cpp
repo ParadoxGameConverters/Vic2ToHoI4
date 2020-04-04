@@ -215,6 +215,11 @@ void Vic2::Country::eatCountry(Vic2::Country* target)
 		return;
 	}
 
+	for (auto state: target->states)
+	{
+		states.push_back(state);
+		state->setOwner(tag);
+	}
 	for (auto core: target->cores)
 	{
 		addCore(core);
