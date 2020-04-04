@@ -45,7 +45,7 @@ soviet_union =
 
 germany =
 {
-	merge = yes	# Change to yes to enable merging
+	merge = no	# Change to yes to enable merging
 
 	master = GER	# Germany proper (if extant)
 
