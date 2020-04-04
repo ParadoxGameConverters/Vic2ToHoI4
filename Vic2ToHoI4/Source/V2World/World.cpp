@@ -250,11 +250,6 @@ void Vic2::World::removeEmptyNations()
 
 	for (auto country: countries)
 	{
-		bool pause = false;
-		if (country.first == "GER")
-		{
-			pause = true;
-		}
 		if (!country.second->isEmpty())
 		{
 			newCountries.insert(country);
