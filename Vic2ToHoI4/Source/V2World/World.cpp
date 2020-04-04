@@ -243,13 +243,18 @@ void Vic2::World::determineEmployedWorkers()
 	}
 }
 
-
+#pragma optimize("",off)
 void Vic2::World::removeEmptyNations()
 {
 	std::map<std::string, Country*> newCountries;
 
 	for (auto country: countries)
 	{
+		bool pause = false;
+		if (country.first == "GER")
+		{
+			pause = true;
+		}
 		if (!country.second->isEmpty())
 		{
 			newCountries.insert(country);
@@ -258,7 +263,7 @@ void Vic2::World::removeEmptyNations()
 
 	countries.swap(newCountries);
 }
-
+#pragma optimize("",on)
 
 void Vic2::World::determinePartialStates()
 {
@@ -380,7 +385,7 @@ std::string Vic2::World::extractCountryFileName(const std::string& countryFileLi
 	return countryFileName;
 }
 
-
+#pragma optimize("",off)
 void Vic2::World::overallMergeNations()
 {
 	LOG(LogLevel::Info) << "Merging nations";
@@ -408,7 +413,7 @@ void Vic2::World::mergeNations(const std::string& masterTag, const std::vector<s
 		}
 	}
 }
-
+#pragma optimize("",on)
 
 std::optional<Vic2::Country*> Vic2::World::getCountry(const std::string& tag) const
 {

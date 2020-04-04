@@ -64,6 +64,7 @@ class State: commonItems::parser
 		virtual float getAverageRailLevel() const;
 
 		void addProvince(const Province* province) { provinces.insert(province); }
+		void setOwner(std::string newOwner) { owner = std::move(newOwner); }
 
 		virtual std::set<const Province*> getProvinces() const { return provinces; }
 		virtual std::set<int> getProvinceNumbers() const { return provinceNums; }
@@ -83,7 +84,7 @@ class State: commonItems::parser
 		bool ownerHasNoCores() const;
 
 
-		const std::string owner = "";
+		std::string owner;
 		std::string stateID = "";
 		bool partialState = false;
 
