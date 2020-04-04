@@ -1419,6 +1419,7 @@ void HoI4::Events::generateGenericEvents(const Configuration& theConfiguration,
 	{
 		throw std::runtime_error("Could not open " + theConfiguration.getHoI4Path() + "/events/Generic.txt");
 	}
+	commonItems::absorbBOM(genericEventsFileStream);
 
 	EventsFile genericEventsFile(genericEventsFileStream);
 	genericEvents = genericEventsFile.takeEvents();
