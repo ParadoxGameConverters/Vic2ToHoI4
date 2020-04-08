@@ -912,7 +912,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 		newFocus->relativePositionId = "StrengthenColonies" + Home->getTag();
 		newFocus->xPos = 0;
 		newFocus->yPos = 1;
-		newFocus->completionReward = "{\n";
+		newFocus->completionReward = "= {\n";
 		newFocus->completionReward += "		add_ideas = militarism_focus_absolutist\n";
 		newFocus->completionReward += "}\n";
 		focuses.push_back(newFocus);
