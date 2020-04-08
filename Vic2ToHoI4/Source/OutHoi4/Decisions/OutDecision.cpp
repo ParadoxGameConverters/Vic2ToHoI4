@@ -37,6 +37,10 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecis
 	{
 		outStream << "\n\t\ttargets " << outDecision.targets << "\n";
 	}
+	if (outDecision.targetNonExisting)
+	{
+		outStream << "\n\t\ttarget_non_existing = yes";
+	}
 	if (!outDecision.targetArray.empty())
 	{
 		outStream << "\n\t\ttarget_array " << outDecision.targetArray << "\n";

@@ -3,18 +3,17 @@
 
 
 
-HoI4::decision::decision(std::string decisionName, std::istream& theStream):
-	name(std::move(decisionName))
+HoI4::decision::decision(std::string decisionName, std::istream& theStream): name(std::move(decisionName))
 {
-	registerKeyword("icon", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("icon", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString theIcon(theStream);
 		icon = theIcon.getString();
 	});
-	registerKeyword("is_good", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("is_good", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString theIsGood(theStream);
 		isGood = theIsGood.getString();
 	});
-	registerKeyword("allowed", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("allowed", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfObject theAllowed(theStream);
 		allowed = theAllowed.getString();
 	});
@@ -22,15 +21,15 @@ HoI4::decision::decision(std::string decisionName, std::istream& theStream):
 		const commonItems::stringOfObject theHighlightStates(theStream);
 		highlightStates = theHighlightStates.getString();
 	});
-	registerKeyword("available", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("available", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfObject theAvailable(theStream);
 		available = theAvailable.getString();
 	});
-	registerKeyword("days_mission_timeout", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("days_mission_timeout", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleInt theTimeout(theStream);
 		daysMissionTimeout = theTimeout.getInt();
 	});
-	registerKeyword("activation", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("activation", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfObject theActivation(theStream);
 		activation = theActivation.getString();
 	});
@@ -46,15 +45,19 @@ HoI4::decision::decision(std::string decisionName, std::istream& theStream):
 		const commonItems::stringOfObject theTargetRootTrigger(theStream);
 		targetRootTrigger = theTargetRootTrigger.getString();
 	});
-	registerKeyword("target_trigger", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("target_trigger", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfObject theTargetTrigger(theStream);
 		targetTrigger = theTargetTrigger.getString();
 	});
-	registerKeyword("visible", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("target_non_existing", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleString yesString(theStream);
+		targetNonExisting = yesString.getString() == "yes";
+	});
+	registerKeyword("visible", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfObject theVisible(theStream);
 		visible = theVisible.getString();
 	});
-	registerKeyword("cancel_trigger", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("cancel_trigger", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfObject theCancelTrigger(theStream);
 		cancelTrigger = theCancelTrigger.getString();
 	});
@@ -62,7 +65,7 @@ HoI4::decision::decision(std::string decisionName, std::istream& theStream):
 		const commonItems::stringOfObject theTargetedModifier(theStream);
 		targetedModifier = theTargetedModifier.getString();
 	});
-	registerKeyword("remove_trigger", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("remove_trigger", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfObject theRemoveTrigger(theStream);
 		removeTrigger = theRemoveTrigger.getString();
 	});
@@ -74,39 +77,39 @@ HoI4::decision::decision(std::string decisionName, std::istream& theStream):
 		const commonItems::stringOfItem theCustomCostText(theStream);
 		customCostText = theCustomCostText.getString();
 	});
-	registerKeyword("complete_effect", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("complete_effect", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfObject theCompleteEffect(theStream);
 		completeEffect = theCompleteEffect.getString();
 	});
-	registerKeyword("remove_effect", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("remove_effect", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfObject theRemoveEffect(theStream);
 		removeEffect = theRemoveEffect.getString();
 	});
-	registerKeyword("timeout_effect", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("timeout_effect", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfObject theTimeoutEffect(theStream);
 		timeoutEffect = theTimeoutEffect.getString();
 	});
-	registerKeyword("ai_will_do", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("ai_will_do", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfObject theAiWillDo(theStream);
 		aiWillDo = theAiWillDo.getString();
 	});
-	registerKeyword("days_remove", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("days_remove", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString theDaysRemove(theStream);
 		daysRemove = theDaysRemove.getString();
 	});
-	registerKeyword("days_re_enable", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("days_re_enable", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleInt theDaysReEnable(theStream);
 		daysReEnable = theDaysReEnable.getInt();
 	});
-	registerKeyword("cost", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("cost", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString theCost(theStream);
 		cost = theCost.getString();
 	});
-	registerKeyword("fire_only_once", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("fire_only_once", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString theFire(theStream);
 		fireOnlyOnce = theFire.getString();
 	});
-	registerKeyword("modifier", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("modifier", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfObject theModifier(theStream);
 		modifier = theModifier.getString();
 	});
