@@ -97,10 +97,6 @@ debug_decisions = {
 			random_operative = {
 				harm_operative_leader = 1
 			#Some easter egg from Vanilla HoI4 - can be removed safely
-			#	operative_leader_event = {
-			#		id = lar_operative_event.4
-			#		set_from_from = URG
-			#	}
 			}
 		}
 
