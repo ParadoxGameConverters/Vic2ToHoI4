@@ -18,6 +18,10 @@ void HoI4::ForeignInfluenceDecisions::updateDecisions(const std::set<std::string
 				decisions.end(),
 				[&ideologyMatch, &ideologyRegex](auto& decision)
 				{
+					if (decision.getName() == "instantiate_collaboration")
+					{
+						return false;
+					}
 					auto visible = decision.getVisible();
 					return !std::regex_search(visible, ideologyMatch, ideologyRegex);
 				}
