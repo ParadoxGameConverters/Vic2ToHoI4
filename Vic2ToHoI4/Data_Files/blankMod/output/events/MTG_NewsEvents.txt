@@ -78,37 +78,3 @@ news_event = {
 		}
 	}
 }
-# News event informing others that the Dominions have left Britain because of Wallis Simpson
-news_event = {
-	id = mtg_news.62
-	title = mtg_britain.4.t
-	desc = mtg_news.62.desc
-	picture = GFX_news_event_generic_funeral
-	
-	major = yes
-	
-	is_triggered_only = yes
-	option = {
-		name = mtg_news.62.b
-		trigger = {
-			always = yes
-		}
-	}
-}
-# News event informing others that the Dominions have left Britain because fascism/communism
-news_event = {
-	id = mtg_news.63
-	title = mtg_news.63.t
-	desc = mtg_news.63.desc
-	picture = GFX_news_event_generic_funeral
-	
-	major = yes
-	
-	is_triggered_only = yes
-	option = {
-		name = mtg_news.62.b
-		trigger = {
-			always = yes
-		}
-	}
-}
