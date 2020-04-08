@@ -259,20 +259,7 @@ on_actions = {
 				set_country_flag = achievement_failed_sunset_invasion
 			}
 			# Romania shouldn't declare war on Bulgaria on historical mode, if both are going to join the Axis
-			#if = {
-			#	limit = {
-			#		original_tag = BUL
-			#		FROM = { original_tag = GER }
-			#		is_historical_focus_on = yes
-			#	}
-			#	ROM = {
-			#		add_ai_strategy = {
-			#			type = befriend
-			#			id = "BUL"
-			#			value = 200
-			#		}
-			#	}
-			#}
+			# Removed because based on HoI4 Vanilla
 		}
 	}
 
@@ -345,17 +332,6 @@ on_actions = {
 	on_coup_succeded = {
 	###Democratic may not always exist. Nevertheless, civil-war created democratic nations should gain elections
 		effect = {
-		#	#Turn elections on for democracies created from coup
-		#	random_other_country = {
-		#		limit = {
-		#			has_government = democratic
-		#			original_tag = ROOT
-		#		}
-		#		set_politics = {
-		#			ruling_party = democratic
-		#			elections_allowed = yes
-		#		}
-		#	}
 		}
 	}
 
