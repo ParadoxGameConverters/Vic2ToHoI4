@@ -863,6 +863,9 @@
     <ClCompile Include="..\common_items\iconvlite.cpp">
       <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
