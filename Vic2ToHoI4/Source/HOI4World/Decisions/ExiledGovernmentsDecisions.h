@@ -1,5 +1,5 @@
-#ifndef EXILED_GOVERNMENTS_DECISONS
-#define EXILED_GOVERNMENTS_DECISONS
+#ifndef EXILED_GOVERNMENTS_DECISIONS
+#define EXILED_GOVERNMENTS_DECISIONS
 
 
 
@@ -12,12 +12,12 @@ namespace HoI4
 
 class ExiledGovernmentsDecisions: public DecisionsFile
 {
-	public:
-		void updateDecisions(const std::set<std::string>& majorIdeologies);
+  public:
+	void updateDecisions(const std::set<std::string>& majorIdeologies);
 };
 
-}
+} // namespace HoI4
 
 
 
-#endif // EXILED_GOVERNMENTS_DECISONS
+#endif // EXILED_GOVERNMENTS_DECISIONS

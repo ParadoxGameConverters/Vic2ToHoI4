@@ -8,10 +8,7 @@ void HoI4::NavalTreatyDecisions::updateDecisions(const std::set<std::string>& ma
 	{
 		for (auto decision: decisionsCategory.getDecisions())
 		{
-			if (
-				(decision.getName() == "MTG_abandon_treaty_democratic") &&
-				(majorIdeologies.count("democratic") == 0)
-				)
+			if ((decision.getName() == "MTG_abandon_treaty_democratic") && (majorIdeologies.count("democratic")))
 			{
 				std::string newVisible = "= {\n";
 				newVisible += "\t\t\thas_naval_treaty_trigger = yes\n";
@@ -30,7 +27,7 @@ void HoI4::NavalTreatyDecisions::updateDecisions(const std::set<std::string>& ma
 				std::string newVisible = "= {\n";
 				newVisible += "\t\t\thas_naval_treaty_trigger = yes\n";
 				newVisible += "\t\t\tOR = { \n";
-				for (const auto& ideology : majorIdeologies)
+				for (const auto& ideology: majorIdeologies)
 				{
 					if ((ideology == "democratic") || (ideology == "neutrality"))
 					{
@@ -55,7 +52,7 @@ void HoI4::NavalTreatyDecisions::updateDecisions(const std::set<std::string>& ma
 				newVisible += "\t\t\t\thas_idea = MTG_naval_treaty_adherent_reduced\n";
 				newVisible += "\t\t\t}\n";
 				newVisible += "\t\t\tOR = {\n";
-				for (const auto& ideology : majorIdeologies)
+				for (const auto& ideology: majorIdeologies)
 				{
 					if ((ideology == "democratic") || (ideology == "neutrality"))
 					{
