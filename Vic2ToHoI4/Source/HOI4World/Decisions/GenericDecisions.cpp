@@ -504,7 +504,7 @@ std::set<int> getRelevantStatesFromProvinces(const std::set<int>& provinces,
 	for (const auto& province: provinces)
 	{
 		if (auto mapping = provinceToStateIdMap.find(province);
-			 mapping != provinceToStateIdMap.end() && statesToExclude.count(mapping->second))
+			 mapping != provinceToStateIdMap.end() && !statesToExclude.count(mapping->second))
 		{
 			relevantStates.insert(mapping->second);
 		}
