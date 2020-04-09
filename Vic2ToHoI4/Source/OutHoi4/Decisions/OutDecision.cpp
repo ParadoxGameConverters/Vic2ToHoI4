@@ -9,6 +9,10 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecis
 	{
 		outStream << "\n\t\ticon = " << outDecision.icon << "\n";
 	}
+	if (!outDecision.nameField.empty())
+	{
+		outStream << "\n\t\tname = " << outDecision.nameField << "\n";
+	}
 	if (!outDecision.isGood.empty())
 	{
 		outStream << "\n\t\tis_good = " << outDecision.isGood << "\n";
@@ -48,6 +52,10 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecis
 	if (!outDecision.targetRootTrigger.empty())
 	{
 		outStream << "\n\t\ttarget_root_trigger " << outDecision.targetRootTrigger << "\n";
+	}
+	if (outDecision.stateTarget)
+	{
+		outStream << "\n\t\tstate_target = yes\n";
 	}
 	if (!outDecision.targetTrigger.empty())
 	{
@@ -92,6 +100,10 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecis
 	if (outDecision.cost)
 	{
 		outStream << "\n\t\tcost = " << *outDecision.cost << "\n";
+	}
+	if (!outDecision.onMapMode.empty())
+	{
+		outStream << "\n\t\ton_map_mode = " << outDecision.onMapMode << "\n";
 	}
 	if (!outDecision.completeEffect.empty())
 	{

@@ -5,6 +5,10 @@
 
 HoI4::decision::decision(std::string decisionName, std::istream& theStream): name(std::move(decisionName))
 {
+	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleString theName(theStream);
+		nameField = theName.getString();
+	});
 	registerKeyword("icon", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString theIcon(theStream);
 		icon = theIcon.getString();
@@ -45,6 +49,10 @@ HoI4::decision::decision(std::string decisionName, std::istream& theStream): nam
 		const commonItems::stringOfObject theTargetRootTrigger(theStream);
 		targetRootTrigger = theTargetRootTrigger.getString();
 	});
+	registerKeyword("state_target", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleString yesString(theStream);
+		stateTarget = yesString.getString() == "yes";
+	});
 	registerKeyword("target_trigger", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfObject theTargetTrigger(theStream);
 		targetTrigger = theTargetTrigger.getString();
@@ -76,6 +84,10 @@ HoI4::decision::decision(std::string decisionName, std::istream& theStream): nam
 	registerKeyword("custom_cost_text", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfItem theCustomCostText(theStream);
 		customCostText = theCustomCostText.getString();
+	});
+	registerKeyword("on_map_mode", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleString theOnMapMode(theStream);
+		onMapMode = theOnMapMode.getString();
 	});
 	registerKeyword("complete_effect", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfObject theCompleteEffect(theStream);

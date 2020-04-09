@@ -42,6 +42,7 @@ class decision: commonItems::parser
   private:
 	std::string name;
 	std::string icon;
+	std::string nameField;
 	std::string isGood;
 	std::string allowed;
 	std::string highlightStates;
@@ -51,6 +52,7 @@ class decision: commonItems::parser
 	std::string targets;
 	std::string targetArray;
 	std::string targetRootTrigger;
+	bool stateTarget = false;
 	std::string targetTrigger;
 	bool targetNonExisting = false;
 	std::string removeTrigger;
@@ -58,6 +60,7 @@ class decision: commonItems::parser
 	std::string customCostText;
 	std::string visible;
 	std::string cancelTrigger;
+	std::string onMapMode;
 	std::string completeEffect;
 	std::string targetedModifier;
 	std::string removeEffect;
