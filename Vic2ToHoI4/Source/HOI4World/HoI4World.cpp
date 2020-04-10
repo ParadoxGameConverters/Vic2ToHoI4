@@ -420,10 +420,10 @@ void HoI4::World::reportIndustryLevels() const
 		dockyards += state.second.getDockyards();
 	}
 
-	LOG(LogLevel::Debug) << "Total factories: " << militaryFactories + civilianFactories + dockyards;
-	LOG(LogLevel::Debug) << "\t" << militaryFactories << " military factories";
-	LOG(LogLevel::Debug) << "\t" << civilianFactories << " civilian factories";
-	LOG(LogLevel::Debug) << "\t" << dockyards << " dockyards";
+	LOG(LogLevel::Info) << "\tTotal factories: " << militaryFactories + civilianFactories + dockyards;
+	LOG(LogLevel::Info) << "\t\t" << militaryFactories << " military factories";
+	LOG(LogLevel::Info) << "\t\t" << civilianFactories << " civilian factories";
+	LOG(LogLevel::Info) << "\t\t" << dockyards << " dockyards";
 }
 
 

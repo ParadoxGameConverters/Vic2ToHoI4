@@ -284,7 +284,7 @@ void HoI4::States::createStates(
 	}
 
 	unsigned int manpower = getTotalManpower();
-	LOG(LogLevel::Debug) << "Total manpower was " << manpower << ", which is " << manpower / 20438756.2 << "% of default HoI4.";
+	LOG(LogLevel::Info) << "\t\tTotal manpower was " << manpower << ", which is " << manpower / 20438756.2 << "% of default HoI4.";
 }
 
 
