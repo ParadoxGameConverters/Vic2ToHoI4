@@ -330,6 +330,7 @@
     <ClCompile Include="Mocks\Vic2StateMock.h" />
     <ClCompile Include="Vic2ToHoI4ConverterTests.cpp" />
     <ClCompile Include="Vic2WorldTests\ProvinceTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\StateDefinitionsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Vic2AgreementTests.cpp" />
     <ClCompile Include="Vic2WorldTests\WarGoalTests.cpp" />
     <ClCompile Include="Vic2WorldTests\WarTests.cpp" />
