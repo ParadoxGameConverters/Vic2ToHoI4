@@ -37,7 +37,7 @@ class World: commonItems::parser
 	std::vector<std::string> getGreatPowers() const { return greatPowers; }
 	virtual std::vector<Party> getParties() const { return parties; }
 	auto getProvinces() const { return provinces; }
-	[[nodiscard]] const auto& getStateDefinitions() const { return theStateDefinitions; }
+	[[nodiscard]] const auto& getStateDefinitions() const { return *theStateDefinitions; }
 
   private:
 	World(const World&) = delete;
@@ -78,7 +78,7 @@ class World: commonItems::parser
 
 	cultureGroups theCultureGroups;
 
-	StateDefinitions theStateDefinitions;
+	std::unique_ptr<StateDefinitions> theStateDefinitions;
 };
 
 

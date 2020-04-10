@@ -1,37 +1,42 @@
 #include "StateDefinitions.h"
-#include "Log.h"
 #include "../Configuration.h"
+#include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 
 
 
-void Vic2::StateDefinitions::initialize()
+std::unique_ptr<Vic2::StateDefinitions> Vic2::StateDefinitions::Parser::parseStateDefinitions()
 {
-	registerKeyword(std::regex("[A-Z0-9\\_]+"), [this](const std::string& stateID, std::istream& theStream){
-		commonItems::intList provinceNumbers(theStream);
+	std::map<int, std::set<int>> stateMap; // < province, all other provinces in state >
+	std::map<int, std::string> provinceToIDMap;
+	std::map<std::string, int> stateToCapitalMap;
 
-		std::set<int> neighbors;
-		for (auto provinceNumber: provinceNumbers.getInts())
-		{
-			neighbors.insert(provinceNumber);
-			provinceToIDMap.insert(std::make_pair(provinceNumber, stateID));
-		}
+	registerKeyword(std::regex("[A-Z0-9\\_]+"),
+		 [&stateMap, &provinceToIDMap, &stateToCapitalMap](const std::string& stateID, std::istream& theStream) {
+			 const commonItems::intList provinceNumbers(theStream);
 
-		for (auto neighbor: neighbors)
-		{
-			stateMap.insert(make_pair(neighbor, neighbors));
-		}
+			 std::set<int> neighbors;
+			 for (auto provinceNumber: provinceNumbers.getInts())
+			 {
+				 neighbors.insert(provinceNumber);
+				 provinceToIDMap.insert(std::make_pair(provinceNumber, stateID));
+			 }
 
-		if (provinceNumbers.getInts().size() > 0)
-		{
-			stateToCapitalMap.insert(std::make_pair(stateID, provinceNumbers.getInts().front()));
-		}
-	});
+			 for (auto neighbor: neighbors)
+			 {
+				 stateMap.insert(make_pair(neighbor, neighbors));
+			 }
+
+			 if (provinceNumbers.getInts().size() > 0)
+			 {
+				 stateToCapitalMap.insert(std::make_pair(stateID, provinceNumbers.getInts().front()));
+			 }
+		 });
 
 	LOG(LogLevel::Info) << "Importing Vic2 states";
 	bool stateMapInitialized = false;
-	for (auto itr: theConfiguration.getVic2Mods())
+	for (const auto& itr: theConfiguration.getVic2Mods())
 	{
 		std::string regionFileName = theConfiguration.getVic2Path() + "/mod/" + itr + "/map/region.txt";
 		if (Utils::DoesFileExist(regionFileName))
@@ -46,6 +51,8 @@ void Vic2::StateDefinitions::initialize()
 	{
 		parseFile(theConfiguration.getVic2Path() + "/map/region.txt");
 	}
+
+	return std::make_unique<StateDefinitions>(stateMap, provinceToIDMap, stateToCapitalMap);
 }
 
 

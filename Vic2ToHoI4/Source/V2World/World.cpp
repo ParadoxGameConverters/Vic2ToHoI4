@@ -22,7 +22,7 @@ Vic2::World::World(const std::string& filename)
 {
 	theCultureGroups.init();
 	issuesInstance.instantiate();
-	theStateDefinitions.initialize();
+	theStateDefinitions = StateDefinitions::Parser{}.parseStateDefinitions();
 	inventions theInventions;
 
 	std::vector<int> GPIndexes;
@@ -40,13 +40,13 @@ Vic2::World::World(const std::string& filename)
 	registerKeyword(std::regex("[A-Z]{3}"),
 		 [&tagsInOrder, &theInventions, this](const std::string& countryTag, std::istream& theStream) {
 			 countries[countryTag] =
-				  new Country(countryTag, theStream, theInventions, theCultureGroups, theStateDefinitions);
+				  new Country(countryTag, theStream, theInventions, theCultureGroups, *theStateDefinitions);
 			 tagsInOrder.push_back(countryTag);
 		 });
 	registerKeyword(std::regex("[A-Z][0-9]{2}"),
 		 [&tagsInOrder, &theInventions, this](const std::string& countryTag, std::istream& theStream) {
 			 countries[countryTag] =
-				  new Country(countryTag, theStream, theInventions, theCultureGroups, theStateDefinitions);
+				  new Country(countryTag, theStream, theInventions, theCultureGroups, *theStateDefinitions);
 			 tagsInOrder.push_back(countryTag);
 		 });
 	registerKeyword(std::regex("diplomacy"), [this](const std::string& top, std::istream& theStream) {
@@ -77,7 +77,7 @@ Vic2::World::World(const std::string& filename)
 	determineEmployedWorkers();
 	overallMergeNations();
 	removeEmptyNations();
-	determinePartialStates(theStateDefinitions);
+	determinePartialStates(*theStateDefinitions);
 	addWarsToCountries(wars);
 	if (diplomacy == nullptr)
 	{
