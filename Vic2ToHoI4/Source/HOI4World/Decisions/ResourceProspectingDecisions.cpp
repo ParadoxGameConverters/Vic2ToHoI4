@@ -5,18 +5,16 @@
 
 
 
-std::optional<int> getRelevantStateFromOldState(
-	const int oldStateNum,
-	const std::map<int, int>& provinceToStateIdMap,
-	const std::map<int, HoI4::DefaultState>& defaultStates
-)
+std::optional<int> getRelevantStateFromOldState(const int oldStateNum,
+	 const std::map<int, int>& provinceToStateIdMap,
+	 const std::map<int, HoI4::DefaultState>& defaultStates)
 {
 	const auto& oldState = defaultStates.find(oldStateNum);
 	if (oldState == defaultStates.end())
 	{
 		return std::nullopt;
 	}
-	
+
 	auto provinces = oldState->second.getProvinces();
 	if (provinces.empty())
 	{
@@ -35,45 +33,33 @@ std::optional<int> getRelevantStateFromOldState(
 
 bool aiWillDoNeedsStripping(const std::string_view decisionName)
 {
-	return
-		decisionName == "develop_nauru_tungsten_deposits" ||
-		decisionName == "develop_nigeria_rubber_plantations" ||
-		decisionName == "develop_newfoundland_steel" ||
-		decisionName == "develop_stalingrad_aluminium_deposits" ||
-		decisionName == "develop_kyzyl_tungsten_deposits" ||
-		decisionName == "develop_chelyabinsk_steel_deposits" ||
-		decisionName == "develop_zlatoust_steel_deposits_1" ||
-		decisionName == "develop_zlatoust_steel_deposits_2" ||
-		decisionName == "develop_kursk_steel_deposits" ||
-		decisionName == "develop_kursk_steel_deposits_2" ||
-		decisionName == "develop_kursk_steel_deposits_3" ||
-		decisionName == "develop_Belgorod_steel_deposits" ||
-		decisionName == "develop_Belgorod_steel_deposits_2" ||
-		decisionName == "develop_Belgorod_steel_deposits_3" ||
-		decisionName == "develop_uralsk_chromium_deposits_1" ||
-		decisionName == "develop_uralsk_chromium_deposits_2" ||
-		decisionName == "develop_cornwall_tungsten_deposits_1" ||
-		decisionName == "develop_caucasus_tungsten_deposits_1" ||
-		decisionName == "develop_caucasus_tungsten_deposits_2";
+	return decisionName == "develop_nauru_tungsten_deposits" || decisionName == "develop_nigeria_rubber_plantations" ||
+			 decisionName == "develop_newfoundland_steel" || decisionName == "develop_stalingrad_aluminium_deposits" ||
+			 decisionName == "develop_kyzyl_tungsten_deposits" || decisionName == "develop_chelyabinsk_steel_deposits" ||
+			 decisionName == "develop_zlatoust_steel_deposits_1" || decisionName == "develop_zlatoust_steel_deposits_2" ||
+			 decisionName == "develop_kursk_steel_deposits" || decisionName == "develop_kursk_steel_deposits_2" ||
+			 decisionName == "develop_kursk_steel_deposits_3" || decisionName == "develop_Belgorod_steel_deposits" ||
+			 decisionName == "develop_Belgorod_steel_deposits_2" || decisionName == "develop_Belgorod_steel_deposits_3" ||
+			 decisionName == "develop_uralsk_chromium_deposits_1" ||
+			 decisionName == "develop_uralsk_chromium_deposits_2" ||
+			 decisionName == "develop_cornwall_tungsten_deposits_1" ||
+			 decisionName == "develop_caucasus_tungsten_deposits_1" ||
+			 decisionName == "develop_caucasus_tungsten_deposits_2";
 }
 
 
 bool allowedNeedsStripping(const std::string_view decisionName)
 {
-	return
-		decisionName == "develop_kirin_aluminium_deposits" ||
-		decisionName == "develop_sirte_oil_fields" ||
-		decisionName == "develop_benghazi_oil_fields";
+	return decisionName == "develop_kirin_aluminium_deposits" || decisionName == "develop_sirte_oil_fields" ||
+			 decisionName == "develop_benghazi_oil_fields";
 }
 
 
-HoI4::decision updateDecision(
-	HoI4::decision decisionToUpdate,
-	const std::map<int, int>& provinceToStateIdMap,
-	const std::map<int, HoI4::DefaultState>& defaultStates
-)
+HoI4::decision updateDecision(HoI4::decision decisionToUpdate,
+	 const std::map<int, int>& provinceToStateIdMap,
+	 const std::map<int, HoI4::DefaultState>& defaultStates)
 {
-	auto highlightStates = decisionToUpdate.getHighlightStates();
+	auto highlightStates = decisionToUpdate.getHighlightStateTargets();
 
 	std::regex stateNumRegex(".+ (\\d+).*");
 	std::smatch match;
@@ -88,12 +74,8 @@ HoI4::decision updateDecision(
 	auto newStateNum = *possibleNewStateNum;
 
 	auto newHighlightStates =
-		std::regex_replace(
-			highlightStates,
-			std::regex(std::to_string(oldStateNum)),
-			std::to_string(newStateNum)
-		);
-	decisionToUpdate.setHighlightStates(newHighlightStates);
+		 std::regex_replace(highlightStates, std::regex(std::to_string(oldStateNum)), std::to_string(newStateNum));
+	decisionToUpdate.setHighlightStateTargets(newHighlightStates);
 
 	if (allowedNeedsStripping(decisionToUpdate.getName()))
 	{
@@ -102,44 +84,29 @@ HoI4::decision updateDecision(
 
 	auto available = decisionToUpdate.getAvailable();
 	auto newAvailable =
-		std::regex_replace(
-			available,
-			std::regex(std::to_string(oldStateNum)),
-			std::to_string(newStateNum)
-		);
+		 std::regex_replace(available, std::regex(std::to_string(oldStateNum)), std::to_string(newStateNum));
 	decisionToUpdate.setAvailable(newAvailable);
 
 	auto visible = decisionToUpdate.getVisible();
-	auto newVisible =
-		std::regex_replace(
-			visible,
-			std::regex(std::to_string(oldStateNum)),
-			std::to_string(newStateNum)
-		);
+	auto newVisible = std::regex_replace(visible, std::regex(std::to_string(oldStateNum)), std::to_string(newStateNum));
 	decisionToUpdate.setVisible(newVisible);
 
 	auto removeEffect = decisionToUpdate.getRemoveEffect();
 	auto newRemoveEffect =
-		std::regex_replace(
-			removeEffect,
-			std::regex(std::to_string(oldStateNum)),
-			std::to_string(newStateNum)
-		);
+		 std::regex_replace(removeEffect, std::regex(std::to_string(oldStateNum)), std::to_string(newStateNum));
 	decisionToUpdate.setRemoveEffect(newRemoveEffect);
 
 	if (aiWillDoNeedsStripping(decisionToUpdate.getName()))
 	{
 		decisionToUpdate.setAiWillDo("= {\n\t\t\tfactor = 1\n\t\t}");
 	}
-	
+
 	return decisionToUpdate;
 }
 
 
-void HoI4::ResourceProspectingDecisions::updateDecisions(
-	const std::map<int, int>& _provinceToStateIdMap,
-	const std::map<int, DefaultState>& defaultStates
-)
+void HoI4::ResourceProspectingDecisions::updateDecisions(const std::map<int, int>& _provinceToStateIdMap,
+	 const std::map<int, DefaultState>& defaultStates)
 {
 	for (auto& category: decisions)
 	{
