@@ -28,7 +28,7 @@ class World: commonItems::parser
 {
   public:
 	World() = default;
-	explicit World(const std::string& filename, Localisations& vic2Localisations);
+	explicit World(const std::string& filename);
 	virtual ~World() = default;
 
 	std::optional<const Province*> getProvince(int provNum) const;
@@ -39,6 +39,7 @@ class World: commonItems::parser
 	virtual std::vector<Party> getParties() const { return parties; }
 	auto getProvinces() const { return provinces; }
 	[[nodiscard]] const auto& getStateDefinitions() const { return *theStateDefinitions; }
+	[[nodiscard]] const auto& getLocalisations() const { return *theLocalisations; }
 
   private:
 	World(const World&) = delete;
@@ -80,6 +81,7 @@ class World: commonItems::parser
 	cultureGroups theCultureGroups;
 
 	std::unique_ptr<StateDefinitions> theStateDefinitions;
+	std::unique_ptr<Localisations> theLocalisations;
 };
 
 

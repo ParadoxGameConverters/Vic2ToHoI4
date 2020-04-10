@@ -28,9 +28,6 @@ class Localisations
 	void processLine(const std::string& line);
 	std::string getNextLocalisation(const std::string& line, int& division);
 
-	Localisations(const Localisations&) = delete;
-	Localisations& operator=(const Localisations&) = delete;
-
 	typedef std::map<std::string, std::string> LanguageToLocalisationMap;
 	typedef std::unordered_map<std::string, LanguageToLocalisationMap> KeyToLocalisationsMap;
 	KeyToLocalisationsMap localisations;

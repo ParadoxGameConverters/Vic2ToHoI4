@@ -74,7 +74,7 @@ class HoI4UnitType;
 class World: commonItems::parser
 {
   public:
-	explicit World(const Vic2::World* sourceWorld, const Vic2::Localisations& vic2Localisations);
+	explicit World(const Vic2::World* sourceWorld);
 	~World() = default;
 
 	[[nodiscard]] auto& getNames() { return theNames; }

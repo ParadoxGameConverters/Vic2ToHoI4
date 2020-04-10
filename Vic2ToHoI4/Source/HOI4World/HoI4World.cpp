@@ -7,6 +7,7 @@
 #include "../V2World/Country.h"
 #include "../V2World/Diplomacy.h"
 #include "../V2World/Party.h"
+#include "../V2World/Vic2Localisations.h"
 #include "../V2World/World.h"
 #include "Decisions/Decisions.h"
 #include "Diplomacy/AiPeacesUpdater.h"
@@ -39,12 +40,14 @@ using namespace std;
 
 
 
-HoI4::World::World(const Vic2::World* _sourceWorld, const Vic2::Localisations& vic2Localisations):
+HoI4::World::World(const Vic2::World* _sourceWorld):
 	 sourceWorld(_sourceWorld), countryMap(_sourceWorld), theIdeas(std::make_unique<HoI4::Ideas>()),
 	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), peaces(make_unique<HoI4::AiPeaces>()),
 	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
 {
 	LOG(LogLevel::Info) << "Building HoI4 World";
+
+	auto vic2Localisations = sourceWorld->getLocalisations();
 
 	theCoastalProvinces.init(theMapData);
 	states = std::make_unique<States>(sourceWorld,

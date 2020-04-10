@@ -14,12 +14,14 @@
 #include "Party.h"
 #include "Province.h"
 #include "State.h"
+#include "Vic2Localisations.h"
 #include <fstream>
 
 
 
-Vic2::World::World(const std::string& filename, Localisations& vic2Localisations)
+Vic2::World::World(const std::string& filename)
 {
+	theLocalisations = std::make_unique<Localisations>();
 	theCultureGroups.init();
 	issuesInstance.instantiate();
 	theStateDefinitions = StateDefinitions::Parser{}.parseStateDefinitions();
@@ -84,7 +86,7 @@ Vic2::World::World(const std::string& filename, Localisations& vic2Localisations
 		diplomacy = new Vic2::Diplomacy();
 	}
 	readCountryFiles();
-	setLocalisations(vic2Localisations);
+	setLocalisations(*theLocalisations);
 	handleMissingCountryCultures();
 
 	checkAllProvincesMapped();
