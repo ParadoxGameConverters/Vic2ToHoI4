@@ -80,7 +80,7 @@ std::string getIdeologicalMinisters(const std::string& ideology)
 	}
 	if (ideology == "communism")
 	{
-		return "\t\t\tOR = { \n"
+		return "\t\t\tOR = {\n"
 				 "\t\t\t\thas_idea_with_trait = communist_revolutionary\n"
 				 "\t\t\t\thas_idea_with_trait = ambitious_union_boss\n"
 				 "\t\t\t}\n";

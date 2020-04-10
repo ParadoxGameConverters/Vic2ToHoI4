@@ -409,6 +409,27 @@ TEST(HoI4World_Decisions_DecisionTests, TargetTriggerCanBeChanged)
 }
 
 
+TEST(HoI4World_Decisions_DecisionTests, TargetNonExistingCanBeSet)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\ttarget_non_existing = yes\n";
+	input << "}";
+	HoI4::decision theDecision("decisionName", input);
+
+	std::stringstream output;
+	output << theDecision;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "\tdecisionName = {\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\ttarget_non_existing = yes\n";
+	expectedOutput << "\t}";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
 TEST(HoI4World_Decisions_DecisionTests, RemoveTriggerCanBeSet)
 {
 	std::stringstream input;
