@@ -12,21 +12,26 @@ void HoI4::ForeignInfluenceDecisions::updateDecisions(const std::set<std::string
 	{
 		std::smatch ideologyMatch;
 		auto decisions = category.getDecisions();
-		decisions.erase(
-			std::remove_if(
-				decisions.begin(),
-				decisions.end(),
-				[&ideologyMatch, &ideologyRegex](auto& decision)
-				{
-					auto visible = decision.getVisible();
-					return !std::regex_search(visible, ideologyMatch, ideologyRegex);
-				}
-			),
-			decisions.end());
+		decisions.erase(std::remove_if(decisions.begin(),
+								  decisions.end(),
+								  [&ideologyMatch, &ideologyRegex](auto& decision) {
+									  if (decision.getName() == "instantiate_collaboration")
+									  {
+										  return false;
+									  }
+									  auto visible = decision.getVisible();
+									  return !std::regex_search(visible, ideologyMatch, ideologyRegex);
+								  }),
+			 decisions.end());
 		category.replaceDecisions(decisions);
 
 		for (auto decision: category.getDecisions())
 		{
+			if (decision.getName() == "instantiate_collaboration")
+			{
+				continue;
+			}
+
 			auto visible = decision.getVisible();
 			std::regex_search(visible, ideologyMatch, ideologyRegex);
 
@@ -62,12 +67,12 @@ void HoI4::ForeignInfluenceDecisions::updateDecisions(const std::set<std::string
 
 std::regex createIdeologyRegex(const std::set<std::string>& majorIdeologies)
 {
-	std::string regexString{ "(" };
-	for (const auto& ideology : majorIdeologies)
+	std::string regexString{"("};
+	for (const auto& ideology: majorIdeologies)
 	{
 		regexString += ideology + "|";
 	}
 	regexString.pop_back();
 	regexString += ")";
-	return std::regex{ regexString };
+	return std::regex{regexString};
 }

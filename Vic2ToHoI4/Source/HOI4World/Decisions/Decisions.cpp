@@ -7,6 +7,8 @@
 
 HoI4::decisions::decisions(const Configuration& theConfiguration)
 {
+	agentRecruitmentDecisions.importDecisions(
+		 theConfiguration.getHoI4Path() + "/common/decisions/lar_agent_recruitment_decisions.txt");
 	stabilityDecisions.importDecisions(theConfiguration.getHoI4Path() + "/common/decisions/stability_war_support.txt");
 	politicalDecisions.importDecisions("ideologicalDecisions.txt");
 	exiledGovernmentsDecisions.importDecisions(
@@ -28,6 +30,7 @@ void HoI4::decisions::updateDecisions(const std::set<std::string>& majorIdeologi
 {
 	LOG(LogLevel::Info) << "\tUpdating decisions";
 
+	agentRecruitmentDecisions.updateDecisions();
 	stabilityDecisions.updateDecisions(majorIdeologies);
 	politicalDecisions.updateDecisions(majorIdeologies, theEvents);
 	exiledGovernmentsDecisions.updateDecisions(majorIdeologies);
