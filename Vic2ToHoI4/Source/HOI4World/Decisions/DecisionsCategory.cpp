@@ -6,7 +6,7 @@
 HoI4::decisionsCategory::decisionsCategory(std::string categoryName, std::istream& theStream):
 	 name(std::move(categoryName))
 {
-	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), [this](const std::string& decisionName, std::istream& theStream) {
+	registerKeyword(std::regex("[A-Za-z0-9_]+"), [this](const std::string& decisionName, std::istream& theStream) {
 		const decision theDecision(decisionName, theStream);
 		theDecisions.push_back(theDecision);
 	});
