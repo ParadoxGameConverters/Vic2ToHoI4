@@ -18,6 +18,7 @@
 #include <vector>
 
 
+class V2Localisations;
 
 namespace Vic2
 {
@@ -54,8 +55,8 @@ class Country: commonItems::parser
 	void eatCountry(Country* target);
 	void putProvincesInStates();
 	void determineEmployedWorkers();
-	void setLocalisationNames();
-	void setLocalisationAdjectives();
+	void setLocalisationNames(V2Localisations& vic2Localisations);
+	void setLocalisationAdjectives(const V2Localisations& vic2Localisations);
 	void handleMissingCulture(const cultureGroups& theCultureGroups);
 
 	std::map<std::string, const Relations*> getRelations() const { return relations; }

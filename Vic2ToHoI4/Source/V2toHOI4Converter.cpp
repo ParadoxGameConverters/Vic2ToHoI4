@@ -2,6 +2,7 @@
 #include "HOI4World/HoI4World.h"
 #include "Log.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
+#include "Mappers/V2Localisations.h"
 #include "OSCompatibilityLayer.h"
 #include "OutHoi4/OutMod.h"
 #include "V2World/World.h"
@@ -21,8 +22,9 @@ void ConvertV2ToHoI4(const std::string& V2SaveFileName)
 
 	theProvinceMapper.initialize();
 
-	Vic2::World sourceWorld(V2SaveFileName);
-	HoI4::World destWorld(&sourceWorld);
+	V2Localisations theVic2Localisations;
+	Vic2::World sourceWorld(V2SaveFileName, theVic2Localisations);
+	HoI4::World destWorld(&sourceWorld, theVic2Localisations);
 
 	output(destWorld,
 		 theConfiguration.getOutputName(),

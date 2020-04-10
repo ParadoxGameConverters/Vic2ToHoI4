@@ -39,7 +39,7 @@ using namespace std;
 
 
 
-HoI4::World::World(const Vic2::World* _sourceWorld):
+HoI4::World::World(const Vic2::World* _sourceWorld, const V2Localisations& vic2Localisations):
 	 sourceWorld(_sourceWorld), countryMap(_sourceWorld), theIdeas(std::make_unique<HoI4::Ideas>()),
 	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), peaces(make_unique<HoI4::AiPeaces>()),
 	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
@@ -47,16 +47,20 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	LOG(LogLevel::Info) << "Building HoI4 World";
 
 	theCoastalProvinces.init(theMapData);
-	states = std::make_unique<States>(sourceWorld, countryMap, theCoastalProvinces, sourceWorld->getStateDefinitions());
+	states = std::make_unique<States>(sourceWorld,
+		 countryMap,
+		 theCoastalProvinces,
+		 sourceWorld->getStateDefinitions(),
+		 vic2Localisations);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates());
 	buildings = new Buildings(*states, theCoastalProvinces, theMapData);
 	theNames.init();
 	theGraphics.init();
 	governmentMap.init();
-	convertCountries();
+	convertCountries(vic2Localisations);
 	addStatesToCountries();
 	states->addCapitalsToStates(countries);
-	HoI4Localisation::addStateLocalisations(*states);
+	HoI4Localisation::addStateLocalisations(*states, vic2Localisations);
 	convertIndustry();
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
@@ -73,16 +77,16 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	setupNavalTreaty();
 
 	importLeaderTraits();
-	convertGovernments();
+	convertGovernments(vic2Localisations);
 	ideologies = std::make_unique<Ideologies>(theConfiguration);
 	ideologies->identifyMajorIdeologies(greatPowers, countries);
 	genericFocusTree.addGenericFocusTree(ideologies->getMajorIdeologies());
 	importIdeologicalMinisters();
-	convertParties();
+	convertParties(vic2Localisations);
 	events->createPoliticalEvents(ideologies->getMajorIdeologies());
 	events->createWarJustificationEvents(ideologies->getMajorIdeologies());
 	events->importElectionEvents(ideologies->getMajorIdeologies(), *onActions);
-	addCountryElectionEvents(ideologies->getMajorIdeologies());
+	addCountryElectionEvents(ideologies->getMajorIdeologies(), vic2Localisations);
 	events->createStabilityEvents(ideologies->getMajorIdeologies());
 	events->generateGenericEvents(theConfiguration, ideologies->getMajorIdeologies());
 	events->giveGovernmentInExileEvent(createGovernmentInExileEvent(ideologies->getMajorIdeologies()));
@@ -133,7 +137,7 @@ shared_ptr<HoI4::Country> HoI4::World::findCountry(const string& countryTag)
 }
 
 
-void HoI4::World::convertCountries()
+void HoI4::World::convertCountries(const V2Localisations& vic2Localisations)
 {
 	LOG(LogLevel::Info) << "\tConverting countries";
 
@@ -143,7 +147,7 @@ void HoI4::World::convertCountries()
 
 	for (auto sourceItr: sourceWorld->getCountries())
 	{
-		convertCountry(sourceItr, flagsToIdeasMapper);
+		convertCountry(sourceItr, flagsToIdeasMapper, vic2Localisations);
 	}
 
 	HoI4Localisation::addNonenglishCountryLocalisations();
@@ -151,7 +155,8 @@ void HoI4::World::convertCountries()
 
 
 void HoI4::World::convertCountry(std::pair<std::string, Vic2::Country*> country,
-	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper)
+	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
+	 const V2Localisations& vic2Localisations)
 {
 	// don't convert rebels
 	if (country.first == "REB")
@@ -170,11 +175,14 @@ void HoI4::World::convertCountry(std::pair<std::string, Vic2::Country*> country,
 		destCountry =
 			 new HoI4::Country(*possibleHoI4Tag, country.second, theNames, theGraphics, countryMap, flagsToIdeasMapper);
 		countries.insert(make_pair(*possibleHoI4Tag, destCountry));
-		HoI4Localisation::createCountryLocalisations(make_pair(country.first, *possibleHoI4Tag), governmentMap);
+		HoI4Localisation::createCountryLocalisations(make_pair(country.first, *possibleHoI4Tag),
+			 governmentMap,
+			 vic2Localisations);
 		HoI4Localisation::updateMainCountryLocalisation(
 			 destCountry->getTag() + "_" + destCountry->getGovernmentIdeology(),
 			 country.first,
-			 country.second->getGovernment());
+			 country.second->getGovernment(),
+			 vic2Localisations);
 	}
 }
 
@@ -202,23 +210,23 @@ void HoI4::World::importIdeologicalMinisters()
 }
 
 
-void HoI4::World::convertGovernments()
+void HoI4::World::convertGovernments(const V2Localisations& vic2Localisations)
 {
 	LOG(LogLevel::Info) << "\tConverting governments";
 	for (auto country: countries)
 	{
-		country.second->convertGovernment(*sourceWorld, governmentMap);
+		country.second->convertGovernment(*sourceWorld, governmentMap, vic2Localisations);
 	}
 }
 
 
-void HoI4::World::convertParties()
+void HoI4::World::convertParties(const V2Localisations& vic2Localisations)
 {
 	LOG(LogLevel::Info) << "\tConverting political parties";
 
 	for (auto country: countries)
 	{
-		country.second->convertParties(ideologies->getMajorIdeologies(), governmentMap);
+		country.second->convertParties(ideologies->getMajorIdeologies(), governmentMap, vic2Localisations);
 	}
 }
 
@@ -899,13 +907,18 @@ void HoI4::World::adjustResearchFocuses()
 }
 
 
-void HoI4::World::addCountryElectionEvents(const std::set<string>& theMajorIdeologies)
+void HoI4::World::addCountryElectionEvents(const std::set<string>& theMajorIdeologies,
+	 const V2Localisations& vic2Localisations)
 {
 	LOG(LogLevel::Info) << "\tAdding country election events";
 
 	for (auto country: countries)
 	{
-		events->addPartyChoiceEvent(country.first, country.second->getParties(), *onActions, theMajorIdeologies);
+		events->addPartyChoiceEvent(country.first,
+			 country.second->getParties(),
+			 *onActions,
+			 theMajorIdeologies,
+			 vic2Localisations);
 	}
 }
 

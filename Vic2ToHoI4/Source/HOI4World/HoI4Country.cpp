@@ -1,34 +1,33 @@
-#include "Diplomacy/HoI4War.h"
 #include "HoI4Country.h"
-#include "HoI4World.h"
-#include "Log.h"
-#include "HoI4Localisation.h"
-#include "Leaders/Advisor.h"
-#include "Names.h"
-#include "MilitaryMappings/MilitaryMappings.h"
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/GovernmentMapper.h"
 #include "../Mappers/GraphicsMapper.h"
 #include "../Mappers/Provinces/ProvinceMapper.h"
 #include "../Mappers/TechMapper.h"
 #include "../V2World/Country.h"
-#include "../V2World/Relations.h"
 #include "../V2World/Party.h"
+#include "../V2World/Relations.h"
 #include "../V2World/World.h"
-#include "../Mappers/Provinces/ProvinceMapper.h"
+#include "Diplomacy/HoI4War.h"
+#include "HoI4Localisation.h"
+#include "HoI4World.h"
+#include "Leaders/Advisor.h"
+#include "Log.h"
+#include "MilitaryMappings/MilitaryMappings.h"
+#include "Names.h"
 #include "OSCompatibilityLayer.h"
 #include <algorithm>
 
 
 
-HoI4::Country::Country(
-	std::string tag,
-	const Vic2::Country* srcCountry,
-	namesMapper& theNames,
-	graphicsMapper& theGraphics,
-	const CountryMapper& countryMap,
-	const mappers::FlagsToIdeasMapper& flagsToIdeasMapper
-): tag(std::move(tag)), sourceCountry(*srcCountry)
+HoI4::Country::Country(std::string tag,
+	 const Vic2::Country* srcCountry,
+	 namesMapper& theNames,
+	 graphicsMapper& theGraphics,
+	 const CountryMapper& countryMap,
+	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper):
+	 tag(std::move(tag)),
+	 sourceCountry(*srcCountry)
 {
 	determineFilename();
 
@@ -55,7 +54,7 @@ HoI4::Country::Country(
 	radicalAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "radical");
 	fascistAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "fascism");
 
-	
+
 	lastElection = sourceCountry.getLastElection();
 	initIdeas(theNames);
 
@@ -69,10 +68,7 @@ HoI4::Country::Country(
 		warAttitude -= sourceCountry.getAverageIssueSupport("anti_military") / 2;
 		warAttitude -= sourceCountry.getAverageIssueSupport("pacifism");
 		warSupport += static_cast<int>(
-			(warAttitude * 0.375)
-			+ (sourceCountry.getRevanchism() / 5.0)
-			- (sourceCountry.getWarExhaustion() / 2.5)
-		);
+			 (warAttitude * 0.375) + (sourceCountry.getRevanchism() / 5.0) - (sourceCountry.getWarExhaustion() / 2.5));
 		if (warSupport < 15)
 		{
 			warSupport = 15;
@@ -132,110 +128,84 @@ void HoI4::Country::determineFilename()
 }
 
 
-void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld, const governmentMapper& governmentMap)
+void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
+	 const governmentMapper& governmentMap,
+	 const V2Localisations& vic2Localisations)
 {
 	auto possibleRulingParty = sourceCountry.getRulingParty(sourceWorld.getParties());
 	if (!possibleRulingParty)
 	{
-		throw std::runtime_error("Could not find the ruling party for " + sourceCountry.getTag() + ". "
-			+ "Most likely a mod was not included.\n"
-			+ "Double-check your settings, and remember to include EU4 to Vic2 mods. See the FAQ for more information."
-		);
+		throw std::runtime_error(
+			 "Could not find the ruling party for " + sourceCountry.getTag() + ". " +
+			 "Most likely a mod was not included.\n" +
+			 "Double-check your settings, and remember to include EU4 to Vic2 mods. See the FAQ for more information.");
 	}
 
 	rulingParty = *possibleRulingParty;
 	auto sourceTag = sourceCountry.getTag();
 	auto sourceGovernment = sourceCountry.getGovernment();
 	auto rulingIdeology = rulingParty.getIdeology();
-	governmentIdeology = governmentMap.getIdeologyForCountry(
-		sourceTag,
-		sourceGovernment,
-		rulingIdeology
-	);
-	leaderIdeology = governmentMap.getLeaderIdeologyForCountry(
-		sourceTag,
-		sourceGovernment,
-		rulingIdeology
-	);
+	governmentIdeology = governmentMap.getIdeologyForCountry(sourceTag, sourceGovernment, rulingIdeology);
+	leaderIdeology = governmentMap.getLeaderIdeologyForCountry(sourceTag, sourceGovernment, rulingIdeology);
 	parties = sourceCountry.getActiveParties(sourceWorld.getParties());
 	for (const auto& party: parties)
 	{
 		auto partyName = party.getName();
 		auto trimmedName = partyName.substr(4, partyName.size());
-		HoI4Localisation::addPoliticalPartyLocalisation(partyName, tag + "_" + trimmedName + "_party");
+		HoI4Localisation::addPoliticalPartyLocalisation(partyName, tag + "_" + trimmedName + "_party", vic2Localisations);
 	}
 
 	convertLaws();
 }
 
 
-void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies, const governmentMapper& governmentMap)
+void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies,
+	 const governmentMapper& governmentMap,
+	 const V2Localisations& vic2Localisations)
 {
 	for (const auto& HoI4Ideology: majorIdeologies)
 	{
 		for (const auto& party: parties)
 		{
-			if (
-				HoI4Ideology == governmentMap.getSupportedIdeology(
-					governmentIdeology,
-					party.getIdeology(),
-					majorIdeologies
-				)
-			)
+			if (HoI4Ideology ==
+				 governmentMap.getSupportedIdeology(governmentIdeology, party.getIdeology(), majorIdeologies))
 			{
-				HoI4Localisation::addPoliticalPartyLocalisation(
-					party.getName(), tag + "_" + HoI4Ideology + "_party"
-				);
+				HoI4Localisation::addPoliticalPartyLocalisation(party.getName(),
+					 tag + "_" + HoI4Ideology + "_party",
+					 vic2Localisations);
 			}
 		}
 	}
-	HoI4Localisation::addPoliticalPartyLocalisation(
-		rulingParty.getName(), tag + "_" + governmentIdeology + "_party"
-	);
+	HoI4Localisation::addPoliticalPartyLocalisation(rulingParty.getName(),
+		 tag + "_" + governmentIdeology + "_party",
+		 vic2Localisations);
 }
 
 
 void HoI4::Country::initIdeas(namesMapper& theNames) const
 {
-	HoI4Localisation::addIdeaLocalisation(
-		tag + "_tank_manufacturer", theNames.takeCarCompanyName(sourceCountry.getPrimaryCulture())
-	);
-	HoI4Localisation::addIdeaLocalisation(
-		tag + "_motorized_equipment_manufacturer",
-		theNames.takeCarCompanyName(sourceCountry.getPrimaryCulture())
-	);
-	HoI4Localisation::addIdeaLocalisation(
-		tag + "_infantry_equipment_manufacturer",
-		theNames.takeWeaponCompanyName(sourceCountry.getPrimaryCulture())
-	);
-	HoI4Localisation::addIdeaLocalisation(
-		tag + "_artillery_manufacturer", theNames.takeWeaponCompanyName(sourceCountry.getPrimaryCulture())
-	);
-	HoI4Localisation::addIdeaLocalisation(
-		tag + "_light_aircraft_manufacturer",
-		theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture())
-	);
-	HoI4Localisation::addIdeaLocalisation(
-		tag + "_medium_aircraft_manufacturer",
-		theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture())
-	);
-	HoI4Localisation::addIdeaLocalisation(
-		tag + "_heavy_aircraft_manufacturer",
-		theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture())
-	);
-	HoI4Localisation::addIdeaLocalisation(
-		tag + "_naval_aircraft_manufacturer",
-		theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture())
-	);
-	HoI4Localisation::addIdeaLocalisation(
-		tag + "_naval_manufacturer", theNames.takeNavalCompanyName(sourceCountry.getPrimaryCulture())
-	);
-	HoI4Localisation::addIdeaLocalisation(
-		tag + "_industrial_concern", theNames.takeIndustryCompanyName(sourceCountry.getPrimaryCulture())
-	);
-	HoI4Localisation::addIdeaLocalisation(
-		tag + "_electronics_concern", theNames.takeElectronicCompanyName(sourceCountry.getPrimaryCulture())
-	);
+	HoI4Localisation::addIdeaLocalisation(tag + "_tank_manufacturer",
+		 theNames.takeCarCompanyName(sourceCountry.getPrimaryCulture()));
+	HoI4Localisation::addIdeaLocalisation(tag + "_motorized_equipment_manufacturer",
+		 theNames.takeCarCompanyName(sourceCountry.getPrimaryCulture()));
+	HoI4Localisation::addIdeaLocalisation(tag + "_infantry_equipment_manufacturer",
+		 theNames.takeWeaponCompanyName(sourceCountry.getPrimaryCulture()));
+	HoI4Localisation::addIdeaLocalisation(tag + "_artillery_manufacturer",
+		 theNames.takeWeaponCompanyName(sourceCountry.getPrimaryCulture()));
+	HoI4Localisation::addIdeaLocalisation(tag + "_light_aircraft_manufacturer",
+		 theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
+	HoI4Localisation::addIdeaLocalisation(tag + "_medium_aircraft_manufacturer",
+		 theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
+	HoI4Localisation::addIdeaLocalisation(tag + "_heavy_aircraft_manufacturer",
+		 theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
+	HoI4Localisation::addIdeaLocalisation(tag + "_naval_aircraft_manufacturer",
+		 theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
+	HoI4Localisation::addIdeaLocalisation(tag + "_naval_manufacturer",
+		 theNames.takeNavalCompanyName(sourceCountry.getPrimaryCulture()));
+	HoI4Localisation::addIdeaLocalisation(tag + "_industrial_concern",
+		 theNames.takeIndustryCompanyName(sourceCountry.getPrimaryCulture()));
+	HoI4Localisation::addIdeaLocalisation(tag + "_electronics_concern",
+		 theNames.takeElectronicCompanyName(sourceCountry.getPrimaryCulture()));
 }
 
 
@@ -316,11 +286,9 @@ void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry, const Cou
 }
 
 
-void HoI4::Country::determineCapitalFromVic2(
-	const provinceMapper& theProvinceMapper,
-	const std::map<int, int>& provinceToStateIDMap,
-	const std::map<int, State>& allStates
-)
+void HoI4::Country::determineCapitalFromVic2(const provinceMapper& theProvinceMapper,
+	 const std::map<int, int>& provinceToStateIDMap,
+	 const std::map<int, State>& allStates)
 {
 	bool success = attemptToPutCapitalInPreferredNonWastelandOwned(theProvinceMapper, provinceToStateIDMap, allStates);
 	if (!success)
@@ -358,19 +326,15 @@ void HoI4::Country::determineCapitalFromVic2(
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandOwned(
-	const provinceMapper& theProvinceMapper,
-	const std::map<int, int>& provinceToStateIDMap,
-	const std::map<int, State>& allStates
-)
+bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandOwned(const provinceMapper& theProvinceMapper,
+	 const std::map<int, int>& provinceToStateIDMap,
+	 const std::map<int, State>& allStates)
 {
 	const auto oldCapital = sourceCountry.getCapital();
 	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
 	{
-		if (
-			const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
-			capitalStateMapping != provinceToStateIDMap.end()
-			)
+		if (const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+			 capitalStateMapping != provinceToStateIDMap.end())
 		{
 			const auto& state = allStates.find(capitalStateMapping->second)->second;
 			if ((state.getOwner() == tag) && !state.isImpassable())
@@ -389,7 +353,7 @@ bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandOwned(
 
 bool HoI4::Country::attemptToPutCapitalInNonWastelandOwned(const std::map<int, State>& allStates)
 {
-	for (auto ownedStateNum : states)
+	for (auto ownedStateNum: states)
 	{
 		if (auto stateAndNum = allStates.find(ownedStateNum); stateAndNum != allStates.end())
 		{
@@ -407,19 +371,15 @@ bool HoI4::Country::attemptToPutCapitalInNonWastelandOwned(const std::map<int, S
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInPreferredWastelandOwned(
-	const provinceMapper& theProvinceMapper,
-	const std::map<int, int>& provinceToStateIDMap,
-	const std::map<int, State>& allStates
-)
+bool HoI4::Country::attemptToPutCapitalInPreferredWastelandOwned(const provinceMapper& theProvinceMapper,
+	 const std::map<int, int>& provinceToStateIDMap,
+	 const std::map<int, State>& allStates)
 {
 	const auto oldCapital = sourceCountry.getCapital();
 	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
 	{
-		if (
-			const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
-			capitalStateMapping != provinceToStateIDMap.end()
-			)
+		if (const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+			 capitalStateMapping != provinceToStateIDMap.end())
 		{
 			const auto& state = allStates.find(capitalStateMapping->second)->second;
 			if (state.getOwner() == tag)
@@ -454,19 +414,15 @@ bool HoI4::Country::attemptToPutCapitalInAnyOwned(const std::map<int, State>& al
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandCored(
-	const provinceMapper& theProvinceMapper,
-	const std::map<int, int>& provinceToStateIDMap,
-	const std::map<int, State>& allStates
-)
+bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandCored(const provinceMapper& theProvinceMapper,
+	 const std::map<int, int>& provinceToStateIDMap,
+	 const std::map<int, State>& allStates)
 {
 	const auto oldCapital = sourceCountry.getCapital();
 	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
 	{
-		if (
-			const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
-			capitalStateMapping != provinceToStateIDMap.end()
-			)
+		if (const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+			 capitalStateMapping != provinceToStateIDMap.end())
 		{
 			const auto& state = allStates.find(capitalStateMapping->second)->second;
 			if ((state.getCores().count(tag) > 0) && !state.isImpassable())
@@ -502,19 +458,15 @@ bool HoI4::Country::attemptToPutCapitalInAnyNonWastelandCored(const std::map<int
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInPreferredWastelandCored(
-	const provinceMapper& theProvinceMapper,
-	const std::map<int, int>& provinceToStateIDMap,
-	const std::map<int, State>& allStates
-)
+bool HoI4::Country::attemptToPutCapitalInPreferredWastelandCored(const provinceMapper& theProvinceMapper,
+	 const std::map<int, int>& provinceToStateIDMap,
+	 const std::map<int, State>& allStates)
 {
 	const auto oldCapital = sourceCountry.getCapital();
 	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
 	{
-		if (
-			const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
-			capitalStateMapping != provinceToStateIDMap.end()
-			)
+		if (const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+			 capitalStateMapping != provinceToStateIDMap.end())
 		{
 			const auto& state = allStates.find(capitalStateMapping->second)->second;
 			if (state.getCores().count(tag) > 0)
@@ -589,24 +541,20 @@ void HoI4::Country::addLeader(HoI4::namesMapper& theNames, graphicsMapper& theGr
 		leaderPortrait = "gfx/leaders/ENG/portrait_eng_fallen_government.dds";
 		leaderName = "Nomen";
 		leaderSurname = "Nescio";
-		// Nescio Nomen (or N.N.) literally means "I don't know the name" and is sometimes used when the name of a person is unknown
+		// Nescio Nomen (or N.N.) literally means "I don't know the name" and is sometimes used when the name of a person
+		// is unknown
 	}
 }
 
 
-void HoI4::Country::convertIdeologySupport(
-	const std::set<std::string>& majorIdeologies,
-	const governmentMapper& governmentMap
-) {
+void HoI4::Country::convertIdeologySupport(const std::set<std::string>& majorIdeologies,
+	 const governmentMapper& governmentMap)
+{
 	ideologySupport.clear();
 
 	for (const auto& upperHouseIdeology: sourceCountry.getUpperHouseComposition())
 	{
-		auto ideology = governmentMap.getSupportedIdeology(
-			governmentIdeology,
-			upperHouseIdeology.first,
-			majorIdeologies
-		);
+		auto ideology = governmentMap.getSupportedIdeology(governmentIdeology, upperHouseIdeology.first, majorIdeologies);
 		auto supportItr = ideologySupport.find(ideology);
 		if (supportItr == ideologySupport.end())
 		{
@@ -640,11 +588,10 @@ void HoI4::Country::determineShipVariants(const PossibleShipVariants& possibleVa
 }
 
 
-void HoI4::Country::convertNavies(
-	const UnitMappings& unitMap,
-	const MtgUnitMappings& mtgUnitMap,
-	const std::map<int, int>& provinceToStateIDMap,
-	const std::map<int, State>& allStates)
+void HoI4::Country::convertNavies(const UnitMappings& unitMap,
+	 const MtgUnitMappings& mtgUnitMap,
+	 const std::map<int, int>& provinceToStateIDMap,
+	 const std::map<int, State>& allStates)
 {
 	auto backupNavalLocation = 0;
 	for (const auto& state: allStates)
@@ -660,174 +607,89 @@ void HoI4::Country::convertNavies(
 		}
 	}
 
-	theNavies = std::make_unique<Navies>(
-		sourceCountry.getArmies(),
-		backupNavalLocation,
-		unitMap,
-		mtgUnitMap,
-		*theShipVariants,
-		provinceToStateIDMap,
-		allStates,
-		tag);
+	theNavies = std::make_unique<Navies>(sourceCountry.getArmies(),
+		 backupNavalLocation,
+		 unitMap,
+		 mtgUnitMap,
+		 *theShipVariants,
+		 provinceToStateIDMap,
+		 allStates,
+		 tag);
 
 	navyNames.addLegacyShipTypeNames(
-		LegacyShipTypeNames{
-			"submarine",
-			"Submarine",
-			sourceCountry.getShipNames("frigate")
-		}
-	);
+		 LegacyShipTypeNames{"submarine", "Submarine", sourceCountry.getShipNames("frigate")});
+	navyNames.addLegacyShipTypeNames(LegacyShipTypeNames{"carrier", "Carrier", sourceCountry.getShipNames("monitor")});
 	navyNames.addLegacyShipTypeNames(
-		LegacyShipTypeNames{
-			"carrier",
-			"Carrier",
-			sourceCountry.getShipNames("monitor")
-		}
-	);
+		 LegacyShipTypeNames{"battleship", "Battleship", sourceCountry.getShipNames("dreadnought")});
 	navyNames.addLegacyShipTypeNames(
-		LegacyShipTypeNames{
-			"battleship",
-			"Battleship",
-			sourceCountry.getShipNames("dreadnought")
-		}
-	);
+		 LegacyShipTypeNames{"battle_cruiser", "Battlecruiser", sourceCountry.getShipNames("ironclad")});
 	navyNames.addLegacyShipTypeNames(
-		LegacyShipTypeNames{
-			"battle_cruiser",
-			"Battlecruiser",
-			sourceCountry.getShipNames("ironclad")
-		}
-	);
+		 LegacyShipTypeNames{"heavy_cruiser", "Heavy Cruiser", sourceCountry.getShipNames("manowar")});
 	navyNames.addLegacyShipTypeNames(
-		LegacyShipTypeNames{
-			"heavy_cruiser",
-			"Heavy Cruiser",
-			sourceCountry.getShipNames("manowar")
-		}
-	);
+		 LegacyShipTypeNames{"destroyer", "Destroyer", sourceCountry.getShipNames("cruiser")});
 	navyNames.addLegacyShipTypeNames(
-		LegacyShipTypeNames{
-			"destroyer",
-			"Destroyer",
-			sourceCountry.getShipNames("cruiser")
-		}
-	);
-	navyNames.addLegacyShipTypeNames(
-		LegacyShipTypeNames{
-			"light_cruiser",
-			"Light Cruiser",
-			sourceCountry.getShipNames("commerce_raider")
-		}
-	);
+		 LegacyShipTypeNames{"light_cruiser", "Light Cruiser", sourceCountry.getShipNames("commerce_raider")});
 
-	navyNames.addMtgShipTypeNames(
-		MtgShipTypeNames{
-			tag + "_DD_HISTORICAL",
-			"NAME_THEME_HISTORICAL_DESTROYERS",
-			std::set<std::string>{"ship_hull_light destroyer"},
-			"Destroyer DD-%d",
-			sourceCountry.getShipNames("cruiser")
-		}
-	);
-	navyNames.addMtgShipTypeNames(
-		MtgShipTypeNames{
-			tag + "_DE_HISTORICAL",
-			"NAME_THEME_HISTORICAL_DE",
-			std::set<std::string>{"ship_hull_light destroyer"},
-			"Destroyer Escort DE-%d",
-			sourceCountry.getShipNames("cruiser")
-		}
-	);
-	navyNames.addMtgShipTypeNames(
-		MtgShipTypeNames{
-			tag + "_CL_HISTORICAL",
-			"NAME_THEME_HISTORICAL_CL",
-			std::set<std::string>{"ship_hull_cruiser light_cruiser"},
-			"Light Cruiser CL-%d",
-			sourceCountry.getShipNames("commerce_raider")
-		}
-	);
-	navyNames.addMtgShipTypeNames(
-		MtgShipTypeNames{
-			tag + "_CL_HISTORICAL",
-			"NAME_THEME_HISTORICAL_CL",
-			std::set<std::string>{"ship_hull_cruiser light_cruiser"},
-			"Light Cruiser CL-%d",
-			sourceCountry.getShipNames("commerce_raider")
-		}
-	);
-	navyNames.addMtgShipTypeNames(
-		MtgShipTypeNames{
-			tag + "_CA_HISTORICAL",
-			"NAME_THEME_HISTORICAL_CA",
-			std::set<std::string>{"ship_hull_cruiser heavy_cruiser"},
-			"Heavy Cruiser CA-%d",
-			sourceCountry.getShipNames("manowar")
-		}
-	);
-	navyNames.addMtgShipTypeNames(
-		MtgShipTypeNames{
-			tag + "_CLAA_HISTORICAL",
-			"NAME_THEME_HISTORICAL_CLAA",
-			std::set<std::string>{"ship_hull_cruiser light_cruiser"},
-			"Light Cruiser CLAA-%d",
-			sourceCountry.getShipNames("commerce_raider")
-		}
-	);
-	navyNames.addMtgShipTypeNames(
-		MtgShipTypeNames{
-			tag + "_MINELAYERS_HISTORICAL",
-			"NAME_THEME_HISTORICAL_MINELAYERS",
-			std::set<std::string>{"ship_hull_cruiser light_cruiser", "ship_hull_light destroyer" },
-			"Minelayer CM-%d",
-			sourceCountry.getShipNames("commerce_raider")
-		}
-	);
-	navyNames.addMtgShipTypeNames(
-		MtgShipTypeNames{
-			tag + "_BB_HISTORICAL",
-			"NAME_THEME_HISTORICAL_BB",
-			std::set<std::string>{"ship_hull_heavy battleship" },
-			"Battleship BB-%d",
-			sourceCountry.getShipNames("dreadnought")
-		}
-	);
-	navyNames.addMtgShipTypeNames(
-		MtgShipTypeNames{
-			tag + "_BC_HISTORICAL",
-			"NAME_THEME_HISTORICAL_BC",
-			std::set<std::string>{"ship_hull_heavy battle_cruiser" },
-			"Battlecruiser BC-%d",
-			sourceCountry.getShipNames("ironclad")
-		}
-	);
-	navyNames.addMtgShipTypeNames(
-		MtgShipTypeNames{
-			tag + "_CV_HISTORICAL",
-			"NAME_THEME_HISTORICAL_CARRIERS",
-			std::set<std::string>{"ship_hull_carrier carrier" },
-			"Carrier CV-%d",
-			sourceCountry.getShipNames("monitor")
-		}
-	);
-	navyNames.addMtgShipTypeNames(
-		MtgShipTypeNames{
-			tag + "_CVL_HISTORICAL",
-			"NAME_THEME_HISTORICAL_CVL",
-			std::set<std::string>{"ship_hull_carrier carrier" },
-			"Carrier CVL-%d",
-			sourceCountry.getShipNames("monitor")
-		}
-	);
-	navyNames.addMtgShipTypeNames(
-		MtgShipTypeNames{
-			tag + "_SS_HISTORICAL",
-			"NAME_THEME_HISTORICAL_SUBMARINES",
-			std::set<std::string>{"ship_hull_submarine submarine" },
-			"Submarine SS-%d",
-			sourceCountry.getShipNames("frigate")
-		}
-	);
+	navyNames.addMtgShipTypeNames(MtgShipTypeNames{tag + "_DD_HISTORICAL",
+		 "NAME_THEME_HISTORICAL_DESTROYERS",
+		 std::set<std::string>{"ship_hull_light destroyer"},
+		 "Destroyer DD-%d",
+		 sourceCountry.getShipNames("cruiser")});
+	navyNames.addMtgShipTypeNames(MtgShipTypeNames{tag + "_DE_HISTORICAL",
+		 "NAME_THEME_HISTORICAL_DE",
+		 std::set<std::string>{"ship_hull_light destroyer"},
+		 "Destroyer Escort DE-%d",
+		 sourceCountry.getShipNames("cruiser")});
+	navyNames.addMtgShipTypeNames(MtgShipTypeNames{tag + "_CL_HISTORICAL",
+		 "NAME_THEME_HISTORICAL_CL",
+		 std::set<std::string>{"ship_hull_cruiser light_cruiser"},
+		 "Light Cruiser CL-%d",
+		 sourceCountry.getShipNames("commerce_raider")});
+	navyNames.addMtgShipTypeNames(MtgShipTypeNames{tag + "_CL_HISTORICAL",
+		 "NAME_THEME_HISTORICAL_CL",
+		 std::set<std::string>{"ship_hull_cruiser light_cruiser"},
+		 "Light Cruiser CL-%d",
+		 sourceCountry.getShipNames("commerce_raider")});
+	navyNames.addMtgShipTypeNames(MtgShipTypeNames{tag + "_CA_HISTORICAL",
+		 "NAME_THEME_HISTORICAL_CA",
+		 std::set<std::string>{"ship_hull_cruiser heavy_cruiser"},
+		 "Heavy Cruiser CA-%d",
+		 sourceCountry.getShipNames("manowar")});
+	navyNames.addMtgShipTypeNames(MtgShipTypeNames{tag + "_CLAA_HISTORICAL",
+		 "NAME_THEME_HISTORICAL_CLAA",
+		 std::set<std::string>{"ship_hull_cruiser light_cruiser"},
+		 "Light Cruiser CLAA-%d",
+		 sourceCountry.getShipNames("commerce_raider")});
+	navyNames.addMtgShipTypeNames(MtgShipTypeNames{tag + "_MINELAYERS_HISTORICAL",
+		 "NAME_THEME_HISTORICAL_MINELAYERS",
+		 std::set<std::string>{"ship_hull_cruiser light_cruiser", "ship_hull_light destroyer"},
+		 "Minelayer CM-%d",
+		 sourceCountry.getShipNames("commerce_raider")});
+	navyNames.addMtgShipTypeNames(MtgShipTypeNames{tag + "_BB_HISTORICAL",
+		 "NAME_THEME_HISTORICAL_BB",
+		 std::set<std::string>{"ship_hull_heavy battleship"},
+		 "Battleship BB-%d",
+		 sourceCountry.getShipNames("dreadnought")});
+	navyNames.addMtgShipTypeNames(MtgShipTypeNames{tag + "_BC_HISTORICAL",
+		 "NAME_THEME_HISTORICAL_BC",
+		 std::set<std::string>{"ship_hull_heavy battle_cruiser"},
+		 "Battlecruiser BC-%d",
+		 sourceCountry.getShipNames("ironclad")});
+	navyNames.addMtgShipTypeNames(MtgShipTypeNames{tag + "_CV_HISTORICAL",
+		 "NAME_THEME_HISTORICAL_CARRIERS",
+		 std::set<std::string>{"ship_hull_carrier carrier"},
+		 "Carrier CV-%d",
+		 sourceCountry.getShipNames("monitor")});
+	navyNames.addMtgShipTypeNames(MtgShipTypeNames{tag + "_CVL_HISTORICAL",
+		 "NAME_THEME_HISTORICAL_CVL",
+		 std::set<std::string>{"ship_hull_carrier carrier"},
+		 "Carrier CVL-%d",
+		 sourceCountry.getShipNames("monitor")});
+	navyNames.addMtgShipTypeNames(MtgShipTypeNames{tag + "_SS_HISTORICAL",
+		 "NAME_THEME_HISTORICAL_SUBMARINES",
+		 std::set<std::string>{"ship_hull_submarine submarine"},
+		 "Submarine SS-%d",
+		 sourceCountry.getShipNames("frigate")});
 }
 
 
@@ -902,20 +764,11 @@ void HoI4::Country::convertArmies(const militaryMappings& theMilitaryMappings, c
 {
 	if (capitalProvince)
 	{
-		theArmy.convertArmies(
-			theMilitaryMappings,
-			*capitalProvince,
-			theConfiguration.getForceMultiplier(),
-			theStates);
+		theArmy.convertArmies(theMilitaryMappings, *capitalProvince, theConfiguration.getForceMultiplier(), theStates);
 	}
 	else
 	{
-		theArmy.convertArmies(
-			theMilitaryMappings,
-			0,
-			theConfiguration.getForceMultiplier(),
-			theStates
-		);
+		theArmy.convertArmies(theMilitaryMappings, 0, theConfiguration.getForceMultiplier(), theStates);
 	}
 }
 
@@ -1010,15 +863,8 @@ double HoI4::Country::getEconomicStrength(const double& years) const
 	constexpr auto daysPerYear = 365;
 
 	const auto militarySectorStrength = militaryFactories * 3 * daysPerYear * years;
-	const auto civilianSectorStrength =
-		civilianFactories
-		* militaryFactoriesPerYear
-		* factoriesUsedForConsumerGoods
-		* factoriesUsedForConsumerGoods
-		* 3
-		* daysPerYear
-		* years
-		* years;
+	const auto civilianSectorStrength = civilianFactories * militaryFactoriesPerYear * factoriesUsedForConsumerGoods *
+													factoriesUsedForConsumerGoods * 3 * daysPerYear * years * years;
 
 	return militarySectorStrength + civilianSectorStrength;
 }
@@ -1026,16 +872,10 @@ double HoI4::Country::getEconomicStrength(const double& years) const
 
 bool HoI4::Country::areElectionsAllowed() const
 {
-	return
-		(governmentIdeology == "democratic") ||
-		(
-			(governmentIdeology == "neutrality") &&
-			(
-				(leaderIdeology == "conservatism_neutral") ||
-				(leaderIdeology == "liberalism_neutral") ||
-				(leaderIdeology == "socialism_neutral")
-			)
-		);
+	return (governmentIdeology == "democratic") ||
+			 ((governmentIdeology == "neutrality") &&
+				  ((leaderIdeology == "conservatism_neutral") || (leaderIdeology == "liberalism_neutral") ||
+						(leaderIdeology == "socialism_neutral")));
 }
 
 
@@ -1064,7 +904,7 @@ std::optional<HoI4FocusTree> HoI4::Country::getNationalFocus() const
 	}
 }
 
-//Calculates Influence Factor = Σ Outside Influence - 1.5 * Leader Influence
+// Calculates Influence Factor = Σ Outside Influence - 1.5 * Leader Influence
 double HoI4::Country::calculateInfluenceFactor()
 {
 	if (sphereLeader.empty())
@@ -1086,8 +926,8 @@ double HoI4::Country::calculateInfluenceFactor()
 				influenceFactor -= 1.5 * influenceItr.second;
 			}
 		}
-		//1 is used because if freedom_level is too close to 0 (how close?)
-		//it's displayed ingame as being halfway: 0.5 instead of 0.0000something
+		// 1 is used because if freedom_level is too close to 0 (how close?)
+		// it's displayed ingame as being halfway: 0.5 instead of 0.0000something
 		return std::clamp(influenceFactor, 1.0, 100.0);
 	}
 }

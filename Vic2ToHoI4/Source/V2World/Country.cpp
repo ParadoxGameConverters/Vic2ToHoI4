@@ -249,13 +249,13 @@ void Vic2::Country::determineEmployedWorkers()
 }
 
 
-void Vic2::Country::setLocalisationNames()
+void Vic2::Country::setLocalisationNames(V2Localisations& vic2Localisations)
 {
 	if (!domainName.empty())
 	{
-		V2Localisations::UpdateDomainCountry(tag, domainName);
+		vic2Localisations.updateDomainCountry(tag, domainName);
 	}
-	auto nameInAllLanguages = V2Localisations::GetTextInEachLanguage(tag);
+	auto nameInAllLanguages = vic2Localisations.getTextInEachLanguage(tag);
 	for (auto nameInLanguage: nameInAllLanguages)
 	{
 		setLocalisationName(nameInLanguage.first, nameInLanguage.second);
@@ -276,9 +276,9 @@ void Vic2::Country::setLocalisationName(const string& language, const string& na
 }
 
 
-void Vic2::Country::setLocalisationAdjectives()
+void Vic2::Country::setLocalisationAdjectives(const V2Localisations& vic2Localisations)
 {
-	auto adjectiveInAllLanguages = V2Localisations::GetTextInEachLanguage(tag + "_ADJ");
+	auto adjectiveInAllLanguages = vic2Localisations.getTextInEachLanguage(tag + "_ADJ");
 	for (auto adjectiveinLanguage: adjectiveInAllLanguages)
 	{
 		setLocalisationAdjective(adjectiveinLanguage.first, adjectiveinLanguage.second);

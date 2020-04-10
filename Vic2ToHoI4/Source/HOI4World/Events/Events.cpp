@@ -1153,7 +1153,8 @@ constexpr int tagAndDashSize = 4;
 void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag,
 	 const std::set<Vic2::Party>& parties,
 	 OnActions& onActions,
-	 const std::set<std::string>& majorIdeologies)
+	 const std::set<std::string>& majorIdeologies,
+	 const V2Localisations& vic2Localisations)
 {
 	Event partyChoiceEvent;
 
@@ -1191,7 +1192,7 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag,
 			auto trimmedName = partyName.substr(tagAndDashSize, partyName.size());
 
 			auto optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
-			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName);
+			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName, vic2Localisations);
 			EventOption option;
 			option.giveName(std::move(optionName));
 			if (majorIdeologies.count("democratic") > 0)
@@ -1228,7 +1229,7 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag,
 
 			auto optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
 			EventOption option;
-			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName);
+			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName, vic2Localisations);
 			option.giveName(std::move(optionName));
 			if (majorIdeologies.count("democratic") > 0)
 			{
@@ -1263,7 +1264,7 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag,
 			auto trimmedName = partyName.substr(tagAndDashSize, partyName.size());
 
 			auto optionName = "election." + std::to_string(electionEventNumber) + optionLetter;
-			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName);
+			HoI4Localisation::addEventLocalisationFromVic2(partyName, optionName, vic2Localisations);
 			EventOption option;
 			option.giveName(std::move(optionName));
 			if (majorIdeologies.count("democratic") > 0)

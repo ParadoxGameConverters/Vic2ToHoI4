@@ -1,41 +1,12 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "V2Localisations.h"
-#include <fstream>
 #include "../Configuration.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
+#include <fstream>
 
 
 
-V2Localisations* V2Localisations::instance = NULL;
-
-
-
-V2Localisations::V2Localisations() noexcept:
-	localisations(),
-	localisationToKeyMap()
+V2Localisations::V2Localisations() noexcept: localisations(), localisationToKeyMap()
 {
 	LOG(LogLevel::Info) << "Reading localisation";
 
@@ -84,7 +55,19 @@ void V2Localisations::ReadFromFile(const string& fileName)
 }
 
 
-const string languages[] = { "english", "french", "german", "polish", "spanish", "italian", "swedish", "czech", "hungarian", "dutch", "braz_por", "russian", "finnish" };
+const string languages[] = {"english",
+	 "french",
+	 "german",
+	 "polish",
+	 "spanish",
+	 "italian",
+	 "swedish",
+	 "czech",
+	 "hungarian",
+	 "dutch",
+	 "braz_por",
+	 "russian",
+	 "finnish"};
 void V2Localisations::processLine(const std::string& line)
 {
 	int division = line.find_first_of(';');
@@ -94,20 +77,22 @@ void V2Localisations::processLine(const std::string& line)
 	{
 		string result = getNextLocalisation(line, division);
 		std::string UTF8Result;
-		
-		if ( language == "english" || language == "french" || language == "german" || language == "spanish" || language == "italian" || language == "dutch" || language == "braz_por" || language == "finnish" )
+
+		if (language == "english" || language == "french" || language == "german" || language == "spanish" ||
+			 language == "italian" || language == "dutch" || language == "braz_por" || language == "finnish")
 		{
 			UTF8Result = Utils::convertWin1252ToUTF8(result);
 		}
-		if ( language == "polish" || language == "swedish" || language == "czech" || language == "hungarian" ) //Swedish = Hungarian again
+		if (language == "polish" || language == "swedish" || language == "czech" ||
+			 language == "hungarian") // Swedish = Hungarian again
 		{
 			UTF8Result = Utils::convertWin1250ToUTF8(result);
 		}
-		if ( language == "russian" )
+		if (language == "russian")
 		{
 			UTF8Result = Utils::convertWin1251ToUTF8(result);
 		}
-			
+
 		if (language == "english")
 		{
 			localisationToKeyMap[UTF8Result] = key;
@@ -133,7 +118,7 @@ string V2Localisations::getNextLocalisation(const std::string& line, int& divisi
 }
 
 
-void V2Localisations::ActuallyUpdateDomainCountry(const string& tag, const string& domainName)
+void V2Localisations::updateDomainCountry(const string& tag, const string& domainName)
 {
 	LanguageToLocalisationMap regionLocalisations;
 	const auto domainKey = localisationToKeyMap.find(domainName);
@@ -156,7 +141,7 @@ void V2Localisations::ActuallyUpdateDomainCountry(const string& tag, const strin
 	}
 	auto nameInAllLanguages = KeyToLocalisationsMappings->second;
 
-	for (auto nameInLanguage : nameInAllLanguages)
+	for (auto nameInLanguage: nameInAllLanguages)
 	{
 		string replacementName = domainName;
 		auto replacementLocalisation = regionLocalisations.find(nameInLanguage.first);
@@ -166,7 +151,8 @@ void V2Localisations::ActuallyUpdateDomainCountry(const string& tag, const strin
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not find regions localisation for " << domainName << " in " << nameInLanguage.first;
+			LOG(LogLevel::Warning) << "Could not find regions localisation for " << domainName << " in "
+										  << nameInLanguage.first;
 		}
 		string updatedName = nameInLanguage.second;
 		size_t regionPos = updatedName.find("$REGION$");
@@ -179,7 +165,7 @@ void V2Localisations::ActuallyUpdateDomainCountry(const string& tag, const strin
 }
 
 
-const optional<string> V2Localisations::ActuallyGetTextInLanguage(const string& key, const string& language) const
+const optional<string> V2Localisations::getTextInLanguage(const string& key, const string& language) const
 {
 	const auto KeyToLocalisationsMapping = localisations.find(key);
 	if (KeyToLocalisationsMapping == localisations.end())
@@ -197,7 +183,7 @@ const optional<string> V2Localisations::ActuallyGetTextInLanguage(const string& 
 }
 
 
-const map<string, string> V2Localisations::ActuallyGetTextInEachLanguage(const string& key) const
+const map<string, string> V2Localisations::getTextInEachLanguage(const string& key) const
 {
 	static const map<string, string> noLocalisations;
 

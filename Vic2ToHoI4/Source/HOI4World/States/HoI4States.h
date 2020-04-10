@@ -13,7 +13,7 @@
 #include <vector>
 
 
-
+class V2Localisations;
 class CountryMapper;
 
 
@@ -43,7 +43,8 @@ class States: commonItems::parser
 	explicit States(const Vic2::World* sourceWorld,
 		 const CountryMapper& countryMap,
 		 const HoI4::CoastalProvinces& theCoastalProvinces,
-		 const Vic2::StateDefinitions& theStateDefinitions);
+		 const Vic2::StateDefinitions& theStateDefinitions,
+		 const V2Localisations& vic2Localisations);
 
 	const std::map<int, HoI4::DefaultState>& getDefaultStates() const { return defaultStates; }
 	const std::map<int, HoI4::State>& getStates() const { return states; }
@@ -76,13 +77,15 @@ class States: commonItems::parser
 		 const HoI4::ImpassableProvinces& theImpassables,
 		 const CountryMapper& countryMap,
 		 const HoI4::CoastalProvinces& theCoastalProvinces,
-		 const Vic2::StateDefinitions& theStateDefinitions);
+		 const Vic2::StateDefinitions& theStateDefinitions,
+		 const V2Localisations& vic2Localisations);
 	void createMatchingHoI4State(const Vic2::State* vic2State,
 		 const std::string& stateOwner,
 		 const HoI4::ImpassableProvinces& theImpassables,
 		 const CountryMapper& countryMapper,
 		 const HoI4::CoastalProvinces& theCoastalProvinces,
-		 const Vic2::StateDefinitions& theStateDefinitions);
+		 const Vic2::StateDefinitions& theStateDefinitions,
+		 const V2Localisations& vic2Localisations);
 	std::set<int> getProvincesInState(const Vic2::State* vic2State, const std::string& owner);
 	void addProvincesAndCoresToNewState(HoI4::State& newState, const std::set<int>& provinces);
 	bool isProvinceValid(int provNum) const;

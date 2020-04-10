@@ -12,6 +12,7 @@
 #include <string>
 
 
+class V2Localisations;
 
 namespace HoI4
 {
@@ -39,7 +40,8 @@ class Events: commonItems::parser
 	void addPartyChoiceEvent(const std::string& countryTag,
 		 const std::set<Vic2::Party>& parties,
 		 OnActions& onActions,
-		 const std::set<std::string>& majorIdeologies);
+		 const std::set<std::string>& majorIdeologies,
+		 const V2Localisations& vic2Localisations);
 	void createStabilityEvents(const std::set<std::string>& majorIdeologies);
 	void generateGenericEvents(const Configuration& theConfiguration, const std::set<std::string>& majorIdeologies);
 

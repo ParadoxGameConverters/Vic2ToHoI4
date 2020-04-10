@@ -18,7 +18,7 @@
 
 
 
-Vic2::World::World(const std::string& filename)
+Vic2::World::World(const std::string& filename, V2Localisations& vic2Localisations)
 {
 	theCultureGroups.init();
 	issuesInstance.instantiate();
@@ -84,7 +84,7 @@ Vic2::World::World(const std::string& filename)
 		diplomacy = new Vic2::Diplomacy();
 	}
 	readCountryFiles();
-	setLocalisations();
+	setLocalisations(vic2Localisations);
 	handleMissingCountryCultures();
 
 	checkAllProvincesMapped();
@@ -397,12 +397,12 @@ std::optional<Vic2::Country*> Vic2::World::getCountry(const std::string& tag) co
 }
 
 
-void Vic2::World::setLocalisations()
+void Vic2::World::setLocalisations(V2Localisations& vic2Localisations)
 {
 	for (auto country: countries)
 	{
-		country.second->setLocalisationNames();
-		country.second->setLocalisationAdjectives();
+		country.second->setLocalisationNames(vic2Localisations);
+		country.second->setLocalisationAdjectives(vic2Localisations);
 	}
 }
 
