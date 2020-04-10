@@ -25,9 +25,9 @@ Vic2::Localisations::Localisations() noexcept: localisations(), localisationToKe
 }
 
 
-void Vic2::Localisations::ReadFromAllFilesInFolder(const string& folderPath)
+void Vic2::Localisations::ReadFromAllFilesInFolder(const std::string& folderPath)
 {
-	set<string> fileNames;
+	std::set<std::string> fileNames;
 	Utils::GetAllFilesInFolder(folderPath, fileNames);
 
 	for (const auto& fileName: fileNames)
@@ -37,13 +37,13 @@ void Vic2::Localisations::ReadFromAllFilesInFolder(const string& folderPath)
 }
 
 
-void Vic2::Localisations::ReadFromFile(const string& fileName)
+void Vic2::Localisations::ReadFromFile(const std::string& fileName)
 {
-	ifstream in(fileName);
+	std::ifstream in(fileName);
 
 	while (!in.eof())
 	{
-		string line;
+		std::string line;
 		getline(in, line);
 		if (line[0] != '#')
 		{
@@ -55,7 +55,7 @@ void Vic2::Localisations::ReadFromFile(const string& fileName)
 }
 
 
-const string languages[] = {"english",
+const std::string languages[] = {"english",
 	 "french",
 	 "german",
 	 "polish",
@@ -71,11 +71,11 @@ const string languages[] = {"english",
 void Vic2::Localisations::processLine(const std::string& line)
 {
 	int division = line.find_first_of(';');
-	string key = line.substr(0, division);
+	std::string key = line.substr(0, division);
 
 	for (auto language: languages)
 	{
-		string result = getNextLocalisation(line, division);
+		std::string result = getNextLocalisation(line, division);
 		std::string UTF8Result;
 
 		if (language == "english" || language == "french" || language == "german" || language == "spanish" ||
@@ -110,7 +110,7 @@ void Vic2::Localisations::processLine(const std::string& line)
 }
 
 
-string Vic2::Localisations::getNextLocalisation(const std::string& line, int& division)
+std::string Vic2::Localisations::getNextLocalisation(const std::string& line, int& division)
 {
 	int frontDivision = division + 1;
 	division = line.find_first_of(';', frontDivision);
@@ -118,7 +118,7 @@ string Vic2::Localisations::getNextLocalisation(const std::string& line, int& di
 }
 
 
-void Vic2::Localisations::updateDomainCountry(const string& tag, const string& domainName)
+void Vic2::Localisations::updateDomainCountry(const std::string& tag, const std::string& domainName)
 {
 	LanguageToLocalisationMap regionLocalisations;
 	const auto domainKey = localisationToKeyMap.find(domainName);
@@ -143,7 +143,7 @@ void Vic2::Localisations::updateDomainCountry(const string& tag, const string& d
 
 	for (auto nameInLanguage: nameInAllLanguages)
 	{
-		string replacementName = domainName;
+		std::string replacementName = domainName;
 		auto replacementLocalisation = regionLocalisations.find(nameInLanguage.first);
 		if (replacementLocalisation != regionLocalisations.end())
 		{
@@ -154,9 +154,9 @@ void Vic2::Localisations::updateDomainCountry(const string& tag, const string& d
 			LOG(LogLevel::Warning) << "Could not find regions localisation for " << domainName << " in "
 										  << nameInLanguage.first;
 		}
-		string updatedName = nameInLanguage.second;
+		std::string updatedName = nameInLanguage.second;
 		size_t regionPos = updatedName.find("$REGION$");
-		if (regionPos != string::npos)
+		if (regionPos != std::string::npos)
 		{
 			updatedName.replace(regionPos, 8, replacementName);
 			KeyToLocalisationsMappings->second[nameInLanguage.first] = updatedName;
@@ -165,7 +165,8 @@ void Vic2::Localisations::updateDomainCountry(const string& tag, const string& d
 }
 
 
-const optional<string> Vic2::Localisations::getTextInLanguage(const string& key, const string& language) const
+const std::optional<std::string> Vic2::Localisations::getTextInLanguage(const std::string& key,
+	 const std::string& language) const
 {
 	const auto KeyToLocalisationsMapping = localisations.find(key);
 	if (KeyToLocalisationsMapping == localisations.end())
@@ -183,9 +184,9 @@ const optional<string> Vic2::Localisations::getTextInLanguage(const string& key,
 }
 
 
-const map<string, string> Vic2::Localisations::getTextInEachLanguage(const string& key) const
+const std::map<std::string, std::string> Vic2::Localisations::getTextInEachLanguage(const std::string& key) const
 {
-	static const map<string, string> noLocalisations;
+	static const std::map<std::string, std::string> noLocalisations;
 
 	const auto KeyToLocalisationsMappings = localisations.find(key);
 	if (KeyToLocalisationsMappings == localisations.end())

@@ -263,7 +263,7 @@ void Vic2::Country::setLocalisationNames(Localisations& vic2Localisations)
 }
 
 
-void Vic2::Country::setLocalisationName(const string& language, const string& name)
+void Vic2::Country::setLocalisationName(const std::string& language, const std::string& name)
 {
 	if (!domainName.empty())
 	{
@@ -305,15 +305,15 @@ void Vic2::Country::handleMissingCulture(const cultureGroups& theCultureGroups)
 }
 
 
-map<string, int> Vic2::Country::determineCultureSizes()
+std::map<std::string, int> Vic2::Country::determineCultureSizes()
 {
-	map<string, int> cultureSizes;
+	std::map<std::string, int> cultureSizes;
 
 	for (auto province: provinces)
 	{
 		for (auto pop: province.second->getPops())
 		{
-			string popCulture = pop.getCulture();
+			std::string popCulture = pop.getCulture();
 			auto cultureSize = cultureSizes.find(popCulture);
 			if (cultureSize == cultureSizes.end())
 			{
@@ -328,9 +328,9 @@ map<string, int> Vic2::Country::determineCultureSizes()
 }
 
 
-string Vic2::Country::selectLargestCulture(const map<string, int>& cultureSizes)
+std::string Vic2::Country::selectLargestCulture(const std::map<std::string, int>& cultureSizes)
 {
-	string largestCulture;
+	std::string largestCulture;
 	int largestCultureSize = 0;
 	for (auto cultureSize: cultureSizes)
 	{
@@ -345,7 +345,7 @@ string Vic2::Country::selectLargestCulture(const map<string, int>& cultureSizes)
 }
 
 
-void Vic2::Country::setLocalisationAdjective(const string& language, const string& adjective)
+void Vic2::Country::setLocalisationAdjective(const std::string& language, const std::string& adjective)
 {
 	if (!domainAdjective.empty()) // Domains have their adjective set from domain_region
 	{
@@ -368,9 +368,9 @@ std::string Vic2::Country::getIdentifier() const
 	return ret;
 }
 
-optional<string> Vic2::Country::getName(const string& language) const
+std::optional<std::string> Vic2::Country::getName(const std::string& language) const
 {
-	map<string, string>::const_iterator findIter = namesByLanguage.find(language);
+	std::map<std::string, std::string>::const_iterator findIter = namesByLanguage.find(language);
 	if (findIter != namesByLanguage.end())
 	{
 		return findIter->second;
@@ -382,9 +382,9 @@ optional<string> Vic2::Country::getName(const string& language) const
 }
 
 
-optional<string> Vic2::Country::getAdjective(const string& language) const
+std::optional<std::string> Vic2::Country::getAdjective(const std::string& language) const
 {
-	map<string, string>::const_iterator findIter = adjectivesByLanguage.find(language);
+	std::map<std::string, std::string>::const_iterator findIter = adjectivesByLanguage.find(language);
 	if (findIter != adjectivesByLanguage.end())
 	{
 		return findIter->second;
@@ -396,9 +396,9 @@ optional<string> Vic2::Country::getAdjective(const string& language) const
 }
 
 
-double Vic2::Country::getUpperHousePercentage(const string& ideology) const
+double Vic2::Country::getUpperHousePercentage(const std::string& ideology) const
 {
-	map<string, double>::const_iterator itr = upperHouseComposition.find(ideology);
+	std::map<std::string, double>::const_iterator itr = upperHouseComposition.find(ideology);
 	if (itr == upperHouseComposition.end())
 	{
 		return 0.0;
@@ -420,7 +420,7 @@ long Vic2::Country::getEmployedWorkers() const
 }
 
 
-optional<const Vic2::Party> Vic2::Country::getRulingParty(const vector<Vic2::Party>& allParties) const
+std::optional<const Vic2::Party> Vic2::Country::getRulingParty(const std::vector<Vic2::Party>& allParties) const
 {
 	if ((rulingPartyID <= allParties.size()) && (rulingPartyID > 0))
 	{
@@ -466,12 +466,12 @@ bool Vic2::Country::hasCoreOnCapital() const
 	return false;
 }
 
-vector<string> Vic2::Country::getShipNames(const string& category) const
+std::vector<std::string> Vic2::Country::getShipNames(const std::string& category) const
 {
 	auto foundShipNames = shipNames.find(category);
 	if (foundShipNames == shipNames.end())
 	{
-		return vector<string>();
+		return std::vector<std::string>();
 	}
 	return foundShipNames->second;
 }

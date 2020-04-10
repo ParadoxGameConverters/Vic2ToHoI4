@@ -7,7 +7,6 @@
 #include <optional>
 #include <string>
 #include <unordered_map>
-using namespace std;
 
 
 
@@ -19,24 +18,24 @@ class Localisations
   public:
 	Localisations() noexcept;
 
-	const optional<string> getTextInLanguage(const string& key, const string& language) const;
-	const map<string, string> getTextInEachLanguage(const string& key) const;
-	void updateDomainCountry(const string& tag, const string& dominionName);
+	const std::optional<std::string> getTextInLanguage(const std::string& key, const std::string& language) const;
+	const std::map<std::string, std::string> getTextInEachLanguage(const std::string& key) const;
+	void updateDomainCountry(const std::string& tag, const std::string& dominionName);
 
   private:
-	void ReadFromAllFilesInFolder(const string& folderPath);
-	void ReadFromFile(const string& fileName);
+	void ReadFromAllFilesInFolder(const std::string& folderPath);
+	void ReadFromFile(const std::string& fileName);
 	void processLine(const std::string& line);
-	string getNextLocalisation(const std::string& line, int& division);
+	std::string getNextLocalisation(const std::string& line, int& division);
 
 	Localisations(const Localisations&) = delete;
 	Localisations& operator=(const Localisations&) = delete;
 
-	typedef map<string, string> LanguageToLocalisationMap;
-	typedef unordered_map<string, LanguageToLocalisationMap> KeyToLocalisationsMap;
+	typedef std::map<std::string, std::string> LanguageToLocalisationMap;
+	typedef std::unordered_map<std::string, LanguageToLocalisationMap> KeyToLocalisationsMap;
 	KeyToLocalisationsMap localisations;
 
-	map<string, string> localisationToKeyMap;
+	std::map<std::string, std::string> localisationToKeyMap;
 };
 
 } // namespace Vic2
