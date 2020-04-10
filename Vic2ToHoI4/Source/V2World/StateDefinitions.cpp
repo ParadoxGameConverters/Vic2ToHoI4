@@ -14,10 +14,11 @@ std::unique_ptr<Vic2::StateDefinitions> Vic2::StateDefinitions::Parser::parseSta
 
 	registerKeyword(std::regex("[A-Z0-9\\_]+"),
 		 [&stateMap, &provinceToIDMap, &stateToCapitalMap](const std::string& stateID, std::istream& theStream) {
-			 const commonItems::intList provinceNumbers(theStream);
+			 const commonItems::intList provinceNumbersList(theStream);
+			 const auto provinceNumbers = provinceNumbersList.getInts();
 
 			 std::set<int> neighbors;
-			 for (auto provinceNumber: provinceNumbers.getInts())
+			 for (auto provinceNumber: provinceNumbers)
 			 {
 				 neighbors.insert(provinceNumber);
 				 provinceToIDMap.insert(std::make_pair(provinceNumber, stateID));
@@ -28,17 +29,17 @@ std::unique_ptr<Vic2::StateDefinitions> Vic2::StateDefinitions::Parser::parseSta
 				 stateMap.insert(make_pair(neighbor, neighbors));
 			 }
 
-			 if (provinceNumbers.getInts().size() > 0)
+			 if (!provinceNumbers.empty())
 			 {
-				 stateToCapitalMap.insert(std::make_pair(stateID, provinceNumbers.getInts().front()));
+				 stateToCapitalMap.insert(std::make_pair(stateID, provinceNumbers.front()));
 			 }
 		 });
 
 	LOG(LogLevel::Info) << "Importing Vic2 states";
-	bool stateMapInitialized = false;
+	auto stateMapInitialized = false;
 	for (const auto& itr: theConfiguration.getVic2Mods())
 	{
-		std::string regionFileName = theConfiguration.getVic2Path() + "/mod/" + itr + "/map/region.txt";
+		const auto regionFileName = theConfiguration.getVic2Path() + "/mod/" + itr + "/map/region.txt";
 		if (Utils::DoesFileExist(regionFileName))
 		{
 			parseFile(regionFileName);
@@ -56,23 +57,22 @@ std::unique_ptr<Vic2::StateDefinitions> Vic2::StateDefinitions::Parser::parseSta
 }
 
 
-std::set<int> Vic2::StateDefinitions::getAllProvinces(int provinceNumber) const
+std::set<int> Vic2::StateDefinitions::getAllProvinces(const int provinceNumber) const
 {
-	if (auto mapping = stateMap.find(provinceNumber); mapping != stateMap.end())
+	if (const auto mapping = stateMap.find(provinceNumber); mapping != stateMap.end())
 	{
 		return mapping->second;
 	}
 	else
 	{
-		std::set<int> empty;
-		return empty;
+		return std::set<int>{};
 	}
 }
 
 
-std::optional<std::string> Vic2::StateDefinitions::getStateID(int provinceNumber) const
+std::optional<std::string> Vic2::StateDefinitions::getStateID(const int provinceNumber) const
 {
-	if (auto mapping = provinceToIDMap.find(provinceNumber); mapping != provinceToIDMap.end())
+	if (const auto mapping = provinceToIDMap.find(provinceNumber); mapping != provinceToIDMap.end())
 	{
 		return mapping->second;
 	}
@@ -85,12 +85,12 @@ std::optional<std::string> Vic2::StateDefinitions::getStateID(int provinceNumber
 
 std::optional<int> Vic2::StateDefinitions::getCapitalProvince(const std::string& stateID) const
 {
-	if (auto mapping = stateToCapitalMap.find(stateID); mapping != stateToCapitalMap.end())
+	if (const auto mapping = stateToCapitalMap.find(stateID); mapping != stateToCapitalMap.end())
 	{
 		return mapping->second;
 	}
 	else
 	{
-		return {};
+		return std::nullopt;
 	}
 }

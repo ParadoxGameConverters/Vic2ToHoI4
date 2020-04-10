@@ -18,6 +18,7 @@ class StateDefinitions
 {
   public:
 	class Parser;
+
 	StateDefinitions(std::map<int, std::set<int>> stateMap,
 		 std::map<int, std::string> provinceToIDMap,
 		 std::map<std::string, int> stateToCapitalMap):
@@ -26,9 +27,9 @@ class StateDefinitions
 	{
 	}
 
-	std::set<int> getAllProvinces(int provinceNumber) const;
-	std::optional<std::string> getStateID(int provinceNumber) const;
-	std::optional<int> getCapitalProvince(const std::string& stateID) const;
+	[[nodiscard]] std::set<int> getAllProvinces(int provinceNumber) const;
+	[[nodiscard]] std::optional<std::string> getStateID(int provinceNumber) const;
+	[[nodiscard]] std::optional<int> getCapitalProvince(const std::string& stateID) const;
 
   private:
 	std::map<int, std::set<int>> stateMap; // < province, all other provinces in state >
