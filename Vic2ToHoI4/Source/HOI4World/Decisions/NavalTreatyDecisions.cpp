@@ -12,7 +12,7 @@ void HoI4::NavalTreatyDecisions::updateDecisions(const std::set<std::string>& ma
 			{
 				std::string newVisible = "= {\n";
 				newVisible += "\t\t\thas_naval_treaty_trigger = yes\n";
-				newVisible += "\t\t\tOR = { \n";
+				newVisible += "\t\t\tOR = {\n";
 				newVisible += "\t\t\t\thas_government = neutrality\n";
 				newVisible += "\t\t\t}\n";
 				newVisible += "\t\t}";
