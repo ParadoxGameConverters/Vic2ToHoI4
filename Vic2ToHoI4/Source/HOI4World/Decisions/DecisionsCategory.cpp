@@ -4,9 +4,9 @@
 
 
 HoI4::decisionsCategory::decisionsCategory(std::string categoryName, std::istream& theStream):
-	name(std::move(categoryName))
+	 name(std::move(categoryName))
 {
-	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), [this](const std::string& decisionName, std::istream& theStream)	{
+	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), [this](const std::string& decisionName, std::istream& theStream) {
 		const decision theDecision(decisionName, theStream);
 		theDecisions.push_back(theDecision);
 	});
@@ -20,11 +20,10 @@ void updateDiscreditGovernment(HoI4::decision& decisionToUpdate, const std::set<
 void updateInstitutePressCensorship(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies);
 void updateIgniteTheIdeologyCivilWar(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies);
 
-void HoI4::decisionsCategory::updatePoliticalDecisions(
-	const std::set<std::string>& majorIdeologies,
-	const Events& theEvents
-) {
-	for (auto& theDecision : theDecisions)
+void HoI4::decisionsCategory::updatePoliticalDecisions(const std::set<std::string>& majorIdeologies,
+	 const Events& theEvents)
+{
+	for (auto& theDecision: theDecisions)
 	{
 		const auto& decisionName = theDecision.getName();
 		if (decisionName.substr(0, 28) == "open_up_political_discourse_")
@@ -39,7 +38,7 @@ void HoI4::decisionsCategory::updatePoliticalDecisions(
 		{
 			updateInstitutePressCensorship(theDecision, majorIdeologies);
 		}
-		if (decisionName.substr(0, 11) == "ignite_the_")
+		if ((decisionName.substr(0, 11) == "ignite_the_") && (decisionName.find("single_state") == std::string::npos))
 		{
 			updateIgniteTheIdeologyCivilWar(theDecision, majorIdeologies);
 		}
@@ -63,6 +62,34 @@ void updateOpenUpPoliticalDiscourse(HoI4::decision& decisionToUpdate, const std:
 }
 
 
+std::string getIdeologicalMinisters(const std::string& ideology)
+{
+	if (ideology == "fascism")
+	{
+		return "\t\t\tOR = {\n"
+				 "\t\t\t\thas_idea_with_trait = fascist_demagogue\n"
+				 "\t\t\t\thas_idea_with_trait = syncretic_revanchist\n"
+				 "\t\t\t}\n";
+	}
+	if (ideology == "democratic")
+	{
+		return "\t\t\tOR = {\n"
+				 "\t\t\t\thas_idea_with_trait = democratic_reformer\n"
+				 "\t\t\t\thas_idea_with_trait = social_reformer\n"
+				 "\t\t\t}\n";
+	}
+	if (ideology == "communism")
+	{
+		return "\t\t\tOR = { \n"
+				 "\t\t\t\thas_idea_with_trait = communist_revolutionary\n"
+				 "\t\t\t\thas_idea_with_trait = ambitious_union_boss\n"
+				 "\t\t\t}\n";
+	}
+
+	return "\t\t\thas_idea_with_trait = " + ideology + "_minister\n";
+}
+
+
 void updateDiscreditGovernment(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies)
 {
 	const auto decisionIdeology = decisionToUpdate.getName().substr(21, decisionToUpdate.getName().length());
@@ -71,7 +98,7 @@ void updateDiscreditGovernment(HoI4::decision& decisionToUpdate, const std::set<
 	{
 		available += "\t\t\t" + ideology + " < 0.8\n";
 	}
-	available += "\t\t\thas_idea_with_trait = " + decisionIdeology + "_minister\n";
+	available += getIdeologicalMinisters(decisionIdeology);
 	available += "\t\t}";
 	decisionToUpdate.setAvailable(available);
 	std::string completeEffect = "= {\n";
@@ -173,10 +200,8 @@ void updateIgniteTheIdeologyCivilWar(HoI4::decision& decisionToUpdate, const std
 }
 
 
-void HoI4::decisionsCategory::updateHoldTheIdeologyNationalReferendum(
-	decision& decisionToUpdate,
-	const Events& theEvents
-) const
+void HoI4::decisionsCategory::updateHoldTheIdeologyNationalReferendum(decision& decisionToUpdate,
+	 const Events& theEvents) const
 {
 	auto decisionIdeology = decisionToUpdate.getName().substr(9, decisionToUpdate.getName().length());
 	decisionIdeology = decisionIdeology.substr(0, decisionIdeology.find_first_of('_'));
