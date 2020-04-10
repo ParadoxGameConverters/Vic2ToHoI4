@@ -1154,7 +1154,7 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag,
 	 const std::set<Vic2::Party>& parties,
 	 OnActions& onActions,
 	 const std::set<std::string>& majorIdeologies,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	Event partyChoiceEvent;
 

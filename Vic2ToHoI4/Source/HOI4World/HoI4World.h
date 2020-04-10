@@ -74,7 +74,7 @@ class HoI4UnitType;
 class World: commonItems::parser
 {
   public:
-	explicit World(const Vic2::World* sourceWorld, const V2Localisations& vic2Localisations);
+	explicit World(const Vic2::World* sourceWorld, const Vic2::Localisations& vic2Localisations);
 	~World() = default;
 
 	[[nodiscard]] auto& getNames() { return theNames; }
@@ -117,17 +117,17 @@ class World: commonItems::parser
 	World(const World&) = delete;
 	World& operator=(const World&) = delete;
 
-	void convertCountries(const V2Localisations& vic2Localisations);
+	void convertCountries(const Vic2::Localisations& vic2Localisations);
 	void convertCountry(std::pair<std::string, Vic2::Country*> country,
 		 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
-		 const V2Localisations& vic2Localisations);
+		 const Vic2::Localisations& vic2Localisations);
 
 	void importLeaderTraits();
 	void importIdeologicalMinisters();
 
-	void convertGovernments(const V2Localisations& vic2Localisations);
+	void convertGovernments(const Vic2::Localisations& vic2Localisations);
 
-	void convertParties(const V2Localisations& vic2Localisations);
+	void convertParties(const Vic2::Localisations& vic2Localisations);
 
 	void addNeutrality();
 	void addLeaders();
@@ -177,7 +177,7 @@ class World: commonItems::parser
 	void adjustResearchFocuses();
 
 	void addCountryElectionEvents(const std::set<std::string>& theMajorIdeologies,
-		 const V2Localisations& vic2Localisations);
+		 const Vic2::Localisations& vic2Localisations);
 
 	std::optional<std::pair<std::string, std::string>> getStrongestNavyGps();
 

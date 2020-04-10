@@ -33,6 +33,7 @@ namespace Vic2
 {
 class Country;
 class World;
+class Localisations;
 } // namespace Vic2
 
 
@@ -93,10 +94,10 @@ class Country
 	void addLeader(HoI4::namesMapper& theNames, graphicsMapper& theGraphics);
 	void convertGovernment(const Vic2::World& sourceWorld,
 		 const governmentMapper& governmentMap,
-		 const V2Localisations& vic2Localisations);
+		 const Vic2::Localisations& vic2Localisations);
 	void convertParties(const std::set<std::string>& majorIdeologies,
 		 const governmentMapper& governmentMap,
-		 const V2Localisations& vic2Localisations);
+		 const Vic2::Localisations& vic2Localisations);
 	void convertIdeologySupport(const std::set<std::string>& majorIdeologies, const governmentMapper& governmentMap);
 	void determineShipVariants(const PossibleShipVariants& possibleVariants);
 	void convertNavies(const UnitMappings& unitMap,

@@ -31,7 +31,7 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 	 const CountryMapper& countryMap,
 	 const HoI4::CoastalProvinces& theCoastalProvinces,
 	 const Vic2::StateDefinitions& theStateDefinitions,
-	 const V2Localisations& vic2Localisations):
+	 const Vic2::Localisations& vic2Localisations):
 	 ownersMap(),
 	 coresMap(), assignedProvinces(), states(), provinceToStateIDMap()
 {
@@ -222,7 +222,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 	 const CountryMapper& countryMap,
 	 const HoI4::CoastalProvinces& theCoastalProvinces,
 	 const Vic2::StateDefinitions& theStateDefinitions,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	std::set<int> ownedProvinces;
 
@@ -299,7 +299,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State* vic2State,
 	 const CountryMapper& countryMapper,
 	 const HoI4::CoastalProvinces& theCoastalProvinces,
 	 const Vic2::StateDefinitions& theStateDefinitions,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	std::set<int> passableProvinces;
 	std::set<int> impassableProvinces;

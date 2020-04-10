@@ -18,7 +18,7 @@
 
 
 
-Vic2::World::World(const std::string& filename, V2Localisations& vic2Localisations)
+Vic2::World::World(const std::string& filename, Localisations& vic2Localisations)
 {
 	theCultureGroups.init();
 	issuesInstance.instantiate();
@@ -397,7 +397,7 @@ std::optional<Vic2::Country*> Vic2::World::getCountry(const std::string& tag) co
 }
 
 
-void Vic2::World::setLocalisations(V2Localisations& vic2Localisations)
+void Vic2::World::setLocalisations(Localisations& vic2Localisations)
 {
 	for (auto country: countries)
 	{

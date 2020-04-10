@@ -130,7 +130,7 @@ void HoI4::Country::determineFilename()
 
 void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	 const governmentMapper& governmentMap,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	auto possibleRulingParty = sourceCountry.getRulingParty(sourceWorld.getParties());
 	if (!possibleRulingParty)
@@ -161,7 +161,7 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 
 void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies,
 	 const governmentMapper& governmentMap,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	for (const auto& HoI4Ideology: majorIdeologies)
 	{

@@ -14,12 +14,12 @@
 #include <vector>
 
 
-class V2Localisations;
 
 namespace Vic2
 {
 class Country;
 class Diplomacy;
+class Localisations;
 class Party;
 class Province;
 
@@ -28,7 +28,7 @@ class World: commonItems::parser
 {
   public:
 	World() = default;
-	explicit World(const std::string& filename, V2Localisations& vic2Localisations);
+	explicit World(const std::string& filename, Localisations& vic2Localisations);
 	virtual ~World() = default;
 
 	std::optional<const Province*> getProvince(int provNum) const;
@@ -44,7 +44,7 @@ class World: commonItems::parser
 	World(const World&) = delete;
 	World& operator=(const World&) = delete;
 
-	void setLocalisations(V2Localisations& vic2Localisations);
+	void setLocalisations(Localisations& vic2Localisations);
 	void handleMissingCountryCultures();
 
 	void setGreatPowerStatus(const std::vector<int>& GPIndexes, const std::vector<std::string>& tagsInOrder);

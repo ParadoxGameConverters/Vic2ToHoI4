@@ -249,7 +249,7 @@ void Vic2::Country::determineEmployedWorkers()
 }
 
 
-void Vic2::Country::setLocalisationNames(V2Localisations& vic2Localisations)
+void Vic2::Country::setLocalisationNames(Localisations& vic2Localisations)
 {
 	if (!domainName.empty())
 	{
@@ -276,7 +276,7 @@ void Vic2::Country::setLocalisationName(const string& language, const string& na
 }
 
 
-void Vic2::Country::setLocalisationAdjectives(const V2Localisations& vic2Localisations)
+void Vic2::Country::setLocalisationAdjectives(const Localisations& vic2Localisations)
 {
 	auto adjectiveInAllLanguages = vic2Localisations.getTextInEachLanguage(tag + "_ADJ");
 	for (auto adjectiveinLanguage: adjectiveInAllLanguages)

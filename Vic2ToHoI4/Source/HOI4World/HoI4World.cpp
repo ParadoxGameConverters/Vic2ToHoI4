@@ -39,7 +39,7 @@ using namespace std;
 
 
 
-HoI4::World::World(const Vic2::World* _sourceWorld, const V2Localisations& vic2Localisations):
+HoI4::World::World(const Vic2::World* _sourceWorld, const Vic2::Localisations& vic2Localisations):
 	 sourceWorld(_sourceWorld), countryMap(_sourceWorld), theIdeas(std::make_unique<HoI4::Ideas>()),
 	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), peaces(make_unique<HoI4::AiPeaces>()),
 	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
@@ -137,7 +137,7 @@ shared_ptr<HoI4::Country> HoI4::World::findCountry(const string& countryTag)
 }
 
 
-void HoI4::World::convertCountries(const V2Localisations& vic2Localisations)
+void HoI4::World::convertCountries(const Vic2::Localisations& vic2Localisations)
 {
 	LOG(LogLevel::Info) << "\tConverting countries";
 
@@ -156,7 +156,7 @@ void HoI4::World::convertCountries(const V2Localisations& vic2Localisations)
 
 void HoI4::World::convertCountry(std::pair<std::string, Vic2::Country*> country,
 	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	// don't convert rebels
 	if (country.first == "REB")
@@ -210,7 +210,7 @@ void HoI4::World::importIdeologicalMinisters()
 }
 
 
-void HoI4::World::convertGovernments(const V2Localisations& vic2Localisations)
+void HoI4::World::convertGovernments(const Vic2::Localisations& vic2Localisations)
 {
 	LOG(LogLevel::Info) << "\tConverting governments";
 	for (auto country: countries)
@@ -220,7 +220,7 @@ void HoI4::World::convertGovernments(const V2Localisations& vic2Localisations)
 }
 
 
-void HoI4::World::convertParties(const V2Localisations& vic2Localisations)
+void HoI4::World::convertParties(const Vic2::Localisations& vic2Localisations)
 {
 	LOG(LogLevel::Info) << "\tConverting political parties";
 
@@ -908,7 +908,7 @@ void HoI4::World::adjustResearchFocuses()
 
 
 void HoI4::World::addCountryElectionEvents(const std::set<string>& theMajorIdeologies,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	LOG(LogLevel::Info) << "\tAdding country election events";
 

@@ -22,7 +22,7 @@ void ConvertV2ToHoI4(const std::string& V2SaveFileName)
 
 	theProvinceMapper.initialize();
 
-	V2Localisations theVic2Localisations;
+	Vic2::Localisations theVic2Localisations;
 	Vic2::World sourceWorld(V2SaveFileName, theVic2Localisations);
 	HoI4::World destWorld(&sourceWorld, theVic2Localisations);
 

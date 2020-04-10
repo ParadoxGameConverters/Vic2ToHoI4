@@ -153,7 +153,7 @@ void HoI4Localisation::prepareBlankLocalisations()
 
 void HoI4Localisation::CreateCountryLocalisations(const pair<const string&, const string&>& tags,
 	 const governmentMapper& governmentMap,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	addLocalisationsForAllGovernments(tags,
 		 std::make_pair(std::string(), std::string("_DEF")),
@@ -178,7 +178,7 @@ void HoI4Localisation::CreateCountryLocalisations(const pair<const string&, cons
 void HoI4Localisation::addLocalisationsForAllGovernments(const pair<const string&, const string&>& tags,
 	 const pair<const string&, const string&>& suffixes,
 	 const governmentMapper& governmentMap,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	for (const auto& mapping: governmentMap.getGovernmentMappings())
 	{
@@ -213,7 +213,7 @@ void HoI4Localisation::addLocalisationsInAllLanguages(const string& destTag,
 
 bool HoI4Localisation::addNeutralLocalisation(const pair<const string&, const string&>& tags,
 	 const pair<const string&, const string&>& suffixes,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	auto plainLocalisation = vic2Localisations.getTextInEachLanguage(tags.first + suffixes.first);
 	if (plainLocalisation.size() > 0)
@@ -273,7 +273,7 @@ void HoI4Localisation::addLocalisation(const string& newKey,
 void HoI4Localisation::UpdateMainCountryLocalisation(const std::string& HoI4Key,
 	 const std::string& Vic2Tag,
 	 const std::string& Vic2Government,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	if (!attemptToUpdateMainCountryLocalisation(HoI4Key, Vic2Tag + "_" + Vic2Government, vic2Localisations))
 	{
@@ -294,7 +294,7 @@ void HoI4Localisation::UpdateMainCountryLocalisation(const std::string& HoI4Key,
 
 bool HoI4Localisation::attemptToUpdateMainCountryLocalisation(const std::string& HoI4Key,
 	 const std::string& Vic2Key,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	if (auto Vic2Text = vic2Localisations.getTextInEachLanguage(Vic2Key); Vic2Text.size() > 0)
 	{
@@ -385,7 +385,7 @@ void HoI4Localisation::CopyEventLocalisations(const string& oldKey, const string
 void HoI4Localisation::AddStateLocalisation(const HoI4::State& hoi4State,
 	 const Vic2::State& vic2State,
 	 const Vic2::StateDefinitions& theStateDefinitions,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	for (const auto& Vic2NameInLanguage: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
 	{
@@ -394,7 +394,7 @@ void HoI4Localisation::AddStateLocalisation(const HoI4::State& hoi4State,
 }
 
 
-void HoI4Localisation::AddStateLocalisations(const HoI4::States& states, const V2Localisations& vic2Localisations)
+void HoI4Localisation::AddStateLocalisations(const HoI4::States& states, const Vic2::Localisations& vic2Localisations)
 {
 	LOG(LogLevel::Info) << "\tAdding state localisations";
 	for (const auto& state: states.getStates())
@@ -425,7 +425,7 @@ void HoI4Localisation::AddStateLocalisations(const HoI4::States& states, const V
 
 
 void HoI4Localisation::addDebugLocalisations(const std::pair<const int, HoI4::State>& state,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	for (auto VPPositionInHoI4: state.second.getDebugVPs())
 	{
@@ -507,7 +507,7 @@ void HoI4Localisation::addStateLocalisationForLanguage(const HoI4::State& hoi4St
 	 const Vic2::State& vic2State,
 	 const pair<const string, string>& Vic2NameInLanguage,
 	 const Vic2::StateDefinitions& theStateDefinitions,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	string localisedName = "";
 	if (sourceStateHasOneProvince(vic2State))
@@ -647,7 +647,7 @@ void HoI4Localisation::AddEventLocalisation(const string& event, const string& l
 
 void HoI4Localisation::AddEventLocalisationFromVic2(const string& Vic2Key,
 	 const string& HoI4Key,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	for (const auto& textInLanguage: vic2Localisations.getTextInEachLanguage(Vic2Key))
 	{
@@ -701,7 +701,7 @@ void HoI4Localisation::AddIdeaLocalisation(const std::string& idea, const std::o
 
 void HoI4Localisation::AddPoliticalPartyLocalisation(const string& Vic2Key,
 	 const string& HoI4Key,
-	 const V2Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations)
 {
 	for (const auto& textInLanguage: vic2Localisations.getTextInEachLanguage(Vic2Key))
 	{

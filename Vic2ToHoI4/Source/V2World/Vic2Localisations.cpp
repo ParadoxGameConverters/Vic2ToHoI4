@@ -6,7 +6,7 @@
 
 
 
-V2Localisations::V2Localisations() noexcept: localisations(), localisationToKeyMap()
+Vic2::Localisations::Localisations() noexcept: localisations(), localisationToKeyMap()
 {
 	LOG(LogLevel::Info) << "Reading localisation";
 
@@ -25,7 +25,7 @@ V2Localisations::V2Localisations() noexcept: localisations(), localisationToKeyM
 }
 
 
-void V2Localisations::ReadFromAllFilesInFolder(const string& folderPath)
+void Vic2::Localisations::ReadFromAllFilesInFolder(const string& folderPath)
 {
 	set<string> fileNames;
 	Utils::GetAllFilesInFolder(folderPath, fileNames);
@@ -37,7 +37,7 @@ void V2Localisations::ReadFromAllFilesInFolder(const string& folderPath)
 }
 
 
-void V2Localisations::ReadFromFile(const string& fileName)
+void Vic2::Localisations::ReadFromFile(const string& fileName)
 {
 	ifstream in(fileName);
 
@@ -68,7 +68,7 @@ const string languages[] = {"english",
 	 "braz_por",
 	 "russian",
 	 "finnish"};
-void V2Localisations::processLine(const std::string& line)
+void Vic2::Localisations::processLine(const std::string& line)
 {
 	int division = line.find_first_of(';');
 	string key = line.substr(0, division);
@@ -110,7 +110,7 @@ void V2Localisations::processLine(const std::string& line)
 }
 
 
-string V2Localisations::getNextLocalisation(const std::string& line, int& division)
+string Vic2::Localisations::getNextLocalisation(const std::string& line, int& division)
 {
 	int frontDivision = division + 1;
 	division = line.find_first_of(';', frontDivision);
@@ -118,7 +118,7 @@ string V2Localisations::getNextLocalisation(const std::string& line, int& divisi
 }
 
 
-void V2Localisations::updateDomainCountry(const string& tag, const string& domainName)
+void Vic2::Localisations::updateDomainCountry(const string& tag, const string& domainName)
 {
 	LanguageToLocalisationMap regionLocalisations;
 	const auto domainKey = localisationToKeyMap.find(domainName);
@@ -165,7 +165,7 @@ void V2Localisations::updateDomainCountry(const string& tag, const string& domai
 }
 
 
-const optional<string> V2Localisations::getTextInLanguage(const string& key, const string& language) const
+const optional<string> Vic2::Localisations::getTextInLanguage(const string& key, const string& language) const
 {
 	const auto KeyToLocalisationsMapping = localisations.find(key);
 	if (KeyToLocalisationsMapping == localisations.end())
@@ -183,7 +183,7 @@ const optional<string> V2Localisations::getTextInLanguage(const string& key, con
 }
 
 
-const map<string, string> V2Localisations::getTextInEachLanguage(const string& key) const
+const map<string, string> Vic2::Localisations::getTextInEachLanguage(const string& key) const
 {
 	static const map<string, string> noLocalisations;
 

@@ -11,10 +11,13 @@ using namespace std;
 
 
 
-class V2Localisations
+namespace Vic2
+{
+
+class Localisations
 {
   public:
-	V2Localisations() noexcept;
+	Localisations() noexcept;
 
 	const optional<string> getTextInLanguage(const string& key, const string& language) const;
 	const map<string, string> getTextInEachLanguage(const string& key) const;
@@ -26,8 +29,8 @@ class V2Localisations
 	void processLine(const std::string& line);
 	string getNextLocalisation(const std::string& line, int& division);
 
-	V2Localisations(const V2Localisations&) = delete;
-	V2Localisations& operator=(const V2Localisations&) = delete;
+	Localisations(const Localisations&) = delete;
+	Localisations& operator=(const Localisations&) = delete;
 
 	typedef map<string, string> LanguageToLocalisationMap;
 	typedef unordered_map<string, LanguageToLocalisationMap> KeyToLocalisationsMap;
@@ -35,6 +38,8 @@ class V2Localisations
 
 	map<string, string> localisationToKeyMap;
 };
+
+} // namespace Vic2
 
 
 
