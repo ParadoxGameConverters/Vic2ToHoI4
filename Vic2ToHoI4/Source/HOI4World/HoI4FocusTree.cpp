@@ -49,6 +49,7 @@ HoI4FocusTree::HoI4FocusTree(const HoI4::Country& country):
 
 void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 {
+	LOG(LogLevel::Info) << "\tCreating generic focus tree";
 	confirmLoadedFocuses();
 
 	int numCollectovistIdeologies = calculateNumCollectovistIdeologies(majorIdeologies);

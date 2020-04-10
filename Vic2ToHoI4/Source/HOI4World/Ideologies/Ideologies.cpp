@@ -7,6 +7,8 @@
 
 HoI4::Ideologies::Ideologies(const Configuration& theConfiguration)
 {
+	LOG(LogLevel::Info) << "\tReading ideologies";
+
 	registerKeyword("ideologies", [this](const std::string& unused, std::istream& theStream) {
 		const IdeologyFile theFile(theStream);
 		for (const auto& ideology: theFile.getIdeologies())
@@ -28,6 +30,7 @@ HoI4::Ideologies::Ideologies(const Configuration& theConfiguration)
 void HoI4::Ideologies::identifyMajorIdeologies(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
+	LOG(LogLevel::Info) << "\tIdentifying major ideologies";
 	if (theConfiguration.getIdeologiesOptions() == ideologyOptions::keep_major)
 	{
 		for (const auto& greatPower: greatPowers)

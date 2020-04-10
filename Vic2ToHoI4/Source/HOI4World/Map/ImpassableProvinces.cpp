@@ -6,7 +6,7 @@
 
 HoI4::ImpassableProvinces::ImpassableProvinces(const std::map<int, DefaultState>& states)
 {
-	LOG(LogLevel::Info) << "Finding impassable provinces";
+	LOG(LogLevel::Info) << "\t\tFinding impassable provinces";
 	for (const auto& state: states)
 	{
 		if (state.second.isImpassable())

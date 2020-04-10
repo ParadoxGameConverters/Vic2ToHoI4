@@ -94,7 +94,7 @@ graphicsCultureGroup::graphicsCultureGroup(std::istream& theStream)
 
 void graphicsMapper::init()
 {
-	LOG(LogLevel::Info) << "Reading graphics mappings";
+	LOG(LogLevel::Info) << "\tReading graphics mappings";
 
 	registerKeyword(std::regex("[a-zA-Z0-9_]+"), [this](const std::string& cultureGroupName, std::istream& theStream){
 		graphicsCultureGroup newCultureGroup(theStream);

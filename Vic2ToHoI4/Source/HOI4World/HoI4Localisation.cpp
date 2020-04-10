@@ -416,6 +416,7 @@ void HoI4Localisation::AddStateLocalisation(const HoI4::State& hoi4State, const 
 
 void HoI4Localisation::AddStateLocalisations(const HoI4::States& states)
 {
+	LOG(LogLevel::Info) << "\tAdding state localisations";
 	for (const auto& state: states.getStates())
 	{
 		auto VPPositionInHoI4 = state.second.getVPLocation();
@@ -797,6 +798,8 @@ void HoI4Localisation::GenerateCustomLocalisations(
 	const std::set<std::string>& majorIdeologies
 )
 {
+	LOG(LogLevel::Info) << "\tGenerating custom localisations";
+
 	std::ifstream languageReplacementsFile("DataFiles/languageReplacements.txt");
 	if (!languageReplacementsFile.is_open())
 	{

@@ -44,12 +44,13 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	theDecisions(make_unique<HoI4::decisions>(theConfiguration)), peaces(make_unique<HoI4::AiPeaces>()),
 	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
 {
-	LOG(LogLevel::Info) << "Parsing HoI4 data";
+	LOG(LogLevel::Info) << "Building HoI4 World";
 
 	theCoastalProvinces.init(theMapData);
 	states = std::make_unique<States>(sourceWorld, countryMap, theCoastalProvinces);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates());
-	buildings = new Buildings(*states, theCoastalProvinces, theMapData), theNames.init();
+	buildings = new Buildings(*states, theCoastalProvinces, theMapData);
+	theNames.init();
 	theGraphics.init();
 	governmentMap.init();
 	convertCountries();
@@ -133,7 +134,7 @@ shared_ptr<HoI4::Country> HoI4::World::findCountry(const string& countryTag)
 
 void HoI4::World::convertCountries()
 {
-	LOG(LogLevel::Info) << "Converting countries";
+	LOG(LogLevel::Info) << "\tConverting countries";
 
 	std::ifstream flagToIdeasMappingFile("DataFiles/FlagsToIdeasMappings.txt");
 	mappers::FlagsToIdeasMapper flagsToIdeasMapper(flagToIdeasMappingFile);
@@ -183,6 +184,8 @@ void HoI4::World::convertCountry(
 
 void HoI4::World::importLeaderTraits()
 {
+	LOG(LogLevel::Info) << "\tImporting leader traits";
+
 	clearRegisteredKeywords();
 	registerKeyword(std::regex("[a-z]+"), [this](const std::string& ideologyName, std::istream& theStream){
 		commonItems::stringsOfItems traits(theStream);
@@ -194,6 +197,8 @@ void HoI4::World::importLeaderTraits()
 
 void HoI4::World::importIdeologicalMinisters()
 {
+	LOG(LogLevel::Info) << "\tImporting ideological ministers";
+
 	HoI4::IdeologicalAdvisors theAdvisors;
 	auto theAcutalAdvisors = theAdvisors.getAdvisors();
 	ideologicalAdvisors.swap(theAcutalAdvisors);
@@ -202,6 +207,7 @@ void HoI4::World::importIdeologicalMinisters()
 
 void HoI4::World::convertGovernments()
 {
+	LOG(LogLevel::Info) << "\tConverting governments";
 	for (auto country: countries)
 	{
 		country.second->convertGovernment(*sourceWorld, governmentMap);
@@ -211,6 +217,8 @@ void HoI4::World::convertGovernments()
 
 void HoI4::World::convertParties()
 {
+	LOG(LogLevel::Info) << "\tConverting political parties";
+
 	for (auto country: countries)
 	{
 		country.second->convertParties(ideologies->getMajorIdeologies(), governmentMap);
@@ -220,6 +228,7 @@ void HoI4::World::convertParties()
 
 void HoI4::World::addNeutrality()
 {
+	LOG(LogLevel::Info) << "\tAdding neutrality";
 	for (auto country: countries)
 	{
 		if (ideologies->getMajorIdeologies().count(country.second->getGovernmentIdeology()) == 0)
@@ -232,6 +241,7 @@ void HoI4::World::addNeutrality()
 
 void HoI4::World::addLeaders()
 {
+	LOG(LogLevel::Info) << "\tAdding leaders";
 	for (auto& country: countries)
 	{
 		country.second->addLeader(theNames, theGraphics);
@@ -241,6 +251,7 @@ void HoI4::World::addLeaders()
 
 void HoI4::World::convertIdeologySupport()
 {
+	LOG(LogLevel::Info) << "\tConverting ideology support";
 	for (auto country: countries)
 	{
 		country.second->convertIdeologySupport(ideologies->getMajorIdeologies(), governmentMap);
@@ -250,7 +261,7 @@ void HoI4::World::convertIdeologySupport()
 
 void HoI4::World::convertIndustry()
 {
-	LOG(LogLevel::Info) << "Converting industry";
+	LOG(LogLevel::Info) << "\tConverting industry";
 
 	map<string, double> factoryWorkerRatios = calculateFactoryWorkerRatios();
 	states->putIndustryInStates(factoryWorkerRatios, theCoastalProvinces);
@@ -262,6 +273,7 @@ void HoI4::World::convertIndustry()
 
 void HoI4::World::addStatesToCountries()
 {
+	LOG(LogLevel::Info) << "\tAdding states to countries";
 	for (auto state: states->getStates())
 	{
 		auto owner = countries.find(state.second.getOwner());
@@ -417,6 +429,7 @@ void HoI4::World::reportIndustryLevels() const
 
 void HoI4::World::convertStrategicRegions()
 {
+	LOG(LogLevel::Info) << "\tConverting strategic regions";
 	map<int, int> provinceToStrategicRegionMap = importStrategicRegions();
 
 	for (auto state : states->getStates())
@@ -533,7 +546,7 @@ void HoI4::World::addLeftoverProvincesToRegions(const map<int, int>& provinceToS
 
 void HoI4::World::convertDiplomacy()
 {
-	LOG(LogLevel::Info) << "Converting diplomacy";
+	LOG(LogLevel::Info) << "\tConverting diplomacy";
 	convertAgreements();
 }
 
@@ -583,7 +596,7 @@ void HoI4::World::convertAgreements()
 
 void HoI4::World::convertTechs()
 {
-	LOG(LogLevel::Info) << "Converting techs and research bonuses";
+	LOG(LogLevel::Info) << "\tConverting techs and research bonuses";
 
 	mappers::techMapperFile file;
 	unique_ptr<mappers::techMapper> techMap = file.takeTechMapper();
@@ -597,6 +610,7 @@ void HoI4::World::convertTechs()
 
 void HoI4::World::convertMilitaries()
 {
+	LOG(LogLevel::Info) << "\tConverting militaries";
 	const HoI4::militaryMappings& specificMappings = theMilitaryMappings->getMilitaryMappings(theConfiguration.getVic2Mods());
 
 	convertArmies(specificMappings);
@@ -607,7 +621,7 @@ void HoI4::World::convertMilitaries()
 
 void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings)
 {
-	LOG(LogLevel::Info) << "Converting armies";
+	LOG(LogLevel::Info) << "\t\tConverting armies";
 
 	for (auto country: countries)
 	{
@@ -620,7 +634,7 @@ void HoI4::World::convertNavies(
 	const UnitMappings& unitMap,
 	const MtgUnitMappings& mtgUnitMap)
 {
-	LOG(LogLevel::Info) << "Converting navies";
+	LOG(LogLevel::Info) << "\t\tConverting navies";
 
 	ifstream variantsFile("DataFiles/shipTypes.txt");
 	if (!variantsFile.is_open())
@@ -647,7 +661,7 @@ void HoI4::World::convertNavies(
 
 void HoI4::World::convertAirforces(const UnitMappings& unitMap)
 {
-	LOG(LogLevel::Info) << "Converting air forces";
+	LOG(LogLevel::Info) << "\t\tConverting air forces";
 
 	for (auto country : countries)
 	{
@@ -658,6 +672,7 @@ void HoI4::World::convertAirforces(const UnitMappings& unitMap)
 
 void HoI4::World::determineGreatPowers()
 {
+	LOG(LogLevel::Info) << "\tDetermining great powers";
 	for (auto greatPowerVic2Tag: sourceWorld->getGreatPowers())
 	{
 		auto possibleGreatPowerTag = countryMap.getHoI4Tag(greatPowerVic2Tag);
@@ -676,6 +691,7 @@ void HoI4::World::determineGreatPowers()
 
 void HoI4::World::setupNavalTreaty()
 {
+	LOG(LogLevel::Info) << "\tCreating naval treaty";
 	std::optional<std::pair<std::string, std::string>> strongestGpNavies = getStrongestNavyGps();
 	if (strongestGpNavies)
 	{
@@ -709,7 +725,7 @@ double HoI4::World::getStrongestCountryStrength() const
 
 void HoI4::World::createFactions()
 {
-	LOG(LogLevel::Info) << "Creating Factions";
+	LOG(LogLevel::Info) << "\tCreating Factions";
 
 	ofstream factionsLog;
 	if (theConfiguration.getDebug())
@@ -874,6 +890,7 @@ bool HoI4::World::governmentsAllowFaction(const string& leaderIdeology, const st
 
 void HoI4::World::addFocusTrees()
 {
+	LOG(LogLevel::Info) << "\tAdding focus trees";
 	for (auto country: countries)
 	{
 		if (country.second->isGreatPower() || (country.second->getStrengthOverTime(3) > 4500))
@@ -886,6 +903,7 @@ void HoI4::World::addFocusTrees()
 
 void HoI4::World::adjustResearchFocuses()
 {
+	LOG(LogLevel::Info) << "\tAdjusting research focuses";
 	for (auto country: countries)
 	{
 		country.second->adjustResearchFocuses();
@@ -895,6 +913,8 @@ void HoI4::World::adjustResearchFocuses()
 
 void HoI4::World::addCountryElectionEvents(const std::set<string>&theMajorIdeologies)
 {
+	LOG(LogLevel::Info) << "\tAdding country election events";
+
 	for (auto country: countries)
 	{
 		events->addPartyChoiceEvent(country.first, country.second->getParties(), *onActions, theMajorIdeologies);
@@ -979,6 +999,7 @@ return portLocationCandidates;
 
 void HoI4::World::setSphereLeaders()
 {
+	LOG(LogLevel::Info) << "\tSetting sphere leaders";
 	for (auto GP: greatPowers)
 	{
 		for (auto& relationItr: GP->getRelations())
@@ -994,6 +1015,7 @@ void HoI4::World::setSphereLeaders()
 
 void HoI4::World::processInfluence()
 {
+	LOG(LogLevel::Info) << "\tAdding influence";
 	for (auto GP: greatPowers)
 	{
 		for (auto& relationItr: GP->getRelations())
@@ -1012,6 +1034,7 @@ void HoI4::World::processInfluence()
 
 void HoI4::World::determineSpherelings()
 {
+	LOG(LogLevel::Info) << "\tDetermining spherelings";
 	for (auto& GP: greatPowers)
 	{
 		for (auto relationItr: GP->getRelations())
@@ -1035,6 +1058,7 @@ void HoI4::World::determineSpherelings()
 
 void HoI4::World::calculateSpherelingAutonomy()
 {
+	LOG(LogLevel::Info) << "\tCalculating sphereling autonomy";
 	for (auto& GP: greatPowers)
 	{
 		for (auto& sphereling: GP->getSpherelings())

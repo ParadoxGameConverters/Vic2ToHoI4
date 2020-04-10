@@ -21,6 +21,8 @@ HoI4WarCreator::HoI4WarCreator(HoI4::World* world, const HoI4::MapData& theMapDa
 	provincePositions(),
 	provinceToOwnerMap()
 {
+	LOG(LogLevel::Info) << "\tCreating wars";
+
 	ofstream AILog;
 	if (theConfiguration.getDebug())
 	{

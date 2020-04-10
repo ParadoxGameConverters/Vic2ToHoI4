@@ -142,6 +142,8 @@ partyMappings::partyMappings(std::istream& theStream)
 
 void governmentMapper::init()
 {
+	LOG(LogLevel::Info) << "\tParsing governments mappings";
+
 	registerKeyword(std::regex("government_mappings"), [this](const std::string& unused, std::istream& theStream){
 		governmentMappings mappings(theStream);
 		governmentMap = mappings.getGovernmentMap();
@@ -151,7 +153,6 @@ void governmentMapper::init()
 		partyMap = mappings.getPartyMap();
 	});
 
-	LOG(LogLevel::Info) << "Parsing governments mappings";
 	parseFile("governmentMapping.txt");
 }
 

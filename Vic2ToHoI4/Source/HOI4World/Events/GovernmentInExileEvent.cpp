@@ -2,10 +2,13 @@
 #include "Event.h"
 #include "EventHelpers.h"
 #include "EventOption.h"
+#include "Log.h"
 
 
 HoI4::Event HoI4::createGovernmentInExileEvent(const std::set<std::string>& majorIdeologies)
 {
+	LOG(LogLevel::Info) << "\tCreating government in exile event";
+
 	Event governmentInExileEvent;
 	governmentInExileEvent.giveType("country_event");
 	governmentInExileEvent.giveId("mtg_generic.1");

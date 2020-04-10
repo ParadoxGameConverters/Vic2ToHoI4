@@ -1,10 +1,12 @@
 #include "MilitaryMappingsFile.h"
+#include "log.h"
 #include <fstream>
 
 
 
 HoI4::militaryMappingsFile::militaryMappingsFile()
 {
+	LOG(LogLevel::Info) << "\tImporting military mappings";
 	std::ifstream unitMappingFile("DataFiles/unit_mappings.txt");
 	if (unitMappingFile.is_open())
 	{
@@ -13,6 +15,6 @@ HoI4::militaryMappingsFile::militaryMappingsFile()
 	}
 	else
 	{
-		throw std::runtime_error{ "Could not open DataFiles/unit_mappings.txt" };
+		throw std::runtime_error{"Could not open DataFiles/unit_mappings.txt"};
 	}
 }

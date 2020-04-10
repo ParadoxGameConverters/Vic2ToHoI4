@@ -12,7 +12,7 @@
 
 HoI4::Buildings::Buildings(const States& theStates, const CoastalProvinces& theCoastalProvinces, MapData& theMapData)
 {
-	LOG(LogLevel::Info) << "Creating buildings";
+	LOG(LogLevel::Info) << "\tCreating buildings";
 
 	importDefaultBuildings(theMapData);
 	placeBuildings(theStates, theCoastalProvinces, theMapData);

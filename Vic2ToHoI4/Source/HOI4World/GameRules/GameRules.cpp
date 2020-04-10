@@ -1,4 +1,5 @@
 #include "GameRules.h"
+#include "Log.h"
 #include "ParserHelpers.h"
 
 
@@ -20,6 +21,7 @@ HoI4::GameRules HoI4::GameRules::Parser::parseRulesFile(const std::string& filen
 
 void HoI4::GameRules::updateRules()
 {
+	LOG(LogLevel::Info) << "\tUpdating game rules";
 	std::regex aiBehaviorRegex{"[A-Z]{3}_ai_behavior"};
 	gameRules.erase(std::remove_if(gameRules.begin(),
 							  gameRules.end(),
