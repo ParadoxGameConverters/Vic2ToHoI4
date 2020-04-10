@@ -55,6 +55,7 @@
     <ClCompile Include="..\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Color.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Configuration.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />

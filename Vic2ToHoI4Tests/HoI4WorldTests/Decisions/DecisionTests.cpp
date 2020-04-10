@@ -19,7 +19,7 @@ TEST(HoI4World_Decisions_DecisionTests, EverythingDefaultsToEmptyOrBlank)
 	expectedOutput << "\n";
 	expectedOutput << "\t = {\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -51,7 +51,28 @@ TEST(HoI4World_Decisions_DecisionTests, IconCanBeSet)
 	expectedOutput << "\n";
 	expectedOutput << "\t\ticon = generic_civil_support\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST(HoI4World_Decisions_DecisionTests, NameFieldCanBeSet)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\t\tname = recruit_in_europe_state\n";
+	input << "}";
+	HoI4::decision theDecision("decisionName", input);
+
+	std::stringstream output;
+	output << theDecision;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "\tdecisionName = {\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\tname = recruit_in_europe_state\n";
+	expectedOutput << "\t}";
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -72,7 +93,7 @@ TEST(HoI4World_Decisions_DecisionTests, IsGoodCanBeSet)
 	expectedOutput << "\n";
 	expectedOutput << "\t\tis_good = no\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -97,7 +118,7 @@ TEST(HoI4World_Decisions_DecisionTests, AllowedCanBeSet)
 	expectedOutput << "\t\t\talways = yes\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -123,7 +144,7 @@ TEST(HoI4World_Decisions_DecisionTests, AllowedCanBeChanged)
 	expectedOutput << "\t\t\talways = no\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -200,7 +221,7 @@ TEST(HoI4World_Decisions_DecisionTests, DaysMissionTimeoutCanBeSet)
 	expectedOutput << "\n";
 	expectedOutput << "\t\tdays_mission_timeout = 90\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -226,7 +247,7 @@ TEST(HoI4World_Decisions_DecisionTests, ActivationCanBeSet)
 	expectedOutput << "\t\thas_war = no\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -247,7 +268,7 @@ TEST(HoI4World_Decisions_DecisionTests, TargetsCanBeSet)
 	expectedOutput << "\n";
 	expectedOutput << "\t\ttargets = { host }\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -268,7 +289,7 @@ TEST(HoI4World_Decisions_DecisionTests, TargetArrayCanBeSet)
 	expectedOutput << "\n";
 	expectedOutput << "\t\ttarget_array = exiles\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -295,8 +316,30 @@ TEST(HoI4World_Decisions_DecisionTests, TargetRootTriggerCanBeSet)
 	expectedOutput << "\t\t\thas_capitulated = no\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
+
+
+TEST(HoI4World_Decisions_DecisionTests, StateTargetCanBeSet)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\t\tstate_target = yes\n";
+	input << "}";
+	HoI4::decision theDecision("decisionName", input);
+
+	std::stringstream output;
+	output << theDecision;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "\tdecisionName = {\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\tstate_target = yes\n";
+	expectedOutput << "\t}";
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
 
 TEST(HoI4World_Decisions_DecisionTests, TargetTriggerCanBeSet)
 {
@@ -323,7 +366,7 @@ TEST(HoI4World_Decisions_DecisionTests, TargetTriggerCanBeSet)
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -362,7 +405,28 @@ TEST(HoI4World_Decisions_DecisionTests, TargetTriggerCanBeChanged)
 	expectedOutput << "\t\t\t}\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST(HoI4World_Decisions_DecisionTests, TargetNonExistingCanBeSet)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\ttarget_non_existing = yes\n";
+	input << "}";
+	HoI4::decision theDecision("decisionName", input);
+
+	std::stringstream output;
+	output << theDecision;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "\tdecisionName = {\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\ttarget_non_existing = yes\n";
+	expectedOutput << "\t}";
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -387,7 +451,7 @@ TEST(HoI4World_Decisions_DecisionTests, RemoveTriggerCanBeSet)
 	expectedOutput << "\t\thas_government = fascism\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -412,7 +476,7 @@ TEST(HoI4World_Decisions_DecisionTests, CustomCostTriggerCanBeSet)
 	expectedOutput << "\t\tcommand_power > 25\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -433,7 +497,7 @@ TEST(HoI4World_Decisions_DecisionTests, CustomCostTextCanBeSet)
 	expectedOutput << "\n";
 	expectedOutput << "\t\tcustom_cost_text = custom_cost_joint_training_exercise\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -491,7 +555,28 @@ TEST(HoI4World_Decisions_DecisionTests, CancelTriggerCanBeSet)
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST(HoI4World_Decisions_DecisionTests, OnMapModeCanBeSet)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\t\ton_map_mode = map_only\n";
+	input << "}";
+	HoI4::decision theDecision("decisionName", input);
+
+	std::stringstream output;
+	output << theDecision;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\n";
+	expectedOutput << "\tdecisionName = {\n";
+	expectedOutput << "\n";
+	expectedOutput << "\t\ton_map_mode = map_only\n";
+	expectedOutput << "\t}";
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -516,7 +601,7 @@ TEST(HoI4World_Decisions_DecisionTests, CompleteEffectCanBeSet)
 	expectedOutput << "\t\tcountry_event = stability.21\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -541,7 +626,7 @@ TEST(HoI4World_Decisions_DecisionTests, CompleteEffectCanBeChanged)
 	expectedOutput << "\t\tcountry_event = stability.21\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -570,7 +655,7 @@ TEST(HoI4World_Decisions_DecisionTests, TargetedModifierCanBeSet)
 	expectedOutput << "\t\t\tdemocratic_drift = 0.05\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -599,7 +684,7 @@ TEST(HoI4World_Decisions_DecisionTests, TargetedModifierCanBeChanged)
 	expectedOutput << "\t\t\tdemocratic_drift = 0.05\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -692,7 +777,7 @@ TEST(HoI4World_Decisions_DecisionTests, AiWillDoCanBeSet)
 	expectedOutput << "\t\tfactor = 1\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -738,7 +823,7 @@ TEST(HoI4World_Decisions_DecisionTests, FireOnlyOnceCanBeSet)
 	expectedOutput << "\n";
 	expectedOutput << "\t\tfire_only_once = yes\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -759,7 +844,7 @@ TEST(HoI4World_Decisions_DecisionTests, DaysRemoveCanBeSet)
 	expectedOutput << "\n";
 	expectedOutput << "\t\tdays_remove = 365\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -779,7 +864,7 @@ TEST(HoI4World_Decisions_DecisionTests, DaysReEnableCanBeSet)
 	expectedOutput << "\tdecisionName = {\n";
 	expectedOutput << "\t\tdays_re_enable = 30\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -800,7 +885,7 @@ TEST(HoI4World_Decisions_DecisionTests, CostCanBeSet)
 	expectedOutput << "\n";
 	expectedOutput << "\t\tcost = var:war_propaganda_cost?75\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -829,7 +914,7 @@ TEST(HoI4World_Decisions_DecisionTests, ModfierCanBeSet)
 	expectedOutput << "\t\tpolitical_power_gain = -0.2\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 
@@ -858,7 +943,7 @@ TEST(HoI4World_Decisions_DecisionTests, ModfierCanBeChanged)
 	expectedOutput << "\t\tpolitical_power_gain = -0.2\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "\t}";
-	ASSERT_EQ(output.str(), expectedOutput.str());
+	ASSERT_EQ(expectedOutput.str(), output.str());
 }
 
 

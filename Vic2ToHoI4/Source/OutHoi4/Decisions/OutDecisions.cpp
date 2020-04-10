@@ -13,6 +13,13 @@ void HoI4::outputDecisions(const decisions& theDecisions,
 	outputDecisionCategories(outStream, majorIdeologies);
 	outStream.close();
 
+	outStream.open("output/" + outputName + "/common/decisions/lar_agent_recruitment_decisions.txt");
+	for (const auto& category: theDecisions.getAgentRecruitmentDecisions())
+	{
+		outStream << category;
+	}
+	outStream.close();
+
 	outStream.open("output/" + outputName + "/common/decisions/stability_war_support.txt");
 	for (const auto& category: theDecisions.getStabilityDecisions())
 	{

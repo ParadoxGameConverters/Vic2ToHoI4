@@ -4,7 +4,7 @@
 
 void HoI4::PoliticalDecisions::importDecisions(const std::string& filename)
 {
-	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream)
+	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& unused, std::istream& theStream)
 	{
 		const IdeologicalDecisions ideologicalDecisions(theStream);
 		allIdeologicalDecisions.push_back(ideologicalDecisions);

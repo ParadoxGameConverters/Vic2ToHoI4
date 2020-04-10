@@ -10,11 +10,15 @@ fascism_on_the_rise = {
 
 		available = {
 			fascism > 0.1
+			num_of_controlled_states > 1
 		}
 
 		visible = {
 			NOT = { has_country_flag = preparation_for_fascism_civil_war }
-			has_idea_with_trait = fascism_demagogue
+			OR = {
+				has_idea_with_trait = fascism_demagogue
+				has_idea_with_trait = syncretic_revanchist
+			}
 			NOT = { has_government = fascism }
 		}
 		
@@ -40,7 +44,10 @@ fascism_on_the_rise = {
 				has_country_flag = preparation_for_fascism_civil_war
 				has_country_flag = open_up_political_discourse_fascism
 			}
-			has_idea_with_trait = fascism_demagogue
+			OR = {
+				has_idea_with_trait = fascism_demagogue
+				has_idea_with_trait = syncretic_revanchist
+			}
 			NOT = { has_government = fascism }
 		}
 
@@ -73,7 +80,10 @@ fascism_on_the_rise = {
 
 		visible = {
 			has_country_flag = preparation_for_fascism_civil_war
-			has_idea_with_trait = fascism_demagogue
+			OR = {
+				has_idea_with_trait = fascism_demagogue
+				has_idea_with_trait = syncretic_revanchist
+			}
 			NOT = { has_government = fascism }
 		}
 
@@ -128,12 +138,15 @@ fascism_on_the_rise = {
 
 		visible = {
 			has_country_flag = preparation_for_fascism_civil_war
-			has_idea_with_trait = fascism_demagogue
+			OR = {
+				has_idea_with_trait = fascism_demagogue
+				has_idea_with_trait = syncretic_revanchist
+			}
+			NOT = { has_government = fascism }
 			any_army_leader = {
 				is_field_marshal = no
 				NOT = { has_trait = hidden_sympathies }
 			}
-			NOT = { has_government = fascism }
 		}
 	
 		fire_only_once = yes
@@ -159,11 +172,14 @@ fascism_on_the_rise = {
 
 		visible = {
 			has_country_flag = preparation_for_fascism_civil_war
-			has_idea_with_trait = fascism_demagogue
+			OR = {
+				has_idea_with_trait = fascism_demagogue
+				has_idea_with_trait = syncretic_revanchist
+			}
+			NOT = { has_government = fascism }
 			any_army_leader = {
 				NOT = { has_trait = hidden_sympathies }
 			}
-			NOT = { has_government = fascism }
 			any_army_leader = {
 				is_field_marshal = yes
 				NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
@@ -196,7 +212,10 @@ fascism_on_the_rise = {
 		visible = {
 			has_country_flag = preparation_for_fascism_civil_war
 			has_country_flag = military_support_for_fascism_civil_war
-			has_idea_with_trait = fascism_demagogue
+			OR = {
+				has_idea_with_trait = fascism_demagogue
+				has_idea_with_trait = syncretic_revanchist
+			}
 			NOT = { has_government = fascism }
 		}
 	
@@ -229,7 +248,10 @@ fascism_on_the_rise = {
 
 		visible = {
 			has_country_flag = preparation_for_fascism_civil_war
-			has_idea_with_trait = fascism_demagogue
+			OR = {
+				has_idea_with_trait = fascism_demagogue
+				has_idea_with_trait = syncretic_revanchist
+			}
 			NOT = { has_government = fascism }
 		}
 	
@@ -247,6 +269,41 @@ fascism_on_the_rise = {
 			factor = 0
 		}
 	}
+
+	ignite_the_fascism_civil_war_single_state = {
+		icon = generic_ignite_civil_war
+		name = ignite_the_fascism_civil_war
+
+		available = {
+			has_stability < 0.5
+			fascism > 0.50
+		}
+
+		visible = {
+			has_country_flag = preparation_for_fascism_civil_war
+			OR = {
+				has_idea_with_trait = fascism_demagogue
+				has_idea_with_trait = syncretic_revanchist
+			}
+			NOT = { has_government = fascism }
+			check_variable = { num_owned_states = 1 }
+		}
+	
+		fire_only_once = yes
+	
+		cost = 50
+		
+		complete_effect = {
+			set_politics = { ruling_party = fascism elections_allowed = no }
+			clr_country_flag = preparation_for_fascism_civil_war
+			clr_country_flag = military_support_for_fascism_civil_war
+			clr_country_flag = civil_support_for_fascism_civil_war
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
 	
 	ignite_the_fascism_civil_war = {
 
@@ -258,8 +315,12 @@ fascism_on_the_rise = {
 
 		visible = {
 			has_country_flag = preparation_for_fascism_civil_war
-			has_idea_with_trait = fascism_minister
+			OR = {
+				has_idea_with_trait = fascism_demagogue
+				has_idea_with_trait = syncretic_revanchist
+			}
 			NOT = { has_government = fascism }
+			check_variable = { num_owned_states > 1 }
 		}
 	
 		fire_only_once = yes
@@ -280,6 +341,7 @@ fascism_on_the_rise = {
 		icon = generic_construction
 
 		visible = {
+			has_government = fascism
 			has_country_flag = won_ideology_civil_war
 		}
 
@@ -312,7 +374,10 @@ fascism_on_the_rise = {
 		}
 
 		visible = {
-			has_idea_with_trait = fascism_demagogue
+			OR = {
+				has_idea_with_trait = fascism_demagogue
+				has_idea_with_trait = syncretic_revanchist
+			}
 			NOT = { has_country_flag = open_up_political_discourse_fascism }
 			NOT = { has_government = fascism }
 		}
@@ -483,6 +548,10 @@ political_actions = {
 			custom_effect_tooltip = ban_fascism_party_tt
 			add_stability = ban_ideology_var
 		}
+
+		ai_will_do = {
+			factor = 0
+		}
 	}
 
 	institute_press_censorship_fascism_state = {
@@ -519,11 +588,15 @@ democratic_on_the_rise = {
 
 		available = {
 			democratic > 0.1
+			num_of_controlled_states > 1
 		}
 
 		visible = {
 			NOT = { has_country_flag = preparation_for_democratic_civil_war }
-			has_idea_with_trait = democratic_reformer
+			OR = {
+				has_idea_with_trait = democratic_reformer
+				has_idea_with_trait = social_reformer
+			}
 			NOT = { has_government = democratic }
 		}
 		
@@ -549,7 +622,10 @@ democratic_on_the_rise = {
 				has_country_flag = preparation_for_democratic_civil_war
 				has_country_flag = open_up_political_discourse_democratic
 			}
-			has_idea_with_trait = democratic_reformer
+			OR = {
+				has_idea_with_trait = democratic_reformer
+				has_idea_with_trait = social_reformer
+			}
 			NOT = { has_government = democratic }
 		}
 
@@ -582,7 +658,10 @@ democratic_on_the_rise = {
 
 		visible = {
 			has_country_flag = preparation_for_democratic_civil_war
-			has_idea_with_trait = democratic_reformer
+			OR = {
+				has_idea_with_trait = democratic_reformer
+				has_idea_with_trait = social_reformer
+			}
 			NOT = { has_government = democratic }
 		}
 
@@ -637,12 +716,15 @@ democratic_on_the_rise = {
 
 		visible = {
 			has_country_flag = preparation_for_democratic_civil_war
-			has_idea_with_trait = democratic_reformer
+			OR = {
+				has_idea_with_trait = democratic_reformer
+				has_idea_with_trait = social_reformer
+			}
+			NOT = { has_government = democratic }
 			any_army_leader = {
 				is_field_marshal = no
 				NOT = { has_trait = hidden_sympathies }
 			}
-			NOT = { has_government = democratic }
 		}
 	
 		fire_only_once = yes
@@ -669,11 +751,14 @@ democratic_on_the_rise = {
 
 		visible = {
 			has_country_flag = preparation_for_democratic_civil_war
-			has_idea_with_trait = democratic_reformer
+			OR = {
+				has_idea_with_trait = democratic_reformer
+				has_idea_with_trait = social_reformer
+			}
+			NOT = { has_government = democratic }
 			any_army_leader = {
 				NOT = { has_trait = hidden_sympathies }
 			}
-			NOT = { has_government = democratic }
 			any_army_leader = {
 				is_field_marshal = yes
 				NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
@@ -706,7 +791,10 @@ democratic_on_the_rise = {
 		visible = {
 			has_country_flag = preparation_for_democratic_civil_war
 			has_country_flag = military_support_for_democratic_civil_war
-			has_idea_with_trait = democratic_reformer
+			OR = {
+				has_idea_with_trait = democratic_reformer
+				has_idea_with_trait = social_reformer
+			}
 			NOT = { has_government = democratic }
 		}
 	
@@ -739,7 +827,10 @@ democratic_on_the_rise = {
 
 		visible = {
 			has_country_flag = preparation_for_democratic_civil_war
-			has_idea_with_trait = democratic_reformer
+			OR = {
+				has_idea_with_trait = democratic_reformer
+				has_idea_with_trait = social_reformer
+			}
 			NOT = { has_government = democratic }
 		}
 	
@@ -758,6 +849,41 @@ democratic_on_the_rise = {
 		}
 	}
 	
+	ignite_the_democratic_civil_war_single_state = {
+		icon = generic_ignite_civil_war
+		name = ignite_the_democratic_civil_war
+		
+		available = {
+			has_stability < 0.5
+			democratic > 0.50
+		}
+
+		visible = {
+			has_country_flag = preparation_for_democratic_civil_war
+			OR = {
+				has_idea_with_trait = democratic_reformer
+				has_idea_with_trait = social_reformer
+			}
+			NOT = { has_government = democratic }
+			check_variable = { num_owned_states = 1 }
+		}
+	
+		fire_only_once = yes
+	
+		cost = 50
+		
+		complete_effect = {
+			set_politics = { ruling_party = democratic elections_allowed = yes }
+			clr_country_flag = preparation_for_democratic_civil_war
+			clr_country_flag = military_support_for_democratic_civil_war
+			clr_country_flag = civil_support_for_democratic_civil_war
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
 	ignite_the_democratic_civil_war = {
 
 		icon = generic_ignite_civil_war
@@ -768,8 +894,12 @@ democratic_on_the_rise = {
 
 		visible = {
 			has_country_flag = preparation_for_democratic_civil_war
-			has_idea_with_trait = democratic_reformer
+			OR = {
+				has_idea_with_trait = democratic_reformer
+				has_idea_with_trait = social_reformer
+			}
 			NOT = { has_government = democratic }
+			check_variable = { num_owned_states > 1 }
 		}
 	
 		fire_only_once = yes
@@ -790,6 +920,7 @@ democratic_on_the_rise = {
 		icon = generic_construction
 
 		visible = {
+			has_government = democratic
 			has_country_flag = won_ideology_civil_war
 		}
 
@@ -822,7 +953,10 @@ democratic_on_the_rise = {
 		}
 
 		visible = {
-			has_idea_with_trait = democratic_reformer
+			OR = {
+				has_idea_with_trait = democratic_reformer
+				has_idea_with_trait = social_reformer
+			}
 			NOT = { has_government = democratic }
 		}
 		
@@ -992,6 +1126,10 @@ political_actions = {
 			custom_effect_tooltip = ban_democratic_party_tt
 			add_stability = ban_ideology_var
 		}
+
+		ai_will_do = {
+			factor = 0
+		}
 	}
 	
 	institute_press_censorship_democratic_state = {
@@ -1028,11 +1166,15 @@ communism_on_the_rise = {
 
 		available = {
 			communism > 0.1
+			num_of_controlled_states > 1
 		}
 
 		visible = {
 			NOT = { has_country_flag = preparation_for_communism_civil_war }
-			has_idea_with_trait = communism_revolutionary
+			OR = {
+				has_idea_with_trait = communism_revolutionary
+				has_idea_with_trait = ambitious_union_boss
+			}
 			NOT = { has_government = communism }
 		}
 		
@@ -1058,7 +1200,10 @@ communism_on_the_rise = {
 				has_country_flag = preparation_for_communism_civil_war
 				has_country_flag = open_up_political_discourse_communism
 			}
-			has_idea_with_trait = communism_revolutionary
+			OR = {
+				has_idea_with_trait = communism_revolutionary
+				has_idea_with_trait = ambitious_union_boss
+			}
 			NOT = { has_government = communism }
 		}
 
@@ -1091,7 +1236,10 @@ communism_on_the_rise = {
 
 		visible = {
 			has_country_flag = preparation_for_communism_civil_war
-			has_idea_with_trait = communism_revolutionary
+			OR = {
+				has_idea_with_trait = communism_revolutionary
+				has_idea_with_trait = ambitious_union_boss
+			}
 			NOT = { has_government = communism }
 		}
 
@@ -1146,12 +1294,15 @@ communism_on_the_rise = {
 
 		visible = {
 			has_country_flag = preparation_for_communism_civil_war
-			has_idea_with_trait = communism_revolutionary
+			OR = {
+				has_idea_with_trait = communism_revolutionary
+				has_idea_with_trait = ambitious_union_boss
+			}
+			NOT = { has_government = communism }
 			any_army_leader = {
 				is_field_marshal = no
 				NOT = { has_trait = hidden_sympathies }
 			}
-			NOT = { has_government = communism }
 		}
 	
 		fire_only_once = yes
@@ -1178,11 +1329,14 @@ communism_on_the_rise = {
 
 		visible = {
 			has_country_flag = preparation_for_communism_civil_war
-			has_idea_with_trait = communism_revolutionary
+			OR = {
+				has_idea_with_trait = communism_revolutionary
+				has_idea_with_trait = ambitious_union_boss
+			}
+			NOT = { has_government = communism }
 			any_army_leader = {
 				NOT = { has_trait = hidden_sympathies }
 			}
-			NOT = { has_government = communism }
 			any_army_leader = {
 				is_field_marshal = yes
 				NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
@@ -1215,7 +1369,10 @@ communism_on_the_rise = {
 		visible = {
 			has_country_flag = preparation_for_communism_civil_war
 			has_country_flag = military_support_for_communism_civil_war
-			has_idea_with_trait = communism_revolutionary
+			OR = {
+				has_idea_with_trait = communism_revolutionary
+				has_idea_with_trait = ambitious_union_boss
+			}
 			NOT = { has_government = communism }
 		}
 	
@@ -1248,7 +1405,10 @@ communism_on_the_rise = {
 
 		visible = {
 			has_country_flag = preparation_for_communism_civil_war
-			has_idea_with_trait = communism_revolutionary
+			OR = {
+				has_idea_with_trait = communism_revolutionary
+				has_idea_with_trait = ambitious_union_boss
+			}
 			NOT = { has_government = communism }
 		}
 	
@@ -1267,6 +1427,41 @@ communism_on_the_rise = {
 		}
 	}
 	
+	ignite_the_communism_civil_war_single_state = {
+		icon = generic_ignite_civil_war
+		name = ignite_the_communism_civil_war
+
+		available = {
+			has_stability < 0.5
+			communism > 0.50
+		}
+
+		visible = {
+			has_country_flag = preparation_for_communism_civil_war
+			OR = {
+				has_idea_with_trait = communism_revolutionary
+				has_idea_with_trait = ambitious_union_boss
+			}
+			NOT = { has_government = communism }
+			check_variable = { num_owned_states = 1 }
+		}
+	
+		fire_only_once = yes
+	
+		cost = 50
+		
+		complete_effect = {
+			set_politics = { ruling_party = communism elections_allowed = no }
+			clr_country_flag = preparation_for_communism_civil_war
+			clr_country_flag = military_support_for_communism_civil_war
+			clr_country_flag = civil_support_for_communism_civil_war
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
+	
 	ignite_the_communism_civil_war = {
 
 		icon = generic_ignite_civil_war
@@ -1277,8 +1472,12 @@ communism_on_the_rise = {
 
 		visible = {
 			has_country_flag = preparation_for_communism_civil_war
-			has_idea_with_trait = communism_revolutionary
+			OR = {
+				has_idea_with_trait = communism_revolutionary
+				has_idea_with_trait = ambitious_union_boss
+			}
 			NOT = { has_government = communism }
+			check_variable = { num_owned_states > 1 }
 		}
 	
 		fire_only_once = yes
@@ -1299,6 +1498,7 @@ communism_on_the_rise = {
 		icon = generic_construction
 
 		visible = {
+			has_government = communism
 			has_country_flag = won_ideology_civil_war
 		}
 
@@ -1331,7 +1531,10 @@ communism_on_the_rise = {
 		}
 
 		visible = {
-			has_idea_with_trait = communism_revolutionary
+			OR = {
+				has_idea_with_trait = communist_revolutionary
+				has_idea_with_trait = ambitious_union_boss
+			}
 			NOT = { has_government = communism }
 		}
 		
@@ -1689,11 +1892,11 @@ absolutist_on_the_rise = {
 		visible = {
 			has_country_flag = preparation_for_absolutist_civil_war
 			has_idea_with_trait = absolutist_demagogue
+			NOT = { has_government = absolutist }
 			any_army_leader = {
 				is_field_marshal = no
 				NOT = { has_trait = hidden_sympathies }
 			}
-			NOT = { has_government = absolutist }
 		}
 	
 		fire_only_once = yes
@@ -1720,10 +1923,10 @@ absolutist_on_the_rise = {
 		visible = {
 			has_country_flag = preparation_for_absolutist_civil_war
 			has_idea_with_trait = absolutist_demagogue
+			NOT = { has_government = absolutist }
 			any_army_leader = {
 				NOT = { has_trait = hidden_sympathies }
 			}
-			NOT = { has_government = absolutist }
 			any_army_leader = {
 				is_field_marshal = yes
 				NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
@@ -1807,6 +2010,38 @@ absolutist_on_the_rise = {
 			factor = 0
 		}
 	}
+
+	ignite_the_absolutist_civil_war_single_state = {
+		icon = generic_ignite_civil_war
+		name = ignite_the_absolutist_civil_war
+
+		available = {
+			has_stability < 0.5
+			absolutist > 0.50
+		}
+
+		visible = {
+			has_country_flag = preparation_for_absolutist_civil_war
+			has_idea_with_trait = absolutist_demagogue
+			NOT = { has_government = absolutist }
+			check_variable = { num_owned_states = 1 }
+		}
+	
+		fire_only_once = yes
+	
+		cost = 50
+		
+		complete_effect = {
+			set_politics = { ruling_party = absolutist elections_allowed = no }
+			clr_country_flag = preparation_for_absolutist_civil_war
+			clr_country_flag = military_support_for_absolutist_civil_war
+			clr_country_flag = civil_support_for_absolutist_civil_war
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
 	
 	ignite_the_absolutist_civil_war = {
 
@@ -1820,6 +2055,7 @@ absolutist_on_the_rise = {
 			has_country_flag = preparation_for_absolutist_civil_war
 			has_idea_with_trait = absolutist_demagogue
 			NOT = { has_government = absolutist }
+			check_variable = { num_owned_states > 1 }
 		}
 	
 		fire_only_once = yes
@@ -1840,6 +2076,7 @@ absolutist_on_the_rise = {
 		icon = generic_construction
 
 		visible = {
+			has_government = absolutist
 			has_country_flag = won_ideology_civil_war
 		}
 
@@ -2043,6 +2280,10 @@ political_actions = {
 			custom_effect_tooltip = ban_absolutist_party_tt
 			add_stability = ban_ideology_var
 		}
+		
+		ai_will_do = {
+			factor = 0
+		}
 	}
 
 	institute_press_censorship_absolutist_state = {
@@ -2198,11 +2439,11 @@ radical_on_the_rise = {
 		visible = {
 			has_country_flag = preparation_for_radical_civil_war
 			has_idea_with_trait = radical_demagogue
+			NOT = { has_government = radical }
 			any_army_leader = {
 				is_field_marshal = no
 				NOT = { has_trait = hidden_sympathies }
 			}
-			NOT = { has_government = radical }
 		}
 	
 		fire_only_once = yes
@@ -2229,10 +2470,10 @@ radical_on_the_rise = {
 		visible = {
 			has_country_flag = preparation_for_radical_civil_war
 			has_idea_with_trait = radical_demagogue
+			NOT = { has_government = radical }
 			any_army_leader = {
 				NOT = { has_trait = hidden_sympathies }
 			}
-			NOT = { has_government = radical }
 			any_army_leader = {
 				is_field_marshal = yes
 				NOT = { has_unit_leader_flag = hidden_sympathies_marshal }
@@ -2316,6 +2557,38 @@ radical_on_the_rise = {
 			factor = 0
 		}
 	}
+
+	ignite_the_radical_civil_war_single_state = {
+		icon = generic_ignite_civil_war
+		name = ignite_the_radical_civil_war
+
+		available = {
+			has_stability < 0.5
+			radical > 0.50
+		}
+
+		visible = {
+			has_country_flag = preparation_for_radical_civil_war
+			has_idea_with_trait = radical_demagogue
+			NOT = { has_government = radical }
+			check_variable = { num_owned_states = 1 }
+		}
+	
+		fire_only_once = yes
+	
+		cost = 50
+		
+		complete_effect = {
+			set_politics = { ruling_party = radical elections_allowed = no }
+			clr_country_flag = preparation_for_radical_civil_war
+			clr_country_flag = military_support_for_radical_civil_war
+			clr_country_flag = civil_support_for_radical_civil_war
+		}
+		
+		ai_will_do = {
+			factor = 0
+		}
+	}
 	
 	ignite_the_radical_civil_war = {
 
@@ -2329,6 +2602,7 @@ radical_on_the_rise = {
 			has_country_flag = preparation_for_radical_civil_war
 			has_idea_with_trait = radical_demagogue
 			NOT = { has_government = radical }
+			check_variable = { num_owned_states > 1 }
 		}
 	
 		fire_only_once = yes
@@ -2349,6 +2623,7 @@ radical_on_the_rise = {
 		icon = generic_construction
 
 		visible = {
+			has_government = radical
 			has_country_flag = won_ideology_civil_war
 		}
 
@@ -2551,6 +2826,10 @@ political_actions = {
 			}
 			custom_effect_tooltip = ban_radical_party_tt
 			add_stability = ban_ideology_var
+		}
+
+		ai_will_do = {
+			factor = 0
 		}
 	}
 
