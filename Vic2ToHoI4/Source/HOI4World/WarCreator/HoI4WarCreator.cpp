@@ -21,6 +21,8 @@ HoI4WarCreator::HoI4WarCreator(HoI4::World* world, const HoI4::MapData& theMapDa
 	provincePositions(),
 	provinceToOwnerMap()
 {
+	LOG(LogLevel::Info) << "\tCreating wars";
+
 	ofstream AILog;
 	if (theConfiguration.getDebug())
 	{
@@ -34,9 +36,9 @@ HoI4WarCreator::HoI4WarCreator(HoI4::World* world, const HoI4::MapData& theMapDa
 	double worldStrength = calculateWorldStrength(AILog);
 
 	set<shared_ptr<HoI4::Faction>> factionsAtWar;
-	LOG(LogLevel::Info) << "Generating major wars";
+	LOG(LogLevel::Info) << "\t\tGenerating major wars";
 	generateMajorWars(AILog, factionsAtWar, world->getMajorIdeologies(), world, theMapData);
-	LOG(LogLevel::Info) << "Generating additional wars";
+	LOG(LogLevel::Info) << "\t\tGenerating additional wars";
 	generateAdditionalWars(AILog, factionsAtWar, worldStrength, theMapData);
 
 	if (theConfiguration.getDebug())
@@ -766,11 +768,11 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI
 	//lets look for weak neighbors
 	if (name)
 	{
-		LOG(LogLevel::Info) << "Doing Neighbor calcs for " + *name;
+		LOG(LogLevel::Info) << "\t\t\tDoing Neighbor calcs for " + *name;
 	}
 	else
 	{
-		LOG(LogLevel::Info) << "Doing Neighbor calcs";
+		LOG(LogLevel::Info) << "\t\t\tDoing Neighbor calcs";
 	}
 	for (auto neigh : CloseNeighbors)
 	{
@@ -1000,13 +1002,13 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(shared_ptr
 	auto name = Leader->getSourceCountry().getName("english");
 	if (name)
 	{
-		LOG(LogLevel::Info) << "Calculating AI for " + *name;
-		LOG(LogLevel::Info) << "Calculating Neighbors for " + *name;
+		LOG(LogLevel::Info) << "\t\t\tCalculating AI for " + *name;
+		LOG(LogLevel::Info) << "\t\t\tCalculating Neighbors for " + *name;
 	}
 	else
 	{
-		LOG(LogLevel::Info) << "Calculating AI for a country";
-		LOG(LogLevel::Info) << "Calculating Neighbors for a country";
+		LOG(LogLevel::Info) << "\t\t\tCalculating AI for a country";
+		LOG(LogLevel::Info) << "\t\t\tCalculating Neighbors for a country";
 	}
 	auto AllNeighbors = getNeighbors(Leader, theMapData);
 	map<string, shared_ptr<HoI4::Country>> Neighbors;
@@ -1032,11 +1034,11 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(shared_ptr
 	//Attempt to ally with other Communist Countries(with Permanant Revolution)
 	if (name)
 	{
-		LOG(LogLevel::Info) << "Doing Neighbor calcs for " + *name;
+		LOG(LogLevel::Info) << "\t\t\tDoing Neighbor calcs for " + *name;
 	}
 	else
 	{
-		LOG(LogLevel::Info) << "Doing Neighbor calcs for a country";
+		LOG(LogLevel::Info) << "\t\t\tDoing Neighbor calcs for a country";
 	}
 	for (auto neigh : Neighbors)
 	{
@@ -1220,11 +1222,11 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::absolutistWarCreator(shared_pt
 	auto name = country->getSourceCountry().getName("english");
 	if (name)
 	{
-		LOG(LogLevel::Info) << "Doing neighbor calcs for " + *name;
+		LOG(LogLevel::Info) << "\t\t\tDoing neighbor calcs for " + *name;
 	}
 	else
 	{
-		LOG(LogLevel::Info) << "Doing neighbor calcs for a country";
+		LOG(LogLevel::Info) << "\t\t\tDoing neighbor calcs for a country";
 	}
 
 	auto weakNeighbors = findWeakNeighbors(country, theMapData);

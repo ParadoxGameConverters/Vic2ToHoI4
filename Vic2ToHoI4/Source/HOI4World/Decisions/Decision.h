@@ -17,7 +17,7 @@ class decision: commonItems::parser
 	decision(std::string decisionName, std::istream& theStream);
 
 	[[nodiscard]] std::string getName() const { return name; }
-	[[nodiscard]] std::string getHighlightStates() const { return highlightStates; }
+	[[nodiscard]] std::string getHighlightStateTargets() const { return highlightStateTargets; }
 	[[nodiscard]] std::string getAvailable() const { return available; }
 	[[nodiscard]] std::string getVisible() const { return visible; }
 	[[nodiscard]] std::string getRemoveEffect() const { return removeEffect; }
@@ -25,7 +25,7 @@ class decision: commonItems::parser
 
 	void setAllowed(const std::string& newAllowed) { allowed = newAllowed; }
 	void setAvailable(const std::string& newAvailable) { available = newAvailable; }
-	void setHighlightStates(const std::string& newHighlightStates) { highlightStates = newHighlightStates; }
+	void setHighlightStateTargets(const std::string& newHighlightStates) { highlightStateTargets = newHighlightStates; }
 	void setTargetTrigger(const std::string& newTargetTrigger) { targetTrigger = newTargetTrigger; }
 	void setVisible(const std::string& newVisible) { visible = newVisible; }
 	void setCompleteEffect(const std::string& newEffect) { completeEffect = newEffect; }
@@ -45,7 +45,7 @@ class decision: commonItems::parser
 	std::string nameField;
 	std::string isGood;
 	std::string allowed;
-	std::string highlightStates;
+	std::string highlightStateTargets;
 	std::string available;
 	std::optional<int> daysMissionTimeout;
 	std::string activation;

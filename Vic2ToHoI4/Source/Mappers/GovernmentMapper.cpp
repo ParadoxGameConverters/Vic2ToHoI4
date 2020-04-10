@@ -142,6 +142,8 @@ partyMappings::partyMappings(std::istream& theStream)
 
 void governmentMapper::init()
 {
+	LOG(LogLevel::Info) << "\tParsing governments mappings";
+
 	registerKeyword(std::regex("government_mappings"), [this](const std::string& unused, std::istream& theStream){
 		governmentMappings mappings(theStream);
 		governmentMap = mappings.getGovernmentMap();
@@ -151,7 +153,6 @@ void governmentMapper::init()
 		partyMap = mappings.getPartyMap();
 	});
 
-	LOG(LogLevel::Info) << "Parsing governments mappings";
 	parseFile("governmentMapping.txt");
 }
 
@@ -172,7 +173,7 @@ std::string governmentMapper::getIdeologyForCountry(
 		}
 	}
 
-	LOG(LogLevel::Debug) << "Mapped " << sourceTag << " government " << sourceGovernment << " to " << ideology;
+	LOG(LogLevel::Info) << "\t\tMapped " << sourceTag << " government " << sourceGovernment << " to " << ideology;
 	return ideology;
 }
 
@@ -193,7 +194,7 @@ std::string governmentMapper::getLeaderIdeologyForCountry(
 		}
 	}
 
-	LOG(LogLevel::Debug) << "Mapped " << sourceTag << " leader " << sourceGovernment << " to " << ideology;
+	LOG(LogLevel::Info) << "\t\tMapped " << sourceTag << " leader " << sourceGovernment << " to " << ideology;
 	return ideology;
 }
 
@@ -214,7 +215,7 @@ std::string governmentMapper::getExistingIdeologyForCountry(const Vic2::Country&
 		}
 	}
 
-	LOG(LogLevel::Debug) << "Mapped " << country.getTag() << " government " << country.getGovernment() << " to "
+	LOG(LogLevel::Info) << "\t\tMapped " << country.getTag() << " government " << country.getGovernment() << " to "
 								<< ideology;
 	return ideology;
 }
@@ -236,7 +237,7 @@ std::string governmentMapper::getExistingLeaderIdeologyForCountry(const Vic2::Co
 		}
 	}
 
-	LOG(LogLevel::Debug) << "Mapped " << country.getTag() << " leader " << country.getGovernment() << " to " << ideology;
+	LOG(LogLevel::Info) << "\t\tMapped " << country.getTag() << " leader " << country.getGovernment() << " to " << ideology;
 	return ideology;
 }
 

@@ -1,5 +1,6 @@
 #include "Decisions.h"
 #include "../Events/Events.h"
+#include "Log.h"
 #include <regex>
 
 
@@ -27,6 +28,8 @@ void HoI4::decisions::updateDecisions(const std::set<std::string>& majorIdeologi
 	 const std::map<int, DefaultState>& defaultStates,
 	 const Events& theEvents)
 {
+	LOG(LogLevel::Info) << "\tUpdating decisions";
+
 	agentRecruitmentDecisions.updateDecisions();
 	stabilityDecisions.updateDecisions(majorIdeologies);
 	politicalDecisions.updateDecisions(majorIdeologies, theEvents);

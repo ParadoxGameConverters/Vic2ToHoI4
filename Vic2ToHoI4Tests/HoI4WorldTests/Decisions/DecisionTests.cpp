@@ -148,29 +148,29 @@ TEST(HoI4World_Decisions_DecisionTests, AllowedCanBeChanged)
 }
 
 
-TEST(HoI4World_Decisions_DecisionTests, HighlightStatesCanBeSet)
+TEST(HoI4World_Decisions_DecisionTests, HighlightStatesTargetsCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
-	input << "\t\thighlight_states = {\n";
+	input << "\t\thighlight_state_targets = {\n";
 	input << "\t\t\tstate = 105\n";
 	input << "\t\t}\n";
 	input << "\t}";
 	const HoI4::decision theDecision("decisionName", input);
 
-	ASSERT_EQ("= {\n\t\t\tstate = 105\n\t\t}", theDecision.getHighlightStates());
+	ASSERT_EQ("= {\n\t\t\tstate = 105\n\t\t}", theDecision.getHighlightStateTargets());
 }
 
 
-TEST(HoI4World_Decisions_DecisionTests, HighlightStatesCanBeChanged)
+TEST(HoI4World_Decisions_DecisionTests, HighlightStateTargetsCanBeChanged)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
 	HoI4::decision theDecision("decisionName", input);
-	theDecision.setHighlightStates("= {\n\t\t\tstate = 609\n\t\t}");
+	theDecision.setHighlightStateTargets("= {\n\t\t\tstate = 609\n\t\t}");
 
-	ASSERT_EQ("= {\n\t\t\tstate = 609\n\t\t}", theDecision.getHighlightStates());
+	ASSERT_EQ("= {\n\t\t\tstate = 609\n\t\t}", theDecision.getHighlightStateTargets());
 }
 
 

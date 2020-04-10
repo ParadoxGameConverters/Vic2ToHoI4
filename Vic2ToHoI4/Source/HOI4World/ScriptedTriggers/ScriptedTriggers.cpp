@@ -1,12 +1,14 @@
 #include "ScriptedTriggers.h"
+#include "Log.h"
 #include "ParserHelpers.h"
 
 
 
 void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConfiguration)
 {
-	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& name, std::istream& theStream)
-	{
+	LOG(LogLevel::Info) << "\tImporting scripted triggers";
+
+	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& name, std::istream& theStream) {
 		ScriptedTrigger scriptedTrigger(name);
 		const commonItems::stringOfObject bodyString(theStream);
 		scriptedTrigger.setBody(bodyString.getString());
@@ -15,8 +17,7 @@ void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConf
 	parseFile(theConfiguration.getHoI4Path() + "/common/scripted_triggers/ideology_scripted_triggers.txt");
 	clearRegisteredKeywords();
 
-	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& name, std::istream& theStream)
-	{
+	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& name, std::istream& theStream) {
 		ScriptedTrigger scriptedTrigger(name);
 		const commonItems::stringOfObject bodyString(theStream);
 		scriptedTrigger.setBody(bodyString.getString());
@@ -25,8 +26,7 @@ void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConf
 	parseFile(theConfiguration.getHoI4Path() + "/common/scripted_triggers/Elections_scripted_triggers.txt");
 	clearRegisteredKeywords();
 
-	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& name, std::istream& theStream)
-	{
+	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& name, std::istream& theStream) {
 		ScriptedTrigger scriptedTrigger(name);
 		const commonItems::stringOfObject bodyString(theStream);
 		scriptedTrigger.setBody(bodyString.getString());
@@ -37,12 +37,10 @@ void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConf
 }
 
 
-void replaceScriptedTriggers(
-	std::vector<HoI4::ScriptedTrigger>& triggers,
-	const std::map<std::string_view, std::string>& replacements
-)
+void replaceScriptedTriggers(std::vector<HoI4::ScriptedTrigger>& triggers,
+	 const std::map<std::string_view, std::string>& replacements)
 {
-	for (auto& scriptedTrigger : triggers)
+	for (auto& scriptedTrigger: triggers)
 	{
 		if (auto replacement = replacements.find(scriptedTrigger.getName()); replacement != replacements.end())
 		{
@@ -52,27 +50,17 @@ void replaceScriptedTriggers(
 }
 
 
-void HoI4::ScriptedTriggers::replaceIdeologyScriptedTrigger(
-	const std::string_view name,
-	const std::string& replacementBody
-)
+void HoI4::ScriptedTriggers::replaceIdeologyScriptedTrigger(const std::string_view name,
+	 const std::string& replacementBody)
 {
-	replaceScriptedTriggers(
-		ideologyScriptedTriggers,
-		std::map<std::string_view, std::string>{ { name, replacementBody }}
-	);
+	replaceScriptedTriggers(ideologyScriptedTriggers, std::map<std::string_view, std::string>{{name, replacementBody}});
 }
 
 
-void HoI4::ScriptedTriggers::replaceElectionsScriptedTrigger(
-	const std::string_view name,
-	const std::string& replacementBody
-)
+void HoI4::ScriptedTriggers::replaceElectionsScriptedTrigger(const std::string_view name,
+	 const std::string& replacementBody)
 {
-	replaceScriptedTriggers(
-		electionsScriptedTriggers,
-		std::map<std::string_view, std::string>{ { name, replacementBody }}
-	);
+	replaceScriptedTriggers(electionsScriptedTriggers, std::map<std::string_view, std::string>{{name, replacementBody}});
 }
 
 

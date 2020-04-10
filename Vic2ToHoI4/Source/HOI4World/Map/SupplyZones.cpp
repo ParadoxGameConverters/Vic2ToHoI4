@@ -14,7 +14,7 @@
 
 HoI4::SupplyZones::SupplyZones(const std::map<int, DefaultState>& defaultStates)
 {
-	LOG(LogLevel::Info) << "Importing supply zones";
+	LOG(LogLevel::Info) << "\tImporting supply zones";
 	importStates(defaultStates);
 
 	registerKeyword("supply_area", [this](const std::string& unused, std::istream& theStream){
@@ -59,6 +59,7 @@ void HoI4::SupplyZones::importStates(const std::map<int, DefaultState>& defaultS
 
 void HoI4::SupplyZones::convertSupplyZones(const States& states)
 {
+	LOG(LogLevel::Info) << "\tConverting supply zones";
 	for (const auto& state: states.getStates())
 	{
 		for (auto province: state.second.getProvinces())

@@ -40,12 +40,10 @@ HoI4::States::States(
 {
 	int num;
 
-	LOG(LogLevel::Info) << "Converting states";
+	LOG(LogLevel::Info) << "\tConverting states";
 	registerKeyword(std::regex("state"), [this, &num](const std::string& unused, std::istream& theStream){
 		defaultStates.insert(std::make_pair(num, HoI4::DefaultState(theStream)));
 	});
-
-	LOG(LogLevel::Info) << "Finding impassable provinces";
 
 	std::set<std::string> statesFiles;
 	Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/history/states", statesFiles);
@@ -286,7 +284,7 @@ void HoI4::States::createStates(
 	}
 
 	unsigned int manpower = getTotalManpower();
-	LOG(LogLevel::Debug) << "Total manpower was " << manpower << ", which is " << manpower / 20438756.2 << "% of default HoI4.";
+	LOG(LogLevel::Info) << "\t\tTotal manpower was " << manpower << ", which is " << manpower / 20438756.2 << "% of default HoI4.";
 }
 
 
@@ -441,6 +439,7 @@ void HoI4::States::convertAirBases(
 	const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
 	const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers
 ) {
+	LOG(LogLevel::Info) << "\tConverting air bases";
 	addBasicAirBases();
 	addCapitalAirBases(countries);
 	addGreatPowerAirBases(greatPowers);
@@ -495,6 +494,7 @@ void HoI4::States::addBasicAirBases()
 
 void HoI4::States::convertResources()
 {
+	LOG(LogLevel::Info) << "\tConverting resources";
 	Resources resourceMap;
 
 	for (auto& state: states)
@@ -534,7 +534,7 @@ void HoI4::States::convertCapitalVPs(
 	const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers,
 	double greatestStrength
 ) {
-	LOG(LogLevel::Info) << "Adding bonuses to capitals";
+	LOG(LogLevel::Info) << "\tConverting capital VPs";
 
 	addBasicCapitalVPs(countries);
 	addGreatPowerVPs(greatPowers);
@@ -544,6 +544,7 @@ void HoI4::States::convertCapitalVPs(
 
 void HoI4::States::addCapitalsToStates(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
 {
+	LOG(LogLevel::Info) << "\tAdding capitals to states";
 	for (auto country: countries)
 	{
 		if (auto capitalState = states.find(*country.second->getCapitalState()); capitalState != states.end())

@@ -1,23 +1,29 @@
 #include "ScriptedTriggersUpdater.h"
+#include "Log.h"
 
 
 
-void updateIdeologyScriptedTriggers(HoI4::ScriptedTriggers& scriptedTriggers, const std::set<std::string>& majorIdeologies);
-void updateElectionsScriptedTriggers(HoI4::ScriptedTriggers& scriptedTriggers, const std::set<std::string>& majorIdeologies);
-void updateLawsWarSupportTriggers(HoI4::ScriptedTriggers& scriptedTriggers, const std::set<std::string>& majorIdeologies);
+void updateIdeologyScriptedTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
+	 const std::set<std::string>& majorIdeologies);
+void updateElectionsScriptedTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
+	 const std::set<std::string>& majorIdeologies);
+void updateLawsWarSupportTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
+	 const std::set<std::string>& majorIdeologies);
 void HoI4::updateScriptedTriggers(ScriptedTriggers& scriptedTriggers, const std::set<std::string>& majorIdeologies)
 {
+	LOG(LogLevel::Info) << "\tUpdating scripted triggers";
 	updateIdeologyScriptedTriggers(scriptedTriggers, majorIdeologies);
 	updateElectionsScriptedTriggers(scriptedTriggers, majorIdeologies);
 	updateLawsWarSupportTriggers(scriptedTriggers, majorIdeologies);
 }
 
 
-void updateIdeologyScriptedTriggers(HoI4::ScriptedTriggers& scriptedTriggers, const std::set<std::string>& majorIdeologies)
+void updateIdeologyScriptedTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
+	 const std::set<std::string>& majorIdeologies)
 {
 	std::string body = "= {\n";
 	body += "\tOR = {\n";
-	for (const auto& ideology : majorIdeologies)
+	for (const auto& ideology: majorIdeologies)
 	{
 		if (ideology == "neutrality")
 		{
@@ -27,7 +33,7 @@ void updateIdeologyScriptedTriggers(HoI4::ScriptedTriggers& scriptedTriggers, co
 		body += "\t\t\thas_government = " + ideology + "\n";
 		body += "\t\t\tROOT = {\n";
 		body += "\t\t\t\tOR = {\n";
-		for (const auto& secondIdeology : majorIdeologies)
+		for (const auto& secondIdeology: majorIdeologies)
 		{
 			if ((secondIdeology == ideology) || (secondIdeology == "neutrality"))
 			{
@@ -47,10 +53,11 @@ void updateIdeologyScriptedTriggers(HoI4::ScriptedTriggers& scriptedTriggers, co
 
 
 
-void updateElectionsScriptedTriggers(HoI4::ScriptedTriggers& scriptedTriggers, const std::set<std::string>& majorIdeologies)
+void updateElectionsScriptedTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
+	 const std::set<std::string>& majorIdeologies)
 {
 	std::string supportBody = "= {\n";
-	for (const auto& ideology : majorIdeologies)
+	for (const auto& ideology: majorIdeologies)
 	{
 		if (ideology == "neutrality")
 		{
@@ -73,15 +80,12 @@ void updateElectionsScriptedTriggers(HoI4::ScriptedTriggers& scriptedTriggers, c
 
 std::string getHasUnsupportedManpowerLawBody(const std::set<std::string>& majorIdeologies);
 std::string getHasExcessiveArmySizeBody(const std::set<std::string>& majorIdeologies);
-void updateLawsWarSupportTriggers(HoI4::ScriptedTriggers& scriptedTriggers, const std::set<std::string>& majorIdeologies)
+void updateLawsWarSupportTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
+	 const std::set<std::string>& majorIdeologies)
 {
 	std::map<std::string_view, std::string> replacements;
 	replacements.insert(
-		std::make_pair(
-			"has_unsupported_manpower_law",
-			getHasUnsupportedManpowerLawBody(majorIdeologies)
-		)
-	);
+		 std::make_pair("has_unsupported_manpower_law", getHasUnsupportedManpowerLawBody(majorIdeologies)));
 	replacements.insert(std::make_pair("has_excessive_army_size", getHasExcessiveArmySizeBody(majorIdeologies)));
 	scriptedTriggers.replaceLawsWarSupportTriggers(replacements);
 }
@@ -103,7 +107,7 @@ std::string getHasUnsupportedManpowerLawBody(const std::set<std::string>& majorI
 	unsupportedManpowerBody += "\t\t}\n";
 	unsupportedManpowerBody += "\t\thas_idea = extensive_conscription\n";
 	unsupportedManpowerBody += "\t\thas_war_support < 0.2\n";
-	for (const auto& majorIdeology : majorIdeologies)
+	for (const auto& majorIdeology: majorIdeologies)
 	{
 		if ((majorIdeology == "democratic") || (majorIdeology == "neutrality"))
 		{
@@ -119,7 +123,7 @@ std::string getHasUnsupportedManpowerLawBody(const std::set<std::string>& majorI
 	unsupportedManpowerBody += "\t\t}\n";
 	unsupportedManpowerBody += "\t\thas_idea = service_by_requirement\n";
 	unsupportedManpowerBody += "\t\thas_war_support < 0.6\n";
-	for (const auto& majorIdeology : majorIdeologies)
+	for (const auto& majorIdeology: majorIdeologies)
 	{
 		if ((majorIdeology == "democratic") || (majorIdeology == "neutrality"))
 		{

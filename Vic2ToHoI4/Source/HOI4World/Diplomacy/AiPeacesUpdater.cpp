@@ -1,9 +1,12 @@
 #include "AiPeacesUpdater.h"
+#include "Log.h"
 
 
 
 void HoI4::updateAiPeaces(AiPeaces& aiPeaces, const std::set<std::string>& majorIdeologies)
 {
+	LOG(LogLevel::Info) << "\tUpdating AI peaces";
+
 	std::string newEnable = "= {\n";
 	newEnable += "\t\tOR = {\n";
 	newEnable += "\t\t\thas_government = fascism\n";

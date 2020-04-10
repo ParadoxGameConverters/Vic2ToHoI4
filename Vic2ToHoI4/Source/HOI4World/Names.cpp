@@ -155,7 +155,7 @@ cultureGroup::cultureGroup(std::istream& theStream)
 
 void HoI4::namesMapper::init()
 {
-	LOG(LogLevel::Info) << "Parsing names";
+	LOG(LogLevel::Info) << "\tParsing names";
 
 	for (auto mod: theConfiguration.getVic2Mods())
 	{

@@ -1,13 +1,16 @@
 #include "CoastalProvinces.h"
-#include "Hoi4Province.h"
-#include "MapData.h"
 #include "../../Configuration.h"
+#include "Hoi4Province.h"
+#include "Log.h"
+#include "MapData.h"
 #include <fstream>
 
 
 
 void HoI4::CoastalProvinces::init(const MapData& theMapData)
 {
+	LOG(LogLevel::Info) << "\tInitializing coastal provinces";
+
 	auto provinces = importProvinces();
 
 	for (const auto& province: provinces)
@@ -20,15 +23,11 @@ void HoI4::CoastalProvinces::init(const MapData& theMapData)
 		auto neighbors = theMapData.getNeighbors(province.first);
 		for (auto adjProvinceNum: neighbors)
 		{
-			if (
-				auto adjProvince = provinces.find(adjProvinceNum); 
-				(adjProvince != provinces.end()) && (adjProvince->second.getType() == "ocean")
-				)
+			if (auto adjProvince = provinces.find(adjProvinceNum);
+				 (adjProvince != provinces.end()) && (adjProvince->second.getType() == "ocean"))
 			{
-				if (
-					auto coastalProvince = theCoastalProvinces.find(province.first);
-					coastalProvince == theCoastalProvinces.end()
-					)
+				if (auto coastalProvince = theCoastalProvinces.find(province.first);
+					 coastalProvince == theCoastalProvinces.end())
 				{
 					std::vector<int> seaProvince;
 					seaProvince.push_back(adjProvinceNum);

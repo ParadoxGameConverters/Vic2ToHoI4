@@ -21,9 +21,9 @@ HoI4::decision::decision(std::string decisionName, std::istream& theStream): nam
 		const commonItems::stringOfObject theAllowed(theStream);
 		allowed = theAllowed.getString();
 	});
-	registerKeyword("highlight_states", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("highlight_state_targets", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfObject theHighlightStates(theStream);
-		highlightStates = theHighlightStates.getString();
+		highlightStateTargets = theHighlightStates.getString();
 	});
 	registerKeyword("available", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfObject theAvailable(theStream);

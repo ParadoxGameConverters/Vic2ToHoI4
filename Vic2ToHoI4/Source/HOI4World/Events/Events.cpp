@@ -499,6 +499,8 @@ void HoI4::Events::createTradeEvent(const Country& leader, const Country& greatP
 
 void HoI4::Events::createPoliticalEvents(const std::set<std::string>& majorIdeologies)
 {
+	LOG(LogLevel::Info) << "\tCreating political events";
+
 	addOnTheRise(majorIdeologies);
 	addMinisterRevolutionEvents(majorIdeologies);
 	addFiftyPercentEvents(majorIdeologies);
@@ -1020,6 +1022,8 @@ std::string HoI4::Events::getIdeologicalPicture(const std::string& ideology)
 
 void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& majorIdeologies)
 {
+	LOG(LogLevel::Info) << "\tCreating war justification events";
+
 	auto eventNum = 21;
 	for (const auto& majorIdeology: majorIdeologies)
 	{
@@ -1115,6 +1119,8 @@ void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& maj
 
 void HoI4::Events::importElectionEvents(const std::set<std::string>& majorIdeologies, OnActions& onActions)
 {
+	LOG(LogLevel::Info) << "\tImporting election events";
+
 	registerKeyword("country_event", [this, majorIdeologies](const std::string& type, std::istream& theStream) {
 		const Event electionEvent(type, theStream);
 		if ((majorIdeologies.count("democratic") > 0) || (electionEvent.getId() != "election.3"))
@@ -1297,6 +1303,8 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag,
 
 void HoI4::Events::createStabilityEvents(const std::set<std::string>& majorIdeologies)
 {
+	LOG(LogLevel::Info) << "\tCreating stability events";
+
 	clearRegisteredKeywords();
 	registerKeyword(std::regex("add_namespace"), commonItems::ignoreString);
 	registerKeyword(std::regex("country_event"), [this](const std::string& type, std::istream& theStream) {
@@ -1414,6 +1422,8 @@ std::optional<int> HoI4::Events::getEventNumber(const std::string& eventName) co
 void HoI4::Events::generateGenericEvents(const Configuration& theConfiguration,
 	 const std::set<std::string>& majorIdeologies)
 {
+	LOG(LogLevel::Info) << "\tCreating generic events";
+
 	std::ifstream genericEventsFileStream(theConfiguration.getHoI4Path() + "/events/Generic.txt");
 	if (!genericEventsFileStream.is_open())
 	{

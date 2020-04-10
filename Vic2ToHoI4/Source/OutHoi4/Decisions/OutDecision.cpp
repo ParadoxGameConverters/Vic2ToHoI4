@@ -21,9 +21,9 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecis
 	{
 		outStream << "\n\t\tallowed " << outDecision.allowed << "\n";
 	}
-	if (!outDecision.highlightStates.empty())
+	if (!outDecision.highlightStateTargets.empty())
 	{
-		outStream << "\n\t\thighlight_states " << outDecision.highlightStates << "\n";
+		outStream << "\n\t\thighlight_state_targets " << outDecision.highlightStateTargets << "\n";
 	}
 	if (!outDecision.available.empty())
 	{
