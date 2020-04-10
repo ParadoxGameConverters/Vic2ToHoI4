@@ -6,7 +6,7 @@
 
 
 
-Vic2::Localisations::Localisations() noexcept: localisations(), localisationToKeyMap()
+std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Parser::importLocalisations()
 {
 	LOG(LogLevel::Info) << "Reading localisation";
 
@@ -22,10 +22,12 @@ Vic2::Localisations::Localisations() noexcept: localisations(), localisationToKe
 	{
 		ReadFromFile("DataFiles/Vic2Localisations.csv");
 	}
+
+	return std::make_unique<Localisations>(localisations, localisationToKeyMap);
 }
 
 
-void Vic2::Localisations::ReadFromAllFilesInFolder(const std::string& folderPath)
+void Vic2::Localisations::Parser::ReadFromAllFilesInFolder(const std::string& folderPath)
 {
 	std::set<std::string> fileNames;
 	Utils::GetAllFilesInFolder(folderPath, fileNames);
@@ -37,7 +39,7 @@ void Vic2::Localisations::ReadFromAllFilesInFolder(const std::string& folderPath
 }
 
 
-void Vic2::Localisations::ReadFromFile(const std::string& fileName)
+void Vic2::Localisations::Parser::ReadFromFile(const std::string& fileName)
 {
 	std::ifstream in(fileName);
 
@@ -68,7 +70,7 @@ const std::string languages[] = {"english",
 	 "braz_por",
 	 "russian",
 	 "finnish"};
-void Vic2::Localisations::processLine(const std::string& line)
+void Vic2::Localisations::Parser::processLine(const std::string& line)
 {
 	int division = line.find_first_of(';');
 	std::string key = line.substr(0, division);
@@ -110,7 +112,7 @@ void Vic2::Localisations::processLine(const std::string& line)
 }
 
 
-std::string Vic2::Localisations::getNextLocalisation(const std::string& line, int& division)
+std::string Vic2::Localisations::Parser::getNextLocalisation(const std::string& line, int& division)
 {
 	int frontDivision = division + 1;
 	division = line.find_first_of(';', frontDivision);

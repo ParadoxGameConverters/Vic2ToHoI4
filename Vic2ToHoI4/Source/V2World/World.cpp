@@ -21,7 +21,7 @@
 
 Vic2::World::World(const std::string& filename)
 {
-	theLocalisations = std::make_unique<Localisations>();
+	theLocalisations = Localisations::Parser{}.importLocalisations();
 	theCultureGroups.init();
 	issuesInstance.instantiate();
 	theStateDefinitions = StateDefinitions::Parser{}.parseStateDefinitions();
