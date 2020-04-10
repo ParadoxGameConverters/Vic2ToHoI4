@@ -27,7 +27,8 @@ class Localisations
 	{
 	}
 
-	[[nodiscard]] std::optional<std::string> getTextInLanguage(const std::string& key, const std::string& language) const;
+	[[nodiscard]] std::optional<std::string> getTextInLanguage(const std::string& key,
+		 const std::string& language) const;
 	[[nodiscard]] std::map<std::string, std::string> getTextInEachLanguage(const std::string& key) const;
 	void updateDomainCountry(const std::string& tag, const std::string& domainName);
 
@@ -46,7 +47,6 @@ class Localisations::Parser
 	void ReadFromAllFilesInFolder(const std::string& folderPath);
 	void ReadFromFile(const std::string& fileName);
 	void processLine(const std::string& line);
-	std::string getNextLocalisation(const std::string& line, int& division);
 
 	KeyToLocalisationsMap localisations;
 	std::map<std::string, std::string> localisationToKeyMap;

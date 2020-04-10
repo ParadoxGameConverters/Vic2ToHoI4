@@ -6,6 +6,9 @@
 
 
 
+std::string getNextLocalisation(const std::string& line, int& division);
+
+
 std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Parser::importLocalisations()
 {
 	LOG(LogLevel::Info) << "Reading localisation";
@@ -112,7 +115,7 @@ void Vic2::Localisations::Parser::processLine(const std::string& line)
 }
 
 
-std::string Vic2::Localisations::Parser::getNextLocalisation(const std::string& line, int& division)
+std::string getNextLocalisation(const std::string& line, int& division)
 {
 	const auto frontDivision = division + 1;
 	division = line.find_first_of(';', frontDivision);
