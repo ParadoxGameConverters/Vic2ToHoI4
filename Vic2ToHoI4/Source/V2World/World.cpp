@@ -1,43 +1,19 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "World.h"
+#include "../Configuration.h"
+#include "../Mappers/CountryMapping.h"
+#include "../Mappers/MergeRules.h"
+#include "../Mappers/Provinces/ProvinceMapper.h"
 #include "CommonCountryData.h"
 #include "Country.h"
 #include "Diplomacy.h"
 #include "Inventions.h"
 #include "Issues.h"
-#include "Party.h"
-#include "Province.h"
-#include "State.h"
-#include "StateDefinitions.h"
-#include "../Configuration.h"
-#include "../Mappers/CountryMapping.h"
-#include "../Mappers/MergeRules.h"
-#include "../Mappers/Provinces/ProvinceMapper.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
+#include "Party.h"
+#include "Province.h"
+#include "State.h"
 #include <fstream>
 
 
@@ -50,37 +26,35 @@ Vic2::World::World(const std::string& filename)
 	inventions theInventions;
 
 	std::vector<int> GPIndexes;
-	registerKeyword(std::regex("great_nations"), [&GPIndexes, this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("great_nations"), [&GPIndexes, this](const std::string& unused, std::istream& theStream) {
 		commonItems::intList indexList(theStream);
 		GPIndexes = indexList.getInts();
 	});
 
-	registerKeyword(std::regex("\\d+"), [this](const std::string& provinceID, std::istream& theStream)
-	{
+	registerKeyword(std::regex("\\d+"), [this](const std::string& provinceID, std::istream& theStream) {
 		provinces[stoi(provinceID)] = new Vic2::Province(provinceID, theStream);
 	});
 
 	std::vector<std::string> tagsInOrder;
 	tagsInOrder.push_back(""); // REB (first country is index 1
-	registerKeyword(std::regex("[A-Z]{3}"), [&tagsInOrder, &theInventions, this](const std::string& countryTag, std::istream& theStream)
-	{
-		countries[countryTag] = new Country(countryTag, theStream, theInventions, theCultureGroups);
-		tagsInOrder.push_back(countryTag);
-	});
-	registerKeyword(std::regex("[A-Z][0-9]{2}"), [&tagsInOrder, &theInventions, this](const std::string& countryTag, std::istream& theStream)
-	{
-		countries[countryTag] = new Country(countryTag, theStream, theInventions, theCultureGroups);
-		tagsInOrder.push_back(countryTag);
-	});
-	registerKeyword(std::regex("diplomacy"), [this](const std::string& top, std::istream& theStream)
-	{
+	registerKeyword(std::regex("[A-Z]{3}"),
+		 [&tagsInOrder, &theInventions, this](const std::string& countryTag, std::istream& theStream) {
+			 countries[countryTag] =
+				  new Country(countryTag, theStream, theInventions, theCultureGroups, theStateDefinitions);
+			 tagsInOrder.push_back(countryTag);
+		 });
+	registerKeyword(std::regex("[A-Z][0-9]{2}"),
+		 [&tagsInOrder, &theInventions, this](const std::string& countryTag, std::istream& theStream) {
+			 countries[countryTag] =
+				  new Country(countryTag, theStream, theInventions, theCultureGroups, theStateDefinitions);
+			 tagsInOrder.push_back(countryTag);
+		 });
+	registerKeyword(std::regex("diplomacy"), [this](const std::string& top, std::istream& theStream) {
 		diplomacy = new Vic2::Diplomacy(theStream);
 	});
 
 	std::vector<War> wars;
-	registerKeyword(std::regex("active_war"), [&wars](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("active_war"), [&wars](const std::string& unused, std::istream& theStream) {
 		War newWar(theStream);
 		wars.push_back(newWar);
 	});
@@ -103,7 +77,7 @@ Vic2::World::World(const std::string& filename)
 	determineEmployedWorkers();
 	overallMergeNations();
 	removeEmptyNations();
-	determinePartialStates();
+	determinePartialStates(theStateDefinitions);
 	addWarsToCountries(wars);
 	if (diplomacy == nullptr)
 	{
@@ -143,9 +117,8 @@ void Vic2::World::setProvinceOwners()
 		}
 		else
 		{
-			LOG(LogLevel::Warning)
-				<< "Trying to set " << province.second->getOwner() << " as owner of "
-				<< province.first << ", but country does not exist.";
+			LOG(LogLevel::Warning) << "Trying to set " << province.second->getOwner() << " as owner of " << province.first
+										  << ", but country does not exist.";
 		}
 	}
 	for (auto country: countries)
@@ -260,13 +233,13 @@ void Vic2::World::removeEmptyNations()
 }
 
 
-void Vic2::World::determinePartialStates()
+void Vic2::World::determinePartialStates(const Vic2::StateDefinitions& theStateDefinitions)
 {
 	for (auto country: countries)
 	{
 		for (auto state: country.second->getStates())
 		{
-			state->determineIfPartialState();
+			state->determineIfPartialState(theStateDefinitions);
 		}
 	}
 }

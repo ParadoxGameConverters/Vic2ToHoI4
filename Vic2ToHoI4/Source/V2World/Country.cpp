@@ -1,120 +1,103 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "Country.h"
-#include "CultureGroups.h"
-#include "Log.h"
 #include "../Mappers/V2Localisations.h"
+#include "CultureGroups.h"
 #include "Inventions.h"
 #include "Leader.h"
+#include "Log.h"
+#include "ParserHelpers.h"
 #include "Party.h"
 #include "Pop.h"
 #include "Province.h"
 #include "Relations.h"
 #include "State.h"
-#include "ParserHelpers.h"
+#include "StateDefinitions.h"
 #include <functional>
 
 
 
-Vic2::Country::Country(const std::string& theTag, std::istream& theStream, const inventions& theInventions, const cultureGroups& theCultureGroups):
-	tag(theTag)
+Vic2::Country::Country(const std::string& theTag,
+	 std::istream& theStream,
+	 const inventions& theInventions,
+	 const cultureGroups& theCultureGroups,
+	 const StateDefinitions& theStateDefinitions):
+	 tag(theTag)
 {
-	registerKeyword(std::regex("capital"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("capital"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleInt capitalInt(theStream);
 		capital = capitalInt.getInt();
 	});
-	registerKeyword(std::regex("civilized"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("civilized"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString civilizedString(theStream);
 		if (civilizedString.getString() == "yes")
 		{
 			civilized = true;
 		}
 	});
-	registerKeyword(std::regex("revanchism"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("revanchism"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleDouble revanchismDouble(theStream);
 		revanchism = revanchismDouble.getDouble();
 	});
-	registerKeyword(std::regex("war_exhaustion"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("war_exhaustion"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleDouble warExhaustionDouble(theStream);
 		warExhaustion = warExhaustionDouble.getDouble();
 	});
-	registerKeyword(std::regex("badboy"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("badboy"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleDouble badboyDouble(theStream);
 		badboy = badboyDouble.getDouble();
 	});
-	registerKeyword(std::regex("prestige"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("prestige"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleDouble prestigeDouble(theStream);
 		prestige = prestigeDouble.getDouble();
 	});
-	registerKeyword(std::regex("government"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("government"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString governmentString(theStream);
 		government = governmentString.getString();
 	});
-	registerKeyword(std::regex("last_election"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("last_election"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString lastElectionString(theStream);
 		lastElection = date(lastElectionString.getString());
 	});
-	registerKeyword(std::regex("domain_region"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("domain_region"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString regionString(theStream);
 		domainName = regionString.getString();
 		domainAdjective = domainName;
 	});
-	registerKeyword(std::regex("human"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("human"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::ignoreItem(unused, theStream);
 		human = true;
 	});
-	registerKeyword(std::regex("primary_culture"), [this, &theCultureGroups](const std::string& unused, std::istream& theStream){
-		commonItems::singleString cultureString(theStream);
-		primaryCulture = cultureString.getString();
-		if (primaryCulture.substr(0,1) == "\"")
-		{
-			primaryCulture = primaryCulture.substr(1, primaryCulture.size() - 2);
-		}
-		acceptedCultures.insert(primaryCulture);
+	registerKeyword(std::regex("primary_culture"),
+		 [this, &theCultureGroups](const std::string& unused, std::istream& theStream) {
+			 commonItems::singleString cultureString(theStream);
+			 primaryCulture = cultureString.getString();
+			 if (primaryCulture.substr(0, 1) == "\"")
+			 {
+				 primaryCulture = primaryCulture.substr(1, primaryCulture.size() - 2);
+			 }
+			 acceptedCultures.insert(primaryCulture);
 
-		auto cultureGroupOption = theCultureGroups.getGroup(primaryCulture);
-		if (cultureGroupOption)
-		{
-			primaryCultureGroup = *cultureGroupOption;
-		}
-		else
-		{
-			primaryCultureGroup.clear();
-		}
-	});
-	registerKeyword(std::regex("culture"), [this](const std::string& unused, std::istream& theStream){
+			 auto cultureGroupOption = theCultureGroups.getGroup(primaryCulture);
+			 if (cultureGroupOption)
+			 {
+				 primaryCultureGroup = *cultureGroupOption;
+			 }
+			 else
+			 {
+				 primaryCultureGroup.clear();
+			 }
+		 });
+	registerKeyword(std::regex("culture"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::stringList cultureString(theStream);
 		for (auto culture: cultureString.getStrings())
 		{
-			if (culture.substr(0,1) == "\"")
+			if (culture.substr(0, 1) == "\"")
 			{
 				culture = culture.substr(1, culture.size() - 2);
 			}
 			acceptedCultures.insert(culture);
 		}
 	});
-	registerKeyword(std::regex("technology"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("technology"), [this](const std::string& unused, std::istream& theStream) {
 		auto equals = getNextTokenWithoutMatching(theStream);
 		auto openBrace = getNextTokenWithoutMatching(theStream);
 		auto token = getNextTokenWithoutMatching(theStream);
@@ -125,18 +108,19 @@ Vic2::Country::Country(const std::string& theTag, std::istream& theStream, const
 			token = getNextTokenWithoutMatching(theStream);
 		}
 	});
-	registerKeyword(std::regex("active_inventions"), [this, &theInventions](const std::string& unused, std::istream& theStream){
-		commonItems::intList inventionNums(theStream);
-		for (auto inventionNum: inventionNums.getInts())
-		{
-			auto inventionName = theInventions.getInventionName(inventionNum);
-			if (inventionName)
-			{
-				discoveredInventions.insert(*inventionName);
-			}
-		}
-	});
-	registerKeyword(std::regex("active_party"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("active_inventions"),
+		 [this, &theInventions](const std::string& unused, std::istream& theStream) {
+			 commonItems::intList inventionNums(theStream);
+			 for (auto inventionNum: inventionNums.getInts())
+			 {
+				 auto inventionName = theInventions.getInventionName(inventionNum);
+				 if (inventionName)
+				 {
+					 discoveredInventions.insert(*inventionName);
+				 }
+			 }
+		 });
+	registerKeyword(std::regex("active_party"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleInt partyNum(theStream);
 		activePartyIDs.push_back(partyNum.getInt());
 		if (rulingPartyID == 0)
@@ -144,11 +128,11 @@ Vic2::Country::Country(const std::string& theTag, std::istream& theStream, const
 			rulingPartyID = partyNum.getInt();
 		}
 	});
-	registerKeyword(std::regex("ruling_party"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("ruling_party"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleInt partyNum(theStream);
 		rulingPartyID = partyNum.getInt();
 	});
-	registerKeyword(std::regex("upper_house"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("upper_house"), [this](const std::string& unused, std::istream& theStream) {
 		auto equals = getNextTokenWithoutMatching(theStream);
 		auto openBrace = getNextTokenWithoutMatching(theStream);
 		auto token = getNextTokenWithoutMatching(theStream);
@@ -159,23 +143,19 @@ Vic2::Country::Country(const std::string& theTag, std::istream& theStream, const
 			token = getNextTokenWithoutMatching(theStream);
 		}
 	});
-	registerKeyword(std::regex("[A-Z]{3}"), [this](const std::string& countryTag, std::istream& theStream)
-	{
+	registerKeyword(std::regex("[A-Z]{3}"), [this](const std::string& countryTag, std::istream& theStream) {
 		Relations* rel = new Relations(countryTag, theStream);
 		relations.insert(make_pair(rel->getTag(), rel));
 	});
-	registerKeyword(std::regex("[A-Z][0-9]{2}"), [this](const std::string& countryTag, std::istream& theStream)
-	{
+	registerKeyword(std::regex("[A-Z][0-9]{2}"), [this](const std::string& countryTag, std::istream& theStream) {
 		Relations* rel = new Relations(countryTag, theStream);
 		relations.insert(make_pair(rel->getTag(), rel));
 	});
-	registerKeyword(std::regex("army"), [this](const std::string& type, std::istream& theStream)
-	{
+	registerKeyword(std::regex("army"), [this](const std::string& type, std::istream& theStream) {
 		Army army(type, theStream);
 		armies.push_back(army);
 	});
-	registerKeyword(std::regex("navy"), [this](const std::string& type, std::istream& theStream)
-	{
+	registerKeyword(std::regex("navy"), [this](const std::string& type, std::istream& theStream) {
 		Army navy(type, theStream);
 		armies.push_back(navy);
 
@@ -184,18 +164,16 @@ Vic2::Country::Country(const std::string& theTag, std::istream& theStream, const
 			armies.push_back(transportedArmy);
 		}
 	});
-	registerKeyword(std::regex("leader"), [this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("leader"), [this](const std::string& unused, std::istream& theStream) {
 		Leader* leader = new Leader(theStream);
 		leaders.push_back(leader);
 	});
-	registerKeyword(std::regex("state"), [this](const std::string& unused, std::istream& theStream)
-	{
-		State* newState = new State(theStream, tag);
-		states.push_back(newState);
-	});
-	registerKeyword(std::regex("flags"), [this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("state"),
+		 [this, &theStateDefinitions](const std::string& unused, std::istream& theStream) {
+			 State* newState = new State(theStream, tag, theStateDefinitions);
+			 states.push_back(newState);
+		 });
+	registerKeyword(std::regex("flags"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::assignments theFlags(theStream);
 		for (auto flag: theFlags.getAssignments())
 		{
@@ -245,9 +223,9 @@ void Vic2::Country::eatCountry(Vic2::Country* target)
 
 void Vic2::Country::putProvincesInStates()
 {
-	for (auto state : states)
+	for (auto state: states)
 	{
-		for (auto provinceNum : state->getProvinceNumbers())
+		for (auto provinceNum: state->getProvinceNumbers())
 		{
 			auto province = provinces.find(provinceNum);
 			if (province == provinces.end())
@@ -264,7 +242,7 @@ void Vic2::Country::putProvincesInStates()
 
 void Vic2::Country::determineEmployedWorkers()
 {
-	for (auto state : states)
+	for (auto state: states)
 	{
 		state->determineEmployedWorkers();
 	}
@@ -278,7 +256,7 @@ void Vic2::Country::setLocalisationNames()
 		V2Localisations::UpdateDomainCountry(tag, domainName);
 	}
 	auto nameInAllLanguages = V2Localisations::GetTextInEachLanguage(tag);
-	for (auto nameInLanguage : nameInAllLanguages)
+	for (auto nameInLanguage: nameInAllLanguages)
 	{
 		setLocalisationName(nameInLanguage.first, nameInLanguage.second);
 	}
@@ -301,7 +279,7 @@ void Vic2::Country::setLocalisationName(const string& language, const string& na
 void Vic2::Country::setLocalisationAdjectives()
 {
 	auto adjectiveInAllLanguages = V2Localisations::GetTextInEachLanguage(tag + "_ADJ");
-	for (auto adjectiveinLanguage : adjectiveInAllLanguages)
+	for (auto adjectiveinLanguage: adjectiveInAllLanguages)
 	{
 		setLocalisationAdjective(adjectiveinLanguage.first, adjectiveinLanguage.second);
 	}
@@ -381,13 +359,13 @@ void Vic2::Country::setLocalisationAdjective(const string& language, const strin
 
 std::string Vic2::Country::getIdentifier() const
 {
-        std::string ret = getTag();
-        auto name = getName("english");
-        if (name)
-        {
-                ret += " (" + name.value() + ")";
-        }
-        return ret;
+	std::string ret = getTag();
+	auto name = getName("english");
+	if (name)
+	{
+		ret += " (" + name.value() + ")";
+	}
+	return ret;
 }
 
 optional<string> Vic2::Country::getName(const string& language) const
@@ -433,7 +411,7 @@ double Vic2::Country::getUpperHousePercentage(const string& ideology) const
 long Vic2::Country::getEmployedWorkers() const
 {
 	long employedWorkers = 0;
-	for (auto state : states)
+	for (auto state: states)
 	{
 		employedWorkers += state->getEmployedWorkers();
 	}
@@ -463,7 +441,7 @@ std::set<Vic2::Party> Vic2::Country::getActiveParties(const std::vector<Vic2::Pa
 	{
 		if (ID < allParties.size())
 		{
-			activeParties.insert(allParties[ID - 1]);  // Subtract 1, because party ID starts from index of 1
+			activeParties.insert(allParties[ID - 1]); // Subtract 1, because party ID starts from index of 1
 		}
 		else
 		{

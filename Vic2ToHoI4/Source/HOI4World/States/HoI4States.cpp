@@ -1,14 +1,4 @@
 #include "HoI4States.h"
-#include "DefaultState.h"
-#include "HoI4State.h"
-#include "StateCategories.h"
-#include "../HoI4Country.h"
-#include "../HoI4Localisation.h"
-#include "../Map/CoastalProvinces.h"
-#include "../Map/ImpassableProvinces.h"
-#include "../Map/Resources.h"
-#include "Log.h"
-#include "OSCompatibilityLayer.h"
 #include "../../Configuration.h"
 #include "../../Mappers/CountryMapping.h"
 #include "../../Mappers/ProvinceDefinitions.h"
@@ -18,6 +8,16 @@
 #include "../../V2World/State.h"
 #include "../../V2World/StateDefinitions.h"
 #include "../../V2World/World.h"
+#include "../HoI4Country.h"
+#include "../HoI4Localisation.h"
+#include "../Map/CoastalProvinces.h"
+#include "../Map/ImpassableProvinces.h"
+#include "../Map/Resources.h"
+#include "DefaultState.h"
+#include "HoI4State.h"
+#include "Log.h"
+#include "OSCompatibilityLayer.h"
+#include "StateCategories.h"
 #include <fstream>
 
 
@@ -27,21 +27,17 @@ constexpr int AIRBASES_FOR_INFRASTRUCTURE_LEVEL = 6;
 
 
 
-HoI4::States::States(
-	const Vic2::World* sourceWorld,
-	const CountryMapper& countryMap,
-	const HoI4::CoastalProvinces& theCoastalProvinces
-):
-	ownersMap(),
-	coresMap(),
-	assignedProvinces(),
-	states(),
-	provinceToStateIDMap()
+HoI4::States::States(const Vic2::World* sourceWorld,
+	 const CountryMapper& countryMap,
+	 const HoI4::CoastalProvinces& theCoastalProvinces,
+	 const Vic2::StateDefinitions& theStateDefinitions):
+	 ownersMap(),
+	 coresMap(), assignedProvinces(), states(), provinceToStateIDMap()
 {
 	int num;
 
 	LOG(LogLevel::Info) << "\tConverting states";
-	registerKeyword(std::regex("state"), [this, &num](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("state"), [this, &num](const std::string& unused, std::istream& theStream) {
 		defaultStates.insert(std::make_pair(num, HoI4::DefaultState(theStream)));
 	});
 
@@ -56,13 +52,12 @@ HoI4::States::States(
 	HoI4::ImpassableProvinces theImpassables(defaultStates);
 
 	determineOwnersAndCores(countryMap, *sourceWorld);
-	createStates(
-		sourceWorld->getCountries(),
-		sourceWorld->getProvinces(),
-		theImpassables,
-		countryMap,
-		theCoastalProvinces
-	);
+	createStates(sourceWorld->getCountries(),
+		 sourceWorld->getProvinces(),
+		 theImpassables,
+		 countryMap,
+		 theCoastalProvinces,
+		 theStateDefinitions);
 }
 
 
@@ -85,8 +80,8 @@ void HoI4::States::determineOwnersAndCores(const CountryMapper& countryMap, cons
 			auto HoI4Tag = countryMap.getHoI4Tag(oldOwner);
 			if (!HoI4Tag)
 			{
-				LOG(LogLevel::Warning)
-					<< "Could not map states owned by " << oldOwner << " in Vic2, as there is no mathcing HoI4 country.";
+				LOG(LogLevel::Warning) << "Could not map states owned by " << oldOwner
+											  << " in Vic2, as there is no mathcing HoI4 country.";
 				continue;
 			}
 			ownersMap.insert(make_pair(provinceNumber, *HoI4Tag));
@@ -121,9 +116,9 @@ std::optional<std::vector<int>> HoI4::States::retrieveSourceProvinceNums(int pro
 
 
 const std::map<std::string, std::pair<int, int>> HoI4::States::determinePotentialOwners(
-	const std::vector<int>& sourceProvinceNums,
-	const Vic2::World& sourceWorld
-) const {
+	 const std::vector<int>& sourceProvinceNums,
+	 const Vic2::World& sourceWorld) const
+{
 	std::map<std::string, std::pair<int, int>> potentialOwners;
 
 	for (auto srcProvNum: sourceProvinceNums)
@@ -153,8 +148,7 @@ const std::map<std::string, std::pair<int, int>> HoI4::States::determinePotentia
 
 
 const std::string HoI4::States::selectProvinceOwner(
-	const std::map<std::string, std::pair<int, int>>& potentialOwners
-) const
+	 const std::map<std::string, std::pair<int, int>>& potentialOwners) const
 {
 	std::string oldOwner;
 	std::pair<int, int> oldOwnerStats;
@@ -169,12 +163,9 @@ const std::string HoI4::States::selectProvinceOwner(
 
 		// I am the new owner if I have more provinces than the current owner,
 		// or I have the same number of provinces but more population than the current owner
-		if (	(potentialOwner.second.first > oldOwnerStats.first) ||
-				(
-					(potentialOwner.second.first == oldOwnerStats.first) &&
-					(potentialOwner.second.second > oldOwnerStats.second)
-				)
-			)
+		if ((potentialOwner.second.first > oldOwnerStats.first) ||
+			 ((potentialOwner.second.first == oldOwnerStats.first) &&
+				  (potentialOwner.second.second > oldOwnerStats.second)))
 		{
 			oldOwner = potentialOwner.first;
 			oldOwnerStats = potentialOwner.second;
@@ -185,13 +176,12 @@ const std::string HoI4::States::selectProvinceOwner(
 }
 
 
-std::set<std::string> HoI4::States::determineCores(
-	const std::vector<int>& sourceProvinces,
-	const std::string& Vic2Owner,
-	const CountryMapper& countryMap,
-	const std::string& newOwner,
-	const Vic2::World& sourceWorld
-) const {
+std::set<std::string> HoI4::States::determineCores(const std::vector<int>& sourceProvinces,
+	 const std::string& Vic2Owner,
+	 const CountryMapper& countryMap,
+	 const std::string& newOwner,
+	 const Vic2::World& sourceWorld) const
+{
 	std::set<std::string> cores;
 
 	for (auto sourceProvinceNum: sourceProvinces)
@@ -224,13 +214,12 @@ std::set<std::string> HoI4::States::determineCores(
 }
 
 
-void HoI4::States::createStates(
-	const std::map<std::string, Vic2::Country*>& sourceCountries,
-	const std::map<int, Vic2::Province*>& sourceProvinces,
-	const HoI4::ImpassableProvinces& theImpassables,
-	const CountryMapper& countryMap,
-	const HoI4::CoastalProvinces& theCoastalProvinces
-)
+void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sourceCountries,
+	 const std::map<int, Vic2::Province*>& sourceProvinces,
+	 const HoI4::ImpassableProvinces& theImpassables,
+	 const CountryMapper& countryMap,
+	 const HoI4::CoastalProvinces& theCoastalProvinces,
+	 const Vic2::StateDefinitions& theStateDefinitions)
 {
 	std::set<int> ownedProvinces;
 
@@ -241,7 +230,12 @@ void HoI4::States::createStates(
 			auto possibleHoI4Owner = countryMap.getHoI4Tag(country.first);
 			if (possibleHoI4Owner)
 			{
-				createMatchingHoI4State(vic2State, *possibleHoI4Owner, theImpassables, countryMap, theCoastalProvinces);
+				createMatchingHoI4State(vic2State,
+					 *possibleHoI4Owner,
+					 theImpassables,
+					 countryMap,
+					 theCoastalProvinces,
+					 theStateDefinitions);
 				for (auto province: vic2State->getProvinces())
 				{
 					ownedProvinces.insert(province->getNumber());
@@ -263,7 +257,7 @@ void HoI4::States::createStates(
 	{
 		std::set<std::pair<int, Vic2::Province*>> stateProvinces;
 
-		auto stateProvinceNums = Vic2::theStateDefinitions.getAllProvinces(unownedProvinces.begin()->first);
+		auto stateProvinceNums = theStateDefinitions.getAllProvinces(unownedProvinces.begin()->first);
 		if (stateProvinceNums.size() == 0)
 		{
 			unownedProvinces.erase(unownedProvinces.begin());
@@ -279,22 +273,23 @@ void HoI4::States::createStates(
 			}
 		}
 
-		Vic2::State* newState = new Vic2::State(stateProvinces);
-		createMatchingHoI4State(newState, "", theImpassables, countryMap, theCoastalProvinces);
+		Vic2::State* newState = new Vic2::State(stateProvinces, theStateDefinitions);
+		createMatchingHoI4State(newState, "", theImpassables, countryMap, theCoastalProvinces, theStateDefinitions);
 	}
 
 	unsigned int manpower = getTotalManpower();
-	LOG(LogLevel::Info) << "\t\tTotal manpower was " << manpower << ", which is " << manpower / 20438756.2 << "% of default HoI4.";
+	LOG(LogLevel::Info) << "\t\tTotal manpower was " << manpower << ", which is " << manpower / 20438756.2
+							  << "% of default HoI4.";
 }
 
 
-void HoI4::States::createMatchingHoI4State(
-	const Vic2::State* vic2State,
-	const string& stateOwner,
-	const HoI4::ImpassableProvinces& theImpassables,
-	const CountryMapper& countryMapper,
-	const HoI4::CoastalProvinces& theCoastalProvinces
-) {
+void HoI4::States::createMatchingHoI4State(const Vic2::State* vic2State,
+	 const string& stateOwner,
+	 const HoI4::ImpassableProvinces& theImpassables,
+	 const CountryMapper& countryMapper,
+	 const HoI4::CoastalProvinces& theCoastalProvinces,
+	 const Vic2::StateDefinitions& theStateDefinitions)
+{
 	std::set<int> passableProvinces;
 	std::set<int> impassableProvinces;
 	auto allProvinces = getProvincesInState(vic2State, stateOwner);
@@ -324,7 +319,7 @@ void HoI4::States::createMatchingHoI4State(
 		newState.convertNavalBases(vic2State->getProvinces(), theCoastalProvinces, theProvinceMapper);
 		states.insert(make_pair(nextStateID, newState));
 		nextStateID++;
-		HoI4Localisation::addStateLocalisation(newState, *vic2State);
+		HoI4Localisation::addStateLocalisation(newState, *vic2State, theStateDefinitions);
 	}
 
 	if (impassableProvinces.size() > 0)
@@ -337,7 +332,7 @@ void HoI4::States::createMatchingHoI4State(
 		newState.convertNavalBases(vic2State->getProvinces(), theCoastalProvinces, theProvinceMapper);
 		states.insert(std::make_pair(nextStateID, newState));
 		nextStateID++;
-		HoI4Localisation::addStateLocalisation(newState, *vic2State);
+		HoI4Localisation::addStateLocalisation(newState, *vic2State, theStateDefinitions);
 	}
 }
 
@@ -351,11 +346,8 @@ std::set<int> HoI4::States::getProvincesInState(const Vic2::State* vic2State, co
 		{
 			for (auto HoI4ProvNum: *mapping)
 			{
-				if (
-						isProvinceValid(HoI4ProvNum) &&
-						isProvinceOwnedByCountry(HoI4ProvNum, owner) &&
-						isProvinceNotAlreadyAssigned(HoI4ProvNum)
-					)
+				if (isProvinceValid(HoI4ProvNum) && isProvinceOwnedByCountry(HoI4ProvNum, owner) &&
+					 isProvinceNotAlreadyAssigned(HoI4ProvNum))
 
 				{
 					provinces.insert(HoI4ProvNum);
@@ -435,10 +427,9 @@ unsigned int HoI4::States::getTotalManpower() const
 }
 
 
-void HoI4::States::convertAirBases(
-	const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
-	const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers
-) {
+void HoI4::States::convertAirBases(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers)
+{
 	LOG(LogLevel::Info) << "\tConverting air bases";
 	addBasicAirBases();
 	addCapitalAirBases(countries);
@@ -450,10 +441,8 @@ void HoI4::States::addCapitalAirBases(const std::map<std::string, std::shared_pt
 {
 	for (auto country: countries)
 	{
-		if (
-			std::map<int, HoI4::State>::iterator capitalState = states.find(*country.second->getCapitalState());
-			capitalState != states.end()
-			)
+		if (std::map<int, HoI4::State>::iterator capitalState = states.find(*country.second->getCapitalState());
+			 capitalState != states.end())
 		{
 			capitalState->second.addAirBase(5);
 		}
@@ -465,10 +454,8 @@ void HoI4::States::addGreatPowerAirBases(const std::vector<std::shared_ptr<HoI4:
 {
 	for (auto greatPower: greatPowers)
 	{
-		if (
-			std::map<int, HoI4::State>::iterator capitalState = states.find(*greatPower->getCapitalState());
-			capitalState != states.end()
-			)
+		if (std::map<int, HoI4::State>::iterator capitalState = states.find(*greatPower->getCapitalState());
+			 capitalState != states.end())
 		{
 			capitalState->second.addAirBase(5);
 		}
@@ -480,8 +467,7 @@ void HoI4::States::addBasicAirBases()
 {
 	for (auto& state: states)
 	{
-		int numAirbases = 
-			(state.second.getCivFactories() + state.second.getMilFactories()) / NUM_FACTORIES_PER_AIRBASE;
+		int numAirbases = (state.second.getCivFactories() + state.second.getMilFactories()) / NUM_FACTORIES_PER_AIRBASE;
 		state.second.addAirBase(numAirbases);
 
 		if (state.second.getInfrastructure() >= AIRBASES_FOR_INFRASTRUCTURE_LEVEL)
@@ -510,10 +496,9 @@ void HoI4::States::convertResources()
 }
 
 
-void HoI4::States::putIndustryInStates(
-	const std::map<std::string, double>& factoryWorkerRatios,
-	const HoI4::CoastalProvinces& theCoastalProvinces
-) {
+void HoI4::States::putIndustryInStates(const std::map<std::string, double>& factoryWorkerRatios,
+	 const HoI4::CoastalProvinces& theCoastalProvinces)
+{
 	HoI4::StateCategories theStateCategories;
 
 	for (auto& HoI4State: states)
@@ -529,11 +514,10 @@ void HoI4::States::putIndustryInStates(
 }
 
 
-void HoI4::States::convertCapitalVPs(
-	const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
-	const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers,
-	double greatestStrength
-) {
+void HoI4::States::convertCapitalVPs(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers,
+	 double greatestStrength)
+{
 	LOG(LogLevel::Info) << "\tConverting capital VPs";
 
 	addBasicCapitalVPs(countries);
@@ -563,10 +547,8 @@ void HoI4::States::addBasicCapitalVPs(const std::map<std::string, std::shared_pt
 {
 	for (auto country: countries)
 	{
-		if (
-			std::map<int, HoI4::State>::iterator capitalState = states.find(*country.second->getCapitalState());
-			capitalState != states.end()
-			)
+		if (std::map<int, HoI4::State>::iterator capitalState = states.find(*country.second->getCapitalState());
+			 capitalState != states.end())
 		{
 			capitalState->second.addVictoryPointValue(5);
 		}
@@ -578,10 +560,8 @@ void HoI4::States::addGreatPowerVPs(const std::vector<std::shared_ptr<HoI4::Coun
 {
 	for (auto greatPower: greatPowers)
 	{
-		if (
-			std::map<int, HoI4::State>::iterator capitalState = states.find(*greatPower->getCapitalState());
-			capitalState != states.end()
-			)
+		if (std::map<int, HoI4::State>::iterator capitalState = states.find(*greatPower->getCapitalState());
+			 capitalState != states.end())
 		{
 			capitalState->second.addVictoryPointValue(5);
 		}
@@ -589,17 +569,14 @@ void HoI4::States::addGreatPowerVPs(const std::vector<std::shared_ptr<HoI4::Coun
 }
 
 
-void HoI4::States::addStrengthVPs(
-	const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
-	double greatestStrength
-) {
+void HoI4::States::addStrengthVPs(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 double greatestStrength)
+{
 	for (auto country: countries)
 	{
 		int VPs = calculateStrengthVPs(*country.second, greatestStrength);
-		if (
-			std::map<int, HoI4::State>::iterator capitalState = states.find(*country.second->getCapitalState());
-			capitalState != states.end()
-			)
+		if (std::map<int, HoI4::State>::iterator capitalState = states.find(*country.second->getCapitalState());
+			 capitalState != states.end())
 		{
 			capitalState->second.addVictoryPointValue(VPs);
 		}
