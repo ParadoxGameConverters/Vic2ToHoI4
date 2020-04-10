@@ -368,7 +368,6 @@
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMapping.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\VersionedMappings.cpp" />
     <ClCompile Include="Source\Mappers\TechMapper.cpp" />
-    <ClCompile Include="Source\Mappers\V2Localisations.cpp" />
     <ClCompile Include="Source\Mappers\VersionParser\VersionParser.cpp" />
     <ClCompile Include="Source\targa.cpp" />
     <ClCompile Include="Source\V2toHOI4Converter.cpp" />
@@ -388,6 +387,7 @@
     <ClCompile Include="Source\V2World\Relations.cpp" />
     <ClCompile Include="Source\V2World\State.cpp" />
     <ClCompile Include="Source\V2World\StateDefinitions.cpp" />
+    <ClCompile Include="Source\V2World\Vic2Localisations.cpp" />
     <ClCompile Include="Source\V2World\Wars\War.cpp" />
     <ClCompile Include="Source\V2World\Wars\WarGoal.cpp" />
     <ClCompile Include="Source\V2World\World.cpp" />
@@ -599,7 +599,6 @@
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMappingTypes.h" />
     <ClInclude Include="Source\Mappers\Provinces\VersionedMappings.h" />
     <ClInclude Include="Source\Mappers\TechMapper.h" />
-    <ClInclude Include="Source\Mappers\V2Localisations.h" />
     <ClInclude Include="Source\Mappers\VersionParser\VersionParser.h" />
     <ClInclude Include="Source\targa.h" />
     <ClInclude Include="Source\V2World\Agreement.h" />
@@ -618,6 +617,7 @@
     <ClInclude Include="Source\V2World\Relations.h" />
     <ClInclude Include="Source\V2World\State.h" />
     <ClInclude Include="Source\V2World\StateDefinitions.h" />
+    <ClInclude Include="Source\V2World\Vic2Localisations.h" />
     <ClInclude Include="Source\V2World\Wars\War.h" />
     <ClInclude Include="Source\V2World\Wars\WarGoal.h" />
     <ClInclude Include="Source\V2World\World.h" />

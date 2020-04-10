@@ -41,9 +41,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Country.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\V2Localisations.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryMapping.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
@@ -868,6 +865,9 @@
     </ClCompile>
     <ClCompile Include="Vic2WorldTests\StateDefinitionsTests.cpp">
       <Filter>Vic2WorldTests</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Vic2Localisations.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

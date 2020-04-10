@@ -2,9 +2,9 @@
 #include "HOI4World/HoI4World.h"
 #include "Log.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
-#include "Mappers/V2Localisations.h"
 #include "OSCompatibilityLayer.h"
 #include "OutHoi4/OutMod.h"
+#include "V2World/Vic2Localisations.h"
 #include "V2World/World.h"
 #include <algorithm>
 #include <stdexcept>

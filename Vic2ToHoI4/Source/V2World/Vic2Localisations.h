@@ -1,5 +1,5 @@
-#ifndef V2LOCALISATIONS_H_
-#define V2LOCALISATIONS_H_
+#ifndef VIC2_LOCALISATIONS_H
+#define VIC2_LOCALISATIONS_H
 
 
 
@@ -38,4 +38,4 @@ class V2Localisations
 
 
 
-#endif // V2LOCALISATIONS_H_
+#endif // VIC2_LOCALISATIONS_H

@@ -1,5 +1,4 @@
 #include "Country.h"
-#include "../Mappers/V2Localisations.h"
 #include "CultureGroups.h"
 #include "Inventions.h"
 #include "Leader.h"
@@ -11,6 +10,7 @@
 #include "Relations.h"
 #include "State.h"
 #include "StateDefinitions.h"
+#include "Vic2Localisations.h"
 #include <functional>
 
 
