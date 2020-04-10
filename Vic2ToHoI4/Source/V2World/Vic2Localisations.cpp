@@ -12,7 +12,7 @@ std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Parser::importLocalisa
 
 	ReadFromAllFilesInFolder(theConfiguration.getVic2Path() + "/localisation");
 
-	for (auto mod: theConfiguration.getVic2Mods())
+	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
 		LOG(LogLevel::Debug) << "Reading mod localisation";
 		ReadFromAllFilesInFolder(theConfiguration.getVic2Path() + "/mod/" + mod + "/localisation");
@@ -73,11 +73,11 @@ const std::string languages[] = {"english",
 void Vic2::Localisations::Parser::processLine(const std::string& line)
 {
 	int division = line.find_first_of(';');
-	std::string key = line.substr(0, division);
+	const auto key = line.substr(0, division);
 
-	for (auto language: languages)
+	for (const auto& language: languages)
 	{
-		std::string result = getNextLocalisation(line, division);
+		auto result = getNextLocalisation(line, division);
 		std::string UTF8Result;
 
 		if (language == "english" || language == "french" || language == "german" || language == "spanish" ||
@@ -114,7 +114,7 @@ void Vic2::Localisations::Parser::processLine(const std::string& line)
 
 std::string Vic2::Localisations::Parser::getNextLocalisation(const std::string& line, int& division)
 {
-	int frontDivision = division + 1;
+	const auto frontDivision = division + 1;
 	division = line.find_first_of(';', frontDivision);
 	return line.substr(frontDivision, division - frontDivision);
 }
@@ -129,7 +129,7 @@ void Vic2::Localisations::updateDomainCountry(const std::string& tag, const std:
 		const auto domainLocalisations = localisations.find(domainKey->second);
 		if (domainLocalisations != localisations.end())
 		{
-			for (auto regionInLanguage: domainLocalisations->second)
+			for (const auto& regionInLanguage: domainLocalisations->second)
 			{
 				regionLocalisations.insert(regionInLanguage);
 			}
@@ -143,9 +143,9 @@ void Vic2::Localisations::updateDomainCountry(const std::string& tag, const std:
 	}
 	auto nameInAllLanguages = KeyToLocalisationsMappings->second;
 
-	for (auto nameInLanguage: nameInAllLanguages)
+	for (const auto& nameInLanguage: nameInAllLanguages)
 	{
-		std::string replacementName = domainName;
+		auto replacementName = domainName;
 		auto replacementLocalisation = regionLocalisations.find(nameInLanguage.first);
 		if (replacementLocalisation != regionLocalisations.end())
 		{
@@ -156,8 +156,8 @@ void Vic2::Localisations::updateDomainCountry(const std::string& tag, const std:
 			LOG(LogLevel::Warning) << "Could not find regions localisation for " << domainName << " in "
 										  << nameInLanguage.first;
 		}
-		std::string updatedName = nameInLanguage.second;
-		size_t regionPos = updatedName.find("$REGION$");
+		auto updatedName = nameInLanguage.second;
+		const auto regionPos = updatedName.find("$REGION$");
 		if (regionPos != std::string::npos)
 		{
 			updatedName.replace(regionPos, 8, replacementName);
@@ -167,7 +167,7 @@ void Vic2::Localisations::updateDomainCountry(const std::string& tag, const std:
 }
 
 
-const std::optional<std::string> Vic2::Localisations::getTextInLanguage(const std::string& key,
+std::optional<std::string> Vic2::Localisations::getTextInLanguage(const std::string& key,
 	 const std::string& language) const
 {
 	const auto KeyToLocalisationsMapping = localisations.find(key);
@@ -186,17 +186,15 @@ const std::optional<std::string> Vic2::Localisations::getTextInLanguage(const st
 }
 
 
-const std::map<std::string, std::string> Vic2::Localisations::getTextInEachLanguage(const std::string& key) const
+std::map<std::string, std::string> Vic2::Localisations::getTextInEachLanguage(const std::string& key) const
 {
-	static const std::map<std::string, std::string> noLocalisations;
-
-	const auto KeyToLocalisationsMappings = localisations.find(key);
-	if (KeyToLocalisationsMappings == localisations.end())
+	if (const auto KeyToLocalisationsMappings = localisations.find(key);
+		 KeyToLocalisationsMappings != localisations.end())
 	{
-		return noLocalisations;
+		return KeyToLocalisationsMappings->second;
 	}
 	else
 	{
-		return KeyToLocalisationsMappings->second;
+		return std::map<std::string, std::string>{};
 	}
 }

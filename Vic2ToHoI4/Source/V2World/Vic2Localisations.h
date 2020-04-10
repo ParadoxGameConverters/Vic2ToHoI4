@@ -23,13 +23,13 @@ class Localisations
 	class Parser;
 
 	Localisations(KeyToLocalisationsMap localisations, std::map<std::string, std::string> localisationToKeyMap):
-		 localisations(localisations), localisationToKeyMap(std::move(localisationToKeyMap))
+		 localisations(std::move(localisations)), localisationToKeyMap(std::move(localisationToKeyMap))
 	{
 	}
 
-	const std::optional<std::string> getTextInLanguage(const std::string& key, const std::string& language) const;
-	const std::map<std::string, std::string> getTextInEachLanguage(const std::string& key) const;
-	void updateDomainCountry(const std::string& tag, const std::string& dominionName);
+	[[nodiscard]] std::optional<std::string> getTextInLanguage(const std::string& key, const std::string& language) const;
+	[[nodiscard]] std::map<std::string, std::string> getTextInEachLanguage(const std::string& key) const;
+	void updateDomainCountry(const std::string& tag, const std::string& domainName);
 
   private:
 	KeyToLocalisationsMap localisations;
