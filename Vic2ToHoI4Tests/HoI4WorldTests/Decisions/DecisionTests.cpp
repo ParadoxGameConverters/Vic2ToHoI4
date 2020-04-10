@@ -141,6 +141,20 @@ TEST(HoI4World_Decisions_DecisionTests, HighlightStatesCanBeSet)
 }
 
 
+TEST(HoI4World_Decisions_DecisionTests, HighlightStatesTargetsCanBeSet)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\t\thighlight_state_targets = {\n";
+	input << "\t\t\tstate = 105\n";
+	input << "\t\t}\n";
+	input << "\t}";
+	const HoI4::decision theDecision("decisionName", input);
+
+	ASSERT_EQ("= {\n\t\t\tstate = 105\n\t\t}", theDecision.getHighlightStates());
+}
+
+
 TEST(HoI4World_Decisions_DecisionTests, HighlightStatesCanBeChanged)
 {
 	std::stringstream input;
