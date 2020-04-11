@@ -18,7 +18,7 @@ class HoI4World_Navies_NaviesTests: public testing::Test
 };
 
 
-HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests()
+HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests(): provinceDefinitions({}, {}, {})
 {
 	std::stringstream shipVariantsInput;
 	shipVariantsInput << "mtg_ship_type = {\n";

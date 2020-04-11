@@ -50,7 +50,8 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 
 	auto vic2Localisations = sourceWorld->getLocalisations();
 
-	ProvinceDefinitions provinceDefinitions;
+	ProvinceDefinitions provinceDefinitions =
+		 ProvinceDefinitions::Importer{}.importProvinceDefinitions(theConfiguration);
 	theMapData = std::make_unique<MapData>(provinceDefinitions);
 	theCoastalProvinces.init(*theMapData);
 	states = std::make_unique<States>(sourceWorld,

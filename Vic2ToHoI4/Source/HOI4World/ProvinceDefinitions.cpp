@@ -5,7 +5,19 @@
 
 
 
-HoI4::ProvinceDefinitions::ProvinceDefinitions() noexcept: landProvinces(), colorToProvinceMap()
+int getIntFromColor(const ConverterColor::Color& color)
+{
+	ConverterColor::red red;
+	ConverterColor::green green;
+	ConverterColor::blue blue;
+	color.GetRGB(red, green, blue);
+	int colorInt = ((red.Red & 0xFF) << 16) + ((green.Green & 0xFF) << 8) + (blue.Blue & 0xFF);
+
+	return colorInt;
+}
+
+
+HoI4::ProvinceDefinitions HoI4::ProvinceDefinitions::Importer::importProvinceDefinitions(const Configuration& theConfiguration)
 {
 	std::ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
 	if (!definitions.is_open())
@@ -13,6 +25,10 @@ HoI4::ProvinceDefinitions::ProvinceDefinitions() noexcept: landProvinces(), colo
 		LOG(LogLevel::Error) << "Could not open " << theConfiguration.getHoI4Path() << "/map/definition.csv";
 		exit(-1);
 	}
+
+	std::set<int> landProvinces;
+	std::set<int> seaProvinces;
+	std::map<int, int> colorToProvinceMap;
 
 	while (true)
 	{
@@ -57,6 +73,8 @@ HoI4::ProvinceDefinitions::ProvinceDefinitions() noexcept: landProvinces(), colo
 			seaProvinces.insert(provNum);
 		}
 	}
+
+	return ProvinceDefinitions(landProvinces, seaProvinces, colorToProvinceMap);
 }
 
 
@@ -73,16 +91,4 @@ std::optional<int> HoI4::ProvinceDefinitions::getProvinceFromColor(const Convert
 	{
 		return {};
 	}
-}
-
-
-int HoI4::ProvinceDefinitions::getIntFromColor(const ConverterColor::Color& color) const
-{
-	ConverterColor::red red;
-	ConverterColor::green green;
-	ConverterColor::blue blue;
-	color.GetRGB(red, green, blue);
-	int colorInt = ((red.Red & 0xFF) << 16) + ((green.Green & 0xFF) << 8) + (blue.Blue & 0xFF);
-
-	return colorInt;
 }
