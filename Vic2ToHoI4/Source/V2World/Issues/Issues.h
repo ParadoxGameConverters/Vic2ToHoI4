@@ -2,10 +2,15 @@
 #define ISSUES_H
 
 
+
 #include "newParser.h"
 #include <map>
 #include <memory>
 #include <string>
+
+
+
+class Configuration;
 
 
 
@@ -15,7 +20,7 @@ namespace Vic2
 class Issues: commonItems::parser
 {
   public:
-	void instantiate();
+	void instantiate(const Configuration& theConfiguration);
 	std::string getIssueName(int num) const;
 
   private:

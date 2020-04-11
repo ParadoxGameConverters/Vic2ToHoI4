@@ -7,7 +7,7 @@
 #include "Country.h"
 #include "Diplomacy.h"
 #include "Inventions.h"
-#include "Issues.h"
+#include "Issues/Issues.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
@@ -24,7 +24,7 @@ Vic2::World::World(const std::string& filename)
 	theLocalisations = Localisations::Parser{}.importLocalisations();
 	theCultureGroups.init();
 	Issues theIssues;
-	theIssues.instantiate();
+	theIssues.instantiate(theConfiguration);
 	theStateDefinitions = StateDefinitions::Parser{}.parseStateDefinitions();
 	inventions theInventions;
 

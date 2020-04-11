@@ -380,7 +380,9 @@
     <ClCompile Include="Source\V2World\CultureGroups.cpp" />
     <ClCompile Include="Source\V2World\Diplomacy.cpp" />
     <ClCompile Include="Source\V2World\Inventions.cpp" />
-    <ClCompile Include="Source\V2World\Issues.cpp" />
+    <ClCompile Include="Source\V2World\Issues\IssueHelper.cpp" />
+    <ClCompile Include="Source\V2World\Issues\Issues.cpp" />
+    <ClCompile Include="Source\V2World\Issues\PartiesIssueHelper.cpp" />
     <ClCompile Include="Source\V2World\Leader.cpp" />
     <ClCompile Include="Source\V2World\Party.cpp" />
     <ClCompile Include="Source\V2World\Pop.cpp" />
@@ -610,7 +612,9 @@
     <ClInclude Include="Source\V2World\CultureGroups.h" />
     <ClInclude Include="Source\V2World\Diplomacy.h" />
     <ClInclude Include="Source\V2World\Inventions.h" />
-    <ClInclude Include="Source\V2World\Issues.h" />
+    <ClInclude Include="Source\V2World\Issues\IssueHelper.h" />
+    <ClInclude Include="Source\V2World\Issues\Issues.h" />
+    <ClInclude Include="Source\V2World\Issues\PartiesIssueHelper.h" />
     <ClInclude Include="Source\V2World\Leader.h" />
     <ClInclude Include="Source\V2World\Party.h" />
     <ClInclude Include="Source\V2World\Pop.h" />

@@ -241,7 +241,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CultureGroups.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Inventions.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueHelper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\Issues.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\PartiesIssueHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Leader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Party.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pop.cpp" />

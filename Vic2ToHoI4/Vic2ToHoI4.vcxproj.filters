@@ -133,6 +133,9 @@
     <Filter Include="OutHoi4\GameRules">
       <UniqueIdentifier>{689b88ea-3de7-4920-8b8d-3876eadee40e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2World\Issues">
+      <UniqueIdentifier>{a25ec0d7-f1f4-43df-9fc6-01b43cbe78a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -183,9 +186,6 @@
     </ClCompile>
     <ClCompile Include="..\common_items\newParser.cpp">
       <Filter>CommonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\V2World\Issues.cpp">
-      <Filter>Vic2World</Filter>
     </ClCompile>
     <ClCompile Include="..\common_items\ParserHelpers.cpp">
       <Filter>CommonItems</Filter>
@@ -761,6 +761,15 @@
     <ClCompile Include="Source\HOI4World\ProvinceDefinitions.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
+    <ClCompile Include="Source\V2World\Issues\IssueHelper.cpp">
+      <Filter>Vic2World\Issues</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Issues\PartiesIssueHelper.cpp">
+      <Filter>Vic2World\Issues</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Issues\Issues.cpp">
+      <Filter>Vic2World\Issues</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -807,9 +816,6 @@
     </ClInclude>
     <ClInclude Include="..\common_items\newParser.h">
       <Filter>CommonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\V2World\Issues.h">
-      <Filter>Vic2World</Filter>
     </ClInclude>
     <ClInclude Include="..\common_items\ParserHelpers.h">
       <Filter>CommonItems</Filter>
@@ -1441,6 +1447,15 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\ProvinceDefinitions.h">
       <Filter>HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Issues\IssueHelper.h">
+      <Filter>Vic2World\Issues</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Issues\PartiesIssueHelper.h">
+      <Filter>Vic2World\Issues</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Issues\Issues.h">
+      <Filter>Vic2World\Issues</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

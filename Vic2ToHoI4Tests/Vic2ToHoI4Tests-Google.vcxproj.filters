@@ -104,9 +104,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Inventions.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CommonCountryData.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
@@ -869,6 +866,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueHelper.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Issues</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\Issues.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Issues</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\PartiesIssueHelper.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Issues</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1053,6 +1059,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\OutHoi4\GameRules">
       <UniqueIdentifier>{3fc7f5ac-1916-4287-b36b-150e2ffb56fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Issues">
+      <UniqueIdentifier>{2f0e389a-b1aa-4704-9486-a32c4882d7f0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
