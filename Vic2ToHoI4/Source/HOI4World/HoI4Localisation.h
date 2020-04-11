@@ -38,7 +38,30 @@ typedef int stateNumber;
 class Localisation
 {
   public:
-	Localisation() noexcept;
+	class Importer;
+
+	Localisation(std::map<language, std::map<stateNumber, std::string>> stateLocalisations,
+		 languageToLocalisationsMap VPLocalisations,
+		 languageToLocalisationsMap countryLocalisations,
+		 languageToLocalisationsMap originalFocuses,
+		 languageToLocalisationsMap newFocuses,
+		 languageToLocalisationsMap ideaLocalisations,
+		 languageToLocalisationsMap genericIdeaLocalisations,
+		 languageToLocalisationsMap originalEventLocalisations,
+		 languageToLocalisationsMap newEventLocalisations,
+		 languageToLocalisationsMap politicalPartyLocalisations,
+		 languageToLocalisationsMap decisionLocalisations,
+		 languageToLocalisationsMap customLocalisations):
+		 stateLocalisations(std::move(stateLocalisations)),
+		 VPLocalisations(std::move(VPLocalisations)), countryLocalisations(std::move(countryLocalisations)),
+		 originalFocuses(std::move(originalFocuses)), newFocuses(std::move(newFocuses)),
+		 ideaLocalisations(std::move(ideaLocalisations)), genericIdeaLocalisations(std::move(genericIdeaLocalisations)),
+		 originalEventLocalisations(std::move(originalEventLocalisations)),
+		 newEventLocalisations(std::move(newEventLocalisations)),
+		 politicalPartyLocalisations(std::move(politicalPartyLocalisations)),
+		 decisionLocalisations(std::move(decisionLocalisations)), customLocalisations(std::move(customLocalisations))
+	{
+	}
 
 	void addStateLocalisation(const State& hoi4State,
 		 const Vic2::State& vic2State,
@@ -82,13 +105,6 @@ class Localisation
 	[[nodiscard]] const auto& getCustomLocalisations() const { return customLocalisations; }
 
   private:
-	void importLocalisations();
-	void importFocusLocalisations(const std::string& filename);
-	void importGenericIdeaLocalisations(const std::string& filename);
-	void importEventLocalisations(const std::string& filename);
-	static void importLocalisationFile(const std::string& filename, languageToLocalisationsMap& localisations);
-	void prepareBlankLocalisations();
-
 	void addLocalisationsForAllGovernments(const std::pair<const std::string&, const std::string&>& tags,
 		 const std::pair<const std::string&, const std::string&>& suffixes,
 		 const governmentMapper& governmentMap,
@@ -123,8 +139,7 @@ class Localisation
 	void addLanguageToVPLocalisations(const std::string& language);
 	void addNonenglishStateLocalisations();
 	void addNonenglishVPLocalisations();
-	void addDebugLocalisations(const std::pair<const int, State>& state,
-		 const Vic2::Localisations& vic2Localisations);
+	void addDebugLocalisations(const std::pair<const int, State>& state, const Vic2::Localisations& vic2Localisations);
 
 	static bool sourceStateHasOneProvince(const Vic2::State& sourceState);
 	static bool sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState,
@@ -138,6 +153,34 @@ class Localisation
 		 const std::string& replacementKey,
 		 ScriptedLocalisation& scriptedLocalisation,
 		 const std::set<std::string>& majorIdeologies) const;
+
+	std::map<language, std::map<stateNumber, std::string>> stateLocalisations;
+	languageToLocalisationsMap VPLocalisations;
+	languageToLocalisationsMap countryLocalisations;
+	languageToLocalisationsMap originalFocuses;
+	languageToLocalisationsMap newFocuses;
+	languageToLocalisationsMap ideaLocalisations;
+	languageToLocalisationsMap genericIdeaLocalisations;
+	languageToLocalisationsMap originalEventLocalisations;
+	languageToLocalisationsMap newEventLocalisations;
+	languageToLocalisationsMap politicalPartyLocalisations;
+	languageToLocalisationsMap decisionLocalisations;
+	languageToLocalisationsMap customLocalisations;
+};
+
+
+class Localisation::Importer
+{
+  public:
+	std::unique_ptr<Localisation> generateLocalisations();
+
+  private:
+	void importLocalisations();
+	void importFocusLocalisations(const std::string& filename);
+	void importGenericIdeaLocalisations(const std::string& filename);
+	void importEventLocalisations(const std::string& filename);
+	static void importLocalisationFile(const std::string& filename, languageToLocalisationsMap& localisations);
+	void prepareBlankLocalisations();
 
 	std::map<language, std::map<stateNumber, std::string>> stateLocalisations;
 	languageToLocalisationsMap VPLocalisations;

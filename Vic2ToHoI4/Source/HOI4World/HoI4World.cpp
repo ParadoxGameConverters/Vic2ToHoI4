@@ -49,6 +49,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	LOG(LogLevel::Info) << "Building HoI4 World";
 
 	auto vic2Localisations = sourceWorld->getLocalisations();
+	hoi4Localisations = Localisation::Importer{}.generateLocalisations();
 
 	ProvinceDefinitions provinceDefinitions =
 		 ProvinceDefinitions::Importer{}.importProvinceDefinitions(theConfiguration);
@@ -60,7 +61,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 		 sourceWorld->getStateDefinitions(),
 		 vic2Localisations,
 		 provinceDefinitions,
-		 hoi4Localisations);
+		 *hoi4Localisations);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates());
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, provinceDefinitions);
 	theNames.init();
@@ -69,7 +70,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	convertCountries(vic2Localisations);
 	addStatesToCountries();
 	states->addCapitalsToStates(countries);
-	hoi4Localisations.addStateLocalisations(*states, vic2Localisations);
+	hoi4Localisations->addStateLocalisations(*states, vic2Localisations);
 	convertIndustry();
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
@@ -92,8 +93,8 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 	genericFocusTree.addGenericFocusTree(ideologies->getMajorIdeologies());
 	importIdeologicalMinisters();
 	convertParties(vic2Localisations);
-	events->createPoliticalEvents(ideologies->getMajorIdeologies(), hoi4Localisations);
-	events->createWarJustificationEvents(ideologies->getMajorIdeologies(), hoi4Localisations);
+	events->createPoliticalEvents(ideologies->getMajorIdeologies(), *hoi4Localisations);
+	events->createWarJustificationEvents(ideologies->getMajorIdeologies(), *hoi4Localisations);
 	events->importElectionEvents(ideologies->getMajorIdeologies(), *onActions);
 	addCountryElectionEvents(ideologies->getMajorIdeologies(), vic2Localisations);
 	events->createStabilityEvents(ideologies->getMajorIdeologies());
@@ -115,11 +116,11 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 		createFactions();
 	}
 
-	HoI4WarCreator warCreator(this, *theMapData, provinceDefinitions, hoi4Localisations);
+	HoI4WarCreator warCreator(this, *theMapData, provinceDefinitions, *hoi4Localisations);
 
 	addFocusTrees();
 	adjustResearchFocuses();
-	hoi4Localisations.generateCustomLocalisations(scriptedLocalisations, ideologies->getMajorIdeologies());
+	hoi4Localisations->generateCustomLocalisations(scriptedLocalisations, ideologies->getMajorIdeologies());
 
 	setSphereLeaders();
 	processInfluence();
@@ -159,7 +160,7 @@ void HoI4::World::convertCountries(const Vic2::Localisations& vic2Localisations)
 		convertCountry(sourceItr, flagsToIdeasMapper, vic2Localisations);
 	}
 
-	hoi4Localisations.addNonenglishCountryLocalisations();
+	hoi4Localisations->addNonenglishCountryLocalisations();
 }
 
 
@@ -187,12 +188,12 @@ void HoI4::World::convertCountry(std::pair<std::string, Vic2::Country*> country,
 			 theGraphics,
 			 countryMap,
 			 flagsToIdeasMapper,
-			 hoi4Localisations);
+			 *hoi4Localisations);
 		countries.insert(make_pair(*possibleHoI4Tag, destCountry));
-		hoi4Localisations.createCountryLocalisations(make_pair(country.first, *possibleHoI4Tag),
+		hoi4Localisations->createCountryLocalisations(make_pair(country.first, *possibleHoI4Tag),
 			 governmentMap,
 			 vic2Localisations);
-		hoi4Localisations.updateMainCountryLocalisation(
+		hoi4Localisations->updateMainCountryLocalisation(
 			 destCountry->getTag() + "_" + destCountry->getGovernmentIdeology(),
 			 country.first,
 			 country.second->getGovernment(),
@@ -229,7 +230,7 @@ void HoI4::World::convertGovernments(const Vic2::Localisations& vic2Localisation
 	LOG(LogLevel::Info) << "\tConverting governments";
 	for (auto country: countries)
 	{
-		country.second->convertGovernment(*sourceWorld, governmentMap, vic2Localisations, hoi4Localisations);
+		country.second->convertGovernment(*sourceWorld, governmentMap, vic2Localisations, *hoi4Localisations);
 	}
 }
 
@@ -243,7 +244,7 @@ void HoI4::World::convertParties(const Vic2::Localisations& vic2Localisations)
 		country.second->convertParties(ideologies->getMajorIdeologies(),
 			 governmentMap,
 			 vic2Localisations,
-			 hoi4Localisations);
+			 *hoi4Localisations);
 	}
 }
 
@@ -720,9 +721,9 @@ void HoI4::World::setupNavalTreaty()
 	if (strongestGpNavies)
 	{
 		scriptedLocalisations.initialize(strongestGpNavies->first, strongestGpNavies->second);
-		hoi4Localisations.addDecisionLocalisation(strongestGpNavies->first + "_Naval_treaty_nation",
+		hoi4Localisations->addDecisionLocalisation(strongestGpNavies->first + "_Naval_treaty_nation",
 			 "@" + strongestGpNavies->first + " [" + strongestGpNavies->first + ".GetName]");
-		hoi4Localisations.addDecisionLocalisation(strongestGpNavies->second + "_Naval_treaty_nation",
+		hoi4Localisations->addDecisionLocalisation(strongestGpNavies->second + "_Naval_treaty_nation",
 			 "@" + strongestGpNavies->second + " [" + strongestGpNavies->second + ".GetName]");
 	}
 }
@@ -942,7 +943,7 @@ void HoI4::World::addCountryElectionEvents(const std::set<string>& theMajorIdeol
 			 *onActions,
 			 theMajorIdeologies,
 			 vic2Localisations,
-			 hoi4Localisations);
+			 *hoi4Localisations);
 	}
 }
 

@@ -100,7 +100,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getScriptedTriggers() const { return scriptedTriggers; }
 	[[nodiscard]] const auto& getGameRules() const { return *gameRules; }
 	[[nodiscard]] const auto& getGenericFocusTree() const { return genericFocusTree; }
-	[[nodiscard]] const auto& getLocalisation() const { return hoi4Localisations; }
+	[[nodiscard]] const auto& getLocalisation() const { return *hoi4Localisations; }
 
 	std::map<int, HoI4::State> getStates() const { return states->getStates(); }
 	const std::map<int, int>& getProvinceToStateIDMap() const { return states->getProvinceToStateIDMap(); }
@@ -228,7 +228,7 @@ class World: commonItems::parser
 
 	HoI4FocusTree genericFocusTree;
 
-	Localisation hoi4Localisations;
+	std::unique_ptr<Localisation> hoi4Localisations;
 };
 
 } // namespace HoI4

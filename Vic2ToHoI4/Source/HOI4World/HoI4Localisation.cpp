@@ -15,14 +15,27 @@
 
 
 
-HoI4::Localisation::Localisation() noexcept
+std::unique_ptr<HoI4::Localisation> HoI4::Localisation::Importer::generateLocalisations()
 {
 	importLocalisations();
 	prepareBlankLocalisations();
+
+	return std::make_unique<Localisation>(stateLocalisations,
+		 VPLocalisations,
+		 countryLocalisations,
+		 originalFocuses,
+		 newFocuses,
+		 ideaLocalisations,
+		 genericIdeaLocalisations,
+		 originalEventLocalisations,
+		 newEventLocalisations,
+		 politicalPartyLocalisations,
+		 decisionLocalisations,
+		 customLocalisations);
 }
 
 
-void HoI4::Localisation::importLocalisations()
+void HoI4::Localisation::Importer::importLocalisations()
 {
 	std::set<std::string> fileNames;
 	Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/localisation", fileNames);
@@ -62,25 +75,26 @@ void HoI4::Localisation::importLocalisations()
 }
 
 
-void HoI4::Localisation::importFocusLocalisations(const std::string& filename)
+void HoI4::Localisation::Importer::importFocusLocalisations(const std::string& filename)
 {
 	importLocalisationFile(filename, originalFocuses);
 }
 
 
-void HoI4::Localisation::importGenericIdeaLocalisations(const std::string& filename)
+void HoI4::Localisation::Importer::importGenericIdeaLocalisations(const std::string& filename)
 {
 	importLocalisationFile(filename, genericIdeaLocalisations);
 }
 
 
-void HoI4::Localisation::importEventLocalisations(const std::string& filename)
+void HoI4::Localisation::Importer::importEventLocalisations(const std::string& filename)
 {
 	importLocalisationFile(filename, originalEventLocalisations);
 }
 
 
-void HoI4::Localisation::importLocalisationFile(const std::string& filename, languageToLocalisationsMap& localisations)
+void HoI4::Localisation::Importer::importLocalisationFile(const std::string& filename,
+	 languageToLocalisationsMap& localisations)
 {
 	keyToLocalisationMap newLocalisations;
 
@@ -136,7 +150,7 @@ void HoI4::Localisation::importLocalisationFile(const std::string& filename, lan
 }
 
 
-void HoI4::Localisation::prepareBlankLocalisations()
+void HoI4::Localisation::Importer::prepareBlankLocalisations()
 {
 	for (const auto& genericLocalisationsInLanguage: genericIdeaLocalisations)
 	{
