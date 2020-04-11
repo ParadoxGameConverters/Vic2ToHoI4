@@ -17,14 +17,24 @@ class Configuration;
 namespace Vic2
 {
 
-class Issues: commonItems::parser
+class Issues
 {
   public:
-	void instantiate(const Configuration& theConfiguration);
+	class Parser;
+
+	Issues(std::map<int, std::string> issueNames): issueNames(std::move(issueNames)) {}
+
 	std::string getIssueName(int num) const;
 
   private:
 	std::map<int, std::string> issueNames;
+};
+
+
+class Issues::Parser: commonItems::parser
+{
+  public:
+	Issues importIssues(const Configuration& theConfiguration);
 };
 
 } // namespace Vic2

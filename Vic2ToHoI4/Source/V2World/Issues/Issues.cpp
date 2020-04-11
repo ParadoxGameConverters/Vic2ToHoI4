@@ -7,11 +7,12 @@
 
 
 
-void Vic2::Issues::instantiate(const Configuration& theConfiguration)
+Vic2::Issues Vic2::Issues::Parser::importIssues(const Configuration& theConfiguration)
 {
 	int issueNum = 1;
+	std::map<int, std::string> issueNames;
 
-	registerKeyword("party_issues", [this, &issueNum](const std::string& category, std::istream& theStream) {
+	registerKeyword("party_issues", [&issueNames, &issueNum](const std::string& category, std::istream& theStream) {
 		PartiesIssueHelper helperHelper(theStream);
 		for (auto helper: helperHelper.getIssues())
 		{
@@ -22,7 +23,7 @@ void Vic2::Issues::instantiate(const Configuration& theConfiguration)
 			}
 		}
 	});
-	registerKeyword("[A-Za-z_]+", [this, &issueNum](const std::string& category, std::istream& theStream) {
+	registerKeyword("[A-Za-z_]+", [&issueNames, &issueNum](const std::string& category, std::istream& theStream) {
 		IssueHelper helper(theStream);
 		for (auto name: helper.getIssues())
 		{
@@ -32,6 +33,8 @@ void Vic2::Issues::instantiate(const Configuration& theConfiguration)
 	});
 
 	parseFile(theConfiguration.getVic2Path() + "/common/issues.txt");
+
+	return Issues(issueNames);
 }
 
 

@@ -23,8 +23,7 @@ Vic2::World::World(const std::string& filename)
 {
 	theLocalisations = Localisations::Parser{}.importLocalisations();
 	theCultureGroups.init();
-	Issues theIssues;
-	theIssues.instantiate(theConfiguration);
+	Issues theIssues = Issues::Parser{}.importIssues(theConfiguration);
 	theStateDefinitions = StateDefinitions::Parser{}.parseStateDefinitions();
 	inventions theInventions;
 
