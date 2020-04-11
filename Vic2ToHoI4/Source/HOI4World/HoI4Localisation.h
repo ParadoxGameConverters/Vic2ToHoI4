@@ -5,8 +5,6 @@
 
 #include "../V2World/State.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
-#include <array>
-#include <iostream>
 #include <map>
 #include <optional>
 #include <string>
@@ -42,11 +40,11 @@ class Localisation
   public:
 	Localisation() noexcept;
 
-	void addStateLocalisation(const HoI4::State& hoi4State,
+	void addStateLocalisation(const State& hoi4State,
 		 const Vic2::State& vic2State,
 		 const Vic2::StateDefinitions& theStateDefinitions,
 		 const Vic2::Localisations& vic2Localisations);
-	void addStateLocalisations(const HoI4::States& states, const Vic2::Localisations& vic2Localisations);
+	void addStateLocalisations(const States& states, const Vic2::Localisations& vic2Localisations);
 	void createCountryLocalisations(const std::pair<const std::string&, const std::string&>& tags,
 		 const governmentMapper& governmentMap,
 		 const Vic2::Localisations& vic2Localisations);
@@ -66,7 +64,7 @@ class Localisation
 		 const std::string& HoI4Key,
 		 const Vic2::Localisations& vic2Localisations);
 	void addDecisionLocalisation(const std::string& key, const std::optional<std::string>& localisation);
-	void generateCustomLocalisations(HoI4::ScriptedLocalisations& scriptedLocalisations,
+	void generateCustomLocalisations(ScriptedLocalisations& scriptedLocalisations,
 		 const std::set<std::string>& majorIdeologies);
 	void updateLocalisationText(const std::string& key, const std::string& oldText, const std::string& newText);
 
@@ -112,12 +110,12 @@ class Localisation
 		 const std::string& Vic2Key,
 		 const Vic2::Localisations& vic2Localisations);
 
-	void addStateLocalisationForLanguage(const HoI4::State& hoi4State,
+	void addStateLocalisationForLanguage(const State& hoi4State,
 		 const Vic2::State& vic2State,
 		 const std::pair<const std::string, std::string>& Vic2NameInLanguage,
 		 const Vic2::StateDefinitions& theStateDefinitions,
 		 const Vic2::Localisations& vic2Localisations);
-	void addVPLocalisationForLanguage(const HoI4::State& state,
+	void addVPLocalisationForLanguage(const State& state,
 		 const std::pair<const std::string, std::string>& Vic2NameInLanguage);
 	std::map<stateNumber, std::string>& getExistingStateLocalisation(const std::string& language);
 	keyToLocalisationMap& getExistingVPLocalisation(const std::string& language);
@@ -125,20 +123,20 @@ class Localisation
 	void addLanguageToVPLocalisations(const std::string& language);
 	void addNonenglishStateLocalisations();
 	void addNonenglishVPLocalisations();
-	void addDebugLocalisations(const std::pair<const int, HoI4::State>& state,
+	void addDebugLocalisations(const std::pair<const int, State>& state,
 		 const Vic2::Localisations& vic2Localisations);
 
 	static bool sourceStateHasOneProvince(const Vic2::State& sourceState);
 	static bool sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState,
 		 const Vic2::StateDefinitions& theStateDefinitions);
-	static bool stateHasAllDefinedProvincesAfterConversion(const HoI4::State& state,
+	static bool stateHasAllDefinedProvincesAfterConversion(const State& state,
 		 const Vic2::State& sourceState,
 		 const Vic2::StateDefinitions& theStateDefinitions);
 
 	static std::string getLanguageCode(const std::string& language);
 	void insertScriptedLocalisation(const std::string& localisationKey,
 		 const std::string& replacementKey,
-		 HoI4::ScriptedLocalisation& scriptedLocalisation,
+		 ScriptedLocalisation& scriptedLocalisation,
 		 const std::set<std::string>& majorIdeologies) const;
 
 	std::map<language, std::map<stateNumber, std::string>> stateLocalisations;

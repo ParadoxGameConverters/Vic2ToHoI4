@@ -379,7 +379,7 @@ void HoI4::Localisation::copyEventLocalisations(const std::string& oldKey, const
 }
 
 
-void HoI4::Localisation::addStateLocalisation(const HoI4::State& hoi4State,
+void HoI4::Localisation::addStateLocalisation(const State& hoi4State,
 	 const Vic2::State& vic2State,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const Vic2::Localisations& vic2Localisations)
@@ -391,7 +391,7 @@ void HoI4::Localisation::addStateLocalisation(const HoI4::State& hoi4State,
 }
 
 
-void HoI4::Localisation::addStateLocalisations(const HoI4::States& states, const Vic2::Localisations& vic2Localisations)
+void HoI4::Localisation::addStateLocalisations(const States& states, const Vic2::Localisations& vic2Localisations)
 {
 	LOG(LogLevel::Info) << "\tAdding state localisations";
 	for (const auto& state: states.getStates())
@@ -421,7 +421,7 @@ void HoI4::Localisation::addStateLocalisations(const HoI4::States& states, const
 }
 
 
-void HoI4::Localisation::addDebugLocalisations(const std::pair<const int, HoI4::State>& state,
+void HoI4::Localisation::addDebugLocalisations(const std::pair<const int, State>& state,
 	 const Vic2::Localisations& vic2Localisations)
 {
 	for (auto VPPositionInHoI4: state.second.getDebugVPs())
@@ -470,7 +470,7 @@ bool HoI4::Localisation::sourceStateHasAllButOneProvinceFromDefinition(const Vic
 }
 
 
-bool HoI4::Localisation::stateHasAllDefinedProvincesAfterConversion(const HoI4::State& state,
+bool HoI4::Localisation::stateHasAllDefinedProvincesAfterConversion(const State& state,
 	 const Vic2::State& sourceState,
 	 const Vic2::StateDefinitions& theStateDefinitions)
 {
@@ -502,7 +502,7 @@ bool HoI4::Localisation::stateHasAllDefinedProvincesAfterConversion(const HoI4::
 }
 
 
-void HoI4::Localisation::addStateLocalisationForLanguage(const HoI4::State& hoi4State,
+void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	 const Vic2::State& vic2State,
 	 const std::pair<const std::string, std::string>& Vic2NameInLanguage,
 	 const Vic2::StateDefinitions& theStateDefinitions,
@@ -565,7 +565,7 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const HoI4::State& hoi4
 }
 
 
-void HoI4::Localisation::addVPLocalisationForLanguage(const HoI4::State& state,
+void HoI4::Localisation::addVPLocalisationForLanguage(const State& state,
 	 const std::pair<const std::string, std::string>& Vic2NameInLanguage)
 {
 	if (state.getVPLocation())
@@ -752,7 +752,7 @@ void HoI4::Localisation::addDecisionLocalisation(const std::string& key, const s
 }
 
 
-void HoI4::Localisation::generateCustomLocalisations(HoI4::ScriptedLocalisations& scriptedLocalisations,
+void HoI4::Localisation::generateCustomLocalisations(ScriptedLocalisations& scriptedLocalisations,
 	 const std::set<std::string>& majorIdeologies)
 {
 	LOG(LogLevel::Info) << "\tGenerating custom localisations";
@@ -762,18 +762,18 @@ void HoI4::Localisation::generateCustomLocalisations(HoI4::ScriptedLocalisations
 	{
 		return;
 	}
-	HoI4::AllReplacementRules replacementRules(languageReplacementsFile);
+	AllReplacementRules replacementRules(languageReplacementsFile);
 	languageReplacementsFile.close();
 
 	for (const auto& localisationsInLanguage: countryLocalisations)
 	{
-		HoI4::ScriptedLocalisation masculineSingular;
+		ScriptedLocalisation masculineSingular;
 		masculineSingular.setName(getLanguageCode(localisationsInLanguage.first) + "GetAdjMS");
-		HoI4::ScriptedLocalisation masculinePlural;
+		ScriptedLocalisation masculinePlural;
 		masculinePlural.setName(getLanguageCode(localisationsInLanguage.first) + "GetAdjMP");
-		HoI4::ScriptedLocalisation feminineSingular;
+		ScriptedLocalisation feminineSingular;
 		feminineSingular.setName(getLanguageCode(localisationsInLanguage.first) + "GetAdjFS");
-		HoI4::ScriptedLocalisation femininePlural;
+		ScriptedLocalisation femininePlural;
 		femininePlural.setName(getLanguageCode(localisationsInLanguage.first) + "GetAdjFP");
 
 		auto rules = replacementRules.getRulesForLanguage(localisationsInLanguage.first);
@@ -888,7 +888,7 @@ std::string HoI4::Localisation::getLanguageCode(const std::string& language)
 
 void HoI4::Localisation::insertScriptedLocalisation(const std::string& localisationKey,
 	 const std::string& replacementKey,
-	 HoI4::ScriptedLocalisation& scriptedLocalisation,
+	 ScriptedLocalisation& scriptedLocalisation,
 	 const std::set<std::string>& majorIdeologies) const
 {
 	const std::regex extractRegex("([A-Z0-9]{3})_([a-z]+)_ADJ");
