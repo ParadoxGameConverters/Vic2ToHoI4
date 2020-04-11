@@ -103,7 +103,8 @@ class Country
 	void convertNavies(const UnitMappings& unitMap,
 		 const MtgUnitMappings& mtgUnitMap,
 		 const std::map<int, int>& provinceToStateIDMap,
-		 const std::map<int, State>& allStates);
+		 const std::map<int, State>& allStates,
+		 const ProvinceDefinitions& provinceDefinitions);
 	void convertConvoys(const UnitMappings& unitMap);
 	void convertAirForce(const UnitMappings& unitMap);
 	void convertArmies(const militaryMappings& theMilitaryMappings, const HoI4::States& theStates);

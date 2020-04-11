@@ -12,7 +12,8 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 	 const ShipVariants& theShipVariants,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 std::map<int, State> states,
-	 const std::string& tag)
+	 const std::string& tag,
+	 const ProvinceDefinitions& provinceDefinitions)
 {
 	for (auto army: srcArmies)
 	{
@@ -23,7 +24,7 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 		{
 			for (auto possibleProvince: *mapping)
 			{
-				if (provinceDefinitions::isSeaProvince(possibleProvince))
+				if (provinceDefinitions.isSeaProvince(possibleProvince))
 				{
 					navalLocation = possibleProvince;
 					break;

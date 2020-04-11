@@ -2,6 +2,7 @@
 #include "../Configuration.h"
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
+#include "../Mappers/ProvinceDefinitions.h"
 #include "../Mappers/TechMapper.h"
 #include "../V2World/Agreement.h"
 #include "../V2World/Country.h"
@@ -49,14 +50,17 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 
 	auto vic2Localisations = sourceWorld->getLocalisations();
 
-	theCoastalProvinces.init(theMapData);
+	ProvinceDefinitions provinceDefinitions;
+	theMapData = std::make_unique<MapData>(provinceDefinitions);
+	theCoastalProvinces.init(*theMapData);
 	states = std::make_unique<States>(sourceWorld,
 		 countryMap,
 		 theCoastalProvinces,
 		 sourceWorld->getStateDefinitions(),
-		 vic2Localisations);
+		 vic2Localisations,
+		 provinceDefinitions);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates());
-	buildings = new Buildings(*states, theCoastalProvinces, theMapData);
+	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, provinceDefinitions);
 	theNames.init();
 	theGraphics.init();
 	governmentMap.init();
@@ -73,7 +77,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 
 	militaryMappingsFile importedMilitaryMappings;
 	theMilitaryMappings = importedMilitaryMappings.takeAllMilitaryMappings();
-	convertMilitaries();
+	convertMilitaries(provinceDefinitions);
 
 	determineGreatPowers();
 
@@ -109,7 +113,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 		createFactions();
 	}
 
-	HoI4WarCreator warCreator(this, theMapData);
+	HoI4WarCreator warCreator(this, *theMapData, provinceDefinitions);
 
 	addFocusTrees();
 	adjustResearchFocuses();
@@ -618,14 +622,14 @@ void HoI4::World::convertTechs()
 }
 
 
-void HoI4::World::convertMilitaries()
+void HoI4::World::convertMilitaries(const ProvinceDefinitions& provinceDefinitions)
 {
 	LOG(LogLevel::Info) << "\tConverting militaries";
 	const HoI4::militaryMappings& specificMappings =
 		 theMilitaryMappings->getMilitaryMappings(theConfiguration.getVic2Mods());
 
 	convertArmies(specificMappings);
-	convertNavies(specificMappings.getUnitMappings(), specificMappings.getMtgUnitMappings());
+	convertNavies(specificMappings.getUnitMappings(), specificMappings.getMtgUnitMappings(), provinceDefinitions);
 	convertAirforces(specificMappings.getUnitMappings());
 }
 
@@ -641,7 +645,9 @@ void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings)
 }
 
 
-void HoI4::World::convertNavies(const UnitMappings& unitMap, const MtgUnitMappings& mtgUnitMap)
+void HoI4::World::convertNavies(const UnitMappings& unitMap,
+	 const MtgUnitMappings& mtgUnitMap,
+	 const ProvinceDefinitions& provinceDefinitions)
 {
 	LOG(LogLevel::Info) << "\t\tConverting navies";
 
@@ -657,7 +663,11 @@ void HoI4::World::convertNavies(const UnitMappings& unitMap, const MtgUnitMappin
 	for (auto country: countries)
 	{
 		country.second->determineShipVariants(possibleVariants);
-		country.second->convertNavies(unitMap, mtgUnitMap, states->getProvinceToStateIDMap(), states->getStates());
+		country.second->convertNavies(unitMap,
+			 mtgUnitMap,
+			 states->getProvinceToStateIDMap(),
+			 states->getStates(),
+			 provinceDefinitions);
 		country.second->convertConvoys(unitMap);
 	}
 }

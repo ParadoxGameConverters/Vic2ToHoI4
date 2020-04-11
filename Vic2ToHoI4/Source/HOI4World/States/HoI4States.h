@@ -13,6 +13,7 @@
 #include <vector>
 
 
+class ProvinceDefinitions;
 class CountryMapper;
 
 
@@ -44,7 +45,8 @@ class States: commonItems::parser
 		 const CountryMapper& countryMap,
 		 const HoI4::CoastalProvinces& theCoastalProvinces,
 		 const Vic2::StateDefinitions& theStateDefinitions,
-		 const Vic2::Localisations& vic2Localisations);
+		 const Vic2::Localisations& vic2Localisations,
+		 const ProvinceDefinitions& provinceDefinitions);
 
 	const std::map<int, HoI4::DefaultState>& getDefaultStates() const { return defaultStates; }
 	const std::map<int, HoI4::State>& getStates() const { return states; }
@@ -61,7 +63,9 @@ class States: commonItems::parser
 	void addCapitalsToStates(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
 
   private:
-	void determineOwnersAndCores(const CountryMapper& countryMap, const Vic2::World& sourceWorld);
+	void determineOwnersAndCores(const CountryMapper& countryMap,
+		 const Vic2::World& sourceWorld,
+		 const ProvinceDefinitions& provinceDefinitions);
 	std::optional<std::vector<int>> retrieveSourceProvinceNums(int provNum) const;
 	const std::map<std::string, std::pair<int, int>> determinePotentialOwners(const std::vector<int>& sourceProvinceNums,
 		 const Vic2::World& sourceWorld) const;

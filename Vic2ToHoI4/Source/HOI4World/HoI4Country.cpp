@@ -591,7 +591,8 @@ void HoI4::Country::determineShipVariants(const PossibleShipVariants& possibleVa
 void HoI4::Country::convertNavies(const UnitMappings& unitMap,
 	 const MtgUnitMappings& mtgUnitMap,
 	 const std::map<int, int>& provinceToStateIDMap,
-	 const std::map<int, State>& allStates)
+	 const std::map<int, State>& allStates,
+	 const ProvinceDefinitions& provinceDefinitions)
 {
 	auto backupNavalLocation = 0;
 	for (const auto& state: allStates)
@@ -614,7 +615,8 @@ void HoI4::Country::convertNavies(const UnitMappings& unitMap,
 		 *theShipVariants,
 		 provinceToStateIDMap,
 		 allStates,
-		 tag);
+		 tag,
+		 provinceDefinitions);
 
 	navyNames.addLegacyShipTypeNames(
 		 LegacyShipTypeNames{"submarine", "Submarine", sourceCountry.getShipNames("frigate")});

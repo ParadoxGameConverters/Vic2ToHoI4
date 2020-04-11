@@ -31,7 +31,8 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 	 const CountryMapper& countryMap,
 	 const HoI4::CoastalProvinces& theCoastalProvinces,
 	 const Vic2::StateDefinitions& theStateDefinitions,
-	 const Vic2::Localisations& vic2Localisations):
+	 const Vic2::Localisations& vic2Localisations,
+	 const ProvinceDefinitions& provinceDefinitions):
 	 ownersMap(),
 	 coresMap(), assignedProvinces(), states(), provinceToStateIDMap()
 {
@@ -52,7 +53,7 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 
 	HoI4::ImpassableProvinces theImpassables(defaultStates);
 
-	determineOwnersAndCores(countryMap, *sourceWorld);
+	determineOwnersAndCores(countryMap, *sourceWorld, provinceDefinitions);
 	createStates(sourceWorld->getCountries(),
 		 sourceWorld->getProvinces(),
 		 theImpassables,
@@ -63,9 +64,11 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 }
 
 
-void HoI4::States::determineOwnersAndCores(const CountryMapper& countryMap, const Vic2::World& sourceWorld)
+void HoI4::States::determineOwnersAndCores(const CountryMapper& countryMap,
+	 const Vic2::World& sourceWorld,
+	 const ProvinceDefinitions& provinceDefinitions)
 {
-	for (auto provinceNumber: provinceDefinitions::getLandProvinces())
+	for (auto provinceNumber: provinceDefinitions.getLandProvinces())
 	{
 		auto sourceProvinceNums = retrieveSourceProvinceNums(provinceNumber);
 		if (sourceProvinceNums)

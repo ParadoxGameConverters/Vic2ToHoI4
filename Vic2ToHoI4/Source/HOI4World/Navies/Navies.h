@@ -15,6 +15,7 @@
 #include <vector>
 
 
+class ProvinceDefinitions;
 
 namespace HoI4
 {
@@ -29,7 +30,8 @@ class Navies
 		 const ShipVariants& theShipVariants,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 std::map<int, State> states,
-		 const std::string& tag);
+		 const std::string& tag,
+		 const ProvinceDefinitions& provinceDefinitions);
 
 	Navies() = delete;
 	~Navies() = default;
