@@ -31,7 +31,7 @@ class HoI4World_HoI4CountryTests: public testing::Test
 	ConverterColor::Color defaultColor;
 
 	std::unique_ptr<Vic2::Localisations> vic2Localisations;
-	HoI4Localisation hoi4Localisations;
+	HoI4::Localisation hoi4Localisations;
 };
 
 

@@ -18,10 +18,13 @@ class HoI4Focus;
 
 namespace HoI4
 {
+
 class Country;
 class Events;
+class Localisation;
 class SharedFocus;
 class World;
+
 } // namespace HoI4
 
 
@@ -45,41 +48,41 @@ class HoI4FocusTree: commonItems::parser
 
 	void addDemocracyNationalFocuses(std::shared_ptr<HoI4::Country> Home,
 		 std::vector<std::shared_ptr<HoI4::Country>>& CountriesToContain,
-		 HoI4Localisation& hoi4Localisations);
+		 HoI4::Localisation& hoi4Localisations);
 	void addAbsolutistEmpireNationalFocuses(std::shared_ptr<HoI4::Country> country,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& targetColonies,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& annexationTargets,
-		 HoI4Localisation& hoi4Localisations);
+		 HoI4::Localisation& hoi4Localisations);
 	void addCommunistCoupBranch(std::shared_ptr<HoI4::Country> Home,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& coupTargets,
 		 const std::set<std::string>& majorIdeologies,
-		 HoI4Localisation& hoi4Localisations);
+		 HoI4::Localisation& hoi4Localisations);
 	void addCommunistWarBranch(std::shared_ptr<HoI4::Country> Home,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& warTargets,
 		 HoI4::Events& events,
-		 HoI4Localisation& hoi4Localisations);
+		 HoI4::Localisation& hoi4Localisations);
 	void addFascistAnnexationBranch(std::shared_ptr<HoI4::Country> Home,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& annexationTargets,
 		 HoI4::Events& events,
-		 HoI4Localisation& hoi4Localisations);
+		 HoI4::Localisation& hoi4Localisations);
 	void addFascistSudetenBranch(std::shared_ptr<HoI4::Country> Home,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& sudetenTargets,
 		 const std::vector<std::vector<int>>& demandedStates,
 		 HoI4::World& world,
-		 HoI4Localisation& hoi4Localisations);
+		 HoI4::Localisation& hoi4Localisations);
 	void addGPWarBranch(std::shared_ptr<HoI4::Country> Home,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& newAllies,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& GCTargets,
 		 const std::string& ideology,
 		 HoI4::Events& events,
-		 HoI4Localisation& hoi4Localisations);
+		 HoI4::Localisation& hoi4Localisations);
 	void addNeighborWarBranch(const std::string& tag,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& weakNeighbors,
 		 const std::shared_ptr<HoI4::Country>& targetNeighbors,
 		 const std::string& targetName,
 		 const date& startDate,
 		 int numWarsWithNeighbors,
-		 HoI4Localisation& hoi4Localisations);
+		 HoI4::Localisation& hoi4Localisations);
 	void removeFocus(const std::string& id);
 
 	void addFocus(std::shared_ptr<HoI4Focus> newFocus) { focuses.push_back(newFocus); }

@@ -26,7 +26,7 @@ HoI4::Country::Country(std::string tag,
 	 graphicsMapper& theGraphics,
 	 const CountryMapper& countryMap,
 	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
-	 HoI4Localisation& hoi4Localisations):
+	 Localisation& hoi4Localisations):
 	 tag(std::move(tag)),
 	 sourceCountry(*srcCountry)
 {
@@ -132,7 +132,7 @@ void HoI4::Country::determineFilename()
 void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	 const governmentMapper& governmentMap,
 	 const Vic2::Localisations& vic2Localisations,
-	 HoI4Localisation& hoi4Localisations)
+	 Localisation& hoi4Localisations)
 {
 	auto possibleRulingParty = sourceCountry.getRulingParty(sourceWorld.getParties());
 	if (!possibleRulingParty)
@@ -164,7 +164,7 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies,
 	 const governmentMapper& governmentMap,
 	 const Vic2::Localisations& vic2Localisations,
-	 HoI4Localisation& hoi4Localisations)
+	 Localisation& hoi4Localisations)
 {
 	for (const auto& HoI4Ideology: majorIdeologies)
 	{
@@ -185,7 +185,7 @@ void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies,
 }
 
 
-void HoI4::Country::initIdeas(namesMapper& theNames, HoI4Localisation& hoi4Localisations) const
+void HoI4::Country::initIdeas(namesMapper& theNames, Localisation& hoi4Localisations) const
 {
 	hoi4Localisations.addIdeaLocalisation(tag + "_tank_manufacturer",
 		 theNames.takeCarCompanyName(sourceCountry.getPrimaryCulture()));

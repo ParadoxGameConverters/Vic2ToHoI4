@@ -228,7 +228,7 @@ class World: commonItems::parser
 
 	HoI4FocusTree genericFocusTree;
 
-	HoI4Localisation hoi4Localisations;
+	Localisation hoi4Localisations;
 };
 
 } // namespace HoI4

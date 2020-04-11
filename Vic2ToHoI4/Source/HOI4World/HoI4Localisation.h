@@ -1,5 +1,5 @@
-#ifndef HOI4LOCALISATION_H_
-#define HOI4LOCALISATION_H_
+#ifndef HOI4_LOCALISATION_H
+#define HOI4_LOCALISATION_H
 
 
 
@@ -20,16 +20,14 @@ class Localisations;
 } // namespace Vic2
 
 
-namespace HoI4
-{
-class State;
-class States;
-} // namespace HoI4
-
-
 class governmentMapper;
 
 
+namespace HoI4
+{
+
+class State;
+class States;
 
 typedef std::map<std::string, std::string> keyToLocalisationMap;					  // key -> localisation
 typedef std::map<std::string, keyToLocalisationMap> languageToLocalisationsMap; // language -> (key -> localisation)
@@ -39,10 +37,10 @@ typedef int stateNumber;
 
 
 
-class HoI4Localisation
+class Localisation
 {
   public:
-	HoI4Localisation() noexcept;
+	Localisation() noexcept;
 
 	void addStateLocalisation(const HoI4::State& hoi4State,
 		 const Vic2::State& vic2State,
@@ -157,6 +155,8 @@ class HoI4Localisation
 	languageToLocalisationsMap customLocalisations;
 };
 
+} // namespace HoI4
 
 
-#endif // HOI4LOCALISATION_H_
+
+#endif // HOI4_LOCALISATION_H

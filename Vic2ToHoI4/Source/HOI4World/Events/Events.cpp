@@ -497,7 +497,7 @@ void HoI4::Events::createTradeEvent(const Country& leader, const Country& greatP
 }
 
 
-void HoI4::Events::createPoliticalEvents(const std::set<std::string>& majorIdeologies, HoI4Localisation& localisation)
+void HoI4::Events::createPoliticalEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation)
 {
 	LOG(LogLevel::Info) << "\tCreating political events";
 
@@ -509,7 +509,7 @@ void HoI4::Events::createPoliticalEvents(const std::set<std::string>& majorIdeol
 }
 
 
-void HoI4::Events::addOnTheRise(const std::set<std::string>& majorIdeologies, HoI4Localisation& localisation)
+void HoI4::Events::addOnTheRise(const std::set<std::string>& majorIdeologies, Localisation& localisation)
 {
 	for (const auto& ideology: majorIdeologies)
 	{
@@ -566,8 +566,7 @@ void HoI4::Events::addOnTheRise(const std::set<std::string>& majorIdeologies, Ho
 
 
 
-void HoI4::Events::addMinisterRevolutionEvents(const std::set<std::string>& majorIdeologies,
-	 HoI4Localisation& localisation)
+void HoI4::Events::addMinisterRevolutionEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation)
 {
 	for (const auto& ideology: majorIdeologies)
 	{
@@ -661,7 +660,7 @@ void HoI4::Events::addMinisterRevolutionEvents(const std::set<std::string>& majo
 }
 
 
-void HoI4::Events::addDemocraticMinisterRevolutionEvents(HoI4Localisation& localisation)
+void HoI4::Events::addDemocraticMinisterRevolutionEvents(Localisation& localisation)
 {
 	Event opposition;
 	opposition.giveType("country_event");
@@ -740,7 +739,7 @@ void HoI4::Events::addDemocraticMinisterRevolutionEvents(HoI4Localisation& local
 }
 
 
-void HoI4::Events::addFiftyPercentEvents(const std::set<std::string>& majorIdeologies, HoI4Localisation& localisation)
+void HoI4::Events::addFiftyPercentEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation)
 {
 	for (const auto& ideology: majorIdeologies)
 	{
@@ -796,7 +795,7 @@ void HoI4::Events::addFiftyPercentEvents(const std::set<std::string>& majorIdeol
 }
 
 
-void HoI4::Events::addRevolutionEvents(const std::set<std::string>& majorIdeologies, HoI4Localisation& localisation)
+void HoI4::Events::addRevolutionEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation)
 {
 	for (const auto& ideology: majorIdeologies)
 	{
@@ -898,7 +897,7 @@ void HoI4::Events::addRevolutionEvents(const std::set<std::string>& majorIdeolog
 }
 
 
-void HoI4::Events::addSuppressedEvents(const std::set<std::string>& majorIdeologies, HoI4Localisation& localisation)
+void HoI4::Events::addSuppressedEvents(const std::set<std::string>& majorIdeologies, Localisation& localisation)
 {
 	for (const auto& ideology: majorIdeologies)
 	{
@@ -1022,7 +1021,7 @@ std::string HoI4::Events::getIdeologicalPicture(const std::string& ideology)
 
 
 void HoI4::Events::createWarJustificationEvents(const std::set<std::string>& majorIdeologies,
-	 HoI4Localisation& localisation)
+	 Localisation& localisation)
 {
 	LOG(LogLevel::Info) << "\tCreating war justification events";
 
@@ -1157,7 +1156,7 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag,
 	 OnActions& onActions,
 	 const std::set<std::string>& majorIdeologies,
 	 const Vic2::Localisations& vic2Localisations,
-	 HoI4Localisation& hoi4Localisations)
+	 Localisation& hoi4Localisations)
 {
 	Event partyChoiceEvent;
 

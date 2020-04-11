@@ -6,7 +6,7 @@
 
 
 
-void outputLocalisations(const std::string& filenameStart, const languageToLocalisationsMap& localisations)
+void outputLocalisations(const std::string& filenameStart, const HoI4::languageToLocalisationsMap& localisations)
 {
 	for (const auto& languageToLocalisations: localisations)
 	{
@@ -31,7 +31,7 @@ void outputLocalisations(const std::string& filenameStart, const languageToLocal
 
 
 void outputStateLocalisations(const std::string& localisationPath,
-	 const std::map<language, std::map<stateNumber, std::string>>& stateLocalisations)
+	 const std::map<HoI4::language, std::map<HoI4::stateNumber, std::string>>& stateLocalisations)
 {
 	for (const auto& languageToLocalisations: stateLocalisations)
 	{
@@ -56,7 +56,7 @@ void outputStateLocalisations(const std::string& localisationPath,
 }
 
 
-void HoI4::outputLocalisation(const HoI4Localisation& localisation, const std::string& outputName)
+void HoI4::outputLocalisation(const Localisation& localisation, const std::string& outputName)
 {
 	LOG(LogLevel::Debug) << "Writing localisations";
 	const auto localisationPath = "output/" + outputName + "/localisation";

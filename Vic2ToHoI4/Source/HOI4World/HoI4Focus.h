@@ -8,7 +8,13 @@
 #include <vector>
 
 
-class HoI4Localisation;
+
+namespace HoI4
+{
+class Localisation;
+}
+
+
 
 class HoI4Focus: commonItems::parser
 {
@@ -22,7 +28,7 @@ class HoI4Focus: commonItems::parser
 	std::shared_ptr<HoI4Focus> makeCustomizedCopy(const std::string& country) const;
 	std::shared_ptr<HoI4Focus> makeTargetedCopy(const std::string& country,
 		 const std::string& target,
-		 HoI4Localisation& localisation) const;
+		 HoI4::Localisation& localisation) const;
 
 	std::string id;
 	std::string icon;

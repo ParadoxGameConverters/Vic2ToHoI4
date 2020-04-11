@@ -613,7 +613,7 @@ std::unique_ptr<HoI4FocusTree> HoI4FocusTree::makeCustomizedCopy(const HoI4::Cou
 
 void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 	 vector<shared_ptr<HoI4::Country>>& CountriesToContain,
-	 HoI4Localisation& hoi4Localisations)
+	 HoI4::Localisation& hoi4Localisations)
 {
 	double WTModifier = 1;
 	if (Home->getGovernmentIdeology() == "democratic")
@@ -800,7 +800,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country> Home,
 	 const vector<shared_ptr<HoI4::Country>>& targetColonies,
 	 const vector<shared_ptr<HoI4::Country>>& annexationTargets,
-	 HoI4Localisation& hoi4Localisations)
+	 HoI4::Localisation& hoi4Localisations)
 {
 	auto possibleHomeCountryAdjective = Home->getSourceCountry().getAdjective("english");
 	string homeCountryAdjective;
@@ -1231,7 +1231,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
 	 const vector<shared_ptr<HoI4::Country>>& coupTargets,
 	 const std::set<std::string>& majorIdeologies,
-	 HoI4Localisation& hoi4Localisations)
+	 HoI4::Localisation& hoi4Localisations)
 {
 	if (coupTargets.size() > 0)
 	{
@@ -1374,7 +1374,7 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
 void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home,
 	 const vector<shared_ptr<HoI4::Country>>& warTargets,
 	 HoI4::Events& events,
-	 HoI4Localisation& hoi4Localisations)
+	 HoI4::Localisation& hoi4Localisations)
 {
 	if (warTargets.size() > 0)
 	{
@@ -1487,7 +1487,7 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home,
 void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home,
 	 const vector<shared_ptr<HoI4::Country>>& annexationTargets,
 	 HoI4::Events& events,
-	 HoI4Localisation& hoi4Localisations)
+	 HoI4::Localisation& hoi4Localisations)
 {
 	// The Following 'if' statement prevents converter from generating focuses if annexationTargets.size > 1
 	// Keep this 'if' statement off until we figure out how to handle Fascist NF's
@@ -1606,7 +1606,7 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home,
 	 const vector<shared_ptr<HoI4::Country>>& sudetenTargets,
 	 const vector<vector<int>>& demandedStates,
 	 HoI4::World& world,
-	 HoI4Localisation& hoi4Localisations)
+	 HoI4::Localisation& hoi4Localisations)
 {
 	auto& events = world.getEvents();
 
@@ -1742,7 +1742,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 	 const vector<shared_ptr<HoI4::Country>>& GCTargets,
 	 const string& ideology,
 	 HoI4::Events& events,
-	 HoI4Localisation& hoi4Localisations)
+	 HoI4::Localisation& hoi4Localisations)
 {
 	int numAllies = newAllies.size();
 	string ideologyShort = ideology.substr(0, 3);
@@ -1939,7 +1939,7 @@ void HoI4FocusTree::addNeighborWarBranch(const string& tag,
 	 const string& targetName,
 	 const date& startDate,
 	 int numWarsWithNeighbors,
-	 HoI4Localisation& hoi4Localisations)
+	 HoI4::Localisation& hoi4Localisations)
 {
 	if (const auto& originalFocus = loadedFocuses.find("NeighborWar"); originalFocus != loadedFocuses.end())
 	{
@@ -1980,7 +1980,8 @@ void HoI4FocusTree::addNeighborWarBranch(const string& tag,
 		newFocus->aiWillDo += "\n";
 		newFocus->aiWillDo += "		}";
 		newFocus->completionReward += "= {\n";
-		newFocus->completionReward += "			add_named_threat = { threat = 3 name = \"War with " + targetName + "\" }\n";
+		newFocus->completionReward +=
+			 "			add_named_threat = { threat = 3 name = \"War with " + targetName + "\" }\n";
 		newFocus->completionReward += "			create_wargoal = {\n";
 		newFocus->completionReward += "				type = annex_everything\n";
 		newFocus->completionReward += "				target = " + targetNeighbors->getTag() + "\n";

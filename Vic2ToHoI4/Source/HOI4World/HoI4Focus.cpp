@@ -107,7 +107,7 @@ std::shared_ptr<HoI4Focus> HoI4Focus::makeCustomizedCopy(const std::string& coun
 
 std::shared_ptr<HoI4Focus> HoI4Focus::makeTargetedCopy(const std::string& country,
 	 const std::string& target,
-	 HoI4Localisation& localisation) const
+	 HoI4::Localisation& localisation) const
 {
 	auto newFocus = std::make_shared<HoI4Focus>(*this);
 
