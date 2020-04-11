@@ -27,11 +27,11 @@ namespace HoI4
 class State;
 class States;
 
-typedef std::map<std::string, std::string> keyToLocalisationMap;					  // key -> localisation
-typedef std::map<std::string, keyToLocalisationMap> languageToLocalisationsMap; // language -> (key -> localisation)
+using keyToLocalisationMap = std::map<std::string, std::string>;					  // key -> localisation
+using languageToLocalisationsMap = std::map<std::string, keyToLocalisationMap>; // language -> (key -> localisation)
 
-typedef std::string language;
-typedef int stateNumber;
+using language = std::string;
+using stateNumber = int;
 
 
 
