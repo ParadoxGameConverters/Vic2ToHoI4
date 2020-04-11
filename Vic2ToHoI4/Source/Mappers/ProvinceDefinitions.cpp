@@ -2,13 +2,12 @@
 #include "../Configuration.h"
 #include "Log.h"
 #include <fstream>
-using namespace std;
 
 
 
 ProvinceDefinitions::ProvinceDefinitions() noexcept: landProvinces(), colorToProvinceMap()
 {
-	ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
+	std::ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
 	if (!definitions.is_open())
 	{
 		LOG(LogLevel::Error) << "Could not open " << theConfiguration.getHoI4Path() << "/map/definition.csv";
@@ -17,10 +16,10 @@ ProvinceDefinitions::ProvinceDefinitions() noexcept: landProvinces(), colorToPro
 
 	while (true)
 	{
-		string line;
+		std::string line;
 		getline(definitions, line);
 		int pos = line.find_first_of(';');
-		if (pos == string::npos)
+		if (pos == std::string::npos)
 		{
 			break;
 		}
@@ -45,7 +44,7 @@ ProvinceDefinitions::ProvinceDefinitions() noexcept: landProvinces(), colorToPro
 
 		ConverterColor::Color provinceColor(red, green, blue);
 		int colorInt = getIntFromColor(provinceColor);
-		colorToProvinceMap.insert(make_pair(colorInt, provNum));
+		colorToProvinceMap.insert(std::make_pair(colorInt, provNum));
 
 		pos = line.find_first_of(';');
 		line = line.substr(0, pos);
@@ -61,7 +60,7 @@ ProvinceDefinitions::ProvinceDefinitions() noexcept: landProvinces(), colorToPro
 }
 
 
-optional<int> ProvinceDefinitions::getProvinceFromColor(const ConverterColor::Color& color) const
+std::optional<int> ProvinceDefinitions::getProvinceFromColor(const ConverterColor::Color& color) const
 {
 	int colorInt = getIntFromColor(color);
 

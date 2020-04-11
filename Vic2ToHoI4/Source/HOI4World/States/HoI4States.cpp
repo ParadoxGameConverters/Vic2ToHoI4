@@ -76,7 +76,7 @@ void HoI4::States::determineOwnersAndCores(const CountryMapper& countryMap,
 			auto potentialOwners = determinePotentialOwners(*sourceProvinceNums, sourceWorld);
 			if (potentialOwners.size() == 0)
 			{
-				ownersMap.insert(make_pair(provinceNumber, ""));
+				ownersMap.insert(std::make_pair(provinceNumber, ""));
 				continue;
 			}
 			auto oldOwner = selectProvinceOwner(potentialOwners);
@@ -142,7 +142,7 @@ const std::map<std::string, std::pair<int, int>> HoI4::States::determinePotentia
 
 		if (potentialOwners.find(owner) == potentialOwners.end())
 		{
-			potentialOwners[owner] = make_pair(0, 0);
+			potentialOwners[owner] = std::make_pair(0, 0);
 		}
 		potentialOwners[owner].first++;
 		potentialOwners[owner].second += (*srcProvince)->getTotalPopulation();
@@ -297,7 +297,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 
 
 void HoI4::States::createMatchingHoI4State(const Vic2::State* vic2State,
-	 const string& stateOwner,
+	 const std::string& stateOwner,
 	 const HoI4::ImpassableProvinces& theImpassables,
 	 const CountryMapper& countryMapper,
 	 const HoI4::CoastalProvinces& theCoastalProvinces,
@@ -331,7 +331,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State* vic2State,
 		newState.tryToCreateVP(*vic2State, theProvinceMapper, theConfiguration);
 		newState.addManpower(vic2State->getProvinces(), theProvinceMapper, theConfiguration);
 		newState.convertNavalBases(vic2State->getProvinces(), theCoastalProvinces, theProvinceMapper);
-		states.insert(make_pair(nextStateID, newState));
+		states.insert(std::make_pair(nextStateID, newState));
 		nextStateID++;
 		HoI4Localisation::addStateLocalisation(newState, *vic2State, theStateDefinitions, vic2Localisations);
 	}
@@ -351,7 +351,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State* vic2State,
 }
 
 
-std::set<int> HoI4::States::getProvincesInState(const Vic2::State* vic2State, const string& owner)
+std::set<int> HoI4::States::getProvincesInState(const Vic2::State* vic2State, const std::string& owner)
 {
 	std::set<int> provinces;
 	for (auto vic2ProvinceNum: vic2State->getProvinceNumbers())
@@ -402,7 +402,7 @@ bool HoI4::States::isProvinceValid(int provNum) const
 }
 
 
-bool HoI4::States::isProvinceOwnedByCountry(int provNum, const string& stateOwner) const
+bool HoI4::States::isProvinceOwnedByCountry(int provNum, const std::string& stateOwner) const
 {
 	auto provinceOwnerItr = ownersMap.find(provNum);
 	if ((provinceOwnerItr == ownersMap.end()) || (provinceOwnerItr->second != stateOwner))
