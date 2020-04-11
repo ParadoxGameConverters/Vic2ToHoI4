@@ -7,6 +7,7 @@
 #include "../Vic2ToHoI4/Source/HOI4World/Map/CoastalProvinces.h"
 #include "../Vic2ToHoI4/Source/HOI4World/States/HoI4State.h"
 #include "../Vic2ToHoI4/Source/OutHoi4/States/OutHoI4State.h"
+#include "../Vic2ToHoI4/Source/V2World/Issues.h"
 #include "../Vic2ToHoI4/Source/V2World/Province.h"
 #include "gtest/gtest.h"
 #include <optional>
@@ -112,7 +113,7 @@ TEST(HoI4World_States_StateTests, ControllersCanBeAdded)
 	provinceInput << "\towner=TAG\n";
 	provinceInput << "\tcontroller=NOT\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput);
+	auto theProvince = new Vic2::Province("12", provinceInput, Vic2::Issues{});
 	std::set<const Vic2::Province*> provinces;
 	provinces.insert(theProvince);
 
@@ -145,7 +146,7 @@ TEST(HoI4World_States_StateTests, ControllersConvertWithHoI4Tag)
 	provinceInput << "\towner=TAG\n";
 	provinceInput << "\tcontroller=NOT\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput);
+	auto theProvince = new Vic2::Province("12", provinceInput, Vic2::Issues());
 	std::set<const Vic2::Province*> provinces;
 	provinces.insert(theProvince);
 
@@ -178,7 +179,7 @@ TEST(HoI4World_States_StateTests, ControllersDontConvertForRebels)
 	provinceInput << "\towner=TAG\n";
 	provinceInput << "\tcontroller=REB\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput);
+	auto theProvince = new Vic2::Province("12", provinceInput, Vic2::Issues());
 	std::set<const Vic2::Province*> provinces;
 	provinces.insert(theProvince);
 
@@ -402,12 +403,12 @@ TEST(HoI4World_States_StateTests, NavalBasesCanBeConverted)
 	input << "= {\n";
 	input << "\tnaval_base = 1.0";
 	input << "}";
-	Vic2::Province sourceProvince("1", input);
+	Vic2::Province sourceProvince("1", input, Vic2::Issues());
 	std::stringstream input2;
 	input2 << "= {\n";
 	input2 << "\tnaval_base = 1.0";
 	input2 << "}";
-	Vic2::Province sourceProvince2("2", input2);
+	Vic2::Province sourceProvince2("2", input2, Vic2::Issues());
 	const std::set<const Vic2::Province*> sourceProvinces{&sourceProvince, &sourceProvince2};
 
 	const mockCoastalProvinces theCoastalProvinces;
@@ -482,7 +483,7 @@ TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
 	provinceInput << "\t\tsize=12345\n";
 	provinceInput << "\t}\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput);
+	auto theProvince = new Vic2::Province("12", provinceInput, Vic2::Issues());
 	std::set<const Vic2::Province*> provinces;
 	provinces.insert(theProvince);
 
@@ -612,7 +613,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	provinceInput << "\t\tsize=123456\n";
 	provinceInput << "\t}\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput);
+	auto theProvince = new Vic2::Province("12", provinceInput, Vic2::Issues());
 
 	std::stringstream provinceInput2;
 	provinceInput2 << "={\n";
@@ -622,7 +623,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	provinceInput2 << "\t\tsize=12345\n";
 	provinceInput2 << "\t}\n";
 	provinceInput2 << "}";
-	auto anotherProvince = new Vic2::Province("24", provinceInput2);
+	auto anotherProvince = new Vic2::Province("24", provinceInput2, Vic2::Issues());
 	std::set<const Vic2::Province*> provinces;
 	provinces.insert(theProvince);
 	provinces.insert(anotherProvince);
@@ -660,7 +661,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	provinceInput << "\t\tsize=123456\n";
 	provinceInput << "\t}\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput);
+	auto theProvince = new Vic2::Province("12", provinceInput, Vic2::Issues());
 
 	std::stringstream provinceInput2;
 	provinceInput2 << "={\n";
@@ -670,7 +671,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	provinceInput2 << "\t\tsize=12345\n";
 	provinceInput2 << "\t}\n";
 	provinceInput2 << "}";
-	auto anotherProvince = new Vic2::Province("24", provinceInput2);
+	auto anotherProvince = new Vic2::Province("24", provinceInput2, Vic2::Issues());
 	std::set<const Vic2::Province*> provinces;
 	provinces.insert(theProvince);
 	provinces.insert(anotherProvince);
@@ -708,7 +709,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	provinceInput << "\t\tsize=123456\n";
 	provinceInput << "\t}\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput);
+	auto theProvince = new Vic2::Province("12", provinceInput, Vic2::Issues());
 
 	std::stringstream provinceInput2;
 	provinceInput2 << "={\n";
@@ -718,7 +719,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	provinceInput2 << "\t\tsize=12345\n";
 	provinceInput2 << "\t}\n";
 	provinceInput2 << "}";
-	auto anotherProvince = new Vic2::Province("24", provinceInput2);
+	auto anotherProvince = new Vic2::Province("24", provinceInput2, Vic2::Issues());
 	std::set<const Vic2::Province*> provinces;
 	provinces.insert(theProvince);
 	provinces.insert(anotherProvince);
@@ -756,7 +757,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousPr
 	provinceInput << "\t\tsize=12345\n";
 	provinceInput << "\t}\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput);
+	auto theProvince = new Vic2::Province("12", provinceInput, Vic2::Issues());
 
 	std::stringstream provinceInput2;
 	provinceInput2 << "={\n";
@@ -766,7 +767,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousPr
 	provinceInput2 << "\t\tsize=123456\n";
 	provinceInput2 << "\t}\n";
 	provinceInput2 << "}";
-	auto anotherProvince = new Vic2::Province("24", provinceInput2);
+	auto anotherProvince = new Vic2::Province("24", provinceInput2, Vic2::Issues());
 	std::set<const Vic2::Province*> provinces;
 	provinces.insert(theProvince);
 	provinces.insert(anotherProvince);

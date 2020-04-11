@@ -26,8 +26,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-Vic2::Province::Province(const std::string& numberString, std::istream& theStream):
-	number(stoi(numberString))
+Vic2::Province::Province(const std::string& numberString, std::istream& theStream, const Issues& theIssues):
+	 number(stoi(numberString))
 {
 	registerKeyword(std::regex("owner"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString ownerSingleString(theStream);
@@ -50,58 +50,13 @@ Vic2::Province::Province(const std::string& numberString, std::istream& theStrea
 		commonItems::doubleList railSizeList(theStream);
 		railLevel = static_cast<int>(railSizeList.getDoubles()[0]);
 	});
-	registerKeyword(std::regex("aristocrats"), [this](const std::string& popType, std::istream& theStream) {
-		Pop pop(popType, theStream);
-		pops.push_back(pop);
-	});
-	registerKeyword(std::regex("artisans"), [this](const std::string& popType, std::istream& theStream) {
-		Pop pop(popType, theStream);
-		pops.push_back(pop);
-	});
-	registerKeyword(std::regex("bureaucrats"), [this](const std::string& popType, std::istream& theStream) {
-		Pop pop(popType, theStream);
-		pops.push_back(pop);
-	});
-	registerKeyword(std::regex("capitalists"), [this](const std::string& popType, std::istream& theStream) {
-		Pop pop(popType, theStream);
-		pops.push_back(pop);
-	});
-	registerKeyword(std::regex("clergymen"), [this](const std::string& popType, std::istream& theStream) {
-		Pop pop(popType, theStream);
-		pops.push_back(pop);
-	});
-	registerKeyword(std::regex("craftsmen"), [this](const std::string& popType, std::istream& theStream) {
-		Pop pop(popType, theStream);
-		pops.push_back(pop);
-	});
-	registerKeyword(std::regex("clerks"), [this](const std::string& popType, std::istream& theStream) {
-		Pop pop(popType, theStream);
-		pops.push_back(pop);
-	});
-	registerKeyword(std::regex("farmers"), [this](const std::string& popType, std::istream& theStream) {
-		Pop pop(popType, theStream);
-		pops.push_back(pop);
-	});
-	registerKeyword(std::regex("soldiers"), [this](const std::string& popType, std::istream& theStream) {
-		Pop pop(popType, theStream);
-		pops.push_back(pop);
-	});
-	registerKeyword(std::regex("officers"), [this](const std::string& popType, std::istream& theStream) {
-		Pop pop(popType, theStream);
-		pops.push_back(pop);
-	});
-	registerKeyword(std::regex("labourers"), [this](const std::string& popType, std::istream& theStream) {
-		Pop pop(popType, theStream);
-		pops.push_back(pop);
-	});
-	registerKeyword(std::regex("slaves"), [this](const std::string& popType, std::istream& theStream) {
-		Pop pop(popType, theStream);
-		pops.push_back(pop);
-	});
-	registerKeyword(std::regex("serfs"), [this](const std::string& popType, std::istream& theStream) {
-		Pop pop(popType, theStream);
-		pops.push_back(pop);
-	});	
+	registerRegex(
+		 "aristocrats|artisans|bureaucrats|capitalists|clergymen|craftsmen|clerks|farmers|soldiers|officers|labourers|"
+		 "slaves|serfs",
+		 [this, &theIssues](const std::string& popType, std::istream& theStream) {
+			 Pop pop(popType, theStream, theIssues);
+			 pops.push_back(pop);
+		 });
 	registerKeyword(std::regex("[a-zA-Z0-9\\_]+"), commonItems::ignoreItem);
 
 	parseStream(theStream);

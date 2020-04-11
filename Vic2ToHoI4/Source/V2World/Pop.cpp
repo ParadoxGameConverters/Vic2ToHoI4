@@ -22,37 +22,31 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "Pop.h"
+#include "Issues.h"
 #include "Log.h"
 #include "ParserHelpers.h"
-#include "Issues.h"
 
 std::map<int, Vic2::Pop*> Vic2::Pop::pop_map;
 
-Vic2::Pop::Pop(const std::string& typeString, std::istream& theStream):
-	type(typeString)
+Vic2::Pop::Pop(const std::string& typeString, std::istream& theStream, const Issues& theIssues): type(typeString)
 {
-	registerKeyword(std::regex("size"), [this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("size"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleInt sizeInt(theStream);
 		size = sizeInt.getInt();
 	});
-	registerKeyword(std::regex("literacy"), [this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("literacy"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleDouble sizeInt(theStream);
 		literacy = sizeInt.getDouble();
 	});
-	registerKeyword(std::regex("con"), [this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("con"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleDouble sizeInt(theStream);
 		consciousness = sizeInt.getDouble();
 	});
-	registerKeyword(std::regex("mil"), [this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("mil"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleDouble sizeInt(theStream);
 		militancy = sizeInt.getDouble();
 	});
-	registerKeyword(std::regex("issues"), [this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("issues"), [this, &theIssues](const std::string& unused, std::istream& theStream) {
 		auto equals = getNextTokenWithoutMatching(theStream);
 		auto openBrace = getNextTokenWithoutMatching(theStream);
 
@@ -62,19 +56,17 @@ Vic2::Pop::Pop(const std::string& typeString, std::istream& theStream):
 			auto equalsSign = getNextTokenWithoutMatching(theStream);
 			auto issueSupport = getNextTokenWithoutMatching(theStream);
 
-			std::string issueName = issuesInstance.getIssueName(std::stoi(*possibleIssue));
+			std::string issueName = theIssues.getIssueName(std::stoi(*possibleIssue));
 			popIssues.insert(std::make_pair(issueName, std::stof(*issueSupport)));
 
 			possibleIssue = getNextTokenWithoutMatching(theStream);
 		}
 	});
-	registerKeyword(std::regex("id"), [this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("id"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleInt idInt(theStream);
 		id = idInt.getInt();
 	});
-	registerKeyword(std::regex("[a-z\\_]+"), [this](const std::string& cultureString, std::istream& theStream)
-	{
+	registerKeyword(std::regex("[a-z\\_]+"), [this](const std::string& cultureString, std::istream& theStream) {
 		if (culture == "no_culture")
 		{
 			culture = cultureString;
@@ -89,7 +81,7 @@ Vic2::Pop::Pop(const std::string& typeString, std::istream& theStream):
 	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), commonItems::ignoreItem);
 
 	parseStream(theStream);
-        pop_map[id] = this;
+	pop_map[id] = this;
 }
 
 
@@ -106,4 +98,7 @@ float Vic2::Pop::getIssue(const std::string& issueName) const
 	}
 }
 
-Vic2::Pop* Vic2::Pop::getByID(int idx) { return pop_map[idx]; }
+Vic2::Pop* Vic2::Pop::getByID(int idx)
+{
+	return pop_map[idx];
+}

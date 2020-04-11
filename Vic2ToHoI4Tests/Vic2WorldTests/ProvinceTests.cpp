@@ -1,28 +1,6 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
-#include "gtest/gtest.h"
+#include "../Vic2ToHoI4/Source/V2World/Issues.h"
 #include "../Vic2ToHoI4/Source/V2World/Province.h"
+#include "gtest/gtest.h"
 #include <sstream>
 
 
@@ -34,7 +12,7 @@ TEST(Vic2World_ProvinceTests, numberCanBeSet)
 	input << "{\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getNumber(), 42);
 }
@@ -47,7 +25,7 @@ TEST(Vic2World_ProvinceTests, ownerDefaultsToBlank)
 	input << "{\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getOwner(), "");
 }
@@ -61,7 +39,7 @@ TEST(Vic2World_ProvinceTests, ownerCanBeSet)
 	input << "\towner=\"TAG\"";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getOwner(), "TAG");
 }
@@ -74,7 +52,7 @@ TEST(Vic2World_ProvinceTests, controllerDefaultsToBlank)
 	input << "{\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getController(), "");
 }
@@ -88,7 +66,7 @@ TEST(Vic2World_ProvinceTests, controllerCanBeSet)
 	input << "\tcontroller=\"TAG\"";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getController(), "TAG");
 }
@@ -102,7 +80,7 @@ TEST(Vic2World_ProvinceTests, ownerCanBeChanged)
 	input << "\towner=\"TAG\"";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 	theProvince.setOwner("NEW");
 
 	ASSERT_EQ(theProvince.getOwner(), "NEW");
@@ -116,7 +94,7 @@ TEST(Vic2World_ProvinceTests, coresDefaultToEmpty)
 	input << "{\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getCores().size(), 0);
 }
@@ -131,7 +109,7 @@ TEST(Vic2World_ProvinceTests, coresCanBeSet)
 	input << "\tcore=\"2ND\"";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getCores().size(), 2);
 	ASSERT_EQ(theProvince.getCores().count("TAG"), 1);
@@ -148,7 +126,7 @@ TEST(Vic2World_ProvinceTests, coresCanBeRemoved)
 	input << "\tcore=\"2ND\"";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 	theProvince.removeCore("2ND");
 
 	ASSERT_EQ(theProvince.getCores().size(), 1);
@@ -163,7 +141,7 @@ TEST(Vic2World_ProvinceTests, popsDefaultToEmpty)
 	input << "{\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPops().size(), 0);
 }
@@ -178,7 +156,7 @@ TEST(Vic2World_ProvinceTests, aristocratsCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPops().size(), 1);
 	ASSERT_EQ(theProvince.getPops()[0].getType(), "aristocrats");
@@ -194,7 +172,7 @@ TEST(Vic2World_ProvinceTests, artisansCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPops().size(), 1);
 	ASSERT_EQ(theProvince.getPops()[0].getType(), "artisans");
@@ -210,7 +188,7 @@ TEST(Vic2World_ProvinceTests, bureaucratsCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPops().size(), 1);
 	ASSERT_EQ(theProvince.getPops()[0].getType(), "bureaucrats");
@@ -226,7 +204,7 @@ TEST(Vic2World_ProvinceTests, capitalistsCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPops().size(), 1);
 	ASSERT_EQ(theProvince.getPops()[0].getType(), "capitalists");
@@ -242,7 +220,7 @@ TEST(Vic2World_ProvinceTests, clergymenCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPops().size(), 1);
 	ASSERT_EQ(theProvince.getPops()[0].getType(), "clergymen");
@@ -258,7 +236,7 @@ TEST(Vic2World_ProvinceTests, craftsmenCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPops().size(), 1);
 	ASSERT_EQ(theProvince.getPops()[0].getType(), "craftsmen");
@@ -274,7 +252,7 @@ TEST(Vic2World_ProvinceTests, clerksCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPops().size(), 1);
 	ASSERT_EQ(theProvince.getPops()[0].getType(), "clerks");
@@ -290,7 +268,7 @@ TEST(Vic2World_ProvinceTests, farmersCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPops().size(), 1);
 	ASSERT_EQ(theProvince.getPops()[0].getType(), "farmers");
@@ -306,7 +284,7 @@ TEST(Vic2World_ProvinceTests, soldiersCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPops().size(), 1);
 	ASSERT_EQ(theProvince.getPops()[0].getType(), "soldiers");
@@ -322,7 +300,7 @@ TEST(Vic2World_ProvinceTests, officersCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPops().size(), 1);
 	ASSERT_EQ(theProvince.getPops()[0].getType(), "officers");
@@ -338,7 +316,7 @@ TEST(Vic2World_ProvinceTests, labourersCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPops().size(), 1);
 	ASSERT_EQ(theProvince.getPops()[0].getType(), "labourers");
@@ -354,7 +332,7 @@ TEST(Vic2World_ProvinceTests, slavesCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPops().size(), 1);
 	ASSERT_EQ(theProvince.getPops()[0].getType(), "slaves");
@@ -370,7 +348,7 @@ TEST(Vic2World_ProvinceTests, serfsCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPops().size(), 1);
 	ASSERT_EQ(theProvince.getPops()[0].getType(), "serfs");
@@ -384,7 +362,7 @@ TEST(Vic2World_ProvinceTests, getTotalPopulationDefaultsToZero)
 	input << "{\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getTotalPopulation(), 0);
 }
@@ -403,7 +381,7 @@ TEST(Vic2World_ProvinceTests, getTotalPopulationReturnsTotalPopulation)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getTotalPopulation(), 3);
 }
@@ -416,7 +394,7 @@ TEST(Vic2World_ProvinceTests, getPopulationDefaultsToZero)
 	input << "{\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPopulation(), 0);
 }
@@ -435,7 +413,7 @@ TEST(Vic2World_ProvinceTests, getPopulationDiscriminatesBySpecifiedPopType)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPopulation("slaves"), 2);
 }
@@ -454,7 +432,7 @@ TEST(Vic2World_ProvinceTests, getPopulationWithNoTypeGivesTotalPopulation)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getPopulation(), 3);
 }
@@ -467,7 +445,7 @@ TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationDefaultsToZero)
 	input << "{\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getLiteracyWeightedPopulation(), 0);
 }
@@ -483,7 +461,7 @@ TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesTenPercentAtNoLi
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getLiteracyWeightedPopulation("aristocrats"), 10);
 }
@@ -500,7 +478,7 @@ TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesOneHundredPercen
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getLiteracyWeightedPopulation("aristocrats"), 100);
 }
@@ -521,7 +499,7 @@ TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationDiscriminatesByPopTyp
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getLiteracyWeightedPopulation("aristocrats"), 100);
 }
@@ -542,7 +520,7 @@ TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesAllPopsWhenNoTyp
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getLiteracyWeightedPopulation(), 155);
 }
@@ -555,7 +533,7 @@ TEST(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoPops)
 	input << "{\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	std::set<std::string> cultures;
 	ASSERT_EQ(theProvince.getPercentageWithCultures(cultures), 0.0);
@@ -573,7 +551,7 @@ TEST(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCulturesSp
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	std::set<std::string> cultures;
 	ASSERT_EQ(theProvince.getPercentageWithCultures(cultures), 0.0);
@@ -591,7 +569,7 @@ TEST(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCulturesma
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	std::set<std::string> cultures;
 	cultures.insert("wrong_culture");
@@ -614,7 +592,7 @@ TEST(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsMatchedPercent)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	std::set<std::string> cultures;
 	cultures.insert("culture");
@@ -637,7 +615,7 @@ TEST(Vic2World_ProvinceTests, getPercentageWithCulturesCanMapMultipleCultures)
 	input << "\t}\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	std::set<std::string> cultures;
 	cultures.insert("culture");
@@ -653,7 +631,7 @@ TEST(Vic2World_ProvinceTests, navalBaseLevelDefaultsToZero)
 	input << "{\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getNavalBaseLevel(), 0);
 }
@@ -669,7 +647,7 @@ TEST(Vic2World_ProvinceTests, navalBaseLevelCanBeSet)
 	input << "  6.000 6.000 }\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getNavalBaseLevel(), 6);
 }
@@ -682,7 +660,7 @@ TEST(Vic2World_ProvinceTests, railLevelDefaultsToZero)
 	input << "{\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getRailLevel(), 0);
 }
@@ -698,7 +676,7 @@ TEST(Vic2World_ProvinceTests, railLevelCanBeSet)
 	input << "  5.000 5.000 }\n";
 	input << "}";
 
-	Vic2::Province theProvince("42", input);
+	Vic2::Province theProvince("42", input, Vic2::Issues());
 
 	ASSERT_EQ(theProvince.getRailLevel(), 5);
 }

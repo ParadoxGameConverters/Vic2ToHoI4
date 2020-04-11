@@ -23,7 +23,8 @@ Vic2::World::World(const std::string& filename)
 {
 	theLocalisations = Localisations::Parser{}.importLocalisations();
 	theCultureGroups.init();
-	issuesInstance.instantiate();
+	Issues theIssues;
+	theIssues.instantiate();
 	theStateDefinitions = StateDefinitions::Parser{}.parseStateDefinitions();
 	inventions theInventions;
 
@@ -33,8 +34,8 @@ Vic2::World::World(const std::string& filename)
 		GPIndexes = indexList.getInts();
 	});
 
-	registerKeyword(std::regex("\\d+"), [this](const std::string& provinceID, std::istream& theStream) {
-		provinces[stoi(provinceID)] = new Vic2::Province(provinceID, theStream);
+	registerKeyword(std::regex("\\d+"), [this, &theIssues](const std::string& provinceID, std::istream& theStream) {
+		provinces[stoi(provinceID)] = new Vic2::Province(provinceID, theStream, theIssues);
 	});
 
 	std::vector<std::string> tagsInOrder;
