@@ -11,7 +11,6 @@
 #include <vector>
 
 
-class ProvinceDefinitions;
 
 namespace HoI4
 {
@@ -19,6 +18,7 @@ namespace HoI4
 class Building;
 class CoastalProvinces;
 class MapData;
+class ProvinceDefinitions;
 class States;
 
 

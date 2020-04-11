@@ -11,7 +11,6 @@
 #include <set>
 
 
-class ProvinceDefinitions;
 typedef std::vector<point> borderPoints;
 typedef std::map<int, borderPoints> bordersWith;
 
@@ -19,6 +18,9 @@ typedef std::map<int, borderPoints> bordersWith;
 
 namespace HoI4
 {
+
+class ProvinceDefinitions;
+
 
 class MapData
 {

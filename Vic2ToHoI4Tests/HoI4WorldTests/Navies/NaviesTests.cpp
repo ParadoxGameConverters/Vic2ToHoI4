@@ -1,6 +1,6 @@
 #include "../../Mocks/TechnologiesMock.h"
 #include "../Vic2ToHoI4/Source/HOI4World/Navies/Navies.h"
-#include "../Vic2ToHoI4/Source/Mappers/ProvinceDefinitions.h"
+#include "../Vic2ToHoI4/Source/HoI4World/ProvinceDefinitions.h"
 #include "../Vic2ToHoI4/Source/OutHoi4/Navies/OutNavies.h"
 #include "gtest/gtest.h"
 
@@ -14,7 +14,7 @@ class HoI4World_Navies_NaviesTests: public testing::Test
 	std::unique_ptr<HoI4::ShipVariants> theShipVariants;
 	std::unique_ptr<HoI4::ShipVariants> limitedShipVariants;
 
-	ProvinceDefinitions provinceDefinitions;
+	HoI4::ProvinceDefinitions provinceDefinitions;
 };
 
 

@@ -11,6 +11,7 @@ namespace HoI4
 {
 
 class MapData;
+class ProvinceDefinitions;
 class World;
 
 } // namespace HoI4
@@ -33,7 +34,7 @@ class HoI4WarCreator
   public:
 	explicit HoI4WarCreator(HoI4::World* world,
 		 const HoI4::MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const HoI4::ProvinceDefinitions& provinceDefinitions);
 
   private:
 	HoI4WarCreator(const HoI4WarCreator&) = delete;
@@ -49,7 +50,7 @@ class HoI4WarCreator
 		 const std::set<std::string>& majorIdeologies,
 		 const HoI4::World* world,
 		 const HoI4::MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const HoI4::ProvinceDefinitions& provinceDefinitions);
 	double calculatePercentOfWorldAtWar(ofstream& AILog,
 		 const set<shared_ptr<HoI4::Faction>>& factionsAtWar,
 		 double worldStrength) const;
@@ -57,30 +58,30 @@ class HoI4WarCreator
 		 set<shared_ptr<HoI4::Faction>>& factionsAtWar,
 		 double worldStrength,
 		 const HoI4::MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const HoI4::ProvinceDefinitions& provinceDefinitions);
 	bool isImportantCountry(shared_ptr<HoI4::Country> country);
 
 	vector<shared_ptr<HoI4::Faction>> fascistWarMaker(shared_ptr<HoI4::Country> country,
 		 ofstream& AILog,
 		 const HoI4::World* world,
 		 const HoI4::MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const HoI4::ProvinceDefinitions& provinceDefinitions);
 	vector<shared_ptr<HoI4::Faction>> communistWarCreator(shared_ptr<HoI4::Country> country,
 		 const std::set<std::string>& majorIdeologies,
 		 ofstream& AILog,
 		 const HoI4::MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const HoI4::ProvinceDefinitions& provinceDefinitions);
 	vector<shared_ptr<HoI4::Faction>> democracyWarCreator(shared_ptr<HoI4::Country> country);
 	vector<shared_ptr<HoI4::Faction>> absolutistWarCreator(shared_ptr<HoI4::Country> country,
 		 const HoI4::MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const HoI4::ProvinceDefinitions& provinceDefinitions);
 	vector<shared_ptr<HoI4::Faction>> neighborWarCreator(shared_ptr<HoI4::Country> country,
 		 ofstream& AILog,
 		 const HoI4::MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const HoI4::ProvinceDefinitions& provinceDefinitions);
 	vector<shared_ptr<HoI4::Faction>> radicalWarCreator(shared_ptr<HoI4::Country> country,
 		 const HoI4::MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const HoI4::ProvinceDefinitions& provinceDefinitions);
 
 	vector<shared_ptr<HoI4::Country>> findEvilCountries() const;
 
@@ -88,22 +89,22 @@ class HoI4WarCreator
 		 shared_ptr<HoI4::Country> neighbor,
 		 const HoI4::World* world,
 		 const HoI4::MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const HoI4::ProvinceDefinitions& provinceDefinitions);
 	vector<int> sortStatesByCapitalDistance(const std::set<int>& stateList,
 		 std::shared_ptr<HoI4::Country> country,
 		 const HoI4::World* world);
 	vector<shared_ptr<HoI4::Country>> findWeakNeighbors(shared_ptr<HoI4::Country> country,
 		 const HoI4::MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const HoI4::ProvinceDefinitions& provinceDefinitions);
 	map<string, shared_ptr<HoI4::Country>> findCloseNeighbors(shared_ptr<HoI4::Country> country,
 		 const HoI4::MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const HoI4::ProvinceDefinitions& provinceDefinitions);
 	vector<shared_ptr<HoI4::Country>> findWeakColonies(shared_ptr<HoI4::Country> country,
 		 const HoI4::MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const HoI4::ProvinceDefinitions& provinceDefinitions);
 	map<string, shared_ptr<HoI4::Country>> findFarNeighbors(shared_ptr<HoI4::Country> country,
 		 const HoI4::MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const HoI4::ProvinceDefinitions& provinceDefinitions);
 	vector<shared_ptr<HoI4::Country>> getGreatPowerTargets(shared_ptr<HoI4::Country> country);
 	map<double, shared_ptr<HoI4::Country>> getGPsByDistance(shared_ptr<HoI4::Country> country);
 	vector<shared_ptr<HoI4::Faction>> addGreatPowerWars(shared_ptr<HoI4::Country> country,
@@ -133,11 +134,11 @@ class HoI4WarCreator
 
 	map<string, shared_ptr<HoI4::Country>> getNeighbors(shared_ptr<HoI4::Country> checkingCountry,
 		 const HoI4::MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const HoI4::ProvinceDefinitions& provinceDefinitions);
 	std::map<std::string, std::shared_ptr<HoI4::Country>> getImmediateNeighbors(
 		 std::shared_ptr<HoI4::Country> checkingCountry,
 		 const HoI4::MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const HoI4::ProvinceDefinitions& provinceDefinitions);
 	map<string, shared_ptr<HoI4::Country>> getNearbyCountries(shared_ptr<HoI4::Country> checkingCountry);
 
 

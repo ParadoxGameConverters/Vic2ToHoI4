@@ -13,8 +13,9 @@
 #include <vector>
 
 
-class ProvinceDefinitions;
+
 class CountryMapper;
+
 
 
 namespace Vic2
@@ -34,6 +35,7 @@ namespace HoI4
 class Country;
 class CoastalProvinces;
 class ImpassableProvinces;
+class ProvinceDefinitions;
 class State;
 
 

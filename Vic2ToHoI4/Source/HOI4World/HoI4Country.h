@@ -42,6 +42,7 @@ namespace HoI4
 class Ideologies;
 class CoastalProvinces;
 class MtgUnitMappings;
+class ProvinceDefinitions;
 class namesMapper;
 class ShipVariant;
 class State;

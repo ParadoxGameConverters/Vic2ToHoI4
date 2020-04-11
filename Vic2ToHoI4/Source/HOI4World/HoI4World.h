@@ -63,6 +63,7 @@ class Country;
 class DefaultState;
 class DivisionTemplateType;
 class Events;
+class ProvinceDefinitions;
 class State;
 class States;
 class StrategicRegion;

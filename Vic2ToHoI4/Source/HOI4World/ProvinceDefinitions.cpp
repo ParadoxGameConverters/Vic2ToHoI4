@@ -5,7 +5,7 @@
 
 
 
-ProvinceDefinitions::ProvinceDefinitions() noexcept: landProvinces(), colorToProvinceMap()
+HoI4::ProvinceDefinitions::ProvinceDefinitions() noexcept: landProvinces(), colorToProvinceMap()
 {
 	std::ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
 	if (!definitions.is_open())
@@ -60,7 +60,7 @@ ProvinceDefinitions::ProvinceDefinitions() noexcept: landProvinces(), colorToPro
 }
 
 
-std::optional<int> ProvinceDefinitions::getProvinceFromColor(const ConverterColor::Color& color) const
+std::optional<int> HoI4::ProvinceDefinitions::getProvinceFromColor(const ConverterColor::Color& color) const
 {
 	int colorInt = getIntFromColor(color);
 
@@ -76,7 +76,7 @@ std::optional<int> ProvinceDefinitions::getProvinceFromColor(const ConverterColo
 }
 
 
-int ProvinceDefinitions::getIntFromColor(const ConverterColor::Color& color) const
+int HoI4::ProvinceDefinitions::getIntFromColor(const ConverterColor::Color& color) const
 {
 	ConverterColor::red red;
 	ConverterColor::green green;

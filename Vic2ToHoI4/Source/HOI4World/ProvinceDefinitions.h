@@ -10,6 +10,9 @@
 
 
 
+namespace HoI4
+{
+
 class ProvinceDefinitions
 {
   public:
@@ -29,6 +32,8 @@ class ProvinceDefinitions
 	std::map<int, int> colorToProvinceMap; // colors are a packed integer to work around some issues. If you can get
 														// Colors to work directly, please replace this hack.
 };
+
+} // namespace HoI4
 
 
 

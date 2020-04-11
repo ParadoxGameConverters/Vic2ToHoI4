@@ -15,10 +15,11 @@
 #include <vector>
 
 
-class ProvinceDefinitions;
 
 namespace HoI4
 {
+
+class ProvinceDefinitions;
 
 class Navies
 {
