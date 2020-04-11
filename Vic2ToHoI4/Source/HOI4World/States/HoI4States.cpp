@@ -1,7 +1,7 @@
 #include "HoI4States.h"
 #include "../../Configuration.h"
+#include "../../HOI4World/ProvinceDefinitions.h"
 #include "../../Mappers/CountryMapping.h"
-#include "../../Mappers/ProvinceDefinitions.h"
 #include "../../V2World/Country.h"
 #include "../../V2World/Province.h"
 #include "../../V2World/State.h"

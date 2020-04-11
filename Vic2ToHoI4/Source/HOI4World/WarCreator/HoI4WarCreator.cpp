@@ -1,5 +1,5 @@
 #include "HoI4WarCreator.h"
-#include "../../Mappers/ProvinceDefinitions.h"
+#include "../../HOI4World/ProvinceDefinitions.h"
 #include "../../V2World/Country.h"
 #include "../../V2World/Party.h"
 #include "../../V2World/World.h"
