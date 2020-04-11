@@ -7,6 +7,7 @@
 #include "../Mocks/Vic2CountryMock.h"
 #include "../Mocks/Vic2WorldMock.h"
 #include "../Vic2ToHoI4/Source/HOI4World/HoI4Country.h"
+#include "../Vic2ToHoI4/Source/HOI4World/HoI4Localisation.h"
 #include "../Vic2ToHoI4/Source/Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "../Vic2ToHoI4/Source/V2World/Party.h"
 #include "../Vic2ToHoI4/Source/V2World/State.h"
@@ -30,6 +31,7 @@ class HoI4World_HoI4CountryTests: public testing::Test
 	ConverterColor::Color defaultColor;
 
 	std::unique_ptr<Vic2::Localisations> vic2Localisations;
+	HoI4Localisation hoi4Localisations;
 };
 
 
@@ -69,7 +71,8 @@ TEST_F(HoI4World_HoI4CountryTests, tagCanBeAssigned)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 	ASSERT_EQ(theCountry.getTag(), "TAG");
 }
 
@@ -81,7 +84,8 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesDefaultToTag)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 	ASSERT_EQ(theCountry.getFilename(), "TAG.txt");
 	ASSERT_EQ(theCountry.getCommonCountryFile(), "TAG.txt");
 }
@@ -96,7 +100,8 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesBasedOnSourceCountryName)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 	ASSERT_EQ(theCountry.getFilename(), "TAG - source country name.txt");
 	ASSERT_EQ(theCountry.getCommonCountryFile(), "source country name.txt");
 }
@@ -111,7 +116,8 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesReplaceBadCharacters)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 	ASSERT_EQ(theCountry.getFilename(), "TAG - hardname.txt");
 	ASSERT_EQ(theCountry.getCommonCountryFile(), "hardname.txt");
 }
@@ -126,7 +132,8 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesConvertFrom1252ToUtf8)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getFilename(), "TAG - 1252\xC3\x87.txt");
 	ASSERT_EQ(theCountry.getCommonCountryFile(), "1252\xC3\x87.txt");
@@ -142,7 +149,8 @@ TEST_F(HoI4World_HoI4CountryTests, isHumanDefaultsToFalse)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.isHuman(), false);
 }
@@ -157,7 +165,8 @@ TEST_F(HoI4World_HoI4CountryTests, isHumanCanBetSetTrue)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.isHuman(), true);
 }
@@ -173,7 +182,8 @@ TEST_F(HoI4World_HoI4CountryTests, colorIsFromSourceCountry)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getColor(), testColor);
 }
@@ -186,7 +196,8 @@ TEST_F(HoI4World_HoI4CountryTests, graphicalCultureDefaultsToWesternEuropean)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getGraphicalCulture(), "western_european_gfx");
 	ASSERT_EQ(theCountry.getGraphicalCulture2d(), "western_european_2d");
@@ -206,7 +217,8 @@ TEST_F(HoI4World_HoI4CountryTests, graphicalCultureIsFromSourceCountryCultureGro
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getGraphicalCulture(), "testGraphicalCulture");
 	ASSERT_EQ(theCountry.getGraphicalCulture2d(), "test2dGraphicalCulture");
@@ -220,7 +232,8 @@ TEST_F(HoI4World_HoI4CountryTests, hasProvincesDefaultsToFalse)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_FALSE(theCountry.hasProvinces());
 }
@@ -233,7 +246,8 @@ TEST_F(HoI4World_HoI4CountryTests, getProvincesDefaultsToEmpty)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_TRUE(theCountry.getProvinces().empty());
 }
@@ -246,7 +260,8 @@ TEST_F(HoI4World_HoI4CountryTests, provincesCanBeAdded)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	Vic2::State foo;
 	const mockHoi4State state(foo, "TAG");
@@ -270,7 +285,8 @@ TEST_F(HoI4World_HoI4CountryTests, getStatesDefaultsToEmpty)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_TRUE(theCountry.getStates().empty());
 }
@@ -283,7 +299,8 @@ TEST_F(HoI4World_HoI4CountryTests, statesCanBeAdded)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	Vic2::State foo;
 	const mockHoi4State state(foo, "");
@@ -304,7 +321,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalDefaultsToNone)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getCapitalState(), std::nullopt);
 	ASSERT_EQ(theCountry.getCapitalProvince(), std::nullopt);
@@ -320,7 +338,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanBeSetInOwnedState)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	Vic2::State foo;
 	mockHoi4State state(foo, "TAG");
@@ -356,7 +375,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceIsImp
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	std::map<int, HoI4::State> allStates;
 	Vic2::State foo;
@@ -409,7 +429,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceNotOw
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	Vic2::State foo;
 	std::map<int, HoI4::State> allStates;
@@ -461,7 +482,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInPreferredWastelandIfOnlyWastela
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	Vic2::State foo;
 	std::map<int, HoI4::State> allStates;
@@ -515,7 +537,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInOtherWastelandIfOnlyWastelandOw
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	Vic2::State foo;
 	std::map<int, HoI4::State> allStates;
@@ -570,7 +593,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredPreferredIfNoneOwned)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	Vic2::State foo;
 	std::map<int, HoI4::State> allStates;
@@ -621,7 +645,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredNonWastelandIfNoneOwnedAndP
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	Vic2::State foo;
 	std::map<int, HoI4::State> allStates;
@@ -674,7 +699,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToPreferredWastelandIfNoneOwnedAnd
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	Vic2::State foo;
 	std::map<int, HoI4::State> allStates;
@@ -729,7 +755,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToAnyWastelandIfNoneOwnedAllWastel
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	Vic2::State foo;
 	std::map<int, HoI4::State> allStates;
@@ -783,7 +810,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalRemainsUnassignedIfNoCoresAndNoOwnedPr
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	Vic2::State foo;
 	std::map<int, HoI4::State> allStates;
@@ -811,7 +839,8 @@ TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesDefaultsToNeutrality)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 	ASSERT_EQ(theCountry.getGovernmentIdeology(), "neutrality");
 	ASSERT_EQ(theCountry.getLeaderIdeology(), "conservatism_neutral");
 }
@@ -833,7 +862,8 @@ TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesCanBeSet)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
@@ -844,7 +874,7 @@ TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesCanBeSet)
 	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
 		 .WillOnce(testing::Return("testLeaderIdeology"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, hoi4Localisations);
 	ASSERT_EQ(theCountry.getGovernmentIdeology(), "testGovernmentIdeology");
 	ASSERT_EQ(theCountry.getLeaderIdeology(), "testLeaderIdeology");
 }
@@ -866,7 +896,8 @@ TEST_F(HoI4World_HoI4CountryTests, rulingPartyComesFromVic2Country)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
@@ -877,7 +908,7 @@ TEST_F(HoI4World_HoI4CountryTests, rulingPartyComesFromVic2Country)
 	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
 		 .WillOnce(testing::Return("testLeaderIdeology"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, hoi4Localisations);
 	ASSERT_EQ(theCountry.getRulingParty(), testParty);
 }
 
@@ -892,14 +923,15 @@ TEST_F(HoI4World_HoI4CountryTests, missingRulingPartyThrowsException)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	const mockGovernmentMapper mockGovernmentMap;
 
-	EXPECT_THROW(theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations),
+	EXPECT_THROW(theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, hoi4Localisations),
 		 std::runtime_error);
 }
 
@@ -911,7 +943,8 @@ TEST_F(HoI4World_HoI4CountryTests, partiesDefaultsToEmpty)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	EXPECT_TRUE(theCountry.getParties().empty());
 }
@@ -943,7 +976,8 @@ TEST_F(HoI4World_HoI4CountryTests, partiesComeFromVic2Country)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	mockVic2World mockSourceWorld;
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
@@ -954,7 +988,7 @@ TEST_F(HoI4World_HoI4CountryTests, partiesComeFromVic2Country)
 	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
 		 .WillOnce(testing::Return("testLeaderIdeology"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, hoi4Localisations);
 	ASSERT_EQ(theCountry.getParties().count(testParty), 1);
 	ASSERT_EQ(theCountry.getParties().count(testParty2), 1);
 }
@@ -967,7 +1001,8 @@ TEST_F(HoI4World_HoI4CountryTests, defaultIdeologicalSupportIsAllNeutrality)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	const std::map<std::string, int> expectedSupport{std::make_pair("neutrality", 100)};
 
@@ -982,7 +1017,8 @@ TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportWithNoIdeologiesIsAllNeutra
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 
 	const mockGovernmentMapper mockGovernmentMap;
@@ -1000,7 +1036,8 @@ TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportCanBeConverted)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	const std::map<std::string, double> upperHouseComposition{{"conservative", 0.30}, {"liberal", 0.70}};
 	EXPECT_CALL(sourceCountry, getUpperHouseComposition()).WillOnce(testing::Return(upperHouseComposition));
@@ -1028,7 +1065,8 @@ TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportCombinesSameIdeologies)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	const std::map<std::string, double> upperHouseComposition{{"conservative", 0.30}, {"liberal", 0.70}};
 	EXPECT_CALL(sourceCountry, getUpperHouseComposition()).WillOnce(testing::Return(upperHouseComposition));
@@ -1057,7 +1095,8 @@ TEST_F(HoI4World_HoI4CountryTests, lastElectionIsFromSourceCountry)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getLastElection(), date{"1234.5.6"});
 }
@@ -1070,7 +1109,8 @@ TEST_F(HoI4World_HoI4CountryTests, stabilityDefaultsToSixty)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getStability(), 60);
 }
@@ -1083,7 +1123,8 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportDefaultsToSixty)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getWarSupport(), 60);
 }
@@ -1102,7 +1143,8 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByJingosim)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getWarSupport(), 63);
 }
@@ -1121,7 +1163,8 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByProMilitary)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getWarSupport(), 63);
 }
@@ -1140,7 +1183,8 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByAntiMilitary)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getWarSupport(), 57);
 }
@@ -1159,7 +1203,8 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByPacifism)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getWarSupport(), 57);
 }
@@ -1175,7 +1220,8 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByRevanchism)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getWarSupport(), 80);
 }
@@ -1191,7 +1237,8 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByWarExhaustion)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getWarSupport(), 40);
 }
@@ -1211,7 +1258,8 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportHasMinimumOfFifteen)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getWarSupport(), 15);
 }
@@ -1224,7 +1272,8 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDefaultsToVolunteerOnly)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getMobilizationLaw(), "volunteer_only");
 }
@@ -1247,7 +1296,8 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawIncreasesIfRulingPartyJingoist
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
@@ -1258,7 +1308,7 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawIncreasesIfRulingPartyJingoist
 	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
 		 .WillOnce(testing::Return("testLeaderIdeology"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getMobilizationLaw(), "limited_conscription");
 }
@@ -1281,7 +1331,8 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDecreasesIfRulingPartyPacifist
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
@@ -1292,7 +1343,7 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDecreasesIfRulingPartyPacifist
 	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
 		 .WillOnce(testing::Return("testLeaderIdeology"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getMobilizationLaw(), "disarmed_nation");
 }
@@ -1305,7 +1356,8 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawDefaultsToCivilian)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getEconomicLaw(), "civilian_economy");
 }
@@ -1330,7 +1382,8 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfAtWar)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
@@ -1341,7 +1394,7 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfAtWar)
 	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
 		 .WillOnce(testing::Return("testLeaderIdeology"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getEconomicLaw(), "low_economic_mobilisation");
 }
@@ -1366,7 +1419,8 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfFascist)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
@@ -1377,7 +1431,7 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfFascist)
 	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "fascism"))
 		 .WillOnce(testing::Return("fascism"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getEconomicLaw(), "partial_economic_mobilisation");
 }
@@ -1390,7 +1444,8 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawDefaultsToExport)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getTradeLaw(), "export_focus");
 }
@@ -1415,7 +1470,8 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfFascist)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
@@ -1426,7 +1482,7 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfFascist)
 	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "fascism"))
 		 .WillOnce(testing::Return("fascism"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getTradeLaw(), "limited_exports");
 }
@@ -1451,7 +1507,8 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfRadical)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
@@ -1462,7 +1519,7 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfRadical)
 	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "radical"))
 		 .WillOnce(testing::Return("radical"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getTradeLaw(), "free_trade");
 }
@@ -1475,7 +1532,8 @@ TEST_F(HoI4World_HoI4CountryTests, technologyCountDefaultsToZero)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_EQ(theCountry.getTechnologyCount(), 0);
 }
@@ -1488,7 +1546,8 @@ TEST_F(HoI4World_HoI4CountryTests, technologiesDefaultToNullopt)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	ASSERT_FALSE(theCountry.getTechnologies());
 }
@@ -1504,7 +1563,8 @@ TEST_F(HoI4World_HoI4CountryTests, technologyCanBeConverted)
 		 theNamesMapper,
 		 theGraphicsMapper,
 		 theCountryMapper,
-		 *theFlagsToIdeasMapper);
+		 *theFlagsToIdeasMapper,
+		 hoi4Localisations);
 
 	std::map<std::string, std::set<std::string>> techMap;
 	std::set<std::string> convertedTech{"convertedTech"};

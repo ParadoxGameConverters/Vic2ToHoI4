@@ -25,7 +25,8 @@ HoI4::Country::Country(std::string tag,
 	 namesMapper& theNames,
 	 graphicsMapper& theGraphics,
 	 const CountryMapper& countryMap,
-	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper):
+	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
+	 HoI4Localisation& hoi4Localisations):
 	 tag(std::move(tag)),
 	 sourceCountry(*srcCountry)
 {
@@ -56,7 +57,7 @@ HoI4::Country::Country(std::string tag,
 
 
 	lastElection = sourceCountry.getLastElection();
-	initIdeas(theNames);
+	initIdeas(theNames, hoi4Localisations);
 
 	stability = 60;
 	warSupport = 60;
@@ -130,7 +131,8 @@ void HoI4::Country::determineFilename()
 
 void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	 const governmentMapper& governmentMap,
-	 const Vic2::Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations,
+	 HoI4Localisation& hoi4Localisations)
 {
 	auto possibleRulingParty = sourceCountry.getRulingParty(sourceWorld.getParties());
 	if (!possibleRulingParty)
@@ -152,7 +154,7 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	{
 		auto partyName = party.getName();
 		auto trimmedName = partyName.substr(4, partyName.size());
-		HoI4Localisation::addPoliticalPartyLocalisation(partyName, tag + "_" + trimmedName + "_party", vic2Localisations);
+		hoi4Localisations.addPoliticalPartyLocalisation(partyName, tag + "_" + trimmedName + "_party", vic2Localisations);
 	}
 
 	convertLaws();
@@ -161,7 +163,8 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 
 void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies,
 	 const governmentMapper& governmentMap,
-	 const Vic2::Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations,
+	 HoI4Localisation& hoi4Localisations)
 {
 	for (const auto& HoI4Ideology: majorIdeologies)
 	{
@@ -170,41 +173,41 @@ void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies,
 			if (HoI4Ideology ==
 				 governmentMap.getSupportedIdeology(governmentIdeology, party.getIdeology(), majorIdeologies))
 			{
-				HoI4Localisation::addPoliticalPartyLocalisation(party.getName(),
+				hoi4Localisations.addPoliticalPartyLocalisation(party.getName(),
 					 tag + "_" + HoI4Ideology + "_party",
 					 vic2Localisations);
 			}
 		}
 	}
-	HoI4Localisation::addPoliticalPartyLocalisation(rulingParty.getName(),
+	hoi4Localisations.addPoliticalPartyLocalisation(rulingParty.getName(),
 		 tag + "_" + governmentIdeology + "_party",
 		 vic2Localisations);
 }
 
 
-void HoI4::Country::initIdeas(namesMapper& theNames) const
+void HoI4::Country::initIdeas(namesMapper& theNames, HoI4Localisation& hoi4Localisations) const
 {
-	HoI4Localisation::addIdeaLocalisation(tag + "_tank_manufacturer",
+	hoi4Localisations.addIdeaLocalisation(tag + "_tank_manufacturer",
 		 theNames.takeCarCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_motorized_equipment_manufacturer",
+	hoi4Localisations.addIdeaLocalisation(tag + "_motorized_equipment_manufacturer",
 		 theNames.takeCarCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_infantry_equipment_manufacturer",
+	hoi4Localisations.addIdeaLocalisation(tag + "_infantry_equipment_manufacturer",
 		 theNames.takeWeaponCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_artillery_manufacturer",
+	hoi4Localisations.addIdeaLocalisation(tag + "_artillery_manufacturer",
 		 theNames.takeWeaponCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_light_aircraft_manufacturer",
+	hoi4Localisations.addIdeaLocalisation(tag + "_light_aircraft_manufacturer",
 		 theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_medium_aircraft_manufacturer",
+	hoi4Localisations.addIdeaLocalisation(tag + "_medium_aircraft_manufacturer",
 		 theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_heavy_aircraft_manufacturer",
+	hoi4Localisations.addIdeaLocalisation(tag + "_heavy_aircraft_manufacturer",
 		 theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_naval_aircraft_manufacturer",
+	hoi4Localisations.addIdeaLocalisation(tag + "_naval_aircraft_manufacturer",
 		 theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_naval_manufacturer",
+	hoi4Localisations.addIdeaLocalisation(tag + "_naval_manufacturer",
 		 theNames.takeNavalCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_industrial_concern",
+	hoi4Localisations.addIdeaLocalisation(tag + "_industrial_concern",
 		 theNames.takeIndustryCompanyName(sourceCountry.getPrimaryCulture()));
-	HoI4Localisation::addIdeaLocalisation(tag + "_electronics_concern",
+	hoi4Localisations.addIdeaLocalisation(tag + "_electronics_concern",
 		 theNames.takeElectronicCompanyName(sourceCountry.getPrimaryCulture()));
 }
 

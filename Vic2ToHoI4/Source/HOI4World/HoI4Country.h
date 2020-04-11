@@ -78,7 +78,8 @@ class Country
 		 namesMapper& theNames,
 		 graphicsMapper& theGraphics,
 		 const CountryMapper& countryMap,
-		 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper);
+		 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
+		 HoI4Localisation& hoi4Localisations);
 	Country() = delete;
 	Country(const Country&) = delete;
 	Country& operator=(const Country&) = delete;
@@ -95,10 +96,12 @@ class Country
 	void addLeader(HoI4::namesMapper& theNames, graphicsMapper& theGraphics);
 	void convertGovernment(const Vic2::World& sourceWorld,
 		 const governmentMapper& governmentMap,
-		 const Vic2::Localisations& vic2Localisations);
+		 const Vic2::Localisations& vic2Localisations,
+		 HoI4Localisation& hoi4Localisations);
 	void convertParties(const std::set<std::string>& majorIdeologies,
 		 const governmentMapper& governmentMap,
-		 const Vic2::Localisations& vic2Localisations);
+		 const Vic2::Localisations& vic2Localisations,
+		 HoI4Localisation& hoi4Localisations);
 	void convertIdeologySupport(const std::set<std::string>& majorIdeologies, const governmentMapper& governmentMap);
 	void determineShipVariants(const PossibleShipVariants& possibleVariants);
 	void convertNavies(const UnitMappings& unitMap,
@@ -222,7 +225,7 @@ class Country
 
   private:
 	void determineFilename();
-	void initIdeas(namesMapper& theNames) const;
+	void initIdeas(namesMapper& theNames, HoI4Localisation& hoi4Localisations) const;
 	void convertLaws();
 	void convertLeaders(const graphicsMapper& theGraphics);
 	void convertRelations(const CountryMapper& countryMap);

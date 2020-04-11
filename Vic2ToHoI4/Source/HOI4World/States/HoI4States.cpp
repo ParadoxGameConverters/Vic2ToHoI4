@@ -32,7 +32,8 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 	 const HoI4::CoastalProvinces& theCoastalProvinces,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const Vic2::Localisations& vic2Localisations,
-	 const ProvinceDefinitions& provinceDefinitions):
+	 const ProvinceDefinitions& provinceDefinitions,
+	 HoI4Localisation& hoi4Localisations):
 	 ownersMap(),
 	 coresMap(), assignedProvinces(), states(), provinceToStateIDMap()
 {
@@ -60,7 +61,8 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 		 countryMap,
 		 theCoastalProvinces,
 		 theStateDefinitions,
-		 vic2Localisations);
+		 vic2Localisations,
+		 hoi4Localisations);
 }
 
 
@@ -225,7 +227,8 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 	 const CountryMapper& countryMap,
 	 const HoI4::CoastalProvinces& theCoastalProvinces,
 	 const Vic2::StateDefinitions& theStateDefinitions,
-	 const Vic2::Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations,
+	 HoI4Localisation& hoi4Localisations)
 {
 	std::set<int> ownedProvinces;
 
@@ -242,7 +245,8 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 					 countryMap,
 					 theCoastalProvinces,
 					 theStateDefinitions,
-					 vic2Localisations);
+					 vic2Localisations,
+					 hoi4Localisations);
 				for (auto province: vic2State->getProvinces())
 				{
 					ownedProvinces.insert(province->getNumber());
@@ -287,7 +291,8 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 			 countryMap,
 			 theCoastalProvinces,
 			 theStateDefinitions,
-			 vic2Localisations);
+			 vic2Localisations,
+			 hoi4Localisations);
 	}
 
 	unsigned int manpower = getTotalManpower();
@@ -302,7 +307,8 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State* vic2State,
 	 const CountryMapper& countryMapper,
 	 const HoI4::CoastalProvinces& theCoastalProvinces,
 	 const Vic2::StateDefinitions& theStateDefinitions,
-	 const Vic2::Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations,
+	 HoI4Localisation& hoi4Localisations)
 {
 	std::set<int> passableProvinces;
 	std::set<int> impassableProvinces;
@@ -333,7 +339,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State* vic2State,
 		newState.convertNavalBases(vic2State->getProvinces(), theCoastalProvinces, theProvinceMapper);
 		states.insert(std::make_pair(nextStateID, newState));
 		nextStateID++;
-		HoI4Localisation::addStateLocalisation(newState, *vic2State, theStateDefinitions, vic2Localisations);
+		hoi4Localisations.addStateLocalisation(newState, *vic2State, theStateDefinitions, vic2Localisations);
 	}
 
 	if (impassableProvinces.size() > 0)
@@ -346,7 +352,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State* vic2State,
 		newState.convertNavalBases(vic2State->getProvinces(), theCoastalProvinces, theProvinceMapper);
 		states.insert(std::make_pair(nextStateID, newState));
 		nextStateID++;
-		HoI4Localisation::addStateLocalisation(newState, *vic2State, theStateDefinitions, vic2Localisations);
+		hoi4Localisations.addStateLocalisation(newState, *vic2State, theStateDefinitions, vic2Localisations);
 	}
 }
 

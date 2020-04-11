@@ -10,6 +10,7 @@
 #include "Decisions/Decisions.h"
 #include "Diplomacy/AIPeaces.h"
 #include "GameRules/GameRules.h"
+#include "HoI4Localisation.h"
 #include "Ideas/Ideas.h"
 #include "Ideologies/Ideologies.h"
 #include "Leaders/Advisor.h"
@@ -28,7 +29,6 @@
 #include <set>
 #include <string>
 #include <vector>
-
 
 
 class HoI4Ideology;
@@ -100,6 +100,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getScriptedTriggers() const { return scriptedTriggers; }
 	[[nodiscard]] const auto& getGameRules() const { return *gameRules; }
 	[[nodiscard]] const auto& getGenericFocusTree() const { return genericFocusTree; }
+	[[nodiscard]] const auto& getLocalisation() const { return hoi4Localisations; }
 
 	std::map<int, HoI4::State> getStates() const { return states->getStates(); }
 	const std::map<int, int>& getProvinceToStateIDMap() const { return states->getProvinceToStateIDMap(); }
@@ -226,6 +227,8 @@ class World: commonItems::parser
 	std::unique_ptr<GameRules> gameRules;
 
 	HoI4FocusTree genericFocusTree;
+
+	HoI4Localisation hoi4Localisations;
 };
 
 } // namespace HoI4

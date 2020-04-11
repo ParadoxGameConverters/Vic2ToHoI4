@@ -15,10 +15,6 @@
 
 
 
-HoI4Localisation* HoI4Localisation::instance = nullptr;
-
-
-
 HoI4Localisation::HoI4Localisation() noexcept
 {
 	importLocalisations();
@@ -151,7 +147,7 @@ void HoI4Localisation::prepareBlankLocalisations()
 }
 
 
-void HoI4Localisation::CreateCountryLocalisations(const std::pair<const std::string&, const std::string&>& tags,
+void HoI4Localisation::createCountryLocalisations(const std::pair<const std::string&, const std::string&>& tags,
 	 const governmentMapper& governmentMap,
 	 const Vic2::Localisations& vic2Localisations)
 {
@@ -270,7 +266,7 @@ void HoI4Localisation::addLocalisation(const std::string& newKey,
 }
 
 
-void HoI4Localisation::UpdateMainCountryLocalisation(const std::string& HoI4Key,
+void HoI4Localisation::updateMainCountryLocalisation(const std::string& HoI4Key,
 	 const std::string& Vic2Tag,
 	 const std::string& Vic2Government,
 	 const Vic2::Localisations& vic2Localisations)
@@ -315,7 +311,7 @@ bool HoI4Localisation::attemptToUpdateMainCountryLocalisation(const std::string&
 }
 
 
-void HoI4Localisation::AddNonenglishCountryLocalisations()
+void HoI4Localisation::addNonenglishCountryLocalisations()
 {
 	auto englishLocalisations = countryLocalisations.find("english");
 	countryLocalisations.insert(make_pair("braz_por", englishLocalisations->second));
@@ -324,7 +320,7 @@ void HoI4Localisation::AddNonenglishCountryLocalisations()
 }
 
 
-void HoI4Localisation::CopyFocusLocalisations(const std::string& oldKey, const std::string& newKey)
+void HoI4Localisation::copyFocusLocalisations(const std::string& oldKey, const std::string& newKey)
 {
 	for (auto languageLocalisations: originalFocuses)
 	{
@@ -356,7 +352,7 @@ void HoI4Localisation::CopyFocusLocalisations(const std::string& oldKey, const s
 }
 
 
-void HoI4Localisation::CopyEventLocalisations(const std::string& oldKey, const std::string& newKey)
+void HoI4Localisation::copyEventLocalisations(const std::string& oldKey, const std::string& newKey)
 {
 	for (auto languageLocalisations: originalEventLocalisations)
 	{
@@ -382,7 +378,7 @@ void HoI4Localisation::CopyEventLocalisations(const std::string& oldKey, const s
 }
 
 
-void HoI4Localisation::AddStateLocalisation(const HoI4::State& hoi4State,
+void HoI4Localisation::addStateLocalisation(const HoI4::State& hoi4State,
 	 const Vic2::State& vic2State,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const Vic2::Localisations& vic2Localisations)
@@ -394,7 +390,7 @@ void HoI4Localisation::AddStateLocalisation(const HoI4::State& hoi4State,
 }
 
 
-void HoI4Localisation::AddStateLocalisations(const HoI4::States& states, const Vic2::Localisations& vic2Localisations)
+void HoI4Localisation::addStateLocalisations(const HoI4::States& states, const Vic2::Localisations& vic2Localisations)
 {
 	LOG(LogLevel::Info) << "\tAdding state localisations";
 	for (const auto& state: states.getStates())
@@ -638,7 +634,7 @@ void HoI4Localisation::addNonenglishVPLocalisations()
 }
 
 
-void HoI4Localisation::AddEventLocalisation(const std::string& event, const std::string& localisation)
+void HoI4Localisation::addEventLocalisation(const std::string& event, const std::string& localisation)
 {
 	for (const auto& localisationInLanguage: newEventLocalisations)
 	{
@@ -647,7 +643,7 @@ void HoI4Localisation::AddEventLocalisation(const std::string& event, const std:
 }
 
 
-void HoI4Localisation::AddEventLocalisationFromVic2(const std::string& Vic2Key,
+void HoI4Localisation::addEventLocalisationFromVic2(const std::string& Vic2Key,
 	 const std::string& HoI4Key,
 	 const Vic2::Localisations& vic2Localisations)
 {
@@ -667,7 +663,7 @@ void HoI4Localisation::AddEventLocalisationFromVic2(const std::string& Vic2Key,
 }
 
 
-void HoI4Localisation::AddIdeaLocalisation(const std::string& idea, const std::optional<std::string>& localisation)
+void HoI4Localisation::addIdeaLocalisation(const std::string& idea, const std::optional<std::string>& localisation)
 {
 	for (const auto& localisationInLanguage: ideaLocalisations)
 	{
@@ -701,7 +697,7 @@ void HoI4Localisation::AddIdeaLocalisation(const std::string& idea, const std::o
 }
 
 
-void HoI4Localisation::AddPoliticalPartyLocalisation(const std::string& Vic2Key,
+void HoI4Localisation::addPoliticalPartyLocalisation(const std::string& Vic2Key,
 	 const std::string& HoI4Key,
 	 const Vic2::Localisations& vic2Localisations)
 {
@@ -721,7 +717,7 @@ void HoI4Localisation::AddPoliticalPartyLocalisation(const std::string& Vic2Key,
 }
 
 
-void HoI4Localisation::AddDecisionLocalisation(const std::string& key, const std::optional<std::string>& localisation)
+void HoI4Localisation::addDecisionLocalisation(const std::string& key, const std::optional<std::string>& localisation)
 {
 	for (const auto& localisationInLanguage: decisionLocalisations)
 	{
@@ -755,7 +751,7 @@ void HoI4Localisation::AddDecisionLocalisation(const std::string& key, const std
 }
 
 
-void HoI4Localisation::GenerateCustomLocalisations(HoI4::ScriptedLocalisations& scriptedLocalisations,
+void HoI4Localisation::generateCustomLocalisations(HoI4::ScriptedLocalisations& scriptedLocalisations,
 	 const std::set<std::string>& majorIdeologies)
 {
 	LOG(LogLevel::Info) << "\tGenerating custom localisations";
@@ -845,7 +841,7 @@ void HoI4Localisation::GenerateCustomLocalisations(HoI4::ScriptedLocalisations& 
 }
 
 
-void HoI4Localisation::UpdateLocalisationText(const std::string& key,
+void HoI4Localisation::updateLocalisationText(const std::string& key,
 	 const std::string& oldText,
 	 const std::string& newText)
 {

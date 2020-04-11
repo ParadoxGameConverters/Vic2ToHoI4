@@ -19,11 +19,13 @@ class StateDefinitions;
 class Localisations;
 } // namespace Vic2
 
+
 namespace HoI4
 {
 class State;
 class States;
 } // namespace HoI4
+
 
 class governmentMapper;
 
@@ -40,121 +42,50 @@ typedef int stateNumber;
 class HoI4Localisation
 {
   public:
-	HoI4Localisation(const HoI4Localisation&) = delete;
-	HoI4Localisation(HoI4Localisation&&) = delete;
-	HoI4Localisation& operator=(const HoI4Localisation&) = delete;
-	HoI4Localisation& operator=(HoI4Localisation&&) = delete;
-	~HoI4Localisation() = default;
+	HoI4Localisation() noexcept;
 
-	static void addStateLocalisation(const HoI4::State& hoi4State,
+	void addStateLocalisation(const HoI4::State& hoi4State,
 		 const Vic2::State& vic2State,
 		 const Vic2::StateDefinitions& theStateDefinitions,
-		 const Vic2::Localisations& vic2Localisations)
-	{
-		getInstance()->AddStateLocalisation(hoi4State, vic2State, theStateDefinitions, vic2Localisations);
-	}
-
-	static void addStateLocalisations(const HoI4::States& states, const Vic2::Localisations& vic2Localisations)
-	{
-		getInstance()->AddStateLocalisations(states, vic2Localisations);
-	}
-
-	static void createCountryLocalisations(const std::pair<const std::string&, const std::string&>& tags,
+		 const Vic2::Localisations& vic2Localisations);
+	void addStateLocalisations(const HoI4::States& states, const Vic2::Localisations& vic2Localisations);
+	void createCountryLocalisations(const std::pair<const std::string&, const std::string&>& tags,
 		 const governmentMapper& governmentMap,
-		 const Vic2::Localisations& vic2Localisations)
-	{
-		getInstance()->CreateCountryLocalisations(tags, governmentMap, vic2Localisations);
-	}
-
-	static void updateMainCountryLocalisation(const std::string& HoI4Key,
+		 const Vic2::Localisations& vic2Localisations);
+	void updateMainCountryLocalisation(const std::string& HoI4Key,
 		 const std::string& Vic2Tag,
 		 const std::string& Vic2Government,
-		 const Vic2::Localisations& vic2Localisations)
-	{
-		getInstance()->UpdateMainCountryLocalisation(HoI4Key, Vic2Tag, Vic2Government, vic2Localisations);
-	}
-
-	static void addNonenglishCountryLocalisations() { getInstance()->AddNonenglishCountryLocalisations(); }
-
-	static void copyFocusLocalisations(const std::string& oldKey, const std::string& newKey)
-	{
-		getInstance()->CopyFocusLocalisations(oldKey, newKey);
-	}
-
-	static void copyEventLocalisations(const std::string& oldKey, const std::string& newKey)
-	{
-		getInstance()->CopyEventLocalisations(oldKey, newKey);
-	}
-
-	static void addEventLocalisation(const std::string& event, const std::string& localisation)
-	{
-		getInstance()->AddEventLocalisation(event, localisation);
-	}
-
-	static void addEventLocalisationFromVic2(const std::string& Vic2Key,
+		 const Vic2::Localisations& vic2Localisations);
+	void addNonenglishCountryLocalisations();
+	void copyFocusLocalisations(const std::string& oldKey, const std::string& newKey);
+	void copyEventLocalisations(const std::string& oldKey, const std::string& newKey);
+	void addEventLocalisation(const std::string& event, const std::string& localisation);
+	void addEventLocalisationFromVic2(const std::string& Vic2Key,
 		 const std::string& HoI4Key,
-		 const Vic2::Localisations& vic2Localisations)
-	{
-		getInstance()->AddEventLocalisationFromVic2(Vic2Key, HoI4Key, vic2Localisations);
-	}
-
-	static void addIdeaLocalisation(const std::string& idea, const std::optional<std::string>& localisation)
-	{
-		getInstance()->AddIdeaLocalisation(idea, localisation);
-	}
-
-	static void addPoliticalPartyLocalisation(const std::string& Vic2Key,
+		 const Vic2::Localisations& vic2Localisations);
+	void addIdeaLocalisation(const std::string& idea, const std::optional<std::string>& localisation);
+	void addPoliticalPartyLocalisation(const std::string& Vic2Key,
 		 const std::string& HoI4Key,
-		 const Vic2::Localisations& vic2Localisations)
-	{
-		getInstance()->AddPoliticalPartyLocalisation(Vic2Key, HoI4Key, vic2Localisations);
-	}
+		 const Vic2::Localisations& vic2Localisations);
+	void addDecisionLocalisation(const std::string& key, const std::optional<std::string>& localisation);
+	void generateCustomLocalisations(HoI4::ScriptedLocalisations& scriptedLocalisations,
+		 const std::set<std::string>& majorIdeologies);
+	void updateLocalisationText(const std::string& key, const std::string& oldText, const std::string& newText);
 
-	static void addDecisionLocalisation(const std::string& key, const std::optional<std::string>& localisation)
-	{
-		getInstance()->AddDecisionLocalisation(key, localisation);
-	}
-
-	static void generateCustomLocalisations(HoI4::ScriptedLocalisations& scriptedLocalisations,
-		 const std::set<std::string>& majorIdeologies)
-	{
-		getInstance()->GenerateCustomLocalisations(scriptedLocalisations, majorIdeologies);
-	}
-
-	static void updateLocalisationText(const std::string& key, const std::string& oldText, const std::string& newText)
-	{
-		getInstance()->UpdateLocalisationText(key, oldText, newText);
-	}
-
-	[[nodiscard]] const auto& getStateLocalisations() const { return getInstance()->stateLocalisations; }
-	[[nodiscard]] const auto& getVPLocalisations() const { return getInstance()->VPLocalisations; }
-	[[nodiscard]] const auto& getCountryLocalisations() const { return getInstance()->countryLocalisations; }
-	[[nodiscard]] const auto& getOriginalFocuses() const { return getInstance()->originalFocuses; }
-	[[nodiscard]] const auto& getNewFocuses() const { return getInstance()->newFocuses; }
-	[[nodiscard]] const auto& getIdeaLocalisations() const { return getInstance()->ideaLocalisations; }
-	[[nodiscard]] const auto& getGenericIdeaLocalisations() const { return getInstance()->genericIdeaLocalisations; }
-	[[nodiscard]] const auto& getOriginalEventLocalisations() const { return getInstance()->originalEventLocalisations; }
-	[[nodiscard]] const auto& getNewEventLocalisations() const { return getInstance()->newEventLocalisations; }
-	[[nodiscard]] const auto& getPoliticalPartyLocalisations() const
-	{
-		return getInstance()->politicalPartyLocalisations;
-	}
-	[[nodiscard]] const auto& getDecisionLocalisations() const { return getInstance()->decisionLocalisations; }
-	[[nodiscard]] const auto& getCustomLocalisations() const { return getInstance()->customLocalisations; }
-
-	static HoI4Localisation* getInstance()
-	{
-		if (instance == nullptr)
-		{
-			instance = new HoI4Localisation();
-		}
-		return instance;
-	}
+	[[nodiscard]] const auto& getStateLocalisations() const { return stateLocalisations; }
+	[[nodiscard]] const auto& getVPLocalisations() const { return VPLocalisations; }
+	[[nodiscard]] const auto& getCountryLocalisations() const { return countryLocalisations; }
+	[[nodiscard]] const auto& getOriginalFocuses() const { return originalFocuses; }
+	[[nodiscard]] const auto& getNewFocuses() const { return newFocuses; }
+	[[nodiscard]] const auto& getIdeaLocalisations() const { return ideaLocalisations; }
+	[[nodiscard]] const auto& getGenericIdeaLocalisations() const { return genericIdeaLocalisations; }
+	[[nodiscard]] const auto& getOriginalEventLocalisations() const { return originalEventLocalisations; }
+	[[nodiscard]] const auto& getNewEventLocalisations() const { return newEventLocalisations; }
+	[[nodiscard]] const auto& getPoliticalPartyLocalisations() const { return politicalPartyLocalisations; }
+	[[nodiscard]] const auto& getDecisionLocalisations() const { return decisionLocalisations; }
+	[[nodiscard]] const auto& getCustomLocalisations() const { return customLocalisations; }
 
   private:
-	static HoI4Localisation* instance;
-
-	HoI4Localisation() noexcept;
 	void importLocalisations();
 	void importFocusLocalisations(const std::string& filename);
 	void importGenericIdeaLocalisations(const std::string& filename);
@@ -162,11 +93,6 @@ class HoI4Localisation
 	static void importLocalisationFile(const std::string& filename, languageToLocalisationsMap& localisations);
 	void prepareBlankLocalisations();
 
-	void AddNonenglishCountryLocalisations();
-
-	void CreateCountryLocalisations(const std::pair<const std::string&, const std::string&>& tags,
-		 const governmentMapper& governmentMap,
-		 const Vic2::Localisations& vic2Localisations);
 	void addLocalisationsForAllGovernments(const std::pair<const std::string&, const std::string&>& tags,
 		 const std::pair<const std::string&, const std::string&>& suffixes,
 		 const governmentMapper& governmentMap,
@@ -184,23 +110,10 @@ class HoI4Localisation
 		 const std::pair<const std::string&, const std::string&>& suffixes,
 		 const Vic2::Localisations& vic2Localisations);
 
-	void UpdateMainCountryLocalisation(const std::string& HoI4Key,
-		 const std::string& Vic2Tag,
-		 const std::string& Vic2Government,
-		 const Vic2::Localisations& vic2Localisations);
 	bool attemptToUpdateMainCountryLocalisation(const std::string& HoI4Key,
 		 const std::string& Vic2Key,
 		 const Vic2::Localisations& vic2Localisations);
 
-	void CopyFocusLocalisations(const std::string& oldKey, const std::string& newKey);
-
-	void CopyEventLocalisations(const std::string& oldKey, const std::string& newKey);
-
-	void AddStateLocalisation(const HoI4::State& hoi4State,
-		 const Vic2::State& vic2State,
-		 const Vic2::StateDefinitions& theStateDefinitions,
-		 const Vic2::Localisations& vic2Localisations);
-	void AddStateLocalisations(const HoI4::States& states, const Vic2::Localisations& vic2Localisations);
 	void addStateLocalisationForLanguage(const HoI4::State& hoi4State,
 		 const Vic2::State& vic2State,
 		 const std::pair<const std::string, std::string>& Vic2NameInLanguage,
@@ -223,23 +136,6 @@ class HoI4Localisation
 	static bool stateHasAllDefinedProvincesAfterConversion(const HoI4::State& state,
 		 const Vic2::State& sourceState,
 		 const Vic2::StateDefinitions& theStateDefinitions);
-
-	void AddEventLocalisation(const std::string& event, const std::string& localisation);
-	void AddEventLocalisationFromVic2(const std::string& Vic2Key,
-		 const std::string& HoI4Key,
-		 const Vic2::Localisations& vic2Localisations);
-
-	void AddIdeaLocalisation(const std::string& idea, const std::optional<std::string>& localisation);
-
-	void AddPoliticalPartyLocalisation(const std::string& Vic2Key,
-		 const std::string& HoI4Key,
-		 const Vic2::Localisations& vic2Localisations);
-	void AddDecisionLocalisation(const std::string& key, const std::optional<std::string>& localisation);
-
-	void GenerateCustomLocalisations(HoI4::ScriptedLocalisations& scriptedLocalisations,
-		 const std::set<std::string>& majorIdeologies);
-
-	void UpdateLocalisationText(const std::string& key, const std::string& oldText, const std::string& newText);
 
 	static std::string getLanguageCode(const std::string& language);
 	void insertScriptedLocalisation(const std::string& localisationKey,

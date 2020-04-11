@@ -157,7 +157,7 @@ void HoI4::OutputWorld(const World& world, const std::string& outputName, const 
 	outputColorsFile(world.getCountries(), outputName);
 	outputNames(world.getNames(), world.getCountries(), outputName);
 	outputUnitNames(world.getCountries());
-	outputLocalisation(*HoI4Localisation::getInstance(), outputName);
+	outputLocalisation(world.getLocalisation(), outputName);
 	outputStates(world.getTheStates(), outputName, debugEnabled);
 	outputMap(world.getTheStates(), world.getStrategicRegions(), outputName);
 	outputSupplyZones(world.getSupplyZones(), outputName);

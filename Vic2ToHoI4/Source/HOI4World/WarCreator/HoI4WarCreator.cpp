@@ -15,7 +15,8 @@
 
 HoI4WarCreator::HoI4WarCreator(HoI4::World* world,
 	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions):
+	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 HoI4Localisation& hoi4Localisations):
 	 genericFocusTree(new HoI4FocusTree),
 	 theWorld(world), AggressorFactions(), WorldTargetMap(), provincePositions(), provinceToOwnerMap()
 {
@@ -35,9 +36,15 @@ HoI4WarCreator::HoI4WarCreator(HoI4::World* world,
 
 	set<shared_ptr<HoI4::Faction>> factionsAtWar;
 	LOG(LogLevel::Info) << "\t\tGenerating major wars";
-	generateMajorWars(AILog, factionsAtWar, world->getMajorIdeologies(), world, theMapData, provinceDefinitions);
+	generateMajorWars(AILog,
+		 factionsAtWar,
+		 world->getMajorIdeologies(),
+		 world,
+		 theMapData,
+		 provinceDefinitions,
+		 hoi4Localisations);
 	LOG(LogLevel::Info) << "\t\tGenerating additional wars";
-	generateAdditionalWars(AILog, factionsAtWar, worldStrength, theMapData, provinceDefinitions);
+	generateAdditionalWars(AILog, factionsAtWar, worldStrength, theMapData, provinceDefinitions, hoi4Localisations);
 
 	if (theConfiguration.getDebug())
 	{
@@ -137,7 +144,8 @@ void HoI4WarCreator::generateMajorWars(ofstream& AILog,
 	 const std::set<std::string>& majorIdeologies,
 	 const HoI4::World* world,
 	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions)
+	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 HoI4Localisation& hoi4Localisations)
 {
 	if (theConfiguration.getDebug())
 	{
@@ -152,24 +160,29 @@ void HoI4WarCreator::generateMajorWars(ofstream& AILog,
 
 			if (country.second->getGovernmentIdeology() == "fascism")
 			{
-				newFactionsAtWar = fascistWarMaker(country.second, AILog, world, theMapData, provinceDefinitions);
+				newFactionsAtWar =
+					 fascistWarMaker(country.second, AILog, world, theMapData, provinceDefinitions, hoi4Localisations);
 			}
 			else if (country.second->getGovernmentIdeology() == "communism")
 			{
-				newFactionsAtWar =
-					 communistWarCreator(country.second, majorIdeologies, AILog, theMapData, provinceDefinitions);
+				newFactionsAtWar = communistWarCreator(country.second,
+					 majorIdeologies,
+					 AILog,
+					 theMapData,
+					 provinceDefinitions,
+					 hoi4Localisations);
 			}
 			else if (country.second->getGovernmentIdeology() == "absolutist")
 			{
-				newFactionsAtWar = absolutistWarCreator(country.second, theMapData, provinceDefinitions);
+				newFactionsAtWar = absolutistWarCreator(country.second, theMapData, provinceDefinitions, hoi4Localisations);
 			}
 			else if (country.second->getGovernmentIdeology() == "radical")
 			{
-				newFactionsAtWar = radicalWarCreator(country.second, theMapData, provinceDefinitions);
+				newFactionsAtWar = radicalWarCreator(country.second, theMapData, provinceDefinitions, hoi4Localisations);
 			}
 			else if (country.second->getGovernmentIdeology() == "democratic")
 			{
-				newFactionsAtWar = democracyWarCreator(country.second);
+				newFactionsAtWar = democracyWarCreator(country.second, hoi4Localisations);
 			}
 
 
@@ -203,7 +216,8 @@ void HoI4WarCreator::generateAdditionalWars(ofstream& AILog,
 	 set<shared_ptr<HoI4::Faction>>& factionsAtWar,
 	 double worldStrength,
 	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions)
+	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 HoI4Localisation& hoi4Localisations)
 {
 	auto countriesEvilnessSorted = findEvilCountries();
 
@@ -220,7 +234,8 @@ void HoI4WarCreator::generateAdditionalWars(ofstream& AILog,
 				}
 			}
 			vector<shared_ptr<HoI4::Faction>> newCountriesatWar;
-			newCountriesatWar = neighborWarCreator(countriesEvilnessSorted[i], AILog, theMapData, provinceDefinitions);
+			newCountriesatWar =
+				 neighborWarCreator(countriesEvilnessSorted[i], AILog, theMapData, provinceDefinitions, hoi4Localisations);
 
 			for (auto addedFactions: newCountriesatWar)
 			{
@@ -743,7 +758,8 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI
 	 ofstream& AILog,
 	 const HoI4::World* world,
 	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions)
+	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 HoI4Localisation& hoi4Localisations)
 {
 	vector<shared_ptr<HoI4::Faction>> CountriesAtWar;
 	auto name = Leader->getSourceCountry().getName("english");
@@ -850,7 +866,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI
 	// gives us generic focus tree start
 	auto FocusTree = genericFocusTree->makeCustomizedCopy(*Leader);
 
-	FocusTree->addFascistAnnexationBranch(Leader, nan, theWorld->getEvents());
+	FocusTree->addFascistAnnexationBranch(Leader, nan, theWorld->getEvents(), hoi4Localisations);
 	nan.clear();
 
 	for (auto target: Sudeten)
@@ -875,7 +891,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI
 		set<int> borderStates = findBorderState(Leader, nan[i], world, theMapData, provinceDefinitions);
 		demandedStates.push_back(sortStatesByCapitalDistance(borderStates, Leader, world));
 	}
-	FocusTree->addFascistSudetenBranch(Leader, nan, demandedStates, *theWorld);
+	FocusTree->addFascistSudetenBranch(Leader, nan, demandedStates, *theWorld, hoi4Localisations);
 	nan.clear();
 
 	// events for allies
@@ -1015,7 +1031,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI
 		}
 	}
 
-	FocusTree->addGPWarBranch(Leader, newAllies, GCTargets, "Fascist", theWorld->getEvents());
+	FocusTree->addGPWarBranch(Leader, newAllies, GCTargets, "Fascist", theWorld->getEvents(), hoi4Localisations);
 
 	Leader->giveNationalFocus(FocusTree);
 	return CountriesAtWar;
@@ -1026,7 +1042,8 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(shared_ptr
 	 const std::set<std::string>& majorIdeologies,
 	 ofstream& AILog,
 	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions)
+	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 HoI4Localisation& hoi4Localisations)
 {
 	vector<shared_ptr<HoI4::Faction>> CountriesAtWar;
 	// communism still needs great country war events
@@ -1209,16 +1226,17 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(shared_ptr
 	}
 
 	auto FocusTree = genericFocusTree->makeCustomizedCopy(*Leader);
-	FocusTree->addCommunistCoupBranch(Leader, forcedtakeover, majorIdeologies);
-	FocusTree->addCommunistWarBranch(Leader, TargetsByTech, theWorld->getEvents());
-	FocusTree->addGPWarBranch(Leader, newAllies, finalTargets, "Communist", theWorld->getEvents());
+	FocusTree->addCommunistCoupBranch(Leader, forcedtakeover, majorIdeologies, hoi4Localisations);
+	FocusTree->addCommunistWarBranch(Leader, TargetsByTech, theWorld->getEvents(), hoi4Localisations);
+	FocusTree->addGPWarBranch(Leader, newAllies, finalTargets, "Communist", theWorld->getEvents(), hoi4Localisations);
 	Leader->giveNationalFocus(FocusTree);
 
 	return CountriesAtWar;
 }
 
 
-vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::democracyWarCreator(shared_ptr<HoI4::Country> Leader)
+vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::democracyWarCreator(shared_ptr<HoI4::Country> Leader,
+	 HoI4Localisation& hoi4Localisations)
 {
 	vector<shared_ptr<HoI4::Faction>> CountriesAtWar;
 	map<int, shared_ptr<HoI4::Country>> CountriesToContain;
@@ -1245,7 +1263,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::democracyWarCreator(shared_ptr
 	}
 	if (vCountriesToContain.size() > 0)
 	{
-		FocusTree->addDemocracyNationalFocuses(Leader, vCountriesToContain);
+		FocusTree->addDemocracyNationalFocuses(Leader, vCountriesToContain, hoi4Localisations);
 	}
 
 	Leader->giveNationalFocus(FocusTree);
@@ -1256,7 +1274,8 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::democracyWarCreator(shared_ptr
 
 vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::absolutistWarCreator(shared_ptr<HoI4::Country> country,
 	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions)
+	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 HoI4Localisation& hoi4Localisations)
 {
 	auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
 
@@ -1272,10 +1291,10 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::absolutistWarCreator(shared_pt
 
 	auto weakNeighbors = findWeakNeighbors(country, theMapData, provinceDefinitions);
 	auto weakColonies = findWeakColonies(country, theMapData, provinceDefinitions);
-	focusTree->addAbsolutistEmpireNationalFocuses(country, weakColonies, weakNeighbors);
+	focusTree->addAbsolutistEmpireNationalFocuses(country, weakColonies, weakNeighbors, hoi4Localisations);
 
 	auto greatPowerTargets = getGreatPowerTargets(country);
-	auto CountriesAtWar = addGreatPowerWars(country, *focusTree, greatPowerTargets);
+	auto CountriesAtWar = addGreatPowerWars(country, *focusTree, greatPowerTargets, hoi4Localisations);
 	addTradeEvents(country, greatPowerTargets);
 
 	country->giveNationalFocus(focusTree);
@@ -1287,7 +1306,8 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::absolutistWarCreator(shared_pt
 std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(std::shared_ptr<HoI4::Country> country,
 	 std::ofstream& AILog,
 	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions)
+	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 HoI4Localisation& hoi4Localisations)
 {
 	if (theConfiguration.getDebug())
 	{
@@ -1351,7 +1371,8 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 				 target,
 				 targetName,
 				 startDate,
-				 numWarsWithNeighbors);
+				 numWarsWithNeighbors,
+				 hoi4Localisations);
 
 			numWarsWithNeighbors++;
 		}
@@ -1368,9 +1389,10 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 
 vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::radicalWarCreator(shared_ptr<HoI4::Country> country,
 	 const HoI4::MapData& theMapData,
-	 const HoI4::ProvinceDefinitions& provinceDefinitions)
+	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 HoI4Localisation& hoi4Localisations)
 {
-	return absolutistWarCreator(country, theMapData, provinceDefinitions);
+	return absolutistWarCreator(country, theMapData, provinceDefinitions, hoi4Localisations);
 }
 
 set<int> HoI4WarCreator::findBorderState(shared_ptr<HoI4::Country> country,
@@ -1600,7 +1622,8 @@ map<double, shared_ptr<HoI4::Country>> HoI4WarCreator::getGPsByDistance(shared_p
 
 vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<HoI4::Country> country,
 	 HoI4FocusTree& FocusTree,
-	 vector<shared_ptr<HoI4::Country>>& greatPowerTargets)
+	 vector<shared_ptr<HoI4::Country>>& greatPowerTargets,
+	 HoI4Localisation& hoi4Localisations)
 {
 	vector<shared_ptr<HoI4::Faction>> countriesAtWar;
 
@@ -1682,9 +1705,9 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<H
 			newFocus->completionReward += "			}\n";
 			newFocus->completionReward += "		}";
 			FocusTree.addFocus(newFocus);
-			HoI4Localisation::copyFocusLocalisations("War_with", newFocus->text);
-			HoI4Localisation::updateLocalisationText(newFocus->text, "$TARGET", target->getTag());
-			HoI4Localisation::updateLocalisationText(newFocus->text + "_desc", "$TARGET", target->getTag());
+			hoi4Localisations.copyFocusLocalisations("War_with", newFocus->text);
+			hoi4Localisations.updateLocalisationText(newFocus->text, "$TARGET", target->getTag());
+			hoi4Localisations.updateLocalisationText(newFocus->text + "_desc", "$TARGET", target->getTag());
 
 			numWarsWithGreatPowers++;
 		}
