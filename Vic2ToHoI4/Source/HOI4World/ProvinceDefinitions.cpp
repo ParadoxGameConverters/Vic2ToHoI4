@@ -11,13 +11,12 @@ int getIntFromColor(const ConverterColor::Color& color)
 	ConverterColor::green green;
 	ConverterColor::blue blue;
 	color.GetRGB(red, green, blue);
-	int colorInt = ((red.Red & 0xFF) << 16) + ((green.Green & 0xFF) << 8) + (blue.Blue & 0xFF);
 
-	return colorInt;
+	return ((red.Red & 0xFF) << 16) + ((green.Green & 0xFF) << 8) + (blue.Blue & 0xFF);
 }
 
 
-HoI4::ProvinceDefinitions HoI4::ProvinceDefinitions::Importer::importProvinceDefinitions(const Configuration& theConfiguration)
+HoI4::ProvinceDefinitions HoI4::ProvinceDefinitions::Importer::importProvinceDefinitions(const Configuration& theConfiguration) const
 {
 	std::ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
 	if (!definitions.is_open())
@@ -34,12 +33,12 @@ HoI4::ProvinceDefinitions HoI4::ProvinceDefinitions::Importer::importProvinceDef
 	{
 		std::string line;
 		getline(definitions, line);
-		int pos = line.find_first_of(';');
+		auto pos = line.find_first_of(';');
 		if (pos == std::string::npos)
 		{
 			break;
 		}
-		int provNum = stoi(line.substr(0, pos));
+		auto provNum = stoi(line.substr(0, pos));
 		if (provNum == 0)
 		{
 			continue;
@@ -59,7 +58,7 @@ HoI4::ProvinceDefinitions HoI4::ProvinceDefinitions::Importer::importProvinceDef
 		line = line.substr(pos + 1, line.length());
 
 		ConverterColor::Color provinceColor(red, green, blue);
-		int colorInt = getIntFromColor(provinceColor);
+		auto colorInt = getIntFromColor(provinceColor);
 		colorToProvinceMap.insert(std::make_pair(colorInt, provNum));
 
 		pos = line.find_first_of(';');
@@ -80,15 +79,14 @@ HoI4::ProvinceDefinitions HoI4::ProvinceDefinitions::Importer::importProvinceDef
 
 std::optional<int> HoI4::ProvinceDefinitions::getProvinceFromColor(const ConverterColor::Color& color) const
 {
-	int colorInt = getIntFromColor(color);
+	const auto colorInt = getIntFromColor(color);
 
-	auto mapping = colorToProvinceMap.find(colorInt);
-	if (mapping != colorToProvinceMap.end())
+	if (const auto mapping = colorToProvinceMap.find(colorInt); mapping != colorToProvinceMap.end())
 	{
 		return mapping->second;
 	}
 	else
 	{
-		return {};
+		return std::nullopt;
 	}
 }

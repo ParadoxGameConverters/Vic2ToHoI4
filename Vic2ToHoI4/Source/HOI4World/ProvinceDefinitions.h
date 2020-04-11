@@ -28,11 +28,11 @@ class ProvinceDefinitions
 	{
 	}
 
-	const auto& getLandProvinces() const { return landProvinces; }
-	const bool isLandProvince(int province) const { return (landProvinces.count(province) > 0); }
-	const bool isSeaProvince(int province) const { return (seaProvinces.count(province) > 0); }
+	[[nodiscard]] const auto& getLandProvinces() const { return landProvinces; }
+	[[nodiscard]] bool isLandProvince(const int province) const { return (landProvinces.count(province) > 0); }
+	[[nodiscard]] bool isSeaProvince(const int province) const { return (seaProvinces.count(province) > 0); }
 
-	std::optional<int> getProvinceFromColor(const ConverterColor::Color& color) const;
+	[[nodiscard]] std::optional<int> getProvinceFromColor(const ConverterColor::Color& color) const;
 
   private:
 	std::set<int> landProvinces;
@@ -45,7 +45,7 @@ class ProvinceDefinitions
 class ProvinceDefinitions::Importer
 {
   public:
-	ProvinceDefinitions importProvinceDefinitions(const Configuration& theConfiguration);
+	[[nodiscard]] ProvinceDefinitions importProvinceDefinitions(const Configuration& theConfiguration) const;
 };
 
 } // namespace HoI4
