@@ -16,7 +16,7 @@ class PartiesIssueHelper: commonItems::parser
   public:
 	explicit PartiesIssueHelper(std::istream& theStream);
 
-	std::vector<IssueHelper> getIssues() { return issues; }
+	auto takeIssues() { return std::move(issues); }
 
   private:
 	std::vector<IssueHelper> issues;

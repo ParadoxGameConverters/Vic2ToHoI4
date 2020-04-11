@@ -15,7 +15,7 @@ class IssueHelper: commonItems::parser
   public:
 	explicit IssueHelper(std::istream& theStream);
 
-	std::vector<std::string> getIssues() { return issues; }
+	auto takeIssues() { return std::move(issues); }
 
   private:
 	std::vector<std::string> issues;

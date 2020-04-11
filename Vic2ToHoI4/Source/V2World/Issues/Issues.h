@@ -5,7 +5,6 @@
 
 #include "newParser.h"
 #include <map>
-#include <memory>
 #include <string>
 
 
@@ -22,9 +21,9 @@ class Issues
   public:
 	class Parser;
 
-	Issues(std::map<int, std::string> issueNames): issueNames(std::move(issueNames)) {}
+	explicit Issues(std::map<int, std::string> issueNames): issueNames(std::move(issueNames)) {}
 
-	std::string getIssueName(int num) const;
+	[[nodiscard]] std::string getIssueName(int num) const;
 
   private:
 	std::map<int, std::string> issueNames;

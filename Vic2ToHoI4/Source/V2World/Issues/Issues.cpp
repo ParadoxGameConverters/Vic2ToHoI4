@@ -1,7 +1,6 @@
 #include "Issues.h"
 #include "../../Configuration.h"
 #include "IssueHelper.h"
-#include "ParserHelpers.h"
 #include "PartiesIssueHelper.h"
 #include <vector>
 
@@ -9,25 +8,25 @@
 
 Vic2::Issues Vic2::Issues::Parser::importIssues(const Configuration& theConfiguration)
 {
-	int issueNum = 1;
+	auto issueNum = 1;
 	std::map<int, std::string> issueNames;
 
-	registerKeyword("party_issues", [&issueNames, &issueNum](const std::string& category, std::istream& theStream) {
+	registerKeyword("party_issues", [&issueNames, &issueNum](const std::string& unused, std::istream& theStream) {
 		PartiesIssueHelper helperHelper(theStream);
-		for (auto helper: helperHelper.getIssues())
+		for (auto& helper: helperHelper.takeIssues())
 		{
-			for (auto name: helper.getIssues())
+			for (auto& name: helper.takeIssues())
 			{
-				issueNames.insert(make_pair(issueNum, name));
+				issueNames.insert(std::make_pair(issueNum, name));
 				issueNum++;
 			}
 		}
 	});
-	registerKeyword("[A-Za-z_]+", [&issueNames, &issueNum](const std::string& category, std::istream& theStream) {
+	registerKeyword("[A-Za-z_]+", [&issueNames, &issueNum](const std::string& unused, std::istream& theStream) {
 		IssueHelper helper(theStream);
-		for (auto name: helper.getIssues())
+		for (auto& name: helper.takeIssues())
 		{
-			issueNames.insert(make_pair(issueNum, name));
+			issueNames.insert(std::make_pair(issueNum, name));
 			issueNum++;
 		}
 	});
@@ -38,10 +37,9 @@ Vic2::Issues Vic2::Issues::Parser::importIssues(const Configuration& theConfigur
 }
 
 
-std::string Vic2::Issues::getIssueName(int num) const
+std::string Vic2::Issues::getIssueName(const int num) const
 {
-	auto name = issueNames.find(num);
-	if (name != issueNames.end())
+	if (const auto name = issueNames.find(num); name != issueNames.end())
 	{
 		return name->second;
 	}
