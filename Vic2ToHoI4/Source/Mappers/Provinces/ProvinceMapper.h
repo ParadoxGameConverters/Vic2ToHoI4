@@ -14,22 +14,32 @@
 namespace mappers
 {
 
-class ProvinceMapper: commonItems::parser
+class ProvinceMapper
 {
   public:
-	ProvinceMapper() = default;
-	void initialize();
-	void initialize(std::istream& input);
-	virtual ~ProvinceMapper() = default;
+	class Parser;
+
+	ProvinceMapper(HoI4ToVic2ProvinceMapping HoI4ToVic2ProvinceMap, Vic2ToHoI4ProvinceMapping Vic2ToHoI4ProvinceMap):
+		 HoI4ToVic2ProvinceMap(std::move(HoI4ToVic2ProvinceMap)), Vic2ToHoI4ProvinceMap(std::move(Vic2ToHoI4ProvinceMap))
+	{
+	}
 
 	virtual std::optional<std::vector<int>> getVic2ToHoI4ProvinceMapping(int Vic2Province) const;
 	std::optional<std::vector<int>> getHoI4ToVic2ProvinceMapping(int HoI4Province) const;
 
   private:
-	ProvinceMapper(const ProvinceMapper&) = delete;
-	ProvinceMapper& operator=(const ProvinceMapper&) = delete;
+	HoI4ToVic2ProvinceMapping HoI4ToVic2ProvinceMap;
+	Vic2ToHoI4ProvinceMapping Vic2ToHoI4ProvinceMap;
+};
 
-	void checkAllHoI4ProvinesMapped() const;
+
+class ProvinceMapper::Parser: commonItems::parser
+{
+  public:
+	ProvinceMapper initializeMapper();
+
+  private:
+	void checkAllHoI4ProvincesMapped() const;
 	std::optional<int> getNextProvinceNumFromFile(std::ifstream& definitions) const;
 	void verifyProvinceIsMapped(int provNum) const;
 

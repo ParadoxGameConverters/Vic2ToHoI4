@@ -20,8 +20,7 @@ void ConvertV2ToHoI4(const std::string& V2SaveFileName)
 	setOutputName(V2SaveFileName);
 	clearOutputFolder(theConfiguration.getOutputName());
 
-	mappers::ProvinceMapper provinceMapper;
-	provinceMapper.initialize();
+	const mappers::ProvinceMapper provinceMapper = mappers::ProvinceMapper::Parser{}.initializeMapper();
 
 	Vic2::World sourceWorld(V2SaveFileName, provinceMapper);
 	HoI4::World destWorld(&sourceWorld, provinceMapper);

@@ -330,7 +330,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalDefaultsToNone)
 	ASSERT_EQ(theCountry.getCapitalProvince(), std::nullopt);
 }
 
-
+#pragma optimize("",off)
 TEST_F(HoI4World_HoI4CountryTests, capitalCanBeSetInOwnedState)
 {
 	EXPECT_CALL(sourceCountry, getCapital).WillOnce(testing::Return(42));
@@ -356,8 +356,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanBeSetInOwnedState)
 	std::map<int, int> provinceToStateIDMap;
 	provinceToStateIDMap.insert(std::make_pair(84, 1));
 
-	mockProvinceMapper aProvinceMapper;
-	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(42)).WillOnce(testing::Return(std::vector<int>{84}));
+	mappers::ProvinceMapper aProvinceMapper{{}, {{42, {84}}}};
 
 	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 
@@ -366,7 +365,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanBeSetInOwnedState)
 	ASSERT_TRUE(theCountry.getCapitalProvince());
 	ASSERT_EQ(*theCountry.getCapitalProvince(), 84);
 }
-
+#pragma optimize("", on)
 
 TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceIsImpassible)
 {
@@ -410,8 +409,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceIsImp
 	provinceToStateIDMap.insert(std::make_pair(20, 2));
 	provinceToStateIDMap.insert(std::make_pair(30, 3));
 
-	mockProvinceMapper aProvinceMapper;
-	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillOnce(testing::Return(std::vector<int>{30}));
+	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 
 	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 
@@ -463,8 +461,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceNotOw
 	provinceToStateIDMap.insert(std::make_pair(20, 2));
 	provinceToStateIDMap.insert(std::make_pair(30, 3));
 
-	mockProvinceMapper aProvinceMapper;
-	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillOnce(testing::Return(std::vector<int>{30}));
+	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 
 	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 
@@ -518,8 +515,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInPreferredWastelandIfOnlyWastela
 	provinceToStateIDMap.insert(std::make_pair(20, 2));
 	provinceToStateIDMap.insert(std::make_pair(30, 3));
 
-	mockProvinceMapper aProvinceMapper;
-	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillRepeatedly(testing::Return(std::vector<int>{30}));
+	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 
 	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 
@@ -574,8 +570,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInOtherWastelandIfOnlyWastelandOw
 	provinceToStateIDMap.insert(std::make_pair(20, 2));
 	provinceToStateIDMap.insert(std::make_pair(30, 3));
 
-	mockProvinceMapper aProvinceMapper;
-	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillRepeatedly(testing::Return(std::vector<int>{30}));
+	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 
 	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 
@@ -626,8 +621,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredPreferredIfNoneOwned)
 	provinceToStateIDMap.insert(std::make_pair(20, 2));
 	provinceToStateIDMap.insert(std::make_pair(30, 3));
 
-	mockProvinceMapper aProvinceMapper;
-	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillRepeatedly(testing::Return(std::vector<int>{30}));
+	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 
 	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 
@@ -680,8 +674,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredNonWastelandIfNoneOwnedAndP
 	provinceToStateIDMap.insert(std::make_pair(20, 2));
 	provinceToStateIDMap.insert(std::make_pair(30, 3));
 
-	mockProvinceMapper aProvinceMapper;
-	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillRepeatedly(testing::Return(std::vector<int>{30}));
+	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 
 	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 
@@ -736,8 +729,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToPreferredWastelandIfNoneOwnedAnd
 	provinceToStateIDMap.insert(std::make_pair(20, 2));
 	provinceToStateIDMap.insert(std::make_pair(30, 3));
 
-	mockProvinceMapper aProvinceMapper;
-	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillRepeatedly(testing::Return(std::vector<int>{30}));
+	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 
 	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 
@@ -791,8 +783,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToAnyWastelandIfNoneOwnedAllWastel
 	provinceToStateIDMap.insert(std::make_pair(20, 2));
 	provinceToStateIDMap.insert(std::make_pair(30, 3));
 
-	mockProvinceMapper aProvinceMapper;
-	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillRepeatedly(testing::Return(std::vector<int>{30}));
+	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 
 	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 
@@ -824,8 +815,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalRemainsUnassignedIfNoCoresAndNoOwnedPr
 	std::map<int, int> provinceToStateIDMap;
 	provinceToStateIDMap.insert(std::make_pair(30, 3));
 
-	mockProvinceMapper aProvinceMapper;
-	EXPECT_CALL(aProvinceMapper, getVic2ToHoI4ProvinceMapping(3)).WillRepeatedly(testing::Return(std::vector<int>{30}));
+	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 
 	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 

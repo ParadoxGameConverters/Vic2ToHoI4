@@ -9,7 +9,7 @@
 
 
 
-void mappers::ProvinceMapper::initialize()
+mappers::ProvinceMapper mappers::ProvinceMapper::Parser::initializeMapper()
 {
 	bool gotMappings = false;
 	registerKeyword(std::regex("\\d\\.\\d\\.\\d"),
@@ -45,32 +45,13 @@ void mappers::ProvinceMapper::initialize()
 		parseFile("province_mappings.txt");
 	}
 
-	checkAllHoI4ProvinesMapped();
+	checkAllHoI4ProvincesMapped();
+
+	return ProvinceMapper(HoI4ToVic2ProvinceMap, Vic2ToHoI4ProvinceMap);
 }
 
 
-void mappers::ProvinceMapper::initialize(std::istream& input)
-{
-	registerKeyword(std::regex("\\d\\.\\d\\.\\d"), [this](const std::string& version, std::istream& theStream) {
-		HoI4::Version currentVersion(version);
-		if ((theConfiguration.getHOI4Version() >= currentVersion))
-		{
-			LOG(LogLevel::Debug) << "Using version " << version << " mappings";
-			VersionedMappings thisVersionsMappings(theStream);
-			HoI4ToVic2ProvinceMap = thisVersionsMappings.getHoI4ToVic2Mapping();
-			Vic2ToHoI4ProvinceMap = thisVersionsMappings.getVic2ToHoI4Mapping();
-		}
-		else
-		{
-			commonItems::ignoreItem(version, theStream);
-		}
-	});
-
-	parseStream(input);
-}
-
-
-void mappers::ProvinceMapper::checkAllHoI4ProvinesMapped() const
+void mappers::ProvinceMapper::Parser::checkAllHoI4ProvincesMapped() const
 {
 	std::ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
 	if (!definitions.is_open())
@@ -94,7 +75,7 @@ void mappers::ProvinceMapper::checkAllHoI4ProvinesMapped() const
 }
 
 
-std::optional<int> mappers::ProvinceMapper::getNextProvinceNumFromFile(std::ifstream& definitions) const
+std::optional<int> mappers::ProvinceMapper::Parser::getNextProvinceNumFromFile(std::ifstream& definitions) const
 {
 	std::string line;
 	getline(definitions, line);
@@ -110,7 +91,7 @@ std::optional<int> mappers::ProvinceMapper::getNextProvinceNumFromFile(std::ifst
 }
 
 
-void mappers::ProvinceMapper::verifyProvinceIsMapped(int provNum) const
+void mappers::ProvinceMapper::Parser::verifyProvinceIsMapped(int provNum) const
 {
 	if (provNum != 0)
 	{

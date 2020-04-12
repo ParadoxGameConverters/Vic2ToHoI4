@@ -1,6 +1,5 @@
 #include "../../Mocks/CoastalProvincesMock.h"
 #include "../../Mocks/CountryMapperMock.h"
-#include "../../Mocks/ProvinceMapperMock.h"
 #include "../../Mocks/StateCategoriesMock.h"
 #include "../../Mocks/Vic2StateMock.h"
 #include "../Vic2ToHoI4/Source/Configuration.h"
@@ -121,12 +120,7 @@ TEST(HoI4World_States_StateTests, ControllersCanBeAdded)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	mockProvinceMapper theProvinceMapper;
-	std::optional<std::vector<int>> possibleMappedProvinces;
-	std::vector<int> mappedProvinces;
-	mappedProvinces.push_back(12);
-	possibleMappedProvinces = mappedProvinces;
-	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillOnce(testing::Return(possibleMappedProvinces));
+	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
 	mockCountryMapper theCountryMapper;
 	std::optional<std::string> hoi4tag = "NOT";
@@ -154,12 +148,7 @@ TEST(HoI4World_States_StateTests, ControllersConvertWithHoI4Tag)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	mockProvinceMapper theProvinceMapper;
-	std::optional<std::vector<int>> possibleMappedProvinces;
-	std::vector<int> mappedProvinces;
-	mappedProvinces.push_back(12);
-	possibleMappedProvinces = mappedProvinces;
-	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillOnce(testing::Return(possibleMappedProvinces));
+	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
 	mockCountryMapper theCountryMapper;
 	std::optional<std::string> hoi4tag = "HOI";
@@ -187,7 +176,7 @@ TEST(HoI4World_States_StateTests, ControllersDontConvertForRebels)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	mockProvinceMapper theProvinceMapper;
+	mappers::ProvinceMapper theProvinceMapper{{}, {}};
 
 	mockCountryMapper theCountryMapper;
 	std::optional<std::string> hoi4tag = "REB";
@@ -415,9 +404,7 @@ TEST(HoI4World_States_StateTests, NavalBasesCanBeConverted)
 	EXPECT_CALL(theCoastalProvinces, isProvinceCoastal(1)).WillOnce(testing::Return(true));
 	EXPECT_CALL(theCoastalProvinces, isProvinceCoastal(2)).WillOnce(testing::Return(true));
 
-	mockProvinceMapper theProvinceMapper;
-	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(1)).WillOnce(testing::Return(std::vector<int>{1}));
-	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(2)).WillOnce(testing::Return(std::vector<int>{2}));
+	mappers::ProvinceMapper theProvinceMapper{{}, {{1, {1}}, {2, {2}}}};
 
 	theState.convertNavalBases(sourceProvinces, theCoastalProvinces, theProvinceMapper);
 
@@ -491,10 +478,7 @@ TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	mockProvinceMapper theProvinceMapper;
-	std::vector<int> mappingNumbers = {12};
-	std::optional<std::vector<int>> mapping = mappingNumbers;
-	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillOnce(testing::Return(mapping));
+	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
 	std::stringstream configInput;
 	configInput << "manpower_factor = 1.0";
@@ -588,10 +572,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	mockProvinceMapper theProvinceMapper;
-	std::vector<int> mappingNumbers = {12};
-	std::optional<std::vector<int>> mapping = mappingNumbers;
-	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillOnce(testing::Return(mapping));
+	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
 	std::stringstream configInput;
 	Configuration testConfig;
@@ -636,10 +617,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	theState.addProvince(12);
 	theState.addProvince(24);
 
-	mockProvinceMapper theProvinceMapper;
-	std::vector<int> mappingNumbers = {24};
-	std::optional<std::vector<int>> mapping = mappingNumbers;
-	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(24)).WillOnce(testing::Return(mapping));
+	mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
 	std::stringstream configInput;
 	Configuration testConfig;
@@ -684,10 +662,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	theState.addProvince(12);
 	theState.addProvince(24);
 
-	mockProvinceMapper theProvinceMapper;
-	std::vector<int> mappingNumbers = {24};
-	std::optional<std::vector<int>> mapping = mappingNumbers;
-	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(24)).WillOnce(testing::Return(mapping));
+	mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
 	std::stringstream configInput;
 	Configuration testConfig;
@@ -732,10 +707,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	theState.addProvince(12);
 	theState.addProvince(24);
 
-	mockProvinceMapper theProvinceMapper;
-	std::vector<int> mappingNumbers = {24};
-	std::optional<std::vector<int>> mapping = mappingNumbers;
-	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(24)).WillOnce(testing::Return(mapping));
+	mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
 	std::stringstream configInput;
 	Configuration testConfig;
@@ -780,10 +752,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousPr
 	theState.addProvince(12);
 	theState.addProvince(24);
 
-	mockProvinceMapper theProvinceMapper;
-	std::vector<int> mappingNumbers = {24};
-	std::optional<std::vector<int>> mapping = mappingNumbers;
-	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(24)).WillOnce(testing::Return(mapping));
+	mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
 	std::stringstream configInput;
 	Configuration testConfig;
@@ -806,7 +775,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionLoggedIfNotSet)
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
-	mockProvinceMapper theProvinceMapper;
+	mappers::ProvinceMapper theProvinceMapper{{}, {}};
 
 	std::stringstream configInput;
 	Configuration testConfig;
@@ -838,10 +807,7 @@ TEST(HoI4World_States_StateTests, DebugVPsCanBeAdded)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	mockProvinceMapper theProvinceMapper;
-	std::vector<int> mappingNumbers = {12};
-	std::optional<std::vector<int>> mapping = mappingNumbers;
-	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillOnce(testing::Return(mapping));
+	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
 	std::stringstream configInput;
 	Configuration testConfig;
@@ -865,10 +831,7 @@ TEST(HoI4World_States_StateTests, SecondaryDebugVPsCanBeAdded)
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
-	mockProvinceMapper theProvinceMapper;
-	std::vector<int> mappingNumbers = {12, 13};
-	std::optional<std::vector<int>> mapping = mappingNumbers;
-	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillOnce(testing::Return(mapping));
+	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12, 13}}}};
 
 	std::stringstream configInput;
 	Configuration testConfig;
@@ -896,13 +859,7 @@ TEST(HoI4World_States_StateTests, DebugVpsAreOutput)
 	theState.addProvince(24);
 	theState.addProvince(25);
 
-	mockProvinceMapper theProvinceMapper;
-	std::vector<int> mappingNumbers = {12, 13};
-	std::optional<std::vector<int>> mapping = mappingNumbers;
-	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(12)).WillRepeatedly(testing::Return(mapping));
-	std::vector<int> moreMappingNumbers = {24, 25};
-	std::optional<std::vector<int>> anotherMapping = moreMappingNumbers;
-	EXPECT_CALL(theProvinceMapper, getVic2ToHoI4ProvinceMapping(24)).WillRepeatedly(testing::Return(anotherMapping));
+	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12, 13}}, {24, {24, 25}}}};
 
 	std::stringstream configInput;
 	configInput << "debug = yes";
