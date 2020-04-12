@@ -19,7 +19,7 @@
 
 
 
-Vic2::World::World(const std::string& filename)
+Vic2::World::World(const std::string& filename, const ProvinceMapper& provinceMapper)
 {
 	theLocalisations = Localisations::Parser{}.importLocalisations();
 	theCultureGroups.init();
@@ -89,7 +89,7 @@ Vic2::World::World(const std::string& filename)
 	setLocalisations(*theLocalisations);
 	handleMissingCountryCultures();
 
-	checkAllProvincesMapped();
+	checkAllProvincesMapped(provinceMapper);
 }
 
 
@@ -432,11 +432,11 @@ std::optional<const Vic2::Province*> Vic2::World::getProvince(int provNum) const
 }
 
 
-void Vic2::World::checkAllProvincesMapped() const
+void Vic2::World::checkAllProvincesMapped(const ProvinceMapper& provinceMapper) const
 {
 	for (auto province: provinces)
 	{
-		auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(province.first);
+		auto mapping = provinceMapper.getVic2ToHoI4ProvinceMapping(province.first);
 		if (!mapping)
 		{
 			LOG(LogLevel::Warning) << "No mapping for Vic2 province " << province.first;

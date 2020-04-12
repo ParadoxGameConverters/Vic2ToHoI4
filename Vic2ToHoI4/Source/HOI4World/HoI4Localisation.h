@@ -11,6 +11,9 @@
 
 
 
+class ProvinceMapper;
+
+
 namespace Vic2
 {
 class StateDefinitions;
@@ -66,8 +69,11 @@ class Localisation
 	void addStateLocalisation(const State& hoi4State,
 		 const Vic2::State& vic2State,
 		 const Vic2::StateDefinitions& theStateDefinitions,
-		 const Vic2::Localisations& vic2Localisations);
-	void addStateLocalisations(const States& states, const Vic2::Localisations& vic2Localisations);
+		 const Vic2::Localisations& vic2Localisations,
+		 const ProvinceMapper& theProvinceMapper);
+	void addStateLocalisations(const States& states,
+		 const Vic2::Localisations& vic2Localisations,
+		 const ProvinceMapper& theProvinceMapper);
 	void createCountryLocalisations(const std::pair<const std::string&, const std::string&>& tags,
 		 const governmentMapper& governmentMap,
 		 const Vic2::Localisations& vic2Localisations);
@@ -130,7 +136,8 @@ class Localisation
 		 const Vic2::State& vic2State,
 		 const std::pair<const std::string, std::string>& Vic2NameInLanguage,
 		 const Vic2::StateDefinitions& theStateDefinitions,
-		 const Vic2::Localisations& vic2Localisations);
+		 const Vic2::Localisations& vic2Localisations,
+		 const ProvinceMapper& theProvinceMapper);
 	void addVPLocalisationForLanguage(const State& state,
 		 const std::pair<const std::string, std::string>& Vic2NameInLanguage);
 	std::map<stateNumber, std::string>& getExistingStateLocalisation(const std::string& language);
@@ -139,14 +146,17 @@ class Localisation
 	void addLanguageToVPLocalisations(const std::string& language);
 	void addNonenglishStateLocalisations();
 	void addNonenglishVPLocalisations();
-	void addDebugLocalisations(const std::pair<const int, State>& state, const Vic2::Localisations& vic2Localisations);
+	void addDebugLocalisations(const std::pair<const int, State>& state,
+		 const Vic2::Localisations& vic2Localisations,
+		 const ProvinceMapper& theProvinceMapper);
 
 	static bool sourceStateHasOneProvince(const Vic2::State& sourceState);
 	static bool sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState,
 		 const Vic2::StateDefinitions& theStateDefinitions);
 	static bool stateHasAllDefinedProvincesAfterConversion(const State& state,
 		 const Vic2::State& sourceState,
-		 const Vic2::StateDefinitions& theStateDefinitions);
+		 const Vic2::StateDefinitions& theStateDefinitions,
+		 const ProvinceMapper& theProvinceMapper);
 
 	static std::string getLanguageCode(const std::string& language);
 	void insertScriptedLocalisation(const std::string& localisationKey,

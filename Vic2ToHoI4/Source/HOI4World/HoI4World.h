@@ -75,7 +75,7 @@ class HoI4UnitType;
 class World: commonItems::parser
 {
   public:
-	explicit World(const Vic2::World* sourceWorld);
+	explicit World(const Vic2::World* sourceWorld, const ProvinceMapper& provinceMapper);
 	~World() = default;
 
 	[[nodiscard]] auto& getNames() { return theNames; }
@@ -136,7 +136,7 @@ class World: commonItems::parser
 	void convertIdeologySupport();
 
 	void convertIndustry();
-	void addStatesToCountries();
+	void addStatesToCountries(const ProvinceMapper& provinceMapper);
 	std::map<std::string, double> calculateFactoryWorkerRatios();
 	std::map<std::string, double> getIndustrialWorkersPerCountry();
 	double getTotalWorldWorkers(const std::map<std::string, double>& industrialWorkersPerCountry);
@@ -159,11 +159,12 @@ class World: commonItems::parser
 
 	void convertTechs();
 
-	void convertMilitaries(const ProvinceDefinitions& provinceDefinitions);
-	void convertArmies(const militaryMappings& localMilitaryMappings);
+	void convertMilitaries(const ProvinceDefinitions& provinceDefinitions, const ProvinceMapper& provinceMapper);
+	void convertArmies(const militaryMappings& localMilitaryMappings, const ProvinceMapper& provinceMapper);
 	void convertNavies(const UnitMappings& unitMap,
 		 const MtgUnitMappings& mtgUnitMap,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const ProvinceDefinitions& provinceDefinitions,
+		 const ProvinceMapper& provinceMapper);
 	void convertAirforces(const UnitMappings& unitMap);
 
 	void determineGreatPowers();

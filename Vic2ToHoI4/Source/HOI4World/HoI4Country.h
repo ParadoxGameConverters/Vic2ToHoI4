@@ -60,7 +60,7 @@ class techMapper;
 class CountryMapper;
 class governmentMapper;
 class graphicsMapper;
-class provinceMapper;
+class ProvinceMapper;
 
 
 class Date;
@@ -87,7 +87,7 @@ class Country
 	Country& operator=(Country&&) = delete;
 	~Country() = default;
 
-	void determineCapitalFromVic2(const provinceMapper& theProvinceMapper,
+	void determineCapitalFromVic2(const ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates);
 	void setGovernmentToExistingIdeology(const std::set<std::string>& majorIdeologies,
@@ -108,10 +108,13 @@ class Country
 		 const MtgUnitMappings& mtgUnitMap,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const ProvinceDefinitions& provinceDefinitions,
+		 const ProvinceMapper& provinceMapper);
 	void convertConvoys(const UnitMappings& unitMap);
 	void convertAirForce(const UnitMappings& unitMap);
-	void convertArmies(const militaryMappings& theMilitaryMappings, const HoI4::States& theStates);
+	void convertArmies(const militaryMappings& theMilitaryMappings,
+		 const HoI4::States& theStates,
+		 const ProvinceMapper& provinceMapper);
 	void convertTechnology(const mappers::techMapper& theTechMapper);
 	void addState(const State& state);
 	void calculateIndustry(const std::map<int, State>& allStates);
@@ -231,19 +234,19 @@ class Country
 	void convertRelations(const CountryMapper& countryMap);
 	void convertWars(const Vic2::Country& sourceCountry, const CountryMapper& countryMap);
 
-	bool attemptToPutCapitalInPreferredNonWastelandOwned(const provinceMapper& theProvinceMapper,
+	bool attemptToPutCapitalInPreferredNonWastelandOwned(const ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates);
 	bool attemptToPutCapitalInNonWastelandOwned(const std::map<int, State>& allStates);
-	bool attemptToPutCapitalInPreferredWastelandOwned(const provinceMapper& theProvinceMapper,
+	bool attemptToPutCapitalInPreferredWastelandOwned(const ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates);
 	bool attemptToPutCapitalInAnyOwned(const std::map<int, State>& allStates);
-	bool attemptToPutCapitalInPreferredNonWastelandCored(const provinceMapper& theProvinceMapper,
+	bool attemptToPutCapitalInPreferredNonWastelandCored(const ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates);
 	bool attemptToPutCapitalInAnyNonWastelandCored(const std::map<int, State>& allStates);
-	bool attemptToPutCapitalInPreferredWastelandCored(const provinceMapper& theProvinceMapper,
+	bool attemptToPutCapitalInPreferredWastelandCored(const ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates);
 	bool attemptToPutCapitalInAnyCored(const std::map<int, State>& allStates);

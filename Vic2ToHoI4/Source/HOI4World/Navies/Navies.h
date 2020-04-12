@@ -32,7 +32,8 @@ class Navies
 		 const std::map<int, int>& provinceToStateIDMap,
 		 std::map<int, State> states,
 		 const std::string& tag,
-		 const ProvinceDefinitions& provinceDefinitions);
+		 const ProvinceDefinitions& provinceDefinitions,
+		 const ProvinceMapper& provinceMapper);
 
 	Navies() = delete;
 	~Navies() = default;

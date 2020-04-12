@@ -1,11 +1,11 @@
 #include "HoI4State.h"
-#include "StateCategories.h"
-#include "../Map/CoastalProvinces.h"
 #include "../../V2World/Province.h"
 #include "../../V2World/State.h"
+#include "../Map/CoastalProvinces.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
+#include "StateCategories.h"
 #include <random>
 
 
@@ -18,9 +18,7 @@ constexpr int THIRD_INFRASTRUCTURE_REWARD_LEVEL = 10;
 
 
 
-HoI4::State::State(const Vic2::State& sourceState, int _ID, const std::string& _ownerTag):
-	ID(_ID),
-	ownerTag(_ownerTag)
+HoI4::State::State(const Vic2::State& sourceState, int _ID, const std::string& _ownerTag): ID(_ID), ownerTag(_ownerTag)
 {
 	population = sourceState.getPopulation();
 	employedWorkers = sourceState.getEmployedWorkers();
@@ -33,11 +31,10 @@ HoI4::State::State(const Vic2::State& sourceState, int _ID, const std::string& _
 }
 
 
-void HoI4::State::convertNavalBases(
-	const std::set<const Vic2::Province*>& sourceProvinces,
-	const CoastalProvinces& theCoastalProvinces,
-	const provinceMapper& theProvinceMapper
-) {
+void HoI4::State::convertNavalBases(const std::set<const Vic2::Province*>& sourceProvinces,
+	 const CoastalProvinces& theCoastalProvinces,
+	 const ProvinceMapper& theProvinceMapper)
+{
 	for (auto sourceProvince: sourceProvinces)
 	{
 		int navalBaseLevel = determineNavalBaseLevel(*sourceProvince);
@@ -67,11 +64,10 @@ int HoI4::State::determineNavalBaseLevel(const Vic2::Province& sourceProvince) c
 }
 
 
-std::optional<int> HoI4::State::determineNavalBaseLocation(
-	const Vic2::Province& sourceProvince,
-	const CoastalProvinces& theCoastalProvinces,
-	const provinceMapper& theProvinceMapper
-) const {
+std::optional<int> HoI4::State::determineNavalBaseLocation(const Vic2::Province& sourceProvince,
+	 const CoastalProvinces& theCoastalProvinces,
+	 const ProvinceMapper& theProvinceMapper) const
+{
 	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince.getNumber()))
 	{
 		for (auto HoI4ProvNum: *mapping)
@@ -105,11 +101,10 @@ void HoI4::State::addCores(const std::set<std::string>& newCores)
 }
 
 
-void HoI4::State::convertControlledProvinces(
-	const std::set<const Vic2::Province*>& sourceProvinces,
-	const provinceMapper& theProvinceMapper,
-	const CountryMapper& countryMapper
-) {
+void HoI4::State::convertControlledProvinces(const std::set<const Vic2::Province*>& sourceProvinces,
+	 const ProvinceMapper& theProvinceMapper,
+	 const CountryMapper& countryMapper)
+{
 	for (auto sourceProvince: sourceProvinces)
 	{
 		if (sourceProvince->getOwner() != sourceProvince->getController())
@@ -144,7 +139,7 @@ void HoI4::State::convertControlledProvinces(
 }
 
 
-bool HoI4::State::assignVPFromVic2Province(int Vic2ProvinceNumber, const provinceMapper& theProvinceMapper)
+bool HoI4::State::assignVPFromVic2Province(int Vic2ProvinceNumber, const ProvinceMapper& theProvinceMapper)
 {
 	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(Vic2ProvinceNumber))
 	{
@@ -191,11 +186,9 @@ std::optional<int> HoI4::State::getMainNavalLocation() const
 }
 
 
-void HoI4::State::tryToCreateVP(
-	const Vic2::State& sourceState,
-	const provinceMapper& theProvinceMapper,
-	const Configuration& theConfiguration
-)
+void HoI4::State::tryToCreateVP(const Vic2::State& sourceState,
+	 const ProvinceMapper& theProvinceMapper,
+	 const Configuration& theConfiguration)
 {
 	bool VPCreated = false;
 
@@ -213,11 +206,9 @@ void HoI4::State::tryToCreateVP(
 		}
 		for (auto province: sourceState.getProvinces())
 		{
-			if (
-				 (province->getPopulation("aristocrats") > 0) ||
-				 (province->getPopulation("bureaucrats") > 0) ||
-				 (province->getPopulation("capitalists") > 0)
-			) {
+			if ((province->getPopulation("aristocrats") > 0) || (province->getPopulation("bureaucrats") > 0) ||
+				 (province->getPopulation("capitalists") > 0))
+			{
 				VPCreated = assignVPFromVic2Province(province->getNumber(), theProvinceMapper);
 				if (VPCreated)
 				{
@@ -232,15 +223,14 @@ void HoI4::State::tryToCreateVP(
 		std::list<const Vic2::Province*> provincesOrderedByPopulation;
 		for (auto province: sourceState.getProvinces())
 		{
-			provincesOrderedByPopulation.insert(
-				std::upper_bound(	provincesOrderedByPopulation.begin(),
-										provincesOrderedByPopulation.end(),
-										province,
-										[](const Vic2::Province* a, const Vic2::Province* b){
-											// provide a 'backwards' comparison to force the sort order we want
-											return a->getTotalPopulation() > b->getTotalPopulation();
-										}),
-				province);
+			provincesOrderedByPopulation.insert(std::upper_bound(provincesOrderedByPopulation.begin(),
+																 provincesOrderedByPopulation.end(),
+																 province,
+																 [](const Vic2::Province* a, const Vic2::Province* b) {
+																	 // provide a 'backwards' comparison to force the sort order we want
+																	 return a->getTotalPopulation() > b->getTotalPopulation();
+																 }),
+				 province);
 		}
 		for (auto province: provincesOrderedByPopulation)
 		{
@@ -261,7 +251,7 @@ void HoI4::State::tryToCreateVP(
 }
 
 
-void HoI4::State::addDebugVPs(const Vic2::State& sourceState, const provinceMapper& theProvinceMapper)
+void HoI4::State::addDebugVPs(const Vic2::State& sourceState, const ProvinceMapper& theProvinceMapper)
 {
 	for (auto sourceProvinceNum: sourceState.getProvinceNumbers())
 	{
@@ -278,11 +268,9 @@ void HoI4::State::addDebugVPs(const Vic2::State& sourceState, const provinceMapp
 }
 
 
-void HoI4::State::addManpower(
-	const std::set<const Vic2::Province*>& sourceProvinces,
-	const provinceMapper& theProvinceMapper,
-	const Configuration& theConfiguration
-)
+void HoI4::State::addManpower(const std::set<const Vic2::Province*>& sourceProvinces,
+	 const ProvinceMapper& theProvinceMapper,
+	 const Configuration& theConfiguration)
 {
 	for (auto sourceProvince: sourceProvinces)
 	{
@@ -301,22 +289,17 @@ void HoI4::State::addManpower(
 
 		if (provinceIsInState)
 		{
-			manpower +=
-				static_cast<int>(
-					sourceProvince->getTotalPopulation() *
-					POP_CONVERSION_FACTOR *
-					theConfiguration.getManpowerFactor()
-				);
+			manpower += static_cast<int>(
+				 sourceProvince->getTotalPopulation() * POP_CONVERSION_FACTOR * theConfiguration.getManpowerFactor());
 		}
 	}
 }
 
 
-void HoI4::State::convertIndustry(
-	double workerFactoryRatio,
-	const HoI4::StateCategories& theStateCategories,
-	const CoastalProvinces& theCoastalProvinces
-) {
+void HoI4::State::convertIndustry(double workerFactoryRatio,
+	 const HoI4::StateCategories& theStateCategories,
+	 const CoastalProvinces& theCoastalProvinces)
+{
 	int factories = determineFactoryNumbers(workerFactoryRatio);
 
 	determineCategory(factories, theStateCategories);

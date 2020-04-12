@@ -13,14 +13,15 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 std::map<int, State> states,
 	 const std::string& tag,
-	 const ProvinceDefinitions& provinceDefinitions)
+	 const ProvinceDefinitions& provinceDefinitions,
+	 const ProvinceMapper& provinceMapper)
 {
 	for (auto army: srcArmies)
 	{
 		auto navalLocation = backupNavalLocation;
 		auto base = backupNavalLocation;
 
-		if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(army.getLocation()); mapping)
+		if (auto mapping = provinceMapper.getVic2ToHoI4ProvinceMapping(army.getLocation()); mapping)
 		{
 			for (auto possibleProvince: *mapping)
 			{

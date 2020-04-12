@@ -50,7 +50,8 @@ class States: commonItems::parser
 		 const Vic2::StateDefinitions& theStateDefinitions,
 		 const Vic2::Localisations& vic2Localisations,
 		 const ProvinceDefinitions& provinceDefinitions,
-		 Localisation& hoi4Localisations);
+		 Localisation& hoi4Localisations,
+		 const ProvinceMapper& provinceMapper);
 
 	const std::map<int, HoI4::DefaultState>& getDefaultStates() const { return defaultStates; }
 	const std::map<int, HoI4::State>& getStates() const { return states; }
@@ -69,8 +70,9 @@ class States: commonItems::parser
   private:
 	void determineOwnersAndCores(const CountryMapper& countryMap,
 		 const Vic2::World& sourceWorld,
-		 const ProvinceDefinitions& provinceDefinitions);
-	std::optional<std::vector<int>> retrieveSourceProvinceNums(int provNum) const;
+		 const ProvinceDefinitions& provinceDefinitions,
+		 const ProvinceMapper& provinceMapper);
+	std::optional<std::vector<int>> retrieveSourceProvinceNums(int provNum, const ProvinceMapper& provinceMapper) const;
 	const std::map<std::string, std::pair<int, int>> determinePotentialOwners(const std::vector<int>& sourceProvinceNums,
 		 const Vic2::World& sourceWorld) const;
 	const std::string selectProvinceOwner(const std::map<std::string, std::pair<int, int>>& potentialOwners) const;
@@ -87,7 +89,8 @@ class States: commonItems::parser
 		 const HoI4::CoastalProvinces& theCoastalProvinces,
 		 const Vic2::StateDefinitions& theStateDefinitions,
 		 const Vic2::Localisations& vic2Localisations,
-		 Localisation& hoi4Localisations);
+		 Localisation& hoi4Localisations,
+		 const ProvinceMapper& provinceMapper);
 	void createMatchingHoI4State(const Vic2::State* vic2State,
 		 const std::string& stateOwner,
 		 const HoI4::ImpassableProvinces& theImpassables,
@@ -95,8 +98,11 @@ class States: commonItems::parser
 		 const HoI4::CoastalProvinces& theCoastalProvinces,
 		 const Vic2::StateDefinitions& theStateDefinitions,
 		 const Vic2::Localisations& vic2Localisations,
-		 Localisation& hoi4Localisations);
-	std::set<int> getProvincesInState(const Vic2::State* vic2State, const std::string& owner);
+		 Localisation& hoi4Localisations,
+		 const ProvinceMapper& provinceMapper);
+	std::set<int> getProvincesInState(const Vic2::State* vic2State,
+		 const std::string& owner,
+		 const ProvinceMapper& provinceMapper);
 	void addProvincesAndCoresToNewState(HoI4::State& newState, const std::set<int>& provinces);
 	bool isProvinceValid(int provNum) const;
 	bool isProvinceOwnedByCountry(int provNum, const std::string& stateOwner) const;

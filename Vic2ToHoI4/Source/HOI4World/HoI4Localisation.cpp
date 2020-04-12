@@ -396,16 +396,24 @@ void HoI4::Localisation::copyEventLocalisations(const std::string& oldKey, const
 void HoI4::Localisation::addStateLocalisation(const State& hoi4State,
 	 const Vic2::State& vic2State,
 	 const Vic2::StateDefinitions& theStateDefinitions,
-	 const Vic2::Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations,
+	 const ProvinceMapper& theProvinceMapper)
 {
 	for (const auto& Vic2NameInLanguage: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
 	{
-		addStateLocalisationForLanguage(hoi4State, vic2State, Vic2NameInLanguage, theStateDefinitions, vic2Localisations);
+		addStateLocalisationForLanguage(hoi4State,
+			 vic2State,
+			 Vic2NameInLanguage,
+			 theStateDefinitions,
+			 vic2Localisations,
+			 theProvinceMapper);
 	}
 }
 
 
-void HoI4::Localisation::addStateLocalisations(const States& states, const Vic2::Localisations& vic2Localisations)
+void HoI4::Localisation::addStateLocalisations(const States& states,
+	 const Vic2::Localisations& vic2Localisations,
+	 const ProvinceMapper& theProvinceMapper)
 {
 	LOG(LogLevel::Info) << "\tAdding state localisations";
 	for (const auto& state: states.getStates())
@@ -426,7 +434,7 @@ void HoI4::Localisation::addStateLocalisations(const States& states, const Vic2:
 
 		if (theConfiguration.getDebug())
 		{
-			addDebugLocalisations(state, vic2Localisations);
+			addDebugLocalisations(state, vic2Localisations, theProvinceMapper);
 		}
 	}
 
@@ -436,7 +444,8 @@ void HoI4::Localisation::addStateLocalisations(const States& states, const Vic2:
 
 
 void HoI4::Localisation::addDebugLocalisations(const std::pair<const int, State>& state,
-	 const Vic2::Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations,
+	 const ProvinceMapper& theProvinceMapper)
 {
 	for (auto VPPositionInHoI4: state.second.getDebugVPs())
 	{
@@ -486,7 +495,8 @@ bool HoI4::Localisation::sourceStateHasAllButOneProvinceFromDefinition(const Vic
 
 bool HoI4::Localisation::stateHasAllDefinedProvincesAfterConversion(const State& state,
 	 const Vic2::State& sourceState,
-	 const Vic2::StateDefinitions& theStateDefinitions)
+	 const Vic2::StateDefinitions& theStateDefinitions,
+	 const ProvinceMapper& theProvinceMapper)
 {
 	std::set<int> stateDefinitionDefinitionProvinces;
 
@@ -520,7 +530,8 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	 const Vic2::State& vic2State,
 	 const std::pair<const std::string, std::string>& Vic2NameInLanguage,
 	 const Vic2::StateDefinitions& theStateDefinitions,
-	 const Vic2::Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations,
+	 const ProvinceMapper& theProvinceMapper)
 {
 	std::string localisedName = "";
 	if (sourceStateHasOneProvince(vic2State))
@@ -541,7 +552,7 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	{
 		localisedName = Vic2NameInLanguage.second;
 	}
-	else if (stateHasAllDefinedProvincesAfterConversion(hoi4State, vic2State, theStateDefinitions))
+	else if (stateHasAllDefinedProvincesAfterConversion(hoi4State, vic2State, theStateDefinitions, theProvinceMapper))
 	{
 		localisedName = Vic2NameInLanguage.second;
 	}

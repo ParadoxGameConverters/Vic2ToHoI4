@@ -1,26 +1,3 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "ProvinceMapper.h"
 #include "ProvinceMapping.h"
 #include "VersionedMappings.h"
@@ -32,11 +9,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-provinceMapper theProvinceMapper;
-
-
-
-void provinceMapper::initialize()
+void ProvinceMapper::initialize()
 {
 	bool gotMappings = false;
 	registerKeyword(std::regex("\\d\\.\\d\\.\\d"), [this, &gotMappings](const std::string& version, std::istream& theStream){
@@ -75,7 +48,7 @@ void provinceMapper::initialize()
 }
 
 
-void provinceMapper::initialize(std::istream& input)
+void ProvinceMapper::initialize(std::istream& input)
 {
 	registerKeyword(std::regex("\\d\\.\\d\\.\\d"), [this](const std::string& version, std::istream& theStream){
 		HoI4::Version currentVersion(version);
@@ -96,7 +69,7 @@ void provinceMapper::initialize(std::istream& input)
 }
 
 
-void provinceMapper::checkAllHoI4ProvinesMapped() const
+void ProvinceMapper::checkAllHoI4ProvinesMapped() const
 {
 	std::ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
 	if (!definitions.is_open())
@@ -120,7 +93,7 @@ void provinceMapper::checkAllHoI4ProvinesMapped() const
 }
 
 
-std::optional<int> provinceMapper::getNextProvinceNumFromFile(std::ifstream& definitions) const
+std::optional<int> ProvinceMapper::getNextProvinceNumFromFile(std::ifstream& definitions) const
 {
 	std::string line;
 	getline(definitions, line);
@@ -136,7 +109,7 @@ std::optional<int> provinceMapper::getNextProvinceNumFromFile(std::ifstream& def
 }
 
 
-void provinceMapper::verifyProvinceIsMapped(int provNum) const
+void ProvinceMapper::verifyProvinceIsMapped(int provNum) const
 {
 	if (provNum != 0)
 	{
@@ -149,7 +122,7 @@ void provinceMapper::verifyProvinceIsMapped(int provNum) const
 }
 
 
-std::optional<std::vector<int>> provinceMapper::getVic2ToHoI4ProvinceMapping(int Vic2Province) const
+std::optional<std::vector<int>> ProvinceMapper::getVic2ToHoI4ProvinceMapping(int Vic2Province) const
 {
 	if (auto mapping = Vic2ToHoI4ProvinceMap.find(Vic2Province); mapping != Vic2ToHoI4ProvinceMap.end())
 	{
@@ -162,7 +135,7 @@ std::optional<std::vector<int>> provinceMapper::getVic2ToHoI4ProvinceMapping(int
 }
 
 
-std::optional<std::vector<int>> provinceMapper::getHoI4ToVic2ProvinceMapping(int HoI4Province) const
+std::optional<std::vector<int>> ProvinceMapper::getHoI4ToVic2ProvinceMapping(int HoI4Province) const
 {
 	if (auto mapping = HoI4ToVic2ProvinceMap.find(HoI4Province); mapping != HoI4ToVic2ProvinceMap.end())
 	{

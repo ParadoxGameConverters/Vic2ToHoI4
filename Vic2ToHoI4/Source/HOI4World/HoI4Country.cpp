@@ -289,7 +289,7 @@ void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry, const Cou
 }
 
 
-void HoI4::Country::determineCapitalFromVic2(const provinceMapper& theProvinceMapper,
+void HoI4::Country::determineCapitalFromVic2(const ProvinceMapper& theProvinceMapper,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates)
 {
@@ -329,7 +329,7 @@ void HoI4::Country::determineCapitalFromVic2(const provinceMapper& theProvinceMa
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandOwned(const provinceMapper& theProvinceMapper,
+bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandOwned(const ProvinceMapper& theProvinceMapper,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates)
 {
@@ -374,7 +374,7 @@ bool HoI4::Country::attemptToPutCapitalInNonWastelandOwned(const std::map<int, S
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInPreferredWastelandOwned(const provinceMapper& theProvinceMapper,
+bool HoI4::Country::attemptToPutCapitalInPreferredWastelandOwned(const ProvinceMapper& theProvinceMapper,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates)
 {
@@ -417,7 +417,7 @@ bool HoI4::Country::attemptToPutCapitalInAnyOwned(const std::map<int, State>& al
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandCored(const provinceMapper& theProvinceMapper,
+bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandCored(const ProvinceMapper& theProvinceMapper,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates)
 {
@@ -461,7 +461,7 @@ bool HoI4::Country::attemptToPutCapitalInAnyNonWastelandCored(const std::map<int
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInPreferredWastelandCored(const provinceMapper& theProvinceMapper,
+bool HoI4::Country::attemptToPutCapitalInPreferredWastelandCored(const ProvinceMapper& theProvinceMapper,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates)
 {
@@ -595,7 +595,8 @@ void HoI4::Country::convertNavies(const UnitMappings& unitMap,
 	 const MtgUnitMappings& mtgUnitMap,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates,
-	 const ProvinceDefinitions& provinceDefinitions)
+	 const ProvinceDefinitions& provinceDefinitions,
+	 const ProvinceMapper& provinceMapper)
 {
 	auto backupNavalLocation = 0;
 	for (const auto& state: allStates)
@@ -619,7 +620,8 @@ void HoI4::Country::convertNavies(const UnitMappings& unitMap,
 		 provinceToStateIDMap,
 		 allStates,
 		 tag,
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 
 	navyNames.addLegacyShipTypeNames(
 		 LegacyShipTypeNames{"submarine", "Submarine", sourceCountry.getShipNames("frigate")});
@@ -765,15 +767,21 @@ void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 }
 
 
-void HoI4::Country::convertArmies(const militaryMappings& theMilitaryMappings, const HoI4::States& theStates)
+void HoI4::Country::convertArmies(const militaryMappings& theMilitaryMappings,
+	 const HoI4::States& theStates,
+	 const ProvinceMapper& provinceMapper)
 {
 	if (capitalProvince)
 	{
-		theArmy.convertArmies(theMilitaryMappings, *capitalProvince, theConfiguration.getForceMultiplier(), theStates);
+		theArmy.convertArmies(theMilitaryMappings,
+			 *capitalProvince,
+			 theConfiguration.getForceMultiplier(),
+			 theStates,
+			 provinceMapper);
 	}
 	else
 	{
-		theArmy.convertArmies(theMilitaryMappings, 0, theConfiguration.getForceMultiplier(), theStates);
+		theArmy.convertArmies(theMilitaryMappings, 0, theConfiguration.getForceMultiplier(), theStates, provinceMapper);
 	}
 }
 

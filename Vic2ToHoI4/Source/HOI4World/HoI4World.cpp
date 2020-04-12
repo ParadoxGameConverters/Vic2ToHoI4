@@ -41,7 +41,7 @@ using namespace std;
 
 
 
-HoI4::World::World(const Vic2::World* _sourceWorld):
+HoI4::World::World(const Vic2::World* _sourceWorld, const ProvinceMapper& provinceMapper):
 	 sourceWorld(_sourceWorld), countryMap(_sourceWorld), theIdeas(std::make_unique<HoI4::Ideas>()),
 	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), peaces(make_unique<HoI4::AiPeaces>()),
 	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
@@ -61,16 +61,17 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 		 sourceWorld->getStateDefinitions(),
 		 vic2Localisations,
 		 provinceDefinitions,
-		 *hoi4Localisations);
+		 *hoi4Localisations,
+		 provinceMapper);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates());
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, provinceDefinitions);
 	theNames.init();
 	theGraphics.init();
 	governmentMap.init();
 	convertCountries(vic2Localisations);
-	addStatesToCountries();
+	addStatesToCountries(provinceMapper);
 	states->addCapitalsToStates(countries);
-	hoi4Localisations->addStateLocalisations(*states, vic2Localisations);
+	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper);
 	convertIndustry();
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
@@ -80,7 +81,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld):
 
 	militaryMappingsFile importedMilitaryMappings;
 	theMilitaryMappings = importedMilitaryMappings.takeAllMilitaryMappings();
-	convertMilitaries(provinceDefinitions);
+	convertMilitaries(provinceDefinitions, provinceMapper);
 
 	determineGreatPowers();
 
@@ -294,7 +295,7 @@ void HoI4::World::convertIndustry()
 }
 
 
-void HoI4::World::addStatesToCountries()
+void HoI4::World::addStatesToCountries(const ProvinceMapper& provinceMapper)
 {
 	LOG(LogLevel::Info) << "\tAdding states to countries";
 	for (auto state: states->getStates())
@@ -312,9 +313,7 @@ void HoI4::World::addStatesToCountries()
 		{
 			landedCountries.insert(country);
 		}
-		country.second->determineCapitalFromVic2(theProvinceMapper,
-			 states->getProvinceToStateIDMap(),
-			 states->getStates());
+		country.second->determineCapitalFromVic2(provinceMapper, states->getProvinceToStateIDMap(), states->getStates());
 	}
 }
 
@@ -633,32 +632,37 @@ void HoI4::World::convertTechs()
 }
 
 
-void HoI4::World::convertMilitaries(const ProvinceDefinitions& provinceDefinitions)
+void HoI4::World::convertMilitaries(const ProvinceDefinitions& provinceDefinitions,
+	 const ProvinceMapper& provinceMapper)
 {
 	LOG(LogLevel::Info) << "\tConverting militaries";
 	const HoI4::militaryMappings& specificMappings =
 		 theMilitaryMappings->getMilitaryMappings(theConfiguration.getVic2Mods());
 
-	convertArmies(specificMappings);
-	convertNavies(specificMappings.getUnitMappings(), specificMappings.getMtgUnitMappings(), provinceDefinitions);
+	convertArmies(specificMappings, provinceMapper);
+	convertNavies(specificMappings.getUnitMappings(),
+		 specificMappings.getMtgUnitMappings(),
+		 provinceDefinitions,
+		 provinceMapper);
 	convertAirforces(specificMappings.getUnitMappings());
 }
 
 
-void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings)
+void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings, const ProvinceMapper& provinceMapper)
 {
 	LOG(LogLevel::Info) << "\t\tConverting armies";
 
 	for (auto country: countries)
 	{
-		country.second->convertArmies(localMilitaryMappings, *states);
+		country.second->convertArmies(localMilitaryMappings, *states, provinceMapper);
 	}
 }
 
 
 void HoI4::World::convertNavies(const UnitMappings& unitMap,
 	 const MtgUnitMappings& mtgUnitMap,
-	 const ProvinceDefinitions& provinceDefinitions)
+	 const ProvinceDefinitions& provinceDefinitions,
+	 const ProvinceMapper& provinceMapper)
 {
 	LOG(LogLevel::Info) << "\t\tConverting navies";
 
@@ -678,7 +682,8 @@ void HoI4::World::convertNavies(const UnitMappings& unitMap,
 			 mtgUnitMap,
 			 states->getProvinceToStateIDMap(),
 			 states->getStates(),
-			 provinceDefinitions);
+			 provinceDefinitions,
+			 provinceMapper);
 		country.second->convertConvoys(unitMap);
 	}
 }
