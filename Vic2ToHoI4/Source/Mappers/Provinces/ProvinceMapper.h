@@ -24,8 +24,8 @@ class ProvinceMapper
 	{
 	}
 
-	virtual std::optional<std::vector<int>> getVic2ToHoI4ProvinceMapping(int Vic2Province) const;
-	std::optional<std::vector<int>> getHoI4ToVic2ProvinceMapping(int HoI4Province) const;
+	[[nodiscard]] std::optional<std::vector<int>> getVic2ToHoI4ProvinceMapping(int Vic2Province) const;
+	[[nodiscard]] std::optional<std::vector<int>> getHoI4ToVic2ProvinceMapping(int HoI4Province) const;
 
   private:
 	HoI4ToVic2ProvinceMapping HoI4ToVic2ProvinceMap;

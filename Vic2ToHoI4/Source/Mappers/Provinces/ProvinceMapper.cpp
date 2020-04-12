@@ -3,7 +3,6 @@
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
-#include "ProvinceMapping.h"
 #include "VersionedMappings.h"
 #include <fstream>
 
@@ -11,14 +10,14 @@
 
 mappers::ProvinceMapper mappers::ProvinceMapper::Parser::initializeMapper()
 {
-	bool gotMappings = false;
+	auto gotMappings = false;
 	registerKeyword(std::regex("\\d\\.\\d\\.\\d"),
 		 [this, &gotMappings](const std::string& version, std::istream& theStream) {
-			 HoI4::Version currentVersion(version);
+			 const HoI4::Version currentVersion(version);
 			 if ((theConfiguration.getHOI4Version() >= currentVersion) && !gotMappings)
 			 {
 				 LOG(LogLevel::Debug) << "Using version " << version << " mappings";
-				 VersionedMappings thisVersionsMappings(theStream);
+				 const VersionedMappings thisVersionsMappings(theStream);
 				 HoI4ToVic2ProvinceMap = thisVersionsMappings.getHoI4ToVic2Mapping();
 				 Vic2ToHoI4ProvinceMap = thisVersionsMappings.getVic2ToHoI4Mapping();
 				 gotMappings = true;
@@ -30,8 +29,9 @@ mappers::ProvinceMapper mappers::ProvinceMapper::Parser::initializeMapper()
 		 });
 
 	LOG(LogLevel::Info) << "Parsing province mappings";
-	bool mapped = false;
-	for (auto mod: theConfiguration.getVic2Mods())
+
+	auto mapped = false;
+	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
 		if (Utils::DoesFileExist(mod + "_province_mappings.txt"))
 		{
@@ -79,8 +79,8 @@ std::optional<int> mappers::ProvinceMapper::Parser::getNextProvinceNumFromFile(s
 {
 	std::string line;
 	getline(definitions, line);
-	int pos = line.find_first_of(';');
-	if (pos != std::string::npos)
+
+	if (const auto pos = line.find_first_of(';'); pos != std::string::npos)
 	{
 		return stoi(line.substr(0, pos));
 	}
@@ -91,11 +91,11 @@ std::optional<int> mappers::ProvinceMapper::Parser::getNextProvinceNumFromFile(s
 }
 
 
-void mappers::ProvinceMapper::Parser::verifyProvinceIsMapped(int provNum) const
+void mappers::ProvinceMapper::Parser::verifyProvinceIsMapped(const int provNum) const
 {
 	if (provNum != 0)
 	{
-		auto num = HoI4ToVic2ProvinceMap.find(provNum);
+		const auto num = HoI4ToVic2ProvinceMap.find(provNum);
 		if (num == HoI4ToVic2ProvinceMap.end())
 		{
 			LOG(LogLevel::Warning) << "No mapping for HoI4 province " << provNum;
@@ -104,9 +104,9 @@ void mappers::ProvinceMapper::Parser::verifyProvinceIsMapped(int provNum) const
 }
 
 
-std::optional<std::vector<int>> mappers::ProvinceMapper::getVic2ToHoI4ProvinceMapping(int Vic2Province) const
+std::optional<std::vector<int>> mappers::ProvinceMapper::getVic2ToHoI4ProvinceMapping(const int Vic2Province) const
 {
-	if (auto mapping = Vic2ToHoI4ProvinceMap.find(Vic2Province); mapping != Vic2ToHoI4ProvinceMap.end())
+	if (const auto mapping = Vic2ToHoI4ProvinceMap.find(Vic2Province); mapping != Vic2ToHoI4ProvinceMap.end())
 	{
 		return mapping->second;
 	}
@@ -117,9 +117,9 @@ std::optional<std::vector<int>> mappers::ProvinceMapper::getVic2ToHoI4ProvinceMa
 }
 
 
-std::optional<std::vector<int>> mappers::ProvinceMapper::getHoI4ToVic2ProvinceMapping(int HoI4Province) const
+std::optional<std::vector<int>> mappers::ProvinceMapper::getHoI4ToVic2ProvinceMapping(const int HoI4Province) const
 {
-	if (auto mapping = HoI4ToVic2ProvinceMap.find(HoI4Province); mapping != HoI4ToVic2ProvinceMap.end())
+	if (const auto mapping = HoI4ToVic2ProvinceMap.find(HoI4Province); mapping != HoI4ToVic2ProvinceMap.end())
 	{
 		return mapping->second;
 	}

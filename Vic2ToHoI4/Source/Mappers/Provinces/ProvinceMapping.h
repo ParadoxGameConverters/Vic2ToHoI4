@@ -1,3 +1,8 @@
+#ifndef PROVINCE_MAPPING_H
+#define PROVINCE_MAPPING_H
+
+
+
 #include "newParser.h"
 
 
@@ -8,14 +13,18 @@ namespace mappers
 class ProvinceMapping: commonItems::parser
 {
   public:
-	ProvinceMapping(std::istream& theStream);
+	explicit ProvinceMapping(std::istream& theStream);
 
-	auto getVic2Nums() const { return Vic2Nums; }
-	auto getHoI4Nums() const { return HoI4Nums; }
+	[[nodiscard]] auto getVic2Provinces() const { return Vic2Provinces; }
+	[[nodiscard]] auto getHoI4Provinces() const { return HoI4Provinces; }
 
   private:
-	std::vector<int> Vic2Nums;
-	std::vector<int> HoI4Nums;
+	std::vector<int> Vic2Provinces;
+	std::vector<int> HoI4Provinces;
 };
 
 } // namespace mappers
+
+
+
+#endif // PROVINCE_MAPPING_H
