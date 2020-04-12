@@ -15,6 +15,7 @@ class HoI4World_Navies_NaviesTests: public testing::Test
 	std::unique_ptr<HoI4::ShipVariants> limitedShipVariants;
 
 	HoI4::ProvinceDefinitions provinceDefinitions;
+	ProvinceMapper provinceMapper;
 };
 
 
@@ -130,7 +131,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToLegacy)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	std::ostringstream output;
 	outputLegacyNavies(navies, ownedTechs, "TAG", output);
 
@@ -202,7 +204,8 @@ TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableLegacyShipType)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	mockTechnologies ownedTechs;
 	std::ostringstream output;
 	outputMtgNavies(navies, ownedTechs, "TAG", output);
@@ -255,7 +258,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	mockTechnologies ownedTechs;
 	std::ostringstream output;
 	outputLegacyNavies(navies, ownedTechs, "TAG", output);
@@ -316,7 +320,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	mockTechnologies ownedTechs;
 	std::ostringstream output;
 	outputLegacyNavies(navies, ownedTechs, "TAG", output);
@@ -389,7 +394,8 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyNavyNamesConvert)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	std::ostringstream output;
 	outputLegacyNavies(navies, ownedTechs, "TAG", output);
 
@@ -444,7 +450,8 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHave1936DestroyerInProduction)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	std::ostringstream output;
 	outputLegacyNavies(navies, ownedTechs, "TAG", output);
 
@@ -499,7 +506,8 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHaveEarlyDestroyerInProduction)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	std::ostringstream output;
 	outputLegacyNavies(navies, ownedTechs, "TAG", output);
 
@@ -553,7 +561,8 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHave1936BattleshipInProduction)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	std::ostringstream output;
 	outputLegacyNavies(navies, ownedTechs, "TAG", output);
 
@@ -608,7 +617,8 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHaveEarlyBattleshipInProduction)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	std::ostringstream output;
 	outputLegacyNavies(navies, ownedTechs, "TAG", output);
 
@@ -679,7 +689,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToMtg)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	mockTechnologies ownedTechs;
 	std::ostringstream output;
 	outputMtgNavies(navies, ownedTechs, "TAG", output);
@@ -759,7 +770,8 @@ TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableMtgShipType)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	mockTechnologies ownedTechs;
 	std::ostringstream output;
 	outputMtgNavies(navies, ownedTechs, "TAG", output);
@@ -832,7 +844,8 @@ TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesGetExperience)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	mockTechnologies ownedTechs;
 	std::ostringstream output;
 	outputMtgNavies(navies, ownedTechs, "TAG", output);
@@ -897,7 +910,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToMtg)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	mockTechnologies ownedTechs;
 	std::ostringstream output;
 	outputMtgNavies(navies, ownedTechs, "TAG", output);
@@ -960,7 +974,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToMtgNavy)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	mockTechnologies ownedTechs;
 	std::ostringstream output;
 	outputMtgNavies(navies, ownedTechs, "TAG", output);
@@ -1023,7 +1038,8 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgNavyNamesConvert)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	mockTechnologies ownedTechs;
 	std::ostringstream output;
 	outputMtgNavies(navies, ownedTechs, "TAG", output);
@@ -1072,7 +1088,8 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgCanHave1936DestroyerInProduction)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	mockTechnologies ownedTechs;
 	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light")).WillOnce(testing::Return(true));
 	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_heavy")).WillOnce(testing::Return(false));
@@ -1124,7 +1141,8 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgCanHaveEarlyDestroyerInProduction)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	mockTechnologies ownedTechs;
 	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light")).WillOnce(testing::Return(false));
 	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_light")).WillOnce(testing::Return(true));
@@ -1177,7 +1195,8 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgCanHave1936BattleshipInProduction)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	mockTechnologies ownedTechs;
 	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light")).WillOnce(testing::Return(false));
 	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_light")).WillOnce(testing::Return(false));
@@ -1229,7 +1248,8 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgCanHaveEarlyBattleshipInProduction)
 		 provinceToStateIDMap,
 		 states,
 		 "TAG",
-		 provinceDefinitions);
+		 provinceDefinitions,
+		 provinceMapper);
 	mockTechnologies ownedTechs;
 	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light")).WillOnce(testing::Return(false));
 	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_light")).WillOnce(testing::Return(false));
