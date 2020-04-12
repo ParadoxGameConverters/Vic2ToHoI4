@@ -43,7 +43,7 @@ class Army
 		 int backupLocation,
 		 double forceMultiplier,
 		 const States& theStates,
-		 const ProvinceMapper& provinceMapper);
+		 const mappers::ProvinceMapper& provinceMapper);
 
 	friend std::ostream& operator<<(std::ostream& output, const Army& theArmy);
 

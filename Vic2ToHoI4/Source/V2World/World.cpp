@@ -19,7 +19,7 @@
 
 
 
-Vic2::World::World(const std::string& filename, const ProvinceMapper& provinceMapper)
+Vic2::World::World(const std::string& filename, const mappers::ProvinceMapper& provinceMapper)
 {
 	theLocalisations = Localisations::Parser{}.importLocalisations();
 	theCultureGroups.init();
@@ -432,7 +432,7 @@ std::optional<const Vic2::Province*> Vic2::World::getProvince(int provNum) const
 }
 
 
-void Vic2::World::checkAllProvincesMapped(const ProvinceMapper& provinceMapper) const
+void Vic2::World::checkAllProvincesMapped(const mappers::ProvinceMapper& provinceMapper) const
 {
 	for (auto province: provinces)
 	{

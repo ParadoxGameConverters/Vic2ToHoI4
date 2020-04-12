@@ -8,7 +8,7 @@
 
 
 
-class mockProvinceMapper final: public ProvinceMapper
+class mockProvinceMapper final: public mappers::ProvinceMapper
 {
   public:
 	MOCK_METHOD(std::optional<std::vector<int>>, getVic2ToHoI4ProvinceMapping, (int Vic2Province), (const, override));

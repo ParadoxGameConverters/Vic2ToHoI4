@@ -14,7 +14,7 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 	 std::map<int, State> states,
 	 const std::string& tag,
 	 const ProvinceDefinitions& provinceDefinitions,
-	 const ProvinceMapper& provinceMapper)
+	 const mappers::ProvinceMapper& provinceMapper)
 {
 	for (auto army: srcArmies)
 	{

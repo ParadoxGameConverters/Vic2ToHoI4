@@ -21,6 +21,7 @@ namespace HoI4
 
 class ProvinceDefinitions;
 
+
 class Navies
 {
   public:
@@ -33,7 +34,7 @@ class Navies
 		 std::map<int, State> states,
 		 const std::string& tag,
 		 const ProvinceDefinitions& provinceDefinitions,
-		 const ProvinceMapper& provinceMapper);
+		 const mappers::ProvinceMapper& provinceMapper);
 
 	Navies() = delete;
 	~Navies() = default;

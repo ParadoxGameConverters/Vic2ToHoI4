@@ -33,7 +33,7 @@ HoI4::State::State(const Vic2::State& sourceState, int _ID, const std::string& _
 
 void HoI4::State::convertNavalBases(const std::set<const Vic2::Province*>& sourceProvinces,
 	 const CoastalProvinces& theCoastalProvinces,
-	 const ProvinceMapper& theProvinceMapper)
+	 const mappers::ProvinceMapper& theProvinceMapper)
 {
 	for (auto sourceProvince: sourceProvinces)
 	{
@@ -66,7 +66,7 @@ int HoI4::State::determineNavalBaseLevel(const Vic2::Province& sourceProvince) c
 
 std::optional<int> HoI4::State::determineNavalBaseLocation(const Vic2::Province& sourceProvince,
 	 const CoastalProvinces& theCoastalProvinces,
-	 const ProvinceMapper& theProvinceMapper) const
+	 const mappers::ProvinceMapper& theProvinceMapper) const
 {
 	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince.getNumber()))
 	{
@@ -102,7 +102,7 @@ void HoI4::State::addCores(const std::set<std::string>& newCores)
 
 
 void HoI4::State::convertControlledProvinces(const std::set<const Vic2::Province*>& sourceProvinces,
-	 const ProvinceMapper& theProvinceMapper,
+	 const mappers::ProvinceMapper& theProvinceMapper,
 	 const CountryMapper& countryMapper)
 {
 	for (auto sourceProvince: sourceProvinces)
@@ -139,7 +139,7 @@ void HoI4::State::convertControlledProvinces(const std::set<const Vic2::Province
 }
 
 
-bool HoI4::State::assignVPFromVic2Province(int Vic2ProvinceNumber, const ProvinceMapper& theProvinceMapper)
+bool HoI4::State::assignVPFromVic2Province(int Vic2ProvinceNumber, const mappers::ProvinceMapper& theProvinceMapper)
 {
 	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(Vic2ProvinceNumber))
 	{
@@ -187,7 +187,7 @@ std::optional<int> HoI4::State::getMainNavalLocation() const
 
 
 void HoI4::State::tryToCreateVP(const Vic2::State& sourceState,
-	 const ProvinceMapper& theProvinceMapper,
+	 const mappers::ProvinceMapper& theProvinceMapper,
 	 const Configuration& theConfiguration)
 {
 	bool VPCreated = false;
@@ -251,7 +251,7 @@ void HoI4::State::tryToCreateVP(const Vic2::State& sourceState,
 }
 
 
-void HoI4::State::addDebugVPs(const Vic2::State& sourceState, const ProvinceMapper& theProvinceMapper)
+void HoI4::State::addDebugVPs(const Vic2::State& sourceState, const mappers::ProvinceMapper& theProvinceMapper)
 {
 	for (auto sourceProvinceNum: sourceState.getProvinceNumbers())
 	{
@@ -269,7 +269,7 @@ void HoI4::State::addDebugVPs(const Vic2::State& sourceState, const ProvinceMapp
 
 
 void HoI4::State::addManpower(const std::set<const Vic2::Province*>& sourceProvinces,
-	 const ProvinceMapper& theProvinceMapper,
+	 const mappers::ProvinceMapper& theProvinceMapper,
 	 const Configuration& theConfiguration)
 {
 	for (auto sourceProvince: sourceProvinces)

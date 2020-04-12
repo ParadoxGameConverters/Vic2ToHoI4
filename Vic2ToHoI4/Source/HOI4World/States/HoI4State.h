@@ -60,11 +60,11 @@ class State
 
 	void convertNavalBases(const std::set<const Vic2::Province*>& sourceProvinces,
 		 const CoastalProvinces& theCoastalProvinces,
-		 const ProvinceMapper& theProvinceMapper);
+		 const mappers::ProvinceMapper& theProvinceMapper);
 	void addNavalBase(int level, int location);
 	void addCores(const std::set<std::string>& newCores);
 	void convertControlledProvinces(const std::set<const Vic2::Province*>& sourceProvinces,
-		 const ProvinceMapper& theProvinceMapper,
+		 const mappers::ProvinceMapper& theProvinceMapper,
 		 const CountryMapper& countryMapper);
 
 	virtual int getID() const { return ID; }
@@ -91,10 +91,10 @@ class State
 	std::optional<int> getMainNavalLocation() const;
 
 	void tryToCreateVP(const Vic2::State& sourceState,
-		 const ProvinceMapper& theProvinceMapper,
+		 const mappers::ProvinceMapper& theProvinceMapper,
 		 const Configuration& theConfiguration);
 	void addManpower(const std::set<const Vic2::Province*>& sourceProvinces,
-		 const ProvinceMapper& theProvinceMapper,
+		 const mappers::ProvinceMapper& theProvinceMapper,
 		 const Configuration& theConfiguration);
 
 	void convertIndustry(double workerFactoryRatio,
@@ -113,12 +113,12 @@ class State
 	int determineNavalBaseLevel(const Vic2::Province& sourceProvince) const;
 	std::optional<int> determineNavalBaseLocation(const Vic2::Province& sourceProvince,
 		 const CoastalProvinces& theCoastalProvinces,
-		 const ProvinceMapper& theProvinceMapper) const;
+		 const mappers::ProvinceMapper& theProvinceMapper) const;
 
-	bool assignVPFromVic2Province(int Vic2ProvinceNumber, const ProvinceMapper& theProvinceMapper);
+	bool assignVPFromVic2Province(int Vic2ProvinceNumber, const mappers::ProvinceMapper& theProvinceMapper);
 	void assignVP(int location);
 	bool isProvinceInState(int provinceNum) const;
-	void addDebugVPs(const Vic2::State& sourceState, const ProvinceMapper& theProvinceMapper);
+	void addDebugVPs(const Vic2::State& sourceState, const mappers::ProvinceMapper& theProvinceMapper);
 
 	int population = 0;
 	long employedWorkers = 0;

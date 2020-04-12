@@ -36,7 +36,7 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings,
 	 const int backupLocation,
 	 const double forceMultiplier,
 	 const States& theStates,
-	 const ProvinceMapper& provinceMapper)
+	 const mappers::ProvinceMapper& provinceMapper)
 {
 	std::map<std::string, std::vector<SizedRegiment>> remainingBattalionsAndCompanies;
 

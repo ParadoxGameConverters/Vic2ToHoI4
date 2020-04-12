@@ -15,7 +15,10 @@
 
 
 
+namespace mappers
+{
 class ProvinceMapper;
+}
 
 
 namespace Vic2
@@ -31,7 +34,7 @@ class World: commonItems::parser
 {
   public:
 	World() = default;
-	explicit World(const std::string& filename, const ProvinceMapper& provinceMapper);
+	explicit World(const std::string& filename, const mappers::ProvinceMapper& provinceMapper);
 	virtual ~World() = default;
 
 	std::optional<const Province*> getProvince(int provNum) const;
@@ -65,7 +68,7 @@ class World: commonItems::parser
 	void overallMergeNations();
 	void mergeNations(const std::string& masterTag, const std::vector<std::string>& slaveTags);
 
-	void checkAllProvincesMapped(const ProvinceMapper& provinceMapper) const;
+	void checkAllProvincesMapped(const mappers::ProvinceMapper& provinceMapper) const;
 
 	void readCountryFiles();
 	bool processCountriesDotTxt(const std::string& countryListFile, const std::string& mod);

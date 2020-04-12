@@ -41,7 +41,7 @@ using namespace std;
 
 
 
-HoI4::World::World(const Vic2::World* _sourceWorld, const ProvinceMapper& provinceMapper):
+HoI4::World::World(const Vic2::World* _sourceWorld, const mappers::ProvinceMapper& provinceMapper):
 	 sourceWorld(_sourceWorld), countryMap(_sourceWorld), theIdeas(std::make_unique<HoI4::Ideas>()),
 	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), peaces(make_unique<HoI4::AiPeaces>()),
 	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
@@ -295,7 +295,7 @@ void HoI4::World::convertIndustry()
 }
 
 
-void HoI4::World::addStatesToCountries(const ProvinceMapper& provinceMapper)
+void HoI4::World::addStatesToCountries(const mappers::ProvinceMapper& provinceMapper)
 {
 	LOG(LogLevel::Info) << "\tAdding states to countries";
 	for (auto state: states->getStates())
@@ -633,7 +633,7 @@ void HoI4::World::convertTechs()
 
 
 void HoI4::World::convertMilitaries(const ProvinceDefinitions& provinceDefinitions,
-	 const ProvinceMapper& provinceMapper)
+	 const mappers::ProvinceMapper& provinceMapper)
 {
 	LOG(LogLevel::Info) << "\tConverting militaries";
 	const HoI4::militaryMappings& specificMappings =
@@ -648,7 +648,8 @@ void HoI4::World::convertMilitaries(const ProvinceDefinitions& provinceDefinitio
 }
 
 
-void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings, const ProvinceMapper& provinceMapper)
+void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings,
+	 const mappers::ProvinceMapper& provinceMapper)
 {
 	LOG(LogLevel::Info) << "\t\tConverting armies";
 
@@ -662,7 +663,7 @@ void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings, c
 void HoI4::World::convertNavies(const UnitMappings& unitMap,
 	 const MtgUnitMappings& mtgUnitMap,
 	 const ProvinceDefinitions& provinceDefinitions,
-	 const ProvinceMapper& provinceMapper)
+	 const mappers::ProvinceMapper& provinceMapper)
 {
 	LOG(LogLevel::Info) << "\t\tConverting navies";
 

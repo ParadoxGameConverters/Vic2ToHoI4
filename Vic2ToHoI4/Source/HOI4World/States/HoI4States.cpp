@@ -34,7 +34,7 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 	 const Vic2::Localisations& vic2Localisations,
 	 const ProvinceDefinitions& provinceDefinitions,
 	 Localisation& hoi4Localisations,
-	 const ProvinceMapper& provinceMapper):
+	 const mappers::ProvinceMapper& provinceMapper):
 	 ownersMap(),
 	 coresMap(), assignedProvinces(), states(), provinceToStateIDMap()
 {
@@ -71,7 +71,7 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 void HoI4::States::determineOwnersAndCores(const CountryMapper& countryMap,
 	 const Vic2::World& sourceWorld,
 	 const ProvinceDefinitions& provinceDefinitions,
-	 const ProvinceMapper& provinceMapper)
+	 const mappers::ProvinceMapper& provinceMapper)
 {
 	for (auto provinceNumber: provinceDefinitions.getLandProvinces())
 	{
@@ -104,7 +104,7 @@ void HoI4::States::determineOwnersAndCores(const CountryMapper& countryMap,
 
 
 std::optional<std::vector<int>> HoI4::States::retrieveSourceProvinceNums(int provNum,
-	 const ProvinceMapper& provinceMapper) const
+	 const mappers::ProvinceMapper& provinceMapper) const
 {
 	auto provinceLink = provinceMapper.getHoI4ToVic2ProvinceMapping(provNum);
 	if (provinceLink && (provinceLink->size() > 0))
@@ -233,7 +233,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const Vic2::Localisations& vic2Localisations,
 	 Localisation& hoi4Localisations,
-	 const ProvinceMapper& provinceMapper)
+	 const mappers::ProvinceMapper& provinceMapper)
 {
 	std::set<int> ownedProvinces;
 
@@ -316,7 +316,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State* vic2State,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const Vic2::Localisations& vic2Localisations,
 	 Localisation& hoi4Localisations,
-	 const ProvinceMapper& provinceMapper)
+	 const mappers::ProvinceMapper& provinceMapper)
 {
 	std::set<int> passableProvinces;
 	std::set<int> impassableProvinces;
@@ -375,7 +375,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State* vic2State,
 
 std::set<int> HoI4::States::getProvincesInState(const Vic2::State* vic2State,
 	 const std::string& owner,
-	 const ProvinceMapper& provinceMapper)
+	 const mappers::ProvinceMapper& provinceMapper)
 {
 	std::set<int> provinces;
 	for (auto vic2ProvinceNum: vic2State->getProvinceNumbers())
