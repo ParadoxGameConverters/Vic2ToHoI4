@@ -34,7 +34,9 @@ class World: commonItems::parser
 {
   public:
 	World() = default;
-	explicit World(const std::string& filename, const mappers::ProvinceMapper& provinceMapper);
+	explicit World(const std::string& filename,
+		 const mappers::ProvinceMapper& provinceMapper,
+		 const Configuration& theConfiguration);
 	virtual ~World() = default;
 
 	std::optional<const Province*> getProvince(int provNum) const;
@@ -70,8 +72,10 @@ class World: commonItems::parser
 
 	void checkAllProvincesMapped(const mappers::ProvinceMapper& provinceMapper) const;
 
-	void readCountryFiles();
-	bool processCountriesDotTxt(const std::string& countryListFile, const std::string& mod);
+	void readCountryFiles(const Configuration& theConfiguration);
+	bool processCountriesDotTxt(const std::string& countryListFile,
+		 const std::string& mod,
+		 const Configuration& theConfiguration);
 	bool shouldLineBeSkipped(const std::string& line) const;
 	std::string extractCountryFileName(const std::string& countryFileLine) const;
 

@@ -25,7 +25,7 @@
 namespace HoI4
 {
 
-void reportIndustryLevels(const World& world);
+void reportIndustryLevels(const World& world, const Configuration& theConfiguration);
 void reportcountriesIndustry(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
 void reportDefaultIndustry(const World& world);
 std::pair<std::string, std::array<int, 3>> getDefaultStateIndustry(const DefaultState& state);
@@ -37,7 +37,8 @@ void outputColorsFile(const std::map<std::string, std::shared_ptr<Country>>& cou
 void outputNames(const namesMapper& theNames,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName);
-void outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>& countries);
+void outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>& countries,
+	 const Configuration& theConfiguration);
 void outputMap(const States& states,
 	 const std::map<int, StrategicRegion*>& strategicRegions,
 	 const std::string& outputName);
@@ -45,7 +46,8 @@ void outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const std::st
 void outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const allMilitaryMappings& theMilitaryMappings,
-	 const std::string& outputName);
+	 const std::string& outputName,
+	 const Configuration& theConfiguration);
 void outputRelations(const std::string& outputName);
 void outputLeaderTraits(const std::map<std::string, std::vector<std::string>>& ideologicalLeaderTraits,
 	 const std::set<std::string>& majorIdeologies,
@@ -57,7 +59,7 @@ void outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 } // namespace HoI4
 
 
-void HoI4::reportIndustryLevels(const World& world)
+void HoI4::reportIndustryLevels(const World& world, const Configuration& theConfiguration)
 {
 	if (theConfiguration.getDebug())
 	{
@@ -142,9 +144,12 @@ std::pair<std::string, std::array<int, 3>> HoI4::getDefaultStateIndustry(const D
 }
 
 
-void HoI4::OutputWorld(const World& world, const std::string& outputName, const bool debugEnabled)
+void HoI4::OutputWorld(const World& world,
+	 const std::string& outputName,
+	 const bool debugEnabled,
+	 const Configuration& theConfiguration)
 {
-	reportIndustryLevels(world);
+	reportIndustryLevels(world, theConfiguration);
 
 	LOG(LogLevel::Info) << "\tOutputting world";
 
@@ -156,14 +161,18 @@ void HoI4::OutputWorld(const World& world, const std::string& outputName, const 
 	outputCommonCountries(world.getCountries(), outputName);
 	outputColorsFile(world.getCountries(), outputName);
 	outputNames(world.getNames(), world.getCountries(), outputName);
-	outputUnitNames(world.getCountries());
+	outputUnitNames(world.getCountries(), theConfiguration);
 	outputLocalisation(world.getLocalisation(), outputName);
 	outputStates(world.getTheStates(), outputName, debugEnabled);
 	outputMap(world.getTheStates(), world.getStrategicRegions(), outputName);
 	outputSupplyZones(world.getSupplyZones(), outputName);
 	outputRelations(outputName);
 	outputGenericFocusTree(world.getGenericFocusTree(), outputName);
-	outputCountries(world.getActiveIdeologicalAdvisors(), world.getCountries(), world.getMilitaryMappings(), outputName);
+	outputCountries(world.getActiveIdeologicalAdvisors(),
+		 world.getCountries(),
+		 world.getMilitaryMappings(),
+		 outputName,
+		 theConfiguration);
 	outputBuildings(world.getBuildings(), outputName);
 	outputDecisions(world.getDecisions(), world.getMajorIdeologies(), outputName);
 	outputEvents(world.getEvents(), outputName);
@@ -269,7 +278,8 @@ void HoI4::outputNames(const namesMapper& theNames,
 }
 
 
-void HoI4::outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>& countries)
+void HoI4::outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>& countries,
+	 const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Info) << "\t\tWriting unit names";
 
@@ -277,7 +287,7 @@ void HoI4::outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>
 	{
 		if (country.second->getCapitalState())
 		{
-			outputToUnitNamesFiles(*country.second);
+			outputToUnitNamesFiles(*country.second, theConfiguration);
 		}
 	}
 }
@@ -335,7 +345,8 @@ void HoI4::outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const s
 void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const allMilitaryMappings& theMilitaryMappings,
-	 const std::string& outputName)
+	 const std::string& outputName,
+	 const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Info) << "\t\tWriting countries";
 
@@ -361,7 +372,10 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 		if (country.second->getCapitalState())
 		{
 			const auto& specificMilitaryMappings = theMilitaryMappings.getMilitaryMappings(theConfiguration.getVic2Mods());
-			outputCountry(activeIdeologicalAdvisors, specificMilitaryMappings.getDivisionTemplates(), *country.second);
+			outputCountry(activeIdeologicalAdvisors,
+				 specificMilitaryMappings.getDivisionTemplates(),
+				 *country.second,
+				 theConfiguration);
 		}
 	}
 

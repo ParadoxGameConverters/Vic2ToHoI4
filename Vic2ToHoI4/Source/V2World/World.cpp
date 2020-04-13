@@ -19,13 +19,15 @@
 
 
 
-Vic2::World::World(const std::string& filename, const mappers::ProvinceMapper& provinceMapper)
+Vic2::World::World(const std::string& filename,
+	 const mappers::ProvinceMapper& provinceMapper,
+	 const Configuration& theConfiguration)
 {
-	theLocalisations = Localisations::Parser{}.importLocalisations();
-	theCultureGroups.init();
+	theLocalisations = Localisations::Parser{}.importLocalisations(theConfiguration);
+	theCultureGroups.init(theConfiguration);
 	Issues theIssues = Issues::Parser{}.importIssues(theConfiguration);
-	theStateDefinitions = StateDefinitions::Parser{}.parseStateDefinitions();
-	inventions theInventions;
+	theStateDefinitions = StateDefinitions::Parser{}.parseStateDefinitions(theConfiguration);
+	inventions theInventions(theConfiguration);
 
 	std::vector<int> GPIndexes;
 	registerKeyword(std::regex("great_nations"), [&GPIndexes, this](const std::string& unused, std::istream& theStream) {
@@ -85,7 +87,7 @@ Vic2::World::World(const std::string& filename, const mappers::ProvinceMapper& p
 	{
 		diplomacy = new Vic2::Diplomacy();
 	}
-	readCountryFiles();
+	readCountryFiles(theConfiguration);
 	setLocalisations(*theLocalisations);
 	handleMissingCountryCultures();
 
@@ -281,20 +283,22 @@ void Vic2::World::addWarsToCountries(const std::vector<War>& wars)
 }
 
 
-void Vic2::World::readCountryFiles()
+void Vic2::World::readCountryFiles(const Configuration& theConfiguration)
 {
 	bool countriesDotTxtRead = false;
 
 	for (auto vic2Mod: theConfiguration.getVic2Mods())
 	{
-		if (processCountriesDotTxt(theConfiguration.getVic2Path() + "/mod/" + vic2Mod + "/common/countries.txt", vic2Mod))
+		if (processCountriesDotTxt(theConfiguration.getVic2Path() + "/mod/" + vic2Mod + "/common/countries.txt",
+				  vic2Mod,
+				  theConfiguration))
 		{
 			countriesDotTxtRead = true;
 		}
 	}
 	if (!countriesDotTxtRead)
 	{
-		if (!processCountriesDotTxt(theConfiguration.getVic2Path() + "/common/countries.txt", ""))
+		if (!processCountriesDotTxt(theConfiguration.getVic2Path() + "/common/countries.txt", "", theConfiguration))
 		{
 			LOG(LogLevel::Error) << "Could not open " << theConfiguration.getVic2Path() + "/common/countries.txt";
 			exit(-1);
@@ -303,7 +307,9 @@ void Vic2::World::readCountryFiles()
 }
 
 
-bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile, const std::string& mod)
+bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile,
+	 const std::string& mod,
+	 const Configuration& theConfiguration)
 {
 	std::ifstream V2CountriesInput(countryListFile);
 	if (!V2CountriesInput.is_open())
@@ -322,7 +328,7 @@ bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile, con
 
 		std::string tag = line.substr(0, 3);
 		std::string countryFileName = extractCountryFileName(line);
-		commonCountryData countryData(countryFileName, mod);
+		commonCountryData countryData(countryFileName, mod, theConfiguration);
 		if (countries.find(tag) != countries.end())
 		{
 			countries[tag]->setColor(countryData.getColor());

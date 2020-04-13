@@ -259,8 +259,6 @@ void HoI4::Country::convertLeaders(const graphicsMapper& theGraphics)
 			admirals.push_back(newLeader);
 		}
 	}
-
-	theConfiguration.setLeaderIDForNextCountry();
 }
 
 
@@ -769,7 +767,8 @@ void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 
 void HoI4::Country::convertArmies(const militaryMappings& theMilitaryMappings,
 	 const HoI4::States& theStates,
-	 const mappers::ProvinceMapper& provinceMapper)
+	 const mappers::ProvinceMapper& provinceMapper,
+	 const Configuration& theConfiguration)
 {
 	if (capitalProvince)
 	{

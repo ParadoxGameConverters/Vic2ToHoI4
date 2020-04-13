@@ -11,6 +11,10 @@
 
 
 
+class Configuration;
+
+
+
 namespace mappers
 {
 
@@ -36,10 +40,10 @@ class ProvinceMapper
 class ProvinceMapper::Parser: commonItems::parser
 {
   public:
-	ProvinceMapper initializeMapper();
+	ProvinceMapper initializeMapper(const Configuration& theConfiguration);
 
   private:
-	void checkAllHoI4ProvincesMapped() const;
+	void checkAllHoI4ProvincesMapped(const Configuration& theConfiguration) const;
 	std::optional<int> getNextProvinceNumFromFile(std::ifstream& definitions) const;
 	void verifyProvinceIsMapped(int provNum) const;
 

@@ -11,6 +11,10 @@
 #include <set>
 
 
+
+class Configuration;
+
+
 typedef std::vector<point> borderPoints;
 typedef std::map<int, borderPoints> bordersWith;
 
@@ -25,7 +29,7 @@ class ProvinceDefinitions;
 class MapData
 {
   public:
-	MapData(const ProvinceDefinitions& provinceDefinitions);
+	MapData(const ProvinceDefinitions& provinceDefinitions, const Configuration& theConfiguration);
 
 	[[nodiscard]] std::set<int> getNeighbors(int province) const;
 	[[nodiscard]] std::optional<point> getSpecifiedBorderCenter(int mainProvince, int neighbor) const;

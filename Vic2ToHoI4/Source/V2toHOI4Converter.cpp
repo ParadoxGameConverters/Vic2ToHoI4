@@ -11,30 +11,31 @@
 
 
 
-void checkMods();
-void setOutputName(const std::string& V2SaveFileName);
+void checkMods(const Configuration& theConfiguration);
+void setOutputName(const std::string& V2SaveFileName, Configuration& theConfiguration);
 void ConvertV2ToHoI4(const std::string& V2SaveFileName)
 {
-	ConfigurationFile("configuration.txt");
-	checkMods();
-	setOutputName(V2SaveFileName);
-	clearOutputFolder(theConfiguration.getOutputName());
+	auto theConfiguration = Configuration::Factory{}.importConfiguration("configuration.txt");
+	checkMods(*theConfiguration);
+	setOutputName(V2SaveFileName, *theConfiguration);
+	clearOutputFolder(theConfiguration->getOutputName());
 
-	const mappers::ProvinceMapper provinceMapper = mappers::ProvinceMapper::Parser{}.initializeMapper();
+	const mappers::ProvinceMapper provinceMapper = mappers::ProvinceMapper::Parser{}.initializeMapper(*theConfiguration);
 
-	Vic2::World sourceWorld(V2SaveFileName, provinceMapper);
-	HoI4::World destWorld(&sourceWorld, provinceMapper);
+	Vic2::World sourceWorld(V2SaveFileName, provinceMapper, *theConfiguration);
+	HoI4::World destWorld(&sourceWorld, provinceMapper, *theConfiguration);
 
 	output(destWorld,
-		 theConfiguration.getOutputName(),
-		 theConfiguration.getDebug(),
-		 theConfiguration.getVic2Mods(),
-		 theConfiguration.getVic2Path());
+		 theConfiguration->getOutputName(),
+		 theConfiguration->getDebug(),
+		 theConfiguration->getVic2Mods(),
+		 theConfiguration->getVic2Path(),
+		 *theConfiguration);
 	LOG(LogLevel::Info) << "* Conversion complete *";
 }
 
 
-void checkMods()
+void checkMods(const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Info) << "Double-checking Vic2 mods";
 
@@ -65,7 +66,7 @@ void checkMods()
 }
 
 
-void setOutputName(const std::string& V2SaveFileName)
+void setOutputName(const std::string& V2SaveFileName, Configuration& theConfiguration)
 {
 	std::string outputName = V2SaveFileName;
 

@@ -11,6 +11,10 @@
 
 
 
+class Configuration;
+
+
+
 namespace Vic2
 {
 
@@ -41,7 +45,7 @@ class StateDefinitions
 class StateDefinitions::Parser: commonItems::parser
 {
   public:
-	std::unique_ptr<StateDefinitions> parseStateDefinitions();
+	std::unique_ptr<StateDefinitions> parseStateDefinitions(const Configuration& theConfiguration);
 };
 
 } // namespace Vic2

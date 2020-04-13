@@ -14,6 +14,7 @@
 
 
 
+class Configuration;
 class CountryMapper;
 
 
@@ -51,7 +52,8 @@ class States: commonItems::parser
 		 const Vic2::Localisations& vic2Localisations,
 		 const ProvinceDefinitions& provinceDefinitions,
 		 Localisation& hoi4Localisations,
-		 const mappers::ProvinceMapper& provinceMapper);
+		 const mappers::ProvinceMapper& provinceMapper,
+		 const Configuration& theConfiguration);
 
 	const std::map<int, HoI4::DefaultState>& getDefaultStates() const { return defaultStates; }
 	const std::map<int, HoI4::State>& getStates() const { return states; }
@@ -61,7 +63,8 @@ class States: commonItems::parser
 		 const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers);
 	void convertResources();
 	void putIndustryInStates(const std::map<std::string, double>& factoryWorkerRatios,
-		 const HoI4::CoastalProvinces& theCoastalProvinces);
+		 const HoI4::CoastalProvinces& theCoastalProvinces,
+		 const Configuration& theConfiguration);
 	void convertCapitalVPs(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers,
 		 double greatestStrength);
@@ -91,7 +94,8 @@ class States: commonItems::parser
 		 const Vic2::StateDefinitions& theStateDefinitions,
 		 const Vic2::Localisations& vic2Localisations,
 		 Localisation& hoi4Localisations,
-		 const mappers::ProvinceMapper& provinceMapper);
+		 const mappers::ProvinceMapper& provinceMapper,
+		 const Configuration& theConfiguration);
 	void createMatchingHoI4State(const Vic2::State* vic2State,
 		 const std::string& stateOwner,
 		 const HoI4::ImpassableProvinces& theImpassables,
@@ -100,7 +104,8 @@ class States: commonItems::parser
 		 const Vic2::StateDefinitions& theStateDefinitions,
 		 const Vic2::Localisations& vic2Localisations,
 		 Localisation& hoi4Localisations,
-		 const mappers::ProvinceMapper& provinceMapper);
+		 const mappers::ProvinceMapper& provinceMapper,
+		 const Configuration& theConfiguration);
 	std::set<int> getProvincesInState(const Vic2::State* vic2State,
 		 const std::string& owner,
 		 const mappers::ProvinceMapper& provinceMapper);

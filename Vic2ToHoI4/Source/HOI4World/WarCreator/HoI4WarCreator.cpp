@@ -16,7 +16,8 @@
 HoI4WarCreator::HoI4WarCreator(HoI4::World* world,
 	 const HoI4::MapData& theMapData,
 	 const HoI4::ProvinceDefinitions& provinceDefinitions,
-	 HoI4::Localisation& hoi4Localisations):
+	 HoI4::Localisation& hoi4Localisations,
+	 const Configuration& theConfiguration):
 	 genericFocusTree(new HoI4FocusTree),
 	 theWorld(world), AggressorFactions(), WorldTargetMap(), provincePositions(), provinceToOwnerMap()
 {
@@ -32,7 +33,7 @@ HoI4WarCreator::HoI4WarCreator(HoI4::World* world,
 
 	determineProvinceOwners();
 	addAllTargetsToWorldTargetMap();
-	double worldStrength = calculateWorldStrength(AILog);
+	double worldStrength = calculateWorldStrength(AILog, theConfiguration);
 
 	set<shared_ptr<HoI4::Faction>> factionsAtWar;
 	LOG(LogLevel::Info) << "\t\tGenerating major wars";
@@ -42,9 +43,16 @@ HoI4WarCreator::HoI4WarCreator(HoI4::World* world,
 		 world,
 		 theMapData,
 		 provinceDefinitions,
-		 hoi4Localisations);
+		 hoi4Localisations,
+		 theConfiguration);
 	LOG(LogLevel::Info) << "\t\tGenerating additional wars";
-	generateAdditionalWars(AILog, factionsAtWar, worldStrength, theMapData, provinceDefinitions, hoi4Localisations);
+	generateAdditionalWars(AILog,
+		 factionsAtWar,
+		 worldStrength,
+		 theMapData,
+		 provinceDefinitions,
+		 hoi4Localisations,
+		 theConfiguration);
 
 	if (theConfiguration.getDebug())
 	{
@@ -123,7 +131,7 @@ map<double, shared_ptr<HoI4::Country>> HoI4WarCreator::getDistancesToGreatPowers
 }
 
 
-double HoI4WarCreator::calculateWorldStrength(ofstream& AILog) const
+double HoI4WarCreator::calculateWorldStrength(ofstream& AILog, const Configuration& theConfiguration) const
 {
 	double worldStrength = 0.0;
 	for (auto Faction: theWorld->getFactions())
@@ -145,7 +153,8 @@ void HoI4WarCreator::generateMajorWars(ofstream& AILog,
 	 const HoI4::World* world,
 	 const HoI4::MapData& theMapData,
 	 const HoI4::ProvinceDefinitions& provinceDefinitions,
-	 HoI4::Localisation& hoi4Localisations)
+	 HoI4::Localisation& hoi4Localisations,
+	 const Configuration& theConfiguration)
 {
 	if (theConfiguration.getDebug())
 	{
@@ -160,8 +169,13 @@ void HoI4WarCreator::generateMajorWars(ofstream& AILog,
 
 			if (country.second->getGovernmentIdeology() == "fascism")
 			{
-				newFactionsAtWar =
-					 fascistWarMaker(country.second, AILog, world, theMapData, provinceDefinitions, hoi4Localisations);
+				newFactionsAtWar = fascistWarMaker(country.second,
+					 AILog,
+					 world,
+					 theMapData,
+					 provinceDefinitions,
+					 hoi4Localisations,
+					 theConfiguration);
 			}
 			else if (country.second->getGovernmentIdeology() == "communism")
 			{
@@ -194,7 +208,8 @@ void HoI4WarCreator::generateMajorWars(ofstream& AILog,
 
 double HoI4WarCreator::calculatePercentOfWorldAtWar(ofstream& AILog,
 	 const set<shared_ptr<HoI4::Faction>>& factionsAtWar,
-	 double worldStrength) const
+	 double worldStrength,
+	 const Configuration& theConfiguration) const
 {
 	double countriesAtWarStrength = 0.0;
 	for (auto faction: factionsAtWar)
@@ -217,7 +232,8 @@ void HoI4WarCreator::generateAdditionalWars(ofstream& AILog,
 	 double worldStrength,
 	 const HoI4::MapData& theMapData,
 	 const HoI4::ProvinceDefinitions& provinceDefinitions,
-	 HoI4::Localisation& hoi4Localisations)
+	 HoI4::Localisation& hoi4Localisations,
+	 const Configuration& theConfiguration)
 {
 	auto countriesEvilnessSorted = findEvilCountries();
 
@@ -234,8 +250,12 @@ void HoI4WarCreator::generateAdditionalWars(ofstream& AILog,
 				}
 			}
 			vector<shared_ptr<HoI4::Faction>> newCountriesatWar;
-			newCountriesatWar =
-				 neighborWarCreator(countriesEvilnessSorted[i], AILog, theMapData, provinceDefinitions, hoi4Localisations);
+			newCountriesatWar = neighborWarCreator(countriesEvilnessSorted[i],
+				 AILog,
+				 theMapData,
+				 provinceDefinitions,
+				 hoi4Localisations,
+				 theConfiguration);
 
 			for (auto addedFactions: newCountriesatWar)
 			{
@@ -759,7 +779,8 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI
 	 const HoI4::World* world,
 	 const HoI4::MapData& theMapData,
 	 const HoI4::ProvinceDefinitions& provinceDefinitions,
-	 HoI4::Localisation& hoi4Localisations)
+	 HoI4::Localisation& hoi4Localisations,
+	 const Configuration& theConfiguration)
 {
 	vector<shared_ptr<HoI4::Faction>> CountriesAtWar;
 	auto name = Leader->getSourceCountry().getName("english");
@@ -1307,7 +1328,8 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 	 std::ofstream& AILog,
 	 const HoI4::MapData& theMapData,
 	 const HoI4::ProvinceDefinitions& provinceDefinitions,
-	 HoI4::Localisation& hoi4Localisations)
+	 HoI4::Localisation& hoi4Localisations,
+	 const Configuration& theConfiguration)
 {
 	if (theConfiguration.getDebug())
 	{

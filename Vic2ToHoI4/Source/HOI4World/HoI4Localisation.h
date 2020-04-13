@@ -11,6 +11,9 @@
 
 
 
+class Configuration;
+
+
 namespace mappers
 {
 class ProvinceMapper;
@@ -76,7 +79,8 @@ class Localisation
 		 const mappers::ProvinceMapper& theProvinceMapper);
 	void addStateLocalisations(const States& states,
 		 const Vic2::Localisations& vic2Localisations,
-		 const mappers::ProvinceMapper& theProvinceMapper);
+		 const mappers::ProvinceMapper& theProvinceMapper,
+		 const Configuration& theConfiguration);
 	void createCountryLocalisations(const std::pair<const std::string&, const std::string&>& tags,
 		 const governmentMapper& governmentMap,
 		 const Vic2::Localisations& vic2Localisations);
@@ -185,10 +189,10 @@ class Localisation
 class Localisation::Importer
 {
   public:
-	std::unique_ptr<Localisation> generateLocalisations();
+	std::unique_ptr<Localisation> generateLocalisations(const Configuration& theConfiguration);
 
   private:
-	void importLocalisations();
+	void importLocalisations(const Configuration& theConfiguration);
 	void importFocusLocalisations(const std::string& filename);
 	void importGenericIdeaLocalisations(const std::string& filename);
 	void importEventLocalisations(const std::string& filename);

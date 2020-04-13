@@ -9,7 +9,8 @@
 std::string getNextLocalisation(const std::string& line, int& division);
 
 
-std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Parser::importLocalisations()
+std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Parser::importLocalisations(
+	 const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Info) << "Reading localisation";
 

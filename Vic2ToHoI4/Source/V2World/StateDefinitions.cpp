@@ -6,7 +6,8 @@
 
 
 
-std::unique_ptr<Vic2::StateDefinitions> Vic2::StateDefinitions::Parser::parseStateDefinitions()
+std::unique_ptr<Vic2::StateDefinitions> Vic2::StateDefinitions::Parser::parseStateDefinitions(
+	 const Configuration& theConfiguration)
 {
 	std::map<int, std::set<int>> stateMap; // < province, all other provinces in state >
 	std::map<int, std::string> provinceToIDMap;

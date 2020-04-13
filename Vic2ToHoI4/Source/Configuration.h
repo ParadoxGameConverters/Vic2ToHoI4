@@ -1,33 +1,10 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #ifndef CONFIGURATION_H_
 #define CONFIGURATION_H_
 
 
 
-#include "newParser.h"
 #include "HOI4World/HOI4Version.h"
+#include "newParser.h"
 #include <string>
 #include <vector>
 
@@ -43,75 +20,84 @@ enum class ideologyOptions
 
 
 
-class Configuration: commonItems::parser
+class Configuration
 {
-	public:
-		Configuration() = default;
-		void instantiate(std::istream& theStream);
+  public:
+	class Factory;
+	Configuration(std::string HoI4Path,
+		 std::string Vic2Path,
+		 std::vector<std::string> Vic2Mods,
+		 const double forceMultiplier,
+		 const double manpowerFactor,
+		 const double industrialShapeFactor,
+		 const double icFactor,
+		 const ideologyOptions ideologiesOptions,
+		 std::vector<std::string> specifiedIdeologies,
+		 const bool debug,
+		 const bool removeCores,
+		 const bool createFactions,
+		 const HoI4::Version version):
+		 HoI4Path(std::move(HoI4Path)),
+		 Vic2Path(std::move(Vic2Path)), Vic2Mods(std::move(Vic2Mods)), forceMultiplier(forceMultiplier),
+		 manpowerFactor(manpowerFactor), industrialShapeFactor(industrialShapeFactor), icFactor(icFactor),
+		 ideologiesOptions(ideologiesOptions), specifiedIdeologies(std::move(specifiedIdeologies)), debug(debug),
+		 removeCores(removeCores), createFactions(createFactions), version(version)
+	{
+	}
 
-		std::string getHoI4Path() const { return HoI4Path; }
-		std::string getVic2Path() const { return Vic2Path; }
-		std::vector<std::string> getVic2Mods() const { return Vic2Mods; }
-		std::string getOutputName() const { return outputName; }
+	[[nodiscard]] const auto& getHoI4Path() const { return HoI4Path; }
+	[[nodiscard]] const auto& getVic2Path() const { return Vic2Path; }
+	[[nodiscard]] const auto& getVic2Mods() const { return Vic2Mods; }
+	[[nodiscard]] const auto& getForceMultiplier() const { return forceMultiplier; }
+	[[nodiscard]] const auto& getManpowerFactor() const { return manpowerFactor; }
+	[[nodiscard]] const auto& getIndustrialShapeFactor() const { return industrialShapeFactor; }
+	[[nodiscard]] const auto& getIcFactor() const { return icFactor; }
+	[[nodiscard]] const auto& getIdeologiesOptions() const { return ideologiesOptions; }
+	[[nodiscard]] const auto& getSpecifiedIdeologies() const { return specifiedIdeologies; }
+	[[nodiscard]] const auto& getDebug() const { return debug; }
+	[[nodiscard]] const auto& getRemoveCores() const { return removeCores; }
+	[[nodiscard]] const auto& getCreateFactions() const { return createFactions; }
+	[[nodiscard]] const auto& getHOI4Version() const { return version; }
 
-		double getForceMultiplier() const { return forceMultiplier; }
-		double getManpowerFactor() const { return manpowerFactor; }
-		double getIndustrialShapeFactor() const { return industrialShapeFactor; }
-		double getIcFactor() const { return icFactor; }
-		ideologyOptions getIdeologiesOptions() const { return ideologiesOptions; }
-		std::vector<std::string> getSpecifiedIdeologies() const { return specifiedIdeologies; }
-		bool getRemoveCores() const { return removeCores; }
-		bool getCreateFactions() const { return createFactions; }
-		HoI4::Version getHOI4Version() const { return version; }
+	[[nodiscard]] const auto& getOutputName() const { return outputName; }
+	[[nodiscard]] auto getNextLeaderID() { return leaderID++; }
 
-		bool getDebug() const { return debug; }
+	void setForceMultiplier(const double multiplier) { forceMultiplier = multiplier; }
+	void setOutputName(const std::string& name) { outputName = name; }
 
-		int getNextLeaderID() { return leaderID++; }
+  private:
+	// set on construction
+	std::string HoI4Path;
+	std::string Vic2Path;
+	std::vector<std::string> Vic2Mods;
+	double forceMultiplier;
+	double manpowerFactor;
+	double industrialShapeFactor;
+	double icFactor;
+	ideologyOptions ideologiesOptions;
+	std::vector<std::string> specifiedIdeologies;
+	bool debug;
+	bool removeCores;
+	bool createFactions;
+	HoI4::Version version;
 
-		void setForceMultiplier(double mult) { forceMultiplier = mult; }
-		void setOutputName(const std::string& name) { outputName = name; }
-		void setLeaderIDForNextCountry() {
-			leaderIDCountryIdx++;
-			leaderID = 1000 * leaderIDCountryIdx;	
-		}
-
-	private:
-		Configuration(const Configuration&) = delete;
-		Configuration& operator=(const Configuration&) = delete;
-
-		std::string HoI4Path = "";
-		std::string Vic2Path = "";
-		std::vector<std::string> Vic2Mods;
-		std::string outputName = "";
-
-		double forceMultiplier = 0.0;
-		double manpowerFactor = 0.0;
-		double industrialShapeFactor = 0.0;
-		double icFactor = 0.0;
-		ideologyOptions ideologiesOptions = ideologyOptions::keep_major;
-		std::vector<std::string> specifiedIdeologies;
-		bool removeCores = true;
-		bool createFactions = true;
-		HoI4::Version version;
-
-		bool debug = false;
-
-		unsigned int leaderID = 1000;
-		unsigned int leaderIDCountryIdx = 1;
+	// set later
+	std::string outputName;
+	unsigned int leaderID = 1000;
 };
 
 
-extern Configuration theConfiguration;
-
-
-class ConfigurationFile: commonItems::parser
+class ConfigurationDetails: commonItems::parser
 {
-	public:
-		explicit ConfigurationFile(const std::string& filename);
+  public:
+	std::unique_ptr<Configuration> importDetails(std::istream& theStream);
+};
 
-	private:
-		ConfigurationFile(const ConfigurationFile&) = delete;
-		ConfigurationFile& operator=(const ConfigurationFile&) = delete;
+
+class Configuration::Factory: commonItems::parser
+{
+  public:
+	std::unique_ptr<Configuration> importConfiguration(const std::string& filename);
 };
 
 

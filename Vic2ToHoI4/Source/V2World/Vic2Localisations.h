@@ -10,6 +10,11 @@
 #include <unordered_map>
 
 
+
+class Configuration;
+
+
+
 namespace Vic2
 {
 
@@ -41,7 +46,7 @@ class Localisations
 class Localisations::Parser
 {
   public:
-	std::unique_ptr<Localisations> importLocalisations();
+	std::unique_ptr<Localisations> importLocalisations(const Configuration& theConfiguration);
 
   private:
 	void ReadFromAllFilesInFolder(const std::string& folderPath);

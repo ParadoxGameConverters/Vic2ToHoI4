@@ -13,7 +13,7 @@ ConverterColor::Color getLeftColor(point position, int width, bitmap_image& prov
 ConverterColor::Color getRightColor(point position, int width, bitmap_image& provinceMap);
 
 
-HoI4::MapData::MapData(const ProvinceDefinitions& provinceDefinitions):
+HoI4::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const Configuration& theConfiguration):
 	 provinceMap(theConfiguration.getHoI4Path() + "/map/provinces.bmp")
 {
 	if (!provinceMap)

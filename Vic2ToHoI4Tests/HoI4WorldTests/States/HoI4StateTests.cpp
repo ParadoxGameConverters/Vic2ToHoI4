@@ -243,6 +243,19 @@ TEST(HoI4World_States_StateTests, TotalFactoriesCanBeSet)
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
+	Configuration theConfiguration("",
+		 "",
+		 {},
+		 0.0,
+		 0.0,
+		 0.0,
+		 0.0,
+		 ideologyOptions::keep_major,
+		 {},
+		 false,
+		 false,
+		 false,
+		 HoI4::Version());
 	const mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(7)).WillOnce(testing::Return("mockedCategory"));
 
@@ -480,11 +493,20 @@ TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
-	std::stringstream configInput;
-	configInput << "manpower_factor = 1.0";
-	Configuration testConfig;
-	testConfig.instantiate(configInput);
-	theState.addManpower(provinces, theProvinceMapper, testConfig);
+	Configuration theConfiguration("",
+		 "",
+		 {},
+		 0.0,
+		 1.0,
+		 0.0,
+		 0.0,
+		 ideologyOptions::keep_major,
+		 {},
+		 false,
+		 false,
+		 false,
+		 HoI4::Version());
+	theState.addManpower(provinces, theProvinceMapper, theConfiguration);
 
 	ASSERT_EQ(49380, theState.getManpower());
 }
@@ -574,11 +596,21 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital)
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
-	std::stringstream configInput;
-	Configuration testConfig;
-	testConfig.instantiate(configInput);
+	Configuration theConfiguration("",
+		 "",
+		 {},
+		 0.0,
+		 0.0,
+		 0.0,
+		 0.0,
+		 ideologyOptions::keep_major,
+		 {},
+		 false,
+		 false,
+		 false,
+		 HoI4::Version());
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
 	ASSERT_EQ(theState.getVPLocation(), 12);
 }
@@ -619,11 +651,21 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
-	std::stringstream configInput;
-	Configuration testConfig;
-	testConfig.instantiate(configInput);
+	Configuration theConfiguration("",
+		 "",
+		 {},
+		 0.0,
+		 0.0,
+		 0.0,
+		 0.0,
+		 ideologyOptions::keep_major,
+		 {},
+		 false,
+		 false,
+		 false,
+		 HoI4::Version());
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
 	ASSERT_EQ(24, theState.getVPLocation());
 }
@@ -664,11 +706,21 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
-	std::stringstream configInput;
-	Configuration testConfig;
-	testConfig.instantiate(configInput);
+	Configuration theConfiguration("",
+		 "",
+		 {},
+		 0.0,
+		 0.0,
+		 0.0,
+		 0.0,
+		 ideologyOptions::keep_major,
+		 {},
+		 false,
+		 false,
+		 false,
+		 HoI4::Version());
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
 	ASSERT_EQ(24, theState.getVPLocation());
 }
@@ -709,11 +761,21 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
-	std::stringstream configInput;
-	Configuration testConfig;
-	testConfig.instantiate(configInput);
+	Configuration theConfiguration("",
+		 "",
+		 {},
+		 0.0,
+		 0.0,
+		 0.0,
+		 0.0,
+		 ideologyOptions::keep_major,
+		 {},
+		 false,
+		 false,
+		 false,
+		 HoI4::Version());
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
 	ASSERT_EQ(24, theState.getVPLocation());
 }
@@ -754,11 +816,21 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousPr
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
-	std::stringstream configInput;
-	Configuration testConfig;
-	testConfig.instantiate(configInput);
+	Configuration theConfiguration("",
+		 "",
+		 {},
+		 0.0,
+		 0.0,
+		 0.0,
+		 0.0,
+		 ideologyOptions::keep_major,
+		 {},
+		 false,
+		 false,
+		 false,
+		 HoI4::Version());
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
 	ASSERT_EQ(24, theState.getVPLocation());
 }
@@ -777,15 +849,25 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionLoggedIfNotSet)
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {}};
 
-	std::stringstream configInput;
-	Configuration testConfig;
-	testConfig.instantiate(configInput);
+	Configuration theConfiguration("",
+		 "",
+		 {},
+		 0.0,
+		 0.0,
+		 0.0,
+		 0.0,
+		 ideologyOptions::keep_major,
+		 {},
+		 false,
+		 false,
+		 false,
+		 HoI4::Version());
 
 	std::stringstream log;
 	auto coutBuffer = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
 	std::cout.rdbuf(coutBuffer);
 
@@ -809,11 +891,21 @@ TEST(HoI4World_States_StateTests, DebugVPsCanBeAdded)
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
-	std::stringstream configInput;
-	Configuration testConfig;
-	testConfig.instantiate(configInput);
+	Configuration theConfiguration("",
+		 "",
+		 {},
+		 0.0,
+		 0.0,
+		 0.0,
+		 0.0,
+		 ideologyOptions::keep_major,
+		 {},
+		 false,
+		 false,
+		 false,
+		 HoI4::Version());
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
 	ASSERT_EQ(std::set<int>{12}, theState.getDebugVPs());
 }
@@ -833,11 +925,21 @@ TEST(HoI4World_States_StateTests, SecondaryDebugVPsCanBeAdded)
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12, 13}}}};
 
-	std::stringstream configInput;
-	Configuration testConfig;
-	testConfig.instantiate(configInput);
+	Configuration theConfiguration("",
+		 "",
+		 {},
+		 0.0,
+		 0.0,
+		 0.0,
+		 0.0,
+		 ideologyOptions::keep_major,
+		 {},
+		 false,
+		 false,
+		 false,
+		 HoI4::Version());
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
 	std::set<int> expectedVps{12, 13};
 	ASSERT_EQ(expectedVps, theState.getSecondaryDebugVPs());
@@ -861,12 +963,21 @@ TEST(HoI4World_States_StateTests, DebugVpsAreOutput)
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12, 13}}, {24, {24, 25}}}};
 
-	std::stringstream configInput;
-	configInput << "debug = yes";
-	Configuration testConfig;
-	testConfig.instantiate(configInput);
+	Configuration theConfiguration("",
+		 "",
+		 {},
+		 0.0,
+		 0.0,
+		 0.0,
+		 0.0,
+		 ideologyOptions::keep_major,
+		 {},
+		 true,
+		 false,
+		 false,
+		 HoI4::Version());
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, testConfig);
+	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\n";

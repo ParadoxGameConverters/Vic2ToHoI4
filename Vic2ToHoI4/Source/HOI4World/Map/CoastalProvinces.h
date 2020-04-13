@@ -8,6 +8,10 @@
 
 
 
+class Configuration;
+
+
+
 namespace HoI4
 {
 
@@ -21,13 +25,13 @@ class CoastalProvinces
 	CoastalProvinces() = default;
 	virtual ~CoastalProvinces() = default;
 
-	void init(const MapData& theMapData);
+	void init(const MapData& theMapData, const Configuration& theConfiguration);
 
 	[[nodiscard]] auto getCoastalProvinces() const { return theCoastalProvinces; }
 	[[nodiscard]] virtual bool isProvinceCoastal(int provinceNum) const;
 
   private:
-	[[nodiscard]] std::map<int, Province> importProvinces() const;
+	[[nodiscard]] std::map<int, Province> importProvinces(const Configuration& theConfiguration) const;
 
 	std::map<int, std::vector<int>> theCoastalProvinces; // province, connecting sea provinces
 };

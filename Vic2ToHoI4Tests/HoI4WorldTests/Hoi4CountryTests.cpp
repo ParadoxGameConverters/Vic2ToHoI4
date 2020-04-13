@@ -43,7 +43,20 @@ HoI4World_HoI4CountryTests::HoI4World_HoI4CountryTests()
 	std::map<std::string, std::string> localisationToKeyMap;
 	vic2Localisations = std::make_unique<Vic2::Localisations>(localisations, localisationToKeyMap);
 
-	hoi4Localisations = HoI4::Localisation::Importer{}.generateLocalisations();
+	Configuration theConfiguration("",
+		 "",
+		 {},
+		 0.0,
+		 0.0,
+		 0.0,
+		 0.0,
+		 ideologyOptions::keep_major,
+		 {},
+		 false,
+		 false,
+		 false,
+		 HoI4::Version());
+	hoi4Localisations = HoI4::Localisation::Importer{}.generateLocalisations(theConfiguration);
 
 	ON_CALL(theGraphicsMapper, getGraphicalCulture).WillByDefault(testing::Return(std::nullopt));
 	ON_CALL(theGraphicsMapper, get2dGraphicalCulture).WillByDefault(testing::Return(std::nullopt));
@@ -329,7 +342,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalDefaultsToNone)
 	ASSERT_EQ(theCountry.getCapitalProvince(), std::nullopt);
 }
 
-#pragma optimize("",off)
+#pragma optimize("", off)
 TEST_F(HoI4World_HoI4CountryTests, capitalCanBeSetInOwnedState)
 {
 	EXPECT_CALL(sourceCountry, getCapital).WillOnce(testing::Return(42));

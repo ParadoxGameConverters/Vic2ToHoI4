@@ -1304,7 +1304,8 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag,
 }
 
 
-void HoI4::Events::createStabilityEvents(const std::set<std::string>& majorIdeologies)
+void HoI4::Events::createStabilityEvents(const std::set<std::string>& majorIdeologies,
+	 const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Info) << "\tCreating stability events";
 

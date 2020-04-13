@@ -23,7 +23,8 @@ class Ideologies: commonItems::parser
 	explicit Ideologies(const Configuration& theConfiguration);
 
 	void identifyMajorIdeologies(const std::vector<std::shared_ptr<Country>>& greatPowers,
-		 const std::map<std::string, std::shared_ptr<Country>>& countries);
+		 const std::map<std::string, std::shared_ptr<Country>>& countries,
+		 const Configuration& theConfiguration);
 
 	[[nodiscard]] bool subIdeologyIsValid(const std::string& ideologyName, std::string_view subIdeology) const;
 	[[nodiscard]] std::optional<Ideology> getIdeology(const std::string& ideologyName) const;

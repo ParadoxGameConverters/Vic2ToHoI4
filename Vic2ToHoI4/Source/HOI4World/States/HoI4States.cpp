@@ -34,7 +34,8 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 	 const Vic2::Localisations& vic2Localisations,
 	 const ProvinceDefinitions& provinceDefinitions,
 	 Localisation& hoi4Localisations,
-	 const mappers::ProvinceMapper& provinceMapper):
+	 const mappers::ProvinceMapper& provinceMapper,
+	 const Configuration& theConfiguration):
 	 ownersMap(),
 	 coresMap(), assignedProvinces(), states(), provinceToStateIDMap()
 {
@@ -64,7 +65,8 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 		 theStateDefinitions,
 		 vic2Localisations,
 		 hoi4Localisations,
-		 provinceMapper);
+		 provinceMapper,
+		 theConfiguration);
 }
 
 
@@ -233,7 +235,8 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const Vic2::Localisations& vic2Localisations,
 	 Localisation& hoi4Localisations,
-	 const mappers::ProvinceMapper& provinceMapper)
+	 const mappers::ProvinceMapper& provinceMapper,
+	 const Configuration& theConfiguration)
 {
 	std::set<int> ownedProvinces;
 
@@ -252,7 +255,8 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 					 theStateDefinitions,
 					 vic2Localisations,
 					 hoi4Localisations,
-					 provinceMapper);
+					 provinceMapper,
+					 theConfiguration);
 				for (auto province: vic2State->getProvinces())
 				{
 					ownedProvinces.insert(province->getNumber());
@@ -299,7 +303,8 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 			 theStateDefinitions,
 			 vic2Localisations,
 			 hoi4Localisations,
-			 provinceMapper);
+			 provinceMapper,
+			 theConfiguration);
 	}
 
 	unsigned int manpower = getTotalManpower();
@@ -316,7 +321,8 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State* vic2State,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const Vic2::Localisations& vic2Localisations,
 	 Localisation& hoi4Localisations,
-	 const mappers::ProvinceMapper& provinceMapper)
+	 const mappers::ProvinceMapper& provinceMapper,
+	 const Configuration& theConfiguration)
 {
 	std::set<int> passableProvinces;
 	std::set<int> impassableProvinces;
@@ -535,9 +541,10 @@ void HoI4::States::convertResources()
 
 
 void HoI4::States::putIndustryInStates(const std::map<std::string, double>& factoryWorkerRatios,
-	 const HoI4::CoastalProvinces& theCoastalProvinces)
+	 const HoI4::CoastalProvinces& theCoastalProvinces,
+	 const Configuration& theConfiguration)
 {
-	HoI4::StateCategories theStateCategories;
+	HoI4::StateCategories theStateCategories(theConfiguration);
 
 	for (auto& HoI4State: states)
 	{

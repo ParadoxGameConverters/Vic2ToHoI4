@@ -41,20 +41,23 @@ using namespace std;
 
 
 
-HoI4::World::World(const Vic2::World* _sourceWorld, const mappers::ProvinceMapper& provinceMapper):
-	 sourceWorld(_sourceWorld), countryMap(_sourceWorld), theIdeas(std::make_unique<HoI4::Ideas>()),
+HoI4::World::World(const Vic2::World* _sourceWorld,
+	 const mappers::ProvinceMapper& provinceMapper,
+	 const Configuration& theConfiguration):
+	 sourceWorld(_sourceWorld),
+	 countryMap(_sourceWorld), theIdeas(std::make_unique<HoI4::Ideas>()),
 	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), peaces(make_unique<HoI4::AiPeaces>()),
 	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
 {
 	LOG(LogLevel::Info) << "Building HoI4 World";
 
 	auto vic2Localisations = sourceWorld->getLocalisations();
-	hoi4Localisations = Localisation::Importer{}.generateLocalisations();
+	hoi4Localisations = Localisation::Importer{}.generateLocalisations(theConfiguration);
 
 	ProvinceDefinitions provinceDefinitions =
 		 ProvinceDefinitions::Importer{}.importProvinceDefinitions(theConfiguration);
-	theMapData = std::make_unique<MapData>(provinceDefinitions);
-	theCoastalProvinces.init(*theMapData);
+	theMapData = std::make_unique<MapData>(provinceDefinitions, theConfiguration);
+	theCoastalProvinces.init(*theMapData, theConfiguration);
 	states = std::make_unique<States>(sourceWorld,
 		 countryMap,
 		 theCoastalProvinces,
@@ -62,26 +65,27 @@ HoI4::World::World(const Vic2::World* _sourceWorld, const mappers::ProvinceMappe
 		 vic2Localisations,
 		 provinceDefinitions,
 		 *hoi4Localisations,
-		 provinceMapper);
-	supplyZones = new HoI4::SupplyZones(states->getDefaultStates());
-	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, provinceDefinitions);
-	theNames.init();
+		 provinceMapper,
+		 theConfiguration);
+	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
+	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, provinceDefinitions, theConfiguration);
+	theNames.init(theConfiguration);
 	theGraphics.init();
 	governmentMap.init();
 	convertCountries(vic2Localisations);
 	addStatesToCountries(provinceMapper);
 	states->addCapitalsToStates(countries);
-	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper);
-	convertIndustry();
+	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
+	convertIndustry(theConfiguration);
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
-	convertStrategicRegions();
+	convertStrategicRegions(theConfiguration);
 	convertDiplomacy();
 	convertTechs();
 
 	militaryMappingsFile importedMilitaryMappings;
 	theMilitaryMappings = importedMilitaryMappings.takeAllMilitaryMappings();
-	convertMilitaries(provinceDefinitions, provinceMapper);
+	convertMilitaries(provinceDefinitions, provinceMapper, theConfiguration);
 
 	determineGreatPowers();
 
@@ -90,7 +94,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld, const mappers::ProvinceMappe
 	importLeaderTraits();
 	convertGovernments(vic2Localisations);
 	ideologies = std::make_unique<Ideologies>(theConfiguration);
-	ideologies->identifyMajorIdeologies(greatPowers, countries);
+	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
 	genericFocusTree.addGenericFocusTree(ideologies->getMajorIdeologies());
 	importIdeologicalMinisters();
 	convertParties(vic2Localisations);
@@ -98,7 +102,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld, const mappers::ProvinceMappe
 	events->createWarJustificationEvents(ideologies->getMajorIdeologies(), *hoi4Localisations);
 	events->importElectionEvents(ideologies->getMajorIdeologies(), *onActions);
 	addCountryElectionEvents(ideologies->getMajorIdeologies(), vic2Localisations);
-	events->createStabilityEvents(ideologies->getMajorIdeologies());
+	events->createStabilityEvents(ideologies->getMajorIdeologies(), theConfiguration);
 	events->generateGenericEvents(theConfiguration, ideologies->getMajorIdeologies());
 	events->giveGovernmentInExileEvent(createGovernmentInExileEvent(ideologies->getMajorIdeologies()));
 	theIdeas->updateIdeas(ideologies->getMajorIdeologies());
@@ -114,10 +118,10 @@ HoI4::World::World(const Vic2::World* _sourceWorld, const mappers::ProvinceMappe
 	states->convertAirBases(countries, greatPowers);
 	if (theConfiguration.getCreateFactions())
 	{
-		createFactions();
+		createFactions(theConfiguration);
 	}
 
-	HoI4WarCreator warCreator(this, *theMapData, provinceDefinitions, *hoi4Localisations);
+	HoI4WarCreator warCreator(this, *theMapData, provinceDefinitions, *hoi4Localisations, theConfiguration);
 
 	addFocusTrees();
 	adjustResearchFocuses();
@@ -283,12 +287,12 @@ void HoI4::World::convertIdeologySupport()
 }
 
 
-void HoI4::World::convertIndustry()
+void HoI4::World::convertIndustry(const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Info) << "\tConverting industry";
 
-	map<string, double> factoryWorkerRatios = calculateFactoryWorkerRatios();
-	states->putIndustryInStates(factoryWorkerRatios, theCoastalProvinces);
+	map<string, double> factoryWorkerRatios = calculateFactoryWorkerRatios(theConfiguration);
+	states->putIndustryInStates(factoryWorkerRatios, theCoastalProvinces, theConfiguration);
 
 	calculateIndustryInCountries();
 	reportIndustryLevels();
@@ -318,12 +322,14 @@ void HoI4::World::addStatesToCountries(const mappers::ProvinceMapper& provinceMa
 }
 
 
-map<string, double> HoI4::World::calculateFactoryWorkerRatios()
+map<string, double> HoI4::World::calculateFactoryWorkerRatios(const Configuration& theConfiguration)
 {
 	map<string, double> industrialWorkersPerCountry = getIndustrialWorkersPerCountry();
 	double totalWorldWorkers = getTotalWorldWorkers(industrialWorkersPerCountry);
-	map<string, double> adjustedWorkersPerCountry = adjustWorkers(industrialWorkersPerCountry, totalWorldWorkers);
-	double acutalWorkerFactoryRatio = getWorldwideWorkerFactoryRatio(adjustedWorkersPerCountry, totalWorldWorkers);
+	map<string, double> adjustedWorkersPerCountry =
+		 adjustWorkers(industrialWorkersPerCountry, totalWorldWorkers, theConfiguration);
+	double acutalWorkerFactoryRatio =
+		 getWorldwideWorkerFactoryRatio(adjustedWorkersPerCountry, totalWorldWorkers, theConfiguration);
 
 	map<string, double> factoryWorkerRatios;
 	for (auto country: landedCountries)
@@ -374,7 +380,8 @@ double HoI4::World::getTotalWorldWorkers(const map<string, double>& industrialWo
 
 
 map<string, double> HoI4::World::adjustWorkers(const map<string, double>& industrialWorkersPerCountry,
-	 double totalWorldWorkers)
+	 double totalWorldWorkers,
+	 const Configuration& theConfiguration)
 {
 	double meanWorkersPerCountry = totalWorldWorkers / industrialWorkersPerCountry.size();
 
@@ -398,7 +405,8 @@ map<string, double> HoI4::World::adjustWorkers(const map<string, double>& indust
 
 
 double HoI4::World::getWorldwideWorkerFactoryRatio(const map<string, double>& workersInCountries,
-	 double totalWorldWorkers)
+	 double totalWorldWorkers,
+	 const Configuration& theConfiguration)
 {
 	double baseIndustry = 0.0;
 	for (auto countryWorkers: workersInCountries)
@@ -449,10 +457,10 @@ void HoI4::World::reportIndustryLevels() const
 }
 
 
-void HoI4::World::convertStrategicRegions()
+void HoI4::World::convertStrategicRegions(const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Info) << "\tConverting strategic regions";
-	map<int, int> provinceToStrategicRegionMap = importStrategicRegions();
+	map<int, int> provinceToStrategicRegionMap = importStrategicRegions(theConfiguration);
 
 	for (auto state: states->getStates())
 	{
@@ -467,7 +475,7 @@ void HoI4::World::convertStrategicRegions()
 }
 
 
-map<int, int> HoI4::World::importStrategicRegions()
+map<int, int> HoI4::World::importStrategicRegions(const Configuration& theConfiguration)
 {
 	map<int, int> provinceToStrategicRegionMap;
 
@@ -475,7 +483,7 @@ map<int, int> HoI4::World::importStrategicRegions()
 	Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/map/strategicregions/", filenames);
 	for (auto filename: filenames)
 	{
-		HoI4::StrategicRegion* newRegion = new HoI4::StrategicRegion(filename);
+		HoI4::StrategicRegion* newRegion = new HoI4::StrategicRegion(filename, theConfiguration);
 		strategicRegions.insert(make_pair(newRegion->getID(), newRegion));
 
 		for (auto province: newRegion->getOldProvinces())
@@ -633,13 +641,14 @@ void HoI4::World::convertTechs()
 
 
 void HoI4::World::convertMilitaries(const ProvinceDefinitions& provinceDefinitions,
-	 const mappers::ProvinceMapper& provinceMapper)
+	 const mappers::ProvinceMapper& provinceMapper,
+	 const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Info) << "\tConverting militaries";
 	const HoI4::militaryMappings& specificMappings =
 		 theMilitaryMappings->getMilitaryMappings(theConfiguration.getVic2Mods());
 
-	convertArmies(specificMappings, provinceMapper);
+	convertArmies(specificMappings, provinceMapper, theConfiguration);
 	convertNavies(specificMappings.getUnitMappings(),
 		 specificMappings.getMtgUnitMappings(),
 		 provinceDefinitions,
@@ -649,13 +658,14 @@ void HoI4::World::convertMilitaries(const ProvinceDefinitions& provinceDefinitio
 
 
 void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings,
-	 const mappers::ProvinceMapper& provinceMapper)
+	 const mappers::ProvinceMapper& provinceMapper,
+	 const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Info) << "\t\tConverting armies";
 
 	for (auto country: countries)
 	{
-		country.second->convertArmies(localMilitaryMappings, *states, provinceMapper);
+		country.second->convertArmies(localMilitaryMappings, *states, provinceMapper, theConfiguration);
 	}
 }
 
@@ -751,7 +761,7 @@ double HoI4::World::getStrongestCountryStrength() const
 }
 
 
-void HoI4::World::createFactions()
+void HoI4::World::createFactions(const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Info) << "\tCreating Factions";
 

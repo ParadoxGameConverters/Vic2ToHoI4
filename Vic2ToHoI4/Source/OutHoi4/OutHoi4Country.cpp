@@ -51,7 +51,7 @@ void HoI4::outputToNamesFiles(std::ostream& namesFile, const namesMapper& theNam
 	namesFile << "\t\tnames = {\n";
 	outputNamesSet(namesFile, theNames.getMaleNames(primaryCulture), "\t\t\t");
 	namesFile << "\t\t}\n";
-	if (femaleSurnames->size() > 0)
+	if (!femaleSurnames->empty())
 	{
 		namesFile << "\t\tsurnames = {\n";
 		outputNamesSet(namesFile, theNames.getSurnames(primaryCulture), "\t\t");
@@ -63,7 +63,7 @@ void HoI4::outputToNamesFiles(std::ostream& namesFile, const namesMapper& theNam
 	namesFile << "\t\tnames = {\n";
 	outputNamesSet(namesFile, theNames.getFemaleNames(primaryCulture), "\t\t\t");
 	namesFile << "\t\t}\n";
-	if (femaleSurnames->size() > 0)
+	if (!femaleSurnames->empty())
 	{
 		namesFile << "\t\tsurnames = {\n";
 		outputNamesSet(namesFile, femaleSurnames, "\t\t");
@@ -71,7 +71,7 @@ void HoI4::outputToNamesFiles(std::ostream& namesFile, const namesMapper& theNam
 	}
 	namesFile << "\t}\n";
 
-	if (femaleSurnames->size() == 0)
+	if (femaleSurnames->empty())
 	{
 		namesFile << "\tsurnames = {\n";
 		outputNamesSet(namesFile, theNames.getSurnames(primaryCulture), "\t\t");
@@ -117,7 +117,7 @@ void outputNamesSet(std::ostream& namesFile,
 }
 
 
-void HoI4::outputToUnitNamesFiles(const Country& theCountry)
+void HoI4::outputToUnitNamesFiles(const Country& theCountry, const Configuration& theConfiguration)
 {
 	const auto& tag = theCountry.getTag();
 
@@ -182,21 +182,26 @@ void HoI4::outputIdeaGraphics(std::ostream& ideasFile, const Country& theCountry
 }
 
 
-void outputHistory(const HoI4::Country& theCountry);
-void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates, const HoI4::Country& theCountry);
-void outputCommonCountryFile(const HoI4::Country& theCountry);
-void outputAdvisorIdeas(const std::string& tag, const std::set<HoI4::Advisor>& ideologicalAdvisors);
+void outputHistory(const HoI4::Country& theCountry, const Configuration& theConfiguration);
+void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
+	 const HoI4::Country& theCountry,
+	 const Configuration& theConfiguration);
+void outputCommonCountryFile(const HoI4::Country& theCountry, const Configuration& theConfiguration);
+void outputAdvisorIdeas(const std::string& tag,
+	 const std::set<HoI4::Advisor>& ideologicalAdvisors,
+	 const Configuration& theConfiguration);
 
 void HoI4::outputCountry(const std::set<Advisor>& ideologicalMinisters,
 	 const std::vector<DivisionTemplateType>& divisionTemplates,
-	 const Country& theCountry)
+	 const Country& theCountry,
+	 const Configuration& theConfiguration)
 {
 	if (theCountry.getCapitalState())
 	{
-		outputHistory(theCountry);
-		outputOOB(divisionTemplates, theCountry);
-		outputCommonCountryFile(theCountry);
-		outputAdvisorIdeas(theCountry.getTag(), ideologicalMinisters);
+		outputHistory(theCountry, theConfiguration);
+		outputOOB(divisionTemplates, theCountry, theConfiguration);
+		outputCommonCountryFile(theCountry, theConfiguration);
+		outputAdvisorIdeas(theCountry.getTag(), ideologicalMinisters, theConfiguration);
 
 		if (auto nationalFocus = theCountry.getNationalFocus(); nationalFocus)
 		{
@@ -257,7 +262,7 @@ void outputCommanders(std::ostream& output,
 	 const std::vector<HoI4::Admiral>& admirals);
 
 
-void outputHistory(const HoI4::Country& theCountry)
+void outputHistory(const HoI4::Country& theCountry, const Configuration& theConfiguration)
 {
 	const auto& tag = theCountry.getTag();
 	const auto& governmentIdeology = theCountry.getGovernmentIdeology();
@@ -690,7 +695,9 @@ void outputCommanders(std::ostream& output,
 }
 
 
-void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates, const HoI4::Country& theCountry)
+void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
+	 const HoI4::Country& theCountry,
+	 const Configuration& theConfiguration)
 {
 	const auto& tag = theCountry.getTag();
 
@@ -788,7 +795,7 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 	output << "units = {\n";
 	output << theCountry.getArmy();
 	output << "}\n";
-	if (auto& planes = theCountry.getPlanes(); planes.size() > 0)
+	if (auto& planes = theCountry.getPlanes(); !planes.empty())
 	{
 		output << "air_wings = {\n";
 		output << "\t" << *theCountry.getCapitalState() << " = {\n";
@@ -812,7 +819,7 @@ void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 }
 
 
-void outputCommonCountryFile(const HoI4::Country& theCountry)
+void outputCommonCountryFile(const HoI4::Country& theCountry, const Configuration& theConfiguration)
 {
 	const auto& commonCountryFile = theCountry.getCommonCountryFile();
 	std::ofstream output("output/" + theConfiguration.getOutputName() + "/common/countries/" +
@@ -836,7 +843,9 @@ void outputCommonCountryFile(const HoI4::Country& theCountry)
 }
 
 
-void outputAdvisorIdeas(const std::string& tag, const std::set<HoI4::Advisor>& ideologicalAdvisors)
+void outputAdvisorIdeas(const std::string& tag,
+	 const std::set<HoI4::Advisor>& ideologicalAdvisors,
+	 const Configuration& theConfiguration)
 {
 	std::ofstream ideasFile("output/" + theConfiguration.getOutputName() + "/common/ideas/" + tag + ".txt");
 	if (!ideasFile.is_open())

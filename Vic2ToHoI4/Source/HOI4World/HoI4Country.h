@@ -112,7 +112,8 @@ class Country
 	void convertAirForce(const UnitMappings& unitMap);
 	void convertArmies(const militaryMappings& theMilitaryMappings,
 		 const HoI4::States& theStates,
-		 const mappers::ProvinceMapper& provinceMapper);
+		 const mappers::ProvinceMapper& provinceMapper,
+		 const Configuration& theConfiguration);
 	void convertTechnology(const mappers::techMapper& theTechMapper);
 	void addState(const State& state);
 	void calculateIndustry(const std::map<int, State>& allStates);

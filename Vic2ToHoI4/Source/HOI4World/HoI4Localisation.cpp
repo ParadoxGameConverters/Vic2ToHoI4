@@ -15,9 +15,10 @@
 
 
 
-std::unique_ptr<HoI4::Localisation> HoI4::Localisation::Importer::generateLocalisations()
+std::unique_ptr<HoI4::Localisation> HoI4::Localisation::Importer::generateLocalisations(
+	 const Configuration& theConfiguration)
 {
-	importLocalisations();
+	importLocalisations(theConfiguration);
 	prepareBlankLocalisations();
 
 	return std::make_unique<Localisation>(stateLocalisations,
@@ -35,7 +36,7 @@ std::unique_ptr<HoI4::Localisation> HoI4::Localisation::Importer::generateLocali
 }
 
 
-void HoI4::Localisation::Importer::importLocalisations()
+void HoI4::Localisation::Importer::importLocalisations(const Configuration& theConfiguration)
 {
 	std::set<std::string> fileNames;
 	Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/localisation", fileNames);
@@ -413,7 +414,8 @@ void HoI4::Localisation::addStateLocalisation(const State& hoi4State,
 
 void HoI4::Localisation::addStateLocalisations(const States& states,
 	 const Vic2::Localisations& vic2Localisations,
-	 const mappers::ProvinceMapper& theProvinceMapper)
+	 const mappers::ProvinceMapper& theProvinceMapper,
+	 const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Info) << "\tAdding state localisations";
 	for (const auto& state: states.getStates())

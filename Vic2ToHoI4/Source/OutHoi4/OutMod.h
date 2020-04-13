@@ -12,7 +12,8 @@ void output(const HoI4::World& destWorld,
 	 const std::string& outputName,
 	 bool debugEnabled,
 	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path);
+	 const std::string& vic2Path,
+	 const Configuration& theConfiguration);
 
 
 

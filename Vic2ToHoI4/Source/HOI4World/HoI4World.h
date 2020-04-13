@@ -76,7 +76,9 @@ class HoI4UnitType;
 class World: commonItems::parser
 {
   public:
-	explicit World(const Vic2::World* sourceWorld, const mappers::ProvinceMapper& provinceMapper);
+	explicit World(const Vic2::World* sourceWorld,
+		 const mappers::ProvinceMapper& provinceMapper,
+		 const Configuration& theConfiguration);
 	~World() = default;
 
 	[[nodiscard]] auto& getNames() { return theNames; }
@@ -136,20 +138,22 @@ class World: commonItems::parser
 	void addLeaders();
 	void convertIdeologySupport();
 
-	void convertIndustry();
+	void convertIndustry(const Configuration& theConfiguration);
 	void addStatesToCountries(const mappers::ProvinceMapper& provinceMapper);
-	std::map<std::string, double> calculateFactoryWorkerRatios();
+	std::map<std::string, double> calculateFactoryWorkerRatios(const Configuration& theConfiguration);
 	std::map<std::string, double> getIndustrialWorkersPerCountry();
 	double getTotalWorldWorkers(const std::map<std::string, double>& industrialWorkersPerCountry);
 	std::map<std::string, double> adjustWorkers(const std::map<std::string, double>& industrialWorkersPerCountry,
-		 double totalWorldWorkers);
+		 double totalWorldWorkers,
+		 const Configuration& theConfiguration);
 	double getWorldwideWorkerFactoryRatio(const std::map<std::string, double>& workersInCountries,
-		 double totalWorldWorkers);
+		 double totalWorldWorkers,
+		 const Configuration& theConfiguration);
 	void calculateIndustryInCountries();
 	void reportIndustryLevels() const;
 
-	void convertStrategicRegions();
-	std::map<int, int> importStrategicRegions();
+	void convertStrategicRegions(const Configuration& theConfiguration);
+	std::map<int, int> importStrategicRegions(const Configuration& theConfiguration);
 	std::map<int, int> determineUsedRegions(const HoI4::State& state, std::map<int, int>& provinceToStrategicRegionMap);
 	std::optional<int> determineMostUsedRegion(const std::map<int, int>& usedRegions) const;
 	void addProvincesToRegion(const HoI4::State& state, int regionNum);
@@ -161,8 +165,11 @@ class World: commonItems::parser
 	void convertTechs();
 
 	void convertMilitaries(const ProvinceDefinitions& provinceDefinitions,
-		 const mappers::ProvinceMapper& provinceMapper);
-	void convertArmies(const militaryMappings& localMilitaryMappings, const mappers::ProvinceMapper& provinceMapper);
+		 const mappers::ProvinceMapper& provinceMapper,
+		 const Configuration& theConfiguration);
+	void convertArmies(const militaryMappings& localMilitaryMappings,
+		 const mappers::ProvinceMapper& provinceMapper,
+		 const Configuration& theConfiguration);
 	void convertNavies(const UnitMappings& unitMap,
 		 const MtgUnitMappings& mtgUnitMap,
 		 const ProvinceDefinitions& provinceDefinitions,
@@ -175,7 +182,7 @@ class World: commonItems::parser
 
 	double getStrongestCountryStrength() const;
 
-	void createFactions();
+	void createFactions(const Configuration& theConfiguration);
 	void logFactionMember(std::ofstream& factionsLog, std::shared_ptr<HoI4::Country> member) const;
 	std::optional<std::string> returnSphereLeader(std::shared_ptr<HoI4::Country> possibleSphereling) const;
 	bool governmentsAllowFaction(const std::string& leaderGovernment, const std::string& allyGovernment) const;

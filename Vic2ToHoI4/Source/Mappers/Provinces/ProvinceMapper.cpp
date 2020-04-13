@@ -8,11 +8,11 @@
 
 
 
-mappers::ProvinceMapper mappers::ProvinceMapper::Parser::initializeMapper()
+mappers::ProvinceMapper mappers::ProvinceMapper::Parser::initializeMapper(const Configuration& theConfiguration)
 {
 	auto gotMappings = false;
 	registerKeyword(std::regex("\\d\\.\\d\\.\\d"),
-		 [this, &gotMappings](const std::string& version, std::istream& theStream) {
+		 [this, &gotMappings, theConfiguration](const std::string& version, std::istream& theStream) {
 			 const HoI4::Version currentVersion(version);
 			 if ((theConfiguration.getHOI4Version() >= currentVersion) && !gotMappings)
 			 {
@@ -45,13 +45,13 @@ mappers::ProvinceMapper mappers::ProvinceMapper::Parser::initializeMapper()
 		parseFile("province_mappings.txt");
 	}
 
-	checkAllHoI4ProvincesMapped();
+	checkAllHoI4ProvincesMapped(theConfiguration);
 
 	return ProvinceMapper(HoI4ToVic2ProvinceMap, Vic2ToHoI4ProvinceMap);
 }
 
 
-void mappers::ProvinceMapper::Parser::checkAllHoI4ProvincesMapped() const
+void mappers::ProvinceMapper::Parser::checkAllHoI4ProvincesMapped(const Configuration& theConfiguration) const
 {
 	std::ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
 	if (!definitions.is_open())
