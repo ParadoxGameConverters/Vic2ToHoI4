@@ -23,7 +23,7 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 	auto createFactions = true;
 	auto version = HoI4::Version();
 
-	registerKeyword(std::regex("HoI4directory"), [&HoI4Path](const std::string& unused, std::istream& theStream) {
+	registerKeyword("HoI4directory", [&HoI4Path](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString directoryString(theStream);
 		HoI4Path = directoryString.getString();
 		if (HoI4Path.empty() || !Utils::doesFolderExist(HoI4Path))
@@ -35,10 +35,9 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 			throw std::runtime_error("The HoI4 path specified in configuration.txt does not contain HoI4");
 		}
 
-			LOG(LogLevel::Debug) << "HoI4 path install path is " << HoI4Path;
-		
+		LOG(LogLevel::Debug) << "HoI4 path install path is " << HoI4Path;
 	});
-	registerKeyword(std::regex("V2directory"), [&Vic2Path](const std::string& unused, std::istream& theStream) {
+	registerKeyword("V2directory", [&Vic2Path](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString directoryString(theStream);
 		Vic2Path = directoryString.getString();
 		if (Vic2Path.empty() || !Utils::doesFolderExist(Vic2Path))
@@ -50,33 +49,30 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 			throw std::runtime_error("The Victoria 2 path specified in configuration.txt does not contain Victoria 2");
 		}
 
-			LOG(LogLevel::Debug) << "Victoria 2 install path is " << Vic2Path;
-
+		LOG(LogLevel::Debug) << "Victoria 2 install path is " << Vic2Path;
 	});
-	registerKeyword(std::regex("Vic2Mods"), [&Vic2Mods](const std::string& unused, std::istream& theStream) {
+	registerKeyword("Vic2Mods", [&Vic2Mods](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringList modsStrings(theStream);
 		Vic2Mods = modsStrings.getStrings();
 	});
-	registerKeyword(std::regex("force_multiplier"),
-		 [&forceMultiplier](const std::string& unused, std::istream& theStream) {
-			 const commonItems::singleDouble factorValue(theStream);
-			 forceMultiplier = factorValue.getDouble();
-		 });
-	registerKeyword(std::regex("manpower_factor"),
-		 [&manpowerFactor](const std::string& unused, std::istream& theStream) {
-			 const commonItems::singleDouble factorValue(theStream);
-			 manpowerFactor = factorValue.getDouble();
-		 });
-	registerKeyword(std::regex("industrial_shape_factor"),
+	registerKeyword("force_multiplier", [&forceMultiplier](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleDouble factorValue(theStream);
+		forceMultiplier = factorValue.getDouble();
+	});
+	registerKeyword("manpower_factor", [&manpowerFactor](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleDouble factorValue(theStream);
+		manpowerFactor = factorValue.getDouble();
+	});
+	registerKeyword("industrial_shape_factor",
 		 [&industrialShapeFactor](const std::string& unused, std::istream& theStream) {
 			 const commonItems::singleDouble factorValue(theStream);
 			 industrialShapeFactor = factorValue.getDouble();
 		 });
-	registerKeyword(std::regex("ic_factor"), [&icFactor](const std::string& unused, std::istream& theStream) {
+	registerKeyword("ic_factor", [&icFactor](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleDouble factorValue(theStream);
 		icFactor = factorValue.getDouble();
 	});
-	registerKeyword(std::regex("ideologies"), [&ideologiesOptions](const std::string& unused, std::istream& theStream) {
+	registerKeyword("ideologies", [&ideologiesOptions](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString ideologiesOptionString(theStream);
 		if (ideologiesOptionString.getString() == "keep_default")
 		{
@@ -95,37 +91,36 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 			ideologiesOptions = ideologyOptions::keep_major;
 		}
 	});
-	registerKeyword(std::regex("ideologies_choice"),
-		 [&specifiedIdeologies](const std::string& unused, std::istream& theStream) {
-			 const commonItems::singleString choiceString(theStream);
-			 specifiedIdeologies.push_back(choiceString.getString());
-		 });
-	registerKeyword(std::regex("debug"), [&debug](const std::string& unused, std::istream& theStream) {
+	registerKeyword("ideologies_choice", [&specifiedIdeologies](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleString choiceString(theStream);
+		specifiedIdeologies.push_back(choiceString.getString());
+	});
+	registerKeyword("debug", [&debug](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString debugString(theStream);
 		if (debugString.getString() == "yes")
 		{
 			debug = true;
 		}
 	});
-	registerKeyword(std::regex("remove_cores"), [&removeCores](const std::string& unused, std::istream& theStream) {
+	registerKeyword("remove_cores", [&removeCores](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString removeCoresString(theStream);
 		if (removeCoresString.getString() == "false")
 		{
 			removeCores = false;
 		}
 	});
-	registerKeyword(std::regex("create_factions"),
-		 [&createFactions](const std::string& unused, std::istream& theStream) {
-			 const commonItems::singleString createFactionsString(theStream);
-			 if (createFactionsString.getString() == "no")
-			 {
-				 createFactions = false;
-			 }
-		 });
-	registerKeyword(std::regex("HoI4Version"), [&version](const std::string& unused, std::istream& theStream) {
+	registerKeyword("create_factions", [&createFactions](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleString createFactionsString(theStream);
+		if (createFactionsString.getString() == "no")
+		{
+			createFactions = false;
+		}
+	});
+	registerKeyword("HoI4Version", [&version](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString versionString(theStream);
 		version = HoI4::Version(versionString.getString());
 	});
+	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
 
 	LOG(LogLevel::Info) << "Reading configuration file";
 	parseStream(theStream);
@@ -152,9 +147,10 @@ std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const
 {
 	std::unique_ptr<Configuration> configuration;
 
-	registerKeyword(std::regex("configuration"), [&configuration](const std::string& unused, std::istream& theStream) {
+	registerKeyword("configuration", [&configuration](const std::string& unused, std::istream& theStream) {
 		configuration = ConfigurationDetails{}.importDetails(theStream);
 	});
+	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
 
 	parseFile(filename);
 

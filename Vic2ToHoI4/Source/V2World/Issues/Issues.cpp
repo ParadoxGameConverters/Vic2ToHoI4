@@ -22,7 +22,7 @@ Vic2::Issues Vic2::Issues::Parser::importIssues(const Configuration& theConfigur
 			}
 		}
 	});
-	registerKeyword("[A-Za-z_]+", [&issueNames, &issueNum](const std::string& unused, std::istream& theStream) {
+	registerRegex("[a-zA-Z0-9_]+", [&issueNames, &issueNum](const std::string& unused, std::istream& theStream) {
 		IssueHelper helper(theStream);
 		for (auto& name: helper.takeIssues())
 		{
