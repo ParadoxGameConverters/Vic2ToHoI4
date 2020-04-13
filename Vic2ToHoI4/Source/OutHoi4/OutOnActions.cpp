@@ -89,6 +89,7 @@ void HoI4::outputOnActions(const OnActions& onActions,
 		onActionsFile << "\t\t\t\t\toriginal_tag = ROOT\n";
 		onActionsFile << "\t\t\t\t}\n";
 		onActionsFile << "\t\t\t\tset_politics = {\n";
+		onActionsFile << "\t\t\t\t\truling_party = democratic\n";
 		onActionsFile << "\t\t\t\t\telections_allowed = yes\n";
 		onActionsFile << "\t\t\t\t}\n";
 		onActionsFile << "\t\t\t}\n";

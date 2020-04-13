@@ -329,10 +329,8 @@ on_actions = {
 		}
 	}
 	
-	on_coup_succeded = {
-	###Democratic may not always exist. Nevertheless, civil-war created democratic nations should gain elections
-		effect = {
-		}
+	on_coup_succeeded = {
+	### Handled in 99_converter_on_actions.txt
 	}
 
 	#ROOT is winner #FROM gets annexed - This will also fire on_annex
