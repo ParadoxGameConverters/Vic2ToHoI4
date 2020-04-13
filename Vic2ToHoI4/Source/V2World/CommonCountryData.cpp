@@ -22,20 +22,24 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "CommonCountryData.h"
-#include "ParserHelpers.h"
 #include "../Color.h"
 #include "../Configuration.h"
 #include "OSCompatibilityLayer.h"
+#include "ParserHelpers.h"
 
 
 
-Vic2::commonCountryData::commonCountryData(const std::string& filename, const std::string& mod)
+Vic2::commonCountryData::commonCountryData(const std::string& filename,
+	 const std::string& mod,
+	 const Configuration& theConfiguration)
 {
-	registerKeyword(std::regex("color"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("color"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::intList colorInts(theStream);
-		theColor = ConverterColor::Color(ConverterColor::red(colorInts.getInts()[0]), ConverterColor::green(colorInts.getInts()[1]), ConverterColor::blue(colorInts.getInts()[2]));
+		theColor = ConverterColor::Color(ConverterColor::red(colorInts.getInts()[0]),
+			 ConverterColor::green(colorInts.getInts()[1]),
+			 ConverterColor::blue(colorInts.getInts()[2]));
 	});
-	registerKeyword(std::regex("unit\\_names"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("unit\\_names"), [this](const std::string& unused, std::istream& theStream) {
 		auto equals = getNextTokenWithoutMatching(theStream);
 		auto bracket = getNextTokenWithoutMatching(theStream);
 		auto token = getNextTokenWithoutMatching(theStream);
@@ -44,7 +48,7 @@ Vic2::commonCountryData::commonCountryData(const std::string& filename, const st
 			commonItems::stringList unitNamesStrings(theStream);
 			for (auto name: unitNamesStrings.getStrings())
 			{
-				if (name.substr(0,1) == "\"")
+				if (name.substr(0, 1) == "\"")
 				{
 					name = name.substr(1, name.length() - 2);
 				}
@@ -54,7 +58,7 @@ Vic2::commonCountryData::commonCountryData(const std::string& filename, const st
 			token = getNextTokenWithoutMatching(theStream);
 		}
 	});
-	registerKeyword(std::regex("party"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("party"), [this](const std::string& unused, std::istream& theStream) {
 		auto party = Party(theStream);
 		parties.emplace_back(party);
 	});
@@ -72,7 +76,7 @@ Vic2::commonCountryData::commonCountryData(const std::string& filename, const st
 	}
 	if (!parsedFile)
 	{
-		std::string file = theConfiguration.getVic2Path() +  "/common/countries/" + filename;
+		std::string file = theConfiguration.getVic2Path() + "/common/countries/" + filename;
 		if (Utils::DoesFileExist(file))
 		{
 			parseFile(file);

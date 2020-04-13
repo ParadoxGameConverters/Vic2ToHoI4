@@ -35,13 +35,17 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
+class Configuration;
+
+
+
 namespace Vic2
 {
 
 class commonCountryData: commonItems::parser
 {
 	public:
-		commonCountryData(const std::string& filename, const std::string& mod);
+	commonCountryData(const std::string& filename, const std::string& mod, const Configuration& theConfiguration);
 
 		auto getColor() { return std::move(theColor); }
 		auto getUnitNames() { return std::move(unitNames); }

@@ -10,6 +10,7 @@
 #include "Decisions/Decisions.h"
 #include "Diplomacy/AIPeaces.h"
 #include "GameRules/GameRules.h"
+#include "HoI4Localisation.h"
 #include "Ideas/Ideas.h"
 #include "Ideologies/Ideologies.h"
 #include "Leaders/Advisor.h"
@@ -30,7 +31,6 @@
 #include <vector>
 
 
-
 class HoI4Ideology;
 
 
@@ -38,9 +38,10 @@ class HoI4Ideology;
 namespace mappers
 {
 
+class ProvinceMapper;
 class techMapper;
 
-}
+} // namespace mappers
 
 
 namespace Vic2
@@ -63,6 +64,7 @@ class Country;
 class DefaultState;
 class DivisionTemplateType;
 class Events;
+class ProvinceDefinitions;
 class State;
 class States;
 class StrategicRegion;
@@ -74,7 +76,9 @@ class HoI4UnitType;
 class World: commonItems::parser
 {
   public:
-	explicit World(const Vic2::World* sourceWorld);
+	explicit World(const Vic2::World* sourceWorld,
+		 const mappers::ProvinceMapper& provinceMapper,
+		 const Configuration& theConfiguration);
 	~World() = default;
 
 	[[nodiscard]] auto& getNames() { return theNames; }
@@ -99,6 +103,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getScriptedTriggers() const { return scriptedTriggers; }
 	[[nodiscard]] const auto& getGameRules() const { return *gameRules; }
 	[[nodiscard]] const auto& getGenericFocusTree() const { return genericFocusTree; }
+	[[nodiscard]] const auto& getLocalisation() const { return *hoi4Localisations; }
 
 	std::map<int, HoI4::State> getStates() const { return states->getStates(); }
 	const std::map<int, int>& getProvinceToStateIDMap() const { return states->getProvinceToStateIDMap(); }
@@ -117,35 +122,38 @@ class World: commonItems::parser
 	World(const World&) = delete;
 	World& operator=(const World&) = delete;
 
-	void convertCountries();
+	void convertCountries(const Vic2::Localisations& vic2Localisations);
 	void convertCountry(std::pair<std::string, Vic2::Country*> country,
-		 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper);
+		 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
+		 const Vic2::Localisations& vic2Localisations);
 
 	void importLeaderTraits();
 	void importIdeologicalMinisters();
 
-	void convertGovernments();
+	void convertGovernments(const Vic2::Localisations& vic2Localisations);
 
-	void convertParties();
+	void convertParties(const Vic2::Localisations& vic2Localisations);
 
 	void addNeutrality();
 	void addLeaders();
 	void convertIdeologySupport();
 
-	void convertIndustry();
-	void addStatesToCountries();
-	std::map<std::string, double> calculateFactoryWorkerRatios();
+	void convertIndustry(const Configuration& theConfiguration);
+	void addStatesToCountries(const mappers::ProvinceMapper& provinceMapper);
+	std::map<std::string, double> calculateFactoryWorkerRatios(const Configuration& theConfiguration);
 	std::map<std::string, double> getIndustrialWorkersPerCountry();
 	double getTotalWorldWorkers(const std::map<std::string, double>& industrialWorkersPerCountry);
 	std::map<std::string, double> adjustWorkers(const std::map<std::string, double>& industrialWorkersPerCountry,
-		 double totalWorldWorkers);
+		 double totalWorldWorkers,
+		 const Configuration& theConfiguration);
 	double getWorldwideWorkerFactoryRatio(const std::map<std::string, double>& workersInCountries,
-		 double totalWorldWorkers);
+		 double totalWorldWorkers,
+		 const Configuration& theConfiguration);
 	void calculateIndustryInCountries();
 	void reportIndustryLevels() const;
 
-	void convertStrategicRegions();
-	std::map<int, int> importStrategicRegions();
+	void convertStrategicRegions(const Configuration& theConfiguration);
+	std::map<int, int> importStrategicRegions(const Configuration& theConfiguration);
 	std::map<int, int> determineUsedRegions(const HoI4::State& state, std::map<int, int>& provinceToStrategicRegionMap);
 	std::optional<int> determineMostUsedRegion(const std::map<int, int>& usedRegions) const;
 	void addProvincesToRegion(const HoI4::State& state, int regionNum);
@@ -156,9 +164,16 @@ class World: commonItems::parser
 
 	void convertTechs();
 
-	void convertMilitaries();
-	void convertArmies(const militaryMappings& localMilitaryMappings);
-	void convertNavies(const UnitMappings& unitMap, const MtgUnitMappings& mtgUnitMap);
+	void convertMilitaries(const ProvinceDefinitions& provinceDefinitions,
+		 const mappers::ProvinceMapper& provinceMapper,
+		 const Configuration& theConfiguration);
+	void convertArmies(const militaryMappings& localMilitaryMappings,
+		 const mappers::ProvinceMapper& provinceMapper,
+		 const Configuration& theConfiguration);
+	void convertNavies(const UnitMappings& unitMap,
+		 const MtgUnitMappings& mtgUnitMap,
+		 const ProvinceDefinitions& provinceDefinitions,
+		 const mappers::ProvinceMapper& provinceMapper);
 	void convertAirforces(const UnitMappings& unitMap);
 
 	void determineGreatPowers();
@@ -167,7 +182,7 @@ class World: commonItems::parser
 
 	double getStrongestCountryStrength() const;
 
-	void createFactions();
+	void createFactions(const Configuration& theConfiguration);
 	void logFactionMember(std::ofstream& factionsLog, std::shared_ptr<HoI4::Country> member) const;
 	std::optional<std::string> returnSphereLeader(std::shared_ptr<HoI4::Country> possibleSphereling) const;
 	bool governmentsAllowFaction(const std::string& leaderGovernment, const std::string& allyGovernment) const;
@@ -175,7 +190,8 @@ class World: commonItems::parser
 	void addFocusTrees();
 	void adjustResearchFocuses();
 
-	void addCountryElectionEvents(const std::set<std::string>& theMajorIdeologies);
+	void addCountryElectionEvents(const std::set<std::string>& theMajorIdeologies,
+		 const Vic2::Localisations& vic2Localisations);
 
 	std::optional<std::pair<std::string, std::string>> getStrongestNavyGps();
 
@@ -213,7 +229,7 @@ class World: commonItems::parser
 	std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
 
 	CoastalProvinces theCoastalProvinces;
-	MapData theMapData;
+	std::unique_ptr<MapData> theMapData;
 
 	ScriptedLocalisations scriptedLocalisations;
 	ScriptedTriggers scriptedTriggers;
@@ -221,6 +237,8 @@ class World: commonItems::parser
 	std::unique_ptr<GameRules> gameRules;
 
 	HoI4FocusTree genericFocusTree;
+
+	std::unique_ptr<Localisation> hoi4Localisations;
 };
 
 } // namespace HoI4

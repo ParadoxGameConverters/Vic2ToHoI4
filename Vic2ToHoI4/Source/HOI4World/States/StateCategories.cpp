@@ -1,13 +1,13 @@
 #include "StateCategories.h"
-#include "StateCategoryFile.h"
+#include "../../Configuration.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
-#include "../../Configuration.h"
+#include "StateCategoryFile.h"
 #include <set>
 
 
 
-HoI4::StateCategories::StateCategories()
+HoI4::StateCategories::StateCategories(const Configuration& theConfiguration)
 {
 	registerKeyword(std::regex("state_categories"), [this](const std::string& unused, std::istream& theStream) {
 		StateCategoryFile theFile(theStream);

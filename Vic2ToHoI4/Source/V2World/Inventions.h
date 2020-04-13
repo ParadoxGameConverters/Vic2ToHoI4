@@ -34,28 +34,32 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
+class Configuration;
+
+
+
 namespace Vic2
 {
 
 class inventions: commonItems::parser
 {
-	public:
-		inventions() noexcept;
+  public:
+	inventions(const Configuration& theConfiguration) noexcept;
 
-		std::optional<std::string> getInventionName(int inventionNum) const;
+	std::optional<std::string> getInventionName(int inventionNum) const;
 
-	private:
-		inventions(const inventions&) = delete;
-		inventions& operator=(const inventions&) = delete;
+  private:
+	inventions(const inventions&) = delete;
+	inventions& operator=(const inventions&) = delete;
 
-		std::list<std::string> getInventionFiles() const;
-		void generateNums(const std::list<std::string>& inventionFiles);
-		void processTechFile(const std::string& filename);
+	std::list<std::string> getInventionFiles(const Configuration& theConfiguration) const;
+	void generateNums(const std::list<std::string>& inventionFiles);
+	void processTechFile(const std::string& filename);
 
-		std::map<int, std::string> inventionNumsToNames;
+	std::map<int, std::string> inventionNumsToNames;
 };
 
-}
+} // namespace Vic2
 
 
 

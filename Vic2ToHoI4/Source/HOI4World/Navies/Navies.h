@@ -19,6 +19,9 @@
 namespace HoI4
 {
 
+class ProvinceDefinitions;
+
+
 class Navies
 {
   public:
@@ -29,7 +32,9 @@ class Navies
 		 const ShipVariants& theShipVariants,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 std::map<int, State> states,
-		 const std::string& tag);
+		 const std::string& tag,
+		 const ProvinceDefinitions& provinceDefinitions,
+		 const mappers::ProvinceMapper& provinceMapper);
 
 	Navies() = delete;
 	~Navies() = default;

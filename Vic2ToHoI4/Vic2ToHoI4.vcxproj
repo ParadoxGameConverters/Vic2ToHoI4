@@ -101,6 +101,7 @@
       <EnablePREfast>false</EnablePREfast>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -191,6 +192,7 @@
     <ClCompile Include="Source\Color.cpp" />
     <ClCompile Include="Source\Configuration.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
+    <ClCompile Include="Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategory.cpp" />
@@ -363,12 +365,10 @@
     <ClCompile Include="Source\Mappers\GovernmentMapper.cpp" />
     <ClCompile Include="Source\Mappers\GraphicsMapper.cpp" />
     <ClCompile Include="Source\Mappers\MergeRules.cpp" />
-    <ClCompile Include="Source\Mappers\ProvinceDefinitions.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMapper.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMapping.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\VersionedMappings.cpp" />
     <ClCompile Include="Source\Mappers\TechMapper.cpp" />
-    <ClCompile Include="Source\Mappers\V2Localisations.cpp" />
     <ClCompile Include="Source\Mappers\VersionParser\VersionParser.cpp" />
     <ClCompile Include="Source\targa.cpp" />
     <ClCompile Include="Source\V2toHOI4Converter.cpp" />
@@ -380,7 +380,9 @@
     <ClCompile Include="Source\V2World\CultureGroups.cpp" />
     <ClCompile Include="Source\V2World\Diplomacy.cpp" />
     <ClCompile Include="Source\V2World\Inventions.cpp" />
-    <ClCompile Include="Source\V2World\Issues.cpp" />
+    <ClCompile Include="Source\V2World\Issues\IssueHelper.cpp" />
+    <ClCompile Include="Source\V2World\Issues\Issues.cpp" />
+    <ClCompile Include="Source\V2World\Issues\PartiesIssueHelper.cpp" />
     <ClCompile Include="Source\V2World\Leader.cpp" />
     <ClCompile Include="Source\V2World\Party.cpp" />
     <ClCompile Include="Source\V2World\Pop.cpp" />
@@ -388,6 +390,7 @@
     <ClCompile Include="Source\V2World\Relations.cpp" />
     <ClCompile Include="Source\V2World\State.cpp" />
     <ClCompile Include="Source\V2World\StateDefinitions.cpp" />
+    <ClCompile Include="Source\V2World\Vic2Localisations.cpp" />
     <ClCompile Include="Source\V2World\Wars\War.cpp" />
     <ClCompile Include="Source\V2World\Wars\WarGoal.cpp" />
     <ClCompile Include="Source\V2World\World.cpp" />
@@ -405,6 +408,7 @@
     <ClInclude Include="Source\Color.h" />
     <ClInclude Include="Source\Configuration.h" />
     <ClInclude Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.h" />
+    <ClInclude Include="Source\HOI4World\ProvinceDefinitions.h" />
     <ClInclude Include="Source\HOI4World\SharedFocus.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategories.h" />
@@ -591,7 +595,6 @@
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.h" />
     <ClInclude Include="Source\Mappers\GraphicsMapper.h" />
     <ClInclude Include="Source\Mappers\MergeRules.h" />
-    <ClInclude Include="Source\Mappers\ProvinceDefinitions.h" />
     <ClInclude Include="Source\Mappers\CountryMapping.h" />
     <ClInclude Include="Source\Mappers\GovernmentMapper.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapper.h" />
@@ -599,7 +602,6 @@
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMappingTypes.h" />
     <ClInclude Include="Source\Mappers\Provinces\VersionedMappings.h" />
     <ClInclude Include="Source\Mappers\TechMapper.h" />
-    <ClInclude Include="Source\Mappers\V2Localisations.h" />
     <ClInclude Include="Source\Mappers\VersionParser\VersionParser.h" />
     <ClInclude Include="Source\targa.h" />
     <ClInclude Include="Source\V2World\Agreement.h" />
@@ -610,7 +612,9 @@
     <ClInclude Include="Source\V2World\CultureGroups.h" />
     <ClInclude Include="Source\V2World\Diplomacy.h" />
     <ClInclude Include="Source\V2World\Inventions.h" />
-    <ClInclude Include="Source\V2World\Issues.h" />
+    <ClInclude Include="Source\V2World\Issues\IssueHelper.h" />
+    <ClInclude Include="Source\V2World\Issues\Issues.h" />
+    <ClInclude Include="Source\V2World\Issues\PartiesIssueHelper.h" />
     <ClInclude Include="Source\V2World\Leader.h" />
     <ClInclude Include="Source\V2World\Party.h" />
     <ClInclude Include="Source\V2World\Pop.h" />
@@ -618,6 +622,7 @@
     <ClInclude Include="Source\V2World\Relations.h" />
     <ClInclude Include="Source\V2World\State.h" />
     <ClInclude Include="Source\V2World\StateDefinitions.h" />
+    <ClInclude Include="Source\V2World\Vic2Localisations.h" />
     <ClInclude Include="Source\V2World\Wars\War.h" />
     <ClInclude Include="Source\V2World\Wars\WarGoal.h" />
     <ClInclude Include="Source\V2World\World.h" />

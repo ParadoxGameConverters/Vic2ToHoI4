@@ -1,73 +1,52 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "State.h"
 #include "Building.h"
 #include "Country.h"
+#include "Log.h"
+#include "ParserHelpers.h"
 #include "Province.h"
 #include "StateDefinitions.h"
 #include "World.h"
-#include "Log.h"
-#include "ParserHelpers.h"
 
 
 
-Vic2::State::State(std::istream& theStream, const std::string& ownerTag):
-	owner(ownerTag)
+Vic2::State::State(std::istream& theStream,
+	 const std::string& ownerTag,
+	 const Vic2::StateDefinitions& theStateDefinitions):
+	 owner(ownerTag)
 {
-	registerKeyword(std::regex("provinces"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("provinces"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::intList provinceList(theStream);
 		for (auto province: provinceList.getInts())
 		{
 			provinceNums.insert(province);
 		}
 	});
-	registerKeyword(std::regex("state_buildings"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("state_buildings"), [this](const std::string& unused, std::istream& theStream) {
 		Building theBuilding(theStream);
 		factoryLevel += theBuilding.getLevel();
 	});
 	registerKeyword(std::regex("[A-Za-z0-9_]+"), commonItems::ignoreItem);
 
 	parseStream(theStream);
-	setID();
-	setCapital();
+	setID(theStateDefinitions);
+	setCapital(theStateDefinitions);
 }
 
 
-Vic2::State::State(std::set<std::pair<int, Vic2::Province*>> theProvinces)
+Vic2::State::State(std::set<std::pair<int, Vic2::Province*>> theProvinces, const StateDefinitions& theStateDefinitions)
 {
 	for (auto province: theProvinces)
 	{
 		provinceNums.insert(province.first);
 		provinces.insert(province.second);
 	}
-	setID();
-	determineIfPartialState();
-	setCapital();
+	setID(theStateDefinitions);
+	determineIfPartialState(theStateDefinitions);
+	setCapital(theStateDefinitions);
 }
 
 
-void Vic2::State::setID()
+void Vic2::State::setID(const Vic2::StateDefinitions& theStateDefinitions)
 {
 	auto foundStateID = theStateDefinitions.getStateID(*provinceNums.begin());
 	if (foundStateID)
@@ -81,7 +60,7 @@ void Vic2::State::setID()
 }
 
 
-void Vic2::State::setCapital()
+void Vic2::State::setCapital(const Vic2::StateDefinitions& theStateDefinitions)
 {
 	capitalProvince = theStateDefinitions.getCapitalProvince(stateID);
 }
@@ -116,8 +95,10 @@ Vic2::workerStruct Vic2::State::limitWorkersByFactoryLevels(const workerStruct& 
 	workerStruct newWorkers;
 	if ((workers.craftsmen + workers.clerks) > (factoryLevel * 10000))
 	{
-		newWorkers.craftsmen = static_cast<int>((factoryLevel * 10000.0f) / (workers.craftsmen + workers.clerks) * workers.craftsmen);
-		newWorkers.clerks = static_cast<int>((factoryLevel * 10000.0f) / (workers.craftsmen + workers.clerks) * workers.clerks);
+		newWorkers.craftsmen =
+			 static_cast<int>((factoryLevel * 10000.0f) / (workers.craftsmen + workers.clerks) * workers.craftsmen);
+		newWorkers.clerks =
+			 static_cast<int>((factoryLevel * 10000.0f) / (workers.craftsmen + workers.clerks) * workers.clerks);
 		newWorkers.artisans = workers.artisans;
 	}
 	else
@@ -131,7 +112,8 @@ Vic2::workerStruct Vic2::State::limitWorkersByFactoryLevels(const workerStruct& 
 
 int Vic2::State::determineEmployedWorkersScore(const workerStruct& workers) const
 {
-	int employedWorkerScore = workers.craftsmen + (workers.clerks * 2) + static_cast<int>(workers.artisans * 0.5) + (workers.capitalists * 2);
+	int employedWorkerScore =
+		 workers.craftsmen + (workers.clerks * 2) + static_cast<int>(workers.artisans * 0.5) + (workers.capitalists * 2);
 	if (ownerHasNoCores())
 	{
 		employedWorkerScore /= 2;
@@ -158,7 +140,7 @@ bool Vic2::State::ownerHasNoCores() const
 }
 
 
-void Vic2::State::determineIfPartialState()
+void Vic2::State::determineIfPartialState(const StateDefinitions& theStateDefinitions)
 {
 	if (provinces.size() > 0)
 	{

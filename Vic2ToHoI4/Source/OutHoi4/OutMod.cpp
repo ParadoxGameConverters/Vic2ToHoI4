@@ -30,14 +30,15 @@ void output(const HoI4::World& destWorld,
 	 const std::string& outputName,
 	 const bool debugEnabled,
 	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path)
+	 const std::string& vic2Path,
+	 const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Info) << "Outputting mod";
 
 	createOutputFolder(outputName);
 	createModFiles(outputName);
 	copyFlags(destWorld.getCountries(), outputName, vic2Mods, vic2Path);
-	OutputWorld(destWorld, outputName, debugEnabled);
+	OutputWorld(destWorld, outputName, debugEnabled, theConfiguration);
 }
 
 

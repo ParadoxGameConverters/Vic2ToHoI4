@@ -1,6 +1,4 @@
 #include "SupplyZones.h"
-#include "SupplyArea.h"
-#include "SupplyZone.h"
 #include "../../Configuration.h"
 #include "../States/DefaultState.h"
 #include "../States/HoI4State.h"
@@ -8,16 +6,17 @@
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
+#include "SupplyArea.h"
+#include "SupplyZone.h"
 
 
 
-
-HoI4::SupplyZones::SupplyZones(const std::map<int, DefaultState>& defaultStates)
+HoI4::SupplyZones::SupplyZones(const std::map<int, DefaultState>& defaultStates, const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Info) << "\tImporting supply zones";
 	importStates(defaultStates);
 
-	registerKeyword("supply_area", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("supply_area", [this](const std::string& unused, std::istream& theStream) {
 		const SupplyArea area(theStream);
 		auto ID = area.getID();
 
@@ -27,7 +26,7 @@ HoI4::SupplyZones::SupplyZones(const std::map<int, DefaultState>& defaultStates)
 		for (auto state: area.getStates())
 		{
 			auto mapping = defaultStateToProvinceMap.find(state);
-			for (auto province : mapping->second)
+			for (auto province: mapping->second)
 			{
 				provinceToSupplyZoneMap.insert(std::make_pair(province, ID));
 			}

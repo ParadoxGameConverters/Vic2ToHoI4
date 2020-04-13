@@ -22,90 +22,90 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "Names.h"
-#include "Log.h"
-#include "ParserHelpers.h"
 #include "../Configuration.h"
+#include "Log.h"
 #include "OSCompatibilityLayer.h"
+#include "ParserHelpers.h"
 
 
 
 class culture: commonItems::parser
 {
-	public:
-		explicit culture(std::istream& theStream);
+  public:
+	explicit culture(std::istream& theStream);
 
-		void convertNamesToUTF8();
+	void convertNamesToUTF8();
 
-		auto getMaleNames() const { return maleNames; }
-		auto getSurnames() const { return surnames; }
-		auto getFemaleNames() const { return femaleNames; }
-		auto getFemaleSurnames() const { return femaleSurnames; }
-		auto getCallsigns() const { return  callsigns; }
-		auto getIndustryCompanies() const { return industryCompanies; }
-		auto getElectronicCompanies() const { return electronicCompanies; }
-		auto getCarCompanies() const { return carCompanies; }
-		auto getNavalCompanies() const { return navalCompanies; }
-		auto getWeaponCompanies() const { return weaponCompanies; }
-		auto getAircraftCompanies() const { return aircraftCompanies; }
+	auto getMaleNames() const { return maleNames; }
+	auto getSurnames() const { return surnames; }
+	auto getFemaleNames() const { return femaleNames; }
+	auto getFemaleSurnames() const { return femaleSurnames; }
+	auto getCallsigns() const { return callsigns; }
+	auto getIndustryCompanies() const { return industryCompanies; }
+	auto getElectronicCompanies() const { return electronicCompanies; }
+	auto getCarCompanies() const { return carCompanies; }
+	auto getNavalCompanies() const { return navalCompanies; }
+	auto getWeaponCompanies() const { return weaponCompanies; }
+	auto getAircraftCompanies() const { return aircraftCompanies; }
 
-	private:
-		std::vector<std::string> maleNames;
-		std::vector<std::string> surnames;
-		std::vector<std::string> femaleNames;
-		std::vector<std::string> femaleSurnames;
-		std::vector<std::string> callsigns;
-		std::vector<std::string> industryCompanies;
-		std::vector<std::string> electronicCompanies;
-		std::vector<std::string> carCompanies;
-		std::vector<std::string> navalCompanies;
-		std::vector<std::string> weaponCompanies;
-		std::vector<std::string> aircraftCompanies;
+  private:
+	std::vector<std::string> maleNames;
+	std::vector<std::string> surnames;
+	std::vector<std::string> femaleNames;
+	std::vector<std::string> femaleSurnames;
+	std::vector<std::string> callsigns;
+	std::vector<std::string> industryCompanies;
+	std::vector<std::string> electronicCompanies;
+	std::vector<std::string> carCompanies;
+	std::vector<std::string> navalCompanies;
+	std::vector<std::string> weaponCompanies;
+	std::vector<std::string> aircraftCompanies;
 };
 
 
 culture::culture(std::istream& theStream)
 {
-	registerKeyword(std::regex("first_names"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("first_names"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::stringList firstNameStrings(theStream);
 		maleNames = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("last_names"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("last_names"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::stringList firstNameStrings(theStream);
 		surnames = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("female_names"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("female_names"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::stringList firstNameStrings(theStream);
 		femaleNames = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("female_surnames"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("female_surnames"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::stringList firstNameStrings(theStream);
 		femaleSurnames = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("callsigns"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("callsigns"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::stringList firstNameStrings(theStream);
 		callsigns = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("industry_companies"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("industry_companies"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::stringList firstNameStrings(theStream);
 		industryCompanies = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("electronic_companies"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("electronic_companies"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::stringList firstNameStrings(theStream);
 		electronicCompanies = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("car_companies"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("car_companies"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::stringList firstNameStrings(theStream);
 		carCompanies = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("naval_companies"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("naval_companies"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::stringList firstNameStrings(theStream);
 		navalCompanies = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("weapon_companies"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("weapon_companies"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::stringList firstNameStrings(theStream);
 		weaponCompanies = firstNameStrings.getStrings();
 	});
-	registerKeyword(std::regex("aircraft_companies"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("aircraft_companies"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::stringList firstNameStrings(theStream);
 		aircraftCompanies = firstNameStrings.getStrings();
 	});
@@ -115,24 +115,28 @@ culture::culture(std::istream& theStream)
 }
 
 
-void::culture::convertNamesToUTF8()
+void ::culture::convertNamesToUTF8()
 {
-	std::for_each(maleNames.begin(), maleNames.end(), [](std::string& name){ name = Utils::convertWin1252ToUTF8(name); });
-	std::for_each(surnames.begin(), surnames.end(), [](std::string& name){ name = Utils::convertWin1252ToUTF8(name); });
+	std::for_each(maleNames.begin(), maleNames.end(), [](std::string& name) {
+		name = Utils::convertWin1252ToUTF8(name);
+	});
+	std::for_each(surnames.begin(), surnames.end(), [](std::string& name) {
+		name = Utils::convertWin1252ToUTF8(name);
+	});
 }
 
 
 class cultureGroup: commonItems::parser
 {
-	public:
-		explicit cultureGroup(std::istream& theStream);
+  public:
+	explicit cultureGroup(std::istream& theStream);
 
-		auto getMaleNames() const { return maleNamesMap; }
-		auto getSurnames() const { return surnamesMap; }
+	auto getMaleNames() const { return maleNamesMap; }
+	auto getSurnames() const { return surnamesMap; }
 
-	private:
-		std::map<std::string, std::vector<std::string>> maleNamesMap;
-		std::map<std::string, std::vector<std::string>> surnamesMap;
+  private:
+	std::map<std::string, std::vector<std::string>> maleNamesMap;
+	std::map<std::string, std::vector<std::string>> surnamesMap;
 };
 
 
@@ -142,7 +146,7 @@ cultureGroup::cultureGroup(std::istream& theStream)
 	registerKeyword(std::regex("unit"), commonItems::ignoreItem);
 	registerKeyword(std::regex("union"), commonItems::ignoreItem);
 	registerKeyword(std::regex("is_overseas"), commonItems::ignoreItem);
-	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), [this](const std::string& cultureName, std::istream& theStream){
+	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), [this](const std::string& cultureName, std::istream& theStream) {
 		culture newCulture(theStream);
 		newCulture.convertNamesToUTF8();
 		maleNamesMap.insert(make_pair(cultureName, newCulture.getMaleNames()));
@@ -153,7 +157,7 @@ cultureGroup::cultureGroup(std::istream& theStream)
 }
 
 
-void HoI4::namesMapper::init()
+void HoI4::namesMapper::init(const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Info) << "\tParsing names";
 
@@ -176,7 +180,7 @@ void HoI4::namesMapper::init()
 void HoI4::namesMapper::processVic2CulturesFile(const std::string& filename)
 {
 	clearRegisteredKeywords();
-	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), [this](const std::string& cultureGroupName, std::istream& theStream){
+	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), [this](const std::string& cultureGroupName, std::istream& theStream) {
 		cultureGroup theGroup(theStream);
 		for (auto newMaleNameMapping: theGroup.getMaleNames())
 		{
@@ -195,7 +199,7 @@ void HoI4::namesMapper::processVic2CulturesFile(const std::string& filename)
 void HoI4::namesMapper::processNamesFile()
 {
 	clearRegisteredKeywords();
-	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), [this](const std::string& cultureName, std::istream& theStream){
+	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), [this](const std::string& cultureName, std::istream& theStream) {
 		culture newCulture(theStream);
 		auto tempNames = newCulture.getMaleNames();
 		addNamesToMap(maleNamesMap, cultureName, tempNames);
@@ -225,13 +229,17 @@ void HoI4::namesMapper::processNamesFile()
 }
 
 
-void HoI4::namesMapper::addNamesToMap(std::map<std::string, std::vector<std::string>>& map, const std::string& culture, std::vector<std::string>& newNames)
+void HoI4::namesMapper::addNamesToMap(std::map<std::string, std::vector<std::string>>& map,
+	 const std::string& culture,
+	 std::vector<std::string>& newNames)
 {
 	if (auto mapping = map.find(culture); mapping != map.end())
 	{
 		for (auto newName: newNames)
 		{
-			if (std::none_of(mapping->second.begin(), mapping->second.end(), [newName](std::string oldName){ return oldName == newName; }))
+			if (std::none_of(mapping->second.begin(), mapping->second.end(), [newName](std::string oldName) {
+					 return oldName == newName;
+				 }))
 			{
 				mapping->second.push_back(newName);
 			}
@@ -451,7 +459,7 @@ std::optional<std::string> HoI4::namesMapper::takeWeaponCompanyName(const std::s
 
 std::optional<std::string> HoI4::namesMapper::takeAircraftCompanyName(const std::string& culture)
 {
-	return takeCompanyName(aircraftCompanyNames,culture);
+	return takeCompanyName(aircraftCompanyNames, culture);
 }
 
 
@@ -473,7 +481,9 @@ std::optional<std::string> HoI4::namesMapper::takeElectronicCompanyName(const st
 }
 
 
-std::optional<std::string> HoI4::namesMapper::takeCompanyName(std::map<std::string, std::vector<std::string>>& companyNames, const std::string& culture)
+std::optional<std::string> HoI4::namesMapper::takeCompanyName(
+	 std::map<std::string, std::vector<std::string>>& companyNames,
+	 const std::string& culture)
 {
 	auto namesItr = companyNames.find(culture);
 	if (namesItr != companyNames.end())
@@ -483,7 +493,9 @@ std::optional<std::string> HoI4::namesMapper::takeCompanyName(std::map<std::stri
 		{
 			std::uniform_int_distribution<int> surnameGen(0, companies.size() - 1);
 			auto company = companies[surnameGen(rng)];
-			for (std::vector<std::string>::iterator itr = companyNames[culture].begin(); itr != companyNames[culture].end(); ++itr)
+			for (std::vector<std::string>::iterator itr = companyNames[culture].begin();
+				  itr != companyNames[culture].end();
+				  ++itr)
 			{
 				if (*itr == company)
 				{

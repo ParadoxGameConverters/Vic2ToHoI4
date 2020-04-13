@@ -28,7 +28,8 @@ HoI4::Ideologies::Ideologies(const Configuration& theConfiguration)
 
 
 void HoI4::Ideologies::identifyMajorIdeologies(const std::vector<std::shared_ptr<Country>>& greatPowers,
-	 const std::map<std::string, std::shared_ptr<Country>>& countries)
+	 const std::map<std::string, std::shared_ptr<Country>>& countries,
+	 const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Info) << "\tIdentifying major ideologies";
 	if (theConfiguration.getIdeologiesOptions() == ideologyOptions::keep_major)

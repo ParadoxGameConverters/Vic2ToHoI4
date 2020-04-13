@@ -33,27 +33,31 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
+class Configuration;
+
+
+
 namespace Vic2
 {
 
 class cultureGroups: commonItems::parser
 {
-	public:
-		cultureGroups() {};
-		void init();
+  public:
+	cultureGroups(){};
+	void init(const Configuration& theConfiguration);
 
-		std::optional<std::string> getGroup(const std::string& culture) const;
+	std::optional<std::string> getGroup(const std::string& culture) const;
 
-	private:
-		void processVic2CulturesFile(std::string culturesFile);
+  private:
+	void processVic2CulturesFile(std::string culturesFile);
 
-		cultureGroups(const cultureGroups&) = delete;
-		cultureGroups& operator=(const cultureGroups&) = delete;
+	cultureGroups(const cultureGroups&) = delete;
+	cultureGroups& operator=(const cultureGroups&) = delete;
 
-		std::map<std::string, std::string> mappings;
+	std::map<std::string, std::string> mappings;
 };
 
-}
+} // namespace Vic2
 
 
 

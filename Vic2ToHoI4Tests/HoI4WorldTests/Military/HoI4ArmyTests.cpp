@@ -30,7 +30,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, EmptyArmyStaysEmpty)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings("default", mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, theStates);
+	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, theStates, mappers::ProvinceMapper{{}, {}});
 
 	std::ostringstream output;
 	output << theArmy;
@@ -69,7 +69,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, InsufficientDivisionsBecomeNothing)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, theStates);
+	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, theStates, mappers::ProvinceMapper{{}, {}});
 
 	std::ostringstream output;
 	output << theArmy;
@@ -82,8 +82,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SufficientDivisionsConvert)
 {
 	HoI4::States theStates;
 
-	std::istringstream provinceMapperInput("0.0.0 = { link = { vic2 = 496 hoi4 = 11821 } }");
-	theProvinceMapper.initialize(provinceMapperInput);
+	mappers::ProvinceMapper provinceMapper({{11821, {496}}}, {{496, {11821}}});
 
 	HoI4::Army theArmy;
 	std::vector<Vic2::Army> Vic2Armies;
@@ -128,7 +127,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SufficientDivisionsConvert)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates);
+	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates, provinceMapper);
 
 	std::ostringstream output;
 	output << theArmy;
@@ -161,8 +160,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, ExperienceConverts)
 {
 	HoI4::States theStates;
 
-	std::istringstream provinceMapperInput("0.0.0 = { link = { vic2 = 496 hoi4 = 11821 } }");
-	theProvinceMapper.initialize(provinceMapperInput);
+	mappers::ProvinceMapper provinceMapper{{{11821, {496}}}, {{496, {11821}}}};
 
 	HoI4::Army theArmy;
 	std::vector<Vic2::Army> Vic2Armies;
@@ -207,7 +205,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, ExperienceConverts)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates);
+	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates, provinceMapper);
 
 	std::ostringstream output;
 	output << theArmy;
@@ -240,8 +238,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 {
 	HoI4::States theStates;
 
-	std::istringstream provinceMapperInput("0.0.0 = { link = { vic2 = 496 hoi4 = 11821 } }");
-	theProvinceMapper.initialize(provinceMapperInput);
+		mappers::ProvinceMapper provinceMapper{{{11821, {496}}}, {{496, {11821}}}};
 
 	HoI4::Army theArmy;
 	std::vector<Vic2::Army> Vic2Armies;
@@ -293,7 +290,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates);
+	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates, provinceMapper);
 
 	std::ostringstream output;
 	output << theArmy;
@@ -383,7 +380,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates);
+	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates, mappers::ProvinceMapper{{}, {}});
 
 	std::ostringstream output;
 	output << theArmy;
@@ -402,12 +399,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 {
 	HoI4::States theStates;
 
-	std::istringstream provinceMapperInput(
-		 "0.0.0 = {\n"
-		 "\tlink = { vic2 = 496 hoi4 = 11821 }\n"
-		 "\tlink = { vic2 = 1496 hoi4 = 12821 }\n"
-		 " }");
-	theProvinceMapper.initialize(provinceMapperInput);
+	mappers::ProvinceMapper provinceMapper{{{11821, {496}}, {12821, {1496}}}, {{496, {11821}}, {1496, {12821}}}};
 
 	HoI4::Army theArmy;
 	std::vector<Vic2::Army> Vic2Armies;
@@ -467,7 +459,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings, 1, 1.0, theStates);
+	theArmy.convertArmies(theMilitaryMappings, 1, 1.0, theStates, provinceMapper);
 
 	std::ostringstream output;
 	output << theArmy;

@@ -1,35 +1,13 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #ifndef VIC2_WORLD_H_
 #define VIC2_WORLD_H_
 
 
 
-#include "newParser.h"
 #include "CultureGroups.h"
 #include "Party.h"
+#include "StateDefinitions.h"
 #include "Wars/War.h"
+#include "newParser.h"
 #include <map>
 #include <optional>
 #include <string>
@@ -37,72 +15,87 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
+namespace mappers
+{
+class ProvinceMapper;
+}
+
+
 namespace Vic2
 {
-
 class Country;
 class Diplomacy;
+class Localisations;
 class Party;
 class Province;
 
 
 class World: commonItems::parser
 {
-	public:
-		World() = default;
-		explicit World(const std::string& filename);
-		virtual ~World() = default;
+  public:
+	World() = default;
+	explicit World(const std::string& filename,
+		 const mappers::ProvinceMapper& provinceMapper,
+		 const Configuration& theConfiguration);
+	virtual ~World() = default;
 
-		std::optional<const Province*> getProvince(int provNum) const;
-		
-		std::map<std::string, Country*> getCountries() const { return countries; }
-		const Diplomacy* getDiplomacy() const { return diplomacy; }
-		std::vector<std::string> getGreatPowers() const	{ return greatPowers; }
-		virtual std::vector<Party> getParties() const { return parties; }
-		auto getProvinces() const { return provinces; }
+	std::optional<const Province*> getProvince(int provNum) const;
 
-	private:
-		World(const World&) = delete;
-		World& operator=(const World&) = delete;
+	std::map<std::string, Country*> getCountries() const { return countries; }
+	const Diplomacy* getDiplomacy() const { return diplomacy; }
+	std::vector<std::string> getGreatPowers() const { return greatPowers; }
+	virtual std::vector<Party> getParties() const { return parties; }
+	auto getProvinces() const { return provinces; }
+	[[nodiscard]] const auto& getStateDefinitions() const { return *theStateDefinitions; }
+	[[nodiscard]] const auto& getLocalisations() const { return *theLocalisations; }
 
-		void setLocalisations();
-		void handleMissingCountryCultures();
+  private:
+	World(const World&) = delete;
+	World& operator=(const World&) = delete;
 
-		void setGreatPowerStatus(const std::vector<int>& GPIndexes, const std::vector<std::string>& tagsInOrder);
+	void setLocalisations(Localisations& vic2Localisations);
+	void handleMissingCountryCultures();
 
-		void setProvinceOwners();
-		void addProvinceCoreInfoToCountries();
-		void removeSimpleLandlessNations();
-		bool shouldCoreBeRemoved(const Province* core, const Country* country) const;
-		void determineEmployedWorkers();
-		void removeEmptyNations();
-		void determinePartialStates();
-		void addWarsToCountries(const std::vector<War>& wars);
+	void setGreatPowerStatus(const std::vector<int>& GPIndexes, const std::vector<std::string>& tagsInOrder);
 
-		void overallMergeNations();
-		void mergeNations(const std::string& masterTag, const std::vector<std::string>& slaveTags);
+	void setProvinceOwners();
+	void addProvinceCoreInfoToCountries();
+	void removeSimpleLandlessNations();
+	bool shouldCoreBeRemoved(const Province* core, const Country* country) const;
+	void determineEmployedWorkers();
+	void removeEmptyNations();
+	void determinePartialStates(const StateDefinitions& theStateDefinitions);
+	void addWarsToCountries(const std::vector<War>& wars);
 
-		void checkAllProvincesMapped() const;
+	void overallMergeNations();
+	void mergeNations(const std::string& masterTag, const std::vector<std::string>& slaveTags);
 
-		void readCountryFiles();
-		bool processCountriesDotTxt(const std::string& countryListFile, const std::string& mod);
-		bool shouldLineBeSkipped(const std::string& line) const;
-		std::string extractCountryFileName(const std::string& countryFileLine) const;
+	void checkAllProvincesMapped(const mappers::ProvinceMapper& provinceMapper) const;
 
-		std::optional<Country*> getCountry(const std::string& tag) const;
+	void readCountryFiles(const Configuration& theConfiguration);
+	bool processCountriesDotTxt(const std::string& countryListFile,
+		 const std::string& mod,
+		 const Configuration& theConfiguration);
+	bool shouldLineBeSkipped(const std::string& line) const;
+	std::string extractCountryFileName(const std::string& countryFileLine) const;
+
+	std::optional<Country*> getCountry(const std::string& tag) const;
 
 
-		std::map<int, Province*> provinces;
-		std::map<std::string, Country*> countries;
-		const Diplomacy* diplomacy = nullptr;
-		std::vector<Party> parties;
-		std::vector<std::string> greatPowers;
+	std::map<int, Province*> provinces;
+	std::map<std::string, Country*> countries;
+	const Diplomacy* diplomacy = nullptr;
+	std::vector<Party> parties;
+	std::vector<std::string> greatPowers;
 
-		cultureGroups theCultureGroups;
+	cultureGroups theCultureGroups;
+
+	std::unique_ptr<StateDefinitions> theStateDefinitions;
+	std::unique_ptr<Localisations> theLocalisations;
 };
 
 
-}
+} // namespace Vic2
 
 
 

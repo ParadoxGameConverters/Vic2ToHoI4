@@ -7,11 +7,11 @@
 
 
 
-void HoI4::CoastalProvinces::init(const MapData& theMapData)
+void HoI4::CoastalProvinces::init(const MapData& theMapData, const Configuration& theConfiguration)
 {
 	LOG(LogLevel::Info) << "\tInitializing coastal provinces";
 
-	auto provinces = importProvinces();
+	auto provinces = importProvinces(theConfiguration);
 
 	for (const auto& province: provinces)
 	{
@@ -43,7 +43,7 @@ void HoI4::CoastalProvinces::init(const MapData& theMapData)
 }
 
 
-std::map<int, HoI4::Province> HoI4::CoastalProvinces::importProvinces() const
+std::map<int, HoI4::Province> HoI4::CoastalProvinces::importProvinces(const Configuration& theConfiguration) const
 {
 	std::ifstream provinceDefinitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
 	if (!provinceDefinitions.is_open())

@@ -40,42 +40,42 @@ namespace Vic2
 
 class Province: commonItems::parser
 {
-	public:
-		explicit Province(const std::string& numberString, std::istream& theStream);
+  public:
+	explicit Province(const std::string& numberString, std::istream& theStream, const Issues& theIssues);
 
-		int getTotalPopulation() const;
-		int getPopulation(std::optional<std::string> type = {}) const;
-		int getLiteracyWeightedPopulation(std::optional<std::string> type = {}) const;
-		double getPercentageWithCultures(const std::set<std::string>& cultures) const;
+	int getTotalPopulation() const;
+	int getPopulation(std::optional<std::string> type = {}) const;
+	int getLiteracyWeightedPopulation(std::optional<std::string> type = {}) const;
+	double getPercentageWithCultures(const std::set<std::string>& cultures) const;
 
-		void setOwner(const std::string& _owner) { owner = _owner; }
-		void addCore(const std::string& core) { cores.insert(core); }
-		void removeCore(const std::string& core) { cores.erase(core); }
+	void setOwner(const std::string& _owner) { owner = _owner; }
+	void addCore(const std::string& core) { cores.insert(core); }
+	void removeCore(const std::string& core) { cores.erase(core); }
 
-		int getNumber() const { return number; }
-		const std::string getOwner() const { return owner; }
-		const std::string getController() const { return controller; }
-		const std::set<std::string> getCores() const { return cores; }
-		const std::vector<Pop> getPops() const { return pops; }
-		int getNavalBaseLevel() const { return navalBaseLevel; }
-		int getRailLevel() const { return railLevel; }
+	int getNumber() const { return number; }
+	const std::string getOwner() const { return owner; }
+	const std::string getController() const { return controller; }
+	const std::set<std::string> getCores() const { return cores; }
+	const std::vector<Pop> getPops() const { return pops; }
+	int getNavalBaseLevel() const { return navalBaseLevel; }
+	int getRailLevel() const { return railLevel; }
 
-	private:
-		int calculateLiteracyWeightedPop(const Pop& thePop) const;
+  private:
+	int calculateLiteracyWeightedPop(const Pop& thePop) const;
 
-		int number;
+	int number;
 
-		std::string owner;
-		std::string controller;
-		std::set<std::string> cores;
+	std::string owner;
+	std::string controller;
+	std::set<std::string> cores;
 
-		std::vector<Pop> pops;
+	std::vector<Pop> pops;
 
-		int navalBaseLevel = 0;
-		int railLevel = 0;
+	int navalBaseLevel = 0;
+	int railLevel = 0;
 };
 
-}
+} // namespace Vic2
 
 
 

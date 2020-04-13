@@ -1,7 +1,7 @@
 #include "MapData.h"
-#include "../../Mappers/ProvinceDefinitions.h"
 #include "../../Color.h"
 #include "../../Configuration.h"
+#include "../../HOI4World/ProvinceDefinitions.h"
 #include "Log.h"
 
 
@@ -13,7 +13,8 @@ ConverterColor::Color getLeftColor(point position, int width, bitmap_image& prov
 ConverterColor::Color getRightColor(point position, int width, bitmap_image& provinceMap);
 
 
-HoI4::MapData::MapData(): provinceMap(theConfiguration.getHoI4Path() + "/map/provinces.bmp")
+HoI4::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const Configuration& theConfiguration):
+	 provinceMap(theConfiguration.getHoI4Path() + "/map/provinces.bmp")
 {
 	if (!provinceMap)
 	{
@@ -26,7 +27,7 @@ HoI4::MapData::MapData(): provinceMap(theConfiguration.getHoI4Path() + "/map/pro
 	{
 		for (unsigned int x = 0; x < width; x++)
 		{
-			point position = { x, y };
+			point position = {x, y};
 
 			auto centerColor = getCenterColor(position, provinceMap);
 			auto aboveColor = getAboveColor(position, provinceMap);
@@ -37,22 +38,22 @@ HoI4::MapData::MapData(): provinceMap(theConfiguration.getHoI4Path() + "/map/pro
 			position.second = height - position.second - 1;
 			if (centerColor != aboveColor)
 			{
-				handleNeighbor(centerColor, aboveColor, position);
+				handleNeighbor(centerColor, aboveColor, position, provinceDefinitions);
 			}
 			if (centerColor != rightColor)
 			{
-				handleNeighbor(centerColor, rightColor, position);
+				handleNeighbor(centerColor, rightColor, position, provinceDefinitions);
 			}
 			if (centerColor != belowColor)
 			{
-				handleNeighbor(centerColor, belowColor, position);
+				handleNeighbor(centerColor, belowColor, position, provinceDefinitions);
 			}
 			if (centerColor != leftColor)
 			{
-				handleNeighbor(centerColor, leftColor, position);
+				handleNeighbor(centerColor, leftColor, position, provinceDefinitions);
 			}
 
-			auto province = provinceDefinitions::getProvinceFromColor(centerColor);
+			auto province = provinceDefinitions.getProvinceFromColor(centerColor);
 			if (province)
 			{
 				auto specificProvincePoints = theProvincePoints.find(*province);
@@ -74,14 +75,12 @@ HoI4::MapData::MapData(): provinceMap(theConfiguration.getHoI4Path() + "/map/pro
 
 ConverterColor::Color getCenterColor(const point position, bitmap_image& provinceMap)
 {
-	rgb_t color{ 0,0,0 };
+	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	ConverterColor::Color theColor(
-		ConverterColor::red(color.red), 
-		ConverterColor::green(color.green), 
-		ConverterColor::blue(color.blue)
-	);
+	ConverterColor::Color theColor(ConverterColor::red(color.red),
+		 ConverterColor::green(color.green),
+		 ConverterColor::blue(color.blue));
 	return theColor;
 }
 
@@ -93,13 +92,12 @@ ConverterColor::Color getAboveColor(point position, bitmap_image& provinceMap)
 		position.second--;
 	}
 
-	rgb_t color{ 0,0,0 };
+	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	ConverterColor::Color theColor(
-		ConverterColor::red(color.red), 
-		ConverterColor::green(color.green), 
-		ConverterColor::blue(color.blue));
+	ConverterColor::Color theColor(ConverterColor::red(color.red),
+		 ConverterColor::green(color.green),
+		 ConverterColor::blue(color.blue));
 	return theColor;
 }
 
@@ -111,14 +109,12 @@ ConverterColor::Color getBelowColor(point position, const int height, bitmap_ima
 		position.second++;
 	}
 
-	rgb_t color{ 0,0,0 };
+	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	ConverterColor::Color theColor(
-		ConverterColor::red(color.red), 
-		ConverterColor::green(color.green), 
-		ConverterColor::blue(color.blue)
-	);
+	ConverterColor::Color theColor(ConverterColor::red(color.red),
+		 ConverterColor::green(color.green),
+		 ConverterColor::blue(color.blue));
 	return theColor;
 }
 
@@ -134,14 +130,12 @@ ConverterColor::Color getLeftColor(point position, const int width, bitmap_image
 		position.first = width - 1;
 	}
 
-	rgb_t color{ 0,0,0 };
+	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	ConverterColor::Color theColor(
-		ConverterColor::red(color.red),
-		ConverterColor::green(color.green),
-		ConverterColor::blue(color.blue)
-	);
+	ConverterColor::Color theColor(ConverterColor::red(color.red),
+		 ConverterColor::green(color.green),
+		 ConverterColor::blue(color.blue));
 	return theColor;
 }
 
@@ -157,26 +151,23 @@ ConverterColor::Color getRightColor(point position, const int width, bitmap_imag
 		position.first = 0;
 	}
 
-	rgb_t color{ 0,0,0 };
+	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	ConverterColor::Color theColor(
-		ConverterColor::red(color.red),
-		ConverterColor::green(color.green),
-		ConverterColor::blue(color.blue)
-	);
+	ConverterColor::Color theColor(ConverterColor::red(color.red),
+		 ConverterColor::green(color.green),
+		 ConverterColor::blue(color.blue));
 	return theColor;
 }
 
 
-void HoI4::MapData::handleNeighbor(
-	const ConverterColor::Color& centerColor,
-	const ConverterColor::Color& otherColor,
-	const point& position
-)
+void HoI4::MapData::handleNeighbor(const ConverterColor::Color& centerColor,
+	 const ConverterColor::Color& otherColor,
+	 const point& position,
+	 const ProvinceDefinitions& provinceDefinitions)
 {
-	auto centerProvince = provinceDefinitions::getProvinceFromColor(centerColor);
-	auto otherProvince = provinceDefinitions::getProvinceFromColor(otherColor);
+	auto centerProvince = provinceDefinitions.getProvinceFromColor(centerColor);
+	auto otherProvince = provinceDefinitions.getProvinceFromColor(otherColor);
 	if (centerProvince && otherProvince)
 	{
 		addNeighbor(*centerProvince, *otherProvince);
@@ -193,7 +184,7 @@ void HoI4::MapData::addNeighbor(const int mainProvince, const int neighborProvin
 	}
 	else
 	{
-		const std::set<int> neighbors = { neighborProvince };
+		const std::set<int> neighbors = {neighborProvince};
 		provinceNeighbors[mainProvince] = neighbors;
 	}
 }
@@ -254,7 +245,7 @@ std::optional<point> HoI4::MapData::getSpecifiedBorderCenter(const int mainProvi
 		LOG(LogLevel::Warning) << "Province " << mainProvince << " has no borders.";
 		return std::nullopt;
 	}
-	
+
 	const auto border = bordersWithNeighbors->second.find(neighbor);
 	if (border == bordersWithNeighbors->second.end())
 	{
@@ -286,20 +277,18 @@ std::optional<point> HoI4::MapData::getAnyBorderCenter(const int province) const
 }
 
 
-std::optional<int> HoI4::MapData::getProvinceNumber(const double x, const double y) const
+std::optional<int> HoI4::MapData::getProvinceNumber(const double x,
+	 const double y,
+	 const ProvinceDefinitions& provinceDefinitions) const
 {
-	rgb_t color{0,0,0};
-	provinceMap.get_pixel(
-		static_cast<unsigned int>(x),
-		(provinceMap.height() - 1) - static_cast<unsigned int>(y),
-		color
-	);
-	const ConverterColor::Color theColor(
-		ConverterColor::red(color.red),
-		ConverterColor::green(color.green),
-		ConverterColor::blue(color.blue)
-	);
-	return provinceDefinitions::getProvinceFromColor(theColor);
+	rgb_t color{0, 0, 0};
+	provinceMap.get_pixel(static_cast<unsigned int>(x),
+		 (provinceMap.height() - 1) - static_cast<unsigned int>(y),
+		 color);
+	const ConverterColor::Color theColor(ConverterColor::red(color.red),
+		 ConverterColor::green(color.green),
+		 ConverterColor::blue(color.blue));
+	return provinceDefinitions.getProvinceFromColor(theColor);
 }
 
 

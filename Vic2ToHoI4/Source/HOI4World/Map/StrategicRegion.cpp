@@ -1,15 +1,15 @@
-#include "../../Configuration.h"
-#include "Region.h"
 #include "StrategicRegion.h"
+#include "../../Configuration.h"
 #include "ParserHelpers.h"
+#include "Region.h"
 #include <fstream>
 
 
 
-HoI4::StrategicRegion::StrategicRegion(const std::string& _filename):
-	filename(_filename)
+HoI4::StrategicRegion::StrategicRegion(const std::string& _filename, const Configuration& theConfiguration):
+	 filename(_filename)
 {
-	registerKeyword("strategic_region", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("strategic_region", [this](const std::string& unused, std::istream& theStream) {
 		Region theRegion(theStream);
 		ID = theRegion.getID();
 		name = theRegion.takeName();

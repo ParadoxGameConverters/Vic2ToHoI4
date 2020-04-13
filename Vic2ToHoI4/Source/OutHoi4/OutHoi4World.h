@@ -10,7 +10,10 @@
 namespace HoI4
 {
 
-void OutputWorld(const World& world, const std::string& outputName, bool debugEnabled);
+void OutputWorld(const World& world,
+	 const std::string& outputName,
+	 bool debugEnabled,
+	 const Configuration& theConfiguration);
 
 }
 

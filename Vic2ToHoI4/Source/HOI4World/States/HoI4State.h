@@ -3,10 +3,10 @@
 
 
 
-#include "newParser.h"
 #include "../../Configuration.h"
 #include "../../Mappers/CountryMapping.h"
 #include "../../Mappers/Provinces/ProvinceMapper.h"
+#include "newParser.h"
 #include <list>
 #include <map>
 #include <optional>
@@ -19,7 +19,7 @@ namespace Vic2
 {
 class Province;
 class State;
-}
+} // namespace Vic2
 
 
 namespace HoI4
@@ -31,131 +31,132 @@ class StateCategories;
 
 class State
 {
-	public:
-		State() = default;
-		State(const Vic2::State& sourceState, int _ID, const std::string& _ownerTag);
-		virtual ~State() = default;
+  public:
+	State() = default;
+	State(const Vic2::State& sourceState, int _ID, const std::string& _ownerTag);
+	virtual ~State() = default;
 
-		void addProvince(int province) { provinces.insert(province); }
-		void setAsCapitalState() { capitalState = true; civFactories++; }
-		void makeImpassable() { impassable = true; infrastructure = 0; }
-		void markHadImpassablePart() { hadImpassablePart = true; }
-		void addResource(const std::string& resource, double amount)	{ resources[resource] += amount; }
-		void addAirBase(int newAirBase) { airbaseLevel += newAirBase; if (airbaseLevel > 10) airbaseLevel = 10; }
-		void addVictoryPointValue(int additionalValue) { victoryPointValue += additionalValue; }
-		void setVPLocation(int province) { victoryPointPosition = province; }
+	void addProvince(int province) { provinces.insert(province); }
+	void setAsCapitalState()
+	{
+		capitalState = true;
+		civFactories++;
+	}
+	void makeImpassable()
+	{
+		impassable = true;
+		infrastructure = 0;
+	}
+	void markHadImpassablePart() { hadImpassablePart = true; }
+	void addResource(const std::string& resource, double amount) { resources[resource] += amount; }
+	void addAirBase(int newAirBase)
+	{
+		airbaseLevel += newAirBase;
+		if (airbaseLevel > 10)
+			airbaseLevel = 10;
+	}
+	void addVictoryPointValue(int additionalValue) { victoryPointValue += additionalValue; }
+	void setVPLocation(int province) { victoryPointPosition = province; }
 
-		void convertNavalBases(
-			const std::set<const Vic2::Province*>& sourceProvinces,
-			const CoastalProvinces& theCoastalProvinces,
-			const provinceMapper& theProvinceMapper
-		);
-		void addNavalBase(int level, int location);
-		void addCores(const std::set<std::string>& newCores);
-		void convertControlledProvinces(
-			const std::set<const Vic2::Province*>& sourceProvinces,
-			const provinceMapper& theProvinceMapper,
-			const CountryMapper& countryMapper
-		);
+	void convertNavalBases(const std::set<const Vic2::Province*>& sourceProvinces,
+		 const CoastalProvinces& theCoastalProvinces,
+		 const mappers::ProvinceMapper& theProvinceMapper);
+	void addNavalBase(int level, int location);
+	void addCores(const std::set<std::string>& newCores);
+	void convertControlledProvinces(const std::set<const Vic2::Province*>& sourceProvinces,
+		 const mappers::ProvinceMapper& theProvinceMapper,
+		 const CountryMapper& countryMapper);
 
-		virtual int getID() const { return ID; }
-		virtual const std::set<int>& getProvinces() const { return provinces; }
-		const std::string& getOwner() const { return ownerTag; }
-		const std::set<std::string>& getCores() const { return cores; }
-		const std::map<std::string, std::set<int>>& getControlledProvinces() const { return controlledProvinces; }
-		bool isImpassable() const { return impassable; }
-		int getDockyards() const { return dockyards; }
-		int getCivFactories() const { return civFactories; }
-		int getMilFactories() const { return milFactories; }
-		const std::string& getCategory() const { return category; }
-		int getInfrastructure() const { return infrastructure; }
-		const std::map<int, int>& getNavalBases() const { return navalBases; }
-		int getAirbaseLevel() const { return airbaseLevel; }
-		int getManpower() const { return manpower; }
-		bool hasResources() const { return !resources.empty(); }
-		const std::map<std::string, double>& getResources() const { return resources; }
-		std::optional<int> getVPLocation() const { return victoryPointPosition; }
-		int getVpValue() const { return victoryPointValue; }
-		const std::set<int>& getDebugVPs() const { return debugVictoryPoints; }
-		const std::set<int>& getSecondaryDebugVPs() const { return secondaryDebugVictoryPoints; }
+	virtual int getID() const { return ID; }
+	virtual const std::set<int>& getProvinces() const { return provinces; }
+	const std::string& getOwner() const { return ownerTag; }
+	const std::set<std::string>& getCores() const { return cores; }
+	const std::map<std::string, std::set<int>>& getControlledProvinces() const { return controlledProvinces; }
+	bool isImpassable() const { return impassable; }
+	int getDockyards() const { return dockyards; }
+	int getCivFactories() const { return civFactories; }
+	int getMilFactories() const { return milFactories; }
+	const std::string& getCategory() const { return category; }
+	int getInfrastructure() const { return infrastructure; }
+	const std::map<int, int>& getNavalBases() const { return navalBases; }
+	int getAirbaseLevel() const { return airbaseLevel; }
+	int getManpower() const { return manpower; }
+	bool hasResources() const { return !resources.empty(); }
+	const std::map<std::string, double>& getResources() const { return resources; }
+	std::optional<int> getVPLocation() const { return victoryPointPosition; }
+	int getVpValue() const { return victoryPointValue; }
+	const std::set<int>& getDebugVPs() const { return debugVictoryPoints; }
+	const std::set<int>& getSecondaryDebugVPs() const { return secondaryDebugVictoryPoints; }
 
-		std::optional<int> getMainNavalLocation() const;
+	std::optional<int> getMainNavalLocation() const;
 
-		void tryToCreateVP(
-			const Vic2::State& sourceState,
-			const provinceMapper& theProvinceMapper,
-			const Configuration& theConfiguration
-		);
-		void addManpower(
-			const std::set<const Vic2::Province*>& sourceProvinces,
-			const provinceMapper& theProvinceMapper,
-			const Configuration& theConfiguration
-		);
+	void tryToCreateVP(const Vic2::State& sourceState,
+		 const mappers::ProvinceMapper& theProvinceMapper,
+		 const Configuration& theConfiguration);
+	void addManpower(const std::set<const Vic2::Province*>& sourceProvinces,
+		 const mappers::ProvinceMapper& theProvinceMapper,
+		 const Configuration& theConfiguration);
 
-		void convertIndustry(
-			double workerFactoryRatio,
-			const HoI4::StateCategories& theStateCategories,
-			const CoastalProvinces& theCoastalProvinces
-		);
+	void convertIndustry(double workerFactoryRatio,
+		 const HoI4::StateCategories& theStateCategories,
+		 const CoastalProvinces& theCoastalProvinces);
 
-	private:
-		int determineFactoryNumbers(double workerFactoryRatio) const;
-		int constrainFactoryNumbers(double rawFactories) const;
-		void determineCategory(int factories, const HoI4::StateCategories& theStateCategories);
-		void addInfrastructureFromRails(float averageRailLevel);
-		void addInfrastructureFromFactories(int factories);
-		void setIndustry(int factories, const CoastalProvinces& theCoastalProvinces);
-		bool amICoastal(const CoastalProvinces& theCoastalProvinces) const;
+  private:
+	int determineFactoryNumbers(double workerFactoryRatio) const;
+	int constrainFactoryNumbers(double rawFactories) const;
+	void determineCategory(int factories, const HoI4::StateCategories& theStateCategories);
+	void addInfrastructureFromRails(float averageRailLevel);
+	void addInfrastructureFromFactories(int factories);
+	void setIndustry(int factories, const CoastalProvinces& theCoastalProvinces);
+	bool amICoastal(const CoastalProvinces& theCoastalProvinces) const;
 
-		int determineNavalBaseLevel(const Vic2::Province& sourceProvince) const;
-		std::optional<int> determineNavalBaseLocation(
-			const Vic2::Province& sourceProvince,
-			const CoastalProvinces& theCoastalProvinces,
-			const provinceMapper& theProvinceMapper
-		) const;
+	int determineNavalBaseLevel(const Vic2::Province& sourceProvince) const;
+	std::optional<int> determineNavalBaseLocation(const Vic2::Province& sourceProvince,
+		 const CoastalProvinces& theCoastalProvinces,
+		 const mappers::ProvinceMapper& theProvinceMapper) const;
 
-		bool assignVPFromVic2Province(int Vic2ProvinceNumber, const provinceMapper& theProvinceMapper);
-		void assignVP(int location);
-		bool isProvinceInState(int provinceNum) const;
-		void addDebugVPs(const Vic2::State& sourceState, const provinceMapper& theProvinceMapper);
+	bool assignVPFromVic2Province(int Vic2ProvinceNumber, const mappers::ProvinceMapper& theProvinceMapper);
+	void assignVP(int location);
+	bool isProvinceInState(int provinceNum) const;
+	void addDebugVPs(const Vic2::State& sourceState, const mappers::ProvinceMapper& theProvinceMapper);
 
-		int population = 0;
-		long employedWorkers = 0;
+	int population = 0;
+	long employedWorkers = 0;
 
-		int ID = 0;
-		std::set<int> provinces;
-		std::string ownerTag;
-		std::set<std::string> cores;
-		std::map<std::string, std::set<int>> controlledProvinces;
+	int ID = 0;
+	std::set<int> provinces;
+	std::string ownerTag;
+	std::set<std::string> cores;
+	std::map<std::string, std::set<int>> controlledProvinces;
 
-		bool capitalState = false;
-		bool impassable = false;
-		bool hadImpassablePart = false;
+	bool capitalState = false;
+	bool impassable = false;
+	bool hadImpassablePart = false;
 
-		int manpower = 0;
+	int manpower = 0;
 
-		int civFactories = 0;
-		int milFactories = 0;
-		int dockyards = 0;
-		std::string category = "wasteland";
-		int infrastructure = 3;
+	int civFactories = 0;
+	int milFactories = 0;
+	int dockyards = 0;
+	std::string category = "wasteland";
+	int infrastructure = 3;
 
-		std::map<int, int> navalBases;
+	std::map<int, int> navalBases;
 
-		int airbaseLevel = 0;
+	int airbaseLevel = 0;
 
-		std::map<std::string, double> resources;
+	std::map<std::string, double> resources;
 
-		std::optional<int> victoryPointPosition;
-		int victoryPointValue = 0;
-		std::set<int> debugVictoryPoints;
-		std::set<int> secondaryDebugVictoryPoints;
+	std::optional<int> victoryPointPosition;
+	int victoryPointValue = 0;
+	std::set<int> debugVictoryPoints;
+	std::set<int> secondaryDebugVictoryPoints;
 
-		std::map<int, int> landFortLevels;
-		std::map<int, int> coastFortLevels;
+	std::map<int, int> landFortLevels;
+	std::map<int, int> coastFortLevels;
 };
 
-}
+} // namespace HoI4
 
 
 

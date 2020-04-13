@@ -30,13 +30,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 class group: commonItems::parser
 {
-	public:
-		explicit group(std::istream& theStream);
+  public:
+	explicit group(std::istream& theStream);
 
-		auto getCultures() const { return cultures; }
+	auto getCultures() const { return cultures; }
 
-	private:
-		std::vector<std::string> cultures;
+  private:
+	std::vector<std::string> cultures;
 };
 
 
@@ -46,7 +46,7 @@ group::group(std::istream& theStream)
 	registerKeyword(std::regex("leader"), commonItems::ignoreItem);
 	registerKeyword(std::regex("unit"), commonItems::ignoreItem);
 	registerKeyword(std::regex("is_overseas"), commonItems::ignoreItem);
-	registerKeyword(std::regex("[a-zA-Z_]+"), [this](const std::string& cultureName, std::istream& theStream){
+	registerKeyword(std::regex("[a-zA-Z_]+"), [this](const std::string& cultureName, std::istream& theStream) {
 		cultures.push_back(cultureName);
 		commonItems::ignoreItem(cultureName, theStream);
 	});
@@ -56,9 +56,9 @@ group::group(std::istream& theStream)
 
 
 
-void Vic2::cultureGroups::init()
+void Vic2::cultureGroups::init(const Configuration& theConfiguration)
 {
-	registerKeyword(std::regex("[a-zA-Z_]+"), [this](const std::string& groupName, std::istream& theStream){
+	registerKeyword(std::regex("[a-zA-Z_]+"), [this](const std::string& groupName, std::istream& theStream) {
 		group newCultureGroup(theStream);
 		for (auto culture: newCultureGroup.getCultures())
 		{

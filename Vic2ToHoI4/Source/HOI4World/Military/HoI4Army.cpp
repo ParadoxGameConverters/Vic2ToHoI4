@@ -35,13 +35,14 @@ DivisionType createDivision(const std::map<std::string, int>& templateRequiremen
 void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings,
 	 const int backupLocation,
 	 const double forceMultiplier,
-	 const States& theStates)
+	 const States& theStates,
+	 const mappers::ProvinceMapper& provinceMapper)
 {
 	std::map<std::string, std::vector<SizedRegiment>> remainingBattalionsAndCompanies;
 
 	for (const auto& army: sourceArmies)
 	{
-		auto provinceMapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(army.getLocation());
+		auto provinceMapping = provinceMapper.getVic2ToHoI4ProvinceMapping(army.getLocation());
 		if (!provinceMapping || isWastelandProvince(*provinceMapping->begin(), theStates))
 		{
 			addAvailableBattalionsAndCompanies(remainingBattalionsAndCompanies,

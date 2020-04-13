@@ -10,6 +10,10 @@
 
 
 
+class Configuration;
+
+
+
 namespace HoI4
 {
 
@@ -21,25 +25,25 @@ class SupplyZone;
 
 class SupplyZones: commonItems::parser
 {
-	public:
-		explicit SupplyZones(const std::map<int, DefaultState>& defaultStates);
+  public:
+	explicit SupplyZones(const std::map<int, DefaultState>& defaultStates, const Configuration& theConfiguration);
 
-		void convertSupplyZones(const States& states);
+	void convertSupplyZones(const States& states);
 
-		[[nodiscard]] const auto& getSupplyZones() const { return supplyZones; }
+	[[nodiscard]] const auto& getSupplyZones() const { return supplyZones; }
 
-		[[nodiscard]] std::optional<std::string> getSupplyZoneFileName(int supplyZoneNum) const;
+	[[nodiscard]] std::optional<std::string> getSupplyZoneFileName(int supplyZoneNum) const;
 
-	private:
-		void importStates(const std::map<int, DefaultState>& defaultStates);
+  private:
+	void importStates(const std::map<int, DefaultState>& defaultStates);
 
-		std::map<int, std::set<int>> defaultStateToProvinceMap;
-		std::map<int, std::string> supplyZonesFileNames;
-		std::map<int, SupplyZone> supplyZones;
-		std::map<int, int> provinceToSupplyZoneMap;
+	std::map<int, std::set<int>> defaultStateToProvinceMap;
+	std::map<int, std::string> supplyZonesFileNames;
+	std::map<int, SupplyZone> supplyZones;
+	std::map<int, int> provinceToSupplyZoneMap;
 };
 
-}
+} // namespace HoI4
 
 
 

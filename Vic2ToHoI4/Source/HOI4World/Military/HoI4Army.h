@@ -42,7 +42,8 @@ class Army
 	void convertArmies(const militaryMappings& theMilitaryMappings,
 		 int backupLocation,
 		 double forceMultiplier,
-		 const States& theStates);
+		 const States& theStates,
+		 const mappers::ProvinceMapper& provinceMapper);
 
 	friend std::ostream& operator<<(std::ostream& output, const Army& theArmy);
 

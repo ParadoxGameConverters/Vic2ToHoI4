@@ -35,37 +35,39 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 namespace Vic2
 {
-	class Pop: commonItems::parser
-	{
-		public:
-			explicit Pop(const std::string& typeString, std::istream& theStream);
+class Issues;
 
-			static Pop* getByID(const int idx);
+class Pop: commonItems::parser
+{
+  public:
+	explicit Pop(const std::string& typeString, std::istream& theStream, const Issues& theIssues);
 
-			int getSize() const { return size; }
-			std::string getType() const { return type; }
-			std::string getCulture() const { return culture; }
-			double getLiteracy() const { return literacy; }
-			double getMilitancy() const { return militancy; }
-			std::map<std::string, float> getIssues() const { return popIssues; }
+	static Pop* getByID(const int idx);
 
-			float getIssue(const std::string& issueName) const;
-			int getID() const {return id;}
+	int getSize() const { return size; }
+	std::string getType() const { return type; }
+	std::string getCulture() const { return culture; }
+	double getLiteracy() const { return literacy; }
+	double getMilitancy() const { return militancy; }
+	std::map<std::string, float> getIssues() const { return popIssues; }
 
-		private:
-			int size = 0;
-			std::string type = "";
-			std::string culture = "no_culture";
-			std::string religion = "";
-			double literacy = 0.0;
-			double consciousness = 0.0;
-			double militancy = 0.0;
-                        int id = 0;
-			std::map<std::string, float> popIssues;
+	float getIssue(const std::string& issueName) const;
+	int getID() const { return id; }
 
-			static std::map<int, Pop*> pop_map;
-        };
-}
+  private:
+	int size = 0;
+	std::string type = "";
+	std::string culture = "no_culture";
+	std::string religion = "";
+	double literacy = 0.0;
+	double consciousness = 0.0;
+	double militancy = 0.0;
+	int id = 0;
+	std::map<std::string, float> popIssues;
+
+	static std::map<int, Pop*> pop_map;
+};
+} // namespace Vic2
 
 
 

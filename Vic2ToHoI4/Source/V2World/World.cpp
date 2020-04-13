@@ -1,86 +1,64 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "World.h"
-#include "CommonCountryData.h"
-#include "Country.h"
-#include "Diplomacy.h"
-#include "Inventions.h"
-#include "Issues.h"
-#include "Party.h"
-#include "Province.h"
-#include "State.h"
-#include "StateDefinitions.h"
 #include "../Configuration.h"
 #include "../Mappers/CountryMapping.h"
 #include "../Mappers/MergeRules.h"
 #include "../Mappers/Provinces/ProvinceMapper.h"
+#include "CommonCountryData.h"
+#include "Country.h"
+#include "Diplomacy.h"
+#include "Inventions.h"
+#include "Issues/Issues.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
+#include "Party.h"
+#include "Province.h"
+#include "State.h"
+#include "Vic2Localisations.h"
 #include <fstream>
 
 
 
-Vic2::World::World(const std::string& filename)
+Vic2::World::World(const std::string& filename,
+	 const mappers::ProvinceMapper& provinceMapper,
+	 const Configuration& theConfiguration)
 {
-	theCultureGroups.init();
-	issuesInstance.instantiate();
-	theStateDefinitions.initialize();
-	inventions theInventions;
+	theLocalisations = Localisations::Parser{}.importLocalisations(theConfiguration);
+	theCultureGroups.init(theConfiguration);
+	Issues theIssues = Issues::Parser{}.importIssues(theConfiguration);
+	theStateDefinitions = StateDefinitions::Parser{}.parseStateDefinitions(theConfiguration);
+	inventions theInventions(theConfiguration);
 
 	std::vector<int> GPIndexes;
-	registerKeyword(std::regex("great_nations"), [&GPIndexes, this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("great_nations"), [&GPIndexes, this](const std::string& unused, std::istream& theStream) {
 		commonItems::intList indexList(theStream);
 		GPIndexes = indexList.getInts();
 	});
 
-	registerKeyword(std::regex("\\d+"), [this](const std::string& provinceID, std::istream& theStream)
-	{
-		provinces[stoi(provinceID)] = new Vic2::Province(provinceID, theStream);
+	registerKeyword(std::regex("\\d+"), [this, &theIssues](const std::string& provinceID, std::istream& theStream) {
+		provinces[stoi(provinceID)] = new Vic2::Province(provinceID, theStream, theIssues);
 	});
 
 	std::vector<std::string> tagsInOrder;
 	tagsInOrder.push_back(""); // REB (first country is index 1
-	registerKeyword(std::regex("[A-Z]{3}"), [&tagsInOrder, &theInventions, this](const std::string& countryTag, std::istream& theStream)
-	{
-		countries[countryTag] = new Country(countryTag, theStream, theInventions, theCultureGroups);
-		tagsInOrder.push_back(countryTag);
-	});
-	registerKeyword(std::regex("[A-Z][0-9]{2}"), [&tagsInOrder, &theInventions, this](const std::string& countryTag, std::istream& theStream)
-	{
-		countries[countryTag] = new Country(countryTag, theStream, theInventions, theCultureGroups);
-		tagsInOrder.push_back(countryTag);
-	});
-	registerKeyword(std::regex("diplomacy"), [this](const std::string& top, std::istream& theStream)
-	{
+	registerKeyword(std::regex("[A-Z]{3}"),
+		 [&tagsInOrder, &theInventions, this](const std::string& countryTag, std::istream& theStream) {
+			 countries[countryTag] =
+				  new Country(countryTag, theStream, theInventions, theCultureGroups, *theStateDefinitions);
+			 tagsInOrder.push_back(countryTag);
+		 });
+	registerKeyword(std::regex("[A-Z][0-9]{2}"),
+		 [&tagsInOrder, &theInventions, this](const std::string& countryTag, std::istream& theStream) {
+			 countries[countryTag] =
+				  new Country(countryTag, theStream, theInventions, theCultureGroups, *theStateDefinitions);
+			 tagsInOrder.push_back(countryTag);
+		 });
+	registerKeyword(std::regex("diplomacy"), [this](const std::string& top, std::istream& theStream) {
 		diplomacy = new Vic2::Diplomacy(theStream);
 	});
 
 	std::vector<War> wars;
-	registerKeyword(std::regex("active_war"), [&wars](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword(std::regex("active_war"), [&wars](const std::string& unused, std::istream& theStream) {
 		War newWar(theStream);
 		wars.push_back(newWar);
 	});
@@ -103,17 +81,17 @@ Vic2::World::World(const std::string& filename)
 	determineEmployedWorkers();
 	overallMergeNations();
 	removeEmptyNations();
-	determinePartialStates();
+	determinePartialStates(*theStateDefinitions);
 	addWarsToCountries(wars);
 	if (diplomacy == nullptr)
 	{
 		diplomacy = new Vic2::Diplomacy();
 	}
-	readCountryFiles();
-	setLocalisations();
+	readCountryFiles(theConfiguration);
+	setLocalisations(*theLocalisations);
 	handleMissingCountryCultures();
 
-	checkAllProvincesMapped();
+	checkAllProvincesMapped(provinceMapper);
 }
 
 
@@ -143,9 +121,8 @@ void Vic2::World::setProvinceOwners()
 		}
 		else
 		{
-			LOG(LogLevel::Warning)
-				<< "Trying to set " << province.second->getOwner() << " as owner of "
-				<< province.first << ", but country does not exist.";
+			LOG(LogLevel::Warning) << "Trying to set " << province.second->getOwner() << " as owner of " << province.first
+										  << ", but country does not exist.";
 		}
 	}
 	for (auto country: countries)
@@ -260,13 +237,13 @@ void Vic2::World::removeEmptyNations()
 }
 
 
-void Vic2::World::determinePartialStates()
+void Vic2::World::determinePartialStates(const Vic2::StateDefinitions& theStateDefinitions)
 {
 	for (auto country: countries)
 	{
 		for (auto state: country.second->getStates())
 		{
-			state->determineIfPartialState();
+			state->determineIfPartialState(theStateDefinitions);
 		}
 	}
 }
@@ -306,20 +283,22 @@ void Vic2::World::addWarsToCountries(const std::vector<War>& wars)
 }
 
 
-void Vic2::World::readCountryFiles()
+void Vic2::World::readCountryFiles(const Configuration& theConfiguration)
 {
 	bool countriesDotTxtRead = false;
 
 	for (auto vic2Mod: theConfiguration.getVic2Mods())
 	{
-		if (processCountriesDotTxt(theConfiguration.getVic2Path() + "/mod/" + vic2Mod + "/common/countries.txt", vic2Mod))
+		if (processCountriesDotTxt(theConfiguration.getVic2Path() + "/mod/" + vic2Mod + "/common/countries.txt",
+				  vic2Mod,
+				  theConfiguration))
 		{
 			countriesDotTxtRead = true;
 		}
 	}
 	if (!countriesDotTxtRead)
 	{
-		if (!processCountriesDotTxt(theConfiguration.getVic2Path() + "/common/countries.txt", ""))
+		if (!processCountriesDotTxt(theConfiguration.getVic2Path() + "/common/countries.txt", "", theConfiguration))
 		{
 			LOG(LogLevel::Error) << "Could not open " << theConfiguration.getVic2Path() + "/common/countries.txt";
 			exit(-1);
@@ -328,7 +307,9 @@ void Vic2::World::readCountryFiles()
 }
 
 
-bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile, const std::string& mod)
+bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile,
+	 const std::string& mod,
+	 const Configuration& theConfiguration)
 {
 	std::ifstream V2CountriesInput(countryListFile);
 	if (!V2CountriesInput.is_open())
@@ -347,7 +328,7 @@ bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile, con
 
 		std::string tag = line.substr(0, 3);
 		std::string countryFileName = extractCountryFileName(line);
-		commonCountryData countryData(countryFileName, mod);
+		commonCountryData countryData(countryFileName, mod, theConfiguration);
 		if (countries.find(tag) != countries.end())
 		{
 			countries[tag]->setColor(countryData.getColor());
@@ -424,12 +405,12 @@ std::optional<Vic2::Country*> Vic2::World::getCountry(const std::string& tag) co
 }
 
 
-void Vic2::World::setLocalisations()
+void Vic2::World::setLocalisations(Localisations& vic2Localisations)
 {
 	for (auto country: countries)
 	{
-		country.second->setLocalisationNames();
-		country.second->setLocalisationAdjectives();
+		country.second->setLocalisationNames(vic2Localisations);
+		country.second->setLocalisationAdjectives(vic2Localisations);
 	}
 }
 
@@ -457,11 +438,11 @@ std::optional<const Vic2::Province*> Vic2::World::getProvince(int provNum) const
 }
 
 
-void Vic2::World::checkAllProvincesMapped() const
+void Vic2::World::checkAllProvincesMapped(const mappers::ProvinceMapper& provinceMapper) const
 {
 	for (auto province: provinces)
 	{
-		auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(province.first);
+		auto mapping = provinceMapper.getVic2ToHoI4ProvinceMapping(province.first);
 		if (!mapping)
 		{
 			LOG(LogLevel::Warning) << "No mapping for Vic2 province " << province.first;

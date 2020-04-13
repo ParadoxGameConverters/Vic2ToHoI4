@@ -56,6 +56,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Color.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Configuration.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
@@ -224,12 +225,10 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\ProvinceDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapping.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\VersionedMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\TechMapper.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\V2Localisations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4States.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\targa.cpp" />
@@ -242,7 +241,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CultureGroups.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Inventions.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueHelper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\Issues.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\PartiesIssueHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Leader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Party.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pop.cpp" />
@@ -250,6 +251,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Relations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\StateDefinitions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Vic2Localisations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\War.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarGoal.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\World.cpp" />
@@ -330,6 +332,7 @@
     <ClCompile Include="Mocks\Vic2StateMock.h" />
     <ClCompile Include="Vic2ToHoI4ConverterTests.cpp" />
     <ClCompile Include="Vic2WorldTests\ProvinceTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\StateDefinitionsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Vic2AgreementTests.cpp" />
     <ClCompile Include="Vic2WorldTests\WarGoalTests.cpp" />
     <ClCompile Include="Vic2WorldTests\WarTests.cpp" />
@@ -351,7 +354,6 @@
     <ClInclude Include="Mocks\GraphicsMapperMock.h" />
     <ClInclude Include="Mocks\Hoi4StateMock.h" />
     <ClInclude Include="Mocks\NamesMapperMock.h" />
-    <ClInclude Include="Mocks\ProvinceMapperMock.h" />
     <ClInclude Include="Mocks\StateCategoriesMock.h" />
     <ClInclude Include="Mocks\Vic2CountryMock.h" />
     <ClInclude Include="Mocks\Vic2WorldMock.h" />
@@ -412,6 +414,8 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
       <FunctionLevelLinking>true</FunctionLevelLinking>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <Optimization>Disabled</Optimization>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
