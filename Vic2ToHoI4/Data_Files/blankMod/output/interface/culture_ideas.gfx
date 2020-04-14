@@ -2041,4 +2041,16 @@ spriteTypes = {
 		name = "GFX_idea_culture_meashighcaw"
 		texturefile = "gfx/interface/culture/culture_meashighcaw.dds"
 	}
+	spriteType = {
+		name = "GFX_idea_culture_anatolian"
+		texturefile = "gfx/interface/culture/culture_anatolian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_frencharab"
+		texturefile = "gfx/interface/culture/culture_frencharab.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_magnagreek"
+		texturefile = "gfx/interface/culture/culture_magnagreek.dds"
+	}
 }

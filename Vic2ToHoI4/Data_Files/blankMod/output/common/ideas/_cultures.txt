@@ -2976,5 +2976,24 @@ ideas = {
 			picture = culture_meashighcaw
 			modifier = { }
 		}
+		
+		culture_anatolian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_anatolian
+			modifier = { }
+		}
+		culture_frencharab = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_frencharab
+			modifier = { }
+		}
+		culture_magnagreek = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_magnagreek
+			modifier = { }
+		}
 	}
 }
