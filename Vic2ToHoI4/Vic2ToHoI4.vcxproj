@@ -195,7 +195,7 @@
     <ClCompile Include="Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
-    <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategory.cpp" />
+    <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsInCategory.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisions.cpp" />
     <ClCompile Include="Source\OutHoi4\Diplomacy\OutAiPeace.cpp" />
     <ClCompile Include="Source\OutHoi4\Diplomacy\OutAiPeaces.cpp" />
@@ -259,7 +259,7 @@
     <ClCompile Include="Source\OutHoi4\Version\outVersion.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\Decision.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\Decisions.cpp" />
-    <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategory.cpp" />
+    <ClCompile Include="Source\HOI4World\Decisions\DecisionsInCategory.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsFile.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\ExiledGovernmentsDecisions.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\ForeignInfluenceDecisions.cpp" />
@@ -412,7 +412,7 @@
     <ClInclude Include="Source\HOI4World\SharedFocus.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategories.h" />
-    <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategory.h" />
+    <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsInCategory.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisions.h" />
     <ClInclude Include="Source\OutHoi4\Diplomacy\OutAiPeace.h" />
     <ClInclude Include="Source\OutHoi4\Diplomacy\OutAiPeaces.h" />
@@ -476,7 +476,7 @@
     <ClInclude Include="Source\OutHoi4\Version\outVersion.h" />
     <ClInclude Include="Source\HOI4World\Decisions\Decision.h" />
     <ClInclude Include="Source\HOI4World\Decisions\Decisions.h" />
-    <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategory.h" />
+    <ClInclude Include="Source\HOI4World\Decisions\DecisionsInCategory.h" />
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsFile.h" />
     <ClInclude Include="Source\HOI4World\Decisions\ExiledGovernmentsDecisions.h" />
     <ClInclude Include="Source\HOI4World\Decisions\ForeignInfluenceDecisions.h" />

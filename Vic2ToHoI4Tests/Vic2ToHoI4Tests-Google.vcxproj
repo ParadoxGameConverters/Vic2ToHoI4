@@ -56,11 +56,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Color.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Configuration.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsInCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsCategory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsInCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Diplomacy\OutAiPeace.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Diplomacy\OutAiPeaces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Diplomacy\OutWar.cpp" />
@@ -120,7 +121,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ShipTypes\OutShipVariants.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decisions.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsFile.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\ExiledGovernmentsDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\ForeignInfluenceDecisions.cpp" />

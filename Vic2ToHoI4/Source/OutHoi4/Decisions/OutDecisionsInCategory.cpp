@@ -1,9 +1,9 @@
-#include "OutDecisionsCategory.h"
+#include "OutDecisionsInCategory.h"
 #include "OutDecision.h"
 
 
 
-std::ostream& HoI4::operator<<(std::ostream& outStream, const decisionsCategory& outCategory)
+std::ostream& HoI4::operator<<(std::ostream& outStream, const DecisionsInCategory& outCategory)
 {
 	outStream << outCategory.name << " = {\n";
 	for (const auto& decision: outCategory.theDecisions)

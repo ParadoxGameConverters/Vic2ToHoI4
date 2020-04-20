@@ -185,9 +185,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decisions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\IdeologicalDecisions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
     </ClCompile>
@@ -770,9 +767,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsCategories.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsCategory.cpp">
-      <Filter>Vic2ToHoI4 files\OutHoi4\Decisions</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Events\OutEvent.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Events</Filter>
     </ClCompile>
@@ -874,6 +868,12 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\PartiesIssueHelper.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Issues</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsInCategory.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsInCategory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

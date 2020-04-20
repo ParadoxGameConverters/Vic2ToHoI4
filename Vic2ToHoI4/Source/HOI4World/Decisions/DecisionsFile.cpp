@@ -4,16 +4,15 @@
 
 void HoI4::DecisionsFile::importDecisions(const std::string& filename)
 {
-	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream)
-	{
-		const decisionsCategory category(categoryName, theStream);
+	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream) {
+		const DecisionsInCategory category(categoryName, theStream);
 
 		auto categoryMerged = false;
 		for (auto& oldCategory: decisions)
 		{
 			if (oldCategory.getName() == category.getName())
 			{
-				for (auto decision : category.getDecisions())
+				for (auto decision: category.getDecisions())
 				{
 					oldCategory.addDecision(decision);
 				}

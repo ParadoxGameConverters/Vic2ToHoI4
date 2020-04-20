@@ -3,7 +3,7 @@
 
 
 
-#include "DecisionsCategory.h"
+#include "DecisionsInCategory.h"
 #include "newParser.h"
 
 
@@ -13,19 +13,19 @@ namespace HoI4
 
 class IdeologicalDecisions: commonItems::parser
 {
-	public:
-		explicit IdeologicalDecisions(std::istream& theStream);
+  public:
+	explicit IdeologicalDecisions(std::istream& theStream);
 
-		[[nodiscard]] const std::vector<decisionsCategory>& getCategories() const { return theCategories; }
+	[[nodiscard]] const std::vector<DecisionsInCategory>& getCategories() const { return theCategories; }
 
-		bool requiredIdeologiesExist(const std::set<std::string>& majorIdeologies);
+	bool requiredIdeologiesExist(const std::set<std::string>& majorIdeologies);
 
-	private:
-		std::vector<decisionsCategory> theCategories;
-		std::set<std::string> requiredIdeologies;
+  private:
+	std::vector<DecisionsInCategory> theCategories;
+	std::set<std::string> requiredIdeologies;
 };
 
-}
+} // namespace HoI4
 
 
 

@@ -1,9 +1,9 @@
-#include "DecisionsCategory.h"
+#include "DecisionsInCategory.h"
 #include "../Events/Events.h"
+#include "DecisionsInCategory.h"
 
 
-
-HoI4::decisionsCategory::decisionsCategory(std::string categoryName, std::istream& theStream):
+HoI4::DecisionsInCategory::DecisionsInCategory(std::string categoryName, std::istream& theStream):
 	 name(std::move(categoryName))
 {
 	registerKeyword(std::regex("[A-Za-z0-9_]+"), [this](const std::string& decisionName, std::istream& theStream) {
@@ -20,7 +20,7 @@ void updateDiscreditGovernment(HoI4::decision& decisionToUpdate, const std::set<
 void updateInstitutePressCensorship(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies);
 void updateIgniteTheIdeologyCivilWar(HoI4::decision& decisionToUpdate, const std::set<std::string>& majorIdeologies);
 
-void HoI4::decisionsCategory::updatePoliticalDecisions(const std::set<std::string>& majorIdeologies,
+void HoI4::DecisionsInCategory::updatePoliticalDecisions(const std::set<std::string>& majorIdeologies,
 	 const Events& theEvents)
 {
 	for (auto& theDecision: theDecisions)
@@ -200,7 +200,7 @@ void updateIgniteTheIdeologyCivilWar(HoI4::decision& decisionToUpdate, const std
 }
 
 
-void HoI4::decisionsCategory::updateHoldTheIdeologyNationalReferendum(decision& decisionToUpdate,
+void HoI4::DecisionsInCategory::updateHoldTheIdeologyNationalReferendum(decision& decisionToUpdate,
 	 const Events& theEvents) const
 {
 	auto decisionIdeology = decisionToUpdate.getName().substr(9, decisionToUpdate.getName().length());
@@ -216,7 +216,7 @@ void HoI4::decisionsCategory::updateHoldTheIdeologyNationalReferendum(decision& 
 }
 
 
-bool HoI4::decisionsCategory::operator==(const decisionsCategory& otherCategory) const
+bool HoI4::DecisionsInCategory::operator==(const DecisionsInCategory& otherCategory) const
 {
 	return (name == otherCategory.name);
 }

@@ -1,62 +1,62 @@
 #include "../../Mocks/EventsMock.h"
-#include "../Vic2ToHoI4/Source/HOI4World/Decisions/DecisionsCategory.h"
+#include "../Vic2ToHoI4/Source/HOI4World/Decisions/DecisionsInCategory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
 
 
-TEST(HoI4World_Decisions_DecisionsCategoryTests, NameDefaultsToBlank)
+TEST(HoI4World_Decisions_DecisionsInCategoryTests, NameDefaultsToBlank)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	const HoI4::decisionsCategory theDecisionsCategory("", input);
+	const HoI4::DecisionsInCategory theDecisionsCategory("", input);
 
 	ASSERT_EQ(theDecisionsCategory.getName(), "");
 }
 
 
-TEST(HoI4World_Decisions_DecisionsCategoryTests, NameCanBeSet)
+TEST(HoI4World_Decisions_DecisionsInCategoryTests, NameCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	const HoI4::decisionsCategory theDecisionsCategory("decisionsCategoryName", input);
+	const HoI4::DecisionsInCategory theDecisionsCategory("decisionsCategoryName", input);
 
 	ASSERT_EQ(theDecisionsCategory.getName(), "decisionsCategoryName");
 }
 
 
-TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionsDefaultsToEmpty)
+TEST(HoI4World_Decisions_DecisionsInCategoryTests, DecisionsDefaultsToEmpty)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	const HoI4::decisionsCategory theDecisionsCategory("", input);
+	const HoI4::DecisionsInCategory theDecisionsCategory("", input);
 
 	ASSERT_EQ(theDecisionsCategory.getDecisions().size(), 0);
 }
 
 
-TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionsCanBeImported)
+TEST(HoI4World_Decisions_DecisionsInCategoryTests, DecisionsCanBeImported)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "\tdecision={}\n";
 	input << "}";
-	const HoI4::decisionsCategory theDecisionsCategory("", input);
+	const HoI4::DecisionsInCategory theDecisionsCategory("", input);
 
 	ASSERT_EQ(theDecisionsCategory.getDecisions().size(), 1);
 }
 
 
-TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionCanBeReplaced)
+TEST(HoI4World_Decisions_DecisionsInCategoryTests, DecisionCanBeReplaced)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "\tdecision={}\n";
 	input << "}";
-	HoI4::decisionsCategory theDecisionsCategory("decisionsCategoryName", input);
+	HoI4::DecisionsInCategory theDecisionsCategory("decisionsCategoryName", input);
 
 	std::stringstream decisionInput;
 	decisionInput << "= { cost = 50 }";
@@ -79,13 +79,13 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionCanBeReplaced)
 }
 
 
-TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionsCanBeReplaced)
+TEST(HoI4World_Decisions_DecisionsInCategoryTests, DecisionsCanBeReplaced)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "\tdecision={}\n";
 	input << "}";
-	HoI4::decisionsCategory theDecisionsCategory("decisionsCategoryName", input);
+	HoI4::DecisionsInCategory theDecisionsCategory("decisionsCategoryName", input);
 
 	std::stringstream decisionInput;
 	decisionInput << "= { cost = 50 }";
@@ -111,12 +111,12 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionsCanBeReplaced)
 }
 
 
-TEST(HoI4World_Decisions_DecisionsCategoryTests, ReplacingNonexistentDecisionDoesNotAddIt)
+TEST(HoI4World_Decisions_DecisionsInCategoryTests, ReplacingNonexistentDecisionDoesNotAddIt)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	HoI4::decisionsCategory theDecisionsCategory("decisionsCategoryName", input);
+	HoI4::DecisionsInCategory theDecisionsCategory("decisionsCategoryName", input);
 
 	std::stringstream decisionInput;
 	decisionInput << "= { cost = 50 }";
@@ -135,12 +135,12 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, ReplacingNonexistentDecisionDoe
 }
 
 
-TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionCanBeAdded)
+TEST(HoI4World_Decisions_DecisionsInCategoryTests, DecisionCanBeAdded)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	HoI4::decisionsCategory theDecisionsCategory("decisionsCategoryName", input);
+	HoI4::DecisionsInCategory theDecisionsCategory("decisionsCategoryName", input);
 
 	std::stringstream decisionInput;
 	decisionInput << "= { cost = 50 }";
@@ -163,37 +163,37 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, DecisionCanBeAdded)
 }
 
 
-TEST(HoI4World_Decisions_DecisionsCategoryTests, EqualCategoriesAreEqual)
+TEST(HoI4World_Decisions_DecisionsInCategoryTests, EqualCategoriesAreEqual)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	HoI4::decisionsCategory theDecisionsCategory("decisionsCategoryName", input);
-	HoI4::decisionsCategory theDecisionsCategory2("decisionsCategoryName", input);
+	HoI4::DecisionsInCategory theDecisionsCategory("decisionsCategoryName", input);
+	HoI4::DecisionsInCategory theDecisionsCategory2("decisionsCategoryName", input);
 
 	ASSERT_TRUE(theDecisionsCategory == theDecisionsCategory2);
 }
 
 
-TEST(HoI4World_Decisions_DecisionsCategoryTests, UnequalCategoriesAreUnequal)
+TEST(HoI4World_Decisions_DecisionsInCategoryTests, UnequalCategoriesAreUnequal)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "}";
-	HoI4::decisionsCategory theDecisionsCategory("decisionsCategoryName", input);
-	HoI4::decisionsCategory theDecisionsCategory2("decisionsCategoryName2", input);
+	HoI4::DecisionsInCategory theDecisionsCategory("decisionsCategoryName", input);
+	HoI4::DecisionsInCategory theDecisionsCategory2("decisionsCategoryName2", input);
 
 	ASSERT_FALSE(theDecisionsCategory == theDecisionsCategory2);
 }
 
 
-TEST(HoI4World_Decisions_DecisionsCategoryTests, OpenUpPoliticalDiscourseCanBeUpdatedWithIdeologies)
+TEST(HoI4World_Decisions_DecisionsInCategoryTests, OpenUpPoliticalDiscourseCanBeUpdatedWithIdeologies)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "\topen_up_political_discourse_fascism={}\n";
 	input << "}";
-	HoI4::decisionsCategory theDecisionsCategory("decisionsCategoryName", input);
+	HoI4::DecisionsInCategory theDecisionsCategory("decisionsCategoryName", input);
 
 	std::set<std::string> ideologies;
 	ideologies.insert("fascism");
@@ -222,13 +222,13 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, OpenUpPoliticalDiscourseCanBeUp
 }
 
 
-TEST(HoI4World_Decisions_DecisionsCategoryTests, DiscreditGovernmentCanBeUpdatedWithIdeologies)
+TEST(HoI4World_Decisions_DecisionsInCategoryTests, DiscreditGovernmentCanBeUpdatedWithIdeologies)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "\tdiscredit_government_communism={}\n";
 	input << "}";
-	HoI4::decisionsCategory theDecisionsCategory("decisionsCategoryName", input);
+	HoI4::DecisionsInCategory theDecisionsCategory("decisionsCategoryName", input);
 
 	std::set<std::string> ideologies;
 	ideologies.insert("fascism");
@@ -283,13 +283,13 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, DiscreditGovernmentCanBeUpdated
 }
 
 
-TEST(HoI4World_Decisions_DecisionsCategoryTests, InstituePressCensorshipCanBeUpdatedWithIdeologies)
+TEST(HoI4World_Decisions_DecisionsInCategoryTests, InstituePressCensorshipCanBeUpdatedWithIdeologies)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "\tinstitute_press_censorship_absolutism={}\n";
 	input << "}";
-	HoI4::decisionsCategory theDecisionsCategory("decisionsCategoryName", input);
+	HoI4::DecisionsInCategory theDecisionsCategory("decisionsCategoryName", input);
 
 	std::set<std::string> ideologies;
 	ideologies.insert("absolutism");
@@ -318,13 +318,13 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, InstituePressCensorshipCanBeUpd
 }
 
 
-TEST(HoI4World_Decisions_DecisionsCategoryTests, IgniteTheIdeologyCivilWarCanBeUpdatedWithIdeologies)
+TEST(HoI4World_Decisions_DecisionsInCategoryTests, IgniteTheIdeologyCivilWarCanBeUpdatedWithIdeologies)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "\tignite_the_radical_civil_war={}\n";
 	input << "}";
-	HoI4::decisionsCategory theDecisionsCategory("decisionsCategoryName", input);
+	HoI4::DecisionsInCategory theDecisionsCategory("decisionsCategoryName", input);
 
 	std::set<std::string> ideologies;
 	ideologies.insert("absolutism");
@@ -397,13 +397,13 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, IgniteTheIdeologyCivilWarCanBeU
 }
 
 
-TEST(HoI4World_Decisions_DecisionsCategoryTests, HoldTheIdeologyNationalReferendumCanBeUpdatedWithEvents)
+TEST(HoI4World_Decisions_DecisionsInCategoryTests, HoldTheIdeologyNationalReferendumCanBeUpdatedWithEvents)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "\thold_the_democratic_national_referendum={}\n";
 	input << "}";
-	HoI4::decisionsCategory theDecisionsCategory("decisionsCategoryName", input);
+	HoI4::DecisionsInCategory theDecisionsCategory("decisionsCategoryName", input);
 
 	std::set<std::string> ideologies;
 	mockEvents theEvents;
