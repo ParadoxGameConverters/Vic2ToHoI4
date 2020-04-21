@@ -7,7 +7,7 @@
 
 
 
-std::ostream& HoI4::operator<<(std::ostream& out, const HoI4::DecisionsCategory& decisionsCategory);
+std::ostream& HoI4::operator<<(std::ostream& out, const DecisionsCategory& decisionsCategory);
 
 
 
