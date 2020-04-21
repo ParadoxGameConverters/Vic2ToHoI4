@@ -260,9 +260,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\SubstitutesImporter.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Decisions\DecisionsCategoryTests.cpp">
-      <Filter>HoI4WorldTests\Decisions</Filter>
-    </ClCompile>
     <ClCompile Include="HoI4WorldTests\Decisions\DecisionTests.cpp">
       <Filter>HoI4WorldTests\Decisions</Filter>
     </ClCompile>
@@ -874,6 +871,18 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsInCategory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsCategory.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Decisions\DecisionsInCategoryTests.cpp">
+      <Filter>HoI4WorldTests\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Decisions\DecisionsCategoryTests.cpp">
+      <Filter>HoI4WorldTests\Decisions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

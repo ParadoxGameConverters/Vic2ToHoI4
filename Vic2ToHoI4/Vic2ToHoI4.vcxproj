@@ -192,9 +192,11 @@
     <ClCompile Include="Source\Color.cpp" />
     <ClCompile Include="Source\Configuration.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
+    <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
+    <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategory.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsInCategory.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisions.cpp" />
     <ClCompile Include="Source\OutHoi4\Diplomacy\OutAiPeace.cpp" />
@@ -408,10 +410,12 @@
     <ClInclude Include="Source\Color.h" />
     <ClInclude Include="Source\Configuration.h" />
     <ClInclude Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.h" />
+    <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategory.h" />
     <ClInclude Include="Source\HOI4World\ProvinceDefinitions.h" />
     <ClInclude Include="Source\HOI4World\SharedFocus.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategories.h" />
+    <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategory.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsInCategory.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisions.h" />
     <ClInclude Include="Source\OutHoi4\Diplomacy\OutAiPeace.h" />
