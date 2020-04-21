@@ -2053,4 +2053,49 @@ spriteTypes = {
 		name = "GFX_idea_culture_magnagreek"
 		texturefile = "gfx/interface/culture/culture_magnagreek.dds"
 	}
+	#Jewish cultures
+	spriteType = {
+	  name = "GFX_idea_culture_knaanic"
+	  texturefile = "gfx/interface/culture/culture_knaanic"
+	 }
+	spriteType = {
+	  name = "GFX_idea_culture_magogic"
+	  texturefile = "gfx/interface/culture/culture_magogic"
+	 }
+	spriteType = {
+	  name = "GFX_idea_culture_yevanic"
+	  texturefile = "gfx/interface/culture/culture_yevanic"
+	 }
+	spriteType = {
+	  name = "GFX_idea_culture_mizrahi"
+	  texturefile = "gfx/interface/culture/culture_mizrahi"
+	 }
+	spriteType = {
+	  name = "GFX_idea_culture_israeli"
+	  texturefile = "gfx/interface/culture/culture_israeli"
+	 }
+	spriteType = {
+	  name = "GFX_idea_culture_misrayim"
+	  texturefile = "gfx/interface/culture/culture_misrayim"
+	 }
+	spriteType = {
+	  name = "GFX_idea_culture_zarphatic"
+	  texturefile = "gfx/interface/culture/culture_zarphatic"
+	 }
+	spriteType = {
+	  name = "GFX_idea_culture_laaz"
+	  texturefile = "gfx/interface/culture/culture_laaz"
+	 }
+	spriteType = {
+	  name = "GFX_idea_culture_kaifeng"
+	  texturefile = "gfx/interface/culture/culture_kaifeng"
+	 }
+	spriteType = {
+	  name = "GFX_idea_culture_hulwud"
+	  texturefile = "gfx/interface/culture/culture_hulwud"
+	 }
+	spriteType = {
+	  name = "GFX_idea_culture_camite"
+	  texturefile = "gfx/interface/culture/culture_camite"
+	 }
 }

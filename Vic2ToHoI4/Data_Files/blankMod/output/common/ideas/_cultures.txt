@@ -2995,5 +2995,82 @@ ideas = {
 			picture = culture_magnagreek
 			modifier = { }
 		}
+		#Jewish world cultures
+		  culture_knaanic = {
+		   removal_cost = -1
+		   allowed = { always = no } allowed_civil_war = { always = yes }
+		   picture = culture_knaanic
+		   modifier = { }
+		  }
+
+		  culture_magogic = {
+		   removal_cost = -1
+		   allowed = { always = no } allowed_civil_war = { always = yes }
+		   picture = culture_magogic
+		   modifier = { }
+		  }
+
+		  culture_yevanic = {
+		   removal_cost = -1
+		   allowed = { always = no } allowed_civil_war = { always = yes }
+		   picture = culture_yevanic
+		   modifier = { }
+		  }
+
+		  culture_mizrahi = {
+		   removal_cost = -1
+		   allowed = { always = no } allowed_civil_war = { always = yes }
+		   picture = culture_mizrahi
+		   modifier = { }
+		  }
+
+		  culture_israeli = {
+		   removal_cost = -1
+		   allowed = { always = no } allowed_civil_war = { always = yes }
+		   picture = culture_israeli
+		   modifier = { }
+		  }
+
+		  culture_misrayim = {
+		   removal_cost = -1
+		   allowed = { always = no } allowed_civil_war = { always = yes }
+		   picture = culture_misrayim
+		   modifier = { }
+		  }
+
+		  culture_zarphatic = {
+		   removal_cost = -1
+		   allowed = { always = no } allowed_civil_war = { always = yes }
+		   picture = culture_zarphatic
+		   modifier = { }
+		  }
+
+		  culture_laaz = {
+		   removal_cost = -1
+		   allowed = { always = no } allowed_civil_war = { always = yes }
+		   picture = culture_laaz
+		   modifier = { }
+		  }
+
+		  culture_kaifeng = {
+		   removal_cost = -1
+		   allowed = { always = no } allowed_civil_war = { always = yes }
+		   picture = culture_kaifeng
+		   modifier = { }
+		  }
+
+		  culture_hulwud = {
+		   removal_cost = -1
+		   allowed = { always = no } allowed_civil_war = { always = yes }
+		   picture = culture_hulwud
+		   modifier = { }
+		  }
+
+		  culture_camite = {
+		   removal_cost = -1
+		   allowed = { always = no } allowed_civil_war = { always = yes }
+		   picture = culture_camite
+		   modifier = { }
+		  }
 	}
 }
