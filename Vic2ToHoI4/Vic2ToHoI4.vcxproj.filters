@@ -776,6 +776,9 @@
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategory.cpp">
       <Filter>OutHoi4\Decisions</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategories.cpp">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1468,6 +1471,9 @@
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategory.h">
       <Filter>OutHoi4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategories.h">
+      <Filter>HoI4World\Decisions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

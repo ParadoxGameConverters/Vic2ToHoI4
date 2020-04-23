@@ -28,6 +28,7 @@ class DecisionsCategory
 	}
 
 	friend std::ostream& operator<<(std::ostream& out, const DecisionsCategory& decisionsCategory);
+	bool operator==(const DecisionsCategory& rhs) const { return name == rhs.name; }
 
   private:
 	std::string name;

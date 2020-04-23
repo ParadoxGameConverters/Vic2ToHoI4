@@ -56,6 +56,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Color.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Configuration.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategories.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsInCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp" />
@@ -257,6 +258,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\War.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarGoal.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\World.cpp" />
+    <ClCompile Include="HoI4WorldTests\Decisions\DecisionsCategoriesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Decisions\DecisionsCategoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Decisions\DecisionsInCategoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Decisions\DecisionTests.cpp" />
