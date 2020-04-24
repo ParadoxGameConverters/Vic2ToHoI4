@@ -8,12 +8,10 @@ void HoI4::outputDecisions(const decisions& theDecisions,
 	 const std::set<std::string>& majorIdeologies,
 	 const std::string& outputName)
 {
-	std::ofstream outStream("output/" + outputName + "/common/decisions/categories/00_decision_categories.txt",
-		 std::ostream::app);
-	outputDecisionCategories(outStream, majorIdeologies);
-	outStream.close();
+	outputDecisionCategories("output/" + outputName + "/common/decisions/categories/00_decision_categories.txt",
+		 theDecisions.getIdeologicalCategories());
 
-	outStream.open("output/" + outputName + "/common/decisions/lar_agent_recruitment_decisions.txt");
+	std::ofstream outStream("output/" + outputName + "/common/decisions/lar_agent_recruitment_decisions.txt");
 	for (const auto& category: theDecisions.getAgentRecruitmentDecisions())
 	{
 		outStream << category;

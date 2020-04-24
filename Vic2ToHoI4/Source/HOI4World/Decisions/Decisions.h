@@ -6,6 +6,7 @@
 #include "../../Configuration.h"
 #include "../States/DefaultState.h"
 #include "AgentRecruitmentDecisions.h"
+#include "DecisionsCategories.h"
 #include "DecisionsInCategory.h"
 #include "ExiledGovernmentsDecisions.h"
 #include "ForeignInfluenceDecisions.h"
@@ -38,6 +39,7 @@ class decisions: commonItems::parser
 		 const std::map<int, DefaultState>& defaultStates,
 		 const Events& theEvents);
 
+	[[nodiscard]] const auto& getIdeologicalCategories() const { return *ideologicalCategories; }
 	[[nodiscard]] const std::vector<DecisionsInCategory>& getAgentRecruitmentDecisions() const
 	{
 		return agentRecruitmentDecisions.getDecisions();
@@ -72,6 +74,11 @@ class decisions: commonItems::parser
 	}
 
   private:
+	void generateIdeologicalCategories(const std::set<std::string>& majorIdeologies);
+	static std::string getIdeologicalIcon(const std::string& ideology);
+	
+	std::unique_ptr<DecisionsCategories> ideologicalCategories;
+
 	AgentRecruitmentDecisions agentRecruitmentDecisions;
 	StabilityWarSupportDecisions stabilityDecisions;
 	PoliticalDecisions politicalDecisions;

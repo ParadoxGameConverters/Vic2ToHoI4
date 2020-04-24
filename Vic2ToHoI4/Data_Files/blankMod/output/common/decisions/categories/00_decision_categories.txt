@@ -138,3 +138,4 @@ lar_local_recruitment = {
 
 	visibility_type = map_and_decisions_view
 }
+

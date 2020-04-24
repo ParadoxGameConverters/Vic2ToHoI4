@@ -16,6 +16,7 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, DefaultsAreBlank)
 	std::stringstream expectedOutput;
 	expectedOutput << " = {\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
 
 	std::stringstream actualOutput;
 	actualOutput << theDecisionsCategory;
@@ -35,6 +36,7 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, NameCanBeSet)
 	std::stringstream expectedOutput;
 	expectedOutput << "category_name = {\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
 
 	std::stringstream actualOutput;
 	actualOutput << theDecisionsCategory;
@@ -56,6 +58,7 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, IconCanBeSet)
 	expectedOutput << "category_name = {\n";
 	expectedOutput << "\ticon = generic_research\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
 
 	std::stringstream actualOutput;
 	actualOutput << theDecisionsCategory;
@@ -77,6 +80,7 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, PictureCanBeSet)
 	expectedOutput << "category_name = {\n";
 	expectedOutput << "\tpicture = GFX_decision_cat_picture_naval_treaties\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
 
 	std::stringstream actualOutput;
 	actualOutput << theDecisionsCategory;
@@ -98,6 +102,7 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, PriorityCanBeSet)
 	expectedOutput << "category_name = {\n";
 	expectedOutput << "\tpriority = 100\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
 
 	std::stringstream actualOutput;
 	actualOutput << theDecisionsCategory;
@@ -123,6 +128,7 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, AllowedCanBeSet)
 	expectedOutput << "\t\thas_dlc = \"Man the Guns\"\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
 
 	std::stringstream actualOutput;
 	actualOutput << theDecisionsCategory;
@@ -148,6 +154,7 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, VisibleCanBeSet)
 	expectedOutput << "\t\tis_debug = yes\n";
 	expectedOutput << "\t}\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
 
 	std::stringstream actualOutput;
 	actualOutput << theDecisionsCategory;
@@ -169,6 +176,7 @@ TEST(HoI4World_Decisions_DecisionsCategoryTests, VisibilityTypeCanBeSet)
 	expectedOutput << "category_name = {\n";
 	expectedOutput << "\tvisibility_type = map_and_decisions_view\n";
 	expectedOutput << "}\n";
+	expectedOutput << "\n";
 
 	std::stringstream actualOutput;
 	actualOutput << theDecisionsCategory;

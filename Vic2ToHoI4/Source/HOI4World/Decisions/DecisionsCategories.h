@@ -36,8 +36,9 @@ class DecisionsCategories::Factory: commonItems::parser
 {
   public:
 	Factory();
-	DecisionsCategories getDecisionsCategories(std::istream& theStream);
-	DecisionsCategories getDecisionsCategories(const std::string& filename);
+	std::unique_ptr<DecisionsCategories> getDecisionsCategories();
+	std::unique_ptr<DecisionsCategories> getDecisionsCategories(std::istream& theStream);
+	std::unique_ptr<DecisionsCategories> getDecisionsCategories(const std::string& filename);
 
   private:
 	std::vector<DecisionsCategory> theCategories;
