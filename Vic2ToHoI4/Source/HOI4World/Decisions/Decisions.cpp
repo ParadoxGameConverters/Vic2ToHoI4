@@ -7,7 +7,8 @@
 
 HoI4::decisions::decisions(const Configuration& theConfiguration)
 {
-	ideologicalCategories = DecisionsCategories::Factory{}.getDecisionsCategories();
+	ideologicalCategories = DecisionsCategories::Factory{}.getDecisionsCategories(
+		 "blankmod/output/common/decisions/categories/00_decision_categories.txt");
 	agentRecruitmentDecisions.importDecisions(
 		 theConfiguration.getHoI4Path() + "/common/decisions/lar_agent_recruitment_decisions.txt");
 	stabilityDecisions.importDecisions(theConfiguration.getHoI4Path() + "/common/decisions/stability_war_support.txt");
