@@ -74,9 +74,12 @@ class decisions: commonItems::parser
 	}
 
   private:
-	void generateIdeologicalCategories(const std::set<std::string>& majorIdeologies);
+	void generateIdeologicalCategories(const std::set<std::string>& majorIdeologies,
+		 const std::map<int, int>& provinceToStateIdMap);
 	static std::string getIdeologicalIcon(const std::string& ideology);
-	
+	HoI4::DecisionsCategory createLocalRecruitmentCategory(const std::map<int, int>& provinceToStateIdMap);
+	static std::optional<int> getRelevantStateFromProvince(int province, const std::map<int, int>& provinceToStateIdMap);
+
 	std::unique_ptr<DecisionsCategories> ideologicalCategories;
 
 	AgentRecruitmentDecisions agentRecruitmentDecisions;
