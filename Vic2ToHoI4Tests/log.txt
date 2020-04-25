@@ -1,2 +1,0 @@
-2020-04-20 20:03:10 [WARNING] Unknown token while parsing stream: has_dlc
-2020-04-20 20:03:10 [WARNING] Unknown token while parsing stream: "Man the Guns"
