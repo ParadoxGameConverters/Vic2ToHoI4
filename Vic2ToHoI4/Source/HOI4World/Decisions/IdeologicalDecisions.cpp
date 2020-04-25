@@ -12,7 +12,7 @@ HoI4::IdeologicalDecisions::IdeologicalDecisions(std::istream& theStream)
 			requiredIdeologies.insert(ideology);
 		}
 	});
-	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream) {
+	registerKeyword(std::regex("[A-Za-z0-9_-]+"), [this](const std::string& categoryName, std::istream& theStream) {
 		const DecisionsInCategory category(categoryName, theStream);
 		theCategories.push_back(category);
 	});

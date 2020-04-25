@@ -17,7 +17,7 @@ class PoliticalDecisions: commonItems::parser
   public:
 	void importDecisions(const std::string& filename);
 
-	[[nodiscard]] const std::vector<DecisionsInCategory>& getDecisions() const { return decisions; }
+	[[nodiscard]] const auto& getDecisions() const { return decisions; }
 
 	void updateDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
 

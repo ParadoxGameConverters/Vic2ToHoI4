@@ -3,10 +3,11 @@
 #include "DecisionsInCategory.h"
 
 
+
 HoI4::DecisionsInCategory::DecisionsInCategory(std::string categoryName, std::istream& theStream):
 	 name(std::move(categoryName))
 {
-	registerKeyword(std::regex("[A-Za-z0-9_]+"), [this](const std::string& decisionName, std::istream& theStream) {
+	registerKeyword(std::regex("[A-Za-z0-9_-]+"), [this](const std::string& decisionName, std::istream& theStream) {
 		const decision theDecision(decisionName, theStream);
 		theDecisions.push_back(theDecision);
 	});
@@ -26,23 +27,23 @@ void HoI4::DecisionsInCategory::updatePoliticalDecisions(const std::set<std::str
 	for (auto& theDecision: theDecisions)
 	{
 		const auto& decisionName = theDecision.getName();
-		if (decisionName.substr(0, 28) == "open_up_political_discourse_")
+		if (decisionName.find("open_up_political_discourse_") == 0)
 		{
 			updateOpenUpPoliticalDiscourse(theDecision, majorIdeologies);
 		}
-		if (decisionName.substr(0, 21) == "discredit_government_")
+		if (decisionName.find("discredit_government_") == 0)
 		{
 			updateDiscreditGovernment(theDecision, majorIdeologies);
 		}
-		if (decisionName.substr(0, 27) == "institute_press_censorship_")
+		if (decisionName.find("institute_press_censorship_") == 0)
 		{
 			updateInstitutePressCensorship(theDecision, majorIdeologies);
 		}
-		if ((decisionName.substr(0, 11) == "ignite_the_") && (decisionName.find("single_state") == std::string::npos))
+		if ((decisionName.find("ignite_the_") == 0) && (decisionName.find("single_state") == std::string::npos))
 		{
 			updateIgniteTheIdeologyCivilWar(theDecision, majorIdeologies);
 		}
-		if (decisionName.substr(0, 9) == "hold_the_")
+		if (decisionName.find("hold_the_") == 0)
 		{
 			updateHoldTheIdeologyNationalReferendum(theDecision, theEvents);
 		}

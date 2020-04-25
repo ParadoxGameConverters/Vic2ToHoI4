@@ -20,8 +20,8 @@ class DecisionsInCategory: commonItems::parser
   public:
 	DecisionsInCategory(std::string categoryName, std::istream& theStream);
 
-	[[nodiscard]] std::vector<decision> getDecisions() const { return theDecisions; }
-	[[nodiscard]] std::string getName() const { return name; }
+	[[nodiscard]] auto getDecisions() const { return theDecisions; }
+	[[nodiscard]] const auto& getName() const { return name; }
 
 	void replaceDecision(const decision& theDecision)
 	{

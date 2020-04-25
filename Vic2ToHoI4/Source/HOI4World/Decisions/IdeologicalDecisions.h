@@ -16,7 +16,7 @@ class IdeologicalDecisions: commonItems::parser
   public:
 	explicit IdeologicalDecisions(std::istream& theStream);
 
-	[[nodiscard]] const std::vector<DecisionsInCategory>& getCategories() const { return theCategories; }
+	[[nodiscard]] const auto& getCategories() const { return theCategories; }
 
 	bool requiredIdeologiesExist(const std::set<std::string>& majorIdeologies);
 

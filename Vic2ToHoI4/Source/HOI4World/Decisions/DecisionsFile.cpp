@@ -4,7 +4,7 @@
 
 void HoI4::DecisionsFile::importDecisions(const std::string& filename)
 {
-	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& categoryName, std::istream& theStream) {
+	registerKeyword(std::regex("[A-Za-z-_]+"), [this](const std::string& categoryName, std::istream& theStream) {
 		const DecisionsInCategory category(categoryName, theStream);
 
 		auto categoryMerged = false;
