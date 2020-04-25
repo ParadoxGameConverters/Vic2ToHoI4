@@ -29,6 +29,10 @@ std::ostream& HoI4::operator<<(std::ostream& out, const DecisionsCategory& decis
 	{
 		out << "\tvisibility_type " << decisionsCategory.visibilityType << "\n";
 	}
+	for (const auto& extraItem: decisionsCategory.extraItems)
+	{
+		out << "\t" << extraItem.first << " " << extraItem.second << "\n";
+	}
 	out << "}\n";
 	out << "\n";
 

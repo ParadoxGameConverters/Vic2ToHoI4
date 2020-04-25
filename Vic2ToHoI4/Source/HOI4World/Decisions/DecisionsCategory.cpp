@@ -12,6 +12,7 @@ HoI4::DecisionsCategory HoI4::DecisionsCategory::Factory::getDecisionsCategory(c
 	std::string allowed;
 	std::string visible;
 	std::string visibilityType;
+	std::vector<std::pair<std::string, std::string>> extraItems;
 
 	registerKeyword("icon", [&icon](const std::string& unused, std::istream& theStream) {
 		icon = commonItems::singleString(theStream).getString();
@@ -31,7 +32,9 @@ HoI4::DecisionsCategory HoI4::DecisionsCategory::Factory::getDecisionsCategory(c
 	registerKeyword("visibility_type", [&visibilityType](const std::string& unused, std::istream& theStream) {
 		visibilityType = commonItems::stringOfItem(theStream).getString();
 	});
-	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+	registerRegex("[a-zA-Z0-9_]+", [&extraItems](const std::string& itemName, std::istream& theStream) {
+		extraItems.push_back(std::make_pair(itemName, commonItems::stringOfItem(theStream).getString()));
+	});
 
 	parseStream(theStream);
 
@@ -41,5 +44,6 @@ HoI4::DecisionsCategory HoI4::DecisionsCategory::Factory::getDecisionsCategory(c
 		 priority,
 		 std::move(allowed),
 		 std::move(visible),
-		 std::move(visibilityType)};
+		 std::move(visibilityType),
+		 std::move(extraItems)};
 }
