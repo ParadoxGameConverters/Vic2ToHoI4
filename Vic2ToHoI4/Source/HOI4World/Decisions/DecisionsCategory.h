@@ -1,49 +1,56 @@
-#ifndef HOI4_DECISIONS_CATEGORY_H
-#define HOI4_DECISIONS_CATEGORY_H
+#ifndef DECISIONS_CATEGORY_H
+#define DECISIONS_CATEGORY_H
 
 
-#include "Decision.h"
 #include "newParser.h"
-#include <set>
 #include <string>
-#include <vector>
 
 
 
 namespace HoI4
 {
 
-class Events;
-
-class decisionsCategory: commonItems::parser
+class DecisionsCategory
 {
-	public:
-		decisionsCategory(std::string categoryName, std::istream& theStream);
+  public:
+	class Factory;
+	DecisionsCategory(std::string name,
+		 std::string icon,
+		 std::string picture,
+		 std::optional<int> priority,
+		 std::string allowed,
+		 std::string visible,
+		 std::string visibilityType,
+		 std::vector<std::pair<std::string, std::string>> extraItems):
+		 name(std::move(name)),
+		 icon(std::move(icon)), picture(std::move(picture)), priority(priority), allowed(std::move(allowed)),
+		 visible(std::move(visible)), visibilityType(std::move(visibilityType)), extraItems(std::move(extraItems))
+	{
+	}
 
-		[[nodiscard]] std::vector<decision> getDecisions() const { return theDecisions; }
-		[[nodiscard]] std::string getName() const { return name; }
+	friend std::ostream& operator<<(std::ostream& out, const DecisionsCategory& decisionsCategory);
+	bool operator==(const DecisionsCategory& rhs) const { return name == rhs.name; }
 
-		void replaceDecision(const decision& theDecision) {
-			std::replace(theDecisions.begin(), theDecisions.end(), theDecision, theDecision);
-		}
-		void replaceDecisions(const std::vector<decision>& newDecisions) { theDecisions = newDecisions; }
-		void addDecision(decision& theDecision) { theDecisions.push_back(theDecision); }
-
-		void updatePoliticalDecisions(const std::set<std::string>& majorIdeologies, const Events& theEvents);
-
-		bool operator==(const decisionsCategory& otherCategory) const;
-
-		friend std::ostream& operator<<(std::ostream& outStream, const decisionsCategory& outCategory);
-
-	private:
-		std::string name = "";
-		std::vector<decision> theDecisions;
-
-		void updateHoldTheIdeologyNationalReferendum(decision& decisionToUpdate, const Events& theEvents) const;
+  private:
+	std::string name;
+	std::string icon;
+	std::string picture;
+	std::optional<int> priority;
+	std::string allowed;
+	std::string visible;
+	std::string visibilityType;
+	std::vector<std::pair<std::string, std::string>> extraItems;
 };
 
-}
+
+class DecisionsCategory::Factory: commonItems::parser
+{
+  public:
+	DecisionsCategory getDecisionsCategory(const std::string& name, std::istream& theStream);
+};
+
+} // namespace HoI4
 
 
 
-#endif // HOI4_DECISIONS_CATEGORY_H
+#endif // DECISIONS_CATEGORY_H

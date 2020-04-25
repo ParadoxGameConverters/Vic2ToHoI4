@@ -1,21 +1,40 @@
 #include "OutDecisionsCategory.h"
-#include "OutDecision.h"
 
 
 
-std::ostream& HoI4::operator<<(std::ostream& outStream, const decisionsCategory& outCategory)
+std::ostream& HoI4::operator<<(std::ostream& out, const DecisionsCategory& decisionsCategory)
 {
-	outStream << outCategory.name << " = {\n";
-	for (const auto& decision: outCategory.theDecisions)
+	out << decisionsCategory.name << " = {\n";
+	if (!decisionsCategory.icon.empty())
 	{
-		outStream << decision << "\n";
+		out << "\ticon = " << decisionsCategory.icon << "\n";
 	}
-	if (outCategory.theDecisions.empty())
+	if (!decisionsCategory.picture.empty())
 	{
-		outStream << "\n";
+		out << "\tpicture = " << decisionsCategory.picture << "\n";
 	}
-	outStream << "}\n";
-	outStream << "\n";
+	if (decisionsCategory.priority)
+	{
+		out << "\tpriority = " << *decisionsCategory.priority << "\n";
+	}
+	if (!decisionsCategory.allowed.empty())
+	{
+		out << "\tallowed " << decisionsCategory.allowed << "\n";
+	}
+	if (!decisionsCategory.visible.empty())
+	{
+		out << "\tvisible " << decisionsCategory.visible << "\n";
+	}
+	if (!decisionsCategory.visibilityType.empty())
+	{
+		out << "\tvisibility_type " << decisionsCategory.visibilityType << "\n";
+	}
+	for (const auto& extraItem: decisionsCategory.extraItems)
+	{
+		out << "\t" << extraItem.first << " " << extraItem.second << "\n";
+	}
+	out << "}\n";
+	out << "\n";
 
-	return outStream;
+	return out;
 }

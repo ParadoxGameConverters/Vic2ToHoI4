@@ -302,9 +302,6 @@
     <ClCompile Include="Source\HOI4World\Decisions\Decisions.cpp">
       <Filter>HoI4World\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategory.cpp">
-      <Filter>HoI4World\Decisions</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Decisions\IdeologicalDecisions.cpp">
       <Filter>HoI4World\Decisions</Filter>
     </ClCompile>
@@ -665,9 +662,6 @@
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategories.cpp">
       <Filter>OutHoi4\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategory.cpp">
-      <Filter>OutHoi4\Decisions</Filter>
-    </ClCompile>
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisions.cpp">
       <Filter>OutHoi4\Decisions</Filter>
     </ClCompile>
@@ -769,6 +763,21 @@
     </ClCompile>
     <ClCompile Include="Source\V2World\Issues\Issues.cpp">
       <Filter>Vic2World\Issues</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\DecisionsInCategory.cpp">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsInCategory.cpp">
+      <Filter>OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategory.cpp">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategory.cpp">
+      <Filter>OutHoi4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategories.cpp">
+      <Filter>HoI4World\Decisions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -951,9 +960,6 @@
       <Filter>HoI4World\Decisions</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Decisions\Decisions.h">
-      <Filter>HoI4World\Decisions</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategory.h">
       <Filter>HoI4World\Decisions</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Decisions\IdeologicalDecisions.h">
@@ -1343,9 +1349,6 @@
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategories.h">
       <Filter>OutHoi4\Decisions</Filter>
     </ClInclude>
-    <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategory.h">
-      <Filter>OutHoi4\Decisions</Filter>
-    </ClInclude>
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisions.h">
       <Filter>OutHoi4\Decisions</Filter>
     </ClInclude>
@@ -1456,6 +1459,21 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Issues\Issues.h">
       <Filter>Vic2World\Issues</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\DecisionsInCategory.h">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsInCategory.h">
+      <Filter>OutHoi4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategory.h">
+      <Filter>HoI4World\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategory.h">
+      <Filter>OutHoi4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategories.h">
+      <Filter>HoI4World\Decisions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

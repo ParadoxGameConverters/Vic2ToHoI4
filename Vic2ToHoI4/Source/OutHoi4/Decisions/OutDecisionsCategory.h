@@ -4,16 +4,10 @@
 
 
 #include "../../HOI4World/Decisions/DecisionsCategory.h"
-#include <ostream>
 
 
 
-namespace HoI4
-{
-
-std::ostream& operator<<(std::ostream& outStream, const decisionsCategory& outCategory);
-
-}
+std::ostream& HoI4::operator<<(std::ostream& out, const DecisionsCategory& decisionsCategory);
 
 
 

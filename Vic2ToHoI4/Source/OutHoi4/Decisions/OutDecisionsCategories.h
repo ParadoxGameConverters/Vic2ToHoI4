@@ -3,8 +3,7 @@
 
 
 
-#include <ostream>
-#include <set>
+#include "../../HOI4World/Decisions/DecisionsCategories.h"
 #include <string>
 
 
@@ -12,7 +11,7 @@
 namespace HoI4
 {
 
-void outputDecisionCategories(std::ostream& out, const std::set<std::string>& majorIdeologies);
+void outputDecisionCategories(const std::string& filename, const DecisionsCategories& categories);
 
 }
 
