@@ -10,7 +10,7 @@ void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConf
 
 	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& name, std::istream& theStream) {
 		ScriptedTrigger scriptedTrigger(name);
-		const commonItems::stringOfObject bodyString(theStream);
+		const commonItems::stringOfItem bodyString(theStream);
 		scriptedTrigger.setBody(bodyString.getString());
 		ideologyScriptedTriggers.push_back(scriptedTrigger);
 	});
@@ -19,7 +19,7 @@ void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConf
 
 	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& name, std::istream& theStream) {
 		ScriptedTrigger scriptedTrigger(name);
-		const commonItems::stringOfObject bodyString(theStream);
+		const commonItems::stringOfItem bodyString(theStream);
 		scriptedTrigger.setBody(bodyString.getString());
 		electionsScriptedTriggers.push_back(scriptedTrigger);
 	});
@@ -28,7 +28,7 @@ void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConf
 
 	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& name, std::istream& theStream) {
 		ScriptedTrigger scriptedTrigger(name);
-		const commonItems::stringOfObject bodyString(theStream);
+		const commonItems::stringOfItem bodyString(theStream);
 		scriptedTrigger.setBody(bodyString.getString());
 		lawsWarSupportTriggers.push_back(scriptedTrigger);
 	});

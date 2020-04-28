@@ -19,11 +19,11 @@ HoI4Focus::HoI4Focus(std::istream& theStream)
 		text = textString.getString();
 	});
 	registerKeyword(std::regex("mutually_exclusive"), [this](const std::string& unused, std::istream& theStream) {
-		commonItems::stringOfObject mutuallyExclusiveString(theStream);
+		commonItems::stringOfItem mutuallyExclusiveString(theStream);
 		mutuallyExclusive = mutuallyExclusiveString.getString();
 	});
 	registerKeyword(std::regex("bypass"), [this](const std::string& unused, std::istream& theStream) {
-		commonItems::stringOfObject bypassString(theStream);
+		commonItems::stringOfItem bypassString(theStream);
 		bypass = bypassString.getString();
 	});
 	registerKeyword(std::regex("x"), [this](const std::string& unused, std::istream& theStream) {
@@ -47,7 +47,7 @@ HoI4Focus::HoI4Focus(std::istream& theStream)
 		availableIfCapitulated = (availableIfCapitulatedString.getString() == "yes");
 	});
 	registerKeyword(std::regex("available"), [this](const std::string& unused, std::istream& theStream) {
-		commonItems::stringOfObject availableString(theStream);
+		commonItems::stringOfItem availableString(theStream);
 		available = availableString.getString();
 	});
 	registerKeyword(std::regex("cancel_if_invalid"), [this](const std::string& unused, std::istream& theStream) {
@@ -59,19 +59,19 @@ HoI4Focus::HoI4Focus(std::istream& theStream)
 		continueIfInvalid = continueIfInvalidString.getString();
 	});
 	registerKeyword(std::regex("complete_tooltip"), [this](const std::string& unused, std::istream& theStream) {
-		commonItems::stringOfObject completeTooltipString(theStream);
+		commonItems::stringOfItem completeTooltipString(theStream);
 		completeTooltip = completeTooltipString.getString();
 	});
 	registerKeyword(std::regex("completion_reward"), [this](const std::string& unused, std::istream& theStream) {
-		commonItems::stringOfObject completionRewardString(theStream);
+		commonItems::stringOfItem completionRewardString(theStream);
 		completionReward = completionRewardString.getString();
 	});
 	registerKeyword(std::regex("ai_will_do"), [this](const std::string& unused, std::istream& theStream) {
-		commonItems::stringOfObject aiWillDoString(theStream);
+		commonItems::stringOfItem aiWillDoString(theStream);
 		aiWillDo = aiWillDoString.getString();
 	});
 	registerKeyword(std::regex("prerequisite"), [this](const std::string& unused, std::istream& theStream) {
-		commonItems::stringOfObject prerequisiteString(theStream);
+		commonItems::stringOfItem prerequisiteString(theStream);
 		prerequisites.push_back(prerequisiteString.getString());
 	});
 
