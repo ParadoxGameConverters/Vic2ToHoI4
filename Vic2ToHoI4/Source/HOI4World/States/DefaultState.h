@@ -2,7 +2,7 @@
 #define HOI4_DEFAULT_STATES_H
 
 
-#include "newParser.h"
+#include "Parser.h"
 #include <set>
 #include <string>
 

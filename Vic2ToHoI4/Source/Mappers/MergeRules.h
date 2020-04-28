@@ -25,7 +25,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #define MERGE_RULES
 
 
-#include "newParser.h"
+#include "Parser.h"
 #include <map>
 #include <string>
 #include <vector>

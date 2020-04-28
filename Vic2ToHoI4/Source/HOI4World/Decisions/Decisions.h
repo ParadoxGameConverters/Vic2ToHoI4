@@ -15,7 +15,7 @@
 #include "PoliticalDecisions.h"
 #include "ResourceProspectingDecisions.h"
 #include "StabilityWarSupportDecisions.h"
-#include "newParser.h"
+#include "Parser.h"
 #include <map>
 #include <set>
 #include <string>

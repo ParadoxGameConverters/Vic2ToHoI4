@@ -5,7 +5,7 @@
 
 #include "ScriptedTrigger.h"
 #include "../../Configuration.h"
-#include "newParser.h"
+#include "Parser.h"
 #include <map>
 #include <vector>
 

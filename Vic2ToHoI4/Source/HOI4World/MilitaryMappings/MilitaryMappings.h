@@ -6,7 +6,7 @@
 #include "../Military/DivisionTemplate.h"
 #include "MtgUnitMappings.h"
 #include "UnitMappings.h"
-#include "newParser.h"
+#include "Parser.h"
 #include <map>
 #include <memory>
 #include <string>

@@ -5,7 +5,7 @@
 
 #include "../Technologies.h"
 #include "ShipModules.h"
-#include "newParser.h"
+#include "Parser.h"
 #include <memory>
 #include <set>
 #include <string>

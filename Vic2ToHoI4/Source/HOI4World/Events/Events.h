@@ -6,7 +6,7 @@
 #include "../../Configuration.h"
 #include "../../V2World/Party.h"
 #include "Event.h"
-#include "newParser.h"
+#include "Parser.h"
 #include <map>
 #include <set>
 #include <string>
