@@ -23,7 +23,7 @@
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
 #include "ScriptedTriggers/ScriptedTriggers.h"
 #include "States/HoI4States.h"
-#include "newParser.h"
+#include "Parser.h"
 #include <map>
 #include <optional>
 #include <set>

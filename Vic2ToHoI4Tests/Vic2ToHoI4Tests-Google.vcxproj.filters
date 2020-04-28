@@ -23,9 +23,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Configuration.cpp">
       <Filter>Vic2ToHoI4 files</Filter>
     </ClCompile>
-    <ClCompile Include="..\common_items\newParser.cpp">
-      <Filter>Vic2ToHoI4 files\common items</Filter>
-    </ClCompile>
     <ClCompile Include="..\common_items\ParserHelpers.cpp">
       <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
@@ -889,6 +886,9 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategories.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\Parser.cpp">
+      <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

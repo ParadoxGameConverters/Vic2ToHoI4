@@ -7,7 +7,7 @@
 #include "Party.h"
 #include "StateDefinitions.h"
 #include "Wars/War.h"
-#include "newParser.h"
+#include "Parser.h"
 #include <map>
 #include <optional>
 #include <string>

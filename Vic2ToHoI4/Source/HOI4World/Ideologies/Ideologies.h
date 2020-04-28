@@ -6,7 +6,7 @@
 #include "../../Configuration.h"
 #include "../HoI4Country.h"
 #include "Ideology.h"
-#include "newParser.h"
+#include "Parser.h"
 #include <map>
 #include <optional>
 #include <set>

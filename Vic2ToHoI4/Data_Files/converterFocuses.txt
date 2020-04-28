@@ -2247,7 +2247,7 @@ focus = {
 focus = {
 	id = _finish_
 	icon = GFX_goal_generic_territory_or_war
-	available = 	is_puppet = no
+	available = { is_puppet = no }
 	cost = 10
 	ai_will_do = {
 		factor = 10

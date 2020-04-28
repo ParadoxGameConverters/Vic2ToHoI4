@@ -34,7 +34,7 @@ HoI4::Event::Event(const std::string& _type, std::istream& theStream): type(_typ
 		hidden = (hiddenString.getString() == "yes");
 	});
 	registerKeyword("trigger", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::stringOfObject triggerString(theStream);
+		const commonItems::stringOfItem triggerString(theStream);
 		trigger = triggerString.getString();
 	});
 	registerKeyword("fire_only_once", [this](const std::string& unused, std::istream& theStream) {
@@ -42,11 +42,11 @@ HoI4::Event::Event(const std::string& _type, std::istream& theStream): type(_typ
 		fireOnlyOnce = (fireOnlyOnceString.getString() == "yes");
 	});
 	registerKeyword("mean_time_to_happen", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::stringOfObject MTTHString(theStream);
+		const commonItems::stringOfItem MTTHString(theStream);
 		meanTimeToHappen = MTTHString.getString();
 	});
 	registerKeyword("immediate", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::stringOfObject immediateString(theStream);
+		const commonItems::stringOfItem immediateString(theStream);
 		immediate = immediateString.getString();
 	});
 	registerKeyword("option", [this](const std::string& unused, std::istream& theStream) {

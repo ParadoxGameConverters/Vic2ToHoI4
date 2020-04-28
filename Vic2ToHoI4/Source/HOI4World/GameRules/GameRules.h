@@ -4,7 +4,7 @@
 
 
 #include "GameRule.h"
-#include "newParser.h"
+#include "Parser.h"
 #include <string>
 #include <vector>
 
