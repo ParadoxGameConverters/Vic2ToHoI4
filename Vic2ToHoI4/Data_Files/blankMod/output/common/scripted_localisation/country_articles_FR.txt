@@ -13,97 +13,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_LE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_LA
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_XX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_XX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_XX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_XX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_L
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_L
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_XX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_XX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_XX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_XX
  }
@@ -118,97 +118,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_LE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_LA_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_XX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_XX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_XX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_XX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_L_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_L_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_XX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_XX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_XX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_XX
  }
@@ -223,97 +223,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_LE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_LA
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_LE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_LA
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_LE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_LA
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_LE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_LA
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_LES
  }
@@ -328,97 +328,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_LE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_LA_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_LE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_LA_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_LE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_LA_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_LE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_LA_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_LES_CAP
  }
@@ -433,97 +433,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_L
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_L
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_L
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_L
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_L
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_L
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_L
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_L
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_LES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_LES
  }
@@ -538,97 +538,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_L_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_L_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_L_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_L_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_L_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_L_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_L_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_L_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_LES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_LES_CAP
  }
@@ -643,97 +643,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_DU
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_DELA
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_DE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_DE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_DES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_DES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_DE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_DE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_DEL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_DEL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_D
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_D
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_DES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_DES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_D
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_D
  }
@@ -748,97 +748,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_DU_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_DELA_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_DE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_DE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_DES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_DES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_DE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_DE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_DEL_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_DEL_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_D_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_D_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_DES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_DES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_D_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_D_CAP
  }
@@ -853,97 +853,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_DU
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_DELA
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_DE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_DE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_DES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_DES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_D
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_D
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_DEL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_DEL
  }
  text = {
   trigger = {
-    has_country_flag = { D }
+    has_country_flag = D
   }
   localization_key = FRLOC_D
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_D
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_DES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_DES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_D
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_D
  }
@@ -958,97 +958,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_DU_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_DELA_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_DE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_DE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_DES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_DES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_D_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_D_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_DEL_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_DEL_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_D_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_D_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_DES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_DES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_D_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_D_CAP
  }
@@ -1063,97 +1063,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_AU
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_ALA
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_A
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_A
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_AUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_AUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_A
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_A
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_AL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_AL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_A
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_A
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_AUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_AUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_AUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_AUX
  }
@@ -1168,97 +1168,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_AU_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_ALA_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_A_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_A_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_AUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_AUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_A_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_A_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_AL_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_AL_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_A_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_A_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_AUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_AUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_AUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_AUX_CAP
  }
@@ -1273,97 +1273,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_AU
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_EN
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_EN
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_EN
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_AUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_AUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_AUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_AUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_EN
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_EN
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_EN
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_EN
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_AUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_AUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_EN
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_EN
  }
@@ -1378,97 +1378,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_AU_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_EN_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_EN_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_EN_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_AUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_AUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_AUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_AUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_EN_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_EN_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_EN_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_EN_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_AUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_AUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_EN_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_EN_CAP
  }
@@ -1483,97 +1483,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_IL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_ELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_IL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_ELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_ILS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_ELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_ILS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_ELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_IL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_ELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_IL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_ELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_ILS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_ELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_ILS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_ELLES
  }
@@ -1588,97 +1588,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_IL_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_ELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_IL_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_ELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_ILS_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_ELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_ILS_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_ELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_IL_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_ELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_IL_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_ELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_ILS_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_ELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_ILS_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_ELLES_CAP
  }
@@ -1693,97 +1693,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_CELUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_CELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_CELUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_CELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_CEUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_CELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_CEUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_CELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_CELUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_CELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_CELUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_CELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_CEUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_CELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_CEUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_CELLES
  }
@@ -1798,97 +1798,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_CELUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_CELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_CELUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_CELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_CEUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_CELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_CEUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_CELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_CELUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_CELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_CELUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_CELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_CEUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_CELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_CEUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_CELLES_CAP
  }
@@ -1903,97 +1903,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_SIL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_SIELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_SIL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_SIELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_SILS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_SIELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_SILS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_SIELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_SIL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_SIELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_SIL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_SIELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_SILS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_SIELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_SILS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_SIELLES
  }
@@ -2008,97 +2008,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_SIL_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_SIELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_SIL_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_SIELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_SILS_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_SIELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_SILS_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_SIELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_SIL_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_SIELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_SIL_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_SIELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_SILS_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_SIELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_SILS_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_SIELLES_CAP
  }
@@ -2113,97 +2113,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_LUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_ELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_LUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_ELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_EUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_ELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_EUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_ELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_LUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_ELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_LUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_ELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_EUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_ELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_EUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_ELLES
  }
@@ -2218,97 +2218,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_LUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_ELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_LUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_ELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_EUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_ELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_EUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_ELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_LUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_ELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_LUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_ELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_EUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_ELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_EUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_ELLES_CAP
  }
@@ -2323,97 +2323,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_DELUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_DELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_DELUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_DELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_DEUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_DELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_DEUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_DELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_DELUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_DELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_DELUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_DELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_DEUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_DELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_DEUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_DELLES
  }
@@ -2428,97 +2428,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_DELUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_DELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_DELUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_DELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_DEUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_DELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_DEUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_DELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_DELUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_DELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_DELUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_DELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_DEUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_DELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_DEUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_DELLES_CAP
  }
@@ -2533,97 +2533,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_QUELUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_QUELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_QUELUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_QUELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_QUEUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_QUELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_QUEUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_QUELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_QUELUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_QUELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_QUELUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_QUELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_QUEUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_QUELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_QUEUX
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_QUELLES
  }
@@ -2638,97 +2638,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_QUELUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_QUELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_QUELUI__CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_QUELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_QUEUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_QUELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_QUEUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_QUELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_QUELUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_QUELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_QUELUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_QUELLE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_QUEUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_QUELLES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_QUEUX_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_QUELLES_CAP
  }
@@ -2743,97 +2743,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_AUQUEL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_ALAQUELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_AUQUEL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_ALAQUELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_AUXQUELS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_AUXQUELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_AUXQUELS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_AUXQUELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_AUQUEL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_ALAQUELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_AUQUEL
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_ALAQUELLE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_AUXQUELS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_AUXQUELLES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_AUXQUELS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_AUXQUELLES
  }
@@ -2848,97 +2848,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_LUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_LUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_LUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_LUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_LUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_LUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_LUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_LUI
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_LEUR
  }
@@ -2953,97 +2953,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_LUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_LUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_LUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_LUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_LUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_LUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_LUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_LUI_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_LEUR_CAP
  }
@@ -3058,97 +3058,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_SON
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_SON
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_SON
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_SON
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_SON
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_SON
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_SON
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_SON
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_LEUR
  }
@@ -3163,97 +3163,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_SON_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_SON_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_SON_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_SON_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_SON_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_SON_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_SON_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_SON_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_LEUR_CAP
  }
@@ -3268,97 +3268,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_SA
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_SA
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_SA
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_SA
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_SA
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_SA
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_SA
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_SA
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_LEUR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_LEUR
  }
@@ -3373,97 +3373,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_SA_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_SA_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_SA_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_SA_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_SA_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_SA_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_SA_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_SA_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_LEUR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_LEUR_CAP
  }
@@ -3478,97 +3478,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_SES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_SES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_SES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_SES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_LEURS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_LEURS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_LEURS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_LEURS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_SES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_SES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_SES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_SES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_LEURS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_LEURS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_LEURS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_LEURS
  }
@@ -3583,97 +3583,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_SES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_SES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_SES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_SES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_LEURS_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_LEURS_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_LEURS_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_LEURS_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_SES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_SES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_SES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_SES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_LEURS_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_LEURS_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_LEURS_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_LEURS_CAP
  }
@@ -3688,97 +3688,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_S
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_S
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_S
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_S
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_S
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_S
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_S
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_S
  }
@@ -3793,97 +3793,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_E
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_E
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_S
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_ES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_S
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_ES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_E
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_E
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_S
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_ES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_S
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_ES
  }
@@ -3898,97 +3898,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_ER
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_ERE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_ER
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_ERE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_ERS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_ERES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_ERS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_ERES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_ER
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_ERE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_ER
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_ERE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_ERS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_ERES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_ERS
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_ERES
  }
@@ -4003,97 +4003,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_UN
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_UNE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_UN
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_UNE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_DES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_DES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_DES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_DES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_UN
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_UNE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_UN
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_UNE
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_DES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_DES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_DES
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_DES
  }
@@ -4108,97 +4108,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_UN_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_UNE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_UN_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_UNE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_DES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_DES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_DES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_DES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_UN_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_UNE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_UN_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_UNE_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_DES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_DES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_DES_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_DES_CAP
  }
@@ -4213,97 +4213,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_A2
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_A2
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_A2
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_A2
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_ONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_ONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_ONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_ONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_A2
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_A2
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_A2
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_A2
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_ONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_ONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_ONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_ONT
  }
@@ -4318,97 +4318,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_A2_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_A2_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_A2_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_A2_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_ONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_ONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_ONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_ONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_A2_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_A2_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_A2_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_A2_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_ONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_ONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_ONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_ONT_CAP
  }
@@ -4423,97 +4423,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_A2_INTERR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_A2_INTERR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_A2_INTERR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_A2_INTERR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_ONT_INTERR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_ONT_INTERR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_ONT_INTERR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_ONT_INTERR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_A2_INTERR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_A2_INTERR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_A2_INTERR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_A2_INTERR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_ONT_INTERR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_ONT_INTERR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_ONT_INTERR
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_ONT_INTERR
  }
@@ -4528,97 +4528,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_A2_INTERR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_A2_INTERR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_A2_INTERR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_A2_INTERR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_ONT_INTERR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_ONT_INTERR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_ONT_INTERR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_ONT_INTERR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_A2_INTERR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_A2_INTERR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_A2_INTERR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_A2_INTERR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_ONT_INTERR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_ONT_INTERR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_ONT_INTERR_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_ONT_INTERR_CAP
  }
@@ -4633,97 +4633,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_EST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_EST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_EST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_EST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_SONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_SONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_SONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_SONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_EST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_EST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_EST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_EST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_SONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_SONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_SONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_SONT
  }
@@ -4738,97 +4738,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_EST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_EST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_EST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_EST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_SONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_SONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_SONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_SONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_EST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_EST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_EST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_EST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_SONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_SONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_SONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_SONT_CAP
  }
@@ -4843,97 +4843,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_SEST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_SEST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_SEST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_SEST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_SESONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_SESONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_SESONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_SESONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_SEST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_SEST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_SEST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_SEST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_SESONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_SESONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_SESONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_SESONT
  }
@@ -4948,97 +4948,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_SEST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_SEST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_SEST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_SEST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_SESONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_SESONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_SESONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_SESONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_SEST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_SEST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_SEST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_SEST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_SESONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_SESONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_SESONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_SESONT_CAP
  }
@@ -5053,97 +5053,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_NEST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_NEST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_NEST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_NEST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_NESONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_NESONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_NESONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_NESONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_NEST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_NEST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_NEST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_NEST
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_NESONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_NESONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_NESONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_NESONT
  }
@@ -5158,97 +5158,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_NEST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_NEST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_NEST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_NEST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_NESONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_NESONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_NESONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_NESONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_NEST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_NEST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_NEST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_NEST_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_NESONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_NESONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_NESONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_NESONT_CAP
  }
@@ -5263,97 +5263,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_FAIT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_FAIT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_FAIT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_FAIT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_FONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_FONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_FONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_FONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_FAIT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_FAIT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_FAIT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_FAIT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_FONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_FONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_FONT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_FONT
  }
@@ -5368,97 +5368,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_FAIT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_FAIT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_FAIT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_FAIT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_FONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_FONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_FONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_FONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_FAIT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_FAIT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_FAIT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_FAIT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_FONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_FONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_FONT_CAP
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_FONT_CAP
  }
@@ -5473,97 +5473,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_X
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_ENT
  }
@@ -5578,97 +5578,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_E
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_E
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_E
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_E
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_E
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_E
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_E
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_E
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_ENT
  }
@@ -5683,97 +5683,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_ENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_ENT
  }
@@ -5788,97 +5788,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_VENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_VENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_VENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_VENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_VENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_VENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_VENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_VENT
  }
@@ -5893,97 +5893,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_NENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_NENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_NENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_NENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_NENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_NENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_NENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_NENT
  }
@@ -5998,97 +5998,97 @@ defined_text = {
 
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_A }
+    has_country_flag = FR_country_M_S_C_A
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_A }
+    has_country_flag = FR_country_F_S_C_A
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_C_N }
+    has_country_flag = FR_country_M_S_C_N
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_C_N }
+    has_country_flag = FR_country_F_S_C_N
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_A }
+    has_country_flag = FR_country_M_P_C_A
   }
   localization_key = FRLOC_TTENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_A }
+    has_country_flag = FR_country_F_P_C_A
   }
   localization_key = FRLOC_TTENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_C_N }
+    has_country_flag = FR_country_M_P_C_N
   }
   localization_key = FRLOC_TTENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_C_N }
+    has_country_flag = FR_country_F_P_C_N
   }
   localization_key = FRLOC_TTENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_A }
+    has_country_flag = FR_country_M_S_V_A
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_A }
+    has_country_flag = FR_country_F_S_V_A
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_S_V_N }
+    has_country_flag = FR_country_M_S_V_N
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_S_V_N }
+    has_country_flag = FR_country_F_S_V_N
   }
   localization_key = FRLOC_T
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_A }
+    has_country_flag = FR_country_M_P_V_A
   }
   localization_key = FRLOC_TTENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_A }
+    has_country_flag = FR_country_F_P_V_A
   }
   localization_key = FRLOC_TTENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_M_P_V_N }
+    has_country_flag = FR_country_M_P_V_N
   }
   localization_key = FRLOC_TTENT
  }
  text = {
   trigger = {
-    has_country_flag = { FR_country_F_P_V_N }
+    has_country_flag = FR_country_F_P_V_N
   }
   localization_key = FRLOC_TTENT
  }
