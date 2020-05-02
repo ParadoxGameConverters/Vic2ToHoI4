@@ -37,7 +37,7 @@ countryMappingRule::countryMappingRule(std::istream& theStream)
 
 CountryMapper::CountryMapper(const Vic2::World* srcWorld, bool debug)
 {
-	LOG(LogLevel::Info) << "Getting country mappings";
+	Log(LogLevel::Info) << "Getting country mappings";
 	readRules();
 	createMappings(srcWorld, debug);
 }
@@ -50,14 +50,14 @@ void CountryMapper::readRules()
 		Vic2TagToHoI4TagsRules.insert(make_pair(rule.getVic2Tag(), rule.getHoI4Tags()));
 	});
 
-	LOG(LogLevel::Info) << "Reading country mapping rules";
+	Log(LogLevel::Info) << "\tReading country mapping rules";
 	parseFile("country_mappings.txt");
 }
 
 
 void CountryMapper::createMappings(const Vic2::World* srcWorld, bool debug)
 {
-	LOG(LogLevel::Info) << "Creating country mappings";
+	Log(LogLevel::Info) << "\tCreating country mappings";
 	resetMappingData();
 
 	for (auto Vic2Country: srcWorld->getCountries())
@@ -148,7 +148,7 @@ void CountryMapper::logMapping(const std::string& sourceTag,
 	 const std::string& targetTag,
 	 const std::string& reason) const
 {
-	LOG(LogLevel::Debug) << "Mapping " << sourceTag << " -> " << targetTag << " (" << reason << ')';
+	Log(LogLevel::Debug) << "Mapping " << sourceTag << " -> " << targetTag << " (" << reason << ')';
 }
 
 
