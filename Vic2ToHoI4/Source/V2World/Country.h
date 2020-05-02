@@ -52,7 +52,7 @@ class Country: commonItems::parser
 	void addWar(const War& theWar) { wars.push_back(theWar); }
 	void setAtWar() { atWar = true; }
 
-	void eatCountry(Country* target);
+	void eatCountry(Country* target, bool debug);
 	void putProvincesInStates();
 	void determineEmployedWorkers();
 	void setLocalisationNames(Localisations& vic2Localisations);

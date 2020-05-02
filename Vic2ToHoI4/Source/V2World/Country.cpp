@@ -186,7 +186,7 @@ Vic2::Country::Country(const std::string& theTag,
 }
 
 
-void Vic2::Country::eatCountry(Vic2::Country* target)
+void Vic2::Country::eatCountry(Vic2::Country* target, bool debug)
 {
 	if (target->tag == tag)
 	{
@@ -217,7 +217,10 @@ void Vic2::Country::eatCountry(Vic2::Country* target)
 	target->provinces.clear();
 	target->cores.clear();
 
-	LOG(LogLevel::Debug) << "Merged " << target->tag << " into " << tag;
+	if (debug)
+	{
+		Log(LogLevel::Debug) << "Merged " << target->tag << " into " << tag;
+	}
 }
 
 
@@ -230,7 +233,7 @@ void Vic2::Country::putProvincesInStates()
 			auto province = provinces.find(provinceNum);
 			if (province == provinces.end())
 			{
-				LOG(LogLevel::Warning) << "State owned by " << tag << " had province that " << tag << " did not";
+				Log(LogLevel::Warning) << "State owned by " << tag << " had province that " << tag << " did not";
 				continue;
 			}
 
@@ -445,7 +448,7 @@ std::set<Vic2::Party> Vic2::Country::getActiveParties(const std::vector<Vic2::Pa
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Party ID mismatch! Did some Vic2 country files not get read?";
+			Log(LogLevel::Warning) << "Party ID mismatch! Did some Vic2 country files not get read?";
 		}
 	}
 

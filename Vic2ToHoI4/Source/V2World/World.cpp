@@ -75,7 +75,7 @@ Vic2::World::World(const std::string& filename,
 		removeSimpleLandlessNations();
 	}
 	determineEmployedWorkers();
-	overallMergeNations();
+	overallMergeNations(theConfiguration.getDebug());
 	removeEmptyNations();
 	determinePartialStates(*theStateDefinitions);
 	addWarsToCountries(wars);
@@ -365,18 +365,18 @@ std::string Vic2::World::extractCountryFileName(const std::string& countryFileLi
 }
 
 
-void Vic2::World::overallMergeNations()
+void Vic2::World::overallMergeNations(bool debug)
 {
 	Log(LogLevel::Info) << "\tMerging nations";
 	const MergeRules theMergeRules;
 	for (const auto& rule: theMergeRules.getRules())
 	{
-		mergeNations(rule.first, rule.second);
+		mergeNations(rule.first, rule.second, debug);
 	}
 }
 
 
-void Vic2::World::mergeNations(const std::string& masterTag, const std::vector<std::string>& slaveTags)
+void Vic2::World::mergeNations(const std::string& masterTag, const std::vector<std::string>& slaveTags, bool debug)
 {
 	auto master = getCountry(masterTag);
 	if (master)
@@ -386,7 +386,7 @@ void Vic2::World::mergeNations(const std::string& masterTag, const std::vector<s
 			auto slave = getCountry(slaveTag);
 			if (slave)
 			{
-				(*master)->eatCountry(*slave);
+				(*master)->eatCountry(*slave, debug);
 			}
 			countries.erase(slaveTag);
 		}

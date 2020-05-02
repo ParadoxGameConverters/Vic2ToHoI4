@@ -97,7 +97,7 @@ std::optional<std::string> Vic2::inventions::getInventionName(int inventionNum) 
 	auto inventionName = inventionNumsToNames.find(inventionNum);
 	if (inventionName == inventionNumsToNames.end())
 	{
-		LOG(LogLevel::Warning) << "Invalid invention. Is this using a mod that changed inventions?";
+		Log(LogLevel::Warning) << "Invalid invention. Is this using a mod that changed inventions?";
 		return {};
 	}
 	else
