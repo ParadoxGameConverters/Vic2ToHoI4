@@ -16,12 +16,13 @@ int getIntFromColor(const ConverterColor::Color& color)
 }
 
 
-HoI4::ProvinceDefinitions HoI4::ProvinceDefinitions::Importer::importProvinceDefinitions(const Configuration& theConfiguration) const
+HoI4::ProvinceDefinitions HoI4::ProvinceDefinitions::Importer::importProvinceDefinitions(
+	 const Configuration& theConfiguration) const
 {
 	std::ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
 	if (!definitions.is_open())
 	{
-		throw std::runtime_error("Could not open " << theConfiguration.getHoI4Path() << "/map/definition.csv");
+		throw std::runtime_error("Could not open " + theConfiguration.getHoI4Path() + "/map/definition.csv");
 	}
 
 	std::set<int> landProvinces;
