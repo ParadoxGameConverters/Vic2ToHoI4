@@ -90,12 +90,14 @@ class Country
 		 const std::map<int, State>& allStates);
 	void setGovernmentToExistingIdeology(const std::set<std::string>& majorIdeologies,
 		 const Ideologies& ideologies,
-		 const governmentMapper& governmentMap);
+		 const governmentMapper& governmentMap,
+		 bool debug);
 	void addLeader(HoI4::namesMapper& theNames, graphicsMapper& theGraphics);
 	void convertGovernment(const Vic2::World& sourceWorld,
 		 const governmentMapper& governmentMap,
 		 const Vic2::Localisations& vic2Localisations,
-		 Localisation& hoi4Localisations);
+		 Localisation& hoi4Localisations,
+		 bool debug);
 	void convertParties(const std::set<std::string>& majorIdeologies,
 		 const governmentMapper& governmentMap,
 		 const Vic2::Localisations& vic2Localisations,

@@ -92,7 +92,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	setupNavalTreaty();
 
 	importLeaderTraits();
-	convertGovernments(vic2Localisations);
+	convertGovernments(vic2Localisations, theConfiguration.getDebug());
 	ideologies = std::make_unique<Ideologies>(theConfiguration);
 	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
 	genericFocusTree.addGenericFocusTree(ideologies->getMajorIdeologies());
@@ -111,7 +111,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 		 states->getDefaultStates(),
 		 *events);
 	updateAiPeaces(*peaces, ideologies->getMajorIdeologies());
-	addNeutrality();
+	addNeutrality(theConfiguration.getDebug());
 	addLeaders();
 	convertIdeologySupport();
 	states->convertCapitalVPs(countries, greatPowers, getStrongestCountryStrength());
@@ -230,12 +230,12 @@ void HoI4::World::importIdeologicalMinisters()
 }
 
 
-void HoI4::World::convertGovernments(const Vic2::Localisations& vic2Localisations)
+void HoI4::World::convertGovernments(const Vic2::Localisations& vic2Localisations, bool debug)
 {
 	Log(LogLevel::Info) << "\tConverting governments";
 	for (auto country: countries)
 	{
-		country.second->convertGovernment(*sourceWorld, governmentMap, vic2Localisations, *hoi4Localisations);
+		country.second->convertGovernment(*sourceWorld, governmentMap, vic2Localisations, *hoi4Localisations, debug);
 	}
 }
 
@@ -254,14 +254,17 @@ void HoI4::World::convertParties(const Vic2::Localisations& vic2Localisations)
 }
 
 
-void HoI4::World::addNeutrality()
+void HoI4::World::addNeutrality(bool debug)
 {
 	Log(LogLevel::Info) << "\tAdding neutrality";
 	for (auto country: countries)
 	{
 		if (ideologies->getMajorIdeologies().count(country.second->getGovernmentIdeology()) == 0)
 		{
-			country.second->setGovernmentToExistingIdeology(ideologies->getMajorIdeologies(), *ideologies, governmentMap);
+			country.second->setGovernmentToExistingIdeology(ideologies->getMajorIdeologies(),
+				 *ideologies,
+				 governmentMap,
+				 debug);
 		}
 	}
 }
