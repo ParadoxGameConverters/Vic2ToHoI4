@@ -15,7 +15,7 @@ void checkMods(const Configuration& theConfiguration);
 void setOutputName(const std::string& V2SaveFileName, Configuration& theConfiguration);
 void ConvertV2ToHoI4(const std::string& V2SaveFileName)
 {
-	auto theConfiguration = Configuration::Factory{}.importConfiguration("configuration.txt");
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration("configuration.txt");
 	checkMods(*theConfiguration);
 	setOutputName(V2SaveFileName, *theConfiguration);
 	clearOutputFolder(theConfiguration->getOutputName());
