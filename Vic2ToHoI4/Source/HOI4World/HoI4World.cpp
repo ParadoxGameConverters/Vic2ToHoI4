@@ -45,7 +45,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	 const mappers::ProvinceMapper& provinceMapper,
 	 const Configuration& theConfiguration):
 	 sourceWorld(_sourceWorld),
-	 countryMap(_sourceWorld), theIdeas(std::make_unique<HoI4::Ideas>()),
+	 countryMap(_sourceWorld, theConfiguration.getDebug()), theIdeas(std::make_unique<HoI4::Ideas>()),
 	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), peaces(make_unique<HoI4::AiPeaces>()),
 	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
 {
