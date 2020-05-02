@@ -104,7 +104,7 @@ void HoI4::addAvailableBattalionsAndCompanies(
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Unknown unit type: " << Vic2Type;
+			Log(LogLevel::Warning) << "Unknown unit type: " << Vic2Type;
 		}
 	}
 }

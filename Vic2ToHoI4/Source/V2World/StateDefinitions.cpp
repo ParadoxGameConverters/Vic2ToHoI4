@@ -36,7 +36,7 @@ std::unique_ptr<Vic2::StateDefinitions> Vic2::StateDefinitions::Parser::parseSta
 			 }
 		 });
 
-	LOG(LogLevel::Info) << "Importing Vic2 states";
+	Log(LogLevel::Info) << "Importing Vic2 states";
 	auto stateMapInitialized = false;
 	for (const auto& itr: theConfiguration.getVic2Mods())
 	{

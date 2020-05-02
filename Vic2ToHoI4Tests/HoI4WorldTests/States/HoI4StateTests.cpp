@@ -872,7 +872,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionLoggedIfNotSet)
 	std::cout.rdbuf(coutBuffer);
 
 	ASSERT_EQ(std::nullopt, theState.getVPLocation());
-	ASSERT_EQ(log.str(), "Could not create VP for state 42\n");
+	ASSERT_EQ(log.str(), "[WARNING] Could not create VP for state 42\n");
 }
 
 

@@ -159,11 +159,11 @@ cultureGroup::cultureGroup(std::istream& theStream)
 
 void HoI4::namesMapper::init(const Configuration& theConfiguration)
 {
-	LOG(LogLevel::Info) << "\tParsing names";
+	Log(LogLevel::Info) << "\tParsing names";
 
 	for (auto mod: theConfiguration.getVic2Mods())
 	{
-		LOG(LogLevel::Debug) << "Reading mod cultures from " << mod;
+		Log(LogLevel::Debug) << "Reading mod cultures from " << mod;
 		processVic2CulturesFile((theConfiguration.getVic2Path() + "/mod/" + mod + "/common/cultures.txt"));
 	}
 
@@ -260,36 +260,36 @@ void HoI4::namesMapper::checkForNames()
 
 		if (femaleNamesMap.find(culture) == femaleNamesMap.end())
 		{
-			LOG(LogLevel::Warning) << "No female names for " << culture;
+			Log(LogLevel::Warning) << "No female names for " << culture;
 		}
 		// female surnames being missing is a common and acceptable case
 		if (callsignsMap.find(culture) == callsignsMap.end())
 		{
-			LOG(LogLevel::Warning) << "No callsigns for " << culture;
+			Log(LogLevel::Warning) << "No callsigns for " << culture;
 		}
 		if (carCompanyNames.find(culture) == carCompanyNames.end())
 		{
-			LOG(LogLevel::Warning) << "No car companies for " << culture;
+			Log(LogLevel::Warning) << "No car companies for " << culture;
 		}
 		if (weaponCompanyNames.find(culture) == weaponCompanyNames.end())
 		{
-			LOG(LogLevel::Warning) << "No weapon companies for " << culture;
+			Log(LogLevel::Warning) << "No weapon companies for " << culture;
 		}
 		if (aircraftCompanyNames.find(culture) == aircraftCompanyNames.end())
 		{
-			LOG(LogLevel::Warning) << "No aircraft companies for " << culture;
+			Log(LogLevel::Warning) << "No aircraft companies for " << culture;
 		}
 		if (navalCompanyNames.find(culture) == navalCompanyNames.end())
 		{
-			LOG(LogLevel::Warning) << "No naval companies for " << culture;
+			Log(LogLevel::Warning) << "No naval companies for " << culture;
 		}
 		if (industryCompanyNames.find(culture) == industryCompanyNames.end())
 		{
-			LOG(LogLevel::Warning) << "No industry companies for " << culture;
+			Log(LogLevel::Warning) << "No industry companies for " << culture;
 		}
 		if (electronicCompanyNames.find(culture) == electronicCompanyNames.end())
 		{
-			LOG(LogLevel::Warning) << "No electronic companies for " << culture;
+			Log(LogLevel::Warning) << "No electronic companies for " << culture;
 		}
 	}
 }
@@ -375,7 +375,7 @@ std::optional<std::string> HoI4::namesMapper::getMaleName(const std::string& cul
 	}
 	else
 	{
-		LOG(LogLevel::Warning) << "No male name could be found for " << culture;
+		Log(LogLevel::Warning) << "No male name could be found for " << culture;
 		return {};
 	}
 }
@@ -391,7 +391,7 @@ std::optional<std::string> HoI4::namesMapper::getFemaleName(const std::string& c
 	}
 	else
 	{
-		LOG(LogLevel::Warning) << "No female name could be found for " << culture;
+		Log(LogLevel::Warning) << "No female name could be found for " << culture;
 		return {};
 	}
 }
@@ -407,7 +407,7 @@ std::optional<std::string> HoI4::namesMapper::getSurname(const std::string& cult
 	}
 	else
 	{
-		LOG(LogLevel::Warning) << "No surname name could be found for " << culture;
+		Log(LogLevel::Warning) << "No surname name could be found for " << culture;
 		return {};
 	}
 }
@@ -423,7 +423,7 @@ std::optional<std::string> HoI4::namesMapper::getFemaleSurname(const std::string
 	}
 	else
 	{
-		LOG(LogLevel::Warning) << "No female surname could be found for " << culture;
+		Log(LogLevel::Warning) << "No female surname could be found for " << culture;
 		return {};
 	}
 }
@@ -439,7 +439,7 @@ std::optional<std::string> HoI4::namesMapper::getCallsign(const std::string& cul
 	}
 	else
 	{
-		LOG(LogLevel::Warning) << "No callsign could be found for " << culture;
+		Log(LogLevel::Warning) << "No callsign could be found for " << culture;
 		return {};
 	}
 }

@@ -1,28 +1,5 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
-#ifndef GOVERNMENTMAPPER_H
-#define GOVERNMENTMAPPER_H
+#ifndef GOVERNMENT_MAPPER_H
+#define GOVERNMENT_MAPPER_H
 
 
 
@@ -61,51 +38,49 @@ typedef struct partyMapping
 
 class governmentMapper: commonItems::parser
 {
-	public:
-		governmentMapper() = default;
-		void init();
-		virtual ~governmentMapper() = default;
+  public:
+	governmentMapper() = default;
+	void init();
+	virtual ~governmentMapper() = default;
 
-		virtual std::string getIdeologyForCountry(
-			const std::string& sourceTag,
-			const std::string& sourceGovernment,
-			const std::string& Vic2RulingIdeology
-		) const;
-		virtual std::string getLeaderIdeologyForCountry(
-			const std::string& sourceTag,
-			const std::string& sourceGovernment,
-			const std::string& Vic2RulingIdeology
-		) const;
-		std::string getExistingIdeologyForCountry(const Vic2::Country& country,
-			 const std::string& Vic2RulingIdeology,
-			 const std::set<std::string>& majorIdeologies,
-			 const HoI4::Ideologies& ideologies) const;
-		std::string getExistingLeaderIdeologyForCountry(const Vic2::Country& country,
-			 const std::string& Vic2RulingIdeology,
-			 const std::set<std::string>& majorIdeologies,
-			 const HoI4::Ideologies& ideologies) const;
-		virtual std::string getSupportedIdeology(
-			const std::string& rulingIdeology,
-			const std::string& Vic2Ideology,
-			const std::set<std::string>& majorIdeologies
-		) const;
+	virtual std::string getIdeologyForCountry(const std::string& sourceTag,
+		 const std::string& sourceGovernment,
+		 const std::string& Vic2RulingIdeology,
+		 bool debug) const;
+	virtual std::string getLeaderIdeologyForCountry(const std::string& sourceTag,
+		 const std::string& sourceGovernment,
+		 const std::string& Vic2RulingIdeology,
+		 bool debug) const;
+	std::string getExistingIdeologyForCountry(const Vic2::Country& country,
+		 const std::string& Vic2RulingIdeology,
+		 const std::set<std::string>& majorIdeologies,
+		 const HoI4::Ideologies& ideologies,
+		 bool debug) const;
+	std::string getExistingLeaderIdeologyForCountry(const Vic2::Country& country,
+		 const std::string& Vic2RulingIdeology,
+		 const std::set<std::string>& majorIdeologies,
+		 const HoI4::Ideologies& ideologies,
+		 bool debug) const;
+	virtual std::string getSupportedIdeology(const std::string& rulingIdeology,
+		 const std::string& Vic2Ideology,
+		 const std::set<std::string>& majorIdeologies) const;
 
-		auto getGovernmentMappings() const { return governmentMap; }
+	auto getGovernmentMappings() const { return governmentMap; }
 
-	private:
-		governmentMapper(const governmentMapper&) = delete;
-		governmentMapper& operator=(const governmentMapper&) = delete;
+  private:
+	governmentMapper(const governmentMapper&) = delete;
+	governmentMapper& operator=(const governmentMapper&) = delete;
 
-		bool governmentMatches(const governmentMapping& mapping, const std::string& government) const;
-		bool rulingIdeologyMatches(const governmentMapping& mapping, const std::string& rulingIdeology) const;
-		static bool ideologyIsValid(const governmentMapping& mapping,
-			 const std::set<std::string>& majorIdeologies,
-			 const HoI4::Ideologies& ideologies);
+	bool governmentMatches(const governmentMapping& mapping, const std::string& government) const;
+	bool rulingIdeologyMatches(const governmentMapping& mapping, const std::string& rulingIdeology) const;
+	static bool ideologyIsValid(const governmentMapping& mapping,
+		 const std::set<std::string>& majorIdeologies,
+		 const HoI4::Ideologies& ideologies);
 
-		std::vector<governmentMapping> governmentMap;
-		std::vector<partyMapping> partyMap;
+	std::vector<governmentMapping> governmentMap;
+	std::vector<partyMapping> partyMap;
 };
 
 
 
-#endif // GOVERNMENTMAPPER_H
+#endif // GOVERNMENT_MAPPER_H

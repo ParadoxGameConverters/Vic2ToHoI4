@@ -55,7 +55,7 @@ void Vic2::State::setID(const Vic2::StateDefinitions& theStateDefinitions)
 	}
 	else
 	{
-		LOG(LogLevel::Warning) << "Could not find the state for Vic2 province " << *provinceNums.begin() << ".";
+		Log(LogLevel::Warning) << "Could not find the state for Vic2 province " << *provinceNums.begin() << ".";
 	}
 }
 

@@ -58,7 +58,7 @@ void outputStateLocalisations(const std::string& localisationPath,
 
 void HoI4::outputLocalisation(const Localisation& localisation, const std::string& outputName)
 {
-	LOG(LogLevel::Debug) << "Writing localisations";
+	Log(LogLevel::Debug) << "Writing localisations";
 	const auto localisationPath = "output/" + outputName + "/localisation";
 	if (!Utils::TryCreateFolder(localisationPath))
 	{

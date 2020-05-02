@@ -28,7 +28,7 @@ HoI4FocusTree::HoI4FocusTree(const HoI4::Country& country):
 
 void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 {
-	LOG(LogLevel::Info) << "\t\tCreating generic focus tree";
+	Log(LogLevel::Info) << "\t\tCreating generic focus tree";
 	confirmLoadedFocuses();
 
 	int numCollectovistIdeologies = calculateNumCollectovistIdeologies(majorIdeologies);
@@ -688,7 +688,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not determine contained country name for democratic focuses";
+			Log(LogLevel::Warning) << "Could not determine contained country name for democratic focuses";
 			containedCountryName.clear();
 		}
 
@@ -810,7 +810,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 	}
 	else
 	{
-		LOG(LogLevel::Warning) << "Could not determine home country adjective for absolutist focuses";
+		Log(LogLevel::Warning) << "Could not determine home country adjective for absolutist focuses";
 		homeCountryAdjective.clear();
 	}
 
@@ -920,7 +920,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not determine protectorate country name for absolutist focuses";
+			Log(LogLevel::Warning) << "Could not determine protectorate country name for absolutist focuses";
 			protectorateCountryName.clear();
 		}
 
@@ -976,7 +976,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not determine protectorate country name for absolutist focuses";
+			Log(LogLevel::Warning) << "Could not determine protectorate country name for absolutist focuses";
 			protectorateCountryName.clear();
 		}
 
@@ -1126,7 +1126,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not determine target country name for absolutist focuses";
+			Log(LogLevel::Warning) << "Could not determine target country name for absolutist focuses";
 			targetCountryName.clear();
 		}
 
@@ -1182,7 +1182,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not determine target country name for absolutist focuses";
+			Log(LogLevel::Warning) << "Could not determine target country name for absolutist focuses";
 			targetCountryName.clear();
 		}
 
@@ -1259,7 +1259,7 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
 				}
 				else
 				{
-					LOG(LogLevel::Warning) << "Could not determine coup country name for communist coup focuses";
+					Log(LogLevel::Warning) << "Could not determine coup country name for communist coup focuses";
 					coupCountryName.clear();
 				}
 
@@ -1422,7 +1422,7 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home,
 				}
 				else
 				{
-					LOG(LogLevel::Warning) << "Could not determine war target country name for communist war focuses";
+					Log(LogLevel::Warning) << "Could not determine war target country name for communist war focuses";
 					warTargetCountryName.clear();
 				}
 
@@ -1545,7 +1545,7 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home,
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not determine annexation target country name for fascist annexation focuses";
+			Log(LogLevel::Warning) << "Could not determine annexation target country name for fascist annexation focuses";
 			annexationTargetCountryName.clear();
 		}
 
@@ -1657,7 +1657,7 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home,
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not determine annexation target country name for fascist sudeten focuses";
+			Log(LogLevel::Warning) << "Could not determine annexation target country name for fascist sudeten focuses";
 			sudetenTargetCountryName.clear();
 		}
 
@@ -1789,7 +1789,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not determine ally country name for GP alliance focuses";
+			Log(LogLevel::Warning) << "Could not determine ally country name for GP alliance focuses";
 			allyCountryName.clear();
 		}
 
@@ -1846,7 +1846,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not determine war target country name for GP war focuses";
+			Log(LogLevel::Warning) << "Could not determine war target country name for GP war focuses";
 			warTargetCountryName.clear();
 		}
 

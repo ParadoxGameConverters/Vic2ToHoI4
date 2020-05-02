@@ -151,7 +151,7 @@ void HoI4::OutputWorld(const World& world,
 {
 	reportIndustryLevels(world, theConfiguration);
 
-	LOG(LogLevel::Info) << "\tOutputting world";
+	Log(LogLevel::Info) << "\tOutputting world";
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/history"))
 	{
@@ -192,7 +192,7 @@ void HoI4::OutputWorld(const World& world,
 void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName)
 {
-	LOG(LogLevel::Info) << "\t\tCreating country tags";
+	Log(LogLevel::Info) << "\t\tCreating country tags";
 	if (!Utils::TryCreateFolder("output/" + outputName + "/common/country_tags"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/common/country_tags");
@@ -228,7 +228,7 @@ void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<Cou
 void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName)
 {
-	LOG(LogLevel::Info) << "\t\tWriting country colors";
+	Log(LogLevel::Info) << "\t\tWriting country colors";
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/common/countries"))
 	{
@@ -258,7 +258,7 @@ void HoI4::outputNames(const namesMapper& theNames,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName)
 {
-	LOG(LogLevel::Info) << "\t\tWriting names";
+	Log(LogLevel::Info) << "\t\tWriting names";
 
 	std::ofstream namesFile("output/" + outputName + "/common/names/01_names.txt");
 	if (!namesFile.is_open())
@@ -281,7 +281,7 @@ void HoI4::outputNames(const namesMapper& theNames,
 void HoI4::outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const Configuration& theConfiguration)
 {
-	LOG(LogLevel::Info) << "\t\tWriting unit names";
+	Log(LogLevel::Info) << "\t\tWriting unit names";
 
 	for (const auto& country: countries)
 	{
@@ -297,7 +297,7 @@ void HoI4::outputMap(const States& states,
 	 const std::map<int, StrategicRegion*>& strategicRegions,
 	 const std::string& outputName)
 {
-	LOG(LogLevel::Info) << "\t\tWriting map info";
+	Log(LogLevel::Info) << "\t\tWriting map info";
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/map"))
 	{
@@ -331,7 +331,7 @@ void HoI4::outputMap(const States& states,
 
 void HoI4::outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const std::string& outputName)
 {
-	LOG(LogLevel::Info) << "\t\tWriting generic focus tree";
+	Log(LogLevel::Info) << "\t\tWriting generic focus tree";
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/common/national_focus"))
 	{
@@ -348,7 +348,7 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	 const std::string& outputName,
 	 const Configuration& theConfiguration)
 {
-	LOG(LogLevel::Info) << "\t\tWriting countries";
+	Log(LogLevel::Info) << "\t\tWriting countries";
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/history"))
 	{
@@ -400,7 +400,7 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 
 void HoI4::outputRelations(const std::string& outputName)
 {
-	LOG(LogLevel::Info) << "\t\tWriting opinion modifiers";
+	Log(LogLevel::Info) << "\t\tWriting opinion modifiers";
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/common/opinion_modifiers"))
 	{
@@ -455,7 +455,7 @@ void HoI4::outputLeaderTraits(const std::map<std::string, std::vector<std::strin
 	 const std::set<std::string>& majorIdeologies,
 	 const std::string& outputName)
 {
-	LOG(LogLevel::Info) << "\t\tWriting leader traits";
+	Log(LogLevel::Info) << "\t\tWriting leader traits";
 
 	std::ofstream traitsFile("output/" + outputName + "/common/country_leader/converterTraits.txt");
 	if (!traitsFile.is_open())
@@ -485,7 +485,7 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName)
 {
-	LOG(LogLevel::Info) << "\t\tWriting bookmarks";
+	Log(LogLevel::Info) << "\t\tWriting bookmarks";
 
 	std::ofstream bookmarkFile("output/" + outputName + "/common/bookmarks/the_gathering_storm.txt");
 	if (!bookmarkFile.is_open())

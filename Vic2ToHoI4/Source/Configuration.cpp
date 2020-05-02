@@ -35,7 +35,7 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 			throw std::runtime_error("The HoI4 path specified in configuration.txt does not contain HoI4");
 		}
 
-		LOG(LogLevel::Debug) << "HoI4 path install path is " << HoI4Path;
+		Log(LogLevel::Info) << "\tHoI4 path install path is " << HoI4Path;
 	});
 	registerKeyword("V2directory", [&Vic2Path](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString directoryString(theStream);
@@ -49,7 +49,7 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 			throw std::runtime_error("The Victoria 2 path specified in configuration.txt does not contain Victoria 2");
 		}
 
-		LOG(LogLevel::Debug) << "Victoria 2 install path is " << Vic2Path;
+		Log(LogLevel::Info) << "\tVictoria 2 install path is " << Vic2Path;
 	});
 	registerKeyword("Vic2Mods", [&Vic2Mods](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringList modsStrings(theStream);
@@ -58,48 +58,58 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 	registerKeyword("force_multiplier", [&forceMultiplier](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleDouble factorValue(theStream);
 		forceMultiplier = factorValue.getDouble();
+		Log(LogLevel::Info) << "\tForce multiplier: " << forceMultiplier;
 	});
 	registerKeyword("manpower_factor", [&manpowerFactor](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleDouble factorValue(theStream);
 		manpowerFactor = factorValue.getDouble();
+		Log(LogLevel::Info) << "\tManpower factor: " << manpowerFactor;
 	});
 	registerKeyword("industrial_shape_factor",
 		 [&industrialShapeFactor](const std::string& unused, std::istream& theStream) {
 			 const commonItems::singleDouble factorValue(theStream);
 			 industrialShapeFactor = factorValue.getDouble();
+			 Log(LogLevel::Info) << "\tIndustrial shape factor: " << industrialShapeFactor;
 		 });
 	registerKeyword("ic_factor", [&icFactor](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleDouble factorValue(theStream);
 		icFactor = factorValue.getDouble();
+		Log(LogLevel::Info) << "\tIC factor: " << icFactor;
 	});
 	registerKeyword("ideologies", [&ideologiesOptions](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString ideologiesOptionString(theStream);
 		if (ideologiesOptionString.getString() == "keep_default")
 		{
 			ideologiesOptions = ideologyOptions::keep_default;
+			Log(LogLevel::Info) << "\tKeeping default ideologies";
 		}
 		else if (ideologiesOptionString.getString() == "keep_all")
 		{
 			ideologiesOptions = ideologyOptions::keep_all;
+			Log(LogLevel::Info) << "\tKeeping all ideologies";
 		}
 		else if (ideologiesOptionString.getString() == "specified")
 		{
 			ideologiesOptions = ideologyOptions::specified;
+			Log(LogLevel::Info) << "\tKeeping specified ideologies";
 		}
 		else // (ideologiesOptionString.getString() == "keep_major")
 		{
 			ideologiesOptions = ideologyOptions::keep_major;
+			Log(LogLevel::Info) << "\tKeeping major ideologies";
 		}
 	});
 	registerKeyword("ideologies_choice", [&specifiedIdeologies](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString choiceString(theStream);
 		specifiedIdeologies.push_back(choiceString.getString());
+		Log(LogLevel::Info) << "\tSpecified " << choiceString.getString();
 	});
 	registerKeyword("debug", [&debug](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString debugString(theStream);
 		if (debugString.getString() == "yes")
 		{
 			debug = true;
+			Log(LogLevel::Info) << "\tDebug mode activated";
 		}
 	});
 	registerKeyword("remove_cores", [&removeCores](const std::string& unused, std::istream& theStream) {
@@ -107,6 +117,7 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 		if (removeCoresString.getString() == "false")
 		{
 			removeCores = false;
+			Log(LogLevel::Info) << "\tDisabling remove cores";
 		}
 	});
 	registerKeyword("create_factions", [&createFactions](const std::string& unused, std::istream& theStream) {
@@ -114,6 +125,7 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 		if (createFactionsString.getString() == "no")
 		{
 			createFactions = false;
+			Log(LogLevel::Info) << "\tDisabling keep factions";
 		}
 	});
 	registerKeyword("HoI4Version", [&version](const std::string& unused, std::istream& theStream) {
@@ -122,10 +134,10 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 	});
 	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
 
-	LOG(LogLevel::Info) << "Reading configuration file";
+	Log(LogLevel::Info) << "Reading configuration file";
 	parseStream(theStream);
 
-	Log(LogLevel::Debug) << "HoI4 version is " << version;
+	Log(LogLevel::Info) << "\tConfigured HoI4 version is " << version;
 
 	return std::make_unique<Configuration>(HoI4Path,
 		 Vic2Path,

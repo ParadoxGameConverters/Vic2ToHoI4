@@ -12,7 +12,7 @@ HoI4::War::War(const Vic2::War& sourceWar, const CountryMapper& countryMapper)
 	}
 	else
 	{
-		LOG(LogLevel::Warning) << "Could not map " << sourceWar.getOriginalDefender() << ", original defender in a war";
+		Log(LogLevel::Warning) << "Could not map " << sourceWar.getOriginalDefender() << ", original defender in a war";
 	}
 
 	for (const auto& defender: sourceWar.getDefenders())
@@ -26,7 +26,7 @@ HoI4::War::War(const Vic2::War& sourceWar, const CountryMapper& countryMapper)
 			}
 			else
 			{
-				LOG(LogLevel::Warning) << "Could not map " << defender << ", defending in a war";
+				Log(LogLevel::Warning) << "Could not map " << defender << ", defending in a war";
 			}
 		}
 	}
@@ -38,7 +38,7 @@ HoI4::War::War(const Vic2::War& sourceWar, const CountryMapper& countryMapper)
 	}
 	else
 	{
-		LOG(LogLevel::Warning) << "Could not map " << sourceWar.getOriginalAttacker() << ", original attacker in a war";
+		Log(LogLevel::Warning) << "Could not map " << sourceWar.getOriginalAttacker() << ", original attacker in a war";
 	}
 
 	for (const auto& attacker: sourceWar.getAttackers())
@@ -52,7 +52,7 @@ HoI4::War::War(const Vic2::War& sourceWar, const CountryMapper& countryMapper)
 			}
 			else
 			{
-				LOG(LogLevel::Warning) << "Could not map " << attacker << ", attacking in a war";
+				Log(LogLevel::Warning) << "Could not map " << attacker << ", attacking in a war";
 			}
 		}
 	}

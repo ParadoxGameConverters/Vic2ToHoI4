@@ -1,5 +1,5 @@
-#ifndef HoI4WORLD_H_
-#define HoI4WORLD_H_
+#ifndef HOI4_WORLD_H_
+#define HOI4_WORLD_H_
 
 
 
@@ -20,10 +20,10 @@
 #include "MilitaryMappings/UnitMappings.h"
 #include "Names.h"
 #include "OnActions.h"
+#include "Parser.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
 #include "ScriptedTriggers/ScriptedTriggers.h"
 #include "States/HoI4States.h"
-#include "Parser.h"
 #include <map>
 #include <optional>
 #include <set>
@@ -130,11 +130,11 @@ class World: commonItems::parser
 	void importLeaderTraits();
 	void importIdeologicalMinisters();
 
-	void convertGovernments(const Vic2::Localisations& vic2Localisations);
+	void convertGovernments(const Vic2::Localisations& vic2Localisations, bool debug);
 
 	void convertParties(const Vic2::Localisations& vic2Localisations);
 
-	void addNeutrality();
+	void addNeutrality(bool debug);
 	void addLeaders();
 	void convertIdeologySupport();
 
@@ -245,4 +245,4 @@ class World: commonItems::parser
 
 
 
-#endif // HoI4WORLD_H_
+#endif // HOI4_WORLD_H_

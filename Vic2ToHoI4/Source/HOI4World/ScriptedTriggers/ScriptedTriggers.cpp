@@ -6,7 +6,7 @@
 
 void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConfiguration)
 {
-	LOG(LogLevel::Info) << "\tImporting scripted triggers";
+	Log(LogLevel::Info) << "\tImporting scripted triggers";
 
 	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& name, std::istream& theStream) {
 		ScriptedTrigger scriptedTrigger(name);

@@ -44,7 +44,7 @@ void HoI4::copyFlags(const std::map<std::string, std::shared_ptr<Country>>& coun
 	 const std::vector<std::string>& vic2Mods,
 	 const std::string& vic2Path)
 {
-	LOG(LogLevel::Info) << "\tCreating flags";
+	Log(LogLevel::Info) << "\tCreating flags";
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/gfx"))
 	{
@@ -133,7 +133,7 @@ std::vector<std::string> HoI4::getSourceFlagPaths(const std::string& Vic2Tag,
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not find source flag: " << Vic2Tag << vic2Suffix;
+			Log(LogLevel::Warning) << "Could not find source flag: " << Vic2Tag << vic2Suffix;
 			if (paths.size() > 0)
 			{
 				paths.push_back(*paths.begin());
@@ -243,7 +243,7 @@ std::optional<tga_image*> HoI4::readFlag(const std::string& path)
 	FILE* flagFile;
 	if (fopen_s(&flagFile, path.c_str(), "r+b") != 0)
 	{
-		LOG(LogLevel::Warning) << "Could not open " << path;
+		Log(LogLevel::Warning) << "Could not open " << path;
 		return {};
 	}
 
@@ -251,7 +251,7 @@ std::optional<tga_image*> HoI4::readFlag(const std::string& path)
 	const auto result = tga_read_from_FILE(flag, flagFile);
 	if (result != TGA_NOERR)
 	{
-		LOG(LogLevel::Warning) << "Could not read flag " << path << ": " << tga_error(result)
+		Log(LogLevel::Warning) << "Could not read flag " << path << ": " << tga_error(result)
 									  << ". FEOF: " << feof(flagFile) << ". Ferror: " << ferror(flagFile) << ".";
 		delete flag;
 		flag = {};

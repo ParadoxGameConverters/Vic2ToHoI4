@@ -9,7 +9,7 @@
 
 void HoI4::CoastalProvinces::init(const MapData& theMapData, const Configuration& theConfiguration)
 {
-	LOG(LogLevel::Info) << "\tInitializing coastal provinces";
+	Log(LogLevel::Info) << "\tInitializing coastal provinces";
 
 	auto provinces = importProvinces(theConfiguration);
 

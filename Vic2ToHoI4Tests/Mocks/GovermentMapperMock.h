@@ -12,11 +12,17 @@ class mockGovernmentMapper final: public governmentMapper
   public:
 	MOCK_METHOD(std::string,
 		 getIdeologyForCountry,
-		 (const std::string& sourceTag, const std::string& sourceGovernment, const std::string& Vic2RulingIdeology),
+		 (const std::string& sourceTag,
+			  const std::string& sourceGovernment,
+			  const std::string& Vic2RulingIdeology,
+			  bool debug),
 		 (const, override));
 	MOCK_METHOD(std::string,
 		 getLeaderIdeologyForCountry,
-		 (const std::string& sourceTag, const std::string& sourceGovernment, const std::string& Vic2RulingIdeology),
+		 (const std::string& sourceTag,
+			  const std::string& sourceGovernment,
+			  const std::string& Vic2RulingIdeology,
+			  bool debug),
 		 (const, override));
 	MOCK_METHOD(std::string,
 		 getSupportedIdeology,

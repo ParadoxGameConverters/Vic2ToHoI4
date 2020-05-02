@@ -1,26 +1,3 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "GovernmentMapper.h"
 #include "../V2World/Country.h"
 #include "Log.h"
@@ -30,31 +7,31 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 class aGovernmentMapping: commonItems::parser
 {
-	public:
-		explicit aGovernmentMapping(std::istream& theStream);
+  public:
+	explicit aGovernmentMapping(std::istream& theStream);
 
-		auto getMapping() const { return mapping; }
+	auto getMapping() const { return mapping; }
 
-	private:
-		governmentMapping mapping;
+  private:
+	governmentMapping mapping;
 };
 
 
 aGovernmentMapping::aGovernmentMapping(std::istream& theStream)
 {
-	registerKeyword(std::regex("vic"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("vic"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString vic2Government(theStream);
 		mapping.vic2Government = vic2Government.getString();
 	});
-	registerKeyword(std::regex("ruling_party"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("ruling_party"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString rulingParty(theStream);
 		mapping.rulingPartyRequired = rulingParty.getString();
 	});
-	registerKeyword(std::regex("hoi_gov"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("hoi_gov"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString hoi4Government(theStream);
 		mapping.HoI4GovernmentIdeology = hoi4Government.getString();
 	});
-	registerKeyword(std::regex("hoi_leader"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("hoi_leader"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString hoi4Leader(theStream);
 		mapping.HoI4LeaderIdeology = hoi4Leader.getString();
 	});
@@ -65,19 +42,19 @@ aGovernmentMapping::aGovernmentMapping(std::istream& theStream)
 
 class governmentMappings: commonItems::parser
 {
-	public:
-		explicit governmentMappings(std::istream& theStream);
+  public:
+	explicit governmentMappings(std::istream& theStream);
 
-		auto getGovernmentMap() const { return governmentMap; }
+	auto getGovernmentMap() const { return governmentMap; }
 
-	private:
-		std::vector<governmentMapping> governmentMap;
+  private:
+	std::vector<governmentMapping> governmentMap;
 };
 
 
 governmentMappings::governmentMappings(std::istream& theStream)
 {
-	registerKeyword(std::regex("mapping"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("mapping"), [this](const std::string& unused, std::istream& theStream) {
 		aGovernmentMapping mapping(theStream);
 		governmentMap.push_back(mapping.getMapping());
 	});
@@ -88,27 +65,27 @@ governmentMappings::governmentMappings(std::istream& theStream)
 
 class aPartyMapping: commonItems::parser
 {
-	public:
-		explicit aPartyMapping(std::istream& theStream);
+  public:
+	explicit aPartyMapping(std::istream& theStream);
 
-		auto getMapping() const { return mapping; }
+	auto getMapping() const { return mapping; }
 
-	private:
-		partyMapping mapping;
+  private:
+	partyMapping mapping;
 };
 
 
 aPartyMapping::aPartyMapping(std::istream& theStream)
 {
-	registerKeyword(std::regex("ruling_ideology"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("ruling_ideology"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString ideologyString(theStream);
 		mapping.rulingIdeology = ideologyString.getString();
 	});
-	registerKeyword(std::regex("vic2_ideology"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("vic2_ideology"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString ideologyString(theStream);
 		mapping.vic2Ideology = ideologyString.getString();
 	});
-	registerKeyword(std::regex("supported_ideology"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("supported_ideology"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString ideologyString(theStream);
 		mapping.supportedIdeology = ideologyString.getString();
 	});
@@ -119,19 +96,19 @@ aPartyMapping::aPartyMapping(std::istream& theStream)
 
 class partyMappings: commonItems::parser
 {
-	public:
-		explicit partyMappings(std::istream& theStream);
+  public:
+	explicit partyMappings(std::istream& theStream);
 
-		auto getPartyMap() const { return partyMap; }
+	auto getPartyMap() const { return partyMap; }
 
-	private:
-		std::vector<partyMapping> partyMap;
+  private:
+	std::vector<partyMapping> partyMap;
 };
 
 
 partyMappings::partyMappings(std::istream& theStream)
 {
-	registerKeyword(std::regex("mapping"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("mapping"), [this](const std::string& unused, std::istream& theStream) {
 		aPartyMapping mapping(theStream);
 		partyMap.push_back(mapping.getMapping());
 	});
@@ -142,13 +119,13 @@ partyMappings::partyMappings(std::istream& theStream)
 
 void governmentMapper::init()
 {
-	LOG(LogLevel::Info) << "\tParsing governments mappings";
+	Log(LogLevel::Info) << "\tParsing governments mappings";
 
-	registerKeyword(std::regex("government_mappings"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("government_mappings"), [this](const std::string& unused, std::istream& theStream) {
 		governmentMappings mappings(theStream);
 		governmentMap = mappings.getGovernmentMap();
 	});
-	registerKeyword(std::regex("party_mappings"), [this](const std::string& unused, std::istream& theStream){
+	registerKeyword(std::regex("party_mappings"), [this](const std::string& unused, std::istream& theStream) {
 		partyMappings mappings(theStream);
 		partyMap = mappings.getPartyMap();
 	});
@@ -157,11 +134,10 @@ void governmentMapper::init()
 }
 
 
-std::string governmentMapper::getIdeologyForCountry(
-	const std::string& sourceTag,
-	const std::string& sourceGovernment,
-	const std::string& Vic2RulingIdeology
-) const
+std::string governmentMapper::getIdeologyForCountry(const std::string& sourceTag,
+	 const std::string& sourceGovernment,
+	 const std::string& Vic2RulingIdeology,
+	 bool debug) const
 {
 	std::string ideology = "neutrality";
 	for (auto mapping: governmentMap)
@@ -173,28 +149,33 @@ std::string governmentMapper::getIdeologyForCountry(
 		}
 	}
 
-	LOG(LogLevel::Info) << "\t\tMapped " << sourceTag << " government " << sourceGovernment << " to " << ideology;
+	if (debug)
+	{
+		Log(LogLevel::Debug) << "\t\tMapped " << sourceTag << " government " << sourceGovernment << " to " << ideology;
+	}
 	return ideology;
 }
 
 
-std::string governmentMapper::getLeaderIdeologyForCountry(
-	const std::string& sourceTag,
-	const std::string& sourceGovernment,
-	const std::string& Vic2RulingIdeology
-) const
+std::string governmentMapper::getLeaderIdeologyForCountry(const std::string& sourceTag,
+	 const std::string& sourceGovernment,
+	 const std::string& Vic2RulingIdeology,
+	 bool debug) const
 {
 	std::string ideology = "neutrality";
 	for (auto mapping: governmentMap)
 	{
-		if (governmentMatches(mapping, sourceGovernment) &&	rulingIdeologyMatches(mapping, Vic2RulingIdeology))
+		if (governmentMatches(mapping, sourceGovernment) && rulingIdeologyMatches(mapping, Vic2RulingIdeology))
 		{
 			ideology = mapping.HoI4LeaderIdeology;
 			break;
 		}
 	}
 
-	LOG(LogLevel::Info) << "\t\tMapped " << sourceTag << " leader " << sourceGovernment << " to " << ideology;
+	if (debug)
+	{
+		Log(LogLevel::Debug) << "\t\tMapped " << sourceTag << " leader " << sourceGovernment << " to " << ideology;
+	}
 	return ideology;
 }
 
@@ -202,7 +183,8 @@ std::string governmentMapper::getLeaderIdeologyForCountry(
 std::string governmentMapper::getExistingIdeologyForCountry(const Vic2::Country& country,
 	 const std::string& Vic2RulingIdeology,
 	 const std::set<std::string>& majorIdeologies,
-	 const HoI4::Ideologies& ideologies) const
+	 const HoI4::Ideologies& ideologies,
+	 bool debug) const
 {
 	std::string ideology = "neutrality";
 	for (auto mapping: governmentMap)
@@ -215,8 +197,11 @@ std::string governmentMapper::getExistingIdeologyForCountry(const Vic2::Country&
 		}
 	}
 
-	LOG(LogLevel::Info) << "\t\tMapped " << country.getTag() << " government " << country.getGovernment() << " to "
-								<< ideology;
+	if (debug)
+	{
+		Log(LogLevel::Debug) << "\t\tMapped " << country.getTag() << " government " << country.getGovernment() << " to "
+									<< ideology;
+	}
 	return ideology;
 }
 
@@ -224,7 +209,8 @@ std::string governmentMapper::getExistingIdeologyForCountry(const Vic2::Country&
 std::string governmentMapper::getExistingLeaderIdeologyForCountry(const Vic2::Country& country,
 	 const std::string& Vic2RulingIdeology,
 	 const std::set<std::string>& majorIdeologies,
-	 const HoI4::Ideologies& ideologies) const
+	 const HoI4::Ideologies& ideologies,
+	 bool debug) const
 {
 	std::string ideology = "neutrality";
 	for (auto mapping: governmentMap)
@@ -237,7 +223,11 @@ std::string governmentMapper::getExistingLeaderIdeologyForCountry(const Vic2::Co
 		}
 	}
 
-	LOG(LogLevel::Info) << "\t\tMapped " << country.getTag() << " leader " << country.getGovernment() << " to " << ideology;
+	if (debug)
+	{
+		Log(LogLevel::Debug) << "\t\tMapped " << country.getTag() << " leader " << country.getGovernment() << " to "
+									<< ideology;
+	}
 	return ideology;
 }
 
@@ -263,12 +253,15 @@ bool governmentMapper::ideologyIsValid(const governmentMapping& mapping,
 }
 
 
-std::string governmentMapper::getSupportedIdeology(const std::string& rulingIdeology, const std::string& Vic2Ideology, const std::set<std::string>& majorIdeologies) const
+std::string governmentMapper::getSupportedIdeology(const std::string& rulingIdeology,
+	 const std::string& Vic2Ideology,
+	 const std::set<std::string>& majorIdeologies) const
 {
 	std::string ideology = "neutrality";
 	for (auto mapping: partyMap)
 	{
-		if ((rulingIdeology == mapping.rulingIdeology) && (Vic2Ideology == mapping.vic2Ideology) && (majorIdeologies.count(mapping.supportedIdeology) > 0))
+		if ((rulingIdeology == mapping.rulingIdeology) && (Vic2Ideology == mapping.vic2Ideology) &&
+			 (majorIdeologies.count(mapping.supportedIdeology) > 0))
 		{
 			ideology = mapping.supportedIdeology;
 			break;

@@ -5,7 +5,7 @@
 
 void HoI4::updateAiPeaces(AiPeaces& aiPeaces, const std::set<std::string>& majorIdeologies)
 {
-	LOG(LogLevel::Info) << "\tUpdating AI peaces";
+	Log(LogLevel::Info) << "\tUpdating AI peaces";
 
 	std::string newEnable = "= {\n";
 	newEnable += "\t\tOR = {\n";

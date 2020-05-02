@@ -12,13 +12,13 @@ std::string getNextLocalisation(const std::string& line, int& division);
 std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Parser::importLocalisations(
 	 const Configuration& theConfiguration)
 {
-	LOG(LogLevel::Info) << "Reading localisation";
+	Log(LogLevel::Info) << "Reading Vic2 localisation";
 
 	ReadFromAllFilesInFolder(theConfiguration.getVic2Path() + "/localisation");
 
 	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
-		LOG(LogLevel::Debug) << "Reading mod localisation";
+		Log(LogLevel::Info) << "\tReading mod localisation";
 		ReadFromAllFilesInFolder(theConfiguration.getVic2Path() + "/mod/" + mod + "/localisation");
 	}
 
@@ -157,7 +157,7 @@ void Vic2::Localisations::updateDomainCountry(const std::string& tag, const std:
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not find regions localisation for " << domainName << " in "
+			Log(LogLevel::Warning) << "Could not find regions localisation for " << domainName << " in "
 										  << nameInLanguage.first;
 		}
 		auto updatedName = nameInLanguage.second;

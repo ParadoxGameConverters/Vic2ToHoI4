@@ -202,7 +202,7 @@ void HoI4::State::tryToCreateVP(const Vic2::State& sourceState,
 	{
 		if (theConfiguration.getDebug() && !sourceState.isPartialState() && !impassable && !hadImpassablePart)
 		{
-			LOG(LogLevel::Warning) << "Could not initially create VP for state " << ID << ", but state is not split.";
+			Log(LogLevel::Warning) << "Could not initially create VP for state " << ID << ", but state is not split.";
 		}
 		for (auto province: sourceState.getProvinces())
 		{
@@ -244,7 +244,7 @@ void HoI4::State::tryToCreateVP(const Vic2::State& sourceState,
 
 	if (!VPCreated)
 	{
-		LOG(LogLevel::Warning) << "Could not create VP for state " << ID;
+		Log(LogLevel::Warning) << "Could not create VP for state " << ID;
 	}
 
 	addDebugVPs(sourceState, theProvinceMapper);
