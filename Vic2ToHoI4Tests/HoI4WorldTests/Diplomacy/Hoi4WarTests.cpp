@@ -49,7 +49,7 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalDefenderCantBeMapped)
 
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ("Could not map ODF, original defender in a war\n", log.str());
+	ASSERT_EQ("[WARNING] Could not map ODF, original defender in a war\n", log.str());
 }
 
 
@@ -146,5 +146,5 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalAttackerCantBeMapped)
 
 	std::cout.rdbuf(stdOutBuf);
 
-	ASSERT_EQ("Could not map OAT, original attacker in a war\n", log.str());
+	ASSERT_EQ("[WARNING] Could not map OAT, original attacker in a war\n", log.str());
 }

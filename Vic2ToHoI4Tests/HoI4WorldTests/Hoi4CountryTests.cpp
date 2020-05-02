@@ -873,12 +873,12 @@ TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesCanBeSet)
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	mockGovernmentMapper mockGovernmentMap;
-	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology", false))
 		 .WillOnce(testing::Return("testGovernmentIdeology"));
-	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology", false))
 		 .WillOnce(testing::Return("testLeaderIdeology"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations, false);
 	ASSERT_EQ(theCountry.getGovernmentIdeology(), "testGovernmentIdeology");
 	ASSERT_EQ(theCountry.getLeaderIdeology(), "testLeaderIdeology");
 }
@@ -907,12 +907,12 @@ TEST_F(HoI4World_HoI4CountryTests, rulingPartyComesFromVic2Country)
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	mockGovernmentMapper mockGovernmentMap;
-	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology", false))
 		 .WillOnce(testing::Return("testGovernmentIdeology"));
-	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology", false))
 		 .WillOnce(testing::Return("testLeaderIdeology"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations, false);
 	ASSERT_EQ(theCountry.getRulingParty(), testParty);
 }
 
@@ -936,7 +936,7 @@ TEST_F(HoI4World_HoI4CountryTests, missingRulingPartyThrowsException)
 	const mockGovernmentMapper mockGovernmentMap;
 
 	EXPECT_THROW(
-		 theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations),
+		 theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations, false),
 		 std::runtime_error);
 }
 
@@ -988,12 +988,12 @@ TEST_F(HoI4World_HoI4CountryTests, partiesComeFromVic2Country)
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	mockGovernmentMapper mockGovernmentMap;
-	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology", false))
 		 .WillOnce(testing::Return("testGovernmentIdeology"));
-	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology", false))
 		 .WillOnce(testing::Return("testLeaderIdeology"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations, false);
 	ASSERT_EQ(theCountry.getParties().count(testParty), 1);
 	ASSERT_EQ(theCountry.getParties().count(testParty2), 1);
 }
@@ -1308,12 +1308,12 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawIncreasesIfRulingPartyJingoist
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	mockGovernmentMapper mockGovernmentMap;
-	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology", false))
 		 .WillOnce(testing::Return("testGovernmentIdeology"));
-	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology", false))
 		 .WillOnce(testing::Return("testLeaderIdeology"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations, false);
 
 	ASSERT_EQ(theCountry.getMobilizationLaw(), "limited_conscription");
 }
@@ -1343,12 +1343,12 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDecreasesIfRulingPartyPacifist
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	mockGovernmentMapper mockGovernmentMap;
-	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology", false))
 		 .WillOnce(testing::Return("testGovernmentIdeology"));
-	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology", false))
 		 .WillOnce(testing::Return("testLeaderIdeology"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations, false);
 
 	ASSERT_EQ(theCountry.getMobilizationLaw(), "disarmed_nation");
 }
@@ -1394,12 +1394,12 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfAtWar)
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	mockGovernmentMapper mockGovernmentMap;
-	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology", false))
 		 .WillOnce(testing::Return("testGovernmentIdeology"));
-	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology"))
+	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "testSourceIdeology", false))
 		 .WillOnce(testing::Return("testLeaderIdeology"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations, false);
 
 	ASSERT_EQ(theCountry.getEconomicLaw(), "low_economic_mobilisation");
 }
@@ -1431,12 +1431,12 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfFascist)
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	mockGovernmentMapper mockGovernmentMap;
-	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "fascism"))
+	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "fascism", false))
 		 .WillOnce(testing::Return("fascism"));
-	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "fascism"))
+	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "fascism", false))
 		 .WillOnce(testing::Return("fascism"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations, false);
 
 	ASSERT_EQ(theCountry.getEconomicLaw(), "partial_economic_mobilisation");
 }
@@ -1482,12 +1482,12 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfFascist)
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	mockGovernmentMapper mockGovernmentMap;
-	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "fascism"))
+	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "fascism", false))
 		 .WillOnce(testing::Return("fascism"));
-	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "fascism"))
+	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "fascism", false))
 		 .WillOnce(testing::Return("fascism"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations, false);
 
 	ASSERT_EQ(theCountry.getTradeLaw(), "limited_exports");
 }
@@ -1519,12 +1519,12 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfRadical)
 	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	mockGovernmentMapper mockGovernmentMap;
-	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "radical"))
+	EXPECT_CALL(mockGovernmentMap, getIdeologyForCountry("TAG", "testGovernment", "radical", false))
 		 .WillOnce(testing::Return("radical"));
-	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "radical"))
+	EXPECT_CALL(mockGovernmentMap, getLeaderIdeologyForCountry("TAG", "testGovernment", "radical", false))
 		 .WillOnce(testing::Return("radical"));
 
-	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations);
+	theCountry.convertGovernment(mockSourceWorld, mockGovernmentMap, *vic2Localisations, *hoi4Localisations, false);
 
 	ASSERT_EQ(theCountry.getTradeLaw(), "free_trade");
 }
