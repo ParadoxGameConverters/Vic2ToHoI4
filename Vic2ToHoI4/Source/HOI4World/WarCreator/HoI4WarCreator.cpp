@@ -786,11 +786,11 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI
 	auto name = Leader->getSourceCountry().getName("english");
 	if (name)
 	{
-		Log(LogLevel::Info) << "Calculating AI for " + *name;
+		Log(LogLevel::Info) << "\t\t\tCalculating AI for " + *name;
 	}
 	else
 	{
-		Log(LogLevel::Info) << "Calculating AI";
+		Log(LogLevel::Info) << "\t\t\tCalculating AI";
 	}
 	// too many lists, need to clean up
 	vector<shared_ptr<HoI4::Country>> Anschluss;
