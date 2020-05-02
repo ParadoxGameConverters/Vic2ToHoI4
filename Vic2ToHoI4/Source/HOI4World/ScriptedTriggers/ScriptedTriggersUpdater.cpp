@@ -11,7 +11,7 @@ void updateLawsWarSupportTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
 	 const std::set<std::string>& majorIdeologies);
 void HoI4::updateScriptedTriggers(ScriptedTriggers& scriptedTriggers, const std::set<std::string>& majorIdeologies)
 {
-	LOG(LogLevel::Info) << "\tUpdating scripted triggers";
+	Log(LogLevel::Info) << "\tUpdating scripted triggers";
 	updateIdeologyScriptedTriggers(scriptedTriggers, majorIdeologies);
 	updateElectionsScriptedTriggers(scriptedTriggers, majorIdeologies);
 	updateLawsWarSupportTriggers(scriptedTriggers, majorIdeologies);

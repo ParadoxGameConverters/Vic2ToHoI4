@@ -30,7 +30,7 @@ void HoI4::decisions::updateDecisions(const std::set<std::string>& majorIdeologi
 	 const std::map<int, DefaultState>& defaultStates,
 	 const Events& theEvents)
 {
-	LOG(LogLevel::Info) << "\tUpdating decisions";
+	Log(LogLevel::Info) << "\tUpdating decisions";
 
 	generateIdeologicalCategories(majorIdeologies, provinceToStateIdMap);
 

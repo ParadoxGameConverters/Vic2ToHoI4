@@ -16,7 +16,7 @@ HoI4::Buildings::Buildings(const States& theStates,
 	 const ProvinceDefinitions& provinceDefinitions,
 	 const Configuration& theConfiguration)
 {
-	LOG(LogLevel::Info) << "\tCreating buildings";
+	Log(LogLevel::Info) << "\tCreating buildings";
 
 	importDefaultBuildings(theMapData, provinceDefinitions, theConfiguration);
 	placeBuildings(theStates, theCoastalProvinces, theMapData, theConfiguration);
@@ -175,7 +175,7 @@ void HoI4::Buildings::placeArmsFactories(const States& theStates, const MapData&
 				}
 				else
 				{
-					LOG(LogLevel::Warning) << "Province " << theProvince
+					Log(LogLevel::Warning) << "Province " << theProvince
 												  << " did not have any points. "
 													  "Arms factories not fully set in state "
 												  << state.first << ".";
@@ -231,7 +231,7 @@ void HoI4::Buildings::placeIndustrialComplexes(const States& theStates, const Ma
 				}
 				else
 				{
-					LOG(LogLevel::Warning) << "Province " << theProvince
+					Log(LogLevel::Warning) << "Province " << theProvince
 												  << " did not have any points. "
 													  "Industrial complexes not fully set in state "
 												  << state.first << ".";
@@ -283,7 +283,7 @@ void HoI4::Buildings::placeAirports(const States& theStates, const MapData& theM
 			}
 			else
 			{
-				LOG(LogLevel::Warning) << "Province " << theProvince
+				Log(LogLevel::Warning) << "Province " << theProvince
 											  << " did not have any points. "
 												  "Airport not set for state "
 											  << state.first << ".";
@@ -332,7 +332,7 @@ void HoI4::Buildings::placeAntiAir(const States& theStates, const MapData& theMa
 				}
 				else
 				{
-					LOG(LogLevel::Warning) << "Province " << theProvince
+					Log(LogLevel::Warning) << "Province " << theProvince
 												  << " did not have any points. "
 													  "Anti-air not fully set in state "
 												  << state.first << ".";
@@ -359,7 +359,7 @@ void HoI4::Buildings::placeNavalBases(const std::map<int, int>& provinceToStateI
 		auto provinceToStateMapping = provinceToStateIDMap.find(province.first);
 		if (provinceToStateMapping == provinceToStateIDMap.end())
 		{
-			LOG(LogLevel::Warning) << "Could not find state for province " << province.first << ". Naval base not set.";
+			Log(LogLevel::Warning) << "Could not find state for province " << province.first << ". Naval base not set.";
 			continue;
 		}
 
@@ -404,7 +404,7 @@ void HoI4::Buildings::addNavalBase(int stateID,
 		auto possiblePosition = theMapData.getSpecifiedBorderCenter(province.first, province.second[0]);
 		if (!possiblePosition)
 		{
-			LOG(LogLevel::Warning) << "Could not find position for province " << province.first << ". Naval base not set.";
+			Log(LogLevel::Warning) << "Could not find position for province " << province.first << ". Naval base not set.";
 			return;
 		}
 
@@ -415,7 +415,7 @@ void HoI4::Buildings::addNavalBase(int stateID,
 
 		if (theConfiguration.getDebug())
 		{
-			LOG(LogLevel::Warning) << "The naval base from " << province.first << " to " << connectingSeaProvince
+			Log(LogLevel::Warning) << "The naval base from " << province.first << " to " << connectingSeaProvince
 										  << " at "
 											  "("
 										  << position.xCoordinate << ", " << position.zCoordinate
@@ -448,7 +448,7 @@ void HoI4::Buildings::addBunker(int stateID,
 		auto possiblePosition = theMapData.getAnyBorderCenter(province);
 		if (!possiblePosition)
 		{
-			LOG(LogLevel::Warning) << "Could not find position for province " << province << ". Bunker not set.";
+			Log(LogLevel::Warning) << "Could not find position for province " << province << ". Bunker not set.";
 			return;
 		}
 
@@ -459,7 +459,7 @@ void HoI4::Buildings::addBunker(int stateID,
 
 		if (theConfiguration.getDebug())
 		{
-			LOG(LogLevel::Warning) << "The bunker in " << province
+			Log(LogLevel::Warning) << "The bunker in " << province
 										  << " at "
 											  "("
 										  << position.xCoordinate << ", " << position.zCoordinate
@@ -482,7 +482,7 @@ void HoI4::Buildings::placeCoastalBunkers(const std::map<int, int>& provinceToSt
 		auto provinceToStateMapping = provinceToStateIDMap.find(province.first);
 		if (provinceToStateMapping == provinceToStateIDMap.end())
 		{
-			LOG(LogLevel::Warning) << "Could not find state for province " << province.first
+			Log(LogLevel::Warning) << "Could not find state for province " << province.first
 										  << ". Coastal bunker not set.";
 			continue;
 		}
@@ -512,7 +512,7 @@ void HoI4::Buildings::addCoastalBunker(int stateID,
 		auto possiblePosition = theMapData.getSpecifiedBorderCenter(province.first, province.second[0]);
 		if (!possiblePosition)
 		{
-			LOG(LogLevel::Warning) << "Could not find position for province " << province.first
+			Log(LogLevel::Warning) << "Could not find position for province " << province.first
 										  << ". Coastal bunker not set.";
 			return;
 		}
@@ -524,7 +524,7 @@ void HoI4::Buildings::addCoastalBunker(int stateID,
 
 		if (theConfiguration.getDebug())
 		{
-			LOG(LogLevel::Warning) << "The coastal bunker in " << province.first
+			Log(LogLevel::Warning) << "The coastal bunker in " << province.first
 										  << " at "
 											  "("
 										  << position.xCoordinate << ", " << position.zCoordinate
@@ -585,7 +585,7 @@ void HoI4::Buildings::placeDockyards(const States& theStates,
 					}
 					else
 					{
-						LOG(LogLevel::Warning) << "Province " << *theProvince
+						Log(LogLevel::Warning) << "Province " << *theProvince
 													  << " did not have any points. "
 														  "Dockyard not set for state "
 													  << state.first << ".";
@@ -629,7 +629,7 @@ void HoI4::Buildings::placeSyntheticRefineries(const States& theStates, const Ma
 			}
 			else
 			{
-				LOG(LogLevel::Warning) << "Province " << theProvince
+				Log(LogLevel::Warning) << "Province " << theProvince
 											  << " did not have any points. "
 												  "Synthetic refinery not set for state "
 											  << state.first << ".";
@@ -671,7 +671,7 @@ void HoI4::Buildings::placeNuclearReactors(const States& theStates, const MapDat
 			}
 			else
 			{
-				LOG(LogLevel::Warning) << "Province " << theProvince
+				Log(LogLevel::Warning) << "Province " << theProvince
 											  << " did not have any points. "
 												  "Nuclear reactor not set for state "
 											  << state.first << ".";

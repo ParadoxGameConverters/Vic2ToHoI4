@@ -7,7 +7,7 @@
 
 HoI4::Event HoI4::createGovernmentInExileEvent(const std::set<std::string>& majorIdeologies)
 {
-	LOG(LogLevel::Info) << "\tCreating government in exile event";
+	Log(LogLevel::Info) << "\tCreating government in exile event";
 
 	Event governmentInExileEvent;
 	governmentInExileEvent.giveType("country_event");

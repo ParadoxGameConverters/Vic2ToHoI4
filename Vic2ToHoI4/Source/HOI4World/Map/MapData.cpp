@@ -242,14 +242,14 @@ std::optional<point> HoI4::MapData::getSpecifiedBorderCenter(const int mainProvi
 	const auto bordersWithNeighbors = borders.find(mainProvince);
 	if (bordersWithNeighbors == borders.end())
 	{
-		LOG(LogLevel::Warning) << "Province " << mainProvince << " has no borders.";
+		Log(LogLevel::Warning) << "Province " << mainProvince << " has no borders.";
 		return std::nullopt;
 	}
 
 	const auto border = bordersWithNeighbors->second.find(neighbor);
 	if (border == bordersWithNeighbors->second.end())
 	{
-		LOG(LogLevel::Warning) << "Province " << mainProvince << " does not border " << neighbor << ".";
+		Log(LogLevel::Warning) << "Province " << mainProvince << " does not border " << neighbor << ".";
 		return std::nullopt;
 	}
 
@@ -262,14 +262,14 @@ std::optional<point> HoI4::MapData::getAnyBorderCenter(const int province) const
 	const auto bordersWithNeighbors = borders.find(province);
 	if (bordersWithNeighbors == borders.end())
 	{
-		LOG(LogLevel::Warning) << "Province " << province << " has no borders.";
+		Log(LogLevel::Warning) << "Province " << province << " has no borders.";
 		return std::nullopt;
 	}
 
 	const auto border = bordersWithNeighbors->second.begin();
 	if (border == bordersWithNeighbors->second.end())
 	{
-		LOG(LogLevel::Warning) << "Province " << province << " has no borders.";
+		Log(LogLevel::Warning) << "Province " << province << " has no borders.";
 		return std::nullopt;
 	}
 

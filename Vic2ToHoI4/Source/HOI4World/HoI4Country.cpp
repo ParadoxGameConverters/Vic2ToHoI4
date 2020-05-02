@@ -322,7 +322,7 @@ void HoI4::Country::determineCapitalFromVic2(const mappers::ProvinceMapper& theP
 	}
 	if (!success)
 	{
-		LOG(LogLevel::Warning) << "Could not properly set capital for " << tag;
+		Log(LogLevel::Warning) << "Could not properly set capital for " << tag;
 	}
 }
 
@@ -538,7 +538,7 @@ void HoI4::Country::addLeader(HoI4::namesMapper& theNames, graphicsMapper& theGr
 	}
 	else
 	{
-		LOG(LogLevel::Warning) << "Could not set leader for " + tag + ", as there were no names.";
+		Log(LogLevel::Warning) << "Could not set leader for " + tag + ", as there were no names.";
 		leaderPortrait = "gfx/leaders/ENG/portrait_eng_fallen_government.dds";
 		leaderName = "Nomen";
 		leaderSurname = "Nescio";
@@ -718,7 +718,7 @@ void HoI4::Country::convertConvoys(const UnitMappings& unitMap)
 			}
 			else
 			{
-				LOG(LogLevel::Warning) << "Unknown unit type: " << type;
+				Log(LogLevel::Warning) << "Unknown unit type: " << type;
 			}
 		}
 	}
@@ -758,7 +758,7 @@ void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 			}
 			else
 			{
-				LOG(LogLevel::Warning) << "Unknown unit type: " << type;
+				Log(LogLevel::Warning) << "Unknown unit type: " << type;
 			}
 		}
 	}
@@ -921,7 +921,7 @@ double HoI4::Country::calculateInfluenceFactor()
 {
 	if (sphereLeader.empty())
 	{
-		LOG(LogLevel::Debug) << tag << " has no sphere leader set";
+		Log(LogLevel::Debug) << tag << " has no sphere leader set";
 		return 55.5;
 	}
 	else

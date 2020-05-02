@@ -21,7 +21,7 @@ HoI4::ProvinceDefinitions HoI4::ProvinceDefinitions::Importer::importProvinceDef
 	std::ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
 	if (!definitions.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not open " << theConfiguration.getHoI4Path() << "/map/definition.csv";
+		Log(LogLevel::Error) << "Could not open " << theConfiguration.getHoI4Path() << "/map/definition.csv";
 		exit(-1);
 	}
 

@@ -8,7 +8,7 @@
 
 void HoI4::outputStates(const States& theStates, const std::string& outputName, const bool debugEnabled)
 {
-	LOG(LogLevel::Debug) << "Writing states";
+	Log(LogLevel::Debug) << "Writing states";
 
 	if (!Utils::TryCreateFolder("output/" + outputName + "/history/states"))
 	{

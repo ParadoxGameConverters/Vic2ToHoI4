@@ -37,7 +37,7 @@ void HoI4::Ideas::importGeneralIdeas()
 
 void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 {
-	LOG(LogLevel::Info) << "\tUpdating ideas";
+	Log(LogLevel::Info) << "\tUpdating ideas";
 
 	auto foundGroup = std::find_if(generalIdeas.begin(), generalIdeas.end(), [](auto& theGroup) {
 		return (theGroup.getName() == "mobilization_laws");

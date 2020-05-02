@@ -64,7 +64,7 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 			}
 			else
 			{
-				LOG(LogLevel::Warning) << "Unknown legacy unit type: " << type;
+				Log(LogLevel::Warning) << "Unknown legacy unit type: " << type;
 			}
 			if (mtgUnitMap.hasMatchingType(type))
 			{
@@ -85,7 +85,7 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 			}
 			else
 			{
-				LOG(LogLevel::Warning) << "Unknown mtg unit type: " << type;
+				Log(LogLevel::Warning) << "Unknown mtg unit type: " << type;
 			}
 		}
 

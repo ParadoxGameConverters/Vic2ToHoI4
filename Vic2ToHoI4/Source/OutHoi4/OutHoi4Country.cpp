@@ -577,7 +577,7 @@ void outputFactions(std::ostream& output,
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not name alliance";
+			Log(LogLevel::Warning) << "Could not name alliance";
 			allianceName = "faction";
 		}
 		output << "create_faction = \"" + allianceName + "\"\n";

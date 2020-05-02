@@ -102,7 +102,7 @@ void HoI4::Localisation::Importer::importLocalisationFile(const std::string& fil
 	std::ifstream file(filename);
 	if (!file.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not open " << filename;
+		Log(LogLevel::Error) << "Could not open " << filename;
 		exit(-1);
 	}
 	char bitBucket[3];
@@ -177,11 +177,11 @@ void HoI4::Localisation::createCountryLocalisations(const std::pair<const std::s
 
 	if (!addNeutralLocalisation(tags, std::make_pair(std::string(), std::string("_DEF")), vic2Localisations))
 	{
-		LOG(LogLevel::Warning) << "Could not find plain localisation for " << tags.first;
+		Log(LogLevel::Warning) << "Could not find plain localisation for " << tags.first;
 	}
 	if (!addNeutralLocalisation(tags, std::make_pair(std::string("_ADJ"), std::string()), vic2Localisations))
 	{
-		LOG(LogLevel::Warning) << "Could not find plain adjective localisation for " << tags.first;
+		Log(LogLevel::Warning) << "Could not find plain adjective localisation for " << tags.first;
 	}
 }
 
@@ -355,7 +355,7 @@ void HoI4::Localisation::copyFocusLocalisations(const std::string& oldKey, const
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not find original localisation for " << oldKey << " in "
+			Log(LogLevel::Warning) << "Could not find original localisation for " << oldKey << " in "
 										  << languageLocalisations.first;
 		}
 
@@ -387,7 +387,7 @@ void HoI4::Localisation::copyEventLocalisations(const std::string& oldKey, const
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not find original localisation for " << oldKey << " in "
+			Log(LogLevel::Warning) << "Could not find original localisation for " << oldKey << " in "
 										  << languageLocalisations.first;
 		}
 	}
@@ -417,7 +417,7 @@ void HoI4::Localisation::addStateLocalisations(const States& states,
 	 const mappers::ProvinceMapper& theProvinceMapper,
 	 const Configuration& theConfiguration)
 {
-	LOG(LogLevel::Info) << "\tAdding state localisations";
+	Log(LogLevel::Info) << "\tAdding state localisations";
 	for (const auto& state: states.getStates())
 	{
 		auto VPPositionInHoI4 = state.second.getVPLocation();
@@ -547,7 +547,7 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 		}
 		else
 		{
-			LOG(LogLevel::Warning) << "Could not find localization for Vic2 province " << theProvince->getNumber();
+			Log(LogLevel::Warning) << "Could not find localization for Vic2 province " << theProvince->getNumber();
 		}
 	}
 	else if (sourceStateHasAllButOneProvinceFromDefinition(vic2State, theStateDefinitions))
@@ -578,7 +578,7 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 		else
 		{
 			localisedName = Vic2NameInLanguage.second + " Wasteland";
-			LOG(LogLevel::Warning) << Vic2NameInLanguage.second << " had a wasteland section with no localisation. Add "
+			Log(LogLevel::Warning) << Vic2NameInLanguage.second << " had a wasteland section with no localisation. Add "
 										  << vic2State.getStateID()
 										  << "_WASTELAND to DataFiles/Vic2Localisations.csv for better conversion.";
 		}
@@ -712,13 +712,13 @@ void HoI4::Localisation::addIdeaLocalisation(const std::string& idea, const std:
 				}
 				else
 				{
-					LOG(LogLevel::Warning) << "Could not find localisation for " << genericIdeaStr << " in "
+					Log(LogLevel::Warning) << "Could not find localisation for " << genericIdeaStr << " in "
 												  << localisationInLanguage.first;
 				}
 			}
 			else
 			{
-				LOG(LogLevel::Warning) << "No generic idea localisations found for " << localisationInLanguage.first;
+				Log(LogLevel::Warning) << "No generic idea localisations found for " << localisationInLanguage.first;
 			}
 		}
 	}
@@ -766,13 +766,13 @@ void HoI4::Localisation::addDecisionLocalisation(const std::string& key, const s
 				}
 				else
 				{
-					LOG(LogLevel::Warning) << "Could not find localisation for " << genericIdeaStr << " in "
+					Log(LogLevel::Warning) << "Could not find localisation for " << genericIdeaStr << " in "
 												  << localisationInLanguage.first;
 				}
 			}
 			else
 			{
-				LOG(LogLevel::Warning) << "No generic idea localisations found for " << localisationInLanguage.first;
+				Log(LogLevel::Warning) << "No generic idea localisations found for " << localisationInLanguage.first;
 			}
 		}
 	}
@@ -782,7 +782,7 @@ void HoI4::Localisation::addDecisionLocalisation(const std::string& key, const s
 void HoI4::Localisation::generateCustomLocalisations(ScriptedLocalisations& scriptedLocalisations,
 	 const std::set<std::string>& majorIdeologies)
 {
-	LOG(LogLevel::Info) << "\tGenerating custom localisations";
+	Log(LogLevel::Info) << "\tGenerating custom localisations";
 
 	std::ifstream languageReplacementsFile("DataFiles/languageReplacements.txt");
 	if (!languageReplacementsFile.is_open())

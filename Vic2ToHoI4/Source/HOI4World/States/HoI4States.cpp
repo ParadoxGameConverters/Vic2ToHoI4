@@ -41,7 +41,7 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 {
 	int num;
 
-	LOG(LogLevel::Info) << "\tConverting states";
+	Log(LogLevel::Info) << "\tConverting states";
 	registerKeyword(std::regex("state"), [this, &num](const std::string& unused, std::istream& theStream) {
 		defaultStates.insert(std::make_pair(num, HoI4::DefaultState(theStream)));
 	});
@@ -92,7 +92,7 @@ void HoI4::States::determineOwnersAndCores(const CountryMapper& countryMap,
 			auto HoI4Tag = countryMap.getHoI4Tag(oldOwner);
 			if (!HoI4Tag)
 			{
-				LOG(LogLevel::Warning) << "Could not map states owned by " << oldOwner
+				Log(LogLevel::Warning) << "Could not map states owned by " << oldOwner
 											  << " in Vic2, as there is no mathcing HoI4 country.";
 				continue;
 			}
@@ -122,7 +122,7 @@ std::optional<std::vector<int>> HoI4::States::retrieveSourceProvinceNums(int pro
 	}
 	else
 	{
-		LOG(LogLevel::Warning) << "No source for HoI4 land province " << provNum;
+		Log(LogLevel::Warning) << "No source for HoI4 land province " << provNum;
 		return std::nullopt;
 	}
 }
@@ -139,7 +139,7 @@ const std::map<std::string, std::pair<int, int>> HoI4::States::determinePotentia
 		auto srcProvince = sourceWorld.getProvince(srcProvNum);
 		if (!srcProvince)
 		{
-			LOG(LogLevel::Warning) << "Old province " << srcProvNum << " does not exist (bad mapping?)";
+			Log(LogLevel::Warning) << "Old province " << srcProvNum << " does not exist (bad mapping?)";
 			continue;
 		}
 		auto owner = (*srcProvince)->getOwner();
@@ -308,7 +308,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 	}
 
 	unsigned int manpower = getTotalManpower();
-	LOG(LogLevel::Info) << "\t\tTotal manpower was " << manpower << ", which is " << manpower / 20438756.2
+	Log(LogLevel::Info) << "\t\tTotal manpower was " << manpower << ", which is " << manpower / 20438756.2
 							  << "% of default HoI4.";
 }
 
@@ -474,7 +474,7 @@ unsigned int HoI4::States::getTotalManpower() const
 void HoI4::States::convertAirBases(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
 	 const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers)
 {
-	LOG(LogLevel::Info) << "\tConverting air bases";
+	Log(LogLevel::Info) << "\tConverting air bases";
 	addBasicAirBases();
 	addCapitalAirBases(countries);
 	addGreatPowerAirBases(greatPowers);
@@ -524,7 +524,7 @@ void HoI4::States::addBasicAirBases()
 
 void HoI4::States::convertResources()
 {
-	LOG(LogLevel::Info) << "\tConverting resources";
+	Log(LogLevel::Info) << "\tConverting resources";
 	Resources resourceMap;
 
 	for (auto& state: states)
@@ -563,7 +563,7 @@ void HoI4::States::convertCapitalVPs(const std::map<std::string, std::shared_ptr
 	 const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers,
 	 double greatestStrength)
 {
-	LOG(LogLevel::Info) << "\tConverting capital VPs";
+	Log(LogLevel::Info) << "\tConverting capital VPs";
 
 	addBasicCapitalVPs(countries);
 	addGreatPowerVPs(greatPowers);
@@ -573,7 +573,7 @@ void HoI4::States::convertCapitalVPs(const std::map<std::string, std::shared_ptr
 
 void HoI4::States::addCapitalsToStates(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries)
 {
-	LOG(LogLevel::Info) << "\tAdding capitals to states";
+	Log(LogLevel::Info) << "\tAdding capitals to states";
 	for (auto country: countries)
 	{
 		if (auto capitalState = states.find(*country.second->getCapitalState()); capitalState != states.end())

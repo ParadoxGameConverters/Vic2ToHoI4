@@ -6,7 +6,7 @@
 
 HoI4::militaryMappingsFile::militaryMappingsFile()
 {
-	LOG(LogLevel::Info) << "\tImporting military mappings";
+	Log(LogLevel::Info) << "\tImporting military mappings";
 	std::ifstream unitMappingFile("DataFiles/unit_mappings.txt");
 	if (unitMappingFile.is_open())
 	{
