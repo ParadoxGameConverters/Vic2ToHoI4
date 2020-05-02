@@ -8,32 +8,32 @@
 
 Vic2::Regiment::Regiment(std::istream& theStream)
 {
-	registerKeyword(std::regex("name"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString nameString(theStream);
 		name = Utils::convertWin1252ToUTF8(nameString.getString());
 	});
-	registerKeyword(std::regex("type"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("type", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString typeString(theStream);
 		type = typeString.getString();
 	});
-	registerKeyword(std::regex("strength"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("strength", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleDouble strengthDouble(theStream);
 		strength = strengthDouble.getDouble();
 	});
-	registerKeyword(std::regex("organisation"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("organisation", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleDouble organizationDouble(theStream);
 		organization = organizationDouble.getDouble();
 	});
-	registerKeyword(std::regex("experience"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("experience", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleDouble experienceDouble(theStream);
 		experience = experienceDouble.getDouble();
 	});
-	registerKeyword(std::regex("pop"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("pop", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::simpleObject pop_def(theStream);
 		pop_id = pop_def.getValueAsInt("id");
 	});
 
-	registerKeyword(std::regex("[A-Za-z0-9_]+"), commonItems::ignoreItem);
+	registerRegex("[A-Za-z0-9_]+", commonItems::ignoreItem);
 
 	parseStream(theStream);
 

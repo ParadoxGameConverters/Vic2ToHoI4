@@ -1,6 +1,7 @@
 #include "CultureGroups.h"
 #include "../Configuration.h"
 #include "Log.h"
+#include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 
 
@@ -47,8 +48,11 @@ void Vic2::cultureGroups::init(const Configuration& theConfiguration)
 
 	for (auto mod: theConfiguration.getVic2Mods())
 	{
-		Log(LogLevel::Info) << "\tReading mod cultures from " << mod;
-		parseFile((theConfiguration.getVic2Path() + "/mod/" + mod + "/common/cultures.txt"));
+		if (Utils::DoesFileExist(theConfiguration.getVic2Path() + "/mod/" + mod + "/common/cultures.txt"))
+		{
+			Log(LogLevel::Info) << "\tReading mod cultures from " << mod;
+			parseFile((theConfiguration.getVic2Path() + "/mod/" + mod + "/common/cultures.txt"));
+		}
 	}
 
 	parseFile((theConfiguration.getVic2Path() + "/common/cultures.txt"));

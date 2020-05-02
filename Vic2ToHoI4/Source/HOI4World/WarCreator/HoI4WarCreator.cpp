@@ -559,8 +559,7 @@ void HoI4WarCreator::establishProvincePositions()
 	ifstream positionsFile("positions.txt");
 	if (!positionsFile.is_open())
 	{
-		Log(LogLevel::Error) << "Could not open positions.txt";
-		exit(-1);
+		throw std::runtime_error("Could not open positions.txt");
 	}
 
 	string line;

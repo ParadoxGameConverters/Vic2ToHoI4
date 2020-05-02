@@ -305,8 +305,7 @@ void Vic2::World::readCountryFiles(const Configuration& theConfiguration)
 	{
 		if (!processCountriesDotTxt(theConfiguration.getVic2Path() + "/common/countries.txt", "", theConfiguration))
 		{
-			Log(LogLevel::Error) << "Could not open " << theConfiguration.getVic2Path() + "/common/countries.txt";
-			exit(-1);
+			throw std::runtime_error("Could not open " + theConfiguration.getVic2Path() + "/common/countries.txt");
 		}
 	}
 }

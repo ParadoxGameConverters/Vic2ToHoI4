@@ -76,7 +76,6 @@ void createModFiles(const std::string& outputName)
 		throw std::runtime_error("Could not create descriptor.mod");
 	}
 	descriptorFile << "name = \"Converted - " << outputName << "\"\n";
-	descriptorFile << "user_dir = \"" << outputName << "_user_dir\"\n";
 	descriptorFile << "replace_path=\"common/ideologies\"\n";
 	descriptorFile << "replace_path=\"history/countries\"\n";
 	descriptorFile << "replace_path=\"history/states\"\n";
