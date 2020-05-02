@@ -20,10 +20,10 @@ void ConvertV2ToHoI4(const std::string& V2SaveFileName)
 	setOutputName(V2SaveFileName, *theConfiguration);
 	clearOutputFolder(theConfiguration->getOutputName());
 
-	const mappers::ProvinceMapper provinceMapper = mappers::ProvinceMapper::Parser{}.initializeMapper(*theConfiguration);
+	const auto provinceMapper = mappers::ProvinceMapper::Parser{}.initializeMapper(*theConfiguration);
 
 	Vic2::World sourceWorld(V2SaveFileName, provinceMapper, *theConfiguration);
-	HoI4::World destWorld(&sourceWorld, provinceMapper, *theConfiguration);
+	const HoI4::World destWorld(&sourceWorld, provinceMapper, *theConfiguration);
 
 	output(destWorld,
 		 theConfiguration->getOutputName(),
@@ -31,36 +31,35 @@ void ConvertV2ToHoI4(const std::string& V2SaveFileName)
 		 theConfiguration->getVic2Mods(),
 		 theConfiguration->getVic2Path(),
 		 *theConfiguration);
-	LOG(LogLevel::Info) << "* Conversion complete *";
+	Log(LogLevel::Info) << "* Conversion complete *";
 }
 
 
 void checkMods(const Configuration& theConfiguration)
 {
-	LOG(LogLevel::Info) << "Double-checking Vic2 mods";
+	Log(LogLevel::Info) << "Double-checking Vic2 mods";
 
 	std::set<std::string> fileNames;
 	Utils::GetAllFilesInFolder(theConfiguration.getVic2Path() + "/mod", fileNames);
-	for (auto fileName: fileNames)
+	for (const auto& fileName: fileNames)
 	{
-		const int lastPeriodPos = fileName.find_last_of('.');
+		const auto lastPeriodPos = fileName.find_last_of('.');
 		if ((lastPeriodPos != std::string::npos) && (fileName.substr(lastPeriodPos, fileName.length()) == ".mod"))
 		{
-			std::string folderName = fileName.substr(0, lastPeriodPos);
+			auto folderName = fileName.substr(0, lastPeriodPos);
 			if (Utils::doesFolderExist(theConfiguration.getVic2Path() + "/mod/" + folderName))
 			{
-				LOG(LogLevel::Debug) << "Found mod with name " << folderName;
+				Log(LogLevel::Info) << "\tFound mod with name " << folderName;
 			}
 		}
 	}
 
-	for (auto expectedMod: theConfiguration.getVic2Mods())
+	for (const auto& expectedMod: theConfiguration.getVic2Mods())
 	{
-		LOG(LogLevel::Debug) << "Expecting a mod with name " << expectedMod;
+		Log(LogLevel::Info) << "\tExpecting a mod with name " << expectedMod;
 		if (!Utils::doesFolderExist(theConfiguration.getVic2Path() + "/mod/" + expectedMod))
 		{
-			LOG(LogLevel::Error) << "Could not find expected mod";
-			exit(-1);
+			throw std::runtime_error("Could not find expected mod " + expectedMod);
 		}
 	}
 }
@@ -68,15 +67,15 @@ void checkMods(const Configuration& theConfiguration)
 
 void setOutputName(const std::string& V2SaveFileName, Configuration& theConfiguration)
 {
-	std::string outputName = V2SaveFileName;
+	auto outputName = V2SaveFileName;
 
 	if (outputName.empty())
 	{
 		return;
 	}
 
-	const int lastBackslash = V2SaveFileName.find_last_of('\\');
-	const int lastSlash = V2SaveFileName.find_last_of('/');
+	const auto lastBackslash = V2SaveFileName.find_last_of('\\');
+	const auto lastSlash = V2SaveFileName.find_last_of('/');
 	if ((lastBackslash == std::string::npos) && (lastSlash != std::string::npos))
 	{
 		outputName = outputName.substr(lastSlash + 1, outputName.length());
@@ -87,7 +86,7 @@ void setOutputName(const std::string& V2SaveFileName, Configuration& theConfigur
 	}
 	else if ((lastBackslash != std::string::npos) && (lastSlash != std::string::npos))
 	{
-		const int slash = std::max(lastBackslash, lastSlash);
+		const auto slash = std::max(lastBackslash, lastSlash);
 		outputName = outputName.substr(slash + 1, outputName.length());
 	}
 	else if ((lastBackslash == std::string::npos) && (lastSlash == std::string::npos))
@@ -95,12 +94,11 @@ void setOutputName(const std::string& V2SaveFileName, Configuration& theConfigur
 		// no change, but explicitly considered
 	}
 
-	const int length = outputName.find_last_of('.');
+	const auto length = outputName.find_last_of('.');
 	if ((length == std::string::npos) || (".v2" != outputName.substr(length, outputName.length())))
 	{
-		std::invalid_argument theException(
+		throw std::invalid_argument(
 			 "The save was not a Vic2 save. Choose a save ending in '.v2' and convert again.");
-		throw theException;
 	}
 	outputName = outputName.substr(0, length);
 
@@ -108,5 +106,5 @@ void setOutputName(const std::string& V2SaveFileName, Configuration& theConfigur
 	std::replace(outputName.begin(), outputName.end(), ' ', '_');
 
 	theConfiguration.setOutputName(outputName);
-	LOG(LogLevel::Info) << "Using output name " << outputName;
+	Log(LogLevel::Info) << "Using output name " << outputName;
 }
