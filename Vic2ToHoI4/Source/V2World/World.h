@@ -4,10 +4,10 @@
 
 
 #include "CultureGroups.h"
+#include "Parser.h"
 #include "Party.h"
 #include "StateDefinitions.h"
 #include "Wars/War.h"
-#include "Parser.h"
 #include <map>
 #include <optional>
 #include <string>
@@ -37,22 +37,23 @@ class World: commonItems::parser
 	explicit World(const std::string& filename,
 		 const mappers::ProvinceMapper& provinceMapper,
 		 const Configuration& theConfiguration);
+	World(const World&) = delete;
+	World& operator=(const World&) = delete;
+	World(World&&) = delete;
+	World& operator=(World&&) = delete;
 	virtual ~World() = default;
 
-	std::optional<const Province*> getProvince(int provNum) const;
+	[[nodiscard]] std::optional<const Province*> getProvince(int provNum) const;
 
-	std::map<std::string, Country*> getCountries() const { return countries; }
-	const Diplomacy* getDiplomacy() const { return diplomacy; }
-	std::vector<std::string> getGreatPowers() const { return greatPowers; }
-	virtual std::vector<Party> getParties() const { return parties; }
-	auto getProvinces() const { return provinces; }
+	[[nodiscard]] std::map<std::string, Country*> getCountries() const { return countries; }
+	[[nodiscard]] const Diplomacy* getDiplomacy() const { return diplomacy; }
+	[[nodiscard]] std::vector<std::string> getGreatPowers() const { return greatPowers; }
+	[[nodiscard]] virtual std::vector<Party> getParties() const { return parties; }
+	[[nodiscard]] auto getProvinces() const { return provinces; }
 	[[nodiscard]] const auto& getStateDefinitions() const { return *theStateDefinitions; }
 	[[nodiscard]] const auto& getLocalisations() const { return *theLocalisations; }
 
   private:
-	World(const World&) = delete;
-	World& operator=(const World&) = delete;
-
 	void setLocalisations(Localisations& vic2Localisations);
 	void handleMissingCountryCultures();
 
@@ -76,10 +77,10 @@ class World: commonItems::parser
 	bool processCountriesDotTxt(const std::string& countryListFile,
 		 const std::string& mod,
 		 const Configuration& theConfiguration);
-	bool shouldLineBeSkipped(const std::string& line) const;
-	std::string extractCountryFileName(const std::string& countryFileLine) const;
+	static bool shouldLineBeSkipped(const std::string& line);
+	static std::string extractCountryFileName(const std::string& countryFileLine);
 
-	std::optional<Country*> getCountry(const std::string& tag) const;
+	[[nodiscard]] std::optional<Country*> getCountry(const std::string& tag) const;
 
 
 	std::map<int, Province*> provinces;
