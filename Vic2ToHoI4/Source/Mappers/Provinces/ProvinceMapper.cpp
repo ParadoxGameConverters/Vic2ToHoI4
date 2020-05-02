@@ -16,7 +16,7 @@ mappers::ProvinceMapper mappers::ProvinceMapper::Parser::initializeMapper(const 
 			 const HoI4::Version currentVersion(version);
 			 if ((theConfiguration.getHOI4Version() >= currentVersion) && !gotMappings)
 			 {
-				 LOG(LogLevel::Debug) << "Using version " << version << " mappings";
+				 Log(LogLevel::Info) << "\tUsing version " << version << " mappings";
 				 const VersionedMappings thisVersionsMappings(theStream);
 				 HoI4ToVic2ProvinceMap = thisVersionsMappings.getHoI4ToVic2Mapping();
 				 Vic2ToHoI4ProvinceMap = thisVersionsMappings.getVic2ToHoI4Mapping();
@@ -28,7 +28,7 @@ mappers::ProvinceMapper mappers::ProvinceMapper::Parser::initializeMapper(const 
 			 }
 		 });
 
-	LOG(LogLevel::Info) << "Parsing province mappings";
+	Log(LogLevel::Info) << "Parsing province mappings";
 
 	auto mapped = false;
 	for (const auto& mod: theConfiguration.getVic2Mods())
@@ -56,8 +56,7 @@ void mappers::ProvinceMapper::Parser::checkAllHoI4ProvincesMapped(const Configur
 	std::ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
 	if (!definitions.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not open " << theConfiguration.getHoI4Path() << "/map/definition.csv";
-		exit(EXIT_FAILURE);
+		throw std::runtime_error("Could not open " + theConfiguration.getHoI4Path() + "/map/definition.csv");
 	}
 
 	while (true)
@@ -98,7 +97,7 @@ void mappers::ProvinceMapper::Parser::verifyProvinceIsMapped(const int provNum) 
 		const auto num = HoI4ToVic2ProvinceMap.find(provNum);
 		if (num == HoI4ToVic2ProvinceMap.end())
 		{
-			LOG(LogLevel::Warning) << "No mapping for HoI4 province " << provNum;
+			Log(LogLevel::Warning) << "No mapping for HoI4 province " << provNum;
 		}
 	}
 }
