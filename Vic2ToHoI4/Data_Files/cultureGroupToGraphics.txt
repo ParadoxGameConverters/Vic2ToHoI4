@@ -27,7 +27,7 @@ germanic = {
 	leader_portraits = {
 		communism = { "gfx/leaders/GER/Portrait_Germany_Wilhelm_Pieck.dds" }
 		democratic = { "gfx/leaders/GER/Portrait_Germany_Konrad_Adenauer.dds" }
-		fascism = { "gfx/leaders/GER/Portrait_Germany_Hilter_M.dds" } #Grandpa Hilter
+		fascism = { "gfx/leaders/GER/Portrait_Germany_Hilter_M.dds" } # Grandpa Hitler
 		absolutist = { "GFX_portrait_ger_wilhelm_ii" }
 		neutrality = { "GFX_portrait_ger_august_von_mackensen" }
 		radical = { "gfx/leaders/Europe/portrait_europe_generic_land_10.dds" } #Helmuth Weidling
@@ -44,7 +44,7 @@ germanic = {
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
 }
-jewish_cultures = { #HPM
+jewish_group = {
 	leader_portraits = {
 		communism = { "gfx/leaders/OC/portrait_ISR_Shmuel_Mikunis.dds" } 
 		democratic = { "gfx/leaders/OC/portrait_ISR_David_Ben_Gurion.dds" } 
@@ -195,8 +195,8 @@ italian = {
 	leader_portraits = {
 		communism = { "GFX_portrait_ita_palmiro_togliatti" }
 		democratic = { "gfx/leaders/ITA/portrait_ita_ferruccio_parri.dds" }
-		fascism = { "gfx/leaders/ITA/portrait_italy_emilio_de_bono.dds" } #Can't put Mussolini, too obvious
-		absolutist = { "gfx/leaders/ITA/Portrait_Italy_Victor_Emmanuel_III.dds" }
+		fascism = { "gfx/leaders/ITA/Portrait_Italy_Benito_Mussolini.dds" }
+		absolutist = { "gfx/leaders/ITA/portrait_italy_emilio_de_bono.dds" } #Can't put Mussolini, too obvious
 		neutrality = { "gfx/leaders/ITA/Portrait_Italy_Pietro_Badoglio.dds" }
 		radical = { "gfx/leaders/ITA/Portrait_Italy_Generic_3.dds" } #Julius Evola
 	}
@@ -208,6 +208,27 @@ italian = {
 		absolutist = { "gfx/interface/ideas/idea_victor_emmanuel.dds" }
 		neutrality = { "gfx/interface/ideas/idea_alberto_da_zara.dds" } 
 		radical = { "gfx/interface/ideas/idea_alfredo_guzzoni.dds" } 
+	}
+	graphical_culture = { western_european_gfx }
+	graphical_culture_2d = { western_european_2d }
+}
+romantic = {
+	leader_portraits = {
+		communism = { "GFX_portrait_ita_palmiro_togliatti" } # Revise
+		democratic = { "gfx/leaders/ITA/portrait_ita_ferruccio_parri.dds" } # Revise
+		fascism = { "gfx/leaders/ITA/Portrait_Italy_Benito_Mussolini.dds" } # Revise
+		absolutist = { "gfx/leaders/ITA/Portrait_Italy_Victor_Emmanuel_III.dds" } # Revise
+		neutrality = { "gfx/leaders/ITA/Portrait_Italy_Pietro_Badoglio.dds" } # Revise
+		radical = { "gfx/leaders/ITA/Portrait_Italy_Generic_3.dds" } # Revise
+	}
+	ideology_minister_portraits = 
+	{
+		communism = { "gfx/interface/ideas/idea_amadeo_bordiga.dds" } # Revise
+		democratic = { "gfx/interface/ideas/idea_ivanoe_bonomi.dds" } # Revise
+		fascism = { "gfx/interface/ideas/idea_carlo_scorza.dds" } # Revise
+		absolutist = { "gfx/interface/ideas/idea_victor_emmanuel.dds" } # Revise
+		neutrality = { "gfx/interface/ideas/idea_alberto_da_zara.dds" } # Revise
+		radical = { "gfx/interface/ideas/idea_alfredo_guzzoni.dds" } # Revise
 	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
@@ -989,7 +1010,7 @@ equine = {
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
 }
-non_human = { #Animals
+non_human = {
 	leader_portraits = {
 		communism = { "gfx/leaders/operative_unknown.dds" } 
 		democratic = { "gfx/leaders/operative_unknown.dds" } 
@@ -1010,7 +1031,7 @@ non_human = { #Animals
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
 }
-anti_human = { #Aliens & Zombies
+anti_human = {
 	leader_portraits = {
 		communism = { "GFX_portrait_eng_fallen_government" } 
 		democratic = { "GFX_portrait_eng_fallen_government" } 
