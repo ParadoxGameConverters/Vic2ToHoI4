@@ -315,9 +315,11 @@ bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile,
 	 const std::string& mod,
 	 const Configuration& theConfiguration)
 {
+	Log(LogLevel::Debug) << "Attempting to process " << countryListFile;
 	std::ifstream V2CountriesInput(countryListFile);
 	if (!V2CountriesInput.is_open())
 	{
+		Log(LogLevel::Debug) << "Could not open " << countryListFile;
 		return false;
 	}
 
@@ -325,6 +327,7 @@ bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile,
 	{
 		std::string line;
 		getline(V2CountriesInput, line);
+		Log(LogLevel::Debug) << "Processing line: " << line;
 		if (shouldLineBeSkipped(line))
 		{
 			continue;
