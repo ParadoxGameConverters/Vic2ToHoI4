@@ -23,7 +23,7 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const decision& outDecis
 	}
 	if (!outDecision.highlightStateTargets.empty())
 	{
-		outStream << "\n\t\thighlight_state_targets " << outDecision.highlightStateTargets << "\n";
+		outStream << "\n\t\thighlight_states " << outDecision.highlightStateTargets << "\n";
 	}
 	if (!outDecision.available.empty())
 	{
