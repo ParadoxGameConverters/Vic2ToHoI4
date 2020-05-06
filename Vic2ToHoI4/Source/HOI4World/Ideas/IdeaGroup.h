@@ -31,6 +31,7 @@ class IdeaGroup: commonItems::parser
 
 	bool law = false;
 	bool designer = false;
+	bool useListView = false;
 
 	std::vector<Idea> ideas;
 };
