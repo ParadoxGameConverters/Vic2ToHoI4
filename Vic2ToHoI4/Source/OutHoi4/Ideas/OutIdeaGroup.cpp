@@ -10,6 +10,10 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const IdeaGroup& outIdea
 	{
 		outStream << "\t\tlaw = yes\n";
 	}
+	if (outIdeaGroup.useListView)
+	{
+		outStream << "\t\tuse_list_view = yes\n";
+	}
 	if (outIdeaGroup.designer)
 	{
 		outStream << "\t\tdesigner = yes\n";

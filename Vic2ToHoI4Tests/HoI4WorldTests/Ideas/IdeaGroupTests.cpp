@@ -68,6 +68,45 @@ TEST(HoI4World_Ideas_IdeaGroupTests, LawOnlySetWithYes)
 }
 
 
+TEST(HoI4World_Ideas_IdeaGroupTests, UseListViewCanBeSet)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\t\tuse_list_view = yes\n";
+	input << "\t}";
+	const HoI4::IdeaGroup theIdeaGroup("theName", input);
+
+	std::stringstream actualOutput;
+	actualOutput << theIdeaGroup;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\ttheName = {\n";
+	expectedOutput << "\t\tuse_list_view = yes\n";
+	expectedOutput << "\t}\n";
+
+	ASSERT_EQ(expectedOutput.str(), actualOutput.str());
+}
+
+
+TEST(HoI4World_Ideas_IdeaGroupTests, UseListViewOnlySetWithYes)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\t\tuse_list_view = no\n";
+	input << "\t}";
+	const HoI4::IdeaGroup theIdeaGroup("theName", input);
+
+	std::stringstream actualOutput;
+	actualOutput << theIdeaGroup;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\ttheName = {\n";
+	expectedOutput << "\t}\n";
+
+	ASSERT_EQ(expectedOutput.str(), actualOutput.str());
+}
+
+
 TEST(HoI4World_Ideas_IdeaGroupTests, DesignerCanBeSet)
 {
 	std::stringstream input;
