@@ -1,0 +1,55 @@
+name = Vic2ToHoI4
+converterFolder = Vic2ToHoI4
+displayName = VIC2DISPLAYNAME
+sourceGame = VIC2GAME
+targetGame = HOI4GAME
+
+requiredFile = {
+	name = SaveGame
+	displayName = VIC2SAVE
+	tooltip = VIC2SAVETIP
+	mandatory = true
+	outputtable = true
+	searchPathType = windowsUsersFolder
+	searchPath = "Paradox Interactive\Victoria II\save games"
+	allowedExtension = "*.v2"
+}
+
+requiredFile = {
+	name = converterExe
+	displayName = VIC2FILE
+	tooltip = VIC2FILETIP
+	mandatory = true
+	outputtable = false
+	searchPathType = converterFolder
+	searchPath = "Vic2ToHoI4"
+	allowedExtension = "*.exe"
+	fileName = "V2ToHoI4Converter.exe"
+}
+
+requiredFolder = {
+	name = Vic2directory
+	displayName = VIC2FOLDER
+	tooltip = VIC2FOLDERTIP
+	mandatory = true
+	searchPathType = steamFolder
+	searchPathID = 42960
+}
+
+requiredFolder = {
+	name = HoI4directory
+	displayName = HOI4FOLDER
+	tooltip = HOI4FOLDERTIP
+	mandatory = true
+	searchPathType = steamFolder
+	searchPathID = 394360
+}
+
+requiredFolder = {
+	name = targetGameModPath
+	displayName = HOI4MOD
+	tooltip = HOI4MODTIP
+	mandatory = true
+	searchPathType = windowsUsersFolder
+	searchPath = "Paradox Interactive\Hearts of Iron IV\mod"
+}

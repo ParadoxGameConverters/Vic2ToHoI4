@@ -136,6 +136,9 @@
     <Filter Include="Vic2World\Issues">
       <UniqueIdentifier>{a25ec0d7-f1f4-43df-9fc6-01b43cbe78a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data Files\Fronter">
+      <UniqueIdentifier>{19aa6118-ccad-4df6-bb5f-c97fad2dcb0d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1543,9 +1546,6 @@
     <CopyFileToFolders Include="Data_Files\shipTypes.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\SupportedConvertersDefault.xml">
-      <Filter>Data Files</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\tech_mapping.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
@@ -1553,9 +1553,6 @@
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Vic2Localisations.csv">
-      <Filter>Data Files</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Vic2toHoI4DefaultConfiguration.xml">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\FlagsToIdeasMappings.txt">
@@ -17879,5 +17876,51 @@
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\version.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Data_Files\Fronter\configuration_l_english.yml">
+      <Filter>Data Files\Fronter</Filter>
+    </None>
+    <None Include="Data_Files\Fronter\configuration_l_french.yml">
+      <Filter>Data Files\Fronter</Filter>
+    </None>
+    <None Include="Data_Files\Fronter\configuration_l_german.yml">
+      <Filter>Data Files\Fronter</Filter>
+    </None>
+    <None Include="Data_Files\Fronter\configuration_l_italian.yml">
+      <Filter>Data Files\Fronter</Filter>
+    </None>
+    <None Include="Data_Files\Fronter\configuration_l_latin.yml">
+      <Filter>Data Files\Fronter</Filter>
+    </None>
+    <None Include="Data_Files\Fronter\configuration_l_russian.yml">
+      <Filter>Data Files\Fronter</Filter>
+    </None>
+    <None Include="Data_Files\Fronter\options_l_english.yml">
+      <Filter>Data Files\Fronter</Filter>
+    </None>
+    <None Include="Data_Files\Fronter\options_l_french.yml">
+      <Filter>Data Files\Fronter</Filter>
+    </None>
+    <None Include="Data_Files\Fronter\options_l_german.yml">
+      <Filter>Data Files\Fronter</Filter>
+    </None>
+    <None Include="Data_Files\Fronter\options_l_italian.yml">
+      <Filter>Data Files\Fronter</Filter>
+    </None>
+    <None Include="Data_Files\Fronter\options_l_latin.yml">
+      <Filter>Data Files\Fronter</Filter>
+    </None>
+    <None Include="Data_Files\Fronter\options_l_russian.yml">
+      <Filter>Data Files\Fronter</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data_Files\Fronter\fronter-configuration.txt">
+      <Filter>Data Files\Fronter</Filter>
+    </Text>
+    <Text Include="Data_Files\Fronter\fronter-options.txt">
+      <Filter>Data Files\Fronter</Filter>
+    </Text>
   </ItemGroup>
 </Project>

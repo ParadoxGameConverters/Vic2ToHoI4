@@ -920,16 +920,6 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="Data_Files\SupportedConvertersDefault.xml">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)\..\Configuration\</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\..\Configuration\</DestinationFolders>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Vic2toHoI4DefaultConfiguration.xml">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)\..\Configuration</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\..\Configuration</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
     <CopyFileToFolders Include="Data_Files\Vic2Localisations.csv">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)\DataFiles</DestinationFolders>
@@ -22716,6 +22706,136 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|x64'">$(OutDir)/DataFiles</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/DataFiles</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\Fronter\configuration_l_english.yml">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/../Configuration</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Fronter\configuration_l_french.yml">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/../Configuration</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Fronter\configuration_l_german.yml">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/../Configuration</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Fronter\configuration_l_italian.yml">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/../Configuration</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Fronter\configuration_l_latin.yml">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/../Configuration</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Fronter\configuration_l_russian.yml">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/../Configuration</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\Fronter\fronter-configuration.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/../Configuration</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Fronter\fronter-options.txt">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/../Configuration</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/../Configuration</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/../Configuration</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/../Configuration</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Analysis|x64'">$(OutDir)/../Configuration</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/../Configuration</ExcludedFromBuild>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\Fronter\options_l_english.yml">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/../Configuration</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Fronter\options_l_french.yml">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/../Configuration</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Fronter\options_l_german.yml">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/../Configuration</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Fronter\options_l_italian.yml">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/../Configuration</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Fronter\options_l_latin.yml">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/../Configuration</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Fronter\options_l_russian.yml">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Analysis|x64'">$(OutDir)/../Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/../Configuration</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
