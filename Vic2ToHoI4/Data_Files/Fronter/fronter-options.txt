@@ -149,33 +149,33 @@ option = {
 	name = ideologies_choice
 	displayName = IDEOLOGIESCHOICE
 	tooltip = IDEOLOGIESCHOICETIP
-	checkboxSelector = {
-		checkboxOption = {
+	checkBoxSelector = {
+		checkBoxOption = {
 			name = 1
 			displayName = COMMUNISM
 			tooltip = COMMUNISMTIP
 			default = true
 		}
-		checkboxOption = {
-			name = 1
+		checkBoxOption = {
+			name = 2
 			displayName = ABSOLUTIST
 			tooltip = ABSOLUTISTTIP
 			default = true
 		}
-		checkboxOption = {
-			name = 1
+		checkBoxOption = {
+			name = 3
 			displayName = DEMOCRATIC
 			tooltip = DEMOCRATIC
 			default = true
 		}
-		checkboxOption = {
-			name = 1
+		checkBoxOption = {
+			name = 4
 			displayName = FASCISM
 			tooltip = FASCISM
 			default = true
 		}
-		checkboxOption = {
-			name = 1
+		checkBoxOption = {
+			name = 5
 			displayName = RADICAL
 			tooltip = RADICAL
 			default = true
