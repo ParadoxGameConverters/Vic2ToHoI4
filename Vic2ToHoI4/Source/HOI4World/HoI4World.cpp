@@ -417,12 +417,7 @@ double HoI4::World::getWorldwideWorkerFactoryRatio(const map<string, double>& wo
 		baseIndustry += countryWorkers.second * 0.000019;
 	}
 
-	int defaultFactories = 1189;
-	const GameVersion onePointFour("1.4.0");
-	if (theConfiguration.getHOI4Version() >= onePointFour)
-	{
-		defaultFactories = 1201;
-	}
+	int defaultFactories = 1201;
 	double deltaIndustry = baseIndustry - defaultFactories;
 	deltaIndustry -= landedCountries.size();
 	double newIndustry = baseIndustry - theConfiguration.getIcFactor() * deltaIndustry;

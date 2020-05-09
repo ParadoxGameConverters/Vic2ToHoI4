@@ -4,7 +4,6 @@
 
 
 #include "GameVersion.h"
-#include "HOI4World/HOI4Version.h"
 #include "Parser.h"
 #include <string>
 #include <vector>
@@ -36,13 +35,12 @@ class Configuration
 		 std::vector<std::string> specifiedIdeologies,
 		 const bool debug,
 		 const bool removeCores,
-		 const bool createFactions,
-		 const GameVersion version):
+		 const bool createFactions):
 		 HoI4Path(std::move(HoI4Path)),
 		 Vic2Path(std::move(Vic2Path)), Vic2Mods(std::move(Vic2Mods)), forceMultiplier(forceMultiplier),
 		 manpowerFactor(manpowerFactor), industrialShapeFactor(industrialShapeFactor), icFactor(icFactor),
 		 ideologiesOptions(ideologiesOptions), specifiedIdeologies(std::move(specifiedIdeologies)), debug(debug),
-		 removeCores(removeCores), createFactions(createFactions), version(version)
+		 removeCores(removeCores), createFactions(createFactions)
 	{
 	}
 
@@ -58,7 +56,6 @@ class Configuration
 	[[nodiscard]] const auto& getDebug() const { return debug; }
 	[[nodiscard]] const auto& getRemoveCores() const { return removeCores; }
 	[[nodiscard]] const auto& getCreateFactions() const { return createFactions; }
-	[[nodiscard]] const auto& getHOI4Version() const { return version; } // todo, just remove this
 
 	[[nodiscard]] const auto& getOutputName() const { return outputName; }
 	[[nodiscard]] auto getNextLeaderID() { return leaderID++; }
@@ -80,7 +77,6 @@ class Configuration
 	bool debug;
 	bool removeCores;
 	bool createFactions;
-	GameVersion version;
 
 	// set later
 	std::string outputName;
@@ -108,7 +104,6 @@ class Configuration::Factory: commonItems::parser
 	bool debug = false;
 	bool removeCores = true;
 	bool createFactions = true;
-	GameVersion version{1,9,2,0};
 };
 
 

@@ -115,7 +115,6 @@ Configuration::Factory::Factory()
 					Log(LogLevel::Warning) << "Unknown ideology specified";
 			}
 		}
-		
 	});
 	registerKeyword("debug", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleInt debugValue(theStream);
@@ -165,8 +164,6 @@ std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const
 	Log(LogLevel::Info) << "Reading configuration file";
 	parseFile(filename);
 
-	Log(LogLevel::Info) << "\tConfigured HoI4 version is " << version;
-
 	return std::make_unique<Configuration>(HoI4Path,
 		 Vic2Path,
 		 Vic2Mods,
@@ -178,8 +175,7 @@ std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const
 		 specifiedIdeologies,
 		 debug,
 		 removeCores,
-		 createFactions,
-		 version);
+		 createFactions);
 }
 
 
@@ -188,8 +184,6 @@ std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(std::
 	Log(LogLevel::Info) << "Reading configuration file";
 	parseStream(theStream);
 
-	Log(LogLevel::Info) << "\tConfigured HoI4 version is " << version;
-
 	return std::make_unique<Configuration>(HoI4Path,
 		 Vic2Path,
 		 Vic2Mods,
@@ -201,6 +195,5 @@ std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(std::
 		 specifiedIdeologies,
 		 debug,
 		 removeCores,
-		 createFactions,
-		 version);
+		 createFactions);
 }

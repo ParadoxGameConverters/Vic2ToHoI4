@@ -14,7 +14,7 @@ mappers::ProvinceMapper mappers::ProvinceMapper::Parser::initializeMapper(const 
 	registerKeyword(std::regex("\\d\\.\\d\\.\\d"),
 		 [this, &gotMappings, theConfiguration](const std::string& version, std::istream& theStream) {
 			 const GameVersion defaultVersion(version);
-			 if ((theConfiguration.getHOI4Version() >= defaultVersion) && !gotMappings)
+			 if ((GameVersion{1, 9, 2, 0} >= defaultVersion) && !gotMappings)
 			 {
 				 Log(LogLevel::Info) << "\tUsing version " << version << " mappings";
 				 const VersionedMappings thisVersionsMappings(theStream);

@@ -37,7 +37,7 @@ TEST(ConfigurationTests, HoI4PathThrowsExceptionOnNonExistentPath)
 {
 	std::stringstream input;
 	input << R"(HoI4directory = "C:\Non-existent folder")";
-	
+
 	ASSERT_THROW(Configuration::Factory{}.importConfiguration(input), std::runtime_error);
 }
 
@@ -112,7 +112,7 @@ TEST(ConfigurationTests, Vic2Mods)
 	std::stringstream input;
 	input << R"(Vic2Mods = "Mod One" Mod2)";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
-	
+
 	ASSERT_EQ(2, theConfiguration->getVic2Mods().size());
 	ASSERT_EQ("Mod One", theConfiguration->getVic2Mods()[0]);
 	ASSERT_EQ("Mod2", theConfiguration->getVic2Mods()[1]);
@@ -329,7 +329,7 @@ TEST(ConfigurationTests, IdeologiesOptionsCanBeSetToKeepAll)
 	std::stringstream input;
 	input << "ideologies = 2";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
-	
+
 	ASSERT_EQ(ideologyOptions::keep_all, theConfiguration->getIdeologiesOptions());
 }
 
