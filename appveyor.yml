@@ -11,14 +11,16 @@ build_script:
 test_script:
 - ps: >-
     pwd
-    
-    dir
-    
+
     cd Vic2ToHoI4Tests
+    
+    pwd
     
     dir
     
     cd Release
+    
+    pwd
     
     dir
 
