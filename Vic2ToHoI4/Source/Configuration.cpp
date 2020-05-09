@@ -62,63 +62,39 @@ Configuration::Factory::Factory()
 		Log(LogLevel::Info) << "\tIC factor: " << icFactor;
 	});
 	registerKeyword("ideologies", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleInt ideologiesOptionNumber(theStream);
-		if (ideologiesOptionNumber.getInt() == 3)
+		const commonItems::singleString ideologiesOptionString(theStream);
+		if (ideologiesOptionString.getString() == "keep_default")
 		{
 			ideologiesOptions = ideologyOptions::keep_default;
 			Log(LogLevel::Info) << "\tKeeping default ideologies";
 		}
-		else if (ideologiesOptionNumber.getInt() == 2)
+		else if (ideologiesOptionString.getString() == "keep_all")
 		{
 			ideologiesOptions = ideologyOptions::keep_all;
 			Log(LogLevel::Info) << "\tKeeping all ideologies";
 		}
-		else if (ideologiesOptionNumber.getInt() == 4)
+		else if (ideologiesOptionString.getString() == "specified")
 		{
 			ideologiesOptions = ideologyOptions::specified;
 			Log(LogLevel::Info) << "\tKeeping specified ideologies";
 		}
-		else // (ideologiesOptionString.getInt() == 1)
+		else // (ideologiesOptionString.getString() == "keep_major")
 		{
 			ideologiesOptions = ideologyOptions::keep_major;
 			Log(LogLevel::Info) << "\tKeeping major ideologies";
 		}
 	});
 	registerKeyword("ideologies_choice", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::intList choicesNumbersList(theStream);
-		auto choiceNumbers = choicesNumbersList.getInts();
-		for (const auto& choiceNumber: choiceNumbers)
+		const commonItems::stringList choiceStrings(theStream);
+		for (const auto& choice: choiceStrings.getStrings())
 		{
-			switch (choiceNumber)
-			{
-				case 1:
-					specifiedIdeologies.push_back("communism");
-					Log(LogLevel::Info) << "\tSpecified communism";
-					break;
-				case 2:
-					specifiedIdeologies.push_back("absolutist");
-					Log(LogLevel::Info) << "\tSpecified absolutist";
-					break;
-				case 3:
-					specifiedIdeologies.push_back("democratic");
-					Log(LogLevel::Info) << "\tSpecified democratic";
-					break;
-				case 4:
-					specifiedIdeologies.push_back("fascism");
-					Log(LogLevel::Info) << "\tSpecified fascism";
-					break;
-				case 5:
-					specifiedIdeologies.push_back("radical");
-					Log(LogLevel::Info) << "\tSpecified radical";
-					break;
-				default:
-					Log(LogLevel::Warning) << "Unknown ideology specified";
-			}
+			specifiedIdeologies.push_back(choice);
+			Log(LogLevel::Info) << "\tSpecified " << choice;
 		}
 	});
 	registerKeyword("debug", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleInt debugValue(theStream);
-		if (debugValue.getInt() == 2)
+		const commonItems::singleString debugValue(theStream);
+		if (debugValue.getString() == "yes")
 		{
 			debug = true;
 			Log(LogLevel::Info) << "\tDebug mode activated";
@@ -130,8 +106,8 @@ Configuration::Factory::Factory()
 		}
 	});
 	registerKeyword("remove_cores", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleInt removeCoresValue(theStream);
-		if (removeCoresValue.getInt() == 2)
+		const commonItems::singleString removeCoresValue(theStream);
+		if (removeCoresValue.getString() == "no")
 		{
 			removeCores = false;
 			Log(LogLevel::Info) << "\tDisabling remove cores";
@@ -143,8 +119,8 @@ Configuration::Factory::Factory()
 		}
 	});
 	registerKeyword("create_factions", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleInt createFactionsValue(theStream);
-		if (createFactionsValue.getInt() == 2)
+		const commonItems::singleString createFactionsValue(theStream);
+		if (createFactionsValue.getString() == "no")
 		{
 			createFactions = false;
 			Log(LogLevel::Info) << "\tDisabling keep factions";

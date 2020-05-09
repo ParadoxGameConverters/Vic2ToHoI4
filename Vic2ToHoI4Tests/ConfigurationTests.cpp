@@ -110,7 +110,7 @@ TEST(ConfigurationTests, Vic2ModsDefaultsToEmpty)
 TEST(ConfigurationTests, Vic2Mods)
 {
 	std::stringstream input;
-	input << R"(Vic2Mods = "Mod One" Mod2)";
+	input << R"(Vic2Mods = ""Mod One" Mod2")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(2, theConfiguration->getVic2Mods().size());
@@ -131,7 +131,7 @@ TEST(ConfigurationTests, ForceMultiplierDefaultsToOne)
 TEST(ConfigurationTests, ForceMultiplierCanBeSet)
 {
 	std::stringstream input;
-	input << "force_multiplier = 0.5";
+	input << R"(force_multiplier = "0.5")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(0.5f, theConfiguration->getForceMultiplier());
@@ -141,7 +141,7 @@ TEST(ConfigurationTests, ForceMultiplierCanBeSet)
 TEST(ConfigurationTests, ForceMultiplierIsMaximumOneHundred)
 {
 	std::stringstream input;
-	input << "force_multiplier = 150.0";
+	input << R"(force_multiplier = "150.0")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(100.0f, theConfiguration->getForceMultiplier());
@@ -151,7 +151,7 @@ TEST(ConfigurationTests, ForceMultiplierIsMaximumOneHundred)
 TEST(ConfigurationTests, ForceMultiplierIsMinimumOneHundredth)
 {
 	std::stringstream input;
-	input << "force_multiplier = -1.0";
+	input << R"(force_multiplier = "-1.0")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(0.01f, theConfiguration->getForceMultiplier());
@@ -161,7 +161,7 @@ TEST(ConfigurationTests, ForceMultiplierIsMinimumOneHundredth)
 TEST(ConfigurationTests, ForceMultiplierMustBeNumeric)
 {
 	std::stringstream input;
-	input << "force_multiplier = abcd";
+	input << R"(force_multiplier = "abcd")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(0.01f, theConfiguration->getForceMultiplier());
@@ -180,7 +180,7 @@ TEST(ConfigurationTests, ManpowerFactorDefaultsToOne)
 TEST(ConfigurationTests, ManpowerFactorCanBeSet)
 {
 	std::stringstream input;
-	input << "manpower_factor = 0.5";
+	input << R"(manpower_factor = "0.5")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(0.5f, theConfiguration->getManpowerFactor());
@@ -190,7 +190,7 @@ TEST(ConfigurationTests, ManpowerFactorCanBeSet)
 TEST(ConfigurationTests, ManpowerFactorIsMaximumTen)
 {
 	std::stringstream input;
-	input << "manpower_factor = 15.0";
+	input << R"(manpower_factor = "15.0")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(10.0f, theConfiguration->getManpowerFactor());
@@ -200,7 +200,7 @@ TEST(ConfigurationTests, ManpowerFactorIsMaximumTen)
 TEST(ConfigurationTests, ManpowerFactorIsMinimumOneHundredth)
 {
 	std::stringstream input;
-	input << "manpower_factor = -1.0";
+	input << R"(manpower_factor = "-1.0")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(0.01f, theConfiguration->getManpowerFactor());
@@ -210,7 +210,7 @@ TEST(ConfigurationTests, ManpowerFactorIsMinimumOneHundredth)
 TEST(ConfigurationTests, ManpowerFactorMustBeNumeric)
 {
 	std::stringstream input;
-	input << "manpower_factor = abcd";
+	input << R"(manpower_factor = "abcd")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(0.01f, theConfiguration->getManpowerFactor());
@@ -229,7 +229,7 @@ TEST(ConfigurationTests, IndustrialShapeFactorDefaultsToZero)
 TEST(ConfigurationTests, IndustrialShapeFactorFactorCanBeSet)
 {
 	std::stringstream input;
-	input << "industrial_shape_factor = 0.5";
+	input << R"(industrial_shape_factor = "0.5")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(0.5f, theConfiguration->getIndustrialShapeFactor());
@@ -239,7 +239,7 @@ TEST(ConfigurationTests, IndustrialShapeFactorFactorCanBeSet)
 TEST(ConfigurationTests, IndustrialShapeFactorFactorIsMaximumOne)
 {
 	std::stringstream input;
-	input << "industrial_shape_factor = 15.0";
+	input << R"(industrial_shape_factor = "15.0")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(1.0f, theConfiguration->getIndustrialShapeFactor());
@@ -249,7 +249,7 @@ TEST(ConfigurationTests, IndustrialShapeFactorFactorIsMaximumOne)
 TEST(ConfigurationTests, IndustrialShapeFactorFactorIsMinimumZero)
 {
 	std::stringstream input;
-	input << "industrial_shape_factor = -1.0";
+	input << R"(industrial_shape_factor = "-1.0")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(0.0f, theConfiguration->getIndustrialShapeFactor());
@@ -259,7 +259,7 @@ TEST(ConfigurationTests, IndustrialShapeFactorFactorIsMinimumZero)
 TEST(ConfigurationTests, IndustrialShapeFactorFactorMustBeNumeric)
 {
 	std::stringstream input;
-	input << "industrial_shape_factor = abcd";
+	input << R"(industrial_shape_factor = "abcd")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(0.00f, theConfiguration->getIndustrialShapeFactor());
@@ -278,7 +278,7 @@ TEST(ConfigurationTests, ICFactorDefaultsToOneTenth)
 TEST(ConfigurationTests, ICFactorFactorCanBeSet)
 {
 	std::stringstream input;
-	input << "ic_factor = 0.5";
+	input << R"(ic_factor = "0.5")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(0.5f, theConfiguration->getIcFactor());
@@ -288,7 +288,7 @@ TEST(ConfigurationTests, ICFactorFactorCanBeSet)
 TEST(ConfigurationTests, ICFactorFactorIsMaximumOne)
 {
 	std::stringstream input;
-	input << "ic_factor = 15.0";
+	input << R"(ic_factor = "15.0")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(1.0f, theConfiguration->getIcFactor());
@@ -298,7 +298,7 @@ TEST(ConfigurationTests, ICFactorFactorIsMaximumOne)
 TEST(ConfigurationTests, ICFactorFactorIsMinimumZero)
 {
 	std::stringstream input;
-	input << "ic_factor = -1.0";
+	input << R"(ic_factor = "-1.0")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(0.0f, theConfiguration->getIcFactor());
@@ -308,7 +308,7 @@ TEST(ConfigurationTests, ICFactorFactorIsMinimumZero)
 TEST(ConfigurationTests, ICFactorFactorMustBeNumeric)
 {
 	std::stringstream input;
-	input << "ic_factor = abcd";
+	input << R"(ic_factor = "abcd")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(0.00f, theConfiguration->getIcFactor());
@@ -327,7 +327,7 @@ TEST(ConfigurationTests, IdeologiesOptionsDefaultsToKeepMajor)
 TEST(ConfigurationTests, IdeologiesOptionsCanBeSetToKeepAll)
 {
 	std::stringstream input;
-	input << "ideologies = 2";
+	input << R"(ideologies = "keep_all")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(ideologyOptions::keep_all, theConfiguration->getIdeologiesOptions());
@@ -337,7 +337,7 @@ TEST(ConfigurationTests, IdeologiesOptionsCanBeSetToKeepAll)
 TEST(ConfigurationTests, IdeologiesOptionsCanBeSetToKeepDefault)
 {
 	std::stringstream input;
-	input << "ideologies = 3";
+	input << R"(ideologies = "keep_default")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(ideologyOptions::keep_default, theConfiguration->getIdeologiesOptions());
@@ -347,7 +347,7 @@ TEST(ConfigurationTests, IdeologiesOptionsCanBeSetToKeepDefault)
 TEST(ConfigurationTests, IdeologiesOptionsCanBeSetToKeepSpecified)
 {
 	std::stringstream input;
-	input << "ideologies = 4";
+	input << R"(ideologies = "specified")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(ideologyOptions::specified, theConfiguration->getIdeologiesOptions());
@@ -357,8 +357,8 @@ TEST(ConfigurationTests, IdeologiesOptionsCanBeSetToKeepSpecified)
 TEST(ConfigurationTests, IdeologiesOptionsCanBeSetToKeepMajor)
 {
 	std::stringstream input;
-	input << "ideologies = 2\n";
-	input << "ideologies = 1";
+	input << "ideologies = \"specified\"\n";
+	input << R"(ideologies = "keep_major")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(ideologyOptions::keep_major, theConfiguration->getIdeologiesOptions());
@@ -368,7 +368,7 @@ TEST(ConfigurationTests, IdeologiesOptionsCanBeSetToKeepMajor)
 TEST(ConfigurationTests, IdeologiesOptionsRevertsToKeepMajor)
 {
 	std::stringstream input;
-	input << "ideologies = 5";
+	input << R"(ideologies = "foo")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(ideologyOptions::keep_major, theConfiguration->getIdeologiesOptions());
@@ -388,7 +388,7 @@ TEST(ConfigurationTests, SpecifiedIdeologiesDefaultsToNeutrality)
 TEST(ConfigurationTests, SpecifiedIdeologiesCanHaveCommunismSpecified)
 {
 	std::stringstream input;
-	input << R"(ideologies_choice = { "1" })";
+	input << R"(ideologies_choice = { "communism" })";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	const std::vector<std::string> expectedOutput{{"neutrality"}, {"communism"}};
@@ -399,7 +399,7 @@ TEST(ConfigurationTests, SpecifiedIdeologiesCanHaveCommunismSpecified)
 TEST(ConfigurationTests, SpecifiedIdeologiesCanHaveAbsolutistSpecified)
 {
 	std::stringstream input;
-	input << R"(ideologies_choice = { "2" })";
+	input << R"(ideologies_choice = { "absolutist" })";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	const std::vector<std::string> expectedOutput{{"neutrality"}, {"absolutist"}};
@@ -410,7 +410,7 @@ TEST(ConfigurationTests, SpecifiedIdeologiesCanHaveAbsolutistSpecified)
 TEST(ConfigurationTests, SpecifiedIdeologiesCanHaveDemocraticSpecified)
 {
 	std::stringstream input;
-	input << R"(ideologies_choice = { "3" })";
+	input << R"(ideologies_choice = { "democratic" })";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	const std::vector<std::string> expectedOutput{{"neutrality"}, {"democratic"}};
@@ -421,7 +421,7 @@ TEST(ConfigurationTests, SpecifiedIdeologiesCanHaveDemocraticSpecified)
 TEST(ConfigurationTests, SpecifiedIdeologiesCanHaveFascismSpecified)
 {
 	std::stringstream input;
-	input << R"(ideologies_choice = { "4" })";
+	input << R"(ideologies_choice = { "fascism" })";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	const std::vector<std::string> expectedOutput{{"neutrality"}, {"fascism"}};
@@ -432,7 +432,7 @@ TEST(ConfigurationTests, SpecifiedIdeologiesCanHaveFascismSpecified)
 TEST(ConfigurationTests, SpecifiedIdeologiesCanHaveRadicalSpecified)
 {
 	std::stringstream input;
-	input << R"(ideologies_choice = { "5" })";
+	input << R"(ideologies_choice = { "radical" })";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	const std::vector<std::string> expectedOutput{{"neutrality"}, {"radical"}};
@@ -452,7 +452,7 @@ TEST(ConfigurationTests, DebugDefaultsToNo)
 TEST(ConfigurationTests, DebugCanBeSetToYes)
 {
 	std::stringstream input;
-	input << "debug = 2";
+	input << R"(debug = "yes")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_TRUE(theConfiguration->getDebug());
@@ -462,8 +462,8 @@ TEST(ConfigurationTests, DebugCanBeSetToYes)
 TEST(ConfigurationTests, DebugCanBeSetToNo)
 {
 	std::stringstream input;
-	input << "debug = 2\n";
-	input << "debug = 1";
+	input << "debug = \"yes\"\n";
+	input << R"(debug = "no")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_FALSE(theConfiguration->getDebug());
@@ -482,7 +482,7 @@ TEST(ConfigurationTests, RemoveCoresDefaultsToYes)
 TEST(ConfigurationTests, RemoveCoresCanBeSetToNo)
 {
 	std::stringstream input;
-	input << "remove_cores = 2";
+	input << R"(remove_cores = "no")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_FALSE(theConfiguration->getRemoveCores());
@@ -492,8 +492,8 @@ TEST(ConfigurationTests, RemoveCoresCanBeSetToNo)
 TEST(ConfigurationTests, RemoveCoresCanBeSetToYes)
 {
 	std::stringstream input;
-	input << "remove_cores = 2\n";
-	input << "remove_cores = 1";
+	input << "remove_cores = \"no\"\n";
+	input << R"(remove_cores = "yes")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_TRUE(theConfiguration->getRemoveCores());
@@ -512,7 +512,7 @@ TEST(ConfigurationTests, CreateFactionsDefaultsToYes)
 TEST(ConfigurationTests, CreateFactionsCanBeSetToNo)
 {
 	std::stringstream input;
-	input << "create_factions = 2";
+	input << R"(create_factions = "no")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_FALSE(theConfiguration->getCreateFactions());
@@ -522,8 +522,8 @@ TEST(ConfigurationTests, CreateFactionsCanBeSetToNo)
 TEST(ConfigurationTests, CreateFactionsCanBeSetToYes)
 {
 	std::stringstream input;
-	input << "create_factions = 2\n";
-	input << "create_factions = 1";
+	input << "create_factions = \"no\"\n";
+	input << R"(create_factions = "yes")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_TRUE(theConfiguration->getCreateFactions());
