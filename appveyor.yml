@@ -10,7 +10,17 @@ build_script:
 
 test_script:
 - ps: >-
-    cd Vic2ToHoI4Tests\Release
+    pwd
+    
+    dir
+    
+    cd Vic2ToHoI4Tests
+    
+    dir
+    
+    cd Release
+    
+    dir
 
     Vic2ToHoI4Tests.exe --gtest_output=xml:tests.xml
 
