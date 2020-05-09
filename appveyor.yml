@@ -10,21 +10,9 @@ build_script:
 
 test_script:
 - ps: >-
-    pwd
+    cd Vic2ToHoI4Tests\Release
 
-    cd Vic2ToHoI4Tests
-    
-    pwd
-    
-    dir
-    
-    cd Release
-    
-    pwd
-    
-    dir
-
-    Vic2ToHoI4Tests.exe --gtest_output=xml:tests.xml
+    .\Vic2ToHoI4Tests.exe --gtest_output=xml:tests.xml
 
     (new-object net.webclient).UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\tests.xml))
 artifacts:
