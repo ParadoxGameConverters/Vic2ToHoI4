@@ -22,7 +22,7 @@ TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameEmptyWhenGivenNoInput)
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 	setOutputName(inputName, theConfiguration);
 	ASSERT_EQ(std::string(""), theConfiguration.getOutputName());
 }
@@ -43,7 +43,7 @@ TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameCorrectWhenSimplyAName)
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 	setOutputName(inputName, theConfiguration);
 	ASSERT_EQ(std::string("hoi4"), theConfiguration.getOutputName());
 }
@@ -64,7 +64,7 @@ TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameExtractedWithWindowsPath)
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 	setOutputName(inputName, theConfiguration);
 	ASSERT_EQ(std::string("hoi4"), theConfiguration.getOutputName());
 }
@@ -85,7 +85,7 @@ TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameExtractedWithLinuxPath)
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 	setOutputName(inputName, theConfiguration);
 	ASSERT_EQ(std::string("hoi4"), theConfiguration.getOutputName());
 }
@@ -106,7 +106,7 @@ TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameExtractedWithMixedPathEndin
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 	setOutputName(inputName, theConfiguration);
 	ASSERT_EQ(std::string("hoi4"), theConfiguration.getOutputName());
 }
@@ -127,7 +127,7 @@ TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameExtractedWithMixedPathEndin
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 	setOutputName(inputName, theConfiguration);
 	ASSERT_EQ(std::string("hoi4"), theConfiguration.getOutputName());
 }
@@ -148,7 +148,7 @@ TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameHasDashesReplaced)
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 	setOutputName(inputName, theConfiguration);
 	ASSERT_EQ(std::string("hoi4_something"), theConfiguration.getOutputName());
 }
@@ -169,7 +169,7 @@ TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameHasSpacesReplaced)
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 	setOutputName(inputName, theConfiguration);
 	ASSERT_EQ(std::string("hoi4_something"), theConfiguration.getOutputName());
 }
@@ -190,7 +190,7 @@ TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameHasNoExtension)
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 	EXPECT_THROW(setOutputName(inputName, theConfiguration), std::invalid_argument);
 }
 
@@ -210,7 +210,7 @@ TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameHasAnInvalidExtension)
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 	EXPECT_THROW(setOutputName(inputName, theConfiguration), std::invalid_argument);
 }
 
@@ -230,7 +230,7 @@ TEST(Vic2ToHoI4Converter_setOutputNameTests, filenameHasMultiplePeriods)
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 	setOutputName(inputName, theConfiguration);
 	ASSERT_EQ(std::string("hoi4.eu4"), theConfiguration.getOutputName());
 }

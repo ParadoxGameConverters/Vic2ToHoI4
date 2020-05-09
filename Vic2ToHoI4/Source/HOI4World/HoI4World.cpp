@@ -418,7 +418,7 @@ double HoI4::World::getWorldwideWorkerFactoryRatio(const map<string, double>& wo
 	}
 
 	int defaultFactories = 1189;
-	HoI4::Version onePointFour("1.4.0");
+	const GameVersion onePointFour("1.4.0");
 	if (theConfiguration.getHOI4Version() >= onePointFour)
 	{
 		defaultFactories = 1201;

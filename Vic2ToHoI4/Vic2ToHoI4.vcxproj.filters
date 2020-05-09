@@ -782,6 +782,9 @@
     <ClCompile Include="..\common_items\Parser.cpp">
       <Filter>CommonItems</Filter>
     </ClCompile>
+    <ClCompile Include="..\common_items\GameVersion.cpp">
+      <Filter>CommonItems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1476,6 +1479,9 @@
       <Filter>HoI4World\Decisions</Filter>
     </ClInclude>
     <ClInclude Include="..\common_items\Parser.h">
+      <Filter>CommonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common_items\GameVersion.h">
       <Filter>CommonItems</Filter>
     </ClInclude>
   </ItemGroup>

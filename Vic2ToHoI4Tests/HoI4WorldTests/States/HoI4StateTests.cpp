@@ -255,7 +255,7 @@ TEST(HoI4World_States_StateTests, TotalFactoriesCanBeSet)
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 	const mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(7)).WillOnce(testing::Return("mockedCategory"));
 
@@ -505,7 +505,7 @@ TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 	theState.addManpower(provinces, theProvinceMapper, theConfiguration);
 
 	ASSERT_EQ(49380, theState.getManpower());
@@ -608,7 +608,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital)
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -663,7 +663,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -718,7 +718,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -773,7 +773,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -828,7 +828,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousPr
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -861,7 +861,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionLoggedIfNotSet)
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 
 	std::stringstream log;
 	auto coutBuffer = std::cout.rdbuf();
@@ -903,7 +903,7 @@ TEST(HoI4World_States_StateTests, DebugVPsCanBeAdded)
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -937,7 +937,7 @@ TEST(HoI4World_States_StateTests, SecondaryDebugVPsCanBeAdded)
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -975,7 +975,7 @@ TEST(HoI4World_States_StateTests, DebugVpsAreOutput)
 		 true,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 

@@ -55,7 +55,7 @@ HoI4World_HoI4CountryTests::HoI4World_HoI4CountryTests()
 		 false,
 		 false,
 		 false,
-		 HoI4::Version());
+		 GameVersion{});
 	hoi4Localisations = HoI4::Localisation::Importer{}.generateLocalisations(theConfiguration);
 
 	ON_CALL(theGraphicsMapper, getGraphicalCulture).WillByDefault(testing::Return(std::nullopt));

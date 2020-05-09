@@ -358,6 +358,7 @@
     <ClCompile Include="..\common_items\CardinalToOrdinal.cpp" />
     <ClCompile Include="..\common_items\CommonUtils.cpp" />
     <ClCompile Include="..\common_items\Date.cpp" />
+    <ClCompile Include="..\common_items\GameVersion.cpp" />
     <ClCompile Include="..\common_items\iconvlite.cpp" />
     <ClCompile Include="..\common_items\Log.cpp" />
     <ClCompile Include="..\common_items\Parser.cpp" />
@@ -577,6 +578,7 @@
     <ClInclude Include="..\bitmap\bitmap_image.hpp" />
     <ClInclude Include="..\common_items\CardinalToOrdinal.h" />
     <ClInclude Include="..\common_items\Date.h" />
+    <ClInclude Include="..\common_items\GameVersion.h" />
     <ClInclude Include="..\common_items\iconvlite.h" />
     <ClInclude Include="..\common_items\Log.h" />
     <ClInclude Include="..\common_items\OSCompatibilityLayer.h" />

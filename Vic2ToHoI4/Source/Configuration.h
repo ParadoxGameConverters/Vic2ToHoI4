@@ -3,6 +3,7 @@
 
 
 
+#include "GameVersion.h"
 #include "HOI4World/HOI4Version.h"
 #include "Parser.h"
 #include <string>
@@ -27,16 +28,16 @@ class Configuration
 	Configuration(std::string HoI4Path,
 		 std::string Vic2Path,
 		 std::vector<std::string> Vic2Mods,
-		 const double forceMultiplier,
-		 const double manpowerFactor,
-		 const double industrialShapeFactor,
-		 const double icFactor,
+		 const float forceMultiplier,
+		 const float manpowerFactor,
+		 const float industrialShapeFactor,
+		 const float icFactor,
 		 const ideologyOptions ideologiesOptions,
 		 std::vector<std::string> specifiedIdeologies,
 		 const bool debug,
 		 const bool removeCores,
 		 const bool createFactions,
-		 const HoI4::Version version):
+		 const GameVersion version):
 		 HoI4Path(std::move(HoI4Path)),
 		 Vic2Path(std::move(Vic2Path)), Vic2Mods(std::move(Vic2Mods)), forceMultiplier(forceMultiplier),
 		 manpowerFactor(manpowerFactor), industrialShapeFactor(industrialShapeFactor), icFactor(icFactor),
@@ -57,12 +58,12 @@ class Configuration
 	[[nodiscard]] const auto& getDebug() const { return debug; }
 	[[nodiscard]] const auto& getRemoveCores() const { return removeCores; }
 	[[nodiscard]] const auto& getCreateFactions() const { return createFactions; }
-	[[nodiscard]] const auto& getHOI4Version() const { return version; }
+	[[nodiscard]] const auto& getHOI4Version() const { return version; } // todo, just remove this
 
 	[[nodiscard]] const auto& getOutputName() const { return outputName; }
 	[[nodiscard]] auto getNextLeaderID() { return leaderID++; }
 
-	void setForceMultiplier(const double multiplier) { forceMultiplier = multiplier; }
+	void setForceMultiplier(const float multiplier) { forceMultiplier = multiplier; }
 	void setOutputName(const std::string& name) { outputName = name; }
 
   private:
@@ -70,16 +71,16 @@ class Configuration
 	std::string HoI4Path;
 	std::string Vic2Path;
 	std::vector<std::string> Vic2Mods;
-	double forceMultiplier;
-	double manpowerFactor;
-	double industrialShapeFactor;
-	double icFactor;
+	float forceMultiplier;
+	float manpowerFactor;
+	float industrialShapeFactor;
+	float icFactor;
 	ideologyOptions ideologiesOptions;
 	std::vector<std::string> specifiedIdeologies;
 	bool debug;
 	bool removeCores;
 	bool createFactions;
-	HoI4::Version version;
+	GameVersion version;
 
 	// set later
 	std::string outputName;
@@ -87,17 +88,27 @@ class Configuration
 };
 
 
-class ConfigurationDetails: commonItems::parser
-{
-  public:
-	std::unique_ptr<Configuration> importDetails(std::istream& theStream);
-};
-
-
 class Configuration::Factory: commonItems::parser
 {
   public:
+	Configuration::Factory();
 	std::unique_ptr<Configuration> importConfiguration(const std::string& filename);
+	std::unique_ptr<Configuration> importConfiguration(std::istream& theStream);
+
+  private:
+	std::string HoI4Path;
+	std::string Vic2Path;
+	std::vector<std::string> Vic2Mods;
+	float forceMultiplier = 1.0f;
+	float manpowerFactor = 1.0f;
+	float industrialShapeFactor = 0.0f;
+	float icFactor = 0.1f;
+	ideologyOptions ideologiesOptions = ideologyOptions::keep_major;
+	std::vector<std::string> specifiedIdeologies{"neutrality"};
+	bool debug = false;
+	bool removeCores = true;
+	bool createFactions = true;
+	GameVersion version{1,9,2,0};
 };
 
 

@@ -7,23 +7,9 @@
 
 
 
-std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream& theStream)
+Configuration::Factory::Factory()
 {
-	std::string HoI4Path;
-	std::string Vic2Path;
-	std::vector<std::string> Vic2Mods;
-	auto forceMultiplier = 0.0;
-	auto manpowerFactor = 0.0;
-	auto industrialShapeFactor = 0.0;
-	auto icFactor = 0.0;
-	auto ideologiesOptions = ideologyOptions::keep_major;
-	std::vector<std::string> specifiedIdeologies;
-	auto debug = false;
-	auto removeCores = true;
-	auto createFactions = true;
-	auto version = HoI4::Version();
-
-	registerKeyword("HoI4directory", [&HoI4Path](const std::string& unused, std::istream& theStream) {
+	registerKeyword("HoI4directory", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString directoryString(theStream);
 		HoI4Path = directoryString.getString();
 		if (HoI4Path.empty() || !Utils::doesFolderExist(HoI4Path))
@@ -37,7 +23,7 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 
 		Log(LogLevel::Info) << "\tHoI4 path install path is " << HoI4Path;
 	});
-	registerKeyword("V2directory", [&Vic2Path](const std::string& unused, std::istream& theStream) {
+	registerKeyword("Vic2directory", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString directoryString(theStream);
 		Vic2Path = directoryString.getString();
 		if (Vic2Path.empty() || !Utils::doesFolderExist(Vic2Path))
@@ -51,91 +37,133 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 
 		Log(LogLevel::Info) << "\tVictoria 2 install path is " << Vic2Path;
 	});
-	registerKeyword("Vic2Mods", [&Vic2Mods](const std::string& unused, std::istream& theStream) {
+	registerKeyword("Vic2Mods", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringList modsStrings(theStream);
 		Vic2Mods = modsStrings.getStrings();
 	});
-	registerKeyword("force_multiplier", [&forceMultiplier](const std::string& unused, std::istream& theStream) {
+	registerKeyword("force_multiplier", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleDouble factorValue(theStream);
-		forceMultiplier = factorValue.getDouble();
+		forceMultiplier = std::clamp(static_cast<float>(factorValue.getDouble()), 0.01f, 100.0f);
 		Log(LogLevel::Info) << "\tForce multiplier: " << forceMultiplier;
 	});
-	registerKeyword("manpower_factor", [&manpowerFactor](const std::string& unused, std::istream& theStream) {
+	registerKeyword("manpower_factor", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleDouble factorValue(theStream);
-		manpowerFactor = factorValue.getDouble();
+		manpowerFactor = std::clamp(static_cast<float>(factorValue.getDouble()), 0.01f, 10.0f);
 		Log(LogLevel::Info) << "\tManpower factor: " << manpowerFactor;
 	});
-	registerKeyword("industrial_shape_factor",
-		 [&industrialShapeFactor](const std::string& unused, std::istream& theStream) {
-			 const commonItems::singleDouble factorValue(theStream);
-			 industrialShapeFactor = factorValue.getDouble();
-			 Log(LogLevel::Info) << "\tIndustrial shape factor: " << industrialShapeFactor;
-		 });
-	registerKeyword("ic_factor", [&icFactor](const std::string& unused, std::istream& theStream) {
+	registerKeyword("industrial_shape_factor", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleDouble factorValue(theStream);
-		icFactor = factorValue.getDouble();
+		industrialShapeFactor = std::clamp(static_cast<float>(factorValue.getDouble()), 0.0f, 1.0f);
+		Log(LogLevel::Info) << "\tIndustrial shape factor: " << industrialShapeFactor;
+	});
+	registerKeyword("ic_factor", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleDouble factorValue(theStream);
+		icFactor = std::clamp(static_cast<float>(factorValue.getDouble()), 0.0f, 1.0f);
 		Log(LogLevel::Info) << "\tIC factor: " << icFactor;
 	});
-	registerKeyword("ideologies", [&ideologiesOptions](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleString ideologiesOptionString(theStream);
-		if (ideologiesOptionString.getString() == "keep_default")
+	registerKeyword("ideologies", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleInt ideologiesOptionNumber(theStream);
+		if (ideologiesOptionNumber.getInt() == 3)
 		{
 			ideologiesOptions = ideologyOptions::keep_default;
 			Log(LogLevel::Info) << "\tKeeping default ideologies";
 		}
-		else if (ideologiesOptionString.getString() == "keep_all")
+		else if (ideologiesOptionNumber.getInt() == 2)
 		{
 			ideologiesOptions = ideologyOptions::keep_all;
 			Log(LogLevel::Info) << "\tKeeping all ideologies";
 		}
-		else if (ideologiesOptionString.getString() == "specified")
+		else if (ideologiesOptionNumber.getInt() == 4)
 		{
 			ideologiesOptions = ideologyOptions::specified;
 			Log(LogLevel::Info) << "\tKeeping specified ideologies";
 		}
-		else // (ideologiesOptionString.getString() == "keep_major")
+		else // (ideologiesOptionString.getInt() == 1)
 		{
 			ideologiesOptions = ideologyOptions::keep_major;
 			Log(LogLevel::Info) << "\tKeeping major ideologies";
 		}
 	});
-	registerKeyword("ideologies_choice", [&specifiedIdeologies](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleString choiceString(theStream);
-		specifiedIdeologies.push_back(choiceString.getString());
-		Log(LogLevel::Info) << "\tSpecified " << choiceString.getString();
+	registerKeyword("ideologies_choice", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::intList choicesNumbersList(theStream);
+		auto choiceNumbers = choicesNumbersList.getInts();
+		for (const auto& choiceNumber: choiceNumbers)
+		{
+			switch (choiceNumber)
+			{
+				case 1:
+					specifiedIdeologies.push_back("communism");
+					Log(LogLevel::Info) << "\tSpecified communism";
+					break;
+				case 2:
+					specifiedIdeologies.push_back("absolutist");
+					Log(LogLevel::Info) << "\tSpecified absolutist";
+					break;
+				case 3:
+					specifiedIdeologies.push_back("democratic");
+					Log(LogLevel::Info) << "\tSpecified democratic";
+					break;
+				case 4:
+					specifiedIdeologies.push_back("fascism");
+					Log(LogLevel::Info) << "\tSpecified fascism";
+					break;
+				case 5:
+					specifiedIdeologies.push_back("radical");
+					Log(LogLevel::Info) << "\tSpecified radical";
+					break;
+				default:
+					Log(LogLevel::Warning) << "Unknown ideology specified";
+			}
+		}
+		
 	});
-	registerKeyword("debug", [&debug](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleString debugString(theStream);
-		if (debugString.getString() == "yes")
+	registerKeyword("debug", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleInt debugValue(theStream);
+		if (debugValue.getInt() == 2)
 		{
 			debug = true;
 			Log(LogLevel::Info) << "\tDebug mode activated";
 		}
+		else
+		{
+			debug = false;
+			Log(LogLevel::Info) << "\tDebug mode deactivated";
+		}
 	});
-	registerKeyword("remove_cores", [&removeCores](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleString removeCoresString(theStream);
-		if (removeCoresString.getString() == "false")
+	registerKeyword("remove_cores", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleInt removeCoresValue(theStream);
+		if (removeCoresValue.getInt() == 2)
 		{
 			removeCores = false;
 			Log(LogLevel::Info) << "\tDisabling remove cores";
 		}
+		else
+		{
+			removeCores = true;
+			Log(LogLevel::Info) << "\tEnabling remove cores";
+		}
 	});
-	registerKeyword("create_factions", [&createFactions](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleString createFactionsString(theStream);
-		if (createFactionsString.getString() == "no")
+	registerKeyword("create_factions", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleInt createFactionsValue(theStream);
+		if (createFactionsValue.getInt() == 2)
 		{
 			createFactions = false;
 			Log(LogLevel::Info) << "\tDisabling keep factions";
 		}
-	});
-	registerKeyword("HoI4Version", [&version](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleString versionString(theStream);
-		version = HoI4::Version(versionString.getString());
+		else
+		{
+			createFactions = true;
+			Log(LogLevel::Info) << "\tEnabling keep factions";
+		}
 	});
 	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+}
 
+
+std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const std::string& filename)
+{
 	Log(LogLevel::Info) << "Reading configuration file";
-	parseStream(theStream);
+	parseFile(filename);
 
 	Log(LogLevel::Info) << "\tConfigured HoI4 version is " << version;
 
@@ -155,16 +183,24 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 }
 
 
-std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const std::string& filename)
+std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(std::istream& theStream)
 {
-	std::unique_ptr<Configuration> configuration;
+	Log(LogLevel::Info) << "Reading configuration file";
+	parseStream(theStream);
 
-	registerKeyword("configuration", [&configuration](const std::string& unused, std::istream& theStream) {
-		configuration = ConfigurationDetails{}.importDetails(theStream);
-	});
-	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+	Log(LogLevel::Info) << "\tConfigured HoI4 version is " << version;
 
-	parseFile(filename);
-
-	return configuration;
+	return std::make_unique<Configuration>(HoI4Path,
+		 Vic2Path,
+		 Vic2Mods,
+		 forceMultiplier,
+		 manpowerFactor,
+		 industrialShapeFactor,
+		 icFactor,
+		 ideologiesOptions,
+		 specifiedIdeologies,
+		 debug,
+		 removeCores,
+		 createFactions,
+		 version);
 }
