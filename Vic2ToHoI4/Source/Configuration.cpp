@@ -2,6 +2,7 @@
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
+#include "StringUtils.h"
 #include <fstream>
 #include <vector>
 
@@ -38,7 +39,13 @@ Configuration::Factory::Factory()
 		Log(LogLevel::Info) << "\tVictoria 2 install path is " << Vic2Path;
 	});
 	registerKeyword("Vic2Mods", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::stringList modsStrings(theStream);
+		std::string line;
+		std::getline(theStream, line);
+		line = line.substr(line.find_first_of("\""), line.length());
+		line = stringutils::remQuotes(line);
+		std::stringstream lineStream;
+		lineStream << line;
+		const commonItems::stringList modsStrings(lineStream);
 		Vic2Mods = modsStrings.getStrings();
 	});
 	registerKeyword("force_multiplier", [this](const std::string& unused, std::istream& theStream) {
