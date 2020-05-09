@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2toHOI4Converter.cpp">
-      <Filter>Vic2ToHoI4 files</Filter>
-    </ClCompile>
-    <ClCompile Include="Vic2ToHoI4ConverterTests.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HOI4Version.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
@@ -893,6 +889,9 @@
     <ClCompile Include="ConfigurationTests.cpp" />
     <ClCompile Include="..\common_items\GameVersion.cpp">
       <Filter>Vic2ToHoI4 files\common items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Vic2toHOI4Converter.cpp">
+      <Filter>Vic2ToHoI4 files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -10,6 +10,16 @@
 
 Configuration::Factory::Factory()
 {
+	registerKeyword("SaveGame", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleString filenameString(theStream);
+		inputFile = filenameString.getString();
+		const auto length = inputFile.find_last_of('.');
+		if ((length == std::string::npos) || (".v2" != inputFile.substr(length, inputFile.length())))
+		{
+			throw std::invalid_argument("The save was not a Vic2 save. Choose a save ending in '.v2' and convert again.");
+		}
+		Log(LogLevel::Info) << "\tVic2 save is " << inputFile;
+	});
 	registerKeyword("HoI4directory", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString directoryString(theStream);
 		HoI4Path = directoryString.getString();
@@ -146,8 +156,11 @@ std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const
 {
 	Log(LogLevel::Info) << "Reading configuration file";
 	parseFile(filename);
+	setOutputName(inputFile);
 
-	return std::make_unique<Configuration>(HoI4Path,
+	return std::make_unique<Configuration>(inputFile,
+		 outputName,
+		 HoI4Path,
 		 Vic2Path,
 		 Vic2Mods,
 		 forceMultiplier,
@@ -166,8 +179,11 @@ std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(std::
 {
 	Log(LogLevel::Info) << "Reading configuration file";
 	parseStream(theStream);
+	setOutputName(inputFile);
 
-	return std::make_unique<Configuration>(HoI4Path,
+	return std::make_unique<Configuration>(inputFile,
+		 outputName,
+		 HoI4Path,
 		 Vic2Path,
 		 Vic2Mods,
 		 forceMultiplier,
@@ -179,4 +195,47 @@ std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(std::
 		 debug,
 		 removeCores,
 		 createFactions);
+}
+
+
+void Configuration::Factory::setOutputName(const std::string& V2SaveFileName)
+{
+	outputName = V2SaveFileName;
+
+	if (outputName.empty())
+	{
+		return;
+	}
+
+	const auto lastBackslash = V2SaveFileName.find_last_of('\\');
+	const auto lastSlash = V2SaveFileName.find_last_of('/');
+	if ((lastBackslash == std::string::npos) && (lastSlash != std::string::npos))
+	{
+		outputName = outputName.substr(lastSlash + 1, outputName.length());
+	}
+	else if ((lastBackslash != std::string::npos) && (lastSlash == std::string::npos))
+	{
+		outputName = outputName.substr(lastBackslash + 1, outputName.length());
+	}
+	else if ((lastBackslash != std::string::npos) && (lastSlash != std::string::npos))
+	{
+		const auto slash = std::max(lastBackslash, lastSlash);
+		outputName = outputName.substr(slash + 1, outputName.length());
+	}
+	else if ((lastBackslash == std::string::npos) && (lastSlash == std::string::npos))
+	{
+		// no change, but explicitly considered
+	}
+
+	const auto length = outputName.find_last_of('.');
+	if ((length == std::string::npos) || (".v2" != outputName.substr(length, outputName.length())))
+	{
+		throw std::invalid_argument("The save was not a Vic2 save. Choose a save ending in '.v2' and convert again.");
+	}
+	outputName = outputName.substr(0, length);
+
+	std::replace(outputName.begin(), outputName.end(), '-', '_');
+	std::replace(outputName.begin(), outputName.end(), ' ', '_');
+
+	Log(LogLevel::Info) << "Using output name " << outputName;
 }

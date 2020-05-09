@@ -43,7 +43,8 @@ HoI4World_HoI4CountryTests::HoI4World_HoI4CountryTests()
 	std::map<std::string, std::string> localisationToKeyMap;
 	vic2Localisations = std::make_unique<Vic2::Localisations>(localisations, localisationToKeyMap);
 
-	Configuration theConfiguration("", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
+	Configuration
+		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
 	hoi4Localisations = HoI4::Localisation::Importer{}.generateLocalisations(theConfiguration);
 
 	ON_CALL(theGraphicsMapper, getGraphicalCulture).WillByDefault(testing::Return(std::nullopt));

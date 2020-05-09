@@ -24,7 +24,9 @@ class Configuration
 {
   public:
 	class Factory;
-	Configuration(std::string HoI4Path,
+	Configuration(std::string inputFile,
+		 std::string outputName,
+		 std::string HoI4Path,
 		 std::string Vic2Path,
 		 std::vector<std::string> Vic2Mods,
 		 const float forceMultiplier,
@@ -36,14 +38,17 @@ class Configuration
 		 const bool debug,
 		 const bool removeCores,
 		 const bool createFactions):
-		 HoI4Path(std::move(HoI4Path)),
-		 Vic2Path(std::move(Vic2Path)), Vic2Mods(std::move(Vic2Mods)), forceMultiplier(forceMultiplier),
-		 manpowerFactor(manpowerFactor), industrialShapeFactor(industrialShapeFactor), icFactor(icFactor),
-		 ideologiesOptions(ideologiesOptions), specifiedIdeologies(std::move(specifiedIdeologies)), debug(debug),
-		 removeCores(removeCores), createFactions(createFactions)
+		 inputFile(std::move(inputFile)),
+		 outputName(std::move(outputName)), HoI4Path(std::move(HoI4Path)), Vic2Path(std::move(Vic2Path)),
+		 Vic2Mods(std::move(Vic2Mods)), forceMultiplier(forceMultiplier), manpowerFactor(manpowerFactor),
+		 industrialShapeFactor(industrialShapeFactor), icFactor(icFactor), ideologiesOptions(ideologiesOptions),
+		 specifiedIdeologies(std::move(specifiedIdeologies)), debug(debug), removeCores(removeCores),
+		 createFactions(createFactions)
 	{
 	}
 
+	[[nodiscard]] const auto& getInputFile() const { return inputFile; }
+	[[nodiscard]] const auto& getOutputName() const { return outputName; }
 	[[nodiscard]] const auto& getHoI4Path() const { return HoI4Path; }
 	[[nodiscard]] const auto& getVic2Path() const { return Vic2Path; }
 	[[nodiscard]] const auto& getVic2Mods() const { return Vic2Mods; }
@@ -57,7 +62,6 @@ class Configuration
 	[[nodiscard]] const auto& getRemoveCores() const { return removeCores; }
 	[[nodiscard]] const auto& getCreateFactions() const { return createFactions; }
 
-	[[nodiscard]] const auto& getOutputName() const { return outputName; }
 	[[nodiscard]] auto getNextLeaderID() { return leaderID++; }
 
 	void setForceMultiplier(const float multiplier) { forceMultiplier = multiplier; }
@@ -65,6 +69,8 @@ class Configuration
 
   private:
 	// set on construction
+	std::string inputFile;
+	std::string outputName;
 	std::string HoI4Path;
 	std::string Vic2Path;
 	std::vector<std::string> Vic2Mods;
@@ -79,7 +85,6 @@ class Configuration
 	bool createFactions;
 
 	// set later
-	std::string outputName;
 	unsigned int leaderID = 1000;
 };
 
@@ -92,6 +97,10 @@ class Configuration::Factory: commonItems::parser
 	std::unique_ptr<Configuration> importConfiguration(std::istream& theStream);
 
   private:
+	void setOutputName(const std::string& V2SaveFileName);
+
+	std::string inputFile{"input.v2"};
+	std::string outputName;
 	std::string HoI4Path;
 	std::string Vic2Path;
 	std::vector<std::string> Vic2Mods;

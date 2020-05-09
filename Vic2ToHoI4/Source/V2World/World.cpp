@@ -17,9 +17,7 @@
 
 
 
-Vic2::World::World(const std::string& filename,
-	 const mappers::ProvinceMapper& provinceMapper,
-	 const Configuration& theConfiguration)
+Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configuration& theConfiguration)
 {
 	theLocalisations = Localisations::Parser{}.importLocalisations(theConfiguration);
 	theCultureGroups.init(theConfiguration);
@@ -64,7 +62,7 @@ Vic2::World::World(const std::string& filename,
 
 
 	Log(LogLevel::Info) << "*** Importing V2 save ***";
-	parseFile(filename);
+	parseFile(theConfiguration.getInputFile());
 
 	Log(LogLevel::Info) << "Building Vic2 world";
 	setGreatPowerStatus(GPIndexes, tagsInOrder);

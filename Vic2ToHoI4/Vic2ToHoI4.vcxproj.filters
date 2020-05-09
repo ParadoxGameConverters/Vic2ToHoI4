@@ -158,7 +158,6 @@
     </ClCompile>
     <ClCompile Include="Source\Color.cpp" />
     <ClCompile Include="Source\Configuration.cpp" />
-    <ClCompile Include="Source\V2toHOI4Converter.cpp" />
     <ClCompile Include="..\common_items\WinUtils.cpp">
       <Filter>CommonItems</Filter>
     </ClCompile>
@@ -785,6 +784,7 @@
     <ClCompile Include="..\common_items\GameVersion.cpp">
       <Filter>CommonItems</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Vic2toHOI4Converter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">

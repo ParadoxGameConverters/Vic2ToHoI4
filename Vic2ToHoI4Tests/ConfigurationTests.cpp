@@ -4,6 +4,148 @@
 
 
 
+TEST(ConfigurationTests, InputNameDefaultsToInputDotV2)
+{
+	std::stringstream input;
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("input.v2", theConfiguration->getInputFile());
+}
+
+
+TEST(ConfigurationTests, InputNameCanBeSet)
+{
+	std::stringstream input;
+	input << R"(SaveGame = "test.v2")";
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("test.v2", theConfiguration->getInputFile());
+}
+
+
+TEST(ConfigurationTests, InputNameMustHaveSeperator)
+{
+	std::stringstream input;
+	input << R"(SaveGame = "test")";
+	ASSERT_THROW(const auto theConfiguration = Configuration::Factory{}.importConfiguration(input),
+		 std::invalid_argument);
+}
+
+
+TEST(ConfigurationTests, InputNameMustEndInV2)
+{
+	std::stringstream input;
+	input << R"(SaveGame = "test.vic")";
+	ASSERT_THROW(const auto theConfiguration = Configuration::Factory{}.importConfiguration(input),
+		 std::invalid_argument);
+}
+
+
+TEST(ConfigurationTests, OutputNameDefaultsToInput)
+{
+	std::stringstream input;
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("input", theConfiguration->getOutputName());
+}
+
+
+TEST(ConfigurationTests, OutputNameDerivedFromInputName)
+{
+	std::stringstream input;
+	input << R"(SaveGame = "hoi4.v2")";
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("hoi4", theConfiguration->getOutputName());
+}
+
+
+TEST(ConfigurationTests, OutputNameExtractedFromWindowsPath)
+{
+	std::stringstream input;
+	input << R"(SaveGame = "C:\\some directory\\hoi4.v2")";
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("hoi4", theConfiguration->getOutputName());
+}
+
+
+TEST(ConfigurationTests, OutputNameExtractedFromLinuxPath)
+{
+	std::stringstream input;
+	input << R"(SaveGame = "/some directory/hoi4.v2")";
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("hoi4", theConfiguration->getOutputName());
+}
+
+
+TEST(ConfigurationTests, OutputNameExtractedFromMixedPathEndingLinuxStyle)
+{
+	std::stringstream input;
+	input << R"(SaveGame = "C:\\some directory\\save games/hoi4.v2")";
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("hoi4", theConfiguration->getOutputName());
+}
+
+
+TEST(ConfigurationTests, OutputNameExtractedFromMixedPathEndingWindowsStyle)
+{
+	std::stringstream input;
+	input << R"(SaveGame = "/some directory/save games\\hoi4.v2")";
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("hoi4", theConfiguration->getOutputName());
+}
+
+
+TEST(ConfigurationTests, OutputNameHasDashesReplaced)
+{
+	std::stringstream input;
+	input << R"(SaveGame = "hoi4-something.v2")";
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("hoi4_something", theConfiguration->getOutputName());
+}
+
+
+TEST(ConfigurationTests, OutputNameHasSpacesReplaced)
+{
+	std::stringstream input;
+	input << R"(SaveGame = "hoi4 something.v2")";
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("hoi4_something", theConfiguration->getOutputName());
+}
+
+
+TEST(ConfigurationTests, OutputNameMustHaveExtension)
+{
+	std::stringstream input;
+	input << R"(SaveGame = "hoi4")";
+	ASSERT_THROW(Configuration::Factory{}.importConfiguration(input), std::invalid_argument);
+}
+
+
+TEST(ConfigurationTests, OutputNameMustHaveValidExtension)
+{
+	std::stringstream input;
+	input << R"(SaveGame = "hoi4.eu4")";
+	ASSERT_THROW(Configuration::Factory{}.importConfiguration(input), std::invalid_argument);
+}
+
+
+TEST(ConfigurationTests, OutputNameOnlyRemovesFinalExtension)
+{
+	std::stringstream input;
+	input << R"(SaveGame = "hoi4.eu4.v2")";
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("hoi4.eu4", theConfiguration->getOutputName());
+}
+
+
 TEST(ConfigurationTests, HoI4PathDefaultsToEmpty)
 {
 	std::stringstream input;

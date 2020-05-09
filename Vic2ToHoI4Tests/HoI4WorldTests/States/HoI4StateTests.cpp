@@ -243,7 +243,8 @@ TEST(HoI4World_States_StateTests, TotalFactoriesCanBeSet)
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
-	Configuration theConfiguration("", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
+	Configuration
+		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
 	const mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(7)).WillOnce(testing::Return("mockedCategory"));
 
@@ -481,7 +482,8 @@ TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
-	Configuration theConfiguration("", "", {}, 0.0, 1.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
+	Configuration
+		 theConfiguration("", "", "", "", {}, 0.0, 1.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
 	theState.addManpower(provinces, theProvinceMapper, theConfiguration);
 
 	ASSERT_EQ(49380, theState.getManpower());
@@ -572,7 +574,8 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital)
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
-	Configuration theConfiguration("", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
+	Configuration
+		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -615,7 +618,8 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
-	Configuration theConfiguration("", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
+	Configuration
+		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -658,7 +662,8 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
-	Configuration theConfiguration("", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
+	Configuration
+		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -701,7 +706,8 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
-	Configuration theConfiguration("", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
+	Configuration
+		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -744,7 +750,8 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousPr
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
-	Configuration theConfiguration("", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
+	Configuration
+		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -765,7 +772,8 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionLoggedIfNotSet)
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {}};
 
-	Configuration theConfiguration("", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
+	Configuration
+		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
 
 	std::stringstream log;
 	auto coutBuffer = std::cout.rdbuf();
@@ -795,7 +803,8 @@ TEST(HoI4World_States_StateTests, DebugVPsCanBeAdded)
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
-	Configuration theConfiguration("", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
+	Configuration
+		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -817,7 +826,8 @@ TEST(HoI4World_States_StateTests, SecondaryDebugVPsCanBeAdded)
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12, 13}}}};
 
-	Configuration theConfiguration("", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
+	Configuration
+		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -843,7 +853,8 @@ TEST(HoI4World_States_StateTests, DebugVpsAreOutput)
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12, 13}}, {24, {24, 25}}}};
 
-	Configuration theConfiguration("", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, true, false, false);
+	Configuration
+		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, true, false, false);
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
