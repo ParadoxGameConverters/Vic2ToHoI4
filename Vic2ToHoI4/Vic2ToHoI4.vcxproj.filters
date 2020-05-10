@@ -1489,9 +1489,6 @@
     <CopyFileToFolders Include="Data_Files\ai_peaces.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\configuration.txt">
-      <Filter>Data Files</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\converterFocuses.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
@@ -17923,6 +17920,12 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Fronter\options_l_russian.yml">
       <Filter>Data Files\Fronter</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configuration-example.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\log.txt">
+      <Filter>Data Files</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>
