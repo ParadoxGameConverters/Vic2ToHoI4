@@ -92,7 +92,7 @@ class Configuration
 class Configuration::Factory: commonItems::parser
 {
   public:
-	Configuration::Factory();
+	Factory();
 	std::unique_ptr<Configuration> importConfiguration(const std::string& filename);
 	std::unique_ptr<Configuration> importConfiguration(std::istream& theStream);
 
