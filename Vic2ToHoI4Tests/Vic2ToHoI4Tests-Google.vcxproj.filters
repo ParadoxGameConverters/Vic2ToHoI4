@@ -1,10 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2toHOI4Converter.cpp">
-      <Filter>Vic2ToHoI4 files</Filter>
-    </ClCompile>
-    <ClCompile Include="Vic2ToHoI4ConverterTests.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HOI4Version.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
@@ -890,6 +886,13 @@
     <ClCompile Include="..\common_items\Parser.cpp">
       <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
+    <ClCompile Include="ConfigurationTests.cpp" />
+    <ClCompile Include="..\common_items\GameVersion.cpp">
+      <Filter>Vic2ToHoI4 files\common items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Vic2toHOI4Converter.cpp">
+      <Filter>Vic2ToHoI4 files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1118,7 +1121,23 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="TestFiles\GameRulesEmpty.txt" />
-    <CopyFileToFolders Include="TestFiles\GameRules.txt" />
+    <CopyFileToFolders Include="TestFiles\GameRules.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\GameRulesEmpty.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\HoI4.exe">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\HoI4">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\v2game">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\v2game.exe">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

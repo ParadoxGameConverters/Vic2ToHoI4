@@ -3,7 +3,7 @@
 
 
 
-#include "HOI4World/HOI4Version.h"
+#include "GameVersion.h"
 #include "Parser.h"
 #include <string>
 #include <vector>
@@ -24,27 +24,31 @@ class Configuration
 {
   public:
 	class Factory;
-	Configuration(std::string HoI4Path,
+	Configuration(std::string inputFile,
+		 std::string outputName,
+		 std::string HoI4Path,
 		 std::string Vic2Path,
 		 std::vector<std::string> Vic2Mods,
-		 const double forceMultiplier,
-		 const double manpowerFactor,
-		 const double industrialShapeFactor,
-		 const double icFactor,
+		 const float forceMultiplier,
+		 const float manpowerFactor,
+		 const float industrialShapeFactor,
+		 const float icFactor,
 		 const ideologyOptions ideologiesOptions,
 		 std::vector<std::string> specifiedIdeologies,
 		 const bool debug,
 		 const bool removeCores,
-		 const bool createFactions,
-		 const HoI4::Version version):
-		 HoI4Path(std::move(HoI4Path)),
-		 Vic2Path(std::move(Vic2Path)), Vic2Mods(std::move(Vic2Mods)), forceMultiplier(forceMultiplier),
-		 manpowerFactor(manpowerFactor), industrialShapeFactor(industrialShapeFactor), icFactor(icFactor),
-		 ideologiesOptions(ideologiesOptions), specifiedIdeologies(std::move(specifiedIdeologies)), debug(debug),
-		 removeCores(removeCores), createFactions(createFactions), version(version)
+		 const bool createFactions):
+		 inputFile(std::move(inputFile)),
+		 outputName(std::move(outputName)), HoI4Path(std::move(HoI4Path)), Vic2Path(std::move(Vic2Path)),
+		 Vic2Mods(std::move(Vic2Mods)), forceMultiplier(forceMultiplier), manpowerFactor(manpowerFactor),
+		 industrialShapeFactor(industrialShapeFactor), icFactor(icFactor), ideologiesOptions(ideologiesOptions),
+		 specifiedIdeologies(std::move(specifiedIdeologies)), debug(debug), removeCores(removeCores),
+		 createFactions(createFactions)
 	{
 	}
 
+	[[nodiscard]] const auto& getInputFile() const { return inputFile; }
+	[[nodiscard]] const auto& getOutputName() const { return outputName; }
 	[[nodiscard]] const auto& getHoI4Path() const { return HoI4Path; }
 	[[nodiscard]] const auto& getVic2Path() const { return Vic2Path; }
 	[[nodiscard]] const auto& getVic2Mods() const { return Vic2Mods; }
@@ -57,47 +61,58 @@ class Configuration
 	[[nodiscard]] const auto& getDebug() const { return debug; }
 	[[nodiscard]] const auto& getRemoveCores() const { return removeCores; }
 	[[nodiscard]] const auto& getCreateFactions() const { return createFactions; }
-	[[nodiscard]] const auto& getHOI4Version() const { return version; }
 
-	[[nodiscard]] const auto& getOutputName() const { return outputName; }
 	[[nodiscard]] auto getNextLeaderID() { return leaderID++; }
 
-	void setForceMultiplier(const double multiplier) { forceMultiplier = multiplier; }
+	void setForceMultiplier(const float multiplier) { forceMultiplier = multiplier; }
 	void setOutputName(const std::string& name) { outputName = name; }
 
   private:
 	// set on construction
+	std::string inputFile;
+	std::string outputName;
 	std::string HoI4Path;
 	std::string Vic2Path;
 	std::vector<std::string> Vic2Mods;
-	double forceMultiplier;
-	double manpowerFactor;
-	double industrialShapeFactor;
-	double icFactor;
+	float forceMultiplier;
+	float manpowerFactor;
+	float industrialShapeFactor;
+	float icFactor;
 	ideologyOptions ideologiesOptions;
 	std::vector<std::string> specifiedIdeologies;
 	bool debug;
 	bool removeCores;
 	bool createFactions;
-	HoI4::Version version;
 
 	// set later
-	std::string outputName;
 	unsigned int leaderID = 1000;
-};
-
-
-class ConfigurationDetails: commonItems::parser
-{
-  public:
-	std::unique_ptr<Configuration> importDetails(std::istream& theStream);
 };
 
 
 class Configuration::Factory: commonItems::parser
 {
   public:
+	Factory();
 	std::unique_ptr<Configuration> importConfiguration(const std::string& filename);
+	std::unique_ptr<Configuration> importConfiguration(std::istream& theStream);
+
+  private:
+	void setOutputName(const std::string& V2SaveFileName);
+
+	std::string inputFile{"input.v2"};
+	std::string outputName;
+	std::string HoI4Path;
+	std::string Vic2Path;
+	std::vector<std::string> Vic2Mods;
+	float forceMultiplier = 1.0f;
+	float manpowerFactor = 1.0f;
+	float industrialShapeFactor = 0.0f;
+	float icFactor = 0.1f;
+	ideologyOptions ideologiesOptions = ideologyOptions::keep_major;
+	std::vector<std::string> specifiedIdeologies{"neutrality"};
+	bool debug = false;
+	bool removeCores = true;
+	bool createFactions = true;
 };
 
 

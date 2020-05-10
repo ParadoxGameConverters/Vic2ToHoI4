@@ -34,9 +34,7 @@ class World: commonItems::parser
 {
   public:
 	World() = default;
-	explicit World(const std::string& filename,
-		 const mappers::ProvinceMapper& provinceMapper,
-		 const Configuration& theConfiguration);
+	explicit World(const mappers::ProvinceMapper& provinceMapper, const Configuration& theConfiguration);
 	World(const World&) = delete;
 	World& operator=(const World&) = delete;
 	World(World&&) = delete;

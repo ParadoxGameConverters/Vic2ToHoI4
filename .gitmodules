@@ -1,6 +1,3 @@
-[submodule "frontend"]
-	path = frontend
-	url = https://github.com/ParadoxGameConverters/frontend
 [submodule "common_items"]
 	path = common_items
 	url = https://github.com/ParadoxGameConverters/commonItems
@@ -10,3 +7,6 @@
 [submodule "bitmap"]
 	path = bitmap
 	url = https://github.com/ParadoxGameConverters/bitmap.git
+[submodule "Fronter"]
+	path = Fronter
+	url = https://github.com/ParadoxGameConverters/Fronter.git

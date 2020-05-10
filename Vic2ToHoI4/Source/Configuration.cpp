@@ -2,28 +2,25 @@
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
+#include "StringUtils.h"
 #include <fstream>
 #include <vector>
 
 
 
-std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream& theStream)
+Configuration::Factory::Factory()
 {
-	std::string HoI4Path;
-	std::string Vic2Path;
-	std::vector<std::string> Vic2Mods;
-	auto forceMultiplier = 0.0;
-	auto manpowerFactor = 0.0;
-	auto industrialShapeFactor = 0.0;
-	auto icFactor = 0.0;
-	auto ideologiesOptions = ideologyOptions::keep_major;
-	std::vector<std::string> specifiedIdeologies;
-	auto debug = false;
-	auto removeCores = true;
-	auto createFactions = true;
-	auto version = HoI4::Version();
-
-	registerKeyword("HoI4directory", [&HoI4Path](const std::string& unused, std::istream& theStream) {
+	registerKeyword("SaveGame", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleString filenameString(theStream);
+		inputFile = filenameString.getString();
+		const auto length = inputFile.find_last_of('.');
+		if ((length == std::string::npos) || (".v2" != inputFile.substr(length, inputFile.length())))
+		{
+			throw std::invalid_argument("The save was not a Vic2 save. Choose a save ending in '.v2' and convert again.");
+		}
+		Log(LogLevel::Info) << "\tVic2 save is " << inputFile;
+	});
+	registerKeyword("HoI4directory", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString directoryString(theStream);
 		HoI4Path = directoryString.getString();
 		if (HoI4Path.empty() || !Utils::doesFolderExist(HoI4Path))
@@ -37,7 +34,7 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 
 		Log(LogLevel::Info) << "\tHoI4 path install path is " << HoI4Path;
 	});
-	registerKeyword("V2directory", [&Vic2Path](const std::string& unused, std::istream& theStream) {
+	registerKeyword("Vic2directory", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString directoryString(theStream);
 		Vic2Path = directoryString.getString();
 		if (Vic2Path.empty() || !Utils::doesFolderExist(Vic2Path))
@@ -51,32 +48,37 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 
 		Log(LogLevel::Info) << "\tVictoria 2 install path is " << Vic2Path;
 	});
-	registerKeyword("Vic2Mods", [&Vic2Mods](const std::string& unused, std::istream& theStream) {
-		const commonItems::stringList modsStrings(theStream);
+	registerKeyword("Vic2Mods", [this](const std::string& unused, std::istream& theStream) {
+		std::string line;
+		std::getline(theStream, line);
+		line = line.substr(line.find_first_of("\""), line.length());
+		line = stringutils::remQuotes(line);
+		std::stringstream lineStream;
+		lineStream << line;
+		const commonItems::stringList modsStrings(lineStream);
 		Vic2Mods = modsStrings.getStrings();
 	});
-	registerKeyword("force_multiplier", [&forceMultiplier](const std::string& unused, std::istream& theStream) {
+	registerKeyword("force_multiplier", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleDouble factorValue(theStream);
-		forceMultiplier = factorValue.getDouble();
+		forceMultiplier = std::clamp(static_cast<float>(factorValue.getDouble()), 0.01f, 100.0f);
 		Log(LogLevel::Info) << "\tForce multiplier: " << forceMultiplier;
 	});
-	registerKeyword("manpower_factor", [&manpowerFactor](const std::string& unused, std::istream& theStream) {
+	registerKeyword("manpower_factor", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleDouble factorValue(theStream);
-		manpowerFactor = factorValue.getDouble();
+		manpowerFactor = std::clamp(static_cast<float>(factorValue.getDouble()), 0.01f, 10.0f);
 		Log(LogLevel::Info) << "\tManpower factor: " << manpowerFactor;
 	});
-	registerKeyword("industrial_shape_factor",
-		 [&industrialShapeFactor](const std::string& unused, std::istream& theStream) {
-			 const commonItems::singleDouble factorValue(theStream);
-			 industrialShapeFactor = factorValue.getDouble();
-			 Log(LogLevel::Info) << "\tIndustrial shape factor: " << industrialShapeFactor;
-		 });
-	registerKeyword("ic_factor", [&icFactor](const std::string& unused, std::istream& theStream) {
+	registerKeyword("industrial_shape_factor", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleDouble factorValue(theStream);
-		icFactor = factorValue.getDouble();
+		industrialShapeFactor = std::clamp(static_cast<float>(factorValue.getDouble()), 0.0f, 1.0f);
+		Log(LogLevel::Info) << "\tIndustrial shape factor: " << industrialShapeFactor;
+	});
+	registerKeyword("ic_factor", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleDouble factorValue(theStream);
+		icFactor = std::clamp(static_cast<float>(factorValue.getDouble()), 0.0f, 1.0f);
 		Log(LogLevel::Info) << "\tIC factor: " << icFactor;
 	});
-	registerKeyword("ideologies", [&ideologiesOptions](const std::string& unused, std::istream& theStream) {
+	registerKeyword("ideologies", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString ideologiesOptionString(theStream);
 		if (ideologiesOptionString.getString() == "keep_default")
 		{
@@ -99,47 +101,66 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 			Log(LogLevel::Info) << "\tKeeping major ideologies";
 		}
 	});
-	registerKeyword("ideologies_choice", [&specifiedIdeologies](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleString choiceString(theStream);
-		specifiedIdeologies.push_back(choiceString.getString());
-		Log(LogLevel::Info) << "\tSpecified " << choiceString.getString();
+	registerKeyword("ideologies_choice", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::stringList choiceStrings(theStream);
+		for (const auto& choice: choiceStrings.getStrings())
+		{
+			specifiedIdeologies.push_back(choice);
+			Log(LogLevel::Info) << "\tSpecified " << choice;
+		}
 	});
-	registerKeyword("debug", [&debug](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleString debugString(theStream);
-		if (debugString.getString() == "yes")
+	registerKeyword("debug", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleString debugValue(theStream);
+		if (debugValue.getString() == "yes")
 		{
 			debug = true;
 			Log(LogLevel::Info) << "\tDebug mode activated";
 		}
+		else
+		{
+			debug = false;
+			Log(LogLevel::Info) << "\tDebug mode deactivated";
+		}
 	});
-	registerKeyword("remove_cores", [&removeCores](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleString removeCoresString(theStream);
-		if (removeCoresString.getString() == "false")
+	registerKeyword("remove_cores", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleString removeCoresValue(theStream);
+		if (removeCoresValue.getString() == "no")
 		{
 			removeCores = false;
 			Log(LogLevel::Info) << "\tDisabling remove cores";
 		}
+		else
+		{
+			removeCores = true;
+			Log(LogLevel::Info) << "\tEnabling remove cores";
+		}
 	});
-	registerKeyword("create_factions", [&createFactions](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleString createFactionsString(theStream);
-		if (createFactionsString.getString() == "no")
+	registerKeyword("create_factions", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleString createFactionsValue(theStream);
+		if (createFactionsValue.getString() == "no")
 		{
 			createFactions = false;
 			Log(LogLevel::Info) << "\tDisabling keep factions";
 		}
-	});
-	registerKeyword("HoI4Version", [&version](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleString versionString(theStream);
-		version = HoI4::Version(versionString.getString());
+		else
+		{
+			createFactions = true;
+			Log(LogLevel::Info) << "\tEnabling keep factions";
+		}
 	});
 	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+}
 
+
+std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const std::string& filename)
+{
 	Log(LogLevel::Info) << "Reading configuration file";
-	parseStream(theStream);
+	parseFile(filename);
+	setOutputName(inputFile);
 
-	Log(LogLevel::Info) << "\tConfigured HoI4 version is " << version;
-
-	return std::make_unique<Configuration>(HoI4Path,
+	return std::make_unique<Configuration>(inputFile,
+		 outputName,
+		 HoI4Path,
 		 Vic2Path,
 		 Vic2Mods,
 		 forceMultiplier,
@@ -150,21 +171,71 @@ std::unique_ptr<Configuration> ConfigurationDetails::importDetails(std::istream&
 		 specifiedIdeologies,
 		 debug,
 		 removeCores,
-		 createFactions,
-		 version);
+		 createFactions);
 }
 
 
-std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const std::string& filename)
+std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(std::istream& theStream)
 {
-	std::unique_ptr<Configuration> configuration;
+	Log(LogLevel::Info) << "Reading configuration file";
+	parseStream(theStream);
+	setOutputName(inputFile);
 
-	registerKeyword("configuration", [&configuration](const std::string& unused, std::istream& theStream) {
-		configuration = ConfigurationDetails{}.importDetails(theStream);
-	});
-	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+	return std::make_unique<Configuration>(inputFile,
+		 outputName,
+		 HoI4Path,
+		 Vic2Path,
+		 Vic2Mods,
+		 forceMultiplier,
+		 manpowerFactor,
+		 industrialShapeFactor,
+		 icFactor,
+		 ideologiesOptions,
+		 specifiedIdeologies,
+		 debug,
+		 removeCores,
+		 createFactions);
+}
 
-	parseFile(filename);
 
-	return configuration;
+void Configuration::Factory::setOutputName(const std::string& V2SaveFileName)
+{
+	outputName = V2SaveFileName;
+
+	if (outputName.empty())
+	{
+		return;
+	}
+
+	const auto lastBackslash = V2SaveFileName.find_last_of('\\');
+	const auto lastSlash = V2SaveFileName.find_last_of('/');
+	if ((lastBackslash == std::string::npos) && (lastSlash != std::string::npos))
+	{
+		outputName = outputName.substr(lastSlash + 1, outputName.length());
+	}
+	else if ((lastBackslash != std::string::npos) && (lastSlash == std::string::npos))
+	{
+		outputName = outputName.substr(lastBackslash + 1, outputName.length());
+	}
+	else if ((lastBackslash != std::string::npos) && (lastSlash != std::string::npos))
+	{
+		const auto slash = std::max(lastBackslash, lastSlash);
+		outputName = outputName.substr(slash + 1, outputName.length());
+	}
+	else if ((lastBackslash == std::string::npos) && (lastSlash == std::string::npos))
+	{
+		// no change, but explicitly considered
+	}
+
+	const auto length = outputName.find_last_of('.');
+	if ((length == std::string::npos) || (".v2" != outputName.substr(length, outputName.length())))
+	{
+		throw std::invalid_argument("The save was not a Vic2 save. Choose a save ending in '.v2' and convert again.");
+	}
+	outputName = outputName.substr(0, length);
+
+	std::replace(outputName.begin(), outputName.end(), '-', '_');
+	std::replace(outputName.begin(), outputName.end(), ' ', '_');
+
+	Log(LogLevel::Info) << "Using output name " << outputName;
 }

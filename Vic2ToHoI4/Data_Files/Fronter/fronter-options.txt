@@ -1,0 +1,184 @@
+option = {
+	name = Vic2Mods
+	displayName = VIC2MODS
+	tooltip = VIC2MODSTIP
+	textSelector = {	
+		value = ""
+		editable = true
+		tooltip = VIC2MODSTIP2
+	}
+}
+
+option = {
+	name = industrial_shape_factor
+	displayName = INDUSTRIALSHAPEFACTOR
+	tooltip = INDUSTRIALSHAPEFACTORTIP
+	textSelector = {	
+		value = "0.0"
+		editable = true
+		tooltip = INDUSTRIALSHAPEFACTORTIP2
+	}
+}
+
+option = {
+	name = ic_factor
+	displayName = ICFACTOR
+	tooltip = ICFACTORTIP
+	textSelector = {	
+		value = "0.1"
+		editable = true
+		tooltip = ICFACTORTIP2
+	}
+}
+
+option = {
+	name = manpower_factor
+	displayName = MANPOWERFACTOR
+	tooltip = MANPOWERFACTORTIP
+	textSelector = {	
+		value = "1.0"
+		editable = true
+		tooltip = MANPOWERFACTORTIP2
+	}
+}
+
+option = {
+	name = force_multiplier
+	displayName = FORCE_MULTIPLIER
+	tooltip = FORCE_MULTIPLIERTIP
+	textSelector = {	
+		value = "1.0"
+		editable = true
+		tooltip = FORCE_MULTIPLIERTIP2
+	}
+}
+
+option = {
+	name = ideologies
+	displayName = IDEOLOGIES
+	tooltip = IDEOLOGIESTIP
+	radioSelector = {
+		radioOption = {
+			name = keep_major
+			displayName = KEEPMAJOR
+			tooltip = KEEPMAJORTIP
+			default = true
+		}
+		radioOption = {
+			name = keep_all
+			displayName = KEEPALL
+			tooltip = KEEPALLTIP
+			default = false
+		}
+		radioOption = {
+			name = keep_default
+			displayName = KEEPDEFAULT
+			tooltip = KEEPDEFAULTTIP
+			default = false
+		}
+		radioOption = {
+			name = specify
+			displayName = SPECIFYIDEOLOGIES
+			tooltip = SPECIFYIDEOLOGIESTIP
+			default = false
+		}
+	}
+}
+
+option = {
+	name = remove_cores
+	displayName = REMOVECORES
+	tooltip = REMOVECORESTIP
+	radioSelector = {
+		radioOption = {
+			name = yes
+			displayName = YES
+			tooltip = REMOVECORESYESTIP
+			default = true
+		}
+		radioOption = {
+			name = no
+			displayName = NO
+			tooltip = REMOVECORESNOTIP
+			default = false
+		}
+	}
+}
+
+option = {
+	name = create_factions
+	displayName = CREATEFACTIONS
+	tooltip = CREATEFACTIONSTIP
+	radioSelector = {
+		radioOption = {
+			name = yes
+			displayName = YES
+			tooltip = CREATEFACTIONSYESTIP
+			default = true
+		}
+		radioOption = {
+			name = no
+			displayName = NO
+			tooltip = CREATEFACTIONSNOTIP
+			default = false
+		}
+	}
+}
+
+option = {
+	name = debug
+	displayName = DEBUG
+	tooltip = DEBUGTIP
+	radioSelector = {
+		radioOption = {
+			name = no
+			displayName = NO
+			tooltip = DEBUGNOTIP
+			default = true
+		}
+		radioOption = {
+			name = yes
+			displayName = YES
+			tooltip = DEBUGYESTIP
+			default = false
+		}
+	}
+}
+
+option = {
+	name = ideologies_choice
+	displayName = IDEOLOGIESCHOICE
+	tooltip = IDEOLOGIESCHOICETIP
+	checkBoxSelector = {
+		checkBoxOption = {
+			name = communism
+			displayName = COMMUNISM
+			tooltip = COMMUNISMTIP
+			default = true
+		}
+		checkBoxOption = {
+			name = absolutist
+			displayName = ABSOLUTIST
+			tooltip = ABSOLUTISTTIP
+			default = true
+		}
+		checkBoxOption = {
+			name = democratic
+			displayName = DEMOCRATIC
+			tooltip = DEMOCRATIC
+			default = true
+		}
+		checkBoxOption = {
+			name = fascism
+			displayName = FASCISM
+			tooltip = FASCISM
+			default = true
+		}
+		checkBoxOption = {
+			name = radical
+			displayName = RADICAL
+			tooltip = RADICAL
+			default = true
+		}
+	}
+}
