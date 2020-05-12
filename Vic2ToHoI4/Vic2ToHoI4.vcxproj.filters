@@ -785,6 +785,9 @@
       <Filter>CommonItems</Filter>
     </ClCompile>
     <ClCompile Include="Source\Vic2toHOI4Converter.cpp" />
+    <ClCompile Include="Source\HOI4World\Map\StrategicRegions.cpp">
+      <Filter>HoI4World\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1483,6 +1486,9 @@
     </ClInclude>
     <ClInclude Include="..\common_items\GameVersion.h">
       <Filter>CommonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Map\StrategicRegions.h">
+      <Filter>HoI4World\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

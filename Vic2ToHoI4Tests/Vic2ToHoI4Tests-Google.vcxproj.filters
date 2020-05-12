@@ -893,6 +893,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Vic2toHOI4Converter.cpp">
       <Filter>Vic2ToHoI4 files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegions.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

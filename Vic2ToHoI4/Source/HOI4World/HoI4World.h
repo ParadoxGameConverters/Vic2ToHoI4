@@ -16,6 +16,7 @@
 #include "Leaders/Advisor.h"
 #include "Map/CoastalProvinces.h"
 #include "Map/MapData.h"
+#include "Map/StrategicRegions.h"
 #include "MilitaryMappings/AllMilitaryMappings.h"
 #include "MilitaryMappings/UnitMappings.h"
 #include "Names.h"
@@ -84,7 +85,7 @@ class World: commonItems::parser
 	[[nodiscard]] auto& getNames() { return theNames; }
 	[[nodiscard]] const auto& getNames() const { return theNames; }
 	[[nodiscard]] const auto& getTheStates() const { return *states; }
-	[[nodiscard]] const auto& getStrategicRegions() const { return strategicRegions; }
+	[[nodiscard]] const auto& getStrategicRegions() const { return *strategicRegions; }
 	[[nodiscard]] const auto& getCountries() const { return countries; }
 	[[nodiscard]] const auto& getMilitaryMappings() const { return *theMilitaryMappings; }
 	[[nodiscard]] auto& getGraphics() { return theGraphics; }
@@ -153,7 +154,6 @@ class World: commonItems::parser
 	void reportIndustryLevels() const;
 
 	void convertStrategicRegions(const Configuration& theConfiguration);
-	std::map<int, int> importStrategicRegions(const Configuration& theConfiguration);
 	std::map<int, int> determineUsedRegions(const HoI4::State& state, std::map<int, int>& provinceToStrategicRegionMap);
 	std::optional<int> determineMostUsedRegion(const std::map<int, int>& usedRegions) const;
 	void addProvincesToRegion(const HoI4::State& state, int regionNum);
@@ -208,7 +208,7 @@ class World: commonItems::parser
 	std::unique_ptr<States> states;
 
 	HoI4::SupplyZones* supplyZones = nullptr;
-	std::map<int, HoI4::StrategicRegion*> strategicRegions;
+	std::unique_ptr<StrategicRegions> strategicRegions;
 	Buildings* buildings = nullptr;
 
 	std::map<std::string, std::shared_ptr<HoI4::Country>> countries;
