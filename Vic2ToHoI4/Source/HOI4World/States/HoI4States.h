@@ -4,6 +4,7 @@
 
 
 #include "../../Mappers/Provinces/ProvinceMapper.h"
+#include "../Map/StrategicRegions.h"
 #include "DefaultState.h"
 #include "Parser.h"
 #include <map>
@@ -49,6 +50,7 @@ class States: commonItems::parser
 		 const CountryMapper& countryMap,
 		 const HoI4::CoastalProvinces& theCoastalProvinces,
 		 const Vic2::StateDefinitions& theStateDefinitions,
+		 const StrategicRegions& strategicRegions,
 		 const Vic2::Localisations& vic2Localisations,
 		 const ProvinceDefinitions& provinceDefinitions,
 		 Localisation& hoi4Localisations,
@@ -88,20 +90,22 @@ class States: commonItems::parser
 
 	void createStates(const std::map<std::string, Vic2::Country*>& sourceCountries,
 		 const std::map<int, Vic2::Province*>& sourceProvinces,
-		 const HoI4::ImpassableProvinces& theImpassables,
+		 const HoI4::ImpassableProvinces& theImpassableProvinces,
 		 const CountryMapper& countryMap,
 		 const HoI4::CoastalProvinces& theCoastalProvinces,
 		 const Vic2::StateDefinitions& theStateDefinitions,
+		 const StrategicRegions& strategicRegions,
 		 const Vic2::Localisations& vic2Localisations,
 		 Localisation& hoi4Localisations,
 		 const mappers::ProvinceMapper& provinceMapper,
 		 const Configuration& theConfiguration);
 	void createMatchingHoI4State(const Vic2::State* vic2State,
 		 const std::string& stateOwner,
-		 const HoI4::ImpassableProvinces& theImpassables,
+		 const HoI4::ImpassableProvinces& theImpassableProvinces,
 		 const CountryMapper& countryMapper,
 		 const HoI4::CoastalProvinces& theCoastalProvinces,
 		 const Vic2::StateDefinitions& theStateDefinitions,
+		 const StrategicRegions& strategicRegions,
 		 const Vic2::Localisations& vic2Localisations,
 		 Localisation& hoi4Localisations,
 		 const mappers::ProvinceMapper& provinceMapper,
