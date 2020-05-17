@@ -12,6 +12,8 @@
 
 namespace HoI4
 {
+class State;
+
 
 class StrategicRegions
 {
@@ -27,6 +29,7 @@ class StrategicRegions
 	[[nodiscard]] const auto& getStrategicRegions() const { return strategicRegions; }
 	[[nodiscard]] auto getProvinceToStrategicRegionMapCopy() const { return provinceToStrategicRegionMap; }
 
+	void addProvincesToRegion(int regionNumber, const HoI4::State& state);
 	void addProvinceToRegion(int regionNumber, int provinceId);
 
   private:

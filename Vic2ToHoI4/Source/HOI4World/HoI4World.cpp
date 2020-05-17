@@ -469,7 +469,7 @@ void HoI4::World::convertStrategicRegions(const Configuration& theConfiguration)
 		auto bestRegion = determineMostUsedRegion(usedRegions);
 		if (bestRegion)
 		{
-			addProvincesToRegion(state.second, *bestRegion);
+			strategicRegions->addProvincesToRegion(*bestRegion, state.second);
 		}
 	}
 	addLeftoverProvincesToRegions(provinceToStrategicRegionMap);
@@ -520,15 +520,6 @@ optional<int> HoI4::World::determineMostUsedRegion(const map<int, int>& usedRegi
 	}
 
 	return bestRegion;
-}
-
-
-void HoI4::World::addProvincesToRegion(const HoI4::State& state, int regionNum)
-{
-	for (auto province: state.getProvinces())
-	{
-		strategicRegions->addProvinceToRegion(regionNum, province);
-	}
 }
 
 

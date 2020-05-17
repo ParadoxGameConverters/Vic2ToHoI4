@@ -1,7 +1,17 @@
 #include "StrategicRegions.h"
+#include "../States/HoI4State.h"
 #include "OSCompatibilityLayer.h"
 #include <set>
 
+
+
+void HoI4::StrategicRegions::addProvincesToRegion(int regionNumber, const HoI4::State& state)
+{
+	for (auto province: state.getProvinces())
+	{
+		addProvinceToRegion(regionNumber, province);
+	}
+}
 
 
 void HoI4::StrategicRegions::addProvinceToRegion(int regionNumber, int provinceId)
