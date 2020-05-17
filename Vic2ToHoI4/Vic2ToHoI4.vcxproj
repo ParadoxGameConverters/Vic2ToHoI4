@@ -398,6 +398,7 @@
     <ClCompile Include="Source\OutHoi4\Map\OutBuilding.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutBuildings.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutStrategicRegion.cpp" />
+    <ClCompile Include="Source\OutHoi4\Map\OutStrategicRegions.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutSupplyZone.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutSupplyZones.cpp" />
     <ClCompile Include="Source\OutHoi4\Military\OutAirplane.cpp" />
@@ -612,6 +613,7 @@
     <ClInclude Include="Source\OutHoi4\GameRules\OutGameRules.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutAdmiral.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutGeneral.h" />
+    <ClInclude Include="Source\OutHoi4\Map\OutStrategicRegions.h" />
     <ClInclude Include="Source\OutHoi4\OutColor.h" />
     <ClInclude Include="Source\OutHoi4\OutFlags.h" />
     <ClInclude Include="Source\OutHoi4\OutHoi4Country.h" />

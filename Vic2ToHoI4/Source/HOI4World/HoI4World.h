@@ -153,11 +153,6 @@ class World: commonItems::parser
 	void calculateIndustryInCountries();
 	void reportIndustryLevels() const;
 
-	void convertStrategicRegions(const Configuration& theConfiguration);
-	std::map<int, int> determineUsedRegions(const HoI4::State& state, std::map<int, int>& provinceToStrategicRegionMap);
-	std::optional<int> determineMostUsedRegion(const std::map<int, int>& usedRegions) const;
-	void addLeftoverProvincesToRegions(const std::map<int, int>& provinceToStrategicRegionMap);
-
 	void convertDiplomacy();
 	void convertAgreements();
 

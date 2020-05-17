@@ -7,12 +7,14 @@
 #include "StrategicRegion.h"
 #include <map>
 #include <memory>
+#include <optional>
 
 
 
 namespace HoI4
 {
-class State;
+	class States;
+	class State;
 
 
 class StrategicRegions
@@ -27,12 +29,17 @@ class StrategicRegions
 	}
 
 	[[nodiscard]] const auto& getStrategicRegions() const { return strategicRegions; }
-	[[nodiscard]] auto getProvinceToStrategicRegionMapCopy() const { return provinceToStrategicRegionMap; }
+	[[nodiscard]] const auto& getProvinceToStrategicRegionMap() const { return provinceToStrategicRegionMap; }
 
+	void convert(const States& theStates);
+
+  private:
+	std::map<int, int> determineUsedRegions(const HoI4::State& state);
+	std::optional<int> determineMostUsedRegion(const std::map<int, int>& usedRegions) const;
+	void addLeftoverProvincesToRegions(const std::map<int, int>& provinceToStrategicRegionMap);
 	void addProvincesToRegion(int regionNumber, const HoI4::State& state);
 	void addProvinceToRegion(int regionNumber, int provinceId);
 
-  private:
 	std::map<int, StrategicRegion> strategicRegions;
 	std::map<int, int> provinceToStrategicRegionMap;
 };

@@ -8,6 +8,7 @@
 #include "Log.h"
 #include "Map/OutBuildings.h"
 #include "Map/OutStrategicRegion.h"
+#include "Map/OutStrategicRegions.h"
 #include "Map/OutSupplyZones.h"
 #include "OSCompatibilityLayer.h"
 #include "OutFocusTree.h"
@@ -19,7 +20,6 @@
 #include "States/OutHoI4States.h"
 #include "outDifficultySettings.h"
 #include <fstream>
-
 
 
 namespace HoI4
@@ -314,14 +314,7 @@ void HoI4::outputMap(const States& states, const StrategicRegions& strategicRegi
 	}
 	rocketSitesFile.close();
 
-	if (!Utils::TryCreateFolder("output/" + outputName + "/map/strategicregions"))
-	{
-		throw std::runtime_error("Could not create output/" + outputName + "/map/strategicregions");
-	}
-	for (const auto& strategicRegion: strategicRegions.getStrategicRegions())
-	{
-		outputStrategicRegion(strategicRegion.second, "output/" + outputName + "/map/strategicregions/");
-	}
+	outputStrategicRegions(strategicRegions, outputName);
 }
 
 

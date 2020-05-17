@@ -63,7 +63,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 		 countryMap,
 		 theCoastalProvinces,
 		 sourceWorld->getStateDefinitions(),
-		*strategicRegions,
+		 *strategicRegions,
 		 vic2Localisations,
 		 provinceDefinitions,
 		 *theMapData,
@@ -82,7 +82,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	convertIndustry(theConfiguration);
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
-	convertStrategicRegions(theConfiguration);
+	strategicRegions->convert(*states);
 	convertDiplomacy();
 	convertTechs();
 
@@ -455,80 +455,6 @@ void HoI4::World::reportIndustryLevels() const
 	Log(LogLevel::Info) << "\t\t" << militaryFactories << " military factories";
 	Log(LogLevel::Info) << "\t\t" << civilianFactories << " civilian factories";
 	Log(LogLevel::Info) << "\t\t" << dockyards << " dockyards";
-}
-
-
-void HoI4::World::convertStrategicRegions(const Configuration& theConfiguration)
-{
-	Log(LogLevel::Info) << "\tConverting strategic regions";
-	auto provinceToStrategicRegionMap = strategicRegions->getProvinceToStrategicRegionMapCopy();
-
-	for (auto state: states->getStates())
-	{
-		map<int, int> usedRegions = determineUsedRegions(state.second, provinceToStrategicRegionMap);
-		auto bestRegion = determineMostUsedRegion(usedRegions);
-		if (bestRegion)
-		{
-			strategicRegions->addProvincesToRegion(*bestRegion, state.second);
-		}
-	}
-	addLeftoverProvincesToRegions(provinceToStrategicRegionMap);
-}
-
-
-map<int, int> HoI4::World::determineUsedRegions(const HoI4::State& state, map<int, int>& provinceToStrategicRegionMap)
-{
-	map<int, int> usedRegions; // region ID -> number of provinces in that region
-
-	for (auto province: state.getProvinces())
-	{
-		auto mapping = provinceToStrategicRegionMap.find(province);
-		if (mapping == provinceToStrategicRegionMap.end())
-		{
-			Log(LogLevel::Warning) << "Province " << province << " had no original strategic region";
-			continue;
-		}
-
-		auto usedRegion = usedRegions.find(mapping->second);
-		if (usedRegion == usedRegions.end())
-		{
-			usedRegions.insert(make_pair(mapping->second, 1));
-		}
-		else
-		{
-			usedRegion->second++;
-		}
-
-		provinceToStrategicRegionMap.erase(mapping);
-	}
-
-	return usedRegions;
-}
-
-
-optional<int> HoI4::World::determineMostUsedRegion(const map<int, int>& usedRegions) const
-{
-	int mostProvinces = 0;
-	optional<int> bestRegion;
-	for (auto region: usedRegions)
-	{
-		if (region.second > mostProvinces)
-		{
-			bestRegion = region.first;
-			mostProvinces = region.second;
-		}
-	}
-
-	return bestRegion;
-}
-
-
-void HoI4::World::addLeftoverProvincesToRegions(const map<int, int>& provinceToStrategicRegionMap)
-{
-	for (auto mapping: provinceToStrategicRegionMap)
-	{
-		strategicRegions->addProvinceToRegion(mapping.second, mapping.first);
-	}
 }
 
 
