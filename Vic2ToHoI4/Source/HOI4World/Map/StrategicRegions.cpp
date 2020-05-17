@@ -10,20 +10,21 @@ void HoI4::StrategicRegions::convert(const States& theStates)
 {
 	Log(LogLevel::Info) << "\tConverting strategic regions";
 
-	for (auto state: theStates.getStates())
+	for (const auto& state: theStates.getStates())
 	{
-		std::map<int, int> usedRegions = determineUsedRegions(state.second);
-		auto bestRegion = determineMostUsedRegion(usedRegions);
+		const auto usedRegions = determineUsedRegions(state.second);
+		const auto bestRegion = determineMostUsedRegion(usedRegions);
 		if (bestRegion)
 		{
 			addProvincesToRegion(*bestRegion, state.second);
 		}
 	}
-	addLeftoverProvincesToRegions(provinceToStrategicRegionMap);
+
+	addLeftoverProvincesToRegions();
 }
 
 
-std::map<int, int> HoI4::StrategicRegions::determineUsedRegions(const HoI4::State& state)
+std::map<int, int> HoI4::StrategicRegions::determineUsedRegions(const State& state)
 {
 	std::map<int, int> usedRegions; // region ID -> number of provinces in that region
 
@@ -36,8 +37,7 @@ std::map<int, int> HoI4::StrategicRegions::determineUsedRegions(const HoI4::Stat
 			continue;
 		}
 
-		auto usedRegion = usedRegions.find(mapping->second);
-		if (usedRegion == usedRegions.end())
+		if (auto usedRegion = usedRegions.find(mapping->second); usedRegion == usedRegions.end())
 		{
 			usedRegions.insert(std::make_pair(mapping->second, 1));
 		}
@@ -53,35 +53,34 @@ std::map<int, int> HoI4::StrategicRegions::determineUsedRegions(const HoI4::Stat
 }
 
 
-std::optional<int> HoI4::StrategicRegions::determineMostUsedRegion(const std::map<int, int>& usedRegions) const
+std::optional<int> HoI4::StrategicRegions::determineMostUsedRegion(const std::map<int, int>& usedRegions)
 {
-	int mostProvinces = 0;
-	std::optional<int> bestRegion;
-	for (auto region: usedRegions)
+	if (!usedRegions.empty())
 	{
-		if (region.second > mostProvinces)
-		{
-			bestRegion = region.first;
-			mostProvinces = region.second;
-		}
+		return std::max_element(usedRegions.begin(),
+			 usedRegions.end(),
+			 [](const std::pair<int, int>& a, const std::pair<int, int>& b) {
+				 return a.second < b.second;
+			 })
+			 ->first;
 	}
 
-	return bestRegion;
+	return std::nullopt;
 }
 
 
-void HoI4::StrategicRegions::addLeftoverProvincesToRegions(const std::map<int, int>& provinceToStrategicRegionMap)
+void HoI4::StrategicRegions::addLeftoverProvincesToRegions()
 {
-	for (auto mapping: provinceToStrategicRegionMap)
+	for (const auto& mapping: provinceToStrategicRegionMap)
 	{
 		addProvinceToRegion(mapping.second, mapping.first);
 	}
 }
 
 
-void HoI4::StrategicRegions::addProvincesToRegion(int regionNumber, const HoI4::State& state)
+void HoI4::StrategicRegions::addProvincesToRegion(int regionNumber, const State& state)
 {
-	for (auto province: state.getProvinces())
+	for (const auto& province: state.getProvinces())
 	{
 		addProvinceToRegion(regionNumber, province);
 	}

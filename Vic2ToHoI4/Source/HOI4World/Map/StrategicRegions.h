@@ -13,8 +13,8 @@
 
 namespace HoI4
 {
-	class States;
-	class State;
+class States;
+class State;
 
 
 class StrategicRegions
@@ -34,10 +34,10 @@ class StrategicRegions
 	void convert(const States& theStates);
 
   private:
-	std::map<int, int> determineUsedRegions(const HoI4::State& state);
-	std::optional<int> determineMostUsedRegion(const std::map<int, int>& usedRegions) const;
-	void addLeftoverProvincesToRegions(const std::map<int, int>& provinceToStrategicRegionMap);
-	void addProvincesToRegion(int regionNumber, const HoI4::State& state);
+	std::map<int, int> determineUsedRegions(const State& state);
+	[[nodiscard]] static std::optional<int> determineMostUsedRegion(const std::map<int, int>& usedRegions);
+	void addLeftoverProvincesToRegions();
+	void addProvincesToRegion(int regionNumber, const State& state);
 	void addProvinceToRegion(int regionNumber, int provinceId);
 
 	std::map<int, StrategicRegion> strategicRegions;
@@ -48,7 +48,7 @@ class StrategicRegions
 class StrategicRegions::Factory
 {
   public:
-	std::unique_ptr<StrategicRegions> importStrategicRegions(const Configuration& theConfiguration);
+	static std::unique_ptr<StrategicRegions> importStrategicRegions(const Configuration& theConfiguration);
 };
 
 } // namespace HoI4
