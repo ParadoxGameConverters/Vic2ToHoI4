@@ -20,6 +20,7 @@
 #include "OSCompatibilityLayer.h"
 #include "StateCategories.h"
 #include <fstream>
+#include <queue>
 
 
 
@@ -436,15 +437,15 @@ std::vector<std::set<int>> HoI4::States::getConnectedProvinceSets(std::set<int> 
 	std::vector<std::set<int>> connectedProvinceSets;
 	while (!provincesNumbers.empty())
 	{
-		std::set<int> connectedProvinceSet{*provincesNumbers.begin()};
+		std::set<int> connectedProvinceSet;
 
-		std::set<int> openProvinces{*provincesNumbers.begin()};
-		std::set<int> closedProvinces;
+		std::queue<int> openProvinces;
+		openProvinces.push(*provincesNumbers.begin());
+		std::set<int> closedProvinces{*provincesNumbers.begin()};
 		while (!openProvinces.empty() && !provincesNumbers.empty())
 		{
-			auto currentProvince = *openProvinces.begin();
-			openProvinces.erase(currentProvince);
-			closedProvinces.insert(currentProvince);
+			auto currentProvince = openProvinces.front();
+			openProvinces.pop();
 			if (provincesNumbers.count(currentProvince))
 			{
 				connectedProvinceSet.insert(currentProvince);
@@ -459,7 +460,8 @@ std::vector<std::set<int>> HoI4::States::getConnectedProvinceSets(std::set<int> 
 					{
 						if (province->second.isLandProvince())
 						{
-							openProvinces.insert(neighbor);
+							openProvinces.push(neighbor);
+							closedProvinces.insert(neighbor);
 						}
 					}
 				}

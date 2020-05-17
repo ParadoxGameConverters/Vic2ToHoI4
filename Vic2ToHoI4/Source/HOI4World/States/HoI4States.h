@@ -121,7 +121,7 @@ class States: commonItems::parser
 	std::set<int> getProvincesInState(const Vic2::State* vic2State,
 		 const std::string& owner,
 		 const mappers::ProvinceMapper& provinceMapper);
-	std::vector<std::set<int>> getConnectedProvinceSets(std::set<int> provinceNumbers,
+	static std::vector<std::set<int>> getConnectedProvinceSets(std::set<int> provinceNumbers,
 		 const MapData& mapData,
 		 const std::map<int, Province>& provinces);
 	std::vector<std::set<int>> consolidateProvinceSets(std::vector<std::set<int>> connectedProvinceSets,
