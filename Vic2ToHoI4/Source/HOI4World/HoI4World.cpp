@@ -66,6 +66,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 		*strategicRegions,
 		 vic2Localisations,
 		 provinceDefinitions,
+		 *theMapData,
 		 *hoi4Localisations,
 		 provinceMapper,
 		 theConfiguration);

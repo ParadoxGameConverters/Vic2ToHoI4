@@ -12,6 +12,8 @@
 #include <set>
 #include <string>
 #include <vector>
+#include "../Map/MapData.h"
+#include "../Map/Hoi4Province.h"
 
 
 
@@ -53,6 +55,7 @@ class States: commonItems::parser
 		 const StrategicRegions& strategicRegions,
 		 const Vic2::Localisations& vic2Localisations,
 		 const ProvinceDefinitions& provinceDefinitions,
+		 const MapData& mapData,
 		 Localisation& hoi4Localisations,
 		 const mappers::ProvinceMapper& provinceMapper,
 		 const Configuration& theConfiguration);
@@ -98,6 +101,7 @@ class States: commonItems::parser
 		 const Vic2::Localisations& vic2Localisations,
 		 Localisation& hoi4Localisations,
 		 const mappers::ProvinceMapper& provinceMapper,
+		 const MapData& mapData,
 		 const Configuration& theConfiguration);
 	void createMatchingHoI4State(const Vic2::State* vic2State,
 		 const std::string& stateOwner,
@@ -109,10 +113,17 @@ class States: commonItems::parser
 		 const Vic2::Localisations& vic2Localisations,
 		 Localisation& hoi4Localisations,
 		 const mappers::ProvinceMapper& provinceMapper,
+		 const MapData& mapData,
+		 const std::map<int, Province>& provinces,
 		 const Configuration& theConfiguration);
 	std::set<int> getProvincesInState(const Vic2::State* vic2State,
 		 const std::string& owner,
 		 const mappers::ProvinceMapper& provinceMapper);
+	std::vector<std::set<int>> getConnectedProvinceSets(std::set<int> provinceNumbers,
+		 const MapData& mapData,
+		 const std::map<int, Province>& provinces);
+	std::vector<std::set<int>> consolidateProvinceSets(std::vector<std::set<int>> connectedProvinceSets,
+		 const std::map<int, int>& provinceToStrategicRegionMap);
 	void addProvincesAndCoresToNewState(HoI4::State& newState, const std::set<int>& provinces);
 	bool isProvinceValid(int provNum) const;
 	bool isProvinceOwnedByCountry(int provNum, const std::string& stateOwner) const;

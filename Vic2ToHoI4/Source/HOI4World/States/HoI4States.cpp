@@ -11,6 +11,7 @@
 #include "../HoI4Country.h"
 #include "../HoI4Localisation.h"
 #include "../Map/CoastalProvinces.h"
+#include "../Map/HoI4Provinces.h"
 #include "../Map/ImpassableProvinces.h"
 #include "../Map/Resources.h"
 #include "DefaultState.h"
@@ -34,6 +35,7 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 	 const StrategicRegions& strategicRegions,
 	 const Vic2::Localisations& vic2Localisations,
 	 const ProvinceDefinitions& provinceDefinitions,
+	 const MapData& mapData,
 	 Localisation& hoi4Localisations,
 	 const mappers::ProvinceMapper& provinceMapper,
 	 const Configuration& theConfiguration)
@@ -62,10 +64,11 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 		 countryMap,
 		 theCoastalProvinces,
 		 theStateDefinitions,
-		strategicRegions,
+		 strategicRegions,
 		 vic2Localisations,
 		 hoi4Localisations,
 		 provinceMapper,
+		 mapData,
 		 theConfiguration);
 }
 
@@ -237,9 +240,12 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 	 const Vic2::Localisations& vic2Localisations,
 	 Localisation& hoi4Localisations,
 	 const mappers::ProvinceMapper& provinceMapper,
+	 const MapData& mapData,
 	 const Configuration& theConfiguration)
 {
 	std::set<int> ownedProvinces;
+
+	const std::map<int, Province> provinces = importProvinces(theConfiguration);
 
 	for (const auto& country: sourceCountries)
 	{
@@ -254,10 +260,12 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 					 countryMap,
 					 theCoastalProvinces,
 					 theStateDefinitions,
-					strategicRegions,
+					 strategicRegions,
 					 vic2Localisations,
 					 hoi4Localisations,
 					 provinceMapper,
+					 mapData,
+					 provinces,
 					 theConfiguration);
 				for (auto province: vic2State->getProvinces())
 				{
@@ -303,10 +311,12 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 			 countryMap,
 			 theCoastalProvinces,
 			 theStateDefinitions,
-			strategicRegions,
+			 strategicRegions,
 			 vic2Localisations,
 			 hoi4Localisations,
 			 provinceMapper,
+			 mapData,
+			 provinces,
 			 theConfiguration);
 	}
 
@@ -326,34 +336,20 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State* vic2State,
 	 const Vic2::Localisations& vic2Localisations,
 	 Localisation& hoi4Localisations,
 	 const mappers::ProvinceMapper& provinceMapper,
+	 const MapData& mapData,
+	 const std::map<int, Province>& provinces,
 	 const Configuration& theConfiguration)
 {
-	const auto& provinceToStrategicRegionMap = strategicRegions.getProvinceToStrategicRegionMapCopy();
-	auto allProvinces = getProvincesInState(vic2State, stateOwner, provinceMapper);
+	const auto allProvinces = getProvincesInState(vic2State, stateOwner, provinceMapper);
+	const auto initialConnectedProvinceSets = getConnectedProvinceSets(allProvinces, mapData, provinces);
+	auto finalConnectedProvinceSets = consolidateProvinceSets(initialConnectedProvinceSets,
+		 strategicRegions.getProvinceToStrategicRegionMapCopy());
 
-	std::map<int, std::vector<int>> provincesByStrategicRegion;
-	for (auto province: allProvinces)
-	{
-		if (const auto& strategicRegion = provinceToStrategicRegionMap.find(province);
-			 strategicRegion != provinceToStrategicRegionMap.end())
-		{
-			const auto& provinceByStrategicRegion = provincesByStrategicRegion.find(strategicRegion->second);
-			if (provinceByStrategicRegion != provincesByStrategicRegion.end())
-			{
-				provinceByStrategicRegion->second.push_back(province);
-			}
-			else
-			{
-				provincesByStrategicRegion.insert(std::make_pair(strategicRegion->second, std::vector<int>{province}));
-			}
-		}
-	}
-
-	for (const auto& provincesInStrategicRegion: provincesByStrategicRegion)
+	for (const auto& connectedProvinces: finalConnectedProvinceSets)
 	{
 		std::set<int> passableProvinces;
 		std::set<int> impassableProvinces;
-		for (auto province: provincesInStrategicRegion.second)
+		for (auto province: connectedProvinces)
 		{
 			if (theImpassableProvinces.isProvinceImpassable(province))
 			{
@@ -429,6 +425,85 @@ std::set<int> HoI4::States::getProvincesInState(const Vic2::State* vic2State,
 	}
 
 	return provinces;
+}
+
+
+std::vector<std::set<int>> HoI4::States::getConnectedProvinceSets(std::set<int> provincesNumbers,
+	 const MapData& mapData,
+	 const std::map<int, Province>& provinces)
+{
+	std::vector<std::set<int>> connectedProvinceSets;
+	while (!provincesNumbers.empty())
+	{
+		std::set<int> connectedProvinceSet{*provincesNumbers.begin()};
+
+		std::set<int> openProvinces{*provincesNumbers.begin()};
+		std::set<int> closedProvinces;
+		while (!openProvinces.empty() && !provincesNumbers.empty())
+		{
+			auto currentProvince = *openProvinces.begin();
+			openProvinces.erase(currentProvince);
+			closedProvinces.insert(currentProvince);
+			if (provincesNumbers.count(currentProvince))
+			{
+				connectedProvinceSet.insert(currentProvince);
+				provincesNumbers.erase(currentProvince);
+			}
+
+			for (const auto& neighbor: mapData.getNeighbors(currentProvince))
+			{
+				if (!closedProvinces.count(neighbor))
+				{
+					if (auto province = provinces.find(neighbor); province != provinces.end())
+					{
+						if (province->second.isLandProvince())
+						{
+							openProvinces.insert(neighbor);
+						}
+					}
+				}
+			}
+		}
+
+		connectedProvinceSets.push_back(connectedProvinceSet);
+	}
+
+	return connectedProvinceSets;
+}
+
+
+std::vector<std::set<int>> HoI4::States::consolidateProvinceSets(
+	 std::vector<std::set<int>> connectedProvinceSets,
+	 const std::map<int, int>& provinceToStrategicRegionMap)
+{
+	std::vector<std::set<int>> newConnectedProvinceSets;
+	while (!connectedProvinceSets.empty())
+	{
+		auto baseSet = connectedProvinceSets.front();
+		connectedProvinceSets.erase(connectedProvinceSets.begin());
+		std::optional<int> strategicRegion;
+		if (const auto& mapping = provinceToStrategicRegionMap.find(*baseSet.begin());
+			 mapping != provinceToStrategicRegionMap.end())
+		{
+			strategicRegion = mapping->second;
+		}
+		
+		for (auto currentSet = connectedProvinceSets.begin(); currentSet != connectedProvinceSets.end();)
+		{
+			if (const auto& mapping = provinceToStrategicRegionMap.find(*currentSet->begin());
+				 mapping != provinceToStrategicRegionMap.end() && strategicRegion && *strategicRegion == mapping->second)
+			{
+				baseSet.insert(currentSet->begin(), currentSet->end());
+				currentSet = connectedProvinceSets.erase(currentSet);
+				continue;
+			}
+			currentSet++;
+		}
+
+		newConnectedProvinceSets.push_back(baseSet);
+	}
+
+	return newConnectedProvinceSets;
 }
 
 

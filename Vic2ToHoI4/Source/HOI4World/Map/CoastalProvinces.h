@@ -31,8 +31,6 @@ class CoastalProvinces
 	[[nodiscard]] virtual bool isProvinceCoastal(int provinceNum) const;
 
   private:
-	[[nodiscard]] std::map<int, Province> importProvinces(const Configuration& theConfiguration) const;
-
 	std::map<int, std::vector<int>> theCoastalProvinces; // province, connecting sea provinces
 };
 
