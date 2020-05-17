@@ -30,6 +30,7 @@ constexpr int AIRBASES_FOR_INFRASTRUCTURE_LEVEL = 6;
 
 HoI4::States::States(const Vic2::World* sourceWorld,
 	 const CountryMapper& countryMap,
+	 const std::map<int, Province>& theProvinces,
 	 const HoI4::CoastalProvinces& theCoastalProvinces,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const StrategicRegions& strategicRegions,
@@ -60,6 +61,7 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 	determineOwnersAndCores(countryMap, *sourceWorld, provinceDefinitions, provinceMapper);
 	createStates(sourceWorld->getCountries(),
 		 sourceWorld->getProvinces(),
+		 theProvinces,
 		 theImpassableProvinces,
 		 countryMap,
 		 theCoastalProvinces,
@@ -232,6 +234,7 @@ std::set<std::string> HoI4::States::determineCores(const std::vector<int>& sourc
 
 void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sourceCountries,
 	 const std::map<int, Vic2::Province*>& sourceProvinces,
+	 const std::map<int, Province>& theProvinces,
 	 const HoI4::ImpassableProvinces& theImpassableProvinces,
 	 const CountryMapper& countryMap,
 	 const HoI4::CoastalProvinces& theCoastalProvinces,
@@ -244,8 +247,6 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 	 const Configuration& theConfiguration)
 {
 	std::set<int> ownedProvinces;
-
-	const std::map<int, Province> provinces = importProvinces(theConfiguration);
 
 	for (const auto& country: sourceCountries)
 	{
@@ -265,7 +266,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 					 hoi4Localisations,
 					 provinceMapper,
 					 mapData,
-					 provinces,
+					 theProvinces,
 					 theConfiguration);
 				for (auto province: vic2State->getProvinces())
 				{
@@ -316,7 +317,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 			 hoi4Localisations,
 			 provinceMapper,
 			 mapData,
-			 provinces,
+			 theProvinces,
 			 theConfiguration);
 	}
 
@@ -342,8 +343,8 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State* vic2State,
 {
 	const auto allProvinces = getProvincesInState(vic2State, stateOwner, provinceMapper);
 	const auto initialConnectedProvinceSets = getConnectedProvinceSets(allProvinces, mapData, provinces);
-	auto finalConnectedProvinceSets = consolidateProvinceSets(initialConnectedProvinceSets,
-		 strategicRegions.getProvinceToStrategicRegionMap());
+	auto finalConnectedProvinceSets =
+		 consolidateProvinceSets(initialConnectedProvinceSets, strategicRegions.getProvinceToStrategicRegionMap());
 
 	for (const auto& connectedProvinces: finalConnectedProvinceSets)
 	{
@@ -472,8 +473,7 @@ std::vector<std::set<int>> HoI4::States::getConnectedProvinceSets(std::set<int> 
 }
 
 
-std::vector<std::set<int>> HoI4::States::consolidateProvinceSets(
-	 std::vector<std::set<int>> connectedProvinceSets,
+std::vector<std::set<int>> HoI4::States::consolidateProvinceSets(std::vector<std::set<int>> connectedProvinceSets,
 	 const std::map<int, int>& provinceToStrategicRegionMap)
 {
 	std::vector<std::set<int>> newConnectedProvinceSets;
@@ -487,7 +487,7 @@ std::vector<std::set<int>> HoI4::States::consolidateProvinceSets(
 		{
 			strategicRegion = mapping->second;
 		}
-		
+
 		for (auto currentSet = connectedProvinceSets.begin(); currentSet != connectedProvinceSets.end();)
 		{
 			if (const auto& mapping = provinceToStrategicRegionMap.find(*currentSet->begin());

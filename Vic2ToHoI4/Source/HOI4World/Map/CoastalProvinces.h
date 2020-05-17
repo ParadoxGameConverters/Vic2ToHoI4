@@ -29,7 +29,7 @@ class CoastalProvinces
 	CoastalProvinces& operator=(CoastalProvinces&&) = default;
 	virtual ~CoastalProvinces() = default;
 
-	void init(const MapData& theMapData, const Configuration& theConfiguration);
+	void init(const MapData& theMapData, const std::map<int, Province>& theProvinces);
 
 	[[nodiscard]] auto getCoastalProvinces() const { return theCoastalProvinces; }
 	[[nodiscard]] virtual bool isProvinceCoastal(int provinceNum) const;

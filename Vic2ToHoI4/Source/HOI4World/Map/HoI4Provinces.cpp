@@ -1,10 +1,13 @@
 #include "HoI4Provinces.h"
+#include "Log.h"
 #include <fstream>
 
 
 
 std::map<int, HoI4::Province> HoI4::importProvinces(const Configuration& theConfiguration)
 {
+	Log(LogLevel::Info) << "\tImporting HoI4 province definitions";
+
 	std::ifstream provinceDefinitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
 	if (!provinceDefinitions.is_open())
 	{

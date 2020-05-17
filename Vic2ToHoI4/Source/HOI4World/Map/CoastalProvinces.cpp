@@ -7,13 +7,11 @@
 
 
 
-void HoI4::CoastalProvinces::init(const MapData& theMapData, const Configuration& theConfiguration)
+void HoI4::CoastalProvinces::init(const MapData& theMapData, const std::map<int, Province>& theProvinces)
 {
 	Log(LogLevel::Info) << "\tInitializing coastal provinces";
 
-	auto provinces = importProvinces(theConfiguration);
-
-	for (const auto& province: provinces)
+	for (const auto& province: theProvinces)
 	{
 		if (!province.second.isLandProvince())
 		{
@@ -23,8 +21,8 @@ void HoI4::CoastalProvinces::init(const MapData& theMapData, const Configuration
 		auto neighbors = theMapData.getNeighbors(province.first);
 		for (auto adjProvinceNum: neighbors)
 		{
-			if (auto adjProvince = provinces.find(adjProvinceNum);
-				 (adjProvince != provinces.end()) && (adjProvince->second.getType() == "ocean"))
+			if (auto adjProvince = theProvinces.find(adjProvinceNum);
+				 (adjProvince != theProvinces.end()) && (adjProvince->second.getType() == "ocean"))
 			{
 				if (auto coastalProvince = theCoastalProvinces.find(province.first);
 					 coastalProvince == theCoastalProvinces.end())

@@ -25,6 +25,7 @@
 #include "Leaders/IdeologicalAdvisors.h"
 #include "Log.h"
 #include "Map/Buildings.h"
+#include "Map/HoI4Provinces.h"
 #include "Map/StrategicRegion.h"
 #include "Map/SupplyZones.h"
 #include "MilitaryMappings/MilitaryMappingsFile.h"
@@ -57,10 +58,12 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	ProvinceDefinitions provinceDefinitions =
 		 ProvinceDefinitions::Importer{}.importProvinceDefinitions(theConfiguration);
 	theMapData = std::make_unique<MapData>(provinceDefinitions, theConfiguration);
-	theCoastalProvinces.init(*theMapData, theConfiguration);
+	const auto theProvinces = importProvinces(theConfiguration);
+	theCoastalProvinces.init(*theMapData, theProvinces);
 	strategicRegions = StrategicRegions::Factory{}.importStrategicRegions(theConfiguration);
 	states = std::make_unique<States>(sourceWorld,
 		 countryMap,
+		 theProvinces,
 		 theCoastalProvinces,
 		 sourceWorld->getStateDefinitions(),
 		 *strategicRegions,

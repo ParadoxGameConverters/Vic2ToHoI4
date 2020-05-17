@@ -4,6 +4,8 @@
 
 
 #include "../../Mappers/Provinces/ProvinceMapper.h"
+#include "../Map/Hoi4Province.h"
+#include "../Map/MapData.h"
 #include "../Map/StrategicRegions.h"
 #include "DefaultState.h"
 #include "Parser.h"
@@ -12,8 +14,6 @@
 #include <set>
 #include <string>
 #include <vector>
-#include "../Map/MapData.h"
-#include "../Map/Hoi4Province.h"
 
 
 
@@ -50,6 +50,7 @@ class States: commonItems::parser
 	States() = default;
 	explicit States(const Vic2::World* sourceWorld,
 		 const CountryMapper& countryMap,
+		 const std::map<int, Province>& theProvinces,
 		 const HoI4::CoastalProvinces& theCoastalProvinces,
 		 const Vic2::StateDefinitions& theStateDefinitions,
 		 const StrategicRegions& strategicRegions,
@@ -93,6 +94,7 @@ class States: commonItems::parser
 
 	void createStates(const std::map<std::string, Vic2::Country*>& sourceCountries,
 		 const std::map<int, Vic2::Province*>& sourceProvinces,
+		 const std::map<int, Province>& theProvinces,
 		 const HoI4::ImpassableProvinces& theImpassableProvinces,
 		 const CountryMapper& countryMap,
 		 const HoI4::CoastalProvinces& theCoastalProvinces,
