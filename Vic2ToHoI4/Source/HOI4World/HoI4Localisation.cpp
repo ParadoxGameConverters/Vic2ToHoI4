@@ -197,7 +197,7 @@ void HoI4::Localisation::addLocalisationsForAllGovernments(
 		auto localisationForGovernment =
 			 vic2Localisations.getTextInEachLanguage(tags.first + "_" + mapping.vic2Government + suffixes.first);
 		addLocalisationsInAllLanguages(tags.second, suffixes, mapping.HoI4GovernmentIdeology, localisationForGovernment);
-		if (localisationForGovernment.size() == 0)
+		if (localisationForGovernment.empty())
 		{
 			addLocalisationsInAllLanguages(tags.second,
 				 suffixes,
@@ -228,7 +228,7 @@ bool HoI4::Localisation::addNeutralLocalisation(const std::pair<const std::strin
 	 const Vic2::Localisations& vic2Localisations)
 {
 	auto plainLocalisation = vic2Localisations.getTextInEachLanguage(tags.first + suffixes.first);
-	if (plainLocalisation.size() > 0)
+	if (!plainLocalisation.empty())
 	{
 		for (const auto& nameInLanguage: plainLocalisation)
 		{
@@ -309,7 +309,7 @@ bool HoI4::Localisation::attemptToUpdateMainCountryLocalisation(const std::strin
 	 const std::string& Vic2Key,
 	 const Vic2::Localisations& vic2Localisations)
 {
-	if (auto Vic2Text = vic2Localisations.getTextInEachLanguage(Vic2Key); Vic2Text.size() > 0)
+	if (auto Vic2Text = vic2Localisations.getTextInEachLanguage(Vic2Key); Vic2Text.empty())
 	{
 		for (const auto& textInLanguage: Vic2Text)
 		{
@@ -553,12 +553,11 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	{
 		const auto hoi4Province = *hoi4State.getProvinces().begin();
 		const auto possibleVic2Provinces = theProvinceMapper.getHoI4ToVic2ProvinceMapping(hoi4Province);
-		if (possibleVic2Provinces && possibleVic2Provinces->size())
+		if (possibleVic2Provinces && !possibleVic2Provinces->empty())
 		{
 			const auto theProvince = *possibleVic2Provinces->begin();
 			auto possibleProvinceName =
-				 vic2Localisations.getTextInLanguage("PROV" + std::to_string(theProvince),
-					  Vic2NameInLanguage.first);
+				 vic2Localisations.getTextInLanguage("PROV" + std::to_string(theProvince), Vic2NameInLanguage.first);
 			if (possibleProvinceName)
 			{
 				localisedName = *possibleProvinceName;
