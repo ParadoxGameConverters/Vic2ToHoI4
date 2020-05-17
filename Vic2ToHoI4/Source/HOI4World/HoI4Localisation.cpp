@@ -487,6 +487,12 @@ bool HoI4::Localisation::sourceStateHasOneProvince(const Vic2::State& sourceStat
 }
 
 
+bool HoI4::Localisation::destinationStateHasOneProvince(const State& hoi4State)
+{
+	return hoi4State.getProvinces().size() == 1;
+}
+
+
 bool HoI4::Localisation::sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState,
 	 const Vic2::StateDefinitions& theStateDefinitions)
 {
@@ -535,8 +541,32 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	 const Vic2::Localisations& vic2Localisations,
 	 const mappers::ProvinceMapper& theProvinceMapper)
 {
-	std::string localisedName = "";
-	if (sourceStateHasOneProvince(vic2State))
+	std::string localisedName;
+	if (destinationStateHasOneProvince(hoi4State))
+	{
+		const auto hoi4Province = *hoi4State.getProvinces().begin();
+		const auto possibleVic2Provinces = theProvinceMapper.getHoI4ToVic2ProvinceMapping(hoi4Province);
+		if (possibleVic2Provinces && possibleVic2Provinces->size())
+		{
+			const auto theProvince = *possibleVic2Provinces->begin();
+			auto possibleProvinceName =
+				 vic2Localisations.getTextInLanguage("PROV" + std::to_string(theProvince),
+					  Vic2NameInLanguage.first);
+			if (possibleProvinceName)
+			{
+				localisedName = *possibleProvinceName;
+			}
+			else
+			{
+				Log(LogLevel::Warning) << "Could not find localization for Vic2 province " << theProvince;
+			}
+		}
+		else
+		{
+			Log(LogLevel::Warning) << "Could not find localization for HoI4 province " << hoi4Province;
+		}
+	}
+	else if (sourceStateHasOneProvince(vic2State))
 	{
 		const auto theProvince = *vic2State.getProvinces().begin();
 		auto possibleProvinceName = vic2Localisations.getTextInLanguage("PROV" + std::to_string(theProvince->getNumber()),
