@@ -300,10 +300,12 @@
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\ActualResourcesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\Hoi4BuildingTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Map\HoI4ProvincesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\ImpassableProvincesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\ProvincePointsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\RegionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\ResourcesLinkTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Map\StrategicRegionsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\SupplyAreaTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\AllMilitaryMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\DivisionTemplateImporterTests.cpp" />
@@ -378,6 +380,10 @@
     <CopyFileToFolders Include="TestFiles\v2game.exe">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/Vic2Windows</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\definition.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/HoI4Linux/map</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
