@@ -1,25 +1,25 @@
 #include "OutHoi4World.h"
-#include "../OutHoi4/Decisions/OutDecisions.h"
-#include "../OutHoi4/Diplomacy/OutAiPeaces.h"
-#include "../OutHoi4/Events/OutEvents.h"
-#include "../OutHoi4/GameRules/OutGameRules.h"
-#include "../OutHoi4/Ideas/OutIdeas.h"
-#include "../OutHoi4/Ideologies/OutIdeologies.h"
-#include "../OutHoi4/Map/OutBuildings.h"
-#include "../OutHoi4/Map/OutStrategicRegion.h"
-#include "../OutHoi4/Map/OutSupplyZones.h"
-#include "../OutHoi4/OutFocusTree.h"
-#include "../OutHoi4/OutHoi4Country.h"
-#include "../OutHoi4/OutLocalisation.h"
-#include "../OutHoi4/OutOnActions.h"
-#include "../OutHoi4/ScriptedLocalisations/OutScriptedLocalisations.h"
-#include "../OutHoi4/ScriptedTriggers/OutScriptedTriggers.h"
-#include "../OutHoi4/States/OutHoI4States.h"
-#include "../OutHoi4/outDifficultySettings.h"
+#include "Decisions/OutDecisions.h"
+#include "Diplomacy/OutAiPeaces.h"
+#include "Events/OutEvents.h"
+#include "GameRules/OutGameRules.h"
+#include "Ideas/OutIdeas.h"
+#include "Ideologies/OutIdeologies.h"
 #include "Log.h"
+#include "Map/OutBuildings.h"
+#include "Map/OutStrategicRegion.h"
+#include "Map/OutStrategicRegions.h"
+#include "Map/OutSupplyZones.h"
 #include "OSCompatibilityLayer.h"
+#include "OutFocusTree.h"
+#include "OutHoi4Country.h"
+#include "OutLocalisation.h"
+#include "OutOnActions.h"
+#include "ScriptedLocalisations/OutScriptedLocalisations.h"
+#include "ScriptedTriggers/OutScriptedTriggers.h"
+#include "States/OutHoI4States.h"
+#include "outDifficultySettings.h"
 #include <fstream>
-
 
 
 namespace HoI4
@@ -39,9 +39,7 @@ void outputNames(const namesMapper& theNames,
 	 const std::string& outputName);
 void outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const Configuration& theConfiguration);
-void outputMap(const States& states,
-	 const std::map<int, StrategicRegion*>& strategicRegions,
-	 const std::string& outputName);
+void outputMap(const States& states, const StrategicRegions& strategicRegions, const std::string& outputName);
 void outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const std::string& outputName);
 void outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
@@ -293,9 +291,7 @@ void HoI4::outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>
 }
 
 
-void HoI4::outputMap(const States& states,
-	 const std::map<int, StrategicRegion*>& strategicRegions,
-	 const std::string& outputName)
+void HoI4::outputMap(const States& states, const StrategicRegions& strategicRegions, const std::string& outputName)
 {
 	Log(LogLevel::Info) << "\t\tWriting map info";
 
@@ -318,14 +314,7 @@ void HoI4::outputMap(const States& states,
 	}
 	rocketSitesFile.close();
 
-	if (!Utils::TryCreateFolder("output/" + outputName + "/map/strategicregions"))
-	{
-		throw std::runtime_error("Could not create output/" + outputName + "/map/strategicregions");
-	}
-	for (const auto& strategicRegion: strategicRegions)
-	{
-		outputStrategicRegion(*strategicRegion.second, "output/" + outputName + "/map/strategicregions/");
-	}
+	outputStrategicRegions(strategicRegions, outputName);
 }
 
 

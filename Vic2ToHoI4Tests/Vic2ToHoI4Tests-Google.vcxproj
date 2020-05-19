@@ -70,6 +70,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategories.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsInCategory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp" />
@@ -85,6 +87,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRule.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRuleOption.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRules.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutColor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFlags.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoi4Country.cpp" />
@@ -297,6 +300,7 @@
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\ActualResourcesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\Hoi4BuildingTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Map\HoI4ProvincesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\ImpassableProvincesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\ProvincePointsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\RegionTests.cpp" />
@@ -375,6 +379,10 @@
     <CopyFileToFolders Include="TestFiles\v2game.exe">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/Vic2Windows</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\definition.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/HoI4Linux/map</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>

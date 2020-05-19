@@ -157,7 +157,8 @@ class Localisation
 		 const Vic2::Localisations& vic2Localisations,
 		 const mappers::ProvinceMapper& theProvinceMapper);
 
-	static bool sourceStateHasOneProvince(const Vic2::State& sourceState);
+	static bool sourceStateHasOneProvince(const State& hoi4State, const mappers::ProvinceMapper& theProvinceMapper);
+	static bool destinationStateHasOneProvince(const State& hoi4State);
 	static bool sourceStateHasAllButOneProvinceFromDefinition(const Vic2::State& sourceState,
 		 const Vic2::StateDefinitions& theStateDefinitions);
 	static bool stateHasAllDefinedProvincesAfterConversion(const State& state,

@@ -893,6 +893,18 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Vic2toHOI4Converter.cpp">
       <Filter>Vic2ToHoI4 files</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegions.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Map</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Map\HoI4ProvincesTests.cpp">
+      <Filter>HoI4WorldTests\Map</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1137,6 +1149,9 @@
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\v2game.exe">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\definition.csv">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
   </ItemGroup>
