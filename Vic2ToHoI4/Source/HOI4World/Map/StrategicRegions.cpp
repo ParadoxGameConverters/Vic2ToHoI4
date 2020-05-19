@@ -37,15 +37,7 @@ std::map<int, int> HoI4::StrategicRegions::determineUsedRegions(const State& sta
 			continue;
 		}
 
-		if (auto usedRegion = usedRegions.find(mapping->second); usedRegion == usedRegions.end())
-		{
-			usedRegions.insert(std::make_pair(mapping->second, 1));
-		}
-		else
-		{
-			usedRegion->second++;
-		}
-
+		usedRegions[mapping->second]++;
 		provinceToStrategicRegionMap.erase(mapping);
 	}
 
