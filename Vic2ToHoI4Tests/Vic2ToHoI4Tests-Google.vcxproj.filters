@@ -905,6 +905,12 @@
     <ClCompile Include="HoI4WorldTests\Map\HoI4ProvincesTests.cpp">
       <Filter>HoI4WorldTests\Map</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\IntelligenceAgencies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1092,6 +1098,12 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Vic2\Issues">
       <UniqueIdentifier>{2f0e389a-b1aa-4704-9486-a32c4882d7f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\IntelligenceAgencies">
+      <UniqueIdentifier>{ffbde409-211e-4cc0-8d91-143c464faa3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\IntelligenceAgencies">
+      <UniqueIdentifier>{b585151d-b1b2-48b9-ae7d-6b2f9a3d21d7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -14,6 +14,7 @@
 #include "OutFocusTree.h"
 #include "OutHoi4Country.h"
 #include "OutLocalisation.h"
+#include "IntelligenceAgencies/OutIntelligenceAgencies.h"
 #include "OutOnActions.h"
 #include "ScriptedLocalisations/OutScriptedLocalisations.h"
 #include "ScriptedTriggers/OutScriptedTriggers.h"
@@ -184,6 +185,7 @@ void HoI4::OutputWorld(const World& world,
 	outputScriptedTriggers(world.getScriptedTriggers(), outputName);
 	outputDifficultySettings(world.getGreatPowers(), outputName);
 	outputGameRules(world.getGameRules(), outputName);
+	outputIntelligenceAgencies(world.getIntelligenceAgencies(), outputName);
 }
 
 

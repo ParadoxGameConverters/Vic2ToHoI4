@@ -13,6 +13,7 @@
 #include "HoI4Localisation.h"
 #include "Ideas/Ideas.h"
 #include "Ideologies/Ideologies.h"
+#include "IntelligenceAgencies/IntelligenceAgencies.h"
 #include "Leaders/Advisor.h"
 #include "Map/CoastalProvinces.h"
 #include "Map/MapData.h"
@@ -30,6 +31,7 @@
 #include <set>
 #include <string>
 #include <vector>
+
 
 
 class HoI4Ideology;
@@ -97,6 +99,7 @@ class World: commonItems::parser
 	[[nodiscard]] auto& getEvents() { return *events; }
 	[[nodiscard]] const auto& getEvents() const { return *events; }
 	[[nodiscard]] const auto& getOnActions() const { return *onActions; }
+	[[nodiscard]] const auto& getIntelligenceAgencies() const { return intelligenceAgencies; }
 	[[nodiscard]] const auto& getPeaces() const { return *peaces; }
 	[[nodiscard]] const auto& getIdeologies() const { return *ideologies; }
 	[[nodiscard]] const auto& getTheIdeas() const { return *theIdeas; }
@@ -219,6 +222,7 @@ class World: commonItems::parser
 	std::unique_ptr<HoI4::AiPeaces> peaces;
 	std::unique_ptr<HoI4::Events> events;
 	std::unique_ptr<HoI4::OnActions> onActions;
+	IntelligenceAgencies intelligenceAgencies;
 
 	std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
 
