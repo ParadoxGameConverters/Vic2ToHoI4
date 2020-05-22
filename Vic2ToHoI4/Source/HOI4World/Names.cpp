@@ -47,6 +47,7 @@ class culture: commonItems::parser
 	auto getNavalCompanies() const { return navalCompanies; }
 	auto getWeaponCompanies() const { return weaponCompanies; }
 	auto getAircraftCompanies() const { return aircraftCompanies; }
+	auto getIntelligenceAgencies() const { return intelligenceAgencies; }
 
   private:
 	std::vector<std::string> maleNames;
@@ -60,6 +61,7 @@ class culture: commonItems::parser
 	std::vector<std::string> navalCompanies;
 	std::vector<std::string> weaponCompanies;
 	std::vector<std::string> aircraftCompanies;
+	std::vector<std::string> intelligenceAgencies;
 };
 
 
@@ -108,6 +110,10 @@ culture::culture(std::istream& theStream)
 	registerKeyword(std::regex("aircraft_companies"), [this](const std::string& unused, std::istream& theStream) {
 		commonItems::stringList firstNameStrings(theStream);
 		aircraftCompanies = firstNameStrings.getStrings();
+	});
+	registerKeyword(std::regex("intelligence_agencies"), [this](const std::string& unused, std::istream& theStream) {
+		commonItems::stringList firstNameStrings(theStream);
+		intelligenceAgencies = firstNameStrings.getStrings();
 	});
 	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), commonItems::ignoreItem);
 
@@ -223,6 +229,8 @@ void HoI4::namesMapper::processNamesFile()
 		addNamesToMap(industryCompanyNames, cultureName, tempNames);
 		tempNames = newCulture.getElectronicCompanies();
 		addNamesToMap(electronicCompanyNames, cultureName, tempNames);
+		tempNames = newCulture.getIntelligenceAgencies();
+		addNamesToMap(intelligenceAgencyNames, cultureName, tempNames);
 	});
 
 	parseFile("names.txt");
@@ -290,6 +298,10 @@ void HoI4::namesMapper::checkForNames()
 		if (electronicCompanyNames.find(culture) == electronicCompanyNames.end())
 		{
 			Log(LogLevel::Warning) << "No electronic companies for " << culture;
+		}
+		if (intelligenceAgencyNames.find(culture) == intelligenceAgencyNames.end())
+		{
+			Log(LogLevel::Warning) << "No intelligence agencies for " << culture;
 		}
 	}
 }
@@ -507,4 +519,30 @@ std::optional<std::string> HoI4::namesMapper::takeCompanyName(
 	}
 
 	return {};
+}
+
+
+std::optional<std::string> HoI4::namesMapper::takeIntelligenceAgencyName(const std::string& culture)
+{
+	if (auto namesItr = intelligenceAgencyNames.find(culture); namesItr != intelligenceAgencyNames.end())
+	{
+		std::vector<std::string> agencies = namesItr->second;
+		if (!agencies.empty())
+		{
+			const std::uniform_int_distribution<int> agencyGen(0, agencies.size() - 1);
+			auto agency = agencies[agencyGen(rng)];
+			for (std::vector<std::string>::iterator itr = intelligenceAgencyNames[culture].begin();
+				  itr != intelligenceAgencyNames[culture].end();
+				  ++itr)
+			{
+				if (*itr == agency)
+				{
+					intelligenceAgencyNames[culture].erase(itr);
+					return agency;
+				}
+			}
+		}
+	}
+
+	return std::nullopt;
 }

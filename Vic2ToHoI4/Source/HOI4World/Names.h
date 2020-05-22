@@ -68,6 +68,8 @@ class namesMapper: commonItems::parser
 	std::optional<std::string> takeIndustryCompanyName(const std::string& culture);
 	std::optional<std::string> takeElectronicCompanyName(const std::string& culture);
 
+	std::optional<std::string> takeIntelligenceAgencyName(const std::string& culture);
+
   private:
 	namesMapper(const namesMapper&) = delete;
 	namesMapper& operator=(const namesMapper&) = delete;
@@ -88,12 +90,15 @@ class namesMapper: commonItems::parser
 	std::map<std::string, std::vector<std::string>> surnamesMap;
 	std::map<std::string, std::vector<std::string>> femaleSurnamesMap;
 	std::map<std::string, std::vector<std::string>> callsignsMap;
+
 	std::map<std::string, std::vector<std::string>> carCompanyNames;
 	std::map<std::string, std::vector<std::string>> weaponCompanyNames;
 	std::map<std::string, std::vector<std::string>> aircraftCompanyNames;
 	std::map<std::string, std::vector<std::string>> navalCompanyNames;
 	std::map<std::string, std::vector<std::string>> industryCompanyNames;
 	std::map<std::string, std::vector<std::string>> electronicCompanyNames;
+
+	std::map<std::string, std::vector<std::string>> intelligenceAgencyNames;
 
 	std::mt19937 rng;
 };

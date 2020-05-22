@@ -34,7 +34,8 @@ class IntelligenceAgencies::Factory
 {
   public:
 	static std::unique_ptr<IntelligenceAgencies> createIntelligenceAgencies(
-		 const std::map<std::string, std::shared_ptr<Country>>& countries);
+		 const std::map<std::string, std::shared_ptr<Country>>& countries,
+		 namesMapper& theNamesMapper);
 };
 
 } // namespace HoI4
