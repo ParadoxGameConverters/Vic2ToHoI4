@@ -85,7 +85,7 @@ class World: commonItems::parser
 	~World() = default;
 
 	[[nodiscard]] auto& getNames() { return names; }
-	[[nodiscard]] const auto& getNames() const { return names; }
+	[[nodiscard]] const auto& getNames() const { return *names; }
 	[[nodiscard]] const auto& getTheStates() const { return *states; }
 	[[nodiscard]] const auto& getStrategicRegions() const { return *strategicRegions; }
 	[[nodiscard]] const auto& getCountries() const { return countries; }
@@ -195,7 +195,7 @@ class World: commonItems::parser
 	// vector<int> getPortLocationCandidates(const vector<int>& locationCandidates, const HoI4AdjacencyMapping&
 	// HoI4AdjacencyMap);
 
-	Names names;
+	std::unique_ptr<Names> names;
 	graphicsMapper theGraphics;
 	governmentMapper governmentMap;
 	CountryMapper countryMap;

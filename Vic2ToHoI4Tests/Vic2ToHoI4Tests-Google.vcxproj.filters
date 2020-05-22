@@ -1146,9 +1146,6 @@
     <ClInclude Include="Mocks\CoastalProvincesMock.h">
       <Filter>Mocks</Filter>
     </ClInclude>
-    <ClInclude Include="Mocks\NamesMock.h">
-      <Filter>Mocks</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">

@@ -140,7 +140,7 @@ cultureGroup::cultureGroup(std::istream& theStream)
 }
 
 
-void HoI4::Names::init(const Configuration& theConfiguration)
+std::unique_ptr<HoI4::Names> HoI4::Names::Factory::getNames(const Configuration& theConfiguration)
 {
 	Log(LogLevel::Info) << "\tParsing names";
 
@@ -157,10 +157,23 @@ void HoI4::Names::init(const Configuration& theConfiguration)
 	{
 		checkForNames();
 	}
+
+	return std::make_unique<Names>(std::move(maleNamesMap),
+		 std::move(femaleNamesMap),
+		 std::move(surnamesMap),
+		 std::move(femaleSurnamesMap),
+		 std::move(callsignsMap),
+		 std::move(carCompanyNames),
+		 std::move(weaponCompanyNames),
+		 std::move(aircraftCompanyNames),
+		 std::move(navalCompanyNames),
+		 std::move(industryCompanyNames),
+		 std::move(electronicCompanyNames),
+		 std::move(intelligenceAgencyNames));
 }
 
 
-void HoI4::Names::processVic2CulturesFile(const std::string& filename)
+void HoI4::Names::Factory::processVic2CulturesFile(const std::string& filename)
 {
 	clearRegisteredKeywords();
 	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), [this](const std::string& cultureGroupName, std::istream& theStream) {
@@ -179,7 +192,7 @@ void HoI4::Names::processVic2CulturesFile(const std::string& filename)
 }
 
 
-void HoI4::Names::processNamesFile()
+void HoI4::Names::Factory::processNamesFile()
 {
 	clearRegisteredKeywords();
 	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), [this](const std::string& cultureName, std::istream& theStream) {
@@ -214,7 +227,7 @@ void HoI4::Names::processNamesFile()
 }
 
 
-void HoI4::Names::addNamesToMap(std::map<std::string, std::vector<std::string>>& map,
+void HoI4::Names::Factory::addNamesToMap(std::map<std::string, std::vector<std::string>>& map,
 	 const std::string& culture,
 	 std::vector<std::string>& newNames)
 {
@@ -237,7 +250,7 @@ void HoI4::Names::addNamesToMap(std::map<std::string, std::vector<std::string>>&
 }
 
 
-void HoI4::Names::checkForNames()
+void HoI4::Names::Factory::checkForNames()
 {
 	for (auto maleNamesMapping: maleNamesMap)
 	{
@@ -470,8 +483,7 @@ std::optional<std::string> HoI4::Names::takeElectronicCompanyName(const std::str
 }
 
 
-std::optional<std::string> HoI4::Names::takeCompanyName(
-	 std::map<std::string, std::vector<std::string>>& companyNames,
+std::optional<std::string> HoI4::Names::takeCompanyName(std::map<std::string, std::vector<std::string>>& companyNames,
 	 const std::string& culture)
 {
 	auto namesItr = companyNames.find(culture);

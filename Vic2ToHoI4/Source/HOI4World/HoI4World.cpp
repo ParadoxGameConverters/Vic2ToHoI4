@@ -75,13 +75,13 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 		 theConfiguration);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, provinceDefinitions, theConfiguration);
-	names.init(theConfiguration);
+	names = Names::Factory{}.getNames(theConfiguration);
 	theGraphics.init();
 	governmentMap.init();
 	convertCountries(vic2Localisations);
 	addStatesToCountries(provinceMapper);
 	states->addCapitalsToStates(countries);
-	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, names);
+	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
 	convertIndustry(theConfiguration);
 	states->convertResources();
@@ -196,7 +196,7 @@ void HoI4::World::convertCountry(std::pair<std::string, Vic2::Country*> country,
 	{
 		destCountry = new HoI4::Country(*possibleHoI4Tag,
 			 country.second,
-			 names,
+			 *names,
 			 theGraphics,
 			 countryMap,
 			 flagsToIdeasMapper,
@@ -282,7 +282,7 @@ void HoI4::World::addLeaders()
 	Log(LogLevel::Info) << "\tAdding leaders";
 	for (auto& country: countries)
 	{
-		country.second->addLeader(names, theGraphics);
+		country.second->addLeader(*names, theGraphics);
 	}
 }
 
