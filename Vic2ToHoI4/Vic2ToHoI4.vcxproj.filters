@@ -806,6 +806,9 @@
     <ClCompile Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp">
       <Filter>OutHoi4\IntelligenceAgencies</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.cpp">
+      <Filter>HoI4World\IntelligenceAgencies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">

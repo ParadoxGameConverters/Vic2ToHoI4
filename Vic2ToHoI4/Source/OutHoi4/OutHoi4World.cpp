@@ -185,7 +185,7 @@ void HoI4::OutputWorld(const World& world,
 	outputScriptedTriggers(world.getScriptedTriggers(), outputName);
 	outputDifficultySettings(world.getGreatPowers(), outputName);
 	outputGameRules(world.getGameRules(), outputName);
-	outputIntelligenceAgencies(world.getIntelligenceAgencies(), outputName);
+	outputIntelligenceAgencies(*world.getIntelligenceAgencies(), outputName);
 }
 
 

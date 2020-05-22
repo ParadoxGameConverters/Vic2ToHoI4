@@ -81,6 +81,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	convertCountries(vic2Localisations);
 	addStatesToCountries(provinceMapper);
 	states->addCapitalsToStates(countries);
+	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries);
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
 	convertIndustry(theConfiguration);
 	states->convertResources();

@@ -370,6 +370,7 @@
     <ClCompile Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategories.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategory.cpp" />
+    <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.cpp" />
     <ClCompile Include="Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="Source\HOI4World\Map\StrategicRegions.cpp" />
     <ClCompile Include="Source\HOI4World\ProvinceDefinitions.cpp" />

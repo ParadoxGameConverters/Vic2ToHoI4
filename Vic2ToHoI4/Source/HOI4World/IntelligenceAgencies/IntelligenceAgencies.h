@@ -3,7 +3,10 @@
 
 
 
+#include "../HoI4Country.h"
 #include "IntelligenceAgency.h"
+#include <map>
+#include <memory>
 #include <vector>
 
 
@@ -14,10 +17,24 @@ namespace HoI4
 class IntelligenceAgencies
 {
   public:
-	const auto& getIntelligenceAgencies() const { return intelligenceAgencies; }
+	class Factory;
+	explicit IntelligenceAgencies(std::vector<IntelligenceAgency>&& intelligenceAgencies):
+		 intelligenceAgencies(intelligenceAgencies)
+	{
+	}
+
+	[[nodiscard]] const auto& getIntelligenceAgencies() const { return intelligenceAgencies; }
 
   private:
-	std::vector<IntelligenceAgency> intelligenceAgencies{IntelligenceAgency{}};
+	std::vector<IntelligenceAgency> intelligenceAgencies;
+};
+
+
+class IntelligenceAgencies::Factory
+{
+  public:
+	static std::unique_ptr<IntelligenceAgencies> createIntelligenceAgencies(
+		 const std::map<std::string, std::shared_ptr<Country>>& countries);
 };
 
 } // namespace HoI4

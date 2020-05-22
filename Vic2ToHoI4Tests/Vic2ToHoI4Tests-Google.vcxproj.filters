@@ -911,6 +911,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\IntelligenceAgencies</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\IntelligenceAgencies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

@@ -222,7 +222,7 @@ class World: commonItems::parser
 	std::unique_ptr<HoI4::AiPeaces> peaces;
 	std::unique_ptr<HoI4::Events> events;
 	std::unique_ptr<HoI4::OnActions> onActions;
-	IntelligenceAgencies intelligenceAgencies;
+	std::unique_ptr < IntelligenceAgencies> intelligenceAgencies;
 
 	std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
 
