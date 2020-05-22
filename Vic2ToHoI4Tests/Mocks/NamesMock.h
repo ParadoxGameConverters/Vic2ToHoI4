@@ -8,7 +8,7 @@
 
 
 
-class mockNamesMapper final: public HoI4::namesMapper
+class mockNames final: public HoI4::Names
 {
   public:
 	MOCK_METHOD(std::optional<std::vector<std::string>>, getMaleNames, (const std::string& culture), (const, override));

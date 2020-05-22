@@ -3,10 +3,10 @@
 
 
 
-HoI4::IntelligenceAgency::IntelligenceAgency(const Country& country, namesMapper& theNamesMapper)
+HoI4::IntelligenceAgency::IntelligenceAgency(const Country& country, Names& allNames)
 {
 	countryTag = country.getTag();
-	const auto possibleName = theNamesMapper.takeIntelligenceAgencyName(country.getSourceCountry().getPrimaryCulture());
+	const auto possibleName = allNames.takeIntelligenceAgencyName(country.getSourceCountry().getPrimaryCulture());
 	if (possibleName)
 	{
 		names.push_back(*possibleName);

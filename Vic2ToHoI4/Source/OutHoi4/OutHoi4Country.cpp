@@ -41,27 +41,27 @@ void outputNamesSet(std::ostream& namesFile,
 	 const std::optional<std::vector<std::string>>& names,
 	 const std::string& tabs);
 
-void HoI4::outputToNamesFiles(std::ostream& namesFile, const namesMapper& theNames, const Country& theCountry)
+void HoI4::outputToNamesFiles(std::ostream& namesFile, const Names& names, const Country& theCountry)
 {
 	const auto primaryCulture = theCountry.getSourceCountry().getPrimaryCulture();
-	auto femaleSurnames = theNames.getFemaleSurnames(primaryCulture);
+	auto femaleSurnames = names.getFemaleSurnames(primaryCulture);
 
 	namesFile << theCountry.getTag() << " = {\n";
 	namesFile << "\tmale = {\n";
 	namesFile << "\t\tnames = {\n";
-	outputNamesSet(namesFile, theNames.getMaleNames(primaryCulture), "\t\t\t");
+	outputNamesSet(namesFile, names.getMaleNames(primaryCulture), "\t\t\t");
 	namesFile << "\t\t}\n";
 	if (!femaleSurnames->empty())
 	{
 		namesFile << "\t\tsurnames = {\n";
-		outputNamesSet(namesFile, theNames.getSurnames(primaryCulture), "\t\t");
+		outputNamesSet(namesFile, names.getSurnames(primaryCulture), "\t\t");
 		namesFile << "\t\t}\n";
 	}
 	namesFile << "\t}\n";
 
 	namesFile << "\tfemale = {\n";
 	namesFile << "\t\tnames = {\n";
-	outputNamesSet(namesFile, theNames.getFemaleNames(primaryCulture), "\t\t\t");
+	outputNamesSet(namesFile, names.getFemaleNames(primaryCulture), "\t\t\t");
 	namesFile << "\t\t}\n";
 	if (!femaleSurnames->empty())
 	{
@@ -74,12 +74,12 @@ void HoI4::outputToNamesFiles(std::ostream& namesFile, const namesMapper& theNam
 	if (femaleSurnames->empty())
 	{
 		namesFile << "\tsurnames = {\n";
-		outputNamesSet(namesFile, theNames.getSurnames(primaryCulture), "\t\t");
+		outputNamesSet(namesFile, names.getSurnames(primaryCulture), "\t\t");
 		namesFile << "\t}\n";
 	}
 
 	namesFile << "\tcallsigns = {\n";
-	outputNamesSet(namesFile, theNames.getCallsigns(primaryCulture), "\t\t");
+	outputNamesSet(namesFile, names.getCallsigns(primaryCulture), "\t\t");
 	namesFile << "\t}\n";
 
 	namesFile << "}\n";

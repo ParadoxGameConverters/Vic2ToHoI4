@@ -4,6 +4,7 @@
 
 
 #include "../HoI4Country.h"
+#include "../Names.h"
 #include "IntelligenceAgency.h"
 #include <map>
 #include <memory>
@@ -35,7 +36,7 @@ class IntelligenceAgencies::Factory
   public:
 	static std::unique_ptr<IntelligenceAgencies> createIntelligenceAgencies(
 		 const std::map<std::string, std::shared_ptr<Country>>& countries,
-		 namesMapper& theNamesMapper);
+		 Names& names);
 };
 
 } // namespace HoI4

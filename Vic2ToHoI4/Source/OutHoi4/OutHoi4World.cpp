@@ -5,6 +5,7 @@
 #include "GameRules/OutGameRules.h"
 #include "Ideas/OutIdeas.h"
 #include "Ideologies/OutIdeologies.h"
+#include "IntelligenceAgencies/OutIntelligenceAgencies.h"
 #include "Log.h"
 #include "Map/OutBuildings.h"
 #include "Map/OutStrategicRegion.h"
@@ -14,7 +15,6 @@
 #include "OutFocusTree.h"
 #include "OutHoi4Country.h"
 #include "OutLocalisation.h"
-#include "IntelligenceAgencies/OutIntelligenceAgencies.h"
 #include "OutOnActions.h"
 #include "ScriptedLocalisations/OutScriptedLocalisations.h"
 #include "ScriptedTriggers/OutScriptedTriggers.h"
@@ -35,7 +35,7 @@ void reportDefaultIndustry(const std::map<std::string, std::array<int, 3>>& coun
 void outputCommonCountries(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName);
 void outputColorsFile(const std::map<std::string, std::shared_ptr<Country>>& countries, const std::string& outputName);
-void outputNames(const namesMapper& theNames,
+void outputNames(const Names& names,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName);
 void outputUnitNames(const std::map<std::string, std::shared_ptr<Country>>& countries,
@@ -254,7 +254,7 @@ void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<Country>
 }
 
 
-void HoI4::outputNames(const namesMapper& theNames,
+void HoI4::outputNames(const Names& names,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName)
 {
@@ -272,7 +272,7 @@ void HoI4::outputNames(const namesMapper& theNames,
 	{
 		if (country.second->getCapitalState())
 		{
-			outputToNamesFiles(namesFile, theNames, *country.second);
+			outputToNamesFiles(namesFile, names, *country.second);
 		}
 	}
 }

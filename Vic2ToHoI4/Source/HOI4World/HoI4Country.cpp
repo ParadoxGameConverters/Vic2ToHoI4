@@ -22,7 +22,7 @@
 
 HoI4::Country::Country(std::string tag,
 	 const Vic2::Country* srcCountry,
-	 namesMapper& theNames,
+	 Names& names,
 	 graphicsMapper& theGraphics,
 	 const CountryMapper& countryMap,
 	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
@@ -57,7 +57,7 @@ HoI4::Country::Country(std::string tag,
 
 
 	lastElection = sourceCountry.getLastElection();
-	initIdeas(theNames, hoi4Localisations);
+	initIdeas(names, hoi4Localisations);
 
 	stability = 60;
 	warSupport = 60;
@@ -186,30 +186,30 @@ void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies,
 }
 
 
-void HoI4::Country::initIdeas(namesMapper& theNames, Localisation& hoi4Localisations) const
+void HoI4::Country::initIdeas(Names& names, Localisation& hoi4Localisations) const
 {
 	hoi4Localisations.addIdeaLocalisation(tag + "_tank_manufacturer",
-		 theNames.takeCarCompanyName(sourceCountry.getPrimaryCulture()));
+		 names.takeCarCompanyName(sourceCountry.getPrimaryCulture()));
 	hoi4Localisations.addIdeaLocalisation(tag + "_motorized_equipment_manufacturer",
-		 theNames.takeCarCompanyName(sourceCountry.getPrimaryCulture()));
+		 names.takeCarCompanyName(sourceCountry.getPrimaryCulture()));
 	hoi4Localisations.addIdeaLocalisation(tag + "_infantry_equipment_manufacturer",
-		 theNames.takeWeaponCompanyName(sourceCountry.getPrimaryCulture()));
+		 names.takeWeaponCompanyName(sourceCountry.getPrimaryCulture()));
 	hoi4Localisations.addIdeaLocalisation(tag + "_artillery_manufacturer",
-		 theNames.takeWeaponCompanyName(sourceCountry.getPrimaryCulture()));
+		 names.takeWeaponCompanyName(sourceCountry.getPrimaryCulture()));
 	hoi4Localisations.addIdeaLocalisation(tag + "_light_aircraft_manufacturer",
-		 theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
+		 names.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
 	hoi4Localisations.addIdeaLocalisation(tag + "_medium_aircraft_manufacturer",
-		 theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
+		 names.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
 	hoi4Localisations.addIdeaLocalisation(tag + "_heavy_aircraft_manufacturer",
-		 theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
+		 names.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
 	hoi4Localisations.addIdeaLocalisation(tag + "_naval_aircraft_manufacturer",
-		 theNames.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
+		 names.takeAircraftCompanyName(sourceCountry.getPrimaryCulture()));
 	hoi4Localisations.addIdeaLocalisation(tag + "_naval_manufacturer",
-		 theNames.takeNavalCompanyName(sourceCountry.getPrimaryCulture()));
+		 names.takeNavalCompanyName(sourceCountry.getPrimaryCulture()));
 	hoi4Localisations.addIdeaLocalisation(tag + "_industrial_concern",
-		 theNames.takeIndustryCompanyName(sourceCountry.getPrimaryCulture()));
+		 names.takeIndustryCompanyName(sourceCountry.getPrimaryCulture()));
 	hoi4Localisations.addIdeaLocalisation(tag + "_electronics_concern",
-		 theNames.takeElectronicCompanyName(sourceCountry.getPrimaryCulture()));
+		 names.takeElectronicCompanyName(sourceCountry.getPrimaryCulture()));
 }
 
 
@@ -529,11 +529,11 @@ void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>&
 }
 
 
-void HoI4::Country::addLeader(HoI4::namesMapper& theNames, graphicsMapper& theGraphics)
+void HoI4::Country::addLeader(Names& names, graphicsMapper& theGraphics)
 {
 	const auto primaryCulture = sourceCountry.getPrimaryCulture();
-	const auto firstName = theNames.getMaleName(primaryCulture);
-	const auto surname = theNames.getSurname(primaryCulture);
+	const auto firstName = names.getMaleName(primaryCulture);
+	const auto surname = names.getSurname(primaryCulture);
 	if (firstName && surname)
 	{
 		leaderPortrait = theGraphics.getLeaderPortrait(sourceCountry.getPrimaryCultureGroup(), governmentIdeology);

@@ -43,7 +43,7 @@ class Ideologies;
 class CoastalProvinces;
 class MtgUnitMappings;
 class ProvinceDefinitions;
-class namesMapper;
+class Names;
 class ShipVariant;
 class State;
 class UnitMappings;
@@ -73,7 +73,7 @@ class Country
   public:
 	explicit Country(std::string tag,
 		 const Vic2::Country* srcCountry,
-		 namesMapper& theNames,
+		 Names& names,
 		 graphicsMapper& theGraphics,
 		 const CountryMapper& countryMap,
 		 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
@@ -92,7 +92,7 @@ class Country
 		 const Ideologies& ideologies,
 		 const governmentMapper& governmentMap,
 		 bool debug);
-	void addLeader(HoI4::namesMapper& theNames, graphicsMapper& theGraphics);
+	void addLeader(Names& names, graphicsMapper& theGraphics);
 	void convertGovernment(const Vic2::World& sourceWorld,
 		 const governmentMapper& governmentMap,
 		 const Vic2::Localisations& vic2Localisations,
@@ -229,7 +229,7 @@ class Country
 
   private:
 	void determineFilename();
-	void initIdeas(namesMapper& theNames, Localisation& hoi4Localisations) const;
+	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
 	void convertLaws();
 	void convertLeaders(const graphicsMapper& theGraphics);
 	void convertRelations(const CountryMapper& countryMap);

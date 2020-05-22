@@ -16,7 +16,7 @@ namespace HoI4
 class IntelligenceAgency
 {
   public:
-	explicit IntelligenceAgency(const Country& country, namesMapper& theNamesMapper);
+	explicit IntelligenceAgency(const Country& country, Names& names);
 
 	[[nodiscard]] const auto& getCountry() const { return countryTag; }
 	[[nodiscard]] const auto& getLogo() const { return logo; }

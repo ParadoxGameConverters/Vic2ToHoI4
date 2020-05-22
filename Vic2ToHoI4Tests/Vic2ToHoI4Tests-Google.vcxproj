@@ -397,7 +397,7 @@
     <ClInclude Include="Mocks\GovermentMapperMock.h" />
     <ClInclude Include="Mocks\GraphicsMapperMock.h" />
     <ClInclude Include="Mocks\Hoi4StateMock.h" />
-    <ClInclude Include="Mocks\NamesMapperMock.h" />
+    <ClInclude Include="Mocks\NamesMock.h" />
     <ClInclude Include="Mocks\StateCategoriesMock.h" />
     <ClInclude Include="Mocks\Vic2CountryMock.h" />
     <ClInclude Include="Mocks\Vic2WorldMock.h" />

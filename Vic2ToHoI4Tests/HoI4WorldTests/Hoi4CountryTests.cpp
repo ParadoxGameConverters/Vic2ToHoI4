@@ -2,7 +2,7 @@
 #include "../Mocks/GovermentMapperMock.h"
 #include "../Mocks/GraphicsMapperMock.h"
 #include "../Mocks/Hoi4StateMock.h"
-#include "../Mocks/NamesMapperMock.h"
+#include "../Mocks/NamesMock.h"
 #include "../Mocks/Vic2CountryMock.h"
 #include "../Mocks/Vic2WorldMock.h"
 #include "../Vic2ToHoI4/Source/HOI4World/HoI4Country.h"
@@ -21,7 +21,7 @@ class HoI4World_HoI4CountryTests: public testing::Test
   protected:
 	HoI4World_HoI4CountryTests();
 
-	mockNamesMapper theNamesMapper;
+	mockNames names;
 	mockGraphicsMapper theGraphicsMapper;
 	mockCountryMapper theCountryMapper;
 	mockVic2Country sourceCountry;
@@ -71,7 +71,7 @@ TEST_F(HoI4World_HoI4CountryTests, tagCanBeAssigned)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -84,7 +84,7 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesDefaultToTag)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -100,7 +100,7 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesBasedOnSourceCountryName)
 
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -116,7 +116,7 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesReplaceBadCharacters)
 
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -132,7 +132,7 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesConvertFrom1252ToUtf8)
 
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -149,7 +149,7 @@ TEST_F(HoI4World_HoI4CountryTests, isHumanDefaultsToFalse)
 
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -165,7 +165,7 @@ TEST_F(HoI4World_HoI4CountryTests, isHumanCanBetSetTrue)
 
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -182,7 +182,7 @@ TEST_F(HoI4World_HoI4CountryTests, colorIsFromSourceCountry)
 
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -196,7 +196,7 @@ TEST_F(HoI4World_HoI4CountryTests, graphicalCultureDefaultsToWesternEuropean)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -217,7 +217,7 @@ TEST_F(HoI4World_HoI4CountryTests, graphicalCultureIsFromSourceCountryCultureGro
 
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -232,7 +232,7 @@ TEST_F(HoI4World_HoI4CountryTests, hasProvincesDefaultsToFalse)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -246,7 +246,7 @@ TEST_F(HoI4World_HoI4CountryTests, getProvincesDefaultsToEmpty)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -260,7 +260,7 @@ TEST_F(HoI4World_HoI4CountryTests, provincesCanBeAdded)
 {
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -285,7 +285,7 @@ TEST_F(HoI4World_HoI4CountryTests, getStatesDefaultsToEmpty)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -299,7 +299,7 @@ TEST_F(HoI4World_HoI4CountryTests, statesCanBeAdded)
 {
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -321,7 +321,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalDefaultsToNone)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -331,14 +331,14 @@ TEST_F(HoI4World_HoI4CountryTests, capitalDefaultsToNone)
 	ASSERT_EQ(theCountry.getCapitalProvince(), std::nullopt);
 }
 
-#pragma optimize("", off)
+
 TEST_F(HoI4World_HoI4CountryTests, capitalCanBeSetInOwnedState)
 {
 	EXPECT_CALL(sourceCountry, getCapital).WillOnce(testing::Return(42));
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -366,7 +366,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanBeSetInOwnedState)
 	ASSERT_TRUE(theCountry.getCapitalProvince());
 	ASSERT_EQ(*theCountry.getCapitalProvince(), 84);
 }
-#pragma optimize("", on)
+
 
 TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceIsImpassible)
 {
@@ -374,7 +374,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceIsImp
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -427,7 +427,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceNotOw
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -479,7 +479,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInPreferredWastelandIfOnlyWastela
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -533,7 +533,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInOtherWastelandIfOnlyWastelandOw
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -588,7 +588,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredPreferredIfNoneOwned)
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -639,7 +639,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredNonWastelandIfNoneOwnedAndP
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -692,7 +692,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToPreferredWastelandIfNoneOwnedAnd
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -747,7 +747,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToAnyWastelandIfNoneOwnedAllWastel
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -801,7 +801,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalRemainsUnassignedIfNoCoresAndNoOwnedPr
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -829,7 +829,7 @@ TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesDefaultsToNeutrality)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -852,7 +852,7 @@ TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesCanBeSet)
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -886,7 +886,7 @@ TEST_F(HoI4World_HoI4CountryTests, rulingPartyComesFromVic2Country)
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -913,7 +913,7 @@ TEST_F(HoI4World_HoI4CountryTests, missingRulingPartyThrowsException)
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -934,7 +934,7 @@ TEST_F(HoI4World_HoI4CountryTests, partiesDefaultsToEmpty)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -967,7 +967,7 @@ TEST_F(HoI4World_HoI4CountryTests, partiesComeFromVic2Country)
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -992,7 +992,7 @@ TEST_F(HoI4World_HoI4CountryTests, defaultIdeologicalSupportIsAllNeutrality)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1008,7 +1008,7 @@ TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportWithNoIdeologiesIsAllNeutra
 {
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1027,7 +1027,7 @@ TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportCanBeConverted)
 {
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1056,7 +1056,7 @@ TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportCombinesSameIdeologies)
 {
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1086,7 +1086,7 @@ TEST_F(HoI4World_HoI4CountryTests, lastElectionIsFromSourceCountry)
 
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1100,7 +1100,7 @@ TEST_F(HoI4World_HoI4CountryTests, stabilityDefaultsToSixty)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1114,7 +1114,7 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportDefaultsToSixty)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1134,7 +1134,7 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByJingosim)
 
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1154,7 +1154,7 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByProMilitary)
 
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1174,7 +1174,7 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByAntiMilitary)
 
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1194,7 +1194,7 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByPacifism)
 
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1211,7 +1211,7 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByRevanchism)
 
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1228,7 +1228,7 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByWarExhaustion)
 
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1249,7 +1249,7 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportHasMinimumOfFifteen)
 
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1263,7 +1263,7 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDefaultsToVolunteerOnly)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1287,7 +1287,7 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawIncreasesIfRulingPartyJingoist
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1322,7 +1322,7 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDecreasesIfRulingPartyPacifist
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1347,7 +1347,7 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawDefaultsToCivilian)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1373,7 +1373,7 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfAtWar)
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1410,7 +1410,7 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfFascist)
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1435,7 +1435,7 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawDefaultsToExport)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1461,7 +1461,7 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfFascist)
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1498,7 +1498,7 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfRadical)
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1523,7 +1523,7 @@ TEST_F(HoI4World_HoI4CountryTests, technologyCountDefaultsToZero)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1537,7 +1537,7 @@ TEST_F(HoI4World_HoI4CountryTests, technologiesDefaultToNullopt)
 {
 	const HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,
@@ -1554,7 +1554,7 @@ TEST_F(HoI4World_HoI4CountryTests, technologyCanBeConverted)
 
 	HoI4::Country theCountry("TAG",
 		 &sourceCountry,
-		 theNamesMapper,
+		 names,
 		 theGraphicsMapper,
 		 theCountryMapper,
 		 *theFlagsToIdeasMapper,

@@ -1,26 +1,3 @@
-/*Copyright (c) 2018 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "Names.h"
 #include "../Configuration.h"
 #include "Log.h"
@@ -163,7 +140,7 @@ cultureGroup::cultureGroup(std::istream& theStream)
 }
 
 
-void HoI4::namesMapper::init(const Configuration& theConfiguration)
+void HoI4::Names::init(const Configuration& theConfiguration)
 {
 	Log(LogLevel::Info) << "\tParsing names";
 
@@ -183,7 +160,7 @@ void HoI4::namesMapper::init(const Configuration& theConfiguration)
 }
 
 
-void HoI4::namesMapper::processVic2CulturesFile(const std::string& filename)
+void HoI4::Names::processVic2CulturesFile(const std::string& filename)
 {
 	clearRegisteredKeywords();
 	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), [this](const std::string& cultureGroupName, std::istream& theStream) {
@@ -202,7 +179,7 @@ void HoI4::namesMapper::processVic2CulturesFile(const std::string& filename)
 }
 
 
-void HoI4::namesMapper::processNamesFile()
+void HoI4::Names::processNamesFile()
 {
 	clearRegisteredKeywords();
 	registerKeyword(std::regex("[A-Za-z0-9\\_]+"), [this](const std::string& cultureName, std::istream& theStream) {
@@ -237,7 +214,7 @@ void HoI4::namesMapper::processNamesFile()
 }
 
 
-void HoI4::namesMapper::addNamesToMap(std::map<std::string, std::vector<std::string>>& map,
+void HoI4::Names::addNamesToMap(std::map<std::string, std::vector<std::string>>& map,
 	 const std::string& culture,
 	 std::vector<std::string>& newNames)
 {
@@ -260,7 +237,7 @@ void HoI4::namesMapper::addNamesToMap(std::map<std::string, std::vector<std::str
 }
 
 
-void HoI4::namesMapper::checkForNames()
+void HoI4::Names::checkForNames()
 {
 	for (auto maleNamesMapping: maleNamesMap)
 	{
@@ -307,7 +284,7 @@ void HoI4::namesMapper::checkForNames()
 }
 
 
-std::optional<std::vector<std::string>> HoI4::namesMapper::getMaleNames(const std::string& culture) const
+std::optional<std::vector<std::string>> HoI4::Names::getMaleNames(const std::string& culture) const
 {
 	auto namesItr = maleNamesMap.find(culture);
 	if (namesItr != maleNamesMap.end())
@@ -321,7 +298,7 @@ std::optional<std::vector<std::string>> HoI4::namesMapper::getMaleNames(const st
 }
 
 
-std::optional<std::vector<std::string>> HoI4::namesMapper::getFemaleNames(const std::string& culture) const
+std::optional<std::vector<std::string>> HoI4::Names::getFemaleNames(const std::string& culture) const
 {
 	auto namesItr = femaleNamesMap.find(culture);
 	if (namesItr != femaleNamesMap.end())
@@ -335,7 +312,7 @@ std::optional<std::vector<std::string>> HoI4::namesMapper::getFemaleNames(const 
 }
 
 
-std::optional<std::vector<std::string>> HoI4::namesMapper::getSurnames(const std::string& culture) const
+std::optional<std::vector<std::string>> HoI4::Names::getSurnames(const std::string& culture) const
 {
 	auto namesItr = surnamesMap.find(culture);
 	if (namesItr != surnamesMap.end())
@@ -349,7 +326,7 @@ std::optional<std::vector<std::string>> HoI4::namesMapper::getSurnames(const std
 }
 
 
-std::optional<std::vector<std::string>> HoI4::namesMapper::getFemaleSurnames(const std::string& culture) const
+std::optional<std::vector<std::string>> HoI4::Names::getFemaleSurnames(const std::string& culture) const
 {
 	auto namesItr = femaleSurnamesMap.find(culture);
 	if (namesItr != femaleSurnamesMap.end())
@@ -363,7 +340,7 @@ std::optional<std::vector<std::string>> HoI4::namesMapper::getFemaleSurnames(con
 }
 
 
-std::optional<std::vector<std::string>> HoI4::namesMapper::getCallsigns(const std::string& culture) const
+std::optional<std::vector<std::string>> HoI4::Names::getCallsigns(const std::string& culture) const
 {
 	auto namesItr = callsignsMap.find(culture);
 	if (namesItr != callsignsMap.end())
@@ -377,7 +354,7 @@ std::optional<std::vector<std::string>> HoI4::namesMapper::getCallsigns(const st
 }
 
 
-std::optional<std::string> HoI4::namesMapper::getMaleName(const std::string& culture)
+std::optional<std::string> HoI4::Names::getMaleName(const std::string& culture)
 {
 	auto firstNames = getMaleNames(culture);
 	if (firstNames && (firstNames->size() > 0))
@@ -393,7 +370,7 @@ std::optional<std::string> HoI4::namesMapper::getMaleName(const std::string& cul
 }
 
 
-std::optional<std::string> HoI4::namesMapper::getFemaleName(const std::string& culture)
+std::optional<std::string> HoI4::Names::getFemaleName(const std::string& culture)
 {
 	auto firstNames = getFemaleNames(culture);
 	if (firstNames && (firstNames->size() > 0))
@@ -409,7 +386,7 @@ std::optional<std::string> HoI4::namesMapper::getFemaleName(const std::string& c
 }
 
 
-std::optional<std::string> HoI4::namesMapper::getSurname(const std::string& culture)
+std::optional<std::string> HoI4::Names::getSurname(const std::string& culture)
 {
 	auto surnames = getSurnames(culture);
 	if (surnames && (surnames->size() > 0))
@@ -425,7 +402,7 @@ std::optional<std::string> HoI4::namesMapper::getSurname(const std::string& cult
 }
 
 
-std::optional<std::string> HoI4::namesMapper::getFemaleSurname(const std::string& culture)
+std::optional<std::string> HoI4::Names::getFemaleSurname(const std::string& culture)
 {
 	auto surnames = getFemaleSurnames(culture);
 	if (surnames && (surnames->size() > 0))
@@ -441,7 +418,7 @@ std::optional<std::string> HoI4::namesMapper::getFemaleSurname(const std::string
 }
 
 
-std::optional<std::string> HoI4::namesMapper::getCallsign(const std::string& culture)
+std::optional<std::string> HoI4::Names::getCallsign(const std::string& culture)
 {
 	auto callsigns = getCallsigns(culture);
 	if (callsigns && (callsigns->size() > 0))
@@ -457,43 +434,43 @@ std::optional<std::string> HoI4::namesMapper::getCallsign(const std::string& cul
 }
 
 
-std::optional<std::string> HoI4::namesMapper::takeCarCompanyName(const std::string& culture)
+std::optional<std::string> HoI4::Names::takeCarCompanyName(const std::string& culture)
 {
 	return takeCompanyName(carCompanyNames, culture);
 }
 
 
-std::optional<std::string> HoI4::namesMapper::takeWeaponCompanyName(const std::string& culture)
+std::optional<std::string> HoI4::Names::takeWeaponCompanyName(const std::string& culture)
 {
 	return takeCompanyName(weaponCompanyNames, culture);
 }
 
 
-std::optional<std::string> HoI4::namesMapper::takeAircraftCompanyName(const std::string& culture)
+std::optional<std::string> HoI4::Names::takeAircraftCompanyName(const std::string& culture)
 {
 	return takeCompanyName(aircraftCompanyNames, culture);
 }
 
 
-std::optional<std::string> HoI4::namesMapper::takeNavalCompanyName(const std::string& culture)
+std::optional<std::string> HoI4::Names::takeNavalCompanyName(const std::string& culture)
 {
 	return takeCompanyName(navalCompanyNames, culture);
 }
 
 
-std::optional<std::string> HoI4::namesMapper::takeIndustryCompanyName(const std::string& culture)
+std::optional<std::string> HoI4::Names::takeIndustryCompanyName(const std::string& culture)
 {
 	return takeCompanyName(industryCompanyNames, culture);
 }
 
 
-std::optional<std::string> HoI4::namesMapper::takeElectronicCompanyName(const std::string& culture)
+std::optional<std::string> HoI4::Names::takeElectronicCompanyName(const std::string& culture)
 {
 	return takeCompanyName(electronicCompanyNames, culture);
 }
 
 
-std::optional<std::string> HoI4::namesMapper::takeCompanyName(
+std::optional<std::string> HoI4::Names::takeCompanyName(
 	 std::map<std::string, std::vector<std::string>>& companyNames,
 	 const std::string& culture)
 {
@@ -522,7 +499,7 @@ std::optional<std::string> HoI4::namesMapper::takeCompanyName(
 }
 
 
-std::optional<std::string> HoI4::namesMapper::takeIntelligenceAgencyName(const std::string& culture)
+std::optional<std::string> HoI4::Names::takeIntelligenceAgencyName(const std::string& culture)
 {
 	if (auto namesItr = intelligenceAgencyNames.find(culture); namesItr != intelligenceAgencyNames.end())
 	{
