@@ -12,8 +12,8 @@ std::ostream& HoI4::operator<<(std::ostream& output, const IntelligenceAgency& i
 		output << '"' << name << "\" ";
 	}
 	output << "}\n";
-	output << "\tdefault = { tag = " << intelligenceAgency.getCountry()
-			 << " } available = { original_tag = " << intelligenceAgency.getCountry() << " }\n";
+	output << "\tdefault = { tag = " << intelligenceAgency.getCountry() << " }\n";
+	output << "\tavailable = { original_tag = " << intelligenceAgency.getCountry() << " }\n";
 	output << "}\n";
 
 	return output;
