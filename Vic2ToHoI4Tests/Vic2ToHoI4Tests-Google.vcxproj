@@ -296,6 +296,7 @@
     <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyFileTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyItemsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\IntelligenceAgencies\IntelligenceAgencyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Leader\AdvisorTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\AllReplacementRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRulesTests.cpp" />

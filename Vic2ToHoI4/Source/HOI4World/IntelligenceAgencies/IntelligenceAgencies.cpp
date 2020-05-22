@@ -8,7 +8,7 @@ std::unique_ptr<HoI4::IntelligenceAgencies> HoI4::IntelligenceAgencies::Factory:
 	std::vector<IntelligenceAgency> theAgencies;
 	for (const auto& country: countries)
 	{
-		theAgencies.emplace_back(IntelligenceAgency{});
+		theAgencies.emplace_back(IntelligenceAgency{country.first});
 	}
 
 	return std::make_unique<IntelligenceAgencies>(std::move(theAgencies));
