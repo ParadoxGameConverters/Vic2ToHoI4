@@ -74,6 +74,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\Names.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp" />
@@ -215,7 +216,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\HoI4Army.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\RegimentType.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\RegimentTypeGroup.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgNavy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgShip.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\Navies.cpp" />

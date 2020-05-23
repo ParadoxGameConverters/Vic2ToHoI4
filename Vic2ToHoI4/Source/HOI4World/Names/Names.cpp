@@ -1,5 +1,5 @@
 #include "Names.h"
-#include "../Configuration.h"
+#include "../../Configuration.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"

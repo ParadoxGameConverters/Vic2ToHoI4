@@ -145,6 +145,9 @@
     <Filter Include="HoI4World\IntelligenceAgencies">
       <UniqueIdentifier>{8da06bf8-dd62-45c9-93ad-959af6e72fe8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\Names">
+      <UniqueIdentifier>{bd5d3a55-000c-4ca1-b9e1-c3116390cbc9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -242,9 +245,6 @@
     </ClCompile>
     <ClCompile Include="Source\V2World\StateDefinitions.cpp">
       <Filter>Vic2World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Names.cpp">
-      <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\V2World\Inventions.cpp">
       <Filter>Vic2World</Filter>
@@ -812,6 +812,9 @@
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp">
       <Filter>HoI4World\IntelligenceAgencies</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Names\Names.cpp">
+      <Filter>HoI4World\Names</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -964,9 +967,6 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Navies\MtgNavy.h">
       <Filter>HoI4World\Navies</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\Names.h">
-      <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Navies\Navies.h">
       <Filter>HoI4World\Navies</Filter>
@@ -1531,6 +1531,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.h">
       <Filter>HoI4World\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Names\Names.h">
+      <Filter>HoI4World\Names</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
