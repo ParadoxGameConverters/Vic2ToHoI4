@@ -212,7 +212,7 @@ std::optional<std::string> HoI4::Names::getMaleName(const std::string& culture)
 	if (auto names = getMaleNames(culture); names && !names->empty())
 	{
 		const std::uniform_int_distribution<int> generator(0, names->size() - 1);
-		return (*names)[generator(rng)];
+		return names->at(generator(rng));
 	}
 
 	Log(LogLevel::Warning) << "No male name could be found for " << culture;
@@ -225,7 +225,7 @@ std::optional<std::string> HoI4::Names::getFemaleName(const std::string& culture
 	if (auto names = getFemaleNames(culture); names && !names->empty())
 	{
 		const std::uniform_int_distribution<int> generator(0, names->size() - 1);
-		return (*names)[generator(rng)];
+		return names->at(generator(rng));
 	}
 
 	Log(LogLevel::Warning) << "No female name could be found for " << culture;
@@ -238,7 +238,7 @@ std::optional<std::string> HoI4::Names::getSurname(const std::string& culture)
 	if (auto names = getSurnames(culture); names && !names->empty())
 	{
 		const std::uniform_int_distribution<int> generator(0, names->size() - 1);
-		return (*names)[generator(rng)];
+		return names->at(generator(rng));
 	}
 
 	Log(LogLevel::Warning) << "No surname could be found for " << culture;
@@ -251,7 +251,7 @@ std::optional<std::string> HoI4::Names::getFemaleSurname(const std::string& cult
 	if (auto names = getFemaleSurnames(culture); names && !names->empty())
 	{
 		const std::uniform_int_distribution<int> generator(0, names->size() - 1);
-		return (*names)[generator(rng)];
+		return names->at(generator(rng));
 	}
 
 	Log(LogLevel::Warning) << "No female surname could be found for " << culture;
@@ -264,7 +264,7 @@ std::optional<std::string> HoI4::Names::getCallsign(const std::string& culture)
 	if (auto names = getCallsigns(culture); names && !names->empty())
 	{
 		const std::uniform_int_distribution<int> generator(0, names->size() - 1);
-		return (*names)[generator(rng)];
+		return names->at(generator(rng));
 	}
 
 	Log(LogLevel::Warning) << "No callsign could be found for " << culture;
@@ -313,25 +313,18 @@ std::optional<std::string> HoI4::Names::takeCompanyName(std::map<std::string, st
 {
 	if (auto namesItr = companyNames.find(culture); namesItr != companyNames.end())
 	{
-		std::vector<std::string> companies = namesItr->second;
-		if (companies.size() > 0)
+		if (auto companies = namesItr->second; !companies.empty())
 		{
 			const std::uniform_int_distribution<int> generator(0, companies.size() - 1);
-			auto company = companies[generator(rng)];
-			for (std::vector<std::string>::iterator itr = companyNames[culture].begin();
-				  itr != companyNames[culture].end();
-				  ++itr)
-			{
-				if (*itr == company)
-				{
-					companyNames[culture].erase(itr);
-					return company;
-				}
-			}
+			auto companiesIterator = companies.begin();
+			std::advance(companiesIterator, generator(rng));
+			auto company = *companiesIterator;
+			companies.erase(companiesIterator);
+			return company;
 		}
 	}
 
-	return {};
+	return std::nullopt;
 }
 
 
@@ -339,21 +332,14 @@ std::optional<std::string> HoI4::Names::takeIntelligenceAgencyName(const std::st
 {
 	if (auto namesItr = intelligenceAgencyNames.find(culture); namesItr != intelligenceAgencyNames.end())
 	{
-		std::vector<std::string> agencies = namesItr->second;
-		if (!agencies.empty())
+		if (auto agencies = namesItr->second; !agencies.empty())
 		{
 			const std::uniform_int_distribution<int> generator(0, agencies.size() - 1);
-			auto agency = agencies[generator(rng)];
-			for (std::vector<std::string>::iterator itr = intelligenceAgencyNames[culture].begin();
-				  itr != intelligenceAgencyNames[culture].end();
-				  ++itr)
-			{
-				if (*itr == agency)
-				{
-					intelligenceAgencyNames[culture].erase(itr);
-					return agency;
-				}
-			}
+			auto agenciesIterator = agencies.begin();
+			std::advance(agenciesIterator, generator(rng));
+			auto agency = *agenciesIterator;
+			agencies.erase(agenciesIterator);
+			return agency;
 		}
 	}
 

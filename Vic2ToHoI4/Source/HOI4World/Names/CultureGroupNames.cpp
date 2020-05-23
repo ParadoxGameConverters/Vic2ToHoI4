@@ -18,4 +18,5 @@ HoI4::CultureGroupNames::CultureGroupNames(std::istream& theStream)
 	});
 
 	parseStream(theStream);
+	clearRegisteredKeywords();
 }

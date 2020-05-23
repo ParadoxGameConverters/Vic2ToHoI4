@@ -57,6 +57,7 @@ HoI4::CultureNames::CultureNames(std::istream& theStream)
 	registerRegex("[A-Za-z0-9\\_]+", commonItems::ignoreItem);
 
 	parseStream(theStream);
+	clearRegisteredKeywords();
 }
 
 
