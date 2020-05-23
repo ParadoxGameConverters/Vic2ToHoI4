@@ -111,40 +111,42 @@ void HoI4::Names::Factory::checkForNames()
 	{
 		auto culture = maleNamesMapping.first;
 
-		if (femaleNames.find(culture) == femaleNames.end())
+		if (auto names = femaleNames.find(culture); (names == femaleNames.end()) || names->second.empty())
 		{
 			Log(LogLevel::Warning) << "No female names for " << culture;
 		}
 		// female surnames being missing is a common and acceptable case
-		if (callsigns.find(culture) == callsigns.end())
+		if (auto names = callsigns.find(culture); (names == callsigns.end()) || names->second.empty())
 		{
 			Log(LogLevel::Warning) << "No callsigns for " << culture;
 		}
-		if (carCompanyNames.find(culture) == carCompanyNames.end())
+		if (auto names = carCompanyNames.find(culture); (names == carCompanyNames.end()) || names->second.empty())
 		{
 			Log(LogLevel::Warning) << "No car companies for " << culture;
 		}
-		if (weaponCompanyNames.find(culture) == weaponCompanyNames.end())
+		if (auto names = weaponCompanyNames.find(culture); (names == weaponCompanyNames.end()) || names->second.empty())
 		{
 			Log(LogLevel::Warning) << "No weapon companies for " << culture;
 		}
-		if (aircraftCompanyNames.find(culture) == aircraftCompanyNames.end())
+		if (auto names = aircraftCompanyNames.find(culture); (names == aircraftCompanyNames.end()) || names->second.empty())
 		{
 			Log(LogLevel::Warning) << "No aircraft companies for " << culture;
 		}
-		if (navalCompanyNames.find(culture) == navalCompanyNames.end())
+		if (auto names = navalCompanyNames.find(culture); (names == navalCompanyNames.end()) || names->second.empty())
 		{
 			Log(LogLevel::Warning) << "No naval companies for " << culture;
 		}
-		if (industryCompanyNames.find(culture) == industryCompanyNames.end())
+		if (auto names = industryCompanyNames.find(culture); (names == industryCompanyNames.end()) || names->second.empty())
 		{
 			Log(LogLevel::Warning) << "No industry companies for " << culture;
 		}
-		if (electronicCompanyNames.find(culture) == electronicCompanyNames.end())
+		if (auto names = electronicCompanyNames.find(culture);
+			 (names == electronicCompanyNames.end()) || names->second.empty())
 		{
 			Log(LogLevel::Warning) << "No electronic companies for " << culture;
 		}
-		if (intelligenceAgencyNames.find(culture) == intelligenceAgencyNames.end())
+		if (auto names = intelligenceAgencyNames.find(culture);
+			 (names == intelligenceAgencyNames.end()) || names->second.empty())
 		{
 			Log(LogLevel::Warning) << "No intelligence agencies for " << culture;
 		}
