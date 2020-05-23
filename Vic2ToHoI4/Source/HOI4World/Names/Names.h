@@ -37,11 +37,13 @@ class Names
 		 std::map<std::string, std::vector<std::string>>&& electronicCompanyNames,
 		 std::map<std::string, std::vector<std::string>>&& intelligenceAgencyNames):
 		 maleNames(maleNames),
-		 femaleNames(femaleNames), surnames(surnames), femaleSurnames(femaleSurnames),
-		 callsigns(callsigns), carCompanyNames(carCompanyNames), weaponCompanyNames(weaponCompanyNames),
+		 femaleNames(femaleNames), surnames(surnames), femaleSurnames(femaleSurnames), callsigns(callsigns),
+		 carCompanyNames(carCompanyNames), weaponCompanyNames(weaponCompanyNames),
 		 aircraftCompanyNames(aircraftCompanyNames), navalCompanyNames(navalCompanyNames),
 		 industryCompanyNames(industryCompanyNames), electronicCompanyNames(electronicCompanyNames),
-		 intelligenceAgencyNames(intelligenceAgencyNames){};
+		 intelligenceAgencyNames(intelligenceAgencyNames)
+	{
+	}
 
 	[[nodiscard]] std::optional<std::vector<std::string>> getMaleNames(const std::string& culture) const;
 	[[nodiscard]] std::optional<std::vector<std::string>> getFemaleNames(const std::string& culture) const;

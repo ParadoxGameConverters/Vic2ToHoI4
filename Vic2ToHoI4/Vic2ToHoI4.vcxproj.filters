@@ -815,6 +815,9 @@
     <ClCompile Include="Source\HOI4World\Names\Names.cpp">
       <Filter>HoI4World\Names</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Names\CultureNames.cpp">
+      <Filter>HoI4World\Names</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1533,6 +1536,9 @@
       <Filter>HoI4World\IntelligenceAgencies</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Names\Names.h">
+      <Filter>HoI4World\Names</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Names\CultureNames.h">
       <Filter>HoI4World\Names</Filter>
     </ClInclude>
   </ItemGroup>

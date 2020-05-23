@@ -74,6 +74,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureNames.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\Names.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
