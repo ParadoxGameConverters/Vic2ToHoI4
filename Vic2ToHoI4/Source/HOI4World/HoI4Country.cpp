@@ -14,7 +14,7 @@
 #include "Leaders/Advisor.h"
 #include "Log.h"
 #include "MilitaryMappings/MilitaryMappings.h"
-#include "Names.h"
+#include "Names/Names.h"
 #include "OSCompatibilityLayer.h"
 #include <algorithm>
 

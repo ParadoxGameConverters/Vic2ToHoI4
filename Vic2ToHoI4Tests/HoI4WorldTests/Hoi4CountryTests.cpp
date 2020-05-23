@@ -6,7 +6,7 @@
 #include "../Mocks/Vic2WorldMock.h"
 #include "../Vic2ToHoI4/Source/HOI4World/HoI4Country.h"
 #include "../Vic2ToHoI4/Source/HOI4World/HoI4Localisation.h"
-#include "../Vic2ToHoI4/Source/HOI4World/Names.h"
+#include "../Vic2ToHoI4/Source/HOI4World/Names/Names.h"
 #include "../Vic2ToHoI4/Source/Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "../Vic2ToHoI4/Source/V2World/Party.h"
 #include "../Vic2ToHoI4/Source/V2World/State.h"

@@ -4,7 +4,7 @@
 
 
 #include "../HoI4Country.h"
-#include "../Names.h"
+#include "../Names/Names.h"
 #include <string>
 #include <vector>
 

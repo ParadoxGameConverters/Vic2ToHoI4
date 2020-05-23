@@ -29,7 +29,7 @@
 #include "Map/StrategicRegion.h"
 #include "Map/SupplyZones.h"
 #include "MilitaryMappings/MilitaryMappingsFile.h"
-#include "Names.h"
+#include "Names/Names.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 #include "ScriptedTriggers/ScriptedTriggersUpdater.h"

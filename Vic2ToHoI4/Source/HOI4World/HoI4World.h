@@ -20,7 +20,7 @@
 #include "Map/StrategicRegions.h"
 #include "MilitaryMappings/AllMilitaryMappings.h"
 #include "MilitaryMappings/UnitMappings.h"
-#include "Names.h"
+#include "Names/Names.h"
 #include "OnActions.h"
 #include "Parser.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"

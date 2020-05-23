@@ -3,7 +3,7 @@
 #include "../HOI4World/HoI4Country.h"
 #include "../HOI4World/Leaders/Advisor.h"
 #include "../HOI4World/Military/DivisionTemplate.h"
-#include "../HOI4World/Names.h"
+#include "../HOI4World/Names/Names.h"
 #include "../HOI4World/Navies/NavyNames.h"
 #include "../Mappers/GraphicsMapper.h"
 #include "../V2World/Country.h"
