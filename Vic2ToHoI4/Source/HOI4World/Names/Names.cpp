@@ -313,7 +313,7 @@ std::optional<std::string> HoI4::Names::takeCompanyName(std::map<std::string, st
 {
 	if (auto namesItr = companyNames.find(culture); namesItr != companyNames.end())
 	{
-		if (auto companies = namesItr->second; !companies.empty())
+		if (auto& companies = namesItr->second; !companies.empty())
 		{
 			const std::uniform_int_distribution<int> generator(0, companies.size() - 1);
 			auto companiesIterator = companies.begin();
@@ -332,7 +332,7 @@ std::optional<std::string> HoI4::Names::takeIntelligenceAgencyName(const std::st
 {
 	if (auto namesItr = intelligenceAgencyNames.find(culture); namesItr != intelligenceAgencyNames.end())
 	{
-		if (auto agencies = namesItr->second; !agencies.empty())
+		if (auto& agencies = namesItr->second; !agencies.empty())
 		{
 			const std::uniform_int_distribution<int> generator(0, agencies.size() - 1);
 			auto agenciesIterator = agencies.begin();
