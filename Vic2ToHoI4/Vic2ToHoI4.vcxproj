@@ -374,6 +374,7 @@
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp" />
     <ClCompile Include="Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="Source\HOI4World\Map\StrategicRegions.cpp" />
+    <ClCompile Include="Source\HOI4World\Names\CultureGroupNames.cpp" />
     <ClCompile Include="Source\HOI4World\Names\CultureNames.cpp" />
     <ClCompile Include="Source\HOI4World\Names\Names.cpp" />
     <ClCompile Include="Source\HOI4World\ProvinceDefinitions.cpp" />
@@ -602,6 +603,7 @@
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.h" />
     <ClInclude Include="Source\HOI4World\Map\HoI4Provinces.h" />
     <ClInclude Include="Source\HOI4World\Map\StrategicRegions.h" />
+    <ClInclude Include="Source\HOI4World\Names\CultureGroupNames.h" />
     <ClInclude Include="Source\HOI4World\Names\CultureNames.h" />
     <ClInclude Include="Source\HOI4World\Names\Names.h" />
     <ClInclude Include="Source\HOI4World\ProvinceDefinitions.h" />

@@ -1,41 +1,10 @@
 #include "Names.h"
 #include "../../Configuration.h"
+#include "CultureGroupNames.h"
 #include "CultureNames.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
-#include "ParserHelpers.h"
 
-
-
-class cultureGroup: commonItems::parser
-{
-  public:
-	explicit cultureGroup(std::istream& theStream);
-
-	[[nodiscard]] auto getMaleNames() const { return maleNamesMap; }
-	[[nodiscard]] auto getSurnames() const { return surnamesMap; }
-
-  private:
-	std::map<std::string, std::vector<std::string>> maleNamesMap;
-	std::map<std::string, std::vector<std::string>> surnamesMap;
-};
-
-
-cultureGroup::cultureGroup(std::istream& theStream)
-{
-	registerKeyword("leader", commonItems::ignoreItem);
-	registerKeyword("unit", commonItems::ignoreItem);
-	registerKeyword("union", commonItems::ignoreItem);
-	registerKeyword("is_overseas", commonItems::ignoreItem);
-	registerRegex("[A-Za-z0-9\\_]+", [this](const std::string& cultureName, std::istream& theStream) {
-		HoI4::culture newCulture(theStream);
-		newCulture.convertNamesToUTF8();
-		maleNamesMap.insert(make_pair(cultureName, newCulture.takeMaleNames()));
-		surnamesMap.insert(make_pair(cultureName, newCulture.takeSurnames()));
-	});
-
-	parseStream(theStream);
-}
 
 
 std::unique_ptr<HoI4::Names> HoI4::Names::Factory::getNames(const Configuration& theConfiguration)
