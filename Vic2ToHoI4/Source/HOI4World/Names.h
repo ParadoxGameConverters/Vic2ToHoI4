@@ -24,11 +24,11 @@ class Names
   public:
 	class Factory;
 
-	Names(std::map<std::string, std::vector<std::string>>&& maleNamesMap,
-		 std::map<std::string, std::vector<std::string>>&& femaleNamesMap,
-		 std::map<std::string, std::vector<std::string>>&& surnamesMap,
-		 std::map<std::string, std::vector<std::string>>&& femaleSurnamesMap,
-		 std::map<std::string, std::vector<std::string>>&& callsignsMap,
+	Names(std::map<std::string, std::vector<std::string>>&& maleNames,
+		 std::map<std::string, std::vector<std::string>>&& femaleNames,
+		 std::map<std::string, std::vector<std::string>>&& surnames,
+		 std::map<std::string, std::vector<std::string>>&& femaleSurnames,
+		 std::map<std::string, std::vector<std::string>>&& callsigns,
 		 std::map<std::string, std::vector<std::string>>&& carCompanyNames,
 		 std::map<std::string, std::vector<std::string>>&& weaponCompanyNames,
 		 std::map<std::string, std::vector<std::string>>&& aircraftCompanyNames,
@@ -36,20 +36,14 @@ class Names
 		 std::map<std::string, std::vector<std::string>>&& industryCompanyNames,
 		 std::map<std::string, std::vector<std::string>>&& electronicCompanyNames,
 		 std::map<std::string, std::vector<std::string>>&& intelligenceAgencyNames):
-		 maleNamesMap(maleNamesMap),
-		 femaleNamesMap(femaleNamesMap), surnamesMap(surnamesMap), femaleSurnamesMap(femaleSurnamesMap),
-		 callsignsMap(callsignsMap), carCompanyNames(carCompanyNames), weaponCompanyNames(weaponCompanyNames),
+		 maleNames(maleNames),
+		 femaleNames(femaleNames), surnames(surnames), femaleSurnames(femaleSurnames),
+		 callsigns(callsigns), carCompanyNames(carCompanyNames), weaponCompanyNames(weaponCompanyNames),
 		 aircraftCompanyNames(aircraftCompanyNames), navalCompanyNames(navalCompanyNames),
 		 industryCompanyNames(industryCompanyNames), electronicCompanyNames(electronicCompanyNames),
 		 intelligenceAgencyNames(intelligenceAgencyNames){};
 
-	Names(const Names&) = default;
-	Names(Names&&) = default;
-	Names& operator=(const Names&) = default;
-	Names& operator=(Names&&) = default;
-	virtual ~Names() = default;
-
-	[[nodiscard]] virtual std::optional<std::vector<std::string>> getMaleNames(const std::string& culture) const;
+	[[nodiscard]] std::optional<std::vector<std::string>> getMaleNames(const std::string& culture) const;
 	[[nodiscard]] std::optional<std::vector<std::string>> getFemaleNames(const std::string& culture) const;
 	[[nodiscard]] std::optional<std::vector<std::string>> getSurnames(const std::string& culture) const;
 	[[nodiscard]] std::optional<std::vector<std::string>> getFemaleSurnames(const std::string& culture) const;
@@ -74,11 +68,11 @@ class Names
 	std::optional<std::string> takeCompanyName(std::map<std::string, std::vector<std::string>>& companyNames,
 		 const std::string& culture);
 
-	std::map<std::string, std::vector<std::string>> maleNamesMap;
-	std::map<std::string, std::vector<std::string>> femaleNamesMap;
-	std::map<std::string, std::vector<std::string>> surnamesMap;
-	std::map<std::string, std::vector<std::string>> femaleSurnamesMap;
-	std::map<std::string, std::vector<std::string>> callsignsMap;
+	std::map<std::string, std::vector<std::string>> maleNames;
+	std::map<std::string, std::vector<std::string>> femaleNames;
+	std::map<std::string, std::vector<std::string>> surnames;
+	std::map<std::string, std::vector<std::string>> femaleSurnames;
+	std::map<std::string, std::vector<std::string>> callsigns;
 
 	std::map<std::string, std::vector<std::string>> carCompanyNames;
 	std::map<std::string, std::vector<std::string>> weaponCompanyNames;
@@ -104,13 +98,13 @@ class Names::Factory: commonItems::parser
 	void checkForNames();
 	void addNamesToMap(std::map<std::string, std::vector<std::string>>& map,
 		 const std::string& culture,
-		 std::vector<std::string>& newNames);
+		 std::vector<std::string>&& newNames) const;
 
-	std::map<std::string, std::vector<std::string>> maleNamesMap;
-	std::map<std::string, std::vector<std::string>> femaleNamesMap;
-	std::map<std::string, std::vector<std::string>> surnamesMap;
-	std::map<std::string, std::vector<std::string>> femaleSurnamesMap;
-	std::map<std::string, std::vector<std::string>> callsignsMap;
+	std::map<std::string, std::vector<std::string>> maleNames;
+	std::map<std::string, std::vector<std::string>> femaleNames;
+	std::map<std::string, std::vector<std::string>> surnames;
+	std::map<std::string, std::vector<std::string>> femaleSurnames;
+	std::map<std::string, std::vector<std::string>> callsigns;
 
 	std::map<std::string, std::vector<std::string>> carCompanyNames;
 	std::map<std::string, std::vector<std::string>> weaponCompanyNames;
