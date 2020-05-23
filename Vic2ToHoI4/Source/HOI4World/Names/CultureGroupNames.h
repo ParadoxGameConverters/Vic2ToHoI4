@@ -13,13 +13,13 @@
 namespace HoI4
 {
 
-class cultureGroup: commonItems::parser
+class CultureGroupNames: commonItems::parser
 {
   public:
-	explicit cultureGroup(std::istream& theStream);
+	explicit CultureGroupNames(std::istream& theStream);
 
-	[[nodiscard]] auto getMaleNames() const { return maleNamesMap; }
-	[[nodiscard]] auto getSurnames() const { return surnamesMap; }
+	[[nodiscard]] auto takeMaleNames() { return std::move(maleNamesMap); }
+	[[nodiscard]] auto takeSurnames() { return std::move(surnamesMap); }
 
   private:
 	std::map<std::string, std::vector<std::string>> maleNamesMap;

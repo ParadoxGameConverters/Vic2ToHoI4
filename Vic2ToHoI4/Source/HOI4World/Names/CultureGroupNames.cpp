@@ -4,7 +4,7 @@
 
 
 
-HoI4::cultureGroup::cultureGroup(std::istream& theStream)
+HoI4::CultureGroupNames::CultureGroupNames(std::istream& theStream)
 {
 	registerKeyword("leader", commonItems::ignoreItem);
 	registerKeyword("unit", commonItems::ignoreItem);

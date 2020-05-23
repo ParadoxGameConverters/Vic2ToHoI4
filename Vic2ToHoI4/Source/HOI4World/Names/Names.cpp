@@ -44,12 +44,12 @@ void HoI4::Names::Factory::processVic2CulturesFile(const std::string& filename)
 {
 	clearRegisteredKeywords();
 	registerRegex("[A-Za-z0-9\\_]+", [this](const std::string& unused, std::istream& theStream) {
-		const cultureGroup theGroup(theStream);
-		for (auto& newMaleNameMapping: theGroup.getMaleNames())
+		CultureGroupNames theGroup(theStream);
+		for (auto& newMaleNameMapping: theGroup.takeMaleNames())
 		{
 			addNamesToMap(maleNames, newMaleNameMapping.first, std::move(newMaleNameMapping.second));
 		}
-		for (auto& newSurnameMapping: theGroup.getSurnames())
+		for (auto& newSurnameMapping: theGroup.takeSurnames())
 		{
 			addNamesToMap(surnames, newSurnameMapping.first, std::move(newSurnameMapping.second));
 		}
