@@ -4,7 +4,7 @@
 
 
 
-HoI4::culture::culture(std::istream& theStream)
+HoI4::CultureNames::CultureNames(std::istream& theStream)
 {
 	registerKeyword("first_names", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringList nameStrings(theStream);
@@ -60,7 +60,7 @@ HoI4::culture::culture(std::istream& theStream)
 }
 
 
-void HoI4::culture::convertNamesToUTF8()
+void HoI4::CultureNames::convertNamesToUTF8()
 {
 	std::for_each(maleNames.begin(), maleNames.end(), [](std::string& name) {
 		name = Utils::convertWin1252ToUTF8(name);

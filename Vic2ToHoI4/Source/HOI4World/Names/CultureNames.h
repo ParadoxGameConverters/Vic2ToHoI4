@@ -12,10 +12,10 @@
 namespace HoI4
 {
 
-class culture: commonItems::parser
+class CultureNames: commonItems::parser
 {
   public:
-	explicit culture(std::istream& theStream);
+	explicit CultureNames(std::istream& theStream);
 
 	void convertNamesToUTF8();
 

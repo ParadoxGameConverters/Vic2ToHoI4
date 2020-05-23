@@ -923,6 +923,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureGroupNames.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Names</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Names\CultureNamesTests.cpp">
+      <Filter>HoI4WorldTests\Names</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1119,6 +1122,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\Names">
       <UniqueIdentifier>{54cd2f58-a4e2-4470-855c-444bb45e27a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\Names">
+      <UniqueIdentifier>{87629954-89cf-45a0-90d5-91b4037ba99a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

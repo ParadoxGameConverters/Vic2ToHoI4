@@ -327,6 +327,7 @@
     <ClCompile Include="HoI4WorldTests\Military\HoI4ArmyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Military\RegimentTypeTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Military\RegimentTypeGroupTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Names\CultureNamesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyNavyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyShipTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyShipTypeNamesTests.cpp" />

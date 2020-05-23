@@ -63,19 +63,19 @@ void HoI4::Names::Factory::processNamesFile()
 {
 	clearRegisteredKeywords();
 	registerRegex("[A-Za-z0-9\\_]+", [this](const std::string& cultureName, std::istream& theStream) {
-		culture newCulture(theStream);
-		addNamesToMap(maleNames, cultureName, newCulture.takeMaleNames());
-		addNamesToMap(femaleNames, cultureName, newCulture.takeFemaleNames());
-		addNamesToMap(surnames, cultureName, newCulture.takeSurnames());
-		addNamesToMap(femaleSurnames, cultureName, newCulture.takeFemaleSurnames());
-		addNamesToMap(callsigns, cultureName, newCulture.takeCallsigns());
-		addNamesToMap(carCompanyNames, cultureName, newCulture.takeCarCompanies());
-		addNamesToMap(weaponCompanyNames, cultureName, newCulture.takeWeaponCompanies());
-		addNamesToMap(aircraftCompanyNames, cultureName, newCulture.takeAircraftCompanies());
-		addNamesToMap(navalCompanyNames, cultureName, newCulture.takeNavalCompanies());
-		addNamesToMap(industryCompanyNames, cultureName, newCulture.takeIndustryCompanies());
-		addNamesToMap(electronicCompanyNames, cultureName, newCulture.takeElectronicCompanies());
-		addNamesToMap(intelligenceAgencyNames, cultureName, newCulture.takeIntelligenceAgencies());
+		CultureNames cultureNames(theStream);
+		addNamesToMap(maleNames, cultureName, cultureNames.takeMaleNames());
+		addNamesToMap(femaleNames, cultureName, cultureNames.takeFemaleNames());
+		addNamesToMap(surnames, cultureName, cultureNames.takeSurnames());
+		addNamesToMap(femaleSurnames, cultureName, cultureNames.takeFemaleSurnames());
+		addNamesToMap(callsigns, cultureName, cultureNames.takeCallsigns());
+		addNamesToMap(carCompanyNames, cultureName, cultureNames.takeCarCompanies());
+		addNamesToMap(weaponCompanyNames, cultureName, cultureNames.takeWeaponCompanies());
+		addNamesToMap(aircraftCompanyNames, cultureName, cultureNames.takeAircraftCompanies());
+		addNamesToMap(navalCompanyNames, cultureName, cultureNames.takeNavalCompanies());
+		addNamesToMap(industryCompanyNames, cultureName, cultureNames.takeIndustryCompanies());
+		addNamesToMap(electronicCompanyNames, cultureName, cultureNames.takeElectronicCompanies());
+		addNamesToMap(intelligenceAgencyNames, cultureName, cultureNames.takeIntelligenceAgencies());
 	});
 
 	parseFile("names.txt");
