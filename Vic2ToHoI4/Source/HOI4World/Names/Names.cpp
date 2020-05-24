@@ -78,7 +78,7 @@ void HoI4::Names::Factory::processNamesFile()
 		addNamesToMap(intelligenceAgencyNames, cultureName, cultureNames.takeIntelligenceAgencies());
 	});
 
-	parseFile("names.txt");
+	parseFile("DataFiles/names.txt");
 }
 
 
