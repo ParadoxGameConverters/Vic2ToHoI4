@@ -26,6 +26,7 @@ south_german = {
 	electronic_companies = { Siemens }
 	naval_companies = { Germaniawerft "Blohm & Voss" }
 	aircraft_companies = { Messerschmitt Junkers "Focke Wulf" Heinkel Dornier }
+	intelligence_agencies = { "Evidenzbureau" }
 }
 
 german = {
@@ -37,6 +38,7 @@ german = {
 	naval_companies = { Germaniawerft "Blohm & Voss" }
 	weapon_companies = { Rheinmetall Mauser Opel }
 	aircraft_companies = { Messerschmitt Junkers "Focke Wulf" Heinkel Dornier }
+	intelligence_agencies = { "Abteilung III b" }
 }
 
 british = {
@@ -48,6 +50,7 @@ british = {
 	naval_companies = { "Yarrow Shipbuilders" "Harland & Wolff" "Cammell Laird" "John Brown & Company" }
 	weapon_companies = { "RSAF Enfield" Vauxhall "Royal Arsenal" }
 	aircraft_companies = { Supermarine "Hawker Aircraft" "De Havilland" Avro "Fairey Aviation" }
+	intelligence_agencies = { "SIS" }
 }
 
 english = {
@@ -59,6 +62,7 @@ english = {
 	naval_companies = { "Yarrow Shipbuilders" "Harland & Wolff" "Cammell Laird" "John Brown & Company" }
 	weapon_companies = { "RSAF Enfield" Vauxhall "Royal Arsenal" }
 	aircraft_companies = { Supermarine "Hawker Aircraft" "De Havilland" Avro "Fairey Aviation" }
+	intelligence_agencies = { "MI6" }
 }
 
 anglo_saxon = {
@@ -70,6 +74,7 @@ anglo_saxon = {
 	naval_companies = { "Yarrow Shipbuilders" "Harland & Wolff" "Cammell Laird" "John Brown & Company" }
 	weapon_companies = { "RSAF Enfield" Vauxhall "Royal Arsenal" }
 	aircraft_companies = { Supermarine "Hawker Aircraft" "De Havilland" Avro "Fairey Aviation" }
+	intelligence_agencies = { "Spehōndī" }
 }
 
 russian = {
@@ -86,6 +91,7 @@ russian = {
 	naval_companies = { "Nevskoye Design Bureau" }
 	weapon_companies = { "Grabin Design Bureau" "Tula Arms Plant" GAZ }
 	aircraft_companies = { "MiG Design Bureau" "Ilyushin Design Bureau" "Tupolev Design Bureau" "Yakovlev Design Bureau" }
+	intelligence_agencies = { "NKVD" }
 }
 
 novvymir = {
@@ -102,6 +108,7 @@ novvymir = {
 	naval_companies = { "Nevskoye Design Bureau" }
 	weapon_companies = { "Grabin Design Bureau" "Tula Arms Plant" GAZ }
 	aircraft_companies = { "MiG Design Bureau" "Ilyushin Design Bureau" "Tupolev Design Bureau" "Yakovlev Design Bureau" }
+	intelligence_agencies = { "FSB" }
 }
 
 yuzhny = {
@@ -118,6 +125,7 @@ yuzhny = {
 	naval_companies = { "Nevskoye Design Bureau" }
 	weapon_companies = { "Grabin Design Bureau" "Tula Arms Plant" GAZ }
 	aircraft_companies = { "MiG Design Bureau" "Ilyushin Design Bureau" "Tupolev Design Bureau" "Yakovlev Design Bureau" }
+	intelligence_agencies = { "SVR" }
 }
 
 smugly = {
@@ -134,6 +142,7 @@ smugly = {
 	naval_companies = { "Nevskoye Design Bureau" }
 	weapon_companies = { "Grabin Design Bureau" "Tula Arms Plant" GAZ }
 	aircraft_companies = { "MiG Design Bureau" "Ilyushin Design Bureau" "Tupolev Design Bureau" "Yakovlev Design Bureau" }
+	intelligence_agencies = { "GRU" }
 }
 
 byelorussian = {
@@ -149,6 +158,7 @@ byelorussian = {
 	naval_companies = { "Kijeŭskaja Vierf" }
 	weapon_companies = { "Rasii Stali" }
 	aircraft_companies = { "Nieba Vikinhi" }
+	intelligence_agencies = { "KDB/KGB" }
 }
 
 ukrainian = {
@@ -163,6 +173,7 @@ ukrainian = {
 	naval_companies = { "Kiyivs'ka Verfi" }
 	weapon_companies = { "Rosiys'ka Stal'" }
 	aircraft_companies = { "Nebo Vikinhiv" }
+	intelligence_agencies = { "HUR" }
 }
 
 
@@ -175,6 +186,7 @@ french = {
 	naval_companies = { FCM }
 	weapon_companies = { SOMUA MAS Schneider }
 	aircraft_companies = { Morane-Saulnier Bloch Amiot Levasseur }
+	intelligence_agencies = { "Deuxième Bureau" }
 }
 
 occitain = {
@@ -185,6 +197,7 @@ occitain = {
 	naval_companies = { FCM }
 	weapon_companies = { SOMUA MAS Schneider }
 	aircraft_companies = { Morane-Saulnier Bloch Amiot Levasseur }
+	intelligence_agencies = { "DGSI" }
 }
 
 breton = {
@@ -196,6 +209,7 @@ breton = {
 	naval_companies = { FCM }
 	weapon_companies = { SOMUA MAS Schneider }
 	aircraft_companies = { Morane-Saulnier Bloch Amiot Levasseur }
+	intelligence_agencies = { "DRM" }
 }
 
 
@@ -208,6 +222,7 @@ north_italian = {
 	naval_companies = { CRDA }
 	weapon_companies = { Beretta Lancia Breda }
 	aircraft_companies = { Macchi Savoia-Marchetti Caproni Biaggio }
+	intelligence_agencies = { "Servizio Informazioni Militare" }
 }
 
 south_italian = {
@@ -219,6 +234,7 @@ south_italian = {
 	naval_companies = { CRDA }
 	weapon_companies = { Beretta Lancia Breda }
 	aircraft_companies = { Macchi Savoia-Marchetti Caproni Biaggio }
+	intelligence_agencies = { "DIS" }
 }
 
 maltese = {
@@ -230,6 +246,7 @@ maltese = {
 	naval_companies = { CRDA }
 	weapon_companies = { Beretta Lancia Breda }
 	aircraft_companies = { Macchi Savoia-Marchetti Caproni Biaggio }
+	intelligence_agencies = { "Maltese Espionage" }
 }
 
 lombard = {
@@ -241,6 +258,7 @@ lombard = {
 	naval_companies = { CRDA }
 	weapon_companies = { Beretta Lancia Breda }
 	aircraft_companies = { Macchi Savoia-Marchetti Caproni Biaggio }
+	intelligence_agencies = { "Spähen-Büro" }
 }
 
 all_italian = {
@@ -252,6 +270,7 @@ all_italian = {
 	naval_companies = { CRDA }
 	weapon_companies = { Beretta Lancia Breda }
 	aircraft_companies = { Macchi Savoia-Marchetti Caproni Biaggio }
+	intelligence_agencies = { "CII" }
 }
 
 yankee = {
@@ -263,6 +282,7 @@ yankee = {
 	naval_companies = { "Norfolk Naval Yard" "Brooklyn Naval Yard" "Electric Boat Company" "Newport News Shipbuilding" }
 	weapon_companies = { "Springfield Armory" "Ford Motor Company" "Rock Island Arsenal" }
 	aircraft_companies = { "North American Aviation" Bell Lockheed "Douglas Aircraft Company" Boeing "Consolidated Aircraft" Grumman }
+	intelligence_agencies = { "Office of Strategic Services" }
 }
 
 dixie = {
@@ -274,6 +294,7 @@ dixie = {
 	naval_companies = { "Norfolk Naval Yard" "Brooklyn Naval Yard" "Electric Boat Company" "Newport News Shipbuilding" }
 	weapon_companies = { "Springfield Armory" "Ford Motor Company" "Rock Island Arsenal" }
 	aircraft_companies = { "North American Aviation" Bell Lockheed "Douglas Aircraft Company" Boeing "Consolidated Aircraft" Grumman }
+	intelligence_agencies = { "CIA-CSA" }
 }
 
 texan = {
@@ -285,6 +306,7 @@ texan = {
 	naval_companies = { "Norfolk Naval Yard" "Brooklyn Naval Yard" "Electric Boat Company" "Newport News Shipbuilding" }
 	weapon_companies = { "Springfield Armory" "Ford Motor Company" "Rock Island Arsenal" }
 	aircraft_companies = { "North American Aviation" Bell Lockheed "Douglas Aircraft Company" Boeing "Consolidated Aircraft" Grumman }
+	intelligence_agencies = { "The King of an Hill" }
 }
 
 australian = {
@@ -296,6 +318,7 @@ australian = {
 	aircraft_companies = { "Commonwealth Aircraft Corporation" }
 	naval_companies = { "Cockatoo Docks and Engineering" "Evans Deakin & Company" }
 	industry_companies = { "BHP Steel" }
+	intelligence_agencies = { "Australian Secret Intelligence Service" }
 }
 
 japanese = {
@@ -307,6 +330,7 @@ japanese = {
 	naval_companies = { "Kure Naval Arsenal" "Yokosuka Naval Arsenal" "Maizuru Naval Arsenal" "Sasebo Naval Arsenal" }
 	weapon_companies = { "Tokyo Arsenal" Nissan }
 	aircraft_companies = { Mitsubishi Aichi Nakajima Yokosuka }
+	intelligence_agencies = { "Kenpeitai" }
 }
 
 ainu = {
@@ -318,6 +342,7 @@ ainu = {
 	naval_companies = { "Kure Naval Arsenal" "Yokosuka Naval Arsenal" "Maizuru Naval Arsenal" "Sasebo Naval Arsenal" }
 	weapon_companies = { "Tokyo Arsenal" Nissan }
 	aircraft_companies = { Mitsubishi Aichi Nakajima Yokosuka }
+	intelligence_agencies = { "Naichō" }
 }
 
 swedish = {
@@ -329,6 +354,7 @@ swedish = {
 	naval_companies = { Marinverkstäderna "AB Götaverken" Kockums }
 	weapon_companies = { Bofors "Husqvarna Vapenfabriks AB" Scania-Vabis }
 	aircraft_companies = { Direktflyg }
+	intelligence_agencies = { "C-byrån" }
 }
 
 norwegian = {
@@ -340,6 +366,7 @@ norwegian = {
 	naval_companies = { "Horten Naval Yard" }
 	weapon_companies = { "Kongsberg Våpenfabrikk" "Raufoss Ammunisjonsfabrikker" "Hønefoss Karosserifabrikk" }
 	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
+	intelligence_agencies = { "E-tjenesten" }
 }
 
 finnish = {
@@ -354,6 +381,7 @@ finnish = {
 	naval_companies = { "Crichton-Vulcan OY" }
 	weapon_companies = { "Paholaisen Virkailija" }
 	aircraft_companies = { "Valtion lentokonetehdas" }
+	intelligence_agencies = { "PE TIEDOS" }
 }
 sami = {
 	female_names = { Maria Helena Anneli Johanna Kaarina Marjatta Hannele Kristiina Liisa Emilia Elina Annikki Tuulikki Maarit Sofia Susanna Leena Katariina Anna Marja Sinikkka Inkeri Riitta Kyllikki Aino Tuula Anne Päivi Orvokki Ritva
@@ -367,6 +395,7 @@ sami = {
 	naval_companies = { "Fanas Sápmi" }
 	weapon_companies = { "Metálla Botnjat" }
 	aircraft_companies = { "Girdi Gieddi" }
+	intelligence_agencies = { "Underrättelsekontoret" }
 }
 ugrian = {
 	female_names = { Maria Helena Anneli Johanna Kaarina Marjatta Hannele Kristiina Liisa Emilia Elina Annikki Tuulikki Maarit Sofia Susanna Leena Katariina Anna Marja Sinikkka Inkeri Riitta Kyllikki Aino Tuula Anne Päivi Orvokki Ritva
@@ -381,6 +410,7 @@ ugrian = {
 	naval_companies = { "Kiovan Telakka" }
 	weapon_companies = { "Venäläinen Teräs" }
 	aircraft_companies = { "Taivaan Vikings" }
+	intelligence_agencies = { "Säpo" }
 }
 
 danish = {
@@ -392,6 +422,7 @@ danish = {
 	car_companies = { "Atlas Maskinfabrik AS" }
 	electronic_companies = { "Bang & Olufsen" }
 	industry_companies = { "De Forenede Automobilfabriker" }
+	intelligence_agencies = { "Politiets Efterretningstjeneste" }
 }
 
 icelandic = {
@@ -405,6 +436,7 @@ icelandic = {
 	naval_companies = { Víkingasveinninn }
 	weapon_companies = { Leiðaföndur }
 	aircraft_companies = { "Riddaralið Óðins" }
+	intelligence_agencies = { "GVMSÍ" }
 }
 
 lithuanian = {
@@ -422,6 +454,7 @@ lithuanian = {
 	car_companies = { "Sėkmės Ratas" }
 	naval_companies = { "Baltijos Laivų Statykla" }
 	weapon_companies = { "Vokiečių Ugnis" }
+	intelligence_agencies = { "AOTD" }
 }
 
 estonian = {
@@ -433,6 +466,7 @@ estonian = {
 	electronic_companies = { "Elektrit Kõigile" }
 	car_companies = { "Neli Ratast" }
 	aircraft_companies = { "Lendavad Alustassid" }
+	intelligence_agencies = { "Kaitseväe Luurekeskus" }
 }
 
 latvian = {
@@ -444,6 +478,7 @@ latvian = {
 	weapon_companies = { "Baltais Tērauds" }
 	naval_companies = { LKOD }
 	aircraft_companies = { VEF }
+	intelligence_agencies = { "MIDD" }
 }
 
 hungarian = {
@@ -455,6 +490,7 @@ hungarian = {
 	naval_companies = { "Ganz Danubius" }
 	weapon_companies = { "Fegyver- és Gépgyár" }
 	aircraft_companies = { "M.W. Aircraft" }
+	intelligence_agencies = { "Nemzetbiztonsági Hivatal" }
 }
 
 romanian = {
@@ -466,6 +502,7 @@ romanian = {
 	naval_companies = { "Constanta Shipyard" "Coastal Defense Ships" "Braila Shipyards" }
 	weapon_companies = { "Vauxhall Romania" "Atelierele Ford Bucuresti" "Nicolae Malaxa" "Cugir Small Arms" "Resita Works" "Opel Abt. Rumänien" }
 	aircraft_companies = { IAR ICAR SET }
+	intelligence_agencies = { "Serviciul Român de Informatii" }
 }
 
 slovak = {
@@ -482,6 +519,7 @@ slovak = {
 	naval_companies = { "Bratislavskej Lodenice" }
 	weapon_companies = { "Leštenej Ocele" }
 	aircraft_companies = { "Teror Oblohy" }
+	intelligence_agencies = { "Vojenské spravodajstvo" }
 }
 
 polish = {
@@ -498,6 +536,7 @@ polish = {
 	naval_companies = { "Stocznia Gdynia" }
 	weapon_companies = { FB LRL SMPA }
 	aircraft_companies = { PWS PZL }
+	intelligence_agencies = { "Dwojka" }
 }
 
 nowyswiat = {
@@ -514,6 +553,7 @@ nowyswiat = {
 	naval_companies = { "Stocznia Nowyświat" }
 	weapon_companies = { FB LRL SMPA }
 	aircraft_companies = { PWS PZL }
+	intelligence_agencies = { "Agencja Wywiadu" }
 }
 
 poludniowy = {
@@ -530,6 +570,7 @@ poludniowy = {
 	naval_companies = { "Stocznia Południowy" }
 	weapon_companies = { FB LRL SMPA }
 	aircraft_companies = { PWS PZL }
+	intelligence_agencies = { "Służba Wywiadu Wojskowego" }
 }
 
 czarny = {
@@ -546,6 +587,7 @@ czarny = {
 	naval_companies = { "Stocznia Czarny" }
 	weapon_companies = { FB LRL SMPA }
 	aircraft_companies = { PWS PZL }
+	intelligence_agencies = { "Centralne Biuro Antykorupcyjne" }
 }
 
 western_slavic = {
@@ -562,6 +604,7 @@ western_slavic = {
 	naval_companies = { "Stocznia Przemyśl" }
 	weapon_companies = { FB LRL SMPA }
 	aircraft_companies = { PWS PZL }
+	intelligence_agencies = { "Agencja Bezpieczeństwa Wewnętrznego" }
 }
 
 flemish = {
@@ -573,6 +616,7 @@ flemish = {
 	naval_companies = { Cockerill }
 	weapon_companies = { "Fabrique Nationale d'Armes de Guerre" }
 	aircraft_companies = { "Avions Fairey" "Renard Constructions Aéronatiques" }
+	intelligence_agencies = { "ADIV" }
 }
 
 wallonian = {
@@ -584,6 +628,7 @@ wallonian = {
 	naval_companies = { Cockerill }
 	weapon_companies = { "Fabrique Nationale d'Armes de Guerre" }
 	aircraft_companies = { "Avions Fairey" "Renard Constructions Aéronatiques" }
+	intelligence_agencies = { "SGRS" }
 }
 
 dutch = {
@@ -595,6 +640,7 @@ dutch = {
 	naval_companies = { "NSM Amsterdam" "Wilton Fijenoord" }
 	weapon_companies = { "DAF Trucks" "A. I. Hembrug" "HIH Siderius" }
 	aircraft_companies = { Fokker Koolhoven }
+	intelligence_agencies = { "Bureau Inlichtingen" }
 }
 
 boer = {
@@ -606,6 +652,7 @@ boer = {
 	naval_companies = { "NSM Cape Town" "Wilton Fijenoord" }
 	weapon_companies = { "DAF Trucks" "A. I. Hembrug" "HIH Siderius" }
 	aircraft_companies = { Fokker Koolhoven }
+	intelligence_agencies = { "South African Police" }
 }
 
 czech = {
@@ -622,6 +669,7 @@ czech = {
 	naval_companies = { "Škoda Shipyards" }
 	weapon_companies = { "Zbrojovka Brno" "Škoda Artillery" Praga }
 	aircraft_companies = { CKD-Praga Avia Aero LETOV }
+	intelligence_agencies = { "Vojenské zpravodajství" }
 }
 
 novysvet = {
@@ -638,6 +686,7 @@ novysvet = {
 	naval_companies = { "Škoda Shipyards" }
 	weapon_companies = { "Zbrojovka Brno" "Škoda Artillery" Novysvet }
 	aircraft_companies = { CKD-Novysvet Avia Aero LETOV }
+	intelligence_agencies = { "Bezpečnostní informační služba" }
 }
 
 jizni = {
@@ -654,6 +703,7 @@ jizni = {
 	naval_companies = { "Škoda Shipyards" }
 	weapon_companies = { "Zbrojovka Brno" "Škoda Artillery" Jižni }
 	aircraft_companies = { CKD-Jižni Avia Aero LETOV }
+	intelligence_agencies = { "ÚZSI" }
 }
 
 hnedy = {
@@ -670,6 +720,7 @@ hnedy = {
 	naval_companies = { "Škoda Shipyards" }
 	weapon_companies = { "Zbrojovka Brno" "Škoda Artillery" Hnědý }
 	aircraft_companies = { CKD-Hnědý Avia Aero LETOV }
+	intelligence_agencies = { "VZ" }
 }
 
 persian = {
@@ -681,6 +732,7 @@ persian = {
 	naval_companies = { "Keshta Saza Bzrgu" }
 	weapon_companies = { "Fwlad Awnana" }
 	aircraft_companies = { "Hwapeamaaa Kewrwsh" }
+	intelligence_agencies = { "Sazeman-e Ettela'at va Amniyat-e Keshvar" }
 }
 
 javan = {
@@ -692,6 +744,7 @@ javan = {
 	naval_companies = { "Galangan Kapal Yang Hebat" }
 	weapon_companies = { "Keluli Inggeris" }
 	aircraft_companies = { "Kapal Terbang" }
+	intelligence_agencies = { "Badan Intelijen Strategis TNI" }
 }
 
 assamese = {
@@ -704,6 +757,7 @@ assamese = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "Joint Intelligence Committee" }
 }
 
 bengali = {
@@ -716,6 +770,7 @@ bengali = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "Research and Analysis Wing" }
 }
 
 bihari = {
@@ -728,6 +783,7 @@ bihari = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "Joint Cipher Bureau" }
 }
 
 manipuri = {
@@ -740,6 +796,7 @@ manipuri = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "Intelligence Bureau" }
 }
 
 nepali = {
@@ -752,6 +809,7 @@ nepali = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "Nepal Guptachar vibhag" }
 }
 
 oriya = {
@@ -764,6 +822,7 @@ oriya = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "Directorate of Military Intelligence" }
 }
 
 sinhala = {
@@ -776,6 +835,7 @@ sinhala = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "Directore of Revenue Intelligence" }
 }
 
 avadhi = {
@@ -788,6 +848,7 @@ avadhi = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "FIU-Ind" }
 }
 
 kanauji = {
@@ -800,6 +861,7 @@ kanauji = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "DGGI" }
 }
 
 panjabi = {
@@ -812,6 +874,7 @@ panjabi = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "ISI" }
 }
 
 kashmiri = {
@@ -824,6 +887,7 @@ kashmiri = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "FIA" }
 }
 
 gujarati = {
@@ -836,6 +900,7 @@ gujarati = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "NACTA" }
 }
 
 marathi = {
@@ -848,6 +913,7 @@ marathi = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "FMU" }
 }
 
 sindi = {
@@ -860,6 +926,7 @@ sindi = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "DGII" }
 }
 
 rajput = {
@@ -872,6 +939,7 @@ rajput = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "SECP" }
 }
 
 kannada = {
@@ -884,6 +952,7 @@ kannada = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "NAB" }
 }
 
 malayalam = {
@@ -896,6 +965,7 @@ malayalam = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "CTD" }
 }
 
 tamil = {
@@ -908,6 +978,7 @@ tamil = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "FBR" }
 }
 
 telegu = {
@@ -920,6 +991,7 @@ telegu = {
 	naval_companies = { "Khulna Shipyard" }
 	car_companies = { "Chaar Pahiye" }
 	callsigns = { Hindi Asamiya Bangalee Bihaaree Manipuree Nepaalee Oriya Sinhalee Avadhee Kanauji Panjaabee Kashmeeree Gujaraatee Maraathee Sindee Raajapoot Kannad Malayaalam Taamil Telegu }
+	intelligence_agencies = { "ANF-FIA" }
 }
 
 north_andean = {
@@ -931,6 +1003,7 @@ north_andean = {
 	naval_companies = { "Invincible Armada" }
 	weapon_companies = { "Pizarro & Loyola" }
 	aircraft_companies = { "Hermanos Wright" }
+	intelligence_agencies = { "DINI" }
 }
 
 #Industry-only names
@@ -949,6 +1022,7 @@ bulgarian = {
 	car_companies = { BDŽ }
 	industry_companies = { "Petrol AD" "VMZ Sopot" }
 	aircraft_companies = { "Daržava Aeroplanna Rabotilnica" "Kaproni Bulgarski" }
+	intelligence_agencies = { "Služba Voenna Informacija" }
 }
 
 macedonian = {
@@ -973,6 +1047,7 @@ macedonian = {
 	car_companies = { BDŽ }
 	industry_companies = { "Petrol AD" "VMZ Sopot" }
 	aircraft_companies = { "Daržava Aeroplanna Rabotilnica" "Kaproni Bulgarski" }
+	intelligence_agencies = { "Voena služba za" }
 }
 
 anglo_canadian = {
@@ -984,6 +1059,7 @@ anglo_canadian = {
 	naval_companies = { "Kingston Shipbuilding Co" "Halifax Shipyard Limited" }
 	weapon_companies = { "John Inglis and Company" "Small Arms Limited" }
 	aircraft_companies = { "de Havilland Canada" "Canadian Car & Foundry" "Fairchild Aircraft Ltd." "Handley Page" }
+	intelligence_agencies = { "Royal Canadian Mounted Police" }
 }
 
 french_canadian = {
@@ -995,6 +1071,7 @@ french_canadian = {
 	naval_companies = { "Kingston Shipbuilding Co" "Halifax Shipyard Limited" }
 	weapon_companies = { "John Inglis and Company" "Small Arms Limited" }
 	aircraft_companies = { "de Havilland Canada" "Canadian Car & Foundry" "Fairchild Aircraft Ltd." "Handley Page" }
+	intelligence_agencies = { "CBSA" }
 }
 
 manchu = {
@@ -1006,6 +1083,7 @@ manchu = {
 	electronic_companies = { "Suǒyǒu Rén De Diànlì" }
 	car_companies = { "Sì Gè Lúnzi" }
 	weapon_companies = { "Yāpiàn & Gāngtiě" }
+	intelligence_agencies = { "Hoankyoku" }
 }
 
 beifaren = {
@@ -1017,6 +1095,7 @@ beifaren = {
 	electronic_companies = { "Suǒyǒu Rén De Diànlì" }
 	car_companies = { "Sì Gè Lúnzi" }
 	weapon_companies = { "Yāpiàn & Gāngtiě" }
+	intelligence_agencies = { "NBIS" }
 }
 
 nanfaren = {
@@ -1028,6 +1107,7 @@ nanfaren = {
 	electronic_companies = { "Suǒyǒu Rén De Diànlì" }
 	car_companies = { "Sì Gè Lúnzi" }
 	weapon_companies = { "Yāpiàn & Gāngtiě" }
+	intelligence_agencies = { "Intelligence Department Central Military Commission" }
 }
 
 hakka = {
@@ -1039,6 +1119,7 @@ hakka = {
 	electronic_companies = { "Suǒyǒu Rén De Diànlì" }
 	car_companies = { "Sì Gè Lúnzi" }
 	weapon_companies = { "Yāpiàn & Gāngtiě" }
+	intelligence_agencies = { "3PLA" }
 }
 
 miao = {
@@ -1050,6 +1131,7 @@ miao = {
 	electronic_companies = { "Suǒyǒu Rén De Diànlì" }
 	car_companies = { "Sì Gè Lúnzi" }
 	weapon_companies = { "Yāpiàn & Gāngtiě" }
+	intelligence_agencies = { "PLA3" }
 }
 
 min = {
@@ -1061,6 +1143,7 @@ min = {
 	electronic_companies = { "Suǒyǒu Rén De Diànlì" }
 	car_companies = { "Sì Gè Lúnzi" }
 	weapon_companies = { "Yāpiàn & Gāngtiě" }
+	intelligence_agencies = { "PLA-III" }
 }
 
 zhuang = {
@@ -1072,6 +1155,7 @@ zhuang = {
 	electronic_companies = { "Suǒyǒu Rén De Diànlì" }
 	car_companies = { "Sì Gè Lúnzi" }
 	weapon_companies = { "Yāpiàn & Gāngtiě" }
+	intelligence_agencies = { "III-PLA" }
 }
 
 yi = {
@@ -1083,6 +1167,7 @@ yi = {
 	electronic_companies = { "Suǒyǒu Rén De Diànlì" }
 	car_companies = { "Sì Gè Lúnzi" }
 	weapon_companies = { "Yāpiàn & Gāngtiě" }
+	intelligence_agencies = { "PLA-TER" }
 }
 
 yue = {
@@ -1094,6 +1179,7 @@ yue = {
 	electronic_companies = { "Suǒyǒu Rén De Diànlì" }
 	car_companies = { "Sì Gè Lúnzi" }
 	weapon_companies = { "Yāpiàn & Gāngtiě" }
+	intelligence_agencies = { "TER-PLA" }
 }
 
 greek = {
@@ -1110,6 +1196,7 @@ greek = {
 	weapon_companies = { "Gallikó Chályva" }
 	aircraft_companies = { GNAF }
 	naval_companies = { "Royal Hellenic Naval Shipyard" }
+	intelligence_agencies = { "Ethnikí Ypiresía Pliroforión" }
 }
 
 neokosmi = {
@@ -1126,6 +1213,7 @@ neokosmi = {
 	weapon_companies = { "Gallikó Chályva" }
 	aircraft_companies = { GNAF }
 	naval_companies = { "Royal Hellenic Naval Shipyard" }
+	intelligence_agencies = { "EYP" }
 }
 
 notios = {
@@ -1142,6 +1230,7 @@ notios = {
 	weapon_companies = { "Gallikó Chályva" }
 	aircraft_companies = { GNAF }
 	naval_companies = { "Royal Hellenic Naval Shipyard" }
+	intelligence_agencies = { "E Division" }
 }
 
 mavro = {
@@ -1158,6 +1247,7 @@ mavro = {
 	weapon_companies = { "Gallikó Chályva" }
 	aircraft_companies = { GNAF }
 	naval_companies = { "Royal Hellenic Naval Shipyard" }
+	intelligence_agencies = { "Ulixes" }
 }
 georgian = {
 	female_names = { Ana Anna Baia Bedisa Borena Chiora Chito Dali Dedika Duda Dzabuli Elene Helen Eliso Endzela }
@@ -1168,6 +1258,7 @@ georgian = {
 	naval_companies = { "Tbilisi Gemi Ezo" }
 	weapon_companies = { "Rusi Poladi" }
 	aircraft_companies = { "Tsis Mongolebi" }
+	intelligence_agencies = { "SSSG" }
 }
 
 
@@ -1180,6 +1271,7 @@ mexican = {
 	naval_companies = { SECN }
 	weapon_companies = { "Fabrica Nacional de Armas" COMESA }
 	aircraft_companies = { TGA }
+	intelligence_agencies = { "Centro de Investigación y Seguridad Nacional" }
 }
 
 #New Zealand (no Vic2 culture) = {
@@ -1198,6 +1290,7 @@ portuguese = {
 	naval_companies = { "Arsenal do Alfeite" }
 	weapon_companies = { "Fabrica de Material de Guerra" }
 	aircraft_companies = { OGMA }
+	intelligence_agencies = { "PIDE" }
 }
 
 spanish = {
@@ -1209,6 +1302,7 @@ spanish = {
 	naval_companies = { SECN }
 	weapon_companies = { "Arsenal Francés" }
 	aircraft_companies = { CASA }
+	intelligence_agencies = { "SIM" }
 }
 
 turkish = {
@@ -1220,6 +1314,7 @@ turkish = {
 	naval_companies = { "Gölcük NSY" }
 	weapon_companies = { "Istanbul Military Industries" }
 	aircraft_companies = { THK KTF }
+	intelligence_agencies = { "Millî Emniyet Hizmeti Riyâseti" }
 }
 
 croat = {
@@ -1231,6 +1326,7 @@ croat = {
 	electronic_companies = { "Ganz Kroatien-Slawonien" "Končar Elektroindustrija" }
 	industry_companies = { INA "Prva Hrvatska Trvonica Rublja" "TŽV Gredelj" }
 	car_companies = { TAZ }
+	intelligence_agencies = { "VSOA" }
 }
 
 serb = {
@@ -1242,6 +1338,7 @@ serb = {
 	naval_companies = { "Jadransko Brodogradiliste" }
 	weapon_companies = { "Zastava Arms" }
 	aircraft_companies = { Ikarus Rogozarski Zmaj }
+	intelligence_agencies = { "OZNA" }
 }
 
 slovene = {
@@ -1253,6 +1350,7 @@ slovene = {
 	naval_companies = { "Jadransko Brodogradiliste" }
 	weapon_companies = { "Zastava Arms" }
 	aircraft_companies = { Ikarus Rogozarski Zmaj }
+	intelligence_agencies = { "SOVA" }
 }
 
 bosniak = {
@@ -1265,6 +1363,7 @@ bosniak = {
 	industry_companies = { Aluminij "BNT Tvornica" }
 	electronic_companies = { "Energopetrol" "Bosanske Drzave Željeznice" }
 	naval_companies = { "Ganz Danubius" }
+	intelligence_agencies = { "SIPA" }
 }
 
 aborigine = {
@@ -1280,6 +1379,7 @@ aborigine = {
 	aircraft_companies = { "Ngaanyatjarra Air" "Ngurrajuta Air" "Janami Air" "PY Air" }
 	naval_companies = { "Bungaree Shipyards" }
 	industry_companies = { Barpa ICRG Intract }
+	intelligence_agencies = { "Yolngu" }
 }
 
 afro_american = {
@@ -1291,6 +1391,7 @@ afro_american = {
 	aircraft_companies = { "Bessie Coleman Aero" }
 	naval_companies = { "Chesapeake Marine Railway and Dry Dock Co" }
 	industry_companies = { "SLR Contracting & Service Company" "Coleman Construction" "ENVIRO AgScience, Inc." "H.J. Russel & Company" "Thor Construction" "Powers & Sons Construction Company" }
+	intelligence_agencies = { "JOG-R" }
 }
 
 afro_antillean = {
@@ -1302,6 +1403,7 @@ afro_antillean = {
 	industry_companies = { "Grupo Estrella" }
 	electronic_companies = { Handxom Sûrtab }
 	car_companies = { "Voitures Haïti" }
+	intelligence_agencies = { "Service d'Intelligence National" }
 }
 afar = {
 	female_names = { Aasha Adey Alaso Ambro Amburo Asha Asli Astur Awa Awrala Ayaan Barni Basr Beydaan
@@ -1325,6 +1427,7 @@ africaine = {
 	naval_companies = { "Société des Forges et Chantiers" }
 	weapon_companies = { "La Guillotine" }
 	aircraft_companies = { "Aéromobiles du Zaïre" }
+	intelligence_agencies = { "Ex-DEMIAP" }
 }
 african_minor = {
 	female_names = { Nia Cadence Hanna Nala Zahra }
@@ -1345,6 +1448,7 @@ africano = {
 	naval_companies = { "Cantieri Riuniti d'Africa" }
 	industry_companies = { "Siderurgia Nerone" }
 	electronic_companies = { "Ruota Blu" }
+	intelligence_agencies = { "Giuseppi" }
 }
 afro_brazilian = {
 	female_names = { Aldara Alduara Aldonça Aldonza Beatriz Beatrice Berengária Berengaria Branca Blanche
@@ -1448,6 +1552,7 @@ albanian = {
 	naval_companies = { "Dërgesat e Durrës" }
 	industry_companies = { "Metal Punon" }
 	electronic_companies = { "Bubullimë Zot" }
+	intelligence_agencies = { "Shërbimi Informativ Ushtarak" }
 }
 amazonian = {
 	female_names = { Aldara Alduara Aldonça Aldonza Beatriz Beatrice Berengária Berengaria Branca Blanche
@@ -1485,6 +1590,7 @@ americano = {
 	naval_companies = { "Patio Naval Norfolk" "Patio Naval Brooklyn" "Empresa Barcos Eléctricos" "Newport Construcciones Navales" }
 	weapon_companies = { "Arsenal Campo Primavera" "Compañía de Motor Vado" "Arsenal Isla Piedra" }
 	aircraft_companies = { "Aviación América del Norte" Campana "Bloqueador de Atención" "Empresa de Aeronaves Douglas" Boeing "Aeronaves Consolidadas" Grumman }
+	intelligence_agencies = { "Il Piave Mormorò" }
 }
 amerikaner = {
 	female_names = { Maria Johanna }
@@ -1495,6 +1601,7 @@ amerikaner = {
 	naval_companies = { "Marine-Hof Norfolk" "Marine-Hof Brooklyn" "Elektrische Bootsgesellschaft" "Newport Nachrichten Schiffbauen" }
 	weapon_companies = { "Frühlingsfeld Rüstkammer" "Phord Motorunternehmen" "Rockinsel Arsenal" }
 	aircraft_companies = { "Nordamerikanische Luftfahrt" Glocke "Sperrenbeachtung" "Flugzeugfirma Douglas" Boeing "Konsolidierte Flugzeuge" Grumman }
+	intelligence_agencies = { "Amerika-SS" }
 }
 amhara = {
 	female_names = { Habesha Abeba Abrihet Adanech Adina Alaworld Alitash Amhara Ayana Bathsheba Bekele Belkis Berhane Berta 
@@ -1509,6 +1616,7 @@ amhara = {
 	naval_companies = { "Ye'Otoma Merikebochi" }
 	industry_companies = { "Bireti Sira" }
 	electronic_companies = { "Yemoti Redifi T'igenawochi" }
+	intelligence_agencies = { "NISS" }
 }
 andalucian = {
 	female_names = { Aliya Fahima Haifa Abda Ahu Aiza Aliyah Butayna Daniyah Dima Fahra Fahriya Fatima Gamila Ghada Habiba Huda 
@@ -1535,6 +1643,7 @@ anglo_african = {
 	naval_companies = { "Yarrow Shipbuilders" "Harland & Wolff" "Cammell Laird" "John Brown & Company" }
 	weapon_companies = { "RSAF Enfield" Vauxhall "Royal Arsenal" }
 	aircraft_companies = { Supermarine "Hawker Aircraft" "De Havilland" Avro "Fairey Aviation" }
+	intelligence_agencies = { "MI-Africa" }
 }
 araucanian = {
 	female_names = { Suyai Yaima Collipal Curipan Cuyen Calfuray Cayfutray Ilchahueque Ipi Kuyen Lefitray Leflay Llanquipan 
@@ -1580,6 +1689,7 @@ armenian = {
 	naval_companies = { "Gharabaghyan Navahangistnery" }
 	industry_companies = { "Zangezur Copper and Molybdenum Combine" }
 	electronic_companies = { "Jahel Asttso" }
+	intelligence_agencies = { "NSS" }
 }
 ashkenazi = {
 	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
@@ -1592,6 +1702,7 @@ ashkenazi = {
 	naval_companies = { "Jonas Toyve" }
 	industry_companies = { "Ayzn aun Shtol" }
 	electronic_companies = { "Bloy Leyts" }
+	intelligence_agencies = { "Mossad" }
 }
 asian_minor = {
 	female_names = { Aimi Asami Asuka }
@@ -1664,6 +1775,7 @@ azerbaijani = {
 	naval_companies = { "Qazaxistan Gëmilëri" }
 	industry_companies = { "Osmanli Metallari" }
 	electronic_companies = { "Kazak Mavi Ishiqlar" }
+	intelligence_agencies = { "Xarici Kəşfiyyat Xidməti" }
 }
 baganda = {
 	female_names = { Nyiramavugo Kanjogera Nyirarukangaga Balambi Bawedde Sikyayinza Nakamu }
@@ -1716,6 +1828,7 @@ bakongo = {
 	naval_companies = { "Utoaji wa Afrika" }
 	industry_companies = { "Kazi Kazi Kazi" }
 	electronic_companies = { "Uzalishaji wa Umeme" }
+	intelligence_agencies = { "CENAREF" }
 }
 baluchi = {
 	female_names = { Adan Adar Ara Ardil Arezo Arezu Ariyan Arêz Arîman Arîn Asan Asteng Asê Avan Azadî Azrîn Aštî 
@@ -1812,6 +1925,7 @@ bedouin = {
 	naval_companies = { "Al-Zawariq al-Faransia" }
 	industry_companies = { "al-Hadid al-Earabiu" }
 	electronic_companies = { "Daw Yahudiun" }
+	intelligence_agencies = { "Mabahith" }
 }
 beja = {
 	female_names = { Agathe Alethia Anthelia Athanasia Chaelsoñoja Chrissa Christina Douriko Egaloskoura Eikkir 
@@ -1855,6 +1969,7 @@ bornean = {
 	naval_companies = { "Bot Belanda" }
 	industry_companies = { "Besi Melayu" }
 	electronic_companies = { "Cahaya Cina" }
+	intelligence_agencies = { "Internal Security Department" }
 }
 brazilian = {
 	female_names = { Aldara Alduara Aldonça Aldonza Beatriz Beatrice Berengária Berengaria Branca Blanche
@@ -1882,6 +1997,7 @@ brazilian = {
 	naval_companies = { "Arsenal de Marinha do Rio de Janeiro" }
 	industry_companies = { "Companhia Siderúrgica Nacional" }
 	electronic_companies = { Ultra "Estrada de Ferro Central do Brasil" }
+	intelligence_agencies = { "Agência Brasileira de Inteligência" }
 }
 burmese = {
 	female_names = { "Yaza Dewi" "Atula Thiri" "Khin Myo Sit" "Khin Myat Hset" "Khin Ma Lat" }
@@ -1892,6 +2008,7 @@ burmese = {
 	naval_companies = { "Daat hk Yalhaay" }
 	industry_companies = { "M Layysan" }
 	electronic_companies = { "Tarote Aalainn" }
+	intelligence_agencies = { "MI-Myanmar" }
 }
 caddoan = {
 	female_names = { Zacado Tstakurriwax Tstaka Tstarahuxtu Tsaktahiraas Tskusaski Tstaruri'u Tstapittarius }
@@ -1912,6 +2029,7 @@ caribeno = {
 	industry_companies = { "Grupo Estrella" }
 	electronic_companies = { Handxom Sûrtab }
 	car_companies = { Coche-Santo-Domingo }
+	intelligence_agencies = { "DNI" }
 }
 carribean = {
 	female_names = { Andrea Aniana Florinda Josefina Julia "María Teresa" Mechi Minerva Nuria Patria Rita Salomé }
@@ -1932,6 +2050,7 @@ cat = {
 	industry_companies = { "Garfield's Legacy" }
 	electronic_companies = { "Hair & Counter-Hair" }
 	car_companies = { Purrmobile }
+	intelligence_agencies = { "MIAO" }
 }
 catalan = {
 	female_names = { Àgata Àgueda Aina Anna Antònia Caterina Cecília Cristina Dolors Francesca Genoveva Isabel Joana Justina Laia  Montserrat Núria Octàvia Prudència Roberta Rodolfa }
@@ -1966,6 +2085,7 @@ central_american = {
 	industry_companies = { "Chimeneas Humeantes" }
 	electronic_companies = { "Corredor de los Dioses" }
 	car_companies = { Coches-Panamá }
+	intelligence_agencies = { "CSPDN" }
 }
 chacoan = {
 	female_names = { Suyai Yaima Collipal Curipan Cuyen Calfuray Cayfutray Ilchahueque Ipi Kuyen Lefitray Leflay Llanquipan 
@@ -2059,6 +2179,7 @@ uzbek = {
 	naval_companies = { "Buyuk Tersanesi" }
 	weapon_companies = { "Rossiya Chelik" }
 	aircraft_companies = { "Silk Havo Liniyalari" }
+	intelligence_agencies = { "Davlat Xavfsizlik Xizmati" }
 }
 kazak = {
 	female_names = { Aiday Aiman Aina Aliya Anar Anara Anargul Aruzhan Ayaulym Ayna Aynur Bibigul Gulnar Gulnara Gulnaz Inkar Inzhu Madina Saltanat Sezim Zhuldyz }
@@ -2072,6 +2193,7 @@ kazak = {
 	naval_companies = { "Ulı Teperistan" }
 	weapon_companies = { "Reseylik Bolat" }
 	aircraft_companies = { "Jibek Äwe Jelileri" }
+	intelligence_agencies = { "QRUQK" }
 }
 kirgiz = {
 	female_names = { Adilet Adylet Aidana Aijan Altynai Altynay Anara Assel Ayday Bakyt Bermet Bubusara Burul Cholpon Damira Dinara Elmira Elzada Erkingul Gulayim Gulara Gulmira Gulnara Gulzada Gulzura Jamilya Jyrgal Nurlan Okeana Tazagul
@@ -2085,6 +2207,7 @@ kirgiz = {
 	naval_companies = { "Uluu Keme" }
 	weapon_companies = { "Rossiya Menen Kaptalgan bolot" }
 	aircraft_companies = { "Jibek Airlines" }
+	intelligence_agencies = { "UKMK" }
 }
 tajik = {
 	female_names = { Sabina Leyla Ramilya Ruxana Selcen Ýlayda Nazrienne Kyu Gultakin }
@@ -2097,6 +2220,7 @@ tajik = {
 	naval_companies = { "Bunjodi Buzurg" }
 	weapon_companies = { "Şaʙakai Rusī" }
 	aircraft_companies = { "Havopajmohoi Aʙreşim" }
+	intelligence_agencies = { "KDAM" }
 }
 turkmen = {
 	female_names = { Sabina Leyla Ramilya Ruxana Selcen Ýlayda Nazrienne Kyu Gultakin }
@@ -2110,6 +2234,7 @@ turkmen = {
 	naval_companies = { "Bunjodi Buzurg" }
 	weapon_companies = { Polat }
 	aircraft_companies = { Ýüpek }
+	intelligence_agencies = { "Türkmenistanyň Milli howpsuzlyk ministrilgi" }
 }
 tatar = {
 	female_names = { Aiday Aiman Aina Aliya Anar Anara Anargul Aruzhan Ayaulym Ayna Aynur Bibigul Gulnar Gulnara Gulnaz Inkar Inzhu Madina Saltanat Sezim Zhuldyz }
@@ -2153,6 +2278,7 @@ dummy = { #Dummy
 	naval_companies = { "No Navy" }
 	weapon_companies = { "No Weaponry" }
 	aircraft_companies = { "No Aircraft" }
+	intelligence_agencies = { "Bureau 404" }
 }
 sudreicher = {
 	female_names = { Maria Johanna }
@@ -2163,6 +2289,7 @@ sudreicher = {
 	naval_companies = { "Marine-Hof Norfolk" "Marine-Hof Brooklyn" "Elektrische Bootsgesellschaft" "Newport Nachrichten Schiffbauen" }
 	weapon_companies = { "Frühlingsfeld Rüstkammer" "Phord Motorunternehmen" "Rockinsel Arsenal" }
 	aircraft_companies = { "Australianische Luftfahrt" Glocke "Sperrenbeachtung" "Flugzeugfirma Douglas" Boeing "Konsolidierte Flugzeuge" Grumman }
+	intelligence_agencies = { "Schwarze Sonne" }
 }
 schwarzreicher = {
 	female_names = { Maria Johanna }
@@ -2173,6 +2300,7 @@ schwarzreicher = {
 	naval_companies = { "Marine-Hof Norfolk" "Marine-Hof Brooklyn" "Elektrische Bootsgesellschaft" "Newport Nachrichten Schiffbauen" }
 	weapon_companies = { "Frühlingsfeld Rüstkammer" "Phord Motorunternehmen" "Rockinsel Arsenal" }
 	aircraft_companies = { "Afrikanische Luftfahrt" Glocke "Sperrenbeachtung" "Flugzeugfirma Douglas" Boeing "Konsolidierte Flugzeuge" Grumman }
+	intelligence_agencies = { "Erwin-Rommel-Kaisersbüro" }
 }
 
 nieuwereld = {
@@ -2204,6 +2332,7 @@ swiss = {
 	electronic_companies = { Siemens }
 	naval_companies = { Germaniawerft "Blohm & Voss" }
 	aircraft_companies = { Messerschmitt Junkers "Focke Wulf" Heinkel Dornier }
+	intelligence_agencies = { "MND" }
 }
 
 vinlander = {
@@ -2215,6 +2344,7 @@ vinlander = {
 	naval_companies = { "Horten Naval Yard" }
 	weapon_companies = { "Kongsberg Våpenfabrikk" "Raufoss Ammunisjonsfabrikker" "Hønefoss Karosserifabrikk" }
 	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
+	intelligence_agencies = { "Secret Danes" }
 }
 sydlig = {
 	female_names = { Trine Kajsa }
@@ -2245,6 +2375,7 @@ irish = {
 	naval_companies = { "An Longchlós Pale" }
 	weapon_companies = { "Cruach Sasanaigh" }
 	aircraft_companies = { "Ag Eitilt" }
+	intelligence_agencies = { "G2" }
 }
 scottish = {
 	female_names = { Anne Mary }
@@ -2255,6 +2386,7 @@ scottish = {
 	naval_companies = { "Yarrow Shipbuilders" "Harland & Wolff" "Cammell Laird" "John Brown & Company" }
 	weapon_companies = { "RSAF Enfield" Vauxhall "Royal Arsenal" }
 	aircraft_companies = { Supermarine "Hawker Aircraft" "De Havilland" Avro "Fairey Aviation" }
+	intelligence_agencies = { "Scotland Yard" }
 }
 pictish = {
 	female_names = { Saraid Órfhlaith Fedelma }
@@ -2305,6 +2437,7 @@ brithenig = {
 	naval_companies = { "Iard Longio Londinium" }
 	weapon_companies = { "Dur Saxoniaid" }
 	aircraft_companies = { "Peiriannau Hedfan" }
+	intelligence_agencies = { "Legio Ignota Britannica" }
 }
 gaul = {
 	female_names = { Elain }
@@ -2315,6 +2448,7 @@ gaul = {
 	naval_companies = { "Iard Longio Lutetia" }
 	weapon_companies = { "Dur Saxoniaid" }
 	aircraft_companies = { "Peiriannau Hedfan" }
+	intelligence_agencies = { "Legio Ignota Gallica" }
 }
 laessin = {
 	female_names = { Elain }
@@ -2325,6 +2459,7 @@ laessin = {
 	naval_companies = { "Iard Longio Vindobona" }
 	weapon_companies = { "Dur Saxoniaid" }
 	aircraft_companies = { "Peiriannau Hedfan" }
+	intelligence_agencies = { "Legio Ignota Norica" }
 }
 galician = {
 	female_names = { Juana Catalina Leonor Blanca }
@@ -2395,6 +2530,7 @@ aromanian = {
 	naval_companies = { "Thessaloniki Shipyard" "Coastal Defense Ships" "Braila Shipyards" }
 	weapon_companies = { "Vauxhall Romania" "Atelierele Ford" "Nicolae Malaxa" "Cugir Small Arms" "Resita Works" "Opel Abt. Rumänien" }
 	aircraft_companies = { IAR ICAR SET }
+	intelligence_agencies = { "Serviciul Special de Informatii" }
 }
 lumenoua = {
 	female_names = { Andrea }
@@ -2498,6 +2634,7 @@ sephardic = {
 	naval_companies = { "Jonas Toyve" }
 	industry_companies = { "Ayzn aun Shtol" }
 	electronic_companies = { "Bloy Leyts" }
+	intelligence_agencies = { "Aman" }
 }
 maghreb_arabic = {
 	female_names = { Nineveh Deena Martha Arbella }
@@ -2508,6 +2645,7 @@ maghreb_arabic = {
 	naval_companies = { Qdz }
 	weapon_companies = { 'GRT }
 	aircraft_companies = { ŠMM }
+	intelligence_agencies = { "Sychaeus" }
 }
 yenidun = {
 	female_names = { Çiçek Çilen Çiltanesi Özgul Özlem Akgul }
@@ -2556,6 +2694,7 @@ maghrebi = {
 	naval_companies = { "Al-Zawariq al-Faransia" }
 	industry_companies = { "al-Hadid al-Earabiu" }
 	electronic_companies = { "Daw Yahudiun" }
+	intelligence_agencies = { "BCIJ" }
 }
 misri = {
 	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand 
@@ -2574,6 +2713,7 @@ misri = {
 	naval_companies = { "Al-Zawariq al-Faransia" }
 	industry_companies = { "al-Hadid al-Earabiu" }
 	electronic_companies = { "Daw Yahudiun" }
+	intelligence_agencies = { "OMIR" }
 }
 mashriqi = {
 	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand 
@@ -2592,6 +2732,7 @@ mashriqi = {
 	naval_companies = { "Al-Zawariq al-Faransia" }
 	industry_companies = { "al-Hadid al-Earabiu" }
 	electronic_companies = { "Daw Yahudiun" }
+	intelligence_agencies = { "INIS" }
 }
 ealimi = {
 	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand 
@@ -2696,6 +2837,7 @@ pashtun = {
 	naval_companies = { "D Blwčy Špaith" }
 	weapon_companies = { "Fārs Fwlād" }
 	aircraft_companies = { "Źān Wžwnky Hwāajy Šrktwnh" }
+	intelligence_agencies = { "NDS" }
 }
 hazara = {
 	female_names = { Kejê Keser Kevok Kevî Kewser Kezîzer Koçer Leylê Leymîn Lezîn Lolav Lorkê Lorî Lorîcan Lorîn }
@@ -2706,6 +2848,7 @@ hazara = {
 	naval_companies = { "D Blwčy Špaith" }
 	weapon_companies = { "Fārs Fwlād" }
 	aircraft_companies = { "Źān Wžwnky Hwāajy Šrktwnh" }
+	intelligence_agencies = { "Taliban" }
 }
 kurdish = {
 	female_names = { Šîwen Atiya }
@@ -2716,6 +2859,7 @@ kurdish = {
 	naval_companies = { "Ecêb Gemîxane" }
 	weapon_companies = { "Farsî Pola" }
 	aircraft_companies = { "Tirkî Xetên Hewayê" }
+	intelligence_agencies = { "Asayish" }
 }
 gypsy = {
 	female_names = { Vadoma Roma Lavinia Kezia }
@@ -2726,6 +2870,7 @@ gypsy = {
 	naval_companies = { Bero }
 	weapon_companies = { Piko }
 	aircraft_companies = { Chíriko }
+	intelligence_agencies = { "The Fortune-Tellers" }
 }
 mongol = {
 	female_names = { Temülen Börte Mandukhai Samar Zaufishan Mulan Aigiarn Borte Chabi Conchaka Doquez-khatum Goland Ho'elun }
@@ -2736,6 +2881,7 @@ mongol = {
 	naval_companies = { "Aguu Usan Ongotsny Gazar" }
 	weapon_companies = { "Orosyn Gan" }
 	aircraft_companies = { "Nisdeg Ordon" }
+	intelligence_agencies = { "GIA" }
 }
 janalem = {
 	female_names = { Temülen Börte Mandukhai Samar Zaufishan Mulan Aigiarn Borte Chabi Conchaka Doquez-khatum Goland Ho'elun }
@@ -2819,6 +2965,7 @@ vietnamese = {
 	naval_companies = { "Nhà Máy Đóng Tàu Lớn" }
 	weapon_companies = { "Thép Trung Quốc" }
 	aircraft_companies = { "Tàu Bay" }
+	intelligence_agencies = { "TC2" }
 }
 thegioimoi = {
 	female_names = { "Kim Anh" "Thuy Tram" "Bich Ngoc" "Phuong Nga" "Thanh Thao" }
@@ -2859,6 +3006,7 @@ khmer = {
 	naval_companies = { "Kanleng Phlit Neavea Da Aschary" }
 	weapon_companies = { "Dektheb Chen" }
 	aircraft_companies = { "Neavea Haohhaer" }
+	intelligence_agencies = { "FARK" }
 }
 lao = {
 	female_names = { "Châu" "Nang Keo Phimpha" "Manora" "Souphutta" "Anousa" "Nokasat" }
@@ -2879,6 +3027,7 @@ thai = {
 	naval_companies = { "Xū̀ T̀x Reụ̄x Thī̀ Dī" }
 	weapon_companies = { "H̄el̆k Cīn" }
 	aircraft_companies = { "Reụ̄x Brrthuk Kherụ̄̀xngbin" }
+	intelligence_agencies = { "National Intelligence Agency" }
 }
 malay = {
 	female_names = { Azura Merenui Metetini Miri Moea Moeata Moerani Mohea Nanihi Nu’utea Orama Poe Pear Poehina Poenui Poerava Puaiti }
@@ -2889,6 +3038,7 @@ malay = {
 	naval_companies = { "Galangan Kapal Yang Hebat" }
 	weapon_companies = { "Keluli Inggeris" }
 	aircraft_companies = { "Kapal Terbang" }
+	intelligence_agencies = { "Kor Risik DiRaja" }
 }
 filipino = {
 	female_names = { "Anela" Merenui Metetini Miri Moea Moeata Moerani Mohea Nanihi Nu’utea Orama Poe Pear Poehina Poenui Poerava Puaiti }
@@ -2899,6 +3049,7 @@ filipino = {
 	naval_companies = { "Dakilang Barkong Pandigma" }
 	weapon_companies = { "Ingles Bakal" }
 	aircraft_companies = { "Naglalayag na Barko" }
+	intelligence_agencies = { "NICA" }
 }
 
 moluccan = {
@@ -2980,6 +3131,7 @@ korean = {
 	naval_companies = { "Nambu Hang-gu" }
 	weapon_companies = { "Peulangseu Gangcheol" }
 	aircraft_companies = { "Lokes Gonghag" }
+	intelligence_agencies = { "Supreme Prosecutors' Office" }
 }
 nouvellien = {
 	female_names = { Marie Jeanne Françoise }
@@ -2990,6 +3142,7 @@ nouvellien = {
 	naval_companies = { "Kingston Shipbuilding Co" "Halifax Shipyard Limited" }
 	weapon_companies = { "John Inglis and Company" "Small Arms Limited" }
 	aircraft_companies = { "de Havilland Louisiana" "Illinois Car & Foundry" "Fairchild Aircraft Ltd." "Handley Page" }
+	intelligence_agencies = { "Mange-Baguettes" }
 }
 south_andean = {
 	female_names = { Amaranta Úrsula Rebeca Remedios Sofía }
@@ -3000,6 +3153,7 @@ south_andean = {
 	naval_companies = { "Invincible Armada" }
 	weapon_companies = { "Pizarro & Loyola" }
 	aircraft_companies = { "Hermanos Wright" }
+	intelligence_agencies = { "SEBIN" }
 }
 platinean = {
 	female_names = { Amaranta Úrsula Rebeca Remedios Sofía }
@@ -3010,6 +3164,7 @@ platinean = {
 	naval_companies = { "Invincible Armada" }
 	weapon_companies = { "Pizarro & Loyola" }
 	aircraft_companies = { "Hermanos Wright" }
+	intelligence_agencies = { "Secretaría de Inteligencia" }
 }
 sureno = {
 	female_names = { Amaranta Úrsula Rebeca Remedios Sofía }
@@ -3040,6 +3195,7 @@ polar_bears = {
 	industry_companies = { "Sir Bearington Legacy" }
 	electronic_companies = { "White Thunderstorm" }
 	car_companies = { "Fur Metal" }
+	intelligence_agencies = { "Sir Bearington's Office" }
 }
 horse = {
 	female_names = { Glitterhoof Kasztanka "Sergeant Reckless" Buttermilk "Lady Wonder" Silhouette Beauty Lightning Flash Alfonso Artax Blackjack Boxer Ferd Furia Flame "The Houyhnhnm" Hwin Merrylegs }
@@ -3050,6 +3206,7 @@ horse = {
 	industry_companies = { Chancellor's }
 	electronic_companies = { "Neigh Energy" }
 	car_companies = { Horsepower }
+	intelligence_agencies = { "Foreign Meat Office" }
 }
 outremer = {
 	female_names = { Anne Marie }
@@ -3060,6 +3217,7 @@ outremer = {
 	naval_companies = { FCM }
 	weapon_companies = { SOMUA MAS Schneider }
 	aircraft_companies = { Morane-Saulnier Bloch Amiot Levasseur }
+	intelligence_agencies = { "Pauperes Commilitones Christi" }
 }
 dog = {
 	female_names = { Carmen Eleanor Dolly Eve Fergie Golda Guinevere Indira Minerva Octavia Psyche Pluck Buckler Spigot Lance Lurcher Watch Keeper Brigade Fencer Butcher Blazer Prowess Craftsman }
@@ -3070,6 +3228,7 @@ dog = {
 	industry_companies = { Hundfactory }
 	electronic_companies = { "Tail Chasers" }
 	car_companies = { NO-VET }
+	intelligence_agencies = { "WOOF" }
 }
 duck = {
 	female_names = { Daisy Irynn Neilly Aves Winghelmina Beaktrice Molly Webbygail Bentina Goldie Jemima Cake Blunder Duck Quackers Pippi Face Grape Anaheim Feathers Kajsa Donna Hortensia Chickadee }
@@ -3080,6 +3239,7 @@ duck = {
 	industry_companies = { "Peking Inc." }
 	electronic_companies = { "The Beak" }
 	car_companies = { Duck-Duck }
+	intelligence_agencies = { "Beagle Boys" }
 }
 dragon = {
 	female_names = { Tiomat Tintaglia Katla Drakaina Gegheiss Jesasdess Semoth Heirel Taynnelth Naga Tiki Nagi Myrrh Ninian Nah Nyx Teethless Smokey Bahamut Deathwing Quicksilver }
@@ -3090,6 +3250,7 @@ dragon = {
 	industry_companies = { "Treasure Guards" }
 	electronic_companies = { Thunderstorm }
 	car_companies = { "Metal Factories" }
+	intelligence_agencies = { "Skyrim" }
 }
 hedgehog = {
 	female_names = { Erina Ekidney Leerix Algira Hemy Collie Daura Para Ventria Shaquilla Prickquille Splinthia Nimue Amy Nix Spike Pincushion Hedgehog Grumpy Pokey Crisp Pinecone Sam Wiggles }
@@ -3100,6 +3261,7 @@ hedgehog = {
 	industry_companies = { "Pointy Labourers" }
 	electronic_companies = { "Blue Inc." }
 	car_companies = { "Sonic Inc." }
+	intelligence_agencies = { "Gotta Go Fast" }
 }
 elephant = {
 	female_names = { Doot Trumpo Snoot Pyyrhus Kandula Jumbo Elephant Setu Dhriti Bhaanu Bhadra Zain Barbar Pompadour Booper Dombo Celestial Hansken Ruby Miraan Moksha Dhruti }
@@ -3110,6 +3272,7 @@ elephant = {
 	industry_companies = { "Trumpeting Inc." }
 	electronic_companies = { "Ivory Inc." }
 	car_companies = { Elephantery }
+	intelligence_agencies = { "In A China's Shop" }
 }
 undead = {
 	female_names = { General Doctor Leader Beknown Bespectacled Buried Befeared "Human-eater" }
@@ -3120,6 +3283,7 @@ undead = {
 	naval_companies = { "Charon Inc." }
 	weapon_companies = { "Lucifer & co." }
 	aircraft_companies = { "Hag & Hag" }
+	intelligence_agencies = { "Demonic Possession Bureau" }
 }
 alien = {
 	female_names = { Xirgliss Cathiox Zir Zarax Rekaxir Cax Zidlaxi Cabroxi Xidlor Zeraxim Moz Zoz Xaz Zax Zacadliss Cothaxir Xoblagiss Rezicax Morezac Midloxec }
@@ -3130,6 +3294,7 @@ alien = {
 	naval_companies = { FTL-Sky }
 	weapon_companies = { "Synthetic Dawn" }
 	aircraft_companies = { Stellaris }
+	intelligence_agencies = { "Infiltration Sub-Office for Sol-III" }
 }
 afro_carpathian = {
 	female_names = { Ágnes Agnes Éva Eva Adelaida Adelaide Agáta Agatha Amália Amelia Angyalka Anikó Aranka }
@@ -3622,6 +3787,7 @@ somali = {
 	naval_companies = { "Lapislazuli Shipyard" }
 	industry_companies = { "Hard-Work & Work-Hard" }
 	electronic_companies = { "Thunder Factory" }
+	intelligence_agencies = { "NISA" }
 }
 songhai = {
 	female_names = { "Amna" "Ghadir" "Latifa" "Maha" "Ranya" Ibtisam Isra Karima Kera Khadija Layla Malika Mariam Maria Munya }
@@ -3652,6 +3818,7 @@ sudanese = {
 	naval_companies = { "Lapislazuli Shipyard" }
 	industry_companies = { "Hard-Work & Work-Hard" }
 	electronic_companies = { "Thunder Factory" }
+	intelligence_agencies = { "General Intelligence Office" }
 }
 sukuma = {
 	female_names = { Grace Glory Neema }
@@ -3672,6 +3839,7 @@ swahili = {
 	naval_companies = { "Lapislazuli Shipyard" }
 	industry_companies = { "Hard-Work & Work-Hard" }
 	electronic_companies = { "Thunder Factory" }
+	intelligence_agencies = { "DMI-Kenya" }
 }
 teda = {
 	female_names = { Teda }
@@ -4072,6 +4240,7 @@ frankish = {
 	naval_companies = { FCM }
 	weapon_companies = { SOMUA MAS Schneider }
 	aircraft_companies = { Morane-Saulnier Bloch Amiot Levasseur }
+	intelligence_agencies = { "Sorcières de Charles" }
 }
 suebi = {
 	female_names = { Juana Catalina Leonor Blanca }
@@ -4137,6 +4306,7 @@ dog_culture = {
 	naval_companies = { "Operation Seawoof" }
 	industry_companies = { "Human Works" }
 	electronic_companies = { "Thunderwoof" }
+	intelligence_agencies = { "WOOF" }
 }
 dragon_culture = {
 	female_names = { Tiomat Tintaglia Katla Drakaina Gegheiss Jesasdess Semoth Heirel Taynnelth Naga Tiki Nagi Myrrh Ninian Nah Nyx Teethless Smokey Bahamut Deathwing Quicksilver
@@ -4148,6 +4318,7 @@ dragon_culture = {
 	naval_companies = { "Nessie & Hatchlings" }
 	industry_companies = { "Pile of Gold Inc." }
 	electronic_companies = { "Thunderstorm Inc." }
+	intelligence_agencies = { "Skyrim" }
 }
 duck_culture = {
 	female_names = { Daisy Irynn Neilly Aves Winghelmina Beaktrice Molly Webbygail Bentina Goldie Jemima Cake Blunder Duck Quackers Pippi Face Grape Anaheim Feathers Kajsa Donna Hortensia Chickadee
@@ -4159,6 +4330,7 @@ duck_culture = {
 	naval_companies = { Fiss }
 	industry_companies = { Strawform }
 	electronic_companies = { Grorlip }
+	intelligence_agencies = { "Beagle Boys" }
 }
 elephant_culture = {
 	female_names = { Doot Trumpo Snoot Pyyrhus Kandula Jumbo Elephant Setu Dhriti Bhaanu Bhadra Zain Barbar Pompadour Booper Dombo Celestial Hansken Ruby Miraan Moksha Dhruti
@@ -4170,6 +4342,7 @@ elephant_culture = {
 	naval_companies = { "10 Elephants Are Lighter Than 11 Archers" }
 	industry_companies = { "Dumbo's Circus" }
 	electronic_companies = { "Quake Energies" }
+	intelligence_agencies = { "In A China's Shop" }
 }
 hedgehog_culture = {
 	female_names = { Erina Ekidney Leerix Algira Hemy Collie Daura Para Ventria Shaquilla Prickquille Splinthia Nimue Amy Nix Spike Pincushion Hedgehog Grumpy Pokey Crisp Pinecone Sam Wiggles
@@ -4181,6 +4354,7 @@ hedgehog_culture = {
 	naval_companies = { "Water Spades GmbH" }
 	industry_companies = { "Chaos Emeralds" }
 	electronic_companies = { "House of Ivo Robotnik" }
+	intelligence_agencies = { "Gotta Go Silent" }
 }
 inuit = {
 	female_names = { Ahnah Akna Chena Corazon Desna Kaskae Kaya Kirima Koko Malina Adlartok Ahnah Akiak Anana Anernerk Annakpok Aput 
@@ -4263,6 +4437,7 @@ latin = {
 	naval_companies = { "Auxilio Neptuni" }
 	weapon_companies = { "Campus Martius" }
 	aircraft_companies = { "Ut Mercurio Talares" }
+	intelligence_agencies = { "Legio Ignota" }
 }
 afer = {
 	female_names = { Acilia Aebutia Aelia Aemilia Albia Amatia Annaea Anneia Annia Antonia Arria
@@ -4303,6 +4478,7 @@ afer = {
 	naval_companies = { "Auxilio Neptuni" }
 	weapon_companies = { "Campus Martius" }
 	aircraft_companies = { "Ut Mercurio Talares" }
+	intelligence_agencies = { "Legio Ignota Atra" }
 }
 australus = {
 	female_names = { Acilia Aebutia Aelia Aemilia Albia Amatia Annaea Anneia Annia Antonia Arria
@@ -4343,6 +4519,7 @@ australus = {
 	naval_companies = { "Auxilio Neptuni" }
 	weapon_companies = { "Campus Martius" }
 	aircraft_companies = { "Ut Mercurio Talares" }
+	intelligence_agencies = { "Legio Ignota Marina" }
 }
 bazramani = {
 	female_names = { Aghhelida Yavuyida Yalida Yamelida Avida Amayida Anyaed Anyeida Anyida Andanida Arriah
@@ -4365,6 +4542,7 @@ bazramani = {
 	naval_companies = { "Auxilio Neptuni" }
 	weapon_companies = { "Campus Martius" }
 	aircraft_companies = { "Ut Mercurio Talares" }
+	intelligence_agencies = { "Legio Ignota Persica" }
 }
 foederatus = {
 	female_names = { Acilia Aebutia Aelia Aemilia Albia Amatia Annaea Anneia Annia Antonia Arria
@@ -4405,6 +4583,7 @@ foederatus = {
 	naval_companies = { "Auxilio Neptuni" }
 	weapon_companies = { "Campus Martius" }
 	aircraft_companies = { "Ut Mercurio Talares" }
+	intelligence_agencies = { "Legio Ignota Hesperia" }
 }
 wenedyk = {
 	female_names = { Akilëva Ajbušcëva "Al'jaëva" Ajajlëva Albëva Amašcëva Annaëva Anneëva Annëva Antuëva Arrëva
@@ -4445,6 +4624,7 @@ wenedyk = {
 	naval_companies = { "Auxilio Neptuni" }
 	weapon_companies = { "Campus Martius" }
 	aircraft_companies = { "Ut Mercurio Talares" }
+	intelligence_agencies = { "Legio Ignota Venedica" }
 }
 xliponian = {
 	female_names = { Agilora Aibudora Ailora Aimilora Albora Amadora Annaora Anneora Annora Andonora Arrora
@@ -4467,6 +4647,7 @@ xliponian = {
 	naval_companies = { "Auxilio Neptuni" }
 	weapon_companies = { "Campus Martius" }
 	aircraft_companies = { "Ut Mercurio Talares" }
+	intelligence_agencies = { "Legio Ignota Achæa" }
 }
 coptic = {
 	female_names = { Cleopatra Anthelia Demiana Ese Fibruniyah Kattrin Lucra Ourt Tanoute Nephertiti }
