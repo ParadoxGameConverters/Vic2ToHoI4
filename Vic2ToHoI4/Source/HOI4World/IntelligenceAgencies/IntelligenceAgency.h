@@ -17,6 +17,7 @@ class IntelligenceAgency
 {
   public:
 	explicit IntelligenceAgency(const Country& country, Names& names, IntelligenceAgencyLogos& intelligenceAgencyLogos);
+	explicit IntelligenceAgency(std::string name, std::string logo): logo(std::move(logo)), name(std::move(name)) {}
 
 	[[nodiscard]] const auto& getCountry() const { return countryTag; }
 	[[nodiscard]] const auto& getLogo() const { return logo; }
