@@ -1,3 +1,4 @@
+build/
 Release/
 ReleaseIntermediate/
 Release-Linux/
@@ -8,6 +9,7 @@ AnalysisIntermediate
 testResults
 *testResults*
 changelog.txt
+*.bz2
 *.opensdf
 *.opendb
 *.sdf
