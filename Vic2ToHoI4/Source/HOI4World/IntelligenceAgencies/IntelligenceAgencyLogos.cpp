@@ -29,9 +29,7 @@ HoI4::IntelligenceAgencyLogos::Factory::Factory()
 
 std::unique_ptr<HoI4::IntelligenceAgencyLogos> HoI4::IntelligenceAgencyLogos::Factory::getIntelligenceAgencyLogos()
 {
-	std::stringstream input;
-	input << "link = { culture = north_german logo = GFX_intelligence_agency_logo_ger}";
-	parseStream(input);
+	parseFile("DataFiles/IntelligenceAgencyLogos.txt");
 
 	return std::make_unique<IntelligenceAgencyLogos>(std::map<std::string, std::string>(cultureToLogoMap));
 }

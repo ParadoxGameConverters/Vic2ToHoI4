@@ -1202,5 +1202,8 @@
     <CopyFileToFolders Include="TestFiles\definition.csv">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\IntelligenceAgencyLogos.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

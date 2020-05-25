@@ -415,6 +415,11 @@
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\IntelligenceAgencyLogos.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/DataFiles</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -22868,6 +22868,11 @@
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\log.txt" />
   </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\IntelligenceAgencyLogos.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)\DataFiles</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />
 </Project>
