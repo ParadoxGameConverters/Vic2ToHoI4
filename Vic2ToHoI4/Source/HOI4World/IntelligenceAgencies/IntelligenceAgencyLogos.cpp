@@ -10,8 +10,7 @@ std::string HoI4::IntelligenceAgencyLogos::getLogo(const std::string& culture)
 		return logo->second;
 	}
 
-	const std::uniform_int_distribution<int> distribution{1, 8};
-	const auto randomValue = static_cast<int>(distribution(generator));
+	const auto randomValue = static_cast<int>(std::uniform_int_distribution<int>{1, 8}(generator));
 	return "GFX_intelligence_agency_logo_generic_" + std::to_string(randomValue);
 }
 
