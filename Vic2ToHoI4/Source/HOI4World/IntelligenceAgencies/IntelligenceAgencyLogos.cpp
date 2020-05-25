@@ -1,7 +1,5 @@
 #include "IntelligenceAgencyLogos.h"
 #include "IntelligenceAgencyLogoMapping.h"
-#include <random>
-#include <sstream>
 
 
 
@@ -13,7 +11,7 @@ std::string HoI4::IntelligenceAgencyLogos::getLogo(const std::string& culture)
 	}
 
 	const std::uniform_int_distribution<int> generator(1, 8);
-	return "GFX_intelligence_agency_logo_generic_" + std::to_string(generator(rng));
+	return "GFX_intelligence_agency_logo_generic_" + std::to_string(static_cast<int>(generator(rng)));
 }
 
 
