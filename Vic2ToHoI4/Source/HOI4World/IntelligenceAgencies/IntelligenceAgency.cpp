@@ -11,11 +11,11 @@ HoI4::IntelligenceAgency::IntelligenceAgency(const Country& country,
 	const auto possibleName = allNames.takeIntelligenceAgencyName(country.getSourceCountry().getPrimaryCulture());
 	if (possibleName)
 	{
-		names.push_back(*possibleName);
+		name = *possibleName;
 	}
 	else
 	{
-		names.push_back("Intelligence Agency");
+		name = "Intelligence Agency";
 	}
 	logo = intelligenceAgencyLogos.getLogo(country.getSourceCountry().getPrimaryCulture());
 }
