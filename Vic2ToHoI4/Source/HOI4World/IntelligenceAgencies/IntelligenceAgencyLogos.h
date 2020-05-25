@@ -3,6 +3,7 @@
 
 
 
+#include "Parser.h"
 #include <map>
 #include <string>
 
@@ -15,7 +16,7 @@ class IntelligenceAgencyLogos
 {
   public:
 	class Factory;
-	IntelligenceAgencyLogos(std::map<std::string, std::string>&& cultureToLogoMap): cultureToLogoMap(cultureToLogoMap) {}
+	IntelligenceAgencyLogos(std::map<std::string, std::string> cultureToLogoMap): cultureToLogoMap(std::move(cultureToLogoMap)) {}
 	std::string getLogo(const std::string& culture);
 
   private:
@@ -23,10 +24,14 @@ class IntelligenceAgencyLogos
 };
 
 
-class IntelligenceAgencyLogos::Factory
+class IntelligenceAgencyLogos::Factory: commonItems::parser
 {
   public:
-	static IntelligenceAgencyLogos getIntelligenceAgencyLogos();
+	IntelligenceAgencyLogos::Factory();
+	std::unique_ptr<IntelligenceAgencyLogos> getIntelligenceAgencyLogos();
+
+  private:
+	std::map<std::string, std::string> cultureToLogoMap;
 };
 
 } // namespace HoI4

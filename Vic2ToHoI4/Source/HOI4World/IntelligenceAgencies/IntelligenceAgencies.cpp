@@ -9,10 +9,11 @@ std::unique_ptr<HoI4::IntelligenceAgencies> HoI4::IntelligenceAgencies::Factory:
 {
 	std::vector<IntelligenceAgency> theAgencies;
 
-	IntelligenceAgencyLogos intelligenceAgencyLogos = IntelligenceAgencyLogos::Factory::getIntelligenceAgencyLogos();
+	const std::unique_ptr<IntelligenceAgencyLogos> intelligenceAgencyLogos =
+		 IntelligenceAgencyLogos::Factory{}.getIntelligenceAgencyLogos();
 	for (const auto& country: countries)
 	{
-		theAgencies.emplace_back(IntelligenceAgency{*country.second, names, intelligenceAgencyLogos});
+		theAgencies.emplace_back(IntelligenceAgency{*country.second, names, *intelligenceAgencyLogos});
 	}
 
 	return std::make_unique<IntelligenceAgencies>(std::move(theAgencies));

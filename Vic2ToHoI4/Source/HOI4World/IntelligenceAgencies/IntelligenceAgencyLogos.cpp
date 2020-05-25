@@ -1,4 +1,6 @@
 #include "IntelligenceAgencyLogos.h"
+#include "IntelligenceAgencyLogoMapping.h"
+#include <sstream>
 
 
 
@@ -13,10 +15,23 @@ std::string HoI4::IntelligenceAgencyLogos::getLogo(const std::string& culture)
 }
 
 
-
-HoI4::IntelligenceAgencyLogos HoI4::IntelligenceAgencyLogos::Factory::getIntelligenceAgencyLogos()
+HoI4::IntelligenceAgencyLogos::Factory::Factory()
 {
-	
-	return IntelligenceAgencyLogos{
-		 std::map<std::string, std::string>({{"north_german", "GFX_intelligence_agency_logo_ger"}})};
+	registerKeyword("link", [this](const std::string& unused, std::istream& theStream) {
+		IntelligenceAgencyLogoMapping mapping(theStream);
+		for (const auto& culture: mapping.takeCultures())
+		{
+			cultureToLogoMap[culture] = mapping.takeLogo();
+		}
+	});
+}
+
+
+std::unique_ptr<HoI4::IntelligenceAgencyLogos> HoI4::IntelligenceAgencyLogos::Factory::getIntelligenceAgencyLogos()
+{
+	std::stringstream input;
+	input << "link = { culture = north_german logo = GFX_intelligence_agency_logo_ger}";
+	parseStream(input);
+
+	return std::make_unique<IntelligenceAgencyLogos>(std::map<std::string, std::string>(cultureToLogoMap));
 }

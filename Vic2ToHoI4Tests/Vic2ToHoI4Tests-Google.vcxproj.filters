@@ -932,6 +932,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\IntelligenceAgencies</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\IntelligenceAgencies\IntelligenceAgencyLogoMappingTests.cpp">
+      <Filter>HoI4WorldTests\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\IntelligenceAgencies\IntelligenceAgencyLogosTests.cpp">
+      <Filter>HoI4WorldTests\IntelligenceAgencies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1131,6 +1140,9 @@
     </Filter>
     <Filter Include="HoI4WorldTests\Names">
       <UniqueIdentifier>{87629954-89cf-45a0-90d5-91b4037ba99a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\IntelligenceAgencies">
+      <UniqueIdentifier>{fa528b03-a59e-48a5-82b8-c7cbb22779e2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
