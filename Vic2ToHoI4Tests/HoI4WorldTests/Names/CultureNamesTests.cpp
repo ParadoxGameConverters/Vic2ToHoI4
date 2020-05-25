@@ -273,7 +273,7 @@ TEST(HoI4World_Names_CultureNamesTests, MaleNamesCanBeConvertedToUTF8)
 	std::stringstream input;
 	input << "first_names = { Géorge }";
 	HoI4::CultureNames cultureNames(input);
-	cultureNames.convertNamesToUTF8();
+	cultureNames.convertVic2NamesToUTF8();
 
 	const auto maleNames = cultureNames.takeMaleNames();
 	ASSERT_EQ(1, maleNames.size());
@@ -286,7 +286,7 @@ TEST(HoI4World_Names_CultureNamesTests, SurnamesCanBeConvertedToUTF8)
 	std::stringstream input;
 	input << "last_names = { Géorge }";
 	HoI4::CultureNames cultureNames(input);
-	cultureNames.convertNamesToUTF8();
+	cultureNames.convertVic2NamesToUTF8();
 
 	const auto surnames = cultureNames.takeSurnames();
 	ASSERT_EQ(1, surnames.size());

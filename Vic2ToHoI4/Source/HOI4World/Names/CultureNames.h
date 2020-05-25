@@ -17,7 +17,7 @@ class CultureNames: commonItems::parser
   public:
 	explicit CultureNames(std::istream& theStream);
 
-	void convertNamesToUTF8();
+	void convertVic2NamesToUTF8();
 
 	[[nodiscard]] auto takeMaleNames() { return std::move(maleNames); }
 	[[nodiscard]] auto takeSurnames() { return std::move(surnames); }

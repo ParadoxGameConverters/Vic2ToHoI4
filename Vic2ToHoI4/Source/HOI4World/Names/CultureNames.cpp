@@ -61,7 +61,7 @@ HoI4::CultureNames::CultureNames(std::istream& theStream)
 }
 
 
-void HoI4::CultureNames::convertNamesToUTF8()
+void HoI4::CultureNames::convertVic2NamesToUTF8()
 {
 	std::for_each(maleNames.begin(), maleNames.end(), [](std::string& name) {
 		name = Utils::convertWin1252ToUTF8(name);

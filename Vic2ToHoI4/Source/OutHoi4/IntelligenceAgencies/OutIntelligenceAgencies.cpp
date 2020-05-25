@@ -7,8 +7,16 @@
 
 void HoI4::outputIntelligenceAgencies(const IntelligenceAgencies& intelligenceAgencies, const std::string& outputName)
 {
-	Utils::TryCreateFolder("output/" + outputName + "/common/intelligence_agencies/");
+	if (!Utils::TryCreateFolder("output/" + outputName + "/common/intelligence_agencies/"))
+	{
+		throw std::runtime_error("Could not create output/" + outputName + "/common/intelligence_agencies/");
+	}
 	std::ofstream out("output/" + outputName + "/common/intelligence_agencies/00_intelligence_agencies.txt");
+	if (!out.is_open())
+	{
+		throw std::runtime_error(
+			 "Could not create output/" + outputName + "/common/intelligence_agencies/00_intelligence_agencies.txt");
+	}
 
 	for (const auto& intelligenceAgency: intelligenceAgencies.getIntelligenceAgencies())
 	{
