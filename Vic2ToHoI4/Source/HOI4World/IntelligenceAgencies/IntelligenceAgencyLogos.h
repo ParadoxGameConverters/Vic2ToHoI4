@@ -16,7 +16,7 @@ class IntelligenceAgencyLogos
 {
   public:
 	class Factory;
-	IntelligenceAgencyLogos(std::map<std::string, std::string> cultureToLogoMap): cultureToLogoMap(std::move(cultureToLogoMap)) {}
+	explicit IntelligenceAgencyLogos(std::map<std::string, std::string> cultureToLogoMap): cultureToLogoMap(std::move(cultureToLogoMap)) {}
 	std::string getLogo(const std::string& culture);
 
   private:

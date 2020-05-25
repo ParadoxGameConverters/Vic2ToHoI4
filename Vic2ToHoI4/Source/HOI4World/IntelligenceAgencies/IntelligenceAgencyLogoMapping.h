@@ -15,7 +15,7 @@ namespace HoI4
 class IntelligenceAgencyLogoMapping: commonItems::parser
 {
   public:
-	IntelligenceAgencyLogoMapping(std::istream& theStream);
+	explicit IntelligenceAgencyLogoMapping(std::istream& theStream);
 	
 	[[nodiscard]] auto&& takeLogo() { return std::move(logo); }
 	[[nodiscard]] auto&& takeCultures() { return std::move(cultures); }
