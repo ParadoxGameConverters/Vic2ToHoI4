@@ -11,3 +11,12 @@ std::string HoI4::IntelligenceAgencyLogos::getLogo(const std::string& culture)
 
 	return "GFX_intelligence_agency_logo_generic_1";
 }
+
+
+
+HoI4::IntelligenceAgencyLogos HoI4::IntelligenceAgencyLogos::Factory::getIntelligenceAgencyLogos()
+{
+	
+	return IntelligenceAgencyLogos{
+		 std::map<std::string, std::string>({{"north_german", "GFX_intelligence_agency_logo_ger"}})};
+}
