@@ -22,7 +22,8 @@ HoI4World_IntelligenceAgencies_IntelligenceAgencyLogosTests::
 
 TEST_F(HoI4World_IntelligenceAgencies_IntelligenceAgencyLogosTests, UnmappedCultureGetsGenericLogo)
 {
-	ASSERT_EQ("GFX_intelligence_agency_logo_generic_1", logos->getLogo("unmapped_culture"));
+	const auto logo = logos->getLogo("unmapped_culture");
+	ASSERT_EQ("GFX_intelligence_agency_logo_generic_", logo.substr(0, logo.size() - 1));
 }
 
 

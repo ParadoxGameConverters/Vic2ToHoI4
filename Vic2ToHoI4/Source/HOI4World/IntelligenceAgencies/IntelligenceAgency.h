@@ -24,7 +24,7 @@ class IntelligenceAgency
 
   private:
 	std::string countryTag;
-	std::string logo = "GFX_intelligence_agency_logo_generic_1";
+	std::string logo;
 	std::string name;
 };
 

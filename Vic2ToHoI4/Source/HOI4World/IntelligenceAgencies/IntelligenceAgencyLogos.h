@@ -6,6 +6,7 @@
 #include "Parser.h"
 #include <map>
 #include <string>
+#include <random>
 
 
 
@@ -21,6 +22,7 @@ class IntelligenceAgencyLogos
 
   private:
 	std::map<std::string, std::string> cultureToLogoMap;
+	std::mt19937 rng;
 };
 
 
