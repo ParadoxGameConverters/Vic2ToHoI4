@@ -314,9 +314,9 @@ std::optional<std::string> HoI4::Names::takeCompanyName(std::map<std::string, st
 	{
 		if (auto& companies = namesItr->second; !companies.empty())
 		{
-			const std::uniform_int_distribution<int> distribution(0, companies.size() - 1);
 			auto companiesIterator = companies.begin();
-			std::advance(companiesIterator, distribution(generator));
+			std::advance(companiesIterator,
+				 std::uniform_int_distribution<int>{0, static_cast<int>(companies.size() - 1)}(generator));
 			auto company = *companiesIterator;
 			companies.erase(companiesIterator);
 			return company;
@@ -333,9 +333,9 @@ std::optional<std::string> HoI4::Names::takeIntelligenceAgencyName(const std::st
 	{
 		if (auto& agencies = namesItr->second; !agencies.empty())
 		{
-			const std::uniform_int_distribution<int> distribution(0, agencies.size() - 1);
 			auto agenciesIterator = agencies.begin();
-			std::advance(agenciesIterator, distribution(generator));
+			std::advance(agenciesIterator,
+				 std::uniform_int_distribution<int>{0, static_cast<int>(agencies.size() - 1)}(generator));
 			auto agency = *agenciesIterator;
 			agencies.erase(agenciesIterator);
 			return agency;
