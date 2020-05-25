@@ -14,9 +14,9 @@ class HoI4World_IntelligenceAgencies_IntelligenceAgencyLogosTests: public testin
 
 
 HoI4World_IntelligenceAgencies_IntelligenceAgencyLogosTests::
-	 HoI4World_IntelligenceAgencies_IntelligenceAgencyLogosTests()
+	 HoI4World_IntelligenceAgencies_IntelligenceAgencyLogosTests():
+	 logos(HoI4::IntelligenceAgencyLogos::Factory{}.getIntelligenceAgencyLogos())
 {
-	logos = HoI4::IntelligenceAgencyLogos::Factory{}.getIntelligenceAgencyLogos();
 }
 
 
