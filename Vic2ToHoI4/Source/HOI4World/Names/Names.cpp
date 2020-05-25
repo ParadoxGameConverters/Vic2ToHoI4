@@ -128,7 +128,8 @@ void HoI4::Names::Factory::checkForNames()
 		{
 			Log(LogLevel::Warning) << "No weapon companies for " << culture;
 		}
-		if (auto names = aircraftCompanyNames.find(culture); (names == aircraftCompanyNames.end()) || names->second.empty())
+		if (auto names = aircraftCompanyNames.find(culture);
+			 (names == aircraftCompanyNames.end()) || names->second.empty())
 		{
 			Log(LogLevel::Warning) << "No aircraft companies for " << culture;
 		}
@@ -136,7 +137,8 @@ void HoI4::Names::Factory::checkForNames()
 		{
 			Log(LogLevel::Warning) << "No naval companies for " << culture;
 		}
-		if (auto names = industryCompanyNames.find(culture); (names == industryCompanyNames.end()) || names->second.empty())
+		if (auto names = industryCompanyNames.find(culture);
+			 (names == industryCompanyNames.end()) || names->second.empty())
 		{
 			Log(LogLevel::Warning) << "No industry companies for " << culture;
 		}
@@ -213,8 +215,7 @@ std::optional<std::string> HoI4::Names::getMaleName(const std::string& culture)
 {
 	if (auto names = getMaleNames(culture); names && !names->empty())
 	{
-		const std::uniform_int_distribution<int> generator(0, names->size() - 1);
-		return names->at(generator(rng));
+		return names->at(std::uniform_int_distribution<int>{0, static_cast<int>(names->size() - 1)}(generator));
 	}
 
 	Log(LogLevel::Warning) << "No male name could be found for " << culture;
@@ -226,8 +227,7 @@ std::optional<std::string> HoI4::Names::getFemaleName(const std::string& culture
 {
 	if (auto names = getFemaleNames(culture); names && !names->empty())
 	{
-		const std::uniform_int_distribution<int> generator(0, names->size() - 1);
-		return names->at(generator(rng));
+		return names->at(std::uniform_int_distribution<int>{0, static_cast<int>(names->size() - 1)}(generator));
 	}
 
 	Log(LogLevel::Warning) << "No female name could be found for " << culture;
@@ -239,8 +239,7 @@ std::optional<std::string> HoI4::Names::getSurname(const std::string& culture)
 {
 	if (auto names = getSurnames(culture); names && !names->empty())
 	{
-		const std::uniform_int_distribution<int> generator(0, names->size() - 1);
-		return names->at(generator(rng));
+		return names->at(std::uniform_int_distribution<int>{0, static_cast<int>(names->size() - 1)}(generator));
 	}
 
 	Log(LogLevel::Warning) << "No surname could be found for " << culture;
@@ -252,8 +251,7 @@ std::optional<std::string> HoI4::Names::getFemaleSurname(const std::string& cult
 {
 	if (auto names = getFemaleSurnames(culture); names && !names->empty())
 	{
-		const std::uniform_int_distribution<int> generator(0, names->size() - 1);
-		return names->at(generator(rng));
+		return names->at(std::uniform_int_distribution<int>{0, static_cast<int>(names->size() - 1)}(generator));
 	}
 
 	Log(LogLevel::Warning) << "No female surname could be found for " << culture;
@@ -265,8 +263,7 @@ std::optional<std::string> HoI4::Names::getCallsign(const std::string& culture)
 {
 	if (auto names = getCallsigns(culture); names && !names->empty())
 	{
-		const std::uniform_int_distribution<int> generator(0, names->size() - 1);
-		return names->at(generator(rng));
+		return names->at(std::uniform_int_distribution<int>{0, static_cast<int>(names->size() - 1)}(generator));
 	}
 
 	Log(LogLevel::Warning) << "No callsign could be found for " << culture;
@@ -317,9 +314,9 @@ std::optional<std::string> HoI4::Names::takeCompanyName(std::map<std::string, st
 	{
 		if (auto& companies = namesItr->second; !companies.empty())
 		{
-			const std::uniform_int_distribution<int> generator(0, companies.size() - 1);
+			const std::uniform_int_distribution<int> distribution(0, companies.size() - 1);
 			auto companiesIterator = companies.begin();
-			std::advance(companiesIterator, generator(rng));
+			std::advance(companiesIterator, distribution(generator));
 			auto company = *companiesIterator;
 			companies.erase(companiesIterator);
 			return company;
@@ -336,9 +333,9 @@ std::optional<std::string> HoI4::Names::takeIntelligenceAgencyName(const std::st
 	{
 		if (auto& agencies = namesItr->second; !agencies.empty())
 		{
-			const std::uniform_int_distribution<int> generator(0, agencies.size() - 1);
+			const std::uniform_int_distribution<int> distribution(0, agencies.size() - 1);
 			auto agenciesIterator = agencies.begin();
-			std::advance(agenciesIterator, generator(rng));
+			std::advance(agenciesIterator, distribution(generator));
 			auto agency = *agenciesIterator;
 			agencies.erase(agenciesIterator);
 			return agency;

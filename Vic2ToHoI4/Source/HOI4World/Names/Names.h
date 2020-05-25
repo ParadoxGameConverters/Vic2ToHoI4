@@ -85,7 +85,7 @@ class Names
 
 	std::map<std::string, std::vector<std::string>> intelligenceAgencyNames;
 
-	std::mt19937 rng;
+	std::mt19937 generator;
 };
 
 
