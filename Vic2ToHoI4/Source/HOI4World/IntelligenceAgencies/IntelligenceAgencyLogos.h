@@ -22,7 +22,7 @@ class IntelligenceAgencyLogos
 
   private:
 	std::map<std::string, std::string> cultureToLogoMap;
-	std::mt19937 rng;
+	std::mt19937 generator;
 };
 
 

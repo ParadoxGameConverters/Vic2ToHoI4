@@ -10,8 +10,8 @@ std::string HoI4::IntelligenceAgencyLogos::getLogo(const std::string& culture)
 		return logo->second;
 	}
 
-	const std::uniform_int_distribution<int> generator(1, 8);
-	return "GFX_intelligence_agency_logo_generic_" + std::to_string(static_cast<int>(generator(rng)));
+	const std::uniform_int_distribution<int> distribution{1, 8};
+	return "GFX_intelligence_agency_logo_generic_" + std::to_string(static_cast<int>(distribution(generator)));
 }
 
 
