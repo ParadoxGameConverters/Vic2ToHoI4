@@ -27,7 +27,7 @@ class IntelligenceAgencyLogos
 class IntelligenceAgencyLogos::Factory: commonItems::parser
 {
   public:
-	IntelligenceAgencyLogos::Factory();
+	Factory();
 	std::unique_ptr<IntelligenceAgencyLogos> getIntelligenceAgencyLogos();
 
   private:
