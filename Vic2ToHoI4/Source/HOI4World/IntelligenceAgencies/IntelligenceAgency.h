@@ -5,6 +5,7 @@
 
 #include "../HoI4Country.h"
 #include "../Names/Names.h"
+#include "IntelligenceAgencyLogos.h"
 #include <string>
 #include <vector>
 
@@ -16,7 +17,7 @@ namespace HoI4
 class IntelligenceAgency
 {
   public:
-	explicit IntelligenceAgency(const Country& country, Names& names);
+	explicit IntelligenceAgency(const Country& country, Names& names, IntelligenceAgencyLogos& intelligenceAgencyLogos);
 
 	[[nodiscard]] const auto& getCountry() const { return countryTag; }
 	[[nodiscard]] const auto& getLogo() const { return logo; }
@@ -24,7 +25,7 @@ class IntelligenceAgency
 
   private:
 	std::string countryTag;
-	std::string logo = "GFX_intelligence_agency_logo_usa";
+	std::string logo = "GFX_intelligence_agency_logo_generic_1";
 	std::vector<std::string> names;
 };
 

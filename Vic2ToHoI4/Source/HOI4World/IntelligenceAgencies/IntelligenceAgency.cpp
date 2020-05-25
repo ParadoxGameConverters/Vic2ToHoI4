@@ -3,7 +3,9 @@
 
 
 
-HoI4::IntelligenceAgency::IntelligenceAgency(const Country& country, Names& allNames)
+HoI4::IntelligenceAgency::IntelligenceAgency(const Country& country,
+	 Names& allNames,
+	 IntelligenceAgencyLogos& intelligenceAgencyLogos)
 {
 	countryTag = country.getTag();
 	const auto possibleName = allNames.takeIntelligenceAgencyName(country.getSourceCountry().getPrimaryCulture());
@@ -15,4 +17,5 @@ HoI4::IntelligenceAgency::IntelligenceAgency(const Country& country, Names& allN
 	{
 		names.push_back("Intelligence Agency");
 	}
+	logo = intelligenceAgencyLogos.getLogo(country.getSourceCountry().getPrimaryCulture());
 }

@@ -1,4 +1,5 @@
 #include "IntelligenceAgencies.h"
+#include "IntelligenceAgencyLogos.h"
 
 
 
@@ -7,9 +8,12 @@ std::unique_ptr<HoI4::IntelligenceAgencies> HoI4::IntelligenceAgencies::Factory:
 	 Names& names)
 {
 	std::vector<IntelligenceAgency> theAgencies;
+
+	IntelligenceAgencyLogos intelligenceAgencyLogos(
+		 std::map<std::string, std::string>({{"north_german", "GFX_intelligence_agency_logo_ger"}}));
 	for (const auto& country: countries)
 	{
-		theAgencies.emplace_back(IntelligenceAgency{*country.second, names});
+		theAgencies.emplace_back(IntelligenceAgency{*country.second, names, intelligenceAgencyLogos});
 	}
 
 	return std::make_unique<IntelligenceAgencies>(std::move(theAgencies));

@@ -929,6 +929,9 @@
     <ClCompile Include="HoI4WorldTests\Names\CultureGroupNamesTests.cpp">
       <Filter>HoI4WorldTests\Names</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\IntelligenceAgencies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
