@@ -49,7 +49,7 @@ std::list<std::string> Vic2::inventions::getInventionFiles(const Configuration& 
 	for (auto mod: theConfiguration.getVic2Mods())
 	{
 		std::string modInventionsPath = theConfiguration.getVic2Path() + "/mod/" + mod + "/inventions/";
-		if (Utils::doesFolderExist(modInventionsPath))
+		if (Utils::DoesFolderExist(modInventionsPath))
 		{
 			std::set<std::string> modTechFiles;
 			Utils::GetAllFilesInFolder(modInventionsPath, modTechFiles);

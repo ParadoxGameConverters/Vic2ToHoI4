@@ -44,7 +44,7 @@ void checkMods(const Configuration& theConfiguration)
 		if ((lastPeriodPos != std::string::npos) && (fileName.substr(lastPeriodPos, fileName.length()) == ".mod"))
 		{
 			auto folderName = fileName.substr(0, lastPeriodPos);
-			if (Utils::doesFolderExist(theConfiguration.getVic2Path() + "/mod/" + folderName))
+			if (Utils::DoesFolderExist(theConfiguration.getVic2Path() + "/mod/" + folderName))
 			{
 				Log(LogLevel::Info) << "\tFound mod with name " << folderName;
 			}
@@ -54,7 +54,7 @@ void checkMods(const Configuration& theConfiguration)
 	for (const auto& expectedMod: theConfiguration.getVic2Mods())
 	{
 		Log(LogLevel::Info) << "\tExpecting a mod with name " << expectedMod;
-		if (!Utils::doesFolderExist(theConfiguration.getVic2Path() + "/mod/" + expectedMod))
+		if (!Utils::DoesFolderExist(theConfiguration.getVic2Path() + "/mod/" + expectedMod))
 		{
 			throw std::runtime_error("Could not find expected mod " + expectedMod);
 		}
