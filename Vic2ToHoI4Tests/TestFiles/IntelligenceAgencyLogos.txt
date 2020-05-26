@@ -1,0 +1,1 @@
+link = { culture = north_german logo = GFX_intelligence_agency_logo_ger }

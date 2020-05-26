@@ -70,8 +70,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategories.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsInCategory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureGroupNames.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureNames.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\Names.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp" />
@@ -87,6 +94,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRule.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRuleOption.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRules.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutColor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFlags.cpp" />
@@ -211,7 +220,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\HoI4Army.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\RegimentType.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Military\RegimentTypeGroup.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgNavy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgShip.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Navies\Navies.cpp" />
@@ -293,6 +301,8 @@
     <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyFileTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Ideologies\IdeologyItemsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\IntelligenceAgencies\IntelligenceAgencyLogoMappingTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\IntelligenceAgencies\IntelligenceAgencyLogosTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Leader\AdvisorTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\AllReplacementRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRulesTests.cpp" />
@@ -321,6 +331,8 @@
     <ClCompile Include="HoI4WorldTests\Military\HoI4ArmyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Military\RegimentTypeTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Military\RegimentTypeGroupTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Names\CultureGroupNamesTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Names\CultureNamesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyNavyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyShipTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyShipTypeNamesTests.cpp" />
@@ -393,7 +405,6 @@
     <ClInclude Include="Mocks\GovermentMapperMock.h" />
     <ClInclude Include="Mocks\GraphicsMapperMock.h" />
     <ClInclude Include="Mocks\Hoi4StateMock.h" />
-    <ClInclude Include="Mocks\NamesMapperMock.h" />
     <ClInclude Include="Mocks\StateCategoriesMock.h" />
     <ClInclude Include="Mocks\Vic2CountryMock.h" />
     <ClInclude Include="Mocks\Vic2WorldMock.h" />
@@ -403,6 +414,11 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\IntelligenceAgencyLogos.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/DataFiles</DestinationFolders>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

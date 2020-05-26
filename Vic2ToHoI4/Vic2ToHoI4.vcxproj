@@ -370,8 +370,15 @@
     <ClCompile Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategories.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategory.cpp" />
+    <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.cpp" />
+    <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp" />
+    <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp" />
+    <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp" />
     <ClCompile Include="Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="Source\HOI4World\Map\StrategicRegions.cpp" />
+    <ClCompile Include="Source\HOI4World\Names\CultureGroupNames.cpp" />
+    <ClCompile Include="Source\HOI4World\Names\CultureNames.cpp" />
+    <ClCompile Include="Source\HOI4World\Names\Names.cpp" />
     <ClCompile Include="Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
@@ -392,6 +399,8 @@
     <ClCompile Include="Source\OutHoi4\Ideas\OutIdeas.cpp" />
     <ClCompile Include="Source\OutHoi4\Ideologies\OutIdeologies.cpp" />
     <ClCompile Include="Source\OutHoi4\Ideologies\OutIdeology.cpp" />
+    <ClCompile Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.cpp" />
+    <ClCompile Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
     <ClCompile Include="Source\OutHoi4\Leaders\OutAdmiral.cpp" />
     <ClCompile Include="Source\OutHoi4\Leaders\OutAdvisor.cpp" />
     <ClCompile Include="Source\OutHoi4\Leaders\OutGeneral.cpp" />
@@ -515,7 +524,6 @@
     <ClCompile Include="Source\HOI4World\Military\HoI4Army.cpp" />
     <ClCompile Include="Source\HOI4World\Military\RegimentType.cpp" />
     <ClCompile Include="Source\HOI4World\Military\RegimentTypeGroup.cpp" />
-    <ClCompile Include="Source\HOI4World\Names.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\MtgNavy.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\MtgShip.cpp" />
     <ClCompile Include="Source\HOI4World\Navies\Navies.cpp" />
@@ -593,8 +601,15 @@
     <ClInclude Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.h" />
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategories.h" />
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategory.h" />
+    <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.h" />
+    <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.h" />
+    <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.h" />
+    <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.h" />
     <ClInclude Include="Source\HOI4World\Map\HoI4Provinces.h" />
     <ClInclude Include="Source\HOI4World\Map\StrategicRegions.h" />
+    <ClInclude Include="Source\HOI4World\Names\CultureGroupNames.h" />
+    <ClInclude Include="Source\HOI4World\Names\CultureNames.h" />
+    <ClInclude Include="Source\HOI4World\Names\Names.h" />
     <ClInclude Include="Source\HOI4World\ProvinceDefinitions.h" />
     <ClInclude Include="Source\HOI4World\SharedFocus.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />
@@ -611,6 +626,8 @@
     <ClInclude Include="Source\OutHoi4\GameRules\OutGameRule.h" />
     <ClInclude Include="Source\OutHoi4\GameRules\OutGameRuleOption.h" />
     <ClInclude Include="Source\OutHoi4\GameRules\OutGameRules.h" />
+    <ClInclude Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.h" />
+    <ClInclude Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutAdmiral.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutGeneral.h" />
     <ClInclude Include="Source\OutHoi4\Map\OutStrategicRegions.h" />
@@ -746,7 +763,6 @@
     <ClInclude Include="Source\HOI4World\Military\HoI4Army.h" />
     <ClInclude Include="Source\HOI4World\Military\RegimentType.h" />
     <ClInclude Include="Source\HOI4World\Military\RegimentTypeGroup.h" />
-    <ClInclude Include="Source\HOI4World\Names.h" />
     <ClInclude Include="Source\HOI4World\Navies\LegacyNavy.h" />
     <ClInclude Include="Source\HOI4World\Navies\LegacyShip.h" />
     <ClInclude Include="Source\HOI4World\Navies\MtgNavy.h" />
@@ -887,7 +903,7 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\names.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)/DataFiles</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\positions.txt">
@@ -22851,6 +22867,11 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\log.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\IntelligenceAgencyLogos.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(OutDir)\DataFiles</DestinationFolders>
+    </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

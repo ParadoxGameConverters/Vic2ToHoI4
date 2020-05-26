@@ -139,6 +139,15 @@
     <Filter Include="Data Files\Fronter">
       <UniqueIdentifier>{19aa6118-ccad-4df6-bb5f-c97fad2dcb0d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OutHoi4\IntelligenceAgencies">
+      <UniqueIdentifier>{36b857e6-f3fb-46a0-9ff8-11589886f8b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4World\IntelligenceAgencies">
+      <UniqueIdentifier>{8da06bf8-dd62-45c9-93ad-959af6e72fe8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4World\Names">
+      <UniqueIdentifier>{bd5d3a55-000c-4ca1-b9e1-c3116390cbc9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -236,9 +245,6 @@
     </ClCompile>
     <ClCompile Include="Source\V2World\StateDefinitions.cpp">
       <Filter>Vic2World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\Names.cpp">
-      <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\V2World\Inventions.cpp">
       <Filter>Vic2World</Filter>
@@ -794,6 +800,33 @@
     <ClCompile Include="Source\OutHoi4\Map\OutStrategicRegions.cpp">
       <Filter>OutHoi4\Map</Filter>
     </ClCompile>
+    <ClCompile Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.cpp">
+      <Filter>OutHoi4\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp">
+      <Filter>OutHoi4\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.cpp">
+      <Filter>HoI4World\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp">
+      <Filter>HoI4World\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Names\Names.cpp">
+      <Filter>HoI4World\Names</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Names\CultureNames.cpp">
+      <Filter>HoI4World\Names</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Names\CultureGroupNames.cpp">
+      <Filter>HoI4World\Names</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp">
+      <Filter>HoI4World\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp">
+      <Filter>HoI4World\IntelligenceAgencies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -946,9 +979,6 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Navies\MtgNavy.h">
       <Filter>HoI4World\Navies</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\HOI4World\Names.h">
-      <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Navies\Navies.h">
       <Filter>HoI4World\Navies</Filter>
@@ -1501,6 +1531,33 @@
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\Map\OutStrategicRegions.h">
       <Filter>OutHoi4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.h">
+      <Filter>OutHoi4\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.h">
+      <Filter>OutHoi4\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.h">
+      <Filter>HoI4World\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.h">
+      <Filter>HoI4World\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Names\Names.h">
+      <Filter>HoI4World\Names</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Names\CultureNames.h">
+      <Filter>HoI4World\Names</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Names\CultureGroupNames.h">
+      <Filter>HoI4World\Names</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.h">
+      <Filter>HoI4World\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.h">
+      <Filter>HoI4World\IntelligenceAgencies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -17943,6 +18000,9 @@
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\log.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\IntelligenceAgencyLogos.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
   </ItemGroup>

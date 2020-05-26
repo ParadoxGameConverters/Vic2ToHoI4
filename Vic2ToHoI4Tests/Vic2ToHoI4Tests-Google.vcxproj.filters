@@ -28,9 +28,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Localisation.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Country.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
@@ -905,6 +902,45 @@
     <ClCompile Include="HoI4WorldTests\Map\HoI4ProvincesTests.cpp">
       <Filter>HoI4WorldTests\Map</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\Names.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Names</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureNames.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Names</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureGroupNames.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Names</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Names\CultureNamesTests.cpp">
+      <Filter>HoI4WorldTests\Names</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Names\CultureGroupNamesTests.cpp">
+      <Filter>HoI4WorldTests\Names</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\IntelligenceAgencies\IntelligenceAgencyLogoMappingTests.cpp">
+      <Filter>HoI4WorldTests\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\IntelligenceAgencies\IntelligenceAgencyLogosTests.cpp">
+      <Filter>HoI4WorldTests\IntelligenceAgencies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1093,6 +1129,21 @@
     <Filter Include="Vic2ToHoI4 files\Vic2\Issues">
       <UniqueIdentifier>{2f0e389a-b1aa-4704-9486-a32c4882d7f0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\IntelligenceAgencies">
+      <UniqueIdentifier>{ffbde409-211e-4cc0-8d91-143c464faa3a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\IntelligenceAgencies">
+      <UniqueIdentifier>{b585151d-b1b2-48b9-ae7d-6b2f9a3d21d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Names">
+      <UniqueIdentifier>{54cd2f58-a4e2-4470-855c-444bb45e27a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\Names">
+      <UniqueIdentifier>{87629954-89cf-45a0-90d5-91b4037ba99a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\IntelligenceAgencies">
+      <UniqueIdentifier>{fa528b03-a59e-48a5-82b8-c7cbb22779e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1102,9 +1153,6 @@
       <Filter>Mocks</Filter>
     </ClInclude>
     <ClInclude Include="Mocks\StateCategoriesMock.h">
-      <Filter>Mocks</Filter>
-    </ClInclude>
-    <ClInclude Include="Mocks\NamesMapperMock.h">
       <Filter>Mocks</Filter>
     </ClInclude>
     <ClInclude Include="Mocks\GraphicsMapperMock.h">
@@ -1152,6 +1200,9 @@
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\definition.csv">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\IntelligenceAgencyLogos.txt">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
   </ItemGroup>

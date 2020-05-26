@@ -13,13 +13,14 @@
 #include "HoI4Localisation.h"
 #include "Ideas/Ideas.h"
 #include "Ideologies/Ideologies.h"
+#include "IntelligenceAgencies/IntelligenceAgencies.h"
 #include "Leaders/Advisor.h"
 #include "Map/CoastalProvinces.h"
 #include "Map/MapData.h"
 #include "Map/StrategicRegions.h"
 #include "MilitaryMappings/AllMilitaryMappings.h"
 #include "MilitaryMappings/UnitMappings.h"
-#include "Names.h"
+#include "Names/Names.h"
 #include "OnActions.h"
 #include "Parser.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
@@ -30,6 +31,7 @@
 #include <set>
 #include <string>
 #include <vector>
+
 
 
 class HoI4Ideology;
@@ -82,8 +84,8 @@ class World: commonItems::parser
 		 const Configuration& theConfiguration);
 	~World() = default;
 
-	[[nodiscard]] auto& getNames() { return theNames; }
-	[[nodiscard]] const auto& getNames() const { return theNames; }
+	[[nodiscard]] auto& getNames() { return names; }
+	[[nodiscard]] const auto& getNames() const { return *names; }
 	[[nodiscard]] const auto& getTheStates() const { return *states; }
 	[[nodiscard]] const auto& getStrategicRegions() const { return *strategicRegions; }
 	[[nodiscard]] const auto& getCountries() const { return countries; }
@@ -97,6 +99,7 @@ class World: commonItems::parser
 	[[nodiscard]] auto& getEvents() { return *events; }
 	[[nodiscard]] const auto& getEvents() const { return *events; }
 	[[nodiscard]] const auto& getOnActions() const { return *onActions; }
+	[[nodiscard]] const auto& getIntelligenceAgencies() const { return intelligenceAgencies; }
 	[[nodiscard]] const auto& getPeaces() const { return *peaces; }
 	[[nodiscard]] const auto& getIdeologies() const { return *ideologies; }
 	[[nodiscard]] const auto& getTheIdeas() const { return *theIdeas; }
@@ -192,7 +195,7 @@ class World: commonItems::parser
 	// vector<int> getPortLocationCandidates(const vector<int>& locationCandidates, const HoI4AdjacencyMapping&
 	// HoI4AdjacencyMap);
 
-	HoI4::namesMapper theNames;
+	std::unique_ptr<Names> names;
 	graphicsMapper theGraphics;
 	governmentMapper governmentMap;
 	CountryMapper countryMap;
@@ -219,6 +222,7 @@ class World: commonItems::parser
 	std::unique_ptr<HoI4::AiPeaces> peaces;
 	std::unique_ptr<HoI4::Events> events;
 	std::unique_ptr<HoI4::OnActions> onActions;
+	std::unique_ptr<IntelligenceAgencies> intelligenceAgencies;
 
 	std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
 

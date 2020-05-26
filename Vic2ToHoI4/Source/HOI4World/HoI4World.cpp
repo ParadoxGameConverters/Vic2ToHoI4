@@ -29,7 +29,7 @@
 #include "Map/StrategicRegion.h"
 #include "Map/SupplyZones.h"
 #include "MilitaryMappings/MilitaryMappingsFile.h"
-#include "Names.h"
+#include "Names/Names.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 #include "ScriptedTriggers/ScriptedTriggersUpdater.h"
@@ -75,12 +75,13 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 		 theConfiguration);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, provinceDefinitions, theConfiguration);
-	theNames.init(theConfiguration);
+	names = Names::Factory{}.getNames(theConfiguration);
 	theGraphics.init();
 	governmentMap.init();
 	convertCountries(vic2Localisations);
 	addStatesToCountries(provinceMapper);
 	states->addCapitalsToStates(countries);
+	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
 	convertIndustry(theConfiguration);
 	states->convertResources();
@@ -195,7 +196,7 @@ void HoI4::World::convertCountry(std::pair<std::string, Vic2::Country*> country,
 	{
 		destCountry = new HoI4::Country(*possibleHoI4Tag,
 			 country.second,
-			 theNames,
+			 *names,
 			 theGraphics,
 			 countryMap,
 			 flagsToIdeasMapper,
@@ -281,7 +282,7 @@ void HoI4::World::addLeaders()
 	Log(LogLevel::Info) << "\tAdding leaders";
 	for (auto& country: countries)
 	{
-		country.second->addLeader(theNames, theGraphics);
+		country.second->addLeader(*names, theGraphics);
 	}
 }
 
