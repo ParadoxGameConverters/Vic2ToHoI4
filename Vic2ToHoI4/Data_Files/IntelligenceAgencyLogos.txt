@@ -1,1 +1,42 @@
+### INTELLIGENCE AGENCY LOGOS ###
+# This file maps specific Intelligence Agency Logos based upon cultures
+# The format is as follows:
+# link = { culture = [primary culture] logo = [GFX logo] }
+# Not all cultures are needed to be told here, as a default logo will be used if nothing is found anyway
+
+# Vanilla
+link = { culture = yankee logo = GFX_intelligence_agency_logo_usa }
+link = { culture = british culture = english logo = GFX_intelligence_agency_logo_uk }
+link = { culture = russian logo = GFX_intelligence_agency_logo_sov }
+link = { culture = french logo = GFX_intelligence_agency_logo_fra }
 link = { culture = north_german logo = GFX_intelligence_agency_logo_ger }
+link = { culture = japanese logo = GFX_intelligence_agency_logo_jap }
+link = { culture = north_italian culture = south_italian culture = all_italian logo = GFX_intelligence_agency_logo_ita }
+link = { culture = swedish logo = GFX_intelligence_agency_logo_swe }
+link = { culture = norwegian logo = GFX_intelligence_agency_logo_nor }
+link = { culture = flemish culture = wallonian logo = GFX_intelligence_agency_logo_bel }
+link = { culture = dutch logo = GFX_intelligence_agency_logo_hol }
+link = { culture = romanian logo = GFX_intelligence_agency_logo_rom }
+link = { culture = nanfaren culture = beifaren logo = GFX_intelligence_agency_logo_chi_alternative }
+link = { culture = serb logo = GFX_intelligence_agency_logo_yug }
+link = { culture = spanish logo = GFX_intelligence_agency_logo_spr }
+link = { culture = polish logo = GFX_intelligence_agency_logo_pol }
+link = { culture = manchu logo = GFX_intelligence_agency_logo_man }
+link = { culture = portuguese logo = GFX_intelligence_agency_logo_por }
+link = { culture = finnish logo = GFX_intelligence_agency_logo_fin }
+# From CSRZ's mod 2017272267
+link = { culture = platinean logo = GFX_intelligence_agency_logo_arg }
+link = { culture = australian logo = GFX_intelligence_agency_logo_ast }
+link = { culture = brazilian logo = GFX_intelligence_agency_logo_bra }
+link = { culture = anglo_canadian logo = GFX_intelligence_agency_logo_can }
+link = { culture = czech logo = GFX_intelligence_agency_logo_cze }
+link = { culture = danish logo = GFX_intelligence_agency_logo_den }
+link = { culture = greek logo = GFX_intelligence_agency_logo_gre }
+link = { culture = hungarian logo = GFX_intelligence_agency_logo_hun }
+link = { culture = south_german logo = GFX_intelligence_agency_logo_hun_empire }
+link = { culture = mexican logo = GFX_intelligence_agency_logo_mex }
+link = { culture = persian logo = GFX_intelligence_agency_logo_per }
+link = { culture = marathi logo = GFX_intelligence_agency_logo_raj }
+link = { culture = boer logo = GFX_intelligence_agency_logo_saf }
+link = { culture = thai logo = GFX_intelligence_agency_logo_sia }
+link = { culture = turkish logo = GFX_intelligence_agency_logo_tur }
