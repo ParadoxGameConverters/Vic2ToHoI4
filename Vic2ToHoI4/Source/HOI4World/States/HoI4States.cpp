@@ -44,7 +44,7 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 	int num;
 
 	Log(LogLevel::Info) << "\tConverting states";
-	registerKeyword(std::regex("state"), [this, &num](const std::string& unused, std::istream& theStream) {
+	registerKeyword("state", [this, &num](const std::string& unused, std::istream& theStream) {
 		defaultStates.insert(std::make_pair(num, DefaultState(theStream)));
 	});
 

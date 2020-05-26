@@ -17,7 +17,7 @@ HoI4::SupplyArea::SupplyArea(std::istream& theStream)
 		const commonItems::intList stateIntList(theStream);
 		states = stateIntList.getInts();
 	});
-	registerKeyword(std::regex("[a-zA-Z0-9_]+"), commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();

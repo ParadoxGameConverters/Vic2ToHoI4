@@ -11,7 +11,7 @@
 mappers::ProvinceMapper mappers::ProvinceMapper::Parser::initializeMapper(const Configuration& theConfiguration)
 {
 	auto gotMappings = false;
-	registerKeyword(std::regex("\\d\\.\\d\\.\\d"),
+	registerRegex(R"(\d\.\d\.\d)",
 		 [this, &gotMappings, theConfiguration](const std::string& version, std::istream& theStream) {
 			 const GameVersion defaultVersion(version);
 			 if ((GameVersion{1, 9, 2, 0} >= defaultVersion) && !gotMappings)

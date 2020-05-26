@@ -1,11 +1,11 @@
 #include "PoliticalDecisions.h"
+#include "ParserHelpers.h"
 
 
 
 void HoI4::PoliticalDecisions::importDecisions(const std::string& filename)
 {
-	registerKeyword(std::regex("[A-Za-z\\_]+"), [this](const std::string& unused, std::istream& theStream)
-	{
+	registerRegex(commonItems::catchallRegex, [this](const std::string& unused, std::istream& theStream) {
 		const IdeologicalDecisions ideologicalDecisions(theStream);
 		allIdeologicalDecisions.push_back(ideologicalDecisions);
 	});
@@ -22,10 +22,8 @@ void HoI4::PoliticalDecisions::updateDecisions(const std::set<std::string>& majo
 		{
 			for (const auto& category: ideologicalDecisions.getCategories())
 			{
-				if (
-					auto existingCategory = std::find(decisions.begin(), decisions.end(), category);
-					existingCategory != decisions.end()
-					)
+				if (auto existingCategory = std::find(decisions.begin(), decisions.end(), category);
+					 existingCategory != decisions.end())
 				{
 					for (auto& theDecision: category.getDecisions())
 					{

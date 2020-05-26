@@ -26,39 +26,39 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	inventions theInventions(theConfiguration);
 
 	std::vector<int> GPIndexes;
-	registerKeyword(std::regex("great_nations"), [&GPIndexes, this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("great_nations", [&GPIndexes, this](const std::string& unused, std::istream& theStream) {
 		const commonItems::intList indexList(theStream);
 		GPIndexes = indexList.getInts();
 	});
 
-	registerKeyword(std::regex("\\d+"), [this, &theIssues](const std::string& provinceID, std::istream& theStream) {
+	registerRegex(R"(\d+)", [this, &theIssues](const std::string& provinceID, std::istream& theStream) {
 		provinces[stoi(provinceID)] = new Province(provinceID, theStream, theIssues);
 	});
 
 	std::vector<std::string> tagsInOrder;
 	tagsInOrder.push_back(""); // REB (first country is index 1
-	registerKeyword(std::regex("[A-Z]{3}"),
+	registerRegex("[A-Z]{3}",
 		 [&tagsInOrder, &theInventions, this](const std::string& countryTag, std::istream& theStream) {
 			 countries[countryTag] =
 				  new Country(countryTag, theStream, theInventions, theCultureGroups, *theStateDefinitions);
 			 tagsInOrder.push_back(countryTag);
 		 });
-	registerKeyword(std::regex("[A-Z][0-9]{2}"),
+	registerRegex("[A-Z][0-9]{2}",
 		 [&tagsInOrder, &theInventions, this](const std::string& countryTag, std::istream& theStream) {
 			 countries[countryTag] =
 				  new Country(countryTag, theStream, theInventions, theCultureGroups, *theStateDefinitions);
 			 tagsInOrder.push_back(countryTag);
 		 });
-	registerKeyword(std::regex("diplomacy"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("diplomacy", [this](const std::string& unused, std::istream& theStream) {
 		diplomacy = new Diplomacy(theStream);
 	});
 
 	std::vector<War> wars;
-	registerKeyword(std::regex("active_war"), [&wars](const std::string& unused, std::istream& theStream) {
+	registerKeyword("active_war", [&wars](const std::string& unused, std::istream& theStream) {
 		wars.push_back(War(theStream));
 	});
 
-	registerKeyword(std::regex("[A-Za-z0-9_]+"), commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 
 	Log(LogLevel::Info) << "*** Importing V2 save ***";

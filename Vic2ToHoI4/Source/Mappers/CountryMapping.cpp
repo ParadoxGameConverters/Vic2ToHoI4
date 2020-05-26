@@ -45,7 +45,7 @@ CountryMapper::CountryMapper(const Vic2::World* srcWorld, bool debug)
 
 void CountryMapper::readRules()
 {
-	registerKeyword(std::regex("link"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("link", [this](const std::string& unused, std::istream& theStream) {
 		countryMappingRule rule(theStream);
 		Vic2TagToHoI4TagsRules.insert(make_pair(rule.getVic2Tag(), rule.getHoI4Tags()));
 	});

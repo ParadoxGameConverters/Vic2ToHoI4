@@ -1310,8 +1310,8 @@ void HoI4::Events::createStabilityEvents(const std::set<std::string>& majorIdeol
 	Log(LogLevel::Info) << "\tCreating stability events";
 
 	clearRegisteredKeywords();
-	registerKeyword(std::regex("add_namespace"), commonItems::ignoreString);
-	registerKeyword(std::regex("country_event"), [this](const std::string& type, std::istream& theStream) {
+	registerKeyword("add_namespace", commonItems::ignoreString);
+	registerKeyword("country_event", [this](const std::string& type, std::istream& theStream) {
 		Event newEvent(type, theStream);
 		if (newEvent.getId().substr(0, 9) == "stability")
 		{

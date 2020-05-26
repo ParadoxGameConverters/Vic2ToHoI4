@@ -61,35 +61,35 @@ bool Vic2::Regiment::isMobilised() const
 
 Vic2::Army::Army(const std::string& type, std::istream& theStream): navy(type == "navy")
 {
-	registerKeyword(std::regex("name"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString nameString(theStream);
 		name = Utils::convertWin1252ToUTF8(nameString.getString());
 	});
-	registerKeyword(std::regex("location"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("location", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleInt locationInt(theStream);
 		location = locationInt.getInt();
 	});
-	registerKeyword(std::regex("regiment"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("regiment", [this](const std::string& unused, std::istream& theStream) {
 		Regiment* newRegiment = new Regiment(theStream);
 		regiments.push_back(newRegiment);
 	});
-	registerKeyword(std::regex("ship"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("ship", [this](const std::string& unused, std::istream& theStream) {
 		Regiment* newShip = new Regiment(theStream);
 		regiments.push_back(newShip);
 	});
-	registerKeyword(std::regex("supplies"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("supplies", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleDouble suppliesDouble(theStream);
 		supplies = suppliesDouble.getDouble();
 	});
-	registerKeyword(std::regex("at_sea"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("at_sea", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleInt locationInt(theStream);
 		atSea = locationInt.getInt();
 	});
-	registerKeyword(std::regex("army"), [this](const std::string& type, std::istream& theStream) {
+	registerKeyword("army", [this](const std::string& type, std::istream& theStream) {
 		Army transportedArmy(type, theStream);
 		transportedArmies.push_back(transportedArmy);
 	});
-	registerKeyword(std::regex("[A-Za-z0-9_]+"), commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
 

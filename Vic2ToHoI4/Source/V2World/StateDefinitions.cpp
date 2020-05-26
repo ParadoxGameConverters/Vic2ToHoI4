@@ -13,7 +13,7 @@ std::unique_ptr<Vic2::StateDefinitions> Vic2::StateDefinitions::Parser::parseSta
 	std::map<int, std::string> provinceToIDMap;
 	std::map<std::string, int> stateToCapitalMap;
 
-	registerKeyword(std::regex("[A-Z0-9\\_]+"),
+	registerRegex(commonItems::catchallRegex,
 		 [&stateMap, &provinceToIDMap, &stateToCapitalMap](const std::string& stateID, std::istream& theStream) {
 			 const commonItems::intList provinceNumbersList(theStream);
 			 const auto provinceNumbers = provinceNumbersList.getInts();

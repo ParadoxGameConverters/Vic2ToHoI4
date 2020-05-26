@@ -1,12 +1,12 @@
 #include "AllMilitaryMappings.h"
+#include "ParserHelpers.h"
 #include <fstream>
 
 
 
 HoI4::allMilitaryMappings::allMilitaryMappings(std::istream& theStream)
 {
-	registerKeyword(std::regex("[a-zA-Z0-9]+"), [this](const std::string& mod, std::istream& theStream)
-	{
+	registerRegex(commonItems::catchallRegex, [this](const std::string& mod, std::istream& theStream) {
 		militaryMappings newMappings(mod, theStream);
 		theMappings.insert(std::make_pair(mod, std::move(newMappings)));
 	});
@@ -15,7 +15,8 @@ HoI4::allMilitaryMappings::allMilitaryMappings(std::istream& theStream)
 }
 
 
-const HoI4::militaryMappings& HoI4::allMilitaryMappings::getMilitaryMappings(const std::vector<std::string>& Vic2Mods) const
+const HoI4::militaryMappings& HoI4::allMilitaryMappings::getMilitaryMappings(
+	 const std::vector<std::string>& Vic2Mods) const
 {
 	for (const auto& mod: Vic2Mods)
 	{
