@@ -14,9 +14,10 @@ void createModFiles(const std::string& outputName);
 
 void clearOutputFolder(const std::string& outputName)
 {
-	const auto outputFolder = "/output/" + outputName;
+	const auto outputFolder = "output/" + outputName;
 	if (Utils::DoesFolderExist(outputFolder))
 	{
+		Log(LogLevel::Info) << "Removing pre-existing copy of " << outputName;
 		if (!Utils::DeleteFolder(outputFolder))
 		{
 			throw std::runtime_error("Could not remove pre-existing output folder " + outputFolder +
