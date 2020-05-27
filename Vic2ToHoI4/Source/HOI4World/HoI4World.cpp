@@ -219,7 +219,7 @@ void HoI4::World::importLeaderTraits()
 	Log(LogLevel::Info) << "\tImporting leader traits";
 
 	clearRegisteredKeywords();
-	registerKeyword(commonItems::catchallRegex, [this](const std::string& ideologyName, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& ideologyName, std::istream& theStream) {
 		commonItems::stringsOfItems traits(theStream);
 		ideologicalLeaderTraits.insert(make_pair(ideologyName, traits.getStrings()));
 	});
