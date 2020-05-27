@@ -17,9 +17,7 @@ HoI4::StateCategories::StateCategories(const Configuration& theConfiguration)
 		}
 	});
 
-	std::set<std::string> categoryFiles;
-	Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/common/state_category", categoryFiles);
-	for (auto file: categoryFiles)
+	for (const auto& file: Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/common/state_category"))
 	{
 		parseFile(theConfiguration.getHoI4Path() + "/common/state_category/" + file);
 	}

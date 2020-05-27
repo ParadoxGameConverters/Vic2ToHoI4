@@ -36,9 +36,7 @@ void checkMods(const Configuration& theConfiguration)
 {
 	Log(LogLevel::Info) << "Double-checking Vic2 mods";
 
-	std::set<std::string> fileNames;
-	Utils::GetAllFilesInFolder(theConfiguration.getVic2Path() + "/mod", fileNames);
-	for (const auto& fileName: fileNames)
+	for (const auto& fileName: Utils::GetAllFilesInFolder(theConfiguration.getVic2Path() + "/mod"))
 	{
 		const auto lastPeriodPos = fileName.find_last_of('.');
 		if ((lastPeriodPos != std::string::npos) && (fileName.substr(lastPeriodPos, fileName.length()) == ".mod"))

@@ -48,9 +48,7 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 		defaultStates.insert(std::make_pair(num, DefaultState(theStream)));
 	});
 
-	std::set<std::string> statesFiles;
-	Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/history/states", statesFiles);
-	for (const auto& stateFile: statesFiles)
+	for (const auto& stateFile: Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/history/states"))
 	{
 		num = stoi(stateFile.substr(0, stateFile.find_first_of('-')));
 		parseFile(theConfiguration.getHoI4Path() + "/history/states/" + stateFile);

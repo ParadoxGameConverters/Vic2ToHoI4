@@ -33,10 +33,7 @@ std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Parser::importLocalisa
 
 void Vic2::Localisations::Parser::ReadFromAllFilesInFolder(const std::string& folderPath)
 {
-	std::set<std::string> fileNames;
-	Utils::GetAllFilesInFolder(folderPath, fileNames);
-
-	for (const auto& fileName: fileNames)
+	for (const auto& fileName: Utils::GetAllFilesInFolder(folderPath))
 	{
 		ReadFromFile(folderPath + '/' + fileName);
 	}
