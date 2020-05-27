@@ -1129,7 +1129,7 @@ void HoI4::Events::importElectionEvents(const std::set<std::string>& majorIdeolo
 			electionEvents.push_back(electionEvent);
 		}
 	});
-	registerRegex("[A-Za-z0-9\\_]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseFile("blankmod/output/events/ElectionEvents.txt");
 	clearRegisteredKeywords();

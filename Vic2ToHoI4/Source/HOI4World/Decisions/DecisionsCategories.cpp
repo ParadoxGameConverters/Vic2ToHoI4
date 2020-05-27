@@ -1,10 +1,11 @@
 #include "DecisionsCategories.h"
+#include "../../../../Fronter/commonItems/ParserHelpers.h"
 
 
 
 HoI4::DecisionsCategories::Factory::Factory()
 {
-	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& categoryName, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& categoryName, std::istream& theStream) {
 		theCategories.emplace_back(DecisionsCategoryFactory.getDecisionsCategory(categoryName, theStream));
 	});
 }

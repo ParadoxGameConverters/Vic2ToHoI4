@@ -16,7 +16,7 @@ HoI4::Ideologies::Ideologies(const Configuration& theConfiguration)
 			ideologies.insert(ideology);
 		}
 	});
-	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	if (theConfiguration.getIdeologiesOptions() != ideologyOptions::keep_default)
 	{

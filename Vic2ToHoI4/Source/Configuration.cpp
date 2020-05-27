@@ -148,7 +148,7 @@ Configuration::Factory::Factory()
 			Log(LogLevel::Info) << "\tEnabling keep factions";
 		}
 	});
-	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
 

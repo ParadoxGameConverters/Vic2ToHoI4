@@ -2,6 +2,7 @@
 #include "IdeaGroup.h"
 #include "IdeaUpdaters.h"
 #include "Log.h"
+#include "ParserHelpers.h"
 #include <fstream>
 
 
@@ -15,7 +16,7 @@ HoI4::Ideas::Ideas() noexcept
 
 void HoI4::Ideas::importIdeologicalIdeas()
 {
-	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& ideology, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& ideology, std::istream& theStream) {
 		ideologicalIdeas.insert(make_pair(ideology, IdeaGroup(ideology, theStream)));
 	});
 
@@ -26,7 +27,7 @@ void HoI4::Ideas::importIdeologicalIdeas()
 
 void HoI4::Ideas::importGeneralIdeas()
 {
-	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& ideaGroupName, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& ideaGroupName, std::istream& theStream) {
 		generalIdeas.emplace_back(IdeaGroup{ideaGroupName, theStream});
 	});
 

@@ -5,7 +5,7 @@
 
 HoI4::EventOption::EventOption(std::istream& theStream)
 {
-	registerKeyword("name", [this](const std::string& unused, std::istream& theStream){
+	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString nameString(theStream);
 		name = nameString.getString();
 	});
@@ -17,7 +17,7 @@ HoI4::EventOption::EventOption(std::istream& theStream)
 		const commonItems::stringOfItem effectString(theStream);
 		hiddenEffect = effectString.getString();
 	});
-	registerRegex("[a-zA-Z0-9_\\.]+", [this](const std::string& blockName, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& blockName, std::istream& theStream) {
 		const commonItems::stringOfItem scriptBlockString(theStream);
 		const auto blockString = blockName + " " + scriptBlockString.getString() + "\n";
 		scriptBlocks.push_back(blockString);

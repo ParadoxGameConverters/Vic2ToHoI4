@@ -32,8 +32,7 @@ Vic2::Regiment::Regiment(std::istream& theStream)
 		commonItems::simpleObject pop_def(theStream);
 		pop_id = pop_def.getValueAsInt("id");
 	});
-
-	registerRegex("[A-Za-z0-9_]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
 

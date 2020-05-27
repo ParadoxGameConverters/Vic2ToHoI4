@@ -32,7 +32,7 @@ HoI4::SupplyZones::SupplyZones(const std::map<int, DefaultState>& defaultStates,
 			}
 		}
 	});
-	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	for (const auto& supplyZonesFile: Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/map/supplyareas"))
 	{

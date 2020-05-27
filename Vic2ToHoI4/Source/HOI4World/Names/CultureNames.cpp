@@ -54,7 +54,7 @@ HoI4::CultureNames::CultureNames(std::istream& theStream)
 		const commonItems::stringList nameStrings(theStream);
 		intelligenceAgencies = nameStrings.getStrings();
 	});
-	registerRegex("[A-Za-z0-9\\_]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();

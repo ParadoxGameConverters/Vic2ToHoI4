@@ -38,7 +38,7 @@ HoI4::MtgShipVariant::MtgShipVariant(std::istream& theStream)
 			blockingTechnologies.insert(blockingTech);
 		}
 	});
-	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();

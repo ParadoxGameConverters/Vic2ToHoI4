@@ -43,7 +43,7 @@ Vic2::Pop::Pop(const std::string& typeString, std::istream& theStream, const Iss
 		commonItems::singleInt idInt(theStream);
 		id = idInt.getInt();
 	});
-	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& cultureString, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& cultureString, std::istream& theStream) {
 		// only record the first matching item as cultre & religion
 		if (culture == "no_culture")
 		{

@@ -13,7 +13,7 @@ HoI4::UnitMapping::UnitMapping(std::istream& theStream)
 		const HoI4UnitType theUnit(theStream);
 		HoI4Types.push_back(theUnit);
 	});
-	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();

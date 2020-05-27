@@ -8,7 +8,7 @@ void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConf
 {
 	Log(LogLevel::Info) << "\tImporting scripted triggers";
 
-	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& name, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& name, std::istream& theStream) {
 		ScriptedTrigger scriptedTrigger(name);
 		const commonItems::stringOfItem bodyString(theStream);
 		scriptedTrigger.setBody(bodyString.getString());
@@ -17,7 +17,7 @@ void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConf
 	parseFile(theConfiguration.getHoI4Path() + "/common/scripted_triggers/ideology_scripted_triggers.txt");
 	clearRegisteredKeywords();
 
-	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& name, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& name, std::istream& theStream) {
 		ScriptedTrigger scriptedTrigger(name);
 		const commonItems::stringOfItem bodyString(theStream);
 		scriptedTrigger.setBody(bodyString.getString());
@@ -26,7 +26,7 @@ void HoI4::ScriptedTriggers::importScriptedTriggers(const Configuration& theConf
 	parseFile(theConfiguration.getHoI4Path() + "/common/scripted_triggers/Elections_scripted_triggers.txt");
 	clearRegisteredKeywords();
 
-	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& name, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& name, std::istream& theStream) {
 		ScriptedTrigger scriptedTrigger(name);
 		const commonItems::stringOfItem bodyString(theStream);
 		scriptedTrigger.setBody(bodyString.getString());

@@ -14,7 +14,7 @@ HoI4::ResourcesLink::ResourcesLink(std::istream& theStream)
 		ActualResources theActualResources(theStream);
 		theResources = theActualResources.takeResources();
 	});
-	registerRegex("[a-zA-z0-9_]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();
