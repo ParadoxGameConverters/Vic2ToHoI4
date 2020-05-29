@@ -140,20 +140,20 @@ void HoI4Focus::customizeMutualExclusion(std::shared_ptr<HoI4Focus> newFocus, co
 {
 	// have to account for several foci in one mututal exclusion, so need to look for occurences of " focus" and insert
 	// country before that
-	unsigned int stringPosition = 0;
+	std::string::size_type stringPosition = 0;
 	do
 	{
 		auto& mutuallyExclusive = newFocus->mutuallyExclusive;
-		int focusPosition = mutuallyExclusive.find(" focus = ", stringPosition);
+		auto focusPosition = mutuallyExclusive.find(" focus = ", stringPosition);
 		if (focusPosition != std::string::npos)
 		{
-			int spacePosition = mutuallyExclusive.find(" ", focusPosition + 9);
+			auto spacePosition = mutuallyExclusive.find(" ", focusPosition + static_cast<size_t>(9));
 			if (spacePosition == std::string::npos)
 			{
-				spacePosition = mutuallyExclusive.find("}", focusPosition + 9);
+				spacePosition = mutuallyExclusive.find("}", focusPosition + static_cast<size_t>(9));
 			}
 			mutuallyExclusive.insert(spacePosition, country);
-			stringPosition = focusPosition + country.size() + 9;
+			stringPosition = focusPosition + country.size() + static_cast<size_t>(9);
 		}
 		else
 		{
@@ -169,15 +169,15 @@ void HoI4Focus::customizePrerequisite(std::shared_ptr<HoI4Focus> newFocus,
 {
 	// have to account for several foci in one prerequisite, so need to look for occurences of " focus" and insert
 	// country before that
-	unsigned int stringPosition = 0;
+	size_t stringPosition = 0;
 	do
 	{
-		int focusPosition = prerequisite.find(" focus = ", stringPosition);
+		auto focusPosition = prerequisite.find(" focus = ", stringPosition);
 		if (focusPosition != std::string::npos)
 		{
-			auto spacePosition = prerequisite.find(' ', focusPosition + 9);
+			auto spacePosition = prerequisite.find(' ', focusPosition + static_cast<size_t>(9));
 			prerequisite.insert(spacePosition, country);
-			stringPosition = focusPosition + country.size() + 9;
+			stringPosition = focusPosition + country.size() + static_cast<size_t>(9);
 		}
 		else
 		{

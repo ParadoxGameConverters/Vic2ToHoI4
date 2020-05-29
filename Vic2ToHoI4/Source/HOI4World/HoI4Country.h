@@ -175,7 +175,7 @@ class Country
 	[[nodiscard]] const auto& getLeaderName() const { return leaderName; }
 	[[nodiscard]] const auto& getLeaderSurname() const { return leaderSurname; }
 
-	[[nodiscard]] int getTechnologyCount() const
+	[[nodiscard]] auto getTechnologyCount() const
 	{
 		if (theTechnologies)
 		{
@@ -183,7 +183,7 @@ class Country
 		}
 		else
 		{
-			return 0;
+			return static_cast<size_t>(0);
 		}
 	}
 	[[nodiscard]] const std::optional<technologies>& getTechnologies() const { return theTechnologies; }

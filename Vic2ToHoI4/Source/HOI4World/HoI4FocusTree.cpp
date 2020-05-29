@@ -31,7 +31,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 	Log(LogLevel::Info) << "\t\tCreating generic focus tree";
 	confirmLoadedFocuses();
 
-	int numCollectovistIdeologies = calculateNumCollectovistIdeologies(majorIdeologies);
+	auto numCollectovistIdeologies = static_cast<int> (calculateNumCollectovistIdeologies(majorIdeologies));
 
 	if (const auto& originalFocus = loadedFocuses.find("political_effort"); originalFocus != loadedFocuses.end())
 	{
@@ -305,9 +305,9 @@ void HoI4FocusTree::confirmLoadedFocuses()
 }
 
 
-int HoI4FocusTree::calculateNumCollectovistIdeologies(const set<string>& majorIdeologies)
+size_t HoI4FocusTree::calculateNumCollectovistIdeologies(const set<string>& majorIdeologies)
 {
-	int numCollectovistIdeologies = 0;
+	size_t numCollectovistIdeologies = 0;
 	numCollectovistIdeologies += majorIdeologies.count("radical");
 	numCollectovistIdeologies += majorIdeologies.count("absolutist");
 	numCollectovistIdeologies += majorIdeologies.count("communism");
@@ -643,7 +643,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 		newFocus->available = "= {\n";
 		newFocus->available += "			threat > " + to_string(0.20 * WTModifier / 1000) + "\n";
 		newFocus->available += "		}";
-		newFocus->xPos = nextFreeColumn + CountriesToContain.size() - 1;
+		newFocus->xPos = nextFreeColumn + static_cast<int> (CountriesToContain.size()) - 1;
 		focuses.push_back(newFocus);
 	}
 	else
@@ -677,7 +677,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 		throw std::runtime_error("Could not load focus Lim");
 	}
 
-	int relavtivePos = 1 - CountriesToContain.size();
+	auto relavtivePos = 1 - static_cast<int> (CountriesToContain.size());
 	for (auto country: CountriesToContain)
 	{
 		auto possibleContainedCountryName = country->getSourceCountry().getName("english");
@@ -1238,7 +1238,7 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
 		if (const auto& originalFocus = loadedFocuses.find("Home_of_Revolution"); originalFocus != loadedFocuses.end())
 		{
 			shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-			newFocus->xPos = nextFreeColumn + coupTargets.size() - 1;
+			newFocus->xPos = nextFreeColumn + static_cast<int>(coupTargets.size()) - 1;
 			newFocus->yPos = 0;
 			focuses.push_back(newFocus);
 		}
@@ -1366,7 +1366,7 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
 				}
 			}
 		}
-		nextFreeColumn += 2 * coupTargets.size();
+		nextFreeColumn += 2 * static_cast<int>(coupTargets.size());
 	}
 	return;
 }
@@ -1382,7 +1382,7 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home,
 		if (const auto& originalFocus = loadedFocuses.find("StrengthCom"); originalFocus != loadedFocuses.end())
 		{
 			shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
-			newFocus->xPos = nextFreeColumn + warTargets.size() - 1;
+			newFocus->xPos = nextFreeColumn + static_cast<int> (warTargets.size()) - 1;
 			newFocus->yPos = 0;
 			focuses.push_back(newFocus);
 		}
@@ -1480,7 +1480,7 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home,
 				}
 			}
 		}
-		nextFreeColumn += warTargets.size() * 2;
+		nextFreeColumn += static_cast<int> (warTargets.size()) * 2;
 	}
 }
 
@@ -1498,7 +1498,7 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home,
 		shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(Home->getTag());
 		if (annexationTargets.size() >= 1)
 		{
-			newFocus->xPos = nextFreeColumn + annexationTargets.size() - 1;
+			newFocus->xPos = nextFreeColumn + static_cast<int> (annexationTargets.size()) - 1;
 		}
 
 		//'else' statement is there in case annexationTargets.size() is <1.  Need to fix in the future.
@@ -1593,7 +1593,7 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home,
 	}
 	if (annexationTargets.size() >= 1)
 	{
-		nextFreeColumn += annexationTargets.size() * 2;
+		nextFreeColumn += static_cast<int> (annexationTargets.size()) * 2;
 	}
 	else
 	{
@@ -1626,7 +1626,7 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home,
 					// sudetenTargets[i]->getTag() + " }");
 				}
 			}
-			newFocus->xPos = nextFreeColumn + sudetenTargets.size() - 1;
+			newFocus->xPos = nextFreeColumn + static_cast<int> (sudetenTargets.size()) - 1;
 		}
 
 		//'else' statement is there in case sudetenTargets.size() is <1.  Need to fix in the future.
@@ -1733,7 +1733,7 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home,
 		// events
 		events.createSudetenEvent(*Home, *sudetenTargets[i], demandedStates[i]);
 	}
-	nextFreeColumn += 2 * sudetenTargets.size();
+	nextFreeColumn += 2 * static_cast<int> (sudetenTargets.size());
 }
 
 
@@ -1744,7 +1744,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 	 HoI4::Events& events,
 	 HoI4::Localisation& hoi4Localisations)
 {
-	int numAllies = newAllies.size();
+	int numAllies = static_cast<int> (newAllies.size());
 	string ideologyShort = ideology.substr(0, 3);
 	if (newAllies.size() > 0)
 	{
@@ -1755,11 +1755,11 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 			newFocus->text = ideology + "_Summit";
 			if (numAllies == 0)
 			{
-				newFocus->xPos = nextFreeColumn + newAllies.size();
+				newFocus->xPos = nextFreeColumn + static_cast<int> (newAllies.size());
 			}
 			else
 			{
-				newFocus->xPos = nextFreeColumn + newAllies.size() - 1;
+				newFocus->xPos = nextFreeColumn + static_cast<int> (newAllies.size()) - 1;
 			}
 			newFocus->yPos = 0;
 			newFocus->completionReward += "= {\n";
@@ -1929,7 +1929,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 			throw std::runtime_error("Could not load focus GP_War");
 		}
 	}
-	nextFreeColumn += 2 * max(newAllies.size(), GCTargets.size());
+	nextFreeColumn += 2 * static_cast<int> (max(newAllies.size(), GCTargets.size()));
 }
 
 
@@ -1980,8 +1980,7 @@ void HoI4FocusTree::addNeighborWarBranch(const string& tag,
 		newFocus->aiWillDo += "\n";
 		newFocus->aiWillDo += "		}";
 		newFocus->completionReward += "= {\n";
-		newFocus->completionReward +=
-			 "			add_named_threat = { threat = 3 name = \"War with " + targetName + "\" }\n";
+		newFocus->completionReward += "			add_named_threat = { threat = 3 name = \"War with " + targetName + "\" }\n";
 		newFocus->completionReward += "			create_wargoal = {\n";
 		newFocus->completionReward += "				type = annex_everything\n";
 		newFocus->completionReward += "				target = " + targetNeighbors->getTag() + "\n";

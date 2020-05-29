@@ -59,7 +59,7 @@ void Vic2::inventions::generateNums(const std::list<std::string>& inventionFiles
 void Vic2::inventions::processTechFile(const std::string& filename)
 {
 	registerRegex("[a-zA-Z0-9_.טיצü\\:\\&]+", [this](const std::string& inventionName, std::istream& theStream) {
-		inventionNumsToNames.insert(make_pair(inventionNumsToNames.size() + 1, inventionName));
+		inventionNumsToNames.insert(make_pair(static_cast<int> (inventionNumsToNames.size()) + 1, inventionName));
 		commonItems::ignoreItem(inventionName, theStream);
 	});
 

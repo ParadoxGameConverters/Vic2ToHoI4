@@ -125,7 +125,7 @@ std::string graphicsMapper::getLeaderPortrait(const std::string& cultureGroup, c
 {
 	if (auto portraits = getLeaderPortraits(cultureGroup, ideology))
 	{
-		std::uniform_int_distribution<int> firstNameGen(0, portraits->size() - 1);
+		std::uniform_int_distribution<int> firstNameGen(0, static_cast<int>(portraits->size()) - 1);
 		return (*portraits)[firstNameGen(rng)];
 	}
 	else
@@ -156,7 +156,7 @@ std::string graphicsMapper::getIdeologyMinisterPortrait(const std::string& cultu
 
 	if (portraits)
 	{
-		std::uniform_int_distribution<int> firstNameGen(0, portraits->size() - 1);
+		std::uniform_int_distribution<int> firstNameGen(0, static_cast<int>(portraits->size()) - 1);
 		return (*portraits)[firstNameGen(rng)];
 	}
 	else

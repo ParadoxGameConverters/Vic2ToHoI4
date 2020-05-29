@@ -39,36 +39,37 @@ namespace HoI4
 
 class technologies
 {
-	public:
-		technologies() = default;
-		virtual ~technologies() = default;
+  public:
+	technologies() = default;
+	virtual ~technologies() = default;
 
-		technologies(
-			const mappers::techMapper& theTechMapper,
-			const std::set<std::string>& oldTechs,
-			const std::set<std::string>& oldInventions
-		);
+	technologies(const mappers::techMapper& theTechMapper,
+		 const std::set<std::string>& oldTechs,
+		 const std::set<std::string>& oldInventions);
 
-		void setResearchBonus(const std::string& tech, int bonus);
+	void setResearchBonus(const std::string& tech, int bonus);
 
-		int getTechnologyCount() const { return mainTechnologies.size() + nonMtgNavalTechnologies.size() + mtgNavalTechnologies.size(); }
+	auto getTechnologyCount() const
+	{
+		return mainTechnologies.size() + nonMtgNavalTechnologies.size() + mtgNavalTechnologies.size();
+	}
 
-		virtual bool hasTechnology(const std::string& technology) const;
+	virtual bool hasTechnology(const std::string& technology) const;
 
 
-		[[nodiscard]] const auto& getMainTechnologies() const { return mainTechnologies; }
-		[[nodiscard]] const auto& getNonMtgNavalTechnologies() const { return nonMtgNavalTechnologies; }
-		[[nodiscard]] const auto& getMtgNavalTechnologies() const { return mtgNavalTechnologies; }
-		[[nodiscard]] const auto& getResearchBonuses() const { return researchBonuses; }
+	[[nodiscard]] const auto& getMainTechnologies() const { return mainTechnologies; }
+	[[nodiscard]] const auto& getNonMtgNavalTechnologies() const { return nonMtgNavalTechnologies; }
+	[[nodiscard]] const auto& getMtgNavalTechnologies() const { return mtgNavalTechnologies; }
+	[[nodiscard]] const auto& getResearchBonuses() const { return researchBonuses; }
 
-	private:
-		std::set<std::string> mainTechnologies;
-		std::set<std::string> nonMtgNavalTechnologies;
-		std::set<std::string> mtgNavalTechnologies;
-		std::map<std::string, int> researchBonuses;
+  private:
+	std::set<std::string> mainTechnologies;
+	std::set<std::string> nonMtgNavalTechnologies;
+	std::set<std::string> mtgNavalTechnologies;
+	std::map<std::string, int> researchBonuses;
 };
 
-}
+} // namespace HoI4
 
 
 #endif // TECHNOLGIES_H_
