@@ -28,6 +28,7 @@ void ConvertV2ToHoI4()
 		 theConfiguration->getVic2Mods(),
 		 theConfiguration->getVic2Path(),
 		 *theConfiguration);
+	Log(LogLevel::Progress) << "100%";
 	Log(LogLevel::Info) << "* Conversion complete *";
 }
 

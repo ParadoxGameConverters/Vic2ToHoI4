@@ -50,6 +50,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), peaces(make_unique<HoI4::AiPeaces>()),
 	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
 {
+	Log(LogLevel::Progress) << "24%";
 	Log(LogLevel::Info) << "Building HoI4 World";
 
 	auto vic2Localisations = sourceWorld->getLocalisations();

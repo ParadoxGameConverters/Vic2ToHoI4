@@ -61,9 +61,11 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 
+	Log(LogLevel::Progress) << "15%";
 	Log(LogLevel::Info) << "*** Importing V2 save ***";
 	parseFile(theConfiguration.getInputFile());
 
+	Log(LogLevel::Progress) << "21%";
 	Log(LogLevel::Info) << "Building Vic2 world";
 	setGreatPowerStatus(GPIndexes, tagsInOrder);
 	setProvinceOwners();

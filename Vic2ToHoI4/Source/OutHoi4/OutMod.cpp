@@ -34,6 +34,7 @@ void output(const HoI4::World& destWorld,
 	 const std::string& vic2Path,
 	 const Configuration& theConfiguration)
 {
+	Log(LogLevel::Progress) << "45%";
 	Log(LogLevel::Info) << "Outputting mod";
 
 	createOutputFolder(outputName);
