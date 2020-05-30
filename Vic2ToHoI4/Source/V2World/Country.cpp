@@ -10,8 +10,8 @@
 #include "Relations.h"
 #include "State.h"
 #include "StateDefinitions.h"
+#include "StringUtils.h"
 #include "Vic2Localisations.h"
-#include <functional>
 
 
 
@@ -67,12 +67,8 @@ Vic2::Country::Country(const std::string& theTag,
 		human = true;
 	});
 	registerKeyword("primary_culture", [this, &theCultureGroups](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString cultureString(theStream);
-		primaryCulture = cultureString.getString();
-		if (primaryCulture.substr(0, 1) == "\"")
-		{
-			primaryCulture = primaryCulture.substr(1, primaryCulture.size() - 2);
-		}
+		const commonItems::singleString cultureString(theStream);
+		primaryCulture = stringutils::remQuotes(cultureString.getString());
 		acceptedCultures.insert(primaryCulture);
 
 		auto cultureGroupOption = theCultureGroups.getGroup(primaryCulture);
@@ -141,7 +137,7 @@ Vic2::Country::Country(const std::string& theTag,
 			token = getNextTokenWithoutMatching(theStream);
 		}
 	});
-	registerRegex("[A-Z]{3}|[A-Z][0-9]{2}", [this](const std::string& countryTag, std::istream& theStream) {
+	registerRegex("[A-Z][A-Z0-9]{2}", [this](const std::string& countryTag, std::istream& theStream) {
 		Relations* rel = new Relations(countryTag, theStream);
 		relations.insert(make_pair(rel->getTag(), rel));
 	});

@@ -37,7 +37,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 
 	std::vector<std::string> tagsInOrder;
 	tagsInOrder.push_back(""); // REB (first country is index 1
-	registerRegex("[A-Z]{3}|[A-Z][0-9]{2}",
+	registerRegex("[A-Z][A-Z0-9]{2}",
 		 [&tagsInOrder, &theInventions, this](const std::string& countryTag, std::istream& theStream) {
 			 countries[countryTag] =
 				  new Country(countryTag, theStream, theInventions, theCultureGroups, *theStateDefinitions);
