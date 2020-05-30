@@ -37,25 +37,17 @@ void checkMods(const Configuration& theConfiguration)
 {
 	Log(LogLevel::Info) << "Double-checking Vic2 mods";
 
-	for (const auto& fileName: Utils::GetAllFilesInFolder(theConfiguration.getVic2Path() + "/mod"))
+	for (const auto& modFolder: Utils::GetAllSubfolders(theConfiguration.getVic2Path() + "/mod"))
 	{
-		const auto lastPeriodPos = fileName.find_last_of('.');
-		if ((lastPeriodPos != std::string::npos) && (fileName.substr(lastPeriodPos, fileName.length()) == ".mod"))
-		{
-			auto folderName = fileName.substr(0, lastPeriodPos);
-			if (Utils::DoesFolderExist(theConfiguration.getVic2Path() + "/mod/" + folderName))
-			{
-				Log(LogLevel::Info) << "\tFound mod with name " << folderName;
-			}
-		}
+		Log(LogLevel::Info) << "\tFound mod with folder name " << modFolder;
 	}
 
 	for (const auto& expectedMod: theConfiguration.getVic2Mods())
 	{
-		Log(LogLevel::Info) << "\tExpecting a mod with name " << expectedMod;
+		Log(LogLevel::Info) << "\tExpecting a mod with folder name " << expectedMod;
 		if (!Utils::DoesFolderExist(theConfiguration.getVic2Path() + "/mod/" + expectedMod))
 		{
-			throw std::runtime_error("Could not find expected mod " + expectedMod);
+			throw std::runtime_error("Could not find expected mod folder " + expectedMod);
 		}
 	}
 }
