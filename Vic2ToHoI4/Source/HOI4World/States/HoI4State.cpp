@@ -274,23 +274,25 @@ void HoI4::State::addManpower(const std::set<const Vic2::Province*>& sourceProvi
 {
 	for (auto sourceProvince: sourceProvinces)
 	{
-		bool provinceIsInState = false;
+		int numProvincesInState = 0;
+		int numProvincesInMapping = 0;
 		if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince->getNumber()))
 		{
+			numProvincesInMapping = static_cast<int>(mapping->size());
 			for (auto HoI4Province: *mapping)
 			{
 				if (isProvinceInState(HoI4Province))
 				{
-					provinceIsInState = true;
-					break;
+					numProvincesInState++;
 				}
 			}
 		}
 
-		if (provinceIsInState)
+		if (numProvincesInMapping && numProvincesInState)
 		{
-			manpower += static_cast<int>(
-				 sourceProvince->getTotalPopulation() * POP_CONVERSION_FACTOR * theConfiguration.getManpowerFactor());
+			manpower +=
+				 static_cast<int>(sourceProvince->getTotalPopulation() * POP_CONVERSION_FACTOR *
+										theConfiguration.getManpowerFactor() * numProvincesInState / numProvincesInMapping);
 		}
 	}
 }
