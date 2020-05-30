@@ -31,7 +31,7 @@ HoI4::GameRule HoI4::GameRule::Parser::parseRule(const std::string& key, std::is
 		const auto option = GameRuleOption::Parser{}.parseOption(key, theStream);
 		options.push_back(option);
 	});
-	registerRegex("[a-zA-Z0-9]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 	parseStream(theStream);
 
 	return GameRule(key, name, requiredDlc, group, icon, options);

@@ -20,11 +20,11 @@ class group: commonItems::parser
 
 group::group(std::istream& theStream)
 {
-	registerKeyword(std::regex("union"), commonItems::ignoreItem);
-	registerKeyword(std::regex("leader"), commonItems::ignoreItem);
-	registerKeyword(std::regex("unit"), commonItems::ignoreItem);
-	registerKeyword(std::regex("is_overseas"), commonItems::ignoreItem);
-	registerKeyword(std::regex("[a-zA-Z_]+"), [this](const std::string& cultureName, std::istream& theStream) {
+	registerKeyword("union", commonItems::ignoreItem);
+	registerKeyword("leader", commonItems::ignoreItem);
+	registerKeyword("unit", commonItems::ignoreItem);
+	registerKeyword("is_overseas", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, [this](const std::string& cultureName, std::istream& theStream) {
 		cultures.push_back(cultureName);
 		commonItems::ignoreItem(cultureName, theStream);
 	});
@@ -36,7 +36,7 @@ group::group(std::istream& theStream)
 
 void Vic2::cultureGroups::init(const Configuration& theConfiguration)
 {
-	registerKeyword(std::regex("[a-zA-Z_]+"), [this](const std::string& groupName, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& groupName, std::istream& theStream) {
 		group newCultureGroup(theStream);
 		for (auto culture: newCultureGroup.getCultures())
 		{

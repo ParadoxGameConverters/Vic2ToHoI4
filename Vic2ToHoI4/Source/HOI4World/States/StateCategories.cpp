@@ -9,7 +9,7 @@
 
 HoI4::StateCategories::StateCategories(const Configuration& theConfiguration)
 {
-	registerKeyword(std::regex("state_categories"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("state_categories", [this](const std::string& unused, std::istream& theStream) {
 		StateCategoryFile theFile(theStream);
 		for (auto category: theFile.getCategories())
 		{
@@ -17,9 +17,7 @@ HoI4::StateCategories::StateCategories(const Configuration& theConfiguration)
 		}
 	});
 
-	std::set<std::string> categoryFiles;
-	Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/common/state_category", categoryFiles);
-	for (auto file: categoryFiles)
+	for (const auto& file: Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/common/state_category"))
 	{
 		parseFile(theConfiguration.getHoI4Path() + "/common/state_category/" + file);
 	}

@@ -18,7 +18,7 @@ HoI4::StrategicRegion::StrategicRegion(const std::string& _filename, const Confi
 		staticModifiers = theRegion.takeStaticModifiers();
 		weather = theRegion.takeWeather();
 	});
-	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseFile(theConfiguration.getHoI4Path() + "/map/strategicregions/" + _filename);
 	clearRegisteredKeywords();

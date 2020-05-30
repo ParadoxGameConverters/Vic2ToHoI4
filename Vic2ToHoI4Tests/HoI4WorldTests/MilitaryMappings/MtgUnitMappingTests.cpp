@@ -6,7 +6,7 @@
 TEST(HoI4World_MilitaryMappings_mtgUnitMappingTests, defaultVic2TypeIsBlank)
 {
 	std::stringstream input;
-	input << "= {\n";
+	input << "{\n";
 	input << "\t}";
 
 	const HoI4::MtgUnitMapping theMapping(input);
@@ -19,10 +19,8 @@ TEST(HoI4World_MilitaryMappings_mtgUnitMappingTests, Vic2TypeCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
-	input << "\t\tlink = {\n";
 	input << "\t\t\tvic = irregular\n";
-	input << "\t\t}\n";
-	input << "\t}";
+	input << "\t\t}";
 
 	const HoI4::MtgUnitMapping theMapping(input);
 
@@ -46,15 +44,11 @@ TEST(HoI4World_MilitaryMappings_mtgUnitMappingTests, MtgUnitMappingHandlesFilled
 {
 	std::stringstream input;
 	input << "= {\n";
-	input << "\tmap = {\n";
-	input << "\t\tlink = {\n";
 	input << "\t\t\tvic = infantry\n";
 	input << "\t\t\thoi = {\n";
 	input << "\t\t\t\ttype = land\n";
 	input << "\t\t\t}\n";
-	input << "\t\t}\n";
-	input << "\t}";
-	input << "}";
+	input << "\t\t}";
 
 	const HoI4::MtgUnitMapping theMapping(input);
 	ASSERT_EQ("land", theMapping.getMapping().second[0].getType());
@@ -65,8 +59,6 @@ TEST(HoI4World_MilitaryMappings_mtgUnitMappingTests, MtgUnitMappingHandlesMultip
 {
 	std::stringstream input;
 	input << "= {\n";
-	input << "\tmap = {\n";
-	input << "\t\tlink = {\n";
 	input << "\t\t\tvic = infantry\n";
 	input << "\t\t\thoi = {\n";
 	input << "\t\t\t\ttype = land\n";
@@ -74,9 +66,7 @@ TEST(HoI4World_MilitaryMappings_mtgUnitMappingTests, MtgUnitMappingHandlesMultip
 	input << "\t\t\thoi = {\n";
 	input << "\t\t\t\ttype = sea\n";
 	input << "\t\t\t}\n";
-	input << "\t\t}\n";
-	input << "\t}";
-	input << "}";
+	input << "\t\t}";
 
 	const HoI4::MtgUnitMapping theMapping(input);
 	ASSERT_EQ("sea", theMapping.getMapping().second[1].getType());

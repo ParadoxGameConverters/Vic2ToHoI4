@@ -745,11 +745,11 @@ void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 					{
 						// Air units get placed in national stockpile.
 						auto equip = unitInfo.getEquipment();
-						unsigned int amount = unitInfo.getSize();
+						auto amount = unitInfo.getSize();
 						const auto& backup = backups.find(equip);
 						if (backup != backups.end())
 						{
-							amount /= (1 + backup->second.size());
+							amount /= (1 + static_cast<int>(backup->second.size()));
 							for (const auto& b: backup->second)
 							{
 								equipmentStockpile[b] += amount;

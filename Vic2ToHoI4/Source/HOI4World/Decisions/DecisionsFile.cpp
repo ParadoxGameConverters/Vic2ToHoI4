@@ -1,10 +1,11 @@
 #include "DecisionsFile.h"
+#include "ParserHelpers.h"
 
 
 
 void HoI4::DecisionsFile::importDecisions(const std::string& filename)
 {
-	registerKeyword(std::regex("[A-Za-z-_]+"), [this](const std::string& categoryName, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& categoryName, std::istream& theStream) {
 		const DecisionsInCategory category(categoryName, theStream);
 
 		auto categoryMerged = false;

@@ -4,7 +4,7 @@
 #include "CultureNames.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
-
+#include "ParserHelpers.h"
 
 
 std::unique_ptr<HoI4::Names> HoI4::Names::Factory::getNames(const Configuration& theConfiguration)
@@ -43,7 +43,7 @@ std::unique_ptr<HoI4::Names> HoI4::Names::Factory::getNames(const Configuration&
 void HoI4::Names::Factory::processVic2CulturesFile(const std::string& filename)
 {
 	clearRegisteredKeywords();
-	registerRegex("[A-Za-z0-9\\_]+", [this](const std::string& unused, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& unused, std::istream& theStream) {
 		CultureGroupNames theGroup(theStream);
 		for (auto& newMaleNameMapping: theGroup.takeMaleNames())
 		{
@@ -62,7 +62,7 @@ void HoI4::Names::Factory::processVic2CulturesFile(const std::string& filename)
 void HoI4::Names::Factory::processNamesFile()
 {
 	clearRegisteredKeywords();
-	registerRegex("[A-Za-z0-9\\_]+", [this](const std::string& cultureName, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& cultureName, std::istream& theStream) {
 		CultureNames cultureNames(theStream);
 		addNamesToMap(maleNames, cultureName, cultureNames.takeMaleNames());
 		addNamesToMap(femaleNames, cultureName, cultureNames.takeFemaleNames());

@@ -32,7 +32,7 @@ HoI4::DecisionsCategory HoI4::DecisionsCategory::Factory::getDecisionsCategory(c
 	registerKeyword("visibility_type", [&visibilityType](const std::string& unused, std::istream& theStream) {
 		visibilityType = commonItems::stringOfItem(theStream).getString();
 	});
-	registerRegex("[a-zA-Z0-9_]+", [&extraItems](const std::string& itemName, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [&extraItems](const std::string& itemName, std::istream& theStream) {
 		extraItems.push_back(std::make_pair(itemName, commonItems::stringOfItem(theStream).getString()));
 	});
 

@@ -1,6 +1,7 @@
 #include "Issues.h"
 #include "../../Configuration.h"
 #include "IssueHelper.h"
+#include "ParserHelpers.h"
 #include "PartiesIssueHelper.h"
 #include <vector>
 
@@ -22,14 +23,15 @@ Vic2::Issues Vic2::Issues::Parser::importIssues(const Configuration& theConfigur
 			}
 		}
 	});
-	registerRegex("[a-zA-Z0-9_]+", [&issueNames, &issueNum](const std::string& unused, std::istream& theStream) {
-		IssueHelper helper(theStream);
-		for (auto& name: helper.takeIssues())
-		{
-			issueNames.insert(std::make_pair(issueNum, name));
-			issueNum++;
-		}
-	});
+	registerRegex(commonItems::catchallRegex,
+		 [&issueNames, &issueNum](const std::string& unused, std::istream& theStream) {
+			 IssueHelper helper(theStream);
+			 for (auto& name: helper.takeIssues())
+			 {
+				 issueNames.insert(std::make_pair(issueNum, name));
+				 issueNum++;
+			 }
+		 });
 
 	parseFile(theConfiguration.getVic2Path() + "/common/issues.txt");
 

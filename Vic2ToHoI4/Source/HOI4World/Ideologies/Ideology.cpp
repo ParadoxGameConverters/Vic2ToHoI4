@@ -46,7 +46,7 @@ HoI4::Ideology::Ideology(const std::string& _ideologyName, std::istream& theStre
 		const commonItems::singleString yesNo(theStream);
 		cans.insert(std::make_pair(canString, yesNo.getString()));
 	});
-	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();

@@ -14,10 +14,11 @@ void createModFiles(const std::string& outputName);
 
 void clearOutputFolder(const std::string& outputName)
 {
-	const auto outputFolder = Utils::getCurrentDirectory() + "/output/" + outputName;
-	if (Utils::doesFolderExist(outputFolder))
+	const auto outputFolder = "output/" + outputName;
+	if (Utils::DoesFolderExist(outputFolder))
 	{
-		if (!Utils::deleteFolder(outputFolder))
+		Log(LogLevel::Info) << "Removing pre-existing copy of " << outputName;
+		if (!Utils::DeleteFolder(outputFolder))
 		{
 			throw std::runtime_error("Could not remove pre-existing output folder " + outputFolder +
 											 ". Please delete folder and try converting again.");
@@ -33,6 +34,7 @@ void output(const HoI4::World& destWorld,
 	 const std::string& vic2Path,
 	 const Configuration& theConfiguration)
 {
+	Log(LogLevel::Progress) << "45%";
 	Log(LogLevel::Info) << "Outputting mod";
 
 	createOutputFolder(outputName);
@@ -45,7 +47,7 @@ void output(const HoI4::World& destWorld,
 void createOutputFolder(const std::string& outputName)
 {
 	Log(LogLevel::Info) << "\tCopying blank mod";
-	if (!Utils::copyFolder("blankMod/output", "output/" + outputName))
+	if (!Utils::CopyFolder("blankMod/output", "output/" + outputName))
 	{
 		throw std::runtime_error("Could not copy blankMod");
 	}

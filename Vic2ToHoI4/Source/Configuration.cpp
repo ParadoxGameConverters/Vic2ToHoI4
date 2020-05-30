@@ -23,7 +23,7 @@ Configuration::Factory::Factory()
 	registerKeyword("HoI4directory", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString directoryString(theStream);
 		HoI4Path = directoryString.getString();
-		if (HoI4Path.empty() || !Utils::doesFolderExist(HoI4Path))
+		if (HoI4Path.empty() || !Utils::DoesFolderExist(HoI4Path))
 		{
 			throw std::runtime_error("No HoI4 path was specified in configuration.txt, or the path was invalid");
 		}
@@ -37,7 +37,7 @@ Configuration::Factory::Factory()
 	registerKeyword("Vic2directory", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString directoryString(theStream);
 		Vic2Path = directoryString.getString();
-		if (Vic2Path.empty() || !Utils::doesFolderExist(Vic2Path))
+		if (Vic2Path.empty() || !Utils::DoesFolderExist(Vic2Path))
 		{
 			throw std::runtime_error("No Victoria 2 path was specified in configuration.txt, or the path was invalid");
 		}
@@ -148,7 +148,7 @@ Configuration::Factory::Factory()
 			Log(LogLevel::Info) << "\tEnabling keep factions";
 		}
 	});
-	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
 

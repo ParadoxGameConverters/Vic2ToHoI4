@@ -17,7 +17,7 @@ HoI4::IdeaGroup::IdeaGroup(std::string ideaGroupName, std::istream& theStream): 
 		const commonItems::singleString designerString(theStream);
 		useListView = (designerString.getString() == "yes");
 	});
-	registerRegex("[a-zA-Z0-9\\_]+", [this](const std::string& ideaName, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& ideaName, std::istream& theStream) {
 		const Idea newIdea(ideaName, theStream);
 		ideas.push_back(newIdea);
 	});

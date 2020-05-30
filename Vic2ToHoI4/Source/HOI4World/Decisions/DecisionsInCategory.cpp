@@ -1,13 +1,14 @@
 #include "DecisionsInCategory.h"
 #include "../Events/Events.h"
 #include "DecisionsInCategory.h"
+#include "ParserHelpers.h"
 
 
 
 HoI4::DecisionsInCategory::DecisionsInCategory(std::string categoryName, std::istream& theStream):
 	 name(std::move(categoryName))
 {
-	registerKeyword(std::regex("[A-Za-z0-9_-]+"), [this](const std::string& decisionName, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& decisionName, std::istream& theStream) {
 		const decision theDecision(decisionName, theStream);
 		theDecisions.push_back(theDecision);
 	});

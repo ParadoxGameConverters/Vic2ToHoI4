@@ -5,7 +5,7 @@
 
 mappers::VersionedMappings::VersionedMappings(std::istream& theStream)
 {
-	registerKeyword(std::regex("link"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("link", [this](const std::string& unused, std::istream& theStream) {
 		const ProvinceMapping theMapping(theStream);
 		insertIntoHoI4ToVic2ProvinceMap(theMapping.getVic2Provinces(), theMapping.getHoI4Provinces());
 		insertIntoVic2ToHoI4ProvinceMap(theMapping.getVic2Provinces(), theMapping.getHoI4Provinces());

@@ -1,9 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HOI4Version.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\World.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
@@ -66,9 +63,6 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Focus.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
-    </ClCompile>
-    <ClCompile Include="..\common_items\CommonUtils.cpp">
-      <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Army.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
@@ -805,9 +799,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutLocalisation.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoI4Version.cpp">
-      <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutOnActions.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
     </ClCompile>
@@ -940,6 +931,12 @@
     </ClCompile>
     <ClCompile Include="HoI4WorldTests\IntelligenceAgencies\IntelligenceAgencyLogosTests.cpp">
       <Filter>HoI4WorldTests\IntelligenceAgencies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\CommonFunctions.cpp">
+      <Filter>Vic2ToHoI4 files\common items</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\OSCommonLayer.cpp">
+      <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

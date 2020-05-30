@@ -13,7 +13,7 @@ HoI4::PossibleShipVariants::PossibleShipVariants(std::istream& theStream)
 		const LegacyShipVariant theShipVariant(theStream);
 		legacyVariants.push_back(theShipVariant);
 	});
-	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();

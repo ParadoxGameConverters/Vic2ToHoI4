@@ -26,7 +26,7 @@ HoI4::GameRuleOption HoI4::GameRuleOption::Parser::parseOption(const std::string
 		const commonItems::singleString allowString(theStream);
 		allowAchievements = allowString.getString() == "yes";
 	});
-	registerRegex("[a-zA-Z0-9]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 	parseStream(theStream);
 
 	return GameRuleOption(key == "default", name, text, description, allowAchievements);

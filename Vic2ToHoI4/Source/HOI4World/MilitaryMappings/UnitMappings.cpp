@@ -12,7 +12,7 @@ HoI4::UnitMappings::UnitMappings(std::istream& theStream)
 			unitMap.insert(*mapping);
 		}
 	});
-	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();

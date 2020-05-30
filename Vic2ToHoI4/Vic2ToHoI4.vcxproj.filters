@@ -170,9 +170,6 @@
     <ClCompile Include="..\common_items\WinUtils.cpp">
       <Filter>CommonItems</Filter>
     </ClCompile>
-    <ClCompile Include="..\common_items\CommonUtils.cpp">
-      <Filter>CommonItems</Filter>
-    </ClCompile>
     <ClCompile Include="Source\targa.cpp" />
     <ClCompile Include="Source\Mappers\GovernmentMapper.cpp">
       <Filter>Mappers</Filter>
@@ -180,17 +177,11 @@
     <ClCompile Include="Source\Mappers\CountryMapping.cpp">
       <Filter>Mappers</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\HOI4Version.cpp">
-      <Filter>HoI4World</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\HoI4FocusTree.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\HoI4Focus.cpp">
       <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="..\common_items\CardinalToOrdinal.cpp">
-      <Filter>CommonItems</Filter>
     </ClCompile>
     <ClCompile Include="Source\Mappers\GraphicsMapper.cpp">
       <Filter>Mappers</Filter>
@@ -721,9 +712,6 @@
     <ClCompile Include="Source\OutHoi4\OutLocalisation.cpp">
       <Filter>OutHoi4</Filter>
     </ClCompile>
-    <ClCompile Include="Source\OutHoi4\OutHoI4Version.cpp">
-      <Filter>OutHoi4</Filter>
-    </ClCompile>
     <ClCompile Include="Source\OutHoi4\OutOnActions.cpp">
       <Filter>OutHoi4</Filter>
     </ClCompile>
@@ -827,6 +815,12 @@
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp">
       <Filter>HoI4World\IntelligenceAgencies</Filter>
     </ClCompile>
+    <ClCompile Include="..\common_items\CommonFunctions.cpp">
+      <Filter>CommonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\OSCommonLayer.cpp">
+      <Filter>CommonItems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -856,17 +850,11 @@
     <ClInclude Include="Source\Mappers\CountryMapping.h">
       <Filter>Mappers</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\HOI4Version.h">
-      <Filter>HoI4World</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\HoI4FocusTree.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\HoI4Focus.h">
       <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="..\common_items\CardinalToOrdinal.h">
-      <Filter>CommonItems</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\GraphicsMapper.h">
       <Filter>Mappers</Filter>
@@ -1445,9 +1433,6 @@
     <ClInclude Include="Source\OutHoi4\OutLocalisation.h">
       <Filter>OutHoi4</Filter>
     </ClInclude>
-    <ClInclude Include="Source\OutHoi4\OutHoI4Version.h">
-      <Filter>OutHoi4</Filter>
-    </ClInclude>
     <ClInclude Include="Source\OutHoi4\OutOnActions.h">
       <Filter>OutHoi4</Filter>
     </ClInclude>
@@ -1558,6 +1543,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.h">
       <Filter>HoI4World\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common_items\CommonFunctions.h">
+      <Filter>CommonItems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -18005,5 +17993,8 @@
     <CopyFileToFolders Include="Data_Files\IntelligenceAgencyLogos.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Copy_Files.bat" />
   </ItemGroup>
 </Project>

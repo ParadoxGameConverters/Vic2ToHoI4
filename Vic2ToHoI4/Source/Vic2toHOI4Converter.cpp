@@ -28,6 +28,7 @@ void ConvertV2ToHoI4()
 		 theConfiguration->getVic2Mods(),
 		 theConfiguration->getVic2Path(),
 		 *theConfiguration);
+	Log(LogLevel::Progress) << "100%";
 	Log(LogLevel::Info) << "* Conversion complete *";
 }
 
@@ -36,15 +37,13 @@ void checkMods(const Configuration& theConfiguration)
 {
 	Log(LogLevel::Info) << "Double-checking Vic2 mods";
 
-	std::set<std::string> fileNames;
-	Utils::GetAllFilesInFolder(theConfiguration.getVic2Path() + "/mod", fileNames);
-	for (const auto& fileName: fileNames)
+	for (const auto& fileName: Utils::GetAllFilesInFolder(theConfiguration.getVic2Path() + "/mod"))
 	{
 		const auto lastPeriodPos = fileName.find_last_of('.');
 		if ((lastPeriodPos != std::string::npos) && (fileName.substr(lastPeriodPos, fileName.length()) == ".mod"))
 		{
 			auto folderName = fileName.substr(0, lastPeriodPos);
-			if (Utils::doesFolderExist(theConfiguration.getVic2Path() + "/mod/" + folderName))
+			if (Utils::DoesFolderExist(theConfiguration.getVic2Path() + "/mod/" + folderName))
 			{
 				Log(LogLevel::Info) << "\tFound mod with name " << folderName;
 			}
@@ -54,7 +53,7 @@ void checkMods(const Configuration& theConfiguration)
 	for (const auto& expectedMod: theConfiguration.getVic2Mods())
 	{
 		Log(LogLevel::Info) << "\tExpecting a mod with name " << expectedMod;
-		if (!Utils::doesFolderExist(theConfiguration.getVic2Path() + "/mod/" + expectedMod))
+		if (!Utils::DoesFolderExist(theConfiguration.getVic2Path() + "/mod/" + expectedMod))
 		{
 			throw std::runtime_error("Could not find expected mod " + expectedMod);
 		}

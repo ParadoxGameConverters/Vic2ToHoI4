@@ -21,10 +21,11 @@ HoI4::decision::decision(std::string decisionName, std::istream& theStream): nam
 		const commonItems::stringOfItem theAllowed(theStream);
 		allowed = theAllowed.getString();
 	});
-	registerRegex("highlight_state_targets|highlight_states", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::stringOfItem theHighlightStates(theStream);
-		highlightStateTargets = theHighlightStates.getString();
-	});
+	registerRegex("highlight_state_targets|highlight_states",
+		 [this](const std::string& unused, std::istream& theStream) {
+			 const commonItems::stringOfItem theHighlightStates(theStream);
+			 highlightStateTargets = theHighlightStates.getString();
+		 });
 	registerKeyword("available", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::stringOfItem theAvailable(theStream);
 		available = theAvailable.getString();
@@ -125,7 +126,7 @@ HoI4::decision::decision(std::string decisionName, std::istream& theStream): nam
 		const commonItems::stringOfItem theModifier(theStream);
 		modifier = theModifier.getString();
 	});
-	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();

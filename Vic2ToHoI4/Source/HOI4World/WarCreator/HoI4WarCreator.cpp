@@ -237,20 +237,21 @@ void HoI4WarCreator::generateAdditionalWars(ofstream& AILog,
 {
 	auto countriesEvilnessSorted = findEvilCountries();
 
-	for (int i = countriesEvilnessSorted.size() - 1; i >= 0; i--)
+	for (auto country = countriesEvilnessSorted.rbegin(); country != countriesEvilnessSorted.rend(); country++)
 	{
-		if (!isImportantCountry(countriesEvilnessSorted[i]))
+		if (!isImportantCountry(*country))
 		{
 			if (theConfiguration.getDebug())
 			{
-				auto name = countriesEvilnessSorted[i]->getSourceCountry().getName("english");
+				auto name = (*country)->getSourceCountry().getName("english");
 				if (name)
 				{
 					AILog << "Checking for war in " + *name << "\n";
 				}
 			}
 			vector<shared_ptr<HoI4::Faction>> newCountriesatWar;
-			newCountriesatWar = neighborWarCreator(countriesEvilnessSorted[i],
+			newCountriesatWar =
+				 neighborWarCreator(*country,
 				 AILog,
 				 theMapData,
 				 provinceDefinitions,

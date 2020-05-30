@@ -14,18 +14,18 @@ Vic2::State::State(std::istream& theStream,
 	 const Vic2::StateDefinitions& theStateDefinitions):
 	 owner(ownerTag)
 {
-	registerKeyword(std::regex("provinces"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("provinces", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::intList provinceList(theStream);
 		for (auto province: provinceList.getInts())
 		{
 			provinceNums.insert(province);
 		}
 	});
-	registerKeyword(std::regex("state_buildings"), [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("state_buildings", [this](const std::string& unused, std::istream& theStream) {
 		Building theBuilding(theStream);
 		factoryLevel += theBuilding.getLevel();
 	});
-	registerKeyword(std::regex("[A-Za-z0-9_]+"), commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
 	setID(theStateDefinitions);

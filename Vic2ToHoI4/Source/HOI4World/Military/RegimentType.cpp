@@ -13,7 +13,7 @@ HoI4::RegimentType::RegimentType(const std::string& _type, std::istream& theStre
 		const commonItems::singleInt yInt(theStream);
 		y = yInt.getInt();
 	});
-	registerRegex("[a-zA-Z0-9_]+", commonItems::ignoreItem);
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
 	clearRegisteredKeywords();

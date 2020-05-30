@@ -6,7 +6,7 @@
 
 
 
-std::string getNextLocalisation(const std::string& line, int& division);
+std::string getNextLocalisation(const std::string& line, size_t& division);
 
 
 std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Parser::importLocalisations(
@@ -33,10 +33,7 @@ std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Parser::importLocalisa
 
 void Vic2::Localisations::Parser::ReadFromAllFilesInFolder(const std::string& folderPath)
 {
-	std::set<std::string> fileNames;
-	Utils::GetAllFilesInFolder(folderPath, fileNames);
-
-	for (const auto& fileName: fileNames)
+	for (const auto& fileName: Utils::GetAllFilesInFolder(folderPath))
 	{
 		ReadFromFile(folderPath + '/' + fileName);
 	}
@@ -76,7 +73,7 @@ const std::string languages[] = {"english",
 	 "finnish"};
 void Vic2::Localisations::Parser::processLine(const std::string& line)
 {
-	int division = line.find_first_of(';');
+	auto division = line.find_first_of(';');
 	const auto key = line.substr(0, division);
 
 	for (const auto& language: languages)
@@ -116,7 +113,7 @@ void Vic2::Localisations::Parser::processLine(const std::string& line)
 }
 
 
-std::string getNextLocalisation(const std::string& line, int& division)
+std::string getNextLocalisation(const std::string& line, size_t& division)
 {
 	const auto frontDivision = division + 1;
 	division = line.find_first_of(';', frontDivision);
