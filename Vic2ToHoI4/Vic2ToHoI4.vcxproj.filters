@@ -17994,4 +17994,7 @@
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Copy_Files.bat" />
+  </ItemGroup>
 </Project>
