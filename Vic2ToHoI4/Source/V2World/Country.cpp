@@ -141,11 +141,7 @@ Vic2::Country::Country(const std::string& theTag,
 			token = getNextTokenWithoutMatching(theStream);
 		}
 	});
-	registerRegex("[A-Z]{3}", [this](const std::string& countryTag, std::istream& theStream) {
-		Relations* rel = new Relations(countryTag, theStream);
-		relations.insert(make_pair(rel->getTag(), rel));
-	});
-	registerRegex("[A-Z][0-9]{2}", [this](const std::string& countryTag, std::istream& theStream) {
+	registerRegex("[A-Z]{3}|[A-Z][0-9]{2}", [this](const std::string& countryTag, std::istream& theStream) {
 		Relations* rel = new Relations(countryTag, theStream);
 		relations.insert(make_pair(rel->getTag(), rel));
 	});

@@ -205,7 +205,6 @@
     <ClCompile Include="Source\OutHoi4\OutFocus.cpp" />
     <ClCompile Include="Source\OutHoi4\OutFocusTree.cpp" />
     <ClCompile Include="Source\OutHoi4\OutHoi4Country.cpp" />
-    <ClCompile Include="Source\OutHoi4\OutHoI4Version.cpp" />
     <ClCompile Include="Source\OutHoi4\OutHoi4World.cpp" />
     <ClCompile Include="Source\OutHoi4\OutLocalisation.cpp" />
     <ClCompile Include="Source\OutHoi4\OutMod.cpp" />
@@ -253,7 +252,6 @@
     <ClCompile Include="Source\HOI4World\HoI4Focus.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4FocusTree.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4Localisation.cpp" />
-    <ClCompile Include="Source\HOI4World\HOI4Version.cpp" />
     <ClCompile Include="Source\HOI4World\HoI4World.cpp" />
     <ClCompile Include="Source\HOI4World\Ideas\Idea.cpp" />
     <ClCompile Include="Source\HOI4World\Ideas\IdeaGroup.cpp" />
@@ -437,7 +435,6 @@
     <ClInclude Include="Source\OutHoi4\outDifficultySettings.h" />
     <ClInclude Include="Source\OutHoi4\OutFocus.h" />
     <ClInclude Include="Source\OutHoi4\OutFocusTree.h" />
-    <ClInclude Include="Source\OutHoi4\OutHoI4Version.h" />
     <ClInclude Include="Source\OutHoi4\OutHoi4World.h" />
     <ClInclude Include="Source\OutHoi4\OutLocalisation.h" />
     <ClInclude Include="Source\OutHoi4\OutMod.h" />
@@ -487,7 +484,6 @@
     <ClInclude Include="Source\HOI4World\HoI4Focus.h" />
     <ClInclude Include="Source\HOI4World\HoI4FocusTree.h" />
     <ClInclude Include="Source\HOI4World\HoI4Localisation.h" />
-    <ClInclude Include="Source\HOI4World\HOI4Version.h" />
     <ClInclude Include="Source\HOI4World\HoI4World.h" />
     <ClInclude Include="Source\HOI4World\Ideas\Idea.h" />
     <ClInclude Include="Source\HOI4World\Ideas\IdeaGroup.h" />

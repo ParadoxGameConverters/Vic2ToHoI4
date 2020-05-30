@@ -1,7 +1,7 @@
 #include "Issues.h"
-#include "../../../../Fronter/commonItems/ParserHelpers.h"
 #include "../../Configuration.h"
 #include "IssueHelper.h"
+#include "ParserHelpers.h"
 #include "PartiesIssueHelper.h"
 #include <vector>
 

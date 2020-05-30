@@ -115,7 +115,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\outDifficultySettings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFocus.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFocusTree.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoI4Version.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoi4World.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutLocalisation.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutMod.cpp" />
@@ -159,7 +158,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Focus.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4FocusTree.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Localisation.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HOI4Version.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4World.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\Idea.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\IdeaGroup.cpp" />

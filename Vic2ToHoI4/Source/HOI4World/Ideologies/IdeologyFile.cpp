@@ -1,6 +1,6 @@
 #include "IdeologyFile.h"
-#include "../../../../Fronter/commonItems/ParserHelpers.h"
 #include "Ideology.h"
+#include "ParserHelpers.h"
 
 
 

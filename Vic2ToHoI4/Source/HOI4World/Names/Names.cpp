@@ -1,10 +1,10 @@
 #include "Names.h"
-#include "../../../../Fronter/commonItems/ParserHelpers.h"
 #include "../../Configuration.h"
 #include "CultureGroupNames.h"
 #include "CultureNames.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
+#include "ParserHelpers.h"
 
 
 std::unique_ptr<HoI4::Names> HoI4::Names::Factory::getNames(const Configuration& theConfiguration)
