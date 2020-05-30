@@ -13,8 +13,11 @@ std::unique_ptr<HoI4::Names> HoI4::Names::Factory::getNames(const Configuration&
 
 	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
-		Log(LogLevel::Debug) << "Reading mod cultures from " << mod;
-		processVic2CulturesFile(theConfiguration.getVic2Path() + "/mod/" + mod + "/common/cultures.txt");
+		if (Utils::DoesFileExist(theConfiguration.getVic2Path() + "/mod/" + mod + "/common/cultures.txt"))
+		{
+			Log(LogLevel::Debug) << "Reading mod cultures from " << mod;
+			processVic2CulturesFile(theConfiguration.getVic2Path() + "/mod/" + mod + "/common/cultures.txt");
+		}
 	}
 
 	processVic2CulturesFile(theConfiguration.getVic2Path() + "/common/cultures.txt");
