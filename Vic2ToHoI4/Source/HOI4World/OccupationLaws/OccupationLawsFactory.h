@@ -3,10 +3,9 @@
 
 
 
-#include "OccupationsLaws.h"
-#include "Parser.h"
 #include "../../Configuration.h"
-
+#include "OccupationLaws.h"
+#include "Parser.h"
 
 
 namespace HoI4

@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/OccupationLaws/OccupationsLaws.h"
+#include "../../HOI4World/OccupationLaws/OccupationLaws.h"
 #include "../../Configuration.h"
 
 

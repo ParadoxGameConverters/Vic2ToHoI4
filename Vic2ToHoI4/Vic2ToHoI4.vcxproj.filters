@@ -833,12 +833,6 @@
     <ClCompile Include="Source\OutHoi4\OccupationLaws\OutOccupationLaw.cpp">
       <Filter>OutHoi4\OccupationLaws</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLaws.cpp">
-      <Filter>HoI4World\OccupationLaws</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLaw.cpp">
-      <Filter>HoI4World\OccupationLaws</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLawFactory.cpp">
       <Filter>HoI4World\OccupationLaws</Filter>
     </ClCompile>

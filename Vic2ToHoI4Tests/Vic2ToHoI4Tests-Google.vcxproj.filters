@@ -944,17 +944,17 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OccupationLaws\OutOccupationLaws.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\OccupationLaws</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLaw.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\OccupationLaws</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawFactory.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\OccupationLaws</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLaws.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\OccupationLaws</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawsFactory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawsFactoryTests.cpp">
+      <Filter>HoI4WorldTests\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawFactoryTests.cpp">
+      <Filter>HoI4WorldTests\OccupationLaws</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1165,6 +1165,9 @@
     <Filter Include="Vic2ToHoI4 files\HoI4\OccupationLaws">
       <UniqueIdentifier>{d807c912-5c31-4396-a763-073360b46ed6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4WorldTests\OccupationLaws">
+      <UniqueIdentifier>{a6c19482-bd44-497d-b5d3-c6d3ef1570ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1224,6 +1227,12 @@
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\IntelligenceAgencyLogos.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\EmptyOccupationLaws.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\OccupationLaws.txt">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
   </ItemGroup>
