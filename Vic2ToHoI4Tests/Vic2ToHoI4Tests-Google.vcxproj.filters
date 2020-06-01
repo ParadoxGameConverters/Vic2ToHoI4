@@ -938,6 +938,24 @@
     <ClCompile Include="..\common_items\OSCommonLayer.cpp">
       <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OccupationLaws\OutOccupationLaw.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OccupationLaws\OutOccupationLaws.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLaw.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLaws.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawsFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\OccupationLaws</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1140,6 +1158,12 @@
     </Filter>
     <Filter Include="HoI4WorldTests\IntelligenceAgencies">
       <UniqueIdentifier>{fa528b03-a59e-48a5-82b8-c7cbb22779e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\OccupationLaws">
+      <UniqueIdentifier>{ec3bfc49-e76d-43f3-8455-49862c7d074e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\OccupationLaws">
+      <UniqueIdentifier>{d807c912-5c31-4396-a763-073360b46ed6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

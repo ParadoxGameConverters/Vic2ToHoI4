@@ -64,6 +64,10 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureGroupNames.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureNames.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\Names.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLaw.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLaws.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp" />
@@ -82,6 +86,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OccupationLaws\OutOccupationLaw.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OccupationLaws\OutOccupationLaws.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutColor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFlags.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoi4Country.cpp" />

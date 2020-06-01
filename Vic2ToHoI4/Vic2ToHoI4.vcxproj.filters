@@ -148,6 +148,12 @@
     <Filter Include="HoI4World\Names">
       <UniqueIdentifier>{bd5d3a55-000c-4ca1-b9e1-c3116390cbc9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OutHoi4\OccupationLaws">
+      <UniqueIdentifier>{2997951f-b83e-4205-ae49-6a5cd83715f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4World\OccupationLaws">
+      <UniqueIdentifier>{48dc0922-62a2-45ba-9807-2d9fedf1c611}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -820,6 +826,24 @@
     </ClCompile>
     <ClCompile Include="..\common_items\OSCommonLayer.cpp">
       <Filter>CommonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\OccupationLaws\OutOccupationLaws.cpp">
+      <Filter>OutHoi4\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\OccupationLaws\OutOccupationLaw.cpp">
+      <Filter>OutHoi4\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLaws.cpp">
+      <Filter>HoI4World\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLaw.cpp">
+      <Filter>HoI4World\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLawFactory.cpp">
+      <Filter>HoI4World\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLawsFactory.cpp">
+      <Filter>HoI4World\OccupationLaws</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1546,6 +1570,24 @@
     </ClInclude>
     <ClInclude Include="..\common_items\CommonFunctions.h">
       <Filter>CommonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\OccupationLaws\OutOccupationLaws.h">
+      <Filter>OutHoi4\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\OccupationLaws\OutOccupationLaw.h">
+      <Filter>OutHoi4\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationsLaws.h">
+      <Filter>HoI4World\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLaw.h">
+      <Filter>HoI4World\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLawFactory.h">
+      <Filter>HoI4World\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLawsFactory.h">
+      <Filter>HoI4World\OccupationLaws</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

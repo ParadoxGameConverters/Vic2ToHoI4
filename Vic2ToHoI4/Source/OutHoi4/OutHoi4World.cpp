@@ -21,6 +21,7 @@
 #include "States/OutHoI4States.h"
 #include "outDifficultySettings.h"
 #include <fstream>
+#include "OccupationLaws/OutOccupationLaws.h"
 
 
 namespace HoI4
@@ -185,6 +186,7 @@ void HoI4::OutputWorld(const World& world,
 	outputScriptedTriggers(world.getScriptedTriggers(), outputName);
 	outputDifficultySettings(world.getGreatPowers(), outputName);
 	outputGameRules(world.getGameRules(), outputName);
+	outputOccupationLaws(world.getOccupationLaws(), theConfiguration);
 	outputIntelligenceAgencies(*world.getIntelligenceAgencies(), outputName);
 }
 
