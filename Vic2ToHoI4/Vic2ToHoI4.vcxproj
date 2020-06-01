@@ -392,7 +392,7 @@
     <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLaw.h" />
     <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLawFactory.h" />
     <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLawsFactory.h" />
-    <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationsLaws.h" />
+    <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLaws.h" />
     <ClInclude Include="Source\HOI4World\ProvinceDefinitions.h" />
     <ClInclude Include="Source\HOI4World\SharedFocus.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />

@@ -1577,9 +1577,6 @@
     <ClInclude Include="Source\OutHoi4\OccupationLaws\OutOccupationLaw.h">
       <Filter>OutHoi4\OccupationLaws</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationsLaws.h">
-      <Filter>HoI4World\OccupationLaws</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLaw.h">
       <Filter>HoI4World\OccupationLaws</Filter>
     </ClInclude>
@@ -1587,6 +1584,9 @@
       <Filter>HoI4World\OccupationLaws</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLawsFactory.h">
+      <Filter>HoI4World\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLaws.h">
       <Filter>HoI4World\OccupationLaws</Filter>
     </ClInclude>
   </ItemGroup>
