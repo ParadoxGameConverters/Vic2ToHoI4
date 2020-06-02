@@ -31,6 +31,7 @@ HoI4::OccupationLaw::Factory::Factory()
 	registerKeyword("ai_will_do", [this](const std::string& unused, std::istream& theStream) {
 		occupationLaw->setAiWillDo(commonItems::stringOfItem(theStream).getString());
 	});
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
 
