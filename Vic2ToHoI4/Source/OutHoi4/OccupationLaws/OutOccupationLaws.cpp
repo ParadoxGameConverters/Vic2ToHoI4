@@ -22,6 +22,7 @@ void HoI4::outputOccupationLaws(const OccupationLaws& occupationLaws, const Conf
 	for (const auto& occupationLaw: occupationLaws.getOccupationLaws())
 	{
 		output << occupationLaw;
+		output << "\n";
 	}
 
 	output.close();
