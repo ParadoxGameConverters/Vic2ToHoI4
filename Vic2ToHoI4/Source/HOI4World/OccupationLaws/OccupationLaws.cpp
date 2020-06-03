@@ -14,4 +14,14 @@ void HoI4::OccupationLaws::updateLaws(const std::set<std::string>& majorIdeologi
 										 }),
 			 occupationLaws.end());
 	}
+
+	if (!majorIdeologies.count("communism"))
+	{
+		occupationLaws.erase(std::remove_if(occupationLaws.begin(),
+										 occupationLaws.end(),
+										 [](const OccupationLaw& law) {
+											 return law.getName() == "liberate_workers_occupation";
+										 }),
+			 occupationLaws.end());
+	}
 }
