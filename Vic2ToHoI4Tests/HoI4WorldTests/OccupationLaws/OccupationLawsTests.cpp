@@ -55,3 +55,30 @@ TEST(HoI4World_OccupationLaws_OccupationLaws, LiberateWorkersOccupationRemainsIf
 	ASSERT_FALSE(laws.getOccupationLaws().empty());
 	ASSERT_EQ("liberate_workers_occupation", laws.getOccupationLaws()[0].getName());
 }
+
+
+TEST(HoI4World_OccupationLaws_OccupationLaws, BrutallyOppressiveOccupationRemovedIfNoCommunism)
+{
+	HoI4::OccupationLaw brutallyOppressiveOccupation;
+	brutallyOppressiveOccupation.setName("brutally_oppressive_occupation");
+
+	HoI4::OccupationLaws laws;
+	laws.giveOccupationLaw(std::move(brutallyOppressiveOccupation));
+
+	laws.updateLaws({});
+	ASSERT_TRUE(laws.getOccupationLaws().empty());
+}
+
+
+TEST(HoI4World_OccupationLaws_OccupationLaws, BrutallyOppressiveOccupationRemainsIfFascism)
+{
+	HoI4::OccupationLaw brutallyOppressiveOccupation;
+	brutallyOppressiveOccupation.setName("brutally_oppressive_occupation");
+
+	HoI4::OccupationLaws laws;
+	laws.giveOccupationLaw(std::move(brutallyOppressiveOccupation));
+
+	laws.updateLaws({"fascism"});
+	ASSERT_FALSE(laws.getOccupationLaws().empty());
+	ASSERT_EQ("brutally_oppressive_occupation", laws.getOccupationLaws()[0].getName());
+}
