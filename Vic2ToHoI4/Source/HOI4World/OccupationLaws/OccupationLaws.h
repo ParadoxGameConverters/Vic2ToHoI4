@@ -4,6 +4,7 @@
 
 
 #include "OccupationLaw.h"
+#include <set>
 #include <vector>
 
 
@@ -18,6 +19,8 @@ class OccupationLaws
 	[[nodiscard]] const auto& getOccupationLaws() const { return occupationLaws; }
 
 	void giveOccupationLaw(OccupationLaw&& occupationLaw) { occupationLaws.emplace_back(occupationLaw); }
+
+	void updateLaws(const std::set<std::string>& majorIdeologies);
 
   private:
 	std::vector<OccupationLaw> occupationLaws;

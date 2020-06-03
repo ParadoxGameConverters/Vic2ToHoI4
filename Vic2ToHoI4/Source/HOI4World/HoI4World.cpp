@@ -147,6 +147,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	gameRules->updateRules();
 
 	occupationLaws = OccupationLaws::Factory{}.getOccupationLaws(theConfiguration);
+	occupationLaws->updateLaws(ideologies->getMajorIdeologies());
 }
 
 

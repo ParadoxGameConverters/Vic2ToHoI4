@@ -155,6 +155,7 @@
     <ClCompile Include="Source\HOI4World\Names\CultureNames.cpp" />
     <ClCompile Include="Source\HOI4World\Names\Names.cpp" />
     <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLawFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLaws.cpp" />
     <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLawsFactory.cpp" />
     <ClCompile Include="Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecision.cpp" />

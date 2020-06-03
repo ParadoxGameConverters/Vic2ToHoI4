@@ -839,6 +839,9 @@
     <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLawsFactory.cpp">
       <Filter>HoI4World\OccupationLaws</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLaws.cpp">
+      <Filter>HoI4World\OccupationLaws</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">

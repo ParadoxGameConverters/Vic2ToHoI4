@@ -65,6 +65,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureNames.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\Names.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLaws.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
@@ -329,6 +330,7 @@
     <ClCompile Include="HoI4WorldTests\Navies\NaviesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawsFactoryTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedTriggers\ScriptedTriggerTests.cpp" />

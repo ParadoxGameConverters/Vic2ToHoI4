@@ -956,6 +956,12 @@
     <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawFactoryTests.cpp">
       <Filter>HoI4WorldTests\OccupationLaws</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawsTests.cpp">
+      <Filter>HoI4WorldTests\OccupationLaws</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLaws.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\OccupationLaws</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
