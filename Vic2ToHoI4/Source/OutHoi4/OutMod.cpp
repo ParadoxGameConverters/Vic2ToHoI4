@@ -47,6 +47,10 @@ void output(const HoI4::World& destWorld,
 void createOutputFolder(const std::string& outputName)
 {
 	Log(LogLevel::Info) << "\tCopying blank mod";
+	if (!Utils::TryCreateFolder("output"))
+	{
+		throw std::runtime_error("Could not create output folder");
+	}
 	if (!Utils::CopyFolder("blankMod/output", "output/" + outputName))
 	{
 		throw std::runtime_error("Could not copy blankMod");
