@@ -17,24 +17,27 @@ void HoI4::OccupationLaws::updateLaws(const std::set<std::string>& majorIdeologi
 		auto noGarrisonLaw = std::find_if(occupationLaws.begin(), occupationLaws.end(), [](const OccupationLaw& law) {
 			return law.getName() == "no_garrison";
 		});
-		noGarrisonLaw->setAiWillDo(
-			 "= {\n"
-			 "\t\tbase = 0\n"
-			 "\n"
-			 "\t\t# if losing, get manpower & equipment back\n"
-			 "\t\tmodifier = {\n"
-			 "\t\t\tFROM = {\n"
-			 "\t\t\t\tsurrender_progress > 0.15\n"
-			 "\t\t\t}\n"
-			 "\t\t\tadd = 100\n"
-			 "\t\t}\n"
-			 "\t\tmodifier = {\n"
-			 "\t\t\tFROM = {\n"
-			 "\t\t\t\tsurrender_progress > 0.4\n"
-			 "\t\t\t}\n"
-			 "\t\t\tadd = 500\n"
-			 "\t\t}\n"
-			 "\t}");
+		if (noGarrisonLaw != occupationLaws.end())
+		{
+			noGarrisonLaw->setAiWillDo(
+				 "= {\n"
+				 "\t\tbase = 0\n"
+				 "\n"
+				 "\t\t# if losing, get manpower & equipment back\n"
+				 "\t\tmodifier = {\n"
+				 "\t\t\tFROM = {\n"
+				 "\t\t\t\tsurrender_progress > 0.15\n"
+				 "\t\t\t}\n"
+				 "\t\t\tadd = 100\n"
+				 "\t\t}\n"
+				 "\t\tmodifier = {\n"
+				 "\t\t\tFROM = {\n"
+				 "\t\t\t\tsurrender_progress > 0.4\n"
+				 "\t\t\t}\n"
+				 "\t\t\tadd = 500\n"
+				 "\t\t}\n"
+				 "\t}");
+		}
 	}
 
 	if (!majorIdeologies.count("communism"))
