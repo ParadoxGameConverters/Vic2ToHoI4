@@ -104,7 +104,7 @@ TEST(HoI4World_OccupationLaws_OccupationLaws, LiberateWorkersOccupationRemainsIf
 }
 
 
-TEST(HoI4World_OccupationLaws_OccupationLaws, BrutallyOppressiveOccupationRemovedIfNoCommunism)
+TEST(HoI4World_OccupationLaws_OccupationLaws, BrutallyOppressiveOccupationRemovedIfNoFascism)
 {
 	HoI4::OccupationLaw brutallyOppressiveOccupation;
 	brutallyOppressiveOccupation.setName("brutally_oppressive_occupation");
