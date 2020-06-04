@@ -31,6 +31,7 @@
 #include <set>
 #include <string>
 #include <vector>
+#include "OccupationLaws/OccupationLawsFactory.h"
 
 
 
@@ -103,6 +104,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getPeaces() const { return *peaces; }
 	[[nodiscard]] const auto& getIdeologies() const { return *ideologies; }
 	[[nodiscard]] const auto& getTheIdeas() const { return *theIdeas; }
+	[[nodiscard]] const auto& getOccupationLaws() const { return *occupationLaws; }
 	[[nodiscard]] const auto& getScriptedLocalisations() const { return scriptedLocalisations; }
 	[[nodiscard]] const auto& getScriptedTriggers() const { return scriptedTriggers; }
 	[[nodiscard]] const auto& getGameRules() const { return *gameRules; }
@@ -216,6 +218,7 @@ class World: commonItems::parser
 	std::map<std::string, std::vector<std::string>> ideologicalLeaderTraits;
 	std::map<std::string, HoI4::Advisor> ideologicalAdvisors;
 	std::unique_ptr<HoI4::Ideas> theIdeas;
+	std::unique_ptr<OccupationLaws> occupationLaws;
 
 	std::vector<std::shared_ptr<Faction>> factions;
 	std::unique_ptr<HoI4::decisions> theDecisions;

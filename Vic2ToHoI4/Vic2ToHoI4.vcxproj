@@ -154,6 +154,9 @@
     <ClCompile Include="Source\HOI4World\Names\CultureGroupNames.cpp" />
     <ClCompile Include="Source\HOI4World\Names\CultureNames.cpp" />
     <ClCompile Include="Source\HOI4World\Names\Names.cpp" />
+    <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLawFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLaws.cpp" />
+    <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLawsFactory.cpp" />
     <ClCompile Include="Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
@@ -199,6 +202,8 @@
     <ClCompile Include="Source\OutHoi4\Navies\OutLegacyShipTypeNames.cpp" />
     <ClCompile Include="Source\OutHoi4\Navies\OutMtgNavyNames.cpp" />
     <ClCompile Include="Source\OutHoi4\Navies\OutMtgShipTypeNames.cpp" />
+    <ClCompile Include="Source\OutHoi4\OccupationLaws\OutOccupationLaw.cpp" />
+    <ClCompile Include="Source\OutHoi4\OccupationLaws\OutOccupationLaws.cpp" />
     <ClCompile Include="Source\OutHoi4\OutColor.cpp" />
     <ClCompile Include="Source\OutHoi4\outDifficultySettings.cpp" />
     <ClCompile Include="Source\OutHoi4\OutFlags.cpp" />
@@ -383,6 +388,10 @@
     <ClInclude Include="Source\HOI4World\Names\CultureGroupNames.h" />
     <ClInclude Include="Source\HOI4World\Names\CultureNames.h" />
     <ClInclude Include="Source\HOI4World\Names\Names.h" />
+    <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLaw.h" />
+    <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLawFactory.h" />
+    <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLawsFactory.h" />
+    <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLaws.h" />
     <ClInclude Include="Source\HOI4World\ProvinceDefinitions.h" />
     <ClInclude Include="Source\HOI4World\SharedFocus.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />
@@ -404,6 +413,8 @@
     <ClInclude Include="Source\OutHoi4\Leaders\OutAdmiral.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutGeneral.h" />
     <ClInclude Include="Source\OutHoi4\Map\OutStrategicRegions.h" />
+    <ClInclude Include="Source\OutHoi4\OccupationLaws\OutOccupationLaw.h" />
+    <ClInclude Include="Source\OutHoi4\OccupationLaws\OutOccupationLaws.h" />
     <ClInclude Include="Source\OutHoi4\OutColor.h" />
     <ClInclude Include="Source\OutHoi4\OutFlags.h" />
     <ClInclude Include="Source\OutHoi4\OutHoi4Country.h" />

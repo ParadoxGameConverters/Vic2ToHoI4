@@ -64,6 +64,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureGroupNames.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureNames.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\Names.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLaws.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp" />
@@ -82,6 +85,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OccupationLaws\OutOccupationLaw.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OccupationLaws\OutOccupationLaws.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutColor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFlags.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoi4Country.cpp" />
@@ -323,6 +328,9 @@
     <ClCompile Include="HoI4WorldTests\Navies\MtgShipTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\MtgShipTypeNamesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\NaviesTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawFactoryTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawsFactoryTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedTriggers\ScriptedTriggerTests.cpp" />
@@ -401,6 +409,18 @@
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\IntelligenceAgencyLogos.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\EmptyOccupationLaws.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/EmptyOccupationLaws/common/occupation_laws</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">occupation_laws%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\OccupationLaws.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/OccupationLaws/common/occupation_laws/</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">occupation_laws%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

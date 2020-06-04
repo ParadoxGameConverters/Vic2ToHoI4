@@ -90,7 +90,7 @@ Configuration::Factory::Factory()
 			ideologiesOptions = ideologyOptions::keep_all;
 			Log(LogLevel::Info) << "\tKeeping all ideologies";
 		}
-		else if (ideologiesOptionString.getString() == "specified")
+		else if (ideologiesOptionString.getString() == "specify")
 		{
 			ideologiesOptions = ideologyOptions::specified;
 			Log(LogLevel::Info) << "\tKeeping specified ideologies";

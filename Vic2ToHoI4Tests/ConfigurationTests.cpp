@@ -508,7 +508,7 @@ TEST(ConfigurationTests, IdeologiesOptionsCanBeSetToKeepDefault)
 TEST(ConfigurationTests, IdeologiesOptionsCanBeSetToKeepSpecified)
 {
 	std::stringstream input;
-	input << R"(ideologies = "specified")";
+	input << R"(ideologies = "specify")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(ideologyOptions::specified, theConfiguration->getIdeologiesOptions());
