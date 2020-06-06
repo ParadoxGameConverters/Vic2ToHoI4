@@ -1,11 +1,6 @@
 build/
-Release/
-ReleaseIntermediate/
-Release-Linux/
-Debug/
-DebugIntermediate/
-Analysis
-AnalysisIntermediate
+Release*/
+Debug*/
 testResults
 *testResults*
 changelog.txt
