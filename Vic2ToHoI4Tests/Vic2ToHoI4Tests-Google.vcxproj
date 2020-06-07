@@ -258,7 +258,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\PartiesIssueHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Leader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Party.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pop.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\Pop.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Province.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Relations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\State.cpp" />
