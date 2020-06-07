@@ -3,6 +3,7 @@
 
 
 
+#include "../Issues/Issues.h"
 #include "Parser.h"
 #include <map>
 #include <string>
@@ -11,34 +12,35 @@
 
 namespace Vic2
 {
-class Issues;
+
 
 class Pop: commonItems::parser
 {
   public:
 	explicit Pop(const std::string& typeString, std::istream& theStream, const Issues& theIssues);
 
-	int getSize() const { return size; }
-	std::string getType() const { return type; }
-	std::string getCulture() const { return culture; }
-	double getLiteracy() const { return literacy; }
-	double getMilitancy() const { return militancy; }
-	std::map<std::string, float> getIssues() const { return popIssues; }
+	[[nodiscard]] int getSize() const { return size; }
+	[[nodiscard]] std::string getType() const { return type; }
+	[[nodiscard]] std::string getCulture() const { return culture; }
+	[[nodiscard]] double getLiteracy() const { return literacy; }
+	[[nodiscard]] double getMilitancy() const { return militancy; }
+	[[nodiscard]] std::map<std::string, float> getIssues() const { return popIssues; }
 
-	float getIssue(const std::string& issueName) const;
-	int getID() const { return id; }
+	[[nodiscard]] float getIssue(const std::string& issueName) const;
+	[[nodiscard]] int getID() const { return id; }
 
   private:
 	int size = 0;
-	std::string type = "";
+	std::string type;
 	std::string culture = "no_culture";
-	std::string religion = "";
+	std::string religion;
 	double literacy = 0.0;
 	double consciousness = 0.0;
 	double militancy = 0.0;
 	int id = 0;
 	std::map<std::string, float> popIssues;
 };
+
 } // namespace Vic2
 
 

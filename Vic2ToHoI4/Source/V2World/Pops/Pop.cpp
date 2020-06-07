@@ -8,19 +8,19 @@
 Vic2::Pop::Pop(const std::string& typeString, std::istream& theStream, const Issues& theIssues): type(typeString)
 {
 	registerKeyword("size", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleInt sizeInt(theStream);
+		const commonItems::singleInt sizeInt(theStream);
 		size = sizeInt.getInt();
 	});
 	registerKeyword("literacy", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleDouble sizeInt(theStream);
+		const commonItems::singleDouble sizeInt(theStream);
 		literacy = sizeInt.getDouble();
 	});
 	registerKeyword("con", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleDouble sizeInt(theStream);
+		const commonItems::singleDouble sizeInt(theStream);
 		consciousness = sizeInt.getDouble();
 	});
 	registerKeyword("mil", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleDouble sizeInt(theStream);
+		const commonItems::singleDouble sizeInt(theStream);
 		militancy = sizeInt.getDouble();
 	});
 	registerKeyword("issues", [this, &theIssues](const std::string& unused, std::istream& theStream) {
@@ -33,22 +33,22 @@ Vic2::Pop::Pop(const std::string& typeString, std::istream& theStream, const Iss
 			auto equalsSign = getNextTokenWithoutMatching(theStream);
 			auto issueSupport = getNextTokenWithoutMatching(theStream);
 
-			std::string issueName = theIssues.getIssueName(std::stoi(*possibleIssue));
+			auto issueName = theIssues.getIssueName(std::stoi(*possibleIssue));
 			popIssues.insert(std::make_pair(issueName, std::stof(*issueSupport)));
 
 			possibleIssue = getNextTokenWithoutMatching(theStream);
 		}
 	});
 	registerKeyword("id", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleInt idInt(theStream);
+		const commonItems::singleInt idInt(theStream);
 		id = idInt.getInt();
 	});
 	registerRegex(commonItems::catchallRegex, [this](const std::string& cultureString, std::istream& theStream) {
-		// only record the first matching item as cultre & religion
+		// only record the first matching item as culture & religion
 		if (culture == "no_culture")
 		{
 			culture = cultureString;
-			commonItems::singleString religionString(theStream);
+			const commonItems::singleString religionString(theStream);
 			religion = religionString.getString();
 		}
 		else
@@ -63,8 +63,7 @@ Vic2::Pop::Pop(const std::string& typeString, std::istream& theStream, const Iss
 
 float Vic2::Pop::getIssue(const std::string& issueName) const
 {
-	auto issue = popIssues.find(issueName);
-	if (issue != popIssues.end())
+	if (const auto& issue = popIssues.find(issueName); issue != popIssues.end())
 	{
 		return issue->second;
 	}
