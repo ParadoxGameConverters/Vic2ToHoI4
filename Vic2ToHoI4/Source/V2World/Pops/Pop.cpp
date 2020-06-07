@@ -3,7 +3,7 @@
 
 
 
-float Vic2::Pop::getIssue(const std::string& issueName) const
+float Vic2::Pop::getIssueSupport(const std::string& issueName) const
 {
 	if (const auto& issue = popIssues.find(issueName); issue != popIssues.end())
 	{

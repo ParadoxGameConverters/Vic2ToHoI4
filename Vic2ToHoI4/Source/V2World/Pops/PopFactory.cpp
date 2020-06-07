@@ -13,10 +13,7 @@ Vic2::Pop::Factory::Factory(const Issues& theIssues): theIssues(theIssues)
 		const commonItems::singleDouble sizeInt(theStream);
 		pop->literacy = sizeInt.getDouble();
 	});
-	registerKeyword("con", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleDouble sizeInt(theStream);
-		pop->consciousness = sizeInt.getDouble();
-	});
+	registerKeyword("con", commonItems::ignoreItem);
 	registerKeyword("mil", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleDouble sizeInt(theStream);
 		pop->militancy = sizeInt.getDouble();
@@ -37,17 +34,13 @@ Vic2::Pop::Factory::Factory(const Issues& theIssues): theIssues(theIssues)
 			possibleIssue = getNextTokenWithoutMatching(theStream);
 		}
 	});
-	registerKeyword("id", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleInt idInt(theStream);
-		pop->id = idInt.getInt();
-	});
+	registerKeyword("id", commonItems::ignoreItem);
 	registerRegex(commonItems::catchallRegex, [this](const std::string& cultureString, std::istream& theStream) {
 		// only record the first matching item as culture & religion
 		if (pop->culture == "no_culture")
 		{
 			pop->culture = cultureString;
 			const commonItems::singleString religionString(theStream);
-			pop->religion = religionString.getString();
 		}
 		else
 		{
