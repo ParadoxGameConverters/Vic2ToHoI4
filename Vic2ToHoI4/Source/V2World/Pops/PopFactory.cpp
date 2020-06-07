@@ -6,46 +6,32 @@
 Vic2::Pop::Factory::Factory(const Issues& theIssues): theIssues(theIssues)
 {
 	registerKeyword("size", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleInt sizeInt(theStream);
-		pop->size = sizeInt.getInt();
+		pop->size = commonItems::singleInt{theStream}.getInt();
 	});
 	registerKeyword("literacy", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleDouble sizeInt(theStream);
-		pop->literacy = sizeInt.getDouble();
+		pop->literacy = commonItems::singleDouble{theStream}.getDouble();
 	});
-	registerKeyword("con", commonItems::ignoreItem);
 	registerKeyword("mil", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleDouble sizeInt(theStream);
-		pop->militancy = sizeInt.getDouble();
+		pop->militancy = commonItems::singleDouble{theStream}.getDouble();
 	});
 	registerKeyword("issues", [this, &theIssues](const std::string& unused, std::istream& theStream) {
-		auto equals = getNextTokenWithoutMatching(theStream);
-		auto openBrace = getNextTokenWithoutMatching(theStream);
-
-		auto possibleIssue = getNextTokenWithoutMatching(theStream);
-		while (possibleIssue != "}")
+		for (const auto& assignment: commonItems::assignments{theStream}.getAssignments())
 		{
-			auto equalsSign = getNextTokenWithoutMatching(theStream);
-			auto issueSupport = getNextTokenWithoutMatching(theStream);
-
-			auto issueName = theIssues.getIssueName(std::stoi(*possibleIssue));
-			pop->popIssues.insert(std::make_pair(issueName, std::stof(*issueSupport)));
-
-			possibleIssue = getNextTokenWithoutMatching(theStream);
+			auto issueName = theIssues.getIssueName(std::stoi(assignment.first));
+			pop->popIssues.insert(std::make_pair(issueName, std::stof(assignment.second)));
 		}
 	});
+
 	registerKeyword("id", commonItems::ignoreItem);
+	registerKeyword("con", commonItems::ignoreItem);
+
 	registerRegex(commonItems::catchallRegex, [this](const std::string& cultureString, std::istream& theStream) {
 		// only record the first matching item as culture & religion
 		if (pop->culture == "no_culture")
 		{
 			pop->culture = cultureString;
-			const commonItems::singleString religionString(theStream);
 		}
-		else
-		{
-			commonItems::ignoreItem(cultureString, theStream);
-		}
+		commonItems::ignoreItem(cultureString, theStream);
 	});
 }
 
