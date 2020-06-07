@@ -43,21 +43,6 @@ Vic2::Regiment::Regiment(std::istream& theStream)
 }
 
 
-bool Vic2::Regiment::isMobilised() const
-{
-	auto* pop = Vic2::Pop::getByID(pop_id);
-	if (pop == nullptr)
-	{
-		return false;
-	}
-	if (pop->getType() == "soldiers")
-	{
-		return false;
-	}
-	return true;
-}
-
-
 Vic2::Army::Army(const std::string& type, std::istream& theStream): navy(type == "navy")
 {
 	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {

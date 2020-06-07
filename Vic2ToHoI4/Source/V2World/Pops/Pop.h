@@ -5,7 +5,6 @@
 
 #include "Parser.h"
 #include <map>
-#include <memory>
 #include <string>
 
 
@@ -18,8 +17,6 @@ class Pop: commonItems::parser
 {
   public:
 	explicit Pop(const std::string& typeString, std::istream& theStream, const Issues& theIssues);
-
-	static Pop* getByID(const int idx);
 
 	int getSize() const { return size; }
 	std::string getType() const { return type; }
@@ -41,8 +38,6 @@ class Pop: commonItems::parser
 	double militancy = 0.0;
 	int id = 0;
 	std::map<std::string, float> popIssues;
-
-	static std::map<int, Pop*> pop_map;
 };
 } // namespace Vic2
 

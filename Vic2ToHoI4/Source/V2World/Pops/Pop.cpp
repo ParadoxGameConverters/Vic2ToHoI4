@@ -3,7 +3,7 @@
 #include "Log.h"
 #include "ParserHelpers.h"
 
-std::map<int, Vic2::Pop*> Vic2::Pop::pop_map;
+
 
 Vic2::Pop::Pop(const std::string& typeString, std::istream& theStream, const Issues& theIssues): type(typeString)
 {
@@ -58,7 +58,6 @@ Vic2::Pop::Pop(const std::string& typeString, std::istream& theStream, const Iss
 	});
 
 	parseStream(theStream);
-	pop_map[id] = this;
 }
 
 
@@ -73,9 +72,4 @@ float Vic2::Pop::getIssue(const std::string& issueName) const
 	{
 		return 0.0f;
 	}
-}
-
-Vic2::Pop* Vic2::Pop::getByID(int idx)
-{
-	return pop_map[idx];
 }
