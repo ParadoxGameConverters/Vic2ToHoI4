@@ -962,6 +962,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\Pop.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Pops</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\PopFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Pops</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

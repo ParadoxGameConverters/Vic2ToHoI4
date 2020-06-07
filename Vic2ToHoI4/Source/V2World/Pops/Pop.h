@@ -3,8 +3,6 @@
 
 
 
-#include "../Issues/Issues.h"
-#include "Parser.h"
 #include <map>
 #include <string>
 
@@ -14,10 +12,11 @@ namespace Vic2
 {
 
 
-class Pop: commonItems::parser
+class Pop
 {
   public:
-	explicit Pop(const std::string& typeString, std::istream& theStream, const Issues& theIssues);
+	class Factory;
+	Pop() = default;
 
 	[[nodiscard]] int getSize() const { return size; }
 	[[nodiscard]] std::string getType() const { return type; }

@@ -1,33 +1,11 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #ifndef VIC2_PROVINCE_H_
 #define VIC2_PROVINCE_H_
 
 
 
-#include "Pops/Pop.h"
 #include "Parser.h"
+#include "Pops/Pop.h"
+#include "Pops/PopFactory.h"
 #include <optional>
 #include <set>
 #include <string>
@@ -41,7 +19,7 @@ namespace Vic2
 class Province: commonItems::parser
 {
   public:
-	explicit Province(const std::string& numberString, std::istream& theStream, const Issues& theIssues);
+	explicit Province(const std::string& numberString, std::istream& theStream, Pop::Factory& popFactory);
 
 	int getTotalPopulation() const;
 	int getPopulation(std::optional<std::string> type = {}) const;

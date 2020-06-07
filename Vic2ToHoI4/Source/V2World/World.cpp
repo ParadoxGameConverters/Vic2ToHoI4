@@ -10,6 +10,7 @@
 #include "Log.h"
 #include "ParserHelpers.h"
 #include "Party.h"
+#include "Pops/PopFactory.h"
 #include "Province.h"
 #include "State.h"
 #include "Vic2Localisations.h"
@@ -24,6 +25,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	auto theIssues = Issues::Parser{}.importIssues(theConfiguration);
 	theStateDefinitions = StateDefinitions::Parser{}.parseStateDefinitions(theConfiguration);
 	inventions theInventions(theConfiguration);
+	Pop::Factory popFactory(theIssues);
 
 	std::vector<int> GPIndexes;
 	registerKeyword("great_nations", [&GPIndexes, this](const std::string& unused, std::istream& theStream) {
@@ -31,8 +33,8 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 		GPIndexes = indexList.getInts();
 	});
 
-	registerRegex(R"(\d+)", [this, &theIssues](const std::string& provinceID, std::istream& theStream) {
-		provinces[stoi(provinceID)] = new Province(provinceID, theStream, theIssues);
+	registerRegex(R"(\d+)", [this, &popFactory](const std::string& provinceID, std::istream& theStream) {
+		provinces[stoi(provinceID)] = new Province(provinceID, theStream, popFactory);
 	});
 
 	std::vector<std::string> tagsInOrder;
