@@ -68,6 +68,19 @@ TEST_F(Vic2World_Pops_PopFactoryTests, CultureIsNotSetToId)
 }
 
 
+TEST_F(Vic2World_Pops_PopFactoryTests, CultureIsOnlySetOnce)
+{
+	std::stringstream input;
+	input << "{\n";
+	input << "\ttest_culture=test_religion\n";
+	input << "\ttest_culture_two=test_religion_two\n";
+	input << "}";
+	const auto pop = popFactory.getPop("test_type", input);
+
+	ASSERT_EQ("test_culture", pop->getCulture());
+}
+
+
 TEST_F(Vic2World_Pops_PopFactoryTests, SizeDefaultsToZero)
 {
 	std::stringstream input;

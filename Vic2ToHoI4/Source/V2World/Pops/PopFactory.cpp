@@ -26,7 +26,7 @@ Vic2::Pop::Factory::Factory(const Issues& theIssues): theIssues(theIssues)
 	registerKeyword("con", commonItems::ignoreItem);
 
 	registerRegex(commonItems::catchallRegex, [this](const std::string& cultureString, std::istream& theStream) {
-		// only record the first matching item as culture & religion
+		// only the first matching item is actually culture
 		if (pop->culture == "no_culture")
 		{
 			pop->culture = cultureString;
