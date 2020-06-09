@@ -6,10 +6,10 @@
 
 class Vic2World_Pops_PopFactoryTests: public testing::Test
 {
-	protected:
+  protected:
 	Vic2World_Pops_PopFactoryTests(): popFactory(Vic2::Issues({})) {}
 
-		Vic2::Pop::Factory popFactory;
+	Vic2::Pop::Factory popFactory;
 };
 
 
@@ -142,3 +142,46 @@ TEST_F(Vic2World_Pops_PopFactoryTests, MilitancyCanBeSet)
 
 	ASSERT_NEAR(0.42, pop->getMilitancy(), 0.0001);
 }
+
+
+TEST_F(Vic2World_Pops_PopFactoryTests, IssueWithNonIntegerIssueNumberLogsWarning)
+{
+	std::stringstream input;
+	input << "{\n";
+	input << "\tissues = {\n";
+	input << "\tnot_an_int=87.125\n";
+	input << "\t}\n";
+	input << "}";
+
+	const std::stringstream log;
+	const auto stdOutBuf = std::cout.rdbuf();
+	std::cout.rdbuf(log.rdbuf());
+
+	const auto pop = popFactory.getPop("test_type", input);
+
+	std::cout.rdbuf(stdOutBuf);
+
+	ASSERT_EQ(" [WARNING] Poorly formatted pop issue: not_an_int=87.125\n", log.str());
+}
+
+#pragma optimize("", off)
+TEST_F(Vic2World_Pops_PopFactoryTests, IssueWithNonFloatIssueSupportLogsWarning)
+{
+	std::stringstream input;
+	input << "{\n";
+	input << "\tissues = {\n";
+	input << "\t42=not_a_float\n";
+	input << "\t}\n";
+	input << "}";
+
+	const std::stringstream log;
+	const auto stdOutBuf = std::cout.rdbuf();
+	std::cout.rdbuf(log.rdbuf());
+
+	const auto pop = popFactory.getPop("test_type", input);
+
+	std::cout.rdbuf(stdOutBuf);
+
+	ASSERT_EQ(" [WARNING] Poorly formatted pop issue: 42=not_a_float\n", log.str());
+}
+#pragma optimize("", on)
