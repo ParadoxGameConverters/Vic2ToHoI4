@@ -18,11 +18,11 @@ class Pop
 	class Factory;
 	Pop() = default;
 
-	[[nodiscard]] std::string getType() const { return type; }
-	[[nodiscard]] std::string getCulture() const { return culture; }
-	[[nodiscard]] int getSize() const { return size; }
-	[[nodiscard]] double getLiteracy() const { return literacy; }
-	[[nodiscard]] double getMilitancy() const { return militancy; }
+	[[nodiscard]] const auto& getType() const { return type; }
+	[[nodiscard]] const auto& getCulture() const { return culture; }
+	[[nodiscard]] const auto& getSize() const { return size; }
+	[[nodiscard]] const auto& getLiteracy() const { return literacy; }
+	[[nodiscard]] const auto& getMilitancy() const { return militancy; }
 
 	[[nodiscard]] float getIssueSupport(const std::string& issueName) const;
 
