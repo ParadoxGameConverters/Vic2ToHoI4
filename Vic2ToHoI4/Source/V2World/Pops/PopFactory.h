@@ -15,7 +15,7 @@ namespace Vic2
 class Pop::Factory: commonItems::parser
 {
   public:
-	explicit Factory(const Issues& theIssues);
+	explicit Factory(const Issues& _theIssues);
 	std::unique_ptr<Pop> getPop(const std::string& typeString, std::istream& theStream);
 
   private:
