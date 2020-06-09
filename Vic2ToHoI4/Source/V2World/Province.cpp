@@ -3,7 +3,9 @@
 
 
 
-Vic2::Province::Province(const std::string& numberString, std::istream& theStream, const Issues& theIssues):
+Vic2::Province::Province(const std::string& numberString,
+	 std::istream& theStream,
+	 Pop::Factory& popFactory):
 	 number(stoi(numberString))
 {
 	registerKeyword("owner", [this](const std::string& unused, std::istream& theStream) {
@@ -30,9 +32,8 @@ Vic2::Province::Province(const std::string& numberString, std::istream& theStrea
 	registerRegex(
 		 "aristocrats|artisans|bureaucrats|capitalists|clergymen|craftsmen|clerks|farmers|soldiers|officers|labourers|"
 		 "slaves|serfs",
-		 [this, &theIssues](const std::string& popType, std::istream& theStream) {
-			 Pop pop(popType, theStream, theIssues);
-			 pops.push_back(pop);
+		 [this, &popFactory](const std::string& popType, std::istream& theStream) {
+			 pops.push_back(*popFactory.getPop(popType, theStream));
 		 });
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 

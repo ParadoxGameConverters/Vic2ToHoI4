@@ -339,6 +339,8 @@
     <ClCompile Include="Source\Mappers\TechMapper.cpp" />
     <ClCompile Include="Source\Mappers\VersionParser\VersionParser.cpp" />
     <ClCompile Include="Source\targa.cpp" />
+    <ClCompile Include="Source\V2World\Pops\Pop.cpp" />
+    <ClCompile Include="Source\V2World\Pops\PopFactory.cpp" />
     <ClCompile Include="Source\Vic2toHOI4Converter.cpp" />
     <ClCompile Include="Source\V2World\Agreement.cpp" />
     <ClCompile Include="Source\V2World\Army.cpp" />
@@ -353,7 +355,6 @@
     <ClCompile Include="Source\V2World\Issues\PartiesIssueHelper.cpp" />
     <ClCompile Include="Source\V2World\Leader.cpp" />
     <ClCompile Include="Source\V2World\Party.cpp" />
-    <ClCompile Include="Source\V2World\Pop.cpp" />
     <ClCompile Include="Source\V2World\Province.cpp" />
     <ClCompile Include="Source\V2World\Relations.cpp" />
     <ClCompile Include="Source\V2World\State.cpp" />
@@ -604,7 +605,8 @@
     <ClInclude Include="Source\V2World\Issues\PartiesIssueHelper.h" />
     <ClInclude Include="Source\V2World\Leader.h" />
     <ClInclude Include="Source\V2World\Party.h" />
-    <ClInclude Include="Source\V2World\Pop.h" />
+    <ClInclude Include="Source\V2World\Pops\Pop.h" />
+    <ClInclude Include="Source\V2World\Pops\PopFactory.h" />
     <ClInclude Include="Source\V2World\Province.h" />
     <ClInclude Include="Source\V2World\Relations.h" />
     <ClInclude Include="Source\V2World\State.h" />

@@ -76,9 +76,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Leader.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pop.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Relations.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
@@ -962,6 +959,18 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLaws.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\OccupationLaws</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\Pop.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Pops</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\PopFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Pops</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Pops\PopFactoryTests.cpp">
+      <Filter>Vic2WorldTests\Pops</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Pops\PopTests.cpp">
+      <Filter>Vic2WorldTests\Pops</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1173,6 +1182,12 @@
     </Filter>
     <Filter Include="HoI4WorldTests\OccupationLaws">
       <UniqueIdentifier>{a6c19482-bd44-497d-b5d3-c6d3ef1570ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Pops">
+      <UniqueIdentifier>{0a9a9b80-82c2-4952-bfd0-78bdda7965b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\Pops">
+      <UniqueIdentifier>{daaf3382-2a12-4126-9219-82ff78484dda}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -258,7 +258,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\PartiesIssueHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Leader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Party.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pop.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\Pop.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\PopFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Province.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Relations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\State.cpp" />
@@ -354,6 +355,8 @@
     <ClCompile Include="Mocks\CountryMapperMock.h" />
     <ClCompile Include="Mocks\TechnologiesMock.h" />
     <ClCompile Include="Mocks\Vic2StateMock.h" />
+    <ClCompile Include="Vic2WorldTests\Pops\PopFactoryTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Pops\PopTests.cpp" />
     <ClCompile Include="Vic2WorldTests\ProvinceTests.cpp" />
     <ClCompile Include="Vic2WorldTests\StateDefinitionsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Vic2AgreementTests.cpp" />

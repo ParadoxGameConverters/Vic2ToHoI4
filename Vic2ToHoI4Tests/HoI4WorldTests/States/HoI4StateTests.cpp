@@ -7,6 +7,7 @@
 #include "../Vic2ToHoI4/Source/HOI4World/States/HoI4State.h"
 #include "../Vic2ToHoI4/Source/OutHoi4/States/OutHoI4State.h"
 #include "../Vic2ToHoI4/Source/V2World/Issues/Issues.h"
+#include "../Vic2ToHoI4/Source/V2World/Pops/PopFactory.h"
 #include "../Vic2ToHoI4/Source/V2World/Province.h"
 #include "gtest/gtest.h"
 #include <optional>
@@ -14,7 +15,22 @@
 
 
 
-TEST(HoI4World_States_StateTests, IdDefaultsToZero)
+class HoI4World_States_StateTests: public testing::Test
+{
+  protected:
+	HoI4World_States_StateTests();
+
+	Vic2::Pop::Factory popFactory;
+};
+
+
+HoI4World_States_StateTests::HoI4World_States_StateTests(): popFactory(Vic2::Issues({}))
+{
+}
+
+
+
+TEST_F(HoI4World_States_StateTests, IdDefaultsToZero)
 {
 	const HoI4::State theState;
 
@@ -22,7 +38,7 @@ TEST(HoI4World_States_StateTests, IdDefaultsToZero)
 }
 
 
-TEST(HoI4World_States_StateTests, IdIsReturned)
+TEST_F(HoI4World_States_StateTests, IdIsReturned)
 {
 	const mockVic2State sourceState;
 	const HoI4::State theState(sourceState, 42, "TAG");
@@ -31,7 +47,7 @@ TEST(HoI4World_States_StateTests, IdIsReturned)
 }
 
 
-TEST(HoI4World_States_StateTests, ProvincesDefaultToEmpty)
+TEST_F(HoI4World_States_StateTests, ProvincesDefaultToEmpty)
 {
 	const mockVic2State sourceState;
 	const HoI4::State theState(sourceState, 42, "TAG");
@@ -40,7 +56,7 @@ TEST(HoI4World_States_StateTests, ProvincesDefaultToEmpty)
 }
 
 
-TEST(HoI4World_States_StateTests, ProvincesCanbeAdded)
+TEST_F(HoI4World_States_StateTests, ProvincesCanbeAdded)
 {
 	const mockVic2State sourceState;
 	HoI4::State theState(sourceState, 42, "TAG");
@@ -54,7 +70,7 @@ TEST(HoI4World_States_StateTests, ProvincesCanbeAdded)
 }
 
 
-TEST(HoI4World_States_StateTests, OwnerDefaultsToEmpty)
+TEST_F(HoI4World_States_StateTests, OwnerDefaultsToEmpty)
 {
 	const HoI4::State theState;
 
@@ -62,7 +78,7 @@ TEST(HoI4World_States_StateTests, OwnerDefaultsToEmpty)
 }
 
 
-TEST(HoI4World_States_StateTests, OwnerIsReturned)
+TEST_F(HoI4World_States_StateTests, OwnerIsReturned)
 {
 	const mockVic2State sourceState;
 	const HoI4::State theState(sourceState, 42, "TAG");
@@ -71,7 +87,7 @@ TEST(HoI4World_States_StateTests, OwnerIsReturned)
 }
 
 
-TEST(HoI4World_States_StateTests, CoresDefaultToEmpty)
+TEST_F(HoI4World_States_StateTests, CoresDefaultToEmpty)
 {
 	const mockVic2State sourceState;
 	const HoI4::State theState(sourceState, 42, "TAG");
@@ -80,7 +96,7 @@ TEST(HoI4World_States_StateTests, CoresDefaultToEmpty)
 }
 
 
-TEST(HoI4World_States_StateTests, CoresCanbeAdded)
+TEST_F(HoI4World_States_StateTests, CoresCanbeAdded)
 {
 	const mockVic2State sourceState;
 	HoI4::State theState(sourceState, 42, "TAG");
@@ -96,7 +112,7 @@ TEST(HoI4World_States_StateTests, CoresCanbeAdded)
 }
 
 
-TEST(HoI4World_States_StateTests, ControlledProvincesDefaultToEmpty)
+TEST_F(HoI4World_States_StateTests, ControlledProvincesDefaultToEmpty)
 {
 	const mockVic2State sourceState;
 	const HoI4::State theState(sourceState, 42, "TAG");
@@ -105,14 +121,14 @@ TEST(HoI4World_States_StateTests, ControlledProvincesDefaultToEmpty)
 }
 
 
-TEST(HoI4World_States_StateTests, ControllersCanBeAdded)
+TEST_F(HoI4World_States_StateTests, ControllersCanBeAdded)
 {
 	std::stringstream provinceInput;
 	provinceInput << "={\n";
 	provinceInput << "\towner=TAG\n";
 	provinceInput << "\tcontroller=NOT\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput, Vic2::Issues{{}});
+	auto theProvince = new Vic2::Province("12", provinceInput, popFactory);
 	std::set<const Vic2::Province*> provinces;
 	provinces.insert(theProvince);
 
@@ -133,14 +149,14 @@ TEST(HoI4World_States_StateTests, ControllersCanBeAdded)
 }
 
 
-TEST(HoI4World_States_StateTests, ControllersConvertWithHoI4Tag)
+TEST_F(HoI4World_States_StateTests, ControllersConvertWithHoI4Tag)
 {
 	std::stringstream provinceInput;
 	provinceInput << "={\n";
 	provinceInput << "\towner=TAG\n";
 	provinceInput << "\tcontroller=NOT\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput, Vic2::Issues{{}});
+	auto theProvince = new Vic2::Province("12", provinceInput, popFactory);
 	std::set<const Vic2::Province*> provinces;
 	provinces.insert(theProvince);
 
@@ -161,14 +177,14 @@ TEST(HoI4World_States_StateTests, ControllersConvertWithHoI4Tag)
 }
 
 
-TEST(HoI4World_States_StateTests, ControllersDontConvertForRebels)
+TEST_F(HoI4World_States_StateTests, ControllersDontConvertForRebels)
 {
 	std::stringstream provinceInput;
 	provinceInput << "={\n";
 	provinceInput << "\towner=TAG\n";
 	provinceInput << "\tcontroller=REB\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput, Vic2::Issues{{}});
+	auto theProvince = new Vic2::Province("12", provinceInput, popFactory);
 	std::set<const Vic2::Province*> provinces;
 	provinces.insert(theProvince);
 
@@ -188,7 +204,7 @@ TEST(HoI4World_States_StateTests, ControllersDontConvertForRebels)
 }
 
 
-TEST(HoI4World_States_StateTests, ImpassableDefaultsToFalse)
+TEST_F(HoI4World_States_StateTests, ImpassableDefaultsToFalse)
 {
 	const mockVic2State sourceState;
 	const HoI4::State theState(sourceState, 42, "TAG");
@@ -197,7 +213,7 @@ TEST(HoI4World_States_StateTests, ImpassableDefaultsToFalse)
 }
 
 
-TEST(HoI4World_States_StateTests, ImpassableCanBeSet)
+TEST_F(HoI4World_States_StateTests, ImpassableCanBeSet)
 {
 	const mockVic2State sourceState;
 	HoI4::State theState(sourceState, 42, "TAG");
@@ -208,7 +224,7 @@ TEST(HoI4World_States_StateTests, ImpassableCanBeSet)
 }
 
 
-TEST(HoI4World_States_StateTests, DockyardsDefaultsToZero)
+TEST_F(HoI4World_States_StateTests, DockyardsDefaultsToZero)
 {
 	const mockVic2State sourceState;
 	const HoI4::State theState(sourceState, 42, "TAG");
@@ -217,7 +233,7 @@ TEST(HoI4World_States_StateTests, DockyardsDefaultsToZero)
 }
 
 
-TEST(HoI4World_States_StateTests, CivFactoriesDefaultsToZero)
+TEST_F(HoI4World_States_StateTests, CivFactoriesDefaultsToZero)
 {
 	const mockVic2State sourceState;
 	const HoI4::State theState(sourceState, 42, "TAG");
@@ -226,7 +242,7 @@ TEST(HoI4World_States_StateTests, CivFactoriesDefaultsToZero)
 }
 
 
-TEST(HoI4World_States_StateTests, MilFactoriesDefaultsToZero)
+TEST_F(HoI4World_States_StateTests, MilFactoriesDefaultsToZero)
 {
 	const mockVic2State sourceState;
 	const HoI4::State theState(sourceState, 42, "TAG");
@@ -235,7 +251,7 @@ TEST(HoI4World_States_StateTests, MilFactoriesDefaultsToZero)
 }
 
 
-TEST(HoI4World_States_StateTests, TotalFactoriesCanBeSet)
+TEST_F(HoI4World_States_StateTests, TotalFactoriesCanBeSet)
 {
 	const mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(50000));
@@ -255,7 +271,7 @@ TEST(HoI4World_States_StateTests, TotalFactoriesCanBeSet)
 }
 
 
-TEST(HoI4World_States_StateTests, TotalFactoriesCappedAtTwelve)
+TEST_F(HoI4World_States_StateTests, TotalFactoriesCappedAtTwelve)
 {
 	const mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(500000));
@@ -273,7 +289,7 @@ TEST(HoI4World_States_StateTests, TotalFactoriesCappedAtTwelve)
 }
 
 
-TEST(HoI4World_States_StateTests, categoryCanBeChanged)
+TEST_F(HoI4World_States_StateTests, categoryCanBeChanged)
 {
 	const mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(500000));
@@ -291,7 +307,7 @@ TEST(HoI4World_States_StateTests, categoryCanBeChanged)
 }
 
 
-TEST(HoI4World_States_StateTests, InfrastructureDefaultsToThree)
+TEST_F(HoI4World_States_StateTests, InfrastructureDefaultsToThree)
 {
 	const mockVic2State sourceState;
 	const HoI4::State theState(sourceState, 42, "TAG");
@@ -300,7 +316,7 @@ TEST(HoI4World_States_StateTests, InfrastructureDefaultsToThree)
 }
 
 
-TEST(HoI4World_States_StateTests, InfrastructureAddedPerTwoRailLevels)
+TEST_F(HoI4World_States_StateTests, InfrastructureAddedPerTwoRailLevels)
 {
 	const mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(0));
@@ -319,7 +335,7 @@ TEST(HoI4World_States_StateTests, InfrastructureAddedPerTwoRailLevels)
 }
 
 
-TEST(HoI4World_States_StateTests, InfrastructureForOverFourFactories)
+TEST_F(HoI4World_States_StateTests, InfrastructureForOverFourFactories)
 {
 	const mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(50000));
@@ -338,7 +354,7 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverFourFactories)
 }
 
 
-TEST(HoI4World_States_StateTests, InfrastructureForOverSixFactories)
+TEST_F(HoI4World_States_StateTests, InfrastructureForOverSixFactories)
 {
 	const mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(70000));
@@ -357,7 +373,7 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverSixFactories)
 }
 
 
-TEST(HoI4World_States_StateTests, InfrastructureForOverTenFactories)
+TEST_F(HoI4World_States_StateTests, InfrastructureForOverTenFactories)
 {
 	const mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(110000));
@@ -376,7 +392,7 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverTenFactories)
 }
 
 
-TEST(HoI4World_States_StateTests, NavalBasesConvertsToEmpty)
+TEST_F(HoI4World_States_StateTests, NavalBasesConvertsToEmpty)
 {
 	const HoI4::State theState;
 
@@ -384,7 +400,7 @@ TEST(HoI4World_States_StateTests, NavalBasesConvertsToEmpty)
 }
 
 
-TEST(HoI4World_States_StateTests, NavalBasesCanBeConverted)
+TEST_F(HoI4World_States_StateTests, NavalBasesCanBeConverted)
 {
 	HoI4::State theState;
 	theState.addProvince(1);
@@ -394,12 +410,12 @@ TEST(HoI4World_States_StateTests, NavalBasesCanBeConverted)
 	input << "= {\n";
 	input << "\tnaval_base = 1.0";
 	input << "}";
-	Vic2::Province sourceProvince("1", input, Vic2::Issues{{}});
+	Vic2::Province sourceProvince("1", input, popFactory);
 	std::stringstream input2;
 	input2 << "= {\n";
 	input2 << "\tnaval_base = 1.0";
 	input2 << "}";
-	Vic2::Province sourceProvince2("2", input2, Vic2::Issues{{}});
+	Vic2::Province sourceProvince2("2", input2, popFactory);
 	const std::set<const Vic2::Province*> sourceProvinces{&sourceProvince, &sourceProvince2};
 
 	const mockCoastalProvinces theCoastalProvinces;
@@ -415,7 +431,7 @@ TEST(HoI4World_States_StateTests, NavalBasesCanBeConverted)
 }
 
 
-TEST(HoI4World_States_StateTests, AirbaseLevelDefaultsToZero)
+TEST_F(HoI4World_States_StateTests, AirbaseLevelDefaultsToZero)
 {
 	const HoI4::State theState;
 
@@ -423,7 +439,7 @@ TEST(HoI4World_States_StateTests, AirbaseLevelDefaultsToZero)
 }
 
 
-TEST(HoI4World_States_StateTests, AirbaseLevelCanBeSet)
+TEST_F(HoI4World_States_StateTests, AirbaseLevelCanBeSet)
 {
 	HoI4::State theState;
 	theState.addAirBase(2);
@@ -432,7 +448,7 @@ TEST(HoI4World_States_StateTests, AirbaseLevelCanBeSet)
 }
 
 
-TEST(HoI4World_States_StateTests, AirbaseLevelCanBeIncreased)
+TEST_F(HoI4World_States_StateTests, AirbaseLevelCanBeIncreased)
 {
 	HoI4::State theState;
 	theState.addAirBase(2);
@@ -442,7 +458,7 @@ TEST(HoI4World_States_StateTests, AirbaseLevelCanBeIncreased)
 }
 
 
-TEST(HoI4World_States_StateTests, AirbaseLevelCappedAtTen)
+TEST_F(HoI4World_States_StateTests, AirbaseLevelCappedAtTen)
 {
 	HoI4::State theState;
 	theState.addAirBase(2);
@@ -453,7 +469,7 @@ TEST(HoI4World_States_StateTests, AirbaseLevelCappedAtTen)
 }
 
 
-TEST(HoI4World_States_StateTests, ManpowerDefaultsToZero)
+TEST_F(HoI4World_States_StateTests, ManpowerDefaultsToZero)
 {
 	const mockVic2State sourceState;
 	const HoI4::State theState(sourceState, 42, "TAG");
@@ -462,7 +478,7 @@ TEST(HoI4World_States_StateTests, ManpowerDefaultsToZero)
 }
 
 
-TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
+TEST_F(HoI4World_States_StateTests, ManpowerCanBeSet)
 {
 	std::stringstream provinceInput;
 	provinceInput << "={\n";
@@ -472,7 +488,7 @@ TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
 	provinceInput << "\t\tsize=12345\n";
 	provinceInput << "\t}\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput, Vic2::Issues{{}});
+	auto theProvince = new Vic2::Province("12", provinceInput, popFactory);
 	std::set<const Vic2::Province*> provinces;
 	provinces.insert(theProvince);
 
@@ -490,7 +506,7 @@ TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
 }
 
 
-TEST(HoI4World_States_StateTests, HasResourcesDefaultsToFalse)
+TEST_F(HoI4World_States_StateTests, HasResourcesDefaultsToFalse)
 {
 	const mockVic2State sourceState;
 	const HoI4::State theState(sourceState, 42, "TAG");
@@ -499,7 +515,7 @@ TEST(HoI4World_States_StateTests, HasResourcesDefaultsToFalse)
 }
 
 
-TEST(HoI4World_States_StateTests, ResourcesCanBeAdded)
+TEST_F(HoI4World_States_StateTests, ResourcesCanBeAdded)
 {
 	mockVic2State sourceState;
 	HoI4::State theState(sourceState, 42, "TAG");
@@ -545,7 +561,7 @@ TEST(HoI4World_States_StateTests, ResourcesCanBeAdded)
 }
 
 
-TEST(HoI4World_States_StateTests, VictoryPointPositionDefaultsToMissing)
+TEST_F(HoI4World_States_StateTests, VictoryPointPositionDefaultsToMissing)
 {
 	const mockVic2State sourceState;
 	const HoI4::State theState(sourceState, 42, "TAG");
@@ -554,7 +570,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionDefaultsToMissing)
 }
 
 
-TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetManually)
+TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetManually)
 {
 	const mockVic2State sourceState;
 	HoI4::State theState(sourceState, 42, "TAG");
@@ -565,7 +581,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetManually)
 }
 
 
-TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital)
+TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital)
 {
 	mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(12));
@@ -583,7 +599,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital)
 }
 
 
-TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDetectedViaAristocrats)
+TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDetectedViaAristocrats)
 {
 	std::stringstream provinceInput;
 	provinceInput << "={\n";
@@ -593,7 +609,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	provinceInput << "\t\tsize=123456\n";
 	provinceInput << "\t}\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput, Vic2::Issues{{}});
+	auto theProvince = new Vic2::Province("12", provinceInput, popFactory);
 
 	std::stringstream provinceInput2;
 	provinceInput2 << "={\n";
@@ -603,7 +619,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	provinceInput2 << "\t\tsize=12345\n";
 	provinceInput2 << "\t}\n";
 	provinceInput2 << "}";
-	auto anotherProvince = new Vic2::Province("24", provinceInput2, Vic2::Issues{{}});
+	auto anotherProvince = new Vic2::Province("24", provinceInput2, popFactory);
 	std::set<const Vic2::Province*> provinces;
 	provinces.insert(theProvince);
 	provinces.insert(anotherProvince);
@@ -627,7 +643,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 }
 
 
-TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDetectedViaBureaucrats)
+TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDetectedViaBureaucrats)
 {
 	std::stringstream provinceInput;
 	provinceInput << "={\n";
@@ -637,7 +653,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	provinceInput << "\t\tsize=123456\n";
 	provinceInput << "\t}\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput, Vic2::Issues{{}});
+	auto theProvince = new Vic2::Province("12", provinceInput, popFactory);
 
 	std::stringstream provinceInput2;
 	provinceInput2 << "={\n";
@@ -647,7 +663,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	provinceInput2 << "\t\tsize=12345\n";
 	provinceInput2 << "\t}\n";
 	provinceInput2 << "}";
-	auto anotherProvince = new Vic2::Province("24", provinceInput2, Vic2::Issues{{}});
+	auto anotherProvince = new Vic2::Province("24", provinceInput2, popFactory);
 	std::set<const Vic2::Province*> provinces;
 	provinces.insert(theProvince);
 	provinces.insert(anotherProvince);
@@ -671,7 +687,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 }
 
 
-TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDetectedViaCapitalists)
+TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDetectedViaCapitalists)
 {
 	std::stringstream provinceInput;
 	provinceInput << "={\n";
@@ -681,7 +697,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	provinceInput << "\t\tsize=123456\n";
 	provinceInput << "\t}\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput, Vic2::Issues{{}});
+	auto theProvince = new Vic2::Province("12", provinceInput, popFactory);
 
 	std::stringstream provinceInput2;
 	provinceInput2 << "={\n";
@@ -691,7 +707,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	provinceInput2 << "\t\tsize=12345\n";
 	provinceInput2 << "\t}\n";
 	provinceInput2 << "}";
-	auto anotherProvince = new Vic2::Province("24", provinceInput2, Vic2::Issues{{}});
+	auto anotherProvince = new Vic2::Province("24", provinceInput2, popFactory);
 	std::set<const Vic2::Province*> provinces;
 	provinces.insert(theProvince);
 	provinces.insert(anotherProvince);
@@ -715,7 +731,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 }
 
 
-TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousProvince)
+TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousProvince)
 {
 	std::stringstream provinceInput;
 	provinceInput << "={\n";
@@ -725,7 +741,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousPr
 	provinceInput << "\t\tsize=12345\n";
 	provinceInput << "\t}\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput, Vic2::Issues{{}});
+	auto theProvince = new Vic2::Province("12", provinceInput, popFactory);
 
 	std::stringstream provinceInput2;
 	provinceInput2 << "={\n";
@@ -735,7 +751,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousPr
 	provinceInput2 << "\t\tsize=123456\n";
 	provinceInput2 << "\t}\n";
 	provinceInput2 << "}";
-	auto anotherProvince = new Vic2::Province("24", provinceInput2, Vic2::Issues{{}});
+	auto anotherProvince = new Vic2::Province("24", provinceInput2, popFactory);
 	std::set<const Vic2::Province*> provinces;
 	provinces.insert(theProvince);
 	provinces.insert(anotherProvince);
@@ -759,7 +775,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousPr
 }
 
 
-TEST(HoI4World_States_StateTests, VictoryPointPositionLoggedIfNotSet)
+TEST_F(HoI4World_States_StateTests, VictoryPointPositionLoggedIfNotSet)
 {
 	std::set<const Vic2::Province*> provinces;
 
@@ -788,7 +804,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionLoggedIfNotSet)
 }
 
 
-TEST(HoI4World_States_StateTests, DebugVPsCanBeAdded)
+TEST_F(HoI4World_States_StateTests, DebugVPsCanBeAdded)
 {
 	mockVic2State sourceState;
 	std::set<int> hoi4Provinces;
@@ -812,7 +828,7 @@ TEST(HoI4World_States_StateTests, DebugVPsCanBeAdded)
 }
 
 
-TEST(HoI4World_States_StateTests, SecondaryDebugVPsCanBeAdded)
+TEST_F(HoI4World_States_StateTests, SecondaryDebugVPsCanBeAdded)
 {
 	mockVic2State sourceState;
 	std::set<int> hoi4Provinces;
@@ -836,7 +852,7 @@ TEST(HoI4World_States_StateTests, SecondaryDebugVPsCanBeAdded)
 }
 
 
-TEST(HoI4World_States_StateTests, DebugVpsAreOutput)
+TEST_F(HoI4World_States_StateTests, DebugVpsAreOutput)
 {
 	mockVic2State sourceState;
 	std::set<int> hoi4Provinces{12, 24};
@@ -900,7 +916,7 @@ TEST(HoI4World_States_StateTests, DebugVpsAreOutput)
 }
 
 
-TEST(HoI4World_States_StateTests, MainNavalBaseLocationDefaultsToMissing)
+TEST_F(HoI4World_States_StateTests, MainNavalBaseLocationDefaultsToMissing)
 {
 	const mockVic2State sourceState;
 	const HoI4::State theState(sourceState, 42, "TAG");
@@ -909,7 +925,7 @@ TEST(HoI4World_States_StateTests, MainNavalBaseLocationDefaultsToMissing)
 }
 
 
-TEST(HoI4World_States_StateTests, MainNavalBaseLocationCanBeAssigned)
+TEST_F(HoI4World_States_StateTests, MainNavalBaseLocationCanBeAssigned)
 {
 	const mockVic2State sourceState;
 	HoI4::State theState(sourceState, 42, "TAG");
@@ -921,7 +937,7 @@ TEST(HoI4World_States_StateTests, MainNavalBaseLocationCanBeAssigned)
 }
 
 
-TEST(HoI4World_States_StateTests, MainNavalBaseLocationGoesToLargestBase)
+TEST_F(HoI4World_States_StateTests, MainNavalBaseLocationGoesToLargestBase)
 {
 	const mockVic2State sourceState;
 	HoI4::State theState(sourceState, 42, "TAG");

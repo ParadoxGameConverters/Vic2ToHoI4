@@ -154,6 +154,9 @@
     <Filter Include="HoI4World\OccupationLaws">
       <UniqueIdentifier>{48dc0922-62a2-45ba-9807-2d9fedf1c611}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2World\Pops">
+      <UniqueIdentifier>{ea247d11-ff37-4fd7-8712-7fb554a3416f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -196,9 +199,6 @@
       <Filter>CommonItems</Filter>
     </ClCompile>
     <ClCompile Include="Source\V2World\Province.cpp">
-      <Filter>Vic2World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\V2World\Pop.cpp">
       <Filter>Vic2World</Filter>
     </ClCompile>
     <ClCompile Include="Source\V2World\Diplomacy.cpp">
@@ -842,6 +842,12 @@
     <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLaws.cpp">
       <Filter>HoI4World\OccupationLaws</Filter>
     </ClCompile>
+    <ClCompile Include="Source\V2World\Pops\Pop.cpp">
+      <Filter>Vic2World\Pops</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Pops\PopFactory.cpp">
+      <Filter>Vic2World\Pops</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -884,9 +890,6 @@
       <Filter>CommonItems</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Province.h">
-      <Filter>Vic2World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\V2World\Pop.h">
       <Filter>Vic2World</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Diplomacy.h">
@@ -1585,6 +1588,12 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLaws.h">
       <Filter>HoI4World\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Pops\Pop.h">
+      <Filter>Vic2World\Pops</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Pops\PopFactory.h">
+      <Filter>Vic2World\Pops</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

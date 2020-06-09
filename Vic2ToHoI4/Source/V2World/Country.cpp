@@ -5,7 +5,7 @@
 #include "Log.h"
 #include "ParserHelpers.h"
 #include "Party.h"
-#include "Pop.h"
+#include "Pops/Pop.h"
 #include "Province.h"
 #include "Relations.h"
 #include "State.h"
@@ -498,7 +498,7 @@ float Vic2::Country::getAverageIssueSupport(const std::string& issueName) const
 		for (auto pop: pops)
 		{
 			int size = pop.getSize();
-			totalSupport += pop.getIssue(issueName) * size;
+			totalSupport += pop.getIssueSupport(issueName) * size;
 			totalPopulation += size;
 		}
 	}

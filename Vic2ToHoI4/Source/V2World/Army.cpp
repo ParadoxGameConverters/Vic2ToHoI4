@@ -2,7 +2,7 @@
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
-#include "Pop.h"
+#include "Pops/Pop.h"
 
 
 
@@ -40,21 +40,6 @@ Vic2::Regiment::Regiment(std::istream& theStream)
 	{
 		Log(LogLevel::Warning) << "Regiment or Ship " << name << " has no type";
 	}
-}
-
-
-bool Vic2::Regiment::isMobilised() const
-{
-	auto* pop = Vic2::Pop::getByID(pop_id);
-	if (pop == nullptr)
-	{
-		return false;
-	}
-	if (pop->getType() == "soldiers")
-	{
-		return false;
-	}
-	return true;
 }
 
 
