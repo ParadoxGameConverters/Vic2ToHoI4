@@ -164,7 +164,7 @@ TEST_F(Vic2World_Pops_PopFactoryTests, IssueWithNonIntegerIssueNumberLogsWarning
 	ASSERT_EQ(" [WARNING] Poorly formatted pop issue: not_an_int=87.125\n", log.str());
 }
 
-#pragma optimize("", off)
+
 TEST_F(Vic2World_Pops_PopFactoryTests, IssueWithNonFloatIssueSupportLogsWarning)
 {
 	std::stringstream input;
@@ -184,4 +184,3 @@ TEST_F(Vic2World_Pops_PopFactoryTests, IssueWithNonFloatIssueSupportLogsWarning)
 
 	ASSERT_EQ(" [WARNING] Poorly formatted pop issue: 42=not_a_float\n", log.str());
 }
-#pragma optimize("", on)

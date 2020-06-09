@@ -1,4 +1,5 @@
 #include "PopFactory.h"
+#include "Log.h"
 #include "ParserHelpers.h"
 
 
@@ -17,8 +18,15 @@ Vic2::Pop::Factory::Factory(const Issues& _theIssues): theIssues(_theIssues)
 	registerKeyword("issues", [this](const std::string& unused, std::istream& theStream) {
 		for (const auto& assignment: commonItems::assignments{theStream}.getAssignments())
 		{
-			auto issueName = theIssues.getIssueName(std::stoi(assignment.first));
-			pop->popIssues.insert(std::make_pair(issueName, std::stof(assignment.second)));
+			try
+			{
+				auto issueName = theIssues.getIssueName(std::stoi(assignment.first));
+				pop->popIssues.insert(std::make_pair(issueName, std::stof(assignment.second)));
+			}
+			catch (...)
+			{
+				Log(LogLevel::Warning) << "Poorly formatted pop issue: " << assignment.first << "=" << assignment.second;
+			}
 		}
 	});
 
