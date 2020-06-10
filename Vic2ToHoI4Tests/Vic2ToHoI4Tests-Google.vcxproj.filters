@@ -971,6 +971,12 @@
     <ClCompile Include="Vic2WorldTests\Pops\PopTests.cpp">
       <Filter>Vic2WorldTests\Pops</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OperativeNames\OutOperativeNames.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OperativeNames\OutOperativeNamesSet.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\OperativeNames</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1188,6 +1194,9 @@
     </Filter>
     <Filter Include="Vic2WorldTests\Pops">
       <UniqueIdentifier>{daaf3382-2a12-4126-9219-82ff78484dda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\OperativeNames">
+      <UniqueIdentifier>{a5204de6-bcc8-424b-aea6-a6f5e5a82716}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

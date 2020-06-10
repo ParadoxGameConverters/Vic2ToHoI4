@@ -204,6 +204,8 @@
     <ClCompile Include="Source\OutHoi4\Navies\OutMtgShipTypeNames.cpp" />
     <ClCompile Include="Source\OutHoi4\OccupationLaws\OutOccupationLaw.cpp" />
     <ClCompile Include="Source\OutHoi4\OccupationLaws\OutOccupationLaws.cpp" />
+    <ClCompile Include="Source\OutHoi4\OperativeNames\OutOperativeNames.cpp" />
+    <ClCompile Include="Source\OutHoi4\OperativeNames\OutOperativeNamesSet.cpp" />
     <ClCompile Include="Source\OutHoi4\OutColor.cpp" />
     <ClCompile Include="Source\OutHoi4\outDifficultySettings.cpp" />
     <ClCompile Include="Source\OutHoi4\OutFlags.cpp" />
@@ -393,6 +395,8 @@
     <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLawFactory.h" />
     <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLawsFactory.h" />
     <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLaws.h" />
+    <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNames.h" />
+    <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSet.h" />
     <ClInclude Include="Source\HOI4World\ProvinceDefinitions.h" />
     <ClInclude Include="Source\HOI4World\SharedFocus.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />
@@ -416,6 +420,8 @@
     <ClInclude Include="Source\OutHoi4\Map\OutStrategicRegions.h" />
     <ClInclude Include="Source\OutHoi4\OccupationLaws\OutOccupationLaw.h" />
     <ClInclude Include="Source\OutHoi4\OccupationLaws\OutOccupationLaws.h" />
+    <ClInclude Include="Source\OutHoi4\OperativeNames\OutOperativeNames.h" />
+    <ClInclude Include="Source\OutHoi4\OperativeNames\OutOperativeNamesSet.h" />
     <ClInclude Include="Source\OutHoi4\OutColor.h" />
     <ClInclude Include="Source\OutHoi4\OutFlags.h" />
     <ClInclude Include="Source\OutHoi4\OutHoi4Country.h" />
