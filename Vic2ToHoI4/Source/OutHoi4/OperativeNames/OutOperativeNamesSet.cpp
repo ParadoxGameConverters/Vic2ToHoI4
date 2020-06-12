@@ -5,11 +5,10 @@
 
 void HoI4::outputOperativeNamesSet(const OperativeNamesSet& operativeNamesSet, const std::string& outputName)
 {
-	std::ofstream out("output/" + outputName + "/common/units/codenames_operatives/" + operativeNamesSet.getTag() +
-							"_operative_codenames.txt");
+	std::ofstream out("output/" + outputName + "/common/units/codenames_operatives/" + operativeNamesSet.getFilename());
 
-	out << operativeNamesSet.getTag() << "_OPERATIVE_CODENAME_HISTORICAL = {\n";
-	out << "\tname = " << operativeNamesSet.getTag() << "_OPERATIVE_CODENAME_HISTORICAL\n";
+	out << operativeNamesSet.getWrapper() << " = {\n";
+	out << "\tname = " << operativeNamesSet.getName() << "\n";
 	out << "\n";
 
 	out << "\tfor_countries = { ";
