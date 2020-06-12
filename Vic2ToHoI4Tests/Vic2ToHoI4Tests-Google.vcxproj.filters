@@ -977,6 +977,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OperativeNames\OutOperativeNamesSet.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\OperativeNames</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\OperativeNames\OperativesNamesSetTests.cpp">
+      <Filter>HoI4WorldTests\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1198,6 +1207,12 @@
     <Filter Include="Vic2ToHoI4 files\OutHoi4\OperativeNames">
       <UniqueIdentifier>{a5204de6-bcc8-424b-aea6-a6f5e5a82716}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\OperativeNames">
+      <UniqueIdentifier>{e8fd2ace-eb60-4cc4-8248-d0892506625a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\OperativeNames">
+      <UniqueIdentifier>{2e92d854-f647-4e16-94ce-75c909a376ba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1233,6 +1248,9 @@
     <ClInclude Include="Mocks\CoastalProvincesMock.h">
       <Filter>Mocks</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h">
+      <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -1263,6 +1281,12 @@
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\OccupationLaws.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\generic_opertive_codenames.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\blank_operative_codenames.txt">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
   </ItemGroup>

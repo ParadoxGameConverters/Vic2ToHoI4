@@ -157,6 +157,8 @@
     <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLawFactory.cpp" />
     <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLaws.cpp" />
     <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLawsFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesSetDetails.cpp" />
+    <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesSetFactory.cpp" />
     <ClCompile Include="Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
@@ -397,6 +399,8 @@
     <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLaws.h" />
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNames.h" />
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSet.h" />
+    <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h" />
+    <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSetFactory.h" />
     <ClInclude Include="Source\HOI4World\ProvinceDefinitions.h" />
     <ClInclude Include="Source\HOI4World\SharedFocus.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />

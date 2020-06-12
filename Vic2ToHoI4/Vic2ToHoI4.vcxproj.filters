@@ -860,6 +860,12 @@
     <ClCompile Include="Source\OutHoi4\OperativeNames\OutOperativeNamesSet.cpp">
       <Filter>OutHoi4\OperativeNames</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesSetFactory.cpp">
+      <Filter>HoI4World\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesSetDetails.cpp">
+      <Filter>HoI4World\OperativeNames</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1617,6 +1623,12 @@
       <Filter>HoI4World\OperativeNames</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSet.h">
+      <Filter>HoI4World\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSetFactory.h">
+      <Filter>HoI4World\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h">
       <Filter>HoI4World\OperativeNames</Filter>
     </ClInclude>
   </ItemGroup>
