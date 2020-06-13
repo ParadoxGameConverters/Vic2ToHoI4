@@ -23,6 +23,8 @@ class OperativeNamesSet
 	[[nodiscard]] const auto& getCountries() const { return countries; }
 	[[nodiscard]] const auto& getNames() const { return names; }
 
+	void addCountry(std::string country) { countries.push_back(std::move(country)); }
+
   private:
 	std::string filename;
 	std::string wrapper;

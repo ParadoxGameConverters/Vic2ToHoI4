@@ -77,6 +77,17 @@ TEST_F(HoI4World_OperativeNames_OperativeNamesSetTests, CountriesAreNotSetFromFi
 }
 
 
+TEST_F(HoI4World_OperativeNames_OperativeNamesSetTests, CountriesCanBeAdded)
+{
+	auto operativeNamesSet =
+		 factory.getOperativeNamesSetFromFile("common/units/codenames_operatives/blank_operative_codenames.txt");
+	operativeNamesSet->addCountry("TAG");
+
+	ASSERT_EQ(1, operativeNamesSet->getCountries().size());
+	ASSERT_EQ("TAG", operativeNamesSet->getCountries()[0]);
+}
+
+
 TEST_F(HoI4World_OperativeNames_OperativeNamesSetTests, NamesDefaultsToEmpty)
 {
 	const auto operativeNamesSet =
