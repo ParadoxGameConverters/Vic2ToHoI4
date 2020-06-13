@@ -102,7 +102,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getEvents() const { return *events; }
 	[[nodiscard]] const auto& getOnActions() const { return *onActions; }
 	[[nodiscard]] const auto& getIntelligenceAgencies() const { return intelligenceAgencies; }
-	[[nodiscard]] const auto& getOperativeNames() const { return operativeNames; }
+	[[nodiscard]] const auto& getOperativeNames() const { return *operativeNames; }
 	[[nodiscard]] const auto& getPeaces() const { return *peaces; }
 	[[nodiscard]] const auto& getIdeologies() const { return *ideologies; }
 	[[nodiscard]] const auto& getTheIdeas() const { return *theIdeas; }
@@ -229,7 +229,7 @@ class World: commonItems::parser
 	std::unique_ptr<HoI4::OnActions> onActions;
 
 	std::unique_ptr<IntelligenceAgencies> intelligenceAgencies;
-	OperativeNames operativeNames;
+	std::unique_ptr<OperativeNames> operativeNames;
 
 	std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
 

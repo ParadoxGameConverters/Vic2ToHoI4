@@ -986,6 +986,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesTests.cpp">
+      <Filter>HoI4WorldTests\OperativeNames</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

@@ -163,6 +163,9 @@
     <Filter Include="OutHoi4\OperativeNames">
       <UniqueIdentifier>{f00d8f34-c235-44a0-b8c2-fe83e2576d5c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data Files\CodenamesOperatives">
+      <UniqueIdentifier>{4d174fef-4185-4b3d-b6d7-bb5665e60ae9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -864,6 +867,9 @@
       <Filter>HoI4World\OperativeNames</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesSetDetails.cpp">
+      <Filter>HoI4World\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesFactory.cpp">
       <Filter>HoI4World\OperativeNames</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1629,6 +1635,9 @@
       <Filter>HoI4World\OperativeNames</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h">
+      <Filter>HoI4World\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesFactory.h">
       <Filter>HoI4World\OperativeNames</Filter>
     </ClInclude>
   </ItemGroup>
@@ -18076,6 +18085,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\IntelligenceAgencyLogos.txt">
       <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\CodenamesOperatives\RME_operative_codenames.txt">
+      <Filter>Data Files\CodenamesOperatives</Filter>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>

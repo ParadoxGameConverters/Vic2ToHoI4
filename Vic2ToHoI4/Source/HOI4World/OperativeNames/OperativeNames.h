@@ -14,10 +14,11 @@ namespace HoI4
 class OperativeNames
 {
   public:
+	class Factory;
 	[[nodiscard]] const auto& getOperativeNamesSets() const { return operativeNamesSets; }
 
   private:
-	std::vector<OperativeNamesSet> operativeNamesSets{OperativeNamesSet{}};
+	std::vector<OperativeNamesSet> operativeNamesSets;
 };
 
 } // namespace HoI4
