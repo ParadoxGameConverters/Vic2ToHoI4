@@ -1,1 +1,22 @@
-link = { codenames = CHI_OPERATIVE_CODENAME_HISTORICAL culture = beifaren }
+# Codename operatives mappings
+# Countries that had names in vanilla will use those (Germany will always use German operatives, even if they became e.g. Ashkenazi)
+# These mappings have this structure:
+# link = { codenames = [Operative List] culture = [Primary culture] }
+# The Operative List is the one indicated in /common/units/codenames_operatives/[text file].txt as the first non-commented line
+# The Primary culture is, of course, from Vic2
+# In case a country has no vanilla operative names nor culture-assigned ones, it will default to the generic operative names
+# Hopefully, one day we'll have specific name lists for all cultures but, until then, bear with us that your horse agent is called James Bond
+
+link = { codenames = CHI_OPERATIVE_CODENAME_HISTORICAL culture = bai culture = beifaren culture = dongren culture = hakka culture = heiren culture = manchu culture = miao culture = min culture = nanfaren culture = nanren culture = yi culture = yue culture = zhuang }
+link = { codenames = ENG_OPERATIVE_CODENAME_HISTORICAL culture = british culture = english culture = falklander culture = scottish }
+link = { codenames = GENERIC_FRA_OPERATIVE_CODENAME_HISTORICAL culture = french culture = occitan culture = outremer culture = picard culture = wallonian }
+link = { codenames = GENERIC_GER_OPERATIVE_CODENAME_HISTORICAL culture = amerikaner culture = german culture = north_german culture = schwarzreicher culture = south_german culture = sudreicher }
+link = { codenames = HOL_OPERATIVE_CODENAME_HISTORICAL culture = dutch culture = flemish culture = nieuwereld culture = zuidelijk culture = boer }
+link = { codenames = ITA_OPERATIVE_CODENAME_HISTORICAL culture = africano culture = all_italian culture = australiano culture = italoamericano culture = north_italian culture = south_italian }
+link = { codenames = JAP_OPERATIVE_CODENAME_HISTORICAL culture = japanese culture = ainu }
+link = { codenames = POL_OPERATIVE_CODENAME_HISTORICAL culture = polish culture = czarny culture = nowyswiat culture = poludniowy culture = western_slavic }
+link = { codenames = POR_OPERATIVE_CODENAME_HISTORICAL culture = portuguese culture = brazilian }
+link = { codenames = ROM_OPERATIVE_CODENAME_HISTORICAL culture = lumenoua culture = negru culture = romanian culture = sudic }
+link = { codenames = SOV_OPERATIVE_CODENAME_HISTORICAL culture = novvymir culture = russian culture = smugly culture = ugrian culture = yuzhny }
+link = { codenames = SPR_OPERATIVE_CODENAME_HISTORICAL culture = galician culture = spanish }
+link = { codenames = SWE_OPERATIVE_CODENAME_HISTORICAL culture = swedish culture = dummy }
