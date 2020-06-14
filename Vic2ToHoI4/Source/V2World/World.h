@@ -6,7 +6,7 @@
 #include "CultureGroups.h"
 #include "Parser.h"
 #include "Party.h"
-#include "StateDefinitions.h"
+#include "States/StateDefinitions.h"
 #include "Wars/War.h"
 #include <map>
 #include <optional>

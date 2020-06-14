@@ -12,7 +12,7 @@
 #include "Party.h"
 #include "Pops/PopFactory.h"
 #include "Province.h"
-#include "State.h"
+#include "States/State.h"
 #include "Vic2Localisations.h"
 #include <fstream>
 

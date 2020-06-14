@@ -34,12 +34,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Province.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\State.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\StateDefinitions.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
@@ -826,9 +820,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="Vic2WorldTests\StateDefinitionsTests.cpp">
-      <Filter>Vic2WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Vic2Localisations.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
@@ -1009,6 +1000,15 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNames.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\State.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateDefinitions.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\States\StateDefinitionsTests.cpp">
+      <Filter>Vic2WorldTests\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1236,6 +1236,12 @@
     </Filter>
     <Filter Include="HoI4WorldTests\OperativeNames">
       <UniqueIdentifier>{2e92d854-f647-4e16-94ce-75c909a376ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\States">
+      <UniqueIdentifier>{91a915a9-f9fa-4f6b-b3aa-a2d4e6e9b412}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\States">
+      <UniqueIdentifier>{aa836837-d870-4faa-8525-ae2c08629a80}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
