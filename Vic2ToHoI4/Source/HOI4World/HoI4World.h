@@ -21,7 +21,9 @@
 #include "MilitaryMappings/AllMilitaryMappings.h"
 #include "MilitaryMappings/UnitMappings.h"
 #include "Names/Names.h"
+#include "OccupationLaws/OccupationLawsFactory.h"
 #include "OnActions.h"
+#include "OperativeNames/OperativeNames.h"
 #include "Parser.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
 #include "ScriptedTriggers/ScriptedTriggers.h"
@@ -31,7 +33,6 @@
 #include <set>
 #include <string>
 #include <vector>
-#include "OccupationLaws/OccupationLawsFactory.h"
 
 
 
@@ -101,6 +102,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getEvents() const { return *events; }
 	[[nodiscard]] const auto& getOnActions() const { return *onActions; }
 	[[nodiscard]] const auto& getIntelligenceAgencies() const { return intelligenceAgencies; }
+	[[nodiscard]] const auto& getOperativeNames() const { return *operativeNames; }
 	[[nodiscard]] const auto& getPeaces() const { return *peaces; }
 	[[nodiscard]] const auto& getIdeologies() const { return *ideologies; }
 	[[nodiscard]] const auto& getTheIdeas() const { return *theIdeas; }
@@ -225,7 +227,9 @@ class World: commonItems::parser
 	std::unique_ptr<HoI4::AiPeaces> peaces;
 	std::unique_ptr<HoI4::Events> events;
 	std::unique_ptr<HoI4::OnActions> onActions;
+
 	std::unique_ptr<IntelligenceAgencies> intelligenceAgencies;
+	std::unique_ptr<OperativeNames> operativeNames;
 
 	std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
 

@@ -17,7 +17,7 @@ class Province;
 
 
 
-typedef struct
+typedef struct workerStruct
 {
 	int craftsmen = 0;
 	int clerks = 0;

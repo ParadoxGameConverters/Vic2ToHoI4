@@ -4,6 +4,7 @@
 
 
 #include "../../HOI4World/Decisions/DecisionsCategory.h"
+#include <ostream>
 
 
 

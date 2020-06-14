@@ -1,0 +1,1 @@
+link = { codenames = CHI_OPERATIVE_CODENAME_HISTORICAL culture = beifaren }

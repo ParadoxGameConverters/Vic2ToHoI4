@@ -12,6 +12,8 @@
 #include "Map/OutStrategicRegions.h"
 #include "Map/OutSupplyZones.h"
 #include "OSCompatibilityLayer.h"
+#include "OccupationLaws/OutOccupationLaws.h"
+#include "OperativeNames/OutOperativeNames.h"
 #include "OutFocusTree.h"
 #include "OutHoi4Country.h"
 #include "OutLocalisation.h"
@@ -21,7 +23,6 @@
 #include "States/OutHoI4States.h"
 #include "outDifficultySettings.h"
 #include <fstream>
-#include "OccupationLaws/OutOccupationLaws.h"
 
 
 namespace HoI4
@@ -188,6 +189,7 @@ void HoI4::OutputWorld(const World& world,
 	outputGameRules(world.getGameRules(), outputName);
 	outputOccupationLaws(world.getOccupationLaws(), theConfiguration);
 	outputIntelligenceAgencies(*world.getIntelligenceAgencies(), outputName);
+	outputOperativeNames(world.getOperativeNames(), outputName);
 }
 
 

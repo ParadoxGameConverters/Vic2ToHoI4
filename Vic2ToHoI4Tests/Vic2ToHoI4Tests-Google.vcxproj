@@ -67,6 +67,13 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLaws.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawsFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNames.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesMappingFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesMappings.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesMappingsFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp" />
@@ -87,6 +94,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OccupationLaws\OutOccupationLaw.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OccupationLaws\OutOccupationLaws.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OperativeNames\OutOperativeNames.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OperativeNames\OutOperativeNamesSet.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutColor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFlags.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoi4Country.cpp" />
@@ -332,6 +341,10 @@
     <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawsFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesMappingFactoryTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesMappingsFactoryTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\OperativeNames\OperativesNamesSetTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedTriggers\ScriptedTriggerTests.cpp" />
@@ -394,6 +407,7 @@
   <ItemGroup>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h" />
     <ClInclude Include="Mocks\CoastalProvincesMock.h" />
     <ClInclude Include="Mocks\EventsMock.h" />
     <ClInclude Include="Mocks\GovermentMapperMock.h" />
@@ -424,6 +438,21 @@
     <CopyFileToFolders Include="TestFiles\OccupationLaws.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/OccupationLaws/common/occupation_laws/</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">occupation_laws%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\generic_opertive_codenames.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/common/units/codenames_operatives/</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\blank_operative_codenames.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/common/units/codenames_operatives/</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\OperativeNamesMappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />
