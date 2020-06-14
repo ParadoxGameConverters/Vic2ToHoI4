@@ -878,6 +878,9 @@
     <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesMappingFactory.cpp">
       <Filter>HoI4World\OperativeNames</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesMappingsFactory.cpp">
+      <Filter>HoI4World\OperativeNames</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1650,6 +1653,9 @@
       <Filter>HoI4World\OperativeNames</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesMappingFactory.h">
+      <Filter>HoI4World\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesMappingsFactory.h">
       <Filter>HoI4World\OperativeNames</Filter>
     </ClInclude>
   </ItemGroup>
@@ -18100,6 +18106,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\CodenamesOperatives\RME_operative_codenames.txt">
       <Filter>Data Files\CodenamesOperatives</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\OperativeNamesMappings.txt">
+      <Filter>Data Files</Filter>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>

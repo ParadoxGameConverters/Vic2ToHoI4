@@ -16,13 +16,13 @@ HoI4::OperativeNamesMappingFactory::OperativeNamesMappingFactory()
 
 
 
-HoI4::OperativeNamesMappings HoI4::OperativeNamesMappingFactory::getMappings(std::istream& theStream)
+HoI4::RawOperativeNamesMappings HoI4::OperativeNamesMappingFactory::getMappings(std::istream& theStream)
 {
 	codenames.clear();
 	cultures.clear();
 	parseStream(theStream);
 
-	OperativeNamesMappings operativeNamesMappings;
+	RawOperativeNamesMappings operativeNamesMappings;
 	if (codenames.empty())
 	{
 		return operativeNamesMappings;

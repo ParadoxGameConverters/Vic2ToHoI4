@@ -160,6 +160,7 @@
     <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesFactory.cpp" />
     <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesMappingFactory.cpp" />
     <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesMappings.cpp" />
+    <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesMappingsFactory.cpp" />
     <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesSetDetails.cpp" />
     <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesSetFactory.cpp" />
     <ClCompile Include="Source\HOI4World\ProvinceDefinitions.cpp" />
@@ -404,6 +405,7 @@
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesFactory.h" />
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesMappingFactory.h" />
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesMappings.h" />
+    <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesMappingsFactory.h" />
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSet.h" />
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h" />
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSetFactory.h" />
@@ -17142,6 +17144,11 @@
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\CodenamesOperatives\RME_operative_codenames.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles/CodenamesOperatives</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\OperativeNamesMappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

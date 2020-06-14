@@ -69,6 +69,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesMappingFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesMappings.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesMappingsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp" />
@@ -339,6 +341,7 @@
     <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawsFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesMappingFactoryTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesMappingsFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativesNamesSetTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationsTests.cpp" />
@@ -444,6 +447,11 @@
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\blank_operative_codenames.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/common/units/codenames_operatives/</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\OperativeNamesMappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

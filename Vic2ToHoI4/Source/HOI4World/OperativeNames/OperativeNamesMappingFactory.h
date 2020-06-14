@@ -12,14 +12,14 @@
 namespace HoI4
 {
 
-using OperativeNamesMappings = std::map<std::string, std::string>;
+using RawOperativeNamesMappings = std::map<std::string, std::string>;
 
 
 class OperativeNamesMappingFactory: commonItems::parser
 {
   public:
 	OperativeNamesMappingFactory();
-	OperativeNamesMappings getMappings(std::istream& theStream);
+	RawOperativeNamesMappings getMappings(std::istream& theStream);
 
   private:
 	std::string codenames;

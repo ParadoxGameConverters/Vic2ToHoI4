@@ -998,6 +998,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesMappingFactory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesMappingsFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesMappingsFactoryTests.cpp">
+      <Filter>HoI4WorldTests\OperativeNames</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesMappings.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1299,6 +1308,9 @@
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\blank_operative_codenames.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\OperativeNamesMappings.txt">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
   </ItemGroup>
