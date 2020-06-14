@@ -5,6 +5,7 @@ testResults
 *testResults*
 changelog.txt
 *.bz2
+*log.txt
 *.opensdf
 *.opendb
 *.sdf

@@ -1,8 +1,0 @@
-2020-06-07 14:40:51     [INFO] 	Parsing names
-2020-06-07 14:40:52    [ERROR] Could not open /common/cultures.txt for parsing.
-2020-06-07 14:40:52    [ERROR] Could not open DataFiles/names.txt for parsing.
-2020-06-07 14:40:52     [INFO] 	Parsing names
-2020-06-07 14:40:52    [ERROR] Could not open /common/cultures.txt for parsing.
-2020-06-07 14:40:52    [ERROR] Could not open DataFiles/names.txt for parsing.
-2020-06-07 14:40:52    [ERROR] Could not open DataFiles/IntelligenceAgencyLogos.txt for parsing.
-2020-06-07 14:40:52  [WARNING] Unknown mtg unit type: commerce_raider
