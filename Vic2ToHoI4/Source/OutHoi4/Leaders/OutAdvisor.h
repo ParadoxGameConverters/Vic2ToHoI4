@@ -3,6 +3,7 @@
 
 
 #include "../../HOI4World/Leaders/Advisor.h"
+#include <ostream>
 
 
 namespace HoI4

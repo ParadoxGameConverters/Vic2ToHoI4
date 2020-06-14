@@ -4,6 +4,7 @@
 
 
 #include "../HOI4World/SharedFocus.h"
+#include <ostream>
 
 
 
