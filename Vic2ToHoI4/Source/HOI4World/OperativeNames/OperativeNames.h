@@ -3,8 +3,10 @@
 
 
 
+#include "../HoI4Country.h"
 #include "OperativeNamesSet.h"
-#include <vector>
+#include <map>
+#include <string>
 
 
 
@@ -17,8 +19,10 @@ class OperativeNames
 	class Factory;
 	[[nodiscard]] const auto& getOperativeNamesSets() const { return operativeNamesSets; }
 
+	void addCountriesToNameSets(const std::map<std::string, std::shared_ptr<Country>>& countries);
+
   private:
-	std::vector<OperativeNamesSet> operativeNamesSets;
+	std::map<std::string, OperativeNamesSet> operativeNamesSets;
 };
 
 } // namespace HoI4

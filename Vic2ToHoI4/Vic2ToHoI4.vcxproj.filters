@@ -881,6 +881,9 @@
     <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesMappingsFactory.cpp">
       <Filter>HoI4World\OperativeNames</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNames.cpp">
+      <Filter>HoI4World\OperativeNames</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">

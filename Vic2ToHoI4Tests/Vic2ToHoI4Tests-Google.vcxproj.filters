@@ -1007,6 +1007,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesMappings.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNames.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

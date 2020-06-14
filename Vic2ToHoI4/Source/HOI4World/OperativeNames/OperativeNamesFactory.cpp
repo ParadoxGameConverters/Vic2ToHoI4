@@ -4,21 +4,24 @@
 
 
 
-std::unique_ptr<HoI4::OperativeNames> HoI4::OperativeNames::Factory::getOperativeNames(
-	 const std::string& HoI4Path)
+std::unique_ptr<HoI4::OperativeNames> HoI4::OperativeNames::Factory::getOperativeNames(const std::string& HoI4Path)
 {
 	auto operativeNames = std::make_unique<OperativeNames>();
 	OperativeNamesSet::Factory operativeNameSetFactory;
 
 	for (const auto& filename: Utils::GetAllFilesInFolder(HoI4Path + "/common/units/codenames_operatives"))
 	{
-		operativeNames->operativeNamesSets.push_back(std::move(*operativeNameSetFactory.getOperativeNamesSetFromFile(
-			 HoI4Path + "/common/units/codenames_operatives/" + filename)));
+		auto operativesNamesSet = operativeNameSetFactory.getOperativeNamesSetFromFile(
+			 HoI4Path + "/common/units/codenames_operatives/" + filename);
+		operativeNames->operativeNamesSets.insert(
+			 std::make_pair(operativesNamesSet->getWrapper(), std::move(*operativesNamesSet)));
 	}
 	for (const auto& filename: Utils::GetAllFilesInFolder("DataFiles/CodenamesOperatives"))
 	{
-		operativeNames->operativeNamesSets.push_back(std::move(
-			 *operativeNameSetFactory.getOperativeNamesSetFromFile("DataFiles/CodenamesOperatives/" + filename)));
+		auto operativesNamesSet =
+			 operativeNameSetFactory.getOperativeNamesSetFromFile("DataFiles/CodenamesOperatives/" + filename);
+		operativeNames->operativeNamesSets.insert(
+			 std::make_pair(operativesNamesSet->getWrapper(), std::move(*operativesNamesSet)));
 	}
 
 	return operativeNames;

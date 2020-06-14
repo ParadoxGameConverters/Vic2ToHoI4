@@ -151,6 +151,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	occupationLaws->updateLaws(ideologies->getMajorIdeologies());
 
 	operativeNames = OperativeNames::Factory::getOperativeNames(theConfiguration.getHoI4Path());
+	operativeNames->addCountriesToNameSets(countries);
 }
 
 

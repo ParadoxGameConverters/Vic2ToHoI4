@@ -67,6 +67,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLaws.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawsFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNames.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesMappings.cpp" />
