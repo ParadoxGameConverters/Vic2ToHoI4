@@ -158,6 +158,8 @@
     <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLaws.cpp" />
     <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLawsFactory.cpp" />
     <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesMappingFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesMappings.cpp" />
     <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesSetDetails.cpp" />
     <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesSetFactory.cpp" />
     <ClCompile Include="Source\HOI4World\ProvinceDefinitions.cpp" />
@@ -400,6 +402,8 @@
     <ClInclude Include="Source\HOI4World\OccupationLaws\OccupationLaws.h" />
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNames.h" />
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesFactory.h" />
+    <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesMappingFactory.h" />
+    <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesMappings.h" />
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSet.h" />
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h" />
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSetFactory.h" />
