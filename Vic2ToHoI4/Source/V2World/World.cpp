@@ -13,6 +13,7 @@
 #include "Pops/PopFactory.h"
 #include "Province.h"
 #include "States/State.h"
+#include "States/StateDefinitionsFactory.h"
 #include "Vic2Localisations.h"
 #include <fstream>
 
@@ -23,7 +24,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	theLocalisations = Localisations::Parser{}.importLocalisations(theConfiguration);
 	theCultureGroups.init(theConfiguration);
 	auto theIssues = Issues::Parser{}.importIssues(theConfiguration);
-	theStateDefinitions = StateDefinitions::Parser{}.parseStateDefinitions(theConfiguration);
+	theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
 	inventions theInventions(theConfiguration);
 	Pop::Factory popFactory(theIssues);
 
