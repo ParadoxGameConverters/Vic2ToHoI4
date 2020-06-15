@@ -9,63 +9,6 @@
 
 
 
-Vic2::State::State(std::istream& theStream,
-	 const std::string& ownerTag,
-	 const Vic2::StateDefinitions& theStateDefinitions):
-	 owner(ownerTag)
-{
-	registerKeyword("provinces", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::intList provinceList(theStream);
-		for (auto province: provinceList.getInts())
-		{
-			provinceNums.insert(province);
-		}
-	});
-	registerKeyword("state_buildings", [this](const std::string& unused, std::istream& theStream) {
-		Building theBuilding(theStream);
-		factoryLevel += theBuilding.getLevel();
-	});
-	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
-
-	parseStream(theStream);
-	setID(theStateDefinitions);
-	setCapital(theStateDefinitions);
-}
-
-
-Vic2::State::State(std::set<std::pair<int, Vic2::Province*>> theProvinces, const StateDefinitions& theStateDefinitions)
-{
-	for (auto province: theProvinces)
-	{
-		provinceNums.insert(province.first);
-		provinces.insert(province.second);
-	}
-	setID(theStateDefinitions);
-	determineIfPartialState(theStateDefinitions);
-	setCapital(theStateDefinitions);
-}
-
-
-void Vic2::State::setID(const Vic2::StateDefinitions& theStateDefinitions)
-{
-	auto foundStateID = theStateDefinitions.getStateID(*provinceNums.begin());
-	if (foundStateID)
-	{
-		stateID = *foundStateID;
-	}
-	else
-	{
-		Log(LogLevel::Warning) << "Could not find the state for Vic2 province " << *provinceNums.begin() << ".";
-	}
-}
-
-
-void Vic2::State::setCapital(const Vic2::StateDefinitions& theStateDefinitions)
-{
-	capitalProvince = theStateDefinitions.getCapitalProvince(stateID);
-}
-
-
 void Vic2::State::determineEmployedWorkers()
 {
 	workerStruct workers = countEmployedWorkers();

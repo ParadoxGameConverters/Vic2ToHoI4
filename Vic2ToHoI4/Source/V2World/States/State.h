@@ -30,6 +30,7 @@ typedef struct workerStruct
 class State: commonItems::parser
 {
   public:
+	class Factory;
 	State() = default;
 	State(std::istream& theStream, const std::string& ownerTag, const Vic2::StateDefinitions& theStateDefinitions);
 	explicit State(std::set<std::pair<int, Province*>> theProvinces, const Vic2::StateDefinitions& theStateDefinitions);
@@ -53,9 +54,6 @@ class State: commonItems::parser
 	virtual int getEmployedWorkers() const { return employedWorkers; }
 
   private:
-	void setID(const StateDefinitions& theStateDefinitions);
-	void setCapital(const StateDefinitions& theStateDefinitions);
-
 	workerStruct countEmployedWorkers() const;
 	workerStruct limitWorkersByFactoryLevels(const workerStruct& workers) const;
 	int determineEmployedWorkersScore(const workerStruct& workers) const;

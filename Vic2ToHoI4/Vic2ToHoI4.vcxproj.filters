@@ -890,6 +890,9 @@
     <ClCompile Include="Source\V2World\States\StateDefinitionsFactory.cpp">
       <Filter>Vic2World\States</Filter>
     </ClCompile>
+    <ClCompile Include="Source\V2World\States\StateFactory.cpp">
+      <Filter>Vic2World\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1668,6 +1671,9 @@
       <Filter>Vic2World\States</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\States\StateDefinitionsFactory.h">
+      <Filter>Vic2World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\States\StateFactory.h">
       <Filter>Vic2World\States</Filter>
     </ClInclude>
   </ItemGroup>

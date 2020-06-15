@@ -14,6 +14,7 @@
 #include "Province.h"
 #include "States/State.h"
 #include "States/StateDefinitionsFactory.h"
+#include "States/StateFactory.h"
 #include "Vic2Localisations.h"
 #include <fstream>
 
@@ -27,6 +28,8 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
 	inventions theInventions(theConfiguration);
 	Pop::Factory popFactory(theIssues);
+	State::Factory stateFactory;
+
 
 	std::vector<int> GPIndexes;
 	registerKeyword("great_nations", [&GPIndexes, this](const std::string& unused, std::istream& theStream) {
@@ -41,9 +44,9 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	std::vector<std::string> tagsInOrder;
 	tagsInOrder.push_back(""); // REB (first country is index 1
 	registerRegex("[A-Z][A-Z0-9]{2}",
-		 [&tagsInOrder, &theInventions, this](const std::string& countryTag, std::istream& theStream) {
+		 [&tagsInOrder, &theInventions, &stateFactory, this](const std::string& countryTag, std::istream& theStream) {
 			 countries[countryTag] =
-				  new Country(countryTag, theStream, theInventions, theCultureGroups, *theStateDefinitions);
+				  new Country(countryTag, theStream, theInventions, theCultureGroups, *theStateDefinitions, stateFactory);
 			 tagsInOrder.push_back(countryTag);
 		 });
 	registerKeyword("diplomacy", [this](const std::string& unused, std::istream& theStream) {
@@ -241,9 +244,9 @@ void Vic2::World::determinePartialStates(const StateDefinitions& theStateDefinit
 	Log(LogLevel::Info) << "\tFinding partial states";
 	for (const auto& country: countries)
 	{
-		for (auto state: country.second->getStates())
+		for (auto& state: country.second->getStates())
 		{
-			state->determineIfPartialState(theStateDefinitions);
+			state.determineIfPartialState(theStateDefinitions);
 		}
 	}
 }

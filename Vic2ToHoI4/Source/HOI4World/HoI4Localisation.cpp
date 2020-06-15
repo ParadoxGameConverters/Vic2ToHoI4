@@ -500,7 +500,7 @@ bool HoI4::Localisation::sourceStateHasAllButOneProvinceFromDefinition(const Vic
 	 const Vic2::StateDefinitions& theStateDefinitions)
 {
 	return sourceState.getProvinces().size() ==
-			 theStateDefinitions.getAllProvinces((*sourceState.getProvinces().begin())->getNumber()).size() - 1;
+			 theStateDefinitions.getAllProvinces(*sourceState.getProvinceNumbers().begin()).size() - 1;
 }
 
 
@@ -511,8 +511,7 @@ bool HoI4::Localisation::stateHasAllDefinedProvincesAfterConversion(const State&
 {
 	std::set<int> stateDefinitionDefinitionProvinces;
 
-	auto stateDefinitionSourceProvinces =
-		 theStateDefinitions.getAllProvinces((*sourceState.getProvinces().begin())->getNumber());
+	auto stateDefinitionSourceProvinces = theStateDefinitions.getAllProvinces(*sourceState.getProvinceNumbers().begin());
 	for (auto sourceProvince: stateDefinitionSourceProvinces)
 	{
 		auto possibleMappedProvinces = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince);

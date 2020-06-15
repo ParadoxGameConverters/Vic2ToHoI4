@@ -19,7 +19,8 @@ Vic2::Country::Country(const std::string& theTag,
 	 std::istream& theStream,
 	 const inventions& theInventions,
 	 const cultureGroups& theCultureGroups,
-	 const StateDefinitions& theStateDefinitions):
+	 const StateDefinitions& theStateDefinitions,
+	 State::Factory& stateFactory):
 	 tag(theTag)
 {
 	registerKeyword("capital", [this](const std::string& unused, std::istream& theStream) {
@@ -158,10 +159,11 @@ Vic2::Country::Country(const std::string& theTag,
 		Leader* leader = new Leader(theStream);
 		leaders.push_back(leader);
 	});
-	registerKeyword("state", [this, &theStateDefinitions](const std::string& unused, std::istream& theStream) {
-		State* newState = new State(theStream, tag, theStateDefinitions);
-		states.push_back(newState);
-	});
+	registerKeyword("state",
+		 [this, &theStateDefinitions, &stateFactory](const std::string& unused, std::istream& theStream) {
+			 auto newState = stateFactory.getState(theStream, tag, theStateDefinitions);
+			 states.push_back(*newState);
+		 });
 	registerKeyword("flags", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::assignments theFlags(theStream);
 		for (auto flag: theFlags.getAssignments())
@@ -182,10 +184,10 @@ void Vic2::Country::eatCountry(Vic2::Country* target, bool debug)
 		return;
 	}
 
-	for (auto state: target->states)
+	for (auto& state: target->states)
 	{
 		states.push_back(state);
-		state->setOwner(tag);
+		state.setOwner(tag);
 	}
 	for (auto core: target->cores)
 	{
@@ -215,9 +217,9 @@ void Vic2::Country::eatCountry(Vic2::Country* target, bool debug)
 
 void Vic2::Country::putProvincesInStates()
 {
-	for (auto state: states)
+	for (auto& state: states)
 	{
-		for (auto provinceNum: state->getProvinceNumbers())
+		for (auto provinceNum: state.getProvinceNumbers())
 		{
 			auto province = provinces.find(provinceNum);
 			if (province == provinces.end())
@@ -226,7 +228,7 @@ void Vic2::Country::putProvincesInStates()
 				continue;
 			}
 
-			state->addProvince(province->second);
+			state.addProvince(province->second);
 		}
 	}
 }
@@ -234,9 +236,9 @@ void Vic2::Country::putProvincesInStates()
 
 void Vic2::Country::determineEmployedWorkers()
 {
-	for (auto state: states)
+	for (auto& state: states)
 	{
-		state->determineEmployedWorkers();
+		state.determineEmployedWorkers();
 	}
 }
 
@@ -405,7 +407,7 @@ long Vic2::Country::getEmployedWorkers() const
 	long employedWorkers = 0;
 	for (auto state: states)
 	{
-		employedWorkers += state->getEmployedWorkers();
+		employedWorkers += state.getEmployedWorkers();
 	}
 
 	return employedWorkers;

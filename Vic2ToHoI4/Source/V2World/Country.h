@@ -6,9 +6,10 @@
 #include "../Color.h"
 #include "Army.h"
 #include "Date.h"
-#include "Party.h"
-#include "Wars/War.h"
 #include "Parser.h"
+#include "Party.h"
+#include "States/StateFactory.h"
+#include "Wars/War.h"
 #include <functional>
 #include <map>
 #include <memory>
@@ -41,7 +42,8 @@ class Country: commonItems::parser
 		 std::istream& theStream,
 		 const inventions& theInventions,
 		 const cultureGroups& theCultureGroups,
-		 const StateDefinitions& theStateDefinitions);
+		 const StateDefinitions& theStateDefinitions,
+		 State::Factory& stateFactory);
 	virtual ~Country() = default;
 
 	void addProvince(const std::pair<const int, Province*>& province) { provinces.insert(province); }
@@ -60,7 +62,7 @@ class Country: commonItems::parser
 	void handleMissingCulture(const cultureGroups& theCultureGroups);
 
 	std::map<std::string, const Relations*> getRelations() const { return relations; }
-	std::vector<State*> getStates() const { return states; }
+	auto& getStates() { return states; }
 	virtual std::string getTag() const { return tag; }
 	std::string getIdentifier() const;
 	std::string getPrimaryCulture() const { return primaryCulture; }
@@ -110,7 +112,7 @@ class Country: commonItems::parser
 	std::string tag = "";
 	ConverterColor::Color color;
 
-	std::vector<State*> states;
+	std::vector<State> states;
 	std::map<int, Province*> provinces;
 	std::vector<Province*> cores;
 	int capital = 0;
