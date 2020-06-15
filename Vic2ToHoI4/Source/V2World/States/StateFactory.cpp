@@ -9,15 +9,13 @@
 Vic2::State::Factory::Factory()
 {
 	registerKeyword("provinces", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::intList provinceList(theStream);
-		for (auto province: provinceList.getInts())
+		for (auto province: commonItems::intList{theStream}.getInts())
 		{
 			state->provinceNumbers.insert(province);
 		}
 	});
 	registerKeyword("state_buildings", [this](const std::string& unused, std::istream& theStream) {
-		Building theBuilding(theStream);
-		state->factoryLevel += theBuilding.getLevel();
+		state->factoryLevel += Building{theStream}.getLevel();
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
@@ -26,7 +24,7 @@ Vic2::State::Factory::Factory()
 
 std::unique_ptr<Vic2::State> Vic2::State::Factory::getState(std::istream& theStream,
 	 const std::string& ownerTag,
-	 const Vic2::StateDefinitions& theStateDefinitions)
+	 const StateDefinitions& theStateDefinitions)
 {
 	state = std::make_unique<State>();
 
@@ -42,12 +40,12 @@ std::unique_ptr<Vic2::State> Vic2::State::Factory::getState(std::istream& theStr
 
 
 std::unique_ptr<Vic2::State> Vic2::State::Factory::getState(
-	 std::set<std::pair<int, std::shared_ptr<Vic2::Province>>> theProvinces,
+	 const std::set<std::pair<int, std::shared_ptr<Province>>>& theProvinces,
 	 const StateDefinitions& theStateDefinitions)
 {
 	state = std::make_unique<State>();
 
-	for (auto province: theProvinces)
+	for (const auto& province: theProvinces)
 	{
 		state->provinceNumbers.insert(province.first);
 		state->provinces.insert(province.second);
@@ -60,7 +58,7 @@ std::unique_ptr<Vic2::State> Vic2::State::Factory::getState(
 }
 
 
-void Vic2::State::Factory::setID(const Vic2::StateDefinitions& theStateDefinitions)
+void Vic2::State::Factory::setID(const StateDefinitions& theStateDefinitions) const
 {
 	auto foundStateID = theStateDefinitions.getStateID(*state->provinceNumbers.begin());
 	if (foundStateID)
@@ -74,13 +72,13 @@ void Vic2::State::Factory::setID(const Vic2::StateDefinitions& theStateDefinitio
 }
 
 
-void Vic2::State::Factory::setCapital(const Vic2::StateDefinitions& theStateDefinitions)
+void Vic2::State::Factory::setCapital(const StateDefinitions& theStateDefinitions) const
 {
 	state->capitalProvince = theStateDefinitions.getCapitalProvince(state->stateID);
 }
 
 
-void Vic2::State::Factory::determineIfPartialState(const StateDefinitions& theStateDefinitions)
+void Vic2::State::Factory::determineIfPartialState(const StateDefinitions& theStateDefinitions) const
 {
 	if (state->provinces.size() > 0)
 	{

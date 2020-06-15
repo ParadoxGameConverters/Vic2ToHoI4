@@ -15,17 +15,17 @@ namespace Vic2
 class State::Factory: commonItems::parser
 {
   public:
-	State::Factory();
+	Factory();
 	std::unique_ptr<State> getState(std::istream& theStream,
 		 const std::string& ownerTag,
-		 const Vic2::StateDefinitions& theStateDefinitions);
-	std::unique_ptr<State> getState(std::set<std::pair<int, std::shared_ptr<Vic2::Province>>> theProvinces,
-		 const Vic2::StateDefinitions& theStateDefinitions);
+		 const StateDefinitions& theStateDefinitions);
+	std::unique_ptr<State> getState(const std::set<std::pair<int, std::shared_ptr<Province>>>& theProvinces,
+		 const StateDefinitions& theStateDefinitions);
 
   private:
-	void setID(const StateDefinitions& theStateDefinitions);
-	void setCapital(const StateDefinitions& theStateDefinitions);
-	void determineIfPartialState(const Vic2::StateDefinitions& theStateDefinitions);
+	void setID(const StateDefinitions& theStateDefinitions) const;
+	void setCapital(const StateDefinitions& theStateDefinitions) const;
+	void determineIfPartialState(const StateDefinitions& theStateDefinitions) const;
 
 	std::unique_ptr<State> state;
 };
