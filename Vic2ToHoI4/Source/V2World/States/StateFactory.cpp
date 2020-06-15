@@ -12,7 +12,7 @@ Vic2::State::Factory::Factory()
 		commonItems::intList provinceList(theStream);
 		for (auto province: provinceList.getInts())
 		{
-			state->provinceNums.insert(province);
+			state->provinceNumbers.insert(province);
 		}
 	});
 	registerKeyword("state_buildings", [this](const std::string& unused, std::istream& theStream) {
@@ -49,7 +49,7 @@ std::unique_ptr<Vic2::State> Vic2::State::Factory::getState(
 
 	for (auto province: theProvinces)
 	{
-		state->provinceNums.insert(province.first);
+		state->provinceNumbers.insert(province.first);
 		state->provinces.insert(province.second);
 	}
 	setID(theStateDefinitions);
@@ -62,14 +62,14 @@ std::unique_ptr<Vic2::State> Vic2::State::Factory::getState(
 
 void Vic2::State::Factory::setID(const Vic2::StateDefinitions& theStateDefinitions)
 {
-	auto foundStateID = theStateDefinitions.getStateID(*state->provinceNums.begin());
+	auto foundStateID = theStateDefinitions.getStateID(*state->provinceNumbers.begin());
 	if (foundStateID)
 	{
 		state->stateID = *foundStateID;
 	}
 	else
 	{
-		Log(LogLevel::Warning) << "Could not find the state for Vic2 province " << *state->provinceNums.begin() << ".";
+		Log(LogLevel::Warning) << "Could not find the state for Vic2 province " << *state->provinceNumbers.begin() << ".";
 	}
 }
 
@@ -84,9 +84,9 @@ void Vic2::State::Factory::determineIfPartialState(const StateDefinitions& theSt
 {
 	if (state->provinces.size() > 0)
 	{
-		for (auto expectedProvince: theStateDefinitions.getAllProvinces(*state->provinceNums.begin()))
+		for (auto expectedProvince: theStateDefinitions.getAllProvinces(*state->provinceNumbers.begin()))
 		{
-			if (state->provinceNums.count(expectedProvince) == 0)
+			if (state->provinceNumbers.count(expectedProvince) == 0)
 			{
 				state->partialState = true;
 				break;

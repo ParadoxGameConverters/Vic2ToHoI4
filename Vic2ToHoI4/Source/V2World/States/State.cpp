@@ -2,16 +2,12 @@
 #include "../Building.h"
 #include "../Country.h"
 #include "../Province.h"
-#include "../World.h"
-#include "Log.h"
-#include "ParserHelpers.h"
-#include "StateDefinitions.h"
 
 
 
 void Vic2::State::determineEmployedWorkers()
 {
-	workerStruct workers = countEmployedWorkers();
+	auto workers = countEmployedWorkers();
 	workers = limitWorkersByFactoryLevels(workers);
 	employedWorkers = determineEmployedWorkersScore(workers);
 }
@@ -21,7 +17,7 @@ Vic2::workerStruct Vic2::State::countEmployedWorkers() const
 {
 	workerStruct workers;
 
-	for (auto province: provinces)
+	for (const auto& province: provinces)
 	{
 		workers.craftsmen += province->getPopulation("craftsmen");
 		workers.clerks += province->getPopulation("clerks");
@@ -35,28 +31,23 @@ Vic2::workerStruct Vic2::State::countEmployedWorkers() const
 
 Vic2::workerStruct Vic2::State::limitWorkersByFactoryLevels(const workerStruct& workers) const
 {
-	workerStruct newWorkers;
-	if ((workers.craftsmen + workers.clerks) > (factoryLevel * 10000))
+	if ((workers.craftsmen + workers.clerks) <= (factoryLevel * 10000))
 	{
-		newWorkers.craftsmen =
-			 static_cast<int>((factoryLevel * 10000.0f) / (workers.craftsmen + workers.clerks) * workers.craftsmen);
-		newWorkers.clerks =
-			 static_cast<int>((factoryLevel * 10000.0f) / (workers.craftsmen + workers.clerks) * workers.clerks);
-		newWorkers.artisans = workers.artisans;
-	}
-	else
-	{
-		newWorkers = workers;
+		return workers;
 	}
 
+	workerStruct newWorkers;
+	newWorkers.craftsmen = (factoryLevel * 10000) / (workers.craftsmen + workers.clerks) * workers.craftsmen;
+	newWorkers.clerks = (factoryLevel * 10000) / (workers.craftsmen + workers.clerks) * workers.clerks;
+	newWorkers.artisans = workers.artisans;
 	return newWorkers;
 }
 
 
 int Vic2::State::determineEmployedWorkersScore(const workerStruct& workers) const
 {
-	int employedWorkerScore =
-		 workers.craftsmen + (workers.clerks * 2) + static_cast<int>(workers.artisans * 0.5) + (workers.capitalists * 2);
+	auto employedWorkerScore =
+		 workers.craftsmen + (workers.clerks * 2) + (workers.artisans / 2) + (workers.capitalists * 2);
 	if (ownerHasNoCores())
 	{
 		employedWorkerScore /= 2;
@@ -68,9 +59,9 @@ int Vic2::State::determineEmployedWorkersScore(const workerStruct& workers) cons
 
 bool Vic2::State::ownerHasNoCores() const
 {
-	for (auto province: provinces)
+	for (const auto& province: provinces)
 	{
-		for (auto country: province->getCores())
+		for (const auto& country: province->getCores())
 		{
 			if (country == owner)
 			{
@@ -85,8 +76,8 @@ bool Vic2::State::ownerHasNoCores() const
 
 int Vic2::State::getPopulation() const
 {
-	int population = 0;
-	for (auto province: provinces)
+	auto population = 0;
+	for (const auto& province: provinces)
 	{
 		population += province->getPopulation();
 	}
@@ -97,18 +88,15 @@ int Vic2::State::getPopulation() const
 
 float Vic2::State::getAverageRailLevel() const
 {
-	float totalRailLevel = 0;
-	for (auto province: provinces)
-	{
-		totalRailLevel += province->getRailLevel();
-	}
-
-	if (provinces.size() > 0)
-	{
-		return (totalRailLevel / provinces.size());
-	}
-	else
+	if (provinces.empty())
 	{
 		return 0.0f;
 	}
+
+	int totalRailLevel = 0;
+	for (const auto& province: provinces)
+	{
+		totalRailLevel += province->getRailLevel();
+	}
+	return static_cast<float>(totalRailLevel) / provinces.size();
 }
