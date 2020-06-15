@@ -32,6 +32,10 @@ class State: commonItems::parser
   public:
 	class Factory;
 	State() = default;
+	State(const State&) = default;
+	State(State&&) = default;
+	State& operator=(const State&) = default;
+	State& operator=(State&&) = default;
 	virtual ~State() = default;
 
 	void determineEmployedWorkers();
