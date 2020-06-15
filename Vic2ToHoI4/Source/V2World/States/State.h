@@ -3,8 +3,10 @@
 
 
 
-#include "Parser.h"
+#include <memory>
+#include <optional>
 #include <set>
+#include <string>
 
 
 
@@ -26,7 +28,7 @@ typedef struct workerStruct
 
 
 
-class State: commonItems::parser
+class State
 {
   public:
 	class Factory;
