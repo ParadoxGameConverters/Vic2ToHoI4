@@ -9,7 +9,7 @@
 #include "../Vic2ToHoI4/Source/HOI4World/Names/Names.h"
 #include "../Vic2ToHoI4/Source/Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "../Vic2ToHoI4/Source/V2World/Party.h"
-#include "../Vic2ToHoI4/Source/V2World/State.h"
+#include "../Vic2ToHoI4/Source/V2World/States/State.h"
 #include "../Vic2ToHoI4/Source/V2World/Vic2Localisations.h"
 #include "gtest/gtest.h"
 #include <sstream>

@@ -8,8 +8,8 @@
 #include "Pops/Pop.h"
 #include "Province.h"
 #include "Relations.h"
-#include "State.h"
-#include "StateDefinitions.h"
+#include "States/State.h"
+#include "States/StateDefinitions.h"
 #include "StringUtils.h"
 #include "Vic2Localisations.h"
 
