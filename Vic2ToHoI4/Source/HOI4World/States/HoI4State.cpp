@@ -31,7 +31,7 @@ HoI4::State::State(const Vic2::State& sourceState, int _ID, const std::string& _
 }
 
 
-void HoI4::State::convertNavalBases(const std::set<const Vic2::Province*>& sourceProvinces,
+void HoI4::State::convertNavalBases(const std::set<std::shared_ptr<Vic2::Province>>& sourceProvinces,
 	 const CoastalProvinces& theCoastalProvinces,
 	 const mappers::ProvinceMapper& theProvinceMapper)
 {
@@ -101,7 +101,7 @@ void HoI4::State::addCores(const std::set<std::string>& newCores)
 }
 
 
-void HoI4::State::convertControlledProvinces(const std::set<const Vic2::Province*>& sourceProvinces,
+void HoI4::State::convertControlledProvinces(const std::set<std::shared_ptr<Vic2::Province>>& sourceProvinces,
 	 const mappers::ProvinceMapper& theProvinceMapper,
 	 const CountryMapper& countryMapper)
 {
@@ -220,16 +220,17 @@ void HoI4::State::tryToCreateVP(const Vic2::State& sourceState,
 
 	if (!VPCreated)
 	{
-		std::list<const Vic2::Province*> provincesOrderedByPopulation;
+		std::list<std::shared_ptr<Vic2::Province>> provincesOrderedByPopulation;
 		for (auto province: sourceState.getProvinces())
 		{
-			provincesOrderedByPopulation.insert(std::upper_bound(provincesOrderedByPopulation.begin(),
-																 provincesOrderedByPopulation.end(),
-																 province,
-																 [](const Vic2::Province* a, const Vic2::Province* b) {
-																	 // provide a 'backwards' comparison to force the sort order we want
-																	 return a->getTotalPopulation() > b->getTotalPopulation();
-																 }),
+			provincesOrderedByPopulation.insert(
+				 std::upper_bound(provincesOrderedByPopulation.begin(),
+					  provincesOrderedByPopulation.end(),
+					  province,
+					  [](const std::shared_ptr<Vic2::Province> a, const std::shared_ptr<Vic2::Province> b) {
+						  // provide a 'backwards' comparison to force the sort order we want
+						  return a->getTotalPopulation() > b->getTotalPopulation();
+					  }),
 				 province);
 		}
 		for (auto province: provincesOrderedByPopulation)
@@ -268,7 +269,7 @@ void HoI4::State::addDebugVPs(const Vic2::State& sourceState, const mappers::Pro
 }
 
 
-void HoI4::State::addManpower(const std::set<const Vic2::Province*>& sourceProvinces,
+void HoI4::State::addManpower(const std::set<std::shared_ptr<Vic2::Province>>& sourceProvinces,
 	 const mappers::ProvinceMapper& theProvinceMapper,
 	 const Configuration& theConfiguration)
 {

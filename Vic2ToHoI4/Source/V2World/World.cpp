@@ -38,7 +38,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	});
 
 	registerRegex(R"(\d+)", [this, &popFactory](const std::string& provinceID, std::istream& theStream) {
-		provinces[stoi(provinceID)] = new Province(provinceID, theStream, popFactory);
+		provinces[stoi(provinceID)] = std::make_shared<Province>(provinceID, theStream, popFactory);
 	});
 
 	std::vector<std::string> tagsInOrder;
@@ -158,10 +158,10 @@ void Vic2::World::removeSimpleLandlessNations()
 			continue;
 		}
 
-		std::vector<Province*> coresToKeep;
+		std::vector<std::shared_ptr<Province>> coresToKeep;
 		for (auto core: country.second->getCores())
 		{
-			if (shouldCoreBeRemoved(core, country.second))
+			if (shouldCoreBeRemoved(*core, country.second))
 			{
 				core->removeCore(country.first);
 			}
@@ -174,20 +174,20 @@ void Vic2::World::removeSimpleLandlessNations()
 
 		if (!country.second->hasCoreOnCapital())
 		{
-			country.second->replaceCores(std::vector<Province*>{});
+			country.second->replaceCores(std::vector<std::shared_ptr<Province>>{});
 		}
 	}
 }
 
 
-bool Vic2::World::shouldCoreBeRemoved(const Province* core, const Country* country) const
+bool Vic2::World::shouldCoreBeRemoved(const Province& core, const Country* country) const
 {
-	if (core->getOwner().empty())
+	if (core.getOwner().empty())
 	{
 		return true;
 	}
 
-	const auto owner = countries.find(core->getOwner());
+	const auto owner = countries.find(core.getOwner());
 	if (owner == countries.end())
 	{
 		return true;
@@ -200,7 +200,7 @@ bool Vic2::World::shouldCoreBeRemoved(const Province* core, const Country* count
 	{
 		return true;
 	}
-	else if (core->getPercentageWithCultures(country->getAcceptedCultures()) < 0.25)
+	else if (core.getPercentageWithCultures(country->getAcceptedCultures()) < 0.25)
 	{
 		return true;
 	}
@@ -413,7 +413,7 @@ void Vic2::World::handleMissingCountryCultures()
 }
 
 
-std::optional<const Vic2::Province*> Vic2::World::getProvince(const int provNum) const
+std::optional<const std::shared_ptr<Vic2::Province>> Vic2::World::getProvince(const int provNum) const
 {
 	if (const auto provinceItr = provinces.find(provNum); provinceItr != provinces.end())
 	{

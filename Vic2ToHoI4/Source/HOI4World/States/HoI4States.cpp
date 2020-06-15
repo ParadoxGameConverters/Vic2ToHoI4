@@ -225,7 +225,7 @@ std::set<std::string> HoI4::States::determineCores(const std::vector<int>& sourc
 
 
 void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sourceCountries,
-	 const std::map<int, Vic2::Province*>& sourceProvinces,
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& sourceProvinces,
 	 const std::map<int, Province>& theProvinces,
 	 const ImpassableProvinces& theImpassableProvinces,
 	 const CountryMapper& countryMap,
@@ -268,7 +268,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 		}
 	}
 
-	std::map<int, Vic2::Province*> unownedProvinces;
+	std::map<int, std::shared_ptr<Vic2::Province>> unownedProvinces;
 	for (auto vic2Province: sourceProvinces)
 	{
 		if (ownedProvinces.count(vic2Province.first) == 0)
@@ -280,7 +280,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 	Vic2::State::Factory factory;
 	while (!unownedProvinces.empty())
 	{
-		std::set<std::pair<int, Vic2::Province*>> stateProvinces;
+		std::set<std::pair<int, std::shared_ptr<Vic2::Province>>> stateProvinces;
 
 		auto stateProvinceNumbers = theStateDefinitions.getAllProvinces(unownedProvinces.begin()->first);
 		if (stateProvinceNumbers.empty())

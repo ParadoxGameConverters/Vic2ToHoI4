@@ -58,12 +58,12 @@ class State
 	void addVictoryPointValue(int additionalValue) { victoryPointValue += additionalValue; }
 	void setVPLocation(int province) { victoryPointPosition = province; }
 
-	void convertNavalBases(const std::set<const Vic2::Province*>& sourceProvinces,
+	void convertNavalBases(const std::set<std::shared_ptr<Vic2::Province>>& sourceProvinces,
 		 const CoastalProvinces& theCoastalProvinces,
 		 const mappers::ProvinceMapper& theProvinceMapper);
 	void addNavalBase(int level, int location);
 	void addCores(const std::set<std::string>& newCores);
-	void convertControlledProvinces(const std::set<const Vic2::Province*>& sourceProvinces,
+	void convertControlledProvinces(const std::set<std::shared_ptr<Vic2::Province>>& sourceProvinces,
 		 const mappers::ProvinceMapper& theProvinceMapper,
 		 const CountryMapper& countryMapper);
 
@@ -93,7 +93,7 @@ class State
 	void tryToCreateVP(const Vic2::State& sourceState,
 		 const mappers::ProvinceMapper& theProvinceMapper,
 		 const Configuration& theConfiguration);
-	void addManpower(const std::set<const Vic2::Province*>& sourceProvinces,
+	void addManpower(const std::set<std::shared_ptr<Vic2::Province>>& sourceProvinces,
 		 const mappers::ProvinceMapper& theProvinceMapper,
 		 const Configuration& theConfiguration);
 

@@ -9,6 +9,7 @@
 #include "States/StateDefinitions.h"
 #include "Wars/War.h"
 #include <map>
+#include <memory>
 #include <optional>
 #include <string>
 #include <vector>
@@ -41,7 +42,7 @@ class World: commonItems::parser
 	World& operator=(World&&) = delete;
 	virtual ~World() = default;
 
-	[[nodiscard]] std::optional<const Province*> getProvince(int provNum) const;
+	[[nodiscard]] std::optional<const std::shared_ptr<Province>> getProvince(int provNum) const;
 
 	[[nodiscard]] std::map<std::string, Country*> getCountries() const { return countries; }
 	[[nodiscard]] const Diplomacy* getDiplomacy() const { return diplomacy; }
@@ -60,7 +61,7 @@ class World: commonItems::parser
 	void setProvinceOwners();
 	void addProvinceCoreInfoToCountries();
 	void removeSimpleLandlessNations();
-	bool shouldCoreBeRemoved(const Province* core, const Country* country) const;
+	bool shouldCoreBeRemoved(const Province& core, const Country* country) const;
 	void determineEmployedWorkers();
 	void removeEmptyNations();
 	void addWarsToCountries(const std::vector<War>& wars);
@@ -80,7 +81,7 @@ class World: commonItems::parser
 	[[nodiscard]] std::optional<Country*> getCountry(const std::string& tag) const;
 
 
-	std::map<int, Province*> provinces;
+	std::map<int, std::shared_ptr<Province>> provinces;
 	std::map<std::string, Country*> countries;
 	const Diplomacy* diplomacy = nullptr;
 	std::vector<Party> parties;

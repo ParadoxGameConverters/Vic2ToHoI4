@@ -41,7 +41,8 @@ std::unique_ptr<Vic2::State> Vic2::State::Factory::getState(std::istream& theStr
 }
 
 
-std::unique_ptr<Vic2::State> Vic2::State::Factory::getState(std::set<std::pair<int, Vic2::Province*>> theProvinces,
+std::unique_ptr<Vic2::State> Vic2::State::Factory::getState(
+	 std::set<std::pair<int, std::shared_ptr<Vic2::Province>>> theProvinces,
 	 const StateDefinitions& theStateDefinitions)
 {
 	state = std::make_unique<State>();

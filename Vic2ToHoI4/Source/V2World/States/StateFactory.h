@@ -19,7 +19,7 @@ class State::Factory: commonItems::parser
 	std::unique_ptr<State> getState(std::istream& theStream,
 		 const std::string& ownerTag,
 		 const Vic2::StateDefinitions& theStateDefinitions);
-	std::unique_ptr<State> getState(std::set<std::pair<int, Province*>> theProvinces,
+	std::unique_ptr<State> getState(std::set<std::pair<int, std::shared_ptr<Vic2::Province>>> theProvinces,
 		 const Vic2::StateDefinitions& theStateDefinitions);
 
   private:

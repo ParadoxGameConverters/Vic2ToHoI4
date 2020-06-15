@@ -39,10 +39,10 @@ class State: commonItems::parser
 	virtual int getPopulation() const;
 	virtual float getAverageRailLevel() const;
 
-	void addProvince(const Province* province) { provinces.insert(province); }
+	void addProvince(std::shared_ptr<Province> province) { provinces.insert(province); }
 	void setOwner(std::string newOwner) { owner = std::move(newOwner); }
 
-	virtual std::set<const Province*> getProvinces() const { return provinces; }
+	virtual std::set<std::shared_ptr<Province>> getProvinces() const { return provinces; }
 	virtual std::set<int> getProvinceNumbers() const { return provinceNums; }
 	std::string getOwner() const { return owner; }
 	std::string getStateID() const { return stateID; }
@@ -62,7 +62,7 @@ class State: commonItems::parser
 	bool partialState = false;
 
 	std::set<int> provinceNums;
-	std::set<const Province*> provinces;
+	std::set<std::shared_ptr<Province>> provinces;
 	std::optional<int> capitalProvince;
 
 	int factoryLevel = 0;
