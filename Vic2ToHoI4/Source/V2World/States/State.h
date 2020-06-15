@@ -32,8 +32,6 @@ class State: commonItems::parser
   public:
 	class Factory;
 	State() = default;
-	State(std::istream& theStream, const std::string& ownerTag, const Vic2::StateDefinitions& theStateDefinitions);
-	explicit State(std::set<std::pair<int, Province*>> theProvinces, const Vic2::StateDefinitions& theStateDefinitions);
 	virtual ~State() = default;
 
 	void determineEmployedWorkers();
