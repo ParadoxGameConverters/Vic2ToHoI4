@@ -40,32 +40,31 @@ class State: commonItems::parser
 
 	void determineEmployedWorkers();
 
-	virtual int getPopulation() const;
-	virtual float getAverageRailLevel() const;
-
-	void addProvince(std::shared_ptr<Province> province) { provinces.insert(province); }
+	void addProvince(std::shared_ptr<Province> province) { provinces.insert(std::move(province)); }
 	void setOwner(std::string newOwner) { owner = std::move(newOwner); }
 
-	virtual std::set<std::shared_ptr<Province>> getProvinces() const { return provinces; }
-	virtual std::set<int> getProvinceNumbers() const { return provinceNums; }
-	std::string getOwner() const { return owner; }
-	std::string getStateID() const { return stateID; }
-	virtual std::optional<int> getCapitalProvince() const { return capitalProvince; }
-	bool isPartialState() const { return partialState; }
-	virtual int getEmployedWorkers() const { return employedWorkers; }
+	[[nodiscard]] virtual int getPopulation() const;
+	[[nodiscard]] virtual float getAverageRailLevel() const;
+
+	[[nodiscard]] std::string getOwner() const { return owner; }
+	[[nodiscard]] std::string getStateID() const { return stateID; }
+	[[nodiscard]] bool isPartialState() const { return partialState; }
+	[[nodiscard]] virtual std::set<int> getProvinceNumbers() const { return provinceNumbers; }
+	[[nodiscard]] virtual std::set<std::shared_ptr<Province>> getProvinces() const { return provinces; }
+	[[nodiscard]] virtual std::optional<int> getCapitalProvince() const { return capitalProvince; }
+	[[nodiscard]] virtual int getEmployedWorkers() const { return employedWorkers; }
 
   private:
-	workerStruct countEmployedWorkers() const;
-	workerStruct limitWorkersByFactoryLevels(const workerStruct& workers) const;
-	int determineEmployedWorkersScore(const workerStruct& workers) const;
-	bool ownerHasNoCores() const;
-
+	[[nodiscard]] workerStruct countEmployedWorkers() const;
+	[[nodiscard]] workerStruct limitWorkersByFactoryLevels(const workerStruct& workers) const;
+	[[nodiscard]] int determineEmployedWorkersScore(const workerStruct& workers) const;
+	[[nodiscard]] bool ownerHasNoCores() const;
 
 	std::string owner;
-	std::string stateID = "";
+	std::string stateID;
 	bool partialState = false;
 
-	std::set<int> provinceNums;
+	std::set<int> provinceNumbers;
 	std::set<std::shared_ptr<Province>> provinces;
 	std::optional<int> capitalProvince;
 
