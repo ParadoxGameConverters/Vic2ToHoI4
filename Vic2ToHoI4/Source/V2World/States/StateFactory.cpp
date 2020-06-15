@@ -34,6 +34,7 @@ std::unique_ptr<Vic2::State> Vic2::State::Factory::getState(std::istream& theStr
 
 	parseStream(theStream);
 	setID(theStateDefinitions);
+	determineIfPartialState(theStateDefinitions);
 	setCapital(theStateDefinitions);
 
 	return std::move(state);

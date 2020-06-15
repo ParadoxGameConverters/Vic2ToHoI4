@@ -63,7 +63,6 @@ class World: commonItems::parser
 	bool shouldCoreBeRemoved(const Province* core, const Country* country) const;
 	void determineEmployedWorkers();
 	void removeEmptyNations();
-	void determinePartialStates(const StateDefinitions& theStateDefinitions);
 	void addWarsToCountries(const std::vector<War>& wars);
 
 	void overallMergeNations(bool debug);

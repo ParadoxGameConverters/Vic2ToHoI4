@@ -77,7 +77,6 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	determineEmployedWorkers();
 	overallMergeNations(theConfiguration.getDebug());
 	removeEmptyNations();
-	determinePartialStates(*theStateDefinitions);
 	addWarsToCountries(wars);
 	if (diplomacy == nullptr)
 	{
@@ -236,19 +235,6 @@ void Vic2::World::removeEmptyNations()
 	}
 
 	countries.swap(newCountries);
-}
-
-
-void Vic2::World::determinePartialStates(const StateDefinitions& theStateDefinitions)
-{
-	Log(LogLevel::Info) << "\tFinding partial states";
-	for (const auto& country: countries)
-	{
-		for (auto& state: country.second->getStates())
-		{
-			state.determineIfPartialState(theStateDefinitions);
-		}
-	}
 }
 
 

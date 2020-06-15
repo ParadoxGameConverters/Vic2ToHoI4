@@ -83,22 +83,6 @@ bool Vic2::State::ownerHasNoCores() const
 }
 
 
-void Vic2::State::determineIfPartialState(const StateDefinitions& theStateDefinitions)
-{
-	if (provinces.size() > 0)
-	{
-		for (auto expectedProvince: theStateDefinitions.getAllProvinces(*provinceNums.begin()))
-		{
-			if (provinceNums.count(expectedProvince) == 0)
-			{
-				partialState = true;
-				break;
-			}
-		}
-	}
-}
-
-
 int Vic2::State::getPopulation() const
 {
 	int population = 0;

@@ -37,7 +37,6 @@ class State: commonItems::parser
 	virtual ~State() = default;
 
 	void determineEmployedWorkers();
-	void determineIfPartialState(const Vic2::StateDefinitions& theStateDefinitions);
 
 	virtual int getPopulation() const;
 	virtual float getAverageRailLevel() const;
