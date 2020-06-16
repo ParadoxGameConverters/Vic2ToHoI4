@@ -61,9 +61,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Army.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Building.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CultureGroups.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
@@ -1021,6 +1018,9 @@
     </ClCompile>
     <ClCompile Include="Vic2WorldTests\States\StateTests.cpp">
       <Filter>Vic2WorldTests\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\Building.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

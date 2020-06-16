@@ -1,5 +1,5 @@
 #include "StateFactory.h"
-#include "../Building.h"
+#include "Building.h"
 #include "Log.h"
 #include "ParserHelpers.h"
 #include "StateDefinitions.h"

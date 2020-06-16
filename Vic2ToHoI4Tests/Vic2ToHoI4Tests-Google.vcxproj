@@ -256,7 +256,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\targa.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Agreement.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Army.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Building.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CommonCountryData.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Country.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CultureGroups.cpp" />
@@ -271,6 +270,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\PopFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Province.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Relations.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\Building.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateDefinitionsFactory.cpp" />
