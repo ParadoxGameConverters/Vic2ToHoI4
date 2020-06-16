@@ -12,6 +12,7 @@
 
 namespace Vic2
 {
+
 class Pop::Factory: commonItems::parser
 {
   public:
@@ -22,6 +23,7 @@ class Pop::Factory: commonItems::parser
 	std::unique_ptr<Pop> pop;
 	const Issues theIssues;
 };
+
 } // namespace Vic2
 
 
