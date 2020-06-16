@@ -297,7 +297,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 				unownedProvinces.erase(province);
 			}
 		}
-		const auto newState = factory.getState(stateProvinces, theStateDefinitions);
+		const auto newState = factory.getUnownedState(stateProvinces, theStateDefinitions);
 		createMatchingHoI4State(*newState,
 			 "",
 			 theImpassableProvinces,
