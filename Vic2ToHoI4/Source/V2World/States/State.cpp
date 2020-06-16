@@ -1,5 +1,4 @@
 #include "State.h"
-#include "../Building.h"
 #include "../Country.h"
 #include "../Province.h"
 
@@ -19,10 +18,10 @@ Vic2::workerStruct Vic2::State::countEmployedWorkers() const
 
 	for (const auto& province: provinces)
 	{
-		workers.craftsmen += province->getPopulation("craftsmen");
-		workers.clerks += province->getPopulation("clerks");
-		workers.artisans += province->getPopulation("artisans");
-		workers.capitalists += province->getLiteracyWeightedPopulation("capitalists");
+		workers.craftsmen += static_cast<float>(province->getPopulation("craftsmen"));
+		workers.clerks += static_cast<float>(province->getPopulation("clerks"));
+		workers.artisans += static_cast<float>(province->getPopulation("artisans"));
+		workers.capitalists += static_cast<float>(province->getLiteracyWeightedPopulation("capitalists"));
 	}
 
 	return workers;
@@ -31,15 +30,16 @@ Vic2::workerStruct Vic2::State::countEmployedWorkers() const
 
 Vic2::workerStruct Vic2::State::limitWorkersByFactoryLevels(const workerStruct& workers) const
 {
-	if ((workers.craftsmen + workers.clerks) <= (factoryLevel * 10000))
+	if ((workers.craftsmen + workers.clerks) <= (static_cast<float>(factoryLevel) * 10000.0f))
 	{
 		return workers;
 	}
 
-	workerStruct newWorkers;
-	newWorkers.craftsmen = (factoryLevel * 10000) / (workers.craftsmen + workers.clerks) * workers.craftsmen;
-	newWorkers.clerks = (factoryLevel * 10000) / (workers.craftsmen + workers.clerks) * workers.clerks;
-	newWorkers.artisans = workers.artisans;
+	auto newWorkers = workers;
+	newWorkers.craftsmen =
+		 (static_cast<float>(factoryLevel) * 10000.0f) / (workers.craftsmen + workers.clerks) * workers.craftsmen;
+	newWorkers.clerks =
+		 (static_cast<float>(factoryLevel) * 10000.0f) / (workers.craftsmen + workers.clerks) * (workers.clerks);
 	return newWorkers;
 }
 
@@ -53,7 +53,7 @@ int Vic2::State::determineEmployedWorkersScore(const workerStruct& workers) cons
 		employedWorkerScore /= 2;
 	}
 
-	return employedWorkerScore;
+	return static_cast<int>(employedWorkerScore);
 }
 
 
@@ -93,7 +93,7 @@ float Vic2::State::getAverageRailLevel() const
 		return 0.0f;
 	}
 
-	int totalRailLevel = 0;
+	auto totalRailLevel = 0;
 	for (const auto& province: provinces)
 	{
 		totalRailLevel += province->getRailLevel();

@@ -20,10 +20,10 @@ class Province;
 
 typedef struct workerStruct
 {
-	int craftsmen = 0;
-	int clerks = 0;
-	int artisans = 0;
-	int capitalists = 0;
+	float craftsmen = 0;
+	float clerks = 0;
+	float artisans = 0;
+	float capitalists = 0;
 } workerStruct;
 
 
