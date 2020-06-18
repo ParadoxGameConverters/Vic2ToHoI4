@@ -350,7 +350,7 @@
     <ClCompile Include="Source\targa.cpp" />
     <ClCompile Include="Source\V2World\Pops\Pop.cpp" />
     <ClCompile Include="Source\V2World\Pops\PopFactory.cpp" />
-    <ClCompile Include="Source\V2World\States\Building.cpp" />
+    <ClCompile Include="Source\V2World\States\BuildingReader.cpp" />
     <ClCompile Include="Source\V2World\States\State.cpp" />
     <ClCompile Include="Source\V2World\States\StateDefinitions.cpp" />
     <ClCompile Include="Source\V2World\States\StateDefinitionsFactory.cpp" />
@@ -629,7 +629,7 @@
     <ClInclude Include="Source\V2World\Pops\PopFactory.h" />
     <ClInclude Include="Source\V2World\Province.h" />
     <ClInclude Include="Source\V2World\Relations.h" />
-    <ClInclude Include="Source\V2World\States\Building.h" />
+    <ClInclude Include="Source\V2World\States\BuildingReader.h" />
     <ClInclude Include="Source\V2World\States\State.h" />
     <ClInclude Include="Source\V2World\States\StateDefinitions.h" />
     <ClInclude Include="Source\V2World\States\StateDefinitionsFactory.h" />

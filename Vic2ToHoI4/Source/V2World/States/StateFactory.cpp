@@ -1,5 +1,5 @@
 #include "StateFactory.h"
-#include "Building.h"
+#include "BuildingReader.h"
 #include "Log.h"
 #include "ParserHelpers.h"
 #include "StateDefinitions.h"
@@ -15,7 +15,7 @@ Vic2::State::Factory::Factory()
 		}
 	});
 	registerKeyword("state_buildings", [this](const std::string& unused, std::istream& theStream) {
-		state->factoryLevel += Building{theStream}.getLevel();
+		state->factoryLevel += buildingReader.getLevel(theStream);
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }

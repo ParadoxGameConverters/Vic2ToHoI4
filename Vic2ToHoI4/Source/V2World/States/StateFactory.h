@@ -5,6 +5,7 @@
 
 #include "Parser.h"
 #include "State.h"
+#include "BuildingReader.h"
 #include <memory>
 
 
@@ -28,6 +29,7 @@ class State::Factory: commonItems::parser
 	void determineIfPartialState(const StateDefinitions& theStateDefinitions) const;
 
 	std::unique_ptr<State> state;
+	BuildingReader buildingReader;
 };
 
 } // namespace Vic2

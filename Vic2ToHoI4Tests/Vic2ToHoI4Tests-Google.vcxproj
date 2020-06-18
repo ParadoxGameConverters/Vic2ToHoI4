@@ -270,7 +270,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\PopFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Province.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Relations.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\Building.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\BuildingReader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateDefinitionsFactory.cpp" />
@@ -373,6 +373,7 @@
     <ClCompile Include="Vic2WorldTests\Pops\PopFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopTests.cpp" />
     <ClCompile Include="Vic2WorldTests\ProvinceTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\States\BuildingTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateDefinitionsFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateDefinitionsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateTests.cpp" />
