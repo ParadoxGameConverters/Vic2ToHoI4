@@ -38,7 +38,14 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	});
 
 	registerRegex(R"(\d+)", [this, &popFactory](const std::string& provinceID, std::istream& theStream) {
-		provinces[stoi(provinceID)] = std::make_shared<Province>(provinceID, theStream, popFactory);
+		try
+		{
+			provinces[stoi(provinceID)] = std::make_shared<Province>(provinceID, theStream, popFactory);
+		}
+		catch (std::exception&)
+		{
+			Log(LogLevel::Warning) << "Invalid province number " << provinceID;
+		}
 	});
 
 	std::vector<std::string> tagsInOrder;
