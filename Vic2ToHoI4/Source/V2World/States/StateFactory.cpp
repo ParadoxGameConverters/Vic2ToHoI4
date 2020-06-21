@@ -21,7 +21,6 @@ Vic2::State::Factory::Factory()
 }
 
 
-
 std::unique_ptr<Vic2::State> Vic2::State::Factory::getState(std::istream& theStream,
 	 const std::string& ownerTag,
 	 const StateDefinitions& theStateDefinitions)
@@ -60,6 +59,11 @@ std::unique_ptr<Vic2::State> Vic2::State::Factory::getUnownedState(
 
 void Vic2::State::Factory::setID(const StateDefinitions& theStateDefinitions) const
 {
+	if (state->provinceNumbers.empty())
+	{
+		return;
+	}
+
 	auto foundStateID = theStateDefinitions.getStateID(*state->provinceNumbers.begin());
 	if (foundStateID)
 	{
@@ -80,7 +84,7 @@ void Vic2::State::Factory::setCapital(const StateDefinitions& theStateDefinition
 
 void Vic2::State::Factory::determineIfPartialState(const StateDefinitions& theStateDefinitions) const
 {
-	if (state->provinces.size() > 0)
+	if (state->provinceNumbers.size() > 0)
 	{
 		for (auto expectedProvince: theStateDefinitions.getAllProvinces(*state->provinceNumbers.begin()))
 		{
