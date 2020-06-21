@@ -58,8 +58,7 @@ class State
   private:
 	[[nodiscard]] workerStruct countEmployedWorkers() const;
 	[[nodiscard]] workerStruct limitWorkersByFactoryLevels(const workerStruct& workers) const;
-	[[nodiscard]] int determineEmployedWorkersScore(const workerStruct& workers) const;
-	[[nodiscard]] bool ownerHasNoCores() const;
+	[[nodiscard]] static int determineEmployedWorkersScore(const workerStruct& workers);
 
 	std::string owner;
 	std::string stateID;

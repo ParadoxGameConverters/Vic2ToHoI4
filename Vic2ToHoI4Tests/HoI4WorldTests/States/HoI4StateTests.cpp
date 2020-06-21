@@ -254,20 +254,41 @@ TEST_F(HoI4World_States_StateTests, MilFactoriesDefaultsToZero)
 TEST_F(HoI4World_States_StateTests, TotalFactoriesCanBeSet)
 {
 	const mockVic2State sourceState;
-	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(50000));
-	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(60000));
+	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(60000));
+	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(70000));
+
+	HoI4::State theState(sourceState, 42, "TAG");
+	theState.addCores({"TAG"});
+
+	Configuration
+		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
+	const mockStateCategories stateCategories;
+	EXPECT_CALL(stateCategories, getBestCategory(8)).WillOnce(testing::Return("mockedCategory"));
+
+	const HoI4::CoastalProvinces theCoastalProvinces;
+	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+
+	ASSERT_EQ(6, theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards());
+}
+
+
+TEST_F(HoI4World_States_StateTests, TotalFactoriesHalvedByMissingCore)
+{
+	const mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(60000));
+	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(70000));
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
 	Configuration
 		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
 	const mockStateCategories stateCategories;
-	EXPECT_CALL(stateCategories, getBestCategory(7)).WillOnce(testing::Return("mockedCategory"));
+	EXPECT_CALL(stateCategories, getBestCategory(8)).WillOnce(testing::Return("mockedCategory"));
 
 	const HoI4::CoastalProvinces theCoastalProvinces;
 	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
 
-	ASSERT_EQ(5, theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards());
+	ASSERT_EQ(3, theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards());
 }
 
 
@@ -278,6 +299,7 @@ TEST_F(HoI4World_States_StateTests, TotalFactoriesCappedAtTwelve)
 	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(60000));
 
 	HoI4::State theState(sourceState, 42, "TAG");
+	theState.addCores({"TAG"});
 
 	const mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(14)).WillOnce(testing::Return("mockedCategory"));

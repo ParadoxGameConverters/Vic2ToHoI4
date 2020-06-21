@@ -457,34 +457,3 @@ TEST(Vic2World_States_StateTests, CapitalistsNotCappedByFactoryLevel)
 
 	ASSERT_EQ(40000, state->getEmployedWorkers());
 }
-
-
-TEST(Vic2World_States_StateTests, NoCoresHalvesFactories)
-{
-	Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
-
-	std::stringstream stateInput;
-	stateInput << "= {\n";
-	stateInput << "\tstate_buildings = {\n";
-	stateInput << "\t\tlevel = 1\n";
-	stateInput << "\t}";
-	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
-	state->setOwner("TAG");
-
-	Vic2::Issues issues({});
-	Vic2::Pop::Factory popFactory(issues);
-
-	std::stringstream provinceOneInput;
-	provinceOneInput << "= {\n";
-	provinceOneInput << "\tcraftsmen = {\n";
-	provinceOneInput << "\t\tsize = 12\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "}\n";
-	const auto provinceOne = std::make_shared<Vic2::Province>("1", provinceOneInput, popFactory);
-	state->addProvince(provinceOne);
-
-	state->determineEmployedWorkers();
-
-	ASSERT_EQ(6, state->getEmployedWorkers());
-}

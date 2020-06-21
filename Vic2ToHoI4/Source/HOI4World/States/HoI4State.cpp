@@ -390,6 +390,11 @@ static std::mt19937 randomnessEngine;
 static std::uniform_int_distribution<> numberDistributor(0, 99);
 void HoI4::State::setIndustry(int factories, const CoastalProvinces& theCoastalProvinces)
 {
+	if (ownerHasNoCore())
+	{
+		factories /= 2;
+	}
+
 	if (amICoastal(theCoastalProvinces))
 	{
 		// distribute military factories, civilian factories, and dockyards using unseeded random
@@ -448,6 +453,12 @@ bool HoI4::State::amICoastal(const CoastalProvinces& theCoastalProvinces) const
 	}
 
 	return false;
+}
+
+
+bool HoI4::State::ownerHasNoCore() const
+{
+	return !cores.count(ownerTag);
 }
 
 

@@ -44,33 +44,10 @@ Vic2::workerStruct Vic2::State::limitWorkersByFactoryLevels(const workerStruct& 
 }
 
 
-int Vic2::State::determineEmployedWorkersScore(const workerStruct& workers) const
+int Vic2::State::determineEmployedWorkersScore(const workerStruct& workers)
 {
-	auto employedWorkerScore =
-		 workers.craftsmen + (workers.clerks * 2) + (workers.artisans / 2) + (workers.capitalists * 2);
-	if (ownerHasNoCores())
-	{
-		employedWorkerScore /= 2;
-	}
-
-	return static_cast<int>(employedWorkerScore);
-}
-
-
-bool Vic2::State::ownerHasNoCores() const
-{
-	for (const auto& province: provinces)
-	{
-		for (const auto& country: province->getCores())
-		{
-			if (country == owner)
-			{
-				return false;
-			}
-		}
-	}
-
-	return true;
+	return static_cast<int>(
+		 workers.craftsmen + (workers.clerks * 2) + (workers.artisans / 2) + (workers.capitalists * 2));
 }
 
 

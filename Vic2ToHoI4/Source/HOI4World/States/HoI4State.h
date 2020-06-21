@@ -109,6 +109,7 @@ class State
 	void addInfrastructureFromFactories(int factories);
 	void setIndustry(int factories, const CoastalProvinces& theCoastalProvinces);
 	bool amICoastal(const CoastalProvinces& theCoastalProvinces) const;
+	[[nodiscard]] bool ownerHasNoCore() const;
 
 	int determineNavalBaseLevel(const Vic2::Province& sourceProvince) const;
 	std::optional<int> determineNavalBaseLocation(const Vic2::Province& sourceProvince,
