@@ -16,8 +16,8 @@ class IntelligenceAgencyLogoMapping: commonItems::parser
 {
   public:
 	explicit IntelligenceAgencyLogoMapping(std::istream& theStream);
-	
-	[[nodiscard]] auto&& takeLogo() { return std::move(logo); }
+
+	[[nodiscard]] auto& getLogo() { return logo; }
 	[[nodiscard]] auto&& takeCultures() { return std::move(cultures); }
 
   private:
