@@ -21,7 +21,7 @@ HoI4::IntelligenceAgencyLogos::Factory::Factory()
 		IntelligenceAgencyLogoMapping mapping(theStream);
 		for (const auto& culture: mapping.takeCultures())
 		{
-			cultureToLogoMap[culture] = mapping.takeLogo();
+			cultureToLogoMap[culture] = mapping.getLogo();
 		}
 	});
 }
