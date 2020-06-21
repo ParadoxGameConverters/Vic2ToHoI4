@@ -1025,6 +1025,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\BuildingReader.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\States\StateFactoryTests.cpp">
+      <Filter>Vic2WorldTests\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

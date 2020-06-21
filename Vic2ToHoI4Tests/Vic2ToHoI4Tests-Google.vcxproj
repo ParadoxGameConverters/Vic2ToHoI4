@@ -376,6 +376,7 @@
     <ClCompile Include="Vic2WorldTests\States\BuildingTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateDefinitionsFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateDefinitionsTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\States\StateFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Vic2AgreementTests.cpp" />
     <ClCompile Include="Vic2WorldTests\WarGoalTests.cpp" />
