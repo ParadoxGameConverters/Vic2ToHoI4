@@ -294,7 +294,8 @@ configure_file("Vic2ToHoI4Tests/TestFiles/IntelligenceAgencyLogos.txt" "${TEST_O
 configure_file("Vic2ToHoI4Tests/TestFiles/OccupationLaws.txt" "${TEST_OUTPUT_DIRECTORY}/OccupationLaws/common/occupation_laws/occupation_laws.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/OperativeNamesMappings.txt" "${TEST_OUTPUT_DIRECTORY}/DataFiles/OperativeNamesMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game" "${TEST_OUTPUT_DIRECTORY}/Vic2Linux/v2game" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/vic2_mod_regions.txt" "${TEST_OUTPUT_DIRECTORY}/mod/test_mod/map/vic2_mod_regions.txt" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/vic2_vanilla_regions.txt" "${TEST_OUTPUT_DIRECTORY}/map/vic2_vanilla_regions.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/v2game.exe" "${TEST_OUTPUT_DIRECTORY}/Vic2Windows/v2game.exe" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/vic2_mod_regions.txt" "${TEST_OUTPUT_DIRECTORY}/mod/test_mod/map/region.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/vic2_vanilla_regions.txt" "${TEST_OUTPUT_DIRECTORY}/map/region.txt" COPYONLY)
 
 target_link_libraries(Vic2ToHoi4ConverterTests pthread)
