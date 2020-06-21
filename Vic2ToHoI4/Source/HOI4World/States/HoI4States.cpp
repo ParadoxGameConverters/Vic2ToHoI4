@@ -243,7 +243,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 
 	for (const auto& country: sourceCountries)
 	{
-		for (auto vic2State: country.second->getStates())
+		for (const auto& vic2State: country.second->getStates())
 		{
 			auto possibleHoI4Owner = countryMap.getHoI4Tag(country.first);
 			if (possibleHoI4Owner)
@@ -261,18 +261,18 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 					 mapData,
 					 theProvinces,
 					 theConfiguration);
-				for (auto province: vic2State.getProvinces())
+				for (const auto& province: vic2State.getProvinceNumbers())
 				{
-					ownedProvinces.insert(province->getNumber());
+					ownedProvinces.insert(province);
 				}
 			}
 		}
 	}
 
 	std::map<int, std::shared_ptr<Vic2::Province>> unownedProvinces;
-	for (auto vic2Province: sourceProvinces)
+	for (const auto& vic2Province: sourceProvinces)
 	{
-		if (ownedProvinces.count(vic2Province.first) == 0)
+		if (!ownedProvinces.count(vic2Province.first))
 		{
 			unownedProvinces.insert(vic2Province);
 		}
