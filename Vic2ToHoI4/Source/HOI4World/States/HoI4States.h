@@ -4,6 +4,7 @@
 
 
 #include "../../Mappers/Provinces/ProvinceMapper.h"
+#include "../../V2World/States/State.h"
 #include "../Map/Hoi4Province.h"
 #include "../Map/MapData.h"
 #include "../Map/StrategicRegions.h"
@@ -28,7 +29,6 @@ class Localisations;
 class StateDefinitions;
 class Country;
 class Province;
-class State;
 class World;
 } // namespace Vic2
 
@@ -95,7 +95,7 @@ class States: commonItems::parser
 		 const Vic2::World& sourceWorld);
 
 	void createStates(const std::map<std::string, Vic2::Country*>& sourceCountries,
-		 const std::map<int, Vic2::Province*>& sourceProvinces,
+		 const std::map<int, std::shared_ptr<Vic2::Province>>& sourceProvinces,
 		 const std::map<int, Province>& theProvinces,
 		 const ImpassableProvinces& theImpassableProvinces,
 		 const CountryMapper& countryMap,
@@ -107,7 +107,7 @@ class States: commonItems::parser
 		 const mappers::ProvinceMapper& provinceMapper,
 		 const MapData& mapData,
 		 const Configuration& theConfiguration);
-	void createMatchingHoI4State(const Vic2::State* vic2State,
+	void createMatchingHoI4State(const Vic2::State& vic2State,
 		 const std::string& stateOwner,
 		 const ImpassableProvinces& theImpassableProvinces,
 		 const CountryMapper& countryMapper,
@@ -120,7 +120,7 @@ class States: commonItems::parser
 		 const MapData& mapData,
 		 const std::map<int, Province>& provinces,
 		 const Configuration& theConfiguration);
-	std::set<int> getProvincesInState(const Vic2::State* vic2State,
+	std::set<int> getProvincesInState(const Vic2::State& vic2State,
 		 const std::string& owner,
 		 const mappers::ProvinceMapper& provinceMapper);
 	static std::vector<std::set<int>> getConnectedProvinceSets(std::set<int> provinceNumbers,

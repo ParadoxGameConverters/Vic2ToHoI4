@@ -1,10 +1,10 @@
-#include "../../Vic2ToHoI4/Source/V2World/StateDefinitions.h"
+#include "../../../Vic2ToHoI4/Source/V2World/States/StateDefinitions.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
 
 
-TEST(Vic2World_StateDefinitionsTests, GetAllProvincesReturnsNoProvincesForMissingState)
+TEST(Vic2World_States_StateDefinitionsTests, GetAllProvincesReturnsNoProvincesForMissingState)
 {
 	const Vic2::StateDefinitions stateDefinitions(std::map<int, std::set<int>>{},
 		 std::map<int, std::string>{},
@@ -14,7 +14,7 @@ TEST(Vic2World_StateDefinitionsTests, GetAllProvincesReturnsNoProvincesForMissin
 }
 
 
-TEST(Vic2World_StateDefinitionsTests, GetAllProvincesReturnsProvincesForMatchedState)
+TEST(Vic2World_States_StateDefinitionsTests, GetAllProvincesReturnsProvincesForMatchedState)
 {
 	const Vic2::StateDefinitions stateDefinitions(std::map<int, std::set<int>>{{1, {1, 2, 3}}},
 		 std::map<int, std::string>{},
@@ -24,7 +24,7 @@ TEST(Vic2World_StateDefinitionsTests, GetAllProvincesReturnsProvincesForMatchedS
 }
 
 
-TEST(Vic2World_StateDefinitionsTests, GetStateIdReturnsNulloptForUnmatchedProvince)
+TEST(Vic2World_States_StateDefinitionsTests, GetStateIdReturnsNulloptForUnmatchedProvince)
 {
 	const Vic2::StateDefinitions stateDefinitions(std::map<int, std::set<int>>{},
 		 std::map<int, std::string>{},
@@ -34,7 +34,7 @@ TEST(Vic2World_StateDefinitionsTests, GetStateIdReturnsNulloptForUnmatchedProvin
 }
 
 
-TEST(Vic2World_StateDefinitionsTests, GetStateIdReturnsStateIdForMatchedProvince)
+TEST(Vic2World_States_StateDefinitionsTests, GetStateIdReturnsStateIdForMatchedProvince)
 {
 	const Vic2::StateDefinitions stateDefinitions(std::map<int, std::set<int>>{},
 		 std::map<int, std::string>{{1, "STATE_1"}},
@@ -44,7 +44,7 @@ TEST(Vic2World_StateDefinitionsTests, GetStateIdReturnsStateIdForMatchedProvince
 }
 
 
-TEST(Vic2World_StateDefinitionsTests, GetCapitalProvinceReturnsNulloptForUnmatchedStateId)
+TEST(Vic2World_States_StateDefinitionsTests, GetCapitalProvinceReturnsNulloptForUnmatchedStateId)
 {
 	const Vic2::StateDefinitions stateDefinitions(std::map<int, std::set<int>>{},
 		 std::map<int, std::string>{},
@@ -54,7 +54,7 @@ TEST(Vic2World_StateDefinitionsTests, GetCapitalProvinceReturnsNulloptForUnmatch
 }
 
 
-TEST(Vic2World_StateDefinitionsTests, GetCapitalProvinceReturnsCapitalForMatchedStateId)
+TEST(Vic2World_States_StateDefinitionsTests, GetCapitalProvinceReturnsCapitalForMatchedStateId)
 {
 	const Vic2::StateDefinitions stateDefinitions(std::map<int, std::set<int>>{},
 		 std::map<int, std::string>{},

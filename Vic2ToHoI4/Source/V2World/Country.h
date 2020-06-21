@@ -6,9 +6,10 @@
 #include "../Color.h"
 #include "Army.h"
 #include "Date.h"
-#include "Party.h"
-#include "Wars/War.h"
 #include "Parser.h"
+#include "Party.h"
+#include "States/StateFactory.h"
+#include "Wars/War.h"
 #include <functional>
 #include <map>
 #include <memory>
@@ -41,13 +42,14 @@ class Country: commonItems::parser
 		 std::istream& theStream,
 		 const inventions& theInventions,
 		 const cultureGroups& theCultureGroups,
-		 const StateDefinitions& theStateDefinitions);
+		 const StateDefinitions& theStateDefinitions,
+		 State::Factory& stateFactory);
 	virtual ~Country() = default;
 
-	void addProvince(const std::pair<const int, Province*>& province) { provinces.insert(province); }
+	void addProvince(const std::pair<const int, std::shared_ptr<Province>>& province) { provinces.insert(province); }
 	void setColor(const ConverterColor::Color& newColor) { color = newColor; }
-	void addCore(Province* core) { cores.push_back(core); }
-	void replaceCores(std::vector<Province*> newCores) { cores.swap(newCores); }
+	void addCore(std::shared_ptr<Province> core) { cores.push_back(core); }
+	void replaceCores(std::vector<std::shared_ptr<Province>> newCores) { cores.swap(newCores); }
 	void setShipNames(const std::map<std::string, std::vector<std::string>>& newShipNames) { shipNames = newShipNames; }
 	void addWar(const War& theWar) { wars.push_back(theWar); }
 	void setAtWar() { atWar = true; }
@@ -60,7 +62,7 @@ class Country: commonItems::parser
 	void handleMissingCulture(const cultureGroups& theCultureGroups);
 
 	std::map<std::string, const Relations*> getRelations() const { return relations; }
-	std::vector<State*> getStates() const { return states; }
+	auto& getStates() { return states; }
 	virtual std::string getTag() const { return tag; }
 	std::string getIdentifier() const;
 	std::string getPrimaryCulture() const { return primaryCulture; }
@@ -80,8 +82,8 @@ class Country: commonItems::parser
 	virtual double getWarExhaustion() const { return warExhaustion; }
 	double getBadBoy() const { return badboy; }
 	double getPrestige() const { return prestige; }
-	virtual std::map<int, Province*> getProvinces() const { return provinces; }
-	std::vector<Province*> getCores() const { return cores; }
+	virtual const std::map<int, std::shared_ptr<Province>>& getProvinces() const { return provinces; }
+	const auto& getCores() const { return cores; }
 	bool isEmpty() const { return ((cores.size() == 0) && (provinces.size() == 0)); }
 	bool isCivilized() const { return civilized; }
 	virtual bool isHuman() const { return human; }
@@ -110,9 +112,9 @@ class Country: commonItems::parser
 	std::string tag = "";
 	ConverterColor::Color color;
 
-	std::vector<State*> states;
-	std::map<int, Province*> provinces;
-	std::vector<Province*> cores;
+	std::vector<State> states;
+	std::map<int, std::shared_ptr<Province>> provinces;
+	std::vector<std::shared_ptr<Province>> cores;
 	int capital = 0;
 
 	std::string primaryCulture = "";

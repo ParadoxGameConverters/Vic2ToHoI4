@@ -71,6 +71,8 @@ file(GLOB OUTHOI4_VERSION "${PROJECT_SOURCE_DIR}/OutHoi4/Version/*.cpp")
 file(GLOB VIC2WORLD_SOURCES "${PROJECT_SOURCE_DIR}/V2World/*.cpp")
 file(GLOB VIC2WORLD_ISSUES_SOURCES "${PROJECT_SOURCE_DIR}/V2World/Issues/*.cpp")
 file(GLOB VIC2WORLD_POPS_SOURCES "${PROJECT_SOURCE_DIR}/V2World/Pops/*.cpp")
+file(GLOB VIC2WORLD_POPS_SOURCES "${PROJECT_SOURCE_DIR}/V2World/Pops/*.cpp")
+file(GLOB VIC2WORLD_STATES_SOURCES "${PROJECT_SOURCE_DIR}/V2World/States/*.cpp")
 file(GLOB VIC2WORLD_WARS_SOURCES "${PROJECT_SOURCE_DIR}/V2World/Wars/*.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Color.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/CommonFunctions.cpp")
@@ -144,6 +146,7 @@ add_executable(
 	${VIC2WORLD_SOURCES}
 	${VIC2WORLD_ISSUES_SOURCES}
 	${VIC2WORLD_POPS_SOURCES}
+	${VIC2WORLD_STATES_SOURCES}
 	${VIC2WORLD_WARS_SOURCES}
 	${COMMON_SOURCES}
 )
@@ -183,6 +186,7 @@ file(GLOB HOI4WORLD_STATES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HOI4WorldTests/Stat
 file(GLOB MAPPER_TESTS_SOURCES "${TEST_SOURCE_DIR}/MapperTests/*.cpp")
 file(GLOB VIC2WORLD_TESTS_SOURCES "${TEST_SOURCE_DIR}/Vic2WorldTests/*.cpp")
 file(GLOB VIC2WORLD_POPS_TESTS_SOURCES "${TEST_SOURCE_DIR}/Vic2WorldTests/Pops/*.cpp")
+file(GLOB VIC2WORLD_STATES_TESTS_SOURCES "${TEST_SOURCE_DIR}/Vic2WorldTests/States/*.cpp")
 
 add_executable(
 	Vic2ToHoi4ConverterTests
@@ -243,6 +247,7 @@ add_executable(
 	${VIC2WORLD_SOURCES}
 	${VIC2WORLD_ISSUES_SOURCES}
 	${VIC2WORLD_POPS_SOURCES}
+	${VIC2WORLD_STATES_SOURCES}
 	${VIC2WORLD_WARS_SOURCES}
 	${CONFIGURATION_TESTS_SOURCES}
 	${HOI4WORLD_TESTS_SOURCES}
@@ -269,6 +274,7 @@ add_executable(
 	${MAPPER_TESTS_SOURCES}
 	${VIC2WORLD_TESTS_SOURCES}
 	${VIC2WORLD_POPS_TESTS_SOURCES}
+	${VIC2WORLD_STATES_TESTS_SOURCES}
 	${COMMON_SOURCES}
 	${GMOCK_SOURCES}
 )
@@ -289,5 +295,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/OccupationLaws.txt" "${TEST_OUTPUT_DIR
 configure_file("Vic2ToHoI4Tests/TestFiles/OperativeNamesMappings.txt" "${TEST_OUTPUT_DIRECTORY}/DataFiles/OperativeNamesMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game" "${TEST_OUTPUT_DIRECTORY}/Vic2Linux/v2game" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game.exe" "${TEST_OUTPUT_DIRECTORY}/Vic2Windows/v2game.exe" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/vic2_mod_regions.txt" "${TEST_OUTPUT_DIRECTORY}/mod/test_mod/map/region.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/vic2_vanilla_regions.txt" "${TEST_OUTPUT_DIRECTORY}/map/region.txt" COPYONLY)
 
 target_link_libraries(Vic2ToHoi4ConverterTests pthread)

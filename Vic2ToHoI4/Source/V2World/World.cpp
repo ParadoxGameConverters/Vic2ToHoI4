@@ -12,7 +12,9 @@
 #include "Party.h"
 #include "Pops/PopFactory.h"
 #include "Province.h"
-#include "State.h"
+#include "States/State.h"
+#include "States/StateDefinitionsFactory.h"
+#include "States/StateFactory.h"
 #include "Vic2Localisations.h"
 #include <fstream>
 
@@ -23,9 +25,11 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	theLocalisations = Localisations::Parser{}.importLocalisations(theConfiguration);
 	theCultureGroups.init(theConfiguration);
 	auto theIssues = Issues::Parser{}.importIssues(theConfiguration);
-	theStateDefinitions = StateDefinitions::Parser{}.parseStateDefinitions(theConfiguration);
+	theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
 	inventions theInventions(theConfiguration);
 	Pop::Factory popFactory(theIssues);
+	State::Factory stateFactory;
+
 
 	std::vector<int> GPIndexes;
 	registerKeyword("great_nations", [&GPIndexes, this](const std::string& unused, std::istream& theStream) {
@@ -34,15 +38,22 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	});
 
 	registerRegex(R"(\d+)", [this, &popFactory](const std::string& provinceID, std::istream& theStream) {
-		provinces[stoi(provinceID)] = new Province(provinceID, theStream, popFactory);
+		try
+		{
+			provinces[stoi(provinceID)] = std::make_shared<Province>(provinceID, theStream, popFactory);
+		}
+		catch (std::exception&)
+		{
+			Log(LogLevel::Warning) << "Invalid province number " << provinceID;
+		}
 	});
 
 	std::vector<std::string> tagsInOrder;
 	tagsInOrder.push_back(""); // REB (first country is index 1
 	registerRegex("[A-Z][A-Z0-9]{2}",
-		 [&tagsInOrder, &theInventions, this](const std::string& countryTag, std::istream& theStream) {
+		 [&tagsInOrder, &theInventions, &stateFactory, this](const std::string& countryTag, std::istream& theStream) {
 			 countries[countryTag] =
-				  new Country(countryTag, theStream, theInventions, theCultureGroups, *theStateDefinitions);
+				  new Country(countryTag, theStream, theInventions, theCultureGroups, *theStateDefinitions, stateFactory);
 			 tagsInOrder.push_back(countryTag);
 		 });
 	registerKeyword("diplomacy", [this](const std::string& unused, std::istream& theStream) {
@@ -73,7 +84,6 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	determineEmployedWorkers();
 	overallMergeNations(theConfiguration.getDebug());
 	removeEmptyNations();
-	determinePartialStates(*theStateDefinitions);
 	addWarsToCountries(wars);
 	if (diplomacy == nullptr)
 	{
@@ -155,10 +165,10 @@ void Vic2::World::removeSimpleLandlessNations()
 			continue;
 		}
 
-		std::vector<Province*> coresToKeep;
+		std::vector<std::shared_ptr<Province>> coresToKeep;
 		for (auto core: country.second->getCores())
 		{
-			if (shouldCoreBeRemoved(core, country.second))
+			if (shouldCoreBeRemoved(*core, country.second))
 			{
 				core->removeCore(country.first);
 			}
@@ -171,20 +181,20 @@ void Vic2::World::removeSimpleLandlessNations()
 
 		if (!country.second->hasCoreOnCapital())
 		{
-			country.second->replaceCores(std::vector<Province*>{});
+			country.second->replaceCores(std::vector<std::shared_ptr<Province>>{});
 		}
 	}
 }
 
 
-bool Vic2::World::shouldCoreBeRemoved(const Province* core, const Country* country) const
+bool Vic2::World::shouldCoreBeRemoved(const Province& core, const Country* country) const
 {
-	if (core->getOwner().empty())
+	if (core.getOwner().empty())
 	{
 		return true;
 	}
 
-	const auto owner = countries.find(core->getOwner());
+	const auto owner = countries.find(core.getOwner());
 	if (owner == countries.end())
 	{
 		return true;
@@ -197,7 +207,7 @@ bool Vic2::World::shouldCoreBeRemoved(const Province* core, const Country* count
 	{
 		return true;
 	}
-	else if (core->getPercentageWithCultures(country->getAcceptedCultures()) < 0.25)
+	else if (core.getPercentageWithCultures(country->getAcceptedCultures()) < 0.25)
 	{
 		return true;
 	}
@@ -232,19 +242,6 @@ void Vic2::World::removeEmptyNations()
 	}
 
 	countries.swap(newCountries);
-}
-
-
-void Vic2::World::determinePartialStates(const StateDefinitions& theStateDefinitions)
-{
-	Log(LogLevel::Info) << "\tFinding partial states";
-	for (const auto& country: countries)
-	{
-		for (auto state: country.second->getStates())
-		{
-			state->determineIfPartialState(theStateDefinitions);
-		}
-	}
 }
 
 
@@ -423,7 +420,7 @@ void Vic2::World::handleMissingCountryCultures()
 }
 
 
-std::optional<const Vic2::Province*> Vic2::World::getProvince(const int provNum) const
+std::optional<const std::shared_ptr<Vic2::Province>> Vic2::World::getProvince(const int provNum) const
 {
 	if (const auto provinceItr = provinces.find(provNum); provinceItr != provinces.end())
 	{

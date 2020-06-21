@@ -3,7 +3,7 @@
 
 
 
-#include "../../Vic2ToHoI4/Source/V2World/State.h"
+#include "../../Vic2ToHoI4/Source/V2World/States/State.h"
 #include "gmock/gmock.h"
 
 
@@ -16,7 +16,7 @@ class mockVic2State final: public Vic2::State
 	MOCK_METHOD(float, getAverageRailLevel, (), (const, override));
 	MOCK_METHOD(std::set<int>, getProvinceNumbers, (), (const, override));
 	MOCK_METHOD(std::optional<int>, getCapitalProvince, (), (const, override));
-	MOCK_METHOD(std::set<const Vic2::Province*>, getProvinces, (), (const, override));
+	MOCK_METHOD(std::set<std::shared_ptr<Vic2::Province>>, getProvinces, (), (const, override));
 };
 
 

@@ -3,8 +3,8 @@
 #include "../Mappers/GovernmentMapper.h"
 #include "../V2World/Country.h"
 #include "../V2World/Province.h"
-#include "../V2World/State.h"
-#include "../V2World/StateDefinitions.h"
+#include "../V2World/States/State.h"
+#include "../V2World/States/StateDefinitions.h"
 #include "../V2World/Vic2Localisations.h"
 #include "Localisations/AllReplacementRules.h"
 #include "Log.h"
@@ -500,7 +500,7 @@ bool HoI4::Localisation::sourceStateHasAllButOneProvinceFromDefinition(const Vic
 	 const Vic2::StateDefinitions& theStateDefinitions)
 {
 	return sourceState.getProvinces().size() ==
-			 theStateDefinitions.getAllProvinces((*sourceState.getProvinces().begin())->getNumber()).size() - 1;
+			 theStateDefinitions.getAllProvinces(*sourceState.getProvinceNumbers().begin()).size() - 1;
 }
 
 
@@ -511,8 +511,7 @@ bool HoI4::Localisation::stateHasAllDefinedProvincesAfterConversion(const State&
 {
 	std::set<int> stateDefinitionDefinitionProvinces;
 
-	auto stateDefinitionSourceProvinces =
-		 theStateDefinitions.getAllProvinces((*sourceState.getProvinces().begin())->getNumber());
+	auto stateDefinitionSourceProvinces = theStateDefinitions.getAllProvinces(*sourceState.getProvinceNumbers().begin());
 	for (auto sourceProvince: stateDefinitionSourceProvinces)
 	{
 		auto possibleMappedProvinces = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince);

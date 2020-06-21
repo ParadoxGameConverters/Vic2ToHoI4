@@ -1,12 +1,11 @@
-#include "StateDefinitions.h"
-#include "../Configuration.h"
+#include "StateDefinitionsFactory.h"
+#include "ParserHelpers.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
-#include "ParserHelpers.h"
 
 
 
-std::unique_ptr<Vic2::StateDefinitions> Vic2::StateDefinitions::Parser::parseStateDefinitions(
+std::unique_ptr<Vic2::StateDefinitions> Vic2::StateDefinitions::Factory::getStateDefinitions(
 	 const Configuration& theConfiguration)
 {
 	std::map<int, std::set<int>> stateMap; // < province, all other provinces in state >
@@ -55,43 +54,4 @@ std::unique_ptr<Vic2::StateDefinitions> Vic2::StateDefinitions::Parser::parseSta
 	}
 
 	return std::make_unique<StateDefinitions>(stateMap, provinceToIDMap, stateToCapitalMap);
-}
-
-
-std::set<int> Vic2::StateDefinitions::getAllProvinces(const int provinceNumber) const
-{
-	if (const auto mapping = stateMap.find(provinceNumber); mapping != stateMap.end())
-	{
-		return mapping->second;
-	}
-	else
-	{
-		return std::set<int>{};
-	}
-}
-
-
-std::optional<std::string> Vic2::StateDefinitions::getStateID(const int provinceNumber) const
-{
-	if (const auto mapping = provinceToIDMap.find(provinceNumber); mapping != provinceToIDMap.end())
-	{
-		return mapping->second;
-	}
-	else
-	{
-		return std::nullopt;
-	}
-}
-
-
-std::optional<int> Vic2::StateDefinitions::getCapitalProvince(const std::string& stateID) const
-{
-	if (const auto mapping = stateToCapitalMap.find(stateID); mapping != stateToCapitalMap.end())
-	{
-		return mapping->second;
-	}
-	else
-	{
-		return std::nullopt;
-	}
 }

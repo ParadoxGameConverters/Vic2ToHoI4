@@ -29,8 +29,8 @@ class mockVic2Country final: public Vic2::Country
 	MOCK_METHOD(double, getRevanchism, (), (const, override));
 	MOCK_METHOD(double, getWarExhaustion, (), (const, override));
 	MOCK_METHOD(float, getAverageIssueSupport, (const std::string& issueName), (const, override));
-	using provinces = std::map<int, Vic2::Province*>;
-	MOCK_METHOD(provinces, getProvinces, (), (const, override));
+	using provinces = std::map<int, std::shared_ptr<Vic2::Province>>;
+	MOCK_METHOD(provinces&, getProvinces, (), (const, override));
 	MOCK_METHOD(bool, isAtWar, (), (const, override));
 	MOCK_METHOD(std::set<std::string>, getTechs, (), (const, override));
 	MOCK_METHOD(std::set<std::string>, getInventions, (), (const, override));

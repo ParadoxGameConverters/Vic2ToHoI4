@@ -128,8 +128,8 @@ TEST_F(HoI4World_States_StateTests, ControllersCanBeAdded)
 	provinceInput << "\towner=TAG\n";
 	provinceInput << "\tcontroller=NOT\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput, popFactory);
-	std::set<const Vic2::Province*> provinces;
+	auto theProvince = std::make_shared<Vic2::Province>("12", provinceInput, popFactory);
+	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	provinces.insert(theProvince);
 
 	mockVic2State sourceState;
@@ -156,8 +156,8 @@ TEST_F(HoI4World_States_StateTests, ControllersConvertWithHoI4Tag)
 	provinceInput << "\towner=TAG\n";
 	provinceInput << "\tcontroller=NOT\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput, popFactory);
-	std::set<const Vic2::Province*> provinces;
+	auto theProvince = std::make_shared<Vic2::Province>("12", provinceInput, popFactory);
+	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	provinces.insert(theProvince);
 
 	mockVic2State sourceState;
@@ -184,8 +184,8 @@ TEST_F(HoI4World_States_StateTests, ControllersDontConvertForRebels)
 	provinceInput << "\towner=TAG\n";
 	provinceInput << "\tcontroller=REB\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput, popFactory);
-	std::set<const Vic2::Province*> provinces;
+	auto theProvince = std::make_shared<Vic2::Province>("12", provinceInput, popFactory);
+	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	provinces.insert(theProvince);
 
 	mockVic2State sourceState;
@@ -254,20 +254,41 @@ TEST_F(HoI4World_States_StateTests, MilFactoriesDefaultsToZero)
 TEST_F(HoI4World_States_StateTests, TotalFactoriesCanBeSet)
 {
 	const mockVic2State sourceState;
-	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(50000));
-	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(60000));
+	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(60000));
+	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(70000));
+
+	HoI4::State theState(sourceState, 42, "TAG");
+	theState.addCores({"TAG"});
+
+	Configuration
+		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
+	const mockStateCategories stateCategories;
+	EXPECT_CALL(stateCategories, getBestCategory(8)).WillOnce(testing::Return("mockedCategory"));
+
+	const HoI4::CoastalProvinces theCoastalProvinces;
+	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+
+	ASSERT_EQ(6, theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards());
+}
+
+
+TEST_F(HoI4World_States_StateTests, TotalFactoriesHalvedByMissingCore)
+{
+	const mockVic2State sourceState;
+	EXPECT_CALL(sourceState, getEmployedWorkers()).WillOnce(testing::Return(60000));
+	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(70000));
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
 	Configuration
 		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
 	const mockStateCategories stateCategories;
-	EXPECT_CALL(stateCategories, getBestCategory(7)).WillOnce(testing::Return("mockedCategory"));
+	EXPECT_CALL(stateCategories, getBestCategory(8)).WillOnce(testing::Return("mockedCategory"));
 
 	const HoI4::CoastalProvinces theCoastalProvinces;
 	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
 
-	ASSERT_EQ(5, theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards());
+	ASSERT_EQ(3, theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards());
 }
 
 
@@ -278,6 +299,7 @@ TEST_F(HoI4World_States_StateTests, TotalFactoriesCappedAtTwelve)
 	EXPECT_CALL(sourceState, getPopulation()).WillOnce(testing::Return(60000));
 
 	HoI4::State theState(sourceState, 42, "TAG");
+	theState.addCores({"TAG"});
 
 	const mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(14)).WillOnce(testing::Return("mockedCategory"));
@@ -410,13 +432,13 @@ TEST_F(HoI4World_States_StateTests, NavalBasesCanBeConverted)
 	input << "= {\n";
 	input << "\tnaval_base = 1.0";
 	input << "}";
-	Vic2::Province sourceProvince("1", input, popFactory);
+	auto sourceProvince = std::make_shared<Vic2::Province>("1", input, popFactory);
 	std::stringstream input2;
 	input2 << "= {\n";
 	input2 << "\tnaval_base = 1.0";
 	input2 << "}";
-	Vic2::Province sourceProvince2("2", input2, popFactory);
-	const std::set<const Vic2::Province*> sourceProvinces{&sourceProvince, &sourceProvince2};
+	auto sourceProvince2 = std::make_shared<Vic2::Province>("2", input2, popFactory);
+	const std::set<std::shared_ptr<Vic2::Province>> sourceProvinces{sourceProvince, sourceProvince2};
 
 	const mockCoastalProvinces theCoastalProvinces;
 	EXPECT_CALL(theCoastalProvinces, isProvinceCoastal(1)).WillOnce(testing::Return(true));
@@ -488,8 +510,8 @@ TEST_F(HoI4World_States_StateTests, ManpowerCanBeSet)
 	provinceInput << "\t\tsize=12345\n";
 	provinceInput << "\t}\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput, popFactory);
-	std::set<const Vic2::Province*> provinces;
+	auto theProvince = std::make_shared<Vic2::Province>("12", provinceInput, popFactory);
+	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	provinces.insert(theProvince);
 
 	mockVic2State sourceState;
@@ -609,7 +631,7 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital
 	provinceInput << "\t\tsize=123456\n";
 	provinceInput << "\t}\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput, popFactory);
+	auto theProvince = std::make_shared<Vic2::Province>("12", provinceInput, popFactory);
 
 	std::stringstream provinceInput2;
 	provinceInput2 << "={\n";
@@ -619,8 +641,8 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital
 	provinceInput2 << "\t\tsize=12345\n";
 	provinceInput2 << "\t}\n";
 	provinceInput2 << "}";
-	auto anotherProvince = new Vic2::Province("24", provinceInput2, popFactory);
-	std::set<const Vic2::Province*> provinces;
+	auto anotherProvince = std::make_shared<Vic2::Province>("24", provinceInput2, popFactory);
+	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	provinces.insert(theProvince);
 	provinces.insert(anotherProvince);
 
@@ -653,7 +675,7 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital
 	provinceInput << "\t\tsize=123456\n";
 	provinceInput << "\t}\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput, popFactory);
+	auto theProvince = std::make_shared<Vic2::Province>("12", provinceInput, popFactory);
 
 	std::stringstream provinceInput2;
 	provinceInput2 << "={\n";
@@ -663,8 +685,8 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital
 	provinceInput2 << "\t\tsize=12345\n";
 	provinceInput2 << "\t}\n";
 	provinceInput2 << "}";
-	auto anotherProvince = new Vic2::Province("24", provinceInput2, popFactory);
-	std::set<const Vic2::Province*> provinces;
+	auto anotherProvince = std::make_shared<Vic2::Province>("24", provinceInput2, popFactory);
+	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	provinces.insert(theProvince);
 	provinces.insert(anotherProvince);
 
@@ -697,7 +719,7 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital
 	provinceInput << "\t\tsize=123456\n";
 	provinceInput << "\t}\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput, popFactory);
+	auto theProvince = std::make_shared<Vic2::Province>("12", provinceInput, popFactory);
 
 	std::stringstream provinceInput2;
 	provinceInput2 << "={\n";
@@ -707,8 +729,8 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital
 	provinceInput2 << "\t\tsize=12345\n";
 	provinceInput2 << "\t}\n";
 	provinceInput2 << "}";
-	auto anotherProvince = new Vic2::Province("24", provinceInput2, popFactory);
-	std::set<const Vic2::Province*> provinces;
+	auto anotherProvince = std::make_shared<Vic2::Province>("24", provinceInput2, popFactory);
+	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	provinces.insert(theProvince);
 	provinces.insert(anotherProvince);
 
@@ -741,7 +763,7 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulous
 	provinceInput << "\t\tsize=12345\n";
 	provinceInput << "\t}\n";
 	provinceInput << "}";
-	auto theProvince = new Vic2::Province("12", provinceInput, popFactory);
+	auto theProvince = std::make_shared<Vic2::Province>("12", provinceInput, popFactory);
 
 	std::stringstream provinceInput2;
 	provinceInput2 << "={\n";
@@ -751,8 +773,8 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulous
 	provinceInput2 << "\t\tsize=123456\n";
 	provinceInput2 << "\t}\n";
 	provinceInput2 << "}";
-	auto anotherProvince = new Vic2::Province("24", provinceInput2, popFactory);
-	std::set<const Vic2::Province*> provinces;
+	auto anotherProvince = std::make_shared<Vic2::Province>("24", provinceInput2, popFactory);
+	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	provinces.insert(theProvince);
 	provinces.insert(anotherProvince);
 
@@ -777,7 +799,7 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulous
 
 TEST_F(HoI4World_States_StateTests, VictoryPointPositionLoggedIfNotSet)
 {
-	std::set<const Vic2::Province*> provinces;
+	std::set<std::shared_ptr<Vic2::Province>> provinces;
 
 	mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getProvinceNumbers()).WillRepeatedly(testing::Return(std::set<int>{}));
@@ -811,7 +833,7 @@ TEST_F(HoI4World_States_StateTests, DebugVPsCanBeAdded)
 	hoi4Provinces.insert(12);
 	EXPECT_CALL(sourceState, getProvinceNumbers()).WillOnce(testing::Return(hoi4Provinces));
 	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(std::nullopt));
-	std::set<const Vic2::Province*> provinces;
+	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	EXPECT_CALL(sourceState, getProvinces()).WillRepeatedly(testing::Return(provinces));
 
 	HoI4::State theState(sourceState, 42, "TAG");
@@ -835,7 +857,7 @@ TEST_F(HoI4World_States_StateTests, SecondaryDebugVPsCanBeAdded)
 	hoi4Provinces.insert(12);
 	EXPECT_CALL(sourceState, getProvinceNumbers()).WillOnce(testing::Return(hoi4Provinces));
 	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(std::nullopt));
-	std::set<const Vic2::Province*> provinces;
+	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	EXPECT_CALL(sourceState, getProvinces()).WillRepeatedly(testing::Return(provinces));
 
 	HoI4::State theState(sourceState, 42, "TAG");
@@ -858,7 +880,7 @@ TEST_F(HoI4World_States_StateTests, DebugVpsAreOutput)
 	std::set<int> hoi4Provinces{12, 24};
 	EXPECT_CALL(sourceState, getProvinceNumbers()).WillOnce(testing::Return(hoi4Provinces));
 	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(12));
-	std::set<const Vic2::Province*> provinces;
+	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	EXPECT_CALL(sourceState, getProvinces()).WillRepeatedly(testing::Return(provinces));
 
 	HoI4::State theState(sourceState, 42, "TAG");

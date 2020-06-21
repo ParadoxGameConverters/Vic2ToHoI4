@@ -1,6 +1,6 @@
 #include "HoI4State.h"
 #include "../../V2World/Province.h"
-#include "../../V2World/State.h"
+#include "../../V2World/States/State.h"
 #include "../Map/CoastalProvinces.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
@@ -31,7 +31,7 @@ HoI4::State::State(const Vic2::State& sourceState, int _ID, const std::string& _
 }
 
 
-void HoI4::State::convertNavalBases(const std::set<const Vic2::Province*>& sourceProvinces,
+void HoI4::State::convertNavalBases(const std::set<std::shared_ptr<Vic2::Province>>& sourceProvinces,
 	 const CoastalProvinces& theCoastalProvinces,
 	 const mappers::ProvinceMapper& theProvinceMapper)
 {
@@ -101,7 +101,7 @@ void HoI4::State::addCores(const std::set<std::string>& newCores)
 }
 
 
-void HoI4::State::convertControlledProvinces(const std::set<const Vic2::Province*>& sourceProvinces,
+void HoI4::State::convertControlledProvinces(const std::set<std::shared_ptr<Vic2::Province>>& sourceProvinces,
 	 const mappers::ProvinceMapper& theProvinceMapper,
 	 const CountryMapper& countryMapper)
 {
@@ -220,16 +220,17 @@ void HoI4::State::tryToCreateVP(const Vic2::State& sourceState,
 
 	if (!VPCreated)
 	{
-		std::list<const Vic2::Province*> provincesOrderedByPopulation;
+		std::list<std::shared_ptr<Vic2::Province>> provincesOrderedByPopulation;
 		for (auto province: sourceState.getProvinces())
 		{
-			provincesOrderedByPopulation.insert(std::upper_bound(provincesOrderedByPopulation.begin(),
-																 provincesOrderedByPopulation.end(),
-																 province,
-																 [](const Vic2::Province* a, const Vic2::Province* b) {
-																	 // provide a 'backwards' comparison to force the sort order we want
-																	 return a->getTotalPopulation() > b->getTotalPopulation();
-																 }),
+			provincesOrderedByPopulation.insert(
+				 std::upper_bound(provincesOrderedByPopulation.begin(),
+					  provincesOrderedByPopulation.end(),
+					  province,
+					  [](const std::shared_ptr<Vic2::Province> a, const std::shared_ptr<Vic2::Province> b) {
+						  // provide a 'backwards' comparison to force the sort order we want
+						  return a->getTotalPopulation() > b->getTotalPopulation();
+					  }),
 				 province);
 		}
 		for (auto province: provincesOrderedByPopulation)
@@ -268,7 +269,7 @@ void HoI4::State::addDebugVPs(const Vic2::State& sourceState, const mappers::Pro
 }
 
 
-void HoI4::State::addManpower(const std::set<const Vic2::Province*>& sourceProvinces,
+void HoI4::State::addManpower(const std::set<std::shared_ptr<Vic2::Province>>& sourceProvinces,
 	 const mappers::ProvinceMapper& theProvinceMapper,
 	 const Configuration& theConfiguration)
 {
@@ -389,6 +390,11 @@ static std::mt19937 randomnessEngine;
 static std::uniform_int_distribution<> numberDistributor(0, 99);
 void HoI4::State::setIndustry(int factories, const CoastalProvinces& theCoastalProvinces)
 {
+	if (ownerHasNoCore())
+	{
+		factories /= 2;
+	}
+
 	if (amICoastal(theCoastalProvinces))
 	{
 		// distribute military factories, civilian factories, and dockyards using unseeded random
@@ -447,6 +453,12 @@ bool HoI4::State::amICoastal(const CoastalProvinces& theCoastalProvinces) const
 	}
 
 	return false;
+}
+
+
+bool HoI4::State::ownerHasNoCore() const
+{
+	return !cores.count(ownerTag);
 }
 
 

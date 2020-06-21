@@ -5,7 +5,6 @@
 
 #include "Parser.h"
 #include <map>
-#include <memory>
 #include <optional>
 #include <set>
 
@@ -21,7 +20,7 @@ namespace Vic2
 class StateDefinitions
 {
   public:
-	class Parser;
+	class Factory;
 
 	StateDefinitions(std::map<int, std::set<int>> stateMap,
 		 std::map<int, std::string> provinceToIDMap,
@@ -39,13 +38,6 @@ class StateDefinitions
 	std::map<int, std::set<int>> stateMap; // < province, all other provinces in state >
 	std::map<int, std::string> provinceToIDMap;
 	std::map<std::string, int> stateToCapitalMap;
-};
-
-
-class StateDefinitions::Parser: commonItems::parser
-{
-  public:
-	std::unique_ptr<StateDefinitions> parseStateDefinitions(const Configuration& theConfiguration);
 };
 
 } // namespace Vic2
