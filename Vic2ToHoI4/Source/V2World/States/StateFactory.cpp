@@ -9,10 +9,8 @@
 Vic2::State::Factory::Factory()
 {
 	registerKeyword("provinces", [this](const std::string& unused, std::istream& theStream) {
-		for (auto province: commonItems::intList{theStream}.getInts())
-		{
-			state->provinceNumbers.insert(province);
-		}
+		auto provinces = commonItems::intList{theStream}.getInts();
+		state->provinceNumbers.insert(provinces.begin(), provinces.end());
 	});
 	registerKeyword("state_buildings", [this](const std::string& unused, std::istream& theStream) {
 		state->factoryLevel += buildingReader.getLevel(theStream);
@@ -28,7 +26,6 @@ std::unique_ptr<Vic2::State> Vic2::State::Factory::getState(std::istream& theStr
 	state = std::make_unique<State>();
 
 	state->owner = ownerTag;
-
 	parseStream(theStream);
 	setID(theStateDefinitions);
 	determineIfPartialState(theStateDefinitions);
@@ -39,7 +36,7 @@ std::unique_ptr<Vic2::State> Vic2::State::Factory::getState(std::istream& theStr
 
 
 std::unique_ptr<Vic2::State> Vic2::State::Factory::getUnownedState(
-	 const std::set<std::pair<int, std::shared_ptr<Province>>>& theProvinces,
+	 const std::unordered_map<int, std::shared_ptr<Province>>& theProvinces,
 	 const StateDefinitions& theStateDefinitions)
 {
 	state = std::make_unique<State>();
@@ -57,15 +54,14 @@ std::unique_ptr<Vic2::State> Vic2::State::Factory::getUnownedState(
 }
 
 
-void Vic2::State::Factory::setID(const StateDefinitions& theStateDefinitions) const
+void Vic2::State::Factory::setID(const StateDefinitions& theStateDefinitions)
 {
 	if (state->provinceNumbers.empty())
 	{
 		return;
 	}
 
-	auto foundStateID = theStateDefinitions.getStateID(*state->provinceNumbers.begin());
-	if (foundStateID)
+	if (auto foundStateID = theStateDefinitions.getStateID(*state->provinceNumbers.begin()); foundStateID)
 	{
 		state->stateID = *foundStateID;
 	}
@@ -76,23 +72,25 @@ void Vic2::State::Factory::setID(const StateDefinitions& theStateDefinitions) co
 }
 
 
-void Vic2::State::Factory::setCapital(const StateDefinitions& theStateDefinitions) const
+void Vic2::State::Factory::setCapital(const StateDefinitions& theStateDefinitions)
 {
 	state->capitalProvince = theStateDefinitions.getCapitalProvince(state->stateID);
 }
 
 
-void Vic2::State::Factory::determineIfPartialState(const StateDefinitions& theStateDefinitions) const
+void Vic2::State::Factory::determineIfPartialState(const StateDefinitions& theStateDefinitions)
 {
-	if (state->provinceNumbers.size() > 0)
+	if (state->provinceNumbers.empty())
 	{
-		for (auto expectedProvince: theStateDefinitions.getAllProvinces(*state->provinceNumbers.begin()))
+		return;
+	}
+
+	for (auto expectedProvince: theStateDefinitions.getAllProvinces(*state->provinceNumbers.begin()))
+	{
+		if (!state->provinceNumbers.count(expectedProvince))
 		{
-			if (state->provinceNumbers.count(expectedProvince) == 0)
-			{
-				state->partialState = true;
-				break;
-			}
+			state->partialState = true;
+			break;
 		}
 	}
 }

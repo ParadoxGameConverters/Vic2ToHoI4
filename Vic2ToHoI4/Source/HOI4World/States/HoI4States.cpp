@@ -21,6 +21,7 @@
 #include "OSCompatibilityLayer.h"
 #include "StateCategories.h"
 #include <queue>
+#include <unordered_map>
 
 
 
@@ -280,7 +281,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 	Vic2::State::Factory factory;
 	while (!unownedProvinces.empty())
 	{
-		std::set<std::pair<int, std::shared_ptr<Vic2::Province>>> stateProvinces;
+		std::unordered_map<int, std::shared_ptr<Vic2::Province>> stateProvinces;
 
 		auto stateProvinceNumbers = theStateDefinitions.getAllProvinces(unownedProvinces.begin()->first);
 		if (stateProvinceNumbers.empty())

@@ -20,13 +20,13 @@ class State::Factory: commonItems::parser
 	std::unique_ptr<State> getState(std::istream& theStream,
 		 const std::string& ownerTag,
 		 const StateDefinitions& theStateDefinitions);
-	std::unique_ptr<State> getUnownedState(const std::set<std::pair<int, std::shared_ptr<Province>>>& theProvinces,
+	std::unique_ptr<State> getUnownedState(const std::unordered_map<int, std::shared_ptr<Province>>& theProvinces,
 		 const StateDefinitions& theStateDefinitions);
 
   private:
-	void setID(const StateDefinitions& theStateDefinitions) const;
-	void setCapital(const StateDefinitions& theStateDefinitions) const;
-	void determineIfPartialState(const StateDefinitions& theStateDefinitions) const;
+	void setID(const StateDefinitions& theStateDefinitions);
+	void setCapital(const StateDefinitions& theStateDefinitions);
+	void determineIfPartialState(const StateDefinitions& theStateDefinitions);
 
 	std::unique_ptr<State> state;
 	BuildingReader buildingReader;
