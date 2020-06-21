@@ -6,8 +6,7 @@
 Vic2::BuildingReader::BuildingReader()
 {
 	registerKeyword("level", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleInt levelInt(theStream);
-		level = levelInt.getInt();
+		level = commonItems::singleInt{theStream}.getInt();
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }

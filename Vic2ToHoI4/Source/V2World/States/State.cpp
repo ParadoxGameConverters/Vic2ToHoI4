@@ -39,7 +39,7 @@ Vic2::workerStruct Vic2::State::limitWorkersByFactoryLevels(const workerStruct& 
 	newWorkers.craftsmen =
 		 (static_cast<float>(factoryLevel) * 10000.0f) / (workers.craftsmen + workers.clerks) * workers.craftsmen;
 	newWorkers.clerks =
-		 (static_cast<float>(factoryLevel) * 10000.0f) / (workers.craftsmen + workers.clerks) * (workers.clerks);
+		 (static_cast<float>(factoryLevel) * 10000.0f) / (workers.craftsmen + workers.clerks) * workers.clerks;
 	return newWorkers;
 }
 
