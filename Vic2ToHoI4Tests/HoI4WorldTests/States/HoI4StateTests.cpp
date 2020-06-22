@@ -491,12 +491,12 @@ TEST_F(HoI4World_States_StateTests, AirbaseLevelCappedAtTen)
 }
 
 
-TEST_F(HoI4World_States_StateTests, ManpowerDefaultsToZero)
+TEST_F(HoI4World_States_StateTests, ManpowerReturnsMinimumOfOne)
 {
 	const mockVic2State sourceState;
 	const HoI4::State theState(sourceState, 42, "TAG");
 
-	ASSERT_EQ(0, theState.getManpower());
+	ASSERT_EQ(1, theState.getManpower());
 }
 
 
@@ -570,7 +570,7 @@ TEST_F(HoI4World_States_StateTests, ResourcesCanBeAdded)
 	expectedOutput << "\t\t";
 	expectedOutput << "\n";
 	expectedOutput << "\t}\n";
-	expectedOutput << "\tmanpower=0\n";
+	expectedOutput << "\tmanpower=1\n";
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
 	expectedOutput << "\tstate_category=wasteland\n";
 	expectedOutput << "}\n";
@@ -926,7 +926,7 @@ TEST_F(HoI4World_States_StateTests, DebugVpsAreOutput)
 	expectedOutput << "\t\t12 13 24 25 ";
 	expectedOutput << "\n";
 	expectedOutput << "\t}\n";
-	expectedOutput << "\tmanpower=0\n";
+	expectedOutput << "\tmanpower=1\n";
 	expectedOutput << "\tbuildings_max_level_factor=1.000\n";
 	expectedOutput << "\tstate_category=wasteland\n";
 	expectedOutput << "}\n";

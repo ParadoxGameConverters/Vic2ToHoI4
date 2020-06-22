@@ -80,7 +80,6 @@ class State
 	int getInfrastructure() const { return infrastructure; }
 	const std::map<int, int>& getNavalBases() const { return navalBases; }
 	int getAirbaseLevel() const { return airbaseLevel; }
-	int getManpower() const { return manpower; }
 	bool hasResources() const { return !resources.empty(); }
 	const std::map<std::string, double>& getResources() const { return resources; }
 	std::optional<int> getVPLocation() const { return victoryPointPosition; }
@@ -89,6 +88,7 @@ class State
 	const std::set<int>& getSecondaryDebugVPs() const { return secondaryDebugVictoryPoints; }
 
 	std::optional<int> getMainNavalLocation() const;
+	[[nodiscard]] int getManpower() const;
 
 	void tryToCreateVP(const Vic2::State& sourceState,
 		 const mappers::ProvinceMapper& theProvinceMapper,
