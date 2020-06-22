@@ -186,6 +186,18 @@ std::optional<int> HoI4::State::getMainNavalLocation() const
 }
 
 
+int HoI4::State::getManpower() const
+{
+	if (manpower == 0)
+	{
+		return 1;
+	}
+
+	return manpower;
+}
+
+
+
 void HoI4::State::tryToCreateVP(const Vic2::State& sourceState,
 	 const mappers::ProvinceMapper& theProvinceMapper,
 	 const Configuration& theConfiguration)
