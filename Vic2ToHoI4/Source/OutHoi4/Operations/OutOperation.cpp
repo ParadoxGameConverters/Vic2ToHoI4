@@ -4,7 +4,7 @@
 
 std::ostream& HoI4::operator<<(std::ostream& out, const Operation& operation)
 {
-	out << " = {\n";
+	out << operation.getName() << " = {\n";
 	out << "}\n";
 	out << "\n";
 
