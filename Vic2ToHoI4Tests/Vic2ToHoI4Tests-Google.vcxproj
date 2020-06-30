@@ -347,6 +347,7 @@
     <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawsFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Operations\OperationsFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesMappingFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesMappingsFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesTests.cpp" />
@@ -475,6 +476,18 @@
     <CopyFileToFolders Include="TestFiles\vic2_mod_regions.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/mod/test_mod/map</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">region%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\blank_operations.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/blank_operations/common/operations/</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">00_operations%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\operations.txt">
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">00_operations%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/operations/common/operations/</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

@@ -1040,6 +1040,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Operations\OutOperations.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Operations</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Operations\OperationsFactoryTests.cpp">
+      <Filter>HoI4WorldTests\Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1279,6 +1282,9 @@
     <Filter Include="Vic2ToHoI4 files\OutHoi4\Operations">
       <UniqueIdentifier>{d64a8910-d172-470b-b13e-8e993cac0e28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4WorldTests\Operations">
+      <UniqueIdentifier>{bd1f6857-8d52-41ff-8325-f0417e78c69d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1362,6 +1368,12 @@
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\vic2_mod_regions.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\blank_operations.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\operations.txt">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
   </ItemGroup>

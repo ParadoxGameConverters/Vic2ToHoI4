@@ -16,7 +16,7 @@ class Operation::Factory: commonItems::parser
 {
   public:
 	Factory();
-	std::unique_ptr<Operation> getOperation(std::istream& theStream);
+	std::unique_ptr<Operation> getOperation(std::string name, std::istream& theStream);
 
   private:
 	std::unique_ptr<Operation> operation;
