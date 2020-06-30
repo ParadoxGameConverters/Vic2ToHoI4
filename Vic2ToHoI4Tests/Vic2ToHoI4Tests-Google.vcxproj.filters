@@ -1028,6 +1028,18 @@
     <ClCompile Include="Vic2WorldTests\States\StateFactoryTests.cpp">
       <Filter>Vic2WorldTests\States</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Operations\OperationFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Operations\OperationsFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Operations\OutOperation.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Operations\OutOperations.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1260,6 +1272,12 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Vic2\States">
       <UniqueIdentifier>{aa836837-d870-4faa-8525-ae2c08629a80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Operations">
+      <UniqueIdentifier>{1889bb14-ddb4-4d2a-94ea-373ceabc37ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\Operations">
+      <UniqueIdentifier>{d64a8910-d172-470b-b13e-8e993cac0e28}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
