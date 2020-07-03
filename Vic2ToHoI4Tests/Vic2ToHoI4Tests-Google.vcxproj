@@ -348,6 +348,7 @@
     <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawsFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OccupationLaws\OccupationLawsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Operations\OperationFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Operations\OperationsFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesMappingFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesMappingsFactoryTests.cpp" />
@@ -376,7 +377,6 @@
     <ClCompile Include="Mocks\CountryMapperMock.h" />
     <ClCompile Include="Mocks\TechnologiesMock.h" />
     <ClCompile Include="Mocks\Vic2StateMock.h" />
-    <ClCompile Include="TestFiles\OperationFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopTests.cpp" />
     <ClCompile Include="Vic2WorldTests\ProvinceTests.cpp" />
