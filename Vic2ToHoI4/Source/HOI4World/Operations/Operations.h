@@ -4,6 +4,7 @@
 
 
 #include "Operation.h"
+#include <set>
 #include <vector>
 
 
@@ -17,7 +18,11 @@ class Operations
 	class Factory;
 	[[nodiscard]] const auto& getOperations() const { return operations; }
 
+	void updateOperations(const std::set<std::string>& majorIdeologies);
+
   private:
+	static void updateOperationCoupGovernment(Operation& operation, const std::set<std::string>& majorIdeologies);
+
 	std::vector<Operation> operations;
 };
 

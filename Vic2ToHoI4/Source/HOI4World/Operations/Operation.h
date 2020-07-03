@@ -49,6 +49,8 @@ class Operation
 	[[nodiscard]] const auto& getTargetWeight() const { return targetWeight; }
 	[[nodiscard]] const auto& getPhases() const { return phases; }
 
+	void setAvailable(std::string newAvailable) { available = std::move(newAvailable); }
+
   private:
 	std::string name;
 	std::string icon;

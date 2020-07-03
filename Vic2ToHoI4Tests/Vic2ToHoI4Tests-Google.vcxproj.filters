@@ -1046,6 +1046,9 @@
     <ClCompile Include="TestFiles\OperationFactoryTests.cpp">
       <Filter>HoI4WorldTests\Operations</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Operations\Operations.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1377,6 +1380,9 @@
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\operations.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\operations_to_update.txt">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
   </ItemGroup>

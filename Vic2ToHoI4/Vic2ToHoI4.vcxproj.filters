@@ -911,6 +911,9 @@
     <ClCompile Include="Source\OutHoi4\Operations\OutOperations.cpp">
       <Filter>OutHoi4\Operations</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Operations\Operations.cpp">
+      <Filter>HoI4World\Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">

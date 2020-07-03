@@ -158,6 +158,7 @@
     <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLaws.cpp" />
     <ClCompile Include="Source\HOI4World\OccupationLaws\OccupationLawsFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Operations\OperationFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\Operations\Operations.cpp" />
     <ClCompile Include="Source\HOI4World\Operations\OperationsFactory.cpp" />
     <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNames.cpp" />
     <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesFactory.cpp" />
