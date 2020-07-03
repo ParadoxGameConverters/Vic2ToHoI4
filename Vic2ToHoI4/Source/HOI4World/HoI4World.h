@@ -23,6 +23,7 @@
 #include "Names/Names.h"
 #include "OccupationLaws/OccupationLawsFactory.h"
 #include "OnActions.h"
+#include "Operations/Operations.h"
 #include "OperativeNames/OperativeNames.h"
 #include "Parser.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
@@ -103,6 +104,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getOnActions() const { return *onActions; }
 	[[nodiscard]] const auto& getIntelligenceAgencies() const { return intelligenceAgencies; }
 	[[nodiscard]] const auto& getOperativeNames() const { return *operativeNames; }
+	[[nodiscard]] const auto& getOperations() const { return *operations; }
 	[[nodiscard]] const auto& getPeaces() const { return *peaces; }
 	[[nodiscard]] const auto& getIdeologies() const { return *ideologies; }
 	[[nodiscard]] const auto& getTheIdeas() const { return *theIdeas; }
@@ -230,6 +232,7 @@ class World: commonItems::parser
 
 	std::unique_ptr<IntelligenceAgencies> intelligenceAgencies;
 	std::unique_ptr<OperativeNames> operativeNames;
+	std::unique_ptr<Operations> operations;
 
 	std::unique_ptr<allMilitaryMappings> theMilitaryMappings;
 

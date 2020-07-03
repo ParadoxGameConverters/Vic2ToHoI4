@@ -13,6 +13,7 @@
 #include "Map/OutSupplyZones.h"
 #include "OSCompatibilityLayer.h"
 #include "OccupationLaws/OutOccupationLaws.h"
+#include "Operations/OutOperations.h"
 #include "OperativeNames/OutOperativeNames.h"
 #include "OutFocusTree.h"
 #include "OutHoi4Country.h"
@@ -190,6 +191,7 @@ void HoI4::OutputWorld(const World& world,
 	outputOccupationLaws(world.getOccupationLaws(), theConfiguration);
 	outputIntelligenceAgencies(*world.getIntelligenceAgencies(), outputName);
 	outputOperativeNames(world.getOperativeNames(), outputName);
+	outputOperations(world.getOperations(), outputName);
 }
 
 

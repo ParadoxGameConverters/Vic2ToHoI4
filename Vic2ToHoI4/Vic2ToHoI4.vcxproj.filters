@@ -169,6 +169,12 @@
     <Filter Include="Vic2World\States">
       <UniqueIdentifier>{f32f8e6c-b8ec-4463-9558-e6a7c594e67e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\Operations">
+      <UniqueIdentifier>{db74e89e-735a-4226-874c-0f1e045a387d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\Operations">
+      <UniqueIdentifier>{142629c2-e215-4ab7-86c4-389ac8a199ab}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -892,6 +898,21 @@
     </ClCompile>
     <ClCompile Include="Source\V2World\States\BuildingReader.cpp">
       <Filter>Vic2World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Operations\OperationFactory.cpp">
+      <Filter>HoI4World\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Operations\OperationsFactory.cpp">
+      <Filter>HoI4World\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\Operations\OutOperation.cpp">
+      <Filter>OutHoi4\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\Operations\OutOperations.cpp">
+      <Filter>OutHoi4\Operations</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Operations\Operations.cpp">
+      <Filter>HoI4World\Operations</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1675,6 +1696,24 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\States\BuildingReader.h">
       <Filter>Vic2World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Operations\Operation.h">
+      <Filter>HoI4World\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Operations\OperationFactory.h">
+      <Filter>HoI4World\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Operations\Operations.h">
+      <Filter>HoI4World\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Operations\OperationsFactory.h">
+      <Filter>HoI4World\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\Operations\OutOperation.h">
+      <Filter>OutHoi4\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\Operations\OutOperations.h">
+      <Filter>OutHoi4\Operations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

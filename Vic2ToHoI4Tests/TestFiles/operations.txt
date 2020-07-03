@@ -1,0 +1,2 @@
+operation_one = {}
+operation_two = {}

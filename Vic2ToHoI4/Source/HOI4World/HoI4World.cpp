@@ -31,6 +31,8 @@
 #include "MilitaryMappings/MilitaryMappingsFile.h"
 #include "Names/Names.h"
 #include "OSCompatibilityLayer.h"
+#include "Operations/OperationsFactory.h"
+#include "OperativeNames/OperativeNamesFactory.h"
 #include "ParserHelpers.h"
 #include "ScriptedTriggers/ScriptedTriggersUpdater.h"
 #include "ShipTypes/PossibleShipVariants.h"
@@ -38,7 +40,6 @@
 #include "States/HoI4State.h"
 #include "States/StateCategories.h"
 #include "WarCreator/HoI4WarCreator.h"
-#include "OperativeNames/OperativeNamesFactory.h"
 using namespace std;
 
 
@@ -152,6 +153,9 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 
 	operativeNames = OperativeNames::Factory::getOperativeNames(theConfiguration.getHoI4Path());
 	operativeNames->addCountriesToNameSets(countries);
+
+	operations = Operations::Factory{}.getOperations(theConfiguration.getHoI4Path());
+	operations->updateOperations(ideologies->getMajorIdeologies());
 }
 
 

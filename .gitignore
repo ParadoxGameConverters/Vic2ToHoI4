@@ -1,5 +1,6 @@
 build/
 Release*/
+Vic2ToHoI4-*/
 Debug*/
 testResults
 *testResults*
