@@ -375,6 +375,7 @@
     <ClCompile Include="Mocks\CountryMapperMock.h" />
     <ClCompile Include="Mocks\TechnologiesMock.h" />
     <ClCompile Include="Mocks\Vic2StateMock.h" />
+    <ClCompile Include="TestFiles\OperationFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopTests.cpp" />
     <ClCompile Include="Vic2WorldTests\ProvinceTests.cpp" />

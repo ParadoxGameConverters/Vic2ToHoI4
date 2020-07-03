@@ -1043,6 +1043,9 @@
     <ClCompile Include="HoI4WorldTests\Operations\OperationsFactoryTests.cpp">
       <Filter>HoI4WorldTests\Operations</Filter>
     </ClCompile>
+    <ClCompile Include="TestFiles\OperationFactoryTests.cpp">
+      <Filter>HoI4WorldTests\Operations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
