@@ -31,7 +31,7 @@ void output(const HoI4::World& destWorld,
 	 const std::string& outputName,
 	 const bool debugEnabled,
 	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path,
+	 const std::string& vic2ModPath,
 	 const Configuration& theConfiguration)
 {
 	Log(LogLevel::Progress) << "45%";
@@ -39,7 +39,7 @@ void output(const HoI4::World& destWorld,
 
 	createOutputFolder(outputName);
 	createModFiles(outputName);
-	copyFlags(destWorld.getCountries(), outputName, vic2Mods, vic2Path);
+	copyFlags(destWorld.getCountries(), outputName, vic2Mods, vic2ModPath);
 	OutputWorld(destWorld, outputName, debugEnabled, theConfiguration);
 }
 

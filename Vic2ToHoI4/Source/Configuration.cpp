@@ -51,6 +51,16 @@ Configuration::Factory::Factory()
 
 		Log(LogLevel::Info) << "\tVictoria 2 install path is " << configuration->Vic2Path;
 	});
+	registerKeyword("Vic2ModPath", [this](const std::string& unused, std::istream& theStream) {
+		const commonItems::singleString directoryString(theStream);
+		configuration->Vic2ModPath = directoryString.getString();
+		if (configuration->Vic2ModPath.empty())
+		{
+			throw std::runtime_error("No Victoria 2 mod path was specified in configuration.txt, or the path was invalid");
+		}
+
+		Log(LogLevel::Info) << "\tVictoria 2 mod path is " << configuration->Vic2ModPath;
+	});
 	registerKeyword("Vic2Mods", [this](const std::string& unused, std::istream& theStream) {
 		std::string line;
 		std::getline(theStream, line);

@@ -14,10 +14,10 @@ namespace HoI4
 void processFlagsForCountry(const std::pair<std::string, std::shared_ptr<Country>>& country,
 	 const std::string& outputName,
 	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path);
+	 const std::string& vic2ModPath);
 std::vector<std::string> getSourceFlagPaths(const std::string& Vic2Tag,
 	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path);
+	 const std::string& vic2ModPath);
 std::optional<tga_image*> readFlag(const std::string& path);
 tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsigned int sizeY);
 void createBigFlag(const tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
@@ -26,14 +26,14 @@ void createSmallFlag(const tga_image* sourceFlag, const std::string& filename, c
 std::optional<std::string> getSourceFlagPath(const std::string& Vic2Tag,
 	 const std::string& sourceSuffix,
 	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path);
+	 const std::string& vic2ModPath);
 bool isThisAConvertedTag(const std::string& Vic2Tag);
 std::optional<std::string> getConversionModFlag(const std::string& flagFilename,
 	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path);
+	 const std::string& vic2vic2ModPathPath);
 std::optional<std::string> getAllowModFlags(const std::string& flagFilename,
 	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path);
+	 const std::string& vic2ModPath);
 
 } // namespace HoI4
 
@@ -42,7 +42,7 @@ std::optional<std::string> getAllowModFlags(const std::string& flagFilename,
 void HoI4::copyFlags(const std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const std::string& outputName,
 	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path)
+	 const std::string& vic2ModPath)
 {
 	Log(LogLevel::Info) << "\tCreating flags";
 
@@ -65,7 +65,7 @@ void HoI4::copyFlags(const std::map<std::string, std::shared_ptr<Country>>& coun
 
 	for (const auto& country: countries)
 	{
-		processFlagsForCountry(country, outputName, vic2Mods, vic2Path);
+		processFlagsForCountry(country, outputName, vic2Mods, vic2ModPath);
 	}
 }
 
@@ -94,9 +94,9 @@ static std::set<std::string> allowedMods = {"PDM", "NNM", "Divergences of Darkne
 void HoI4::processFlagsForCountry(const std::pair<std::string, std::shared_ptr<Country>>& country,
 	 const std::string& outputName,
 	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path)
+	 const std::string& vic2ModPath)
 {
-	const auto sourcePaths = getSourceFlagPaths(country.second->getSourceCountry().getTag(), vic2Mods, vic2Path);
+	const auto sourcePaths = getSourceFlagPaths(country.second->getSourceCountry().getTag(), vic2Mods, vic2ModPath);
 	for (size_t i = 0; i < sourcePaths.size(); i++)
 	{
 		if (!sourcePaths[i].empty())
@@ -120,13 +120,13 @@ void HoI4::processFlagsForCountry(const std::pair<std::string, std::shared_ptr<C
 
 std::vector<std::string> HoI4::getSourceFlagPaths(const std::string& Vic2Tag,
 	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path)
+	 const std::string& vic2ModPath)
 {
 	std::vector<std::string> paths;
 
 	for (const auto& vic2Suffix: vic2Suffixes)
 	{
-		auto path = getSourceFlagPath(Vic2Tag, vic2Suffix, vic2Mods, vic2Path);
+		auto path = getSourceFlagPath(Vic2Tag, vic2Suffix, vic2Mods, vic2ModPath);
 		if (path)
 		{
 			paths.push_back(*path);
@@ -152,7 +152,7 @@ std::vector<std::string> HoI4::getSourceFlagPaths(const std::string& Vic2Tag,
 std::optional<std::string> HoI4::getSourceFlagPath(const std::string& Vic2Tag,
 	 const std::string& sourceSuffix,
 	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path)
+	 const std::string& vic2ModPath)
 {
 	auto path = "flags/" + Vic2Tag + sourceSuffix;
 	if (Utils::DoesFileExist(path))
@@ -162,14 +162,14 @@ std::optional<std::string> HoI4::getSourceFlagPath(const std::string& Vic2Tag,
 
 	if (isThisAConvertedTag(Vic2Tag))
 	{
-		if (auto possiblePath = getConversionModFlag(Vic2Tag + sourceSuffix, vic2Mods, vic2Path);
+		if (auto possiblePath = getConversionModFlag(Vic2Tag + sourceSuffix, vic2Mods, vic2ModPath);
 			 Utils::DoesFileExist(*possiblePath))
 		{
 			return *possiblePath;
 		}
 	}
 
-	if (auto possiblePath = getAllowModFlags(Vic2Tag + sourceSuffix, vic2Mods, vic2Path);
+	if (auto possiblePath = getAllowModFlags(Vic2Tag + sourceSuffix, vic2Mods, vic2ModPath);
 		 Utils::DoesFileExist(*possiblePath))
 	{
 		return *possiblePath;
@@ -177,7 +177,7 @@ std::optional<std::string> HoI4::getSourceFlagPath(const std::string& Vic2Tag,
 
 	if (isThisAConvertedTag(Vic2Tag))
 	{
-		if (auto possiblePath = getConversionModFlag(Vic2Tag + ".tga", vic2Mods, vic2Path);
+		if (auto possiblePath = getConversionModFlag(Vic2Tag + ".tga", vic2Mods, vic2ModPath);
 			 Utils::DoesFileExist(*possiblePath))
 		{
 			return *possiblePath;
@@ -202,11 +202,11 @@ bool HoI4::isThisAConvertedTag(const std::string& Vic2Tag)
 
 std::optional<std::string> HoI4::getConversionModFlag(const std::string& flagFilename,
 	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path)
+	 const std::string& vic2ModPath)
 {
 	for (const auto& mod: vic2Mods)
 	{
-		const auto path = vic2Path + "/mod/" + mod + "/gfx/flags/" + flagFilename;
+		const auto path = vic2ModPath + "/" + mod + "/gfx/flags/" + flagFilename;
 		if (Utils::DoesFileExist(path))
 		{
 			return path;
@@ -219,7 +219,7 @@ std::optional<std::string> HoI4::getConversionModFlag(const std::string& flagFil
 
 std::optional<std::string> HoI4::getAllowModFlags(const std::string& flagFilename,
 	 const std::vector<std::string>& vic2Mods,
-	 const std::string& vic2Path)
+	 const std::string& vic2ModPath)
 {
 	for (const auto& mod: vic2Mods)
 	{
@@ -227,7 +227,7 @@ std::optional<std::string> HoI4::getAllowModFlags(const std::string& flagFilenam
 		{
 			continue;
 		}
-		const auto path = vic2Path + "/mod/" + mod + "/gfx/flags/" + flagFilename;
+		const auto path = vic2ModPath + "/" + mod + "/gfx/flags/" + flagFilename;
 		if (Utils::DoesFileExist(path))
 		{
 			return path;

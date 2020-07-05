@@ -222,6 +222,25 @@ TEST(ConfigurationTests, Vic2PathCanBeSet)
 }
 
 
+TEST(ConfigurationTests, Vic2ModPathDefaultsToEmpty)
+{
+	std::stringstream input;
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_TRUE(theConfiguration->getVic2ModPath().empty());
+}
+
+
+TEST(ConfigurationTests, Vic2ModPathCanBeSet)
+{
+	std::stringstream input;
+	input << R"(Vic2ModPath = "./Vic2/Mod")";
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("./Vic2/Mod", theConfiguration->getVic2ModPath());
+}
+
+
 TEST(ConfigurationTests, Vic2PathThrowsExceptionOnNonExistentPath)
 {
 	std::stringstream input;

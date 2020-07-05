@@ -30,6 +30,7 @@ class Configuration
 	[[nodiscard]] const auto& getOutputName() const { return outputName; }
 	[[nodiscard]] const auto& getHoI4Path() const { return HoI4Path; }
 	[[nodiscard]] const auto& getVic2Path() const { return Vic2Path; }
+	[[nodiscard]] const auto& getVic2ModPath() const { return Vic2ModPath; }
 	[[nodiscard]] const auto& getVic2Mods() const { return Vic2Mods; }
 	[[nodiscard]] const auto& getForceMultiplier() const { return forceMultiplier; }
 	[[nodiscard]] const auto& getManpowerFactor() const { return manpowerFactor; }
@@ -52,6 +53,7 @@ class Configuration
 	std::string outputName;
 	std::string HoI4Path;
 	std::string Vic2Path;
+	std::string Vic2ModPath;
 	std::vector<std::string> Vic2Mods;
 	float forceMultiplier = 1.0f;
 	float manpowerFactor = 1.0f;
@@ -96,6 +98,11 @@ class Configuration::Builder
 	Builder& setVic2Path(std::string Vic2Path)
 	{
 		configuration->Vic2Path = std::move(Vic2Path);
+		return *this;
+	}
+	Builder& setVic2ModPath(std::string Vic2ModPath)
+	{
+		configuration->Vic2ModPath = std::move(Vic2ModPath);
 		return *this;
 	}
 	Builder& addVic2Mod(std::string Vic2Mod)

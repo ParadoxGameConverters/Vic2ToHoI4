@@ -287,7 +287,7 @@ void Vic2::World::readCountryFiles(const Configuration& theConfiguration)
 
 	for (const auto& vic2Mod: theConfiguration.getVic2Mods())
 	{
-		if (processCountriesDotTxt(theConfiguration.getVic2Path() + "/mod/" + vic2Mod + "/common/countries.txt",
+		if (processCountriesDotTxt(theConfiguration.getVic2ModPath() + "/" + vic2Mod + "/common/countries.txt",
 				  vic2Mod,
 				  theConfiguration))
 		{
