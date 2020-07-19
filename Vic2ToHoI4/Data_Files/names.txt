@@ -1249,6 +1249,38 @@ mavro = {
 	naval_companies = { "Royal Hellenic Naval Shipyard" }
 	intelligence_agencies = { "Ulixes" }
 }
+anatolian = {
+	female_names = { Maria Eleni Aiketerine Baslikike Sofia Aggeliki Georgia Anastasia Evangelia Demetra Eirene Anna Panagiota Ioanna Konstantina Despoina Calliope Alexandra Kyriake Paraskevi }
+	female_surnames = { Charalámpi Christáki-Zográfo Dagli Dousmani Foúmi Gonatá Chatzianésti Kallérgi Kanári Katsimiro
+		Kolokotróni Kondýli Kountourióti Kriezí Makriiánni Máno Mavrokordáto Mavrovounióti Metaxá Moúsko
+		Níder Othonaío Paláska Pan'galo Papadiamantópoulo Papadópoulo Papágo Papoúla Parakevópoulo Plapoúta
+		Plastíra Sapountzáki Saráfi Smolénski Sofoúli Soútso Spyromílio Staïkópoulo Stanota "ti Elládas"
+		Trikoúpi Tsakalóto Tsolákoglou Typáldos-Alfonsáto Tzavéla Vásso Venizélo Voúlgari Zaḯmi Zymvrakáki }
+	callsigns = { Ellinikí Spartiátis Vyzantinó Aléxandros Toúrkos Aftokrátos }
+	industry_companies = { "Ethnikés Viomichaníes" }
+	electronic_companies = { "Xénes Enérgeies" }
+	car_companies = { ELVO Korres Namco "Replicar Hellas" Sfakianakis Tangalakis-Temax }
+	weapon_companies = { "Gallikó Chályva" }
+	aircraft_companies = { GNAF }
+	naval_companies = { "Royal Hellenic Naval Shipyard" }
+	intelligence_agencies = { "Ethnikí Ypiresía Pliroforión" }
+}
+magnagreek = {
+	female_names = { Maria Eleni Aiketerine Baslikike Sofia Aggeliki Georgia Anastasia Evangelia Demetra Eirene Anna Panagiota Ioanna Konstantina Despoina Calliope Alexandra Kyriake Paraskevi }
+	female_surnames = { Charalámpi Christáki-Zográfo Dagli Dousmani Foúmi Gonatá Chatzianésti Kallérgi Kanári Katsimiro
+		Kolokotróni Kondýli Kountourióti Kriezí Makriiánni Máno Mavrokordáto Mavrovounióti Metaxá Moúsko
+		Níder Othonaío Paláska Pan'galo Papadiamantópoulo Papadópoulo Papágo Papoúla Parakevópoulo Plapoúta
+		Plastíra Sapountzáki Saráfi Smolénski Sofoúli Soútso Spyromílio Staïkópoulo Stanota "ti Elládas"
+		Trikoúpi Tsakalóto Tsolákoglou Typáldos-Alfonsáto Tzavéla Vásso Venizélo Voúlgari Zaḯmi Zymvrakáki }
+	callsigns = { Ellinikí Spartiátis Vyzantinó Aléxandros Toúrkos Aftokrátos }
+	industry_companies = { "Ethnikés Viomichaníes" }
+	electronic_companies = { "Xénes Enérgeies" }
+	car_companies = { ELVO Korres Namco "Replicar Hellas" Sfakianakis Tangalakis-Temax }
+	weapon_companies = { "Gallikó Chályva" }
+	aircraft_companies = { GNAF }
+	naval_companies = { "Royal Hellenic Naval Shipyard" }
+	intelligence_agencies = { "Ethnikí Ypiresía Pliroforión" }
+}
 georgian = {
 	female_names = { Ana Anna Baia Bedisa Borena Chiora Chito Dali Dedika Duda Dzabuli Elene Helen Eliso Endzela }
 	callsigns = { Rusuli Kartveli Somekhi Sp'arsuli Turki P'oladi }
@@ -1692,6 +1724,149 @@ armenian = {
 	intelligence_agencies = { "NSS" }
 }
 ashkenazi = {
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
+			Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+			Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
+	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
+	car_companies = { "Mashin Indastriz" }
+	weapon_companies = { "Musket Produktsye" }
+	aircraft_companies = { "Flyendik Mlakhim" }
+	naval_companies = { "Jonas Toyve" }
+	industry_companies = { "Ayzn aun Shtol" }
+	electronic_companies = { "Bloy Leyts" }
+	intelligence_agencies = { "Mossad" }
+}
+camite = {
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
+			Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+			Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
+	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
+	car_companies = { "Mashin Indastriz" }
+	weapon_companies = { "Musket Produktsye" }
+	aircraft_companies = { "Flyendik Mlakhim" }
+	naval_companies = { "Jonas Toyve" }
+	industry_companies = { "Ayzn aun Shtol" }
+	electronic_companies = { "Bloy Leyts" }
+	intelligence_agencies = { "Mossad" }
+}
+hulwud = {
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
+			Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+			Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
+	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
+	car_companies = { "Mashin Indastriz" }
+	weapon_companies = { "Musket Produktsye" }
+	aircraft_companies = { "Flyendik Mlakhim" }
+	naval_companies = { "Jonas Toyve" }
+	industry_companies = { "Ayzn aun Shtol" }
+	electronic_companies = { "Bloy Leyts" }
+	intelligence_agencies = { "Mossad" }
+}
+israeli = {
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
+			Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+			Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
+	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
+	car_companies = { "Mashin Indastriz" }
+	weapon_companies = { "Musket Produktsye" }
+	aircraft_companies = { "Flyendik Mlakhim" }
+	naval_companies = { "Jonas Toyve" }
+	industry_companies = { "Ayzn aun Shtol" }
+	electronic_companies = { "Bloy Leyts" }
+	intelligence_agencies = { "Mossad" }
+}
+kaifeng = {
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
+			Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+			Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
+	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
+	car_companies = { "Mashin Indastriz" }
+	weapon_companies = { "Musket Produktsye" }
+	aircraft_companies = { "Flyendik Mlakhim" }
+	naval_companies = { "Jonas Toyve" }
+	industry_companies = { "Ayzn aun Shtol" }
+	electronic_companies = { "Bloy Leyts" }
+	intelligence_agencies = { "Mossad" }
+}
+knaanic = {
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
+			Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+			Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
+	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
+	car_companies = { "Mashin Indastriz" }
+	weapon_companies = { "Musket Produktsye" }
+	aircraft_companies = { "Flyendik Mlakhim" }
+	naval_companies = { "Jonas Toyve" }
+	industry_companies = { "Ayzn aun Shtol" }
+	electronic_companies = { "Bloy Leyts" }
+	intelligence_agencies = { "Mossad" }
+}
+laaz = {
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
+			Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+			Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
+	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
+	car_companies = { "Mashin Indastriz" }
+	weapon_companies = { "Musket Produktsye" }
+	aircraft_companies = { "Flyendik Mlakhim" }
+	naval_companies = { "Jonas Toyve" }
+	industry_companies = { "Ayzn aun Shtol" }
+	electronic_companies = { "Bloy Leyts" }
+	intelligence_agencies = { "Mossad" }
+}
+magogic = {
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
+			Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+			Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
+	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
+	car_companies = { "Mashin Indastriz" }
+	weapon_companies = { "Musket Produktsye" }
+	aircraft_companies = { "Flyendik Mlakhim" }
+	naval_companies = { "Jonas Toyve" }
+	industry_companies = { "Ayzn aun Shtol" }
+	electronic_companies = { "Bloy Leyts" }
+	intelligence_agencies = { "Mossad" }
+}
+misrayim = {
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
+			Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+			Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
+	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
+	car_companies = { "Mashin Indastriz" }
+	weapon_companies = { "Musket Produktsye" }
+	aircraft_companies = { "Flyendik Mlakhim" }
+	naval_companies = { "Jonas Toyve" }
+	industry_companies = { "Ayzn aun Shtol" }
+	electronic_companies = { "Bloy Leyts" }
+	intelligence_agencies = { "Mossad" }
+}
+mizrahi = {
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
+			Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+			Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
+	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
+	car_companies = { "Mashin Indastriz" }
+	weapon_companies = { "Musket Produktsye" }
+	aircraft_companies = { "Flyendik Mlakhim" }
+	naval_companies = { "Jonas Toyve" }
+	industry_companies = { "Ayzn aun Shtol" }
+	electronic_companies = { "Bloy Leyts" }
+	intelligence_agencies = { "Mossad" }
+}
+yevanic = {
+	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
+			Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
+			Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
+	callsigns = { "the Jew" "the Prophet" "the Crucifixer" "Israel" "Kohen" }
+	car_companies = { "Mashin Indastriz" }
+	weapon_companies = { "Musket Produktsye" }
+	aircraft_companies = { "Flyendik Mlakhim" }
+	naval_companies = { "Jonas Toyve" }
+	industry_companies = { "Ayzn aun Shtol" }
+	electronic_companies = { "Bloy Leyts" }
+	intelligence_agencies = { "Mossad" }
+}
+zarphatic = {
 	female_names = { Adena Adi Adva Ahuva Alexandra Aliza Alte Arieh Asher Basia Boaz Chanah Cypros Danya Dara Dina Doris Dov Dvora Elisheva Esther 
 			Galia Galit Leah Liat Liora Machla Mariamne Marni Maya Meital Menahem Milka Naamah Nahal Nava Nissa Orah Orit Osher Rachel Raisa 
 			Rivka Salampsio Sarah Shayna Tamar Tirtza Yael Yocheved }
@@ -2418,6 +2593,16 @@ falklander = {
 	weapon_companies = { "RSAF Enfield" Vauxhall "Royal Arsenal" }
 	aircraft_companies = { Supermarine "Hawker Aircraft" "De Havilland" Avro "Fairey Aviation" }
 }
+meashighcaw = {
+	female_names = { Anne Mary }
+	callsigns = { Stubborn Arrow "The King" Eagle Stewart Striker Chase "One Wing" Pickle Thief Thunder Lightning Storm Target Hawk Fox Dog Sparrow Sunrise "Night Owl" Butcher Cocky Hawkeye Killer Mick Brandy "The Baron" }
+	industry_companies = { AIOC }
+	electronic_companies = { "Scots Electric" }
+	car_companies = { Vickers-Armstrong }
+	naval_companies = { "Yarrow Shipbuilders" "Harland & Wolff" "Cammell Laird" "John Brown & Company" }
+	weapon_companies = { "RSAF Enfield" Vauxhall "Royal Arsenal" }
+	aircraft_companies = { Supermarine "Hawker Aircraft" "De Havilland" Avro "Fairey Aviation" }
+}
 italoamericano = {
 	female_names = { Maria Giovanna }
 	callsigns = { Buzzard Dusty Falcon Hawk Hammer Viper Banshee "The Baron" Lightning Duce Raven "Two Shot" Rosso }
@@ -2678,6 +2863,25 @@ esmer = {
 	aircraft_companies = { THK KTF }
 }
 maghrebi = {
+	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand 
+			Parween Paymaneh Paywand Qamara Rafiqa Rasa Rashida Reshawna
+			Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah 
+			Sheeftah Sheeva Shogofa Shokouh Shola Sholah Simin Souzan
+			Taliba Tanaz Taneen Yagana Yakta Yasmin Zaynab }
+	callsigns = { "Ibn Abd al-Rahman" "Ibn Abbad" "Ibn Abd Allah" "Ibn Abi Hafs" "Ibn al-Azafi" "Ibn Ali"
+	"Ibn Hakan" "Ibn Hammud" "Ibn Hisam" "Ibn Husayn"
+	"Ibn Idris" "Ibn Ishaq" "Ibn Isma'il"
+	"Ibn Marwan" "Ibn Muhammad" "Ibn Nasr" "Ibn Qasim" "Ibn Sa'd" "Ibn Sulayman"
+	"Ibn Umar" "Ibn Ummay" "Ibn Utman" "Ibn Ya'far" "Ibn Yahyà" "Ibn Yusuf" }
+	car_companies = { "Al-Sayarat Wal-dabbabat" }
+	weapon_companies = { "Al-Farisiat al-Banadiq" }
+	aircraft_companies = { "Tayaran" }
+	naval_companies = { "Al-Zawariq al-Faransia" }
+	industry_companies = { "al-Hadid al-Earabiu" }
+	electronic_companies = { "Daw Yahudiun" }
+	intelligence_agencies = { "BCIJ" }
+}
+frencharab = {
 	female_names = { Nadiyya Adila Amsha Asiya Faghira Habiba Hanifa Jahaira Kamala Layla Maryam Nafisa Nyawela Parand 
 			Parween Paymaneh Paywand Qamara Rafiqa Rasa Rashida Reshawna
 			Saaman Sabba Saghar Sahba Sajida Samira Semeah Setara Shahrbano Shahzadah Shameem Shararah 
@@ -4658,4 +4862,964 @@ coptic = {
 	naval_companies = { "Baal's Idols" }
 	weapon_companies = { ANHUR }
 	aircraft_companies = { "Thoth Scrolls" }
+}
+
+## Anti-debug spamming measures
+## These cultures are not real cultures (religions, generated but never used, etc.)
+british_andes_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+british_central_america_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+british_north_america_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+british_south_america_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+east_slavic_north_america_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+french_andes_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+french_central_america_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+french_north_america_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+french_south_america_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+germanic_central_america_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+germanic_north_america_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+germanic_south_america_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+iberian_andes_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+iberian_central_america_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+iberian_north_america_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+iberian_south_america_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+scandinavian_central_america_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+scandinavian_north_america_superregion_culture = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_animist = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_arab_pagan = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_arian = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_aztec_reformed = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_baltic_pagan_reformed = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_bogomilist = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_cathar = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_catholic = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_catholic_heresy = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_coptic = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_druidist = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_druze = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_finnish_pagan_reformed = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_fraticelli = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_gelugpa = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_hellenic_pagan = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_hindu = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_hurufi = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_hussite = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_ibadi = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_iconoclast = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_inca_reformed = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_inti = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_jain = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_jewish = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_jewish_heresy = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_karaite = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_kemetic = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_kharijite = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_lollard = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_mahayana = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_manichean = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_mayan = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_mazdaki = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_messalian = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_monophysite = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_monothelite = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_mormon = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_muism = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_nahuatl = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_nestorian = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_noreligion = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_norse_pagan_reformed = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_orthodox = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_orthodox_heresy = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_paulician = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_pre_schism = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_protestant = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_protestant_heresy = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_samaritan = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_shamanism = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_shiite = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_shiite_heresy = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_shinto = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_sikh = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_slavic_pagan_reformed = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_sunni = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_sunni_heresy = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_tengri_pagan_reformed = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_theravada = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_tibet_bon = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_totemism = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_waldensian = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_west_african_pagan_reformed = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_yazidi = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_zikri = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_zoroastrian = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_zoroastrian_heresy = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_zun_pagan_reformed = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
 }
