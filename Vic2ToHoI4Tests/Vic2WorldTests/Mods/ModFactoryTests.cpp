@@ -3,29 +3,33 @@
 
 
 
-TEST(Vic2World_Mods_ModFactoryTests, NameDefaultsToBlank)
+TEST(Vic2World_Mods_ModFactoryTests, NameMissingCausesException)
 {
-	const auto mod = Vic2::Mod::Factory{}.getMod("Vic2/Mod/EmptyModFile.mod", "./");
-	ASSERT_TRUE(mod->getName().empty());
+	ASSERT_THROW(Vic2::Mod::Factory{}.getMod("EmptyModFile.mod", "./Vic2/Mod"), std::runtime_error);
 }
 
 
 TEST(Vic2World_Mods_ModFactoryTests, NameCanBeSet)
 {
-	const auto mod = Vic2::Mod::Factory{}.getMod("Vic2/Mod/Test.mod", "./");
+	const auto mod = Vic2::Mod::Factory{}.getMod("Test.mod", "./Vic2/Mod");
 	ASSERT_EQ("Test Mod", mod->getName());
 }
 
 
-TEST(Vic2World_Mods_ModFactoryTests, DirectoryDefaultsToBlank)
+TEST(Vic2World_Mods_ModFactoryTests, DirectoryUnspecifiedThrowsException)
 {
-	const auto mod = Vic2::Mod::Factory{}.getMod("Vic2/Mod/EmptyModFile.mod", "./");
-	ASSERT_TRUE(mod->getDirectory().empty());
+	ASSERT_THROW(Vic2::Mod::Factory{}.getMod("EmptyModFile.mod", "./Vic2/Mod"), std::runtime_error);
+}
+
+
+TEST(Vic2World_Mods_ModFactoryTests, DirectoryMissingThrowsException)
+{
+	ASSERT_THROW(Vic2::Mod::Factory{}.getMod("EmptyModFile.mod", "./Vic2/Mod"), std::runtime_error);
 }
 
 
 TEST(Vic2World_Mods_ModFactoryTests, DirectoryCanBeSet)
 {
-	const auto mod = Vic2::Mod::Factory{}.getMod("Vic2/Mod/Test.mod", "./");
+	const auto mod = Vic2::Mod::Factory{}.getMod("Test.mod", "./Vic2/Mod");
 	ASSERT_EQ("test_directory", mod->getDirectory());
 }

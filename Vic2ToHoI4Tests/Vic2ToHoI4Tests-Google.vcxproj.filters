@@ -1306,6 +1306,9 @@
     <Filter Include="Vic2WorldTests\Mods">
       <UniqueIdentifier>{e1e9456a-3556-4a2b-8326-b7151789a6c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TestFiles\Mods">
+      <UniqueIdentifier>{255ad4b3-2739-44bd-bff1-e462fa70c6df}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1400,12 +1403,6 @@
     <CopyFileToFolders Include="TestFiles\operations_to_update.txt">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Test.mod">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\EmptyModFile.mod">
-      <Filter>TestFiles</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\v2gameMacApp">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
@@ -1414,6 +1411,21 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\v2gameMacOS">
       <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\EmptyModFile.mod">
+      <Filter>TestFiles\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\Test.mod">
+      <Filter>TestFiles\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\DirectoryMissing.mod">
+      <Filter>TestFiles\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\DirectoryUnspecified.mod">
+      <Filter>TestFiles\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\dummy.txt">
+      <Filter>TestFiles\Mods</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

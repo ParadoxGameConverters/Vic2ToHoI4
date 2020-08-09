@@ -1,5 +1,6 @@
 #include "ModFactory.h"
 #include "ParserHelpers.h"
+#include "OSCompatibilityLayer.h"
 
 
 
@@ -20,5 +21,17 @@ std::unique_ptr<Vic2::Mod> Vic2::Mod::Factory::getMod(const std::string& modFile
 {
 	mod = std::make_unique<Mod>();
 	parseFile(Vic2ModDir + "/" + modFile);
+	if (mod->name.empty())
+	{
+		throw std::runtime_error("The mod defined by " + modFile + " has no name.");
+	}
+	if (mod->directory.empty())
+	{
+		throw std::runtime_error(mod->name + " specifies no folder.");
+	}
+	if (!Utils::DoesFolderExist(Vic2ModDir + "/" + mod->directory))
+	{
+		throw std::runtime_error(mod->name + "'s folder is missing.");
+	}
 	return std::move(mod);
 }

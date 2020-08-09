@@ -419,7 +419,19 @@
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/HoI4Linux/map</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Test.mod">
+    <CopyFileToFolders Include="TestFiles\Mods\EmptyModFile.mod">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\Test.mod">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\DirectoryMissing.mod">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\DirectoryUnspecified.mod">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
     </CopyFileToFolders>
@@ -506,12 +518,6 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="TestFiles\EmptyModFile.mod">
-      <FileType>Document</FileType>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
-    </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
     <CopyFileToFolders Include="TestFiles\v2gameMacApp">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2MacApp/Victoria 2 - Heart Of Darkness.app/</DestinationFolders>
@@ -527,6 +533,11 @@
     <CopyFileToFolders Include="TestFiles\v2gameMacOS">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/somethingWithMacOS/MacOS/</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Mods\dummy.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod/test_directory</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />
