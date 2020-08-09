@@ -5,6 +5,7 @@ rm -r "Release-Linux/blankMod"
 cp -r "Vic2ToHoI4/Data_Files/blankMod" "Release-Linux/blankMod"
 
 # **Copy data files**
+mkdir "Release-Linux/Data_Files"
 mkdir "Release-Linux/Data_Files/CodenamesOperatives"
 cp "Vic2ToHoI4/Data_Files/ai_peaces.txt" "Release-Linux/ai_peaces.txt"
 cp "Vic2ToHoI4/Data_Files/CodenamesOperatives/RME_operative_codenames.txt" "Release-Linux/Data_Files/CodenamesOperatives/RME_operative_codenames.txt"
