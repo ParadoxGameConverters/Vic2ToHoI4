@@ -2,7 +2,7 @@
 #include "ParserHelpers.h"
 
 
-#pragma optimize("", off)
+
 HoI4::OperativeNamesSet::Details::Details()
 {
 	registerKeyword("name", [this](const std::string& unused, std::istream& theStream)

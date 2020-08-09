@@ -17,7 +17,7 @@
 # and pasting it by replacing "default" with the appropriate mod name
 #
 # For example :
-# PDM = {
+# "POPs of Darkness" = {
 #	map = {
 #		...
 #	}
@@ -769,7 +769,7 @@ default = {
 	}
 }
 
-PDM = {
+"POPs of Darkness" = {
 	unit_map = {
 
 		link = {

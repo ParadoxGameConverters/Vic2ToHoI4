@@ -1049,6 +1049,15 @@
     <ClCompile Include="HoI4WorldTests\Operations\OperationFactoryTests.cpp">
       <Filter>HoI4WorldTests\Operations</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Mods\ModFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Mods</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Mods\ModBuilderTests.cpp">
+      <Filter>Vic2WorldTests\Mods</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Mods\ModFactoryTests.cpp">
+      <Filter>Vic2WorldTests\Mods</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1291,6 +1300,12 @@
     <Filter Include="HoI4WorldTests\Operations">
       <UniqueIdentifier>{bd1f6857-8d52-41ff-8325-f0417e78c69d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Mods">
+      <UniqueIdentifier>{a87b1b5f-ef7e-4c38-aa1e-14e090bc6b85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\Mods">
+      <UniqueIdentifier>{e1e9456a-3556-4a2b-8326-b7151789a6c1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1383,6 +1398,12 @@
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\operations_to_update.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Test.mod">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Vic2WorldTests\Mods\EmptyModFile.mod">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
   </ItemGroup>

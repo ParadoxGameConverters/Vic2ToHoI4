@@ -3,6 +3,7 @@
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 #include "StringUtils.h"
+#include "V2World/Mods/ModFactory.h"
 #include <fstream>
 #include <vector>
 
@@ -61,15 +62,10 @@ Configuration::Factory::Factory()
 
 		Log(LogLevel::Info) << "\tVictoria 2 mod path is " << configuration->Vic2ModPath;
 	});
-	registerKeyword("Vic2Mods", [this](const std::string& unused, std::istream& theStream) {
-		std::string line;
-		std::getline(theStream, line);
-		line = line.substr(line.find_first_of("\""), line.length());
-		line = stringutils::remQuotes(line);
-		std::stringstream lineStream;
-		lineStream << line;
-		const commonItems::stringList modsStrings(lineStream);
-		configuration->Vic2Mods = modsStrings.getStrings();
+	registerKeyword("selectedMods", [this](const std::string& unused, std::istream& theStream) {
+		const auto& theList = commonItems::stringList{theStream}.getStrings();
+		modFileNames.insert(theList.begin(), theList.end());
+		Log(LogLevel::Info) << modFileNames.size() << " mods selected by configuration. Deselected mods will be ignored.";
 	});
 	registerKeyword("force_multiplier", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleDouble factorValue(theStream);
@@ -171,6 +167,7 @@ std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const
 	configuration = std::make_unique<Configuration>();
 	parseFile(filename);
 	setOutputName(configuration->inputFile);
+	importMods();
 
 	return std::move(configuration);
 }
@@ -182,6 +179,7 @@ std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(std::
 	configuration = std::make_unique<Configuration>();
 	parseStream(theStream);
 	setOutputName(configuration->inputFile);
+	importMods();
 
 	return std::move(configuration);
 }
@@ -228,4 +226,15 @@ void Configuration::Factory::setOutputName(const std::string& V2SaveFileName)
 
 	Log(LogLevel::Info) << "Using output name " << outputName;
 	configuration->outputName = outputName;
+}
+
+
+void Configuration::Factory::importMods()
+{
+	Vic2::Mod::Factory modFactory;
+	for (const auto& modFileName: modFileNames)
+	{
+		auto mod = modFactory.getMod(modFileName, configuration->Vic2ModPath);
+		configuration->Vic2Mods.push_back(std::move(*mod));
+	}
 }

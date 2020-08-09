@@ -270,32 +270,12 @@ TEST(ConfigurationTests, Vic2ModsDefaultsToEmpty)
 TEST(ConfigurationTests, Vic2ModsCanBeSet)
 {
 	std::stringstream input;
-	input << R"(Vic2Mods = "Mod")";
+	input << R"(Vic2ModPath = "./")";
+	input << R"(selectedMods = "Test.mod")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(1, theConfiguration->getVic2Mods().size());
-	ASSERT_EQ("Mod", theConfiguration->getVic2Mods()[0]);
-}
-
-TEST(ConfigurationTests, Vic2ModsCanBeSetWithDoubleQuotedMod)
-{
-	std::stringstream input;
-	input << R"(Vic2Mods = ""Mod"")";
-	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
-
-	ASSERT_EQ(1, theConfiguration->getVic2Mods().size());
-	ASSERT_EQ("Mod", theConfiguration->getVic2Mods()[0]);
-}
-
-TEST(ConfigurationTests, Vic2ModsCanBeSetWithMultipleMods)
-{
-	std::stringstream input;
-	input << R"(Vic2Mods = ""Mod One" Mod2")";
-	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
-
-	ASSERT_EQ(2, theConfiguration->getVic2Mods().size());
-	ASSERT_EQ("Mod One", theConfiguration->getVic2Mods()[0]);
-	ASSERT_EQ("Mod2", theConfiguration->getVic2Mods()[1]);
+	ASSERT_EQ("Test Mod", theConfiguration->getVic2Mods()[0].getName());
 }
 
 

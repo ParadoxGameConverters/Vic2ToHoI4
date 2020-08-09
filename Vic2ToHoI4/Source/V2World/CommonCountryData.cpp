@@ -7,7 +7,7 @@
 
 
 Vic2::commonCountryData::commonCountryData(const std::string& filename,
-	 const std::string& mod,
+	 const std::optional<Mod>& mod,
 	 const Configuration& theConfiguration)
 {
 	registerKeyword("color", [this](const std::string& unused, std::istream& theStream) {
@@ -42,9 +42,9 @@ Vic2::commonCountryData::commonCountryData(const std::string& filename,
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	bool parsedFile = false;
-	if (!mod.empty())
+	if (mod)
 	{
-		std::string file = theConfiguration.getVic2Path() + "/mod/" + mod + "/common/countries/" + filename;
+		std::string file = theConfiguration.getVic2Path() + "/mod/" + mod->getDirectory() + "/common/countries/" + filename;
 		if (Utils::DoesFileExist(file))
 		{
 			parseFile(file);

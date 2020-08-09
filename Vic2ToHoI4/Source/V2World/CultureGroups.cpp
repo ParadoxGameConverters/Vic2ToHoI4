@@ -48,10 +48,10 @@ void Vic2::cultureGroups::init(const Configuration& theConfiguration)
 
 	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
-		if (Utils::DoesFileExist(theConfiguration.getVic2ModPath() + "/" + mod + "/common/cultures.txt"))
+		if (Utils::DoesFileExist(theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/common/cultures.txt"))
 		{
-			Log(LogLevel::Info) << "\tReading mod cultures from " << mod;
-			parseFile((theConfiguration.getVic2ModPath() + "/" + mod + "/common/cultures.txt"));
+			Log(LogLevel::Info) << "\tReading mod cultures from " << mod.getName();
+			parseFile((theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/common/cultures.txt"));
 		}
 	}
 

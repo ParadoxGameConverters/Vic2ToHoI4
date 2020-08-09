@@ -1,14 +1,16 @@
-#include "gtest/gtest.h"
 #include "../Vic2ToHoI4/Source/HOI4World/MilitaryMappings/AllMilitaryMappings.h"
+#include "../Vic2ToHoI4/Source/V2World/Mods/ModBuilder.h"
+#include "gtest/gtest.h"
 #include <sstream>
+
 
 
 class HoI4World_MilitaryMappings_allMilitaryMappingsTests: public testing::Test
 {
-	protected:
-		HoI4World_MilitaryMappings_allMilitaryMappingsTests();
+  protected:
+	HoI4World_MilitaryMappings_allMilitaryMappingsTests();
 
-		std::unique_ptr<HoI4::allMilitaryMappings> allTheMappings;
+	std::unique_ptr<HoI4::allMilitaryMappings> allTheMappings;
 };
 
 
@@ -30,7 +32,7 @@ HoI4World_MilitaryMappings_allMilitaryMappingsTests::HoI4World_MilitaryMappings_
 
 TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getDefaultMappingsWithNoMods)
 {
-	const std::vector<std::string> mods;
+	const std::vector<Vic2::Mod> mods;
 	const auto& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("default"), specificMappings.getMappingsName());
 }
@@ -38,7 +40,8 @@ TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getDefaultMappingsWi
 
 TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getDefaultMappingsWithInvalidMod)
 {
-	const std::vector<std::string> mods = { "NotAMod" };
+	std::vector<Vic2::Mod> mods;
+	mods.push_back(*Vic2::Mod::Builder{}.setName("NotAMod").build());
 	const auto& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("default"), specificMappings.getMappingsName());
 }
@@ -46,7 +49,8 @@ TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getDefaultMappingsWi
 
 TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getPDMMappingsWithPDM)
 {
-	const std::vector<std::string> mods = { "PDM" };
+	std::vector<Vic2::Mod> mods;
+	mods.push_back(*Vic2::Mod::Builder{}.setName("PDM").build());
 	const auto& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("PDM"), specificMappings.getMappingsName());
 }

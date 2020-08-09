@@ -4,6 +4,8 @@
 
 
 #include "Parser.h"
+#include "V2World/Mods/Mod.h"
+#include <set>
 #include <string>
 #include <vector>
 
@@ -54,7 +56,8 @@ class Configuration
 	std::string HoI4Path;
 	std::string Vic2Path;
 	std::string Vic2ModPath;
-	std::vector<std::string> Vic2Mods;
+	std::vector<Vic2::Mod> Vic2Mods;
+
 	float forceMultiplier = 1.0f;
 	float manpowerFactor = 1.0f;
 	float industrialShapeFactor = 0.0f;
@@ -79,8 +82,11 @@ class Configuration::Factory: commonItems::parser
 
   private:
 	void setOutputName(const std::string& V2SaveFileName);
+	void importMods();
 
 	std::unique_ptr<Configuration> configuration;
+
+	std::set<std::string> modFileNames;
 };
 
 
@@ -105,7 +111,7 @@ class Configuration::Builder
 		configuration->Vic2ModPath = std::move(Vic2ModPath);
 		return *this;
 	}
-	Builder& addVic2Mod(std::string Vic2Mod)
+	Builder& addVic2Mod(Vic2::Mod Vic2Mod)
 	{
 		configuration->Vic2Mods.push_back(std::move(Vic2Mod));
 		return *this;

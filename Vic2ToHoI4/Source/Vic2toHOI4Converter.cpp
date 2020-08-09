@@ -44,10 +44,10 @@ void checkMods(const Configuration& theConfiguration)
 
 	for (const auto& expectedMod: theConfiguration.getVic2Mods())
 	{
-		Log(LogLevel::Info) << "\tExpecting a mod with folder name " << expectedMod;
-		if (!Utils::DoesFolderExist(theConfiguration.getVic2Path() + "/mod/" + expectedMod))
+		Log(LogLevel::Info) << "\tExpecting a mod with folder name " << expectedMod.getName();
+		if (!Utils::DoesFolderExist(theConfiguration.getVic2Path() + "/mod/" + expectedMod.getDirectory()))
 		{
-			throw std::runtime_error("Could not find expected mod folder " + expectedMod);
+			throw std::runtime_error("Could not find expected mod folder " + expectedMod.getDirectory());
 		}
 	}
 }

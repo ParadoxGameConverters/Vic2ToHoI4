@@ -24,7 +24,7 @@ std::list<std::string> Vic2::inventions::getInventionFiles(const Configuration& 
 
 	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
-		std::string modInventionsPath = theConfiguration.getVic2ModPath() + "/" + mod + "/inventions/";
+		std::string modInventionsPath = theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/inventions/";
 		if (Utils::DoesFolderExist(modInventionsPath))
 		{
 			auto modTechFiles = Utils::GetAllFilesInFolder(modInventionsPath);

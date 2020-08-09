@@ -1,4 +1,5 @@
 #include "../../../Vic2ToHoI4/Source/Configuration.h"
+#include "../../../Vic2ToHoI4/Source/V2World/Mods/ModBuilder.h"
 #include "../../../Vic2ToHoI4/Source/V2World/States/StateDefinitionsFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
@@ -35,7 +36,10 @@ TEST(Vic2World_States_StateDefinitionsFactoryTests, StateCapitalsAreImported)
 
 TEST(Vic2World_States_StateDefinitionsFactoryTests, ProvincesInStateAreImportedFromMod)
 {
-	const auto configuration = Configuration::Builder{}.setVic2ModPath("./mod").addVic2Mod("test_mod").build();
+	const auto configuration = Configuration::Builder{}
+											 .setVic2ModPath("./mod")
+											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("test_mod").build())
+											 .build();
 	const auto stateDefinitions = Vic2::StateDefinitions::Factory{}.getStateDefinitions(*configuration);
 
 	const std::set<int> expectedProvinces{4, 5, 6};
@@ -45,7 +49,10 @@ TEST(Vic2World_States_StateDefinitionsFactoryTests, ProvincesInStateAreImportedF
 
 TEST(Vic2World_States_StateDefinitionsFactoryTests, StateIdsAreImportedFromMod)
 {
-	const auto configuration = Configuration::Builder{}.setVic2ModPath("./mod").addVic2Mod("test_mod").build();
+	const auto configuration = Configuration::Builder{}
+											 .setVic2ModPath("./mod")
+											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("test_mod").build())
+											 .build();
 	const auto stateDefinitions = Vic2::StateDefinitions::Factory{}.getStateDefinitions(*configuration);
 
 	ASSERT_EQ("MOD_STATE", stateDefinitions->getStateID(4));
@@ -54,7 +61,10 @@ TEST(Vic2World_States_StateDefinitionsFactoryTests, StateIdsAreImportedFromMod)
 
 TEST(Vic2World_States_StateDefinitionsFactoryTests, StateCapitalsAreImportedFromMod)
 {
-	const auto configuration = Configuration::Builder{}.setVic2ModPath("./mod").addVic2Mod("test_mod").build();
+	const auto configuration = Configuration::Builder{}
+											 .setVic2ModPath("./mod")
+											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("test_mod").build())
+											 .build();
 	const auto stateDefinitions = Vic2::StateDefinitions::Factory{}.getStateDefinitions(*configuration);
 
 	ASSERT_EQ(4, stateDefinitions->getCapitalProvince("MOD_STATE"));
@@ -63,7 +73,10 @@ TEST(Vic2World_States_StateDefinitionsFactoryTests, StateCapitalsAreImportedFrom
 
 TEST(Vic2World_States_StateDefinitionsFactoryTests, VanillaProvincesInStateAreNotImportedIfModImported)
 {
-	const auto configuration = Configuration::Builder{}.setVic2ModPath("./mod").addVic2Mod("test_mod").build();
+	const auto configuration = Configuration::Builder{}
+											 .setVic2ModPath("./mod")
+											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("test_mod").build())
+											 .build();
 	const auto stateDefinitions = Vic2::StateDefinitions::Factory{}.getStateDefinitions(*configuration);
 
 	const std::set<int> expectedProvinces{};
@@ -73,7 +86,10 @@ TEST(Vic2World_States_StateDefinitionsFactoryTests, VanillaProvincesInStateAreNo
 
 TEST(Vic2World_States_StateDefinitionsFactoryTests, VanillaStateIdsAreNotImportedIfModImported)
 {
-	const auto configuration = Configuration::Builder{}.setVic2ModPath("./mod").addVic2Mod("test_mod").build();
+	const auto configuration = Configuration::Builder{}
+											 .setVic2ModPath("./mod")
+											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("test_mod").build())
+											 .build();
 	const auto stateDefinitions = Vic2::StateDefinitions::Factory{}.getStateDefinitions(*configuration);
 
 	ASSERT_EQ(std::nullopt, stateDefinitions->getStateID(1));
@@ -82,7 +98,10 @@ TEST(Vic2World_States_StateDefinitionsFactoryTests, VanillaStateIdsAreNotImporte
 
 TEST(Vic2World_States_StateDefinitionsFactoryTests, VanillaStateCapitalsAreNotImportedIfModImported)
 {
-	const auto configuration = Configuration::Builder{}.setVic2ModPath("./mod").addVic2Mod("test_mod").build();
+	const auto configuration = Configuration::Builder{}
+											 .setVic2ModPath("./mod")
+											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("test_mod").build())
+											 .build();
 	const auto stateDefinitions = Vic2::StateDefinitions::Factory{}.getStateDefinitions(*configuration);
 
 	ASSERT_EQ(std::nullopt, stateDefinitions->getCapitalProvince("VANILLA_STATE"));
