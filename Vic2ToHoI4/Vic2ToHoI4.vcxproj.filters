@@ -1739,6 +1739,9 @@
     <ClInclude Include="Source\V2World\Provinces\ProvinceFactory.h">
       <Filter>Vic2World\Provinces</Filter>
     </ClInclude>
+    <ClInclude Include="Source\V2World\Provinces\ProvinceBuilder.h">
+      <Filter>Vic2World\Provinces</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\ai_peaces.txt">

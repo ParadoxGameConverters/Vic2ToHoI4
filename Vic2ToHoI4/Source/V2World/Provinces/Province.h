@@ -18,6 +18,7 @@ namespace Vic2
 class Province
 {
   public:
+	class Builder;
 	class Factory;
 	Province() = default;
 
