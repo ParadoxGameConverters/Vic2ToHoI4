@@ -72,6 +72,7 @@ file(GLOB OUTHOI4_STATES_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/States/*.cpp")
 file(GLOB OUTHOI4_VERSION "${PROJECT_SOURCE_DIR}/OutHoi4/Version/*.cpp")
 file(GLOB VIC2WORLD_SOURCES "${PROJECT_SOURCE_DIR}/V2World/*.cpp")
 file(GLOB VIC2WORLD_ISSUES_SOURCES "${PROJECT_SOURCE_DIR}/V2World/Issues/*.cpp")
+set(VIC2WORLD_MODS_SOURCES ${VIC2WORLD_MODS_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Mods/ModFactory.cpp")
 file(GLOB VIC2WORLD_POPS_SOURCES "${PROJECT_SOURCE_DIR}/V2World/Pops/*.cpp")
 file(GLOB VIC2WORLD_POPS_SOURCES "${PROJECT_SOURCE_DIR}/V2World/Pops/*.cpp")
 file(GLOB VIC2WORLD_STATES_SOURCES "${PROJECT_SOURCE_DIR}/V2World/States/*.cpp")
@@ -149,6 +150,7 @@ add_executable(
 	${OUTHOI4_VERSION}
 	${VIC2WORLD_SOURCES}
 	${VIC2WORLD_ISSUES_SOURCES}
+	${VIC2WORLD_MODS_SOURCES}
 	${VIC2WORLD_POPS_SOURCES}
 	${VIC2WORLD_STATES_SOURCES}
 	${VIC2WORLD_WARS_SOURCES}
@@ -190,6 +192,8 @@ file(GLOB HOI4WORLD_SHIP_TYPES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HOI4WorldTests/
 file(GLOB HOI4WORLD_STATES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HOI4WorldTests/States/*.cpp")
 file(GLOB MAPPER_TESTS_SOURCES "${TEST_SOURCE_DIR}/MapperTests/*.cpp")
 file(GLOB VIC2WORLD_TESTS_SOURCES "${TEST_SOURCE_DIR}/Vic2WorldTests/*.cpp")
+set(VIC2WORLD_MODS_TESTS_SOURCES ${VIC2WORLD_MODS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Mods/ModBuilderTests.cpp")
+set(VIC2WORLD_MODS_TESTS_SOURCES ${VIC2WORLD_MODS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Mods/ModFactoryTests.cpp")
 file(GLOB VIC2WORLD_POPS_TESTS_SOURCES "${TEST_SOURCE_DIR}/Vic2WorldTests/Pops/*.cpp")
 file(GLOB VIC2WORLD_STATES_TESTS_SOURCES "${TEST_SOURCE_DIR}/Vic2WorldTests/States/*.cpp")
 
@@ -253,6 +257,7 @@ add_executable(
 	${OUTHOI4_VERSION}
 	${VIC2WORLD_SOURCES}
 	${VIC2WORLD_ISSUES_SOURCES}
+	${VIC2WORLD_MODS_SOURCES}
 	${VIC2WORLD_POPS_SOURCES}
 	${VIC2WORLD_STATES_SOURCES}
 	${VIC2WORLD_WARS_SOURCES}
@@ -281,6 +286,7 @@ add_executable(
 	${HOI4WORLD_STATES_TESTS_SOURCES}
 	${MAPPER_TESTS_SOURCES}
 	${VIC2WORLD_TESTS_SOURCES}
+	${VIC2WORLD_MODS_TESTS_SOURCES}
 	${VIC2WORLD_POPS_TESTS_SOURCES}
 	${VIC2WORLD_STATES_TESTS_SOURCES}
 	${COMMON_SOURCES}
@@ -293,6 +299,7 @@ set_target_properties( Vic2ToHoi4ConverterTests
 configure_file("Vic2ToHoI4Tests/TestFiles/blank_operative_codenames.txt" "${TEST_OUTPUT_DIRECTORY}/common/units/codenames_operatives/blank_operative_codenames.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/blank_operations.txt" "${TEST_OUTPUT_DIRECTORY}/blank_operations/common/operations/00_operations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/definition.csv" "${TEST_OUTPUT_DIRECTORY}/HoI4Linux/map/definition.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/EmptyModFile.mod" "${TEST_OUTPUT_DIRECTORY}/EmptyModFile.mod" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/EmptyOccupationLaws.txt" "${TEST_OUTPUT_DIRECTORY}/EmptyOccupationLaws/common/occupation_laws/occupation_laws.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/GameRules.txt" "${TEST_OUTPUT_DIRECTORY}/GameRules.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/GameRulesEmpty.txt" "${TEST_OUTPUT_DIRECTORY}/GameRulesEmpty.txt" COPYONLY)
@@ -304,6 +311,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/OccupationLaws.txt" "${TEST_OUTPUT_DIR
 configure_file("Vic2ToHoI4Tests/TestFiles/OperativeNamesMappings.txt" "${TEST_OUTPUT_DIRECTORY}/DataFiles/OperativeNamesMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/operations.txt" "${TEST_OUTPUT_DIRECTORY}/operations/common/operations/00_operations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/operations_to_update.txt" "${TEST_OUTPUT_DIRECTORY}/operationsToUpdate/common/operations/00_operations.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Test.mod" "${TEST_OUTPUT_DIRECTORY}/Test.mod" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game" "${TEST_OUTPUT_DIRECTORY}/Vic2Linux/v2game" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game.exe" "${TEST_OUTPUT_DIRECTORY}/Vic2Windows/v2game.exe" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/vic2_mod_regions.txt" "${TEST_OUTPUT_DIRECTORY}/mod/test_mod/map/region.txt" COPYONLY)
