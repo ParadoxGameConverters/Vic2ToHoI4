@@ -25,6 +25,10 @@ HoI4World_MilitaryMappings_allMilitaryMappingsTests::HoI4World_MilitaryMappings_
 	input << "\tunit_map = {}\n";
 	input << "\tmtg_unit_map = {}\n";
 	input << "}\n";
+	input << "\"POPs of Darkness\" = {\n";
+	input << "\tunit_map = {}\n";
+	input << "\tmtg_unit_map = {}\n";
+	input << "}\n";
 	allTheMappings = std::make_unique<HoI4::allMilitaryMappings>(input);
 }
 
@@ -47,10 +51,19 @@ TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getDefaultMappingsWi
 }
 
 
-TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getPDMMappingsWithPDM)
+TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getModMappingsWithSimpleName)
 {
 	std::vector<Vic2::Mod> mods;
 	mods.push_back(*Vic2::Mod::Builder{}.setName("PDM").build());
 	const auto& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("PDM"), specificMappings.getMappingsName());
+}
+
+
+TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getModMappingsWithQuotedName)
+{
+	std::vector<Vic2::Mod> mods;
+	mods.push_back(*Vic2::Mod::Builder{}.setName("POPs of Darkness").build());
+	const auto& specificMappings = allTheMappings->getMilitaryMappings(mods);
+	ASSERT_EQ(std::string("POPs of Darkness"), specificMappings.getMappingsName());
 }
