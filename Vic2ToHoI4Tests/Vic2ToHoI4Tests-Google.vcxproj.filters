@@ -1403,7 +1403,7 @@
     <CopyFileToFolders Include="TestFiles\Test.mod">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Vic2WorldTests\Mods\EmptyModFile.mod">
+    <CopyFileToFolders Include="TestFiles\EmptyModFile.mod">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
   </ItemGroup>

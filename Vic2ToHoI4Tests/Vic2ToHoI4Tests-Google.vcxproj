@@ -422,9 +422,6 @@
     <CopyFileToFolders Include="TestFiles\Test.mod">
       <FileType>Document</FileType>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Vic2WorldTests\Mods\EmptyModFile.mod">
-      <FileType>Document</FileType>
-    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.h" />
@@ -505,6 +502,11 @@
     <CopyFileToFolders Include="TestFiles\operations_to_update.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/operationsToUpdate/common/operations/</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">00_operations%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\EmptyModFile.mod">
+      <FileType>Document</FileType>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />
