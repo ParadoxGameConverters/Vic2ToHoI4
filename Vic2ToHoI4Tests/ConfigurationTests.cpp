@@ -300,7 +300,10 @@ TEST(ConfigurationTests, Vic2ModsCanBeSet)
 {
 	std::stringstream input;
 	input << R"(Vic2ModPath = "./Vic2/Mod")";
-	input << R"(selectedMods = { "Test.mod" })";
+	input << "selectedMods = { \n";
+	input << "\t\"Test.mod\"\n";
+	input << "\t\"NonExistentFile.mod\"\n";
+	input << "}";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(1, theConfiguration->getVic2Mods().size());

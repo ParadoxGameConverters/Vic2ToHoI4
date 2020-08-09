@@ -210,7 +210,10 @@ void Configuration::Factory::importMods()
 	Vic2::Mod::Factory modFactory;
 	for (const auto& modFileName: modFileNames)
 	{
-		auto mod = modFactory.getMod(modFileName, configuration->Vic2ModPath);
-		configuration->Vic2Mods.push_back(std::move(*mod));
+		if (Utils::DoesFileExist(configuration->Vic2ModPath + "/" + modFileName))
+		{
+			auto mod = modFactory.getMod(modFileName, configuration->Vic2ModPath);
+			configuration->Vic2Mods.push_back(std::move(*mod));
+		}
 	}
 }
