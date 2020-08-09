@@ -1,6 +1,6 @@
 #include "AllMilitaryMappings.h"
-#include "../../../../Fronter/commonItems/StringUtils.h"
 #include "ParserHelpers.h"
+#include "StringUtils.h"
 #include <fstream>
 
 
