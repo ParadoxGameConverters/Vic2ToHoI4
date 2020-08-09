@@ -84,10 +84,10 @@ Configuration::Factory::Factory()
 		configuration->industrialShapeFactor = std::clamp(static_cast<float>(factorValue.getDouble()), 0.0f, 1.0f);
 		Log(LogLevel::Info) << "\tIndustrial shape factor: " << configuration->industrialShapeFactor;
 	});
-	registerKeyword("ic_factor", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("factory_factor", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleDouble factorValue(theStream);
-		configuration->icFactor = std::clamp(static_cast<float>(factorValue.getDouble()), 0.0f, 1.0f);
-		Log(LogLevel::Info) << "\tIC factor: " << configuration->icFactor;
+		configuration->factoryFactor = std::clamp(static_cast<float>(factorValue.getDouble()), 0.0f, 1.0f);
+		Log(LogLevel::Info) << "\tFactory factor: " << configuration->factoryFactor;
 	});
 	registerKeyword("ideologies", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString ideologiesOptionString(theStream);

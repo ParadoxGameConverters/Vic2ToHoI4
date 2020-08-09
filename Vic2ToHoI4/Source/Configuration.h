@@ -37,7 +37,7 @@ class Configuration
 	[[nodiscard]] const auto& getForceMultiplier() const { return forceMultiplier; }
 	[[nodiscard]] const auto& getManpowerFactor() const { return manpowerFactor; }
 	[[nodiscard]] const auto& getIndustrialShapeFactor() const { return industrialShapeFactor; }
-	[[nodiscard]] const auto& getIcFactor() const { return icFactor; }
+	[[nodiscard]] const auto& getFactoryFactor() const { return factoryFactor; }
 	[[nodiscard]] const auto& getIdeologiesOptions() const { return ideologiesOptions; }
 	[[nodiscard]] const auto& getSpecifiedIdeologies() const { return specifiedIdeologies; }
 	[[nodiscard]] const auto& getDebug() const { return debug; }
@@ -61,7 +61,7 @@ class Configuration
 	float forceMultiplier = 1.0f;
 	float manpowerFactor = 1.0f;
 	float industrialShapeFactor = 0.0f;
-	float icFactor = 0.1f;
+	float factoryFactor = 0.1f;
 	ideologyOptions ideologiesOptions = ideologyOptions::keep_major;
 	std::vector<std::string> specifiedIdeologies{"neutrality"};
 	bool debug = false;

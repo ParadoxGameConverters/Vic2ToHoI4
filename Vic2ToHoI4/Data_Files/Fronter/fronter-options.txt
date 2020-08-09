@@ -10,13 +10,13 @@ option = {
 }
 
 option = {
-	name = ic_factor
-	displayName = ICFACTOR
-	tooltip = ICFACTORTIP
+	name = factory_factor
+	displayName = FACTORYFACTOR
+	tooltip = FACTORYFACTORTIP
 	textSelector = {	
 		value = "0.1"
 		editable = true
-		tooltip = ICFACTORTIP2
+		tooltip = FACTORYFACTORTIP2
 	}
 }
 

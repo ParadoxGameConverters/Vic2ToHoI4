@@ -455,52 +455,52 @@ TEST(ConfigurationTests, IndustrialShapeFactorFactorMustBeNumeric)
 }
 
 
-TEST(ConfigurationTests, ICFactorDefaultsToOneTenth)
+TEST(ConfigurationTests, FactoryFactorDefaultsToOneTenth)
 {
 	std::stringstream input;
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
-	ASSERT_EQ(0.1f, theConfiguration->getIcFactor());
+	ASSERT_EQ(0.1f, theConfiguration->getFactoryFactor());
 }
 
 
-TEST(ConfigurationTests, ICFactorFactorCanBeSet)
+TEST(ConfigurationTests, FactoryFactorFactorCanBeSet)
 {
 	std::stringstream input;
-	input << R"(ic_factor = "0.5")";
+	input << R"(factory_factor = "0.5")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
-	ASSERT_EQ(0.5f, theConfiguration->getIcFactor());
+	ASSERT_EQ(0.5f, theConfiguration->getFactoryFactor());
 }
 
 
-TEST(ConfigurationTests, ICFactorFactorIsMaximumOne)
+TEST(ConfigurationTests, FactoryFactorFactorIsMaximumOne)
 {
 	std::stringstream input;
-	input << R"(ic_factor = "15.0")";
+	input << R"(factory_factor = "15.0")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
-	ASSERT_EQ(1.0f, theConfiguration->getIcFactor());
+	ASSERT_EQ(1.0f, theConfiguration->getFactoryFactor());
 }
 
 
-TEST(ConfigurationTests, ICFactorFactorIsMinimumZero)
+TEST(ConfigurationTests, FactoryFactorFactorIsMinimumZero)
 {
 	std::stringstream input;
-	input << R"(ic_factor = "-1.0")";
+	input << R"(factory_factor = "-1.0")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
-	ASSERT_EQ(0.0f, theConfiguration->getIcFactor());
+	ASSERT_EQ(0.0f, theConfiguration->getFactoryFactor());
 }
 
 
-TEST(ConfigurationTests, ICFactorFactorMustBeNumeric)
+TEST(ConfigurationTests, FactoryFactorFactorMustBeNumeric)
 {
 	std::stringstream input;
-	input << R"(ic_factor = "abcd")";
+	input << R"(factory_factor = "abcd")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
-	ASSERT_EQ(0.00f, theConfiguration->getIcFactor());
+	ASSERT_EQ(0.00f, theConfiguration->getFactoryFactor());
 }
 
 

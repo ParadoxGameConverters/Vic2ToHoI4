@@ -439,7 +439,7 @@ double HoI4::World::getWorldwideWorkerFactoryRatio(const map<string, double>& wo
 	int defaultFactories = 1201;
 	double deltaIndustry = baseIndustry - defaultFactories;
 	deltaIndustry -= landedCountries.size();
-	double newIndustry = baseIndustry - theConfiguration.getIcFactor() * deltaIndustry;
+	double newIndustry = baseIndustry - theConfiguration.getFactoryFactor() * deltaIndustry;
 	double acutalWorkerFactoryRatio = newIndustry / totalWorldWorkers;
 
 	return acutalWorkerFactoryRatio;
