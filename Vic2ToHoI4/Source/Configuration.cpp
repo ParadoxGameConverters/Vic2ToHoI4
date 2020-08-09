@@ -125,12 +125,12 @@ Configuration::Factory::Factory()
 		if (debugValue.getString() == "yes")
 		{
 			configuration->debug = true;
-			Log(LogLevel::Info) << "\tDebug mode activated";
+			Log(LogLevel::Debug) << "\tDebug mode activated";
 		}
 		else
 		{
 			configuration->debug = false;
-			Log(LogLevel::Info) << "\tDebug mode deactivated";
+			Log(LogLevel::Debug) << "\tDebug mode deactivated";
 		}
 	});
 	registerKeyword("remove_cores", [this](const std::string& unused, std::istream& theStream) {
