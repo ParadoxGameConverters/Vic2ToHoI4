@@ -39,12 +39,12 @@ void checkMods(const Configuration& theConfiguration)
 
 	for (const auto& modFolder: Utils::GetAllSubfolders(theConfiguration.getVic2Path() + "/mod"))
 	{
-		Log(LogLevel::Info) << "\tFound mod with folder name " << modFolder;
+		Log(LogLevel::Info) << "\tFound mod folder with path " << modFolder;
 	}
 
 	for (const auto& expectedMod: theConfiguration.getVic2Mods())
 	{
-		Log(LogLevel::Info) << "\tExpecting a mod with folder name " << expectedMod.getName();
+		Log(LogLevel::Info) << "\tExpecting a mod with name \"" << expectedMod.getName() << "\" and path " << expectedMod.getDirectory();
 		if (!Utils::DoesFolderExist(theConfiguration.getVic2Path() + "/mod/" + expectedMod.getDirectory()))
 		{
 			throw std::runtime_error("Could not find expected mod folder " + expectedMod.getDirectory());
