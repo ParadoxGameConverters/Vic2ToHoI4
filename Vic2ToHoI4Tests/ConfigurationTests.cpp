@@ -212,13 +212,33 @@ TEST(ConfigurationTests, Vic2PathCanBeSetForWindows)
 }
 
 
-TEST(ConfigurationTests, Vic2PathCanBeSet)
+TEST(ConfigurationTests, Vic2PathCanBeSetForLinux)
 {
 	std::stringstream input;
 	input << R"(Vic2directory = "./Vic2Linux")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ("./Vic2Linux", theConfiguration->getVic2Path());
+}
+
+
+TEST(ConfigurationTests, Vic2PathCanBeSetForMacApp)
+{
+	std::stringstream input;
+	input << R"(Vic2directory = "./Vic2MacApp")";
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("./Vic2MacApp", theConfiguration->getVic2Path());
+}
+
+
+TEST(ConfigurationTests, Vic2PathCanBeSetForMac)
+{
+	std::stringstream input;
+	input << R"(Vic2directory = "./somethingWithMacOS/somethingElse/Vic2Path")";
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("./somethingWithMacOS/somethingElse/Vic2Path", theConfiguration->getVic2Path());
 }
 
 

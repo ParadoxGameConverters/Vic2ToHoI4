@@ -314,6 +314,9 @@ configure_file("Vic2ToHoI4Tests/TestFiles/operations_to_update.txt" "${TEST_OUTP
 configure_file("Vic2ToHoI4Tests/TestFiles/Test.mod" "${TEST_OUTPUT_DIRECTORY}/Test.mod" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game" "${TEST_OUTPUT_DIRECTORY}/Vic2Linux/v2game" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game.exe" "${TEST_OUTPUT_DIRECTORY}/Vic2Windows/v2game.exe" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/v2gameMac" "${TEST_OUTPUT_DIRECTORY}/somethingWithMacOS/somethingElse/Vic2Path/v2game" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/v2gameMacApp" "${TEST_OUTPUT_DIRECTORY}/Vic2MacApp/Victoria 2 - Heart Of Darkness.app/v2game" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/v2gameMacOS" "${TEST_OUTPUT_DIRECTORY}/somethingWithMacOS/MacOS/v2game" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/vic2_mod_regions.txt" "${TEST_OUTPUT_DIRECTORY}/mod/test_mod/map/region.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/vic2_vanilla_regions.txt" "${TEST_OUTPUT_DIRECTORY}/map/region.txt" COPYONLY)
 

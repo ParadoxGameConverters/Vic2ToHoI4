@@ -45,7 +45,9 @@ Configuration::Factory::Factory()
 			throw std::runtime_error("No Victoria 2 path was specified in configuration.txt, or the path was invalid");
 		}
 		if (!Utils::DoesFileExist(configuration->Vic2Path + "/v2game.exe") &&
-			 !Utils::DoesFileExist(configuration->Vic2Path + "/v2game"))
+			 !Utils::DoesFileExist(configuration->Vic2Path + "/v2game") &&
+			 !Utils::DoesFolderExist(configuration->Vic2Path + "/Victoria 2 - Heart Of Darkness.app") &&
+			 !Utils::DoesFolderExist(configuration->Vic2Path + "/../../MacOS"))
 		{
 			throw std::runtime_error("The Victoria 2 path specified in configuration.txt does not contain Victoria 2");
 		}
