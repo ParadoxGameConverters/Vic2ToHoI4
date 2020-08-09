@@ -26,7 +26,7 @@ void ConvertV2ToHoI4()
 		 theConfiguration->getOutputName(),
 		 theConfiguration->getDebug(),
 		 theConfiguration->getVic2Mods(),
-		 theConfiguration->getVic2Path(),
+		 theConfiguration->getVic2ModPath(),
 		 *theConfiguration);
 	Log(LogLevel::Progress) << "100%";
 	Log(LogLevel::Info) << "* Conversion complete *";
@@ -39,15 +39,15 @@ void checkMods(const Configuration& theConfiguration)
 
 	for (const auto& modFolder: Utils::GetAllSubfolders(theConfiguration.getVic2Path() + "/mod"))
 	{
-		Log(LogLevel::Info) << "\tFound mod with folder name " << modFolder;
+		Log(LogLevel::Info) << "\tFound mod folder with path " << modFolder;
 	}
 
 	for (const auto& expectedMod: theConfiguration.getVic2Mods())
 	{
-		Log(LogLevel::Info) << "\tExpecting a mod with folder name " << expectedMod;
-		if (!Utils::DoesFolderExist(theConfiguration.getVic2Path() + "/mod/" + expectedMod))
+		Log(LogLevel::Info) << "\tExpecting a mod with name \"" << expectedMod.getName() << "\" and path " << expectedMod.getDirectory();
+		if (!Utils::DoesFolderExist(theConfiguration.getVic2Path() + "/mod/" + expectedMod.getDirectory()))
 		{
-			throw std::runtime_error("Could not find expected mod folder " + expectedMod);
+			throw std::runtime_error("Could not find expected mod folder " + expectedMod.getDirectory());
 		}
 	}
 }

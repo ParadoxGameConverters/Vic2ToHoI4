@@ -1,5 +1,6 @@
 #include "ProvinceMapper.h"
 #include "../../Configuration.h"
+#include "GameVersion.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
@@ -33,9 +34,9 @@ mappers::ProvinceMapper mappers::ProvinceMapper::Parser::initializeMapper(const 
 	auto mapped = false;
 	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
-		if (Utils::DoesFileExist(mod + "_province_mappings.txt"))
+		if (Utils::DoesFileExist(mod.getName() + "_province_mappings.txt"))
 		{
-			parseFile(mod + "_province_mappings.txt");
+			parseFile(mod.getName() + "_province_mappings.txt");
 			mapped = true;
 			break;
 		}

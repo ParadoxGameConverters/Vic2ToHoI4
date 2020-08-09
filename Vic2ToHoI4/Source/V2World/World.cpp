@@ -287,7 +287,8 @@ void Vic2::World::readCountryFiles(const Configuration& theConfiguration)
 
 	for (const auto& vic2Mod: theConfiguration.getVic2Mods())
 	{
-		if (processCountriesDotTxt(theConfiguration.getVic2Path() + "/mod/" + vic2Mod + "/common/countries.txt",
+		if (processCountriesDotTxt(
+				  theConfiguration.getVic2ModPath() + "/" + vic2Mod.getDirectory() + "/common/countries.txt",
 				  vic2Mod,
 				  theConfiguration))
 		{
@@ -296,7 +297,9 @@ void Vic2::World::readCountryFiles(const Configuration& theConfiguration)
 	}
 	if (!countriesDotTxtRead)
 	{
-		if (!processCountriesDotTxt(theConfiguration.getVic2Path() + "/common/countries.txt", "", theConfiguration))
+		if (!processCountriesDotTxt(theConfiguration.getVic2Path() + "/common/countries.txt",
+				  std::nullopt,
+				  theConfiguration))
 		{
 			throw std::runtime_error("Could not open " + theConfiguration.getVic2Path() + "/common/countries.txt");
 		}
@@ -305,7 +308,7 @@ void Vic2::World::readCountryFiles(const Configuration& theConfiguration)
 
 
 bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile,
-	 const std::string& mod,
+	 const std::optional<Vic2::Mod>& mod,
 	 const Configuration& theConfiguration)
 {
 	std::ifstream V2CountriesInput(countryListFile);

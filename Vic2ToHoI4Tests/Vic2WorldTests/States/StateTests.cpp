@@ -6,7 +6,7 @@
 #include <sstream>
 
 
-#pragma optimize("", off)
+
 TEST(Vic2World_States_StateTests, PopulationIsZeroWithNoProvinces)
 {
 	const Vic2::State state;

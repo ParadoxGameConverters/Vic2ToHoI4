@@ -3,8 +3,9 @@
 
 
 
-#include "GameVersion.h"
 #include "Parser.h"
+#include "V2World/Mods/Mod.h"
+#include <set>
 #include <string>
 #include <vector>
 
@@ -24,38 +25,19 @@ class Configuration
 {
   public:
 	class Factory;
-	Configuration(std::string inputFile,
-		 std::string outputName,
-		 std::string HoI4Path,
-		 std::string Vic2Path,
-		 std::vector<std::string> Vic2Mods,
-		 const float forceMultiplier,
-		 const float manpowerFactor,
-		 const float industrialShapeFactor,
-		 const float icFactor,
-		 const ideologyOptions ideologiesOptions,
-		 std::vector<std::string> specifiedIdeologies,
-		 const bool debug,
-		 const bool removeCores,
-		 const bool createFactions):
-		 inputFile(std::move(inputFile)),
-		 outputName(std::move(outputName)), HoI4Path(std::move(HoI4Path)), Vic2Path(std::move(Vic2Path)),
-		 Vic2Mods(std::move(Vic2Mods)), forceMultiplier(forceMultiplier), manpowerFactor(manpowerFactor),
-		 industrialShapeFactor(industrialShapeFactor), icFactor(icFactor), ideologiesOptions(ideologiesOptions),
-		 specifiedIdeologies(std::move(specifiedIdeologies)), debug(debug), removeCores(removeCores),
-		 createFactions(createFactions)
-	{
-	}
+	class Builder;
+	Configuration() = default;
 
 	[[nodiscard]] const auto& getInputFile() const { return inputFile; }
 	[[nodiscard]] const auto& getOutputName() const { return outputName; }
 	[[nodiscard]] const auto& getHoI4Path() const { return HoI4Path; }
 	[[nodiscard]] const auto& getVic2Path() const { return Vic2Path; }
+	[[nodiscard]] const auto& getVic2ModPath() const { return Vic2ModPath; }
 	[[nodiscard]] const auto& getVic2Mods() const { return Vic2Mods; }
 	[[nodiscard]] const auto& getForceMultiplier() const { return forceMultiplier; }
 	[[nodiscard]] const auto& getManpowerFactor() const { return manpowerFactor; }
 	[[nodiscard]] const auto& getIndustrialShapeFactor() const { return industrialShapeFactor; }
-	[[nodiscard]] const auto& getIcFactor() const { return icFactor; }
+	[[nodiscard]] const auto& getFactoryFactor() const { return factoryFactor; }
 	[[nodiscard]] const auto& getIdeologiesOptions() const { return ideologiesOptions; }
 	[[nodiscard]] const auto& getSpecifiedIdeologies() const { return specifiedIdeologies; }
 	[[nodiscard]] const auto& getDebug() const { return debug; }
@@ -69,20 +51,22 @@ class Configuration
 
   private:
 	// set on construction
-	std::string inputFile;
+	std::string inputFile{"input.v2"};
 	std::string outputName;
 	std::string HoI4Path;
 	std::string Vic2Path;
-	std::vector<std::string> Vic2Mods;
-	float forceMultiplier;
-	float manpowerFactor;
-	float industrialShapeFactor;
-	float icFactor;
-	ideologyOptions ideologiesOptions;
-	std::vector<std::string> specifiedIdeologies;
-	bool debug;
-	bool removeCores;
-	bool createFactions;
+	std::string Vic2ModPath;
+	std::vector<Vic2::Mod> Vic2Mods;
+
+	float forceMultiplier = 1.0f;
+	float manpowerFactor = 1.0f;
+	float industrialShapeFactor = 0.0f;
+	float factoryFactor = 0.1f;
+	ideologyOptions ideologiesOptions = ideologyOptions::keep_major;
+	std::vector<std::string> specifiedIdeologies{"neutrality"};
+	bool debug = false;
+	bool removeCores = true;
+	bool createFactions = true;
 
 	// set later
 	unsigned int leaderID = 1000;
@@ -98,21 +82,43 @@ class Configuration::Factory: commonItems::parser
 
   private:
 	void setOutputName(const std::string& V2SaveFileName);
+	void importMods();
 
-	std::string inputFile{"input.v2"};
-	std::string outputName;
-	std::string HoI4Path;
-	std::string Vic2Path;
-	std::vector<std::string> Vic2Mods;
-	float forceMultiplier = 1.0f;
-	float manpowerFactor = 1.0f;
-	float industrialShapeFactor = 0.0f;
-	float icFactor = 0.1f;
-	ideologyOptions ideologiesOptions = ideologyOptions::keep_major;
-	std::vector<std::string> specifiedIdeologies{"neutrality"};
-	bool debug = false;
-	bool removeCores = true;
-	bool createFactions = true;
+	std::unique_ptr<Configuration> configuration;
+
+	std::set<std::string> modFileNames;
+};
+
+
+class Configuration::Builder
+{
+  public:
+	Builder() { configuration = std::make_unique<Configuration>(); }
+	std::unique_ptr<Configuration> build() { return std::move(configuration); }
+
+	Builder& setHoI4Path(std::string HoI4Path)
+	{
+		configuration->HoI4Path = std::move(HoI4Path);
+		return *this;
+	}
+	Builder& setVic2Path(std::string Vic2Path)
+	{
+		configuration->Vic2Path = std::move(Vic2Path);
+		return *this;
+	}
+	Builder& setVic2ModPath(std::string Vic2ModPath)
+	{
+		configuration->Vic2ModPath = std::move(Vic2ModPath);
+		return *this;
+	}
+	Builder& addVic2Mod(Vic2::Mod Vic2Mod)
+	{
+		configuration->Vic2Mods.push_back(std::move(Vic2Mod));
+		return *this;
+	}
+
+  private:
+	std::unique_ptr<Configuration> configuration;
 };
 
 

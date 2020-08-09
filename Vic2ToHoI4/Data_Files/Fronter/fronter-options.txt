@@ -1,15 +1,4 @@
 option = {
-	name = Vic2Mods
-	displayName = VIC2MODS
-	tooltip = VIC2MODSTIP
-	textSelector = {	
-		value = ""
-		editable = true
-		tooltip = VIC2MODSTIP2
-	}
-}
-
-option = {
 	name = industrial_shape_factor
 	displayName = INDUSTRIALSHAPEFACTOR
 	tooltip = INDUSTRIALSHAPEFACTORTIP
@@ -21,13 +10,13 @@ option = {
 }
 
 option = {
-	name = ic_factor
-	displayName = ICFACTOR
-	tooltip = ICFACTORTIP
+	name = factory_factor
+	displayName = FACTORYFACTOR
+	tooltip = FACTORYFACTORTIP
 	textSelector = {	
 		value = "0.1"
 		editable = true
-		tooltip = ICFACTORTIP2
+		tooltip = FACTORYFACTORTIP2
 	}
 }
 

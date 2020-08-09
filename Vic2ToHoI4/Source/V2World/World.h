@@ -4,6 +4,7 @@
 
 
 #include "CultureGroups.h"
+#include "Mods/Mod.h"
 #include "Parser.h"
 #include "Party.h"
 #include "States/StateDefinitions.h"
@@ -73,7 +74,7 @@ class World: commonItems::parser
 
 	void readCountryFiles(const Configuration& theConfiguration);
 	bool processCountriesDotTxt(const std::string& countryListFile,
-		 const std::string& mod,
+		 const std::optional<Vic2::Mod>& mod,
 		 const Configuration& theConfiguration);
 	static bool shouldLineBeSkipped(const std::string& line);
 	static std::string extractCountryFileName(const std::string& countryFileLine);

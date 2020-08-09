@@ -212,13 +212,33 @@ TEST(ConfigurationTests, Vic2PathCanBeSetForWindows)
 }
 
 
-TEST(ConfigurationTests, Vic2PathCanBeSet)
+TEST(ConfigurationTests, Vic2PathCanBeSetForLinux)
 {
 	std::stringstream input;
 	input << R"(Vic2directory = "./Vic2Linux")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ("./Vic2Linux", theConfiguration->getVic2Path());
+}
+
+
+TEST(ConfigurationTests, Vic2PathCanBeSetForMacApp)
+{
+	std::stringstream input;
+	input << R"(Vic2directory = "./Vic2MacApp")";
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("./Vic2MacApp", theConfiguration->getVic2Path());
+}
+
+
+TEST(ConfigurationTests, Vic2PathCanBeSetForMac)
+{
+	std::stringstream input;
+	input << R"(Vic2directory = "./somethingWithMacOS/somethingElse/Vic2Path")";
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("./somethingWithMacOS/somethingElse/Vic2Path", theConfiguration->getVic2Path());
 }
 
 
@@ -240,6 +260,34 @@ TEST(ConfigurationTests, Vic2PathThrowsExceptionOnPathWithoutVic2)
 }
 
 
+TEST(ConfigurationTests, Vic2ModPathDefaultsToEmpty)
+{
+	std::stringstream input;
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_TRUE(theConfiguration->getVic2ModPath().empty());
+}
+
+
+TEST(ConfigurationTests, Vic2ModPathCanBeSet)
+{
+	std::stringstream input;
+	input << R"(Vic2ModPath = "./Vic2/Mod")";
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("./Vic2/Mod", theConfiguration->getVic2ModPath());
+}
+
+
+TEST(ConfigurationTests, Vic2PathThrowsExceptionOnNonExistantPath)
+{
+	std::stringstream input;
+	input << R"(Vic2ModPath = "./Vic2/FakeMod")";
+
+	ASSERT_THROW(Configuration::Factory{}.importConfiguration(input), std::runtime_error);
+}
+
+
 TEST(ConfigurationTests, Vic2ModsDefaultsToEmpty)
 {
 	std::stringstream input;
@@ -251,32 +299,15 @@ TEST(ConfigurationTests, Vic2ModsDefaultsToEmpty)
 TEST(ConfigurationTests, Vic2ModsCanBeSet)
 {
 	std::stringstream input;
-	input << R"(Vic2Mods = "Mod")";
+	input << R"(Vic2ModPath = "./Vic2/Mod")";
+	input << "selectedMods = { \n";
+	input << "\t\"Test.mod\"\n";
+	input << "\t\"NonExistentFile.mod\"\n";
+	input << "}";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_EQ(1, theConfiguration->getVic2Mods().size());
-	ASSERT_EQ("Mod", theConfiguration->getVic2Mods()[0]);
-}
-
-TEST(ConfigurationTests, Vic2ModsCanBeSetWithDoubleQuotedMod)
-{
-	std::stringstream input;
-	input << R"(Vic2Mods = ""Mod"")";
-	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
-
-	ASSERT_EQ(1, theConfiguration->getVic2Mods().size());
-	ASSERT_EQ("Mod", theConfiguration->getVic2Mods()[0]);
-}
-
-TEST(ConfigurationTests, Vic2ModsCanBeSetWithMultipleMods)
-{
-	std::stringstream input;
-	input << R"(Vic2Mods = ""Mod One" Mod2")";
-	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
-
-	ASSERT_EQ(2, theConfiguration->getVic2Mods().size());
-	ASSERT_EQ("Mod One", theConfiguration->getVic2Mods()[0]);
-	ASSERT_EQ("Mod2", theConfiguration->getVic2Mods()[1]);
+	ASSERT_EQ("Test Mod", theConfiguration->getVic2Mods()[0].getName());
 }
 
 
@@ -427,52 +458,52 @@ TEST(ConfigurationTests, IndustrialShapeFactorFactorMustBeNumeric)
 }
 
 
-TEST(ConfigurationTests, ICFactorDefaultsToOneTenth)
+TEST(ConfigurationTests, FactoryFactorDefaultsToOneTenth)
 {
 	std::stringstream input;
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
-	ASSERT_EQ(0.1f, theConfiguration->getIcFactor());
+	ASSERT_EQ(0.1f, theConfiguration->getFactoryFactor());
 }
 
 
-TEST(ConfigurationTests, ICFactorFactorCanBeSet)
+TEST(ConfigurationTests, FactoryFactorFactorCanBeSet)
 {
 	std::stringstream input;
-	input << R"(ic_factor = "0.5")";
+	input << R"(factory_factor = "0.5")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
-	ASSERT_EQ(0.5f, theConfiguration->getIcFactor());
+	ASSERT_EQ(0.5f, theConfiguration->getFactoryFactor());
 }
 
 
-TEST(ConfigurationTests, ICFactorFactorIsMaximumOne)
+TEST(ConfigurationTests, FactoryFactorFactorIsMaximumOne)
 {
 	std::stringstream input;
-	input << R"(ic_factor = "15.0")";
+	input << R"(factory_factor = "15.0")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
-	ASSERT_EQ(1.0f, theConfiguration->getIcFactor());
+	ASSERT_EQ(1.0f, theConfiguration->getFactoryFactor());
 }
 
 
-TEST(ConfigurationTests, ICFactorFactorIsMinimumZero)
+TEST(ConfigurationTests, FactoryFactorFactorIsMinimumZero)
 {
 	std::stringstream input;
-	input << R"(ic_factor = "-1.0")";
+	input << R"(factory_factor = "-1.0")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
-	ASSERT_EQ(0.0f, theConfiguration->getIcFactor());
+	ASSERT_EQ(0.0f, theConfiguration->getFactoryFactor());
 }
 
 
-TEST(ConfigurationTests, ICFactorFactorMustBeNumeric)
+TEST(ConfigurationTests, FactoryFactorFactorMustBeNumeric)
 {
 	std::stringstream input;
-	input << R"(ic_factor = "abcd")";
+	input << R"(factory_factor = "abcd")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
-	ASSERT_EQ(0.00f, theConfiguration->getIcFactor());
+	ASSERT_EQ(0.00f, theConfiguration->getFactoryFactor());
 }
 
 

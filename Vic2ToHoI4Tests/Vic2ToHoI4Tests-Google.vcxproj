@@ -270,6 +270,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\Issues.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\PartiesIssueHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Leader.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Mods\ModFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Party.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\Pop.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\PopFactory.cpp" />
@@ -377,6 +378,8 @@
     <ClCompile Include="Mocks\CountryMapperMock.h" />
     <ClCompile Include="Mocks\TechnologiesMock.h" />
     <ClCompile Include="Mocks\Vic2StateMock.h" />
+    <ClCompile Include="Vic2WorldTests\Mods\ModBuilderTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Mods\ModFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopTests.cpp" />
     <ClCompile Include="Vic2WorldTests\ProvinceTests.cpp" />
@@ -415,6 +418,22 @@
     <CopyFileToFolders Include="TestFiles\definition.csv">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/HoI4Linux/map</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\EmptyModFile.mod">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\Test.mod">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\DirectoryMissing.mod">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\DirectoryUnspecified.mod">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
@@ -496,6 +515,29 @@
     <CopyFileToFolders Include="TestFiles\operations_to_update.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/operationsToUpdate/common/operations/</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">00_operations%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\v2gameMacApp">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2MacApp/Victoria 2 - Heart Of Darkness.app/</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\v2gameMac">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/somethingWithMacOS/somethingElse/Vic2Path</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\v2gameMacOS">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/somethingWithMacOS/MacOS/</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Mods\dummy.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod/test_directory</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

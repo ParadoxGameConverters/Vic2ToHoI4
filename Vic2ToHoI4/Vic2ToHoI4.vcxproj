@@ -353,6 +353,7 @@
     <ClCompile Include="Source\Mappers\TechMapper.cpp" />
     <ClCompile Include="Source\Mappers\VersionParser\VersionParser.cpp" />
     <ClCompile Include="Source\targa.cpp" />
+    <ClCompile Include="Source\V2World\Mods\ModFactory.cpp" />
     <ClCompile Include="Source\V2World\Pops\Pop.cpp" />
     <ClCompile Include="Source\V2World\Pops\PopFactory.cpp" />
     <ClCompile Include="Source\V2World\States\BuildingReader.cpp" />
@@ -635,6 +636,9 @@
     <ClInclude Include="Source\V2World\Issues\Issues.h" />
     <ClInclude Include="Source\V2World\Issues\PartiesIssueHelper.h" />
     <ClInclude Include="Source\V2World\Leader.h" />
+    <ClInclude Include="Source\V2World\Mods\Mod.h" />
+    <ClInclude Include="Source\V2World\Mods\ModBuilder.h" />
+    <ClInclude Include="Source\V2World\Mods\ModFactory.h" />
     <ClInclude Include="Source\V2World\Party.h" />
     <ClInclude Include="Source\V2World\Pops\Pop.h" />
     <ClInclude Include="Source\V2World\Pops\PopFactory.h" />
@@ -684,7 +688,7 @@
     <CopyFileToFolders Include="Data_Files\governmentMapping.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\HPM_province_mappings.txt">
+    <CopyFileToFolders Include="Data_Files\Historical Project Mod_province_mappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\ideologicalAdvisors.txt">

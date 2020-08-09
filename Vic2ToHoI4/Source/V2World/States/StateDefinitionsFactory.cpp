@@ -1,7 +1,7 @@
 #include "StateDefinitionsFactory.h"
-#include "ParserHelpers.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
+#include "ParserHelpers.h"
 
 
 
@@ -37,9 +37,9 @@ std::unique_ptr<Vic2::StateDefinitions> Vic2::StateDefinitions::Factory::getStat
 
 	Log(LogLevel::Info) << "Importing Vic2 states";
 	auto stateMapInitialized = false;
-	for (const auto& itr: theConfiguration.getVic2Mods())
+	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
-		const auto regionFileName = theConfiguration.getVic2Path() + "/mod/" + itr + "/map/region.txt";
+		const auto regionFileName = theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/map/region.txt";
 		if (Utils::DoesFileExist(regionFileName))
 		{
 			parseFile(regionFileName);
