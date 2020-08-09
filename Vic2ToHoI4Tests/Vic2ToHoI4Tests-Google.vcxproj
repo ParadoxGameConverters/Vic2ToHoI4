@@ -421,6 +421,7 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Test.mod">
       <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
@@ -507,6 +508,7 @@
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\EmptyModFile.mod">
       <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>

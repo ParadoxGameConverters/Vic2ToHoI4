@@ -57,7 +57,7 @@ Configuration::Factory::Factory()
 	registerKeyword("Vic2ModPath", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString directoryString(theStream);
 		configuration->Vic2ModPath = directoryString.getString();
-		if (configuration->Vic2ModPath.empty())
+		if (configuration->Vic2ModPath.empty() || !Utils::DoesFolderExist(configuration->Vic2ModPath))
 		{
 			throw std::runtime_error("No Victoria 2 mod path was specified in configuration.txt, or the path was invalid");
 		}

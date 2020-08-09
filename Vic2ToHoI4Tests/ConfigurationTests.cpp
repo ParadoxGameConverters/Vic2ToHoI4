@@ -242,6 +242,24 @@ TEST(ConfigurationTests, Vic2PathCanBeSetForMac)
 }
 
 
+TEST(ConfigurationTests, Vic2PathThrowsExceptionOnNonExistentPath)
+{
+	std::stringstream input;
+	input << R"(Vic2directory = "C:\Non-existent folder")";
+
+	ASSERT_THROW(Configuration::Factory{}.importConfiguration(input), std::runtime_error);
+}
+
+
+TEST(ConfigurationTests, Vic2PathThrowsExceptionOnPathWithoutVic2)
+{
+	std::stringstream input;
+	input << R"(Vic2directory = "./")";
+
+	ASSERT_THROW(Configuration::Factory{}.importConfiguration(input), std::runtime_error);
+}
+
+
 TEST(ConfigurationTests, Vic2ModPathDefaultsToEmpty)
 {
 	std::stringstream input;
@@ -261,19 +279,10 @@ TEST(ConfigurationTests, Vic2ModPathCanBeSet)
 }
 
 
-TEST(ConfigurationTests, Vic2PathThrowsExceptionOnNonExistentPath)
+TEST(ConfigurationTests, Vic2PathThrowsExceptionOnNonExistantPath)
 {
 	std::stringstream input;
-	input << R"(Vic2directory = "C:\Non-existent folder")";
-
-	ASSERT_THROW(Configuration::Factory{}.importConfiguration(input), std::runtime_error);
-}
-
-
-TEST(ConfigurationTests, Vic2PathThrowsExceptionOnPathWithoutVic2)
-{
-	std::stringstream input;
-	input << R"(Vic2directory = "./")";
+	input << R"(Vic2ModPath = "./Vic2/FakeMod")";
 
 	ASSERT_THROW(Configuration::Factory{}.importConfiguration(input), std::runtime_error);
 }
@@ -290,7 +299,7 @@ TEST(ConfigurationTests, Vic2ModsDefaultsToEmpty)
 TEST(ConfigurationTests, Vic2ModsCanBeSet)
 {
 	std::stringstream input;
-	input << R"(Vic2ModPath = "./")";
+	input << R"(Vic2ModPath = "./Vic2/Mod")";
 	input << R"(selectedMods = { "Test.mod" })";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
