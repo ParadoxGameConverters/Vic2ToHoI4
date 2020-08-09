@@ -274,7 +274,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Party.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\Pop.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\PopFactory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Province.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Provinces\Province.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Relations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\BuildingReader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\State.cpp" />

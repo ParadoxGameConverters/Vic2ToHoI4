@@ -1,7 +1,8 @@
-#include "../../../Vic2ToHoI4/Source/V2World/Province.h"
+#include "../../../Vic2ToHoI4/Source/V2World/Pops/PopFactory.h"
+#include "../../../Vic2ToHoI4/Source/V2World/Provinces/Province.h"
+#include "../../../Vic2ToHoI4/Source/V2World/States/State.h"
 #include "../../../Vic2ToHoI4/Source/V2World/States/StateDefinitions.h"
 #include "../../../Vic2ToHoI4/Source/V2World/States/StateFactory.h"
-#include "../../../Vic2ToHoI4/Source/V2World/States/State.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -125,7 +126,7 @@ TEST(Vic2World_States_StateTests, CraftsmenAddToEmployedWorkers)
 TEST(Vic2World_States_StateTests, CraftsmenLiteracyDoesNotAffectEmployedWorkers)
 {
 	Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
-	
+
 	std::stringstream stateInput;
 	stateInput << "= {\n";
 	stateInput << "\tstate_buildings = {\n";

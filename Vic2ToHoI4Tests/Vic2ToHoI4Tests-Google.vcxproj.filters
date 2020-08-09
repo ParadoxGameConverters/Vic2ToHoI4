@@ -31,9 +31,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryMapping.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Province.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
@@ -1058,6 +1055,9 @@
     <ClCompile Include="Vic2WorldTests\Mods\ModFactoryTests.cpp">
       <Filter>Vic2WorldTests\Mods</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Provinces\Province.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Provinces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1308,6 +1308,9 @@
     </Filter>
     <Filter Include="TestFiles\Mods">
       <UniqueIdentifier>{255ad4b3-2739-44bd-bff1-e462fa70c6df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Provinces">
+      <UniqueIdentifier>{3c655dc9-da73-4306-9761-90974a80902b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

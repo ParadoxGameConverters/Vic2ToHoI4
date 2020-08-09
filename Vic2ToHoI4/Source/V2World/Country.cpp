@@ -6,7 +6,7 @@
 #include "ParserHelpers.h"
 #include "Party.h"
 #include "Pops/Pop.h"
-#include "Province.h"
+#include "Provinces/Province.h"
 #include "Relations.h"
 #include "States/State.h"
 #include "States/StateDefinitions.h"

@@ -178,6 +178,9 @@
     <Filter Include="Vic2World\Mods">
       <UniqueIdentifier>{6f01c38e-bff8-4c35-b0a1-730228759ecc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2World\Provinces">
+      <UniqueIdentifier>{320b203a-a9cb-4728-8958-a55bbf9e6dad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -218,9 +221,6 @@
     </ClCompile>
     <ClCompile Include="..\common_items\ParserHelpers.cpp">
       <Filter>CommonItems</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\V2World\Province.cpp">
-      <Filter>Vic2World</Filter>
     </ClCompile>
     <ClCompile Include="Source\V2World\Diplomacy.cpp">
       <Filter>Vic2World</Filter>
@@ -920,6 +920,9 @@
     <ClCompile Include="Source\V2World\Mods\ModFactory.cpp">
       <Filter>Vic2World\Mods</Filter>
     </ClCompile>
+    <ClCompile Include="Source\V2World\Provinces\Province.cpp">
+      <Filter>Vic2World\Provinces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -960,9 +963,6 @@
     </ClInclude>
     <ClInclude Include="..\common_items\ParserHelpers.h">
       <Filter>CommonItems</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\V2World\Province.h">
-      <Filter>Vic2World</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Diplomacy.h">
       <Filter>Vic2World</Filter>
@@ -1729,6 +1729,9 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Mods\ModBuilder.h">
       <Filter>Vic2World\Mods</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Provinces\Province.h">
+      <Filter>Vic2World\Provinces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -4,8 +4,8 @@
 
 
 #include "Parser.h"
-#include "Pops/Pop.h"
-#include "Pops/PopFactory.h"
+#include "../Pops/Pop.h"
+#include "../Pops/PopFactory.h"
 #include <optional>
 #include <set>
 #include <string>

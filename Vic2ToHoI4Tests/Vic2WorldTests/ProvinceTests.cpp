@@ -1,5 +1,5 @@
 #include "../Vic2ToHoI4/Source/V2World/Issues/Issues.h"
-#include "../Vic2ToHoI4/Source/V2World/Province.h"
+#include "../Vic2ToHoI4/Source/V2World/Provinces/Province.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

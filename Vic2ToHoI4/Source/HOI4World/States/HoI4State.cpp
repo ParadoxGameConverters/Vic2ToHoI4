@@ -1,5 +1,5 @@
 #include "HoI4State.h"
-#include "../../V2World/Province.h"
+#include "../../V2World/Provinces/Province.h"
 #include "../../V2World/States/State.h"
 #include "../Map/CoastalProvinces.h"
 #include "Log.h"

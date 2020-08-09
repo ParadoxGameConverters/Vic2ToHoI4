@@ -11,7 +11,7 @@
 #include "ParserHelpers.h"
 #include "Party.h"
 #include "Pops/PopFactory.h"
-#include "Province.h"
+#include "Provinces/Province.h"
 #include "States/State.h"
 #include "States/StateDefinitionsFactory.h"
 #include "States/StateFactory.h"
