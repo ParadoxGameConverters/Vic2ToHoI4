@@ -3,7 +3,6 @@
 
 
 
-#include "Parser.h"
 #include "../Pops/Pop.h"
 #include "../Pops/PopFactory.h"
 #include <optional>
@@ -16,10 +15,11 @@
 namespace Vic2
 {
 
-class Province: commonItems::parser
+class Province
 {
   public:
-	explicit Province(const std::string& numberString, std::istream& theStream, Pop::Factory& popFactory);
+	class Factory;
+	Province() = default;
 
 	int getTotalPopulation() const;
 	int getPopulation(std::optional<std::string> type = {}) const;

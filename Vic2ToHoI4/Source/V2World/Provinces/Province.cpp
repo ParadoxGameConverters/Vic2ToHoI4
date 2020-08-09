@@ -1,44 +1,5 @@
 #include "Province.h"
-#include "ParserHelpers.h"
 
-
-
-Vic2::Province::Province(const std::string& numberString,
-	 std::istream& theStream,
-	 Pop::Factory& popFactory):
-	 number(stoi(numberString))
-{
-	registerKeyword("owner", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString ownerSingleString(theStream);
-		owner = ownerSingleString.getString();
-	});
-	registerKeyword("core", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString coreString(theStream);
-		auto newCoreString = coreString.getString();
-		cores.insert(newCoreString);
-	});
-	registerKeyword("controller", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString controllerSingleString(theStream);
-		controller = controllerSingleString.getString();
-	});
-	registerKeyword("naval_base", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::doubleList navalBaseSizeList(theStream);
-		navalBaseLevel = static_cast<int>(navalBaseSizeList.getDoubles()[0]);
-	});
-	registerKeyword("railroad", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::doubleList railSizeList(theStream);
-		railLevel = static_cast<int>(railSizeList.getDoubles()[0]);
-	});
-	registerRegex(
-		 "aristocrats|artisans|bureaucrats|capitalists|clergymen|craftsmen|clerks|farmers|soldiers|officers|labourers|"
-		 "slaves|serfs",
-		 [this, &popFactory](const std::string& popType, std::istream& theStream) {
-			 pops.push_back(*popFactory.getPop(popType, theStream));
-		 });
-	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
-
-	parseStream(theStream);
-}
 
 
 int Vic2::Province::getTotalPopulation() const

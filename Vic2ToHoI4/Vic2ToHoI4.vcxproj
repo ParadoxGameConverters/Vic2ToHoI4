@@ -357,6 +357,7 @@
     <ClCompile Include="Source\V2World\Pops\Pop.cpp" />
     <ClCompile Include="Source\V2World\Pops\PopFactory.cpp" />
     <ClCompile Include="Source\V2World\Provinces\Province.cpp" />
+    <ClCompile Include="Source\V2World\Provinces\ProvinceFactory.cpp" />
     <ClCompile Include="Source\V2World\States\BuildingReader.cpp" />
     <ClCompile Include="Source\V2World\States\State.cpp" />
     <ClCompile Include="Source\V2World\States\StateDefinitions.cpp" />
@@ -643,6 +644,7 @@
     <ClInclude Include="Source\V2World\Pops\Pop.h" />
     <ClInclude Include="Source\V2World\Pops\PopFactory.h" />
     <ClInclude Include="Source\V2World\Provinces\Province.h" />
+    <ClInclude Include="Source\V2World\Provinces\ProvinceFactory.h" />
     <ClInclude Include="Source\V2World\Relations.h" />
     <ClInclude Include="Source\V2World\States\BuildingReader.h" />
     <ClInclude Include="Source\V2World\States\State.h" />

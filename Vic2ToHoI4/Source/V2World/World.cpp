@@ -12,6 +12,7 @@
 #include "Party.h"
 #include "Pops/PopFactory.h"
 #include "Provinces/Province.h"
+#include "Provinces/ProvinceFactory.h"
 #include "States/State.h"
 #include "States/StateDefinitionsFactory.h"
 #include "States/StateFactory.h"
@@ -28,6 +29,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
 	inventions theInventions(theConfiguration);
 	Pop::Factory popFactory(theIssues);
+	Province::Factory provinceFactory(popFactory);
 	State::Factory stateFactory;
 
 
@@ -37,10 +39,10 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 		GPIndexes = indexList.getInts();
 	});
 
-	registerRegex(R"(\d+)", [this, &popFactory](const std::string& provinceID, std::istream& theStream) {
+	registerRegex(R"(\d+)", [this, &provinceFactory](const std::string& provinceID, std::istream& theStream) {
 		try
 		{
-			provinces[stoi(provinceID)] = std::make_shared<Province>(provinceID, theStream, popFactory);
+			provinces[stoi(provinceID)] = provinceFactory.getProvince(provinceID, theStream);
 		}
 		catch (std::exception&)
 		{
