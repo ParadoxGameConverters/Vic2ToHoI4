@@ -1,8 +1,8 @@
 #include "Configuration.h"
+#include "CommonFunctions.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
-#include "StringUtils.h"
 #include "V2World/Mods/ModFactory.h"
 #include <fstream>
 #include <vector>
@@ -23,8 +23,7 @@ Configuration::Factory::Factory()
 		Log(LogLevel::Info) << "\tVic2 save is " << configuration->inputFile;
 	});
 	registerKeyword("HoI4directory", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleString directoryString(theStream);
-		configuration->HoI4Path = directoryString.getString();
+		configuration->HoI4Path = commonItems::singleString{theStream}.getString();
 		if (configuration->HoI4Path.empty() || !Utils::DoesFolderExist(configuration->HoI4Path))
 		{
 			throw std::runtime_error("No HoI4 path was specified in configuration.txt, or the path was invalid");
@@ -38,8 +37,7 @@ Configuration::Factory::Factory()
 		Log(LogLevel::Info) << "\tHoI4 path install path is " << configuration->HoI4Path;
 	});
 	registerKeyword("Vic2directory", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleString directoryString(theStream);
-		configuration->Vic2Path = directoryString.getString();
+		configuration->Vic2Path = commonItems::singleString{theStream}.getString();
 		if (configuration->Vic2Path.empty() || !Utils::DoesFolderExist(configuration->Vic2Path))
 		{
 			throw std::runtime_error("No Victoria 2 path was specified in configuration.txt, or the path was invalid");
@@ -55,8 +53,7 @@ Configuration::Factory::Factory()
 		Log(LogLevel::Info) << "\tVictoria 2 install path is " << configuration->Vic2Path;
 	});
 	registerKeyword("Vic2ModPath", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleString directoryString(theStream);
-		configuration->Vic2ModPath = directoryString.getString();
+		configuration->Vic2ModPath = commonItems::singleString{theStream}.getString();
 		if (configuration->Vic2ModPath.empty() || !Utils::DoesFolderExist(configuration->Vic2ModPath))
 		{
 			throw std::runtime_error("No Victoria 2 mod path was specified in configuration.txt, or the path was invalid");
@@ -189,31 +186,10 @@ std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(std::
 
 void Configuration::Factory::setOutputName(const std::string& V2SaveFileName)
 {
-	std::string outputName = V2SaveFileName;
-
+	std::string outputName = trimPath(V2SaveFileName);
 	if (outputName.empty())
 	{
 		return;
-	}
-
-	const auto lastBackslash = V2SaveFileName.find_last_of('\\');
-	const auto lastSlash = V2SaveFileName.find_last_of('/');
-	if ((lastBackslash == std::string::npos) && (lastSlash != std::string::npos))
-	{
-		outputName = outputName.substr(lastSlash + 1, outputName.length());
-	}
-	else if ((lastBackslash != std::string::npos) && (lastSlash == std::string::npos))
-	{
-		outputName = outputName.substr(lastBackslash + 1, outputName.length());
-	}
-	else if ((lastBackslash != std::string::npos) && (lastSlash != std::string::npos))
-	{
-		const auto slash = std::max(lastBackslash, lastSlash);
-		outputName = outputName.substr(slash + 1, outputName.length());
-	}
-	else if ((lastBackslash == std::string::npos) && (lastSlash == std::string::npos))
-	{
-		// no change, but explicitly considered
 	}
 
 	const auto length = outputName.find_last_of('.');
@@ -221,10 +197,8 @@ void Configuration::Factory::setOutputName(const std::string& V2SaveFileName)
 	{
 		throw std::invalid_argument("The save was not a Vic2 save. Choose a save ending in '.v2' and convert again.");
 	}
-	outputName = outputName.substr(0, length);
-
-	std::replace(outputName.begin(), outputName.end(), '-', '_');
-	std::replace(outputName.begin(), outputName.end(), ' ', '_');
+	outputName = trimExtension(outputName);
+	outputName = normalizeStringPath(outputName);
 
 	Log(LogLevel::Info) << "Using output name " << outputName;
 	configuration->outputName = outputName;
