@@ -184,9 +184,6 @@
     <ClCompile Include="Vic2WorldTests\WarGoalTests.cpp">
       <Filter>Vic2WorldTests</Filter>
     </ClCompile>
-    <ClCompile Include="Vic2WorldTests\ProvinceTests.cpp">
-      <Filter>Vic2WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4State.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
     </ClCompile>
@@ -1062,6 +1059,9 @@
       <Filter>Vic2ToHoI4 files\Vic2\Provinces</Filter>
     </ClCompile>
     <ClCompile Include="Vic2WorldTests\Provinces\ProvinceBuilderTests.cpp">
+      <Filter>Vic2WorldTests\Provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Provinces\ProvinceFactoryTests.cpp">
       <Filter>Vic2WorldTests\Provinces</Filter>
     </ClCompile>
   </ItemGroup>

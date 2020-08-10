@@ -6,22 +6,22 @@
 
 
 
-class Vic2World_ProvinceTests: public testing::Test
+class Vic2World_ProvinceFactoryTests: public testing::Test
 {
   protected:
-	Vic2World_ProvinceTests();
+	Vic2World_ProvinceFactoryTests();
 
 	Vic2::Pop::Factory popFactory;
 	Vic2::Province::Factory provinceFactory;
 };
 
 
-Vic2World_ProvinceTests::Vic2World_ProvinceTests(): popFactory(Vic2::Issues({})), provinceFactory(popFactory)
+Vic2World_ProvinceFactoryTests::Vic2World_ProvinceFactoryTests(): popFactory(Vic2::Issues({})), provinceFactory(popFactory)
 {
 }
 
 
-TEST_F(Vic2World_ProvinceTests, numberCanBeSet)
+TEST_F(Vic2World_ProvinceFactoryTests, numberCanBeSet)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -34,7 +34,7 @@ TEST_F(Vic2World_ProvinceTests, numberCanBeSet)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, ownerDefaultsToBlank)
+TEST_F(Vic2World_ProvinceFactoryTests, ownerDefaultsToBlank)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -47,7 +47,7 @@ TEST_F(Vic2World_ProvinceTests, ownerDefaultsToBlank)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, ownerCanBeSet)
+TEST_F(Vic2World_ProvinceFactoryTests, ownerCanBeSet)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -61,7 +61,7 @@ TEST_F(Vic2World_ProvinceTests, ownerCanBeSet)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, controllerDefaultsToBlank)
+TEST_F(Vic2World_ProvinceFactoryTests, controllerDefaultsToBlank)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -74,7 +74,7 @@ TEST_F(Vic2World_ProvinceTests, controllerDefaultsToBlank)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, controllerCanBeSet)
+TEST_F(Vic2World_ProvinceFactoryTests, controllerCanBeSet)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -88,7 +88,7 @@ TEST_F(Vic2World_ProvinceTests, controllerCanBeSet)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, ownerCanBeChanged)
+TEST_F(Vic2World_ProvinceFactoryTests, ownerCanBeChanged)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -103,7 +103,7 @@ TEST_F(Vic2World_ProvinceTests, ownerCanBeChanged)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, coresDefaultToEmpty)
+TEST_F(Vic2World_ProvinceFactoryTests, coresDefaultToEmpty)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -116,7 +116,7 @@ TEST_F(Vic2World_ProvinceTests, coresDefaultToEmpty)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, coresCanBeSet)
+TEST_F(Vic2World_ProvinceFactoryTests, coresCanBeSet)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -133,7 +133,7 @@ TEST_F(Vic2World_ProvinceTests, coresCanBeSet)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, coresCanBeRemoved)
+TEST_F(Vic2World_ProvinceFactoryTests, coresCanBeRemoved)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -150,7 +150,7 @@ TEST_F(Vic2World_ProvinceTests, coresCanBeRemoved)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, popsDefaultToEmpty)
+TEST_F(Vic2World_ProvinceFactoryTests, popsDefaultToEmpty)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -163,7 +163,7 @@ TEST_F(Vic2World_ProvinceTests, popsDefaultToEmpty)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, aristocratsCanBeAddedToPops)
+TEST_F(Vic2World_ProvinceFactoryTests, aristocratsCanBeAddedToPops)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -179,7 +179,7 @@ TEST_F(Vic2World_ProvinceTests, aristocratsCanBeAddedToPops)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, artisansCanBeAddedToPops)
+TEST_F(Vic2World_ProvinceFactoryTests, artisansCanBeAddedToPops)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -195,7 +195,7 @@ TEST_F(Vic2World_ProvinceTests, artisansCanBeAddedToPops)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, bureaucratsCanBeAddedToPops)
+TEST_F(Vic2World_ProvinceFactoryTests, bureaucratsCanBeAddedToPops)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -211,7 +211,7 @@ TEST_F(Vic2World_ProvinceTests, bureaucratsCanBeAddedToPops)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, capitalistsCanBeAddedToPops)
+TEST_F(Vic2World_ProvinceFactoryTests, capitalistsCanBeAddedToPops)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -227,7 +227,7 @@ TEST_F(Vic2World_ProvinceTests, capitalistsCanBeAddedToPops)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, clergymenCanBeAddedToPops)
+TEST_F(Vic2World_ProvinceFactoryTests, clergymenCanBeAddedToPops)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -243,7 +243,7 @@ TEST_F(Vic2World_ProvinceTests, clergymenCanBeAddedToPops)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, craftsmenCanBeAddedToPops)
+TEST_F(Vic2World_ProvinceFactoryTests, craftsmenCanBeAddedToPops)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -259,7 +259,7 @@ TEST_F(Vic2World_ProvinceTests, craftsmenCanBeAddedToPops)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, clerksCanBeAddedToPops)
+TEST_F(Vic2World_ProvinceFactoryTests, clerksCanBeAddedToPops)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -275,7 +275,7 @@ TEST_F(Vic2World_ProvinceTests, clerksCanBeAddedToPops)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, farmersCanBeAddedToPops)
+TEST_F(Vic2World_ProvinceFactoryTests, farmersCanBeAddedToPops)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -291,7 +291,7 @@ TEST_F(Vic2World_ProvinceTests, farmersCanBeAddedToPops)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, soldiersCanBeAddedToPops)
+TEST_F(Vic2World_ProvinceFactoryTests, soldiersCanBeAddedToPops)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -307,7 +307,7 @@ TEST_F(Vic2World_ProvinceTests, soldiersCanBeAddedToPops)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, officersCanBeAddedToPops)
+TEST_F(Vic2World_ProvinceFactoryTests, officersCanBeAddedToPops)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -323,7 +323,7 @@ TEST_F(Vic2World_ProvinceTests, officersCanBeAddedToPops)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, labourersCanBeAddedToPops)
+TEST_F(Vic2World_ProvinceFactoryTests, labourersCanBeAddedToPops)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -339,7 +339,7 @@ TEST_F(Vic2World_ProvinceTests, labourersCanBeAddedToPops)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, slavesCanBeAddedToPops)
+TEST_F(Vic2World_ProvinceFactoryTests, slavesCanBeAddedToPops)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -355,7 +355,7 @@ TEST_F(Vic2World_ProvinceTests, slavesCanBeAddedToPops)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, serfsCanBeAddedToPops)
+TEST_F(Vic2World_ProvinceFactoryTests, serfsCanBeAddedToPops)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -371,7 +371,7 @@ TEST_F(Vic2World_ProvinceTests, serfsCanBeAddedToPops)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getTotalPopulationDefaultsToZero)
+TEST_F(Vic2World_ProvinceFactoryTests, getTotalPopulationDefaultsToZero)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -384,7 +384,7 @@ TEST_F(Vic2World_ProvinceTests, getTotalPopulationDefaultsToZero)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getTotalPopulationReturnsTotalPopulation)
+TEST_F(Vic2World_ProvinceFactoryTests, getTotalPopulationReturnsTotalPopulation)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -403,7 +403,7 @@ TEST_F(Vic2World_ProvinceTests, getTotalPopulationReturnsTotalPopulation)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getPopulationDefaultsToZero)
+TEST_F(Vic2World_ProvinceFactoryTests, getPopulationDefaultsToZero)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -416,7 +416,7 @@ TEST_F(Vic2World_ProvinceTests, getPopulationDefaultsToZero)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getPopulationDiscriminatesBySpecifiedPopType)
+TEST_F(Vic2World_ProvinceFactoryTests, getPopulationDiscriminatesBySpecifiedPopType)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -435,7 +435,7 @@ TEST_F(Vic2World_ProvinceTests, getPopulationDiscriminatesBySpecifiedPopType)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getPopulationWithNoTypeGivesTotalPopulation)
+TEST_F(Vic2World_ProvinceFactoryTests, getPopulationWithNoTypeGivesTotalPopulation)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -454,7 +454,7 @@ TEST_F(Vic2World_ProvinceTests, getPopulationWithNoTypeGivesTotalPopulation)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationDefaultsToZero)
+TEST_F(Vic2World_ProvinceFactoryTests, getLiteracyWeightedPopulationDefaultsToZero)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -467,7 +467,7 @@ TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationDefaultsToZero)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesTenPercentAtNoLiteracy)
+TEST_F(Vic2World_ProvinceFactoryTests, getLiteracyWeightedPopulationGivesTenPercentAtNoLiteracy)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -483,7 +483,7 @@ TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesTenPercentAtNo
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesOneHundredPercentAtFullLiteracy)
+TEST_F(Vic2World_ProvinceFactoryTests, getLiteracyWeightedPopulationGivesOneHundredPercentAtFullLiteracy)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -500,7 +500,7 @@ TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesOneHundredPerc
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationDiscriminatesByPopType)
+TEST_F(Vic2World_ProvinceFactoryTests, getLiteracyWeightedPopulationDiscriminatesByPopType)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -521,7 +521,7 @@ TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationDiscriminatesByPopT
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesAllPopsWhenNoTypeSpecified)
+TEST_F(Vic2World_ProvinceFactoryTests, getLiteracyWeightedPopulationGivesAllPopsWhenNoTypeSpecified)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -542,7 +542,7 @@ TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesAllPopsWhenNoT
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoPops)
+TEST_F(Vic2World_ProvinceFactoryTests, getPercentageWithCulturesReturnsZeroIfNoPops)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -556,7 +556,7 @@ TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoPops)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCulturesSpecified)
+TEST_F(Vic2World_ProvinceFactoryTests, getPercentageWithCulturesReturnsZeroIfNoCulturesSpecified)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -574,7 +574,7 @@ TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCultures
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCulturesmatch)
+TEST_F(Vic2World_ProvinceFactoryTests, getPercentageWithCulturesReturnsZeroIfNoCulturesmatch)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -593,7 +593,7 @@ TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCultures
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsMatchedPercent)
+TEST_F(Vic2World_ProvinceFactoryTests, getPercentageWithCulturesReturnsMatchedPercent)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -616,7 +616,7 @@ TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsMatchedPercent)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesCanMapMultipleCultures)
+TEST_F(Vic2World_ProvinceFactoryTests, getPercentageWithCulturesCanMapMultipleCultures)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -640,7 +640,7 @@ TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesCanMapMultipleCultures)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, navalBaseLevelDefaultsToZero)
+TEST_F(Vic2World_ProvinceFactoryTests, navalBaseLevelDefaultsToZero)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -653,7 +653,7 @@ TEST_F(Vic2World_ProvinceTests, navalBaseLevelDefaultsToZero)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, navalBaseLevelCanBeSet)
+TEST_F(Vic2World_ProvinceFactoryTests, navalBaseLevelCanBeSet)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -669,7 +669,7 @@ TEST_F(Vic2World_ProvinceTests, navalBaseLevelCanBeSet)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, railLevelDefaultsToZero)
+TEST_F(Vic2World_ProvinceFactoryTests, railLevelDefaultsToZero)
 {
 	std::stringstream input;
 	input << "=\n";
@@ -682,7 +682,7 @@ TEST_F(Vic2World_ProvinceTests, railLevelDefaultsToZero)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, railLevelCanBeSet)
+TEST_F(Vic2World_ProvinceFactoryTests, railLevelCanBeSet)
 {
 	std::stringstream input;
 	input << "=\n";
