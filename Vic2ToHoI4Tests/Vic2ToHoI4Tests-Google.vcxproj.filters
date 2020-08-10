@@ -1061,6 +1061,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Provinces\ProvinceFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Provinces</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Provinces\ProvinceBuilderTests.cpp">
+      <Filter>Vic2WorldTests\Provinces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1314,6 +1317,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Vic2\Provinces">
       <UniqueIdentifier>{3c655dc9-da73-4306-9761-90974a80902b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\Provinces">
+      <UniqueIdentifier>{6e7b8723-c22b-49cc-a801-33bd55c54bc8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -13,11 +13,23 @@ namespace Vic2
 class Province::Builder
 {
   public:
-	Builder() { province = std::make_unique<Province>(); }
-	std::unique_ptr<Province> build() { return std::move(province); }
-
-	Builder& setNumber(int number)
+	Builder()
 	{
+		numberSet = false;
+		province = std::make_unique<Province>();
+	}
+	std::unique_ptr<Province> build()
+	{
+		if (!numberSet)
+		{
+			throw std::runtime_error("Province number not set in builder");
+		}
+		return std::move(province);
+	}
+
+	Builder& setNumber(const int number)
+	{
+		numberSet = true;
 		province->number = number;
 		return *this;
 	}
@@ -46,24 +58,24 @@ class Province::Builder
 		return *this;
 	}
 
-	Builder& setNavalBaseLevel(int navalBaseLevel)
+	Builder& setNavalBaseLevel(const int navalBaseLevel)
 	{
 		province->navalBaseLevel = navalBaseLevel;
 		return *this;
 	}
 
-	Builder& setRailLevel(int railLevel)
+	Builder& setRailLevel(const int railLevel)
 	{
 		province->railLevel = railLevel;
 		return *this;
 	}
 
   private:
+	bool numberSet = false;
 	std::unique_ptr<Province> province;
 };
-	
-}
 
+} // namespace Vic2
 
 
 

@@ -383,6 +383,7 @@
     <ClCompile Include="Vic2WorldTests\Mods\ModFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Provinces\ProvinceBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\ProvinceTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\BuildingTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateDefinitionsFactoryTests.cpp" />
