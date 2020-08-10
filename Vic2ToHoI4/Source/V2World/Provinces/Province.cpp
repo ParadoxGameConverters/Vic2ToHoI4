@@ -59,8 +59,8 @@ double Vic2::Province::getPercentageWithCultures(const std::set<std::string>& cu
 }
 
 
-constexpr float minimumLiteracyWeighting = 0.1f;
-constexpr float literacyWeighting = 0.9f;
+constexpr double minimumLiteracyWeighting = 0.1;
+constexpr double literacyWeighting = 0.9;
 int Vic2::Province::calculateLiteracyWeightedPop(const Pop& thePop)
 {
 	return int(thePop.getSize() * (thePop.getLiteracy() * literacyWeighting + minimumLiteracyWeighting));
