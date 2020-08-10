@@ -8,10 +8,10 @@ int Vic2::Province::getTotalPopulation() const
 }
 
 
-int Vic2::Province::getPopulation(std::optional<std::string> type) const
+int Vic2::Province::getPopulation(const std::optional<std::string>& type) const
 {
-	int totalPopulation = 0;
-	for (auto pop: pops)
+	auto totalPopulation = 0;
+	for (const auto& pop: pops)
 	{
 		if (!type || *type == pop.getType())
 		{
@@ -23,10 +23,10 @@ int Vic2::Province::getPopulation(std::optional<std::string> type) const
 }
 
 
-int Vic2::Province::getLiteracyWeightedPopulation(std::optional<std::string> type) const
+int Vic2::Province::getLiteracyWeightedPopulation(const std::optional<std::string>& type) const
 {
-	int totalPopulation = 0;
-	for (auto pop: pops)
+	auto totalPopulation = 0;
+	for (const auto& pop: pops)
 	{
 		if (!type || *type == pop.getType())
 		{
@@ -39,10 +39,10 @@ int Vic2::Province::getLiteracyWeightedPopulation(std::optional<std::string> typ
 
 double Vic2::Province::getPercentageWithCultures(const std::set<std::string>& cultures) const
 {
-	int totalPopulation = 0;
-	int populationOfCultures = 0;
+	auto totalPopulation = 0;
+	auto populationOfCultures = 0;
 
-	for (auto pop: pops)
+	for (const auto& pop: pops)
 	{
 		totalPopulation += pop.getSize();
 		if (cultures.count(pop.getCulture()) > 0)
@@ -51,18 +51,15 @@ double Vic2::Province::getPercentageWithCultures(const std::set<std::string>& cu
 		}
 	}
 
-	if (totalPopulation > 0)
-	{
-		return 1.0 * populationOfCultures / totalPopulation;
-	}
-	else
+	if (totalPopulation <= 0)
 	{
 		return 0.0;
 	}
+	return 1.0 * populationOfCultures / totalPopulation;
 }
 
 
-int Vic2::Province::calculateLiteracyWeightedPop(const Pop& thePop) const
+int Vic2::Province::calculateLiteracyWeightedPop(const Pop& thePop)
 {
 	return int(thePop.getSize() * (thePop.getLiteracy() * 0.9 + 0.1));
 }

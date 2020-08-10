@@ -22,27 +22,27 @@ class Province
 	class Factory;
 	Province() = default;
 
-	int getTotalPopulation() const;
-	int getPopulation(std::optional<std::string> type = {}) const;
-	int getLiteracyWeightedPopulation(std::optional<std::string> type = {}) const;
-	double getPercentageWithCultures(const std::set<std::string>& cultures) const;
+	[[nodiscard]] int getTotalPopulation() const;
+	[[nodiscard]] int getPopulation(const std::optional<std::string>& type = {}) const;
+	[[nodiscard]] int getLiteracyWeightedPopulation(const std::optional<std::string>& type = {}) const;
+	[[nodiscard]] double getPercentageWithCultures(const std::set<std::string>& cultures) const;
 
 	void setOwner(const std::string& _owner) { owner = _owner; }
 	void addCore(const std::string& core) { cores.insert(core); }
 	void removeCore(const std::string& core) { cores.erase(core); }
 
-	int getNumber() const { return number; }
-	const std::string getOwner() const { return owner; }
-	const std::string getController() const { return controller; }
-	const std::set<std::string> getCores() const { return cores; }
-	const std::vector<Pop> getPops() const { return pops; }
-	int getNavalBaseLevel() const { return navalBaseLevel; }
-	int getRailLevel() const { return railLevel; }
+	[[nodiscard]] const auto& getNumber() const { return number; }
+	[[nodiscard]] const auto& getOwner() const { return owner; }
+	[[nodiscard]] const auto& getController() const { return controller; }
+	[[nodiscard]] const auto& getCores() const { return cores; }
+	[[nodiscard]] const auto& getPops() const { return pops; }
+	[[nodiscard]] const auto& getNavalBaseLevel() const { return navalBaseLevel; }
+	[[nodiscard]] const auto& getRailLevel() const { return railLevel; }
 
   private:
-	int calculateLiteracyWeightedPop(const Pop& thePop) const;
+	[[nodiscard]] static int calculateLiteracyWeightedPop(const Pop& thePop);
 
-	int number;
+	int number = 0;
 
 	std::string owner;
 	std::string controller;

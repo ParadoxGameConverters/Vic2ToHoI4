@@ -3,33 +3,27 @@
 
 
 
- Vic2::Province::Factory::Factory(Vic2::Pop::Factory& popFactory): popFactory(popFactory)
+ Vic2::Province::Factory::Factory(Pop::Factory& _popFactory): popFactory(_popFactory)
 {
 	 registerKeyword("owner", [this](const std::string& unused, std::istream& theStream) {
-		 commonItems::singleString ownerSingleString(theStream);
-		province->owner = ownerSingleString.getString();
+		province->owner = commonItems::singleString{theStream}.getString();
 	 });
 	 registerKeyword("core", [this](const std::string& unused, std::istream& theStream) {
-		 commonItems::singleString coreString(theStream);
-		 auto newCoreString = coreString.getString();
-		 province->cores.insert(newCoreString);
+		 province->cores.insert(commonItems::singleString{theStream}.getString());
 	 });
 	 registerKeyword("controller", [this](const std::string& unused, std::istream& theStream) {
-		 commonItems::singleString controllerSingleString(theStream);
-		 province->controller = controllerSingleString.getString();
+		 province->controller = commonItems::singleString{theStream}.getString();
 	 });
 	 registerKeyword("naval_base", [this](const std::string& unused, std::istream& theStream) {
-		 commonItems::doubleList navalBaseSizeList(theStream);
-		 province->navalBaseLevel = static_cast<int>(navalBaseSizeList.getDoubles()[0]);
+		 province->navalBaseLevel = static_cast<int>(commonItems::doubleList{theStream}.getDoubles()[0]);
 	 });
 	 registerKeyword("railroad", [this](const std::string& unused, std::istream& theStream) {
-		 commonItems::doubleList railSizeList(theStream);
-		 province->railLevel = static_cast<int>(railSizeList.getDoubles()[0]);
+		 province->railLevel = static_cast<int>(commonItems::doubleList{theStream}.getDoubles()[0]);
 	 });
 	 registerRegex(
 		  "aristocrats|artisans|bureaucrats|capitalists|clergymen|craftsmen|clerks|farmers|soldiers|officers|labourers|"
 		  "slaves|serfs",
-		  [this, &popFactory](const std::string& popType, std::istream& theStream) {
+		  [this](const std::string& popType, std::istream& theStream) {
 			  province->pops.push_back(*popFactory.getPop(popType, theStream));
 		  });
 	 registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);

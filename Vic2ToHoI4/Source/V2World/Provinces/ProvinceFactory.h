@@ -15,7 +15,7 @@ namespace Vic2
 class Province::Factory: commonItems::parser
 {
   public:
-	Factory(Pop::Factory& popFactory);
+	explicit Factory(Pop::Factory& _popFactory);
 	std::unique_ptr<Province> getProvince(const std::string& numberString, std::istream& theStream);
 
   private:
