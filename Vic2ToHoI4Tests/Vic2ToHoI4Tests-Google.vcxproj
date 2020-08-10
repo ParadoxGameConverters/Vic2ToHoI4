@@ -385,6 +385,7 @@
     <ClCompile Include="Vic2WorldTests\Pops\PopTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Provinces\ProvinceBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Provinces\ProvinceFactoryTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Provinces\ProvinceTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\BuildingTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateDefinitionsFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateDefinitionsTests.cpp" />

@@ -1064,6 +1064,9 @@
     <ClCompile Include="Vic2WorldTests\Provinces\ProvinceFactoryTests.cpp">
       <Filter>Vic2WorldTests\Provinces</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Provinces\ProvinceTests.cpp">
+      <Filter>Vic2WorldTests\Provinces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
