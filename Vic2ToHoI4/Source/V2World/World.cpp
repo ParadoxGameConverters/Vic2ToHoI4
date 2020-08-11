@@ -42,7 +42,8 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	registerRegex(R"(\d+)", [this, &provinceFactory](const std::string& provinceID, std::istream& theStream) {
 		try
 		{
-			provinces[stoi(provinceID)] = provinceFactory.getProvince(provinceID, theStream);
+			const auto provinceNum = std::stoi(provinceID);
+			provinces[provinceNum] = provinceFactory.getProvince(provinceNum, theStream);
 		}
 		catch (std::exception&)
 		{

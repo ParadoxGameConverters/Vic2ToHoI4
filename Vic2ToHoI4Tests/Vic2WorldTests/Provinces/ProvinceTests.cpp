@@ -28,7 +28,7 @@ TEST_F(Vic2World_ProvinceTests, getTotalPopulationDefaultsToZero)
 	input << "{\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getTotalPopulation(), 0);
 }
@@ -47,7 +47,7 @@ TEST_F(Vic2World_ProvinceTests, getTotalPopulationReturnsTotalPopulation)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getTotalPopulation(), 3);
 }
@@ -60,7 +60,7 @@ TEST_F(Vic2World_ProvinceTests, getPopulationDefaultsToZero)
 	input << "{\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPopulation(), 0);
 }
@@ -79,7 +79,7 @@ TEST_F(Vic2World_ProvinceTests, getPopulationWithNoTypeGivesTotalPopulation)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPopulation(), 3);
 }
@@ -98,7 +98,7 @@ TEST_F(Vic2World_ProvinceTests, getPopulationDiscriminatesBySpecifiedPopType)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPopulation("slaves"), 2);
 }
@@ -111,7 +111,7 @@ TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationDefaultsToZero)
 	input << "{\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getLiteracyWeightedPopulation(), 0);
 }
@@ -127,7 +127,7 @@ TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesTenPercentAtNo
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getLiteracyWeightedPopulation("aristocrats"), 10);
 }
@@ -144,7 +144,7 @@ TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesOneHundredPerc
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getLiteracyWeightedPopulation("aristocrats"), 100);
 }
@@ -165,7 +165,7 @@ TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationDiscriminatesByPopT
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getLiteracyWeightedPopulation("aristocrats"), 100);
 }
@@ -186,7 +186,7 @@ TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesAllPopsWhenNoT
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getLiteracyWeightedPopulation(), 155);
 }
@@ -199,7 +199,7 @@ TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoPops)
 	input << "{\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 
 	const std::set<std::string> cultures;
 	ASSERT_EQ(theProvince->getPercentageWithCultures(cultures), 0.0);
@@ -217,7 +217,7 @@ TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCultures
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 
 	const std::set<std::string> cultures;
 	ASSERT_EQ(theProvince->getPercentageWithCultures(cultures), 0.0);
@@ -235,7 +235,7 @@ TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCultures
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 
 	std::set<std::string> cultures;
 	cultures.insert("wrong_culture");
@@ -258,7 +258,7 @@ TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsMatchedPercent)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 
 	std::set<std::string> cultures;
 	cultures.insert("culture");
@@ -281,7 +281,7 @@ TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesCanMapMultipleCultures)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 
 	std::set<std::string> cultures;
 	cultures.insert("culture");
@@ -298,7 +298,7 @@ TEST_F(Vic2World_ProvinceTests, ownerCanBeChanged)
 	input << "\towner=\"TAG\"";
 	input << "}";
 
-	auto theProvince = provinceFactory.getProvince("42", input);
+	auto theProvince = provinceFactory.getProvince(42, input);
 	theProvince->setOwner("NEW");
 
 	ASSERT_EQ(theProvince->getOwner(), "NEW");
@@ -308,7 +308,7 @@ TEST_F(Vic2World_ProvinceTests, ownerCanBeChanged)
 TEST_F(Vic2World_ProvinceTests, coresCanBeAdded)
 {
 	std::stringstream input;
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 	theProvince->addCore("TAG");
 
 	ASSERT_EQ(theProvince->getCores().size(), 1);
@@ -325,7 +325,7 @@ TEST_F(Vic2World_ProvinceTests, coresCanBeRemoved)
 	input << "\tcore=\"2ND\"";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince("42", input);
+	const auto theProvince = provinceFactory.getProvince(42, input);
 	theProvince->removeCore("2ND");
 
 	ASSERT_EQ(theProvince->getCores().size(), 1);

@@ -16,7 +16,7 @@ class Province::Factory: commonItems::parser
 {
   public:
 	explicit Factory(Pop::Factory& _popFactory);
-	std::unique_ptr<Province> getProvince(const std::string& numberString, std::istream& theStream);
+	std::unique_ptr<Province> getProvince(int number, std::istream& theStream);
 
   private:
 	std::unique_ptr<Province> province;
