@@ -274,7 +274,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Party.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\Pop.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\PopFactory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Province.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Provinces\Province.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Provinces\ProvinceFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Relations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\BuildingReader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\State.cpp" />
@@ -382,7 +383,9 @@
     <ClCompile Include="Vic2WorldTests\Mods\ModFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopTests.cpp" />
-    <ClCompile Include="Vic2WorldTests\ProvinceTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Provinces\ProvinceBuilderTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Provinces\ProvinceFactoryTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Provinces\ProvinceTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\BuildingTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateDefinitionsFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateDefinitionsTests.cpp" />

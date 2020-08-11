@@ -3,7 +3,7 @@
 #include "../../HOI4World/ProvinceDefinitions.h"
 #include "../../Mappers/CountryMapping.h"
 #include "../../V2World/Country.h"
-#include "../../V2World/Province.h"
+#include "../../V2World/Provinces/Province.h"
 #include "../../V2World/States/State.h"
 #include "../../V2World/States/StateDefinitions.h"
 #include "../../V2World/States/StateFactory.h"

@@ -1,13 +1,30 @@
-#include "../../../Vic2ToHoI4/Source/V2World/Province.h"
+#include "../../../Vic2ToHoI4/Source/V2World/Pops/PopFactory.h"
+#include "../../../Vic2ToHoI4/Source/V2World/Provinces/Province.h"
+#include "../../../Vic2ToHoI4/Source/V2World/Provinces/ProvinceBuilder.h"
+#include "../../../Vic2ToHoI4/Source/V2World/States/State.h"
 #include "../../../Vic2ToHoI4/Source/V2World/States/StateDefinitions.h"
 #include "../../../Vic2ToHoI4/Source/V2World/States/StateFactory.h"
-#include "../../../Vic2ToHoI4/Source/V2World/States/State.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
 
 
-TEST(Vic2World_States_StateTests, PopulationIsZeroWithNoProvinces)
+class Vic2World_States_StateTests: public testing::Test
+{
+  protected:
+	Vic2World_States_StateTests();
+
+	Vic2::Pop::Factory popFactory;
+};
+
+
+Vic2World_States_StateTests::Vic2World_States_StateTests(): popFactory(Vic2::Issues({}))
+{
+}
+
+
+
+TEST_F(Vic2World_States_StateTests, PopulationIsZeroWithNoProvinces)
 {
 	const Vic2::State state;
 
@@ -15,36 +32,33 @@ TEST(Vic2World_States_StateTests, PopulationIsZeroWithNoProvinces)
 }
 
 
-TEST(Vic2World_States_StateTests, PopulationComesFromAllProvinces)
+TEST_F(Vic2World_States_StateTests, PopulationComesFromAllProvinces)
 {
 	Vic2::State state;
 
-	Vic2::Issues issues({});
-	Vic2::Pop::Factory popFactory(issues);
-
-	std::stringstream provinceOneInput;
-	provinceOneInput << "= {\n";
-	provinceOneInput << "\tfarmers = {\n";
-	provinceOneInput << "\t\tsize = 12\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "}\n";
-	const auto provinceOne = std::make_shared<Vic2::Province>("1", provinceOneInput, popFactory);
+	std::stringstream popInput;
+	popInput << "={\n";
+	popInput << "\t\tsize=12\n";
+	popInput << "\t}";
+	const auto farmers = popFactory.getPop("farmers", popInput);
+	const std::shared_ptr<Vic2::Province> provinceOne =
+		 Vic2::Province::Builder{}.setNumber(1).setPops(std::vector<Vic2::Pop>{*farmers}).build();
 	state.addProvince(provinceOne);
 
-	std::stringstream provinceTwoInput;
-	provinceTwoInput << "= {\n";
-	provinceTwoInput << "\tfarmers = {\n";
-	provinceTwoInput << "\t\tsize = 34\n";
-	provinceTwoInput << "\t}\n";
-	provinceTwoInput << "}\n";
-	const auto provinceTwo = std::make_shared<Vic2::Province>("2", provinceTwoInput, popFactory);
+	std::stringstream popInput2;
+	popInput2 << "={\n";
+	popInput2 << "\t\tsize=34\n";
+	popInput2 << "\t}";
+	const auto farmers2 = popFactory.getPop("farmers", popInput2);
+	const std::shared_ptr<Vic2::Province> provinceTwo =
+		 Vic2::Province::Builder{}.setNumber(2).setPops(std::vector<Vic2::Pop>{*farmers2}).build();
 	state.addProvince(provinceTwo);
 
 	ASSERT_EQ(46, state.getPopulation());
 }
 
 
-TEST(Vic2World_States_StateTests, RailLevelIsZeroWithNoProvinces)
+TEST_F(Vic2World_States_StateTests, RailLevelIsZeroWithNoProvinces)
 {
 	const Vic2::State state;
 
@@ -52,36 +66,21 @@ TEST(Vic2World_States_StateTests, RailLevelIsZeroWithNoProvinces)
 }
 
 
-TEST(Vic2World_States_StateTests, RailLevelIsAverageOfProvinceRailLevels)
+TEST_F(Vic2World_States_StateTests, RailLevelIsAverageOfProvinceRailLevels)
 {
 	Vic2::State state;
 
-	Vic2::Issues issues({});
-	Vic2::Pop::Factory popFactory(issues);
-
-	std::stringstream provinceOneInput;
-	provinceOneInput << "= {\n";
-	provinceOneInput << "\trailroad = {\n";
-	provinceOneInput << "\t\t3 = 3\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "}\n";
-	const auto provinceOne = std::make_shared<Vic2::Province>("1", provinceOneInput, popFactory);
+	const std::shared_ptr<Vic2::Province> provinceOne = Vic2::Province::Builder{}.setNumber(1).setRailLevel(3).build();
 	state.addProvince(provinceOne);
 
-	std::stringstream provinceTwoInput;
-	provinceTwoInput << "= {\n";
-	provinceTwoInput << "\trailroad = {\n";
-	provinceTwoInput << "\t\t1 = 1\n";
-	provinceTwoInput << "\t}\n";
-	provinceTwoInput << "}\n";
-	const auto provinceTwo = std::make_shared<Vic2::Province>("2", provinceTwoInput, popFactory);
+	const std::shared_ptr<Vic2::Province> provinceTwo = Vic2::Province::Builder{}.setNumber(2).setRailLevel(1).build();
 	state.addProvince(provinceTwo);
 
 	ASSERT_EQ(2, state.getAverageRailLevel());
 }
 
 
-TEST(Vic2World_States_StateTests, EmployedWorkersDefaultsToZero)
+TEST_F(Vic2World_States_StateTests, EmployedWorkersDefaultsToZero)
 {
 	Vic2::State state;
 	state.determineEmployedWorkers();
@@ -90,9 +89,9 @@ TEST(Vic2World_States_StateTests, EmployedWorkersDefaultsToZero)
 }
 
 
-TEST(Vic2World_States_StateTests, CraftsmenAddToEmployedWorkers)
+TEST_F(Vic2World_States_StateTests, CraftsmenAddToEmployedWorkers)
 {
-	Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
+	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
 
 	std::stringstream stateInput;
 	stateInput << "= {\n";
@@ -103,17 +102,13 @@ TEST(Vic2World_States_StateTests, CraftsmenAddToEmployedWorkers)
 	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
 	state->setOwner("TAG");
 
-	Vic2::Issues issues({});
-	Vic2::Pop::Factory popFactory(issues);
-
-	std::stringstream provinceOneInput;
-	provinceOneInput << "= {\n";
-	provinceOneInput << "\tcore = TAG\n";
-	provinceOneInput << "\tcraftsmen = {\n";
-	provinceOneInput << "\t\tsize = 12\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "}\n";
-	const auto provinceOne = std::make_shared<Vic2::Province>("1", provinceOneInput, popFactory);
+	std::stringstream popInput;
+	popInput << "={\n";
+	popInput << "\t\tsize=12\n";
+	popInput << "\t}";
+	const auto craftsmen = popFactory.getPop("craftsmen", popInput);
+	const std::shared_ptr<Vic2::Province> provinceOne =
+		 Vic2::Province::Builder{}.setNumber(1).setCores({"TAG"}).setPops(std::vector<Vic2::Pop>{*craftsmen}).build();
 	state->addProvince(provinceOne);
 
 	state->determineEmployedWorkers();
@@ -122,10 +117,10 @@ TEST(Vic2World_States_StateTests, CraftsmenAddToEmployedWorkers)
 }
 
 
-TEST(Vic2World_States_StateTests, CraftsmenLiteracyDoesNotAffectEmployedWorkers)
+TEST_F(Vic2World_States_StateTests, CraftsmenLiteracyDoesNotAffectEmployedWorkers)
 {
-	Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
-	
+	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
+
 	std::stringstream stateInput;
 	stateInput << "= {\n";
 	stateInput << "\tstate_buildings = {\n";
@@ -135,18 +130,14 @@ TEST(Vic2World_States_StateTests, CraftsmenLiteracyDoesNotAffectEmployedWorkers)
 	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
 	state->setOwner("TAG");
 
-	Vic2::Issues issues({});
-	Vic2::Pop::Factory popFactory(issues);
-
-	std::stringstream provinceOneInput;
-	provinceOneInput << "= {\n";
-	provinceOneInput << "\tcore = TAG\n";
-	provinceOneInput << "\tcraftsmen = {\n";
-	provinceOneInput << "\t\tsize = 12\n";
-	provinceOneInput << "\t\tliteracy = 1.00\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "}\n";
-	const auto provinceOne = std::make_shared<Vic2::Province>("1", provinceOneInput, popFactory);
+	std::stringstream popInput;
+	popInput << "={\n";
+	popInput << "\t\tsize=12\n";
+	popInput << "\t\tliteracy = 1.00\n";
+	popInput << "\t}";
+	const auto craftsmen = popFactory.getPop("craftsmen", popInput);
+	const std::shared_ptr<Vic2::Province> provinceOne =
+		 Vic2::Province::Builder{}.setNumber(1).setCores({"TAG"}).setPops(std::vector<Vic2::Pop>{*craftsmen}).build();
 	state->addProvince(provinceOne);
 
 	state->determineEmployedWorkers();
@@ -155,9 +146,9 @@ TEST(Vic2World_States_StateTests, CraftsmenLiteracyDoesNotAffectEmployedWorkers)
 }
 
 
-TEST(Vic2World_States_StateTests, ClerksAddTwoToEmployedWorkers)
+TEST_F(Vic2World_States_StateTests, ClerksAddTwoToEmployedWorkers)
 {
-	Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
+	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
 
 	std::stringstream stateInput;
 	stateInput << "= {\n";
@@ -168,17 +159,13 @@ TEST(Vic2World_States_StateTests, ClerksAddTwoToEmployedWorkers)
 	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
 	state->setOwner("TAG");
 
-	Vic2::Issues issues({});
-	Vic2::Pop::Factory popFactory(issues);
-
-	std::stringstream provinceOneInput;
-	provinceOneInput << "= {\n";
-	provinceOneInput << "\tcore = TAG\n";
-	provinceOneInput << "\tclerks = {\n";
-	provinceOneInput << "\t\tsize = 12\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "}\n";
-	const auto provinceOne = std::make_shared<Vic2::Province>("1", provinceOneInput, popFactory);
+	std::stringstream popInput;
+	popInput << "={\n";
+	popInput << "\t\tsize=12\n";
+	popInput << "\t}";
+	const auto clerks = popFactory.getPop("clerks", popInput);
+	const std::shared_ptr<Vic2::Province> provinceOne =
+		 Vic2::Province::Builder{}.setNumber(1).setCores({"TAG"}).setPops(std::vector<Vic2::Pop>{*clerks}).build();
 	state->addProvince(provinceOne);
 
 	state->determineEmployedWorkers();
@@ -187,9 +174,9 @@ TEST(Vic2World_States_StateTests, ClerksAddTwoToEmployedWorkers)
 }
 
 
-TEST(Vic2World_States_StateTests, ClerkLiteracyDoesNotAffectEmployedWorkers)
+TEST_F(Vic2World_States_StateTests, ClerkLiteracyDoesNotAffectEmployedWorkers)
 {
-	Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
+	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
 
 	std::stringstream stateInput;
 	stateInput << "= {\n";
@@ -200,18 +187,14 @@ TEST(Vic2World_States_StateTests, ClerkLiteracyDoesNotAffectEmployedWorkers)
 	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
 	state->setOwner("TAG");
 
-	Vic2::Issues issues({});
-	Vic2::Pop::Factory popFactory(issues);
-
-	std::stringstream provinceOneInput;
-	provinceOneInput << "= {\n";
-	provinceOneInput << "\tcore = TAG\n";
-	provinceOneInput << "\tclerks = {\n";
-	provinceOneInput << "\t\tsize = 12\n";
-	provinceOneInput << "\t\tliteracy = 1.00\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "}\n";
-	const auto provinceOne = std::make_shared<Vic2::Province>("1", provinceOneInput, popFactory);
+	std::stringstream popInput;
+	popInput << "={\n";
+	popInput << "\t\tsize=12\n";
+	popInput << "\t\tliteracy = 1.00\n";
+	popInput << "\t}";
+	const auto clerks = popFactory.getPop("clerks", popInput);
+	const std::shared_ptr<Vic2::Province> provinceOne =
+		 Vic2::Province::Builder{}.setNumber(1).setCores({"TAG"}).setPops(std::vector<Vic2::Pop>{*clerks}).build();
 	state->addProvince(provinceOne);
 
 	state->determineEmployedWorkers();
@@ -220,9 +203,9 @@ TEST(Vic2World_States_StateTests, ClerkLiteracyDoesNotAffectEmployedWorkers)
 }
 
 
-TEST(Vic2World_States_StateTests, ArtisansAddHalfToEmployedWorkers)
+TEST_F(Vic2World_States_StateTests, ArtisansAddHalfToEmployedWorkers)
 {
-	Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
+	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
 
 	std::stringstream stateInput;
 	stateInput << "= {\n";
@@ -233,17 +216,13 @@ TEST(Vic2World_States_StateTests, ArtisansAddHalfToEmployedWorkers)
 	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
 	state->setOwner("TAG");
 
-	Vic2::Issues issues({});
-	Vic2::Pop::Factory popFactory(issues);
-
-	std::stringstream provinceOneInput;
-	provinceOneInput << "= {\n";
-	provinceOneInput << "\tcore = TAG\n";
-	provinceOneInput << "\tartisans = {\n";
-	provinceOneInput << "\t\tsize = 12\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "}\n";
-	const auto provinceOne = std::make_shared<Vic2::Province>("1", provinceOneInput, popFactory);
+	std::stringstream popInput;
+	popInput << "={\n";
+	popInput << "\t\tsize=12\n";
+	popInput << "\t}";
+	const auto artisans = popFactory.getPop("artisans", popInput);
+	const std::shared_ptr<Vic2::Province> provinceOne =
+		 Vic2::Province::Builder{}.setNumber(1).setCores({"TAG"}).setPops(std::vector<Vic2::Pop>{*artisans}).build();
 	state->addProvince(provinceOne);
 
 	state->determineEmployedWorkers();
@@ -252,9 +231,9 @@ TEST(Vic2World_States_StateTests, ArtisansAddHalfToEmployedWorkers)
 }
 
 
-TEST(Vic2World_States_StateTests, ArtisanLiteracyDoesNotAffectEmployedWorkers)
+TEST_F(Vic2World_States_StateTests, ArtisanLiteracyDoesNotAffectEmployedWorkers)
 {
-	Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
+	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
 
 	std::stringstream stateInput;
 	stateInput << "= {\n";
@@ -265,18 +244,14 @@ TEST(Vic2World_States_StateTests, ArtisanLiteracyDoesNotAffectEmployedWorkers)
 	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
 	state->setOwner("TAG");
 
-	Vic2::Issues issues({});
-	Vic2::Pop::Factory popFactory(issues);
-
-	std::stringstream provinceOneInput;
-	provinceOneInput << "= {\n";
-	provinceOneInput << "\tcore = TAG\n";
-	provinceOneInput << "\tartisans = {\n";
-	provinceOneInput << "\t\tsize = 12\n";
-	provinceOneInput << "\t\tliteracy = 1.00\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "}\n";
-	const auto provinceOne = std::make_shared<Vic2::Province>("1", provinceOneInput, popFactory);
+	std::stringstream popInput;
+	popInput << "={\n";
+	popInput << "\t\tsize=12\n";
+	popInput << "\t\tliteracy = 1.00\n";
+	popInput << "\t}";
+	const auto artisans = popFactory.getPop("artisans", popInput);
+	const std::shared_ptr<Vic2::Province> provinceOne =
+		 Vic2::Province::Builder{}.setNumber(1).setCores({"TAG"}).setPops(std::vector<Vic2::Pop>{*artisans}).build();
 	state->addProvince(provinceOne);
 
 	state->determineEmployedWorkers();
@@ -285,9 +260,9 @@ TEST(Vic2World_States_StateTests, ArtisanLiteracyDoesNotAffectEmployedWorkers)
 }
 
 
-TEST(Vic2World_States_StateTests, CapitalistsAddTwoToEmployedWorkers)
+TEST_F(Vic2World_States_StateTests, CapitalistsAddTwoToEmployedWorkers)
 {
-	Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
+	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
 
 	std::stringstream stateInput;
 	stateInput << "= {\n";
@@ -298,18 +273,14 @@ TEST(Vic2World_States_StateTests, CapitalistsAddTwoToEmployedWorkers)
 	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
 	state->setOwner("TAG");
 
-	Vic2::Issues issues({});
-	Vic2::Pop::Factory popFactory(issues);
-
-	std::stringstream provinceOneInput;
-	provinceOneInput << "= {\n";
-	provinceOneInput << "\tcore = TAG\n";
-	provinceOneInput << "\tcapitalists = {\n";
-	provinceOneInput << "\t\tsize = 10\n";
-	provinceOneInput << "\t\tliteracy = 1.00\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "}\n";
-	const auto provinceOne = std::make_shared<Vic2::Province>("1", provinceOneInput, popFactory);
+	std::stringstream popInput;
+	popInput << "={\n";
+	popInput << "\t\tsize=10\n";
+	popInput << "\t\tliteracy = 1.00\n";
+	popInput << "\t}";
+	const auto capitalists = popFactory.getPop("capitalists", popInput);
+	const std::shared_ptr<Vic2::Province> provinceOne =
+		 Vic2::Province::Builder{}.setNumber(1).setCores({"TAG"}).setPops(std::vector<Vic2::Pop>{*capitalists}).build();
 	state->addProvince(provinceOne);
 
 	state->determineEmployedWorkers();
@@ -318,9 +289,9 @@ TEST(Vic2World_States_StateTests, CapitalistsAddTwoToEmployedWorkers)
 }
 
 
-TEST(Vic2World_States_StateTests, CapitalistLiteracyAffectsEmployedWorkers)
+TEST_F(Vic2World_States_StateTests, CapitalistLiteracyAffectsEmployedWorkers)
 {
-	Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
+	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
 
 	std::stringstream stateInput;
 	stateInput << "= {\n";
@@ -331,18 +302,14 @@ TEST(Vic2World_States_StateTests, CapitalistLiteracyAffectsEmployedWorkers)
 	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
 	state->setOwner("TAG");
 
-	Vic2::Issues issues({});
-	Vic2::Pop::Factory popFactory(issues);
-
-	std::stringstream provinceOneInput;
-	provinceOneInput << "= {\n";
-	provinceOneInput << "\tcore = TAG\n";
-	provinceOneInput << "\tcapitalists = {\n";
-	provinceOneInput << "\t\tsize = 10\n";
-	provinceOneInput << "\t\tliteracy = 0.00\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "}\n";
-	const auto provinceOne = std::make_shared<Vic2::Province>("1", provinceOneInput, popFactory);
+	std::stringstream popInput;
+	popInput << "={\n";
+	popInput << "\t\tsize=10\n";
+	popInput << "\t\tliteracy = 0.00\n";
+	popInput << "\t}";
+	const auto capitalists = popFactory.getPop("capitalists", popInput);
+	const std::shared_ptr<Vic2::Province> provinceOne =
+		 Vic2::Province::Builder{}.setNumber(1).setCores({"TAG"}).setPops(std::vector<Vic2::Pop>{*capitalists}).build();
 	state->addProvince(provinceOne);
 
 	state->determineEmployedWorkers();
@@ -351,9 +318,9 @@ TEST(Vic2World_States_StateTests, CapitalistLiteracyAffectsEmployedWorkers)
 }
 
 
-TEST(Vic2World_States_StateTests, CraftsmentAndClerksCappedByFactoryLevel)
+TEST_F(Vic2World_States_StateTests, CraftsmentAndClerksCappedByFactoryLevel)
 {
-	Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
+	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
 
 	std::stringstream stateInput;
 	stateInput << "= {\n";
@@ -364,20 +331,21 @@ TEST(Vic2World_States_StateTests, CraftsmentAndClerksCappedByFactoryLevel)
 	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
 	state->setOwner("TAG");
 
-	Vic2::Issues issues({});
-	Vic2::Pop::Factory popFactory(issues);
-
-	std::stringstream provinceOneInput;
-	provinceOneInput << "= {\n";
-	provinceOneInput << "\tcore = TAG\n";
-	provinceOneInput << "\tcraftsmen = {\n";
-	provinceOneInput << "\t\tsize = 10000\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "\tclerks = {\n";
-	provinceOneInput << "\t\tsize = 5000\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "}\n";
-	const auto provinceOne = std::make_shared<Vic2::Province>("1", provinceOneInput, popFactory);
+	std::stringstream craftsmenInput;
+	craftsmenInput << "={\n";
+	craftsmenInput << "\t\tsize=10000\n";
+	craftsmenInput << "\t}";
+	const auto craftsmen = popFactory.getPop("craftsmen", craftsmenInput);
+	std::stringstream clerksInput;
+	clerksInput << "={\n";
+	clerksInput << "\t\tsize=5000\n";
+	clerksInput << "\t}";
+	const auto clerks = popFactory.getPop("clerks", clerksInput);
+	const std::shared_ptr<Vic2::Province> provinceOne = Vic2::Province::Builder{}
+																			  .setNumber(1)
+																			  .setCores({"TAG"})
+																			  .setPops(std::vector<Vic2::Pop>{*craftsmen, *clerks})
+																			  .build();
 	state->addProvince(provinceOne);
 
 	state->determineEmployedWorkers();
@@ -386,9 +354,9 @@ TEST(Vic2World_States_StateTests, CraftsmentAndClerksCappedByFactoryLevel)
 }
 
 
-TEST(Vic2World_States_StateTests, ArtisansNotCappedByFactoryLevel)
+TEST_F(Vic2World_States_StateTests, ArtisansNotCappedByFactoryLevel)
 {
-	Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
+	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
 
 	std::stringstream stateInput;
 	stateInput << "= {\n";
@@ -399,21 +367,21 @@ TEST(Vic2World_States_StateTests, ArtisansNotCappedByFactoryLevel)
 	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
 	state->setOwner("TAG");
 
-	Vic2::Issues issues({});
-	Vic2::Pop::Factory popFactory(issues);
-
-	std::stringstream provinceOneInput;
-	provinceOneInput << "= {\n";
-	provinceOneInput << "\tcore = TAG\n";
-	provinceOneInput << "\tartisans = {\n";
-	provinceOneInput << "\t\tsize = 30000\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "\tclerks = {\n";
-	provinceOneInput << "\t\tsize = 20000\n";
-	provinceOneInput << "\t\tliteracy = 1.00\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "}\n";
-	const auto provinceOne = std::make_shared<Vic2::Province>("1", provinceOneInput, popFactory);
+	std::stringstream artisansInput;
+	artisansInput << "={\n";
+	artisansInput << "\t\tsize=30000\n";
+	artisansInput << "\t}";
+	const auto artisans = popFactory.getPop("artisans", artisansInput);
+	std::stringstream clerksInput;
+	clerksInput << "={\n";
+	clerksInput << "\t\tsize=20000\n";
+	clerksInput << "\t}";
+	const auto clerks = popFactory.getPop("clerks", clerksInput);
+	const std::shared_ptr<Vic2::Province> provinceOne = Vic2::Province::Builder{}
+																			  .setNumber(1)
+																			  .setCores({"TAG"})
+																			  .setPops(std::vector<Vic2::Pop>{*artisans, *clerks})
+																			  .build();
 	state->addProvince(provinceOne);
 
 	state->determineEmployedWorkers();
@@ -422,9 +390,9 @@ TEST(Vic2World_States_StateTests, ArtisansNotCappedByFactoryLevel)
 }
 
 
-TEST(Vic2World_States_StateTests, CapitalistsNotCappedByFactoryLevel)
+TEST_F(Vic2World_States_StateTests, CapitalistsNotCappedByFactoryLevel)
 {
-	Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
+	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
 
 	std::stringstream stateInput;
 	stateInput << "= {\n";
@@ -435,22 +403,23 @@ TEST(Vic2World_States_StateTests, CapitalistsNotCappedByFactoryLevel)
 	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
 	state->setOwner("TAG");
 
-	Vic2::Issues issues({});
-	Vic2::Pop::Factory popFactory(issues);
-
-	std::stringstream provinceOneInput;
-	provinceOneInput << "= {\n";
-	provinceOneInput << "\tcore = TAG\n";
-	provinceOneInput << "\tcapitalists = {\n";
-	provinceOneInput << "\t\tsize = 20000\n";
-	provinceOneInput << "\t\tliteracy = 1.00\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "\tclerks = {\n";
-	provinceOneInput << "\t\tsize = 20000\n";
-	provinceOneInput << "\t\tliteracy = 1.00\n";
-	provinceOneInput << "\t}\n";
-	provinceOneInput << "}\n";
-	const auto provinceOne = std::make_shared<Vic2::Province>("1", provinceOneInput, popFactory);
+	std::stringstream capitalistsInput;
+	capitalistsInput << "={\n";
+	capitalistsInput << "\t\tsize=20000\n";
+	capitalistsInput << "\t\tliteracy = 1.00\n";
+	capitalistsInput << "\t}";
+	const auto capitalists = popFactory.getPop("capitalists", capitalistsInput);
+	std::stringstream clerksInput;
+	clerksInput << "={\n";
+	clerksInput << "\t\tsize=20000\n";
+	clerksInput << "\t\tliteracy = 1.00\n";
+	clerksInput << "\t}";
+	const auto clerks = popFactory.getPop("clerks", clerksInput);
+	const std::shared_ptr<Vic2::Province> provinceOne = Vic2::Province::Builder{}
+																			  .setNumber(1)
+																			  .setCores({"TAG"})
+																			  .setPops(std::vector<Vic2::Pop>{*capitalists, *clerks})
+																			  .build();
 	state->addProvince(provinceOne);
 
 	state->determineEmployedWorkers();

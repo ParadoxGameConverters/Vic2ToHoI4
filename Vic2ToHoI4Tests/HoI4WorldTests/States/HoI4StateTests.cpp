@@ -8,7 +8,8 @@
 #include "../Vic2ToHoI4/Source/OutHoi4/States/OutHoI4State.h"
 #include "../Vic2ToHoI4/Source/V2World/Issues/Issues.h"
 #include "../Vic2ToHoI4/Source/V2World/Pops/PopFactory.h"
-#include "../Vic2ToHoI4/Source/V2World/Province.h"
+#include "../Vic2ToHoI4/Source/V2World/Provinces/Province.h"
+#include "../Vic2ToHoI4/Source/V2World/Provinces/ProvinceBuilder.h"
 #include "gtest/gtest.h"
 #include <optional>
 #include <sstream>
@@ -123,12 +124,8 @@ TEST_F(HoI4World_States_StateTests, ControlledProvincesDefaultToEmpty)
 
 TEST_F(HoI4World_States_StateTests, ControllersCanBeAdded)
 {
-	std::stringstream provinceInput;
-	provinceInput << "={\n";
-	provinceInput << "\towner=TAG\n";
-	provinceInput << "\tcontroller=NOT\n";
-	provinceInput << "}";
-	auto theProvince = std::make_shared<Vic2::Province>("12", provinceInput, popFactory);
+	std::shared_ptr<Vic2::Province> theProvince =
+		 Vic2::Province::Builder{}.setNumber(12).setOwner("TAG").setController("NOT").build();
 	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	provinces.insert(theProvince);
 
@@ -151,12 +148,8 @@ TEST_F(HoI4World_States_StateTests, ControllersCanBeAdded)
 
 TEST_F(HoI4World_States_StateTests, ControllersConvertWithHoI4Tag)
 {
-	std::stringstream provinceInput;
-	provinceInput << "={\n";
-	provinceInput << "\towner=TAG\n";
-	provinceInput << "\tcontroller=NOT\n";
-	provinceInput << "}";
-	auto theProvince = std::make_shared<Vic2::Province>("12", provinceInput, popFactory);
+	std::shared_ptr<Vic2::Province> theProvince =
+		 Vic2::Province::Builder{}.setNumber(12).setOwner("TAG").setController("NOT").build();
 	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	provinces.insert(theProvince);
 
@@ -179,23 +172,19 @@ TEST_F(HoI4World_States_StateTests, ControllersConvertWithHoI4Tag)
 
 TEST_F(HoI4World_States_StateTests, ControllersDontConvertForRebels)
 {
-	std::stringstream provinceInput;
-	provinceInput << "={\n";
-	provinceInput << "\towner=TAG\n";
-	provinceInput << "\tcontroller=REB\n";
-	provinceInput << "}";
-	auto theProvince = std::make_shared<Vic2::Province>("12", provinceInput, popFactory);
+	const std::shared_ptr<Vic2::Province> theProvince =
+		 Vic2::Province::Builder{}.setNumber(12).setOwner("TAG").setController("REB").build();
 	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	provinces.insert(theProvince);
 
-	mockVic2State sourceState;
+	const mockVic2State sourceState;
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	mappers::ProvinceMapper theProvinceMapper{{}, {}};
+	const mappers::ProvinceMapper theProvinceMapper{{}, {}};
 
-	mockCountryMapper theCountryMapper;
-	std::optional<std::string> hoi4tag = "REB";
+	const mockCountryMapper theCountryMapper;
+	const std::optional<std::string> hoi4tag = "REB";
 	EXPECT_CALL(theCountryMapper, getHoI4Tag("REB")).WillOnce(testing::Return(hoi4tag));
 
 	theState.convertControlledProvinces(provinces, theProvinceMapper, theCountryMapper);
@@ -426,23 +415,17 @@ TEST_F(HoI4World_States_StateTests, NavalBasesCanBeConverted)
 	theState.addProvince(1);
 	theState.addProvince(2);
 
-	std::stringstream input;
-	input << "= {\n";
-	input << "\tnaval_base = 1.0";
-	input << "}";
-	auto sourceProvince = std::make_shared<Vic2::Province>("1", input, popFactory);
-	std::stringstream input2;
-	input2 << "= {\n";
-	input2 << "\tnaval_base = 1.0";
-	input2 << "}";
-	auto sourceProvince2 = std::make_shared<Vic2::Province>("2", input2, popFactory);
+	const std::shared_ptr<Vic2::Province> sourceProvince =
+		 Vic2::Province::Builder{}.setNumber(1).setNavalBaseLevel(1).build();
+	const std::shared_ptr<Vic2::Province> sourceProvince2 =
+		 Vic2::Province::Builder{}.setNumber(2).setNavalBaseLevel(1).build();
 	const std::set<std::shared_ptr<Vic2::Province>> sourceProvinces{sourceProvince, sourceProvince2};
 
 	const mockCoastalProvinces theCoastalProvinces;
 	EXPECT_CALL(theCoastalProvinces, isProvinceCoastal(1)).WillOnce(testing::Return(true));
 	EXPECT_CALL(theCoastalProvinces, isProvinceCoastal(2)).WillOnce(testing::Return(true));
 
-	mappers::ProvinceMapper theProvinceMapper{{}, {{1, {1}}, {2, {2}}}};
+	const mappers::ProvinceMapper theProvinceMapper{{}, {{1, {1}}, {2, {2}}}};
 
 	theState.convertNavalBases(sourceProvinces, theCoastalProvinces, theProvinceMapper);
 
@@ -472,17 +455,16 @@ TEST_F(HoI4World_States_StateTests, AirbaseLevelCanBeIncreased)
 {
 	HoI4::State theState;
 	theState.addAirBase(2);
-	theState.addAirBase(2);
+	theState.addAirBase(3);
 
-	ASSERT_EQ(4, theState.getAirbaseLevel());
+	ASSERT_EQ(5, theState.getAirbaseLevel());
 }
 
 
 TEST_F(HoI4World_States_StateTests, AirbaseLevelCappedAtTen)
 {
 	HoI4::State theState;
-	theState.addAirBase(2);
-	theState.addAirBase(2);
+	theState.addAirBase(5);
 	theState.addAirBase(10);
 
 	ASSERT_EQ(10, theState.getAirbaseLevel());
@@ -500,25 +482,28 @@ TEST_F(HoI4World_States_StateTests, ManpowerReturnsMinimumOfOne)
 
 TEST_F(HoI4World_States_StateTests, ManpowerCanBeSet)
 {
-	std::stringstream provinceInput;
-	provinceInput << "={\n";
-	provinceInput << "\towner=TAG\n";
-	provinceInput << "\tcontroller=REB\n";
-	provinceInput << "\tfarmers={\n";
-	provinceInput << "\t\tsize=12345\n";
-	provinceInput << "\t}\n";
-	provinceInput << "}";
-	auto theProvince = std::make_shared<Vic2::Province>("12", provinceInput, popFactory);
+	std::stringstream popInput;
+	popInput << "={\n";
+	popInput << "\t\tsize=12345\n";
+	popInput << "\t}";
+	const auto farmers = popFactory.getPop("farmers", popInput);
+
+	const std::shared_ptr<Vic2::Province> theProvince = Vic2::Province::Builder{}
+																	  .setNumber(12)
+																	  .setOwner("TAG")
+																	  .setController("REB")
+																	  .setPops(std::vector<Vic2::Pop>{*farmers})
+																	  .build();
 	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	provinces.insert(theProvince);
 
-	mockVic2State sourceState;
+	const mockVic2State sourceState;
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
+	const mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
-	Configuration theConfiguration;
+	const Configuration theConfiguration;
 	theState.addManpower(provinces, theProvinceMapper, theConfiguration);
 
 	ASSERT_EQ(49380, theState.getManpower());
@@ -536,7 +521,7 @@ TEST_F(HoI4World_States_StateTests, HasResourcesDefaultsToFalse)
 
 TEST_F(HoI4World_States_StateTests, ResourcesCanBeAdded)
 {
-	mockVic2State sourceState;
+	const mockVic2State sourceState;
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addResource("steel", 5.5);
 	theState.addResource("oil", 7.25);
@@ -602,14 +587,14 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetManually)
 
 TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital)
 {
-	mockVic2State sourceState;
+	const mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(12));
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
+	const mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
-	Configuration theConfiguration;
+	const Configuration theConfiguration;
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -619,30 +604,35 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital
 
 TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDetectedViaAristocrats)
 {
-	std::stringstream provinceInput;
-	provinceInput << "={\n";
-	provinceInput << "\towner=TAG\n";
-	provinceInput << "\tcontroller=REB\n";
-	provinceInput << "\tfarmers={\n";
-	provinceInput << "\t\tsize=123456\n";
-	provinceInput << "\t}\n";
-	provinceInput << "}";
-	auto theProvince = std::make_shared<Vic2::Province>("12", provinceInput, popFactory);
+	std::stringstream popInput;
+	popInput << "={\n";
+	popInput << "\t\tsize=123456\n";
+	popInput << "\t}";
+	auto farmers = popFactory.getPop("farmers", popInput);
 
-	std::stringstream provinceInput2;
-	provinceInput2 << "={\n";
-	provinceInput2 << "\towner=TAG\n";
-	provinceInput2 << "\tcontroller=REB\n";
-	provinceInput2 << "\taristocrats={\n";
-	provinceInput2 << "\t\tsize=12345\n";
-	provinceInput2 << "\t}\n";
-	provinceInput2 << "}";
-	auto anotherProvince = std::make_shared<Vic2::Province>("24", provinceInput2, popFactory);
-	std::set<std::shared_ptr<Vic2::Province>> provinces;
-	provinces.insert(theProvince);
-	provinces.insert(anotherProvince);
+	std::shared_ptr<Vic2::Province> theProvince = Vic2::Province::Builder{}
+																	  .setNumber(12)
+																	  .setOwner("TAG")
+																	  .setController("REB")
+																	  .setPops(std::vector<Vic2::Pop>{*farmers})
+																	  .build();
 
-	mockVic2State sourceState;
+	std::stringstream popInput2;
+	popInput2 << "={\n";
+	popInput2 << "\t\tsize=12345\n";
+	popInput2 << "\t}";
+	auto aristocrats = popFactory.getPop("aristocrats", popInput2);
+
+	std::shared_ptr<Vic2::Province> anotherProvince = Vic2::Province::Builder{}
+																	  .setNumber(24)
+																	  .setOwner("TAG")
+																	  .setController("REB")
+																	  .setPops(std::vector<Vic2::Pop>{*aristocrats})
+																	  .build();
+	
+	std::set<std::shared_ptr<Vic2::Province>> provinces{theProvince, anotherProvince};
+
+	const mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getProvinces()).WillOnce(testing::Return(provinces));
 	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(std::nullopt));
 
@@ -650,9 +640,9 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital
 	theState.addProvince(12);
 	theState.addProvince(24);
 
-	mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
+	const mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
-	Configuration theConfiguration;
+	const Configuration theConfiguration;
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -662,30 +652,35 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital
 
 TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDetectedViaBureaucrats)
 {
-	std::stringstream provinceInput;
-	provinceInput << "={\n";
-	provinceInput << "\towner=TAG\n";
-	provinceInput << "\tcontroller=REB\n";
-	provinceInput << "\tfarmers={\n";
-	provinceInput << "\t\tsize=123456\n";
-	provinceInput << "\t}\n";
-	provinceInput << "}";
-	auto theProvince = std::make_shared<Vic2::Province>("12", provinceInput, popFactory);
+	std::stringstream popInput;
+	popInput << "={\n";
+	popInput << "\t\tsize=123456\n";
+	popInput << "\t}";
+	auto farmers = popFactory.getPop("farmers", popInput);
 
-	std::stringstream provinceInput2;
-	provinceInput2 << "={\n";
-	provinceInput2 << "\towner=TAG\n";
-	provinceInput2 << "\tcontroller=REB\n";
-	provinceInput2 << "\tbureaucrats={\n";
-	provinceInput2 << "\t\tsize=12345\n";
-	provinceInput2 << "\t}\n";
-	provinceInput2 << "}";
-	auto anotherProvince = std::make_shared<Vic2::Province>("24", provinceInput2, popFactory);
-	std::set<std::shared_ptr<Vic2::Province>> provinces;
-	provinces.insert(theProvince);
-	provinces.insert(anotherProvince);
+	std::shared_ptr<Vic2::Province> theProvince = Vic2::Province::Builder{}
+																	  .setNumber(12)
+																	  .setOwner("TAG")
+																	  .setController("REB")
+																	  .setPops(std::vector<Vic2::Pop>{*farmers})
+																	  .build();
 
-	mockVic2State sourceState;
+	std::stringstream popInput2;
+	popInput2 << "={\n";
+	popInput2 << "\t\tsize=12345\n";
+	popInput2 << "\t}";
+	auto bureaucrats = popFactory.getPop("bureaucrats", popInput2);
+
+	std::shared_ptr<Vic2::Province> anotherProvince = Vic2::Province::Builder{}
+																			.setNumber(24)
+																			.setOwner("TAG")
+																			.setController("REB")
+																			.setPops(std::vector<Vic2::Pop>{*bureaucrats})
+																			.build();
+
+	std::set<std::shared_ptr<Vic2::Province>> provinces{theProvince, anotherProvince};
+
+	const mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getProvinces()).WillOnce(testing::Return(provinces));
 	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(std::nullopt));
 
@@ -693,9 +688,9 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital
 	theState.addProvince(12);
 	theState.addProvince(24);
 
-	mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
+	const mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
-	Configuration theConfiguration;
+	const Configuration theConfiguration;
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -705,30 +700,35 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital
 
 TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDetectedViaCapitalists)
 {
-	std::stringstream provinceInput;
-	provinceInput << "={\n";
-	provinceInput << "\towner=TAG\n";
-	provinceInput << "\tcontroller=REB\n";
-	provinceInput << "\tfarmers={\n";
-	provinceInput << "\t\tsize=123456\n";
-	provinceInput << "\t}\n";
-	provinceInput << "}";
-	auto theProvince = std::make_shared<Vic2::Province>("12", provinceInput, popFactory);
+	std::stringstream popInput;
+	popInput << "={\n";
+	popInput << "\t\tsize=123456\n";
+	popInput << "\t}";
+	auto farmers = popFactory.getPop("farmers", popInput);
 
-	std::stringstream provinceInput2;
-	provinceInput2 << "={\n";
-	provinceInput2 << "\towner=TAG\n";
-	provinceInput2 << "\tcontroller=REB\n";
-	provinceInput2 << "\tcapitalists={\n";
-	provinceInput2 << "\t\tsize=12345\n";
-	provinceInput2 << "\t}\n";
-	provinceInput2 << "}";
-	auto anotherProvince = std::make_shared<Vic2::Province>("24", provinceInput2, popFactory);
-	std::set<std::shared_ptr<Vic2::Province>> provinces;
-	provinces.insert(theProvince);
-	provinces.insert(anotherProvince);
+	std::shared_ptr<Vic2::Province> theProvince = Vic2::Province::Builder{}
+																	  .setNumber(12)
+																	  .setOwner("TAG")
+																	  .setController("REB")
+																	  .setPops(std::vector<Vic2::Pop>{*farmers})
+																	  .build();
 
-	mockVic2State sourceState;
+	std::stringstream popInput2;
+	popInput2 << "={\n";
+	popInput2 << "\t\tsize=12345\n";
+	popInput2 << "\t}";
+	auto capitalists = popFactory.getPop("capitalists", popInput2);
+
+	std::shared_ptr<Vic2::Province> anotherProvince = Vic2::Province::Builder{}
+																			.setNumber(24)
+																			.setOwner("TAG")
+																			.setController("REB")
+																			.setPops(std::vector<Vic2::Pop>{*capitalists})
+																			.build();
+
+	std::set<std::shared_ptr<Vic2::Province>> provinces{theProvince, anotherProvince};
+
+	const mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getProvinces()).WillOnce(testing::Return(provinces));
 	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(std::nullopt));
 
@@ -736,9 +736,9 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital
 	theState.addProvince(12);
 	theState.addProvince(24);
 
-	mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
+	const mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
-	Configuration theConfiguration;
+	const Configuration theConfiguration;
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -748,30 +748,35 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital
 
 TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousProvince)
 {
-	std::stringstream provinceInput;
-	provinceInput << "={\n";
-	provinceInput << "\towner=TAG\n";
-	provinceInput << "\tcontroller=REB\n";
-	provinceInput << "\tfarmers={\n";
-	provinceInput << "\t\tsize=12345\n";
-	provinceInput << "\t}\n";
-	provinceInput << "}";
-	auto theProvince = std::make_shared<Vic2::Province>("12", provinceInput, popFactory);
+	std::stringstream popInput;
+	popInput << "={\n";
+	popInput << "\t\tsize=12345\n";
+	popInput << "\t}";
+	auto farmers = popFactory.getPop("farmers", popInput);
 
-	std::stringstream provinceInput2;
-	provinceInput2 << "={\n";
-	provinceInput2 << "\towner=TAG\n";
-	provinceInput2 << "\tcontroller=REB\n";
-	provinceInput2 << "\tfarmers={\n";
-	provinceInput2 << "\t\tsize=123456\n";
-	provinceInput2 << "\t}\n";
-	provinceInput2 << "}";
-	auto anotherProvince = std::make_shared<Vic2::Province>("24", provinceInput2, popFactory);
-	std::set<std::shared_ptr<Vic2::Province>> provinces;
-	provinces.insert(theProvince);
-	provinces.insert(anotherProvince);
+	std::shared_ptr<Vic2::Province> theProvince = Vic2::Province::Builder{}
+																	  .setNumber(12)
+																	  .setOwner("TAG")
+																	  .setController("REB")
+																	  .setPops(std::vector<Vic2::Pop>{*farmers})
+																	  .build();
 
-	mockVic2State sourceState;
+	std::stringstream popInput2;
+	popInput2 << "={\n";
+	popInput2 << "\t\tsize=123456\n";
+	popInput2 << "\t}";
+	auto farmers2 = popFactory.getPop("farmers", popInput2);
+
+	std::shared_ptr<Vic2::Province> anotherProvince = Vic2::Province::Builder{}
+																			.setNumber(24)
+																			.setOwner("TAG")
+																			.setController("REB")
+																			.setPops(std::vector<Vic2::Pop>{*farmers2})
+																			.build();
+
+	std::set<std::shared_ptr<Vic2::Province>> provinces{theProvince, anotherProvince};
+
+	const mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getProvinces()).WillRepeatedly(testing::Return(provinces));
 	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(std::nullopt));
 
@@ -779,9 +784,9 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulous
 	theState.addProvince(12);
 	theState.addProvince(24);
 
-	mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
+	const mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
-	Configuration theConfiguration;
+	const Configuration theConfiguration;
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -791,21 +796,21 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulous
 
 TEST_F(HoI4World_States_StateTests, VictoryPointPositionLoggedIfNotSet)
 {
-	std::set<std::shared_ptr<Vic2::Province>> provinces;
+	const std::set<std::shared_ptr<Vic2::Province>> provinces;
 
-	mockVic2State sourceState;
+	const mockVic2State sourceState;
 	EXPECT_CALL(sourceState, getProvinceNumbers()).WillRepeatedly(testing::Return(std::set<int>{}));
 	EXPECT_CALL(sourceState, getProvinces()).WillRepeatedly(testing::Return(provinces));
 	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(std::nullopt));
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
-	mappers::ProvinceMapper theProvinceMapper{{}, {}};
+	const mappers::ProvinceMapper theProvinceMapper{{}, {}};
 
-	Configuration theConfiguration;
+	const Configuration theConfiguration;
 
-	std::stringstream log;
-	auto coutBuffer = std::cout.rdbuf();
+	const std::stringstream log;
+	const auto coutBuffer = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
@@ -819,20 +824,20 @@ TEST_F(HoI4World_States_StateTests, VictoryPointPositionLoggedIfNotSet)
 
 TEST_F(HoI4World_States_StateTests, DebugVPsCanBeAdded)
 {
-	mockVic2State sourceState;
+	const mockVic2State sourceState;
 	std::set<int> hoi4Provinces;
 	hoi4Provinces.insert(12);
 	EXPECT_CALL(sourceState, getProvinceNumbers()).WillOnce(testing::Return(hoi4Provinces));
 	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(std::nullopt));
-	std::set<std::shared_ptr<Vic2::Province>> provinces;
+	const std::set<std::shared_ptr<Vic2::Province>> provinces;
 	EXPECT_CALL(sourceState, getProvinces()).WillRepeatedly(testing::Return(provinces));
 
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
+	const mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
-	Configuration theConfiguration;
+	const Configuration theConfiguration;
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
@@ -842,34 +847,34 @@ TEST_F(HoI4World_States_StateTests, DebugVPsCanBeAdded)
 
 TEST_F(HoI4World_States_StateTests, SecondaryDebugVPsCanBeAdded)
 {
-	mockVic2State sourceState;
+	const mockVic2State sourceState;
 	std::set<int> hoi4Provinces;
 	hoi4Provinces.insert(12);
 	EXPECT_CALL(sourceState, getProvinceNumbers()).WillOnce(testing::Return(hoi4Provinces));
 	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(std::nullopt));
-	std::set<std::shared_ptr<Vic2::Province>> provinces;
+	const std::set<std::shared_ptr<Vic2::Province>> provinces;
 	EXPECT_CALL(sourceState, getProvinces()).WillRepeatedly(testing::Return(provinces));
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
-	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12, 13}}}};
+	const mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12, 13}}}};
 
-	Configuration theConfiguration;
+	const Configuration theConfiguration;
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
-	std::set<int> expectedVps{12, 13};
+	const std::set<int> expectedVps{12, 13};
 	ASSERT_EQ(expectedVps, theState.getSecondaryDebugVPs());
 }
 
 
 TEST_F(HoI4World_States_StateTests, DebugVpsAreOutput)
 {
-	mockVic2State sourceState;
-	std::set<int> hoi4Provinces{12, 24};
+	const mockVic2State sourceState;
+	const std::set<int> hoi4Provinces{12, 24};
 	EXPECT_CALL(sourceState, getProvinceNumbers()).WillOnce(testing::Return(hoi4Provinces));
 	EXPECT_CALL(sourceState, getCapitalProvince()).WillOnce(testing::Return(12));
-	std::set<std::shared_ptr<Vic2::Province>> provinces;
+	const std::set<std::shared_ptr<Vic2::Province>> provinces;
 	EXPECT_CALL(sourceState, getProvinces()).WillRepeatedly(testing::Return(provinces));
 
 	HoI4::State theState(sourceState, 42, "TAG");
@@ -878,9 +883,9 @@ TEST_F(HoI4World_States_StateTests, DebugVpsAreOutput)
 	theState.addProvince(24);
 	theState.addProvince(25);
 
-	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12, 13}}, {24, {24, 25}}}};
+	const mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12, 13}}, {24, {24, 25}}}};
 
-	Configuration theConfiguration;
+	const Configuration theConfiguration;
 
 	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
 
