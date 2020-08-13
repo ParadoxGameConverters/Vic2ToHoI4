@@ -135,16 +135,7 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	 Localisation& hoi4Localisations,
 	 bool debug)
 {
-	auto possibleRulingParty = sourceCountry.getRulingParty(sourceWorld.getParties());
-	if (!possibleRulingParty)
-	{
-		throw std::runtime_error(
-			 "Could not find the ruling party for " + sourceCountry.getTag() + ". " +
-			 "Most likely a mod was not included.\n" +
-			 "Double-check your settings, and remember to include EU4 to Vic2 mods. See the FAQ for more information.");
-	}
-
-	rulingParty = *possibleRulingParty;
+	rulingParty = sourceCountry.getRulingParty(sourceWorld.getParties());
 	auto sourceTag = sourceCountry.getTag();
 	auto sourceGovernment = sourceCountry.getGovernment();
 	auto rulingIdeology = rulingParty.getIdeology();

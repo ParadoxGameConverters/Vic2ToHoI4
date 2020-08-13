@@ -4,6 +4,7 @@
 #include "../Mappers/Provinces/ProvinceMapper.h"
 #include "CommonCountryData.h"
 #include "Country.h"
+#include "Date.h"
 #include "Diplomacy.h"
 #include "Inventions.h"
 #include "Issues/Issues.h"
@@ -32,6 +33,10 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	Province::Factory provinceFactory(popFactory);
 	State::Factory stateFactory;
 
+	registerKeyword("date", [](const std::string& unused, std::istream& theStream) {
+		const date theDate{commonItems::singleString{theStream}.getString()};
+		Log(LogLevel::Info) << "The date is " << theDate;
+	});
 
 	std::vector<int> GPIndexes;
 	registerKeyword("great_nations", [&GPIndexes, this](const std::string& unused, std::istream& theStream) {

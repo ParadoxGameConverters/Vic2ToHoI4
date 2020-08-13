@@ -95,7 +95,7 @@ class Country: commonItems::parser
 	std::optional<std::string> getAdjective(const std::string& language) const;
 	double getUpperHousePercentage(const std::string& ideology) const;
 	long getEmployedWorkers() const;
-	virtual std::optional<const Vic2::Party> getRulingParty(const std::vector<Vic2::Party>& allParties) const;
+	virtual const Vic2::Party getRulingParty(const std::vector<Vic2::Party>& allParties) const;
 	virtual std::set<Vic2::Party> getActiveParties(const std::vector<Vic2::Party>& allParties) const;
 	bool hasCoreOnCapital() const;
 	std::vector<std::string> getShipNames(const std::string& category) const;
