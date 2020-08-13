@@ -414,16 +414,20 @@ long Vic2::Country::getEmployedWorkers() const
 }
 
 
-std::optional<const Vic2::Party> Vic2::Country::getRulingParty(const std::vector<Vic2::Party>& allParties) const
+const Vic2::Party Vic2::Country::getRulingParty(const std::vector<Vic2::Party>& allParties) const
 {
-	if ((rulingPartyID <= allParties.size()) && (rulingPartyID > 0))
+	if (rulingPartyID == 0)
 	{
-		return allParties.at(rulingPartyID - 1); // Subtract 1, because party ID starts from index of 1
+		throw std::runtime_error(tag + " had no ruling party. The save needs manual repair.");
 	}
-	else
+	if (rulingPartyID > allParties.size())
 	{
-		return {};
+		throw std::runtime_error(
+			 "Could not find the ruling party for " + tag + ". " + "Most likely a mod was not included.\n" +
+			 "Double-check your settings, and remember to include EU4 to Vic2 mods. See the FAQ for more information.");
 	}
+
+	return allParties.at(rulingPartyID - 1); // Subtract 1, because party ID starts from index of 1
 }
 
 
