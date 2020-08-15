@@ -1476,3 +1476,19 @@ void HoI4::Events::generateGenericEvents(const Configuration& theConfiguration,
 		}
 	}
 }
+
+
+void HoI4::Events::importCapitulationEvents(const Configuration& theConfiguration,
+	 const std::set<std::string>& majorIdeologies)
+{
+	Log(LogLevel::Info) << "\tImporting capitulation events";
+
+	registerKeyword("news_event", [this, majorIdeologies](const std::string& type, std::istream& theStream) {
+		const Event capitulationEvent(type, theStream);
+		capitulationEvents.push_back(capitulationEvent);
+	});
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+
+	parseFile(theConfiguration.getHoI4Path() + "/events/CapitulationEvents.txt");
+	clearRegisteredKeywords();
+}
