@@ -346,9 +346,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacementRule.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Localisations</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRulesTests.cpp">
-      <Filter>HoI4WorldTests\Localisations</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacementRules.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Localisations</Filter>
     </ClCompile>
@@ -1070,6 +1067,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\CapitulationEvents.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Localisations\ArticleRules\ArticleRuleTests.cpp">
+      <Filter>HoI4WorldTests\Localisations\ArticleRules</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRulesTests.cpp">
+      <Filter>HoI4WorldTests\Ideologies</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRule.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations\ArticleRules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1326,6 +1332,12 @@
     </Filter>
     <Filter Include="Vic2WorldTests\Provinces">
       <UniqueIdentifier>{6e7b8723-c22b-49cc-a801-33bd55c54bc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\Localisations\ArticleRules">
+      <UniqueIdentifier>{c667654a-c54b-4055-9eb1-15130b41fa20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Localisations\ArticleRules">
+      <UniqueIdentifier>{dc39045a-1eda-4673-af60-9f74974079b3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
