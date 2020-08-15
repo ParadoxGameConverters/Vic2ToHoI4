@@ -25,7 +25,14 @@ std::ostream& HoI4::operator<<(std::ostream& out, const Event& theEvent)
 	}
 	if (theEvent.hidden)
 	{
-		out << "\thidden = yes\n";
+		if (*theEvent.hidden)
+		{
+			out << "\thidden = yes\n";
+		}
+		else
+		{
+			out << "\thidden = no\n";
+		}
 	}
 
 	if (!theEvent.trigger.empty())
@@ -37,7 +44,14 @@ std::ostream& HoI4::operator<<(std::ostream& out, const Event& theEvent)
 	if (theEvent.fireOnlyOnce)
 	{
 		out << "\n";
-		out << "\tfire_only_once = yes\n";
+		if (*theEvent.fireOnlyOnce)
+		{
+			out << "\tfire_only_once = yes\n";
+		}
+		else
+		{
+			out << "\tfire_only_once = no\n";
+		}
 	}
 
 	if (!theEvent.meanTimeToHappen.empty())
