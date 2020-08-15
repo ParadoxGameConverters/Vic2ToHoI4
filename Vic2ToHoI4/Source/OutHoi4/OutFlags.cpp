@@ -240,24 +240,15 @@ std::optional<std::string> HoI4::getAllowModFlags(const std::string& flagFilenam
 
 std::optional<tga_image*> HoI4::readFlag(const std::string& path)
 {
-	FILE* flagFile;
-	if (fopen_s(&flagFile, path.c_str(), "r+b") != 0)
-	{
-		Log(LogLevel::Warning) << "Could not open " << path;
-		return {};
-	}
-
 	auto flag = new tga_image;
-	const auto result = tga_read_from_FILE(flag, flagFile);
+	const auto result = tga_read(flag, path.c_str());
 	if (result != TGA_NOERR)
 	{
-		Log(LogLevel::Warning) << "Could not read flag " << path << ": " << tga_error(result)
-									  << ". FEOF: " << feof(flagFile) << ". Ferror: " << ferror(flagFile) << ".";
+		Log(LogLevel::Warning) << "Could not read flag " << path << ": " << tga_error(result) << ".";
 		delete flag;
 		flag = {};
 	}
 
-	fclose(flagFile);
 	return flag;
 }
 
@@ -311,17 +302,15 @@ void HoI4::createBigFlag(const tga_image* const sourceFlag, const std::string& f
 {
 	const auto destFlag = createNewFlag(sourceFlag, 82, 52);
 
-	FILE* outputFile;
-	if (fopen_s(&outputFile, ("output/" + outputName + "/gfx/flags/" + filename).c_str(), "w+b") != 0)
+	const auto result = tga_write(outputFile, ("output/" + outputName + "/gfx/flags/" + filename).c_str());
+	if (result)
 	{
 		tga_free_buffers(destFlag);
 		delete destFlag;
-		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/" + filename);
+		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/" + filename +
+					 " : " + tga_error(result));
 	}
 
-	tga_write_to_FILE(outputFile, destFlag);
-
-	fclose(outputFile);
 	tga_free_buffers(destFlag);
 	delete destFlag;
 }
@@ -333,17 +322,15 @@ void HoI4::createMediumFlag(const tga_image* const sourceFlag,
 {
 	const auto destFlag = createNewFlag(sourceFlag, 41, 26);
 
-	FILE* outputFile;
-	if (fopen_s(&outputFile, ("output/" + outputName + "/gfx/flags/medium/" + filename).c_str(), "w+b") != 0)
+	const auto result = tga_write(outputFile, ("output/" + outputName + "/gfx/flags/medium/" + filename).c_str());
+	if (result)
 	{
 		tga_free_buffers(destFlag);
 		delete destFlag;
-		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/medium/" + filename);
+		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/medium/" + filename +
+					" : " + tga_error(result));
 	}
 
-	tga_write_to_FILE(outputFile, destFlag);
-
-	fclose(outputFile);
 	tga_free_buffers(destFlag);
 	delete destFlag;
 }
@@ -355,17 +342,15 @@ void HoI4::createSmallFlag(const tga_image* const sourceFlag,
 {
 	const auto destFlag = createNewFlag(sourceFlag, 10, 7);
 
-	FILE* outputFile;
-	if (fopen_s(&outputFile, ("output/" + outputName + "/gfx/flags/small/" + filename).c_str(), "w+b") != 0)
+	const auto result = tga_write(outputFile, ("output/" + outputName + "/gfx/flags/small/" + filename).c_str());
+	if (result)
 	{
 		tga_free_buffers(destFlag);
 		delete destFlag;
-		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/small/" + filename);
+		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/small/" + filename +
+					" : " + tga_error(result));
 	}
 
-	tga_write_to_FILE(outputFile, destFlag);
-
-	fclose(outputFile);
 	tga_free_buffers(destFlag);
 	delete destFlag;
 }
