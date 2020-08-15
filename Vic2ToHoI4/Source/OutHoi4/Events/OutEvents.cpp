@@ -37,6 +37,7 @@ void HoI4::outputEvents(const Events& theEvents, const std::string& outputName)
 		 outputName);
 	outputActualEvents("Generic.txt", "generic", theEvents.getGenericEvents(), outputName);
 	outputGovernmentInExileDecision(theEvents.getGovernmentInExileEvent(), outputName);
+	outputActualEvents("CapitulationEvents.txt", "country_capitulated", theEvents.getCapitulationEvents(), outputName);
 }
 
 

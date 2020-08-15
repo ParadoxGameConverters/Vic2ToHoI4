@@ -926,6 +926,9 @@
     <ClCompile Include="Source\V2World\Provinces\ProvinceFactory.cpp">
       <Filter>Vic2World\Provinces</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Events\CapitulationEvents.cpp">
+      <Filter>HoI4World\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1741,6 +1744,9 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Provinces\ProvinceBuilder.h">
       <Filter>Vic2World\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Events\CapitulationEvents.h">
+      <Filter>HoI4World\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

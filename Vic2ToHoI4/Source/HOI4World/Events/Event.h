@@ -49,9 +49,9 @@ class Event: commonItems::parser
 	std::string picture;
 	bool majorEvent = false;
 	bool triggeredOnly = false;
-	bool hidden = false;
+	std::optional<bool> hidden;
 	std::string trigger;
-	bool fireOnlyOnce = false;
+	std::optional<bool> fireOnlyOnce;
 	std::string meanTimeToHappen;
 	std::string immediate;
 	std::vector<EventOption> options;
