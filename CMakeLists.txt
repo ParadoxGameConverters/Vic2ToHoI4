@@ -21,7 +21,6 @@ include_directories(googletest/googlemock/include)
 file(GLOB MAIN_SOURCE "${PROJECT_SOURCE_DIR}/main.cpp")
 file(GLOB CONVERTER_SOURCES "${PROJECT_SOURCE_DIR}/Color.cpp")
 file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/Configuration.cpp")
-file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/targa.cpp")
 file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/Vic2toHOI4Converter.cpp")
 file(GLOB HOI4WORLD_SOURCES "${PROJECT_SOURCE_DIR}/HOI4World/*.cpp")
 file(GLOB HOI4WORLD_DECISIONS_SOURCES "${PROJECT_SOURCE_DIR}/HOI4World/Decisions/*.cpp")
@@ -97,6 +96,7 @@ set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/OSCommonLayer.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Parser.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/ParserHelpers.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/StringUtils.cpp")
+set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/targa.cpp")
 
 add_executable(
 	Vic2ToHoi4Converter

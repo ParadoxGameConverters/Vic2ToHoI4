@@ -1,7 +1,7 @@
 #include "OutFlags.h"
 #include "../HOI4World/HoI4Country.h"
 #include "../V2World/Country.h"
-#include "../targa.h"
+#include "targa.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include <optional>
