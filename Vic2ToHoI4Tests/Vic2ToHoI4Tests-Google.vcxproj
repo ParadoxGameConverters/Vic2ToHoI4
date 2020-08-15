@@ -61,6 +61,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRule.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureGroupNames.cpp" />
@@ -314,6 +315,7 @@
     <ClCompile Include="HoI4WorldTests\IntelligenceAgencies\IntelligenceAgencyLogosTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Leader\AdvisorTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\AllReplacementRulesTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Localisations\ArticleRules\ArticleRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\ArticleRules\ArticleRuleTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRuleTests.cpp" />

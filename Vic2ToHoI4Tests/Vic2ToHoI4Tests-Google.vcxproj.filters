@@ -1076,6 +1076,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRule.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Localisations\ArticleRules</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Localisations\ArticleRules\ArticleRulesTests.cpp">
+      <Filter>HoI4WorldTests\Localisations\ArticleRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRules.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations\ArticleRules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
