@@ -17,4 +17,5 @@ HoI4::ArticleRulesDefinition::ArticleRulesDefinition(std::istream& theStream)
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
+	clearRegisteredKeywords();
 }
