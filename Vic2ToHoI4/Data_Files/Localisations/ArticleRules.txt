@@ -16,7 +16,8 @@
 
 link = { language = english matcher = "The (.+)" replacement = "$1" }
 link = { language = french matcher = "Le (.+)" matcher = "L'(.+)" matcher = "La (.+)" matcher = "Les (.+)"  replacement = "$1" }
-link = { language = german matcher = "Der (.+)" matcher = "Die (.+)n $2" matcher = "Die (.+)" matcher = "Das (.+)" replacement = "$1 $2" }
+link = { language = german matcher = "Die (.+)n (.+)" replacement = "$1 $2" }
+link = { language = german matcher = "Der (.+)" matcher = "Die (.+)" matcher = "Das (.+)" replacement = "$1" }
 link = { language = spanish matcher = "El (.+)" matcher = "La (.+)" matcher = "Los (.+)" matcher = "Las (.+)" replacement = "$1" }
 link = { language = italian matcher = "Il (.+)" matcher = "Lo (.+)" matcher = "L'(.+)" matcher = "La (.+)" matcher = "I (.+)" matcher = "Gli (.+)" matcher = "Le (.+)" replacement = "$1" }
 link = { language = swedish matcher = "A (.+)" matcher = "Az (.+)" replacement = "$1" } # Actually, Hungarian again
