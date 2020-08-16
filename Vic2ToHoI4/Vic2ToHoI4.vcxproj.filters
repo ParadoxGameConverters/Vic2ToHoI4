@@ -938,6 +938,12 @@
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRules.cpp">
       <Filter>HoI4World\Localisations\ArticleRules</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.cpp">
+      <Filter>HoI4World\Localisations\ArticleRules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.cpp">
+      <Filter>HoI4World\Localisations\ArticleRules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1767,6 +1773,12 @@
       <Filter>HoI4World\Localisations\ArticleRules</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesBuilder.h">
+      <Filter>HoI4World\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.h">
+      <Filter>HoI4World\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.h">
       <Filter>HoI4World\Localisations\ArticleRules</Filter>
     </ClInclude>
   </ItemGroup>

@@ -152,6 +152,8 @@
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRule.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRules.cpp" />
+    <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.cpp" />
+    <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="Source\HOI4World\Map\StrategicRegions.cpp" />
     <ClCompile Include="Source\HOI4World\Names\CultureGroupNames.cpp" />
@@ -410,6 +412,8 @@
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRuleBuilder.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRules.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesBuilder.h" />
+    <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.h" />
+    <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.h" />
     <ClInclude Include="Source\HOI4World\Map\HoI4Provinces.h" />
     <ClInclude Include="Source\HOI4World\Map\StrategicRegions.h" />
     <ClInclude Include="Source\HOI4World\Names\CultureGroupNames.h" />

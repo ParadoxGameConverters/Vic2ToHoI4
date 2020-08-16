@@ -1,0 +1,34 @@
+#ifndef ARTICLE_RULES_DEFINITION_H
+#define ARTICLE_RULES_DEFINITION_H
+
+
+
+#include "Parser.h"
+#include <string>
+#include <vector>
+
+
+
+namespace HoI4
+{
+
+class ArticleRulesDefinition: commonItems::parser
+{
+  public:
+	ArticleRulesDefinition(std::istream& theStream);
+
+	[[nodiscard]] const auto& getLanguage() const { return language; }
+	[[nodiscard]] const auto& getMatchers() const { return matchers; }
+	[[nodiscard]] const auto& getResult() const { return result; }
+
+  private:
+	std::string language;
+	std::vector<std::string> matchers;
+	std::string result;
+};
+
+} // namespace HoI4
+
+
+
+#endif // ARTICLE_RULES_DEFINITION_H
