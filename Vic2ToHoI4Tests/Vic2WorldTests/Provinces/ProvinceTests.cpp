@@ -1,241 +1,150 @@
 #include "../Vic2ToHoI4/Source/V2World/Issues/Issues.h"
+#include "../Vic2ToHoI4/Source/V2World/Pops/PopBuilder.h"
 #include "../Vic2ToHoI4/Source/V2World/Provinces/Province.h"
-#include "../Vic2ToHoI4/Source/V2World/Provinces/ProvinceFactory.h"
+#include "../Vic2ToHoI4/Source/V2World/Provinces/ProvinceBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
 
 
-class Vic2World_ProvinceTests: public testing::Test
+TEST(Vic2World_ProvinceTests, getTotalPopulationDefaultsToZero)
 {
-  protected:
-	Vic2World_ProvinceTests();
-
-	Vic2::Pop::Factory popFactory;
-	Vic2::Province::Factory provinceFactory;
-};
-
-
-Vic2World_ProvinceTests::Vic2World_ProvinceTests(): popFactory(Vic2::Issues({})), provinceFactory(popFactory)
-{
-}
-
-
-TEST_F(Vic2World_ProvinceTests, getTotalPopulationDefaultsToZero)
-{
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "}";
-
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = Vic2::Province::Builder{}.setNumber(42).build();
 
 	ASSERT_EQ(theProvince->getTotalPopulation(), 0);
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getTotalPopulationReturnsTotalPopulation)
+TEST(Vic2World_ProvinceTests, getTotalPopulationReturnsTotalPopulation)
 {
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "\tserfs={\n";
-	input << "\t\tsize=1";
-	input << "\t}\n";
-	input << "\tslaves={\n";
-	input << "\t\tsize=2";
-	input << "\t}\n";
-	input << "}";
-
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = Vic2::Province::Builder{}
+										  .setNumber(42)
+										  .setPops({*Vic2::Pop::Builder{}.setType("serfs").setSize(1).build(),
+												*Vic2::Pop::Builder{}.setType("slaves").setSize(2).build()})
+										  .build();
 
 	ASSERT_EQ(theProvince->getTotalPopulation(), 3);
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getPopulationDefaultsToZero)
+TEST(Vic2World_ProvinceTests, getPopulationDefaultsToZero)
 {
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "}";
-
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = Vic2::Province::Builder{}.setNumber(42).build();
 
 	ASSERT_EQ(theProvince->getPopulation(), 0);
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getPopulationWithNoTypeGivesTotalPopulation)
+TEST(Vic2World_ProvinceTests, getPopulationWithNoTypeGivesTotalPopulation)
 {
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "\tserfs={\n";
-	input << "\t\tsize=1";
-	input << "\t}\n";
-	input << "\tslaves={\n";
-	input << "\t\tsize=2";
-	input << "\t}\n";
-	input << "}";
-
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = Vic2::Province::Builder{}
+										  .setNumber(42)
+										  .setPops({*Vic2::Pop::Builder{}.setType("serfs").setSize(1).build(),
+												*Vic2::Pop::Builder{}.setType("slaves").setSize(2).build()})
+										  .build();
 
 	ASSERT_EQ(theProvince->getPopulation(), 3);
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getPopulationDiscriminatesBySpecifiedPopType)
+TEST(Vic2World_ProvinceTests, getPopulationDiscriminatesBySpecifiedPopType)
 {
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "\tserfs={\n";
-	input << "\t\tsize=1";
-	input << "\t}\n";
-	input << "\tslaves={\n";
-	input << "\t\tsize=2";
-	input << "\t}\n";
-	input << "}";
-
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = Vic2::Province::Builder{}
+										  .setNumber(42)
+										  .setPops({*Vic2::Pop::Builder{}.setType("serfs").setSize(1).build(),
+												*Vic2::Pop::Builder{}.setType("slaves").setSize(2).build()})
+										  .build();
 
 	ASSERT_EQ(theProvince->getPopulation("slaves"), 2);
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationDefaultsToZero)
+TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationDefaultsToZero)
 {
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "}";
-
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = Vic2::Province::Builder{}.setNumber(42).build();
 
 	ASSERT_EQ(theProvince->getLiteracyWeightedPopulation(), 0);
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesTenPercentAtNoLiteracy)
+TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesTenPercentAtNoLiteracy)
 {
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "\taristocrats={\n";
-	input << "\t\tsize=100";
-	input << "\t}\n";
-	input << "}";
-
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = Vic2::Province::Builder{}
+										  .setNumber(42)
+										  .setPops({*Vic2::Pop::Builder{}.setType("aristocrats").setSize(100).build()})
+										  .build();
 
 	ASSERT_EQ(theProvince->getLiteracyWeightedPopulation("aristocrats"), 10);
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesOneHundredPercentAtFullLiteracy)
+TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesOneHundredPercentAtFullLiteracy)
 {
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "\taristocrats={\n";
-	input << "\t\tsize=100";
-	input << "\t\tliteracy=1.0";
-	input << "\t}\n";
-	input << "}";
-
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince =
+		 Vic2::Province::Builder{}
+			  .setNumber(42)
+			  .setPops({*Vic2::Pop::Builder{}.setType("aristocrats").setSize(100).setLiteracy(1.0).build()})
+			  .build();
 
 	ASSERT_EQ(theProvince->getLiteracyWeightedPopulation("aristocrats"), 100);
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationDiscriminatesByPopType)
+TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationDiscriminatesByPopType)
 {
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "\taristocrats={\n";
-	input << "\t\tsize=100";
-	input << "\t\tliteracy=1.0";
-	input << "\t}\n";
-	input << "\tartisans={\n";
-	input << "\t\tsize=100";
-	input << "\t\tliteracy=0.5";
-	input << "\t}\n";
-	input << "}";
-
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince =
+		 Vic2::Province::Builder{}
+			  .setNumber(42)
+			  .setPops({*Vic2::Pop::Builder{}.setType("aristocrats").setSize(100).setLiteracy(1.0).build(),
+					*Vic2::Pop::Builder{}.setType("artisans").setSize(100).setLiteracy(0.5).build()})
+			  .build();
 
 	ASSERT_EQ(theProvince->getLiteracyWeightedPopulation("aristocrats"), 100);
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesAllPopsWhenNoTypeSpecified)
+TEST(Vic2World_ProvinceTests, getLiteracyWeightedPopulationGivesAllPopsWhenNoTypeSpecified)
 {
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "\taristocrats={\n";
-	input << "\t\tsize=100";
-	input << "\t\tliteracy=1.0";
-	input << "\t}\n";
-	input << "\tartisans={\n";
-	input << "\t\tsize=100";
-	input << "\t\tliteracy=0.5";
-	input << "\t}\n";
-	input << "}";
-
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince =
+		 Vic2::Province::Builder{}
+			  .setNumber(42)
+			  .setPops({*Vic2::Pop::Builder{}.setType("aristocrats").setSize(100).setLiteracy(1.0).build(),
+					*Vic2::Pop::Builder{}.setType("artisans").setSize(100).setLiteracy(0.5).build()})
+			  .build();
 
 	ASSERT_EQ(theProvince->getLiteracyWeightedPopulation(), 155);
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoPops)
+TEST(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoPops)
 {
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "}";
-
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = Vic2::Province::Builder{}.setNumber(42).build();
 
 	const std::set<std::string> cultures;
 	ASSERT_EQ(theProvince->getPercentageWithCultures(cultures), 0.0);
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCulturesSpecified)
+TEST(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCulturesSpecified)
 {
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "\taristocrats={\n";
-	input << "\t\tsize=100";
-	input << "\t\tculture=religion";
-	input << "\t}\n";
-	input << "}";
-
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince =
+		 Vic2::Province::Builder{}
+			  .setNumber(42)
+			  .setPops({*Vic2::Pop::Builder{}.setType("aristocrats").setSize(100).setCulture("culture").build()})
+			  .build();
 
 	const std::set<std::string> cultures;
 	ASSERT_EQ(theProvince->getPercentageWithCultures(cultures), 0.0);
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCulturesMatch)
+TEST(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCulturesMatch)
 {
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "\taristocrats={\n";
-	input << "\t\tsize=100";
-	input << "\t\tculture=religion";
-	input << "\t}\n";
-	input << "}";
-
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince =
+		 Vic2::Province::Builder{}
+			  .setNumber(42)
+			  .setPops({*Vic2::Pop::Builder{}.setType("aristocrats").setSize(100).setCulture("culture").build()})
+			  .build();
 
 	std::set<std::string> cultures;
 	cultures.insert("wrong_culture");
@@ -243,72 +152,49 @@ TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsZeroIfNoCultures
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsMatchedPercent)
+TEST(Vic2World_ProvinceTests, getPercentageWithCulturesReturnsMatchedPercent)
 {
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "\taristocrats={\n";
-	input << "\t\tsize=100";
-	input << "\t\tculture=religion";
-	input << "\t}\n";
-	input << "\taristocrats={\n";
-	input << "\t\tsize=100";
-	input << "\t\tculture2=religion";
-	input << "\t}\n";
-	input << "}";
-
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince =
+		 Vic2::Province::Builder{}
+			  .setNumber(42)
+			  .setPops({*Vic2::Pop::Builder{}.setType("aristocrats").setSize(100).setCulture("culture").build(),
+					*Vic2::Pop::Builder{}.setType("aristocrats").setSize(100).setCulture("culture2").build()})
+			  .build();
 
 	std::set<std::string> cultures;
 	cultures.insert("culture");
-	ASSERT_EQ(theProvince->getPercentageWithCultures(cultures), 0.5);
+	ASSERT_NEAR(theProvince->getPercentageWithCultures(cultures), 0.5, 0.0001);
 }
 
 
-TEST_F(Vic2World_ProvinceTests, getPercentageWithCulturesCanMapMultipleCultures)
+TEST(Vic2World_ProvinceTests, getPercentageWithCulturesCanMapMultipleCultures)
 {
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "\taristocrats={\n";
-	input << "\t\tsize=100";
-	input << "\t\tculture=religion";
-	input << "\t}\n";
-	input << "\taristocrats={\n";
-	input << "\t\tsize=100";
-	input << "\t\tanother_culture=religion";
-	input << "\t}\n";
-	input << "}";
-
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince =
+		 Vic2::Province::Builder{}
+			  .setNumber(42)
+			  .setPops({*Vic2::Pop::Builder{}.setType("aristocrats").setSize(100).setCulture("culture").build(),
+					*Vic2::Pop::Builder{}.setType("aristocrats").setSize(100).setCulture("another_culture").build()})
+			  .build();
 
 	std::set<std::string> cultures;
 	cultures.insert("culture");
 	cultures.insert("another_culture");
-	ASSERT_EQ(theProvince->getPercentageWithCultures(cultures), 1.0);
+	ASSERT_NEAR(theProvince->getPercentageWithCultures(cultures), 1.0, 0.0001);
 }
 
 
-TEST_F(Vic2World_ProvinceTests, ownerCanBeChanged)
+TEST(Vic2World_ProvinceTests, ownerCanBeChanged)
 {
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "\towner=\"TAG\"";
-	input << "}";
-
-	auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = Vic2::Province::Builder{}.setNumber(42).setOwner("TAG").build();
 	theProvince->setOwner("NEW");
 
 	ASSERT_EQ(theProvince->getOwner(), "NEW");
 }
 
 
-TEST_F(Vic2World_ProvinceTests, coresCanBeAdded)
+TEST(Vic2World_ProvinceTests, coresCanBeAdded)
 {
-	std::stringstream input;
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = Vic2::Province::Builder{}.setNumber(42).build();
 	theProvince->addCore("TAG");
 
 	ASSERT_EQ(theProvince->getCores().size(), 1);
@@ -316,16 +202,9 @@ TEST_F(Vic2World_ProvinceTests, coresCanBeAdded)
 }
 
 
-TEST_F(Vic2World_ProvinceTests, coresCanBeRemoved)
+TEST(Vic2World_ProvinceTests, coresCanBeRemoved)
 {
-	std::stringstream input;
-	input << "=\n";
-	input << "{\n";
-	input << "\tcore=\"TAG\"";
-	input << "\tcore=\"2ND\"";
-	input << "}";
-
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = Vic2::Province::Builder{}.setNumber(42).setCores({"TAG", "2ND"}).build();
 	theProvince->removeCore("2ND");
 
 	ASSERT_EQ(theProvince->getCores().size(), 1);
