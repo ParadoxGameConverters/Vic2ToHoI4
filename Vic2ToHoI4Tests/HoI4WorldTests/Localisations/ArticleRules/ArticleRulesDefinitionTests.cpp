@@ -4,7 +4,7 @@
 
 
 
-TEST(HoI4World_Localisations_ArticleRulesDefinition_ArticleRules, LanguageDefaultsToEmpty)
+TEST(HoI4World_Localisations_ArticleRules_ArticleRulesDefinition, LanguageDefaultsToEmpty)
 {
 	std::stringstream input;
 	const auto definition = HoI4::ArticleRulesDefinition(input);
@@ -13,7 +13,7 @@ TEST(HoI4World_Localisations_ArticleRulesDefinition_ArticleRules, LanguageDefaul
 }
 
 
-TEST(HoI4World_Localisations_ArticleRulesDefinition_ArticleRules, LanguageCanBeSet)
+TEST(HoI4World_Localisations_ArticleRules_ArticleRulesDefinition, LanguageCanBeSet)
 {
 	std::stringstream input;
 	input << "language = test_language";
@@ -23,7 +23,7 @@ TEST(HoI4World_Localisations_ArticleRulesDefinition_ArticleRules, LanguageCanBeS
 }
 
 
-TEST(HoI4World_Localisations_ArticleRulesDefinition_ArticleRules, MatchersDefaultsToEmpty)
+TEST(HoI4World_Localisations_ArticleRules_ArticleRulesDefinition, MatchersDefaultsToEmpty)
 {
 	std::stringstream input;
 	const auto definition = HoI4::ArticleRulesDefinition(input);
@@ -32,7 +32,7 @@ TEST(HoI4World_Localisations_ArticleRulesDefinition_ArticleRules, MatchersDefaul
 }
 
 
-TEST(HoI4World_Localisations_ArticleRulesDefinition_ArticleRules, matchersCanBeAdded)
+TEST(HoI4World_Localisations_ArticleRules_ArticleRulesDefinition, matchersCanBeAdded)
 {
 	std::stringstream input;
 	input << "matcher = \"Le (.+)\" matcher = \"L'(.+)\"";
@@ -44,7 +44,7 @@ TEST(HoI4World_Localisations_ArticleRulesDefinition_ArticleRules, matchersCanBeA
 }
 
 
-TEST(HoI4World_Localisations_ArticleRulesDefinition_ArticleRules, ReplacementDefaultsToEmpty)
+TEST(HoI4World_Localisations_ArticleRules_ArticleRulesDefinition, ReplacementDefaultsToEmpty)
 {
 	std::stringstream input;
 	const auto definition = HoI4::ArticleRulesDefinition(input);
@@ -53,7 +53,7 @@ TEST(HoI4World_Localisations_ArticleRulesDefinition_ArticleRules, ReplacementDef
 }
 
 
-TEST(HoI4World_Localisations_ArticleRulesDefinition_ArticleRules, ReplacementCanBeSet)
+TEST(HoI4World_Localisations_ArticleRules_ArticleRulesDefinition, ReplacementCanBeSet)
 {
 	std::stringstream input;
 	input << R"(replacement = "$1")";
