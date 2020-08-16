@@ -19,12 +19,12 @@ class ArticleRulesDefinition: commonItems::parser
 
 	[[nodiscard]] const auto& getLanguage() const { return language; }
 	[[nodiscard]] const auto& getMatchers() const { return matchers; }
-	[[nodiscard]] const auto& getResult() const { return result; }
+	[[nodiscard]] const auto& getReplacement() const { return replacement; }
 
   private:
 	std::string language;
 	std::vector<std::string> matchers;
-	std::string result;
+	std::string replacement;
 };
 
 } // namespace HoI4

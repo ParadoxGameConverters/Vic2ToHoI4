@@ -44,20 +44,20 @@ TEST(HoI4World_Localisations_ArticleRulesDefinition_ArticleRules, matchersCanBeA
 }
 
 
-TEST(HoI4World_Localisations_ArticleRulesDefinition_ArticleRules, ResultDefaultsToEmpty)
+TEST(HoI4World_Localisations_ArticleRulesDefinition_ArticleRules, ReplacementDefaultsToEmpty)
 {
 	std::stringstream input;
 	const auto definition = HoI4::ArticleRulesDefinition(input);
 
-	ASSERT_TRUE(definition.getResult().empty());
+	ASSERT_TRUE(definition.getReplacement().empty());
 }
 
 
-TEST(HoI4World_Localisations_ArticleRulesDefinition_ArticleRules, ResultCanBeSet)
+TEST(HoI4World_Localisations_ArticleRulesDefinition_ArticleRules, ReplacementCanBeSet)
 {
 	std::stringstream input;
-	input << R"(result = "$1")";
+	input << R"(replacement = "$1")";
 	const auto definition = HoI4::ArticleRulesDefinition(input);
 
-	ASSERT_EQ("$1", definition.getResult());
+	ASSERT_EQ("$1", definition.getReplacement());
 }
