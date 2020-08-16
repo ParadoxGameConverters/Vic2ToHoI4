@@ -46,6 +46,7 @@
     <ClCompile Include="..\common_items\ParserHelpers.cpp" />
     <ClCompile Include="..\common_items\StringUtils.cpp" />
     <ClCompile Include="..\common_items\WinUtils.cpp" />
+    <ClCompile Include="..\common_items\targa.cpp" />
     <ClCompile Include="..\googletest\googlemock\src\gmock-all.cc" />
     <ClCompile Include="..\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="..\googletest\googletest\src\gtest_main.cc" />
@@ -263,7 +264,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\TechMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4States.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\targa.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Agreement.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Army.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CommonCountryData.cpp" />

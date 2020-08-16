@@ -140,6 +140,7 @@
     <ClCompile Include="..\common_items\ParserHelpers.cpp" />
     <ClCompile Include="..\common_items\StringUtils.cpp" />
     <ClCompile Include="..\common_items\WinUtils.cpp" />
+    <ClCompile Include="..\common_items\targa.cpp" />
     <ClCompile Include="Source\Color.cpp" />
     <ClCompile Include="Source\Configuration.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
@@ -357,7 +358,6 @@
     <ClCompile Include="Source\Mappers\Provinces\VersionedMappings.cpp" />
     <ClCompile Include="Source\Mappers\TechMapper.cpp" />
     <ClCompile Include="Source\Mappers\VersionParser\VersionParser.cpp" />
-    <ClCompile Include="Source\targa.cpp" />
     <ClCompile Include="Source\V2World\Mods\ModFactory.cpp" />
     <ClCompile Include="Source\V2World\Pops\Pop.cpp" />
     <ClCompile Include="Source\V2World\Pops\PopFactory.cpp" />
@@ -398,6 +398,7 @@
     <ClInclude Include="..\common_items\Parser.h" />
     <ClInclude Include="..\common_items\ParserHelpers.h" />
     <ClInclude Include="..\common_items\StringUtils.h" />
+    <ClInclude Include="..\common_items\targa.h" />
     <ClInclude Include="Source\Color.h" />
     <ClInclude Include="Source\Configuration.h" />
     <ClInclude Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.h" />
@@ -637,7 +638,6 @@
     <ClInclude Include="Source\Mappers\Provinces\VersionedMappings.h" />
     <ClInclude Include="Source\Mappers\TechMapper.h" />
     <ClInclude Include="Source\Mappers\VersionParser\VersionParser.h" />
-    <ClInclude Include="Source\targa.h" />
     <ClInclude Include="Source\V2World\Agreement.h" />
     <ClInclude Include="Source\V2World\Army.h" />
     <ClInclude Include="Source\V2World\CommonCountryData.h" />

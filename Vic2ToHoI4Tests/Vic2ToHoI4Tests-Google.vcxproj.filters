@@ -67,7 +67,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Relations.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\targa.cpp">
+    <ClCompile Include="..\common_items\targa.cpp">
       <Filter>Vic2ToHoI4 files</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Inventions.cpp">

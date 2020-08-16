@@ -209,7 +209,7 @@
     <ClCompile Include="..\common_items\WinUtils.cpp">
       <Filter>CommonItems</Filter>
     </ClCompile>
-    <ClCompile Include="Source\targa.cpp" />
+    <ClCompile Include="..\common_items\targa.cpp" />
     <ClCompile Include="Source\Mappers\GovernmentMapper.cpp">
       <Filter>Mappers</Filter>
     </ClCompile>
@@ -969,7 +969,7 @@
     <ClInclude Include="..\common_items\OSCompatibilityLayer.h">
       <Filter>CommonItems</Filter>
     </ClInclude>
-    <ClInclude Include="Source\targa.h" />
+    <ClInclude Include="..\common_items\targa.h" />
     <ClInclude Include="Source\Mappers\GovernmentMapper.h">
       <Filter>Mappers</Filter>
     </ClInclude>
