@@ -302,7 +302,7 @@ void HoI4::createBigFlag(const tga_image* const sourceFlag, const std::string& f
 {
 	const auto destFlag = createNewFlag(sourceFlag, 82, 52);
 
-	const auto result = tga_write(outputFile, ("output/" + outputName + "/gfx/flags/" + filename).c_str());
+	const tga_result result = tga_write(("output/" + outputName + "/gfx/flags/" + filename).c_str(), destFlag);
 	if (result)
 	{
 		tga_free_buffers(destFlag);
@@ -322,7 +322,7 @@ void HoI4::createMediumFlag(const tga_image* const sourceFlag,
 {
 	const auto destFlag = createNewFlag(sourceFlag, 41, 26);
 
-	const auto result = tga_write(outputFile, ("output/" + outputName + "/gfx/flags/medium/" + filename).c_str());
+	const tga_result result = tga_write(("output/" + outputName + "/gfx/flags/medium/" + filename).c_str(), destFlag);
 	if (result)
 	{
 		tga_free_buffers(destFlag);
@@ -342,7 +342,7 @@ void HoI4::createSmallFlag(const tga_image* const sourceFlag,
 {
 	const auto destFlag = createNewFlag(sourceFlag, 10, 7);
 
-	const auto result = tga_write(outputFile, ("output/" + outputName + "/gfx/flags/small/" + filename).c_str());
+	const tga_result result = tga_write(("output/" + outputName + "/gfx/flags/small/" + filename).c_str(), destFlag);
 	if (result)
 	{
 		tga_free_buffers(destFlag);
