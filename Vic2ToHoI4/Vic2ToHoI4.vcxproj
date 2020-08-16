@@ -654,6 +654,7 @@
     <ClInclude Include="Source\V2World\Mods\ModFactory.h" />
     <ClInclude Include="Source\V2World\Party.h" />
     <ClInclude Include="Source\V2World\Pops\Pop.h" />
+    <ClInclude Include="Source\V2World\Pops\PopBuilder.h" />
     <ClInclude Include="Source\V2World\Pops\PopFactory.h" />
     <ClInclude Include="Source\V2World\Provinces\Province.h" />
     <ClInclude Include="Source\V2World\Provinces\ProvinceBuilder.h" />
