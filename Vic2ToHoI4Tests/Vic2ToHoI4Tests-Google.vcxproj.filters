@@ -1088,6 +1088,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Localisations\ArticleRules</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations\ArticleRules</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Localisations\ArticleRules\ArticleRulesFactoryTests.cpp">
+      <Filter>HoI4WorldTests\Localisations\ArticleRules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1351,6 +1357,9 @@
     <Filter Include="Vic2ToHoI4 files\HoI4\Localisations\ArticleRules">
       <UniqueIdentifier>{dc39045a-1eda-4673-af60-9f74974079b3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TestFiles\Localistations">
+      <UniqueIdentifier>{9af4313e-288c-4c9c-b878-89140e82a79a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1468,6 +1477,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mods\dummy.txt">
       <Filter>TestFiles\Mods</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Localisations\ArticleRules.txt">
+      <Filter>TestFiles\Localistations</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

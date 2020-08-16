@@ -1,0 +1,1 @@
+link = { language = english matcher = "The (.+)" replacement = "$1" }

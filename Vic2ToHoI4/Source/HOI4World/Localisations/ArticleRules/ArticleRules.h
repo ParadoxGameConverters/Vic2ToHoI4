@@ -17,6 +17,7 @@ class ArticleRules
 {
   public:
 	class Builder;
+	class Factory;
 
 	[[nodiscard]] std::string updateArticles(const std::string& language, const std::string& originalText) const;
 
