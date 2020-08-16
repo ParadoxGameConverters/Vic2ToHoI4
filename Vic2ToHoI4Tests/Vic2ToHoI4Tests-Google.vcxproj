@@ -390,6 +390,7 @@
     <ClCompile Include="Mocks\Vic2StateMock.h" />
     <ClCompile Include="Vic2WorldTests\Mods\ModBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Mods\ModFactoryTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Pops\PopBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Provinces\ProvinceBuilderTests.cpp" />

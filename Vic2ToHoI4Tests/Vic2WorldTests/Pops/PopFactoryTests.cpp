@@ -184,3 +184,17 @@ TEST_F(Vic2World_Pops_PopFactoryTests, IssueWithNonFloatIssueSupportLogsWarning)
 
 	ASSERT_EQ(" [WARNING] Poorly formatted pop issue: 42=not_a_float\n", log.str());
 }
+
+
+TEST(Vic2World_Pops_PopTests, IssuesCanBeImported)
+{
+	std::stringstream input;
+	input << "{\n";
+	input << "\tissues={\n";
+	input << "42=87.125\n";
+	input << "\t}";
+	input << "}";
+	const auto pop = Vic2::Pop::Factory(Vic2::Issues({{42, "learn_the_question"}})).getPop("", input);
+
+	ASSERT_NEAR(87.125, pop->getIssueSupport("learn_the_question"), 0.001);
+}

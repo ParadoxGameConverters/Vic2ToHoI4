@@ -25,7 +25,7 @@ class Pop::Builder
 
 	Builder& setCulture(std::string culture)
 	{
-		pop->type = std::move(culture);
+		pop->culture = std::move(culture);
 		return *this;
 	}
 
@@ -44,6 +44,12 @@ class Pop::Builder
 	Builder& setMilitancy(double militancy)
 	{
 		pop->militancy = militancy;
+		return *this;
+	}
+
+	Builder& setIssues(std::map<std::string, float> popIssues)
+	{
+		pop->popIssues = std::move(popIssues);
 		return *this;
 	}
 
