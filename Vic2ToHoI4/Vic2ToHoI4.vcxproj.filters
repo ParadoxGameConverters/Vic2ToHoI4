@@ -184,6 +184,9 @@
     <Filter Include="HoI4World\Localisations\ArticleRules">
       <UniqueIdentifier>{2af454af-60b4-4801-9a25-404c15efdc79}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data Files\Localisations">
+      <UniqueIdentifier>{e1247848-e0fc-4c3f-992f-06f664f6dca1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -18232,6 +18235,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Historical Project Mod_province_mappings.txt">
       <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Localisations\ArticleRules.txt">
+      <Filter>Data Files\Localisations</Filter>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>

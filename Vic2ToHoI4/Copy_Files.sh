@@ -27,6 +27,7 @@ cp "Vic2ToHoI4/Data_Files/ideologicalIdeas.txt" "Release-Linux/ideologicalIdeas.
 cp "Vic2ToHoI4/Data_Files/IntelligenceAgencyLogos.txt" "Release-Linux/DataFiles/IntelligenceAgencyLogos.txt"
 cp "Vic2ToHoI4/Data_Files/license.txt" "Release-Linux/license.txt"
 cp "Vic2ToHoI4/Data_Files/languageReplacements.txt" "Release-Linux/DataFiles/languageReplacements.txt"
+cp "Vic2ToHoI4/Data_Files/Localisations/ArticleRules.txt" "Release-Linux/DataFiles/Localisations/ArticleRules.txt"
 cp "Vic2ToHoI4/Data_Files/merge_nations.txt" "Release-Linux/merge_nations.txt"
 cp "Vic2ToHoI4/Data_Files/names.txt" "Release-Linux/DataFiles/names.txt"
 cp "Vic2ToHoI4/Data_Files/OperativeNamesMappings.txt" "Release-Linux/Data_Files/OperativeNamesMappings.txt"

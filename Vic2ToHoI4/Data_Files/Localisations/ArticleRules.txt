@@ -1,0 +1,2 @@
+link = { language = english matcher = "The (.+)" replacement = "$1" }
+link = { language = french matcher = "Le $1" matcher = "L'$1" matcher = "La $1" matcher = "Les $1"  replacement = "$1" }

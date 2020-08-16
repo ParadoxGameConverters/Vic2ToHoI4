@@ -23,10 +23,8 @@
 #include "Ideologies/IdeologyFile.h"
 #include "Leaders/Advisor.h"
 #include "Leaders/IdeologicalAdvisors.h"
-#include "Localisations/ArticleRules/ArticleRule.h"
-#include "Localisations/ArticleRules/ArticleRuleBuilder.h"
 #include "Localisations/ArticleRules/ArticleRules.h"
-#include "Localisations/ArticleRules/ArticleRulesBuilder.h"
+#include "Localisations/ArticleRules/ArticleRulesFactory.h"
 #include "Log.h"
 #include "Map/Buildings.h"
 #include "Map/HoI4Provinces.h"
@@ -184,13 +182,8 @@ void HoI4::World::convertCountries(const Vic2::Localisations& vic2Localisations)
 	mappers::FlagsToIdeasMapper flagsToIdeasMapper(flagToIdeasMappingFile);
 	flagToIdeasMappingFile.close();
 
-	const auto articleRules =
-		 ArticleRules::Builder{}
-			  .addRules("english",
-					{*HoI4::ArticleRule::Builder{}.setMatcher(std::regex("The (.+)")).setReplacement("$1").build()})
-			  .build();
-
-	for (auto sourceItr: sourceWorld->getCountries())
+	const auto articleRules = ArticleRules::Factory{}.getRules("DataFiles/Localisations/ArticleRules.txt");
+	for (const auto& sourceItr: sourceWorld->getCountries())
 	{
 		convertCountry(sourceItr, flagsToIdeasMapper, vic2Localisations, *articleRules);
 	}
