@@ -23,6 +23,8 @@
 #include "Ideologies/IdeologyFile.h"
 #include "Leaders/Advisor.h"
 #include "Leaders/IdeologicalAdvisors.h"
+#include "Localisations/ArticleRules/ArticleRules.h"
+#include "Localisations/ArticleRules/ArticleRulesFactory.h"
 #include "Log.h"
 #include "Map/Buildings.h"
 #include "Map/HoI4Provinces.h"
@@ -180,9 +182,10 @@ void HoI4::World::convertCountries(const Vic2::Localisations& vic2Localisations)
 	mappers::FlagsToIdeasMapper flagsToIdeasMapper(flagToIdeasMappingFile);
 	flagToIdeasMappingFile.close();
 
-	for (auto sourceItr: sourceWorld->getCountries())
+	const auto articleRules = ArticleRules::Factory{}.getRules("DataFiles/Localisations/ArticleRules.txt");
+	for (const auto& sourceItr: sourceWorld->getCountries())
 	{
-		convertCountry(sourceItr, flagsToIdeasMapper, vic2Localisations);
+		convertCountry(sourceItr, flagsToIdeasMapper, vic2Localisations, *articleRules);
 	}
 
 	hoi4Localisations->addNonenglishCountryLocalisations();
@@ -191,7 +194,8 @@ void HoI4::World::convertCountries(const Vic2::Localisations& vic2Localisations)
 
 void HoI4::World::convertCountry(std::pair<std::string, Vic2::Country*> country,
 	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
-	 const Vic2::Localisations& vic2Localisations)
+	 const Vic2::Localisations& vic2Localisations,
+	 const ArticleRules& articleRules)
 {
 	// don't convert rebels
 	if (country.first == "REB")
@@ -217,12 +221,14 @@ void HoI4::World::convertCountry(std::pair<std::string, Vic2::Country*> country,
 		countries.insert(make_pair(*possibleHoI4Tag, destCountry));
 		hoi4Localisations->createCountryLocalisations(make_pair(country.first, *possibleHoI4Tag),
 			 governmentMap,
-			 vic2Localisations);
+			 vic2Localisations,
+			 articleRules);
 		hoi4Localisations->updateMainCountryLocalisation(
 			 destCountry->getTag() + "_" + destCountry->getGovernmentIdeology(),
 			 country.first,
 			 country.second->getGovernment(),
-			 vic2Localisations);
+			 vic2Localisations,
+			 articleRules);
 	}
 }
 

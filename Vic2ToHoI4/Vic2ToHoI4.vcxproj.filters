@@ -181,6 +181,12 @@
     <Filter Include="Vic2World\Provinces">
       <UniqueIdentifier>{320b203a-a9cb-4728-8958-a55bbf9e6dad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\Localisations\ArticleRules">
+      <UniqueIdentifier>{2af454af-60b4-4801-9a25-404c15efdc79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data Files\Localisations">
+      <UniqueIdentifier>{e1247848-e0fc-4c3f-992f-06f664f6dca1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -928,6 +934,18 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Events\CapitulationEvents.cpp">
       <Filter>HoI4World\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRule.cpp">
+      <Filter>HoI4World\Localisations\ArticleRules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRules.cpp">
+      <Filter>HoI4World\Localisations\ArticleRules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.cpp">
+      <Filter>HoI4World\Localisations\ArticleRules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.cpp">
+      <Filter>HoI4World\Localisations\ArticleRules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1747,6 +1765,24 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Events\CapitulationEvents.h">
       <Filter>HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRule.h">
+      <Filter>HoI4World\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRuleBuilder.h">
+      <Filter>HoI4World\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRules.h">
+      <Filter>HoI4World\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesBuilder.h">
+      <Filter>HoI4World\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.h">
+      <Filter>HoI4World\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.h">
+      <Filter>HoI4World\Localisations\ArticleRules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -18199,6 +18235,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Historical Project Mod_province_mappings.txt">
       <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Localisations\ArticleRules.txt">
+      <Filter>Data Files\Localisations</Filter>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>

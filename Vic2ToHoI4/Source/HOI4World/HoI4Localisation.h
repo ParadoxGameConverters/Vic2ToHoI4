@@ -4,6 +4,7 @@
 
 
 #include "../V2World/States/State.h"
+#include "Localisations/ArticleRules/ArticleRules.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
 #include <map>
 #include <optional>
@@ -83,11 +84,13 @@ class Localisation
 		 const Configuration& theConfiguration);
 	void createCountryLocalisations(const std::pair<const std::string&, const std::string&>& tags,
 		 const governmentMapper& governmentMap,
-		 const Vic2::Localisations& vic2Localisations);
+		 const Vic2::Localisations& vic2Localisations,
+		 const ArticleRules& articleRules);
 	void updateMainCountryLocalisation(const std::string& HoI4Key,
 		 const std::string& Vic2Tag,
 		 const std::string& Vic2Government,
-		 const Vic2::Localisations& vic2Localisations);
+		 const Vic2::Localisations& vic2Localisations,
+		 const ArticleRules& articleRules);
 	void addNonenglishCountryLocalisations();
 	void copyFocusLocalisations(const std::string& oldKey, const std::string& newKey);
 	void copyEventLocalisations(const std::string& oldKey, const std::string& newKey);
@@ -119,25 +122,37 @@ class Localisation
 
   private:
 	void addLocalisationsForAllGovernments(const std::pair<const std::string&, const std::string&>& tags,
-		 const std::pair<const std::string&, const std::string&>& suffixes,
+		 const std::string& vic2Suffix,
+		 const std::string& hoi4Suffix,
 		 const governmentMapper& governmentMap,
-		 const Vic2::Localisations& vic2Localisations);
+		 const Vic2::Localisations& vic2Localisations,
+		 const ArticleRules& articleRules);
 	void addLocalisationsInAllLanguages(const std::string& destTag,
-		 const std::pair<const std::string&, const std::string&>& suffixes,
+		 const std::string& vic2Suffix,
+		 const std::string& hoi4Suffix,
 		 const std::string& HoI4GovernmentIdeology,
-		 const keyToLocalisationMap& namesInLanguage);
+		 const keyToLocalisationMap& namesInLanguage,
+		 const ArticleRules& articleRules);
 	languageToLocalisationsMap::iterator getExistingLocalisationsInLanguage(const std::string& language);
 	static void addLocalisation(const std::string& newKey,
+		 const std::string& language,
 		 keyToLocalisationMap& existingLanguage,
 		 const std::string& localisation,
-		 const std::string& HoI4Suffix);
+		 const std::string& HoI4Suffix,
+		 const ArticleRules& articleRules);
 	bool addNeutralLocalisation(const std::pair<const std::string&, const std::string&>& tags,
-		 const std::pair<const std::string&, const std::string&>& suffixes,
-		 const Vic2::Localisations& vic2Localisations);
+		 const std::string& vic2Suffix,
+		 const std::string& hoi4Suffix,
+		 const Vic2::Localisations& vic2Localisations,
+		 const ArticleRules& articleRules);
 
 	bool attemptToUpdateMainCountryLocalisation(const std::string& HoI4Key,
 		 const std::string& Vic2Key,
 		 const Vic2::Localisations& vic2Localisations);
+	bool attemptToUpdateMainCountryLocalisationChangingArticles(const std::string& HoI4Key,
+		 const std::string& Vic2Key,
+		 const Vic2::Localisations& vic2Localisations,
+		 const ArticleRules& articleRules);
 
 	void addStateLocalisationForLanguage(const State& hoi4State,
 		 const Vic2::State& vic2State,
