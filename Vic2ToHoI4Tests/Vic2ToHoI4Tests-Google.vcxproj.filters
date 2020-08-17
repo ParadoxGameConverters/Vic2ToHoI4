@@ -1097,6 +1097,9 @@
     <ClCompile Include="Vic2WorldTests\Pops\PopBuilderTests.cpp">
       <Filter>Vic2WorldTests\Pops</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Issues\IssueHelperTests.cpp">
+      <Filter>Vic2WorldTests\Issues</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1362,6 +1365,9 @@
     </Filter>
     <Filter Include="TestFiles\Localistations">
       <UniqueIdentifier>{9af4313e-288c-4c9c-b878-89140e82a79a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\Issues">
+      <UniqueIdentifier>{d46f81ab-366f-4978-94c0-346a11c082d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

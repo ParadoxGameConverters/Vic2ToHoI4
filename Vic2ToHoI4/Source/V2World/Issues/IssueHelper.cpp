@@ -11,4 +11,5 @@ Vic2::IssueHelper::IssueHelper(std::istream& theStream)
 	});
 
 	parseStream(theStream);
+	clearRegisteredKeywords();
 }
