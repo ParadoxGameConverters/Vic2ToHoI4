@@ -1100,6 +1100,9 @@
     <ClCompile Include="Vic2WorldTests\Issues\IssueHelperTests.cpp">
       <Filter>Vic2WorldTests\Issues</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Issues\PartiesIssueHelperTests.cpp">
+      <Filter>Vic2WorldTests\Issues</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

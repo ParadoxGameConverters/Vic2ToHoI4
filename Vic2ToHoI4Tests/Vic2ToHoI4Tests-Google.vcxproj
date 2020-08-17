@@ -389,6 +389,7 @@
     <ClCompile Include="Mocks\TechnologiesMock.h" />
     <ClCompile Include="Mocks\Vic2StateMock.h" />
     <ClCompile Include="Vic2WorldTests\Issues\IssueHelperTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Issues\PartiesIssueHelperTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Mods\ModBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Mods\ModFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopBuilderTests.cpp" />

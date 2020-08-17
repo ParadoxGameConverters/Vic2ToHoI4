@@ -3,7 +3,7 @@
 
 
 
-#include "IssueHelper.h"
+#include <string>
 #include "Parser.h"
 
 
@@ -19,7 +19,7 @@ class PartiesIssueHelper: commonItems::parser
 	auto takeIssues() { return std::move(issues); }
 
   private:
-	std::vector<IssueHelper> issues;
+	std::vector<std::string> issues;
 };
 
 } // namespace Vic2

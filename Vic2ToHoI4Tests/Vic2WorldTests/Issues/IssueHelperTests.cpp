@@ -1,5 +1,6 @@
 #include "../../Vic2ToHoI4/Source/V2World/Issues/IssueHelper.h"
 #include "gtest/gtest.h"
+#include <sstream>
 
 
 

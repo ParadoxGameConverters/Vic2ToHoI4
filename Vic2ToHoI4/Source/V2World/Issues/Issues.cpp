@@ -13,14 +13,11 @@ Vic2::Issues Vic2::Issues::Parser::importIssues(const Configuration& theConfigur
 	std::map<int, std::string> issueNames;
 
 	registerKeyword("party_issues", [&issueNames, &issueNum](const std::string& unused, std::istream& theStream) {
-		PartiesIssueHelper helperHelper(theStream);
-		for (auto& helper: helperHelper.takeIssues())
+		PartiesIssueHelper helper(theStream);
+		for (auto& name: helper.takeIssues())
 		{
-			for (auto& name: helper.takeIssues())
-			{
-				issueNames.insert(std::make_pair(issueNum, name));
-				issueNum++;
-			}
+			issueNames.insert(std::make_pair(issueNum, name));
+			issueNum++;
 		}
 	});
 	registerRegex(commonItems::catchallRegex,
