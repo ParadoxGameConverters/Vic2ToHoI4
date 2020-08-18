@@ -1,3 +1,4 @@
+#include "../Vic2ToHoI4/Source/V2World/Pops/PopBuilder.h"
 #include "../Vic2ToHoI4/Source/V2World/Provinces/ProvinceBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
@@ -68,11 +69,8 @@ TEST(Vic2World_Provinces_ProvinceBuilderTests, PopsDefaultsToEmpty)
 
 TEST(Vic2World_Provinces_ProvinceBuilderTests, PopsCanBeSet)
 {
-	const Vic2::Issues issues{{}};
-	std::stringstream input;
-	const auto farmers = Vic2::Pop::Factory{issues}.getPop("farmers", input);
-
-	const auto province = Vic2::Province::Builder{}.setNumber(42).setPops({*farmers}).build();
+	const auto province =
+		 Vic2::Province::Builder{}.setNumber(42).setPops({*Vic2::Pop::Builder{}.setType("farmers").build()}).build();
 
 	ASSERT_EQ(province->getPops().size(), 1);
 	ASSERT_EQ(province->getPops()[0].getType(), "farmers");

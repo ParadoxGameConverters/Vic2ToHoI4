@@ -1,3 +1,4 @@
+#include "../../Vic2ToHoI4/Source/V2World/Issues/IssuesBuilder.h"
 #include "../../Vic2ToHoI4/Source/V2World/Pops/PopFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
@@ -7,7 +8,7 @@
 class Vic2World_Pops_PopFactoryTests: public testing::Test
 {
   protected:
-	Vic2World_Pops_PopFactoryTests(): popFactory(Vic2::Issues({})) {}
+	Vic2World_Pops_PopFactoryTests(): popFactory(Vic2::Issues()) {}
 
 	Vic2::Pop::Factory popFactory;
 };
@@ -183,4 +184,19 @@ TEST_F(Vic2World_Pops_PopFactoryTests, IssueWithNonFloatIssueSupportLogsWarning)
 	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_EQ(" [WARNING] Poorly formatted pop issue: 42=not_a_float\n", log.str());
+}
+
+
+TEST(Vic2World_Pops_PopTests, IssuesCanBeImported)
+{
+	std::stringstream input;
+	input << "{\n";
+	input << "\tissues={\n";
+	input << "1=87.125\n";
+	input << "\t}";
+	input << "}";
+	const auto pop =
+		 Vic2::Pop::Factory(*Vic2::Issues::Builder{}.addIssueName("learn_the_question").build()).getPop("", input);
+
+	ASSERT_NEAR(87.125, pop->getIssueSupport("learn_the_question"), 0.001);
 }

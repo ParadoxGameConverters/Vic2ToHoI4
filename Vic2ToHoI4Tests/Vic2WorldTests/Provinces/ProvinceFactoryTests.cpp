@@ -17,7 +17,7 @@ class Vic2World_ProvinceFactoryTests: public testing::Test
 
 
 Vic2World_ProvinceFactoryTests::Vic2World_ProvinceFactoryTests():
-	 popFactory(Vic2::Issues({})), provinceFactory(popFactory)
+	 popFactory(Vic2::Issues()), provinceFactory(popFactory)
 {
 }
 

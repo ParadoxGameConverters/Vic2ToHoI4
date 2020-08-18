@@ -15,6 +15,7 @@ namespace Vic2
 class Pop
 {
   public:
+	class Builder;
 	class Factory;
 	Pop() = default;
 

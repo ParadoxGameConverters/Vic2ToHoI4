@@ -1,0 +1,53 @@
+party_issues = {
+	trade_policy = {
+		protectionism = {
+			max_tariff = 1
+		}
+		free_trade = {
+			max_tariff = 0.25
+		}
+	}
+	economic_policy = {
+		laissez_faire = {
+			max_tax = 0.5
+			rules = {
+				build_factory = no
+			}
+		}
+		interventionism = {
+			factory_owner_cost = 0.5
+			rules = {
+				build_factory = no
+			}
+		}
+	}
+}
+
+##########################################
+# Political reforms.
+##########################################
+political_reforms = {
+	slavery = {
+		yes_slavery = {
+			rules = { slavery_allowed = yes }
+		}
+		no_slavery = {
+			rules = { slavery_allowed = no }
+		}
+	}
+
+	vote_franschise = {
+		administrative = yes
+		next_step_only = yes
+		none_voting = {
+			rich_vote = 0
+			middle_vote = 0
+			poor_vote = 0
+		}
+		landed_voting = {
+			rich_vote = 1
+			middle_vote = 0
+			poor_vote = 0
+		}
+	}
+}

@@ -8,6 +8,7 @@
 #include "Diplomacy.h"
 #include "Inventions.h"
 #include "Issues/Issues.h"
+#include "Issues/IssuesFactory.h"
 #include "Log.h"
 #include "ParserHelpers.h"
 #include "Party.h"
@@ -26,10 +27,10 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 {
 	theLocalisations = Localisations::Parser{}.importLocalisations(theConfiguration);
 	theCultureGroups.init(theConfiguration);
-	auto theIssues = Issues::Parser{}.importIssues(theConfiguration);
+	auto theIssues = Issues::Factory{}.getIssues(theConfiguration.getVic2Path());
 	theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
 	inventions theInventions(theConfiguration);
-	Pop::Factory popFactory(theIssues);
+	Pop::Factory popFactory(*theIssues);
 	Province::Factory provinceFactory(popFactory);
 	State::Factory stateFactory;
 
