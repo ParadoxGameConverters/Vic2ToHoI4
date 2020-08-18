@@ -4,8 +4,8 @@
 
 
 #include "Parser.h"
-#include <map>
 #include <string>
+#include <vector>
 
 
 
@@ -19,21 +19,14 @@ namespace Vic2
 class Issues
 {
   public:
-	class Parser;
+	class Builder;
+	class Factory;
+	Issues() = default;
 
-	explicit Issues(std::map<int, std::string> issueNames): issueNames(std::move(issueNames)) {}
-
-	[[nodiscard]] std::string getIssueName(int num) const;
+	[[nodiscard]] std::string getIssueName(unsigned int num) const;
 
   private:
-	std::map<int, std::string> issueNames;
-};
-
-
-class Issues::Parser: commonItems::parser
-{
-  public:
-	Issues importIssues(const Configuration& theConfiguration);
+	std::vector<std::string> issueNames;
 };
 
 } // namespace Vic2

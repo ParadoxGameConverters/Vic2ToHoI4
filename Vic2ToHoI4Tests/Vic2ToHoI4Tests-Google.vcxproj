@@ -271,9 +271,10 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CultureGroups.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Inventions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueCategoryHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\Issues.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\PartiesIssueHelper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssuesFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Leader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Mods\ModFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Party.cpp" />
@@ -389,7 +390,9 @@
     <ClCompile Include="Mocks\TechnologiesMock.h" />
     <ClCompile Include="Mocks\Vic2StateMock.h" />
     <ClCompile Include="Vic2WorldTests\Issues\IssueHelperTests.cpp" />
-    <ClCompile Include="Vic2WorldTests\Issues\PartiesIssueHelperTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Issues\IssuesBuilderTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Issues\IssuesFactoryTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Issues\IssueCategoryHelperTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Mods\ModBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Mods\ModFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopBuilderTests.cpp" />
@@ -557,6 +560,17 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Localisations\ArticleRules.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Issues\emptyIssues.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/EmptyIssues/common</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">issues%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Issues\issues.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/common</DestinationFolders>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

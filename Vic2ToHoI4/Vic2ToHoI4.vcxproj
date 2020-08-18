@@ -358,6 +358,7 @@
     <ClCompile Include="Source\Mappers\Provinces\VersionedMappings.cpp" />
     <ClCompile Include="Source\Mappers\TechMapper.cpp" />
     <ClCompile Include="Source\Mappers\VersionParser\VersionParser.cpp" />
+    <ClCompile Include="Source\V2World\Issues\IssuesFactory.cpp" />
     <ClCompile Include="Source\V2World\Mods\ModFactory.cpp" />
     <ClCompile Include="Source\V2World\Pops\Pop.cpp" />
     <ClCompile Include="Source\V2World\Pops\PopFactory.cpp" />
@@ -378,7 +379,7 @@
     <ClCompile Include="Source\V2World\Inventions.cpp" />
     <ClCompile Include="Source\V2World\Issues\IssueHelper.cpp" />
     <ClCompile Include="Source\V2World\Issues\Issues.cpp" />
-    <ClCompile Include="Source\V2World\Issues\PartiesIssueHelper.cpp" />
+    <ClCompile Include="Source\V2World\Issues\IssueCategoryHelper.cpp" />
     <ClCompile Include="Source\V2World\Leader.cpp" />
     <ClCompile Include="Source\V2World\Party.cpp" />
     <ClCompile Include="Source\V2World\Relations.cpp" />
@@ -647,7 +648,9 @@
     <ClInclude Include="Source\V2World\Inventions.h" />
     <ClInclude Include="Source\V2World\Issues\IssueHelper.h" />
     <ClInclude Include="Source\V2World\Issues\Issues.h" />
-    <ClInclude Include="Source\V2World\Issues\PartiesIssueHelper.h" />
+    <ClInclude Include="Source\V2World\Issues\IssuesBuilder.h" />
+    <ClInclude Include="Source\V2World\Issues\IssuesFactory.h" />
+    <ClInclude Include="Source\V2World\Issues\IssueCategoryHelper.h" />
     <ClInclude Include="Source\V2World\Leader.h" />
     <ClInclude Include="Source\V2World\Mods\Mod.h" />
     <ClInclude Include="Source\V2World\Mods\ModBuilder.h" />

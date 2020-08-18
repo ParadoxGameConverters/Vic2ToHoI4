@@ -1,18 +1,18 @@
-#include "../../Vic2ToHoI4/Source/V2World/Issues/PartiesIssueHelper.h"
+#include "../../Vic2ToHoI4/Source/V2World/Issues/IssueCategoryHelper.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
 
-TEST(Vic2World_Issues_PartyIssueHelperTests, IssuesDefaultsToEmpty)
+TEST(Vic2World_Issues_IssueCategoryHelperTests, IssuesDefaultsToEmpty)
 {
 	std::stringstream input;
-	Vic2::PartiesIssueHelper helper(input);
+	Vic2::IssueCategoryHelper helper(input);
 
 	ASSERT_TRUE(helper.takeIssues().empty());
 }
 
 
-TEST(Vic2World_Issues_PartyIssueHelperTests, IssuesCanBeAdded)
+TEST(Vic2World_Issues_IssueCategoryHelperTests, IssuesCanBeAdded)
 {
 	std::stringstream input;
 	input << "\ttrade_policy = {\n";
@@ -39,7 +39,7 @@ TEST(Vic2World_Issues_PartyIssueHelperTests, IssuesCanBeAdded)
 	input << "\t\t\t#no effect\n";
 	input << "\t\t}\n";
 	input << "\t}";
-	Vic2::PartiesIssueHelper helper(input);
+	Vic2::IssueCategoryHelper helper(input);
 
 	const auto issues = helper.takeIssues();
 	ASSERT_EQ(6, issues.size());

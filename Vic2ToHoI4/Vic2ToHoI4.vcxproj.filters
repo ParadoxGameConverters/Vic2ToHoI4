@@ -775,9 +775,6 @@
     <ClCompile Include="Source\V2World\Issues\IssueHelper.cpp">
       <Filter>Vic2World\Issues</Filter>
     </ClCompile>
-    <ClCompile Include="Source\V2World\Issues\PartiesIssueHelper.cpp">
-      <Filter>Vic2World\Issues</Filter>
-    </ClCompile>
     <ClCompile Include="Source\V2World\Issues\Issues.cpp">
       <Filter>Vic2World\Issues</Filter>
     </ClCompile>
@@ -946,6 +943,12 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.cpp">
       <Filter>HoI4World\Localisations\ArticleRules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Issues\IssuesFactory.cpp">
+      <Filter>Vic2World\Issues</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Issues\IssueCategoryHelper.cpp">
+      <Filter>Vic2World\Issues</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1592,9 +1595,6 @@
     <ClInclude Include="Source\V2World\Issues\IssueHelper.h">
       <Filter>Vic2World\Issues</Filter>
     </ClInclude>
-    <ClInclude Include="Source\V2World\Issues\PartiesIssueHelper.h">
-      <Filter>Vic2World\Issues</Filter>
-    </ClInclude>
     <ClInclude Include="Source\V2World\Issues\Issues.h">
       <Filter>Vic2World\Issues</Filter>
     </ClInclude>
@@ -1786,6 +1786,15 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Pops\PopBuilder.h">
       <Filter>Vic2World\Pops</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Issues\IssuesFactory.h">
+      <Filter>Vic2World\Issues</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Issues\IssuesBuilder.h">
+      <Filter>Vic2World\Issues</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Issues\IssueCategoryHelper.h">
+      <Filter>Vic2World\Issues</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

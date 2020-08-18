@@ -820,9 +820,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\Issues.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Issues</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\PartiesIssueHelper.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2\Issues</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsInCategory.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Decisions</Filter>
     </ClCompile>
@@ -1100,7 +1097,19 @@
     <ClCompile Include="Vic2WorldTests\Issues\IssueHelperTests.cpp">
       <Filter>Vic2WorldTests\Issues</Filter>
     </ClCompile>
-    <ClCompile Include="Vic2WorldTests\Issues\PartiesIssueHelperTests.cpp">
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssuesFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Issues</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Issues\IssuesBuilderTests.cpp">
+      <Filter>Vic2WorldTests\Issues</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Issues\IssuesFactoryTests.cpp">
+      <Filter>Vic2WorldTests\Issues</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueCategoryHelper.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Issues</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Issues\IssueCategoryHelperTests.cpp">
       <Filter>Vic2WorldTests\Issues</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1372,6 +1381,9 @@
     <Filter Include="Vic2WorldTests\Issues">
       <UniqueIdentifier>{d46f81ab-366f-4978-94c0-346a11c082d4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TestFiles\Issues">
+      <UniqueIdentifier>{2771abc9-f9df-491a-a3e4-b68760ab5fa1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1492,6 +1504,12 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Localisations\ArticleRules.txt">
       <Filter>TestFiles\Localistations</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Issues\emptyIssues.txt">
+      <Filter>TestFiles\Issues</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Issues\issues.txt">
+      <Filter>TestFiles\Issues</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>
