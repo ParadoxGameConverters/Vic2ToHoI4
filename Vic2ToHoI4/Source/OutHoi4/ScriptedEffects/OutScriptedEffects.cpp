@@ -74,7 +74,7 @@ void outputGetBestAllianceMatchIdeologyEffects(const std::set<std::string>& majo
 void outputRemoveFromAllowedParty(const std::set<std::string>& majorIdeologies, std::ostream& output)
 {
 	output << "remove_from_allowed_party = {\n";
-	bool firstIdeology = true;
+	auto firstIdeology = true;
 	for (const auto& ideology: majorIdeologies)
 	{
 		if (firstIdeology)
