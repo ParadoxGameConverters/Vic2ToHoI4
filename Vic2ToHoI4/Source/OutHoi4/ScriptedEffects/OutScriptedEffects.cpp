@@ -71,6 +71,29 @@ void outputGetBestAllianceMatchIdeologyEffects(const std::set<std::string>& majo
 }
 
 
+void outputRemoveFromAllowedParty(const std::set<std::string>& majorIdeologies, std::ostream& output)
+{
+	output << "remove_from_allowed_party = {\n";
+	bool firstIdeology = true;
+	for (const auto& ideology: majorIdeologies)
+	{
+		if (firstIdeology)
+		{
+			output << "\tif = {\n";
+			firstIdeology = false;
+		}
+		else
+		{
+			output << "\telse_if = {\n";
+		}
+		output << "\t\tlimit = { has_government = " << ideology << " }\n";
+		output << "\t\tset_temp_variable = { allowed_party_" << ideology << " = 0 }\n";
+		output << "\t}\n";
+	}
+	output << "}\n";
+}
+
+
 
 void HoI4::outputScriptedEffects(const std::set<std::string>& majorIdeologies, const std::string& outputName)
 {
@@ -83,6 +106,7 @@ void HoI4::outputScriptedEffects(const std::set<std::string>& majorIdeologies, c
 	}
 
 	outputGetBestAllianceMatchIdeologyEffects(majorIdeologies, scriptedEffects);
+	outputRemoveFromAllowedParty(majorIdeologies, scriptedEffects);
 
 	scriptedEffects.close();
 }
