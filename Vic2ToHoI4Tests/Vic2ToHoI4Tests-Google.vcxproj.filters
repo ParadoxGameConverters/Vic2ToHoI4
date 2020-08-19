@@ -1112,6 +1112,9 @@
     <ClCompile Include="Vic2WorldTests\Issues\IssueCategoryHelperTests.cpp">
       <Filter>Vic2WorldTests\Issues</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ScriptedEffects\OutScriptedEffects.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\ScriptedEffects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1383,6 +1386,9 @@
     </Filter>
     <Filter Include="TestFiles\Issues">
       <UniqueIdentifier>{2771abc9-f9df-491a-a3e4-b68760ab5fa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\ScriptedEffects">
+      <UniqueIdentifier>{f0ae2a8a-5d64-43d0-b369-90f00a9c4357}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
