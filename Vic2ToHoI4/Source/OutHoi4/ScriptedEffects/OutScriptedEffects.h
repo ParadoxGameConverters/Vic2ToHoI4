@@ -3,13 +3,15 @@
 
 
 
+#include <set>
 #include <string>
+
 
 
 namespace HoI4
 {
 
-void outputScriptedEffects(const std::string& outputName);
+void outputScriptedEffects(const std::set<std::string>& majorIdeologies, const std::string& outputName);
 
 }
 
