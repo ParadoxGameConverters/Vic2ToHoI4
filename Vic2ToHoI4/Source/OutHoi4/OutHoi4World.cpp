@@ -19,6 +19,7 @@
 #include "OutHoi4Country.h"
 #include "OutLocalisation.h"
 #include "OutOnActions.h"
+#include "ScriptedEffects/OutScriptedEffects.h"
 #include "ScriptedLocalisations/OutScriptedLocalisations.h"
 #include "ScriptedTriggers/OutScriptedTriggers.h"
 #include "States/OutHoI4States.h"
@@ -192,6 +193,7 @@ void HoI4::OutputWorld(const World& world,
 	outputIntelligenceAgencies(*world.getIntelligenceAgencies(), outputName);
 	outputOperativeNames(world.getOperativeNames(), outputName);
 	outputOperations(world.getOperations(), outputName);
+	outputScriptedEffects(outputName);
 }
 
 

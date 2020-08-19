@@ -187,6 +187,9 @@
     <Filter Include="Data Files\Localisations">
       <UniqueIdentifier>{e1247848-e0fc-4c3f-992f-06f664f6dca1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OutHoi4\ScriptedEffects">
+      <UniqueIdentifier>{c8a95857-16cc-44f5-9d0f-f54b2ad47134}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -949,6 +952,9 @@
     </ClCompile>
     <ClCompile Include="Source\V2World\Issues\IssueCategoryHelper.cpp">
       <Filter>Vic2World\Issues</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\ScriptedEffects\OutScriptedEffects.cpp">
+      <Filter>OutHoi4\ScriptedEffects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1795,6 +1801,9 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Issues\IssueCategoryHelper.h">
       <Filter>Vic2World\Issues</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\ScriptedEffects\OutScriptedEffects.h">
+      <Filter>OutHoi4\ScriptedEffects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
