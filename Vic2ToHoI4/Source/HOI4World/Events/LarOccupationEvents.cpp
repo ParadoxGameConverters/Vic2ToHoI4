@@ -75,10 +75,10 @@ void HoI4::updateCreateUprisingEvent(HoI4::Event& theEvent, const std::set<std::
 	immediateStream << "\t\t\t\t\t}\n";
 	immediateStream << "\t\t\t\t\t\n";
 	immediateStream << "\t\t\t\t\t# booleans that will be allowed to change ideology\n";
-	immediateStream << "\t\t\t\t\tset_temp_variable = { allowed_party_neutrality = 1 }\n";
-	immediateStream << "\t\t\t\t\tset_temp_variable = { allowed_party_democratic = 1 }\n";
-	immediateStream << "\t\t\t\t\tset_temp_variable = { allowed_party_fascism = 1 }\n";
-	immediateStream << "\t\t\t\t\tset_temp_variable = { allowed_party_communism = 1 }\n";
+	for (const auto& ideology: majorIdeologies)
+	{
+		immediateStream << "\t\t\t\t\tset_temp_variable = { allowed_party_" << ideology << " = 1 }\n";
+	}
 	immediateStream << "\t\t\t\t\t\n";
 	immediateStream << "\t\t\t\t\t# do not change ideology of occupier country\n";
 	immediateStream << "\t\t\t\t\tvar:occupier_country = {\n";
@@ -101,50 +101,27 @@ void HoI4::updateCreateUprisingEvent(HoI4::Event& theEvent, const std::set<std::
 	immediateStream << "\t\t\t\t\t\t\t# check if our current ideology is OK\n";
 	immediateStream << "\t\t\t\t\t\t\tlimit = { \n";
 	immediateStream << "\t\t\t\t\t\t\t\tOR = {\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\tAND = {\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t\thas_government = democratic\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t\tcheck_variable = { allowed_party_democratic = 0 }\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t}\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\tAND = {\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t\thas_government = fascism\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t\tcheck_variable = { allowed_party_fascism = 0 }\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t}\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\tAND = {\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t\thas_government = communism\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t\tcheck_variable = { allowed_party_communism = 0 }\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t}\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\tAND = { \n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t\thas_government = neutrality\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t\tcheck_variable = { allowed_party_neutrality = 0 }\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t}\n";
+	for (const auto& ideology: majorIdeologies)
+	{
+		immediateStream << "\t\t\t\t\t\t\t\t\tAND = {\n";
+		immediateStream << "\t\t\t\t\t\t\t\t\t\thas_government = " << ideology << "\n";
+		immediateStream << "\t\t\t\t\t\t\t\t\t\tcheck_variable = { allowed_party_" << ideology << " = 0 }\n";
+		immediateStream << "\t\t\t\t\t\t\t\t\t}\n";
+	}
 	immediateStream << "\t\t\t\t\t\t\t\t}\n";
 	immediateStream << "\t\t\t\t\t\t\t}\n";
 	immediateStream << "\t\t\t\t\t\t\t\n";
 	immediateStream << "\t\t\t\t\t\t\trandom_list = {\n";
-	immediateStream << "\t\t\t\t\t\t\t\tallowed_party_democratic = {\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\tset_popularities = {\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t\tdemocratic = 100\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t}\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\tset_politics = { ruling_party = democratic elections_allowed = yes }\n";
-	immediateStream << "\t\t\t\t\t\t\t\t}\n";
-	immediateStream << "\t\t\t\t\t\t\t\tallowed_party_fascism = {\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\tset_popularities = {\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t\tfascism = 100\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t}\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\tset_politics = { ruling_party = fascism elections_allowed = no }\n";
-	immediateStream << "\t\t\t\t\t\t\t\t}\n";
-	immediateStream << "\t\t\t\t\t\t\t\tallowed_party_communism = {\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\tset_popularities = {\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t\tcommunism = 100\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t}\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\tset_politics = { ruling_party = communism elections_allowed = no }\n";
-	immediateStream << "\t\t\t\t\t\t\t\t}\n";
-	immediateStream << "\t\t\t\t\t\t\t\tallowed_party_neutrality = {\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\tset_popularities = {\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t\tneutrality = 100\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\t}\n";
-	immediateStream << "\t\t\t\t\t\t\t\t\tset_politics = { ruling_party = neutrality elections_allowed = no }\n";
-	immediateStream << "\t\t\t\t\t\t\t\t}\n";
+	for (const auto& ideology: majorIdeologies)
+	{
+		immediateStream << "\t\t\t\t\t\t\t\tallowed_party_" << ideology << " = {\n";
+		immediateStream << "\t\t\t\t\t\t\t\t\tset_popularities = {\n";
+		immediateStream << "\t\t\t\t\t\t\t\t\t\t" << ideology << " = 100\n";
+		immediateStream << "\t\t\t\t\t\t\t\t\t}\n";
+		immediateStream << "\t\t\t\t\t\t\t\t\tset_politics = { ruling_party = " << ideology
+							 << " elections_allowed = " << (ideology == "democratic" ? "yes" : "no") << " }\n";
+		immediateStream << "\t\t\t\t\t\t\t\t}\n";
+	}
 	immediateStream << "\t\t\t\t\t\t\t}\n";
 	immediateStream << "\t\t\t\t\t\t}\n";
 	immediateStream << "\t\t\t\t\t}\n";
