@@ -37,16 +37,16 @@ class Event: commonItems::parser
 	void clearOptions() { options.clear(); }
 
 	[[nodiscard]] const std::string& getId() const { return id; }
-	[[nodiscard]] const std::string& getTitle() const { return title; }
+	[[nodiscard]] const auto& getTitle() const { return title; }
 
 	friend std::ostream& operator<<(std::ostream& out, const Event& theEvent);
 
   private:
 	std::string type;
 	std::string id;
-	std::string title;
+	std::optional<std::string> title;
 	std::vector<std::string> descriptions;
-	std::string picture;
+	std::optional<std::string> picture;
 	bool majorEvent = false;
 	bool triggeredOnly = false;
 	std::optional<bool> hidden;

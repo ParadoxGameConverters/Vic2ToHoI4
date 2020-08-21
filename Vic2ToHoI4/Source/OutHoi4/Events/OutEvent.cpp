@@ -7,12 +7,18 @@ std::ostream& HoI4::operator<<(std::ostream& out, const Event& theEvent)
 {
 	out << theEvent.type << " = {\n";
 	out << "\tid = " << theEvent.id << "\n";
-	out << "\ttitle = " << theEvent.title << "\n";
+	if (theEvent.title)
+	{
+		out << "\ttitle = " << *theEvent.title << "\n";
+	}
 	for (const auto& description: theEvent.descriptions)
 	{
 		out << "\tdesc " << description << "\n";
 	}
-	out << "\tpicture = " << theEvent.picture << "\n";
+	if (theEvent.picture)
+	{
+		out << "\tpicture = " << *theEvent.picture << "\n";
+	}
 	if (theEvent.majorEvent)
 	{
 		out << "\t\n";
