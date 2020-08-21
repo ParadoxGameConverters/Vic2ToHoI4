@@ -1484,7 +1484,7 @@ void HoI4::Events::importCapitulationEvents(const Configuration& theConfiguratio
 {
 	Log(LogLevel::Info) << "\tImporting capitulation events";
 
-	registerKeyword("news_event", [this, majorIdeologies](const std::string& type, std::istream& theStream) {
+	registerKeyword("news_event", [this](const std::string& type, std::istream& theStream) {
 		const Event capitulationEvent(type, theStream);
 		capitulationEvents.push_back(capitulationEvent);
 	});
@@ -1494,4 +1494,19 @@ void HoI4::Events::importCapitulationEvents(const Configuration& theConfiguratio
 	clearRegisteredKeywords();
 
 	updateCapitulationEvent(capitulationEvents[0], majorIdeologies);
+}
+
+
+void HoI4::Events::importLarOccupationEvents(const Configuration& theConfiguration)
+{
+	Log(LogLevel::Info) << "\tImporting LAR_occupation events";
+
+	registerKeyword("country_event", [this](const std::string& type, std::istream& theStream) {
+		const Event occupationEvent(type, theStream);
+		larOccupationEvents.push_back(occupationEvent);
+	});
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+
+	parseFile(theConfiguration.getHoI4Path() + "/events/LAR_occupation.txt");
+	clearRegisteredKeywords();
 }

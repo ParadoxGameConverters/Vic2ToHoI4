@@ -54,6 +54,7 @@ class Events: commonItems::parser
 	void createStabilityEvents(const std::set<std::string>& majorIdeologies, const Configuration& theConfiguration);
 	void generateGenericEvents(const Configuration& theConfiguration, const std::set<std::string>& majorIdeologies);
 	void importCapitulationEvents(const Configuration& theConfiguration, const std::set<std::string>& majorIdeologies);
+	void importLarOccupationEvents(const Configuration& theConfiguration);
 
 	void giveGovernmentInExileEvent(Event&& gieEvent) { governmentInExileEvent = gieEvent; }
 
@@ -71,6 +72,7 @@ class Events: commonItems::parser
 	[[nodiscard]] const auto& getGenericEvents() const { return genericEvents; }
 	[[nodiscard]] const auto& getGovernmentInExileEvent() const { return governmentInExileEvent; }
 	[[nodiscard]] const auto& getCapitulationEvents() const { return capitulationEvents; }
+	[[nodiscard]] const auto& getLarOccupationEvents() const { return larOccupationEvents; }
 
   private:
 	void addOnTheRise(const std::set<std::string>& majorIdeologies, Localisation& localisation);
@@ -97,6 +99,7 @@ class Events: commonItems::parser
 	std::vector<Event> genericEvents;
 	Event governmentInExileEvent;
 	std::vector<Event> capitulationEvents;
+	std::vector<Event> larOccupationEvents;
 
 	std::map<std::string, int> eventNumbers;
 };
