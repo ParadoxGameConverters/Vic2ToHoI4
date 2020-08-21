@@ -5,12 +5,13 @@
 #include "../HoI4Country.h"
 #include "../HoI4Localisation.h"
 #include "../OnActions.h"
+#include "CapitulationEvents.h"
 #include "EventHelpers.h"
 #include "EventsFile.h"
 #include "GenericEventUpdaters.h"
+#include "LarOccupationEvents.h"
 #include "Log.h"
 #include "ParserHelpers.h"
-#include "CapitulationEvents.h"
 #include <fstream>
 
 
@@ -1497,7 +1498,8 @@ void HoI4::Events::importCapitulationEvents(const Configuration& theConfiguratio
 }
 
 
-void HoI4::Events::importLarOccupationEvents(const Configuration& theConfiguration)
+void HoI4::Events::importLarOccupationEvents(const Configuration& theConfiguration,
+	 const std::set<std::string>& majorIdeologies)
 {
 	Log(LogLevel::Info) << "\tImporting LAR_occupation events";
 
@@ -1509,4 +1511,12 @@ void HoI4::Events::importLarOccupationEvents(const Configuration& theConfigurati
 
 	parseFile(theConfiguration.getHoI4Path() + "/events/LAR_occupation.txt");
 	clearRegisteredKeywords();
+
+	for (auto& event: larOccupationEvents)
+	{
+		if (event.getId() == "occupied_countries.2")
+		{
+			updateCreateUprisingEvent(event, majorIdeologies);
+		}
+	}
 }

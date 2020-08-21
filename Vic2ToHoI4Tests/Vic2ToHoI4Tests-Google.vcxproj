@@ -57,6 +57,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsInCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\CapitulationEvents.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\LarOccupationEvents.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp" />
@@ -456,8 +457,6 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h" />
     <ClInclude Include="Mocks\CoastalProvincesMock.h" />
     <ClInclude Include="Mocks\EventsMock.h" />

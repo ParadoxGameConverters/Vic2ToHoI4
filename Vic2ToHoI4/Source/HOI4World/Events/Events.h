@@ -54,7 +54,7 @@ class Events: commonItems::parser
 	void createStabilityEvents(const std::set<std::string>& majorIdeologies, const Configuration& theConfiguration);
 	void generateGenericEvents(const Configuration& theConfiguration, const std::set<std::string>& majorIdeologies);
 	void importCapitulationEvents(const Configuration& theConfiguration, const std::set<std::string>& majorIdeologies);
-	void importLarOccupationEvents(const Configuration& theConfiguration);
+	void importLarOccupationEvents(const Configuration& theConfiguration, const std::set<std::string>& majorIdeologies);
 
 	void giveGovernmentInExileEvent(Event&& gieEvent) { governmentInExileEvent = gieEvent; }
 
