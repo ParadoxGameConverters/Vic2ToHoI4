@@ -14,8 +14,6 @@ TEST(HoI4World_Events_EventTests, TypeDefaultsToBlank)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -34,8 +32,6 @@ TEST(HoI4World_Events_EventTests, TypeCanBeGiven)
 	std::string expectedOutput;
 	expectedOutput += "eventType = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -56,8 +52,6 @@ TEST(HoI4World_Events_EventTests, TypeCanBeInput)
 	std::string expectedOutput;
 	expectedOutput += "eventType = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -93,11 +87,11 @@ TEST(HoI4World_Events_EventTests, IdCanBeInput)
 }
 
 
-TEST(HoI4World_Events_EventTests, TitleDefaultsToBlank)
+TEST(HoI4World_Events_EventTests, TitleDefaultsToNullopt)
 {
 	const HoI4::Event theEvent;
 
-	ASSERT_EQ(theEvent.getTitle(), "");
+	ASSERT_FALSE(theEvent.getTitle());
 }
 
 
@@ -132,8 +126,6 @@ TEST(HoI4World_Events_EventTests, DescriptionsDefaultToEmpty)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -153,8 +145,6 @@ TEST(HoI4World_Events_EventTests, DescriptionsCanBeCleared)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -173,9 +163,7 @@ TEST(HoI4World_Events_EventTests, DescriptionsCanBeGiven)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
 	expectedOutput += "\tdesc = \"description one\"\n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -195,10 +183,8 @@ TEST(HoI4World_Events_EventTests, DescriptionsCanBeGivenMultipleTimes)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
 	expectedOutput += "\tdesc = \"description one\"\n";
 	expectedOutput += "\tdesc = \"description two\"\n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -220,9 +206,7 @@ TEST(HoI4World_Events_EventTests, DescriptionsCanBeInput)
 	std::string expectedOutput;
 	expectedOutput += "eventType = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
 	expectedOutput += "\tdesc = eventDescription\n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -230,7 +214,7 @@ TEST(HoI4World_Events_EventTests, DescriptionsCanBeInput)
 }
 
 
-TEST(HoI4World_Events_EventTests, PictureDefaultsToBlank)
+TEST(HoI4World_Events_EventTests, PictureDefaultsToNullopt)
 {
 	const HoI4::Event theEvent;
 
@@ -240,8 +224,6 @@ TEST(HoI4World_Events_EventTests, PictureDefaultsToBlank)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -260,7 +242,6 @@ TEST(HoI4World_Events_EventTests, PictureCanBeGiven)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
 	expectedOutput += "\tpicture = eventPicture\n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
@@ -283,7 +264,6 @@ TEST(HoI4World_Events_EventTests, PictureCanBeInput)
 	std::string expectedOutput;
 	expectedOutput += "eventType = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
 	expectedOutput += "\tpicture = eventPicture\n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
@@ -302,8 +282,6 @@ TEST(HoI4World_Events_EventTests, MajorEventDefaultsToFalse)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -322,8 +300,6 @@ TEST(HoI4World_Events_EventTests, MajorEventCanBeSetTrue)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\t\n";
 	expectedOutput += "\tmajor = yes\n";
 	expectedOutput += "\n";
@@ -347,8 +323,6 @@ TEST(HoI4World_Events_EventTests, MajorEventCanBeInput)
 	std::string expectedOutput;
 	expectedOutput += "eventType = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\t\n";
 	expectedOutput += "\tmajor = yes\n";
 	expectedOutput += "\n";
@@ -368,8 +342,6 @@ TEST(HoI4World_Events_EventTests, TriggeredOnlyDefaultsToFalse)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -388,8 +360,6 @@ TEST(HoI4World_Events_EventTests, TriggeredOnlyCanBeSetTrue)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "\tis_triggered_only = yes\n";
 	expectedOutput += "}\n";
@@ -412,8 +382,6 @@ TEST(HoI4World_Events_EventTests, TriggeredOnlyCanBeInput)
 	std::string expectedOutput;
 	expectedOutput += "eventType = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "\tis_triggered_only = yes\n";
 	expectedOutput += "}\n";
@@ -432,8 +400,6 @@ TEST(HoI4World_Events_EventTests, HiddenDefaultsToFalse)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -455,8 +421,6 @@ TEST(HoI4World_Events_EventTests, HiddenCanBeInput)
 	std::string expectedOutput;
 	expectedOutput += "eventType = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "\thidden = yes\n";
 	expectedOutput += "}\n";
@@ -475,8 +439,6 @@ TEST(HoI4World_Events_EventTests, TriggerDefaultsToEmpty)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -498,8 +460,6 @@ TEST(HoI4World_Events_EventTests, TriggerCanBeGiven)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "\n";
 	expectedOutput += "\ttrigger = {\n";
@@ -527,8 +487,6 @@ TEST(HoI4World_Events_EventTests, TriggerCanBeInput)
 	std::string expectedOutput;
 	expectedOutput += "eventType = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "\n";
 	expectedOutput += "\ttrigger = {\n";
@@ -550,8 +508,6 @@ TEST(HoI4World_Events_EventTests, FireOnlyOnceDefaultsToFalse)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -570,8 +526,6 @@ TEST(HoI4World_Events_EventTests, FireOnlyOnceCanBeSet)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n\n";
 	expectedOutput += "\tfire_only_once = yes\n";
 	expectedOutput += "}\n";
@@ -594,8 +548,6 @@ TEST(HoI4World_Events_EventTests, FireOnlyOnceCanBeInput)
 	std::string expectedOutput;
 	expectedOutput += "eventType = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n\n";
 	expectedOutput += "\tfire_only_once = yes\n";
 	expectedOutput += "}\n";
@@ -614,8 +566,6 @@ TEST(HoI4World_Events_EventTests, MeanTimeToHappenDefaultsToEmpty)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -637,8 +587,6 @@ TEST(HoI4World_Events_EventTests, MeanTimeToHappenCanBeGiven)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "\n";
 	expectedOutput += "\tmean_time_to_happen = {\n";
@@ -666,8 +614,6 @@ TEST(HoI4World_Events_EventTests, MeanTimeToHappenCanBeInput)
 	std::string expectedOutput;
 	expectedOutput += "eventType = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "\n";
 	expectedOutput += "\tmean_time_to_happen = {\n";
@@ -689,8 +635,6 @@ TEST(HoI4World_Events_EventTests, ImmediateDefaultsToEmpty)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -712,8 +656,6 @@ TEST(HoI4World_Events_EventTests, ImmediateCanBeGiven)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "\n";
 	expectedOutput += "\timmediate = {\n";
@@ -741,8 +683,6 @@ TEST(HoI4World_Events_EventTests, ImmediateCanBeInput)
 	std::string expectedOutput;
 	expectedOutput += "eventType = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "\n";
 	expectedOutput += "\timmediate = {\n";
@@ -764,8 +704,6 @@ TEST(HoI4World_Events_EventTests, OptionsDefaultToEmpty)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
@@ -785,8 +723,6 @@ TEST(HoI4World_Events_EventTests, OptionsCanBeGiven)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "\n";
 	expectedOutput += "\toption = {\n";
@@ -812,8 +748,6 @@ TEST(HoI4World_Events_EventTests, OptionsCanBeGivenMultipleTimes)
 	std::string expectedOutput;
 	expectedOutput += " = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "\n";
 	expectedOutput += "\toption = {\n";
@@ -845,8 +779,6 @@ TEST(HoI4World_Events_EventTests, OptionsCanBeInput)
 	std::string expectedOutput;
 	expectedOutput += "eventType = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "\n";
 	expectedOutput += "\toption = {\n";
@@ -875,8 +807,6 @@ TEST(HoI4World_Events_EventTests, OptionsCanBeCleared)
 	std::string expectedOutput;
 	expectedOutput += "eventType = {\n";
 	expectedOutput += "\tid = \n";
-	expectedOutput += "\ttitle = \n";
-	expectedOutput += "\tpicture = \n";
 	expectedOutput += "\n";
 	expectedOutput += "}\n";
 
