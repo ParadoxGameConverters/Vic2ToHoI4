@@ -85,7 +85,7 @@ class Events: commonItems::parser
 	static std::string getIdeologicalPicture(const std::string& ideology);
 
 	std::vector<Event> newsEvents;
-	int newsEventNumber = 237;
+	int newsEventNumber = 500;
 	std::vector<Event> nationalFocusEvents;
 	int nationalFocusEventNumber = 1;
 	std::vector<Event> politicalEvents;
