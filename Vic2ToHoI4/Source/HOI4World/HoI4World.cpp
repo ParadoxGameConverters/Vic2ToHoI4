@@ -114,6 +114,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	events->createWarJustificationEvents(ideologies->getMajorIdeologies(), *hoi4Localisations);
 	events->importElectionEvents(ideologies->getMajorIdeologies(), *onActions);
 	events->importCapitulationEvents(theConfiguration, ideologies->getMajorIdeologies());
+	events->importLarOccupationEvents(theConfiguration, ideologies->getMajorIdeologies());
 	addCountryElectionEvents(ideologies->getMajorIdeologies(), vic2Localisations);
 	events->createStabilityEvents(ideologies->getMajorIdeologies(), theConfiguration);
 	events->generateGenericEvents(theConfiguration, ideologies->getMajorIdeologies());

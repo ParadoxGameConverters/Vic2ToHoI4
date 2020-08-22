@@ -1115,6 +1115,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ScriptedEffects\OutScriptedEffects.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\ScriptedEffects</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\LarOccupationEvents.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1415,12 +1418,6 @@
     </ClInclude>
     <ClInclude Include="Mocks\GovermentMapperMock.h">
       <Filter>Mocks</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.h">
-      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.h">
-      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
     </ClInclude>
     <ClInclude Include="Mocks\CoastalProvincesMock.h">
       <Filter>Mocks</Filter>

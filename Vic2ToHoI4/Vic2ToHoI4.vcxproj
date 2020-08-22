@@ -147,6 +147,7 @@
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategories.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="Source\HOI4World\Events\CapitulationEvents.cpp" />
+    <ClCompile Include="Source\HOI4World\Events\LarOccupationEvents.cpp" />
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.cpp" />
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp" />
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp" />
@@ -407,6 +408,7 @@
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategories.h" />
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategory.h" />
     <ClInclude Include="Source\HOI4World\Events\CapitulationEvents.h" />
+    <ClInclude Include="Source\HOI4World\Events\LarOccupationEvents.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.h" />
