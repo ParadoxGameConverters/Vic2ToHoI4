@@ -1,5 +1,5 @@
 #include "Ideology.h"
-#include "../../Color.h"
+#include "newColor.h"
 #include "IdeologyItems.h"
 #include "ParserHelpers.h"
 

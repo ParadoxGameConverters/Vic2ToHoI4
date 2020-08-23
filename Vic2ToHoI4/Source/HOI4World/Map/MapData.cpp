@@ -1,8 +1,8 @@
 #include "MapData.h"
-#include "../../Color.h"
 #include "../../Configuration.h"
 #include "../../HOI4World/ProvinceDefinitions.h"
 #include "Log.h"
+#include "newColor.h"
 
 
 
@@ -78,7 +78,7 @@ commonItems::newColor getCenterColor(const point position, bitmap_image& provinc
 	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	return commonItems::newColor({color.red, color.green, color.blue});
+	return commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
@@ -92,7 +92,7 @@ commonItems::newColor getAboveColor(point position, bitmap_image& provinceMap)
 	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	return commonItems::newColor({color.red, color.green, color.blue});
+	return commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
@@ -106,7 +106,7 @@ commonItems::newColor getBelowColor(point position, const int height, bitmap_ima
 	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	return commonItems::newColor({color.red, color.green, color.blue});
+	return commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
@@ -124,7 +124,7 @@ commonItems::newColor getLeftColor(point position, const int width, bitmap_image
 	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	return commonItems::newColor({color.red, color.green, color.blue});
+	return commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
@@ -142,7 +142,7 @@ commonItems::newColor getRightColor(point position, const int width, bitmap_imag
 	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	return commonItems::newColor({color.red, color.green, color.blue});
+	return commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
@@ -270,7 +270,8 @@ std::optional<int> HoI4::MapData::getProvinceNumber(const double x,
 	provinceMap.get_pixel(static_cast<unsigned int>(x),
 		 (provinceMap.height() - 1) - static_cast<unsigned int>(y),
 		 color);
-	return provinceDefinitions.getProvinceFromColor(commonItems::newColor({color.red, color.green, color.blue}));
+	return provinceDefinitions.getProvinceFromColor(
+		 commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue}));
 }
 
 

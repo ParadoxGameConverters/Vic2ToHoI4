@@ -19,7 +19,6 @@ include_directories(googletest/googlemock)
 include_directories(googletest/googlemock/include)
 
 file(GLOB MAIN_SOURCE "${PROJECT_SOURCE_DIR}/main.cpp")
-file(GLOB CONVERTER_SOURCES "${PROJECT_SOURCE_DIR}/Color.cpp")
 file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/Configuration.cpp")
 file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/Vic2toHOI4Converter.cpp")
 file(GLOB HOI4WORLD_SOURCES "${PROJECT_SOURCE_DIR}/HOI4World/*.cpp")

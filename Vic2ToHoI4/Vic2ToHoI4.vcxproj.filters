@@ -207,7 +207,6 @@
     <ClCompile Include="Source\HOI4World\HoI4World.cpp">
       <Filter>HoI4World</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Color.cpp" />
     <ClCompile Include="Source\Configuration.cpp" />
     <ClCompile Include="..\common_items\WinUtils.cpp">
       <Filter>CommonItems</Filter>
@@ -757,9 +756,6 @@
     <ClCompile Include="Source\OutHoi4\OutMod.cpp">
       <Filter>OutHoi4</Filter>
     </ClCompile>
-    <ClCompile Include="Source\OutHoi4\OutColor.cpp">
-      <Filter>OutHoi4</Filter>
-    </ClCompile>
     <ClCompile Include="Source\OutHoI4\OutSharedFocus.cpp">
       <Filter>OutHoi4</Filter>
     </ClCompile>
@@ -979,7 +975,6 @@
     <ClInclude Include="Source\HOI4World\HoI4World.h">
       <Filter>HoI4World</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Color.h" />
     <ClInclude Include="Source\Configuration.h" />
     <ClInclude Include="..\common_items\OSCompatibilityLayer.h">
       <Filter>CommonItems</Filter>
@@ -1575,9 +1570,6 @@
       <Filter>OutHoi4</Filter>
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\OutMod.h">
-      <Filter>OutHoi4</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\OutHoi4\OutColor.h">
       <Filter>OutHoi4</Filter>
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\Leaders\OutAdmiral.h">

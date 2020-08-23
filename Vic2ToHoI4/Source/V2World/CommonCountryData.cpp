@@ -1,8 +1,8 @@
 #include "CommonCountryData.h"
-#include "../Color.h"
 #include "../Configuration.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
+#include "newColor.h"
 
 
 
@@ -12,7 +12,8 @@ Vic2::commonCountryData::commonCountryData(const std::string& filename,
 {
 	registerKeyword("color", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::intList colorInts(theStream);
-		theColor = commonItems::newColor({colorInts.getInts()[0], colorInts.getInts()[1], colorInts.getInts()[2]});
+		theColor = commonItems::newColor(
+			 std::array<int, 3>{colorInts.getInts()[0], colorInts.getInts()[1], colorInts.getInts()[2]});
 	});
 	registerKeyword("unit_names", [this](const std::string& unused, std::istream& theStream) {
 		auto equals = getNextTokenWithoutMatching(theStream);
