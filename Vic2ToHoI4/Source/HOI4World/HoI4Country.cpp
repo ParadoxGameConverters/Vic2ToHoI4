@@ -34,6 +34,8 @@ HoI4::Country::Country(std::string tag,
 
 	human = sourceCountry.isHuman();
 	color = sourceCountry.getColor();
+	rgbColor = color;
+	rgbColor.convertToRgb();
 	civilized = sourceCountry.isCivilized();
 	threat = sourceCountry.getBadBoy() / 10.0;
 

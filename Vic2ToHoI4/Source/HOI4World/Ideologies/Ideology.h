@@ -3,12 +3,12 @@
 
 
 
-#include "../../Color.h"
 #include "Parser.h"
 #include <map>
 #include <memory>
 #include <string>
 #include <vector>
+#include "newColor.h"
 
 
 
@@ -33,7 +33,7 @@ class Ideology: commonItems::parser
 	std::string ideologyName;
 	std::vector<std::string> types;
 	std::vector<std::string> dynamicFactionNames;
-	std::unique_ptr<ConverterColor::Color> theColor;
+	std::unique_ptr<commonItems::newColor> theColor;
 	std::map<std::string, std::string> rules;
 	float warImpactOnWorldTension = 0.0;
 	float factionImpactOnWorldTension = 0.0;

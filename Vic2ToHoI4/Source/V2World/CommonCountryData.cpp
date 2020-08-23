@@ -12,9 +12,7 @@ Vic2::commonCountryData::commonCountryData(const std::string& filename,
 {
 	registerKeyword("color", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::intList colorInts(theStream);
-		theColor = ConverterColor::Color(ConverterColor::red(colorInts.getInts()[0]),
-			 ConverterColor::green(colorInts.getInts()[1]),
-			 ConverterColor::blue(colorInts.getInts()[2]));
+		theColor = commonItems::newColor({colorInts.getInts()[0], colorInts.getInts()[1], colorInts.getInts()[2]});
 	});
 	registerKeyword("unit_names", [this](const std::string& unused, std::istream& theStream) {
 		auto equals = getNextTokenWithoutMatching(theStream);
@@ -44,7 +42,8 @@ Vic2::commonCountryData::commonCountryData(const std::string& filename,
 	bool parsedFile = false;
 	if (mod)
 	{
-		std::string file = theConfiguration.getVic2Path() + "/mod/" + mod->getDirectory() + "/common/countries/" + filename;
+		std::string file =
+			 theConfiguration.getVic2Path() + "/mod/" + mod->getDirectory() + "/common/countries/" + filename;
 		if (Utils::DoesFileExist(file))
 		{
 			parseFile(file);

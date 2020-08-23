@@ -3,7 +3,7 @@
 
 
 
-#include "../Color.h"
+#include "newColor.h"
 #include <map>
 #include <optional>
 #include <set>
@@ -32,7 +32,7 @@ class ProvinceDefinitions
 	[[nodiscard]] bool isLandProvince(const int province) const { return (landProvinces.count(province) > 0); }
 	[[nodiscard]] bool isSeaProvince(const int province) const { return (seaProvinces.count(province) > 0); }
 
-	[[nodiscard]] std::optional<int> getProvinceFromColor(const ConverterColor::Color& color) const;
+	[[nodiscard]] std::optional<int> getProvinceFromColor(const commonItems::newColor& color) const;
 
   private:
 	std::set<int> landProvinces;

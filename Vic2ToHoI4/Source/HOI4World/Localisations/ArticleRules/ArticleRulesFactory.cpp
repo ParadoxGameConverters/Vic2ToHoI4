@@ -4,7 +4,7 @@
 #include "ParserHelpers.h"
 
 
-#pragma optimize("", off)
+
 HoI4::ArticleRules::Factory::Factory()
 {
 	registerKeyword("link", [this](const std::string& unused, std::istream& theStream) {
@@ -31,7 +31,7 @@ HoI4::ArticleRules::Factory::Factory()
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
-#pragma optimize("", on)
+
 
 std::unique_ptr<HoI4::ArticleRules> HoI4::ArticleRules::Factory::getRules(const std::string& rulesFile)
 {

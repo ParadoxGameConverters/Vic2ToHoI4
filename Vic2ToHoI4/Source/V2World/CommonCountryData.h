@@ -3,7 +3,7 @@
 
 
 
-#include "../Color.h"
+#include "newColor.h"
 #include "Mods/Mod.h"
 #include "Parser.h"
 #include "Party.h"
@@ -31,7 +31,7 @@ class commonCountryData: commonItems::parser
 	auto getParties() { return std::move(parties); }
 
   private:
-	ConverterColor::Color theColor;
+	commonItems::newColor theColor;
 	std::map<std::string, std::vector<std::string>> unitNames;
 	std::vector<Party> parties;
 };
