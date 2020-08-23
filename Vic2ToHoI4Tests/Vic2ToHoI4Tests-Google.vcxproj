@@ -41,6 +41,7 @@
     <ClCompile Include="..\common_items\GameVersion.cpp" />
     <ClCompile Include="..\common_items\iconvlite.cpp" />
     <ClCompile Include="..\common_items\Log.cpp" />
+    <ClCompile Include="..\common_items\newColor.cpp" />
     <ClCompile Include="..\common_items\OSCommonLayer.cpp" />
     <ClCompile Include="..\common_items\Parser.cpp" />
     <ClCompile Include="..\common_items\ParserHelpers.cpp" />
