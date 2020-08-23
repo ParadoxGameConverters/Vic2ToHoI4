@@ -31,8 +31,8 @@ void HoI4::outputToCommonCountriesFile(std::ostream& countriesFile, const Countr
 void HoI4::outputColors(std::ostream& out, const Country& theCountry)
 {
 	out << theCountry.getTag() << " = {\n";
-	out << "\tcolor " << theCountry.getRgbColor() << "\n";
-	out << "\tcolor_ui " << theCountry.getRgbColor() << "";
+	out << "\tcolor " << theCountry.getColor().outputRgb() << "\n";
+	out << "\tcolor_ui " << theCountry.getColor().outputRgb() << "";
 	out << "}\n";
 }
 

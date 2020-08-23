@@ -145,7 +145,6 @@ class Country
 	[[nodiscard]] bool isHuman() const { return human; }
 
 	[[nodiscard]] const auto& getColor() const { return color; }
-	[[nodiscard]] const auto& getRgbColor() const { return rgbColor; }
 	[[nodiscard]] const std::string& getGraphicalCulture() const { return graphicalCulture; }
 	[[nodiscard]] const std::string& getGraphicalCulture2d() const { return graphicalCulture2d; }
 	[[nodiscard]] const auto& getCommunistAdvisorPortrait() const { return communistAdvisorPortrait; }
@@ -260,7 +259,6 @@ class Country
 	bool human = false;
 
 	commonItems::newColor color;
-	commonItems::newColor rgbColor;
 	std::string graphicalCulture = "western_european_gfx";
 	std::string graphicalCulture2d = "western_european_2d";
 	std::string communistAdvisorPortrait;
