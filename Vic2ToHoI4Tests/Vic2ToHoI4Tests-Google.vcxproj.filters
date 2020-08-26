@@ -34,9 +34,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Color.cpp">
-      <Filter>Vic2ToHoI4 files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
@@ -796,9 +793,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFlags.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutColor.cpp">
-      <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoI4\OutSharedFocus.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4</Filter>
     </ClCompile>
@@ -1117,6 +1111,9 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\LarOccupationEvents.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\newColor.cpp">
+      <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

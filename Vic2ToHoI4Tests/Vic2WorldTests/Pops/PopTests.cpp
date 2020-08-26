@@ -14,7 +14,7 @@ TEST(Vic2World_Pops_PopTests, SupportForMissingIssueIsZero)
 
 TEST(Vic2World_Pops_PopTests, SupportForIssuesCanBeReturned)
 {
-	const auto pop = Vic2::Pop::Builder{}.setIssues({{"learn_the_question", 87.125}}).build();
+	const auto pop = Vic2::Pop::Builder{}.setIssues({{"learn_the_question", 87.125f}}).build();
 
 	ASSERT_NEAR(87.125, pop->getIssueSupport("learn_the_question"), 0.001);
 }

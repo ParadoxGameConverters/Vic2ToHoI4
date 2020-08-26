@@ -135,13 +135,13 @@
     <ClCompile Include="..\common_items\GameVersion.cpp" />
     <ClCompile Include="..\common_items\iconvlite.cpp" />
     <ClCompile Include="..\common_items\Log.cpp" />
+    <ClCompile Include="..\common_items\newColor.cpp" />
     <ClCompile Include="..\common_items\OSCommonLayer.cpp" />
     <ClCompile Include="..\common_items\Parser.cpp" />
     <ClCompile Include="..\common_items\ParserHelpers.cpp" />
     <ClCompile Include="..\common_items\StringUtils.cpp" />
     <ClCompile Include="..\common_items\WinUtils.cpp" />
     <ClCompile Include="..\common_items\targa.cpp" />
-    <ClCompile Include="Source\Color.cpp" />
     <ClCompile Include="Source\Configuration.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategories.cpp" />
@@ -225,7 +225,6 @@
     <ClCompile Include="Source\OutHoi4\Operations\OutOperations.cpp" />
     <ClCompile Include="Source\OutHoi4\OperativeNames\OutOperativeNames.cpp" />
     <ClCompile Include="Source\OutHoi4\OperativeNames\OutOperativeNamesSet.cpp" />
-    <ClCompile Include="Source\OutHoi4\OutColor.cpp" />
     <ClCompile Include="Source\OutHoi4\outDifficultySettings.cpp" />
     <ClCompile Include="Source\OutHoi4\OutFlags.cpp" />
     <ClCompile Include="Source\OutHoi4\OutFocus.cpp" />
@@ -397,12 +396,12 @@
     <ClInclude Include="..\common_items\GameVersion.h" />
     <ClInclude Include="..\common_items\iconvlite.h" />
     <ClInclude Include="..\common_items\Log.h" />
+    <ClInclude Include="..\common_items\newColor.h" />
     <ClInclude Include="..\common_items\OSCompatibilityLayer.h" />
     <ClInclude Include="..\common_items\Parser.h" />
     <ClInclude Include="..\common_items\ParserHelpers.h" />
     <ClInclude Include="..\common_items\StringUtils.h" />
     <ClInclude Include="..\common_items\targa.h" />
-    <ClInclude Include="Source\Color.h" />
     <ClInclude Include="Source\Configuration.h" />
     <ClInclude Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.h" />
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategories.h" />
@@ -467,7 +466,6 @@
     <ClInclude Include="Source\OutHoi4\Operations\OutOperations.h" />
     <ClInclude Include="Source\OutHoi4\OperativeNames\OutOperativeNames.h" />
     <ClInclude Include="Source\OutHoi4\OperativeNames\OutOperativeNamesSet.h" />
-    <ClInclude Include="Source\OutHoi4\OutColor.h" />
     <ClInclude Include="Source\OutHoi4\OutFlags.h" />
     <ClInclude Include="Source\OutHoi4\OutHoi4Country.h" />
     <ClInclude Include="Source\OutHoi4\Ideas\OutIdea.h" />

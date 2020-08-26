@@ -41,6 +41,7 @@
     <ClCompile Include="..\common_items\GameVersion.cpp" />
     <ClCompile Include="..\common_items\iconvlite.cpp" />
     <ClCompile Include="..\common_items\Log.cpp" />
+    <ClCompile Include="..\common_items\newColor.cpp" />
     <ClCompile Include="..\common_items\OSCommonLayer.cpp" />
     <ClCompile Include="..\common_items\Parser.cpp" />
     <ClCompile Include="..\common_items\ParserHelpers.cpp" />
@@ -50,7 +51,6 @@
     <ClCompile Include="..\googletest\googlemock\src\gmock-all.cc" />
     <ClCompile Include="..\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="..\googletest\googletest\src\gtest_main.cc" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Color.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Configuration.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategories.cpp" />
@@ -108,7 +108,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Operations\OutOperations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OperativeNames\OutOperativeNames.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OperativeNames\OutOperativeNamesSet.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutColor.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutFlags.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OutHoi4Country.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Ideas\OutIdea.cpp" />

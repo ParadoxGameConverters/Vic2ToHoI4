@@ -3,13 +3,13 @@
 
 
 
-#include "../Color.h"
 #include "Army.h"
 #include "Date.h"
 #include "Parser.h"
 #include "Party.h"
 #include "States/StateFactory.h"
 #include "Wars/War.h"
+#include "newColor.h"
 #include <functional>
 #include <map>
 #include <memory>
@@ -47,7 +47,7 @@ class Country: commonItems::parser
 	virtual ~Country() = default;
 
 	void addProvince(const std::pair<const int, std::shared_ptr<Province>>& province) { provinces.insert(province); }
-	void setColor(const ConverterColor::Color& newColor) { color = newColor; }
+	void setColor(const commonItems::newColor& newColor) { color = newColor; }
 	void addCore(std::shared_ptr<Province> core) { cores.push_back(core); }
 	void replaceCores(std::vector<std::shared_ptr<Province>> newCores) { cores.swap(newCores); }
 	void setShipNames(const std::map<std::string, std::vector<std::string>>& newShipNames) { shipNames = newShipNames; }
@@ -75,7 +75,7 @@ class Country: commonItems::parser
 	virtual date getLastElection() const { return lastElection; }
 	virtual int getCapital() const { return capital; }
 	virtual std::set<std::string> getTechs() const { return techs; }
-	virtual const ConverterColor::Color& getColor() const { return color; }
+	virtual const commonItems::newColor& getColor() const { return color; }
 	auto getArmies() const { return armies; }
 	std::vector<const Leader*> getLeaders() const { return leaders; }
 	virtual double getRevanchism() const { return revanchism; }
@@ -110,7 +110,7 @@ class Country: commonItems::parser
 	std::string selectLargestCulture(const std::map<std::string, int>& cultureSizes);
 
 	std::string tag = "";
-	ConverterColor::Color color;
+	commonItems::newColor color;
 
 	std::vector<State> states;
 	std::map<int, std::shared_ptr<Province>> provinces;

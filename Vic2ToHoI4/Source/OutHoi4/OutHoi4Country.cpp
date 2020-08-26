@@ -31,8 +31,8 @@ void HoI4::outputToCommonCountriesFile(std::ostream& countriesFile, const Countr
 void HoI4::outputColors(std::ostream& out, const Country& theCountry)
 {
 	out << theCountry.getTag() << " = {\n";
-	out << "\tcolor = rgb { " << theCountry.getColor() << " }\n";
-	out << "\tcolor_ui = rgb { " << theCountry.getColor() << " }";
+	out << "\tcolor " << theCountry.getColor().outputRgb() << "\n";
+	out << "\tcolor_ui " << theCountry.getColor().outputRgb() << "";
 	out << "}\n";
 }
 
@@ -837,7 +837,7 @@ void outputCommonCountryFile(const HoI4::Country& theCountry, const Configuratio
 		output << "graphical_culture = " << graphicalCulture << "\n";
 		output << "graphical_culture_2d = " << graphicalCulture2d << "\n";
 	}
-	output << "color = { " << theCountry.getColor() << " }\n";
+	output << "color " << theCountry.getColor() << "\n";
 
 	output.close();
 }

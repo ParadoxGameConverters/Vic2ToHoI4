@@ -5,14 +5,11 @@
 
 
 
-int getIntFromColor(const ConverterColor::Color& color)
+int getIntFromColor(const commonItems::newColor& color)
 {
-	ConverterColor::red red;
-	ConverterColor::green green;
-	ConverterColor::blue blue;
-	color.GetRGB(red, green, blue);
+	auto [r, g, b] = color.getRgbComponents();
 
-	return ((red.Red & 0xFF) << 16) + ((green.Green & 0xFF) << 8) + (blue.Blue & 0xFF);
+	return ((r & 0xFF) << 16) + ((g & 0xFF) << 8) + (b & 0xFF);
 }
 
 
@@ -46,19 +43,18 @@ HoI4::ProvinceDefinitions HoI4::ProvinceDefinitions::Importer::importProvinceDef
 		line = line.substr(pos + 1, line.length());
 
 		pos = line.find_first_of(';');
-		ConverterColor::red red(stoi(line.substr(0, pos)));
+		int red(stoi(line.substr(0, pos)));
 		line = line.substr(pos + 1, line.length());
 
 		pos = line.find_first_of(';');
-		ConverterColor::green green(stoi(line.substr(0, pos)));
+		int green(stoi(line.substr(0, pos)));
 		line = line.substr(pos + 1, line.length());
 
 		pos = line.find_first_of(';');
-		ConverterColor::blue blue(stoi(line.substr(0, pos)));
+		int blue(stoi(line.substr(0, pos)));
 		line = line.substr(pos + 1, line.length());
 
-		ConverterColor::Color provinceColor(red, green, blue);
-		auto colorInt = getIntFromColor(provinceColor);
+		auto colorInt = getIntFromColor(commonItems::newColor(std::array<int, 3>{red, green, blue}));
 		colorToProvinceMap.insert(std::make_pair(colorInt, provNum));
 
 		pos = line.find_first_of(';');
@@ -77,7 +73,7 @@ HoI4::ProvinceDefinitions HoI4::ProvinceDefinitions::Importer::importProvinceDef
 }
 
 
-std::optional<int> HoI4::ProvinceDefinitions::getProvinceFromColor(const ConverterColor::Color& color) const
+std::optional<int> HoI4::ProvinceDefinitions::getProvinceFromColor(const commonItems::newColor& color) const
 {
 	const auto colorInt = getIntFromColor(color);
 

@@ -1,16 +1,16 @@
 #include "MapData.h"
-#include "../../Color.h"
 #include "../../Configuration.h"
 #include "../../HOI4World/ProvinceDefinitions.h"
 #include "Log.h"
+#include "newColor.h"
 
 
 
-ConverterColor::Color getCenterColor(point position, bitmap_image& provinceMap);
-ConverterColor::Color getAboveColor(point position, bitmap_image& provinceMap);
-ConverterColor::Color getBelowColor(point position, int height, bitmap_image& provinceMap);
-ConverterColor::Color getLeftColor(point position, int width, bitmap_image& provinceMap);
-ConverterColor::Color getRightColor(point position, int width, bitmap_image& provinceMap);
+commonItems::newColor getCenterColor(point position, bitmap_image& provinceMap);
+commonItems::newColor getAboveColor(point position, bitmap_image& provinceMap);
+commonItems::newColor getBelowColor(point position, int height, bitmap_image& provinceMap);
+commonItems::newColor getLeftColor(point position, int width, bitmap_image& provinceMap);
+commonItems::newColor getRightColor(point position, int width, bitmap_image& provinceMap);
 
 
 HoI4::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const Configuration& theConfiguration):
@@ -73,19 +73,16 @@ HoI4::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const Con
 }
 
 
-ConverterColor::Color getCenterColor(const point position, bitmap_image& provinceMap)
+commonItems::newColor getCenterColor(const point position, bitmap_image& provinceMap)
 {
 	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	ConverterColor::Color theColor(ConverterColor::red(color.red),
-		 ConverterColor::green(color.green),
-		 ConverterColor::blue(color.blue));
-	return theColor;
+	return commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
-ConverterColor::Color getAboveColor(point position, bitmap_image& provinceMap)
+commonItems::newColor getAboveColor(point position, bitmap_image& provinceMap)
 {
 	if (position.second > 0)
 	{
@@ -95,14 +92,11 @@ ConverterColor::Color getAboveColor(point position, bitmap_image& provinceMap)
 	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	ConverterColor::Color theColor(ConverterColor::red(color.red),
-		 ConverterColor::green(color.green),
-		 ConverterColor::blue(color.blue));
-	return theColor;
+	return commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
-ConverterColor::Color getBelowColor(point position, const int height, bitmap_image& provinceMap)
+commonItems::newColor getBelowColor(point position, const int height, bitmap_image& provinceMap)
 {
 	if (position.second < height - 1)
 	{
@@ -112,14 +106,11 @@ ConverterColor::Color getBelowColor(point position, const int height, bitmap_ima
 	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	ConverterColor::Color theColor(ConverterColor::red(color.red),
-		 ConverterColor::green(color.green),
-		 ConverterColor::blue(color.blue));
-	return theColor;
+	return commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
-ConverterColor::Color getLeftColor(point position, const int width, bitmap_image& provinceMap)
+commonItems::newColor getLeftColor(point position, const int width, bitmap_image& provinceMap)
 {
 	if (position.first > 0)
 	{
@@ -133,14 +124,11 @@ ConverterColor::Color getLeftColor(point position, const int width, bitmap_image
 	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	ConverterColor::Color theColor(ConverterColor::red(color.red),
-		 ConverterColor::green(color.green),
-		 ConverterColor::blue(color.blue));
-	return theColor;
+	return commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
-ConverterColor::Color getRightColor(point position, const int width, bitmap_image& provinceMap)
+commonItems::newColor getRightColor(point position, const int width, bitmap_image& provinceMap)
 {
 	if (position.first < width - 1)
 	{
@@ -154,15 +142,12 @@ ConverterColor::Color getRightColor(point position, const int width, bitmap_imag
 	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	ConverterColor::Color theColor(ConverterColor::red(color.red),
-		 ConverterColor::green(color.green),
-		 ConverterColor::blue(color.blue));
-	return theColor;
+	return commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
-void HoI4::MapData::handleNeighbor(const ConverterColor::Color& centerColor,
-	 const ConverterColor::Color& otherColor,
+void HoI4::MapData::handleNeighbor(const commonItems::newColor& centerColor,
+	 const commonItems::newColor& otherColor,
 	 const point& position,
 	 const ProvinceDefinitions& provinceDefinitions)
 {
@@ -285,10 +270,8 @@ std::optional<int> HoI4::MapData::getProvinceNumber(const double x,
 	provinceMap.get_pixel(static_cast<unsigned int>(x),
 		 (provinceMap.height() - 1) - static_cast<unsigned int>(y),
 		 color);
-	const ConverterColor::Color theColor(ConverterColor::red(color.red),
-		 ConverterColor::green(color.green),
-		 ConverterColor::blue(color.blue));
-	return provinceDefinitions.getProvinceFromColor(theColor);
+	return provinceDefinitions.getProvinceFromColor(
+		 commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue}));
 }
 
 

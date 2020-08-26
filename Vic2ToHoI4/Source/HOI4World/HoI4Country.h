@@ -3,7 +3,6 @@
 
 
 
-#include "../Color.h"
 #include "../V2World/Party.h"
 #include "Date.h"
 #include "Diplomacy/Faction.h"
@@ -19,6 +18,7 @@
 #include "Navies/NavyNames.h"
 #include "ShipTypes/ShipVariants.h"
 #include "Technologies.h"
+#include "newColor.h"
 #include <functional>
 #include <map>
 #include <memory>
@@ -144,7 +144,7 @@ class Country
 	[[nodiscard]] const std::string& getCommonCountryFile() const { return commonCountryFile; }
 	[[nodiscard]] bool isHuman() const { return human; }
 
-	[[nodiscard]] const ConverterColor::Color& getColor() const { return color; }
+	[[nodiscard]] const auto& getColor() const { return color; }
 	[[nodiscard]] const std::string& getGraphicalCulture() const { return graphicalCulture; }
 	[[nodiscard]] const std::string& getGraphicalCulture2d() const { return graphicalCulture2d; }
 	[[nodiscard]] const auto& getCommunistAdvisorPortrait() const { return communistAdvisorPortrait; }
@@ -258,7 +258,7 @@ class Country
 	std::string commonCountryFile;
 	bool human = false;
 
-	ConverterColor::Color color;
+	commonItems::newColor color;
 	std::string graphicalCulture = "western_european_gfx";
 	std::string graphicalCulture2d = "western_european_2d";
 	std::string communistAdvisorPortrait;

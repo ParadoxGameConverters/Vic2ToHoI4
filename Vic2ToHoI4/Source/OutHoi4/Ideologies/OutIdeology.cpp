@@ -23,7 +23,7 @@ std::ostream& HoI4::operator<<(std::ostream& out, const Ideology& ideology)
 	}
 	out << "\t\t}\n";
 	out << "\t\t\n";
-	out << "\t\tcolor = { " << *ideology.theColor << " }\n";
+	out << "\t\tcolor " << *ideology.theColor << "\n";
 	out << "\t\t\n";
 	out << "\t\trules = {\n";
 	for (const auto& rule: ideology.rules)
