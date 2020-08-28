@@ -130,12 +130,12 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\common_items\Color.cpp" />
     <ClCompile Include="..\common_items\CommonFunctions.cpp" />
     <ClCompile Include="..\common_items\Date.cpp" />
     <ClCompile Include="..\common_items\GameVersion.cpp" />
     <ClCompile Include="..\common_items\iconvlite.cpp" />
     <ClCompile Include="..\common_items\Log.cpp" />
-    <ClCompile Include="..\common_items\newColor.cpp" />
     <ClCompile Include="..\common_items\OSCommonLayer.cpp" />
     <ClCompile Include="..\common_items\Parser.cpp" />
     <ClCompile Include="..\common_items\ParserHelpers.cpp" />
@@ -391,12 +391,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\bitmap\bitmap_image.hpp" />
+    <ClInclude Include="..\common_items\Color.h" />
     <ClInclude Include="..\common_items\CommonFunctions.h" />
     <ClInclude Include="..\common_items\Date.h" />
     <ClInclude Include="..\common_items\GameVersion.h" />
     <ClInclude Include="..\common_items\iconvlite.h" />
     <ClInclude Include="..\common_items\Log.h" />
-    <ClInclude Include="..\common_items\newColor.h" />
     <ClInclude Include="..\common_items\OSCompatibilityLayer.h" />
     <ClInclude Include="..\common_items\Parser.h" />
     <ClInclude Include="..\common_items\ParserHelpers.h" />

@@ -5,7 +5,7 @@
 
 
 
-int getIntFromColor(const commonItems::newColor& color)
+int getIntFromColor(const commonItems::Color& color)
 {
 	auto [r, g, b] = color.getRgbComponents();
 
@@ -54,7 +54,7 @@ HoI4::ProvinceDefinitions HoI4::ProvinceDefinitions::Importer::importProvinceDef
 		int blue(stoi(line.substr(0, pos)));
 		line = line.substr(pos + 1, line.length());
 
-		auto colorInt = getIntFromColor(commonItems::newColor(std::array<int, 3>{red, green, blue}));
+		auto colorInt = getIntFromColor(commonItems::Color(std::array<int, 3>{red, green, blue}));
 		colorToProvinceMap.insert(std::make_pair(colorInt, provNum));
 
 		pos = line.find_first_of(';');
@@ -73,7 +73,7 @@ HoI4::ProvinceDefinitions HoI4::ProvinceDefinitions::Importer::importProvinceDef
 }
 
 
-std::optional<int> HoI4::ProvinceDefinitions::getProvinceFromColor(const commonItems::newColor& color) const
+std::optional<int> HoI4::ProvinceDefinitions::getProvinceFromColor(const commonItems::Color& color) const
 {
 	const auto colorInt = getIntFromColor(color);
 

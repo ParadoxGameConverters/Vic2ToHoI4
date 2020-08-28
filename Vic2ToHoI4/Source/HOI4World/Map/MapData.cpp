@@ -2,15 +2,15 @@
 #include "../../Configuration.h"
 #include "../../HOI4World/ProvinceDefinitions.h"
 #include "Log.h"
-#include "newColor.h"
+#include "Color.h"
 
 
 
-commonItems::newColor getCenterColor(point position, bitmap_image& provinceMap);
-commonItems::newColor getAboveColor(point position, bitmap_image& provinceMap);
-commonItems::newColor getBelowColor(point position, int height, bitmap_image& provinceMap);
-commonItems::newColor getLeftColor(point position, int width, bitmap_image& provinceMap);
-commonItems::newColor getRightColor(point position, int width, bitmap_image& provinceMap);
+commonItems::Color getCenterColor(point position, bitmap_image& provinceMap);
+commonItems::Color getAboveColor(point position, bitmap_image& provinceMap);
+commonItems::Color getBelowColor(point position, int height, bitmap_image& provinceMap);
+commonItems::Color getLeftColor(point position, int width, bitmap_image& provinceMap);
+commonItems::Color getRightColor(point position, int width, bitmap_image& provinceMap);
 
 
 HoI4::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const Configuration& theConfiguration):
@@ -73,16 +73,16 @@ HoI4::MapData::MapData(const ProvinceDefinitions& provinceDefinitions, const Con
 }
 
 
-commonItems::newColor getCenterColor(const point position, bitmap_image& provinceMap)
+commonItems::Color getCenterColor(const point position, bitmap_image& provinceMap)
 {
 	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	return commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue});
+	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
-commonItems::newColor getAboveColor(point position, bitmap_image& provinceMap)
+commonItems::Color getAboveColor(point position, bitmap_image& provinceMap)
 {
 	if (position.second > 0)
 	{
@@ -92,11 +92,11 @@ commonItems::newColor getAboveColor(point position, bitmap_image& provinceMap)
 	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	return commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue});
+	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
-commonItems::newColor getBelowColor(point position, const int height, bitmap_image& provinceMap)
+commonItems::Color getBelowColor(point position, const int height, bitmap_image& provinceMap)
 {
 	if (position.second < height - 1)
 	{
@@ -106,11 +106,11 @@ commonItems::newColor getBelowColor(point position, const int height, bitmap_ima
 	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	return commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue});
+	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
-commonItems::newColor getLeftColor(point position, const int width, bitmap_image& provinceMap)
+commonItems::Color getLeftColor(point position, const int width, bitmap_image& provinceMap)
 {
 	if (position.first > 0)
 	{
@@ -124,11 +124,11 @@ commonItems::newColor getLeftColor(point position, const int width, bitmap_image
 	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	return commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue});
+	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
-commonItems::newColor getRightColor(point position, const int width, bitmap_image& provinceMap)
+commonItems::Color getRightColor(point position, const int width, bitmap_image& provinceMap)
 {
 	if (position.first < width - 1)
 	{
@@ -142,12 +142,12 @@ commonItems::newColor getRightColor(point position, const int width, bitmap_imag
 	rgb_t color{0, 0, 0};
 	provinceMap.get_pixel(position.first, position.second, color);
 
-	return commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue});
+	return commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue});
 }
 
 
-void HoI4::MapData::handleNeighbor(const commonItems::newColor& centerColor,
-	 const commonItems::newColor& otherColor,
+void HoI4::MapData::handleNeighbor(const commonItems::Color& centerColor,
+	 const commonItems::Color& otherColor,
 	 const point& position,
 	 const ProvinceDefinitions& provinceDefinitions)
 {
@@ -271,7 +271,7 @@ std::optional<int> HoI4::MapData::getProvinceNumber(const double x,
 		 (provinceMap.height() - 1) - static_cast<unsigned int>(y),
 		 color);
 	return provinceDefinitions.getProvinceFromColor(
-		 commonItems::newColor(std::array<int, 3>{color.red, color.green, color.blue}));
+		 commonItems::Color(std::array<int, 3>{color.red, color.green, color.blue}));
 }
 
 

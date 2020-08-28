@@ -5,7 +5,7 @@
 
 #include "ProvincePoints.h"
 #include "bitmap_image.hpp"
-#include "newColor.h"
+#include "Color.h"
 #include <map>
 #include <optional>
 #include <set>
@@ -41,8 +41,8 @@ class MapData
 	[[nodiscard]] std::optional<ProvincePoints> getProvincePoints(int provinceNum) const;
 
   private:
-	void handleNeighbor(const commonItems::newColor& centerColor,
-		 const commonItems::newColor& otherColor,
+	void handleNeighbor(const commonItems::Color& centerColor,
+		 const commonItems::Color& otherColor,
 		 const point& position,
 		 const ProvinceDefinitions& provinceDefinitions);
 	void addNeighbor(int mainProvince, int neighborProvince);
