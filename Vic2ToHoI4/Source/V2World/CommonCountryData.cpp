@@ -2,7 +2,7 @@
 #include "../Configuration.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
-#include "newColor.h"
+#include "Color.h"
 
 
 
@@ -12,7 +12,7 @@ Vic2::commonCountryData::commonCountryData(const std::string& filename,
 {
 	registerKeyword("color", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::intList colorInts(theStream);
-		theColor = commonItems::newColor(
+		theColor = commonItems::Color(
 			 std::array<int, 3>{colorInts.getInts()[0], colorInts.getInts()[1], colorInts.getInts()[2]});
 	});
 	registerKeyword("unit_names", [this](const std::string& unused, std::istream& theStream) {
