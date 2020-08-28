@@ -1112,7 +1112,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\LarOccupationEvents.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
     </ClCompile>
-    <ClCompile Include="..\common_items\newColor.cpp">
+    <ClCompile Include="..\common_items\Color.cpp">
       <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
   </ItemGroup>

@@ -955,7 +955,7 @@
     <ClCompile Include="Source\HOI4World\Events\LarOccupationEvents.cpp">
       <Filter>HoI4World\Events</Filter>
     </ClCompile>
-    <ClCompile Include="..\common_items\newColor.cpp">
+    <ClCompile Include="..\common_items\Color.cpp">
       <Filter>CommonItems</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1806,7 +1806,7 @@
     <ClInclude Include="Source\HOI4World\Events\LarOccupationEvents.h">
       <Filter>HoI4World\Events</Filter>
     </ClInclude>
-    <ClInclude Include="..\common_items\newColor.h">
+    <ClInclude Include="..\common_items\Color.h">
       <Filter>CommonItems</Filter>
     </ClInclude>
   </ItemGroup>

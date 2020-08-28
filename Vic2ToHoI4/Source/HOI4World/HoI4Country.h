@@ -18,7 +18,7 @@
 #include "Navies/NavyNames.h"
 #include "ShipTypes/ShipVariants.h"
 #include "Technologies.h"
-#include "newColor.h"
+#include "Color.h"
 #include <functional>
 #include <map>
 #include <memory>
@@ -258,7 +258,7 @@ class Country
 	std::string commonCountryFile;
 	bool human = false;
 
-	commonItems::newColor color;
+	commonItems::Color color;
 	std::string graphicalCulture = "western_european_gfx";
 	std::string graphicalCulture2d = "western_european_2d";
 	std::string communistAdvisorPortrait;
