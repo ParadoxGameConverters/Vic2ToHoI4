@@ -492,11 +492,12 @@ default_garrison_production = {
 		value = 5
 	}
 	
-	ai_strategy = {
-		type = role_ratio
-		id = suppression
-		value = 2
-	}
+	# Old garrison system against resistance
+	# ai_strategy = {
+	# 	type = role_ratio
+	# 	id = suppression
+	# 	value = 2
+	# }
 }
 
 default_mountaineers_production = {

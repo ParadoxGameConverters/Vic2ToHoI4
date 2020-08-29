@@ -32,13 +32,15 @@ on_actions = {
 			100 = ace_killed_other_ace.1
 		}
 	}
+
 	# our ace is killed by no name
 	# country, FROM = ace
 	on_ace_killed = {
 		random_events = {
 			100 = ace_died.1
 		}
-	}	
+	}
+	
 	# our ace died in accident
 	# country, FROM = ace
 	on_ace_killed_on_accident = {
@@ -384,6 +386,23 @@ on_actions = {
 		effect = {
 		}
 	}
+	#ROOT = country that joined a war
+	on_war = {
+		effect = {
+		}
+	}
+	#ROOT = attacking side
+	#FROM = defending side
+	#fired when two countries end up at war with each other (on_war is fired when a country goes to war against anyone and is not fired again when it enters war against another country unless it went to peace first)
+	on_war_relation_added = {
+		effect = {
+		}
+	}
+	#ROOT - country that just went to peace
+	on_peaceconference_ended = {
+		effect = {
+		}
+	}
 
 	#ROOT is new controller #FROM is old controller #FROM.FROM is state ID
 	on_state_control_changed = {
@@ -469,7 +488,6 @@ on_actions = {
 		}
 	}
 	
-	
 	# root country that invades
 	# scope state that is invaded
 	# from scope state that the invasion started
@@ -488,18 +506,15 @@ on_actions = {
 		}
 	}
 	on_ruling_party_change = { 
+		# temp var old_ideology_token is available for effects
 		effect = {
-			every_owned_state = {
+			every_controlled_state = {
 				limit = {
-					is_controlled_by = ROOT
-					NOT = {
-						is_core_of = ROOT
-					}
+					has_resistance = yes
 				}
-				set_temp_variable = { comp_change = random }
-				multiply_temp_variable = { comp_change = -15 }
-				add_to_temp_variable = { comp_change = -10 }
-				add_compliance = comp_change
+				set_temp_variable = { new_compliance = compliance }
+				multiply_temp_variable = { new_compliance = 0.5 }
+				set_compliance = new_compliance
 			}
 		}
 	}
