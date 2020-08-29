@@ -34,7 +34,7 @@ ideologies = {
 			can_guarantee_other_ideologies = yes
 		}
 		
-		can_collaborate = no
+		can_collaborate = yes
 		
 		modifiers = {
 			generate_wargoal_tension = 1.00

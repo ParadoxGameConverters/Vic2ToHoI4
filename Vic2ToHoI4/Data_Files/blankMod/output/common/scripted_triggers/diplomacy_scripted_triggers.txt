@@ -107,7 +107,6 @@ DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
 				rule = allow_release_nations
 				option = FREE
 			}
-			NOT = { has_dlc = "Man the Guns" }
 		}
 		always = yes
 	}
@@ -117,7 +116,6 @@ DIPLOMACY_RELEASE_NATION_ENABLE_TRIGGER = {
 				rule = allow_release_nations
 				option = PEACE_ONLY
 			}
-			NOT = { original_tag = ENG }
 		}
 		custom_trigger_tooltip = {
 			tooltip = RULE_ALLOW_RELEASE_NATIONS_PEACE_ONLY_TOOLTIP
@@ -633,7 +631,7 @@ DIPLOMACY_SEND_VOLUNTEERS_ENABLE_TRIGGER = {
 		limit = {
 			has_game_rule = {
 				rule = allow_volunteers
-				option = FREE
+				option = ALWAYS_FREE
 			}
 		}
 		always = yes
