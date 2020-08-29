@@ -23,11 +23,12 @@ on_actions = {
 					ROOT = {
 						OR = {
 							has_war_with = FROM
-							any_country = {
-								has_war_with = FROM
-								OR = {
-									is_in_faction_with = ROOT
-									is_subject_of = ROOT								
+							FROM = {
+								any_enemy_country = {
+									OR = {
+										is_in_faction_with = ROOT
+										is_subject_of = ROOT
+									}
 								}
 							}
 						}
@@ -68,11 +69,12 @@ on_actions = {
 					ROOT = {
 						OR = {
 							has_war_with = FROM
-							any_country = {
-								has_war_with = FROM
-								OR = {
-									is_in_faction_with = ROOT
-									is_subject_of = ROOT								
+							FROM = {
+								any_enemy_country = {
+									OR = {
+										is_in_faction_with = ROOT
+										is_subject_of = ROOT
+									}
 								}
 							}
 						}
@@ -113,11 +115,12 @@ on_actions = {
 					ROOT = {
 						OR = {
 							has_war_with = FROM
-							any_country = {
-								has_war_with = FROM
-								OR = {
-									is_in_faction_with = ROOT
-									is_subject_of = ROOT								
+							FROM = {
+								any_enemy_country = {
+									OR = {
+										is_in_faction_with = ROOT
+										is_subject_of = ROOT
+									}
 								}
 							}
 						}
@@ -153,11 +156,12 @@ on_actions = {
 					ROOT = {
 						OR = {
 							has_war_with = FROM
-							any_country = {
-								has_war_with = FROM
-								OR = {
-									is_in_faction_with = ROOT
-									is_subject_of = ROOT								
+							FROM = {
+								any_enemy_country = {
+									OR = {
+										is_in_faction_with = ROOT
+										is_subject_of = ROOT
+									}
 								}
 							}
 						}
