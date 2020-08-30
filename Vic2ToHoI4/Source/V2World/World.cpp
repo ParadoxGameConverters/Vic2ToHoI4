@@ -19,6 +19,7 @@
 #include "States/StateDefinitionsFactory.h"
 #include "States/StateFactory.h"
 #include "Vic2Localisations.h"
+#include "Wars/WarFactory.h"
 #include <fstream>
 
 
@@ -33,6 +34,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	Pop::Factory popFactory(*theIssues);
 	Province::Factory provinceFactory(popFactory);
 	State::Factory stateFactory;
+	War::Factory warFactory;
 
 	registerKeyword("date", [](const std::string& unused, std::istream& theStream) {
 		const date theDate{commonItems::singleString{theStream}.getString()};
@@ -70,8 +72,8 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	});
 
 	std::vector<War> wars;
-	registerKeyword("active_war", [&wars](const std::string& unused, std::istream& theStream) {
-		wars.push_back(War(theStream));
+	registerKeyword("active_war", [&wars, &warFactory](const std::string& unused, std::istream& theStream) {
+		wars.push_back(*warFactory.getWar(theStream));
 	});
 
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);

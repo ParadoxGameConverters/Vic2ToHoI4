@@ -166,20 +166,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\War.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2\Wars</Filter>
-    </ClCompile>
-    <ClCompile Include="Vic2WorldTests\WarTests.cpp">
-      <Filter>Vic2WorldTests</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarGoal.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2\Wars</Filter>
-    </ClCompile>
     <ClCompile Include="Mocks\CountryMapperMock.h">
       <Filter>Mocks</Filter>
-    </ClCompile>
-    <ClCompile Include="Vic2WorldTests\WarGoalTests.cpp">
-      <Filter>Vic2WorldTests</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4State.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
@@ -1115,6 +1103,21 @@
     <ClCompile Include="..\common_items\Color.cpp">
       <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Wars\WarGoalFactoryTests.cpp">
+      <Filter>Vic2WorldTests\Wars</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarGoalFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Wars</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Wars</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Wars\WarFactoryTests.cpp">
+      <Filter>Vic2WorldTests\Wars</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Wars\WarBuilderTests.cpp">
+      <Filter>Vic2WorldTests\Wars</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1389,6 +1392,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\OutHoi4\ScriptedEffects">
       <UniqueIdentifier>{f0ae2a8a-5d64-43d0-b369-90f00a9c4357}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\Wars">
+      <UniqueIdentifier>{6db73e9e-fa7b-4cb5-9040-0f656b901b7e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

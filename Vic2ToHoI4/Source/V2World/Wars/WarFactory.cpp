@@ -1,32 +1,34 @@
-#include "War.h"
+#include "WarFactory.h"
 #include "ParserHelpers.h"
-#include "WarGoal.h"
 
 
 
-Vic2::War::War(std::istream& theStream)
+Vic2::War::Factory::Factory()
 {
 	registerKeyword("attacker", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString attackerString(theStream);
-		attackers.insert(attackerString.getString());
+		theWar->attackers.insert(commonItems::singleString{theStream}.getString());
 	});
 	registerKeyword("original_attacker", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString originalAttackerString(theStream);
-		originalAttacker = originalAttackerString.getString();
+		theWar->originalAttacker = commonItems::singleString{theStream}.getString();
 	});
 	registerKeyword("defender", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString defenderString(theStream);
-		defenders.insert(defenderString.getString());
+		theWar->defenders.insert(commonItems::singleString{theStream}.getString());
 	});
 	registerKeyword("original_defender", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString originalDefenderString(theStream);
-		originalDefender = originalDefenderString.getString();
+		theWar->originalDefender = commonItems::singleString{theStream}.getString();
 	});
 	registerKeyword("original_wargoal", [this](const std::string& unused, std::istream& theStream) {
-		Vic2::WarGoal theWarGoal(theStream);
-		CB = theWarGoal.getCB();
+		theWar->CB = warGoalFactory.getCB(theStream);
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+}
+
+
+std::unique_ptr<Vic2::War> Vic2::War::Factory::getWar(std::istream& theStream)
+{
+	theWar = std::make_unique<War>();
 
 	parseStream(theStream);
+
+	return std::move(theWar);
 }
