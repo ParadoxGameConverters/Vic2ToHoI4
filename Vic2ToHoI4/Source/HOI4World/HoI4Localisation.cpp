@@ -621,20 +621,34 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	{
 		localisedName = Vic2NameInLanguage.second;
 	}
+	/* SPLIT STATES AND GRAMMAR */
+	/* Default: "French Guyana" */
+	/* French, Spanish, Portugese(sic), Italian: "Guyana French" */
+	/* Reason: Grammar rules */
+	/* */
+	/* German: "French-Guyana" */
+	/* Reason: To avoid having to deal with German adjective declension */
 	else if (vic2State.isPartialState())
 	{
 		auto possibleOwnerAdjective =
 			 vic2Localisations.getTextInLanguage(vic2State.getOwner() + "_ADJ", Vic2NameInLanguage.first);
 		if (possibleOwnerAdjective)
 		{
-			if ((Vic2NameInLanguage.first == "french") || (Vic2NameInLanguage.first == "spanish") ||
+			if ((Vic2NameInLanguage.first == "french") || (Vic2NameInLanguage.first == "spanish") || (Vic2NameInLanguage.first == "portugese") ||
 				 (Vic2NameInLanguage.first == "italian"))
 			{
 				localisedName = Vic2NameInLanguage.second + " " + *possibleOwnerAdjective;
 			}
 			else
 			{
-				localisedName = *possibleOwnerAdjective + " " + Vic2NameInLanguage.second;
+				if (Vic2NameInLanguage.first == "german" )
+				{
+					localisedName = *possibleOwnerAdjective + "-" + Vic2NameInLanguage.second;
+				}
+				else
+				{
+					localisedName = *possibleOwnerAdjective + " " + Vic2NameInLanguage.second;
+				}
 			}
 		}
 	}
