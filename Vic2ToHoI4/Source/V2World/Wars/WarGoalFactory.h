@@ -1,5 +1,5 @@
-#ifndef WARGOAL_H_
-#define WARGOAL_H_
+#ifndef WAR_GOAL_FACTORY_H_
+#define WAR_GOAL_FACTORY_H_
 
 
 
@@ -25,4 +25,4 @@ class WarGoalFactory: commonItems::parser
 
 
 
-#endif // WARGOAL_H_
+#endif // WAR_GOAL_FACTORY_H_

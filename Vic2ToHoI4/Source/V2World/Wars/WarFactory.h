@@ -21,7 +21,7 @@ class War::Factory: commonItems::parser
 
   private:
 	std::unique_ptr<War> theWar;
-	Vic2::WarGoalFactory warGoalFactory;
+	WarGoalFactory warGoalFactory;
 };
 
 } // namespace Vic2

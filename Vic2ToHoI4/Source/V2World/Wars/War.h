@@ -1,5 +1,5 @@
-#ifndef WAR_H_
-#define WAR_H_
+#ifndef WAR_H
+#define WAR_H
 
 
 
@@ -19,11 +19,11 @@ class War
 	class Builder;
 	War() = default;
 
-	std::string getOriginalAttacker() const { return originalAttacker; }
-	std::set<std::string> getAttackers() const { return attackers; }
-	std::string getOriginalDefender() const { return originalDefender; }
-	std::set<std::string> getDefenders() const { return defenders; }
-	std::string getCB() const { return CB; }
+	[[nodiscard]] std::string getOriginalAttacker() const { return originalAttacker; }
+	[[nodiscard]] std::set<std::string> getAttackers() const { return attackers; }
+	[[nodiscard]] std::string getOriginalDefender() const { return originalDefender; }
+	[[nodiscard]] std::set<std::string> getDefenders() const { return defenders; }
+	[[nodiscard]] std::string getCB() const { return CB; }
 
   private:
 	std::string originalAttacker;
@@ -38,4 +38,4 @@ class War
 
 
 
-#endif // WAR_H_
+#endif // WAR_H
