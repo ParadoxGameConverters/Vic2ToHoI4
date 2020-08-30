@@ -1,11 +1,12 @@
 #include "War.h"
 #include "ParserHelpers.h"
-#include "WarGoal.h"
+#include "WarGoalFactory.h"
 
 
 
 Vic2::War::War(std::istream& theStream)
 {
+	Vic2::WarGoalFactory warGoalFactory;
 	registerKeyword("attacker", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString attackerString(theStream);
 		attackers.insert(attackerString.getString());
@@ -22,9 +23,8 @@ Vic2::War::War(std::istream& theStream)
 		commonItems::singleString originalDefenderString(theStream);
 		originalDefender = originalDefenderString.getString();
 	});
-	registerKeyword("original_wargoal", [this](const std::string& unused, std::istream& theStream) {
-		Vic2::WarGoal theWarGoal(theStream);
-		CB = theWarGoal.getCB();
+	registerKeyword("original_wargoal", [this, &warGoalFactory](const std::string& unused, std::istream& theStream) {
+		CB = warGoalFactory.getCB(theStream);
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 

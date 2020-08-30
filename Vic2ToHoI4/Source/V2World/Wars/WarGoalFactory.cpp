@@ -1,15 +1,19 @@
-#include "WarGoal.h"
+#include "WarGoalFactory.h"
 #include "ParserHelpers.h"
 
 
 
-Vic2::WarGoal::WarGoal(std::istream& theStream)
+Vic2::WarGoalFactory::WarGoalFactory()
 {
 	registerKeyword("casus_belli", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString cbString(theStream);
-		CB = cbString.getString();
+		CB = commonItems::singleString{theStream}.getString();
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+}
 
+
+std::string Vic2::WarGoalFactory::getCB(std::istream& theStream){
+	CB.clear();
 	parseStream(theStream);
+	return CB;
 }

@@ -386,7 +386,7 @@
     <ClCompile Include="Source\V2World\Relations.cpp" />
     <ClCompile Include="Source\V2World\Vic2Localisations.cpp" />
     <ClCompile Include="Source\V2World\Wars\War.cpp" />
-    <ClCompile Include="Source\V2World\Wars\WarGoal.cpp" />
+    <ClCompile Include="Source\V2World\Wars\WarGoalFactory.cpp" />
     <ClCompile Include="Source\V2World\World.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -672,7 +672,7 @@
     <ClInclude Include="Source\V2World\States\StateFactory.h" />
     <ClInclude Include="Source\V2World\Vic2Localisations.h" />
     <ClInclude Include="Source\V2World\Wars\War.h" />
-    <ClInclude Include="Source\V2World\Wars\WarGoal.h" />
+    <ClInclude Include="Source\V2World\Wars\WarGoalFactory.h" />
     <ClInclude Include="Source\V2World\World.h" />
     <ClInclude Include="Source\Vic2ToHoI4Converter.h" />
   </ItemGroup>
