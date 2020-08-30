@@ -166,12 +166,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\War.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2\Wars</Filter>
-    </ClCompile>
-    <ClCompile Include="Vic2WorldTests\WarTests.cpp">
-      <Filter>Vic2WorldTests</Filter>
-    </ClCompile>
     <ClCompile Include="Mocks\CountryMapperMock.h">
       <Filter>Mocks</Filter>
     </ClCompile>
@@ -1114,6 +1108,15 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarGoalFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Wars</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Wars</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Wars\WarFactoryTests.cpp">
+      <Filter>Vic2WorldTests\Wars</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Wars\WarBuilderTests.cpp">
+      <Filter>Vic2WorldTests\Wars</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

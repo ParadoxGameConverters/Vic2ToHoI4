@@ -333,9 +333,6 @@
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp">
       <Filter>Mappers\FlagsToIdeas</Filter>
     </ClCompile>
-    <ClCompile Include="Source\V2World\Wars\War.cpp">
-      <Filter>Vic2World\Wars</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\States\HoI4State.cpp">
       <Filter>HoI4World\States</Filter>
     </ClCompile>
@@ -956,6 +953,9 @@
       <Filter>CommonItems</Filter>
     </ClCompile>
     <ClCompile Include="Source\V2World\Wars\WarGoalFactory.cpp">
+      <Filter>Vic2World\Wars</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Wars\WarFactory.cpp">
       <Filter>Vic2World\Wars</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1807,6 +1807,12 @@
       <Filter>CommonItems</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Wars\WarGoalFactory.h">
+      <Filter>Vic2World\Wars</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Wars\WarFactory.h">
+      <Filter>Vic2World\Wars</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Wars\WarBuilder.h">
       <Filter>Vic2World\Wars</Filter>
     </ClInclude>
   </ItemGroup>

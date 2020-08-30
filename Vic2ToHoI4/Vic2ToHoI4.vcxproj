@@ -370,6 +370,7 @@
     <ClCompile Include="Source\V2World\States\StateDefinitions.cpp" />
     <ClCompile Include="Source\V2World\States\StateDefinitionsFactory.cpp" />
     <ClCompile Include="Source\V2World\States\StateFactory.cpp" />
+    <ClCompile Include="Source\V2World\Wars\WarFactory.cpp" />
     <ClCompile Include="Source\Vic2toHOI4Converter.cpp" />
     <ClCompile Include="Source\V2World\Agreement.cpp" />
     <ClCompile Include="Source\V2World\Army.cpp" />
@@ -385,7 +386,6 @@
     <ClCompile Include="Source\V2World\Party.cpp" />
     <ClCompile Include="Source\V2World\Relations.cpp" />
     <ClCompile Include="Source\V2World\Vic2Localisations.cpp" />
-    <ClCompile Include="Source\V2World\Wars\War.cpp" />
     <ClCompile Include="Source\V2World\Wars\WarGoalFactory.cpp" />
     <ClCompile Include="Source\V2World\World.cpp" />
   </ItemGroup>
@@ -672,6 +672,8 @@
     <ClInclude Include="Source\V2World\States\StateFactory.h" />
     <ClInclude Include="Source\V2World\Vic2Localisations.h" />
     <ClInclude Include="Source\V2World\Wars\War.h" />
+    <ClInclude Include="Source\V2World\Wars\WarBuilder.h" />
+    <ClInclude Include="Source\V2World\Wars\WarFactory.h" />
     <ClInclude Include="Source\V2World\Wars\WarGoalFactory.h" />
     <ClInclude Include="Source\V2World\World.h" />
     <ClInclude Include="Source\Vic2ToHoI4Converter.h" />
