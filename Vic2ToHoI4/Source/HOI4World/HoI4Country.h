@@ -17,6 +17,7 @@
 #include "Military/HoI4Army.h"
 #include "Navies/Navies.h"
 #include "Navies/NavyNames.h"
+#include "Regions/Regions.h"
 #include "ShipTypes/ShipVariants.h"
 #include "Technologies.h"
 #include <functional>
@@ -88,6 +89,7 @@ class Country
 	void determineCapitalFromVic2(const mappers::ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates);
+	void setCapitalRegionFlag(const Regions& regions);
 	void setGovernmentToExistingIdeology(const std::set<std::string>& majorIdeologies,
 		 const Ideologies& ideologies,
 		 const governmentMapper& governmentMap,

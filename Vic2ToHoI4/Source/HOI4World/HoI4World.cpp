@@ -36,6 +36,7 @@
 #include "Operations/OperationsFactory.h"
 #include "OperativeNames/OperativeNamesFactory.h"
 #include "ParserHelpers.h"
+#include "Regions/RegionsFactory.h"
 #include "ScriptedTriggers/ScriptedTriggersUpdater.h"
 #include "ShipTypes/PossibleShipVariants.h"
 #include "States/DefaultState.h"
@@ -341,6 +342,7 @@ void HoI4::World::addStatesToCountries(const mappers::ProvinceMapper& provinceMa
 		}
 	}
 
+	const auto theRegions = Regions::Factory{}.getRegions();
 	for (auto country: countries)
 	{
 		if (country.second->getStates().size() > 0)
@@ -348,6 +350,7 @@ void HoI4::World::addStatesToCountries(const mappers::ProvinceMapper& provinceMa
 			landedCountries.insert(country);
 		}
 		country.second->determineCapitalFromVic2(provinceMapper, states->getProvinceToStateIDMap(), states->getStates());
+		country.second->setCapitalRegionFlag(*theRegions);
 	}
 }
 

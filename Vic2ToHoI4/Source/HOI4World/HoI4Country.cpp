@@ -494,6 +494,19 @@ bool HoI4::Country::attemptToPutCapitalInAnyCored(const std::map<int, State>& al
 }
 
 
+void HoI4::Country::setCapitalRegionFlag(const Regions& regions)
+{
+	if (!capitalProvince)
+	{
+		return;
+	}
+	if (const auto& region = regions.getRegion(*capitalProvince); region)
+	{
+		flags.insert("conv_" + *region);
+	}
+}
+
+
 void HoI4::Country::convertTechnology(const mappers::techMapper& theTechMapper)
 {
 	auto oldTechs = sourceCountry.getTechs();
