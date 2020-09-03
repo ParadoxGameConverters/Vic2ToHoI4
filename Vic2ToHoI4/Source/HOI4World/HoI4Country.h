@@ -4,6 +4,7 @@
 
 
 #include "../V2World/Party.h"
+#include "Color.h"
 #include "Date.h"
 #include "Diplomacy/Faction.h"
 #include "Diplomacy/HoI4Relations.h"
@@ -18,7 +19,6 @@
 #include "Navies/NavyNames.h"
 #include "ShipTypes/ShipVariants.h"
 #include "Technologies.h"
-#include "Color.h"
 #include <functional>
 #include <map>
 #include <memory>
@@ -188,6 +188,7 @@ class Country
 	}
 	[[nodiscard]] const std::optional<technologies>& getTechnologies() const { return theTechnologies; }
 	[[nodiscard]] const std::set<std::string>& getIdeas() const { return ideas; }
+	[[nodiscard]] const auto& getFlags() const { return flags; }
 
 	[[nodiscard]] double getMilitaryFactories() const { return militaryFactories; }
 	[[nodiscard]] double getCivilianFactories() const { return civilianFactories; }
@@ -292,6 +293,7 @@ class Country
 	std::optional<technologies> theTechnologies;
 	std::set<std::string> ideas;
 	std::unique_ptr<HoI4FocusTree> nationalFocus;
+	std::set<std::string> flags;
 
 	double militaryFactories = 0.0;
 	double civilianFactories = 0.0;
