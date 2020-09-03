@@ -85,6 +85,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regions\Regions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regions\RegionsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
@@ -367,6 +369,7 @@
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesMappingsFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativesNamesSetTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Regions\RegionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedTriggers\ScriptedTriggerTests.cpp" />
@@ -570,6 +573,11 @@
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Issues\issues.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/common</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\regions.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles/Map</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

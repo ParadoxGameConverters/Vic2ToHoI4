@@ -1118,6 +1118,15 @@
     <ClCompile Include="Vic2WorldTests\Wars\WarBuilderTests.cpp">
       <Filter>Vic2WorldTests\Wars</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regions\Regions.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Regions</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regions\RegionsFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Regions</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Regions\RegionTests.cpp">
+      <Filter>HoI4WorldTests\Regions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1396,6 +1405,12 @@
     <Filter Include="Vic2WorldTests\Wars">
       <UniqueIdentifier>{6db73e9e-fa7b-4cb5-9040-0f656b901b7e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Regions">
+      <UniqueIdentifier>{281ef214-212f-490f-b136-ef667741c130}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\Regions">
+      <UniqueIdentifier>{ed126fa1-bb3a-456e-bed8-954187fed52d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1516,6 +1531,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Issues\issues.txt">
       <Filter>TestFiles\Issues</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\regions.txt">
+      <Filter>TestFiles</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>
