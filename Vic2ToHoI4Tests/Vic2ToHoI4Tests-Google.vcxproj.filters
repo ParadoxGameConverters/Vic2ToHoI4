@@ -1124,7 +1124,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regions\RegionsFactory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Regions</Filter>
     </ClCompile>
-    <ClCompile Include="HoI4WorldTests\Regions\RegionTests.cpp">
+    <ClCompile Include="HoI4WorldTests\Regions\RegionsTests.cpp">
       <Filter>HoI4WorldTests\Regions</Filter>
     </ClCompile>
   </ItemGroup>

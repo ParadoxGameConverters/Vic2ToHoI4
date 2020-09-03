@@ -369,7 +369,7 @@
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesMappingsFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativesNamesSetTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\Regions\RegionTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Regions\RegionsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedTriggers\ScriptedTriggerTests.cpp" />
