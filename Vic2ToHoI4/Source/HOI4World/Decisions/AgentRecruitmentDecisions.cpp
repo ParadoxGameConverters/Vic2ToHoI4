@@ -6,18 +6,30 @@ void HoI4::AgentRecruitmentDecisions::updateDecisions()
 {
 	for (auto category: decisions)
 	{
-		auto categoryDecisions = category.getDecisions();
-		categoryDecisions.erase(std::remove_if(categoryDecisions.begin(),
-											 categoryDecisions.end(),
-											 [](auto& decision) {
-												 return decision.getName() == "recruit_in_india";
-											 }),
-			 categoryDecisions.end());
-
-		category.replaceDecisions(categoryDecisions);
 
 		for (auto decision: category.getDecisions())
 		{
+			if (decision.getName() == "recruit_in_india")
+			{
+				decision.setVisible(
+					 "= {\n"
+					 "\t\t\tNOT = {\n"
+					 "\t\t\t\thas_country_flag = conv_south_asia\n"
+					 "\t\t\t}\n"
+					 "\t\t\tOR = {\n"
+					 "\t\t\t\tany_of_scopes = {\n"
+					 "\t\t\t\t\tarray = subjects\n"
+					 "\t\t\t\t\tany_owned_state = {\n"
+					 "\t\t\t\t\t\tOR = {\n"
+					 "\t\t\t\t\t\t\thas_country_flag = conv_south_asia\n"
+					 "\t\t\t\t\t\t}\n"
+					 "\t\t\t\t\t}\n"
+					 "\t\t\t\t}\n"
+					 "\t\t\t}\n"
+					 "\t\t}");
+
+				category.replaceDecision(decision);
+			}
 			if (decision.getName() == "recruit_in_india_state")
 			{
 				decision.setTargetTrigger(
@@ -46,22 +58,6 @@ void HoI4::AgentRecruitmentDecisions::updateDecisions()
 					 "\t\t\t\t}\n"
 					 "\t\t\t}\n"
 					 "\t\t}");
-				decision.setVisible(
-					 "= {\n"
-					 "\t\t\tOR = {\n"
-					 "\t\t\t\thas_country_flag = india_recruitment_unlocked\n"
-					 "\t\t\t\tcapital_scope = {\n"
-					 "\t\t\t\t\tis_on_continent = asia\n"
-					 "\t\t\t\t}\n"
-					 "\t\t\t}\n"
-					 "\t\t\thas_country_flag = conv_south_asia\n"
-					 "\t\t\tNOT = { has_country_flag = india_recruitment_in_process }\n"
-					 "\t\t}");
-
-				category.replaceDecision(decision);
-			}
-			if (decision.getName() == "recruit_in_india")
-			{
 				decision.setVisible(
 					 "= {\n"
 					 "\t\t\tOR = {\n"
