@@ -19,11 +19,7 @@ void HoI4::AgentRecruitmentDecisions::updateDecisions()
 					 "\t\t\tOR = {\n"
 					 "\t\t\t\tany_of_scopes = {\n"
 					 "\t\t\t\t\tarray = subjects\n"
-					 "\t\t\t\t\tany_owned_state = {\n"
-					 "\t\t\t\t\t\tOR = {\n"
-					 "\t\t\t\t\t\t\thas_country_flag = conv_south_asia\n"
-					 "\t\t\t\t\t\t}\n"
-					 "\t\t\t\t\t}\n"
+					 "\t\t\t\t\thas_country_flag = conv_south_asia\n"
 					 "\t\t\t\t}\n"
 					 "\t\t\t}\n"
 					 "\t\t}");
