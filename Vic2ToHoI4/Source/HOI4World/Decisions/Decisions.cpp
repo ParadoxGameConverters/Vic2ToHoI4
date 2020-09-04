@@ -77,7 +77,7 @@ void HoI4::decisions::generateIdeologicalCategories(const std::set<std::string>&
 			 decisionsCategoryFactory.getDecisionsCategory(majorIdeology + "_on_the_rise", input));
 	}
 
-	ideologicalCategories->addCategory(createLocalRecruitmentCategory(provinceToStateIdMap));
+	ideologicalCategories->replaceCategory(createLocalRecruitmentCategory(provinceToStateIdMap));
 }
 
 
