@@ -218,6 +218,7 @@ void outputResearchSlots(std::ostream& output, const bool& greatPower, const boo
 void outputThreat(std::ostream& output, const double& threat);
 void outputWars(std::ostream& output, const std::vector<HoI4::War>& wars);
 void outputOOBLines(std::ostream& output, const std::string& tag);
+void outputFlags(std::ostream& output, const std::set<std::string>& flags);
 void outputConvoys(std::ostream& output, const int& convoys);
 void outputEquipmentStockpile(std::ostream& output,
 	 const std::map<std::string, unsigned int>& equipmentStockpile,
@@ -287,6 +288,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		outputTechnology(*theTechnologies, output);
 		outputResearchBonuses(*theTechnologies, output);
 	}
+	outputFlags(output, theCountry.getFlags());
 	outputConvoys(output, theCountry.getConvoys());
 	outputEquipmentStockpile(output, theCountry.getEquipmentStockpile(), tag);
 	outputPuppets(output,
@@ -390,6 +392,19 @@ void outputOOBLines(std::ostream& output, const std::string& tag)
 	output << "}\n";
 
 	output << "\n";
+}
+
+
+void outputFlags(std::ostream& output, const std::set<std::string>& flags)
+{
+	if (!flags.empty())
+	{
+		output << "\n";
+	}
+	for (const auto& flag: flags)
+	{
+		output << "set_country_flag = " << flag << "\n";
+	}
 }
 
 

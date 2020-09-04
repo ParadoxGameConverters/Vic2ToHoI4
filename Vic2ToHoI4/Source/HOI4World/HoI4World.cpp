@@ -36,6 +36,7 @@
 #include "Operations/OperationsFactory.h"
 #include "OperativeNames/OperativeNamesFactory.h"
 #include "ParserHelpers.h"
+#include "Regions/RegionsFactory.h"
 #include "ScriptedTriggers/ScriptedTriggersUpdater.h"
 #include "ShipTypes/PossibleShipVariants.h"
 #include "States/DefaultState.h"
@@ -123,7 +124,8 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	theDecisions->updateDecisions(ideologies->getMajorIdeologies(),
 		 states->getProvinceToStateIDMap(),
 		 states->getDefaultStates(),
-		 *events);
+		 *events,
+		 getSouthAsianCountries());
 	updateAiPeaces(*peaces, ideologies->getMajorIdeologies());
 	addNeutrality(theConfiguration.getDebug());
 	addLeaders();
@@ -341,6 +343,7 @@ void HoI4::World::addStatesToCountries(const mappers::ProvinceMapper& provinceMa
 		}
 	}
 
+	const auto theRegions = Regions::Factory{}.getRegions();
 	for (auto country: countries)
 	{
 		if (country.second->getStates().size() > 0)
@@ -348,6 +351,7 @@ void HoI4::World::addStatesToCountries(const mappers::ProvinceMapper& provinceMa
 			landedCountries.insert(country);
 		}
 		country.second->determineCapitalFromVic2(provinceMapper, states->getProvinceToStateIDMap(), states->getStates());
+		country.second->setCapitalRegionFlag(*theRegions);
 	}
 }
 
@@ -1008,6 +1012,7 @@ void HoI4::World::determineSpherelings()
 	}
 }
 
+
 void HoI4::World::calculateSpherelingAutonomy()
 {
 	Log(LogLevel::Info) << "\tCalculating sphereling autonomy";
@@ -1023,4 +1028,19 @@ void HoI4::World::calculateSpherelingAutonomy()
 			GP->setSpherelingAutonomy(sphereling.first, spherelingAutonomy);
 		}
 	}
+}
+
+
+std::set<std::string> HoI4::World::getSouthAsianCountries() const
+{
+	std::set<std::string> southAsianCountries;
+	for (const auto country: countries)
+	{
+		if (country.second->getFlags().count("conv_south_asia"))
+		{
+			southAsianCountries.insert(country.first);
+		}
+	}
+
+	return southAsianCountries;
 }

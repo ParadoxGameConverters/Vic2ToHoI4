@@ -200,6 +200,8 @@ class World: commonItems::parser
 
 	std::optional<std::pair<std::string, std::string>> getStrongestNavyGps();
 
+	std::set<std::string> getSouthAsianCountries() const;
+
 	// vector<int> getPortLocationCandidates(const vector<int>& locationCandidates, const HoI4AdjacencyMapping&
 	// HoI4AdjacencyMap);
 
