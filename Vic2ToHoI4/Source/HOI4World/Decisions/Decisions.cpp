@@ -172,7 +172,7 @@ HoI4::DecisionsCategory HoI4::decisions::createLocalRecruitmentCategory(const st
 		input << "\t}\n";
 	}
 
-	auto asianState = getRelevantStateFromProvince(1069, provinceToStateIdMap);
+	auto asianState = getRelevantStateFromProvince(9843, provinceToStateIdMap);
 	if (asianState)
 	{
 		input << "\ton_map_area = {\n";
@@ -181,15 +181,18 @@ HoI4::DecisionsCategory HoI4::decisions::createLocalRecruitmentCategory(const st
 		input << "\t\tzoom = 850\n";
 		input << "\n";
 		input << "\t\ttarget_root_trigger = {\n";
-		input << "\t\t\tOR =	{\n";
+		input << "\t\t\tOR = {\n";
 		input << "\t\t\t\thas_country_flag = asia_recruitment_unlocked\n";
 		input << "\t\t\t\tcapital_scope = { is_on_continent = asia }\n";
+		input << "\t\t\t}\n";
+		input << "\t\t\tNOT = {\n";
+		input << "\t\t\t\thas_country_flag = conv_south_asia\n";
 		input << "\t\t\t}\n";
 		input << "\t\t}\n";
 		input << "\t}\n";
 	}
 
-	auto australianState = getRelevantStateFromProvince(1069, provinceToStateIdMap);
+	auto australianState = getRelevantStateFromProvince(4864, provinceToStateIdMap);
 	if (australianState)
 	{
 		input << "\ton_map_area = {\n";
@@ -202,6 +205,24 @@ HoI4::DecisionsCategory HoI4::decisions::createLocalRecruitmentCategory(const st
 		input << "\t\t\t\thas_country_flag = australia_recruitment_unlocked\n";
 		input << "\t\t\t\tcapital_scope = { is_on_continent = australia }\n";
 		input << "\t\t\t}\n";
+		input << "\t\t}\n";
+		input << "\t}\n";
+	}
+
+	auto southAsianState = getRelevantStateFromProvince(2086, provinceToStateIdMap);
+	if (southAsianState)
+	{
+		input << "\ton_map_area = {\n";
+		input << "\t\tstate = " << *southAsianState << "\n";
+		input << "\t\tname = LAR_recruitment_india\n";
+		input << "\t\tzoom = 850\n";
+		input << "\n";
+		input << "\t\ttarget_root_trigger = {\n";
+		input << "\t\t\tOR = {\n";
+		input << "\t\t\t\thas_country_flag = india_recruitment_unlocked\n";
+		input << "\t\t\t\tcapital_scope = { is_on_continent = asia }\n";
+		input << "\t\t\t}\n";
+		input << "\t\t\thas_country_flag = conv_south_asia\n";
 		input << "\t\t}\n";
 		input << "\t}\n";
 	}
