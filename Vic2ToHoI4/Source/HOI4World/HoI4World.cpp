@@ -124,7 +124,8 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	theDecisions->updateDecisions(ideologies->getMajorIdeologies(),
 		 states->getProvinceToStateIDMap(),
 		 states->getDefaultStates(),
-		 *events);
+		 *events,
+		 getSouthAsianCountries());
 	updateAiPeaces(*peaces, ideologies->getMajorIdeologies());
 	addNeutrality(theConfiguration.getDebug());
 	addLeaders();
@@ -1011,6 +1012,7 @@ void HoI4::World::determineSpherelings()
 	}
 }
 
+
 void HoI4::World::calculateSpherelingAutonomy()
 {
 	Log(LogLevel::Info) << "\tCalculating sphereling autonomy";
@@ -1026,4 +1028,19 @@ void HoI4::World::calculateSpherelingAutonomy()
 			GP->setSpherelingAutonomy(sphereling.first, spherelingAutonomy);
 		}
 	}
+}
+
+
+std::set<std::string> HoI4::World::getSouthAsianCountries() const
+{
+	std::set<std::string> southAsianCountries;
+	for (const auto country: countries)
+	{
+		if (country.second->getFlags().count("conv_south_asia"))
+		{
+			southAsianCountries.insert(country.first);
+		}
+	}
+
+	return southAsianCountries;
 }

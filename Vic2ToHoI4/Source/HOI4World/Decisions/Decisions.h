@@ -12,10 +12,10 @@
 #include "ForeignInfluenceDecisions.h"
 #include "GenericDecisions.h"
 #include "NavalTreatyDecisions.h"
+#include "Parser.h"
 #include "PoliticalDecisions.h"
 #include "ResourceProspectingDecisions.h"
 #include "StabilityWarSupportDecisions.h"
-#include "Parser.h"
 #include <map>
 #include <set>
 #include <string>
@@ -37,7 +37,8 @@ class decisions: commonItems::parser
 	void updateDecisions(const std::set<std::string>& majorIdeologies,
 		 const std::map<int, int>& provinceToStateIdMap,
 		 const std::map<int, DefaultState>& defaultStates,
-		 const Events& theEvents);
+		 const Events& theEvents,
+		 const std::set<std::string>& southAsianCountries);
 
 	[[nodiscard]] const auto& getIdeologicalCategories() const { return *ideologicalCategories; }
 	[[nodiscard]] const std::vector<DecisionsInCategory>& getAgentRecruitmentDecisions() const

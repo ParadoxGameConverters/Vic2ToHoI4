@@ -1,8 +1,9 @@
 #include "AgentRecruitmentDecisions.h"
+#include <sstream>
 
 
 
-void HoI4::AgentRecruitmentDecisions::updateDecisions()
+void HoI4::AgentRecruitmentDecisions::updateDecisions(const std::set<std::string>& southAsianCountries)
 {
 	for (auto category: decisions)
 	{
@@ -11,18 +12,34 @@ void HoI4::AgentRecruitmentDecisions::updateDecisions()
 		{
 			if (decision.getName() == "recruit_in_india")
 			{
-				decision.setVisible(
-					 "= {\n"
-					 "\t\t\tNOT = {\n"
-					 "\t\t\t\thas_country_flag = conv_south_asia\n"
-					 "\t\t\t}\n"
-					 "\t\t\tOR = {\n"
-					 "\t\t\t\tany_of_scopes = {\n"
-					 "\t\t\t\t\tarray = subjects\n"
-					 "\t\t\t\t\thas_country_flag = conv_south_asia\n"
-					 "\t\t\t\t}\n"
-					 "\t\t\t}\n"
-					 "\t\t}");
+				std::stringstream visible;
+				visible << "= {\n";
+				visible << "\t\t\tNOT = {\n";
+				visible << "\t\t\t\thas_country_flag = conv_south_asia\n";
+				visible << "\t\t\t}\n";
+				visible << "\t\t\tOR = {\n";
+				if (!southAsianCountries.empty())
+				{
+					visible << "\t\t\t\tany_owned_state = {\n";
+					visible << "\t\t\t\t\tOR = {\n";
+					for (const auto& southAsianCountry: southAsianCountries)
+					{
+						visible << "\t\t\t\t\t\tis_core_of = " << southAsianCountry << "\n";
+					}
+					visible << "\t\t\t\t\t}\n";
+					visible << "\t\t\t\t}\n";
+					for (const auto& southAsianCountry: southAsianCountries)
+					{
+						visible << "\t\t\t\tis_in_faction_with = " << southAsianCountry << "\n";
+					}
+				}
+				visible << "\t\t\t\tany_of_scopes = {\n";
+				visible << "\t\t\t\t\tarray = subjects\n";
+				visible << "\t\t\t\t\thas_country_flag = conv_south_asia\n";
+				visible << "\t\t\t\t}\n";
+				visible << "\t\t\t}\n";
+				visible << "\t\t}";
+				decision.setVisible(visible.str());
 
 				category.replaceDecision(decision);
 			}

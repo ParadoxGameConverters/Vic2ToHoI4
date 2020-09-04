@@ -13,7 +13,7 @@ namespace HoI4
 class AgentRecruitmentDecisions: public DecisionsFile
 {
   public:
-	void updateDecisions();
+	void updateDecisions(const std::set<std::string>& southAsianCountries);
 };
 
 } // namespace HoI4
