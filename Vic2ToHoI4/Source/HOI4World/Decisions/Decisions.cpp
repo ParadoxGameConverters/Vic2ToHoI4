@@ -48,9 +48,9 @@ void HoI4::decisions::updateDecisions(const std::set<std::string>& majorIdeologi
 
 
 void HoI4::decisions::generateIdeologicalCategories(const std::set<std::string>& majorIdeologies,
-	 const std::map<int, int>& provinceToStateIdMap)
+	 const std::map<int, int>& provinceToStateIdMap) const
 {
-	HoI4::DecisionsCategory::Factory decisionsCategoryFactory;
+	DecisionsCategory::Factory decisionsCategoryFactory;
 
 	for (const auto& majorIdeology: majorIdeologies)
 	{
