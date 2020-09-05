@@ -970,6 +970,12 @@
     <ClCompile Include="Source\HOI4World\Regions\Regions.cpp">
       <Filter>HoI4World\Regions</Filter>
     </ClCompile>
+    <ClCompile Include="Source\V2World\States\StateLanguageCategories.cpp">
+      <Filter>Vic2World\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\States\StateLanguageCategoriesFactory.cpp">
+      <Filter>Vic2World\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1832,6 +1838,15 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Regions\RegionsFactory.h">
       <Filter>HoI4World\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\States\StateLanguageCategories.h">
+      <Filter>Vic2World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\States\StateLanguageCategoriesBuilder.h">
+      <Filter>Vic2World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\States\StateLanguageCategoriesFactory.h">
+      <Filter>Vic2World\States</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -18290,6 +18305,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Map\regions.txt">
       <Filter>Data Files\Map</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Localisations\StateCategories.txt">
+      <Filter>Data Files\Localisations</Filter>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>

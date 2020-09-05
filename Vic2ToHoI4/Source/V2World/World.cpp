@@ -18,6 +18,7 @@
 #include "States/State.h"
 #include "States/StateDefinitionsFactory.h"
 #include "States/StateFactory.h"
+#include "States/StateLanguageCategoriesFactory.h"
 #include "Vic2Localisations.h"
 #include "Wars/WarFactory.h"
 #include <fstream>
@@ -416,10 +417,32 @@ std::optional<Vic2::Country*> Vic2::World::getCountry(const std::string& tag) co
 void Vic2::World::setLocalisations(Localisations& vic2Localisations)
 {
 	Log(LogLevel::Info) << "\tSetting localisations";
+	checkStateCategories();
 	for (auto country: countries)
 	{
 		country.second->setLocalisationNames(vic2Localisations);
 		country.second->setLocalisationAdjectives(vic2Localisations);
+	}
+}
+
+
+void Vic2::World::checkStateCategories()
+{
+	const auto stateLanguageCategories = StateLanguageCategories::Factory{}.getCategories();
+	for (auto country: countries)
+	{
+		for (auto& state: country.second->getStates())
+		{
+			const auto category = stateLanguageCategories->getStateCategory(state.getStateID());
+			if (category)
+			{
+				state.setLanguageCategory(*category);
+			}
+			else
+			{
+				Log(LogLevel::Warning) << state.getStateID() << " was not in any language category.";
+			}
+		}
 	}
 }
 

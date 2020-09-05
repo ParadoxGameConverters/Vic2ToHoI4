@@ -29,6 +29,7 @@ cp "Vic2ToHoI4/Data_Files/IntelligenceAgencyLogos.txt" "Release-Linux/DataFiles/
 cp "Vic2ToHoI4/Data_Files/license.txt" "Release-Linux/license.txt"
 cp "Vic2ToHoI4/Data_Files/languageReplacements.txt" "Release-Linux/DataFiles/languageReplacements.txt"
 cp "Vic2ToHoI4/Data_Files/Localisations/ArticleRules.txt" "Release-Linux/DataFiles/Localisations/ArticleRules.txt"
+cp "Vic2ToHoI4/Data_Files/Localisations/StateCategories.txt" "Release-Linux/DataFiles/Localisations/StateCategories.txt"
 cp "Vic2ToHoI4/Data_Files/Map/regions.txt" "Release-Linux/DataFiles/Map/regions.txt"
 cp "Vic2ToHoI4/Data_Files/merge_nations.txt" "Release-Linux/merge_nations.txt"
 cp "Vic2ToHoI4/Data_Files/names.txt" "Release-Linux/DataFiles/names.txt"
