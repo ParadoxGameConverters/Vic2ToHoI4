@@ -292,6 +292,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateDefinitionsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategories.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategoriesFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Vic2Localisations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarGoalFactory.cpp" />
@@ -410,6 +411,7 @@
     <ClCompile Include="Vic2WorldTests\States\StateDefinitionsFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateDefinitionsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateFactoryTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\States\StateLanguageCategoriesFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateLanguageCategoriesTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Vic2AgreementTests.cpp" />
@@ -580,6 +582,11 @@
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\regions.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles/Map</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Localisations\StateCategories.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles/Localisations</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

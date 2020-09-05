@@ -16,6 +16,7 @@ class StateLanguageCategories
 {
   public:
 	class Builder;
+	class Factory;
 
 	[[nodiscard]] std::optional<std::string> getStateCategory(const std::string& stateName) const;
 

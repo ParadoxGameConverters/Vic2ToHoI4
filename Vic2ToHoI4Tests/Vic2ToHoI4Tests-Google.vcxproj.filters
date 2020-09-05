@@ -1133,6 +1133,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategories.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategoriesFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\States\StateLanguageCategoriesFactoryTests.cpp">
+      <Filter>Vic2WorldTests\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1540,6 +1546,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\regions.txt">
       <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Localisations\StateCategories.txt">
+      <Filter>TestFiles\Localistations</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

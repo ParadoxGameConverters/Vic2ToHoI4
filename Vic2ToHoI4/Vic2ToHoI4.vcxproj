@@ -373,6 +373,7 @@
     <ClCompile Include="Source\V2World\States\StateDefinitionsFactory.cpp" />
     <ClCompile Include="Source\V2World\States\StateFactory.cpp" />
     <ClCompile Include="Source\V2World\States\StateLanguageCategories.cpp" />
+    <ClCompile Include="Source\V2World\States\StateLanguageCategoriesFactory.cpp" />
     <ClCompile Include="Source\V2World\Wars\WarFactory.cpp" />
     <ClCompile Include="Source\Vic2toHOI4Converter.cpp" />
     <ClCompile Include="Source\V2World\Agreement.cpp" />
@@ -677,6 +678,7 @@
     <ClInclude Include="Source\V2World\States\StateFactory.h" />
     <ClInclude Include="Source\V2World\States\StateLanguageCategories.h" />
     <ClInclude Include="Source\V2World\States\StateLanguageCategoriesBuilder.h" />
+    <ClInclude Include="Source\V2World\States\StateLanguageCategoriesFactory.h" />
     <ClInclude Include="Source\V2World\Vic2Localisations.h" />
     <ClInclude Include="Source\V2World\Wars\War.h" />
     <ClInclude Include="Source\V2World\Wars\WarBuilder.h" />
@@ -17209,6 +17211,11 @@
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\Map\regions.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles/Map</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\Localisations\StateCategories.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles/Localisations</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
