@@ -2,7 +2,7 @@
 #include "../../../Vic2ToHoI4/Source/V2World/Provinces/Province.h"
 #include "../../../Vic2ToHoI4/Source/V2World/Provinces/ProvinceBuilder.h"
 #include "../../../Vic2ToHoI4/Source/V2World/States/State.h"
-#include "../../../Vic2ToHoI4/Source/V2World/States/StateDefinitions.h"
+#include "../../../Vic2ToHoI4/Source/V2World/States/StateDefinitionsBuilder.h"
 #include "../../../Vic2ToHoI4/Source/V2World/States/StateFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
@@ -66,15 +66,13 @@ TEST(Vic2World_States_StateTests, EmployedWorkersDefaultsToZero)
 
 TEST(Vic2World_States_StateTests, CraftsmenAddToEmployedWorkers)
 {
-	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
-
 	std::stringstream stateInput;
 	stateInput << "= {\n";
 	stateInput << "\tstate_buildings = {\n";
 	stateInput << "\t\tlevel = 1\n";
 	stateInput << "\t}";
 	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
+	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
 	state->setOwner("TAG");
 	state->addProvince(
 		 Vic2::Province::Builder{}
@@ -90,15 +88,13 @@ TEST(Vic2World_States_StateTests, CraftsmenAddToEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, CraftsmenLiteracyDoesNotAffectEmployedWorkers)
 {
-	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
-
 	std::stringstream stateInput;
 	stateInput << "= {\n";
 	stateInput << "\tstate_buildings = {\n";
 	stateInput << "\t\tlevel = 1\n";
 	stateInput << "\t}";
 	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
+	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
 	state->setOwner("TAG");
 	state->addProvince(Vic2::Province::Builder{}
 								  .setNumber(1)
@@ -114,15 +110,13 @@ TEST(Vic2World_States_StateTests, CraftsmenLiteracyDoesNotAffectEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, ClerksAddTwoToEmployedWorkers)
 {
-	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
-
 	std::stringstream stateInput;
 	stateInput << "= {\n";
 	stateInput << "\tstate_buildings = {\n";
 	stateInput << "\t\tlevel = 1\n";
 	stateInput << "\t}";
 	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
+	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
 	state->setOwner("TAG");
 	state->addProvince(Vic2::Province::Builder{}
 								  .setNumber(1)
@@ -137,15 +131,13 @@ TEST(Vic2World_States_StateTests, ClerksAddTwoToEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, ClerkLiteracyDoesNotAffectEmployedWorkers)
 {
-	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
-
 	std::stringstream stateInput;
 	stateInput << "= {\n";
 	stateInput << "\tstate_buildings = {\n";
 	stateInput << "\t\tlevel = 1\n";
 	stateInput << "\t}";
 	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
+	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
 	state->setOwner("TAG");
 	state->addProvince(Vic2::Province::Builder{}
 								  .setNumber(1)
@@ -161,15 +153,13 @@ TEST(Vic2World_States_StateTests, ClerkLiteracyDoesNotAffectEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, ArtisansAddHalfToEmployedWorkers)
 {
-	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
-
 	std::stringstream stateInput;
 	stateInput << "= {\n";
 	stateInput << "\tstate_buildings = {\n";
 	stateInput << "\t\tlevel = 1\n";
 	stateInput << "\t}";
 	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
+	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
 	state->setOwner("TAG");
 	state->addProvince(
 		 Vic2::Province::Builder{}
@@ -185,15 +175,13 @@ TEST(Vic2World_States_StateTests, ArtisansAddHalfToEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, ArtisanLiteracyDoesNotAffectEmployedWorkers)
 {
-	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
-
 	std::stringstream stateInput;
 	stateInput << "= {\n";
 	stateInput << "\tstate_buildings = {\n";
 	stateInput << "\t\tlevel = 1\n";
 	stateInput << "\t}";
 	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
+	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
 	state->setOwner("TAG");
 	state->addProvince(Vic2::Province::Builder{}
 								  .setNumber(1)
@@ -209,15 +197,13 @@ TEST(Vic2World_States_StateTests, ArtisanLiteracyDoesNotAffectEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, CapitalistsAddTwoToEmployedWorkers)
 {
-	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
-
 	std::stringstream stateInput;
 	stateInput << "= {\n";
 	stateInput << "\tstate_buildings = {\n";
 	stateInput << "\t\tlevel = 1\n";
 	stateInput << "\t}";
 	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
+	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
 	state->setOwner("TAG");
 	state->addProvince(Vic2::Province::Builder{}
 								  .setNumber(1)
@@ -233,15 +219,13 @@ TEST(Vic2World_States_StateTests, CapitalistsAddTwoToEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, CapitalistLiteracyAffectsEmployedWorkers)
 {
-	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
-
 	std::stringstream stateInput;
 	stateInput << "= {\n";
 	stateInput << "\tstate_buildings = {\n";
 	stateInput << "\t\tlevel = 1\n";
 	stateInput << "\t}";
 	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
+	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
 	state->setOwner("TAG");
 	state->addProvince(Vic2::Province::Builder{}
 								  .setNumber(1)
@@ -257,15 +241,13 @@ TEST(Vic2World_States_StateTests, CapitalistLiteracyAffectsEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, CraftsmentAndClerksCappedByFactoryLevel)
 {
-	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
-
 	std::stringstream stateInput;
 	stateInput << "= {\n";
 	stateInput << "\tstate_buildings = {\n";
 	stateInput << "\t\tlevel = 1\n";
 	stateInput << "\t}";
 	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
+	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
 	state->setOwner("TAG");
 	state->addProvince(
 		 Vic2::Province::Builder{}
@@ -282,15 +264,13 @@ TEST(Vic2World_States_StateTests, CraftsmentAndClerksCappedByFactoryLevel)
 
 TEST(Vic2World_States_StateTests, ArtisansNotCappedByFactoryLevel)
 {
-	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
-
 	std::stringstream stateInput;
 	stateInput << "= {\n";
 	stateInput << "\tstate_buildings = {\n";
 	stateInput << "\t\tlevel = 0\n";
 	stateInput << "\t}";
 	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
+	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
 	state->setOwner("TAG");
 	state->addProvince(
 		 Vic2::Province::Builder{}
@@ -307,15 +287,13 @@ TEST(Vic2World_States_StateTests, ArtisansNotCappedByFactoryLevel)
 
 TEST(Vic2World_States_StateTests, CapitalistsNotCappedByFactoryLevel)
 {
-	const Vic2::StateDefinitions stateDefinitions{{}, {}, {}};
-
 	std::stringstream stateInput;
 	stateInput << "= {\n";
 	stateInput << "\tstate_buildings = {\n";
 	stateInput << "\t\tlevel = 0\n";
 	stateInput << "\t}";
 	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", stateDefinitions);
+	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
 	state->setOwner("TAG");
 	state->addProvince(Vic2::Province::Builder{}
 								  .setNumber(1)

@@ -674,6 +674,7 @@
     <ClInclude Include="Source\V2World\States\BuildingReader.h" />
     <ClInclude Include="Source\V2World\States\State.h" />
     <ClInclude Include="Source\V2World\States\StateDefinitions.h" />
+    <ClInclude Include="Source\V2World\States\StateDefinitionsBuilder.h" />
     <ClInclude Include="Source\V2World\States\StateDefinitionsFactory.h" />
     <ClInclude Include="Source\V2World\States\StateFactory.h" />
     <ClInclude Include="Source\V2World\States\StateLanguageCategories.h" />

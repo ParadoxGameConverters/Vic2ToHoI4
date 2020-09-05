@@ -1848,6 +1848,9 @@
     <ClInclude Include="Source\V2World\States\StateLanguageCategoriesFactory.h">
       <Filter>Vic2World\States</Filter>
     </ClInclude>
+    <ClInclude Include="Source\V2World\States\StateDefinitionsBuilder.h">
+      <Filter>Vic2World\States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\ai_peaces.txt">
