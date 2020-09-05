@@ -1127,6 +1127,12 @@
     <ClCompile Include="HoI4WorldTests\Regions\RegionsTests.cpp">
       <Filter>HoI4WorldTests\Regions</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\States\StateLanguageCategoriesTests.cpp">
+      <Filter>Vic2WorldTests\States</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategories.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

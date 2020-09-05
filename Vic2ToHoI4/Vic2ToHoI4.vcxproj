@@ -372,6 +372,7 @@
     <ClCompile Include="Source\V2World\States\StateDefinitions.cpp" />
     <ClCompile Include="Source\V2World\States\StateDefinitionsFactory.cpp" />
     <ClCompile Include="Source\V2World\States\StateFactory.cpp" />
+    <ClCompile Include="Source\V2World\States\StateLanguageCategories.cpp" />
     <ClCompile Include="Source\V2World\Wars\WarFactory.cpp" />
     <ClCompile Include="Source\Vic2toHOI4Converter.cpp" />
     <ClCompile Include="Source\V2World\Agreement.cpp" />
@@ -674,6 +675,8 @@
     <ClInclude Include="Source\V2World\States\StateDefinitions.h" />
     <ClInclude Include="Source\V2World\States\StateDefinitionsFactory.h" />
     <ClInclude Include="Source\V2World\States\StateFactory.h" />
+    <ClInclude Include="Source\V2World\States\StateLanguageCategories.h" />
+    <ClInclude Include="Source\V2World\States\StateLanguageCategoriesBuilder.h" />
     <ClInclude Include="Source\V2World\Vic2Localisations.h" />
     <ClInclude Include="Source\V2World\Wars\War.h" />
     <ClInclude Include="Source\V2World\Wars\WarBuilder.h" />
