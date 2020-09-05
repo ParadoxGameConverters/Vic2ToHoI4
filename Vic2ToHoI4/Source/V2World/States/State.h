@@ -43,6 +43,7 @@ class State
 
 	void addProvince(std::shared_ptr<Province> province) { provinces.insert(std::move(province)); }
 	void setOwner(std::string newOwner) { owner = std::move(newOwner); }
+	void setLanguageCategory(std::string newLanguageCategory) { languageCategory = std::move(newLanguageCategory); }
 
 	[[nodiscard]] virtual int getPopulation() const;
 	[[nodiscard]] virtual float getAverageRailLevel() const;
@@ -53,6 +54,7 @@ class State
 	[[nodiscard]] virtual std::set<int> getProvinceNumbers() const { return provinceNumbers; }
 	[[nodiscard]] virtual std::set<std::shared_ptr<Province>> getProvinces() const { return provinces; }
 	[[nodiscard]] virtual std::optional<int> getCapitalProvince() const { return capitalProvince; }
+	[[nodiscard]] const std::string& getLanguageCategory() const { return languageCategory; }
 	[[nodiscard]] virtual int getEmployedWorkers() const { return employedWorkers; }
 
   private:
@@ -67,6 +69,8 @@ class State
 	std::set<int> provinceNumbers;
 	std::set<std::shared_ptr<Province>> provinces;
 	std::optional<int> capitalProvince;
+
+	std::string languageCategory;
 
 	int factoryLevel = 0;
 	int employedWorkers = 0;

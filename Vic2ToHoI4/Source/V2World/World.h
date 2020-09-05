@@ -55,6 +55,7 @@ class World: commonItems::parser
 
   private:
 	void setLocalisations(Localisations& vic2Localisations);
+	void checkStateCategories();
 	void handleMissingCountryCultures();
 
 	void setGreatPowerStatus(const std::vector<int>& GPIndexes, const std::vector<std::string>& tagsInOrder);
