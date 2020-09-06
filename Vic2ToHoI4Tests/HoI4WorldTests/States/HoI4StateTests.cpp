@@ -108,11 +108,6 @@ TEST(HoI4World_States_StateTests, ControlledProvincesDefaultToEmpty)
 
 TEST(HoI4World_States_StateTests, ControllersCanBeAdded)
 {
-	std::shared_ptr<Vic2::Province> theProvince =
-		 Vic2::Province::Builder{}.setNumber(0).setNumber(12).setOwner("TAG").setController("NOT").build();
-	std::set<std::shared_ptr<Vic2::Province>> provinces;
-	provinces.insert(theProvince);
-
 	const auto sourceState = *Vic2::State::Builder{}.build();
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
@@ -123,7 +118,7 @@ TEST(HoI4World_States_StateTests, ControllersCanBeAdded)
 	std::optional<std::string> hoi4tag = "NOT";
 	EXPECT_CALL(theCountryMapper, getHoI4Tag("NOT")).WillOnce(testing::Return(hoi4tag));
 
-	theState.convertControlledProvinces(provinces, theProvinceMapper, theCountryMapper);
+	theState.convertControlledProvinces({{12, "NOT"}}, theProvinceMapper, theCountryMapper);
 
 	std::map<std::string, std::set<int>> expectedControlledProvinces{{"NOT", {12}}};
 	ASSERT_EQ(expectedControlledProvinces, theState.getControlledProvinces());
@@ -132,11 +127,6 @@ TEST(HoI4World_States_StateTests, ControllersCanBeAdded)
 
 TEST(HoI4World_States_StateTests, ControllersConvertWithHoI4Tag)
 {
-	std::shared_ptr<Vic2::Province> theProvince =
-		 Vic2::Province::Builder{}.setNumber(0).setNumber(12).setOwner("TAG").setController("NOT").build();
-	std::set<std::shared_ptr<Vic2::Province>> provinces;
-	provinces.insert(theProvince);
-
 	const auto sourceState = *Vic2::State::Builder{}.build();
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
@@ -147,7 +137,7 @@ TEST(HoI4World_States_StateTests, ControllersConvertWithHoI4Tag)
 	std::optional<std::string> hoi4tag = "HOI";
 	EXPECT_CALL(theCountryMapper, getHoI4Tag("NOT")).WillOnce(testing::Return(hoi4tag));
 
-	theState.convertControlledProvinces(provinces, theProvinceMapper, theCountryMapper);
+	theState.convertControlledProvinces({{12, "NOT"}}, theProvinceMapper, theCountryMapper);
 
 	std::map<std::string, std::set<int>> expectedControlledProvinces{{"HOI", {12}}};
 	ASSERT_EQ(expectedControlledProvinces, theState.getControlledProvinces());
@@ -156,11 +146,6 @@ TEST(HoI4World_States_StateTests, ControllersConvertWithHoI4Tag)
 
 TEST(HoI4World_States_StateTests, ControllersDontConvertForRebels)
 {
-	const std::shared_ptr<Vic2::Province> theProvince =
-		 Vic2::Province::Builder{}.setNumber(0).setNumber(12).setOwner("TAG").setController("REB").build();
-	std::set<std::shared_ptr<Vic2::Province>> provinces;
-	provinces.insert(theProvince);
-
 	const auto sourceState = *Vic2::State::Builder{}.build();
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
@@ -171,7 +156,7 @@ TEST(HoI4World_States_StateTests, ControllersDontConvertForRebels)
 	const std::optional<std::string> hoi4tag = "REB";
 	EXPECT_CALL(theCountryMapper, getHoI4Tag("REB")).WillOnce(testing::Return(hoi4tag));
 
-	theState.convertControlledProvinces(provinces, theProvinceMapper, theCountryMapper);
+	theState.convertControlledProvinces({{12, "REB"}}, theProvinceMapper, theCountryMapper);
 
 	ASSERT_TRUE(theState.getControlledProvinces().empty());
 }
@@ -415,19 +400,13 @@ TEST(HoI4World_States_StateTests, NavalBasesCanBeConverted)
 	theState.addProvince(1);
 	theState.addProvince(2);
 
-	const std::shared_ptr<Vic2::Province> sourceProvince =
-		 Vic2::Province::Builder{}.setNumber(0).setNumber(1).setNavalBaseLevel(1).build();
-	const std::shared_ptr<Vic2::Province> sourceProvince2 =
-		 Vic2::Province::Builder{}.setNumber(0).setNumber(2).setNavalBaseLevel(1).build();
-	const std::set<std::shared_ptr<Vic2::Province>> sourceProvinces{sourceProvince, sourceProvince2};
-
 	const mockCoastalProvinces theCoastalProvinces;
 	EXPECT_CALL(theCoastalProvinces, isProvinceCoastal(1)).WillOnce(testing::Return(true));
 	EXPECT_CALL(theCoastalProvinces, isProvinceCoastal(2)).WillOnce(testing::Return(true));
 
 	const mappers::ProvinceMapper theProvinceMapper{{}, {{1, {1}}, {2, {2}}}};
 
-	theState.convertNavalBases(sourceProvinces, theCoastalProvinces, theProvinceMapper);
+	theState.convertNavalBases({{1,1}, {2,1}}, theCoastalProvinces, theProvinceMapper);
 
 	const std::map<int, int> expectedNavalBases{{1, 2}, {2, 2}};
 	ASSERT_EQ(expectedNavalBases, theState.getNavalBases());

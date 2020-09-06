@@ -58,12 +58,12 @@ class State
 	void addVictoryPointValue(int additionalValue) { victoryPointValue += additionalValue; }
 	void setVPLocation(int province) { victoryPointPosition = province; }
 
-	void convertNavalBases(const std::set<std::shared_ptr<Vic2::Province>>& sourceProvinces,
+	void convertNavalBases(const std::map<int, int>& sourceNavalBases,
 		 const CoastalProvinces& theCoastalProvinces,
 		 const mappers::ProvinceMapper& theProvinceMapper);
 	void addNavalBase(int level, int location);
 	void addCores(const std::set<std::string>& newCores);
-	void convertControlledProvinces(const std::set<std::shared_ptr<Vic2::Province>>& sourceProvinces,
+	void convertControlledProvinces(const std::vector<std::pair<int, std::string>>& foreignControlledProvinces,
 		 const mappers::ProvinceMapper& theProvinceMapper,
 		 const CountryMapper& countryMapper);
 
@@ -111,10 +111,10 @@ class State
 	bool amICoastal(const CoastalProvinces& theCoastalProvinces) const;
 	[[nodiscard]] bool ownerHasNoCore() const;
 
-	int determineNavalBaseLevel(const Vic2::Province& sourceProvince) const;
-	std::optional<int> determineNavalBaseLocation(const Vic2::Province& sourceProvince,
+	static int determineNavalBaseLevel(int sourceLevel);
+	static std::optional<int> determineNavalBaseLocation(int sourceProvince,
 		 const CoastalProvinces& theCoastalProvinces,
-		 const mappers::ProvinceMapper& theProvinceMapper) const;
+		 const mappers::ProvinceMapper& theProvinceMapper);
 
 	bool assignVPFromVic2Province(int Vic2ProvinceNumber, const mappers::ProvinceMapper& theProvinceMapper);
 	void assignVP(int location);

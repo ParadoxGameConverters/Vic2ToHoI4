@@ -363,10 +363,10 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 				newState.markHadImpassablePart();
 			}
 			addProvincesAndCoresToNewState(newState, passableProvinces);
-			newState.convertControlledProvinces(vic2State.getProvinces(), provinceMapper, countryMapper);
+			newState.convertControlledProvinces(vic2State.getForeignControlledProvinces(), provinceMapper, countryMapper);
 			newState.tryToCreateVP(vic2State, provinceMapper, theConfiguration);
 			newState.addManpower(vic2State.getProvinces(), provinceMapper, theConfiguration);
-			newState.convertNavalBases(vic2State.getProvinces(), theCoastalProvinces, provinceMapper);
+			newState.convertNavalBases(vic2State.getNavalBases(), theCoastalProvinces, provinceMapper);
 			states.insert(std::make_pair(nextStateID, newState));
 			nextStateID++;
 			hoi4Localisations.addStateLocalisation(newState,
@@ -383,7 +383,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 			newState.makeImpassable();
 			newState.tryToCreateVP(vic2State, provinceMapper, theConfiguration);
 			newState.addManpower(vic2State.getProvinces(), provinceMapper, theConfiguration);
-			newState.convertNavalBases(vic2State.getProvinces(), theCoastalProvinces, provinceMapper);
+			newState.convertNavalBases(vic2State.getNavalBases(), theCoastalProvinces, provinceMapper);
 			states.insert(std::make_pair(nextStateID, newState));
 			nextStateID++;
 			hoi4Localisations.addStateLocalisation(newState,

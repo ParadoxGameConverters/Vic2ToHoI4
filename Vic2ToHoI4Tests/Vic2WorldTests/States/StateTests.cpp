@@ -4,6 +4,7 @@
 #include "../../../Vic2ToHoI4/Source/V2World/States/State.h"
 #include "../../../Vic2ToHoI4/Source/V2World/States/StateDefinitionsBuilder.h"
 #include "../../../Vic2ToHoI4/Source/V2World/States/StateFactory.h"
+#include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -44,14 +45,119 @@ TEST(Vic2World_States_StateTests, RailLevelIsZeroWithNoProvinces)
 TEST(Vic2World_States_StateTests, RailLevelIsAverageOfProvinceRailLevels)
 {
 	Vic2::State state;
-
-	const std::shared_ptr<Vic2::Province> provinceOne = Vic2::Province::Builder{}.setNumber(1).setRailLevel(3).build();
-	state.addProvince(provinceOne);
-
-	const std::shared_ptr<Vic2::Province> provinceTwo = Vic2::Province::Builder{}.setNumber(2).setRailLevel(1).build();
-	state.addProvince(provinceTwo);
+	state.addProvince(Vic2::Province::Builder{}.setNumber(1).setRailLevel(3).build());
+	state.addProvince(Vic2::Province::Builder{}.setNumber(2).setRailLevel(1).build());
 
 	ASSERT_EQ(2, state.getAverageRailLevel());
+}
+
+
+TEST(Vic2World_States_StateTests, UpperClassLocationReturnedFromAristocrats)
+{
+	Vic2::State state;
+	state.addProvince(Vic2::Province::Builder{}
+								 .setNumber(1)
+								 .setPops({*Vic2::Pop::Builder{}.setType("farmers").setSize(12).build()})
+								 .build());
+	state.addProvince(Vic2::Province::Builder{}
+								 .setNumber(2)
+								 .setPops({*Vic2::Pop::Builder{}.setType("aristocrats").setSize(1).build()})
+								 .build());
+
+	ASSERT_EQ(2, state.getUpperClassLocation());
+}
+
+
+TEST(Vic2World_States_StateTests, UpperClassLocationReturnedFromBureaucrats)
+{
+	Vic2::State state;
+	state.addProvince(Vic2::Province::Builder{}
+								 .setNumber(1)
+								 .setPops({*Vic2::Pop::Builder{}.setType("farmers").setSize(12).build()})
+								 .build());
+	state.addProvince(Vic2::Province::Builder{}
+								 .setNumber(2)
+								 .setPops({*Vic2::Pop::Builder{}.setType("bureaucrats").setSize(1).build()})
+								 .build());
+
+	ASSERT_EQ(2, state.getUpperClassLocation());
+}
+
+
+TEST(Vic2World_States_StateTests, UpperClassLocationReturnedFromCapitalists)
+{
+	Vic2::State state;
+	state.addProvince(Vic2::Province::Builder{}
+								 .setNumber(1)
+								 .setPops({*Vic2::Pop::Builder{}.setType("farmers").setSize(12).build()})
+								 .build());
+	state.addProvince(Vic2::Province::Builder{}
+								 .setNumber(2)
+								 .setPops({*Vic2::Pop::Builder{}.setType("capitalists").setSize(1).build()})
+								 .build());
+
+	ASSERT_EQ(2, state.getUpperClassLocation());
+}
+
+
+TEST(Vic2World_States_StateTests, UpperClassLocationReturnesNulloptIfNoUpperClasses)
+{
+	Vic2::State state;
+	state.addProvince(Vic2::Province::Builder{}
+								 .setNumber(1)
+								 .setPops({*Vic2::Pop::Builder{}.setType("farmers").setSize(12).build()})
+								 .build());
+	state.addProvince(Vic2::Province::Builder{}
+								 .setNumber(2)
+								 .setPops({*Vic2::Pop::Builder{}.setType("farmers").setSize(1).build()})
+								 .build());
+
+	ASSERT_EQ(std::nullopt, state.getUpperClassLocation());
+}
+
+
+TEST(Vic2World_States_StateTests, ProvincesAreOrderedByPopulation)
+{
+	Vic2::State state;
+	state.addProvince(Vic2::Province::Builder{}
+								 .setNumber(1)
+								 .setPops({*Vic2::Pop::Builder{}.setType("farmers").setSize(22).build()})
+								 .build());
+	state.addProvince(Vic2::Province::Builder{}
+								 .setNumber(2)
+								 .setPops({*Vic2::Pop::Builder{}.setType("farmers").setSize(11).build()})
+								 .build());
+	state.addProvince(Vic2::Province::Builder{}
+								 .setNumber(3)
+								 .setPops({*Vic2::Pop::Builder{}.setType("farmers").setSize(33).build()})
+								 .build());
+
+	const auto expectedProvinces = std::vector<int>{3, 1, 2};
+	ASSERT_EQ(expectedProvinces, state.getProvincesOrderedByPopulation());
+}
+
+
+TEST(Vic2World_States_StateTests, ForeignControlledProvincesAreReturned)
+{
+	Vic2::State state;
+	state.addProvince(Vic2::Province::Builder{}.setNumber(1).setOwner("OWN").setController("ONE").build());
+	state.addProvince(Vic2::Province::Builder{}.setNumber(2).setOwner("OWN").setController("TWO").build());
+	state.addProvince(Vic2::Province::Builder{}.setNumber(3).setOwner("OWN").setController("REB").build());
+
+	const auto expectedProvinces = std::vector<std::pair<int, std::string>>{{1, "ONE"}, {2, "TWO"}, {3, "REB"}};
+	EXPECT_THAT(state.getForeignControlledProvinces(), ::testing::WhenSorted(expectedProvinces));
+}
+
+
+TEST(Vic2World_States_StateTests, NavalBasesAreReturned)
+{
+	Vic2::State state;
+	state.addProvince(Vic2::Province::Builder{}.setNumber(1).setNavalBaseLevel(2).build());
+	state.addProvince(Vic2::Province::Builder{}.setNumber(2).setNavalBaseLevel(4).build());
+	state.addProvince(Vic2::Province::Builder{}.setNumber(4).setNavalBaseLevel(8).build());
+
+	const auto expectedProvinces = std::map<int, int>{{1, 2}, {2, 4}, {4, 8}};
+	ASSERT_EQ(expectedProvinces, state.getNavalBases());
 }
 
 

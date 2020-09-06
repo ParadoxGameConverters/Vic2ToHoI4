@@ -77,3 +77,74 @@ float Vic2::State::getAverageRailLevel() const
 	}
 	return static_cast<float>(totalRailLevel) / provinces.size();
 }
+
+
+std::optional<int> Vic2::State::getUpperClassLocation() const
+{
+	for (const auto& province: provinces)
+	{
+		if ((province->getPopulation("aristocrats") > 0) || (province->getPopulation("bureaucrats") > 0) ||
+			 (province->getPopulation("capitalists") > 0))
+		{
+			return province->getNumber();
+		}
+	}
+
+	return std::nullopt;
+}
+
+
+std::vector<int> Vic2::State::getProvincesOrderedByPopulation() const
+{
+	std::list<std::shared_ptr<Vic2::Province>> provincesOrderedByPopulation;
+	for (const auto& province: provinces)
+	{
+		provincesOrderedByPopulation.insert(
+			 std::upper_bound(provincesOrderedByPopulation.begin(),
+				  provincesOrderedByPopulation.end(),
+				  province,
+				  [](const std::shared_ptr<Vic2::Province> a, const std::shared_ptr<Vic2::Province> b) {
+					  // provide a 'backwards' comparison to force the sort order we want
+					  return a->getTotalPopulation() > b->getTotalPopulation();
+				  }),
+			 province);
+	}
+
+	std::vector<int> provinceNumbersOrderedByPopulation;
+	for (const auto& province: provincesOrderedByPopulation)
+	{
+		provinceNumbersOrderedByPopulation.push_back(province->getNumber());
+	}
+
+	return provinceNumbersOrderedByPopulation;
+}
+
+
+std::vector<std::pair<int, std::string>> Vic2::State::getForeignControlledProvinces() const
+{
+	std::vector<std::pair<int, std::string>> foreignControlledProvinces;
+	for (const auto& province: provinces)
+	{
+		if (province->getOwner() != province->getController())
+		{
+			foreignControlledProvinces.push_back(std::make_pair(province->getNumber(), province->getController()));
+		}
+	}
+
+	return foreignControlledProvinces;
+}
+
+
+std::map<int, int> Vic2::State::getNavalBases() const
+{
+	std::map<int, int> navalBases;
+	for (const auto& province: provinces)
+	{
+		if (const auto level = province->getNavalBaseLevel(); level > 0)
+		{
+			navalBases[province->getNumber()] = level;
+		}
+	}
+
+	return navalBases;
+}

@@ -3,20 +3,18 @@
 
 
 
+#include "../Provinces/Province.h"
+#include "StateDefinitions.h"
 #include <memory>
 #include <optional>
 #include <set>
 #include <string>
+#include <vector>
 
 
 
 namespace Vic2
 {
-class StateDefinitions;
-
-class Province;
-
-
 
 typedef struct workerStruct
 {
@@ -25,7 +23,6 @@ typedef struct workerStruct
 	float artisans = 0;
 	float capitalists = 0;
 } workerStruct;
-
 
 
 class State
@@ -42,6 +39,10 @@ class State
 
 	[[nodiscard]] int getPopulation() const;
 	[[nodiscard]] float getAverageRailLevel() const;
+	[[nodiscard]] std::optional<int> getUpperClassLocation() const;
+	[[nodiscard]] std::vector<int> getProvincesOrderedByPopulation() const;
+	[[nodiscard]] std::vector<std::pair<int, std::string>> getForeignControlledProvinces() const;
+	[[nodiscard]] std::map<int, int> getNavalBases() const; // location, level
 
 	[[nodiscard]] std::string getOwner() const { return owner; }
 	[[nodiscard]] std::string getStateID() const { return stateID; }
