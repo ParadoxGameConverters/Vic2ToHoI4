@@ -2,11 +2,9 @@
 #include "../../../Vic2ToHoI4/Source/V2World/Provinces/Province.h"
 #include "../../../Vic2ToHoI4/Source/V2World/Provinces/ProvinceBuilder.h"
 #include "../../../Vic2ToHoI4/Source/V2World/States/State.h"
-#include "../../../Vic2ToHoI4/Source/V2World/States/StateDefinitionsBuilder.h"
-#include "../../../Vic2ToHoI4/Source/V2World/States/StateFactory.h"
+#include "../../../Vic2ToHoI4/Source/V2World/States/StateBuilder.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
-#include <sstream>
 
 
 
@@ -172,20 +170,17 @@ TEST(Vic2World_States_StateTests, EmployedWorkersDefaultsToZero)
 
 TEST(Vic2World_States_StateTests, CraftsmenAddToEmployedWorkers)
 {
-	std::stringstream stateInput;
-	stateInput << "= {\n";
-	stateInput << "\tstate_buildings = {\n";
-	stateInput << "\t\tlevel = 1\n";
-	stateInput << "\t}";
-	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
-	state->setOwner("TAG");
-	state->addProvince(
-		 Vic2::Province::Builder{}
-			  .setNumber(1)
-			  .setCores({"TAG"})
-			  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("craftsmen").setSize(12).build()})
-			  .build());
+	auto state =
+		 Vic2::State::Builder{}
+			  .setOwner("TAG")
+			  .setProvinces(
+					{Vic2::Province::Builder{}
+							  .setNumber(1)
+							  .setCores({"TAG"})
+							  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("craftsmen").setSize(12).build()})
+							  .build()})
+			  .setFactoryLevel(1)
+			  .build();
 	state->determineEmployedWorkers();
 
 	ASSERT_EQ(12, state->getEmployedWorkers());
@@ -194,20 +189,17 @@ TEST(Vic2World_States_StateTests, CraftsmenAddToEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, CraftsmenLiteracyDoesNotAffectEmployedWorkers)
 {
-	std::stringstream stateInput;
-	stateInput << "= {\n";
-	stateInput << "\tstate_buildings = {\n";
-	stateInput << "\t\tlevel = 1\n";
-	stateInput << "\t}";
-	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
-	state->setOwner("TAG");
-	state->addProvince(Vic2::Province::Builder{}
-								  .setNumber(1)
-								  .setCores({"TAG"})
-								  .setPops(std::vector<Vic2::Pop>{
-										*Vic2::Pop::Builder{}.setType("craftsmen").setSize(12).setLiteracy(1.0).build()})
-								  .build());
+	auto state =
+		 Vic2::State::Builder{}
+			  .setOwner("TAG")
+			  .setProvinces({Vic2::Province::Builder{}
+										.setNumber(1)
+										.setCores({"TAG"})
+										.setPops(std::vector<Vic2::Pop>{
+											 *Vic2::Pop::Builder{}.setType("craftsmen").setSize(12).setLiteracy(1.0).build()})
+										.build()})
+			  .setFactoryLevel(1)
+			  .build();
 	state->determineEmployedWorkers();
 
 	ASSERT_EQ(12, state->getEmployedWorkers());
@@ -216,19 +208,17 @@ TEST(Vic2World_States_StateTests, CraftsmenLiteracyDoesNotAffectEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, ClerksAddTwoToEmployedWorkers)
 {
-	std::stringstream stateInput;
-	stateInput << "= {\n";
-	stateInput << "\tstate_buildings = {\n";
-	stateInput << "\t\tlevel = 1\n";
-	stateInput << "\t}";
-	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
-	state->setOwner("TAG");
-	state->addProvince(Vic2::Province::Builder{}
-								  .setNumber(1)
-								  .setCores({"TAG"})
-								  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("clerks").setSize(12).build()})
-								  .build());
+	auto state =
+		 Vic2::State::Builder{}
+			  .setOwner("TAG")
+			  .setProvinces(
+					{Vic2::Province::Builder{}
+							  .setNumber(1)
+							  .setCores({"TAG"})
+							  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("clerks").setSize(12).build()})
+							  .build()})
+			  .setFactoryLevel(1)
+			  .build();
 	state->determineEmployedWorkers();
 
 	ASSERT_EQ(24, state->getEmployedWorkers());
@@ -237,20 +227,17 @@ TEST(Vic2World_States_StateTests, ClerksAddTwoToEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, ClerkLiteracyDoesNotAffectEmployedWorkers)
 {
-	std::stringstream stateInput;
-	stateInput << "= {\n";
-	stateInput << "\tstate_buildings = {\n";
-	stateInput << "\t\tlevel = 1\n";
-	stateInput << "\t}";
-	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
-	state->setOwner("TAG");
-	state->addProvince(Vic2::Province::Builder{}
-								  .setNumber(1)
-								  .setCores({"TAG"})
-								  .setPops(std::vector<Vic2::Pop>{
-										*Vic2::Pop::Builder{}.setType("clerks").setSize(12).setLiteracy(1.0).build()})
-								  .build());
+	auto state =
+		 Vic2::State::Builder{}
+			  .setOwner("TAG")
+			  .setProvinces({Vic2::Province::Builder{}
+										.setNumber(1)
+										.setCores({"TAG"})
+										.setPops(std::vector<Vic2::Pop>{
+											 *Vic2::Pop::Builder{}.setType("clerks").setSize(12).setLiteracy(1.0).build()})
+										.build()})
+			  .setFactoryLevel(1)
+			  .build();
 	state->determineEmployedWorkers();
 
 	ASSERT_EQ(24, state->getEmployedWorkers());
@@ -259,20 +246,17 @@ TEST(Vic2World_States_StateTests, ClerkLiteracyDoesNotAffectEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, ArtisansAddHalfToEmployedWorkers)
 {
-	std::stringstream stateInput;
-	stateInput << "= {\n";
-	stateInput << "\tstate_buildings = {\n";
-	stateInput << "\t\tlevel = 1\n";
-	stateInput << "\t}";
-	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
-	state->setOwner("TAG");
-	state->addProvince(
-		 Vic2::Province::Builder{}
-			  .setNumber(1)
-			  .setCores({"TAG"})
-			  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("artisans").setSize(12).build()})
-			  .build());
+	auto state =
+		 Vic2::State::Builder{}
+			  .setOwner("TAG")
+			  .setProvinces(
+					{Vic2::Province::Builder{}
+							  .setNumber(1)
+							  .setCores({"TAG"})
+							  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("artisans").setSize(12).build()})
+							  .build()})
+			  .setFactoryLevel(1)
+			  .build();
 	state->determineEmployedWorkers();
 
 	ASSERT_EQ(6, state->getEmployedWorkers());
@@ -281,20 +265,17 @@ TEST(Vic2World_States_StateTests, ArtisansAddHalfToEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, ArtisanLiteracyDoesNotAffectEmployedWorkers)
 {
-	std::stringstream stateInput;
-	stateInput << "= {\n";
-	stateInput << "\tstate_buildings = {\n";
-	stateInput << "\t\tlevel = 1\n";
-	stateInput << "\t}";
-	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
-	state->setOwner("TAG");
-	state->addProvince(Vic2::Province::Builder{}
-								  .setNumber(1)
-								  .setCores({"TAG"})
-								  .setPops(std::vector<Vic2::Pop>{
-										*Vic2::Pop::Builder{}.setType("artisans").setSize(12).setLiteracy(1.0).build()})
-								  .build());
+	auto state =
+		 Vic2::State::Builder{}
+			  .setOwner("TAG")
+			  .setProvinces({Vic2::Province::Builder{}
+										.setNumber(1)
+										.setCores({"TAG"})
+										.setPops(std::vector<Vic2::Pop>{
+											 *Vic2::Pop::Builder{}.setType("artisans").setSize(12).setLiteracy(1.0).build()})
+										.build()})
+			  .setFactoryLevel(1)
+			  .build();
 	state->determineEmployedWorkers();
 
 	ASSERT_EQ(6, state->getEmployedWorkers());
@@ -303,20 +284,17 @@ TEST(Vic2World_States_StateTests, ArtisanLiteracyDoesNotAffectEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, CapitalistsAddTwoToEmployedWorkers)
 {
-	std::stringstream stateInput;
-	stateInput << "= {\n";
-	stateInput << "\tstate_buildings = {\n";
-	stateInput << "\t\tlevel = 1\n";
-	stateInput << "\t}";
-	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
-	state->setOwner("TAG");
-	state->addProvince(Vic2::Province::Builder{}
-								  .setNumber(1)
-								  .setCores({"TAG"})
-								  .setPops(std::vector<Vic2::Pop>{
-										*Vic2::Pop::Builder{}.setType("capitalists").setSize(10).setLiteracy(1.0).build()})
-								  .build());
+	auto state =
+		 Vic2::State::Builder{}
+			  .setOwner("TAG")
+			  .setProvinces({Vic2::Province::Builder{}
+										.setNumber(1)
+										.setCores({"TAG"})
+										.setPops(std::vector<Vic2::Pop>{
+											 *Vic2::Pop::Builder{}.setType("capitalists").setSize(10).setLiteracy(1.0).build()})
+										.build()})
+			  .setFactoryLevel(1)
+			  .build();
 	state->determineEmployedWorkers();
 
 	ASSERT_EQ(20, state->getEmployedWorkers());
@@ -325,20 +303,17 @@ TEST(Vic2World_States_StateTests, CapitalistsAddTwoToEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, CapitalistLiteracyAffectsEmployedWorkers)
 {
-	std::stringstream stateInput;
-	stateInput << "= {\n";
-	stateInput << "\tstate_buildings = {\n";
-	stateInput << "\t\tlevel = 1\n";
-	stateInput << "\t}";
-	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
-	state->setOwner("TAG");
-	state->addProvince(Vic2::Province::Builder{}
-								  .setNumber(1)
-								  .setCores({"TAG"})
-								  .setPops(std::vector<Vic2::Pop>{
-										*Vic2::Pop::Builder{}.setType("capitalists").setSize(10).setLiteracy(0.0).build()})
-								  .build());
+	auto state =
+		 Vic2::State::Builder{}
+			  .setOwner("TAG")
+			  .setProvinces({Vic2::Province::Builder{}
+										.setNumber(1)
+										.setCores({"TAG"})
+										.setPops(std::vector<Vic2::Pop>{
+											 *Vic2::Pop::Builder{}.setType("capitalists").setSize(10).setLiteracy(0.0).build()})
+										.build()})
+			  .setFactoryLevel(1)
+			  .build();
 	state->determineEmployedWorkers();
 
 	ASSERT_EQ(2, state->getEmployedWorkers());
@@ -347,21 +322,17 @@ TEST(Vic2World_States_StateTests, CapitalistLiteracyAffectsEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, CraftsmentAndClerksCappedByFactoryLevel)
 {
-	std::stringstream stateInput;
-	stateInput << "= {\n";
-	stateInput << "\tstate_buildings = {\n";
-	stateInput << "\t\tlevel = 1\n";
-	stateInput << "\t}";
-	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
-	state->setOwner("TAG");
-	state->addProvince(
-		 Vic2::Province::Builder{}
-			  .setNumber(1)
-			  .setCores({"TAG"})
-			  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("craftsmen").setSize(10000).build(),
-					*Vic2::Pop::Builder{}.setType("clerks").setSize(5000).build()})
-			  .build());
+	auto state = Vic2::State::Builder{}
+						  .setOwner("TAG")
+						  .setProvinces({Vic2::Province::Builder{}
+													.setNumber(1)
+													.setCores({"TAG"})
+													.setPops(std::vector<Vic2::Pop>{
+														 *Vic2::Pop::Builder{}.setType("craftsmen").setSize(10000).build(),
+														 *Vic2::Pop::Builder{}.setType("clerks").setSize(5000).build()})
+													.build()})
+						  .setFactoryLevel(1)
+						  .build();
 	state->determineEmployedWorkers();
 
 	ASSERT_EQ(13333, state->getEmployedWorkers());
@@ -370,21 +341,18 @@ TEST(Vic2World_States_StateTests, CraftsmentAndClerksCappedByFactoryLevel)
 
 TEST(Vic2World_States_StateTests, ArtisansNotCappedByFactoryLevel)
 {
-	std::stringstream stateInput;
-	stateInput << "= {\n";
-	stateInput << "\tstate_buildings = {\n";
-	stateInput << "\t\tlevel = 0\n";
-	stateInput << "\t}";
-	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
-	state->setOwner("TAG");
-	state->addProvince(
-		 Vic2::Province::Builder{}
-			  .setNumber(1)
-			  .setCores({"TAG"})
-			  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("artisans").setSize(30000).build(),
-					*Vic2::Pop::Builder{}.setType("clerks").setSize(20000).build()})
-			  .build());
+	auto state =
+		 Vic2::State::Builder{}
+			  .setOwner("TAG")
+			  .setProvinces(
+					{Vic2::Province::Builder{}
+							  .setNumber(1)
+							  .setCores({"TAG"})
+							  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("artisans").setSize(30000).build(),
+									*Vic2::Pop::Builder{}.setType("clerks").setSize(20000).build()})
+							  .build()})
+			  .setFactoryLevel(0)
+			  .build();
 	state->determineEmployedWorkers();
 
 	ASSERT_EQ(15000, state->getEmployedWorkers());
@@ -393,21 +361,18 @@ TEST(Vic2World_States_StateTests, ArtisansNotCappedByFactoryLevel)
 
 TEST(Vic2World_States_StateTests, CapitalistsNotCappedByFactoryLevel)
 {
-	std::stringstream stateInput;
-	stateInput << "= {\n";
-	stateInput << "\tstate_buildings = {\n";
-	stateInput << "\t\tlevel = 0\n";
-	stateInput << "\t}";
-	stateInput << "}";
-	auto state = Vic2::State::Factory{}.getState(stateInput, "TAG", *Vic2::StateDefinitions::Builder{}.build());
-	state->setOwner("TAG");
-	state->addProvince(Vic2::Province::Builder{}
-								  .setNumber(1)
-								  .setCores({"TAG"})
-								  .setPops(std::vector<Vic2::Pop>{
-										*Vic2::Pop::Builder{}.setType("capitalists").setSize(20000).setLiteracy(1.0).build(),
-										*Vic2::Pop::Builder{}.setType("clerks").setSize(20000).setLiteracy(1.0).build()})
-								  .build());
+	auto state =
+		 Vic2::State::Builder{}
+			  .setOwner("TAG")
+			  .setProvinces({Vic2::Province::Builder{}
+										.setNumber(1)
+										.setCores({"TAG"})
+										.setPops(std::vector<Vic2::Pop>{
+											 *Vic2::Pop::Builder{}.setType("capitalists").setSize(20000).setLiteracy(1.0).build(),
+											 *Vic2::Pop::Builder{}.setType("clerks").setSize(20000).setLiteracy(1.0).build()})
+										.build()})
+			  .setFactoryLevel(0)
+			  .build();
 	state->determineEmployedWorkers();
 
 	ASSERT_EQ(40000, state->getEmployedWorkers());
