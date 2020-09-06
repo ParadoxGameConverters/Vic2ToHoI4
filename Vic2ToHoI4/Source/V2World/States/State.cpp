@@ -1,6 +1,7 @@
 #include "State.h"
 #include "../Country.h"
 #include "../Provinces/Province.h"
+#include <list>
 
 
 
@@ -96,17 +97,16 @@ std::optional<int> Vic2::State::getUpperClassLocation() const
 
 std::vector<int> Vic2::State::getProvincesOrderedByPopulation() const
 {
-	std::list<std::shared_ptr<Vic2::Province>> provincesOrderedByPopulation;
+	std::list<std::shared_ptr<Province>> provincesOrderedByPopulation;
 	for (const auto& province: provinces)
 	{
-		provincesOrderedByPopulation.insert(
-			 std::upper_bound(provincesOrderedByPopulation.begin(),
-				  provincesOrderedByPopulation.end(),
-				  province,
-				  [](const std::shared_ptr<Vic2::Province> a, const std::shared_ptr<Vic2::Province> b) {
-					  // provide a 'backwards' comparison to force the sort order we want
-					  return a->getTotalPopulation() > b->getTotalPopulation();
-				  }),
+		provincesOrderedByPopulation.insert(std::upper_bound(provincesOrderedByPopulation.begin(),
+															 provincesOrderedByPopulation.end(),
+															 province,
+															 [](const std::shared_ptr<Province>& a, const std::shared_ptr<Province>& b) {
+																 // provide a 'backwards' comparison to force the sort order we want
+																 return a->getTotalPopulation() > b->getTotalPopulation();
+															 }),
 			 province);
 	}
 
@@ -127,7 +127,7 @@ std::vector<std::pair<int, std::string>> Vic2::State::getForeignControlledProvin
 	{
 		if (province->getOwner() != province->getController())
 		{
-			foreignControlledProvinces.push_back(std::make_pair(province->getNumber(), province->getController()));
+			foreignControlledProvinces.emplace_back(std::make_pair(province->getNumber(), province->getController()));
 		}
 	}
 
