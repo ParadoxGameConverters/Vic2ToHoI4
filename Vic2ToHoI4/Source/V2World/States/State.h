@@ -3,20 +3,18 @@
 
 
 
+#include "../Provinces/Province.h"
+#include "StateDefinitions.h"
 #include <memory>
 #include <optional>
 #include <set>
 #include <string>
+#include <vector>
 
 
 
 namespace Vic2
 {
-class StateDefinitions;
-
-class Province;
-
-
 
 typedef struct workerStruct
 {
@@ -27,17 +25,11 @@ typedef struct workerStruct
 } workerStruct;
 
 
-
 class State
 {
   public:
+	class Builder;
 	class Factory;
-	State() = default;
-	State(const State&) = default;
-	State(State&&) = default;
-	State& operator=(const State&) = default;
-	State& operator=(State&&) = default;
-	virtual ~State() = default;
 
 	void determineEmployedWorkers();
 
@@ -45,17 +37,21 @@ class State
 	void setOwner(std::string newOwner) { owner = std::move(newOwner); }
 	void setLanguageCategory(std::string newLanguageCategory) { languageCategory = std::move(newLanguageCategory); }
 
-	[[nodiscard]] virtual int getPopulation() const;
-	[[nodiscard]] virtual float getAverageRailLevel() const;
+	[[nodiscard]] int getPopulation() const;
+	[[nodiscard]] float getAverageRailLevel() const;
+	[[nodiscard]] std::optional<int> getUpperClassLocation() const;
+	[[nodiscard]] std::vector<int> getProvincesOrderedByPopulation() const;
+	[[nodiscard]] std::vector<std::pair<int, std::string>> getForeignControlledProvinces() const;
+	[[nodiscard]] std::map<int, int> getNavalBases() const; // location, level
 
 	[[nodiscard]] std::string getOwner() const { return owner; }
 	[[nodiscard]] std::string getStateID() const { return stateID; }
 	[[nodiscard]] bool isPartialState() const { return partialState; }
-	[[nodiscard]] virtual std::set<int> getProvinceNumbers() const { return provinceNumbers; }
-	[[nodiscard]] virtual std::set<std::shared_ptr<Province>> getProvinces() const { return provinces; }
-	[[nodiscard]] virtual std::optional<int> getCapitalProvince() const { return capitalProvince; }
+	[[nodiscard]] std::set<int> getProvinceNumbers() const { return provinceNumbers; }
+	[[nodiscard]] std::set<std::shared_ptr<Province>> getProvinces() const { return provinces; }
+	[[nodiscard]] std::optional<int> getCapitalProvince() const { return capitalProvince; }
 	[[nodiscard]] const std::string& getLanguageCategory() const { return languageCategory; }
-	[[nodiscard]] virtual int getEmployedWorkers() const { return employedWorkers; }
+	[[nodiscard]] int getEmployedWorkers() const { return employedWorkers; }
 
   private:
 	[[nodiscard]] workerStruct countEmployedWorkers() const;

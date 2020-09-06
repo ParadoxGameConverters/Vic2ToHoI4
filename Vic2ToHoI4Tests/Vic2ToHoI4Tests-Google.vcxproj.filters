@@ -196,9 +196,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\DefaultState.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
     </ClCompile>
-    <ClCompile Include="Mocks\Vic2StateMock.h">
-      <Filter>Mocks</Filter>
-    </ClCompile>
     <ClCompile Include="HoI4WorldTests\Hoi4CountryTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>

@@ -24,9 +24,9 @@ class State::Factory: commonItems::parser
 		 const StateDefinitions& theStateDefinitions);
 
   private:
-	void setID(const StateDefinitions& theStateDefinitions);
-	void setCapital(const StateDefinitions& theStateDefinitions);
-	void determineIfPartialState(const StateDefinitions& theStateDefinitions);
+	void setID(const StateDefinitions& theStateDefinitions) const;
+	void setCapital(const StateDefinitions& theStateDefinitions) const;
+	void determineIfPartialState(const StateDefinitions& theStateDefinitions) const;
 
 	std::unique_ptr<State> state;
 	BuildingReader buildingReader;

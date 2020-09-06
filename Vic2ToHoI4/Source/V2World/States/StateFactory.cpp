@@ -54,40 +54,42 @@ std::unique_ptr<Vic2::State> Vic2::State::Factory::getUnownedState(
 }
 
 
-void Vic2::State::Factory::setID(const StateDefinitions& theStateDefinitions)
+void Vic2::State::Factory::setID(const StateDefinitions& theStateDefinitions) const
 {
-	if (state->provinceNumbers.empty())
+	const auto& provinceNumbers = state->provinceNumbers;
+	if (provinceNumbers.empty())
 	{
 		return;
 	}
 
-	if (auto foundStateID = theStateDefinitions.getStateID(*state->provinceNumbers.begin()); foundStateID)
+	if (auto foundStateID = theStateDefinitions.getStateID(*provinceNumbers.begin()); foundStateID)
 	{
 		state->stateID = *foundStateID;
 	}
 	else
 	{
-		Log(LogLevel::Warning) << "Could not find the state for Vic2 province " << *state->provinceNumbers.begin() << ".";
+		Log(LogLevel::Warning) << "Could not find the state for Vic2 province " << *provinceNumbers.begin() << ".";
 	}
 }
 
 
-void Vic2::State::Factory::setCapital(const StateDefinitions& theStateDefinitions)
+void Vic2::State::Factory::setCapital(const StateDefinitions& theStateDefinitions) const
 {
 	state->capitalProvince = theStateDefinitions.getCapitalProvince(state->stateID);
 }
 
 
-void Vic2::State::Factory::determineIfPartialState(const StateDefinitions& theStateDefinitions)
+void Vic2::State::Factory::determineIfPartialState(const StateDefinitions& theStateDefinitions) const
 {
-	if (state->provinceNumbers.empty())
+	const auto& provinceNumbers = state->provinceNumbers;
+	if (provinceNumbers.empty())
 	{
 		return;
 	}
 
-	for (auto expectedProvince: theStateDefinitions.getAllProvinces(*state->provinceNumbers.begin()))
+	for (auto expectedProvince: theStateDefinitions.getAllProvinces(*provinceNumbers.begin()))
 	{
-		if (!state->provinceNumbers.count(expectedProvince))
+		if (!provinceNumbers.count(expectedProvince))
 		{
 			state->partialState = true;
 			break;
