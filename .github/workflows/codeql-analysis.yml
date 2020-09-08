@@ -56,7 +56,7 @@ jobs:
 
     - run: |
        git submodule init
-       git cubmodule update --recursive
+       git submodule update --recursive
        cmake -H. -Bbuild
        cmake --build ./build -- -j3
 
