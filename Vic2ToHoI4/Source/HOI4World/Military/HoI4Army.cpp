@@ -32,6 +32,7 @@ DivisionType createDivision(const std::map<std::string, int>& templateRequiremen
 
 } // namespace HoI4
 
+
 void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings,
 	 const int backupLocation,
 	 const double forceMultiplier,

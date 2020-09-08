@@ -766,6 +766,7 @@ default = {
 	substitutes = {
 		# This allows artillery to be used in the place of artillery_brigade
 		artillery = artillery_brigade
+		motorized = light_armor
 	}
 }
 
@@ -1449,5 +1450,6 @@ default = {
 	substitutes = {
 		# This allows artillery to be used in the place of artillery_brigade
 		artillery = artillery_brigade
+		motorized = light_armor
 	}
 }
