@@ -1,0 +1,145 @@
+similar_strength = {
+	custom_trigger_tooltip = {
+		tooltip = similar_strength_tooltip
+		ROOT = { num_divisions < 11 }
+		strength_ratio = { tag = ROOT ratio > 0.6 }
+		strength_ratio = { tag = ROOT ratio < 1 }
+	}
+}
+
+# Used for testing purposes
+border_war_2_to_5_divisions = {
+	custom_trigger_tooltip = {
+		tooltip = both_have_2_to_5_divisions_tooltip
+		ROOT = { AND = { num_divisions > 1 num_divisions < 6 } }
+		AND = { num_divisions > 1 num_divisions < 6 }
+	}
+}
+
+border_war_6_to_10_divisions = {
+	custom_trigger_tooltip = {
+		tooltip = both_have_6_to_10_divisions_tooltip
+		ROOT = { AND = { num_divisions > 5 num_divisions < 11 } }
+		AND = { num_divisions > 5 num_divisions < 11 }
+	}
+}
+
+is_beatable = {
+	custom_trigger_tooltip = {
+		tooltip = is_beatable_tooltip
+		hidden_trigger = {
+			strength_ratio = { tag = ROOT ratio < 1.2 }
+		}
+	}
+}
+
+in_weak_faction = {
+	custom_trigger_tooltip = {
+		tooltip = in_weak_faction_tooltip
+		hidden_trigger = {
+			set_temp_variable = { var = their_faction value = var:num_divisions }
+			if = {
+				limit = { is_in_faction = yes NOT = { in_faction_with = PREV } }
+				all_allied_country = {
+					add_to_temp_variable = { their_faction = var:num_divisions }
+				}
+			}
+			if = {
+				limit = {
+					any_other_country = {
+						is_major = yes
+						has_guaranteed = PREV
+						add_to_temp_variable = { their_faction = var:num_divisions }
+						all_allied_country = {
+							add_to_temp_variable = { their_faction = var:num_divisions }
+						}
+					}
+				}
+			}
+			set_temp_variable = { var = their_enemies value = var:ROOT.num_divisions }
+			all_of_scopes = {
+				array = ROOT.possible_allies@THIS
+				add_to_temp_variable = { their_enemies = var:num_divisions }
+			}
+			if = {
+				limit = { ROOT = { is_in_faction = yes NOT = { in_faction_with = PREV } } }
+				ROOT = {
+					all_allied_country = {
+						add_to_temp_variable = { PREV.their_enemies = var:num_divisions }
+					}
+				}
+			}
+			check_variable = { their_faction < their_enemies }
+		}
+	}
+}
+
+not_allies_or_subjects = {
+	custom_trigger_tooltip = {
+		tooltip = not_allied_or_subject_of_one_another_tooltip
+		NOT = { is_subject_of = ROOT }
+		NOT = { is_in_faction_with = ROOT }
+		ROOT = { NOT = { is_subject_of = PREV } }
+	}
+}
+
+not_in_border_conflict = {
+	custom_trigger_tooltip = {
+		tooltip = not_in_border_conflict_tooltip
+		NOT = { any_owned_state = { has_border_war = yes } }
+		NOT = { any_owned_state = { has_state_flag = border_incident_active } }
+	}
+}
+
+potential_take_core_target = {
+	custom_trigger_tooltip = {
+		tooltip = potential_take_core_target_tooltip
+		hidden_trigger = {
+			any_owned_state = { is_core_of = ROOT }
+		}
+	}
+}
+
+potential_communist_puppet_target = {
+	custom_trigger_tooltip = {
+		tooltip = potential_communist_puppet_target_tooltip
+		hidden_trigger = {
+			ROOT = { has_government = communism }
+			NOT = { has_government = communism }
+		}
+	}
+}
+
+potential_fascist_annex_target = {
+	custom_trigger_tooltip = {
+		tooltip = potential_fascist_annex_target_tooltip
+		hidden_trigger = {
+			ROOT = { has_government = fascism }
+			NOT = { has_government = fascism }
+		}
+	}
+}
+
+potential_take_state_target = {
+	custom_trigger_tooltip = {
+		tooltip = potential_take_state_target_tooltip
+		hidden_trigger = {
+			num_of_controlled_states > 1
+		}
+	}
+}
+
+potential_border_war_target = {
+	custom_trigger_tooltip = {
+		tooltip = potential_border_war_target_tooltip
+		hidden_trigger = {
+			NOT = { capital_scope = { is_on_continent = europe } }
+			OR = {
+				border_war_2_to_5_divisions = yes
+				border_war_6_to_10_divisions = yes
+			}
+			check_variable = { var = num_divisions value = ROOT.num_divisions compare = less_than }
+		}
+	}
+}
+
