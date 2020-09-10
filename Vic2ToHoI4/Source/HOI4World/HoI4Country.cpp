@@ -8,6 +8,8 @@
 #include "../V2World/Party.h"
 #include "../V2World/Relations.h"
 #include "../V2World/World.h"
+#include "../V2World/Ai/Vic2AI.h"
+#include "../V2World/Ai/AIStrategy.h"
 #include "Diplomacy/HoI4War.h"
 #include "HoI4Localisation.h"
 #include "HoI4World.h"
@@ -87,6 +89,7 @@ HoI4::Country::Country(std::string tag,
 
 	convertLeaders(theGraphics);
 	convertRelations(countryMap);
+	convertStrategies(countryMap);
 	convertWars(*srcCountry, countryMap);
 
 	theArmy.addSourceArmies(sourceCountry.getArmies());
@@ -264,6 +267,28 @@ void HoI4::Country::convertRelations(const CountryMapper& countryMap)
 		{
 			HoI4::Relations newRelation(*HoI4Tag, *srcRelation.second);
 			relations.insert(make_pair(*HoI4Tag, std::move(newRelation)));
+		}
+	}
+}
+
+
+void HoI4::Country::convertStrategies(const CountryMapper& countryMap)
+{
+	const auto& srcStrategies = sourceCountry.getAI()->getStrategies();
+	for (const auto& srcStrategy: srcStrategies)
+	{
+		auto strategyType = srcStrategy.getType();
+		if (strategyType == "conquer_prov")
+		{
+			HoI4::AIStrategy newStrategy(srcStrategy);
+			aiStrategies.push_back(newStrategy);
+		}
+		else if (const auto& HoI4Tag = countryMap.getHoI4Tag(srcStrategy.getID()); HoI4Tag)
+		{
+			HoI4::AIStrategy newStrategy(srcStrategy);
+			newStrategy.updateStrategy();
+			newStrategy.setID(*HoI4Tag);
+			aiStrategies.push_back(newStrategy);
 		}
 	}
 }
@@ -950,4 +975,22 @@ double HoI4::Country::calculateInfluenceFactor()
 		// it's displayed ingame as being halfway: 0.5 instead of 0.0000something
 		return std::clamp(influenceFactor, 1.0, 100.0);
 	}
+}
+
+void HoI4::Country::updateConquerStrategy(std::string HoI4Tag, int valueToAdd)
+{
+	auto& theStrategy = conquerStrategies.find(HoI4Tag)->second;
+	theStrategy.increaseValue(valueToAdd);
+}
+
+bool HoI4::Country::canDeclareWar(std::string target)
+{
+	std::set<std::string> allies;
+	if (faction)
+	{
+		allies = faction->getLeader()->getAllies();
+		allies.insert(faction->getLeader()->getTag());
+	}
+
+	return (allies.find(target) == allies.end() && puppets.find(target) == puppets.end() && target != puppetMaster);
 }
