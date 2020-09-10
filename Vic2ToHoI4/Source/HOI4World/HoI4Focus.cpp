@@ -1,6 +1,7 @@
 #include "HoI4Focus.h"
 #include "HoI4Localisation.h"
 #include "ParserHelpers.h"
+#include <regex>
 
 
 
@@ -57,6 +58,10 @@ HoI4Focus::HoI4Focus(std::istream& theStream)
 	registerKeyword("continue_if_invalid", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString continueIfInvalidString(theStream);
 		continueIfInvalid = continueIfInvalidString.getString();
+	});
+	registerKeyword("select_effect", [this](const std::string& unused, std::istream& theStream) {
+		commonItems::stringOfItem selectEffectString(theStream);
+		selectEffect = selectEffectString.getString();
 	});
 	registerKeyword("complete_tooltip", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::stringOfItem completeTooltipString(theStream);
@@ -185,4 +190,18 @@ void HoI4Focus::customizePrerequisite(std::shared_ptr<HoI4Focus> newFocus,
 		}
 	} while (stringPosition < prerequisite.size());
 	newFocus->prerequisites.push_back(prerequisite);
+}
+
+void HoI4Focus::updateFocusElement(std::string& element, std::string_view oldText, std::string_view newText)
+{
+	while (element.find(oldText) != std::string::npos)
+	{
+		element.replace(element.find(oldText), oldText.size(), newText);
+	}
+}
+
+void HoI4Focus::removePlaceholder(std::string& element, const std::string& placeholder)
+{
+	std::regex placeholderLine("\n.*" + placeholder);
+	element = std::regex_replace(element, placeholderLine, "");
 }

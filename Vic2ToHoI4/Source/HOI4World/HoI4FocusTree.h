@@ -81,7 +81,7 @@ class HoI4FocusTree: commonItems::parser
 		 const std::shared_ptr<HoI4::Country>& targetNeighbors,
 		 const std::string& targetName,
 		 const date& startDate,
-		 int numWarsWithNeighbors,
+		 const std::set<std::string>& majorIdeologies,
 		 HoI4::Localisation& hoi4Localisations);
 	void removeFocus(const std::string& id);
 

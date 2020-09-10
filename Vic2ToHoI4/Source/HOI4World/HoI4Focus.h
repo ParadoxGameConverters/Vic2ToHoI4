@@ -30,6 +30,8 @@ class HoI4Focus: commonItems::parser
 		 const std::string& target,
 		 HoI4::Localisation& localisation) const;
 
+	void updateFocusElement(std::string& element, std::string_view oldText, std::string_view newText);
+	void removePlaceholder(std::string& element, const std::string& placeholder);
 	std::string id;
 	std::string icon;
 	std::string text;
@@ -44,6 +46,7 @@ class HoI4Focus: commonItems::parser
 	std::string available;
 	std::string cancelIfInvalid;
 	std::string continueIfInvalid;
+	std::string selectEffect;
 	std::string completeTooltip;
 	std::string completionReward;
 	std::string aiWillDo;

@@ -46,6 +46,10 @@ std::ostream& HoI4::operator<<(std::ostream& output, const SharedFocus& focus)
 	{
 		output << "\tcontinue_if_invalid = " << focus.continueIfInvalid << "\n";
 	}
+	if (!focus.selectEffect.empty())
+	{
+		output << "\tselect_effect " << focus.selectEffect << "\n";
+	}
 	if (!focus.completeTooltip.empty())
 	{
 		output << "\tcomplete_tooltip " << focus.completeTooltip << "\n";
