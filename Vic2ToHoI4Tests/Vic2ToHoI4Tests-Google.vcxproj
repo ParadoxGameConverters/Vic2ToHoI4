@@ -56,7 +56,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategories.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsInCategory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4AIStrategy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\CapitulationEvents.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\LarOccupationEvents.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.cpp" />
@@ -88,7 +87,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regions\Regions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regions\RegionsFactory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\AiStrategy\OutAiStrategy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
@@ -270,8 +268,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4States.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Agreement.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\AIStrategy.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\Vic2AI.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Army.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CommonCountryData.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Country.cpp" />

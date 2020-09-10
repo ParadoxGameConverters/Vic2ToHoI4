@@ -1,5 +1,4 @@
 #include "Country.h"
-#include "Ai/Vic2AI.h"
 #include "CultureGroups.h"
 #include "Inventions.h"
 #include "Leader.h"
@@ -143,9 +142,6 @@ Vic2::Country::Country(const std::string& theTag,
 		Relations* rel = new Relations(countryTag, theStream);
 		relations.insert(make_pair(rel->getTag(), rel));
 	});
-	registerKeyword("ai", [this](const std::string& unused, std::istream& theStream) {
-		vic2ai = new Vic2AI(theStream);
-	});
 	registerKeyword("army", [this](const std::string& type, std::istream& theStream) {
 		Army army(type, theStream);
 		armies.push_back(army);
@@ -178,7 +174,6 @@ Vic2::Country::Country(const std::string& theTag,
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
-	clearRegisteredKeywords();
 }
 
 

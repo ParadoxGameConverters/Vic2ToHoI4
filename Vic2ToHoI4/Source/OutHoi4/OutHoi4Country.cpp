@@ -8,7 +8,6 @@
 #include "../Mappers/GraphicsMapper.h"
 #include "../V2World/Country.h"
 #include "Date.h"
-#include "AiStrategy/OutAiStrategy.h"
 #include "Leaders/OutAdmiral.h"
 #include "Leaders/OutAdvisor.h"
 #include "Leaders/OutGeneral.h"
@@ -203,7 +202,6 @@ void HoI4::outputCountry(const std::set<Advisor>& ideologicalMinisters,
 		outputOOB(divisionTemplates, theCountry, theConfiguration);
 		outputCommonCountryFile(theCountry, theConfiguration);
 		outputAdvisorIdeas(theCountry.getTag(), ideologicalMinisters, theConfiguration);
-		outputAIStrategy(theCountry, theConfiguration);
 
 		if (auto nationalFocus = theCountry.getNationalFocus(); nationalFocus)
 		{
