@@ -2,7 +2,8 @@
 
 
 
-void HoI4::ScriptedLocalisations::initialize(const std::string& strongestNavyTag, const std::string& secondStrongestNavyTag)
+void HoI4::ScriptedLocalisations::addNavyScriptedLocalisations(const std::string& strongestNavyTag,
+	 const std::string& secondStrongestNavyTag)
 {
 	ScriptedLocalisation GetStrengthRatioBritain;
 	GetStrengthRatioBritain.setName("GetStrengthRatioBritain");
@@ -247,21 +248,17 @@ void HoI4::ScriptedLocalisations::initialize(const std::string& strongestNavyTag
 }
 
 
-void HoI4::ScriptedLocalisations::giveAdjectiveLocalisation(
-	const std::string& language,
-	ScriptedLocalisation&& localisation
-)
+void HoI4::ScriptedLocalisations::giveAdjectiveLocalisation(const std::string& language,
+	 ScriptedLocalisation&& localisation)
 {
-	if (
-		auto languageAdjectives = adjectiveLocalisations.find(language);
-		languageAdjectives != adjectiveLocalisations.end()
-		)
+	if (auto languageAdjectives = adjectiveLocalisations.find(language);
+		 languageAdjectives != adjectiveLocalisations.end())
 	{
 		languageAdjectives->second.push_back(localisation);
 	}
 	else
 	{
-		std::vector<ScriptedLocalisation> localisations{ localisation };
+		std::vector<ScriptedLocalisation> localisations{localisation};
 		adjectiveLocalisations.insert(std::make_pair(language, localisations));
 	}
 }

@@ -648,7 +648,7 @@ void HoI4::World::setupNavalTreaty()
 	std::optional<std::pair<std::string, std::string>> strongestGpNavies = getStrongestNavyGps();
 	if (strongestGpNavies)
 	{
-		scriptedLocalisations.initialize(strongestGpNavies->first, strongestGpNavies->second);
+		scriptedLocalisations.addNavyScriptedLocalisations(strongestGpNavies->first, strongestGpNavies->second);
 		hoi4Localisations->addDecisionLocalisation(strongestGpNavies->first + "_Naval_treaty_nation",
 			 "@" + strongestGpNavies->first + " [" + strongestGpNavies->first + ".GetName]");
 		hoi4Localisations->addDecisionLocalisation(strongestGpNavies->second + "_Naval_treaty_nation",
