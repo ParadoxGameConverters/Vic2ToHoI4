@@ -185,7 +185,7 @@ void HoI4::OutputWorld(const World& world,
 	outputLeaderTraits(world.getIdeologicalLeaderTraits(), world.getMajorIdeologies(), outputName);
 	outIdeas(world.getTheIdeas(), world.getMajorIdeologies(), outputName);
 	outputBookmarks(world.getGreatPowers(), world.getCountries(), outputName);
-	outputScriptedLocalisations(outputName, world.getScriptedLocalisations());
+	outputScriptedLocalisations(outputName, *world.getScriptedLocalisations());
 	outputScriptedTriggers(world.getScriptedTriggers(), outputName);
 	outputDifficultySettings(world.getGreatPowers(), outputName);
 	outputGameRules(world.getGameRules(), outputName);
