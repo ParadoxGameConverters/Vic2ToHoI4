@@ -80,3 +80,20 @@ TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationTests, TextCanBeImported
 		 "\t}",
 		 theLocalisation->getTexts()[1]);
 }
+
+
+TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationTests, TextsCanBeFiltered)
+{
+	HoI4::ScriptedLocalisation theLocalisation;
+	theLocalisation.addText("test");
+	theLocalisation.addText("test2");
+	theLocalisation.addText("test3");
+
+	theLocalisation.filterTexts([](const std::string& a) {
+		return a == "test2";
+	});
+
+	ASSERT_EQ(2, theLocalisation.getTexts().size());
+	ASSERT_EQ("test", theLocalisation.getTexts()[0]);
+	ASSERT_EQ("test3", theLocalisation.getTexts()[1]);
+}
