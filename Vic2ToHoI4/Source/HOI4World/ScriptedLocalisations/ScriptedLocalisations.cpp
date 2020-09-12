@@ -260,7 +260,7 @@ void HoI4::ScriptedLocalisations::giveAdjectiveLocalisation(const std::string& l
 	else
 	{
 		std::vector<ScriptedLocalisation> localisations{localisation};
-		adjectiveLocalisations.insert(std::make_pair(language, localisations));
+		adjectiveLocalisations.emplace(std::make_pair(language, localisations));
 	}
 }
 
