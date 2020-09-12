@@ -1,4 +1,5 @@
 #include "ScriptedLocalisations.h"
+#include <regex>
 
 
 
@@ -260,5 +261,24 @@ void HoI4::ScriptedLocalisations::giveAdjectiveLocalisation(const std::string& l
 	{
 		std::vector<ScriptedLocalisation> localisations{localisation};
 		adjectiveLocalisations.insert(std::make_pair(language, localisations));
+	}
+}
+
+
+void HoI4::ScriptedLocalisations::filterIdeologyLocalisations(const std::set<std::string>& majorIdeologies)
+{
+	for (auto& localisation: ideologyLocalisations)
+	{
+		localisation.filterTexts([majorIdeologies](const std::string& text) {
+			std::smatch match;
+			for (const auto& ideology: majorIdeologies)
+			{
+				if (std::regex_search(text, match, std::regex(ideology)))
+				{
+					return false;
+				}
+			}
+			return true;
+		});
 	}
 }
