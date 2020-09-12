@@ -37,6 +37,7 @@
 #include "OperativeNames/OperativeNamesFactory.h"
 #include "ParserHelpers.h"
 #include "Regions/RegionsFactory.h"
+#include "ScriptedLocalisations/ScriptedLocalisationsFactory.h"
 #include "ScriptedTriggers/ScriptedTriggersUpdater.h"
 #include "ShipTypes/PossibleShipVariants.h"
 #include "States/DefaultState.h"
@@ -102,12 +103,14 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 
 	determineGreatPowers();
 
+	scriptedLocalisations = ScriptedLocalisations::Factory{}.getScriptedLocalisations();
 	setupNavalTreaty();
 
 	importLeaderTraits();
 	convertGovernments(vic2Localisations, theConfiguration.getDebug());
 	ideologies = std::make_unique<Ideologies>(theConfiguration);
 	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
+	scriptedLocalisations->filterIdeologyLocalisations(ideologies->getMajorIdeologies());
 	genericFocusTree.addGenericFocusTree(ideologies->getMajorIdeologies());
 	importIdeologicalMinisters();
 	convertParties(vic2Localisations);
@@ -141,7 +144,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 
 	addFocusTrees();
 	adjustResearchFocuses();
-	hoi4Localisations->generateCustomLocalisations(scriptedLocalisations, ideologies->getMajorIdeologies());
+	hoi4Localisations->generateCustomLocalisations(*scriptedLocalisations, ideologies->getMajorIdeologies());
 
 	setSphereLeaders();
 	processInfluence();
@@ -648,7 +651,7 @@ void HoI4::World::setupNavalTreaty()
 	std::optional<std::pair<std::string, std::string>> strongestGpNavies = getStrongestNavyGps();
 	if (strongestGpNavies)
 	{
-		scriptedLocalisations.initialize(strongestGpNavies->first, strongestGpNavies->second);
+		scriptedLocalisations->addNavyScriptedLocalisations(strongestGpNavies->first, strongestGpNavies->second);
 		hoi4Localisations->addDecisionLocalisation(strongestGpNavies->first + "_Naval_treaty_nation",
 			 "@" + strongestGpNavies->first + " [" + strongestGpNavies->first + ".GetName]");
 		hoi4Localisations->addDecisionLocalisation(strongestGpNavies->second + "_Naval_treaty_nation",

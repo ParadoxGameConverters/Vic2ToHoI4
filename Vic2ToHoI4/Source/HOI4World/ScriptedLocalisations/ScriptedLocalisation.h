@@ -3,29 +3,35 @@
 
 
 
+#include <functional>
 #include <string>
 #include <vector>
 
 
-
 namespace HoI4
 {
-	
+
 class ScriptedLocalisation
 {
-	public:
-		void setName(const std::string& _name) { name = _name; }
-		void addText(const std::string& text) { texts.push_back(text); }
+  public:
+	class Factory;
+	void setName(const std::string& _name) { name = _name; }
+	void addText(const std::string& text) { texts.push_back(text); }
 
-		[[nodiscard]] std::string getName() const { return name; }
-		[[nodiscard]] std::vector<std::string> getTexts() const { return texts; }
-	
-	private:
-		std::string name;
-		std::vector<std::string> texts;
+	void filterTexts(const std::function<bool(const std::string&)>& removeCondition)
+	{
+		texts.erase(std::remove_if(texts.begin(), texts.end(), removeCondition), texts.end());
+	}
+
+	[[nodiscard]] std::string getName() const { return name; }
+	[[nodiscard]] std::vector<std::string> getTexts() const { return texts; }
+
+  private:
+	std::string name;
+	std::vector<std::string> texts;
 };
 
-}
+} // namespace HoI4
 
 
 

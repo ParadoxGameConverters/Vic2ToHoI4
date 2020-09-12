@@ -1136,6 +1136,12 @@
     <ClCompile Include="Vic2WorldTests\States\StateLanguageCategoriesFactoryTests.cpp">
       <Filter>Vic2WorldTests\States</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedLocalisations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedLocalisations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

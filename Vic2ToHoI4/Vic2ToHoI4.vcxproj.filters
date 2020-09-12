@@ -976,6 +976,12 @@
     <ClCompile Include="Source\V2World\States\StateLanguageCategoriesFactory.cpp">
       <Filter>Vic2World\States</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationFactory.cpp">
+      <Filter>HoI4World\ScriptedLocalisations</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.cpp">
+      <Filter>HoI4World\ScriptedLocalisations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1853,6 +1859,12 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\States\StateBuilder.h">
       <Filter>Vic2World\States</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationFactory.h">
+      <Filter>HoI4World\ScriptedLocalisations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.h">
+      <Filter>HoI4World\ScriptedLocalisations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

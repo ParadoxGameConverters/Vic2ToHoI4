@@ -1,8 +1,10 @@
 #include "ScriptedLocalisations.h"
+#include <regex>
 
 
 
-void HoI4::ScriptedLocalisations::initialize(const std::string& strongestNavyTag, const std::string& secondStrongestNavyTag)
+void HoI4::ScriptedLocalisations::addNavyScriptedLocalisations(const std::string& strongestNavyTag,
+	 const std::string& secondStrongestNavyTag)
 {
 	ScriptedLocalisation GetStrengthRatioBritain;
 	GetStrengthRatioBritain.setName("GetStrengthRatioBritain");
@@ -247,21 +249,36 @@ void HoI4::ScriptedLocalisations::initialize(const std::string& strongestNavyTag
 }
 
 
-void HoI4::ScriptedLocalisations::giveAdjectiveLocalisation(
-	const std::string& language,
-	ScriptedLocalisation&& localisation
-)
+void HoI4::ScriptedLocalisations::giveAdjectiveLocalisation(const std::string& language,
+	 ScriptedLocalisation&& localisation)
 {
-	if (
-		auto languageAdjectives = adjectiveLocalisations.find(language);
-		languageAdjectives != adjectiveLocalisations.end()
-		)
+	if (auto languageAdjectives = adjectiveLocalisations.find(language);
+		 languageAdjectives != adjectiveLocalisations.end())
 	{
 		languageAdjectives->second.push_back(localisation);
 	}
 	else
 	{
-		std::vector<ScriptedLocalisation> localisations{ localisation };
-		adjectiveLocalisations.insert(std::make_pair(language, localisations));
+		std::vector<ScriptedLocalisation> localisations{localisation};
+		adjectiveLocalisations.emplace(std::make_pair(language, localisations));
+	}
+}
+
+
+void HoI4::ScriptedLocalisations::filterIdeologyLocalisations(const std::set<std::string>& majorIdeologies)
+{
+	for (auto& localisation: ideologyLocalisations)
+	{
+		localisation.filterTexts([majorIdeologies](const std::string& text) {
+			std::smatch match;
+			for (const auto& ideology: majorIdeologies)
+			{
+				if (std::regex_search(text, match, std::regex(ideology)))
+				{
+					return false;
+				}
+			}
+			return true;
+		});
 	}
 }

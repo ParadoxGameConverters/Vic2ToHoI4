@@ -243,7 +243,7 @@ class World: commonItems::parser
 	CoastalProvinces theCoastalProvinces;
 	std::unique_ptr<MapData> theMapData;
 
-	ScriptedLocalisations scriptedLocalisations;
+	std::unique_ptr<ScriptedLocalisations> scriptedLocalisations;
 	ScriptedTriggers scriptedTriggers;
 
 	std::unique_ptr<GameRules> gameRules;
