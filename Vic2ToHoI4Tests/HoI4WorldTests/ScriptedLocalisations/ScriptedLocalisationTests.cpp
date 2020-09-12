@@ -61,17 +61,22 @@ TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationTests, TextCanBeImported
 	input << "\t\tlocalization_key = FRLOC_FASCISME\n";
 	input << "\t}\n";
 	input << "\ttext = {\n";
-	input << "\ttrigger = { has_government = communism }\n";
-	input << "\t\tlocalization_key = FRLOC_COMMUNISME}\n";
+	input << "\t\ttrigger = { has_government = communism }\n";
+	input << "\t\tlocalization_key = FRLOC_COMMUNISME\n";
 	input << "\t}";
 	const auto theLocalisation = HoI4::ScriptedLocalisation::Factory{}.getScriptedLocalisation(input);
 
 	ASSERT_EQ(2, theLocalisation->getTexts().size());
 	ASSERT_EQ(
-		 "{trigger ={has_government =fascism }localization_key =FRLOC_FASCISME\n"
-		 "}",
+		 "= {\n"
+		 "\t\ttrigger = { has_government = fascism }\n"
+		 "\t\tlocalization_key = FRLOC_FASCISME\n"
+		 "\t}",
 		 theLocalisation->getTexts()[0]);
 	ASSERT_EQ(
-		 "{trigger ={has_government =communism }localization_key =FRLOC_COMMUNISME}",
+		 "= {\n"
+		 "\t\ttrigger = { has_government = communism }\n"
+		 "\t\tlocalization_key = FRLOC_COMMUNISME\n"
+		 "\t}",
 		 theLocalisation->getTexts()[1]);
 }

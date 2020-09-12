@@ -9,7 +9,7 @@ HoI4::ScriptedLocalisation::Factory::Factory()
 		scriptedLocalisation->name = commonItems::singleString{theStream}.getString();
 	});
 	registerKeyword("text", [this](const std::string& unused, std::istream& theStream) {
-		scriptedLocalisation->texts.push_back(commonItems::singleItem(unused, theStream));
+		scriptedLocalisation->texts.push_back(commonItems::stringOfItem(theStream).getString());
 	});
 }
 

@@ -10,13 +10,18 @@ void HoI4::outputScriptedLocalisations(const std::string& outputName,
 	std::ofstream scriptedLocalisationsFile(
 		 "output/" + outputName + "/common/scripted_localisation/00_scripted_localisation.txt",
 		 std::ofstream::app);
-
 	for (const auto& localisation: scriptedLocalisations.getLocalisations())
 	{
 		scriptedLocalisationsFile << localisation;
 	}
-
 	scriptedLocalisationsFile.close();
+
+	std::ofstream ideologyLocalisationsFile("output/" + outputName + "/common/scripted_localisation/ideologies.txt");
+	for (const auto& localisation: scriptedLocalisations.getIdeologyLocalisations())
+	{
+		ideologyLocalisationsFile << localisation;
+	}
+	ideologyLocalisationsFile.close();
 
 	for (const auto& localisationsInLanguage: scriptedLocalisations.getAdjectiveLocalisations())
 	{

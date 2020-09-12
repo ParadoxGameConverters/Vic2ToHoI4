@@ -15,18 +15,18 @@ namespace HoI4
 class ScriptedLocalisations
 {
   public:
+	class Factory;
 	void addNavyScriptedLocalisations(const std::string& strongestNavyTag, const std::string& secondStrongestNavyTag);
 
 	void giveAdjectiveLocalisation(const std::string& language, ScriptedLocalisation&& localisation);
 
-	[[nodiscard]] std::vector<ScriptedLocalisation> getLocalisations() const { return scriptedLocalisations; }
-	[[nodiscard]] std::map<std::string, std::vector<ScriptedLocalisation>> getAdjectiveLocalisations() const
-	{
-		return adjectiveLocalisations;
-	}
+	[[nodiscard]] const auto& getLocalisations() const { return scriptedLocalisations; }
+	[[nodiscard]] const auto& getIdeologyLocalisations() const { return ideologyLocalisations; }
+	[[nodiscard]] const auto& getAdjectiveLocalisations() const { return adjectiveLocalisations; }
 
   private:
 	std::vector<ScriptedLocalisation> scriptedLocalisations;
+	std::vector<ScriptedLocalisation> ideologyLocalisations;
 	std::map<std::string, std::vector<ScriptedLocalisation>> adjectiveLocalisations;
 };
 

@@ -178,6 +178,7 @@
     <ClCompile Include="Source\HOI4World\Regions\Regions.cpp" />
     <ClCompile Include="Source\HOI4World\Regions\RegionsFactory.cpp" />
     <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategory.cpp" />
@@ -448,6 +449,7 @@
     <ClInclude Include="Source\HOI4World\Regions\Regions.h" />
     <ClInclude Include="Source\HOI4World\Regions\RegionsFactory.h" />
     <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationFactory.h" />
+    <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.h" />
     <ClInclude Include="Source\HOI4World\SharedFocus.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategories.h" />

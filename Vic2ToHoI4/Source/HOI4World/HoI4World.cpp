@@ -37,6 +37,7 @@
 #include "OperativeNames/OperativeNamesFactory.h"
 #include "ParserHelpers.h"
 #include "Regions/RegionsFactory.h"
+#include "ScriptedLocalisations/ScriptedLocalisationsFactory.h"
 #include "ScriptedTriggers/ScriptedTriggersUpdater.h"
 #include "ShipTypes/PossibleShipVariants.h"
 #include "States/DefaultState.h"
@@ -102,7 +103,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 
 	determineGreatPowers();
 
-	scriptedLocalisations = std::make_unique<ScriptedLocalisations>();
+	scriptedLocalisations = ScriptedLocalisations::Factory{}.getScriptedLocalisations();
 	setupNavalTreaty();
 
 	importLeaderTraits();
