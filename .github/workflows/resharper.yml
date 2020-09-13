@@ -7,11 +7,10 @@ jobs:
   resharper:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout submodules
-        uses: textbook/git-checkout-submodule-action@master
-
       - name: checkout
         uses: actions/checkout@v2
+        with:
+          submodules: recursive
       
       - name: resharper
         uses: glassechidna/resharper-action@master
