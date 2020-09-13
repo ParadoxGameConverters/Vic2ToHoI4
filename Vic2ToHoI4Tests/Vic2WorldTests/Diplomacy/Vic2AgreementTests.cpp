@@ -6,87 +6,95 @@
 
 TEST(Vic2World_Vic2AgreementTests, TypeNotSetWhenNotGivenInput)
 {
-	std::istringstream input("");
-	auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("", input);
-	ASSERT_EQ(std::string(""), newAgreement->getType());
+	std::stringstream input;
+	const auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("", input);
+
+	ASSERT_TRUE(newAgreement->getType().empty());
 }
 
 
 TEST(Vic2World_Vic2AgreementTests, TypeSetWhenGivenInput)
 {
-	std::istringstream input(
-		 "{\n"
-		 "\t\tfirst=\"LUA\"\n"
-		 "\t\tsecond=\"MKS\"\n"
-		 "\t\tend_date=\"1936.1.1\""
-		 "\t\tstart_date=\"1910.7.1\""
-		 "\t}");
-	auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
-	ASSERT_EQ(std::string("alliance"), newAgreement->getType());
+	std::stringstream input;
+	input << "= {\n";
+	input << "\t\tfirst=\"LUA\"\n";
+	input << "\t\tsecond=\"MKS\"\n";
+	input << "\t\tend_date=\"1936.1.1\"";
+	input << "\t\tstart_date=\"1910.7.1\"";
+	input << "\t}";
+	const auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
+
+	ASSERT_EQ("alliance", newAgreement->getType());
 }
 
 
 TEST(Vic2World_Vic2AgreementTests, CountryOneNotSetWhenNotGivenInput)
 {
-	std::istringstream input("");
-	auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
-	ASSERT_EQ(std::string(""), newAgreement->getCountry1());
+	std::stringstream input;
+	const auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
+
+	ASSERT_TRUE(newAgreement->getCountry1().empty());
 }
 
 
 TEST(Vic2World_Vic2AgreementTests, CountryOneSetWhenGivenInput)
 {
-	std::istringstream input(
-		 "{\n"
-		 "\t\tfirst=\"LUA\"\n"
-		 "\t\tsecond=\"MKS\"\n"
-		 "\t\tend_date=\"1936.1.1\""
-		 "\t\tstart_date=\"1910.7.1\""
-		 "\t}");
-	auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
-	ASSERT_EQ(std::string("LUA"), newAgreement->getCountry1());
+	std::stringstream input;
+	input << "= {\n";
+	input << "\t\tfirst=\"LUA\"\n";
+	input << "\t\tsecond=\"MKS\"\n";
+	input << "\t\tend_date=\"1936.1.1\"";
+	input << "\t\tstart_date=\"1910.7.1\"";
+	input << "\t}";
+	const auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
+
+	ASSERT_EQ("LUA", newAgreement->getCountry1());
 }
 
 
 TEST(Vic2World_Vic2AgreementTests, CountryTwoNotSetWhenNotGivenInput)
 {
-	std::istringstream input("");
-	auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
-	ASSERT_EQ(std::string(""), newAgreement->getCountry2());
+	std::stringstream input;
+	const auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
+
+	ASSERT_TRUE(newAgreement->getCountry2().empty());
 }
 
 
 TEST(Vic2World_Vic2AgreementTests, CountryTwoSetWhenGivenInput)
 {
-	std::istringstream input(
-		 "{\n"
-		 "\t\tfirst=\"LUA\"\n"
-		 "\t\tsecond=\"MKS\"\n"
-		 "\t\tend_date=\"1936.1.1\""
-		 "\t\tstart_date=\"1910.7.1\""
-		 "\t}");
-	auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
+	std::stringstream input;
+	input << "= {\n";
+	input << "\t\tfirst=\"LUA\"\n";
+	input << "\t\tsecond=\"MKS\"\n";
+	input << "\t\tend_date=\"1936.1.1\"";
+	input << "\t\tstart_date=\"1910.7.1\"";
+	input << "\t}";
+	const auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
+
 	ASSERT_EQ(std::string("MKS"), newAgreement->getCountry2());
 }
 
 
 TEST(Vic2World_Vic2AgreementTests, DateNotSetWhenNotGivenInput)
 {
-	std::istringstream input("");
-	auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
-	ASSERT_TRUE(date() == newAgreement->getDate());
+	std::stringstream input;
+	const auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
+
+	ASSERT_EQ(date(), newAgreement->getDate());
 }
 
 
 TEST(Vic2World_Vic2AgreementTests, DateSetWhenGivenInput)
 {
-	std::istringstream input(
-		 "{\n"
-		 "\t\tfirst=\"LUA\"\n"
-		 "\t\tsecond=\"MKS\"\n"
-		 "\t\tend_date=\"1936.1.1\""
-		 "\t\tstart_date=\"1910.7.1\""
-		 "\t}");
-	auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
-	ASSERT_TRUE(date("1910.7.1") == newAgreement->getDate());
+	std::stringstream input;
+	input << "{\n";
+	input << "\t\tfirst=\"LUA\"\n";
+	input << "\t\tsecond=\"MKS\"\n";
+	input << "\t\tend_date=\"1936.1.1\"";
+	input << "\t\tstart_date=\"1910.7.1\"";
+	input << "\t}";
+	const auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
+
+	ASSERT_EQ(date("1910.7.1"), newAgreement->getDate());
 }

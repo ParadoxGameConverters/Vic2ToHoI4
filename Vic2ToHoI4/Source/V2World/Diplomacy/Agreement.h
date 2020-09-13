@@ -1,5 +1,5 @@
-#ifndef VIC2_AGREEMENT_H_
-#define VIC2_AGREEMENT_H_
+#ifndef VIC2_AGREEMENT_H
+#define VIC2_AGREEMENT_H
 
 
 
@@ -16,15 +16,15 @@ class Agreement
   public:
 	class Factory;
 
-	std::string getType() const { return type; }
-	std::string getCountry1() const { return country1; }
-	std::string getCountry2() const { return country2; }
-	date getDate() const { return startDate; }
+	[[nodiscard]] const auto& getType() const { return type; }
+	[[nodiscard]] const auto& getCountry1() const { return country1; }
+	[[nodiscard]] const auto& getCountry2() const { return country2; }
+	[[nodiscard]] const auto& getDate() const { return startDate; }
 
   private:
-	std::string type = "";
-	std::string country1 = "";
-	std::string country2 = "";
+	std::string type;
+	std::string country1;
+	std::string country2;
 	date startDate;
 };
 
