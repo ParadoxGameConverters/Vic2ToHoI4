@@ -500,12 +500,12 @@ void HoI4::World::convertAgreements()
 {
 	for (auto agreement: sourceWorld->getDiplomacy()->getAgreements())
 	{
-		auto possibleHoI4Tag1 = countryMap.getHoI4Tag(agreement->getCountry1());
+		auto possibleHoI4Tag1 = countryMap.getHoI4Tag(agreement.getCountry1());
 		if (!possibleHoI4Tag1)
 		{
 			continue;
 		}
-		auto possibleHoI4Tag2 = countryMap.getHoI4Tag(agreement->getCountry2());
+		auto possibleHoI4Tag2 = countryMap.getHoI4Tag(agreement.getCountry2());
 		if (!possibleHoI4Tag2)
 		{
 			continue;
@@ -526,13 +526,13 @@ void HoI4::World::convertAgreements()
 			continue;
 		}
 
-		if (agreement->getType() == "alliance")
+		if (agreement.getType() == "alliance")
 		{
 			HoI4Country1->second->editAllies().insert(*possibleHoI4Tag2);
 			HoI4Country2->second->editAllies().insert(*possibleHoI4Tag1);
 		}
 
-		if (agreement->getType() == "vassal")
+		if (agreement.getType() == "vassal")
 		{
 			HoI4Country1->second->addPuppet(*possibleHoI4Tag2);
 			HoI4Country2->second->setPuppetMaster(*possibleHoI4Tag1);
