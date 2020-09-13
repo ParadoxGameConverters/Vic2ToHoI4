@@ -5,7 +5,7 @@
 #include "CommonCountryData.h"
 #include "Country.h"
 #include "Date.h"
-#include "Diplomacy.h"
+#include "Diplomacy/Diplomacy.h"
 #include "Inventions.h"
 #include "Issues/Issues.h"
 #include "Issues/IssuesFactory.h"

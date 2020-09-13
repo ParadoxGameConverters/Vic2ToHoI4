@@ -22,7 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "gtest/gtest.h"
-#include "../Vic2ToHoI4/Source/V2World/Agreement.h"
+#include "../Vic2ToHoI4/Source/V2World/Diplomacy/Agreement.h"
 
 
 

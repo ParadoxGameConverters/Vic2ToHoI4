@@ -61,9 +61,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Leader.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Relations.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
     <ClCompile Include="..\common_items\targa.cpp">
       <Filter>Vic2ToHoI4 files</Filter>
     </ClCompile>
@@ -73,20 +70,11 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CommonCountryData.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Party.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Agreement.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
-    <ClCompile Include="Vic2WorldTests\Vic2AgreementTests.cpp">
-      <Filter>Vic2WorldTests</Filter>
     </ClCompile>
     <ClCompile Include="..\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="..\googletest\googletest\src\gtest-all.cc" />
@@ -1142,6 +1130,18 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ScriptedLocalisations</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\Agreement.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\Diplomacy.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\Relations.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Diplomacy\Vic2AgreementTests.cpp">
+      <Filter>Vic2WorldTests\Diplomacy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1425,6 +1425,12 @@
     </Filter>
     <Filter Include="HoI4WorldTests\Regions">
       <UniqueIdentifier>{ed126fa1-bb3a-456e-bed8-954187fed52d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Diplomacy">
+      <UniqueIdentifier>{b7fc51d2-5f28-4781-ac33-36a635d07323}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\Diplomacy">
+      <UniqueIdentifier>{2d4fb8d5-a008-4dd4-b463-16571347b289}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
