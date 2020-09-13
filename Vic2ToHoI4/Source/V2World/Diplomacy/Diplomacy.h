@@ -3,10 +3,7 @@
 
 
 
-#include "Date.h"
-#include "Parser.h"
 #include "Agreement.h"
-#include <memory>
 #include <vector>
 
 
@@ -14,18 +11,14 @@
 namespace Vic2
 {
 
-class Diplomacy: commonItems::parser
+class Diplomacy
 {
   public:
-	Diplomacy() = default;
-	explicit Diplomacy(std::istream& theStream);
+	class Factory;
 
-	const auto& getAgreements() const { return agreements; }
+	[[nodiscard]] const auto& getAgreements() const { return agreements; }
 
   private:
-	Diplomacy(const Diplomacy&) = delete;
-	Diplomacy& operator=(const Diplomacy&) = delete;
-
 	std::vector<Agreement> agreements;
 };
 

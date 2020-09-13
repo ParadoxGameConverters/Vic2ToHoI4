@@ -4,7 +4,7 @@
 
 
 
-TEST(Vic2World_Vic2AgreementTests, TypeNotSetWhenNotGivenInput)
+TEST(Vic2World_AgreementTests, TypeNotSetWhenNotGivenInput)
 {
 	std::stringstream input;
 	const auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("", input);
@@ -13,7 +13,7 @@ TEST(Vic2World_Vic2AgreementTests, TypeNotSetWhenNotGivenInput)
 }
 
 
-TEST(Vic2World_Vic2AgreementTests, TypeSetWhenGivenInput)
+TEST(Vic2World_AgreementTests, TypeSetWhenGivenInput)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -28,7 +28,7 @@ TEST(Vic2World_Vic2AgreementTests, TypeSetWhenGivenInput)
 }
 
 
-TEST(Vic2World_Vic2AgreementTests, CountryOneNotSetWhenNotGivenInput)
+TEST(Vic2World_AgreementTests, CountryOneNotSetWhenNotGivenInput)
 {
 	std::stringstream input;
 	const auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
@@ -37,7 +37,7 @@ TEST(Vic2World_Vic2AgreementTests, CountryOneNotSetWhenNotGivenInput)
 }
 
 
-TEST(Vic2World_Vic2AgreementTests, CountryOneSetWhenGivenInput)
+TEST(Vic2World_AgreementTests, CountryOneSetWhenGivenInput)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -52,7 +52,7 @@ TEST(Vic2World_Vic2AgreementTests, CountryOneSetWhenGivenInput)
 }
 
 
-TEST(Vic2World_Vic2AgreementTests, CountryTwoNotSetWhenNotGivenInput)
+TEST(Vic2World_AgreementTests, CountryTwoNotSetWhenNotGivenInput)
 {
 	std::stringstream input;
 	const auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
@@ -61,7 +61,7 @@ TEST(Vic2World_Vic2AgreementTests, CountryTwoNotSetWhenNotGivenInput)
 }
 
 
-TEST(Vic2World_Vic2AgreementTests, CountryTwoSetWhenGivenInput)
+TEST(Vic2World_AgreementTests, CountryTwoSetWhenGivenInput)
 {
 	std::stringstream input;
 	input << "= {\n";
@@ -76,7 +76,7 @@ TEST(Vic2World_Vic2AgreementTests, CountryTwoSetWhenGivenInput)
 }
 
 
-TEST(Vic2World_Vic2AgreementTests, DateNotSetWhenNotGivenInput)
+TEST(Vic2World_AgreementTests, DateNotSetWhenNotGivenInput)
 {
 	std::stringstream input;
 	const auto newAgreement = Vic2::Agreement::Factory{}.getAgreement("alliance", input);
@@ -85,7 +85,7 @@ TEST(Vic2World_Vic2AgreementTests, DateNotSetWhenNotGivenInput)
 }
 
 
-TEST(Vic2World_Vic2AgreementTests, DateSetWhenGivenInput)
+TEST(Vic2World_AgreementTests, DateSetWhenGivenInput)
 {
 	std::stringstream input;
 	input << "{\n";

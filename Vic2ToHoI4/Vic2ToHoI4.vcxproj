@@ -364,7 +364,7 @@
     <ClCompile Include="Source\Mappers\TechMapper.cpp" />
     <ClCompile Include="Source\Mappers\VersionParser\VersionParser.cpp" />
     <ClCompile Include="Source\V2World\Diplomacy\AgreementFactory.cpp" />
-    <ClCompile Include="Source\V2World\Diplomacy\Diplomacy.cpp" />
+    <ClCompile Include="Source\V2World\Diplomacy\DiplomacyFactory.cpp" />
     <ClCompile Include="Source\V2World\Diplomacy\Relations.cpp" />
     <ClCompile Include="Source\V2World\Issues\IssuesFactory.cpp" />
     <ClCompile Include="Source\V2World\Mods\ModFactory.cpp" />
@@ -658,6 +658,7 @@
     <ClInclude Include="Source\V2World\Diplomacy\Agreement.h" />
     <ClInclude Include="Source\V2World\Diplomacy\AgreementFactory.h" />
     <ClInclude Include="Source\V2World\Diplomacy\Diplomacy.h" />
+    <ClInclude Include="Source\V2World\Diplomacy\DiplomacyFactory.h" />
     <ClInclude Include="Source\V2World\Diplomacy\Relations.h" />
     <ClInclude Include="Source\V2World\Inventions.h" />
     <ClInclude Include="Source\V2World\Issues\IssueHelper.h" />

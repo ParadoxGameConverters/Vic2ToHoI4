@@ -498,7 +498,13 @@ void HoI4::World::convertDiplomacy()
 
 void HoI4::World::convertAgreements()
 {
-	for (auto agreement: sourceWorld->getDiplomacy()->getAgreements())
+	const auto& diplomacy = sourceWorld->getDiplomacy();
+	if (!diplomacy)
+	{
+		return;
+	}
+
+	for (auto agreement: diplomacy->getAgreements())
 	{
 		auto possibleHoI4Tag1 = countryMap.getHoI4Tag(agreement.getCountry1());
 		if (!possibleHoI4Tag1)

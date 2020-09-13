@@ -4,6 +4,7 @@
 
 
 #include "CultureGroups.h"
+#include "Diplomacy/Diplomacy.h"
 #include "Mods/Mod.h"
 #include "Parser.h"
 #include "Party.h"
@@ -26,7 +27,6 @@ class ProvinceMapper;
 namespace Vic2
 {
 class Country;
-class Diplomacy;
 class Localisations;
 class Party;
 class Province;
@@ -46,7 +46,7 @@ class World: commonItems::parser
 	[[nodiscard]] std::optional<const std::shared_ptr<Province>> getProvince(int provNum) const;
 
 	[[nodiscard]] std::map<std::string, Country*> getCountries() const { return countries; }
-	[[nodiscard]] const Diplomacy* getDiplomacy() const { return diplomacy; }
+	[[nodiscard]] const auto& getDiplomacy() const { return diplomacy; }
 	[[nodiscard]] std::vector<std::string> getGreatPowers() const { return greatPowers; }
 	[[nodiscard]] virtual std::vector<Party> getParties() const { return parties; }
 	[[nodiscard]] auto getProvinces() const { return provinces; }
@@ -85,7 +85,7 @@ class World: commonItems::parser
 
 	std::map<int, std::shared_ptr<Province>> provinces;
 	std::map<std::string, Country*> countries;
-	const Diplomacy* diplomacy = nullptr;
+	std::unique_ptr<Diplomacy> diplomacy;
 	std::vector<Party> parties;
 	std::vector<std::string> greatPowers;
 

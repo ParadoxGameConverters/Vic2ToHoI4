@@ -1130,16 +1130,19 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ScriptedLocalisations</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\Diplomacy.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\Relations.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
     </ClCompile>
-    <ClCompile Include="Vic2WorldTests\Diplomacy\Vic2AgreementTests.cpp">
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\AgreementFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Diplomacy\AgreementTests.cpp">
       <Filter>Vic2WorldTests\Diplomacy</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\AgreementFactory.cpp">
+    <ClCompile Include="Vic2WorldTests\Diplomacy\DiplomacyTests.cpp">
+      <Filter>Vic2WorldTests\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\DiplomacyFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
     </ClCompile>
   </ItemGroup>
