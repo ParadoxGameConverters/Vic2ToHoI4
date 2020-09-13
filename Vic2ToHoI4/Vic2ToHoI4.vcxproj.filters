@@ -976,13 +976,13 @@
     <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.cpp">
       <Filter>HoI4World\ScriptedLocalisations</Filter>
     </ClCompile>
-    <ClCompile Include="Source\V2World\Diplomacy\Relations.cpp">
-      <Filter>Vic2World\Diplomacy</Filter>
-    </ClCompile>
     <ClCompile Include="Source\V2World\Diplomacy\AgreementFactory.cpp">
       <Filter>Vic2World\Diplomacy</Filter>
     </ClCompile>
     <ClCompile Include="Source\V2World\Diplomacy\DiplomacyFactory.cpp">
+      <Filter>Vic2World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Diplomacy\RelationsFactory.cpp">
       <Filter>Vic2World\Diplomacy</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1873,6 +1873,12 @@
       <Filter>Vic2World\Diplomacy</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Diplomacy\DiplomacyFactory.h">
+      <Filter>Vic2World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Diplomacy\RelationsFactory.h">
+      <Filter>Vic2World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Diplomacy\RelationsBuilder.h">
       <Filter>Vic2World\Diplomacy</Filter>
     </ClInclude>
   </ItemGroup>

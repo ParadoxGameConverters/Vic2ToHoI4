@@ -1130,9 +1130,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ScriptedLocalisations</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\Relations.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\AgreementFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
     </ClCompile>
@@ -1144,6 +1141,12 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\DiplomacyFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\RelationsFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Diplomacy\RelationsTests.cpp">
+      <Filter>Vic2WorldTests\Diplomacy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

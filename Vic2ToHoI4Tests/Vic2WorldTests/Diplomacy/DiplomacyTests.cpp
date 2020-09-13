@@ -4,7 +4,7 @@
 
 
 
-TEST(Vic2World_DiplomacyTests, AgreementsDefaultToEmpty)
+TEST(Vic2World_Diplomacy_DiplomacyTests, AgreementsDefaultToEmpty)
 {
 	std::stringstream input;
 	const auto diplomacy = Vic2::Diplomacy::Factory{}.getDiplomacy(input);
@@ -13,7 +13,7 @@ TEST(Vic2World_DiplomacyTests, AgreementsDefaultToEmpty)
 }
 
 
-TEST(Vic2World_DiplomacyTests, AgreementsCanBeAdded)
+TEST(Vic2World_Diplomacy_DiplomacyTests, AgreementsCanBeAdded)
 {
 	std::stringstream input;
 	input << "type_one = {}\n";

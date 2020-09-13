@@ -1,43 +1,39 @@
-#ifndef VIC2_RELATIONS_H_
-#define VIC2_RELATIONS_H_
+#ifndef VIC2_RELATIONS_H
+#define VIC2_RELATIONS_H
 
 
 
 #include "Date.h"
-#include "Parser.h"
+#include <optional>
 
 
 
 namespace Vic2
 {
 
-class Relations: commonItems::parser
+class Relations
 {
   public:
-	explicit Relations(const std::string& theTag, std::istream& theStream);
+	class Factory;
+	class Builder;
 
-	std::string getTag() const { return tag; }
-	int getRelations() const { return value; }
-	int getLevel() const { return level; }
+	[[nodiscard]] int getRelations() const { return value; }
+	[[nodiscard]] int getLevel() const { return level; }
 
-	bool hasMilitaryAccess() const { return militaryAccess; }
-	const date getDiplomatLastSent() const { return lastSentDiplomat; }
-	const date getLastWar() const { return lastWar; }
-	const date getTruceUntil() const { return truceUntil; }
-	int getInfluenceValue() const { return influenceValue; }
+	[[nodiscard]] bool hasMilitaryAccess() const { return militaryAccess; }
+	[[nodiscard]] const auto& getDiplomatLastSent() const { return lastSentDiplomat; }
+	[[nodiscard]] const auto& getLastWar() const { return lastWar; }
+	[[nodiscard]] const auto& getTruceUntil() const { return truceUntil; }
+	[[nodiscard]] int getInfluenceValue() const { return influenceValue; }
 
   private:
-	Relations(const Relations&) = delete;
-	Relations& operator=(const Relations&) = delete;
-
-	std::string tag = "";
 	int value = 0;
 	int level = 2;
 
 	bool militaryAccess = false;
-	date lastSentDiplomat;
-	date lastWar;
-	date truceUntil;
+	std::optional<date> lastSentDiplomat;
+	std::optional<date> lastWar;
+	std::optional<date> truceUntil;
 	int influenceValue = 0;
 };
 
@@ -45,4 +41,4 @@ class Relations: commonItems::parser
 
 
 
-#endif // VIC2_RELATIONS_H_
+#endif // VIC2_RELATIONS_H

@@ -4,13 +4,13 @@
 
 
 #include "Army.h"
+#include "Color.h"
 #include "Date.h"
+#include "Diplomacy/RelationsFactory.h"
 #include "Parser.h"
 #include "Party.h"
 #include "States/StateFactory.h"
 #include "Wars/War.h"
-#include "Color.h"
-#include <functional>
 #include <map>
 #include <memory>
 #include <optional>
@@ -43,7 +43,8 @@ class Country: commonItems::parser
 		 const inventions& theInventions,
 		 const cultureGroups& theCultureGroups,
 		 const StateDefinitions& theStateDefinitions,
-		 State::Factory& stateFactory);
+		 State::Factory& stateFactory,
+		 Relations::Factory& relationsFactory);
 	virtual ~Country() = default;
 
 	void addProvince(const std::pair<const int, std::shared_ptr<Province>>& province) { provinces.insert(province); }
@@ -61,7 +62,7 @@ class Country: commonItems::parser
 	void setLocalisationAdjectives(const Localisations& vic2Localisations);
 	void handleMissingCulture(const cultureGroups& theCultureGroups);
 
-	std::map<std::string, const Relations*> getRelations() const { return relations; }
+	[[nodiscard]] const auto& getRelations() const { return relations; }
 	auto& getStates() { return states; }
 	virtual std::string getTag() const { return tag; }
 	std::string getIdentifier() const;
@@ -124,7 +125,7 @@ class Country: commonItems::parser
 	std::set<std::string> techs;
 	std::set<std::string> discoveredInventions;
 
-	std::map<std::string, const Relations*> relations;
+	std::map<std::string, Relations> relations;
 	bool civilized = false;
 
 	std::vector<Army> armies;
