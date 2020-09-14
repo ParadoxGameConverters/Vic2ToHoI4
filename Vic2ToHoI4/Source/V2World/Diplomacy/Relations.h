@@ -11,6 +11,17 @@
 namespace Vic2
 {
 
+enum class opinionLevel
+{
+	hostile = 0,
+	opposed = 1,
+	neutral = 2,
+	cordial = 3,
+	friendly = 4,
+	in_sphere = 5,
+};
+
+
 class Relations
 {
   public:
@@ -18,7 +29,7 @@ class Relations
 	class Builder;
 
 	[[nodiscard]] int getRelations() const { return value; }
-	[[nodiscard]] int getLevel() const { return level; }
+	[[nodiscard]] opinionLevel getLevel() const { return level; }
 
 	[[nodiscard]] bool hasMilitaryAccess() const { return militaryAccess; }
 	[[nodiscard]] const auto& getDiplomatLastSent() const { return lastSentDiplomat; }
@@ -28,7 +39,7 @@ class Relations
 
   private:
 	int value = 0;
-	int level = 2;
+	opinionLevel level = opinionLevel::neutral;
 
 	bool militaryAccess = false;
 	std::optional<date> lastSentDiplomat;

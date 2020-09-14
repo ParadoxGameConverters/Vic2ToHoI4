@@ -37,25 +37,25 @@ TEST(HoI4World_Diplomacy_RelationsTests, guaranteeDefaultsToFalse)
 }
 
 
-TEST(HoI4World_Diplomacy_RelationsTests, guaranteeTrueIfLevelEqualsFour)
+TEST(HoI4World_Diplomacy_RelationsTests, guaranteeTrueIfLevelIsFriendly)
 {
-	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setLevel(4).build());
+	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setLevel(Vic2::opinionLevel::friendly).build());
 
 	ASSERT_TRUE(relations.getGuarantee());
 }
 
 
-TEST(HoI4World_Diplomacy_RelationsTests, guaranteeTrueIfLevelGreaterThanFour)
+TEST(HoI4World_Diplomacy_RelationsTests, guaranteeTrueIfLevelAboveFriendly)
 {
-	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setLevel(5).build());
+	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setLevel(Vic2::opinionLevel::in_sphere).build());
 
 	ASSERT_TRUE(relations.getGuarantee());
 }
 
 
-TEST(HoI4World_Diplomacy_RelationsTests, guaranteeFalseIfLevelLessThanFour)
+TEST(HoI4World_Diplomacy_RelationsTests, guaranteeFalseIfLevelBelowFriendly)
 {
-	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setLevel(3).build());
+	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setLevel(Vic2::opinionLevel::neutral).build());
 
 	ASSERT_FALSE(relations.getGuarantee());
 }
@@ -71,15 +71,7 @@ TEST(HoI4World_Diplomacy_RelationsTests, sphereLeaderDefaultsToFalse)
 
 TEST(HoI4World_Diplomacy_RelationsTests, sphereLeaderTrueIfLevelEqualsFive)
 {
-	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setLevel(5).build());
-
-	ASSERT_TRUE(relations.getSphereLeader());
-}
-
-
-TEST(HoI4World_Diplomacy_RelationsTests, sphereLeaderTrueIfLevelGreaterThanFive)
-{
-	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setLevel(6).build());
+	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setLevel(Vic2::opinionLevel::in_sphere).build());
 
 	ASSERT_TRUE(relations.getSphereLeader());
 }
@@ -87,7 +79,7 @@ TEST(HoI4World_Diplomacy_RelationsTests, sphereLeaderTrueIfLevelGreaterThanFive)
 
 TEST(HoI4World_Diplomacy_RelationsTests, sphereLeaderFalseIfLevelLessThanFive)
 {
-	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setLevel(4).build());
+	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setLevel(Vic2::opinionLevel::friendly).build());
 
 	ASSERT_FALSE(relations.getSphereLeader());
 }

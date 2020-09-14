@@ -19,8 +19,10 @@ class Relations
 	}
 
 	Relations(std::string newTag, const Vic2::Relations& oldRelations):
-		 tag(std::move(newTag)), value(oldRelations.getRelations()), guarantee(oldRelations.getLevel() >= 4),
-		 sphereLeader(oldRelations.getLevel() >= 5), influenceValue(oldRelations.getInfluenceValue())
+		 tag(std::move(newTag)), value(oldRelations.getRelations()),
+		 guarantee(oldRelations.getLevel() >= Vic2::opinionLevel::friendly),
+		 sphereLeader(oldRelations.getLevel() == Vic2::opinionLevel::in_sphere),
+		 influenceValue(oldRelations.getInfluenceValue())
 	{
 	}
 

@@ -9,7 +9,7 @@ Vic2::Relations::Factory::Factory()
 		relations->value = commonItems::singleInt{theStream}.getInt();
 	});
 	registerKeyword("level", [this](const std::string& unused, std::istream& theStream) {
-		relations->level = commonItems::singleInt{theStream}.getInt();
+		relations->level = static_cast<opinionLevel>(commonItems::singleInt{theStream}.getInt());
 	});
 	registerKeyword("military_access", [this](const std::string& unused, std::istream& theStream) {
 		relations->militaryAccess = (commonItems::singleString{theStream}.getString() == "yes");

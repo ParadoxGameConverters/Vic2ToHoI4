@@ -25,12 +25,12 @@ TEST(Vic2World_Diplomacy_RelationsTests, ValueCanBeSet)
 }
 
 
-TEST(Vic2World_Diplomacy_RelationsTests, LevelDefaultsToTwo)
+TEST(Vic2World_Diplomacy_RelationsTests, LevelDefaultsToNeutral)
 {
 	std::stringstream input;
 	const auto relations = Vic2::Relations::Factory{}.getRelations(input);
 
-	ASSERT_EQ(2, relations->getLevel());
+	ASSERT_EQ(Vic2::opinionLevel::neutral, relations->getLevel());
 }
 
 
@@ -38,11 +38,11 @@ TEST(Vic2World_Diplomacy_RelationsTests, LevelCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
-	input << "\tlevel = 7\n";
+	input << "\tlevel = 1\n";
 	input << "}";
 	const auto relations = Vic2::Relations::Factory{}.getRelations(input);
 
-	ASSERT_EQ(7, relations->getLevel());
+	ASSERT_EQ(Vic2::opinionLevel::opposed, relations->getLevel());
 }
 
 

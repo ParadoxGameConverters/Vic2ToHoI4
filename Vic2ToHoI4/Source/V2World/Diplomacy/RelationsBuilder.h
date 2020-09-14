@@ -23,7 +23,7 @@ class Relations::Builder
 		return *this;
 	}
 
-	Builder& setLevel(int level)
+	Builder& setLevel(opinionLevel level)
 	{
 		relations->level = level;
 		return *this;
