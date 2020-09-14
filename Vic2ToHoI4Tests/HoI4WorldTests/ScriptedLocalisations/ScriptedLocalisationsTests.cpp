@@ -39,7 +39,8 @@ TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationsTests, TagsGetApplied)
 	ASSERT_TRUE(theLocalisations.getLocalisations().size() > 1);
 	ASSERT_EQ(2, theLocalisations.getLocalisations()[1].getTexts().size());
 
-	std::string textTwo = "\t\ttrigger = { \n";
+	std::string textTwo = "= {\n";
+	textTwo += "\t\ttrigger = { \n";
 	textTwo += "\t\t\tTAG = { \n";
 	textTwo += "\t\t\t\tnot = { has_naval_treaty_trigger = yes }\n";
 	textTwo += "\t\t\t}\n";
@@ -48,5 +49,6 @@ TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationsTests, TagsGetApplied)
 	textTwo += "\t\t\t}\n";
 	textTwo += "\t\t}\n";
 	textTwo += "\t\tlocalization_key = TWO_Naval_treaty_nation\n";
+	textTwo += "\t}";
 	ASSERT_EQ(textTwo, theLocalisations.getLocalisations()[1].getTexts()[1]);
 }

@@ -1015,10 +1015,12 @@ void HoI4::Localisation::insertScriptedLocalisation(const std::string& localisat
 	}
 
 	std::string text;
+	text += "= {\n";
 	text += "\t\ttrigger = {\n";
 	text += "\t\t\tOR = { tag = " + tag + " original_tag = " + tag + " }\n";
 	text += "\t\t\thas_government = " + ideology + "\n";
 	text += "\t\t}\n";
 	text += "\t\tlocalization_key = " + localisationKey + replacementKey + "\n";
+	text += "\t}";
 	scriptedLocalisation.addText(text);
 }
