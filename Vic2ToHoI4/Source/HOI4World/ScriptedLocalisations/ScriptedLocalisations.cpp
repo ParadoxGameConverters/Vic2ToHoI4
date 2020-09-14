@@ -9,6 +9,7 @@ void HoI4::ScriptedLocalisations::addNavyScriptedLocalisations(const std::string
 	ScriptedLocalisation GetStrengthRatioBritain;
 	GetStrengthRatioBritain.setName("GetStrengthRatioBritain");
 	std::string text;
+	text += "= {\n";
 	text += "\t\ttrigger = { \n";
 	text += "\t\t\tif = { \n";
 	text += "\t\t\t\tlimit = { " + strongestNavyTag + " = { has_naval_treaty_trigger = yes } }\n";
@@ -58,9 +59,11 @@ void HoI4::ScriptedLocalisations::addNavyScriptedLocalisations(const std::string
 	text += "\t\t\t}\n";
 	text += "\t\t}\n";
 	text += "\t\tlocalization_key = Naval_treaty_90\n";
+	text += "\t}";
 	GetStrengthRatioBritain.addText(text);
 
-	text = "\t\ttrigger = { \n";
+	text = "= {\n";
+	text += "\t\ttrigger = { \n";
 	text += "\t\t\tif = { \n";
 	text += "\t\t\t\tlimit = { " + strongestNavyTag + " = { has_naval_treaty_trigger = yes } }\n";
 	text += "\t\t\t\tnaval_strength_comparison = { \n";
@@ -109,9 +112,11 @@ void HoI4::ScriptedLocalisations::addNavyScriptedLocalisations(const std::string
 	text += "\t\t\t}\n";
 	text += "\t\t}\n";
 	text += "\t\tlocalization_key = Naval_treaty_75\n";
+	text += "\t}";
 	GetStrengthRatioBritain.addText(text);
 
-	text = "\t\ttrigger = { \n";
+	text = "= {\n";
+	text += "\t\ttrigger = { \n";
 	text += "\t\t\tif = { \n";
 	text += "\t\t\t\tlimit = { " + strongestNavyTag + " = { has_naval_treaty_trigger = yes } }\n";
 	text += "\t\t\t\tnaval_strength_comparison = { \n";
@@ -160,9 +165,11 @@ void HoI4::ScriptedLocalisations::addNavyScriptedLocalisations(const std::string
 	text += "\t\t\t}\n";
 	text += "\t\t}\n";
 	text += "\t\tlocalization_key = Naval_treaty_50\n";
+	text += "\t}";
 	GetStrengthRatioBritain.addText(text);
 
-	text = "\t\ttrigger = { \n";
+	text = "= {\n";
+	text += "\t\ttrigger = { \n";
 	text += "\t\t\tif = { \n";
 	text += "\t\t\t\tlimit = { " + strongestNavyTag + " = { has_naval_treaty_trigger = yes } }\n";
 	text += "\t\t\t\tnaval_strength_comparison = { \n";
@@ -191,9 +198,11 @@ void HoI4::ScriptedLocalisations::addNavyScriptedLocalisations(const std::string
 	text += "\t\t\t}\n";
 	text += "\t\t}\n";
 	text += "\t\tlocalization_key = Naval_treaty_lower_than_50\n";
+	text += "\t}";
 	GetStrengthRatioBritain.addText(text);
 
-	text = "\t\ttrigger = { \n";
+	text = "= {\n";
+	text += "\t\ttrigger = { \n";
 	text += "\t\t\tif = { \n";
 	text += "\t\t\t\tlimit = { " + strongestNavyTag + " = { has_naval_treaty_trigger = yes } }\n";
 	text += "\t\t\t\tnaval_strength_comparison = { \n";
@@ -222,20 +231,24 @@ void HoI4::ScriptedLocalisations::addNavyScriptedLocalisations(const std::string
 	text += "\t\t\t}\n";
 	text += "\t\t}\n";
 	text += "\t\tlocalization_key = Naval_treaty_over_100\n";
+	text += "\t}";
 	GetStrengthRatioBritain.addText(text);
 	scriptedLocalisations.push_back(GetStrengthRatioBritain);
 
 	ScriptedLocalisation GetRelevantNavalTreatyNation;
 	GetRelevantNavalTreatyNation.setName("GetRelevantNavalTreatyNation");
-	text = "\t\ttrigger = { \n";
+	text = "= {\n";
+	text += "\t\ttrigger = { \n";
 	text += "\t\t\t" + strongestNavyTag + " = { \n";
 	text += "\t\t\t\thas_naval_treaty_trigger = yes\n";
 	text += "\t\t\t}\n";
 	text += "\t\t}\n";
 	text += "\t\tlocalization_key = " + strongestNavyTag + "_Naval_treaty_nation\n";
+	text += "\t}";
 	GetRelevantNavalTreatyNation.addText(text);
 
-	text = "\t\ttrigger = { \n";
+	text = "= {\n";
+	text += "\t\ttrigger = { \n";
 	text += "\t\t\t" + strongestNavyTag + " = { \n";
 	text += "\t\t\t\tnot = { has_naval_treaty_trigger = yes }\n";
 	text += "\t\t\t}\n";
@@ -244,6 +257,7 @@ void HoI4::ScriptedLocalisations::addNavyScriptedLocalisations(const std::string
 	text += "\t\t\t}\n";
 	text += "\t\t}\n";
 	text += "\t\tlocalization_key = " + secondStrongestNavyTag + "_Naval_treaty_nation\n";
+	text += "\t}";
 	GetRelevantNavalTreatyNation.addText(text);
 	scriptedLocalisations.push_back(GetRelevantNavalTreatyNation);
 }
