@@ -1,39 +1,38 @@
-#include "Relations.h"
+#include "RelationsFactory.h"
 #include "ParserHelpers.h"
 
 
 
-Vic2::Relations::Relations(const std::string& theTag, std::istream& theStream): tag(theTag)
+Vic2::Relations::Factory::Factory()
 {
 	registerKeyword("value", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleInt valueInt(theStream);
-		value = valueInt.getInt();
+		relations->value = commonItems::singleInt{theStream}.getInt();
 	});
 	registerKeyword("level", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleInt levelInt(theStream);
-		level = levelInt.getInt();
+		relations->level = static_cast<opinionLevel>(commonItems::singleInt{theStream}.getInt());
 	});
 	registerKeyword("military_access", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString stateString(theStream);
-		militaryAccess = (stateString.getString() == "yes");
+		relations->militaryAccess = (commonItems::singleString{theStream}.getString() == "yes");
 	});
 	registerKeyword("last_send_diplomat", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString dateString(theStream);
-		lastSentDiplomat = date(dateString.getString());
+		relations->lastSentDiplomat = date(commonItems::singleString{theStream}.getString());
 	});
 	registerKeyword("last_war", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString dateString(theStream);
-		lastWar = date(dateString.getString());
+		relations->lastWar = date(commonItems::singleString{theStream}.getString());
 	});
 	registerKeyword("truce_until", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString dateString(theStream);
-		truceUntil = date(dateString.getString());
+		relations->truceUntil = date(commonItems::singleString{theStream}.getString());
 	});
 	registerKeyword("influence_value", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleInt valueInt(theStream);
-		influenceValue = valueInt.getInt();
+		relations->influenceValue = commonItems::singleInt{theStream}.getInt();
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+}
 
+
+std::unique_ptr<Vic2::Relations> Vic2::Relations::Factory::getRelations(std::istream& theStream)
+{
+	relations = std::make_unique<Relations>();
 	parseStream(theStream);
+	return std::move(relations);
 }

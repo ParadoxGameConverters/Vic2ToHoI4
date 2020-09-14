@@ -1,5 +1,6 @@
 #include "Country.h"
 #include "CultureGroups.h"
+#include "Diplomacy/Relations.h"
 #include "Inventions.h"
 #include "Leader.h"
 #include "Log.h"
@@ -7,7 +8,6 @@
 #include "Party.h"
 #include "Pops/Pop.h"
 #include "Provinces/Province.h"
-#include "Relations.h"
 #include "States/State.h"
 #include "States/StateDefinitions.h"
 #include "StringUtils.h"
@@ -20,7 +20,8 @@ Vic2::Country::Country(const std::string& theTag,
 	 const inventions& theInventions,
 	 const cultureGroups& theCultureGroups,
 	 const StateDefinitions& theStateDefinitions,
-	 State::Factory& stateFactory):
+	 State::Factory& stateFactory,
+	 Relations::Factory& relationsFactory):
 	 tag(theTag)
 {
 	registerKeyword("capital", [this](const std::string& unused, std::istream& theStream) {
@@ -138,9 +139,8 @@ Vic2::Country::Country(const std::string& theTag,
 			token = getNextTokenWithoutMatching(theStream);
 		}
 	});
-	registerRegex("[A-Z][A-Z0-9]{2}", [this](const std::string& countryTag, std::istream& theStream) {
-		Relations* rel = new Relations(countryTag, theStream);
-		relations.insert(make_pair(rel->getTag(), rel));
+	registerRegex("[A-Z][A-Z0-9]{2}", [this, &relationsFactory](const std::string& countryTag, std::istream& theStream) {
+		relations.insert(std::make_pair(countryTag, *relationsFactory.getRelations(theStream)));
 	});
 	registerKeyword("army", [this](const std::string& type, std::istream& theStream) {
 		Army army(type, theStream);

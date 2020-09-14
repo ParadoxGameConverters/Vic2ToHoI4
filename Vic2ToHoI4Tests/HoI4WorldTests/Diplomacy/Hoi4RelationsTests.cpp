@@ -1,4 +1,5 @@
 #include "../Vic2ToHoI4/Source/HOI4World/Diplomacy/HoI4Relations.h"
+#include "../Vic2ToHoI4/Source/V2World/Diplomacy/RelationsBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -22,13 +23,7 @@ TEST(HoI4World_Diplomacy_RelationsTests, relationsDefaultsToZero)
 
 TEST(HoI4World_Diplomacy_RelationsTests, relationsInheretedFromOldRelations)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "\tvalue = 56\n";
-	input << "}";
-	Vic2::Relations oldRelations("TAG", input);
-
-	const HoI4::Relations relations("TAG", oldRelations);
+	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setValue(56).build());
 
 	ASSERT_EQ(relations.getRelations(), 56);
 }
@@ -42,43 +37,25 @@ TEST(HoI4World_Diplomacy_RelationsTests, guaranteeDefaultsToFalse)
 }
 
 
-TEST(HoI4World_Diplomacy_RelationsTests, guaranteeTrueIfLevelEqualsFour)
+TEST(HoI4World_Diplomacy_RelationsTests, guaranteeTrueIfLevelIsFriendly)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "\tlevel = 4\n";
-	input << "}";
-	Vic2::Relations oldRelations("TAG", input);
-
-	const HoI4::Relations relations("TAG", oldRelations);
+	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setLevel(Vic2::opinionLevel::friendly).build());
 
 	ASSERT_TRUE(relations.getGuarantee());
 }
 
 
-TEST(HoI4World_Diplomacy_RelationsTests, guaranteeTrueIfLevelGreaterThanFour)
+TEST(HoI4World_Diplomacy_RelationsTests, guaranteeTrueIfLevelAboveFriendly)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "\tlevel = 5\n";
-	input << "}";
-	Vic2::Relations oldRelations("TAG", input);
-
-	const HoI4::Relations relations("TAG", oldRelations);
+	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setLevel(Vic2::opinionLevel::in_sphere).build());
 
 	ASSERT_TRUE(relations.getGuarantee());
 }
 
 
-TEST(HoI4World_Diplomacy_RelationsTests, guaranteeFalseIfLevelLessThanFour)
+TEST(HoI4World_Diplomacy_RelationsTests, guaranteeFalseIfLevelBelowFriendly)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "\tlevel = 3\n";
-	input << "}";
-	Vic2::Relations oldRelations("TAG", input);
-
-	const HoI4::Relations relations("TAG", oldRelations);
+	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setLevel(Vic2::opinionLevel::neutral).build());
 
 	ASSERT_FALSE(relations.getGuarantee());
 }
@@ -92,43 +69,17 @@ TEST(HoI4World_Diplomacy_RelationsTests, sphereLeaderDefaultsToFalse)
 }
 
 
-TEST(HoI4World_Diplomacy_RelationsTests, sphereLeaderTrueIfLevelEqualsFive)
+TEST(HoI4World_Diplomacy_RelationsTests, sphereLeaderTrueIfLevelEqualsInSphere)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "\tlevel = 5\n";
-	input << "}";
-	Vic2::Relations oldRelations("TAG", input);
-
-	const HoI4::Relations relations("TAG", oldRelations);
+	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setLevel(Vic2::opinionLevel::in_sphere).build());
 
 	ASSERT_TRUE(relations.getSphereLeader());
 }
 
 
-TEST(HoI4World_Diplomacy_RelationsTests, sphereLeaderTrueIfLevelGreaterThanFive)
+TEST(HoI4World_Diplomacy_RelationsTests, sphereLeaderFalseIfLevelLessThanInSphere)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "\tlevel = 6\n";
-	input << "}";
-	Vic2::Relations oldRelations("TAG", input);
-
-	const HoI4::Relations relations("TAG", oldRelations);
-
-	ASSERT_TRUE(relations.getSphereLeader());
-}
-
-
-TEST(HoI4World_Diplomacy_RelationsTests, sphereLeaderFalseIfLevelLessThanFive)
-{
-	std::stringstream input;
-	input << "= {\n";
-	input << "\tlevel = 4\n";
-	input << "}";
-	Vic2::Relations oldRelations("TAG", input);
-
-	const HoI4::Relations relations("TAG", oldRelations);
+	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setLevel(Vic2::opinionLevel::friendly).build());
 
 	ASSERT_FALSE(relations.getSphereLeader());
 }
@@ -144,13 +95,7 @@ TEST(HoI4World_Diplomacy_RelationsTests, influenceValueDefaultsToZero)
 
 TEST(HoI4World_Diplomacy_RelationsTests, influenceValueInheretedFromOldRelations)
 {
-	std::stringstream input;
-	input << "= {\n";
-	input << "\tinfluence_value = 56\n";
-	input << "}";
-	Vic2::Relations oldRelations("TAG", input);
-
-	const HoI4::Relations relations("TAG", oldRelations);
+	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setInfluenceValue(56).build());
 
 	ASSERT_EQ(relations.getInfluenceValue(), 56);
 }

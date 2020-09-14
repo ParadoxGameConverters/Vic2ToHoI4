@@ -196,6 +196,9 @@
     <Filter Include="Data Files\Map">
       <UniqueIdentifier>{5cc577fe-942f-4756-a6c7-fdda52993471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2World\Diplomacy">
+      <UniqueIdentifier>{1a8af639-f629-49c5-ba03-226c10d9f7f0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -236,19 +239,10 @@
     <ClCompile Include="..\common_items\ParserHelpers.cpp">
       <Filter>CommonItems</Filter>
     </ClCompile>
-    <ClCompile Include="Source\V2World\Diplomacy.cpp">
-      <Filter>Vic2World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\V2World\Agreement.cpp">
-      <Filter>Vic2World</Filter>
-    </ClCompile>
     <ClCompile Include="Source\V2World\Country.cpp">
       <Filter>Vic2World</Filter>
     </ClCompile>
     <ClCompile Include="Source\V2World\Leader.cpp">
-      <Filter>Vic2World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\V2World\Relations.cpp">
       <Filter>Vic2World</Filter>
     </ClCompile>
     <ClCompile Include="Source\V2World\Army.cpp">
@@ -982,6 +976,15 @@
     <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.cpp">
       <Filter>HoI4World\ScriptedLocalisations</Filter>
     </ClCompile>
+    <ClCompile Include="Source\V2World\Diplomacy\AgreementFactory.cpp">
+      <Filter>Vic2World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Diplomacy\DiplomacyFactory.cpp">
+      <Filter>Vic2World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Diplomacy\RelationsFactory.cpp">
+      <Filter>Vic2World\Diplomacy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1022,19 +1025,10 @@
     <ClInclude Include="..\common_items\ParserHelpers.h">
       <Filter>CommonItems</Filter>
     </ClInclude>
-    <ClInclude Include="Source\V2World\Diplomacy.h">
-      <Filter>Vic2World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\V2World\Agreement.h">
-      <Filter>Vic2World</Filter>
-    </ClInclude>
     <ClInclude Include="Source\V2World\Country.h">
       <Filter>Vic2World</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Leader.h">
-      <Filter>Vic2World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\V2World\Relations.h">
       <Filter>Vic2World</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Army.h">
@@ -1865,6 +1859,27 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.h">
       <Filter>HoI4World\ScriptedLocalisations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Diplomacy\Agreement.h">
+      <Filter>Vic2World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Diplomacy\Diplomacy.h">
+      <Filter>Vic2World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Diplomacy\Relations.h">
+      <Filter>Vic2World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Diplomacy\AgreementFactory.h">
+      <Filter>Vic2World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Diplomacy\DiplomacyFactory.h">
+      <Filter>Vic2World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Diplomacy\RelationsFactory.h">
+      <Filter>Vic2World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Diplomacy\RelationsBuilder.h">
+      <Filter>Vic2World\Diplomacy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

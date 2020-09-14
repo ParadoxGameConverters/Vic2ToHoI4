@@ -5,8 +5,8 @@
 #include "../Mappers/Provinces/ProvinceMapper.h"
 #include "../Mappers/TechMapper.h"
 #include "../V2World/Country.h"
+#include "../V2World/Diplomacy/Relations.h"
 #include "../V2World/Party.h"
-#include "../V2World/Relations.h"
 #include "../V2World/World.h"
 #include "Diplomacy/HoI4War.h"
 #include "HoI4Localisation.h"
@@ -259,10 +259,10 @@ void HoI4::Country::convertRelations(const CountryMapper& countryMap)
 	auto srcRelations = sourceCountry.getRelations();
 	for (const auto& srcRelation: srcRelations)
 	{
-		auto HoI4Tag = countryMap.getHoI4Tag(srcRelation.second->getTag());
+		auto HoI4Tag = countryMap.getHoI4Tag(srcRelation.first);
 		if (HoI4Tag)
 		{
-			HoI4::Relations newRelation(*HoI4Tag, *srcRelation.second);
+			HoI4::Relations newRelation(*HoI4Tag, srcRelation.second);
 			relations.insert(make_pair(*HoI4Tag, std::move(newRelation)));
 		}
 	}

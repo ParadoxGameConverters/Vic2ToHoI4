@@ -269,12 +269,13 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\TechMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4States.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Agreement.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Army.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CommonCountryData.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Country.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CultureGroups.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\AgreementFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\DiplomacyFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\RelationsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Inventions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueCategoryHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueHelper.cpp" />
@@ -287,7 +288,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\PopFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Provinces\Province.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Provinces\ProvinceFactory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Relations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\BuildingReader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateDefinitions.cpp" />
@@ -396,6 +396,9 @@
     <ClCompile Include="MapperTests\TechMapperTests.cpp" />
     <ClCompile Include="Mocks\CountryMapperMock.h" />
     <ClCompile Include="Mocks\TechnologiesMock.h" />
+    <ClCompile Include="Vic2WorldTests\Diplomacy\AgreementTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Diplomacy\DiplomacyTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Diplomacy\RelationsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Issues\IssueHelperTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Issues\IssuesBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Issues\IssuesFactoryTests.cpp" />
@@ -415,7 +418,6 @@
     <ClCompile Include="Vic2WorldTests\States\StateLanguageCategoriesFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateLanguageCategoriesTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateTests.cpp" />
-    <ClCompile Include="Vic2WorldTests\Vic2AgreementTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Wars\WarBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Wars\WarFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Wars\WarGoalFactoryTests.cpp" />
