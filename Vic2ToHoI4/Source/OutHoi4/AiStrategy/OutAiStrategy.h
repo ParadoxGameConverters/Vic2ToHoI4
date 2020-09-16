@@ -6,7 +6,7 @@
 namespace HoI4
 {
 
-void outputAIStrategy(const HoI4::Country& theCountry, const Configuration& theConfiguration);
+void outputAIStrategy(const HoI4::Country& theCountry, const std::string& outputName);
 
 } // namespace HoI4
 

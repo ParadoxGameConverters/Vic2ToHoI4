@@ -211,13 +211,8 @@ class Country
 	double calculateInfluenceFactor();
 	const auto& getGuaranteed() const { return guaranteed; }
 	void addGuaranteed(std::string guaranteedTag) { guaranteed.push_back(guaranteedTag); }
-	void addConquerStrategy(HoI4::AIStrategy newStrategy)
-	{
-		conquerStrategies.insert(make_pair(newStrategy.getID(), newStrategy));
-	}
-	void updateConquerStrategy(std::string HoI4Tag, int valueToAdd);
 
-	bool canDeclareWar(std::string target);
+	bool canDeclareWar(const std::string& target);
 
 
   private:
@@ -302,7 +297,7 @@ class Country
 
 	std::map<std::string, HoI4::Relations> relations;
 	std::vector<HoI4::AIStrategy> aiStrategies;
-	std::map<std::string, HoI4::AIStrategy> conquerStrategies;
+	std::vector<HoI4::AIStrategy> conquerStrategies;
 	std::vector<War> wars;
 	double threat = 0.0;
 	std::shared_ptr<const Faction> faction;

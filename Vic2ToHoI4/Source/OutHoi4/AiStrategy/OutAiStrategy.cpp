@@ -1,14 +1,13 @@
 #include "OutAiStrategy.h"
 #include "../../HOI4World/HoI4Country.h"
 
-void HoI4::outputAIStrategy(const HoI4::Country& theCountry, const Configuration& theConfiguration)
+void HoI4::outputAIStrategy(const HoI4::Country& theCountry, const std::string& outputName)
 {
-	std::ofstream output(
-		 "output/" + theConfiguration.getOutputName() + "/common/ai_strategy/converted_" + theCountry.getTag() + ".txt");
+	std::ofstream output("output/" + outputName + "/common/ai_strategy/converted_" + theCountry.getTag() + ".txt");
 	if (!output.is_open())
 	{
-		throw std::runtime_error("Could not open output/" + theConfiguration.getOutputName() +
-										 "/common/ai_strategy/converted_" + theCountry.getTag() + ".txt");
+		throw std::runtime_error(
+			 "Could not open output/" + outputName + "/common/ai_strategy/converted_" + theCountry.getTag() + ".txt");
 	}
 	output << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 
@@ -20,9 +19,9 @@ void HoI4::outputAIStrategy(const HoI4::Country& theCountry, const Configuration
 	for (const auto& conquerStr: theCountry.getConquerStrategies())
 	{
 		output << "\tai_strategy = {\n";
-		output << "\t\ttype = " << conquerStr.second.getType() << "\n";
-		output << "\t\tid = \"" << conquerStr.second.getID() << "\"\n";
-		output << "\t\tvalue = " << conquerStr.second.getValue() << "\n";
+		output << "\t\ttype = " << conquerStr.getType() << "\n";
+		output << "\t\tid = \"" << conquerStr.getID() << "\"\n";
+		output << "\t\tvalue = " << conquerStr.getValue() << "\n";
 		output << "\t}\n";
 	}
 	output << "}\n";

@@ -21,8 +21,8 @@ class AIStrategy
 	}
 
 	void setID(const std::string HoI4Tag) { id = HoI4Tag; }
+	void setValue(const int strategyValue) { value = strategyValue; }
 	void updateStrategy();
-	void increaseValue(int valueToAdd) { value += valueToAdd; }
 
 	[[nodiscard]] const auto& getType() const { return type; }
 	[[nodiscard]] const auto& getID() const { return id; }

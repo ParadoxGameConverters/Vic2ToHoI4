@@ -205,7 +205,7 @@ void HoI4::outputCountry(const std::set<Advisor>& ideologicalMinisters,
 		outputOOB(divisionTemplates, theCountry, theConfiguration);
 		outputCommonCountryFile(theCountry, theConfiguration);
 		outputAdvisorIdeas(theCountry.getTag(), ideologicalMinisters, theConfiguration);
-		outputAIStrategy(theCountry, theConfiguration);
+		outputAIStrategy(theCountry, theConfiguration.getOutputName());
 
 		if (auto nationalFocus = theCountry.getNationalFocus(); nationalFocus)
 		{

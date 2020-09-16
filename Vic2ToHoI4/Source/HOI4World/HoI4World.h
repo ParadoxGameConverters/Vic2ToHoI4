@@ -108,7 +108,6 @@ class World: commonItems::parser
 	void processInfluence();
 	void determineSpherelings();
 	void calculateSpherelingAutonomy();
-	void buildConquerStrategies();
 
   private:
 	World(const World&) = delete;

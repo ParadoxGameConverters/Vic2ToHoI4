@@ -140,7 +140,6 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	}
 
 	HoI4WarCreator warCreator(this, *theMapData, provinceDefinitions, *hoi4Localisations, theConfiguration);
-	buildConquerStrategies();
 
 	addFocusTrees();
 	adjustResearchFocuses();
@@ -1066,35 +1065,4 @@ std::set<std::string> HoI4::World::getSouthAsianCountries() const
 	}
 
 	return southAsianCountries;
-}
-
-void HoI4::World::buildConquerStrategies()
-{
-	for (auto& country: countries)
-	{
-		for (const auto& strategy: country.second->getAIStrategies())
-		{
-			if (strategy.getType() == "conquer_prov")
-			{
-				if (auto HoI4Tag =
-						  countryMap.getHoI4Tag((*sourceWorld->getProvince(std::stoi(strategy.getID())))->getOwner());
-					 HoI4Tag)
-				{
-					const auto& conquerStrategies = country.second->getConquerStrategies();
-
-					if (const auto& conquerTag = conquerStrategies.find(*HoI4Tag); conquerTag == conquerStrategies.end())
-					{
-						HoI4::AIStrategy newStrategy("conquer");
-						newStrategy.setID(*HoI4Tag);
-						newStrategy.increaseValue(strategy.getValue());
-						country.second->addConquerStrategy(newStrategy);
-					}
-					else
-					{
-						country.second->updateConquerStrategy(*HoI4Tag, strategy.getValue());
-					}
-				}
-			}
-		}
-	}
 }

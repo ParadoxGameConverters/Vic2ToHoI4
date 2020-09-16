@@ -65,6 +65,7 @@ class World: commonItems::parser
 	void mergeNations(const std::string& masterTag, const std::vector<std::string>& slaveTags, bool debug);
 
 	void checkAllProvincesMapped(const mappers::ProvinceMapper& provinceMapper) const;
+	void consolidateConquerStrategies();
 
 	void readCountryFiles(const Configuration& theConfiguration);
 	bool processCountriesDotTxt(const std::string& countryListFile,

@@ -15,13 +15,15 @@ class AIStrategy: commonItems::parser
   public:
 	explicit AIStrategy(const std::string& strategyType, std::istream& theStream);
 
-	std::string getType() const { return type; }
-	std::string getID() const { return id; }
+	const auto& getType() const { return type; }
+	const auto& getID() const { return id; }
+	int getProvID() const { return provID; }
 	int getValue() const { return value; }
 
   private:
 	std::string type;
 	std::string id;
+	int provID;
 	int value = 0;
 };
 

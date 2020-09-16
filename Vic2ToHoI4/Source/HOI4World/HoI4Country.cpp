@@ -273,16 +273,22 @@ void HoI4::Country::convertRelations(const CountryMapper& countryMap)
 
 void HoI4::Country::convertStrategies(const CountryMapper& countryMap)
 {
+	const auto& srcConquerStrategies = sourceCountry.getAI()->getConsolidatedStrategies();
+	for (const auto& strategy: srcConquerStrategies)
+	{
+		if (const auto& HoI4Tag = countryMap.getHoI4Tag(strategy.first); HoI4Tag)
+		{
+			HoI4::AIStrategy newStrategy("conquer");
+			newStrategy.setID(*HoI4Tag);
+			newStrategy.setValue(strategy.second);
+			conquerStrategies.push_back(newStrategy);
+		}
+	}
+
 	const auto& srcStrategies = sourceCountry.getAI()->getStrategies();
 	for (const auto& srcStrategy: srcStrategies)
 	{
-		auto strategyType = srcStrategy.getType();
-		if (strategyType == "conquer_prov")
-		{
-			HoI4::AIStrategy newStrategy(srcStrategy);
-			aiStrategies.push_back(newStrategy);
-		}
-		else if (const auto& HoI4Tag = countryMap.getHoI4Tag(srcStrategy.getID()); HoI4Tag)
+		if (const auto& HoI4Tag = countryMap.getHoI4Tag(srcStrategy.getID()); HoI4Tag)
 		{
 			HoI4::AIStrategy newStrategy(srcStrategy);
 			newStrategy.updateStrategy();
@@ -982,13 +988,7 @@ double HoI4::Country::calculateInfluenceFactor()
 	}
 }
 
-void HoI4::Country::updateConquerStrategy(std::string HoI4Tag, int valueToAdd)
-{
-	auto& theStrategy = conquerStrategies.find(HoI4Tag)->second;
-	theStrategy.increaseValue(valueToAdd);
-}
-
-bool HoI4::Country::canDeclareWar(std::string target)
+bool HoI4::Country::canDeclareWar(const std::string& target)
 {
 	std::set<std::string> allies;
 	if (faction)
