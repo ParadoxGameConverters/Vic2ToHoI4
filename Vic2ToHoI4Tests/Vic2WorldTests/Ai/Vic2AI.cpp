@@ -1,7 +1,7 @@
-#include "Vic2AI.h"
-#include "../World.h"
-#include "../Provinces/Province.h"
-#include "AIStrategy.h"
+#include "../Vic2ToHoI4/Source/V2World/Ai/Vic2AI.h"
+#include "../Vic2ToHoI4/Source/V2World/Ai/AIStrategy.h"
+#include "../Vic2ToHoI4/Source/V2World/World.h"
+#include "../Vic2ToHoI4/Source/V2World/Provinces/Province.h"
 #include "ParserHelpers.h"
 
 
@@ -45,5 +45,6 @@ void Vic2::Vic2AI::consolidateConquerStrategies(const std::map<int, std::shared_
 
 void Vic2::Vic2AI::updateStrategy(const std::string& tag, int valueToAdd)
 {
-	consolidatedConquerStrategies.find(tag)->second += valueToAdd;
+	auto& value = consolidatedConquerStrategies.find(tag)->second;
+	value += valueToAdd;
 }

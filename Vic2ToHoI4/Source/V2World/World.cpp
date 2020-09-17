@@ -2,7 +2,7 @@
 #include "CommonCountryData.h"
 #include "Configuration.h"
 #include "Country.h"
-#include "Ai\Vic2AI.h"
+#include "Ai/Vic2AI.h"
 #include "Culture/CultureGroupsFactory.h"
 #include "Date.h"
 #include "Diplomacy/DiplomacyFactory.h"
