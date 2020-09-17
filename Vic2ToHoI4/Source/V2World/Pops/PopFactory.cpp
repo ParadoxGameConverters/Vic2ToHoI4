@@ -16,16 +16,16 @@ Vic2::Pop::Factory::Factory(const Issues& _theIssues): theIssues(_theIssues)
 		pop->militancy = commonItems::singleDouble{theStream}.getDouble();
 	});
 	registerKeyword("issues", [this](const std::string& unused, std::istream& theStream) {
-		for (const auto& assignment: commonItems::assignments{theStream}.getAssignments())
+		for (const auto& [issue, value]: commonItems::assignments{theStream}.getAssignments())
 		{
 			try
 			{
-				auto issueName = theIssues.getIssueName(std::stoi(assignment.first));
-				pop->popIssues.insert(std::make_pair(issueName, std::stof(assignment.second)));
+				auto issueName = theIssues.getIssueName(std::stoi(issue));
+				pop->popIssues.insert(std::make_pair(issueName, std::stof(value)));
 			}
 			catch (...)
 			{
-				Log(LogLevel::Warning) << "Poorly formatted pop issue: " << assignment.first << "=" << assignment.second;
+				Log(LogLevel::Warning) << "Poorly formatted pop issue: " << issue << "=" << value;
 			}
 		}
 	});

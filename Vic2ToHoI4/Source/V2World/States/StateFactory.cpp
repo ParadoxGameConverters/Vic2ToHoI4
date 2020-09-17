@@ -41,10 +41,10 @@ std::unique_ptr<Vic2::State> Vic2::State::Factory::getUnownedState(
 {
 	state = std::make_unique<State>();
 
-	for (const auto& province: theProvinces)
+	for (const auto& [provinceNum, province]: theProvinces)
 	{
-		state->provinceNumbers.insert(province.first);
-		state->provinces.insert(province.second);
+		state->provinceNumbers.insert(provinceNum);
+		state->provinces.insert(province);
 	}
 	setID(theStateDefinitions);
 	determineIfPartialState(theStateDefinitions);
