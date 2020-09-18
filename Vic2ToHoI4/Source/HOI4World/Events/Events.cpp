@@ -817,6 +817,7 @@ void HoI4::Events::addRevolutionEvents(const std::set<std::string>& majorIdeolog
 		revolutionEvent.givePicture(getIdeologicalPicture(ideology));
 		std::string trigger = "= {\n";
 		trigger += "\t\t" + ideology + " > 0.7\n";
+		trigger += "\t\tnum_of_controlled_states > 1\n";
 		trigger += "\t\tNOT = { has_government = " + ideology + " }\n";
 		trigger += "\t\thas_civil_war = no\n";
 		trigger += "\t}";
