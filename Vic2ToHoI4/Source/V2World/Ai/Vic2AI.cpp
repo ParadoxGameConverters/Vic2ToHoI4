@@ -13,7 +13,7 @@ Vic2::Vic2AI::Vic2AI(std::istream& theStream)
 			 const auto& strategy = AIStrategy(strategyType, theStream);
 			 aiStrategies.push_back(strategy);
 		 });
-	registerRegex("conquer_prov", [this](const std::string& strategyType, std::istream& theStream) {
+	registerKeyword("conquer_prov", [this](const std::string& strategyType, std::istream& theStream) {
 		const auto& conquerStrategy = AIStrategy(strategyType, theStream);
 		conquerStrategies.push_back(conquerStrategy);
 	});
@@ -25,7 +25,7 @@ Vic2::Vic2AI::Vic2AI(std::istream& theStream)
 
 void Vic2::Vic2AI::consolidateConquerStrategies(const std::map<int, std::shared_ptr<Province>>& provinces)
 {
-	for (const auto& strategy: getConquerStrategies())
+	for (const auto& strategy: conquerStrategies)
 	{
 		if (const auto& theProvince = provinces.find(strategy.getProvID())->second; theProvince)
 		{
