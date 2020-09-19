@@ -103,6 +103,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 
 	determineGreatPowers();
 
+	scriptedEffects = std::make_unique<ScriptedEffects>(theConfiguration.getHoI4Path());
 	scriptedLocalisations = ScriptedLocalisations::Factory{}.getScriptedLocalisations();
 	setupNavalTreaty();
 
