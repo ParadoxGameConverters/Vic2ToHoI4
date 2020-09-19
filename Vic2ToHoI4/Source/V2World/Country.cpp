@@ -70,7 +70,7 @@ Vic2::Country::Country(const std::string& theTag,
 	});
 	registerKeyword("primary_culture", [this, &theCultureGroups](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString cultureString(theStream);
-		primaryCulture = stringutils::remQuotes(cultureString.getString());
+		primaryCulture = commonItems::remQuotes(cultureString.getString());
 		acceptedCultures.insert(primaryCulture);
 
 		auto cultureGroupOption = theCultureGroups.getGroup(primaryCulture);

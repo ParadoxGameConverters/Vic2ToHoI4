@@ -10,7 +10,7 @@ Vic2::Regiment::Regiment(std::istream& theStream)
 {
 	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString nameString(theStream);
-		name = Utils::convertWin1252ToUTF8(nameString.getString());
+		name = commonItems::convertWin1252ToUTF8(nameString.getString());
 	});
 	registerKeyword("type", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString typeString(theStream);
@@ -47,7 +47,7 @@ Vic2::Army::Army(const std::string& type, std::istream& theStream): navy(type ==
 {
 	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString nameString(theStream);
-		name = Utils::convertWin1252ToUTF8(nameString.getString());
+		name = commonItems::convertWin1252ToUTF8(nameString.getString());
 	});
 	registerKeyword("location", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleInt locationInt(theStream);

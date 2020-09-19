@@ -156,7 +156,7 @@ void HoI4::OutputWorld(const World& world,
 
 	Log(LogLevel::Info) << "\tOutputting world";
 
-	if (!Utils::TryCreateFolder("output/" + outputName + "/history"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/history"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/history");
 	}
@@ -201,7 +201,7 @@ void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<Cou
 	 const std::string& outputName)
 {
 	Log(LogLevel::Info) << "\t\tCreating country tags";
-	if (!Utils::TryCreateFolder("output/" + outputName + "/common/country_tags"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/country_tags"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/common/country_tags");
 	}
@@ -238,7 +238,7 @@ void HoI4::outputColorsFile(const std::map<std::string, std::shared_ptr<Country>
 {
 	Log(LogLevel::Info) << "\t\tWriting country colors";
 
-	if (!Utils::TryCreateFolder("output/" + outputName + "/common/countries"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/countries"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/common/countries");
 	}
@@ -305,7 +305,7 @@ void HoI4::outputMap(const States& states, const StrategicRegions& strategicRegi
 {
 	Log(LogLevel::Info) << "\t\tWriting map info";
 
-	if (!Utils::TryCreateFolder("output/" + outputName + "/map"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/map"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/map");
 	}
@@ -332,7 +332,7 @@ void HoI4::outputGenericFocusTree(const HoI4FocusTree& genericFocusTree, const s
 {
 	Log(LogLevel::Info) << "\t\tWriting generic focus tree";
 
-	if (!Utils::TryCreateFolder("output/" + outputName + "/common/national_focus"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/national_focus"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/common/national_focus");
 	}
@@ -349,19 +349,19 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 {
 	Log(LogLevel::Info) << "\t\tWriting countries";
 
-	if (!Utils::TryCreateFolder("output/" + outputName + "/history"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/history"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/history");
 	}
-	if (!Utils::TryCreateFolder("output/" + outputName + "/history/countries"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/history/countries"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/history/countries");
 	}
-	if (!Utils::TryCreateFolder("output/" + outputName + "/history/states"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/history/states"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/history/states");
 	}
-	if (!Utils::TryCreateFolder("output/" + outputName + "/history/units"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/history/units"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/history/units");
 	}
@@ -401,7 +401,7 @@ void HoI4::outputRelations(const std::string& outputName)
 {
 	Log(LogLevel::Info) << "\t\tWriting opinion modifiers";
 
-	if (!Utils::TryCreateFolder("output/" + outputName + "/common/opinion_modifiers"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/opinion_modifiers"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/common/opinion_modifiers/");
 	}

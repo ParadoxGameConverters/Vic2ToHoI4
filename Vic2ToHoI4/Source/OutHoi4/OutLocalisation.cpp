@@ -60,7 +60,7 @@ void HoI4::outputLocalisation(const Localisation& localisation, const std::strin
 {
 	Log(LogLevel::Debug) << "Writing localisations";
 	const auto localisationPath = "output/" + outputName + "/localisation";
-	if (!Utils::TryCreateFolder(localisationPath))
+	if (!commonItems::TryCreateFolder(localisationPath))
 	{
 		throw std::runtime_error("Could not create localisation folder");
 	}

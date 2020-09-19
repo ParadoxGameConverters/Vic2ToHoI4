@@ -34,7 +34,7 @@ mappers::ProvinceMapper mappers::ProvinceMapper::Parser::initializeMapper(const 
 	auto mapped = false;
 	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
-		if (Utils::DoesFileExist(mod.getName() + "_province_mappings.txt"))
+		if (commonItems::DoesFileExist(mod.getName() + "_province_mappings.txt"))
 		{
 			parseFile(mod.getName() + "_province_mappings.txt");
 			mapped = true;

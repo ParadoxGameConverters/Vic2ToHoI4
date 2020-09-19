@@ -7,10 +7,10 @@
 Vic2::Agreement::Factory::Factory()
 {
 	registerKeyword("first", [this](const std::string& unused, std::istream& theStream) {
-		agreement->country1 = stringutils::remQuotes(commonItems::singleString{theStream}.getString());
+		agreement->country1 = commonItems::remQuotes(commonItems::singleString{theStream}.getString());
 	});
 	registerKeyword("second", [this](const std::string& unused, std::istream& theStream) {
-		agreement->country2 = stringutils::remQuotes(commonItems::singleString{theStream}.getString());
+		agreement->country2 = commonItems::remQuotes(commonItems::singleString{theStream}.getString());
 	});
 	registerKeyword("start_date", [this](const std::string& unused, std::istream& theStream) {
 		agreement->startDate = date(commonItems::singleString{theStream}.getString());

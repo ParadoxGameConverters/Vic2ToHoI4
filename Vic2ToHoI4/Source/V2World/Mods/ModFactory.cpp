@@ -29,7 +29,7 @@ std::unique_ptr<Vic2::Mod> Vic2::Mod::Factory::getMod(const std::string& modFile
 	{
 		throw std::runtime_error(mod->name + " specifies no folder.");
 	}
-	if (!Utils::DoesFolderExist(Vic2ModDir + "/" + mod->directory))
+	if (!commonItems::DoesFolderExist(Vic2ModDir + "/" + mod->directory))
 	{
 		throw std::runtime_error(mod->name + "'s folder is missing.");
 	}

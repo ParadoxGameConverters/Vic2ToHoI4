@@ -24,12 +24,12 @@ Configuration::Factory::Factory()
 	});
 	registerKeyword("HoI4directory", [this](const std::string& unused, std::istream& theStream) {
 		configuration->HoI4Path = commonItems::singleString{theStream}.getString();
-		if (configuration->HoI4Path.empty() || !Utils::DoesFolderExist(configuration->HoI4Path))
+		if (configuration->HoI4Path.empty() || !commonItems::DoesFolderExist(configuration->HoI4Path))
 		{
 			throw std::runtime_error("No HoI4 path was specified in configuration.txt, or the path was invalid");
 		}
-		if (!Utils::DoesFileExist(configuration->HoI4Path + "/hoi4.exe") &&
-			 !Utils::DoesFileExist(configuration->HoI4Path + "/hoi4"))
+		if (!commonItems::DoesFileExist(configuration->HoI4Path + "/hoi4.exe") &&
+			 !commonItems::DoesFileExist(configuration->HoI4Path + "/hoi4"))
 		{
 			throw std::runtime_error("The HoI4 path specified in configuration.txt does not contain HoI4");
 		}
@@ -38,14 +38,14 @@ Configuration::Factory::Factory()
 	});
 	registerKeyword("Vic2directory", [this](const std::string& unused, std::istream& theStream) {
 		configuration->Vic2Path = commonItems::singleString{theStream}.getString();
-		if (configuration->Vic2Path.empty() || !Utils::DoesFolderExist(configuration->Vic2Path))
+		if (configuration->Vic2Path.empty() || !commonItems::DoesFolderExist(configuration->Vic2Path))
 		{
 			throw std::runtime_error("No Victoria 2 path was specified in configuration.txt, or the path was invalid");
 		}
-		if (!Utils::DoesFileExist(configuration->Vic2Path + "/v2game.exe") &&
-			 !Utils::DoesFileExist(configuration->Vic2Path + "/v2game") &&
-			 !Utils::DoesFolderExist(configuration->Vic2Path + "/Victoria 2 - Heart Of Darkness.app") &&
-			 !Utils::DoesFolderExist(configuration->Vic2Path + "/../../MacOS"))
+		if (!commonItems::DoesFileExist(configuration->Vic2Path + "/v2game.exe") &&
+			 !commonItems::DoesFileExist(configuration->Vic2Path + "/v2game") &&
+			 !commonItems::DoesFolderExist(configuration->Vic2Path + "/Victoria 2 - Heart Of Darkness.app") &&
+			 !commonItems::DoesFolderExist(configuration->Vic2Path + "/../../MacOS"))
 		{
 			throw std::runtime_error("The Victoria 2 path specified in configuration.txt does not contain Victoria 2");
 		}
@@ -54,7 +54,7 @@ Configuration::Factory::Factory()
 	});
 	registerKeyword("Vic2ModPath", [this](const std::string& unused, std::istream& theStream) {
 		configuration->Vic2ModPath = commonItems::singleString{theStream}.getString();
-		if (configuration->Vic2ModPath.empty() || !Utils::DoesFolderExist(configuration->Vic2ModPath))
+		if (configuration->Vic2ModPath.empty() || !commonItems::DoesFolderExist(configuration->Vic2ModPath))
 		{
 			throw std::runtime_error("No Victoria 2 mod path was specified in configuration.txt, or the path was invalid");
 		}
@@ -210,7 +210,7 @@ void Configuration::Factory::importMods()
 	Vic2::Mod::Factory modFactory;
 	for (const auto& modFileName: modFileNames)
 	{
-		if (Utils::DoesFileExist(configuration->Vic2ModPath + "/" + modFileName))
+		if (commonItems::DoesFileExist(configuration->Vic2ModPath + "/" + modFileName))
 		{
 			auto mod = modFactory.getMod(modFileName, configuration->Vic2ModPath);
 			configuration->Vic2Mods.push_back(std::move(*mod));

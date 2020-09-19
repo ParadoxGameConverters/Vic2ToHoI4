@@ -17,7 +17,7 @@ std::list<std::string> Vic2::inventions::getInventionFiles(const Configuration& 
 {
 	std::map<std::string, std::string> techFiles;
 
-	auto mainTechFiles = Utils::GetAllFilesInFolder(theConfiguration.getVic2Path() + "/inventions/");
+	auto mainTechFiles = commonItems::GetAllFilesInFolder(theConfiguration.getVic2Path() + "/inventions/");
 	std::for_each(mainTechFiles.begin(), mainTechFiles.end(), [&techFiles, &theConfiguration](const std::string& file) {
 		techFiles[file] = theConfiguration.getVic2Path() + "/inventions/";
 	});
@@ -25,9 +25,9 @@ std::list<std::string> Vic2::inventions::getInventionFiles(const Configuration& 
 	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
 		std::string modInventionsPath = theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/inventions/";
-		if (Utils::DoesFolderExist(modInventionsPath))
+		if (commonItems::DoesFolderExist(modInventionsPath))
 		{
-			auto modTechFiles = Utils::GetAllFilesInFolder(modInventionsPath);
+			auto modTechFiles = commonItems::GetAllFilesInFolder(modInventionsPath);
 			std::for_each(modTechFiles.begin(),
 				 modTechFiles.end(),
 				 [&techFiles, modInventionsPath](const std::string& file) {

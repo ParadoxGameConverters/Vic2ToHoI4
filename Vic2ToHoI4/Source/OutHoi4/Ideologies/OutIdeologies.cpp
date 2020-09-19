@@ -5,7 +5,7 @@
 
 void HoI4::outputIdeologies(const Ideologies& ideologies, const std::string& outputName)
 {
-	if (!Utils::TryCreateFolder("output/" + outputName + "/common/ideologies/"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/ideologies/"))
 	{
 		Log(LogLevel::Error) << "Could not create output/" + outputName + "/common/ideologies/";
 	}

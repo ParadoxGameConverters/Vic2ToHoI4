@@ -98,7 +98,7 @@ void HoI4::Country::determineFilename()
 	auto possibleFilename = sourceCountry.getName("english");
 	if (possibleFilename)
 	{
-		filename = Utils::convertWin1252ToUTF8(*possibleFilename);
+		filename = commonItems::convertWin1252ToUTF8(*possibleFilename);
 		auto pipe = filename.find_first_of('|');
 		while (pipe != std::string::npos)
 		{

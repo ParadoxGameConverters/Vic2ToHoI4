@@ -50,7 +50,7 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 		defaultStates.insert(std::make_pair(num, DefaultState(theStream)));
 	});
 
-	for (const auto& stateFile: Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/history/states"))
+	for (const auto& stateFile: commonItems::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/history/states"))
 	{
 		num = stoi(stateFile.substr(0, stateFile.find_first_of('-')));
 		parseFile(theConfiguration.getHoI4Path() + "/history/states/" + stateFile);

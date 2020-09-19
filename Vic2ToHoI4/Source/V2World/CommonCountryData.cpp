@@ -28,7 +28,7 @@ Vic2::commonCountryData::commonCountryData(const std::string& filename,
 				{
 					name = name.substr(1, name.length() - 2);
 				}
-				unitNames[*token].emplace_back(Utils::convertWin1252ToUTF8(name));
+				unitNames[*token].emplace_back(commonItems::convertWin1252ToUTF8(name));
 			}
 
 			token = getNextTokenWithoutMatching(theStream);
@@ -45,7 +45,7 @@ Vic2::commonCountryData::commonCountryData(const std::string& filename,
 	{
 		std::string file =
 			 theConfiguration.getVic2Path() + "/mod/" + mod->getDirectory() + "/common/countries/" + filename;
-		if (Utils::DoesFileExist(file))
+		if (commonItems::DoesFileExist(file))
 		{
 			parseFile(file);
 			parsedFile = true;
@@ -54,7 +54,7 @@ Vic2::commonCountryData::commonCountryData(const std::string& filename,
 	if (!parsedFile)
 	{
 		std::string file = theConfiguration.getVic2Path() + "/common/countries/" + filename;
-		if (Utils::DoesFileExist(file))
+		if (commonItems::DoesFileExist(file))
 		{
 			parseFile(file);
 		}

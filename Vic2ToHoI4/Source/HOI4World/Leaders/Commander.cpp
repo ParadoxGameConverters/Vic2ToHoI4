@@ -6,7 +6,7 @@
 
 
 HoI4::Commander::Commander(const Vic2::Leader& srcLeader, std::string portrait):
-	name(Utils::convertWin1252ToUTF8(srcLeader.getName())),
+	 name(commonItems::convertWin1252ToUTF8(srcLeader.getName())),
 	picture(std::move(portrait)),
 skill(static_cast<int>(srcLeader.getPrestige() * 22.5f) + 1)
 {
