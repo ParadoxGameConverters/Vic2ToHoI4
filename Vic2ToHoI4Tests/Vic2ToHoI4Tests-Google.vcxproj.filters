@@ -1148,6 +1148,12 @@
     <ClCompile Include="Vic2WorldTests\Diplomacy\RelationsTests.cpp">
       <Filter>Vic2WorldTests\Diplomacy</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\ScriptedEffects\ScriptedEffectTests.cpp">
+      <Filter>HoI4WorldTests\ScriptedEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffectFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedEffects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1437,6 +1443,12 @@
     </Filter>
     <Filter Include="Vic2WorldTests\Diplomacy">
       <UniqueIdentifier>{2d4fb8d5-a008-4dd4-b463-16571347b289}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\ScriptedEffects">
+      <UniqueIdentifier>{1ac11e04-a999-4d37-bf5c-cf8f5fc355d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\ScriptedEffects">
+      <UniqueIdentifier>{e6aa419f-0e75-459e-8830-1722694151e7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

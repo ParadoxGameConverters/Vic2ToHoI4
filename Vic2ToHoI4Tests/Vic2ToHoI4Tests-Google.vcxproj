@@ -87,6 +87,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regions\Regions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regions\RegionsFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffectFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
@@ -374,6 +375,7 @@
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativesNamesSetTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Regions\RegionsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\ScriptedEffects\ScriptedEffectTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedTriggers\ScriptedTriggerTests.cpp" />
