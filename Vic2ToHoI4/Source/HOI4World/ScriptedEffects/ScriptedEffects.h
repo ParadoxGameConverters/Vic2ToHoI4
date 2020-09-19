@@ -16,14 +16,14 @@ namespace HoI4
 class ScriptedEffects
 {
   public:
-	ScriptedEffects(const std::string& HoI4Location);
+	explicit ScriptedEffects(const std::string& HoI4Location);
 
 	[[nodiscard]] const auto& getOperationStratEffects() const { return operationStratEffects; }
 
 	void updateOperationStratEffects(const std::set<std::string>& majorIdeologies);
 
   private:
-	void updateUpdateOperationAi(ScriptedEffect& updateOperationAi, const std::set<std::string>& majorIdeologies) const;
+	void updateUpdateOperationAi(ScriptedEffect* updateOperationAi, const std::set<std::string>& majorIdeologies) const;
 
 	std::vector<ScriptedEffect> operationStratEffects;
 };

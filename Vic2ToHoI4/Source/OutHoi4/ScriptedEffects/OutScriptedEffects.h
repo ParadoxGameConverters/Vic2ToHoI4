@@ -16,7 +16,7 @@ void outputScriptedEffects(const ScriptedEffects& scriptedEffects,
 	 const std::set<std::string>& majorIdeologies,
 	 const std::string& outputName);
 
-}
+} // namespace HoI4
 
 
 

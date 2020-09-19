@@ -17,16 +17,16 @@ void HoI4::ScriptedEffects::updateOperationStratEffects(const std::set<std::stri
 	{
 		if (effect.getName() == "update_operation_ai")
 		{
-			updateUpdateOperationAi(effect, majorIdeologies);
+			updateUpdateOperationAi(&effect, majorIdeologies);
 		}
 	}
 }
 
 
-void HoI4::ScriptedEffects::updateUpdateOperationAi(ScriptedEffect& updateOperationAi,
+void HoI4::ScriptedEffects::updateUpdateOperationAi(ScriptedEffect* updateOperationAi,
 	 const std::set<std::string>& majorIdeologies) const
 {
-	for (auto& [itemName, itemBody]: updateOperationAi.getMutableItems())
+	for (auto& [itemName, itemBody]: updateOperationAi->getMutableItems())
 	{
 		if (!std::regex_search(itemBody, std::regex("fascism")))
 		{

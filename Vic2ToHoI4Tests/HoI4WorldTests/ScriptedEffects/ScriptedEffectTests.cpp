@@ -47,15 +47,15 @@ TEST(HoI4World_ScriptedEffects_ScriptedEffectTests, ItemsCanBeModified)
 	const auto theEffect = HoI4::ScriptedEffect::Factory{}.getScriptedEffect("test_name", input);
 
 	auto& items = theEffect->getMutableItems();
-	for (auto& item: items)
+	for (auto& [itemName, itemBody]: items)
 	{
-		if (item.first == "if")
+		if (itemName == "if")
 		{
-			item.second = "= { something }";
+			itemBody = "= { something }";
 			break;
 		}
 	}
-	items.push_back(std::make_pair<std::string, std::string>("baz", "= { qux }"));
+	items.emplace_back(std::make_pair("baz", "= { qux }"));
 
 	const std::vector<std::pair<std::string, std::string>> expectedItems{{"if", "= { something }"},
 		 {"foo", "= { bar }"},

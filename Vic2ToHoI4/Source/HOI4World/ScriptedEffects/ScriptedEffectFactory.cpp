@@ -6,7 +6,7 @@
 HoI4::ScriptedEffect::Factory::Factory()
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& itemName, std::istream& theStream) {
-		scriptedEffect->items.push_back(std::make_pair(itemName, commonItems::stringOfItem{theStream}.getString()));
+		scriptedEffect->items.emplace_back(std::make_pair(itemName, commonItems::stringOfItem{theStream}.getString()));
 	});
 }
 
