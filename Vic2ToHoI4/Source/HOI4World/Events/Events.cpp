@@ -1331,9 +1331,41 @@ void HoI4::Events::createStabilityEvents(const std::set<std::string>& majorIdeol
 
 	parseFile(theConfiguration.getHoI4Path() + "/events/stability_events.txt");
 
+	auto lowStabilitySelector = stabilityEvents.find("stability.3");
+	std::stringstream trigger;
+	trigger << "= {\n";
+	trigger << "\t\thas_war = yes\n";
+	trigger << "\t\thas_civil_war = no\n";
+	trigger << "\t\tOR = {\n";
+	trigger << "\t\t\thas_stability < 0.5\n";
+	trigger << "\t\t\thas_war_support < 0.5\n";
+	trigger << "\t\t}\n";
+	trigger << "\t\tNOT = {\n";
+	trigger << "\t\t\tAND = {\n";
+	trigger << "\t\t\t\tis_major = yes\n";
+	trigger << "\t\t\t\tall_enemy_country = {\n";
+	trigger << "\t\t\t\t\tis_major = no\n";
+	trigger << "\t\t\t\t}\n";
+	trigger << "\t\t\t}\n";
+	trigger << "\t\t}\n";
+	trigger << "\t\tNOT = { \n";
+	trigger << "\t\t\thas_country_flag = crisis_in_progress\n";
+	trigger << "\t\t}\n";
+	trigger << "\t\tNOT = { # Don't fire stability events if the country is not mobilising at all\n";
+	trigger << "\t\t\tOR = {\n";
+	trigger << "\t\t\t\thas_idea = disarmed_nation\n";
+	trigger << "\t\t\t\thas_idea = volunteer_only\n";
+	trigger << "\t\t\t}\n";
+	trigger << "\t\t\tOR = {\n";
+	trigger << "\t\t\t\thas_idea = undisturbed_isolation\n";
+	trigger << "\t\t\t\thas_idea = isolation\n";
+	trigger << "\t\t\t\thas_idea = civilian_economy\n";
+	trigger << "\t\t\t}\n";
+	trigger << "\t\t}\n";
+	trigger << "\t}";
+	lowStabilitySelector->second.giveTrigger(trigger.str());
 	if (majorIdeologies.count("democratic") == 0)
 	{
-		auto lowStabilitySelector = stabilityEvents.find("stability.3");
 		std::string mtth = "= {\n";
 		mtth += "\t\tdays = 360\n";
 		mtth += "\t\tmodifier = {\n";
