@@ -2,4 +2,4 @@
 
 version = "0.2M-prerelease"
 name = "Mussolini"
-descriptionLine = "compatible with 1.9.0"
+descriptionLine = "compatible with 1.9.3"
