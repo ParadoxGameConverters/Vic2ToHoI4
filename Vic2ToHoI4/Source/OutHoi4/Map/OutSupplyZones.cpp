@@ -6,7 +6,7 @@
 
 void HoI4::outputSupplyZones(const SupplyZones& supplyZones, const std::string& outputName)
 {
-	if (!Utils::TryCreateFolder("output/" + outputName + "/map/supplyareas"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/map/supplyareas"))
 	{
 		throw std::runtime_error("Could not create \"output/" + outputName + "/map/supplyareas");
 	}

@@ -46,19 +46,19 @@ void HoI4::copyFlags(const std::map<std::string, std::shared_ptr<Country>>& coun
 {
 	Log(LogLevel::Info) << "\tCreating flags";
 
-	if (!Utils::TryCreateFolder("output/" + outputName + "/gfx"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/gfx"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/gfx");
 	}
-	if (!Utils::TryCreateFolder("output/" + outputName + "/gfx/flags"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/gfx/flags"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags");
 	}
-	if (!Utils::TryCreateFolder("output/" + outputName + "/gfx/flags/medium"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/gfx/flags/medium"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/medium");
 	}
-	if (!Utils::TryCreateFolder("output/" + outputName + "/gfx/flags/small"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/gfx/flags/small"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/small");
 	}
@@ -155,7 +155,7 @@ std::optional<std::string> HoI4::getSourceFlagPath(const std::string& Vic2Tag,
 	 const std::string& vic2ModPath)
 {
 	auto path = "flags/" + Vic2Tag + sourceSuffix;
-	if (Utils::DoesFileExist(path))
+	if (commonItems::DoesFileExist(path))
 	{
 		return path;
 	}
@@ -163,14 +163,14 @@ std::optional<std::string> HoI4::getSourceFlagPath(const std::string& Vic2Tag,
 	if (isThisAConvertedTag(Vic2Tag))
 	{
 		if (auto possiblePath = getConversionModFlag(Vic2Tag + sourceSuffix, vic2Mods, vic2ModPath);
-			 Utils::DoesFileExist(*possiblePath))
+			 commonItems::DoesFileExist(*possiblePath))
 		{
 			return *possiblePath;
 		}
 	}
 
 	if (auto possiblePath = getAllowModFlags(Vic2Tag + sourceSuffix, vic2Mods, vic2ModPath);
-		 Utils::DoesFileExist(*possiblePath))
+		 commonItems::DoesFileExist(*possiblePath))
 	{
 		return *possiblePath;
 	}
@@ -178,14 +178,14 @@ std::optional<std::string> HoI4::getSourceFlagPath(const std::string& Vic2Tag,
 	if (isThisAConvertedTag(Vic2Tag))
 	{
 		if (auto possiblePath = getConversionModFlag(Vic2Tag + ".tga", vic2Mods, vic2ModPath);
-			 Utils::DoesFileExist(*possiblePath))
+			 commonItems::DoesFileExist(*possiblePath))
 		{
 			return *possiblePath;
 		}
 	}
 
 	path = "flags/" + Vic2Tag + ".tga";
-	if (Utils::DoesFileExist(path))
+	if (commonItems::DoesFileExist(path))
 	{
 		return path;
 	}

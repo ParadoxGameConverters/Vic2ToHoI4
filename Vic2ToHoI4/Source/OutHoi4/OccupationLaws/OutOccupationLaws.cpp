@@ -7,7 +7,7 @@
 
 void HoI4::outputOccupationLaws(const OccupationLaws& occupationLaws, const Configuration& configuration)
 {
-	if (!Utils::TryCreateFolder("output/" + configuration.getOutputName() + "/common/occupation_laws/"))
+	if (!commonItems::TryCreateFolder("output/" + configuration.getOutputName() + "/common/occupation_laws/"))
 	{
 		throw std::runtime_error("Could not create output/" + configuration.getOutputName() + "/common/occupation_laws/");
 	}

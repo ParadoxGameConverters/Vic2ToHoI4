@@ -7,7 +7,7 @@
 
 void HoI4::outputOperations(const Operations& operations, const std::string& outputName)
 {
-	if (!Utils::TryCreateFolder("output/" + outputName + "/common/operations/"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/operations/"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/common/operations/");
 	}

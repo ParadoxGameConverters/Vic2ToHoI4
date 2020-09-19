@@ -7,7 +7,7 @@
 
 void HoI4::outputIntelligenceAgencies(const IntelligenceAgencies& intelligenceAgencies, const std::string& outputName)
 {
-	if (!Utils::TryCreateFolder("output/" + outputName + "/common/intelligence_agencies/"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/intelligence_agencies/"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/common/intelligence_agencies/");
 	}

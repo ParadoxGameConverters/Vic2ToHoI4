@@ -99,7 +99,7 @@ std::unique_ptr<HoI4::StrategicRegions> HoI4::StrategicRegions::Factory::importS
 	std::map<int, StrategicRegion> strategicRegions;
 	std::map<int, int> provinceToStrategicRegionMap;
 
-	for (const auto& filename: Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/map/strategicregions/"))
+	for (const auto& filename: commonItems::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/map/strategicregions/"))
 	{
 		auto newRegion = StrategicRegion(filename, theConfiguration);
 		strategicRegions.insert(std::make_pair(newRegion.getID(), newRegion));

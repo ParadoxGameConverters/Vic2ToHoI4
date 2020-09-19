@@ -37,7 +37,7 @@ std::unique_ptr<HoI4::Localisation> HoI4::Localisation::Importer::generateLocali
 
 void HoI4::Localisation::Importer::importLocalisations(const Configuration& theConfiguration)
 {
-	for (const auto& fileName: Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/localisation"))
+	for (const auto& fileName: commonItems::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/localisation"))
 	{
 		if (fileName.substr(0, 5) == "focus")
 		{
@@ -53,7 +53,7 @@ void HoI4::Localisation::Importer::importLocalisations(const Configuration& theC
 		}
 	}
 
-	for (const auto& fileName: Utils::GetAllFilesInFolder("blankmod/output/localisation"))
+	for (const auto& fileName: commonItems::GetAllFilesInFolder("blankmod/output/localisation"))
 	{
 		if (fileName.substr(0, 5) == "focus")
 		{

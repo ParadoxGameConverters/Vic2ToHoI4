@@ -34,7 +34,7 @@ HoI4::SupplyZones::SupplyZones(const std::map<int, DefaultState>& defaultStates,
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-	for (const auto& supplyZonesFile: Utils::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/map/supplyareas"))
+	for (const auto& supplyZonesFile: commonItems::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/map/supplyareas"))
 	{
 		auto num = stoi(supplyZonesFile.substr(0, supplyZonesFile.find_first_of('-')));
 		supplyZonesFileNames.insert(make_pair(num, supplyZonesFile));

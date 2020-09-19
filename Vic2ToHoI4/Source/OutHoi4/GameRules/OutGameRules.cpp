@@ -6,7 +6,7 @@
 
 void HoI4::outputGameRules(const GameRules& rules, const std::string& outputName)
 {
-	if(!Utils::TryCreateFolder("output/" + outputName + "/common/game_rules"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/game_rules"))
 	{
 		throw std::runtime_error{ "Could not create output/" + outputName + "/common/game_rules"};
 	}

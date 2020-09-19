@@ -6,7 +6,7 @@
 
 void HoI4::outputStrategicRegions(const StrategicRegions& strategicRegions, const std::string& outputName)
 {
-	if (!Utils::TryCreateFolder("output/" + outputName + "/map/strategicregions"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/map/strategicregions"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/map/strategicregions");
 	}
