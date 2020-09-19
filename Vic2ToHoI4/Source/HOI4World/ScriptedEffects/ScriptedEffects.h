@@ -4,6 +4,7 @@
 
 
 #include "ScriptedEffect.h"
+#include <set>
 #include <string>
 #include <vector>
 
@@ -19,7 +20,11 @@ class ScriptedEffects
 
 	[[nodiscard]] const auto& getOperationStratEffects() const { return operationStratEffects; }
 
+	void updateOperationStratEffects(const std::set<std::string>& majorIdeologies);
+
   private:
+	void updateUpdateOperationAi(ScriptedEffect& updateOperationAi, const std::set<std::string>& majorIdeologies) const;
+
 	std::vector<ScriptedEffect> operationStratEffects;
 };
 
