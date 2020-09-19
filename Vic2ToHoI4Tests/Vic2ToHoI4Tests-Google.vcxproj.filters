@@ -1154,6 +1154,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffectFactory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ScriptedEffects</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\ScriptedEffects\ScriptedEffectFileTests.cpp">
+      <Filter>HoI4WorldTests\ScriptedEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffectFile.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedEffects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1450,6 +1456,9 @@
     <Filter Include="Vic2ToHoI4 files\HoI4\ScriptedEffects">
       <UniqueIdentifier>{e6aa419f-0e75-459e-8830-1722694151e7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TestFiles\ScriptedEffects">
+      <UniqueIdentifier>{b4f66916-2bcb-41a1-9a27-e2fd66607965}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1576,6 +1585,12 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Localisations\StateCategories.txt">
       <Filter>TestFiles\Localistations</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\ScriptedEffects\empty_effects_file.txt">
+      <Filter>TestFiles\ScriptedEffects</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\ScriptedEffects\effects_file.txt">
+      <Filter>TestFiles\ScriptedEffects</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>
