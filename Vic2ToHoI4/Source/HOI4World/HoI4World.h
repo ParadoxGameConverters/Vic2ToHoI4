@@ -27,6 +27,7 @@
 #include "Operations/Operations.h"
 #include "OperativeNames/OperativeNames.h"
 #include "Parser.h"
+#include "ScriptedEffects/ScriptedEffects.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
 #include "ScriptedTriggers/ScriptedTriggers.h"
 #include "States/HoI4States.h"
@@ -110,6 +111,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getIdeologies() const { return *ideologies; }
 	[[nodiscard]] const auto& getTheIdeas() const { return *theIdeas; }
 	[[nodiscard]] const auto& getOccupationLaws() const { return *occupationLaws; }
+	[[nodiscard]] const auto& getScriptedEffects() const { return *scriptedEffects; }
 	[[nodiscard]] const auto& getScriptedLocalisations() const { return scriptedLocalisations; }
 	[[nodiscard]] const auto& getScriptedTriggers() const { return scriptedTriggers; }
 	[[nodiscard]] const auto& getGameRules() const { return *gameRules; }
@@ -242,6 +244,8 @@ class World: commonItems::parser
 
 	CoastalProvinces theCoastalProvinces;
 	std::unique_ptr<MapData> theMapData;
+
+	std::unique_ptr<ScriptedEffects> scriptedEffects;
 
 	std::unique_ptr<ScriptedLocalisations> scriptedLocalisations;
 	ScriptedTriggers scriptedTriggers;

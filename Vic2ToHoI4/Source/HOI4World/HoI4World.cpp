@@ -103,6 +103,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 
 	determineGreatPowers();
 
+	scriptedEffects = std::make_unique<ScriptedEffects>(theConfiguration.getHoI4Path());
 	scriptedLocalisations = ScriptedLocalisations::Factory{}.getScriptedLocalisations();
 	setupNavalTreaty();
 
@@ -110,6 +111,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	convertGovernments(vic2Localisations, theConfiguration.getDebug());
 	ideologies = std::make_unique<Ideologies>(theConfiguration);
 	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
+	scriptedEffects->updateOperationStratEffects(ideologies->getMajorIdeologies());
 	scriptedLocalisations->filterIdeologyLocalisations(ideologies->getMajorIdeologies());
 	genericFocusTree.addGenericFocusTree(ideologies->getMajorIdeologies());
 	importIdeologicalMinisters();
