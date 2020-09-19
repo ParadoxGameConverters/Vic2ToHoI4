@@ -997,6 +997,9 @@
     <ClCompile Include="Source\HOI4World\ScriptedEffects\ScriptedEffects.cpp">
       <Filter>HoI4World\ScriptedEffects</Filter>
     </ClCompile>
+    <ClCompile Include="Source\OutHoi4\ScriptedEffects\OutScriptedEffect.cpp">
+      <Filter>OutHoi4\ScriptedEffects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1904,6 +1907,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\ScriptedEffects\ScriptedEffects.h">
       <Filter>HoI4World\ScriptedEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\ScriptedEffects\OutScriptedEffect.h">
+      <Filter>OutHoi4\ScriptedEffects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

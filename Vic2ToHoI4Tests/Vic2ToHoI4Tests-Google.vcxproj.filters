@@ -1160,6 +1160,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffectFile.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ScriptedEffects</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ScriptedEffects\OutScriptedEffect.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\ScriptedEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffects.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedEffect</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1458,6 +1464,9 @@
     </Filter>
     <Filter Include="TestFiles\ScriptedEffects">
       <UniqueIdentifier>{b4f66916-2bcb-41a1-9a27-e2fd66607965}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\ScriptedEffect">
+      <UniqueIdentifier>{cc258a3d-20a2-4ef7-9bef-95ad3de9c29e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

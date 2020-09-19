@@ -1,4 +1,5 @@
 #include "OutScriptedEffects.h"
+#include "OutScriptedEffect.h"
 #include <fstream>
 
 
@@ -95,18 +96,31 @@ void outputRemoveFromAllowedParty(const std::set<std::string>& majorIdeologies, 
 
 
 
-void HoI4::outputScriptedEffects(const std::set<std::string>& majorIdeologies, const std::string& outputName)
+void HoI4::outputScriptedEffects(const ScriptedEffects& scriptedEffects,
+	 const std::set<std::string>& majorIdeologies,
+	 const std::string& outputName)
 {
-	std::ofstream scriptedEffects("output/" + outputName + "/common/scripted_effects/00_scripted_effects.txt",
+	std::ofstream operationStratEffects("output/" + outputName + "/common/scripted_effects/operation_strat_effects.txt");
+	if (!operationStratEffects.is_open())
+	{
+		throw std::runtime_error(
+			 "Could not open output/" + outputName + "/common/scripted_effects/operation_strat_effects.txt");
+	}
+	for (const auto& effect: scriptedEffects.getOperationStratEffects())
+	{
+		operationStratEffects << effect << "\n";
+	}
+
+	std::ofstream scriptedEffectsFile("output/" + outputName + "/common/scripted_effects/00_scripted_effects.txt",
 		 std::ios::app);
-	if (!scriptedEffects.is_open())
+	if (!scriptedEffectsFile.is_open())
 	{
 		throw std::runtime_error(
 			 "Could not open output/" + outputName + "/common/scripted_effects/00_scripted_effects.txt");
 	}
 
-	outputGetBestAllianceMatchIdeologyEffects(majorIdeologies, scriptedEffects);
-	outputRemoveFromAllowedParty(majorIdeologies, scriptedEffects);
+	outputGetBestAllianceMatchIdeologyEffects(majorIdeologies, scriptedEffectsFile);
+	outputRemoveFromAllowedParty(majorIdeologies, scriptedEffectsFile);
 
-	scriptedEffects.close();
+	scriptedEffectsFile.close();
 }

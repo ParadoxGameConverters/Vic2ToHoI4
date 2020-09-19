@@ -243,6 +243,7 @@
     <ClCompile Include="Source\OutHoi4\OutOnActions.cpp" />
     <ClCompile Include="Source\OutHoI4\OutSharedFocus.cpp" />
     <ClCompile Include="Source\OutHoi4\OutTechnologies.cpp" />
+    <ClCompile Include="Source\OutHoi4\ScriptedEffects\OutScriptedEffect.cpp" />
     <ClCompile Include="Source\OutHoi4\ScriptedEffects\OutScriptedEffects.cpp" />
     <ClCompile Include="Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.cpp" />
     <ClCompile Include="Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisations.cpp" />
@@ -519,6 +520,7 @@
     <ClInclude Include="Source\OutHoi4\OutOnActions.h" />
     <ClInclude Include="Source\OutHoI4\OutSharedFocus.h" />
     <ClInclude Include="Source\OutHoi4\OutTechnologies.h" />
+    <ClInclude Include="Source\OutHoi4\ScriptedEffects\OutScriptedEffect.h" />
     <ClInclude Include="Source\OutHoi4\ScriptedEffects\OutScriptedEffects.h" />
     <ClInclude Include="Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisation.h" />
     <ClInclude Include="Source\OutHoi4\ScriptedLocalisations\OutScriptedLocalisations.h" />

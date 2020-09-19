@@ -193,7 +193,7 @@ void HoI4::OutputWorld(const World& world,
 	outputIntelligenceAgencies(*world.getIntelligenceAgencies(), outputName);
 	outputOperativeNames(world.getOperativeNames(), outputName);
 	outputOperations(world.getOperations(), outputName);
-	outputScriptedEffects(world.getMajorIdeologies(), outputName);
+	outputScriptedEffects(world.getScriptedEffects(), world.getMajorIdeologies(), outputName);
 }
 
 

@@ -1,0 +1,20 @@
+#ifndef OUT_SCRIPTED_EFFECTS_H
+#define OUT_SCRIPTED_EFFECTS_H
+
+
+
+#include "../../HOI4World/ScriptedEffects/ScriptedEffect.h"
+#include <ostream>
+
+
+
+namespace HoI4
+{
+
+std::ostream& operator<<(std::ostream& out, const ScriptedEffect& scriptedEffect);
+
+}
+
+
+
+#endif // OUT_SCRIPTED_EFFECTS_H
