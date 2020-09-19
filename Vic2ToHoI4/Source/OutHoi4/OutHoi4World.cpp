@@ -156,7 +156,7 @@ void HoI4::OutputWorld(const World& world,
 
 	Log(LogLevel::Info) << "\tOutputting world";
 
-	if (!Utils::TryCreateFolder("output/" + outputName + "/history"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/history"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/history");
 	}
@@ -201,7 +201,7 @@ void HoI4::outputCommonCountries(const std::map<std::string, std::shared_ptr<Cou
 	 const std::string& outputName)
 {
 	Log(LogLevel::Info) << "\t\tCreating country tags";
-	if (!Utils::TryCreateFolder("output/" + outputName + "/common/country_tags"))
+	if (!commonItems::TryCreateFolder("output/" + outputName + "/common/country_tags"))
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/common/country_tags");
 	}

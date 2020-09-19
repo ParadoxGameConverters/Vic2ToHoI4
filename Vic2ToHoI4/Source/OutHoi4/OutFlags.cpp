@@ -207,7 +207,7 @@ std::optional<std::string> HoI4::getConversionModFlag(const std::string& flagFil
 	for (const auto& mod: vic2Mods)
 	{
 		const auto path = vic2ModPath + "/" + mod.getDirectory() + "/gfx/flags/" + flagFilename;
-		if (Utils::DoesFileExist(path))
+		if (commonItems::DoesFileExist(path))
 		{
 			return path;
 		}
@@ -228,7 +228,7 @@ std::optional<std::string> HoI4::getAllowModFlags(const std::string& flagFilenam
 			continue;
 		}
 		const auto path = vic2ModPath + "/" + mod.getDirectory() + "/gfx/flags/" + flagFilename;
-		if (Utils::DoesFileExist(path))
+		if (commonItems::DoesFileExist(path))
 		{
 			return path;
 		}

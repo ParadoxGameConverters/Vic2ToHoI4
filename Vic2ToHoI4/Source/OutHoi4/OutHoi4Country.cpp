@@ -24,7 +24,7 @@
 void HoI4::outputToCommonCountriesFile(std::ostream& countriesFile, const Country& theCountry)
 {
 	countriesFile << theCountry.getTag() << " = \"countries/"
-					  << Utils::normalizeUTF8Path(theCountry.getCommonCountryFile()) << "\"\n";
+					  << commonItems::normalizeUTF8Path(theCountry.getCommonCountryFile()) << "\"\n";
 }
 
 
@@ -270,11 +270,11 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	const auto& primaryCulture = theCountry.getSourceCountry().getPrimaryCulture();
 
 	std::ofstream output("output/" + theConfiguration.getOutputName() + "/history/countries/" +
-								Utils::normalizeUTF8Path(theCountry.getFilename()));
+								commonItems::normalizeUTF8Path(theCountry.getFilename()));
 	if (!output.is_open())
 	{
 		throw std::runtime_error("Could not open output/" + theConfiguration.getOutputName() + "/history/countries/" +
-										 Utils::normalizeUTF8Path(theCountry.getFilename()));
+										 commonItems::normalizeUTF8Path(theCountry.getFilename()));
 	}
 	output << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
 
@@ -838,11 +838,11 @@ void outputCommonCountryFile(const HoI4::Country& theCountry, const Configuratio
 {
 	const auto& commonCountryFile = theCountry.getCommonCountryFile();
 	std::ofstream output("output/" + theConfiguration.getOutputName() + "/common/countries/" +
-								Utils::normalizeUTF8Path(commonCountryFile));
+								commonItems::normalizeUTF8Path(commonCountryFile));
 	if (!output.is_open())
 	{
 		throw std::runtime_error("Could not open output/" + theConfiguration.getOutputName() + "/common/countries/" +
-										 Utils::normalizeUTF8Path(commonCountryFile));
+										 commonItems::normalizeUTF8Path(commonCountryFile));
 	}
 
 	auto& graphicalCulture = theCountry.getGraphicalCulture();

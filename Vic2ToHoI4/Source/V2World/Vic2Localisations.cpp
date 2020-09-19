@@ -22,7 +22,7 @@ std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Parser::importLocalisa
 		ReadFromAllFilesInFolder(theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/localisation");
 	}
 
-	if (Utils::DoesFileExist("DataFiles/Vic2Localisations.csv"))
+	if (commonItems::DoesFileExist("DataFiles/Vic2Localisations.csv"))
 	{
 		ReadFromFile("DataFiles/Vic2Localisations.csv");
 	}
@@ -33,7 +33,7 @@ std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Parser::importLocalisa
 
 void Vic2::Localisations::Parser::ReadFromAllFilesInFolder(const std::string& folderPath)
 {
-	for (const auto& fileName: Utils::GetAllFilesInFolder(folderPath))
+	for (const auto& fileName: commonItems::GetAllFilesInFolder(folderPath))
 	{
 		ReadFromFile(folderPath + '/' + fileName);
 	}
@@ -84,16 +84,16 @@ void Vic2::Localisations::Parser::processLine(const std::string& line)
 		if (language == "english" || language == "french" || language == "german" || language == "spanish" ||
 			 language == "italian" || language == "dutch" || language == "braz_por" || language == "finnish")
 		{
-			UTF8Result = Utils::convertWin1252ToUTF8(result);
+			UTF8Result = commonItems::convertWin1252ToUTF8(result);
 		}
 		if (language == "polish" || language == "swedish" || language == "czech" ||
 			 language == "hungarian") // Swedish = Hungarian again
 		{
-			UTF8Result = Utils::convertWin1250ToUTF8(result);
+			UTF8Result = commonItems::convertWin1250ToUTF8(result);
 		}
 		if (language == "russian")
 		{
-			UTF8Result = Utils::convertWin1251ToUTF8(result);
+			UTF8Result = commonItems::convertWin1251ToUTF8(result);
 		}
 
 		if (language == "english")

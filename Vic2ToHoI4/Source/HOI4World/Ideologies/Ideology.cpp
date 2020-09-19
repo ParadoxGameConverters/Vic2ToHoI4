@@ -16,7 +16,7 @@ HoI4::Ideology::Ideology(const std::string& _ideologyName, std::istream& theStre
 		dynamicFactionNames = namesStrings.getStrings();
 	});
 	registerKeyword("color", [this](const std::string& unused, std::istream& theStream) {
-		theColor = std::make_unique<commonItems::Color>(commonItems::Color::Factory::getColor(theStream));
+		theColor = std::make_unique<commonItems::Color>(commonItems::Color::Factory{}.getColor(theStream));
 	});
 	registerKeyword("war_impact_on_world_tension", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleDouble impactNum(theStream);
