@@ -17,7 +17,7 @@ class CultureGroups
   public:
 	class Factory;
 
-	std::optional<std::string> getGroup(const std::string& culture) const;
+	[[nodiscard]] std::optional<std::string> getGroup(const std::string& culture) const;
 
   private:
 	std::map<std::string, std::string> mappings;
