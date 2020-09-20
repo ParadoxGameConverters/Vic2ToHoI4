@@ -1,6 +1,6 @@
 #include "../Vic2ToHoI4/Source/V2World/Issues/Issues.h"
 #include "../Vic2ToHoI4/Source/V2World/Provinces/Province.h"
-#include "../Vic2ToHoI4/Source/V2World/Provinces/ProvinceFactory.h"
+#include "../Vic2ToHoI4/Source/V2World/Provinces/provinceFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -11,14 +11,15 @@ class Vic2World_ProvinceFactoryTests: public testing::Test
   protected:
 	Vic2World_ProvinceFactoryTests();
 
-	Vic2::Pop::Factory popFactory;
-	Vic2::Province::Factory provinceFactory;
+	std::unique_ptr<Vic2::Pop::Factory> popFactory;
+	std::unique_ptr<Vic2::Province::Factory> provinceFactory;
 };
 
 
-Vic2World_ProvinceFactoryTests::Vic2World_ProvinceFactoryTests():
-	 popFactory(Vic2::Issues()), provinceFactory(popFactory)
+Vic2World_ProvinceFactoryTests::Vic2World_ProvinceFactoryTests()
 {
+	popFactory = std::make_unique<Vic2::Pop::Factory>(Vic2::Issues());
+	provinceFactory = std::make_unique<Vic2::Province::Factory>(std::move(popFactory));
 }
 
 
@@ -29,7 +30,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, numberCanBeSet)
 	input << "{\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getNumber(), 42);
 }
@@ -42,7 +43,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, ownerDefaultsToBlank)
 	input << "{\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getOwner(), "");
 }
@@ -56,7 +57,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, ownerCanBeSet)
 	input << "\towner=\"TAG\"";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getOwner(), "TAG");
 }
@@ -69,7 +70,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, controllerDefaultsToBlank)
 	input << "{\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getController(), "");
 }
@@ -83,7 +84,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, controllerCanBeSet)
 	input << "\tcontroller=\"TAG\"";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getController(), "TAG");
 }
@@ -96,7 +97,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, coresDefaultToEmpty)
 	input << "{\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getCores().size(), 0);
 }
@@ -111,7 +112,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, coresCanBeSet)
 	input << "\tcore=\"2ND\"";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getCores().size(), 2);
 	ASSERT_EQ(theProvince->getCores().count("TAG"), 1);
@@ -126,7 +127,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, popsDefaultToEmpty)
 	input << "{\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPops().size(), 0);
 }
@@ -141,7 +142,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, aristocratsCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPops().size(), 1);
 	ASSERT_EQ(theProvince->getPops()[0].getType(), "aristocrats");
@@ -157,7 +158,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, artisansCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPops().size(), 1);
 	ASSERT_EQ(theProvince->getPops()[0].getType(), "artisans");
@@ -173,7 +174,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, bureaucratsCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPops().size(), 1);
 	ASSERT_EQ(theProvince->getPops()[0].getType(), "bureaucrats");
@@ -189,7 +190,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, capitalistsCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPops().size(), 1);
 	ASSERT_EQ(theProvince->getPops()[0].getType(), "capitalists");
@@ -205,7 +206,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, clergymenCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPops().size(), 1);
 	ASSERT_EQ(theProvince->getPops()[0].getType(), "clergymen");
@@ -221,7 +222,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, craftsmenCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPops().size(), 1);
 	ASSERT_EQ(theProvince->getPops()[0].getType(), "craftsmen");
@@ -237,7 +238,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, clerksCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPops().size(), 1);
 	ASSERT_EQ(theProvince->getPops()[0].getType(), "clerks");
@@ -253,7 +254,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, farmersCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPops().size(), 1);
 	ASSERT_EQ(theProvince->getPops()[0].getType(), "farmers");
@@ -269,7 +270,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, soldiersCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPops().size(), 1);
 	ASSERT_EQ(theProvince->getPops()[0].getType(), "soldiers");
@@ -285,7 +286,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, officersCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPops().size(), 1);
 	ASSERT_EQ(theProvince->getPops()[0].getType(), "officers");
@@ -301,7 +302,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, labourersCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPops().size(), 1);
 	ASSERT_EQ(theProvince->getPops()[0].getType(), "labourers");
@@ -317,7 +318,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, slavesCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPops().size(), 1);
 	ASSERT_EQ(theProvince->getPops()[0].getType(), "slaves");
@@ -333,7 +334,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, serfsCanBeAddedToPops)
 	input << "\t}\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getPops().size(), 1);
 	ASSERT_EQ(theProvince->getPops()[0].getType(), "serfs");
@@ -347,7 +348,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, navalBaseLevelDefaultsToZero)
 	input << "{\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getNavalBaseLevel(), 0);
 }
@@ -363,7 +364,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, navalBaseLevelCanBeSet)
 	input << "  6.000 6.000 }\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getNavalBaseLevel(), 6);
 }
@@ -376,7 +377,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, railLevelDefaultsToZero)
 	input << "{\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getRailLevel(), 0);
 }
@@ -392,7 +393,7 @@ TEST_F(Vic2World_ProvinceFactoryTests, railLevelCanBeSet)
 	input << "  5.000 5.000 }\n";
 	input << "}";
 
-	const auto theProvince = provinceFactory.getProvince(42, input);
+	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getRailLevel(), 5);
 }
