@@ -3,7 +3,7 @@
 
 
 
-#include "CultureGroups.h"
+#include "Culture/CultureGroups.h"
 #include "Diplomacy/Diplomacy.h"
 #include "Mods/Mod.h"
 #include "Parser.h"

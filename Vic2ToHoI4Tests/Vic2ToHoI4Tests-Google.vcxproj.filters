@@ -55,9 +55,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Army.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CultureGroups.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Leader.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
@@ -1166,6 +1163,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffects.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ScriptedEffect</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroups.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Culture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1467,6 +1467,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\ScriptedEffect">
       <UniqueIdentifier>{cc258a3d-20a2-4ef7-9bef-95ad3de9c29e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Culture">
+      <UniqueIdentifier>{da69dde2-9b1d-48b3-b680-0883c7ce15da}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
