@@ -31,6 +31,7 @@ std::unique_ptr<Vic2::CultureGroups> Vic2::CultureGroups::Factory::getCultureGro
 				  theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/common/cultures.txt"))
 		{
 			Log(LogLevel::Info) << "\tReading mod cultures from " << mod.getName();
+			cultureGroups->mappings.clear();
 			parseFile(theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/common/cultures.txt");
 		}
 	}
