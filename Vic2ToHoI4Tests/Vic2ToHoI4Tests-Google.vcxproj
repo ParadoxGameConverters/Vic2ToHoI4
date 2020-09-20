@@ -405,6 +405,7 @@
     <ClCompile Include="Mocks\CountryMapperMock.h" />
     <ClCompile Include="Mocks\TechnologiesMock.h" />
     <ClCompile Include="Vic2WorldTests\Culture\CultureGroupFactoryTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Culture\CultureGroupsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Diplomacy\AgreementTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Diplomacy\DiplomacyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Diplomacy\RelationsTests.cpp" />
@@ -609,6 +610,24 @@
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\ScriptedEffects\effects_file.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ScriptedEffects</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Cultures\BaseCultures.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/BaseCultures/common</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cultures%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Cultures\ModOneCultures.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ModCultures/ModOne/common</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cultures%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Cultures\ModTwoCultures.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ModCultures/ModTwo/common</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cultures%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />
