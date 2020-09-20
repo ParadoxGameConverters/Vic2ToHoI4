@@ -33,8 +33,8 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	auto theIssues = Issues::Factory{}.getIssues(theConfiguration.getVic2Path());
 	theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
 	inventions theInventions(theConfiguration);
-	Pop::Factory popFactory(*theIssues);
-	Province::Factory provinceFactory(popFactory);
+	auto popFactory = std::make_unique<Pop::Factory>(*theIssues);
+	Province::Factory provinceFactory(std::move(popFactory));
 	State::Factory stateFactory;
 	War::Factory warFactory;
 	Relations::Factory relationsFactory;

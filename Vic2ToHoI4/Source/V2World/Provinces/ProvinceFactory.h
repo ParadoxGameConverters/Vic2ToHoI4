@@ -15,12 +15,12 @@ namespace Vic2
 class Province::Factory: commonItems::parser
 {
   public:
-	explicit Factory(Pop::Factory& _popFactory);
+	explicit Factory(std::unique_ptr<Pop::Factory>&& _popFactory);
 	std::unique_ptr<Province> getProvince(int number, std::istream& theStream);
 
   private:
 	std::unique_ptr<Province> province;
-	Pop::Factory& popFactory;
+	std::unique_ptr<Pop::Factory> popFactory;
 };
 
 } // namespace Vic2

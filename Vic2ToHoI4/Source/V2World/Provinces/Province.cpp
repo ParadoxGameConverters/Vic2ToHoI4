@@ -63,5 +63,5 @@ constexpr double minimumLiteracyWeighting = 0.1;
 constexpr double literacyWeighting = 0.9;
 int Vic2::Province::calculateLiteracyWeightedPop(const Pop& thePop)
 {
-	return int(thePop.getSize() * (thePop.getLiteracy() * literacyWeighting + minimumLiteracyWeighting));
+	return static_cast<int>(thePop.getSize() * (thePop.getLiteracy() * literacyWeighting + minimumLiteracyWeighting));
 }

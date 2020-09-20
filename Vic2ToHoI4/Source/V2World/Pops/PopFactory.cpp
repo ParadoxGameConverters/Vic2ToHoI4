@@ -4,7 +4,7 @@
 
 
 
-Vic2::Pop::Factory::Factory(const Issues& _theIssues): theIssues(_theIssues)
+Vic2::Pop::Factory::Factory(Issues _theIssues): theIssues(std::move(_theIssues))
 {
 	registerKeyword("size", [this](const std::string& unused, std::istream& theStream) {
 		pop->size = commonItems::singleInt{theStream}.getInt();
