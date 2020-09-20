@@ -10,6 +10,6 @@ float Vic2::Pop::getIssueSupport(const std::string& issueName) const
 	}
 	else
 	{
-		return 0.0f;
+		return 0.0F;
 	}
 }

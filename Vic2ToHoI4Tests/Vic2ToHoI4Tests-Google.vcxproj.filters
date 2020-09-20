@@ -55,9 +55,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Army.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CultureGroups.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Leader.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
@@ -1166,6 +1163,21 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffects.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ScriptedEffect</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroups.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Culture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroupsFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Culture</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroupFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Culture</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Culture\CultureGroupFactoryTests.cpp">
+      <Filter>Vic2WorldTests\Cultures</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Culture\CultureGroupsTests.cpp">
+      <Filter>Vic2WorldTests\Cultures</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1468,6 +1480,15 @@
     <Filter Include="Vic2ToHoI4 files\HoI4\ScriptedEffect">
       <UniqueIdentifier>{cc258a3d-20a2-4ef7-9bef-95ad3de9c29e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Culture">
+      <UniqueIdentifier>{da69dde2-9b1d-48b3-b680-0883c7ce15da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\Cultures">
+      <UniqueIdentifier>{67592027-600b-4a8e-8728-bac40f629cd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Cultures">
+      <UniqueIdentifier>{2cb57e99-80d7-43ac-9027-e2feea6c5624}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1600,6 +1621,15 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\ScriptedEffects\effects_file.txt">
       <Filter>TestFiles\ScriptedEffects</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Cultures\BaseCultures.txt">
+      <Filter>TestFiles\Cultures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Cultures\ModOneCultures.txt">
+      <Filter>TestFiles\Cultures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Cultures\ModTwoCultures.txt">
+      <Filter>TestFiles\Cultures</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

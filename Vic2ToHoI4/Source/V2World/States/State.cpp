@@ -31,16 +31,16 @@ Vic2::workerStruct Vic2::State::countEmployedWorkers() const
 
 Vic2::workerStruct Vic2::State::limitWorkersByFactoryLevels(const workerStruct& workers) const
 {
-	if ((workers.craftsmen + workers.clerks) <= (static_cast<float>(factoryLevel) * 10000.0f))
+	if ((workers.craftsmen + workers.clerks) <= (static_cast<float>(factoryLevel) * 10000.0F))
 	{
 		return workers;
 	}
 
 	auto newWorkers = workers;
 	newWorkers.craftsmen =
-		 (static_cast<float>(factoryLevel) * 10000.0f) / (workers.craftsmen + workers.clerks) * workers.craftsmen;
+		 (static_cast<float>(factoryLevel) * 10000.0F) / (workers.craftsmen + workers.clerks) * workers.craftsmen;
 	newWorkers.clerks =
-		 (static_cast<float>(factoryLevel) * 10000.0f) / (workers.craftsmen + workers.clerks) * workers.clerks;
+		 (static_cast<float>(factoryLevel) * 10000.0F) / (workers.craftsmen + workers.clerks) * workers.clerks;
 	return newWorkers;
 }
 
@@ -68,7 +68,7 @@ float Vic2::State::getAverageRailLevel() const
 {
 	if (provinces.empty())
 	{
-		return 0.0f;
+		return 0.0F;
 	}
 
 	auto totalRailLevel = 0;

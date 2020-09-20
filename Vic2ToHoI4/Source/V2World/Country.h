@@ -25,7 +25,7 @@ namespace Vic2
 class StateDefinitions;
 
 class Army;
-class cultureGroups;
+class CultureGroups;
 class inventions;
 class Leader;
 class Localisations;
@@ -41,7 +41,7 @@ class Country: commonItems::parser
 	explicit Country(const std::string& theTag,
 		 std::istream& theStream,
 		 const inventions& theInventions,
-		 const cultureGroups& theCultureGroups,
+		 const CultureGroups& theCultureGroups,
 		 const StateDefinitions& theStateDefinitions,
 		 State::Factory& stateFactory,
 		 Relations::Factory& relationsFactory);
@@ -60,7 +60,7 @@ class Country: commonItems::parser
 	void determineEmployedWorkers();
 	void setLocalisationNames(Localisations& vic2Localisations);
 	void setLocalisationAdjectives(const Localisations& vic2Localisations);
-	void handleMissingCulture(const cultureGroups& theCultureGroups);
+	void handleMissingCulture(const CultureGroups& theCultureGroups);
 
 	[[nodiscard]] const auto& getRelations() const { return relations; }
 	auto& getStates() { return states; }

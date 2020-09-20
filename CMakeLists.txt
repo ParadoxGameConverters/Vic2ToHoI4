@@ -90,6 +90,9 @@ file(GLOB OUTHOI4_SHIP_TYPES_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/ShipTypes/*.
 file(GLOB OUTHOI4_STATES_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/States/*.cpp")
 file(GLOB OUTHOI4_VERSION "${PROJECT_SOURCE_DIR}/OutHoi4/Version/*.cpp")
 file(GLOB VIC2WORLD_SOURCES "${PROJECT_SOURCE_DIR}/V2World/*.cpp")
+set(VIC2WORLD_CULTURES_SOURCES ${VIC2WORLD_CULTURES_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Culture/CultureGroups.cpp")
+set(VIC2WORLD_CULTURES_SOURCES ${VIC2WORLD_CULTURES_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Culture/CultureGroupFactory.cpp")
+set(VIC2WORLD_CULTURES_SOURCES ${VIC2WORLD_CULTURES_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Culture/CultureGroupsFactory.cpp")
 set(VIC2WORLD_DIPLOMACY_SOURCES ${VIC2WORLD_DIPLOMACY_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Diplomacy/AgreementFactory.cpp")
 set(VIC2WORLD_DIPLOMACY_SOURCES ${VIC2WORLD_DIPLOMACY_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Diplomacy/DiplomacyFactory.cpp")
 set(VIC2WORLD_DIPLOMACY_SOURCES ${VIC2WORLD_DIPLOMACY_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Diplomacy/RelationsFactory.cpp")
@@ -188,6 +191,7 @@ add_executable(
 	${OUTHOI4_STATES_SOURCES}
 	${OUTHOI4_VERSION}
 	${VIC2WORLD_SOURCES}
+	${VIC2WORLD_CULTURES_SOURCES}
 	${VIC2WORLD_DIPLOMACY_SOURCES}
 	${VIC2WORLD_ISSUES_SOURCES}
 	${VIC2WORLD_MODS_SOURCES}
@@ -240,6 +244,8 @@ file(GLOB HOI4WORLD_SCRIPTED_TRIGGERS_TESTS_SOURCES "${TEST_SOURCE_DIR}/HOI4Worl
 file(GLOB HOI4WORLD_SHIP_TYPES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HOI4WorldTests/ShipTypes/*.cpp")
 file(GLOB HOI4WORLD_STATES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HOI4WorldTests/States/*.cpp")
 file(GLOB MAPPER_TESTS_SOURCES "${TEST_SOURCE_DIR}/MapperTests/*.cpp")
+set(VIC2WORLD_CULTURE_TESTS_SOURCES ${VIC2WORLD_CULTURE_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Culture/CultureGroupFactoryTests.cpp")
+set(VIC2WORLD_CULTURE_TESTS_SOURCES ${VIC2WORLD_CULTURE_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Culture/CultureGroupsTests.cpp")
 set(VIC2WORLD_DIPLOMACY_TESTS_SOURCES ${VIC2WORLD_DIPLOMACY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Diplomacy/AgreementTests.cpp")
 set(VIC2WORLD_DIPLOMACY_TESTS_SOURCES ${VIC2WORLD_DIPLOMACY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Diplomacy/DiplomacyTests.cpp")
 set(VIC2WORLD_DIPLOMACY_TESTS_SOURCES ${VIC2WORLD_DIPLOMACY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Diplomacy/RelationsTests.cpp")
@@ -329,6 +335,7 @@ add_executable(
 	${OUTHOI4_STATES_SOURCES}
 	${OUTHOI4_VERSION}
 	${VIC2WORLD_SOURCES}
+	${VIC2WORLD_CULTURES_SOURCES}
 	${VIC2WORLD_DIPLOMACY_SOURCES}
 	${VIC2WORLD_ISSUES_SOURCES}
 	${VIC2WORLD_MODS_SOURCES}
@@ -363,6 +370,7 @@ add_executable(
 	${HOI4WORLD_SHIP_TYPES_TESTS_SOURCES}
 	${HOI4WORLD_STATES_TESTS_SOURCES}
 	${MAPPER_TESTS_SOURCES}
+	${VIC2WORLD_CULTURE_TESTS_SOURCES}
 	${VIC2WORLD_DIPLOMACY_TESTS_SOURCES}
 	${VIC2WORLD_ISSUES_TESTS_SOURCES}
 	${VIC2WORLD_MODS_TESTS_SOURCES}
@@ -380,6 +388,9 @@ set_target_properties( Vic2ToHoi4ConverterTests
 configure_file("Vic2ToHoI4Tests/TestFiles/blank_operative_codenames.txt" "${TEST_OUTPUT_DIRECTORY}/common/units/codenames_operatives/blank_operative_codenames.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/blank_operations.txt" "${TEST_OUTPUT_DIRECTORY}/blank_operations/common/operations/00_operations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/definition.csv" "${TEST_OUTPUT_DIRECTORY}/HoI4Linux/map/definition.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Cultures/BaseCultures.txt" "${TEST_OUTPUT_DIRECTORY}/BaseCultures/common/cultures.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Cultures/ModOneCultures.txt" "${TEST_OUTPUT_DIRECTORY}/ModCultures/ModOne/common/cultures.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Cultures/ModTwoCultures.txt" "${TEST_OUTPUT_DIRECTORY}/ModCultures/ModTwo/common/cultures.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/EmptyOccupationLaws.txt" "${TEST_OUTPUT_DIRECTORY}/EmptyOccupationLaws/common/occupation_laws/occupation_laws.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/GameRules.txt" "${TEST_OUTPUT_DIRECTORY}/GameRules.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/GameRulesEmpty.txt" "${TEST_OUTPUT_DIRECTORY}/GameRulesEmpty.txt" COPYONLY)

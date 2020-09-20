@@ -4,6 +4,7 @@
 #include "../Mappers/Provinces/ProvinceMapper.h"
 #include "CommonCountryData.h"
 #include "Country.h"
+#include "Culture/CultureGroupsFactory.h"
 #include "Date.h"
 #include "Diplomacy/DiplomacyFactory.h"
 #include "Diplomacy/RelationsFactory.h"
@@ -29,12 +30,12 @@
 Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configuration& theConfiguration)
 {
 	theLocalisations = Localisations::Parser{}.importLocalisations(theConfiguration);
-	theCultureGroups.init(theConfiguration);
+	theCultureGroups = CultureGroups::Factory{}.getCultureGroups(theConfiguration);
 	auto theIssues = Issues::Factory{}.getIssues(theConfiguration.getVic2Path());
 	theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
 	inventions theInventions(theConfiguration);
-	Pop::Factory popFactory(*theIssues);
-	Province::Factory provinceFactory(popFactory);
+	auto popFactory = std::make_unique<Pop::Factory>(*theIssues);
+	Province::Factory provinceFactory(std::move(popFactory));
 	State::Factory stateFactory;
 	War::Factory warFactory;
 	Relations::Factory relationsFactory;
@@ -70,7 +71,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 			 countries[countryTag] = new Country(countryTag,
 				  theStream,
 				  theInventions,
-				  theCultureGroups,
+				  *theCultureGroups,
 				  *theStateDefinitions,
 				  stateFactory,
 				  relationsFactory);
@@ -455,7 +456,7 @@ void Vic2::World::handleMissingCountryCultures()
 	Log(LogLevel::Info) << "\tHandling missing country cultures";
 	for (auto country: countries)
 	{
-		country.second->handleMissingCulture(theCultureGroups);
+		country.second->handleMissingCulture(*theCultureGroups);
 	}
 }
 

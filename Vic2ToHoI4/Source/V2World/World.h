@@ -3,7 +3,7 @@
 
 
 
-#include "CultureGroups.h"
+#include "Culture/CultureGroups.h"
 #include "Diplomacy/Diplomacy.h"
 #include "Mods/Mod.h"
 #include "Parser.h"
@@ -89,7 +89,7 @@ class World: commonItems::parser
 	std::vector<Party> parties;
 	std::vector<std::string> greatPowers;
 
-	cultureGroups theCultureGroups;
+	std::unique_ptr<CultureGroups> theCultureGroups;
 
 	std::unique_ptr<StateDefinitions> theStateDefinitions;
 	std::unique_ptr<Localisations> theLocalisations;

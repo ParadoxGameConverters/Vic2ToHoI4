@@ -1,5 +1,5 @@
 #include "Country.h"
-#include "CultureGroups.h"
+#include "Culture/CultureGroups.h"
 #include "Diplomacy/Relations.h"
 #include "Inventions.h"
 #include "Leader.h"
@@ -18,7 +18,7 @@
 Vic2::Country::Country(const std::string& theTag,
 	 std::istream& theStream,
 	 const inventions& theInventions,
-	 const cultureGroups& theCultureGroups,
+	 const CultureGroups& theCultureGroups,
 	 const StateDefinitions& theStateDefinitions,
 	 State::Factory& stateFactory,
 	 Relations::Factory& relationsFactory):
@@ -280,7 +280,7 @@ void Vic2::Country::setLocalisationAdjectives(const Localisations& vic2Localisat
 }
 
 
-void Vic2::Country::handleMissingCulture(const cultureGroups& theCultureGroups)
+void Vic2::Country::handleMissingCulture(const CultureGroups& theCultureGroups)
 {
 	if (primaryCulture.empty())
 	{
