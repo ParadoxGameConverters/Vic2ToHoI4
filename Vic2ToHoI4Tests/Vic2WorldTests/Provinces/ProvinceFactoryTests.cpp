@@ -1,6 +1,6 @@
 #include "../Vic2ToHoI4/Source/V2World/Issues/Issues.h"
 #include "../Vic2ToHoI4/Source/V2World/Provinces/Province.h"
-#include "../Vic2ToHoI4/Source/V2World/Provinces/provinceFactory.h"
+#include "../Vic2ToHoI4/Source/V2World/Provinces/ProvinceFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
