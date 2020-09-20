@@ -404,6 +404,7 @@
     <ClCompile Include="MapperTests\TechMapperTests.cpp" />
     <ClCompile Include="Mocks\CountryMapperMock.h" />
     <ClCompile Include="Mocks\TechnologiesMock.h" />
+    <ClCompile Include="Vic2WorldTests\Culture\CultureGroupFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Diplomacy\AgreementTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Diplomacy\DiplomacyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Diplomacy\RelationsTests.cpp" />
