@@ -1169,6 +1169,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroupsFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Culture</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroupFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Culture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

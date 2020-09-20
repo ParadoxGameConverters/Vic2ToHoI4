@@ -4,6 +4,7 @@
 
 
 #include "CultureGroups.h"
+#include "CultureGroupFactory.h"
 #include "../../Configuration.h"
 #include "Parser.h"
 #include <memory>
@@ -20,6 +21,7 @@ class CultureGroups::Factory: commonItems::parser
 	std::unique_ptr<CultureGroups> getCultureGroups(const Configuration& theConfiguration);
 
   private:
+	CultureGroupFactory cultureGroupFactory;
 	std::unique_ptr<CultureGroups> cultureGroups;
 };
 

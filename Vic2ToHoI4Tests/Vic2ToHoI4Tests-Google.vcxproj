@@ -276,6 +276,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Army.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CommonCountryData.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Country.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroupFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroups.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroupsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\AgreementFactory.cpp" />
