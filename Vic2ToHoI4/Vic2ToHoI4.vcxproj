@@ -368,6 +368,7 @@
     <ClCompile Include="Source\Mappers\TechMapper.cpp" />
     <ClCompile Include="Source\Mappers\VersionParser\VersionParser.cpp" />
     <ClCompile Include="Source\V2World\Culture\CultureGroups.cpp" />
+    <ClCompile Include="Source\V2World\Culture\CultureGroupsFactory.cpp" />
     <ClCompile Include="Source\V2World\Diplomacy\AgreementFactory.cpp" />
     <ClCompile Include="Source\V2World\Diplomacy\DiplomacyFactory.cpp" />
     <ClCompile Include="Source\V2World\Diplomacy\RelationsFactory.cpp" />
@@ -664,6 +665,7 @@
     <ClInclude Include="Source\V2World\CommonCountryData.h" />
     <ClInclude Include="Source\V2World\Country.h" />
     <ClInclude Include="Source\V2World\Culture\CultureGroups.h" />
+    <ClInclude Include="Source\V2World\Culture\CultureGroupsFactory.h" />
     <ClInclude Include="Source\V2World\Diplomacy\Agreement.h" />
     <ClInclude Include="Source\V2World\Diplomacy\AgreementFactory.h" />
     <ClInclude Include="Source\V2World\Diplomacy\Diplomacy.h" />

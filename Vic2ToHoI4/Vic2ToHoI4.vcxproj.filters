@@ -1003,6 +1003,9 @@
     <ClCompile Include="Source\V2World\Culture\CultureGroups.cpp">
       <Filter>Vic2World\Culture</Filter>
     </ClCompile>
+    <ClCompile Include="Source\V2World\Culture\CultureGroupsFactory.cpp">
+      <Filter>Vic2World\Culture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1912,6 +1915,9 @@
       <Filter>OutHoi4\ScriptedEffects</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Culture\CultureGroups.h">
+      <Filter>Vic2World\Culture</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Culture\CultureGroupsFactory.h">
       <Filter>Vic2World\Culture</Filter>
     </ClInclude>
   </ItemGroup>
