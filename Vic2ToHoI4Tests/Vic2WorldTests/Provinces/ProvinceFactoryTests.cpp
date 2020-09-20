@@ -16,9 +16,9 @@ class Vic2World_ProvinceFactoryTests: public testing::Test
 };
 
 
-Vic2World_ProvinceFactoryTests::Vic2World_ProvinceFactoryTests()
+Vic2World_ProvinceFactoryTests::Vic2World_ProvinceFactoryTests():
+	 popFactory(std::make_unique<Vic2::Pop::Factory>(Vic2::Issues()))
 {
-	popFactory = std::make_unique<Vic2::Pop::Factory>(Vic2::Issues());
 	provinceFactory = std::make_unique<Vic2::Province::Factory>(std::move(popFactory));
 }
 
