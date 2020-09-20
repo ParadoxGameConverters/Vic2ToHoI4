@@ -17,6 +17,15 @@ void HoI4::Operations::updateOperations(const std::set<std::string>& majorIdeolo
 
 void HoI4::Operations::updateOperationCoupGovernment(Operation& operation, const std::set<std::string>& majorIdeologies)
 {
+	std::stringstream newVisible;
+	newVisible << "= {\n";
+	newVisible << "\t\tnetwork_strength = {\n";
+	newVisible << "\t\t\ttarget = FROM\n";
+	newVisible << "\t\t\tvalue > 35\n";
+	newVisible << "\t\t}\n";
+	newVisible << "\t}";
+	operation.setVisible(newVisible.str());
+
 	std::stringstream newAvailable;
 	newAvailable << "= {\n";
 	newAvailable << "\t\tFROM = {\n";
