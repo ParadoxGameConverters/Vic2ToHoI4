@@ -10,6 +10,10 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const Idea& outIdea)
 	{
 		outStream << "\t\t\tname = " << outIdea.altName << "\n";
 	}
+	if (!outIdea.ledger.empty())
+	{
+		outStream << "\t\t\tledger = " << outIdea.ledger << "\n";
+	}
 	if (outIdea.cost)
 	{
 		outStream << "\t\t\tcost = " << *outIdea.cost << "\n";

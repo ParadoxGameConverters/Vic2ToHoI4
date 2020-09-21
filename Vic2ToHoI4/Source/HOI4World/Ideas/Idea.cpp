@@ -9,6 +9,9 @@ HoI4::Idea::Idea(std::string ideaName, std::istream& theStream): name(std::move(
 		const commonItems::singleString nameString(theStream);
 		altName = nameString.getString();
 	});
+	registerKeyword("ledger", [this](const std::string& unused, std::istream& theStream) {
+		ledger = commonItems::singleString{theStream}.getString();
+	});
 	registerKeyword("cost", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleInt costString(theStream);
 		cost = costString.getInt();

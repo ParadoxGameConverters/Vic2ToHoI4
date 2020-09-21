@@ -49,6 +49,26 @@ TEST(HoI4World_Ideas_IdeaTests, AltNameCanBeSet)
 }
 
 
+TEST(HoI4World_Ideas_IdeaTests, LedgerCanBeSet)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\tledger = test_ledger";
+	input << "}";
+	const HoI4::Idea theIdea("theIdea", input);
+
+	std::stringstream actualOutput;
+	actualOutput << theIdea;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\t\ttheIdea = {\n";
+	expectedOutput << "\t\t\tledger = test_ledger\n";
+	expectedOutput << "\t\t}\n";
+
+	ASSERT_EQ(expectedOutput.str(), actualOutput.str());
+}
+
+
 TEST(HoI4World_Ideas_IdeaTests, CostCanBeSet)
 {
 	std::stringstream input;
