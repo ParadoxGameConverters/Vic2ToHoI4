@@ -112,6 +112,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	ideologies = std::make_unique<Ideologies>(theConfiguration);
 	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
 	scriptedEffects->updateOperationStratEffects(ideologies->getMajorIdeologies());
+	scriptedLocalisations->updateIdeologyLocalisations(ideologies->getMajorIdeologies());
 	scriptedLocalisations->filterIdeologyLocalisations(ideologies->getMajorIdeologies());
 	genericFocusTree.addGenericFocusTree(ideologies->getMajorIdeologies());
 	importIdeologicalMinisters();

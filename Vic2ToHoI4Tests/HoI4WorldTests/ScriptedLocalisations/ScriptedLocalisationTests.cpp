@@ -97,3 +97,17 @@ TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationTests, TextsCanBeFiltere
 	ASSERT_EQ("test", theLocalisation.getTexts()[0]);
 	ASSERT_EQ("test3", theLocalisation.getTexts()[1]);
 }
+
+
+TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationTests, TextsCanBeUpdated)
+{
+	HoI4::ScriptedLocalisation theLocalisation;
+	theLocalisation.addText("test = { replace_me }");
+	theLocalisation.addText("test2 = { replace_me_too }");
+
+	theLocalisation.updateTexts(std::regex("replace_me"), "new_text");
+
+	ASSERT_EQ(2, theLocalisation.getTexts().size());
+	ASSERT_EQ("test = { new_text }", theLocalisation.getTexts()[0]);
+	ASSERT_EQ("test2 = { new_text_too }", theLocalisation.getTexts()[1]);
+}

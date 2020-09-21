@@ -296,3 +296,42 @@ void HoI4::ScriptedLocalisations::filterIdeologyLocalisations(const std::set<std
 		});
 	}
 }
+
+
+void HoI4::ScriptedLocalisations::updateIdeologyLocalisations(const std::set<std::string>& majorIdeologies)
+{
+	std::string fascismReplacement;
+	if (majorIdeologies.count("fascism"))
+	{
+		fascismReplacement = "\n\t\t\t\thas_government = fascism";
+	}
+	std::string communismReplacement;
+	if (majorIdeologies.count("communism"))
+	{
+		communismReplacement = "\n\t\t\t\thas_government = communism";
+	}
+	std::string radicalReplacement;
+	if (majorIdeologies.count("radical"))
+	{
+		radicalReplacement = "\n\t\t\t\thas_government = radical";
+	}
+	std::string absolutistReplacement;
+	if (majorIdeologies.count("absolutist"))
+	{
+		absolutistReplacement = "\n\t\t\t\thas_government = absolutist";
+	}
+	std::string democraticReplacement;
+	if (majorIdeologies.count("democratic"))
+	{
+		democraticReplacement = "\n\t\t\t\thas_government = democratic";
+	}
+
+	for (auto& localisation: ideologyLocalisations)
+	{
+		localisation.updateTexts(std::regex("\n.*FASCISM_PLACEHOLDER"), fascismReplacement);
+		localisation.updateTexts(std::regex("\n.*COMMUNISM_PLACEHOLDER"), communismReplacement);
+		localisation.updateTexts(std::regex("\n.*RADICAL_PLACEHOLDER"), radicalReplacement);
+		localisation.updateTexts(std::regex("\n.*ABSOLUTIST_PLACEHOLDER"), absolutistReplacement);
+		localisation.updateTexts(std::regex("\n.*DEMOCRATIC_PLACEHOLDER"), democraticReplacement);
+	}
+}

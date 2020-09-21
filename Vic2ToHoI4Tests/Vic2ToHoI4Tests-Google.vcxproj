@@ -90,6 +90,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffectFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffectFile.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffects.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
