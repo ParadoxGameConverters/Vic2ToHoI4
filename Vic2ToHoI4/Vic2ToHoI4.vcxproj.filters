@@ -1009,6 +1009,9 @@
     <ClCompile Include="Source\V2World\Culture\CultureGroupFactory.cpp">
       <Filter>Vic2World\Culture</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.cpp">
+      <Filter>HoI4World\ScriptedLocalisations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">

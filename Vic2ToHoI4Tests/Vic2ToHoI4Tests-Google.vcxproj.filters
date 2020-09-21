@@ -1178,6 +1178,9 @@
     <ClCompile Include="Vic2WorldTests\Culture\CultureGroupsTests.cpp">
       <Filter>Vic2WorldTests\Cultures</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedLocalisations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

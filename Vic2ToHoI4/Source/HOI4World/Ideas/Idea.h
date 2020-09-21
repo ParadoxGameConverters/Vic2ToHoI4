@@ -26,6 +26,8 @@ class Idea: commonItems::parser
 	std::string name;
 	std::string altName;
 
+	std::string ledger;
+
 	std::optional<int> cost;
 	std::optional<int> removalCost;
 	std::optional<int> level;

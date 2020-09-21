@@ -1359,8 +1359,8 @@
 			picture = chi_war_of_resistance3
 
 			modifier = {
-				resistance_growth_on_our_occupied_states = 0.01
-				resistance_damage_to_garrison_on_our_occupied_states = 0.25
+				resistance_growth_on_our_occupied_states = 0.1 
+				resistance_damage_to_garrison_on_our_occupied_states = 0.25 
 			}
 		}
 		MTG_naval_treaty_adherent = {
@@ -1782,7 +1782,8 @@
 	high_command = {
 
 		generic_army_art = {
-
+			ledger = army
+			
 			allowed = {
 			}
 
@@ -1790,6 +1791,7 @@
 		}
 
 		generic_army_log = {
+			ledger = army
 
 			allowed = {
 			}
@@ -1798,6 +1800,7 @@
 		}
 
 		generic_navy_fleet_log = {
+			ledger = navy
 
 			allowed = {
 			}
@@ -1806,6 +1809,7 @@
 		}
 
 		generic_air_air_combat_trainer = {
+			ledger = air
 
 			allowed = {
 			}
@@ -1817,7 +1821,8 @@
 	theorist = {
 
 		generic_military_theorist = {
-
+			ledger = army
+			
 			allowed = {
 			}
 
@@ -1829,7 +1834,8 @@
 		}
 
 		generic_naval_theorist = {
-
+			ledger = navy
+			
 			allowed = {
 			}
 
@@ -1841,7 +1847,8 @@
 		}
 
 		generic_air_warfare_theorist = {
-
+			ledger = air
+			
 			allowed = {
 			}
 
