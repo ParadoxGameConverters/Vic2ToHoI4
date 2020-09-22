@@ -21,7 +21,7 @@ artifacts:
 deploy:
 - provider: GitHub
   release: 0.2Mussolini
-  description: The most recent build of the development version
+  description: La Resistance release
   auth_token:
     secure: LBJzs4y9j0N5y0ajp7gmVk3Pvnec1UU5pTCdIMbQYUddEXQnWTJ79FXsd9SCs7YQ
   repository: ParadoxGameConverters/Vic2ToHoI4
