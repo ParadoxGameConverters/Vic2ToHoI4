@@ -1,5 +1,5 @@
 # Version info
 
-version = "0.2M"
-name = "Mussolini"
+version = "0.2N-prerelease"
+name = "Nimitz"
 descriptionLine = "compatible with 1.9.3"
