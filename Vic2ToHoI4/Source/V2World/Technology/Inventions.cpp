@@ -5,16 +5,13 @@
 
 
 
-std::optional<std::string> Vic2::Inventions::getInventionName(int inventionNum) const
+std::optional<std::string> Vic2::Inventions::getInventionName(int inventionNumber) const
 {
-	auto inventionName = inventionNumsToNames.find(inventionNum);
-	if (inventionName == inventionNumsToNames.end())
+	if (static_cast<size_t>(inventionNumber) > inventionNames.size())
 	{
 		Log(LogLevel::Warning) << "Invalid invention. Is this using a mod that changed inventions?";
 		return {};
 	}
-	else
-	{
-		return inventionName->second;
-	}
+
+	return inventionNames[static_cast<size_t>(inventionNumber) - 1];
 }

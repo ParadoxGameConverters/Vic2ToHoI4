@@ -3,9 +3,9 @@
 
 
 
-#include <map>
 #include <optional>
 #include <string>
+#include <vector>
 
 
 
@@ -17,10 +17,10 @@ class Inventions
   public:
 	class Factory;
 
-	std::optional<std::string> getInventionName(int inventionNum) const;
+	[[nodiscard]] std::optional<std::string> getInventionName(int inventionNumber) const;
 
   private:
-	std::map<int, std::string> inventionNumsToNames;
+	std::vector<std::string> inventionNames;
 };
 
 } // namespace Vic2

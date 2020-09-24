@@ -6,8 +6,7 @@
 Vic2::Inventions::Factory::Factory()
 {
 	registerRegex("[a-zA-Z0-9_.טיצü\\:\\&]+", [this](const std::string& inventionName, std::istream& theStream) {
-		inventions->inventionNumsToNames.insert(
-			 make_pair(static_cast<int>(inventions->inventionNumsToNames.size()) + 1, inventionName));
+		inventions->inventionNames.push_back(inventionName);
 		commonItems::ignoreItem(inventionName, theStream);
 	});
 }
