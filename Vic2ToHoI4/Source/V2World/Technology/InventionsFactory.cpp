@@ -3,6 +3,7 @@
 #include "ParserHelpers.h"
 
 
+
 Vic2::Inventions::Factory::Factory()
 {
 	registerRegex("[a-zA-Z0-9_.טיצü\\:\\&]+", [this](const std::string& inventionName, std::istream& theStream) {
@@ -16,59 +17,56 @@ std::unique_ptr<Vic2::Inventions> Vic2::Inventions::Factory::getInventions(const
 {
 	inventions = std::make_unique<Inventions>();
 
-	auto inventionFiles = getInventionFiles(theConfiguration);
-	generateNums(inventionFiles);
+	const auto inventionFiles = getInventionFiles(theConfiguration);
+	generateNumbers(inventionFiles);
 
 	return std::move(inventions);
 }
 
 
-std::list<std::string> Vic2::Inventions::Factory::getInventionFiles(const Configuration& theConfiguration) const
+std::vector<std::string> Vic2::Inventions::Factory::getInventionFiles(const Configuration& theConfiguration) const
 {
-	std::map<std::string, std::string> techFiles;
+	const auto techFiles = getTechFilesAndPaths(theConfiguration);
 
-	auto mainTechFiles = commonItems::GetAllFilesInFolder(theConfiguration.getVic2Path() + "/inventions/");
-	std::for_each(mainTechFiles.begin(), mainTechFiles.end(), [&techFiles, &theConfiguration](const std::string& file) {
-		techFiles[file] = theConfiguration.getVic2Path() + "/inventions/";
-	});
-
-	for (const auto& mod: theConfiguration.getVic2Mods())
+	std::vector<std::string> finalTechFiles;
+	for (const auto& [path, filename]: techFiles)
 	{
-		std::string modInventionsPath = theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/inventions/";
-		if (commonItems::DoesFolderExist(modInventionsPath))
-		{
-			auto modTechFiles = commonItems::GetAllFilesInFolder(modInventionsPath);
-			std::for_each(modTechFiles.begin(),
-				 modTechFiles.end(),
-				 [&techFiles, modInventionsPath](const std::string& file) {
-					 techFiles[file] = modInventionsPath;
-				 });
-		}
+		finalTechFiles.push_back(path + filename);
 	}
-
-	std::list<std::string> finalTechFiles;
-	std::for_each(techFiles.begin(),
-		 techFiles.end(),
-		 [&finalTechFiles](const std::pair<std::string, std::string>& file) {
-			 finalTechFiles.push_back(file.second + file.first);
-		 });
 
 	return finalTechFiles;
 }
 
 
-void Vic2::Inventions::Factory::generateNums(const std::list<std::string>& inventionFiles)
+std::map<std::string, std::string> Vic2::Inventions::Factory::getTechFilesAndPaths(
+	 const Configuration& theConfiguration) const
 {
-	for (auto file: inventionFiles)
+	std::map<std::string, std::string> techFiles;
+
+	for (const auto& file: commonItems::GetAllFilesInFolder(theConfiguration.getVic2Path() + "/inventions/"))
 	{
-		processTechFile(file);
+		techFiles[file] = theConfiguration.getVic2Path() + "/inventions/";
 	}
+	for (const auto& mod: theConfiguration.getVic2Mods())
+	{
+		auto modInventionsPath = theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/inventions/";
+		if (commonItems::DoesFolderExist(modInventionsPath))
+		{
+			for (const auto& file: commonItems::GetAllFilesInFolder(modInventionsPath))
+			{
+				techFiles[file] = modInventionsPath;
+			}
+		}
+	}
+
+	return techFiles;
 }
 
 
-void Vic2::Inventions::Factory::processTechFile(const std::string& filename)
+void Vic2::Inventions::Factory::generateNumbers(const std::vector<std::string>& inventionFiles)
 {
-
-
-	parseFile(filename);
+	for (const auto& file: inventionFiles)
+	{
+		parseFile(file);
+	}
 }

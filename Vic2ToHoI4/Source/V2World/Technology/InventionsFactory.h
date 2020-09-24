@@ -6,9 +6,9 @@
 #include "../../Configuration.h"
 #include "Inventions.h"
 #include "Parser.h"
-#include <list>
 #include <memory>
 #include <string>
+#include <vector>
 
 
 
@@ -22,9 +22,9 @@ class Inventions::Factory: commonItems::parser
 	std::unique_ptr<Inventions> getInventions(const Configuration& theConfiguration);
 
   private:
-	std::list<std::string> getInventionFiles(const Configuration& theConfiguration) const;
-	void generateNums(const std::list<std::string>& inventionFiles);
-	void processTechFile(const std::string& filename);
+	[[nodiscard]] std::vector<std::string> getInventionFiles(const Configuration& theConfiguration) const;
+	[[nodiscard]] std::map<std::string, std::string> getTechFilesAndPaths(const Configuration& theConfiguration) const;
+	void generateNumbers(const std::vector<std::string>& inventionFiles);
 
 	std::unique_ptr<Inventions> inventions;
 };
