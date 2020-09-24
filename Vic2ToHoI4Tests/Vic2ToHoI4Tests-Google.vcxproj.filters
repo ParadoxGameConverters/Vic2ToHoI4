@@ -61,9 +61,6 @@
     <ClCompile Include="..\common_items\targa.cpp">
       <Filter>Vic2ToHoI4 files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Inventions.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CommonCountryData.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
@@ -1181,6 +1178,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ScriptedLocalisations</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Technology\Inventions.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Technology</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1491,6 +1491,9 @@
     </Filter>
     <Filter Include="TestFiles\Cultures">
       <UniqueIdentifier>{2cb57e99-80d7-43ac-9027-e2feea6c5624}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Technology">
+      <UniqueIdentifier>{ff7c92cf-07aa-4a6b-9020-a2163643fdbe}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

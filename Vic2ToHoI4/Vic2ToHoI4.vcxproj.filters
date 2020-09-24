@@ -205,6 +205,9 @@
     <Filter Include="Vic2World\Culture">
       <UniqueIdentifier>{ab7c239a-2733-4118-b6d7-e527cff25e4d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2World\Technology">
+      <UniqueIdentifier>{0a5f6d4e-b68e-443b-b534-bf53741d36fd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -268,9 +271,6 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\OnActions.cpp">
       <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\V2World\Inventions.cpp">
-      <Filter>Vic2World</Filter>
     </ClCompile>
     <ClCompile Include="Source\Mappers\TechMapper.cpp">
       <Filter>Mappers</Filter>
@@ -1012,6 +1012,9 @@
     <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.cpp">
       <Filter>HoI4World\ScriptedLocalisations</Filter>
     </ClCompile>
+    <ClCompile Include="Source\V2World\Technology\Inventions.cpp">
+      <Filter>Vic2World\Technology</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1075,9 +1078,6 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\OnActions.h">
       <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\V2World\Inventions.h">
-      <Filter>Vic2World</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\TechMapper.h">
       <Filter>Mappers</Filter>
@@ -1928,6 +1928,9 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Culture\CultureGroupFactory.h">
       <Filter>Vic2World\Culture</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Technology\Inventions.h">
+      <Filter>Vic2World\Technology</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

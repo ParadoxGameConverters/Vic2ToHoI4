@@ -283,7 +283,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\AgreementFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\DiplomacyFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\RelationsFactory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Inventions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueCategoryHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\Issues.cpp" />
@@ -302,6 +301,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategories.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategoriesFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Technology\Inventions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Vic2Localisations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarGoalFactory.cpp" />

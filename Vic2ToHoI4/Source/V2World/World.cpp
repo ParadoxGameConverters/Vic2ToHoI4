@@ -8,7 +8,6 @@
 #include "Date.h"
 #include "Diplomacy/DiplomacyFactory.h"
 #include "Diplomacy/RelationsFactory.h"
-#include "Inventions.h"
 #include "Issues/Issues.h"
 #include "Issues/IssuesFactory.h"
 #include "Log.h"
@@ -21,6 +20,7 @@
 #include "States/StateDefinitionsFactory.h"
 #include "States/StateFactory.h"
 #include "States/StateLanguageCategoriesFactory.h"
+#include "Technology/Inventions.h"
 #include "Vic2Localisations.h"
 #include "Wars/WarFactory.h"
 #include <fstream>

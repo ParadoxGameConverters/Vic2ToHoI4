@@ -1,7 +1,6 @@
 #include "Country.h"
 #include "Culture/CultureGroups.h"
 #include "Diplomacy/Relations.h"
-#include "Inventions.h"
 #include "Leader.h"
 #include "Log.h"
 #include "ParserHelpers.h"
@@ -11,6 +10,7 @@
 #include "States/State.h"
 #include "States/StateDefinitions.h"
 #include "StringUtils.h"
+#include "Technology/Inventions.h"
 #include "Vic2Localisations.h"
 
 
