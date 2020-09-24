@@ -17,7 +17,7 @@
 
 Vic2::Country::Country(const std::string& theTag,
 	 std::istream& theStream,
-	 const inventions& theInventions,
+	 const Inventions& theInventions,
 	 const CultureGroups& theCultureGroups,
 	 const StateDefinitions& theStateDefinitions,
 	 State::Factory& stateFactory,

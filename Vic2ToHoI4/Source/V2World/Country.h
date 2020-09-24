@@ -26,7 +26,7 @@ class StateDefinitions;
 
 class Army;
 class CultureGroups;
-class inventions;
+class Inventions;
 class Leader;
 class Localisations;
 class Province;
@@ -40,7 +40,7 @@ class Country: commonItems::parser
 	Country() = default;
 	explicit Country(const std::string& theTag,
 		 std::istream& theStream,
-		 const inventions& theInventions,
+		 const Inventions& theInventions,
 		 const CultureGroups& theCultureGroups,
 		 const StateDefinitions& theStateDefinitions,
 		 State::Factory& stateFactory,
