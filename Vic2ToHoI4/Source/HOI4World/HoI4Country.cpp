@@ -790,6 +790,11 @@ void HoI4::Country::convertArmies(const militaryMappings& theMilitaryMappings,
 	{
 		theArmy.convertArmies(theMilitaryMappings, 0, theConfiguration.getForceMultiplier(), theStates, provinceMapper);
 	}
+
+	for (const auto& [equipmentType, amount]: theArmy.getLeftoverEquipment())
+	{
+		equipmentStockpile[equipmentType] += amount;
+	}
 }
 
 

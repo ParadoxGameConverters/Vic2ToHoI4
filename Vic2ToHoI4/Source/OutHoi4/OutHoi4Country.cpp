@@ -419,10 +419,13 @@ void outputEquipmentStockpile(std::ostream& output,
 	 const std::map<std::string, unsigned int>& equipmentStockpile,
 	 const std::string& tag)
 {
-	for (const auto& eqp: equipmentStockpile)
+	for (const auto& [type, amount]: equipmentStockpile)
 	{
-		output << "add_equipment_to_stockpile = ";
-		output << "{ type = " << eqp.first << " amount = " << eqp.second << " producer = " << tag << " }\n";
+		if (amount > 0)
+		{
+			output << "add_equipment_to_stockpile = ";
+			output << "{ type = " << type << " amount = " << amount << " producer = " << tag << " }\n";
+		}
 	}
 	output << "\n";
 }

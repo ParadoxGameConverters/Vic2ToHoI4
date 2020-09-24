@@ -60,6 +60,8 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings,
 	}
 
 	convertArmyDivisions(theMilitaryMappings, remainingBattalionsAndCompanies, backupLocation);
+
+	collectLeftoverEquipment(remainingBattalionsAndCompanies);
 }
 
 
@@ -268,4 +270,32 @@ HoI4::DivisionType HoI4::createDivision(const std::map<std::string, int>& templa
 		 divisionTemplate.getName(),
 		 location,
 		 actualExperience);
+}
+
+
+void HoI4::Army::collectLeftoverEquipment(std::map<std::string, std::vector<SizedRegiment>>& battalionsAndCompanies)
+{
+	for (const auto& [type, sizedRegiment]: battalionsAndCompanies)
+	{
+		for (const auto& regiment: sizedRegiment)
+		{
+			// TODO(#737): Make this use the HoI4 data instead of hard-coding
+			if (type == "infantry")
+			{
+				leftoverEquipment["infantry_equipment_0"] += static_cast<int>(regiment.unitSize * 100);
+			}
+			else if (type == "cavalry")
+			{
+				leftoverEquipment["infantry_equipment_0"] += static_cast<int>(regiment.unitSize * 120);
+			}
+			else if (type == "artillery_brigade")
+			{
+				leftoverEquipment["artillery_equipment_1"] += static_cast<int>(regiment.unitSize * 12);
+			}
+			else if (type == "light_armor")
+			{
+				leftoverEquipment["gw_tank_equipment"] += static_cast<int>(regiment.unitSize * 60);
+			}
+		}
+	}
 }

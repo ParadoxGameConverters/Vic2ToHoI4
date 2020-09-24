@@ -78,6 +78,115 @@ TEST(HoI4World_Military_HoI4ArmyTests, InsufficientDivisionsBecomeNothing)
 }
 
 
+TEST(HoI4World_Military_HoI4ArmyTests, LeftoverRegimentsBecomeEquipment)
+{
+	HoI4::States theStates;
+
+	HoI4::Army theArmy;
+	std::vector<Vic2::Army> Vic2Armies;
+	std::istringstream armyInput(
+		 "=\n"
+		 "\t{\n"
+		 "\t\tregiment=\n"
+		 "\t\t{\n"
+		 "\t\t\tcount=1\n"
+		 "\t\t\ttype=infantry\n"
+		 "\t\t}\n"
+		 "\t\tregiment=\n"
+		 "\t\t{\n"
+		 "\t\t\tcount=1\n"
+		 "\t\t\ttype=artillery\n"
+		 "\t\t}\n"
+		 "\t\tregiment=\n"
+		 "\t\t{\n"
+		 "\t\t\tcount=1\n"
+		 "\t\t\ttype=hussar\n"
+		 "\t\t}\n"
+		 "\t\tregiment=\n"
+		 "\t\t{\n"
+		 "\t\t\tcount=1\n"
+		 "\t\t\ttype=tank\n"
+		 "\t\t}\n"
+		 "\t\tregiment=\n"
+		 "\t\t{\n"
+		 "\t\t\tcount=1\n"
+		 "\t\t\ttype=plane\n"
+		 "\t\t}\n"
+		 "\t}");
+	Vic2::Army Vic2Army("army", armyInput);
+	Vic2Armies.push_back(Vic2Army);
+	theArmy.addSourceArmies(Vic2Armies);
+
+	std::stringstream mappingsInput;
+	mappingsInput << "= {\n";
+	mappingsInput << "\tmtg_unit_map = {}\n";
+	mappingsInput << "\tunit_map = {\n";
+	mappingsInput << "\t\tlink = {\n";
+	mappingsInput << "\t\t\tvic = infantry\n";
+	mappingsInput << "\t\t\thoi = {\n";
+	mappingsInput << "\t\t\t\tcategory = land\n";
+	mappingsInput << "\t\t\t\ttype = infantry\n";
+	mappingsInput << "\t\t\t\tequipment = infantry_equipment_0\n";
+	mappingsInput << "\t\t\t\tsize = 3\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\tlink = {\n";
+	mappingsInput << "\t\tvic = artillery\n";
+	mappingsInput << "\t\thoi = {\n";
+	mappingsInput << "\t\t\tcategory = land\n";
+	mappingsInput << "\t\t\ttype = artillery_brigade\n";
+	mappingsInput << "\t\t\tequipment = artillery_equipment_1\n";
+	mappingsInput << "\t\t\tsize = 3\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "\tlink = {\n";
+	mappingsInput << "\t\tvic = hussar\n";
+	mappingsInput << "\t\thoi = {\n";
+	mappingsInput << "\t\t\tcategory = land\n";
+	mappingsInput << "\t\t\ttype = cavalry\n";
+	mappingsInput << "\t\t\tequipment = infantry_equipment_0\n";
+	mappingsInput << "\t\t\tsize = 3\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "\tlink = {\n";
+	mappingsInput << "\t\tvic = tank\n";
+	mappingsInput << "\t\thoi = {\n";
+	mappingsInput << "\t\t\tcategory = land\n";
+	mappingsInput << "\t\t\ttype = light_armor\n";
+	mappingsInput << "\t\t\tequipment = gw_tank_equipment\n";
+	mappingsInput << "\t\t\tsize = 1\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "\tlink = {\n";
+	mappingsInput << "\t\tvic = plane\n";
+	mappingsInput << "\t\thoi = {\n";
+	mappingsInput << "\t\t\tcategory = air\n";
+	mappingsInput << "\t\t\ttype = fighter\n";
+	mappingsInput << "\t\t\tequipment = fighter_equipment_0\n";
+	mappingsInput << "\t\t\tsize = 20\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "\tdivision_templates = {\n";
+	mappingsInput << "\t\tdivision_template= {\n";
+	mappingsInput << "\t\t\tname = \"Light Infantry Brigade\"\n";
+	mappingsInput << "\t\t\tregiments = {\n";
+	mappingsInput << "\t\t\t\tinfantry = { x = 0 y = 0 }\n";
+	mappingsInput << "\t\t\t\tinfantry = { x = 1 y = 0 }\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "}";
+	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
+
+	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, theStates, mappers::ProvinceMapper{{}, {}});
+
+	std::map<std::string, unsigned int> expectedEquipment{{"infantry_equipment_0", 660},
+		 {"artillery_equipment_1", 36},
+		 {"gw_tank_equipment", 60}};
+	ASSERT_EQ(expectedEquipment, theArmy.getLeftoverEquipment());
+}
+
+
 TEST(HoI4World_Military_HoI4ArmyTests, SufficientDivisionsConvert)
 {
 	HoI4::States theStates;
@@ -238,7 +347,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 {
 	HoI4::States theStates;
 
-		mappers::ProvinceMapper provinceMapper{{{11821, {496}}}, {{496, {11821}}}};
+	mappers::ProvinceMapper provinceMapper{{{11821, {496}}}, {{496, {11821}}}};
 
 	HoI4::Army theArmy;
 	std::vector<Vic2::Army> Vic2Armies;

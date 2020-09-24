@@ -47,13 +47,18 @@ class Army
 
 	friend std::ostream& operator<<(std::ostream& output, const Army& theArmy);
 
+	[[nodiscard]] const auto& getLeftoverEquipment() const { return leftoverEquipment; }
+
   private:
 	void convertArmyDivisions(const militaryMappings& theMilitaryMappings,
 		 std::map<std::string, std::vector<SizedRegiment>>& BattalionsAndCompanies,
 		 int location);
+	void collectLeftoverEquipment(std::map<std::string, std::vector<SizedRegiment>>& battalionsAndCompanies);
 
 	std::vector<Vic2::Army> sourceArmies;
 	std::vector<DivisionType> divisions;
+
+	std::map<std::string, unsigned int> leftoverEquipment;
 };
 
 } // namespace HoI4
