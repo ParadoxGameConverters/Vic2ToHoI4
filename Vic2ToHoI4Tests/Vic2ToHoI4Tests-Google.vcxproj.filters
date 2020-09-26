@@ -61,9 +61,6 @@
     <ClCompile Include="..\common_items\targa.cpp">
       <Filter>Vic2ToHoI4 files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Inventions.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CommonCountryData.cpp">
       <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
@@ -1181,6 +1178,15 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ScriptedLocalisations</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Technology\Inventions.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Technology\InventionsFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Technology\InventionTests.cpp">
+      <Filter>Vic2WorldTests\Technology</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1492,6 +1498,15 @@
     <Filter Include="TestFiles\Cultures">
       <UniqueIdentifier>{2cb57e99-80d7-43ac-9027-e2feea6c5624}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Technology">
+      <UniqueIdentifier>{ff7c92cf-07aa-4a6b-9020-a2163643fdbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\Technology">
+      <UniqueIdentifier>{f4603c9a-f1ad-412b-9bf6-ba250ebf6939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Technology">
+      <UniqueIdentifier>{a76015ec-b05c-4a70-962b-011ab46efb40}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1633,6 +1648,24 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Cultures\ModTwoCultures.txt">
       <Filter>TestFiles\Cultures</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Technology\BaseGameTech1.txt">
+      <Filter>TestFiles\Technology</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Technology\BaseGameTech2.txt">
+      <Filter>TestFiles\Technology</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Technology\ModTech3.txt">
+      <Filter>TestFiles\Technology</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Technology\ModTech4.txt">
+      <Filter>TestFiles\Technology</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Technology\ModTechOverride1.txt">
+      <Filter>TestFiles\Technology</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Technology\ModTechOverride2.txt">
+      <Filter>TestFiles\Technology</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

@@ -1,7 +1,6 @@
 #include "Country.h"
 #include "Culture/CultureGroups.h"
 #include "Diplomacy/Relations.h"
-#include "Inventions.h"
 #include "Leader.h"
 #include "Log.h"
 #include "ParserHelpers.h"
@@ -11,13 +10,14 @@
 #include "States/State.h"
 #include "States/StateDefinitions.h"
 #include "StringUtils.h"
+#include "Technology/Inventions.h"
 #include "Vic2Localisations.h"
 
 
 
 Vic2::Country::Country(const std::string& theTag,
 	 std::istream& theStream,
-	 const inventions& theInventions,
+	 const Inventions& theInventions,
 	 const CultureGroups& theCultureGroups,
 	 const StateDefinitions& theStateDefinitions,
 	 State::Factory& stateFactory,

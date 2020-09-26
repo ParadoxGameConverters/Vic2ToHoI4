@@ -8,7 +8,6 @@
 #include "Date.h"
 #include "Diplomacy/DiplomacyFactory.h"
 #include "Diplomacy/RelationsFactory.h"
-#include "Inventions.h"
 #include "Issues/Issues.h"
 #include "Issues/IssuesFactory.h"
 #include "Log.h"
@@ -21,6 +20,8 @@
 #include "States/StateDefinitionsFactory.h"
 #include "States/StateFactory.h"
 #include "States/StateLanguageCategoriesFactory.h"
+#include "Technology/Inventions.h"
+#include "Technology/InventionsFactory.h"
 #include "Vic2Localisations.h"
 #include "Wars/WarFactory.h"
 #include <fstream>
@@ -33,7 +34,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	theCultureGroups = CultureGroups::Factory{}.getCultureGroups(theConfiguration);
 	auto theIssues = Issues::Factory{}.getIssues(theConfiguration.getVic2Path());
 	theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
-	inventions theInventions(theConfiguration);
+	std::unique_ptr<Inventions> theInventions = Inventions::Factory{}.loadInventions(theConfiguration);
 	auto popFactory = std::make_unique<Pop::Factory>(*theIssues);
 	Province::Factory provinceFactory(std::move(popFactory));
 	State::Factory stateFactory;
@@ -70,7 +71,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 			  std::istream& theStream) {
 			 countries[countryTag] = new Country(countryTag,
 				  theStream,
-				  theInventions,
+				  *theInventions,
 				  *theCultureGroups,
 				  *theStateDefinitions,
 				  stateFactory,

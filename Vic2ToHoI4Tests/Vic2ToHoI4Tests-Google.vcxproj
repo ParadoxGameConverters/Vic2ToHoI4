@@ -283,7 +283,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\AgreementFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\DiplomacyFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\RelationsFactory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Inventions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueCategoryHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\Issues.cpp" />
@@ -302,6 +301,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategories.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategoriesFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Technology\Inventions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Technology\InventionsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Vic2Localisations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarGoalFactory.cpp" />
@@ -429,6 +430,7 @@
     <ClCompile Include="Vic2WorldTests\States\StateLanguageCategoriesFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateLanguageCategoriesTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Technology\InventionTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Wars\WarBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Wars\WarFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Wars\WarGoalFactoryTests.cpp" />
@@ -629,6 +631,40 @@
     <CopyFileToFolders Include="TestFiles\Cultures\ModTwoCultures.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ModCultures/ModTwo/common</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cultures%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Technology\BaseGameTech1.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/BaseGameInventions/inventions</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Tech1%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Technology\BaseGameTech2.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/BaseGameInventions/inventions</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Tech2%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Technology\ModTech3.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ModInventions/Mod1/inventions</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Tech3%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Technology\ModTech4.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ModInventions/Mod2/inventions</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Tech4%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Technology\ModTechOverride1.txt">
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Tech1%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ModInventions/Mod3/inventions</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Technology\ModTechOverride2.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ModInventions/Mod3/inventions</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Tech3%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />
