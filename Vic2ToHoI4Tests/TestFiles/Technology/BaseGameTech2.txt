@@ -1,0 +1,2 @@
+test_tech_two = {}
+test_tech_טיצü:& = {}

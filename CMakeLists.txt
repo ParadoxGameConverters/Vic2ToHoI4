@@ -272,6 +272,7 @@ set(VIC2WORLD_STATES_TESTS_SOURCES ${VIC2WORLD_STATES_TESTS_SOURCES} "${TEST_SOU
 set(VIC2WORLD_STATES_TESTS_SOURCES ${VIC2WORLD_STATES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/States/StateLanguageCategoriesTests.cpp")
 set(VIC2WORLD_STATES_TESTS_SOURCES ${VIC2WORLD_STATES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/States/StateLanguageCategoriesFactoryTests.cpp")
 set(VIC2WORLD_STATES_TESTS_SOURCES ${VIC2WORLD_STATES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/States/StateTests.cpp")
+set(VIC2WORLD_TECHNOLOGY_TESTS_SOURCES ${VIC2WORLD_TECHNOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Technology/InventionTests.cpp")
 set(VIC2WORLD_WAR_TESTS_SOURCES ${VIC2WORLD_WAR_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Wars/WarBuilderTests.cpp")
 set(VIC2WORLD_WAR_TESTS_SOURCES ${VIC2WORLD_WAR_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Wars/WarFactoryTests.cpp")
 set(VIC2WORLD_WAR_TESTS_SOURCES ${VIC2WORLD_WAR_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Wars/WarGoalFactoryTests.cpp")
@@ -382,6 +383,7 @@ add_executable(
 	${VIC2WORLD_POPS_TESTS_SOURCES}
 	${VIC2WORLD_PROVINCES_TESTS_SOURCES}
 	${VIC2WORLD_STATES_TESTS_SOURCES}
+	${VIC2WORLD_TECHNOLOGY_TESTS_SOURCES}
 	${VIC2WORLD_WAR_TESTS_SOURCES}
 	${COMMON_SOURCES}
 	${GMOCK_SOURCES}
@@ -419,6 +421,12 @@ configure_file("Vic2ToHoI4Tests/TestFiles/operations_to_update.txt" "${TEST_OUTP
 configure_file("Vic2ToHoI4Tests/TestFiles/regions.txt" "${TEST_OUTPUT_DIRECTORY}/DataFiles/Map/regions.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/ScriptedEffects/effects_file.txt" "${TEST_OUTPUT_DIRECTORY}/ScriptedEffects/effects_file.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/ScriptedEffects/empty_effects_file.txt" "${TEST_OUTPUT_DIRECTORY}/ScriptedEffects/empty_effects_file.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Technology/BaseGameTech1.txt" "${TEST_OUTPUT_DIRECTORY}/BaseGameInventions/inventions/Tech1.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Technology/BaseGameTech2.txt" "${TEST_OUTPUT_DIRECTORY}/BaseGameInventions/inventions/Tech2.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Technology/ModTech3.txt" "${TEST_OUTPUT_DIRECTORY}/ModInventions/Mod1/inventions/Tech3.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Technology/ModTech4.txt" "${TEST_OUTPUT_DIRECTORY}/ModInventions/Mod2/inventions/Tech4.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Technology/ModTechOverride1.txt" "${TEST_OUTPUT_DIRECTORY}/ModInventions/Mod3/inventions/Tech1.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Technology/ModTechOverride2.txt" "${TEST_OUTPUT_DIRECTORY}/ModInventions/Mod3/inventions/Tech3.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game" "${TEST_OUTPUT_DIRECTORY}/Vic2Linux/v2game" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game.exe" "${TEST_OUTPUT_DIRECTORY}/Vic2Windows/v2game.exe" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2gameMac" "${TEST_OUTPUT_DIRECTORY}/somethingWithMacOS/somethingElse/Vic2Path/v2game" COPYONLY)
