@@ -11,7 +11,7 @@ TEST(Vic2World_Technology_InventionTests, MissingInventionLogsErrorAndReturnsNul
 	const auto inventions = Vic2::Inventions{};
 
 	std::stringstream log;
-	auto stdOutBuf = std::cout.rdbuf();
+	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
 	const auto inventionName = inventions.getInventionName(1);

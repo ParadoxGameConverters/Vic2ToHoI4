@@ -7,10 +7,11 @@
 Vic2::Inventions::Factory::Factory()
 {
 	// invention names have the usual alphanumerics, plus טיצü:&
-	registerRegex("[a-zA-Z0-9_.\xe8\xe9\xf6\xfc\\:\\&]+", [this](const std::string& inventionName, std::istream& theStream) {
-		inventions->inventionNames.push_back(inventionName);
-		commonItems::ignoreItem(inventionName, theStream);
-	});
+	registerRegex("[a-zA-Z0-9_.\xe8\xe9\xf6\xfc\\:\\&]+",
+		 [this](const std::string& inventionName, std::istream& theStream) {
+			 inventions->inventionNames.push_back(inventionName);
+			 commonItems::ignoreItem(inventionName, theStream);
+		 });
 }
 
 
@@ -29,7 +30,7 @@ std::vector<std::string> Vic2::Inventions::Factory::getInventionFiles(const Conf
 {
 	const auto techFiles = getTechFilesAndPaths(theConfiguration);
 
-	std::vector<std::string> finalTechFiles;
+	std::vector<std::string> finalTechFiles(techFiles.size());
 	for (const auto& [filename, path]: techFiles)
 	{
 		finalTechFiles.push_back(path + filename);
