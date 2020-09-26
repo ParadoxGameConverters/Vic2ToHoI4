@@ -17,7 +17,7 @@ class Inventions
   public:
 	class Factory;
 
-	[[nodiscard]] std::optional<std::string> getInventionName(int inventionNumber) const;
+	[[nodiscard]] std::optional<std::string> getInventionName(unsigned int inventionNumber) const;
 
   private:
 	std::vector<std::string> inventionNames;

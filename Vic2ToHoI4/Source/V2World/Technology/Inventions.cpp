@@ -5,8 +5,13 @@
 
 
 
-std::optional<std::string> Vic2::Inventions::getInventionName(int inventionNumber) const
+std::optional<std::string> Vic2::Inventions::getInventionName(unsigned int inventionNumber) const
 {
+	if (inventionNumber == 0)
+	{
+		Log(LogLevel::Warning) << "Invalid invention zero.";
+		return {};
+	}
 	if (static_cast<size_t>(inventionNumber) > inventionNames.size())
 	{
 		Log(LogLevel::Warning) << "Invalid invention. Is this using a mod that changed inventions?";
