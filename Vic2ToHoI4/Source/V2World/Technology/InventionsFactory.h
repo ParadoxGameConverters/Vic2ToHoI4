@@ -19,7 +19,7 @@ class Inventions::Factory: commonItems::parser
 {
   public:
 	Factory();
-	std::unique_ptr<Inventions> getInventions(const Configuration& theConfiguration);
+	std::unique_ptr<Inventions> loadInventions(const Configuration& theConfiguration);
 
   private:
 	[[nodiscard]] std::vector<std::string> getInventionFiles(const Configuration& theConfiguration) const;

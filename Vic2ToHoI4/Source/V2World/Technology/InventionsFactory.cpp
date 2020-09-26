@@ -15,7 +15,7 @@ Vic2::Inventions::Factory::Factory()
 }
 
 
-std::unique_ptr<Vic2::Inventions> Vic2::Inventions::Factory::getInventions(const Configuration& theConfiguration)
+std::unique_ptr<Vic2::Inventions> Vic2::Inventions::Factory::loadInventions(const Configuration& theConfiguration)
 {
 	inventions = std::make_unique<Inventions>();
 

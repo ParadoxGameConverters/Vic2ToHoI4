@@ -34,7 +34,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	theCultureGroups = CultureGroups::Factory{}.getCultureGroups(theConfiguration);
 	auto theIssues = Issues::Factory{}.getIssues(theConfiguration.getVic2Path());
 	theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
-	std::unique_ptr<Inventions> theInventions = Inventions::Factory{}.getInventions(theConfiguration);
+	std::unique_ptr<Inventions> theInventions = Inventions::Factory{}.loadInventions(theConfiguration);
 	auto popFactory = std::make_unique<Pop::Factory>(*theIssues);
 	Province::Factory provinceFactory(std::move(popFactory));
 	State::Factory stateFactory;
