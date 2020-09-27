@@ -208,6 +208,12 @@
     <Filter Include="Vic2World\Technology">
       <UniqueIdentifier>{0a5f6d4e-b68e-443b-b534-bf53741d36fd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OutHoi4\Sounds">
+      <UniqueIdentifier>{fcab819a-a356-4464-aa7c-66188c5bc607}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4World\Sounds">
+      <UniqueIdentifier>{bc616e85-a19b-46e2-8e42-236672790f68}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1017,6 +1023,9 @@
     </ClCompile>
     <ClCompile Include="Source\V2World\Technology\InventionsFactory.cpp">
       <Filter>Vic2World\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\Sounds\OutSounds.cpp">
+      <Filter>OutHoi4\Sounds</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1937,6 +1946,12 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Technology\InventionsFactory.h">
       <Filter>Vic2World\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\Sounds\OutSounds.h">
+      <Filter>OutHoi4\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffect.h">
+      <Filter>HoI4World\Sounds</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

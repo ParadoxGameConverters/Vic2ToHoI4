@@ -1187,6 +1187,9 @@
     <ClCompile Include="Vic2WorldTests\Technology\InventionTests.cpp">
       <Filter>Vic2WorldTests\Technology</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Sounds\OutSounds.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Sounds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1506,6 +1509,9 @@
     </Filter>
     <Filter Include="TestFiles\Technology">
       <UniqueIdentifier>{a76015ec-b05c-4a70-962b-011ab46efb40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\Sounds">
+      <UniqueIdentifier>{37a04479-12c8-4946-b7ac-5289daba0ab6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

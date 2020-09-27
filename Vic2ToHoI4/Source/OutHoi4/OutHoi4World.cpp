@@ -22,6 +22,7 @@
 #include "ScriptedEffects/OutScriptedEffects.h"
 #include "ScriptedLocalisations/OutScriptedLocalisations.h"
 #include "ScriptedTriggers/OutScriptedTriggers.h"
+#include "Sounds/OutSounds.h"
 #include "States/OutHoI4States.h"
 #include "outDifficultySettings.h"
 #include <fstream>
@@ -194,6 +195,7 @@ void HoI4::OutputWorld(const World& world,
 	outputOperativeNames(world.getOperativeNames(), outputName);
 	outputOperations(world.getOperations(), outputName);
 	outputScriptedEffects(world.getScriptedEffects(), world.getMajorIdeologies(), outputName);
+	outputSounds(outputName, {SoundEffect{"TAG_infantry_idle", {"de_Idle_001", "de_Idle_002"}}});
 }
 
 

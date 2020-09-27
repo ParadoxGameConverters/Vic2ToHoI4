@@ -254,6 +254,7 @@
     <ClCompile Include="Source\OutHoi4\ShipTypes\OutMtgShipVariant.cpp" />
     <ClCompile Include="Source\OutHoi4\ShipTypes\OutShipModules.cpp" />
     <ClCompile Include="Source\OutHoi4\ShipTypes\OutShipVariants.cpp" />
+    <ClCompile Include="Source\OutHoi4\Sounds\OutSounds.cpp" />
     <ClCompile Include="Source\OutHoi4\States\OutHoI4State.cpp" />
     <ClCompile Include="Source\OutHoi4\States\OutHoI4States.cpp" />
     <ClCompile Include="Source\OutHoi4\Version\outVersion.cpp" />
@@ -463,6 +464,7 @@
     <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationFactory.h" />
     <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.h" />
     <ClInclude Include="Source\HOI4World\SharedFocus.h" />
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffect.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategories.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategory.h" />
@@ -534,6 +536,7 @@
     <ClInclude Include="Source\OutHoi4\ShipTypes\OutMtgShipVariant.h" />
     <ClInclude Include="Source\OutHoi4\ShipTypes\OutShipModules.h" />
     <ClInclude Include="Source\OutHoi4\ShipTypes\OutShipVariants.h" />
+    <ClInclude Include="Source\OutHoi4\Sounds\OutSounds.h" />
     <ClInclude Include="Source\OutHoi4\States\OutHoI4State.h" />
     <ClInclude Include="Source\OutHoi4\States\OutHoI4States.h" />
     <ClInclude Include="Source\OutHoi4\Version\outVersion.h" />
