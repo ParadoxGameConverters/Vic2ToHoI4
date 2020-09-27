@@ -170,7 +170,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	operations = Operations::Factory{}.getOperations(theConfiguration.getHoI4Path());
 	operations->updateOperations(ideologies->getMajorIdeologies());
 
-	soundEffects = SoundEffectsFactory{}.createSoundEffects();
+	soundEffects = SoundEffectsFactory{}.createSoundEffects(countries);
 }
 
 

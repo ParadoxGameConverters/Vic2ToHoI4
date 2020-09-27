@@ -3,7 +3,10 @@
 
 
 
+#include "../HoI4Country.h"
 #include "SoundEffect.h"
+#include <map>
+#include <memory>
 #include <vector>
 
 
@@ -14,7 +17,7 @@ namespace HoI4
 class SoundEffectsFactory
 {
   public:
-	std::vector<SoundEffect> createSoundEffects();
+	std::vector<SoundEffect> createSoundEffects(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
 };
 
 } // namespace HoI4
