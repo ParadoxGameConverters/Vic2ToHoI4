@@ -2,6 +2,7 @@
 #define SOUND_EFFECTS_MAPPER_H
 
 
+#include <map>
 
 #include "SoundEffectsMapping.h"
 #include <set>
@@ -14,7 +15,11 @@ namespace HoI4
 class SoundEffectsMapper
 {
   public:
+	SoundEffectsMapper();
 	std::set<SoundEffectsMapping> getMappings(const std::string& culture);
+
+  private:
+	std::map<std::string, std::set<SoundEffectsMapping>> mappings;
 };
 
 } // namespace HoI4
