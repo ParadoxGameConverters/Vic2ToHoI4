@@ -4,19 +4,26 @@
 HoI4::SoundEffectsMapper::SoundEffectsMapper()
 {
 	mappings.insert(std::make_pair("north_german",
-		 std::set<SoundEffectsMapping>{SoundEffectsMapping{"_infantry_idle", {"de_Idle_001", "de_Idle_002"}}}));
+		 std::set<SoundEffectsMapping>{SoundEffectsMapping{"_infantry_idle", {"de_Idle_001", "de_Idle_002"}},
+			  SoundEffectsMapping{"infantry_neutral_combat", {"de_Neutral_001", "de_Neutral_002"}}}));
 	mappings.insert(std::make_pair("south_german",
-		 std::set<SoundEffectsMapping>{SoundEffectsMapping{"_infantry_idle", {"de_Idle_001", "de_Idle_002"}}}));
+		 std::set<SoundEffectsMapping>{SoundEffectsMapping{"_infantry_idle", {"de_Idle_001", "de_Idle_002"}},
+			  SoundEffectsMapping{"infantry_neutral_combat", {"de_Neutral_001", "de_Neutral_002"}}}));
 	mappings.insert(std::make_pair("german",
-		 std::set<SoundEffectsMapping>{SoundEffectsMapping{"_infantry_idle", {"de_Idle_001", "de_Idle_002"}}}));
+		 std::set<SoundEffectsMapping>{SoundEffectsMapping{"_infantry_idle", {"de_Idle_001", "de_Idle_002"}},
+			  SoundEffectsMapping{"infantry_neutral_combat", {"de_Neutral_001", "de_Neutral_002"}}}));
 	mappings.insert(std::make_pair("swiss",
-		 std::set<SoundEffectsMapping>{SoundEffectsMapping{"_infantry_idle", {"de_Idle_001", "de_Idle_002"}}}));
+		 std::set<SoundEffectsMapping>{SoundEffectsMapping{"_infantry_idle", {"de_Idle_001", "de_Idle_002"}},
+			  SoundEffectsMapping{"infantry_neutral_combat", {"de_Neutral_001", "de_Neutral_002"}}}));
 	mappings.insert(std::make_pair("amerikaner",
-		 std::set<SoundEffectsMapping>{SoundEffectsMapping{"_infantry_idle", {"de_Idle_001", "de_Idle_002"}}}));
+		 std::set<SoundEffectsMapping>{SoundEffectsMapping{"_infantry_idle", {"de_Idle_001", "de_Idle_002"}},
+			  SoundEffectsMapping{"infantry_neutral_combat", {"de_Neutral_001", "de_Neutral_002"}}}));
 	mappings.insert(std::make_pair("sudreicher",
-		 std::set<SoundEffectsMapping>{SoundEffectsMapping{"_infantry_idle", {"de_Idle_001", "de_Idle_002"}}}));
+		 std::set<SoundEffectsMapping>{SoundEffectsMapping{"_infantry_idle", {"de_Idle_001", "de_Idle_002"}},
+			  SoundEffectsMapping{"infantry_neutral_combat", {"de_Neutral_001", "de_Neutral_002"}}}));
 	mappings.insert(std::make_pair("schwarzreicher",
-		 std::set<SoundEffectsMapping>{SoundEffectsMapping{"_infantry_idle", {"de_Idle_001", "de_Idle_002"}}}));
+		 std::set<SoundEffectsMapping>{SoundEffectsMapping{"_infantry_idle", {"de_Idle_001", "de_Idle_002"}},
+			  SoundEffectsMapping{"infantry_neutral_combat", {"de_Neutral_001", "de_Neutral_002"}}}));
 }
 
 
