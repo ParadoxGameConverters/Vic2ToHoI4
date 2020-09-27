@@ -1193,6 +1193,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsFactory.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Sounds</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapper.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Sounds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
