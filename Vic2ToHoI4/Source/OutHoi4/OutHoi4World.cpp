@@ -195,7 +195,7 @@ void HoI4::OutputWorld(const World& world,
 	outputOperativeNames(world.getOperativeNames(), outputName);
 	outputOperations(world.getOperations(), outputName);
 	outputScriptedEffects(world.getScriptedEffects(), world.getMajorIdeologies(), outputName);
-	outputSounds(outputName, {SoundEffect{"TAG_infantry_idle", {"de_Idle_001", "de_Idle_002"}}});
+	outputSounds(outputName, world.getSoundEffects());
 }
 
 

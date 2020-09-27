@@ -30,6 +30,7 @@
 #include "ScriptedEffects/ScriptedEffects.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
 #include "ScriptedTriggers/ScriptedTriggers.h"
+#include "Sounds/SoundEffect.h"
 #include "States/HoI4States.h"
 #include <map>
 #include <optional>
@@ -117,6 +118,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getGameRules() const { return *gameRules; }
 	[[nodiscard]] const auto& getGenericFocusTree() const { return genericFocusTree; }
 	[[nodiscard]] const auto& getLocalisation() const { return *hoi4Localisations; }
+	[[nodiscard]] const auto& getSoundEffects() const { return soundEffects; }
 
 	std::map<int, HoI4::State> getStates() const { return states->getStates(); }
 	const std::map<int, int>& getProvinceToStateIDMap() const { return states->getProvinceToStateIDMap(); }
@@ -255,6 +257,8 @@ class World: commonItems::parser
 	HoI4FocusTree genericFocusTree;
 
 	std::unique_ptr<Localisation> hoi4Localisations;
+
+	std::vector<SoundEffect> soundEffects{SoundEffect{"TAG_infantry_idle", {"de_Idle_001", "de_Idle_002"}}};
 };
 
 } // namespace HoI4
