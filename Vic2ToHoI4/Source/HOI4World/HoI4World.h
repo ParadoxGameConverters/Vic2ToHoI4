@@ -258,7 +258,7 @@ class World: commonItems::parser
 
 	std::unique_ptr<Localisation> hoi4Localisations;
 
-	std::vector<SoundEffect> soundEffects{SoundEffect{"TAG_infantry_idle", {"de_Idle_001", "de_Idle_002"}}};
+	std::vector<SoundEffect> soundEffects;
 };
 
 } // namespace HoI4

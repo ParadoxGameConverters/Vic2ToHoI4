@@ -1027,6 +1027,9 @@
     <ClCompile Include="Source\OutHoi4\Sounds\OutSounds.cpp">
       <Filter>OutHoi4\Sounds</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsFactory.cpp">
+      <Filter>HoI4World\Sounds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1951,6 +1954,9 @@
       <Filter>OutHoi4\Sounds</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Sounds\SoundEffect.h">
+      <Filter>HoI4World\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsFactory.h">
       <Filter>HoI4World\Sounds</Filter>
     </ClInclude>
   </ItemGroup>

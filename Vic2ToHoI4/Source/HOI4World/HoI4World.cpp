@@ -40,6 +40,7 @@
 #include "ScriptedLocalisations/ScriptedLocalisationsFactory.h"
 #include "ScriptedTriggers/ScriptedTriggersUpdater.h"
 #include "ShipTypes/PossibleShipVariants.h"
+#include "Sounds/SoundEffectsFactory.h"
 #include "States/DefaultState.h"
 #include "States/HoI4State.h"
 #include "States/StateCategories.h"
@@ -168,6 +169,8 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 
 	operations = Operations::Factory{}.getOperations(theConfiguration.getHoI4Path());
 	operations->updateOperations(ideologies->getMajorIdeologies());
+
+	soundEffects = SoundEffectsFactory{}.createSoundEffects();
 }
 
 

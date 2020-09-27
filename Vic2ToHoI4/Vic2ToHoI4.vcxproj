@@ -183,6 +183,7 @@
     <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.cpp" />
     <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationFactory.cpp" />
     <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsFactory.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategory.cpp" />
@@ -465,6 +466,7 @@
     <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.h" />
     <ClInclude Include="Source\HOI4World\SharedFocus.h" />
     <ClInclude Include="Source\HOI4World\Sounds\SoundEffect.h" />
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsFactory.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategories.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategory.h" />

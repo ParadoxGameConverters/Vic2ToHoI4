@@ -1190,6 +1190,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Sounds\OutSounds.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Sounds</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Sounds</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1512,6 +1515,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\OutHoi4\Sounds">
       <UniqueIdentifier>{37a04479-12c8-4946-b7ac-5289daba0ab6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Sounds">
+      <UniqueIdentifier>{06467b31-3f8b-4dfa-a4a3-52dceb337a14}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
