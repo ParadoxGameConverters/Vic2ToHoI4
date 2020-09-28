@@ -19,7 +19,7 @@ std::vector<HoI4::SoundEffect> HoI4::SoundEffectsFactory::createSoundEffects(
 	{
 		for (const auto& mapping: soundEffectsMapper->getMappings(country->getSourceCountry().getPrimaryCulture()))
 		{
-			soundEffects.push_back(SoundEffect{tag + mapping.getName(), mapping.getSounds()});
+			soundEffects.push_back(SoundEffect{tag + '_' + mapping.getName(), mapping.getSounds()});
 		}
 	}
 
