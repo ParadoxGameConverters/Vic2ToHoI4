@@ -93,8 +93,11 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />

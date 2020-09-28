@@ -1,6 +1,13 @@
 #include "SoundEffectsFactory.h"
 #include "../../V2World/Country.h"
+#include "SoundEffectsMapperFactory.h"
 
+
+
+HoI4::SoundEffectsFactory::SoundEffectsFactory()
+{
+	soundEffectsMapper = SoundEffectsMapper::Factory{}.getMapper();
+}
 
 
 std::vector<HoI4::SoundEffect> HoI4::SoundEffectsFactory::createSoundEffects(
@@ -10,7 +17,7 @@ std::vector<HoI4::SoundEffect> HoI4::SoundEffectsFactory::createSoundEffects(
 
 	for (const auto& [tag, country]: countries)
 	{
-		for (const auto& mapping: soundEffectsMapper.getMappings(country->getSourceCountry().getPrimaryCulture()))
+		for (const auto& mapping: soundEffectsMapper->getMappings(country->getSourceCountry().getPrimaryCulture()))
 		{
 			soundEffects.push_back(SoundEffect{tag + mapping.getName(), mapping.getSounds()});
 		}

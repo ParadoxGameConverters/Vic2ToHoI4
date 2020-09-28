@@ -18,10 +18,12 @@ namespace HoI4
 class SoundEffectsFactory
 {
   public:
+	SoundEffectsFactory();
+
 	std::vector<SoundEffect> createSoundEffects(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
 
   private:
-	SoundEffectsMapper soundEffectsMapper;
+	std::unique_ptr<SoundEffectsMapper> soundEffectsMapper;
 };
 
 } // namespace HoI4

@@ -214,6 +214,9 @@
     <Filter Include="HoI4World\Sounds">
       <UniqueIdentifier>{bc616e85-a19b-46e2-8e42-236672790f68}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data Files\Sounds">
+      <UniqueIdentifier>{6fa9ca86-5975-47fc-a33b-33c8e946af6a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1031,6 +1034,15 @@
       <Filter>HoI4World\Sounds</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapper.cpp">
+      <Filter>HoI4World\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperFactory.cpp">
+      <Filter>HoI4World\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp">
+      <Filter>HoI4World\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Sounds\SoundEffectMappingFactory.cpp">
       <Filter>HoI4World\Sounds</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1966,6 +1978,21 @@
       <Filter>HoI4World\Sounds</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapping.h">
+      <Filter>HoI4World\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapperFactory.h">
+      <Filter>HoI4World\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapperLink.h">
+      <Filter>HoI4World\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.h">
+      <Filter>HoI4World\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffectMapping.h">
+      <Filter>HoI4World\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffectMappingFactory.h">
       <Filter>HoI4World\Sounds</Filter>
     </ClInclude>
   </ItemGroup>
@@ -18428,6 +18455,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Localisations\StateCategories.txt">
       <Filter>Data Files\Localisations</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Sounds\CultureToVoiceMappings.txt">
+      <Filter>Data Files\Sounds</Filter>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>

@@ -39,6 +39,7 @@ cp "Vic2ToHoI4/Data_Files/province_mappings.txt" "Release-Linux/province_mapping
 cp "Vic2ToHoI4/Data_Files/ReadMe.txt" "Release-Linux/ReadMe.txt"
 cp "Vic2ToHoI4/Data_Files/Resources.txt" "Release-Linux/DataFiles/resources.txt"
 cp "Vic2ToHoI4/Data_Files/shipTypes.txt" "Release-Linux/DataFiles/shipTypes.txt"
+cp "Vic2ToHoI4/Data_Files/Sounds/CultureToVoiceMappings.txt" "Release-Linux/DataFiles/Sounds/CultureToVoiceMappings.txt"
 cp "Vic2ToHoI4/Data_Files/tech_mapping.txt" "Release-Linux/tech_mapping.txt"
 cp "Vic2ToHoI4/Data_Files/unit_mappings.txt" "Release-Linux/DataFiles/unit_mappings.txt"
 cp "Vic2ToHoI4/Data_Files/version.txt" "Release-Linux/DataFiles/version.txt"

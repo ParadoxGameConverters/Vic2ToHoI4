@@ -15,7 +15,8 @@ namespace HoI4
 class SoundEffectsMapper
 {
   public:
-	SoundEffectsMapper();
+	class Factory;
+
 	std::set<SoundEffectsMapping> getMappings(const std::string& culture);
 
   private:
