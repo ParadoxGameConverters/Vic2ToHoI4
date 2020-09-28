@@ -20,7 +20,7 @@ class SoundEffectsFactory
   public:
 	SoundEffectsFactory();
 
-	std::vector<SoundEffect> createSoundEffects(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
+	[[nodiscard]] std::vector<SoundEffect> createSoundEffects(const std::map<std::string, std::shared_ptr<Country>>& countries) const;
 
   private:
 	std::unique_ptr<SoundEffectsMapper> soundEffectsMapper;
