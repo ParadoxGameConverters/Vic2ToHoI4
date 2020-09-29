@@ -299,6 +299,35 @@ void Vic2::Country::handleMissingCulture(const CultureGroups& theCultureGroups)
 }
 
 
+void Vic2::Country::setParties(const std::vector<Party>& allParties)
+{
+	for (auto ID: activePartyIDs)
+	{
+		if (ID < allParties.size())
+		{
+			activeParties.insert(allParties.at(ID - 1)); // Subtract 1, because party ID starts from index of 1
+		}
+		else
+		{
+			Log(LogLevel::Warning) << "Party ID mismatch! Did some Vic2 country files not get read?";
+		}
+	}
+
+	if (rulingPartyID == 0)
+	{
+		throw std::runtime_error(tag + " had no ruling party. The save needs manual repair.");
+	}
+	if (rulingPartyID > allParties.size())
+	{
+		throw std::runtime_error(
+			 "Could not find the ruling party for " + tag + ". " + "Most likely a mod was not included.\n" +
+			 "Double-check your settings, and remember to include EU4 to Vic2 mods. See the FAQ for more information.");
+	}
+	rulingParty =
+		 std::make_unique<Party>(allParties.at(rulingPartyID - 1)); // Subtract 1, because party ID starts from index of 1
+}
+
+
 std::map<std::string, int> Vic2::Country::determineCultureSizes()
 {
 	std::map<std::string, int> cultureSizes;
@@ -411,43 +440,6 @@ long Vic2::Country::getEmployedWorkers() const
 	}
 
 	return employedWorkers;
-}
-
-
-const Vic2::Party Vic2::Country::getRulingParty(const std::vector<Vic2::Party>& allParties) const
-{
-	if (rulingPartyID == 0)
-	{
-		throw std::runtime_error(tag + " had no ruling party. The save needs manual repair.");
-	}
-	if (rulingPartyID > allParties.size())
-	{
-		throw std::runtime_error(
-			 "Could not find the ruling party for " + tag + ". " + "Most likely a mod was not included.\n" +
-			 "Double-check your settings, and remember to include EU4 to Vic2 mods. See the FAQ for more information.");
-	}
-
-	return allParties.at(rulingPartyID - 1); // Subtract 1, because party ID starts from index of 1
-}
-
-
-std::set<Vic2::Party> Vic2::Country::getActiveParties(const std::vector<Vic2::Party>& allParties) const
-{
-	std::set<Vic2::Party> activeParties;
-
-	for (auto ID: activePartyIDs)
-	{
-		if (ID < allParties.size())
-		{
-			activeParties.insert(allParties[ID - 1]); // Subtract 1, because party ID starts from index of 1
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Party ID mismatch! Did some Vic2 country files not get read?";
-		}
-	}
-
-	return activeParties;
 }
 
 

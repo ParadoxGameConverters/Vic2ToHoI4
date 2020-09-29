@@ -135,13 +135,13 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	 Localisation& hoi4Localisations,
 	 bool debug)
 {
-	rulingParty = sourceCountry.getRulingParty(sourceWorld.getParties());
+	rulingParty = sourceCountry.getRulingParty();
 	auto sourceTag = sourceCountry.getTag();
 	auto sourceGovernment = sourceCountry.getGovernment();
 	auto rulingIdeology = rulingParty.getIdeology();
 	governmentIdeology = governmentMap.getIdeologyForCountry(sourceTag, sourceGovernment, rulingIdeology, debug);
 	leaderIdeology = governmentMap.getLeaderIdeologyForCountry(sourceTag, sourceGovernment, rulingIdeology, debug);
-	parties = sourceCountry.getActiveParties(sourceWorld.getParties());
+	parties = sourceCountry.getActiveParties();
 	for (const auto& party: parties)
 	{
 		auto partyName = party.getName();

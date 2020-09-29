@@ -334,6 +334,7 @@ bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile,
 		return false;
 	}
 
+	std::vector<Party> parties;
 	while (!V2CountriesInput.eof())
 	{
 		std::string line;
@@ -358,6 +359,12 @@ bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile,
 	}
 
 	V2CountriesInput.close();
+
+	for (auto& [unused, country]: countries)
+	{
+		country->setParties(parties);
+	}
+
 	return true;
 }
 

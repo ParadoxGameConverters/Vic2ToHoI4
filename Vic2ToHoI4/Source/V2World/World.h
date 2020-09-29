@@ -48,7 +48,6 @@ class World: commonItems::parser
 	[[nodiscard]] std::map<std::string, Country*> getCountries() const { return countries; }
 	[[nodiscard]] const auto& getDiplomacy() const { return diplomacy; }
 	[[nodiscard]] std::vector<std::string> getGreatPowers() const { return greatPowers; }
-	[[nodiscard]] virtual std::vector<Party> getParties() const { return parties; }
 	[[nodiscard]] auto getProvinces() const { return provinces; }
 	[[nodiscard]] const auto& getStateDefinitions() const { return *theStateDefinitions; }
 	[[nodiscard]] const auto& getLocalisations() const { return *theLocalisations; }
@@ -86,7 +85,6 @@ class World: commonItems::parser
 	std::map<int, std::shared_ptr<Province>> provinces;
 	std::map<std::string, Country*> countries;
 	std::unique_ptr<Diplomacy> diplomacy;
-	std::vector<Party> parties;
 	std::vector<std::string> greatPowers;
 
 	std::unique_ptr<CultureGroups> theCultureGroups;
