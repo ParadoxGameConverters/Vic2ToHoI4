@@ -12,16 +12,16 @@ Vic2::Party::Factory::Factory()
 		party->ideology = commonItems::singleString{theStream}.getString();
 	});
 	registerKeyword("economic_policy", [this](const std::string& unused, std::istream& theStream) {
-		party->economic_policy = commonItems::singleString{theStream}.getString();
+		party->economicPolicy = commonItems::singleString{theStream}.getString();
 	});
 	registerKeyword("trade_policy", [this](const std::string& unused, std::istream& theStream) {
-		party->trade_policy = commonItems::singleString{theStream}.getString();
+		party->tradePolicy = commonItems::singleString{theStream}.getString();
 	});
 	registerKeyword("religious_policy", [this](const std::string& unused, std::istream& theStream) {
-		party->religious_policy = commonItems::singleString{theStream}.getString();
+		party->religiousPolicy = commonItems::singleString{theStream}.getString();
 	});
 	registerKeyword("citizenship_policy", [this](const std::string& unused, std::istream& theStream) {
-		party->citizenship_policy = commonItems::singleString{theStream}.getString();
+		party->citizenshipPolicy = commonItems::singleString{theStream}.getString();
 	});
 	registerKeyword("war_policy", [this](const std::string& unused, std::istream& theStream) {
 		party->warPolicy = commonItems::singleString{theStream}.getString();
