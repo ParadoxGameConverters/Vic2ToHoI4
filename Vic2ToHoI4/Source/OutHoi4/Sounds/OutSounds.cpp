@@ -34,12 +34,12 @@ void HoI4::outputSounds(const std::string& outputName, const std::vector<SoundEf
 	{
 		output << "soundeffect = {\n";
 		output << "\tname = " << soundEffect.getName() << "\n";
-		output << "\tsounds = { ";
+		output << "\tsounds = {\n";
 		for (const auto& sound: soundEffect.getSounds())
 		{
-			output << sound << " ";
+			output << "\t\tsound = " << sound << "\n";
 		}
-		output << "}\n";
+		output << "\t}\n";
 		output << "\tmax_audible = 1\n";
 		output << "\tmax_audible_behaviour = fail\n";
 		output << "\tvolume = 0.45\n";
