@@ -3,22 +3,17 @@
 
 
 
-#include "Parser.h"
+#include <string>
 
 
 
 namespace Vic2
 {
 
-class Party: commonItems::parser
+class Party
 {
   public:
-	Party() = default;
-	Party(const Party&) = default;
-	Party& operator=(const Party&) = default;
-	Party(Party&&) = default;
-	Party& operator=(Party&&) = default;
-	explicit Party(std::istream& theStream);
+	class Factory;
 
 	std::string getName() const { return name; }
 	std::string getIdeology() const { return ideology; }

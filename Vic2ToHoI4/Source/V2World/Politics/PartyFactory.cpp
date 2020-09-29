@@ -1,0 +1,38 @@
+#include "PartyFactory.h"
+#include "ParserHelpers.h"
+
+
+
+Vic2::Party::Factory::Factory()
+{
+	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
+		party->name = commonItems::singleString{theStream}.getString();
+	});
+	registerKeyword("ideology", [this](const std::string& unused, std::istream& theStream) {
+		party->ideology = commonItems::singleString{theStream}.getString();
+	});
+	registerKeyword("economic_policy", [this](const std::string& unused, std::istream& theStream) {
+		party->economic_policy = commonItems::singleString{theStream}.getString();
+	});
+	registerKeyword("trade_policy", [this](const std::string& unused, std::istream& theStream) {
+		party->trade_policy = commonItems::singleString{theStream}.getString();
+	});
+	registerKeyword("religious_policy", [this](const std::string& unused, std::istream& theStream) {
+		party->religious_policy = commonItems::singleString{theStream}.getString();
+	});
+	registerKeyword("citizenship_policy", [this](const std::string& unused, std::istream& theStream) {
+		party->citizenship_policy = commonItems::singleString{theStream}.getString();
+	});
+	registerKeyword("war_policy", [this](const std::string& unused, std::istream& theStream) {
+		party->warPolicy = commonItems::singleString{theStream}.getString();
+	});
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+}
+
+
+std::unique_ptr<Vic2::Party> Vic2::Party::Factory::getParty(std::istream& theStream)
+{
+	party = std::make_unique<Party>();
+	parseStream(theStream);
+	return std::move(party);
+}

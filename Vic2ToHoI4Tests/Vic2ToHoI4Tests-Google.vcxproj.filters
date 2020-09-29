@@ -1220,6 +1220,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Politics\Party.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Politics</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Politics\PartyFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Politics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

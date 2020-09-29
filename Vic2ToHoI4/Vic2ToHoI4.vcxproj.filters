@@ -1048,6 +1048,9 @@
     <ClCompile Include="Source\V2World\Politics\Party.cpp">
       <Filter>Vic2World\Politics</Filter>
     </ClCompile>
+    <ClCompile Include="Source\V2World\Politics\PartyFactory.cpp">
+      <Filter>Vic2World\Politics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1996,6 +1999,9 @@
       <Filter>HoI4World\Sounds</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Politics\Party.h">
+      <Filter>Vic2World\Politics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Politics\PartyFactory.h">
       <Filter>Vic2World\Politics</Filter>
     </ClInclude>
   </ItemGroup>

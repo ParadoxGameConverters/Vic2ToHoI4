@@ -383,6 +383,7 @@
     <ClCompile Include="Source\V2World\Issues\IssuesFactory.cpp" />
     <ClCompile Include="Source\V2World\Mods\ModFactory.cpp" />
     <ClCompile Include="Source\V2World\Politics\Party.cpp" />
+    <ClCompile Include="Source\V2World\Politics\PartyFactory.cpp" />
     <ClCompile Include="Source\V2World\Pops\Pop.cpp" />
     <ClCompile Include="Source\V2World\Pops\PopFactory.cpp" />
     <ClCompile Include="Source\V2World\Provinces\Province.cpp" />
@@ -703,6 +704,7 @@
     <ClInclude Include="Source\V2World\Mods\ModBuilder.h" />
     <ClInclude Include="Source\V2World\Mods\ModFactory.h" />
     <ClInclude Include="Source\V2World\Politics\Party.h" />
+    <ClInclude Include="Source\V2World\Politics\PartyFactory.h" />
     <ClInclude Include="Source\V2World\Pops\Pop.h" />
     <ClInclude Include="Source\V2World\Pops\PopBuilder.h" />
     <ClInclude Include="Source\V2World\Pops\PopFactory.h" />

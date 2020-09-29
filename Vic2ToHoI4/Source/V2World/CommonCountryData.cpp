@@ -1,14 +1,16 @@
 #include "CommonCountryData.h"
 #include "../Configuration.h"
+#include "Color.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
-#include "Color.h"
+#include "Politics/PartyFactory.h"
 
 
 
 Vic2::commonCountryData::commonCountryData(const std::string& filename,
 	 const std::optional<Mod>& mod,
-	 const Configuration& theConfiguration)
+	 const Configuration& theConfiguration,
+	 Party::Factory* partyFactory)
 {
 	registerKeyword("color", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::intList colorInts(theStream);
@@ -34,9 +36,8 @@ Vic2::commonCountryData::commonCountryData(const std::string& filename,
 			token = getNextTokenWithoutMatching(theStream);
 		}
 	});
-	registerKeyword("party", [this](const std::string& unused, std::istream& theStream) {
-		auto party = Party(theStream);
-		parties.emplace_back(party);
+	registerKeyword("party", [this, &partyFactory](const std::string& unused, std::istream& theStream) {
+		parties.emplace_back(*partyFactory->getParty(theStream));
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 

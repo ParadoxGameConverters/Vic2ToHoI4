@@ -13,6 +13,7 @@
 #include "Log.h"
 #include "ParserHelpers.h"
 #include "Politics/Party.h"
+#include "Politics/PartyFactory.h"
 #include "Pops/PopFactory.h"
 #include "Provinces/Province.h"
 #include "Provinces/ProvinceFactory.h"
@@ -335,6 +336,8 @@ bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile,
 	}
 
 	std::vector<Party> parties;
+	Party::Factory partyFactory;
+
 	while (!V2CountriesInput.eof())
 	{
 		std::string line;
@@ -346,7 +349,7 @@ bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile,
 
 		auto tag = line.substr(0, 3);
 		auto countryFileName = extractCountryFileName(line);
-		commonCountryData countryData(countryFileName, mod, theConfiguration);
+		commonCountryData countryData(countryFileName, mod, theConfiguration, &partyFactory);
 		if (countries.find(tag) != countries.end())
 		{
 			countries[tag]->setColor(countryData.getColor());
