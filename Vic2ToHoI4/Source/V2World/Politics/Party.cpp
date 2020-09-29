@@ -3,13 +3,13 @@
 
 
 
-bool Vic2::operator==(const Vic2::Party& one, const Vic2::Party& other)
+bool Vic2::Party::operator==(const Vic2::Party& rhs) const
 {
-	return one.getName() == other.getName();
+	return name == rhs.name;
 }
 
 
-bool Vic2::operator<(const Vic2::Party& one, const Vic2::Party& other)
+bool Vic2::Party::operator<(const Vic2::Party& rhs) const
 {
-	return one.getName() < other.getName();
+	return name < rhs.name;
 }

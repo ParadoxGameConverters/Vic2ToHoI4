@@ -15,12 +15,15 @@ class Party
   public:
 	class Factory;
 
-	std::string getName() const { return name; }
-	std::string getIdeology() const { return ideology; }
-	std::string getWarPolicy() const { return warPolicy; }
+	[[nodiscard]] std::string getName() const { return name; }
+	[[nodiscard]] std::string getIdeology() const { return ideology; }
+	[[nodiscard]] std::string getWarPolicy() const { return warPolicy; }
+
+	[[nodiscard]] bool operator==(const Party& rhs) const;
+	[[nodiscard]] bool operator<(const Party& rhs) const;
 
   private:
-	std::string name = "";
+	std::string name;
 	std::string ideology = "conservative";
 	std::string economic_policy = "interventionism";
 	std::string trade_policy = "protectionism";
@@ -28,9 +31,6 @@ class Party
 	std::string citizenship_policy = "residency";
 	std::string warPolicy = "pro_military";
 };
-
-bool operator==(const Party& one, const Party& other);
-bool operator<(const Party& one, const Party& other);
 
 } // namespace Vic2
 
