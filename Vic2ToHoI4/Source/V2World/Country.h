@@ -8,7 +8,7 @@
 #include "Date.h"
 #include "Diplomacy/RelationsFactory.h"
 #include "Parser.h"
-#include "Party.h"
+#include "Politics/Party.h"
 #include "States/StateFactory.h"
 #include "Wars/War.h"
 #include <map>

@@ -1,7 +1,7 @@
 #include "HoI4WarCreator.h"
 #include "../../HOI4World/ProvinceDefinitions.h"
 #include "../../V2World/Country.h"
-#include "../../V2World/Party.h"
+#include "../../V2World/Politics/Party.h"
 #include "../../V2World/World.h"
 #include "../Diplomacy/Faction.h"
 #include "../Events/Events.h"
@@ -251,12 +251,7 @@ void HoI4WarCreator::generateAdditionalWars(ofstream& AILog,
 			}
 			vector<shared_ptr<HoI4::Faction>> newCountriesatWar;
 			newCountriesatWar =
-				 neighborWarCreator(*country,
-				 AILog,
-				 theMapData,
-				 provinceDefinitions,
-				 hoi4Localisations,
-				 theConfiguration);
+				 neighborWarCreator(*country, AILog, theMapData, provinceDefinitions, hoi4Localisations, theConfiguration);
 
 			for (auto addedFactions: newCountriesatWar)
 			{

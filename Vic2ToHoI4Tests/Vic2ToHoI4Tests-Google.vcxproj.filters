@@ -67,9 +67,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Party.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
     <ClCompile Include="..\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="..\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapper.cpp">
@@ -1220,6 +1217,9 @@
     <ClCompile Include="HoI4WorldTests\Sounds\SoundEffectsFactoryTests.cpp">
       <Filter>HoI4WorldTests\Sounds</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Politics\Party.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Politics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1551,6 +1551,9 @@
     </Filter>
     <Filter Include="TestFiles\Sounds">
       <UniqueIdentifier>{39b42aae-dee0-4d4c-82e5-367972aed47b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Politics">
+      <UniqueIdentifier>{3eea203e-3265-4e6b-8e14-39537d05e56c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

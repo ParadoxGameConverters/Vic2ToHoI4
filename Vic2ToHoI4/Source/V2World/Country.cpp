@@ -4,7 +4,7 @@
 #include "Leader.h"
 #include "Log.h"
 #include "ParserHelpers.h"
-#include "Party.h"
+#include "Politics/Party.h"
 #include "Pops/Pop.h"
 #include "Provinces/Province.h"
 #include "States/State.h"

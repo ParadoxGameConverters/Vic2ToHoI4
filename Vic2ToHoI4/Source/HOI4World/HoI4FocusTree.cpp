@@ -1,7 +1,7 @@
 #include "HoI4FocusTree.h"
 #include "../Configuration.h"
 #include "../V2World/Country.h"
-#include "../V2World/Party.h"
+#include "../V2World/Politics/Party.h"
 #include "HoI4Country.h"
 #include "HoI4Focus.h"
 #include "HoI4Localisation.h"

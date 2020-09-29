@@ -7,7 +7,7 @@
 #include "Diplomacy/Diplomacy.h"
 #include "Mods/Mod.h"
 #include "Parser.h"
-#include "Party.h"
+#include "Politics/Party.h"
 #include "States/StateDefinitions.h"
 #include "Wars/War.h"
 #include <map>

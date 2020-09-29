@@ -295,7 +295,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssuesFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Leader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Mods\ModFactory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Party.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Politics\Party.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\Pop.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\PopFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Provinces\Province.cpp" />

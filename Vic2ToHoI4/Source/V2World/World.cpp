@@ -12,7 +12,7 @@
 #include "Issues/IssuesFactory.h"
 #include "Log.h"
 #include "ParserHelpers.h"
-#include "Party.h"
+#include "Politics/Party.h"
 #include "Pops/PopFactory.h"
 #include "Provinces/Province.h"
 #include "Provinces/ProvinceFactory.h"

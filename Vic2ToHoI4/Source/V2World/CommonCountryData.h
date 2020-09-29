@@ -6,7 +6,7 @@
 #include "Color.h"
 #include "Mods/Mod.h"
 #include "Parser.h"
-#include "Party.h"
+#include "Politics/Party.h"
 #include <map>
 #include <optional>
 #include <string>

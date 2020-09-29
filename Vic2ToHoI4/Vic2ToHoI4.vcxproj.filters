@@ -217,6 +217,9 @@
     <Filter Include="Data Files\Sounds">
       <UniqueIdentifier>{6fa9ca86-5975-47fc-a33b-33c8e946af6a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2World\Politics">
+      <UniqueIdentifier>{72e73979-f903-449d-baa4-601298236fc5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -273,9 +276,6 @@
       <Filter>Vic2World</Filter>
     </ClCompile>
     <ClCompile Include="Source\V2World\World.cpp">
-      <Filter>Vic2World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\V2World\Party.cpp">
       <Filter>Vic2World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\OnActions.cpp">
@@ -1045,6 +1045,9 @@
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectMappingFactory.cpp">
       <Filter>HoI4World\Sounds</Filter>
     </ClCompile>
+    <ClCompile Include="Source\V2World\Politics\Party.cpp">
+      <Filter>Vic2World\Politics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1101,9 +1104,6 @@
       <Filter>Vic2World</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\World.h">
-      <Filter>Vic2World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\V2World\Party.h">
       <Filter>Vic2World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\OnActions.h">
@@ -1994,6 +1994,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Sounds\SoundEffectMappingFactory.h">
       <Filter>HoI4World\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Politics\Party.h">
+      <Filter>Vic2World\Politics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

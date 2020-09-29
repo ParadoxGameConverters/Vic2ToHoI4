@@ -6,7 +6,7 @@
 #include "../Mappers/TechMapper.h"
 #include "../V2World/Country.h"
 #include "../V2World/Diplomacy/Relations.h"
-#include "../V2World/Party.h"
+#include "../V2World/Politics/Party.h"
 #include "../V2World/World.h"
 #include "Diplomacy/HoI4War.h"
 #include "HoI4Localisation.h"

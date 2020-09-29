@@ -3,7 +3,7 @@
 
 
 
-#include "../V2World/Party.h"
+#include "../V2World/Politics/Party.h"
 #include "Color.h"
 #include "Date.h"
 #include "Diplomacy/Faction.h"

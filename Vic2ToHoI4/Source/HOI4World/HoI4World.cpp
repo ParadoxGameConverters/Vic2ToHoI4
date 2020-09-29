@@ -7,7 +7,7 @@
 #include "../V2World/Country.h"
 #include "../V2World/Diplomacy/Agreement.h"
 #include "../V2World/Diplomacy/Diplomacy.h"
-#include "../V2World/Party.h"
+#include "../V2World/Politics/Party.h"
 #include "../V2World/Vic2Localisations.h"
 #include "../V2World/World.h"
 #include "Decisions/Decisions.h"
