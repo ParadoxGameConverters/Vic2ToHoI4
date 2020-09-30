@@ -30,7 +30,8 @@ std::vector<std::string> Vic2::Inventions::Factory::getInventionFiles(const Conf
 {
 	const auto techFiles = getTechFilesAndPaths(theConfiguration);
 
-	std::vector<std::string> finalTechFiles(techFiles.size());
+	std::vector<std::string> finalTechFiles;
+	finalTechFiles.reserve(techFiles.size());
 	for (const auto& [filename, path]: techFiles)
 	{
 		finalTechFiles.push_back(path + filename);

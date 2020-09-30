@@ -93,6 +93,11 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectMappingFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
@@ -272,6 +277,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapping.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\VersionedMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\TechMapper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Sounds\OutSounds.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4States.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Army.cpp" />
@@ -393,6 +399,11 @@
     <ClCompile Include="HoI4WorldTests\ShipTypes\ShipModulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipTypes\ShipUpgradesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ShipTypes\ShipVariantsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Sounds\SoundEffectsMapperLinkTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Sounds\SoundEffectMappingTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Sounds\SoundEffectsMapperTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Sounds\SoundEffectsMappingTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Sounds\SoundEffectsFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\States\DefaultStateTests.cpp" />
     <ClCompile Include="HoI4WorldTests\States\DockyardProvinceTests.cpp" />
     <ClCompile Include="HoI4WorldTests\States\HoI4StateTests.cpp" />
@@ -665,6 +676,11 @@
     <CopyFileToFolders Include="TestFiles\Technology\ModTechOverride2.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ModInventions/Mod3/inventions</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Tech3%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Sounds\CultureToVoiceMappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles/Sounds/</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

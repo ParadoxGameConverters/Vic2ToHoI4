@@ -183,6 +183,11 @@
     <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.cpp" />
     <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationFactory.cpp" />
     <ClCompile Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\Sounds\SoundEffectMappingFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapper.cpp" />
+    <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategory.cpp" />
@@ -254,6 +259,7 @@
     <ClCompile Include="Source\OutHoi4\ShipTypes\OutMtgShipVariant.cpp" />
     <ClCompile Include="Source\OutHoi4\ShipTypes\OutShipModules.cpp" />
     <ClCompile Include="Source\OutHoi4\ShipTypes\OutShipVariants.cpp" />
+    <ClCompile Include="Source\OutHoi4\Sounds\OutSounds.cpp" />
     <ClCompile Include="Source\OutHoi4\States\OutHoI4State.cpp" />
     <ClCompile Include="Source\OutHoi4\States\OutHoI4States.cpp" />
     <ClCompile Include="Source\OutHoi4\Version\outVersion.cpp" />
@@ -463,6 +469,15 @@
     <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationFactory.h" />
     <ClInclude Include="Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.h" />
     <ClInclude Include="Source\HOI4World\SharedFocus.h" />
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffect.h" />
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffectMapping.h" />
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffectMappingFactory.h" />
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsFactory.h" />
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapper.h" />
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapperFactory.h" />
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapperLink.h" />
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.h" />
+    <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapping.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategories.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategory.h" />
@@ -534,6 +549,7 @@
     <ClInclude Include="Source\OutHoi4\ShipTypes\OutMtgShipVariant.h" />
     <ClInclude Include="Source\OutHoi4\ShipTypes\OutShipModules.h" />
     <ClInclude Include="Source\OutHoi4\ShipTypes\OutShipVariants.h" />
+    <ClInclude Include="Source\OutHoi4\Sounds\OutSounds.h" />
     <ClInclude Include="Source\OutHoi4\States\OutHoI4State.h" />
     <ClInclude Include="Source\OutHoi4\States\OutHoI4States.h" />
     <ClInclude Include="Source\OutHoi4\Version\outVersion.h" />
@@ -17242,6 +17258,11 @@
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\Localisations\StateCategories.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles/Localisations</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\Sounds\CultureToVoiceMappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles/Sounds</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
