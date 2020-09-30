@@ -252,6 +252,11 @@ set(HOI4WORLD_SCRIPTED_EFFECTS_TESTS_SOURCES ${HOI4WORLD_SCRIPTED_EFFECTS_TESTS_
 set(HOI4WORLD_SCRIPTED_EFFECTS_TESTS_SOURCES ${HOI4WORLD_SCRIPTED_EFFECTS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/HoI4WorldTests/ScriptedEffects/ScriptedEffectFileTests.cpp")
 set(HOI4WORLD_SCRIPTED_LOCALISATIONS_TESTS_SOURCES ${HOI4WORLD_SCRIPTED_LOCALISATIONS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/HoI4WorldTests/ScriptedLocalisations/ScriptedLocalisationTests.cpp")
 set(HOI4WORLD_SCRIPTED_LOCALISATIONS_TESTS_SOURCES ${HOI4WORLD_SCRIPTED_LOCALISATIONS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/HoI4WorldTests/ScriptedLocalisations/ScriptedLocalisationsTests.cpp")
+set(HOI4WORLD_SOUNDS_TESTS_SOURCES ${HOI4WORLD_SOUNDS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/HoI4WorldTests/Sounds/SoundEffectMappingTests.cpp")
+set(HOI4WORLD_SOUNDS_TESTS_SOURCES ${HOI4WORLD_SOUNDS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/HoI4WorldTests/Sounds/SoundEffectsFactoryTests.cpp")
+set(HOI4WORLD_SOUNDS_TESTS_SOURCES ${HOI4WORLD_SOUNDS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/HoI4WorldTests/Sounds/SoundEffectsMapperLinkTests.cpp")
+set(HOI4WORLD_SOUNDS_TESTS_SOURCES ${HOI4WORLD_SOUNDS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/HoI4WorldTests/Sounds/SoundEffectsMapperTests.cpp")
+set(HOI4WORLD_SOUNDS_TESTS_SOURCES ${HOI4WORLD_SOUNDS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/HoI4WorldTests/Sounds/SoundEffectsMappingTests.cpp")
 file(GLOB HOI4WORLD_SCRIPTED_TRIGGERS_TESTS_SOURCES "${TEST_SOURCE_DIR}/HOI4WorldTests/ScriptedTriggers/*.cpp")
 file(GLOB HOI4WORLD_SHIP_TYPES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HOI4WorldTests/ShipTypes/*.cpp")
 file(GLOB HOI4WORLD_STATES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HOI4WorldTests/States/*.cpp")
@@ -384,6 +389,7 @@ add_executable(
 	${HOI4WORLD_SCRIPTED_LOCALISATIONS_TESTS_SOURCES}
 	${HOI4WORLD_SCRIPTED_TRIGGERS_TESTS_SOURCES}
 	${HOI4WORLD_SHIP_TYPES_TESTS_SOURCES}
+	${HOI4WORLD_SOUNDS_TESTS_SOURCES}
 	${HOI4WORLD_STATES_TESTS_SOURCES}
 	${MAPPER_TESTS_SOURCES}
 	${VIC2WORLD_CULTURE_TESTS_SOURCES}
@@ -431,6 +437,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/operations_to_update.txt" "${TEST_OUTP
 configure_file("Vic2ToHoI4Tests/TestFiles/regions.txt" "${TEST_OUTPUT_DIRECTORY}/DataFiles/Map/regions.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/ScriptedEffects/effects_file.txt" "${TEST_OUTPUT_DIRECTORY}/ScriptedEffects/effects_file.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/ScriptedEffects/empty_effects_file.txt" "${TEST_OUTPUT_DIRECTORY}/ScriptedEffects/empty_effects_file.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Sounds/CultureToVoiceMappings.txt" "${TEST_OUTPUT_DIRECTORY}/DataFiles/Sounds/CultureToVoiceMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Technology/BaseGameTech1.txt" "${TEST_OUTPUT_DIRECTORY}/BaseGameInventions/inventions/Tech1.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Technology/BaseGameTech2.txt" "${TEST_OUTPUT_DIRECTORY}/BaseGameInventions/inventions/Tech2.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Technology/ModTech3.txt" "${TEST_OUTPUT_DIRECTORY}/ModInventions/Mod1/inventions/Tech3.txt" COPYONLY)

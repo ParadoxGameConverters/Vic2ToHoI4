@@ -1,0 +1,3 @@
+test_effect = {
+	link = { culture = test_culture sound = test_sound }
+}
