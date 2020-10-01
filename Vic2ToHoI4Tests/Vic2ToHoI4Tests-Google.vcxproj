@@ -295,7 +295,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssuesFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Leader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Mods\ModFactory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Party.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Politics\Party.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Politics\PartyFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\Pop.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Pops\PopFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Provinces\Province.cpp" />
@@ -428,6 +429,7 @@
     <ClCompile Include="Vic2WorldTests\Issues\IssueCategoryHelperTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Mods\ModBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Mods\ModFactoryTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Politics\PartyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Pops\PopTests.cpp" />

@@ -6,7 +6,7 @@
 #include "../Mappers/TechMapper.h"
 #include "../V2World/Country.h"
 #include "../V2World/Diplomacy/Relations.h"
-#include "../V2World/Party.h"
+#include "../V2World/Politics/Party.h"
 #include "../V2World/World.h"
 #include "Diplomacy/HoI4War.h"
 #include "HoI4Localisation.h"
@@ -135,13 +135,13 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	 Localisation& hoi4Localisations,
 	 bool debug)
 {
-	rulingParty = sourceCountry.getRulingParty(sourceWorld.getParties());
+	rulingParty = sourceCountry.getRulingParty();
 	auto sourceTag = sourceCountry.getTag();
 	auto sourceGovernment = sourceCountry.getGovernment();
 	auto rulingIdeology = rulingParty.getIdeology();
 	governmentIdeology = governmentMap.getIdeologyForCountry(sourceTag, sourceGovernment, rulingIdeology, debug);
 	leaderIdeology = governmentMap.getLeaderIdeologyForCountry(sourceTag, sourceGovernment, rulingIdeology, debug);
-	parties = sourceCountry.getActiveParties(sourceWorld.getParties());
+	parties = sourceCountry.getActiveParties();
 	for (const auto& party: parties)
 	{
 		auto partyName = party.getName();

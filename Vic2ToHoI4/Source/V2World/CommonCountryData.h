@@ -6,7 +6,8 @@
 #include "Color.h"
 #include "Mods/Mod.h"
 #include "Parser.h"
-#include "Party.h"
+#include "Politics/Party.h"
+#include "Politics/PartyFactory.h"
 #include <map>
 #include <optional>
 #include <string>
@@ -24,7 +25,10 @@ namespace Vic2
 class commonCountryData: commonItems::parser
 {
   public:
-	commonCountryData(const std::string& filename, const std::optional<Mod>& mod, const Configuration& theConfiguration);
+	commonCountryData(const std::string& filename,
+		 const std::optional<Mod>& mod,
+		 const Configuration& theConfiguration,
+		 Party::Factory* partyFactory);
 
 	auto getColor() { return std::move(theColor); }
 	auto getUnitNames() { return std::move(unitNames); }

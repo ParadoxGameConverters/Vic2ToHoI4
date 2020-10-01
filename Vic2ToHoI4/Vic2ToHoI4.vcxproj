@@ -382,6 +382,8 @@
     <ClCompile Include="Source\V2World\Diplomacy\RelationsFactory.cpp" />
     <ClCompile Include="Source\V2World\Issues\IssuesFactory.cpp" />
     <ClCompile Include="Source\V2World\Mods\ModFactory.cpp" />
+    <ClCompile Include="Source\V2World\Politics\Party.cpp" />
+    <ClCompile Include="Source\V2World\Politics\PartyFactory.cpp" />
     <ClCompile Include="Source\V2World\Pops\Pop.cpp" />
     <ClCompile Include="Source\V2World\Pops\PopFactory.cpp" />
     <ClCompile Include="Source\V2World\Provinces\Province.cpp" />
@@ -404,7 +406,6 @@
     <ClCompile Include="Source\V2World\Issues\Issues.cpp" />
     <ClCompile Include="Source\V2World\Issues\IssueCategoryHelper.cpp" />
     <ClCompile Include="Source\V2World\Leader.cpp" />
-    <ClCompile Include="Source\V2World\Party.cpp" />
     <ClCompile Include="Source\V2World\Vic2Localisations.cpp" />
     <ClCompile Include="Source\V2World\Wars\WarGoalFactory.cpp" />
     <ClCompile Include="Source\V2World\World.cpp" />
@@ -702,7 +703,8 @@
     <ClInclude Include="Source\V2World\Mods\Mod.h" />
     <ClInclude Include="Source\V2World\Mods\ModBuilder.h" />
     <ClInclude Include="Source\V2World\Mods\ModFactory.h" />
-    <ClInclude Include="Source\V2World\Party.h" />
+    <ClInclude Include="Source\V2World\Politics\Party.h" />
+    <ClInclude Include="Source\V2World\Politics\PartyFactory.h" />
     <ClInclude Include="Source\V2World\Pops\Pop.h" />
     <ClInclude Include="Source\V2World\Pops\PopBuilder.h" />
     <ClInclude Include="Source\V2World\Pops\PopFactory.h" />

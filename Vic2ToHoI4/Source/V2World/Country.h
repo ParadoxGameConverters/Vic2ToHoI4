@@ -8,7 +8,7 @@
 #include "Date.h"
 #include "Diplomacy/RelationsFactory.h"
 #include "Parser.h"
-#include "Party.h"
+#include "Politics/Party.h"
 #include "States/StateFactory.h"
 #include "Wars/War.h"
 #include <map>
@@ -61,6 +61,7 @@ class Country: commonItems::parser
 	void setLocalisationNames(Localisations& vic2Localisations);
 	void setLocalisationAdjectives(const Localisations& vic2Localisations);
 	void handleMissingCulture(const CultureGroups& theCultureGroups);
+	void setParties(const std::vector<Party>& allParties);
 
 	[[nodiscard]] const auto& getRelations() const { return relations; }
 	auto& getStates() { return states; }
@@ -91,13 +92,13 @@ class Country: commonItems::parser
 	virtual std::map<std::string, double> getUpperHouseComposition() const { return upperHouseComposition; }
 	std::vector<War> getWars() const { return wars; }
 	virtual bool isAtWar() const { return atWar; }
+	virtual const std::set<Vic2::Party>& getActiveParties() const { return activeParties; }
+	virtual const Vic2::Party& getRulingParty() const { return *rulingParty; }
 
 	virtual std::optional<std::string> getName(const std::string& language) const;
 	std::optional<std::string> getAdjective(const std::string& language) const;
 	double getUpperHousePercentage(const std::string& ideology) const;
 	long getEmployedWorkers() const;
-	virtual const Vic2::Party getRulingParty(const std::vector<Vic2::Party>& allParties) const;
-	virtual std::set<Vic2::Party> getActiveParties(const std::vector<Vic2::Party>& allParties) const;
 	bool hasCoreOnCapital() const;
 	std::vector<std::string> getShipNames(const std::string& category) const;
 	double getAverageMilitancy() const;
@@ -142,6 +143,8 @@ class Country: commonItems::parser
 	std::map<std::string, double> upperHouseComposition;
 	unsigned int rulingPartyID = 0; // Bad value, but normal for Rebel faction.
 	std::vector<unsigned int> activePartyIDs;
+	std::unique_ptr<Party> rulingParty;
+	std::set<Party> activeParties;
 	date lastElection;
 
 	std::string domainName = "";
