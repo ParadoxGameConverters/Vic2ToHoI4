@@ -100,6 +100,7 @@ void HoI4::addAvailableBattalionsAndCompanies(
 					SizedRegiment theRegiment;
 					theRegiment.unitSize = unitInfo.getSize() * forceMultiplier;
 					theRegiment.experience = regiment->getExperience();
+					theRegiment.strength = regiment->getStrength();
 					availableBattalionsAndCompanies[unitInfo.getType()].push_back(theRegiment);
 					break;
 				}
@@ -227,6 +228,7 @@ HoI4::DivisionType HoI4::createDivision(const std::map<std::string, int>& templa
 	 const int location)
 {
 	auto totalExperience = 0.0;
+	auto totalStrength = 0.0;
 	auto totalRequirement = 0.0;
 	for (const auto& requirement: templateRequirements)
 	{
@@ -241,6 +243,7 @@ HoI4::DivisionType HoI4::createDivision(const std::map<std::string, int>& templa
 				remainingRequirement -= decreaseAmount;
 
 				totalExperience += decreaseAmount * regiment.experience;
+				totalStrength += decreaseAmount * regiment.strength;
 			}
 		}
 		if (const auto& substitutes = theMilitaryMappings.getSubstitutes();
@@ -255,12 +258,14 @@ HoI4::DivisionType HoI4::createDivision(const std::map<std::string, int>& templa
 					remainingRequirement -= decreaseAmount;
 
 					totalExperience += decreaseAmount * regiment.experience;
+					totalStrength += decreaseAmount * regiment.strength;
 				}
 			}
 		}
 	}
 
 	auto actualExperience = totalExperience / totalRequirement / 100.0;
+	auto actualStrength = totalStrength / totalRequirement / 3.0;
 	if (actualExperience > 1.0)
 	{
 		actualExperience = 1.0;
@@ -269,7 +274,8 @@ HoI4::DivisionType HoI4::createDivision(const std::map<std::string, int>& templa
 	return DivisionType(std::to_string(divisionCounter) + ". " + divisionTemplate.getName(),
 		 divisionTemplate.getName(),
 		 location,
-		 actualExperience);
+		 actualExperience,
+		 actualStrength);
 }
 
 

@@ -5,7 +5,7 @@
 
 TEST(HoI4World_Military_DivisionTypeTests, AllItemsAreAsSet)
 {
-	const HoI4::DivisionType division("Test Division", "Light Infantry Brigade", 42, 0.3);
+	const HoI4::DivisionType division("Test Division", "Light Infantry Brigade", 42, 0.3, 0.8);
 	std::ostringstream output;
 	output << division;
 
@@ -15,7 +15,7 @@ TEST(HoI4World_Military_DivisionTypeTests, AllItemsAreAsSet)
 	expectedOutput << "\t\tlocation = 42\n";
 	expectedOutput << "\t\tdivision_template = \"Light Infantry Brigade\"\n";
 	expectedOutput << "\t\tstart_experience_factor = 0.3\n";
-	expectedOutput << "\t\tstart_equipment_factor = 0.7\n";
+	expectedOutput << "\t\tstart_equipment_factor = 0.8\n";
 	expectedOutput << "\t}\n";
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
