@@ -245,21 +245,21 @@ TEST(HoI4World_Military_HoI4ArmyTests, SufficientDivisionsConvert)
 								 "\t\tlocation = 11821\n"
 								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
 								 "\t\tstart_experience_factor = 0.3\n"
-								 "\t\tstart_equipment_factor = 0.7\n"
+								 "\t\tstart_equipment_factor = 0.0\n"
 								 "\t}\n"
 								 "\tdivision = {\n"
 								 "\t\tname = \"2. Light Infantry Brigade\"\n"
 								 "\t\tlocation = 11821\n"
 								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
 								 "\t\tstart_experience_factor = 0.3\n"
-								 "\t\tstart_equipment_factor = 0.7\n"
+								 "\t\tstart_equipment_factor = 0.0\n"
 								 "\t}\n"
 								 "\tdivision = {\n"
 								 "\t\tname = \"3. Light Infantry Brigade\"\n"
 								 "\t\tlocation = 11821\n"
 								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
 								 "\t\tstart_experience_factor = 0.3\n"
-								 "\t\tstart_equipment_factor = 0.7\n"
+								 "\t\tstart_equipment_factor = 0.0\n"
 								 "\t}\n"),
 		 output.str());
 }
@@ -323,21 +323,100 @@ TEST(HoI4World_Military_HoI4ArmyTests, ExperienceConverts)
 								 "\t\tlocation = 11821\n"
 								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
 								 "\t\tstart_experience_factor = 0.5\n"
-								 "\t\tstart_equipment_factor = 0.7\n"
+								 "\t\tstart_equipment_factor = 0.0\n"
 								 "\t}\n"
 								 "\tdivision = {\n"
 								 "\t\tname = \"2. Light Infantry Brigade\"\n"
 								 "\t\tlocation = 11821\n"
 								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
 								 "\t\tstart_experience_factor = 0.5\n"
-								 "\t\tstart_equipment_factor = 0.7\n"
+								 "\t\tstart_equipment_factor = 0.0\n"
 								 "\t}\n"
 								 "\tdivision = {\n"
 								 "\t\tname = \"3. Light Infantry Brigade\"\n"
 								 "\t\tlocation = 11821\n"
 								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
 								 "\t\tstart_experience_factor = 0.5\n"
-								 "\t\tstart_equipment_factor = 0.7\n"
+								 "\t\tstart_equipment_factor = 0.0\n"
+								 "\t}\n"),
+		 output.str());
+}
+
+
+TEST(HoI4World_Military_HoI4ArmyTests, StrengthConverts)
+{
+	HoI4::States theStates;
+
+	mappers::ProvinceMapper provinceMapper{{{11821, {496}}}, {{496, {11821}}}};
+
+	HoI4::Army theArmy;
+	std::vector<Vic2::Army> Vic2Armies;
+	std::istringstream armyInput(
+		 "=\n"
+		 "\t{\n"
+		 "\t\tname=\"I. Legio\"\n"
+		 "\t\tlocation=496\n"
+		 "\t\tregiment=\n"
+		 "\t\t{\n"
+		 "\t\t\texperience=50.000\n"
+		 "\t\t\tcount=1\n"
+		 "\t\t\ttype=infantry\n"
+		 "\t\t\tstrength=1.500\n"
+		 "\t\t}\n"
+		 "\t}");
+	Vic2::Army Vic2Army("army", armyInput);
+	Vic2Armies.push_back(Vic2Army);
+	theArmy.addSourceArmies(Vic2Armies);
+
+	std::stringstream mappingsInput;
+	mappingsInput << "= {\n";
+	mappingsInput << "\tmtg_unit_map = {}\n";
+	mappingsInput << "\tunit_map = {\n";
+	mappingsInput << "\t\tlink = {\n";
+	mappingsInput << "\t\t\tvic = infantry\n";
+	mappingsInput << "\t\t\thoi = {\n";
+	mappingsInput << "\t\t\t\tcategory = land\n";
+	mappingsInput << "\t\t\t\ttype = infantry\n";
+	mappingsInput << "\t\t\t\tequipment = infantry_equipment_0\n";
+	mappingsInput << "\t\t\t\tsize = 3\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "\tdivision_templates = {\n";
+	mappingsInput << "\t\tdivision_template= {\n";
+	mappingsInput << "\t\t\tname = \"Light Infantry Brigade\"\n";
+	mappingsInput << "\t\t\tregiments = {\n";
+	mappingsInput << "\t\t\t\tinfantry = { x = 0 y = 0 }\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "}";
+	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
+
+	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates, provinceMapper);
+
+	std::ostringstream output;
+	output << theArmy;
+	ASSERT_EQ(std::string("\tdivision = {\n"
+								 "\t\tname = \"1. Light Infantry Brigade\"\n"
+								 "\t\tlocation = 11821\n"
+								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
+								 "\t\tstart_experience_factor = 0.5\n"
+								 "\t\tstart_equipment_factor = 0.5\n"
+								 "\t}\n"
+								 "\tdivision = {\n"
+								 "\t\tname = \"2. Light Infantry Brigade\"\n"
+								 "\t\tlocation = 11821\n"
+								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
+								 "\t\tstart_experience_factor = 0.5\n"
+								 "\t\tstart_equipment_factor = 0.5\n"
+								 "\t}\n"
+								 "\tdivision = {\n"
+								 "\t\tname = \"3. Light Infantry Brigade\"\n"
+								 "\t\tlocation = 11821\n"
+								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
+								 "\t\tstart_experience_factor = 0.5\n"
+								 "\t\tstart_equipment_factor = 0.5\n"
 								 "\t}\n"),
 		 output.str());
 }
@@ -408,14 +487,14 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 								 "\t\tlocation = 11821\n"
 								 "\t\tdivision_template = \"Infantry Brigade\"\n"
 								 "\t\tstart_experience_factor = 0.3\n"
-								 "\t\tstart_equipment_factor = 0.7\n"
+								 "\t\tstart_equipment_factor = 0.0\n"
 								 "\t}\n"
 								 "\tdivision = {\n"
 								 "\t\tname = \"1. Light Infantry Brigade\"\n"
 								 "\t\tlocation = 11821\n"
 								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
 								 "\t\tstart_experience_factor = 0.3\n"
-								 "\t\tstart_equipment_factor = 0.7\n"
+								 "\t\tstart_equipment_factor = 0.0\n"
 								 "\t}\n"),
 		 output.str());
 }
@@ -498,7 +577,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 								 "\t\tlocation = 11821\n"
 								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
 								 "\t\tstart_experience_factor = 0.3\n"
-								 "\t\tstart_equipment_factor = 0.7\n"
+								 "\t\tstart_equipment_factor = 0.0\n"
 								 "\t}\n"),
 		 output.str());
 }
@@ -577,7 +656,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 								 "\t\tlocation = 1\n"
 								 "\t\tdivision_template = \"Light Infantry Brigade\"\n"
 								 "\t\tstart_experience_factor = 0.3\n"
-								 "\t\tstart_equipment_factor = 0.7\n"
+								 "\t\tstart_equipment_factor = 0.0\n"
 								 "\t}\n"),
 		 output.str());
 }

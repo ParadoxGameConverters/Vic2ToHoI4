@@ -29,6 +29,7 @@ typedef struct SizedRegiment
 {
 	double unitSize = 0.0;
 	double experience = 0.0;
+	double strength = 0.0;
 } SizedRegiment;
 
 
