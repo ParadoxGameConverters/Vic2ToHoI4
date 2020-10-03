@@ -29,6 +29,7 @@ Vic2::workerStruct Vic2::State::countEmployedWorkers() const
 }
 
 
+constexpr float WORKERS_PER_FACTORY_LEVEL = 10000.0F;
 Vic2::workerStruct Vic2::State::limitWorkersByFactoryLevels(const workerStruct& workers) const
 {
 	if ((workers.craftsmen + workers.clerks) <= (static_cast<float>(factoryLevel) * 10000.0F))
@@ -37,10 +38,10 @@ Vic2::workerStruct Vic2::State::limitWorkersByFactoryLevels(const workerStruct& 
 	}
 
 	auto newWorkers = workers;
-	newWorkers.craftsmen =
-		 (static_cast<float>(factoryLevel) * 10000.0F) / (workers.craftsmen + workers.clerks) * workers.craftsmen;
-	newWorkers.clerks =
-		 (static_cast<float>(factoryLevel) * 10000.0F) / (workers.craftsmen + workers.clerks) * workers.clerks;
+	newWorkers.craftsmen = (static_cast<float>(factoryLevel) * WORKERS_PER_FACTORY_LEVEL) /
+								  (workers.craftsmen + workers.clerks) * workers.craftsmen;
+	newWorkers.clerks = (static_cast<float>(factoryLevel) * WORKERS_PER_FACTORY_LEVEL) /
+							  (workers.craftsmen + workers.clerks) * workers.clerks;
 	return newWorkers;
 }
 
@@ -100,13 +101,14 @@ std::vector<int> Vic2::State::getProvincesOrderedByPopulation() const
 	std::list<std::shared_ptr<Province>> provincesOrderedByPopulation;
 	for (const auto& province: provinces)
 	{
-		provincesOrderedByPopulation.insert(std::upper_bound(provincesOrderedByPopulation.begin(),
-															 provincesOrderedByPopulation.end(),
-															 province,
-															 [](const std::shared_ptr<Province>& a, const std::shared_ptr<Province>& b) {
-																 // provide a 'backwards' comparison to force the sort order we want
-																 return a->getTotalPopulation() > b->getTotalPopulation();
-															 }),
+		provincesOrderedByPopulation.insert(
+			 std::upper_bound(provincesOrderedByPopulation.begin(),
+				  provincesOrderedByPopulation.end(),
+				  province,
+				  [](const std::shared_ptr<Province>& a, const std::shared_ptr<Province>& b) {
+					  // provide a 'backwards' comparison to force the sort order we want
+					  return a->getTotalPopulation() > b->getTotalPopulation();
+				  }),
 			 province);
 	}
 

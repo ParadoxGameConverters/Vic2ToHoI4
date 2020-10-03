@@ -106,3 +106,43 @@ TEST(Vic2World_States_StateDefinitionsFactoryTests, VanillaStateCapitalsAreNotIm
 
 	ASSERT_EQ(std::nullopt, stateDefinitions->getCapitalProvince("VANILLA_STATE"));
 }
+
+
+TEST(Vic2World_States_StateDefinitionsFactoryTests, VanillaProvincesInStateAreImportedIfModNotImported)
+{
+	const auto configuration = Configuration::Builder{}
+											 .setVic2Path("./")
+											 .setVic2ModPath("./mod")
+											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("empty_test_mod").build())
+											 .build();
+	const auto stateDefinitions = Vic2::StateDefinitions::Factory{}.getStateDefinitions(*configuration);
+
+	const std::set<int> expectedProvinces{1, 2, 3};
+	ASSERT_EQ(expectedProvinces, stateDefinitions->getAllProvinces(1));
+}
+
+
+TEST(Vic2World_States_StateDefinitionsFactoryTests, VanillaStateIdsAreImportedIfModNotImported)
+{
+	const auto configuration = Configuration::Builder{}
+											 .setVic2Path("./")
+											 .setVic2ModPath("./mod")
+											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("empty_test_mod").build())
+											 .build();
+	const auto stateDefinitions = Vic2::StateDefinitions::Factory{}.getStateDefinitions(*configuration);
+
+	ASSERT_EQ("VANILLA_STATE", stateDefinitions->getStateID(1));
+}
+
+
+TEST(Vic2World_States_StateDefinitionsFactoryTests, VanillaStateCapitalsAreImportedIfModNotImported)
+{
+	const auto configuration = Configuration::Builder{}
+											 .setVic2Path("./")
+											 .setVic2ModPath("./mod")
+											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("empty_test_mod").build())
+											 .build();
+	const auto stateDefinitions = Vic2::StateDefinitions::Factory{}.getStateDefinitions(*configuration);
+
+	ASSERT_EQ(1, stateDefinitions->getCapitalProvince("VANILLA_STATE"));
+}

@@ -6,38 +6,32 @@
 
 std::set<int> Vic2::StateDefinitions::getAllProvinces(const int provinceNumber) const
 {
-	if (const auto mapping = stateMap.find(provinceNumber); mapping != stateMap.end())
-	{
-		return mapping->second;
-	}
-	else
+	if (!stateMap.count(provinceNumber))
 	{
 		return std::set<int>{};
 	}
+
+	return stateMap.at(provinceNumber);
 }
 
 
 std::optional<std::string> Vic2::StateDefinitions::getStateID(const int provinceNumber) const
 {
-	if (const auto mapping = provinceToIDMap.find(provinceNumber); mapping != provinceToIDMap.end())
-	{
-		return mapping->second;
-	}
-	else
+	if (!provinceToIDMap.count(provinceNumber))
 	{
 		return std::nullopt;
 	}
+
+	return provinceToIDMap.at(provinceNumber);
 }
 
 
 std::optional<int> Vic2::StateDefinitions::getCapitalProvince(const std::string& stateID) const
 {
-	if (const auto mapping = stateToCapitalMap.find(stateID); mapping != stateToCapitalMap.end())
-	{
-		return mapping->second;
-	}
-	else
+	if (!stateToCapitalMap.count(stateID))
 	{
 		return std::nullopt;
 	}
+
+	return stateToCapitalMap.at(stateID);
 }
