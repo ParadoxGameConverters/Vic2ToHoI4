@@ -458,38 +458,47 @@
     <CopyFileToFolders Include="TestFiles\HoI4">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/HoI4Linux</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/HoI4Linux</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\HoI4.exe">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/HoI4Windows</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/HoI4Windows</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\v2game">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2Linux</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2Linux</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\v2game.exe">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2Windows</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2Windows</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\definition.csv">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/HoI4Linux/map</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/HoI4Linux/map</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mods\EmptyModFile.mod">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mods\Test.mod">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mods\DirectoryMissing.mod">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mods\DirectoryUnspecified.mod">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
@@ -512,86 +521,108 @@
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\IntelligenceAgencyLogos.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/DataFiles</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\EmptyOccupationLaws.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/EmptyOccupationLaws/common/occupation_laws</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">occupation_laws%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/EmptyOccupationLaws/common/occupation_laws</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">occupation_laws%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\OccupationLaws.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/OccupationLaws/common/occupation_laws/</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">occupation_laws%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/OccupationLaws/common/occupation_laws/</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">occupation_laws%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\generic_opertive_codenames.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/common/units/codenames_operatives/</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/common/units/codenames_operatives/</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\blank_operative_codenames.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/common/units/codenames_operatives/</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/common/units/codenames_operatives/</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\OperativeNamesMappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/DataFiles</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\vic2_vanilla_regions.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/map/</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">region%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/map/</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">region%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\vic2_mod_regions.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/mod/test_mod/map</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">region%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/mod/test_mod/map</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">region%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\blank_operations.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/blank_operations/common/operations/</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">00_operations%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/blank_operations/common/operations/</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">00_operations%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\operations.txt">
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">00_operations%(Extension)</DestinationFileName>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/operations/common/operations/</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/operations/common/operations/</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">00_operations%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\operations_to_update.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/operationsToUpdate/common/operations/</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">00_operations%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/operationsToUpdate/common/operations/</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">00_operations%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\v2gameMacApp">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2MacApp/Victoria 2 - Heart Of Darkness.app/</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2MacApp/Victoria 2 - Heart Of Darkness.app/</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\v2gameMac">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/somethingWithMacOS/somethingElse/Vic2Path</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/somethingWithMacOS/somethingElse/Vic2Path</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\v2gameMacOS">
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/somethingWithMacOS/MacOS/</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/somethingWithMacOS/MacOS/</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Mods\dummy.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod/test_directory</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2/Mod/test_directory</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
@@ -601,88 +632,114 @@
     <CopyFileToFolders Include="TestFiles\Issues\emptyIssues.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/EmptyIssues/common</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">issues%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/EmptyIssues/common</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">issues%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Issues\issues.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/common</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/common</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\regions.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles/Map</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/DataFiles/Map</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Localisations\StateCategories.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles/Localisations</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/DataFiles/Localisations</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\ScriptedEffects\empty_effects_file.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ScriptedEffects</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/ScriptedEffects</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\ScriptedEffects\effects_file.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ScriptedEffects</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/ScriptedEffects</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Cultures\BaseCultures.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/BaseCultures/common</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cultures%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/BaseCultures/common</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cultures%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Cultures\ModOneCultures.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ModCultures/ModOne/common</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cultures%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/ModCultures/ModOne/common</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cultures%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Cultures\ModTwoCultures.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ModCultures/ModTwo/common</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">cultures%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/ModCultures/ModTwo/common</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">cultures%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Technology\BaseGameTech1.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/BaseGameInventions/inventions</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Tech1%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/BaseGameInventions/inventions</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Tech1%(Extension)</DestinationFileName>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Technology\BaseGameTech2.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/BaseGameInventions/inventions</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Tech2%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/BaseGameInventions/inventions</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Tech2%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Technology\ModTech3.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ModInventions/Mod1/inventions</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Tech3%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/ModInventions/Mod1/inventions</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Tech3%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Technology\ModTech4.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ModInventions/Mod2/inventions</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Tech4%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/ModInventions/Mod2/inventions</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Tech4%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Technology\ModTechOverride1.txt">
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Tech1%(Extension)</DestinationFileName>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ModInventions/Mod3/inventions</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/ModInventions/Mod3/inventions</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Tech1%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Technology\ModTechOverride2.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/ModInventions/Mod3/inventions</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Tech3%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/ModInventions/Mod3/inventions</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Tech3%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Sounds\CultureToVoiceMappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles/Sounds/</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/DataFiles/Sounds/</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />
