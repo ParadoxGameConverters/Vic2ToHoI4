@@ -3,10 +3,10 @@
 
 
 
-#include "Army.h"
 #include "Color.h"
 #include "Date.h"
 #include "Diplomacy/RelationsFactory.h"
+#include "Military/Army.h"
 #include "Parser.h"
 #include "Politics/Party.h"
 #include "States/StateFactory.h"

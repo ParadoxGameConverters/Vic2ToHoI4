@@ -1,9 +1,9 @@
-#include "../../Vic2ToHoI4/Source/HOI4World/MilitaryMappings/MilitaryMappings.h"
-#include "../Vic2ToHoI4/Source/HOI4World/Military/HoI4Army.h"
-#include "../Vic2ToHoI4/Source/HOI4World/States/HoI4State.h"
-#include "../Vic2ToHoI4/Source/HOI4World/States/HoI4States.h"
-#include "../Vic2ToHoI4/Source/Mappers/Provinces/ProvinceMapper.h"
-#include "../Vic2ToHoI4/Source/V2World/Army.h"
+#include "HOI4World/MilitaryMappings/MilitaryMappings.h"
+#include "HOI4World/Military/HoI4Army.h"
+#include "HOI4World/States/HoI4State.h"
+#include "HOI4World/States/HoI4States.h"
+#include "Mappers/Provinces/ProvinceMapper.h"
+#include "V2World/Military/Army.h"
 #include "gtest/gtest.h"
 
 

@@ -71,8 +71,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <EnablePREfast>false</EnablePREfast>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
@@ -104,8 +103,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>
-      </AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)/Source;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <EnablePREfast>false</EnablePREfast>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
@@ -381,6 +379,8 @@
     <ClCompile Include="Source\V2World\Diplomacy\DiplomacyFactory.cpp" />
     <ClCompile Include="Source\V2World\Diplomacy\RelationsFactory.cpp" />
     <ClCompile Include="Source\V2World\Issues\IssuesFactory.cpp" />
+    <ClCompile Include="Source\V2World\Military\Army.cpp" />
+    <ClCompile Include="Source\V2World\Military\Leader.cpp" />
     <ClCompile Include="Source\V2World\Mods\ModFactory.cpp" />
     <ClCompile Include="Source\V2World\Politics\Party.cpp" />
     <ClCompile Include="Source\V2World\Politics\PartyFactory.cpp" />
@@ -399,13 +399,11 @@
     <ClCompile Include="Source\V2World\Technology\InventionsFactory.cpp" />
     <ClCompile Include="Source\V2World\Wars\WarFactory.cpp" />
     <ClCompile Include="Source\Vic2toHOI4Converter.cpp" />
-    <ClCompile Include="Source\V2World\Army.cpp" />
     <ClCompile Include="Source\V2World\CommonCountryData.cpp" />
     <ClCompile Include="Source\V2World\Country.cpp" />
     <ClCompile Include="Source\V2World\Issues\IssueHelper.cpp" />
     <ClCompile Include="Source\V2World\Issues\Issues.cpp" />
     <ClCompile Include="Source\V2World\Issues\IssueCategoryHelper.cpp" />
-    <ClCompile Include="Source\V2World\Leader.cpp" />
     <ClCompile Include="Source\V2World\Vic2Localisations.cpp" />
     <ClCompile Include="Source\V2World\Wars\WarGoalFactory.cpp" />
     <ClCompile Include="Source\V2World\World.cpp" />
@@ -681,7 +679,6 @@
     <ClInclude Include="Source\Mappers\Provinces\VersionedMappings.h" />
     <ClInclude Include="Source\Mappers\TechMapper.h" />
     <ClInclude Include="Source\Mappers\VersionParser\VersionParser.h" />
-    <ClInclude Include="Source\V2World\Army.h" />
     <ClInclude Include="Source\V2World\CommonCountryData.h" />
     <ClInclude Include="Source\V2World\Country.h" />
     <ClInclude Include="Source\V2World\Culture\CultureGroupFactory.h" />
@@ -699,7 +696,8 @@
     <ClInclude Include="Source\V2World\Issues\IssuesBuilder.h" />
     <ClInclude Include="Source\V2World\Issues\IssuesFactory.h" />
     <ClInclude Include="Source\V2World\Issues\IssueCategoryHelper.h" />
-    <ClInclude Include="Source\V2World\Leader.h" />
+    <ClInclude Include="Source\V2World\Military\Army.h" />
+    <ClInclude Include="Source\V2World\Military\Leader.h" />
     <ClInclude Include="Source\V2World\Mods\Mod.h" />
     <ClInclude Include="Source\V2World\Mods\ModBuilder.h" />
     <ClInclude Include="Source\V2World\Mods\ModFactory.h" />

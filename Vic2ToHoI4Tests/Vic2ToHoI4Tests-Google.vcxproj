@@ -280,7 +280,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Sounds\OutSounds.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4States.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Army.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CommonCountryData.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Country.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroupFactory.cpp" />
@@ -293,7 +292,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\Issues.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssuesFactory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Leader.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Army.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Mods\ModFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Politics\Party.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Politics\PartyFactory.cpp" />
@@ -761,6 +761,7 @@
       <OmitFramePointers>false</OmitFramePointers>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Vic2ToHoI4/Source</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -782,6 +783,7 @@
       <OmitFramePointers>false</OmitFramePointers>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <AdditionalOptions>/Zc:__cplusplus %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalIncludeDirectories>$(SolutionDir)/Vic2ToHoI4/Source</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
