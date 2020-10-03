@@ -6,12 +6,10 @@
 
 std::optional<std::string> Vic2::CultureGroups::getGroup(const std::string& culture) const
 {
-	if (const auto mapping = mappings.find(culture); mapping != mappings.end())
-	{
-		return mapping->second;
-	}
-	else
+	if (!mappings.count(culture))
 	{
 		return std::nullopt;
 	}
+
+	return mappings.at(culture);
 }
