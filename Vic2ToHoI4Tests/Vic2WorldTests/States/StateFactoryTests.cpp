@@ -1,4 +1,6 @@
 #include "../../../Vic2ToHoI4/Source/Configuration.h"
+#include "../../../Vic2ToHoI4/Source/V2World/Pops/PopBuilder.h"
+#include "../../../Vic2ToHoI4/Source/V2World/Provinces/ProvinceBuilder.h"
 #include "../../../Vic2ToHoI4/Source/V2World/States/StateDefinitions.h"
 #include "../../../Vic2ToHoI4/Source/V2World/States/StateDefinitionsBuilder.h"
 #include "../../../Vic2ToHoI4/Source/V2World/States/StateFactory.h"
@@ -154,11 +156,11 @@ TEST(Vic2World_States_StateFactoryTests, StateWithMissingProvincesIsPartial)
 {
 	std::stringstream input;
 	input << "= {\n";
-	input << "\tprovinces = { 42 }\n";
+	input << "\tprovinces = { 42 43 }\n";
 	input << "}\n";
 	const auto state = Vic2::State::Factory{}.getState(input,
 		 "TAG",
-		 *Vic2::StateDefinitions::Builder{}.setStateMap({{42, {43}}, {43, {42}}}).build());
+		 *Vic2::StateDefinitions::Builder{}.setStateMap({{42, {43, 44}}, {43, {42, 44}}, {44, {42, 43}}}).build());
 
 	ASSERT_TRUE(state->isPartialState());
 }
@@ -216,4 +218,24 @@ TEST(Vic2World_States_StateFactoryTests, GetUnownedStateSetsCapitalProvince)
 				.build());
 
 	ASSERT_EQ(42, state->getCapitalProvince());
+}
+
+
+TEST(Vic2World_States_StateFactoryTests, BuildingLevelIsImported)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\tprovinces = { 42 }\n";
+	input << "\tstate_buildings = {\n";
+	input << "\t\tlevel = 2\n";
+	input << "\t}\n";
+	input << "}\n";
+	auto state = Vic2::State::Factory{}.getState(input, "TAG", *Vic2::StateDefinitions::Builder{}.build());
+	state->addProvince(Vic2::Province::Builder{}
+								  .setNumber(42)
+								  .setPops({*Vic2::Pop::Builder{}.setType("craftsmen").setSize(50000).build()})
+								  .build());
+	state->determineEmployedWorkers();
+
+	ASSERT_EQ(20000, state->getEmployedWorkers());
 }

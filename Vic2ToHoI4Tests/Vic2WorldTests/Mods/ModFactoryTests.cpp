@@ -18,13 +18,13 @@ TEST(Vic2World_Mods_ModFactoryTests, NameCanBeSet)
 
 TEST(Vic2World_Mods_ModFactoryTests, DirectoryUnspecifiedThrowsException)
 {
-	ASSERT_THROW(Vic2::Mod::Factory{}.getMod("EmptyModFile.mod", "./Vic2/Mod"), std::runtime_error);
+	ASSERT_THROW(Vic2::Mod::Factory{}.getMod("DirectoryUnspecified.mod", "./Vic2/Mod"), std::runtime_error);
 }
 
 
 TEST(Vic2World_Mods_ModFactoryTests, DirectoryMissingThrowsException)
 {
-	ASSERT_THROW(Vic2::Mod::Factory{}.getMod("EmptyModFile.mod", "./Vic2/Mod"), std::runtime_error);
+	ASSERT_THROW(Vic2::Mod::Factory{}.getMod("DirectoryMissing.mod", "./Vic2/Mod"), std::runtime_error);
 }
 
 

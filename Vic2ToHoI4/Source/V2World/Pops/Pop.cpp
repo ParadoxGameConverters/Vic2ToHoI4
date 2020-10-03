@@ -4,12 +4,10 @@
 
 float Vic2::Pop::getIssueSupport(const std::string& issueName) const
 {
-	if (const auto& issue = popIssues.find(issueName); issue != popIssues.end())
-	{
-		return issue->second;
-	}
-	else
+	if (!popIssues.count(issueName))
 	{
 		return 0.0F;
 	}
+
+	return popIssues.at(issueName);
 }

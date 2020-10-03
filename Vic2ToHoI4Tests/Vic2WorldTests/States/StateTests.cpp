@@ -8,6 +8,58 @@
 
 
 
+TEST(Vic2World_States_StateTests, ProvincesDefaultToEmpty)
+{
+	Vic2::State state;
+
+	ASSERT_EQ(0, state.getProvinces().size());
+}
+
+
+TEST(Vic2World_States_StateTests, ProvincesCanBeAdded)
+{
+	Vic2::State state;
+	state.addProvince(Vic2::Province::Builder{}.setNumber(1).build());
+	state.addProvince(Vic2::Province::Builder{}.setNumber(2).build());
+
+	ASSERT_EQ(2, state.getProvinces().size());
+}
+
+
+TEST(Vic2World_States_StateTests, OwnerDefaultsToEmpty)
+{
+	const Vic2::State state;
+
+	ASSERT_TRUE(state.getOwner().empty());
+}
+
+
+TEST(Vic2World_States_StateTests, OwnerCanBeSet)
+{
+	Vic2::State state;
+	state.setOwner("TAG");
+
+	ASSERT_EQ("TAG", state.getOwner());
+}
+
+
+TEST(Vic2World_States_StateTests, LanguageCategoryDefaultsToEmpty)
+{
+	const Vic2::State state;
+
+	ASSERT_TRUE(state.getLanguageCategory().empty());
+}
+
+
+TEST(Vic2World_States_StateTests, LanguageCategoryCanBeSet)
+{
+	Vic2::State state;
+	state.setLanguageCategory("msnc");
+
+	ASSERT_EQ("msnc", state.getLanguageCategory());
+}
+
+
 TEST(Vic2World_States_StateTests, PopulationIsZeroWithNoProvinces)
 {
 	const Vic2::State state;
