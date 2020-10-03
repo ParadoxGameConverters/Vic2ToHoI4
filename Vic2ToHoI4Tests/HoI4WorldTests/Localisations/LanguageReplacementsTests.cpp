@@ -26,6 +26,7 @@ TEST(HoI4World_Localisations_LanguageReplacements, RuleCanBeAdded)
 }
 
 
+#ifndef _DEBUG // disable some test that break code coverage
 TEST(HoI4World_Localisations_LanguageReplacements, RuleCanHaveUTF8)
 {
 	std::stringstream input;
@@ -37,3 +38,4 @@ TEST(HoI4World_Localisations_LanguageReplacements, RuleCanHaveUTF8)
 	ASSERT_NE(actualReplacements.find("_FS"), actualReplacements.end());
 	ASSERT_EQ(actualReplacements.find("_FS")->second, std::string("$1\xC3\xA8re"));
 }
+#endif // _DEBUG
