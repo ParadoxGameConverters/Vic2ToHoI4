@@ -14,7 +14,7 @@ link = { codenames = GENERIC_GER_OPERATIVE_CODENAME_HISTORICAL culture = amerika
 link = { codenames = HOL_OPERATIVE_CODENAME_HISTORICAL culture = dutch culture = flemish culture = nieuwereld culture = zuidelijk culture = boer }
 link = { codenames = ITA_OPERATIVE_CODENAME_HISTORICAL culture = africano culture = all_italian culture = australiano culture = italoamericano culture = north_italian culture = south_italian }
 link = { codenames = JAP_OPERATIVE_CODENAME_HISTORICAL culture = japanese culture = ainu }
-link = { codenames = POL_OPERATIVE_CODENAME_HISTORICAL culture = polish culture = czarny culture = nowyswiat culture = poludniowy culture = western_slavic }
+link = { codenames = POL_OPERATIVE_CODENAME_HISTORICAL culture = polish culture = czarny culture = nowyswiat culture = poludniowy culture = western_slavic culture = sorbian culture = oldpommeranian }
 link = { codenames = POR_OPERATIVE_CODENAME_HISTORICAL culture = portuguese culture = brazilian }
 link = { codenames = ROM_OPERATIVE_CODENAME_HISTORICAL culture = lumenoua culture = negru culture = romanian culture = sudic }
 link = { codenames = SOV_OPERATIVE_CODENAME_HISTORICAL culture = novvymir culture = russian culture = smugly culture = ugrian culture = yuzhny }

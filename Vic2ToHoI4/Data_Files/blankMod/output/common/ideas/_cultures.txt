@@ -1601,6 +1601,13 @@ ideas = {
 			modifier = { }
 		}
 
+		culture_oldpommeranian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_oldpommeranian
+			modifier = { }
+		}
+
 		culture_ontustik = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -1948,6 +1955,13 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_sonoran
+			modifier = { }
+		}
+
+		culture_sorbian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_sorbian
 			modifier = { }
 		}
 

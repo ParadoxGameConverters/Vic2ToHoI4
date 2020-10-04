@@ -457,6 +457,24 @@ lithuanian = {
 	intelligence_agencies = { "AOTD" }
 }
 
+oldpommeranian = {
+	female_names = { Agnė Aldona Anastasija Aurelija Austėja Birutė Daiva Danutė Donata Edita Elena Elzė Ernesta Gabija Gertrüda Gintarė Ieva Inga Irma Janina Jolanta Julija Kamilė Katrė Kristina Laimutė Lilija Liucija Margarita Marijona
+			Miglė Monika Odeta Paulina Regina Rozė Sandra Silvija Smiltė Solveiga Tatjana Urtė Valerija Viktorija Viltautė Violeta Vitalija Zydrė }
+	female_surnames = { Adamkienė Almenienė Avizienienė Baltrušaitienė Brazauskienė Basanavičiienė Birutienė Brazdžiūnienė Būgienė Čiurlionienė
+		Danauskienė Daukantienė Dobkevičiienė Dubeneckienė Dvarionienė Galdikienė Griniienė Griškevičiienė Ivanauskienė Jablonskienė
+		Jucienė Krupavičiienė Landsbergienė Lozoraitienė Merkienė Paksienė Paleckienė Paulauskienė Petrauskienė Piskarkienė
+		Poželienė Radvilienė Šabaniauskienė Šacienė Simonavičiienė Širvydienė Šleževičiienė Semtonienė Sniečkienė Stauaitienė
+		Straižienė Stulginkienė Švedienė Terleckienė Urbšienė Vagnoriienė Valeškienė Voldemarienė Žemaitienė Zuokienė }
+	aircraft_companies = { PADK }
+	callsigns = { Gdansk Kuyav Szczecin Stralsund }
+	industry_companies = { "Nacionalne Industrije" }
+	electronic_companies = { "Gromoviti Bog" }
+	car_companies = { "Sėkmės Ratas" }
+	naval_companies = { "Baltijos Laivų Statykla" }
+	weapon_companies = { "Vokiečių Ugnis" }
+	intelligence_agencies = { "PATD" }
+}
+
 estonian = {
 	female_names = { Anna }
 	callsigns = { Läti Liivlased Eesti Poola Vene Soome }
@@ -669,6 +687,23 @@ czech = {
 	naval_companies = { "Škoda Shipyards" }
 	weapon_companies = { "Zbrojovka Brno" "Škoda Artillery" Praga }
 	aircraft_companies = { CKD-Praga Avia Aero LETOV }
+	intelligence_agencies = { "Vojenské zpravodajství" }
+}
+
+sorbian = {
+	female_names = { "Marie" "Anna" "Hana" "Božena" "Alžběta" "Marta" }
+	female_surnames = { Albertová Balabánová Baschová Breisková Čelovská Dvoráková Fibichová Gajdová Gellnerová Háleková
+                Hrdličková Jirečková Kadlecová Kafková Kollerová Křížkovská Kucerová Kucharová Ledererová Makosková 
+                Miková Morávecová Němečková Neruda Nováčková Novotná Popperová Radecká Rokytanská Šafáriková
+                Šafráneková Schacková Schubertová Škodová Skuherská Smetanová Šnejdárek Suková Svobodová Syrová 
+                Tomášková Tylová Vitáseková "von Mittrowitz-Nettolitzková" Voříšeková Wankelová Weberová Zíbrtová Zívrová Zoubeková }
+	callsigns = { Němec Žid Ďábel Maďarština Česky }
+	industry_companies = { Škoda }
+	electronic_companies = { Elektra }
+	car_companies = { CKD Tatra "Škoda Armor" }
+	naval_companies = { "Škoda Shipyards" }
+	weapon_companies = { "Zbrojovka Brno" "Škoda Artillery" Praga }
+	aircraft_companies = { CKD-Lubsko Avia Aero LETOV }
 	intelligence_agencies = { "Vojenské zpravodajství" }
 }
 
