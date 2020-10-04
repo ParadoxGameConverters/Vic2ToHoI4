@@ -66,6 +66,7 @@ cetvrtak		- Data Files
 Yellowone1		- Art
 KaeI			- Art
 Ostheim			- Art
+PPSYRIUS		- Voices
 CSRZ           - Art (Intelligence Agencies Logos)
 
 Special thanks to LukyLucaz, who allowed us to incoroporate Increased Resources into the converter.
