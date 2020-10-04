@@ -7,12 +7,7 @@
 
 void HoI4::outputSounds(const std::string& outputName, const std::vector<SoundEffect>& soundEffects)
 {
-	if (!commonItems::TryCreateFolder("output/" + outputName + "/sounds"))
-	{
-		throw std::runtime_error("Could not create output/" + outputName + "/sounds");
-	}
-
-	std::ofstream output("output/" + outputName + "/sounds/vo_conv.asset");
+	std::ofstream output("output/" + outputName + "/sounds/vo_conv.asset", std::ios::app);
 	if (!output.is_open())
 	{
 		throw std::runtime_error("Could not create output/" + outputName + "/sounds/vo_conv.asset");

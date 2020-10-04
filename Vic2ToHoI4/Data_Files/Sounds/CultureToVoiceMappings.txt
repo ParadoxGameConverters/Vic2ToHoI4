@@ -27,6 +27,7 @@ infantry_idle = {
 	link = { culture = bulgarian culture = macedonian sound = BUL_Idle_001 sound = BUL_Idle_002 sound = BUL_Idle_003 }
 	link = { culture = neokosmi culture = notios culture = mavro culture = greek sound = GRE_Idle_001 sound = GRE_Idle_002 sound = GRE_Idle_003 }
 	link = { culture = novisvet culture = juzhno culture = crni culture = bosniak culture = croat culture = serb sound = YUG_Idle_001 sound = YUG_Idle_002 sound = YUG_Idle_003 }
+	link = { culture = khmer sound = CAM_Idle_001 }
 }
 infantry_neutral_combat = {
 	link = { culture = north_german culture = south_german culture = german culture = swiss culture = amerikaner culture = sudreicher culture = schwarzreicher sound = de_Neutral_001 sound = de_Neutral_002 sound = de_Neutral_003 sound = de_Neutral_004 sound = de_Neutral_005 sound = de_Neutral_006 sound = de_Neutral_007 sound = de_Neutral_008 sound = de_Neutral_009 sound = de_Neutral_010 sound = de_Neutral_011 sound = de_Neutral_012 sound = de_Neutral_013 sound = de_Neutral_014 sound = de_Neutral_015 sound = de_Neutral_016 sound = de_Neutral_017 sound = de_Neutral_018 sound = de_Neutral_019 sound = de_Neutral_020 sound = de_Neutral_021 } #Taken from GER
@@ -56,6 +57,7 @@ infantry_neutral_combat = {
 	link = { culture = bulgarian culture = macedonian sound = BUL_Neutral_001 sound = BUL_Neutral_002 sound = BUL_Neutral_003 }
 	link = { culture = neokosmi culture = notios culture = mavro culture = greek sound = GRE_Neutral_001 sound = GRE_Neutral_002 sound = GRE_Neutral_003 sound = GRE_Neutral_004 }
 	link = { culture = novisvet culture = juzhno culture = crni culture = bosniak culture = croat culture = serb sound = YUG_Neutral_001 sound = YUG_Neutral_002 }
+	link = { culture = khmer sound = CAM_Combat_001 }
 }
 infantry_positive_combat = {
 	link = { culture = north_german culture = south_german culture = german culture = swiss culture = amerikaner culture = sudreicher culture = schwarzreicher sound = de_Positive_001 sound = de_Positive_002 sound = de_Positive_003 sound = de_Positive_007 sound = de_Positive_008 sound = de_Positive_009 sound = de_Positive_010 sound = de_Positive_011 sound = de_Positive_012 sound = de_Positive_013 sound = de_Positive_014 sound = de_Positive_015 sound = de_Positive_016 sound = de_Positive_017 sound = de_Positive_018 sound = de_Positive_019 sound = de_Positive_020 sound = de_Positive_021 sound = de_Positive_022 sound = de_Positive_023 sound = de_Positive_024 } #Taken from GER
@@ -85,6 +87,7 @@ infantry_positive_combat = {
 	link = { culture = bulgarian culture = macedonian sound = BUL_Neutral_001 sound = BUL_Neutral_002 sound = BUL_Neutral_003 }
 	link = { culture = neokosmi culture = notios culture = mavro culture = greek sound = GRE_Winning_001 sound = GRE_Winning_002 sound = GRE_Winning_003 }
 	link = { culture = novisvet culture = juzhno culture = crni culture = bosniak culture = croat culture = serb sound = YUG_Positive_001 sound = YUG_Positive_002 sound = YUG_Positive_003 }
+	link = { culture = khmer sound = CAM_Winning_001 }
 }
 infantry_retreat = {
 	link = { culture = north_german culture = south_german culture = german culture = swiss culture = amerikaner culture = sudreicher culture = schwarzreicher sound = de_Retreat_001 sound = de_Retreat_002 sound = de_Retreat_003 sound = de_Retreat_004 sound = de_Retreat_005 sound = de_Retreat_006 sound = de_Retreat_007 sound = de_Retreat_008 sound = de_Retreat_009 sound = de_Retreat_010 sound = de_Retreat_011 sound = de_Retreat_012 sound = de_Retreat_013 sound = de_Retreat_014 sound = de_Retreat_015 sound = de_Retreat_016 sound = de_Retreat_016_alt sound = de_Retreat_017 sound = de_Retreat_017_alt sound = de_Retreat_018 sound = de_Retreat_018_alt } #Taken from GER
@@ -114,6 +117,7 @@ infantry_retreat = {
 	link = { culture = bulgarian culture = macedonian sound = BUL_Neutral_001 sound = BUL_Neutral_002 sound = BUL_Neutral_003 }
 	link = { culture = neokosmi culture = notios culture = mavro culture = greek sound = GRE_Retreat_001 sound = GRE_Retreat_002 sound = GRE_Retreat_003 }
 	link = { culture = novisvet culture = juzhno culture = crni culture = bosniak culture = croat culture = serb sound = YUG_Retreat_001 sound = YUG_Retreat_002 }
+	link = { culture = khmer sound = CAM_Retreat_001 sound = CAM_Retreat_002 }
 }
 infantry_move_out = {
 	link = { culture = north_german culture = south_german culture = german culture = swiss culture = amerikaner culture = sudreicher culture = schwarzreicher sound = de_Positive_010 sound = de_Positive_011 sound = de_Positive_012 } #Taken from GER
@@ -135,4 +139,5 @@ infantry_move_out = {
 	link = { culture = bulgarian culture = macedonian sound = BUL_Idle_003 }
 	link = { culture = neokosmi culture = notios culture = mavro culture = greek sound = GRE_Idle_003 }	
 	link = { culture = novisvet culture = juzhno culture = crni culture = bosniak culture = croat culture = serb sound = YUG_Idle_003 }
+	link = { culture = khmer sound = CAM_Move_001 }
 }
