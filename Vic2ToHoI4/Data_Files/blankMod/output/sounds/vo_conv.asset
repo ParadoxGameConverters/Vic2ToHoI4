@@ -135,4 +135,34 @@ sound =
 	name = "sia_retreat_005"
 	file = "sia/sia_retreat_005.wav"
 }
+sound =
+{
+	name = "CAM_Combat_001"
+	file = "khmer/CAM_Combat_001.wav"
+}
+sound =
+{
+	name = "CAM_Idle_001"
+	file = "khmer/CAM_Idle_001.wav"
+}
+sound =
+{
+	name = "CAM_Move_001"
+	file = "khmer/CAM_Move_001.wav"
+}
+sound =
+{
+	name = "CAM_Retreat_001"
+	file = "khmer/CAM_Retreat_001.wav"
+}
+sound =
+{
+	name = "CAM_Retreat_002"
+	file = "khmer/CAM_Retreat_002.wav"
+}
+sound =
+{
+	name = "CAM_Winning_001"
+	file = "khmer/CAM_Winning_001.wav"
+}
 
