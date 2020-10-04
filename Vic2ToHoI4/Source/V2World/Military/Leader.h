@@ -15,17 +15,17 @@ class Leader
   public:
 	class Factory;
 
-	std::string getName() const { return name; }
-	std::string getType() const { return type; }
-	double getPrestige() const { return prestige; }
-	std::string getPersonality() const { return personality; }
-	std::string getBackground() const { return background; }
+	[[nodiscard]] const auto& getName() const { return name; }
+	[[nodiscard]] const auto& getType() const { return type; }
+	[[nodiscard]] const auto& getPersonality() const { return personality; }
+	[[nodiscard]] const auto& getBackground() const { return background; }
+	[[nodiscard]] const auto& getPrestige() const { return prestige; }
 
   private:
-	std::string name = "";
-	std::string type = "";
-	std::string personality = "";
-	std::string background = "";
+	std::string name;
+	std::string type;
+	std::string personality;
+	std::string background;
 	double prestige = 0.0;
 };
 
