@@ -428,6 +428,7 @@
     <ClCompile Include="Vic2WorldTests\Issues\IssuesBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Issues\IssuesFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Issues\IssueCategoryHelperTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Military\ArmyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Military\LeaderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Military\UnitTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Mods\ModBuilderTests.cpp" />
