@@ -5,7 +5,7 @@
 #include "V2World/Pops/Pop.h"
 
 
-Vic2::Army::Army(const std::string& type, std::istream& theStream, Unit::Factory& unitFactory): navy(type == "navy")
+Vic2::Army::Army(const std::string& type, std::istream& theStream, Unit::Factory& unitFactory)
 {
 	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString nameString(theStream);
@@ -20,14 +20,6 @@ Vic2::Army::Army(const std::string& type, std::istream& theStream, Unit::Factory
 	});
 	registerKeyword("ship", [this, &unitFactory](const std::string& unused, std::istream& theStream) {
 		units.push_back(*unitFactory.getUnit(theStream));
-	});
-	registerKeyword("supplies", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleDouble suppliesDouble(theStream);
-		supplies = suppliesDouble.getDouble();
-	});
-	registerKeyword("at_sea", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleInt locationInt(theStream);
-		atSea = locationInt.getInt();
 	});
 	registerKeyword("army", [this, &unitFactory](const std::string& type, std::istream& theStream) {
 		Army transportedArmy(type, theStream, unitFactory);
