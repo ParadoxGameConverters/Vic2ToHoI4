@@ -3,7 +3,6 @@
 
 
 
-#include "Parser.h"
 #include "Unit.h"
 #include <optional>
 #include <string>
@@ -14,7 +13,7 @@
 namespace Vic2
 {
 
-class Army: commonItems::parser // also Navy
+class Army // also Navy
 {
   public:
 	class Factory;
