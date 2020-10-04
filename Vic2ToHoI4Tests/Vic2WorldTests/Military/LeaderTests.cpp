@@ -1,5 +1,5 @@
-#include "../../Vic2ToHoI4/Source/V2World/Military/Leader.h"
-#include "../../Vic2ToHoI4/Source/V2World/Military/LeaderFactory.h"
+#include "V2World/Military/Leader.h"
+#include "V2World/Military/LeaderFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
