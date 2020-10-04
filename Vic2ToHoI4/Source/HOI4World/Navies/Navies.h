@@ -3,10 +3,10 @@
 
 
 
-#include "HoI4World/MilitaryMappings/MtgUnitMappings.h"
-#include "HoI4World/MilitaryMappings/UnitMappings.h"
-#include "HoI4World/ShipTypes/ShipVariants.h"
-#include "HoI4World/States/HoI4State.h"
+#include "HOI4World/MilitaryMappings/MtgUnitMappings.h"
+#include "HOI4World/MilitaryMappings/UnitMappings.h"
+#include "HOI4World/ShipTypes/ShipVariants.h"
+#include "HOI4World/States/HoI4State.h"
 #include "LegacyNavy.h"
 #include "MtgNavy.h"
 #include "V2World/Military/Army.h"

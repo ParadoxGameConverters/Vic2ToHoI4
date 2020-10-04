@@ -1,6 +1,6 @@
 #include "../../Mocks/TechnologiesMock.h"
 #include "HOI4World/Navies/Navies.h"
-#include "HoI4World/ProvinceDefinitions.h"
+#include "HOI4World/ProvinceDefinitions.h"
 #include "OutHoi4/Navies/OutNavies.h"
 #include "V2World/Military/ArmyFactory.h"
 #include "gtest/gtest.h"

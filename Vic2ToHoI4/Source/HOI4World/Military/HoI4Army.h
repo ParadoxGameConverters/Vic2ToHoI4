@@ -4,8 +4,8 @@
 
 
 #include "DivisionType.h"
-#include "HoI4World/MilitaryMappings/MilitaryMappings.h"
-#include "HoI4World/States/HoI4States.h"
+#include "HOI4World/MilitaryMappings/MilitaryMappings.h"
+#include "HOI4World/States/HoI4States.h"
 #include "V2World/Military/Army.h"
 #include <map>
 #include <string>
