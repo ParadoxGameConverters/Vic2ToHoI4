@@ -1,23 +1,22 @@
 #include "LeaderFactory.h"
 #include "Log.h"
 #include "ParserHelpers.h"
-#include "StringUtils.h"
 
 
 
 Vic2::Leader::Factory::Factory()
 {
 	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
-		leader->name = commonItems::remQuotes(commonItems::singleString{theStream}.getString());
+		leader->name = commonItems::singleString{theStream}.getString();
 	});
 	registerKeyword("type", [this](const std::string& unused, std::istream& theStream) {
-		leader->type = commonItems::remQuotes(commonItems::singleString{theStream}.getString());
+		leader->type = commonItems::singleString{theStream}.getString();
 	});
 	registerKeyword("personality", [this](const std::string& unused, std::istream& theStream) {
-		leader->personality = commonItems::remQuotes(commonItems::singleString{theStream}.getString());
+		leader->personality = commonItems::singleString{theStream}.getString();
 	});
 	registerKeyword("background", [this](const std::string& unused, std::istream& theStream) {
-		leader->background = commonItems::remQuotes(commonItems::singleString{theStream}.getString());
+		leader->background = commonItems::singleString{theStream}.getString();
 	});
 	registerKeyword("prestige", [this](const std::string& unused, std::istream& theStream) {
 		leader->prestige = commonItems::singleDouble{theStream}.getDouble();
