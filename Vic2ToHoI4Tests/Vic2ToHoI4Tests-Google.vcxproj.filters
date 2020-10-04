@@ -52,12 +52,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Focus.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Army.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Leader.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
     <ClCompile Include="..\common_items\targa.cpp">
       <Filter>Vic2ToHoI4 files</Filter>
     </ClCompile>
@@ -1226,6 +1220,24 @@
     <ClCompile Include="Vic2WorldTests\Politics\PartyTests.cpp">
       <Filter>Vic2WorldTests\Politics</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\LeaderFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Military\LeaderTests.cpp">
+      <Filter>Vic2WorldTests\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\UnitFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Military\UnitTests.cpp">
+      <Filter>Vic2WorldTests\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\ArmyFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Military\ArmyTests.cpp">
+      <Filter>Vic2WorldTests\Military</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1563,6 +1575,12 @@
     </Filter>
     <Filter Include="Vic2WorldTests\Politics">
       <UniqueIdentifier>{5c3b35e2-62b7-4728-b04e-8bc54a380c01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Military">
+      <UniqueIdentifier>{666a91a4-6f51-405d-8bcd-8e1bb2556320}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\Military">
+      <UniqueIdentifier>{628cfaff-66d9-4bb1-b4a8-d05fd2bf704b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

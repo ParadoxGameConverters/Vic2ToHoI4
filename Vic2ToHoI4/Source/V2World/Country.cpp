@@ -1,8 +1,8 @@
 #include "Country.h"
 #include "Culture/CultureGroups.h"
 #include "Diplomacy/Relations.h"
-#include "Leader.h"
 #include "Log.h"
+#include "Military/Leader.h"
 #include "ParserHelpers.h"
 #include "Politics/Party.h"
 #include "Pops/Pop.h"
@@ -21,7 +21,9 @@ Vic2::Country::Country(const std::string& theTag,
 	 const CultureGroups& theCultureGroups,
 	 const StateDefinitions& theStateDefinitions,
 	 State::Factory& stateFactory,
-	 Relations::Factory& relationsFactory):
+	 Relations::Factory& relationsFactory,
+	 Leader::Factory& leaderFactory,
+	 Army::Factory& armyFactory):
 	 tag(theTag)
 {
 	registerKeyword("capital", [this](const std::string& unused, std::istream& theStream) {
@@ -142,22 +144,19 @@ Vic2::Country::Country(const std::string& theTag,
 	registerRegex("[A-Z][A-Z0-9]{2}", [this, &relationsFactory](const std::string& countryTag, std::istream& theStream) {
 		relations.insert(std::make_pair(countryTag, *relationsFactory.getRelations(theStream)));
 	});
-	registerKeyword("army", [this](const std::string& type, std::istream& theStream) {
-		Army army(type, theStream);
-		armies.push_back(army);
+	registerKeyword("army", [this, &armyFactory](const std::string& unused, std::istream& theStream) {
+		armies.push_back(*armyFactory.getArmy(theStream));
 	});
-	registerKeyword("navy", [this](const std::string& type, std::istream& theStream) {
-		Army navy(type, theStream);
-		armies.push_back(navy);
-
-		for (auto transportedArmy: navy.getTransportedArmies())
+	registerKeyword("navy", [this, &armyFactory](const std::string& unused, std::istream& theStream) {
+		auto navy = armyFactory.getArmy(theStream);
+		for (auto& transportedArmy: navy->getTransportedArmies())
 		{
 			armies.push_back(transportedArmy);
 		}
+		armies.push_back(*navy);
 	});
-	registerKeyword("leader", [this](const std::string& unused, std::istream& theStream) {
-		Leader* leader = new Leader(theStream);
-		leaders.push_back(leader);
+	registerKeyword("leader", [this, &leaderFactory](const std::string& unused, std::istream& theStream) {
+		leaders.push_back(*leaderFactory.getLeader(theStream));
 	});
 	registerKeyword("state",
 		 [this, &theStateDefinitions, &stateFactory](const std::string& unused, std::istream& theStream) {

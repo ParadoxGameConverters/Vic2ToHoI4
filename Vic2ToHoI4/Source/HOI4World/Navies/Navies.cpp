@@ -18,46 +18,26 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 {
 	for (auto army: srcArmies)
 	{
-		auto navalLocation = backupNavalLocation;
-		auto base = backupNavalLocation;
-
-		if (auto mapping = provinceMapper.getVic2ToHoI4ProvinceMapping(army.getLocation()); mapping)
-		{
-			for (auto possibleProvince: *mapping)
-			{
-				if (provinceDefinitions.isSeaProvince(possibleProvince))
-				{
-					navalLocation = possibleProvince;
-					break;
-				}
-				else if (auto stateID = provinceToStateIDMap.find(possibleProvince); stateID != provinceToStateIDMap.end())
-				{
-					if (auto state = states.find(stateID->second); state != states.end())
-					{
-						if (auto mainNavalLocation = state->second.getMainNavalLocation(); mainNavalLocation)
-						{
-							navalLocation = *mainNavalLocation;
-							base = *mainNavalLocation;
-							break;
-						}
-					}
-				}
-			}
-		}
+		auto [navalLocation, base] = getLocationAndBase(army.getLocation(),
+			 backupNavalLocation,
+			 provinceMapper,
+			 provinceDefinitions,
+			 provinceToStateIDMap,
+			 states);
 
 		LegacyNavy newLegacyNavy(army.getName(), navalLocation, base);
 		MtgNavy newMtgNavy(army.getName(), navalLocation, base);
 
-		for (const auto& regiment: army.getRegiments())
+		for (const auto& regiment: army.getUnits())
 		{
-			auto type = regiment->getType();
+			auto type = regiment.getType();
 			if (unitMap.hasMatchingType(type))
 			{
 				for (const auto& unitInfo: unitMap.getMatchingUnitInfo(type))
 				{
 					if (unitInfo.getCategory() == "naval" && theShipVariants.hasLegacyVariant(unitInfo.getVersion()))
 					{
-						LegacyShip newLegacyShip(regiment->getName(), unitInfo.getType(), unitInfo.getEquipment(), tag);
+						LegacyShip newLegacyShip(regiment.getName(), unitInfo.getType(), unitInfo.getEquipment(), tag);
 						newLegacyNavy.addShip(newLegacyShip);
 					}
 				}
@@ -72,8 +52,8 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 				{
 					if ((unitInfo.getCategory() == "naval") && theShipVariants.hasMtgVariant(unitInfo.getVersion()))
 					{
-						auto experience = static_cast<float>(regiment->getExperience() / 100);
-						MtgShip newMtgShip(regiment->getName(),
+						auto experience = static_cast<float>(regiment.getExperience() / 100);
+						MtgShip newMtgShip(regiment.getName(),
 							 unitInfo.getType(),
 							 unitInfo.getEquipment(),
 							 tag,
@@ -98,4 +78,41 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 			mtgNavies.push_back(newMtgNavy);
 		}
 	}
+}
+
+
+std::tuple<int, int> HoI4::Navies::getLocationAndBase(std::optional<int> vic2Location,
+	 int backupNavalLocation,
+	 const mappers::ProvinceMapper& provinceMapper,
+	 const ProvinceDefinitions& provinceDefinitions,
+	 const std::map<int, int>& provinceToStateIDMap,
+	 std::map<int, State> states)
+{
+	if (vic2Location == std::nullopt)
+	{
+		return {backupNavalLocation, backupNavalLocation};
+	}
+
+	if (auto mapping = provinceMapper.getVic2ToHoI4ProvinceMapping(*vic2Location); mapping)
+	{
+		for (auto possibleProvince: *mapping)
+		{
+			if (provinceDefinitions.isSeaProvince(possibleProvince))
+			{
+				return {possibleProvince, backupNavalLocation};
+			}
+			if (auto stateID = provinceToStateIDMap.find(possibleProvince); stateID != provinceToStateIDMap.end())
+			{
+				if (auto state = states.find(stateID->second); state != states.end())
+				{
+					if (auto mainNavalLocation = state->second.getMainNavalLocation(); mainNavalLocation)
+					{
+						return {*mainNavalLocation, *mainNavalLocation};
+					}
+				}
+			}
+		}
+	}
+
+	return {backupNavalLocation, backupNavalLocation};
 }

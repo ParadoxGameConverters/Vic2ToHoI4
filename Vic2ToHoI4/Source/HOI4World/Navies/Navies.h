@@ -3,13 +3,13 @@
 
 
 
-#include "../../V2World/Army.h"
-#include "../MilitaryMappings/MtgUnitMappings.h"
-#include "../MilitaryMappings/UnitMappings.h"
-#include "../ShipTypes/ShipVariants.h"
-#include "../States/HoI4State.h"
+#include "HOI4World/MilitaryMappings/MtgUnitMappings.h"
+#include "HOI4World/MilitaryMappings/UnitMappings.h"
+#include "HOI4World/ShipTypes/ShipVariants.h"
+#include "HOI4World/States/HoI4State.h"
 #include "LegacyNavy.h"
 #include "MtgNavy.h"
+#include "V2World/Military/Army.h"
 #include <map>
 #include <string>
 #include <vector>
@@ -47,6 +47,13 @@ class Navies
 	[[nodiscard]] const auto& getMtgNavies() const { return mtgNavies; }
 
   private:
+	std::tuple<int, int> getLocationAndBase(std::optional<int> vic2Location,
+		 int backupNavalLocation,
+		 const mappers::ProvinceMapper& provinceMapper,
+		 const ProvinceDefinitions& provinceDefinitions,
+		 const std::map<int, int>& provinceToStateIDMap,
+		 std::map<int, State> states);
+
 	std::vector<LegacyNavy> legacyNavies;
 	std::vector<MtgNavy> mtgNavies;
 };

@@ -3,10 +3,12 @@
 
 
 
-#include "Army.h"
 #include "Color.h"
 #include "Date.h"
 #include "Diplomacy/RelationsFactory.h"
+#include "Military/Army.h"
+#include "Military/LeaderFactory.h"
+#include "Military/ArmyFactory.h"
 #include "Parser.h"
 #include "Politics/Party.h"
 #include "States/StateFactory.h"
@@ -44,7 +46,9 @@ class Country: commonItems::parser
 		 const CultureGroups& theCultureGroups,
 		 const StateDefinitions& theStateDefinitions,
 		 State::Factory& stateFactory,
-		 Relations::Factory& relationsFactory);
+		 Relations::Factory& relationsFactory,
+		 Leader::Factory& leaderFactory,
+		 Army::Factory& armyFactory);
 	virtual ~Country() = default;
 
 	void addProvince(const std::pair<const int, std::shared_ptr<Province>>& province) { provinces.insert(province); }
@@ -79,7 +83,7 @@ class Country: commonItems::parser
 	virtual std::set<std::string> getTechs() const { return techs; }
 	virtual const commonItems::Color& getColor() const { return color; }
 	auto getArmies() const { return armies; }
-	std::vector<const Leader*> getLeaders() const { return leaders; }
+	[[nodiscard]] const auto& getLeaders() const { return leaders; }
 	virtual double getRevanchism() const { return revanchism; }
 	virtual double getWarExhaustion() const { return warExhaustion; }
 	double getBadBoy() const { return badboy; }
@@ -130,7 +134,7 @@ class Country: commonItems::parser
 	bool civilized = false;
 
 	std::vector<Army> armies;
-	std::vector<const Leader*> leaders;
+	std::vector<Leader> leaders;
 
 	double revanchism = 0.0;
 	double warExhaustion = 0.0;

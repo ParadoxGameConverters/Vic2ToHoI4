@@ -220,6 +220,9 @@
     <Filter Include="Vic2World\Politics">
       <UniqueIdentifier>{72e73979-f903-449d-baa4-601298236fc5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2World\Military">
+      <UniqueIdentifier>{cdd21551-2b6c-4b5d-b9d4-4ac42adf734c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -261,12 +264,6 @@
       <Filter>CommonItems</Filter>
     </ClCompile>
     <ClCompile Include="Source\V2World\Country.cpp">
-      <Filter>Vic2World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\V2World\Leader.cpp">
-      <Filter>Vic2World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\V2World\Army.cpp">
       <Filter>Vic2World</Filter>
     </ClCompile>
     <ClCompile Include="Source\Mappers\MergeRules.cpp">
@@ -1051,6 +1048,15 @@
     <ClCompile Include="Source\V2World\Politics\PartyFactory.cpp">
       <Filter>Vic2World\Politics</Filter>
     </ClCompile>
+    <ClCompile Include="Source\V2World\Military\LeaderFactory.cpp">
+      <Filter>Vic2World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Military\UnitFactory.cpp">
+      <Filter>Vic2World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Military\ArmyFactory.cpp">
+      <Filter>Vic2World\Military</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1092,12 +1098,6 @@
       <Filter>CommonItems</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Country.h">
-      <Filter>Vic2World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\V2World\Leader.h">
-      <Filter>Vic2World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\V2World\Army.h">
       <Filter>Vic2World</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\MergeRules.h">
@@ -2003,6 +2003,24 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Politics\PartyFactory.h">
       <Filter>Vic2World\Politics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\Army.h">
+      <Filter>Vic2World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\Leader.h">
+      <Filter>Vic2World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\LeaderFactory.h">
+      <Filter>Vic2World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\Unit.h">
+      <Filter>Vic2World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\UnitFactory.h">
+      <Filter>Vic2World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\ArmyFactory.h">
+      <Filter>Vic2World\Military</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

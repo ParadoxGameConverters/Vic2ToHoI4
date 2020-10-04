@@ -1,10 +1,11 @@
 #include "HoI4Army.h"
-#include "../../Mappers/Provinces/ProvinceMapper.h"
-#include "../../V2World/Army.h"
-#include "../MilitaryMappings/UnitMappings.h"
-#include "../States/HoI4State.h"
 #include "DivisionType.h"
+#include "HOI4World/MilitaryMappings/UnitMappings.h"
+#include "HOI4World/States/HoI4State.h"
 #include "Log.h"
+#include "Mappers/Provinces/ProvinceMapper.h"
+#include "V2World/Military/Army.h"
+
 
 
 namespace HoI4
@@ -43,8 +44,8 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings,
 
 	for (const auto& army: sourceArmies)
 	{
-		auto provinceMapping = provinceMapper.getVic2ToHoI4ProvinceMapping(army.getLocation());
-		if (!provinceMapping || isWastelandProvince(*provinceMapping->begin(), theStates))
+		auto location = getLocation(army.getLocation(), provinceMapper);
+		if (!location || isWastelandProvince(*location, theStates))
 		{
 			addAvailableBattalionsAndCompanies(remainingBattalionsAndCompanies,
 				 army,
@@ -55,13 +56,31 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings,
 		std::map<std::string, std::vector<SizedRegiment>> localBattalionsAndCompanies;
 		addAvailableBattalionsAndCompanies(localBattalionsAndCompanies, army, theMilitaryMappings, forceMultiplier);
 
-		convertArmyDivisions(theMilitaryMappings, localBattalionsAndCompanies, *provinceMapping->begin());
+		convertArmyDivisions(theMilitaryMappings, localBattalionsAndCompanies, *location);
 		addRemainingBattalionsAndCompanies(remainingBattalionsAndCompanies, localBattalionsAndCompanies);
 	}
 
 	convertArmyDivisions(theMilitaryMappings, remainingBattalionsAndCompanies, backupLocation);
 
 	collectLeftoverEquipment(remainingBattalionsAndCompanies);
+}
+
+
+std::optional<int> HoI4::Army::getLocation(std::optional<int> vic2Location,
+	 const mappers::ProvinceMapper& provinceMapper)
+{
+	if (vic2Location == std::nullopt)
+	{
+		return std::nullopt;
+	}
+
+	const auto mapping = provinceMapper.getVic2ToHoI4ProvinceMapping(*vic2Location);
+	if (mapping == std::nullopt || mapping->size() == 0)
+	{
+		return std::nullopt;
+	}
+
+	return *mapping->begin();
 }
 
 
@@ -87,9 +106,9 @@ void HoI4::addAvailableBattalionsAndCompanies(
 	 const militaryMappings& theMilitaryMappings,
 	 const double forceMultiplier)
 {
-	for (const auto& regiment: sourceArmy.getRegiments())
+	for (const auto& regiment: sourceArmy.getUnits())
 	{
-		auto Vic2Type = regiment->getType();
+		auto Vic2Type = regiment.getType();
 
 		if (theMilitaryMappings.getUnitMappings().hasMatchingType(Vic2Type))
 		{
@@ -99,8 +118,8 @@ void HoI4::addAvailableBattalionsAndCompanies(
 				{
 					SizedRegiment theRegiment;
 					theRegiment.unitSize = unitInfo.getSize() * forceMultiplier;
-					theRegiment.experience = regiment->getExperience();
-					theRegiment.strength = regiment->getStrength();
+					theRegiment.experience = regiment.getExperience();
+					theRegiment.strength = regiment.getStrength();
 					availableBattalionsAndCompanies[unitInfo.getType()].push_back(theRegiment);
 					break;
 				}
