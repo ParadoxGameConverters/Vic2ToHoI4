@@ -75,6 +75,6 @@ jobs:
        gcc -v && g++ -v && cmake --version
        # Run your build commands next
        chmod u+x build_Vic2ToHoI4_release.sh
-       ./build_linux.sh
+       ./build_Vic2ToHoI4_release.sh
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
