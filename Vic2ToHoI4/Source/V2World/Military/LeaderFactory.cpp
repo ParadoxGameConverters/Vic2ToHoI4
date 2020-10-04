@@ -20,14 +20,7 @@ Vic2::Leader::Factory::Factory()
 		leader->background = commonItems::remQuotes(commonItems::singleString{theStream}.getString());
 	});
 	registerKeyword("prestige", [this](const std::string& unused, std::istream& theStream) {
-		try
-		{
-			leader->prestige = commonItems::singleDouble{theStream}.getDouble();
-		}
-		catch (const std::exception& e)
-		{
-			LOG(LogLevel::Warning) << "Bad prestige value: " << e.what();
-		}
+		leader->prestige = commonItems::singleDouble{theStream}.getDouble();
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }

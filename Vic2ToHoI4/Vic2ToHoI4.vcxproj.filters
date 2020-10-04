@@ -1051,9 +1051,6 @@
     <ClCompile Include="Source\V2World\Military\Army.cpp">
       <Filter>Vic2World\Military</Filter>
     </ClCompile>
-    <ClCompile Include="Source\V2World\Military\Leader.cpp">
-      <Filter>Vic2World\Military</Filter>
-    </ClCompile>
     <ClCompile Include="Source\V2World\Military\LeaderFactory.cpp">
       <Filter>Vic2World\Military</Filter>
     </ClCompile>
