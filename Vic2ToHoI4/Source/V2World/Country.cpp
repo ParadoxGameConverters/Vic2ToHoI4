@@ -22,7 +22,8 @@ Vic2::Country::Country(const std::string& theTag,
 	 const StateDefinitions& theStateDefinitions,
 	 State::Factory& stateFactory,
 	 Relations::Factory& relationsFactory,
-	 Leader::Factory& leaderFactory):
+	 Leader::Factory& leaderFactory,
+	 Unit::Factory& unitFactory):
 	 tag(theTag)
 {
 	registerKeyword("capital", [this](const std::string& unused, std::istream& theStream) {
@@ -143,12 +144,12 @@ Vic2::Country::Country(const std::string& theTag,
 	registerRegex("[A-Z][A-Z0-9]{2}", [this, &relationsFactory](const std::string& countryTag, std::istream& theStream) {
 		relations.insert(std::make_pair(countryTag, *relationsFactory.getRelations(theStream)));
 	});
-	registerKeyword("army", [this](const std::string& type, std::istream& theStream) {
-		Army army(type, theStream);
+	registerKeyword("army", [this, &unitFactory](const std::string& type, std::istream& theStream) {
+		Army army(type, theStream, unitFactory);
 		armies.push_back(army);
 	});
-	registerKeyword("navy", [this](const std::string& type, std::istream& theStream) {
-		Army navy(type, theStream);
+	registerKeyword("navy", [this, &unitFactory](const std::string& type, std::istream& theStream) {
+		Army navy(type, theStream, unitFactory);
 		armies.push_back(navy);
 
 		for (auto transportedArmy: navy.getTransportedArmies())

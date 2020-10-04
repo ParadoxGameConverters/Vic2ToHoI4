@@ -88,9 +88,9 @@ void HoI4::addAvailableBattalionsAndCompanies(
 	 const militaryMappings& theMilitaryMappings,
 	 const double forceMultiplier)
 {
-	for (const auto& regiment: sourceArmy.getRegiments())
+	for (const auto& regiment: sourceArmy.getUnits())
 	{
-		auto Vic2Type = regiment->getType();
+		auto Vic2Type = regiment.getType();
 
 		if (theMilitaryMappings.getUnitMappings().hasMatchingType(Vic2Type))
 		{
@@ -100,8 +100,8 @@ void HoI4::addAvailableBattalionsAndCompanies(
 				{
 					SizedRegiment theRegiment;
 					theRegiment.unitSize = unitInfo.getSize() * forceMultiplier;
-					theRegiment.experience = regiment->getExperience();
-					theRegiment.strength = regiment->getStrength();
+					theRegiment.experience = regiment.getExperience();
+					theRegiment.strength = regiment.getStrength();
 					availableBattalionsAndCompanies[unitInfo.getType()].push_back(theRegiment);
 					break;
 				}

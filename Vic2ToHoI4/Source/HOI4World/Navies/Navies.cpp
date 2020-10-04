@@ -48,16 +48,16 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 		LegacyNavy newLegacyNavy(army.getName(), navalLocation, base);
 		MtgNavy newMtgNavy(army.getName(), navalLocation, base);
 
-		for (const auto& regiment: army.getRegiments())
+		for (const auto& regiment: army.getUnits())
 		{
-			auto type = regiment->getType();
+			auto type = regiment.getType();
 			if (unitMap.hasMatchingType(type))
 			{
 				for (const auto& unitInfo: unitMap.getMatchingUnitInfo(type))
 				{
 					if (unitInfo.getCategory() == "naval" && theShipVariants.hasLegacyVariant(unitInfo.getVersion()))
 					{
-						LegacyShip newLegacyShip(regiment->getName(), unitInfo.getType(), unitInfo.getEquipment(), tag);
+						LegacyShip newLegacyShip(regiment.getName(), unitInfo.getType(), unitInfo.getEquipment(), tag);
 						newLegacyNavy.addShip(newLegacyShip);
 					}
 				}
@@ -72,8 +72,8 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 				{
 					if ((unitInfo.getCategory() == "naval") && theShipVariants.hasMtgVariant(unitInfo.getVersion()))
 					{
-						auto experience = static_cast<float>(regiment->getExperience() / 100);
-						MtgShip newMtgShip(regiment->getName(),
+						auto experience = static_cast<float>(regiment.getExperience() / 100);
+						MtgShip newMtgShip(regiment.getName(),
 							 unitInfo.getType(),
 							 unitInfo.getEquipment(),
 							 tag,

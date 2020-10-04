@@ -5,7 +5,7 @@
 #include "V2World/Pops/Pop.h"
 
 
-Vic2::Army::Army(const std::string& type, std::istream& theStream): navy(type == "navy")
+Vic2::Army::Army(const std::string& type, std::istream& theStream, Unit::Factory& unitFactory): navy(type == "navy")
 {
 	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString nameString(theStream);
@@ -15,13 +15,11 @@ Vic2::Army::Army(const std::string& type, std::istream& theStream): navy(type ==
 		commonItems::singleInt locationInt(theStream);
 		location = locationInt.getInt();
 	});
-	registerKeyword("regiment", [this](const std::string& unused, std::istream& theStream) {
-		Unit* newRegiment = new Unit(theStream);
-		regiments.push_back(newRegiment);
+	registerKeyword("regiment", [this, &unitFactory](const std::string& unused, std::istream& theStream) {
+		units.push_back(*unitFactory.getUnit(theStream));
 	});
-	registerKeyword("ship", [this](const std::string& unused, std::istream& theStream) {
-		Unit* newShip = new Unit(theStream);
-		regiments.push_back(newShip);
+	registerKeyword("ship", [this, &unitFactory](const std::string& unused, std::istream& theStream) {
+		units.push_back(*unitFactory.getUnit(theStream));
 	});
 	registerKeyword("supplies", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleDouble suppliesDouble(theStream);
@@ -31,8 +29,8 @@ Vic2::Army::Army(const std::string& type, std::istream& theStream): navy(type ==
 		commonItems::singleInt locationInt(theStream);
 		atSea = locationInt.getInt();
 	});
-	registerKeyword("army", [this](const std::string& type, std::istream& theStream) {
-		Army transportedArmy(type, theStream);
+	registerKeyword("army", [this, &unitFactory](const std::string& type, std::istream& theStream) {
+		Army transportedArmy(type, theStream, unitFactory);
 		transportedArmies.push_back(transportedArmy);
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);

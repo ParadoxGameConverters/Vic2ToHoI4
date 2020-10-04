@@ -1229,7 +1229,7 @@
     <ClCompile Include="Vic2WorldTests\Military\LeaderTests.cpp">
       <Filter>Vic2WorldTests\Military</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Unit.cpp">
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\UnitFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Military</Filter>
     </ClCompile>
   </ItemGroup>

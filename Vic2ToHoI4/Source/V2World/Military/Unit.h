@@ -14,7 +14,7 @@ namespace Vic2
 class Unit: commonItems::parser
 {
   public:
-	explicit Unit(std::istream& theStream);
+	class Factory;
 
 	std::string getName() const { return name; }
 	std::string getType() const { return type; }

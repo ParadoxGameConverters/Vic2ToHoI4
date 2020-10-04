@@ -710,9 +710,9 @@ void HoI4::Country::convertConvoys(const UnitMappings& unitMap)
 {
 	for (const auto& army: sourceCountry.getArmies())
 	{
-		for (const auto& regiment: army.getRegiments())
+		for (const auto& regiment: army.getUnits())
 		{
-			if (const auto& type = regiment->getType(); unitMap.hasMatchingType(type))
+			if (const auto& type = regiment.getType(); unitMap.hasMatchingType(type))
 			{
 				for (const auto& unitInfo: unitMap.getMatchingUnitInfo(type))
 				{
@@ -739,9 +739,9 @@ void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 		 {"fighter_equipment_0", {"tac_bomber_equipment_0"}}};
 	for (const auto& army: sourceCountry.getArmies())
 	{
-		for (const auto& regiment: army.getRegiments())
+		for (const auto& regiment: army.getUnits())
 		{
-			if (const auto& type = regiment->getType(); unitMap.hasMatchingType(type))
+			if (const auto& type = regiment.getType(); unitMap.hasMatchingType(type))
 			{
 				for (const auto& unitInfo: unitMap.getMatchingUnitInfo(type))
 				{

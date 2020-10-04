@@ -1054,7 +1054,7 @@
     <ClCompile Include="Source\V2World\Military\LeaderFactory.cpp">
       <Filter>Vic2World\Military</Filter>
     </ClCompile>
-    <ClCompile Include="Source\V2World\Military\Unit.cpp">
+    <ClCompile Include="Source\V2World\Military\UnitFactory.cpp">
       <Filter>Vic2World\Military</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2014,6 +2014,9 @@
       <Filter>Vic2World\Military</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Military\Unit.h">
+      <Filter>Vic2World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\UnitFactory.h">
       <Filter>Vic2World\Military</Filter>
     </ClInclude>
   </ItemGroup>

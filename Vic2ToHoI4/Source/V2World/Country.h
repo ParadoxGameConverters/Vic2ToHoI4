@@ -8,6 +8,7 @@
 #include "Diplomacy/RelationsFactory.h"
 #include "Military/Army.h"
 #include "Military/LeaderFactory.h"
+#include "Military/UnitFactory.h"
 #include "Parser.h"
 #include "Politics/Party.h"
 #include "States/StateFactory.h"
@@ -46,7 +47,8 @@ class Country: commonItems::parser
 		 const StateDefinitions& theStateDefinitions,
 		 State::Factory& stateFactory,
 		 Relations::Factory& relationsFactory,
-		 Leader::Factory& leaderFactory);
+		 Leader::Factory& leaderFactory,
+		 Unit::Factory& unitFactory);
 	virtual ~Country() = default;
 
 	void addProvince(const std::pair<const int, std::shared_ptr<Province>>& province) { provinces.insert(province); }
