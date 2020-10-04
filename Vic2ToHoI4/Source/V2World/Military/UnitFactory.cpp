@@ -21,9 +21,6 @@ Vic2::Unit::Factory::Factory()
 	registerKeyword("experience", [this](const std::string& unused, std::istream& theStream) {
 		unit->experience = commonItems::singleDouble{theStream}.getDouble();
 	});
-	registerKeyword("pop", [this](const std::string& unused, std::istream& theStream) {
-		unit->pop_id = commonItems::simpleObject{theStream}.getValueAsInt("id");
-	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 

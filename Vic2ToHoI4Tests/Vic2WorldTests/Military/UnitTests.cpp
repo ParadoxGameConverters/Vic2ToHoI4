@@ -29,9 +29,18 @@ TEST(Vic2World_Military_UnitTests, NameCanBeSet)
 TEST(Vic2World_Military_UnitTests, TypeDefaultsToEmpty)
 {
 	std::stringstream input;
+	input << "= {\n";
+	input << "\tname = test_name\n";
+	input << "}";
+
+	const std::stringstream log;
+	auto* stdOutBuf = std::cout.rdbuf();
+	std::cout.rdbuf(log.rdbuf());
 	const auto unit = Vic2::Unit::Factory{}.getUnit(input);
+	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_TRUE(unit->getType().empty());
+	ASSERT_EQ(" [WARNING] Regiment or Ship test_name has no type\n", log.str());
 }
 
 

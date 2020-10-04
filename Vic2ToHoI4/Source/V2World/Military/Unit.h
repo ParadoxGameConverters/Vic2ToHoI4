@@ -3,7 +3,6 @@
 
 
 
-#include "Parser.h"
 #include <string>
 
 
@@ -11,24 +10,23 @@
 namespace Vic2
 {
 
-class Unit: commonItems::parser
+class Unit
 {
   public:
 	class Factory;
 
-	std::string getName() const { return name; }
-	std::string getType() const { return type; }
-	double getStrength() const { return strength; }
-	double getOrganization() const { return organization; }
-	double getExperience() const { return experience; }
+	[[nodiscard]] const auto& getName() const { return name; }
+	[[nodiscard]] const auto& getType() const { return type; }
+	[[nodiscard]] const auto& getStrength() const { return strength; }
+	[[nodiscard]] const auto& getOrganization() const { return organization; }
+	[[nodiscard]] const auto& getExperience() const { return experience; }
 
   private:
-	std::string name = "";
-	std::string type = "";
+	std::string name;
+	std::string type;
 	double strength = 0.0;
 	double organization = 0.0;
 	double experience = 0.0;
-	int pop_id = 0;
 };
 
 } // namespace Vic2
