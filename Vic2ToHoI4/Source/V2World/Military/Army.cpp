@@ -5,44 +5,6 @@
 #include "V2World/Pops/Pop.h"
 
 
-
-Vic2::Regiment::Regiment(std::istream& theStream)
-{
-	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString nameString(theStream);
-		name = commonItems::convertWin1252ToUTF8(nameString.getString());
-	});
-	registerKeyword("type", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString typeString(theStream);
-		type = typeString.getString();
-	});
-	registerKeyword("strength", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleDouble strengthDouble(theStream);
-		strength = strengthDouble.getDouble();
-	});
-	registerKeyword("organisation", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleDouble organizationDouble(theStream);
-		organization = organizationDouble.getDouble();
-	});
-	registerKeyword("experience", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleDouble experienceDouble(theStream);
-		experience = experienceDouble.getDouble();
-	});
-	registerKeyword("pop", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::simpleObject pop_def(theStream);
-		pop_id = pop_def.getValueAsInt("id");
-	});
-	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
-
-	parseStream(theStream);
-
-	if (type.empty())
-	{
-		Log(LogLevel::Warning) << "Regiment or Ship " << name << " has no type";
-	}
-}
-
-
 Vic2::Army::Army(const std::string& type, std::istream& theStream): navy(type == "navy")
 {
 	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
@@ -54,11 +16,11 @@ Vic2::Army::Army(const std::string& type, std::istream& theStream): navy(type ==
 		location = locationInt.getInt();
 	});
 	registerKeyword("regiment", [this](const std::string& unused, std::istream& theStream) {
-		Regiment* newRegiment = new Regiment(theStream);
+		Unit* newRegiment = new Unit(theStream);
 		regiments.push_back(newRegiment);
 	});
 	registerKeyword("ship", [this](const std::string& unused, std::istream& theStream) {
-		Regiment* newShip = new Regiment(theStream);
+		Unit* newShip = new Unit(theStream);
 		regiments.push_back(newShip);
 	});
 	registerKeyword("supplies", [this](const std::string& unused, std::istream& theStream) {

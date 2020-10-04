@@ -294,6 +294,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssuesFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Army.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\LeaderFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Unit.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Mods\ModFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Politics\Party.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Politics\PartyFactory.cpp" />
