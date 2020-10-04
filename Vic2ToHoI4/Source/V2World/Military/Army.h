@@ -5,6 +5,7 @@
 
 #include "Parser.h"
 #include "Unit.h"
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -18,14 +19,14 @@ class Army: commonItems::parser // also Navy
   public:
 	class Factory;
 
-	std::string getName() const { return name; }
-	int getLocation() const { return location; }
+	[[nodiscard]] const auto& getName() const { return name; }
+	[[nodiscard]] const auto& getLocation() const { return location; }
 	[[nodiscard]] const auto& getUnits() const { return units; }
-	std::vector<Army> getTransportedArmies() const { return transportedArmies; }
+	[[nodiscard]] const auto& getTransportedArmies() const { return transportedArmies; }
 
   private:
-	std::string name = "";
-	int location = -1;
+	std::string name;
+	std::optional<int> location;
 	std::vector<Unit> units;
 	std::vector<Army> transportedArmies;
 };

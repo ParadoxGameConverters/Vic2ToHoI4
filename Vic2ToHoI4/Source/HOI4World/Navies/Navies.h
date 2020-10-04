@@ -47,6 +47,13 @@ class Navies
 	[[nodiscard]] const auto& getMtgNavies() const { return mtgNavies; }
 
   private:
+	std::tuple<int, int> getLocationAndBase(std::optional<int> vic2Location,
+		 int backupNavalLocation,
+		 const mappers::ProvinceMapper& provinceMapper,
+		 const ProvinceDefinitions& provinceDefinitions,
+		 const std::map<int, int>& provinceToStateIDMap,
+		 std::map<int, State> states);
+
 	std::vector<LegacyNavy> legacyNavies;
 	std::vector<MtgNavy> mtgNavies;
 };

@@ -31,7 +31,7 @@ std::unique_ptr<Vic2::Army> Vic2::Army::Factory::getArmy(const std::string& type
 {
 	army = std::make_unique<Army>();
 	parseStream(theStream);
-	if (army->location == -1)
+	if (army->location == std::nullopt)
 	{
 		Log(LogLevel::Warning) << "Army or Navy " << army->name << " has no location";
 	}

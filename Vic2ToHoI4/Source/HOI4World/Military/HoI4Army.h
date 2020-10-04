@@ -51,6 +51,8 @@ class Army
 	[[nodiscard]] const auto& getLeftoverEquipment() const { return leftoverEquipment; }
 
   private:
+	static std::optional<int> getLocation(std::optional<int> vic2Location, const mappers::ProvinceMapper& provinceMapper);
+	
 	void convertArmyDivisions(const militaryMappings& theMilitaryMappings,
 		 std::map<std::string, std::vector<SizedRegiment>>& BattalionsAndCompanies,
 		 int location);
