@@ -18,16 +18,16 @@ Vic2::Army::Factory::Factory()
 	registerKeyword("ship", [this](const std::string& unused, std::istream& theStream) {
 		army->units.push_back(*unitFactory.getUnit(theStream));
 	});
-	registerKeyword("army", [this](const std::string& type, std::istream& theStream) {
+	registerKeyword("army", [this](const std::string& unused, std::istream& theStream) {
 		auto tempArmy = std::move(army);
-		tempArmy->transportedArmies.push_back(*getArmy(type, theStream));
+		tempArmy->transportedArmies.push_back(*getArmy(theStream));
 		army = std::move(tempArmy);
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
 
-std::unique_ptr<Vic2::Army> Vic2::Army::Factory::getArmy(const std::string& type, std::istream& theStream)
+std::unique_ptr<Vic2::Army> Vic2::Army::Factory::getArmy(std::istream& theStream)
 {
 	army = std::make_unique<Army>();
 	parseStream(theStream);

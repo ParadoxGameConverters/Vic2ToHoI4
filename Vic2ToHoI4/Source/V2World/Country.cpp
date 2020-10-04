@@ -144,11 +144,11 @@ Vic2::Country::Country(const std::string& theTag,
 	registerRegex("[A-Z][A-Z0-9]{2}", [this, &relationsFactory](const std::string& countryTag, std::istream& theStream) {
 		relations.insert(std::make_pair(countryTag, *relationsFactory.getRelations(theStream)));
 	});
-	registerKeyword("army", [this, &armyFactory](const std::string& type, std::istream& theStream) {
-		armies.push_back(*armyFactory.getArmy(type, theStream));
+	registerKeyword("army", [this, &armyFactory](const std::string& unused, std::istream& theStream) {
+		armies.push_back(*armyFactory.getArmy(theStream));
 	});
-	registerKeyword("navy", [this, &armyFactory](const std::string& type, std::istream& theStream) {
-		auto navy = armyFactory.getArmy(type, theStream);
+	registerKeyword("navy", [this, &armyFactory](const std::string& unused, std::istream& theStream) {
+		auto navy = armyFactory.getArmy(theStream);
 		for (auto& transportedArmy: navy->getTransportedArmies())
 		{
 			armies.push_back(transportedArmy);
