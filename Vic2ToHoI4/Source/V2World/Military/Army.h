@@ -5,7 +5,6 @@
 
 #include "Parser.h"
 #include "Unit.h"
-#include "UnitFactory.h"
 #include <string>
 #include <vector>
 
@@ -17,7 +16,7 @@ namespace Vic2
 class Army: commonItems::parser // also Navy
 {
   public:
-	explicit Army(const std::string& type, std::istream& theStream, Unit::Factory& unitFactory);
+	class Factory;
 
 	std::string getName() const { return name; }
 	int getLocation() const { return location; }

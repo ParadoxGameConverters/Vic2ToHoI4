@@ -379,7 +379,7 @@
     <ClCompile Include="Source\V2World\Diplomacy\DiplomacyFactory.cpp" />
     <ClCompile Include="Source\V2World\Diplomacy\RelationsFactory.cpp" />
     <ClCompile Include="Source\V2World\Issues\IssuesFactory.cpp" />
-    <ClCompile Include="Source\V2World\Military\Army.cpp" />
+    <ClCompile Include="Source\V2World\Military\ArmyFactory.cpp" />
     <ClCompile Include="Source\V2World\Military\LeaderFactory.cpp" />
     <ClCompile Include="Source\V2World\Military\UnitFactory.cpp" />
     <ClCompile Include="Source\V2World\Mods\ModFactory.cpp" />
@@ -698,6 +698,7 @@
     <ClInclude Include="Source\V2World\Issues\IssuesFactory.h" />
     <ClInclude Include="Source\V2World\Issues\IssueCategoryHelper.h" />
     <ClInclude Include="Source\V2World\Military\Army.h" />
+    <ClInclude Include="Source\V2World\Military\ArmyFactory.h" />
     <ClInclude Include="Source\V2World\Military\Leader.h" />
     <ClInclude Include="Source\V2World\Military\LeaderFactory.h" />
     <ClInclude Include="Source\V2World\Military\Unit.h" />

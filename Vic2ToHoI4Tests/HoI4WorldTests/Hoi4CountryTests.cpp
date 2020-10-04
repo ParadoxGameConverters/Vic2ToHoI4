@@ -130,7 +130,7 @@
 //
 //TEST_F(HoI4World_HoI4CountryTests, filenamesConvertFrom1252ToUtf8)
 //{
-//	EXPECT_CALL(sourceCountry, getName("english")).WillOnce(testing::Return("1252Ç"));
+//	EXPECT_CALL(sourceCountry, getName("english")).WillOnce(testing::Return("1252\xC7"));
 //
 //	const HoI4::Country theCountry("TAG",
 //		 &sourceCountry,

@@ -1048,13 +1048,13 @@
     <ClCompile Include="Source\V2World\Politics\PartyFactory.cpp">
       <Filter>Vic2World\Politics</Filter>
     </ClCompile>
-    <ClCompile Include="Source\V2World\Military\Army.cpp">
-      <Filter>Vic2World\Military</Filter>
-    </ClCompile>
     <ClCompile Include="Source\V2World\Military\LeaderFactory.cpp">
       <Filter>Vic2World\Military</Filter>
     </ClCompile>
     <ClCompile Include="Source\V2World\Military\UnitFactory.cpp">
+      <Filter>Vic2World\Military</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Military\ArmyFactory.cpp">
       <Filter>Vic2World\Military</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2017,6 +2017,9 @@
       <Filter>Vic2World\Military</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Military\UnitFactory.h">
+      <Filter>Vic2World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\ArmyFactory.h">
       <Filter>Vic2World\Military</Filter>
     </ClInclude>
   </ItemGroup>

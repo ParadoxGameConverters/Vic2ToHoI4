@@ -2,7 +2,7 @@
 #include "HOI4World/Navies/Navies.h"
 #include "HoI4World/ProvinceDefinitions.h"
 #include "OutHoi4/Navies/OutNavies.h"
-#include "V2World/Military/UnitFactory.h"
+#include "V2World/Military/ArmyFactory.h"
 #include "gtest/gtest.h"
 
 
@@ -92,8 +92,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToLegacy)
 	armyStream << "\t}\n";
 	armyStream << "\tat_sea = 0\n";
 	armyStream << "}";
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream unitMappingsStream;
@@ -176,8 +176,8 @@ TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableLegacyShipType)
 	armyStream << "\t}\n";
 	armyStream << "\tat_sea = 0\n";
 	armyStream << "}";
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream legacyUnitMappingStream;
@@ -233,8 +233,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
 	armyStream << "\tsupplies = 1.000\n";
 	armyStream << "\tat_sea = 0\n";
 	armyStream << "}";
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream unitMappingsStream;
@@ -296,8 +296,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
 	armyStream << "\t}\n";
 	armyStream << "\tat_sea = 0\n";
 	armyStream << "}";
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream unitMappingsStream;
@@ -359,8 +359,8 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyNavyNamesConvert)
 	armyStream << "\t}\n";
 	armyStream << "\tat_sea = 0\n";
 	armyStream << "}";
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream unitMappingsStream;
@@ -429,8 +429,8 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHave1936DestroyerInProduction)
 {
 	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream unitMappingsStream;
@@ -485,8 +485,8 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHaveEarlyDestroyerInProduction)
 {
 	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream unitMappingsStream;
@@ -542,8 +542,8 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHave1936BattleshipInProduction)
 {
 	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream unitMappingsStream;
@@ -598,8 +598,8 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHaveEarlyBattleshipInProduction)
 {
 	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream unitMappingsStream;
@@ -669,8 +669,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToMtg)
 	armyStream << "\t}\n";
 	armyStream << "\tat_sea = 0\n";
 	armyStream << "}";
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -744,8 +744,8 @@ TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableMtgShipType)
 	armyStream << "\t}\n";
 	armyStream << "\tat_sea = 0\n";
 	armyStream << "}";
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -826,8 +826,8 @@ TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesGetExperience)
 	armyStream << "\t}\n";
 	armyStream << "\tat_sea = 0\n";
 	armyStream << "}";
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -893,8 +893,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToMtg)
 	armyStream << "\tsupplies = 1.000\n";
 	armyStream << "\tat_sea = 0\n";
 	armyStream << "}";
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -958,8 +958,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToMtgNavy)
 	armyStream << "\t}\n";
 	armyStream << "\tat_sea = 0\n";
 	armyStream << "}";
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -1023,8 +1023,8 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgNavyNamesConvert)
 	armyStream << "\t}\n";
 	armyStream << "\tat_sea = 0\n";
 	armyStream << "}";
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -1084,8 +1084,8 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgCanHave1936DestroyerInProduction)
 {
 	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -1138,8 +1138,8 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgCanHaveEarlyDestroyerInProduction)
 {
 	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -1193,8 +1193,8 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgCanHave1936BattleshipInProduction)
 {
 	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;
@@ -1247,8 +1247,8 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgCanHaveEarlyBattleshipInProduction)
 {
 	std::vector<Vic2::Army> sourceArmies;
 	std::stringstream armyStream;
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army navy("navy", armyStream, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto navy = *armyFactory.getArmy("navy", armyStream);
 	sourceArmies.push_back(navy);
 
 	std::stringstream input;

@@ -11,7 +11,7 @@
 #include "Issues/Issues.h"
 #include "Issues/IssuesFactory.h"
 #include "Log.h"
-#include "Military/UnitFactory.h"
+#include "Military/ArmyFactory.h"
 #include "ParserHelpers.h"
 #include "Politics/Party.h"
 #include "Politics/PartyFactory.h"
@@ -43,7 +43,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	War::Factory warFactory;
 	Relations::Factory relationsFactory;
 	Leader::Factory leaderFactory;
-	Unit::Factory unitFactory;
+	Army::Factory armyFactory;
 
 	registerKeyword("date", [](const std::string& unused, std::istream& theStream) {
 		const date theDate{commonItems::singleString{theStream}.getString()};
@@ -71,7 +71,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	std::vector<std::string> tagsInOrder;
 	tagsInOrder.push_back(""); // REB (first country is index 1
 	registerRegex("[A-Z][A-Z0-9]{2}",
-		 [&tagsInOrder, &theInventions, &stateFactory, &relationsFactory, &leaderFactory, &unitFactory, this](
+		 [&tagsInOrder, &theInventions, &stateFactory, &relationsFactory, &leaderFactory, &armyFactory, this](
 			  const std::string& countryTag,
 			  std::istream& theStream) {
 			 countries[countryTag] = new Country(countryTag,
@@ -82,7 +82,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 				  stateFactory,
 				  relationsFactory,
 				  leaderFactory,
-				  unitFactory);
+				  armyFactory);
 			 tagsInOrder.push_back(countryTag);
 		 });
 	registerKeyword("diplomacy", [this](const std::string& unused, std::istream& theStream) {

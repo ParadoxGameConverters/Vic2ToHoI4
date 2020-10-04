@@ -4,7 +4,7 @@
 #include "HOI4World/States/HoI4States.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "V2World/Military/Army.h"
-#include "V2World/Military/UnitFactory.h"
+#include "V2World/Military/ArmyFactory.h"
 #include "gtest/gtest.h"
 
 
@@ -114,8 +114,8 @@ TEST(HoI4World_Military_HoI4ArmyTests, LeftoverRegimentsBecomeEquipment)
 		 "\t\t\ttype=plane\n"
 		 "\t\t}\n"
 		 "\t}");
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army Vic2Army("army", armyInput, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto Vic2Army = *armyFactory.getArmy("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
@@ -209,8 +209,8 @@ TEST(HoI4World_Military_HoI4ArmyTests, SufficientDivisionsConvert)
 		 "\t\t\ttype=infantry\n"
 		 "\t\t}\n"
 		 "\t}");
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army Vic2Army("army", armyInput, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto Vic2Army = *armyFactory.getArmy("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
@@ -288,8 +288,8 @@ TEST(HoI4World_Military_HoI4ArmyTests, ExperienceConverts)
 		 "\t\t\ttype=infantry\n"
 		 "\t\t}\n"
 		 "\t}");
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army Vic2Army("army", armyInput, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto Vic2Army = *armyFactory.getArmy("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
@@ -368,8 +368,8 @@ TEST(HoI4World_Military_HoI4ArmyTests, StrengthConverts)
 		 "\t\t\tstrength=1.500\n"
 		 "\t\t}\n"
 		 "\t}");
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army Vic2Army("army", armyInput, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto Vic2Army = *armyFactory.getArmy("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
@@ -447,8 +447,8 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 		 "\t\t\ttype=infantry\n"
 		 "\t\t}\n"
 		 "\t}");
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army Vic2Army("army", armyInput, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto Vic2Army = *armyFactory.getArmy("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
@@ -530,8 +530,8 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 		 "\t\t\ttype=artillery\n"
 		 "\t\t}\n"
 		 "\t}");
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army Vic2Army("army", armyInput, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto Vic2Army = *armyFactory.getArmy("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	theArmy.addSourceArmies(Vic2Armies);
 
@@ -610,8 +610,8 @@ TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 		 "\t\t\ttype=infantry\n"
 		 "\t\t}\n"
 		 "\t}");
-	Vic2::Unit::Factory unitFactory;
-	Vic2::Army Vic2Army("army", armyInput, unitFactory);
+	Vic2::Army::Factory armyFactory;
+	auto Vic2Army = *armyFactory.getArmy("army", armyInput);
 	Vic2Armies.push_back(Vic2Army);
 	std::istringstream armyInput2(
 		 "=\n"
@@ -625,7 +625,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 		 "\t\t\ttype=infantry\n"
 		 "\t\t}\n"
 		 "\t}");
-	Vic2::Army Vic2Army2("army", armyInput2, unitFactory);
+	auto Vic2Army2 = *armyFactory.getArmy("army", armyInput2);
 	Vic2Armies.push_back(Vic2Army2);
 	theArmy.addSourceArmies(Vic2Armies);
 
