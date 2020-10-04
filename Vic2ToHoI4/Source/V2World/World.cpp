@@ -41,6 +41,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	State::Factory stateFactory;
 	War::Factory warFactory;
 	Relations::Factory relationsFactory;
+	Leader::Factory leaderFactory;
 
 	registerKeyword("date", [](const std::string& unused, std::istream& theStream) {
 		const date theDate{commonItems::singleString{theStream}.getString()};
@@ -68,7 +69,8 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	std::vector<std::string> tagsInOrder;
 	tagsInOrder.push_back(""); // REB (first country is index 1
 	registerRegex("[A-Z][A-Z0-9]{2}",
-		 [&tagsInOrder, &theInventions, &stateFactory, &relationsFactory, this](const std::string& countryTag,
+		 [&tagsInOrder, &theInventions, &stateFactory, &relationsFactory, &leaderFactory, this](
+			  const std::string& countryTag,
 			  std::istream& theStream) {
 			 countries[countryTag] = new Country(countryTag,
 				  theStream,
@@ -76,7 +78,8 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 				  *theCultureGroups,
 				  *theStateDefinitions,
 				  stateFactory,
-				  relationsFactory);
+				  relationsFactory,
+				  leaderFactory);
 			 tagsInOrder.push_back(countryTag);
 		 });
 	registerKeyword("diplomacy", [this](const std::string& unused, std::istream& theStream) {

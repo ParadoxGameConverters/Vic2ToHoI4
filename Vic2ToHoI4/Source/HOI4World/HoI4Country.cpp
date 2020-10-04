@@ -240,14 +240,14 @@ void HoI4::Country::convertLeaders(const graphicsMapper& theGraphics)
 	auto srcLeaders = sourceCountry.getLeaders();
 	for (auto srcLeader: srcLeaders)
 	{
-		if (srcLeader->getType() == "land")
+		if (srcLeader.getType() == "land")
 		{
-			General newLeader(*srcLeader, theGraphics.getGeneralPortrait(graphicalCulture));
+			General newLeader(srcLeader, theGraphics.getGeneralPortrait(graphicalCulture));
 			generals.push_back(newLeader);
 		}
-		else if (srcLeader->getType() == "sea")
+		else if (srcLeader.getType() == "sea")
 		{
-			Admiral newLeader(*srcLeader, theGraphics.getGeneralPortrait(graphicalCulture));
+			Admiral newLeader(srcLeader, theGraphics.getGeneralPortrait(graphicalCulture));
 			admirals.push_back(newLeader);
 		}
 	}

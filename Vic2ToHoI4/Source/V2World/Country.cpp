@@ -21,7 +21,8 @@ Vic2::Country::Country(const std::string& theTag,
 	 const CultureGroups& theCultureGroups,
 	 const StateDefinitions& theStateDefinitions,
 	 State::Factory& stateFactory,
-	 Relations::Factory& relationsFactory):
+	 Relations::Factory& relationsFactory,
+	 Leader::Factory& leaderFactory):
 	 tag(theTag)
 {
 	registerKeyword("capital", [this](const std::string& unused, std::istream& theStream) {
@@ -155,9 +156,8 @@ Vic2::Country::Country(const std::string& theTag,
 			armies.push_back(transportedArmy);
 		}
 	});
-	registerKeyword("leader", [this](const std::string& unused, std::istream& theStream) {
-		Leader* leader = new Leader(theStream);
-		leaders.push_back(leader);
+	registerKeyword("leader", [this, &leaderFactory](const std::string& unused, std::istream& theStream) {
+		leaders.push_back(*leaderFactory.getLeader(theStream));
 	});
 	registerKeyword("state",
 		 [this, &theStateDefinitions, &stateFactory](const std::string& unused, std::istream& theStream) {
