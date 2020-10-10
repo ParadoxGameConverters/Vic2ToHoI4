@@ -31,7 +31,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, EmptyArmyStaysEmpty)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings("default", mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, theStates, mappers::ProvinceMapper{{}, {}});
+	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, HoI4::technologies{}, theStates, mappers::ProvinceMapper{{}, {}});
 
 	std::ostringstream output;
 	output << theArmy;
@@ -70,7 +70,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, InsufficientDivisionsBecomeNothing)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, theStates, mappers::ProvinceMapper{{}, {}});
+	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, HoI4::technologies{}, theStates, mappers::ProvinceMapper{{}, {}});
 
 	std::ostringstream output;
 	output << theArmy;
@@ -180,7 +180,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, LeftoverRegimentsBecomeEquipment)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, theStates, mappers::ProvinceMapper{{}, {}});
+	theArmy.convertArmies(theMilitaryMappings, 0, 1.0, HoI4::technologies{}, theStates, mappers::ProvinceMapper{{}, {}});
 
 	std::map<std::string, unsigned int> expectedEquipment{{"infantry_equipment_0", 660},
 		 {"artillery_equipment_1", 36},
@@ -239,7 +239,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, SufficientDivisionsConvert)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates, provinceMapper);
+	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, HoI4::technologies{}, theStates, provinceMapper);
 
 	std::ostringstream output;
 	output << theArmy;
@@ -318,7 +318,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, ExperienceConverts)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates, provinceMapper);
+	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, HoI4::technologies{}, theStates, provinceMapper);
 
 	std::ostringstream output;
 	output << theArmy;
@@ -398,7 +398,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, StrengthConverts)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates, provinceMapper);
+	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, HoI4::technologies{}, theStates, provinceMapper);
 
 	std::ostringstream output;
 	output << theArmy;
@@ -484,7 +484,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionsCanMapToLaterTemplate)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates, provinceMapper);
+	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, HoI4::technologies{}, theStates, provinceMapper);
 
 	std::ostringstream output;
 	output << theArmy;
@@ -575,7 +575,13 @@ TEST(HoI4World_Military_HoI4ArmyTests, SubstituteDivisionsAllowConversion)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, theStates, mappers::ProvinceMapper{{}, {}});
+	theArmy.convertArmies(theMilitaryMappings,
+		 11821,
+		 1.0,
+		 HoI4::technologies{},
+		 theStates,
+
+		 mappers::ProvinceMapper{{}, {}});
 
 	std::ostringstream output;
 	output << theArmy;
@@ -655,7 +661,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, UnconvertedDivisionsMergeAndConvert)
 	mappingsInput << "}";
 	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
 
-	theArmy.convertArmies(theMilitaryMappings, 1, 1.0, theStates, provinceMapper);
+	theArmy.convertArmies(theMilitaryMappings, 1, 1.0, HoI4::technologies{}, theStates, provinceMapper);
 
 	std::ostringstream output;
 	output << theArmy;

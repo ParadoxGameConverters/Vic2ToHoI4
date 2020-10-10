@@ -37,6 +37,7 @@ DivisionType createDivision(const std::map<std::string, int>& templateRequiremen
 void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings,
 	 const int backupLocation,
 	 const double forceMultiplier,
+	 const technologies& countryTechnologies,
 	 const States& theStates,
 	 const mappers::ProvinceMapper& provinceMapper)
 {
@@ -56,11 +57,11 @@ void HoI4::Army::convertArmies(const militaryMappings& theMilitaryMappings,
 		std::map<std::string, std::vector<SizedRegiment>> localBattalionsAndCompanies;
 		addAvailableBattalionsAndCompanies(localBattalionsAndCompanies, army, theMilitaryMappings, forceMultiplier);
 
-		convertArmyDivisions(theMilitaryMappings, localBattalionsAndCompanies, *location);
+		convertArmyDivisions(theMilitaryMappings, localBattalionsAndCompanies, countryTechnologies, *location);
 		addRemainingBattalionsAndCompanies(remainingBattalionsAndCompanies, localBattalionsAndCompanies);
 	}
 
-	convertArmyDivisions(theMilitaryMappings, remainingBattalionsAndCompanies, backupLocation);
+	convertArmyDivisions(theMilitaryMappings, remainingBattalionsAndCompanies, countryTechnologies, backupLocation);
 
 	collectLeftoverEquipment(remainingBattalionsAndCompanies);
 }
@@ -166,10 +167,16 @@ void HoI4::addRemainingBattalionsAndCompanies(
 
 void HoI4::Army::convertArmyDivisions(const militaryMappings& theMilitaryMappings,
 	 std::map<std::string, std::vector<SizedRegiment>>& BattalionsAndCompanies,
+	 const technologies& countryTechnologies,
 	 const int location)
 {
 	for (const auto& divisionTemplate: theMilitaryMappings.getDivisionTemplates())
 	{
+		if (missingRequiredTechnologies(divisionTemplate, countryTechnologies))
+		{
+			continue;
+		}
+
 		auto templateRequirements = determineTemplateRequirements(divisionTemplate);
 
 		auto divisionCounter = 1;
@@ -184,6 +191,21 @@ void HoI4::Army::convertArmyDivisions(const militaryMappings& theMilitaryMapping
 			divisionCounter++;
 		}
 	}
+}
+
+
+bool HoI4::Army::missingRequiredTechnologies(const DivisionTemplateType& divisionTemplate,
+	 const technologies& countryTechnologies)
+{
+	for (const auto& requiredTechnology: divisionTemplate.getRequiredTechnologies())
+	{
+		if (!countryTechnologies.hasTechnology(requiredTechnology))
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 
