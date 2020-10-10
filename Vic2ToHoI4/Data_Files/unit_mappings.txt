@@ -590,6 +590,8 @@ default = {
 				artillery = { x = 0 y = 0 }
 			}
 			priority = 2
+			required_technology = gwtank
+			required_technology = motorised_infantry
 		}
 
 		division_template = {
@@ -611,6 +613,8 @@ default = {
 				artillery = { x = 0 y = 0 }
 			}
 			priority = 2
+			required_technology = gwtank
+			required_technology = motorised_infantry
 		}
 
 		division_template = {
@@ -632,6 +636,7 @@ default = {
 				artillery = { x = 0 y = 0 }
 			}
 			priority = 2
+			required_technology = motorised_infantry
 		}
 
 		division_template = {
@@ -1274,6 +1279,8 @@ default = {
 				artillery = { x = 0 y = 0 }
 			}
 			priority = 2
+			required_technology = gwtank
+			required_technology = motorised_infantry
 		}
 
 		division_template = {
@@ -1295,6 +1302,8 @@ default = {
 				artillery = { x = 0 y = 0 }
 			}
 			priority = 2
+			required_technology = gwtank
+			required_technology = motorised_infantry
 		}
 
 		division_template = {
@@ -1316,6 +1325,7 @@ default = {
 				artillery = { x = 0 y = 0 }
 			}
 			priority = 2
+			required_technology = motorised_infantry
 		}
 
 		division_template = {
