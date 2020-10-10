@@ -18,6 +18,9 @@ HoI4::DivisionTemplateType::DivisionTemplateType(std::istream& theStream)
 		const RegimentTypeGroup supportRegimentsGroup(theStream);
 		supportRegiments = supportRegimentsGroup.takeRegimentTypes();
 	});
+	registerKeyword("required_technology", [this](const std::string& unused, std::istream& theStream) {
+		requiredTechnologies.push_back(commonItems::singleString{theStream}.getString());
+	});
 	registerKeyword("priority", commonItems::ignoreItem);
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
