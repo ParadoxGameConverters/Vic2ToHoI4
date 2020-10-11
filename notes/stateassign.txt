@@ -1,0 +1,45 @@
+### STATE CATEGORY ASSIGNER - PART TWO ###
+
+# This file is used to link the categories of       #
+# /configurables/statecats.txt to the function they #
+# are supposed to have. Syntax is easy,             #
+
+# link = { category = [ category ] adjective = [ ending ] #
+# loctype = [ loctype ] }                                 #
+
+# Category: the one of /statecats.txt. If a category#
+# is missing from the file, it will use the default #
+# settings (adjective will be TAG_ADJ, no loctype   #
+# defined) and a warning will be output by the      #
+# converter log.
+
+# Ending: the ending added to the correct adjective #
+#   as defined in /languageReplacements.txt. Since  #
+# there is more than one language, the "adjective ="#
+# is repeated as needed. If a language lacks this   #
+# then the assigned adjective will be the default   #
+# one ("TAG"_ADJ).                                  #
+
+# Loctype: a string yet to be created, but that will#
+# have effects on /common/scripted_triggers/        #
+# /state_scripted_triggers_FR_loc.txt               #
+
+link = { category = msav adjective = _MS_FR adjective = _MS_ES adjective = _MS_PT adjective = _MS_IT loctype = frloc_state_sg_masc_vow_art_l_del_x_04 }
+link = { category = msac adjective = _MS_FR adjective = _MS_ES adjective = _MS_PT adjective = _MS_IT loctype = frloc_state_sg_masc_cons_art_le_du_x_01 }
+link = { category = msnv adjective = _MS_FR adjective = _MS_ES adjective = _MS_PT adjective = _MS_IT loctype = frloc_state_sg_masc_vow_noart_x_d_x_05 }
+link = { category = msnc adjective = _MS_FR adjective = _MS_ES adjective = _MS_PT adjective = _MS_IT loctype = frloc_state_sg_masc_cons_noart_x_de_x_02 }
+
+link = { category = mpav adjective = _MP_FR adjective = _MP_ES adjective = _MP_PT adjective = _MP_IT loctype = frloc_state_pl_masc_vow_art_les_des_s_13 }
+link = { category = mpac adjective = _MP_FR adjective = _MP_ES adjective = _MP_PT adjective = _MP_IT loctype = frloc_state_pl_masc_cons_art_les_des_s_11 }
+link = { category = mpnv adjective = _MP_FR adjective = _MP_ES adjective = _MP_PT adjective = _MP_IT loctype = frloc_state_pl_masc_vow_noart_x_de_s_14 }
+link = { category = mpnc adjective = _MP_FR adjective = _MP_ES adjective = _MP_PT adjective = _MP_IT loctype = frloc_state_pl_masc_cons_noart_x_de_s_12 }
+
+link = { category = fsav adjective = _FS_FR adjective = _FS_ES adjective = _FS_PT adjective = _FS_IT loctype = frloc_state_sg_fem_vow_art_l_del_e_08 }
+link = { category = fsac adjective = _FS_FR adjective = _FS_ES adjective = _FS_PT adjective = _FS_IT loctype = frloc_state_sg_fem_cons_art_la_dela_e_06 }
+link = { category = fsnv adjective = _FS_FR adjective = _FS_ES adjective = _FS_PT adjective = _FS_IT loctype = frloc_state_sg_fem_vow_noart_x_d_e_10 }
+link = { category = fsnc adjective = _FS_FR adjective = _FS_ES adjective = _FS_PT adjective = _FS_IT loctype = frloc_state_sg_fem_cons_noart_x_de_e_07 }
+
+link = { category = fpav adjective = _FP_FR adjective = _FP_ES adjective = _FP_PT adjective = _FP_IT loctype = frloc_state_pl_fem_vow_art_x_des_es_17 }
+link = { category = fpac adjective = _FP_FR adjective = _FP_ES adjective = _FP_PT adjective = _FP_IT loctype = frloc_state_pl_fem_cons_art_les_des_es_15 }
+link = { category = fpnv adjective = _FP_FR adjective = _FP_ES adjective = _FP_PT adjective = _FP_IT loctype = frloc_state_pl_fem_vow_noart_x_de_es_18 }
+link = { category = fpnc adjective = _FP_FR adjective = _FP_ES adjective = _FP_PT adjective = _FP_IT loctype = frloc_state_pl_fem_cons_noart_x_de_es_16 }
