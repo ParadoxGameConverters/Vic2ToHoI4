@@ -2,6 +2,7 @@
 #include "Configuration.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
+#include <array>
 #include <fstream>
 
 
@@ -55,7 +56,7 @@ void Vic2::Localisations::Factory::ReadFromFile(const std::string& fileName)
 }
 
 
-const std::string languages[] = {"english",
+const std::array<std::string, 13> languages = {"english",
 	 "french",
 	 "german",
 	 "polish",
@@ -75,23 +76,10 @@ void Vic2::Localisations::Factory::processLine(const std::string& line)
 
 	for (const auto& language: languages)
 	{
-		auto result = getNextLocalisation(line, division);
-		std::string UTF8Result;
+		auto [rawLocalisation, newDivision] = extractNextLocalisation(line, division);
+		division = newDivision;
 
-		if (language == "english" || language == "french" || language == "german" || language == "spanish" ||
-			 language == "italian" || language == "dutch" || language == "braz_por" || language == "finnish")
-		{
-			UTF8Result = commonItems::convertWin1252ToUTF8(result);
-		}
-		if (language == "polish" || language == "swedish" || language == "czech" ||
-			 language == "hungarian") // Swedish = Hungarian again
-		{
-			UTF8Result = commonItems::convertWin1250ToUTF8(result);
-		}
-		if (language == "russian")
-		{
-			UTF8Result = commonItems::convertWin1251ToUTF8(result);
-		}
+		auto UTF8Result = convertToUtf8(rawLocalisation, language);
 
 		if (language == "english")
 		{
@@ -110,9 +98,29 @@ void Vic2::Localisations::Factory::processLine(const std::string& line)
 }
 
 
-std::string Vic2::Localisations::Factory::getNextLocalisation(const std::string& line, size_t& division)
+std::tuple<std::string, size_t> Vic2::Localisations::Factory::extractNextLocalisation(const std::string& line,
+	 size_t division)
 {
 	const auto frontDivision = division + 1;
 	division = line.find_first_of(';', frontDivision);
-	return line.substr(frontDivision, division - frontDivision);
+	return {line.substr(frontDivision, division - frontDivision), division};
+}
+
+
+std::string Vic2::Localisations::Factory::convertToUtf8(const std::string& rawLocalisation, const std::string& language)
+{
+	if (language == "english" || language == "french" || language == "german" || language == "spanish" ||
+		 language == "italian" || language == "dutch" || language == "braz_por" || language == "finnish")
+	{
+		return commonItems::convertWin1252ToUTF8(rawLocalisation);
+	}
+	else if (language == "polish" || language == "swedish" || language == "czech" ||
+				language == "hungarian") // Swedish = Hungarian again
+	{
+		return commonItems::convertWin1250ToUTF8(rawLocalisation);
+	}
+	else // if (language == "russian")
+	{
+		return commonItems::convertWin1251ToUTF8(rawLocalisation);
+	}
 }

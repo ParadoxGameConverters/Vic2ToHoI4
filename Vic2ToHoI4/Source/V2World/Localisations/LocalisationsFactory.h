@@ -20,7 +20,8 @@ class Localisations::Factory
 	void ReadFromAllFilesInFolder(const std::string& folderPath);
 	void ReadFromFile(const std::string& fileName);
 	void processLine(const std::string& line);
-	std::string getNextLocalisation(const std::string& line, size_t& division);
+	static std::tuple<std::string, size_t> extractNextLocalisation(const std::string& line, size_t division);
+	static std::string convertToUtf8(const std::string& rawLocalisation, const std::string& language);
 
 	KeyToLocalisationsMap localisations;
 	std::map<std::string, std::string> localisationToKeyMap;
