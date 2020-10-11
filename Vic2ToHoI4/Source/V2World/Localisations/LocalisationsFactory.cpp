@@ -56,30 +56,32 @@ void Vic2::Localisations::Factory::ReadFromFile(const std::string& fileName)
 }
 
 
-const std::array<std::string, 13> languages = {"english",
-	 "french",
-	 "german",
-	 "polish",
-	 "spanish",
-	 "italian",
-	 "swedish",
-	 "czech",
-	 "hungarian",
-	 "dutch",
-	 "braz_por",
-	 "russian",
-	 "finnish"};
+const std::array<std::pair<std::string, Vic2::Encoding>, 13> languages = {{
+	 {"english", Vic2::Encoding::Win1252},
+	 {"french", Vic2::Encoding::Win1252},
+	 {"german", Vic2::Encoding::Win1252},
+	 {"polish", Vic2::Encoding::Win1250},
+	 {"spanish", Vic2::Encoding::Win1252},
+	 {"italian", Vic2::Encoding::Win1252},
+	 {"swedish", Vic2::Encoding::Win1250},
+	 {"czech", Vic2::Encoding::Win1250},
+	 {"hungarian", Vic2::Encoding::Win1250},
+	 {"dutch", Vic2::Encoding::Win1252},
+	 {"braz_por", Vic2::Encoding::Win1252},
+	 {"russian", Vic2::Encoding::Win1251},
+	 {"finnish", Vic2::Encoding::Win1252},
+}};
 void Vic2::Localisations::Factory::processLine(const std::string& line)
 {
 	auto division = line.find_first_of(';');
 	const auto key = line.substr(0, division);
 
-	for (const auto& language: languages)
+	for (const auto& [language, encoding]: languages)
 	{
 		auto [rawLocalisation, newDivision] = extractNextLocalisation(line, division);
 		division = newDivision;
 
-		auto UTF8Result = convertToUtf8(rawLocalisation, language);
+		auto UTF8Result = convertToUtf8(rawLocalisation, encoding);
 
 		if (language == "english")
 		{
@@ -107,20 +109,18 @@ std::tuple<std::string, size_t> Vic2::Localisations::Factory::extractNextLocalis
 }
 
 
-std::string Vic2::Localisations::Factory::convertToUtf8(const std::string& rawLocalisation, const std::string& language)
+std::string Vic2::Localisations::Factory::convertToUtf8(const std::string& rawLocalisation, Encoding encoding)
 {
-	if (language == "english" || language == "french" || language == "german" || language == "spanish" ||
-		 language == "italian" || language == "dutch" || language == "braz_por" || language == "finnish")
-	{
-		return commonItems::convertWin1252ToUTF8(rawLocalisation);
-	}
-	else if (language == "polish" || language == "swedish" || language == "czech" ||
-				language == "hungarian") // Swedish = Hungarian again
+	if (encoding == Encoding::Win1250)
 	{
 		return commonItems::convertWin1250ToUTF8(rawLocalisation);
 	}
-	else // if (language == "russian")
+	else if (encoding == Encoding::Win1251)
 	{
 		return commonItems::convertWin1251ToUTF8(rawLocalisation);
+	}
+	else // if (encoding == Encoding::Win1252)
+	{
+		return commonItems::convertWin1252ToUTF8(rawLocalisation);
 	}
 }

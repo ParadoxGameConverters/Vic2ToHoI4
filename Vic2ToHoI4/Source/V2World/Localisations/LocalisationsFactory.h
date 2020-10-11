@@ -11,6 +11,14 @@
 namespace Vic2
 {
 
+enum class Encoding
+{
+	Win1250,
+	Win1251,
+	Win1252,
+};
+
+
 class Localisations::Factory
 {
   public:
@@ -21,7 +29,7 @@ class Localisations::Factory
 	void ReadFromFile(const std::string& fileName);
 	void processLine(const std::string& line);
 	static std::tuple<std::string, size_t> extractNextLocalisation(const std::string& line, size_t division);
-	static std::string convertToUtf8(const std::string& rawLocalisation, const std::string& language);
+	static std::string convertToUtf8(const std::string& rawLocalisation, Encoding encoding);
 
 	KeyToLocalisationsMap localisations;
 	std::map<std::string, std::string> localisationToKeyMap;
