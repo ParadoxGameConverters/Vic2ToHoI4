@@ -1,0 +1,623 @@
+### STATE CATEGORY ASSIGNER ###
+
+# This file is used to categorize states according to the #
+# following categories: gender, number, use of article,   #
+# first letter. All states need to be in a category,      #
+# otherwise the converter will warn you and put it in the #
+# first category listed in this file. The vanilla setting #
+# of this file is based on French.                        #
+
+# The syntax is easy, just have the category string,      #
+# followed by an equals sign and a couple of curly        #
+# brackets. List all the states of that category, one per #
+# line, between those curly brackets. The states are      #
+# listed with their ID code (Alaska is written as USA_1). #
+# Adding a comment telling what state is listed is not    #
+# compulsory, but nevertheless advised.                   #
+
+# Q: What if my state gets renamed by the converter       #
+#    because it's just a province?                        #
+# A: Until we define something better, the category it    #
+#    will fall into will be the "default" of this file.   #
+# Q: I have the same state ID in multiple categories.     #
+# A: The converter will assign it to the one that comes   #
+#    first in this file.                                  #
+
+msnc = { # [Ø] Tlemcen français
+	# Used as default #
+	ALD_1704 # Tlemcen
+	ALD_1708 # Constantine
+	ARG_2368 # Jujuy
+	ARG_2387 # Tucumán
+	BAD_586 # Baden
+	BRU_1394 # North Borneo
+	BRZ_2306 # São Paulo
+	BRZ_2447 # Rio de Janeiro
+	BUR_1339 # Kachin
+	CHI_1581 # Chongqing
+	CHL_2322 # Santiago
+	EGY_1753 # Matruh
+	ENG_1343 # Tenasserim
+	ENG_2016 # Kazembe
+	ENG_2039 # Lindi
+	ETH_1854 # Gonder-Tigray
+	FRA_1808 # Outer Hausaland
+	FRA_1927 # Hausaland
+	FRA_455 # Le Midi
+	FRA_77 # Saint Pierre and Miquelon
+	HAM_528 # Osthannover
+	HAN_534 # Hannover
+	HYD_1283 # Hyderabad
+	JAP_1088 # Hokkaido
+	JAP_1660 # Kyushu
+	JAP_1672 # Tohoku
+	KOR_1619 # Pyongyang
+	KOR_1627 # Sariwon
+	KOR_1635 # Busan
+	MOR_1683 # Taza
+	MOR_1686 # Fez
+	MYS_1314 # Mysore
+	NAG_1277 # Nagpur
+	NEJ_1156 # Hail
+	NET_1398 # Sumatra
+	NET_1413 # Java
+	NET_1423 # Borneo
+	PER_1112 # Tabriz
+	POR_2049 # Lourenço Marques
+	RUS_1009 # Bryansk
+	RUS_1020 # Kazan
+	RUS_1026 # Perm
+	RUS_1060 # Samara
+	RUS_1064 # Tobolsk
+	RUS_1185 # Semireche
+	RUS_1469 # Tomsk
+	RUS_707 # Brėst
+	RUS_718 # Minsk
+	RUS_943 # Smolensk
+	RUS_955 # Rovne
+	RUS_958 # Kiev
+	RUS_965 # Cherson
+	RUS_977 # Kursk
+	RUS_979 # Rostov
+	RUS_980 # Luhansk
+	RUS_981 # Arkhangelsk
+	RUS_998 # Tver
+	SIA_1355 # Chiang Mai
+	SIA_1358 # Nakhon Ratchasima
+	SIA_1392 # Bangkok
+	SPA_1455 # Luzón
+	SPA_1463 # Mindanao
+	SPA_477 # León-Castilla
+	SWE_308 # Nordnorge
+	SWE_309 # Vestlandet
+	TUR_855 # Cyprus
+	TUR_863 # Hüdavendigar
+	TUR_873 # Konya
+	TUR_881 # Kastamonu
+	TUR_885 # Kars
+	TUR_889 # Diyarbakir-Van
+	TUR_923 # Mosul
+	TUR_931 # Baghdad
+	USA_78 # Washington
+	VNZ_2278 # Bolivar
+}
+
+msac = { # Le Sahara Occidental français
+	ALD_1714 # West Sahara
+	ALD_1718 # Sahara
+	ANN_1371 # Tonkin
+	ARG_2377 # Chaco
+	ARG_2393 # Río Negro
+	AUS_612 # Tirol
+	AUS_654 # Western Siebenbürgen
+	AUS_657 # Eastern Siebenbürgen
+	AUS_734 # South Tirol
+	BEL_1977 # Bas-Congo
+	BEL_1984 # Kasai
+	BEL_1987 # Katanga
+	BEL_1990 # Congo Oriental
+	BOL_2314 # Potosi
+	BRZ_2408 # Pará
+	BRZ_2410 # Maranhão
+	BRZ_2416 # Mato Grosso
+	BRZ_2427 # Rio Grande do Norte
+	BRZ_2428 # Pernambuco
+	BRZ_2446 # Minas Gerais
+	BRZ_2462 # Paraná
+	BRZ_2467 # Rio Grande do Sul
+	BUK_1207 # Tajikistan
+	BUR_1330 # Pegu
+	CHI_1476 # Jiangsu
+	CHI_1487 # Fujian
+	CHI_1490 # Gansu
+	CHI_1494 # Shaozhou
+	CHI_1499 # Guangdong
+	CHI_1504 # Guangxi
+	CHI_1513 # Henan
+	CHI_1516 # Eastern Hubei
+	CHI_1523 # Western Hubei
+	CHI_1529 # Hunan
+	CHI_1550 # Jiangxi
+	CHI_1557 # Qinghai
+	CHI_1563 # Shandong
+	CHI_1576 # Shanxi
+	CHI_1578 # Sichuan
+	CHI_1600 # Xinjiang
+	CHI_1601 # Yunnan
+	CHI_1611 # Zhejiang
+	CHI_1614 # Southern Zhili
+	CHI_1618 # Northern Zhili
+	CHI_2062 # Ningxia
+	CLM_1723 # Panama
+	CLM_2247 # Cundinamarca
+	CLM_2259 # Cauca
+	CLM_2262 # Guaviare
+	DEN_367 # Jylland
+	DEN_372 # Sjælland
+	EGY_1746 # Sinai
+	EGY_1758 # Egyptian Desert
+	EGY_1827 # Sudan
+	EGY_1838 # Kordofan
+	EGY_1842 # Darfur
+	EGY_915 # Lebanon
+	ENG_1247 # Bihar
+	ENG_1251 # South Bengal
+	ENG_1252 # North Bengal
+	ENG_1264 # Rajputana
+	ENG_1291 # Gujarat
+	ENG_1304 # Madras
+	ENG_1317 # Travancore
+	ENG_1321 # Ceylon
+	ENG_1818 # Waddai
+	ENG_1825 # Chad
+	ENG_1868 # Somaliland
+	ENG_1956 # South Cameroon
+	ENG_1960 # North Cameroon
+	ENG_2024 # Kenya
+	ENG_2029 # Zanzibar
+	ENG_2034 # Tanganyika
+	ENG_2068 # Zambezi
+	ENG_2074 # Botswana
+	ENG_2078 # Hereroland
+	ENG_2083 # Namaqualand
+	ENG_2092 # Northern Cape
+	ENG_2096 # Eastern Cape
+	ENG_2125 # Indian Ocean Territory
+	ENG_2483 # Queensland
+	ENG_2505 # Northern Territory
+	ENG_260 # Munster
+	ENG_263 # Leinster-Connacht
+	ENG_273 # Wales
+	ENG_36 # Manitoba
+	ENG_43 # Nunavut
+	ENG_58 # Quebec
+	ENG_6 # Yukon Territory
+	ENG_68 # New Brunswick
+	FRA_1783 # Senegal
+	FRA_1798 # Eastern Mali
+	FRA_1801 # Western Mali
+	FRA_1813 # Niger
+	FRA_1816 # Bornu
+	FRA_1907 # Ghana
+	FRA_1914 # Togo
+	FRA_1919 # Dahomey
+	FRA_1930 # Benin
+	FRA_1931 # Niger Delta
+	FRA_1939 # East Hausaland
+	FRA_1972 # Gabon
+	FRA_1978 # Congo
+	FRA_442 # Poitou
+	FRA_445 # Limousin
+	FRA_451 # Rhone
+	GRE_826 # Peloponnese
+	HDJ_1151 # Hedjaz
+	HEK_568 # Hessen
+	HES_2560 # Hesse-Nassau
+	JAP_1640 # Chugoku-Shikoku
+	JAP_1649 # Kanto
+	JAP_1655 # Kansai
+	JAP_1675 # Chubu
+	KAL_1221 # Baluchistan
+	LUA_1356 # Laos
+	MAD_2117 # South Madagascar
+	MAD_2121 # North Madagascar
+	MEC_544 # Schleswig-Holstein
+	MEX_103 # New Mexico
+	MEX_2138 # Sonora
+	MEX_2142 # Chihuahua
+	MEX_2146 # Nuevo León
+	MEX_2151 # Durango
+	MEX_2161 # Jalisco
+	MEX_2162 # México
+	MEX_2183 # Yucatán
+	MEX_94 # Nevada-Utah
+	MON_2582 # Montenegro
+	MOR_1693 # Morocco
+	MOR_1696 # West Morocco
+	NEJ_1157 # Nejd
+	ORA_2103 # Vrystaat
+	PAN_1224 # Kashmir
+	PAN_1227 # Punjab
+	PAP_752 # Lazio
+	PER_1116 # Gilan-Mazandaran
+	PER_1122 # Luristan
+	PER_1135 # Fars-Kerman
+	PER_1138 # Khuzestan
+	PER_1141 # Laristan-Sistan
+	PER_1148 # Khorasan
+	POR_2060 # Moçambique
+	POR_518 # Douro
+	PRG_2343 # Bajo Paraguay
+	PRU_549 # Brandenburg
+	PRU_553 # Magdeburg
+	RUS_1074 # Kamchatka
+	RUS_676 # Budjak
+	SAR_720 # Piemonte
+	SIA_1366 # Cambodia
+	SIN_1288 # Sind
+	SWE_318 # Norrland
+	SWE_322 # Svealand
+	SWE_329 # Götaland
+	TEX_132 # Texas
+	TIB_1591 # Tibet
+	TRI_1739 # Libyan Desert
+	TRN_2108 # Transvaal
+	UCA_2186 # Guatemala
+	UCA_2191 # Honduras
+	UCA_2197 # Nicaragua
+	UCA_2201 # Costa Rica
+	USA_106 # Colorado
+	USA_111 # Wyoming
+	USA_116 # Montana
+	USA_118 # North Dakota
+	USA_121 # South Dakota
+	USA_124 # Nebraska
+	USA_126 # Kansas
+	USA_148 # Missouri
+	USA_158 # Minnesota
+	USA_162 # Wisconsin
+	USA_176 # Michigan
+	USA_185 # Kentucky
+	USA_188 # Tennessee
+	USA_194 # Mississippi
+	USA_219 # Maryland
+	USA_220 # District of Columbia
+	USA_231 # New Jersey
+	USA_243 # Massachusetts
+	WUR_589 # Württemberg
+	YEM_1173 # Yemen
+	ZUL_2113 # Natal-Zululand
+}
+
+msav = { # L'Afghanistan Occidental français
+	AFG_1214 # Western Afghanistan
+	AFG_1217 # Eastern Afghanistan
+	ANN_1374 # Annam
+	BEL_1992 # Equateur
+	CHI_1472 # Northern Anhui
+	CHI_1473 # Southern Anhui
+	ECU_2279 # Ecuador
+	EGY_1750 # Lower Egypt
+	EGY_1762 # Middle Egypt
+	EGY_1771 # Upper Egypt
+	ENG_1258 # Assam
+	ENG_1261 # Orissa
+	ENG_2019 # Uganda
+	ENG_254 # Ulster
+	ENG_46 # Ontario
+	FRA_1965 # Ubangi-Shari
+	MEX_100 # Arizona
+	NEP_1327 # Himalayas
+	PER_1121 # Irakajemi
+	POR_521 # Estremadura
+	POR_525 # Alentejo
+	PRG_2338 # Alto Paraguay
+	RUS_1065 # Ob
+	RUS_1102 # Azerbaijan
+	SPA_484 # Extremadura
+	URU_2344 # Uruguay
+	USA_1 # Alaska
+	USA_129 # Oklahoma
+	USA_144 # Arkansas
+	USA_151 # Iowa
+	USA_168 # Illinois
+	USA_170 # Indiana
+	USA_178 # Ohio
+	USA_196 # Alabama
+	USA_81 # Oregon
+	USA_91 # Idaho
+}
+
+msnv = { # [Ø] Abou-Dabi français
+	ABU_1162 # Abu Dhabi
+	ATJ_1405 # Aceh
+	AUS_619 # Österreich
+	AUS_647 # Alföld
+	BOL_2305 # Atacama
+	MOR_1688 # al-Rif
+	OMA_1166 # Oman
+	PER_1127 # Isfahan
+	RUS_1041 # Astrakhan
+	RUS_1048 # Ekaterinodar
+	RUS_1069 # West Yakutsk
+	RUS_1070 # Upper Yeniseysk
+	RUS_1071 # Yakutsk
+	RUS_1072 # Okhotsk
+	RUS_1075 # Irkutsk
+	RUS_1182 # Uralsk
+	RUS_1184 # Akmolinsk
+	RUS_2615 # Lower Yeniseysk
+	RUS_2618 # Upper Okhotsk
+	RUS_2668 # North Yakutsk
+	RUS_2685 # Ural
+	RUS_947 # Orsha
+	SWE_313 # Ostlandet
+	TUR_869 # Aydin
+}
+
+mpac = { # Les Territoires du Nord-Ouest français
+	ENG_9 # Northwest Territories
+}
+
+mpav = { # Les États Shan français
+	BUR_1334 # Shan States
+	FRA_1923 # Yoruba States
+}
+
+mpnc = { # [Ø] Hong Kong et Macau français
+	CHI_1496 # Hong Kong & Macao
+	CHL_2327 # Los Ríos
+	ENG_1305 # Circars
+}
+
+mpnv = { # [Ø] ... français
+	# Empty
+}
+
+fsac = { # La Cochinchine française
+	ANN_1383 # Cochin China
+	ARG_2363 # Santa Fe
+	ARG_2391 # Patagonia Septentrional
+	ARG_2398 # Patagonia Meridional
+	AST_2528 # Southern New Guinea
+	AUS_613 # Kärnten-Steiermark
+	AUS_623 # Transdanubia
+	AUS_625 # Bohemia
+	AUS_626 # Moravia
+	AUS_633 # Slovakia
+	AUS_662 # East Galicia
+	AUS_702 # West Galicia
+	AUS_726 # Lombardia
+	AUS_729 # Venetia
+	AUS_768 # Slovenia
+	AUS_771 # Croatia
+	AUS_777 # Slavonia
+	AUS_780 # Dalmatia
+	BAV_595 # Franken
+	BAV_599 # Bayern
+	BEL_394 # Wallonia
+	BOL_2317 # Santa Cruz
+	CHI_1082 # Outer Manchuria
+	CHI_1532 # Inner Mongolia
+	CHI_1553 # Manchuria
+	CHI_2608 # Mongolia
+	CHL_2332 # Araucania
+	EGY_1754 # Libya
+	EGY_903 # Syria
+	EGY_910 # Transjordan
+	EGY_921 # Palestine
+	ENG_13 # (British) Columbia
+	ENG_1887 # Liberia
+	ENG_1979 # Guayana
+	ENG_2014 # Zambia
+	ENG_2087 # Cape Colony
+	ENG_2468 # New South Wales
+	ENG_30 # Saskatchewan
+	ENG_74 # Newfoundland
+	FRA_1097 # New Caledonia
+	FRA_1775 # Mauritania
+	FRA_1780 # Inner Mauritania
+	FRA_1788 # Gambia
+	FRA_1879 # Guinea
+	FRA_1884 # Sierra Leone
+	FRA_1892 # Ivory Coast
+	FRA_1893 # Windward Coast
+	FRA_1901 # Volta
+	FRA_1937 # Nigeria
+	FRA_399 # Picardy
+	FRA_404 # Champagne
+	FRA_411 # Franche-Comté
+	FRA_418 # Normandy
+	FRA_420 # Brittany
+	FRA_428 # Burgundy
+	FRA_435 # Loire
+	FRA_438 # Region Centre
+	FRA_461 # Languedoc
+	FRA_467 # Provence
+	GER_2530 # Northern New Guinea
+	KOK_1190 # Kirghizia
+	MEX_85 # California
+	MOL_673 # Moldavia
+	NET_1451 # Western New Guinea
+	NET_375 # Holland
+	NET_381 # Gelderland
+	NET_385 # Friesland
+	PAP_741 # Romagna
+	POR_2053 # Zambezia
+	POR_2134 # Macaronesia
+	PRU_546 # Pomerania
+	PRU_572 # Rhineland
+	PRU_575 # Nordrhein
+	PRU_581 # Westphalia
+	PRU_682 # Silesia
+	PRU_690 # West Prussia
+	PRU_695 # East Prussia
+	PRU_701 # Posen
+	RUS_1037 # Tartaria
+	RUS_1052 # North Caucasia
+	RUS_1079 # Trans-Baikal
+	RUS_1090 # Georgia
+	RUS_1196 # Turkmenia
+	RUS_2589 # Nenetsia
+	RUS_2590 # Coastal Chukotka
+	RUS_2621 # Inner Chukotka
+	RUS_2653 # North Siberia
+	RUS_2694 # Middle Siberia
+	RUS_336 # Northern Finland
+	RUS_339 # Karelia
+	RUS_340 # Southern Finland
+	RUS_354 # Latvia
+	RUS_360 # Lithuania
+	RUS_706 # Mazowieckie
+	RUS_710 # Wielkopolskie
+	RUS_964 # Crimea
+	SAR_466 # Savoy
+	SAR_765 # Sardinia
+	SAX_558 # Saxony
+	SER_794 # Northern Serbia
+	SIC_753 # Apulia
+	SIC_754 # Campania
+	SIC_763 # Sicily
+	SPA_2517 # Micronesia
+	SPA_474 # Galicia
+	SPA_487 # Castilla la Nueva
+	SPA_492 # Vasconia-Aragón
+	SPA_498 # Catalonia
+	SWI_603 # East Switzerland
+	SWI_605 # West Switzerland
+	TUN_1726 # Tunisia
+	TUR_674 # Dobrudja
+	TUR_788 # Bosnia
+	TUR_803 # Southern Serbia
+	TUR_805 # East Macedonia
+	TUR_806 # North Macedonia
+	TUR_809 # Rumelia
+	TUR_810 # Bulgaria
+	TUR_819 # West Macedonia
+	TUR_832 # Thessaly
+	TUR_860 # Thrace
+	TUS_744 # Tuscany
+	USA_139 # Louisiana
+	USA_200 # Florida
+	USA_201 # Georgia
+	USA_211 # Virginia
+	USA_218 # West Virginia
+	USA_223 # Pennsylvania
+	USA_247 # New England
+	USA_2556 # North Carolina
+	WAL_665 # Wallachia
+}
+
+fsav = { # L'Hongrie Centrale française
+	AUS_641 # Central Hungary
+	AUS_736 # Istria
+	ENG_1275 # Central India
+	ENG_1843 # Equatoria
+	ENG_1848 # Eritrea
+	ENG_22 # Alberta
+	ENG_2491 # South Australia
+	ENG_2497 # Western Australia
+	ENG_2509 # North Island
+	ENG_2513 # South Island
+	ENG_277 # NW England
+	ENG_280 # NE England
+	ENG_296 # SW England
+	ENG_300 # SE England
+	FRA_412 # Alsace-Lorraine
+	FRA_425 # Île de France
+	FRA_448 # Auvergne
+	FRA_458 # Aquitaine
+	GRE_837 # Attica
+	KHI_1191 # Uzbekia
+	MOD_739 # Emilia
+	POR_1999 # North Angola
+	POR_2003 # South Angola
+	POR_2006 # East Angola
+	RUS_1098 # Armenia
+	RUS_349 # Estonia
+	RUS_994 # Ingria
+	SPA_512 # Andalucia
+	TUR_853 # Albania
+}
+
+fsnc = { # [Ø] La-Pampa française
+	ARG_2384 # La Pampa
+	BOL_2321 # La Paz
+	BRZ_2439 # Bahia
+	CHI_1086 # Sakhalin
+	CHI_1539 # Suzhou
+	CHI_2562 # Formosa
+	EGY_1834 # Dongola
+	ENG_1297 # Bombay
+	ENG_1384 # Malaya
+	ENG_2026 # Rift Valley
+	ENG_2476 # Victoria
+	FRA_1803 # Timbuktu
+	KOR_1624 # Seoul
+	MEX_2170 # Morelia
+	PEU_2289 # Pastaza
+	PEU_2291 # Cajamarca
+	PEU_2297 # Ica
+	PEU_2300 # Lima
+	RUS_1003 # Novgorod
+	RUS_1008 # Moscow
+	RUS_990 # Galich
+	SPA_503 # Valencia
+	SPA_513 # Granada
+	SPA_517 # Gibraltar
+	TRI_1743 # Tripoli
+	TUR_884 # Trabzon
+	TUR_935 # Basra
+	USA_232 # New York
+	VNZ_2234 # Zulia
+	VNZ_2265 # Miranda
+}
+
+fsnv = { # [Ø] Antioquía française
+	CLM_2251 # Antioquía
+	EGY_897 # Aleppo
+	ETH_1864 # Amhara
+	ETH_1867 # Oromia
+	FRA_1700 # Algiers
+	HAI_2213 # Hispaniola
+	PEU_2303 # Arequipa
+}
+
+fpac = { # Les Fidjis françaises
+	AST_2454 # Fiji
+	AST_2527 # Kiribati
+	BEL_387 # Flanders
+	BRZ_2401 # Amazonas
+	BRZ_2540 # Tonga
+	ENG_1236 # United Provinces
+	ENG_2224 # West Indies
+	ENG_266 # Highlands
+	ENG_271 # Lowlands
+	ENG_284 # Midlands
+	ENG_291 # Eastern Counties
+	NET_1449 # Moluccas
+	SPA_1459 # Visayas
+	SPA_2209 # Greater Antilles
+}
+
+fpav = { # Les Îles de la Sonde françaises
+	BAL_1438 # Sunda Islands
+	EGY_843 # Aegean Islands
+	ENG_203 # Caribbean Islands
+	ENG_2132 # South Atlantic Islands
+	ENG_2228 # Lesser Antilles
+	HAW_658 # Hawaiian Islands
+	JAP_1654 # Bonin Islands
+}
+
+fpnc = { # [Ø] Buenos Aires françaises
+	ARG_2355 # Buenos Aires
+	ARG_2357 # Corrientes
+	AST_2244 # Christmas & Cocos Islands
+	MEX_2173 # Zacatecas
+}
+
+fpnv = { # [Ø] Islande et Grœnland françaises
+	DEN_251 # Iceland & Greenland
+	TUR_876 # Ankara and Adana
+}
