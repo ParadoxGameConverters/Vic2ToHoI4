@@ -3,8 +3,8 @@
 
 
 
-#include "RegimentType.h"
 #include "Parser.h"
+#include "RegimentType.h"
 #include <ostream>
 #include <string>
 #include <vector>
@@ -13,7 +13,6 @@
 
 namespace HoI4
 {
-
 
 class DivisionTemplateType: commonItems::parser
 {
@@ -27,11 +26,13 @@ class DivisionTemplateType: commonItems::parser
 	[[nodiscard]] const auto& getName() const { return name; }
 	[[nodiscard]] const auto& getRegiments() const { return regiments; }
 	[[nodiscard]] const auto& getSupportRegiments() const { return supportRegiments; }
+	[[nodiscard]] const auto& getRequiredTechnologies() const { return requiredTechnologies; }
 
   private:
 	std::string name;
 	std::vector<RegimentType> regiments;
 	std::vector<RegimentType> supportRegiments;
+	std::vector<std::string> requiredTechnologies;
 };
 
 } // namespace HoI4
