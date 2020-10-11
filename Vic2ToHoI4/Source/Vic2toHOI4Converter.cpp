@@ -4,7 +4,7 @@
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "OSCompatibilityLayer.h"
 #include "OutHoi4/OutMod.h"
-#include "V2World/Vic2Localisations.h"
+#include "V2World/Localisations/Vic2Localisations.h"
 #include "V2World/World.h"
 #include <stdexcept>
 
@@ -44,7 +44,8 @@ void checkMods(const Configuration& theConfiguration)
 
 	for (const auto& expectedMod: theConfiguration.getVic2Mods())
 	{
-		Log(LogLevel::Info) << "\tExpecting a mod with name \"" << expectedMod.getName() << "\" and path " << expectedMod.getDirectory();
+		Log(LogLevel::Info) << "\tExpecting a mod with name \"" << expectedMod.getName() << "\" and path "
+								  << expectedMod.getDirectory();
 		if (!commonItems::DoesFolderExist(theConfiguration.getVic2Path() + "/mod/" + expectedMod.getDirectory()))
 		{
 			throw std::runtime_error("Could not find expected mod folder " + expectedMod.getDirectory());

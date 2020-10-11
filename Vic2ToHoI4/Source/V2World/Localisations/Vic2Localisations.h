@@ -25,7 +25,7 @@ using KeyToLocalisationsMap = std::unordered_map<std::string, LanguageToLocalisa
 class Localisations
 {
   public:
-	class Parser;
+	class Factory;
 
 	Localisations(KeyToLocalisationsMap localisations, std::map<std::string, std::string> localisationToKeyMap):
 		 localisations(std::move(localisations)), localisationToKeyMap(std::move(localisationToKeyMap))
@@ -38,21 +38,6 @@ class Localisations
 	void updateDomainCountry(const std::string& tag, const std::string& domainName);
 
   private:
-	KeyToLocalisationsMap localisations;
-	std::map<std::string, std::string> localisationToKeyMap;
-};
-
-
-class Localisations::Parser
-{
-  public:
-	std::unique_ptr<Localisations> importLocalisations(const Configuration& theConfiguration);
-
-  private:
-	void ReadFromAllFilesInFolder(const std::string& folderPath);
-	void ReadFromFile(const std::string& fileName);
-	void processLine(const std::string& line);
-
 	KeyToLocalisationsMap localisations;
 	std::map<std::string, std::string> localisationToKeyMap;
 };

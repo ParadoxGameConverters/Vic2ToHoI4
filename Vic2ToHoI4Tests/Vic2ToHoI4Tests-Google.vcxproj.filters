@@ -760,9 +760,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Vic2Localisations.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
@@ -1238,6 +1235,12 @@
     <ClCompile Include="Vic2WorldTests\Military\ArmyTests.cpp">
       <Filter>Vic2WorldTests\Military</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Localisations\Vic2Localisations.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Localisations\LocalisationsFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Localisations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1581,6 +1584,9 @@
     </Filter>
     <Filter Include="Vic2WorldTests\Military">
       <UniqueIdentifier>{628cfaff-66d9-4bb1-b4a8-d05fd2bf704b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Localisations">
+      <UniqueIdentifier>{9ba621aa-ac33-431b-a395-172596a2df28}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

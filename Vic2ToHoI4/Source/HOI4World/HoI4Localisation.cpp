@@ -2,9 +2,9 @@
 #include "../Configuration.h"
 #include "../Mappers/GovernmentMapper.h"
 #include "../V2World/Country.h"
+#include "../V2World/Localisations/Vic2Localisations.h"
 #include "../V2World/States/State.h"
 #include "../V2World/States/StateDefinitions.h"
-#include "../V2World/Vic2Localisations.h"
 #include "Localisations/AllReplacementRules.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
@@ -634,14 +634,14 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 			 vic2Localisations.getTextInLanguage(vic2State.getOwner() + "_ADJ", Vic2NameInLanguage.first);
 		if (possibleOwnerAdjective)
 		{
-			if ((Vic2NameInLanguage.first == "french") || (Vic2NameInLanguage.first == "spanish") || (Vic2NameInLanguage.first == "portugese") ||
-				 (Vic2NameInLanguage.first == "italian"))
+			if ((Vic2NameInLanguage.first == "french") || (Vic2NameInLanguage.first == "spanish") ||
+				 (Vic2NameInLanguage.first == "portugese") || (Vic2NameInLanguage.first == "italian"))
 			{
 				localisedName = Vic2NameInLanguage.second + " " + *possibleOwnerAdjective;
 			}
 			else
 			{
-				if (Vic2NameInLanguage.first == "german" )
+				if (Vic2NameInLanguage.first == "german")
 				{
 					localisedName = *possibleOwnerAdjective + "-" + Vic2NameInLanguage.second;
 				}
