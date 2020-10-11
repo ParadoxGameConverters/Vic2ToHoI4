@@ -3,6 +3,7 @@
 
 
 
+#include "Configuration.h"
 #include "Vic2Localisations.h"
 
 

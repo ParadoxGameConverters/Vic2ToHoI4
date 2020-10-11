@@ -1,53 +1,7 @@
 #include "Vic2Localisations.h"
 #include "Log.h"
+#include <regex>
 
-
-
-void Vic2::Localisations::updateDomainCountry(const std::string& tag, const std::string& domainName)
-{
-	LanguageToLocalisationMap regionLocalisations;
-	const auto domainKey = localisationToKeyMap.find(domainName);
-	if (domainKey != localisationToKeyMap.end())
-	{
-		const auto domainLocalisations = localisations.find(domainKey->second);
-		if (domainLocalisations != localisations.end())
-		{
-			for (const auto& regionInLanguage: domainLocalisations->second)
-			{
-				regionLocalisations.insert(regionInLanguage);
-			}
-		}
-	}
-
-	const auto KeyToLocalisationsMappings = localisations.find(tag);
-	if (KeyToLocalisationsMappings == localisations.end())
-	{
-		return;
-	}
-	auto nameInAllLanguages = KeyToLocalisationsMappings->second;
-
-	for (const auto& nameInLanguage: nameInAllLanguages)
-	{
-		auto replacementName = domainName;
-		auto replacementLocalisation = regionLocalisations.find(nameInLanguage.first);
-		if (replacementLocalisation != regionLocalisations.end())
-		{
-			replacementName = replacementLocalisation->second;
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Could not find regions localisation for " << domainName << " in "
-										  << nameInLanguage.first;
-		}
-		auto updatedName = nameInLanguage.second;
-		const auto regionPos = updatedName.find("$REGION$");
-		if (regionPos != std::string::npos)
-		{
-			updatedName.replace(regionPos, 8, replacementName);
-			KeyToLocalisationsMappings->second[nameInLanguage.first] = updatedName;
-		}
-	}
-}
 
 
 std::optional<std::string> Vic2::Localisations::getTextInLanguage(const std::string& key,
@@ -56,20 +10,20 @@ std::optional<std::string> Vic2::Localisations::getTextInLanguage(const std::str
 	const auto KeyToLocalisationsMapping = localisations.find(key);
 	if (KeyToLocalisationsMapping == localisations.end())
 	{
-		return {};
+		return std::nullopt;
 	}
 
 	const auto LanguageToLocalisationMapping = KeyToLocalisationsMapping->second.find(language);
 	if (LanguageToLocalisationMapping == KeyToLocalisationsMapping->second.end())
 	{
-		return {};
+		return std::nullopt;
 	}
 
 	return LanguageToLocalisationMapping->second;
 }
 
 
-std::map<std::string, std::string> Vic2::Localisations::getTextInEachLanguage(const std::string& key) const
+Vic2::LanguageToLocalisationMap Vic2::Localisations::getTextInEachLanguage(const std::string& key) const
 {
 	if (const auto KeyToLocalisationsMappings = localisations.find(key);
 		 KeyToLocalisationsMappings != localisations.end())
@@ -78,6 +32,57 @@ std::map<std::string, std::string> Vic2::Localisations::getTextInEachLanguage(co
 	}
 	else
 	{
-		return std::map<std::string, std::string>{};
+		return LanguageToLocalisationMap{};
+	}
+}
+
+
+void Vic2::Localisations::updateDomainCountry(const std::string& tag, const std::string& domainName)
+{
+	if (!localisations.count(tag))
+	{
+		return;
+	}
+
+	auto& nameInAllLanguages = localisations.at(tag);
+	const auto& regionLocalisations = lookupRegionLocalisations(domainName);
+
+	for (auto& [language, nameToUpdate]: nameInAllLanguages)
+	{
+		auto replacementName = determineReplacementName(domainName, regionLocalisations, language);
+		nameToUpdate = std::regex_replace(nameToUpdate, std::regex(R"(\$REGION\$)"), replacementName);
+	}
+}
+
+
+Vic2::LanguageToLocalisationMap Vic2::Localisations::lookupRegionLocalisations(const std::string& domainName)
+{
+	LanguageToLocalisationMap regionLocalisations;
+	if (const auto domainKey = localisationToKeyMap.find(domainName); domainKey != localisationToKeyMap.end())
+	{
+		auto regionsInLanguages = getTextInEachLanguage(domainKey->second);
+		for (const auto& regionInLanguage: regionsInLanguages)
+		{
+			regionLocalisations.insert(regionInLanguage);
+		}
+	}
+
+	return regionLocalisations;
+}
+
+
+std::string Vic2::Localisations::determineReplacementName(const std::string& domainName,
+	 const LanguageToLocalisationMap& regionLocalisations,
+	 const std::string& language)
+{
+	if (const auto& replacementLocalisation = regionLocalisations.find(language);
+		 replacementLocalisation != regionLocalisations.end())
+	{
+		return replacementLocalisation->second;
+	}
+	else
+	{
+		Log(LogLevel::Warning) << "Could not find regions localisation for " << domainName << " in " << language;
+		return domainName;
 	}
 }
