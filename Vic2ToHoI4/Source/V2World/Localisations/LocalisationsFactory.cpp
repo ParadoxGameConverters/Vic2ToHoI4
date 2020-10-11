@@ -56,7 +56,7 @@ void Vic2::Localisations::Factory::ReadFromFile(const std::string& fileName)
 }
 
 
-const std::array<std::pair<std::string, Vic2::Encoding>, 13> languages = {{
+constexpr std::array<std::pair<const char*, Vic2::Encoding>, 13> languages = {{
 	 {"english", Vic2::Encoding::Win1252},
 	 {"french", Vic2::Encoding::Win1252},
 	 {"german", Vic2::Encoding::Win1252},
@@ -83,7 +83,7 @@ void Vic2::Localisations::Factory::processLine(const std::string& line)
 
 		auto UTF8Result = convertToUtf8(rawLocalisation, encoding);
 
-		if (language == "english")
+		if (strcmp(language, "english") == 0)
 		{
 			localisationToKeyMap[UTF8Result] = key;
 		}
@@ -92,7 +92,7 @@ void Vic2::Localisations::Factory::processLine(const std::string& line)
 		{
 			localisations[key][language] = UTF8Result;
 		}
-		else if (language != "english")
+		else if (strcmp(language, "english") != 0)
 		{
 			localisations[key][language] = localisations[key]["english"];
 		}
