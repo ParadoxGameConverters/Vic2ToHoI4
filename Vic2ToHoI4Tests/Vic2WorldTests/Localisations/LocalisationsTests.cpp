@@ -159,10 +159,10 @@ TEST(Vic2World_Localisations_LocalisationsTests, RegionTextCanBeReplaced)
 	ASSERT_EQ("Localisation for Replace Region replacement Spanish", localisations->getTextInLanguage("TAG", "spanish"));
 	ASSERT_EQ("Localisation for Replace Region replacement Italian", localisations->getTextInLanguage("TAG", "italian"));
 	ASSERT_EQ("Localisation for Replace Region replacement Swedish", localisations->getTextInLanguage("TAG", "swedish"));
-	ASSERT_EQ("Localisation for Replace Region replacement Czech", localisations->getTextInLanguage("TAG", "czech"), );
+	ASSERT_EQ("Localisation for Replace Region replacement Czech", localisations->getTextInLanguage("TAG", "czech"));
 	ASSERT_EQ("Localisation for Replace Region replacement Hungarian",
 		 localisations->getTextInLanguage("TAG", "hungarian"));
-	ASSERT_EQ("Localisation for Replace Region replacement Dutch", localisations->getTextInLanguage("TAG", "dutch"), );
+	ASSERT_EQ("Localisation for Replace Region replacement Dutch", localisations->getTextInLanguage("TAG", "dutch"));
 	ASSERT_EQ("Localisation for Replace Region replacement Brazilian",
 		 localisations->getTextInLanguage("TAG", "braz_por"));
 	ASSERT_EQ("Localisation for Replace Region replacement Russian", localisations->getTextInLanguage("TAG", "russian"));
