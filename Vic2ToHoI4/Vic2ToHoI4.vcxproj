@@ -379,6 +379,8 @@
     <ClCompile Include="Source\V2World\Diplomacy\DiplomacyFactory.cpp" />
     <ClCompile Include="Source\V2World\Diplomacy\RelationsFactory.cpp" />
     <ClCompile Include="Source\V2World\Issues\IssuesFactory.cpp" />
+    <ClCompile Include="Source\V2World\Localisations\LocalisationsFactory.cpp" />
+    <ClCompile Include="Source\V2World\Localisations\Vic2Localisations.cpp" />
     <ClCompile Include="Source\V2World\Military\ArmyFactory.cpp" />
     <ClCompile Include="Source\V2World\Military\LeaderFactory.cpp" />
     <ClCompile Include="Source\V2World\Military\UnitFactory.cpp" />
@@ -405,7 +407,6 @@
     <ClCompile Include="Source\V2World\Issues\IssueHelper.cpp" />
     <ClCompile Include="Source\V2World\Issues\Issues.cpp" />
     <ClCompile Include="Source\V2World\Issues\IssueCategoryHelper.cpp" />
-    <ClCompile Include="Source\V2World\Vic2Localisations.cpp" />
     <ClCompile Include="Source\V2World\Wars\WarGoalFactory.cpp" />
     <ClCompile Include="Source\V2World\World.cpp" />
   </ItemGroup>
@@ -697,6 +698,8 @@
     <ClInclude Include="Source\V2World\Issues\IssuesBuilder.h" />
     <ClInclude Include="Source\V2World\Issues\IssuesFactory.h" />
     <ClInclude Include="Source\V2World\Issues\IssueCategoryHelper.h" />
+    <ClInclude Include="Source\V2World\Localisations\LocalisationsFactory.h" />
+    <ClInclude Include="Source\V2World\Localisations\Vic2Localisations.h" />
     <ClInclude Include="Source\V2World\Military\Army.h" />
     <ClInclude Include="Source\V2World\Military\ArmyFactory.h" />
     <ClInclude Include="Source\V2World\Military\Leader.h" />
@@ -726,7 +729,6 @@
     <ClInclude Include="Source\V2World\States\StateLanguageCategoriesFactory.h" />
     <ClInclude Include="Source\V2World\Technology\Inventions.h" />
     <ClInclude Include="Source\V2World\Technology\InventionsFactory.h" />
-    <ClInclude Include="Source\V2World\Vic2Localisations.h" />
     <ClInclude Include="Source\V2World\Wars\War.h" />
     <ClInclude Include="Source\V2World\Wars\WarBuilder.h" />
     <ClInclude Include="Source\V2World\Wars\WarFactory.h" />

@@ -10,6 +10,8 @@
 #include "Diplomacy/RelationsFactory.h"
 #include "Issues/Issues.h"
 #include "Issues/IssuesFactory.h"
+#include "Localisations/LocalisationsFactory.h"
+#include "Localisations/Vic2Localisations.h"
 #include "Log.h"
 #include "Military/ArmyFactory.h"
 #include "ParserHelpers.h"
@@ -24,15 +26,14 @@
 #include "States/StateLanguageCategoriesFactory.h"
 #include "Technology/Inventions.h"
 #include "Technology/InventionsFactory.h"
-#include "Vic2Localisations.h"
 #include "Wars/WarFactory.h"
 #include <fstream>
 
 
 
-Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configuration& theConfiguration)
+Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configuration& theConfiguration):
+	 theLocalisations(Localisations::Factory{}.importLocalisations(theConfiguration))
 {
-	theLocalisations = Localisations::Parser{}.importLocalisations(theConfiguration);
 	theCultureGroups = CultureGroups::Factory{}.getCultureGroups(theConfiguration);
 	auto theIssues = Issues::Factory{}.getIssues(theConfiguration.getVic2Path());
 	theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
