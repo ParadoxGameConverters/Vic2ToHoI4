@@ -31,9 +31,9 @@
 
 
 
-Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configuration& theConfiguration)
+Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configuration& theConfiguration):
+	 theLocalisations(Localisations::Factory{}.importLocalisations(theConfiguration))
 {
-	theLocalisations = Localisations::Factory{}.importLocalisations(theConfiguration);
 	theCultureGroups = CultureGroups::Factory{}.getCultureGroups(theConfiguration);
 	auto theIssues = Issues::Factory{}.getIssues(theConfiguration.getVic2Path());
 	theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
