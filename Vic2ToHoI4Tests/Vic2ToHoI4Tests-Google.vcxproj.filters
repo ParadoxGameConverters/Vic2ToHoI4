@@ -1759,10 +1759,10 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Localisations\EmptyLocalisations.txt" />
     <CopyFileToFolders Include="TestFiles\Localisations\BaseLocalisations.txt" />
-    <CopyFileToFolders Include="ModLocalisations.txt">
+    <CopyFileToFolders Include="TestFiles\Localisations\ConverterLocalisations.txt">
       <Filter>TestFiles\Localistations</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="ConverterLocalisations.txt">
+    <CopyFileToFolders Include="TestFiles\Localisations\ModLocalisations.txt">
       <Filter>TestFiles\Localistations</Filter>
     </CopyFileToFolders>
   </ItemGroup>
