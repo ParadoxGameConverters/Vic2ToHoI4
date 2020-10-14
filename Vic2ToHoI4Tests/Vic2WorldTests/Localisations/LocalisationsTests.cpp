@@ -152,27 +152,21 @@ TEST(Vic2World_Localisations_LocalisationsTests, RegionTextCanBeReplaced)
 	auto localisations = Vic2::Localisations::Factory{}.importLocalisations(*configuration);
 	localisations->updateDomainCountry("TAG", "Replace Region");
 
-	ASSERT_EQ("Localisation for Replace Region replacement English",
-		 localisations->getTextInLanguage("TAG", "english"), );
-	ASSERT_EQ("Localisation for Replace Region replacement French", localisations->getTextInLanguage("TAG", "french"), );
-	ASSERT_EQ("Localisation for Replace Region replacement German", localisations->getTextInLanguage("TAG", "german"), );
-	ASSERT_EQ("Localisation for Replace Region replacement Polish", localisations->getTextInLanguage("TAG", "polish"), );
-	ASSERT_EQ("Localisation for Replace Region replacement Spanish",
-		 localisations->getTextInLanguage("TAG", "spanish"), );
-	ASSERT_EQ("Localisation for Replace Region replacement Italian",
-		 localisations->getTextInLanguage("TAG", "italian"), );
-	ASSERT_EQ("Localisation for Replace Region replacement Swedish",
-		 localisations->getTextInLanguage("TAG", "swedish"), );
+	ASSERT_EQ("Localisation for Replace Region replacement English", localisations->getTextInLanguage("TAG", "english"));
+	ASSERT_EQ("Localisation for Replace Region replacement French", localisations->getTextInLanguage("TAG", "french"));
+	ASSERT_EQ("Localisation for Replace Region replacement German", localisations->getTextInLanguage("TAG", "german"));
+	ASSERT_EQ("Localisation for Replace Region replacement Polish", localisations->getTextInLanguage("TAG", "polish"));
+	ASSERT_EQ("Localisation for Replace Region replacement Spanish", localisations->getTextInLanguage("TAG", "spanish"));
+	ASSERT_EQ("Localisation for Replace Region replacement Italian", localisations->getTextInLanguage("TAG", "italian"));
+	ASSERT_EQ("Localisation for Replace Region replacement Swedish", localisations->getTextInLanguage("TAG", "swedish"));
 	ASSERT_EQ("Localisation for Replace Region replacement Czech", localisations->getTextInLanguage("TAG", "czech"), );
 	ASSERT_EQ("Localisation for Replace Region replacement Hungarian",
-		 localisations->getTextInLanguage("TAG", "hungarian"), );
+		 localisations->getTextInLanguage("TAG", "hungarian"));
 	ASSERT_EQ("Localisation for Replace Region replacement Dutch", localisations->getTextInLanguage("TAG", "dutch"), );
 	ASSERT_EQ("Localisation for Replace Region replacement Brazilian",
-		 localisations->getTextInLanguage("TAG", "braz_por"), );
-	ASSERT_EQ("Localisation for Replace Region replacement Russian",
-		 localisations->getTextInLanguage("TAG", "russian"), );
-	ASSERT_EQ("Localisation for Replace Region replacement Finnish",
-		 localisations->getTextInLanguage("TAG", "finnish"), );
+		 localisations->getTextInLanguage("TAG", "braz_por"));
+	ASSERT_EQ("Localisation for Replace Region replacement Russian", localisations->getTextInLanguage("TAG", "russian"));
+	ASSERT_EQ("Localisation for Replace Region replacement Finnish", localisations->getTextInLanguage("TAG", "finnish"));
 }
 
 
