@@ -429,6 +429,7 @@
     <ClCompile Include="Vic2WorldTests\Issues\IssuesBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Issues\IssuesFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Issues\IssueCategoryHelperTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Localisations\LocalisationsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Military\ArmyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Military\LeaderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Military\UnitTests.cpp" />
@@ -745,6 +746,32 @@
     <CopyFileToFolders Include="TestFiles\Sounds\CultureToVoiceMappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles/Sounds/</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/DataFiles/Sounds/</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Localisations\EmptyLocalisations.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/BlankLocalisations/localisation</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/BlankLocalisations/localisation</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Localisations\BaseLocalisations.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/localisation</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/localisation</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="ModLocalisations.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/modLocalisations/localisation</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/modLocalisations/localisation</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="ConverterLocalisations.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/DataFiles</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Vic2Localisations.csv</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Vic2Localisations.csv</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

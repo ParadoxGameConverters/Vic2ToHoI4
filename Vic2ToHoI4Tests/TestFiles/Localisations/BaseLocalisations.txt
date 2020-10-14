@@ -1,0 +1,2 @@
+test_key;english_loc;french_loc;german_loc;polish_loc;spanish_loc;italian_loc;swedish_loc;czech_loc;hungarian_loc;dutch_loc;braz_por_loc;russian_loc;finnish_loc;x
+replace_key;english_loc;;;;;;;;;;;;;x

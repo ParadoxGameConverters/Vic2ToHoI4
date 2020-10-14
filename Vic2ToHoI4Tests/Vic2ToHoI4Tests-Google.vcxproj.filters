@@ -1241,6 +1241,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Localisations\LocalisationsFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Localisations</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Localisations\LocalisationsTests.cpp">
+      <Filter>Vic2WorldTests\Localisations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1588,6 +1591,9 @@
     <Filter Include="Vic2ToHoI4 files\Vic2\Localisations">
       <UniqueIdentifier>{9ba621aa-ac33-431b-a395-172596a2df28}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2WorldTests\Localisations">
+      <UniqueIdentifier>{7cdbb97c-2e2c-4bfb-bcc1-db88e51b0856}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1750,6 +1756,14 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Sounds\CultureToVoiceMappings.txt">
       <Filter>TestFiles\Sounds</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Localisations\EmptyLocalisations.txt" />
+    <CopyFileToFolders Include="TestFiles\Localisations\BaseLocalisations.txt" />
+    <CopyFileToFolders Include="ModLocalisations.txt">
+      <Filter>TestFiles\Localistations</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="ConverterLocalisations.txt">
+      <Filter>TestFiles\Localistations</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>
