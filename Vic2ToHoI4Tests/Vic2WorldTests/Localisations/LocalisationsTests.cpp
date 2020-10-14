@@ -144,3 +144,71 @@ TEST(Vic2World_Localisations_LocalisationsTests, LocalisationsCanBeLoadedFromCon
 	ASSERT_EQ(localisations->getTextInLanguage("converter_key", "russian"), "russian_converter_loc");
 	ASSERT_EQ(localisations->getTextInLanguage("converter_key", "finnish"), "finnish_converter_loc");
 }
+
+
+TEST(Vic2World_Localisations_LocalisationsTests, RegionTextCanBeReplaced)
+{
+	const auto configuration = Configuration::Builder{}.setVic2Path("./").build();
+	auto localisations = Vic2::Localisations::Factory{}.importLocalisations(*configuration);
+	localisations->updateDomainCountry("TAG", "Replace Region");
+
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "english"), "Localisation for Replace Region replacement English");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "french"), "Localisation for Replace Region replacement French");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "german"), "Localisation for Replace Region replacement German");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "polish"), "Localisation for Replace Region replacement Polish");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "spanish"), "Localisation for Replace Region replacement Spanish");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "italian"), "Localisation for Replace Region replacement Italian");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "swedish"), "Localisation for Replace Region replacement Swedish");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "czech"), "Localisation for Replace Region replacement Czech");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "hungarian"),
+		 "Localisation for Replace Region replacement Hungarian");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "dutch"), "Localisation for Replace Region replacement Dutch");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "braz_por"),
+		 "Localisation for Replace Region replacement Brazilian");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "russian"), "Localisation for Replace Region replacement Russian");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "finnish"), "Localisation for Replace Region replacement Finnish");
+}
+
+
+TEST(Vic2World_Localisations_LocalisationsTests, ReplacementRegionTextCanBeFromLocalisation)
+{
+	const auto configuration = Configuration::Builder{}.setVic2Path("./").build();
+	auto localisations = Vic2::Localisations::Factory{}.importLocalisations(*configuration);
+	localisations->updateDomainCountry("TAG", "Replacement Region English");
+
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "english"),
+		 "Localisation for Replacement Region English replacement English");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "french"),
+		 "Localisation for Replacement Region French replacement French");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "german"),
+		 "Localisation for Replacement Region German replacement German");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "polish"),
+		 "Localisation for Replacement Region Polish replacement Polish");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "spanish"),
+		 "Localisation for Replacement Region Spanish replacement Spanish");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "italian"),
+		 "Localisation for Replacement Region Italian replacement Italian");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "swedish"),
+		 "Localisation for Replacement Region Swedish replacement Swedish");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "czech"),
+		 "Localisation for Replacement Region Czech replacement Czech");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "hungarian"),
+		 "Localisation for Replacement Region Hungarian replacement Hungarian");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "dutch"),
+		 "Localisation for Replacement Region Dutch replacement Dutch");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "braz_por"),
+		 "Localisation for Replacement Region Brazilian replacement Brazilian");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "russian"),
+		 "Localisation for Replacement Region Russian replacement Russian");
+	ASSERT_EQ(localisations->getTextInLanguage("TAG", "finnish"),
+		 "Localisation for Replacement Region Finnish replacement Finnish");
+}
+
+
+TEST(Vic2World_Localisations_LocalisationsTests, UpdateDomainCountrySkipsMissingTag)
+{
+	const auto configuration = Configuration::Builder{}.setVic2Path("./").build();
+	auto localisations = Vic2::Localisations::Factory{}.importLocalisations(*configuration);
+
+	ASSERT_NO_THROW(localisations->updateDomainCountry("NON", "Replacement Region English"));
+}
