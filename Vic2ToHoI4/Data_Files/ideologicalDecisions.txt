@@ -520,7 +520,7 @@ political_actions = {
 		}
 	
 		modifier = {
-			fascism_drift = -0.02
+			fascism_drift = -0.05
 		}
 	
 		days_remove = -1
@@ -545,6 +545,7 @@ political_actions = {
 					value = 0.66
 				}				
 			}
+			remove_fascist_spirits_effect = yes
 			custom_effect_tooltip = ban_fascism_party_tt
 			add_stability = ban_ideology_var
 		}
@@ -1098,7 +1099,7 @@ political_actions = {
 		}
 	
 		modifier = {
-			democratic_drift = -0.02
+			democratic_drift = -0.05
 		}
 	
 		days_remove = -1
@@ -1123,6 +1124,7 @@ political_actions = {
 					value = 0.66
 				}				
 			}
+			remove_democratic_spirits_effect = yes
 			custom_effect_tooltip = ban_democratic_party_tt
 			add_stability = ban_ideology_var
 		}
@@ -1677,7 +1679,7 @@ political_actions =
 		}
 	
 		modifier = {
-			communism_drift = -0.02
+			communism_drift = -0.05
 		}
 	
 		days_remove = -1
@@ -1700,8 +1702,10 @@ political_actions =
 				multiply_temp_variable = {
 					var = ban_ideology_var
 					value = 0.66
-				}				
+				}	
+				set_country_flag = banned_communism_flag
 			}
+			remove_communist_spirits_effect = yes
 			custom_effect_tooltip = ban_communism_party_tt
 			add_stability = ban_ideology_var
 		}
@@ -2252,7 +2256,7 @@ political_actions = {
 		}
 	
 		modifier = {
-			absolutist_drift = -0.02
+			absolutist_drift = -0.05
 		}
 	
 		days_remove = -1
@@ -2277,6 +2281,7 @@ political_actions = {
 					value = 0.66
 				}				
 			}
+			remove_absolutist_spirits_effect = yes
 			custom_effect_tooltip = ban_absolutist_party_tt
 			add_stability = ban_ideology_var
 		}
@@ -2799,7 +2804,7 @@ political_actions = {
 		}
 	
 		modifier = {
-			radical_drift = -0.02
+			radical_drift = -0.05
 		}
 	
 		days_remove = -1
@@ -2824,6 +2829,7 @@ political_actions = {
 					value = 0.66
 				}				
 			}
+			remove_radical_spirits_effect = yes
 			custom_effect_tooltip = ban_radical_party_tt
 			add_stability = ban_ideology_var
 		}
