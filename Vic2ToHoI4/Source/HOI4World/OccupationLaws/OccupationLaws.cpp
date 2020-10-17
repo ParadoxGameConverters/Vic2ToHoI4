@@ -5,6 +5,13 @@
 
 void HoI4::OccupationLaws::updateLaws(const std::set<std::string>& majorIdeologies)
 {
+	occupationLaws.erase(std::remove_if(occupationLaws.begin(),
+									 occupationLaws.end(),
+									 [](const OccupationLaw& law) {
+										 return law.getName() == "reconciliation";
+									 }),
+		 occupationLaws.end());
+
 	if (!majorIdeologies.count("democratic"))
 	{
 		occupationLaws.erase(std::remove_if(occupationLaws.begin(),

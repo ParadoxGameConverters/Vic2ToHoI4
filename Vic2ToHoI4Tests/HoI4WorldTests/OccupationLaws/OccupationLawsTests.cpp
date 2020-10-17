@@ -3,6 +3,19 @@
 
 
 
+TEST(HoI4World_OccupationLaws_OccupationLaws, ReconciliationRemoved)
+{
+	HoI4::OccupationLaw reconciliationOccupation;
+	reconciliationOccupation.setName("reconciliation");
+
+	HoI4::OccupationLaws laws;
+	laws.giveOccupationLaw(std::move(reconciliationOccupation));
+
+	laws.updateLaws({});
+	ASSERT_TRUE(laws.getOccupationLaws().empty());
+}
+
+
 TEST(HoI4World_OccupationLaws_OccupationLaws, NoGarrisonSimplifiesAiWillDoIfNoDemocratic)
 {
 	HoI4::OccupationLaw noGarrison;
