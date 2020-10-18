@@ -366,6 +366,15 @@ void HoI4::updateGenericEventTwo(Event& eventTwo, const std::set<std::string>& m
 		 "\t\t\t\t\tis_major = yes\n"
 		 "\t\t\t\t}\n"
 		 "\t\t\t}\n"
+		 "\t\t\tmodifier = {\n"
+		 "\t\t\t\tfactor = 10\n"
+		 "\t\t\t\tFROM = {\n"
+		 "\t\t\t\t\tOR = {\n"
+		 "\t\t\t\t\t\tis_subject = yes\n"
+		 "\t\t\t\t\t\tis_in_faction = yes\n"
+		 "\t\t\t\t\t}\n"
+		 "\t\t\t\t}\n"
+		 "\t\t\t}\n"
 		 "\t\t}");
 	reject.giveScriptBlock(
 		 "FROM = {\n"
