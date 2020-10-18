@@ -56,7 +56,7 @@ spriteTypes = {
 		name = "GFX_subject_overlay"
 		texturefile = "gfx/interface/autonomy/subject_overlay.dds"
 		effectFile = "gfx/FX/buttonstate_nodowneffect.lua"		
-	}		
+	}
 
 	progressbartype = {
 		name = "GFX_subject_progressbar_long"
@@ -404,7 +404,7 @@ spriteTypes = {
 		texturefile = "gfx/interface/idea_entry_bg_2.dds"
 		noOfFrames = 2
 	}
-	
+
 	spriteType = {
 		name = "GFX_idea_entry_bg_3"
 		texturefile = "gfx/interface/idea_entry_bg_3.dds"
@@ -460,7 +460,7 @@ spriteTypes = {
 		name = "GFX_ideology_democratic_group"
 		texturefile = "gfx/interface/ideologies/democratic_group.dds"
 	}
-	
+
 	spriteType = {
 		name = "GFX_ideology_anarchism"
 		texturefile = "gfx/interface/ideologies/anarchism.dds"
@@ -567,6 +567,7 @@ spriteTypes = {
 		name = "GFX_leader_unknown"
 		textureFile = "gfx/leaders/leader_unknown.dds"
 		legacy_lazy_load = no
+		generate_mip_maps = yes
 	}
 	
 	spriteType = {
@@ -588,8 +589,8 @@ spriteTypes = {
 	pieChartType = {
 		name = "GFX_political_chart_small"
 		size = 26
-	}	
-	
+	}
+
 	circularProgressBarType = {
 		name = "GFX_textured_pie_chart"
 		textureFile1 = "gfx/interface/ideas/idea_volunteer_only.dds"
@@ -638,7 +639,7 @@ spriteTypes = {
 		textureFile = "gfx//interface//occupation_policy_button_selected.dds"
 		effectFile = "gfx/FX/buttonstate_nodowneffect.lua"
 	}	
-
+	
 	frameAnimatedSpriteType = {
 		name = "GFX_tutorial_politics_icon_glow"
 		texturefile = "gfx//interface//tutorial//politics_icon_glow.dds"
