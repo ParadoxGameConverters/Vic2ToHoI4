@@ -12,10 +12,10 @@
 mappers::ProvinceMapper mappers::ProvinceMapper::Parser::initializeMapper(const Configuration& theConfiguration)
 {
 	auto gotMappings = false;
-	registerRegex(R"(\d\.\d\.\d)",
+	registerRegex(R"(\d\.[\d]+\.\d)",
 		 [this, &gotMappings, theConfiguration](const std::string& version, std::istream& theStream) {
 			 const GameVersion defaultVersion(version);
-			 if ((GameVersion{1, 9, 2, 0} >= defaultVersion) && !gotMappings)
+			 if ((GameVersion{1, 10, 1, 0} >= defaultVersion) && !gotMappings)
 			 {
 				 Log(LogLevel::Info) << "\tUsing version " << version << " mappings";
 				 const VersionedMappings thisVersionsMappings(theStream);
