@@ -3,6 +3,7 @@
 #include "Diplomacy/Relations.h"
 #include "Localisations/Vic2Localisations.h"
 #include "Log.h"
+#include "Military/ArmyFactory.h"
 #include "Military/Leader.h"
 #include "ParserHelpers.h"
 #include "Politics/Party.h"

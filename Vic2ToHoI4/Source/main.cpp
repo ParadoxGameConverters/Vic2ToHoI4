@@ -1,6 +1,5 @@
 #include "Log.h"
 #include "Mappers/VersionParser/VersionParser.h"
-#include "OSCompatibilityLayer.h"
 #include "Vic2ToHoI4Converter.h"
 
 

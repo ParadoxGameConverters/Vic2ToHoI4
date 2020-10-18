@@ -8,7 +8,6 @@
 #include "IntelligenceAgencies/OutIntelligenceAgencies.h"
 #include "Log.h"
 #include "Map/OutBuildings.h"
-#include "Map/OutStrategicRegion.h"
 #include "Map/OutStrategicRegions.h"
 #include "Map/OutSupplyZones.h"
 #include "OSCompatibilityLayer.h"

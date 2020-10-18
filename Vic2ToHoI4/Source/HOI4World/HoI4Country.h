@@ -3,14 +3,12 @@
 
 
 
-#include "V2World/Politics/Party.h"
 #include "Color.h"
 #include "Date.h"
 #include "Diplomacy/Faction.h"
 #include "Diplomacy/HoI4Relations.h"
 #include "Diplomacy/HoI4War.h"
 #include "HoI4FocusTree.h"
-#include "Ideologies/Ideology.h"
 #include "Leaders/Admiral.h"
 #include "Leaders/General.h"
 #include "Military/Airplane.h"
@@ -20,7 +18,7 @@
 #include "Regions/Regions.h"
 #include "ShipTypes/ShipVariants.h"
 #include "Technologies.h"
-#include <functional>
+#include "V2World/Politics/Party.h"
 #include <map>
 #include <memory>
 #include <optional>

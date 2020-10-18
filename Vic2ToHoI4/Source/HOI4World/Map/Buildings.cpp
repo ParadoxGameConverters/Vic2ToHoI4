@@ -6,7 +6,6 @@
 #include "Hoi4Building.h"
 #include "Log.h"
 #include "MapData.h"
-#include <iomanip>
 
 
 

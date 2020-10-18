@@ -1,16 +1,13 @@
 #include "HoI4FocusTree.h"
-#include "Configuration.h"
-#include "V2World/Country.h"
-#include "V2World/Politics/Party.h"
 #include "HoI4Country.h"
 #include "HoI4Focus.h"
 #include "HoI4Localisation.h"
 #include "HoI4World.h"
 #include "Log.h"
-#include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 #include "SharedFocus.h"
-#include <fstream>
+#include "V2World/Country.h"
+#include "V2World/Politics/Party.h"
 using namespace std;
 
 

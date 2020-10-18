@@ -6,6 +6,7 @@
 #include "BuildingReader.h"
 #include "Parser.h"
 #include "State.h"
+#include "StateDefinitions.h"
 #include <memory>
 
 

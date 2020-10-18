@@ -1,6 +1,5 @@
 #include "ProvinceDefinitions.h"
 #include "Configuration.h"
-#include "Log.h"
 #include <fstream>
 
 
