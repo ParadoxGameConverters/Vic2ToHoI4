@@ -1,7 +1,7 @@
-#include "../Vic2ToHoI4/Source/Configuration.h"
-#include "../Vic2ToHoI4/Source/V2World/Mods/ModBuilder.h"
-#include "../Vic2ToHoI4/Source/V2World/Technology/Inventions.h"
-#include "../Vic2ToHoI4/Source/V2World/Technology/InventionsFactory.h"
+#include "Configuration.h"
+#include "V2World/Mods/ModBuilder.h"
+#include "V2World/Technology/Inventions.h"
+#include "V2World/Technology/InventionsFactory.h"
 #include "gtest/gtest.h"
 
 

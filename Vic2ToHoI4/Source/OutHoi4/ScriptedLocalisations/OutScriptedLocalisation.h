@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/ScriptedLocalisations/ScriptedLocalisation.h"
+#include "HOI4World/ScriptedLocalisations/ScriptedLocalisation.h"
 #include <ostream>
 
 

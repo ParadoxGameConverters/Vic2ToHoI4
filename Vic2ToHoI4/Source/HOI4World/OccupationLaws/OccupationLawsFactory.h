@@ -3,7 +3,7 @@
 
 
 
-#include "../../Configuration.h"
+#include "Configuration.h"
 #include "OccupationLaws.h"
 #include "Parser.h"
 

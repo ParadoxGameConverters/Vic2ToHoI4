@@ -1,4 +1,4 @@
-#include "../../../Vic2ToHoI4/Source/HOI4World/Map/ResourcesLink.h"
+#include "HOI4World/Map/ResourcesLink.h"
 #include "gtest/gtest.h"
 
 

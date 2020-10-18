@@ -3,8 +3,8 @@
 
 
 
-#include "../../Mappers/CountryMapping.h"
-#include "../../V2World/Wars/War.h"
+#include "Mappers/CountryMapping.h"
+#include "V2World/Wars/War.h"
 #include <ostream>
 #include <set>
 #include <string>

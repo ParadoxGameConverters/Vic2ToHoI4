@@ -1,5 +1,5 @@
 #include "StateDefinitions.h"
-#include "../../Configuration.h"
+#include "Configuration.h"
 #include "OSCompatibilityLayer.h"
 
 

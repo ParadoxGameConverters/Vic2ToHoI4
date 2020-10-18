@@ -3,7 +3,7 @@
 
 
 
-#include "../../Configuration.h"
+#include "Configuration.h"
 #include "Inventions.h"
 #include "Parser.h"
 #include <memory>

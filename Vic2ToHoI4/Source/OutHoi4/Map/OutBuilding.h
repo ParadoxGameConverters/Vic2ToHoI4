@@ -2,7 +2,7 @@
 #define OUT_BUILDING_H
 
 
-#include "../../HOI4World/Map/Hoi4Building.h"
+#include "HOI4World/Map/Hoi4Building.h"
 #include <ostream>
 
 

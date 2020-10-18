@@ -3,8 +3,8 @@
 
 
 
-#include "../../Configuration.h"
-#include "../../HOI4World/ScriptedLocalisations/ScriptedLocalisations.h"
+#include "Configuration.h"
+#include "HOI4World/ScriptedLocalisations/ScriptedLocalisations.h"
 
 
 

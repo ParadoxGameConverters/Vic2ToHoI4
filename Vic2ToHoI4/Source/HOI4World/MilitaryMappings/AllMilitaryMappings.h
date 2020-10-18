@@ -3,7 +3,7 @@
 
 
 
-#include "../../V2World/Mods/Mod.h"
+#include "V2World/Mods/Mod.h"
 #include "MilitaryMappings.h"
 #include "Parser.h"
 #include <map>

@@ -1,5 +1,5 @@
 #include "Names.h"
-#include "../../Configuration.h"
+#include "Configuration.h"
 #include "CultureGroupNames.h"
 #include "CultureNames.h"
 #include "Log.h"

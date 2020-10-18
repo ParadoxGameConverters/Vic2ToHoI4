@@ -1,5 +1,5 @@
 #include "CommonCountryData.h"
-#include "../Configuration.h"
+#include "Configuration.h"
 #include "Color.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"

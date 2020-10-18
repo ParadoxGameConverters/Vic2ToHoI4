@@ -3,7 +3,7 @@
 
 
 
-#include "../HOI4World/Technologies.h"
+#include "HOI4World/Technologies.h"
 
 
 

@@ -1,9 +1,9 @@
-#include "../../../Vic2ToHoI4/Source/Configuration.h"
-#include "../../../Vic2ToHoI4/Source/V2World/Pops/PopBuilder.h"
-#include "../../../Vic2ToHoI4/Source/V2World/Provinces/ProvinceBuilder.h"
-#include "../../../Vic2ToHoI4/Source/V2World/States/StateDefinitions.h"
-#include "../../../Vic2ToHoI4/Source/V2World/States/StateDefinitionsBuilder.h"
-#include "../../../Vic2ToHoI4/Source/V2World/States/StateFactory.h"
+#include "Configuration.h"
+#include "V2World/Pops/PopBuilder.h"
+#include "V2World/Provinces/ProvinceBuilder.h"
+#include "V2World/States/StateDefinitions.h"
+#include "V2World/States/StateDefinitionsBuilder.h"
+#include "V2World/States/StateFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

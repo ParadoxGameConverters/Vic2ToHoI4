@@ -25,7 +25,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 #define TECHNOLGIES_H_
 
 
-#include "../Mappers/TechMapper.h"
+#include "Mappers/TechMapper.h"
 #include <fstream>
 #include <map>
 #include <memory>

@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Leaders/Advisor.h"
+#include "HOI4World/Leaders/Advisor.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

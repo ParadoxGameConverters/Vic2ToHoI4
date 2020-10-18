@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/Events/Event.h"
+#include "HOI4World/Events/Event.h"
 #include <ostream>
 
 

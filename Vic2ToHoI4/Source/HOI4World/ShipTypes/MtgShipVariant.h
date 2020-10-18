@@ -3,9 +3,9 @@
 
 
 
-#include "../Technologies.h"
-#include "ShipModules.h"
+#include "HoI4World/Technologies.h"
 #include "Parser.h"
+#include "ShipModules.h"
 #include <memory>
 #include <set>
 #include <string>

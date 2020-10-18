@@ -1,4 +1,4 @@
-#include "../../../Vic2ToHoI4/Source/HOI4World/Ideologies/IdeologyFile.h"
+#include "HOI4World/Ideologies/IdeologyFile.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

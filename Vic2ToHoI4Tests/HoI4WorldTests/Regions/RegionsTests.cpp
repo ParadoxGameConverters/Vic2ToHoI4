@@ -1,5 +1,5 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Regions/Regions.h"
-#include "../Vic2ToHoI4/Source/HOI4World/Regions/RegionsFactory.h"
+#include "HOI4World/Regions/Regions.h"
+#include "HOI4World/Regions/RegionsFactory.h"
 #include "gtest/gtest.h"
 
 

@@ -1,4 +1,4 @@
-#include "../../../Vic2ToHoI4/Source/HOI4World/Map/SupplyArea.h"
+#include "HOI4World/Map/SupplyArea.h"
 #include "gtest/gtest.h"
 
 

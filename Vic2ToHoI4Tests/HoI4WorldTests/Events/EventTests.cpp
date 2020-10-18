@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Events/Event.h"
+#include "HOI4World/Events/Event.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

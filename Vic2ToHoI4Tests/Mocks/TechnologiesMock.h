@@ -3,7 +3,7 @@
 
 
 
-#include "../../Vic2ToHoI4/Source/HOI4World/Technologies.h"
+#include "HOI4World/Technologies.h"
 #include "gmock/gmock.h"
 
 

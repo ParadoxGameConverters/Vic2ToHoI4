@@ -1,5 +1,5 @@
-#include "../../../Vic2ToHoI4/Source/V2World/States/StateLanguageCategories.h"
-#include "../../../Vic2ToHoI4/Source/V2World/States/StateLanguageCategoriesFactory.h"
+#include "V2World/States/StateLanguageCategories.h"
+#include "V2World/States/StateLanguageCategoriesFactory.h"
 #include "gtest/gtest.h"
 
 

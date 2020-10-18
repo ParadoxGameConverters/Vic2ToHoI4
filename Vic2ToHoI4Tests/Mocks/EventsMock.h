@@ -3,7 +3,7 @@
 
 
 
-#include "../../Vic2ToHoI4/Source/HOI4World/Events/Events.h"
+#include "HOI4World/Events/Events.h"
 #include "gmock/gmock.h"
 
 

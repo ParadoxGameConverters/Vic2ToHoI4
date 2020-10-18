@@ -1,6 +1,6 @@
-#include "../../Mocks/TechnologiesMock.h"
-#include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/MtgShipVariant.h"
-#include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/ShipVariants.h"
+#include "Mocks/TechnologiesMock.h"
+#include "HOI4World/ShipTypes/MtgShipVariant.h"
+#include "HOI4World/ShipTypes/ShipVariants.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

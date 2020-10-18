@@ -1,5 +1,5 @@
-#include "../Vic2ToHoI4/Source/V2World/Pops/PopBuilder.h"
-#include "../Vic2ToHoI4/Source/V2World/Provinces/ProvinceBuilder.h"
+#include "V2World/Pops/PopBuilder.h"
+#include "V2World/Provinces/ProvinceBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

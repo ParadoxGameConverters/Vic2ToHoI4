@@ -1,4 +1,4 @@
-#include "../../../Vic2ToHoI4/Source/HOI4World/OperativeNames/OperativeNamesMappingsFactory.h"
+#include "HOI4World/OperativeNames/OperativeNamesMappingsFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

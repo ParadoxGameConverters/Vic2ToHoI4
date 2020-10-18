@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/Map/SupplyZones.h"
+#include "HOI4World/Map/SupplyZones.h"
 
 
 

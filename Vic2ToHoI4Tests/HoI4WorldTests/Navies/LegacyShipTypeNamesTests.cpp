@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Navies/LegacyShipTypeNames.h"
+#include "HOI4World/Navies/LegacyShipTypeNames.h"
 #include "gtest/gtest.h"
 
 

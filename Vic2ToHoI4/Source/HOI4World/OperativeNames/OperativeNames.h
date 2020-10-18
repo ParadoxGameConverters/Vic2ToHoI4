@@ -3,7 +3,7 @@
 
 
 
-#include "../HoI4Country.h"
+#include "HoI4World/HoI4Country.h"
 #include "OperativeNamesSet.h"
 #include <map>
 #include <string>

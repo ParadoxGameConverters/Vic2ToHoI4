@@ -1,11 +1,11 @@
 #include "HoI4State.h"
-#include "../../V2World/Provinces/Province.h"
-#include "../../V2World/States/State.h"
-#include "../Map/CoastalProvinces.h"
+#include "HoI4World/Map/CoastalProvinces.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 #include "StateCategories.h"
+#include "V2World/Provinces/Province.h"
+#include "V2World/States/State.h"
 #include <random>
 
 

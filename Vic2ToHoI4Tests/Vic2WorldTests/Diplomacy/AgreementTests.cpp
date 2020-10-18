@@ -1,5 +1,5 @@
-#include "../Vic2ToHoI4/Source/V2World/Diplomacy/Agreement.h"
-#include "../Vic2ToHoI4/Source/V2World/Diplomacy/AgreementFactory.h"
+#include "V2World/Diplomacy/Agreement.h"
+#include "V2World/Diplomacy/AgreementFactory.h"
 #include "gtest/gtest.h"
 
 

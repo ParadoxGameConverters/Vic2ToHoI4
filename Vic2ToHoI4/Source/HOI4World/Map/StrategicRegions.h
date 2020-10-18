@@ -3,7 +3,7 @@
 
 
 
-#include "../../Configuration.h"
+#include "Configuration.h"
 #include "StrategicRegion.h"
 #include <map>
 #include <memory>

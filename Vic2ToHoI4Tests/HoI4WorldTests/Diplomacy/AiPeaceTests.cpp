@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Diplomacy/AIPeace.h"
+#include "HOI4World/Diplomacy/AIPeace.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

@@ -1,17 +1,17 @@
 #include "Events.h"
-#include "../../Configuration.h"
-#include "../../V2World/Country.h"
-#include "../../V2World/Politics/Party.h"
-#include "../HoI4Country.h"
-#include "../HoI4Localisation.h"
-#include "../OnActions.h"
 #include "CapitulationEvents.h"
+#include "Configuration.h"
 #include "EventHelpers.h"
 #include "EventsFile.h"
 #include "GenericEventUpdaters.h"
+#include "HoI4World/HoI4Country.h"
+#include "HoI4World/HoI4Localisation.h"
+#include "HoI4World/OnActions.h"
 #include "LarOccupationEvents.h"
 #include "Log.h"
 #include "ParserHelpers.h"
+#include "V2World/Country.h"
+#include "V2World/Politics/Party.h"
 #include <fstream>
 
 

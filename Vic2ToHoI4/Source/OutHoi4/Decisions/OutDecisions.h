@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/Decisions/Decisions.h"
+#include "HOI4World/Decisions/Decisions.h"
 
 
 

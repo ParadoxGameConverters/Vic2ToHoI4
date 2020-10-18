@@ -1,5 +1,5 @@
 #include "CountryMapping.h"
-#include "../V2World/World.h"
+#include "V2World/World.h"
 #include "Log.h"
 #include "ParserHelpers.h"
 #include <iomanip>

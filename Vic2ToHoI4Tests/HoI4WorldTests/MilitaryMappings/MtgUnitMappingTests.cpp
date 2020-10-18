@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/MilitaryMappings/MtgUnitMapping.h"
+#include "HOI4World/MilitaryMappings/MtgUnitMapping.h"
 #include "gtest/gtest.h"
 
 

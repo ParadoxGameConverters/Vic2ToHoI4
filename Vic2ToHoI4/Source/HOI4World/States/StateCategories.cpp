@@ -1,5 +1,5 @@
 #include "StateCategories.h"
-#include "../../Configuration.h"
+#include "Configuration.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 #include "StateCategoryFile.h"

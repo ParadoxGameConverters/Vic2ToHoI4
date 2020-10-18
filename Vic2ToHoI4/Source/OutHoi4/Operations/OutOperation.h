@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/Operations/Operation.h"
+#include "HOI4World/Operations/Operation.h"
 #include <ostream>
 
 

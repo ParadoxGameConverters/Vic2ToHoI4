@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Map/ProvincePoints.h"
+#include "HOI4World/Map/ProvincePoints.h"
 #include "gtest/gtest.h"
 
 

@@ -3,7 +3,7 @@
 
 
 
-#include "../HOI4World/HoI4Country.h"
+#include "HOI4World/HoI4Country.h"
 #include <map>
 #include <string>
 #include <vector>

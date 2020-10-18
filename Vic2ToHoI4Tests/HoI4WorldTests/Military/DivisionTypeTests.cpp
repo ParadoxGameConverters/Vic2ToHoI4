@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Military/DivisionType.h"
+#include "HOI4World/Military/DivisionType.h"
 #include "gtest/gtest.h"
 
 

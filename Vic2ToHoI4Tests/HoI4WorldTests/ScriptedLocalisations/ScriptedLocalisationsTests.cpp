@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/ScriptedLocalisations/ScriptedLocalisations.h"
+#include "HOI4World/ScriptedLocalisations/ScriptedLocalisations.h"
 #include "gtest/gtest.h"
 
 

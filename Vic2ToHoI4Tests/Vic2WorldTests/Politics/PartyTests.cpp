@@ -1,5 +1,5 @@
-#include "../Vic2ToHoI4/Source/V2World/Politics/Party.h"
-#include "../Vic2ToHoI4/Source/V2World/Politics/PartyFactory.h"
+#include "V2World/Politics/Party.h"
+#include "V2World/Politics/PartyFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

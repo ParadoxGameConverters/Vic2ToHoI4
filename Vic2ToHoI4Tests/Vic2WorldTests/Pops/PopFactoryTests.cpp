@@ -1,5 +1,5 @@
-#include "../../Vic2ToHoI4/Source/V2World/Issues/IssuesBuilder.h"
-#include "../../Vic2ToHoI4/Source/V2World/Pops/PopFactory.h"
+#include "V2World/Issues/IssuesBuilder.h"
+#include "V2World/Pops/PopFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

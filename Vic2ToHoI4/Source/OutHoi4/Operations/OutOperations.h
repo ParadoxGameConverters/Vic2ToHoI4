@@ -3,8 +3,8 @@
 
 
 
-#include "../../Configuration.h"
-#include "../../HOI4World/Operations/Operations.h"
+#include "Configuration.h"
+#include "HOI4World/Operations/Operations.h"
 
 
 

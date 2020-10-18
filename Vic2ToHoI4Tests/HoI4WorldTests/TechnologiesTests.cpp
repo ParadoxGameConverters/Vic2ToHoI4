@@ -21,9 +21,9 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "../../Vic2ToHoI4/Source/Mappers/TechMapper.h"
-#include "../../Vic2ToHoI4/Source/OutHoi4/OutTechnologies.h"
-#include "../Vic2ToHoI4/Source/HOI4World/Technologies.h"
+#include "Mappers/TechMapper.h"
+#include "OutHoi4/OutTechnologies.h"
+#include "HOI4World/Technologies.h"
 #include "gtest/gtest.h"
 #include <memory>
 #include <sstream>

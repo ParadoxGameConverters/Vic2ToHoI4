@@ -3,14 +3,14 @@
 
 
 
-#include "../../Configuration.h"
-#include "../States/DefaultState.h"
 #include "AgentRecruitmentDecisions.h"
+#include "Configuration.h"
 #include "DecisionsCategories.h"
 #include "DecisionsInCategory.h"
 #include "ExiledGovernmentsDecisions.h"
 #include "ForeignInfluenceDecisions.h"
 #include "GenericDecisions.h"
+#include "HoI4World/States/DefaultState.h"
 #include "NavalTreatyDecisions.h"
 #include "Parser.h"
 #include "PoliticalDecisions.h"

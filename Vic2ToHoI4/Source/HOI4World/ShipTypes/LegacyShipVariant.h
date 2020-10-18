@@ -3,7 +3,7 @@
 
 
 
-#include "../Technologies.h"
+#include "HoI4World/Technologies.h"
 #include "Parser.h"
 #include <map>
 #include <set>

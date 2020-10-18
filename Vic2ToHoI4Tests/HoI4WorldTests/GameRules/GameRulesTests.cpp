@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/GameRules/GameRules.h"
+#include "HOI4World/GameRules/GameRules.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

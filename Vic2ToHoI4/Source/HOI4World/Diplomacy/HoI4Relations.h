@@ -3,7 +3,7 @@
 
 
 
-#include "../../V2World/Diplomacy/Relations.h"
+#include "V2World/Diplomacy/Relations.h"
 
 
 

@@ -3,7 +3,7 @@
 
 
 
-#include "../../Configuration.h"
+#include "Configuration.h"
 #include "CultureGroupFactory.h"
 #include "CultureGroups.h"
 #include "Parser.h"

@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Sounds/SoundEffectsMapping.h"
+#include "HOI4World/Sounds/SoundEffectsMapping.h"
 #include "gtest/gtest.h"
 
 

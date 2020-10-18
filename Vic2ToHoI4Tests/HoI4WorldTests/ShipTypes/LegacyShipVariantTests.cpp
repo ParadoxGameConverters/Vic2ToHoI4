@@ -1,5 +1,5 @@
-#include "../../Mocks/TechnologiesMock.h"
-#include "../../Vic2ToHoI4/Source/HOI4World/ShipTypes/LegacyShipVariant.h"
+#include "Mocks/TechnologiesMock.h"
+#include "HOI4World/ShipTypes/LegacyShipVariant.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

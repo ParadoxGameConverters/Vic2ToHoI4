@@ -2,7 +2,7 @@
 #define OUT_WAR_H
 
 
-#include "../../HOI4World/Diplomacy/HoI4War.h"
+#include "HOI4World/Diplomacy/HoI4War.h"
 #include <ostream>
 
 

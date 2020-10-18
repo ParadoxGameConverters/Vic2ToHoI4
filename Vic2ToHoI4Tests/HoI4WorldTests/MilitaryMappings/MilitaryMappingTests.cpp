@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/MilitaryMappings/MilitaryMappings.h"
+#include "HOI4World/MilitaryMappings/MilitaryMappings.h"
 #include "gtest/gtest.h"
 
 

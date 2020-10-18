@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/States/StateCategoryFile.h"
+#include "HOI4World/States/StateCategoryFile.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

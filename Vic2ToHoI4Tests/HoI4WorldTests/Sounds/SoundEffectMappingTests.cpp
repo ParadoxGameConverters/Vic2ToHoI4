@@ -1,5 +1,5 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Sounds/SoundEffectMapping.h"
-#include "../Vic2ToHoI4/Source/HOI4World/Sounds/SoundEffectMappingFactory.h"
+#include "HOI4World/Sounds/SoundEffectMapping.h"
+#include "HOI4World/Sounds/SoundEffectMappingFactory.h"
 #include "gtest/gtest.h"
 
 

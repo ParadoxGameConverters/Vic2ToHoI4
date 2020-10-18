@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/ShipTypes/ShipVariants.h"
+#include "HOI4World/ShipTypes/ShipVariants.h"
 #include <ostream>
 
 

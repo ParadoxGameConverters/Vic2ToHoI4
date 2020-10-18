@@ -3,7 +3,7 @@
 
 
 
-#include "../HOI4World/Ideologies/Ideologies.h"
+#include "HOI4World/Ideologies/Ideologies.h"
 #include "Parser.h"
 #include <set>
 #include <string>

@@ -3,7 +3,7 @@
 
 
 
-#include "../../Vic2ToHoI4/Source/V2World/Country.h"
+#include "V2World/Country.h"
 #include "gmock/gmock.h"
 
 

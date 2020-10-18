@@ -23,7 +23,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 #include "OnActions.h"
 #include "Log.h"
-#include "../Configuration.h"
+#include "Configuration.h"
 #include <fstream>
 
 

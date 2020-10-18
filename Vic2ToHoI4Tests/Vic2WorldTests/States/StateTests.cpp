@@ -1,8 +1,8 @@
-#include "../../../Vic2ToHoI4/Source/V2World/Pops/PopBuilder.h"
-#include "../../../Vic2ToHoI4/Source/V2World/Provinces/Province.h"
-#include "../../../Vic2ToHoI4/Source/V2World/Provinces/ProvinceBuilder.h"
-#include "../../../Vic2ToHoI4/Source/V2World/States/State.h"
-#include "../../../Vic2ToHoI4/Source/V2World/States/StateBuilder.h"
+#include "V2World/Pops/PopBuilder.h"
+#include "V2World/Provinces/Province.h"
+#include "V2World/Provinces/ProvinceBuilder.h"
+#include "V2World/States/State.h"
+#include "V2World/States/StateBuilder.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 

@@ -2,7 +2,7 @@
 #define OUT_ADVISOR_H
 
 
-#include "../../HOI4World/Leaders/Advisor.h"
+#include "HOI4World/Leaders/Advisor.h"
 #include <ostream>
 
 
