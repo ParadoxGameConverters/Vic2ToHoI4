@@ -96,7 +96,6 @@
 					}
 				}
 				has_war_support > 0.2
-
 			}
 
 			ai_will_do = {
@@ -193,7 +192,6 @@
 				#		ratio > 0.75
 				#	}
 				#}
-
 			}
 
 			ai_will_do = {
@@ -410,7 +408,6 @@
 
 			available = {
 				has_war_support > 0.25
-
 			}
 
 			cost = 150
