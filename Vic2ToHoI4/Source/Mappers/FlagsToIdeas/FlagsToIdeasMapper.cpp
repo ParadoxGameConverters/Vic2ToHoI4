@@ -1,4 +1,5 @@
 #include "FlagsToIdeasMapper.h"
+#include "FlagToIdeaMapping.h"
 
 
 

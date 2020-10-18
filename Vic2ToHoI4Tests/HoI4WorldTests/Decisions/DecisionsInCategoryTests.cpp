@@ -1,5 +1,5 @@
-#include "../../Mocks/EventsMock.h"
-#include "../Vic2ToHoI4/Source/HOI4World/Decisions/DecisionsInCategory.h"
+#include "Mocks/EventsMock.h"
+#include "HOI4World/Decisions/DecisionsInCategory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

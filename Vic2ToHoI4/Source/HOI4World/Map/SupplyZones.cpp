@@ -1,8 +1,8 @@
 #include "SupplyZones.h"
-#include "../../Configuration.h"
-#include "../States/DefaultState.h"
-#include "../States/HoI4State.h"
-#include "../States/HoI4States.h"
+#include "Configuration.h"
+#include "HOI4World/States/DefaultState.h"
+#include "HOI4World/States/HoI4State.h"
+#include "HOI4World/States/HoI4States.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
@@ -34,7 +34,8 @@ HoI4::SupplyZones::SupplyZones(const std::map<int, DefaultState>& defaultStates,
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
-	for (const auto& supplyZonesFile: commonItems::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/map/supplyareas"))
+	for (const auto& supplyZonesFile:
+		 commonItems::GetAllFilesInFolder(theConfiguration.getHoI4Path() + "/map/supplyareas"))
 	{
 		auto num = stoi(supplyZonesFile.substr(0, supplyZonesFile.find_first_of('-')));
 		supplyZonesFileNames.insert(make_pair(num, supplyZonesFile));

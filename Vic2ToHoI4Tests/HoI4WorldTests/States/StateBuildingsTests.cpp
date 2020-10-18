@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/States/StateBuildings.h"
+#include "HOI4World/States/StateBuildings.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

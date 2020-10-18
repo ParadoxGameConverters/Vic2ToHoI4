@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/GameRules/GameRule.h"
+#include "HOI4World/GameRules/GameRule.h"
 #include <ostream>
 
 

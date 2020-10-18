@@ -3,7 +3,7 @@
 
 
 
-#include "../../Vic2ToHoI4/Source/V2World/World.h"
+#include "V2World/World.h"
 #include "gmock/gmock.h"
 
 

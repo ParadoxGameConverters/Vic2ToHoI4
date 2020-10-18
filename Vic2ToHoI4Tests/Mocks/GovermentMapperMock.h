@@ -3,7 +3,7 @@
 
 
 
-#include "../Vic2ToHoI4/Source/Mappers/GovernmentMapper.h"
+#include "Mappers/GovernmentMapper.h"
 
 
 

@@ -5,7 +5,6 @@
 
 #include "DecisionsCategory.h"
 #include "Parser.h"
-#include <istream>
 #include <string>
 
 

@@ -3,7 +3,7 @@
 
 
 
-#include "../../Configuration.h"
+#include "Configuration.h"
 #include <set>
 #include <string>
 

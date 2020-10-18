@@ -1,5 +1,5 @@
-#include "../../../Vic2ToHoI4/Source/HOI4World/Decisions/DecisionsCategory.h"
-#include "../../../Vic2ToHoI4/Source/OutHoi4/Decisions/OutDecisionsCategory.h"
+#include "HOI4World/Decisions/DecisionsCategory.h"
+#include "OutHoi4/Decisions/OutDecisionsCategory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

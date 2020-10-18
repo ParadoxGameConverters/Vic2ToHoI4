@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Operations/OperationsFactory.h"
+#include "HOI4World/Operations/OperationsFactory.h"
 #include "gtest/gtest.h"
 
 

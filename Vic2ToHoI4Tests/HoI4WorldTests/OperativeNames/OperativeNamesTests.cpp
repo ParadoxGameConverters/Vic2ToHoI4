@@ -1,5 +1,5 @@
-#include "../Vic2ToHoI4/Source/HOI4World/OperativeNames/OperativeNames.h"
-#include "../Vic2ToHoI4/Source/HOI4World/OperativeNames/OperativeNamesFactory.h"
+#include "HOI4World/OperativeNames/OperativeNames.h"
+#include "HOI4World/OperativeNames/OperativeNamesFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

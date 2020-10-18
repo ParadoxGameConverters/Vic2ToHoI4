@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/V2World/Wars/WarBuilder.h"
+#include "V2World/Wars/WarBuilder.h"
 #include "gtest/gtest.h"
 
 

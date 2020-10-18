@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/V2World/Wars/WarFactory.h"
+#include "V2World/Wars/WarFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

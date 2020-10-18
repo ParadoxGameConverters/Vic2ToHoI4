@@ -1,6 +1,6 @@
-#include "../../Mocks/CountryMapperMock.h"
-#include "../Vic2ToHoI4/Source/HOI4World/Diplomacy/HoI4War.h"
-#include "../Vic2ToHoI4/Source/V2World/Wars/WarBuilder.h"
+#include "Mocks/CountryMapperMock.h"
+#include "HOI4World/Diplomacy/HoI4War.h"
+#include "V2World/Wars/WarBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

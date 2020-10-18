@@ -1,6 +1,6 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Localisations/ArticleRules/ArticleRuleBuilder.h"
-#include "../Vic2ToHoI4/Source/HOI4World/Localisations/ArticleRules/ArticleRules.h"
-#include "../Vic2ToHoI4/Source/HOI4World/Localisations/ArticleRules/ArticleRulesBuilder.h"
+#include "HOI4World/Localisations/ArticleRules/ArticleRuleBuilder.h"
+#include "HOI4World/Localisations/ArticleRules/ArticleRules.h"
+#include "HOI4World/Localisations/ArticleRules/ArticleRulesBuilder.h"
 #include "gtest/gtest.h"
 
 

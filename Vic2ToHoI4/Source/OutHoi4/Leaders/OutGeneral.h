@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/Leaders/General.h"
+#include "HOI4World/Leaders/General.h"
 
 
 

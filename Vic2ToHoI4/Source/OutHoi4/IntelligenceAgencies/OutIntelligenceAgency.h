@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/IntelligenceAgencies/IntelligenceAgency.h"
+#include "HOI4World/IntelligenceAgencies/IntelligenceAgency.h"
 #include <ostream>
 
 

@@ -1,6 +1,6 @@
-#include "../../../Vic2ToHoI4/Source/Configuration.h"
-#include "../../../Vic2ToHoI4/Source/V2World/Mods/ModBuilder.h"
-#include "../../../Vic2ToHoI4/Source/V2World/States/StateDefinitionsFactory.h"
+#include "Configuration.h"
+#include "V2World/Mods/ModBuilder.h"
+#include "V2World/States/StateDefinitionsFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

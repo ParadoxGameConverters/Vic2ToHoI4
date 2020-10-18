@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/Navies/Navies.h"
+#include "HOI4World/Navies/Navies.h"
 
 
 

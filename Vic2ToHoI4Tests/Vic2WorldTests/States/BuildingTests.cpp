@@ -1,4 +1,4 @@
-#include "../../../Vic2ToHoI4/Source/V2World/States/BuildingReader.h"
+#include "V2World/States/BuildingReader.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

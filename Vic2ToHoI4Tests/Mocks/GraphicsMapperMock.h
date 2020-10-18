@@ -3,7 +3,7 @@
 
 
 
-#include "../../Vic2ToHoI4/Source/Mappers/GraphicsMapper.h"
+#include "Mappers/GraphicsMapper.h"
 #include "gmock/gmock.h"
 
 

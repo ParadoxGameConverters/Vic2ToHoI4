@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/Diplomacy/AIPeace.h"
+#include "HOI4World/Diplomacy/AIPeace.h"
 #include <ostream>
 
 

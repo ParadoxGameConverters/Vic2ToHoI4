@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Map/Hoi4Building.h"
+#include "HOI4World/Map/Hoi4Building.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

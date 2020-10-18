@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/Navies/MtgShip.h"
+#include "HOI4World/Navies/MtgShip.h"
 #include <ostream>
 
 

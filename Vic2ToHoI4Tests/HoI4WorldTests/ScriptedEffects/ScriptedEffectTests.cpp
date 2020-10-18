@@ -1,5 +1,5 @@
-#include "../Vic2ToHoI4/Source/HOI4World/ScriptedEffects/ScriptedEffect.h"
-#include "../Vic2ToHoI4/Source/HOI4World/ScriptedEffects/ScriptedEffectFactory.h"
+#include "HOI4World/ScriptedEffects/ScriptedEffect.h"
+#include "HOI4World/ScriptedEffects/ScriptedEffectFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

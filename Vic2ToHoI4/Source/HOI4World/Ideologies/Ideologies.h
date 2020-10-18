@@ -3,8 +3,8 @@
 
 
 
-#include "../../Configuration.h"
-#include "../HoI4Country.h"
+#include "Configuration.h"
+#include "HOI4World/HoI4Country.h"
 #include "Ideology.h"
 #include "Parser.h"
 #include <map>

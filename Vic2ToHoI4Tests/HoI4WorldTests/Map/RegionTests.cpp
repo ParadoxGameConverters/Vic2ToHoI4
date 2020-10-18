@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Map/Region.h"
+#include "HOI4World/Map/Region.h"
 #include "gtest/gtest.h"
 
 

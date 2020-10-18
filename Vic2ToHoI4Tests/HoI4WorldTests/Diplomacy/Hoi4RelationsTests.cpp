@@ -1,5 +1,5 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Diplomacy/HoI4Relations.h"
-#include "../Vic2ToHoI4/Source/V2World/Diplomacy/RelationsBuilder.h"
+#include "HOI4World/Diplomacy/HoI4Relations.h"
+#include "V2World/Diplomacy/RelationsBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

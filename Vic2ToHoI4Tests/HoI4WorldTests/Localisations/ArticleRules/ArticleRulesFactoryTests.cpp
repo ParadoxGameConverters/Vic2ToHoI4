@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Localisations/ArticleRules/ArticleRulesFactory.h"
+#include "HOI4World/Localisations/ArticleRules/ArticleRulesFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

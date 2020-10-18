@@ -3,7 +3,7 @@
 
 
 
-#include "../../Vic2ToHoI4/Source/Mappers/CountryMapping.h"
+#include "Mappers/CountryMapping.h"
 #include "gmock/gmock.h"
 
 

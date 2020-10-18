@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/Diplomacy/AIPeaces.h"
+#include "HOI4World/Diplomacy/AIPeaces.h"
 #include <set>
 
 

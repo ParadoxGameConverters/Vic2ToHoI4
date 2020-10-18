@@ -3,8 +3,8 @@
 
 
 
-#include "../Configuration.h"
-#include "../HOI4World/OnActions.h"
+#include "Configuration.h"
+#include "HOI4World/OnActions.h"
 #include <set>
 
 

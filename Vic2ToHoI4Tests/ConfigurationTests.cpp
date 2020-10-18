@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/Configuration.h"
+#include "Configuration.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

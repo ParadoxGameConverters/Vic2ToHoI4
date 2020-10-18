@@ -1,4 +1,4 @@
-#include "../../Vic2ToHoI4/Source/V2World/Issues/IssuesFactory.h"
+#include "V2World/Issues/IssuesFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

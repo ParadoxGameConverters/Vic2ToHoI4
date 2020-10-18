@@ -3,10 +3,10 @@
 
 
 
-#include "../Mappers/CountryMapping.h"
-#include "../Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
-#include "../Mappers/GovernmentMapper.h"
-#include "../Mappers/GraphicsMapper.h"
+#include "Mappers/CountryMapping.h"
+#include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
+#include "Mappers/GovernmentMapper.h"
+#include "Mappers/GraphicsMapper.h"
 #include "Decisions/Decisions.h"
 #include "Diplomacy/AIPeaces.h"
 #include "GameRules/GameRules.h"

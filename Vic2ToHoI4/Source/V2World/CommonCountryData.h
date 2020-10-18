@@ -7,7 +7,6 @@
 #include "Mods/Mod.h"
 #include "Parser.h"
 #include "Politics/Party.h"
-#include "Politics/PartyFactory.h"
 #include <map>
 #include <optional>
 #include <string>

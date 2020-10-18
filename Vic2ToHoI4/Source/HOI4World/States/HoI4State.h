@@ -3,11 +3,10 @@
 
 
 
-#include "../../Configuration.h"
-#include "../../Mappers/CountryMapping.h"
-#include "../../Mappers/Provinces/ProvinceMapper.h"
+#include "Configuration.h"
+#include "Mappers/CountryMapping.h"
+#include "Mappers/Provinces/ProvinceMapper.h"
 #include "Parser.h"
-#include <list>
 #include <map>
 #include <optional>
 #include <set>

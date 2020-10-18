@@ -1,5 +1,5 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Localisations/ArticleRules/ArticleRule.h"
-#include "../Vic2ToHoI4/Source/HOI4World/Localisations/ArticleRules/ArticleRuleBuilder.h"
+#include "HOI4World/Localisations/ArticleRules/ArticleRule.h"
+#include "HOI4World/Localisations/ArticleRules/ArticleRuleBuilder.h"
 #include "gtest/gtest.h"
 
 

@@ -1,4 +1,9 @@
-#include "../HoI4Country.h"
+#ifndef HOI4_WAR_CREATOR_H
+#define HOI4_WAR_CREATOR_H
+
+
+
+#include "HOI4World/HoI4Country.h"
 #include <fstream>
 #include <map>
 #include <optional>
@@ -168,3 +173,7 @@ class HoI4WarCreator
 
 	map<int, string> provinceToOwnerMap;
 };
+
+
+
+#endif // HOI4_WAR_CREATOR_H

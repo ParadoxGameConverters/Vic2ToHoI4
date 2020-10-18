@@ -3,8 +3,8 @@
 
 
 
-#include "../../Configuration.h"
-#include "../../V2World/Politics/Party.h"
+#include "Configuration.h"
+#include "V2World/Politics/Party.h"
 #include "Event.h"
 #include "Parser.h"
 #include <map>

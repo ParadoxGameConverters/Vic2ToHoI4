@@ -22,7 +22,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 #include "gtest/gtest.h"
-#include "../Vic2ToHoI4/Source/Mappers/FlagsToIdeas/FlagToIdeaMapping.h"
+#include "Mappers/FlagsToIdeas/FlagToIdeaMapping.h"
 #include <sstream>
 
 

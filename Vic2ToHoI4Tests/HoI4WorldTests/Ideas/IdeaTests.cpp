@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Ideas/Idea.h"
+#include "HOI4World/Ideas/Idea.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

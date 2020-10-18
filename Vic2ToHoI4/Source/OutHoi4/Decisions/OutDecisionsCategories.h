@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/Decisions/DecisionsCategories.h"
+#include "HOI4World/Decisions/DecisionsCategories.h"
 #include <string>
 
 

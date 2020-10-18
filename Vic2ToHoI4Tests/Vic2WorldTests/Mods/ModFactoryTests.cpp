@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/V2World/Mods/ModFactory.h"
+#include "V2World/Mods/ModFactory.h"
 #include "gtest/gtest.h"
 
 

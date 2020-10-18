@@ -3,13 +3,13 @@
 
 
 
-#include "../../Mappers/Provinces/ProvinceMapper.h"
-#include "../../V2World/States/State.h"
-#include "../Map/Hoi4Province.h"
-#include "../Map/MapData.h"
-#include "../Map/StrategicRegions.h"
 #include "DefaultState.h"
+#include "HOI4World/Map/Hoi4Province.h"
+#include "HOI4World/Map/MapData.h"
+#include "HOI4World/Map/StrategicRegions.h"
+#include "Mappers/Provinces/ProvinceMapper.h"
 #include "Parser.h"
+#include "V2World/States/State.h"
 #include <map>
 #include <optional>
 #include <set>

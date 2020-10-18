@@ -1,4 +1,4 @@
-#include "../../Mocks/TechnologiesMock.h"
+#include "Mocks/TechnologiesMock.h"
 #include "HOI4World/Navies/Navies.h"
 #include "HOI4World/ProvinceDefinitions.h"
 #include "OutHoi4/Navies/OutNavies.h"

@@ -3,7 +3,7 @@
 
 
 
-#include "../../Vic2ToHoI4/Source/HOI4World/States/StateCategories.h"
+#include "HOI4World/States/StateCategories.h"
 #include "gmock/gmock.h"
 
 

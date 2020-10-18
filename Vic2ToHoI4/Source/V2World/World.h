@@ -5,9 +5,9 @@
 
 #include "Culture/CultureGroups.h"
 #include "Diplomacy/Diplomacy.h"
+#include "Localisations/Vic2Localisations.h"
 #include "Mods/Mod.h"
 #include "Parser.h"
-#include "Politics/Party.h"
 #include "States/StateDefinitions.h"
 #include "Wars/War.h"
 #include <map>
@@ -27,8 +27,6 @@ class ProvinceMapper;
 namespace Vic2
 {
 class Country;
-class Localisations;
-class Party;
 class Province;
 
 

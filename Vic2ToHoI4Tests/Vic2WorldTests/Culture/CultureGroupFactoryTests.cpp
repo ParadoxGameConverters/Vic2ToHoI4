@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/V2World/Culture/CultureGroupFactory.h"
+#include "V2World/Culture/CultureGroupFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

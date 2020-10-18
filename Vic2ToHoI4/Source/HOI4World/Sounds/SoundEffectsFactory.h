@@ -3,7 +3,7 @@
 
 
 
-#include "../HoI4Country.h"
+#include "HOI4World/HoI4Country.h"
 #include "SoundEffect.h"
 #include "SoundEffectsMapper.h"
 #include <map>
@@ -20,7 +20,8 @@ class SoundEffectsFactory
   public:
 	SoundEffectsFactory();
 
-	[[nodiscard]] std::vector<SoundEffect> createSoundEffects(const std::map<std::string, std::shared_ptr<Country>>& countries) const;
+	[[nodiscard]] std::vector<SoundEffect> createSoundEffects(
+		 const std::map<std::string, std::shared_ptr<Country>>& countries) const;
 
   private:
 	std::unique_ptr<SoundEffectsMapper> soundEffectsMapper;

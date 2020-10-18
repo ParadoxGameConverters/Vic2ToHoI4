@@ -3,8 +3,8 @@
 
 
 
-#include "../HoI4Country.h"
-#include "../Names/Names.h"
+#include "HOI4World/HoI4Country.h"
+#include "HOI4World/Names/Names.h"
 #include "IntelligenceAgencyLogos.h"
 #include <string>
 

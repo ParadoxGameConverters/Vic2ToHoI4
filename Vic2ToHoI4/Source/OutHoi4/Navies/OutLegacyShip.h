@@ -3,7 +3,7 @@
 
 
 
-#include "../../HOI4World/Navies/LegacyShip.h"
+#include "HOI4World/Navies/LegacyShip.h"
 #include <ostream>
 
 

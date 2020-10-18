@@ -1,6 +1,6 @@
-#include "../Vic2ToHoI4/Source/V2World/Culture/CultureGroups.h"
-#include "../Vic2ToHoI4/Source/V2World/Culture/CultureGroupsFactory.h"
-#include "../Vic2ToHoI4/Source/V2World/Mods/ModBuilder.h"
+#include "V2World/Culture/CultureGroups.h"
+#include "V2World/Culture/CultureGroupsFactory.h"
+#include "V2World/Mods/ModBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

@@ -1,6 +1,6 @@
 #include "Navies.h"
-#include "../../HOI4World/ProvinceDefinitions.h"
-#include "../../Mappers/Provinces/ProvinceMapper.h"
+#include "HOI4World/ProvinceDefinitions.h"
+#include "Mappers/Provinces/ProvinceMapper.h"
 #include "Log.h"
 
 

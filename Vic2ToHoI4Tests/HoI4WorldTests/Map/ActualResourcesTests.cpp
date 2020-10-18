@@ -1,4 +1,4 @@
-#include "../Vic2ToHoI4/Source/HOI4World/Map/ActualResources.h"
+#include "HOI4World/Map/ActualResources.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

@@ -2,7 +2,7 @@
 #define OUT_GAME_RULE_OPTION
 
 
-#include "../../HOI4World/GameRules/GameRuleOption.h"
+#include "HOI4World/GameRules/GameRuleOption.h"
 #include <ostream>
 
 

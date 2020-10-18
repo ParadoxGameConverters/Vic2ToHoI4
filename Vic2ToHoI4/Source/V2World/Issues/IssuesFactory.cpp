@@ -1,5 +1,5 @@
 #include "IssuesFactory.h"
-#include "../../Configuration.h"
+#include "Configuration.h"
 #include "IssueCategoryHelper.h"
 #include "ParserHelpers.h"
 

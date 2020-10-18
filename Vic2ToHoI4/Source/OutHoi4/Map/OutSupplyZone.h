@@ -3,8 +3,8 @@
 
 
 
-#include "../../Configuration.h"
-#include "../../HOI4World/Map/SupplyZone.h"
+#include "Configuration.h"
+#include "HOI4World/Map/SupplyZone.h"
 
 
 

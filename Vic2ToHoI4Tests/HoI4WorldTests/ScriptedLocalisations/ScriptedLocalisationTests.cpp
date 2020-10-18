@@ -1,5 +1,5 @@
-#include "../Vic2ToHoI4/Source/HOI4World/ScriptedLocalisations/ScriptedLocalisation.h"
-#include "../Vic2ToHoI4/Source/HOI4World/ScriptedLocalisations/ScriptedLocalisationFactory.h"
+#include "HOI4World/ScriptedLocalisations/ScriptedLocalisation.h"
+#include "HOI4World/ScriptedLocalisations/ScriptedLocalisationFactory.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

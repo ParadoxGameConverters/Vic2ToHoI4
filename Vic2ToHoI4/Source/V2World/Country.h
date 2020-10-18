@@ -8,7 +8,6 @@
 #include "Diplomacy/RelationsFactory.h"
 #include "Military/Army.h"
 #include "Military/LeaderFactory.h"
-#include "Military/ArmyFactory.h"
 #include "Parser.h"
 #include "Politics/Party.h"
 #include "States/StateFactory.h"

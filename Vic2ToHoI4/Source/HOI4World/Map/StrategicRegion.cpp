@@ -1,5 +1,5 @@
 #include "StrategicRegion.h"
-#include "../../Configuration.h"
+#include "Configuration.h"
 #include "ParserHelpers.h"
 #include "Region.h"
 #include <fstream>

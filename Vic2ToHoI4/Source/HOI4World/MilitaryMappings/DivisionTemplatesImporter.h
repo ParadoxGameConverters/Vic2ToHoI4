@@ -3,7 +3,7 @@
 
 
 
-#include "../Military/DivisionTemplate.h"
+#include "HOI4World/Military/DivisionTemplate.h"
 #include "Parser.h"
 
 

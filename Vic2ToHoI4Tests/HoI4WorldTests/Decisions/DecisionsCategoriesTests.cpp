@@ -1,4 +1,4 @@
-#include "../../../Vic2ToHoI4/Source/HOI4World/Decisions/DecisionsCategories.h"
+#include "HOI4World/Decisions/DecisionsCategories.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

@@ -1,5 +1,5 @@
-#include "../Vic2ToHoI4/Source/HOI4World/MilitaryMappings/AllMilitaryMappings.h"
-#include "../Vic2ToHoI4/Source/V2World/Mods/ModBuilder.h"
+#include "HOI4World/MilitaryMappings/AllMilitaryMappings.h"
+#include "V2World/Mods/ModBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 

@@ -1,4 +1,5 @@
 #include "OutTechnologies.h"
+#include <ostream>
 
 
 

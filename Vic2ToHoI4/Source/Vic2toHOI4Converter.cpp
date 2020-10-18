@@ -4,7 +4,6 @@
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "OSCompatibilityLayer.h"
 #include "OutHoi4/OutMod.h"
-#include "V2World/Localisations/Vic2Localisations.h"
 #include "V2World/World.h"
 #include <stdexcept>
 
