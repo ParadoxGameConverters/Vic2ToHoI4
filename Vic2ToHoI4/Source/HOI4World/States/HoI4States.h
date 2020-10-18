@@ -4,9 +4,9 @@
 
 
 #include "DefaultState.h"
-#include "HoI4World/Map/Hoi4Province.h"
-#include "HoI4World/Map/MapData.h"
-#include "HoI4World/Map/StrategicRegions.h"
+#include "HOI4World/Map/Hoi4Province.h"
+#include "HOI4World/Map/MapData.h"
+#include "HOI4World/Map/StrategicRegions.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Parser.h"
 #include "V2World/States/State.h"

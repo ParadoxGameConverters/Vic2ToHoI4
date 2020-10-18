@@ -1,5 +1,5 @@
 #include "HoI4State.h"
-#include "HoI4World/Map/CoastalProvinces.h"
+#include "HOI4World/Map/CoastalProvinces.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"

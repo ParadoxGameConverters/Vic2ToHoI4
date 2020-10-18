@@ -1,6 +1,6 @@
 #include "StrategicRegions.h"
-#include "HoI4World/States/HoI4State.h"
-#include "HoI4World/States/HoI4States.h"
+#include "HOI4World/States/HoI4State.h"
+#include "HOI4World/States/HoI4States.h"
 #include "OSCompatibilityLayer.h"
 #include <set>
 

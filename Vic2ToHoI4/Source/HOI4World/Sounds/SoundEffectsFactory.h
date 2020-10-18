@@ -3,7 +3,7 @@
 
 
 
-#include "HoI4World/HoI4Country.h"
+#include "HOI4World/HoI4Country.h"
 #include "SoundEffect.h"
 #include "SoundEffectsMapper.h"
 #include <map>

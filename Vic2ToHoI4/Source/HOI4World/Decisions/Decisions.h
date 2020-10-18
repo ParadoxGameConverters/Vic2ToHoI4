@@ -10,7 +10,7 @@
 #include "ExiledGovernmentsDecisions.h"
 #include "ForeignInfluenceDecisions.h"
 #include "GenericDecisions.h"
-#include "HoI4World/States/DefaultState.h"
+#include "HOI4World/States/DefaultState.h"
 #include "NavalTreatyDecisions.h"
 #include "Parser.h"
 #include "PoliticalDecisions.h"

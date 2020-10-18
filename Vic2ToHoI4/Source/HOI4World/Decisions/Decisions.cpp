@@ -1,5 +1,5 @@
 #include "Decisions.h"
-#include "HoI4World/Events/Events.h"
+#include "HOI4World/Events/Events.h"
 #include "Log.h"
 #include <regex>
 

@@ -1,4 +1,4 @@
-#include "HoI4World/HoI4Country.h"
+#include "HOI4World/HoI4Country.h"
 #include <fstream>
 #include <map>
 #include <optional>

@@ -4,7 +4,7 @@
 
 
 #include "Configuration.h"
-#include "HoI4World/HoI4Country.h"
+#include "HOI4World/HoI4Country.h"
 #include "Ideology.h"
 #include "Parser.h"
 #include <map>

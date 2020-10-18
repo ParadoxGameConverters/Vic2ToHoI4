@@ -3,7 +3,7 @@
 
 
 
-#include "HoI4World/Military/DivisionTemplate.h"
+#include "HOI4World/Military/DivisionTemplate.h"
 #include "MtgUnitMappings.h"
 #include "Parser.h"
 #include "UnitMappings.h"
