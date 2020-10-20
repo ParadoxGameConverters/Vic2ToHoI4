@@ -4,17 +4,11 @@
 
 
 #include "Parser.h"
+#include "V2World/World.h"
 #include <map>
 #include <optional>
 #include <string>
 #include <vector>
-
-
-
-namespace Vic2
-{
-class World;
-}
 
 
 

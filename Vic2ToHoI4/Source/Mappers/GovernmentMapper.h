@@ -5,16 +5,10 @@
 
 #include "HOI4World/Ideologies/Ideologies.h"
 #include "Parser.h"
+#include "V2World/Country.h"
 #include <set>
 #include <string>
 #include <vector>
-
-
-
-namespace Vic2
-{
-class Country;
-}
 
 
 
