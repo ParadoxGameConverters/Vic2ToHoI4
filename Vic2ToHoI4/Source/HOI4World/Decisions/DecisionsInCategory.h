@@ -2,7 +2,9 @@
 #define HOI4_DECISIONS_IN_CATEGORY_H
 
 
+
 #include "Decision.h"
+#include "HOI4World/Events/Events.h"
 #include "Parser.h"
 #include <set>
 #include <string>
@@ -12,8 +14,6 @@
 
 namespace HoI4
 {
-
-class Events;
 
 class DecisionsInCategory: commonItems::parser
 {
