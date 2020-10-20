@@ -3,6 +3,7 @@
 
 
 
+#include "Configuration.h"
 #include "Culture/CultureGroups.h"
 #include "Diplomacy/Diplomacy.h"
 #include "Localisations/Vic2Localisations.h"
