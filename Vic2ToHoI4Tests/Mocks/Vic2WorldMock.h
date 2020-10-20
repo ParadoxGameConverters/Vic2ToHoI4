@@ -3,15 +3,9 @@
 
 
 
+#include "V2World/Politics/Party.h"
 #include "V2World/World.h"
 #include "gmock/gmock.h"
-
-
-
-namespace Vic2
-{
-class Party;
-}
 
 
 
