@@ -3,6 +3,7 @@
 
 
 
+#include "Advisor.h"
 #include "Parser.h"
 #include <map>
 #include <string>
@@ -11,20 +12,19 @@
 
 namespace HoI4
 {
-class Advisor;
 
 class IdeologicalAdvisors: commonItems::parser
 {
-	public:
-		IdeologicalAdvisors() noexcept;
+  public:
+	IdeologicalAdvisors() noexcept;
 
-		[[nodiscard]] const auto& getAdvisors() const { return theAdvisors; }
+	[[nodiscard]] const auto& getAdvisors() const { return theAdvisors; }
 
-	private:
-		std::map<std::string, Advisor> theAdvisors;
+  private:
+	std::map<std::string, Advisor> theAdvisors;
 };
 
-}
+} // namespace HoI4
 
 
 
