@@ -3,24 +3,20 @@
 
 
 
+#include "Configuration.h"
+#include "HOI4World/HoI4Country.h"
+#include "HOI4World/Leaders/Advisor.h"
+#include "HOI4World/Military/DivisionTemplate.h"
+#include "HOI4World/Names/Names.h"
+#include "Mappers/GraphicsMapper.h"
 #include <ostream>
 #include <set>
 #include <vector>
 
 
 
-class Configuration;
-class graphicsMapper;
-
-
 namespace HoI4
 {
-
-class Advisor;
-class Country;
-class DivisionTemplateType;
-class Names;
-
 
 void outputToCommonCountriesFile(std::ostream& countriesFile, const Country& theCountry);
 void outputColors(std::ostream& out, const Country& theCountry);
