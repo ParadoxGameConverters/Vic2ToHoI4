@@ -4,11 +4,14 @@
 
 
 #include "Configuration.h"
+#include "Country.h"
 #include "Culture/CultureGroups.h"
 #include "Diplomacy/Diplomacy.h"
 #include "Localisations/Vic2Localisations.h"
+#include "Mappers/Provinces/ProvinceMapper.h"
 #include "Mods/Mod.h"
 #include "Parser.h"
+#include "Provinces/Province.h"
 #include "States/StateDefinitions.h"
 #include "Wars/War.h"
 #include <map>
@@ -19,17 +22,8 @@
 
 
 
-namespace mappers
-{
-class ProvinceMapper;
-}
-
-
 namespace Vic2
 {
-class Country;
-class Province;
-
 
 class World: commonItems::parser
 {

@@ -4,6 +4,7 @@
 
 
 #include "Color.h"
+#include "Configuration.h"
 #include "Mods/Mod.h"
 #include "Parser.h"
 #include "Politics/Party.h"
@@ -11,10 +12,6 @@
 #include <optional>
 #include <string>
 #include <vector>
-
-
-
-class Configuration;
 
 
 
