@@ -3,39 +3,24 @@
 
 
 
-#include "V2World/States/State.h"
+#include "Configuration.h"
 #include "Localisations/ArticleRules/ArticleRules.h"
+#include "Mappers/GovernmentMapper.h"
+#include "Mappers/Provinces/ProvinceMapper.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
+#include "States/HoI4State.h"
+#include "States/HoI4States.h"
+#include "V2World/Localisations/Vic2Localisations.h"
+#include "V2World/States/State.h"
+#include "V2World/States/StateDefinitions.h"
 #include <map>
 #include <optional>
 #include <string>
 
 
 
-class Configuration;
-
-
-namespace mappers
-{
-class ProvinceMapper;
-}
-
-
-namespace Vic2
-{
-class StateDefinitions;
-class Localisations;
-} // namespace Vic2
-
-
-class governmentMapper;
-
-
 namespace HoI4
 {
-
-class State;
-class States;
 
 using keyToLocalisationMap = std::map<std::string, std::string>;					  // key -> localisation
 using languageToLocalisationsMap = std::map<std::string, keyToLocalisationMap>; // language -> (key -> localisation)
