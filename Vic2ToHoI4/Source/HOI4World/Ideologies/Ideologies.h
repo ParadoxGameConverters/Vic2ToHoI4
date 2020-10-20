@@ -4,7 +4,6 @@
 
 
 #include "Configuration.h"
-#include "HOI4World/HoI4Country.h"
 #include "Ideology.h"
 #include "Parser.h"
 #include <map>
@@ -16,6 +15,8 @@
 
 namespace HoI4
 {
+
+class Country; // forward declaration to break circular dependency
 
 class Ideologies: commonItems::parser
 {
