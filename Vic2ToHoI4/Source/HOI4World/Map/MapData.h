@@ -3,16 +3,15 @@
 
 
 
+#include "Color.h"
+#include "Configuration.h"
+#include "HOI4World/ProvinceDefinitions.h"
 #include "ProvincePoints.h"
 #include "bitmap_image.hpp"
-#include "Color.h"
 #include <map>
 #include <optional>
 #include <set>
 
-
-
-class Configuration;
 
 
 typedef std::vector<point> borderPoints;
@@ -22,9 +21,6 @@ typedef std::map<int, borderPoints> bordersWith;
 
 namespace HoI4
 {
-
-class ProvinceDefinitions;
-
 
 class MapData
 {
