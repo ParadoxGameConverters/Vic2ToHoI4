@@ -11,10 +11,6 @@
 
 
 
-class Configuration;
-
-
-
 namespace HoI4
 {
 
