@@ -3,16 +3,13 @@
 
 
 
+#include "Configuration.h"
 #include "Parser.h"
 #include <map>
 #include <optional>
 #include <random>
 #include <string>
 #include <vector>
-
-
-
-class Configuration;
 
 
 
