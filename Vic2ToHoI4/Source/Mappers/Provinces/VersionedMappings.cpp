@@ -1,16 +1,19 @@
 #include "VersionedMappings.h"
 #include "ProvinceMapping.h"
-
+#include "ParserHelpers.h"
 
 
 mappers::VersionedMappings::VersionedMappings(std::istream& theStream)
 {
 	registerKeyword("link", [this](const std::string& unused, std::istream& theStream) {
 		const ProvinceMapping theMapping(theStream);
+		if (theMapping.getHoI4Provinces().empty() && theMapping.getVic2Provinces().empty())
+			return;
 		insertIntoHoI4ToVic2ProvinceMap(theMapping.getVic2Provinces(), theMapping.getHoI4Provinces());
 		insertIntoVic2ToHoI4ProvinceMap(theMapping.getVic2Provinces(), theMapping.getHoI4Provinces());
 	});
-
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+	
 	parseStream(theStream);
 }
 
