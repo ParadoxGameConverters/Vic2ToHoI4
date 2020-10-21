@@ -4,13 +4,10 @@
 
 
 #include "Color.h"
+#include "Configuration.h"
 #include <map>
 #include <optional>
 #include <set>
-
-
-
-class Configuration;
 
 
 
