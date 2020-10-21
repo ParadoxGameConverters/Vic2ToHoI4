@@ -5,6 +5,7 @@
 
 #include "HOI4World/MilitaryMappings/MtgUnitMappings.h"
 #include "HOI4World/MilitaryMappings/UnitMappings.h"
+#include "HOI4World/ProvinceDefinitions.h"
 #include "HOI4World/ShipTypes/ShipVariants.h"
 #include "HOI4World/States/HoI4State.h"
 #include "LegacyNavy.h"
@@ -18,9 +19,6 @@
 
 namespace HoI4
 {
-
-class ProvinceDefinitions;
-
 
 class Navies
 {
