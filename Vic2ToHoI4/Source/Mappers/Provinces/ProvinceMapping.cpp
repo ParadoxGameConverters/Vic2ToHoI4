@@ -13,6 +13,7 @@ mappers::ProvinceMapping::ProvinceMapping(std::istream& theStream)
 		const commonItems::singleInt provinceNum(theStream);
 		HoI4Provinces.push_back(provinceNum.getInt());
 	});
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
 

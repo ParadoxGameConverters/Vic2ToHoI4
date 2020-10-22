@@ -28,6 +28,7 @@ mappers::ProvinceMapper mappers::ProvinceMapper::Parser::initializeMapper(const 
 				 commonItems::ignoreItem(version, theStream);
 			 }
 		 });
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	Log(LogLevel::Info) << "Parsing province mappings";
 
