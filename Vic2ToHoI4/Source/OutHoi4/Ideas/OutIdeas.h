@@ -4,6 +4,7 @@
 
 
 #include "Configuration.h"
+#include "HOI4World/Ideas/Ideas.h"
 #include <set>
 #include <string>
 
@@ -11,8 +12,6 @@
 
 namespace HoI4
 {
-
-class Ideas;
 
 void outIdeas(const Ideas& ideas, const std::set<std::string>& majorIdeologies, const std::string& outputName);
 

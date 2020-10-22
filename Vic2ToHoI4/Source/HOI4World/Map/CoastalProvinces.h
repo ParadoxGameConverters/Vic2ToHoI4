@@ -3,21 +3,16 @@
 
 
 
+#include "Configuration.h"
+#include "HOI4World/Map/Hoi4Province.h"
+#include "MapData.h"
 #include <map>
 #include <vector>
 
 
 
-class Configuration;
-
-
-
 namespace HoI4
 {
-
-class MapData;
-class Province;
-
 
 class CoastalProvinces
 {

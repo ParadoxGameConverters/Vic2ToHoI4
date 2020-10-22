@@ -10,6 +10,7 @@
 #include "ExiledGovernmentsDecisions.h"
 #include "ForeignInfluenceDecisions.h"
 #include "GenericDecisions.h"
+#include "HOI4World/Events/Events.h"
 #include "HOI4World/States/DefaultState.h"
 #include "NavalTreatyDecisions.h"
 #include "Parser.h"
@@ -25,9 +26,6 @@
 
 namespace HoI4
 {
-
-class Events;
-
 
 class decisions: commonItems::parser
 {

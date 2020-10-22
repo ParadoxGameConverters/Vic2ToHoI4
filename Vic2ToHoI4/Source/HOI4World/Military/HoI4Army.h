@@ -14,14 +14,6 @@
 
 
 
-namespace Vic2
-{
-
-class Army;
-
-}
-
-
 namespace HoI4
 {
 

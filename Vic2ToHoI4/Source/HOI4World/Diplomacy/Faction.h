@@ -11,7 +11,7 @@
 namespace HoI4
 {
 
-class Country;
+class Country; // forward include to break circular dependency with Country
 
 
 class Faction

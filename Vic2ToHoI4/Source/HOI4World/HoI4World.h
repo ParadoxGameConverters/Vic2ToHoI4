@@ -3,23 +3,33 @@
 
 
 
+#include "Decisions/Decisions.h"
+#include "Diplomacy/AIPeaces.h"
+#include "Events/Events.h"
+#include "GameRules/GameRules.h"
+#include "HoI4Country.h"
+#include "HoI4Localisation.h"
+#include "Ideas/Ideas.h"
+#include "Ideologies/Ideologies.h"
+#include "Ideologies/Ideology.h"
+#include "IntelligenceAgencies/IntelligenceAgencies.h"
+#include "Leaders/Advisor.h"
+#include "Localisations/ArticleRules/ArticleRules.h"
+#include "Map/Buildings.h"
+#include "Map/CoastalProvinces.h"
+#include "Map/MapData.h"
+#include "Map/StrategicRegion.h"
+#include "Map/StrategicRegions.h"
+#include "Map/SupplyZones.h"
 #include "Mappers/CountryMapping.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/GovernmentMapper.h"
 #include "Mappers/GraphicsMapper.h"
-#include "Decisions/Decisions.h"
-#include "Diplomacy/AIPeaces.h"
-#include "GameRules/GameRules.h"
-#include "HoI4Localisation.h"
-#include "Ideas/Ideas.h"
-#include "Ideologies/Ideologies.h"
-#include "IntelligenceAgencies/IntelligenceAgencies.h"
-#include "Leaders/Advisor.h"
-#include "Localisations/ArticleRules/ArticleRules.h"
-#include "Map/CoastalProvinces.h"
-#include "Map/MapData.h"
-#include "Map/StrategicRegions.h"
+#include "Mappers/Provinces/ProvinceMapper.h"
+#include "Mappers/TechMapper.h"
+#include "Military/DivisionTemplate.h"
 #include "MilitaryMappings/AllMilitaryMappings.h"
+#include "MilitaryMappings/HoI4UnitType.h"
 #include "MilitaryMappings/UnitMappings.h"
 #include "Names/Names.h"
 #include "OccupationLaws/OccupationLawsFactory.h"
@@ -27,11 +37,16 @@
 #include "Operations/Operations.h"
 #include "OperativeNames/OperativeNames.h"
 #include "Parser.h"
+#include "ProvinceDefinitions.h"
 #include "ScriptedEffects/ScriptedEffects.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
 #include "ScriptedTriggers/ScriptedTriggers.h"
 #include "Sounds/SoundEffect.h"
+#include "States/DefaultState.h"
+#include "States/HoI4State.h"
 #include "States/HoI4States.h"
+#include "V2World/Country.h"
+#include "V2World/World.h"
 #include <map>
 #include <optional>
 #include <set>
@@ -40,47 +55,8 @@
 
 
 
-class HoI4Ideology;
-
-
-
-namespace mappers
-{
-
-class ProvinceMapper;
-class techMapper;
-
-} // namespace mappers
-
-
-namespace Vic2
-{
-
-class Country;
-class Faction;
-class World;
-
-} // namespace Vic2
-
-
-
 namespace HoI4
 {
-
-class Advisor;
-class Buildings;
-class Country;
-class DefaultState;
-class DivisionTemplateType;
-class Events;
-class ProvinceDefinitions;
-class State;
-class States;
-class StrategicRegion;
-class SupplyZones;
-class HoI4UnitType;
-
-
 
 class World: commonItems::parser
 {

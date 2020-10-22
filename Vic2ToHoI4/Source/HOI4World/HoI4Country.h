@@ -9,58 +9,38 @@
 #include "Diplomacy/HoI4Relations.h"
 #include "Diplomacy/HoI4War.h"
 #include "HoI4FocusTree.h"
+#include "Ideologies/Ideologies.h"
 #include "Leaders/Admiral.h"
 #include "Leaders/General.h"
+#include "Map/CoastalProvinces.h"
+#include "Mappers/CountryMapping.h"
+#include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
+#include "Mappers/GovernmentMapper.h"
+#include "Mappers/GraphicsMapper.h"
+#include "Mappers/Provinces/ProvinceMapper.h"
+#include "Mappers/TechMapper.h"
 #include "Military/Airplane.h"
 #include "Military/HoI4Army.h"
+#include "MilitaryMappings/MtgUnitMappings.h"
+#include "MilitaryMappings/UnitMappings.h"
+#include "Names/Names.h"
 #include "Navies/Navies.h"
 #include "Navies/NavyNames.h"
+#include "ProvinceDefinitions.h"
 #include "Regions/Regions.h"
 #include "ShipTypes/ShipVariants.h"
+#include "States/HoI4State.h"
 #include "Technologies.h"
+#include "V2World/Country.h"
+#include "V2World/Localisations/Vic2Localisations.h"
 #include "V2World/Politics/Party.h"
+#include "V2World/World.h"
 #include <map>
 #include <memory>
 #include <optional>
 #include <set>
 #include <string>
 #include <vector>
-
-
-
-namespace Vic2
-{
-class Country;
-class World;
-class Localisations;
-} // namespace Vic2
-
-
-namespace HoI4
-{
-class Ideologies;
-class CoastalProvinces;
-class MtgUnitMappings;
-class ProvinceDefinitions;
-class Names;
-class ShipVariant;
-class State;
-class UnitMappings;
-} // namespace HoI4
-
-
-namespace mappers
-{
-class FlagsToIdeasMapper;
-class ProvinceMapper;
-class techMapper;
-} // namespace mappers
-
-
-class CountryMapper;
-class governmentMapper;
-class graphicsMapper;
-class Date;
 
 
 

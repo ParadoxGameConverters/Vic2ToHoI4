@@ -4,6 +4,7 @@
 
 
 #include "Configuration.h"
+#include "HOI4World/States/HoI4State.h"
 #include "StrategicRegion.h"
 #include <map>
 #include <memory>
@@ -13,9 +14,9 @@
 
 namespace HoI4
 {
-class States;
-class State;
 
+class States; // forward declaration to break circular dependency
+	
 
 class StrategicRegions
 {

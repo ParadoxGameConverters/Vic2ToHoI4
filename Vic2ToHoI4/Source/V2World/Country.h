@@ -4,13 +4,21 @@
 
 
 #include "Color.h"
+#include "Culture/CultureGroups.h"
 #include "Date.h"
+#include "Diplomacy/Relations.h"
 #include "Diplomacy/RelationsFactory.h"
+#include "Localisations/Vic2Localisations.h"
 #include "Military/Army.h"
+#include "Military/Leader.h"
 #include "Military/LeaderFactory.h"
 #include "Parser.h"
 #include "Politics/Party.h"
+#include "Provinces/Province.h"
+#include "States/State.h"
+#include "States/StateDefinitions.h"
 #include "States/StateFactory.h"
+#include "Technology/Inventions.h"
 #include "Wars/War.h"
 #include <map>
 #include <memory>
@@ -23,17 +31,6 @@
 
 namespace Vic2
 {
-class StateDefinitions;
-
-class Army;
-class CultureGroups;
-class Inventions;
-class Leader;
-class Localisations;
-class Province;
-class Relations;
-class State;
-
 
 class Country: commonItems::parser
 {

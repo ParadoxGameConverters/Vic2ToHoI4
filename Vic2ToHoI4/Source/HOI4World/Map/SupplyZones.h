@@ -3,6 +3,10 @@
 
 
 
+#include "Configuration.h"
+#include "HOI4World/Map/SupplyZone.h"
+#include "HOI4World/States/DefaultState.h"
+#include "HOI4World/States/HoI4States.h"
 #include "Parser.h"
 #include <map>
 #include <set>
@@ -10,18 +14,8 @@
 
 
 
-class Configuration;
-
-
-
 namespace HoI4
 {
-
-class DefaultState;
-class States;
-class SupplyZone;
-
-
 
 class SupplyZones: commonItems::parser
 {

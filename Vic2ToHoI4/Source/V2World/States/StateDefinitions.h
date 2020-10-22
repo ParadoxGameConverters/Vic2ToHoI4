@@ -10,10 +10,6 @@
 
 
 
-class Configuration;
-
-
-
 namespace Vic2
 {
 

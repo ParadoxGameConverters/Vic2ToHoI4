@@ -1,4 +1,5 @@
 #include "Ideologies.h"
+#include "HOI4World/HoI4Country.h"
 #include "IdeologyFile.h"
 #include "Log.h"
 #include "ParserHelpers.h"

@@ -3,15 +3,12 @@
 
 
 
-#include "ProvinceMappingTypes.h"
+#include "Configuration.h"
 #include "Parser.h"
+#include "ProvinceMappingTypes.h"
 #include <map>
 #include <optional>
 #include <vector>
-
-
-
-class Configuration;
 
 
 

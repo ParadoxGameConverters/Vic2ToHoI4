@@ -3,6 +3,7 @@
 
 
 
+#include "HOI4World/States/DefaultState.h"
 #include <map>
 #include <unordered_set>
 
@@ -11,24 +12,19 @@
 namespace HoI4
 {
 
-class DefaultState;
-
-
-
 class ImpassableProvinces
 {
-	public:
-		explicit ImpassableProvinces(const std::map<int, DefaultState>& states);
+  public:
+	explicit ImpassableProvinces(const std::map<int, DefaultState>& states);
 
-		[[nodiscard]] bool isProvinceImpassable(int provinceNumber) const;
+	[[nodiscard]] bool isProvinceImpassable(int provinceNumber) const;
 
-	private:
-		std::unordered_set<int> impassibleProvinces;
+  private:
+	std::unordered_set<int> impassibleProvinces;
 };
 
-}
+} // namespace HoI4
 
 
 
 #endif // IMPASSABLE_PROVINCES_H
-

@@ -3,16 +3,10 @@
 
 
 
+#include "HOI4World/HoI4Localisation.h"
 #include "Parser.h"
 #include <string>
 #include <vector>
-
-
-
-namespace HoI4
-{
-class Localisation;
-}
 
 
 

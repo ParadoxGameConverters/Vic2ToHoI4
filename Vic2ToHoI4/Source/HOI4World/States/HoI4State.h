@@ -4,9 +4,13 @@
 
 
 #include "Configuration.h"
+#include "HOI4World/Map/CoastalProvinces.h"
 #include "Mappers/CountryMapping.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Parser.h"
+#include "StateCategories.h"
+#include "V2World/Provinces/Province.h"
+#include "V2World/States/State.h"
 #include <map>
 #include <optional>
 #include <set>
@@ -14,19 +18,8 @@
 
 
 
-namespace Vic2
-{
-class Province;
-class State;
-} // namespace Vic2
-
-
 namespace HoI4
 {
-
-class CoastalProvinces;
-class StateCategories;
-
 
 class State
 {

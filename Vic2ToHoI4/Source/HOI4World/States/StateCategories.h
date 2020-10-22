@@ -3,13 +3,10 @@
 
 
 
+#include "Configuration.h"
 #include "Parser.h"
 #include <map>
 #include <string>
-
-
-
-class Configuration;
 
 
 

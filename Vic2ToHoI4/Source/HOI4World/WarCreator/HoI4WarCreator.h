@@ -4,31 +4,16 @@
 
 
 #include "HOI4World/HoI4Country.h"
+#include "HOI4World/HoI4Localisation.h"
+#include "HOI4World/HoI4World.h"
+#include "HOI4World/Map/MapData.h"
+#include "HOI4World/ProvinceDefinitions.h"
+#include "V2World/World.h"
 #include <fstream>
 #include <map>
 #include <optional>
 #include <string>
 using namespace std;
-
-
-
-namespace HoI4
-{
-
-class Localisation;
-class MapData;
-class ProvinceDefinitions;
-class World;
-
-} // namespace HoI4
-
-
-namespace Vic2
-{
-
-class World;
-
-}
 
 
 const int maxGCWars = 1;
