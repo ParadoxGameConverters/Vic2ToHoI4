@@ -1250,6 +1250,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\Trait.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Military\Leaders\TraitGroupTests.cpp">
+      <Filter>Vic2WorldTests\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\TraitGroup.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
