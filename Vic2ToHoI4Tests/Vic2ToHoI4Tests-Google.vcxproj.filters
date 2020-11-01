@@ -1217,9 +1217,6 @@
     <ClCompile Include="Vic2WorldTests\Politics\PartyTests.cpp">
       <Filter>Vic2WorldTests\Politics</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\LeaderFactory.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2\Military</Filter>
-    </ClCompile>
     <ClCompile Include="Vic2WorldTests\Military\LeaderTests.cpp">
       <Filter>Vic2WorldTests\Military</Filter>
     </ClCompile>
@@ -1263,6 +1260,9 @@
       <Filter>Vic2WorldTests\Military\Leaders</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\TraitsFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\LeaderFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1795,10 +1795,6 @@
     <CopyFileToFolders Include="TestFiles\Localisations\ModLocalisations.txt">
       <Filter>TestFiles\Localistations</Filter>
     </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="TestFiles\Vic2Military\traits.txt">
-      <Filter>TestFiles\Vic2Military</Filter>
-    </Text>
+    <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt" />
   </ItemGroup>
 </Project>

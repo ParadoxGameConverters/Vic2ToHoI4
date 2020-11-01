@@ -1051,9 +1051,6 @@
     <ClCompile Include="Source\V2World\Politics\PartyFactory.cpp">
       <Filter>Vic2World\Politics</Filter>
     </ClCompile>
-    <ClCompile Include="Source\V2World\Military\LeaderFactory.cpp">
-      <Filter>Vic2World\Military</Filter>
-    </ClCompile>
     <ClCompile Include="Source\V2World\Military\UnitFactory.cpp">
       <Filter>Vic2World\Military</Filter>
     </ClCompile>
@@ -1076,6 +1073,9 @@
       <Filter>Vic2World\Military\Leaders</Filter>
     </ClCompile>
     <ClCompile Include="Source\V2World\Military\Leaders\TraitsFactory.cpp">
+      <Filter>Vic2World\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Military\Leaders\LeaderFactory.cpp">
       <Filter>Vic2World\Military\Leaders</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2025,12 +2025,6 @@
     <ClInclude Include="Source\V2World\Military\Army.h">
       <Filter>Vic2World\Military</Filter>
     </ClInclude>
-    <ClInclude Include="Source\V2World\Military\Leader.h">
-      <Filter>Vic2World\Military</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\V2World\Military\LeaderFactory.h">
-      <Filter>Vic2World\Military</Filter>
-    </ClInclude>
     <ClInclude Include="Source\V2World\Military\Unit.h">
       <Filter>Vic2World\Military</Filter>
     </ClInclude>
@@ -2056,6 +2050,12 @@
       <Filter>Vic2World\Military\Leaders</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Military\Leaders\TraitsFactory.h">
+      <Filter>Vic2World\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\Leaders\Leader.h">
+      <Filter>Vic2World\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\Leaders\LeaderFactory.h">
       <Filter>Vic2World\Military\Leaders</Filter>
     </ClInclude>
   </ItemGroup>

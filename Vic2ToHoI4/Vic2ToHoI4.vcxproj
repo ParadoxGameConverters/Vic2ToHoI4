@@ -382,7 +382,7 @@
     <ClCompile Include="Source\V2World\Localisations\LocalisationsFactory.cpp" />
     <ClCompile Include="Source\V2World\Localisations\Vic2Localisations.cpp" />
     <ClCompile Include="Source\V2World\Military\ArmyFactory.cpp" />
-    <ClCompile Include="Source\V2World\Military\LeaderFactory.cpp" />
+    <ClCompile Include="Source\V2World\Military\Leaders\LeaderFactory.cpp" />
     <ClCompile Include="Source\V2World\Military\Leaders\Trait.cpp" />
     <ClCompile Include="Source\V2World\Military\Leaders\TraitGroup.cpp" />
     <ClCompile Include="Source\V2World\Military\Leaders\Traits.cpp" />
@@ -706,8 +706,8 @@
     <ClInclude Include="Source\V2World\Localisations\Vic2Localisations.h" />
     <ClInclude Include="Source\V2World\Military\Army.h" />
     <ClInclude Include="Source\V2World\Military\ArmyFactory.h" />
-    <ClInclude Include="Source\V2World\Military\Leader.h" />
-    <ClInclude Include="Source\V2World\Military\LeaderFactory.h" />
+    <ClInclude Include="Source\V2World\Military\Leaders\Leader.h" />
+    <ClInclude Include="Source\V2World\Military\Leaders\LeaderFactory.h" />
     <ClInclude Include="Source\V2World\Military\Leaders\Trait.h" />
     <ClInclude Include="Source\V2World\Military\Leaders\TraitGroup.h" />
     <ClInclude Include="Source\V2World\Military\Leaders\Traits.h" />
