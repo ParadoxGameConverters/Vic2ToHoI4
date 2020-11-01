@@ -5,8 +5,8 @@
 
 #include "Leader.h"
 #include "Parser.h"
-#include <memory>
 #include "Traits.h"
+#include <memory>
 
 
 
@@ -16,7 +16,7 @@ namespace Vic2
 class Leader::Factory: commonItems::parser
 {
   public:
-	Factory(Traits&& traits_);
+	explicit Factory(Traits&& traits_);
 
 	std::unique_ptr<Leader> getLeader(std::istream& theStream);
 

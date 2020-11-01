@@ -1,13 +1,13 @@
 #include "V2World/Military/Leaders/Traits.h"
 #include "V2World/Military/Leaders/TraitsFactory.h"
+#include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
-#include <gmock/gmock-matchers.h>
 
 
 
 TEST(Vic2World_Military_Leaders_TraitsTests, MissingTraitsHaveNoEffects)
 {
-	const auto traits = Vic2::Traits::Factory {}.loadTraits("./");
+	const auto traits = Vic2::Traits::Factory{}.loadTraits("./");
 
 	ASSERT_TRUE(traits->getEffectsForTrait("missing_trait").empty());
 }

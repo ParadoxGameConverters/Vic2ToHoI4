@@ -1,6 +1,6 @@
 #include "V2World/Military/Leaders/Trait.h"
+#include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
-#include <gmock/gmock-matchers.h>
 #include <sstream>
 
 
@@ -38,7 +38,7 @@ TEST(Vic2World_Military_Leaders_TraitTests, BadTraitEffectAmountsAreLogged)
 	input << "}";
 
 	std::stringstream log;
-	auto stdOutBuf = std::cout.rdbuf();
+	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 	const auto traitEffects = Vic2::getTraitEffects(input);
 	std::cout.rdbuf(stdOutBuf);

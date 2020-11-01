@@ -13,10 +13,10 @@ namespace Vic2
 {
 
 using TraitEffects = std::unordered_map<std::string, float>;
-	
+
 TraitEffects getTraitEffects(std::istream& theStream);
 
-}
+} // namespace Vic2
 
 
 

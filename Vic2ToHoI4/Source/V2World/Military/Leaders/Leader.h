@@ -3,8 +3,8 @@
 
 
 
-#include <string>
 #include "Trait.h"
+#include <string>
 
 
 
@@ -20,7 +20,7 @@ class Leader
 	[[nodiscard]] const auto& getType() const { return type; }
 	[[nodiscard]] const auto& getPrestige() const { return prestige; }
 
-	[[nodiscard]] float getTraitEffectValue(const std::string& effect) const;
+	[[nodiscard]] float getTraitEffectValue(const std::string& trait) const;
 
   private:
 	std::string name;

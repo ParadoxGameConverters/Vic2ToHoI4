@@ -14,7 +14,7 @@ namespace Vic2
 class TraitGroup: commonItems::parser
 {
   public:
-	TraitGroup(std::istream& theStream);
+	explicit TraitGroup(std::istream& theStream);
 
 	auto&& takeTraits() { return std::move(traits); }
 

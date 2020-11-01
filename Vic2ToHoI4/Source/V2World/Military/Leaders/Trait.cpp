@@ -1,6 +1,6 @@
 #include "Trait.h"
-#include "ParserHelpers.h"
 #include "Log.h"
+#include "ParserHelpers.h"
 
 
 
@@ -15,11 +15,11 @@ std::unordered_map<std::string, float> Vic2::getTraitEffects(std::istream& theSt
 		{
 			effects.insert(std::make_pair(name, stof(amountString)));
 		}
-		catch (std::exception& e)
+		catch (const std::exception&)
 		{
 			Log(LogLevel::Warning) << "Trait effect amount couldn't be parsed";
 		}
 	}
-	
+
 	return effects;
 }
