@@ -1,8 +1,6 @@
 #include "World.h"
-#include "Configuration.h"
-#include "Mappers/MergeRules.h"
-#include "Mappers/Provinces/ProvinceMapper.h"
 #include "CommonCountryData.h"
+#include "Configuration.h"
 #include "Country.h"
 #include "Culture/CultureGroupsFactory.h"
 #include "Date.h"
@@ -13,7 +11,10 @@
 #include "Localisations/LocalisationsFactory.h"
 #include "Localisations/Vic2Localisations.h"
 #include "Log.h"
+#include "Mappers/MergeRules.h"
+#include "Mappers/Provinces/ProvinceMapper.h"
 #include "Military/ArmyFactory.h"
+#include "Military/Leaders/Traits.h"
 #include "ParserHelpers.h"
 #include "Politics/Party.h"
 #include "Politics/PartyFactory.h"
@@ -43,7 +44,8 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	State::Factory stateFactory;
 	War::Factory warFactory;
 	Relations::Factory relationsFactory;
-	Leader::Factory leaderFactory;
+	Traits traits;
+	Leader::Factory leaderFactory(std::move(traits));
 	Army::Factory armyFactory;
 
 	registerKeyword("date", [](const std::string& unused, std::istream& theStream) {

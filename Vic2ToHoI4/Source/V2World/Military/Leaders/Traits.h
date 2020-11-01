@@ -15,6 +15,7 @@ class Traits
 {
   public:
 	class Factory;
+	class Builder;
 
 	[[nodiscard]] TraitEffects getEffectsForTrait(const std::string& traitName) const;
 

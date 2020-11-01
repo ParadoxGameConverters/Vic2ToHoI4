@@ -295,6 +295,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Localisations\LocalisationsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Localisations\Vic2Localisations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\ArmyFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\Leader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\LeaderFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\Trait.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\TraitGroup.cpp" />

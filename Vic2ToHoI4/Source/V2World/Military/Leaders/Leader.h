@@ -4,6 +4,7 @@
 
 
 #include <string>
+#include "Trait.h"
 
 
 
@@ -17,15 +18,14 @@ class Leader
 
 	[[nodiscard]] const auto& getName() const { return name; }
 	[[nodiscard]] const auto& getType() const { return type; }
-	[[nodiscard]] const auto& getPersonality() const { return personality; }
-	[[nodiscard]] const auto& getBackground() const { return background; }
 	[[nodiscard]] const auto& getPrestige() const { return prestige; }
+
+	[[nodiscard]] float getTraitEffectValue(const std::string& effect) const;
 
   private:
 	std::string name;
 	std::string type;
-	std::string personality;
-	std::string background;
+	TraitEffects traitEffects;
 	double prestige = 0.0;
 };
 
