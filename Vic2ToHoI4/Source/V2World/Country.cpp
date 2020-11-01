@@ -234,6 +234,17 @@ void Vic2::Country::putProvincesInStates()
 }
 
 
+void Vic2::Country::limitCommanders()
+{
+	std::sort(leaders.begin(), leaders.end(), [](Leader& a, Leader& b) {
+		return a.getPrestige() > b.getPrestige();
+	});
+
+	const int desiredLeaders = static_cast<int>(std::ceil(leaders.size() / 20.0F));
+	leaders.erase(leaders.begin() + desiredLeaders, leaders.end());
+}
+
+
 void Vic2::Country::determineEmployedWorkers()
 {
 	for (auto& state: states)

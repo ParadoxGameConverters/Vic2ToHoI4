@@ -57,6 +57,7 @@ class Country: commonItems::parser
 
 	void eatCountry(Country* target, bool debug);
 	void putProvincesInStates();
+	void limitCommanders();
 	void determineEmployedWorkers();
 	void setLocalisationNames(Localisations& vic2Localisations);
 	void setLocalisationAdjectives(const Localisations& vic2Localisations);
