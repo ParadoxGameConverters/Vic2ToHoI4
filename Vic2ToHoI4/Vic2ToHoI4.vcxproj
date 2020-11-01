@@ -385,6 +385,8 @@
     <ClCompile Include="Source\V2World\Military\LeaderFactory.cpp" />
     <ClCompile Include="Source\V2World\Military\Leaders\Trait.cpp" />
     <ClCompile Include="Source\V2World\Military\Leaders\TraitGroup.cpp" />
+    <ClCompile Include="Source\V2World\Military\Leaders\Traits.cpp" />
+    <ClCompile Include="Source\V2World\Military\Leaders\TraitsFactory.cpp" />
     <ClCompile Include="Source\V2World\Military\UnitFactory.cpp" />
     <ClCompile Include="Source\V2World\Mods\ModFactory.cpp" />
     <ClCompile Include="Source\V2World\Politics\Party.cpp" />
@@ -708,6 +710,8 @@
     <ClInclude Include="Source\V2World\Military\LeaderFactory.h" />
     <ClInclude Include="Source\V2World\Military\Leaders\Trait.h" />
     <ClInclude Include="Source\V2World\Military\Leaders\TraitGroup.h" />
+    <ClInclude Include="Source\V2World\Military\Leaders\Traits.h" />
+    <ClInclude Include="Source\V2World\Military\Leaders\TraitsFactory.h" />
     <ClInclude Include="Source\V2World\Military\Unit.h" />
     <ClInclude Include="Source\V2World\Military\UnitFactory.h" />
     <ClInclude Include="Source\V2World\Mods\Mod.h" />

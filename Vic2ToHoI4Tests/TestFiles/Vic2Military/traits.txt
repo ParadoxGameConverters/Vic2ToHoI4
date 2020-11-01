@@ -1,0 +1,7 @@
+test_trait_group = {
+	test_trait = {
+		effect_one = -2
+		effect_two = -0.05
+		effect_three = 0.1
+	}
+}
