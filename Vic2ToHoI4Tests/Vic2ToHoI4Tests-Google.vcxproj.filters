@@ -1217,9 +1217,6 @@
     <ClCompile Include="Vic2WorldTests\Politics\PartyTests.cpp">
       <Filter>Vic2WorldTests\Politics</Filter>
     </ClCompile>
-    <ClCompile Include="Vic2WorldTests\Military\LeaderTests.cpp">
-      <Filter>Vic2WorldTests\Military</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\UnitFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Military</Filter>
     </ClCompile>
@@ -1264,6 +1261,9 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\LeaderFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Military\Leaders\LeaderTests.cpp">
+      <Filter>Vic2WorldTests\Military\Leaders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -435,10 +435,10 @@
     <ClCompile Include="Vic2WorldTests\Issues\IssueCategoryHelperTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Localisations\LocalisationsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Military\ArmyTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Military\Leaders\LeaderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Military\Leaders\TraitGroupTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Military\Leaders\TraitsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Military\Leaders\TraitTests.cpp" />
-    <ClCompile Include="Vic2WorldTests\Military\LeaderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Military\UnitTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Mods\ModBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Mods\ModFactoryTests.cpp" />
