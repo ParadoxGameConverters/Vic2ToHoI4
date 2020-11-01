@@ -15,6 +15,7 @@
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Military/ArmyFactory.h"
 #include "Military/Leaders/Traits.h"
+#include "Military/Leaders/TraitsFactory.h"
 #include "ParserHelpers.h"
 #include "Politics/Party.h"
 #include "Politics/PartyFactory.h"
@@ -44,7 +45,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	State::Factory stateFactory;
 	War::Factory warFactory;
 	Relations::Factory relationsFactory;
-	Traits traits;
+	Traits traits = *Traits::Factory{}.loadTraits(theConfiguration.getVic2Path());
 	Leader::Factory leaderFactory(std::move(traits));
 	Army::Factory armyFactory;
 
