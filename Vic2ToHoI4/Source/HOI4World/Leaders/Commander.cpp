@@ -20,7 +20,7 @@ skill(static_cast<int>(srcLeader.getPrestige() * 22.5f) + 1)
 	}
 
 	attackSkill = std::clamp(static_cast<int>(std::round(srcLeader.getTraitEffectValue("attack"))) + 1, 1, 7);
-	defenseSkill = varySkill(skill);
+	defenseSkill = std::clamp(static_cast<int>(std::round(srcLeader.getTraitEffectValue("defence"))) + 1, 1, 7);
 }
 
 
