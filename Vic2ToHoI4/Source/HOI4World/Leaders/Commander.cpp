@@ -1,6 +1,7 @@
 #include "Commander.h"
 #include "OSCompatibilityLayer.h"
 #include <algorithm>
+#include <cmath>
 #include <random>
 
 

@@ -13,6 +13,7 @@
 #include "States/StateDefinitions.h"
 #include "StringUtils.h"
 #include "Technology/Inventions.h"
+#include <cmath>
 
 
 

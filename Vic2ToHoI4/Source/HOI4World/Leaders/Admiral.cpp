@@ -1,5 +1,6 @@
 #include "Admiral.h"
 #include <algorithm>
+#include <cmath>
 
 
 
