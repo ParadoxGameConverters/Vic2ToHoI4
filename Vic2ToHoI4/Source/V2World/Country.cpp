@@ -236,12 +236,29 @@ void Vic2::Country::putProvincesInStates()
 
 void Vic2::Country::limitCommanders()
 {
-	std::sort(leaders.begin(), leaders.end(), [](Leader& a, Leader& b) {
+	std::vector<Leader> generals;
+	std::copy_if(leaders.begin(), leaders.end(), std::back_inserter(generals), [](const Leader& leader) {
+		return leader.getType() == "land";
+	});
+	std::sort(generals.begin(), generals.end(), [](Leader& a, Leader& b) {
 		return a.getPrestige() > b.getPrestige();
 	});
+	const int desiredGenerals = static_cast<int>(std::ceil(generals.size() / 20.0F));
+	generals.erase(generals.begin() + desiredGenerals, generals.end());
 
-	const int desiredLeaders = static_cast<int>(std::ceil(leaders.size() / 20.0F));
-	leaders.erase(leaders.begin() + desiredLeaders, leaders.end());
+	std::vector<Leader> admirals;
+	std::copy_if(leaders.begin(), leaders.end(), std::back_inserter(admirals), [](const Leader& leader) {
+		return leader.getType() == "sea";
+	});
+	std::sort(admirals.begin(), admirals.end(), [](Leader& a, Leader& b) {
+		return a.getPrestige() > b.getPrestige();
+	});
+	const int desiredAdmirals = static_cast<int>(std::ceil(admirals.size() / 20.0F));
+	admirals.erase(admirals.begin() + desiredAdmirals, admirals.end());
+
+	leaders.clear();
+	std::move(generals.begin(), generals.end(), std::back_inserter(leaders));
+	std::move(admirals.begin(), admirals.end(), std::back_inserter(leaders));
 }
 
 
