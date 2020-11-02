@@ -226,6 +226,9 @@
     <Filter Include="Vic2World\Localisations">
       <UniqueIdentifier>{0b4abdfe-a6fd-4c8c-8d8b-c5e74593d20c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2World\Military\Leaders">
+      <UniqueIdentifier>{a7eb907f-5d39-4d82-8981-6792e3da00b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1048,9 +1051,6 @@
     <ClCompile Include="Source\V2World\Politics\PartyFactory.cpp">
       <Filter>Vic2World\Politics</Filter>
     </ClCompile>
-    <ClCompile Include="Source\V2World\Military\LeaderFactory.cpp">
-      <Filter>Vic2World\Military</Filter>
-    </ClCompile>
     <ClCompile Include="Source\V2World\Military\UnitFactory.cpp">
       <Filter>Vic2World\Military</Filter>
     </ClCompile>
@@ -1062,6 +1062,24 @@
     </ClCompile>
     <ClCompile Include="Source\V2World\Localisations\LocalisationsFactory.cpp">
       <Filter>Vic2World\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Military\Leaders\Trait.cpp">
+      <Filter>Vic2World\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Military\Leaders\TraitGroup.cpp">
+      <Filter>Vic2World\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Military\Leaders\Traits.cpp">
+      <Filter>Vic2World\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Military\Leaders\TraitsFactory.cpp">
+      <Filter>Vic2World\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Military\Leaders\LeaderFactory.cpp">
+      <Filter>Vic2World\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Military\Leaders\Leader.cpp">
+      <Filter>Vic2World\Military\Leaders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2010,12 +2028,6 @@
     <ClInclude Include="Source\V2World\Military\Army.h">
       <Filter>Vic2World\Military</Filter>
     </ClInclude>
-    <ClInclude Include="Source\V2World\Military\Leader.h">
-      <Filter>Vic2World\Military</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\V2World\Military\LeaderFactory.h">
-      <Filter>Vic2World\Military</Filter>
-    </ClInclude>
     <ClInclude Include="Source\V2World\Military\Unit.h">
       <Filter>Vic2World\Military</Filter>
     </ClInclude>
@@ -2030,6 +2042,27 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Localisations\LocalisationsFactory.h">
       <Filter>Vic2World\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\Leaders\Trait.h">
+      <Filter>Vic2World\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\Leaders\TraitGroup.h">
+      <Filter>Vic2World\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\Leaders\Traits.h">
+      <Filter>Vic2World\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\Leaders\TraitsFactory.h">
+      <Filter>Vic2World\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\Leaders\Leader.h">
+      <Filter>Vic2World\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\Leaders\LeaderFactory.h">
+      <Filter>Vic2World\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Military\Leaders\TraitsBuilder.h">
+      <Filter>Vic2World\Military\Leaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

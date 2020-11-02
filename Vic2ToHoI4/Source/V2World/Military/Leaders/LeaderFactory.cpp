@@ -4,7 +4,7 @@
 
 
 
-Vic2::Leader::Factory::Factory()
+Vic2::Leader::Factory::Factory(Traits&& traits_): traits(traits_)
 {
 	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
 		leader->name = commonItems::singleString{theStream}.getString();
@@ -12,14 +12,18 @@ Vic2::Leader::Factory::Factory()
 	registerKeyword("type", [this](const std::string& unused, std::istream& theStream) {
 		leader->type = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("personality", [this](const std::string& unused, std::istream& theStream) {
-		leader->personality = commonItems::singleString{theStream}.getString();
-	});
-	registerKeyword("background", [this](const std::string& unused, std::istream& theStream) {
-		leader->background = commonItems::singleString{theStream}.getString();
-	});
 	registerKeyword("prestige", [this](const std::string& unused, std::istream& theStream) {
 		leader->prestige = commonItems::singleDouble{theStream}.getDouble();
+	});
+	registerRegex("personality|background", [this](const std::string& unused, std::istream& theStream) {
+		for (const auto& effect: traits.getEffectsForTrait(commonItems::singleString{theStream}.getString()))
+		{
+			auto [effectIterator, inserted] = leader->traitEffects.insert(effect);
+			if (!inserted)
+			{
+				effectIterator->second += effect.second;
+			}
+		}
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }

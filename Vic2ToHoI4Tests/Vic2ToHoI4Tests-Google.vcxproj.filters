@@ -1217,12 +1217,6 @@
     <ClCompile Include="Vic2WorldTests\Politics\PartyTests.cpp">
       <Filter>Vic2WorldTests\Politics</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\LeaderFactory.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2\Military</Filter>
-    </ClCompile>
-    <ClCompile Include="Vic2WorldTests\Military\LeaderTests.cpp">
-      <Filter>Vic2WorldTests\Military</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\UnitFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Military</Filter>
     </ClCompile>
@@ -1243,6 +1237,36 @@
     </ClCompile>
     <ClCompile Include="Vic2WorldTests\Localisations\LocalisationsTests.cpp">
       <Filter>Vic2WorldTests\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Military\Leaders\TraitTests.cpp">
+      <Filter>Vic2WorldTests\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\Trait.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Military\Leaders\TraitGroupTests.cpp">
+      <Filter>Vic2WorldTests\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\TraitGroup.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\Traits.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Military\Leaders\TraitsTests.cpp">
+      <Filter>Vic2WorldTests\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\TraitsFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\LeaderFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Military\Leaders\LeaderTests.cpp">
+      <Filter>Vic2WorldTests\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\Leader.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1594,6 +1618,15 @@
     <Filter Include="Vic2WorldTests\Localisations">
       <UniqueIdentifier>{7cdbb97c-2e2c-4bfb-bcc1-db88e51b0856}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2WorldTests\Military\Leaders">
+      <UniqueIdentifier>{d74e88bf-c81c-4f69-8c39-1986552e6bc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Military\Leaders">
+      <UniqueIdentifier>{6296e3e3-5a9f-43e2-a16c-73ff4b4ff04f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Vic2Military">
+      <UniqueIdentifier>{7bb9f30d-6061-45e7-8b68-19722a2de932}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1765,5 +1798,6 @@
     <CopyFileToFolders Include="TestFiles\Localisations\ModLocalisations.txt">
       <Filter>TestFiles\Localistations</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt" />
   </ItemGroup>
 </Project>

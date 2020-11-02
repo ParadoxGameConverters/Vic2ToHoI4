@@ -4,7 +4,7 @@
 #include "Localisations/Vic2Localisations.h"
 #include "Log.h"
 #include "Military/ArmyFactory.h"
-#include "Military/Leader.h"
+#include "Military/Leaders/Leader.h"
 #include "ParserHelpers.h"
 #include "Politics/Party.h"
 #include "Pops/Pop.h"
@@ -13,6 +13,7 @@
 #include "States/StateDefinitions.h"
 #include "StringUtils.h"
 #include "Technology/Inventions.h"
+#include <cmath>
 
 
 
@@ -231,6 +232,34 @@ void Vic2::Country::putProvincesInStates()
 			state.addProvince(province->second);
 		}
 	}
+}
+
+
+void Vic2::Country::limitCommanders()
+{
+	std::vector<Leader> generals;
+	std::copy_if(leaders.begin(), leaders.end(), std::back_inserter(generals), [](const Leader& leader) {
+		return leader.getType() == "land";
+	});
+	std::sort(generals.begin(), generals.end(), [](Leader& a, Leader& b) {
+		return a.getPrestige() > b.getPrestige();
+	});
+	const int desiredGenerals = static_cast<int>(std::ceil(generals.size() / 20.0F));
+	generals.erase(generals.begin() + desiredGenerals, generals.end());
+
+	std::vector<Leader> admirals;
+	std::copy_if(leaders.begin(), leaders.end(), std::back_inserter(admirals), [](const Leader& leader) {
+		return leader.getType() == "sea";
+	});
+	std::sort(admirals.begin(), admirals.end(), [](Leader& a, Leader& b) {
+		return a.getPrestige() > b.getPrestige();
+	});
+	const int desiredAdmirals = static_cast<int>(std::ceil(admirals.size() / 20.0F));
+	admirals.erase(admirals.begin() + desiredAdmirals, admirals.end());
+
+	leaders.clear();
+	std::move(generals.begin(), generals.end(), std::back_inserter(leaders));
+	std::move(admirals.begin(), admirals.end(), std::back_inserter(leaders));
 }
 
 

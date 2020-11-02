@@ -10,8 +10,8 @@
 #include "Diplomacy/RelationsFactory.h"
 #include "Localisations/Vic2Localisations.h"
 #include "Military/Army.h"
-#include "Military/Leader.h"
-#include "Military/LeaderFactory.h"
+#include "Military/Leaders/Leader.h"
+#include "Military/Leaders/LeaderFactory.h"
 #include "Parser.h"
 #include "Politics/Party.h"
 #include "Provinces/Province.h"
@@ -57,6 +57,7 @@ class Country: commonItems::parser
 
 	void eatCountry(Country* target, bool debug);
 	void putProvincesInStates();
+	void limitCommanders();
 	void determineEmployedWorkers();
 	void setLocalisationNames(Localisations& vic2Localisations);
 	void setLocalisationAdjectives(const Localisations& vic2Localisations);

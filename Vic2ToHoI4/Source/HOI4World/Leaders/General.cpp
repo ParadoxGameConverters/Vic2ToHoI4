@@ -1,10 +1,12 @@
 #include "General.h"
+#include <algorithm>
+#include <cmath>
 
 
 
-HoI4::General::General(const Vic2::Leader& srcLeader, const std::string& portrait):
-	Commander(srcLeader, portrait)
+HoI4::General::General(const Vic2::Leader& srcLeader, const std::string& portrait): Commander(srcLeader, portrait)
 {
-	planningSkill = varySkill(skill);
-	logisticsSkill = varySkill(skill);
+	planningSkill = std::clamp(static_cast<int>(std::round(srcLeader.getTraitEffectValue("morale") * 8.0F)) + 1, 1, 5);
+	logisticsSkill =
+		 std::clamp(static_cast<int>(std::round(srcLeader.getTraitEffectValue("organisation") * 25.0F)) + 1, 1, 5);
 }
