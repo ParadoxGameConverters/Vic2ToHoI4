@@ -1,19 +1,11 @@
 #include "HoI4World.h"
 #include "Configuration.h"
-#include "HOI4World/ProvinceDefinitions.h"
-#include "Mappers/CountryMapping.h"
-#include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
-#include "Mappers/TechMapper.h"
-#include "V2World/Country.h"
-#include "V2World/Diplomacy/Agreement.h"
-#include "V2World/Diplomacy/Diplomacy.h"
-#include "V2World/Localisations/Vic2Localisations.h"
-#include "V2World/World.h"
 #include "Decisions/Decisions.h"
 #include "Diplomacy/AiPeacesUpdater.h"
 #include "Diplomacy/Faction.h"
 #include "Events/Events.h"
 #include "Events/GovernmentInExileEvent.h"
+#include "HOI4World/ProvinceDefinitions.h"
 #include "HoI4Country.h"
 #include "HoI4FocusTree.h"
 #include "HoI4Localisation.h"
@@ -27,6 +19,9 @@
 #include "Map/HoI4Provinces.h"
 #include "Map/StrategicRegion.h"
 #include "Map/SupplyZones.h"
+#include "Mappers/CountryMapping.h"
+#include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
+#include "Mappers/TechMapper.h"
 #include "MilitaryMappings/MilitaryMappingsFile.h"
 #include "Names/Names.h"
 #include "Operations/OperationsFactory.h"
@@ -38,6 +33,11 @@
 #include "ShipTypes/PossibleShipVariants.h"
 #include "Sounds/SoundEffectsFactory.h"
 #include "States/HoI4State.h"
+#include "V2World/Country.h"
+#include "V2World/Diplomacy/Agreement.h"
+#include "V2World/Diplomacy/Diplomacy.h"
+#include "V2World/Localisations/Vic2Localisations.h"
+#include "V2World/World.h"
 #include "WarCreator/HoI4WarCreator.h"
 using namespace std;
 
@@ -307,7 +307,7 @@ void HoI4::World::addLeaders()
 	Log(LogLevel::Info) << "\tAdding leaders";
 	for (auto& country: countries)
 	{
-		country.second->addLeader(*names, theGraphics);
+		country.second->addLeader(&*names, &theGraphics);
 	}
 }
 

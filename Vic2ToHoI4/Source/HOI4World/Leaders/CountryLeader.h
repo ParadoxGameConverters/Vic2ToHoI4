@@ -2,6 +2,7 @@
 #define COUNTRY_LEADER_H
 
 
+
 #include <string>
 
 
@@ -12,6 +13,8 @@ namespace HoI4
 class CountryLeader
 {
   public:
+	class Factory;
+
 	[[nodiscard]] const auto& getName() const { return name; }
 	[[nodiscard]] const auto& getDescription() const { return description; }
 	[[nodiscard]] const auto& getPortrait() const { return portrait; }

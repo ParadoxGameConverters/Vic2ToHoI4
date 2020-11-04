@@ -150,6 +150,7 @@
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp" />
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp" />
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp" />
+    <ClCompile Include="Source\HOI4World\Leaders\CountryLeaderFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRule.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRules.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.cpp" />
@@ -440,6 +441,7 @@
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.h" />
     <ClInclude Include="Source\HOI4World\Leaders\CountryLeader.h" />
+    <ClInclude Include="Source\HOI4World\Leaders\CountryLeaderFactory.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRule.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRuleBuilder.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRules.h" />
