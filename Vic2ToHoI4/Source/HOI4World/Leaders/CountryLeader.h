@@ -2,6 +2,9 @@
 #define COUNTRY_LEADER_H
 
 
+#include <string>
+
+
 
 namespace HoI4
 {

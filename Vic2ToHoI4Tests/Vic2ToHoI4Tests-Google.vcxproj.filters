@@ -1268,6 +1268,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\Leader.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutCountryLeader.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Leaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

@@ -209,6 +209,7 @@
     <ClCompile Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
     <ClCompile Include="Source\OutHoi4\Leaders\OutAdmiral.cpp" />
     <ClCompile Include="Source\OutHoi4\Leaders\OutAdvisor.cpp" />
+    <ClCompile Include="Source\OutHoi4\Leaders\OutCountryLeader.cpp" />
     <ClCompile Include="Source\OutHoi4\Leaders\OutGeneral.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutBuilding.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutBuildings.cpp" />
@@ -502,6 +503,7 @@
     <ClInclude Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.h" />
     <ClInclude Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutAdmiral.h" />
+    <ClInclude Include="Source\OutHoi4\Leaders\OutCountryLeader.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutGeneral.h" />
     <ClInclude Include="Source\OutHoi4\Map\OutStrategicRegions.h" />
     <ClInclude Include="Source\OutHoi4\OccupationLaws\OutOccupationLaw.h" />

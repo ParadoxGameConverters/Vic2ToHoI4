@@ -9,6 +9,7 @@
 #include "HOI4World/Navies/NavyNames.h"
 #include "Leaders/OutAdmiral.h"
 #include "Leaders/OutAdvisor.h"
+#include "Leaders/OutCountryLeader.h"
 #include "Leaders/OutGeneral.h"
 #include "Mappers/GraphicsMapper.h"
 #include "Navies/OutLegacyNavyNames.h"
@@ -253,7 +254,6 @@ void outputIdeas(std::ostream& output,
 	 const std::string& primaryCulture);
 void outputStability(std::ostream& output, const int& stability);
 void outputWarSupport(std::ostream& output, const int& warSupport);
-void outputCountryLeader(std::ostream& output, const HoI4::CountryLeader& leader);
 void outputCommanders(std::ostream& output,
 	 const std::vector<HoI4::General>& generals,
 	 const std::vector<HoI4::Admiral>& admirals);
@@ -316,7 +316,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 	}
 	for (const auto& leader: theCountry.getLeaders())
 	{
-		outputCountryLeader(output, leader);
+		HoI4::outputCountryLeader(output, leader);
 	}
 	outputCommanders(output, theCountry.getGenerals(), theCountry.getAdmirals());
 	output << theCountry.getTheShipVariants();
@@ -661,20 +661,6 @@ void outputStability(std::ostream& output, const int& stability)
 void outputWarSupport(std::ostream& output, const int& warSupport)
 {
 	output << "set_war_support = 0." << warSupport << "\n";
-}
-
-
-void outputCountryLeader(std::ostream& output, const HoI4::CountryLeader& leader)
-{
-	output << "create_country_leader = {\n";
-	output << "    name = \"" << leader.getName() << "\"\n";
-	output << "    desc = \"" << leader.getDescription() << "\"\n";
-	output << "    picture = \"" << leader.getPortrait() << "\"\n";
-	output << "    expire = \"1965.1.1\"\n";
-	output << "    ideology = " << leader.getIdeology() << "\n";
-	output << "    traits = {\n";
-	output << "    }\n";
-	output << "}\n";
 }
 
 

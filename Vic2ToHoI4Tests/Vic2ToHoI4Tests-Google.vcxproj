@@ -114,6 +114,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutCountryLeader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OccupationLaws\OutOccupationLaw.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OccupationLaws\OutOccupationLaws.cpp" />

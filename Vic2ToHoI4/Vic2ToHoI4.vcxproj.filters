@@ -1081,6 +1081,9 @@
     <ClCompile Include="Source\V2World\Military\Leaders\Leader.cpp">
       <Filter>Vic2World\Military\Leaders</Filter>
     </ClCompile>
+    <ClCompile Include="Source\OutHoi4\Leaders\OutCountryLeader.cpp">
+      <Filter>OutHoi4\Leaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2066,6 +2069,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Leaders\CountryLeader.h">
       <Filter>HoI4World\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\Leaders\OutCountryLeader.h">
+      <Filter>OutHoi4\Leaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
