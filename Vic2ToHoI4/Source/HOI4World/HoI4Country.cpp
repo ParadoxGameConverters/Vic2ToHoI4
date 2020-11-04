@@ -533,24 +533,36 @@ void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>&
 
 void HoI4::Country::addLeader(Names& names, graphicsMapper& theGraphics)
 {
+	CountryLeader newLeader;
+
 	const auto primaryCulture = sourceCountry.getPrimaryCulture();
 	const auto firstName = names.getMaleName(primaryCulture);
 	const auto surname = names.getSurname(primaryCulture);
+
 	if (firstName && surname)
 	{
-		leaderPortrait = theGraphics.getLeaderPortrait(sourceCountry.getPrimaryCultureGroup(), governmentIdeology);
-		leaderName = *firstName;
-		leaderSurname = *surname;
+		newLeader.setName(*firstName + " " + *surname);
+
+		auto upperFirstName = *firstName;
+		std::transform(upperFirstName.begin(), upperFirstName.end(), upperFirstName.begin(), toupper);
+		auto upperSurname = *surname;
+		std::transform(upperSurname.begin(), upperSurname.end(), upperSurname.begin(), toupper);
+		newLeader.setDescription("POLITICS_" + upperFirstName + "_" + upperSurname + "_DESC");
+
+		newLeader.setPortrait(theGraphics.getLeaderPortrait(sourceCountry.getPrimaryCultureGroup(), governmentIdeology));
+		newLeader.setIdeology(leaderIdeology);
 	}
 	else
 	{
 		Log(LogLevel::Warning) << "Could not set leader for " + tag + ", as there were no names.";
-		leaderPortrait = "gfx/leaders/ENG/portrait_eng_fallen_government.dds";
-		leaderName = "Nomen";
-		leaderSurname = "Nescio";
-		// Nescio Nomen (or N.N.) literally means "I don't know the name" and is sometimes used when the name of a person
-		// is unknown
+		newLeader.setName("Nomen Nescio"); // Nescio Nomen (or N.N.) literally means "I don't know the name" and is
+													  // sometimes used when the name of a person is unknown
+		newLeader.setDescription("POLITICS_NOMEN_NESCIO_DESC");
+		newLeader.setPortrait("gfx/leaders/ENG/portrait_eng_fallen_government.dds");
+		newLeader.setIdeology(leaderIdeology);
 	}
+
+	leaders.push_back(newLeader);
 }
 
 

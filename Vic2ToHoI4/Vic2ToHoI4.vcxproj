@@ -438,6 +438,7 @@
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.h" />
+    <ClInclude Include="Source\HOI4World\Leaders\CountryLeader.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRule.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRuleBuilder.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRules.h" />

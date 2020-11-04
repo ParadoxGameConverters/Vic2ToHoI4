@@ -11,6 +11,7 @@
 #include "HoI4FocusTree.h"
 #include "Ideologies/Ideologies.h"
 #include "Leaders/Admiral.h"
+#include "Leaders/CountryLeader.h"
 #include "Leaders/General.h"
 #include "Map/CoastalProvinces.h"
 #include "Mappers/CountryMapping.h"
@@ -151,9 +152,7 @@ class Country
 	[[nodiscard]] const std::string& getMobilizationLaw() const { return mobilizationLaw; }
 	[[nodiscard]] const std::string& getEconomicLaw() const { return economicLaw; }
 	[[nodiscard]] const std::string& getTradeLaw() const { return tradeLaw; }
-	[[nodiscard]] const auto& getLeaderPortrait() const { return leaderPortrait; }
-	[[nodiscard]] const auto& getLeaderName() const { return leaderName; }
-	[[nodiscard]] const auto& getLeaderSurname() const { return leaderSurname; }
+	[[nodiscard]] const auto& getLeaders() const { return leaders; }
 
 	[[nodiscard]] auto getTechnologyCount() const
 	{
@@ -266,9 +265,7 @@ class Country
 	std::string economicLaw = "civilian_economy";
 	std::string tradeLaw = "export_focus";
 
-	std::string leaderPortrait;
-	std::string leaderName;
-	std::string leaderSurname;
+	std::vector<CountryLeader> leaders;
 
 	std::optional<technologies> theTechnologies;
 	std::set<std::string> ideas;
