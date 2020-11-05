@@ -11,6 +11,7 @@
 #include "HoI4Localisation.h"
 #include "Ideas/Ideas.h"
 #include "Leaders/Advisor.h"
+#include "Leaders/CountryLeadersFactory.h"
 #include "Leaders/IdeologicalAdvisors.h"
 #include "Localisations/ArticleRules/ArticleRules.h"
 #include "Localisations/ArticleRules/ArticleRulesFactory.h"
@@ -305,9 +306,17 @@ void HoI4::World::addNeutrality(bool debug)
 void HoI4::World::addLeaders()
 {
 	Log(LogLevel::Info) << "\tAdding leaders";
-	for (auto& country: countries)
+	auto configurableLeaders = CountryLeadersFactory{}.importCountryLeaders();
+
+	for (auto& [tag, country]: countries)
 	{
-		country.second->addLeader(&*names, &theGraphics);
+		auto leaders = configurableLeaders.equal_range(tag);
+		for (auto i = leaders.first; i != leaders.second; ++i)
+		{
+			country->addLeader(i->second);
+		}
+
+		country->addLeader(&*names, &theGraphics);
 	}
 }
 

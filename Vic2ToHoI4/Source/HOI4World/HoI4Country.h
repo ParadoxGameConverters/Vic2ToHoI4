@@ -196,6 +196,7 @@ class Country
 
 	std::set<std::string>& editAllies() { return allies; }
 
+	void addLeader(CountryLeader leader) { leaders.push_back(std::move(leader)); }
 	void addGPInfluence(std::string GPTag, int influenceValue) { GPInfluences.insert({GPTag, influenceValue}); }
 	[[nodiscard]] const std::map<std::string, double>& getSpherelings() const { return spherelings; }
 	void addSphereling(std::string sphereling) { spherelings.insert(make_pair(sphereling, 0.5)); }
