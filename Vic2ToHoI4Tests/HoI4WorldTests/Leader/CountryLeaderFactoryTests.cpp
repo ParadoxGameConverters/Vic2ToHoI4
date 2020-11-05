@@ -86,3 +86,29 @@ TEST(HoI4World_Leaders_CountryLeaderFactoryTests, IdeologyCanBeSet)
 
 	ASSERT_EQ("neutral_test", leader->getIdeology());
 }
+
+
+TEST(HoI4World_Leaders_CountryLeaderFactoryTests, TraitsDefaultToEmpty)
+{
+	std::stringstream input;
+	const auto leader = HoI4::CountryLeader::Factory{}.importCountryLeader(input);
+
+	ASSERT_TRUE(leader->getTraits().empty());
+}
+
+
+TEST(HoI4World_Leaders_CountryLeaderFactoryTests, TraitsCanBeSet)
+{
+	std::stringstream input;
+	input << "= {\n";
+	input << "\ttraits = {\n";
+	input << "\t\ttest_trait\n";
+	input << "\t\ttest_trait_two\n";
+	input << "\t}\n";
+	input << "}";
+	const auto leader = HoI4::CountryLeader::Factory{}.importCountryLeader(input);
+
+	ASSERT_EQ(2, leader->getTraits().size());
+	ASSERT_EQ("test_trait", leader->getTraits()[0]);
+	ASSERT_EQ("test_trait_two", leader->getTraits()[1]);
+}

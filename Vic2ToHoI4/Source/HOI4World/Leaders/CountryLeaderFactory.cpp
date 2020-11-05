@@ -18,6 +18,9 @@ HoI4::CountryLeader::Factory::Factory()
 	registerKeyword("ideology", [this](const std::string& unused, std::istream& theStream) {
 		countryLeader->ideology = commonItems::singleString{theStream}.getString();
 	});
+	registerKeyword("traits", [this](const std::string& unused, std::istream& theStream) {
+		countryLeader->traits = commonItems::stringList{theStream}.getStrings();
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 

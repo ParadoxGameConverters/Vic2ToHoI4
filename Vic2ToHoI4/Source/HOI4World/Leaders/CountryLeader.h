@@ -4,6 +4,7 @@
 
 
 #include <string>
+#include <vector>
 
 
 
@@ -19,6 +20,7 @@ class CountryLeader
 	[[nodiscard]] const auto& getDescription() const { return description; }
 	[[nodiscard]] const auto& getPicture() const { return picture; }
 	[[nodiscard]] const auto& getIdeology() const { return ideology; }
+	[[nodiscard]] const auto& getTraits() const { return traits; }
 
   private:
 	std::string name = "Nomen Nescio"; // Nescio Nomen (or N.N.) literally means "I don't know the name" and is sometimes
@@ -26,6 +28,7 @@ class CountryLeader
 	std::string description = "POLITICS_NOMEN_NESCIO_DESC";
 	std::string picture = "gfx/leaders/ENG/portrait_eng_fallen_government.dds";
 	std::string ideology;
+	std::vector<std::string> traits;
 };
 
 } // namespace HoI4
