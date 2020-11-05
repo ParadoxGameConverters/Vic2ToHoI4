@@ -73,7 +73,7 @@ class Country
 		 const Ideologies& ideologies,
 		 const governmentMapper& governmentMap,
 		 bool debug);
-	void addLeader(Names* names, graphicsMapper* theGraphics);
+	void createLeader(Names* names, graphicsMapper* theGraphics);
 	void convertGovernment(const Vic2::World& sourceWorld,
 		 const governmentMapper& governmentMap,
 		 const Vic2::Localisations& vic2Localisations,

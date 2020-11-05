@@ -532,8 +532,16 @@ void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>&
 }
 
 
-void HoI4::Country::addLeader(Names* names, graphicsMapper* theGraphics)
+void HoI4::Country::createLeader(Names* names, graphicsMapper* theGraphics)
 {
+	for (const auto& configuredLeader: leaders)
+	{
+		if (configuredLeader.getIdeology() == leaderIdeology)
+		{
+			return;
+		}
+	}
+
 	leaders.push_back(CountryLeader::Factory::createNewLeader(sourceCountry.getPrimaryCulture(),
 		 sourceCountry.getPrimaryCultureGroup(),
 		 governmentIdeology,

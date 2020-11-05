@@ -316,7 +316,7 @@ void HoI4::World::addLeaders()
 			country->addLeader(i->second);
 		}
 
-		country->addLeader(&*names, &theGraphics);
+		country->createLeader(&*names, &theGraphics);
 	}
 }
 

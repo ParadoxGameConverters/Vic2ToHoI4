@@ -1,8 +1,10 @@
-# This file can be used to override generated country leaders. You can even add extra leaders for different ideologies. Just add them to the file like so:
+# This file can be used to override generated country leaders.
+# You can even add extra leaders for different ideologies.
+# Just add them to the file like so:
 #
 # USA = {
 #	name = "Abraham Lincoln"
 #	desc = "POLITICS_ABRAHAM_LINCOLN_DESC"
 #	picture = "gfx/leaders/USA/portrait_usa_abraham_lincoln.dds"
-#	ideology = liberal_ideology
+#	ideology = liberalism
 #}
