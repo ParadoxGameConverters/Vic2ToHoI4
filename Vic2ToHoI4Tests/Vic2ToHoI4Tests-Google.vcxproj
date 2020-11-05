@@ -348,6 +348,7 @@
     <ClCompile Include="HoI4WorldTests\IntelligenceAgencies\IntelligenceAgencyLogoMappingTests.cpp" />
     <ClCompile Include="HoI4WorldTests\IntelligenceAgencies\IntelligenceAgencyLogosTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Leader\AdvisorTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Leader\CountryLeaderFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\AllReplacementRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\ArticleRules\ArticleRulesDefinitionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\ArticleRules\ArticleRulesFactoryTests.cpp" />

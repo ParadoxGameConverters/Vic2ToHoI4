@@ -17,18 +17,14 @@ class CountryLeader
 
 	[[nodiscard]] const auto& getName() const { return name; }
 	[[nodiscard]] const auto& getDescription() const { return description; }
-	[[nodiscard]] const auto& getPortrait() const { return portrait; }
+	[[nodiscard]] const auto& getPicture() const { return picture; }
 	[[nodiscard]] const auto& getIdeology() const { return ideology; }
 
-	void setName(const std::string& name_) { name = name_; }
-	void setDescription(const std::string& description_) { description = description_; }
-	void setPortrait(const std::string& portrait_) { portrait = portrait_; }
-	void setIdeology(const std::string& ideology_) { ideology = ideology_; }
-
   private:
-	std::string name;
-	std::string description;
-	std::string portrait;
+	std::string name = "Nomen Nescio"; // Nescio Nomen (or N.N.) literally means "I don't know the name" and is sometimes
+												  // used when the name of a person is unknown
+	std::string description = "POLITICS_NOMEN_NESCIO_DESC";
+	std::string picture = "gfx/leaders/ENG/portrait_eng_fallen_government.dds";
 	std::string ideology;
 };
 
