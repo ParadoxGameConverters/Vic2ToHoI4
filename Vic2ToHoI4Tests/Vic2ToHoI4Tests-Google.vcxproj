@@ -63,6 +63,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeaderFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeadersFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRule.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.cpp" />
@@ -349,6 +350,7 @@
     <ClCompile Include="HoI4WorldTests\IntelligenceAgencies\IntelligenceAgencyLogosTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Leader\AdvisorTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Leader\CountryLeaderFactoryTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Leader\CountryLeadersFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\AllReplacementRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\ArticleRules\ArticleRulesDefinitionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\ArticleRules\ArticleRulesFactoryTests.cpp" />
@@ -789,6 +791,12 @@
     <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/common</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/common</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Leaders\HoI4CountryLeaders.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

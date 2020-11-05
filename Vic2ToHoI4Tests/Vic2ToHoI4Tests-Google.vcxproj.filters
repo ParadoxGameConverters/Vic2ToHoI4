@@ -1277,6 +1277,12 @@
     <ClCompile Include="HoI4WorldTests\Leader\CountryLeaderFactoryTests.cpp">
       <Filter>HoI4WorldTests\Leaders</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeadersFactory.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Leader\CountryLeadersFactoryTests.cpp">
+      <Filter>HoI4WorldTests\Leaders</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1636,6 +1642,9 @@
     <Filter Include="TestFiles\Vic2Military">
       <UniqueIdentifier>{7bb9f30d-6061-45e7-8b68-19722a2de932}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TestFiles\Leaders">
+      <UniqueIdentifier>{26ac2326-44f3-4983-b047-8afd40eca571}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1808,5 +1817,10 @@
       <Filter>TestFiles\Localistations</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TestFiles\Leaders\HoI4CountryLeaders.txt">
+      <Filter>TestFiles\Leaders</Filter>
+    </Text>
   </ItemGroup>
 </Project>

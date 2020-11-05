@@ -1,0 +1,11 @@
+ONE = {
+	name = "One Leader"
+}
+
+TWO = {
+	name = "Two Leader"
+}
+
+TWO = {
+	name = "Two Leader2"
+}
