@@ -12,7 +12,7 @@ std::multimap<std::string, HoI4::CountryLeader> HoI4::CountryLeadersFactory::imp
 	registerRegex(commonItems::catchallRegex,
 		 [&countryLeaders, &leaderFactory](const std::string& tag, std::istream& theStream) {
 			 const auto leader = leaderFactory.importCountryLeader(theStream);
-			 countryLeaders.insert(std::make_pair(tag, *leader));
+			 countryLeaders.emplace(std::make_pair(tag, *leader));
 	});
 
 	parseFile("./Configurables/HoI4CountryLeaders.txt");
