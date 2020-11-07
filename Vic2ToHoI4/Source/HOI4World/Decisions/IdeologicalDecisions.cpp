@@ -24,7 +24,7 @@ bool HoI4::IdeologicalDecisions::requiredIdeologiesExist(const std::set<std::str
 {
 	for (const auto& requiredIdeology: requiredIdeologies)
 	{
-		if (majorIdeologies.count(requiredIdeology) == 0)
+		if (!majorIdeologies.contains(requiredIdeology))
 		{
 			return false;
 		}

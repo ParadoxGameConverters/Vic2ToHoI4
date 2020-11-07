@@ -1,14 +1,14 @@
 #include "HoI4States.h"
 #include "Configuration.h"
 #include "DefaultState.h"
-#include "HOI4World/ProvinceDefinitions.h"
-#include "HoI4State.h"
 #include "HOI4World/HoI4Country.h"
 #include "HOI4World/HoI4Localisation.h"
 #include "HOI4World/Map/CoastalProvinces.h"
 #include "HOI4World/Map/HoI4Provinces.h"
 #include "HOI4World/Map/ImpassableProvinces.h"
 #include "HOI4World/Map/Resources.h"
+#include "HOI4World/ProvinceDefinitions.h"
+#include "HoI4State.h"
 #include "Log.h"
 #include "Mappers/CountryMapping.h"
 #include "OSCompatibilityLayer.h"
@@ -272,7 +272,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sou
 	std::map<int, std::shared_ptr<Vic2::Province>> unownedProvinces;
 	for (const auto& vic2Province: sourceProvinces)
 	{
-		if (!ownedProvinces.count(vic2Province.first))
+		if (!ownedProvinces.contains(vic2Province.first))
 		{
 			unownedProvinces.insert(vic2Province);
 		}
@@ -438,7 +438,7 @@ std::vector<std::set<int>> HoI4::States::getConnectedProvinceSets(std::set<int> 
 		{
 			auto currentProvince = openProvinces.front();
 			openProvinces.pop();
-			if (provinceNumbers.count(currentProvince))
+			if (provinceNumbers.contains(currentProvince))
 			{
 				connectedProvinceSet.insert(currentProvince);
 				provinceNumbers.erase(currentProvince);
@@ -446,7 +446,7 @@ std::vector<std::set<int>> HoI4::States::getConnectedProvinceSets(std::set<int> 
 
 			for (const auto& neighbor: mapData.getNeighbors(currentProvince))
 			{
-				if (!closedProvinces.count(neighbor))
+				if (!closedProvinces.contains(neighbor))
 				{
 					if (auto province = provinces.find(neighbor); province != provinces.end())
 					{
@@ -531,7 +531,7 @@ bool HoI4::States::isProvinceOwnedByCountry(int provNum, const std::string& stat
 
 bool HoI4::States::isProvinceNotAlreadyAssigned(int provNum) const
 {
-	return !assignedProvinces.count(provNum);
+	return !assignedProvinces.contains(provNum);
 }
 
 

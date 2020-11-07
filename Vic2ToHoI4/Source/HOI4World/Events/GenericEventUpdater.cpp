@@ -24,7 +24,7 @@ void HoI4::updateGenericEventTwo(Event& eventTwo, const std::set<std::string>& m
 {
 	eventTwo.clearDescriptions();
 
-	if (majorIdeologies.count("democratic"))
+	if (majorIdeologies.contains("democratic"))
 	{
 		std::string description = "= {\n";
 		description += "\t\ttext = generic.2.d.a\n";
@@ -39,7 +39,7 @@ void HoI4::updateGenericEventTwo(Event& eventTwo, const std::set<std::string>& m
 		description += "\t}";
 		eventTwo.giveDescription(std::move(description));
 	}
-	if (majorIdeologies.count("fascism"))
+	if (majorIdeologies.contains("fascism"))
 	{
 		std::string description = "= {\n";
 		description += "\t\ttext = generic.2.d.b\n";
@@ -54,7 +54,7 @@ void HoI4::updateGenericEventTwo(Event& eventTwo, const std::set<std::string>& m
 		description += "\t}";
 		eventTwo.giveDescription(std::move(description));
 	}
-	if (majorIdeologies.count("communism"))
+	if (majorIdeologies.contains("communism"))
 	{
 		std::string description = "= {\n";
 		description += "\t\ttext = generic.2.d.c\n";
@@ -69,7 +69,7 @@ void HoI4::updateGenericEventTwo(Event& eventTwo, const std::set<std::string>& m
 		description += "\t}";
 		eventTwo.giveDescription(std::move(description));
 	}
-	if (majorIdeologies.count("radical"))
+	if (majorIdeologies.contains("radical"))
 	{
 		std::string description = "= {\n";
 		description += "\t\ttext = generic.2.d.f\n";
@@ -84,7 +84,7 @@ void HoI4::updateGenericEventTwo(Event& eventTwo, const std::set<std::string>& m
 		description += "\t}";
 		eventTwo.giveDescription(std::move(description));
 	}
-	if (majorIdeologies.count("absolutist"))
+	if (majorIdeologies.contains("absolutist"))
 	{
 		std::string description = "= {\n";
 		description += "\t\ttext = generic.2.d.g\n";
@@ -123,7 +123,7 @@ void HoI4::updateGenericEventTwo(Event& eventTwo, const std::set<std::string>& m
 	eventTwo.giveDescription(std::move(description));
 
 	eventTwo.clearOptions();
-	if (majorIdeologies.count("democratic"))
+	if (majorIdeologies.contains("democratic"))
 	{
 		EventOption option;
 		option.giveName("generic.2.a");
@@ -149,7 +149,7 @@ void HoI4::updateGenericEventTwo(Event& eventTwo, const std::set<std::string>& m
 
 		eventTwo.giveOption(std::move(option));
 	}
-	if (majorIdeologies.count("fascism"))
+	if (majorIdeologies.contains("fascism"))
 	{
 		EventOption option;
 		option.giveName("generic.2.b");
@@ -175,7 +175,7 @@ void HoI4::updateGenericEventTwo(Event& eventTwo, const std::set<std::string>& m
 
 		eventTwo.giveOption(std::move(option));
 	}
-	if (majorIdeologies.count("communism"))
+	if (majorIdeologies.contains("communism"))
 	{
 		EventOption option;
 		option.giveName("generic.2.c");
@@ -201,7 +201,7 @@ void HoI4::updateGenericEventTwo(Event& eventTwo, const std::set<std::string>& m
 
 		eventTwo.giveOption(std::move(option));
 	}
-	if (majorIdeologies.count("radical"))
+	if (majorIdeologies.contains("radical"))
 	{
 		EventOption option;
 		option.giveName("generic.2.g");
@@ -227,7 +227,7 @@ void HoI4::updateGenericEventTwo(Event& eventTwo, const std::set<std::string>& m
 
 		eventTwo.giveOption(std::move(option));
 	}
-	if (majorIdeologies.count("absolutist"))
+	if (majorIdeologies.contains("absolutist"))
 	{
 		EventOption option;
 		option.giveName("generic.2.h");
@@ -389,7 +389,7 @@ void HoI4::updateGenericEventsThreeFourAndSix(Event& event,
 	 const std::set<std::string>& majorIdeologies)
 {
 	event.clearOptions();
-	if (majorIdeologies.count("democratic"))
+	if (majorIdeologies.contains("democratic"))
 	{
 		EventOption option;
 		option.giveName("generic." + std::to_string(eventNum) + ".a");
@@ -403,7 +403,7 @@ void HoI4::updateGenericEventsThreeFourAndSix(Event& event,
 
 		event.giveOption(std::move(option));
 	}
-	if (majorIdeologies.count("fascism"))
+	if (majorIdeologies.contains("fascism"))
 	{
 		EventOption option;
 		option.giveName("generic." + std::to_string(eventNum) + ".b");
@@ -417,7 +417,7 @@ void HoI4::updateGenericEventsThreeFourAndSix(Event& event,
 
 		event.giveOption(std::move(option));
 	}
-	if (majorIdeologies.count("communism"))
+	if (majorIdeologies.contains("communism"))
 	{
 		EventOption option;
 		option.giveName("generic." + std::to_string(eventNum) + ".c");
@@ -431,7 +431,7 @@ void HoI4::updateGenericEventsThreeFourAndSix(Event& event,
 
 		event.giveOption(std::move(option));
 	}
-	if (majorIdeologies.count("radical"))
+	if (majorIdeologies.contains("radical"))
 	{
 		EventOption option;
 		option.giveName("generic." + std::to_string(eventNum) + ".f");
@@ -445,7 +445,7 @@ void HoI4::updateGenericEventsThreeFourAndSix(Event& event,
 
 		event.giveOption(std::move(option));
 	}
-	if (majorIdeologies.count("absolutist"))
+	if (majorIdeologies.contains("absolutist"))
 	{
 		EventOption option;
 		option.giveName("generic." + std::to_string(eventNum) + ".g");
@@ -492,7 +492,7 @@ void HoI4::updateGenericEventFive(Event& eventFive, const std::set<std::string>&
 {
 	eventFive.clearDescriptions();
 
-	if (majorIdeologies.count("democratic"))
+	if (majorIdeologies.contains("democratic"))
 	{
 		std::string description = "= {\n";
 		description += "\t\ttext = generic.5.d.a\n";
@@ -507,7 +507,7 @@ void HoI4::updateGenericEventFive(Event& eventFive, const std::set<std::string>&
 		description += "\t}";
 		eventFive.giveDescription(std::move(description));
 	}
-	if (majorIdeologies.count("fascism"))
+	if (majorIdeologies.contains("fascism"))
 	{
 		std::string description = "= {\n";
 		description += "\t\ttext = generic.5.d.b\n";
@@ -522,7 +522,7 @@ void HoI4::updateGenericEventFive(Event& eventFive, const std::set<std::string>&
 		description += "\t}";
 		eventFive.giveDescription(std::move(description));
 	}
-	if (majorIdeologies.count("communism"))
+	if (majorIdeologies.contains("communism"))
 	{
 		std::string description = "= {\n";
 		description += "\t\ttext = generic.5.d.c\n";
@@ -537,7 +537,7 @@ void HoI4::updateGenericEventFive(Event& eventFive, const std::set<std::string>&
 		description += "\t}";
 		eventFive.giveDescription(std::move(description));
 	}
-	if (majorIdeologies.count("radical"))
+	if (majorIdeologies.contains("radical"))
 	{
 		std::string description = "= {\n";
 		description += "\t\ttext = generic.5.d.f\n";
@@ -552,7 +552,7 @@ void HoI4::updateGenericEventFive(Event& eventFive, const std::set<std::string>&
 		description += "\t}";
 		eventFive.giveDescription(std::move(description));
 	}
-	if (majorIdeologies.count("absolutist"))
+	if (majorIdeologies.contains("absolutist"))
 	{
 		std::string description = "= {\n";
 		description += "\t\ttext = generic.5.d.g\n";
@@ -591,7 +591,7 @@ void HoI4::updateGenericEventFive(Event& eventFive, const std::set<std::string>&
 	eventFive.giveDescription(std::move(description));
 
 	eventFive.clearOptions();
-	if (majorIdeologies.count("democratic"))
+	if (majorIdeologies.contains("democratic"))
 	{
 		EventOption option;
 		option.giveName("generic.5.a");
@@ -627,7 +627,7 @@ void HoI4::updateGenericEventFive(Event& eventFive, const std::set<std::string>&
 
 		eventFive.giveOption(std::move(option));
 	}
-	if (majorIdeologies.count("fascism"))
+	if (majorIdeologies.contains("fascism"))
 	{
 		EventOption option;
 		option.giveName("generic.5.b");
@@ -663,7 +663,7 @@ void HoI4::updateGenericEventFive(Event& eventFive, const std::set<std::string>&
 
 		eventFive.giveOption(std::move(option));
 	}
-	if (majorIdeologies.count("communism"))
+	if (majorIdeologies.contains("communism"))
 	{
 		EventOption option;
 		option.giveName("generic.5.c");
@@ -699,7 +699,7 @@ void HoI4::updateGenericEventFive(Event& eventFive, const std::set<std::string>&
 
 		eventFive.giveOption(std::move(option));
 	}
-	if (majorIdeologies.count("radical"))
+	if (majorIdeologies.contains("radical"))
 	{
 		EventOption option;
 		option.giveName("generic.5.h");
@@ -735,7 +735,7 @@ void HoI4::updateGenericEventFive(Event& eventFive, const std::set<std::string>&
 
 		eventFive.giveOption(std::move(option));
 	}
-	if (majorIdeologies.count("absolutist"))
+	if (majorIdeologies.contains("absolutist"))
 	{
 		EventOption option;
 		option.giveName("generic.5.i");
@@ -909,7 +909,7 @@ void HoI4::updateGenericEventFive(Event& eventFive, const std::set<std::string>&
 void HoI4::updateGenericEventSeven(Event& eventSeven, const std::set<std::string>& majorIdeologies)
 {
 	eventSeven.clearOptions();
-	if (majorIdeologies.count("democratic"))
+	if (majorIdeologies.contains("democratic"))
 	{
 		EventOption option;
 		option.giveName("generic.7.a");
@@ -923,7 +923,7 @@ void HoI4::updateGenericEventSeven(Event& eventSeven, const std::set<std::string
 
 		eventSeven.giveOption(std::move(option));
 	}
-	if (majorIdeologies.count("fascism"))
+	if (majorIdeologies.contains("fascism"))
 	{
 		EventOption option;
 		option.giveName("generic.4.b");
@@ -937,7 +937,7 @@ void HoI4::updateGenericEventSeven(Event& eventSeven, const std::set<std::string
 
 		eventSeven.giveOption(std::move(option));
 	}
-	if (majorIdeologies.count("communism"))
+	if (majorIdeologies.contains("communism"))
 	{
 		EventOption option;
 		option.giveName("generic.4.c");
@@ -951,7 +951,7 @@ void HoI4::updateGenericEventSeven(Event& eventSeven, const std::set<std::string
 
 		eventSeven.giveOption(std::move(option));
 	}
-	if (majorIdeologies.count("radical"))
+	if (majorIdeologies.contains("radical"))
 	{
 		EventOption option;
 		option.giveName("generic.4.f");
@@ -965,7 +965,7 @@ void HoI4::updateGenericEventSeven(Event& eventSeven, const std::set<std::string
 
 		eventSeven.giveOption(std::move(option));
 	}
-	if (majorIdeologies.count("absolutist"))
+	if (majorIdeologies.contains("absolutist"))
 	{
 		EventOption option;
 		option.giveName("generic.4.g");

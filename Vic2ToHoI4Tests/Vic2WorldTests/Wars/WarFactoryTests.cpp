@@ -60,8 +60,8 @@ TEST_F(Vic2World_WarTests, AttackersCanBeAdded)
 	const auto theWar = *warFactory.getWar(input);
 
 	ASSERT_EQ(theWar.getAttackers().size(), 2);
-	ASSERT_EQ(theWar.getAttackers().count("TAG"), 1);
-	ASSERT_EQ(theWar.getAttackers().count("TWO"), 1);
+	ASSERT_TRUE(theWar.getAttackers().contains("TAG"));
+	ASSERT_TRUE(theWar.getAttackers().contains("TWO"));
 }
 
 
@@ -111,8 +111,8 @@ TEST_F(Vic2World_WarTests, DefendersCanBeAdded)
 	const auto theWar = *warFactory.getWar(input);
 
 	ASSERT_EQ(theWar.getDefenders().size(), 2);
-	ASSERT_EQ(theWar.getDefenders().count("TAG"), 1);
-	ASSERT_EQ(theWar.getDefenders().count("TWO"), 1);
+	ASSERT_TRUE(theWar.getDefenders().contains("TAG"));
+	ASSERT_TRUE(theWar.getDefenders().contains("TWO"));
 }
 
 

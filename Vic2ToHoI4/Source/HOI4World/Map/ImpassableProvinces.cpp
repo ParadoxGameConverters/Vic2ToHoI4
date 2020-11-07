@@ -22,5 +22,5 @@ HoI4::ImpassableProvinces::ImpassableProvinces(const std::map<int, DefaultState>
 
 bool HoI4::ImpassableProvinces::isProvinceImpassable(const int provinceNumber) const
 {
-	return impassibleProvinces.count(provinceNumber);
+	return impassibleProvinces.contains(provinceNumber);
 }

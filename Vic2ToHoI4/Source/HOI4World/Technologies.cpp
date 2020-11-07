@@ -25,15 +25,13 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-HoI4::technologies::technologies(
-	const mappers::techMapper& theTechMapper,
-	const std::set<std::string>& oldTechs,
-	const std::set<std::string>& oldInventions
-)
+HoI4::technologies::technologies(const mappers::techMapper& theTechMapper,
+	 const std::set<std::string>& oldTechs,
+	 const std::set<std::string>& oldInventions)
 {
 	for (auto techMapping: theTechMapper.getAllTechMappings())
 	{
-		if ((oldTechs.count(techMapping.first) > 0) || (oldInventions.count(techMapping.first) > 0))
+		if (oldTechs.contains(techMapping.first) || oldInventions.contains(techMapping.first))
 		{
 			for (auto HoI4Tech: techMapping.second)
 			{
@@ -44,7 +42,7 @@ HoI4::technologies::technologies(
 
 	for (auto techMapping: theTechMapper.getAllNonMtgNavalTechMappings())
 	{
-		if ((oldTechs.count(techMapping.first) > 0) || (oldInventions.count(techMapping.first) > 0))
+		if (oldTechs.contains(techMapping.first) || oldInventions.contains(techMapping.first))
 		{
 			for (auto HoI4Tech: techMapping.second)
 			{
@@ -55,7 +53,7 @@ HoI4::technologies::technologies(
 
 	for (auto techMapping: theTechMapper.getAllMtgNavalTechMappings())
 	{
-		if ((oldTechs.count(techMapping.first) > 0) || (oldInventions.count(techMapping.first) > 0))
+		if (oldTechs.contains(techMapping.first) || oldInventions.contains(techMapping.first))
 		{
 			for (auto HoI4Tech: techMapping.second)
 			{
@@ -66,7 +64,7 @@ HoI4::technologies::technologies(
 
 	for (auto bonusMapping: theTechMapper.getAllResearchBonuses())
 	{
-		if ((oldTechs.count(bonusMapping.first) > 0) || (oldInventions.count(bonusMapping.first) > 0))
+		if (oldTechs.contains(bonusMapping.first) || oldInventions.contains(bonusMapping.first))
 		{
 			for (auto bonus: bonusMapping.second)
 			{
@@ -89,5 +87,6 @@ void HoI4::technologies::setResearchBonus(const std::string& tech, int bonus)
 
 bool HoI4::technologies::hasTechnology(const std::string& technology) const
 {
-	return (mainTechnologies.count(technology) > 0) || (nonMtgNavalTechnologies.count(technology) > 0) || (mtgNavalTechnologies.count(technology) > 0);
+	return mainTechnologies.contains(technology) || nonMtgNavalTechnologies.contains(technology) ||
+			 mtgNavalTechnologies.contains(technology);
 }

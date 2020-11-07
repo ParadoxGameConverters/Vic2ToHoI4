@@ -131,7 +131,7 @@ void HoI4::updateTradeLaws(IdeaGroup& tradeLaws, const std::set<std::string>& ma
 	if (limitedExports)
 	{
 		std::string available = "= {\n";
-		if (majorIdeologies.count("democratic") > 0)
+		if (majorIdeologies.contains("democratic"))
 		{
 			available += "\t\t\t\tOR = {\n";
 			available += "\t\t\t\t\tAND = {\n";

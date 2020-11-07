@@ -23,6 +23,6 @@ TEST(HoI4World_Sounds_SoundEffectMapping, LinksCanBeAdded)
 	const auto soundEffectMapping = HoI4::SoundEffectMapping::Factory{}.getSoundEffectMapping(input);
 
 	ASSERT_EQ(2, soundEffectMapping->getLinks().size());
-	ASSERT_EQ(1, soundEffectMapping->getLinks()[0].getCultures().count("test_culture"));
-	ASSERT_EQ(1, soundEffectMapping->getLinks()[1].getCultures().count("another_culture"));
+	ASSERT_TRUE(soundEffectMapping->getLinks()[0].getCultures().contains("test_culture"));
+	ASSERT_TRUE(soundEffectMapping->getLinks()[1].getCultures().contains("another_culture"));
 }

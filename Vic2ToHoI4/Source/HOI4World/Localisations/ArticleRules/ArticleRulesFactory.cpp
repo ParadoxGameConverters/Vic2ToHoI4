@@ -19,7 +19,7 @@ HoI4::ArticleRules::Factory::Factory()
 												 .build());
 		}
 
-		if (rules->rules.count(definition.getLanguage()))
+		if (rules->rules.contains(definition.getLanguage()))
 		{
 			auto& languageRules = rules->rules.at(definition.getLanguage());
 			languageRules.insert(languageRules.end(), articleRules.begin(), articleRules.end());

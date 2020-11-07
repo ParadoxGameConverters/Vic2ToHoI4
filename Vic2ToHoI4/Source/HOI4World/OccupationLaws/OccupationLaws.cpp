@@ -12,7 +12,7 @@ void HoI4::OccupationLaws::updateLaws(const std::set<std::string>& majorIdeologi
 									 }),
 		 occupationLaws.end());
 
-	if (!majorIdeologies.count("democratic"))
+	if (!majorIdeologies.contains("democratic"))
 	{
 		occupationLaws.erase(std::remove_if(occupationLaws.begin(),
 										 occupationLaws.end(),
@@ -47,7 +47,7 @@ void HoI4::OccupationLaws::updateLaws(const std::set<std::string>& majorIdeologi
 		}
 	}
 
-	if (!majorIdeologies.count("communism"))
+	if (!majorIdeologies.contains("communism"))
 	{
 		occupationLaws.erase(std::remove_if(occupationLaws.begin(),
 										 occupationLaws.end(),
@@ -57,7 +57,7 @@ void HoI4::OccupationLaws::updateLaws(const std::set<std::string>& majorIdeologi
 			 occupationLaws.end());
 	}
 
-	if (!majorIdeologies.count("fascism"))
+	if (!majorIdeologies.contains("fascism"))
 	{
 		occupationLaws.erase(std::remove_if(occupationLaws.begin(),
 										 occupationLaws.end(),

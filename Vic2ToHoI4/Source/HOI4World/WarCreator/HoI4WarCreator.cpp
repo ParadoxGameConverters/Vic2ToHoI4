@@ -1,11 +1,11 @@
 #include "HoI4WarCreator.h"
-#include "HOI4World/ProvinceDefinitions.h"
 #include "HOI4World/Diplomacy/Faction.h"
 #include "HOI4World/Events/Events.h"
 #include "HOI4World/HoI4Focus.h"
 #include "HOI4World/HoI4Localisation.h"
 #include "HOI4World/HoI4World.h"
 #include "HOI4World/Map/MapData.h"
+#include "HOI4World/ProvinceDefinitions.h"
 #include "Log.h"
 #include "V2World/Country.h"
 #include "V2World/Politics/Party.h"
@@ -1367,7 +1367,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 			continue;
 		}
 
-		if (auto allies = country->getAllies(); allies.count(target->getTag()) == 0)
+		if (auto allies = country->getAllies(); !allies.contains(target->getTag()))
 		{
 			std::string targetName;
 			if (auto possibleTargetName = target->getSourceCountry().getName("english"); possibleTargetName)

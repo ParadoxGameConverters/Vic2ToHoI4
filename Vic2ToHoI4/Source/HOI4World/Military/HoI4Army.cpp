@@ -288,7 +288,7 @@ HoI4::DivisionType HoI4::createDivision(const std::map<std::string, int>& templa
 			}
 		}
 		if (const auto& substitutes = theMilitaryMappings.getSubstitutes();
-			 substitutes.count(requirement.first) && BattalionsAndCompanies.count(substitutes.at(requirement.first)))
+			 substitutes.contains(requirement.first) && BattalionsAndCompanies.contains(substitutes.at(requirement.first)))
 		{
 			for (auto& regiment: BattalionsAndCompanies[theMilitaryMappings.getSubstitutes().at(requirement.first)])
 			{

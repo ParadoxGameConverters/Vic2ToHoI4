@@ -161,13 +161,13 @@ std::string getHasExcessiveArmySizeBody(const std::set<std::string>& majorIdeolo
 	body += "\t\t\tnum_of_factories < 25\n";
 	body += "\t\t\thas_army_manpower = { size = 250000 }\n";
 	body += "\t\t\thas_manpower < 1\n";
-	if (majorIdeologies.count("communism"))
+	if (majorIdeologies.contains("communism"))
 	{
 		body += "\t\t\tNOT = {\n";
 		body += "\t\t\t\thas_government = communism\n";
 		body += "\t\t\t}\n";
 	}
-	if (majorIdeologies.count("radical"))
+	if (majorIdeologies.contains("radical"))
 	{
 		body += "\t\t\tNOT = {\n";
 		body += "\t\t\t\thas_government = radical\n";
@@ -178,13 +178,13 @@ std::string getHasExcessiveArmySizeBody(const std::set<std::string>& majorIdeolo
 	body += "\t\tnum_of_factories < 50\n";
 	body += "\t\thas_army_manpower = { size = 500000 }\n";
 	body += "\t\thas_manpower < 1\n";
-	if (majorIdeologies.count("communism"))
+	if (majorIdeologies.contains("communism"))
 	{
 		body += "\t\t\tNOT = {\n";
 		body += "\t\t\t\thas_government = communism\n";
 		body += "\t\t\t}\n";
 	}
-	if (majorIdeologies.count("radical"))
+	if (majorIdeologies.contains("radical"))
 	{
 		body += "\t\t\tNOT = {\n";
 		body += "\t\t\t\thas_government = radical\n";
@@ -195,13 +195,13 @@ std::string getHasExcessiveArmySizeBody(const std::set<std::string>& majorIdeolo
 	body += "\t\t\tnum_of_factories < 75\n";
 	body += "\t\t\thas_army_manpower = { size = 750000 }\n";
 	body += "\t\t\thas_manpower < 1\n";
-	if (majorIdeologies.count("communism"))
+	if (majorIdeologies.contains("communism"))
 	{
 		body += "\t\t\tNOT = {\n";
 		body += "\t\t\t\thas_government = communism\n";
 		body += "\t\t\t}\n";
 	}
-	if (majorIdeologies.count("radical"))
+	if (majorIdeologies.contains("radical"))
 	{
 		body += "\t\t\tNOT = {\n";
 		body += "\t\t\t\thas_government = radical\n";
@@ -212,20 +212,20 @@ std::string getHasExcessiveArmySizeBody(const std::set<std::string>& majorIdeolo
 	body += "\t\t\tnum_of_factories < 100\n";
 	body += "\t\t\thas_army_manpower = { size = 1000000 }\n";
 	body += "\t\t\thas_manpower < 1\n";
-	if (majorIdeologies.count("communism"))
+	if (majorIdeologies.contains("communism"))
 	{
 		body += "\t\t\tNOT = {\n";
 		body += "\t\t\t\thas_government = communism\n";
 		body += "\t\t\t}\n";
 	}
-	if (majorIdeologies.count("radical"))
+	if (majorIdeologies.contains("radical"))
 	{
 		body += "\t\t\tNOT = {\n";
 		body += "\t\t\t\thas_government = radical\n";
 		body += "\t\t\t}\n";
 	}
 	body += "\t\t}\n";
-	if (majorIdeologies.count("democratic"))
+	if (majorIdeologies.contains("democratic"))
 	{
 		body += "\t\tAND = {\n";
 		body += "\t\t\thas_army_manpower = { size = 2500000 }\n";
@@ -233,7 +233,7 @@ std::string getHasExcessiveArmySizeBody(const std::set<std::string>& majorIdeolo
 		body += "\t\t\thas_government = democratic\n";
 		body += "\t\t}\n";
 	}
-	if (majorIdeologies.count("fascism"))
+	if (majorIdeologies.contains("fascism"))
 	{
 		body += "\t\tAND = {\n";
 		body += "\t\t\thas_army_manpower = { size = 3000000 }\n";
@@ -241,7 +241,7 @@ std::string getHasExcessiveArmySizeBody(const std::set<std::string>& majorIdeolo
 		body += "\t\t\thas_government = fascism\n";
 		body += "\t\t}\n";
 	}
-	if (majorIdeologies.count("absolutist"))
+	if (majorIdeologies.contains("absolutist"))
 	{
 		body += "\t\tAND = {\n";
 		body += "\t\t\thas_army_manpower = { size = 3000000 }\n";

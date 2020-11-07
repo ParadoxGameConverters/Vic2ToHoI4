@@ -30,7 +30,7 @@ point HoI4::ProvincePoints::getCentermostPoint() const
 	point possibleCenter;
 	possibleCenter.first = (leftmostPoint.first + rightmostPoint.first) / 2;
 	possibleCenter.second = (lowestPoint.second + highestPoint.second) / 2;
-	if (thePoints.count(possibleCenter))
+	if (thePoints.contains(possibleCenter))
 	{
 		return possibleCenter;
 	}
@@ -40,12 +40,10 @@ point HoI4::ProvincePoints::getCentermostPoint() const
 		point closestPoint;
 		for (const auto& possiblePoint: thePoints)
 		{
-			const auto distanceSquared = calculateDistanceSquared(
-				possiblePoint.first,
-				possiblePoint.second,
-				possibleCenter.first,
-				possibleCenter.second
-			);
+			const auto distanceSquared = calculateDistanceSquared(possiblePoint.first,
+				 possiblePoint.second,
+				 possibleCenter.first,
+				 possibleCenter.second);
 			if (distanceSquared < shortestDistance)
 			{
 				shortestDistance = distanceSquared;

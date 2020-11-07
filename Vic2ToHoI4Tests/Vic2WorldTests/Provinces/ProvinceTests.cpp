@@ -198,7 +198,7 @@ TEST(Vic2World_ProvinceTests, coresCanBeAdded)
 	theProvince->addCore("TAG");
 
 	ASSERT_EQ(theProvince->getCores().size(), 1);
-	ASSERT_EQ(theProvince->getCores().count("TAG"), 1);
+	ASSERT_TRUE(theProvince->getCores().contains("TAG"));
 }
 
 
@@ -208,5 +208,5 @@ TEST(Vic2World_ProvinceTests, coresCanBeRemoved)
 	theProvince->removeCore("2ND");
 
 	ASSERT_EQ(theProvince->getCores().size(), 1);
-	ASSERT_EQ(theProvince->getCores().count("TAG"), 1);
+	ASSERT_TRUE(theProvince->getCores().contains("TAG"));
 }

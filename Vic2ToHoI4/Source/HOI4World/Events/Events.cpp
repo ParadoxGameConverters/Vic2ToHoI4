@@ -655,7 +655,7 @@ void HoI4::Events::addMinisterRevolutionEvents(const std::set<std::string>& majo
 		politicalEventNumber++;
 	}
 
-	if (majorIdeologies.count("democratic") > 0)
+	if (majorIdeologies.contains("democratic"))
 	{
 		addDemocraticMinisterRevolutionEvents(localisation);
 	}
@@ -1127,7 +1127,7 @@ void HoI4::Events::importElectionEvents(const std::set<std::string>& majorIdeolo
 
 	registerKeyword("country_event", [this, majorIdeologies](const std::string& type, std::istream& theStream) {
 		const Event electionEvent(type, theStream);
-		if ((majorIdeologies.count("democratic") > 0) || (electionEvent.getId() != "election.3"))
+		if (majorIdeologies.contains("democratic") || (electionEvent.getId() != "election.3"))
 		{
 			electionEvents.push_back(electionEvent);
 		}
@@ -1137,7 +1137,7 @@ void HoI4::Events::importElectionEvents(const std::set<std::string>& majorIdeolo
 	parseFile("blankmod/output/events/ElectionEvents.txt");
 	clearRegisteredKeywords();
 
-	if (majorIdeologies.count("democratic"))
+	if (majorIdeologies.contains("democratic"))
 	{
 		onActions.addElectionEvent("election.3");
 	}
@@ -1174,7 +1174,7 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag,
 	partyChoiceEvent.setTriggeredOnly();
 	std::string trigger = "= {\n";
 	trigger += "\t\ttag = " + countryTag + "\n";
-	if (majorIdeologies.count("democratic") > 0)
+	if (majorIdeologies.contains("democratic"))
 	{
 		trigger += "\t\tOR = {\n";
 		trigger += "\t\t\tdemocratic > 0.5\n";
@@ -1200,7 +1200,7 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag,
 			hoi4Localisations.addEventLocalisationFromVic2(partyName, optionName, vic2Localisations);
 			EventOption option;
 			option.giveName(std::move(optionName));
-			if (majorIdeologies.count("democratic") > 0)
+			if (majorIdeologies.contains("democratic"))
 			{
 				option.giveScriptBlock(
 					 "set_party_name = { "
@@ -1236,7 +1236,7 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag,
 			EventOption option;
 			hoi4Localisations.addEventLocalisationFromVic2(partyName, optionName, vic2Localisations);
 			option.giveName(std::move(optionName));
-			if (majorIdeologies.count("democratic") > 0)
+			if (majorIdeologies.contains("democratic"))
 			{
 				option.giveScriptBlock(
 					 "set_party_name = { "
@@ -1272,7 +1272,7 @@ void HoI4::Events::addPartyChoiceEvent(const std::string& countryTag,
 			hoi4Localisations.addEventLocalisationFromVic2(partyName, optionName, vic2Localisations);
 			EventOption option;
 			option.giveName(std::move(optionName));
-			if (majorIdeologies.count("democratic") > 0)
+			if (majorIdeologies.contains("democratic"))
 			{
 				option.giveScriptBlock(
 					 "set_party_name = { "
@@ -1365,7 +1365,7 @@ void HoI4::Events::createStabilityEvents(const std::set<std::string>& majorIdeol
 	trigger << "\t\t}\n";
 	trigger << "\t}";
 	lowStabilitySelector->second.giveTrigger(trigger.str());
-	if (majorIdeologies.count("democratic") == 0)
+	if (!majorIdeologies.contains("democratic"))
 	{
 		std::string mtth = "= {\n";
 		mtth += "\t\tdays = 360\n";
@@ -1392,7 +1392,7 @@ void HoI4::Events::createStabilityEvents(const std::set<std::string>& majorIdeol
 	EventOption option;
 	option.giveName("stability.33.a");
 	std::string startExtremistCivilWar = "if = {\n";
-	if (majorIdeologies.count("democratic") > 0)
+	if (majorIdeologies.contains("democratic"))
 	{
 		startExtremistCivilWar += "\t\t\tlimit = { has_government = democratic }\n";
 	}
@@ -1400,25 +1400,25 @@ void HoI4::Events::createStabilityEvents(const std::set<std::string>& majorIdeol
 	{
 		startExtremistCivilWar += "\t\t\tlimit = { has_government = neutrality }\n";
 	}
-	if (majorIdeologies.count("communism") > 0)
+	if (majorIdeologies.contains("communism"))
 	{
 		startExtremistCivilWar += "\t\t\tstart_civil_war = { ideology = communism size = 0.35 }\n";
 	}
-	else if (majorIdeologies.count("radical") > 0)
+	else if (majorIdeologies.contains("radical"))
 	{
 		startExtremistCivilWar += "\t\t\tstart_civil_war = { ideology = radical size = 0.35 }\n";
 	}
-	else if (majorIdeologies.count("fascism") > 0)
+	else if (majorIdeologies.contains("fascism"))
 	{
 		startExtremistCivilWar += "\t\t\tstart_civil_war = { ideology = fascism size = 0.35 }\n";
 	}
-	else if (majorIdeologies.count("absolutist") > 0)
+	else if (majorIdeologies.contains("absolutist"))
 	{
 		startExtremistCivilWar += "\t\t\tstart_civil_war = { ideology = absolutist size = 0.35 }\n";
 	}
 	startExtremistCivilWar += "\t\t}";
 	option.giveScriptBlock(std::move(startExtremistCivilWar));
-	if (majorIdeologies.count("democratic") > 0)
+	if (majorIdeologies.contains("democratic"))
 	{
 		std::string startDemocraticCivilWar = "if = {\n";
 		startDemocraticCivilWar += "\t\t\tlimit = {\n";

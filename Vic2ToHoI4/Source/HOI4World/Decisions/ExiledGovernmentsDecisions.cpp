@@ -20,7 +20,7 @@ void HoI4::ExiledGovernmentsDecisions::updateDecisions(const std::set<std::strin
 				available << "\t\t\tFROM = {\n";
 				available << "\t\t\t\thas_legitimacy > 50\n";
 				available << "\t\t\t\tOR = {\n";
-				for (const auto& ideology : majorIdeologies)
+				for (const auto& ideology: majorIdeologies)
 				{
 					if ((ideology == "democratic") || (ideology == "neutrality"))
 					{
@@ -39,7 +39,7 @@ void HoI4::ExiledGovernmentsDecisions::updateDecisions(const std::set<std::strin
 				visibleAndTT << "\t\t\t\tis_exiled_in = ROOT\n";
 				visibleAndTT << "\t\t\t\thas_legitimacy > 40\n";
 				visibleAndTT << "\t\t\t\tOR = {\n";
-				for (const auto& ideology : majorIdeologies)
+				for (const auto& ideology: majorIdeologies)
 				{
 					if ((ideology == "democratic") || (ideology == "neutrality"))
 					{
@@ -57,7 +57,7 @@ void HoI4::ExiledGovernmentsDecisions::updateDecisions(const std::set<std::strin
 				targetedModifier << "{\n";
 				targetedModifier << "\t\t\ttag = FROM\n";
 				targetedModifier << "\t\t\ttargeted_legitimacy_daily = -1\n";
-				if (majorIdeologies.count("democratic") > 0)
+				if (majorIdeologies.contains("democratic"))
 				{
 					targetedModifier << "\t\t\tdemocratic_drift = 0.05\n";
 				}

@@ -301,27 +301,27 @@ void HoI4::ScriptedLocalisations::filterIdeologyLocalisations(const std::set<std
 void HoI4::ScriptedLocalisations::updateIdeologyLocalisations(const std::set<std::string>& majorIdeologies)
 {
 	std::string fascismReplacement;
-	if (majorIdeologies.count("fascism"))
+	if (majorIdeologies.contains("fascism"))
 	{
 		fascismReplacement = "\n\t\t\t\thas_government = fascism";
 	}
 	std::string communismReplacement;
-	if (majorIdeologies.count("communism"))
+	if (majorIdeologies.contains("communism"))
 	{
 		communismReplacement = "\n\t\t\t\thas_government = communism";
 	}
 	std::string radicalReplacement;
-	if (majorIdeologies.count("radical"))
+	if (majorIdeologies.contains("radical"))
 	{
 		radicalReplacement = "\n\t\t\t\thas_government = radical";
 	}
 	std::string absolutistReplacement;
-	if (majorIdeologies.count("absolutist"))
+	if (majorIdeologies.contains("absolutist"))
 	{
 		absolutistReplacement = "\n\t\t\t\thas_government = absolutist";
 	}
 	std::string democraticReplacement;
-	if (majorIdeologies.count("democratic"))
+	if (majorIdeologies.contains("democratic"))
 	{
 		democraticReplacement = "\n\t\t\t\thas_government = democratic";
 	}

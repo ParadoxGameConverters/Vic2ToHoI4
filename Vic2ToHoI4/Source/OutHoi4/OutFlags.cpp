@@ -223,7 +223,7 @@ std::optional<std::string> HoI4::getAllowModFlags(const std::string& flagFilenam
 {
 	for (const auto& mod: vic2Mods)
 	{
-		if (allowedMods.count(mod.getName()) == 0)
+		if (!allowedMods.contains(mod.getName()))
 		{
 			continue;
 		}

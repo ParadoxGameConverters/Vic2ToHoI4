@@ -1,15 +1,15 @@
 #include "HoI4Localisation.h"
 #include "Configuration.h"
+#include "Localisations/AllReplacementRules.h"
+#include "Log.h"
 #include "Mappers/GovernmentMapper.h"
+#include "OSCompatibilityLayer.h"
+#include "States/HoI4State.h"
+#include "States/HoI4States.h"
 #include "V2World/Country.h"
 #include "V2World/Localisations/Vic2Localisations.h"
 #include "V2World/States/State.h"
 #include "V2World/States/StateDefinitions.h"
-#include "Localisations/AllReplacementRules.h"
-#include "Log.h"
-#include "OSCompatibilityLayer.h"
-#include "States/HoI4State.h"
-#include "States/HoI4States.h"
 #include <fstream>
 
 
@@ -572,7 +572,7 @@ bool HoI4::Localisation::stateHasAllDefinedProvincesAfterConversion(const State&
 
 	for (auto definedProvince: stateDefinitionDefinitionProvinces)
 	{
-		if (state.getProvinces().count(definedProvince) == 0)
+		if (!state.getProvinces().contains(definedProvince))
 		{
 			return false;
 		}
@@ -1009,7 +1009,7 @@ void HoI4::Localisation::insertScriptedLocalisation(const std::string& localisat
 	std::regex_match(localisationKey, match, extractRegex);
 	const std::string tag = match[1];
 	const std::string ideology = match[2];
-	if (!majorIdeologies.count(ideology))
+	if (!majorIdeologies.contains(ideology))
 	{
 		return;
 	}

@@ -108,19 +108,19 @@ void HoI4::ScriptedEffects::updateUpdateOperationAi(ScriptedEffect* updateOperat
 		newBody << "\t\t\t\n";
 		newBody << "\t\t\t# get token for boost resistance\n";
 		newBody << "\t\t\tvar:generic_operation_target = {\n";
-		if (majorIdeologies.count("fascism") && majorIdeologies.count("absolutist"))
+		if (majorIdeologies.contains("fascism") && majorIdeologies.contains("absolutist"))
 		{
 			newBody << "\t\t\t\t# only do on fascist and absolutist\n";
 		}
-		else if (majorIdeologies.count("fascism"))
+		else if (majorIdeologies.contains("fascism"))
 		{
 			newBody << "\t\t\t\t# only do on fascist\n";
 		}
-		else if (majorIdeologies.count("absolutist"))
+		else if (majorIdeologies.contains("absolutist"))
 		{
 			newBody << "\t\t\t\t# only do on absolutist\n";
 		}
-		if (majorIdeologies.count("fascism"))
+		if (majorIdeologies.contains("fascism"))
 		{
 			newBody << "\t\t\t\tif = {\n";
 			newBody << "\t\t\t\t\tlimit = { \n";
@@ -153,7 +153,7 @@ void HoI4::ScriptedEffects::updateUpdateOperationAi(ScriptedEffect* updateOperat
 			newBody << "\t\t\t\t\tadd_to_temp_array = { operation_types_scores = score }\n";
 			newBody << "\t\t\t\t}\n";
 		}
-		if (majorIdeologies.count("absolutist"))
+		if (majorIdeologies.contains("absolutist"))
 		{
 			newBody << "\t\t\t\tif = {\n";
 			newBody << "\t\t\t\t\tlimit = { \n";

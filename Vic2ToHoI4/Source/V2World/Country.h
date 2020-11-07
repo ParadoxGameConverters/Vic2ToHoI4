@@ -71,7 +71,7 @@ class Country: commonItems::parser
 	std::string getPrimaryCulture() const { return primaryCulture; }
 	virtual std::string getPrimaryCultureGroup() const { return primaryCultureGroup; }
 	std::set<std::string> getAcceptedCultures() const { return acceptedCultures; }
-	bool isAnAcceptedCulture(const std::string& culture) const { return (acceptedCultures.count(culture) > 0); }
+	bool isAnAcceptedCulture(const std::string& culture) const { return acceptedCultures.contains(culture); }
 	virtual std::set<std::string> getInventions() const { return discoveredInventions; }
 	virtual std::string getGovernment() const { return government; }
 	std::set<std::string> getFlags() const { return flags; }

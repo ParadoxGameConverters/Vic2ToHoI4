@@ -117,12 +117,12 @@ void HoI4::State::convertControlledProvinces(const std::vector<std::pair<int, st
 		{
 			for (auto destinationProvince: *provinceMapping)
 			{
-				if (!provinces.count(destinationProvince))
+				if (!provinces.contains(destinationProvince))
 				{
 					continue;
 				}
 
-				if (controlledProvinces.count(*possibleController) == 0)
+				if (!controlledProvinces.contains(*possibleController))
 				{
 					std::set<int> destinationProvinces;
 					destinationProvinces.insert(destinationProvince);
@@ -161,7 +161,7 @@ void HoI4::State::assignVP(int location)
 	victoryPointPosition = location;
 
 	victoryPointValue = 1;
-	if (cores.count(ownerTag) != 0)
+	if (cores.contains(ownerTag))
 	{
 		victoryPointValue += 2;
 	}
@@ -449,11 +449,11 @@ bool HoI4::State::amICoastal(const CoastalProvinces& theCoastalProvinces) const
 
 bool HoI4::State::ownerHasNoCore() const
 {
-	return !cores.count(ownerTag);
+	return !cores.contains(ownerTag);
 }
 
 
 bool HoI4::State::isProvinceInState(int provinceNum) const
 {
-	return (provinces.count(provinceNum) > 0);
+	return provinces.contains(provinceNum);
 }

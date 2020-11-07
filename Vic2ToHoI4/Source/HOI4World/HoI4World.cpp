@@ -292,7 +292,7 @@ void HoI4::World::addNeutrality(bool debug)
 	Log(LogLevel::Info) << "\tAdding neutrality";
 	for (auto country: countries)
 	{
-		if (ideologies->getMajorIdeologies().count(country.second->getGovernmentIdeology()) == 0)
+		if (!ideologies->getMajorIdeologies().contains(country.second->getGovernmentIdeology()))
 		{
 			country.second->setGovernmentToExistingIdeology(ideologies->getMajorIdeologies(),
 				 *ideologies,
@@ -1016,7 +1016,7 @@ void HoI4::World::determineSpherelings()
 			bool isInSphere = relationItr.second.getSphereLeader();
 			bool notPuppet = (GP->getPuppets().find(relationItr.first) == GP->getPuppets().end());
 			auto allies = GP->getAllies();
-			bool isAlly = allies.count(relationItr.first);
+			bool isAlly = allies.contains(relationItr.first);
 
 			if (isInSphere && notPuppet && isAlly)
 			{
@@ -1054,7 +1054,7 @@ std::set<std::string> HoI4::World::getSouthAsianCountries() const
 	std::set<std::string> southAsianCountries;
 	for (const auto country: countries)
 	{
-		if (country.second->getFlags().count("conv_south_asia"))
+		if (country.second->getFlags().contains("conv_south_asia"))
 		{
 			southAsianCountries.insert(country.first);
 		}

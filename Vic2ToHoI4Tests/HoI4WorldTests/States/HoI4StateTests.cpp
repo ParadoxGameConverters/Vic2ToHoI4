@@ -1,9 +1,9 @@
-#include "Mocks/CoastalProvincesMock.h"
-#include "Mocks/CountryMapperMock.h"
-#include "Mocks/StateCategoriesMock.h"
 #include "Configuration.h"
 #include "HOI4World/Map/CoastalProvinces.h"
 #include "HOI4World/States/HoI4State.h"
+#include "Mocks/CoastalProvincesMock.h"
+#include "Mocks/CountryMapperMock.h"
+#include "Mocks/StateCategoriesMock.h"
 #include "OutHoi4/States/OutHoI4State.h"
 #include "V2World/Pops/PopBuilder.h"
 #include "V2World/Provinces/Province.h"
@@ -50,8 +50,8 @@ TEST(HoI4World_States_StateTests, ProvincesCanbeAdded)
 	theState.addProvince(13);
 
 	ASSERT_EQ(2, theState.getProvinces().size());
-	ASSERT_EQ(1, theState.getProvinces().count(5));
-	ASSERT_EQ(1, theState.getProvinces().count(13));
+	ASSERT_TRUE(theState.getProvinces().contains(5));
+	ASSERT_TRUE(theState.getProvinces().contains(13));
 }
 
 
@@ -92,8 +92,8 @@ TEST(HoI4World_States_StateTests, CoresCanbeAdded)
 	theState.addCores(cores);
 
 	ASSERT_EQ(2, theState.getCores().size());
-	ASSERT_EQ(1, theState.getCores().count("TAG"));
-	ASSERT_EQ(1, theState.getCores().count("COR"));
+	ASSERT_TRUE(theState.getCores().contains("TAG"));
+	ASSERT_TRUE(theState.getCores().contains("COR"));
 }
 
 
@@ -211,11 +211,13 @@ TEST(HoI4World_States_StateTests, MilFactoriesDefaultsToZero)
 
 TEST(HoI4World_States_StateTests, TotalFactoriesCanBeSet)
 {
-	const auto sourceState =
-		 *Vic2::State::Builder{}
-				.setEmployedWorkers(60000)
-				.setProvinces({Vic2::Province::Builder{}.setNumber(0).setPops({*Vic2::Pop::Builder{}.setSize(70000).build()}).build()})
-				.build();
+	const auto sourceState = *Vic2::State::Builder{}
+											.setEmployedWorkers(60000)
+											.setProvinces({Vic2::Province::Builder{}
+																	 .setNumber(0)
+																	 .setPops({*Vic2::Pop::Builder{}.setSize(70000).build()})
+																	 .build()})
+											.build();
 
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addCores({"TAG"});
@@ -233,11 +235,13 @@ TEST(HoI4World_States_StateTests, TotalFactoriesCanBeSet)
 
 TEST(HoI4World_States_StateTests, TotalFactoriesHalvedByMissingCore)
 {
-	const auto sourceState =
-		 *Vic2::State::Builder{}
-				.setEmployedWorkers(60000)
-				.setProvinces({Vic2::Province::Builder{}.setNumber(0).setPops({*Vic2::Pop::Builder{}.setSize(70000).build()}).build()})
-				.build();
+	const auto sourceState = *Vic2::State::Builder{}
+											.setEmployedWorkers(60000)
+											.setProvinces({Vic2::Province::Builder{}
+																	 .setNumber(0)
+																	 .setPops({*Vic2::Pop::Builder{}.setSize(70000).build()})
+																	 .build()})
+											.build();
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
@@ -254,11 +258,13 @@ TEST(HoI4World_States_StateTests, TotalFactoriesHalvedByMissingCore)
 
 TEST(HoI4World_States_StateTests, TotalFactoriesCappedAtTwelve)
 {
-	const auto sourceState =
-		 *Vic2::State::Builder{}
-				.setEmployedWorkers(500000)
-				.setProvinces({Vic2::Province::Builder{}.setNumber(0).setPops({*Vic2::Pop::Builder{}.setSize(60000).build()}).build()})
-				.build();
+	const auto sourceState = *Vic2::State::Builder{}
+											.setEmployedWorkers(500000)
+											.setProvinces({Vic2::Province::Builder{}
+																	 .setNumber(0)
+																	 .setPops({*Vic2::Pop::Builder{}.setSize(60000).build()})
+																	 .build()})
+											.build();
 
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addCores({"TAG"});
@@ -277,7 +283,8 @@ TEST(HoI4World_States_StateTests, categoryCanBeChanged)
 {
 	const auto sourceState = *Vic2::State::Builder{}
 											.setEmployedWorkers(500000)
-											.setProvinces({Vic2::Province::Builder{}.setNumber(0)
+											.setProvinces({Vic2::Province::Builder{}
+																	 .setNumber(0)
 																	 .setPops({*Vic2::Pop::Builder{}.setSize(60000).build()})
 																	 .setRailLevel(0)
 																	 .build()})
@@ -324,7 +331,8 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverFourFactories)
 {
 	const auto sourceState = *Vic2::State::Builder{}
 											.setEmployedWorkers(50000)
-											.setProvinces({Vic2::Province::Builder{}.setNumber(0)
+											.setProvinces({Vic2::Province::Builder{}
+																	 .setNumber(0)
 																	 .setPops({*Vic2::Pop::Builder{}.setSize(100000).build()})
 																	 .setRailLevel(6)
 																	 .build()})
@@ -346,7 +354,8 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverSixFactories)
 {
 	const auto sourceState = *Vic2::State::Builder{}
 											.setEmployedWorkers(70000)
-											.setProvinces({Vic2::Province::Builder{}.setNumber(0)
+											.setProvinces({Vic2::Province::Builder{}
+																	 .setNumber(0)
 																	 .setPops({*Vic2::Pop::Builder{}.setSize(100000).build()})
 																	 .setRailLevel(6)
 																	 .build()})
@@ -368,7 +377,8 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverTenFactories)
 {
 	const auto sourceState = *Vic2::State::Builder{}
 											.setEmployedWorkers(110000)
-											.setProvinces({Vic2::Province::Builder{}.setNumber(0)
+											.setProvinces({Vic2::Province::Builder{}
+																	 .setNumber(0)
 																	 .setPops({*Vic2::Pop::Builder{}.setSize(100000).build()})
 																	 .setRailLevel(6)
 																	 .build()})
@@ -406,7 +416,7 @@ TEST(HoI4World_States_StateTests, NavalBasesCanBeConverted)
 
 	const mappers::ProvinceMapper theProvinceMapper{{}, {{1, {1}}, {2, {2}}}};
 
-	theState.convertNavalBases({{1,1}, {2,1}}, theCoastalProvinces, theProvinceMapper);
+	theState.convertNavalBases({{1, 1}, {2, 1}}, theCoastalProvinces, theProvinceMapper);
 
 	const std::map<int, int> expectedNavalBases{{1, 2}, {2, 2}};
 	ASSERT_EQ(expectedNavalBases, theState.getNavalBases());
@@ -462,7 +472,8 @@ TEST(HoI4World_States_StateTests, ManpowerReturnsMinimumOfOne)
 TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
 {
 	const std::shared_ptr<Vic2::Province> theProvince =
-		 Vic2::Province::Builder{}.setNumber(0)
+		 Vic2::Province::Builder{}
+			  .setNumber(0)
 			  .setNumber(12)
 			  .setOwner("TAG")
 			  .setController("REB")
@@ -579,14 +590,16 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 {
 	const auto sourceState =
 		 *Vic2::State::Builder{}
-				.setProvinces({Vic2::Province::Builder{}.setNumber(0)
+				.setProvinces({Vic2::Province::Builder{}
+										 .setNumber(0)
 										 .setNumber(12)
 										 .setOwner("TAG")
 										 .setController("REB")
 										 .setPops(std::vector<Vic2::Pop>{
 											  *Vic2::Pop::Builder{}.setType("farmers").setSize(123456).build()})
 										 .build(),
-					 Vic2::Province::Builder{}.setNumber(0)
+					 Vic2::Province::Builder{}
+						  .setNumber(0)
 						  .setNumber(24)
 						  .setOwner("TAG")
 						  .setController("REB")
@@ -613,14 +626,16 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 {
 	const auto sourceState =
 		 *Vic2::State::Builder{}
-				.setProvinces({Vic2::Province::Builder{}.setNumber(0)
+				.setProvinces({Vic2::Province::Builder{}
+										 .setNumber(0)
 										 .setNumber(12)
 										 .setOwner("TAG")
 										 .setController("REB")
 										 .setPops(std::vector<Vic2::Pop>{
 											  *Vic2::Pop::Builder{}.setType("farmers").setSize(123456).build()})
 										 .build(),
-					 Vic2::Province::Builder{}.setNumber(0)
+					 Vic2::Province::Builder{}
+						  .setNumber(0)
 						  .setNumber(24)
 						  .setOwner("TAG")
 						  .setController("REB")
@@ -647,14 +662,16 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 {
 	const auto sourceState =
 		 *Vic2::State::Builder{}
-				.setProvinces({Vic2::Province::Builder{}.setNumber(0)
+				.setProvinces({Vic2::Province::Builder{}
+										 .setNumber(0)
 										 .setNumber(12)
 										 .setOwner("TAG")
 										 .setController("REB")
 										 .setPops(std::vector<Vic2::Pop>{
 											  *Vic2::Pop::Builder{}.setType("farmers").setSize(123456).build()})
 										 .build(),
-					 Vic2::Province::Builder{}.setNumber(0)
+					 Vic2::Province::Builder{}
+						  .setNumber(0)
 						  .setNumber(24)
 						  .setOwner("TAG")
 						  .setController("REB")
@@ -681,14 +698,16 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousPr
 {
 	const auto sourceState =
 		 *Vic2::State::Builder{}
-				.setProvinces({Vic2::Province::Builder{}.setNumber(0)
+				.setProvinces({Vic2::Province::Builder{}
+										 .setNumber(0)
 										 .setNumber(12)
 										 .setOwner("TAG")
 										 .setController("REB")
 										 .setPops(std::vector<Vic2::Pop>{
 											  *Vic2::Pop::Builder{}.setType("farmers").setSize(12345).build()})
 										 .build(),
-					 Vic2::Province::Builder{}.setNumber(0)
+					 Vic2::Province::Builder{}
+						  .setNumber(0)
 						  .setNumber(24)
 						  .setOwner("TAG")
 						  .setController("REB")

@@ -417,7 +417,7 @@ bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandCored(const mapper
 			 capitalStateMapping != provinceToStateIDMap.end())
 		{
 			const auto& state = allStates.find(capitalStateMapping->second)->second;
-			if ((state.getCores().count(tag) > 0) && !state.isImpassable())
+			if (state.getCores().contains(tag) && !state.isImpassable())
 			{
 				capitalState = capitalStateMapping->second;
 				capitalProvince = (*mapping)[0];
@@ -437,7 +437,7 @@ bool HoI4::Country::attemptToPutCapitalInAnyNonWastelandCored(const std::map<int
 		if (auto stateAndNum = allStates.find(ownedStateNum); stateAndNum != allStates.end())
 		{
 			auto state = stateAndNum->second;
-			if ((state.getCores().count(tag) > 0) && !state.isImpassable())
+			if (state.getCores().contains(tag) && !state.isImpassable())
 			{
 				capitalState = ownedStateNum;
 				capitalProvince = *state.getProvinces().begin();
@@ -461,7 +461,7 @@ bool HoI4::Country::attemptToPutCapitalInPreferredWastelandCored(const mappers::
 			 capitalStateMapping != provinceToStateIDMap.end())
 		{
 			const auto& state = allStates.find(capitalStateMapping->second)->second;
-			if (state.getCores().count(tag) > 0)
+			if (state.getCores().contains(tag))
 			{
 				capitalState = capitalStateMapping->second;
 				capitalProvince = (*mapping)[0];
@@ -480,7 +480,7 @@ bool HoI4::Country::attemptToPutCapitalInAnyCored(const std::map<int, State>& al
 	{
 		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
 		{
-			if (state->second.getCores().count(tag) > 0)
+			if (state->second.getCores().contains(tag))
 			{
 				capitalState = ownedStateNum;
 				capitalProvince = *state->second.getProvinces().begin();
