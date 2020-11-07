@@ -1,4 +1,5 @@
 #include "ProvincePoints.h"
+#include <numeric>
 
 
 
@@ -28,8 +29,8 @@ double calculateDistanceSquared(int pointX, int pointY, int centerX, int centerY
 point HoI4::ProvincePoints::getCentermostPoint() const
 {
 	point possibleCenter;
-	possibleCenter.first = (leftmostPoint.first + rightmostPoint.first) / 2;
-	possibleCenter.second = (lowestPoint.second + highestPoint.second) / 2;
+	possibleCenter.first = std::midpoint(leftmostPoint.first, rightmostPoint.first);
+	possibleCenter.second = std::midpoint(lowestPoint.second, highestPoint.second);
 	if (thePoints.contains(possibleCenter))
 	{
 		return possibleCenter;
