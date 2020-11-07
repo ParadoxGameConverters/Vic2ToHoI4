@@ -1660,7 +1660,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<H
 		}
 
 		set<string> Allies = country->getAllies();
-		if (Allies.contains(target->getTag()))
+		if (!Allies.contains(target->getTag()))
 		{
 			auto possibleTargetName = target->getSourceCountry().getName("english");
 			string targetName;
