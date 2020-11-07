@@ -1,7 +1,7 @@
 #include "CountryMapping.h"
-#include "V2World/World.h"
 #include "Log.h"
 #include "ParserHelpers.h"
+#include "V2World/World.h"
 #include <iomanip>
 
 
@@ -154,7 +154,7 @@ void CountryMapper::logMapping(const std::string& sourceTag,
 
 bool CountryMapper::tagIsAlreadyAssigned(const std::string& HoI4Tag) const
 {
-	return (HoI4TagToV2TagMap.find(HoI4Tag) != HoI4TagToV2TagMap.end());
+	return (HoI4TagToV2TagMap.contains(HoI4Tag));
 }
 
 

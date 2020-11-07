@@ -1014,7 +1014,7 @@ void HoI4::World::determineSpherelings()
 		for (auto relationItr: GP->getRelations())
 		{
 			bool isInSphere = relationItr.second.getSphereLeader();
-			bool notPuppet = (GP->getPuppets().find(relationItr.first) == GP->getPuppets().end());
+			bool notPuppet = !GP->getPuppets().contains(relationItr.first);
 			auto allies = GP->getAllies();
 			bool isAlly = allies.contains(relationItr.first);
 

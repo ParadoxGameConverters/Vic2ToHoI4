@@ -84,7 +84,7 @@ std::optional<int> HoI4::State::determineNavalBaseLocation(int sourceProvince,
 
 void HoI4::State::addNavalBase(int level, int location)
 {
-	if ((level > 0) && (provinces.find(location) != provinces.end()))
+	if ((level > 0) && provinces.contains(location))
 	{
 		navalBases[location] = level;
 	}
@@ -436,8 +436,7 @@ bool HoI4::State::amICoastal(const CoastalProvinces& theCoastalProvinces) const
 	auto coastalProvinces = theCoastalProvinces.getCoastalProvinces();
 	for (auto province: provinces)
 	{
-		auto itr = coastalProvinces.find(province);
-		if (itr != coastalProvinces.end())
+		if (coastalProvinces.contains(province))
 		{
 			return true;
 		}

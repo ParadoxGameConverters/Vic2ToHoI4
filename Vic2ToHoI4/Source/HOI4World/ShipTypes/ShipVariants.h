@@ -22,14 +22,11 @@ class ShipVariants
 		 const technologies& ownedTechs,
 		 const std::string& countryTag);
 
-	[[nodiscard]] bool hasMtgVariant(const std::string& variantName) const
-	{
-		return mtgVariants.find(variantName) != mtgVariants.end();
-	}
+	[[nodiscard]] bool hasMtgVariant(const std::string& variantName) const { return mtgVariants.contains(variantName); }
 
 	[[nodiscard]] bool hasLegacyVariant(const std::string& variantName) const
 	{
-		return legacyVariants.find(variantName) != legacyVariants.end();
+		return legacyVariants.contains(variantName);
 	}
 
 	friend std::ostream& operator<<(std::ostream& output, const ShipVariants& theVariants);

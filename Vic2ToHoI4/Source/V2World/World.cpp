@@ -371,7 +371,7 @@ bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile,
 		auto tag = line.substr(0, 3);
 		auto countryFileName = extractCountryFileName(line);
 		commonCountryData countryData(countryFileName, mod, theConfiguration, &partyFactory);
-		if (countries.find(tag) != countries.end())
+		if (countries.contains(tag))
 		{
 			countries[tag]->setColor(countryData.getColor());
 			countries[tag]->setShipNames(countryData.getUnitNames());

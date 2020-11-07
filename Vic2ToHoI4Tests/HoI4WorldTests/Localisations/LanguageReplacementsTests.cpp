@@ -21,12 +21,12 @@ TEST(HoI4World_Localisations_LanguageReplacements, RuleCanBeAdded)
 
 	const auto& actualReplacements = replacements.getReplacements();
 	ASSERT_EQ(actualReplacements.size(), 1);
-	ASSERT_NE(actualReplacements.find("_MS"), actualReplacements.end());
+	ASSERT_TRUE(actualReplacements.contains("_MS"));
 	ASSERT_EQ(actualReplacements.find("_MS")->second, std::string("$1er"));
 }
 
 
-#ifndef _DEBUG // disable some test that break code coverage
+#ifndef _DEBUG // disable some tests that break code coverage
 TEST(HoI4World_Localisations_LanguageReplacements, RuleCanHaveUTF8)
 {
 	std::stringstream input;
@@ -35,7 +35,7 @@ TEST(HoI4World_Localisations_LanguageReplacements, RuleCanHaveUTF8)
 
 	const auto& actualReplacements = replacements.getReplacements();
 	ASSERT_EQ(actualReplacements.size(), 1);
-	ASSERT_NE(actualReplacements.find("_FS"), actualReplacements.end());
+	ASSERT_TRUE(actualReplacements.contains("_FS"));
 	ASSERT_EQ(actualReplacements.find("_FS")->second, std::string("$1\xC3\xA8re"));
 }
 #endif // _DEBUG

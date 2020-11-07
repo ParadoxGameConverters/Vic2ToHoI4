@@ -147,7 +147,7 @@ std::map<std::string, std::pair<int, int>> HoI4::States::determinePotentialOwner
 			continue;
 		}
 
-		if (potentialOwners.find(owner) == potentialOwners.end())
+		if (!potentialOwners.contains(owner))
 		{
 			potentialOwners[owner] = std::make_pair(0, 0);
 		}

@@ -928,7 +928,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI
 	}
 
 	vector<shared_ptr<HoI4::Faction>> FactionsAttackingMe;
-	if (WorldTargetMap.find(Leader) != WorldTargetMap.end())
+	if (WorldTargetMap.contains(Leader))
 	{
 		for (auto country: WorldTargetMap.find(Leader)->second)
 		{
@@ -1433,7 +1433,7 @@ set<int> HoI4WarCreator::findBorderState(shared_ptr<HoI4::Country> country,
 				continue;
 			}
 
-			if (provinceToOwnerMap.find(prov) != provinceToOwnerMap.end())
+			if (provinceToOwnerMap.contains(prov))
 			{
 				string owner = provinceToOwnerMap.find(prov)->second;
 				if (owner == neighbor->getTag())
@@ -1492,7 +1492,7 @@ vector<shared_ptr<HoI4::Country>> HoI4WarCreator::findWeakNeighbors(shared_ptr<H
 	auto allies = country->getAllies();
 	for (auto neighbor: findCloseNeighbors(country, theMapData, provinceDefinitions))
 	{
-		if (allies.find(neighbor.second->getTag()) != allies.end())
+		if (allies.contains(neighbor.second->getTag()))
 		{
 			continue;
 		}
@@ -1544,7 +1544,7 @@ vector<shared_ptr<HoI4::Country>> HoI4WarCreator::findWeakColonies(shared_ptr<Ho
 	auto allies = country->getAllies();
 	for (auto neighbor: findFarNeighbors(country, theMapData, provinceDefinitions))
 	{
-		if (allies.find(neighbor.second->getTag()) != allies.end())
+		if (allies.contains(neighbor.second->getTag()))
 		{
 			continue;
 		}
@@ -1663,7 +1663,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<H
 		}
 
 		set<string> Allies = country->getAllies();
-		if (Allies.find(target->getTag()) == Allies.end())
+		if (Allies.contains(target->getTag()))
 		{
 			auto possibleTargetName = target->getSourceCountry().getName("english");
 			string targetName;

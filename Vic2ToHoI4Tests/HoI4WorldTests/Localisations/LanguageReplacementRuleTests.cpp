@@ -23,6 +23,6 @@ TEST(HoI4World_Localisations_LanguageReplacementRule, ReplacementCanBeAdded)
 
 	const auto& actualReplacements = rule.getReplacements();
 	ASSERT_EQ(actualReplacements.size(), 1);
-	ASSERT_NE(actualReplacements.find("_MS"), actualReplacements.end());
+	ASSERT_TRUE(actualReplacements.contains("_MS"));
 	ASSERT_EQ(actualReplacements.find("_MS")->second, std::string("$1er"));
 }
