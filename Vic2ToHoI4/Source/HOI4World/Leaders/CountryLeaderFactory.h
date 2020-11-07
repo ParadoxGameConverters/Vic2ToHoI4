@@ -23,8 +23,8 @@ class CountryLeader::Factory: commonItems::parser
 		 const std::string& primaryCultureGroup,
 		 const std::string& governmentIdeology,
 		 const std::string& leaderIdeology,
-		 Names* names,
-		 graphicsMapper* theGraphics);
+		 Names& names,
+		 graphicsMapper& theGraphics);
 	std::unique_ptr<CountryLeader> importCountryLeader(std::istream& theStream);
 
   private:

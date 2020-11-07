@@ -29,15 +29,15 @@ HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(const std::str
 	 const std::string& primaryCultureGroup,
 	 const std::string& governmentIdeology,
 	 const std::string& leaderIdeology,
-	 Names* names,
-	 graphicsMapper* theGraphics)
+	 Names& names,
+	 graphicsMapper& theGraphics)
 {
 	CountryLeader leader;
 	leader.ideology = leaderIdeology;
-	leader.picture = theGraphics->getLeaderPortrait(primaryCultureGroup, governmentIdeology);
+	leader.picture = theGraphics.getLeaderPortrait(primaryCultureGroup, governmentIdeology);
 
-	const auto firstName = names->getMaleName(primaryCulture);
-	const auto surname = names->getSurname(primaryCulture);
+	const auto firstName = names.getMaleName(primaryCulture);
+	const auto surname = names.getSurname(primaryCulture);
 
 	if (!firstName || !surname)
 	{
