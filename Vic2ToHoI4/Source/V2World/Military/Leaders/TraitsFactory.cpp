@@ -7,8 +7,7 @@
 Vic2::Traits::Factory::Factory()
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& unused, std::istream& theStream) {
-		TraitGroup group(theStream);
-		for (const auto& trait: group.takeTraits())
+		for (const auto& trait: TraitGroup{theStream}.takeTraits())
 		{
 			traits->traits.insert(trait);
 		}

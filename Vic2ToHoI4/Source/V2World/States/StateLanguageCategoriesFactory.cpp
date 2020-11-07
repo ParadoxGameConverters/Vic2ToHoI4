@@ -6,8 +6,7 @@
 Vic2::StateLanguageCategories::Factory::Factory()
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& category, std::istream& theStream) {
-		const auto states = commonItems::stringList{theStream}.getStrings();
-		for (const auto& state: states)
+		for (const auto& state: commonItems::stringList{theStream}.getStrings())
 		{
 			theCategories->categories[state] = category;
 		}
