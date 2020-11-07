@@ -11,6 +11,7 @@
 #include "HoI4FocusTree.h"
 #include "Ideologies/Ideologies.h"
 #include "Leaders/Admiral.h"
+#include "Leaders/CountryLeader.h"
 #include "Leaders/General.h"
 #include "Map/CoastalProvinces.h"
 #include "Mappers/CountryMapping.h"
@@ -72,7 +73,7 @@ class Country
 		 const Ideologies& ideologies,
 		 const governmentMapper& governmentMap,
 		 bool debug);
-	void addLeader(Names& names, graphicsMapper& theGraphics);
+	void createLeader(Names& names, graphicsMapper& theGraphics);
 	void convertGovernment(const Vic2::World& sourceWorld,
 		 const governmentMapper& governmentMap,
 		 const Vic2::Localisations& vic2Localisations,
@@ -151,9 +152,7 @@ class Country
 	[[nodiscard]] const std::string& getMobilizationLaw() const { return mobilizationLaw; }
 	[[nodiscard]] const std::string& getEconomicLaw() const { return economicLaw; }
 	[[nodiscard]] const std::string& getTradeLaw() const { return tradeLaw; }
-	[[nodiscard]] const auto& getLeaderPortrait() const { return leaderPortrait; }
-	[[nodiscard]] const auto& getLeaderName() const { return leaderName; }
-	[[nodiscard]] const auto& getLeaderSurname() const { return leaderSurname; }
+	[[nodiscard]] const auto& getLeaders() const { return leaders; }
 
 	[[nodiscard]] auto getTechnologyCount() const
 	{
@@ -197,6 +196,7 @@ class Country
 
 	std::set<std::string>& editAllies() { return allies; }
 
+	void addLeader(CountryLeader leader) { leaders.push_back(std::move(leader)); }
 	void addGPInfluence(std::string GPTag, int influenceValue) { GPInfluences.insert({GPTag, influenceValue}); }
 	[[nodiscard]] const std::map<std::string, double>& getSpherelings() const { return spherelings; }
 	void addSphereling(std::string sphereling) { spherelings.insert(make_pair(sphereling, 0.5)); }
@@ -266,9 +266,7 @@ class Country
 	std::string economicLaw = "civilian_economy";
 	std::string tradeLaw = "export_focus";
 
-	std::string leaderPortrait;
-	std::string leaderName;
-	std::string leaderSurname;
+	std::vector<CountryLeader> leaders;
 
 	std::optional<technologies> theTechnologies;
 	std::set<std::string> ideas;

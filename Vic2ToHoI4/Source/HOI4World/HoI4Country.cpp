@@ -2,6 +2,7 @@
 #include "Diplomacy/HoI4War.h"
 #include "HoI4Localisation.h"
 #include "HoI4World.h"
+#include "Leaders/CountryLeaderFactory.h"
 #include "Log.h"
 #include "Mappers/CountryMapping.h"
 #include "Mappers/GovernmentMapper.h"
@@ -531,26 +532,22 @@ void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>&
 }
 
 
-void HoI4::Country::addLeader(Names& names, graphicsMapper& theGraphics)
+void HoI4::Country::createLeader(Names& names, graphicsMapper& theGraphics)
 {
-	const auto primaryCulture = sourceCountry.getPrimaryCulture();
-	const auto firstName = names.getMaleName(primaryCulture);
-	const auto surname = names.getSurname(primaryCulture);
-	if (firstName && surname)
+	for (const auto& configuredLeader: leaders)
 	{
-		leaderPortrait = theGraphics.getLeaderPortrait(sourceCountry.getPrimaryCultureGroup(), governmentIdeology);
-		leaderName = *firstName;
-		leaderSurname = *surname;
+		if (configuredLeader.getIdeology() == leaderIdeology)
+		{
+			return;
+		}
 	}
-	else
-	{
-		Log(LogLevel::Warning) << "Could not set leader for " + tag + ", as there were no names.";
-		leaderPortrait = "gfx/leaders/ENG/portrait_eng_fallen_government.dds";
-		leaderName = "Nomen";
-		leaderSurname = "Nescio";
-		// Nescio Nomen (or N.N.) literally means "I don't know the name" and is sometimes used when the name of a person
-		// is unknown
-	}
+
+	leaders.push_back(CountryLeader::Factory::createNewLeader(sourceCountry.getPrimaryCulture(),
+		 sourceCountry.getPrimaryCultureGroup(),
+		 governmentIdeology,
+		 leaderIdeology,
+		 names,
+		 theGraphics));
 }
 
 

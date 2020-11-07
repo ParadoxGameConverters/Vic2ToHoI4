@@ -150,6 +150,8 @@
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp" />
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp" />
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.cpp" />
+    <ClCompile Include="Source\HOI4World\Leaders\CountryLeaderFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\Leaders\CountryLeadersFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRule.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRules.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.cpp" />
@@ -209,6 +211,7 @@
     <ClCompile Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
     <ClCompile Include="Source\OutHoi4\Leaders\OutAdmiral.cpp" />
     <ClCompile Include="Source\OutHoi4\Leaders\OutAdvisor.cpp" />
+    <ClCompile Include="Source\OutHoi4\Leaders\OutCountryLeader.cpp" />
     <ClCompile Include="Source\OutHoi4\Leaders\OutGeneral.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutBuilding.cpp" />
     <ClCompile Include="Source\OutHoi4\Map\OutBuildings.cpp" />
@@ -438,6 +441,9 @@
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.h" />
+    <ClInclude Include="Source\HOI4World\Leaders\CountryLeader.h" />
+    <ClInclude Include="Source\HOI4World\Leaders\CountryLeaderFactory.h" />
+    <ClInclude Include="Source\HOI4World\Leaders\CountryLeadersFactory.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRule.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRuleBuilder.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRules.h" />
@@ -501,6 +507,7 @@
     <ClInclude Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.h" />
     <ClInclude Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutAdmiral.h" />
+    <ClInclude Include="Source\OutHoi4\Leaders\OutCountryLeader.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutGeneral.h" />
     <ClInclude Include="Source\OutHoi4\Map\OutStrategicRegions.h" />
     <ClInclude Include="Source\OutHoi4\OccupationLaws\OutOccupationLaw.h" />
@@ -17280,6 +17287,12 @@
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\Sounds\CultureToVoiceMappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/DataFiles/Sounds</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\Configurables\HoI4CountryLeaders.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -229,6 +229,9 @@
     <Filter Include="Vic2World\Military\Leaders">
       <UniqueIdentifier>{a7eb907f-5d39-4d82-8981-6792e3da00b3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Data Files\Configurables">
+      <UniqueIdentifier>{80b12269-6621-4eb6-bfc8-56510a40b105}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1080,6 +1083,15 @@
     </ClCompile>
     <ClCompile Include="Source\V2World\Military\Leaders\Leader.cpp">
       <Filter>Vic2World\Military\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\Leaders\OutCountryLeader.cpp">
+      <Filter>OutHoi4\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Leaders\CountryLeaderFactory.cpp">
+      <Filter>HoI4World\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Leaders\CountryLeadersFactory.cpp">
+      <Filter>HoI4World\Leaders</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2063,6 +2075,18 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Military\Leaders\TraitsBuilder.h">
       <Filter>Vic2World\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Leaders\CountryLeader.h">
+      <Filter>HoI4World\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\Leaders\OutCountryLeader.h">
+      <Filter>OutHoi4\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Leaders\CountryLeaderFactory.h">
+      <Filter>HoI4World\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Leaders\CountryLeadersFactory.h">
+      <Filter>HoI4World\Leaders</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -18531,5 +18555,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data_Files\Configurables\HoI4CountryLeaders.txt">
+      <Filter>Data Files\Configurables</Filter>
+    </Text>
   </ItemGroup>
 </Project>

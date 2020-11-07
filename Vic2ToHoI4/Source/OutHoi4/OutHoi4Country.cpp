@@ -1,22 +1,24 @@
 #include "OutHoi4Country.h"
+#include "Date.h"
 #include "HOI4World/Diplomacy/Faction.h"
 #include "HOI4World/HoI4Country.h"
 #include "HOI4World/Leaders/Advisor.h"
+#include "HOI4World/Leaders/CountryLeader.h"
 #include "HOI4World/Military/DivisionTemplate.h"
 #include "HOI4World/Names/Names.h"
 #include "HOI4World/Navies/NavyNames.h"
-#include "Mappers/GraphicsMapper.h"
-#include "V2World/Country.h"
-#include "Date.h"
 #include "Leaders/OutAdmiral.h"
 #include "Leaders/OutAdvisor.h"
+#include "Leaders/OutCountryLeader.h"
 #include "Leaders/OutGeneral.h"
+#include "Mappers/GraphicsMapper.h"
 #include "Navies/OutLegacyNavyNames.h"
 #include "Navies/OutMtgNavyNames.h"
 #include "Navies/OutNavies.h"
 #include "OSCompatibilityLayer.h"
 #include "OutFocusTree.h"
 #include "OutTechnologies.h"
+#include "V2World/Country.h"
 #include <string>
 
 
@@ -252,12 +254,6 @@ void outputIdeas(std::ostream& output,
 	 const std::string& primaryCulture);
 void outputStability(std::ostream& output, const int& stability);
 void outputWarSupport(std::ostream& output, const int& warSupport);
-void outputCountryLeader(std::ostream& output,
-	 const std::string& leaderPortrait,
-	 const std::string& leaderName,
-	 const std::string& leaderSurname,
-	 const std::string& leaderIdeology,
-	 const std::string& tag);
 void outputCommanders(std::ostream& output,
 	 const std::vector<HoI4::General>& generals,
 	 const std::vector<HoI4::Admiral>& admirals);
@@ -318,12 +314,10 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		outputStability(output, theCountry.getStability());
 		outputWarSupport(output, theCountry.getWarSupport());
 	}
-	outputCountryLeader(output,
-		 theCountry.getLeaderPortrait(),
-		 theCountry.getLeaderName(),
-		 theCountry.getLeaderSurname(),
-		 theCountry.getLeaderIdeology(),
-		 tag);
+	for (const auto& leader: theCountry.getLeaders())
+	{
+		HoI4::outputCountryLeader(output, leader);
+	}
 	outputCommanders(output, theCountry.getGenerals(), theCountry.getAdmirals());
 	output << theCountry.getTheShipVariants();
 
@@ -667,32 +661,6 @@ void outputStability(std::ostream& output, const int& stability)
 void outputWarSupport(std::ostream& output, const int& warSupport)
 {
 	output << "set_war_support = 0." << warSupport << "\n";
-}
-
-
-void outputCountryLeader(std::ostream& output,
-	 const std::string& leaderPortrait,
-	 const std::string& leaderName,
-	 const std::string& leaderSurname,
-	 const std::string& leaderIdeology,
-	 const std::string& tag)
-{
-	if (!leaderName.empty() && !leaderSurname.empty() && !leaderPortrait.empty())
-	{
-		auto upperFirstName = leaderName;
-		std::transform(upperFirstName.begin(), upperFirstName.end(), upperFirstName.begin(), toupper);
-		auto upperSurname = leaderSurname;
-		std::transform(upperSurname.begin(), upperSurname.end(), upperSurname.begin(), toupper);
-		output << "create_country_leader = {\n";
-		output << "    name = \"" << leaderName << " " << leaderSurname << "\"\n";
-		output << "    desc = \"POLITICS_" << upperFirstName << "_" << upperSurname << "_DESC\"\n";
-		output << "    picture = \"" << leaderPortrait << "\"\n";
-		output << "    expire = \"1965.1.1\"\n";
-		output << "    ideology = " << leaderIdeology << "\n";
-		output << "    traits = {\n";
-		output << "    }\n";
-		output << "}\n";
-	}
 }
 
 
