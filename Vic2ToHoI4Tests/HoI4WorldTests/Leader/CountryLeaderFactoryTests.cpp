@@ -67,12 +67,12 @@ TEST(HoI4World_Leaders_CountryLeaderFactoryTests, PictureCanBeSet)
 }
 
 
-TEST(HoI4World_Leaders_CountryLeaderFactoryTests, IdeologyDefaultsToBlank)
+TEST(HoI4World_Leaders_CountryLeaderFactoryTests, IdeologyDefaultsToNeutralConservative)
 {
 	std::stringstream input;
 	const auto leader = HoI4::CountryLeader::Factory{}.importCountryLeader(input);
 
-	ASSERT_TRUE(leader->getIdeology().empty());
+	ASSERT_EQ("conservatism_neutral", leader->getIdeology());
 }
 
 
