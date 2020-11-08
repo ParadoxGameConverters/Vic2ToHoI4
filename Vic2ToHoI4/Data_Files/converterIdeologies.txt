@@ -5,9 +5,6 @@ ideologies = {
 		
 			minarchism = {
 			}
-			
-			anarchist_communism = {
-			}
 		}
 		
 		dynamic_faction_names = {
@@ -38,7 +35,6 @@ ideologies = {
 		
 		modifiers = {
 			generate_wargoal_tension = 1.00
-			join_faction_tension = 0.50
 			lend_lease_tension = 0.50
 			send_volunteers_tension = 0.50
 			guarantee_tension = 0.25

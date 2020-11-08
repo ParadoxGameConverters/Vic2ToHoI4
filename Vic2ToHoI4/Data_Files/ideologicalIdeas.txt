@@ -435,7 +435,6 @@ absolutist = {
 	
 			modifier = {
 				justify_war_goal_time = -0.5
-				take_states_cost_factor = 0.5
 			}
 		}
 		absolutist_defeated = {
