@@ -28,8 +28,8 @@ TEST_F(HoI4World_OperativeNames_OperativeNamesMappingFactoryTests, MappingsCanBe
 	const auto mappings = operativeNamesMappingFactory.getMappings(input);
 
 	ASSERT_EQ(1, mappings.size());
-	ASSERT_EQ(1, mappings.count("beifaren"));
-	ASSERT_EQ("CHI_OPERATIVE_CODENAME_HISTORICAL", mappings.find("beifaren")->second);
+	ASSERT_TRUE(mappings.contains("beifaren"));
+	ASSERT_EQ("CHI_OPERATIVE_CODENAME_HISTORICAL", mappings.at("beifaren"));
 }
 
 
@@ -40,10 +40,10 @@ TEST_F(HoI4World_OperativeNames_OperativeNamesMappingFactoryTests, MultipleMappi
 	const auto mappings = operativeNamesMappingFactory.getMappings(input);
 
 	ASSERT_EQ(2, mappings.size());
-	ASSERT_EQ(1, mappings.count("beifaren"));
-	ASSERT_EQ("CHI_OPERATIVE_CODENAME_HISTORICAL", mappings.find("beifaren")->second);
-	ASSERT_EQ(1, mappings.count("nanfaren"));
-	ASSERT_EQ("CHI_OPERATIVE_CODENAME_HISTORICAL", mappings.find("nanfaren")->second);
+	ASSERT_TRUE(mappings.contains("beifaren"));
+	ASSERT_EQ("CHI_OPERATIVE_CODENAME_HISTORICAL", mappings.at("beifaren"));
+	ASSERT_TRUE(mappings.contains("nanfaren"));
+	ASSERT_EQ("CHI_OPERATIVE_CODENAME_HISTORICAL", mappings.at("nanfaren"));
 }
 
 

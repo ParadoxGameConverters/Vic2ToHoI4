@@ -49,10 +49,10 @@ TEST(HoI4World_States_DefaultStateTests, provincesCanBeSet)
 	HoI4::DefaultState theState(input);
 
 	ASSERT_EQ(4, theState.getProvinces().size());
-	ASSERT_EQ(1, theState.getProvinces().count(1));
-	ASSERT_EQ(1, theState.getProvinces().count(2));
-	ASSERT_EQ(1, theState.getProvinces().count(3));
-	ASSERT_EQ(1, theState.getProvinces().count(4));
+	ASSERT_TRUE(theState.getProvinces().contains(1));
+	ASSERT_TRUE(theState.getProvinces().contains(2));
+	ASSERT_TRUE(theState.getProvinces().contains(3));
+	ASSERT_TRUE(theState.getProvinces().contains(4));
 }
 
 

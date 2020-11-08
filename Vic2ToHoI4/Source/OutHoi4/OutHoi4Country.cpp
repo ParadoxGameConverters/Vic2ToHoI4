@@ -468,7 +468,7 @@ void outputPuppets(std::ostream& output,
 		{
 			for (auto& sphereling: spherelings)
 			{
-				if (!puppets.count(sphereling.first))
+				if (!puppets.contains(sphereling.first))
 				{
 					output << "\tset_autonomy = {\n";
 					output << "\t\ttarget = " << sphereling.first << "\n";

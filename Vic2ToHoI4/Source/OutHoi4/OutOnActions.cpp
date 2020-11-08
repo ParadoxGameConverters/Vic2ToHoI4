@@ -54,7 +54,7 @@ void HoI4::outputOnActions(const OnActions& onActions,
 		onActionsFile << "\t\t\t}\n";
 	}
 
-	if (majorIdeologies.count("democratic"))
+	if (majorIdeologies.contains("democratic"))
 	{
 		onActionsFile << "\t\t\tif = {\n";
 		onActionsFile << "\t\t\t\tlimit = { has_government = democratic }\n";
@@ -78,7 +78,7 @@ void HoI4::outputOnActions(const OnActions& onActions,
 	onActionsFile << "\t\t}\n";
 	onActionsFile << "\t}\n";
 
-	if (majorIdeologies.count("democratic"))
+	if (majorIdeologies.contains("democratic"))
 	{
 		onActionsFile << "\ton_coup_succeeded = {\n";
 		onActionsFile << "\t\teffect = {\n";

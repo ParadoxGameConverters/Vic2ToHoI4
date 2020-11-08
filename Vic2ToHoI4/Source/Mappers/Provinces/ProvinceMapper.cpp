@@ -96,8 +96,7 @@ void mappers::ProvinceMapper::Parser::verifyProvinceIsMapped(const int provNum) 
 {
 	if (provNum != 0)
 	{
-		const auto num = HoI4ToVic2ProvinceMap.find(provNum);
-		if (num == HoI4ToVic2ProvinceMap.end())
+		if (!HoI4ToVic2ProvinceMap.contains(provNum))
 		{
 			Log(LogLevel::Warning) << "No mapping for HoI4 province " << provNum;
 		}

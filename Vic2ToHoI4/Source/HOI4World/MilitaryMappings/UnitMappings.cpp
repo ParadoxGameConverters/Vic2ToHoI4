@@ -21,7 +21,7 @@ HoI4::UnitMappings::UnitMappings(std::istream& theStream)
 
 bool HoI4::UnitMappings::hasMatchingType(const std::string& Vic2Type) const
 {
-	return unitMap.count(Vic2Type) > 0;
+	return unitMap.contains(Vic2Type);
 }
 
 

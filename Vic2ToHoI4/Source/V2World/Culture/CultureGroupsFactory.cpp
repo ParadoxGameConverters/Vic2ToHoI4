@@ -8,8 +8,7 @@
 Vic2::CultureGroups::Factory::Factory()
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& groupName, std::istream& theStream) {
-		const auto& newCultureGroup = cultureGroupFactory.getCultureGroup(theStream);
-		for (const auto& culture: newCultureGroup)
+		for (const auto& culture: cultureGroupFactory.getCultureGroup(theStream))
 		{
 			cultureGroups->mappings.insert(make_pair(culture, groupName));
 		}

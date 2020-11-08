@@ -4,7 +4,7 @@
 
 float Vic2::Pop::getIssueSupport(const std::string& issueName) const
 {
-	if (!popIssues.count(issueName))
+	if (!popIssues.contains(issueName))
 	{
 		return 0.0F;
 	}

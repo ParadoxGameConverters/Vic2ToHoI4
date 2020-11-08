@@ -39,7 +39,7 @@ Vic2::LanguageToLocalisationMap Vic2::Localisations::getTextInEachLanguage(const
 
 void Vic2::Localisations::updateDomainCountry(const std::string& tag, const std::string& domainName)
 {
-	if (!localisations.count(tag))
+	if (!localisations.contains(tag))
 	{
 		return;
 	}

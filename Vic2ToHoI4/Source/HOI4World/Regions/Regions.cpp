@@ -4,7 +4,7 @@
 
 std::optional<std::string> HoI4::Regions::getRegion(int provinceNumber) const
 {
-	if (regionsMap.count(provinceNumber))
+	if (regionsMap.contains(provinceNumber))
 	{
 		return regionsMap.at(provinceNumber);
 	}

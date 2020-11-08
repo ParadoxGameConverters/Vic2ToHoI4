@@ -1,7 +1,7 @@
 #include "GovernmentMapper.h"
-#include "V2World/Country.h"
 #include "Log.h"
 #include "ParserHelpers.h"
+#include "V2World/Country.h"
 
 
 
@@ -248,7 +248,7 @@ bool governmentMapper::ideologyIsValid(const governmentMapping& mapping,
 	 const std::set<std::string>& majorIdeologies,
 	 const HoI4::Ideologies& ideologies)
 {
-	return majorIdeologies.count(mapping.HoI4GovernmentIdeology) &&
+	return majorIdeologies.contains(mapping.HoI4GovernmentIdeology) &&
 			 ideologies.subIdeologyIsValid(mapping.HoI4GovernmentIdeology, mapping.HoI4LeaderIdeology);
 }
 
@@ -261,7 +261,7 @@ std::string governmentMapper::getSupportedIdeology(const std::string& rulingIdeo
 	for (auto mapping: partyMap)
 	{
 		if ((rulingIdeology == mapping.rulingIdeology) && (Vic2Ideology == mapping.vic2Ideology) &&
-			 (majorIdeologies.count(mapping.supportedIdeology) > 0))
+			 majorIdeologies.contains(mapping.supportedIdeology))
 		{
 			ideology = mapping.supportedIdeology;
 			break;

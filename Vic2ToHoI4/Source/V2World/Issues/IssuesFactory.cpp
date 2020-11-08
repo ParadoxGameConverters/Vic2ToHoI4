@@ -8,8 +8,7 @@
 Vic2::Issues::Factory::Factory()
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& unused, std::istream& theStream) {
-		IssueCategoryHelper helper(theStream);
-		for (auto& name: helper.takeIssues())
+		for (auto& name: IssueCategoryHelper{theStream}.takeIssues())
 		{
 			issues->issueNames.push_back(name);
 		}

@@ -60,7 +60,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 			newFocus->available += "\t\t}";
 			newFocus->xPos = -(numCollectovistIdeologies / 2) - 1;
 			newFocus->completionReward = "= {\n";
-			if (majorIdeologies.count("democratic") > 0)
+			if (majorIdeologies.contains("democratic"))
 			{
 				newFocus->completionReward += "\t\t\tadd_ideas = collectivist_ethos_focus_democratic\n";
 			}
@@ -80,14 +80,14 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 
 		string ideolgicalFanaticsmPrereqs;
 		int relativePosition = 1 - numCollectovistIdeologies;
-		if (majorIdeologies.count("fascism") > 0)
+		if (majorIdeologies.contains("fascism"))
 		{
 			addFascistGenericFocuses(relativePosition, majorIdeologies);
 			ideolgicalFanaticsmPrereqs += " ";
 			ideolgicalFanaticsmPrereqs += "focus = paramilitarism";
 			relativePosition += 2;
 		}
-		if (majorIdeologies.count("communism") > 0)
+		if (majorIdeologies.contains("communism"))
 		{
 			addCommunistGenericFocuses(relativePosition);
 			if (ideolgicalFanaticsmPrereqs.size() > 0)
@@ -97,7 +97,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 			ideolgicalFanaticsmPrereqs += "focus = political_commissars";
 			relativePosition += 2;
 		}
-		if (majorIdeologies.count("absolutist") > 0)
+		if (majorIdeologies.contains("absolutist"))
 		{
 			addAbsolutistGenericFocuses(relativePosition);
 			if (ideolgicalFanaticsmPrereqs.size() > 0)
@@ -107,7 +107,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 			ideolgicalFanaticsmPrereqs += "focus = historical_claims_focus";
 			relativePosition += 2;
 		}
-		if (majorIdeologies.count("radical") > 0)
+		if (majorIdeologies.contains("radical"))
 		{
 			addRadicalGenericFocuses(relativePosition);
 			if (ideolgicalFanaticsmPrereqs.size() > 0)
@@ -141,7 +141,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		{
 			newFocus->mutuallyExclusive.clear();
 		}
-		if (majorIdeologies.count("democratic") == 0)
+		if (!majorIdeologies.contains("democratic"))
 		{
 			newFocus->available = "= {\n";
 			newFocus->available += "\t\t\thas_government = neutrality\n";
@@ -165,7 +165,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		}
 		newFocus->aiWillDo += "\t\t\t\t\t}\n";
 		newFocus->aiWillDo += "\t\t\t\t}\n";
-		if (majorIdeologies.count("democratic") > 0)
+		if (majorIdeologies.contains("democratic"))
 		{
 			newFocus->aiWillDo += "\t\t\t\tNOT = {\n";
 			newFocus->aiWillDo += "\t\t\t\t\tany_neighbor_country = {\n";
@@ -186,7 +186,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 	if (const auto& originalFocus = loadedFocuses.find("neutrality_focus"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
-		if (majorIdeologies.count("democratic") == 0)
+		if (!majorIdeologies.contains("democratic"))
 		{
 			newFocus->mutuallyExclusive.clear();
 		}
@@ -210,7 +210,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		throw std::runtime_error("Could not load focus deterrence");
 	}
 
-	if (majorIdeologies.count("democratic") != 0)
+	if (majorIdeologies.contains("democratic"))
 	{
 		if (const auto& originalFocus = loadedFocuses.find("interventionism_focus"); originalFocus != loadedFocuses.end())
 		{
@@ -246,7 +246,7 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 	if (const auto& originalFocus = loadedFocuses.find("why_we_fight"); originalFocus != loadedFocuses.end())
 	{
 		auto newFocus = make_shared<HoI4::SharedFocus>(originalFocus->second);
-		if (majorIdeologies.count("democratic") == 0)
+		if (!majorIdeologies.contains("democratic"))
 		{
 			newFocus->prerequisites.clear();
 			newFocus->prerequisites.push_back("= { focus = deterrence }");
@@ -315,13 +315,13 @@ size_t HoI4FocusTree::calculateNumCollectovistIdeologies(const set<string>& majo
 
 void HoI4FocusTree::determineMutualExclusions(const set<string>& majorIdeologies)
 {
-	if (majorIdeologies.count("fascism") > 0)
+	if (majorIdeologies.contains("fascism"))
 	{
 		communistMutualExclusions += "focus = nationalism_focus";
 		absolutistMutualExlusions += "focus = nationalism_focus";
 		radicalMutualExclusions += "focus = nationalism_focus";
 	}
-	if (majorIdeologies.count("communism") > 0)
+	if (majorIdeologies.contains("communism"))
 	{
 		if (fascistMutualExlusions.size() > 0)
 		{
@@ -339,7 +339,7 @@ void HoI4FocusTree::determineMutualExclusions(const set<string>& majorIdeologies
 		absolutistMutualExlusions += "focus = internationalism_focus";
 		radicalMutualExclusions += "focus = internationalism_focus";
 	}
-	if (majorIdeologies.count("absolutist") > 0)
+	if (majorIdeologies.contains("absolutist"))
 	{
 		if (fascistMutualExlusions.size() > 0)
 		{
@@ -357,7 +357,7 @@ void HoI4FocusTree::determineMutualExclusions(const set<string>& majorIdeologies
 		communistMutualExclusions += "focus = absolutism_focus";
 		radicalMutualExclusions += "focus = absolutism_focus";
 	}
-	if (majorIdeologies.count("radical") > 0)
+	if (majorIdeologies.contains("radical"))
 	{
 		if (fascistMutualExlusions.size() > 0)
 		{
@@ -1269,7 +1269,7 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
 					newFocus->yPos = 1;
 					newFocus->completionReward += "= {\n";
 					newFocus->completionReward += "\t\t\t" + coupTargets[i]->getTag() + " = {\n";
-					if (majorIdeologies.count("fascism") > 0)
+					if (majorIdeologies.contains("fascism"))
 					{
 						newFocus->completionReward += "\t\t\t\tif = {\n";
 						newFocus->completionReward += "\t\t\t\t\tlimit = {\n";
@@ -1280,7 +1280,7 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
 						newFocus->completionReward += "\t\t\t\t\tadd_ideas = fascist_influence\n";
 						newFocus->completionReward += "\t\t\t\t}\n";
 					}
-					if (majorIdeologies.count("communism") > 0)
+					if (majorIdeologies.contains("communism"))
 					{
 						newFocus->completionReward += "\t\t\t\tif = {\n";
 						newFocus->completionReward += "\t\t\t\t\tlimit = {\n";
@@ -1291,7 +1291,7 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
 						newFocus->completionReward += "\t\t\t\t\tadd_ideas = communist_influence\n";
 						newFocus->completionReward += "\t\t\t\t}\n";
 					}
-					if (majorIdeologies.count("democratic") > 0)
+					if (majorIdeologies.contains("democratic"))
 					{
 						newFocus->completionReward += "\t\t\t\tif = {\n";
 						newFocus->completionReward += "\t\t\t\t\tlimit = {\n";
@@ -1302,7 +1302,7 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
 						newFocus->completionReward += "\t\t\t\t\tadd_ideas = democratic_influence\n";
 						newFocus->completionReward += "\t\t\t\t}\n";
 					}
-					if (majorIdeologies.count("absolutist") > 0)
+					if (majorIdeologies.contains("absolutist"))
 					{
 						newFocus->completionReward += "\t\t\t\tif = {\n";
 						newFocus->completionReward += "\t\t\t\t\tlimit = {\n";
@@ -1313,7 +1313,7 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
 						newFocus->completionReward += "\t\t\t\t\tadd_ideas = absolutist_influence\n";
 						newFocus->completionReward += "\t\t\t\t}\n";
 					}
-					if (majorIdeologies.count("radical") > 0)
+					if (majorIdeologies.contains("radical"))
 					{
 						newFocus->completionReward += "\t\t\t\tif = {\n";
 						newFocus->completionReward += "\t\t\t\t\tlimit = {\n";
@@ -1953,14 +1953,14 @@ void HoI4FocusTree::addNeighborWarBranch(const string& tag,
 		newFocus->available += "\t\t\t\tin_weak_faction = yes\n";
 		newFocus->available += "\t\t\t\tOR = {\n";
 		newFocus->available += "\t\t\t\t\tpotential_take_core_target = yes\n";
-		if (majorIdeologies.count("communism"))
+		if (majorIdeologies.contains("communism"))
 		{
 			newFocus->available += "\t\t\t\t\tif = {\n";
 			newFocus->available += "\t\t\t\t\t\tlimit = { ROOT = { has_government = communism } }\n";
 			newFocus->available += "\t\t\t\t\t\tpotential_communist_puppet_target = yes\n";
 			newFocus->available += "\t\t\t\t\t}\n";
 		}
-		if (majorIdeologies.count("fascism"))
+		if (majorIdeologies.contains("fascism"))
 		{
 			newFocus->available += "\t\t\t\t\tif = {\n";
 			newFocus->available += "\t\t\t\t\t\tlimit = { ROOT = { has_government = fascism } }\n";
@@ -2018,7 +2018,7 @@ void HoI4FocusTree::addNeighborWarBranch(const string& tag,
 		newFocus->relativePositionId += targetNeighbors->getTag();
 		newFocus->updateFocusElement(newFocus->available, "var:neighbor_war_defender", targetNeighbors->getTag());
 		newFocus->updateFocusElement(newFocus->available, "var:ROOT.neighbor_war_defender", targetNeighbors->getTag());
-		if (majorIdeologies.count("communism"))
+		if (majorIdeologies.contains("communism"))
 		{
 			std::string comm;
 			comm = "else_if = {\n";
@@ -2035,7 +2035,7 @@ void HoI4FocusTree::addNeighborWarBranch(const string& tag,
 		{
 			newFocus->removePlaceholder(newFocus->completionReward, "#COMMUNISM");
 		}
-		if (majorIdeologies.count("fascism"))
+		if (majorIdeologies.contains("fascism"))
 		{
 			std::string fasc;
 			fasc += "else_if = {\n";

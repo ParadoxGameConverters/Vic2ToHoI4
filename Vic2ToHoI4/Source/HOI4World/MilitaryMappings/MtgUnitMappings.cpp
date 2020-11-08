@@ -16,7 +16,7 @@ HoI4::MtgUnitMappings::MtgUnitMappings(std::istream& theStream)
 
 bool HoI4::MtgUnitMappings::hasMatchingType(const std::string& Vic2Type) const
 {
-	return unitMaps.count(Vic2Type) > 0;
+	return unitMaps.contains(Vic2Type);
 }
 
 

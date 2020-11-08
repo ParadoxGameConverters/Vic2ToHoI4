@@ -20,8 +20,8 @@ TEST(HoI4World_Sounds_SoundEffectsMapperLink, CulturesCanBeAdded)
 	const auto soundEffectMapperLink = HoI4::SoundEffectsMapperLink::Factory{}.getSoundEffectMapperLink(input);
 
 	ASSERT_EQ(2, soundEffectMapperLink->getCultures().size());
-	ASSERT_EQ(1, soundEffectMapperLink->getCultures().count("test_culture"));
-	ASSERT_EQ(1, soundEffectMapperLink->getCultures().count("another_culture"));
+	ASSERT_TRUE(soundEffectMapperLink->getCultures().contains("test_culture"));
+	ASSERT_TRUE(soundEffectMapperLink->getCultures().contains("another_culture"));
 }
 
 
@@ -41,6 +41,6 @@ TEST(HoI4World_Sounds_SoundEffectsMapperLink, SoundsCanBeAdded)
 	const auto soundEffectMapperLink = HoI4::SoundEffectsMapperLink::Factory{}.getSoundEffectMapperLink(input);
 
 	ASSERT_EQ(2, soundEffectMapperLink->getSounds().size());
-	ASSERT_EQ(1, soundEffectMapperLink->getSounds().count("test_sound"));
-	ASSERT_EQ(1, soundEffectMapperLink->getSounds().count("another_sound"));
+	ASSERT_TRUE(soundEffectMapperLink->getSounds().contains("test_sound"));
+	ASSERT_TRUE(soundEffectMapperLink->getSounds().contains("another_sound"));
 }

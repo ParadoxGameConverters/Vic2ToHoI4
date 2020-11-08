@@ -6,7 +6,7 @@
 
 std::optional<std::string> Vic2::CultureGroups::getGroup(const std::string& culture) const
 {
-	if (!mappings.count(culture))
+	if (!mappings.contains(culture))
 	{
 		return std::nullopt;
 	}

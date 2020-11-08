@@ -110,7 +110,7 @@ TEST(HoI4World_MilitaryMappings_militaryMappingsTests, SubstituteCanBeAddedToSub
 		 "\t}"
 		 "}");
 	const HoI4::militaryMappings theMappings("", input);
-	ASSERT_EQ(1, theMappings.getSubstitutes().count("artillery"));
+	ASSERT_TRUE(theMappings.getSubstitutes().contains("artillery"));
 }
 
 

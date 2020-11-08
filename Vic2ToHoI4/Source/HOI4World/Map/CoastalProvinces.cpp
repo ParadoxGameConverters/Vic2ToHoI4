@@ -43,5 +43,5 @@ void HoI4::CoastalProvinces::init(const MapData& theMapData, const std::map<int,
 
 bool HoI4::CoastalProvinces::isProvinceCoastal(const int provinceNum) const
 {
-	return theCoastalProvinces.find(provinceNum) != theCoastalProvinces.end();
+	return theCoastalProvinces.contains(provinceNum);
 }

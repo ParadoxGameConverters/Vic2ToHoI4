@@ -27,23 +27,23 @@ void HoI4::DecisionsInCategory::updatePoliticalDecisions(const std::set<std::str
 	for (auto& theDecision: theDecisions)
 	{
 		const auto& decisionName = theDecision.getName();
-		if (decisionName.find("open_up_political_discourse_") == 0)
+		if (decisionName.starts_with("open_up_political_discourse_"))
 		{
 			updateOpenUpPoliticalDiscourse(theDecision, majorIdeologies);
 		}
-		if (decisionName.find("discredit_government_") == 0)
+		if (decisionName.starts_with("discredit_government_"))
 		{
 			updateDiscreditGovernment(theDecision, majorIdeologies);
 		}
-		if (decisionName.find("institute_press_censorship_") == 0)
+		if (decisionName.starts_with("institute_press_censorship_"))
 		{
 			updateInstitutePressCensorship(theDecision, majorIdeologies);
 		}
-		if ((decisionName.find("ignite_the_") == 0) && (decisionName.find("single_state") == std::string::npos))
+		if (decisionName.starts_with("ignite_the_") && (decisionName.find("single_state") == std::string::npos))
 		{
 			updateIgniteTheIdeologyCivilWar(theDecision, majorIdeologies);
 		}
-		if (decisionName.find("hold_the_") == 0)
+		if (decisionName.starts_with("hold_the_"))
 		{
 			updateHoldTheIdeologyNationalReferendum(theDecision, theEvents);
 		}

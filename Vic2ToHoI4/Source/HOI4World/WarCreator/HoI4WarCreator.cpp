@@ -1,11 +1,11 @@
 #include "HoI4WarCreator.h"
-#include "HOI4World/ProvinceDefinitions.h"
 #include "HOI4World/Diplomacy/Faction.h"
 #include "HOI4World/Events/Events.h"
 #include "HOI4World/HoI4Focus.h"
 #include "HOI4World/HoI4Localisation.h"
 #include "HOI4World/HoI4World.h"
 #include "HOI4World/Map/MapData.h"
+#include "HOI4World/ProvinceDefinitions.h"
 #include "Log.h"
 #include "V2World/Country.h"
 #include "V2World/Politics/Party.h"
@@ -117,7 +117,7 @@ map<double, shared_ptr<HoI4::Country>> HoI4WarCreator::getDistancesToGreatPowers
 	for (auto GC: theWorld->getGreatPowers())
 	{
 		set<string> Allies = country->getAllies();
-		if (std::find(Allies.begin(), Allies.end(), GC->getTag()) == Allies.end())
+		if (!Allies.contains(GC->getTag()))
 		{
 			auto distance = getDistanceBetweenCountries(country, GC);
 			if (distance && (*distance < 2200))
@@ -255,7 +255,7 @@ void HoI4WarCreator::generateAdditionalWars(ofstream& AILog,
 
 			for (auto addedFactions: newCountriesatWar)
 			{
-				if (std::find(factionsAtWar.begin(), factionsAtWar.end(), addedFactions) == factionsAtWar.end())
+				if (!factionsAtWar.contains(addedFactions))
 				{
 					factionsAtWar.insert(addedFactions);
 				}
@@ -441,7 +441,7 @@ vector<shared_ptr<HoI4::Country>> HoI4WarCreator::GetMorePossibleAllies(
 			auto distance = getDistanceBetweenCountries(CountryThatWantsAllies, country2);
 			if (distance && (*distance <= 1000) && (country2 != CountryThatWantsAllies))
 			{
-				if (std::find(currentAllies.begin(), currentAllies.end(), country2->getTag()) == currentAllies.end())
+				if (!currentAllies.contains(country2->getTag()))
 				{
 					CountriesWithin1000Miles.push_back(country2);
 				}
@@ -830,8 +830,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI
 	for (auto neigh: CloseNeighbors)
 	{
 		// lets check to see if they are not our ally and not a great country
-		if (std::find(Allies.begin(), Allies.end(), neigh.second->getTag()) == Allies.end() &&
-			 !neigh.second->isGreatPower())
+		if (!Allies.contains(neigh.second->getTag()) && !neigh.second->isGreatPower())
 		{
 			volatile double enemystrength = neigh.second->getStrengthOverTime(1.5);
 			volatile double mystrength = Leader->getStrengthOverTime(1.5);
@@ -928,7 +927,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI
 	}
 
 	vector<shared_ptr<HoI4::Faction>> FactionsAttackingMe;
-	if (WorldTargetMap.find(Leader) != WorldTargetMap.end())
+	if (WorldTargetMap.contains(Leader))
 	{
 		for (auto country: WorldTargetMap.find(Leader)->second)
 		{
@@ -1112,8 +1111,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(shared_ptr
 	for (auto neigh: Neighbors)
 	{
 		// lets check to see if they are our ally and not a great country
-		if (std::find(Allies.begin(), Allies.end(), neigh.second->getTag()) == Allies.end() &&
-			 !neigh.second->isGreatPower())
+		if (!Allies.contains(neigh.second->getTag()) && !neigh.second->isGreatPower())
 		{
 			double com = 0;
 			auto neighFaction = findFaction(neigh.second);
@@ -1269,8 +1267,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::democracyWarCreator(shared_ptr
 		if (relations)
 		{
 			double relationVal = relations->getRelations();
-			if (relationVal < 100 && GC->getGovernmentIdeology() != "democratic" &&
-				 std::find(Allies.begin(), Allies.end(), GC->getTag()) == Allies.end())
+			if (relationVal < 100 && GC->getGovernmentIdeology() != "democratic" && !Allies.contains(GC->getTag()))
 			{
 				CountriesAtWar.push_back(findFaction(Leader));
 				CountriesToContain.insert(make_pair(static_cast<int>(relationVal), GC));
@@ -1367,7 +1364,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 			continue;
 		}
 
-		if (auto allies = country->getAllies(); allies.count(target->getTag()) == 0)
+		if (auto allies = country->getAllies(); !allies.contains(target->getTag()))
 		{
 			std::string targetName;
 			if (auto possibleTargetName = target->getSourceCountry().getName("english"); possibleTargetName)
@@ -1433,7 +1430,7 @@ set<int> HoI4WarCreator::findBorderState(shared_ptr<HoI4::Country> country,
 				continue;
 			}
 
-			if (provinceToOwnerMap.find(prov) != provinceToOwnerMap.end())
+			if (provinceToOwnerMap.contains(prov))
 			{
 				string owner = provinceToOwnerMap.find(prov)->second;
 				if (owner == neighbor->getTag())
@@ -1492,7 +1489,7 @@ vector<shared_ptr<HoI4::Country>> HoI4WarCreator::findWeakNeighbors(shared_ptr<H
 	auto allies = country->getAllies();
 	for (auto neighbor: findCloseNeighbors(country, theMapData, provinceDefinitions))
 	{
-		if (allies.find(neighbor.second->getTag()) != allies.end())
+		if (allies.contains(neighbor.second->getTag()))
 		{
 			continue;
 		}
@@ -1544,7 +1541,7 @@ vector<shared_ptr<HoI4::Country>> HoI4WarCreator::findWeakColonies(shared_ptr<Ho
 	auto allies = country->getAllies();
 	for (auto neighbor: findFarNeighbors(country, theMapData, provinceDefinitions))
 	{
-		if (allies.find(neighbor.second->getTag()) != allies.end())
+		if (allies.contains(neighbor.second->getTag()))
 		{
 			continue;
 		}
@@ -1663,7 +1660,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<H
 		}
 
 		set<string> Allies = country->getAllies();
-		if (Allies.find(target->getTag()) == Allies.end())
+		if (!Allies.contains(target->getTag()))
 		{
 			auto possibleTargetName = target->getSourceCountry().getName("english");
 			string targetName;

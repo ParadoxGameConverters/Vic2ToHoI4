@@ -45,7 +45,7 @@ double Vic2::Province::getPercentageWithCultures(const std::set<std::string>& cu
 	for (const auto& pop: pops)
 	{
 		totalPopulation += pop.getSize();
-		if (cultures.count(pop.getCulture()))
+		if (cultures.contains(pop.getCulture()))
 		{
 			populationOfCultures += pop.getSize();
 		}

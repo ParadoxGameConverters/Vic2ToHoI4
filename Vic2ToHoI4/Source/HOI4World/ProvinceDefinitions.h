@@ -26,8 +26,8 @@ class ProvinceDefinitions
 	}
 
 	[[nodiscard]] const auto& getLandProvinces() const { return landProvinces; }
-	[[nodiscard]] bool isLandProvince(const int province) const { return (landProvinces.count(province) > 0); }
-	[[nodiscard]] bool isSeaProvince(const int province) const { return (seaProvinces.count(province) > 0); }
+	[[nodiscard]] bool isLandProvince(const int province) const { return (landProvinces.contains(province)); }
+	[[nodiscard]] bool isSeaProvince(const int province) const { return (seaProvinces.contains(province)); }
 
 	[[nodiscard]] std::optional<int> getProvinceFromColor(const commonItems::Color& color) const;
 

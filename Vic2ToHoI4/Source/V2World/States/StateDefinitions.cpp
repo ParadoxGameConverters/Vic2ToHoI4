@@ -5,7 +5,7 @@
 
 std::set<int> Vic2::StateDefinitions::getAllProvinces(const int provinceNumber) const
 {
-	if (!stateMap.count(provinceNumber))
+	if (!stateMap.contains(provinceNumber))
 	{
 		return std::set<int>{};
 	}
@@ -16,7 +16,7 @@ std::set<int> Vic2::StateDefinitions::getAllProvinces(const int provinceNumber) 
 
 std::optional<std::string> Vic2::StateDefinitions::getStateID(const int provinceNumber) const
 {
-	if (!provinceToIDMap.count(provinceNumber))
+	if (!provinceToIDMap.contains(provinceNumber))
 	{
 		return std::nullopt;
 	}
@@ -27,7 +27,7 @@ std::optional<std::string> Vic2::StateDefinitions::getStateID(const int province
 
 std::optional<int> Vic2::StateDefinitions::getCapitalProvince(const std::string& stateID) const
 {
-	if (!stateToCapitalMap.count(stateID))
+	if (!stateToCapitalMap.contains(stateID))
 	{
 		return std::nullopt;
 	}

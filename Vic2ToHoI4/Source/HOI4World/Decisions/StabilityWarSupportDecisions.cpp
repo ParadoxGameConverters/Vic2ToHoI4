@@ -3,13 +3,10 @@
 
 
 std::pair<std::string, std::string> determineIdeologiesForStabilityDecisions(
-	const std::set<std::string>& majorIdeologies
-);
+	 const std::set<std::string>& majorIdeologies);
 bool stabilityDecisionToUpdate(const std::string& decisionName);
-std::string updateTimeoutEffect(
-	std::string& originalEffect,
-	const std::pair<std::string, std::string>& ideologiesForStabilityDecisions
-);
+std::string updateTimeoutEffect(std::string& originalEffect,
+	 const std::pair<std::string, std::string>& ideologiesForStabilityDecisions);
 
 
 void HoI4::StabilityWarSupportDecisions::updateDecisions(const std::set<std::string>& majorIdeologies)
@@ -19,7 +16,7 @@ void HoI4::StabilityWarSupportDecisions::updateDecisions(const std::set<std::str
 	for (auto category: decisions)
 	{
 		auto updated = false;
-		for (auto decision : category.getDecisions())
+		for (auto decision: category.getDecisions())
 		{
 			if (stabilityDecisionToUpdate(decision.getName()))
 			{
@@ -39,16 +36,15 @@ void HoI4::StabilityWarSupportDecisions::updateDecisions(const std::set<std::str
 
 
 std::pair<std::string, std::string> determineIdeologiesForStabilityDecisions(
-	const std::set<std::string>& majorIdeologies
-)
+	 const std::set<std::string>& majorIdeologies)
 {
 	std::pair<std::string, std::string> theIdeologies;
 
-	if (majorIdeologies.count("communism") > 0)
+	if (majorIdeologies.contains("communism"))
 	{
 		theIdeologies.first = "communism";
 	}
-	else if (majorIdeologies.count("absolutist") > 0)
+	else if (majorIdeologies.contains("absolutist"))
 	{
 		theIdeologies.first = "absolutist";
 	}
@@ -57,11 +53,11 @@ std::pair<std::string, std::string> determineIdeologiesForStabilityDecisions(
 		theIdeologies.first = "neutrality";
 	}
 
-	if (majorIdeologies.count("democratic") > 0)
+	if (majorIdeologies.contains("democratic"))
 	{
 		theIdeologies.second = "democratic";
 	}
-	else if (majorIdeologies.count("radical") > 0)
+	else if (majorIdeologies.contains("radical"))
 	{
 		theIdeologies.second = "radical";
 	}
@@ -76,19 +72,14 @@ std::pair<std::string, std::string> determineIdeologiesForStabilityDecisions(
 
 bool stabilityDecisionToUpdate(const std::string& decisionName)
 {
-	return
-		decisionName == "draft_dodging_mission" ||
-		decisionName == "strikes_mission" ||
-		decisionName == "mutiny_mission" ||
-		decisionName == "demob_economic_mission" ||
-		decisionName == "demob_manpower_mission";
+	return decisionName == "draft_dodging_mission" || decisionName == "strikes_mission" ||
+			 decisionName == "mutiny_mission" || decisionName == "demob_economic_mission" ||
+			 decisionName == "demob_manpower_mission";
 }
 
 
-std::string updateTimeoutEffect(
-	std::string& originalEffect,
-	const std::pair<std::string, std::string>& ideologiesForStabilityDecisions
-)
+std::string updateTimeoutEffect(std::string& originalEffect,
+	 const std::pair<std::string, std::string>& ideologiesForStabilityDecisions)
 {
 	auto index = originalEffect.find("communism");
 	while (index != std::string::npos)

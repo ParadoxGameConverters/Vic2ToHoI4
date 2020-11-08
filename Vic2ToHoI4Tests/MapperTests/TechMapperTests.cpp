@@ -21,8 +21,8 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "gtest/gtest.h"
 #include "Mappers/TechMapper.h"
+#include "gtest/gtest.h"
 
 
 
@@ -39,7 +39,7 @@ TEST(Mappers_TechMapperTests, dontGiveNonMatchingTechs)
 
 	mappers::techMapper theMap(techMap, nonMtgNavalTechMap, mtgNavalTechMap, researchBonusMap);
 	auto returnedTechs = theMap.getAllTechMappings();
-	ASSERT_EQ(returnedTechs.find("notAnInvention"), returnedTechs.end());
+	ASSERT_TRUE(!returnedTechs.contains("notAnInvention"));
 }
 
 
@@ -72,7 +72,7 @@ TEST(Mappers_TechMapperTests, dontGiveNonMatchingNonMtgNavalTechs)
 
 	mappers::techMapper theMap(techMap, nonMtgNavalTechMap, mtgNavalTechMap, researchBonusMap);
 	auto returnedTechs = theMap.getAllNonMtgNavalTechMappings();
-	ASSERT_EQ(returnedTechs.find("notAnInvention"), returnedTechs.end());
+	ASSERT_TRUE(!returnedTechs.contains("notAnInvention"));
 }
 
 
@@ -105,7 +105,7 @@ TEST(Mappers_TechMapperTests, dontGiveNonMatchingMtgNavalTechs)
 
 	mappers::techMapper theMap(techMap, nonMtgNavalTechMap, mtgNavalTechMap, researchBonusMap);
 	auto returnedTechs = theMap.getAllMtgNavalTechMappings();
-	ASSERT_EQ(returnedTechs.find("notAnInvention"), returnedTechs.end());
+	ASSERT_TRUE(!returnedTechs.contains("notAnInvention"));
 }
 
 
@@ -138,7 +138,7 @@ TEST(Mappers_TechMapperTests, dontGiveNonMatchingResearchBonus)
 
 	mappers::techMapper theMap(techMap, nonMtgNavalTechMap, mtgNavalTechMap, researchBonusMap);
 	auto returnedBonuses = theMap.getAllResearchBonuses();
-	ASSERT_EQ(returnedBonuses.find("notAnInvention"), returnedBonuses.end());
+	ASSERT_TRUE(!returnedBonuses.contains("notAnInvention"));
 }
 
 

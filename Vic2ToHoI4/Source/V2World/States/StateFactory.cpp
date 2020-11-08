@@ -89,7 +89,7 @@ void Vic2::State::Factory::determineIfPartialState(const StateDefinitions& theSt
 
 	for (auto expectedProvince: theStateDefinitions.getAllProvinces(*provinceNumbers.begin()))
 	{
-		if (!provinceNumbers.count(expectedProvince))
+		if (!provinceNumbers.contains(expectedProvince))
 		{
 			state->partialState = true;
 			break;

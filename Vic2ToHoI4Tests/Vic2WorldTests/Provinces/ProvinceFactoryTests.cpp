@@ -115,8 +115,8 @@ TEST_F(Vic2World_ProvinceFactoryTests, coresCanBeSet)
 	const auto theProvince = provinceFactory->getProvince(42, input);
 
 	ASSERT_EQ(theProvince->getCores().size(), 2);
-	ASSERT_EQ(theProvince->getCores().count("TAG"), 1);
-	ASSERT_EQ(theProvince->getCores().count("2ND"), 1);
+	ASSERT_TRUE(theProvince->getCores().contains("TAG"));
+	ASSERT_TRUE(theProvince->getCores().contains("2ND"));
 }
 
 
