@@ -545,7 +545,6 @@ political_actions = {
 					value = 0.66
 				}				
 			}
-			remove_fascist_spirits_effect = yes
 			custom_effect_tooltip = ban_fascism_party_tt
 			add_stability = ban_ideology_var
 		}
@@ -1704,7 +1703,6 @@ political_actions =
 				}	
 				set_country_flag = banned_communism_flag
 			}
-			remove_communism_spirits_effect = yes
 			custom_effect_tooltip = ban_communism_party_tt
 			add_stability = ban_ideology_var
 		}
@@ -2281,7 +2279,6 @@ political_actions = {
 					value = 0.66
 				}				
 			}
-			remove_absolutist_spirits_effect = yes
 			custom_effect_tooltip = ban_absolutist_party_tt
 			add_stability = ban_ideology_var
 		}
@@ -2832,7 +2829,6 @@ political_actions = {
 				}				
 				set_country_flag = banned_radical_flag
 			}
-			remove_radical_spirits_effect = yes
 			custom_effect_tooltip = ban_radical_party_tt
 			add_stability = ban_ideology_var
 		}
