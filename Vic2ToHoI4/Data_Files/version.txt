@@ -2,4 +2,4 @@
 
 version = "0.2N-prerelease"
 name = "Nimitz"
-descriptionLine = "compatible with 1.9.3"
+descriptionLine = "compatible with 1.10.1"
