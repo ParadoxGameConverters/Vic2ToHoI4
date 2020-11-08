@@ -18537,9 +18537,6 @@
     <CopyFileToFolders Include="Data_Files\OperativeNamesMappings.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Historical Project Mod_province_mappings.txt">
-      <Filter>Data Files</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Localisations\ArticleRules.txt">
       <Filter>Data Files\Localisations</Filter>
     </CopyFileToFolders>
@@ -18552,13 +18549,12 @@
     <CopyFileToFolders Include="Data_Files\Sounds\CultureToVoiceMappings.txt">
       <Filter>Data Files\Sounds</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Configurables\HoI4CountryLeaders.txt" />
+    <CopyFileToFolders Include="Data_Files\Historical Project Mod 0.4.6_province_mappings.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Data_Files\Configurables\HoI4CountryLeaders.txt">
-      <Filter>Data Files\Configurables</Filter>
-    </Text>
   </ItemGroup>
 </Project>
