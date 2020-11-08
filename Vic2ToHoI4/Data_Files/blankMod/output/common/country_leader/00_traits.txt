@@ -1486,7 +1486,6 @@ leader_traits = {
 		master_ideology_drift = 0.1
 		war_support_weekly = 0.005
 		mobilization_speed = 0.1
-		fascism_drift = 0.1
 		foreign_subversive_activites = -0.5
 		stability_weekly = -0.002
 		justify_war_goal_time = -0.35
