@@ -2088,6 +2088,9 @@
     <ClInclude Include="Source\HOI4World\Leaders\CountryLeadersFactory.h">
       <Filter>HoI4World\Leaders</Filter>
     </ClInclude>
+    <ClInclude Include="Source\HOI4World\Events\EventsBuilder.h">
+      <Filter>HoI4World\Events</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\ai_peaces.txt">

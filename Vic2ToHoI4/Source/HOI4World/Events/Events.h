@@ -38,6 +38,8 @@ class Events: commonItems::parser
 	Events& operator=(const Events&) = default;
 	Events& operator=(Events&&) = default;
 
+	class Builder;
+
 	void createFactionEvents(const Country& leader, const Country& newAlly);
 	void createAnnexEvent(const Country& annexer, const Country& annexed);
 	void createSudetenEvent(const Country& annexer, const Country& annexed, const std::vector<int>& claimedStates);
