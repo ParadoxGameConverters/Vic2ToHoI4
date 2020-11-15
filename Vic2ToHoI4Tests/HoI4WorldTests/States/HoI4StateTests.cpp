@@ -3,7 +3,7 @@
 #include "HOI4World/Map/CoastalProvincesBuilder.h"
 #include "HOI4World/States/HoI4State.h"
 #include "HOI4World/States/StateCategoriesBuilder.h"
-#include "Mocks/CountryMapperMock.h"
+#include "Mappers/CountryMapperBuilder.h"
 #include "OutHoi4/States/OutHoI4State.h"
 #include "V2World/Pops/PopBuilder.h"
 #include "V2World/Provinces/Province.h"
@@ -114,11 +114,9 @@ TEST(HoI4World_States_StateTests, ControllersCanBeAdded)
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
-	mockCountryMapper theCountryMapper;
-	std::optional<std::string> hoi4tag = "NOT";
-	EXPECT_CALL(theCountryMapper, getHoI4Tag("NOT")).WillOnce(testing::Return(hoi4tag));
-
-	theState.convertControlledProvinces({{12, "NOT"}}, theProvinceMapper, theCountryMapper);
+	theState.convertControlledProvinces({{12, "NOT"}},
+		 theProvinceMapper,
+		 *CountryMapper::Builder{}.addMapping("NOT", "NOT").Build());
 
 	std::map<std::string, std::set<int>> expectedControlledProvinces{{"NOT", {12}}};
 	ASSERT_EQ(expectedControlledProvinces, theState.getControlledProvinces());
@@ -133,11 +131,9 @@ TEST(HoI4World_States_StateTests, ControllersConvertWithHoI4Tag)
 
 	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
-	mockCountryMapper theCountryMapper;
-	std::optional<std::string> hoi4tag = "HOI";
-	EXPECT_CALL(theCountryMapper, getHoI4Tag("NOT")).WillOnce(testing::Return(hoi4tag));
-
-	theState.convertControlledProvinces({{12, "NOT"}}, theProvinceMapper, theCountryMapper);
+	theState.convertControlledProvinces({{12, "NOT"}},
+		 theProvinceMapper,
+		 *CountryMapper::Builder{}.addMapping("NOT", "HOI").Build());
 
 	std::map<std::string, std::set<int>> expectedControlledProvinces{{"HOI", {12}}};
 	ASSERT_EQ(expectedControlledProvinces, theState.getControlledProvinces());
@@ -152,11 +148,9 @@ TEST(HoI4World_States_StateTests, ControllersDontConvertForRebels)
 
 	const mappers::ProvinceMapper theProvinceMapper{{}, {}};
 
-	const mockCountryMapper theCountryMapper;
-	const std::optional<std::string> hoi4tag = "REB";
-	EXPECT_CALL(theCountryMapper, getHoI4Tag("REB")).WillOnce(testing::Return(hoi4tag));
-
-	theState.convertControlledProvinces({{12, "REB"}}, theProvinceMapper, theCountryMapper);
+	theState.convertControlledProvinces({{12, "REB"}},
+		 theProvinceMapper,
+		 *CountryMapper::Builder{}.addMapping("REB", "REB").Build());
 
 	ASSERT_TRUE(theState.getControlledProvinces().empty());
 }
