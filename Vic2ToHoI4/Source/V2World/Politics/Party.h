@@ -14,6 +14,7 @@ class Party
 {
   public:
 	class Factory;
+	class Builder;
 
 	[[nodiscard]] std::string getName() const { return name; }
 	[[nodiscard]] std::string getIdeology() const { return ideology; }

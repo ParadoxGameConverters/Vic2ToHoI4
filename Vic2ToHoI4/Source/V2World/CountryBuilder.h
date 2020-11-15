@@ -41,9 +41,9 @@ class Country::Builder
 		return *this;
 	}
 
-	Builder& setRulingParty(std::unique_ptr<Party> rulingParty)
+	Builder& setRulingParty(const Party& rulingParty)
 	{
-		country->rulingParty = std::move(rulingParty);
+		country->rulingParty = std::make_unique<Party>(rulingParty);
 		return *this;
 	}
 

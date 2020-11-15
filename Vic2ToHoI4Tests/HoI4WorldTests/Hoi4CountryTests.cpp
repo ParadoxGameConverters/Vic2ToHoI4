@@ -9,11 +9,11 @@
 #include "Mappers/GraphicsMappedBuilder.h"
 #include "Mocks/Vic2WorldMock.h"
 #include "V2World/CountryBuilder.h"
-#include "V2World/Politics/PartyFactory.h"
+#include "V2World/Localisations/Vic2Localisations.h"
+#include "V2World/Politics/PartyBuilder.h"
 #include "V2World/Pops/PopBuilder.h"
 #include "V2World/Provinces/ProvinceBuilder.h"
 #include "V2World/States/State.h"
-#include "V2World/Vic2Localisations.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -47,8 +47,6 @@ HoI4World_HoI4CountryTests::HoI4World_HoI4CountryTests()
 		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
 	hoi4Localisations = HoI4::Localisation::Importer{}.generateLocalisations(theConfiguration);
 	names = HoI4::Names::Factory{}.getNames(theConfiguration);
-
-	ON_CALL(sourceCountry, getGovernment).WillByDefault(testing::Return("testGovernment"));
 }
 
 
@@ -698,13 +696,10 @@ TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesDefaultsToNeutrality)
 
 TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesCanBeSet)
 {
-	std::stringstream partyInput;
-	partyInput << "name = testParty\n";
-	partyInput << "ideology = testSourceIdeology";
-	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
-
 	HoI4::Country theCountry("TAG",
-		 &*Vic2::Country::Builder{}.setRulingParty(std::move(testParty)).Build(),
+		 &*Vic2::Country::Builder{}
+				 .setRulingParty(*Vic2::Party::Builder{}.setIdeology("testSourceIdeology").Build())
+				 .Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -728,13 +723,8 @@ TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesCanBeSet)
 
 TEST_F(HoI4World_HoI4CountryTests, rulingPartyComesFromVic2Country)
 {
-	std::stringstream partyInput;
-	partyInput << "name = testParty\n";
-	partyInput << "ideology = testSourceIdeology";
-	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
-
 	HoI4::Country theCountry("TAG",
-		 &*Vic2::Country::Builder{}.setRulingParty(std::move(testParty)).Build(),
+		 &*Vic2::Country::Builder{}.setRulingParty(*Vic2::Party::Builder{}.setName("testParty").Build()).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -751,7 +741,7 @@ TEST_F(HoI4World_HoI4CountryTests, rulingPartyComesFromVic2Country)
 		 *vic2Localisations,
 		 *hoi4Localisations,
 		 false);
-	ASSERT_EQ(theCountry.getRulingParty(), testParty);
+	ASSERT_EQ(theCountry.getRulingParty(), *Vic2::Party::Builder{}.setName("testParty").Build());
 }
 
 
@@ -792,22 +782,15 @@ TEST_F(HoI4World_HoI4CountryTests, partiesDefaultsToEmpty)
 
 TEST_F(HoI4World_HoI4CountryTests, partiesComeFromVic2Country)
 {
-	std::stringstream partyInput;
-	partyInput << "name = TAG_testParty\n";
-	partyInput << "ideology = testSourceIdeology";
-	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
-
-	std::stringstream partyInput2;
-	partyInput2 << "name = TAG_testParty2\n";
-	partyInput2 << "ideology = testSourceIdeology";
-	auto testParty2 = Vic2::Party::Factory{}.getParty(partyInput2);
+	const auto testParty = Vic2::Party::Builder{}.setName("TAG_testParty").Build();
+	const auto testParty2 = Vic2::Party::Builder{}.setName("TAG_testParty2").Build();
 
 	HoI4::Country theCountry("TAG",
 		 &*Vic2::Country::Builder{}
 				 .setGovernment("testGovernment")
 				 .addActiveParty(*testParty)
 				 .addActiveParty(*testParty2)
-				 .setRulingParty(std::move(testParty))
+				 .setRulingParty(*testParty)
 				 .Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
@@ -1096,14 +1079,11 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDefaultsToVolunteerOnly)
 
 TEST_F(HoI4World_HoI4CountryTests, mobilizationLawIncreasesIfRulingPartyJingoistic)
 {
-	std::stringstream partyInput;
-	partyInput << "name = testParty\n";
-	partyInput << "ideology = testSourceIdeology\n";
-	partyInput << "war_policy = jingoism";
-	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
-
 	HoI4::Country theCountry("TAG",
-		 &*Vic2::Country::Builder{}.setGovernment("testGovernment").setRulingParty(std::move(testParty)).Build(),
+		 &*Vic2::Country::Builder{}
+				 .setGovernment("testGovernment")
+				 .setRulingParty(*Vic2::Party::Builder{}.setWarPolicy("jingoism").Build())
+				 .Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1127,14 +1107,11 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawIncreasesIfRulingPartyJingoist
 
 TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDecreasesIfRulingPartyPacifistic)
 {
-	std::stringstream partyInput;
-	partyInput << "name = testParty\n";
-	partyInput << "ideology = testSourceIdeology\n";
-	partyInput << "war_policy = pacifism";
-	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
-
 	HoI4::Country theCountry("TAG",
-		 &*Vic2::Country::Builder{}.setGovernment("testGovernment").setRulingParty(std::move(testParty)).Build(),
+		 &*Vic2::Country::Builder{}
+				 .setGovernment("testGovernment")
+				 .setRulingParty(*Vic2::Party::Builder{}.setWarPolicy("pacifism").Build())
+				 .Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1172,16 +1149,10 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawDefaultsToCivilian)
 
 TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfAtWar)
 {
-	std::stringstream partyInput;
-	partyInput << "name = testParty\n";
-	partyInput << "ideology = testSourceIdeology\n";
-	partyInput << "war_policy = jingoism";
-	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
-
 	HoI4::Country theCountry("TAG",
 		 &*Vic2::Country::Builder{}
 				 .setGovernment("testGovernment")
-				 .setRulingParty(std::move(testParty))
+				 .setRulingParty(*Vic2::Party::Builder{}.setWarPolicy("jingoism").Build())
 				 .setAtWar(true)
 				 .Build(),
 		 *names,
@@ -1207,16 +1178,10 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfAtWar)
 
 TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfFascist)
 {
-	std::stringstream partyInput;
-	partyInput << "name = testParty\n";
-	partyInput << "ideology = fascism\n";
-	partyInput << "war_policy = jingoism";
-	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
-
 	HoI4::Country theCountry("TAG",
 		 &*Vic2::Country::Builder{}
 				 .setGovernment("testGovernment")
-				 .setRulingParty(std::move(testParty))
+				 .setRulingParty(*Vic2::Party::Builder{}.setIdeology("fascism").Build())
 				 .setAtWar(true)
 				 .Build(),
 		 *names,
@@ -1255,16 +1220,10 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawDefaultsToExport)
 
 TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfFascist)
 {
-	std::stringstream partyInput;
-	partyInput << "name = testParty\n";
-	partyInput << "ideology = fascism\n";
-	partyInput << "war_policy = jingoism";
-	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
-
 	HoI4::Country theCountry("TAG",
 		 &*Vic2::Country::Builder{}
 				 .setGovernment("testGovernment")
-				 .setRulingParty(std::move(testParty))
+				 .setRulingParty(*Vic2::Party::Builder{}.setIdeology("fascism").Build())
 				 .setAtWar(true)
 				 .Build(),
 		 *names,
@@ -1289,16 +1248,10 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfFascist)
 
 TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfRadical)
 {
-	std::stringstream partyInput;
-	partyInput << "name = testParty\n";
-	partyInput << "ideology = radical\n";
-	partyInput << "war_policy = jingoism";
-	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
-
 	HoI4::Country theCountry("TAG",
 		 &*Vic2::Country::Builder{}
 				 .setGovernment("testGovernment")
-				 .setRulingParty(std::move(testParty))
+				 .setRulingParty(*Vic2::Party::Builder{}.setIdeology("radical").Build())
 				 .setAtWar(true)
 				 .Build(),
 		 *names,
