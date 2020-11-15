@@ -37,6 +37,8 @@ class governmentMapper: commonItems::parser
 	void init();
 	virtual ~governmentMapper() = default;
 
+	class Builder;
+
 	virtual std::string getIdeologyForCountry(const std::string& sourceTag,
 		 const std::string& sourceGovernment,
 		 const std::string& Vic2RulingIdeology,

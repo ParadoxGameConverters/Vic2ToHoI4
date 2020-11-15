@@ -2097,6 +2097,9 @@
     <ClInclude Include="Source\Mappers\CountryMapperBuilder.h">
       <Filter>Mappers</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Mappers\GovernmentMapperBuilder.h">
+      <Filter>Mappers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\ai_peaces.txt">
