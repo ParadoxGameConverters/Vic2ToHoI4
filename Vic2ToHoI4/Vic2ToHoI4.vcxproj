@@ -492,6 +492,7 @@
     <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapperLink.h" />
     <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.h" />
     <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapping.h" />
+    <ClInclude Include="Source\Mappers\CountryMapperBuilder.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategories.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategory.h" />

@@ -1,5 +1,5 @@
-#include "Mocks/CountryMapperMock.h"
 #include "HOI4World/Diplomacy/HoI4War.h"
+#include "Mappers/CountryMapperBuilder.h"
 #include "V2World/Wars/WarBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
@@ -10,10 +10,7 @@ TEST(HoI4World_Diplomacy_WarTests, allItemsDefaultToEmpty)
 {
 	auto sourceWar = *Vic2::War::Builder{}.build();
 
-	mockCountryMapper countryMapper;
-	EXPECT_CALL(countryMapper, getHoI4Tag("")).WillRepeatedly(testing::Return(std::optional<std::string>("")));
-
-	const HoI4::War war(sourceWar, countryMapper);
+	const HoI4::War war(sourceWar, *CountryMapper::Builder{}.Build());
 	std::stringstream output;
 	output << war;
 
@@ -32,15 +29,11 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalDefenderCantBeMapped)
 {
 	auto sourceWar = *Vic2::War::Builder{}.setOriginalAttacker("OAT").setOriginalDefender("ODF").build();
 
-	mockCountryMapper countryMapper;
-	EXPECT_CALL(countryMapper, getHoI4Tag("ODF")).WillRepeatedly(testing::Return(std::nullopt));
-	EXPECT_CALL(countryMapper, getHoI4Tag("OAT")).WillRepeatedly(testing::Return(std::optional<std::string>("NAT")));
-
 	std::stringstream log;
 	auto stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
-	const HoI4::War war(sourceWar, countryMapper);
+	const HoI4::War war(sourceWar, *CountryMapper::Builder{}.addMapping("OAT", "NAT").Build());
 
 	std::cout.rdbuf(stdOutBuf);
 
@@ -53,12 +46,8 @@ TEST(HoI4World_Diplomacy_WarTests, extraDefendersCanBeAdded)
 	auto sourceWar =
 		 *Vic2::War::Builder{}.setOriginalAttacker("OAT").setOriginalDefender("ODF").setDefenders({"OED"}).build();
 
-	mockCountryMapper countryMapper;
-	EXPECT_CALL(countryMapper, getHoI4Tag("ODF")).WillRepeatedly(testing::Return(std::optional<std::string>("NDF")));
-	EXPECT_CALL(countryMapper, getHoI4Tag("OED")).WillRepeatedly(testing::Return(std::optional<std::string>("NED")));
-	EXPECT_CALL(countryMapper, getHoI4Tag("OAT")).WillRepeatedly(testing::Return(std::optional<std::string>("NAT")));
-
-	const HoI4::War war(sourceWar, countryMapper);
+	const HoI4::War war(sourceWar,
+		 *CountryMapper::Builder{}.addMapping("ODF", "NDF").addMapping("OED", "NED").addMapping("OAT", "NAT").Build());
 	std::stringstream output;
 	output << war;
 
@@ -84,12 +73,8 @@ TEST(HoI4World_Diplomacy_WarTests, extraAttackersCanBeAdded)
 	auto sourceWar =
 		 *Vic2::War::Builder{}.setOriginalAttacker("OAT").setAttackers({"OEA"}).setOriginalDefender("ODF").build();
 
-	mockCountryMapper countryMapper;
-	EXPECT_CALL(countryMapper, getHoI4Tag("ODF")).WillRepeatedly(testing::Return(std::optional<std::string>("NDF")));
-	EXPECT_CALL(countryMapper, getHoI4Tag("OEA")).WillRepeatedly(testing::Return(std::optional<std::string>("NEA")));
-	EXPECT_CALL(countryMapper, getHoI4Tag("OAT")).WillRepeatedly(testing::Return(std::optional<std::string>("NAT")));
-
-	const HoI4::War war(sourceWar, countryMapper);
+	const HoI4::War war(sourceWar,
+		 *CountryMapper::Builder{}.addMapping("ODF", "NDF").addMapping("OEA", "NEA").addMapping("OAT", "NAT").Build());
 	std::stringstream output;
 	output << war;
 
@@ -114,15 +99,11 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalAttackerCantBeMapped)
 {
 	auto sourceWar = *Vic2::War::Builder{}.setOriginalAttacker("OAT").setOriginalDefender("ODF").build();
 
-	mockCountryMapper countryMapper;
-	EXPECT_CALL(countryMapper, getHoI4Tag("ODF")).WillRepeatedly(testing::Return(std::optional<std::string>("NDF")));
-	EXPECT_CALL(countryMapper, getHoI4Tag("OAT")).WillRepeatedly(testing::Return(std::nullopt));
-
 	std::stringstream log;
 	auto stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
-	const HoI4::War war(sourceWar, countryMapper);
+	const HoI4::War war(sourceWar, *CountryMapper::Builder{}.addMapping("ODF", "NDF").Build());
 
 	std::cout.rdbuf(stdOutBuf);
 

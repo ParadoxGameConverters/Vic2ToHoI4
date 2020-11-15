@@ -18,6 +18,8 @@ class CountryMapper: commonItems::parser
 	CountryMapper() = default;
 	virtual ~CountryMapper() = default;
 
+	class Builder;
+
 	explicit CountryMapper(const Vic2::World* srcWorld, bool debug);
 
 	virtual std::optional<std::string> getHoI4Tag(const std::string& V2Tag) const;
