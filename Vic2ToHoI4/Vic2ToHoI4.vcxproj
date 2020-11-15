@@ -493,6 +493,7 @@
     <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.h" />
     <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapping.h" />
     <ClInclude Include="Source\HOI4World\States\HoI4StateBuilder.h" />
+    <ClInclude Include="Source\HOI4World\States\StateCategoriesBuilder.h" />
     <ClInclude Include="Source\Mappers\CountryMapperBuilder.h" />
     <ClInclude Include="Source\Mappers\GovernmentMapperBuilder.h" />
     <ClInclude Include="Source\Mappers\GraphicsMappedBuilder.h" />

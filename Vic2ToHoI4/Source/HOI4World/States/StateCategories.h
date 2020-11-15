@@ -20,6 +20,8 @@ class StateCategories: commonItems::parser
 	StateCategories(const Configuration& theConfiguration);
 	virtual ~StateCategories() = default;
 
+	class Builder;
+
 	virtual std::string getBestCategory(int numBuildingSlots) const;
 
   private:
