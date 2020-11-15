@@ -28,6 +28,8 @@ class State
 	State(const Vic2::State& sourceState, int _ID, const std::string& _ownerTag);
 	virtual ~State() = default;
 
+	class Builder;
+
 	void addProvince(int province) { provinces.insert(province); }
 	void setAsCapitalState()
 	{

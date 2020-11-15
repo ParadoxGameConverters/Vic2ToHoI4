@@ -2103,6 +2103,9 @@
     <ClInclude Include="Source\Mappers\GraphicsMappedBuilder.h">
       <Filter>Mappers</Filter>
     </ClInclude>
+    <ClInclude Include="Source\HOI4World\States\HoI4StateBuilder.h">
+      <Filter>HoI4World\States</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\ai_peaces.txt">
