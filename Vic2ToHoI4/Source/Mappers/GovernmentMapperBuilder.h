@@ -28,7 +28,7 @@ class governmentMapper::Builder
 
   private:
 	std::unique_ptr<governmentMapper> theGovernmentMapper;
-}
+};
 
 
 

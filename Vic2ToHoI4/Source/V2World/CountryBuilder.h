@@ -19,7 +19,7 @@ class Country::Builder
 
 	Builder& addNameInLanguage(const std::string& language, const std::string& name)
 	{
-		country->namesByLanguage.insert(language, name);
+		country->namesByLanguage.insert(std::make_pair(language, name));
 		return *this;
 	}
 

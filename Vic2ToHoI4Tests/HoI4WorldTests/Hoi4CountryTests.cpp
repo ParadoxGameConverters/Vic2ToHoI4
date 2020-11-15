@@ -7,13 +7,13 @@
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/GovernmentMapperBuilder.h"
 #include "Mappers/GraphicsMappedBuilder.h"
-#include "Mocks/Vic2WorldMock.h"
 #include "V2World/CountryBuilder.h"
 #include "V2World/Localisations/Vic2Localisations.h"
 #include "V2World/Politics/PartyBuilder.h"
 #include "V2World/Pops/PopBuilder.h"
 #include "V2World/Provinces/ProvinceBuilder.h"
 #include "V2World/States/State.h"
+#include "V2World/World.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -31,6 +31,7 @@ class HoI4World_HoI4CountryTests: public testing::Test
 	std::unique_ptr<Vic2::Localisations> vic2Localisations;
 	std::unique_ptr<HoI4::Localisation> hoi4Localisations;
 	std::unique_ptr<HoI4::Names> names;
+	Vic2::World sourceWorld;
 };
 
 
@@ -43,10 +44,9 @@ HoI4World_HoI4CountryTests::HoI4World_HoI4CountryTests()
 	std::map<std::string, std::string> localisationToKeyMap;
 	vic2Localisations = std::make_unique<Vic2::Localisations>(localisations, localisationToKeyMap);
 
-	Configuration
-		 theConfiguration("", "", "", "", {}, 0.0, 0.0, 0.0, 0.0, ideologyOptions::keep_major, {}, false, false, false);
-	hoi4Localisations = HoI4::Localisation::Importer{}.generateLocalisations(theConfiguration);
-	names = HoI4::Names::Factory{}.getNames(theConfiguration);
+	const auto theConfiguration = Configuration::Builder{}.build();
+	hoi4Localisations = HoI4::Localisation::Importer{}.generateLocalisations(*theConfiguration);
+	names = HoI4::Names::Factory{}.getNames(*theConfiguration);
 }
 
 
@@ -706,12 +706,12 @@ TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesCanBeSet)
 		 *theFlagsToIdeasMapper,
 		 *hoi4Localisations);
 
-	const mockVic2World mockSourceWorld;
-
-	theCountry.convertGovernment(mockSourceWorld,
+	theCountry.convertGovernment(sourceWorld,
 		 *governmentMapper::Builder{}
-				.addGovernmentMapping(
-					 governmentMapping{"testSourceIdeology", "testGovernmentIdeology", "testLeaderIdeology", false})
+				.addGovernmentMapping(governmentMapping{.vic2Government = "testSourceIdeology",
+					 .HoI4GovernmentIdeology = "testGovernmentIdeology",
+					 .HoI4LeaderIdeology = "testLeaderIdeology",
+					 .rulingPartyRequired = false})
 				.Build(),
 		 *vic2Localisations,
 		 *hoi4Localisations,
@@ -731,12 +731,12 @@ TEST_F(HoI4World_HoI4CountryTests, rulingPartyComesFromVic2Country)
 		 *theFlagsToIdeasMapper,
 		 *hoi4Localisations);
 
-	const mockVic2World mockSourceWorld;
-
-	theCountry.convertGovernment(mockSourceWorld,
+	theCountry.convertGovernment(sourceWorld,
 		 *governmentMapper::Builder{}
-				.addGovernmentMapping(
-					 governmentMapping{"testSourceIdeology", "testGovernmentIdeology", "testLeaderIdeology", false})
+				.addGovernmentMapping(governmentMapping{.vic2Government = "testSourceIdeology",
+					 .HoI4GovernmentIdeology = "testGovernmentIdeology",
+					 .HoI4LeaderIdeology = "testLeaderIdeology",
+					 .rulingPartyRequired = false})
 				.Build(),
 		 *vic2Localisations,
 		 *hoi4Localisations,
@@ -755,9 +755,7 @@ TEST_F(HoI4World_HoI4CountryTests, missingRulingPartyThrowsException)
 		 *theFlagsToIdeasMapper,
 		 *hoi4Localisations);
 
-	const mockVic2World mockSourceWorld;
-
-	EXPECT_THROW(theCountry.convertGovernment(mockSourceWorld,
+	EXPECT_THROW(theCountry.convertGovernment(sourceWorld,
 						  *governmentMapper::Builder{}.Build(),
 						  *vic2Localisations,
 						  *hoi4Localisations,
@@ -798,12 +796,12 @@ TEST_F(HoI4World_HoI4CountryTests, partiesComeFromVic2Country)
 		 *theFlagsToIdeasMapper,
 		 *hoi4Localisations);
 
-	mockVic2World mockSourceWorld;
-
-	theCountry.convertGovernment(mockSourceWorld,
+	theCountry.convertGovernment(sourceWorld,
 		 *governmentMapper::Builder{}
-				.addGovernmentMapping(
-					 governmentMapping{"testGovernment", "testGovernmentIdeology", "testLeaderIdeology", false})
+				.addGovernmentMapping(governmentMapping{.vic2Government = "testGovernment",
+					 .HoI4GovernmentIdeology = "testGovernmentIdeology",
+					 .HoI4LeaderIdeology = "testLeaderIdeology",
+					 .rulingPartyRequired = false})
 				.Build(),
 		 *vic2Localisations,
 		 *hoi4Localisations,
@@ -1090,12 +1088,12 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawIncreasesIfRulingPartyJingoist
 		 *theFlagsToIdeasMapper,
 		 *hoi4Localisations);
 
-	const mockVic2World mockSourceWorld;
-
-	theCountry.convertGovernment(mockSourceWorld,
+	theCountry.convertGovernment(sourceWorld,
 		 *governmentMapper::Builder{}
-				.addGovernmentMapping(
-					 governmentMapping{"testGovernment", "testGovernmentIdeology", "testLeaderIdeology", false})
+				.addGovernmentMapping(governmentMapping{.vic2Government = "testGovernment",
+					 .HoI4GovernmentIdeology = "testGovernmentIdeology",
+					 .HoI4LeaderIdeology = "testLeaderIdeology",
+					 .rulingPartyRequired = false})
 				.Build(),
 		 *vic2Localisations,
 		 *hoi4Localisations,
@@ -1118,12 +1116,12 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDecreasesIfRulingPartyPacifist
 		 *theFlagsToIdeasMapper,
 		 *hoi4Localisations);
 
-	const mockVic2World mockSourceWorld;
-
-	theCountry.convertGovernment(mockSourceWorld,
+	theCountry.convertGovernment(sourceWorld,
 		 *governmentMapper::Builder{}
-				.addGovernmentMapping(
-					 governmentMapping{"testGovernment", "testGovernmentIdeology", "testLeaderIdeology", false})
+				.addGovernmentMapping(governmentMapping{.vic2Government = "testGovernment",
+					 .HoI4GovernmentIdeology = "testGovernmentIdeology",
+					 .HoI4LeaderIdeology = "testLeaderIdeology",
+					 .rulingPartyRequired = false})
 				.Build(),
 		 *vic2Localisations,
 		 *hoi4Localisations,
@@ -1161,12 +1159,12 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfAtWar)
 		 *theFlagsToIdeasMapper,
 		 *hoi4Localisations);
 
-	const mockVic2World mockSourceWorld;
-
-	theCountry.convertGovernment(mockSourceWorld,
+	theCountry.convertGovernment(sourceWorld,
 		 *governmentMapper::Builder{}
-				.addGovernmentMapping(
-					 governmentMapping{"testGovernment", "testGovernmentIdeology", "testLeaderIdeology", false})
+				.addGovernmentMapping(governmentMapping{.vic2Government = "testGovernment",
+					 .HoI4GovernmentIdeology = "testGovernmentIdeology",
+					 .HoI4LeaderIdeology = "testLeaderIdeology",
+					 .rulingPartyRequired = false})
 				.Build(),
 		 *vic2Localisations,
 		 *hoi4Localisations,
@@ -1190,11 +1188,12 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfFascist)
 		 *theFlagsToIdeasMapper,
 		 *hoi4Localisations);
 
-	const mockVic2World mockSourceWorld;
-
-	theCountry.convertGovernment(mockSourceWorld,
+	theCountry.convertGovernment(sourceWorld,
 		 *governmentMapper::Builder{}
-				.addGovernmentMapping(governmentMapping{"testGovernment", "fascism", "fascism", false})
+				.addGovernmentMapping(governmentMapping{.vic2Government = "testGovernment",
+					 .HoI4GovernmentIdeology = "fascism",
+					 .HoI4LeaderIdeology = "fascism",
+					 .rulingPartyRequired = false})
 				.Build(),
 		 *vic2Localisations,
 		 *hoi4Localisations,
@@ -1232,11 +1231,12 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfFascist)
 		 *theFlagsToIdeasMapper,
 		 *hoi4Localisations);
 
-	const mockVic2World mockSourceWorld;
-
-	theCountry.convertGovernment(mockSourceWorld,
+	theCountry.convertGovernment(sourceWorld,
 		 *governmentMapper::Builder{}
-				.addGovernmentMapping(governmentMapping{"testGovernment", "fascism", "fascism", false})
+				.addGovernmentMapping(governmentMapping{.vic2Government = "testGovernment",
+					 .HoI4GovernmentIdeology = "fascism",
+					 .HoI4LeaderIdeology = "fascism",
+					 .rulingPartyRequired = false})
 				.Build(),
 		 *vic2Localisations,
 		 *hoi4Localisations,
@@ -1260,11 +1260,12 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfRadical)
 		 *theFlagsToIdeasMapper,
 		 *hoi4Localisations);
 
-	const mockVic2World mockSourceWorld;
-
-	theCountry.convertGovernment(mockSourceWorld,
+	theCountry.convertGovernment(sourceWorld,
 		 *governmentMapper::Builder{}
-				.addGovernmentMapping(governmentMapping{"testGovernment", "radical", "radical", false})
+				.addGovernmentMapping(governmentMapping{.vic2Government = "testGovernment",
+					 .HoI4GovernmentIdeology = "radical",
+					 .HoI4LeaderIdeology = "radical",
+					 .rulingPartyRequired = false})
 				.Build(),
 		 *vic2Localisations,
 		 *hoi4Localisations,
