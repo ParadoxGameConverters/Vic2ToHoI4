@@ -2106,6 +2106,12 @@
     <ClInclude Include="Source\HOI4World\States\HoI4StateBuilder.h">
       <Filter>HoI4World\States</Filter>
     </ClInclude>
+    <ClInclude Include="Source\V2World\CountryBuilder.h">
+      <Filter>Vic2World</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Politics\PartyBuilder.h">
+      <Filter>Vic2World\Politics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\ai_peaces.txt">

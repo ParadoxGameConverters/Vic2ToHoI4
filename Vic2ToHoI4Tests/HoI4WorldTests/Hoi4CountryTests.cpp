@@ -1,3 +1,4 @@
+#include "Color.h"
 #include "HOI4World/HoI4Country.h"
 #include "HOI4World/HoI4Localisation.h"
 #include "HOI4World/Names/Names.h"
@@ -6,9 +7,11 @@
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/GovernmentMapperBuilder.h"
 #include "Mappers/GraphicsMappedBuilder.h"
-#include "Mocks/Vic2CountryMock.h"
 #include "Mocks/Vic2WorldMock.h"
-#include "V2World/Party.h"
+#include "V2World/CountryBuilder.h"
+#include "V2World/Politics/PartyFactory.h"
+#include "V2World/Pops/PopBuilder.h"
+#include "V2World/Provinces/ProvinceBuilder.h"
 #include "V2World/States/State.h"
 #include "V2World/Vic2Localisations.h"
 #include "gtest/gtest.h"
@@ -21,10 +24,9 @@ class HoI4World_HoI4CountryTests: public testing::Test
   protected:
 	HoI4World_HoI4CountryTests();
 
-	mockVic2Country sourceCountry;
 	std::unique_ptr<mappers::FlagsToIdeasMapper> theFlagsToIdeasMapper;
 
-	ConverterColor::Color defaultColor;
+	commonItems::Color defaultColor;
 
 	std::unique_ptr<Vic2::Localisations> vic2Localisations;
 	std::unique_ptr<HoI4::Localisation> hoi4Localisations;
@@ -46,28 +48,14 @@ HoI4World_HoI4CountryTests::HoI4World_HoI4CountryTests()
 	hoi4Localisations = HoI4::Localisation::Importer{}.generateLocalisations(theConfiguration);
 	names = HoI4::Names::Factory{}.getNames(theConfiguration);
 
-	ON_CALL(sourceCountry, getName).WillByDefault(testing::Return(std::nullopt));
-	ON_CALL(sourceCountry, isHuman).WillByDefault(testing::Return(false));
-	ON_CALL(sourceCountry, getColor).WillByDefault(testing::ReturnRef(defaultColor));
-	ON_CALL(sourceCountry, getPrimaryCultureGroup).WillByDefault(testing::Return(""));
-	ON_CALL(sourceCountry, getTag).WillByDefault(testing::Return("TAG"));
 	ON_CALL(sourceCountry, getGovernment).WillByDefault(testing::Return("testGovernment"));
-	auto provinces = std::map<int, std::shared_ptr<Vic2::Province>>{};
-	ON_CALL(sourceCountry, getProvinces()).WillByDefault(testing::ReturnRef(provinces));
-	ON_CALL(sourceCountry, getRevanchism()).WillByDefault(testing::Return(0));
-	ON_CALL(sourceCountry, getWarExhaustion()).WillByDefault(testing::Return(0));
-	ON_CALL(sourceCountry, getAverageIssueSupport("jingoism")).WillByDefault(testing::Return(0.0f));
-	ON_CALL(sourceCountry, getAverageIssueSupport("pro_military")).WillByDefault(testing::Return(0.0f));
-	ON_CALL(sourceCountry, getAverageIssueSupport("anti_military")).WillByDefault(testing::Return(0.0f));
-	ON_CALL(sourceCountry, getAverageIssueSupport("pacifism")).WillByDefault(testing::Return(0.0f));
-	ON_CALL(sourceCountry, isAtWar()).WillByDefault(testing::Return(false));
 }
 
 
 TEST_F(HoI4World_HoI4CountryTests, tagCanBeAssigned)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -80,7 +68,7 @@ TEST_F(HoI4World_HoI4CountryTests, tagCanBeAssigned)
 TEST_F(HoI4World_HoI4CountryTests, filenamesDefaultToTag)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -93,10 +81,8 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesDefaultToTag)
 
 TEST_F(HoI4World_HoI4CountryTests, filenamesBasedOnSourceCountryName)
 {
-	EXPECT_CALL(sourceCountry, getName("english")).WillOnce(testing::Return("source country name"));
-
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.addNameInLanguage("english", "source country name").Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -109,10 +95,8 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesBasedOnSourceCountryName)
 
 TEST_F(HoI4World_HoI4CountryTests, filenamesReplaceBadCharacters)
 {
-	EXPECT_CALL(sourceCountry, getName("english")).WillOnce(testing::Return("hardname|><"));
-
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.addNameInLanguage("english", "hardname|><").Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -125,10 +109,8 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesReplaceBadCharacters)
 
 TEST_F(HoI4World_HoI4CountryTests, filenamesConvertFrom1252ToUtf8)
 {
-	EXPECT_CALL(sourceCountry, getName("english")).WillOnce(testing::Return("1252\xC7"));
-
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.addNameInLanguage("english", "1252\xC7").Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -142,10 +124,8 @@ TEST_F(HoI4World_HoI4CountryTests, filenamesConvertFrom1252ToUtf8)
 
 TEST_F(HoI4World_HoI4CountryTests, isHumanDefaultsToFalse)
 {
-	EXPECT_CALL(sourceCountry, isHuman()).WillOnce(testing::Return(false));
-
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -158,10 +138,8 @@ TEST_F(HoI4World_HoI4CountryTests, isHumanDefaultsToFalse)
 
 TEST_F(HoI4World_HoI4CountryTests, isHumanCanBetSetTrue)
 {
-	EXPECT_CALL(sourceCountry, isHuman()).WillOnce(testing::Return(true));
-
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setHuman().Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -174,25 +152,23 @@ TEST_F(HoI4World_HoI4CountryTests, isHumanCanBetSetTrue)
 
 TEST_F(HoI4World_HoI4CountryTests, colorIsFromSourceCountry)
 {
-	ConverterColor::Color testColor(ConverterColor::red(33), ConverterColor::green(66), ConverterColor::blue(99));
-	EXPECT_CALL(sourceCountry, getColor()).WillOnce(testing::ReturnRef(testColor));
-
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setColor(commonItems::Color{std::array<int, 3>{33, 66, 99}}).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
 		 *theFlagsToIdeasMapper,
 		 *hoi4Localisations);
 
-	ASSERT_EQ(theCountry.getColor(), testColor);
+	const auto expectedColor = commonItems::Color{std::array<int, 3>{33, 66, 99}};
+	ASSERT_EQ(theCountry.getColor(), expectedColor);
 }
 
 
 TEST_F(HoI4World_HoI4CountryTests, graphicalCultureDefaultsToWesternEuropean)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -207,7 +183,7 @@ TEST_F(HoI4World_HoI4CountryTests, graphicalCultureDefaultsToWesternEuropean)
 TEST_F(HoI4World_HoI4CountryTests, graphicalCultureIsFromSourceCountryCultureGroup)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}
 				.addGraphicalCultureMapping("testCultureGroup", "testGraphicalCulture")
@@ -225,7 +201,7 @@ TEST_F(HoI4World_HoI4CountryTests, graphicalCultureIsFromSourceCountryCultureGro
 TEST_F(HoI4World_HoI4CountryTests, hasProvincesDefaultsToFalse)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -239,7 +215,7 @@ TEST_F(HoI4World_HoI4CountryTests, hasProvincesDefaultsToFalse)
 TEST_F(HoI4World_HoI4CountryTests, getProvincesDefaultsToEmpty)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -253,7 +229,7 @@ TEST_F(HoI4World_HoI4CountryTests, getProvincesDefaultsToEmpty)
 TEST_F(HoI4World_HoI4CountryTests, provincesCanBeAdded)
 {
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -272,7 +248,7 @@ TEST_F(HoI4World_HoI4CountryTests, provincesCanBeAdded)
 TEST_F(HoI4World_HoI4CountryTests, getStatesDefaultsToEmpty)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -286,7 +262,7 @@ TEST_F(HoI4World_HoI4CountryTests, getStatesDefaultsToEmpty)
 TEST_F(HoI4World_HoI4CountryTests, statesCanBeAdded)
 {
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -302,7 +278,7 @@ TEST_F(HoI4World_HoI4CountryTests, statesCanBeAdded)
 TEST_F(HoI4World_HoI4CountryTests, capitalDefaultsToNone)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -316,10 +292,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalDefaultsToNone)
 
 TEST_F(HoI4World_HoI4CountryTests, capitalCanBeSetInOwnedState)
 {
-	EXPECT_CALL(sourceCountry, getCapital).WillOnce(testing::Return(42));
-
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setCapital(42).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -349,10 +323,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanBeSetInOwnedState)
 
 TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceIsImpassible)
 {
-	EXPECT_CALL(sourceCountry, getCapital).WillOnce(testing::Return(3));
-
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -392,10 +364,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceIsImp
 
 TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceNotOwned)
 {
-	EXPECT_CALL(sourceCountry, getCapital).WillOnce(testing::Return(3));
-
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -435,10 +405,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceNotOw
 
 TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInPreferredWastelandIfOnlyWastelandOwned)
 {
-	EXPECT_CALL(sourceCountry, getCapital).WillRepeatedly(testing::Return(3));
-
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -478,10 +446,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInPreferredWastelandIfOnlyWastela
 
 TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInOtherWastelandIfOnlyWastelandOwnedAndPreferredNotOwned)
 {
-	EXPECT_CALL(sourceCountry, getCapital).WillRepeatedly(testing::Return(3));
-
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -522,10 +488,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInOtherWastelandIfOnlyWastelandOw
 
 TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredPreferredIfNoneOwned)
 {
-	EXPECT_CALL(sourceCountry, getCapital).WillRepeatedly(testing::Return(3));
-
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -565,10 +529,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredPreferredIfNoneOwned)
 
 TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredNonWastelandIfNoneOwnedAndPreferredIsWasteland)
 {
-	EXPECT_CALL(sourceCountry, getCapital).WillRepeatedly(testing::Return(3));
-
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -609,10 +571,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredNonWastelandIfNoneOwnedAndP
 
 TEST_F(HoI4World_HoI4CountryTests, capitalGoesToPreferredWastelandIfNoneOwnedAndAllWasteland)
 {
-	EXPECT_CALL(sourceCountry, getCapital).WillRepeatedly(testing::Return(3));
-
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -654,10 +614,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToPreferredWastelandIfNoneOwnedAnd
 
 TEST_F(HoI4World_HoI4CountryTests, capitalGoesToAnyWastelandIfNoneOwnedAllWastelandAndPreferredNotCored)
 {
-	EXPECT_CALL(sourceCountry, getCapital).WillRepeatedly(testing::Return(3));
-
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -698,10 +656,8 @@ TEST_F(HoI4World_HoI4CountryTests, capitalGoesToAnyWastelandIfNoneOwnedAllWastel
 
 TEST_F(HoI4World_HoI4CountryTests, capitalRemainsUnassignedIfNoCoresAndNoOwnedProvince)
 {
-	EXPECT_CALL(sourceCountry, getCapital).WillRepeatedly(testing::Return(3));
-
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -729,7 +685,7 @@ TEST_F(HoI4World_HoI4CountryTests, capitalRemainsUnassignedIfNoCoresAndNoOwnedPr
 TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesDefaultsToNeutrality)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -745,14 +701,10 @@ TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesCanBeSet)
 	std::stringstream partyInput;
 	partyInput << "name = testParty\n";
 	partyInput << "ideology = testSourceIdeology";
-	Vic2::Party testParty(partyInput);
-
-	const std::vector<Vic2::Party> testParties{testParty};
-	EXPECT_CALL(sourceCountry, getRulingParty(testParties))
-		 .WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
 
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setRulingParty(std::move(testParty)).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -760,7 +712,6 @@ TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesCanBeSet)
 		 *hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
-	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	theCountry.convertGovernment(mockSourceWorld,
 		 *governmentMapper::Builder{}
@@ -780,14 +731,10 @@ TEST_F(HoI4World_HoI4CountryTests, rulingPartyComesFromVic2Country)
 	std::stringstream partyInput;
 	partyInput << "name = testParty\n";
 	partyInput << "ideology = testSourceIdeology";
-	Vic2::Party testParty(partyInput);
-
-	const std::vector<Vic2::Party> testParties{testParty};
-	EXPECT_CALL(sourceCountry, getRulingParty(testParties))
-		 .WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
 
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setRulingParty(std::move(testParty)).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -795,7 +742,6 @@ TEST_F(HoI4World_HoI4CountryTests, rulingPartyComesFromVic2Country)
 		 *hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
-	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	theCountry.convertGovernment(mockSourceWorld,
 		 *governmentMapper::Builder{}
@@ -811,11 +757,8 @@ TEST_F(HoI4World_HoI4CountryTests, rulingPartyComesFromVic2Country)
 
 TEST_F(HoI4World_HoI4CountryTests, missingRulingPartyThrowsException)
 {
-	const std::vector<Vic2::Party> testParties{};
-	EXPECT_CALL(sourceCountry, getRulingParty(testParties)).WillOnce(testing::Return(std::nullopt));
-
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -823,7 +766,6 @@ TEST_F(HoI4World_HoI4CountryTests, missingRulingPartyThrowsException)
 		 *hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
-	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	EXPECT_THROW(theCountry.convertGovernment(mockSourceWorld,
 						  *governmentMapper::Builder{}.Build(),
@@ -837,7 +779,7 @@ TEST_F(HoI4World_HoI4CountryTests, missingRulingPartyThrowsException)
 TEST_F(HoI4World_HoI4CountryTests, partiesDefaultsToEmpty)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -853,24 +795,20 @@ TEST_F(HoI4World_HoI4CountryTests, partiesComeFromVic2Country)
 	std::stringstream partyInput;
 	partyInput << "name = TAG_testParty\n";
 	partyInput << "ideology = testSourceIdeology";
-	Vic2::Party testParty(partyInput);
+	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
 
 	std::stringstream partyInput2;
 	partyInput2 << "name = TAG_testParty2\n";
 	partyInput2 << "ideology = testSourceIdeology";
-	Vic2::Party testParty2(partyInput2);
-
-	std::vector<Vic2::Party> testParties{testParty, testParty2};
-	EXPECT_CALL(sourceCountry, getRulingParty(testParties))
-		 .WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
-
-	std::set<Vic2::Party> activeParties;
-	activeParties.insert(testParty);
-	activeParties.insert(testParty2);
-	EXPECT_CALL(sourceCountry, getActiveParties(testParties)).WillOnce(testing::Return(activeParties));
+	auto testParty2 = Vic2::Party::Factory{}.getParty(partyInput2);
 
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}
+				 .setGovernment("testGovernment")
+				 .addActiveParty(*testParty)
+				 .addActiveParty(*testParty2)
+				 .setRulingParty(std::move(testParty))
+				 .Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -878,7 +816,6 @@ TEST_F(HoI4World_HoI4CountryTests, partiesComeFromVic2Country)
 		 *hoi4Localisations);
 
 	mockVic2World mockSourceWorld;
-	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	theCountry.convertGovernment(mockSourceWorld,
 		 *governmentMapper::Builder{}
@@ -888,15 +825,15 @@ TEST_F(HoI4World_HoI4CountryTests, partiesComeFromVic2Country)
 		 *vic2Localisations,
 		 *hoi4Localisations,
 		 false);
-	ASSERT_TRUE(theCountry.getParties().contains(testParty));
-	ASSERT_TRUE(theCountry.getParties().contains(testParty2));
+	ASSERT_TRUE(theCountry.getParties().contains(*testParty));
+	ASSERT_TRUE(theCountry.getParties().contains(*testParty2));
 }
 
 
 TEST_F(HoI4World_HoI4CountryTests, defaultIdeologicalSupportIsAllNeutrality)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -912,7 +849,7 @@ TEST_F(HoI4World_HoI4CountryTests, defaultIdeologicalSupportIsAllNeutrality)
 TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportWithNoIdeologiesIsAllNeutrality)
 {
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -930,15 +867,12 @@ TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportWithNoIdeologiesIsAllNeutra
 TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportCanBeConverted)
 {
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setUpperHouseComposition({{"conservative", 0.30}, {"liberal", 0.70}}).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
 		 *theFlagsToIdeasMapper,
 		 *hoi4Localisations);
-
-	const std::map<std::string, double> upperHouseComposition{{"conservative", 0.30}, {"liberal", 0.70}};
-	EXPECT_CALL(sourceCountry, getUpperHouseComposition()).WillOnce(testing::Return(upperHouseComposition));
 
 	std::set<std::string> majorIdeologies{"conservative"};
 
@@ -957,15 +891,12 @@ TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportCanBeConverted)
 TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportCombinesSameIdeologies)
 {
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setUpperHouseComposition({{"conservative", 0.30}, {"liberal", 0.70}}).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
 		 *theFlagsToIdeasMapper,
 		 *hoi4Localisations);
-
-	const std::map<std::string, double> upperHouseComposition{{"conservative", 0.30}, {"liberal", 0.70}};
-	EXPECT_CALL(sourceCountry, getUpperHouseComposition()).WillOnce(testing::Return(upperHouseComposition));
 
 	std::set<std::string> majorIdeologies{"conservative"};
 
@@ -982,10 +913,8 @@ TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportCombinesSameIdeologies)
 
 TEST_F(HoI4World_HoI4CountryTests, lastElectionIsFromSourceCountry)
 {
-	EXPECT_CALL(sourceCountry, getLastElection()).WillOnce(testing::Return(date{"1234.5.6"}));
-
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setLastElection(date{"1234.5.6"}).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -999,7 +928,7 @@ TEST_F(HoI4World_HoI4CountryTests, lastElectionIsFromSourceCountry)
 TEST_F(HoI4World_HoI4CountryTests, stabilityDefaultsToSixty)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1013,7 +942,7 @@ TEST_F(HoI4World_HoI4CountryTests, stabilityDefaultsToSixty)
 TEST_F(HoI4World_HoI4CountryTests, warSupportDefaultsToSixty)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1026,15 +955,13 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportDefaultsToSixty)
 
 TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByJingosim)
 {
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("jingoism")).WillOnce(testing::Return(8.0f));
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pro_military")).WillOnce(testing::Return(0.0f));
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("anti_military")).WillOnce(testing::Return(0.0f));
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pacifism")).WillOnce(testing::Return(0.0f));
-	auto provinces = std::map<int, std::shared_ptr<Vic2::Province>>{{1, nullptr}};
-	EXPECT_CALL(sourceCountry, getProvinces()).WillOnce(testing::ReturnRef(provinces));
-
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}
+				 .addProvince(1,
+					  Vic2::Province::Builder{}
+							.setPops({*Vic2::Pop::Builder{}.setSize(1).setIssues({{"jingoism", 8.0f}}).build()})
+							.build())
+				 .Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1047,15 +974,13 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByJingosim)
 
 TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByProMilitary)
 {
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("jingoism")).WillOnce(testing::Return(0.0f));
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pro_military")).WillOnce(testing::Return(16.0f));
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("anti_military")).WillOnce(testing::Return(0.0f));
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pacifism")).WillOnce(testing::Return(0.0f));
-	auto provinces = std::map<int, std::shared_ptr<Vic2::Province>>{{1, nullptr}};
-	EXPECT_CALL(sourceCountry, getProvinces()).WillOnce(testing::ReturnRef(provinces));
-
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}
+				 .addProvince(1,
+					  Vic2::Province::Builder{}
+							.setPops({*Vic2::Pop::Builder{}.setSize(1).setIssues({{"pro_military", 16.0f}}).build()})
+							.build())
+				 .Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1068,15 +993,13 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByProMilitary)
 
 TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByAntiMilitary)
 {
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("jingoism")).WillOnce(testing::Return(0.0f));
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pro_military")).WillOnce(testing::Return(0.0f));
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("anti_military")).WillOnce(testing::Return(16.0f));
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pacifism")).WillOnce(testing::Return(0.0f));
-	auto provinces = std::map<int, std::shared_ptr<Vic2::Province>>{{1, nullptr}};
-	EXPECT_CALL(sourceCountry, getProvinces()).WillOnce(testing::ReturnRef(provinces));
-
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}
+				 .addProvince(1,
+					  Vic2::Province::Builder{}
+							.setPops({*Vic2::Pop::Builder{}.setSize(1).setIssues({{"anti_military", 16.0f}}).build()})
+							.build())
+				 .Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1089,15 +1012,13 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByAntiMilitary)
 
 TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByPacifism)
 {
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("jingoism")).WillOnce(testing::Return(0.0f));
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pro_military")).WillOnce(testing::Return(0.0f));
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("anti_military")).WillOnce(testing::Return(0.0f));
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pacifism")).WillOnce(testing::Return(8.0f));
-	auto provinces = std::map<int, std::shared_ptr<Vic2::Province>>{{1, nullptr}};
-	EXPECT_CALL(sourceCountry, getProvinces()).WillOnce(testing::ReturnRef(provinces));
-
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}
+				 .addProvince(1,
+					  Vic2::Province::Builder{}
+							.setPops({*Vic2::Pop::Builder{}.setSize(1).setIssues({{"pacifism", 8.0f}}).build()})
+							.build())
+				 .Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1110,12 +1031,8 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByPacifism)
 
 TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByRevanchism)
 {
-	EXPECT_CALL(sourceCountry, getRevanchism()).WillOnce(testing::Return(100));
-	auto provinces = std::map<int, std::shared_ptr<Vic2::Province>>{{1, nullptr}};
-	EXPECT_CALL(sourceCountry, getProvinces()).WillOnce(testing::ReturnRef(provinces));
-
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setRevanchism(100).addProvince(1, nullptr).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1128,12 +1045,8 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByRevanchism)
 
 TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByWarExhaustion)
 {
-	EXPECT_CALL(sourceCountry, getWarExhaustion()).WillOnce(testing::Return(50));
-	auto provinces = std::map<int, std::shared_ptr<Vic2::Province>>{{1, nullptr}};
-	EXPECT_CALL(sourceCountry, getProvinces()).WillOnce(testing::ReturnRef(provinces));
-
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setWarExhaustion(50).addProvince(1, nullptr).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1146,16 +1059,17 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByWarExhaustion)
 
 TEST_F(HoI4World_HoI4CountryTests, warSupportHasMinimumOfFifteen)
 {
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("jingoism")).WillOnce(testing::Return(0.0f));
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pro_military")).WillOnce(testing::Return(0.0f));
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("anti_military")).WillOnce(testing::Return(80.0f));
-	EXPECT_CALL(sourceCountry, getAverageIssueSupport("pacifism")).WillOnce(testing::Return(80.0f));
-	EXPECT_CALL(sourceCountry, getWarExhaustion()).WillOnce(testing::Return(50));
-	auto provinces = std::map<int, std::shared_ptr<Vic2::Province>>{{1, nullptr}};
-	EXPECT_CALL(sourceCountry, getProvinces()).WillOnce(testing::ReturnRef(provinces));
-
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}
+				 .setWarExhaustion(50)
+				 .addProvince(1,
+					  Vic2::Province::Builder{}
+							.setPops({*Vic2::Pop::Builder{}
+												.setSize(1)
+												.setIssues({{"anti_military", 80.0f}, {"pacifism", 80.0f}})
+												.build()})
+							.build())
+				 .Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1169,7 +1083,7 @@ TEST_F(HoI4World_HoI4CountryTests, warSupportHasMinimumOfFifteen)
 TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDefaultsToVolunteerOnly)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1186,14 +1100,10 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawIncreasesIfRulingPartyJingoist
 	partyInput << "name = testParty\n";
 	partyInput << "ideology = testSourceIdeology\n";
 	partyInput << "war_policy = jingoism";
-	Vic2::Party testParty(partyInput);
-
-	const std::vector<Vic2::Party> testParties{testParty};
-	EXPECT_CALL(sourceCountry, getRulingParty(testParties))
-		 .WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
 
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setGovernment("testGovernment").setRulingParty(std::move(testParty)).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1201,7 +1111,6 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawIncreasesIfRulingPartyJingoist
 		 *hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
-	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	theCountry.convertGovernment(mockSourceWorld,
 		 *governmentMapper::Builder{}
@@ -1222,14 +1131,10 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDecreasesIfRulingPartyPacifist
 	partyInput << "name = testParty\n";
 	partyInput << "ideology = testSourceIdeology\n";
 	partyInput << "war_policy = pacifism";
-	Vic2::Party testParty(partyInput);
-
-	const std::vector<Vic2::Party> testParties{testParty};
-	EXPECT_CALL(sourceCountry, getRulingParty(testParties))
-		 .WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
 
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.setGovernment("testGovernment").setRulingParty(std::move(testParty)).Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1237,7 +1142,6 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDecreasesIfRulingPartyPacifist
 		 *hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
-	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	theCountry.convertGovernment(mockSourceWorld,
 		 *governmentMapper::Builder{}
@@ -1255,7 +1159,7 @@ TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDecreasesIfRulingPartyPacifist
 TEST_F(HoI4World_HoI4CountryTests, economicLawDefaultsToCivilian)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1268,20 +1172,18 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawDefaultsToCivilian)
 
 TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfAtWar)
 {
-	EXPECT_CALL(sourceCountry, isAtWar()).WillOnce(testing::Return(true));
-
 	std::stringstream partyInput;
 	partyInput << "name = testParty\n";
 	partyInput << "ideology = testSourceIdeology\n";
 	partyInput << "war_policy = jingoism";
-	Vic2::Party testParty(partyInput);
-
-	const std::vector<Vic2::Party> testParties{testParty};
-	EXPECT_CALL(sourceCountry, getRulingParty(testParties))
-		 .WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
 
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}
+				 .setGovernment("testGovernment")
+				 .setRulingParty(std::move(testParty))
+				 .setAtWar(true)
+				 .Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1289,7 +1191,6 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfAtWar)
 		 *hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
-	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	theCountry.convertGovernment(mockSourceWorld,
 		 *governmentMapper::Builder{}
@@ -1306,20 +1207,18 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfAtWar)
 
 TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfFascist)
 {
-	EXPECT_CALL(sourceCountry, isAtWar()).WillOnce(testing::Return(true));
-
 	std::stringstream partyInput;
 	partyInput << "name = testParty\n";
 	partyInput << "ideology = fascism\n";
 	partyInput << "war_policy = jingoism";
-	Vic2::Party testParty(partyInput);
-
-	const std::vector<Vic2::Party> testParties{testParty};
-	EXPECT_CALL(sourceCountry, getRulingParty(testParties))
-		 .WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
 
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}
+				 .setGovernment("testGovernment")
+				 .setRulingParty(std::move(testParty))
+				 .setAtWar(true)
+				 .Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1327,7 +1226,6 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfFascist)
 		 *hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
-	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	theCountry.convertGovernment(mockSourceWorld,
 		 *governmentMapper::Builder{}
@@ -1344,7 +1242,7 @@ TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfFascist)
 TEST_F(HoI4World_HoI4CountryTests, tradeLawDefaultsToExport)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1357,20 +1255,18 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawDefaultsToExport)
 
 TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfFascist)
 {
-	EXPECT_CALL(sourceCountry, isAtWar()).WillOnce(testing::Return(true));
-
 	std::stringstream partyInput;
 	partyInput << "name = testParty\n";
 	partyInput << "ideology = fascism\n";
 	partyInput << "war_policy = jingoism";
-	Vic2::Party testParty(partyInput);
-
-	const std::vector<Vic2::Party> testParties{testParty};
-	EXPECT_CALL(sourceCountry, getRulingParty(testParties))
-		 .WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
 
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}
+				 .setGovernment("testGovernment")
+				 .setRulingParty(std::move(testParty))
+				 .setAtWar(true)
+				 .Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1378,7 +1274,6 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfFascist)
 		 *hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
-	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	theCountry.convertGovernment(mockSourceWorld,
 		 *governmentMapper::Builder{}
@@ -1394,20 +1289,18 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfFascist)
 
 TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfRadical)
 {
-	EXPECT_CALL(sourceCountry, isAtWar()).WillOnce(testing::Return(true));
-
 	std::stringstream partyInput;
 	partyInput << "name = testParty\n";
 	partyInput << "ideology = radical\n";
 	partyInput << "war_policy = jingoism";
-	Vic2::Party testParty(partyInput);
-
-	const std::vector<Vic2::Party> testParties{testParty};
-	EXPECT_CALL(sourceCountry, getRulingParty(testParties))
-		 .WillOnce(testing::Return(std::make_optional<Vic2::Party>(testParty)));
+	auto testParty = Vic2::Party::Factory{}.getParty(partyInput);
 
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}
+				 .setGovernment("testGovernment")
+				 .setRulingParty(std::move(testParty))
+				 .setAtWar(true)
+				 .Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1415,7 +1308,6 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfRadical)
 		 *hoi4Localisations);
 
 	const mockVic2World mockSourceWorld;
-	EXPECT_CALL(mockSourceWorld, getParties()).WillRepeatedly(testing::Return(testParties));
 
 	theCountry.convertGovernment(mockSourceWorld,
 		 *governmentMapper::Builder{}
@@ -1432,7 +1324,7 @@ TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfRadical)
 TEST_F(HoI4World_HoI4CountryTests, technologyCountDefaultsToZero)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1446,7 +1338,7 @@ TEST_F(HoI4World_HoI4CountryTests, technologyCountDefaultsToZero)
 TEST_F(HoI4World_HoI4CountryTests, technologiesDefaultToNullopt)
 {
 	const HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),
@@ -1459,11 +1351,8 @@ TEST_F(HoI4World_HoI4CountryTests, technologiesDefaultToNullopt)
 
 TEST_F(HoI4World_HoI4CountryTests, technologyCanBeConverted)
 {
-	EXPECT_CALL(sourceCountry, getTechs()).WillOnce(testing::Return(std::set<std::string>{"testTech"}));
-	EXPECT_CALL(sourceCountry, getInventions()).WillOnce(testing::Return(std::set<std::string>{"testInvention"}));
-
 	HoI4::Country theCountry("TAG",
-		 &sourceCountry,
+		 &*Vic2::Country::Builder{}.addTech("testTech").addDiscoveredInvention("testInvention").Build(),
 		 *names,
 		 *graphicsMapper::Builder{}.Build(),
 		 *CountryMapper::Builder{}.Build(),

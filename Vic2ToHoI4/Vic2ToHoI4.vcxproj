@@ -701,6 +701,7 @@
     <ClInclude Include="Source\Mappers\VersionParser\VersionParser.h" />
     <ClInclude Include="Source\V2World\CommonCountryData.h" />
     <ClInclude Include="Source\V2World\Country.h" />
+    <ClInclude Include="Source\V2World\CountryBuilder.h" />
     <ClInclude Include="Source\V2World\Culture\CultureGroupFactory.h" />
     <ClInclude Include="Source\V2World\Culture\CultureGroups.h" />
     <ClInclude Include="Source\V2World\Culture\CultureGroupsFactory.h" />
@@ -733,6 +734,7 @@
     <ClInclude Include="Source\V2World\Mods\ModBuilder.h" />
     <ClInclude Include="Source\V2World\Mods\ModFactory.h" />
     <ClInclude Include="Source\V2World\Politics\Party.h" />
+    <ClInclude Include="Source\V2World\Politics\PartyBuilder.h" />
     <ClInclude Include="Source\V2World\Politics\PartyFactory.h" />
     <ClInclude Include="Source\V2World\Pops\Pop.h" />
     <ClInclude Include="Source\V2World\Pops\PopBuilder.h" />

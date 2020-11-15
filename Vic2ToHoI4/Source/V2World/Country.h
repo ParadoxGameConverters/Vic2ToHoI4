@@ -47,6 +47,8 @@ class Country: commonItems::parser
 		 Army::Factory& armyFactory);
 	virtual ~Country() = default;
 
+	class Builder;
+
 	void addProvince(const std::pair<const int, std::shared_ptr<Province>>& province) { provinces.insert(province); }
 	void setColor(const commonItems::Color& Color) { color = Color; }
 	void addCore(std::shared_ptr<Province> core) { cores.push_back(core); }
