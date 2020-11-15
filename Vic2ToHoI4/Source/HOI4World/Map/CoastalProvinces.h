@@ -16,13 +16,15 @@ namespace HoI4
 
 class CoastalProvinces
 {
-  public:
+  public:	
 	CoastalProvinces() = default;
 	CoastalProvinces(const CoastalProvinces&) = default;
 	CoastalProvinces(CoastalProvinces&&) = default;
 	CoastalProvinces& operator=(const CoastalProvinces&) = default;
 	CoastalProvinces& operator=(CoastalProvinces&&) = default;
 	virtual ~CoastalProvinces() = default;
+
+	class Builder;
 
 	void init(const MapData& theMapData, const std::map<int, Province>& theProvinces);
 

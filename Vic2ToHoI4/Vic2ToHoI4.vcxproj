@@ -451,6 +451,7 @@
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesBuilder.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.h" />
+    <ClInclude Include="Source\HOI4World\Map\CoastalProvincesBuilder.h" />
     <ClInclude Include="Source\HOI4World\Map\HoI4Provinces.h" />
     <ClInclude Include="Source\HOI4World\Map\StrategicRegions.h" />
     <ClInclude Include="Source\HOI4World\Names\CultureGroupNames.h" />

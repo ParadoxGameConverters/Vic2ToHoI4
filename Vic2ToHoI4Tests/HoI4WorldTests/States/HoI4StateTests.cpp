@@ -1,7 +1,7 @@
 #include "Configuration.h"
 #include "HOI4World/Map/CoastalProvinces.h"
+#include "HOI4World/Map/CoastalProvincesBuilder.h"
 #include "HOI4World/States/HoI4State.h"
-#include "Mocks/CoastalProvincesMock.h"
 #include "Mocks/CountryMapperMock.h"
 #include "Mocks/StateCategoriesMock.h"
 #include "OutHoi4/States/OutHoI4State.h"
@@ -249,8 +249,7 @@ TEST(HoI4World_States_StateTests, TotalFactoriesHalvedByMissingCore)
 	const mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(8)).WillOnce(testing::Return("mockedCategory"));
 
-	const HoI4::CoastalProvinces theCoastalProvinces;
-	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+	theState.convertIndustry(0.0001, stateCategories, *HoI4::CoastalProvinces::Builder{}.Build());
 
 	ASSERT_EQ(3, theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards());
 }
@@ -272,8 +271,7 @@ TEST(HoI4World_States_StateTests, TotalFactoriesCappedAtTwelve)
 	const mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(14)).WillOnce(testing::Return("mockedCategory"));
 
-	const HoI4::CoastalProvinces theCoastalProvinces;
-	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+	theState.convertIndustry(0.0001, stateCategories, *HoI4::CoastalProvinces::Builder{}.Build());
 
 	ASSERT_EQ(12, theState.getMilFactories() + theState.getCivFactories() + theState.getDockyards());
 }
@@ -294,8 +292,7 @@ TEST(HoI4World_States_StateTests, categoryCanBeChanged)
 	const mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(14)).WillOnce(testing::Return("mockedCategory"));
 
-	const HoI4::CoastalProvinces theCoastalProvinces;
-	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+	theState.convertIndustry(0.0001, stateCategories, *HoI4::CoastalProvinces::Builder{}.Build());
 
 	ASSERT_EQ("mockedCategory", theState.getCategory());
 }
@@ -320,8 +317,7 @@ TEST(HoI4World_States_StateTests, InfrastructureAddedPerTwoRailLevels)
 	const mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(2)).WillOnce(testing::Return("mockedCategory"));
 
-	const HoI4::CoastalProvinces theCoastalProvinces;
-	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+	theState.convertIndustry(0.0001, stateCategories, *HoI4::CoastalProvinces::Builder{}.Build());
 
 	ASSERT_EQ(6, theState.getInfrastructure());
 }
@@ -343,8 +339,7 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverFourFactories)
 	const mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(7)).WillOnce(testing::Return("mockedCategory"));
 
-	const HoI4::CoastalProvinces theCoastalProvinces;
-	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+	theState.convertIndustry(0.0001, stateCategories, *HoI4::CoastalProvinces::Builder{}.Build());
 
 	ASSERT_EQ(7, theState.getInfrastructure());
 }
@@ -366,8 +361,7 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverSixFactories)
 	const mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(9)).WillOnce(testing::Return("mockedCategory"));
 
-	const HoI4::CoastalProvinces theCoastalProvinces;
-	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+	theState.convertIndustry(0.0001, stateCategories, *HoI4::CoastalProvinces::Builder{}.Build());
 
 	ASSERT_EQ(8, theState.getInfrastructure());
 }
@@ -389,8 +383,7 @@ TEST(HoI4World_States_StateTests, InfrastructureForOverTenFactories)
 	const mockStateCategories stateCategories;
 	EXPECT_CALL(stateCategories, getBestCategory(13)).WillOnce(testing::Return("mockedCategory"));
 
-	const HoI4::CoastalProvinces theCoastalProvinces;
-	theState.convertIndustry(0.0001, stateCategories, theCoastalProvinces);
+	theState.convertIndustry(0.0001, stateCategories, *HoI4::CoastalProvinces::Builder{}.Build());
 
 	ASSERT_EQ(9, theState.getInfrastructure());
 }
@@ -410,13 +403,11 @@ TEST(HoI4World_States_StateTests, NavalBasesCanBeConverted)
 	theState.addProvince(1);
 	theState.addProvince(2);
 
-	const mockCoastalProvinces theCoastalProvinces;
-	EXPECT_CALL(theCoastalProvinces, isProvinceCoastal(1)).WillOnce(testing::Return(true));
-	EXPECT_CALL(theCoastalProvinces, isProvinceCoastal(2)).WillOnce(testing::Return(true));
-
 	const mappers::ProvinceMapper theProvinceMapper{{}, {{1, {1}}, {2, {2}}}};
 
-	theState.convertNavalBases({{1, 1}, {2, 1}}, theCoastalProvinces, theProvinceMapper);
+	theState.convertNavalBases({{1, 1}, {2, 1}},
+		 *HoI4::CoastalProvinces::Builder{}.addCoastalProvince(1, {}).addCoastalProvince(2, {}).Build(),
+		 theProvinceMapper);
 
 	const std::map<int, int> expectedNavalBases{{1, 2}, {2, 2}};
 	ASSERT_EQ(expectedNavalBases, theState.getNavalBases());
