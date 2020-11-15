@@ -7,8 +7,10 @@
 #include <ostream>
 
 
-
-std::ostream& HoI4::operator<<(std::ostream& out, const DecisionsCategory& decisionsCategory);
+namespace HoI4
+{
+std::ostream& operator<<(std::ostream& out, const DecisionsCategory& decisionsCategory);
+}
 
 
 
