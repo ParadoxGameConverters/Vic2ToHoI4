@@ -42,6 +42,8 @@ class technologies
 	technologies() = default;
 	virtual ~technologies() = default;
 
+	class Builder;
+
 	technologies(const mappers::techMapper& theTechMapper,
 		 const std::set<std::string>& oldTechs,
 		 const std::set<std::string>& oldInventions);

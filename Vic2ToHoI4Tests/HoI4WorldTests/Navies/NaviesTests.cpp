@@ -1,6 +1,6 @@
-#include "Mocks/TechnologiesMock.h"
 #include "HOI4World/Navies/Navies.h"
 #include "HOI4World/ProvinceDefinitions.h"
+#include "HOI4World/TechnologiesBuilder.h"
 #include "OutHoi4/Navies/OutNavies.h"
 #include "V2World/Military/ArmyFactory.h"
 #include "gtest/gtest.h"
@@ -63,11 +63,10 @@ HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests(): provinceDefinition
 	shipVariantsInput << "}\n";
 	HoI4::PossibleShipVariants thePossibleVariants(shipVariantsInput);
 
-	mockTechnologies ownedTechs;
-	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_light")).WillRepeatedly(testing::Return(true));
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light"))
-		 .WillOnce(testing::Return(true))
-		 .WillOnce(testing::Return(false));
+	const auto ownedTechs = *HoI4::technologies::Builder{}
+										  .addTechnology("early_ship_hull_light")
+										  .addTechnology("basic_ship_hull_light")
+										  .Build();
 
 	theShipVariants = std::make_unique<HoI4::ShipVariants>(thePossibleVariants, ownedTechs, "");
 	limitedShipVariants = std::make_unique<HoI4::ShipVariants>(thePossibleVariants, ownedTechs, "");
@@ -122,7 +121,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToLegacy)
 	input << "\ttype = destroyer_1\n";
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
-	mockTechnologies ownedTechs;
+
+	const auto ownedTechs = *HoI4::technologies::Builder{}.Build();
 	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	HoI4::Navies navies(sourceArmies,
@@ -209,9 +209,8 @@ TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableLegacyShipType)
 		 "TAG",
 		 provinceDefinitions,
 		 provinceMapper);
-	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputMtgNavies(navies, ownedTechs, "TAG", output);
+	outputMtgNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -264,9 +263,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
 		 "TAG",
 		 provinceDefinitions,
 		 provinceMapper);
-	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputLegacyNavies(navies, ownedTechs, "TAG", output);
+	outputLegacyNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -327,9 +325,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
 		 "TAG",
 		 provinceDefinitions,
 		 provinceMapper);
-	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputLegacyNavies(navies, ownedTechs, "TAG", output);
+	outputLegacyNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -389,7 +386,7 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyNavyNamesConvert)
 	input << "\ttype = destroyer_1\n";
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
-	mockTechnologies ownedTechs;
+	const auto ownedTechs = *HoI4::technologies::Builder{}.Build();
 	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	HoI4::Navies navies(sourceArmies,
@@ -443,10 +440,7 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHave1936DestroyerInProduction)
 
 	std::stringstream input;
 	HoI4::PossibleShipVariants possibleVariants(input);
-	mockTechnologies ownedTechs;
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_destroyer")).WillOnce(testing::Return(true));
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_battleship")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("early_battleship")).WillOnce(testing::Return(false));
+	const auto ownedTechs = *HoI4::technologies::Builder{}.addTechnology("basic_destroyer").Build();
 	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	HoI4::Navies navies(sourceArmies,
@@ -499,11 +493,7 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHaveEarlyDestroyerInProduction)
 
 	std::stringstream input;
 	HoI4::PossibleShipVariants possibleVariants(input);
-	mockTechnologies ownedTechs;
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_destroyer")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("early_destroyer")).WillOnce(testing::Return(true));
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_battleship")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("early_battleship")).WillOnce(testing::Return(false));
+	const auto ownedTechs = *HoI4::technologies::Builder{}.addTechnology("early_destroyer").Build();
 	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	HoI4::Navies navies(sourceArmies,
@@ -556,10 +546,7 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHave1936BattleshipInProduction)
 
 	std::stringstream input;
 	HoI4::PossibleShipVariants possibleVariants(input);
-	mockTechnologies ownedTechs;
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_destroyer")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("early_destroyer")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_battleship")).WillOnce(testing::Return(true));
+	const auto ownedTechs = *HoI4::technologies::Builder{}.addTechnology("basic_battleship").Build();
 	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	HoI4::Navies navies(sourceArmies,
@@ -612,11 +599,7 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHaveEarlyBattleshipInProduction)
 
 	std::stringstream input;
 	HoI4::PossibleShipVariants possibleVariants(input);
-	mockTechnologies ownedTechs;
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_destroyer")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("early_destroyer")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_battleship")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("early_battleship")).WillOnce(testing::Return(true));
+	const auto ownedTechs = *HoI4::technologies::Builder{}.addTechnology("early_battleship").Build();
 	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	HoI4::Navies navies(sourceArmies,
@@ -702,9 +685,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToMtg)
 		 "TAG",
 		 provinceDefinitions,
 		 provinceMapper);
-	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputMtgNavies(navies, ownedTechs, "TAG", output);
+	outputMtgNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -784,9 +766,8 @@ TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableMtgShipType)
 		 "TAG",
 		 provinceDefinitions,
 		 provinceMapper);
-	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputMtgNavies(navies, ownedTechs, "TAG", output);
+	outputMtgNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -859,9 +840,8 @@ TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesGetExperience)
 		 "TAG",
 		 provinceDefinitions,
 		 provinceMapper);
-	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputMtgNavies(navies, ownedTechs, "TAG", output);
+	outputMtgNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -926,9 +906,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToMtg)
 		 "TAG",
 		 provinceDefinitions,
 		 provinceMapper);
-	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputMtgNavies(navies, ownedTechs, "TAG", output);
+	outputMtgNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -991,9 +970,8 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToMtgNavy)
 		 "TAG",
 		 provinceDefinitions,
 		 provinceMapper);
-	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputMtgNavies(navies, ownedTechs, "TAG", output);
+	outputMtgNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -1056,9 +1034,8 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgNavyNamesConvert)
 		 "TAG",
 		 provinceDefinitions,
 		 provinceMapper);
-	mockTechnologies ownedTechs;
 	std::ostringstream output;
-	outputMtgNavies(navies, ownedTechs, "TAG", output);
+	outputMtgNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -1107,12 +1084,11 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgCanHave1936DestroyerInProduction)
 		 "TAG",
 		 provinceDefinitions,
 		 provinceMapper);
-	mockTechnologies ownedTechs;
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light")).WillOnce(testing::Return(true));
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_heavy")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_heavy")).WillOnce(testing::Return(false));
 	std::ostringstream output;
-	outputMtgNavies(navies, ownedTechs, "TAG", output);
+	outputMtgNavies(navies,
+		 *HoI4::technologies::Builder{}.addTechnology("basic_ship_hull_light").Build(),
+		 "TAG",
+		 output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -1161,13 +1137,11 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgCanHaveEarlyDestroyerInProduction)
 		 "TAG",
 		 provinceDefinitions,
 		 provinceMapper);
-	mockTechnologies ownedTechs;
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_light")).WillOnce(testing::Return(true));
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_heavy")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_heavy")).WillOnce(testing::Return(false));
 	std::ostringstream output;
-	outputMtgNavies(navies, ownedTechs, "TAG", output);
+	outputMtgNavies(navies,
+		 *HoI4::technologies::Builder{}.addTechnology("early_ship_hull_light").Build(),
+		 "TAG",
+		 output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -1216,12 +1190,11 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgCanHave1936BattleshipInProduction)
 		 "TAG",
 		 provinceDefinitions,
 		 provinceMapper);
-	mockTechnologies ownedTechs;
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_light")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_heavy")).WillOnce(testing::Return(true));
 	std::ostringstream output;
-	outputMtgNavies(navies, ownedTechs, "TAG", output);
+	outputMtgNavies(navies,
+		 *HoI4::technologies::Builder{}.addTechnology("basic_ship_hull_heavy").Build(),
+		 "TAG",
+		 output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -1270,13 +1243,11 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgCanHaveEarlyBattleshipInProduction)
 		 "TAG",
 		 provinceDefinitions,
 		 provinceMapper);
-	mockTechnologies ownedTechs;
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_light")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_light")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("basic_ship_hull_heavy")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("early_ship_hull_heavy")).WillOnce(testing::Return(true));
 	std::ostringstream output;
-	outputMtgNavies(navies, ownedTechs, "TAG", output);
+	outputMtgNavies(navies,
+		 *HoI4::technologies::Builder{}.addTechnology("early_ship_hull_heavy").Build(),
+		 "TAG",
+		 output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";

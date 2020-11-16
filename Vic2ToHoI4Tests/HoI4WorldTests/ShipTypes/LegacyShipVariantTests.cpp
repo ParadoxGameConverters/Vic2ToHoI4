@@ -1,5 +1,5 @@
-#include "Mocks/TechnologiesMock.h"
 #include "HOI4World/ShipTypes/LegacyShipVariant.h"
+#include "HOI4World/TechnologiesBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -147,9 +147,7 @@ TEST(HoI4World_ShipTypes_LegacyShipVariantTests, NoRequiredTechsMeansVariantIsVa
 	input << "}";
 	const HoI4::LegacyShipVariant theLegacyShipVariant(input);
 
-	const mockTechnologies countryTechs;
-
-	ASSERT_TRUE(theLegacyShipVariant.isValidVariant(countryTechs));
+	ASSERT_TRUE(theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder{}.Build()));
 }
 
 
@@ -163,9 +161,7 @@ TEST(HoI4World_ShipTypes_LegacyShipVariantTests, MissingRequiredTechMeansVariant
 	input << "}";
 	const HoI4::LegacyShipVariant theLegacyShipVariant(input);
 
-	const mockTechnologies countryTechs;
-
-	ASSERT_FALSE(theLegacyShipVariant.isValidVariant(countryTechs));
+	ASSERT_FALSE(theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder{}.Build()));
 }
 
 
@@ -179,10 +175,8 @@ TEST(HoI4World_ShipTypes_LegacyShipVariantTests, HavingRequiredTechsMeansVariant
 	input << "}";
 	const HoI4::LegacyShipVariant theLegacyShipVariant(input);
 
-	const mockTechnologies mockTechs;
-	EXPECT_CALL(mockTechs, hasTechnology("required_tech1")).WillOnce(testing::Return(true));
-
-	ASSERT_TRUE(theLegacyShipVariant.isValidVariant(mockTechs));
+	ASSERT_TRUE(
+		 theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder{}.addTechnology("required_tech1").Build()));
 }
 
 
@@ -197,11 +191,8 @@ TEST(HoI4World_ShipTypes_LegacyShipVariantTests, HavingOnlySomeRequiredTechsMean
 	input << "}";
 	const HoI4::LegacyShipVariant theLegacyShipVariant(input);
 
-	const mockTechnologies mockTechs;
-	EXPECT_CALL(mockTechs, hasTechnology("required_tech1")).WillOnce(testing::Return(true));
-	EXPECT_CALL(mockTechs, hasTechnology("required_tech2")).WillOnce(testing::Return(false));
-
-	ASSERT_FALSE(theLegacyShipVariant.isValidVariant(mockTechs));
+	ASSERT_FALSE(
+		 theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder{}.addTechnology("required_tech1").Build()));
 }
 
 
@@ -215,10 +206,8 @@ TEST(HoI4World_ShipTypes_LegacyShipVariantTests, HavingBlockingTechsMeansVariant
 	input << "}";
 	const HoI4::LegacyShipVariant theLegacyShipVariant(input);
 
-	const mockTechnologies mockTechs;
-	EXPECT_CALL(mockTechs, hasTechnology("required_tech1")).WillOnce(testing::Return(true));
-
-	ASSERT_FALSE(theLegacyShipVariant.isValidVariant(mockTechs));
+	ASSERT_FALSE(
+		 theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder{}.addTechnology("required_tech1").Build()));
 }
 
 
@@ -232,7 +221,5 @@ TEST(HoI4World_ShipTypes_LegacyShipVariantTests, HavingNoBlockingTechsMeansVaria
 	input << "}";
 	const HoI4::LegacyShipVariant theLegacyShipVariant(input);
 
-	const mockTechnologies countryTechs;
-
-	ASSERT_TRUE(theLegacyShipVariant.isValidVariant(countryTechs));
+	ASSERT_TRUE(theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder{}.Build()));
 }

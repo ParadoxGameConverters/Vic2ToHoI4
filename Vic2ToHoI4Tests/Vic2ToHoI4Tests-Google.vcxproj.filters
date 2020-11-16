@@ -87,9 +87,6 @@
     <ClCompile Include="HoI4WorldTests\TechnologiesTests.cpp">
       <Filter>HoI4WorldTests</Filter>
     </ClCompile>
-    <ClCompile Include="Mocks\TechnologiesMock.h">
-      <Filter>Mocks</Filter>
-    </ClCompile>
     <ClCompile Include="..\googletest\googlemock\src\gmock-all.cc" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\PossibleShipVariants.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
@@ -138,9 +135,6 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
-    </ClCompile>
-    <ClCompile Include="Mocks\CountryMapperMock.h">
-      <Filter>Mocks</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4State.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
@@ -1315,9 +1309,6 @@
     <Filter Include="Vic2ToHoI4 files\HoI4\MilitaryMappings">
       <UniqueIdentifier>{aeee018a-bb82-4a8c-836c-891aaece63c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Mocks">
-      <UniqueIdentifier>{3023e5d0-204d-43df-874e-1d4e3fb02ffa}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Vic2ToHoI4 files\HoI4\ShipTypes">
       <UniqueIdentifier>{56a3f8a7-5526-4e30-a05a-9dd54abc6100}</UniqueIdentifier>
     </Filter>
@@ -1650,30 +1641,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Mocks\EventsMock.h">
-      <Filter>Mocks</Filter>
-    </ClInclude>
-    <ClInclude Include="Mocks\StateCategoriesMock.h">
-      <Filter>Mocks</Filter>
-    </ClInclude>
-    <ClInclude Include="Mocks\GraphicsMapperMock.h">
-      <Filter>Mocks</Filter>
-    </ClInclude>
-    <ClInclude Include="Mocks\Vic2CountryMock.h">
-      <Filter>Mocks</Filter>
-    </ClInclude>
-    <ClInclude Include="Mocks\Hoi4StateMock.h">
-      <Filter>Mocks</Filter>
-    </ClInclude>
-    <ClInclude Include="Mocks\Vic2WorldMock.h">
-      <Filter>Mocks</Filter>
-    </ClInclude>
-    <ClInclude Include="Mocks\GovermentMapperMock.h">
-      <Filter>Mocks</Filter>
-    </ClInclude>
-    <ClInclude Include="Mocks\CoastalProvincesMock.h">
-      <Filter>Mocks</Filter>
-    </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h">
       <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
     </ClInclude>
@@ -1817,10 +1784,6 @@
       <Filter>TestFiles\Localistations</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="TestFiles\Leaders\HoI4CountryLeaders.txt">
-      <Filter>TestFiles\Leaders</Filter>
-    </Text>
+    <CopyFileToFolders Include="TestFiles\Leaders\HoI4CountryLeaders.txt" />
   </ItemGroup>
 </Project>

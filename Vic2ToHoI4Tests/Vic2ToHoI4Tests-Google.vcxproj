@@ -428,8 +428,6 @@
     <ClCompile Include="MapperTests\FlagsToIdeasMapperTests.cpp" />
     <ClCompile Include="MapperTests\FlagToIdeaMappingTests.cpp" />
     <ClCompile Include="MapperTests\TechMapperTests.cpp" />
-    <ClCompile Include="Mocks\CountryMapperMock.h" />
-    <ClCompile Include="Mocks\TechnologiesMock.h" />
     <ClCompile Include="Vic2WorldTests\Culture\CultureGroupFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Culture\CultureGroupsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Diplomacy\AgreementTests.cpp" />
@@ -522,14 +520,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h" />
-    <ClInclude Include="Mocks\CoastalProvincesMock.h" />
-    <ClInclude Include="Mocks\EventsMock.h" />
-    <ClInclude Include="Mocks\GovermentMapperMock.h" />
-    <ClInclude Include="Mocks\GraphicsMapperMock.h" />
-    <ClInclude Include="Mocks\Hoi4StateMock.h" />
-    <ClInclude Include="Mocks\StateCategoriesMock.h" />
-    <ClInclude Include="Mocks\Vic2CountryMock.h" />
-    <ClInclude Include="Mocks\Vic2WorldMock.h" />
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRulesEmpty.txt" />
