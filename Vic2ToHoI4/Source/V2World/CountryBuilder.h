@@ -14,7 +14,7 @@ namespace Vic2
 class Country::Builder
 {
   public:
-	Builder() { country = std::unique_ptr<Country>(); }
+	Builder() { country = std::make_unique<Country>(); }
 	std::unique_ptr<Country> Build() { return std::move(country); }
 
 	Builder& addNameInLanguage(const std::string& language, const std::string& name)

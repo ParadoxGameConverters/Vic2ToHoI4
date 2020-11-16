@@ -14,7 +14,7 @@ namespace HoI4
 class State::Builder
 {
   public:
-	Builder() { state = std::unique_ptr<State>(); }
+	Builder() { state = std::make_unique<State>(); }
 	std::unique_ptr<State> Build() { return std::move(state); }
 
 	Builder& setId(int id)
