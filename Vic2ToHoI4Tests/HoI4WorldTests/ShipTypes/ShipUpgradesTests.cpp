@@ -1,4 +1,3 @@
-#include "Mocks/TechnologiesMock.h"
 #include "HOI4World/ShipTypes/ShipUpgrades.h"
 #include "gtest/gtest.h"
 #include <sstream>

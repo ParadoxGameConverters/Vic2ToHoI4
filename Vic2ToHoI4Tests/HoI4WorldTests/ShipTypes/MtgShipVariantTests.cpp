@@ -1,5 +1,5 @@
-#include "Mocks/TechnologiesMock.h"
 #include "HOI4World/ShipTypes/MtgShipVariant.h"
+#include "HOI4World/TechnologiesBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -185,9 +185,7 @@ TEST(HoI4World_ShipTypes_MtgShipVariantTests, NoRequiredTechsMeansVariantIsValid
 	input << "}";
 	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
-	const mockTechnologies countryTechs;
-
-	ASSERT_TRUE(theMtgShipVariant.isValidVariant(countryTechs));
+	ASSERT_TRUE(theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder{}.Build()));
 }
 
 
@@ -201,9 +199,7 @@ TEST(HoI4World_ShipTypes_MtgShipVariantTests, MissingRequiredTechMeansVariantIsI
 	input << "}";
 	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
-	const mockTechnologies countryTechs;
-
-	ASSERT_FALSE(theMtgShipVariant.isValidVariant(countryTechs));
+	ASSERT_FALSE(theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder{}.Build()));
 }
 
 
@@ -217,10 +213,8 @@ TEST(HoI4World_ShipTypes_MtgShipVariantTests, HavingRequiredTechsMeansVariantIsV
 	input << "}";
 	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
-	const mockTechnologies mockTechs;
-	EXPECT_CALL(mockTechs, hasTechnology("required_tech1")).WillOnce(testing::Return(true));
-
-	ASSERT_TRUE(theMtgShipVariant.isValidVariant(mockTechs));
+	ASSERT_TRUE(
+		 theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder{}.addTechnology("required_tech1").Build()));
 }
 
 
@@ -235,11 +229,8 @@ TEST(HoI4World_ShipTypes_MtgShipVariantTests, HavingOnlySomeRequiredTechsMeansVa
 	input << "}";
 	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
-	const mockTechnologies mockTechs;
-	EXPECT_CALL(mockTechs, hasTechnology("required_tech1")).WillOnce(testing::Return(true));
-	EXPECT_CALL(mockTechs, hasTechnology("required_tech2")).WillOnce(testing::Return(false));
-
-	ASSERT_FALSE(theMtgShipVariant.isValidVariant(mockTechs));
+	ASSERT_FALSE(
+		 theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder{}.addTechnology("required_tech1").Build()));
 }
 
 
@@ -253,10 +244,8 @@ TEST(HoI4World_ShipTypes_MtgShipVariantTests, HavingBlockingTechsMeansVariantIsI
 	input << "}";
 	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
-	const mockTechnologies mockTechs;
-	EXPECT_CALL(mockTechs, hasTechnology("required_tech1")).WillOnce(testing::Return(true));
-
-	ASSERT_FALSE(theMtgShipVariant.isValidVariant(mockTechs));
+	ASSERT_FALSE(
+		 theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder{}.addTechnology("required_tech1").Build()));
 }
 
 
@@ -270,7 +259,5 @@ TEST(HoI4World_ShipTypes_MtgShipVariantTests, HavingNoBlockingTechsMeansVariantI
 	input << "}";
 	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
-	const mockTechnologies countryTechs;
-
-	ASSERT_TRUE(theMtgShipVariant.isValidVariant(countryTechs));
+	ASSERT_TRUE(theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder{}.Build()));
 }

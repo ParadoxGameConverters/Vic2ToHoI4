@@ -1,5 +1,5 @@
-#include "Mocks/EventsMock.h"
 #include "HOI4World/Decisions/DecisionsInCategory.h"
+#include "HOI4World/Events/EventsBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -199,8 +199,7 @@ TEST(HoI4World_Decisions_DecisionsInCategoryTests, OpenUpPoliticalDiscourseCanBe
 	ideologies.insert("fascism");
 	ideologies.insert("democracy");
 	ideologies.insert("communism");
-	mockEvents theEvents;
-	theDecisionsInCategory.updatePoliticalDecisions(ideologies, theEvents);
+	theDecisionsInCategory.updatePoliticalDecisions(ideologies, *HoI4::Events::Builder{}.Build());
 
 	std::stringstream output;
 	output << theDecisionsInCategory;
@@ -234,8 +233,7 @@ TEST(HoI4World_Decisions_DecisionsInCategoryTests, DiscreditGovernmentCanBeUpdat
 	ideologies.insert("fascism");
 	ideologies.insert("democracy");
 	ideologies.insert("communism");
-	mockEvents theEvents;
-	theDecisionsInCategory.updatePoliticalDecisions(ideologies, theEvents);
+	theDecisionsInCategory.updatePoliticalDecisions(ideologies, *HoI4::Events::Builder{}.Build());
 
 	std::stringstream output;
 	output << theDecisionsInCategory;
@@ -295,8 +293,7 @@ TEST(HoI4World_Decisions_DecisionsInCategoryTests, InstituePressCensorshipCanBeU
 	ideologies.insert("absolutism");
 	ideologies.insert("democracy");
 	ideologies.insert("communism");
-	mockEvents theEvents;
-	theDecisionsInCategory.updatePoliticalDecisions(ideologies, theEvents);
+	theDecisionsInCategory.updatePoliticalDecisions(ideologies, *HoI4::Events::Builder{}.Build());
 
 	std::stringstream output;
 	output << theDecisionsInCategory;
@@ -330,8 +327,7 @@ TEST(HoI4World_Decisions_DecisionsInCategoryTests, IgniteTheIdeologyCivilWarCanB
 	ideologies.insert("absolutism");
 	ideologies.insert("democracy");
 	ideologies.insert("radical");
-	mockEvents theEvents;
-	theDecisionsInCategory.updatePoliticalDecisions(ideologies, theEvents);
+	theDecisionsInCategory.updatePoliticalDecisions(ideologies, *HoI4::Events::Builder{}.Build());
 
 	std::stringstream output;
 	output << theDecisionsInCategory;
@@ -406,9 +402,8 @@ TEST(HoI4World_Decisions_DecisionsInCategoryTests, HoldTheIdeologyNationalRefere
 	HoI4::DecisionsInCategory theDecisionsInCategory("decisionsCategoryName", input);
 
 	std::set<std::string> ideologies;
-	mockEvents theEvents;
-	EXPECT_CALL(theEvents, getEventNumber("fiftyPercentdemocratic")).WillOnce(testing::Return(122));
-	theDecisionsInCategory.updatePoliticalDecisions(ideologies, theEvents);
+	theDecisionsInCategory.updatePoliticalDecisions(ideologies,
+		 *HoI4::Events::Builder{}.addEventNumber("fiftyPercentdemocratic", 122).Build());
 
 	std::stringstream output;
 	output << theDecisionsInCategory;

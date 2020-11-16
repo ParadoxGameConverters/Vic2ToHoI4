@@ -45,7 +45,9 @@ class Country: commonItems::parser
 		 Relations::Factory& relationsFactory,
 		 Leader::Factory& leaderFactory,
 		 Army::Factory& armyFactory);
-	virtual ~Country() = default;
+	~Country() = default;
+
+	class Builder;
 
 	void addProvince(const std::pair<const int, std::shared_ptr<Province>>& province) { provinces.insert(province); }
 	void setColor(const commonItems::Color& Color) { color = Color; }
@@ -66,44 +68,44 @@ class Country: commonItems::parser
 
 	[[nodiscard]] const auto& getRelations() const { return relations; }
 	auto& getStates() { return states; }
-	virtual std::string getTag() const { return tag; }
+	std::string getTag() const { return tag; }
 	std::string getIdentifier() const;
 	std::string getPrimaryCulture() const { return primaryCulture; }
-	virtual std::string getPrimaryCultureGroup() const { return primaryCultureGroup; }
+	std::string getPrimaryCultureGroup() const { return primaryCultureGroup; }
 	std::set<std::string> getAcceptedCultures() const { return acceptedCultures; }
 	bool isAnAcceptedCulture(const std::string& culture) const { return acceptedCultures.contains(culture); }
-	virtual std::set<std::string> getInventions() const { return discoveredInventions; }
-	virtual std::string getGovernment() const { return government; }
+	std::set<std::string> getInventions() const { return discoveredInventions; }
+	std::string getGovernment() const { return government; }
 	std::set<std::string> getFlags() const { return flags; }
-	virtual date getLastElection() const { return lastElection; }
-	virtual int getCapital() const { return capital; }
-	virtual std::set<std::string> getTechs() const { return techs; }
-	virtual const commonItems::Color& getColor() const { return color; }
+	date getLastElection() const { return lastElection; }
+	int getCapital() const { return capital; }
+	std::set<std::string> getTechs() const { return techs; }
+	const commonItems::Color& getColor() const { return color; }
 	auto getArmies() const { return armies; }
 	[[nodiscard]] const auto& getLeaders() const { return leaders; }
-	virtual double getRevanchism() const { return revanchism; }
-	virtual double getWarExhaustion() const { return warExhaustion; }
+	double getRevanchism() const { return revanchism; }
+	double getWarExhaustion() const { return warExhaustion; }
 	double getBadBoy() const { return badboy; }
 	double getPrestige() const { return prestige; }
-	virtual const std::map<int, std::shared_ptr<Province>>& getProvinces() const { return provinces; }
+	const std::map<int, std::shared_ptr<Province>>& getProvinces() const { return provinces; }
 	const auto& getCores() const { return cores; }
 	bool isEmpty() const { return ((cores.size() == 0) && (provinces.size() == 0)); }
 	bool isCivilized() const { return civilized; }
-	virtual bool isHuman() const { return human; }
-	virtual std::map<std::string, double> getUpperHouseComposition() const { return upperHouseComposition; }
+	bool isHuman() const { return human; }
+	std::map<std::string, double> getUpperHouseComposition() const { return upperHouseComposition; }
 	std::vector<War> getWars() const { return wars; }
-	virtual bool isAtWar() const { return atWar; }
-	virtual const std::set<Vic2::Party>& getActiveParties() const { return activeParties; }
-	virtual const Vic2::Party& getRulingParty() const { return *rulingParty; }
+	bool isAtWar() const { return atWar; }
+	const std::set<Vic2::Party>& getActiveParties() const { return activeParties; }
+	const Vic2::Party& getRulingParty() const { return *rulingParty; }
 
-	virtual std::optional<std::string> getName(const std::string& language) const;
+	std::optional<std::string> getName(const std::string& language) const;
 	std::optional<std::string> getAdjective(const std::string& language) const;
 	double getUpperHousePercentage(const std::string& ideology) const;
 	long getEmployedWorkers() const;
 	bool hasCoreOnCapital() const;
 	std::vector<std::string> getShipNames(const std::string& category) const;
 	double getAverageMilitancy() const;
-	virtual float getAverageIssueSupport(const std::string& issueName) const;
+	float getAverageIssueSupport(const std::string& issueName) const;
 
   private:
 	void setLocalisationName(const std::string& language, const std::string& name);

@@ -22,12 +22,14 @@ class CoastalProvinces
 	CoastalProvinces(CoastalProvinces&&) = default;
 	CoastalProvinces& operator=(const CoastalProvinces&) = default;
 	CoastalProvinces& operator=(CoastalProvinces&&) = default;
-	virtual ~CoastalProvinces() = default;
+	~CoastalProvinces() = default;
+
+	class Builder;
 
 	void init(const MapData& theMapData, const std::map<int, Province>& theProvinces);
 
 	[[nodiscard]] auto getCoastalProvinces() const { return theCoastalProvinces; }
-	[[nodiscard]] virtual bool isProvinceCoastal(int provinceNum) const;
+	[[nodiscard]] bool isProvinceCoastal(int provinceNum) const;
 
   private:
 	std::map<int, std::vector<int>> theCoastalProvinces; // province, connecting sea provinces

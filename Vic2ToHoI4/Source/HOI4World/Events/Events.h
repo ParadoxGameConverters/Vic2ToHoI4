@@ -4,9 +4,9 @@
 
 
 #include "Configuration.h"
-#include "V2World/Politics/Party.h"
 #include "Event.h"
 #include "Parser.h"
+#include "V2World/Politics/Party.h"
 #include <map>
 #include <set>
 #include <string>
@@ -32,11 +32,13 @@ class Events: commonItems::parser
 {
   public:
 	Events() = default;
-	virtual ~Events() = default;
+	~Events() = default;
 	Events(const Events&) = default;
 	Events(Events&&) = default;
 	Events& operator=(const Events&) = default;
 	Events& operator=(Events&&) = default;
+
+	class Builder;
 
 	void createFactionEvents(const Country& leader, const Country& newAlly);
 	void createAnnexEvent(const Country& annexer, const Country& annexed);
@@ -58,7 +60,7 @@ class Events: commonItems::parser
 
 	void giveGovernmentInExileEvent(Event&& gieEvent) { governmentInExileEvent = gieEvent; }
 
-	[[nodiscard]] virtual std::optional<int> getEventNumber(const std::string& eventName) const;
+	[[nodiscard]] std::optional<int> getEventNumber(const std::string& eventName) const;
 
 	[[nodiscard]] int getCurrentNationFocusEventNum() const { return nationalFocusEventNumber; }
 	[[nodiscard]] const auto& getNationalFocusEvents() const { return nationalFocusEvents; }

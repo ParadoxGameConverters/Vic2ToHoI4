@@ -1,9 +1,9 @@
 #include "OutFlags.h"
 #include "HOI4World/HoI4Country.h"
-#include "V2World/Country.h"
-#include "targa.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
+#include "V2World/Country.h"
+#include "targa.h"
 #include <optional>
 
 
@@ -163,14 +163,14 @@ std::optional<std::string> HoI4::getSourceFlagPath(const std::string& Vic2Tag,
 	if (isThisAConvertedTag(Vic2Tag))
 	{
 		if (auto possiblePath = getConversionModFlag(Vic2Tag + sourceSuffix, vic2Mods, vic2ModPath);
-			 commonItems::DoesFileExist(*possiblePath))
+			 possiblePath && commonItems::DoesFileExist(*possiblePath))
 		{
 			return *possiblePath;
 		}
 	}
 
 	if (auto possiblePath = getAllowModFlags(Vic2Tag + sourceSuffix, vic2Mods, vic2ModPath);
-		 commonItems::DoesFileExist(*possiblePath))
+		 possiblePath && commonItems::DoesFileExist(*possiblePath))
 	{
 		return *possiblePath;
 	}
@@ -178,7 +178,7 @@ std::optional<std::string> HoI4::getSourceFlagPath(const std::string& Vic2Tag,
 	if (isThisAConvertedTag(Vic2Tag))
 	{
 		if (auto possiblePath = getConversionModFlag(Vic2Tag + ".tga", vic2Mods, vic2ModPath);
-			 commonItems::DoesFileExist(*possiblePath))
+			 possiblePath && commonItems::DoesFileExist(*possiblePath))
 		{
 			return *possiblePath;
 		}
@@ -307,8 +307,8 @@ void HoI4::createBigFlag(const tga_image* const sourceFlag, const std::string& f
 	{
 		tga_free_buffers(destFlag);
 		delete destFlag;
-		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/" + filename +
-					 " : " + tga_error(result));
+		throw std::runtime_error(
+			 "Could not create output/" + outputName + "/gfx/flags/" + filename + " : " + tga_error(result));
 	}
 
 	tga_free_buffers(destFlag);
@@ -327,8 +327,8 @@ void HoI4::createMediumFlag(const tga_image* const sourceFlag,
 	{
 		tga_free_buffers(destFlag);
 		delete destFlag;
-		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/medium/" + filename +
-					" : " + tga_error(result));
+		throw std::runtime_error(
+			 "Could not create output/" + outputName + "/gfx/flags/medium/" + filename + " : " + tga_error(result));
 	}
 
 	tga_free_buffers(destFlag);
@@ -347,8 +347,8 @@ void HoI4::createSmallFlag(const tga_image* const sourceFlag,
 	{
 		tga_free_buffers(destFlag);
 		delete destFlag;
-		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/small/" + filename +
-					" : " + tga_error(result));
+		throw std::runtime_error(
+			 "Could not create output/" + outputName + "/gfx/flags/small/" + filename + " : " + tga_error(result));
 	}
 
 	tga_free_buffers(destFlag);

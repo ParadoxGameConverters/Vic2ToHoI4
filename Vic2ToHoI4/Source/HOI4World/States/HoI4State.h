@@ -26,7 +26,9 @@ class State
   public:
 	State() = default;
 	State(const Vic2::State& sourceState, int _ID, const std::string& _ownerTag);
-	virtual ~State() = default;
+	~State() = default;
+
+	class Builder;
 
 	void addProvince(int province) { provinces.insert(province); }
 	void setAsCapitalState()
@@ -59,8 +61,8 @@ class State
 		 const mappers::ProvinceMapper& theProvinceMapper,
 		 const CountryMapper& countryMapper);
 
-	virtual int getID() const { return ID; }
-	virtual const std::set<int>& getProvinces() const { return provinces; }
+	int getID() const { return ID; }
+	const std::set<int>& getProvinces() const { return provinces; }
 	const std::string& getOwner() const { return ownerTag; }
 	const std::set<std::string>& getCores() const { return cores; }
 	const std::map<std::string, std::set<int>>& getControlledProvinces() const { return controlledProvinces; }

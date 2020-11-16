@@ -436,6 +436,7 @@
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategories.h" />
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategory.h" />
     <ClInclude Include="Source\HOI4World\Events\CapitulationEvents.h" />
+    <ClInclude Include="Source\HOI4World\Events\EventsBuilder.h" />
     <ClInclude Include="Source\HOI4World\Events\LarOccupationEvents.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.h" />
@@ -450,6 +451,7 @@
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesBuilder.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.h" />
+    <ClInclude Include="Source\HOI4World\Map\CoastalProvincesBuilder.h" />
     <ClInclude Include="Source\HOI4World\Map\HoI4Provinces.h" />
     <ClInclude Include="Source\HOI4World\Map\StrategicRegions.h" />
     <ClInclude Include="Source\HOI4World\Names\CultureGroupNames.h" />
@@ -490,6 +492,12 @@
     <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapperLink.h" />
     <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.h" />
     <ClInclude Include="Source\HOI4World\Sounds\SoundEffectsMapping.h" />
+    <ClInclude Include="Source\HOI4World\States\HoI4StateBuilder.h" />
+    <ClInclude Include="Source\HOI4World\States\StateCategoriesBuilder.h" />
+    <ClInclude Include="Source\HOI4World\TechnologiesBuilder.h" />
+    <ClInclude Include="Source\Mappers\CountryMapperBuilder.h" />
+    <ClInclude Include="Source\Mappers\GovernmentMapperBuilder.h" />
+    <ClInclude Include="Source\Mappers\GraphicsMappedBuilder.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategories.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategory.h" />
@@ -695,6 +703,7 @@
     <ClInclude Include="Source\Mappers\VersionParser\VersionParser.h" />
     <ClInclude Include="Source\V2World\CommonCountryData.h" />
     <ClInclude Include="Source\V2World\Country.h" />
+    <ClInclude Include="Source\V2World\CountryBuilder.h" />
     <ClInclude Include="Source\V2World\Culture\CultureGroupFactory.h" />
     <ClInclude Include="Source\V2World\Culture\CultureGroups.h" />
     <ClInclude Include="Source\V2World\Culture\CultureGroupsFactory.h" />
@@ -727,6 +736,7 @@
     <ClInclude Include="Source\V2World\Mods\ModBuilder.h" />
     <ClInclude Include="Source\V2World\Mods\ModFactory.h" />
     <ClInclude Include="Source\V2World\Politics\Party.h" />
+    <ClInclude Include="Source\V2World\Politics\PartyBuilder.h" />
     <ClInclude Include="Source\V2World\Politics\PartyFactory.h" />
     <ClInclude Include="Source\V2World\Pops\Pop.h" />
     <ClInclude Include="Source\V2World\Pops\PopBuilder.h" />

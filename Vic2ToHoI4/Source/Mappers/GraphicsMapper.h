@@ -43,42 +43,41 @@ typedef std::map<std::string, std::string> cultureGroupToGraphicalCultureMap;
 
 class graphicsMapper: commonItems::parser
 {
-	public:
-		graphicsMapper() noexcept {};
-		void init();
-		virtual ~graphicsMapper() = default;
+  public:
+	graphicsMapper() noexcept {};
+	void init();
+	~graphicsMapper() = default;
 
-		std::string getLeaderPortrait(const std::string& cultureGroup, const std::string& ideology);
-		std::string getIdeologyMinisterPortrait(const std::string& cultureGroup, const std::string& ideology);
-		std::string getGeneralPortrait(const std::string& cultureGroup) const;
-		virtual std::optional<std::string> getGraphicalCulture(const std::string& cultureGroup) const;
-		virtual std::optional<std::string> get2dGraphicalCulture(const std::string& cultureGroup) const;
+	class Builder;
 
-	private:
-		graphicsMapper(const graphicsMapper&) = delete;
-		graphicsMapper& operator=(const graphicsMapper&) = delete;
+	std::string getLeaderPortrait(const std::string& cultureGroup, const std::string& ideology);
+	std::string getIdeologyMinisterPortrait(const std::string& cultureGroup, const std::string& ideology);
+	std::string getGeneralPortrait(const std::string& cultureGroup) const;
+	std::optional<std::string> getGraphicalCulture(const std::string& cultureGroup) const;
+	std::optional<std::string> get2dGraphicalCulture(const std::string& cultureGroup) const;
 
-		void loadLeaderPortraitMappings(
-			const std::string& cultureGroup,
-			const std::map<std::string, std::vector<std::string>>& portraitMappings
-		);
-		void loadIdeologyMinisterPortraitMappings(
-			const std::string& cultureGroup,
-			const std::map<std::string, std::vector<std::string>>& portraitMappings
-		);
+  private:
+	graphicsMapper(const graphicsMapper&) = delete;
+	graphicsMapper& operator=(const graphicsMapper&) = delete;
 
-		std::optional<std::vector<std::string>> getLeaderPortraits(const std::string& cultureGroup, const std::string& ideology) const;
-		std::optional<std::vector<std::string>> getIdeologyMinisterPortraits(const std::string& cultureGroup, const std::string& ideology) const;
+	void loadLeaderPortraitMappings(const std::string& cultureGroup,
+		 const std::map<std::string, std::vector<std::string>>& portraitMappings);
+	void loadIdeologyMinisterPortraitMappings(const std::string& cultureGroup,
+		 const std::map<std::string, std::vector<std::string>>& portraitMappings);
 
-		ideologyToPortraitsMap leaderPortraitMappings;
-		ideologyToPortraitsMap ideologyMinisterMappings;
-		cultureGroupToGraphicalCultureMap graphicalCultureMap;
-		cultureGroupToGraphicalCultureMap graphicalCulture2dMap;
+	std::optional<std::vector<std::string>> getLeaderPortraits(const std::string& cultureGroup,
+		 const std::string& ideology) const;
+	std::optional<std::vector<std::string>> getIdeologyMinisterPortraits(const std::string& cultureGroup,
+		 const std::string& ideology) const;
 
-		std::mt19937 rng;
+	ideologyToPortraitsMap leaderPortraitMappings;
+	ideologyToPortraitsMap ideologyMinisterMappings;
+	cultureGroupToGraphicalCultureMap graphicalCultureMap;
+	cultureGroupToGraphicalCultureMap graphicalCulture2dMap;
+
+	std::mt19937 rng;
 };
 
 
 
-
-#endif //GRAPHICS_MAPPER_H_
+#endif // GRAPHICS_MAPPER_H_

@@ -34,7 +34,7 @@ class World: commonItems::parser
 	World& operator=(const World&) = delete;
 	World(World&&) = delete;
 	World& operator=(World&&) = delete;
-	virtual ~World() = default;
+	~World() = default;
 
 	[[nodiscard]] std::optional<const std::shared_ptr<Province>> getProvince(int provNum) const;
 

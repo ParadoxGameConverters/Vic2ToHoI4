@@ -1,6 +1,6 @@
-#include "Mocks/TechnologiesMock.h"
 #include "HOI4World/ShipTypes/MtgShipVariant.h"
 #include "HOI4World/ShipTypes/ShipVariants.h"
+#include "HOI4World/TechnologiesBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -10,9 +10,8 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsDefaultsToEmpty)
 {
 	std::stringstream input;
 	HoI4::PossibleShipVariants possibleVariants(input);
-	mockTechnologies ownedTechs;
 
-	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, std::string(""));
+	HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder{}.Build(), std::string(""));
 
 	std::stringstream output;
 	output << theVariants;
@@ -45,9 +44,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, CanReceiveMtgVariant)
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	mockTechnologies ownedTechs;
-
-	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+	HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder{}.Build(), "TAG");
 
 	std::stringstream output;
 	output << theVariants;
@@ -92,9 +89,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, HeldMtgVariantIsIdentified)
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	const mockTechnologies ownedTechs;
-
-	const HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+	const HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder{}.Build(), "TAG");
 
 	ASSERT_TRUE(theVariants.hasMtgVariant("Early submarine"));
 }
@@ -116,9 +111,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, MissingMtgVariantIsNotIdentified)
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	const mockTechnologies ownedTechs;
-
-	const HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+	const HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder{}.Build(), "TAG");
 
 	ASSERT_FALSE(theVariants.hasMtgVariant("1936 submarine"));
 }
@@ -157,11 +150,9 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, MtgVariantsNeedRequiredTechs)
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	mockTechnologies ownedTechs;
-	EXPECT_CALL(ownedTechs, hasTechnology("tech1")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("tech2")).WillOnce(testing::Return(true));
-
-	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+	HoI4::ShipVariants theVariants(possibleVariants,
+		 *HoI4::technologies::Builder{}.addTechnology("tech2").Build(),
+		 "TAG");
 
 	std::stringstream output;
 	output << theVariants;
@@ -218,16 +209,14 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, MtgVariantsCanBeBlocked)
 	input << "\t\tfixed_ship_torpedo_slot = ship_torpedo_sub_2\n";
 	input << "\t\tfixed_ship_engine_slot = sub_ship_engine_2\n";
 	input << "\t\trear_1_custom_slot = ship_torpedo_sub_2\n";
-	input<< "\t}\n";
+	input << "\t}\n";
 	input << "\tobsolete = yes\n";
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	mockTechnologies ownedTechs;
-	EXPECT_CALL(ownedTechs, hasTechnology("tech1")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("tech2")).WillOnce(testing::Return(true));
-
-	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+	HoI4::ShipVariants theVariants(possibleVariants,
+		 *HoI4::technologies::Builder{}.addTechnology("tech2").Build(),
+		 "TAG");
 
 	std::stringstream output;
 	output << theVariants;
@@ -272,9 +261,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, CanReceiveLegacyVariant)
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	mockTechnologies ownedTechs;
-
-	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+	HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder{}.Build(), "TAG");
 
 	std::stringstream output;
 	output << theVariants;
@@ -319,9 +306,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, HeldLegacyVariantIsIdentified)
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	const mockTechnologies ownedTechs;
-
-	const HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+	const HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder{}.Build(), "TAG");
 
 	ASSERT_TRUE(theVariants.hasLegacyVariant("Early submarine"));
 }
@@ -343,9 +328,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, MissingVariantIsNotIdentified)
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	const mockTechnologies ownedTechs;
-
-	const HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+	const HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder{}.Build(), "TAG");
 
 	ASSERT_FALSE(theVariants.hasLegacyVariant("1936 submarine"));
 }
@@ -384,11 +367,10 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, LegacyVariantsNeedRequiredTechs)
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	mockTechnologies ownedTechs;
-	EXPECT_CALL(ownedTechs, hasTechnology("tech1")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("tech2")).WillOnce(testing::Return(true));
 
-	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+	HoI4::ShipVariants theVariants(possibleVariants,
+		 *HoI4::technologies::Builder{}.addTechnology("tech2").Build(),
+		 "TAG");
 
 	std::stringstream output;
 	output << theVariants;
@@ -450,11 +432,9 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, LegacyVariantsCanBeBlocked)
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	mockTechnologies ownedTechs;
-	EXPECT_CALL(ownedTechs, hasTechnology("tech1")).WillOnce(testing::Return(false));
-	EXPECT_CALL(ownedTechs, hasTechnology("tech2")).WillOnce(testing::Return(true));
-
-	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
+	HoI4::ShipVariants theVariants(possibleVariants,
+		 *HoI4::technologies::Builder{}.addTechnology("tech2").Build(),
+		 "TAG");
 
 	std::stringstream output;
 	output << theVariants;

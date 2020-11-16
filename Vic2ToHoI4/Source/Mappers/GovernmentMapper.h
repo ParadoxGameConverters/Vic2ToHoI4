@@ -35,13 +35,15 @@ class governmentMapper: commonItems::parser
   public:
 	governmentMapper() = default;
 	void init();
-	virtual ~governmentMapper() = default;
+	~governmentMapper() = default;
 
-	virtual std::string getIdeologyForCountry(const std::string& sourceTag,
+	class Builder;
+
+	std::string getIdeologyForCountry(const std::string& sourceTag,
 		 const std::string& sourceGovernment,
 		 const std::string& Vic2RulingIdeology,
 		 bool debug) const;
-	virtual std::string getLeaderIdeologyForCountry(const std::string& sourceTag,
+	std::string getLeaderIdeologyForCountry(const std::string& sourceTag,
 		 const std::string& sourceGovernment,
 		 const std::string& Vic2RulingIdeology,
 		 bool debug) const;
@@ -55,7 +57,7 @@ class governmentMapper: commonItems::parser
 		 const std::set<std::string>& majorIdeologies,
 		 const HoI4::Ideologies& ideologies,
 		 bool debug) const;
-	virtual std::string getSupportedIdeology(const std::string& rulingIdeology,
+	std::string getSupportedIdeology(const std::string& rulingIdeology,
 		 const std::string& Vic2Ideology,
 		 const std::set<std::string>& majorIdeologies) const;
 
