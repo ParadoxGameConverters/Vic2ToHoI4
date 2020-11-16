@@ -63,13 +63,15 @@ HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests(): provinceDefinition
 	shipVariantsInput << "}\n";
 	HoI4::PossibleShipVariants thePossibleVariants(shipVariantsInput);
 
-	const auto ownedTechs = *HoI4::technologies::Builder{}
-										  .addTechnology("early_ship_hull_light")
-										  .addTechnology("basic_ship_hull_light")
-										  .Build();
-
-	theShipVariants = std::make_unique<HoI4::ShipVariants>(thePossibleVariants, ownedTechs, "");
-	limitedShipVariants = std::make_unique<HoI4::ShipVariants>(thePossibleVariants, ownedTechs, "");
+	theShipVariants = std::make_unique<HoI4::ShipVariants>(thePossibleVariants,
+		 *HoI4::technologies::Builder{}
+				.addTechnology("early_ship_hull_light")
+				.addTechnology("basic_ship_hull_light")
+				.Build(),
+		 "");
+	limitedShipVariants = std::make_unique<HoI4::ShipVariants>(thePossibleVariants,
+		 *HoI4::technologies::Builder{}.addTechnology("early_ship_hull_light").Build(),
+		 "");
 }
 
 
