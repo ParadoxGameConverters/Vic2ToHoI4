@@ -342,7 +342,6 @@ bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandOwned(const mapper
 }
 
 
-
 bool HoI4::Country::attemptToPutCapitalInNonWastelandOwned(const std::map<int, State>& allStates)
 {
 	for (auto ownedStateNum: states)
