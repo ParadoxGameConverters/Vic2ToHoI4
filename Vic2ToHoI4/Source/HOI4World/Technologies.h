@@ -40,7 +40,7 @@ class technologies
 {
   public:
 	technologies() = default;
-	virtual ~technologies() = default;
+	~technologies() = default;
 
 	class Builder;
 
@@ -55,7 +55,7 @@ class technologies
 		return mainTechnologies.size() + nonMtgNavalTechnologies.size() + mtgNavalTechnologies.size();
 	}
 
-	virtual bool hasTechnology(const std::string& technology) const;
+	bool hasTechnology(const std::string& technology) const;
 
 
 	[[nodiscard]] const auto& getMainTechnologies() const { return mainTechnologies; }

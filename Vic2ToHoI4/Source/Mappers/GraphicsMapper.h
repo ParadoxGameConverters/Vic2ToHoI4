@@ -46,15 +46,15 @@ class graphicsMapper: commonItems::parser
   public:
 	graphicsMapper() noexcept {};
 	void init();
-	virtual ~graphicsMapper() = default;
+	~graphicsMapper() = default;
 
 	class Builder;
 
 	std::string getLeaderPortrait(const std::string& cultureGroup, const std::string& ideology);
 	std::string getIdeologyMinisterPortrait(const std::string& cultureGroup, const std::string& ideology);
 	std::string getGeneralPortrait(const std::string& cultureGroup) const;
-	virtual std::optional<std::string> getGraphicalCulture(const std::string& cultureGroup) const;
-	virtual std::optional<std::string> get2dGraphicalCulture(const std::string& cultureGroup) const;
+	std::optional<std::string> getGraphicalCulture(const std::string& cultureGroup) const;
+	std::optional<std::string> get2dGraphicalCulture(const std::string& cultureGroup) const;
 
   private:
 	graphicsMapper(const graphicsMapper&) = delete;
