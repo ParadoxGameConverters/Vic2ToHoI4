@@ -448,7 +448,7 @@ levantine = {
 		communism = { "gfx/leaders/GRE/Portrait_Greece_Markos_Vafiadis.dds" }
 		democratic = { "GFX_GRE_Panagis_Tsaldaris" } 
 		fascism = { "GFX_GRE_Konstantinos_Maniadakis" } 
-		absolutist = { "gfx/leaders/OC/portrait_GRE_King_George.dds" } 
+		absolutist = { "GFX_portrait_gre_george_ii" } 
 		neutrality = { "gfx/leaders/GRE/Portrait_Greece_Ioannis_Metaxas.dds" }
 		radical = { "gfx/leaders/OC/Portrait_Greece_Pavlo_Kountoriotis.dds" }
 	}
@@ -469,8 +469,8 @@ turko_semitic = {
 		communism = { "gfx/leaders/TUR/Portrait_Turkey_Sefik_Husnu.dds" }
 		democratic = { "gfx/leaders/TUR/Portrait_Turkey_Ismet_Inonu.dds" }
 		fascism = { "gfx/leaders/OC/portrait_TUR_Alparslan_Turkesh.dds" } 
-		absolutist = { "GFX_TUR_Fevzi_Cakmak" } 
-		neutrality = { "gfx/leaders/TUR/Portrait_Turkey_Mustafa_Kemal_Ataturk_Military.dds" }
+		absolutist = { "GFX_portrait_tur_fevzi_cakmak" } 
+		neutrality = { "GFX_portrait_tur_abdulmejid_ii" }
 		radical = { "gfx/leaders/TUR/Portrait_Turkey_Mustafa_Kemal_Ataturk.dds" }
 	}
 	ideology_minister_portraits = 

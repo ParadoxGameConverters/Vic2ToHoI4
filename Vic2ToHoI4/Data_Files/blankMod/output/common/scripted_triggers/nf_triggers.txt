@@ -39,7 +39,7 @@ in_weak_faction = {
 		hidden_trigger = {
 			set_temp_variable = { var = their_faction value = var:num_divisions }
 			if = {
-				limit = { is_in_faction = yes NOT = { in_faction_with = PREV } }
+				limit = { is_in_faction = yes NOT = { is_in_faction_with = PREV } }
 				all_allied_country = {
 					add_to_temp_variable = { their_faction = var:num_divisions }
 				}
@@ -62,7 +62,7 @@ in_weak_faction = {
 				add_to_temp_variable = { their_enemies = var:num_divisions }
 			}
 			if = {
-				limit = { ROOT = { is_in_faction = yes NOT = { in_faction_with = PREV } } }
+				limit = { ROOT = { is_in_faction = yes NOT = { is_in_faction_with = PREV } } }
 				ROOT = {
 					all_allied_country = {
 						add_to_temp_variable = { PREV.their_enemies = var:num_divisions }

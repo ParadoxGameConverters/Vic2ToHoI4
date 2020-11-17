@@ -3086,5 +3086,41 @@ ideas = {
 		   picture = culture_camite
 		   modifier = { }
 		  }
+		culture_alexandrine = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_alexandrine
+			modifier = { }
+		}
+		culture_nuragic = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_nuragic
+			modifier = { }
+		}
+		culture_oldspain = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_oldspain
+			modifier = { }
+		}
+		culture_pie_american = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_pie_american
+			modifier = { }
+		}
+		culture_pie_oceanian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_pie_oceanian
+			modifier = { }
+		}
+		culture_pie_african = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_pie_african
+			modifier = { }
+		}
 	}
 }
