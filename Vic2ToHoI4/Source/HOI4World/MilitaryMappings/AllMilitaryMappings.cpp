@@ -8,10 +8,6 @@
 HoI4::allMilitaryMappings::allMilitaryMappings(std::istream& theStream)
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& mod, std::istream& theStream) {
-		militaryMappings newMappings(mod, theStream);
-		theMappings.insert(std::make_pair(mod, std::move(newMappings)));
-	});
-	registerRegex(R"(\"[^\n^=^\{^\}^\"]+\")", [this](const std::string& mod, std::istream& theStream) {
 		const auto newMod = commonItems::remQuotes(mod);
 		militaryMappings newMappings(newMod, theStream);
 		theMappings.insert(std::make_pair(newMod, std::move(newMappings)));
