@@ -22,7 +22,6 @@ Vic2::Army::Factory::Factory()
 		auto tempArmy = std::move(army);
 		tempArmy->transportedArmies.push_back(*getArmy(theStream));
 		army = std::move(tempArmy);
-		generateRegexes(); // regenerate regexes after returning from the recursive parseStream
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
