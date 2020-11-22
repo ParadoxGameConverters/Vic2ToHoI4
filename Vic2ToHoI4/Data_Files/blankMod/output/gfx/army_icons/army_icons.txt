@@ -612,7 +612,7 @@
 		name = "Turkish 1"
 		available = 
 		{
-			#has_dlc = "Battle for the Bosporus" #TODO:Manu DLC!
+			has_dlc = "Battle for the Bosporus"
 		}
 	}
 	icon = {
@@ -620,7 +620,7 @@
 		name = "Turkish 2"
 		available = 
 		{
-			#has_dlc = "Battle for the Bosporus" #TODO:Manu DLC!
+			has_dlc = "Battle for the Bosporus"
 		}
 	}
 	icon = {
@@ -628,7 +628,7 @@
 		name = "Greek 1"
 		available = 
 		{
-			#has_dlc = "Battle for the Bosporus" #TODO:Manu DLC!
+			has_dlc = "Battle for the Bosporus"
 		}
 	}
 	icon = {
@@ -636,7 +636,7 @@
 		name = "Greek 2"
 		available = 
 		{
-			#has_dlc = "Battle for the Bosporus" #TODO:Manu DLC!
+			has_dlc = "Battle for the Bosporus"
 		}
 	}
 	icon = {
@@ -644,7 +644,7 @@
 		name = "Greek 3"
 		available = 
 		{
-			#has_dlc = "Battle for the Bosporus" #TODO:Manu DLC!
+			has_dlc = "Battle for the Bosporus"
 		}
 	}
 	icon = {
@@ -652,7 +652,7 @@
 		name = "Bulgarian 1"
 		available = 
 		{
-			#has_dlc = "Battle for the Bosporus" #TODO:Manu DLC!
+			has_dlc = "Battle for the Bosporus"
 		}
 	}
 	icon = {
@@ -660,7 +660,7 @@
 		name = "Bulgarian 2"
 		available = 
 		{
-			#has_dlc = "Battle for the Bosporus" #TODO:Manu DLC!
+			has_dlc = "Battle for the Bosporus"
 		}
 	}
 }
