@@ -735,7 +735,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionLocationsAreConverted)
 
 	theArmy.convertArmies(theMilitaryMappings, 11821, 1.0, HoI4::technologies{}, theStates, provinceMapper);
 
-	ASSERT_EQ(theArmy.getDivisionLocations(), std::set<int>{11821});
+	ASSERT_EQ(std::set<int>{11821}, theArmy.getDivisionLocations());
 }
 
 
