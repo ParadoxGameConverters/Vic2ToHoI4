@@ -10,9 +10,9 @@
 #include "V2World/Provinces/ProvinceBuilder.h"
 #include "V2World/States/StateBuilder.h"
 #include "gtest/gtest.h"
+#include <gmock/gmock-matchers.h>
 #include <optional>
 #include <sstream>
-
 
 
 TEST(HoI4World_States_StateTests, IdDefaultsToZero)
@@ -151,6 +151,42 @@ TEST(HoI4World_States_StateTests, ControllersDontConvertForRebels)
 	theState.convertControlledProvinces({{12, "REB"}},
 		 theProvinceMapper,
 		 *CountryMapper::Builder{}.addMapping("REB", "REB").Build());
+
+	ASSERT_TRUE(theState.getControlledProvinces().empty());
+}
+
+
+TEST(HoI4World_States_StateTests, SetControlledProvinceSetsControlledProvinces)
+{
+	const auto sourceState = *Vic2::State::Builder{}.build();
+	HoI4::State theState(sourceState, 42, "TAG");
+
+	theState.setControlledProvince(1, "ONE");
+
+	ASSERT_THAT(theState.getControlledProvinces(),
+		 testing::UnorderedElementsAre(testing::Pair(std::string("ONE"), std::set<int>{1})));
+}
+
+
+TEST(HoI4World_States_StateTests, SetControlledProvinceSetsMultipleControlledProvincesForOneNations)
+{
+	const auto sourceState = *Vic2::State::Builder{}.build();
+	HoI4::State theState(sourceState, 42, "TAG");
+
+	theState.setControlledProvince(1, "ONE");
+	theState.setControlledProvince(2, "ONE");
+
+	ASSERT_THAT(theState.getControlledProvinces(),
+		 testing::UnorderedElementsAre(testing::Pair(std::string("ONE"), std::set<int>{1, 2})));
+}
+
+
+TEST(HoI4World_States_StateTests, SetControlledProvinceDoesNotSetControlledProvincesForOwner)
+{
+	const auto sourceState = *Vic2::State::Builder{}.build();
+	HoI4::State theState(sourceState, 42, "TAG");
+
+	theState.setControlledProvince(1, "TAG");
 
 	ASSERT_TRUE(theState.getControlledProvinces().empty());
 }

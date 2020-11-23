@@ -174,6 +174,7 @@ class Country
 	[[nodiscard]] double getDockyards() const { return dockyards; }
 
 	[[nodiscard]] const Army& getArmy() const { return theArmy; }
+	[[nodiscard]] const auto& getDivisionLocations() const { return theArmy.getDivisionLocations(); }
 	[[nodiscard]] const ShipVariants& getTheShipVariants() const { return *theShipVariants; }
 	[[nodiscard]] const Navies& getNavies() const { return *theNavies; }
 	[[nodiscard]] const auto& getNavyNames() const { return navyNames; }

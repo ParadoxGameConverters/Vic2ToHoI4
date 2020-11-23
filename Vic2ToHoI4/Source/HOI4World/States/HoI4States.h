@@ -75,6 +75,7 @@ class States: commonItems::parser
 		 const std::vector<std::shared_ptr<Country>>& greatPowers,
 		 double greatestStrength);
 	void addCapitalsToStates(const std::map<std::string, std::shared_ptr<Country>>& countries);
+	void giveProvinceControlToCountry(const int provinceNum, const std::string& country);
 
   private:
 	void determineOwnersAndCores(const CountryMapper& countryMap,

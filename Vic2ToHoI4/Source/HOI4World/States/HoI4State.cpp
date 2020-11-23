@@ -138,6 +138,21 @@ void HoI4::State::convertControlledProvinces(const std::vector<std::pair<int, st
 }
 
 
+void HoI4::State::setControlledProvince(int provinceNum, const std::string& country)
+{
+	if (country == ownerTag)
+	{
+		return;
+	}
+
+	auto [existing, inserted] = controlledProvinces.insert(std::make_pair(country, std::set<int>{provinceNum}));
+	if (!inserted)
+	{
+		existing->second.insert(provinceNum);
+	}
+}
+
+
 bool HoI4::State::assignVPFromVic2Province(int Vic2ProvinceNumber, const mappers::ProvinceMapper& theProvinceMapper)
 {
 	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(Vic2ProvinceNumber))

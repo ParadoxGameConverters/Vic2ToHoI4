@@ -60,6 +60,7 @@ class State
 	void convertControlledProvinces(const std::vector<std::pair<int, std::string>>& foreignControlledProvinces,
 		 const mappers::ProvinceMapper& theProvinceMapper,
 		 const CountryMapper& countryMapper);
+	void setControlledProvince(int provinceNum, const std::string& country);
 
 	int getID() const { return ID; }
 	const std::set<int>& getProvinces() const { return provinces; }
