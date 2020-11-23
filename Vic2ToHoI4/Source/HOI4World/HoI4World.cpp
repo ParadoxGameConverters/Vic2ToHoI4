@@ -596,8 +596,7 @@ void HoI4::World::convertArmies(const militaryMappings& localMilitaryMappings,
 	for (auto& [tag, country]: countries)
 	{
 		country->convertArmies(localMilitaryMappings, *states, provinceMapper, theConfiguration);
-		const auto& divisionLocations = country->getDivisionLocations();
-		for (const auto& divisionLocation: divisionLocations)
+		for (const auto& divisionLocation: country->getDivisionLocations())
 		{
 			states->giveProvinceControlToCountry(divisionLocation, tag);
 		}
