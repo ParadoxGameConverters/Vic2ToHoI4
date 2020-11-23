@@ -728,13 +728,13 @@ void HoI4::Events::addDemocraticMinisterRevolutionEvents(Localisation& localisat
 	optionName = "conv.political." + std::to_string(politicalEventNumber) + ".a";
 	localisation.copyEventLocalisations("democratic_call_for_elections.a", optionName);
 	callForElectionsOptionA.giveName(std::move(optionName));
-	callForElectionsOptionA.giveAiChance("base = 1");
+	callForElectionsOptionA.giveAiChance("= { base = 1 }");
 	callForElections.giveOption(std::move(callForElectionsOptionA));
 	EventOption callForElectionsOptionB;
 	optionName = "conv.political." + std::to_string(politicalEventNumber) + ".b";
 	localisation.copyEventLocalisations("democratic_call_for_elections.b", optionName);
 	callForElectionsOptionB.giveName(std::move(optionName));
-	callForElectionsOptionB.giveAiChance("base = 1");
+	callForElectionsOptionB.giveAiChance("= { base = 1 }");
 	callForElectionsOptionB.giveScriptBlock("add_political_power = -20");
 	callForElectionsOptionB.giveScriptBlock("add_ideas = democratic_opposition_voicing_protests");
 	callForElectionsOptionB.giveScriptBlock("add_timed_idea = { idea = democratic_opposition_voicing_protests days = 730 }");
