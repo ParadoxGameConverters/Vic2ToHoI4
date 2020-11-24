@@ -43,6 +43,7 @@ class Army
 	friend std::ostream& operator<<(std::ostream& output, const Army& theArmy);
 
 	[[nodiscard]] const auto& getLeftoverEquipment() const { return leftoverEquipment; }
+	[[nodiscard]] const auto& getDivisionLocations() const { return divisionLocations; }
 
   private:
 	static std::optional<int> getLocation(std::optional<int> vic2Location,
@@ -62,6 +63,8 @@ class Army
 	std::vector<DivisionType> divisions;
 
 	std::map<std::string, unsigned int> leftoverEquipment;
+
+	std::set<int> divisionLocations;
 };
 
 } // namespace HoI4

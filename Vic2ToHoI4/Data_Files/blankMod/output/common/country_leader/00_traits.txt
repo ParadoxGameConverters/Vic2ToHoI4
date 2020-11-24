@@ -661,7 +661,7 @@ leader_traits = {
 		ai_will_do = {
 			factor = 1
 		}
-	}	
+	}
 
 	camarilla_leader = {
 		random = no
@@ -1177,24 +1177,24 @@ leader_traits = {
 
 	caliph = { #shared monarch trait
 		random = no
-		war_support_factor = 0.3
-		weekly_manpower = 2750
+		war_support_factor = 0.25
+		weekly_manpower = 1250
 		mobilization_speed = 0.25
 	}
 
 	calipha = { #shared monarch trait
 		random = no
 		war_support_factor = 0.2
-		weekly_manpower = 3500
+		weekly_manpower = 2000
 		mobilization_speed = 0.25
 	}
 
 	sultana = { #Dürrüsehvar
 		random = no
-		stability_factor = 0.3
-		war_support_factor = 0.15
-		compliance_gain = 0.25
-		political_advisor_cost_factor = -0.5
+		stability_factor = 0.15
+		war_support_factor = 0.1
+		compliance_gain = 0.01
+		political_advisor_cost_factor = -0.33
 		high_command_cost_factor = -0.33
 		air_chief_cost_factor = -0.33
 		army_chief_cost_factor = -0.33
@@ -1309,7 +1309,7 @@ leader_traits = {
 
 		improve_relations_maintain_cost_factor = -0.5
 		drift_defence_factor = 0.25
-	}	
+	}
 
 	marxist_priest = {
 		random = no
@@ -1395,7 +1395,7 @@ leader_traits = {
 
 		compliance_gain = 0.1
 		root_out_resistance_effectiveness_factor = 0.1
-		non_core_manpower = 0.15
+		non_core_manpower = 0.05
 	}
 
 	vatan_ideologue = {
