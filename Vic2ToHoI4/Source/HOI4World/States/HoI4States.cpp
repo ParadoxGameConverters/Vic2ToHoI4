@@ -663,9 +663,9 @@ void HoI4::States::addCapitalsToStates(const std::map<std::string, std::shared_p
 }
 
 
-void HoI4::States::giveProvinceControlToCountry(const int provinceNum, const std::string& country)
+void HoI4::States::giveProvinceControlToCountry(int provinceNum, const std::string& country)
 {
-	const auto stateIdMapping = provinceToStateIDMap.find(provinceNum);
+	const auto& stateIdMapping = provinceToStateIDMap.find(provinceNum);
 	if (stateIdMapping == provinceToStateIDMap.end())
 	{
 		return;
