@@ -18587,4 +18587,9 @@
   <ItemGroup>
     <None Include="Copy_Files.bat" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data_Files\The Concert of Europe_province_mappings.txt">
+      <Filter>Data Files</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
