@@ -225,7 +225,7 @@ void Vic2::Country::putProvincesInStates()
 			auto province = provinces.find(provinceNum);
 			if (province == provinces.end())
 			{
-				Log(LogLevel::Warning) << "State owned by " << tag << " had province that " << tag << " did not";
+				Log(LogLevel::Warning) << "State (" << state.getStateID() << ") owned by " << tag << " had province (" << provinceNum << ") that " << tag << " did not";
 				continue;
 			}
 
