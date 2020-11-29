@@ -30,7 +30,9 @@ Vic2::Country::Country(const std::string& theTag,
 	 State::Factory& stateFactory,
 	 Relations::Factory& relationsFactory,
 	 Leader::Factory& leaderFactory,
-	 Army::Factory& armyFactory):
+	 Army::Factory& armyFactory,
+	 const CommonCountryData& commonCountryData,
+	 const std::vector<Vic2::Party>& allParties):
 	 tag(theTag)
 {
 	registerKeyword("capital", [this](const std::string& unused, std::istream& theStream) {
@@ -179,7 +181,10 @@ Vic2::Country::Country(const std::string& theTag,
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
-	clearRegisteredKeywords();
+
+	color = commonCountryData.getColor();
+	shipNames = commonCountryData.getUnitNames();
+	setParties(allParties);
 }
 
 
@@ -335,9 +340,13 @@ void Vic2::Country::handleMissingCulture(const CultureGroups& theCultureGroups)
 
 void Vic2::Country::setParties(const std::vector<Party>& allParties)
 {
+	if (tag == "REB")
+	{
+		return;
+	}
 	for (auto ID: activePartyIDs)
 	{
-		if (ID < allParties.size())
+		if (ID <= allParties.size())
 		{
 			activeParties.insert(allParties.at(ID - 1)); // Subtract 1, because party ID starts from index of 1
 		}

@@ -5,6 +5,7 @@
 
 #include "Ai/Vic2AI.h"
 #include "Color.h"
+#include "CommonCountryData.h"
 #include "Date.h"
 #include "Parser.h"
 #include "V2World/Culture/CultureGroups.h"
@@ -37,7 +38,6 @@ namespace Vic2
 class Country: commonItems::parser
 {
   public:
-	Country() = default;
 	explicit Country(const std::string& theTag,
 		 std::istream& theStream,
 		 const Inventions& theInventions,
@@ -46,16 +46,15 @@ class Country: commonItems::parser
 		 State::Factory& stateFactory,
 		 Relations::Factory& relationsFactory,
 		 Leader::Factory& leaderFactory,
-		 Army::Factory& armyFactory);
-	~Country() = default;
+		 Army::Factory& armyFactory,
+		 const CommonCountryData& commonCountryData,
+		 const std::vector<Vic2::Party>& allParties);
 
 	class Builder;
 
 	void addProvince(const std::pair<const int, std::shared_ptr<Province>>& province) { provinces.insert(province); }
-	void setColor(const commonItems::Color& Color) { color = Color; }
 	void addCore(std::shared_ptr<Province> core) { cores.push_back(core); }
 	void replaceCores(std::vector<std::shared_ptr<Province>> newCores) { cores.swap(newCores); }
-	void setShipNames(const std::map<std::string, std::vector<std::string>>& newShipNames) { shipNames = newShipNames; }
 	void addWar(const War& theWar) { wars.push_back(theWar); }
 	void setAtWar() { atWar = true; }
 
@@ -68,7 +67,6 @@ class Country: commonItems::parser
 	void setLocalisationNames(Localisations& vic2Localisations);
 	void setLocalisationAdjectives(const Localisations& vic2Localisations);
 	void handleMissingCulture(const CultureGroups& theCultureGroups);
-	void setParties(const std::vector<Party>& allParties);
 
 	[[nodiscard]] const auto& getRelations() const { return relations; }
 	const auto& getAI() const { return vic2AI; }
@@ -117,11 +115,12 @@ class Country: commonItems::parser
   private:
 	void setLocalisationName(const std::string& language, const std::string& name);
 	void setLocalisationAdjective(const std::string& language, const std::string& adjective);
+	void setParties(const std::vector<Party>& allParties);
 
 	std::map<std::string, int> determineCultureSizes();
 	std::string selectLargestCulture(const std::map<std::string, int>& cultureSizes);
 
-	std::string tag = "";
+	std::string tag;
 	commonItems::Color color;
 
 	std::vector<State> states;
@@ -129,7 +128,7 @@ class Country: commonItems::parser
 	std::vector<std::shared_ptr<Province>> cores;
 	int capital = 0;
 
-	std::string primaryCulture = "";
+	std::string primaryCulture;
 	std::string primaryCultureGroup;
 	std::set<std::string> acceptedCultures;
 
@@ -148,7 +147,7 @@ class Country: commonItems::parser
 
 	std::set<std::string> flags;
 
-	std::string government = "";
+	std::string government;
 	std::map<std::string, double> upperHouseComposition;
 	unsigned int rulingPartyID = 0; // Bad value, but normal for Rebel faction.
 	std::vector<unsigned int> activePartyIDs;

@@ -67,13 +67,6 @@ class World: commonItems::parser
 	void checkAllProvincesMapped(const mappers::ProvinceMapper& provinceMapper) const;
 	void consolidateConquerStrategies();
 
-	void readCountryFiles(const Configuration& theConfiguration);
-	bool processCountriesDotTxt(const std::string& countryListFile,
-		 const std::optional<std::string>& modFolder,
-		 const Configuration& theConfiguration);
-	static bool shouldLineBeSkipped(const std::string& line);
-	static std::string extractCountryFileName(const std::string& countryFileLine);
-
 	[[nodiscard]] std::optional<Country*> getCountry(const std::string& tag) const;
 
 

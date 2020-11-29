@@ -1,5 +1,6 @@
 #include "World.h"
 #include "Configuration.h"
+#include "Countries/CommonCountriesDataFactory.h"
 #include "Countries/CommonCountryData.h"
 #include "Countries/CommonCountryDataFactory.h"
 #include "Countries/Country.h"
@@ -51,6 +52,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	Traits traits = *Traits::Factory{}.loadTraits(theConfiguration.getVic2Path());
 	Leader::Factory leaderFactory(std::move(traits));
 	Army::Factory armyFactory;
+	const auto [commonCountriesData, allParties] = Vic2::importCommonCountriesData(theConfiguration);
 
 	registerKeyword("date", [](const std::string& unused, std::istream& theStream) {
 		const date theDate{commonItems::singleString{theStream}.getString()};
@@ -78,19 +80,31 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	std::vector<std::string> tagsInOrder;
 	tagsInOrder.push_back(""); // REB (first country is index 1
 	registerRegex("[A-Z][A-Z0-9]{2}",
-		 [&tagsInOrder, &theInventions, &stateFactory, &relationsFactory, &leaderFactory, &armyFactory, this](
-			  const std::string& countryTag,
-			  std::istream& theStream) {
-			 countries[countryTag] = new Country(countryTag,
-				  theStream,
-				  *theInventions,
-				  *theCultureGroups,
-				  *theStateDefinitions,
-				  stateFactory,
-				  relationsFactory,
-				  leaderFactory,
-				  armyFactory);
-			 tagsInOrder.push_back(countryTag);
+		 [&tagsInOrder,
+			  &theInventions,
+			  &stateFactory,
+			  &relationsFactory,
+			  &leaderFactory,
+			  &armyFactory,
+			  &commonCountriesData,
+			  &allParties,
+			  this](const std::string& countryTag, std::istream& theStream) {
+			 if (const auto commonCountryData = commonCountriesData.find(countryTag);
+				  commonCountryData != commonCountriesData.end())
+			 {
+				 countries[countryTag] = new Country(countryTag,
+					  theStream,
+					  *theInventions,
+					  *theCultureGroups,
+					  *theStateDefinitions,
+					  stateFactory,
+					  relationsFactory,
+					  leaderFactory,
+					  armyFactory,
+					  commonCountryData->second,
+					  allParties);
+				 tagsInOrder.push_back(countryTag);
+			 }
 		 });
 	registerKeyword("diplomacy", [this](const std::string& unused, std::istream& theStream) {
 		diplomacy = Diplomacy::Factory{}.getDiplomacy(theStream);
@@ -122,7 +136,6 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	overallMergeNations(theConfiguration.getDebug());
 	removeEmptyNations();
 	addWarsToCountries(wars);
-	readCountryFiles(theConfiguration);
 	setLocalisations(*theLocalisations);
 	handleMissingCountryCultures();
 
@@ -320,93 +333,6 @@ void Vic2::World::addWarsToCountries(const std::vector<War>& wars)
 			participantCountry->second->setAtWar();
 		}
 	}
-}
-
-
-void Vic2::World::readCountryFiles(const Configuration& theConfiguration)
-{
-	Log(LogLevel::Info) << "\tReading country files";
-	auto countriesDotTxtRead = false;
-
-	for (const auto& vic2Mod: theConfiguration.getVic2Mods())
-	{
-		std::string modFolder = theConfiguration.getVic2ModPath() + "/" + vic2Mod.getDirectory();
-		if (processCountriesDotTxt(modFolder + "/common/countries.txt", modFolder, theConfiguration))
-		{
-			countriesDotTxtRead = true;
-		}
-	}
-	if (!countriesDotTxtRead)
-	{
-		if (!processCountriesDotTxt(theConfiguration.getVic2Path() + "/common/countries.txt",
-				  std::nullopt,
-				  theConfiguration))
-		{
-			throw std::runtime_error("Could not open " + theConfiguration.getVic2Path() + "/common/countries.txt");
-		}
-	}
-}
-
-
-bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile,
-	 const std::optional<std::string>& modFolder,
-	 const Configuration& theConfiguration)
-{
-	std::ifstream V2CountriesInput(countryListFile);
-	if (!V2CountriesInput.is_open())
-	{
-		return false;
-	}
-
-	std::vector<Party> parties;
-	CommonCountryData::Factory commonCountryDataFactory;
-
-	while (!V2CountriesInput.eof())
-	{
-		std::string line;
-		getline(V2CountriesInput, line);
-		if (shouldLineBeSkipped(line))
-		{
-			continue;
-		}
-
-		auto tag = line.substr(0, 3);
-		auto countryFileName = extractCountryFileName(line);
-		auto countryData = commonCountryDataFactory.importCommonCountryData(countryFileName, modFolder, theConfiguration);
-		if (countries.contains(tag))
-		{
-			countries[tag]->setColor(countryData->getColor());
-			countries[tag]->setShipNames(countryData->getUnitNames());
-		}
-		for (const auto& party: countryData->getParties())
-		{
-			parties.emplace_back(party);
-		}
-	}
-
-	V2CountriesInput.close();
-
-	for (auto& [unused, country]: countries)
-	{
-		country->setParties(parties);
-	}
-
-	return true;
-}
-
-
-bool Vic2::World::shouldLineBeSkipped(const std::string& line)
-{
-	return (line[0] == '#') || (line.size() < 3) || (line.substr(0, 12) == "dynamic_tags");
-}
-
-
-std::string Vic2::World::extractCountryFileName(const std::string& countryFileLine)
-{
-	const auto start = countryFileLine.find_first_of('/');
-	const auto size = countryFileLine.find_last_of('\"') - start;
-
-	return countryFileLine.substr(start, size);
 }
 
 

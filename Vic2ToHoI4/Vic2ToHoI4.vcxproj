@@ -377,6 +377,7 @@
     <ClCompile Include="Source\Mappers\Provinces\VersionedMappings.cpp" />
     <ClCompile Include="Source\Mappers\TechMapper.cpp" />
     <ClCompile Include="Source\Mappers\VersionParser\VersionParser.cpp" />
+    <ClCompile Include="Source\V2World\Countries\CommonCountriesDataFactory.cpp" />
     <ClCompile Include="Source\V2World\Countries\CommonCountryDataFactory.cpp" />
     <ClCompile Include="Source\V2World\Countries\Country.cpp" />
     <ClCompile Include="Source\V2World\Ai\AIStrategy.cpp" />
@@ -707,6 +708,7 @@
     <ClInclude Include="Source\Mappers\Provinces\VersionedMappings.h" />
     <ClInclude Include="Source\Mappers\TechMapper.h" />
     <ClInclude Include="Source\Mappers\VersionParser\VersionParser.h" />
+    <ClInclude Include="Source\V2World\Countries\CommonCountriesDataFactory.h" />
     <ClInclude Include="Source\V2World\Ai\AIStrategy.h" />
     <ClInclude Include="Source\V2World\Ai\Vic2AI.h" />
     <ClInclude Include="Source\V2World\Countries\CommonCountryData.h" />
