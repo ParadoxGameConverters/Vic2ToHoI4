@@ -1307,6 +1307,9 @@
     <ClCompile Include="Vic2WorldTests\Countries\UnitNamesFactoryTests.cpp">
       <Filter>Vic2WorldTests\Countries</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Countries\CommonCountriesDataFactoryTests.cpp">
+      <Filter>Vic2WorldTests\Countries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1836,5 +1839,20 @@
     <CopyFileToFolders Include="TestFiles\Countries\blankCommonCountryData.txt" />
     <CopyFileToFolders Include="TestFiles\Countries\CommonCountryTestData.txt" />
     <CopyFileToFolders Include="TestFiles\Countries\CommonCountryModTestData.txt" />
+    <CopyFileToFolders Include="TestFiles\Countries\VanillaCommonCountriesData.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\TestCountryOne.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\TestCountryTwo.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\ModCommonCountriesData.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\TestCountryMod.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

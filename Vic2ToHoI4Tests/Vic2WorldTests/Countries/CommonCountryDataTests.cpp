@@ -42,6 +42,18 @@ TEST(Vic2World_Countries_CommonCountryDataTests, ColorCanBeSetFromMod)
 }
 
 
+TEST(Vic2World_Countries_CommonCountryDataTests, MissingModUsesVanillaColor)
+{
+	const auto commonCountryData =
+		 Vic2::CommonCountryData::Factory{}.importCommonCountryData("CommonCountryTestData.txt",
+			  "missing_mod",
+			  *Configuration::Builder{}.setVic2Path("./").build());
+
+	const auto expectedColor = std::array<int, 3>{56, 32, 172};
+	ASSERT_EQ(expectedColor, commonCountryData->getColor().getRgbComponents());
+}
+
+
 TEST(Vic2World_Countries_CommonCountryDataTests, UnitNamesDefaultToEmpty)
 {
 	const auto commonCountryData =
@@ -81,6 +93,20 @@ TEST(Vic2World_Countries_CommonCountryDataTests, UnitNamesCanBeSetFromMod)
 }
 
 
+TEST(Vic2World_Countries_CommonCountryDataTests, MissingModUsesVanillaUnitNames)
+{
+	const auto commonCountryData =
+		 Vic2::CommonCountryData::Factory{}.importCommonCountryData("CommonCountryTestData.txt",
+			  "missing_mod",
+			  *Configuration::Builder{}.setVic2Path("./").build());
+
+	ASSERT_THAT(commonCountryData->getUnitNames(),
+		 testing::UnorderedElementsAre(
+			  testing::Pair(std::string("dreadnought"), std::vector<std::string>{"Azerbaijan", "Nader Shah"}),
+			  testing::Pair(std::string("ironclad"), std::vector<std::string>{"Erivan", "Nakchivan"})));
+}
+
+
 TEST(Vic2World_Countries_CommonCountryDataTests, PartiesDefaultToEmpty)
 {
 	const auto commonCountryData =
@@ -117,4 +143,18 @@ TEST(Vic2World_Countries_CommonCountryDataTests, PartiesCanBeSetFromMod)
 	ASSERT_EQ(2, parties.size());
 	ASSERT_EQ("MOD_reactionary", parties[0].getName());
 	ASSERT_EQ("MOD_liberal", parties[1].getName());
+}
+
+
+TEST(Vic2World_Countries_CommonCountryDataTests, MissingModUsesVanillaParties)
+{
+	const auto commonCountryData =
+		 Vic2::CommonCountryData::Factory{}.importCommonCountryData("CommonCountryTestData.txt",
+			  "missing_mod",
+			  *Configuration::Builder{}.setVic2Path("./").build());
+
+	const auto parties = commonCountryData->getParties();
+	ASSERT_EQ(2, parties.size());
+	ASSERT_EQ("AZB_reactionary", parties[0].getName());
+	ASSERT_EQ("AZB_liberal", parties[1].getName());
 }

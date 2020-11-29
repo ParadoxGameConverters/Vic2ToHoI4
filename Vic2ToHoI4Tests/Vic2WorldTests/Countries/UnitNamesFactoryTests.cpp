@@ -14,7 +14,6 @@ TEST(Vic2World_Countries_UnitNamesFactoryTests, UnitNamesDefaultToEmpty)
 }
 
 
-
 TEST(Vic2World_Countries_UnitNamesFactoryTests, UnitNamesCanBeSet)
 {
 	std::stringstream input;

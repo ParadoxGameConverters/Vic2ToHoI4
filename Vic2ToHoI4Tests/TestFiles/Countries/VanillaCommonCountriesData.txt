@@ -1,0 +1,7 @@
+# comment
+
+ONE		= "countries/TestCountryOne.txt"
+
+dynamic_tags  = yes # any tags after this is considered dynamic dominions
+
+TWO		= "countries/TestCountryTwo.txt"
