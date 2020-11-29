@@ -13,10 +13,10 @@
 namespace Vic2
 {
 
-std::tuple<std::map<std::string, Vic2::CommonCountryData>, std::vector<Vic2::Party>> importCommonCountriesData(
+std::tuple<std::map<std::string, CommonCountryData>, std::vector<Party>> importCommonCountriesData(
 	 const Configuration& theConfiguration);
 
-}
+} // namespace Vic2
 
 
 

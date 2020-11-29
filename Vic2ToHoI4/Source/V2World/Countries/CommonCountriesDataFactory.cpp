@@ -7,7 +7,7 @@
 
 bool shouldLineBeSkipped(const std::string& line)
 {
-	return (line[0] == '#') || (line.size() < 3) || (line.substr(0, 12) == "dynamic_tags");
+	return line.starts_with('#') || line.size() < 3 || line.starts_with("dynamic_tags");
 }
 
 
@@ -68,7 +68,7 @@ std::tuple<std::map<std::string, Vic2::CommonCountryData>, std::vector<Vic2::Par
 
 	for (const auto& vic2Mod: theConfiguration.getVic2Mods())
 	{
-		std::string modFolder = theConfiguration.getVic2ModPath() + "/" + vic2Mod.getDirectory();
+		auto modFolder = theConfiguration.getVic2ModPath() + "/" + vic2Mod.getDirectory();
 		auto [commonCountriesData, parties] =
 			 processCountriesDotTxt(modFolder + "/common/countries.txt", modFolder, theConfiguration);
 		if (!commonCountriesData.empty())
