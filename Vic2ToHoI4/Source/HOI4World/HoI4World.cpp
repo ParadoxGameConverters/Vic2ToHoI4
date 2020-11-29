@@ -34,7 +34,7 @@
 #include "ShipTypes/PossibleShipVariants.h"
 #include "Sounds/SoundEffectsFactory.h"
 #include "States/HoI4State.h"
-#include "V2World/Country.h"
+#include "V2World/Countries/Country.h"
 #include "V2World/Diplomacy/Agreement.h"
 #include "V2World/Diplomacy/Diplomacy.h"
 #include "V2World/Localisations/Vic2Localisations.h"

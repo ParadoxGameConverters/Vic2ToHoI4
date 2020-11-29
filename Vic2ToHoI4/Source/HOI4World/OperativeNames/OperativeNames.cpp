@@ -1,12 +1,11 @@
 #include "OperativeNames.h"
-#include "V2World/Country.h"
 #include "OperativeNamesMappings.h"
 #include "OperativeNamesMappingsFactory.h"
+#include "V2World/Countries/Country.h"
 
 
 
-void HoI4::OperativeNames::addCountriesToNameSets(
-	 const std::map<std::string, std::shared_ptr<Country>>& countries)
+void HoI4::OperativeNames::addCountriesToNameSets(const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
 	const auto mappings = OperativeNamesMappings::Factory{}.getMappings();
 	for (const auto& country: countries)

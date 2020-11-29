@@ -377,6 +377,8 @@
     <ClCompile Include="Source\Mappers\Provinces\VersionedMappings.cpp" />
     <ClCompile Include="Source\Mappers\TechMapper.cpp" />
     <ClCompile Include="Source\Mappers\VersionParser\VersionParser.cpp" />
+    <ClCompile Include="Source\V2World\Countries\CommonCountryData.cpp" />
+    <ClCompile Include="Source\V2World\Countries\Country.cpp" />
     <ClCompile Include="Source\V2World\Ai\AIStrategy.cpp" />
     <ClCompile Include="Source\V2World\Ai\Vic2AI.cpp" />
     <ClCompile Include="Source\V2World\Culture\CultureGroupFactory.cpp" />
@@ -414,8 +416,6 @@
     <ClCompile Include="Source\V2World\Technology\InventionsFactory.cpp" />
     <ClCompile Include="Source\V2World\Wars\WarFactory.cpp" />
     <ClCompile Include="Source\Vic2toHOI4Converter.cpp" />
-    <ClCompile Include="Source\V2World\CommonCountryData.cpp" />
-    <ClCompile Include="Source\V2World\Country.cpp" />
     <ClCompile Include="Source\V2World\Issues\IssueHelper.cpp" />
     <ClCompile Include="Source\V2World\Issues\Issues.cpp" />
     <ClCompile Include="Source\V2World\Issues\IssueCategoryHelper.cpp" />
@@ -709,9 +709,9 @@
     <ClInclude Include="Source\Mappers\VersionParser\VersionParser.h" />
     <ClInclude Include="Source\V2World\Ai\AIStrategy.h" />
     <ClInclude Include="Source\V2World\Ai\Vic2AI.h" />
-    <ClInclude Include="Source\V2World\CommonCountryData.h" />
-    <ClInclude Include="Source\V2World\Country.h" />
-    <ClInclude Include="Source\V2World\CountryBuilder.h" />
+    <ClInclude Include="Source\V2World\Countries\CommonCountryData.h" />
+    <ClInclude Include="Source\V2World\Countries\Country.h" />
+    <ClInclude Include="Source\V2World\Countries\CountryBuilder.h" />
     <ClInclude Include="Source\V2World\Culture\CultureGroupFactory.h" />
     <ClInclude Include="Source\V2World\Culture\CultureGroups.h" />
     <ClInclude Include="Source\V2World\Culture\CultureGroupsFactory.h" />

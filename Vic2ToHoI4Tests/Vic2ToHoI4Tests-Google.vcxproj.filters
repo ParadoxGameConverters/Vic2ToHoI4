@@ -25,9 +25,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Localisation.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Country.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryMapping.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
@@ -54,9 +51,6 @@
     </ClCompile>
     <ClCompile Include="..\common_items\targa.cpp">
       <Filter>Vic2ToHoI4 files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CommonCountryData.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
@@ -1295,6 +1289,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4AIStrategy.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountryData.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\Country.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1662,6 +1662,9 @@
     </Filter>
     <Filter Include="Vic2WorldTests\Ai">
       <UniqueIdentifier>{a253453c-d9e8-4d04-97a3-2400309a28f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Countries">
+      <UniqueIdentifier>{0e5e9d51-af75-4d3b-92d2-6f9612faf78f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

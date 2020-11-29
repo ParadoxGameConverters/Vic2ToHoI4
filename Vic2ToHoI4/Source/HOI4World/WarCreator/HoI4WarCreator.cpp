@@ -7,7 +7,7 @@
 #include "HOI4World/Map/MapData.h"
 #include "HOI4World/ProvinceDefinitions.h"
 #include "Log.h"
-#include "V2World/Country.h"
+#include "V2World/Countries/Country.h"
 #include "V2World/Politics/Party.h"
 #include "V2World/World.h"
 

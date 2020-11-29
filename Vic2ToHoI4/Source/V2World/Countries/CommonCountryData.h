@@ -5,9 +5,9 @@
 
 #include "Color.h"
 #include "Configuration.h"
-#include "Mods/Mod.h"
 #include "Parser.h"
-#include "Politics/Party.h"
+#include "V2World/Mods/Mod.h"
+#include "V2World/Politics/Party.h"
 #include <map>
 #include <optional>
 #include <string>

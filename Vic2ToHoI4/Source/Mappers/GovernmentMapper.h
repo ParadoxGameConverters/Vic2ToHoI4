@@ -5,7 +5,7 @@
 
 #include "HOI4World/Ideologies/Ideologies.h"
 #include "Parser.h"
-#include "V2World/Country.h"
+#include "V2World/Countries/Country.h"
 #include <set>
 #include <string>
 #include <vector>

@@ -4,7 +4,7 @@
 
 
 #include "Configuration.h"
-#include "Country.h"
+#include "Countries/Country.h"
 #include "Culture/CultureGroups.h"
 #include "Diplomacy/Diplomacy.h"
 #include "Localisations/Vic2Localisations.h"

@@ -10,7 +10,7 @@
 #include "LarOccupationEvents.h"
 #include "Log.h"
 #include "ParserHelpers.h"
-#include "V2World/Country.h"
+#include "V2World/Countries/Country.h"
 #include "V2World/Politics/Party.h"
 #include <fstream>
 
@@ -737,7 +737,8 @@ void HoI4::Events::addDemocraticMinisterRevolutionEvents(Localisation& localisat
 	callForElectionsOptionB.giveAiChance("= { base = 1 }");
 	callForElectionsOptionB.giveScriptBlock("add_political_power = -20");
 	callForElectionsOptionB.giveScriptBlock("add_ideas = democratic_opposition_voicing_protests");
-	callForElectionsOptionB.giveScriptBlock("add_timed_idea = { idea = democratic_opposition_voicing_protests days = 730 }");
+	callForElectionsOptionB.giveScriptBlock(
+		 "add_timed_idea = { idea = democratic_opposition_voicing_protests days = 730 }");
 	callForElections.giveOption(std::move(callForElectionsOptionB));
 	politicalEvents.push_back(callForElections);
 	politicalEventNumber++;

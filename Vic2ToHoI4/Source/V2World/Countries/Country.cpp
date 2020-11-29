@@ -1,20 +1,23 @@
 #include "Country.h"
-#include "Ai/Vic2AI.h"
-#include "Ai/AIStrategy.h"
-#include "Culture/CultureGroups.h"
-#include "Diplomacy/Relations.h"
-#include "Localisations/Vic2Localisations.h"
+#include "V2World/Ai/Vic2AI.h"
+#include "V2World/Ai/AIStrategy.h"
+#include "V2World/Culture/CultureGroups.h"
+#include "V2World/Diplomacy/Relations.h"
+#include "V2World/Localisations/Vic2Localisations.h"
 #include "Log.h"
-#include "Military/ArmyFactory.h"
-#include "Military/Leaders/Leader.h"
 #include "ParserHelpers.h"
-#include "Politics/Party.h"
-#include "Pops/Pop.h"
-#include "Provinces/Province.h"
-#include "States/State.h"
-#include "States/StateDefinitions.h"
 #include "StringUtils.h"
-#include "Technology/Inventions.h"
+#include "V2World/Culture/CultureGroups.h"
+#include "V2World/Diplomacy/Relations.h"
+#include "V2World/Localisations/Vic2Localisations.h"
+#include "V2World/Military/ArmyFactory.h"
+#include "V2World/Military/Leaders/Leader.h"
+#include "V2World/Politics/Party.h"
+#include "V2World/Pops/Pop.h"
+#include "V2World/Provinces/Province.h"
+#include "V2World/States/State.h"
+#include "V2World/States/StateDefinitions.h"
+#include "V2World/Technology/Inventions.h"
 #include <cmath>
 
 
@@ -231,7 +234,8 @@ void Vic2::Country::putProvincesInStates()
 			auto province = provinces.find(provinceNum);
 			if (province == provinces.end())
 			{
-				Log(LogLevel::Warning) << "State (" << state.getStateID() << ") owned by " << tag << " had province (" << provinceNum << ") that " << tag << " did not";
+				Log(LogLevel::Warning) << "State (" << state.getStateID() << ") owned by " << tag << " had province ("
+											  << provinceNum << ") that " << tag << " did not";
 				continue;
 			}
 

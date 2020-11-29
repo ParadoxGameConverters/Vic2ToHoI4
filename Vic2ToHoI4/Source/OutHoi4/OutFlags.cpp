@@ -2,7 +2,7 @@
 #include "HOI4World/HoI4Country.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
-#include "V2World/Country.h"
+#include "V2World/Countries/Country.h"
 #include "targa.h"
 #include <optional>
 

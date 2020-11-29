@@ -238,6 +238,9 @@
     <Filter Include="Data Files\Configurables">
       <UniqueIdentifier>{80b12269-6621-4eb6-bfc8-56510a40b105}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2World\Countries">
+      <UniqueIdentifier>{2629d2ed-6e4a-4b7c-be02-c4e55cd35614}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -278,14 +281,8 @@
     <ClCompile Include="..\common_items\ParserHelpers.cpp">
       <Filter>CommonItems</Filter>
     </ClCompile>
-    <ClCompile Include="Source\V2World\Country.cpp">
-      <Filter>Vic2World</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Mappers\MergeRules.cpp">
       <Filter>Mappers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\V2World\CommonCountryData.cpp">
-      <Filter>Vic2World</Filter>
     </ClCompile>
     <ClCompile Include="Source\V2World\World.cpp">
       <Filter>Vic2World</Filter>
@@ -1111,6 +1108,12 @@
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4AIStrategy.cpp">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClCompile>
+    <ClCompile Include="Source\V2World\Countries\CommonCountryData.cpp">
+      <Filter>Vic2World\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Countries\Country.cpp">
+      <Filter>Vic2World\Countries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1151,14 +1154,8 @@
     <ClInclude Include="..\common_items\ParserHelpers.h">
       <Filter>CommonItems</Filter>
     </ClInclude>
-    <ClInclude Include="Source\V2World\Country.h">
-      <Filter>Vic2World</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Mappers\MergeRules.h">
       <Filter>Mappers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\V2World\CommonCountryData.h">
-      <Filter>Vic2World</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\World.h">
       <Filter>Vic2World</Filter>
@@ -2124,9 +2121,6 @@
     <ClInclude Include="Source\HOI4World\States\HoI4StateBuilder.h">
       <Filter>HoI4World\States</Filter>
     </ClInclude>
-    <ClInclude Include="Source\V2World\CountryBuilder.h">
-      <Filter>Vic2World</Filter>
-    </ClInclude>
     <ClInclude Include="Source\V2World\Politics\PartyBuilder.h">
       <Filter>Vic2World\Politics</Filter>
     </ClInclude>
@@ -2147,6 +2141,15 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Ai\AIStrategy.h">
       <Filter>Vic2World\Ai</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Countries\CommonCountryData.h">
+      <Filter>Vic2World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Countries\Country.h">
+      <Filter>Vic2World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Countries\CountryBuilder.h">
+      <Filter>Vic2World\Countries</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

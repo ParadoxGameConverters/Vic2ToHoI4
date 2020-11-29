@@ -45,7 +45,7 @@
 #include "States/DefaultState.h"
 #include "States/HoI4State.h"
 #include "States/HoI4States.h"
-#include "V2World/Country.h"
+#include "V2World/Countries/Country.h"
 #include "V2World/World.h"
 #include <map>
 #include <optional>

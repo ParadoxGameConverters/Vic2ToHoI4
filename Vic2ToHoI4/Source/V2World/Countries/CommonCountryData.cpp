@@ -1,9 +1,9 @@
 #include "CommonCountryData.h"
-#include "Configuration.h"
 #include "Color.h"
+#include "Configuration.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
-#include "Politics/PartyFactory.h"
+#include "V2World/Politics/PartyFactory.h"
 
 
 

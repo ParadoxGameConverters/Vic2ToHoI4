@@ -13,7 +13,7 @@
 #include "Mappers/CountryMapping.h"
 #include "OSCompatibilityLayer.h"
 #include "StateCategories.h"
-#include "V2World/Country.h"
+#include "V2World/Countries/Country.h"
 #include "V2World/Localisations/Vic2Localisations.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/States/State.h"

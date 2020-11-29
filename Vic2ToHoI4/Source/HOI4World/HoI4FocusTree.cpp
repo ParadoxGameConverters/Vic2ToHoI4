@@ -6,7 +6,7 @@
 #include "Log.h"
 #include "ParserHelpers.h"
 #include "SharedFocus.h"
-#include "V2World/Country.h"
+#include "V2World/Countries/Country.h"
 #include "V2World/Politics/Party.h"
 using namespace std;
 

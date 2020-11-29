@@ -14,7 +14,7 @@
 #include "OSCompatibilityLayer.h"
 #include "V2World/Ai/Vic2AI.h"
 #include "V2World/Ai/AIStrategy.h"
-#include "V2World/Country.h"
+#include "V2World/Country/Country.h"
 #include "V2World/Politics/Party.h"
 #include "V2World/World.h"
 #include <algorithm>

@@ -33,7 +33,7 @@
 #include "ShipTypes/ShipVariants.h"
 #include "States/HoI4State.h"
 #include "Technologies.h"
-#include "V2World/Country.h"
+#include "V2World/Countries/Country.h"
 #include "V2World/Localisations/Vic2Localisations.h"
 #include "V2World/Politics/Party.h"
 #include "V2World/World.h"
