@@ -6,6 +6,7 @@
 #include "CommonCountryData.h"
 #include "Configuration.h"
 #include "Parser.h"
+#include "UnitNamesFactory.h"
 #include "V2World/Politics/PartyFactory.h"
 #include <memory>
 
@@ -25,6 +26,7 @@ class CommonCountryData::Factory: commonItems::parser
   private:
 	std::unique_ptr<CommonCountryData> commonCountryData;
 	Party::Factory partyFactory;
+	UnitNamesFactory unitNamesFactory;
 };
 
 } // namespace Vic2

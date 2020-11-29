@@ -288,6 +288,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountriesDataFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountryDataFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\Country.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\UnitNamesFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\AIStrategy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\Vic2AI.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroupFactory.cpp" />
@@ -436,6 +437,7 @@
     <ClCompile Include="Vic2WorldTests\Ai\AIStrategyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\Vic2AITests.cpp" />
     <ClCompile Include="Vic2WorldTests\Countries\CommonCountryDataTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Countries\UnitNamesFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Culture\CultureGroupFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Culture\CultureGroupsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Diplomacy\AgreementTests.cpp" />

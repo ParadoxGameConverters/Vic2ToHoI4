@@ -16,24 +16,7 @@ Vic2::CommonCountryData::Factory::Factory()
 			 std::array<int, 3>{colorComponents.getInts()[0], colorComponents.getInts()[1], colorComponents.getInts()[2]});
 	});
 	registerKeyword("unit_names", [this](const std::string& unused, std::istream& theStream) {
-		// todo - clean up this mess. Probably add a UnitNamesFactory class to handle it all
-		auto equals = getNextTokenWithoutMatching(theStream);
-		auto bracket = getNextTokenWithoutMatching(theStream);
-		auto token = getNextTokenWithoutMatching(theStream);
-		while (token != "}")
-		{
-			commonItems::stringList unitNamesStrings(theStream);
-			for (auto name: unitNamesStrings.getStrings())
-			{
-				if (name.substr(0, 1) == "\"")
-				{
-					name = name.substr(1, name.length() - 2);
-				}
-				commonCountryData->unitNames[*token].emplace_back(commonItems::convertWin1252ToUTF8(name));
-			}
-
-			token = getNextTokenWithoutMatching(theStream);
-		}
+		commonCountryData->unitNames = unitNamesFactory.importUnitNames(theStream);
 	});
 	registerKeyword("party", [this](const std::string& unused, std::istream& theStream) {
 		commonCountryData->parties.emplace_back(*partyFactory.getParty(theStream));
