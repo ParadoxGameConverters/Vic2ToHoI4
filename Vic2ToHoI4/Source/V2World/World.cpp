@@ -1,5 +1,7 @@
 #include "World.h"
 #include "Configuration.h"
+#include "Countries/CommonCountryData.h"
+#include "Countries/CommonCountryDataFactory.h"
 #include "Countries/Country.h"
 #include "Countries/CommonCountryData.h"
 #include "Ai/Vic2AI.h"
@@ -359,7 +361,7 @@ bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile,
 	}
 
 	std::vector<Party> parties;
-	Party::Factory partyFactory;
+	CommonCountryData::Factory commonCountryDataFactory;
 
 	while (!V2CountriesInput.eof())
 	{
@@ -372,13 +374,13 @@ bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile,
 
 		auto tag = line.substr(0, 3);
 		auto countryFileName = extractCountryFileName(line);
-		commonCountryData countryData(countryFileName, mod, theConfiguration, &partyFactory);
+		auto countryData = commonCountryDataFactory.importCommonCountryData(countryFileName, mod, theConfiguration);
 		if (countries.contains(tag))
 		{
-			countries[tag]->setColor(countryData.getColor());
-			countries[tag]->setShipNames(countryData.getUnitNames());
+			countries[tag]->setColor(countryData->getColor());
+			countries[tag]->setShipNames(countryData->getUnitNames());
 		}
-		for (const auto& party: countryData.getParties())
+		for (const auto& party: countryData->getParties())
 		{
 			parties.emplace_back(party);
 		}

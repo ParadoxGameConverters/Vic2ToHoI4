@@ -1111,7 +1111,7 @@
     <ClCompile Include="Source\V2World\Countries\CommonCountryData.cpp">
       <Filter>Vic2World\Countries</Filter>
     </ClCompile>
-    <ClCompile Include="Source\V2World\Countries\Country.cpp">
+    <ClCompile Include="Source\V2World\Countries\CommonCountryDataFactory.cpp">
       <Filter>Vic2World\Countries</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2149,6 +2149,9 @@
       <Filter>Vic2World\Countries</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Countries\CountryBuilder.h">
+      <Filter>Vic2World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Countries\CommonCountryDataFactory.h">
       <Filter>Vic2World\Countries</Filter>
     </ClInclude>
   </ItemGroup>

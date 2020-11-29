@@ -1292,7 +1292,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountryData.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\Country.cpp">
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountryDataFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
     </ClCompile>
   </ItemGroup>

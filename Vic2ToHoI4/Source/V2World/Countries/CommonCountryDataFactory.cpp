@@ -1,5 +1,6 @@
-#include "CommonCountryData.h"
+#include "CommonCountryDataFactory.h"
 #include "Color.h"
+#include "CommonCountryData.h"
 #include "Configuration.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
@@ -7,14 +8,11 @@
 
 
 
-Vic2::commonCountryData::commonCountryData(const std::string& filename,
-	 const std::optional<Mod>& mod,
-	 const Configuration& theConfiguration,
-	 Party::Factory* partyFactory)
+Vic2::CommonCountryData::Factory::Factory()
 {
 	registerKeyword("color", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::intList colorInts(theStream);
-		theColor = commonItems::Color(
+		commonCountryData->theColor = commonItems::Color(
 			 std::array<int, 3>{colorInts.getInts()[0], colorInts.getInts()[1], colorInts.getInts()[2]});
 	});
 	registerKeyword("unit_names", [this](const std::string& unused, std::istream& theStream) {
@@ -30,17 +28,25 @@ Vic2::commonCountryData::commonCountryData(const std::string& filename,
 				{
 					name = name.substr(1, name.length() - 2);
 				}
-				unitNames[*token].emplace_back(commonItems::convertWin1252ToUTF8(name));
+				commonCountryData->unitNames[*token].emplace_back(commonItems::convertWin1252ToUTF8(name));
 			}
 
 			token = getNextTokenWithoutMatching(theStream);
 		}
 	});
-	registerKeyword("party", [this, &partyFactory](const std::string& unused, std::istream& theStream) {
-		parties.emplace_back(*partyFactory->getParty(theStream));
+	registerKeyword("party", [this](const std::string& unused, std::istream& theStream) {
+		commonCountryData->parties.emplace_back(*partyFactory.getParty(theStream));
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+}
 
+
+std::unique_ptr<Vic2::CommonCountryData> Vic2::CommonCountryData::Factory::importCommonCountryData(
+	 const std::string& filename,
+	 const std::optional<Mod>& mod,
+	 const Configuration& theConfiguration)
+{
+	commonCountryData = std::make_unique<CommonCountryData>();
 	bool parsedFile = false;
 	if (mod)
 	{
@@ -60,4 +66,6 @@ Vic2::commonCountryData::commonCountryData(const std::string& filename,
 			parseFile(file);
 		}
 	}
+
+	return std::move(commonCountryData);
 }

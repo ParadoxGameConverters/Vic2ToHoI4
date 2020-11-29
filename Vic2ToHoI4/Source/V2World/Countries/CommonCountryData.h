@@ -18,13 +18,11 @@
 namespace Vic2
 {
 
-class commonCountryData: commonItems::parser
+class CommonCountryData: commonItems::parser
 {
   public:
-	commonCountryData(const std::string& filename,
-		 const std::optional<Mod>& mod,
-		 const Configuration& theConfiguration,
-		 Party::Factory* partyFactory);
+	class Factory;
+	CommonCountryData() = default;
 
 	auto getColor() { return std::move(theColor); }
 	auto getUnitNames() { return std::move(unitNames); }

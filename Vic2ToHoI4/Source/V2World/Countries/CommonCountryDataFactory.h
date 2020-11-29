@@ -1,0 +1,33 @@
+#ifndef COMMON_COUNTRY_DATA_FACTORY_H
+#define COMMON_COUNTRY_DATA_FACTORY_H
+
+
+
+#include "CommonCountryData.h"
+#include "Parser.h"
+#include "V2World/Politics/PartyFactory.h"
+#include <memory>
+
+
+
+namespace Vic2
+{
+
+class CommonCountryData::Factory: commonItems::parser
+{
+  public:
+	Factory();
+	std::unique_ptr<CommonCountryData> importCommonCountryData(const std::string& filename,
+		 const std::optional<Mod>& mod,
+		 const Configuration& theConfiguration);
+
+  private:
+	std::unique_ptr<CommonCountryData> commonCountryData;
+	Party::Factory partyFactory;
+};
+
+} // namespace Vic2
+
+
+
+#endif // COMMON_COUNTRY_DATA_FACTORY_H
