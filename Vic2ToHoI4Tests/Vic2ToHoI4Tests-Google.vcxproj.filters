@@ -1295,6 +1295,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountryDataFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Countries\CommonCountryDataTests.cpp">
+      <Filter>Vic2WorldTests\Countries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1666,6 +1669,12 @@
     <Filter Include="Vic2ToHoI4 files\Vic2\Countries">
       <UniqueIdentifier>{0e5e9d51-af75-4d3b-92d2-6f9612faf78f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TestFiles\Countries">
+      <UniqueIdentifier>{964697ec-e907-41d3-bff6-5943b6124a96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\Countries">
+      <UniqueIdentifier>{942f4f2a-fd60-4abd-a2a1-4ed9743d9cd7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1815,5 +1824,16 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt" />
     <CopyFileToFolders Include="TestFiles\Leaders\HoI4CountryLeaders.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TestFiles\Countries\CommonCountryTestData.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </Text>
+    <Text Include="TestFiles\Countries\blankCommonCountryData.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </Text>
+    <Text Include="TestFiles\Countries\CommonCountryModTestData.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </Text>
   </ItemGroup>
 </Project>

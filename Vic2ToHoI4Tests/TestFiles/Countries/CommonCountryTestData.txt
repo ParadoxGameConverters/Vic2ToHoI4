@@ -1,0 +1,19 @@
+color = { 56 32 172 }
+graphical_culture = Generic
+
+party = {
+	name = "AZB_reactionary"
+}
+
+party = {
+	name = "AZB_liberal"
+}
+
+unit_names = {
+	dreadnought = {
+		Azerbaijan "Nader Shah"
+	}
+	ironclad = {
+		Erivan Nakchivan
+	}
+}

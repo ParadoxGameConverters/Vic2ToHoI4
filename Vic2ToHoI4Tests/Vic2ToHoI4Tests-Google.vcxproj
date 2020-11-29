@@ -434,6 +434,7 @@
     <ClCompile Include="MapperTests\TechMapperTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\AIStrategyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\Vic2AITests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Countries\CommonCountryDataTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Culture\CultureGroupFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Culture\CultureGroupsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Diplomacy\AgreementTests.cpp" />
@@ -793,6 +794,22 @@
     <CopyFileToFolders Include="TestFiles\Leaders\HoI4CountryLeaders.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Countries\blankCommonCountryData.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/common/countries</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/common/countries</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\CommonCountryTestData.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/common/countries</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/common/countries</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Countries\CommonCountryModTestData.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/mod/common/countries/</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/mod/common/countries/</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

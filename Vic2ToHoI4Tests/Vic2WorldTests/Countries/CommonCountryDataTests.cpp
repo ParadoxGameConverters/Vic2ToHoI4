@@ -1,0 +1,121 @@
+#include "Configuration.h"
+#include "V2World/Countries/CommonCountryData.h"
+#include "V2World/Countries/CommonCountryDataFactory.h"
+#include "V2World/Mods/ModBuilder.h"
+#include "gtest/gtest.h"
+#include <gmock/gmock-matchers.h>
+
+
+
+TEST(Vic2World_Countries_CommonCountryDataTests, ColorDefaultsToBlack)
+{
+	const auto commonCountryData =
+		 Vic2::CommonCountryData::Factory{}.importCommonCountryData("blankCommonCountryData.txt",
+			  std::nullopt,
+			  *Configuration::Builder{}.setVic2Path("./").build());
+
+	const auto expectedColor = std::array<int, 3>{0, 0, 0};
+	ASSERT_EQ(expectedColor, commonCountryData->getColor().getRgbComponents());
+}
+
+
+TEST(Vic2World_Countries_CommonCountryDataTests, ColorCanBeSet)
+{
+	const auto commonCountryData =
+		 Vic2::CommonCountryData::Factory{}.importCommonCountryData("CommonCountryTestData.txt",
+			  std::nullopt,
+			  *Configuration::Builder{}.setVic2Path("./").build());
+
+	const auto expectedColor = std::array<int, 3>{56, 32, 172};
+	ASSERT_EQ(expectedColor, commonCountryData->getColor().getRgbComponents());
+}
+
+
+TEST(Vic2World_Countries_CommonCountryDataTests, ColorCanBeSetFromMod)
+{
+	const auto commonCountryData =
+		 Vic2::CommonCountryData::Factory{}.importCommonCountryData("CommonCountryModTestData.txt",
+			  *Vic2::Mod::Builder{}.build(),
+			  *Configuration::Builder{}.setVic2Path("./").setVic2ModPath("./").build());
+
+	const auto expectedColor = std::array<int, 3>{10, 20, 30};
+	ASSERT_EQ(expectedColor, commonCountryData->getColor().getRgbComponents());
+}
+
+
+TEST(Vic2World_Countries_CommonCountryDataTests, UnitNamesDefaultToEmpty)
+{
+	const auto commonCountryData =
+		 Vic2::CommonCountryData::Factory{}.importCommonCountryData("blankCommonCountryData.txt",
+			  std::nullopt,
+			  *Configuration::Builder{}.setVic2Path("./").build());
+
+	ASSERT_TRUE(commonCountryData->getUnitNames().empty());
+}
+
+
+TEST(Vic2World_Countries_CommonCountryDataTests, UnitNamesCanBeSet)
+{
+	const auto commonCountryData =
+		 Vic2::CommonCountryData::Factory{}.importCommonCountryData("CommonCountryTestData.txt",
+			  std::nullopt,
+			  *Configuration::Builder{}.setVic2Path("./").build());
+
+	ASSERT_THAT(commonCountryData->getUnitNames(),
+		 testing::UnorderedElementsAre(
+			  testing::Pair(std::string("dreadnought"), std::vector<std::string>{"Azerbaijan", "Nader Shah"}),
+			  testing::Pair(std::string("ironclad"), std::vector<std::string>{"Erivan", "Nakchivan"})));
+}
+
+
+TEST(Vic2World_Countries_CommonCountryDataTests, UnitNamesCanBeSetFromMod)
+{
+	const auto commonCountryData =
+		 Vic2::CommonCountryData::Factory{}.importCommonCountryData("CommonCountryModTestData.txt",
+			  *Vic2::Mod::Builder{}.build(),
+			  *Configuration::Builder{}.setVic2Path("./").setVic2ModPath("./").build());
+
+	ASSERT_THAT(commonCountryData->getUnitNames(),
+		 testing::UnorderedElementsAre(
+			  testing::Pair(std::string("dreadnought"), std::vector<std::string>{"ModDreadOne", "ModDreadTwo"}),
+			  testing::Pair(std::string("ironclad"), std::vector<std::string>{"ModIronOne", "ModIronTwo"})));
+}
+
+
+TEST(Vic2World_Countries_CommonCountryDataTests, PartiesDefaultToEmpty)
+{
+	const auto commonCountryData =
+		 Vic2::CommonCountryData::Factory{}.importCommonCountryData("blankCommonCountryData.txt",
+			  std::nullopt,
+			  *Configuration::Builder{}.setVic2Path("./").build());
+
+	ASSERT_TRUE(commonCountryData->getParties().empty());
+}
+
+
+TEST(Vic2World_Countries_CommonCountryDataTests, PartiesCanBeSet)
+{
+	const auto commonCountryData =
+		 Vic2::CommonCountryData::Factory{}.importCommonCountryData("CommonCountryTestData.txt",
+			  std::nullopt,
+			  *Configuration::Builder{}.setVic2Path("./").build());
+
+	const auto parties = commonCountryData->getParties();
+	ASSERT_EQ(2, parties.size());
+	ASSERT_EQ("AZB_reactionary", parties[0].getName());
+	ASSERT_EQ("AZB_liberal", parties[1].getName());
+}
+
+
+TEST(Vic2World_Countries_CommonCountryDataTests, PartiesCanBeSetFromMod)
+{
+	const auto commonCountryData =
+		 Vic2::CommonCountryData::Factory{}.importCommonCountryData("CommonCountryModTestData.txt",
+			  *Vic2::Mod::Builder{}.build(),
+			  *Configuration::Builder{}.setVic2Path("./").setVic2ModPath("./").build());
+
+	const auto parties = commonCountryData->getParties();
+	ASSERT_EQ(2, parties.size());
+	ASSERT_EQ("MOD_reactionary", parties[0].getName());
+	ASSERT_EQ("MOD_liberal", parties[1].getName());
+}
