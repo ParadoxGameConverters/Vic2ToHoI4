@@ -11,11 +11,12 @@
 Vic2::CommonCountryData::Factory::Factory()
 {
 	registerKeyword("color", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::intList colorInts(theStream);
+		const commonItems::intList colorComponents(theStream);
 		commonCountryData->theColor = commonItems::Color(
-			 std::array<int, 3>{colorInts.getInts()[0], colorInts.getInts()[1], colorInts.getInts()[2]});
+			 std::array<int, 3>{colorComponents.getInts()[0], colorComponents.getInts()[1], colorComponents.getInts()[2]});
 	});
 	registerKeyword("unit_names", [this](const std::string& unused, std::istream& theStream) {
+		// todo - clean up this mess. Probably add a UnitNamesFactory class to handle it all
 		auto equals = getNextTokenWithoutMatching(theStream);
 		auto bracket = getNextTokenWithoutMatching(theStream);
 		auto token = getNextTokenWithoutMatching(theStream);
@@ -43,29 +44,22 @@ Vic2::CommonCountryData::Factory::Factory()
 
 std::unique_ptr<Vic2::CommonCountryData> Vic2::CommonCountryData::Factory::importCommonCountryData(
 	 const std::string& filename,
-	 const std::optional<Mod>& mod,
+	 const std::optional<std::string>& modFolder,
 	 const Configuration& theConfiguration)
 {
 	commonCountryData = std::make_unique<CommonCountryData>();
-	bool parsedFile = false;
-	if (mod)
+
+	if (modFolder)
 	{
-		std::string file =
-			 theConfiguration.getVic2Path() + "/mod/" + mod->getDirectory() + "/common/countries/" + filename;
+		const auto file = *modFolder + "/common/countries/" + filename;
 		if (commonItems::DoesFileExist(file))
 		{
 			parseFile(file);
-			parsedFile = true;
-		}
-	}
-	if (!parsedFile)
-	{
-		std::string file = theConfiguration.getVic2Path() + "/common/countries/" + filename;
-		if (commonItems::DoesFileExist(file))
-		{
-			parseFile(file);
+			return std::move(commonCountryData);
 		}
 	}
 
+	const auto file = theConfiguration.getVic2Path() + "/common/countries/" + filename;
+	parseFile(file);
 	return std::move(commonCountryData);
 }

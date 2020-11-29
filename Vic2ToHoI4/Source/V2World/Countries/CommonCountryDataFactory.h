@@ -4,6 +4,7 @@
 
 
 #include "CommonCountryData.h"
+#include "Configuration.h"
 #include "Parser.h"
 #include "V2World/Politics/PartyFactory.h"
 #include <memory>
@@ -18,7 +19,7 @@ class CommonCountryData::Factory: commonItems::parser
   public:
 	Factory();
 	std::unique_ptr<CommonCountryData> importCommonCountryData(const std::string& filename,
-		 const std::optional<Mod>& mod,
+		 const std::optional<std::string>& modFolder,
 		 const Configuration& theConfiguration);
 
   private:

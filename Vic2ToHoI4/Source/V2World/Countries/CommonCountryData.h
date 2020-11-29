@@ -4,12 +4,9 @@
 
 
 #include "Color.h"
-#include "Configuration.h"
 #include "Parser.h"
-#include "V2World/Mods/Mod.h"
 #include "V2World/Politics/Party.h"
 #include <map>
-#include <optional>
 #include <string>
 #include <vector>
 
@@ -18,15 +15,15 @@
 namespace Vic2
 {
 
-class CommonCountryData: commonItems::parser
+class CommonCountryData
 {
   public:
 	class Factory;
 	CommonCountryData() = default;
 
-	auto getColor() { return std::move(theColor); }
-	auto getUnitNames() { return std::move(unitNames); }
-	auto getParties() { return std::move(parties); }
+	[[nodiscard]] auto getColor() const { return theColor; }
+	[[nodiscard]] auto getUnitNames() const { return unitNames; }
+	[[nodiscard]] auto getParties() const { return parties; }
 
   private:
 	commonItems::Color theColor;

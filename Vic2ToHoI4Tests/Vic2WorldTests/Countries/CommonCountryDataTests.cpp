@@ -1,9 +1,8 @@
 #include "Configuration.h"
 #include "V2World/Countries/CommonCountryData.h"
 #include "V2World/Countries/CommonCountryDataFactory.h"
-#include "V2World/Mods/ModBuilder.h"
 #include "gtest/gtest.h"
-#include <gmock/gmock-matchers.h>
+#include "gmock/gmock-matchers.h"
 
 
 
@@ -35,8 +34,8 @@ TEST(Vic2World_Countries_CommonCountryDataTests, ColorCanBeSetFromMod)
 {
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory{}.importCommonCountryData("CommonCountryModTestData.txt",
-			  *Vic2::Mod::Builder{}.build(),
-			  *Configuration::Builder{}.setVic2Path("./").setVic2ModPath("./").build());
+			  "mod",
+			  *Configuration::Builder{}.setVic2Path("./").build());
 
 	const auto expectedColor = std::array<int, 3>{10, 20, 30};
 	ASSERT_EQ(expectedColor, commonCountryData->getColor().getRgbComponents());
@@ -72,8 +71,8 @@ TEST(Vic2World_Countries_CommonCountryDataTests, UnitNamesCanBeSetFromMod)
 {
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory{}.importCommonCountryData("CommonCountryModTestData.txt",
-			  *Vic2::Mod::Builder{}.build(),
-			  *Configuration::Builder{}.setVic2Path("./").setVic2ModPath("./").build());
+			  "mod",
+			  *Configuration::Builder{}.setVic2Path("./").build());
 
 	ASSERT_THAT(commonCountryData->getUnitNames(),
 		 testing::UnorderedElementsAre(
@@ -111,8 +110,8 @@ TEST(Vic2World_Countries_CommonCountryDataTests, PartiesCanBeSetFromMod)
 {
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory{}.importCommonCountryData("CommonCountryModTestData.txt",
-			  *Vic2::Mod::Builder{}.build(),
-			  *Configuration::Builder{}.setVic2Path("./").setVic2ModPath("./").build());
+			  "mod",
+			  *Configuration::Builder{}.setVic2Path("./").build());
 
 	const auto parties = commonCountryData->getParties();
 	ASSERT_EQ(2, parties.size());

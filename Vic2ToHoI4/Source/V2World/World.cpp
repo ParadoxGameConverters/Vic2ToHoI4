@@ -330,10 +330,8 @@ void Vic2::World::readCountryFiles(const Configuration& theConfiguration)
 
 	for (const auto& vic2Mod: theConfiguration.getVic2Mods())
 	{
-		if (processCountriesDotTxt(
-				  theConfiguration.getVic2ModPath() + "/" + vic2Mod.getDirectory() + "/common/countries.txt",
-				  vic2Mod,
-				  theConfiguration))
+		std::string modFolder = theConfiguration.getVic2ModPath() + "/" + vic2Mod.getDirectory();
+		if (processCountriesDotTxt(modFolder + "/common/countries.txt", modFolder, theConfiguration))
 		{
 			countriesDotTxtRead = true;
 		}
@@ -351,7 +349,7 @@ void Vic2::World::readCountryFiles(const Configuration& theConfiguration)
 
 
 bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile,
-	 const std::optional<Vic2::Mod>& mod,
+	 const std::optional<std::string>& modFolder,
 	 const Configuration& theConfiguration)
 {
 	std::ifstream V2CountriesInput(countryListFile);
@@ -374,7 +372,7 @@ bool Vic2::World::processCountriesDotTxt(const std::string& countryListFile,
 
 		auto tag = line.substr(0, 3);
 		auto countryFileName = extractCountryFileName(line);
-		auto countryData = commonCountryDataFactory.importCommonCountryData(countryFileName, mod, theConfiguration);
+		auto countryData = commonCountryDataFactory.importCommonCountryData(countryFileName, modFolder, theConfiguration);
 		if (countries.contains(tag))
 		{
 			countries[tag]->setColor(countryData->getColor());
