@@ -54,11 +54,7 @@ Vic2::Country::Country(const std::string& theTag,
 	});
 	registerKeyword("badboy", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleDouble badboyDouble(theStream);
-		badboy = badboyDouble.getDouble();
-	});
-	registerKeyword("prestige", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleDouble prestigeDouble(theStream);
-		prestige = prestigeDouble.getDouble();
+		badBoy = badboyDouble.getDouble();
 	});
 	registerKeyword("government", [this](const std::string& unused, std::istream& theStream) {
 		commonItems::singleString governmentString(theStream);
@@ -109,7 +105,7 @@ Vic2::Country::Country(const std::string& theTag,
 		auto token = getNextTokenWithoutMatching(theStream);
 		while (token != "}")
 		{
-			techs.insert(*token);
+			technologiesAndInventions.insert(*token);
 			commonItems::ignoreItem(*token, theStream);
 			token = getNextTokenWithoutMatching(theStream);
 		}
@@ -121,7 +117,7 @@ Vic2::Country::Country(const std::string& theTag,
 			auto inventionName = theInventions.getInventionName(inventionNum);
 			if (inventionName)
 			{
-				discoveredInventions.insert(*inventionName);
+				technologiesAndInventions.insert(*inventionName);
 			}
 		}
 	});
@@ -210,8 +206,7 @@ void Vic2::Country::eatCountry(Vic2::Country* target, bool debug)
 		addProvince(provinceItr);
 		provinceItr.second->setOwner(tag);
 	}
-	techs.insert(target->techs.begin(), target->techs.end());
-	discoveredInventions.insert(target->discoveredInventions.begin(), target->discoveredInventions.end());
+	technologiesAndInventions.insert(target->technologiesAndInventions.begin(), target->technologiesAndInventions.end());
 	armies.insert(armies.end(), target->armies.begin(), target->armies.end());
 
 	// coreless, landless countries will be cleaned up automatically
@@ -419,61 +414,38 @@ void Vic2::Country::setLocalisationAdjective(const std::string& language, const 
 	}
 }
 
-std::string Vic2::Country::getIdentifier() const
-{
-	std::string ret = getTag();
-	auto name = getName("english");
-	if (name)
-	{
-		ret += " (" + name.value() + ")";
-	}
-	return ret;
-}
 
 std::optional<std::string> Vic2::Country::getName(const std::string& language) const
 {
-	std::map<std::string, std::string>::const_iterator findIter = namesByLanguage.find(language);
-	if (findIter != namesByLanguage.end())
+	if (const auto& nameInLanguage = namesByLanguage.find(language); nameInLanguage != namesByLanguage.end())
 	{
-		return findIter->second;
+		return nameInLanguage->second;
 	}
 	else
 	{
-		return {};
+		return std::nullopt;
 	}
 }
 
 
 std::optional<std::string> Vic2::Country::getAdjective(const std::string& language) const
 {
-	std::map<std::string, std::string>::const_iterator findIter = adjectivesByLanguage.find(language);
-	if (findIter != adjectivesByLanguage.end())
+	if (const auto& adjectiveInLanguage = adjectivesByLanguage.find(language);
+		 adjectiveInLanguage != adjectivesByLanguage.end())
 	{
-		return findIter->second;
+		return adjectiveInLanguage->second;
 	}
 	else
 	{
-		return {};
+		return std::nullopt;
 	}
 }
 
 
-double Vic2::Country::getUpperHousePercentage(const std::string& ideology) const
+int32_t Vic2::Country::getEmployedWorkers() const
 {
-	std::map<std::string, double>::const_iterator itr = upperHouseComposition.find(ideology);
-	if (itr == upperHouseComposition.end())
-	{
-		return 0.0;
-	}
-
-	return itr->second;
-}
-
-
-long Vic2::Country::getEmployedWorkers() const
-{
-	long employedWorkers = 0;
-	for (auto state: states)
+	int32_t employedWorkers = 0;
+	for (const auto& state: states)
 	{
 		employedWorkers += state.getEmployedWorkers();
 	}
@@ -484,7 +456,7 @@ long Vic2::Country::getEmployedWorkers() const
 
 bool Vic2::Country::hasCoreOnCapital() const
 {
-	for (auto core: cores)
+	for (const auto& core: cores)
 	{
 		if (core->getNumber() == capital)
 		{
@@ -495,46 +467,27 @@ bool Vic2::Country::hasCoreOnCapital() const
 	return false;
 }
 
+
 std::vector<std::string> Vic2::Country::getShipNames(const std::string& category) const
 {
-	auto foundShipNames = shipNames.find(category);
+	const auto foundShipNames = shipNames.find(category);
 	if (foundShipNames == shipNames.end())
 	{
-		return std::vector<std::string>();
+		return std::vector<std::string>{};
 	}
 	return foundShipNames->second;
 }
 
 
-double Vic2::Country::getAverageMilitancy() const
-{
-	int totalPopulation = 0;
-	double totalMilitancy = 0.0;
-	for (auto province: provinces)
-	{
-		auto pops = province.second->getPops();
-		for (auto pop: pops)
-		{
-			int size = pop.getSize();
-			totalMilitancy += pop.getMilitancy() * size;
-			totalPopulation += size;
-		}
-	}
-
-	return totalMilitancy / totalPopulation;
-}
-
-
 float Vic2::Country::getAverageIssueSupport(const std::string& issueName) const
 {
-	int totalPopulation = 0;
+	float totalPopulation = 0.0;
 	float totalSupport = 0.0;
-	for (auto province: provinces)
+	for (const auto& [unused, province]: provinces)
 	{
-		auto pops = province.second->getPops();
-		for (auto pop: pops)
+		for (const auto& pop: province->getPops())
 		{
-			int size = pop.getSize();
+			const auto size = static_cast<float>(pop.getSize());
 			totalSupport += pop.getIssueSupport(issueName) * size;
 			totalPopulation += size;
 		}
@@ -544,7 +497,7 @@ float Vic2::Country::getAverageIssueSupport(const std::string& issueName) const
 }
 
 
-bool Vic2::operator==(const Vic2::Country& one, const Vic2::Country& other)
+bool Vic2::operator==(const Country& one, const Country& other)
 {
 	return one.getTag() == other.getTag();
 }

@@ -21,6 +21,7 @@
 #include "V2World/States/StateFactory.h"
 #include "V2World/Technology/Inventions.h"
 #include "V2World/Wars/War.h"
+#include <cstdint>
 #include <map>
 #include <memory>
 #include <optional>
@@ -58,6 +59,8 @@ class Country: commonItems::parser
 	void addWar(const War& theWar) { wars.push_back(theWar); }
 	void setAtWar() { atWar = true; }
 
+	[[nodiscard]] auto& getModifiableStates() { return states; }
+
 	void eatCountry(Country* target, bool debug);
 	void putProvincesInStates();
 	void limitCommanders();
@@ -69,46 +72,47 @@ class Country: commonItems::parser
 
 	[[nodiscard]] const auto& getRelations() const { return relations; }
 	const auto& getAI() const { return vic2AI; }
-	void consolidateConquerStrategies(const std::map<int, std::shared_ptr<Province>>& provinces) { vic2AI->consolidateConquerStrategies(provinces); }
-	auto& getStates() { return states; }
-	std::string getTag() const { return tag; }
-	std::string getIdentifier() const;
-	std::string getPrimaryCulture() const { return primaryCulture; }
-	std::string getPrimaryCultureGroup() const { return primaryCultureGroup; }
-	std::set<std::string> getAcceptedCultures() const { return acceptedCultures; }
-	bool isAnAcceptedCulture(const std::string& culture) const { return acceptedCultures.contains(culture); }
-	std::set<std::string> getInventions() const { return discoveredInventions; }
-	std::string getGovernment() const { return government; }
-	std::set<std::string> getFlags() const { return flags; }
-	date getLastElection() const { return lastElection; }
-	int getCapital() const { return capital; }
-	std::set<std::string> getTechs() const { return techs; }
-	const commonItems::Color& getColor() const { return color; }
-	auto getArmies() const { return armies; }
+	void consolidateConquerStrategies(const std::map<int, std::shared_ptr<Province>>& provinces)
+	{
+		vic2AI->consolidateConquerStrategies(provinces);
+	}
+	[[nodiscard]] const auto& getStates() const { return states; }
+	[[nodiscard]] const auto& getTag() const { return tag; }
+	[[nodiscard]] const auto& getPrimaryCulture() const { return primaryCulture; }
+	[[nodiscard]] const auto& getPrimaryCultureGroup() const { return primaryCultureGroup; }
+	[[nodiscard]] const auto& getAcceptedCultures() const { return acceptedCultures; }
+	[[nodiscard]] bool isAnAcceptedCulture(const std::string& culture) const
+	{
+		return acceptedCultures.contains(culture);
+	}
+	[[nodiscard]] const auto& getTechnologiesAndInventions() const { return technologiesAndInventions; }
+	[[nodiscard]] const auto& getGovernment() const { return government; }
+	[[nodiscard]] const auto& getFlags() const { return flags; }
+	[[nodiscard]] const auto& getLastElection() const { return lastElection; }
+	[[nodiscard]] int getCapital() const { return capital; }
+	[[nodiscard]] const auto& getColor() const { return color; }
+	[[nodiscard]] const auto& getArmies() const { return armies; }
 	[[nodiscard]] const auto& getLeaders() const { return leaders; }
-	double getRevanchism() const { return revanchism; }
-	double getWarExhaustion() const { return warExhaustion; }
-	double getBadBoy() const { return badboy; }
-	double getPrestige() const { return prestige; }
-	const std::map<int, std::shared_ptr<Province>>& getProvinces() const { return provinces; }
-	const auto& getCores() const { return cores; }
-	bool isEmpty() const { return ((cores.size() == 0) && (provinces.size() == 0)); }
-	bool isCivilized() const { return civilized; }
-	bool isHuman() const { return human; }
-	std::map<std::string, double> getUpperHouseComposition() const { return upperHouseComposition; }
-	std::vector<War> getWars() const { return wars; }
-	bool isAtWar() const { return atWar; }
-	const std::set<Vic2::Party>& getActiveParties() const { return activeParties; }
-	const Vic2::Party& getRulingParty() const { return *rulingParty; }
+	[[nodiscard]] double getRevanchism() const { return revanchism; }
+	[[nodiscard]] double getWarExhaustion() const { return warExhaustion; }
+	[[nodiscard]] double getBadBoy() const { return badBoy; }
+	[[nodiscard]] bool hasLand() const { return !provinces.empty(); }
+	[[nodiscard]] const auto& getCores() const { return cores; }
+	[[nodiscard]] bool isEmpty() const { return cores.empty() && provinces.empty(); }
+	[[nodiscard]] bool isCivilized() const { return civilized; }
+	[[nodiscard]] bool isHuman() const { return human; }
+	[[nodiscard]] const auto& getUpperHouseComposition() const { return upperHouseComposition; }
+	[[nodiscard]] const auto& getWars() const { return wars; }
+	[[nodiscard]] bool isAtWar() const { return atWar; }
+	[[nodiscard]] const auto& getActiveParties() const { return activeParties; }
+	[[nodiscard]] const auto& getRulingParty() const { return *rulingParty; }
 
-	std::optional<std::string> getName(const std::string& language) const;
-	std::optional<std::string> getAdjective(const std::string& language) const;
-	double getUpperHousePercentage(const std::string& ideology) const;
-	long getEmployedWorkers() const;
-	bool hasCoreOnCapital() const;
-	std::vector<std::string> getShipNames(const std::string& category) const;
-	double getAverageMilitancy() const;
-	float getAverageIssueSupport(const std::string& issueName) const;
+	[[nodiscard]] std::optional<std::string> getName(const std::string& language) const;
+	[[nodiscard]] std::optional<std::string> getAdjective(const std::string& language) const;
+	[[nodiscard]] int32_t getEmployedWorkers() const;
+	[[nodiscard]] bool hasCoreOnCapital() const;
+	[[nodiscard]] std::vector<std::string> getShipNames(const std::string& category) const;
+	[[nodiscard]] float getAverageIssueSupport(const std::string& issueName) const;
 
   private:
 	void setLocalisationName(const std::string& language, const std::string& name);
@@ -129,8 +133,7 @@ class Country: commonItems::parser
 	std::string primaryCultureGroup;
 	std::set<std::string> acceptedCultures;
 
-	std::set<std::string> techs;
-	std::set<std::string> discoveredInventions;
+	std::set<std::string> technologiesAndInventions;
 
 	std::map<std::string, Relations> relations;
 	std::unique_ptr<Vic2AI> vic2AI;
@@ -141,8 +144,7 @@ class Country: commonItems::parser
 
 	double revanchism = 0.0;
 	double warExhaustion = 0.0;
-	double badboy = 0.0;
-	double prestige = 0.0;
+	double badBoy = 0.0;
 
 	std::set<std::string> flags;
 
@@ -163,7 +165,7 @@ class Country: commonItems::parser
 	bool human = false;
 
 	bool atWar = false;
-	std::vector<War> wars;
+	std::vector<War> wars; // only the country that started a war owns it here
 };
 
 

@@ -26,12 +26,11 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 HoI4::technologies::technologies(const mappers::techMapper& theTechMapper,
-	 const std::set<std::string>& oldTechs,
-	 const std::set<std::string>& oldInventions)
+	 const std::set<std::string>& oldTechnologiesAndInventions)
 {
 	for (auto techMapping: theTechMapper.getAllTechMappings())
 	{
-		if (oldTechs.contains(techMapping.first) || oldInventions.contains(techMapping.first))
+		if (oldTechnologiesAndInventions.contains(techMapping.first))
 		{
 			for (auto HoI4Tech: techMapping.second)
 			{
@@ -42,7 +41,7 @@ HoI4::technologies::technologies(const mappers::techMapper& theTechMapper,
 
 	for (auto techMapping: theTechMapper.getAllNonMtgNavalTechMappings())
 	{
-		if (oldTechs.contains(techMapping.first) || oldInventions.contains(techMapping.first))
+		if (oldTechnologiesAndInventions.contains(techMapping.first))
 		{
 			for (auto HoI4Tech: techMapping.second)
 			{
@@ -53,7 +52,7 @@ HoI4::technologies::technologies(const mappers::techMapper& theTechMapper,
 
 	for (auto techMapping: theTechMapper.getAllMtgNavalTechMappings())
 	{
-		if (oldTechs.contains(techMapping.first) || oldInventions.contains(techMapping.first))
+		if (oldTechnologiesAndInventions.contains(techMapping.first))
 		{
 			for (auto HoI4Tech: techMapping.second)
 			{
@@ -64,7 +63,7 @@ HoI4::technologies::technologies(const mappers::techMapper& theTechMapper,
 
 	for (auto bonusMapping: theTechMapper.getAllResearchBonuses())
 	{
-		if (oldTechs.contains(bonusMapping.first) || oldInventions.contains(bonusMapping.first))
+		if (oldTechnologiesAndInventions.contains(bonusMapping.first))
 		{
 			for (auto bonus: bonusMapping.second)
 			{

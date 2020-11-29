@@ -203,7 +203,7 @@ void Vic2::World::removeSimpleLandlessNations()
 	Log(LogLevel::Info) << "\tRemoving simple landless nations";
 	for (auto country: countries)
 	{
-		if (country.second->getProvinces().size() > 0)
+		if (country.second->hasLand())
 		{
 			continue;
 		}
@@ -469,7 +469,7 @@ void Vic2::World::checkStateCategories()
 	const auto stateLanguageCategories = StateLanguageCategories::Factory{}.getCategories();
 	for (auto country: countries)
 	{
-		for (auto& state: country.second->getStates())
+		for (auto& state: country.second->getModifiableStates())
 		{
 			const auto category = stateLanguageCategories->getStateCategory(state.getStateID());
 			if (category)

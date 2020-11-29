@@ -63,7 +63,7 @@ HoI4::Country::Country(std::string tag,
 	stability = 60;
 	warSupport = 60;
 
-	if (!sourceCountry.getProvinces().empty())
+	if (sourceCountry.hasLand())
 	{
 		auto warAttitude = sourceCountry.getAverageIssueSupport("jingoism");
 		warAttitude += sourceCountry.getAverageIssueSupport("pro_military") / 2;
@@ -532,9 +532,8 @@ void HoI4::Country::setCapitalRegionFlag(const Regions& regions)
 
 void HoI4::Country::convertTechnology(const mappers::techMapper& theTechMapper)
 {
-	auto oldTechs = sourceCountry.getTechs();
-	auto oldInventions = sourceCountry.getInventions();
-	theTechnologies = HoI4::technologies(theTechMapper, oldTechs, oldInventions);
+	auto technologiesAndInventions = sourceCountry.getTechnologiesAndInventions();
+	theTechnologies = HoI4::technologies(theTechMapper, technologiesAndInventions);
 }
 
 
