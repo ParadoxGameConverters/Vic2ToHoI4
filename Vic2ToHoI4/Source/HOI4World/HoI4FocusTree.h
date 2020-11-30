@@ -101,7 +101,6 @@ class HoI4FocusTree: commonItems::parser
 	void addAbsolutistGenericFocuses(int relativePosition);
 	void addRadicalGenericFocuses(int relativePosition);
 
-	std::string srcCountryTag = "";
 	std::string dstCountryTag = "";
 	std::vector<std::shared_ptr<HoI4Focus>> focuses;
 	std::vector<std::shared_ptr<HoI4::SharedFocus>> sharedFocuses;

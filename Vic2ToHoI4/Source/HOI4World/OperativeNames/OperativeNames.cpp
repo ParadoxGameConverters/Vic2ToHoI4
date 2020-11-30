@@ -10,7 +10,7 @@ void HoI4::OperativeNames::addCountriesToNameSets(const std::map<std::string, st
 	const auto mappings = OperativeNamesMappings::Factory{}.getMappings();
 	for (const auto& country: countries)
 	{
-		const auto& culture = country.second->getSourceCountry().getPrimaryCulture();
+		const auto& culture = country.second->getPrimaryCulture();
 		const auto& namesSetName = mappings.getMatchingNamesSet(culture);
 		if (auto namesSet = operativeNamesSets.find(namesSetName); namesSet != operativeNamesSets.end())
 		{

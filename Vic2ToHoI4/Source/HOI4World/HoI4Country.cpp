@@ -31,14 +31,18 @@ HoI4::Country::Country(std::string tag,
 	 tag(std::move(tag)),
 	 sourceCountry(srcCountry)
 {
+	oldTag = sourceCountry->getTag();
 	determineFilename();
+	name = sourceCountry->getName("english");
+	adjective = sourceCountry->getAdjective("english");
 
 	human = sourceCountry->isHuman();
 	color = sourceCountry->getColor();
 	civilized = sourceCountry->isCivilized();
 	threat = sourceCountry->getBadBoy() / 10.0;
 
-	const auto primaryCultureGroup = sourceCountry->getPrimaryCultureGroup();
+	primaryCulture = sourceCountry->getPrimaryCulture();
+	primaryCultureGroup = sourceCountry->getPrimaryCultureGroup();
 	auto possibleGraphicalCulture = theGraphics.getGraphicalCulture(primaryCultureGroup);
 	if (possibleGraphicalCulture)
 	{
@@ -55,7 +59,6 @@ HoI4::Country::Country(std::string tag,
 	absolutistAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "absolutist");
 	radicalAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "radical");
 	fascistAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "fascism");
-
 
 	lastElection = sourceCountry->getLastElection();
 	initIdeas(names, hoi4Localisations);
@@ -90,6 +93,8 @@ HoI4::Country::Country(std::string tag,
 	convertRelations(countryMap);
 	convertStrategies(countryMap);
 	convertWars(*srcCountry, countryMap);
+
+	employedWorkers = sourceCountry->getEmployedWorkers();
 
 	theArmy.addSourceArmies(sourceCountry->getArmies());
 }

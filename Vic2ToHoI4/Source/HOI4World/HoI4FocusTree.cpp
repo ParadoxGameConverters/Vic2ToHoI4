@@ -17,8 +17,7 @@ static std::map<std::string, HoI4Focus> loadedFocuses;
 
 
 
-HoI4FocusTree::HoI4FocusTree(const HoI4::Country& country):
-	 srcCountryTag(country.getSourceCountry().getTag()), dstCountryTag(country.getTag())
+HoI4FocusTree::HoI4FocusTree(const HoI4::Country& country): dstCountryTag(country.getTag())
 {
 }
 
@@ -677,7 +676,7 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 	auto relativePos = 1 - static_cast<int>(CountriesToContain.size());
 	for (auto country: CountriesToContain)
 	{
-		auto possibleContainedCountryName = country->getSourceCountry().getName("english");
+		auto possibleContainedCountryName = country->getName();
 		string containedCountryName;
 		if (possibleContainedCountryName)
 		{
@@ -799,7 +798,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 	 const vector<shared_ptr<HoI4::Country>>& annexationTargets,
 	 HoI4::Localisation& hoi4Localisations)
 {
-	auto possibleHomeCountryAdjective = Home->getSourceCountry().getAdjective("english");
+	auto possibleHomeCountryAdjective = Home->getAdjective();
 	string homeCountryAdjective;
 	if (possibleHomeCountryAdjective)
 	{
@@ -909,7 +908,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 	{
 		auto target = targetColonies.front();
 
-		auto possibleProtectorateCountryName = target->getSourceCountry().getName("english");
+		auto possibleProtectorateCountryName = target->getName();
 		string protectorateCountryName;
 		if (possibleProtectorateCountryName)
 		{
@@ -965,7 +964,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 	{
 		auto target = targetColonies.back();
 
-		auto possibleProtectorateCountryName = target->getSourceCountry().getName("english");
+		auto possibleProtectorateCountryName = target->getName();
 		string protectorateCountryName;
 		if (possibleProtectorateCountryName)
 		{
@@ -1115,7 +1114,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 	{
 		auto target = annexationTargets.front();
 
-		auto possibleTargetCountryName = target->getSourceCountry().getName("english");
+		auto possibleTargetCountryName = target->getName();
 		string targetCountryName;
 		if (possibleTargetCountryName)
 		{
@@ -1171,7 +1170,7 @@ void HoI4FocusTree::addAbsolutistEmpireNationalFocuses(shared_ptr<HoI4::Country>
 	{
 		auto target = annexationTargets.back();
 
-		auto possibleTargetCountryName = target->getSourceCountry().getName("english");
+		auto possibleTargetCountryName = target->getName();
 		string targetCountryName;
 		if (possibleTargetCountryName)
 		{
@@ -1248,7 +1247,7 @@ void HoI4FocusTree::addCommunistCoupBranch(shared_ptr<HoI4::Country> Home,
 		{
 			if (i < coupTargets.size())
 			{
-				auto possibleCoupCountryName = coupTargets[i]->getSourceCountry().getName("english");
+				auto possibleCoupCountryName = coupTargets[i]->getName();
 				string coupCountryName;
 				if (possibleCoupCountryName)
 				{
@@ -1411,7 +1410,7 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home,
 		{
 			if (i < warTargets.size())
 			{
-				auto possibleWarTargetCountryName = warTargets[i]->getSourceCountry().getName("english");
+				auto possibleWarTargetCountryName = warTargets[i]->getName();
 				string warTargetCountryName;
 				if (possibleWarTargetCountryName)
 				{
@@ -1534,7 +1533,7 @@ void HoI4FocusTree::addFascistAnnexationBranch(shared_ptr<HoI4::Country> Home,
 
 	for (unsigned int i = 0; i < annexationTargets.size(); i++)
 	{
-		auto possibleAnnexationTargetCountryName = annexationTargets[i]->getSourceCountry().getName("english");
+		auto possibleAnnexationTargetCountryName = annexationTargets[i]->getName();
 		string annexationTargetCountryName;
 		if (possibleAnnexationTargetCountryName)
 		{
@@ -1646,7 +1645,7 @@ void HoI4FocusTree::addFascistSudetenBranch(shared_ptr<HoI4::Country> Home,
 
 	for (unsigned int i = 0; i < sudetenTargets.size(); i++)
 	{
-		auto possibleSudetenTargetCountryName = sudetenTargets[i]->getSourceCountry().getName("english");
+		auto possibleSudetenTargetCountryName = sudetenTargets[i]->getName();
 		string sudetenTargetCountryName;
 		if (possibleSudetenTargetCountryName)
 		{
@@ -1778,7 +1777,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 	unsigned int i = 0;
 	for (auto newAlly: newAllies)
 	{
-		auto possibleAllyCountryName = newAlly->getSourceCountry().getName("english");
+		auto possibleAllyCountryName = newAlly->getName();
 		string allyCountryName;
 		if (possibleAllyCountryName)
 		{
@@ -1835,7 +1834,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 	i = 0;
 	for (auto GC: GCTargets)
 	{
-		auto possibleWarTargetCountryName = GC->getSourceCountry().getName("english");
+		auto possibleWarTargetCountryName = GC->getName();
 		string warTargetCountryName;
 		if (possibleWarTargetCountryName)
 		{

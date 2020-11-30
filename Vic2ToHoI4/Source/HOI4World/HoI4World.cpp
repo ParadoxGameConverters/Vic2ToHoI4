@@ -383,9 +383,7 @@ map<string, double> HoI4::World::calculateFactoryWorkerRatios(const Configuratio
 		auto adjustedWorkers = adjustedWorkersPerCountry.find(country.first);
 		double factories = adjustedWorkers->second * acutalWorkerFactoryRatio;
 
-		auto& Vic2Country = country.second->getSourceCountry();
-		long actualWorkers = Vic2Country.getEmployedWorkers();
-
+		const auto& actualWorkers = country.second->getEmployedWorkers();
 		if (actualWorkers > 0)
 		{
 			factoryWorkerRatios.insert(make_pair(country.first, factories / actualWorkers));
@@ -401,8 +399,7 @@ map<string, double> HoI4::World::getIndustrialWorkersPerCountry()
 	map<string, double> industrialWorkersPerCountry;
 	for (auto country: landedCountries)
 	{
-		auto& Vic2Country = country.second->getSourceCountry();
-		long employedWorkers = Vic2Country.getEmployedWorkers();
+		const auto& employedWorkers = country.second->getEmployedWorkers();
 		if (employedWorkers > 0)
 		{
 			industrialWorkersPerCountry.insert(make_pair(country.first, employedWorkers));
@@ -794,7 +791,7 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 
 void HoI4::World::logFactionMember(ofstream& factionsLog, shared_ptr<HoI4::Country> member) const
 {
-	auto possibleName = member->getSourceCountry().getName("english");
+	auto possibleName = member->getName();
 	if (possibleName)
 	{
 		factionsLog << *possibleName << ",";

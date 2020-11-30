@@ -46,7 +46,7 @@ void outputNamesSet(std::ostream& namesFile,
 
 void HoI4::outputToNamesFiles(std::ostream& namesFile, const Names& names, const Country& theCountry)
 {
-	const auto primaryCulture = theCountry.getSourceCountry().getPrimaryCulture();
+	const auto primaryCulture = theCountry.getPrimaryCulture();
 	auto femaleSurnames = names.getFemaleSurnames(primaryCulture);
 
 	namesFile << theCountry.getTag() << " = {\n";
@@ -151,7 +151,7 @@ void HoI4::outputToUnitNamesFiles(const Country& theCountry, const Configuration
 void HoI4::outputIdeaGraphics(std::ostream& ideasFile, const Country& theCountry)
 {
 	const auto& tag = theCountry.getTag();
-	const auto& primaryCultureGroup = theCountry.getSourceCountry().getPrimaryCultureGroup();
+	const auto& primaryCultureGroup = theCountry.getPrimaryCultureGroup();
 
 	ideasFile << "\tspriteType = {\n";
 	ideasFile << "\t\tname = \"GFX_idea_" << tag << "_communist_advisor\"\n";
@@ -265,7 +265,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 {
 	const auto& tag = theCountry.getTag();
 	const auto& governmentIdeology = theCountry.getGovernmentIdeology();
-	const auto& primaryCulture = theCountry.getSourceCountry().getPrimaryCulture();
+	const auto& primaryCulture = theCountry.getPrimaryCulture();
 
 	std::ofstream output("output/" + theConfiguration.getOutputName() + "/history/countries/" +
 								commonItems::normalizeUTF8Path(theCountry.getFilename()));
@@ -301,7 +301,7 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		 theCountry.areElectionsAllowed(),
 		 theCountry.getIdeologySupport());
 	outputRelations(output, tag, theCountry.getRelations());
-	outputFactions(output, tag, theCountry.getFaction(), theCountry.getSourceCountry().getName("english"));
+	outputFactions(output, tag, theCountry.getFaction(), theCountry.getName());
 	outputGuaranteedSpherelings(output, theCountry.getGuaranteed());
 	outputIdeas(output,
 		 theCountry.isGreatPower(),

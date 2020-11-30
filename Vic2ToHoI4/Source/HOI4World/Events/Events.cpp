@@ -18,7 +18,7 @@
 
 void HoI4::Events::createFactionEvents(const Country& leader, const Country& newAlly)
 {
-	auto possibleLeaderName = leader.getSourceCountry().getName("english");
+	auto possibleLeaderName = leader.getName();
 	std::string leaderName;
 	if (possibleLeaderName)
 	{
@@ -30,7 +30,7 @@ void HoI4::Events::createFactionEvents(const Country& leader, const Country& new
 		leaderName.clear();
 	}
 
-	auto possibleNewAllyName = newAlly.getSourceCountry().getName("english");
+	auto possibleNewAllyName = newAlly.getName();
 	std::string newAllyName;
 	if (possibleNewAllyName)
 	{
@@ -131,7 +131,7 @@ void HoI4::Events::createFactionEvents(const Country& leader, const Country& new
 
 void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annexed)
 {
-	auto possibleAnnexerName = annexer.getSourceCountry().getName("english");
+	auto possibleAnnexerName = annexer.getName();
 	std::string annexerName;
 	if (possibleAnnexerName)
 	{
@@ -143,7 +143,7 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 		annexerName.clear();
 	}
 
-	auto possibleAnnexedName = annexed.getSourceCountry().getName("english");
+	auto possibleAnnexedName = annexed.getName();
 	std::string annexedName;
 	if (possibleAnnexedName)
 	{
@@ -289,7 +289,7 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 	 const Country& annexed,
 	 const std::vector<int>& claimedStates)
 {
-	auto possibleAnnexerName = annexer.getSourceCountry().getName("english");
+	auto possibleAnnexerName = annexer.getName();
 	std::string annexerName;
 	if (possibleAnnexerName)
 	{
@@ -301,7 +301,7 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 		annexerName.clear();
 	}
 
-	auto possibleAnnexerAdjective = annexer.getSourceCountry().getName("english");
+	auto possibleAnnexerAdjective = annexer.getName();
 	std::string annexerAdjective;
 	if (possibleAnnexerAdjective)
 	{
@@ -313,7 +313,7 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 		annexerAdjective.clear();
 	}
 
-	auto possibleAnnexedName = annexed.getSourceCountry().getName("english");
+	auto possibleAnnexedName = annexed.getName();
 	std::string annexedName;
 	if (possibleAnnexedName)
 	{
@@ -455,7 +455,7 @@ void HoI4::Events::createSudetenEvent(const Country& annexer,
 
 void HoI4::Events::createTradeEvent(const Country& leader, const Country& greatPower)
 {
-	auto possibleAggressorName = greatPower.getSourceCountry().getName("english");
+	auto possibleAggressorName = greatPower.getName();
 	std::string aggressorName;
 	if (possibleAggressorName)
 	{

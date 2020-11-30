@@ -121,10 +121,15 @@ class Country
 	[[nodiscard]] std::optional<HoI4FocusTree> getNationalFocus() const;
 
 	[[nodiscard]] const std::string& getTag() const { return tag; }
-	[[nodiscard]] const Vic2::Country& getSourceCountry() const { return *sourceCountry; }
+	[[nodiscard]] const auto& getOldTag() const { return oldTag; }
+	[[nodiscard]] const auto& getName() const { return name; }
+	[[nodiscard]] const auto& getAdjective() const { return adjective; }
 	[[nodiscard]] const std::string& getFilename() const { return filename; }
 	[[nodiscard]] const std::string& getCommonCountryFile() const { return commonCountryFile; }
 	[[nodiscard]] bool isHuman() const { return human; }
+
+	[[nodiscard]] const auto& getPrimaryCulture() const { return primaryCulture; }
+	[[nodiscard]] const auto& getPrimaryCultureGroup() const { return primaryCultureGroup; }
 
 	[[nodiscard]] const auto& getColor() const { return color; }
 	[[nodiscard]] const std::string& getGraphicalCulture() const { return graphicalCulture; }
@@ -173,6 +178,7 @@ class Country
 	[[nodiscard]] double getMilitaryFactories() const { return militaryFactories; }
 	[[nodiscard]] double getCivilianFactories() const { return civilianFactories; }
 	[[nodiscard]] double getDockyards() const { return dockyards; }
+	[[nodiscard]] int32_t getEmployedWorkers() const { return employedWorkers; }
 
 	[[nodiscard]] const Army& getArmy() const { return theArmy; }
 	[[nodiscard]] const auto& getDivisionLocations() const { return theArmy.getDivisionLocations(); }
@@ -239,10 +245,16 @@ class Country
 	bool attemptToPutCapitalInAnyCored(const std::map<int, State>& allStates);
 
 	std::string tag;
+	std::string oldTag;
+	std::optional<std::string> name;
+	std::optional<std::string> adjective;
 	const std::shared_ptr<Vic2::Country> sourceCountry;
 	std::string filename;
 	std::string commonCountryFile;
 	bool human = false;
+
+	std::string primaryCulture;
+	std::string primaryCultureGroup;
 
 	commonItems::Color color;
 	std::string graphicalCulture = "western_european_gfx";
@@ -281,6 +293,7 @@ class Country
 	double militaryFactories = 0.0;
 	double civilianFactories = 0.0;
 	double dockyards = 0.0;
+	int32_t employedWorkers = 0;
 
 	Army theArmy;
 	std::unique_ptr<ShipVariants> theShipVariants;
