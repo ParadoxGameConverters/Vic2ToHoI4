@@ -357,7 +357,7 @@ void Vic2::World::mergeNations(const std::string& masterTag, const std::vector<s
 			auto slave = getCountry(slaveTag);
 			if (slave)
 			{
-				(*master)->eatCountry(*slave, debug);
+				(*master)->eatCountry(**slave, debug);
 			}
 			countries.erase(slaveTag);
 		}

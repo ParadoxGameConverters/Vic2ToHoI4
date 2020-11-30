@@ -83,15 +83,9 @@ class Country::Builder
 		return *this;
 	}
 
-	Builder& addTech(const std::string& tech)
+	Builder& addTechOrInvention(const std::string& tech)
 	{
-		country->techs.insert(tech);
-		return *this;
-	}
-
-	Builder& addDiscoveredInvention(const std::string& discoveredInvention)
-	{
-		country->discoveredInventions.insert(discoveredInvention);
+		country->technologiesAndInventions.insert(tech);
 		return *this;
 	}
 

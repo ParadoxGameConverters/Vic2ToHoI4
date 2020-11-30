@@ -10,7 +10,6 @@
 #include "Parser.h"
 #include "V2World/Culture/CultureGroups.h"
 #include "V2World/Diplomacy/Relations.h"
-#include "V2World/Diplomacy/RelationsFactory.h"
 #include "V2World/Localisations/Vic2Localisations.h"
 #include "V2World/Military/Army.h"
 #include "V2World/Military/Leaders/Leader.h"
@@ -19,7 +18,6 @@
 #include "V2World/Provinces/Province.h"
 #include "V2World/States/State.h"
 #include "V2World/States/StateDefinitions.h"
-#include "V2World/States/StateFactory.h"
 #include "V2World/Technology/Inventions.h"
 #include "V2World/Wars/War.h"
 #include <cstdint>
@@ -38,6 +36,7 @@ namespace Vic2
 class Country: commonItems::parser
 {
   public:
+	Country() = default;
 	explicit Country(const std::string& theTag,
 		 std::istream& theStream,
 		 const Inventions& theInventions,
@@ -48,19 +47,18 @@ class Country: commonItems::parser
 		 Leader::Factory& leaderFactory,
 		 Army::Factory& armyFactory,
 		 const CommonCountryData& commonCountryData,
-		 const std::vector<Vic2::Party>& allParties);
+		 const std::vector<Party>& allParties);
 
 	class Builder;
 
+	// functions to construct the country
 	void addProvince(const std::pair<const int, std::shared_ptr<Province>>& province) { provinces.insert(province); }
-	void addCore(std::shared_ptr<Province> core) { cores.push_back(core); }
+	void addCore(const std::shared_ptr<Province> core) { cores.push_back(core); }
 	void replaceCores(std::vector<std::shared_ptr<Province>> newCores) { cores.swap(newCores); }
 	void addWar(const War& theWar) { wars.push_back(theWar); }
 	void setAtWar() { atWar = true; }
 
-	[[nodiscard]] auto& getModifiableStates() { return states; }
-
-	void eatCountry(Country* target, bool debug);
+	void eatCountry(Country& target, bool debug);
 	void putProvincesInStates();
 	void limitCommanders();
 	void determineEmployedWorkers();
@@ -68,14 +66,22 @@ class Country: commonItems::parser
 	void setLocalisationAdjectives(const Localisations& vic2Localisations);
 	void handleMissingCulture(const CultureGroups& theCultureGroups);
 
-	[[nodiscard]] const auto& getRelations() const { return relations; }
+	[[nodiscard]] auto& getModifiableStates() { return states; }
+
+	// functions to look up aspects of the country
 	const auto& getAI() const { return vic2AI; }
 	void consolidateConquerStrategies(const std::map<int, std::shared_ptr<Province>>& provinces)
 	{
 		vic2AI->consolidateConquerStrategies(provinces);
 	}
-	[[nodiscard]] const auto& getStates() const { return states; }
 	[[nodiscard]] const auto& getTag() const { return tag; }
+	[[nodiscard]] const auto& getColor() const { return color; }
+	[[nodiscard]] bool isHuman() const { return human; }
+	[[nodiscard]] const auto& getStates() const { return states; }
+	[[nodiscard]] bool hasLand() const { return !provinces.empty(); }
+	[[nodiscard]] bool isEmpty() const { return cores.empty() && provinces.empty(); }
+	[[nodiscard]] const auto& getCores() const { return cores; }
+	[[nodiscard]] int getCapital() const { return capital; }
 	[[nodiscard]] const auto& getPrimaryCulture() const { return primaryCulture; }
 	[[nodiscard]] const auto& getPrimaryCultureGroup() const { return primaryCultureGroup; }
 	[[nodiscard]] const auto& getAcceptedCultures() const { return acceptedCultures; }
@@ -84,44 +90,41 @@ class Country: commonItems::parser
 		return acceptedCultures.contains(culture);
 	}
 	[[nodiscard]] const auto& getTechnologiesAndInventions() const { return technologiesAndInventions; }
-	[[nodiscard]] const auto& getGovernment() const { return government; }
-	[[nodiscard]] const auto& getFlags() const { return flags; }
-	[[nodiscard]] const auto& getLastElection() const { return lastElection; }
-	[[nodiscard]] int getCapital() const { return capital; }
-	[[nodiscard]] const auto& getColor() const { return color; }
+	[[nodiscard]] const auto& getRelations() const { return relations; }
+	[[nodiscard]] bool isCivilized() const { return civilized; }
 	[[nodiscard]] const auto& getArmies() const { return armies; }
 	[[nodiscard]] const auto& getLeaders() const { return leaders; }
 	[[nodiscard]] double getRevanchism() const { return revanchism; }
 	[[nodiscard]] double getWarExhaustion() const { return warExhaustion; }
 	[[nodiscard]] double getBadBoy() const { return badBoy; }
-	[[nodiscard]] bool hasLand() const { return !provinces.empty(); }
-	[[nodiscard]] const auto& getCores() const { return cores; }
-	[[nodiscard]] bool isEmpty() const { return cores.empty() && provinces.empty(); }
-	[[nodiscard]] bool isCivilized() const { return civilized; }
-	[[nodiscard]] bool isHuman() const { return human; }
+	[[nodiscard]] const auto& getFlags() const { return flags; }
+	[[nodiscard]] const auto& getGovernment() const { return government; }
 	[[nodiscard]] const auto& getUpperHouseComposition() const { return upperHouseComposition; }
+	[[nodiscard]] const auto& getRulingParty() const { return *rulingParty; }
+	[[nodiscard]] const auto& getActiveParties() const { return activeParties; }
+	[[nodiscard]] const auto& getLastElection() const { return lastElection; }
 	[[nodiscard]] const auto& getWars() const { return wars; }
 	[[nodiscard]] bool isAtWar() const { return atWar; }
-	[[nodiscard]] const auto& getActiveParties() const { return activeParties; }
-	[[nodiscard]] const auto& getRulingParty() const { return *rulingParty; }
 
+	[[nodiscard]] bool hasCoreOnCapital() const;
+	[[nodiscard]] int32_t getEmployedWorkers() const;
+	[[nodiscard]] float getAverageIssueSupport(const std::string& issueName) const;
 	[[nodiscard]] std::optional<std::string> getName(const std::string& language) const;
 	[[nodiscard]] std::optional<std::string> getAdjective(const std::string& language) const;
-	[[nodiscard]] int32_t getEmployedWorkers() const;
-	[[nodiscard]] bool hasCoreOnCapital() const;
 	[[nodiscard]] std::vector<std::string> getShipNames(const std::string& category) const;
-	[[nodiscard]] float getAverageIssueSupport(const std::string& issueName) const;
 
   private:
-	void setLocalisationName(const std::string& language, const std::string& name);
-	void setLocalisationAdjective(const std::string& language, const std::string& adjective);
-	void setParties(const std::vector<Party>& allParties);
-
 	std::map<std::string, int> determineCultureSizes();
 	std::string selectLargestCulture(const std::map<std::string, int>& cultureSizes);
 
+	void setParties(const std::vector<Party>& allParties);
+
+	void setLocalisationName(const std::string& language, const std::string& name);
+	void setLocalisationAdjective(const std::string& language, const std::string& adjective);
+
 	std::string tag;
 	commonItems::Color color;
+	bool human = false;
 
 	std::vector<State> states;
 	std::map<int, std::shared_ptr<Province>> provinces;
@@ -155,13 +158,11 @@ class Country: commonItems::parser
 	std::set<Party> activeParties;
 	date lastElection;
 
-	std::string domainName = "";
-	std::string domainAdjective = "";
+	std::string domainName;
+	std::string domainAdjective;
 	std::map<std::string, std::string> namesByLanguage;
 	std::map<std::string, std::string> adjectivesByLanguage;
 	std::map<std::string, std::vector<std::string>> shipNames;
-
-	bool human = false;
 
 	bool atWar = false;
 	std::vector<War> wars; // only the country that started a war owns it here

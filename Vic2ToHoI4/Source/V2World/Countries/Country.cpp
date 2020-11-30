@@ -9,6 +9,7 @@
 #include "StringUtils.h"
 #include "V2World/Culture/CultureGroups.h"
 #include "V2World/Diplomacy/Relations.h"
+#include "V2World/Diplomacy/RelationsFactory.h"
 #include "V2World/Localisations/Vic2Localisations.h"
 #include "V2World/Military/ArmyFactory.h"
 #include "V2World/Military/Leaders/Leader.h"
@@ -17,6 +18,7 @@
 #include "V2World/Provinces/Province.h"
 #include "V2World/States/State.h"
 #include "V2World/States/StateDefinitions.h"
+#include "V2World/States/StateFactory.h"
 #include "V2World/Technology/Inventions.h"
 #include <cmath>
 
@@ -188,39 +190,68 @@ Vic2::Country::Country(const std::string& theTag,
 }
 
 
-void Vic2::Country::eatCountry(Vic2::Country* target, bool debug)
+void Vic2::Country::setParties(const std::vector<Party>& allParties)
 {
-	if (target->tag == tag)
+	if (tag == "REB")
+	{
+		return;
+	}
+	for (auto ID: activePartyIDs)
+	{
+		if (ID <= allParties.size())
+		{
+			activeParties.insert(allParties.at(ID - 1)); // Subtract 1, because party ID starts from index of 1
+		}
+		else
+		{
+			Log(LogLevel::Warning) << "Party ID mismatch! Did some Vic2 country files not get read?";
+		}
+	}
+
+	if (rulingPartyID == 0)
+	{
+		throw std::runtime_error(tag + " had no ruling party. The save needs manual repair.");
+	}
+	if (rulingPartyID > allParties.size())
+	{
+		throw std::runtime_error(
+			 "Could not find the ruling party for " + tag + ". " + "Most likely a mod was not included.\n" +
+			 "Double-check your settings, and remember to include EU4 to Vic2 mods. See the FAQ for more information.");
+	}
+	rulingParty =
+		 std::make_unique<Party>(allParties.at(rulingPartyID - 1)); // Subtract 1, because party ID starts from index of 1
+}
+
+
+void Vic2::Country::eatCountry(Country& target, bool debug)
+{
+	if (target.tag == tag)
 	{
 		return;
 	}
 
-	for (auto& state: target->states)
+	for (auto& state: target.states)
 	{
-		states.push_back(state);
 		state.setOwner(tag);
+		states.push_back(std::move(state));
 	}
-	for (auto core: target->cores)
+	for (auto& core: target.cores)
 	{
-		addCore(core);
 		core->addCore(tag);
-		core->removeCore(target->tag);
+		core->removeCore(target.tag);
+		addCore(core);
 	}
-	for (auto provinceItr: target->provinces)
+	for (auto& provinceItr: target.provinces)
 	{
-		addProvince(provinceItr);
 		provinceItr.second->setOwner(tag);
+		provinces.insert(provinceItr);
 	}
-	technologiesAndInventions.insert(target->technologiesAndInventions.begin(), target->technologiesAndInventions.end());
-	armies.insert(armies.end(), target->armies.begin(), target->armies.end());
-
-	// coreless, landless countries will be cleaned up automatically
-	target->provinces.clear();
-	target->cores.clear();
+	technologiesAndInventions.insert(target.technologiesAndInventions.begin(), target.technologiesAndInventions.end());
+	armies.insert(armies.end(), target.armies.begin(), target.armies.end());
 
 	if (debug)
 	{
-		Log(LogLevel::Debug) << "Merged " << target->tag << " into " << tag;
+		Log(LogLevel::Debug) << "Merged " << target.tag << " into " << tag;
 	}
 }
 
@@ -319,6 +350,19 @@ void Vic2::Country::setLocalisationAdjectives(const Localisations& vic2Localisat
 }
 
 
+void Vic2::Country::setLocalisationAdjective(const std::string& language, const std::string& adjective)
+{
+	if (!domainAdjective.empty()) // Domains have their adjective set from domain_region
+	{
+		adjectivesByLanguage[language] = domainAdjective;
+	}
+	else if (!adjective.empty())
+	{
+		adjectivesByLanguage[language] = adjective;
+	}
+}
+
+
 void Vic2::Country::handleMissingCulture(const CultureGroups& theCultureGroups)
 {
 	if (primaryCulture.empty())
@@ -338,46 +382,13 @@ void Vic2::Country::handleMissingCulture(const CultureGroups& theCultureGroups)
 }
 
 
-void Vic2::Country::setParties(const std::vector<Party>& allParties)
-{
-	if (tag == "REB")
-	{
-		return;
-	}
-	for (auto ID: activePartyIDs)
-	{
-		if (ID <= allParties.size())
-		{
-			activeParties.insert(allParties.at(ID - 1)); // Subtract 1, because party ID starts from index of 1
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Party ID mismatch! Did some Vic2 country files not get read?";
-		}
-	}
-
-	if (rulingPartyID == 0)
-	{
-		throw std::runtime_error(tag + " had no ruling party. The save needs manual repair.");
-	}
-	if (rulingPartyID > allParties.size())
-	{
-		throw std::runtime_error(
-			 "Could not find the ruling party for " + tag + ". " + "Most likely a mod was not included.\n" +
-			 "Double-check your settings, and remember to include EU4 to Vic2 mods. See the FAQ for more information.");
-	}
-	rulingParty =
-		 std::make_unique<Party>(allParties.at(rulingPartyID - 1)); // Subtract 1, because party ID starts from index of 1
-}
-
-
 std::map<std::string, int> Vic2::Country::determineCultureSizes()
 {
 	std::map<std::string, int> cultureSizes;
 
-	for (auto province: provinces)
+	for (auto [unused, province]: provinces)
 	{
-		for (auto pop: province.second->getPops())
+		for (auto pop: province->getPops())
 		{
 			std::string popCulture = pop.getCulture();
 			auto cultureSize = cultureSizes.find(popCulture);
@@ -411,16 +422,53 @@ std::string Vic2::Country::selectLargestCulture(const std::map<std::string, int>
 }
 
 
-void Vic2::Country::setLocalisationAdjective(const std::string& language, const std::string& adjective)
+bool Vic2::Country::hasCoreOnCapital() const
 {
-	if (!domainAdjective.empty()) // Domains have their adjective set from domain_region
+	for (const auto& core: cores)
 	{
-		adjectivesByLanguage[language] = domainAdjective;
+		if (core->getNumber() == capital)
+		{
+			return true;
+		}
 	}
-	else if (!adjective.empty())
+
+	return false;
+}
+
+
+int32_t Vic2::Country::getEmployedWorkers() const
+{
+	int32_t employedWorkers = 0;
+	for (const auto& state: states)
 	{
-		adjectivesByLanguage[language] = adjective;
+		employedWorkers += state.getEmployedWorkers();
 	}
+
+	return employedWorkers;
+}
+
+
+float Vic2::Country::getAverageIssueSupport(const std::string& issueName) const
+{
+	float totalPopulation = 0.0;
+	float totalSupport = 0.0;
+	for (const auto& [unused, province]: provinces)
+	{
+		for (const auto& pop: province->getPops())
+		{
+			const auto size = static_cast<float>(pop.getSize());
+			totalSupport += pop.getIssueSupport(issueName) * size;
+			totalPopulation += size;
+		}
+	}
+
+	return totalSupport / totalPopulation;
+}
+
+
+bool Vic2::operator==(const Country& one, const Country& other)
+{
+	return one.getTag() == other.getTag();
 }
 
 
@@ -451,32 +499,6 @@ std::optional<std::string> Vic2::Country::getAdjective(const std::string& langua
 }
 
 
-int32_t Vic2::Country::getEmployedWorkers() const
-{
-	int32_t employedWorkers = 0;
-	for (const auto& state: states)
-	{
-		employedWorkers += state.getEmployedWorkers();
-	}
-
-	return employedWorkers;
-}
-
-
-bool Vic2::Country::hasCoreOnCapital() const
-{
-	for (const auto& core: cores)
-	{
-		if (core->getNumber() == capital)
-		{
-			return true;
-		}
-	}
-
-	return false;
-}
-
-
 std::vector<std::string> Vic2::Country::getShipNames(const std::string& category) const
 {
 	const auto foundShipNames = shipNames.find(category);
@@ -485,28 +507,4 @@ std::vector<std::string> Vic2::Country::getShipNames(const std::string& category
 		return std::vector<std::string>{};
 	}
 	return foundShipNames->second;
-}
-
-
-float Vic2::Country::getAverageIssueSupport(const std::string& issueName) const
-{
-	float totalPopulation = 0.0;
-	float totalSupport = 0.0;
-	for (const auto& [unused, province]: provinces)
-	{
-		for (const auto& pop: province->getPops())
-		{
-			const auto size = static_cast<float>(pop.getSize());
-			totalSupport += pop.getIssueSupport(issueName) * size;
-			totalPopulation += size;
-		}
-	}
-
-	return totalSupport / totalPopulation;
-}
-
-
-bool Vic2::operator==(const Country& one, const Country& other)
-{
-	return one.getTag() == other.getTag();
 }
