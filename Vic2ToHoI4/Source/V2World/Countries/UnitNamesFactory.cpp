@@ -1,4 +1,5 @@
 #include "UnitNamesFactory.h"
+#include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 
 
@@ -6,7 +7,11 @@
 Vic2::UnitNamesFactory::UnitNamesFactory()
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& unitType, std::istream& theStream) {
-		const auto newNames = commonItems::stringList{theStream}.getStrings();
+		std::vector<std::string> newNames;
+		for (const auto& name: commonItems::stringList{theStream}.getStrings())
+		{
+			newNames.push_back(commonItems::convertWin1252ToUTF8(name));
+		}
 		auto [names, inserted] = unitNames.insert(std::make_pair(unitType, newNames));
 		if (!inserted)
 		{
