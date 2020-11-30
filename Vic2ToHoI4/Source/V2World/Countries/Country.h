@@ -91,8 +91,9 @@ class Country: commonItems::parser
 	[[nodiscard]] const auto& getRulingParty() const { return *rulingParty; }
 	[[nodiscard]] const auto& getActiveParties() const { return activeParties; }
 	[[nodiscard]] const auto& getLastElection() const { return lastElection; }
-	[[nodiscard]] const auto& getWars() const { return wars; }
+	[[nodiscard]] std::map<std::string, std::vector<std::string>> getAllShipNames() const { return shipNames; }
 	[[nodiscard]] bool isAtWar() const { return atWar; }
+	[[nodiscard]] const auto& getWars() const { return wars; }
 
 	[[nodiscard]] bool hasCoreOnCapital() const;
 	[[nodiscard]] int32_t getEmployedWorkers() const;

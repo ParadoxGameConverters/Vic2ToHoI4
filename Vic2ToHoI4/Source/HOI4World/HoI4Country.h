@@ -53,7 +53,7 @@ class Country
 {
   public:
 	explicit Country(std::string tag,
-		 const std::shared_ptr<Vic2::Country> srcCountry,
+		 const Vic2::Country& sourceCountry,
 		 Names& names,
 		 graphicsMapper& theGraphics,
 		 const CountryMapper& countryMap,
@@ -243,12 +243,12 @@ class Country
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates);
 	bool attemptToPutCapitalInAnyCored(const std::map<int, State>& allStates);
+	[[nodiscard]] std::vector<std::string> getShipNames(const std::string& category) const;
 
 	std::string tag;
 	std::string oldTag;
 	std::optional<std::string> name;
 	std::optional<std::string> adjective;
-	const std::shared_ptr<Vic2::Country> sourceCountry;
 	std::string filename;
 	std::string commonCountryFile;
 	bool human = false;
@@ -270,11 +270,14 @@ class Country
 	std::set<int> states;
 	std::optional<int> capitalState;
 	std::optional<int> capitalProvince;
+	int oldCapital;
 
+	std::string oldGovernment;
 	std::string governmentIdeology = "neutrality";
 	std::string leaderIdeology = "conservatism_neutral";
 	Vic2::Party rulingParty;
 	std::set<Vic2::Party> parties;
+	std::map<std::string, double> upperHouseComposition;
 	std::map<std::string, int> ideologySupport{std::make_pair("neutrality", 100)};
 	date lastElection;
 	int stability = 50;
@@ -285,6 +288,7 @@ class Country
 
 	std::vector<CountryLeader> leaders;
 
+	std::set<std::string> oldTechnologiesAndInventions;
 	std::optional<technologies> theTechnologies;
 	std::set<std::string> ideas;
 	std::unique_ptr<HoI4FocusTree> nationalFocus;
@@ -295,6 +299,7 @@ class Country
 	double dockyards = 0.0;
 	int32_t employedWorkers = 0;
 
+	std::vector<Vic2::Army> oldArmies;
 	Army theArmy;
 	std::unique_ptr<ShipVariants> theShipVariants;
 	std::unique_ptr<Navies> theNavies;
@@ -304,10 +309,12 @@ class Country
 	std::map<std::string, unsigned int> equipmentStockpile;
 	std::vector<General> generals;
 	std::vector<Admiral> admirals;
+	std::map<std::string, std::vector<std::string>> shipNames;
 
 	std::map<std::string, HoI4::Relations> relations;
 	std::vector<HoI4::AIStrategy> aiStrategies;
 	std::vector<HoI4::AIStrategy> conquerStrategies;
+	bool atWar = false;
 	std::vector<War> wars;
 	double threat = 0.0;
 	std::shared_ptr<const Faction> faction;

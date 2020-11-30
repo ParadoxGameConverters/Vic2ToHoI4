@@ -219,7 +219,7 @@ void HoI4::World::convertCountry(std::pair<std::string, std::shared_ptr<Vic2::Co
 	else
 	{
 		destCountry = new HoI4::Country(*possibleHoI4Tag,
-			 country.second,
+			 *country.second,
 			 *names,
 			 theGraphics,
 			 countryMap,

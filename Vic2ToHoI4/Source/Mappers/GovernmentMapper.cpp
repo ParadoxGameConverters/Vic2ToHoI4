@@ -180,7 +180,8 @@ std::string governmentMapper::getLeaderIdeologyForCountry(const std::string& sou
 }
 
 
-std::string governmentMapper::getExistingIdeologyForCountry(const Vic2::Country& country,
+std::string governmentMapper::getExistingIdeologyForCountry(const std::string& tag,
+	 const std::string& government,
 	 const std::string& Vic2RulingIdeology,
 	 const std::set<std::string>& majorIdeologies,
 	 const HoI4::Ideologies& ideologies,
@@ -189,7 +190,7 @@ std::string governmentMapper::getExistingIdeologyForCountry(const Vic2::Country&
 	std::string ideology = "neutrality";
 	for (auto mapping: governmentMap)
 	{
-		if (governmentMatches(mapping, country.getGovernment()) && rulingIdeologyMatches(mapping, Vic2RulingIdeology) &&
+		if (governmentMatches(mapping, government) && rulingIdeologyMatches(mapping, Vic2RulingIdeology) &&
 			 ideologyIsValid(mapping, majorIdeologies, ideologies))
 		{
 			ideology = mapping.HoI4GovernmentIdeology;
@@ -199,14 +200,14 @@ std::string governmentMapper::getExistingIdeologyForCountry(const Vic2::Country&
 
 	if (debug)
 	{
-		Log(LogLevel::Debug) << "\t\tMapped " << country.getTag() << " government " << country.getGovernment() << " to "
-									<< ideology;
+		Log(LogLevel::Debug) << "\t\tMapped " << tag << " government " << government << " to " << ideology;
 	}
 	return ideology;
 }
 
 
-std::string governmentMapper::getExistingLeaderIdeologyForCountry(const Vic2::Country& country,
+std::string governmentMapper::getExistingLeaderIdeologyForCountry(const std::string& tag,
+	 const std::string& government,
 	 const std::string& Vic2RulingIdeology,
 	 const std::set<std::string>& majorIdeologies,
 	 const HoI4::Ideologies& ideologies,
@@ -215,7 +216,7 @@ std::string governmentMapper::getExistingLeaderIdeologyForCountry(const Vic2::Co
 	std::string ideology = "neutrality";
 	for (auto mapping: governmentMap)
 	{
-		if (governmentMatches(mapping, country.getGovernment()) && rulingIdeologyMatches(mapping, Vic2RulingIdeology) &&
+		if (governmentMatches(mapping, government) && rulingIdeologyMatches(mapping, Vic2RulingIdeology) &&
 			 ideologyIsValid(mapping, majorIdeologies, ideologies))
 		{
 			ideology = mapping.HoI4LeaderIdeology;
@@ -225,8 +226,7 @@ std::string governmentMapper::getExistingLeaderIdeologyForCountry(const Vic2::Co
 
 	if (debug)
 	{
-		Log(LogLevel::Debug) << "\t\tMapped " << country.getTag() << " leader " << country.getGovernment() << " to "
-									<< ideology;
+		Log(LogLevel::Debug) << "\t\tMapped " << tag << " leader " << government << " to " << ideology;
 	}
 	return ideology;
 }
