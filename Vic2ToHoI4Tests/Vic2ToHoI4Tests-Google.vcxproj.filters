@@ -1289,10 +1289,10 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\Vic2AI.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Ai</Filter>
     </ClCompile>
-    <ClCompile Include="Vic2WorldTests\Ai\AIStrategy.cpp">
+    <ClCompile Include="Vic2WorldTests\Ai\AIStrategyTests.cpp">
       <Filter>Vic2WorldTests\Ai</Filter>
     </ClCompile>
-    <ClCompile Include="Vic2WorldTests\Ai\Vic2AI.cpp">
+    <ClCompile Include="Vic2WorldTests\Ai\Vic2AITests.cpp">
       <Filter>Vic2WorldTests\Ai</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1661,7 +1661,7 @@
       <UniqueIdentifier>{9891403a-4292-4586-b136-1cb6ff503335}</UniqueIdentifier>
     </Filter>
     <Filter Include="Vic2WorldTests\Ai">
-      <UniqueIdentifier>{27185d68-65a5-48e5-8b65-2d98a5235982}</UniqueIdentifier>
+      <UniqueIdentifier>{a253453c-d9e8-4d04-97a3-2400309a28f4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

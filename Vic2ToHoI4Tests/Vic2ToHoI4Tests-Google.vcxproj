@@ -432,8 +432,8 @@
     <ClCompile Include="MapperTests\FlagsToIdeasMapperTests.cpp" />
     <ClCompile Include="MapperTests\FlagToIdeaMappingTests.cpp" />
     <ClCompile Include="MapperTests\TechMapperTests.cpp" />
-    <ClCompile Include="Vic2WorldTests\Ai\AIStrategy.cpp" />
-    <ClCompile Include="Vic2WorldTests\Ai\Vic2AI.cpp" />
+    <ClCompile Include="Vic2WorldTests\Ai\AIStrategyTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Ai\Vic2AITests.cpp" />
     <ClCompile Include="Vic2WorldTests\Culture\CultureGroupFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Culture\CultureGroupsTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Diplomacy\AgreementTests.cpp" />
