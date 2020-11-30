@@ -37,7 +37,7 @@ class World: commonItems::parser
 
 	[[nodiscard]] std::optional<const std::shared_ptr<Province>> getProvince(int provNum) const;
 
-	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getCountries() const { return countries; }
+	[[nodiscard]] const auto& getCountries() const { return countries; }
 	[[nodiscard]] const auto& getDiplomacy() const { return diplomacy; }
 	[[nodiscard]] std::vector<std::string> getGreatPowers() const { return greatPowers; }
 	[[nodiscard]] auto getProvinces() const { return provinces; }
@@ -65,11 +65,8 @@ class World: commonItems::parser
 	void checkAllProvincesMapped(const mappers::ProvinceMapper& provinceMapper) const;
 	void consolidateConquerStrategies();
 
-	[[nodiscard]] std::optional<std::shared_ptr<Country>> getCountry(const std::string& tag) const;
-
-
 	std::map<int, std::shared_ptr<Province>> provinces;
-	std::map<std::string, std::shared_ptr<Country>> countries;
+	std::map<std::string, Country> countries;
 	std::unique_ptr<Diplomacy> diplomacy;
 	std::vector<std::string> greatPowers;
 

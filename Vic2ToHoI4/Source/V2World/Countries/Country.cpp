@@ -52,8 +52,7 @@ void Vic2::Country::setParties(const std::vector<Party>& allParties)
 			 "Could not find the ruling party for " + tag + ". " + "Most likely a mod was not included.\n" +
 			 "Double-check your settings, and remember to include EU4 to Vic2 mods. See the FAQ for more information.");
 	}
-	rulingParty =
-		 std::make_unique<Party>(allParties.at(rulingPartyID - 1)); // Subtract 1, because party ID starts from index of 1
+	rulingParty = allParties.at(rulingPartyID - 1); // Subtract 1, because party ID starts from index of 1
 }
 
 

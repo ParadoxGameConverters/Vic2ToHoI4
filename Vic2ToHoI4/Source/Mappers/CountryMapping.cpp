@@ -60,9 +60,9 @@ void CountryMapper::createMappings(const Vic2::World* srcWorld, bool debug)
 	Log(LogLevel::Info) << "\tCreating country mappings";
 	resetMappingData();
 
-	for (auto Vic2Country: srcWorld->getCountries())
+	for (const auto& [tag, unused]: srcWorld->getCountries())
 	{
-		makeOneMapping(Vic2Country.first, debug);
+		makeOneMapping(tag, debug);
 	}
 }
 

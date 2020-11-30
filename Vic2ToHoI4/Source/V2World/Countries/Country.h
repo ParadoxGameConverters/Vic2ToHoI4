@@ -88,7 +88,7 @@ class Country: commonItems::parser
 	[[nodiscard]] const auto& getFlags() const { return flags; }
 	[[nodiscard]] const auto& getGovernment() const { return government; }
 	[[nodiscard]] const auto& getUpperHouseComposition() const { return upperHouseComposition; }
-	[[nodiscard]] const auto& getRulingParty() const { return *rulingParty; }
+	[[nodiscard]] const auto& getRulingParty() const { return rulingParty; }
 	[[nodiscard]] const auto& getActiveParties() const { return activeParties; }
 	[[nodiscard]] const auto& getLastElection() const { return lastElection; }
 	[[nodiscard]] std::map<std::string, std::vector<std::string>> getAllShipNames() const { return shipNames; }
@@ -143,7 +143,7 @@ class Country: commonItems::parser
 	std::map<std::string, double> upperHouseComposition;
 	unsigned int rulingPartyID = 0; // Bad value, but normal for Rebel faction.
 	std::vector<unsigned int> activePartyIDs;
-	std::unique_ptr<Party> rulingParty;
+	Party rulingParty;
 	std::set<Party> activeParties;
 	date lastElection;
 

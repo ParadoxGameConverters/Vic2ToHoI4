@@ -95,7 +95,7 @@ class States: commonItems::parser
 		 const std::string& newOwner,
 		 const Vic2::World& sourceWorld);
 
-	void createStates(const std::map<std::string, std::shared_ptr<Vic2::Country>>& sourceCountries,
+	void createStates(const std::map<std::string, Vic2::Country>& sourceCountries,
 		 const std::map<int, std::shared_ptr<Vic2::Province>>& sourceProvinces,
 		 const std::map<int, Province>& theProvinces,
 		 const ImpassableProvinces& theImpassableProvinces,

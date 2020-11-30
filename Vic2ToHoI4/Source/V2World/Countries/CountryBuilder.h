@@ -43,7 +43,7 @@ class Country::Builder
 
 	Builder& setRulingParty(const Party& rulingParty)
 	{
-		country->rulingParty = std::make_unique<Party>(rulingParty);
+		country->rulingParty = rulingParty;
 		return *this;
 	}
 

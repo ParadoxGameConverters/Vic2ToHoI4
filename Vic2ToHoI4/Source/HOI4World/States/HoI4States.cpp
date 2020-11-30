@@ -225,7 +225,7 @@ std::set<std::string> HoI4::States::determineCores(const std::vector<int>& sourc
 }
 
 
-void HoI4::States::createStates(const std::map<std::string, std::shared_ptr<Vic2::Country>>& sourceCountries,
+void HoI4::States::createStates(const std::map<std::string, Vic2::Country>& sourceCountries,
 	 const std::map<int, std::shared_ptr<Vic2::Province>>& sourceProvinces,
 	 const std::map<int, Province>& theProvinces,
 	 const ImpassableProvinces& theImpassableProvinces,
@@ -243,7 +243,7 @@ void HoI4::States::createStates(const std::map<std::string, std::shared_ptr<Vic2
 
 	for (const auto& country: sourceCountries)
 	{
-		for (const auto& vic2State: country.second->getStates())
+		for (const auto& vic2State: country.second.getStates())
 		{
 			auto possibleHoI4Owner = countryMap.getHoI4Tag(country.first);
 			if (possibleHoI4Owner)
