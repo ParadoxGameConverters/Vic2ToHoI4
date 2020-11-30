@@ -53,7 +53,7 @@ class Country
 {
   public:
 	explicit Country(std::string tag,
-		 const Vic2::Country* srcCountry,
+		 const std::shared_ptr<Vic2::Country> srcCountry,
 		 Names& names,
 		 graphicsMapper& theGraphics,
 		 const CountryMapper& countryMap,
@@ -121,7 +121,7 @@ class Country
 	[[nodiscard]] std::optional<HoI4FocusTree> getNationalFocus() const;
 
 	[[nodiscard]] const std::string& getTag() const { return tag; }
-	[[nodiscard]] const Vic2::Country& getSourceCountry() const { return sourceCountry; }
+	[[nodiscard]] const Vic2::Country& getSourceCountry() const { return *sourceCountry; }
 	[[nodiscard]] const std::string& getFilename() const { return filename; }
 	[[nodiscard]] const std::string& getCommonCountryFile() const { return commonCountryFile; }
 	[[nodiscard]] bool isHuman() const { return human; }
@@ -239,7 +239,7 @@ class Country
 	bool attemptToPutCapitalInAnyCored(const std::map<int, State>& allStates);
 
 	std::string tag;
-	const Vic2::Country& sourceCountry;
+	const std::shared_ptr<Vic2::Country> sourceCountry;
 	std::string filename;
 	std::string commonCountryFile;
 	bool human = false;

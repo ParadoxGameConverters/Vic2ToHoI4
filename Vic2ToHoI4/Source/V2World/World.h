@@ -5,7 +5,6 @@
 
 #include "Configuration.h"
 #include "Countries/Country.h"
-#include "Culture/CultureGroups.h"
 #include "Diplomacy/Diplomacy.h"
 #include "Localisations/Vic2Localisations.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
@@ -38,7 +37,7 @@ class World: commonItems::parser
 
 	[[nodiscard]] std::optional<const std::shared_ptr<Province>> getProvince(int provNum) const;
 
-	[[nodiscard]] std::map<std::string, Country*> getCountries() const { return countries; }
+	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getCountries() const { return countries; }
 	[[nodiscard]] const auto& getDiplomacy() const { return diplomacy; }
 	[[nodiscard]] std::vector<std::string> getGreatPowers() const { return greatPowers; }
 	[[nodiscard]] auto getProvinces() const { return provinces; }
@@ -48,7 +47,6 @@ class World: commonItems::parser
   private:
 	void setLocalisations(Localisations& vic2Localisations);
 	void checkStateCategories();
-	void handleMissingCountryCultures();
 
 	void setGreatPowerStatus(const std::vector<int>& GPIndexes, const std::vector<std::string>& tagsInOrder);
 
@@ -56,7 +54,7 @@ class World: commonItems::parser
 	void limitCommanders();
 	void addProvinceCoreInfoToCountries();
 	void removeSimpleLandlessNations();
-	bool shouldCoreBeRemoved(const Province& core, const Country* country) const;
+	bool shouldCoreBeRemoved(const Province& core, const Country& country) const;
 	void determineEmployedWorkers();
 	void removeEmptyNations();
 	void addWarsToCountries(const std::vector<War>& wars);
@@ -67,15 +65,13 @@ class World: commonItems::parser
 	void checkAllProvincesMapped(const mappers::ProvinceMapper& provinceMapper) const;
 	void consolidateConquerStrategies();
 
-	[[nodiscard]] std::optional<Country*> getCountry(const std::string& tag) const;
+	[[nodiscard]] std::optional<std::shared_ptr<Country>> getCountry(const std::string& tag) const;
 
 
 	std::map<int, std::shared_ptr<Province>> provinces;
-	std::map<std::string, Country*> countries;
+	std::map<std::string, std::shared_ptr<Country>> countries;
 	std::unique_ptr<Diplomacy> diplomacy;
 	std::vector<std::string> greatPowers;
-
-	std::unique_ptr<CultureGroups> theCultureGroups;
 
 	std::unique_ptr<StateDefinitions> theStateDefinitions;
 	std::unique_ptr<Localisations> theLocalisations;

@@ -1120,6 +1120,9 @@
     <ClCompile Include="Source\V2World\Countries\UnitNamesFactory.cpp">
       <Filter>Vic2World\Countries</Filter>
     </ClCompile>
+    <ClCompile Include="Source\V2World\Countries\CountryFactory.cpp">
+      <Filter>Vic2World\Countries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2164,6 +2167,9 @@
       <Filter>Vic2World\Countries</Filter>
     </ClInclude>
     <ClInclude Include="Source\V2World\Countries\UnitNamesFactory.h">
+      <Filter>Vic2World\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Countries\CountryFactory.h">
       <Filter>Vic2World\Countries</Filter>
     </ClInclude>
   </ItemGroup>

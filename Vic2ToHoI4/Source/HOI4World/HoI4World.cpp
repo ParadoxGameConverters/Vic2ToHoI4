@@ -199,7 +199,7 @@ void HoI4::World::convertCountries(const Vic2::Localisations& vic2Localisations)
 }
 
 
-void HoI4::World::convertCountry(std::pair<std::string, Vic2::Country*> country,
+void HoI4::World::convertCountry(std::pair<std::string, std::shared_ptr<Vic2::Country>> country,
 	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 	 const Vic2::Localisations& vic2Localisations,
 	 const ArticleRules& articleRules)

@@ -36,20 +36,8 @@ namespace Vic2
 class Country: commonItems::parser
 {
   public:
-	Country() = default;
-	explicit Country(const std::string& theTag,
-		 std::istream& theStream,
-		 const Inventions& theInventions,
-		 const CultureGroups& theCultureGroups,
-		 const StateDefinitions& theStateDefinitions,
-		 State::Factory& stateFactory,
-		 Relations::Factory& relationsFactory,
-		 Leader::Factory& leaderFactory,
-		 Army::Factory& armyFactory,
-		 const CommonCountryData& commonCountryData,
-		 const std::vector<Party>& allParties);
-
 	class Builder;
+	class Factory;
 
 	// functions to construct the country
 	void addProvince(const std::pair<const int, std::shared_ptr<Province>>& province) { provinces.insert(province); }

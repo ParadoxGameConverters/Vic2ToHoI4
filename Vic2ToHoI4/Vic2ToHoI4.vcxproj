@@ -380,6 +380,7 @@
     <ClCompile Include="Source\V2World\Countries\CommonCountriesDataFactory.cpp" />
     <ClCompile Include="Source\V2World\Countries\CommonCountryDataFactory.cpp" />
     <ClCompile Include="Source\V2World\Countries\Country.cpp" />
+    <ClCompile Include="Source\V2World\Countries\CountryFactory.cpp" />
     <ClCompile Include="Source\V2World\Ai\AIStrategy.cpp" />
     <ClCompile Include="Source\V2World\Ai\Vic2AI.cpp" />
     <ClCompile Include="Source\V2World\Countries\UnitNamesFactory.cpp" />
@@ -716,6 +717,7 @@
     <ClInclude Include="Source\V2World\Countries\CommonCountryDataFactory.h" />
     <ClInclude Include="Source\V2World\Countries\Country.h" />
     <ClInclude Include="Source\V2World\Countries\CountryBuilder.h" />
+    <ClInclude Include="Source\V2World\Countries\CountryFactory.h" />
     <ClInclude Include="Source\V2World\Countries\UnitNamesFactory.h" />
     <ClInclude Include="Source\V2World\Culture\CultureGroupFactory.h" />
     <ClInclude Include="Source\V2World\Culture\CultureGroups.h" />
