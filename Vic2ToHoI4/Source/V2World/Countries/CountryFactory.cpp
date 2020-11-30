@@ -165,11 +165,11 @@ std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::
 	 const std::vector<Party>& allParties)
 {
 	country = std::make_unique<Country>();
-	parseStream(theStream);
-
 	country->tag = theTag;
 	country->color = commonCountryData.getColor();
 	country->shipNames = commonCountryData.getUnitNames();
+
+	parseStream(theStream);
 	country->setParties(allParties);
 	country->handleMissingCulture(*theCultureGroups);
 
