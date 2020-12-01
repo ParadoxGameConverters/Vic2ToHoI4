@@ -19,6 +19,7 @@ class CommonCountryData
 {
   public:
 	class Factory;
+	class Builder;
 	CommonCountryData() = default;
 
 	[[nodiscard]] auto getColor() const { return theColor; }

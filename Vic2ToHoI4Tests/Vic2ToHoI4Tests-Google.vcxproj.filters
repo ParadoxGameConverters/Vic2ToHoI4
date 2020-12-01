@@ -1861,4 +1861,9 @@
       <Filter>TestFiles\Countries</Filter>
     </CopyFileToFolders>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="TestFiles\Countries\CountryBlankCultures.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
