@@ -1,7 +1,6 @@
-#include "../Vic2ToHoI4/Source/V2World/Ai/Vic2AI.h"
-#include "../Vic2ToHoI4/Source/V2World/Ai/AIStrategy.h"
-#include "../Vic2ToHoI4/Source/V2World/World.h"
-#include "../Vic2ToHoI4/Source/V2World/Provinces/Province.h"
+#include "V2World/Ai/Vic2AI.h"
+#include "V2World/Provinces/Province.h"
+#include "V2World/Provinces/ProvinceBuilder.h"
 #include "gtest/gtest.h"
 
 TEST(Vic2World_Vic2_AI_Tests, AiStrategiesDefaultToEmpty)
@@ -16,35 +15,16 @@ TEST(Vic2World_Vic2_AI_Tests, AiStrategiesDefaultToEmpty)
 TEST(Vic2World_Vic2_AI_Tests, AiStrategiesSetWhenGivenInput)
 {
 	std::stringstream input;
-	input << "\tai=\n";
-	input << "\t{\n";
-	input << "\t\tinitialized=yes\n";
-	input << "\t\tconsolidate=yes\n";
-	input << "\t\tdate=\"1865.10.22\"\n";
-	input << "\t\tstatic=no\n";
-	input << "\t\tpersonality=balanced\n";
-	input << "\t\tconquer_prov=\n";
-	input << "\t\t{\n";
-	input << "\t\t\tid=278\n";
-	input << "\t\t\tvalue=182\n";
-	input << "\t\t}\n";
-	input << "\t\trival=\n";
-	input << "\t\t{\n";
-	input << "\t\t\tid=\"PSA\"\n";
-	input << "\t\t\tvalue=30\n";
-	input << "\t\t}\n";
-	input << "\t\tmilitary_access=\n";
-	input << "\t\t{\n";
-	input << "\t\t\tid=\"NAV\"\n";
-	input << "\t\t\tvalue=50\n";
-	input << "\t\t}\n";
-	input << "\t}\n";
+	input << "rival=\n";
+	input << "{\n";
+	input << "\tid=\"PSA\"\n";
+	input << "\tvalue=30\n";
+	input << "}\n";
 	const auto newVic2Ai = Vic2::Vic2AI(input);
 
-	for (const auto& aiStrategy: newVic2Ai.getStrategies())
-	{
-		ASSERT_EQ("threat|antagonize|befriend|protect|rival", aiStrategy.getType());
-	}
+	ASSERT_EQ("rival", newVic2Ai.getStrategies()[0].getType());
+	ASSERT_EQ("PSA", newVic2Ai.getStrategies()[0].getID());
+	ASSERT_EQ(30, newVic2Ai.getStrategies()[0].getValue());
 }
 
 TEST(Vic2World_Vic2_AI_Tests, ConquerStrategiesDefaultToEmpty)
@@ -59,33 +39,32 @@ TEST(Vic2World_Vic2_AI_Tests, ConquerStrategiesDefaultToEmpty)
 TEST(Vic2World_Vic2_AI_Tests, ConquerStrategiesSetWhenGivenInput)
 {
 	std::stringstream input;
-	input << "\tai=\n";
-	input << "\t{\n";
-	input << "\t\tinitialized=yes\n";
-	input << "\t\tconsolidate=yes\n";
-	input << "\t\tdate=\"1865.10.22\"\n";
-	input << "\t\tstatic=no\n";
-	input << "\t\tpersonality=balanced\n";
-	input << "\t\tconquer_prov=\n";
-	input << "\t\t{\n";
-	input << "\t\t\tid=278\n";
-	input << "\t\t\tvalue=182\n";
-	input << "\t\t}\n";
-	input << "\t\trival=\n";
-	input << "\t\t{\n";
-	input << "\t\t\tid=\"PSA\"\n";
-	input << "\t\t\tvalue=30\n";
-	input << "\t\t}\n";
-	input << "\t\tmilitary_access=\n";
-	input << "\t\t{\n";
-	input << "\t\t\tid=\"NAV\"\n";
-	input << "\t\t\tvalue=50\n";
-	input << "\t\t}\n";
-	input << "\t}\n";
+	input << "conquer_prov=\n";
+	input << "{\n";
+	input << "\tid=278\n";
+	input << "\tvalue=182\n";
+	input << "}\n";
 	const auto newVic2Ai = Vic2::Vic2AI(input);
 
-	for (const auto& conquerStrategy: newVic2Ai.getConquerStrategies())
-	{
-		ASSERT_EQ("conquer_prov", conquerStrategy.getType());
-	}
+	ASSERT_EQ("conquer_prov", newVic2Ai.getConquerStrategies()[0].getType());
+	ASSERT_EQ(278, newVic2Ai.getConquerStrategies()[0].getProvID());
+	ASSERT_EQ(182, newVic2Ai.getConquerStrategies()[0].getValue());
+}
+
+TEST(Vic2World_Vic2_AI_Tests, ConquerStrategiesProperlyConsolidated)
+{
+	std::stringstream input;
+	input << "conquer_prov=\n";
+	input << "{\n";
+	input << "\tid=278\n";
+	input << "\tvalue=182\n";
+	input << "}\n";
+	auto newVic2Ai = Vic2::Vic2AI(input);
+	auto uniqueProvince = Vic2::Province::Builder{}.setNumber(278).setOwner("TAG").build();
+	const std::shared_ptr<Vic2::Province> province = std::move(uniqueProvince);
+	std::map<int, std::shared_ptr<Vic2::Province>> provinceMap;
+	provinceMap[278] = province;
+	newVic2Ai.consolidateConquerStrategies(provinceMap);
+
+	ASSERT_EQ(182, newVic2Ai.getConsolidatedStrategies().find("TAG")->second);
 }

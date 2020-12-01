@@ -149,7 +149,7 @@ Vic2::Country::Country(const std::string& theTag,
 		relations.insert(std::make_pair(countryTag, *relationsFactory.getRelations(theStream)));
 	});
 	registerKeyword("ai", [this](const std::string& unused, std::istream& theStream) {
-		vic2ai = std::make_unique<Vic2AI>(theStream);
+		vic2AI = std::make_unique<Vic2AI>(theStream);
 	});
 	registerKeyword("army", [this, &armyFactory](const std::string& unused, std::istream& theStream) {
 		armies.push_back(*armyFactory.getArmy(theStream));

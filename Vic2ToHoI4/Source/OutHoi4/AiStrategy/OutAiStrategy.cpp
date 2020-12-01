@@ -1,5 +1,6 @@
+#include "../../common_items/CommonFunctions.h"
 #include "OutAiStrategy.h"
-#include "../../HOI4World/HoI4Country.h"
+#include "HOI4World/HoI4Country.h"
 
 void HoI4::outputAIStrategy(const HoI4::Country& theCountry, const std::string& outputName)
 {
@@ -9,7 +10,7 @@ void HoI4::outputAIStrategy(const HoI4::Country& theCountry, const std::string& 
 		throw std::runtime_error(
 			 "Could not open output/" + outputName + "/common/ai_strategy/converted_" + theCountry.getTag() + ".txt");
 	}
-	output << "\xEF\xBB\xBF"; // add the BOM to make HoI4 happy
+	output << commonItems::utf8BOM; // add the BOM to make HoI4 happy
 
 	output << "converted_war_strategies_" << theCountry.getTag() << " = {\n";
 	output << "\tenable = {\n";

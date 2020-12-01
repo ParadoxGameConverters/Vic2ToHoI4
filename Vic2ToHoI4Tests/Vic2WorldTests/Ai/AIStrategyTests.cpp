@@ -1,7 +1,7 @@
-#include "../Vic2ToHoI4/Source/V2World/Ai/AIStrategy.h"
+#include "V2World/Ai/AIStrategy.h"
 #include "gtest/gtest.h"
 
-TEST(Vic2World_AI_Strategy_Tests, TypeNotSetWhenNotGivenInput)
+TEST(Vic2World_AI_Strategy_Tests, TypeNotSetWhenNotInitialized)
 {
 	std::stringstream input;
 	const auto newAiStrategy = Vic2::AIStrategy("", input);
@@ -10,14 +10,9 @@ TEST(Vic2World_AI_Strategy_Tests, TypeNotSetWhenNotGivenInput)
 }
 
 
-TEST(Vic2World_AI_Strategy_Tests, TypeSetWhenGivenInput)
+TEST(Vic2World_AI_Strategy_Tests, TypeSetWhenInitialized)
 {
 	std::stringstream input;
-	input << "\t\tthreat=\n";
-	input << "\t\t{\n";
-	input << "\t\t\tid=\"BAV\"\n";
-	input << "\t\t\tvalue=400\n";
-	input << "\t\t}\n";
 	const auto newAiStrategy = Vic2::AIStrategy("threat", input);
 
 	ASSERT_EQ("threat", newAiStrategy.getType());
@@ -35,11 +30,7 @@ TEST(Vic2World_AI_Strategy_Tests, IdNotSetWhenNotGivenInput)
 TEST(Vic2World_AI_Strategy_Tests, IdSetWhenGivenInput)
 {
 	std::stringstream input;
-	input << "\t\tthreat=\n";
-	input << "\t\t{\n";
-	input << "\t\t\tid=\"BAV\"\n";
-	input << "\t\t\tvalue=400\n";
-	input << "\t\t}\n";
+	input << "id=\"BAV\"";
 	const auto newAiStrategy = Vic2::AIStrategy("threat", input);
 
 	ASSERT_EQ("BAV", newAiStrategy.getID());
@@ -57,11 +48,7 @@ TEST(Vic2World_AI_Strategy_Tests, ProvIDNotSetWhenNotGivenInput)
 TEST(Vic2World_AI_Strategy_Tests, ProvIDSetWhenGivenInput)
 {
 	std::stringstream input;
-	input << "\t\tconquer_prov=\n";
-	input << "\t\t{\n";
-	input << "\t\t\tid=266\n";
-	input << "\t\t\tvalue=8\n";
-	input << "\t\t}\n";
+	input << "id=266";
 	const auto newAiStrategy = Vic2::AIStrategy("conquer_prov", input);
 
 	ASSERT_EQ(266, newAiStrategy.getProvID());
@@ -79,11 +66,7 @@ TEST(Vic2World_AI_Strategy_Tests, ValueNotSetWhenNotGivenInput)
 TEST(Vic2World_AI_Strategy_Tests, ValueSetWhenGivenInput)
 {
 	std::stringstream input;
-	input << "\t\tconquer_prov=\n";
-	input << "\t\t{\n";
-	input << "\t\t\tid=266\n";
-	input << "\t\t\tvalue=8\n";
-	input << "\t\t}\n";
+	input << "value=8";
 	const auto newAiStrategy = Vic2::AIStrategy("conquer_prov", input);
 
 	ASSERT_EQ(8, newAiStrategy.getValue());

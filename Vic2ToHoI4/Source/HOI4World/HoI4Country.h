@@ -212,9 +212,6 @@ class Country
 	const auto& getGuaranteed() const { return guaranteed; }
 	void addGuaranteed(std::string guaranteedTag) { guaranteed.push_back(guaranteedTag); }
 
-	bool canDeclareWar(const std::string& target);
-
-
   private:
 	void determineFilename();
 	void initIdeas(Names& names, Localisation& hoi4Localisations) const;

@@ -523,8 +523,8 @@ void Vic2::World::checkAllProvincesMapped(const mappers::ProvinceMapper& provinc
 
 void Vic2::World::consolidateConquerStrategies()
 {
-	for (auto country: countries)
+	for (auto [unused, country]: countries)
 	{
-		country.second->getAI()->consolidateConquerStrategies(provinces);
+		country->consolidateConquerStrategies(provinces);
 	}
 }

@@ -27,7 +27,7 @@ void Vic2::Vic2AI::consolidateConquerStrategies(const std::map<int, std::shared_
 {
 	for (const auto& strategy: conquerStrategies)
 	{
-		if (const auto& theProvince = provinces.find(strategy.getProvID())->second; theProvince)
+		if (const auto& theProvince = provinces.find(strategy.getProvID())->second; theProvince != provinces.end()->second)
 		{
 			const auto& owner = theProvince->getOwner();
 			if (const auto& conquerTag = consolidatedConquerStrategies.find(owner);

@@ -273,26 +273,20 @@ void HoI4::Country::convertRelations(const CountryMapper& countryMap)
 
 void HoI4::Country::convertStrategies(const CountryMapper& countryMap)
 {
-	const auto& srcConquerStrategies = sourceCountry.getAI()->getConsolidatedStrategies();
-	for (const auto& strategy: srcConquerStrategies)
+	for (const auto& [vic2Tag, strategy]: sourceCountry.getAI()->getConsolidatedStrategies())
 	{
-		if (const auto& HoI4Tag = countryMap.getHoI4Tag(strategy.first); HoI4Tag)
+		if (const auto& HoI4Tag = countryMap.getHoI4Tag(vic2Tag); HoI4Tag)
 		{
-			HoI4::AIStrategy newStrategy("conquer");
-			newStrategy.setID(*HoI4Tag);
-			newStrategy.setValue(strategy.second);
+			HoI4::AIStrategy newStrategy("conquer", *HoI4Tag, strategy);
 			conquerStrategies.push_back(newStrategy);
 		}
 	}
 
-	const auto& srcStrategies = sourceCountry.getAI()->getStrategies();
-	for (const auto& srcStrategy: srcStrategies)
+	for (const auto& srcStrategy: sourceCountry.getAI()->getStrategies())
 	{
 		if (const auto& HoI4Tag = countryMap.getHoI4Tag(srcStrategy.getID()); HoI4Tag)
 		{
-			HoI4::AIStrategy newStrategy(srcStrategy);
-			newStrategy.updateStrategy();
-			newStrategy.setID(*HoI4Tag);
+			HoI4::AIStrategy newStrategy(srcStrategy, *HoI4Tag);
 			aiStrategies.push_back(newStrategy);
 		}
 	}
@@ -986,16 +980,4 @@ double HoI4::Country::calculateInfluenceFactor()
 		// it's displayed ingame as being halfway: 0.5 instead of 0.0000something
 		return std::clamp(influenceFactor, 1.0, 100.0);
 	}
-}
-
-bool HoI4::Country::canDeclareWar(const std::string& target)
-{
-	std::set<std::string> allies;
-	if (faction)
-	{
-		allies = faction->getLeader()->getAllies();
-		allies.insert(faction->getLeader()->getTag());
-	}
-
-	return (allies.find(target) == allies.end() && puppets.find(target) == puppets.end() && target != puppetMaster);
 }
