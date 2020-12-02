@@ -1292,6 +1292,9 @@
     <ClCompile Include="Vic2WorldTests\Ai\Vic2AITests.cpp">
       <Filter>Vic2WorldTests\Ai</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4AIStrategy.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

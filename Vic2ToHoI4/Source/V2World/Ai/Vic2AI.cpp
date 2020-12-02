@@ -1,6 +1,6 @@
 #include "Vic2AI.h"
-#include "../World.h"
 #include "../Provinces/Province.h"
+#include "../World.h"
 #include "AIStrategy.h"
 #include "ParserHelpers.h"
 
@@ -27,9 +27,15 @@ void Vic2::Vic2AI::consolidateConquerStrategies(const std::map<int, std::shared_
 {
 	for (const auto& strategy: conquerStrategies)
 	{
-		if (const auto& theProvince = provinces.find(strategy.getProvID())->second; theProvince != provinces.end()->second)
+		if (const auto& provinceItr = provinces.find(strategy.getProvID()); provinceItr != provinces.end())
 		{
-			const auto& owner = theProvince->getOwner();
+			const auto& province = provinceItr->second;
+			if (!province)
+			{
+				continue;
+			}
+
+			const auto& owner = province->getOwner();
 			if (const auto& conquerTag = consolidatedConquerStrategies.find(owner);
 				 conquerTag == consolidatedConquerStrategies.end())
 			{

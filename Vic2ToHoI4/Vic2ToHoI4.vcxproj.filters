@@ -1108,6 +1108,9 @@
     <ClCompile Include="Source\V2World\Ai\AIStrategy.cpp">
       <Filter>Vic2World\Ai</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Diplomacy\HoI4AIStrategy.cpp">
+      <Filter>HoI4World\Diplomacy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">

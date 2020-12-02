@@ -22,6 +22,7 @@ TEST(Vic2World_Vic2_AI_Tests, AiStrategiesSetWhenGivenInput)
 	input << "}\n";
 	const auto newVic2Ai = Vic2::Vic2AI(input);
 
+	ASSERT_EQ(1, newVic2Ai.getStrategies().size());
 	ASSERT_EQ("rival", newVic2Ai.getStrategies()[0].getType());
 	ASSERT_EQ("PSA", newVic2Ai.getStrategies()[0].getID());
 	ASSERT_EQ(30, newVic2Ai.getStrategies()[0].getValue());
@@ -46,6 +47,7 @@ TEST(Vic2World_Vic2_AI_Tests, ConquerStrategiesSetWhenGivenInput)
 	input << "}\n";
 	const auto newVic2Ai = Vic2::Vic2AI(input);
 
+	ASSERT_EQ(1, newVic2Ai.getConquerStrategies().size());
 	ASSERT_EQ("conquer_prov", newVic2Ai.getConquerStrategies()[0].getType());
 	ASSERT_EQ(278, newVic2Ai.getConquerStrategies()[0].getProvID());
 	ASSERT_EQ(182, newVic2Ai.getConquerStrategies()[0].getValue());
