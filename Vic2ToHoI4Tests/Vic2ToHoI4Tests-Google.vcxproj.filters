@@ -1860,9 +1860,16 @@
     <CopyFileToFolders Include="TestFiles\Countries\TestCountryMod.txt">
       <Filter>TestFiles\Countries</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\CountryBlankCultures.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="TestFiles\Countries\CountryBlankCultures.txt">
+    <Text Include="TestFiles\Countries\TestCountryCultures.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </Text>
+    <Text Include="TestFiles\Countries\BlankTechnologyFile.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </Text>
+    <Text Include="TestFiles\Countries\TestTechnologyFile.txt">
       <Filter>TestFiles\Countries</Filter>
     </Text>
   </ItemGroup>

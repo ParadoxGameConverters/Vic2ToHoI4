@@ -6,7 +6,7 @@
 #include "V2World/Technology/InventionsFactory.h"
 
 
-
+#pragma optimize("",off)
 Vic2::Country::Factory::Factory(const Configuration& theConfiguration, const StateDefinitions& theStateDefinitions)
 {
 	theCultureGroups = CultureGroups::Factory{}.getCultureGroups(theConfiguration);
@@ -156,7 +156,7 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration, const Sta
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
-
+#pragma optimize("", on)
 
 
 std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::string& theTag,
