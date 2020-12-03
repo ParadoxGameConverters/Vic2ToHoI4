@@ -5,7 +5,7 @@
 #include "ParserHelpers.h"
 
 
-
+#pragma optimize("",off)
 Vic2::Vic2AI::Vic2AI(std::istream& theStream)
 {
 	registerRegex("threat|antagonize|befriend|protect|rival",
@@ -22,6 +22,7 @@ Vic2::Vic2AI::Vic2AI(std::istream& theStream)
 	parseStream(theStream);
 	clearRegisteredKeywords();
 }
+
 
 void Vic2::Vic2AI::consolidateConquerStrategies(const std::map<int, std::shared_ptr<Province>>& provinces)
 {
@@ -49,7 +50,9 @@ void Vic2::Vic2AI::consolidateConquerStrategies(const std::map<int, std::shared_
 	}
 }
 
+
 void Vic2::Vic2AI::updateStrategy(const std::string& tag, int valueToAdd)
 {
 	consolidatedConquerStrategies.find(tag)->second += valueToAdd;
 }
+#pragma optimize("", on)

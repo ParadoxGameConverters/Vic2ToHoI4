@@ -66,7 +66,7 @@ class World: commonItems::parser
 	void consolidateConquerStrategies();
 
 	std::map<int, std::shared_ptr<Province>> provinces;
-	std::map<std::string, Country> countries;
+	std::map<std::string, std::unique_ptr<Country>> countries;
 	std::unique_ptr<Diplomacy> diplomacy;
 	std::vector<std::string> greatPowers;
 

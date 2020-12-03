@@ -12,9 +12,9 @@
 #include "MilitaryMappings/MilitaryMappings.h"
 #include "Names/Names.h"
 #include "OSCompatibilityLayer.h"
-#include "V2World/Ai/Vic2AI.h"
 #include "V2World/Ai/AIStrategy.h"
-#include "V2World/Country/Country.h"
+#include "V2World/Ai/Vic2AI.h"
+#include "V2World/Countries/Country.h"
 #include "V2World/Politics/Party.h"
 #include "V2World/World.h"
 #include <algorithm>
@@ -94,10 +94,6 @@ HoI4::Country::Country(std::string tag,
 		}
 	}
 
-	convertLeaders(theGraphics);
-	convertRelations(countryMap);
-	convertStrategies(countryMap);
-	convertWars(*srcCountry, countryMap);
 	oldTechnologiesAndInventions = sourceCountry.getTechnologiesAndInventions();
 
 	convertLeaders(theGraphics, sourceCountry);
@@ -279,7 +275,7 @@ void HoI4::Country::convertRelations(const CountryMapper& countryMap, const Vic2
 }
 
 
-void HoI4::Country::convertStrategies(const CountryMapper& countryMap)
+void HoI4::Country::convertStrategies(const CountryMapper& countryMap, const Vic2::Country& sourceCountry)
 {
 	for (const auto& [vic2Tag, strategy]: sourceCountry.getAI()->getConsolidatedStrategies())
 	{

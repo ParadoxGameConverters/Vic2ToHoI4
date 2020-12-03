@@ -192,7 +192,7 @@ void HoI4::World::convertCountries(const Vic2::Localisations& vic2Localisations)
 	const auto articleRules = ArticleRules::Factory{}.getRules("DataFiles/Localisations/ArticleRules.txt");
 	for (const auto& [tag, country]: sourceWorld->getCountries())
 	{
-		convertCountry(tag, country, flagsToIdeasMapper, vic2Localisations, *articleRules);
+		convertCountry(tag, *country, flagsToIdeasMapper, vic2Localisations, *articleRules);
 	}
 
 	hoi4Localisations->addNonenglishCountryLocalisations();

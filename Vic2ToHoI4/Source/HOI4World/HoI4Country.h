@@ -6,8 +6,8 @@
 #include "Color.h"
 #include "Date.h"
 #include "Diplomacy/Faction.h"
-#include "Diplomacy/HoI4Relations.h"
 #include "Diplomacy/HoI4AIStrategy.h"
+#include "Diplomacy/HoI4Relations.h"
 #include "Diplomacy/HoI4War.h"
 #include "HoI4FocusTree.h"
 #include "Ideologies/Ideologies.h"
@@ -222,9 +222,9 @@ class Country
 	void determineFilename();
 	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
 	void convertLaws();
-	void convertLeaders(const graphicsMapper& theGraphics);
-	void convertRelations(const CountryMapper& countryMap);
-	void convertStrategies(const CountryMapper& countryMap);
+	void convertLeaders(const graphicsMapper& theGraphics, const Vic2::Country& sourceCountry);
+	void convertRelations(const CountryMapper& countryMap, const Vic2::Country& sourceCountry);
+	void convertStrategies(const CountryMapper& countryMap, const Vic2::Country& sourceCountry);
 	void convertWars(const Vic2::Country& sourceCountry, const CountryMapper& countryMap);
 
 	bool attemptToPutCapitalInPreferredNonWastelandOwned(const mappers::ProvinceMapper& theProvinceMapper,

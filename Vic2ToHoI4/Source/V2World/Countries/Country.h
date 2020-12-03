@@ -3,11 +3,11 @@
 
 
 
-#include "Ai/Vic2AI.h"
 #include "Color.h"
 #include "CommonCountryData.h"
 #include "Date.h"
 #include "Parser.h"
+#include "V2World/Ai/Vic2AI.h"
 #include "V2World/Culture/CultureGroups.h"
 #include "V2World/Diplomacy/Relations.h"
 #include "V2World/Localisations/Vic2Localisations.h"

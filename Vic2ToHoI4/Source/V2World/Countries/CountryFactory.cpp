@@ -129,6 +129,9 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration, const Sta
 	registerRegex("[A-Z][A-Z0-9]{2}", [this](const std::string& countryTag, std::istream& theStream) {
 		country->relations.insert(std::make_pair(countryTag, *relationsFactory.getRelations(theStream)));
 	});
+	registerKeyword("ai", [this](const std::string& unused, std::istream& theStream) {
+		country->vic2AI = std::make_unique<Vic2AI>(theStream);
+	});
 	registerKeyword("army", [this](const std::string& unused, std::istream& theStream) {
 		country->armies.push_back(*armyFactory.getArmy(theStream));
 	});
