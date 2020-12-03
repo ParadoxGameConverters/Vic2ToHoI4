@@ -12,6 +12,8 @@
 #include "MilitaryMappings/MilitaryMappings.h"
 #include "Names/Names.h"
 #include "OSCompatibilityLayer.h"
+#include "V2World/Ai/Vic2AI.h"
+#include "V2World/Ai/AIStrategy.h"
 #include "V2World/Country.h"
 #include "V2World/Politics/Party.h"
 #include "V2World/World.h"
@@ -86,6 +88,7 @@ HoI4::Country::Country(std::string tag,
 
 	convertLeaders(theGraphics);
 	convertRelations(countryMap);
+	convertStrategies(countryMap);
 	convertWars(*srcCountry, countryMap);
 
 	theArmy.addSourceArmies(sourceCountry.getArmies());
@@ -263,6 +266,28 @@ void HoI4::Country::convertRelations(const CountryMapper& countryMap)
 		{
 			HoI4::Relations newRelation(*HoI4Tag, srcRelation.second);
 			relations.insert(make_pair(*HoI4Tag, std::move(newRelation)));
+		}
+	}
+}
+
+
+void HoI4::Country::convertStrategies(const CountryMapper& countryMap)
+{
+	for (const auto& [vic2Tag, strategy]: sourceCountry.getAI()->getConsolidatedStrategies())
+	{
+		if (const auto& HoI4Tag = countryMap.getHoI4Tag(vic2Tag); HoI4Tag)
+		{
+			HoI4::AIStrategy newStrategy("conquer", *HoI4Tag, strategy);
+			conquerStrategies.push_back(newStrategy);
+		}
+	}
+
+	for (const auto& srcStrategy: sourceCountry.getAI()->getStrategies())
+	{
+		if (const auto& HoI4Tag = countryMap.getHoI4Tag(srcStrategy.getID()); HoI4Tag)
+		{
+			HoI4::AIStrategy newStrategy(srcStrategy, *HoI4Tag);
+			aiStrategies.push_back(newStrategy);
 		}
 	}
 }

@@ -1277,6 +1277,24 @@
     <ClCompile Include="HoI4WorldTests\Leader\CountryLeadersFactoryTests.cpp">
       <Filter>HoI4WorldTests\Leaders</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\AiStrategy\OutAiStrategy.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\AiStrategy</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\AIStrategy.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Ai</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\Vic2AI.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Ai</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Ai\AIStrategyTests.cpp">
+      <Filter>Vic2WorldTests\Ai</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Ai\Vic2AITests.cpp">
+      <Filter>Vic2WorldTests\Ai</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4AIStrategy.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1635,6 +1653,15 @@
     </Filter>
     <Filter Include="TestFiles\Leaders">
       <UniqueIdentifier>{26ac2326-44f3-4983-b047-8afd40eca571}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\AiStrategy">
+      <UniqueIdentifier>{2abeb2c9-1ee4-4f72-96be-1dc5d5426d9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Ai">
+      <UniqueIdentifier>{9891403a-4292-4586-b136-1cb6ff503335}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\Ai">
+      <UniqueIdentifier>{a253453c-d9e8-4d04-97a3-2400309a28f4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -3,6 +3,7 @@
 
 
 
+#include "Ai/Vic2AI.h"
 #include "Color.h"
 #include "Culture/CultureGroups.h"
 #include "Date.h"
@@ -67,6 +68,8 @@ class Country: commonItems::parser
 	void setParties(const std::vector<Party>& allParties);
 
 	[[nodiscard]] const auto& getRelations() const { return relations; }
+	const auto& getAI() const { return vic2AI; }
+	void consolidateConquerStrategies(const std::map<int, std::shared_ptr<Province>>& provinces) { vic2AI->consolidateConquerStrategies(provinces); }
 	auto& getStates() { return states; }
 	std::string getTag() const { return tag; }
 	std::string getIdentifier() const;
@@ -130,6 +133,7 @@ class Country: commonItems::parser
 	std::set<std::string> discoveredInventions;
 
 	std::map<std::string, Relations> relations;
+	std::unique_ptr<Vic2AI> vic2AI;
 	bool civilized = false;
 
 	std::vector<Army> armies;

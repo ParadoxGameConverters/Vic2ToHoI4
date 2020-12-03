@@ -196,6 +196,12 @@
     <Filter Include="Data Files\Map">
       <UniqueIdentifier>{5cc577fe-942f-4756-a6c7-fdda52993471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OutHoi4\AiStrategy">
+      <UniqueIdentifier>{426e2e4d-56a0-4b75-a4d2-c88c3f166cef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2World\Ai">
+      <UniqueIdentifier>{40065ac9-aa77-4b48-9ea0-b6bd2fd5e366}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Vic2World\Diplomacy">
       <UniqueIdentifier>{1a8af639-f629-49c5-ba03-226c10d9f7f0}</UniqueIdentifier>
     </Filter>
@@ -1092,6 +1098,18 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Leaders\CountryLeadersFactory.cpp">
       <Filter>HoI4World\Leaders</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\AiStrategy\OutAiStrategy.cpp">
+      <Filter>OutHoi4\AiStrategy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Ai\Vic2AI.cpp">
+      <Filter>Vic2World\Ai</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Ai\AIStrategy.cpp">
+      <Filter>Vic2World\Ai</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Diplomacy\HoI4AIStrategy.cpp">
+      <Filter>HoI4World\Diplomacy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2117,6 +2135,18 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\TechnologiesBuilder.h">
       <Filter>HoI4World</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Diplomacy\HoI4AIStrategy.h">
+      <Filter>HoI4World\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\AiStrategy\OutAiStrategy.h">
+      <Filter>OutHoi4\AiStrategy</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Ai\Vic2AI.h">
+      <Filter>Vic2World\Ai</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Ai\AIStrategy.h">
+      <Filter>Vic2World\Ai</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -2,6 +2,7 @@
 #include "CommonCountryData.h"
 #include "Configuration.h"
 #include "Country.h"
+#include "Ai/Vic2AI.h"
 #include "Culture/CultureGroupsFactory.h"
 #include "Date.h"
 #include "Diplomacy/DiplomacyFactory.h"
@@ -124,6 +125,7 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	handleMissingCountryCultures();
 
 	checkAllProvincesMapped(provinceMapper);
+	consolidateConquerStrategies();
 }
 
 
@@ -516,5 +518,13 @@ void Vic2::World::checkAllProvincesMapped(const mappers::ProvinceMapper& provinc
 		{
 			Log(LogLevel::Warning) << "No mapping for Vic2 province " << province.first;
 		}
+	}
+}
+
+void Vic2::World::consolidateConquerStrategies()
+{
+	for (auto [unused, country]: countries)
+	{
+		country->consolidateConquerStrategies(provinces);
 	}
 }

@@ -144,6 +144,7 @@
     <ClCompile Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategories.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategory.cpp" />
+    <ClCompile Include="Source\HOI4World\Diplomacy\HoI4AIStrategy.cpp" />
     <ClCompile Include="Source\HOI4World\Events\CapitulationEvents.cpp" />
     <ClCompile Include="Source\HOI4World\Events\LarOccupationEvents.cpp" />
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.cpp" />
@@ -188,6 +189,7 @@
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapper.cpp" />
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp" />
+    <ClCompile Include="Source\OutHoi4\AiStrategy\OutAiStrategy.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategory.cpp" />
@@ -375,6 +377,8 @@
     <ClCompile Include="Source\Mappers\Provinces\VersionedMappings.cpp" />
     <ClCompile Include="Source\Mappers\TechMapper.cpp" />
     <ClCompile Include="Source\Mappers\VersionParser\VersionParser.cpp" />
+    <ClCompile Include="Source\V2World\Ai\AIStrategy.cpp" />
+    <ClCompile Include="Source\V2World\Ai\Vic2AI.cpp" />
     <ClCompile Include="Source\V2World\Culture\CultureGroupFactory.cpp" />
     <ClCompile Include="Source\V2World\Culture\CultureGroups.cpp" />
     <ClCompile Include="Source\V2World\Culture\CultureGroupsFactory.cpp" />
@@ -435,6 +439,7 @@
     <ClInclude Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.h" />
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategories.h" />
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategory.h" />
+    <ClInclude Include="Source\HOI4World\Diplomacy\HoI4AIStrategy.h" />
     <ClInclude Include="Source\HOI4World\Events\CapitulationEvents.h" />
     <ClInclude Include="Source\HOI4World\Events\EventsBuilder.h" />
     <ClInclude Include="Source\HOI4World\Events\LarOccupationEvents.h" />
@@ -498,6 +503,7 @@
     <ClInclude Include="Source\Mappers\CountryMapperBuilder.h" />
     <ClInclude Include="Source\Mappers\GovernmentMapperBuilder.h" />
     <ClInclude Include="Source\Mappers\GraphicsMappedBuilder.h" />
+    <ClInclude Include="Source\OutHoi4\AiStrategy\OutAiStrategy.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategories.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategory.h" />
@@ -701,6 +707,8 @@
     <ClInclude Include="Source\Mappers\Provinces\VersionedMappings.h" />
     <ClInclude Include="Source\Mappers\TechMapper.h" />
     <ClInclude Include="Source\Mappers\VersionParser\VersionParser.h" />
+    <ClInclude Include="Source\V2World\Ai\AIStrategy.h" />
+    <ClInclude Include="Source\V2World\Ai\Vic2AI.h" />
     <ClInclude Include="Source\V2World\CommonCountryData.h" />
     <ClInclude Include="Source\V2World\Country.h" />
     <ClInclude Include="Source\V2World\CountryBuilder.h" />
