@@ -33,7 +33,7 @@
 namespace Vic2
 {
 
-class Country: commonItems::parser
+class Country
 {
   public:
 	class Builder;
@@ -45,6 +45,10 @@ class Country: commonItems::parser
 	void replaceCores(std::vector<std::shared_ptr<Province>> newCores) { cores.swap(newCores); }
 	void addWar(const War& theWar) { wars.push_back(theWar); }
 	void setAtWar() { atWar = true; }
+	void consolidateConquerStrategies(const std::map<int, std::shared_ptr<Province>>& provinces)
+	{
+		vic2AI->consolidateConquerStrategies(provinces);
+	}
 
 	void eatCountry(Country& target, bool debug);
 	void putProvincesInStates();
@@ -57,11 +61,6 @@ class Country: commonItems::parser
 	[[nodiscard]] auto& getModifiableStates() { return states; }
 
 	// functions to look up aspects of the country
-	const auto& getAI() const { return vic2AI; }
-	void consolidateConquerStrategies(const std::map<int, std::shared_ptr<Province>>& provinces)
-	{
-		vic2AI->consolidateConquerStrategies(provinces);
-	}
 	[[nodiscard]] const auto& getTag() const { return tag; }
 	[[nodiscard]] const auto& getColor() const { return color; }
 	[[nodiscard]] bool isHuman() const { return human; }
@@ -79,6 +78,7 @@ class Country: commonItems::parser
 	}
 	[[nodiscard]] const auto& getTechnologiesAndInventions() const { return technologiesAndInventions; }
 	[[nodiscard]] const auto& getRelations() const { return relations; }
+	[[nodiscard]] const auto& getAI() const { return vic2AI; }
 	[[nodiscard]] bool isCivilized() const { return civilized; }
 	[[nodiscard]] const auto& getArmies() const { return armies; }
 	[[nodiscard]] const auto& getLeaders() const { return leaders; }
