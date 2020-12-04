@@ -2,6 +2,7 @@
 #include "V2World/Countries/CommonCountryDataBuilder.h"
 #include "V2World/Countries/Country.h"
 #include "V2World/Countries/CountryFactory.h"
+#include "V2World/Diplomacy/RelationsBuilder.h"
 #include "V2World/Politics/PartyBuilder.h"
 #include "V2World/Provinces/ProvinceBuilder.h"
 #include "V2World/States/StateDefinitionsBuilder.h"
@@ -545,7 +546,8 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsCanBeAddedFromTe
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
-	ASSERT_THAT(country->getTechnologiesAndInventions(), testing::UnorderedElementsAre("technology_one", "technology_two"));
+	ASSERT_THAT(country->getTechnologiesAndInventions(),
+		 testing::UnorderedElementsAre("technology_one", "technology_two"));
 }
 
 
@@ -567,4 +569,178 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsCanBeAddedFromIn
 
 	ASSERT_THAT(country->getTechnologiesAndInventions(),
 		 testing::UnorderedElementsAre("first_invention", "fourth_invention", "fifth_invention"));
+}
+
+
+TEST(Vic2World_Countries_CountryTests, RelationsDefaultToEmpty)
+{
+	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "}";
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build()}
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+
+	ASSERT_TRUE(country->getRelations().empty());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, RelationsCanBeAdded)
+{
+	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "\tTWO =\n";
+	theStream << "\t{\n";
+	theStream << "\t\tvalue=42\n";
+	theStream << "\t}\n";
+	theStream << "}";
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build()}
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+
+	ASSERT_THAT(country->getRelations(),
+		 testing::UnorderedElementsAre(
+			  testing::Pair(std::string("TWO"), *Vic2::Relations::Builder{}.setValue(42).build())));
+}
+
+
+TEST(Vic2World_Countries_CountryTests, AiDefaultsToEmpty)
+{
+	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "}";
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build()}
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+
+	ASSERT_TRUE(country->getAI()->getStrategies().empty());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, AiCanBeImported)
+{
+	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "\tai= {\n";
+	theStream << "\t\tprotect=\n";
+	theStream << "\t\t{\n";
+	theStream << "\t\t\tid=\"TWO\"\n";
+	theStream << "\t\t\tvalue=42\n";
+	theStream << "\t\t}\n";
+	theStream << "\t}\n";
+	theStream << "}";
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build()}
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+
+	ASSERT_EQ(1, country->getAI()->getStrategies().size());
+	ASSERT_EQ("protect", country->getAI()->getStrategies()[0].getType());
+	ASSERT_EQ("TWO", country->getAI()->getStrategies()[0].getID());
+	ASSERT_EQ(42, country->getAI()->getStrategies()[0].getValue());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, CivilizedDefaultsToFalse)
+{
+	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "}";
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build()}
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+
+	ASSERT_FALSE(country->isCivilized());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, CivilizedCanBeSet)
+{
+	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "\tcivilized = yes\n";
+	theStream << "}";
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build()}
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+
+	ASSERT_TRUE(country->isCivilized());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, ArmiesDefaultsToEmpty)
+{
+	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "}";
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build()}
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+
+	ASSERT_TRUE(country->getArmies().empty());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, ArmiesCanBeAdded)
+{
+	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "\tarmy=\n";
+	theStream << "\t{\n";
+	theStream << "\t\t\tname=\"42nd Army\"\n";
+	theStream << "\t}\n";
+	theStream << "}";
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build()}
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+
+	ASSERT_EQ(1, country->getArmies().size());
+	ASSERT_EQ("42nd Army", country->getArmies()[0].getName());
 }

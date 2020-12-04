@@ -4,9 +4,10 @@
 #include "V2World/Culture/CultureGroupsFactory.h"
 #include "V2World/Military/Leaders/TraitsFactory.h"
 #include "V2World/Technology/InventionsFactory.h"
+#include <sstream>
 
 
-#pragma optimize("",off)
+
 Vic2::Country::Factory::Factory(const Configuration& theConfiguration, const StateDefinitions& theStateDefinitions)
 {
 	theCultureGroups = CultureGroups::Factory{}.getCultureGroups(theConfiguration);
@@ -159,7 +160,6 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration, const Sta
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
-#pragma optimize("", on)
 
 
 std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::string& theTag,
@@ -175,6 +175,12 @@ std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::
 	parseStream(theStream);
 	country->setParties(allParties);
 	country->handleMissingCulture(*theCultureGroups);
+
+	if (!country->vic2AI)
+	{
+		std::stringstream input;
+		country->vic2AI = std::make_unique<Vic2AI>(input);
+	}
 
 	return std::move(country);
 }
