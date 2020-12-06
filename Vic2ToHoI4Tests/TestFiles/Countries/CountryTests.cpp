@@ -427,7 +427,8 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromLargestCulture)
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 	country->addProvince(std::make_pair(1,
-		 Vic2::Province::Builder{}.setNumber(1)
+		 Vic2::Province::Builder{}
+			  .setNumber(1)
 			  .setPops({*Vic2::Pop::Builder{}.setSize(7).setCulture("test_primary").build(),
 					*Vic2::Pop::Builder{}.setSize(5).setCulture("test_secondary").build()})
 			  .build()));
@@ -1781,6 +1782,26 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyCanBeSet)
 }
 
 
+TEST(Vic2World_Countries_CountryTests, RulingPartyNotSetForRebel)
+{
+	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "}";
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+									 .createCountry("REB",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.setName("test_party").Build()});
+
+	ASSERT_TRUE(country->getRulingParty().getName().empty());
+}
+
+
 TEST(Vic2World_Countries_CountryTests, ActivePartiesDefaultToEmpty)
 {
 	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
@@ -1824,6 +1845,59 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesCanBeSet)
 	ASSERT_THAT(country->getActiveParties(),
 		 testing::UnorderedElementsAre(*Vic2::Party::Builder{}.setName("test_party_one").Build(),
 			  *Vic2::Party::Builder{}.setName("test_party_three").Build()));
+}
+
+
+TEST(Vic2World_Countries_CountryTests, ActivePartiesLoggedIfUndefined)
+{
+	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+
+	std::stringstream log;
+	auto stdOutBuf = std::cout.rdbuf();
+	std::cout.rdbuf(log.rdbuf());
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "\tactive_party=1\n";
+	theStream << "\tactive_party=3\n";
+	theStream << "}";
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.setName("test_party_one").Build(),
+												*Vic2::Party::Builder{}.setName("test_party_two").Build()});
+	std::cout.rdbuf(stdOutBuf);
+
+	ASSERT_EQ(
+		 "    [INFO] Determining culture groups\n"
+		 "   [ERROR] Could not open /common/cultures.txt for parsing.\n"
+		 " [WARNING] Party ID mismatch! Did some Vic2 country files not get read?\n",
+		 log.str());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, ActivePartiesCanBecomeRulingPartyIfUnset)
+{
+	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\tactive_party=3\n";
+	theStream << "}";
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.setName("test_party_one").Build(),
+												*Vic2::Party::Builder{}.setName("test_party_two").Build(),
+												*Vic2::Party::Builder{}.setName("test_party_three").Build()});
+
+	ASSERT_EQ("test_party_three", country->getRulingParty().getName());
 }
 
 
@@ -2000,7 +2074,7 @@ TEST(Vic2World_Countries_CountryTests, WarsCanBeAdded)
 }
 
 
-TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalFalseWithNoCoreOnCapital)
+TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalFalseWithNoCores)
 {
 	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
 
@@ -2015,6 +2089,28 @@ TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalFalseWithNoCoreOnCapital)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+
+	ASSERT_FALSE(country->hasCoreOnCapital());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalFalseWithNoCoreOnCapital)
+{
+	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "\tcapital = 42\n";
+	theStream << "}";
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+	country->addCore(Vic2::Province::Builder{}.setNumber(43).build());
 
 	ASSERT_FALSE(country->hasCoreOnCapital());
 }
@@ -2313,6 +2409,35 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveComesFromLocalisations)
 }
 
 
+TEST(Vic2World_Countries_CountryTests, AdjectiveCanComeFromDomain)
+{
+	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "\tdomain_region=\"Test Region\"\n";
+	theStream << "}";
+	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+							 .createCountry("TAG",
+								  theStream,
+								  *Vic2::CommonCountryData::Builder{}.Build(),
+								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+
+	Vic2::LanguageToLocalisationMap nameInLanguages{std::make_pair("english", "Testy"),
+		 std::make_pair("spanish",
+			  "Irascible")}; // yes, I know that's a different meaning than what I was going for. The contrast amuses me.
+	Vic2::KeyToLocalisationsMap keyToLocalisations{std::make_pair("TAG_ADJ", nameInLanguages)};
+	Vic2::Localisations localisations{keyToLocalisations, {}};
+	country->setLocalisationAdjectives(localisations);
+
+	ASSERT_EQ("Test Region", country->getAdjective("english"));
+	ASSERT_EQ("Test Region", country->getAdjective("spanish"));
+}
+
+
 TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsStates)
 {
 	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
@@ -2588,6 +2713,95 @@ TEST(Vic2World_Countries_CountryTests, EatCountryLogsIfDebugTrue)
 	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_EQ("   [DEBUG]     Merged TWO into TAG\n", log.str());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, EatCountryHasNoEffectOnSelf)
+{
+	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "\tstate=\n";
+	theStream << "\t{\n";
+	theStream << "\t}\n";
+	theStream << "}";
+	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+							 .createCountry("TAG",
+								  theStream,
+								  *Vic2::CommonCountryData::Builder{}.Build(),
+								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+
+	ASSERT_EQ(1, country->getStates().size());
+	country->eatCountry(*country, false);
+
+	ASSERT_EQ(1, country->getStates().size());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, ProvincesCanBePlacedInStates)
+{
+	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "\tstate=\n";
+	theStream << "\t{\n";
+	theStream << "\t\tprovinces=\n";
+	theStream << "\t\t{\n";
+	theStream << "\t\t\t1\n";
+	theStream << "\t\t}\n";
+	theStream << "\t}\n";
+	theStream << "}";
+	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+							 .createCountry("TAG",
+								  theStream,
+								  *Vic2::CommonCountryData::Builder{}.Build(),
+								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+	std::shared_ptr<Vic2::Province> provinceOne = Vic2::Province::Builder{}.setNumber(1).build();
+	country->addProvince(std::make_pair(1, provinceOne));
+	country->putProvincesInStates();
+
+	ASSERT_THAT(country->getStates()[0].getProvinces(), testing::UnorderedElementsAre(provinceOne));
+}
+
+
+TEST(Vic2World_Countries_CountryTests, MissingProvinceInStateLogged)
+{
+	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "\tstate=\n";
+	theStream << "\t{\n";
+	theStream << "\t\tprovinces=\n";
+	theStream << "\t\t{\n";
+	theStream << "\t\t\t42\n";
+	theStream << "\t\t}\n";
+	theStream << "\t}\n";
+	theStream << "}";
+	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+							 .createCountry("TAG",
+								  theStream,
+								  *Vic2::CommonCountryData::Builder{}.Build(),
+								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+
+	std::stringstream log;
+	auto stdOutBuf = std::cout.rdbuf();
+	std::cout.rdbuf(log.rdbuf());
+	country->putProvincesInStates();
+	std::cout.rdbuf(stdOutBuf);
+
+	ASSERT_EQ(" [WARNING] State () owned by TAG had province (42) that TAG did not\n", log.str());
 }
 
 

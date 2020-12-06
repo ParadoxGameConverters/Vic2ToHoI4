@@ -74,14 +74,9 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 		}
 	});
 	registerKeyword("culture", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::stringList cultureString(theStream);
-		for (auto culture: cultureString.getStrings())
+		for (auto culture: commonItems::stringList{theStream}.getStrings())
 		{
-			if (culture.substr(0, 1) == "\"")
-			{
-				culture = culture.substr(1, culture.size() - 2);
-			}
-			country->acceptedCultures.insert(culture);
+			country->acceptedCultures.insert(commonItems::remQuotes(culture));
 		}
 	});
 	registerKeyword("technology", [this](const std::string& unused, std::istream& theStream) {
