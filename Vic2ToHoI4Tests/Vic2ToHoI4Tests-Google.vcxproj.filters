@@ -1289,9 +1289,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4AIStrategy.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountryData.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountryDataFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
     </ClCompile>
@@ -1316,6 +1313,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CountryFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\Country.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1833,7 +1831,6 @@
       <Filter>TestFiles\Sounds</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Localisations\EmptyLocalisations.txt" />
-    <CopyFileToFolders Include="TestFiles\Localisations\BaseLocalisations.txt" />
     <CopyFileToFolders Include="TestFiles\Localisations\ConverterLocalisations.txt">
       <Filter>TestFiles\Localistations</Filter>
     </CopyFileToFolders>
@@ -1861,16 +1858,12 @@
       <Filter>TestFiles\Countries</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Countries\CountryBlankCultures.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="TestFiles\Countries\TestCountryCultures.txt">
-      <Filter>TestFiles\Countries</Filter>
-    </Text>
-    <Text Include="TestFiles\Countries\BlankTechnologyFile.txt">
-      <Filter>TestFiles\Countries</Filter>
-    </Text>
-    <Text Include="TestFiles\Countries\TestTechnologyFile.txt">
-      <Filter>TestFiles\Countries</Filter>
-    </Text>
+    <CopyFileToFolders Include="TestFiles\Countries\TestCountryCultures.txt" />
+    <CopyFileToFolders Include="TestFiles\Countries\BlankTechnologyFile.txt" />
+    <CopyFileToFolders Include="TestFiles\Countries\TestTechnologyFile.txt" />
+    <CopyFileToFolders Include="TestFiles\Countries\BlankTraitsFile.txt" />
+    <CopyFileToFolders Include="TestFiles\Localisations\BaseLocalisations.txt">
+      <Filter>TestFiles\Localistations</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>
