@@ -20,7 +20,7 @@
 #include <algorithm>
 
 
-#pragma optimize("", off)
+
 HoI4::Country::Country(std::string tag,
 	 const Vic2::Country& sourceCountry,
 	 Names& names,
@@ -626,7 +626,7 @@ void HoI4::Country::determineShipVariants(const PossibleShipVariants& possibleVa
 	theShipVariants = std::make_unique<ShipVariants>(possibleVariants, *theTechnologies, tag);
 }
 
-#pragma optimize("", off)
+
 void HoI4::Country::convertNavies(const UnitMappings& unitMap,
 	 const MtgUnitMappings& mtgUnitMap,
 	 const std::map<int, int>& provinceToStateIDMap,
@@ -729,7 +729,7 @@ void HoI4::Country::convertNavies(const UnitMappings& unitMap,
 		 "Submarine SS-%d",
 		 getShipNames("frigate")});
 }
-#pragma optimize("", on)
+
 
 void HoI4::Country::convertConvoys(const UnitMappings& unitMap)
 {
