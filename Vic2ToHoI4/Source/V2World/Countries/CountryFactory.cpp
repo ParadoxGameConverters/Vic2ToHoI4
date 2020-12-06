@@ -8,9 +8,11 @@
 
 
 
-Vic2::Country::Factory::Factory(const Configuration& theConfiguration, const StateDefinitions& theStateDefinitions)
+Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
+	 const StateDefinitions& theStateDefinitions,
+	 std::shared_ptr<CultureGroups> theCultureGroups_):
+	 theCultureGroups(std::move(theCultureGroups_))
 {
-	theCultureGroups = CultureGroups::Factory{}.getCultureGroups(theConfiguration);
 	theInventions = Inventions::Factory{}.loadInventions(theConfiguration);
 	Traits traits = *Traits::Factory{}.loadTraits(theConfiguration.getVic2Path());
 	leaderFactory = std::make_unique<Leader::Factory>(std::move(traits));
@@ -174,7 +176,6 @@ std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::
 
 	parseStream(theStream);
 	country->setParties(allParties);
-	country->handleMissingCulture(*theCultureGroups);
 
 	if (!country->vic2AI)
 	{

@@ -65,6 +65,8 @@ class World: commonItems::parser
 	void checkAllProvincesMapped(const mappers::ProvinceMapper& provinceMapper) const;
 	void consolidateConquerStrategies();
 
+	std::shared_ptr<CultureGroups> theCultureGroups;
+
 	std::map<int, std::shared_ptr<Province>> provinces;
 	std::map<std::string, std::unique_ptr<Country>> countries;
 	std::unique_ptr<Diplomacy> diplomacy;

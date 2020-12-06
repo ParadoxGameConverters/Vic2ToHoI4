@@ -21,14 +21,16 @@ namespace Vic2
 class Country::Factory: commonItems::parser
 {
   public:
-	Factory(const Configuration& theConfiguration, const StateDefinitions& theStateDefinitions);
+	Factory(const Configuration& theConfiguration,
+		 const StateDefinitions& theStateDefinitions,
+		 std::shared_ptr<CultureGroups> theCultureGroups_);
 	std::unique_ptr<Country> createCountry(const std::string& theTag,
 		 std::istream& theStream,
 		 const CommonCountryData& commonCountryData,
 		 const std::vector<Party>& allParties);
 
   private:
-	std::unique_ptr<CultureGroups> theCultureGroups;
+	std::shared_ptr<CultureGroups> theCultureGroups;
 	std::unique_ptr<Inventions> theInventions;
 	Relations::Factory relationsFactory;
 	Army::Factory armyFactory;

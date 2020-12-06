@@ -30,12 +30,13 @@
 Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configuration& theConfiguration):
 	 theLocalisations(Localisations::Factory{}.importLocalisations(theConfiguration))
 {
+	theCultureGroups = CultureGroups::Factory{}.getCultureGroups(theConfiguration);
 	auto theIssues = Issues::Factory{}.getIssues(theConfiguration.getVic2Path());
 	theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
 	auto popFactory = std::make_unique<Pop::Factory>(*theIssues);
 	Province::Factory provinceFactory(std::move(popFactory));
 	War::Factory warFactory;
-	Country::Factory countryFactory(theConfiguration, *theStateDefinitions);
+	Country::Factory countryFactory(theConfiguration, *theStateDefinitions, theCultureGroups);
 
 	const auto [commonCountriesData, allParties] = Vic2::importCommonCountriesData(theConfiguration);
 
@@ -147,6 +148,7 @@ void Vic2::World::setProvinceOwners()
 	for (auto& [unused, country]: countries)
 	{
 		country->putProvincesInStates();
+		country->handleMissingCulture(*theCultureGroups);
 	}
 }
 
