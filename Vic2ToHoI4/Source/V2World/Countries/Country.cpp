@@ -295,6 +295,11 @@ float Vic2::Country::getAverageIssueSupport(const std::string& issueName) const
 		}
 	}
 
+	if (totalPopulation == 0.0F)
+	{
+		return 0.0F;
+	}
+
 	return totalSupport / totalPopulation;
 }
 
