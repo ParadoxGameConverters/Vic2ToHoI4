@@ -1126,6 +1126,9 @@
     <ClCompile Include="Source\V2World\Technology\TechnologyFactory.cpp">
       <Filter>Vic2World\Technology</Filter>
     </ClCompile>
+    <ClCompile Include="Source\V2World\Diplomacy\Relations.cpp">
+      <Filter>Vic2World\Diplomacy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">

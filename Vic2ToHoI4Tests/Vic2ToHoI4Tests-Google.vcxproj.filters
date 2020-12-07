@@ -1320,6 +1320,9 @@
     <ClCompile Include="Vic2WorldTests\Countries\CountryTests.cpp">
       <Filter>Vic2WorldTests\Countries</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\Relations.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

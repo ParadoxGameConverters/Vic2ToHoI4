@@ -5,6 +5,7 @@
 #include "V2World/Culture/CultureGroupsFactory.h"
 #include "V2World/Military/Leaders/TraitsFactory.h"
 #include "V2World/Technology/InventionsFactory.h"
+#include <cmath>
 #include <sstream>
 
 

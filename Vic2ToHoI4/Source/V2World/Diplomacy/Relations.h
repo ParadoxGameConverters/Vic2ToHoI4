@@ -27,7 +27,7 @@ class Relations
   public:
 	class Factory;
 	class Builder;
-	bool operator==(const Relations&) const = default;
+	bool operator==(const Relations&) const;
 
 	[[nodiscard]] int getRelations() const { return value; }
 	[[nodiscard]] opinionLevel getLevel() const { return level; }

@@ -389,6 +389,7 @@
     <ClCompile Include="Source\V2World\Culture\CultureGroupsFactory.cpp" />
     <ClCompile Include="Source\V2World\Diplomacy\AgreementFactory.cpp" />
     <ClCompile Include="Source\V2World\Diplomacy\DiplomacyFactory.cpp" />
+    <ClCompile Include="Source\V2World\Diplomacy\Relations.cpp" />
     <ClCompile Include="Source\V2World\Diplomacy\RelationsFactory.cpp" />
     <ClCompile Include="Source\V2World\Issues\IssuesFactory.cpp" />
     <ClCompile Include="Source\V2World\Localisations\LocalisationsFactory.cpp" />
