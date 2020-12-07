@@ -28,9 +28,9 @@ HoI4::Country::Country(std::string tag,
 	 const CountryMapper& countryMap,
 	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 	 Localisation& hoi4Localisations):
+	 oldTag(sourceCountry.getTag()),
 	 tag(std::move(tag))
 {
-	oldTag = sourceCountry.getTag();
 	name = sourceCountry.getName("english");
 	adjective = sourceCountry.getAdjective("english");
 	determineFilename();
