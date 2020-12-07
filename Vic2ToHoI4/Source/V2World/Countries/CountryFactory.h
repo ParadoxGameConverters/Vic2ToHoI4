@@ -30,6 +30,9 @@ class Country::Factory: commonItems::parser
 		 const std::vector<Party>& allParties);
 
   private:
+	void setParties(const std::vector<Party>& allParties);
+	void limitCommanders();
+
 	std::shared_ptr<CultureGroups> theCultureGroups;
 	std::unique_ptr<Inventions> theInventions;
 	Relations::Factory relationsFactory;

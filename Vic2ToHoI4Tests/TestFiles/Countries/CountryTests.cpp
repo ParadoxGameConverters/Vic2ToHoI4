@@ -965,29 +965,6 @@ TEST(Vic2World_Countries_CountryTests, LeadersCanBeAdded)
 	theStream << "\tleader=\n";
 	theStream << "\t{\n";
 	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t}\n";
-	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
-		 *Vic2::StateDefinitions::Builder{}.build(),
-		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-									 .createCountry("TAG",
-										  theStream,
-										  *Vic2::CommonCountryData::Builder{}.Build(),
-										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
-
-	ASSERT_EQ(1, country->getLeaders().size());
-	ASSERT_EQ("Probo Homo", country->getLeaders()[0].getName());
-}
-
-
-TEST(Vic2World_Countries_CountryTests, LeadersCanBeLimited)
-{
-	std::stringstream theStream;
-	theStream << "= {\n";
-	theStream << "\truling_party = 1\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
 	theStream << "\t\t\ttype=land\n";
 	theStream << "\t\t\tprestige=20\n";
 	theStream << "\t}\n";
@@ -1095,8 +1072,6 @@ TEST(Vic2World_Countries_CountryTests, LeadersCanBeLimited)
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
-	ASSERT_EQ(20, country->getLeaders().size());
-	country->limitCommanders();
 	ASSERT_EQ(1, country->getLeaders().size());
 	ASSERT_EQ(20, country->getLeaders()[0].getPrestige());
 }
@@ -1337,8 +1312,6 @@ TEST(Vic2World_Countries_CountryTests, GeneralsAndAdmiralsLimitedSeparately)
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
-	ASSERT_EQ(40, country->getLeaders().size());
-	country->limitCommanders();
 	ASSERT_EQ(2, country->getLeaders().size());
 	ASSERT_EQ(20, country->getLeaders()[0].getPrestige());
 	ASSERT_EQ(5, country->getLeaders()[1].getPrestige());

@@ -1,4 +1,5 @@
 #include "CountryFactory.h"
+#include "Log.h"
 #include "ParserHelpers.h"
 #include "StringUtils.h"
 #include "V2World/Culture/CultureGroupsFactory.h"
@@ -170,7 +171,8 @@ std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::
 	country->shipNames = commonCountryData.getUnitNames();
 
 	parseStream(theStream);
-	country->setParties(allParties);
+	setParties(allParties);
+	limitCommanders();
 
 	if (!country->vic2AI)
 	{
@@ -179,4 +181,71 @@ std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::
 	}
 
 	return std::move(country);
+}
+
+
+void Vic2::Country::Factory::setParties(const std::vector<Party>& allParties)
+{
+	if (country->tag == "REB")
+	{
+		return;
+	}
+	for (auto ID: country->activePartyIDs)
+	{
+		if (ID <= allParties.size())
+		{
+			country->activeParties.insert(allParties.at(ID - 1)); // Subtract 1, because party ID starts from index of 1
+		}
+		else
+		{
+			Log(LogLevel::Warning) << "Party ID mismatch! Did some Vic2 country files not get read?";
+		}
+	}
+
+	if (country->rulingPartyID == 0)
+	{
+		throw std::runtime_error(country->tag + " had no ruling party. The save needs manual repair.");
+	}
+	if (country->rulingPartyID > allParties.size())
+	{
+		throw std::runtime_error(
+			 "Could not find the ruling party for " + country->tag + ". " + "Most likely a mod was not included.\n" +
+			 "Double-check your settings, and remember to include EU4 to Vic2 mods. See the FAQ for more information.");
+	}
+	country->rulingParty =
+		 allParties.at(country->rulingPartyID - 1); // Subtract 1, because party ID starts from index of 1
+}
+
+
+void Vic2::Country::Factory::limitCommanders()
+{
+	std::vector<Leader> generals;
+	std::copy_if(country->leaders.begin(),
+		 country->leaders.end(),
+		 std::back_inserter(generals),
+		 [](const Leader& leader) {
+		return leader.getType() == "land";
+	});
+	std::sort(generals.begin(), generals.end(), [](Leader& a, Leader& b) {
+		return a.getPrestige() > b.getPrestige();
+	});
+	const int desiredGenerals = static_cast<int>(std::ceil(generals.size() / 20.0F));
+	generals.erase(generals.begin() + desiredGenerals, generals.end());
+
+	std::vector<Leader> admirals;
+	std::copy_if(country->leaders.begin(),
+		 country->leaders.end(),
+		 std::back_inserter(admirals),
+		 [](const Leader& leader) {
+		return leader.getType() == "sea";
+	});
+	std::sort(admirals.begin(), admirals.end(), [](Leader& a, Leader& b) {
+		return a.getPrestige() > b.getPrestige();
+	});
+	const int desiredAdmirals = static_cast<int>(std::ceil(admirals.size() / 20.0F));
+	admirals.erase(admirals.begin() + desiredAdmirals, admirals.end());
+
+	country->leaders.clear();
+	std::move(generals.begin(), generals.end(), std::back_inserter(country->leaders));
+	std::move(admirals.begin(), admirals.end(), std::back_inserter(country->leaders));
 }

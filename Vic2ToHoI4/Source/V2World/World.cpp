@@ -96,7 +96,6 @@ Vic2::World::World(const mappers::ProvinceMapper& provinceMapper, const Configur
 	Log(LogLevel::Info) << "Building Vic2 world";
 	setGreatPowerStatus(GPIndexes, tagsInOrder);
 	setProvinceOwners();
-	limitCommanders();
 	addProvinceCoreInfoToCountries();
 	if (theConfiguration.getRemoveCores())
 	{
@@ -149,15 +148,6 @@ void Vic2::World::setProvinceOwners()
 	{
 		country->putProvincesInStates();
 		country->handleMissingCulture(*theCultureGroups);
-	}
-}
-
-
-void Vic2::World::limitCommanders()
-{
-	for (auto& [unused, country]: countries)
-	{
-		country->limitCommanders();
 	}
 }
 

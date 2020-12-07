@@ -24,38 +24,6 @@
 
 
 
-void Vic2::Country::setParties(const std::vector<Party>& allParties)
-{
-	if (tag == "REB")
-	{
-		return;
-	}
-	for (auto ID: activePartyIDs)
-	{
-		if (ID <= allParties.size())
-		{
-			activeParties.insert(allParties.at(ID - 1)); // Subtract 1, because party ID starts from index of 1
-		}
-		else
-		{
-			Log(LogLevel::Warning) << "Party ID mismatch! Did some Vic2 country files not get read?";
-		}
-	}
-
-	if (rulingPartyID == 0)
-	{
-		throw std::runtime_error(tag + " had no ruling party. The save needs manual repair.");
-	}
-	if (rulingPartyID > allParties.size())
-	{
-		throw std::runtime_error(
-			 "Could not find the ruling party for " + tag + ". " + "Most likely a mod was not included.\n" +
-			 "Double-check your settings, and remember to include EU4 to Vic2 mods. See the FAQ for more information.");
-	}
-	rulingParty = allParties.at(rulingPartyID - 1); // Subtract 1, because party ID starts from index of 1
-}
-
-
 void Vic2::Country::eatCountry(Country& target, bool debug)
 {
 	if (target.tag == tag)
@@ -106,34 +74,6 @@ void Vic2::Country::putProvincesInStates()
 			state.addProvince(province->second);
 		}
 	}
-}
-
-
-void Vic2::Country::limitCommanders()
-{
-	std::vector<Leader> generals;
-	std::copy_if(leaders.begin(), leaders.end(), std::back_inserter(generals), [](const Leader& leader) {
-		return leader.getType() == "land";
-	});
-	std::sort(generals.begin(), generals.end(), [](Leader& a, Leader& b) {
-		return a.getPrestige() > b.getPrestige();
-	});
-	const int desiredGenerals = static_cast<int>(std::ceil(generals.size() / 20.0F));
-	generals.erase(generals.begin() + desiredGenerals, generals.end());
-
-	std::vector<Leader> admirals;
-	std::copy_if(leaders.begin(), leaders.end(), std::back_inserter(admirals), [](const Leader& leader) {
-		return leader.getType() == "sea";
-	});
-	std::sort(admirals.begin(), admirals.end(), [](Leader& a, Leader& b) {
-		return a.getPrestige() > b.getPrestige();
-	});
-	const int desiredAdmirals = static_cast<int>(std::ceil(admirals.size() / 20.0F));
-	admirals.erase(admirals.begin() + desiredAdmirals, admirals.end());
-
-	leaders.clear();
-	std::move(generals.begin(), generals.end(), std::back_inserter(leaders));
-	std::move(admirals.begin(), admirals.end(), std::back_inserter(leaders));
 }
 
 

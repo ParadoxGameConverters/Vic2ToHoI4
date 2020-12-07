@@ -51,7 +51,6 @@ class World: commonItems::parser
 	void setGreatPowerStatus(const std::vector<int>& GPIndexes, const std::vector<std::string>& tagsInOrder);
 
 	void setProvinceOwners();
-	void limitCommanders();
 	void addProvinceCoreInfoToCountries();
 	void removeSimpleLandlessNations();
 	bool shouldCoreBeRemoved(const Province& core, const Country& country) const;

@@ -52,7 +52,6 @@ class Country
 
 	void eatCountry(Country& target, bool debug);
 	void putProvincesInStates();
-	void limitCommanders();
 	void determineEmployedWorkers();
 	void setLocalisationNames(Localisations& vic2Localisations);
 	void setLocalisationAdjectives(const Localisations& vic2Localisations);
@@ -105,8 +104,6 @@ class Country
   private:
 	std::map<std::string, int> determineCultureSizes();
 	std::string selectLargestCulture(const std::map<std::string, int>& cultureSizes);
-
-	void setParties(const std::vector<Party>& allParties);
 
 	void setLocalisationName(const std::string& language, const std::string& name);
 	void setLocalisationAdjective(const std::string& language, const std::string& adjective);
