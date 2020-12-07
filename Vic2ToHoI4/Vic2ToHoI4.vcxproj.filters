@@ -1108,9 +1108,6 @@
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4AIStrategy.cpp">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClCompile>
-    <ClCompile Include="Source\V2World\Countries\CommonCountryData.cpp">
-      <Filter>Vic2World\Countries</Filter>
-    </ClCompile>
     <ClCompile Include="Source\V2World\Countries\CommonCountryDataFactory.cpp">
       <Filter>Vic2World\Countries</Filter>
     </ClCompile>
@@ -1121,6 +1118,9 @@
       <Filter>Vic2World\Countries</Filter>
     </ClCompile>
     <ClCompile Include="Source\V2World\Countries\CountryFactory.cpp">
+      <Filter>Vic2World\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Countries\Country.cpp">
       <Filter>Vic2World\Countries</Filter>
     </ClCompile>
   </ItemGroup>
@@ -18640,13 +18640,9 @@
     <CopyFileToFolders Include="Data_Files\Historical Project Mod 0.4.6_province_mappings.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\The Concert of Europe_province_mappings.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Data_Files\The Concert of Europe_province_mappings.txt">
-      <Filter>Data Files</Filter>
-    </Text>
   </ItemGroup>
 </Project>
