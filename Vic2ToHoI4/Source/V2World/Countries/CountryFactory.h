@@ -3,6 +3,7 @@
 
 
 
+#include "CommonCountryData.h"
 #include "Configuration.h"
 #include "Country.h"
 #include "Parser.h"
@@ -11,6 +12,7 @@
 #include "V2World/Military/ArmyFactory.h"
 #include "V2World/Military/Leaders/LeaderFactory.h"
 #include "V2World/States/StateFactory.h"
+#include "V2World/Technology/Inventions.h"
 #include <memory>
 
 
