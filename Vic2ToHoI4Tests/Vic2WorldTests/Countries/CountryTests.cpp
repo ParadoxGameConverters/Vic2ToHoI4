@@ -1583,7 +1583,6 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyUnsetThrowsException)
 		 {
 			 try
 			 {
-
 				 countryFactory.createCountry("TAG",
 					  theStream,
 					  *Vic2::CommonCountryData::Builder{}.Build(),
@@ -1614,7 +1613,6 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyNonexistantThrowsException)
 		 {
 			 try
 			 {
-
 				 countryFactory.createCountry("TAG",
 					  theStream,
 					  *Vic2::CommonCountryData::Builder{}.Build(),
