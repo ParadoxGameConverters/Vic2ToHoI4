@@ -1,26 +1,10 @@
 #include "Country.h"
-#include "V2World/Ai/Vic2AI.h"
-#include "V2World/Ai/AIStrategy.h"
-#include "V2World/Culture/CultureGroups.h"
-#include "V2World/Diplomacy/Relations.h"
-#include "V2World/Localisations/Vic2Localisations.h"
 #include "Log.h"
-#include "ParserHelpers.h"
-#include "StringUtils.h"
 #include "V2World/Culture/CultureGroups.h"
-#include "V2World/Diplomacy/Relations.h"
-#include "V2World/Diplomacy/RelationsFactory.h"
 #include "V2World/Localisations/Vic2Localisations.h"
-#include "V2World/Military/ArmyFactory.h"
-#include "V2World/Military/Leaders/Leader.h"
-#include "V2World/Politics/Party.h"
 #include "V2World/Pops/Pop.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/States/State.h"
-#include "V2World/States/StateDefinitions.h"
-#include "V2World/States/StateFactory.h"
-#include "V2World/Technology/Inventions.h"
-#include <cmath>
 
 
 
@@ -93,9 +77,9 @@ void Vic2::Country::setLocalisationNames(Localisations& vic2Localisations)
 		vic2Localisations.updateDomainCountry(tag, domainName);
 	}
 	auto nameInAllLanguages = vic2Localisations.getTextInEachLanguage(tag);
-	for (auto nameInLanguage: nameInAllLanguages)
+	for (const auto& [language, name]: nameInAllLanguages)
 	{
-		setLocalisationName(nameInLanguage.first, nameInLanguage.second);
+		setLocalisationName(language, name);
 	}
 }
 
@@ -116,9 +100,9 @@ void Vic2::Country::setLocalisationName(const std::string& language, const std::
 void Vic2::Country::setLocalisationAdjectives(const Localisations& vic2Localisations)
 {
 	auto adjectiveInAllLanguages = vic2Localisations.getTextInEachLanguage(tag + "_ADJ");
-	for (auto adjectiveinLanguage: adjectiveInAllLanguages)
+	for (const auto& [language, adjective]: adjectiveInAllLanguages)
 	{
-		setLocalisationAdjective(adjectiveinLanguage.first, adjectiveinLanguage.second);
+		setLocalisationAdjective(language, adjective);
 	}
 }
 
@@ -140,7 +124,7 @@ void Vic2::Country::handleMissingCulture(const CultureGroups& theCultureGroups)
 {
 	if (primaryCulture.empty())
 	{
-		auto cultureSizes = determineCultureSizes();
+		const auto cultureSizes = determineCultureSizes();
 		primaryCulture = selectLargestCulture(cultureSizes);
 		auto cultureGroupOption = theCultureGroups.getGroup(primaryCulture);
 		if (cultureGroupOption)
@@ -161,16 +145,15 @@ std::map<std::string, int> Vic2::Country::determineCultureSizes()
 
 	for (auto [unused, province]: provinces)
 	{
-		for (auto pop: province->getPops())
+		for (const auto& pop: province->getPops())
 		{
-			std::string popCulture = pop.getCulture();
-			auto cultureSize = cultureSizes.find(popCulture);
-			if (cultureSize == cultureSizes.end())
+			const auto& popSize = pop.getSize();
+			const auto& popCulture = pop.getCulture();
+			auto [existing, inserted] = cultureSizes.insert(std::make_pair(popCulture, popSize));
+			if (!inserted)
 			{
-				cultureSizes.insert(make_pair(popCulture, 0));
-				cultureSize = cultureSizes.find(popCulture);
+				existing->second += pop.getSize();
 			}
-			cultureSize->second += pop.getSize();
 		}
 	}
 
@@ -181,13 +164,13 @@ std::map<std::string, int> Vic2::Country::determineCultureSizes()
 std::string Vic2::Country::selectLargestCulture(const std::map<std::string, int>& cultureSizes)
 {
 	std::string largestCulture;
-	int largestCultureSize = 0;
-	for (auto cultureSize: cultureSizes)
+	auto largestCultureSize = 0;
+	for (const auto& [culture, size]: cultureSizes)
 	{
-		if (cultureSize.second > largestCultureSize)
+		if (size > largestCultureSize)
 		{
-			largestCulture = cultureSize.first;
-			largestCultureSize = cultureSize.second;
+			largestCulture = culture;
+			largestCultureSize = size;
 		}
 	}
 

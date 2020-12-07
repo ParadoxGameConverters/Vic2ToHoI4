@@ -4,7 +4,6 @@
 
 
 #include "Color.h"
-#include "CommonCountryData.h"
 #include "Date.h"
 #include "Parser.h"
 #include "V2World/Ai/Vic2AI.h"
@@ -17,8 +16,6 @@
 #include "V2World/Politics/Party.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/States/State.h"
-#include "V2World/States/StateDefinitions.h"
-#include "V2World/Technology/Inventions.h"
 #include "V2World/Wars/War.h"
 #include <cstdint>
 #include <map>
@@ -103,7 +100,7 @@ class Country
 
   private:
 	std::map<std::string, int> determineCultureSizes();
-	std::string selectLargestCulture(const std::map<std::string, int>& cultureSizes);
+	static std::string selectLargestCulture(const std::map<std::string, int>& cultureSizes);
 
 	void setLocalisationName(const std::string& language, const std::string& name);
 	void setLocalisationAdjective(const std::string& language, const std::string& adjective);
