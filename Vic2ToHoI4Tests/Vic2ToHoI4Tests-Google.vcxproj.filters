@@ -1314,6 +1314,12 @@
       <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\Country.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Technology\TechnologyFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Technology\TechnologyFactoryTests.cpp">
+      <Filter>Vic2WorldTests\Technology</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

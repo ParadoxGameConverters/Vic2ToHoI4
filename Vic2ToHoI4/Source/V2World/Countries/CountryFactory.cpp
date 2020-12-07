@@ -74,14 +74,9 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 		}
 	});
 	registerKeyword("technology", [this](const std::string& unused, std::istream& theStream) {
-		auto equals = getNextTokenWithoutMatching(theStream);
-		auto openBrace = getNextTokenWithoutMatching(theStream);
-		auto token = getNextTokenWithoutMatching(theStream);
-		while (token != "}")
+		for (const auto& technology: technologyFactory.importTechnologies(theStream))
 		{
-			country->technologiesAndInventions.insert(*token);
-			commonItems::ignoreItem(*token, theStream);
-			token = getNextTokenWithoutMatching(theStream);
+			country->technologiesAndInventions.insert(technology);
 		}
 	});
 	registerKeyword("active_inventions", [this](const std::string& unused, std::istream& theStream) {

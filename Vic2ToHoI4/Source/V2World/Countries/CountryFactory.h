@@ -13,6 +13,7 @@
 #include "V2World/Military/Leaders/LeaderFactory.h"
 #include "V2World/States/StateFactory.h"
 #include "V2World/Technology/Inventions.h"
+#include "V2World/Technology/TechnologyFactory.h"
 #include <memory>
 
 
@@ -41,6 +42,7 @@ class Country::Factory: commonItems::parser
 	Army::Factory armyFactory;
 	std::unique_ptr<Leader::Factory> leaderFactory;
 	std::unique_ptr<State::Factory> stateFactory;
+	TechnologyFactory technologyFactory;
 
 	std::unique_ptr<Country> country;
 };
