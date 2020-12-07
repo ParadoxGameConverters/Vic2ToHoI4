@@ -75,7 +75,7 @@ TEST(Vic2World_Countries_CountryTests, HumanCanBeSet)
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
-	theStream << "\thuman = whatever\n";
+	theStream << "\thuman = yes\n";
 	theStream << "}";
 	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
@@ -86,6 +86,25 @@ TEST(Vic2World_Countries_CountryTests, HumanCanBeSet)
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	ASSERT_TRUE(country->isHuman());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, HumanNotSetWithoutYes)
+{
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "\thuman = whatever\n";
+	theStream << "}";
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+
+	ASSERT_FALSE(country->isHuman());
 }
 
 
@@ -1533,9 +1552,9 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionCanBeSet)
 	theStream << "\truling_party = 1\n";
 	theStream << "\tupper_house=\n";
 	theStream << "\t{\n";
-	theStream << "\t\tideology_one=0.3\n";
-	theStream << "\t\tideology_two=0.6\n";
-	theStream << "\t\tideology_three=0.1\n";
+	theStream << "\t\tideology_one=0.25\n";
+	theStream << "\t\tideology_two=0.625\n";
+	theStream << "\t\tideology_three=0.125\n";
 	theStream << "\t}\n";
 	theStream << "}";
 	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
@@ -1547,9 +1566,9 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionCanBeSet)
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	ASSERT_THAT(country->getUpperHouseComposition(),
-		 testing::UnorderedElementsAre(testing::Pair(std::string("ideology_one"), 0.3),
-			  testing::Pair(std::string("ideology_two"), 0.6),
-			  testing::Pair(std::string("ideology_three"), 0.1)));
+		 testing::UnorderedElementsAre(testing::Pair(std::string("ideology_one"), 0.25),
+			  testing::Pair(std::string("ideology_two"), 0.625),
+			  testing::Pair(std::string("ideology_three"), 0.125)));
 }
 
 

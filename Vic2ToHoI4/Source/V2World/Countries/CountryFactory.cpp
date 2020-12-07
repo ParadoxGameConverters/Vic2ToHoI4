@@ -20,48 +20,41 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 	stateFactory = std::make_unique<State::Factory>();
 
 	registerKeyword("capital", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleInt capitalInt(theStream);
-		country->capital = capitalInt.getInt();
+		country->capital = commonItems::singleInt{theStream}.getInt();
 	});
 	registerKeyword("civilized", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString civilizedString(theStream);
-		if (civilizedString.getString() == "yes")
+		if (commonItems::singleString{theStream}.getString() == "yes")
 		{
 			country->civilized = true;
 		}
 	});
 	registerKeyword("revanchism", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleDouble revanchismDouble(theStream);
-		country->revanchism = revanchismDouble.getDouble();
+		country->revanchism = commonItems::singleDouble{theStream}.getDouble();
 	});
 	registerKeyword("war_exhaustion", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleDouble warExhaustionDouble(theStream);
-		country->warExhaustion = warExhaustionDouble.getDouble();
+		country->warExhaustion = commonItems::singleDouble{theStream}.getDouble();
 	});
 	registerKeyword("badboy", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleDouble badboyDouble(theStream);
-		country->badBoy = badboyDouble.getDouble();
+		country->badBoy = commonItems::singleDouble{theStream}.getDouble();
 	});
 	registerKeyword("government", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString governmentString(theStream);
-		country->government = governmentString.getString();
+		country->government = commonItems::singleString{theStream}.getString();
 	});
 	registerKeyword("last_election", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString lastElectionString(theStream);
-		country->lastElection = date(lastElectionString.getString());
+		country->lastElection = date(commonItems::singleString{theStream}.getString());
 	});
 	registerKeyword("domain_region", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString regionString(theStream);
-		country->domainName = regionString.getString();
+		country->domainName = commonItems::singleString{theStream}.getString();
 		country->domainAdjective = country->domainName;
 	});
 	registerKeyword("human", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::ignoreItem(unused, theStream);
-		country->human = true;
+		if (commonItems::singleString{theStream}.getString() == "yes")
+		{
+			country->human = true;
+		}
 	});
 	registerKeyword("primary_culture", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleString cultureString(theStream);
-		country->primaryCulture = commonItems::remQuotes(cultureString.getString());
+		country->primaryCulture = commonItems::remQuotes(commonItems::singleString{theStream}.getString());
 		country->acceptedCultures.insert(country->primaryCulture);
 
 		auto cultureGroupOption = theCultureGroups->getGroup(country->primaryCulture);
@@ -75,7 +68,7 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 		}
 	});
 	registerKeyword("culture", [this](const std::string& unused, std::istream& theStream) {
-		for (auto culture: commonItems::stringList{theStream}.getStrings())
+		for (const auto& culture: commonItems::stringList{theStream}.getStrings())
 		{
 			country->acceptedCultures.insert(commonItems::remQuotes(culture));
 		}
@@ -92,37 +85,36 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 		}
 	});
 	registerKeyword("active_inventions", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::intList inventionNums(theStream);
-		for (auto inventionNum: inventionNums.getInts())
+		for (auto inventionNum: commonItems::intList{theStream}.getInts())
 		{
-			auto inventionName = theInventions->getInventionName(inventionNum);
-			if (inventionName)
+			if (auto inventionName = theInventions->getInventionName(inventionNum); inventionName)
 			{
 				country->technologiesAndInventions.insert(*inventionName);
 			}
 		}
 	});
 	registerKeyword("active_party", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleInt partyNum(theStream);
-		country->activePartyIDs.push_back(partyNum.getInt());
+		const auto partyNum = commonItems::singleInt(theStream).getInt();
+		country->activePartyIDs.push_back(partyNum);
 		if (country->rulingPartyID == 0)
 		{
-			country->rulingPartyID = partyNum.getInt();
+			country->rulingPartyID = partyNum;
 		}
 	});
 	registerKeyword("ruling_party", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleInt partyNum(theStream);
-		country->rulingPartyID = partyNum.getInt();
+		country->rulingPartyID = commonItems::singleInt{theStream}.getInt();
 	});
 	registerKeyword("upper_house", [this](const std::string& unused, std::istream& theStream) {
-		auto equals = getNextTokenWithoutMatching(theStream);
-		auto openBrace = getNextTokenWithoutMatching(theStream);
-		auto token = getNextTokenWithoutMatching(theStream);
-		while (token != "}")
+		commonItems::assignments upperHouse(theStream);
+		for (const auto& [ideology, amountString]: upperHouse.getAssignments())
 		{
-			commonItems::singleDouble ideologyAmount(theStream);
-			country->upperHouseComposition.insert(make_pair(*token, ideologyAmount.getDouble()));
-			token = getNextTokenWithoutMatching(theStream);
+			try
+			{
+				country->upperHouseComposition.insert(make_pair(ideology, stof(amountString)));
+			}
+			catch (...)
+			{
+			}
 		}
 	});
 	registerRegex("[A-Z][A-Z0-9]{2}", [this](const std::string& countryTag, std::istream& theStream) {
@@ -135,7 +127,7 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 		country->armies.push_back(*armyFactory.getArmy(theStream));
 	});
 	registerKeyword("navy", [this](const std::string& unused, std::istream& theStream) {
-		auto navy = armyFactory.getArmy(theStream);
+		const auto navy = armyFactory.getArmy(theStream);
 		for (auto& transportedArmy: navy->getTransportedArmies())
 		{
 			country->armies.push_back(transportedArmy);
@@ -146,12 +138,10 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 		country->leaders.push_back(*leaderFactory->getLeader(theStream));
 	});
 	registerKeyword("state", [this, &theStateDefinitions](const std::string& unused, std::istream& theStream) {
-		auto newState = stateFactory->getState(theStream, country->tag, theStateDefinitions);
-		country->states.push_back(*newState);
+		country->states.push_back(*stateFactory->getState(theStream, country->tag, theStateDefinitions));
 	});
 	registerKeyword("flags", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::assignments theFlags(theStream);
-		for (auto flag: theFlags.getAssignments())
+		for (const auto& flag: commonItems::assignments{theStream}.getAssignments())
 		{
 			country->flags.insert(flag.first);
 		}
@@ -224,8 +214,8 @@ void Vic2::Country::Factory::limitCommanders()
 		 country->leaders.end(),
 		 std::back_inserter(generals),
 		 [](const Leader& leader) {
-		return leader.getType() == "land";
-	});
+			 return leader.getType() == "land";
+		 });
 	std::sort(generals.begin(), generals.end(), [](Leader& a, Leader& b) {
 		return a.getPrestige() > b.getPrestige();
 	});
@@ -237,8 +227,8 @@ void Vic2::Country::Factory::limitCommanders()
 		 country->leaders.end(),
 		 std::back_inserter(admirals),
 		 [](const Leader& leader) {
-		return leader.getType() == "sea";
-	});
+			 return leader.getType() == "sea";
+		 });
 	std::sort(admirals.begin(), admirals.end(), [](Leader& a, Leader& b) {
 		return a.getPrestige() > b.getPrestige();
 	});
