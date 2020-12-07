@@ -438,9 +438,9 @@
     <ClCompile Include="MapperTests\TechMapperTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\AIStrategyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\Vic2AITests.cpp" />
-    <ClCompile Include="TestFiles\Countries\CountryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Countries\CommonCountriesDataFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Countries\CommonCountryDataTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Countries\CountryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Countries\UnitNamesFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Culture\CultureGroupFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Culture\CultureGroupsTests.cpp" />

@@ -1307,9 +1307,6 @@
     <ClCompile Include="Vic2WorldTests\Countries\CommonCountriesDataFactoryTests.cpp">
       <Filter>Vic2WorldTests\Countries</Filter>
     </ClCompile>
-    <ClCompile Include="TestFiles\Countries\CountryTests.cpp">
-      <Filter>Vic2WorldTests\Countries</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CountryFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
     </ClCompile>
@@ -1319,6 +1316,9 @@
     </ClCompile>
     <ClCompile Include="Vic2WorldTests\Technology\TechnologyFactoryTests.cpp">
       <Filter>Vic2WorldTests\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Countries\CountryTests.cpp">
+      <Filter>Vic2WorldTests\Countries</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
