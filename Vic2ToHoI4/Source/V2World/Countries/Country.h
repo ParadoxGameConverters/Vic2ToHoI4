@@ -41,13 +41,13 @@ class Country
 
 	// functions to construct the country
 	void addProvince(const std::pair<const int, std::shared_ptr<Province>>& province) { provinces.insert(province); }
-	void addCore(const std::shared_ptr<Province> core) { cores.push_back(core); }
+	void addCore(std::shared_ptr<Province> core) { cores.push_back(std::move(core)); }
 	void replaceCores(std::vector<std::shared_ptr<Province>> newCores) { cores.swap(newCores); }
 	void addWar(const War& theWar) { wars.push_back(theWar); }
 	void setAtWar() { atWar = true; }
-	void consolidateConquerStrategies(const std::map<int, std::shared_ptr<Province>>& provinces)
+	void consolidateConquerStrategies(const std::map<int, std::shared_ptr<Province>>& allProvinces)
 	{
-		vic2AI->consolidateConquerStrategies(provinces);
+		vic2AI->consolidateConquerStrategies(allProvinces);
 	}
 
 	void eatCountry(Country& target, bool debug);

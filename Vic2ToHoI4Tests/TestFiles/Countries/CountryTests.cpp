@@ -8,8 +8,8 @@
 #include "V2World/Pops/PopBuilder.h"
 #include "V2World/Provinces/ProvinceBuilder.h"
 #include "V2World/States/StateDefinitionsBuilder.h"
+#include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
-#include <gmock/gmock-matchers.h>
 #include <sstream>
 
 
@@ -54,8 +54,6 @@ TEST(Vic2World_Countries_CountryTests, ColorIsFromCommonCountryData)
 
 TEST(Vic2World_Countries_CountryTests, HumanDefaultsToFalse)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -74,8 +72,6 @@ TEST(Vic2World_Countries_CountryTests, HumanDefaultsToFalse)
 
 TEST(Vic2World_Countries_CountryTests, HumanCanBeSet)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -95,8 +91,6 @@ TEST(Vic2World_Countries_CountryTests, HumanCanBeSet)
 
 TEST(Vic2World_Countries_CountryTests, StatesDefaultToEmpty)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -115,8 +109,6 @@ TEST(Vic2World_Countries_CountryTests, StatesDefaultToEmpty)
 
 TEST(Vic2World_Countries_CountryTests, StatesCanBeImported)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -137,8 +129,6 @@ TEST(Vic2World_Countries_CountryTests, StatesCanBeImported)
 
 TEST(Vic2World_Countries_CountryTests, StatesCanBeModified)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -163,8 +153,6 @@ TEST(Vic2World_Countries_CountryTests, StatesCanBeModified)
 
 TEST(Vic2World_Countries_CountryTests, DoesNotHaveLandByDefault)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -183,8 +171,6 @@ TEST(Vic2World_Countries_CountryTests, DoesNotHaveLandByDefault)
 
 TEST(Vic2World_Countries_CountryTests, HasLandWhenGivenProvinces)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -204,8 +190,6 @@ TEST(Vic2World_Countries_CountryTests, HasLandWhenGivenProvinces)
 
 TEST(Vic2World_Countries_CountryTests, IsEmptyByDefault)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -224,8 +208,6 @@ TEST(Vic2World_Countries_CountryTests, IsEmptyByDefault)
 
 TEST(Vic2World_Countries_CountryTests, IsNotEmptyWhenGivenProvinces)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -245,8 +227,6 @@ TEST(Vic2World_Countries_CountryTests, IsNotEmptyWhenGivenProvinces)
 
 TEST(Vic2World_Countries_CountryTests, IsNotEmptyWhenGivenCores)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -266,8 +246,6 @@ TEST(Vic2World_Countries_CountryTests, IsNotEmptyWhenGivenCores)
 
 TEST(Vic2World_Countries_CountryTests, CoresDefaultToEmpty)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -286,8 +264,6 @@ TEST(Vic2World_Countries_CountryTests, CoresDefaultToEmpty)
 
 TEST(Vic2World_Countries_CountryTests, CoresCanBeAdded)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -308,8 +284,6 @@ TEST(Vic2World_Countries_CountryTests, CoresCanBeAdded)
 
 TEST(Vic2World_Countries_CountryTests, CoresCanBeReplaced)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -331,8 +305,6 @@ TEST(Vic2World_Countries_CountryTests, CoresCanBeReplaced)
 
 TEST(Vic2World_Countries_CountryTests, CapitalDefaultsToZero)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -351,20 +323,18 @@ TEST(Vic2World_Countries_CountryTests, CapitalDefaultsToZero)
 
 TEST(Vic2World_Countries_CountryTests, CapitalCanBeSet)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "\tcapital = 42\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-							 .createCountry("TAG",
-								  theStream,
-								  *Vic2::CommonCountryData::Builder{}.Build(),
-								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	ASSERT_EQ(42, country->getCapital());
 }
@@ -372,8 +342,6 @@ TEST(Vic2World_Countries_CountryTests, CapitalCanBeSet)
 
 TEST(Vic2World_Countries_CountryTests, PrimaryCultureDefaultsToEmpty)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -392,20 +360,18 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureDefaultsToEmpty)
 
 TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSet)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "\tprimary_culture = test_primary\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-							 .createCountry("TAG",
-								  theStream,
-								  *Vic2::CommonCountryData::Builder{}.Build(),
-								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	ASSERT_EQ("test_primary", country->getPrimaryCulture());
 }
@@ -413,8 +379,6 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSet)
 
 TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromLargestCulture)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -442,20 +406,18 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromLargestCulture)
 
 TEST(Vic2World_Countries_CountryTests, PrimaryCultureWithQuotesCanBeSet)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "\tprimary_culture = \"test_primary\"\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-							 .createCountry("TAG",
-								  theStream,
-								  *Vic2::CommonCountryData::Builder{}.Build(),
-								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	ASSERT_EQ("test_primary", country->getPrimaryCulture());
 }
@@ -463,8 +425,6 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureWithQuotesCanBeSet)
 
 TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupDefaultsToEmpty)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -484,21 +444,19 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupDefaultsToEmpty)
 TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupsSetFromPrimaryCulture)
 {
 	// see TestCountryCultures.txt for the culture definition
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "\tprimary_culture = test_primary\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countryTests/").build(),
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countryTests/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(
 			  *Configuration::Builder{}.setVic2Path("./countryTests/").build())}
-							 .createCountry("TAG",
-								  theStream,
-								  *Vic2::CommonCountryData::Builder{}.Build(),
-								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	ASSERT_EQ("test_primary_group", country->getPrimaryCultureGroup());
 }
@@ -506,8 +464,6 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupsSetFromPrimaryCulture
 
 TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupCanBeSetFromLargestCulture)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -535,8 +491,6 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupCanBeSetFromLargestCul
 
 TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupBecomesNoCultureIfUnset)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -557,8 +511,6 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupBecomesNoCultureIfUnse
 
 TEST(Vic2World_Countries_CountryTests, AcceptedCulturesDefaultToEmpty)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -577,20 +529,18 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesDefaultToEmpty)
 
 TEST(Vic2World_Countries_CountryTests, AcceptedCulturesIncludePrimaryCulture)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "\tprimary_culture = test_primary\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-							 .createCountry("TAG",
-								  theStream,
-								  *Vic2::CommonCountryData::Builder{}.Build(),
-								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	ASSERT_THAT(country->getAcceptedCultures(), testing::UnorderedElementsAre("test_primary"));
 }
@@ -598,8 +548,6 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesIncludePrimaryCulture)
 
 TEST(Vic2World_Countries_CountryTests, AcceptedCulturesCanBeAdded)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -608,13 +556,13 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesCanBeAdded)
 	theStream << "\t\t\"test_primary2\"\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-							 .createCountry("TAG",
-								  theStream,
-								  *Vic2::CommonCountryData::Builder{}.Build(),
-								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	ASSERT_THAT(country->getAcceptedCultures(), testing::UnorderedElementsAre("test_primary", "test_primary2"));
 }
@@ -622,8 +570,6 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesCanBeAdded)
 
 TEST(Vic2World_Countries_CountryTests, AcceptedCulturesIdentifiedAsAcceptedCultures)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -632,13 +578,13 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesIdentifiedAsAcceptedCultu
 	theStream << "\t\t\"test_primary2\"\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-							 .createCountry("TAG",
-								  theStream,
-								  *Vic2::CommonCountryData::Builder{}.Build(),
-								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	ASSERT_TRUE(country->isAnAcceptedCulture("test_primary"));
 	ASSERT_TRUE(country->isAnAcceptedCulture("test_primary2"));
@@ -647,19 +593,17 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesIdentifiedAsAcceptedCultu
 
 TEST(Vic2World_Countries_CountryTests, NonAcceptedCulturesNotIdentifiedAsAcceptedCultures)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-							 .createCountry("TAG",
-								  theStream,
-								  *Vic2::CommonCountryData::Builder{}.Build(),
-								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	ASSERT_FALSE(country->isAnAcceptedCulture("fake_culture"));
 }
@@ -667,8 +611,6 @@ TEST(Vic2World_Countries_CountryTests, NonAcceptedCulturesNotIdentifiedAsAccepte
 
 TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsDefaultToEmpty)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -687,8 +629,6 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsDefaultToEmpty)
 
 TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsCanBeAddedFromTechnologies)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -697,13 +637,13 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsCanBeAddedFromTe
 	theStream << "\t\ttechnology_two = {}\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-							 .createCountry("TAG",
-								  theStream,
-								  *Vic2::CommonCountryData::Builder{}.Build(),
-								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	ASSERT_THAT(country->getTechnologiesAndInventions(),
 		 testing::UnorderedElementsAre("technology_one", "technology_two"));
@@ -712,20 +652,18 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsCanBeAddedFromTe
 
 TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsCanBeAddedFromInventions)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "\tactive_inventions = { 1 4 5 }\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countryTests/").build(),
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countryTests/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-							 .createCountry("TAG",
-								  theStream,
-								  *Vic2::CommonCountryData::Builder{}.Build(),
-								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	ASSERT_THAT(country->getTechnologiesAndInventions(),
 		 testing::UnorderedElementsAre("first_invention", "fourth_invention", "fifth_invention"));
@@ -734,8 +672,6 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsCanBeAddedFromIn
 
 TEST(Vic2World_Countries_CountryTests, RelationsDefaultToEmpty)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -754,8 +690,6 @@ TEST(Vic2World_Countries_CountryTests, RelationsDefaultToEmpty)
 
 TEST(Vic2World_Countries_CountryTests, RelationsCanBeAdded)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -780,8 +714,6 @@ TEST(Vic2World_Countries_CountryTests, RelationsCanBeAdded)
 
 TEST(Vic2World_Countries_CountryTests, AiDefaultsToEmpty)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -800,8 +732,6 @@ TEST(Vic2World_Countries_CountryTests, AiDefaultsToEmpty)
 
 TEST(Vic2World_Countries_CountryTests, AiCanBeImported)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -830,8 +760,6 @@ TEST(Vic2World_Countries_CountryTests, AiCanBeImported)
 
 TEST(Vic2World_Countries_CountryTests, AiConquerStrategiesCanBeConsolidated)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -865,8 +793,6 @@ TEST(Vic2World_Countries_CountryTests, AiConquerStrategiesCanBeConsolidated)
 
 TEST(Vic2World_Countries_CountryTests, CivilizedDefaultsToFalse)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -885,8 +811,6 @@ TEST(Vic2World_Countries_CountryTests, CivilizedDefaultsToFalse)
 
 TEST(Vic2World_Countries_CountryTests, CivilizedCanBeSet)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -906,8 +830,6 @@ TEST(Vic2World_Countries_CountryTests, CivilizedCanBeSet)
 
 TEST(Vic2World_Countries_CountryTests, CivilizedNotSetWithoutYes)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -927,8 +849,6 @@ TEST(Vic2World_Countries_CountryTests, CivilizedNotSetWithoutYes)
 
 TEST(Vic2World_Countries_CountryTests, ArmiesDefaultsToEmpty)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -947,8 +867,6 @@ TEST(Vic2World_Countries_CountryTests, ArmiesDefaultsToEmpty)
 
 TEST(Vic2World_Countries_CountryTests, ArmiesCanBeAdded)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -972,8 +890,6 @@ TEST(Vic2World_Countries_CountryTests, ArmiesCanBeAdded)
 
 TEST(Vic2World_Countries_CountryTests, NaviesCanBeAdded)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -997,8 +913,6 @@ TEST(Vic2World_Countries_CountryTests, NaviesCanBeAdded)
 
 TEST(Vic2World_Countries_CountryTests, TransportedArmiesCanBeAdded)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1027,8 +941,6 @@ TEST(Vic2World_Countries_CountryTests, TransportedArmiesCanBeAdded)
 
 TEST(Vic2World_Countries_CountryTests, LeadersDefaultToEmpty)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1047,8 +959,6 @@ TEST(Vic2World_Countries_CountryTests, LeadersDefaultToEmpty)
 
 TEST(Vic2World_Countries_CountryTests, LeadersCanBeAdded)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1072,8 +982,6 @@ TEST(Vic2World_Countries_CountryTests, LeadersCanBeAdded)
 
 TEST(Vic2World_Countries_CountryTests, LeadersCanBeLimited)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1196,8 +1104,6 @@ TEST(Vic2World_Countries_CountryTests, LeadersCanBeLimited)
 
 TEST(Vic2World_Countries_CountryTests, GeneralsAndAdmiralsLimitedSeparately)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1441,8 +1347,6 @@ TEST(Vic2World_Countries_CountryTests, GeneralsAndAdmiralsLimitedSeparately)
 
 TEST(Vic2World_Countries_CountryTests, RevanchismDefaultsToZero)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1461,8 +1365,6 @@ TEST(Vic2World_Countries_CountryTests, RevanchismDefaultsToZero)
 
 TEST(Vic2World_Countries_CountryTests, RevanchismCanBeSet)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1482,8 +1384,6 @@ TEST(Vic2World_Countries_CountryTests, RevanchismCanBeSet)
 
 TEST(Vic2World_Countries_CountryTests, WarExhaustionDefaultsToZero)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1502,8 +1402,6 @@ TEST(Vic2World_Countries_CountryTests, WarExhaustionDefaultsToZero)
 
 TEST(Vic2World_Countries_CountryTests, WarExhaustionCanBeSet)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1523,8 +1421,6 @@ TEST(Vic2World_Countries_CountryTests, WarExhaustionCanBeSet)
 
 TEST(Vic2World_Countries_CountryTests, BadBoyDefaultsToZero)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1543,8 +1439,6 @@ TEST(Vic2World_Countries_CountryTests, BadBoyDefaultsToZero)
 
 TEST(Vic2World_Countries_CountryTests, BadBoyCanBeSet)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1564,8 +1458,6 @@ TEST(Vic2World_Countries_CountryTests, BadBoyCanBeSet)
 
 TEST(Vic2World_Countries_CountryTests, FlagsDefaultToEmpty)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1584,8 +1476,6 @@ TEST(Vic2World_Countries_CountryTests, FlagsDefaultToEmpty)
 
 TEST(Vic2World_Countries_CountryTests, FlagsCanBeSet)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1610,8 +1500,6 @@ TEST(Vic2World_Countries_CountryTests, FlagsCanBeSet)
 
 TEST(Vic2World_Countries_CountryTests, GovernmentDefaultsToBlank)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1630,8 +1518,6 @@ TEST(Vic2World_Countries_CountryTests, GovernmentDefaultsToBlank)
 
 TEST(Vic2World_Countries_CountryTests, GovernmentCanBeSet)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1651,8 +1537,6 @@ TEST(Vic2World_Countries_CountryTests, GovernmentCanBeSet)
 
 TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionDefaultsToEmpty)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1671,8 +1555,6 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionDefaultsToEmpty)
 
 TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionCanBeSet)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1700,7 +1582,6 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionCanBeSet)
 
 TEST(Vic2World_Countries_CountryTests, RulingPartyUnsetThrowsException)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
 	std::stringstream theStream;
 	auto countryFactory = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
@@ -1728,7 +1609,6 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyUnsetThrowsException)
 
 TEST(Vic2World_Countries_CountryTests, RulingPartyNonexistantThrowsException)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1764,8 +1644,6 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyNonexistantThrowsException)
 
 TEST(Vic2World_Countries_CountryTests, RulingPartyCanBeSet)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1784,8 +1662,6 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyCanBeSet)
 
 TEST(Vic2World_Countries_CountryTests, RulingPartyNotSetForRebel)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1804,8 +1680,6 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyNotSetForRebel)
 
 TEST(Vic2World_Countries_CountryTests, ActivePartiesDefaultToEmpty)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1824,8 +1698,6 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesDefaultToEmpty)
 
 TEST(Vic2World_Countries_CountryTests, ActivePartiesCanBeSet)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1850,10 +1722,8 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesCanBeSet)
 
 TEST(Vic2World_Countries_CountryTests, ActivePartiesLoggedIfUndefined)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream log;
-	auto stdOutBuf = std::cout.rdbuf();
+	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 	std::stringstream theStream;
 	theStream << "= {\n";
@@ -1876,13 +1746,13 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesLoggedIfUndefined)
 		 "   [ERROR] Could not open /common/cultures.txt for parsing.\n"
 		 " [WARNING] Party ID mismatch! Did some Vic2 country files not get read?\n",
 		 log.str());
+	ASSERT_THAT(country->getActiveParties(),
+		 testing::UnorderedElementsAre(*Vic2::Party::Builder{}.setName("test_party_one").Build()));
 }
 
 
 TEST(Vic2World_Countries_CountryTests, ActivePartiesCanBecomeRulingPartyIfUnset)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\tactive_party=3\n";
@@ -1903,8 +1773,6 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesCanBecomeRulingPartyIfUnset)
 
 TEST(Vic2World_Countries_CountryTests, LastElectionDefaultsToOneOneOne)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1923,8 +1791,6 @@ TEST(Vic2World_Countries_CountryTests, LastElectionDefaultsToOneOneOne)
 
 TEST(Vic2World_Countries_CountryTests, LastElectionCanBeSet)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1944,8 +1810,6 @@ TEST(Vic2World_Countries_CountryTests, LastElectionCanBeSet)
 
 TEST(Vic2World_Countries_CountryTests, ShipNamesDefaultToEmpty)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1966,8 +1830,6 @@ TEST(Vic2World_Countries_CountryTests, ShipNamesDefaultToEmpty)
 
 TEST(Vic2World_Countries_CountryTests, ShipNamesCanBeSet)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -1994,8 +1856,6 @@ TEST(Vic2World_Countries_CountryTests, ShipNamesCanBeSet)
 
 TEST(Vic2World_Countries_CountryTests, AtWarDefaultsToFalse)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2014,8 +1874,6 @@ TEST(Vic2World_Countries_CountryTests, AtWarDefaultsToFalse)
 
 TEST(Vic2World_Countries_CountryTests, AtWarCanBeSet)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2035,8 +1893,6 @@ TEST(Vic2World_Countries_CountryTests, AtWarCanBeSet)
 
 TEST(Vic2World_Countries_CountryTests, WarsDefaultToEmpty)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2055,8 +1911,6 @@ TEST(Vic2World_Countries_CountryTests, WarsDefaultToEmpty)
 
 TEST(Vic2World_Countries_CountryTests, WarsCanBeAdded)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2076,8 +1930,6 @@ TEST(Vic2World_Countries_CountryTests, WarsCanBeAdded)
 
 TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalFalseWithNoCores)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2096,8 +1948,6 @@ TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalFalseWithNoCores)
 
 TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalFalseWithNoCoreOnCapital)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2118,8 +1968,6 @@ TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalFalseWithNoCoreOnCapital)
 
 TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalTrueWithCoreOnCapital)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2141,8 +1989,6 @@ TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalTrueWithCoreOnCapital)
 
 TEST(Vic2World_Countries_CountryTests, EmployedWorkersDefaultsToZero)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2161,8 +2007,6 @@ TEST(Vic2World_Countries_CountryTests, EmployedWorkersDefaultsToZero)
 
 TEST(Vic2World_Countries_CountryTests, EmployedWorkersComeFromStates)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2215,8 +2059,6 @@ TEST(Vic2World_Countries_CountryTests, EmployedWorkersComeFromStates)
 
 TEST(Vic2World_Countries_CountryTests, IssueSupportDefaultsToZero)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2235,8 +2077,6 @@ TEST(Vic2World_Countries_CountryTests, IssueSupportDefaultsToZero)
 
 TEST(Vic2World_Countries_CountryTests, IssueSupportComesFromProvinces)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2260,8 +2100,6 @@ TEST(Vic2World_Countries_CountryTests, IssueSupportComesFromProvinces)
 
 TEST(Vic2World_Countries_CountryTests, NameMissingByDefault)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2280,8 +2118,6 @@ TEST(Vic2World_Countries_CountryTests, NameMissingByDefault)
 
 TEST(Vic2World_Countries_CountryTests, NameComesFromLocalisations)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2295,20 +2131,18 @@ TEST(Vic2World_Countries_CountryTests, NameComesFromLocalisations)
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	Vic2::LanguageToLocalisationMap nameInLanguages{std::make_pair("english", "Test Country"),
-		 std::make_pair("spanish", "País de prueba")};
-	Vic2::KeyToLocalisationsMap keyToLocalisations{std::make_pair("TAG", nameInLanguages)};
+		 std::make_pair("spanish", "Pais de prueba")};
+	const Vic2::KeyToLocalisationsMap keyToLocalisations{std::make_pair("TAG", nameInLanguages)};
 	Vic2::Localisations localisations{keyToLocalisations, {}};
 	country->setLocalisationNames(localisations);
 
 	ASSERT_EQ("Test Country", country->getName("english"));
-	ASSERT_EQ("País de prueba", country->getName("spanish"));
+	ASSERT_EQ("Pais de prueba", country->getName("spanish"));
 }
 
 
 TEST(Vic2World_Countries_CountryTests, NameCanComeFromDomain)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2323,8 +2157,8 @@ TEST(Vic2World_Countries_CountryTests, NameCanComeFromDomain)
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	Vic2::LanguageToLocalisationMap nameInLanguages{std::make_pair("english", "Test Country"),
-		 std::make_pair("spanish", "País de prueba")};
-	Vic2::KeyToLocalisationsMap keyToLocalisations{std::make_pair("TAG", nameInLanguages)};
+		 std::make_pair("spanish", "Pais de prueba")};
+	const Vic2::KeyToLocalisationsMap keyToLocalisations{std::make_pair("TAG", nameInLanguages)};
 	Vic2::Localisations localisations{keyToLocalisations, {}};
 	country->setLocalisationNames(localisations);
 
@@ -2335,8 +2169,6 @@ TEST(Vic2World_Countries_CountryTests, NameCanComeFromDomain)
 
 TEST(Vic2World_Countries_CountryTests, NameFromDomainUpdatesLocalisations)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2352,7 +2184,7 @@ TEST(Vic2World_Countries_CountryTests, NameFromDomainUpdatesLocalisations)
 
 	Vic2::LanguageToLocalisationMap nameInLanguages{std::make_pair("english", "$REGION$"),
 		 std::make_pair("spanish", "$REGION$")};
-	Vic2::KeyToLocalisationsMap keyToLocalisations{std::make_pair("TAG", nameInLanguages)};
+	const Vic2::KeyToLocalisationsMap keyToLocalisations{std::make_pair("TAG", nameInLanguages)};
 	Vic2::Localisations localisations{keyToLocalisations, {}};
 	country->setLocalisationNames(localisations);
 
@@ -2363,8 +2195,6 @@ TEST(Vic2World_Countries_CountryTests, NameFromDomainUpdatesLocalisations)
 
 TEST(Vic2World_Countries_CountryTests, AdjectiveMissingByDefault)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2383,8 +2213,6 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveMissingByDefault)
 
 TEST(Vic2World_Countries_CountryTests, AdjectiveComesFromLocalisations)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2400,8 +2228,8 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveComesFromLocalisations)
 	Vic2::LanguageToLocalisationMap nameInLanguages{std::make_pair("english", "Testy"),
 		 std::make_pair("spanish",
 			  "Irascible")}; // yes, I know that's a different meaning than what I was going for. The contrast amuses me.
-	Vic2::KeyToLocalisationsMap keyToLocalisations{std::make_pair("TAG_ADJ", nameInLanguages)};
-	Vic2::Localisations localisations{keyToLocalisations, {}};
+	const Vic2::KeyToLocalisationsMap keyToLocalisations{std::make_pair("TAG_ADJ", nameInLanguages)};
+	const Vic2::Localisations localisations{keyToLocalisations, {}};
 	country->setLocalisationAdjectives(localisations);
 
 	ASSERT_EQ("Testy", country->getAdjective("english"));
@@ -2411,8 +2239,6 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveComesFromLocalisations)
 
 TEST(Vic2World_Countries_CountryTests, AdjectiveCanComeFromDomain)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2429,8 +2255,8 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveCanComeFromDomain)
 	Vic2::LanguageToLocalisationMap nameInLanguages{std::make_pair("english", "Testy"),
 		 std::make_pair("spanish",
 			  "Irascible")}; // yes, I know that's a different meaning than what I was going for. The contrast amuses me.
-	Vic2::KeyToLocalisationsMap keyToLocalisations{std::make_pair("TAG_ADJ", nameInLanguages)};
-	Vic2::Localisations localisations{keyToLocalisations, {}};
+	const Vic2::KeyToLocalisationsMap keyToLocalisations{std::make_pair("TAG_ADJ", nameInLanguages)};
+	const Vic2::Localisations localisations{keyToLocalisations, {}};
 	country->setLocalisationAdjectives(localisations);
 
 	ASSERT_EQ("Test Region", country->getAdjective("english"));
@@ -2440,8 +2266,6 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveCanComeFromDomain)
 
 TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsStates)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2479,8 +2303,6 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsStates)
 
 TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsCores)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2520,8 +2342,6 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsCores)
 
 TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsProvinces)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2562,8 +2382,6 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsProvinces)
 
 TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsTechnologiesAndInventions)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2602,8 +2420,6 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsTechnologiesAndInvention
 
 TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsArmies)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2642,8 +2458,6 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsArmies)
 
 TEST(Vic2World_Countries_CountryTests, EatCountryNoLoggingIfDebugOff)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2669,7 +2483,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryNoLoggingIfDebugOff)
 											  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	std::stringstream log;
-	auto stdOutBuf = std::cout.rdbuf();
+	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 	country->eatCountry(*countryTwo, false);
 	std::cout.rdbuf(stdOutBuf);
@@ -2680,8 +2494,6 @@ TEST(Vic2World_Countries_CountryTests, EatCountryNoLoggingIfDebugOff)
 
 TEST(Vic2World_Countries_CountryTests, EatCountryLogsIfDebugTrue)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2707,7 +2519,7 @@ TEST(Vic2World_Countries_CountryTests, EatCountryLogsIfDebugTrue)
 											  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	std::stringstream log;
-	auto stdOutBuf = std::cout.rdbuf();
+	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 	country->eatCountry(*countryTwo, true);
 	std::cout.rdbuf(stdOutBuf);
@@ -2718,8 +2530,6 @@ TEST(Vic2World_Countries_CountryTests, EatCountryLogsIfDebugTrue)
 
 TEST(Vic2World_Countries_CountryTests, EatCountryHasNoEffectOnSelf)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2744,8 +2554,6 @@ TEST(Vic2World_Countries_CountryTests, EatCountryHasNoEffectOnSelf)
 
 TEST(Vic2World_Countries_CountryTests, ProvincesCanBePlacedInStates)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2774,8 +2582,6 @@ TEST(Vic2World_Countries_CountryTests, ProvincesCanBePlacedInStates)
 
 TEST(Vic2World_Countries_CountryTests, MissingProvinceInStateLogged)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
@@ -2796,7 +2602,7 @@ TEST(Vic2World_Countries_CountryTests, MissingProvinceInStateLogged)
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	std::stringstream log;
-	auto stdOutBuf = std::cout.rdbuf();
+	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 	country->putProvincesInStates();
 	std::cout.rdbuf(stdOutBuf);
@@ -2807,19 +2613,17 @@ TEST(Vic2World_Countries_CountryTests, MissingProvinceInStateLogged)
 
 TEST(Vic2World_Countries_CountryTests, SameTagsMakeEqualCountries)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-							 .createCountry("TAG",
-								  theStream,
-								  *Vic2::CommonCountryData::Builder{}.Build(),
-								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	std::stringstream theStreamTwo;
 	theStreamTwo << "= {\n";
@@ -2839,19 +2643,17 @@ TEST(Vic2World_Countries_CountryTests, SameTagsMakeEqualCountries)
 
 TEST(Vic2World_Countries_CountryTests, DifferentTagsMakeUnequalCountries)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
-
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-							 .createCountry("TAG",
-								  theStream,
-								  *Vic2::CommonCountryData::Builder{}.Build(),
-								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	std::stringstream theStreamTwo;
 	theStreamTwo << "= {\n";
