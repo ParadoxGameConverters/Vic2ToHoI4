@@ -1839,7 +1839,6 @@
     <CopyFileToFolders Include="TestFiles\Sounds\CultureToVoiceMappings.txt">
       <Filter>TestFiles\Sounds</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Localisations\EmptyLocalisations.txt" />
     <CopyFileToFolders Include="TestFiles\Localisations\ConverterLocalisations.txt">
       <Filter>TestFiles\Localistations</Filter>
     </CopyFileToFolders>
@@ -1847,10 +1846,6 @@
       <Filter>TestFiles\Localistations</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt" />
-    <CopyFileToFolders Include="TestFiles\Leaders\HoI4CountryLeaders.txt" />
-    <CopyFileToFolders Include="TestFiles\Countries\blankCommonCountryData.txt" />
-    <CopyFileToFolders Include="TestFiles\Countries\CommonCountryTestData.txt" />
-    <CopyFileToFolders Include="TestFiles\Countries\CommonCountryModTestData.txt" />
     <CopyFileToFolders Include="TestFiles\Countries\VanillaCommonCountriesData.txt">
       <Filter>TestFiles\Countries</Filter>
     </CopyFileToFolders>
@@ -1866,13 +1861,36 @@
     <CopyFileToFolders Include="TestFiles\Countries\TestCountryMod.txt">
       <Filter>TestFiles\Countries</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Countries\CountryBlankCultures.txt" />
-    <CopyFileToFolders Include="TestFiles\Countries\TestCountryCultures.txt" />
-    <CopyFileToFolders Include="TestFiles\Countries\BlankTechnologyFile.txt" />
-    <CopyFileToFolders Include="TestFiles\Countries\TestTechnologyFile.txt" />
     <CopyFileToFolders Include="TestFiles\Countries\BlankTraitsFile.txt" />
     <CopyFileToFolders Include="TestFiles\Localisations\BaseLocalisations.txt">
       <Filter>TestFiles\Localistations</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\CommonCountryModTestData.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\blankCommonCountryData.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\BlankTechnologyFile.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\CommonCountryTestData.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\CountryBlankCultures.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\TestCountryCultures.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\TestTechnologyFile.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Localisations\EmptyLocalisations.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Leaders\HoI4CountryLeaders.txt">
+      <Filter>TestFiles</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>
