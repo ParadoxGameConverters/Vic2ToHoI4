@@ -15,8 +15,8 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 	 theCultureGroups(std::move(theCultureGroups_))
 {
 	theInventions = Inventions::Factory{}.loadInventions(theConfiguration);
-	Traits traits = *Traits::Factory{}.loadTraits(theConfiguration.getVic2Path());
-	leaderFactory = std::make_unique<Leader::Factory>(std::move(traits));
+	leaderFactory =
+		 std::make_unique<Leader::Factory>(std::move(*Traits::Factory{}.loadTraits(theConfiguration.getVic2Path())));
 	stateFactory = std::make_unique<State::Factory>();
 
 	registerKeyword("capital", [this](const std::string& unused, std::istream& theStream) {
@@ -105,8 +105,7 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 		country->rulingPartyID = commonItems::singleInt{theStream}.getInt();
 	});
 	registerKeyword("upper_house", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::assignments upperHouse(theStream);
-		for (const auto& [ideology, amountString]: upperHouse.getAssignments())
+		for (const auto& [ideology, amountString]: commonItems::assignments{theStream}.getAssignments())
 		{
 			try
 			{
@@ -141,9 +140,9 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 		country->states.push_back(*stateFactory->getState(theStream, country->tag, theStateDefinitions));
 	});
 	registerKeyword("flags", [this](const std::string& unused, std::istream& theStream) {
-		for (const auto& flag: commonItems::assignments{theStream}.getAssignments())
+		for (const auto& [flag, unused]: commonItems::assignments{theStream}.getAssignments())
 		{
-			country->flags.insert(flag.first);
+			country->flags.insert(flag);
 		}
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
@@ -219,7 +218,7 @@ void Vic2::Country::Factory::limitCommanders()
 	std::sort(generals.begin(), generals.end(), [](Leader& a, Leader& b) {
 		return a.getPrestige() > b.getPrestige();
 	});
-	const int desiredGenerals = static_cast<int>(std::ceil(generals.size() / 20.0F));
+	const auto desiredGenerals = static_cast<int>(std::ceil(static_cast<float>(generals.size()) / 20.0F));
 	generals.erase(generals.begin() + desiredGenerals, generals.end());
 
 	std::vector<Leader> admirals;
@@ -232,7 +231,7 @@ void Vic2::Country::Factory::limitCommanders()
 	std::sort(admirals.begin(), admirals.end(), [](Leader& a, Leader& b) {
 		return a.getPrestige() > b.getPrestige();
 	});
-	const int desiredAdmirals = static_cast<int>(std::ceil(admirals.size() / 20.0F));
+	const auto desiredAdmirals = static_cast<int>(std::ceil(static_cast<float>(admirals.size()) / 20.0F));
 	admirals.erase(admirals.begin() + desiredAdmirals, admirals.end());
 
 	country->leaders.clear();
