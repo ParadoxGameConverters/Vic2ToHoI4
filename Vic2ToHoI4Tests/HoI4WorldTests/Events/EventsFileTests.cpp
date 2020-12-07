@@ -4,7 +4,7 @@
 
 
 
-TEST(HoI4World_Events_EventsFile, EventsDefaultsToEmpty)
+TEST(HoI4World_Events_EventsFileTests, EventsDefaultsToEmpty)
 {
 	std::stringstream input;
 	HoI4::EventsFile theEventsFile(input);
@@ -13,7 +13,7 @@ TEST(HoI4World_Events_EventsFile, EventsDefaultsToEmpty)
 }
 
 
-TEST(HoI4World_Events_EventsFile, EventsCanBeAdded)
+TEST(HoI4World_Events_EventsFileTests, EventsCanBeAdded)
 {
 	std::stringstream input;
 	input << "country_event = {\n";

@@ -2659,5 +2659,5 @@ TEST(Vic2World_Countries_CountryTests, DifferentTagsMakeUnequalCountries)
 											  *Vic2::CommonCountryData::Builder{}.Build(),
 											  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
-	ASSERT_NE(*country, *countryTwo);
+	ASSERT_FALSE(*country == *countryTwo);
 }
