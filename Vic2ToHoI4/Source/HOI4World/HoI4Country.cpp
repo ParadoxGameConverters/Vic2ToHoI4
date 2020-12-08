@@ -28,22 +28,17 @@ HoI4::Country::Country(std::string tag,
 	 const CountryMapper& countryMap,
 	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 	 Localisation& hoi4Localisations):
-	 oldTag(sourceCountry.getTag()),
-	 tag(std::move(tag))
+	 tag(std::move(tag)),
+	 name(sourceCountry.getName("english")), adjective(sourceCountry.getAdjective("english")),
+	 oldTag(sourceCountry.getTag()), human(human = sourceCountry.isHuman()), color(sourceCountry.getColor()),
+	 threat(sourceCountry.getBadBoy() / 10.0), oldCapital(sourceCountry.getCapital()),
+	 primaryCulture(sourceCountry.getPrimaryCulture()), civilized(sourceCountry.isCivilized()),
+	 primaryCultureGroup(sourceCountry.getPrimaryCultureGroup()), rulingParty(sourceCountry.getRulingParty()),
+	 parties(sourceCountry.getActiveParties()), oldGovernment(sourceCountry.getGovernment()),
+	 upperHouseComposition(sourceCountry.getUpperHouseComposition()), lastElection(sourceCountry.getLastElection())
 {
-	name = sourceCountry.getName("english");
-	adjective = sourceCountry.getAdjective("english");
 	determineFilename();
 
-	human = sourceCountry.isHuman();
-	color = sourceCountry.getColor();
-	civilized = sourceCountry.isCivilized();
-	threat = sourceCountry.getBadBoy() / 10.0;
-
-	oldCapital = sourceCountry.getCapital();
-
-	primaryCulture = sourceCountry.getPrimaryCulture();
-	primaryCultureGroup = sourceCountry.getPrimaryCultureGroup();
 	auto possibleGraphicalCulture = theGraphics.getGraphicalCulture(primaryCultureGroup);
 	if (possibleGraphicalCulture)
 	{
@@ -61,11 +56,6 @@ HoI4::Country::Country(std::string tag,
 	radicalAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "radical");
 	fascistAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "fascism");
 
-	rulingParty = sourceCountry.getRulingParty();
-	parties = sourceCountry.getActiveParties();
-	oldGovernment = sourceCountry.getGovernment();
-	upperHouseComposition = sourceCountry.getUpperHouseComposition();
-	lastElection = sourceCountry.getLastElection();
 	initIdeas(names, hoi4Localisations);
 
 	stability = 60;
