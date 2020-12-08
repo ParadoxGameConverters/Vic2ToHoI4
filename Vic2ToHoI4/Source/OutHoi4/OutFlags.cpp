@@ -2,7 +2,7 @@
 #include "HOI4World/HoI4Country.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
-#include "V2World/Country.h"
+#include "V2World/Countries/Country.h"
 #include "targa.h"
 #include <optional>
 
@@ -96,7 +96,7 @@ void HoI4::processFlagsForCountry(const std::pair<std::string, std::shared_ptr<C
 	 const std::vector<Vic2::Mod>& vic2Mods,
 	 const std::string& vic2ModPath)
 {
-	const auto sourcePaths = getSourceFlagPaths(country.second->getSourceCountry().getTag(), vic2Mods, vic2ModPath);
+	const auto sourcePaths = getSourceFlagPaths(country.second->getOldTag(), vic2Mods, vic2ModPath);
 	for (size_t i = 0; i < sourcePaths.size(); i++)
 	{
 		if (!sourcePaths[i].empty())

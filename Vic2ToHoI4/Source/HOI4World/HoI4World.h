@@ -45,7 +45,7 @@
 #include "States/DefaultState.h"
 #include "States/HoI4State.h"
 #include "States/HoI4States.h"
-#include "V2World/Country.h"
+#include "V2World/Countries/Country.h"
 #include "V2World/World.h"
 #include <map>
 #include <optional>
@@ -114,7 +114,8 @@ class World: commonItems::parser
 	World& operator=(const World&) = delete;
 
 	void convertCountries(const Vic2::Localisations& vic2Localisations);
-	void convertCountry(std::pair<std::string, Vic2::Country*> country,
+	void convertCountry(const std::string& oldTag,
+		 const Vic2::Country& oldCountry,
 		 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 		 const Vic2::Localisations& vic2Localisations,
 		 const ArticleRules& articleRules);

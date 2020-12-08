@@ -7,7 +7,7 @@
 #include "HOI4World/Map/MapData.h"
 #include "HOI4World/ProvinceDefinitions.h"
 #include "Log.h"
-#include "V2World/Country.h"
+#include "V2World/Countries/Country.h"
 #include "V2World/Politics/Party.h"
 #include "V2World/World.h"
 
@@ -243,7 +243,7 @@ void HoI4WarCreator::generateAdditionalWars(ofstream& AILog,
 		{
 			if (theConfiguration.getDebug())
 			{
-				auto name = (*country)->getSourceCountry().getName("english");
+				auto name = (*country)->getName();
 				if (name)
 				{
 					AILog << "Checking for war in " + *name << "\n";
@@ -782,7 +782,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI
 	 const Configuration& theConfiguration)
 {
 	vector<shared_ptr<HoI4::Faction>> CountriesAtWar;
-	auto name = Leader->getSourceCountry().getName("english");
+	auto name = Leader->getName();
 	if (name)
 	{
 		Log(LogLevel::Info) << "\t\t\tCalculating AI for " + *name;
@@ -965,7 +965,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI
 
 			for (auto GC: theWorld->getGreatPowers())
 			{
-				auto allyName = GC->getSourceCountry().getName("english");
+				auto allyName = GC->getName();
 
 				auto relations = Leader->getRelations(GC->getTag());
 				if ((relations) && (relations->getRelations() > 0) && (maxGCAlliance < 1))
@@ -1066,7 +1066,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(shared_ptr
 {
 	vector<shared_ptr<HoI4::Faction>> CountriesAtWar;
 	// communism still needs great country war events
-	auto name = Leader->getSourceCountry().getName("english");
+	auto name = Leader->getName();
 	if (name)
 	{
 		Log(LogLevel::Info) << "\t\t\tCalculating AI for " + *name;
@@ -1296,7 +1296,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::absolutistWarCreator(shared_pt
 {
 	auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
 
-	auto name = country->getSourceCountry().getName("english");
+	auto name = country->getName();
 	if (name)
 	{
 		Log(LogLevel::Info) << "\t\t\tDoing neighbor calcs for " + *name;
@@ -1329,7 +1329,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 {
 	if (theConfiguration.getDebug())
 	{
-		auto name = country->getSourceCountry().getName("english");
+		auto name = country->getName();
 		if (name)
 		{
 			AILog << "Look for neighbors to attack for " + *name << "\n";
@@ -1367,7 +1367,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 		if (auto allies = country->getAllies(); !allies.contains(target->getTag()))
 		{
 			std::string targetName;
-			if (auto possibleTargetName = target->getSourceCountry().getName("english"); possibleTargetName)
+			if (auto possibleTargetName = target->getName(); possibleTargetName)
 			{
 				targetName = *possibleTargetName;
 			}
@@ -1662,7 +1662,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::addGreatPowerWars(shared_ptr<H
 		set<string> Allies = country->getAllies();
 		if (!Allies.contains(target->getTag()))
 		{
-			auto possibleTargetName = target->getSourceCountry().getName("english");
+			auto possibleTargetName = target->getName();
 			string targetName;
 			if (possibleTargetName)
 			{

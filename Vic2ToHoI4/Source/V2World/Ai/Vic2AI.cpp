@@ -23,6 +23,7 @@ Vic2::Vic2AI::Vic2AI(std::istream& theStream)
 	clearRegisteredKeywords();
 }
 
+
 void Vic2::Vic2AI::consolidateConquerStrategies(const std::map<int, std::shared_ptr<Province>>& provinces)
 {
 	for (const auto& strategy: conquerStrategies)
@@ -48,6 +49,7 @@ void Vic2::Vic2AI::consolidateConquerStrategies(const std::map<int, std::shared_
 		}
 	}
 }
+
 
 void Vic2::Vic2AI::updateStrategy(const std::string& tag, int valueToAdd)
 {

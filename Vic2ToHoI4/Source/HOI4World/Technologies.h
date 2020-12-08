@@ -44,9 +44,7 @@ class technologies
 
 	class Builder;
 
-	technologies(const mappers::techMapper& theTechMapper,
-		 const std::set<std::string>& oldTechs,
-		 const std::set<std::string>& oldInventions);
+	technologies(const mappers::techMapper& theTechMapper, const std::set<std::string>& oldTechnologiesAndInventions);
 
 	void setResearchBonus(const std::string& tech, int bonus);
 

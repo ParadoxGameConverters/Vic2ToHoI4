@@ -4,8 +4,7 @@
 
 
 #include "Configuration.h"
-#include "Country.h"
-#include "Culture/CultureGroups.h"
+#include "Countries/Country.h"
 #include "Diplomacy/Diplomacy.h"
 #include "Localisations/Vic2Localisations.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
@@ -38,7 +37,7 @@ class World: commonItems::parser
 
 	[[nodiscard]] std::optional<const std::shared_ptr<Province>> getProvince(int provNum) const;
 
-	[[nodiscard]] std::map<std::string, Country*> getCountries() const { return countries; }
+	[[nodiscard]] const auto& getCountries() const { return countries; }
 	[[nodiscard]] const auto& getDiplomacy() const { return diplomacy; }
 	[[nodiscard]] std::vector<std::string> getGreatPowers() const { return greatPowers; }
 	[[nodiscard]] auto getProvinces() const { return provinces; }
@@ -48,15 +47,13 @@ class World: commonItems::parser
   private:
 	void setLocalisations(Localisations& vic2Localisations);
 	void checkStateCategories();
-	void handleMissingCountryCultures();
 
 	void setGreatPowerStatus(const std::vector<int>& GPIndexes, const std::vector<std::string>& tagsInOrder);
 
 	void setProvinceOwners();
-	void limitCommanders();
 	void addProvinceCoreInfoToCountries();
 	void removeSimpleLandlessNations();
-	bool shouldCoreBeRemoved(const Province& core, const Country* country) const;
+	bool shouldCoreBeRemoved(const Province& core, const Country& country) const;
 	void determineEmployedWorkers();
 	void removeEmptyNations();
 	void addWarsToCountries(const std::vector<War>& wars);
@@ -67,22 +64,12 @@ class World: commonItems::parser
 	void checkAllProvincesMapped(const mappers::ProvinceMapper& provinceMapper) const;
 	void consolidateConquerStrategies();
 
-	void readCountryFiles(const Configuration& theConfiguration);
-	bool processCountriesDotTxt(const std::string& countryListFile,
-		 const std::optional<Vic2::Mod>& mod,
-		 const Configuration& theConfiguration);
-	static bool shouldLineBeSkipped(const std::string& line);
-	static std::string extractCountryFileName(const std::string& countryFileLine);
-
-	[[nodiscard]] std::optional<Country*> getCountry(const std::string& tag) const;
-
+	std::shared_ptr<CultureGroups> theCultureGroups;
 
 	std::map<int, std::shared_ptr<Province>> provinces;
-	std::map<std::string, Country*> countries;
+	std::map<std::string, std::unique_ptr<Country>> countries;
 	std::unique_ptr<Diplomacy> diplomacy;
 	std::vector<std::string> greatPowers;
-
-	std::unique_ptr<CultureGroups> theCultureGroups;
 
 	std::unique_ptr<StateDefinitions> theStateDefinitions;
 	std::unique_ptr<Localisations> theLocalisations;

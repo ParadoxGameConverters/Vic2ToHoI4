@@ -110,11 +110,17 @@ file(GLOB OUTHOI4_VERSION "${PROJECT_SOURCE_DIR}/OutHoi4/Version/*.cpp")
 file(GLOB VIC2WORLD_SOURCES "${PROJECT_SOURCE_DIR}/V2World/*.cpp")
 set(VIC2WORLD_AI_SOURCES ${VIC2WORLD_AI_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Ai/AIStrategy.cpp")
 set(VIC2WORLD_AI_SOURCES ${VIC2WORLD_AI_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Ai/Vic2AI.cpp")
+set(VIC2WORLD_COUNTRIES_SOURCES ${VIC2WORLD_COUNTRIES_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Countries/CommonCountriesDataFactory.cpp")
+set(VIC2WORLD_COUNTRIES_SOURCES ${VIC2WORLD_COUNTRIES_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Countries/CommonCountryDataFactory.cpp")
+set(VIC2WORLD_COUNTRIES_SOURCES ${VIC2WORLD_COUNTRIES_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Countries/Country.cpp")
+set(VIC2WORLD_COUNTRIES_SOURCES ${VIC2WORLD_COUNTRIES_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Countries/CountryFactory.cpp")
+set(VIC2WORLD_COUNTRIES_SOURCES ${VIC2WORLD_COUNTRIES_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Countries/UnitNamesFactory.cpp")
 set(VIC2WORLD_CULTURES_SOURCES ${VIC2WORLD_CULTURES_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Culture/CultureGroups.cpp")
 set(VIC2WORLD_CULTURES_SOURCES ${VIC2WORLD_CULTURES_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Culture/CultureGroupFactory.cpp")
 set(VIC2WORLD_CULTURES_SOURCES ${VIC2WORLD_CULTURES_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Culture/CultureGroupsFactory.cpp")
 set(VIC2WORLD_DIPLOMACY_SOURCES ${VIC2WORLD_DIPLOMACY_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Diplomacy/AgreementFactory.cpp")
 set(VIC2WORLD_DIPLOMACY_SOURCES ${VIC2WORLD_DIPLOMACY_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Diplomacy/DiplomacyFactory.cpp")
+set(VIC2WORLD_DIPLOMACY_SOURCES ${VIC2WORLD_DIPLOMACY_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Diplomacy/Relations.cpp")
 set(VIC2WORLD_DIPLOMACY_SOURCES ${VIC2WORLD_DIPLOMACY_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Diplomacy/RelationsFactory.cpp")
 set(VIC2WORLD_ISSUES_SOURCES ${VIC2WORLD_ISSUES_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Issues/IssueCategoryHelper.cpp")
 set(VIC2WORLD_ISSUES_SOURCES ${VIC2WORLD_ISSUES_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Issues/IssueHelper.cpp")
@@ -146,6 +152,7 @@ set(VIC2WORLD_STATES_SOURCES ${VIC2WORLD_STATES_SOURCES} "${PROJECT_SOURCE_DIR}/
 set(VIC2WORLD_STATES_SOURCES ${VIC2WORLD_STATES_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/States/StateLanguageCategoriesFactory.cpp")
 set(VIC2WORLD_TECHNOLOGY_SOURCES ${VIC2WORLD_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Technology/Inventions.cpp")
 set(VIC2WORLD_TECHNOLOGY_SOURCES ${VIC2WORLD_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Technology/InventionsFactory.cpp")
+set(VIC2WORLD_TECHNOLOGY_SOURCES ${VIC2WORLD_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Technology/TechnologyFactory.cpp")
 set(VIC2WORLD_WARS_SOURCES ${VIC2WORLD_WARS_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Wars/WarFactory.cpp")
 set(VIC2WORLD_WARS_SOURCES ${VIC2WORLD_WARS_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Wars/WarGoalFactory.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Color.cpp")
@@ -229,6 +236,7 @@ add_executable(
 	${OUTHOI4_VERSION}
 	${VIC2WORLD_SOURCES}
 	${VIC2WORLD_AI_SOURCES}
+	${VIC2WORLD_COUNTRIES_SOURCES}
 	${VIC2WORLD_CULTURES_SOURCES}
 	${VIC2WORLD_DIPLOMACY_SOURCES}
 	${VIC2WORLD_ISSUES_SOURCES}
@@ -294,6 +302,12 @@ file(GLOB HOI4WORLD_SCRIPTED_TRIGGERS_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4Worl
 file(GLOB HOI4WORLD_SHIP_TYPES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4WorldTests/ShipTypes/*.cpp")
 file(GLOB HOI4WORLD_STATES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4WorldTests/States/*.cpp")
 file(GLOB MAPPER_TESTS_SOURCES "${TEST_SOURCE_DIR}/MapperTests/*.cpp")
+set(VIC2WORLD_AI_TESTS_SOURCES ${VIC2WORLD_AI_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Ai/AIStrategyTests.cpp")
+set(VIC2WORLD_AI_TESTS_SOURCES ${VIC2WORLD_AI_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Ai/Vic2AITests.cpp")
+set(VIC2WORLD_COUNTRIES_TESTS_SOURCES ${VIC2WORLD_COUNTRIES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Countries/CommonCountriesDataFactoryTests.cpp")
+set(VIC2WORLD_COUNTRIES_TESTS_SOURCES ${VIC2WORLD_COUNTRIES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Countries/CommonCountryDataTests.cpp")
+set(VIC2WORLD_COUNTRIES_TESTS_SOURCES ${VIC2WORLD_COUNTRIES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Countries/CountryTests.cpp")
+set(VIC2WORLD_COUNTRIES_TESTS_SOURCES ${VIC2WORLD_COUNTRIES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Countries/UnitNamesFactoryTests.cpp")
 set(VIC2WORLD_CULTURE_TESTS_SOURCES ${VIC2WORLD_CULTURE_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Culture/CultureGroupFactoryTests.cpp")
 set(VIC2WORLD_CULTURE_TESTS_SOURCES ${VIC2WORLD_CULTURE_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Culture/CultureGroupsTests.cpp")
 set(VIC2WORLD_DIPLOMACY_TESTS_SOURCES ${VIC2WORLD_DIPLOMACY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Diplomacy/AgreementTests.cpp")
@@ -327,6 +341,7 @@ set(VIC2WORLD_STATES_TESTS_SOURCES ${VIC2WORLD_STATES_TESTS_SOURCES} "${TEST_SOU
 set(VIC2WORLD_STATES_TESTS_SOURCES ${VIC2WORLD_STATES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/States/StateLanguageCategoriesFactoryTests.cpp")
 set(VIC2WORLD_STATES_TESTS_SOURCES ${VIC2WORLD_STATES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/States/StateTests.cpp")
 set(VIC2WORLD_TECHNOLOGY_TESTS_SOURCES ${VIC2WORLD_TECHNOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Technology/InventionTests.cpp")
+set(VIC2WORLD_TECHNOLOGY_TESTS_SOURCES ${VIC2WORLD_TECHNOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Technology/TechnologyFactoryTests.cpp")
 set(VIC2WORLD_WAR_TESTS_SOURCES ${VIC2WORLD_WAR_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Wars/WarBuilderTests.cpp")
 set(VIC2WORLD_WAR_TESTS_SOURCES ${VIC2WORLD_WAR_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Wars/WarFactoryTests.cpp")
 set(VIC2WORLD_WAR_TESTS_SOURCES ${VIC2WORLD_WAR_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Wars/WarGoalFactoryTests.cpp")
@@ -398,6 +413,7 @@ add_executable(
 	${OUTHOI4_VERSION}
 	${VIC2WORLD_SOURCES}
 	${VIC2WORLD_AI_SOURCES}
+	${VIC2WORLD_COUNTRIES_SOURCES}
 	${VIC2WORLD_CULTURES_SOURCES}
 	${VIC2WORLD_DIPLOMACY_SOURCES}
 	${VIC2WORLD_ISSUES_SOURCES}
@@ -439,6 +455,8 @@ add_executable(
 	${HOI4WORLD_SOUNDS_TESTS_SOURCES}
 	${HOI4WORLD_STATES_TESTS_SOURCES}
 	${MAPPER_TESTS_SOURCES}
+	${VIC2WORLD_AI_TESTS_SOURCES}
+	${VIC2WORLD_COUNTRIES_TESTS_SOURCES}
 	${VIC2WORLD_CULTURE_TESTS_SOURCES}
 	${VIC2WORLD_DIPLOMACY_TESTS_SOURCES}
 	${VIC2WORLD_ISSUES_TESTS_SOURCES}
@@ -462,6 +480,19 @@ set_target_properties( Vic2ToHoi4ConverterTests
 configure_file("Vic2ToHoI4Tests/TestFiles/blank_operative_codenames.txt" "${TEST_OUTPUT_DIRECTORY}/common/units/codenames_operatives/blank_operative_codenames.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/blank_operations.txt" "${TEST_OUTPUT_DIRECTORY}/blank_operations/common/operations/00_operations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/definition.csv" "${TEST_OUTPUT_DIRECTORY}/HoI4Linux/map/definition.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Countries/blankCommonCountryData.txt" "${TEST_OUTPUT_DIRECTORY}/common/countries/blankCommonCountryData.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Countries/BlankTechnologyFile.txt" "${TEST_OUTPUT_DIRECTORY}/countries/blank/inventions/BlankTechnologyFile.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Countries/BlankTraitsFile.txt" "${TEST_OUTPUT_DIRECTORY}/countries/blank/common/traits.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Countries/CommonCountryModTestData.txt" "${TEST_OUTPUT_DIRECTORY}/mod/common/countries/CommonCountryModTestData.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Countries/CommonCountryTestData.txt" "${TEST_OUTPUT_DIRECTORY}/common/countries/CommonCountryTestData.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Countries/CountryBlankCultures.txt" "${TEST_OUTPUT_DIRECTORY}/countries/blank/common/cultures.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Countries/ModCommonCountriesData.txt" "${TEST_OUTPUT_DIRECTORY}/common_countries_mod/common/countries.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Countries/TestCountryCultures.txt" "${TEST_OUTPUT_DIRECTORY}/countryTests/common/cultures.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Countries/TestCountryMod.txt" "${TEST_OUTPUT_DIRECTORY}/vanilla_common_countries_data/common/countries/TestCountryMod.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Countries/TestCountryOne.txt" "${TEST_OUTPUT_DIRECTORY}/vanilla_common_countries_data/common/countries/TestCountryOne.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Countries/TestCountryTwo.txt" "${TEST_OUTPUT_DIRECTORY}/vanilla_common_countries_data/common/countries/TestCountryTwo.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Countries/TestTechnologyFile.txt" "${TEST_OUTPUT_DIRECTORY}/countryTests/inventions/TestTechnologyFile.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Countries/VanillaCommonCountriesData.txt" "${TEST_OUTPUT_DIRECTORY}/vanilla_common_countries_data/common/countries.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Cultures/BaseCultures.txt" "${TEST_OUTPUT_DIRECTORY}/BaseCultures/common/cultures.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Cultures/ModOneCultures.txt" "${TEST_OUTPUT_DIRECTORY}/ModCultures/ModOne/common/cultures.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Cultures/ModTwoCultures.txt" "${TEST_OUTPUT_DIRECTORY}/ModCultures/ModTwo/common/cultures.txt" COPYONLY)

@@ -34,7 +34,7 @@
 #include "ShipTypes/PossibleShipVariants.h"
 #include "Sounds/SoundEffectsFactory.h"
 #include "States/HoI4State.h"
-#include "V2World/Country.h"
+#include "V2World/Countries/Country.h"
 #include "V2World/Diplomacy/Agreement.h"
 #include "V2World/Diplomacy/Diplomacy.h"
 #include "V2World/Localisations/Vic2Localisations.h"
@@ -190,50 +190,51 @@ void HoI4::World::convertCountries(const Vic2::Localisations& vic2Localisations)
 	flagToIdeasMappingFile.close();
 
 	const auto articleRules = ArticleRules::Factory{}.getRules("DataFiles/Localisations/ArticleRules.txt");
-	for (const auto& sourceItr: sourceWorld->getCountries())
+	for (const auto& [tag, country]: sourceWorld->getCountries())
 	{
-		convertCountry(sourceItr, flagsToIdeasMapper, vic2Localisations, *articleRules);
+		convertCountry(tag, *country, flagsToIdeasMapper, vic2Localisations, *articleRules);
 	}
 
 	hoi4Localisations->addNonenglishCountryLocalisations();
 }
 
 
-void HoI4::World::convertCountry(std::pair<std::string, Vic2::Country*> country,
+void HoI4::World::convertCountry(const std::string& oldTag,
+	 const Vic2::Country& oldCountry,
 	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 	 const Vic2::Localisations& vic2Localisations,
 	 const ArticleRules& articleRules)
 {
 	// don't convert rebels
-	if (country.first == "REB")
+	if (oldTag == "REB")
 	{
 		return;
 	}
 
 	HoI4::Country* destCountry = nullptr;
-	auto possibleHoI4Tag = countryMap.getHoI4Tag(country.first);
+	auto possibleHoI4Tag = countryMap.getHoI4Tag(oldTag);
 	if (!possibleHoI4Tag)
 	{
-		Log(LogLevel::Warning) << "Could not convert V2 tag " << country.first << " to HoI4";
+		Log(LogLevel::Warning) << "Could not convert V2 tag " << oldTag << " to HoI4";
 	}
 	else
 	{
 		destCountry = new HoI4::Country(*possibleHoI4Tag,
-			 country.second,
+			 oldCountry,
 			 *names,
 			 theGraphics,
 			 countryMap,
 			 flagsToIdeasMapper,
 			 *hoi4Localisations);
 		countries.insert(make_pair(*possibleHoI4Tag, destCountry));
-		hoi4Localisations->createCountryLocalisations(make_pair(country.first, *possibleHoI4Tag),
+		hoi4Localisations->createCountryLocalisations(make_pair(oldTag, *possibleHoI4Tag),
 			 governmentMap,
 			 vic2Localisations,
 			 articleRules);
 		hoi4Localisations->updateMainCountryLocalisation(
 			 destCountry->getTag() + "_" + destCountry->getGovernmentIdeology(),
-			 country.first,
-			 country.second->getGovernment(),
+			 oldTag,
+			 oldCountry.getGovernment(),
 			 vic2Localisations,
 			 articleRules);
 	}
@@ -383,9 +384,7 @@ map<string, double> HoI4::World::calculateFactoryWorkerRatios(const Configuratio
 		auto adjustedWorkers = adjustedWorkersPerCountry.find(country.first);
 		double factories = adjustedWorkers->second * acutalWorkerFactoryRatio;
 
-		auto& Vic2Country = country.second->getSourceCountry();
-		long actualWorkers = Vic2Country.getEmployedWorkers();
-
+		const auto& actualWorkers = country.second->getEmployedWorkers();
 		if (actualWorkers > 0)
 		{
 			factoryWorkerRatios.insert(make_pair(country.first, factories / actualWorkers));
@@ -401,8 +400,7 @@ map<string, double> HoI4::World::getIndustrialWorkersPerCountry()
 	map<string, double> industrialWorkersPerCountry;
 	for (auto country: landedCountries)
 	{
-		auto& Vic2Country = country.second->getSourceCountry();
-		long employedWorkers = Vic2Country.getEmployedWorkers();
+		const auto& employedWorkers = country.second->getEmployedWorkers();
 		if (employedWorkers > 0)
 		{
 			industrialWorkersPerCountry.insert(make_pair(country.first, employedWorkers));
@@ -794,7 +792,7 @@ void HoI4::World::createFactions(const Configuration& theConfiguration)
 
 void HoI4::World::logFactionMember(ofstream& factionsLog, shared_ptr<HoI4::Country> member) const
 {
-	auto possibleName = member->getSourceCountry().getName("english");
+	auto possibleName = member->getName();
 	if (possibleName)
 	{
 		factionsLog << *possibleName << ",";

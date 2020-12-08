@@ -25,9 +25,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Localisation.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Country.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryMapping.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
@@ -54,9 +51,6 @@
     </ClCompile>
     <ClCompile Include="..\common_items\targa.cpp">
       <Filter>Vic2ToHoI4 files</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\CommonCountryData.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
@@ -1295,6 +1289,40 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4AIStrategy.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountryDataFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Countries\CommonCountryDataTests.cpp">
+      <Filter>Vic2WorldTests\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountriesDataFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\UnitNamesFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Countries\UnitNamesFactoryTests.cpp">
+      <Filter>Vic2WorldTests\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Countries\CommonCountriesDataFactoryTests.cpp">
+      <Filter>Vic2WorldTests\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CountryFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\Country.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Technology\TechnologyFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Technology\TechnologyFactoryTests.cpp">
+      <Filter>Vic2WorldTests\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Countries\CountryTests.cpp">
+      <Filter>Vic2WorldTests\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\Relations.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1663,6 +1691,15 @@
     <Filter Include="Vic2WorldTests\Ai">
       <UniqueIdentifier>{a253453c-d9e8-4d04-97a3-2400309a28f4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Countries">
+      <UniqueIdentifier>{0e5e9d51-af75-4d3b-92d2-6f9612faf78f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Countries">
+      <UniqueIdentifier>{964697ec-e907-41d3-bff6-5943b6124a96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\Countries">
+      <UniqueIdentifier>{942f4f2a-fd60-4abd-a2a1-4ed9743d9cd7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1802,8 +1839,6 @@
     <CopyFileToFolders Include="TestFiles\Sounds\CultureToVoiceMappings.txt">
       <Filter>TestFiles\Sounds</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Localisations\EmptyLocalisations.txt" />
-    <CopyFileToFolders Include="TestFiles\Localisations\BaseLocalisations.txt" />
     <CopyFileToFolders Include="TestFiles\Localisations\ConverterLocalisations.txt">
       <Filter>TestFiles\Localistations</Filter>
     </CopyFileToFolders>
@@ -1811,6 +1846,51 @@
       <Filter>TestFiles\Localistations</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt" />
-    <CopyFileToFolders Include="TestFiles\Leaders\HoI4CountryLeaders.txt" />
+    <CopyFileToFolders Include="TestFiles\Countries\VanillaCommonCountriesData.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\TestCountryOne.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\TestCountryTwo.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\ModCommonCountriesData.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\TestCountryMod.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\BlankTraitsFile.txt" />
+    <CopyFileToFolders Include="TestFiles\Localisations\BaseLocalisations.txt">
+      <Filter>TestFiles\Localistations</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\CommonCountryModTestData.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\blankCommonCountryData.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\BlankTechnologyFile.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\CommonCountryTestData.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\CountryBlankCultures.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\TestCountryCultures.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\TestTechnologyFile.txt">
+      <Filter>TestFiles\Countries</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Localisations\EmptyLocalisations.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Leaders\HoI4CountryLeaders.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

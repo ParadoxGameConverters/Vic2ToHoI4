@@ -5,7 +5,6 @@
 
 #include "HOI4World/Ideologies/Ideologies.h"
 #include "Parser.h"
-#include "V2World/Country.h"
 #include <set>
 #include <string>
 #include <vector>
@@ -47,12 +46,14 @@ class governmentMapper: commonItems::parser
 		 const std::string& sourceGovernment,
 		 const std::string& Vic2RulingIdeology,
 		 bool debug) const;
-	std::string getExistingIdeologyForCountry(const Vic2::Country& country,
+	std::string getExistingIdeologyForCountry(const std::string& tag,
+		 const std::string& government,
 		 const std::string& Vic2RulingIdeology,
 		 const std::set<std::string>& majorIdeologies,
 		 const HoI4::Ideologies& ideologies,
 		 bool debug) const;
-	std::string getExistingLeaderIdeologyForCountry(const Vic2::Country& country,
+	std::string getExistingLeaderIdeologyForCountry(const std::string& tag,
+		 const std::string& government,
 		 const std::string& Vic2RulingIdeology,
 		 const std::set<std::string>& majorIdeologies,
 		 const HoI4::Ideologies& ideologies,

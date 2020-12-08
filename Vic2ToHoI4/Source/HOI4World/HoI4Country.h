@@ -6,8 +6,8 @@
 #include "Color.h"
 #include "Date.h"
 #include "Diplomacy/Faction.h"
-#include "Diplomacy/HoI4Relations.h"
 #include "Diplomacy/HoI4AIStrategy.h"
+#include "Diplomacy/HoI4Relations.h"
 #include "Diplomacy/HoI4War.h"
 #include "HoI4FocusTree.h"
 #include "Ideologies/Ideologies.h"
@@ -33,7 +33,7 @@
 #include "ShipTypes/ShipVariants.h"
 #include "States/HoI4State.h"
 #include "Technologies.h"
-#include "V2World/Country.h"
+#include "V2World/Countries/Country.h"
 #include "V2World/Localisations/Vic2Localisations.h"
 #include "V2World/Politics/Party.h"
 #include "V2World/World.h"
@@ -53,7 +53,7 @@ class Country
 {
   public:
 	explicit Country(std::string tag,
-		 const Vic2::Country* srcCountry,
+		 const Vic2::Country& sourceCountry,
 		 Names& names,
 		 graphicsMapper& theGraphics,
 		 const CountryMapper& countryMap,
@@ -121,10 +121,15 @@ class Country
 	[[nodiscard]] std::optional<HoI4FocusTree> getNationalFocus() const;
 
 	[[nodiscard]] const std::string& getTag() const { return tag; }
-	[[nodiscard]] const Vic2::Country& getSourceCountry() const { return sourceCountry; }
+	[[nodiscard]] const auto& getOldTag() const { return oldTag; }
+	[[nodiscard]] const auto& getName() const { return name; }
+	[[nodiscard]] const auto& getAdjective() const { return adjective; }
 	[[nodiscard]] const std::string& getFilename() const { return filename; }
 	[[nodiscard]] const std::string& getCommonCountryFile() const { return commonCountryFile; }
 	[[nodiscard]] bool isHuman() const { return human; }
+
+	[[nodiscard]] const auto& getPrimaryCulture() const { return primaryCulture; }
+	[[nodiscard]] const auto& getPrimaryCultureGroup() const { return primaryCultureGroup; }
 
 	[[nodiscard]] const auto& getColor() const { return color; }
 	[[nodiscard]] const std::string& getGraphicalCulture() const { return graphicalCulture; }
@@ -173,6 +178,7 @@ class Country
 	[[nodiscard]] double getMilitaryFactories() const { return militaryFactories; }
 	[[nodiscard]] double getCivilianFactories() const { return civilianFactories; }
 	[[nodiscard]] double getDockyards() const { return dockyards; }
+	[[nodiscard]] int32_t getEmployedWorkers() const { return employedWorkers; }
 
 	[[nodiscard]] const Army& getArmy() const { return theArmy; }
 	[[nodiscard]] const auto& getDivisionLocations() const { return theArmy.getDivisionLocations(); }
@@ -216,9 +222,9 @@ class Country
 	void determineFilename();
 	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
 	void convertLaws();
-	void convertLeaders(const graphicsMapper& theGraphics);
-	void convertRelations(const CountryMapper& countryMap);
-	void convertStrategies(const CountryMapper& countryMap);
+	void convertLeaders(const graphicsMapper& theGraphics, const Vic2::Country& sourceCountry);
+	void convertRelations(const CountryMapper& countryMap, const Vic2::Country& sourceCountry);
+	void convertStrategies(const CountryMapper& countryMap, const Vic2::Country& sourceCountry);
 	void convertWars(const Vic2::Country& sourceCountry, const CountryMapper& countryMap);
 
 	bool attemptToPutCapitalInPreferredNonWastelandOwned(const mappers::ProvinceMapper& theProvinceMapper,
@@ -237,12 +243,18 @@ class Country
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates);
 	bool attemptToPutCapitalInAnyCored(const std::map<int, State>& allStates);
+	[[nodiscard]] std::vector<std::string> getShipNames(const std::string& category) const;
 
 	std::string tag;
-	const Vic2::Country& sourceCountry;
+	std::string oldTag;
+	std::optional<std::string> name;
+	std::optional<std::string> adjective;
 	std::string filename;
 	std::string commonCountryFile;
 	bool human = false;
+
+	std::string primaryCulture;
+	std::string primaryCultureGroup;
 
 	commonItems::Color color;
 	std::string graphicalCulture = "western_european_gfx";
@@ -258,11 +270,14 @@ class Country
 	std::set<int> states;
 	std::optional<int> capitalState;
 	std::optional<int> capitalProvince;
+	int oldCapital;
 
+	std::string oldGovernment;
 	std::string governmentIdeology = "neutrality";
 	std::string leaderIdeology = "conservatism_neutral";
 	Vic2::Party rulingParty;
 	std::set<Vic2::Party> parties;
+	std::map<std::string, double> upperHouseComposition;
 	std::map<std::string, int> ideologySupport{std::make_pair("neutrality", 100)};
 	date lastElection;
 	int stability = 50;
@@ -273,6 +288,7 @@ class Country
 
 	std::vector<CountryLeader> leaders;
 
+	std::set<std::string> oldTechnologiesAndInventions;
 	std::optional<technologies> theTechnologies;
 	std::set<std::string> ideas;
 	std::unique_ptr<HoI4FocusTree> nationalFocus;
@@ -281,7 +297,9 @@ class Country
 	double militaryFactories = 0.0;
 	double civilianFactories = 0.0;
 	double dockyards = 0.0;
+	int32_t employedWorkers = 0;
 
+	std::vector<Vic2::Army> oldArmies;
 	Army theArmy;
 	std::unique_ptr<ShipVariants> theShipVariants;
 	std::unique_ptr<Navies> theNavies;
@@ -291,10 +309,12 @@ class Country
 	std::map<std::string, unsigned int> equipmentStockpile;
 	std::vector<General> generals;
 	std::vector<Admiral> admirals;
+	std::map<std::string, std::vector<std::string>> shipNames;
 
 	std::map<std::string, HoI4::Relations> relations;
 	std::vector<HoI4::AIStrategy> aiStrategies;
 	std::vector<HoI4::AIStrategy> conquerStrategies;
+	bool atWar = false;
 	std::vector<War> wars;
 	double threat = 0.0;
 	std::shared_ptr<const Faction> faction;

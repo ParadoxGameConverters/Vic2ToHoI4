@@ -1,0 +1,10 @@
+color = { 2  4  6 }
+graphical_culture = testGraphicalCulture
+
+party = {
+	name = "TWO_conservative"
+}
+
+party = {
+	name = "TWO_liberal"
+}

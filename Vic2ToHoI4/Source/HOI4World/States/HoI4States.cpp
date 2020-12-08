@@ -13,7 +13,7 @@
 #include "Mappers/CountryMapping.h"
 #include "OSCompatibilityLayer.h"
 #include "StateCategories.h"
-#include "V2World/Country.h"
+#include "V2World/Countries/Country.h"
 #include "V2World/Localisations/Vic2Localisations.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/States/State.h"
@@ -225,7 +225,7 @@ std::set<std::string> HoI4::States::determineCores(const std::vector<int>& sourc
 }
 
 
-void HoI4::States::createStates(const std::map<std::string, Vic2::Country*>& sourceCountries,
+void HoI4::States::createStates(const std::map<std::string, std::unique_ptr<Vic2::Country>>& sourceCountries,
 	 const std::map<int, std::shared_ptr<Vic2::Province>>& sourceProvinces,
 	 const std::map<int, Province>& theProvinces,
 	 const ImpassableProvinces& theImpassableProvinces,

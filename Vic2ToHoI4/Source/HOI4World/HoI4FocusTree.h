@@ -101,16 +101,15 @@ class HoI4FocusTree: commonItems::parser
 	void addAbsolutistGenericFocuses(int relativePosition);
 	void addRadicalGenericFocuses(int relativePosition);
 
-	std::string srcCountryTag = "";
-	std::string dstCountryTag = "";
+	std::string dstCountryTag;
 	std::vector<std::shared_ptr<HoI4Focus>> focuses;
 	std::vector<std::shared_ptr<HoI4::SharedFocus>> sharedFocuses;
 	int nextFreeColumn = 0;
 
-	std::string fascistMutualExlusions = "";
-	std::string communistMutualExclusions = "";
-	std::string absolutistMutualExlusions = "";
-	std::string radicalMutualExclusions = "";
+	std::string fascistMutualExlusions;
+	std::string communistMutualExclusions;
+	std::string absolutistMutualExlusions;
+	std::string radicalMutualExclusions;
 };
 
 

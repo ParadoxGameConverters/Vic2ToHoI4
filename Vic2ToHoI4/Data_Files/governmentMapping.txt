@@ -51,11 +51,11 @@ government_mappings = {
 	mapping = { vic = theocracy hoi_gov = absolutist hoi_leader = theocracy } ## From HPM
 	
 	## CoE - Main Forms
-	mapping = { vic = socialist_democracy ruling_party = socialist hoi_gov = democracy hoi_leader = socialism }
+	mapping = { vic = socialist_democracy ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
 	mapping = { vic = socialist_democracy ruling_party = communist hoi_gov = communism hoi_leader = leninism }
-	mapping = { vic = socialist_democracy2 ruling_party = socialist hoi_gov = democracy hoi_leader = socialism }
+	mapping = { vic = socialist_democracy2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
 	mapping = { vic = socialist_democracy2 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
-	mapping = { vic = socialist_democracy3 ruling_party = socialist hoi_gov = democracy hoi_leader = socialism }
+	mapping = { vic = socialist_democracy3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
 	mapping = { vic = socialist_democracy3 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
 	# mapping = { vic = proletarian_dictatorship hoi_gov = communism hoi_leader = leninism } # Already present
 	mapping = { vic = proletarian_dictatorship2 hoi_gov = communism hoi_leader = leninism }
@@ -317,11 +317,11 @@ government_mappings = {
 	mapping = { vic = theocracy hoi_gov = neutrality hoi_leader = despotism } ## From HPM
 	
 	## CoE - Limited Forms (for when only default ideologies are used)
-	mapping = { vic = socialist_democracy ruling_party = socialist hoi_gov = democracy hoi_leader = socialism }
+	mapping = { vic = socialist_democracy ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
 	mapping = { vic = socialist_democracy ruling_party = communist hoi_gov = communism hoi_leader = leninism }
-	mapping = { vic = socialist_democracy2 ruling_party = socialist hoi_gov = democracy hoi_leader = socialism }
+	mapping = { vic = socialist_democracy2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
 	mapping = { vic = socialist_democracy2 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
-	mapping = { vic = socialist_democracy3 ruling_party = socialist hoi_gov = democracy hoi_leader = socialism }
+	mapping = { vic = socialist_democracy3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
 	mapping = { vic = socialist_democracy3 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
 	# mapping = { vic = proletarian_dictatorship hoi_gov = communism hoi_leader = leninism } # Already present
 	mapping = { vic = proletarian_dictatorship2 hoi_gov = communism hoi_leader = leninism }

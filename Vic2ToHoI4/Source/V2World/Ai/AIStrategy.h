@@ -23,7 +23,7 @@ class AIStrategy: commonItems::parser
   private:
 	std::string type;
 	std::string id;
-	int provID;
+	int provID = 0;
 	int value = 0;
 };
 
