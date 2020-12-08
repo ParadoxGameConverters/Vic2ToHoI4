@@ -88,7 +88,7 @@ const std::vector<std::string> hoi4Suffixes{
 	 "_radical.tga",	  // radical flag
 };
 
-static std::set<std::string> allowedMods = {"POPs of Darkness", "New Nations Mod", "Divergences of Darkness"};
+static std::set<std::string> allowedMods = {"POPs of Darkness", "New Nations Mod", "Divergences of Darkness", "The Concert of Europe"};
 
 
 void HoI4::processFlagsForCountry(const std::pair<std::string, std::shared_ptr<Country>>& country,
