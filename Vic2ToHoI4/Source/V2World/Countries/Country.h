@@ -106,7 +106,7 @@ class Country
 	void setLocalisationAdjective(const std::string& language, const std::string& adjective);
 
 	std::string tag;
-	commonItems::Color color;
+	std::optional<commonItems::Color> color;
 	bool human = false;
 
 	std::vector<State> states;
@@ -114,8 +114,8 @@ class Country
 	std::vector<std::shared_ptr<Province>> cores;
 	int capital = 0;
 
-	std::string primaryCulture;
-	std::string primaryCultureGroup;
+	std::string primaryCulture = "no_culture";
+	std::string primaryCultureGroup = "no_culture";
 	std::set<std::string> acceptedCultures;
 
 	std::set<std::string> technologiesAndInventions;

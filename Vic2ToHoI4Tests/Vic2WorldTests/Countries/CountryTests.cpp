@@ -359,7 +359,7 @@ TEST(Vic2World_Countries_CountryTests, CapitalCanBeSet)
 }
 
 
-TEST(Vic2World_Countries_CountryTests, PrimaryCultureDefaultsToEmpty)
+TEST(Vic2World_Countries_CountryTests, PrimaryCultureDefaultsToNoCulture)
 {
 	std::stringstream theStream;
 	theStream << "= {\n";
@@ -373,7 +373,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureDefaultsToEmpty)
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
-	ASSERT_TRUE(country->getPrimaryCulture().empty());
+	ASSERT_EQ("no_culture", country->getPrimaryCulture());
 }
 
 
@@ -383,6 +383,25 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSet)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "\tprimary_culture = test_primary\n";
+	theStream << "}";
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+
+	ASSERT_EQ("test_primary", country->getPrimaryCulture());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, PrimaryCultureWithQuotesCanBeSet)
+{
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "\tprimary_culture = \"test_primary\"\n";
 	theStream << "}";
 	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
@@ -423,26 +442,28 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromLargestCulture)
 }
 
 
-TEST(Vic2World_Countries_CountryTests, PrimaryCultureWithQuotesCanBeSet)
+TEST(Vic2World_Countries_CountryTests, PrimaryCultureNotSetFromLargestCultureIfNoPops)
 {
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
-	theStream << "\tprimary_culture = \"test_primary\"\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countryTests/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-									 .createCountry("TAG",
-										  theStream,
-										  *Vic2::CommonCountryData::Builder{}.Build(),
-										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+							 .createCountry("TAG",
+								  theStream,
+								  *Vic2::CommonCountryData::Builder{}.Build(),
+								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
-	ASSERT_EQ("test_primary", country->getPrimaryCulture());
+	country->handleMissingCulture(*Vic2::CultureGroups::Factory{}.getCultureGroups(
+		 *Configuration::Builder{}.setVic2Path("./countryTests/").build()));
+
+	ASSERT_EQ("no_culture", country->getPrimaryCulture());
 }
 
 
-TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupDefaultsToEmpty)
+TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupDefaultsToNoCulture)
 {
 	std::stringstream theStream;
 	theStream << "= {\n";
@@ -456,7 +477,7 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupDefaultsToEmpty)
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
-	ASSERT_TRUE(country->getPrimaryCultureGroup().empty());
+	ASSERT_EQ("no_culture", country->getPrimaryCultureGroup());
 }
 
 
@@ -478,6 +499,27 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupsSetFromPrimaryCulture
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	ASSERT_EQ("test_primary_group", country->getPrimaryCultureGroup());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, PrimaryCulturGroupeNotSetFromLargestCultureIfNoPops)
+{
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "}";
+	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countryTests/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+							 .createCountry("TAG",
+								  theStream,
+								  *Vic2::CommonCountryData::Builder{}.Build(),
+								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+
+	country->handleMissingCulture(*Vic2::CultureGroups::Factory{}.getCultureGroups(
+		 *Configuration::Builder{}.setVic2Path("./countryTests/").build()));
+
+	ASSERT_EQ("no_culture", country->getPrimaryCultureGroup());
 }
 
 
@@ -1569,6 +1611,37 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionCanBeSet)
 		 testing::UnorderedElementsAre(testing::Pair(std::string("ideology_one"), 0.25),
 			  testing::Pair(std::string("ideology_two"), 0.625),
 			  testing::Pair(std::string("ideology_three"), 0.125)));
+}
+
+
+TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionLogsErrorOnBadInput)
+{
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "\tupper_house=\n";
+	theStream << "\t{\n";
+	theStream << "\t\tideology_one=not_a_number\n";
+	theStream << "\t}\n";
+	theStream << "}";
+
+	std::stringstream log;
+	auto* stdOutBuf = std::cout.rdbuf();
+	std::cout.rdbuf(log.rdbuf());
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+	std::cout.rdbuf(stdOutBuf);
+
+	ASSERT_EQ(
+		 "    [INFO] Determining culture groups\n"
+		 "   [ERROR] Could not open /common/cultures.txt for parsing.\n"
+		 " [WARNING] Malformed input while importing upper house composition for TAG\n",
+		 log.str());
 }
 
 

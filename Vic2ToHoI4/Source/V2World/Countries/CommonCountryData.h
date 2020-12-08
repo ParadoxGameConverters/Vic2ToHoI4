@@ -7,6 +7,7 @@
 #include "Parser.h"
 #include "V2World/Politics/Party.h"
 #include <map>
+#include <optional>
 #include <string>
 #include <vector>
 
@@ -27,7 +28,7 @@ class CommonCountryData
 	[[nodiscard]] auto getParties() const { return parties; }
 
   private:
-	commonItems::Color theColor;
+	std::optional<commonItems::Color> theColor;
 	std::map<std::string, std::vector<std::string>> unitNames;
 	std::vector<Party> parties;
 };

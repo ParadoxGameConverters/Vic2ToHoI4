@@ -30,14 +30,20 @@ HoI4::Country::Country(std::string tag,
 	 Localisation& hoi4Localisations):
 	 tag(std::move(tag)),
 	 name(sourceCountry.getName("english")), adjective(sourceCountry.getAdjective("english")),
-	 oldTag(sourceCountry.getTag()), human(human = sourceCountry.isHuman()), color(sourceCountry.getColor()),
-	 threat(sourceCountry.getBadBoy() / 10.0), oldCapital(sourceCountry.getCapital()),
-	 primaryCulture(sourceCountry.getPrimaryCulture()), civilized(sourceCountry.isCivilized()),
-	 primaryCultureGroup(sourceCountry.getPrimaryCultureGroup()), rulingParty(sourceCountry.getRulingParty()),
-	 parties(sourceCountry.getActiveParties()), oldGovernment(sourceCountry.getGovernment()),
-	 upperHouseComposition(sourceCountry.getUpperHouseComposition()), lastElection(sourceCountry.getLastElection())
+	 oldTag(sourceCountry.getTag()), human(human = sourceCountry.isHuman()), threat(sourceCountry.getBadBoy() / 10.0),
+	 oldCapital(sourceCountry.getCapital()), primaryCulture(sourceCountry.getPrimaryCulture()),
+	 civilized(sourceCountry.isCivilized()), primaryCultureGroup(sourceCountry.getPrimaryCultureGroup()),
+	 rulingParty(sourceCountry.getRulingParty()), parties(sourceCountry.getActiveParties()),
+	 oldGovernment(sourceCountry.getGovernment()), upperHouseComposition(sourceCountry.getUpperHouseComposition()),
+	 lastElection(sourceCountry.getLastElection())
 {
 	determineFilename();
+
+	const auto& sourceColor = sourceCountry.getColor();
+	if (sourceColor)
+	{
+		color = *sourceColor;
+	}
 
 	auto possibleGraphicalCulture = theGraphics.getGraphicalCulture(primaryCultureGroup);
 	if (possibleGraphicalCulture)

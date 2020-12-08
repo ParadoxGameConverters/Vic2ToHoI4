@@ -6,15 +6,14 @@
 
 
 
-TEST(Vic2World_Countries_CommonCountryDataTests, ColorDefaultsToBlack)
+TEST(Vic2World_Countries_CommonCountryDataTests, ColorDefaultsToNullopt)
 {
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory{}.importCommonCountryData("blankCommonCountryData.txt",
 			  std::nullopt,
 			  *Configuration::Builder{}.setVic2Path("./").build());
 
-	const auto expectedColor = std::array<int, 3>{0, 0, 0};
-	ASSERT_EQ(expectedColor, commonCountryData->getColor().getRgbComponents());
+	ASSERT_EQ(std::nullopt, commonCountryData->getColor());
 }
 
 
@@ -25,8 +24,9 @@ TEST(Vic2World_Countries_CommonCountryDataTests, ColorCanBeSet)
 			  std::nullopt,
 			  *Configuration::Builder{}.setVic2Path("./").build());
 
+	ASSERT_TRUE(commonCountryData->getColor().has_value());
 	const auto expectedColor = std::array<int, 3>{56, 32, 172};
-	ASSERT_EQ(expectedColor, commonCountryData->getColor().getRgbComponents());
+	ASSERT_EQ(expectedColor, commonCountryData->getColor()->getRgbComponents());
 }
 
 
@@ -37,8 +37,9 @@ TEST(Vic2World_Countries_CommonCountryDataTests, ColorCanBeSetFromMod)
 			  "mod",
 			  *Configuration::Builder{}.setVic2Path("./").build());
 
+	ASSERT_TRUE(commonCountryData->getColor().has_value());
 	const auto expectedColor = std::array<int, 3>{10, 20, 30};
-	ASSERT_EQ(expectedColor, commonCountryData->getColor().getRgbComponents());
+	ASSERT_EQ(expectedColor, commonCountryData->getColor()->getRgbComponents());
 }
 
 
@@ -49,8 +50,9 @@ TEST(Vic2World_Countries_CommonCountryDataTests, MissingModUsesVanillaColor)
 			  "missing_mod",
 			  *Configuration::Builder{}.setVic2Path("./").build());
 
+	ASSERT_TRUE(commonCountryData->getColor().has_value());
 	const auto expectedColor = std::array<int, 3>{56, 32, 172};
-	ASSERT_EQ(expectedColor, commonCountryData->getColor().getRgbComponents());
+	ASSERT_EQ(expectedColor, commonCountryData->getColor()->getRgbComponents());
 }
 
 

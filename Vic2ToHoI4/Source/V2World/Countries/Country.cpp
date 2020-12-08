@@ -122,7 +122,7 @@ void Vic2::Country::setLocalisationAdjective(const std::string& language, const 
 
 void Vic2::Country::handleMissingCulture(const CultureGroups& theCultureGroups)
 {
-	if (primaryCulture.empty())
+	if (primaryCulture == "no_culture")
 	{
 		const auto cultureSizes = determineCultureSizes();
 		primaryCulture = selectLargestCulture(cultureSizes);
@@ -130,10 +130,6 @@ void Vic2::Country::handleMissingCulture(const CultureGroups& theCultureGroups)
 		if (cultureGroupOption)
 		{
 			primaryCultureGroup = *cultureGroupOption;
-		}
-		else
-		{
-			primaryCultureGroup = "no_culture";
 		}
 	}
 }
@@ -163,7 +159,7 @@ std::map<std::string, int> Vic2::Country::determineCultureSizes()
 
 std::string Vic2::Country::selectLargestCulture(const std::map<std::string, int>& cultureSizes)
 {
-	std::string largestCulture;
+	std::string largestCulture = "no_culture";
 	auto largestCultureSize = 0;
 	for (const auto& [culture, size]: cultureSizes)
 	{

@@ -106,8 +106,9 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 			{
 				country->upperHouseComposition.insert(make_pair(ideology, stof(amountString)));
 			}
-			catch (...)
+			catch (std::exception& e)
 			{
+				Log(LogLevel::Warning) << "Malformed input while importing upper house composition for " << country->tag;
 			}
 		}
 	});
