@@ -27,7 +27,7 @@ class CountryLeader
 												  // used when the name of a person is unknown
 	std::string description = "POLITICS_NOMEN_NESCIO_DESC";
 	std::string picture = "gfx/leaders/ENG/portrait_eng_fallen_government.dds";
-	std::string ideology = "conservatism_neutral";
+	std::string ideology = "anarchism";
 	std::vector<std::string> traits;
 };
 
