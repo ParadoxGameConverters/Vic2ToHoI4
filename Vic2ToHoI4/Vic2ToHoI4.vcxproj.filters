@@ -18599,7 +18599,6 @@
     <CopyFileToFolders Include="Data_Files\languageReplacements.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\version.txt" />
     <CopyFileToFolders Include="Data_Files\Fronter\configuration_l_english.yml">
       <Filter>Data Files\Fronter</Filter>
     </CopyFileToFolders>
@@ -18669,18 +18668,21 @@
     <CopyFileToFolders Include="Data_Files\Sounds\CultureToVoiceMappings.txt">
       <Filter>Data Files\Sounds</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\HoI4CountryLeaders.txt" />
     <CopyFileToFolders Include="Data_Files\Historical Project Mod 0.4.6_province_mappings.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\The Concert of Europe_province_mappings.txt" />
+    <CopyFileToFolders Include="Data_Files\Configurables\CountryNamesMappings.txt" />
+    <CopyFileToFolders Include="Data_Files\The Concert of Europe_province_mappings.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\version.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Configurables\HoI4CountryLeaders.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Data_Files\Configurables\CountryNamesMappings.txt">
-      <Filter>Data Files\Configurables</Filter>
-    </Text>
   </ItemGroup>
 </Project>

@@ -437,6 +437,7 @@
     <ClCompile Include="HoI4WorldTests\States\StateCategoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\States\StateHistoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\TechnologiesTests.cpp" />
+    <ClCompile Include="MapperTests\CountryName\CountryNameMapperTests.cpp" />
     <ClCompile Include="MapperTests\CountryName\CountryNameMappingTests.cpp" />
     <ClCompile Include="MapperTests\FlagsToIdeasMapperTests.cpp" />
     <ClCompile Include="MapperTests\FlagToIdeaMappingTests.cpp" />
@@ -895,6 +896,12 @@
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">traits%(Extension)</DestinationFileName>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/countries/blank/common</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">traits%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\CountryNames\CountryNamesMappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

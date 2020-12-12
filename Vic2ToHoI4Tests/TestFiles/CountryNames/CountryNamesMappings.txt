@@ -1,0 +1,2 @@
+name_mapping = { vic2_gov = matching_vic2_gov hoi4_ideology = match }
+name_mapping = { vic2_gov = matching_specific_vic2_gov vic2_tag = TAG hoi4_ideology = tag_required }
