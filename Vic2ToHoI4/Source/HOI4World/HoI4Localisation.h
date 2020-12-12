@@ -5,6 +5,7 @@
 
 #include "Configuration.h"
 #include "Localisations/ArticleRules/ArticleRules.h"
+#include "Mappers/CountryName/CountryNameMapper.h"
 #include "Mappers/GovernmentMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
@@ -68,7 +69,8 @@ class Localisation
 		 const mappers::ProvinceMapper& theProvinceMapper,
 		 const Configuration& theConfiguration);
 	void createCountryLocalisations(const std::pair<const std::string&, const std::string&>& tags,
-		 const governmentMapper& governmentMap,
+		 const mappers::CountryNameMapper& countryNameMapper,
+		 const std::set<std::string>& majorIdeologies,
 		 const Vic2::Localisations& vic2Localisations,
 		 const ArticleRules& articleRules);
 	void updateMainCountryLocalisation(const std::string& HoI4Key,
@@ -109,7 +111,8 @@ class Localisation
 	void addLocalisationsForAllGovernments(const std::pair<const std::string&, const std::string&>& tags,
 		 const std::string& vic2Suffix,
 		 const std::string& hoi4Suffix,
-		 const governmentMapper& governmentMap,
+		 const mappers::CountryNameMapper& countryNameMapper,
+		 const std::set<std::string>& majorIdeologies,
 		 const Vic2::Localisations& vic2Localisations,
 		 const ArticleRules& articleRules);
 	void addLocalisationsInAllLanguages(const std::string& destTag,

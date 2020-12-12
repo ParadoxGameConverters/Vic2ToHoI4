@@ -189,6 +189,9 @@
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapper.cpp" />
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.cpp" />
+    <ClCompile Include="Source\Mappers\CountryName\CountryNameMapper.cpp" />
+    <ClCompile Include="Source\Mappers\CountryName\CountryNameMapperFactory.cpp" />
+    <ClCompile Include="Source\Mappers\CountryName\CountryNameMappingFactory.cpp" />
     <ClCompile Include="Source\OutHoi4\AiStrategy\OutAiStrategy.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
@@ -506,6 +509,10 @@
     <ClInclude Include="Source\HOI4World\States\StateCategoriesBuilder.h" />
     <ClInclude Include="Source\HOI4World\TechnologiesBuilder.h" />
     <ClInclude Include="Source\Mappers\CountryMapperBuilder.h" />
+    <ClInclude Include="Source\Mappers\CountryName\CountryNameMapper.h" />
+    <ClInclude Include="Source\Mappers\CountryName\CountryNameMapperFactory.h" />
+    <ClInclude Include="Source\Mappers\CountryName\CountryNameMapping.h" />
+    <ClInclude Include="Source\Mappers\CountryName\CountryNameMappingFactory.h" />
     <ClInclude Include="Source\Mappers\GovernmentMapperBuilder.h" />
     <ClInclude Include="Source\Mappers\GraphicsMappedBuilder.h" />
     <ClInclude Include="Source\OutHoi4\AiStrategy\OutAiStrategy.h" />
@@ -17326,6 +17333,12 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\The Concert of Europe_province_mappings.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\Configurables\CountryNamesMappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

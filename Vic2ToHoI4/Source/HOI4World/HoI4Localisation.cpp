@@ -158,12 +158,25 @@ void HoI4::Localisation::Importer::prepareBlankLocalisations()
 
 
 void HoI4::Localisation::createCountryLocalisations(const std::pair<const std::string&, const std::string&>& tags,
-	 const governmentMapper& governmentMap,
+	 const mappers::CountryNameMapper& countryNameMapper,
+	 const std::set<std::string>& majorIdeologies,
 	 const Vic2::Localisations& vic2Localisations,
 	 const ArticleRules& articleRules)
 {
-	addLocalisationsForAllGovernments(tags, "", "_DEF", governmentMap, vic2Localisations, articleRules);
-	addLocalisationsForAllGovernments(tags, "_ADJ", "", governmentMap, vic2Localisations, articleRules);
+	addLocalisationsForAllGovernments(tags,
+		 "",
+		 "_DEF",
+		 countryNameMapper,
+		 majorIdeologies,
+		 vic2Localisations,
+		 articleRules);
+	addLocalisationsForAllGovernments(tags,
+		 "_ADJ",
+		 "",
+		 countryNameMapper,
+		 majorIdeologies,
+		 vic2Localisations,
+		 articleRules);
 
 	if (!addNeutralLocalisation(tags, "", "_DEF", vic2Localisations, articleRules))
 	{
@@ -180,18 +193,25 @@ void HoI4::Localisation::addLocalisationsForAllGovernments(
 	 const std::pair<const std::string&, const std::string&>& tags,
 	 const std::string& vic2Suffix,
 	 const std::string& hoi4Suffix,
-	 const governmentMapper& governmentMap,
+	 const mappers::CountryNameMapper& countryNameMapper,
+	 const std::set<std::string>& majorIdeologies,
 	 const Vic2::Localisations& vic2Localisations,
 	 const ArticleRules& articleRules)
 {
-	for (const auto& mapping: governmentMap.getGovernmentMappings())
+	for (const auto& ideology: majorIdeologies)
 	{
+		const auto vic2Government = countryNameMapper.getVic2Government(ideology, tags.first);
+		if (!vic2Government)
+		{
+			continue;
+		}
+
 		auto localisationForGovernment =
-			 vic2Localisations.getTextInEachLanguage(tags.first + "_" + mapping.vic2Government + vic2Suffix);
+			 vic2Localisations.getTextInEachLanguage(tags.first + "_" + *vic2Government + vic2Suffix);
 		addLocalisationsInAllLanguages(tags.second,
 			 vic2Suffix,
 			 hoi4Suffix,
-			 mapping.HoI4GovernmentIdeology,
+			 ideology,
 			 localisationForGovernment,
 			 articleRules);
 		if (localisationForGovernment.empty())
@@ -199,7 +219,7 @@ void HoI4::Localisation::addLocalisationsForAllGovernments(
 			addLocalisationsInAllLanguages(tags.second,
 				 vic2Suffix,
 				 hoi4Suffix,
-				 mapping.HoI4GovernmentIdeology,
+				 ideology,
 				 vic2Localisations.getTextInEachLanguage(tags.first + vic2Suffix),
 				 articleRules);
 		}
