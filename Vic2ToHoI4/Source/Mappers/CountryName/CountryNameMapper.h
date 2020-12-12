@@ -17,7 +17,8 @@ class CountryNameMapper
   public:
 	class Factory;
 
-	[[nodiscard]] std::optional<std::string> getVic2Government(const std::string& HoI4Ideology, const std::string& Vic2Tag) const;
+	[[nodiscard]] std::optional<std::string> getVic2Government(const std::string& HoI4Ideology,
+		 const std::string& Vic2Tag) const;
 
   private:
 	std::vector<CountryNameMapping> mappings;

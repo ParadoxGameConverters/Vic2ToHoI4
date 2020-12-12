@@ -11,16 +11,17 @@
 namespace mappers
 {
 
-	class CountryNameMappingFactory: commonItems::parser
-	{
-	public:
-		CountryNameMappingFactory();
-		std::unique_ptr<CountryNameMapping> importMapping(std::istream& theStream);
-	private:
-	 std::unique_ptr<CountryNameMapping> countryNameMapping;
-	};
-	
-}
+class CountryNameMappingFactory: commonItems::parser
+{
+  public:
+	CountryNameMappingFactory();
+	std::unique_ptr<CountryNameMapping> importMapping(std::istream& theStream);
+
+  private:
+	std::unique_ptr<CountryNameMapping> countryNameMapping;
+};
+
+} // namespace mappers
 
 
 

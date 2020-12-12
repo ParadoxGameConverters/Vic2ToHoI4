@@ -15,8 +15,8 @@ struct CountryNameMapping
 	std::string vic2Tag;
 	std::string hoi4Ideology;
 };
-	
-}
+
+} // namespace mappers
 
 
 
