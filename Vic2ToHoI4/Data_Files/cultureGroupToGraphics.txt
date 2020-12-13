@@ -566,8 +566,8 @@ central_asian = {
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_asia.dds" } # Revise
 	}
-	graphical_culture = { middle_eastern_gfx }
-	graphical_culture_2d = { middle_eastern_2d }
+	graphical_culture = { asian_gfx }
+	graphical_culture_2d = { asian_2d }
 }
 south_asian = {
 	leader_portraits = {
