@@ -518,12 +518,7 @@ void HoI4::World::convertDiplomacy(const Vic2::World& sourceWorld)
 void HoI4::World::convertAgreements(const Vic2::World& sourceWorld)
 {
 	const auto& diplomacy = sourceWorld.getDiplomacy();
-	if (!diplomacy)
-	{
-		return;
-	}
-
-	for (auto agreement: diplomacy->getAgreements())
+	for (auto agreement: diplomacy.getAgreements())
 	{
 		auto possibleHoI4Tag1 = countryMap.getHoI4Tag(agreement.getCountry1());
 		if (!possibleHoI4Tag1)

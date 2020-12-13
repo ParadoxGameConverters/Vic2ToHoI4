@@ -78,6 +78,11 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	world->theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
 	world->theLocalisations = Localisations::Factory{}.importLocalisations(theConfiguration);
 	parseFile(theConfiguration.getInputFile());
+	if (!world->diplomacy)
+	{
+		Log(LogLevel::Warning) << "Vic2 save had no diplomacy section!";
+		world->diplomacy = std::make_unique<Diplomacy>();
+	}
 
 	Log(LogLevel::Progress) << "21%";
 	Log(LogLevel::Info) << "Building Vic2 world";
