@@ -1323,6 +1323,21 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\Relations.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMappingFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\CountryName</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\CountryName\CountryNameMappingTests.cpp">
+      <Filter>MapperTests\CountryName</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapper.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\CountryName</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapperFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\CountryName</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\CountryName\CountryNameMapperTests.cpp">
+      <Filter>MapperTests\CountryName</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1700,6 +1715,15 @@
     <Filter Include="Vic2WorldTests\Countries">
       <UniqueIdentifier>{942f4f2a-fd60-4abd-a2a1-4ed9743d9cd7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\CountryName">
+      <UniqueIdentifier>{ea560324-eeca-41f6-a31a-d1eb3131b3c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests\CountryName">
+      <UniqueIdentifier>{2e3ab98b-80ad-4025-a63b-84a4d67a7c1a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\CountryNames">
+      <UniqueIdentifier>{f70ef764-0aeb-4057-8ac1-6b5a15721bdf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1861,7 +1885,6 @@
     <CopyFileToFolders Include="TestFiles\Countries\TestCountryMod.txt">
       <Filter>TestFiles\Countries</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Countries\BlankTraitsFile.txt" />
     <CopyFileToFolders Include="TestFiles\Localisations\BaseLocalisations.txt">
       <Filter>TestFiles\Localistations</Filter>
     </CopyFileToFolders>
@@ -1892,5 +1915,13 @@
     <CopyFileToFolders Include="TestFiles\Leaders\HoI4CountryLeaders.txt">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Countries\BlankTraitsFile.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TestFiles\CountryNames\CountryNamesMappings.txt">
+      <Filter>TestFiles\CountryNames</Filter>
+    </Text>
   </ItemGroup>
 </Project>

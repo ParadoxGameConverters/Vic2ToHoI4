@@ -22,6 +22,7 @@
 #include "Map/StrategicRegions.h"
 #include "Map/SupplyZones.h"
 #include "Mappers/CountryMapping.h"
+#include "Mappers/CountryName/CountryNameMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/GovernmentMapper.h"
 #include "Mappers/GraphicsMapper.h"
@@ -113,17 +114,16 @@ class World: commonItems::parser
 	World(const World&) = delete;
 	World& operator=(const World&) = delete;
 
-	void convertCountries(const Vic2::Localisations& vic2Localisations);
+	void convertCountries();
 	void convertCountry(const std::string& oldTag,
 		 const Vic2::Country& oldCountry,
-		 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
-		 const Vic2::Localisations& vic2Localisations,
-		 const ArticleRules& articleRules);
+		 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper);
 
 	void importLeaderTraits();
 	void importIdeologicalMinisters();
 
 	void convertGovernments(const Vic2::Localisations& vic2Localisations, bool debug);
+	void convertCountryNames(const Vic2::Localisations& vic2Localisations);
 
 	void convertParties(const Vic2::Localisations& vic2Localisations);
 
@@ -190,6 +190,7 @@ class World: commonItems::parser
 	graphicsMapper theGraphics;
 	governmentMapper governmentMap;
 	CountryMapper countryMap;
+	std::unique_ptr<mappers::CountryNameMapper> countryNameMapper;
 
 	const Vic2::World* sourceWorld = nullptr;
 

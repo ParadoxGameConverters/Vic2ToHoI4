@@ -1,0 +1,15 @@
+# These mappings define how country names are assigned.
+#
+# For the specified HoI4 ideology, the name comes from the matching Vic2 government.
+# A Vic2 tag can be required as well: name_mapping = { vic2_gov = democracy vic2_tag = TAG hoi4_ideology = democratic }
+# This will ensure the rule is applied only to the matching country, allowing for customizations.
+#
+# The rules are scanned in order, and the first matching rule is the one that is applied.
+# Only one of each item is valid within a rule. To have multiple matches, make multiple rules.
+
+
+name_mapping = { vic2_gov = democracy hoi4_ideology = democratic }
+name_mapping = { vic2_gov = proletarian_dictatorship hoi4_ideology = communism }
+name_mapping = { vic2_gov = bourgeois_dictatorship hoi4_ideology = radical }
+name_mapping = { vic2_gov = fascist_dictatorship hoi4_ideology = fascism }
+name_mapping = { vic2_gov = absolute_monarchy hoi4_ideology = absolutist }

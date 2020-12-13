@@ -147,6 +147,7 @@ class Country
 	[[nodiscard]] std::optional<int> getCapitalState() const { return capitalState; }
 	[[nodiscard]] std::optional<int> getCapitalProvince() const { return capitalProvince; }
 
+	[[nodiscard]] const std::string& getOldGovernment() const { return oldGovernment; }
 	[[nodiscard]] const std::string& getGovernmentIdeology() const { return governmentIdeology; }
 	[[nodiscard]] const std::string& getLeaderIdeology() const { return leaderIdeology; }
 	[[nodiscard]] const Vic2::Party& getRulingParty() const { return rulingParty; }

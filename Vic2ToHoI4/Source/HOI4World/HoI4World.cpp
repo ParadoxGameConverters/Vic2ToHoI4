@@ -21,6 +21,7 @@
 #include "Map/StrategicRegion.h"
 #include "Map/SupplyZones.h"
 #include "Mappers/CountryMapping.h"
+#include "Mappers/CountryName/CountryNameMapperFactory.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/TechMapper.h"
 #include "MilitaryMappings/MilitaryMappingsFile.h"
@@ -81,7 +82,8 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	names = Names::Factory{}.getNames(theConfiguration);
 	theGraphics.init();
 	governmentMap.init();
-	convertCountries(vic2Localisations);
+	countryNameMapper = mappers::CountryNameMapper::Factory{}.importCountryNameMapper();
+	convertCountries();
 	addStatesToCountries(provinceMapper);
 	states->addCapitalsToStates(countries);
 	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
@@ -107,6 +109,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	convertGovernments(vic2Localisations, theConfiguration.getDebug());
 	ideologies = std::make_unique<Ideologies>(theConfiguration);
 	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
+	convertCountryNames(vic2Localisations);
 	scriptedEffects->updateOperationStratEffects(ideologies->getMajorIdeologies());
 	scriptedLocalisations->updateIdeologyLocalisations(ideologies->getMajorIdeologies());
 	scriptedLocalisations->filterIdeologyLocalisations(ideologies->getMajorIdeologies());
@@ -181,29 +184,24 @@ shared_ptr<HoI4::Country> HoI4::World::findCountry(const string& countryTag)
 }
 
 
-void HoI4::World::convertCountries(const Vic2::Localisations& vic2Localisations)
+void HoI4::World::convertCountries()
 {
 	Log(LogLevel::Info) << "\tConverting countries";
 
 	std::ifstream flagToIdeasMappingFile("DataFiles/FlagsToIdeasMappings.txt");
-	mappers::FlagsToIdeasMapper flagsToIdeasMapper(flagToIdeasMappingFile);
+	const mappers::FlagsToIdeasMapper flagsToIdeasMapper(flagToIdeasMappingFile);
 	flagToIdeasMappingFile.close();
 
-	const auto articleRules = ArticleRules::Factory{}.getRules("DataFiles/Localisations/ArticleRules.txt");
 	for (const auto& [tag, country]: sourceWorld->getCountries())
 	{
-		convertCountry(tag, *country, flagsToIdeasMapper, vic2Localisations, *articleRules);
+		convertCountry(tag, *country, flagsToIdeasMapper);
 	}
-
-	hoi4Localisations->addNonenglishCountryLocalisations();
 }
 
 
 void HoI4::World::convertCountry(const std::string& oldTag,
 	 const Vic2::Country& oldCountry,
-	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
-	 const Vic2::Localisations& vic2Localisations,
-	 const ArticleRules& articleRules)
+	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper)
 {
 	// don't convert rebels
 	if (oldTag == "REB")
@@ -227,16 +225,6 @@ void HoI4::World::convertCountry(const std::string& oldTag,
 			 flagsToIdeasMapper,
 			 *hoi4Localisations);
 		countries.insert(make_pair(*possibleHoI4Tag, destCountry));
-		hoi4Localisations->createCountryLocalisations(make_pair(oldTag, *possibleHoI4Tag),
-			 governmentMap,
-			 vic2Localisations,
-			 articleRules);
-		hoi4Localisations->updateMainCountryLocalisation(
-			 destCountry->getTag() + "_" + destCountry->getGovernmentIdeology(),
-			 oldTag,
-			 oldCountry.getGovernment(),
-			 vic2Localisations,
-			 articleRules);
 	}
 }
 
@@ -271,6 +259,29 @@ void HoI4::World::convertGovernments(const Vic2::Localisations& vic2Localisation
 	{
 		country.second->convertGovernment(*sourceWorld, governmentMap, vic2Localisations, *hoi4Localisations, debug);
 	}
+}
+
+
+void HoI4::World::convertCountryNames(const Vic2::Localisations& vic2Localisations)
+{
+	Log(LogLevel::Info) << "\tConverting country names";
+	const auto articleRules = ArticleRules::Factory{}.getRules("DataFiles/Localisations/ArticleRules.txt");
+	for (const auto& [tag, country]: countries)
+	{
+		hoi4Localisations->createCountryLocalisations(std::make_pair(country->getOldTag(), tag),
+			 *countryNameMapper,
+			 ideologies->getMajorIdeologies(),
+			 vic2Localisations,
+			 *articleRules);
+		hoi4Localisations->updateMainCountryLocalisation(
+			 tag + "_" + country->getGovernmentIdeology(),
+			 country->getOldTag(),
+			 country->getOldGovernment(),
+			 vic2Localisations,
+			 *articleRules);
+	}
+
+	hoi4Localisations->addNonenglishCountryLocalisations();
 }
 
 

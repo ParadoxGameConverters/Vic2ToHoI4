@@ -77,6 +77,9 @@ set(HOI4WORLD_SOUNDS_SOURCES ${HOI4WORLD_SOUNDS_SOURCES} "${PROJECT_SOURCE_DIR}/
 file(GLOB HOI4WORLD_STATES_SOURCES "${PROJECT_SOURCE_DIR}/HOI4World/States/*.cpp")
 file(GLOB HOI4WORLD_WAR_CREATOR_SOURCES "${PROJECT_SOURCE_DIR}/HOI4World/WarCreator/*.cpp")
 file(GLOB MAPPER_SOURCES "${PROJECT_SOURCE_DIR}/Mappers/*.cpp")
+set(MAPPER_COUNTRYNAME_SOURCES ${MAPPER_COUNTRYNAME_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/CountryName/CountryNameMapper.cpp")
+set(MAPPER_COUNTRYNAME_SOURCES ${MAPPER_COUNTRYNAME_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/CountryName/CountryNameMapperFactory.cpp")
+set(MAPPER_COUNTRYNAME_SOURCES ${MAPPER_COUNTRYNAME_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/CountryName/CountryNameMappingFactory.cpp")
 file(GLOB FLAG_TO_IDEA_MAPPER_SOURCES "${PROJECT_SOURCE_DIR}/Mappers/FlagsToIdeas/*.cpp")
 file(GLOB PROVINCE_MAPPER_SOURCES "${PROJECT_SOURCE_DIR}/Mappers/Provinces/*.cpp")
 file(GLOB MAPPER_VERSIONPARSER_SOURCES "${PROJECT_SOURCE_DIR}/Mappers/VersionParser/*.cpp")
@@ -208,6 +211,7 @@ add_executable(
 	${HOI4WORLD_SOUNDS_SOURCES}
 	${HOI4WORLD_WAR_CREATOR_SOURCES}
 	${MAPPER_SOURCES}
+	${MAPPER_COUNTRYNAME_SOURCES}
 	${FLAG_TO_IDEA_MAPPER_SOURCES}
 	${PROVINCE_MAPPER_SOURCES}
 	${MAPPER_VERSIONPARSER_SOURCES}
@@ -302,6 +306,8 @@ file(GLOB HOI4WORLD_SCRIPTED_TRIGGERS_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4Worl
 file(GLOB HOI4WORLD_SHIP_TYPES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4WorldTests/ShipTypes/*.cpp")
 file(GLOB HOI4WORLD_STATES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4WorldTests/States/*.cpp")
 file(GLOB MAPPER_TESTS_SOURCES "${TEST_SOURCE_DIR}/MapperTests/*.cpp")
+set(MAPPER_COUNTRYNAME_TESTS_SOURCES ${MAPPER_COUNTRYNAME_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/CountryName/CountryNameMapperTests.cpp")
+set(MAPPER_COUNTRYNAME_TESTS_SOURCES ${MAPPER_COUNTRYNAME_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/CountryName/CountryNameMappingTests.cpp")
 set(VIC2WORLD_AI_TESTS_SOURCES ${VIC2WORLD_AI_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Ai/AIStrategyTests.cpp")
 set(VIC2WORLD_AI_TESTS_SOURCES ${VIC2WORLD_AI_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Ai/Vic2AITests.cpp")
 set(VIC2WORLD_COUNTRIES_TESTS_SOURCES ${VIC2WORLD_COUNTRIES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Countries/CommonCountriesDataFactoryTests.cpp")
@@ -385,6 +391,7 @@ add_executable(
 	${HOI4WORLD_STATES_SOURCES}
 	${HOI4WORLD_WAR_CREATOR_SOURCES}
 	${MAPPER_SOURCES}
+	${MAPPER_COUNTRYNAME_SOURCES}
 	${FLAG_TO_IDEA_MAPPER_SOURCES}
 	${PROVINCE_MAPPER_SOURCES}
 	${MAPPER_VERSIONPARSER_SOURCES}
@@ -455,6 +462,7 @@ add_executable(
 	${HOI4WORLD_SOUNDS_TESTS_SOURCES}
 	${HOI4WORLD_STATES_TESTS_SOURCES}
 	${MAPPER_TESTS_SOURCES}
+	${MAPPER_COUNTRYNAME_TESTS_SOURCES}
 	${VIC2WORLD_AI_TESTS_SOURCES}
 	${VIC2WORLD_COUNTRIES_TESTS_SOURCES}
 	${VIC2WORLD_CULTURE_TESTS_SOURCES}
@@ -493,6 +501,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Countries/TestCountryOne.txt" "${TEST_
 configure_file("Vic2ToHoI4Tests/TestFiles/Countries/TestCountryTwo.txt" "${TEST_OUTPUT_DIRECTORY}/vanilla_common_countries_data/common/countries/TestCountryTwo.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Countries/TestTechnologyFile.txt" "${TEST_OUTPUT_DIRECTORY}/countryTests/inventions/TestTechnologyFile.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Countries/VanillaCommonCountriesData.txt" "${TEST_OUTPUT_DIRECTORY}/vanilla_common_countries_data/common/countries.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/CountryNames/CountryNamesMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/CountryNamesMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Cultures/BaseCultures.txt" "${TEST_OUTPUT_DIRECTORY}/BaseCultures/common/cultures.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Cultures/ModOneCultures.txt" "${TEST_OUTPUT_DIRECTORY}/ModCultures/ModOne/common/cultures.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Cultures/ModTwoCultures.txt" "${TEST_OUTPUT_DIRECTORY}/ModCultures/ModTwo/common/cultures.txt" COPYONLY)

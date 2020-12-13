@@ -241,6 +241,9 @@
     <Filter Include="Vic2World\Countries">
       <UniqueIdentifier>{2629d2ed-6e4a-4b7c-be02-c4e55cd35614}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mappers\CountryName">
+      <UniqueIdentifier>{76ad801f-4c9b-4181-a1f3-33046c5e899b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1128,6 +1131,15 @@
     </ClCompile>
     <ClCompile Include="Source\V2World\Diplomacy\Relations.cpp">
       <Filter>Vic2World\Diplomacy</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\CountryName\CountryNameMappingFactory.cpp">
+      <Filter>Mappers\CountryName</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\CountryName\CountryNameMapper.cpp">
+      <Filter>Mappers\CountryName</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\CountryName\CountryNameMapperFactory.cpp">
+      <Filter>Mappers\CountryName</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2183,6 +2195,18 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Technology\TechnologyFactory.h">
       <Filter>Vic2World\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\CountryName\CountryNameMapping.h">
+      <Filter>Mappers\CountryName</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\CountryName\CountryNameMappingFactory.h">
+      <Filter>Mappers\CountryName</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\CountryName\CountryNameMapper.h">
+      <Filter>Mappers\CountryName</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\CountryName\CountryNameMapperFactory.h">
+      <Filter>Mappers\CountryName</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -18575,7 +18599,6 @@
     <CopyFileToFolders Include="Data_Files\languageReplacements.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\version.txt" />
     <CopyFileToFolders Include="Data_Files\Fronter\configuration_l_english.yml">
       <Filter>Data Files\Fronter</Filter>
     </CopyFileToFolders>
@@ -18645,11 +18668,19 @@
     <CopyFileToFolders Include="Data_Files\Sounds\CultureToVoiceMappings.txt">
       <Filter>Data Files\Sounds</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\HoI4CountryLeaders.txt" />
     <CopyFileToFolders Include="Data_Files\Historical Project Mod 0.4.6_province_mappings.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\The Concert of Europe_province_mappings.txt" />
+    <CopyFileToFolders Include="Data_Files\Configurables\CountryNamesMappings.txt" />
+    <CopyFileToFolders Include="Data_Files\The Concert of Europe_province_mappings.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\version.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Configurables\HoI4CountryLeaders.txt">
+      <Filter>Data Files</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
