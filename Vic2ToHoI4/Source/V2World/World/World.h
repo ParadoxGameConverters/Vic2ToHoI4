@@ -4,15 +4,15 @@
 
 
 #include "Configuration.h"
-#include "Countries/Country.h"
-#include "Diplomacy/Diplomacy.h"
-#include "Localisations/Vic2Localisations.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
-#include "Mods/Mod.h"
 #include "Parser.h"
-#include "Provinces/Province.h"
-#include "States/StateDefinitions.h"
-#include "Wars/War.h"
+#include "V2World/Countries/Country.h"
+#include "V2World/Diplomacy/Diplomacy.h"
+#include "V2World/Localisations/Vic2Localisations.h"
+#include "V2World/Mods/Mod.h"
+#include "V2World/Provinces/Province.h"
+#include "V2World/States/StateDefinitions.h"
+#include "V2World/Wars/War.h"
 #include <map>
 #include <memory>
 #include <optional>

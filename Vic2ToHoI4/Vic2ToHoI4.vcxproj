@@ -423,12 +423,12 @@
     <ClCompile Include="Source\V2World\Technology\InventionsFactory.cpp" />
     <ClCompile Include="Source\V2World\Technology\TechnologyFactory.cpp" />
     <ClCompile Include="Source\V2World\Wars\WarFactory.cpp" />
+    <ClCompile Include="Source\V2World\World\World.cpp" />
     <ClCompile Include="Source\Vic2toHOI4Converter.cpp" />
     <ClCompile Include="Source\V2World\Issues\IssueHelper.cpp" />
     <ClCompile Include="Source\V2World\Issues\Issues.cpp" />
     <ClCompile Include="Source\V2World\Issues\IssueCategoryHelper.cpp" />
     <ClCompile Include="Source\V2World\Wars\WarGoalFactory.cpp" />
-    <ClCompile Include="Source\V2World\World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\bitmap\bitmap_image.hpp" />
@@ -786,7 +786,7 @@
     <ClInclude Include="Source\V2World\Wars\WarBuilder.h" />
     <ClInclude Include="Source\V2World\Wars\WarFactory.h" />
     <ClInclude Include="Source\V2World\Wars\WarGoalFactory.h" />
-    <ClInclude Include="Source\V2World\World.h" />
+    <ClInclude Include="Source\V2World\World\World.h" />
     <ClInclude Include="Source\Vic2ToHoI4Converter.h" />
   </ItemGroup>
   <ItemGroup>

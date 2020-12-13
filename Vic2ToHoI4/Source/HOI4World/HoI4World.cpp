@@ -39,7 +39,7 @@
 #include "V2World/Diplomacy/Agreement.h"
 #include "V2World/Diplomacy/Diplomacy.h"
 #include "V2World/Localisations/Vic2Localisations.h"
-#include "V2World/World.h"
+#include "V2World/World/World.h"
 #include "WarCreator/HoI4WarCreator.h"
 using namespace std;
 
@@ -273,8 +273,7 @@ void HoI4::World::convertCountryNames(const Vic2::Localisations& vic2Localisatio
 			 ideologies->getMajorIdeologies(),
 			 vic2Localisations,
 			 *articleRules);
-		hoi4Localisations->updateMainCountryLocalisation(
-			 tag + "_" + country->getGovernmentIdeology(),
+		hoi4Localisations->updateMainCountryLocalisation(tag + "_" + country->getGovernmentIdeology(),
 			 country->getOldTag(),
 			 country->getOldGovernment(),
 			 vic2Localisations,

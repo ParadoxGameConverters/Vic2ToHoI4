@@ -4,7 +4,7 @@
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "OSCompatibilityLayer.h"
 #include "OutHoi4/OutMod.h"
-#include "V2World/World.h"
+#include "V2World/World/World.h"
 #include <stdexcept>
 
 

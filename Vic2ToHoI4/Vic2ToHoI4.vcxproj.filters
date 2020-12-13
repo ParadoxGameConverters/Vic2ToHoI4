@@ -244,6 +244,9 @@
     <Filter Include="Mappers\CountryName">
       <UniqueIdentifier>{76ad801f-4c9b-4181-a1f3-33046c5e899b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2World\World">
+      <UniqueIdentifier>{c026cd55-26ff-471b-8b8a-dcdff03b7ddf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -286,9 +289,6 @@
     </ClCompile>
     <ClCompile Include="Source\Mappers\MergeRules.cpp">
       <Filter>Mappers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\V2World\World.cpp">
-      <Filter>Vic2World</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\OnActions.cpp">
       <Filter>HoI4World</Filter>
@@ -1141,6 +1141,9 @@
     <ClCompile Include="Source\Mappers\CountryName\CountryNameMapperFactory.cpp">
       <Filter>Mappers\CountryName</Filter>
     </ClCompile>
+    <ClCompile Include="Source\V2World\World\World.cpp">
+      <Filter>Vic2World\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1183,9 +1186,6 @@
     </ClInclude>
     <ClInclude Include="Source\Mappers\MergeRules.h">
       <Filter>Mappers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\V2World\World.h">
-      <Filter>Vic2World</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\OnActions.h">
       <Filter>HoI4World</Filter>
@@ -2207,6 +2207,9 @@
     </ClInclude>
     <ClInclude Include="Source\Mappers\CountryName\CountryNameMapperFactory.h">
       <Filter>Mappers\CountryName</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\World\World.h">
+      <Filter>Vic2World\World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

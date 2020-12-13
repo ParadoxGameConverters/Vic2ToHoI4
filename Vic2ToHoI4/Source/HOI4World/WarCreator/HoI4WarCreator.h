@@ -8,7 +8,7 @@
 #include "HOI4World/HoI4World.h"
 #include "HOI4World/Map/MapData.h"
 #include "HOI4World/ProvinceDefinitions.h"
-#include "V2World/World.h"
+#include "V2World/World/World.h"
 #include <fstream>
 #include <map>
 #include <optional>
