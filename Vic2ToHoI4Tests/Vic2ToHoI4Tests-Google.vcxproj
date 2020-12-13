@@ -336,6 +336,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Wars\WarGoalFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\World\World.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\World\WorldFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Vic2toHOI4Converter.cpp" />
     <ClCompile Include="ConfigurationTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Decisions\DecisionsCategoriesTests.cpp" />
