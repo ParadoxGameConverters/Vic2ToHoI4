@@ -30,7 +30,7 @@ constexpr int AIRBASES_FOR_INFRASTRUCTURE_LEVEL = 6;
 
 
 
-HoI4::States::States(const Vic2::World* sourceWorld,
+HoI4::States::States(const Vic2::World& sourceWorld,
 	 const CountryMapper& countryMap,
 	 const std::map<int, Province>& theProvinces,
 	 const CoastalProvinces& theCoastalProvinces,
@@ -58,9 +58,9 @@ HoI4::States::States(const Vic2::World* sourceWorld,
 
 	const ImpassableProvinces theImpassableProvinces(defaultStates);
 
-	determineOwnersAndCores(countryMap, *sourceWorld, provinceDefinitions, provinceMapper);
-	createStates(sourceWorld->getCountries(),
-		 sourceWorld->getProvinces(),
+	determineOwnersAndCores(countryMap, sourceWorld, provinceDefinitions, provinceMapper);
+	createStates(sourceWorld.getCountries(),
+		 sourceWorld.getProvinces(),
 		 theProvinces,
 		 theImpassableProvinces,
 		 countryMap,

@@ -62,7 +62,7 @@ namespace HoI4
 class World: commonItems::parser
 {
   public:
-	explicit World(const Vic2::World* sourceWorld,
+	explicit World(const Vic2::World& sourceWorld,
 		 const mappers::ProvinceMapper& provinceMapper,
 		 const Configuration& theConfiguration);
 	~World() = default;
@@ -114,7 +114,7 @@ class World: commonItems::parser
 	World(const World&) = delete;
 	World& operator=(const World&) = delete;
 
-	void convertCountries();
+	void convertCountries(const Vic2::World& sourceWorld);
 	void convertCountry(const std::string& oldTag,
 		 const Vic2::Country& oldCountry,
 		 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper);
@@ -122,7 +122,7 @@ class World: commonItems::parser
 	void importLeaderTraits();
 	void importIdeologicalMinisters();
 
-	void convertGovernments(const Vic2::Localisations& vic2Localisations, bool debug);
+	void convertGovernments(const Vic2::World& sourceWorld, const Vic2::Localisations& vic2Localisations, bool debug);
 	void convertCountryNames(const Vic2::Localisations& vic2Localisations);
 
 	void convertParties(const Vic2::Localisations& vic2Localisations);
@@ -145,8 +145,8 @@ class World: commonItems::parser
 	void calculateIndustryInCountries();
 	void reportIndustryLevels() const;
 
-	void convertDiplomacy();
-	void convertAgreements();
+	void convertDiplomacy(const Vic2::World& sourceWorld);
+	void convertAgreements(const Vic2::World& sourceWorld);
 
 	void convertTechs();
 
@@ -162,7 +162,7 @@ class World: commonItems::parser
 		 const mappers::ProvinceMapper& provinceMapper);
 	void convertAirforces(const UnitMappings& unitMap);
 
-	void determineGreatPowers();
+	void determineGreatPowers(const Vic2::World& sourceWorld);
 
 	void setupNavalTreaty();
 
@@ -191,8 +191,6 @@ class World: commonItems::parser
 	governmentMapper governmentMap;
 	CountryMapper countryMap;
 	std::unique_ptr<mappers::CountryNameMapper> countryNameMapper;
-
-	const Vic2::World* sourceWorld = nullptr;
 
 	std::unique_ptr<States> states;
 
