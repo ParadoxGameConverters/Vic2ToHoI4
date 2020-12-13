@@ -72,7 +72,7 @@ TEST(HoI4World_Leaders_CountryLeaderFactoryTests, IdeologyDefaultsToNeutralConse
 	std::stringstream input;
 	const auto leader = HoI4::CountryLeader::Factory{}.importCountryLeader(input);
 
-	ASSERT_EQ("conservatism_neutral", leader->getIdeology());
+	ASSERT_EQ("anarchism", leader->getIdeology());
 }
 
 
