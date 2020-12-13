@@ -5,6 +5,7 @@
 # This will ensure the rule is applied only to the matching country, allowing for customizations.
 #
 # The rules are scanned in order, and the first matching rule is the one that is applied.
+# Only one of each item is valid within a rule. To have multiple matches, make multiple rules.
 
 
 name_mapping = { vic2_gov = democracy hoi4_ideology = democratic }
