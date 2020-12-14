@@ -70,6 +70,23 @@ void Vic2::Country::determineEmployedWorkers()
 }
 
 
+void Vic2::Country::setStateLanguageCategories(const StateLanguageCategories& stateLanguageCategories)
+{
+	for (auto& state: states)
+	{
+		const auto category = stateLanguageCategories.getStateCategory(state.getStateID());
+		if (category)
+		{
+			state.setLanguageCategory(*category);
+		}
+		else
+		{
+			Log(LogLevel::Warning) << state.getStateID() << " was not in any language category.";
+		}
+	}
+}
+
+
 void Vic2::Country::setLocalisationNames(Localisations& vic2Localisations)
 {
 	if (!domainName.empty())

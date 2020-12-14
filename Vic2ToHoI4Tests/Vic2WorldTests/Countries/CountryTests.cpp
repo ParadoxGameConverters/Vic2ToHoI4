@@ -201,7 +201,7 @@ TEST(Vic2World_Countries_CountryTests, HasLandWhenGivenProvinces)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
-	country->addProvince(std::make_pair(1, std::make_shared<Vic2::Province>()));
+	country->addProvince(1, std::make_shared<Vic2::Province>());
 
 	ASSERT_TRUE(country->hasLand());
 }
@@ -238,7 +238,7 @@ TEST(Vic2World_Countries_CountryTests, IsNotEmptyWhenGivenProvinces)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
-	country->addProvince(std::make_pair(1, std::make_shared<Vic2::Province>()));
+	country->addProvince(1, std::make_shared<Vic2::Province>());
 
 	ASSERT_FALSE(country->isEmpty());
 }
@@ -428,12 +428,12 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromLargestCulture)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
-	country->addProvince(std::make_pair(1,
+	country->addProvince(1,
 		 Vic2::Province::Builder{}
 			  .setNumber(1)
 			  .setPops({*Vic2::Pop::Builder{}.setSize(7).setCulture("test_primary").build(),
 					*Vic2::Pop::Builder{}.setSize(5).setCulture("test_secondary").build()})
-			  .build()));
+			  .build());
 
 	country->handleMissingCulture(*Vic2::CultureGroups::Factory{}.getCultureGroups(
 		 *Configuration::Builder{}.setVic2Path("./countryTests/").build()));
@@ -536,12 +536,12 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupCanBeSetFromLargestCul
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
-	country->addProvince(std::make_pair(1,
+	country->addProvince(1,
 		 Vic2::Province::Builder{}
 			  .setNumber(1)
 			  .setPops({*Vic2::Pop::Builder{}.setSize(7).setCulture("test_primary").build(),
 					*Vic2::Pop::Builder{}.setSize(5).setCulture("test_secondary").build()})
-			  .build()));
+			  .build());
 
 	country->handleMissingCulture(*Vic2::CultureGroups::Factory{}.getCultureGroups(
 		 *Configuration::Builder{}.setVic2Path("./countryTests/").build()));
@@ -2103,16 +2103,16 @@ TEST(Vic2World_Countries_CountryTests, EmployedWorkersComeFromStates)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
-	country->addProvince(std::make_pair(1,
+	country->addProvince(1,
 		 Vic2::Province::Builder{}
 			  .setNumber(1)
 			  .setPops({*Vic2::Pop::Builder{}.setType("craftsmen").setSize(5).build()})
-			  .build()));
-	country->addProvince(std::make_pair(2,
+			  .build());
+	country->addProvince(2,
 		 Vic2::Province::Builder{}
 			  .setNumber(2)
 			  .setPops({*Vic2::Pop::Builder{}.setType("craftsmen").setSize(7).build()})
-			  .build()));
+			  .build());
 	country->putProvincesInStates();
 	country->determineEmployedWorkers();
 
@@ -2151,11 +2151,11 @@ TEST(Vic2World_Countries_CountryTests, IssueSupportComesFromProvinces)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
-	country->addProvince(std::make_pair(1,
+	country->addProvince(1,
 		 Vic2::Province::Builder{}
 			  .setNumber(1)
 			  .setPops({*Vic2::Pop::Builder{}.setIssues({std::make_pair("test_issue", 0.5F)}).setSize(5).build()})
-			  .build()));
+			  .build());
 
 	ASSERT_EQ(0.5, country->getAverageIssueSupport("test_issue"));
 }
@@ -2431,8 +2431,8 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsProvinces)
 
 	std::shared_ptr<Vic2::Province> provinceOne = Vic2::Province::Builder{}.setNumber(1).setOwner({"TWO"}).build();
 	std::shared_ptr<Vic2::Province> provinceTwo = Vic2::Province::Builder{}.setNumber(2).setOwner({"TWO"}).build();
-	countryTwo->addProvince(std::make_pair(1, provinceOne));
-	countryTwo->addProvince(std::make_pair(2, provinceTwo));
+	countryTwo->addProvince(1, provinceOne);
+	countryTwo->addProvince(2, provinceTwo);
 
 	ASSERT_FALSE(country->hasLand());
 	country->eatCountry(*countryTwo, false);
@@ -2636,7 +2636,7 @@ TEST(Vic2World_Countries_CountryTests, ProvincesCanBePlacedInStates)
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 	std::shared_ptr<Vic2::Province> provinceOne = Vic2::Province::Builder{}.setNumber(1).build();
-	country->addProvince(std::make_pair(1, provinceOne));
+	country->addProvince(1, provinceOne);
 	country->putProvincesInStates();
 
 	ASSERT_THAT(country->getStates()[0].getProvinces(), testing::UnorderedElementsAre(provinceOne));

@@ -16,6 +16,7 @@
 #include "V2World/Politics/Party.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/States/State.h"
+#include "V2World/States/StateLanguageCategories.h"
 #include "V2World/Wars/War.h"
 #include <cstdint>
 #include <map>
@@ -37,7 +38,10 @@ class Country
 	class Factory;
 
 	// functions to construct the country
-	void addProvince(const std::pair<const int, std::shared_ptr<Province>>& province) { provinces.insert(province); }
+	void addProvince(int provinceNum, const std::shared_ptr<Province>& province)
+	{
+		provinces.insert(std::make_pair(provinceNum, province));
+	}
 	void addCore(std::shared_ptr<Province> core) { cores.push_back(std::move(core)); }
 	void replaceCores(std::vector<std::shared_ptr<Province>> newCores) { cores.swap(newCores); }
 	void addWar(const War& theWar) { wars.push_back(theWar); }
@@ -50,6 +54,7 @@ class Country
 	void eatCountry(Country& target, bool debug);
 	void putProvincesInStates();
 	void determineEmployedWorkers();
+	void setStateLanguageCategories(const StateLanguageCategories& stateLanguageCategories);
 	void setLocalisationNames(Localisations& vic2Localisations);
 	void setLocalisationAdjectives(const Localisations& vic2Localisations);
 	void handleMissingCulture(const CultureGroups& theCultureGroups);

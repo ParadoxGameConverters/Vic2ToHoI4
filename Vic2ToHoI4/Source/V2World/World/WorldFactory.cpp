@@ -5,10 +5,10 @@
 #include "V2World/Countries/CommonCountriesDataFactory.h"
 #include "V2World/Culture/CultureGroupsFactory.h"
 #include "V2World/Issues/IssuesFactory.h"
+#include "V2World/Localisations/LocalisationsFactory.h"
 #include "V2World/Pops/PopFactory.h"
 #include "V2World/States/StateDefinitionsFactory.h"
 #include "V2World/States/StateLanguageCategoriesFactory.h"
-#include "V2World/Localisations/LocalisationsFactory.h"
 
 
 
@@ -16,13 +16,12 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration)
 {
 	theCultureGroups = CultureGroups::Factory{}.getCultureGroups(theConfiguration);
 	theIssues = Issues::Factory{}.getIssues(theConfiguration.getVic2Path());
-	auto popFactory = std::make_unique<Pop::Factory>(*theIssues);
-	provinceFactory = std::make_unique<Province::Factory>(std::move(popFactory));
+	provinceFactory = std::make_unique<Province::Factory>(std::make_unique<Pop::Factory>(*theIssues));
 	diplomacyFactory = std::make_unique<Diplomacy::Factory>();
 	theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
 	countryFactory = std::make_unique<Country::Factory>(theConfiguration, *theStateDefinitions, theCultureGroups);
 
-	const auto [commonCountriesData_, allParties_] = Vic2::importCommonCountriesData(theConfiguration);
+	const auto [commonCountriesData_, allParties_] = importCommonCountriesData(theConfiguration);
 	commonCountriesData = commonCountriesData_;
 	allParties = allParties_;
 
@@ -31,8 +30,7 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration)
 		Log(LogLevel::Info) << "The date is " << theDate;
 	});
 	registerKeyword("great_nations", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::intList indexList(theStream);
-		GPIndexes = indexList.getInts();
+		greatPowerIndexes = commonItems::intList{theStream}.getInts();
 	});
 	registerRegex(R"(\d+)", [this](const std::string& provinceID, std::istream& theStream) {
 		try
@@ -43,6 +41,7 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration)
 		catch (std::exception&)
 		{
 			Log(LogLevel::Warning) << "Invalid province number " << provinceID;
+			commonItems::ignoreItem(provinceID, theStream);
 		}
 	});
 	registerRegex("[A-Z][A-Z0-9]{2}", [this](const std::string& countryTag, std::istream& theStream) {
@@ -53,6 +52,11 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration)
 				 countryFactory->createCountry(countryTag, theStream, commonCountryData->second, allParties)));
 			tagsInOrder.push_back(countryTag);
 		}
+		else
+		{
+			Log(LogLevel::Warning) << "Invalid tag " << countryTag;
+			commonItems::ignoreItem(countryTag, theStream);
+		}
 	});
 	registerKeyword("diplomacy", [this](const std::string& unused, std::istream& theStream) {
 		world->diplomacy = diplomacyFactory->getDiplomacy(theStream);
@@ -60,7 +64,6 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration)
 	registerKeyword("active_war", [this](const std::string& unused, std::istream& theStream) {
 		wars.push_back(*warFactory.getWar(theStream));
 	});
-
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
@@ -70,11 +73,13 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 {
 	Log(LogLevel::Progress) << "15%";
 	Log(LogLevel::Info) << "*** Importing V2 save ***";
-	GPIndexes.clear();
+
+	greatPowerIndexes.clear();
 	tagsInOrder.clear();
-	tagsInOrder.push_back(""); // REB (first country is index 1)
+	tagsInOrder.emplace_back(""); // REB (first country is index 1)
 	wars.clear();
-	world = std::make_unique<Vic2::World>();
+
+	world = std::make_unique<World>();
 	world->theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
 	world->theLocalisations = Localisations::Factory{}.importLocalisations(theConfiguration);
 	parseFile(theConfiguration.getInputFile());
@@ -86,7 +91,7 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 
 	Log(LogLevel::Progress) << "21%";
 	Log(LogLevel::Info) << "Building Vic2 world";
-	setGreatPowerStatus(GPIndexes, tagsInOrder);
+	setGreatPowerStatus();
 	setProvinceOwners();
 	addProvinceCoreInfoToCountries();
 	if (theConfiguration.getRemoveCores())
@@ -98,7 +103,6 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	removeEmptyNations();
 	addWarsToCountries(wars);
 	setLocalisations(*world->theLocalisations);
-
 	checkAllProvincesMapped(provinceMapper);
 	consolidateConquerStrategies();
 
@@ -106,12 +110,17 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 }
 
 
-void Vic2::World::Factory::setGreatPowerStatus(const std::vector<int>& GPIndexes,
-	 const std::vector<std::string>& tagsInOrder)
+void Vic2::World::Factory::setGreatPowerStatus()
 {
 	Log(LogLevel::Info) << "\tSetting Great Power statuses";
-	for (auto index: GPIndexes)
+	for (auto index: greatPowerIndexes)
 	{
+		if (index >= static_cast<int>(tagsInOrder.size()))
+		{
+			Log(LogLevel::Warning) << "Great power did not match an existing country!";
+			continue;
+		}
+
 		const auto& tag = tagsInOrder.at(index);
 		world->greatPowers.push_back(tag);
 	}
@@ -121,21 +130,21 @@ void Vic2::World::Factory::setGreatPowerStatus(const std::vector<int>& GPIndexes
 void Vic2::World::Factory::setProvinceOwners()
 {
 	Log(LogLevel::Info) << "\tAssigning province owners";
-	for (auto province: world->provinces)
+	for (auto& [provinceNum, province]: world->provinces)
 	{
-		if (province.second->getOwner() == "")
+		if (province->getOwner().empty())
 		{
 			continue;
 		}
 
-		if (auto country = world->countries.find(province.second->getOwner()); country != world->countries.end())
+		if (auto country = world->countries.find(province->getOwner()); country != world->countries.end())
 		{
-			country->second->addProvince(province);
-			province.second->setOwner(country->first);
+			country->second->addProvince(provinceNum, province);
+			province->setOwner(country->first);
 		}
 		else
 		{
-			Log(LogLevel::Warning) << "Trying to set " << province.second->getOwner() << " as owner of " << province.first
+			Log(LogLevel::Warning) << "Trying to set " << province->getOwner() << " as owner of " << provinceNum
 										  << ", but country does not exist.";
 		}
 	}
@@ -151,15 +160,15 @@ void Vic2::World::Factory::setProvinceOwners()
 void Vic2::World::Factory::addProvinceCoreInfoToCountries()
 {
 	Log(LogLevel::Info) << "\tAssigning cores to countries";
-	for (const auto& province: world->provinces)
+	for (const auto& [unused, province]: world->provinces)
 	{
-		auto provinceCores = province.second->getCores();
+		auto provinceCores = province->getCores();
 		for (const auto& coreCountryString: provinceCores)
 		{
 			auto coreCountry = world->countries.find(coreCountryString);
 			if (coreCountry != world->countries.end())
 			{
-				coreCountry->second->addCore(province.second);
+				coreCountry->second->addCore(province);
 			}
 		}
 	}
@@ -177,7 +186,7 @@ void Vic2::World::Factory::removeSimpleLandlessNations()
 		}
 
 		std::vector<std::shared_ptr<Province>> coresToKeep;
-		for (auto core: country->getCores())
+		for (auto& core: country->getCores())
 		{
 			if (shouldCoreBeRemoved(*core, *country))
 			{
@@ -198,6 +207,7 @@ void Vic2::World::Factory::removeSimpleLandlessNations()
 }
 
 
+constexpr double ACCEPTED_CULTURE_THRESHOLD = 0.25;
 bool Vic2::World::Factory::shouldCoreBeRemoved(const Province& core, const Country& country) const
 {
 	if (core.getOwner().empty())
@@ -206,26 +216,9 @@ bool Vic2::World::Factory::shouldCoreBeRemoved(const Province& core, const Count
 	}
 
 	const auto owner = world->countries.find(core.getOwner());
-	if (owner == world->countries.end())
-	{
-		return true;
-	}
-	else if (country.getPrimaryCulture() == owner->second->getPrimaryCulture())
-	{
-		return true;
-	}
-	else if (owner->second->isAnAcceptedCulture(owner->second->getPrimaryCulture()))
-	{
-		return true;
-	}
-	else if (core.getPercentageWithCultures(country.getAcceptedCultures()) < 0.25)
-	{
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+	return (owner == world->countries.end()) || (country.getPrimaryCulture() == owner->second->getPrimaryCulture()) ||
+			 owner->second->isAnAcceptedCulture(owner->second->getPrimaryCulture()) ||
+			 (core.getPercentageWithCultures(country.getAcceptedCultures()) < ACCEPTED_CULTURE_THRESHOLD);
 }
 
 
@@ -295,9 +288,9 @@ void Vic2::World::Factory::overallMergeNations(bool debug)
 {
 	Log(LogLevel::Info) << "\tMerging nations";
 	const MergeRules theMergeRules;
-	for (const auto& rule: theMergeRules.getRules())
+	for (const auto& [master, slaves]: theMergeRules.getRules())
 	{
-		mergeNations(rule.first, rule.second, debug);
+		mergeNations(master, slaves, debug);
 	}
 }
 
@@ -323,7 +316,7 @@ void Vic2::World::Factory::mergeNations(const std::string& masterTag,
 void Vic2::World::Factory::setLocalisations(Localisations& vic2Localisations)
 {
 	Log(LogLevel::Info) << "\tSetting localisations";
-	checkStateCategories();
+	setStateLanguageCategories();
 	for (auto& [unused, country]: world->countries)
 	{
 		country->setLocalisationNames(vic2Localisations);
@@ -332,23 +325,12 @@ void Vic2::World::Factory::setLocalisations(Localisations& vic2Localisations)
 }
 
 
-void Vic2::World::Factory::checkStateCategories()
+void Vic2::World::Factory::setStateLanguageCategories()
 {
 	const auto stateLanguageCategories = StateLanguageCategories::Factory{}.getCategories();
 	for (auto& [unused, country]: world->countries)
 	{
-		for (auto& state: country->getModifiableStates())
-		{
-			const auto category = stateLanguageCategories->getStateCategory(state.getStateID());
-			if (category)
-			{
-				state.setLanguageCategory(*category);
-			}
-			else
-			{
-				Log(LogLevel::Warning) << state.getStateID() << " was not in any language category.";
-			}
-		}
+		country->setStateLanguageCategories(*stateLanguageCategories);
 	}
 }
 
@@ -356,12 +338,12 @@ void Vic2::World::Factory::checkStateCategories()
 void Vic2::World::Factory::checkAllProvincesMapped(const mappers::ProvinceMapper& provinceMapper) const
 {
 	Log(LogLevel::Info) << "\tChecking all provinces are mapped";
-	for (const auto& province: world->provinces)
+	for (const auto& [provinceNum, unused]: world->provinces)
 	{
-		const auto mapping = provinceMapper.getVic2ToHoI4ProvinceMapping(province.first);
+		const auto mapping = provinceMapper.getVic2ToHoI4ProvinceMapping(provinceNum);
 		if (!mapping)
 		{
-			Log(LogLevel::Warning) << "No mapping for Vic2 province " << province.first;
+			Log(LogLevel::Warning) << "No mapping for Vic2 province " << provinceNum;
 		}
 	}
 }
