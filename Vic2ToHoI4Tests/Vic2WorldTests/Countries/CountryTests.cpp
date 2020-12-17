@@ -8,6 +8,7 @@
 #include "V2World/Pops/PopBuilder.h"
 #include "V2World/Provinces/ProvinceBuilder.h"
 #include "V2World/States/StateDefinitionsBuilder.h"
+#include "V2World/States/StateLanguageCategoriesBuilder.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 #include <sstream>
@@ -143,30 +144,6 @@ TEST(Vic2World_Countries_CountryTests, StatesCanBeImported)
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
 
 	ASSERT_EQ(1, country->getStates().size());
-}
-
-
-TEST(Vic2World_Countries_CountryTests, StatesCanBeModified)
-{
-	std::stringstream theStream;
-	theStream << "= {\n";
-	theStream << "\truling_party = 1\n";
-	theStream << "\tstate = {\n";
-	theStream << "\t}\n";
-	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
-		 *Vic2::StateDefinitions::Builder{}.build(),
-		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-							 .createCountry("TAG",
-								  theStream,
-								  *Vic2::CommonCountryData::Builder{}.Build(),
-								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
-	auto& states = country->getModifiableStates();
-	ASSERT_EQ(1, states.size());
-	states[0].setOwner("TAG");
-
-	ASSERT_EQ(1, country->getStates().size());
-	ASSERT_EQ("TAG", country->getStates()[0].getOwner());
 }
 
 
@@ -432,6 +409,34 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromLargestCulture)
 		 Vic2::Province::Builder{}
 			  .setNumber(1)
 			  .setPops({*Vic2::Pop::Builder{}.setSize(7).setCulture("test_primary").build(),
+					*Vic2::Pop::Builder{}.setSize(5).setCulture("test_secondary").build()})
+			  .build());
+
+	country->handleMissingCulture(*Vic2::CultureGroups::Factory{}.getCultureGroups(
+		 *Configuration::Builder{}.setVic2Path("./countryTests/").build()));
+
+	ASSERT_EQ("test_primary", country->getPrimaryCulture());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromMultiplePopsAddingToLargestCulture)
+{
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "}";
+	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countryTests/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+							 .createCountry("TAG",
+								  theStream,
+								  *Vic2::CommonCountryData::Builder{}.Build(),
+								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+	country->addProvince(1,
+		 Vic2::Province::Builder{}
+			  .setNumber(1)
+			  .setPops({*Vic2::Pop::Builder{}.setSize(3).setCulture("test_primary").build(),
+					*Vic2::Pop::Builder{}.setSize(4).setCulture("test_primary").build(),
 					*Vic2::Pop::Builder{}.setSize(5).setCulture("test_secondary").build()})
 			  .build());
 
@@ -2117,6 +2122,57 @@ TEST(Vic2World_Countries_CountryTests, EmployedWorkersComeFromStates)
 	country->determineEmployedWorkers();
 
 	ASSERT_EQ(12, country->getEmployedWorkers());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, StateCategoriesCanBeSet)
+{
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "\tstate = {\n";
+	theStream << "\t\tprovinces = { 42 }\n";
+	theStream << "\t}\n";
+	theStream << "}";
+	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.setProvinceToIDMap({{42, "TEST_STATE"}}).build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+							 .createCountry("TAG",
+								  theStream,
+								  *Vic2::CommonCountryData::Builder{}.Build(),
+								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+	country->setStateLanguageCategories(
+		 *Vic2::StateLanguageCategories::Builder{}.setCategories({{"TEST_STATE", "TEST_CATEGORY"}}).build());
+
+	ASSERT_EQ(1, country->getStates().size());
+	ASSERT_EQ("TEST_CATEGORY", country->getStates()[0].getLanguageCategory());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, StateCategoriesLoggedWhenNotSet)
+{
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "\tstate = {\n";
+	theStream << "\t\tprovinces = { 42 }\n";
+	theStream << "\t}\n";
+	theStream << "}";
+	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.setProvinceToIDMap({{42, "TEST_STATE"}}).build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+							 .createCountry("TAG",
+								  theStream,
+								  *Vic2::CommonCountryData::Builder{}.Build(),
+								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()});
+
+	std::stringstream log;
+	auto* stdOutBuf = std::cout.rdbuf();
+	std::cout.rdbuf(log.rdbuf());
+	country->setStateLanguageCategories(*Vic2::StateLanguageCategories::Builder{}.build());
+	std::cout.rdbuf(stdOutBuf);
+
+	ASSERT_EQ(" [WARNING] TEST_STATE was not in any language category.\n", log.str());
 }
 
 

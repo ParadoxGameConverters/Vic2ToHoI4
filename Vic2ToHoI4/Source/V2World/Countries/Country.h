@@ -59,8 +59,6 @@ class Country
 	void setLocalisationAdjectives(const Localisations& vic2Localisations);
 	void handleMissingCulture(const CultureGroups& theCultureGroups);
 
-	[[nodiscard]] auto& getModifiableStates() { return states; }
-
 	// functions to look up aspects of the country
 	[[nodiscard]] const auto& getTag() const { return tag; }
 	[[nodiscard]] const auto& getColor() const { return color; }
