@@ -20,6 +20,7 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration)
 	diplomacyFactory = std::make_unique<Diplomacy::Factory>();
 	theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
 	countryFactory = std::make_unique<Country::Factory>(theConfiguration, *theStateDefinitions, theCultureGroups);
+	stateLanguageCategories = StateLanguageCategories::Factory{}.getCategories();
 
 	const auto [commonCountriesData_, allParties_] = importCommonCountriesData(theConfiguration);
 	commonCountriesData = commonCountriesData_;
@@ -41,7 +42,11 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration)
 			 commonCountryData != commonCountriesData.end())
 		{
 			world->countries.insert(std::make_pair(countryTag,
-				 countryFactory->createCountry(countryTag, theStream, commonCountryData->second, allParties)));
+				 countryFactory->createCountry(countryTag,
+					  theStream,
+					  commonCountryData->second,
+					  allParties,
+					  *stateLanguageCategories)));
 			tagsInOrder.push_back(countryTag);
 		}
 		else
@@ -312,21 +317,10 @@ void Vic2::World::Factory::mergeNations(const std::string& masterTag,
 void Vic2::World::Factory::setLocalisations(Localisations& vic2Localisations)
 {
 	Log(LogLevel::Info) << "\tSetting localisations";
-	setStateLanguageCategories();
 	for (auto& [unused, country]: world->countries)
 	{
 		country->setLocalisationNames(vic2Localisations);
 		country->setLocalisationAdjectives(vic2Localisations);
-	}
-}
-
-
-void Vic2::World::Factory::setStateLanguageCategories()
-{
-	const auto stateLanguageCategories = StateLanguageCategories::Factory{}.getCategories();
-	for (auto& [unused, country]: world->countries)
-	{
-		country->setStateLanguageCategories(*stateLanguageCategories);
 	}
 }
 

@@ -29,7 +29,6 @@ class World::Factory: commonItems::parser
 
   private:
 	void setLocalisations(Localisations& vic2Localisations);
-	void setStateLanguageCategories();
 	void setGreatPowerStatus();
 	void setProvinceOwners();
 	void addProvinceCoreInfoToCountries();
@@ -44,7 +43,7 @@ class World::Factory: commonItems::parser
 	void consolidateConquerStrategies();
 
 	std::unique_ptr<World> world;
-	
+
 	std::vector<int> greatPowerIndexes;
 	std::vector<std::string> tagsInOrder;
 	std::vector<War> wars;
@@ -55,6 +54,7 @@ class World::Factory: commonItems::parser
 	War::Factory warFactory;
 	std::unique_ptr<StateDefinitions> theStateDefinitions;
 	std::unique_ptr<Country::Factory> countryFactory;
+	std::unique_ptr<StateLanguageCategories> stateLanguageCategories;
 	std::unique_ptr<Diplomacy::Factory> diplomacyFactory;
 	std::map<std::string, CommonCountryData> commonCountriesData;
 	std::vector<Party> allParties;

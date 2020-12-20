@@ -54,7 +54,6 @@ class Country
 	void eatCountry(Country& target, bool debug);
 	void putProvincesInStates();
 	void determineEmployedWorkers();
-	void setStateLanguageCategories(const StateLanguageCategories& stateLanguageCategories);
 	void setLocalisationNames(Localisations& vic2Localisations);
 	void setLocalisationAdjectives(const Localisations& vic2Localisations);
 	void handleMissingCulture(const CultureGroups& theCultureGroups);

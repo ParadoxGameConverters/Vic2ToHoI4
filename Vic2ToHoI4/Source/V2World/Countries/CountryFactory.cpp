@@ -148,7 +148,8 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::string& theTag,
 	 std::istream& theStream,
 	 const CommonCountryData& commonCountryData,
-	 const std::vector<Party>& allParties)
+	 const std::vector<Party>& allParties,
+	 const StateLanguageCategories& stateLanguageCategories)
 {
 	country = std::make_unique<Country>();
 	country->tag = theTag;
@@ -164,6 +165,8 @@ std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::
 		std::stringstream input;
 		country->vic2AI = std::make_unique<Vic2AI>(input);
 	}
+
+	setStateLanguageCategories(stateLanguageCategories);
 
 	return std::move(country);
 }
@@ -233,4 +236,21 @@ void Vic2::Country::Factory::limitCommanders()
 	country->leaders.clear();
 	std::move(generals.begin(), generals.end(), std::back_inserter(country->leaders));
 	std::move(admirals.begin(), admirals.end(), std::back_inserter(country->leaders));
+}
+
+
+void Vic2::Country::Factory::setStateLanguageCategories(const StateLanguageCategories& stateLanguageCategories)
+{
+	for (auto& state: country->states)
+	{
+		const auto category = stateLanguageCategories.getStateCategory(state.getStateID());
+		if (category)
+		{
+			state.setLanguageCategory(*category);
+		}
+		else
+		{
+			Log(LogLevel::Warning) << state.getStateID() << " was not in any language category.";
+		}
+	}
 }
