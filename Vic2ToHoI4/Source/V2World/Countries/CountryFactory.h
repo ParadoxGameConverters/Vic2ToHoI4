@@ -12,6 +12,7 @@
 #include "V2World/Military/ArmyFactory.h"
 #include "V2World/Military/Leaders/LeaderFactory.h"
 #include "V2World/States/StateFactory.h"
+#include "V2World/States/StateLanguageCategories.h"
 #include "V2World/Technology/Inventions.h"
 #include "V2World/Technology/TechnologyFactory.h"
 #include <memory>
@@ -30,11 +31,13 @@ class Country::Factory: commonItems::parser
 	std::unique_ptr<Country> createCountry(const std::string& theTag,
 		 std::istream& theStream,
 		 const CommonCountryData& commonCountryData,
-		 const std::vector<Party>& allParties);
+		 const std::vector<Party>& allParties,
+		 const StateLanguageCategories& stateLanguageCategories);
 
   private:
 	void setParties(const std::vector<Party>& allParties);
 	void limitCommanders();
+	void setStateLanguageCategories(const StateLanguageCategories& stateLanguageCategories);
 
 	std::shared_ptr<CultureGroups> theCultureGroups;
 	std::unique_ptr<Inventions> theInventions;

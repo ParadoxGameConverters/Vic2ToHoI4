@@ -1,8 +1,8 @@
 #include "Vic2AI.h"
-#include "../Provinces/Province.h"
-#include "../World.h"
 #include "AIStrategy.h"
 #include "ParserHelpers.h"
+#include "V2World/Provinces/Province.h"
+#include "V2World/World/World.h"
 
 
 

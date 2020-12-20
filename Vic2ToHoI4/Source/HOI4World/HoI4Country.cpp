@@ -16,7 +16,7 @@
 #include "V2World/Ai/Vic2AI.h"
 #include "V2World/Countries/Country.h"
 #include "V2World/Politics/Party.h"
-#include "V2World/World.h"
+#include "V2World/World/World.h"
 #include <algorithm>
 
 

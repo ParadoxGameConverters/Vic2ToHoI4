@@ -231,28 +231,25 @@ bool Vic2::operator==(const Country& one, const Country& other)
 
 std::optional<std::string> Vic2::Country::getName(const std::string& language) const
 {
-	if (const auto& nameInLanguage = namesByLanguage.find(language); nameInLanguage != namesByLanguage.end())
-	{
-		return nameInLanguage->second;
-	}
-	else
+	const auto& nameInLanguage = namesByLanguage.find(language);
+	if (nameInLanguage == namesByLanguage.end())
 	{
 		return std::nullopt;
 	}
+
+	return nameInLanguage->second;
 }
 
 
 std::optional<std::string> Vic2::Country::getAdjective(const std::string& language) const
 {
-	if (const auto& adjectiveInLanguage = adjectivesByLanguage.find(language);
-		 adjectiveInLanguage != adjectivesByLanguage.end())
-	{
-		return adjectiveInLanguage->second;
-	}
-	else
+	const auto& adjectiveInLanguage = adjectivesByLanguage.find(language);
+	if (adjectiveInLanguage == adjectivesByLanguage.end())
 	{
 		return std::nullopt;
 	}
+
+	return adjectiveInLanguage->second;
 }
 
 

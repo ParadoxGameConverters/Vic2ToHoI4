@@ -36,7 +36,7 @@
 #include "V2World/Countries/Country.h"
 #include "V2World/Localisations/Vic2Localisations.h"
 #include "V2World/Politics/Party.h"
-#include "V2World/World.h"
+#include "V2World/World/World.h"
 #include <map>
 #include <memory>
 #include <optional>

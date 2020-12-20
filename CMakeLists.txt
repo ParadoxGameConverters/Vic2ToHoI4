@@ -110,7 +110,6 @@ file(GLOB OUTHOI4_SHIP_TYPES_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/ShipTypes/*.
 set(OUTHOI4_SOUNDS_SOURCES ${OUTHOI4_SOUNDS_SOURCES} "${PROJECT_SOURCE_DIR}/OutHoi4/Sounds/OutSounds.cpp")
 file(GLOB OUTHOI4_STATES_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/States/*.cpp")
 file(GLOB OUTHOI4_VERSION "${PROJECT_SOURCE_DIR}/OutHoi4/Version/*.cpp")
-file(GLOB VIC2WORLD_SOURCES "${PROJECT_SOURCE_DIR}/V2World/*.cpp")
 set(VIC2WORLD_AI_SOURCES ${VIC2WORLD_AI_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Ai/AIStrategy.cpp")
 set(VIC2WORLD_AI_SOURCES ${VIC2WORLD_AI_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Ai/Vic2AI.cpp")
 set(VIC2WORLD_COUNTRIES_SOURCES ${VIC2WORLD_COUNTRIES_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Countries/CommonCountriesDataFactory.cpp")
@@ -158,6 +157,8 @@ set(VIC2WORLD_TECHNOLOGY_SOURCES ${VIC2WORLD_TECHNOLOGY_SOURCES} "${PROJECT_SOUR
 set(VIC2WORLD_TECHNOLOGY_SOURCES ${VIC2WORLD_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Technology/TechnologyFactory.cpp")
 set(VIC2WORLD_WARS_SOURCES ${VIC2WORLD_WARS_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Wars/WarFactory.cpp")
 set(VIC2WORLD_WARS_SOURCES ${VIC2WORLD_WARS_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/Wars/WarGoalFactory.cpp")
+set(VIC2WORLD_WORLD_SOURCES ${VIC2WORLD_WORLD_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/World/World.cpp")
+set(VIC2WORLD_WORLD_SOURCES ${VIC2WORLD_WORLD_SOURCES} "${PROJECT_SOURCE_DIR}/V2World/World/WorldFactory.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Color.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/CommonFunctions.cpp")
 set(COMMON_SOURCES ${COMMON_SOURCES} "../common_items/Date.cpp")
@@ -238,7 +239,6 @@ add_executable(
 	${OUTHOI4_SOUNDS_SOURCES}
 	${OUTHOI4_STATES_SOURCES}
 	${OUTHOI4_VERSION}
-	${VIC2WORLD_SOURCES}
 	${VIC2WORLD_AI_SOURCES}
 	${VIC2WORLD_COUNTRIES_SOURCES}
 	${VIC2WORLD_CULTURES_SOURCES}
@@ -254,6 +254,7 @@ add_executable(
 	${VIC2WORLD_STATES_SOURCES}
 	${VIC2WORLD_TECHNOLOGY_SOURCES}
 	${VIC2WORLD_WARS_SOURCES}
+	${VIC2WORLD_WORLD_SOURCES}
 	${COMMON_SOURCES}
 )
 set_target_properties( Vic2ToHoi4Converter
@@ -351,6 +352,7 @@ set(VIC2WORLD_TECHNOLOGY_TESTS_SOURCES ${VIC2WORLD_TECHNOLOGY_TESTS_SOURCES} "${
 set(VIC2WORLD_WAR_TESTS_SOURCES ${VIC2WORLD_WAR_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Wars/WarBuilderTests.cpp")
 set(VIC2WORLD_WAR_TESTS_SOURCES ${VIC2WORLD_WAR_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Wars/WarFactoryTests.cpp")
 set(VIC2WORLD_WAR_TESTS_SOURCES ${VIC2WORLD_WAR_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Wars/WarGoalFactoryTests.cpp")
+set(VIC2WORLD_WORLD_TESTS_SOURCES ${VIC2WORLD_WORLD_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/World/WorldTests.cpp")
 
 add_executable(
 	Vic2ToHoi4ConverterTests
@@ -418,7 +420,6 @@ add_executable(
 	${OUTHOI4_SOUNDS_SOURCES}
 	${OUTHOI4_STATES_SOURCES}
 	${OUTHOI4_VERSION}
-	${VIC2WORLD_SOURCES}
 	${VIC2WORLD_AI_SOURCES}
 	${VIC2WORLD_COUNTRIES_SOURCES}
 	${VIC2WORLD_CULTURES_SOURCES}
@@ -434,6 +435,7 @@ add_executable(
 	${VIC2WORLD_STATES_SOURCES}
 	${VIC2WORLD_TECHNOLOGY_SOURCES}
 	${VIC2WORLD_WARS_SOURCES}
+	${VIC2WORLD_WORLD_SOURCES}
 	${CONFIGURATION_TESTS_SOURCES}
 	${HOI4WORLD_TESTS_SOURCES}
 	${HOI4WORLD_DECISIONS_TESTS_SOURCES}
@@ -478,6 +480,7 @@ add_executable(
 	${VIC2WORLD_STATES_TESTS_SOURCES}
 	${VIC2WORLD_TECHNOLOGY_TESTS_SOURCES}
 	${VIC2WORLD_WAR_TESTS_SOURCES}
+	${VIC2WORLD_WORLD_TESTS_SOURCES}
 	${COMMON_SOURCES}
 	${GMOCK_SOURCES}
 )
@@ -541,6 +544,21 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Technology/ModTech3.txt" "${TEST_OUTPU
 configure_file("Vic2ToHoI4Tests/TestFiles/Technology/ModTech4.txt" "${TEST_OUTPUT_DIRECTORY}/ModInventions/Mod2/inventions/Tech4.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Technology/ModTechOverride1.txt" "${TEST_OUTPUT_DIRECTORY}/ModInventions/Mod3/inventions/Tech1.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Technology/ModTechOverride2.txt" "${TEST_OUTPUT_DIRECTORY}/ModInventions/Mod3/inventions/Tech3.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/BAR.txt" "${TEST_OUTPUT_DIRECTORY}/MergeWorld/common/countries/BAR.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/BlankWorld.v2" "${TEST_OUTPUT_DIRECTORY}/V2World/BlankWorld.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/countries.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/DED.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/DED.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/FOO.txt" "${TEST_OUTPUT_DIRECTORY}/MergeWorld/common/countries/FOO.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/MergeWorld.v2" "${TEST_OUTPUT_DIRECTORY}/MergeWorld/MergeWorld.v2" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/merge_countries.txt" "${TEST_OUTPUT_DIRECTORY}/MergeWorld/common/countries.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/merge_nations.txt" "${TEST_OUTPUT_DIRECTORY}/merge_nations.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/NON.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/NON.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/NOT.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/NOT.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/ONE.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/ONE.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/region.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/map/region.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/TestWorld.v2" "${TEST_OUTPUT_DIRECTORY}/V2World/TestWorld.v2" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/test_localisations.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/localisation/test_localisations.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/TWO.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/TWO.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game" "${TEST_OUTPUT_DIRECTORY}/Vic2Linux/v2game" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2game.exe" "${TEST_OUTPUT_DIRECTORY}/Vic2Windows/v2game.exe" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/v2gameMac" "${TEST_OUTPUT_DIRECTORY}/somethingWithMacOS/somethingElse/Vic2Path/v2game" COPYONLY)

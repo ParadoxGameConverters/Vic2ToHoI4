@@ -1,7 +1,7 @@
 #include "CountryMapping.h"
 #include "Log.h"
 #include "ParserHelpers.h"
-#include "V2World/World.h"
+#include "V2World/World/World.h"
 #include <iomanip>
 
 
@@ -35,7 +35,7 @@ countryMappingRule::countryMappingRule(std::istream& theStream)
 }
 
 
-CountryMapper::CountryMapper(const Vic2::World* srcWorld, bool debug)
+CountryMapper::CountryMapper(const Vic2::World& srcWorld, bool debug)
 {
 	Log(LogLevel::Info) << "Getting country mappings";
 	readRules();
@@ -55,12 +55,12 @@ void CountryMapper::readRules()
 }
 
 
-void CountryMapper::createMappings(const Vic2::World* srcWorld, bool debug)
+void CountryMapper::createMappings(const Vic2::World& srcWorld, bool debug)
 {
 	Log(LogLevel::Info) << "\tCreating country mappings";
 	resetMappingData();
 
-	for (const auto& [tag, unused]: srcWorld->getCountries())
+	for (const auto& [tag, unused]: srcWorld.getCountries())
 	{
 		makeOneMapping(tag, debug);
 	}

@@ -39,24 +39,24 @@
 #include "V2World/Diplomacy/Agreement.h"
 #include "V2World/Diplomacy/Diplomacy.h"
 #include "V2World/Localisations/Vic2Localisations.h"
-#include "V2World/World.h"
+#include "V2World/World/World.h"
 #include "WarCreator/HoI4WarCreator.h"
 using namespace std;
 
 
 
-HoI4::World::World(const Vic2::World* _sourceWorld,
+HoI4::World::World(const Vic2::World& sourceWorld,
 	 const mappers::ProvinceMapper& provinceMapper,
 	 const Configuration& theConfiguration):
-	 sourceWorld(_sourceWorld),
-	 countryMap(_sourceWorld, theConfiguration.getDebug()), theIdeas(std::make_unique<HoI4::Ideas>()),
-	 theDecisions(make_unique<HoI4::decisions>(theConfiguration)), peaces(make_unique<HoI4::AiPeaces>()),
-	 events(make_unique<HoI4::Events>()), onActions(make_unique<HoI4::OnActions>())
+	 countryMap(sourceWorld, theConfiguration.getDebug()),
+	 theIdeas(std::make_unique<HoI4::Ideas>()), theDecisions(make_unique<HoI4::decisions>(theConfiguration)),
+	 peaces(make_unique<HoI4::AiPeaces>()), events(make_unique<HoI4::Events>()),
+	 onActions(make_unique<HoI4::OnActions>())
 {
 	Log(LogLevel::Progress) << "24%";
 	Log(LogLevel::Info) << "Building HoI4 World";
 
-	auto vic2Localisations = sourceWorld->getLocalisations();
+	auto vic2Localisations = sourceWorld.getLocalisations();
 	hoi4Localisations = Localisation::Importer{}.generateLocalisations(theConfiguration);
 
 	ProvinceDefinitions provinceDefinitions =
@@ -69,7 +69,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 		 countryMap,
 		 theProvinces,
 		 theCoastalProvinces,
-		 sourceWorld->getStateDefinitions(),
+		 sourceWorld.getStateDefinitions(),
 		 *strategicRegions,
 		 vic2Localisations,
 		 provinceDefinitions,
@@ -83,7 +83,7 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	theGraphics.init();
 	governmentMap.init();
 	countryNameMapper = mappers::CountryNameMapper::Factory{}.importCountryNameMapper();
-	convertCountries();
+	convertCountries(sourceWorld);
 	addStatesToCountries(provinceMapper);
 	states->addCapitalsToStates(countries);
 	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
@@ -92,21 +92,21 @@ HoI4::World::World(const Vic2::World* _sourceWorld,
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
 	strategicRegions->convert(*states);
-	convertDiplomacy();
+	convertDiplomacy(sourceWorld);
 	convertTechs();
 
 	militaryMappingsFile importedMilitaryMappings;
 	theMilitaryMappings = importedMilitaryMappings.takeAllMilitaryMappings();
 	convertMilitaries(provinceDefinitions, provinceMapper, theConfiguration);
 
-	determineGreatPowers();
+	determineGreatPowers(sourceWorld);
 
 	scriptedEffects = std::make_unique<ScriptedEffects>(theConfiguration.getHoI4Path());
 	scriptedLocalisations = ScriptedLocalisations::Factory{}.getScriptedLocalisations();
 	setupNavalTreaty();
 
 	importLeaderTraits();
-	convertGovernments(vic2Localisations, theConfiguration.getDebug());
+	convertGovernments(sourceWorld, vic2Localisations, theConfiguration.getDebug());
 	ideologies = std::make_unique<Ideologies>(theConfiguration);
 	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
 	convertCountryNames(vic2Localisations);
@@ -184,7 +184,7 @@ shared_ptr<HoI4::Country> HoI4::World::findCountry(const string& countryTag)
 }
 
 
-void HoI4::World::convertCountries()
+void HoI4::World::convertCountries(const Vic2::World& sourceWorld)
 {
 	Log(LogLevel::Info) << "\tConverting countries";
 
@@ -192,7 +192,7 @@ void HoI4::World::convertCountries()
 	const mappers::FlagsToIdeasMapper flagsToIdeasMapper(flagToIdeasMappingFile);
 	flagToIdeasMappingFile.close();
 
-	for (const auto& [tag, country]: sourceWorld->getCountries())
+	for (const auto& [tag, country]: sourceWorld.getCountries())
 	{
 		convertCountry(tag, *country, flagsToIdeasMapper);
 	}
@@ -252,12 +252,14 @@ void HoI4::World::importIdeologicalMinisters()
 }
 
 
-void HoI4::World::convertGovernments(const Vic2::Localisations& vic2Localisations, bool debug)
+void HoI4::World::convertGovernments(const Vic2::World& sourceWorld,
+	 const Vic2::Localisations& vic2Localisations,
+	 bool debug)
 {
 	Log(LogLevel::Info) << "\tConverting governments";
 	for (auto country: countries)
 	{
-		country.second->convertGovernment(*sourceWorld, governmentMap, vic2Localisations, *hoi4Localisations, debug);
+		country.second->convertGovernment(sourceWorld, governmentMap, vic2Localisations, *hoi4Localisations, debug);
 	}
 }
 
@@ -273,8 +275,7 @@ void HoI4::World::convertCountryNames(const Vic2::Localisations& vic2Localisatio
 			 ideologies->getMajorIdeologies(),
 			 vic2Localisations,
 			 *articleRules);
-		hoi4Localisations->updateMainCountryLocalisation(
-			 tag + "_" + country->getGovernmentIdeology(),
+		hoi4Localisations->updateMainCountryLocalisation(tag + "_" + country->getGovernmentIdeology(),
 			 country->getOldTag(),
 			 country->getOldGovernment(),
 			 vic2Localisations,
@@ -507,22 +508,17 @@ void HoI4::World::reportIndustryLevels() const
 }
 
 
-void HoI4::World::convertDiplomacy()
+void HoI4::World::convertDiplomacy(const Vic2::World& sourceWorld)
 {
 	Log(LogLevel::Info) << "\tConverting diplomacy";
-	convertAgreements();
+	convertAgreements(sourceWorld);
 }
 
 
-void HoI4::World::convertAgreements()
+void HoI4::World::convertAgreements(const Vic2::World& sourceWorld)
 {
-	const auto& diplomacy = sourceWorld->getDiplomacy();
-	if (!diplomacy)
-	{
-		return;
-	}
-
-	for (auto agreement: diplomacy->getAgreements())
+	const auto& diplomacy = sourceWorld.getDiplomacy();
+	for (auto agreement: diplomacy.getAgreements())
 	{
 		auto possibleHoI4Tag1 = countryMap.getHoI4Tag(agreement.getCountry1());
 		if (!possibleHoI4Tag1)
@@ -654,10 +650,10 @@ void HoI4::World::convertAirforces(const UnitMappings& unitMap)
 }
 
 
-void HoI4::World::determineGreatPowers()
+void HoI4::World::determineGreatPowers(const Vic2::World& sourceWorld)
 {
 	Log(LogLevel::Info) << "\tDetermining great powers";
-	for (auto greatPowerVic2Tag: sourceWorld->getGreatPowers())
+	for (auto greatPowerVic2Tag: sourceWorld.getGreatPowers())
 	{
 		auto possibleGreatPowerTag = countryMap.getHoI4Tag(greatPowerVic2Tag);
 		if (possibleGreatPowerTag)

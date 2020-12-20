@@ -4,7 +4,7 @@
 
 
 #include "Parser.h"
-#include "V2World/World.h"
+#include "V2World/World/World.h"
 #include <map>
 #include <optional>
 #include <string>
@@ -20,7 +20,7 @@ class CountryMapper: commonItems::parser
 
 	class Builder;
 
-	explicit CountryMapper(const Vic2::World* srcWorld, bool debug);
+	explicit CountryMapper(const Vic2::World& srcWorld, bool debug);
 
 	std::optional<std::string> getHoI4Tag(const std::string& V2Tag) const;
 	std::optional<std::string> getVic2Tag(const std::string& HoI4Tag) const;
@@ -31,7 +31,7 @@ class CountryMapper: commonItems::parser
 
 	void readRules();
 
-	void createMappings(const Vic2::World* srcWorld, bool debug);
+	void createMappings(const Vic2::World& srcWorld, bool debug);
 	void resetMappingData();
 	void makeOneMapping(const std::string& Vic2Tag, bool debug);
 	bool mapToFirstUnusedVic2Tag(const std::vector<std::string>& possibleVic2Tags,

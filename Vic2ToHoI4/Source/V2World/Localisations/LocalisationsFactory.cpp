@@ -115,12 +115,11 @@ std::string Vic2::Localisations::Factory::convertToUtf8(const std::string& rawLo
 	{
 		return commonItems::convertWin1250ToUTF8(rawLocalisation);
 	}
-	else if (encoding == Encoding::Win1251)
+	if (encoding == Encoding::Win1251)
 	{
 		return commonItems::convertWin1251ToUTF8(rawLocalisation);
 	}
-	else // if (encoding == Encoding::Win1252)
-	{
-		return commonItems::convertWin1252ToUTF8(rawLocalisation);
-	}
+
+	// if (encoding == Encoding::Win1252)
+	return commonItems::convertWin1252ToUTF8(rawLocalisation);
 }

@@ -37,7 +37,10 @@ class Country
 	class Factory;
 
 	// functions to construct the country
-	void addProvince(const std::pair<const int, std::shared_ptr<Province>>& province) { provinces.insert(province); }
+	void addProvince(int provinceNum, const std::shared_ptr<Province>& province)
+	{
+		provinces.insert(std::make_pair(provinceNum, province));
+	}
 	void addCore(std::shared_ptr<Province> core) { cores.push_back(std::move(core)); }
 	void replaceCores(std::vector<std::shared_ptr<Province>> newCores) { cores.swap(newCores); }
 	void addWar(const War& theWar) { wars.push_back(theWar); }
@@ -53,8 +56,6 @@ class Country
 	void setLocalisationNames(Localisations& vic2Localisations);
 	void setLocalisationAdjectives(const Localisations& vic2Localisations);
 	void handleMissingCulture(const CultureGroups& theCultureGroups);
-
-	[[nodiscard]] auto& getModifiableStates() { return states; }
 
 	// functions to look up aspects of the country
 	[[nodiscard]] const auto& getTag() const { return tag; }

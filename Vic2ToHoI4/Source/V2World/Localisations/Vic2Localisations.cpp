@@ -25,15 +25,13 @@ std::optional<std::string> Vic2::Localisations::getTextInLanguage(const std::str
 
 Vic2::LanguageToLocalisationMap Vic2::Localisations::getTextInEachLanguage(const std::string& key) const
 {
-	if (const auto KeyToLocalisationsMappings = localisations.find(key);
-		 KeyToLocalisationsMappings != localisations.end())
-	{
-		return KeyToLocalisationsMappings->second;
-	}
-	else
+	const auto KeyToLocalisationsMappings = localisations.find(key);
+	if (KeyToLocalisationsMappings == localisations.end())
 	{
 		return LanguageToLocalisationMap{};
 	}
+
+	return KeyToLocalisationsMappings->second;
 }
 
 
@@ -75,14 +73,12 @@ std::string Vic2::Localisations::determineReplacementName(const std::string& dom
 	 const LanguageToLocalisationMap& regionLocalisations,
 	 const std::string& language)
 {
-	if (const auto& replacementLocalisation = regionLocalisations.find(language);
-		 replacementLocalisation != regionLocalisations.end())
-	{
-		return replacementLocalisation->second;
-	}
-	else
+	const auto& replacementLocalisation = regionLocalisations.find(language);
+	if (replacementLocalisation == regionLocalisations.end())
 	{
 		Log(LogLevel::Warning) << "Could not find regions localisation for " << domainName << " in " << language;
 		return domainName;
 	}
+
+	return replacementLocalisation->second;
 }
