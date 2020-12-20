@@ -12,16 +12,15 @@
 
 
 
-Vic2::World::Factory::Factory(const Configuration& theConfiguration)
+Vic2::World::Factory::Factory(const Configuration& theConfiguration):
+	 theCultureGroups(CultureGroups::Factory{}.getCultureGroups(theConfiguration)),
+	 theIssues(Issues::Factory{}.getIssues(theConfiguration.getVic2Path())),
+	 provinceFactory(std::make_unique<Province::Factory>(std::make_unique<Pop::Factory>(*theIssues))),
+	 theStateDefinitions(StateDefinitions::Factory{}.getStateDefinitions(theConfiguration)),
+	 countryFactory(std::make_unique<Country::Factory>(theConfiguration, *theStateDefinitions, theCultureGroups)),
+	 stateLanguageCategories(StateLanguageCategories::Factory{}.getCategories()),
+	 diplomacyFactory(std::make_unique<Diplomacy::Factory>())
 {
-	theCultureGroups = CultureGroups::Factory{}.getCultureGroups(theConfiguration);
-	theIssues = Issues::Factory{}.getIssues(theConfiguration.getVic2Path());
-	provinceFactory = std::make_unique<Province::Factory>(std::make_unique<Pop::Factory>(*theIssues));
-	diplomacyFactory = std::make_unique<Diplomacy::Factory>();
-	theStateDefinitions = StateDefinitions::Factory{}.getStateDefinitions(theConfiguration);
-	countryFactory = std::make_unique<Country::Factory>(theConfiguration, *theStateDefinitions, theCultureGroups);
-	stateLanguageCategories = StateLanguageCategories::Factory{}.getCategories();
-
 	const auto [commonCountriesData_, allParties_] = importCommonCountriesData(theConfiguration);
 	commonCountriesData = commonCountriesData_;
 	allParties = allParties_;
