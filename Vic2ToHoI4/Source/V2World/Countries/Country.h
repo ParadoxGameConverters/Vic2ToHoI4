@@ -16,7 +16,6 @@
 #include "V2World/Politics/Party.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/States/State.h"
-#include "V2World/States/StateLanguageCategories.h"
 #include "V2World/Wars/War.h"
 #include <cstdint>
 #include <map>

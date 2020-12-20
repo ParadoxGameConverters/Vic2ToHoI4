@@ -12,6 +12,7 @@
 #include "V2World/Military/ArmyFactory.h"
 #include "V2World/Military/Leaders/LeaderFactory.h"
 #include "V2World/States/StateFactory.h"
+#include "V2World/States/StateLanguageCategories.h"
 #include "V2World/Technology/Inventions.h"
 #include "V2World/Technology/TechnologyFactory.h"
 #include <memory>

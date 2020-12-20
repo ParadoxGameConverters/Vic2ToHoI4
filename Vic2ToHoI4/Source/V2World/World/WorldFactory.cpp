@@ -212,13 +212,22 @@ bool Vic2::World::Factory::shouldCoreBeRemoved(const Province& core, const Count
 
 	const auto owner = world->countries.find(core.getOwner());
 	if (owner == world->countries.end())
+	{
 		return true;
+	}
 	if (country.getPrimaryCulture() == owner->second->getPrimaryCulture())
+	{
 		return true;
+	}
 	if (owner->second->isAnAcceptedCulture(country.getPrimaryCulture()))
+	{
 		return true;
+	}
 	if (core.getPercentageWithCultures(country.getAcceptedCultures()) < ACCEPTED_CULTURE_THRESHOLD)
+	{
 		return true;
+	}
+
 	return false;
 }
 

@@ -10,7 +10,7 @@
 TEST(Vic2World_World_WorldTests, DateIsLogged)
 {
 	std::stringstream log;
-	auto stdOutBuf = std::cout.rdbuf();
+	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
 	const auto world = Vic2::World::Factory{*Configuration::Builder{}.build()}.importWorld(
@@ -100,7 +100,7 @@ TEST(Vic2World_World_WorldTests, CountriesCanBeAdded)
 TEST(Vic2World_World_WorldTests, InvalidCountriesAreLogged)
 {
 	std::stringstream log;
-	auto stdOutBuf = std::cout.rdbuf();
+	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
 	const auto world = Vic2::World::Factory{*Configuration::Builder{}.build()}.importWorld(
@@ -139,7 +139,7 @@ TEST(Vic2World_World_WorldTests, EmptyCountriesCanBeRemoved)
 TEST(Vic2World_World_WorldTests, DiplomacyIsLoggedIfMissing)
 {
 	std::stringstream log;
-	auto stdOutBuf = std::cout.rdbuf();
+	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
 	const auto world = Vic2::World::Factory{*Configuration::Builder{}.build()}.importWorld(
@@ -187,7 +187,7 @@ TEST(Vic2World_World_WorldTests, GreatPowersCanBeAdded)
 TEST(Vic2World_World_WorldTests, GreatPowersLoggedIfInvalid)
 {
 	std::stringstream log;
-	auto stdOutBuf = std::cout.rdbuf();
+	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
 	const auto world = Vic2::World::Factory{*Configuration::Builder{}.setVic2Path("V2World").build()}.importWorld(
@@ -214,7 +214,7 @@ TEST(Vic2World_World_WorldTests, StateDefinitionsDefaultToEmpty)
 TEST(Vic2World_World_WorldTests, ProvincesAreAssignedToStates)
 {
 	std::stringstream log;
-	auto stdOutBuf = std::cout.rdbuf();
+	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
 	const auto world = Vic2::World::Factory{*Configuration::Builder{}.setVic2Path("V2World").build()}.importWorld(
@@ -405,7 +405,7 @@ TEST(Vic2World_World_WorldTests, MergingNationsWorks)
 TEST(Vic2World_World_WorldTests, ProvinceMappingsAreChecked)
 {
 	std::stringstream log;
-	auto stdOutBuf = std::cout.rdbuf();
+	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
 	const auto world = Vic2::World::Factory{*Configuration::Builder{}.build()}.importWorld(
