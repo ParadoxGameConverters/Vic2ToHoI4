@@ -1926,7 +1926,7 @@ TEST(Vic2World_Countries_CountryTests, LastElectionDefaultsToOneOneOne)
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
 										  *Vic2::StateLanguageCategories::Builder{}.build());
 
-	ASSERT_EQ(country->getLastElection(), date("1.1.1"));
+	ASSERT_EQ(date("1.1.1"), country->getLastElection());
 }
 
 
@@ -1946,7 +1946,7 @@ TEST(Vic2World_Countries_CountryTests, LastElectionCanBeSet)
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
 										  *Vic2::StateLanguageCategories::Builder{}.build());
 
-	ASSERT_EQ(country->getLastElection(), date("1942.11.6"));
+	ASSERT_EQ(date("1942.11.6"), country->getLastElection());
 }
 
 
