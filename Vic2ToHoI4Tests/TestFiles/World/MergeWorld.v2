@@ -1,0 +1,35 @@
+1 = {
+	owner="FOO"
+	core="FOO"
+}
+2 = {
+	owner="BAR"
+	core="BAR"
+}
+FOO = {
+	ruling_party=1
+	state = {
+		provinces = { 1 }
+		state_buildings = {
+			level = 1
+		}
+	}
+	primary_culture=test_culture
+	ai={
+		conquer_prov=
+		{
+			id=2
+			value=182
+		}
+	}
+}
+BAR = {
+	ruling_party=2
+	state = {
+		provinces = { 2 }
+	}
+	primary_culture=other_culture
+	culture={
+		third_culture
+	}
+}

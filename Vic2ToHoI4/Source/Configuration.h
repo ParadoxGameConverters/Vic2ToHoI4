@@ -116,6 +116,16 @@ class Configuration::Builder
 		configuration->Vic2Mods.push_back(std::move(Vic2Mod));
 		return *this;
 	}
+	Builder& setInputFile(std::string inputFile)
+	{
+		configuration->inputFile = std::move(inputFile);
+		return *this;
+	}
+	Builder& setRemoveCores(bool removeCores)
+	{
+		configuration->removeCores = removeCores;
+		return *this;
+	}
 
   private:
 	std::unique_ptr<Configuration> configuration;

@@ -1,0 +1,97 @@
+date="2020.12.18"
+great_nations={ 1 42 }
+1 = {
+	owner="ONE"
+	core="ONE"	# core is not removed (owner has land)
+	core="NOT"	# core is removed due to lacking enough accepted pops
+	craftsmen={
+		size = 5
+		test_culture=test_religion
+	}
+}
+2 = {
+	owner="TWO"
+	core="TWO"	# core is not removed (owner has land)
+	core="NON"	# core is removed due to sharing province owner's primary culture
+	core="NOT"	# core is removed due to province owner accepting core's primary culture
+	farmers={
+		size = 5
+		test_culture=test_religion
+	}
+}
+3 = {
+	owner="HUH"
+}
+4 = {
+	core="NON"	# core is removed due to no province owner
+}
+5 = {
+	owner="HUH"
+	core="NON"	# core is removed due to province owner not being a valid country
+}
+6 = {
+	owner="ONE"	# core is not removed (owner has land)
+	core="NON"	# core is not removed (survives all removal conditions)
+	farmers={
+		size = 5
+		other_culture=test_religion
+	}
+}
+ONE = {
+	ruling_party=1
+	state = {
+		provinces = { 1 }
+		state_buildings = {
+			level = 1
+		}
+	}
+	primary_culture=test_culture
+	ai={
+		conquer_prov=
+		{
+			id=2
+			value=182
+		}
+	}
+}
+TWO = {
+	ruling_party=2
+	state = {
+		provinces = { 2 }
+	}
+	primary_culture=other_culture
+	culture={
+		test_culture
+		third_culture
+	}
+}
+NON = {
+	capital=6
+	ruling_party=3
+	primary_culture=other_culture
+}
+NOT = {
+	capital=1
+	ruling_party=4
+	primary_culture=third_culture
+}
+DED = {
+	ruling_party=5
+}
+diplomacy = {
+	test_agreement = {
+		first = "ONE"
+		second = "TWO"
+		start_date="1066.12.25"
+	}
+}
+active_war={
+	original_attacker="ONE"
+	attacker="ONE"
+	attacker="NON"
+	attacker="HUH"
+	original_defender="TWO"
+	defender="TWO"
+	defender="NOT"
+	defender="WHA"
+}

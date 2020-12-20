@@ -33,16 +33,8 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration)
 		greatPowerIndexes = commonItems::intList{theStream}.getInts();
 	});
 	registerRegex(R"(\d+)", [this](const std::string& provinceID, std::istream& theStream) {
-		try
-		{
-			const auto provinceNum = std::stoi(provinceID);
-			world->provinces[provinceNum] = provinceFactory->getProvince(provinceNum, theStream);
-		}
-		catch (std::exception&)
-		{
-			Log(LogLevel::Warning) << "Invalid province number " << provinceID;
-			commonItems::ignoreItem(provinceID, theStream);
-		}
+		const auto provinceNum = std::stoi(provinceID); // the regex ensures the ID is always a valid number
+		world->provinces[provinceNum] = provinceFactory->getProvince(provinceNum, theStream);
 	});
 	registerRegex("[A-Z][A-Z0-9]{2}", [this](const std::string& countryTag, std::istream& theStream) {
 		if (const auto commonCountryData = commonCountriesData.find(countryTag);
@@ -140,11 +132,10 @@ void Vic2::World::Factory::setProvinceOwners()
 		if (auto country = world->countries.find(province->getOwner()); country != world->countries.end())
 		{
 			country->second->addProvince(provinceNum, province);
-			province->setOwner(country->first);
 		}
 		else
 		{
-			Log(LogLevel::Warning) << "Trying to set " << province->getOwner() << " as owner of " << provinceNum
+			Log(LogLevel::Warning) << "Trying to assign province " << provinceNum << " to " << province->getOwner()
 										  << ", but country does not exist.";
 		}
 	}
@@ -154,7 +145,6 @@ void Vic2::World::Factory::setProvinceOwners()
 		country->handleMissingCulture(*theCultureGroups);
 	}
 }
-
 
 
 void Vic2::World::Factory::addProvinceCoreInfoToCountries()
@@ -212,13 +202,19 @@ bool Vic2::World::Factory::shouldCoreBeRemoved(const Province& core, const Count
 {
 	if (core.getOwner().empty())
 	{
-		return true;
+		return true; // test this
 	}
 
 	const auto owner = world->countries.find(core.getOwner());
-	return (owner == world->countries.end()) || (country.getPrimaryCulture() == owner->second->getPrimaryCulture()) ||
-			 owner->second->isAnAcceptedCulture(owner->second->getPrimaryCulture()) ||
-			 (core.getPercentageWithCultures(country.getAcceptedCultures()) < ACCEPTED_CULTURE_THRESHOLD);
+	if (owner == world->countries.end())
+		return true;
+	if (country.getPrimaryCulture() == owner->second->getPrimaryCulture())
+		return true;
+	if (owner->second->isAnAcceptedCulture(country.getPrimaryCulture()))
+		return true;
+	if (core.getPercentageWithCultures(country.getAcceptedCultures()) < ACCEPTED_CULTURE_THRESHOLD)
+		return true;
+	return false;
 }
 
 

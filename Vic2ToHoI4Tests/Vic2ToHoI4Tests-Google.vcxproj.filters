@@ -1341,6 +1341,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\World\WorldFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\World</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\World\WorldTests.cpp">
+      <Filter>Vic2WorldTests\World</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1730,6 +1733,12 @@
     <Filter Include="Vic2ToHoI4 files\Vic2\World">
       <UniqueIdentifier>{17d0225d-5316-409c-8212-500a00669959}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2WorldTests\World">
+      <UniqueIdentifier>{0ca788a8-109c-4129-9ea7-20948a9ffdd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\World">
+      <UniqueIdentifier>{5b35b687-24f0-4619-a18a-239de21b04fa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1925,5 +1934,32 @@
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\CountryNames\CountryNamesMappings.txt" />
+    <CopyFileToFolders Include="TestFiles\World\BlankWorld.v2" />
+    <CopyFileToFolders Include="TestFiles\World\TestWorld.v2" />
+    <CopyFileToFolders Include="TestFiles\World\countries.txt" />
+    <CopyFileToFolders Include="TestFiles\World\ONE.txt" />
+    <CopyFileToFolders Include="TestFiles\World\TWO.txt" />
+    <CopyFileToFolders Include="TestFiles\World\region.txt" />
+    <CopyFileToFolders Include="TestFiles\World\test_localisations.txt" />
+    <CopyFileToFolders Include="TestFiles\World\NON.txt" />
+    <CopyFileToFolders Include="TestFiles\World\NOT.txt" />
+    <CopyFileToFolders Include="TestFiles\World\DED.txt">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\MergeWorld.v2">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\merge_nations.txt">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\merge_countries.txt">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\FOO.txt">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\BAR.txt">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

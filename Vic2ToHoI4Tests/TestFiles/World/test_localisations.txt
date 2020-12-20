@@ -1,0 +1,1 @@
+test_key;test_english_text;test_french_text;test_german_text;test_polish_text;test_spanish_text;test_italian_text;test_swedish_text;test_czech_text;test_hungarian_text;test_dutch_text;test_braz_por_text;test_russian_text;test_finnish_text

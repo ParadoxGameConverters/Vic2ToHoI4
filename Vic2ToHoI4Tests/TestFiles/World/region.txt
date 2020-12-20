@@ -1,0 +1,4 @@
+REGION_ONE = { 1 }
+REGION_TWO = { 2 }
+REGION_THREE = { 3 }
+REGION_FOUR = { 4 }

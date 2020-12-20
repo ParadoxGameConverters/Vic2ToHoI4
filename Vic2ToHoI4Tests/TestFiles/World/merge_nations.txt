@@ -1,0 +1,14 @@
+test_merge =
+{
+	merge = yes
+	master = FOO
+	slave = BAR
+	slave = BAZ
+}
+
+non_merge =
+{
+	merge = yes
+	master = QUX
+	slave = BAR
+}

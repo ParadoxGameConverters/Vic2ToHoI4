@@ -1,0 +1,5 @@
+ONE = "countries/ONE.txt"
+TWO = "countries/TWO.txt"
+NON = "countries/NON.txt"
+NOT = "countries/NOT.txt"
+DED = "countries/DED.txt"
