@@ -356,25 +356,10 @@ void Vic2::World::Factory::consolidateConquerStrategies()
 	}
 }
 
-#pragma optimize("", off)
+
 void Vic2::World::Factory::resolveBattles()
 {
-	std::map<int, std::vector<Army*>> armyLocations;
-	for (auto& [tag, country]: world->countries)
-	{
-		for (auto& army: country->getModifiableArmies())
-		{
-			auto possibleLocation = army.getLocation();
-			if (possibleLocation)
-			{
-				auto [iterator, inserted] = armyLocations.insert(std::make_pair(*possibleLocation, std::vector<Army*>{&army}));
-				if (!inserted)
-				{
-					iterator->second.push_back(&army);
-				}
-			}
-		}
-	}
+	const auto armyLocations = determineArmyLocations();
 
 	for (auto& [location, armies]: armyLocations)
 	{
@@ -386,18 +371,7 @@ void Vic2::World::Factory::resolveBattles()
 		{
 			continue;
 		}
-
-		bool armiesFromDifferentOwners = false;
-		auto firstOwner = (*armies.begin())->getOwner();
-		for (const auto& army: armies)
-		{
-			if (army->getOwner() != firstOwner)
-			{
-				armiesFromDifferentOwners = true;
-				break;
-			}
-		}
-		if (!armiesFromDifferentOwners)
+		if (!armiesHaveDifferentOwners(armies))
 		{
 			continue;
 		}
@@ -412,4 +386,45 @@ void Vic2::World::Factory::resolveBattles()
 		}
 	}
 }
-#pragma optimize("", on)
+
+
+std::map<int, std::vector<Vic2::Army*>> Vic2::World::Factory::determineArmyLocations() const
+{
+	std::map<int, std::vector<Army*>> armyLocations;
+
+	for (auto& [tag, country]: world->countries)
+	{
+		for (auto& army: country->getModifiableArmies())
+		{
+			auto possibleLocation = army.getLocation();
+			if (possibleLocation)
+			{
+				auto [iterator, inserted] =
+					 armyLocations.insert(std::make_pair(*possibleLocation, std::vector<Army*>{&army}));
+				if (!inserted)
+				{
+					iterator->second.push_back(&army);
+				}
+			}
+		}
+	}
+
+	return armyLocations;
+}
+
+
+bool Vic2::World::Factory::armiesHaveDifferentOwners(const std::vector<Army*>& armies) const
+{
+	bool armiesFromDifferentOwners = false;
+	auto firstOwner = (*armies.begin())->getOwner();
+	for (const auto& army: armies)
+	{
+		if (army->getOwner() != firstOwner)
+		{
+			armiesFromDifferentOwners = true;
+			break;
+		}
+	}
+
+	return armiesFromDifferentOwners;
+}

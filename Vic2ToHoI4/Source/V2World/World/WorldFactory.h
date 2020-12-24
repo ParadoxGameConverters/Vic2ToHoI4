@@ -42,6 +42,8 @@ class World::Factory: commonItems::parser
 	void checkAllProvincesMapped(const mappers::ProvinceMapper& provinceMapper) const;
 	void consolidateConquerStrategies();
 	void resolveBattles();
+	[[nodiscard]] std::map<int, std::vector<Army*>> determineArmyLocations() const;
+	[[nodiscard]] bool armiesHaveDifferentOwners(const std::vector<Army*>& armies) const;
 
 	std::unique_ptr<World> world;
 
