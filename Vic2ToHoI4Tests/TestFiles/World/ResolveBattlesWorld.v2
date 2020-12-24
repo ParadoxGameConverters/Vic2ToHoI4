@@ -1,0 +1,46 @@
+1 = {
+	owner="TWO"
+}
+2 = {
+	owner="ONE"
+}
+3 = {
+	owner="ONE"
+}
+ONE = {
+	ruling_party=1
+	army={
+		name="No location army"
+	}
+	army={
+		name="Only by itself army"
+		location=1
+	}
+	army={
+		name="First in same-country province"
+		location=2
+	}
+	army={
+		name="Second in same-country province"
+		location=2
+	}
+	army={
+		name="First in different-country province"
+		location=3
+	}
+	army={
+		name="Non-existent province army"
+		location=4
+	}
+	army={
+		name="Second non-existent province army"
+		location=4
+	}
+}
+TWO = {
+	ruling_party=2
+	army={
+		name="Second in different-country province"
+		location=3
+	}
+}

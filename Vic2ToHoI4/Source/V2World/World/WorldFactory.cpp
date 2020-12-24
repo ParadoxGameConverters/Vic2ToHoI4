@@ -101,6 +101,7 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	setLocalisations(*world->theLocalisations);
 	checkAllProvincesMapped(provinceMapper);
 	consolidateConquerStrategies();
+	resolveBattles();
 
 	return std::move(world);
 }
@@ -354,3 +355,61 @@ void Vic2::World::Factory::consolidateConquerStrategies()
 		country->consolidateConquerStrategies(world->provinces);
 	}
 }
+
+#pragma optimize("", off)
+void Vic2::World::Factory::resolveBattles()
+{
+	std::map<int, std::vector<Army*>> armyLocations;
+	for (auto& [tag, country]: world->countries)
+	{
+		for (auto& army: country->getModifiableArmies())
+		{
+			auto possibleLocation = army.getLocation();
+			if (possibleLocation)
+			{
+				auto [iterator, inserted] = armyLocations.insert(std::make_pair(*possibleLocation, std::vector<Army*>{&army}));
+				if (!inserted)
+				{
+					iterator->second.push_back(&army);
+				}
+			}
+		}
+	}
+
+	for (auto& [location, armies]: armyLocations)
+	{
+		if (armies.size() == 1)
+		{
+			continue;
+		}
+		if (!world->provinces.contains(location)) // true of sea provinces
+		{
+			continue;
+		}
+
+		bool armiesFromDifferentOwners = false;
+		auto firstOwner = (*armies.begin())->getOwner();
+		for (const auto& army: armies)
+		{
+			if (army->getOwner() != firstOwner)
+			{
+				armiesFromDifferentOwners = true;
+				break;
+			}
+		}
+		if (!armiesFromDifferentOwners)
+		{
+			continue;
+		}
+
+		const auto& provinceOwner = world->provinces.at(location)->getOwner();
+		for (const auto& army: armies)
+		{
+			if (army->getOwner() != provinceOwner)
+			{
+				army->setLocation(std::nullopt);
+			}
+		}
+	}
+}
+#pragma optimize("", on)
