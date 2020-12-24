@@ -18,7 +18,7 @@ class Army::Factory: commonItems::parser
   public:
 	Factory();
 
-	std::unique_ptr<Army> getArmy(std::istream& theStream);
+	std::unique_ptr<Army> getArmy(std::string owner, std::istream& theStream);
 
   private:
 	std::unique_ptr<Army> army;

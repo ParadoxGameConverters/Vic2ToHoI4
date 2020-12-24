@@ -20,16 +20,17 @@ Vic2::Army::Factory::Factory()
 	});
 	registerKeyword("army", [this](const std::string& unused, std::istream& theStream) {
 		auto tempArmy = std::move(army);
-		tempArmy->transportedArmies.push_back(*getArmy(theStream));
+		tempArmy->transportedArmies.push_back(*getArmy(tempArmy->owner, theStream));
 		army = std::move(tempArmy);
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
 
-std::unique_ptr<Vic2::Army> Vic2::Army::Factory::getArmy(std::istream& theStream)
+std::unique_ptr<Vic2::Army> Vic2::Army::Factory::getArmy(std::string owner, std::istream& theStream)
 {
 	army = std::make_unique<Army>();
+	army->owner = std::move(owner);
 	parseStream(theStream);
 	if (army->location == std::nullopt)
 	{
