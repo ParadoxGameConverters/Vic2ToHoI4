@@ -413,9 +413,9 @@ std::map<int, std::vector<Vic2::Army*>> Vic2::World::Factory::determineArmyLocat
 }
 
 
-bool Vic2::World::Factory::armiesHaveDifferentOwners(const std::vector<Army*>& armies) const
+bool Vic2::World::Factory::armiesHaveDifferentOwners(const std::vector<Army*>& armies)
 {
-	bool armiesFromDifferentOwners = false;
+	auto armiesFromDifferentOwners = false;
 	auto firstOwner = (*armies.begin())->getOwner();
 	for (const auto& army: armies)
 	{

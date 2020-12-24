@@ -43,7 +43,7 @@ class World::Factory: commonItems::parser
 	void consolidateConquerStrategies();
 	void resolveBattles();
 	[[nodiscard]] std::map<int, std::vector<Army*>> determineArmyLocations() const;
-	[[nodiscard]] bool armiesHaveDifferentOwners(const std::vector<Army*>& armies) const;
+	[[nodiscard]] static bool armiesHaveDifferentOwners(const std::vector<Army*>& armies);
 
 	std::unique_ptr<World> world;
 
