@@ -556,6 +556,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/World/NON.txt" "${TEST_OUTPUT_DIRECTOR
 configure_file("Vic2ToHoI4Tests/TestFiles/World/NOT.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/NOT.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/ONE.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/ONE.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/region.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/map/region.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/World/ResolveBattlesWorld.v2" "${TEST_OUTPUT_DIRECTORY}/ResolveBattlesWorld/ResolveBattlesWorld.v2" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/TestWorld.v2" "${TEST_OUTPUT_DIRECTORY}/V2World/TestWorld.v2" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/test_localisations.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/localisation/test_localisations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/TWO.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/TWO.txt" COPYONLY)
