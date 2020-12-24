@@ -2217,6 +2217,9 @@
     <ClInclude Include="Source\V2World\World\WorldFactory.h">
       <Filter>Vic2World\World</Filter>
     </ClInclude>
+    <ClInclude Include="Source\V2World\Military\ArmyBuilder.h">
+      <Filter>Vic2World\Military</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\ai_peaces.txt">

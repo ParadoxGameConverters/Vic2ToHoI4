@@ -17,6 +17,7 @@ class Army // also Navy
 {
   public:
 	class Factory;
+	class Builder;
 
 	[[nodiscard]] const auto& getName() const { return name; }
 	[[nodiscard]] const auto& getOwner() const { return owner; }
@@ -25,6 +26,8 @@ class Army // also Navy
 	[[nodiscard]] const auto& getTransportedArmies() const { return transportedArmies; }
 
 	void setLocation(std::optional<int> newLocation) { location = newLocation; }
+
+	bool operator<=>(const Army&) const = default;
 
   private:
 	std::string name;

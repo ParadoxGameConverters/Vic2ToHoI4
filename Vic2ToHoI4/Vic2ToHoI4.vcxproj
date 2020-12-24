@@ -748,6 +748,7 @@
     <ClInclude Include="Source\V2World\Localisations\LocalisationsFactory.h" />
     <ClInclude Include="Source\V2World\Localisations\Vic2Localisations.h" />
     <ClInclude Include="Source\V2World\Military\Army.h" />
+    <ClInclude Include="Source\V2World\Military\ArmyBuilder.h" />
     <ClInclude Include="Source\V2World\Military\ArmyFactory.h" />
     <ClInclude Include="Source\V2World\Military\Leaders\Leader.h" />
     <ClInclude Include="Source\V2World\Military\Leaders\LeaderFactory.h" />

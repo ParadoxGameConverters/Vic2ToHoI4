@@ -21,6 +21,8 @@ class Unit
 	[[nodiscard]] const auto& getOrganization() const { return organization; }
 	[[nodiscard]] const auto& getExperience() const { return experience; }
 
+	bool operator<=>(const Unit&) const = default;
+
   private:
 	std::string name;
 	std::string type;

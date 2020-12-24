@@ -1884,7 +1884,6 @@
     <CopyFileToFolders Include="TestFiles\Localisations\ModLocalisations.txt">
       <Filter>TestFiles\Localistations</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt" />
     <CopyFileToFolders Include="TestFiles\Countries\VanillaCommonCountriesData.txt">
       <Filter>TestFiles\Countries</Filter>
     </CopyFileToFolders>
@@ -1933,16 +1932,6 @@
     <CopyFileToFolders Include="TestFiles\Countries\BlankTraitsFile.txt">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\CountryNames\CountryNamesMappings.txt" />
-    <CopyFileToFolders Include="TestFiles\World\BlankWorld.v2" />
-    <CopyFileToFolders Include="TestFiles\World\TestWorld.v2" />
-    <CopyFileToFolders Include="TestFiles\World\countries.txt" />
-    <CopyFileToFolders Include="TestFiles\World\ONE.txt" />
-    <CopyFileToFolders Include="TestFiles\World\TWO.txt" />
-    <CopyFileToFolders Include="TestFiles\World\region.txt" />
-    <CopyFileToFolders Include="TestFiles\World\test_localisations.txt" />
-    <CopyFileToFolders Include="TestFiles\World\NON.txt" />
-    <CopyFileToFolders Include="TestFiles\World\NOT.txt" />
     <CopyFileToFolders Include="TestFiles\World\DED.txt">
       <Filter>TestFiles\World</Filter>
     </CopyFileToFolders>
@@ -1961,5 +1950,43 @@
     <CopyFileToFolders Include="TestFiles\World\BAR.txt">
       <Filter>TestFiles\World</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\BlankWorld.v2">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\TestWorld.v2">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\countries.txt">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\CountryNames\CountryNamesMappings.txt">
+      <Filter>TestFiles\CountryNames</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\NON.txt">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\NOT.txt">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\ONE.txt">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\region.txt">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\test_localisations.txt">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\World\TWO.txt">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TestFiles\World\ResolveBattlesWorld.v2">
+      <Filter>TestFiles\World</Filter>
+    </Text>
   </ItemGroup>
 </Project>
