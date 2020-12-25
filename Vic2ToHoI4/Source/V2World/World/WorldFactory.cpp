@@ -101,7 +101,7 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	setLocalisations(*world->theLocalisations);
 	checkAllProvincesMapped(provinceMapper);
 	consolidateConquerStrategies();
-	resolveBattles();
+	removeBattles();
 
 	return std::move(world);
 }
@@ -357,7 +357,12 @@ void Vic2::World::Factory::consolidateConquerStrategies()
 }
 
 
-void Vic2::World::Factory::resolveBattles()
+// Vic2 battles when opposing armies are in the same province. This is unlike HoI4 battles and actually causes an HoI4
+// crash.
+//	For all cases where armies from different countries are in the same province, move any armies not belonging to the
+// provinces owner to an undefined location. This will be handled properly when constructing HoI4 divisions, attempting
+// to move them to the owner's capital.
+void Vic2::World::Factory::removeBattles()
 {
 	const auto armyLocations = determineArmyLocations();
 
