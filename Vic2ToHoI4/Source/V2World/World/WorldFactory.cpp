@@ -101,6 +101,7 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	setLocalisations(*world->theLocalisations);
 	checkAllProvincesMapped(provinceMapper);
 	consolidateConquerStrategies();
+	removeBattles();
 
 	return std::move(world);
 }
@@ -353,4 +354,82 @@ void Vic2::World::Factory::consolidateConquerStrategies()
 	{
 		country->consolidateConquerStrategies(world->provinces);
 	}
+}
+
+
+// Vic2 battles when opposing armies are in the same province. This is unlike HoI4 battles and actually causes an HoI4
+// crash.
+//	For all cases where armies from different countries are in the same province, move any armies not belonging to the
+// provinces owner to an undefined location. This will be handled properly when constructing HoI4 divisions, attempting
+// to move them to the owner's capital.
+void Vic2::World::Factory::removeBattles()
+{
+	const auto armyLocations = determineArmyLocations();
+
+	for (auto& [location, armies]: armyLocations)
+	{
+		if (armies.size() == 1)
+		{
+			continue;
+		}
+		if (!world->provinces.contains(location)) // true of sea provinces
+		{
+			continue;
+		}
+		if (!armiesHaveDifferentOwners(armies))
+		{
+			continue;
+		}
+
+		const auto& provinceOwner = world->provinces.at(location)->getOwner();
+		for (const auto& army: armies)
+		{
+			if (army->getOwner() != provinceOwner)
+			{
+				army->setLocation(std::nullopt);
+			}
+		}
+	}
+}
+
+
+std::map<int, std::vector<Vic2::Army*>> Vic2::World::Factory::determineArmyLocations() const
+{
+	std::map<int, std::vector<Army*>> armyLocations;
+
+	for (auto& [tag, country]: world->countries)
+	{
+		for (auto& army: country->getModifiableArmies())
+		{
+			auto possibleLocation = army.getLocation();
+			if (possibleLocation)
+			{
+				auto [iterator, inserted] =
+					 armyLocations.insert(std::make_pair(*possibleLocation, std::vector<Army*>{&army}));
+				if (!inserted)
+				{
+					iterator->second.push_back(&army);
+				}
+			}
+		}
+	}
+
+	return armyLocations;
+}
+
+
+bool Vic2::World::Factory::armiesHaveDifferentOwners(const std::vector<Army*>& armies)
+{
+	auto armiesFromDifferentOwners = false;
+	auto firstOwner = (*armies.begin())->getOwner();
+	for (const auto& army: armies)
+	{
+		if (army->getOwner() != firstOwner)
+		{
+			armiesFromDifferentOwners = true;
+			break;
+		}
+	}
+
+	return armiesFromDifferentOwners;
 }

@@ -119,10 +119,10 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 		country->vic2AI = std::make_unique<Vic2AI>(theStream);
 	});
 	registerKeyword("army", [this](const std::string& unused, std::istream& theStream) {
-		country->armies.push_back(*armyFactory.getArmy(theStream));
+		country->armies.push_back(*armyFactory.getArmy(country->tag, theStream));
 	});
 	registerKeyword("navy", [this](const std::string& unused, std::istream& theStream) {
-		const auto navy = armyFactory.getArmy(theStream);
+		const auto navy = armyFactory.getArmy(country->tag, theStream);
 		for (auto& transportedArmy: navy->getTransportedArmies())
 		{
 			country->armies.push_back(transportedArmy);

@@ -1000,6 +1000,32 @@ TEST(Vic2World_Countries_CountryTests, ArmiesCanBeAdded)
 }
 
 
+TEST(Vic2World_Countries_CountryTests, ArmiesCanBeModified)
+{
+	std::stringstream theStream;
+	theStream << "= {\n";
+	theStream << "\truling_party = 1\n";
+	theStream << "\tarmy=\n";
+	theStream << "\t{\n";
+	theStream << "\t\t\tname=\"42nd Army\"\n";
+	theStream << "\t}\n";
+	theStream << "}";
+	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+							 .createCountry("TAG",
+								  theStream,
+								  *Vic2::CommonCountryData::Builder{}.Build(),
+								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
+								  *Vic2::StateLanguageCategories::Builder{}.build());
+
+	ASSERT_EQ(1, country->getModifiableArmies().size());
+	country->getModifiableArmies()[0].setLocation(144);
+
+	ASSERT_EQ(144, country->getArmies()[0].getLocation());
+}
+
+
 TEST(Vic2World_Countries_CountryTests, NaviesCanBeAdded)
 {
 	std::stringstream theStream;

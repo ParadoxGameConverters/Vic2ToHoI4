@@ -92,6 +92,8 @@ class Country
 	[[nodiscard]] bool isAtWar() const { return atWar; }
 	[[nodiscard]] const auto& getWars() const { return wars; }
 
+	[[nodiscard]] auto& getModifiableArmies() { return armies; }
+
 	[[nodiscard]] bool hasCoreOnCapital() const;
 	[[nodiscard]] int32_t getEmployedWorkers() const;
 	[[nodiscard]] float getAverageIssueSupport(const std::string& issueName) const;
