@@ -4,7 +4,7 @@
 
 
 
-TEST(Vic2World_AI_Strategy_Tests, TypeNotSetWhenNotInitialized)
+TEST(Vic2World_AI_Strategy_Tests, TypeDefaultsToEmpty)
 {
 	std::stringstream input;
 	const auto newAiStrategy = Vic2::AIStrategy::Factory{}.importStrategy("", input);
@@ -13,7 +13,7 @@ TEST(Vic2World_AI_Strategy_Tests, TypeNotSetWhenNotInitialized)
 }
 
 
-TEST(Vic2World_AI_Strategy_Tests, TypeSetWhenInitialized)
+TEST(Vic2World_AI_Strategy_Tests, TypeCanBeSet)
 {
 	std::stringstream input;
 	const auto newAiStrategy = Vic2::AIStrategy::Factory{}.importStrategy("threat", input);
@@ -22,7 +22,7 @@ TEST(Vic2World_AI_Strategy_Tests, TypeSetWhenInitialized)
 }
 
 
-TEST(Vic2World_AI_Strategy_Tests, IdNotSetWhenNotGivenInput)
+TEST(Vic2World_AI_Strategy_Tests, IdDefaultsToEmpty)
 {
 	std::stringstream input;
 	const auto newAiStrategy = Vic2::AIStrategy::Factory{}.importStrategy("", input);
@@ -31,7 +31,7 @@ TEST(Vic2World_AI_Strategy_Tests, IdNotSetWhenNotGivenInput)
 }
 
 
-TEST(Vic2World_AI_Strategy_Tests, IdSetWhenGivenInput)
+TEST(Vic2World_AI_Strategy_Tests, IdCanBeSet)
 {
 	std::stringstream input;
 	input << "id=\"BAV\"";
@@ -41,7 +41,7 @@ TEST(Vic2World_AI_Strategy_Tests, IdSetWhenGivenInput)
 }
 
 
-TEST(Vic2World_AI_Strategy_Tests, ProvIDNotSetWhenNotGivenInput)
+TEST(Vic2World_AI_Strategy_Tests, ProvIdDefaultsToZero)
 {
 	std::stringstream input;
 	const auto newAiStrategy = Vic2::AIStrategy::Factory{}.importStrategy("", input);
@@ -50,7 +50,7 @@ TEST(Vic2World_AI_Strategy_Tests, ProvIDNotSetWhenNotGivenInput)
 }
 
 
-TEST(Vic2World_AI_Strategy_Tests, ProvIDSetWhenGivenInput)
+TEST(Vic2World_AI_Strategy_Tests, ProvIdCanBeSet)
 {
 	std::stringstream input;
 	input << "id=266";
@@ -60,7 +60,7 @@ TEST(Vic2World_AI_Strategy_Tests, ProvIDSetWhenGivenInput)
 }
 
 
-TEST(Vic2World_AI_Strategy_Tests, ValueNotSetWhenNotGivenInput)
+TEST(Vic2World_AI_Strategy_Tests, ValueDefaultsToZero)
 {
 	std::stringstream input;
 	const auto newAiStrategy = Vic2::AIStrategy::Factory{}.importStrategy("", input);
@@ -69,7 +69,7 @@ TEST(Vic2World_AI_Strategy_Tests, ValueNotSetWhenNotGivenInput)
 }
 
 
-TEST(Vic2World_AI_Strategy_Tests, ValueSetWhenGivenInput)
+TEST(Vic2World_AI_Strategy_Tests, ValueCanBeSet)
 {
 	std::stringstream input;
 	input << "value=8";
