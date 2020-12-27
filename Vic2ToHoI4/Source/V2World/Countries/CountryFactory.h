@@ -7,6 +7,7 @@
 #include "Configuration.h"
 #include "Country.h"
 #include "Parser.h"
+#include "V2World/Ai/AIFactory.h"
 #include "V2World/Culture/CultureGroups.h"
 #include "V2World/Diplomacy/RelationsFactory.h"
 #include "V2World/Military/ArmyFactory.h"
@@ -46,6 +47,7 @@ class Country::Factory: commonItems::parser
 	std::unique_ptr<Leader::Factory> leaderFactory;
 	std::unique_ptr<State::Factory> stateFactory;
 	TechnologyFactory technologyFactory;
+	AI::Factory aiFactory;
 
 	std::unique_ptr<Country> country;
 };
