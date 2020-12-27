@@ -16,7 +16,6 @@ Vic2::AI::Factory::Factory()
 }
 
 
-
 std::unique_ptr<Vic2::AI> Vic2::AI::Factory::importAI(std::istream& theStream)
 {
 	ai = std::make_unique<AI>();
