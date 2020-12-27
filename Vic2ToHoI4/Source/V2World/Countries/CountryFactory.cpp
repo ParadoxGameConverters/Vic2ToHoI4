@@ -116,7 +116,7 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 		country->relations.insert(std::make_pair(countryTag, *relationsFactory.getRelations(theStream)));
 	});
 	registerKeyword("ai", [this](const std::string& unused, std::istream& theStream) {
-		country->vic2AI = std::make_unique<Vic2AI>(theStream);
+		country->vic2AI = aiFactory.importAI(theStream);
 	});
 	registerKeyword("army", [this](const std::string& unused, std::istream& theStream) {
 		country->armies.push_back(*armyFactory.getArmy(country->tag, theStream));
@@ -162,8 +162,7 @@ std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::
 
 	if (!country->vic2AI)
 	{
-		std::stringstream input;
-		country->vic2AI = std::make_unique<Vic2AI>(input);
+		country->vic2AI = std::make_unique<AI>();
 	}
 
 	setStateLanguageCategories(stateLanguageCategories);

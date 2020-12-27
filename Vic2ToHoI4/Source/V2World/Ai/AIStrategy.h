@@ -1,24 +1,24 @@
-#ifndef VIC2_AI_STRATEGY_H_
-#define VIC2_AI_STRATEGY_H_
+#ifndef VIC2_AI_STRATEGY_H
+#define VIC2_AI_STRATEGY_H
 
 
 
-#include "Parser.h"
+#include <string>
 
 
 
 namespace Vic2
 {
 
-class AIStrategy: commonItems::parser
+class AIStrategy
 {
   public:
-	explicit AIStrategy(const std::string& strategyType, std::istream& theStream);
+	class Factory;
 
-	const auto& getType() const { return type; }
-	const auto& getID() const { return id; }
-	int getProvID() const { return provID; }
-	int getValue() const { return value; }
+	[[nodiscard]] const auto& getType() const { return type; }
+	[[nodiscard]] const auto& getID() const { return id; }
+	[[nodiscard]] int getProvID() const { return provID; }
+	[[nodiscard]] int getValue() const { return value; }
 
   private:
 	std::string type;
@@ -31,4 +31,4 @@ class AIStrategy: commonItems::parser
 
 
 
-#endif // VIC2_AISTRATEGY_H_
+#endif // VIC2_AI_STRATEGY_H

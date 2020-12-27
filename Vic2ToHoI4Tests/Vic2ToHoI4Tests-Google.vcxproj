@@ -288,13 +288,14 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Sounds\OutSounds.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4States.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\AI.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\AIFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\AIStrategyFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountriesDataFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountryDataFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\Country.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CountryFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\UnitNamesFactory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\AIStrategy.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\Vic2AI.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroupFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroups.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroupsFactory.cpp" />
@@ -444,7 +445,7 @@
     <ClCompile Include="MapperTests\FlagToIdeaMappingTests.cpp" />
     <ClCompile Include="MapperTests\TechMapperTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\AIStrategyTests.cpp" />
-    <ClCompile Include="Vic2WorldTests\Ai\Vic2AITests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Ai\AITests.cpp" />
     <ClCompile Include="Vic2WorldTests\Countries\CommonCountriesDataFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Countries\CommonCountryDataTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Countries\CountryTests.cpp" />

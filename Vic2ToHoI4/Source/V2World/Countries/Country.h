@@ -6,7 +6,7 @@
 #include "Color.h"
 #include "Date.h"
 #include "Parser.h"
-#include "V2World/Ai/Vic2AI.h"
+#include "V2World/Ai/AI.h"
 #include "V2World/Culture/CultureGroups.h"
 #include "V2World/Diplomacy/Relations.h"
 #include "V2World/Localisations/Vic2Localisations.h"
@@ -124,7 +124,7 @@ class Country
 	std::set<std::string> technologiesAndInventions;
 
 	std::map<std::string, Relations> relations;
-	std::unique_ptr<Vic2AI> vic2AI;
+	std::unique_ptr<AI> vic2AI;
 	bool civilized = false;
 
 	std::vector<Army> armies;
