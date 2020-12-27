@@ -1105,9 +1105,6 @@
     <ClCompile Include="Source\V2World\Ai\Vic2AI.cpp">
       <Filter>Vic2World\Ai</Filter>
     </ClCompile>
-    <ClCompile Include="Source\V2World\Ai\AIStrategy.cpp">
-      <Filter>Vic2World\Ai</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4AIStrategy.cpp">
       <Filter>HoI4World\Diplomacy</Filter>
     </ClCompile>
@@ -1146,6 +1143,9 @@
     </ClCompile>
     <ClCompile Include="Source\V2World\World\WorldFactory.cpp">
       <Filter>Vic2World\World</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Ai\AIStrategyFactory.cpp">
+      <Filter>Vic2World\Ai</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2219,6 +2219,9 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Military\ArmyBuilder.h">
       <Filter>Vic2World\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Ai\AIStrategyFactory.h">
+      <Filter>Vic2World\Ai</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

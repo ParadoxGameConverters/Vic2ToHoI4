@@ -1271,9 +1271,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\AiStrategy\OutAiStrategy.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\AiStrategy</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\AIStrategy.cpp">
-      <Filter>Vic2ToHoI4 files\Vic2\Ai</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\Vic2AI.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Ai</Filter>
     </ClCompile>
@@ -1343,6 +1340,9 @@
     </ClCompile>
     <ClCompile Include="Vic2WorldTests\World\WorldTests.cpp">
       <Filter>Vic2WorldTests\World</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\AIStrategyFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Ai</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1983,10 +1983,6 @@
     <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="TestFiles\World\ResolveBattlesWorld.v2">
-      <Filter>TestFiles\World</Filter>
-    </Text>
+    <CopyFileToFolders Include="TestFiles\World\ResolveBattlesWorld.v2" />
   </ItemGroup>
 </Project>

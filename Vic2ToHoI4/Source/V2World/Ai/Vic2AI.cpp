@@ -1,5 +1,6 @@
 #include "Vic2AI.h"
 #include "AIStrategy.h"
+#include "AIStrategyFactory.h"
 #include "ParserHelpers.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/World/World.h"
@@ -8,15 +9,18 @@
 
 Vic2::Vic2AI::Vic2AI(std::istream& theStream)
 {
+	AIStrategy::Factory aiStrategyFactory;
+
 	registerRegex("threat|antagonize|befriend|protect|rival",
-		 [this](const std::string& strategyType, std::istream& theStream) {
-			 const auto& strategy = AIStrategy(strategyType, theStream);
-			 aiStrategies.push_back(strategy);
+		 [this, &aiStrategyFactory](const std::string& strategyType, std::istream& theStream) {
+			 const auto& strategy = aiStrategyFactory.importStrategy(strategyType, theStream);
+			 aiStrategies.push_back(*strategy);
 		 });
-	registerKeyword("conquer_prov", [this](const std::string& strategyType, std::istream& theStream) {
-		const auto& conquerStrategy = AIStrategy(strategyType, theStream);
-		conquerStrategies.push_back(conquerStrategy);
-	});
+	registerKeyword("conquer_prov",
+		 [this, &aiStrategyFactory](const std::string& strategyType, std::istream& theStream) {
+			 const auto& conquerStrategy = aiStrategyFactory.importStrategy(strategyType, theStream);
+			 conquerStrategies.push_back(*conquerStrategy);
+		 });
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);

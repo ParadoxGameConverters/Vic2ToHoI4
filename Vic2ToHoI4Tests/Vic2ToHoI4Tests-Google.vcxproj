@@ -288,12 +288,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Sounds\OutSounds.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4States.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\AIStrategyFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountriesDataFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountryDataFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\Country.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CountryFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\UnitNamesFactory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\AIStrategy.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Ai\Vic2AI.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroupFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroups.cpp" />
