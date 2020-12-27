@@ -19,10 +19,28 @@ void HoI4::outAiPeaces(const AiPeaces& aiPeaces,
 			}
 			outFile.close();
 		}
+		if (thePeace.getName() == "radical_peace")
+		{
+			std::ofstream outFile("output/" + outputName + "/common/ai_peace/1_radical.txt");
+			if (majorIdeologies.contains("radical"))
+			{
+				outFile << thePeace;
+			}
+			outFile.close();
+		}
 		else if (thePeace.getName() == "fascist_peace")
 		{
 			std::ofstream outFile("output/" + outputName + "/common/ai_peace/1_fascist.txt");
 			if (majorIdeologies.contains("fascism"))
+			{
+				outFile << thePeace;
+			}
+			outFile.close();
+		}
+		else if (thePeace.getName() == "absolutist_peace")
+		{
+			std::ofstream outFile("output/" + outputName + "/common/ai_peace/1_absolutist.txt");
+			if (majorIdeologies.contains("absolutist"))
 			{
 				outFile << thePeace;
 			}
