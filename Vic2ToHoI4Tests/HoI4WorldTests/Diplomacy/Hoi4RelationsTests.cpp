@@ -93,9 +93,27 @@ TEST(HoI4World_Diplomacy_RelationsTests, influenceValueDefaultsToZero)
 }
 
 
-TEST(HoI4World_Diplomacy_RelationsTests, influenceValueInheretedFromOldRelations)
+TEST(HoI4World_Diplomacy_RelationsTests, influenceValueInheritedFromOldRelations)
 {
 	const HoI4::Relations relations("TAG", *Vic2::Relations::Builder{}.setInfluenceValue(56).build());
 
 	ASSERT_EQ(relations.getInfluenceValue(), 56);
+}
+
+
+TEST(HoI4World_Diplomacy_RelationsTests, hasMilitaryAccessDefaultsToFalse)
+{
+	const HoI4::Relations relations("TAG");
+
+	ASSERT_FALSE(relations.hasMilitaryAccess());
+}
+
+
+TEST(HoI4World_Diplomacy_RelationsTests, hasMilitaryAccessInheritedFromOldMilitaryAccess)
+{
+	const HoI4::Relations relationsWithAccess("TAG", *Vic2::Relations::Builder{}.setMilitaryAccess(true).build());
+	ASSERT_TRUE(relationsWithAccess.hasMilitaryAccess());
+
+	const HoI4::Relations relationsWithoutAccess("TAG", *Vic2::Relations::Builder{}.setMilitaryAccess(false).build());
+	ASSERT_FALSE(relationsWithoutAccess.hasMilitaryAccess());
 }

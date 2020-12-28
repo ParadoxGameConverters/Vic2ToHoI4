@@ -22,7 +22,7 @@ class Relations
 		 tag(std::move(newTag)), value(oldRelations.getRelations()),
 		 guarantee(oldRelations.getLevel() >= Vic2::opinionLevel::friendly),
 		 sphereLeader(oldRelations.getLevel() == Vic2::opinionLevel::in_sphere),
-		 influenceValue(oldRelations.getInfluenceValue())
+		 influenceValue(oldRelations.getInfluenceValue()), militaryAccess(oldRelations.hasMilitaryAccess())
 	{
 	}
 
@@ -31,6 +31,7 @@ class Relations
 	[[nodiscard]] bool getGuarantee() const { return guarantee; }
 	[[nodiscard]] bool getSphereLeader() const { return sphereLeader; }
 	[[nodiscard]] int getInfluenceValue() const { return influenceValue; }
+	[[nodiscard]] bool hasMilitaryAccess() const { return militaryAccess; }
 
   private:
 	std::string tag;
@@ -38,6 +39,7 @@ class Relations
 	bool guarantee;
 	bool sphereLeader;
 	int influenceValue;
+	bool militaryAccess = false;
 };
 
 } // namespace HoI4
