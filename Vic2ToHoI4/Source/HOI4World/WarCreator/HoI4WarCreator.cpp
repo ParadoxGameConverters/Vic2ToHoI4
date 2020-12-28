@@ -323,22 +323,25 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findEvilCountries() 
 			}
 		}
 
-		auto warPolicy = country.second->getRulingParty().getWarPolicy();
-		if (warPolicy == "jingoism")
+		if (const auto& rulingParty = country.second->getRulingParty(); rulingParty != std::nullopt)
 		{
-			evilness += 3;
-		}
-		else if (warPolicy == "pro_military")
-		{
-			evilness += 2;
-		}
-		else if (warPolicy == "anti_military")
-		{
-			evilness -= 1;
-		}
-		else if (warPolicy == "pacifism")
-		{
-			evilness -= 3;
+			auto warPolicy = rulingParty->getWarPolicy();
+			if (warPolicy == "jingoism")
+			{
+				evilness += 3;
+			}
+			else if (warPolicy == "pro_military")
+			{
+				evilness += 2;
+			}
+			else if (warPolicy == "anti_military")
+			{
+				evilness -= 1;
+			}
+			else if (warPolicy == "pacifism")
+			{
+				evilness -= 3;
+			}
 		}
 
 		if (evilness > 2)
@@ -1120,7 +1123,8 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(shared_ptr
 				if ((party.first == "socialist") || (party.first == "communist") || (party.first == "anarcho_liberal"))
 					com += party.second;
 			}
-			if (com > 25 && neigh.second->getRulingParty().getIdeology() != "communist" &&
+			if (const auto& rulingParty = neigh.second->getRulingParty();
+				 com > 25 && rulingParty->getIdeology() != "communist" &&
 				 HowToTakeLand(neigh.second, Leader, 2.5) == "coup")
 			{
 				// look for neighboring countries to spread communism too(Need 25 % or more Communism support), Prioritizing
@@ -1129,7 +1133,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(shared_ptr
 				// Attempt Coup
 				coups.push_back(neigh.second);
 			}
-			else if (neighFaction->getMembers().size() == 1 && neigh.second->getRulingParty().getIdeology() != "communist")
+			else if (neighFaction->getMembers().size() == 1 && rulingParty->getIdeology() != "communist")
 			{
 				//	Then look for neighboring countries to spread communism by force, prioritizing weakest first
 				forcedtakeover.push_back(neigh.second);

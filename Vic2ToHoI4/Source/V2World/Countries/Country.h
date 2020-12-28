@@ -138,9 +138,8 @@ class Country
 
 	std::string government;
 	std::map<std::string, double> upperHouseComposition;
-	unsigned int rulingPartyID = 0; // Bad value, but normal for Rebel faction.
 	std::vector<unsigned int> activePartyIDs;
-	Party rulingParty;
+	std::optional<Party> rulingParty;
 	std::set<Party> activeParties;
 	date lastElection;
 

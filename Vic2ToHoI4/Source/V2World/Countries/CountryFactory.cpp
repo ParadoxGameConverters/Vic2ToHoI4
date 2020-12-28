@@ -91,13 +91,13 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 	registerKeyword("active_party", [this](const std::string& unused, std::istream& theStream) {
 		const auto partyNum = commonItems::singleInt(theStream).getInt();
 		country->activePartyIDs.push_back(partyNum);
-		if (country->rulingPartyID == 0)
+		if (rulingPartyID == 0)
 		{
-			country->rulingPartyID = partyNum;
+			rulingPartyID = partyNum;
 		}
 	});
 	registerKeyword("ruling_party", [this](const std::string& unused, std::istream& theStream) {
-		country->rulingPartyID = commonItems::singleInt{theStream}.getInt();
+		rulingPartyID = commonItems::singleInt{theStream}.getInt();
 	});
 	registerKeyword("upper_house", [this](const std::string& unused, std::istream& theStream) {
 		for (const auto& [ideology, amountString]: commonItems::assignments{theStream}.getAssignments())
@@ -156,6 +156,7 @@ std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::
 	country->color = commonCountryData.getColor();
 	country->shipNames = commonCountryData.getUnitNames();
 
+	rulingPartyID = 0; // Bad value, but normal for Rebel faction.
 	parseStream(theStream);
 	setParties(allParties);
 	limitCommanders();
@@ -189,18 +190,20 @@ void Vic2::Country::Factory::setParties(const std::vector<Party>& allParties)
 		}
 	}
 
-	if (country->rulingPartyID == 0)
+	if (rulingPartyID == 0)
 	{
-		throw std::runtime_error(country->tag + " had no ruling party. The save needs manual repair.");
+		LOG(LogLevel::Warning) << country->tag << " had no ruling party. The save may need manual repair.";
 	}
-	if (country->rulingPartyID > allParties.size())
+	else if (rulingPartyID > allParties.size())
 	{
 		throw std::runtime_error(
 			 "Could not find the ruling party for " + country->tag + ". " + "Most likely a mod was not included.\n" +
 			 "Double-check your settings, and remember to include EU4 to Vic2 mods. See the FAQ for more information.");
 	}
-	country->rulingParty =
-		 allParties.at(country->rulingPartyID - 1); // Subtract 1, because party ID starts from index of 1
+	else
+	{
+		country->rulingParty = allParties.at(rulingPartyID - 1); // Subtract 1, because party ID starts from index of 1
+	}
 }
 
 

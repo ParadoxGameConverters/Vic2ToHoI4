@@ -614,22 +614,25 @@ void HoI4FocusTree::addDemocracyNationalFocuses(shared_ptr<HoI4::Country> Home,
 	double WTModifier = 1;
 	if (Home->getGovernmentIdeology() == "democratic")
 	{
-		string warPol = Home->getRulingParty().getWarPolicy();
-		if (warPol == "jingoism")
+		if (const auto& rulingParty = Home->getRulingParty(); rulingParty != std::nullopt)
 		{
-			WTModifier = 0;
-		}
-		if (warPol == "pro_military")
-		{
-			WTModifier = 0.25;
-		}
-		if (warPol == "anti_military")
-		{
-			WTModifier = 0.5;
-		}
-		if (warPol == "pacifism" || warPol == "pacifist")
-		{
-			WTModifier = 0.5;
+			string warPol = rulingParty->getWarPolicy();
+			if (warPol == "jingoism")
+			{
+				WTModifier = 0;
+			}
+			if (warPol == "pro_military")
+			{
+				WTModifier = 0.25;
+			}
+			if (warPol == "anti_military")
+			{
+				WTModifier = 0.5;
+			}
+			if (warPol == "pacifism" || warPol == "pacifist")
+			{
+				WTModifier = 0.5;
+			}
 		}
 	}
 

@@ -146,7 +146,12 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	 Localisation& hoi4Localisations,
 	 bool debug)
 {
-	auto rulingIdeology = rulingParty.getIdeology();
+	if (rulingParty == std::nullopt)
+	{
+		return;
+	}
+
+	auto rulingIdeology = rulingParty->getIdeology();
 	governmentIdeology = governmentMap.getIdeologyForCountry(oldTag, oldGovernment, rulingIdeology, debug);
 	leaderIdeology = governmentMap.getLeaderIdeologyForCountry(oldTag, oldGovernment, rulingIdeology, debug);
 	for (const auto& party: parties)
@@ -178,9 +183,13 @@ void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies,
 			}
 		}
 	}
-	hoi4Localisations.addPoliticalPartyLocalisation(rulingParty.getName(),
-		 tag + "_" + governmentIdeology + "_party",
-		 vic2Localisations);
+
+	if (rulingParty != std::nullopt)
+	{
+		hoi4Localisations.addPoliticalPartyLocalisation(rulingParty->getName(),
+			 tag + "_" + governmentIdeology + "_party",
+			 vic2Localisations);
+	}
 }
 
 
@@ -209,11 +218,11 @@ void HoI4::Country::initIdeas(Names& names, Localisation& hoi4Localisations) con
 void HoI4::Country::convertLaws()
 {
 	// mobilization laws are based on the ruling party's war policy
-	if (rulingParty.getWarPolicy() == "jingoism")
+	if (rulingParty->getWarPolicy() == "jingoism")
 	{
 		mobilizationLaw = "limited_conscription";
 	}
-	else if (rulingParty.getWarPolicy() == "pacifism")
+	else if (rulingParty->getWarPolicy() == "pacifism")
 	{
 		mobilizationLaw = "disarmed_nation";
 	}
@@ -548,15 +557,20 @@ void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>&
 	 const governmentMapper& governmentMap,
 	 bool debug)
 {
+	if (rulingParty == std::nullopt)
+	{
+		return;
+	}
+
 	governmentIdeology = governmentMap.getExistingIdeologyForCountry(tag,
 		 oldGovernment,
-		 rulingParty.getIdeology(),
+		 rulingParty->getIdeology(),
 		 majorIdeologies,
 		 ideologies,
 		 debug);
 	leaderIdeology = governmentMap.getExistingLeaderIdeologyForCountry(tag,
 		 oldGovernment,
-		 rulingParty.getIdeology(),
+		 rulingParty->getIdeology(),
 		 majorIdeologies,
 		 ideologies,
 		 debug);

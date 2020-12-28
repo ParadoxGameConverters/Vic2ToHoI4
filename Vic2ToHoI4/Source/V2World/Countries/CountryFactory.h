@@ -50,6 +50,7 @@ class Country::Factory: commonItems::parser
 	AI::Factory aiFactory;
 
 	std::unique_ptr<Country> country;
+	unsigned int rulingPartyID;
 };
 
 } // namespace Vic2
