@@ -1739,7 +1739,7 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionLogsErrorOnBadInput)
 		 log.str());
 }
 
-#pragma optimize("",off)
+
 TEST(Vic2World_Countries_CountryTests, RulingPartyUnsetLogsWarning)
 {
 	std::stringstream log;
@@ -1764,7 +1764,7 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyUnsetLogsWarning)
 		 log.str());
 	ASSERT_EQ(std::nullopt, country->getRulingParty());
 }
-#pragma optimize("", on)
+
 
 TEST(Vic2World_Countries_CountryTests, RulingPartyNonexistantThrowsException)
 {
