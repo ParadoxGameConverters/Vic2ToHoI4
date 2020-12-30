@@ -1,0 +1,50 @@
+1 = {
+	owner="TWO"
+}
+2 = {
+	owner="ONE"
+}
+3 = {
+	owner="NON"
+}
+ONE = {
+	ruling_party=1
+	army={
+		name="No location army"
+	}
+	army={
+		name="Non-existent location army"
+		location=5
+	}
+	army={
+		name="No-owner province army"
+		location=4
+	}
+	army={
+		name="In owned territory army"
+		location=2
+	}
+	army={
+		name="In at-war province army"
+		location=1
+	}
+	army={
+		name="In non-at-war province army"
+		location=3
+	}
+}
+TWO = {
+	ruling_party=2
+}
+NON = {
+	ruling_party=3
+	army={
+		name="Not at war country army"
+		location=1
+	}
+}
+active_war = {
+	original_attacker="ONE"
+	attacker="ONE"
+	defender="TWO"
+}

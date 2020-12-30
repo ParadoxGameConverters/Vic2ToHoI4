@@ -1,4 +1,5 @@
 #include "OutHoi4Country.h"
+#include "AiStrategy/OutAiStrategy.h"
 #include "Date.h"
 #include "HOI4World/Diplomacy/Faction.h"
 #include "HOI4World/HoI4Country.h"
@@ -7,7 +8,6 @@
 #include "HOI4World/Military/DivisionTemplate.h"
 #include "HOI4World/Names/Names.h"
 #include "HOI4World/Navies/NavyNames.h"
-#include "AiStrategy/OutAiStrategy.h"
 #include "Leaders/OutAdmiral.h"
 #include "Leaders/OutAdvisor.h"
 #include "Leaders/OutCountryLeader.h"
@@ -552,16 +552,17 @@ void outputRelations(std::ostream& output,
 	 const std::string& tag,
 	 const std::map<std::string, HoI4::Relations>& relations)
 {
-	for (auto& relation: relations)
+	for (const auto& [relationTarget, relation]: relations)
 	{
-		if (relation.first != tag)
+		if (relationTarget == tag)
 		{
-			if (relation.second.getRelations() == 0)
-			{
-				continue;
-			}
-			output << "add_opinion_modifier = { target = " << relation.first << " modifier = ";
-			const auto relationsValue = relation.second.getRelations();
+			continue;
+		}
+
+		if (relation.getRelations() != 0)
+		{
+			output << "add_opinion_modifier = { target = " << relationTarget << " modifier = ";
+			const auto relationsValue = relation.getRelations();
 			if (relationsValue < 0)
 			{
 				output << "negative_";
@@ -571,6 +572,10 @@ void outputRelations(std::ostream& output,
 				output << "positive_";
 			}
 			output << abs(relationsValue) << " }\n";
+		}
+		if (relation.hasMilitaryAccess())
+		{
+			output << "give_military_access = " << relationTarget << "\n";
 		}
 	}
 	output << "\n";
