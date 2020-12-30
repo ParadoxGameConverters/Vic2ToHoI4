@@ -7,6 +7,9 @@
 3 = {
 	owner="ONE"
 }
+4 = {
+	owner="ONE"
+}
 ONE = {
 	ruling_party=1
 	army={
@@ -14,7 +17,7 @@ ONE = {
 	}
 	army={
 		name="Only by itself army"
-		location=1
+		location=4
 	}
 	army={
 		name="First in same-country province"
@@ -30,11 +33,11 @@ ONE = {
 	}
 	army={
 		name="Non-existent province army"
-		location=4
+		location=5
 	}
 	army={
 		name="Second non-existent province army"
-		location=4
+		location=5
 	}
 }
 TWO = {

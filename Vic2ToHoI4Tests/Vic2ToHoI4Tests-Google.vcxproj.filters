@@ -1745,6 +1745,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="TestFiles\World\MoveArmiesWorld.v2">
+      <Filter>TestFiles\World</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h">
@@ -1986,6 +1989,8 @@
     <CopyFileToFolders Include="TestFiles\Vic2Military\traits.txt">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\World\ResolveBattlesWorld.v2" />
+    <CopyFileToFolders Include="TestFiles\World\ResolveBattlesWorld.v2">
+      <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>
