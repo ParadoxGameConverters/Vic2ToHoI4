@@ -1740,30 +1740,29 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionLogsErrorOnBadInput)
 }
 
 
-TEST(Vic2World_Countries_CountryTests, RulingPartyUnsetThrowsException)
+TEST(Vic2World_Countries_CountryTests, RulingPartyUnsetLogsWarning)
 {
-	std::stringstream theStream;
-	auto countryFactory = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
-		 *Vic2::StateDefinitions::Builder{}.build(),
-		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())};
+	std::stringstream log;
+	auto* stdOutBuf = std::cout.rdbuf();
+	std::cout.rdbuf(log.rdbuf());
 
-	ASSERT_THROW(
-		 {
-			 try
-			 {
-				 countryFactory.createCountry("TAG",
-					  theStream,
-					  *Vic2::CommonCountryData::Builder{}.Build(),
-					  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-					  *Vic2::StateLanguageCategories::Builder{}.build());
-			 }
-			 catch (const std::runtime_error& e)
-			 {
-				 EXPECT_STREQ("TAG had no ruling party. The save needs manual repair.", e.what());
-				 throw;
-			 }
-		 },
-		 std::runtime_error);
+	std::stringstream theStream;
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
+										  *Vic2::StateLanguageCategories::Builder{}.build());
+	std::cout.rdbuf(stdOutBuf);
+
+	ASSERT_EQ(
+		 "    [INFO] Determining culture groups\n"
+		 "   [ERROR] Could not open /common/cultures.txt for parsing.\n"
+		 " [WARNING] TAG had no ruling party. The save may need manual repair.\n",
+		 log.str());
+	ASSERT_EQ(std::nullopt, country->getRulingParty());
 }
 
 
@@ -1817,7 +1816,8 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyCanBeSet)
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.setName("test_party").Build()},
 										  *Vic2::StateLanguageCategories::Builder{}.build());
 
-	ASSERT_EQ("test_party", country->getRulingParty().getName());
+	ASSERT_NE(std::nullopt, country->getRulingParty());
+	ASSERT_EQ("test_party", country->getRulingParty()->getName());
 }
 
 
@@ -1836,7 +1836,7 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyNotSetForRebel)
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.setName("test_party").Build()},
 										  *Vic2::StateLanguageCategories::Builder{}.build());
 
-	ASSERT_TRUE(country->getRulingParty().getName().empty());
+	ASSERT_EQ(std::nullopt, country->getRulingParty());
 }
 
 
@@ -1933,7 +1933,8 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesCanBecomeRulingPartyIfUnset)
 												*Vic2::Party::Builder{}.setName("test_party_three").Build()},
 										  *Vic2::StateLanguageCategories::Builder{}.build());
 
-	ASSERT_EQ("test_party_three", country->getRulingParty().getName());
+	ASSERT_NE(std::nullopt, country->getRulingParty());
+	ASSERT_EQ("test_party_three", country->getRulingParty()->getName());
 }
 
 
