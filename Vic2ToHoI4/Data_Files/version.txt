@@ -2,4 +2,4 @@
 
 version = "0.2NO-Prerelease"
 name = "Oppenheimer"
-descriptionLine = "compatible with 1.10.1"
+descriptionLine = "compatible with 1.10.2"
