@@ -41,6 +41,7 @@ class World::Factory: commonItems::parser
 	void mergeNations(const std::string& masterTag, const std::vector<std::string>& slaveTags, bool debug);
 	void checkAllProvincesMapped(const mappers::ProvinceMapper& provinceMapper) const;
 	void consolidateConquerStrategies();
+	void moveArmiesHome();
 	void removeBattles();
 	[[nodiscard]] std::map<int, std::vector<Army*>> determineArmyLocations() const;
 	[[nodiscard]] static bool armiesHaveDifferentOwners(const std::vector<Army*>& armies);

@@ -441,6 +441,36 @@ TEST(Vic2World_World_WorldTests, ConquerStrategiesAreConsolidated)
 }
 
 
+TEST(Vic2World_World_WorldTests, ArmiesAreMovedHome)
+{
+	const auto world = Vic2::World::Factory{*Configuration::Builder{}.setVic2Path("V2World").build()}.importWorld(
+		 *Configuration::Builder{}
+				.setVic2Path("ResolveBattlesWorld")
+				.setInputFile("ResolveBattlesWorld/ResolveBattlesWorld.v2")
+				.setRemoveCores(false)
+				.build(),
+		 mappers::ProvinceMapper{mappers::HoI4ToVic2ProvinceMapping{}, mappers::Vic2ToHoI4ProvinceMapping{}});
+
+	ASSERT_TRUE(world->getCountries().contains("ONE"));
+	ASSERT_THAT(world->getCountries().at("ONE")->getArmies(),
+		 testing::ElementsAre(
+			  *Vic2::Army::Builder{}.setOwner("ONE").setName("No location army").setLocation(std::nullopt).Build(),
+			  *Vic2::Army::Builder{}.setOwner("ONE").setName("Only by itself army").setLocation(1).Build(),
+			  *Vic2::Army::Builder{}.setOwner("ONE").setName("First in same-country province").setLocation(2).Build(),
+			  *Vic2::Army::Builder{}.setOwner("ONE").setName("Second in same-country province").setLocation(2).Build(),
+			  *Vic2::Army::Builder{}.setOwner("ONE").setName("First in different-country province").setLocation(3).Build(),
+			  *Vic2::Army::Builder{}.setOwner("ONE").setName("Non-existent province army").setLocation(4).Build(),
+			  *Vic2::Army::Builder{}.setOwner("ONE").setName("Second non-existent province army").setLocation(4).Build()));
+	ASSERT_TRUE(world->getCountries().contains("TWO"));
+	ASSERT_THAT(world->getCountries().at("TWO")->getArmies(),
+		 testing::ElementsAre(*Vic2::Army::Builder{}
+											.setOwner("TWO")
+											.setName("Second in different-country province")
+											.setLocation(std::nullopt)
+											.Build()));
+}
+
+
 TEST(Vic2World_World_WorldTests, BattlesAreResolved)
 {
 	const auto world = Vic2::World::Factory{*Configuration::Builder{}.setVic2Path("V2World").build()}.importWorld(

@@ -101,6 +101,7 @@ std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configurati
 	setLocalisations(*world->theLocalisations);
 	checkAllProvincesMapped(provinceMapper);
 	consolidateConquerStrategies();
+	moveArmiesHome();
 	removeBattles();
 
 	return std::move(world);
@@ -357,6 +358,66 @@ void Vic2::World::Factory::consolidateConquerStrategies()
 }
 
 
+// Move armies to their owner's capital (by setting location to nullopt) if they are in another nation's territory and
+// said nation isn't at war with the owner.
+void Vic2::World::Factory::moveArmiesHome()
+{
+	for (auto& [tag, country]: world->countries)
+	{
+		for (auto& army: country->getModifiableArmies())
+		{
+			// if the army doesn't have a location, there's nothing to do
+			auto possibleLocation = army.getLocation();
+			if (!possibleLocation)
+			{
+				continue;
+			}
+
+			// if the province number isn't an imported province, just continue
+			const auto& possibleProvince = world->provinces.find(*possibleLocation);
+			if (possibleProvince == world->provinces.end())
+			{
+				continue;
+			}
+
+			// if there is no province owner (such as sea provinces), the location is fine
+			const auto provinceOwner = possibleProvince->second->getOwner();
+			if (provinceOwner.empty())
+			{
+				continue;
+			}
+
+			// if in home territory the location is fine
+			if (provinceOwner == tag)
+			{
+				continue;
+			}
+
+			// if the countries are at war with another, the armies can be there
+			auto atWarWithAnother = false;
+			if (country->isAtWar())
+			{
+				for (const auto& war: wars)
+				{
+					if ((war.getAttackers().contains(tag) && war.getDefenders().contains(provinceOwner)) ||
+						 (war.getAttackers().contains(provinceOwner) && war.getDefenders().contains(tag)))
+					{
+						atWarWithAnother = true;
+					}
+				}
+			}
+			if (atWarWithAnother)
+			{
+				continue;
+			}
+
+			// enough, send the country to its owner's capital
+			army.setLocation(std::nullopt);
+		}
+	}
+}
+
+
 // Vic2 battles when opposing armies are in the same province. This is unlike HoI4 battles and actually causes an HoI4
 // crash.
 //	For all cases where armies from different countries are in the same province, move any armies not belonging to the
@@ -421,7 +482,7 @@ std::map<int, std::vector<Vic2::Army*>> Vic2::World::Factory::determineArmyLocat
 bool Vic2::World::Factory::armiesHaveDifferentOwners(const std::vector<Army*>& armies)
 {
 	auto armiesFromDifferentOwners = false;
-	auto firstOwner = (*armies.begin())->getOwner();
+	const auto& firstOwner = (*armies.begin())->getOwner();
 	for (const auto& army: armies)
 	{
 		if (army->getOwner() != firstOwner)
