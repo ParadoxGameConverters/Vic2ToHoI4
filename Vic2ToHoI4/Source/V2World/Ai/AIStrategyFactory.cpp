@@ -1,4 +1,5 @@
 #include "AIStrategyFactory.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 
@@ -22,7 +23,8 @@ Vic2::AIStrategy::Factory::Factory()
 }
 
 
-std::unique_ptr<Vic2::AIStrategy> Vic2::AIStrategy::Factory::importStrategy(const std::string& strategyType, std::istream& theStream)
+std::unique_ptr<Vic2::AIStrategy> Vic2::AIStrategy::Factory::importStrategy(const std::string& strategyType,
+	 std::istream& theStream)
 {
 	aiStrategy = std::make_unique<AIStrategy>();
 	aiStrategy->type = strategyType;

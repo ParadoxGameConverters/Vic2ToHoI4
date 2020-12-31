@@ -1,4 +1,5 @@
 #include "ArticleRulesDefinition.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 

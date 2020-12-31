@@ -1,4 +1,5 @@
 #include "LegacyShipVariant.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 #include "ShipUpgrades.h"
 

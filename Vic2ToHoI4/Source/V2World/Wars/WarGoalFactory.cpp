@@ -1,4 +1,5 @@
 #include "WarGoalFactory.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 
@@ -12,7 +13,8 @@ Vic2::WarGoalFactory::WarGoalFactory()
 }
 
 
-std::string Vic2::WarGoalFactory::getCB(std::istream& theStream){
+std::string Vic2::WarGoalFactory::getCB(std::istream& theStream)
+{
 	CB.clear();
 	parseStream(theStream);
 	return CB;

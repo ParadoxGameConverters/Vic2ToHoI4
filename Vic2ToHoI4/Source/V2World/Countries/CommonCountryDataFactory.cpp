@@ -1,6 +1,7 @@
 #include "CommonCountryDataFactory.h"
 #include "Color.h"
 #include "CommonCountryData.h"
+#include "CommonRegexes.h"
 #include "Configuration.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"

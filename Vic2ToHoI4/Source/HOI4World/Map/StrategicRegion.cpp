@@ -1,4 +1,5 @@
 #include "StrategicRegion.h"
+#include "CommonRegexes.h"
 #include "Configuration.h"
 #include "ParserHelpers.h"
 #include "Region.h"

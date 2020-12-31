@@ -1,5 +1,6 @@
 #include "StateFactory.h"
 #include "BuildingReader.h"
+#include "CommonRegexes.h"
 #include "Log.h"
 #include "ParserHelpers.h"
 #include "StateDefinitions.h"

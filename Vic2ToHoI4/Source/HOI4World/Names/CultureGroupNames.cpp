@@ -1,4 +1,5 @@
 #include "CultureGroupNames.h"
+#include "CommonRegexes.h"
 #include "CultureNames.h"
 #include "ParserHelpers.h"
 

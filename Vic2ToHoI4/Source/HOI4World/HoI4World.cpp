@@ -1,4 +1,5 @@
 #include "HoI4World.h"
+#include "CommonRegexes.h"
 #include "Configuration.h"
 #include "Decisions/Decisions.h"
 #include "Diplomacy/AiPeacesUpdater.h"

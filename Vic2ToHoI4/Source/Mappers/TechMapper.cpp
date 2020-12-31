@@ -1,4 +1,5 @@
 #include "TechMapper.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 

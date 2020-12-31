@@ -1,5 +1,5 @@
 #include "TraitsFactory.h"
-#include "ParserHelpers.h"
+#include "CommonRegexes.h"
 #include "TraitGroup.h"
 
 

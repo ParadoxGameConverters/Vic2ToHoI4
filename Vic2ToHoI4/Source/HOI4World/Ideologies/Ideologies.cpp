@@ -1,4 +1,5 @@
 #include "Ideologies.h"
+#include "CommonRegexes.h"
 #include "HOI4World/HoI4Country.h"
 #include "IdeologyFile.h"
 #include "Log.h"

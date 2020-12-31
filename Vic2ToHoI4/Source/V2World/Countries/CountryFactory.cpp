@@ -1,4 +1,5 @@
 #include "CountryFactory.h"
+#include "CommonRegexes.h"
 #include "Log.h"
 #include "ParserHelpers.h"
 #include "StringUtils.h"

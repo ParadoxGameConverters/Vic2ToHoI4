@@ -1,4 +1,5 @@
 #include "UnitFactory.h"
+#include "CommonRegexes.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 

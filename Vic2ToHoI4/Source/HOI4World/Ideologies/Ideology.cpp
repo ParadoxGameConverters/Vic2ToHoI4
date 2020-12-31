@@ -1,5 +1,6 @@
 #include "Ideology.h"
 #include "Color.h"
+#include "CommonRegexes.h"
 #include "IdeologyItems.h"
 #include "ParserHelpers.h"
 

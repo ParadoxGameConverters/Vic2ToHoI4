@@ -1,4 +1,5 @@
 #include "OperativeNamesMappingsFactory.h"
+#include "CommonRegexes.h"
 #include "OperativeNamesMappingFactory.h"
 #include "ParserHelpers.h"
 

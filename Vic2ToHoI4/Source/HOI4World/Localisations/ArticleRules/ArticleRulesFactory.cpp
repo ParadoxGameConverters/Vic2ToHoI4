@@ -1,6 +1,7 @@
 #include "ArticleRulesFactory.h"
 #include "ArticleRuleBuilder.h"
 #include "ArticleRulesDefinition.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 

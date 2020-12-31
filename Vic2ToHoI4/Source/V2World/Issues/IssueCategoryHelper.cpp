@@ -1,6 +1,6 @@
 #include "IssueCategoryHelper.h"
+#include "CommonRegexes.h"
 #include "IssueHelper.h"
-#include "ParserHelpers.h"
 
 
 

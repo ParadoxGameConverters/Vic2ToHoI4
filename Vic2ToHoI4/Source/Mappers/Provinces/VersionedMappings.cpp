@@ -1,6 +1,7 @@
 #include "VersionedMappings.h"
-#include "ProvinceMapping.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
+#include "ProvinceMapping.h"
 
 
 mappers::VersionedMappings::VersionedMappings(std::istream& theStream)
@@ -13,7 +14,7 @@ mappers::VersionedMappings::VersionedMappings(std::istream& theStream)
 		insertIntoVic2ToHoI4ProvinceMap(theMapping.getVic2Provinces(), theMapping.getHoI4Provinces());
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
-	
+
 	parseStream(theStream);
 }
 

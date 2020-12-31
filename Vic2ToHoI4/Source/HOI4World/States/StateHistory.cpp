@@ -1,4 +1,5 @@
 #include "StateHistory.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 #include "StateBuildings.h"
 

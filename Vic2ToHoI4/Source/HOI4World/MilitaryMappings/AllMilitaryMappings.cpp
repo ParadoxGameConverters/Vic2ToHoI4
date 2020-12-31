@@ -1,4 +1,5 @@
 #include "AllMilitaryMappings.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 #include "StringUtils.h"
 #include <fstream>

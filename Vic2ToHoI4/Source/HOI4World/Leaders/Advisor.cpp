@@ -1,4 +1,5 @@
 #include "Advisor.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 

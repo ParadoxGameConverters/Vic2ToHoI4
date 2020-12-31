@@ -1,4 +1,5 @@
 #include "DecisionsInCategory.h"
+#include "CommonRegexes.h"
 #include "HOI4World/Events/Events.h"
 #include "ParserHelpers.h"
 

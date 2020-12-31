@@ -1,4 +1,5 @@
 #include "MtgShipVariant.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 

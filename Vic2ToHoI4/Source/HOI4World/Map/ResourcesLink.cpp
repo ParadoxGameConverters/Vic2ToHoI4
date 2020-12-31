@@ -1,5 +1,6 @@
 #include "ResourcesLink.h"
 #include "ActualResources.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 

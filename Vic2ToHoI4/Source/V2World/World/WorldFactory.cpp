@@ -1,4 +1,5 @@
 #include "WorldFactory.h"
+#include "CommonRegexes.h"
 #include "Log.h"
 #include "Mappers/MergeRules.h"
 #include "ParserHelpers.h"

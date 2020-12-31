@@ -1,4 +1,5 @@
 #include "DivisionTemplate.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 #include "RegimentTypeGroup.h"
 

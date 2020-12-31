@@ -1,7 +1,7 @@
 #include "IssuesFactory.h"
+#include "CommonRegexes.h"
 #include "Configuration.h"
 #include "IssueCategoryHelper.h"
-#include "ParserHelpers.h"
 
 
 

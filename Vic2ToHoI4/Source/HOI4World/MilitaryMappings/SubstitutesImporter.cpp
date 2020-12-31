@@ -1,4 +1,5 @@
 #include "SubstitutesImporter.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 

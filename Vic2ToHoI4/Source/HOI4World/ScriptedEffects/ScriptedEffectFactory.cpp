@@ -1,4 +1,5 @@
 #include "ScriptedEffectFactory.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 

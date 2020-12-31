@@ -1,4 +1,5 @@
 #include "Names.h"
+#include "CommonRegexes.h"
 #include "Configuration.h"
 #include "CultureGroupNames.h"
 #include "CultureNames.h"

@@ -1,4 +1,5 @@
 #include "TechnologyFactory.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 

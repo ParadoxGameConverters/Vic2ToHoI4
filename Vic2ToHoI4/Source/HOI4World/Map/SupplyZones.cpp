@@ -1,4 +1,5 @@
 #include "SupplyZones.h"
+#include "CommonRegexes.h"
 #include "Configuration.h"
 #include "HOI4World/States/DefaultState.h"
 #include "HOI4World/States/HoI4State.h"

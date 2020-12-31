@@ -1,4 +1,5 @@
 #include "AgreementFactory.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 #include "StringUtils.h"
 

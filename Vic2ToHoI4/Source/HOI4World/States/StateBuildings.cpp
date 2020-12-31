@@ -1,4 +1,5 @@
 #include "StateBuildings.h"
+#include "CommonRegexes.h"
 #include "DockyardProvince.h"
 #include "ParserHelpers.h"
 

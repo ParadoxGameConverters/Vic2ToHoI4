@@ -1,4 +1,5 @@
 #include "OccupationLawFactory.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 
