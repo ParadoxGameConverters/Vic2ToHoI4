@@ -43,7 +43,7 @@ class researchBonusMapping: commonItems::parser
 
   private:
 	std::string key;
-	std::map<std::string, int> values;
+	std::map<std::string, float> values;
 };
 
 
@@ -54,8 +54,8 @@ researchBonusMapping::researchBonusMapping(std::istream& theStream)
 		key = theKey.getString();
 	});
 	registerRegex(commonItems::catchallRegex, [this](const std::string& valueName, std::istream& theStream) {
-		commonItems::singleInt aValue(theStream);
-		values.insert(std::make_pair(valueName, aValue.getInt()));
+		commonItems::singleDouble aValue(theStream);
+		values.insert(std::make_pair(valueName, aValue.getDouble()));
 	});
 
 	parseStream(theStream);
@@ -93,7 +93,7 @@ class researchBonusMap: commonItems::parser
 	auto getMappings() const { return mappings; }
 
   private:
-	std::map<std::string, std::map<std::string, int>> mappings;
+	std::map<std::string, std::map<std::string, float>> mappings;
 };
 
 
@@ -113,7 +113,7 @@ mappers::techMapperFile::techMapperFile()
 	std::map<std::string, std::set<std::string>> techMappings;
 	std::map<std::string, std::set<std::string>> nonMtgNavalTechMappings;
 	std::map<std::string, std::set<std::string>> mtgNavalTechMappings;
-	std::map<std::string, std::map<std::string, int>> researchBonusMappings;
+	std::map<std::string, std::map<std::string, float>> researchBonusMappings;
 
 	registerKeyword("tech_map", [this, &techMappings](std::istream& theStream) {
 		techMap theTechMap(theStream);
