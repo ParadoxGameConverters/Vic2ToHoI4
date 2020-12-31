@@ -9,20 +9,20 @@
 
 namespace HoI4
 {
-	
+
 class Admiral: Commander
 {
-	public:
-		Admiral(const Vic2::Leader& srcLeader, const std::string& portrait);
+  public:
+	Admiral(const Vic2::Leader& srcLeader, const std::string& portrait);
 
-		friend std::ostream& operator<<(std::ostream& output, const Admiral& admiral);
+	friend std::ostream& operator<<(std::ostream& output, const Admiral& admiral);
 
-	private:
-		int maneuveringSkill = 1;
-		int coordinationSkill = 1;
+  private:
+	int maneuveringSkill = 1;
+	int coordinationSkill = 1;
 };
-	
-}
+
+} // namespace HoI4
 
 
 
