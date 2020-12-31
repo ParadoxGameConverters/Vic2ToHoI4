@@ -115,21 +115,19 @@ mappers::techMapperFile::techMapperFile()
 	std::map<std::string, std::set<std::string>> mtgNavalTechMappings;
 	std::map<std::string, std::map<std::string, int>> researchBonusMappings;
 
-	registerKeyword("tech_map", [this, &techMappings](const std::string& unused, std::istream& theStream) {
+	registerKeyword("tech_map", [this, &techMappings](std::istream& theStream) {
 		techMap theTechMap(theStream);
 		techMappings = theTechMap.getMappings();
 	});
-	registerKeyword("non_mtg_naval_tech_map",
-		 [this, &nonMtgNavalTechMappings](const std::string& unused, std::istream& theStream) {
-			 techMap theTechMap(theStream);
-			 nonMtgNavalTechMappings = theTechMap.getMappings();
-		 });
-	registerKeyword("mtg_naval_tech_map",
-		 [this, &mtgNavalTechMappings](const std::string& unused, std::istream& theStream) {
-			 techMap theTechMap(theStream);
-			 mtgNavalTechMappings = theTechMap.getMappings();
-		 });
-	registerKeyword("bonus_map", [this, &researchBonusMappings](const std::string& unused, std::istream& theStream) {
+	registerKeyword("non_mtg_naval_tech_map", [this, &nonMtgNavalTechMappings](std::istream& theStream) {
+		techMap theTechMap(theStream);
+		nonMtgNavalTechMappings = theTechMap.getMappings();
+	});
+	registerKeyword("mtg_naval_tech_map", [this, &mtgNavalTechMappings](std::istream& theStream) {
+		techMap theTechMap(theStream);
+		mtgNavalTechMappings = theTechMap.getMappings();
+	});
+	registerKeyword("bonus_map", [this, &researchBonusMappings](std::istream& theStream) {
 		researchBonusMap theBonusMap(theStream);
 		researchBonusMappings = theBonusMap.getMappings();
 	});

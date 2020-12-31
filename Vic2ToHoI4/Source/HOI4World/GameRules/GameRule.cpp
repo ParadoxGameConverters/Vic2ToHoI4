@@ -12,19 +12,19 @@ HoI4::GameRule HoI4::GameRule::Parser::parseRule(const std::string& key, std::is
 	std::optional<std::string> icon;
 	std::vector<GameRuleOption> options;
 
-	registerKeyword("name", [&name](const std::string& unused, std::istream& theStream) {
+	registerKeyword("name", [&name](std::istream& theStream) {
 		const commonItems::singleString nameString(theStream);
 		name = nameString.getString();
 	});
-	registerKeyword("required_dlc", [&requiredDlc](const std::string& unused, std::istream& theStream) {
+	registerKeyword("required_dlc", [&requiredDlc](std::istream& theStream) {
 		const commonItems::singleString dlcString(theStream);
 		requiredDlc = dlcString.getString();
 	});
-	registerKeyword("group", [&group](const std::string& unused, std::istream& theStream) {
+	registerKeyword("group", [&group](std::istream& theStream) {
 		const commonItems::singleString groupString(theStream);
 		group = groupString.getString();
 	});
-	registerKeyword("icon", [&icon](const std::string& unused, std::istream& theStream) {
+	registerKeyword("icon", [&icon](std::istream& theStream) {
 		const commonItems::singleString iconString(theStream);
 		icon = iconString.getString();
 	});

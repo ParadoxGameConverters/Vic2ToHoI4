@@ -133,7 +133,7 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 	registerKeyword("leader", [this](std::istream& theStream) {
 		country->leaders.push_back(*leaderFactory->getLeader(theStream));
 	});
-	registerKeyword("state", [this, &theStateDefinitions](const std::string& unused, std::istream& theStream) {
+	registerKeyword("state", [this, &theStateDefinitions](std::istream& theStream) {
 		country->states.push_back(*stateFactory->getState(theStream, country->tag, theStateDefinitions));
 	});
 	registerKeyword("flags", [this](std::istream& theStream) {

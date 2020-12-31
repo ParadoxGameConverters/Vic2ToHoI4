@@ -26,7 +26,7 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 	commonCountriesData = commonCountriesData_;
 	allParties = allParties_;
 
-	registerKeyword("date", [](const std::string& unused, std::istream& theStream) {
+	registerKeyword("date", [](std::istream& theStream) {
 		const date theDate{commonItems::singleString{theStream}.getString()};
 		Log(LogLevel::Info) << "The date is " << theDate;
 	});
