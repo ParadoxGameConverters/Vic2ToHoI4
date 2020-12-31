@@ -279,6 +279,15 @@ mtg_naval_tech_map =
 		vic2 = amphibious_warfare_training
 		hoi4 = mtg_transport
 	}
+
+	link = {
+		vic2 = on_board_recon_aircraft
+		hoi4 = improved_airplane_launcher
+	}
+	link = {
+		vic2 = war_gamming
+		hoi4 = smoke_generator
+	}	
 }
 
 
@@ -313,4 +322,9 @@ bonus_map =
 		vic2 = naval_firepower_doctrine
 		naval_doctrine = 1000
 	}
+
+	#link = {
+	#	vic2 = armoured_cars
+	#	armored_car1 = 1000
+	#}
 }
