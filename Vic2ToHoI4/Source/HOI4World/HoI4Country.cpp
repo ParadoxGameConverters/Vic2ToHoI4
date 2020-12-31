@@ -150,6 +150,10 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	{
 		return;
 	}
+	if (tag == "AAA")
+	{
+		return;
+	}
 
 	auto rulingIdeology = rulingParty->getIdeology();
 	governmentIdeology = governmentMap.getIdeologyForCountry(oldTag, oldGovernment, rulingIdeology, debug);

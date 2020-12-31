@@ -275,7 +275,7 @@ class Country
 
 	std::string oldGovernment;
 	std::string governmentIdeology = "neutrality";
-	std::string leaderIdeology = "conservatism_neutral";
+	std::string leaderIdeology = "anarchism";
 	std::optional<Vic2::Party> rulingParty;
 	std::set<Vic2::Party> parties;
 	std::map<std::string, double> upperHouseComposition;
