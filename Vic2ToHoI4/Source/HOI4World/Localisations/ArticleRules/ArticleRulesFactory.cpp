@@ -8,7 +8,7 @@
 
 HoI4::ArticleRules::Factory::Factory()
 {
-	registerKeyword("link", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("link", [this](std::istream& theStream) {
 		const ArticleRulesDefinition definition(theStream);
 
 		std::vector<ArticleRule> articleRules;

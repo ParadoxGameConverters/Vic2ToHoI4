@@ -12,7 +12,7 @@
 
 Configuration::Factory::Factory()
 {
-	registerKeyword("SaveGame", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("SaveGame", [this](std::istream& theStream) {
 		const commonItems::singleString filenameString(theStream);
 		configuration->inputFile = filenameString.getString();
 		const auto length = configuration->inputFile.find_last_of('.');
@@ -23,7 +23,7 @@ Configuration::Factory::Factory()
 		}
 		Log(LogLevel::Info) << "\tVic2 save is " << configuration->inputFile;
 	});
-	registerKeyword("HoI4directory", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("HoI4directory", [this](std::istream& theStream) {
 		configuration->HoI4Path = commonItems::singleString{theStream}.getString();
 		if (configuration->HoI4Path.empty() || !commonItems::DoesFolderExist(configuration->HoI4Path))
 		{
@@ -37,7 +37,7 @@ Configuration::Factory::Factory()
 
 		Log(LogLevel::Info) << "\tHoI4 path install path is " << configuration->HoI4Path;
 	});
-	registerKeyword("Vic2directory", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("Vic2directory", [this](std::istream& theStream) {
 		configuration->Vic2Path = commonItems::singleString{theStream}.getString();
 		if (configuration->Vic2Path.empty() || !commonItems::DoesFolderExist(configuration->Vic2Path))
 		{
@@ -53,7 +53,7 @@ Configuration::Factory::Factory()
 
 		Log(LogLevel::Info) << "\tVictoria 2 install path is " << configuration->Vic2Path;
 	});
-	registerKeyword("Vic2ModPath", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("Vic2ModPath", [this](std::istream& theStream) {
 		configuration->Vic2ModPath = commonItems::singleString{theStream}.getString();
 		if (configuration->Vic2ModPath.empty() || !commonItems::DoesFolderExist(configuration->Vic2ModPath))
 		{
@@ -62,32 +62,32 @@ Configuration::Factory::Factory()
 
 		Log(LogLevel::Info) << "\tVictoria 2 mod path is " << configuration->Vic2ModPath;
 	});
-	registerKeyword("selectedMods", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("selectedMods", [this](std::istream& theStream) {
 		const auto& theList = commonItems::stringList{theStream}.getStrings();
 		modFileNames.insert(theList.begin(), theList.end());
 		Log(LogLevel::Info) << modFileNames.size() << " mods selected by configuration. Deselected mods will be ignored.";
 	});
-	registerKeyword("force_multiplier", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("force_multiplier", [this](std::istream& theStream) {
 		const commonItems::singleDouble factorValue(theStream);
 		configuration->forceMultiplier = std::clamp(static_cast<float>(factorValue.getDouble()), 0.01f, 100.0f);
 		Log(LogLevel::Info) << "\tForce multiplier: " << configuration->forceMultiplier;
 	});
-	registerKeyword("manpower_factor", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("manpower_factor", [this](std::istream& theStream) {
 		const commonItems::singleDouble factorValue(theStream);
 		configuration->manpowerFactor = std::clamp(static_cast<float>(factorValue.getDouble()), 0.01f, 10.0f);
 		Log(LogLevel::Info) << "\tManpower factor: " << configuration->manpowerFactor;
 	});
-	registerKeyword("industrial_shape_factor", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("industrial_shape_factor", [this](std::istream& theStream) {
 		const commonItems::singleDouble factorValue(theStream);
 		configuration->industrialShapeFactor = std::clamp(static_cast<float>(factorValue.getDouble()), 0.0f, 1.0f);
 		Log(LogLevel::Info) << "\tIndustrial shape factor: " << configuration->industrialShapeFactor;
 	});
-	registerKeyword("factory_factor", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("factory_factor", [this](std::istream& theStream) {
 		const commonItems::singleDouble factorValue(theStream);
 		configuration->factoryFactor = std::clamp(static_cast<float>(factorValue.getDouble()), 0.0f, 1.0f);
 		Log(LogLevel::Info) << "\tFactory factor: " << configuration->factoryFactor;
 	});
-	registerKeyword("ideologies", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("ideologies", [this](std::istream& theStream) {
 		const commonItems::singleString ideologiesOptionString(theStream);
 		if (ideologiesOptionString.getString() == "keep_default")
 		{
@@ -110,7 +110,7 @@ Configuration::Factory::Factory()
 			Log(LogLevel::Info) << "\tKeeping major ideologies";
 		}
 	});
-	registerKeyword("ideologies_choice", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("ideologies_choice", [this](std::istream& theStream) {
 		const commonItems::stringList choiceStrings(theStream);
 		for (const auto& choice: choiceStrings.getStrings())
 		{
@@ -118,7 +118,7 @@ Configuration::Factory::Factory()
 			Log(LogLevel::Info) << "\tSpecified " << choice;
 		}
 	});
-	registerKeyword("debug", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("debug", [this](std::istream& theStream) {
 		const commonItems::singleString debugValue(theStream);
 		if (debugValue.getString() == "yes")
 		{
@@ -131,7 +131,7 @@ Configuration::Factory::Factory()
 			Log(LogLevel::Debug) << "\tDebug mode deactivated";
 		}
 	});
-	registerKeyword("remove_cores", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("remove_cores", [this](std::istream& theStream) {
 		const commonItems::singleString removeCoresValue(theStream);
 		if (removeCoresValue.getString() == "no")
 		{
@@ -144,7 +144,7 @@ Configuration::Factory::Factory()
 			Log(LogLevel::Info) << "\tEnabling remove cores";
 		}
 	});
-	registerKeyword("create_factions", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("create_factions", [this](std::istream& theStream) {
 		const commonItems::singleString createFactionsValue(theStream);
 		if (createFactionsValue.getString() == "no")
 		{

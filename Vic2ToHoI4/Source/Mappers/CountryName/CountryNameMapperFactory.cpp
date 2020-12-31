@@ -6,7 +6,7 @@
 
 mappers::CountryNameMapper::Factory::Factory()
 {
-	registerKeyword("name_mapping", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("name_mapping", [this](std::istream& theStream) {
 		countryNameMapper->mappings.push_back(*nameMappingFactory.importMapping(theStream));
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);

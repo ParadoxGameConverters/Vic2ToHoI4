@@ -6,7 +6,7 @@
 
 Vic2::WarGoalFactory::WarGoalFactory()
 {
-	registerKeyword("casus_belli", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("casus_belli", [this](std::istream& theStream) {
 		CB = commonItems::singleString{theStream}.getString();
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);

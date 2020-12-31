@@ -6,7 +6,7 @@
 
 mappers::VersionedMappings::VersionedMappings(std::istream& theStream)
 {
-	registerKeyword("link", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("link", [this](std::istream& theStream) {
 		const ProvinceMapping theMapping(theStream);
 		if (theMapping.getHoI4Provinces().empty() && theMapping.getVic2Provinces().empty())
 			return;

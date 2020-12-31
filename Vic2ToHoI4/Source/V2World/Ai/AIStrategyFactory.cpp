@@ -6,7 +6,7 @@
 
 Vic2::AIStrategy::Factory::Factory()
 {
-	registerKeyword("id", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("id", [this](std::istream& theStream) {
 		if (aiStrategy->type == "conquer_prov")
 		{
 			aiStrategy->provID = commonItems::singleInt{theStream}.getInt();
@@ -16,7 +16,7 @@ Vic2::AIStrategy::Factory::Factory()
 			aiStrategy->id = commonItems::singleString{theStream}.getString();
 		}
 	});
-	registerKeyword("value", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("value", [this](std::istream& theStream) {
 		aiStrategy->value = commonItems::singleInt{theStream}.getInt();
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);

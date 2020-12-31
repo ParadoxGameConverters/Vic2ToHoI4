@@ -281,17 +281,17 @@ void HoI4FocusTree::confirmLoadedFocuses()
 {
 	if (loadedFocuses.size() == 0)
 	{
-		registerKeyword("focus_tree", [this](const std::string& unused, std::istream& theStream) {
+		registerKeyword("focus_tree", [this](std::istream& theStream) {
 		});
 		registerKeyword("id", commonItems::ignoreString);
 		registerKeyword("country", commonItems::ignoreObject);
 		registerKeyword("default", commonItems::ignoreString);
 		registerKeyword("reset_on_civilwar", commonItems::ignoreString);
-		registerKeyword("focus", [this](const std::string& unused, std::istream& theStream) {
+		registerKeyword("focus", [this](std::istream& theStream) {
 			HoI4Focus newFocus(theStream);
 			loadedFocuses.insert(make_pair(newFocus.id, newFocus));
 		});
-		registerKeyword("shared_focus", [this](const std::string& unused, std::istream& theStream) {
+		registerKeyword("shared_focus", [this](std::istream& theStream) {
 			HoI4Focus newFocus(theStream);
 			loadedFocuses.insert(make_pair(newFocus.id, newFocus));
 		});

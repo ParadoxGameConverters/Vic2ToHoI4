@@ -7,11 +7,11 @@
 
 HoI4::StateBuildings::StateBuildings(std::istream& theStream)
 {
-	registerKeyword("industrial_complex", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("industrial_complex", [this](std::istream& theStream) {
 		commonItems::singleInt factoryInt(theStream);
 		civFactories = factoryInt.getInt();
 	});
-	registerKeyword("arms_factory", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("arms_factory", [this](std::istream& theStream) {
 		commonItems::singleInt factoryInt(theStream);
 		milFactories = factoryInt.getInt();
 	});

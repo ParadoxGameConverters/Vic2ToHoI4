@@ -5,10 +5,10 @@
 
 HoI4::SoundEffectsMapperLink::Factory::Factory()
 {
-	registerKeyword("culture", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("culture", [this](std::istream& theStream) {
 		soundEffectMapperLink->cultures.insert(commonItems::singleString{theStream}.getString());
 	});
-	registerKeyword("sound", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("sound", [this](std::istream& theStream) {
 		soundEffectMapperLink->sounds.insert(commonItems::singleString{theStream}.getString());
 	});
 }

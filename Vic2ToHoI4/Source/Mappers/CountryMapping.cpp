@@ -22,11 +22,11 @@ class countryMappingRule: commonItems::parser
 
 countryMappingRule::countryMappingRule(std::istream& theStream)
 {
-	registerKeyword("vic", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("vic", [this](std::istream& theStream) {
 		commonItems::singleString mapping(theStream);
 		Vic2Tag = mapping.getString();
 	});
-	registerKeyword("hoi", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("hoi", [this](std::istream& theStream) {
 		commonItems::singleString mapping(theStream);
 		HoI4Tags.push_back(mapping.getString());
 	});
@@ -45,7 +45,7 @@ CountryMapper::CountryMapper(const Vic2::World& srcWorld, bool debug)
 
 void CountryMapper::readRules()
 {
-	registerKeyword("link", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("link", [this](std::istream& theStream) {
 		countryMappingRule rule(theStream);
 		Vic2TagToHoI4TagsRules.insert(make_pair(rule.getVic2Tag(), rule.getHoI4Tags()));
 	});

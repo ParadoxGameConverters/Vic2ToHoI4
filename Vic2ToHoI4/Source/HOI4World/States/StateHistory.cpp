@@ -7,11 +7,11 @@
 
 HoI4::StateHistory::StateHistory(std::istream& theStream)
 {
-	registerKeyword("owner", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("owner", [this](std::istream& theStream) {
 		commonItems::singleString ownerString(theStream);
 		owner = ownerString.getString();
 	});
-	registerKeyword("buildings", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("buildings", [this](std::istream& theStream) {
 		HoI4::StateBuildings theBuildings(theStream);
 		civFactories = theBuildings.getCivFactories();
 		milFactories = theBuildings.getMilFactories();

@@ -7,19 +7,19 @@
 
 HoI4::CountryLeader::Factory::Factory()
 {
-	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("name", [this](std::istream& theStream) {
 		countryLeader->name = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("desc", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("desc", [this](std::istream& theStream) {
 		countryLeader->description = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("picture", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("picture", [this](std::istream& theStream) {
 		countryLeader->picture = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("ideology", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("ideology", [this](std::istream& theStream) {
 		countryLeader->ideology = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("traits", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("traits", [this](std::istream& theStream) {
 		countryLeader->traits = commonItems::stringList{theStream}.getStrings();
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);

@@ -10,7 +10,7 @@
 HoI4::StrategicRegion::StrategicRegion(const std::string& _filename, const Configuration& theConfiguration):
 	 filename(_filename)
 {
-	registerKeyword("strategic_region", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("strategic_region", [this](std::istream& theStream) {
 		Region theRegion(theStream);
 		ID = theRegion.getID();
 		name = theRegion.takeName();

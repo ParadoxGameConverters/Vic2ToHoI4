@@ -30,7 +30,7 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 		const date theDate{commonItems::singleString{theStream}.getString()};
 		Log(LogLevel::Info) << "The date is " << theDate;
 	});
-	registerKeyword("great_nations", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("great_nations", [this](std::istream& theStream) {
 		greatPowerIndexes = commonItems::intList{theStream}.getInts();
 	});
 	registerRegex(R"(\d+)", [this](const std::string& provinceID, std::istream& theStream) {
@@ -55,10 +55,10 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 			commonItems::ignoreItem(countryTag, theStream);
 		}
 	});
-	registerKeyword("diplomacy", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("diplomacy", [this](std::istream& theStream) {
 		world->diplomacy = diplomacyFactory->getDiplomacy(theStream);
 	});
-	registerKeyword("active_war", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("active_war", [this](std::istream& theStream) {
 		wars.push_back(*warFactory.getWar(theStream));
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);

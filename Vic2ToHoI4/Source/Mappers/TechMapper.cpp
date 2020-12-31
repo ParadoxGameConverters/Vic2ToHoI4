@@ -20,11 +20,11 @@ class techMapping: commonItems::parser
 
 techMapping::techMapping(std::istream& theStream)
 {
-	registerKeyword("vic2", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("vic2", [this](std::istream& theStream) {
 		commonItems::singleString theKey(theStream);
 		key = theKey.getString();
 	});
-	registerKeyword("hoi4", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("hoi4", [this](std::istream& theStream) {
 		commonItems::singleString aValue(theStream);
 		values.insert(aValue.getString());
 	});
@@ -49,7 +49,7 @@ class researchBonusMapping: commonItems::parser
 
 researchBonusMapping::researchBonusMapping(std::istream& theStream)
 {
-	registerKeyword("vic2", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("vic2", [this](std::istream& theStream) {
 		commonItems::singleString theKey(theStream);
 		key = theKey.getString();
 	});
@@ -76,7 +76,7 @@ class techMap: commonItems::parser
 
 techMap::techMap(std::istream& theStream)
 {
-	registerKeyword("link", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("link", [this](std::istream& theStream) {
 		techMapping theMapping(theStream);
 		mappings.insert(make_pair(theMapping.getKey(), theMapping.getValues()));
 	});
@@ -99,7 +99,7 @@ class researchBonusMap: commonItems::parser
 
 researchBonusMap::researchBonusMap(std::istream& theStream)
 {
-	registerKeyword("link", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("link", [this](std::istream& theStream) {
 		researchBonusMapping theMapping(theStream);
 		mappings.insert(make_pair(theMapping.getKey(), theMapping.getValues()));
 	});

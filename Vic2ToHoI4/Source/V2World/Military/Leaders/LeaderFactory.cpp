@@ -7,13 +7,13 @@
 
 Vic2::Leader::Factory::Factory(Traits&& traits_): traits(traits_)
 {
-	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("name", [this](std::istream& theStream) {
 		leader->name = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("type", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("type", [this](std::istream& theStream) {
 		leader->type = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("prestige", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("prestige", [this](std::istream& theStream) {
 		leader->prestige = commonItems::singleDouble{theStream}.getDouble();
 	});
 	registerRegex("personality|background", [this](const std::string& unused, std::istream& theStream) {

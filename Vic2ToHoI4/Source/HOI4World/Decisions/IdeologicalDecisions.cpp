@@ -6,7 +6,7 @@
 
 HoI4::IdeologicalDecisions::IdeologicalDecisions(std::istream& theStream)
 {
-	registerKeyword("required_ideologies", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("required_ideologies", [this](std::istream& theStream) {
 		const commonItems::stringList ideologiesStrings(theStream);
 		for (const auto& ideology: ideologiesStrings.getStrings())
 		{

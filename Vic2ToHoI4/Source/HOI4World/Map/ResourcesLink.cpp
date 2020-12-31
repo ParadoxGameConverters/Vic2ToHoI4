@@ -7,11 +7,11 @@
 
 HoI4::ResourcesLink::ResourcesLink(std::istream& theStream)
 {
-	registerKeyword("province", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("province", [this](std::istream& theStream) {
 		const commonItems::singleInt theProvinceNum(theStream);
 		provinceNum = theProvinceNum.getInt();
 	});
-	registerKeyword("resources", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("resources", [this](std::istream& theStream) {
 		ActualResources theActualResources(theStream);
 		theResources = theActualResources.takeResources();
 	});

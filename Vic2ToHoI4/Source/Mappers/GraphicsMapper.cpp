@@ -49,19 +49,19 @@ class graphicsCultureGroup: commonItems::parser
 
 graphicsCultureGroup::graphicsCultureGroup(std::istream& theStream)
 {
-	registerKeyword("leader_portraits", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("leader_portraits", [this](std::istream& theStream) {
 		ideologyToPortraitsMapping mappings(theStream);
 		leaderPortraits = mappings.getMap();
 	});
-	registerKeyword("ideology_minister_portraits", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("ideology_minister_portraits", [this](std::istream& theStream) {
 		ideologyToPortraitsMapping mappings(theStream);
 		ideologyMinisterPortraits = mappings.getMap();
 	});
-	registerKeyword("graphical_culture", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("graphical_culture", [this](std::istream& theStream) {
 		commonItems::stringList graphicsString(theStream);
 		graphicalCulture = graphicsString.getStrings()[0];
 	});
-	registerKeyword("graphical_culture_2d", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("graphical_culture_2d", [this](std::istream& theStream) {
 		commonItems::stringList graphicsString(theStream);
 		graphicalCulture2D = graphicsString.getStrings()[0];
 	});

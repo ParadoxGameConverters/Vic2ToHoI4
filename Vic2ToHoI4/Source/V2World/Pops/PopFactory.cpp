@@ -7,16 +7,16 @@
 
 Vic2::Pop::Factory::Factory(Issues _theIssues): theIssues(std::move(_theIssues))
 {
-	registerKeyword("size", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("size", [this](std::istream& theStream) {
 		pop->size = commonItems::singleInt{theStream}.getInt();
 	});
-	registerKeyword("literacy", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("literacy", [this](std::istream& theStream) {
 		pop->literacy = commonItems::singleDouble{theStream}.getDouble();
 	});
-	registerKeyword("mil", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("mil", [this](std::istream& theStream) {
 		pop->militancy = commonItems::singleDouble{theStream}.getDouble();
 	});
-	registerKeyword("issues", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("issues", [this](std::istream& theStream) {
 		for (const auto& [issue, value]: commonItems::assignments{theStream}.getAssignments())
 		{
 			try

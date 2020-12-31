@@ -6,11 +6,11 @@
 
 mappers::ProvinceMapping::ProvinceMapping(std::istream& theStream)
 {
-	registerKeyword("vic2", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("vic2", [this](std::istream& theStream) {
 		const commonItems::singleInt provinceNum(theStream);
 		Vic2Provinces.push_back(provinceNum.getInt());
 	});
-	registerKeyword("hoi4", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("hoi4", [this](std::istream& theStream) {
 		const commonItems::singleInt provinceNum(theStream);
 		HoI4Provinces.push_back(provinceNum.getInt());
 	});

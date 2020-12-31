@@ -11,7 +11,7 @@ HoI4::Ideologies::Ideologies(const Configuration& theConfiguration)
 {
 	Log(LogLevel::Info) << "\tReading ideologies";
 
-	registerKeyword("ideologies", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("ideologies", [this](std::istream& theStream) {
 		const IdeologyFile theFile(theStream);
 		for (const auto& ideology: theFile.getIdeologies())
 		{

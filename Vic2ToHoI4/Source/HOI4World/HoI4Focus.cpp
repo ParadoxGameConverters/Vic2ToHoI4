@@ -7,75 +7,75 @@
 
 HoI4Focus::HoI4Focus(std::istream& theStream)
 {
-	registerKeyword("id", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("id", [this](std::istream& theStream) {
 		commonItems::singleString idString(theStream);
 		id = idString.getString();
 	});
-	registerKeyword("icon", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("icon", [this](std::istream& theStream) {
 		commonItems::singleString iconString(theStream);
 		icon = iconString.getString();
 	});
-	registerKeyword("text", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("text", [this](std::istream& theStream) {
 		commonItems::singleString textString(theStream);
 		text = textString.getString();
 	});
-	registerKeyword("mutually_exclusive", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("mutually_exclusive", [this](std::istream& theStream) {
 		commonItems::stringOfItem mutuallyExclusiveString(theStream);
 		mutuallyExclusive = mutuallyExclusiveString.getString();
 	});
-	registerKeyword("bypass", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("bypass", [this](std::istream& theStream) {
 		commonItems::stringOfItem bypassString(theStream);
 		bypass = bypassString.getString();
 	});
-	registerKeyword("x", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("x", [this](std::istream& theStream) {
 		commonItems::singleInt xPosInt(theStream);
 		xPos = xPosInt.getInt();
 	});
-	registerKeyword("y", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("y", [this](std::istream& theStream) {
 		commonItems::singleInt yPosInt(theStream);
 		yPos = yPosInt.getInt();
 	});
-	registerKeyword("relative_position_id", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("relative_position_id", [this](std::istream& theStream) {
 		commonItems::singleString relativePositionIdString(theStream);
 		relativePositionId = relativePositionIdString.getString();
 	});
-	registerKeyword("cost", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("cost", [this](std::istream& theStream) {
 		commonItems::singleInt costInt(theStream);
 		cost = costInt.getInt();
 	});
-	registerKeyword("available_if_capitulated", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("available_if_capitulated", [this](std::istream& theStream) {
 		commonItems::singleString availableIfCapitulatedString(theStream);
 		availableIfCapitulated = (availableIfCapitulatedString.getString() == "yes");
 	});
-	registerKeyword("available", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("available", [this](std::istream& theStream) {
 		commonItems::stringOfItem availableString(theStream);
 		available = availableString.getString();
 	});
-	registerKeyword("cancel_if_invalid", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("cancel_if_invalid", [this](std::istream& theStream) {
 		commonItems::singleString cancelIfInvalidString(theStream);
 		cancelIfInvalid = cancelIfInvalidString.getString();
 	});
-	registerKeyword("continue_if_invalid", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("continue_if_invalid", [this](std::istream& theStream) {
 		commonItems::singleString continueIfInvalidString(theStream);
 		continueIfInvalid = continueIfInvalidString.getString();
 	});
-	registerKeyword("select_effect", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("select_effect", [this](std::istream& theStream) {
 		commonItems::stringOfItem selectEffectString(theStream);
 		selectEffect = selectEffectString.getString();
 	});
-	registerKeyword("complete_tooltip", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("complete_tooltip", [this](std::istream& theStream) {
 		commonItems::stringOfItem completeTooltipString(theStream);
 		completeTooltip = completeTooltipString.getString();
 	});
-	registerKeyword("completion_reward", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("completion_reward", [this](std::istream& theStream) {
 		commonItems::stringOfItem completionRewardString(theStream);
 		completionReward = completionRewardString.getString();
 	});
-	registerKeyword("ai_will_do", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("ai_will_do", [this](std::istream& theStream) {
 		commonItems::stringOfItem aiWillDoString(theStream);
 		aiWillDo = aiWillDoString.getString();
 	});
-	registerKeyword("prerequisite", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("prerequisite", [this](std::istream& theStream) {
 		commonItems::stringOfItem prerequisiteString(theStream);
 		prerequisites.push_back(prerequisiteString.getString());
 	});

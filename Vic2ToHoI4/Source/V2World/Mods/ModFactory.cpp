@@ -7,10 +7,10 @@
 
 Vic2::Mod::Factory::Factory()
 {
-	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("name", [this](std::istream& theStream) {
 		mod->name = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("path", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("path", [this](std::istream& theStream) {
 		mod->directory = commonItems::singleString{theStream}.getString();
 		mod->directory = mod->directory.substr(4, mod->directory.size());
 	});
