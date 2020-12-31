@@ -1,5 +1,5 @@
 # Version info
 
-version = "0.2NO-Prerelease"
+version = "0.2O-Prerelease"
 name = "Oppenheimer"
 descriptionLine = "compatible with 1.10.2"
