@@ -1,4 +1,5 @@
 #include "OperationsFactory.h"
+#include "CommonRegexes.h"
 #include "OperationFactory.h"
 #include "ParserHelpers.h"
 

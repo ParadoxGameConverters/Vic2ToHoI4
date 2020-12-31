@@ -17,7 +17,7 @@ std::string HoI4::IntelligenceAgencyLogos::getLogo(const std::string& culture)
 
 HoI4::IntelligenceAgencyLogos::Factory::Factory()
 {
-	registerKeyword("link", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("link", [this](std::istream& theStream) {
 		IntelligenceAgencyLogoMapping mapping(theStream);
 		for (const auto& culture: mapping.takeCultures())
 		{

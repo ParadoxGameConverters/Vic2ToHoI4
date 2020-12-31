@@ -8,7 +8,7 @@
 
 HoI4::StateCategories::StateCategories(const Configuration& theConfiguration)
 {
-	registerKeyword("state_categories", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("state_categories", [this](std::istream& theStream) {
 		StateCategoryFile theFile(theStream);
 		for (auto category: theFile.getCategories())
 		{

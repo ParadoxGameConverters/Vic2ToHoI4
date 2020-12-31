@@ -1,5 +1,6 @@
 #include "Ideology.h"
 #include "Color.h"
+#include "CommonRegexes.h"
 #include "IdeologyItems.h"
 #include "ParserHelpers.h"
 
@@ -7,34 +8,34 @@
 
 HoI4::Ideology::Ideology(const std::string& _ideologyName, std::istream& theStream): ideologyName(_ideologyName)
 {
-	registerKeyword("types", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("types", [this](std::istream& theStream) {
 		const commonItems::stringsOfItemNames typesStrings(theStream);
 		types = typesStrings.getStrings();
 	});
-	registerKeyword("dynamic_faction_names", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("dynamic_faction_names", [this](std::istream& theStream) {
 		const commonItems::stringList namesStrings(theStream);
 		dynamicFactionNames = namesStrings.getStrings();
 	});
-	registerKeyword("color", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("color", [this](std::istream& theStream) {
 		theColor = std::make_unique<commonItems::Color>(commonItems::Color::Factory{}.getColor(theStream));
 	});
-	registerKeyword("war_impact_on_world_tension", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("war_impact_on_world_tension", [this](std::istream& theStream) {
 		const commonItems::singleDouble impactNum(theStream);
 		warImpactOnWorldTension = static_cast<float>(impactNum.getDouble());
 	});
-	registerKeyword("faction_impact_on_world_tension", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("faction_impact_on_world_tension", [this](std::istream& theStream) {
 		const commonItems::singleDouble impactNum(theStream);
 		factionImpactOnWorldTension = static_cast<float>(impactNum.getDouble());
 	});
-	registerKeyword("rules", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("rules", [this](std::istream& theStream) {
 		IdeologyItems importedRules(theStream);
 		rules = importedRules.takeItems();
 	});
-	registerKeyword("modifiers", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("modifiers", [this](std::istream& theStream) {
 		IdeologyItems importedModifiers(theStream);
 		modifiers = importedModifiers.takeItems();
 	});
-	registerKeyword("faction_modifiers", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("faction_modifiers", [this](std::istream& theStream) {
 		IdeologyItems importedModifiers(theStream);
 		factionModifiers = importedModifiers.takeItems();
 	});

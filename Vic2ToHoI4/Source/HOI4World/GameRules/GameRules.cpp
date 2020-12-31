@@ -1,4 +1,5 @@
 #include "GameRules.h"
+#include "CommonRegexes.h"
 #include "Log.h"
 #include "ParserHelpers.h"
 

@@ -19,19 +19,19 @@ class aGovernmentMapping: commonItems::parser
 
 aGovernmentMapping::aGovernmentMapping(std::istream& theStream)
 {
-	registerKeyword("vic", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("vic", [this](std::istream& theStream) {
 		commonItems::singleString vic2Government(theStream);
 		mapping.vic2Government = vic2Government.getString();
 	});
-	registerKeyword("ruling_party", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("ruling_party", [this](std::istream& theStream) {
 		commonItems::singleString rulingParty(theStream);
 		mapping.rulingPartyRequired = rulingParty.getString();
 	});
-	registerKeyword("hoi_gov", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("hoi_gov", [this](std::istream& theStream) {
 		commonItems::singleString hoi4Government(theStream);
 		mapping.HoI4GovernmentIdeology = hoi4Government.getString();
 	});
-	registerKeyword("hoi_leader", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("hoi_leader", [this](std::istream& theStream) {
 		commonItems::singleString hoi4Leader(theStream);
 		mapping.HoI4LeaderIdeology = hoi4Leader.getString();
 	});
@@ -54,7 +54,7 @@ class governmentMappings: commonItems::parser
 
 governmentMappings::governmentMappings(std::istream& theStream)
 {
-	registerKeyword("mapping", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("mapping", [this](std::istream& theStream) {
 		aGovernmentMapping mapping(theStream);
 		governmentMap.push_back(mapping.getMapping());
 	});
@@ -77,15 +77,15 @@ class aPartyMapping: commonItems::parser
 
 aPartyMapping::aPartyMapping(std::istream& theStream)
 {
-	registerKeyword("ruling_ideology", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("ruling_ideology", [this](std::istream& theStream) {
 		commonItems::singleString ideologyString(theStream);
 		mapping.rulingIdeology = ideologyString.getString();
 	});
-	registerKeyword("vic2_ideology", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("vic2_ideology", [this](std::istream& theStream) {
 		commonItems::singleString ideologyString(theStream);
 		mapping.vic2Ideology = ideologyString.getString();
 	});
-	registerKeyword("supported_ideology", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("supported_ideology", [this](std::istream& theStream) {
 		commonItems::singleString ideologyString(theStream);
 		mapping.supportedIdeology = ideologyString.getString();
 	});
@@ -108,7 +108,7 @@ class partyMappings: commonItems::parser
 
 partyMappings::partyMappings(std::istream& theStream)
 {
-	registerKeyword("mapping", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("mapping", [this](std::istream& theStream) {
 		aPartyMapping mapping(theStream);
 		partyMap.push_back(mapping.getMapping());
 	});
@@ -121,11 +121,11 @@ void governmentMapper::init()
 {
 	Log(LogLevel::Info) << "\tParsing governments mappings";
 
-	registerKeyword("government_mappings", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("government_mappings", [this](std::istream& theStream) {
 		governmentMappings mappings(theStream);
 		governmentMap = mappings.getGovernmentMap();
 	});
-	registerKeyword("party_mappings", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("party_mappings", [this](std::istream& theStream) {
 		partyMappings mappings(theStream);
 		partyMap = mappings.getPartyMap();
 	});

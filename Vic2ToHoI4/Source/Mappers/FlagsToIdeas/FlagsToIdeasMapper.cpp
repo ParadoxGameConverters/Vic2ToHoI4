@@ -5,7 +5,7 @@
 
 mappers::FlagsToIdeasMapper::FlagsToIdeasMapper(std::istream& theStream)
 {
-	registerKeyword("mapping", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("mapping", [this](std::istream& theStream) {
 		FlagToIdeaMapping theMapping(theStream);
 		mappings.insert(std::make_pair(theMapping.getFlag(), theMapping.getIdea()));
 	});

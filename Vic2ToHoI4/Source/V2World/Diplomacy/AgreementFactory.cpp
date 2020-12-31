@@ -1,4 +1,5 @@
 #include "AgreementFactory.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 #include "StringUtils.h"
 
@@ -6,13 +7,13 @@
 
 Vic2::Agreement::Factory::Factory()
 {
-	registerKeyword("first", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("first", [this](std::istream& theStream) {
 		agreement->country1 = commonItems::remQuotes(commonItems::singleString{theStream}.getString());
 	});
-	registerKeyword("second", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("second", [this](std::istream& theStream) {
 		agreement->country2 = commonItems::remQuotes(commonItems::singleString{theStream}.getString());
 	});
-	registerKeyword("start_date", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("start_date", [this](std::istream& theStream) {
 		agreement->startDate = date(commonItems::singleString{theStream}.getString());
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);

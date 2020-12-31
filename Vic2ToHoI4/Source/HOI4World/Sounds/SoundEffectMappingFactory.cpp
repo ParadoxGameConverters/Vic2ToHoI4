@@ -4,7 +4,7 @@
 
 HoI4::SoundEffectMapping::Factory::Factory()
 {
-	registerKeyword("link", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("link", [this](std::istream& theStream) {
 		soundEffectMapping->links.push_back(*soundEffectsMapperLinkFactory.getSoundEffectMapperLink(theStream));
 	});
 }

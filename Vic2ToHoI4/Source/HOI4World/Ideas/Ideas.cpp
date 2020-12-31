@@ -1,4 +1,5 @@
 #include "Ideas.h"
+#include "CommonRegexes.h"
 #include "IdeaGroup.h"
 #include "IdeaUpdaters.h"
 #include "Log.h"

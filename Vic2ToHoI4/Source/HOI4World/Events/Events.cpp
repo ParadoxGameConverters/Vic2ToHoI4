@@ -1,5 +1,6 @@
 #include "Events.h"
 #include "CapitulationEvents.h"
+#include "CommonRegexes.h"
 #include "Configuration.h"
 #include "EventHelpers.h"
 #include "EventsFile.h"

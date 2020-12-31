@@ -5,10 +5,10 @@
 
 HoI4::ScriptedLocalisation::Factory::Factory()
 {
-	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("name", [this](std::istream& theStream) {
 		scriptedLocalisation->name = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("text", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("text", [this](std::istream& theStream) {
 		scriptedLocalisation->texts.push_back(commonItems::stringOfItem(theStream).getString());
 	});
 }

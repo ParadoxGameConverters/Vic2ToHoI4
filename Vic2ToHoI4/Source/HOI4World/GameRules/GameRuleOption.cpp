@@ -1,4 +1,5 @@
 #include "GameRuleOption.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 
@@ -10,19 +11,19 @@ HoI4::GameRuleOption HoI4::GameRuleOption::Parser::parseOption(const std::string
 	std::string description;
 	std::optional<bool> allowAchievements;
 
-	registerKeyword("name", [&name](const std::string& unused, std::istream& theStream) {
+	registerKeyword("name", [&name](std::istream& theStream) {
 		const commonItems::singleString nameString(theStream);
 		name = nameString.getString();
 	});
-	registerKeyword("text", [&text](const std::string& unused, std::istream& theStream) {
+	registerKeyword("text", [&text](std::istream& theStream) {
 		const commonItems::singleString textString(theStream);
 		text = textString.getString();
 	});
-	registerKeyword("desc", [&description](const std::string& unused, std::istream& theStream) {
+	registerKeyword("desc", [&description](std::istream& theStream) {
 		const commonItems::singleString descriptionString(theStream);
 		description = descriptionString.getString();
 	});
-	registerKeyword("allow_achievements", [&allowAchievements](const std::string& unused, std::istream& theStream) {
+	registerKeyword("allow_achievements", [&allowAchievements](std::istream& theStream) {
 		const commonItems::singleString allowString(theStream);
 		allowAchievements = allowString.getString() == "yes";
 	});

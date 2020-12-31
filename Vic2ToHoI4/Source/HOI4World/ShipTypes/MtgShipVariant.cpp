@@ -1,37 +1,38 @@
 #include "MtgShipVariant.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 
 
 HoI4::MtgShipVariant::MtgShipVariant(std::istream& theStream)
 {
-	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("name", [this](std::istream& theStream) {
 		const commonItems::singleString nameString(theStream);
 		name = nameString.getString();
 	});
-	registerKeyword("type", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("type", [this](std::istream& theStream) {
 		const commonItems::singleString typeString(theStream);
 		type = typeString.getString();
 	});
-	registerKeyword("name_group", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("name_group", [this](std::istream& theStream) {
 		const commonItems::singleString nameGroupString(theStream);
 		nameGroup = nameGroupString.getString();
 	});
-	registerKeyword("modules", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("modules", [this](std::istream& theStream) {
 		modules = std::make_unique<shipModules>(theStream);
 	});
-	registerKeyword("obsolete", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("obsolete", [this](std::istream& theStream) {
 		const commonItems::singleString obsoleteString(theStream);
 		obsolete = (obsoleteString.getString() == "yes");
 	});
-	registerKeyword("required_techs", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("required_techs", [this](std::istream& theStream) {
 		const commonItems::stringList requiredTechsStrings(theStream);
 		for (const auto& requiredTech: requiredTechsStrings.getStrings())
 		{
 			requiredTechnologies.insert(requiredTech);
 		}
 	});
-	registerKeyword("blocking_techs", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("blocking_techs", [this](std::istream& theStream) {
 		const commonItems::stringList blockingTechsStrings(theStream);
 		for (const auto& blockingTech: blockingTechsStrings.getStrings())
 		{

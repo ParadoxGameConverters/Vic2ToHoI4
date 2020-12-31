@@ -1,4 +1,5 @@
 #include "MergeRules.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 
@@ -35,15 +36,15 @@ MergeRules::MergeRules() noexcept
 
 MergeRule::MergeRule(std::istream& theStream)
 {
-	registerKeyword("merge", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("merge", [this](std::istream& theStream) {
 		commonItems::singleString enabledString(theStream);
 		enabled = (enabledString.getString() == "yes");
 	});
-	registerKeyword("master", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("master", [this](std::istream& theStream) {
 		commonItems::singleString masterString(theStream);
 		master = masterString.getString();
 	});
-	registerKeyword("slave", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("slave", [this](std::istream& theStream) {
 		commonItems::singleString slaveString(theStream);
 		slaves.push_back(slaveString.getString());
 	});

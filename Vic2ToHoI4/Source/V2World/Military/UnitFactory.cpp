@@ -1,4 +1,5 @@
 #include "UnitFactory.h"
+#include "CommonRegexes.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 
@@ -6,19 +7,19 @@
 
 Vic2::Unit::Factory::Factory()
 {
-	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("name", [this](std::istream& theStream) {
 		unit->name = commonItems::convertWin1252ToUTF8(commonItems::singleString{theStream}.getString());
 	});
-	registerKeyword("type", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("type", [this](std::istream& theStream) {
 		unit->type = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("strength", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("strength", [this](std::istream& theStream) {
 		unit->strength = commonItems::singleDouble{theStream}.getDouble();
 	});
-	registerKeyword("organisation", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("organisation", [this](std::istream& theStream) {
 		unit->organization = commonItems::singleDouble{theStream}.getDouble();
 	});
-	registerKeyword("experience", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("experience", [this](std::istream& theStream) {
 		unit->experience = commonItems::singleDouble{theStream}.getDouble();
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);

@@ -1,11 +1,12 @@
 #include "UnitMappings.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 #include "UnitMapping.h"
 
 
 HoI4::UnitMappings::UnitMappings(std::istream& theStream)
 {
-	registerKeyword("link", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("link", [this](std::istream& theStream) {
 		const UnitMapping newMapping(theStream);
 		if (auto mapping = newMapping.getMappings(); mapping)
 		{

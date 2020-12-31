@@ -1,4 +1,5 @@
 #include "IdeologyItems.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 

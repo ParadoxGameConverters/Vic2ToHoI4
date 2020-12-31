@@ -1,14 +1,15 @@
 #include "OperativeNamesMappingFactory.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 
 
 HoI4::OperativeNamesMappingFactory::OperativeNamesMappingFactory()
 {
-	registerKeyword("codenames", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("codenames", [this](std::istream& theStream) {
 		codenames = commonItems::singleString(theStream).getString();
 	});
-	registerKeyword("culture", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("culture", [this](std::istream& theStream) {
 		cultures.push_back(commonItems::singleString(theStream).getString());
 	});
 	registerKeyword(commonItems::catchallRegex, commonItems::ignoreItem);

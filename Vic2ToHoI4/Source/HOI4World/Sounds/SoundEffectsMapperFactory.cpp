@@ -1,4 +1,5 @@
 #include "SoundEffectsMapperFactory.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 #include "SoundEffectsMapperLink.h"
 #include "SoundEffectsMapping.h"

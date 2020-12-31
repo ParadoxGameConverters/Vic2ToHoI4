@@ -1,17 +1,17 @@
 #include "OperativeNamesSetDetails.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 
 
 HoI4::OperativeNamesSet::Details::Details()
 {
-	registerKeyword("name", [this](const std::string& unused, std::istream& theStream)
-	{
+	registerKeyword("name", [this](std::istream& theStream) {
 		operativeNamesSet->name = commonItems::singleString{theStream}.getString();
 	});
 	registerKeyword("type", commonItems::ignoreItem);
 	registerKeyword("fallback_name", commonItems::ignoreItem);
-	registerKeyword("unique", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("unique", [this](std::istream& theStream) {
 		operativeNamesSet->names = commonItems::stringList{theStream}.getStrings();
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);

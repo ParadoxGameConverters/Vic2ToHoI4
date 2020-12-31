@@ -1,6 +1,7 @@
 #include "CommonCountryDataFactory.h"
 #include "Color.h"
 #include "CommonCountryData.h"
+#include "CommonRegexes.h"
 #include "Configuration.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
@@ -10,15 +11,15 @@
 
 Vic2::CommonCountryData::Factory::Factory()
 {
-	registerKeyword("color", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("color", [this](std::istream& theStream) {
 		const commonItems::intList colorComponents(theStream);
 		commonCountryData->theColor = commonItems::Color(
 			 std::array<int, 3>{colorComponents.getInts()[0], colorComponents.getInts()[1], colorComponents.getInts()[2]});
 	});
-	registerKeyword("unit_names", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("unit_names", [this](std::istream& theStream) {
 		commonCountryData->unitNames = unitNamesFactory.importUnitNames(theStream);
 	});
-	registerKeyword("party", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("party", [this](std::istream& theStream) {
 		commonCountryData->parties.emplace_back(*partyFactory.getParty(theStream));
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);

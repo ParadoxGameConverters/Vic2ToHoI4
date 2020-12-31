@@ -1,4 +1,5 @@
 #include "DecisionsCategories.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 

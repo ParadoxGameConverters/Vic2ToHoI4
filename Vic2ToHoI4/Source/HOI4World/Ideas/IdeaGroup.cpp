@@ -1,19 +1,20 @@
 #include "IdeaGroup.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 
 
 HoI4::IdeaGroup::IdeaGroup(std::string ideaGroupName, std::istream& theStream): name(std::move(ideaGroupName))
 {
-	registerKeyword("law", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("law", [this](std::istream& theStream) {
 		const commonItems::singleString lawString(theStream);
 		law = (lawString.getString() == "yes");
 	});
-	registerKeyword("designer", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("designer", [this](std::istream& theStream) {
 		const commonItems::singleString designerString(theStream);
 		designer = (designerString.getString() == "yes");
 	});
-	registerKeyword("use_list_view", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("use_list_view", [this](std::istream& theStream) {
 		const commonItems::singleString designerString(theStream);
 		useListView = (designerString.getString() == "yes");
 	});

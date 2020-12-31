@@ -1,4 +1,5 @@
 #include "SupplyZones.h"
+#include "CommonRegexes.h"
 #include "Configuration.h"
 #include "HOI4World/States/DefaultState.h"
 #include "HOI4World/States/HoI4State.h"
@@ -16,7 +17,7 @@ HoI4::SupplyZones::SupplyZones(const std::map<int, DefaultState>& defaultStates,
 	Log(LogLevel::Info) << "\tImporting supply zones";
 	importStates(defaultStates);
 
-	registerKeyword("supply_area", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("supply_area", [this](std::istream& theStream) {
 		const SupplyArea area(theStream);
 		auto ID = area.getID();
 

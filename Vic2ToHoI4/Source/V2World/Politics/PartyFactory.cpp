@@ -1,29 +1,30 @@
 #include "PartyFactory.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 
 
 Vic2::Party::Factory::Factory()
 {
-	registerKeyword("name", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("name", [this](std::istream& theStream) {
 		party->name = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("ideology", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("ideology", [this](std::istream& theStream) {
 		party->ideology = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("economic_policy", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("economic_policy", [this](std::istream& theStream) {
 		party->economicPolicy = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("trade_policy", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("trade_policy", [this](std::istream& theStream) {
 		party->tradePolicy = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("religious_policy", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("religious_policy", [this](std::istream& theStream) {
 		party->religiousPolicy = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("citizenship_policy", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("citizenship_policy", [this](std::istream& theStream) {
 		party->citizenshipPolicy = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("war_policy", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("war_policy", [this](std::istream& theStream) {
 		party->warPolicy = commonItems::singleString{theStream}.getString();
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);

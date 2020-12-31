@@ -1,4 +1,5 @@
 #include "CountryFactory.h"
+#include "CommonRegexes.h"
 #include "Log.h"
 #include "ParserHelpers.h"
 #include "StringUtils.h"
@@ -19,41 +20,41 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 		  std::make_unique<Leader::Factory>(std::move(*Traits::Factory{}.loadTraits(theConfiguration.getVic2Path())))),
 	 stateFactory(std::make_unique<State::Factory>())
 {
-	registerKeyword("capital", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("capital", [this](std::istream& theStream) {
 		country->capital = commonItems::singleInt{theStream}.getInt();
 	});
-	registerKeyword("civilized", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("civilized", [this](std::istream& theStream) {
 		if (commonItems::singleString{theStream}.getString() == "yes")
 		{
 			country->civilized = true;
 		}
 	});
-	registerKeyword("revanchism", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("revanchism", [this](std::istream& theStream) {
 		country->revanchism = commonItems::singleDouble{theStream}.getDouble();
 	});
-	registerKeyword("war_exhaustion", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("war_exhaustion", [this](std::istream& theStream) {
 		country->warExhaustion = commonItems::singleDouble{theStream}.getDouble();
 	});
-	registerKeyword("badboy", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("badboy", [this](std::istream& theStream) {
 		country->badBoy = commonItems::singleDouble{theStream}.getDouble();
 	});
-	registerKeyword("government", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("government", [this](std::istream& theStream) {
 		country->government = commonItems::singleString{theStream}.getString();
 	});
-	registerKeyword("last_election", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("last_election", [this](std::istream& theStream) {
 		country->lastElection = date(commonItems::singleString{theStream}.getString());
 	});
-	registerKeyword("domain_region", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("domain_region", [this](std::istream& theStream) {
 		country->domainName = commonItems::singleString{theStream}.getString();
 		country->domainAdjective = country->domainName;
 	});
-	registerKeyword("human", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("human", [this](std::istream& theStream) {
 		if (commonItems::singleString{theStream}.getString() == "yes")
 		{
 			country->human = true;
 		}
 	});
-	registerKeyword("primary_culture", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("primary_culture", [this](std::istream& theStream) {
 		country->primaryCulture = commonItems::remQuotes(commonItems::singleString{theStream}.getString());
 		country->acceptedCultures.insert(country->primaryCulture);
 
@@ -67,19 +68,19 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 			country->primaryCultureGroup.clear();
 		}
 	});
-	registerKeyword("culture", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("culture", [this](std::istream& theStream) {
 		for (const auto& culture: commonItems::stringList{theStream}.getStrings())
 		{
 			country->acceptedCultures.insert(commonItems::remQuotes(culture));
 		}
 	});
-	registerKeyword("technology", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("technology", [this](std::istream& theStream) {
 		for (const auto& technology: technologyFactory.importTechnologies(theStream))
 		{
 			country->technologiesAndInventions.insert(technology);
 		}
 	});
-	registerKeyword("active_inventions", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("active_inventions", [this](std::istream& theStream) {
 		for (auto inventionNum: commonItems::intList{theStream}.getInts())
 		{
 			if (auto inventionName = theInventions->getInventionName(inventionNum); inventionName)
@@ -88,7 +89,7 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 			}
 		}
 	});
-	registerKeyword("active_party", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("active_party", [this](std::istream& theStream) {
 		const auto partyNum = commonItems::singleInt(theStream).getInt();
 		country->activePartyIDs.push_back(partyNum);
 		if (rulingPartyID == 0)
@@ -96,10 +97,10 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 			rulingPartyID = partyNum;
 		}
 	});
-	registerKeyword("ruling_party", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("ruling_party", [this](std::istream& theStream) {
 		rulingPartyID = commonItems::singleInt{theStream}.getInt();
 	});
-	registerKeyword("upper_house", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("upper_house", [this](std::istream& theStream) {
 		for (const auto& [ideology, amountString]: commonItems::assignments{theStream}.getAssignments())
 		{
 			try
@@ -115,13 +116,13 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 	registerRegex("[A-Z][A-Z0-9]{2}", [this](const std::string& countryTag, std::istream& theStream) {
 		country->relations.insert(std::make_pair(countryTag, *relationsFactory.getRelations(theStream)));
 	});
-	registerKeyword("ai", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("ai", [this](std::istream& theStream) {
 		country->vic2AI = aiFactory.importAI(theStream);
 	});
-	registerKeyword("army", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("army", [this](std::istream& theStream) {
 		country->armies.push_back(*armyFactory.getArmy(country->tag, theStream));
 	});
-	registerKeyword("navy", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("navy", [this](std::istream& theStream) {
 		const auto navy = armyFactory.getArmy(country->tag, theStream);
 		for (auto& transportedArmy: navy->getTransportedArmies())
 		{
@@ -129,13 +130,13 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 		}
 		country->armies.push_back(*navy);
 	});
-	registerKeyword("leader", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("leader", [this](std::istream& theStream) {
 		country->leaders.push_back(*leaderFactory->getLeader(theStream));
 	});
-	registerKeyword("state", [this, &theStateDefinitions](const std::string& unused, std::istream& theStream) {
+	registerKeyword("state", [this, &theStateDefinitions](std::istream& theStream) {
 		country->states.push_back(*stateFactory->getState(theStream, country->tag, theStateDefinitions));
 	});
-	registerKeyword("flags", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("flags", [this](std::istream& theStream) {
 		for (const auto& [flag, unused]: commonItems::assignments{theStream}.getAssignments())
 		{
 			country->flags.insert(flag);

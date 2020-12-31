@@ -1,4 +1,5 @@
 #include "Resources.h"
+#include "CommonRegexes.h"
 #include "ParserHelpers.h"
 #include "ResourcesLink.h"
 
@@ -6,7 +7,7 @@
 
 HoI4::Resources::Resources() noexcept
 {
-	registerKeyword("link", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("link", [this](std::istream& theStream) {
 		ResourcesLink theLink(theStream);
 		resourceMap.insert(std::make_pair(theLink.getProvinceNum(), theLink.takeResources()));
 	});

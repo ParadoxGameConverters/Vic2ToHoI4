@@ -1,5 +1,6 @@
 #include "StateFactory.h"
 #include "BuildingReader.h"
+#include "CommonRegexes.h"
 #include "Log.h"
 #include "ParserHelpers.h"
 #include "StateDefinitions.h"
@@ -8,11 +9,11 @@
 
 Vic2::State::Factory::Factory()
 {
-	registerKeyword("provinces", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("provinces", [this](std::istream& theStream) {
 		auto provinces = commonItems::intList{theStream}.getInts();
 		state->provinceNumbers.insert(provinces.begin(), provinces.end());
 	});
-	registerKeyword("state_buildings", [this](const std::string& unused, std::istream& theStream) {
+	registerKeyword("state_buildings", [this](std::istream& theStream) {
 		state->factoryLevel += buildingReader.getLevel(theStream);
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
