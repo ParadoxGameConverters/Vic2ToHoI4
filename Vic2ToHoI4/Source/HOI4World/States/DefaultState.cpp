@@ -7,7 +7,7 @@
 
 HoI4::DefaultState::DefaultState(std::istream& theStream)
 {
-	registerKeyword("impassable", [this](const std::string unused, std::istream& theStream) {
+	registerKeyword("impassable", [this](const std::string& unused, std::istream& theStream) {
 		impassable = true;
 		commonItems::ignoreItem(unused, theStream);
 	});
