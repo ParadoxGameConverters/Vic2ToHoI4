@@ -150,6 +150,10 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	{
 		return;
 	}
+	if (oldTag == "AAA")
+	{
+		return;
+	}
 
 	auto rulingIdeology = rulingParty->getIdeology();
 	governmentIdeology = governmentMap.getIdeologyForCountry(oldTag, oldGovernment, rulingIdeology, debug);
@@ -600,6 +604,11 @@ void HoI4::Country::convertIdeologySupport(const std::set<std::string>& majorIde
 	 const governmentMapper& governmentMap)
 {
 	ideologySupport.clear();
+	if (oldTag == "AAA")
+	{
+		ideologySupport.insert(std::make_pair("neutrality", 100));
+		return;
+	}
 
 	for (const auto& upperHouseIdeology: upperHouseComposition)
 	{
