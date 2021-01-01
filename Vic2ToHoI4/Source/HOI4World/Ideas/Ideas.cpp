@@ -21,7 +21,7 @@ void HoI4::Ideas::importIdeologicalIdeas()
 		ideologicalIdeas.insert(make_pair(ideology, IdeaGroup(ideology, theStream)));
 	});
 
-	parseFile("ideologicalIdeas.txt");
+	parseFile("Configurables/ideologicalIdeas.txt");
 	clearRegisteredKeywords();
 }
 
@@ -32,7 +32,7 @@ void HoI4::Ideas::importGeneralIdeas()
 		generalIdeas.emplace_back(IdeaGroup{ideaGroupName, theStream});
 	});
 
-	parseFile("converterIdeas.txt");
+	parseFile("Configurables/converterIdeas.txt");
 	clearRegisteredKeywords();
 }
 

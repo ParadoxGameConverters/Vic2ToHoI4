@@ -7,7 +7,7 @@
 HoI4::militaryMappingsFile::militaryMappingsFile()
 {
 	Log(LogLevel::Info) << "\tImporting military mappings";
-	std::ifstream unitMappingFile("DataFiles/unit_mappings.txt");
+	std::ifstream unitMappingFile("Configurables/unit_mappings.txt");
 	if (unitMappingFile.is_open())
 	{
 		theMilitaryMappings = std::make_unique<allMilitaryMappings>(unitMappingFile);
@@ -15,6 +15,6 @@ HoI4::militaryMappingsFile::militaryMappingsFile()
 	}
 	else
 	{
-		throw std::runtime_error{"Could not open DataFiles/unit_mappings.txt"};
+		throw std::runtime_error{"Could not open Configurables/unit_mappings.txt"};
 	}
 }

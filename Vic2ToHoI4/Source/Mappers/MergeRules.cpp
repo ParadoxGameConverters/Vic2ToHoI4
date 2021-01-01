@@ -30,7 +30,7 @@ MergeRules::MergeRules() noexcept
 		}
 	});
 
-	parseFile("merge_nations.txt");
+	parseFile("Configurables/merge_nations.txt");
 }
 
 

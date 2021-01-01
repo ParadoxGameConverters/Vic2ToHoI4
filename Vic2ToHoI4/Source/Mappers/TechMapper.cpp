@@ -132,7 +132,7 @@ mappers::techMapperFile::techMapperFile()
 		researchBonusMappings = theBonusMap.getMappings();
 	});
 
-	parseFile("tech_mapping.txt");
+	parseFile("Configurables/tech_mapping.txt");
 	theTechMapper =
 		 std::make_unique<techMapper>(techMappings, nonMtgNavalTechMappings, mtgNavalTechMappings, researchBonusMappings);
 }

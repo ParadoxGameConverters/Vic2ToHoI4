@@ -130,7 +130,7 @@ void governmentMapper::init()
 		partyMap = mappings.getPartyMap();
 	});
 
-	parseFile("governmentMapping.txt");
+	parseFile("Configurables/governmentMapping.txt");
 }
 
 

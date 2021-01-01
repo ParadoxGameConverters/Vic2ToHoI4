@@ -36,16 +36,16 @@ mappers::ProvinceMapper mappers::ProvinceMapper::Parser::initializeMapper(const 
 	auto mapped = false;
 	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
-		if (commonItems::DoesFileExist(mod.getName() + "_province_mappings.txt"))
+		if (commonItems::DoesFileExist("Configurables/" + mod.getName() + "_province_mappings.txt"))
 		{
-			parseFile(mod.getName() + "_province_mappings.txt");
+			parseFile("Configurables/" + mod.getName() + "_province_mappings.txt");
 			mapped = true;
 			break;
 		}
 	}
 	if (!mapped)
 	{
-		parseFile("province_mappings.txt");
+		parseFile("Configurables/province_mappings.txt");
 	}
 
 	checkAllHoI4ProvincesMapped(theConfiguration);

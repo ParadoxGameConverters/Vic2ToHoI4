@@ -51,7 +51,7 @@ void CountryMapper::readRules()
 	});
 
 	Log(LogLevel::Info) << "\tReading country mapping rules";
-	parseFile("country_mappings.txt");
+	parseFile("Configurables/country_mappings.txt");
 }
 
 

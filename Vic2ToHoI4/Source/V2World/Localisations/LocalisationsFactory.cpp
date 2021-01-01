@@ -20,9 +20,9 @@ std::unique_ptr<Vic2::Localisations> Vic2::Localisations::Factory::importLocalis
 		ReadFromAllFilesInFolder(theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/localisation");
 	}
 
-	if (commonItems::DoesFileExist("DataFiles/Vic2Localisations.csv"))
+	if (commonItems::DoesFileExist("Configurables/Vic2Localisations.csv"))
 	{
-		ReadFromFile("DataFiles/Vic2Localisations.csv");
+		ReadFromFile("Configurables/Vic2Localisations.csv");
 	}
 
 	return std::make_unique<Localisations>(localisations, localisationToKeyMap);

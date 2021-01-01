@@ -7,7 +7,7 @@
 mappers::VersionParser::VersionParser()
 {
 	registerKeys();
-	parseFile("DataFiles/version.txt");
+	parseFile("../version.txt");
 	clearRegisteredKeywords();
 }
 
