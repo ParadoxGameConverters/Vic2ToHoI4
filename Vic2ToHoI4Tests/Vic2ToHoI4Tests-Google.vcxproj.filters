@@ -1989,6 +1989,8 @@
     <CopyFileToFolders Include="TestFiles\World\ResolveBattlesWorld.v2">
       <Filter>TestFiles\World</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\World\MoveArmiesWorld.v2" />
+    <CopyFileToFolders Include="TestFiles\World\MoveArmiesWorld.v2">
+	  <Filter>TestFiles\World</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>
