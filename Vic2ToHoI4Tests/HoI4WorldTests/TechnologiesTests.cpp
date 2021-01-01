@@ -1,26 +1,3 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "HOI4World/Technologies.h"
 #include "Mappers/TechMapper.h"
 #include "OutHoi4/OutTechnologies.h"
@@ -70,12 +47,12 @@ HoI4World_technologiesTests::HoI4World_technologiesTests()
 	HoI4Techs6.insert("HoI4_mtgNavalTech3");
 	mtgTechMappings.insert(std::make_pair("Vic2_mtgNavalInvention", HoI4Techs6));
 
-	std::map<std::string, std::map<std::string, int>> researchBonusMappings;
-	std::map<std::string, int> researchBonuses;
+	std::map<std::string, std::map<std::string, float>> researchBonusMappings;
+	std::map<std::string, float> researchBonuses;
 	researchBonuses.insert(std::make_pair("bonus1_doctrine", 50));
 	researchBonuses.insert(std::make_pair("bonus2_doctrine", 60));
 	researchBonusMappings.insert(std::make_pair("Vic2_tech", researchBonuses));
-	std::map<std::string, int> researchBonuses2;
+	std::map<std::string, float> researchBonuses2;
 	researchBonuses2.insert(std::make_pair("bonus2_doctrine", 60));
 	researchBonuses2.insert(std::make_pair("bonus3_doctrine", 70));
 	researchBonusMappings.insert(std::make_pair("Vic2_invention", researchBonuses2));
@@ -458,8 +435,8 @@ TEST_F(HoI4World_technologiesTests, matchingVic2TechGivesResearchBonuses)
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Research Bonuses\n";
-	expectedOutput += "add_tech_bonus = { name = bonus1_doc_bonus bonus = 0.50 uses = 1 category = bonus1_doctrine }\n";
-	expectedOutput += "add_tech_bonus = { name = bonus2_doc_bonus bonus = 0.60 uses = 1 category = bonus2_doctrine }\n";
+	expectedOutput += "add_tech_bonus = { name = bonus1_doc_bonus bonus = 50 uses = 1 category = bonus1_doctrine }\n";
+	expectedOutput += "add_tech_bonus = { name = bonus2_doc_bonus bonus = 60 uses = 1 category = bonus2_doctrine }\n";
 	ASSERT_EQ(expectedOutput, output);
 }
 
@@ -475,8 +452,8 @@ TEST_F(HoI4World_technologiesTests, matchingVic2InventionGivesResearchBonuses)
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Research Bonuses\n";
-	expectedOutput += "add_tech_bonus = { name = bonus2_doc_bonus bonus = 0.60 uses = 1 category = bonus2_doctrine }\n";
-	expectedOutput += "add_tech_bonus = { name = bonus3_doc_bonus bonus = 0.70 uses = 1 category = bonus3_doctrine }\n";
+	expectedOutput += "add_tech_bonus = { name = bonus2_doc_bonus bonus = 60 uses = 1 category = bonus2_doctrine }\n";
+	expectedOutput += "add_tech_bonus = { name = bonus3_doc_bonus bonus = 70 uses = 1 category = bonus3_doctrine }\n";
 	ASSERT_EQ(expectedOutput, output);
 }
 
@@ -493,8 +470,8 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachResearchBonuses)
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Research Bonuses\n";
-	expectedOutput += "add_tech_bonus = { name = bonus1_doc_bonus bonus = 0.50 uses = 1 category = bonus1_doctrine }\n";
-	expectedOutput += "add_tech_bonus = { name = bonus2_doc_bonus bonus = 0.60 uses = 1 category = bonus2_doctrine }\n";
-	expectedOutput += "add_tech_bonus = { name = bonus3_doc_bonus bonus = 0.70 uses = 1 category = bonus3_doctrine }\n";
+	expectedOutput += "add_tech_bonus = { name = bonus1_doc_bonus bonus = 50 uses = 1 category = bonus1_doctrine }\n";
+	expectedOutput += "add_tech_bonus = { name = bonus2_doc_bonus bonus = 60 uses = 1 category = bonus2_doctrine }\n";
+	expectedOutput += "add_tech_bonus = { name = bonus3_doc_bonus bonus = 70 uses = 1 category = bonus3_doctrine }\n";
 	ASSERT_EQ(expectedOutput, output);
 }

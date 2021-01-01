@@ -40,7 +40,7 @@ void HoI4::outputResearchBonuses(const technologies& theTechnologies, std::ostre
 	for (const auto& researchBonus: theTechnologies.getResearchBonuses())
 	{
 		auto name = researchBonus.first.substr(0, researchBonus.first.size() - 5) + "_bonus";
-		output << "add_tech_bonus = { name = " << name << " bonus = 0." << float(researchBonus.second)
+		output << "add_tech_bonus = { name = " << name << " bonus = " << researchBonus.second
 				 << " uses = 1 category = " << researchBonus.first << " }\n";
 	}
 }
