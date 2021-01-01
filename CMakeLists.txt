@@ -14,6 +14,14 @@ add_compile_options("-std=c++2a")
 add_compile_options("-O3")
 #add_compile_options("-g")
 
+include(ExternalProject)
+#ExternalProject_Add(Fronter
+#    SOURCE_DIR ${CMAKE_SOURCE_DIR}/Fronter/Fronter
+#    CMAKE_ARGS
+#        ${GLOBAL_DEFAULT_ARGS}
+#        ${GLOBAL_THIRDPARTY_LIB_ARGS}
+#    BUILD_COMMAND make
+#)
 include_directories(common_items)
 include_directories(bitmap)
 include_directories(${PROJECT_SOURCE_DIR})
