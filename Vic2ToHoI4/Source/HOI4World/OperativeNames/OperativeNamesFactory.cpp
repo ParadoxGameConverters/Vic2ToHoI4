@@ -16,10 +16,10 @@ std::unique_ptr<HoI4::OperativeNames> HoI4::OperativeNames::Factory::getOperativ
 		operativeNames->operativeNamesSets.insert(
 			 std::make_pair(operativesNamesSet->getWrapper(), std::move(*operativesNamesSet)));
 	}
-	for (const auto& filename: commonItems::GetAllFilesInFolder("DataFiles/CodenamesOperatives"))
+	for (const auto& filename: commonItems::GetAllFilesInFolder("Configurables/CodenamesOperatives"))
 	{
 		auto operativesNamesSet =
-			 operativeNameSetFactory.getOperativeNamesSetFromFile("DataFiles/CodenamesOperatives/" + filename);
+			 operativeNameSetFactory.getOperativeNamesSetFromFile("Configurables/CodenamesOperatives/" + filename);
 		operativeNames->operativeNamesSets.insert(
 			 std::make_pair(operativesNamesSet->getWrapper(), std::move(*operativesNamesSet)));
 	}

@@ -296,7 +296,7 @@ void HoI4FocusTree::confirmLoadedFocuses()
 			loadedFocuses.insert(make_pair(newFocus.id, newFocus));
 		});
 
-		parseFile("converterFocuses.txt");
+		parseFile("Configurables/converterFocuses.txt");
 	}
 }
 

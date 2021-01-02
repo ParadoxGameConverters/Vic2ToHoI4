@@ -11,7 +11,7 @@ HoI4::AiPeaces::AiPeaces() noexcept
 		thePeaces.emplace_back(AiPeace(peaceName, theStream));
 	});
 
-	parseFile("ai_peaces.txt");
+	parseFile("Configurables/ai_peaces.txt");
 }
 
 

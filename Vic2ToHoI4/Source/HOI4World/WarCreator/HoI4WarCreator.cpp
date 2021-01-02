@@ -559,7 +559,7 @@ pair<int, int> HoI4WarCreator::getProvincePosition(int provinceNum)
 
 void HoI4WarCreator::establishProvincePositions()
 {
-	ifstream positionsFile("positions.txt");
+	ifstream positionsFile("Configurables/positions.txt");
 	if (!positionsFile.is_open())
 	{
 		throw std::runtime_error("Could not open positions.txt");

@@ -82,7 +82,7 @@ void graphicsMapper::init()
 		loadIdeologyMinisterPortraitMappings(cultureGroupName, newCultureGroup.getIdeologyMinisterPortraits());
 	});
 
-	parseFile("cultureGroupToGraphics.txt");
+	parseFile("Configurables/cultureGroupToGraphics.txt");
 }
 
 

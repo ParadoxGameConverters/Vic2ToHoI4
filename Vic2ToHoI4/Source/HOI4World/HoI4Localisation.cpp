@@ -685,7 +685,7 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 			localisedName = Vic2NameInLanguage.second + " Wasteland";
 			Log(LogLevel::Warning) << Vic2NameInLanguage.second << " had a wasteland section with no localisation. Add "
 										  << vic2State.getStateID()
-										  << "_WASTELAND to DataFiles/Vic2Localisations.csv for better conversion.";
+										  << "_WASTELAND to Configurables/Vic2Localisations.csv for better conversion.";
 		}
 	}
 	else
@@ -889,7 +889,7 @@ void HoI4::Localisation::generateCustomLocalisations(ScriptedLocalisations& scri
 {
 	Log(LogLevel::Info) << "\tGenerating custom localisations";
 
-	std::ifstream languageReplacementsFile("DataFiles/languageReplacements.txt");
+	std::ifstream languageReplacementsFile("Configurables/languageReplacements.txt");
 	if (!languageReplacementsFile.is_open())
 	{
 		return;

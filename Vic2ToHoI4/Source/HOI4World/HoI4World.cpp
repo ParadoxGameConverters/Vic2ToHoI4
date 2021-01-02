@@ -189,7 +189,7 @@ void HoI4::World::convertCountries(const Vic2::World& sourceWorld)
 {
 	Log(LogLevel::Info) << "\tConverting countries";
 
-	std::ifstream flagToIdeasMappingFile("DataFiles/FlagsToIdeasMappings.txt");
+	std::ifstream flagToIdeasMappingFile("Configurables/FlagsToIdeasMappings.txt");
 	const mappers::FlagsToIdeasMapper flagsToIdeasMapper(flagToIdeasMappingFile);
 	flagToIdeasMappingFile.close();
 
@@ -239,7 +239,7 @@ void HoI4::World::importLeaderTraits()
 		commonItems::stringsOfItems traits(theStream);
 		ideologicalLeaderTraits.insert(make_pair(ideologyName, traits.getStrings()));
 	});
-	parseFile("converterLeaderTraits.txt");
+	parseFile("Configurables/converterLeaderTraits.txt");
 }
 
 
@@ -268,7 +268,7 @@ void HoI4::World::convertGovernments(const Vic2::World& sourceWorld,
 void HoI4::World::convertCountryNames(const Vic2::Localisations& vic2Localisations)
 {
 	Log(LogLevel::Info) << "\tConverting country names";
-	const auto articleRules = ArticleRules::Factory{}.getRules("DataFiles/Localisations/ArticleRules.txt");
+	const auto articleRules = ArticleRules::Factory{}.getRules("Configurables/Localisations/ArticleRules.txt");
 	for (const auto& [tag, country]: countries)
 	{
 		hoi4Localisations->createCountryLocalisations(std::make_pair(country->getOldTag(), tag),
@@ -617,10 +617,10 @@ void HoI4::World::convertNavies(const UnitMappings& unitMap,
 {
 	Log(LogLevel::Info) << "\t\tConverting navies";
 
-	ifstream variantsFile("DataFiles/shipTypes.txt");
+	ifstream variantsFile("Configurables/shipTypes.txt");
 	if (!variantsFile.is_open())
 	{
-		std::runtime_error e("Could not open DataFiles/shipTypes.txt. Double-check your converter installation");
+		std::runtime_error e("Could not open Configurables/shipTypes.txt. Double-check your converter installation");
 		throw e;
 	}
 	PossibleShipVariants possibleVariants(variantsFile);

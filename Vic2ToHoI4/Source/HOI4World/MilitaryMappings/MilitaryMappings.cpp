@@ -26,10 +26,12 @@ HoI4::militaryMappings::militaryMappings(std::string name, std::istream& theStre
 
 	if (!unitMappings)
 	{
-		throw std::invalid_argument("No unit mappings were included! Check unit_mappings.txt for correctness.");
+		throw std::invalid_argument(
+			 "No unit mappings were included! Check Configurables/unit_mappings.txt for correctness.");
 	}
 	if (!mtgUnitMappings)
 	{
-		throw std::invalid_argument("No mtg unit mappings were included! Check unit_mappings.txt for correctness.");
+		throw std::invalid_argument(
+			 "No mtg unit mappings were included! Check Configurables/unit_mappings.txt for correctness.");
 	}
 }
