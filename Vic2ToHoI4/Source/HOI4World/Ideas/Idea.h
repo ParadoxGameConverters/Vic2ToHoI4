@@ -34,6 +34,7 @@ class Idea: commonItems::parser
 
 	std::string allowed;
 	std::string allowedCivilWar;
+	std::optional<std::string> visible;
 	std::string cancel;
 	std::string available;
 	std::string aiWillDo;
