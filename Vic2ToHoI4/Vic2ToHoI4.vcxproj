@@ -796,9 +796,9 @@
     <ClInclude Include="Source\Vic2ToHoI4Converter.h" />
   </ItemGroup>
   <ItemGroup>
-    <CopyFileToFolders Include="Data_Files\Configurables\ai_peaces.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\ai_peaces.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configuration-example.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)</DestinationFolders>
@@ -806,101 +806,101 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">configuration-example.txt</DestinationFileName>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\converterFocuses.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\converterFocuses.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\converterIdeas.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\converterIdeas.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\converterIdeologies.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\converterIdeologies.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\converterLeaderTraits.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\converterLeaderTraits.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\country_mappings.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\country_mappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\cultureGroupToGraphics.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\cultureGroupToGraphics.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\FAQ.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/..</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/..</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\governmentMapping.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\governmentMapping.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\Historical Project Mod 0.4.6_province_mappings.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\Historical Project Mod 0.4.6_province_mappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\ideologicalAdvisors.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\ideologicalAdvisors.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\ideologicalDecisions.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\ideologicalDecisions.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\ideologicalIdeas.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\ideologicalIdeas.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\license.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/..</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/..</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\merge_nations.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\merge_nations.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\names.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\names.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\positions.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\positions.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\province_mappings.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\province_mappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\ReadMe.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/..</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/..</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\Resources.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\Resources.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\shipTypes.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\shipTypes.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\tech_mapping.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\tech_mapping.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\unit_mappings.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\unit_mappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\Vic2Localisations.csv">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\Vic2Localisations.csv">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\FlagsToIdeasMappings.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\FlagsToIdeasMappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\AAC.tga">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
@@ -24402,13 +24402,13 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\foreignInfluenceDecisions.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\foreignInfluenceDecisions.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\languageReplacements.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\languageReplacements.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\version.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/..</DestinationFolders>
@@ -24470,45 +24470,45 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/../Configuration</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/../Configuration</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\IntelligenceAgencyLogos.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\IntelligenceAgencyLogos.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\RME_operative_codenames.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables/CodenamesOperatives</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables/CodenamesOperatives</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\RME_operative_codenames.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables/CodenamesOperatives</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables/CodenamesOperatives</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\OperativeNamesMappings.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\OperativeNamesMappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\ArticleRules.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables/Localisations</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables/Localisations</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\ArticleRules.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables/Localisations</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables/Localisations</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\regions.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables/Map</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables/Map</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\regions.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables/Map</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables/Map</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\StateCategories.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables/Localisations</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables/Localisations</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\StateCategories.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables/Localisations</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables/Localisations</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\CultureToVoiceMappings.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables/Sounds</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables/Sounds</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CultureToVoiceMappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables/Sounds</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables/Sounds</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\HoI4CountryLeaders.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\HoI4CountryLeaders.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\The Concert of Europe_province_mappings.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\The Concert of Europe_province_mappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\CountryNamesMappings.txt">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\CountryNamesMappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
