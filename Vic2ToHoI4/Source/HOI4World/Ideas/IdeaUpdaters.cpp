@@ -225,3 +225,27 @@ void HoI4::updateGeneralIdeas(IdeaGroup& generalIdeas, const std::set<std::strin
 		generalIdeas.replaceIdea(*indoctrinationFocus);
 	}
 }
+
+
+void HoI4::updateNeutralIdeas(IdeaGroup& neutralIdeas, const std::set<std::string>& majorIdeologies)
+{
+	auto collectivistEthosFocusNeutral = neutralIdeas.getIdea("collectivist_ethos_focus_neutral");
+	if (majorIdeologies.contains("democratic"))
+	{
+		collectivistEthosFocusNeutral->setAllowedCivilWar(
+			 "= {\n"
+			 "\t\t\t\tAND = {\n"
+			 "\t\t\t\t\tNOT = { has_government = democratic }\n"
+			 "\t\t\t\t\tNOT = { has_government = neutrality }\n"
+			 "\t\t\t\t}\n"
+			 "\t\t\t}");
+	}
+	else
+	{
+		collectivistEthosFocusNeutral->setAllowedCivilWar(
+			 "= {\n"
+			 "\t\t\t\tNOT = { has_government = neutrality }\n"
+			 "\t\t\t}");
+	}
+	neutralIdeas.replaceIdea(*collectivistEthosFocusNeutral);
+}

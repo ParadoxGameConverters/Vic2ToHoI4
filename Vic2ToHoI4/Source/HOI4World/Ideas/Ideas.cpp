@@ -60,4 +60,10 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 		return (theGroup.getName() == "country");
 	});
 	updateGeneralIdeas(*foundGroup, majorIdeologies);
+
+	if (auto foundIdeologicalGroup = ideologicalIdeas.find("neutrality");
+		 foundIdeologicalGroup != ideologicalIdeas.end())
+	{
+		updateNeutralIdeas(foundIdeologicalGroup->second, majorIdeologies);
+	}
 }
