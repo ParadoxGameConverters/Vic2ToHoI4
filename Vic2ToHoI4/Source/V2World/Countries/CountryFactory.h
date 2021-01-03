@@ -33,11 +33,12 @@ class Country::Factory: commonItems::parser
 		 std::istream& theStream,
 		 const CommonCountryData& commonCountryData,
 		 const std::vector<Party>& allParties,
-		 const StateLanguageCategories& stateLanguageCategories);
+		 const StateLanguageCategories& stateLanguageCategories,
+		 float percentOfCommanders);
 
   private:
 	void setParties(const std::vector<Party>& allParties);
-	void limitCommanders();
+	void limitCommanders(float percentOfCommanders);
 	void setStateLanguageCategories(const StateLanguageCategories& stateLanguageCategories);
 
 	std::shared_ptr<CultureGroups> theCultureGroups;

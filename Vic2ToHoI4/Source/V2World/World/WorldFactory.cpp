@@ -37,7 +37,7 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 		const auto provinceNum = std::stoi(provinceID); // the regex ensures the ID is always a valid number
 		world->provinces[provinceNum] = provinceFactory->getProvince(provinceNum, theStream);
 	});
-	registerRegex("[A-Z][A-Z0-9]{2}", [this](const std::string& countryTag, std::istream& theStream) {
+	registerRegex("[A-Z][A-Z0-9]{2}", [this, theConfiguration](const std::string& countryTag, std::istream& theStream) {
 		if (const auto commonCountryData = commonCountriesData.find(countryTag);
 			 commonCountryData != commonCountriesData.end())
 		{
@@ -46,7 +46,8 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 					  theStream,
 					  commonCountryData->second,
 					  allParties,
-					  *stateLanguageCategories)));
+					  *stateLanguageCategories,
+					  theConfiguration.getPercentOfCommanders())));
 			tagsInOrder.push_back(countryTag);
 		}
 		else
