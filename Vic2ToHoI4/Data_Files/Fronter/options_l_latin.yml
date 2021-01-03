@@ -174,3 +174,6 @@ l_latin:
  RADICALTIP: "Radicalismus vertitur."
  YES: "Age"
  NO: "Noli agere"
+ PERCENT_OF_COMMANDERS: "Pars pro centum transferendorum ducum"
+ PERCENT_OF_COMMANDERS_TOOLTIP: "Iubetur hoc magnitudo transferendorum a Vic2 ducum."
+ PERCENT_OF_COMMANDERS_TOOLTIP2: "0 - 100."

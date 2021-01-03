@@ -174,3 +174,6 @@ l_russian:
  RADICALTIP: "Радикал будет преобразован."
  YES: "Да"
  NO: "Нет"
+ PERCENT_OF_COMMANDERS: "Процент обращенных командиров"
+ PERCENT_OF_COMMANDERS_TOOLTIP: "Определяется процент преобразованных командиров из Vic2."
+ PERCENT_OF_COMMANDERS_TOOLTIP2: "0 - 100."
