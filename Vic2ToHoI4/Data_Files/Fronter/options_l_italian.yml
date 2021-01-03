@@ -174,3 +174,6 @@ l_italian:
  RADICALTIP: "Il radicalismo verrà convertito."
  YES: "Sì"
  NO: "No"
+ PERCENT_OF_COMMANDERS: "Percentuale di comandanti da convertire"
+ PERCENT_OF_COMMANDERS_TOOLTIP: "Determina la percentuale di comandanti da convertire da Vic2."
+ PERCENT_OF_COMMANDERS_TOOLTIP2: "0 - 100."

@@ -157,6 +157,11 @@ Configuration::Factory::Factory()
 			Log(LogLevel::Info) << "\tEnabling keep factions";
 		}
 	});
+	registerKeyword("percent_of_commanders", [this](std::istream& theStream) {
+		configuration->percentOfCommanders =
+			 std::clamp(static_cast<float>(commonItems::singleDouble{theStream}.getDouble()), 0.0F, 100.0F) / 100.0F;
+		Log(LogLevel::Info) << "\tPercent of commanders: " << configuration->percentOfCommanders;
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 

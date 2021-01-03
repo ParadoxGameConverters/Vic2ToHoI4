@@ -47,3 +47,8 @@ TWO = {
 		location=3
 	}
 }
+active_war = {
+	original_attacker="ONE"
+	attacker="ONE"
+	defender="TWO"
+}

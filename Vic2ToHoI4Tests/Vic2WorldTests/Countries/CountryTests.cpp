@@ -28,7 +28,8 @@ TEST(Vic2World_Countries_CountryTests, TagIsAsSet)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ("TAG", country->getTag());
 }
@@ -49,7 +50,8 @@ TEST(Vic2World_Countries_CountryTests, ColorIsFromCommonCountryData)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.setColor(testColor).Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ(testColor, country->getColor());
 }
@@ -68,7 +70,8 @@ TEST(Vic2World_Countries_CountryTests, HumanDefaultsToFalse)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_FALSE(country->isHuman());
 }
@@ -88,7 +91,8 @@ TEST(Vic2World_Countries_CountryTests, HumanCanBeSet)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->isHuman());
 }
@@ -108,7 +112,8 @@ TEST(Vic2World_Countries_CountryTests, HumanNotSetWithoutYes)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_FALSE(country->isHuman());
 }
@@ -127,7 +132,8 @@ TEST(Vic2World_Countries_CountryTests, StatesDefaultToEmpty)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->getStates().empty());
 }
@@ -148,7 +154,8 @@ TEST(Vic2World_Countries_CountryTests, StatesCanBeImported)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ(1, country->getStates().size());
 }
@@ -167,7 +174,8 @@ TEST(Vic2World_Countries_CountryTests, DoesNotHaveLandByDefault)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_FALSE(country->hasLand());
 }
@@ -186,7 +194,8 @@ TEST(Vic2World_Countries_CountryTests, HasLandWhenGivenProvinces)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 	country->addProvince(1, std::make_shared<Vic2::Province>());
 
 	ASSERT_TRUE(country->hasLand());
@@ -206,7 +215,8 @@ TEST(Vic2World_Countries_CountryTests, IsEmptyByDefault)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->isEmpty());
 }
@@ -225,7 +235,8 @@ TEST(Vic2World_Countries_CountryTests, IsNotEmptyWhenGivenProvinces)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 	country->addProvince(1, std::make_shared<Vic2::Province>());
 
 	ASSERT_FALSE(country->isEmpty());
@@ -245,7 +256,8 @@ TEST(Vic2World_Countries_CountryTests, IsNotEmptyWhenGivenCores)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 	country->addCore(std::make_shared<Vic2::Province>());
 
 	ASSERT_FALSE(country->isEmpty());
@@ -265,7 +277,8 @@ TEST(Vic2World_Countries_CountryTests, CoresDefaultToEmpty)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->getCores().empty());
 }
@@ -284,7 +297,8 @@ TEST(Vic2World_Countries_CountryTests, CoresCanBeAdded)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 	country->addCore(Vic2::Province::Builder{}.setNumber(1).build());
 
 	ASSERT_EQ(1, country->getCores().size());
@@ -305,7 +319,8 @@ TEST(Vic2World_Countries_CountryTests, CoresCanBeReplaced)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 	country->addCore(Vic2::Province::Builder{}.setNumber(1).build());
 	country->replaceCores({Vic2::Province::Builder{}.setNumber(2).build()});
 
@@ -327,7 +342,8 @@ TEST(Vic2World_Countries_CountryTests, CapitalDefaultsToZero)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ(0, country->getCapital());
 }
@@ -347,7 +363,8 @@ TEST(Vic2World_Countries_CountryTests, CapitalCanBeSet)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ(42, country->getCapital());
 }
@@ -366,7 +383,8 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureDefaultsToNoCulture)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ("no_culture", country->getPrimaryCulture());
 }
@@ -386,7 +404,8 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSet)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ("test_primary", country->getPrimaryCulture());
 }
@@ -406,7 +425,8 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureWithQuotesCanBeSet)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ("test_primary", country->getPrimaryCulture());
 }
@@ -425,7 +445,8 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromLargestCulture)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 	country->addProvince(1,
 		 Vic2::Province::Builder{}
 			  .setNumber(1)
@@ -453,7 +474,8 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromMultiplePopsAdd
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 	country->addProvince(1,
 		 Vic2::Province::Builder{}
 			  .setNumber(1)
@@ -482,7 +504,8 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureNotSetFromLargestCultureIfN
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	country->handleMissingCulture(*Vic2::CultureGroups::Factory{}.getCultureGroups(
 		 *Configuration::Builder{}.setVic2Path("./countryTests/").build()));
@@ -504,7 +527,8 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupDefaultsToNoCulture)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ("no_culture", country->getPrimaryCultureGroup());
 }
@@ -526,7 +550,8 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupsSetFromPrimaryCulture
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ("test_primary_group", country->getPrimaryCultureGroup());
 }
@@ -545,7 +570,8 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCulturGroupeNotSetFromLargestCultu
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	country->handleMissingCulture(*Vic2::CultureGroups::Factory{}.getCultureGroups(
 		 *Configuration::Builder{}.setVic2Path("./countryTests/").build()));
@@ -567,7 +593,8 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupCanBeSetFromLargestCul
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 	country->addProvince(1,
 		 Vic2::Province::Builder{}
 			  .setNumber(1)
@@ -595,7 +622,8 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupBecomesNoCultureIfUnse
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 	country->handleMissingCulture(*Vic2::CultureGroups::Factory{}.getCultureGroups(
 		 *Configuration::Builder{}.setVic2Path("./countries/blank/").build()));
 
@@ -616,7 +644,8 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesDefaultToEmpty)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->getAcceptedCultures().empty());
 }
@@ -636,7 +665,8 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesIncludePrimaryCulture)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_THAT(country->getAcceptedCultures(), testing::UnorderedElementsAre("test_primary"));
 }
@@ -659,7 +689,8 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesCanBeAdded)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_THAT(country->getAcceptedCultures(), testing::UnorderedElementsAre("test_primary", "test_primary2"));
 }
@@ -682,7 +713,8 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesIdentifiedAsAcceptedCultu
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->isAnAcceptedCulture("test_primary"));
 	ASSERT_TRUE(country->isAnAcceptedCulture("test_primary2"));
@@ -702,7 +734,8 @@ TEST(Vic2World_Countries_CountryTests, NonAcceptedCulturesNotIdentifiedAsAccepte
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_FALSE(country->isAnAcceptedCulture("fake_culture"));
 }
@@ -721,7 +754,8 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsDefaultToEmpty)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->getTechnologiesAndInventions().empty());
 }
@@ -744,7 +778,8 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsCanBeAddedFromTe
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_THAT(country->getTechnologiesAndInventions(),
 		 testing::UnorderedElementsAre("technology_one", "technology_two"));
@@ -765,7 +800,8 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsCanBeAddedFromIn
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_THAT(country->getTechnologiesAndInventions(),
 		 testing::UnorderedElementsAre("first_invention", "fourth_invention", "fifth_invention"));
@@ -785,7 +821,8 @@ TEST(Vic2World_Countries_CountryTests, RelationsDefaultToEmpty)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->getRelations().empty());
 }
@@ -808,7 +845,8 @@ TEST(Vic2World_Countries_CountryTests, RelationsCanBeAdded)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_THAT(country->getRelations(),
 		 testing::UnorderedElementsAre(
@@ -829,7 +867,8 @@ TEST(Vic2World_Countries_CountryTests, AiDefaultsToEmpty)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->getAI()->getStrategies().empty());
 }
@@ -855,7 +894,8 @@ TEST(Vic2World_Countries_CountryTests, AiCanBeImported)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ(1, country->getAI()->getStrategies().size());
 	ASSERT_EQ("protect", country->getAI()->getStrategies()[0].getType());
@@ -889,7 +929,8 @@ TEST(Vic2World_Countries_CountryTests, AiConquerStrategiesCanBeConsolidated)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 	country->consolidateConquerStrategies(
 		 {std::make_pair(1, Vic2::Province::Builder{}.setNumber(1).setOwner("TWO").build()),
 			  std::make_pair(2, Vic2::Province::Builder{}.setNumber(2).setOwner("TWO").build())});
@@ -911,7 +952,8 @@ TEST(Vic2World_Countries_CountryTests, CivilizedDefaultsToFalse)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_FALSE(country->isCivilized());
 }
@@ -931,7 +973,8 @@ TEST(Vic2World_Countries_CountryTests, CivilizedCanBeSet)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->isCivilized());
 }
@@ -951,7 +994,8 @@ TEST(Vic2World_Countries_CountryTests, CivilizedNotSetWithoutYes)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_FALSE(country->isCivilized());
 }
@@ -970,7 +1014,8 @@ TEST(Vic2World_Countries_CountryTests, ArmiesDefaultsToEmpty)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->getArmies().empty());
 }
@@ -993,7 +1038,8 @@ TEST(Vic2World_Countries_CountryTests, ArmiesCanBeAdded)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ(1, country->getArmies().size());
 	ASSERT_EQ("42nd Army", country->getArmies()[0].getName());
@@ -1017,7 +1063,8 @@ TEST(Vic2World_Countries_CountryTests, ArmiesCanBeModified)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	ASSERT_EQ(1, country->getModifiableArmies().size());
 	country->getModifiableArmies()[0].setLocation(144);
@@ -1043,7 +1090,8 @@ TEST(Vic2World_Countries_CountryTests, NaviesCanBeAdded)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ(1, country->getArmies().size());
 	ASSERT_EQ("42nd Fleet", country->getArmies()[0].getName());
@@ -1071,7 +1119,8 @@ TEST(Vic2World_Countries_CountryTests, TransportedArmiesCanBeAdded)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ(2, country->getArmies().size());
 	ASSERT_EQ("42nd Army", country->getArmies()[0].getName());
@@ -1092,7 +1141,8 @@ TEST(Vic2World_Countries_CountryTests, LeadersDefaultToEmpty)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->getLeaders().empty());
 }
@@ -1109,117 +1159,23 @@ TEST(Vic2World_Countries_CountryTests, LeadersCanBeAdded)
 	theStream << "\t\t\ttype=land\n";
 	theStream << "\t\t\tprestige=20\n";
 	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t}\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-							 .createCountry("TAG",
-								  theStream,
-								  *Vic2::CommonCountryData::Builder{}.Build(),
-								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  1.0);
 
 	ASSERT_EQ(1, country->getLeaders().size());
 	ASSERT_EQ(20, country->getLeaders()[0].getPrestige());
 }
 
 
-TEST(Vic2World_Countries_CountryTests, GeneralsAndAdmiralsLimitedSeparately)
+TEST(Vic2World_Countries_CountryTests, GeneralsAndAdmiralsAreLimited)
 {
 	std::stringstream theStream;
 	theStream << "= {\n";
@@ -1229,114 +1185,6 @@ TEST(Vic2World_Countries_CountryTests, GeneralsAndAdmiralsLimitedSeparately)
 	theStream << "\t\t\tname=\"Probo Homo\"\n";
 	theStream << "\t\t\ttype=land\n";
 	theStream << "\t\t\tprestige=20\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=land\n";
-	theStream << "\t\t\tprestige=10\n";
 	theStream << "\t}\n";
 	theStream << "\tleader=\n";
 	theStream << "\t{\n";
@@ -1355,105 +1203,16 @@ TEST(Vic2World_Countries_CountryTests, GeneralsAndAdmiralsLimitedSeparately)
 	theStream << "\t\t\tname=\"Probo Homo\"\n";
 	theStream << "\t\t\ttype=sea\n";
 	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
-	theStream << "\tleader=\n";
-	theStream << "\t{\n";
-	theStream << "\t\t\tname=\"Probo Homo\"\n";
-	theStream << "\t\t\ttype=sea\n";
-	theStream << "\t}\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder{}.build(),
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-							 .createCountry("TAG",
-								  theStream,
-								  *Vic2::CommonCountryData::Builder{}.Build(),
-								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+									 .createCountry("TAG",
+										  theStream,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.5F);
 
 	ASSERT_EQ(2, country->getLeaders().size());
 	ASSERT_EQ(20, country->getLeaders()[0].getPrestige());
@@ -1474,7 +1233,8 @@ TEST(Vic2World_Countries_CountryTests, RevanchismDefaultsToZero)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_NEAR(0.0, country->getRevanchism(), 0.0001);
 }
@@ -1494,7 +1254,8 @@ TEST(Vic2World_Countries_CountryTests, RevanchismCanBeSet)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_NEAR(4.2, country->getRevanchism(), 0.0001);
 }
@@ -1513,7 +1274,8 @@ TEST(Vic2World_Countries_CountryTests, WarExhaustionDefaultsToZero)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_NEAR(0.0, country->getWarExhaustion(), 0.0001);
 }
@@ -1533,7 +1295,8 @@ TEST(Vic2World_Countries_CountryTests, WarExhaustionCanBeSet)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_NEAR(4.2, country->getWarExhaustion(), 0.0001);
 }
@@ -1552,7 +1315,8 @@ TEST(Vic2World_Countries_CountryTests, BadBoyDefaultsToZero)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_NEAR(0.0, country->getBadBoy(), 0.0001);
 }
@@ -1572,7 +1336,8 @@ TEST(Vic2World_Countries_CountryTests, BadBoyCanBeSet)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_NEAR(4.2, country->getBadBoy(), 0.0001);
 }
@@ -1591,7 +1356,8 @@ TEST(Vic2World_Countries_CountryTests, FlagsDefaultToEmpty)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->getFlags().empty());
 }
@@ -1616,7 +1382,8 @@ TEST(Vic2World_Countries_CountryTests, FlagsCanBeSet)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_THAT(country->getFlags(), testing::UnorderedElementsAre("test_flag_one", "test_flag_two", "test_flag_three"));
 }
@@ -1635,7 +1402,8 @@ TEST(Vic2World_Countries_CountryTests, GovernmentDefaultsToBlank)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->getGovernment().empty());
 }
@@ -1655,7 +1423,8 @@ TEST(Vic2World_Countries_CountryTests, GovernmentCanBeSet)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ("test_government", country->getGovernment());
 }
@@ -1674,7 +1443,8 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionDefaultsToEmpty)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->getUpperHouseComposition().empty());
 }
@@ -1699,7 +1469,8 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionCanBeSet)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_THAT(country->getUpperHouseComposition(),
 		 testing::UnorderedElementsAre(testing::Pair(std::string("ideology_one"), 0.25),
@@ -1729,7 +1500,8 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionLogsErrorOnBadInput)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_EQ(
@@ -1754,7 +1526,8 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyUnsetLogsWarning)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_EQ(
@@ -1785,7 +1558,8 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyNonexistantThrowsException)
 					  theStream,
 					  *Vic2::CommonCountryData::Builder{}.Build(),
 					  std::vector<Vic2::Party>{},
-					  *Vic2::StateLanguageCategories::Builder{}.build());
+					  *Vic2::StateLanguageCategories::Builder{}.build(),
+					  0.05F);
 			 }
 			 catch (const std::runtime_error& e)
 			 {
@@ -1814,7 +1588,8 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyCanBeSet)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.setName("test_party").Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_NE(std::nullopt, country->getRulingParty());
 	ASSERT_EQ("test_party", country->getRulingParty()->getName());
@@ -1834,7 +1609,8 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyNotSetForRebel)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.setName("test_party").Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ(std::nullopt, country->getRulingParty());
 }
@@ -1853,7 +1629,8 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesDefaultToEmpty)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->getActiveParties().empty());
 }
@@ -1876,7 +1653,8 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesCanBeSet)
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.setName("test_party_one").Build(),
 												*Vic2::Party::Builder{}.setName("test_party_two").Build(),
 												*Vic2::Party::Builder{}.setName("test_party_three").Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_THAT(country->getActiveParties(),
 		 testing::UnorderedElementsAre(*Vic2::Party::Builder{}.setName("test_party_one").Build(),
@@ -1903,7 +1681,8 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesLoggedIfUndefined)
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.setName("test_party_one").Build(),
 												*Vic2::Party::Builder{}.setName("test_party_two").Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_EQ(
@@ -1931,7 +1710,8 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesCanBecomeRulingPartyIfUnset)
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.setName("test_party_one").Build(),
 												*Vic2::Party::Builder{}.setName("test_party_two").Build(),
 												*Vic2::Party::Builder{}.setName("test_party_three").Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_NE(std::nullopt, country->getRulingParty());
 	ASSERT_EQ("test_party_three", country->getRulingParty()->getName());
@@ -1951,7 +1731,8 @@ TEST(Vic2World_Countries_CountryTests, LastElectionDefaultsToOneOneOne)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ(date("1.1.1"), country->getLastElection());
 }
@@ -1971,7 +1752,8 @@ TEST(Vic2World_Countries_CountryTests, LastElectionCanBeSet)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ(date("1942.11.6"), country->getLastElection());
 }
@@ -1990,7 +1772,8 @@ TEST(Vic2World_Countries_CountryTests, ShipNamesDefaultToEmpty)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->getAllShipNames().empty());
 	ASSERT_TRUE(country->getShipNames("dreadnought").empty());
@@ -2014,7 +1797,8 @@ TEST(Vic2World_Countries_CountryTests, ShipNamesCanBeSet)
 												 .addUnitNames("ironclad", std::vector<std::string>{"Erivan", "Nakchivan"})
 												 .Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_THAT(country->getAllShipNames(),
 		 testing::UnorderedElementsAre(
@@ -2038,7 +1822,8 @@ TEST(Vic2World_Countries_CountryTests, AtWarDefaultsToFalse)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_FALSE(country->isAtWar());
 }
@@ -2057,7 +1842,8 @@ TEST(Vic2World_Countries_CountryTests, AtWarCanBeSet)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 	country->setAtWar();
 
 	ASSERT_TRUE(country->isAtWar());
@@ -2077,7 +1863,8 @@ TEST(Vic2World_Countries_CountryTests, WarsDefaultToEmpty)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_TRUE(country->getWars().empty());
 }
@@ -2096,7 +1883,8 @@ TEST(Vic2World_Countries_CountryTests, WarsCanBeAdded)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 	country->addWar(Vic2::War{});
 
 	ASSERT_FALSE(country->getWars().empty());
@@ -2116,7 +1904,8 @@ TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalFalseWithNoCores)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_FALSE(country->hasCoreOnCapital());
 }
@@ -2136,7 +1925,8 @@ TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalFalseWithNoCoreOnCapital)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 	country->addCore(Vic2::Province::Builder{}.setNumber(43).build());
 
 	ASSERT_FALSE(country->hasCoreOnCapital());
@@ -2157,7 +1947,8 @@ TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalTrueWithCoreOnCapital)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 	country->addCore(Vic2::Province::Builder{}.setNumber(42).build());
 
 
@@ -2178,7 +1969,8 @@ TEST(Vic2World_Countries_CountryTests, EmployedWorkersDefaultsToZero)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ(0, country->getEmployedWorkers());
 }
@@ -2219,7 +2011,8 @@ TEST(Vic2World_Countries_CountryTests, EmployedWorkersComeFromStates)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 	country->addProvince(1,
 		 Vic2::Province::Builder{}
 			  .setNumber(1)
@@ -2246,7 +2039,7 @@ TEST(Vic2World_Countries_CountryTests, StateCategoriesCanBeSet)
 	theStream << "\t\tprovinces = { 42 }\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	auto country =
+	const auto country =
 		 Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
 			  *Vic2::StateDefinitions::Builder{}.setProvinceToIDMap({{42, "TEST_STATE"}}).build(),
 			  Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
@@ -2254,7 +2047,8 @@ TEST(Vic2World_Countries_CountryTests, StateCategoriesCanBeSet)
 					theStream,
 					*Vic2::CommonCountryData::Builder{}.Build(),
 					std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-					*Vic2::StateLanguageCategories::Builder{}.setCategories({{"TEST_STATE", "TEST_CATEGORY"}}).build());
+					*Vic2::StateLanguageCategories::Builder{}.setCategories({{"TEST_STATE", "TEST_CATEGORY"}}).build(),
+					0.05F);
 
 	ASSERT_EQ(1, country->getStates().size());
 	ASSERT_EQ("TEST_CATEGORY", country->getStates()[0].getLanguageCategory());
@@ -2282,7 +2076,8 @@ TEST(Vic2World_Countries_CountryTests, StateCategoriesLoggedWhenNotSet)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	std::cout.rdbuf(stdOutBuf);
 
@@ -2303,7 +2098,8 @@ TEST(Vic2World_Countries_CountryTests, IssueSupportDefaultsToZero)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ(0, country->getAverageIssueSupport("test_issue"));
 }
@@ -2322,14 +2118,15 @@ TEST(Vic2World_Countries_CountryTests, IssueSupportComesFromProvinces)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 	country->addProvince(1,
 		 Vic2::Province::Builder{}
 			  .setNumber(1)
 			  .setPops({*Vic2::Pop::Builder{}.setIssues({std::make_pair("test_issue", 0.5F)}).setSize(5).build()})
 			  .build());
 
-	ASSERT_EQ(0.5, country->getAverageIssueSupport("test_issue"));
+	ASSERT_EQ(0.5F, country->getAverageIssueSupport("test_issue"));
 }
 
 
@@ -2346,7 +2143,8 @@ TEST(Vic2World_Countries_CountryTests, NameMissingByDefault)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ(std::nullopt, country->getName("english"));
 }
@@ -2365,7 +2163,8 @@ TEST(Vic2World_Countries_CountryTests, NameComesFromLocalisations)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	Vic2::LanguageToLocalisationMap nameInLanguages{std::make_pair("english", "Test Country"),
 		 std::make_pair("spanish", "Pais de prueba")};
@@ -2392,7 +2191,8 @@ TEST(Vic2World_Countries_CountryTests, NameCanComeFromDomain)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	Vic2::LanguageToLocalisationMap nameInLanguages{std::make_pair("english", "Test Country"),
 		 std::make_pair("spanish", "Pais de prueba")};
@@ -2419,7 +2219,8 @@ TEST(Vic2World_Countries_CountryTests, NameFromDomainUpdatesLocalisations)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	Vic2::LanguageToLocalisationMap nameInLanguages{std::make_pair("english", "$REGION$"),
 		 std::make_pair("spanish", "$REGION$")};
@@ -2445,7 +2246,8 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveMissingByDefault)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	ASSERT_EQ(std::nullopt, country->getAdjective("english"));
 }
@@ -2464,7 +2266,8 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveComesFromLocalisations)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	Vic2::LanguageToLocalisationMap nameInLanguages{std::make_pair("english", "Testy"),
 		 std::make_pair("spanish",
@@ -2492,7 +2295,8 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveCanComeFromDomain)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	Vic2::LanguageToLocalisationMap nameInLanguages{std::make_pair("english", "Testy"),
 		 std::make_pair("spanish",
@@ -2519,7 +2323,8 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsStates)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	std::stringstream theStreamTwo;
 	theStreamTwo << "= {\n";
@@ -2535,7 +2340,8 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsStates)
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder{}.Build(),
 											  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-											  *Vic2::StateLanguageCategories::Builder{}.build());
+											  *Vic2::StateLanguageCategories::Builder{}.build(),
+											  0.05F);
 
 	ASSERT_TRUE(country->getStates().empty());
 	country->eatCountry(*countryTwo, false);
@@ -2558,7 +2364,8 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsCores)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	std::stringstream theStreamTwo;
 	theStreamTwo << "= {\n";
@@ -2571,7 +2378,8 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsCores)
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder{}.Build(),
 											  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-											  *Vic2::StateLanguageCategories::Builder{}.build());
+											  *Vic2::StateLanguageCategories::Builder{}.build(),
+											  0.05F);
 	countryTwo->addCore(Vic2::Province::Builder{}.setNumber(1).setCores({"TWO"}).build());
 	countryTwo->addCore(Vic2::Province::Builder{}.setNumber(2).setCores({"TWO"}).build());
 
@@ -2599,7 +2407,8 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsProvinces)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	std::stringstream theStreamTwo;
 	theStreamTwo << "= {\n";
@@ -2612,10 +2421,11 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsProvinces)
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder{}.Build(),
 											  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-											  *Vic2::StateLanguageCategories::Builder{}.build());
+											  *Vic2::StateLanguageCategories::Builder{}.build(),
+											  0.05F);
 
-	std::shared_ptr<Vic2::Province> provinceOne = Vic2::Province::Builder{}.setNumber(1).setOwner({"TWO"}).build();
-	std::shared_ptr<Vic2::Province> provinceTwo = Vic2::Province::Builder{}.setNumber(2).setOwner({"TWO"}).build();
+	const std::shared_ptr<Vic2::Province> provinceOne = Vic2::Province::Builder{}.setNumber(1).setOwner({"TWO"}).build();
+	const std::shared_ptr<Vic2::Province> provinceTwo = Vic2::Province::Builder{}.setNumber(2).setOwner({"TWO"}).build();
 	countryTwo->addProvince(1, provinceOne);
 	countryTwo->addProvince(2, provinceTwo);
 
@@ -2641,7 +2451,8 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsTechnologiesAndInvention
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	std::stringstream theStreamTwo;
 	theStreamTwo << "= {\n";
@@ -2658,7 +2469,8 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsTechnologiesAndInvention
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder{}.Build(),
 											  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-											  *Vic2::StateLanguageCategories::Builder{}.build());
+											  *Vic2::StateLanguageCategories::Builder{}.build(),
+											  0.05F);
 
 	ASSERT_TRUE(country->getTechnologiesAndInventions().empty());
 	country->eatCountry(*countryTwo, false);
@@ -2681,7 +2493,8 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsArmies)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	std::stringstream theStreamTwo;
 	theStreamTwo << "= {\n";
@@ -2698,7 +2511,8 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsArmies)
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder{}.Build(),
 											  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-											  *Vic2::StateLanguageCategories::Builder{}.build());
+											  *Vic2::StateLanguageCategories::Builder{}.build(),
+											  0.05F);
 
 	ASSERT_TRUE(country->getArmies().empty());
 	country->eatCountry(*countryTwo, false);
@@ -2721,7 +2535,8 @@ TEST(Vic2World_Countries_CountryTests, EatCountryNoLoggingIfDebugOff)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	std::stringstream theStreamTwo;
 	theStreamTwo << "= {\n";
@@ -2734,7 +2549,8 @@ TEST(Vic2World_Countries_CountryTests, EatCountryNoLoggingIfDebugOff)
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder{}.Build(),
 											  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-											  *Vic2::StateLanguageCategories::Builder{}.build());
+											  *Vic2::StateLanguageCategories::Builder{}.build(),
+											  0.05F);
 
 	std::stringstream log;
 	auto* stdOutBuf = std::cout.rdbuf();
@@ -2759,7 +2575,8 @@ TEST(Vic2World_Countries_CountryTests, EatCountryLogsIfDebugTrue)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	std::stringstream theStreamTwo;
 	theStreamTwo << "= {\n";
@@ -2772,7 +2589,8 @@ TEST(Vic2World_Countries_CountryTests, EatCountryLogsIfDebugTrue)
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder{}.Build(),
 											  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-											  *Vic2::StateLanguageCategories::Builder{}.build());
+											  *Vic2::StateLanguageCategories::Builder{}.build(),
+											  0.05F);
 
 	std::stringstream log;
 	auto* stdOutBuf = std::cout.rdbuf();
@@ -2800,7 +2618,8 @@ TEST(Vic2World_Countries_CountryTests, EatCountryHasNoEffectOnSelf)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	ASSERT_EQ(1, country->getStates().size());
 	country->eatCountry(*country, false);
@@ -2829,8 +2648,9 @@ TEST(Vic2World_Countries_CountryTests, ProvincesCanBePlacedInStates)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
-	std::shared_ptr<Vic2::Province> provinceOne = Vic2::Province::Builder{}.setNumber(1).build();
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
+	const std::shared_ptr<Vic2::Province> provinceOne = Vic2::Province::Builder{}.setNumber(1).build();
 	country->addProvince(1, provinceOne);
 	country->putProvincesInStates();
 
@@ -2858,7 +2678,8 @@ TEST(Vic2World_Countries_CountryTests, MissingProvinceInStateLogged)
 								  theStream,
 								  *Vic2::CommonCountryData::Builder{}.Build(),
 								  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-								  *Vic2::StateLanguageCategories::Builder{}.build());
+								  *Vic2::StateLanguageCategories::Builder{}.build(),
+								  0.05F);
 
 	std::stringstream log;
 	auto* stdOutBuf = std::cout.rdbuf();
@@ -2883,7 +2704,8 @@ TEST(Vic2World_Countries_CountryTests, SameTagsMakeEqualCountries)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	std::stringstream theStreamTwo;
 	theStreamTwo << "= {\n";
@@ -2896,7 +2718,8 @@ TEST(Vic2World_Countries_CountryTests, SameTagsMakeEqualCountries)
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder{}.Build(),
 											  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-											  *Vic2::StateLanguageCategories::Builder{}.build());
+											  *Vic2::StateLanguageCategories::Builder{}.build(),
+											  0.05F);
 
 	ASSERT_EQ(*country, *countryTwo);
 }
@@ -2915,7 +2738,8 @@ TEST(Vic2World_Countries_CountryTests, DifferentTagsMakeUnequalCountries)
 										  theStream,
 										  *Vic2::CommonCountryData::Builder{}.Build(),
 										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build());
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F);
 
 	std::stringstream theStreamTwo;
 	theStreamTwo << "= {\n";
@@ -2928,7 +2752,8 @@ TEST(Vic2World_Countries_CountryTests, DifferentTagsMakeUnequalCountries)
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder{}.Build(),
 											  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-											  *Vic2::StateLanguageCategories::Builder{}.build());
+											  *Vic2::StateLanguageCategories::Builder{}.build(),
+											  0.05F);
 
 	ASSERT_FALSE(*country == *countryTwo);
 }

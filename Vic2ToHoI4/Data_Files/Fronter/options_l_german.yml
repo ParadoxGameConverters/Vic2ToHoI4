@@ -174,3 +174,6 @@ l_german:
  RADICALTIP: "Radikal wird konvertiert."
  YES: "Ja"
  NO: "Nein"
+ PERCENT_OF_COMMANDERS: "Prozentsatz der zu konvertierenden Kommandeure"
+ PERCENT_OF_COMMANDERS_TOOLTIP: "Es bestimmt den Prozentsatz der zu konvertierenden Kommandanten aus Vic2."
+ PERCENT_OF_COMMANDERS_TOOLTIP2: "0 - 100."

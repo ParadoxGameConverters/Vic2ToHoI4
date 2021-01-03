@@ -174,3 +174,6 @@ l_english:
  RADICALTIP: "Radical will be converted."
  YES: "Yes"
  NO: "No"
+ PERCENT_OF_COMMANDERS: "Commanders Converted Percent"
+ PERCENT_OF_COMMANDERS_TOOLTIP: "Controls what percent of Vic2 commanders are converted."
+ PERCENT_OF_COMMANDERS_TOOLTIP2: "0 - 100."

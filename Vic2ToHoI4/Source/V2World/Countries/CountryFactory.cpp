@@ -150,7 +150,8 @@ std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::
 	 std::istream& theStream,
 	 const CommonCountryData& commonCountryData,
 	 const std::vector<Party>& allParties,
-	 const StateLanguageCategories& stateLanguageCategories)
+	 const StateLanguageCategories& stateLanguageCategories,
+	 float percentOfCommanders)
 {
 	country = std::make_unique<Country>();
 	country->tag = theTag;
@@ -160,7 +161,7 @@ std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::
 	rulingPartyID = 0; // Bad value, but normal for Rebel faction.
 	parseStream(theStream);
 	setParties(allParties);
-	limitCommanders();
+	limitCommanders(percentOfCommanders);
 
 	if (!country->vic2AI)
 	{
@@ -208,7 +209,7 @@ void Vic2::Country::Factory::setParties(const std::vector<Party>& allParties)
 }
 
 
-void Vic2::Country::Factory::limitCommanders()
+void Vic2::Country::Factory::limitCommanders(float percentOfCommanders)
 {
 	std::vector<Leader> generals;
 	std::copy_if(country->leaders.begin(),
@@ -220,7 +221,7 @@ void Vic2::Country::Factory::limitCommanders()
 	std::sort(generals.begin(), generals.end(), [](Leader& a, Leader& b) {
 		return a.getPrestige() > b.getPrestige();
 	});
-	const auto desiredGenerals = static_cast<int>(std::ceil(static_cast<float>(generals.size()) / 20.0F));
+	const auto desiredGenerals = static_cast<int>(std::ceil(static_cast<float>(generals.size()) * percentOfCommanders));
 	generals.erase(generals.begin() + desiredGenerals, generals.end());
 
 	std::vector<Leader> admirals;
@@ -233,7 +234,7 @@ void Vic2::Country::Factory::limitCommanders()
 	std::sort(admirals.begin(), admirals.end(), [](Leader& a, Leader& b) {
 		return a.getPrestige() > b.getPrestige();
 	});
-	const auto desiredAdmirals = static_cast<int>(std::ceil(static_cast<float>(admirals.size()) / 20.0F));
+	const auto desiredAdmirals = static_cast<int>(std::ceil(static_cast<float>(admirals.size()) * percentOfCommanders));
 	admirals.erase(admirals.begin() + desiredAdmirals, admirals.end());
 
 	country->leaders.clear();
