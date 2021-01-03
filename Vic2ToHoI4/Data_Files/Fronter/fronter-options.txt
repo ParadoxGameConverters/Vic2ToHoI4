@@ -94,19 +94,19 @@ option = {
 		checkBoxOption = {
 			name = democratic
 			displayName = DEMOCRATIC
-			tooltip = DEMOCRATIC
+			tooltip = DEMOCRATICTIP
 			default = true
 		}
 		checkBoxOption = {
 			name = fascism
 			displayName = FASCISM
-			tooltip = FASCISM
+			tooltip = FASCISMTIP
 			default = true
 		}
 		checkBoxOption = {
 			name = radical
 			displayName = RADICAL
-			tooltip = RADICAL
+			tooltip = RADICALTIP
 			default = true
 		}
 	}
