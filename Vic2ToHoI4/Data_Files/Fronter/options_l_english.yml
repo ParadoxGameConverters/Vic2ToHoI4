@@ -176,4 +176,4 @@ l_english:
  NO: "No"
  PERCENT_OF_COMMANDERS: "Commanders Converted Percent"
  PERCENT_OF_COMMANDERS_TOOLTIP: "Controls what percent of Vic2 commanders are converted."
- PERCENT_OF_COMMANDERS_TOOLTIP2: "0.0 - 1.0."
+ PERCENT_OF_COMMANDERS_TOOLTIP2: "0 - 100."

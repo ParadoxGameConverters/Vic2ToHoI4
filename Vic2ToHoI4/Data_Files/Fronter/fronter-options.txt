@@ -157,7 +157,7 @@ option = {
 	displayName = PERCENT_OF_COMMANDERS
 	tooltip = PERCENT_OF_COMMANDERS_TOOLTIP
 	textSelector = {	
-		value = "0.05"
+		value = "5"
 		editable = true
 		tooltip = PERCENT_OF_COMMANDERS_TOOLTIP2
 	}
