@@ -32,6 +32,9 @@ HoI4::Idea::Idea(std::string ideaName, std::istream& theStream): name(std::move(
 		const commonItems::stringOfItem allowedString(theStream);
 		allowedCivilWar = allowedString.getString();
 	});
+	registerKeyword("visible", [this](std::istream& theStream) {
+		visible = commonItems::stringOfItem{theStream}.getString();
+	});
 	registerKeyword("cancel", [this](std::istream& theStream) {
 		const commonItems::stringOfItem cancelString(theStream);
 		cancel = cancelString.getString();

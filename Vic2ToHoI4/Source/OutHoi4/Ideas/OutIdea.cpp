@@ -34,6 +34,10 @@ std::ostream& HoI4::operator<<(std::ostream& outStream, const Idea& outIdea)
 	{
 		outStream << "\t\t\tallowed_civil_war " << outIdea.allowedCivilWar << "\n";
 	}
+	if (outIdea.visible)
+	{
+		outStream << "\t\t\tvisible " << *outIdea.visible << "\n";
+	}
 	if (!outIdea.cancel.empty())
 	{
 		outStream << "\t\t\tcancel " << outIdea.cancel << "\n";
