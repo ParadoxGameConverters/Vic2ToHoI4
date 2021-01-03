@@ -14,6 +14,7 @@
 typedef struct governmentMapping
 {
 	std::string vic2Government;
+	std::string tagRequired;
 	std::string HoI4GovernmentIdeology;
 	std::string HoI4LeaderIdeology;
 	std::string rulingPartyRequired;
@@ -70,6 +71,7 @@ class governmentMapper: commonItems::parser
 
 	bool governmentMatches(const governmentMapping& mapping, const std::string& government) const;
 	bool rulingIdeologyMatches(const governmentMapping& mapping, const std::string& rulingIdeology) const;
+	bool tagMatches(const governmentMapping& mapping, const std::string& tag) const;
 	static bool ideologyIsValid(const governmentMapping& mapping,
 		 const std::set<std::string>& majorIdeologies,
 		 const HoI4::Ideologies& ideologies);

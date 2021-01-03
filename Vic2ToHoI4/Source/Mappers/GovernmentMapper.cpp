@@ -23,6 +23,9 @@ aGovernmentMapping::aGovernmentMapping(std::istream& theStream)
 		commonItems::singleString vic2Government(theStream);
 		mapping.vic2Government = vic2Government.getString();
 	});
+	registerKeyword("tag_required", [this](std::istream& theStream) {
+		mapping.tagRequired = commonItems::singleString{theStream}.getString();
+	});
 	registerKeyword("ruling_party", [this](std::istream& theStream) {
 		commonItems::singleString rulingParty(theStream);
 		mapping.rulingPartyRequired = rulingParty.getString();
@@ -142,7 +145,8 @@ std::string governmentMapper::getIdeologyForCountry(const std::string& sourceTag
 	std::string ideology = "neutrality";
 	for (auto mapping: governmentMap)
 	{
-		if (governmentMatches(mapping, sourceGovernment) && rulingIdeologyMatches(mapping, Vic2RulingIdeology))
+		if (governmentMatches(mapping, sourceGovernment) && rulingIdeologyMatches(mapping, Vic2RulingIdeology) &&
+			 tagMatches(mapping, sourceTag))
 		{
 			ideology = mapping.HoI4GovernmentIdeology;
 			break;
@@ -165,7 +169,8 @@ std::string governmentMapper::getLeaderIdeologyForCountry(const std::string& sou
 	std::string ideology = "neutrality";
 	for (auto mapping: governmentMap)
 	{
-		if (governmentMatches(mapping, sourceGovernment) && rulingIdeologyMatches(mapping, Vic2RulingIdeology))
+		if (governmentMatches(mapping, sourceGovernment) && rulingIdeologyMatches(mapping, Vic2RulingIdeology) &&
+			 tagMatches(mapping, sourceTag))
 		{
 			ideology = mapping.HoI4LeaderIdeology;
 			break;
@@ -191,7 +196,7 @@ std::string governmentMapper::getExistingIdeologyForCountry(const std::string& t
 	for (auto mapping: governmentMap)
 	{
 		if (governmentMatches(mapping, government) && rulingIdeologyMatches(mapping, Vic2RulingIdeology) &&
-			 ideologyIsValid(mapping, majorIdeologies, ideologies))
+			 tagMatches(mapping, tag) && ideologyIsValid(mapping, majorIdeologies, ideologies))
 		{
 			ideology = mapping.HoI4GovernmentIdeology;
 			break;
@@ -217,7 +222,7 @@ std::string governmentMapper::getExistingLeaderIdeologyForCountry(const std::str
 	for (auto mapping: governmentMap)
 	{
 		if (governmentMatches(mapping, government) && rulingIdeologyMatches(mapping, Vic2RulingIdeology) &&
-			 ideologyIsValid(mapping, majorIdeologies, ideologies))
+			 tagMatches(mapping, tag) && ideologyIsValid(mapping, majorIdeologies, ideologies))
 		{
 			ideology = mapping.HoI4LeaderIdeology;
 			break;
@@ -241,6 +246,12 @@ bool governmentMapper::governmentMatches(const governmentMapping& mapping, const
 bool governmentMapper::rulingIdeologyMatches(const governmentMapping& mapping, const std::string& rulingIdeology) const
 {
 	return ((mapping.rulingPartyRequired.empty()) || (mapping.rulingPartyRequired == rulingIdeology));
+}
+
+
+bool governmentMapper::tagMatches(const governmentMapping& mapping, const std::string& tag) const
+{
+	return ((mapping.tagRequired.empty()) || (mapping.tagRequired == tag));
 }
 
 
