@@ -75,6 +75,44 @@ option = {
 }
 
 option = {
+	name = ideologies_choice
+	displayName = IDEOLOGIESCHOICE
+	tooltip = IDEOLOGIESCHOICETIP
+	checkBoxSelector = {
+		checkBoxOption = {
+			name = communism
+			displayName = COMMUNISM
+			tooltip = COMMUNISMTIP
+			default = true
+		}
+		checkBoxOption = {
+			name = absolutist
+			displayName = ABSOLUTIST
+			tooltip = ABSOLUTISTTIP
+			default = true
+		}
+		checkBoxOption = {
+			name = democratic
+			displayName = DEMOCRATIC
+			tooltip = DEMOCRATIC
+			default = true
+		}
+		checkBoxOption = {
+			name = fascism
+			displayName = FASCISM
+			tooltip = FASCISM
+			default = true
+		}
+		checkBoxOption = {
+			name = radical
+			displayName = RADICAL
+			tooltip = RADICAL
+			default = true
+		}
+	}
+}
+
+option = {
 	name = remove_cores
 	displayName = REMOVECORES
 	tooltip = REMOVECORESTIP
@@ -115,6 +153,17 @@ option = {
 }
 
 option = {
+	name = percent_of_commanders
+	displayName = PERCENT_OF_COMMANDERS
+	tooltip = PERCENT_OF_COMMANDERS_TOOLTIP
+	textSelector = {	
+		value = "0.05"
+		editable = true
+		tooltip = PERCENT_OF_COMMANDERS_TOOLTIP2
+	}
+}
+
+option = {
 	name = debug
 	displayName = DEBUG
 	tooltip = DEBUGTIP
@@ -130,44 +179,6 @@ option = {
 			displayName = YES
 			tooltip = DEBUGYESTIP
 			default = false
-		}
-	}
-}
-
-option = {
-	name = ideologies_choice
-	displayName = IDEOLOGIESCHOICE
-	tooltip = IDEOLOGIESCHOICETIP
-	checkBoxSelector = {
-		checkBoxOption = {
-			name = communism
-			displayName = COMMUNISM
-			tooltip = COMMUNISMTIP
-			default = true
-		}
-		checkBoxOption = {
-			name = absolutist
-			displayName = ABSOLUTIST
-			tooltip = ABSOLUTISTTIP
-			default = true
-		}
-		checkBoxOption = {
-			name = democratic
-			displayName = DEMOCRATIC
-			tooltip = DEMOCRATIC
-			default = true
-		}
-		checkBoxOption = {
-			name = fascism
-			displayName = FASCISM
-			tooltip = FASCISM
-			default = true
-		}
-		checkBoxOption = {
-			name = radical
-			displayName = RADICAL
-			tooltip = RADICAL
-			default = true
 		}
 	}
 }
