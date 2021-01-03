@@ -43,6 +43,7 @@ class Configuration
 	[[nodiscard]] const auto& getDebug() const { return debug; }
 	[[nodiscard]] const auto& getRemoveCores() const { return removeCores; }
 	[[nodiscard]] const auto& getCreateFactions() const { return createFactions; }
+	[[nodiscard]] const auto& getPercentOfCommanders() const { return percentOfCommanders; }
 
 	[[nodiscard]] auto getNextLeaderID() { return leaderID++; }
 
@@ -67,6 +68,7 @@ class Configuration
 	bool debug = false;
 	bool removeCores = true;
 	bool createFactions = true;
+	float percentOfCommanders = 0.05F;
 
 	// set later
 	unsigned int leaderID = 1000;
