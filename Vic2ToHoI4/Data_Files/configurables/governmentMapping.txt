@@ -29,6 +29,8 @@ government_mappings = {
 	mapping = { vic = prussian_constitutionalism ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
 	mapping = { vic = prussian_constitutionalism ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
 	mapping = { vic = prussian_constitutionalism ruling_party = communist hoi_gov = communism hoi_leader = leninism }
+	mapping = { vic = prussian_constitutionalism tag_required = PAP ruling_party = conservative hoi_gov = absolutist hoi_leader = theocracy }
+	mapping = { vic = prussian_constitutionalism tag_required = PAP ruling_party = reactionary hoi_gov = absolutist hoi_leader = theocracy }
 	mapping = { vic = hms_government ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
 	mapping = { vic = hms_government ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
 	mapping = { vic = hms_government ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism }
@@ -36,6 +38,8 @@ government_mappings = {
 	mapping = { vic = hms_government ruling_party = communist hoi_gov = communism hoi_leader = leninism }
 	mapping = { vic = hms_government ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
 	mapping = { vic = hms_government ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
+	mapping = { vic = hms_government tag_required = PAP ruling_party = conservative hoi_gov = absolutist hoi_leader = theocracy }
+	mapping = { vic = hms_government tag_required = PAP ruling_party = reactionary hoi_gov = absolutist hoi_leader = theocracy }
 	mapping = { vic = democracy ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
 	mapping = { vic = democracy ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
 	mapping = { vic = democracy ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism }
@@ -48,6 +52,8 @@ government_mappings = {
 	mapping = { vic = bourgeois_dictatorship hoi_gov = radical hoi_leader = minarchism }
 	mapping = { vic = fascist_dictatorship hoi_gov = fascism hoi_leader = fascism_ideology }
 	mapping = { vic = absolute_monarchy hoi_gov = absolutist hoi_leader = absolute_monarchy }
+	mapping = { vic = absolute_monarchy tag_required = PAP ruling_party = conservative hoi_gov = absolutist hoi_leader = theocracy }
+	mapping = { vic = absolute_monarchy tag_required = PAP ruling_party = reactionary hoi_gov = absolutist hoi_leader = theocracy }
 	mapping = { vic = theocracy hoi_gov = absolutist hoi_leader = theocracy } ## From HPM
 	
 	## CoE - Main Forms
