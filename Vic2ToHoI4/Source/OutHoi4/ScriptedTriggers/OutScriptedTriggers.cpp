@@ -28,4 +28,14 @@ void HoI4::outputScriptedTriggers(const ScriptedTriggers& scriptedTriggers, cons
 		outLawsWarSupport << scriptedTrigger;
 	}
 	outLawsWarSupport.close();
+
+	std::ofstream outNationalFocus(
+		"output/" + outputName + "/common/scripted_triggers/nf_triggers.txt",
+		std::ostream::app
+	);
+	for (const auto& scriptedTrigger: scriptedTriggers.getNationalFocusTriggers())
+	{
+		outNationalFocus << scriptedTrigger;
+	}
+	outNationalFocus.close();
 }

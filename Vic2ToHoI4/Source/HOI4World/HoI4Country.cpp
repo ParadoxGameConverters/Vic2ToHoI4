@@ -94,6 +94,7 @@ HoI4::Country::Country(std::string tag,
 
 	convertLeaders(theGraphics, sourceCountry);
 	convertRelations(countryMap, sourceCountry);
+	convertStrategies(countryMap, sourceCountry);
 	atWar = sourceCountry.isAtWar();
 	convertWars(sourceCountry, countryMap);
 
@@ -1015,4 +1016,16 @@ double HoI4::Country::calculateInfluenceFactor()
 		// it's displayed ingame as being halfway: 0.5 instead of 0.0000something
 		return std::clamp(influenceFactor, 1.0, 100.0);
 	}
+}
+
+bool HoI4::Country::isEligibleEnemy(std::string target)
+{
+	std::set<std::string> allies;
+	if (faction)
+	{
+		allies = faction->getLeader()->getAllies();
+		allies.insert(faction->getLeader()->getTag());
+	}
+	
+	return (allies.find(target) == allies.end() && puppets.find(target) == puppets.end() && target != puppetMaster);
 }

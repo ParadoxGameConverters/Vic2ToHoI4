@@ -2313,14 +2313,8 @@ focus = {
 				not_allies_or_subjects = yes
 				OR = {
 					potential_take_core_target = yes
-					if = {
-						limit = { ROOT = { has_government = communism } }
-						potential_communist_puppet_target = yes
-					}
-					if = {
-						limit = { ROOT = { has_government = fascism } }
-						potential_fascist_annex_target = yes
-					}
+					#COMMUNISM
+					#FASCISM
 					potential_take_state_target = yes
 					potential_border_war_target = yes
 				}
@@ -2336,8 +2330,8 @@ focus = {
 					not_allies_or_subjects = yes
 					OR = {
 						potential_take_core_target = yes
-						potential_communist_puppet_target = yes
-						potential_fascist_annex_target = yes
+						#COMMUNISM
+						#FASCISM
 						potential_take_state_target = yes
 						potential_border_war_target = yes
 					}

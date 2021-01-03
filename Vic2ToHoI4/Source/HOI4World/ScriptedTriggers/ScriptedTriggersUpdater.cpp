@@ -9,12 +9,15 @@ void updateElectionsScriptedTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
 	 const std::set<std::string>& majorIdeologies);
 void updateLawsWarSupportTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
 	 const std::set<std::string>& majorIdeologies);
+void updateNationalFocusTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
+	 const std::set<std::string>& majorIdeologies);
 void HoI4::updateScriptedTriggers(ScriptedTriggers& scriptedTriggers, const std::set<std::string>& majorIdeologies)
 {
 	Log(LogLevel::Info) << "\tUpdating scripted triggers";
 	updateIdeologyScriptedTriggers(scriptedTriggers, majorIdeologies);
 	updateElectionsScriptedTriggers(scriptedTriggers, majorIdeologies);
 	updateLawsWarSupportTriggers(scriptedTriggers, majorIdeologies);
+	updateNationalFocusTriggers(scriptedTriggers, majorIdeologies);
 }
 
 
@@ -252,4 +255,42 @@ std::string getHasExcessiveArmySizeBody(const std::set<std::string>& majorIdeolo
 	body += "\t}\n";
 	body += "}\n";
 	return body;
+}
+
+void updateNationalFocusTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
+	 const std::set<std::string>& majorIdeologies)
+{
+	if (majorIdeologies.contains("communism"))
+	{
+		HoI4::ScriptedTrigger NFTrigger("potential_communist_puppet_target");
+		std::string body = "= {\n";
+		body += "\tcustom_trigger_tooltip = {\n";
+		body += "\t\ttooltip = potential_communist_puppet_target_tooltip\n";
+		body += "\t\thidden_trigger = {\n";
+		body += "\t\t\tROOT = { has_government = communism }\n";
+		body += "\t\t\tNOT = { has_government = communism }\n";
+		body += "\t\t}\n";
+		body += "\t}\n";
+		body += "}";
+		NFTrigger.setBody(body);
+
+		scriptedTriggers.addNationalFocusTrigger(NFTrigger);
+	}
+
+	if (majorIdeologies.contains("fascism"))
+	{
+		HoI4::ScriptedTrigger NFTrigger("potential_fascist_annex_target");
+		std::string body = "= {\n";
+		body += "\tcustom_trigger_tooltip = {\n";
+		body += "\t\ttooltip = potential_fascist_annex_target_tooltip\n";
+		body += "\t\thidden_trigger = {\n";
+		body += "\t\t\tROOT = { has_government = fascism }\n";
+		body += "\t\t\tNOT = { has_government = fascism }\n";
+		body += "\t\t}\n";
+		body += "\t}\n";
+		body += "}";
+		NFTrigger.setBody(body);
+
+		scriptedTriggers.addNationalFocusTrigger(NFTrigger);
+	}
 }

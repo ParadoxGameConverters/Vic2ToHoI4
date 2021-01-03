@@ -119,7 +119,7 @@ map<double, shared_ptr<HoI4::Country>> HoI4WarCreator::getDistancesToGreatPowers
 		set<string> Allies = country->getAllies();
 		if (!Allies.contains(GC->getTag()))
 		{
-			auto distance = getDistanceBetweenCountries(country, GC);
+			auto distance = getDistanceBetweenCapitals(country, GC);
 			if (distance && (*distance < 2200))
 			{
 				GCDistance.insert(make_pair(*distance, GC));
@@ -441,7 +441,7 @@ vector<shared_ptr<HoI4::Country>> HoI4WarCreator::GetMorePossibleAllies(
 		if (country.second->hasProvinces())
 		{
 			auto country2 = country.second;
-			auto distance = getDistanceBetweenCountries(CountryThatWantsAllies, country2);
+			auto distance = getDistanceBetweenCapitals(CountryThatWantsAllies, country2);
 			if (distance && (*distance <= 1000) && (country2 != CountryThatWantsAllies))
 			{
 				if (!currentAllies.contains(country2->getTag()))
@@ -511,6 +511,32 @@ vector<shared_ptr<HoI4::Country>> HoI4WarCreator::GetMorePossibleAllies(
 
 optional<double> HoI4WarCreator::getDistanceBetweenCountries(shared_ptr<HoI4::Country> country1,
 	 shared_ptr<HoI4::Country> country2)
+{
+	auto distanceBetweenCountries = getDistanceBetweenCapitals(country1, country2);
+	pair<int, int> capital2Position = getCapitalPosition(country2);
+
+	for (auto province1: country1->getProvinces())
+	{
+		auto province1Position = getProvincePosition(province1);
+		if (auto newDistance = getDistanceBetweenPoints(province1Position, capital2Position); newDistance < distanceBetweenCountries)
+		{
+			distanceBetweenCountries = newDistance;
+			for (auto province2: country2->getProvinces())
+			{
+				auto province2Position = getProvincePosition(province2);
+				if (auto newestDistance = getDistanceBetweenPoints(province1Position, province2Position); newestDistance < distanceBetweenCountries)
+				{
+					distanceBetweenCountries = newestDistance;
+				}
+			}		
+		}
+	}
+
+	return distanceBetweenCountries;
+}
+
+
+optional<double> HoI4WarCreator::getDistanceBetweenCapitals(shared_ptr<HoI4::Country> country1, shared_ptr<HoI4::Country> country2)
 {
 	if (!bothCountriesHaveCapitals(country1, country2))
 	{
@@ -630,7 +656,7 @@ double HoI4WarCreator::GetFactionStrengthWithDistance(std::shared_ptr<HoI4::Coun
 		double distanceMulti = 1;
 		if (country != HomeCountry)
 		{
-			auto distance = getDistanceBetweenCountries(HomeCountry, country);
+			auto distance = getDistanceBetweenCapitals(HomeCountry, country);
 			if (distance)
 			{
 				if (*distance < 300)
@@ -740,7 +766,7 @@ map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::getNearbyCountries(shared
 		{
 			// IMPROVE
 			// need to get further neighbors, as well as countries without capital in an area
-			auto distance = getDistanceBetweenCountries(checkingCountry, country);
+			auto distance = getDistanceBetweenCapitals(checkingCountry, country);
 			if (distance && (*distance <= 500) && (country->hasProvinces()))
 			{
 				neighbors.insert(countryItr);
@@ -809,7 +835,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI
 		{
 			// IMPROVE
 			// need to get further neighbors, as well as countries without capital in an area
-			auto distance = getDistanceBetweenCountries(Leader, neigh.second);
+			auto distance = getDistanceBetweenCapitals(Leader, neigh.second);
 			if (distance && (distance <= 500))
 			{
 				CloseNeighbors.insert(neigh);
@@ -1024,7 +1050,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(shared_ptr<HoI
 	// get great countries with a distance
 	for (auto GC: theWorld->getGreatPowers())
 	{
-		auto distance = getDistanceBetweenCountries(Leader, GC);
+		auto distance = getDistanceBetweenCapitals(Leader, GC);
 		if (distance)
 		{
 			GCDistance.insert(make_pair(*distance, GC));
@@ -1088,7 +1114,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(shared_ptr
 		{
 			// IMPROVE
 			// need to get further neighbors, as well as countries without capital in an area
-			auto distance = getDistanceBetweenCountries(Leader, neigh.second);
+			auto distance = getDistanceBetweenCapitals(Leader, neigh.second);
 			if (distance && (distance <= 400))
 			{
 				Neighbors.insert(neigh);
@@ -1209,7 +1235,7 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(shared_ptr
 	vector<shared_ptr<HoI4::Country>> GCDistanceSorted;
 	for (auto GC: theWorld->getGreatPowers())
 	{
-		auto distance = getDistanceBetweenCountries(Leader, GC);
+		auto distance = getDistanceBetweenCapitals(Leader, GC);
 		if (distance && (distance < 1200))
 		{
 			GCDistance.insert(make_pair(*distance, GC));
@@ -1346,8 +1372,15 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 
 	std::vector<std::shared_ptr<HoI4::Faction>> countriesAtWar;
 
-	auto weakNeighbors = findWeakNeighbors(country, theMapData, provinceDefinitions);
-	if (weakNeighbors.empty())
+	auto closeNeighbors = getImmediateNeighbors(country, theMapData, provinceDefinitions);
+	for (const auto& nonImmediateNeighbor: findCountriesWithin(100, country, theMapData))
+	{
+		if (closeNeighbors.find(nonImmediateNeighbor.first) == closeNeighbors.end())
+		{
+			closeNeighbors.insert(nonImmediateNeighbor);
+		}
+	}
+	if (closeNeighbors.empty())
 	{
 		return countriesAtWar;
 	}
@@ -1355,23 +1388,30 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 	int numWarsWithNeighbors = 0;
 	auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
 
-	for (auto target: weakNeighbors)
+	auto conquerTags = focusTree->addConquerBranch(country, numWarsWithNeighbors, theWorld->getMajorIdeologies(), hoi4Localisations);
+
+	for (const auto& target: closeNeighbors)
 	{
-		if (numWarsWithNeighbors >= 2)
+		if (numWarsWithNeighbors >= 5)
 		{
 			break;
 		}
-
-		auto relations = country->getRelations(target->getTag());
-		if (!relations || (relations->getRelations() > 0))
+		if (conquerTags.contains(target.first))
 		{
 			continue;
 		}
 
-		if (auto allies = country->getAllies(); !allies.contains(target->getTag()))
+
+		auto relations = country->getRelations(target.second->getTag());
+		if (!relations || (relations->getRelations() > 0) || (country == target.second))
+		{
+			continue;
+		}
+
+		if (auto allies = country->getAllies(); !allies.contains(target.second->getTag()))
 		{
 			std::string targetName;
-			if (auto possibleTargetName = target->getName(); possibleTargetName)
+			if (auto possibleTargetName = target.second->getName(); possibleTargetName)
 			{
 				targetName = *possibleTargetName;
 			}
@@ -1389,8 +1429,8 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 			date startDate = date("1937.01.01");
 			startDate.increaseByMonths(relations->getRelations() / -4);
 			focusTree->addNeighborWarBranch(country->getTag(),
-				 weakNeighbors,
-				 target,
+				 closeNeighbors,
+				 target.second,
 				 targetName,
 				 startDate,
 				 theWorld->getMajorIdeologies(),
@@ -1524,8 +1564,28 @@ map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::findCloseNeighbors(shared
 	{
 		if ((neighbor.second->getCapitalState()) && (neighbor.first != ""))
 		{
-			auto distance = getDistanceBetweenCountries(country, neighbor.second);
+			auto distance = getDistanceBetweenCapitals(country, neighbor.second);
 			if (distance && (*distance <= 500))
+			{
+				closeNeighbors.insert(neighbor);
+			}
+		}
+	}
+
+	return closeNeighbors;
+}
+
+
+map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::findCountriesWithin(int distancePx, shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData)
+{
+	map<string, shared_ptr<HoI4::Country>> closeNeighbors;
+
+	for (const auto& neighbor: theWorld->getCountries())
+	{
+		if ((neighbor.second->getCapitalState()) && (!neighbor.first.empty()) && (neighbor.second->hasProvinces()))
+		{
+			const auto& distance = getDistanceBetweenCountries(country, neighbor.second);
+			if (distance && (*distance <= distancePx))
 			{
 				closeNeighbors.insert(neighbor);
 			}
@@ -1576,7 +1636,7 @@ map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::findFarNeighbors(shared_p
 	{
 		if (neighbor.second->getCapitalState())
 		{
-			auto distance = getDistanceBetweenCountries(country, neighbor.second);
+			auto distance = getDistanceBetweenCapitals(country, neighbor.second);
 			if (distance && (*distance > 500))
 			{
 				farNeighbors.insert(neighbor);
@@ -1590,7 +1650,7 @@ map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::findFarNeighbors(shared_p
 		{
 			if (otherCountry.second->getCapitalState())
 			{
-				auto distance = getDistanceBetweenCountries(country, otherCountry.second);
+				auto distance = getDistanceBetweenCapitals(country, otherCountry.second);
 				if (distance && (*distance <= 1000) && (otherCountry.second->hasProvinces()))
 				{
 					farNeighbors.insert(otherCountry);
@@ -1631,7 +1691,7 @@ map<double, shared_ptr<HoI4::Country>> HoI4WarCreator::getGPsByDistance(shared_p
 	map<double, shared_ptr<HoI4::Country>> distanceToGPMap;
 	for (auto greatPower: theWorld->getGreatPowers())
 	{
-		auto distance = getDistanceBetweenCountries(country, greatPower);
+		auto distance = getDistanceBetweenCapitals(country, greatPower);
 		if (distance && (*distance < 1200))
 		{
 			distanceToGPMap.insert(make_pair(*distance, greatPower));

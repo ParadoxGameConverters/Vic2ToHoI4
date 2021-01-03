@@ -1,4 +1,5 @@
 #include "HoI4Focus.h"
+#include "CommonRegexes.h"
 #include "HoI4Localisation.h"
 #include "ParserHelpers.h"
 #include <regex>
@@ -79,8 +80,10 @@ HoI4Focus::HoI4Focus(std::istream& theStream)
 		commonItems::stringOfItem prerequisiteString(theStream);
 		prerequisites.push_back(prerequisiteString.getString());
 	});
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 
 	parseStream(theStream);
+	clearRegisteredKeywords();
 }
 
 
