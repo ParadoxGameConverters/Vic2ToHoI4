@@ -11,3 +11,13 @@
 #		the_great_emancipator
 #	}
 #}
+
+UCV = { # Terra Nullius
+	name = "" # No name at all
+	desc = "_DESC"
+	picture = "portrait_eng_fallen_government.dds"
+	expire = "1965.1.1"
+	ideology = anarchism
+	traits = {
+	}
+}

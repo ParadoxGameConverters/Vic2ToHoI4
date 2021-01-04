@@ -154,6 +154,10 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	{
 		return;
 	}
+	if (oldTag == "UCV")
+	{
+		return;
+	}
 
 	auto rulingIdeology = rulingParty->getIdeology();
 	governmentIdeology = governmentMap.getIdeologyForCountry(oldTag, oldGovernment, rulingIdeology, debug);
@@ -609,7 +613,12 @@ void HoI4::Country::convertIdeologySupport(const std::set<std::string>& majorIde
 		ideologySupport.insert(std::make_pair("neutrality", 100));
 		return;
 	}
-
+	if (oldTag == "UCV")
+	{
+		ideologySupport.insert(std::make_pair("neutrality", 100));
+		return;
+	}
+	
 	for (const auto& upperHouseIdeology: upperHouseComposition)
 	{
 		auto ideology = governmentMap.getSupportedIdeology(governmentIdeology, upperHouseIdeology.first, majorIdeologies);

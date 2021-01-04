@@ -272,3 +272,5 @@ link = { vic = KAS hoi = U80 } # Kashmir
 
 link = { vic = SPQ hoi = RME } # Roman Empire
 link = { vic = HRE hoi = HRE } # Holy Roman Empire
+
+link = { vic = UCV hoi = UCV } # Terra Nullius - only for the purposes of generating no leader
