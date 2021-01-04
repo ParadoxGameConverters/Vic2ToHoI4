@@ -4,7 +4,6 @@
 #include "StateCategories.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/States/State.h"
-#include <random>
 
 
 
@@ -392,8 +391,6 @@ void HoI4::State::addInfrastructureFromFactories(int factories)
 }
 
 
-static std::mt19937 randomnessEngine;
-static std::uniform_int_distribution<> numberDistributor(0, 99);
 void HoI4::State::setIndustry(int factories, const CoastalProvinces& theCoastalProvinces)
 {
 	if (ownerHasNoCore())
@@ -401,47 +398,51 @@ void HoI4::State::setIndustry(int factories, const CoastalProvinces& theCoastalP
 		factories /= 2;
 	}
 
+	struct factoriesStruct
+	{
+		double military;
+		double civilian;
+		double docks;
+	};
+	static std::unordered_map<std::string, factoriesStruct> accumulator;
+	if (accumulator.find(ownerTag) == accumulator.end())
+	{
+		accumulator[ownerTag] = {0, 0, 0};
+	}
+	auto& country = accumulator[ownerTag];
+
 	if (amICoastal(theCoastalProvinces))
 	{
-		// distribute military factories, civilian factories, and dockyards using unseeded random
 		//		20% chance of dockyard
 		//		57% chance of civilian factory
 		//		23% chance of military factory
-		for (int i = 0; i < factories; i++)
-		{
-			double randomNum = numberDistributor(randomnessEngine);
-			if (randomNum > 76)
-			{
-				milFactories++;
-			}
-			else if (randomNum > 19)
-			{
-				civFactories++;
-			}
-			else
-			{
-				dockyards++;
-			}
-		}
+		country.military += 0.23 * factories;
+		country.civilian += 0.57 * factories;
+		country.docks += 0.20 * factories;
 	}
 	else
 	{
-		// distribute military factories, civilian factories, and dockyards using unseeded random
 		//		 0% chance of dockyard
 		//		71% chance of civilian factory
 		//		29% chance of military factory
-		for (int i = 0; i < factories; i++)
-		{
-			double randomNum = numberDistributor(randomnessEngine);
-			if (randomNum > 70)
-			{
-				milFactories++;
-			}
-			else
-			{
-				civFactories++;
-			}
-		}
+		country.military += 0.29 * factories;
+		country.civilian += 0.71 * factories;
+	}
+
+	while (country.military >= 1.0)
+	{
+		milFactories++;
+		country.military -= 1.0;
+	}
+	while (country.civilian >= 1.0)
+	{
+		civFactories++;
+		country.civilian -= 1.0;
+	}
+	while (country.docks >= 1.0)
+	{
+		dockyards++;
+		country.docks -= 1.0;
 	}
 }
 

@@ -49,13 +49,13 @@ jepaan			- Programming
 Hamiller78		- Programming
 barryvm			- Programming
 RaduM84			- Programming, Data Files
+King_of_Men		- Programming, Analysis
 Italianajt		- Analysis, Data Files, QA
 Ordinary_Kraut		- Analysis, Data Files
 DasGuntLord01		- Analysis
 dtremenak		- Analysis
 history_fan		- Analysis
 PTSnoop			- Analysis
-King_of_Men		- Analysis
 schombert		- Analysis
 AllUncertain		- Analysis
 simsulla		- Data Files
