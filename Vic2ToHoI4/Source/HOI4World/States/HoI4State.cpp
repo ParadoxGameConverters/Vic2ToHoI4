@@ -431,12 +431,12 @@ void HoI4::State::setIndustry(int factories, const CoastalProvinces& theCoastalP
 
 	for (int i = 0; i < factories; i++)
 	{
-		if (amICoastal(theCoastalProvinces) && (country.docks >= country.military) && (country.docks >= country.civilian))
+		if (amICoastal(theCoastalProvinces) && (country.docks > 0.0))
 		{
 			dockyards++;
 			country.docks -= 1.0;
 		}
-		else if (country.military >= country.civilian)
+		else if (country.military >= 0.0)
 		{
 			milFactories++;
 			country.military -= 1.0;
