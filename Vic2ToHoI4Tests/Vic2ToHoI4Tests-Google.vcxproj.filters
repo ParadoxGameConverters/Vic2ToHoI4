@@ -40,9 +40,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4FocusTree.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\TechMapper.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Focus.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
@@ -1347,6 +1344,9 @@
     <ClCompile Include="Vic2WorldTests\Ai\AITests.cpp">
       <Filter>Vic2WorldTests\Ai</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapper.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Technology</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1742,6 +1742,9 @@
     <Filter Include="TestFiles\World">
       <UniqueIdentifier>{5b35b687-24f0-4619-a18a-239de21b04fa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\Technology">
+      <UniqueIdentifier>{83de9866-30b3-4a54-b69e-180011dd60c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1990,7 +1993,7 @@
       <Filter>TestFiles\World</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\World\MoveArmiesWorld.v2">
-	  <Filter>TestFiles\World</Filter>
+      <Filter>TestFiles\World</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

@@ -24,7 +24,7 @@
 #include "Mappers/CountryMapping.h"
 #include "Mappers/CountryName/CountryNameMapperFactory.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
-#include "Mappers/TechMapper.h"
+#include "Mappers/Technology/TechMapper.h"
 #include "MilitaryMappings/MilitaryMappingsFile.h"
 #include "Names/Names.h"
 #include "Operations/OperationsFactory.h"

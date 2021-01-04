@@ -1,5 +1,5 @@
 #include "HOI4World/Technologies.h"
-#include "Mappers/TechMapper.h"
+#include "Mappers/Technology/TechMapper.h"
 #include "OutHoi4/OutTechnologies.h"
 #include "gtest/gtest.h"
 #include <memory>

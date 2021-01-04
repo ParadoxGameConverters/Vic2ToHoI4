@@ -27,7 +27,7 @@
 #include "Mappers/GovernmentMapper.h"
 #include "Mappers/GraphicsMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
-#include "Mappers/TechMapper.h"
+#include "Mappers/Technology/TechMapper.h"
 #include "Military/DivisionTemplate.h"
 #include "MilitaryMappings/AllMilitaryMappings.h"
 #include "MilitaryMappings/HoI4UnitType.h"

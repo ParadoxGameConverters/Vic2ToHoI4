@@ -20,7 +20,7 @@
 #include "Mappers/GovernmentMapper.h"
 #include "Mappers/GraphicsMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
-#include "Mappers/TechMapper.h"
+#include "Mappers/Technology/TechMapper.h"
 #include "Military/Airplane.h"
 #include "Military/HoI4Army.h"
 #include "MilitaryMappings/MtgUnitMappings.h"

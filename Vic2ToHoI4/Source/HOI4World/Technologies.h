@@ -26,7 +26,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 
 
 
-#include "Mappers/TechMapper.h"
+#include "Mappers/Technology/TechMapper.h"
 #include <map>
 #include <set>
 #include <string>

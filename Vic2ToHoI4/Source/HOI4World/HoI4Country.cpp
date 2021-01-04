@@ -8,7 +8,7 @@
 #include "Mappers/GovernmentMapper.h"
 #include "Mappers/GraphicsMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
-#include "Mappers/TechMapper.h"
+#include "Mappers/Technology/TechMapper.h"
 #include "MilitaryMappings/MilitaryMappings.h"
 #include "Names/Names.h"
 #include "OSCompatibilityLayer.h"
@@ -618,7 +618,7 @@ void HoI4::Country::convertIdeologySupport(const std::set<std::string>& majorIde
 		ideologySupport.insert(std::make_pair("neutrality", 100));
 		return;
 	}
-	
+
 	for (const auto& upperHouseIdeology: upperHouseComposition)
 	{
 		auto ideology = governmentMap.getSupportedIdeology(governmentIdeology, upperHouseIdeology.first, majorIdeologies);
