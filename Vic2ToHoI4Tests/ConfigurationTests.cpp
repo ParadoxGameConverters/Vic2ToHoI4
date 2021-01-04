@@ -734,8 +734,8 @@ TEST(ConfigurationTests, PercentOfCommandersDefaultsToFivePercent)
 TEST(ConfigurationTests, PercentOfCommandersCanBeSet)
 {
 	std::stringstream input;
-	input << R"(percent_of_commanders = "0.5")";
+	input << R"(percent_of_commanders = "5")";
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
-	ASSERT_EQ(0.5F, theConfiguration->getPercentOfCommanders());
+	ASSERT_EQ(0.05F, theConfiguration->getPercentOfCommanders());
 }
