@@ -5,32 +5,42 @@
 
 void HoI4::outputTechnology(const technologies& theTechnologies, std::ostream& output)
 {
+	const auto& technologiesByLimit = theTechnologies.getTechnologies();
+
 	output << "# Starting tech\n";
-	output << "set_technology = {\n";
-	for (const auto& technology: theTechnologies.getMainTechnologies())
+
+	if (const auto& noLimitTechs = technologiesByLimit.find(""); noLimitTechs != technologiesByLimit.end())
 	{
-		output << "\t" << technology << " = 1\n";
+		output << "set_technology = {\n";
+		for (const auto& technology: noLimitTechs->second)
+		{
+			output << "\t" << technology << " = 1\n";
+		}
+		output << "}\n";
+		output << "\n";
 	}
-	output << "}\n";
-	output << "\n";
-	output << "if = {\n";
-	output << "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
-	output << "\tset_technology = {\n";
-	for (const auto& technology: theTechnologies.getNonMtgNavalTechnologies())
+
+	for (const auto& [limit, technologies]: technologiesByLimit)
 	{
-		output << "\t\t" << technology << " = 1\n";
+		if (limit.empty()) // no limit techs are handled above
+		{
+			continue;
+		}
+		if (technologies.empty())
+		{
+			continue;
+		}
+		output << "if = {\n";
+		output << "\tlimit = { " << limit << " }\n";
+		output << "\tset_technology = {\n";
+		for (const auto& technology: technologies)
+		{
+			output << "\t\t" << technology << " = 1\n";
+		}
+		output << "\t}\n";
+		output << "}\n";
+		output << "\n";
 	}
-	output << "\t}\n";
-	output << "}\n";
-	output << "if = {\n";
-	output << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-	output << "\tset_technology = {\n";
-	for (const auto& technology: theTechnologies.getMtgNavalTechnologies())
-	{
-		output << "\t\t" << technology << " = 1\n";
-	}
-	output << "\t}\n";
-	output << "}\n";
 }
 
 

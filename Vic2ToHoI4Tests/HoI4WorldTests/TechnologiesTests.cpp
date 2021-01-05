@@ -17,35 +17,23 @@ class HoI4World_technologiesTests: public ::testing::Test
 
 HoI4World_technologiesTests::HoI4World_technologiesTests()
 {
-	std::map<std::string, std::set<std::string>> techMappings;
-	std::set<std::string> HoI4Techs;
-	HoI4Techs.insert("HoI4_tech1");
-	HoI4Techs.insert("HoI4_tech2");
-	techMappings.insert(std::make_pair("Vic2_tech", HoI4Techs));
-	std::set<std::string> HoI4Techs2;
-	HoI4Techs2.insert("HoI4_tech2");
-	HoI4Techs2.insert("HoI4_tech3");
-	techMappings.insert(std::make_pair("Vic2_invention", HoI4Techs2));
-
-	std::map<std::string, std::set<std::string>> nonMtgTechMappings;
-	std::set<std::string> HoI4Techs3;
-	HoI4Techs3.insert("HoI4_nonMtgNavalTech1");
-	HoI4Techs3.insert("HoI4_nonMtgNavalTech2");
-	nonMtgTechMappings.insert(std::make_pair("Vic2_nonMtgNavalTech", HoI4Techs3));
-	std::set<std::string> HoI4Techs4;
-	HoI4Techs4.insert("HoI4_nonMtgNavalTech2");
-	HoI4Techs4.insert("HoI4_nonMtgNavalTech3");
-	nonMtgTechMappings.insert(std::make_pair("Vic2_nonMtgNavalInvention", HoI4Techs4));
-
-	std::map<std::string, std::set<std::string>> mtgTechMappings;
-	std::set<std::string> HoI4Techs5;
-	HoI4Techs5.insert("HoI4_mtgNavalTech1");
-	HoI4Techs5.insert("HoI4_mtgNavalTech2");
-	mtgTechMappings.insert(std::make_pair("Vic2_mtgNavalTech", HoI4Techs5));
-	std::set<std::string> HoI4Techs6;
-	HoI4Techs6.insert("HoI4_mtgNavalTech2");
-	HoI4Techs6.insert("HoI4_mtgNavalTech3");
-	mtgTechMappings.insert(std::make_pair("Vic2_mtgNavalInvention", HoI4Techs6));
+	std::map<std::string, std::map<std::string, std::set<std::string>>> techMappings;
+	techMappings.insert(std::make_pair("Vic2_tech",
+		 std::map{std::make_pair(std::string{}, std::set<std::string>{"HoI4_tech1", "HoI4_tech2"})}));
+	techMappings.insert(std::make_pair("Vic2_invention",
+		 std::map{std::make_pair(std::string{}, std::set<std::string>{"HoI4_tech2", "HoI4_tech3"})}));
+	techMappings.insert(std::make_pair("Vic2_nonMtgNavalTech",
+		 std::map<std::string, std::set<std::string>>{std::make_pair("not = { has_dlc = \"Man the Guns\" }",
+			  std::set<std::string>{"HoI4_nonMtgNavalTech1", "HoI4_nonMtgNavalTech2"})}));
+	techMappings.insert(std::make_pair("Vic2_nonMtgNavalInvention",
+		 std::map<std::string, std::set<std::string>>{std::make_pair("not = { has_dlc = \"Man the Guns\" }",
+			  std::set<std::string>{"HoI4_nonMtgNavalTech2", "HoI4_nonMtgNavalTech3"})}));
+	techMappings.insert(std::make_pair("Vic2_mtgNavalTech",
+		 std::map<std::string, std::set<std::string>>{std::make_pair("has_dlc = \"Man the Guns\"",
+			  std::set<std::string>{"HoI4_mtgNavalTech1", "HoI4_mtgNavalTech2"})}));
+	techMappings.insert(std::make_pair("Vic2_mtgNavalInvention",
+		 std::map<std::string, std::set<std::string>>{std::make_pair("has_dlc = \"Man the Guns\"",
+			  std::set<std::string>{"HoI4_mtgNavalTech2", "HoI4_mtgNavalTech3"})}));
 
 	std::map<std::string, std::map<std::string, float>> researchBonusMappings;
 	std::map<std::string, float> researchBonuses;
@@ -57,8 +45,7 @@ HoI4World_technologiesTests::HoI4World_technologiesTests()
 	researchBonuses2.insert(std::make_pair("bonus3_doctrine", 70));
 	researchBonusMappings.insert(std::make_pair("Vic2_invention", researchBonuses2));
 
-	theTechMapper =
-		 std::make_unique<mappers::techMapper>(techMappings, nonMtgTechMappings, mtgTechMappings, researchBonusMappings);
+	theTechMapper = std::make_unique<mappers::techMapper>(techMappings, researchBonusMappings);
 }
 
 
@@ -72,19 +59,6 @@ TEST_F(HoI4World_technologiesTests, noVic2TechsOrInventionsGiveNoHoI4Techs)
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
-	expectedOutput += "set_technology = {\n";
-	expectedOutput += "}\n";
-	expectedOutput += "\n";
-	expectedOutput += "if = {\n";
-	expectedOutput += "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
-	expectedOutput += "\tset_technology = {\n";
-	expectedOutput += "\t}\n";
-	expectedOutput += "}\n";
-	expectedOutput += "if = {\n";
-	expectedOutput += "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-	expectedOutput += "\tset_technology = {\n";
-	expectedOutput += "\t}\n";
-	expectedOutput += "}\n";
 	ASSERT_EQ(expectedOutput, output);
 }
 
@@ -101,19 +75,6 @@ TEST_F(HoI4World_technologiesTests, nonMatchingVic2TechsOrInventionsGiveNoHoI4Te
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
-	expectedOutput += "set_technology = {\n";
-	expectedOutput += "}\n";
-	expectedOutput += "\n";
-	expectedOutput += "if = {\n";
-	expectedOutput += "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
-	expectedOutput += "\tset_technology = {\n";
-	expectedOutput += "\t}\n";
-	expectedOutput += "}\n";
-	expectedOutput += "if = {\n";
-	expectedOutput += "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-	expectedOutput += "\tset_technology = {\n";
-	expectedOutput += "\t}\n";
-	expectedOutput += "}\n";
 	ASSERT_EQ(expectedOutput, output);
 }
 
@@ -134,16 +95,6 @@ TEST_F(HoI4World_technologiesTests, matchingVic2TechGivesHoI4Techs)
 	expectedOutput += "\tHoI4_tech2 = 1\n";
 	expectedOutput += "}\n";
 	expectedOutput += "\n";
-	expectedOutput += "if = {\n";
-	expectedOutput += "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
-	expectedOutput += "\tset_technology = {\n";
-	expectedOutput += "\t}\n";
-	expectedOutput += "}\n";
-	expectedOutput += "if = {\n";
-	expectedOutput += "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-	expectedOutput += "\tset_technology = {\n";
-	expectedOutput += "\t}\n";
-	expectedOutput += "}\n";
 	ASSERT_EQ(expectedOutput, output);
 }
 
@@ -164,16 +115,6 @@ TEST_F(HoI4World_technologiesTests, matchingVic2InventionGivesHoI4Techs)
 	expectedOutput += "\tHoI4_tech3 = 1\n";
 	expectedOutput += "}\n";
 	expectedOutput += "\n";
-	expectedOutput += "if = {\n";
-	expectedOutput += "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
-	expectedOutput += "\tset_technology = {\n";
-	expectedOutput += "\t}\n";
-	expectedOutput += "}\n";
-	expectedOutput += "if = {\n";
-	expectedOutput += "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-	expectedOutput += "\tset_technology = {\n";
-	expectedOutput += "\t}\n";
-	expectedOutput += "}\n";
 	ASSERT_EQ(expectedOutput, output);
 }
 
@@ -196,16 +137,6 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachTech)
 	expectedOutput += "\tHoI4_tech3 = 1\n";
 	expectedOutput += "}\n";
 	expectedOutput += "\n";
-	expectedOutput += "if = {\n";
-	expectedOutput += "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
-	expectedOutput += "\tset_technology = {\n";
-	expectedOutput += "\t}\n";
-	expectedOutput += "}\n";
-	expectedOutput += "if = {\n";
-	expectedOutput += "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-	expectedOutput += "\tset_technology = {\n";
-	expectedOutput += "\t}\n";
-	expectedOutput += "}\n";
 	ASSERT_EQ(expectedOutput, output);
 }
 
@@ -221,9 +152,6 @@ TEST_F(HoI4World_technologiesTests, matchingVic2TechGivesNonMtgNavalTechs)
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
-	expectedOutput += "set_technology = {\n";
-	expectedOutput += "}\n";
-	expectedOutput += "\n";
 	expectedOutput += "if = {\n";
 	expectedOutput += "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
 	expectedOutput += "\tset_technology = {\n";
@@ -231,11 +159,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2TechGivesNonMtgNavalTechs)
 	expectedOutput += "\t\tHoI4_nonMtgNavalTech2 = 1\n";
 	expectedOutput += "\t}\n";
 	expectedOutput += "}\n";
-	expectedOutput += "if = {\n";
-	expectedOutput += "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-	expectedOutput += "\tset_technology = {\n";
-	expectedOutput += "\t}\n";
-	expectedOutput += "}\n";
+	expectedOutput += "\n";
 	ASSERT_EQ(expectedOutput, output);
 }
 
@@ -251,9 +175,6 @@ TEST_F(HoI4World_technologiesTests, matchingVic2InventionGivesNonMtgNavalTechs)
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
-	expectedOutput += "set_technology = {\n";
-	expectedOutput += "}\n";
-	expectedOutput += "\n";
 	expectedOutput += "if = {\n";
 	expectedOutput += "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
 	expectedOutput += "\tset_technology = {\n";
@@ -261,11 +182,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2InventionGivesNonMtgNavalTechs)
 	expectedOutput += "\t\tHoI4_nonMtgNavalTech3 = 1\n";
 	expectedOutput += "\t}\n";
 	expectedOutput += "}\n";
-	expectedOutput += "if = {\n";
-	expectedOutput += "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-	expectedOutput += "\tset_technology = {\n";
-	expectedOutput += "\t}\n";
-	expectedOutput += "}\n";
+	expectedOutput += "\n";
 	ASSERT_EQ(expectedOutput, output);
 }
 
@@ -282,9 +199,6 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachNonMtgNavalTech)
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
-	expectedOutput += "set_technology = {\n";
-	expectedOutput += "}\n";
-	expectedOutput += "\n";
 	expectedOutput += "if = {\n";
 	expectedOutput += "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
 	expectedOutput += "\tset_technology = {\n";
@@ -293,11 +207,7 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachNonMtgNavalTech)
 	expectedOutput += "\t\tHoI4_nonMtgNavalTech3 = 1\n";
 	expectedOutput += "\t}\n";
 	expectedOutput += "}\n";
-	expectedOutput += "if = {\n";
-	expectedOutput += "\tlimit = { has_dlc = \"Man the Guns\" }\n";
-	expectedOutput += "\tset_technology = {\n";
-	expectedOutput += "\t}\n";
-	expectedOutput += "}\n";
+	expectedOutput += "\n";
 	ASSERT_EQ(expectedOutput, output);
 }
 
@@ -313,14 +223,6 @@ TEST_F(HoI4World_technologiesTests, matchingVic2TechGivesMtgNavalTechs)
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
-	expectedOutput += "set_technology = {\n";
-	expectedOutput += "}\n";
-	expectedOutput += "\n";
-	expectedOutput += "if = {\n";
-	expectedOutput += "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
-	expectedOutput += "\tset_technology = {\n";
-	expectedOutput += "\t}\n";
-	expectedOutput += "}\n";
 	expectedOutput += "if = {\n";
 	expectedOutput += "\tlimit = { has_dlc = \"Man the Guns\" }\n";
 	expectedOutput += "\tset_technology = {\n";
@@ -328,6 +230,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2TechGivesMtgNavalTechs)
 	expectedOutput += "\t\tHoI4_mtgNavalTech2 = 1\n";
 	expectedOutput += "\t}\n";
 	expectedOutput += "}\n";
+	expectedOutput += "\n";
 	ASSERT_EQ(expectedOutput, output);
 }
 
@@ -343,14 +246,6 @@ TEST_F(HoI4World_technologiesTests, matchingVic2InventionGivesMtgNavalTechs)
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
-	expectedOutput += "set_technology = {\n";
-	expectedOutput += "}\n";
-	expectedOutput += "\n";
-	expectedOutput += "if = {\n";
-	expectedOutput += "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
-	expectedOutput += "\tset_technology = {\n";
-	expectedOutput += "\t}\n";
-	expectedOutput += "}\n";
 	expectedOutput += "if = {\n";
 	expectedOutput += "\tlimit = { has_dlc = \"Man the Guns\" }\n";
 	expectedOutput += "\tset_technology = {\n";
@@ -358,6 +253,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2InventionGivesMtgNavalTechs)
 	expectedOutput += "\t\tHoI4_mtgNavalTech3 = 1\n";
 	expectedOutput += "\t}\n";
 	expectedOutput += "}\n";
+	expectedOutput += "\n";
 	ASSERT_EQ(expectedOutput, output);
 }
 
@@ -374,14 +270,6 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachMtgNavalTech)
 	std::string output = outputStream.str();
 
 	std::string expectedOutput = "# Starting tech\n";
-	expectedOutput += "set_technology = {\n";
-	expectedOutput += "}\n";
-	expectedOutput += "\n";
-	expectedOutput += "if = {\n";
-	expectedOutput += "\tlimit = { not = { has_dlc = \"Man the Guns\" } }\n";
-	expectedOutput += "\tset_technology = {\n";
-	expectedOutput += "\t}\n";
-	expectedOutput += "}\n";
 	expectedOutput += "if = {\n";
 	expectedOutput += "\tlimit = { has_dlc = \"Man the Guns\" }\n";
 	expectedOutput += "\tset_technology = {\n";
@@ -390,6 +278,7 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachMtgNavalTech)
 	expectedOutput += "\t\tHoI4_mtgNavalTech3 = 1\n";
 	expectedOutput += "\t}\n";
 	expectedOutput += "}\n";
+	expectedOutput += "\n";
 	ASSERT_EQ(expectedOutput, output);
 }
 

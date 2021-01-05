@@ -48,23 +48,16 @@ class technologies
 
 	void setResearchBonus(const std::string& tech, int bonus);
 
-	auto getTechnologyCount() const
-	{
-		return mainTechnologies.size() + nonMtgNavalTechnologies.size() + mtgNavalTechnologies.size();
-	}
+	[[nodiscard]] int getTechnologyCount() const;
+	[[nodiscard]] bool hasTechnology(const std::string& technology) const;
 
-	bool hasTechnology(const std::string& technology) const;
-
-
-	[[nodiscard]] const auto& getMainTechnologies() const { return mainTechnologies; }
-	[[nodiscard]] const auto& getNonMtgNavalTechnologies() const { return nonMtgNavalTechnologies; }
-	[[nodiscard]] const auto& getMtgNavalTechnologies() const { return mtgNavalTechnologies; }
+	[[nodiscard]] const auto& getTechnologies() const { return technologiesByLimits; }
 	[[nodiscard]] const auto& getResearchBonuses() const { return researchBonuses; }
 
   private:
-	std::set<std::string> mainTechnologies;
-	std::set<std::string> nonMtgNavalTechnologies;
-	std::set<std::string> mtgNavalTechnologies;
+	// technologies are sorted by limits that can be applied to them
+	std::map<std::string, std::set<std::string>> technologiesByLimits;
+	
 	std::map<std::string, int> researchBonuses;
 };
 

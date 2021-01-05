@@ -169,7 +169,7 @@ class Country
 		}
 		else
 		{
-			return static_cast<size_t>(0);
+			return 0;
 		}
 	}
 	[[nodiscard]] const std::optional<technologies>& getTechnologies() const { return theTechnologies; }

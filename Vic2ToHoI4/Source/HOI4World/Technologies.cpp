@@ -1,26 +1,3 @@
-/*Copyright (c) 2019 The Paradox Game Converters Project
-
-Permission is hereby granted, free of charge, to any person obtaining
-a copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
-
-
-
 #include "Technologies.h"
 
 
@@ -28,49 +5,46 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.*/
 HoI4::technologies::technologies(const mappers::techMapper& theTechMapper,
 	 const std::set<std::string>& oldTechnologiesAndInventions)
 {
-	for (auto techMapping: theTechMapper.getAllTechMappings())
+	for (const auto& [requirement, techMapping]: theTechMapper.getAllTechMappings())
 	{
-		if (oldTechnologiesAndInventions.contains(techMapping.first))
+		if (oldTechnologiesAndInventions.contains(requirement))
 		{
-			for (auto HoI4Tech: techMapping.second)
+			for (const auto& [limit, technologies]: techMapping)
 			{
-				mainTechnologies.insert(HoI4Tech);
+				for (const auto& technology: technologies)
+				{
+					auto [itr, inserted] = technologiesByLimits.insert(std::make_pair(limit, std::set{technology}));
+					if (!inserted)
+					{
+						itr->second.insert(technology);
+					}
+				}
 			}
 		}
 	}
 
-	for (auto techMapping: theTechMapper.getAllNonMtgNavalTechMappings())
-	{
-		if (oldTechnologiesAndInventions.contains(techMapping.first))
-		{
-			for (auto HoI4Tech: techMapping.second)
-			{
-				nonMtgNavalTechnologies.insert(HoI4Tech);
-			}
-		}
-	}
-
-	for (auto techMapping: theTechMapper.getAllMtgNavalTechMappings())
-	{
-		if (oldTechnologiesAndInventions.contains(techMapping.first))
-		{
-			for (auto HoI4Tech: techMapping.second)
-			{
-				mtgNavalTechnologies.insert(HoI4Tech);
-			}
-		}
-	}
-
-	for (auto bonusMapping: theTechMapper.getAllResearchBonuses())
+	for (const auto& bonusMapping: theTechMapper.getAllResearchBonuses())
 	{
 		if (oldTechnologiesAndInventions.contains(bonusMapping.first))
 		{
-			for (auto bonus: bonusMapping.second)
+			for (const auto& bonus: bonusMapping.second)
 			{
 				setResearchBonus(bonus.first, bonus.second);
 			}
 		}
 	}
+}
+
+
+int HoI4::technologies::getTechnologyCount() const
+{
+	int totalTechnologies = 0;
+	for (const auto& [unused, technologies]: technologiesByLimits)
+	{
+		totalTechnologies += technologies.size();
+	}
+
+	return totalTechnologies;
 }
 
 
@@ -86,6 +60,13 @@ void HoI4::technologies::setResearchBonus(const std::string& tech, int bonus)
 
 bool HoI4::technologies::hasTechnology(const std::string& technology) const
 {
-	return mainTechnologies.contains(technology) || nonMtgNavalTechnologies.contains(technology) ||
-			 mtgNavalTechnologies.contains(technology);
+	for (const auto& [unused, technologies]: technologiesByLimits)
+	{
+		if (technologies.contains(technology))
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
