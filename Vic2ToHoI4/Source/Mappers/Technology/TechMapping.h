@@ -16,18 +16,19 @@ class TechMapping
 {
   public:
 	class Factory;
+	class Builder;
 
-	[[nodiscard]] const auto& getVic2Item() const { return vic2Item; }
+	[[nodiscard]] const auto& getVic2Requirements() const { return vic2Requirements; }
 	[[nodiscard]] const auto& getLimit() const { return limit; }
 	[[nodiscard]] const auto& getTechs() const { return techs; }
 
   private:
-	std::string vic2Item;
+	std::set<std::string> vic2Requirements;
 	std::string limit;
 	std::set<std::string> techs;
 };
 
-} // namespace mappers
+} // namespace Mappers
 
 
 

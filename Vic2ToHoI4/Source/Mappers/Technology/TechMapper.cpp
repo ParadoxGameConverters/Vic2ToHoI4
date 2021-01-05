@@ -42,7 +42,7 @@ class techMap: commonItems::parser
 	auto getMappings() const { return mappings; }
 
   private:
-	std::map<std::string, std::map<std::string, std::set<std::string>>> mappings;
+	std::vector<Mappers::TechMapping> mappings;
 };
 
 
@@ -52,18 +52,7 @@ techMap::techMap(std::istream& theStream)
 
 	registerKeyword("link", [this, &techMappingFactory](std::istream& theStream) {
 		const auto theMapping = techMappingFactory.importTechMapping(theStream);
-		const auto& techs = theMapping->getTechs();
-		const auto techsByLimit = std::make_pair(theMapping->getLimit(), techs);
-
-		auto [itr, inserted] = mappings.insert(std::make_pair(theMapping->getVic2Item(), std::map{techsByLimit}));
-		if (!inserted)
-		{
-			auto [itr2, inserted2] = itr->second.insert(techsByLimit);
-			if (!inserted2)
-			{
-				itr2->second.insert(techs.begin(), techs.end());
-			}
-		}
+		mappings.push_back(*theMapping);
 	});
 
 	parseStream(theStream);
@@ -95,7 +84,7 @@ researchBonusMap::researchBonusMap(std::istream& theStream)
 
 mappers::techMapperFile::techMapperFile()
 {
-	std::map<std::string, std::map<std::string, std::set<std::string>>> techMappings;
+	std::vector<Mappers::TechMapping> techMappings;
 	std::map<std::string, std::map<std::string, float>> researchBonusMappings;
 
 	registerKeyword("tech_map", [this, &techMappings](std::istream& theStream) {

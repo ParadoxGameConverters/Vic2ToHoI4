@@ -1,24 +1,33 @@
 #include "Technologies.h"
 
 
-
+#pragma optimize("",off)
 HoI4::technologies::technologies(const mappers::techMapper& theTechMapper,
 	 const std::set<std::string>& oldTechnologiesAndInventions)
 {
-	for (const auto& [requirement, techMapping]: theTechMapper.getAllTechMappings())
+	for (const auto& techMapping: theTechMapper.getAllTechMappings())
 	{
-		if (oldTechnologiesAndInventions.contains(requirement))
+		bool requirementViolated = false;
+		for (const auto& requirement: techMapping.getVic2Requirements())
 		{
-			for (const auto& [limit, technologies]: techMapping)
+			if (!oldTechnologiesAndInventions.contains(requirement))
 			{
-				for (const auto& technology: technologies)
-				{
-					auto [itr, inserted] = technologiesByLimits.insert(std::make_pair(limit, std::set{technology}));
-					if (!inserted)
-					{
-						itr->second.insert(technology);
-					}
-				}
+				requirementViolated = true;
+				break;
+			}
+		}
+		if (requirementViolated)
+		{
+			continue;
+		}
+
+		const auto& limit = techMapping.getLimit();
+		for (const auto& technology: techMapping.getTechs())
+		{
+			auto [itr, inserted] = technologiesByLimits.insert(std::make_pair(limit, std::set{technology}));
+			if (!inserted)
+			{
+				itr->second.insert(technology);
 			}
 		}
 	}
@@ -34,7 +43,7 @@ HoI4::technologies::technologies(const mappers::techMapper& theTechMapper,
 		}
 	}
 }
-
+#pragma optimize("", on)
 
 int HoI4::technologies::getTechnologyCount() const
 {

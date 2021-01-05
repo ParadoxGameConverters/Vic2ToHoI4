@@ -2229,6 +2229,9 @@
     <ClInclude Include="Source\Mappers\Technology\TechMappingFactory.h">
       <Filter>Mappers\Technology</Filter>
     </ClInclude>
+    <ClInclude Include="Source\Mappers\Technology\TechMappingBuilder.h">
+      <Filter>Mappers\Technology</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\FAQ.txt">

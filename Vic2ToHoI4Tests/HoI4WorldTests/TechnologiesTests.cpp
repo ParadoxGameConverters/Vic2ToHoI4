@@ -1,5 +1,6 @@
 #include "HOI4World/Technologies.h"
 #include "Mappers/Technology/TechMapper.h"
+#include "Mappers/Technology/TechMappingBuilder.h"
 #include "OutHoi4/OutTechnologies.h"
 #include "gtest/gtest.h"
 #include <memory>
@@ -17,23 +18,40 @@ class HoI4World_technologiesTests: public ::testing::Test
 
 HoI4World_technologiesTests::HoI4World_technologiesTests()
 {
-	std::map<std::string, std::map<std::string, std::set<std::string>>> techMappings;
-	techMappings.insert(std::make_pair("Vic2_tech",
-		 std::map{std::make_pair(std::string{}, std::set<std::string>{"HoI4_tech1", "HoI4_tech2"})}));
-	techMappings.insert(std::make_pair("Vic2_invention",
-		 std::map{std::make_pair(std::string{}, std::set<std::string>{"HoI4_tech2", "HoI4_tech3"})}));
-	techMappings.insert(std::make_pair("Vic2_nonMtgNavalTech",
-		 std::map<std::string, std::set<std::string>>{std::make_pair("not = { has_dlc = \"Man the Guns\" }",
-			  std::set<std::string>{"HoI4_nonMtgNavalTech1", "HoI4_nonMtgNavalTech2"})}));
-	techMappings.insert(std::make_pair("Vic2_nonMtgNavalInvention",
-		 std::map<std::string, std::set<std::string>>{std::make_pair("not = { has_dlc = \"Man the Guns\" }",
-			  std::set<std::string>{"HoI4_nonMtgNavalTech2", "HoI4_nonMtgNavalTech3"})}));
-	techMappings.insert(std::make_pair("Vic2_mtgNavalTech",
-		 std::map<std::string, std::set<std::string>>{std::make_pair("has_dlc = \"Man the Guns\"",
-			  std::set<std::string>{"HoI4_mtgNavalTech1", "HoI4_mtgNavalTech2"})}));
-	techMappings.insert(std::make_pair("Vic2_mtgNavalInvention",
-		 std::map<std::string, std::set<std::string>>{std::make_pair("has_dlc = \"Man the Guns\"",
-			  std::set<std::string>{"HoI4_mtgNavalTech2", "HoI4_mtgNavalTech3"})}));
+	std::vector<Mappers::TechMapping> techMappings{
+		 *Mappers::TechMapping::Builder{}
+				.setVic2Requirements({"Vic2_tech"})
+				.setTechs({"HoI4_tech1", "HoI4_tech2"})
+				.Build(),
+		 *Mappers::TechMapping::Builder{}
+				.setVic2Requirements({"Vic2_invention"})
+				.setTechs({"HoI4_tech2", "HoI4_tech3"})
+				.Build(),
+		 *Mappers::TechMapping::Builder{}
+				.setVic2Requirements({"Vic2_nonMtgNavalTech"})
+				.setLimit("not = { has_dlc = \"Man the Guns\" }")
+				.setTechs({"HoI4_nonMtgNavalTech1", "HoI4_nonMtgNavalTech2"})
+				.Build(),
+		 *Mappers::TechMapping::Builder{}
+				.setVic2Requirements({"Vic2_nonMtgNavalInvention"})
+				.setLimit("not = { has_dlc = \"Man the Guns\" }")
+				.setTechs({"HoI4_nonMtgNavalTech2", "HoI4_nonMtgNavalTech3"})
+				.Build(),
+		 *Mappers::TechMapping::Builder{}
+				.setVic2Requirements({"Vic2_mtgNavalTech"})
+				.setLimit("has_dlc = \"Man the Guns\"")
+				.setTechs({"HoI4_mtgNavalTech1", "HoI4_mtgNavalTech2"})
+				.Build(),
+		 *Mappers::TechMapping::Builder{}
+				.setVic2Requirements({"Vic2_mtgNavalInvention"})
+				.setLimit("has_dlc = \"Man the Guns\"")
+				.setTechs({"HoI4_mtgNavalTech2", "HoI4_mtgNavalTech3"})
+				.Build(),
+		 *Mappers::TechMapping::Builder{}
+				.setVic2Requirements({"requirement1", "requirement2"})
+				.setTechs({"test_tech1", "test_tech2"})
+				.Build(),
+	};
 
 	std::map<std::string, std::map<std::string, float>> researchBonusMappings;
 	std::map<std::string, float> researchBonuses;
@@ -277,6 +295,39 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachMtgNavalTech)
 	expectedOutput += "\t\tHoI4_mtgNavalTech2 = 1\n";
 	expectedOutput += "\t\tHoI4_mtgNavalTech3 = 1\n";
 	expectedOutput += "\t}\n";
+	expectedOutput += "}\n";
+	expectedOutput += "\n";
+	ASSERT_EQ(expectedOutput, output);
+}
+
+
+TEST_F(HoI4World_technologiesTests, MultipleVic2RequirementsCanBeRequired)
+{
+	std::set<std::string> oldTechsAndInventions{"requirement1"};
+	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+
+	std::stringstream outputStream;
+	outputTechnology(theTechnologies, outputStream);
+	std::string output = outputStream.str();
+
+	std::string expectedOutput = "# Starting tech\n";
+	ASSERT_EQ(expectedOutput, output);
+}
+
+
+TEST_F(HoI4World_technologiesTests, MultipleVic2RequirementsCanSucceed)
+{
+	std::set<std::string> oldTechsAndInventions{"requirement1", "requirement2"};
+	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+
+	std::stringstream outputStream;
+	outputTechnology(theTechnologies, outputStream);
+	std::string output = outputStream.str();
+
+	std::string expectedOutput = "# Starting tech\n";
+	expectedOutput += "set_technology = {\n";
+	expectedOutput += "\ttest_tech1 = 1\n";
+	expectedOutput += "\ttest_tech2 = 1\n";
 	expectedOutput += "}\n";
 	expectedOutput += "\n";
 	ASSERT_EQ(expectedOutput, output);

@@ -6,22 +6,23 @@
 
 
 
-TEST(Vic2World_AI_Strategy_Tests, Vic2ItemDefaultsToEmpty)
+TEST(Vic2World_AI_Strategy_Tests, Vic2RequirementsDefaultsToEmpty)
 {
 	std::stringstream input;
 	const auto mapping = Mappers::TechMapping::Factory{}.importTechMapping(input);
 
-	ASSERT_TRUE(mapping->getVic2Item().empty());
+	ASSERT_TRUE(mapping->getVic2Requirements().empty());
 }
 
 
-TEST(Vic2World_AI_Strategy_Tests, Vic2ItemCanBeSet)
+TEST(Vic2World_AI_Strategy_Tests, Vic2RequirementsCanBeSet)
 {
 	std::stringstream input;
-	input << "vic2 = test_item";
+	input << "vic2 = test_item\n";
+	input << "vic2 = test_item2";
 	const auto mapping = Mappers::TechMapping::Factory{}.importTechMapping(input);
 
-	ASSERT_EQ("test_item", mapping->getVic2Item());
+	ASSERT_THAT(mapping->getVic2Requirements(), testing::UnorderedElementsAre("test_item", "test_item2"));
 }
 
 

@@ -3,10 +3,11 @@
 
 
 #include "Parser.h"
+#include "TechMapping.h"
 #include <map>
 #include <memory>
-#include <set>
 #include <string>
+#include <vector>
 
 
 
@@ -16,7 +17,7 @@ namespace mappers
 class techMapper: commonItems::parser
 {
   public:
-	techMapper(const std::map<std::string, std::map<std::string, std::set<std::string>>>& _techMap,
+	techMapper(const std::vector<Mappers::TechMapping>& _techMap,
 		 const std::map<std::string, std::map<std::string, float>>& _researchBonusMap):
 		 techMap(_techMap),
 		 researchBonusMap(_researchBonusMap){};
@@ -31,7 +32,7 @@ class techMapper: commonItems::parser
 	techMapper& operator=(const techMapper&) = delete;
 	techMapper& operator=(techMapper&&) = delete;
 
-	std::map<std::string, std::map<std::string, std::set<std::string>>> techMap; // required Vic2 tech, limit, techs
+	std::vector<Mappers::TechMapping> techMap;
 	std::map<std::string, std::map<std::string, float>> researchBonusMap;
 };
 

@@ -6,7 +6,7 @@
 Mappers::TechMapping::Factory::Factory()
 {
 	registerKeyword("vic2", [this](std::istream& theStream) {
-		techMapping->vic2Item = commonItems::singleString{theStream}.getString();
+		techMapping->vic2Requirements.insert(commonItems::singleString{theStream}.getString());
 	});
 	registerKeyword("limit", [this](std::istream& theStream) {
 		techMapping->limit = commonItems::singleString{theStream}.getString();
