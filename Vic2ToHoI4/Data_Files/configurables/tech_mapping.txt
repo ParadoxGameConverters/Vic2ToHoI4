@@ -300,7 +300,21 @@ tech_map =
 		vic2 = war_gamming
 		limit = R"(has_dlc = "Man the Guns")"
 		hoi4 = smoke_generator
-	}	
+	}
+	link = {
+		vic2 = modern_naval_doctrine
+		vic2 = oil_driven_ships
+		vic2 = aeronautics
+		vic2 = naval_integration
+		limit = R"(has_dlc = "Man the Guns")"
+		hoi4 = early_ship_hull_carrier
+	}
+
+	link = {
+		vic2 = armoured_cars
+		limit = R"(has_dlc = "La Resistance")"
+		hoi4 = armored_car1
+	}
 }
 
 
@@ -335,9 +349,4 @@ bonus_map =
 		vic2 = naval_firepower_doctrine
 		naval_doctrine = 1000
 	}
-
-	#link = {
-	#	vic2 = armoured_cars
-	#	armored_car1 = 1000
-	#}
 }
