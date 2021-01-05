@@ -1,42 +1,8 @@
 #include "TechMapper.h"
 #include "CommonRegexes.h"
 #include "ParserHelpers.h"
+#include "TechMappingFactory.h"
 
-
-
-class techMapping: commonItems::parser
-{
-  public:
-	explicit techMapping(std::istream& theStream);
-
-	auto getKey() const { return key; }
-	auto getLimit() const { return limit; }
-	auto getValues() const { return techs; }
-
-  private:
-	std::string key;
-	std::string limit;
-	std::set<std::string> techs;
-};
-
-
-techMapping::techMapping(std::istream& theStream)
-{
-	registerKeyword("vic2", [this](std::istream& theStream) {
-		commonItems::singleString theKey(theStream);
-		key = theKey.getString();
-	});
-	registerKeyword("limit", [this](std::istream& theStream) {
-		commonItems::singleString theKey(theStream);
-		limit = theKey.getString();
-	});
-	registerKeyword("hoi4", [this](std::istream& theStream) {
-		commonItems::singleString aValue(theStream);
-		techs.insert(aValue.getString());
-	});
-
-	parseStream(theStream);
-}
 
 
 class researchBonusMapping: commonItems::parser
@@ -82,12 +48,14 @@ class techMap: commonItems::parser
 
 techMap::techMap(std::istream& theStream)
 {
-	registerKeyword("link", [this](std::istream& theStream) {
-		const techMapping theMapping(theStream);
-		const auto& techs = theMapping.getValues();
-		const auto techsByLimit = std::make_pair(theMapping.getLimit(), techs);
+	Mappers::TechMapping::Factory techMappingFactory;
 
-		auto [itr, inserted] = mappings.insert(std::make_pair(theMapping.getKey(), std::map{techsByLimit}));
+	registerKeyword("link", [this, &techMappingFactory](std::istream& theStream) {
+		const auto theMapping = techMappingFactory.importTechMapping(theStream);
+		const auto& techs = theMapping->getTechs();
+		const auto techsByLimit = std::make_pair(theMapping->getLimit(), techs);
+
+		auto [itr, inserted] = mappings.insert(std::make_pair(theMapping->getVic2Item(), std::map{techsByLimit}));
 		if (!inserted)
 		{
 			auto [itr2, inserted2] = itr->second.insert(techsByLimit);

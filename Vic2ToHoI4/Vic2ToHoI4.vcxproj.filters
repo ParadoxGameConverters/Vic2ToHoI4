@@ -1141,6 +1141,9 @@
     <ClCompile Include="Source\Mappers\Technology\TechMapper.cpp">
       <Filter>Mappers\Technology</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Mappers\Technology\TechMappingFactory.cpp">
+      <Filter>Mappers\Technology</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2218,6 +2221,12 @@
     </ClInclude>
     <ClInclude Include="Source\Configuration.h" />
     <ClInclude Include="Source\Mappers\Technology\TechMapper.h">
+      <Filter>Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Technology\TechMapping.h">
+      <Filter>Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Technology\TechMappingFactory.h">
       <Filter>Mappers\Technology</Filter>
     </ClInclude>
   </ItemGroup>
