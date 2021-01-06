@@ -1,5 +1,6 @@
 #include "HOI4World/Technologies.h"
 #include "Mappers/Technology/TechMapper.h"
+#include "Mappers/Technology/TechMapperFactory.h"
 #include "Mappers/Technology/TechMappingBuilder.h"
 #include "OutHoi4/OutTechnologies.h"
 #include "gtest/gtest.h"
@@ -13,45 +14,13 @@ class HoI4World_technologiesTests: public ::testing::Test
 	HoI4World_technologiesTests();
 
 	std::unique_ptr<mappers::techMapper> theTechMapper;
+	std::unique_ptr<Mappers::TechMapper> techMapper;
 };
 
 
 HoI4World_technologiesTests::HoI4World_technologiesTests()
 {
-	std::vector<Mappers::TechMapping> techMappings{
-		 *Mappers::TechMapping::Builder{}
-				.setVic2Requirements({"Vic2_tech"})
-				.setTechs({"HoI4_tech1", "HoI4_tech2"})
-				.Build(),
-		 *Mappers::TechMapping::Builder{}
-				.setVic2Requirements({"Vic2_invention"})
-				.setTechs({"HoI4_tech2", "HoI4_tech3"})
-				.Build(),
-		 *Mappers::TechMapping::Builder{}
-				.setVic2Requirements({"Vic2_nonMtgNavalTech"})
-				.setLimit("not = { has_dlc = \"Man the Guns\" }")
-				.setTechs({"HoI4_nonMtgNavalTech1", "HoI4_nonMtgNavalTech2"})
-				.Build(),
-		 *Mappers::TechMapping::Builder{}
-				.setVic2Requirements({"Vic2_nonMtgNavalInvention"})
-				.setLimit("not = { has_dlc = \"Man the Guns\" }")
-				.setTechs({"HoI4_nonMtgNavalTech2", "HoI4_nonMtgNavalTech3"})
-				.Build(),
-		 *Mappers::TechMapping::Builder{}
-				.setVic2Requirements({"Vic2_mtgNavalTech"})
-				.setLimit("has_dlc = \"Man the Guns\"")
-				.setTechs({"HoI4_mtgNavalTech1", "HoI4_mtgNavalTech2"})
-				.Build(),
-		 *Mappers::TechMapping::Builder{}
-				.setVic2Requirements({"Vic2_mtgNavalInvention"})
-				.setLimit("has_dlc = \"Man the Guns\"")
-				.setTechs({"HoI4_mtgNavalTech2", "HoI4_mtgNavalTech3"})
-				.Build(),
-		 *Mappers::TechMapping::Builder{}
-				.setVic2Requirements({"requirement1", "requirement2"})
-				.setTechs({"test_tech1", "test_tech2"})
-				.Build(),
-	};
+	techMapper = Mappers::TechMapper::Factory{}.importTechMapper();
 
 	std::map<std::string, std::map<std::string, float>> researchBonusMappings;
 	std::map<std::string, float> researchBonuses;
@@ -63,14 +32,14 @@ HoI4World_technologiesTests::HoI4World_technologiesTests()
 	researchBonuses2.insert(std::make_pair("bonus3_doctrine", 70));
 	researchBonusMappings.insert(std::make_pair("Vic2_invention", researchBonuses2));
 
-	theTechMapper = std::make_unique<mappers::techMapper>(techMappings, researchBonusMappings);
+	theTechMapper = std::make_unique<mappers::techMapper>(std::vector<Mappers::TechMapping>{}, researchBonusMappings);
 }
 
 
 TEST_F(HoI4World_technologiesTests, noVic2TechsOrInventionsGiveNoHoI4Techs)
 {
 	const std::set<std::string> oldTechsAndInventions;
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputTechnology(theTechnologies, outputStream);
@@ -86,7 +55,7 @@ TEST_F(HoI4World_technologiesTests, nonMatchingVic2TechsOrInventionsGiveNoHoI4Te
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("nonMatchingTech");
 	oldTechsAndInventions.insert("nonMatchingInvention");
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputTechnology(theTechnologies, outputStream);
@@ -101,7 +70,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2TechGivesHoI4Techs)
 {
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("Vic2_tech");
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputTechnology(theTechnologies, outputStream);
@@ -121,7 +90,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2InventionGivesHoI4Techs)
 {
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("Vic2_invention");
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputTechnology(theTechnologies, outputStream);
@@ -142,7 +111,7 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachTech)
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("Vic2_tech");
 	oldTechsAndInventions.insert("Vic2_invention");
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputTechnology(theTechnologies, outputStream);
@@ -163,7 +132,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2TechGivesNonMtgNavalTechs)
 {
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("Vic2_nonMtgNavalTech");
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputTechnology(theTechnologies, outputStream);
@@ -186,7 +155,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2InventionGivesNonMtgNavalTechs)
 {
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("Vic2_nonMtgNavalInvention");
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputTechnology(theTechnologies, outputStream);
@@ -210,7 +179,7 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachNonMtgNavalTech)
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("Vic2_nonMtgNavalTech");
 	oldTechsAndInventions.insert("Vic2_nonMtgNavalInvention");
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputTechnology(theTechnologies, outputStream);
@@ -234,7 +203,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2TechGivesMtgNavalTechs)
 {
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("Vic2_mtgNavalTech");
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputTechnology(theTechnologies, outputStream);
@@ -257,7 +226,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2InventionGivesMtgNavalTechs)
 {
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("Vic2_mtgNavalInvention");
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputTechnology(theTechnologies, outputStream);
@@ -281,7 +250,7 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachMtgNavalTech)
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("Vic2_mtgNavalTech");
 	oldTechsAndInventions.insert("Vic2_mtgNavalInvention");
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputTechnology(theTechnologies, outputStream);
@@ -304,7 +273,7 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachMtgNavalTech)
 TEST_F(HoI4World_technologiesTests, MultipleVic2RequirementsCanBeRequired)
 {
 	std::set<std::string> oldTechsAndInventions{"requirement1"};
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputTechnology(theTechnologies, outputStream);
@@ -318,7 +287,7 @@ TEST_F(HoI4World_technologiesTests, MultipleVic2RequirementsCanBeRequired)
 TEST_F(HoI4World_technologiesTests, MultipleVic2RequirementsCanSucceed)
 {
 	std::set<std::string> oldTechsAndInventions{"requirement1", "requirement2"};
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputTechnology(theTechnologies, outputStream);
@@ -337,7 +306,7 @@ TEST_F(HoI4World_technologiesTests, MultipleVic2RequirementsCanSucceed)
 TEST_F(HoI4World_technologiesTests, noVic2TechsOrInventionsGiveNoResearchBonuses)
 {
 	const std::set<std::string> oldTechsAndInventions;
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputResearchBonuses(theTechnologies, outputStream);
@@ -353,7 +322,7 @@ TEST_F(HoI4World_technologiesTests, nonMatchingVic2TechsOrInventionsGiveNoResear
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("nonMatchingTech");
 	oldTechsAndInventions.insert("nonMatchingInvention");
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputResearchBonuses(theTechnologies, outputStream);
@@ -368,7 +337,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2TechGivesResearchBonuses)
 {
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("Vic2_tech");
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputResearchBonuses(theTechnologies, outputStream);
@@ -385,7 +354,7 @@ TEST_F(HoI4World_technologiesTests, matchingVic2InventionGivesResearchBonuses)
 {
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("Vic2_invention");
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputResearchBonuses(theTechnologies, outputStream);
@@ -403,7 +372,7 @@ TEST_F(HoI4World_technologiesTests, onlyOneInstanceOfEachResearchBonuses)
 	std::set<std::string> oldTechsAndInventions;
 	oldTechsAndInventions.insert("Vic2_tech");
 	oldTechsAndInventions.insert("Vic2_invention");
-	HoI4::technologies theTechnologies(*theTechMapper, oldTechsAndInventions);
+	HoI4::technologies theTechnologies(*techMapper, *theTechMapper, oldTechsAndInventions);
 
 	std::stringstream outputStream;
 	outputResearchBonuses(theTechnologies, outputStream);

@@ -1,11 +1,12 @@
 #include "Technologies.h"
 
 
-#pragma optimize("",off)
-HoI4::technologies::technologies(const mappers::techMapper& theTechMapper,
+
+HoI4::technologies::technologies(const Mappers::TechMapper& techMapper,
+	 const mappers::techMapper& theTechMapper,
 	 const std::set<std::string>& oldTechnologiesAndInventions)
 {
-	for (const auto& techMapping: theTechMapper.getAllTechMappings())
+	for (const auto& techMapping: techMapper.getAllTechMappings())
 	{
 		bool requirementViolated = false;
 		for (const auto& requirement: techMapping.getVic2Requirements())
@@ -43,7 +44,7 @@ HoI4::technologies::technologies(const mappers::techMapper& theTechMapper,
 		}
 	}
 }
-#pragma optimize("", on)
+
 
 int HoI4::technologies::getTechnologyCount() const
 {

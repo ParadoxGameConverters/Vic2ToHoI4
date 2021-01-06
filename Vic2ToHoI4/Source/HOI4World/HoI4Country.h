@@ -98,7 +98,7 @@ class Country
 		 const HoI4::States& theStates,
 		 const mappers::ProvinceMapper& provinceMapper,
 		 const Configuration& theConfiguration);
-	void convertTechnology(const mappers::techMapper& theTechMapper);
+	void convertTechnology(const Mappers::TechMapper& techMapper, const mappers::techMapper& theTechMapper);
 	void addState(const State& state);
 	void calculateIndustry(const std::map<int, State>& allStates);
 	void addGenericFocusTree(const std::set<std::string>& majorIdeologies);

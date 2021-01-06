@@ -1,0 +1,46 @@
+link = {
+	vic2 = Vic2_tech
+	hoi4 = HoI4_tech1
+	hoi4 = HoI4_tech2
+}
+
+link = {
+	vic2 = Vic2_invention
+	hoi4 = HoI4_tech2
+	hoi4 = HoI4_tech3
+}
+
+link = {
+	vic2 = Vic2_nonMtgNavalTech
+	limit = R"(not = { has_dlc = "Man the Guns" })"
+	hoi4 = HoI4_nonMtgNavalTech1
+	hoi4 = HoI4_nonMtgNavalTech2
+}
+
+link = {
+	vic2 = Vic2_nonMtgNavalInvention
+	limit = R"(not = { has_dlc = "Man the Guns" })"
+	hoi4 = HoI4_nonMtgNavalTech2
+	hoi4 = HoI4_nonMtgNavalTech3
+}
+
+link = {
+	vic2 = Vic2_mtgNavalTech
+	limit = R"(has_dlc = "Man the Guns")"
+	hoi4 = HoI4_mtgNavalTech1
+	hoi4 = HoI4_mtgNavalTech2
+}
+
+link = {
+	vic2 = Vic2_mtgNavalInvention
+	limit = R"(has_dlc = "Man the Guns")"
+	hoi4 = HoI4_mtgNavalTech2
+	hoi4 = HoI4_mtgNavalTech3
+}
+
+link = {
+	vic2 = requirement1
+	vic2 = requirement2
+	hoi4 = test_tech1
+	hoi4 = test_tech2
+}

@@ -11,8 +11,28 @@
 
 
 
+namespace Mappers
+{
+	
+class TechMapper
+{
+  public:
+	class Factory;
+
+	[[nodiscard]] auto getAllTechMappings() const { return techMappings; }
+
+private:
+	std::vector<TechMapping> techMappings;
+};
+	
+}
+
+
+
 namespace mappers
 {
+
+	
 
 class techMapper: commonItems::parser
 {

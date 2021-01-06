@@ -34,31 +34,6 @@ researchBonusMapping::researchBonusMapping(std::istream& theStream)
 }
 
 
-class techMap: commonItems::parser
-{
-  public:
-	explicit techMap(std::istream& theStream);
-
-	auto getMappings() const { return mappings; }
-
-  private:
-	std::vector<Mappers::TechMapping> mappings;
-};
-
-
-techMap::techMap(std::istream& theStream)
-{
-	Mappers::TechMapping::Factory techMappingFactory;
-
-	registerKeyword("link", [this, &techMappingFactory](std::istream& theStream) {
-		const auto theMapping = techMappingFactory.importTechMapping(theStream);
-		mappings.push_back(*theMapping);
-	});
-
-	parseStream(theStream);
-}
-
-
 class researchBonusMap: commonItems::parser
 {
   public:
@@ -87,10 +62,6 @@ mappers::techMapperFile::techMapperFile()
 	std::vector<Mappers::TechMapping> techMappings;
 	std::map<std::string, std::map<std::string, float>> researchBonusMappings;
 
-	registerKeyword("tech_map", [this, &techMappings](std::istream& theStream) {
-		techMap theTechMap(theStream);
-		techMappings = theTechMap.getMappings();
-	});
 	registerKeyword("bonus_map", [this, &researchBonusMappings](std::istream& theStream) {
 		researchBonusMap theBonusMap(theStream);
 		researchBonusMappings = theBonusMap.getMappings();

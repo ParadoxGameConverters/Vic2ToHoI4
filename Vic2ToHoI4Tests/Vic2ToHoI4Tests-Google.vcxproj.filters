@@ -60,9 +60,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\VersionedMappings.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
     </ClCompile>
-    <ClCompile Include="MapperTests\TechMapperTests.cpp">
-      <Filter>MapperTests</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
     </ClCompile>
@@ -1353,6 +1350,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingFactory.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\Technology</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapperFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\Technology\TechMapperTests.cpp">
+      <Filter>MapperTests\Technology</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1754,6 +1757,12 @@
     <Filter Include="MapperTests\Technology">
       <UniqueIdentifier>{0f41756a-e6a6-459a-95aa-2cbc1358e81f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TestFiles\Mappers">
+      <UniqueIdentifier>{f128d030-674c-4180-a7ba-dc676a834561}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Mappers\Technology">
+      <UniqueIdentifier>{aad5af90-c048-426c-87e3-6ba4cbe1281a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2004,5 +2013,10 @@
     <CopyFileToFolders Include="TestFiles\World\MoveArmiesWorld.v2">
       <Filter>TestFiles\World</Filter>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TestFiles\Mappers\Technology\tech_mappings.txt">
+      <Filter>TestFiles\Mappers\Technology</Filter>
+    </Text>
   </ItemGroup>
 </Project>
