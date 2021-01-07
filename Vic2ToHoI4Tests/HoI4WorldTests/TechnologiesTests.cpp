@@ -1,4 +1,6 @@
 #include "HOI4World/Technologies.h"
+#include "Mappers/Technology/ResearchBonusMapping.h"
+#include "Mappers/Technology/ResearchBonusMappingFactory.h"
 #include "Mappers/Technology/TechMapper.h"
 #include "Mappers/Technology/TechMapperFactory.h"
 #include "Mappers/Technology/TechMappingBuilder.h"
@@ -22,15 +24,18 @@ HoI4World_technologiesTests::HoI4World_technologiesTests()
 {
 	techMapper = Mappers::TechMapper::Factory{}.importTechMapper();
 
-	std::map<std::string, std::map<std::string, float>> researchBonusMappings;
-	std::map<std::string, float> researchBonuses;
-	researchBonuses.insert(std::make_pair("bonus1_doctrine", 50));
-	researchBonuses.insert(std::make_pair("bonus2_doctrine", 60));
-	researchBonusMappings.insert(std::make_pair("Vic2_tech", researchBonuses));
-	std::map<std::string, float> researchBonuses2;
-	researchBonuses2.insert(std::make_pair("bonus2_doctrine", 60));
-	researchBonuses2.insert(std::make_pair("bonus3_doctrine", 70));
-	researchBonusMappings.insert(std::make_pair("Vic2_invention", researchBonuses2));
+	std::vector<Mappers::ResearchBonusMapping> researchBonusMappings;
+
+	std::stringstream input1;
+	input1 << "vic2 = Vic2_tech\n";
+	input1 << "bonus1_doctrine = 50\n";
+	input1 << "bonus2_doctrine = 60\n";
+	researchBonusMappings.push_back(*Mappers::ResearchBonusMapping::Factory{}.importResearchBonusMapping(input1));
+	std::stringstream input2;
+	input2 << "vic2 = Vic2_invention\n";
+	input2 << "bonus2_doctrine = 60\n";
+	input2 << "bonus3_doctrine = 70\n";
+	researchBonusMappings.push_back(*Mappers::ResearchBonusMapping::Factory{}.importResearchBonusMapping(input2));
 
 	theTechMapper = std::make_unique<mappers::techMapper>(std::vector<Mappers::TechMapping>{}, researchBonusMappings);
 }

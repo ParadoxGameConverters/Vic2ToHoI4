@@ -104,6 +104,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMappingFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\ResearchBonusMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingFactory.cpp" />
@@ -445,6 +446,7 @@
     <ClCompile Include="MapperTests\CountryName\CountryNameMappingTests.cpp" />
     <ClCompile Include="MapperTests\FlagsToIdeasMapperTests.cpp" />
     <ClCompile Include="MapperTests\FlagToIdeaMappingTests.cpp" />
+    <ClCompile Include="MapperTests\Technology\ResearchBonusMappingTests.cpp" />
     <ClCompile Include="MapperTests\Technology\TechMapperTests.cpp" />
     <ClCompile Include="MapperTests\Technology\TechMappingTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Ai\AIStrategyTests.cpp" />

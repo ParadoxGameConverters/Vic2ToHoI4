@@ -3,6 +3,7 @@
 
 
 #include "Parser.h"
+#include "ResearchBonusMapping.h"
 #include "TechMapping.h"
 #include <map>
 #include <memory>
@@ -13,7 +14,7 @@
 
 namespace Mappers
 {
-	
+
 class TechMapper
 {
   public:
@@ -21,24 +22,22 @@ class TechMapper
 
 	[[nodiscard]] auto getAllTechMappings() const { return techMappings; }
 
-private:
+  private:
 	std::vector<TechMapping> techMappings;
 };
-	
-}
+
+} // namespace Mappers
 
 
 
 namespace mappers
 {
 
-	
-
 class techMapper: commonItems::parser
 {
   public:
 	techMapper(const std::vector<Mappers::TechMapping>& _techMap,
-		 const std::map<std::string, std::map<std::string, float>>& _researchBonusMap):
+		 const std::vector<Mappers::ResearchBonusMapping>& _researchBonusMap):
 		 techMap(_techMap),
 		 researchBonusMap(_researchBonusMap){};
 	~techMapper() = default;
@@ -53,7 +52,7 @@ class techMapper: commonItems::parser
 	techMapper& operator=(techMapper&&) = delete;
 
 	std::vector<Mappers::TechMapping> techMap;
-	std::map<std::string, std::map<std::string, float>> researchBonusMap;
+	std::vector<Mappers::ResearchBonusMapping> researchBonusMap;
 };
 
 

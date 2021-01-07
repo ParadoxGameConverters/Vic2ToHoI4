@@ -1,37 +1,9 @@
 #include "TechMapper.h"
-#include "CommonRegexes.h"
 #include "ParserHelpers.h"
+#include "ResearchBonusMapping.h"
+#include "ResearchBonusMappingFactory.h"
 #include "TechMappingFactory.h"
 
-
-
-class researchBonusMapping: commonItems::parser
-{
-  public:
-	explicit researchBonusMapping(std::istream& theStream);
-
-	auto getKey() const { return key; }
-	auto getValues() const { return values; }
-
-  private:
-	std::string key;
-	std::map<std::string, float> values;
-};
-
-
-researchBonusMapping::researchBonusMapping(std::istream& theStream)
-{
-	registerKeyword("vic2", [this](std::istream& theStream) {
-		commonItems::singleString theKey(theStream);
-		key = theKey.getString();
-	});
-	registerRegex(commonItems::catchallRegex, [this](const std::string& valueName, std::istream& theStream) {
-		commonItems::singleDouble aValue(theStream);
-		values.insert(std::make_pair(valueName, aValue.getDouble()));
-	});
-
-	parseStream(theStream);
-}
 
 
 class researchBonusMap: commonItems::parser
@@ -42,15 +14,17 @@ class researchBonusMap: commonItems::parser
 	auto getMappings() const { return mappings; }
 
   private:
-	std::map<std::string, std::map<std::string, float>> mappings;
+	std::vector<Mappers::ResearchBonusMapping> mappings;
 };
 
 
 researchBonusMap::researchBonusMap(std::istream& theStream)
 {
-	registerKeyword("link", [this](std::istream& theStream) {
-		researchBonusMapping theMapping(theStream);
-		mappings.insert(make_pair(theMapping.getKey(), theMapping.getValues()));
+	Mappers::ResearchBonusMapping::Factory researchBonusMappingFactory;
+
+	registerKeyword("link", [this, &researchBonusMappingFactory](std::istream& theStream) {
+		const auto theMapping = researchBonusMappingFactory.importResearchBonusMapping(theStream);
+		mappings.push_back(*theMapping);
 	});
 
 	parseStream(theStream);
@@ -60,7 +34,7 @@ researchBonusMap::researchBonusMap(std::istream& theStream)
 mappers::techMapperFile::techMapperFile()
 {
 	std::vector<Mappers::TechMapping> techMappings;
-	std::map<std::string, std::map<std::string, float>> researchBonusMappings;
+	std::vector<Mappers::ResearchBonusMapping> researchBonusMappings;
 
 	registerKeyword("bonus_map", [this, &researchBonusMappings](std::istream& theStream) {
 		researchBonusMap theBonusMap(theStream);

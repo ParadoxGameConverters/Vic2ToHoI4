@@ -1,12 +1,11 @@
-#include <gmock/gmock-matchers.h>
-
 #include "Mappers/Technology/TechMapping.h"
 #include "Mappers/Technology/TechMappingFactory.h"
+#include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 
 
 
-TEST(Vic2World_AI_Strategy_Tests, Vic2RequirementsDefaultsToEmpty)
+TEST(Mappers_TechMappingTests, Vic2RequirementsDefaultsToEmpty)
 {
 	std::stringstream input;
 	const auto mapping = Mappers::TechMapping::Factory{}.importTechMapping(input);
@@ -15,7 +14,7 @@ TEST(Vic2World_AI_Strategy_Tests, Vic2RequirementsDefaultsToEmpty)
 }
 
 
-TEST(Vic2World_AI_Strategy_Tests, Vic2RequirementsCanBeSet)
+TEST(Mappers_TechMappingTests, Vic2RequirementsCanBeSet)
 {
 	std::stringstream input;
 	input << "vic2 = test_item\n";
@@ -26,7 +25,7 @@ TEST(Vic2World_AI_Strategy_Tests, Vic2RequirementsCanBeSet)
 }
 
 
-TEST(Vic2World_AI_Strategy_Tests, LimitDefaultsToEmpty)
+TEST(Mappers_TechMappingTests, LimitDefaultsToEmpty)
 {
 	std::stringstream input;
 	const auto mapping = Mappers::TechMapping::Factory{}.importTechMapping(input);
@@ -35,7 +34,7 @@ TEST(Vic2World_AI_Strategy_Tests, LimitDefaultsToEmpty)
 }
 
 
-TEST(Vic2World_AI_Strategy_Tests, LimitCanBeSet)
+TEST(Mappers_TechMappingTests, LimitCanBeSet)
 {
 	std::stringstream input;
 	input << "limit = test_limit";
@@ -45,7 +44,7 @@ TEST(Vic2World_AI_Strategy_Tests, LimitCanBeSet)
 }
 
 
-TEST(Vic2World_AI_Strategy_Tests, TechsDefaultToEmpty)
+TEST(Mappers_TechMappingTests, TechsDefaultToEmpty)
 {
 	std::stringstream input;
 	const auto mapping = Mappers::TechMapping::Factory{}.importTechMapping(input);
@@ -54,7 +53,7 @@ TEST(Vic2World_AI_Strategy_Tests, TechsDefaultToEmpty)
 }
 
 
-TEST(Vic2World_AI_Strategy_Tests, TechsCanBeSet)
+TEST(Mappers_TechMappingTests, TechsCanBeSet)
 {
 	std::stringstream input;
 	input << "hoi4 = test_tech\n";

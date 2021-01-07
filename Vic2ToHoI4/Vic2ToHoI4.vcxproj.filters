@@ -1147,6 +1147,9 @@
     <ClCompile Include="Source\Mappers\Technology\TechMapperFactory.cpp">
       <Filter>Mappers\Technology</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Mappers\Technology\ResearchBonusMappingFactory.cpp">
+      <Filter>Mappers\Technology</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2237,6 +2240,15 @@
     </ClInclude>
     <ClInclude Include="Source\Mappers\Technology\TechMapperFactory.h">
       <Filter>Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Technology\ResearchBonusMapping.h">
+      <Filter>Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Technology\ResearchBonusMappingFactory.h">
+      <Filter>Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common_items\CommonRegexes.h">
+      <Filter>CommonItems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -20024,13 +20036,9 @@
     <CopyFileToFolders Include="Data_Files\flags\ZAM_republic.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\tech_mappings.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Data_Files\configurables\tech_mappings.txt">
-      <Filter>Data Files\Configurables</Filter>
-    </Text>
   </ItemGroup>
 </Project>

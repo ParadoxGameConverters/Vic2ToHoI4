@@ -35,12 +35,23 @@ HoI4::technologies::technologies(const Mappers::TechMapper& techMapper,
 
 	for (const auto& bonusMapping: theTechMapper.getAllResearchBonuses())
 	{
-		if (oldTechnologiesAndInventions.contains(bonusMapping.first))
+		bool requirementViolated = false;
+		for (const auto& requirement: bonusMapping.getVic2Requirements())
 		{
-			for (const auto& bonus: bonusMapping.second)
+			if (!oldTechnologiesAndInventions.contains(requirement))
 			{
-				setResearchBonus(bonus.first, bonus.second);
+				requirementViolated = true;
+				break;
 			}
+		}
+		if (requirementViolated)
+		{
+			continue;
+		}
+
+		for (const auto& bonus: bonusMapping.getResearchBonuses())
+		{
+			setResearchBonus(bonus.first, bonus.second);
 		}
 	}
 }
@@ -51,7 +62,7 @@ int HoI4::technologies::getTechnologyCount() const
 	int totalTechnologies = 0;
 	for (const auto& [unused, technologies]: technologiesByLimits)
 	{
-		totalTechnologies += technologies.size();
+		totalTechnologies += static_cast<int>(technologies.size());
 	}
 
 	return totalTechnologies;
