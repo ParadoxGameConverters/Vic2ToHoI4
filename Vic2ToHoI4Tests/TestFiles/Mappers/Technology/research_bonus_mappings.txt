@@ -1,0 +1,17 @@
+link = {
+	vic2 = Vic2_tech
+	bonus1_doctrine = 50
+	bonus2_doctrine = 60
+}
+
+link = {
+	vic2 = Vic2_invention
+	bonus2_doctrine = 60
+	bonus3_doctrine = 70
+}
+
+link = {
+	vic2 = Vic2_invention
+	vic2 = Vic2_invention2
+	bonus4_doctrine = 80
+}

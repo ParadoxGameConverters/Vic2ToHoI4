@@ -19,7 +19,11 @@ class technologies::Builder
 
 	Builder& addTechnology(const std::string& technology)
 	{
-		theTechnologies->mainTechnologies.insert(technology);
+		auto [itr, inserted] = theTechnologies->technologiesByLimits.insert(std::make_pair("", std::set{technology}));
+		if (!inserted)
+		{
+			itr->second.insert(technology);
+		}
 		return *this;
 	}
 

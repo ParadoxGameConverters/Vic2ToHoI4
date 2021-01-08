@@ -1,0 +1,18 @@
+#include "TechMapperFactory.h"
+
+
+
+Mappers::TechMapper::Factory::Factory()
+{
+	registerKeyword("link", [this](std::istream& theStream) {
+		techMapper->techMappings.push_back(*techMappingFactory.importTechMapping(theStream));
+	});
+}
+
+
+std::unique_ptr<Mappers::TechMapper> Mappers::TechMapper::Factory::importTechMapper()
+{
+	techMapper = std::make_unique<TechMapper>();
+	parseFile("Configurables/tech_mappings.txt");
+	return std::move(techMapper);
+}

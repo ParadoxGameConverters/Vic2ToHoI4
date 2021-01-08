@@ -120,6 +120,10 @@ set(MAPPER_COUNTRYNAME_SOURCES ${MAPPER_COUNTRYNAME_SOURCES} "${PROJECT_SOURCE_D
 set(MAPPER_COUNTRYNAME_SOURCES ${MAPPER_COUNTRYNAME_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/CountryName/CountryNameMappingFactory.cpp")
 file(GLOB FLAG_TO_IDEA_MAPPER_SOURCES "${PROJECT_SOURCE_DIR}/Mappers/FlagsToIdeas/*.cpp")
 file(GLOB PROVINCE_MAPPER_SOURCES "${PROJECT_SOURCE_DIR}/Mappers/Provinces/*.cpp")
+set(MAPPER_TECHNOLOGY_SOURCES ${MAPPER_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Technology/ResearchBonusMappingFactory.cpp")
+set(MAPPER_TECHNOLOGY_SOURCES ${MAPPER_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Technology/ResearchBonusMapperFactory.cpp")
+set(MAPPER_TECHNOLOGY_SOURCES ${MAPPER_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Technology/TechMapperFactory.cpp")
+set(MAPPER_TECHNOLOGY_SOURCES ${MAPPER_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Technology/TechMappingFactory.cpp")
 file(GLOB MAPPER_VERSIONPARSER_SOURCES "${PROJECT_SOURCE_DIR}/Mappers/VersionParser/*.cpp")
 file(GLOB OUTHOI4_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/*.cpp")
 set(OUTHOI4_AI_STRATEGY_SOURCES ${OUTHOI4_AI_STRATEGY_SOURCES} "${PROJECT_SOURCE_DIR}/OutHoi4/AiStrategy/OutAiStrategy.cpp")
@@ -252,6 +256,7 @@ add_executable(
 	${HOI4WORLD_WAR_CREATOR_SOURCES}
 	${MAPPER_SOURCES}
 	${MAPPER_COUNTRYNAME_SOURCES}
+	${MAPPER_TECHNOLOGY_SOURCES}
 	${FLAG_TO_IDEA_MAPPER_SOURCES}
 	${PROVINCE_MAPPER_SOURCES}
 	${MAPPER_VERSIONPARSER_SOURCES}
@@ -301,40 +306,41 @@ set_target_properties( Vic2ToHoi4Converter
     RUNTIME_OUTPUT_DIRECTORY ${CONVERTER_OUTPUT_DIRECTORY}
 )
 configure_file("${DATA_FILE_DIR}/configuration-example.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configuration-example.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/RME_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/CodenamesOperatives/RME_operative_codenames.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ArticleRules.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/Localisations/ArticleRules.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/StateCategories.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/Localisations/StateCategories.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/regions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/Map/regions.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CultureToVoiceMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/Sounds/CultureToVoiceMappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ai_peaces.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/ai_peaces.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/converterFocuses.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/converterFocuses.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/converterIdeas.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/converterIdeas.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/converterIdeologies.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/converterIdeologies.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/converterLeaderTraits.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/converterLeaderTraits.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/CountryNamesMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/CountryNamesMappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/country_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/country_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/cultureGroupToGraphics.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/cultureGroupToGraphics.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/FlagsToIdeasMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/FlagsToIdeasMappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/foreignInfluenceDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/foreignInfluenceDecisions.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/governmentMapping.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/governmentMapping.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Historical Project Mod 0.4.6_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/Historical Project Mod 0.4.6_province_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/HoI4CountryLeaders.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/HoI4CountryLeaders.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ideologicalAdvisors.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/ideologicalAdvisors.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ideologicalDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/ideologicalDecisions.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/ideologicalIdeas.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/ideologicalIdeas.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/IntelligenceAgencyLogos.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/IntelligenceAgencyLogos.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/languageReplacements.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/languageReplacements.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/merge_nations.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/merge_nations.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/names.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/names.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/OperativeNamesMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/OperativeNamesMappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/positions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/positions.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/province_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Resources.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/Resources.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/shipTypes.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/shipTypes.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/tech_mapping.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/tech_mapping.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/The Concert of Europe_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/The Concert of Europe_province_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/unit_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/unit_mappings.txt" COPYONLY)
-configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations.csv" "${CONVERTER_OUTPUT_DIRECTORY}/configurables/Vic2Localisations.csv" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/RME_operative_codenames.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CodenamesOperatives/RME_operative_codenames.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/ArticleRules.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Localisations/ArticleRules.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/StateCategories.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Localisations/StateCategories.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/regions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Map/regions.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CultureToVoiceMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Sounds/CultureToVoiceMappings.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/ai_peaces.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ai_peaces.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/converterFocuses.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterFocuses.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/converterIdeas.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterIdeas.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/converterIdeologies.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterIdeologies.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/converterLeaderTraits.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterLeaderTraits.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CountryNamesMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CountryNamesMappings.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/country_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/country_mappings.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/cultureGroupToGraphics.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/cultureGroupToGraphics.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/FlagsToIdeasMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/FlagsToIdeasMappings.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/foreignInfluenceDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/foreignInfluenceDecisions.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/governmentMapping.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/governmentMapping.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/Historical Project Mod 0.4.6_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Historical Project Mod 0.4.6_province_mappings.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/HoI4CountryLeaders.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/HoI4CountryLeaders.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/ideologicalAdvisors.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalAdvisors.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/ideologicalDecisions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalDecisions.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/ideologicalIdeas.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/ideologicalIdeas.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/IntelligenceAgencyLogos.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/IntelligenceAgencyLogos.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/languageReplacements.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/languageReplacements.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/merge_nations.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/merge_nations.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/names.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/names.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/OperativeNamesMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/OperativeNamesMappings.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/positions.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/positions.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/province_mappings.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/Resources.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Resources.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/shipTypes.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/shipTypes.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/research_bonus_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/research_bonus_mappings.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/tech_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/tech_mappings.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/The Concert of Europe_province_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/The Concert of Europe_province_mappings.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/unit_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/unit_mappings.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/Vic2Localisations.csv" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/Vic2Localisations.csv" COPYONLY)
 add_custom_command(TARGET Vic2ToHoi4Converter POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND chmod u+x Vic2ToHoI4/Copy_Files.sh)
 add_custom_command(TARGET Vic2ToHoi4Converter POST_BUILD WORKING_DIRECTORY ${CMAKE_SOURCE_DIR} COMMAND Vic2ToHoI4/Copy_Files.sh)
 
@@ -382,6 +388,10 @@ file(GLOB HOI4WORLD_STATES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4WorldTests/Stat
 file(GLOB MAPPER_TESTS_SOURCES "${TEST_SOURCE_DIR}/MapperTests/*.cpp")
 set(MAPPER_COUNTRYNAME_TESTS_SOURCES ${MAPPER_COUNTRYNAME_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/CountryName/CountryNameMapperTests.cpp")
 set(MAPPER_COUNTRYNAME_TESTS_SOURCES ${MAPPER_COUNTRYNAME_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/CountryName/CountryNameMappingTests.cpp")
+set(MAPPER_TECHNOLOGY_TESTS_SOURCES ${MAPPER_TECHNOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Technology/ResearchBonusMapperTests.cpp")
+set(MAPPER_TECHNOLOGY_TESTS_SOURCES ${MAPPER_TECHNOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Technology/ResearchBonusMappingTests.cpp")
+set(MAPPER_TECHNOLOGY_TESTS_SOURCES ${MAPPER_TECHNOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Technology/TechMapperTests.cpp")
+set(MAPPER_TECHNOLOGY_TESTS_SOURCES ${MAPPER_TECHNOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Technology/TechMappingTests.cpp")
 set(VIC2WORLD_AI_TESTS_SOURCES ${VIC2WORLD_AI_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Ai/AIStrategyTests.cpp")
 set(VIC2WORLD_AI_TESTS_SOURCES ${VIC2WORLD_AI_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Ai/AITests.cpp")
 set(VIC2WORLD_COUNTRIES_TESTS_SOURCES ${VIC2WORLD_COUNTRIES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/Vic2WorldTests/Countries/CommonCountriesDataFactoryTests.cpp")
@@ -467,6 +477,7 @@ add_executable(
 	${HOI4WORLD_WAR_CREATOR_SOURCES}
 	${MAPPER_SOURCES}
 	${MAPPER_COUNTRYNAME_SOURCES}
+	${MAPPER_TECHNOLOGY_SOURCES}
 	${FLAG_TO_IDEA_MAPPER_SOURCES}
 	${PROVINCE_MAPPER_SOURCES}
 	${MAPPER_VERSIONPARSER_SOURCES}
@@ -538,6 +549,7 @@ add_executable(
 	${HOI4WORLD_STATES_TESTS_SOURCES}
 	${MAPPER_TESTS_SOURCES}
 	${MAPPER_COUNTRYNAME_TESTS_SOURCES}
+	${MAPPER_TECHNOLOGY_TESTS_SOURCES}
 	${VIC2WORLD_AI_TESTS_SOURCES}
 	${VIC2WORLD_COUNTRIES_TESTS_SOURCES}
 	${VIC2WORLD_CULTURE_TESTS_SOURCES}
@@ -597,6 +609,8 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ConverterLocalisations.t
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/EmptyLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/BlankLocalisations/localisation/EmptyLocalisations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ModLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/modLocalisations/localisation/ModLocalisations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/StateCategories.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/Localisations/StateCategories.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Technology/research_bonus_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/research_bonus_mappings.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Technology/tech_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/tech_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/DirectoryMissing.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/DirectoryMissing.mod" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/DirectoryUnspecified.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/DirectoryUnspecified.mod" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/dummy.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/test_directory/dummy.txt" COPYONLY)

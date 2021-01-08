@@ -20,7 +20,7 @@
 #include "Mappers/GovernmentMapper.h"
 #include "Mappers/GraphicsMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
-#include "Mappers/TechMapper.h"
+#include "Mappers/Technology/TechMapper.h"
 #include "Military/Airplane.h"
 #include "Military/HoI4Army.h"
 #include "MilitaryMappings/MtgUnitMappings.h"
@@ -98,7 +98,7 @@ class Country
 		 const HoI4::States& theStates,
 		 const mappers::ProvinceMapper& provinceMapper,
 		 const Configuration& theConfiguration);
-	void convertTechnology(const mappers::techMapper& theTechMapper);
+	void convertTechnology(const Mappers::TechMapper& techMapper, const Mappers::ResearchBonusMapper& theTechMapper);
 	void addState(const State& state);
 	void calculateIndustry(const std::map<int, State>& allStates);
 	void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
@@ -169,7 +169,7 @@ class Country
 		}
 		else
 		{
-			return static_cast<size_t>(0);
+			return 0;
 		}
 	}
 	[[nodiscard]] const std::optional<technologies>& getTechnologies() const { return theTechnologies; }
