@@ -14,15 +14,15 @@ class HoI4World_technologiesTests: public ::testing::Test
   protected:
 	HoI4World_technologiesTests();
 
-	std::unique_ptr<Mappers::ResearchBonusMapper> researchBonusMapper;
 	std::unique_ptr<Mappers::TechMapper> techMapper;
+	std::unique_ptr<Mappers::ResearchBonusMapper> researchBonusMapper;
 };
 
 
-HoI4World_technologiesTests::HoI4World_technologiesTests()
+HoI4World_technologiesTests::HoI4World_technologiesTests():
+	 techMapper(Mappers::TechMapper::Factory{}.importTechMapper()),
+	 researchBonusMapper(Mappers::ResearchBonusMapper::Factory{}.importResearchBonusMapper())
 {
-	techMapper = Mappers::TechMapper::Factory{}.importTechMapper();
-	researchBonusMapper = Mappers::ResearchBonusMapper::Factory{}.importResearchBonusMapper();
 }
 
 
