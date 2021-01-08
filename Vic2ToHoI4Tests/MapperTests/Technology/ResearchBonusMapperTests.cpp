@@ -9,6 +9,7 @@ TEST(Mappers_ResearchBonusMapperTests, researchBonusesCanBeImported)
 	const auto researchBonusMapper = Mappers::ResearchBonusMapper::Factory{}.importResearchBonusMapper();
 
 	ASSERT_EQ(3, researchBonusMapper->getResearchBonusMappings().size());
+
 	ASSERT_EQ(1, researchBonusMapper->getResearchBonusMappings()[0].getVic2Requirements().size());
 	ASSERT_TRUE(researchBonusMapper->getResearchBonusMappings()[0].getVic2Requirements().contains("Vic2_tech"));
 	ASSERT_EQ(2, researchBonusMapper->getResearchBonusMappings()[0].getResearchBonuses().size());
