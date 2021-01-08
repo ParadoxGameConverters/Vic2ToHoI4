@@ -1,0 +1,48 @@
+# Notes:
+# - Each V2 tech and invention is linked to zero or more HoI tech levels.
+# - More than one V2 tech or invention may grant a given HoI tech level.
+# - If a higher level is earned, it will be granted even if the lower level was not earned.
+# - The "bonus_map" section grants HoI research speed bonuses instead of HoI tech levels.
+
+
+# =================================
+# === HOI4 LAND DOCTRINE FOLDER ===
+# =================================
+
+link = {
+	vic2 = human_wave_vs_spearhead
+	land_doctrine = 1000
+}
+
+link = {
+	vic2 = grand_battle_plan_vs_superior_firepower
+	land_doctrine = 1000
+}
+
+# ================================
+# === HOI4 AIR DOCTRINE FOLDER ===
+# ================================
+
+link = {
+	vic2 = strategic_destruction_doctrine
+	air_doctrine = 1000
+}
+
+link = {
+	vic2 = operational_destruction_doctrine
+	air_doctrine = 1000
+}
+
+link = {
+	vic2 = strategic_destruction_doctrine
+	air_doctrine = 1000
+}
+
+# ==================================
+# === HOI4 NAVAL DOCTRINE FOLDER ===
+# ==================================
+
+link = {
+	vic2 = naval_firepower_doctrine
+	naval_doctrine = 1000
+}

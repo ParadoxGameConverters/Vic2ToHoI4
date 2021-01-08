@@ -192,8 +192,8 @@
     <ClCompile Include="Source\Mappers\CountryName\CountryNameMapper.cpp" />
     <ClCompile Include="Source\Mappers\CountryName\CountryNameMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\CountryName\CountryNameMappingFactory.cpp" />
+    <ClCompile Include="Source\Mappers\Technology\ResearchBonusMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Technology\ResearchBonusMappingFactory.cpp" />
-    <ClCompile Include="Source\Mappers\Technology\TechMapper.cpp" />
     <ClCompile Include="Source\Mappers\Technology\TechMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Technology\TechMappingFactory.cpp" />
     <ClCompile Include="Source\OutHoi4\AiStrategy\OutAiStrategy.cpp" />
@@ -521,6 +521,8 @@
     <ClInclude Include="Source\Mappers\CountryName\CountryNameMappingFactory.h" />
     <ClInclude Include="Source\Mappers\GovernmentMapperBuilder.h" />
     <ClInclude Include="Source\Mappers\GraphicsMappedBuilder.h" />
+    <ClInclude Include="Source\Mappers\Technology\ResearchBonusMapper.h" />
+    <ClInclude Include="Source\Mappers\Technology\ResearchBonusMapperFactory.h" />
     <ClInclude Include="Source\Mappers\Technology\ResearchBonusMapping.h" />
     <ClInclude Include="Source\Mappers\Technology\ResearchBonusMappingFactory.h" />
     <ClInclude Include="Source\Mappers\Technology\TechMapper.h" />
@@ -896,7 +898,7 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\configurables\tech_mapping.txt">
+    <CopyFileToFolders Include="Data_Files\configurables\research_bonus_mappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>

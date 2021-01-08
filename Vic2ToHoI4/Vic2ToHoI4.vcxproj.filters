@@ -1138,9 +1138,6 @@
     <ClCompile Include="Source\V2World\Ai\AIFactory.cpp">
       <Filter>Vic2World\Ai</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mappers\Technology\TechMapper.cpp">
-      <Filter>Mappers\Technology</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Mappers\Technology\TechMappingFactory.cpp">
       <Filter>Mappers\Technology</Filter>
     </ClCompile>
@@ -1148,6 +1145,9 @@
       <Filter>Mappers\Technology</Filter>
     </ClCompile>
     <ClCompile Include="Source\Mappers\Technology\ResearchBonusMappingFactory.cpp">
+      <Filter>Mappers\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\Technology\ResearchBonusMapperFactory.cpp">
       <Filter>Mappers\Technology</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2249,6 +2249,12 @@
     </ClInclude>
     <ClInclude Include="..\common_items\CommonRegexes.h">
       <Filter>CommonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Technology\ResearchBonusMapper.h">
+      <Filter>Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Technology\ResearchBonusMapperFactory.h">
+      <Filter>Mappers\Technology</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -18710,9 +18716,6 @@
     <CopyFileToFolders Include="Data_Files\Configurables\StateCategories.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\tech_mapping.txt">
-      <Filter>Data Files\Configurables</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Configurables\The Concert of Europe_province_mappings.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
@@ -20036,7 +20039,12 @@
     <CopyFileToFolders Include="Data_Files\flags\ZAM_republic.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\configurables\tech_mappings.txt" />
+    <CopyFileToFolders Include="Data_Files\configurables\research_bonus_mappings.txt">
+      <Filter>Data Files\Configurables</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\tech_mappings.txt">
+      <Filter>Data Files\Configurables</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />

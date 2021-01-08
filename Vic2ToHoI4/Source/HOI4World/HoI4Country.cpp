@@ -554,9 +554,10 @@ void HoI4::Country::setCapitalRegionFlag(const Regions& regions)
 }
 
 
-void HoI4::Country::convertTechnology(const Mappers::TechMapper& techMapper, const mappers::techMapper& theTechMapper)
+void HoI4::Country::convertTechnology(const Mappers::TechMapper& techMapper,
+	 const Mappers::ResearchBonusMapper& researchBonusMapper)
 {
-	theTechnologies = HoI4::technologies(techMapper, theTechMapper, oldTechnologiesAndInventions);
+	theTechnologies = HoI4::technologies(techMapper, researchBonusMapper, oldTechnologiesAndInventions);
 }
 
 

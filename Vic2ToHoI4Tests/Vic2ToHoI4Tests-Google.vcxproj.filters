@@ -1341,9 +1341,6 @@
     <ClCompile Include="Vic2WorldTests\Ai\AITests.cpp">
       <Filter>Vic2WorldTests\Ai</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapper.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers\Technology</Filter>
-    </ClCompile>
     <ClCompile Include="MapperTests\Technology\TechMappingTests.cpp">
       <Filter>MapperTests\Technology</Filter>
     </ClCompile>
@@ -1360,6 +1357,12 @@
       <Filter>Vic2ToHoI4 files\Mappers\Technology</Filter>
     </ClCompile>
     <ClCompile Include="MapperTests\Technology\ResearchBonusMappingTests.cpp">
+      <Filter>MapperTests\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\ResearchBonusMapperFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Technology</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\Technology\ResearchBonusMapperTests.cpp">
       <Filter>MapperTests\Technology</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2020,5 +2023,10 @@
       <Filter>TestFiles\World</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\Technology\tech_mappings.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TestFiles\Mappers\Technology\research_bonus_mappings.txt">
+      <Filter>TestFiles\Mappers\Technology</Filter>
+    </Text>
   </ItemGroup>
 </Project>

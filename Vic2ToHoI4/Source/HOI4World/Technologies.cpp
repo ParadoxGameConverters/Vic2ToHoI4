@@ -3,10 +3,10 @@
 
 
 HoI4::technologies::technologies(const Mappers::TechMapper& techMapper,
-	 const mappers::techMapper& theTechMapper,
+	 const Mappers::ResearchBonusMapper& researchBonusMapper,
 	 const std::set<std::string>& oldTechnologiesAndInventions)
 {
-	for (const auto& techMapping: techMapper.getAllTechMappings())
+	for (const auto& techMapping: techMapper.getTechMappings())
 	{
 		bool requirementViolated = false;
 		for (const auto& requirement: techMapping.getVic2Requirements())
@@ -33,7 +33,7 @@ HoI4::technologies::technologies(const Mappers::TechMapper& techMapper,
 		}
 	}
 
-	for (const auto& bonusMapping: theTechMapper.getAllResearchBonuses())
+	for (const auto& bonusMapping: researchBonusMapper.getResearchBonusMappings())
 	{
 		bool requirementViolated = false;
 		for (const auto& requirement: bonusMapping.getVic2Requirements())

@@ -24,6 +24,8 @@
 #include "Mappers/CountryMapping.h"
 #include "Mappers/CountryName/CountryNameMapperFactory.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
+#include "Mappers/Technology/ResearchBonusMapper.h"
+#include "Mappers/Technology/ResearchBonusMapperFactory.h"
 #include "Mappers/Technology/TechMapper.h"
 #include "Mappers/Technology/TechMapperFactory.h"
 #include "MilitaryMappings/MilitaryMappingsFile.h"
@@ -568,13 +570,11 @@ void HoI4::World::convertTechs()
 	Log(LogLevel::Info) << "\tConverting techs and research bonuses";
 
 	const auto techMapper = Mappers::TechMapper::Factory{}.importTechMapper();
+	const auto researchBonusMapper = Mappers::ResearchBonusMapper::Factory{}.importResearchBonusMapper();
 
-	mappers::techMapperFile file;
-	unique_ptr<mappers::techMapper> techMap = file.takeTechMapper();
-
-	for (auto country: countries)
+	for (auto& [unused, country]: countries)
 	{
-		country.second->convertTechnology(*techMapper, *techMap);
+		country->convertTechnology(*techMapper, *researchBonusMapper);
 	}
 }
 
