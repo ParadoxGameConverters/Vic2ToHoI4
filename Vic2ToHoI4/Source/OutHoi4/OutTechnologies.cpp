@@ -9,6 +9,7 @@ void HoI4::outputTechnology(const technologies& theTechnologies, std::ostream& o
 
 	output << "# Starting tech\n";
 
+	// technologies with no limit have a different output format, so handle them separately
 	if (const auto& noLimitTechs = technologiesByLimit.find(""); noLimitTechs != technologiesByLimit.end())
 	{
 		output << "set_technology = {\n";

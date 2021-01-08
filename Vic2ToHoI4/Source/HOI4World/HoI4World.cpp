@@ -572,7 +572,7 @@ void HoI4::World::convertTechs()
 	const auto techMapper = Mappers::TechMapper::Factory{}.importTechMapper();
 	const auto researchBonusMapper = Mappers::ResearchBonusMapper::Factory{}.importResearchBonusMapper();
 
-	for (auto& [unused, country]: countries)
+	for (const auto& [unused, country]: countries)
 	{
 		country->convertTechnology(*techMapper, *researchBonusMapper);
 	}
