@@ -1150,6 +1150,9 @@
     <ClCompile Include="Source\Mappers\Technology\ResearchBonusMapperFactory.cpp">
       <Filter>Mappers\Technology</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Localisations\GrammarMappings.cpp">
+      <Filter>HoI4World\Localisations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2255,6 +2258,9 @@
     </ClInclude>
     <ClInclude Include="Source\Mappers\Technology\ResearchBonusMapperFactory.h">
       <Filter>Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Localisations\GrammarMappings.h">
+      <Filter>HoI4World\Localisations</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -20048,5 +20054,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data_Files\configurables\grammar.txt">
+      <Filter>Data Files\Configurables</Filter>
+    </Text>
   </ItemGroup>
 </Project>

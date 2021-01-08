@@ -69,6 +69,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\GrammarMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureGroupNames.cpp" />
@@ -373,6 +374,7 @@
     <ClCompile Include="HoI4WorldTests\Localisations\ArticleRules\ArticleRulesFactoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\ArticleRules\ArticleRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\ArticleRules\ArticleRuleTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Localisations\GrammarMappingsTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRulesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementRuleTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Localisations\LanguageReplacementsTests.cpp" />
@@ -1028,6 +1030,12 @@
     <CopyFileToFolders Include="TestFiles\Mappers\Technology\research_bonus_mappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Localisations\grammar.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configuration</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configuration</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />
