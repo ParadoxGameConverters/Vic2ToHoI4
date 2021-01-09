@@ -697,7 +697,15 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 		else
 		{
 			Log(LogLevel::Warning) << "No localisation found for " << adjectiveKey << " in " << language;
-			localisedName = "Partial " + name;
+			const auto& partial = vic2Localisations.getTextInLanguage(adjectiveKey, language);
+			if (partial)
+			{
+				localisedName = *partial + " " + name;
+			}
+			else
+			{
+				localisedName = "Partial " + name;
+			}
 		}
 	}
 	else if (hoi4State.isImpassable())
