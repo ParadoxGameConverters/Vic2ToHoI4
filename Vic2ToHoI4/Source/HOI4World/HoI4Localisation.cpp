@@ -646,7 +646,7 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	}
 	/* SPLIT STATES AND GRAMMAR */
 	/* Default: "French Guyana" */
-	/* French, Spanish, Portugese(sic), Italian: "Guyana French" */
+	/* French, Spanish, Portuguese, Italian: "Guyana French" */
 	/* Reason: Grammar rules */
 	/* */
 	/* German: "French-Guyana" */
@@ -655,7 +655,7 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	{
 		std::string adjectiveKey = vic2State.getOwner() + "_ADJ";
 		if ((Vic2NameInLanguage.first == "french") || (Vic2NameInLanguage.first == "spanish") ||
-			 (Vic2NameInLanguage.first == "portugese") || (Vic2NameInLanguage.first == "italian"))
+			 (Vic2NameInLanguage.first == "braz_por") || (Vic2NameInLanguage.first == "italian"))
 		{
 			const auto& languageCategory = vic2State.getLanguageCategory();
 			if (const auto& grammarMapping = grammarMappings.find(languageCategory);
@@ -670,7 +670,7 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 				{
 					adjectiveKey += "_SP";
 				}
-				else if (Vic2NameInLanguage.first == "portugese")
+				else if (Vic2NameInLanguage.first == "braz_por")
 				{
 					adjectiveKey += "_PR";
 				}
@@ -692,7 +692,7 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 		if (possibleOwnerAdjective)
 		{
 			if ((Vic2NameInLanguage.first == "french") || (Vic2NameInLanguage.first == "spanish") ||
-				 (Vic2NameInLanguage.first == "portugese") || (Vic2NameInLanguage.first == "italian"))
+				 (Vic2NameInLanguage.first == "braz_por") || (Vic2NameInLanguage.first == "italian"))
 			{
 				localisedName = Vic2NameInLanguage.second + " " + *possibleOwnerAdjective;
 			}
