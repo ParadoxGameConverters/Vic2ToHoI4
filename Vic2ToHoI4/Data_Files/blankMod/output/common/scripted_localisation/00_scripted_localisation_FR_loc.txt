@@ -2,3 +2,3044 @@
 ###   Scripted localization for French by Nicolas Fouqué   ###
 ##############################################################
 
+#################################################
+###   Political Parties / Partis politiques   ###
+#################################################
+# Sidenote: All political parties now fallback under masculine plural, like we're referring to the people inside it.
+# It is easier than having to deal with all Vic2 and HoI4 possible parties and scripted triggers
+
+### Ruling Parties / Partis au pouvoir ###
+
+### "The ruling party is [the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "Le parti au pouvoir est [le] NSDAP/[] Misr al-Fatah/[l']IKL/[la] Légion arménienne/[les] Chevaux de feu" (lower case / minuscule)
+defined_text = {
+	name = GetLeLaLPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LES
+	}
+}
+### "[The] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses rules the country." => "[Le] NSDAP/[] Misr al-Fatah/[L']IKL/[La] Légion arménienne/[Les] Chevaux de feu gouverne(nt) le pays." (upper case / majuscule)
+defined_text = {
+	name = GetLeLaLPartiPouvCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LES_CAP
+	}
+}
+
+
+
+### "That's the aim [of the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "C'est l'objectif [du] NSDAP/[de] Misr al-Fatah/[de l']IKL/[de la] Légion arménienne/[des] Chevaux de feu." (lower case / minuscule)
+defined_text = {
+	name = GetDuDelaDelPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_DES
+	}
+}
+### "[Of the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses came the idea that..." => "[Du] NSDAP/[De] Misr al-Fatah/[De l']IKL/[De la] Légion arménienne/[Des] Chevaux de feu est venue l'idée que..." (upper case / majuscule)
+defined_text = {
+	name = GetDuDelaDelPartiPouvCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_DES_CAP
+	}
+}
+
+
+
+### "That has been promised [to the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "Cela a été promis [au] NSDAP/[à] Misr al-Fatah/[à l']IKL/[à la] Légion arménienne/[aux] Chevaux de feu." (lower case / minuscule)
+defined_text = {
+	name = GetAuAlaAlPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_AUX
+	}
+}
+### "[To the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses has been promised that..." => "[Au] NSDAP/[À] Misr al-Fatah/[À l']IKL/[À la] Légion arménienne/[Aux] Chevaux de feu a été promis que..." (upper case / majuscule)
+defined_text = {
+	name = GetAuAlaAlPartiPouvCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_AUX_CAP
+  }
+}
+
+
+
+### "Couldn't [they] launch a coup d'État? (= the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)." => "Ne pourrait-[il] lancer un coup d'État ? (= le NSDAP) / Ne pourrait-[elle] lancer un coup d'État ? (= Misr al-Fatah/l'IKL/la Légion arménienne) / Ne pourraient-[ils] lancer un coup d'État ? (= les Chevaux de feu)." (lower case / minuscule)
+defined_text = {
+	name = GetIlEllePartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ILS
+	}
+}
+### "They could launch a coup d'État. (= the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)" => "Il pourrait bien lancer un coup d'État. (= le NSDAP) / Elle pourrait bien lancer un coup d'État. (= Misr al-Fatah/l'IKL/la Légion arménienne) / Ils pourraient bien lancer un coup d'État (= les Chevaux de feu)." (lower case / minuscule)
+defined_text = {
+	name = GetIlEllePartiPouvCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ILS_CAP
+	}
+}
+
+
+
+### "As for [the] NSDAP/Armenian Legion/Fire Horses/Kataeb..." => "Le NSDAP, quant à [lui]... / La Légion arménienne, quant à [elle]... / Les Chevaux de feu, quant à [eux]... / Les Kataëb, quant à [elle]..." (lower case / minuscule)
+defined_text = {
+	name = GetLuiElleEuxPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_EUX
+	}
+}
+### "[Them] are inflexible. (= NSDAP/Armenian Legion/Fire Horses/Kataeb)" => "[Lui]... est instransigeant. (= le NSDAP) / [Elle] est intransigeante. (= la Légion arménienne) / [Eux] sont intransigeants. (= les Chevaux de feu) / [Elles] sont intransigeantes (= les Kataëb)" (upper case / majuscule)
+defined_text = {
+	name = GetLuiElleEuxPartiPouvCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_EUX_CAP
+	}
+}
+
+
+
+### "[They] have to be removed from power (= NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)" => "Il faut [lui] retirer le pouvoir. (= au NSDAP/à Misr al-Fatah/à l'IKL/à la Légion arménienne) / Il faut [leur] retirer le pouvoir. (= aux Chevaux de feu)" (lower case / minuscule)
+defined_text = {
+	name = GetLuiLeurPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### "Removing [them] from power is essential. (= NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)" => "[Lui] retirer le pouvoir est crucial. (= au NSDAP/à Misr al-Fatah/à l'IKL/à la Légion arménienne) / [Leur] retirer le pouvoir est crucial. (= aux Chevaux de feu)" (upper case / majuscule)
+defined_text = {
+	name = GetLuiLeurPartiPouvCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### "That has to be enforced on [this] very NSDAP/Armenian Legion who seized power... / [those] very Fire Horses who seized power..." => "Il faut l'imposer à [ce] même NSDAP qui a pris le pouvoir... / Il faut l'imposer à [cette] même Légion arménienne qui a pris le pouvoir... / Il faut l'imposer à [ces] mêmes Chevaux de feu qui ont pris le pouvoir..." (upper case / majuscule)
+defined_text = {
+	name = GetCeCetteCesPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_CES
+	}
+}
+### "[This] very NSDAP/Armenian Legion who seized power... / [Those] very Fire Horses who seized power..." => "[Ce] même NSDAP qui a pris le pouvoir... / [Cette] même Légion arménienne qui a pris le pouvoir... / [Ces] mêmes Chevaux de feu qui ont pris le pouvoir..." (lower case / minuscule)
+defined_text = {
+	name = GetCeCetteCesPartiPouvCap
+	text = {
+		trigger = {
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_CES_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses is powerful in the country." => "Le NSDAP est puissant[]./Misr al-Fatah/L'IKL/La Légion arménienne est puissant[e] dans le pays./Les Chevaux de feu sont puissants dans le pays." (lower case / minuscule)
+defined_text = {
+	name = GetXEPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_S
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses is vulnerable." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne est vulnérable[]./Les Chevaux de feu sont vulnérable[s]." (lower case / minuscule)
+defined_text = {
+	name = GetXSPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_S
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion [is] weak. The Fire Horses [are] weak." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne [est] vulnérable./Les Chevaux de feu [sont] vulnérable[s]." (lower case / minuscule)
+defined_text = {
+	name = GetEstSontPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_SONT
+	}
+}
+### "[Is] the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion that strong? / [Are] the Fire Horses that strong?" => "[Est]-il si puissant ? (= le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne)/[Sont]-ils si puissants ? (= les Chevaux de feu)." (upper case / majuscule)
+defined_text = {
+	name = GetEstSontPartiPouvCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_SONT_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion [is] not weak. The Fire Horses [are] not weak." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne [n'est] pas vulnérable. / Les Chevaux de feu [ne sont] pas vulnérables." (lower case / minuscule)
+defined_text = {
+	name = GetNestNesontPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_NESONT
+	}
+}
+### "[Isn't] the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion strong enough? / [Aren't] the Fire Horses strong enough?" => "[N'est]-il pas suffisamment puissant ? (= le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne)/[Ne sont]-ils pas suffisamment puissants ? (= les Chevaux de feu)." (upper case / majuscule)
+defined_text = {
+	name = GetNestNesontPartiPouvCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_NESONT_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion has launch a coup d'État. / The Fire Horses [have] launched a coup d'État." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne [a] lancé un coup d'État. / Les Chevaux de feu [ont] lancé un coup d'État." (lower case / minuscule)
+defined_text = {
+	name = GetAOntPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ONT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of their ideas." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend[] avec ardeur ses idées. / Les Chevaux de feu défend[ent] avec ardeur leurs idées." (lower case / minuscule)
+defined_text = {
+	name = GetXEntPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses hold(s) on to power." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne se maintien[t] au pouvoir. / Les Chevaux de feu se maintien[nent] au pouvoir." (lower case / minuscule)
+defined_text = {
+	name = GetTNentPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_NENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses don't appear impressed by the political turn of the events." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne ne se laiss[e] pas impressionner par les menaces. / Les Chevaux de feu ne se laiss[ent] pas impressionner par la tournure des événements." (lower case / minuscule)
+defined_text = {
+	name = GetEEntPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses foresee a glorious future for the country." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne voi[t] un avenir radieux pour le pays. / Les Chevaux de feu voi[ent] un avenir radieux pour  le pays." (lower case / minuscule)
+defined_text = {
+	name = GetTEntPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of [their] ideology." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend avec ardeur [son] idéologie. / Les Chevaux de feu défendent avec ardeur [leur] idéologie." (lower case / minuscule)
+defined_text = {
+	name = GetSonLeurPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### "[Their] ideology is defended with zeal by the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "[Son] idéologie est défendue avec ardeur par le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne. / [Leur] idéologie est défendue avec ardeur par les Chevaux de feu." (upper case / majuscule)
+defined_text = {
+	name = GetSonLeurPartiPouvCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of [their] view." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend avec ardeur [sa] vision. / Les Chevaux de feu défendent avec ardeur [leur] vision." (lower case / minuscule)
+defined_text = {
+	name = GetSaLeurPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### "[Their] vision is defended with zeal by the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "[Sa] vision est défendue avec zèle par le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne. / [Leur] vision est défendue avec zèle par les Chevaux de feu." (upper case / majuscule)
+defined_text = {
+	name = GetSaLeurPartiPouvCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of their principles." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend avec ardeur [ses] principes. / Les Chevaux de feu défend[ent] avec ardeur [leurs] principes." (lower case / minuscule)
+defined_text = {
+	name = GetSesLeursPartiPouv
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEURS
+	}
+}
+### "[Their] principles are defended with zeal by the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "[Ses] principes sont défendus avec ardeur par le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne. / [Leurs] principes sont défendus avec ardeur par les Chevaux de feu." (upper case / majuscule)
+defined_text = {
+	name = GetSesLeursPartiPouvCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEURS_CAP
+	}
+}
+
+
+
+### Fascist Parties / Partis fascistes ###
+
+### "The ruling party is [the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "Le parti au pouvoir est [le] NSDAP/[] Misr al-Fatah/[l']IKL/[la] Légion arménienne/[les] Chevaux de feu" (lower case / minuscule)
+defined_text = {
+	name = GetLeLaLPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LES
+	}
+}
+### "[The] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses rules the country." => "[Le] NSDAP/[] Misr al-Fatah/[L']IKL/[La] Légion arménienne/[Les] Chevaux de feu gouverne(nt) le pays." (upper case / majuscule)
+defined_text = {
+	name = GetLeLaLPartiFascCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LES_CAP
+	}
+}
+
+
+
+### "That's the aim [of the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "C'est l'objectif [du] NSDAP/[de] Misr al-Fatah/[de l']IKL/[de la] Légion arménienne/[des] Chevaux de feu." (lower case / minuscule)
+defined_text = {
+	name = GetDuDelaDelPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_DES
+	}
+}
+### "[Of the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses came the idea that..." => "[Du] NSDAP/[De] Misr al-Fatah/[De l']IKL/[De la] Légion arménienne/[Des] Chevaux de feu est venue l'idée que..." (upper case / majuscule)
+defined_text = {
+	name = GetDuDelaDelPartiFascCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_DES_CAP
+	}
+}
+
+
+
+### "That has been promised [to the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "Cela a été promis [au] NSDAP/[à] Misr al-Fatah/[à l']IKL/[à la] Légion arménienne/[aux] Chevaux de feu." (lower case / minuscule)
+defined_text = {
+	name = GetAuAlaAlPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_AUX
+	}
+}
+### "[To the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses has been promised that..." => "[Au] NSDAP/[À] Misr al-Fatah/[À l']IKL/[À la] Légion arménienne/[Aux] Chevaux de feu a été promis que..." (upper case / majuscule)
+defined_text = {
+	name = GetAuAlaAlPartiFascCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_AUX_CAP
+	}
+}
+
+
+
+### "Couldn't [they] launch a coup d'État? (= the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)." => "Ne pourrait-[il] lancer un coup d'État ? (= le NSDAP) / Ne pourrait-[elle] lancer un coup d'État ? (= Misr al-Fatah/l'IKL/la Légion arménienne) / Ne pourraient-[ils] lancer un coup d'État ? (= les Chevaux de feu)." (lower case / minuscule)
+defined_text = {
+	name = GetIlEllePartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ILS
+	}
+}
+### "They could launch a coup d'État. (= the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)" => "Il pourrait bien lancer un coup d'État. (= le NSDAP) / Elle pourrait bien lancer un coup d'État. (= Misr al-Fatah/l'IKL/la Légion arménienne) / Ils pourraient bien lancer un coup d'État (= les Chevaux de feu)." (lower case / minuscule)
+defined_text = {
+	name = GetIlEllePartiFascCap
+	text = {
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ILS_CAP
+	}
+}
+
+
+
+### "As for [the] NSDAP/Armenian Legion/Fire Horses/Kataeb..." => "Le NSDAP, quant à [lui]... / La Légion arménienne, quant à [elle]... / Les Chevaux de feu, quant à [eux]... / Les Kataëb, quant à [elle]..." (lower case / minuscule)
+defined_text = {
+	name = GetLuiElleEuxPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_EUX
+	}
+}
+### "[Them] are inflexible. (= NSDAP/Armenian Legion/Fire Horses/Kataeb)" => "[Lui]... est instransigeant. (= le NSDAP) / [Elle] est intransigeante. (= la Légion arménienne) / [Eux] sont intransigeants. (= les Chevaux de feu) / [Elles] sont intransigeantes (= les Kataëb)" (upper case / majuscule)
+defined_text = {
+	name = GetLuiElleEuxPartiFascCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_EUX_CAP
+	}
+}
+
+
+
+### "[They] have to be removed from power (= NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)" => "Il faut [lui] retirer le pouvoir. (= au NSDAP/à Misr al-Fatah/à l'IKL/à la Légion arménienne) / Il faut [leur] retirer le pouvoir. (= aux Chevaux de feu)" (lower case / minuscule)
+defined_text = {
+	name = GetLuiLeurPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### "Removing [them] from power is essential. (= NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)" => "[Lui] retirer le pouvoir est crucial. (= au NSDAP/à Misr al-Fatah/à l'IKL/à la Légion arménienne) / [Leur] retirer le pouvoir est crucial. (= aux Chevaux de feu)" (upper case / majuscule)
+defined_text = {
+	name = GetLuiLeurPartiFascCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### "That has to be enforced on [this] very NSDAP/Armenian Legion who seized power... / [those] very Fire Horses who seized power..." => "Il faut l'imposer à [ce] même NSDAP qui a pris le pouvoir... / Il faut l'imposer à [cette] même Légion arménienne qui a pris le pouvoir... / Il faut l'imposer à [ces] mêmes Chevaux de feu qui ont pris le pouvoir..." (upper case / majuscule)
+defined_text = {
+	name = GetCeCetteCesPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_CES
+	}
+}
+### "[This] very NSDAP/Armenian Legion who seized power... / [Those] very Fire Horses who seized power..." => "[Ce] même NSDAP qui a pris le pouvoir... / [Cette] même Légion arménienne qui a pris le pouvoir... / [Ces] mêmes Chevaux de feu qui ont pris le pouvoir..." (lower case / minuscule)
+defined_text = {
+	name = GetCeCetteCesPartiFascCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_CES_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses is powerful in the country." => "Le NSDAP est puissant[]./Misr al-Fatah/L'IKL/La Légion arménienne est puissant[e] dans le pays./Les Chevaux de feu sont puissants dans le pays." (lower case / minuscule)
+defined_text = {
+	name = GetXEPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_S
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses is vulnerable." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne est vulnérable[]./Les Chevaux de feu sont vulnérable[s]." (lower case / minuscule)
+defined_text = {
+	name = GetXSPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_S
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion [is] weak. The Fire Horses [are] weak." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne [est] vulnérable./Les Chevaux de feu [sont] vulnérable[s]." (lower case / minuscule)
+defined_text = {
+	name = GetEstSontPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_SONT
+	}
+}
+### "[Is] the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion that strong? / [Are] the Fire Horses that strong?" => "[Est]-il si puissant ? (= le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne)/[Sont]-ils si puissants ? (= les Chevaux de feu)." (upper case / majuscule)
+defined_text = {
+	name = GetEstSontPartiFascCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_SONT_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion [is] not weak. The Fire Horses [are] not weak." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne [n'est] pas vulnérable. / Les Chevaux de feu [ne sont] pas vulnérables." (lower case / minuscule)
+defined_text = {
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_NESONT
+	}
+}
+### "[Isn't] the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion strong enough? / [Aren't] the Fire Horses strong enough?" => "[N'est]-il pas suffisamment puissant ? (= le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne)/[Ne sont]-ils pas suffisamment puissants ? (= les Chevaux de feu)." (upper case / majuscule)
+defined_text = {
+	name = GetNestNesontPartiFascCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_NESONT_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion has launch a coup d'État. / The Fire Horses [have] launched a coup d'État." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne [a] lancé un coup d'État. / Les Chevaux de feu [ont] lancé un coup d'État." (lower case / minuscule)
+defined_text = {
+	name = GetAOntPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ONT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of their ideas." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend[] avec ardeur ses idées. / Les Chevaux de feu défend[ent] avec ardeur leurs idées." (lower case / minuscule)
+defined_text = {
+	name = GetXEntPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses hold(s) on to power." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne se maintien[t] au pouvoir. / Les Chevaux de feu se maintien[nent] au pouvoir." (lower case / minuscule)
+defined_text = {
+	name = GetTNentPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_NENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses don't appear impressed by the political turn of the events." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne ne se laiss[e] pas impressionner par les menaces. / Les Chevaux de feu ne se laiss[ent] pas impressionner par la tournure des événements." (lower case / minuscule)
+defined_text = {
+	name = GetEEntPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses foresee a glorious future for the country." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne voi[t] un avenir radieux pour le pays. / Les Chevaux de feu voi[ent] un avenir radieux pour  le pays." (lower case / minuscule)
+defined_text = {
+	name = GetTEntPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of [their] ideology." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend avec ardeur [son] idéologie. / Les Chevaux de feu défendent avec ardeur [leur] idéologie." (lower case / minuscule)
+defined_text = {
+	name = GetSonLeurPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### "[Their] ideology is defended with zeal by the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "[Son] idéologie est défendue avec ardeur par le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne. / [Leur] idéologie est défendue avec ardeur par les Chevaux de feu." (upper case / majuscule)
+defined_text = {
+	name = GetSonLeurPartiFascCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of [their] view." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend avec ardeur [sa] vision. / Les Chevaux de feu défendent avec ardeur [leur] vision." (lower case / minuscule)
+defined_text = {
+	name = GetSaLeurPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### "[Their] vision is defended with zeal by the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "[Sa] vision est défendue avec zèle par le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne. / [Leur] vision est défendue avec zèle par les Chevaux de feu." (upper case / majuscule)
+defined_text = {
+	name = GetSaLeurPartiFascCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of their principles." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend avec ardeur [ses] principes. / Les Chevaux de feu défend[ent] avec ardeur [leurs] principes." (lower case / minuscule)
+defined_text = {
+	name = GetSesLeursPartiFasc
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEURS
+	}
+}
+### "[Their] principles are defended with zeal by the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "[Ses] principes sont défendus avec ardeur par le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne. / [Leurs] principes sont défendus avec ardeur par les Chevaux de feu." (upper case / majuscule)
+defined_text = {
+	name = GetSesLeursPartiFascCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEURS_CAP
+	}
+}
+
+
+
+### Communist Parties / Partis communistes ###
+
+### "The ruling party is [the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "Le parti au pouvoir est [le] NSDAP/[] Misr al-Fatah/[l']IKL/[la] Légion arménienne/[les] Chevaux de feu" (lower case / minuscule)
+defined_text = {
+	name = GetLeLaLPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LES
+	}
+}
+### "[The] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses rules the country." => "[Le] NSDAP/[] Misr al-Fatah/[L']IKL/[La] Légion arménienne/[Les] Chevaux de feu gouverne(nt) le pays." (upper case / majuscule)
+defined_text = {
+	name = GetLeLaLPartiCommCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LES_CAP
+	}
+}
+
+
+
+### "That's the aim [of the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "C'est l'objectif [du] NSDAP/[de] Misr al-Fatah/[de l']IKL/[de la] Légion arménienne/[des] Chevaux de feu." (lower case / minuscule)
+defined_text = {
+	name = GetDuDelaDelPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_DES
+	}
+}
+### "[Of the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses came the idea that..." => "[Du] NSDAP/[De] Misr al-Fatah/[De l']IKL/[De la] Légion arménienne/[Des] Chevaux de feu est venue l'idée que..." (upper case / majuscule)
+defined_text = {
+	name = GetDuDelaDelPartiCommCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_DES_CAP
+	}
+}
+
+
+
+### "That has been promised [to the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "Cela a été promis [au] NSDAP/[à] Misr al-Fatah/[à l']IKL/[à la] Légion arménienne/[aux] Chevaux de feu." (lower case / minuscule)
+defined_text = {
+	name = GetAuAlaAlPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_AUX
+	}
+}
+### "[To the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses has been promised that..." => "[Au] NSDAP/[À] Misr al-Fatah/[À l']IKL/[À la] Légion arménienne/[Aux] Chevaux de feu a été promis que..." (upper case / majuscule)
+defined_text = {
+	name = GetAuAlaAlPartiCommCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_AUX_CAP
+	}
+}
+
+
+
+### "Couldn't [they] launch a coup d'État? (= the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)." => "Ne pourrait-[il] lancer un coup d'État ? (= le NSDAP) / Ne pourrait-[elle] lancer un coup d'État ? (= Misr al-Fatah/l'IKL/la Légion arménienne) / Ne pourraient-[ils] lancer un coup d'État ? (= les Chevaux de feu)." (lower case / minuscule)
+defined_text = {
+	name = GetIlEllePartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ILS
+	}
+}
+### "They could launch a coup d'État. (= the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)" => "Il pourrait bien lancer un coup d'État. (= le NSDAP) / Elle pourrait bien lancer un coup d'État. (= Misr al-Fatah/l'IKL/la Légion arménienne) / Ils pourraient bien lancer un coup d'État (= les Chevaux de feu)." (lower case / minuscule)
+defined_text = {
+	name = GetIlEllePartiCommCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ILS_CAP
+	}
+}
+
+
+
+### "As for [the] NSDAP/Armenian Legion/Fire Horses/Kataeb..." => "Le NSDAP, quant à [lui]... / La Légion arménienne, quant à [elle]... / Les Chevaux de feu, quant à [eux]... / Les Kataëb, quant à [elle]..." (lower case / minuscule)
+defined_text = {
+	name = GetLuiElleEuxPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_EUX
+	}
+}
+### "[Them] are inflexible. (= NSDAP/Armenian Legion/Fire Horses/Kataeb)" => "[Lui]... est instransigeant. (= le NSDAP) / [Elle] est intransigeante. (= la Légion arménienne) / [Eux] sont intransigeants. (= les Chevaux de feu) / [Elles] sont intransigeantes (= les Kataëb)" (upper case / majuscule)
+defined_text = {
+	name = GetLuiElleEuxPartiCommCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_EUX_CAP
+	}
+}
+
+
+
+### "[They] have to be removed from power (= NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)" => "Il faut [lui] retirer le pouvoir. (= au NSDAP/à Misr al-Fatah/à l'IKL/à la Légion arménienne) / Il faut [leur] retirer le pouvoir. (= aux Chevaux de feu)" (lower case / minuscule)
+defined_text = {
+	name = GetLuiLeurPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### "Removing [them] from power is essential. (= NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)" => "[Lui] retirer le pouvoir est crucial. (= au NSDAP/à Misr al-Fatah/à l'IKL/à la Légion arménienne) / [Leur] retirer le pouvoir est crucial. (= aux Chevaux de feu)" (upper case / majuscule)
+defined_text = {
+	name = GetLuiLeurPartiCommCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### "That has to be enforced on [this] very NSDAP/Armenian Legion who seized power... / [those] very Fire Horses who seized power..." => "Il faut l'imposer à [ce] même NSDAP qui a pris le pouvoir... / Il faut l'imposer à [cette] même Légion arménienne qui a pris le pouvoir... / Il faut l'imposer à [ces] mêmes Chevaux de feu qui ont pris le pouvoir..." (upper case / majuscule)
+defined_text = {
+	name = GetCeCetteCesPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_CES
+	}
+}
+### "[This] very NSDAP/Armenian Legion who seized power... / [Those] very Fire Horses who seized power..." => "[Ce] même NSDAP qui a pris le pouvoir... / [Cette] même Légion arménienne qui a pris le pouvoir... / [Ces] mêmes Chevaux de feu qui ont pris le pouvoir..." (lower case / minuscule)
+defined_text = {
+	name = GetCeCetteCesPartiCommCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_CES_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses is powerful in the country." => "Le NSDAP est puissant[]./Misr al-Fatah/L'IKL/La Légion arménienne est puissant[e] dans le pays./Les Chevaux de feu sont puissants dans le pays." (lower case / minuscule)
+defined_text = {
+	name = GetXEPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_S
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses is vulnerable." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne est vulnérable[]./Les Chevaux de feu sont vulnérable[s]." (lower case / minuscule)
+defined_text = {
+	name = GetXSPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_S
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion [is] weak. The Fire Horses [are] weak." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne [est] vulnérable./Les Chevaux de feu [sont] vulnérable[s]." (lower case / minuscule)
+defined_text = {
+	name = GetEstSontPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_SONT
+	}
+}
+### "[Is] the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion that strong? / [Are] the Fire Horses that strong?" => "[Est]-il si puissant ? (= le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne)/[Sont]-ils si puissants ? (= les Chevaux de feu)." (upper case / majuscule)
+defined_text = {
+	name = GetEstSontPartiCommCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_SONT_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion [is] not weak. The Fire Horses [are] not weak." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne [n'est] pas vulnérable. / Les Chevaux de feu [ne sont] pas vulnérables." (lower case / minuscule)
+defined_text = {
+	name = GetNestNesontPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_NESONT
+	}
+}
+### "[Isn't] the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion strong enough? / [Aren't] the Fire Horses strong enough?" => "[N'est]-il pas suffisamment puissant ? (= le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne)/[Ne sont]-ils pas suffisamment puissants ? (= les Chevaux de feu)." (upper case / majuscule)
+defined_text = {
+	name = GetNestNesontPartiCommCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_NESONT_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion has launch a coup d'État. / The Fire Horses [have] launched a coup d'État." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne [a] lancé un coup d'État. / Les Chevaux de feu [ont] lancé un coup d'État." (lower case / minuscule)
+defined_text = {
+	name = GetAOntPartiComm
+	text = {
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ONT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of their ideas." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend[] avec ardeur ses idées. / Les Chevaux de feu défend[ent] avec ardeur leurs idées." (lower case / minuscule)
+defined_text = {
+	name = GetXEntPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses hold(s) on to power." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne se maintien[t] au pouvoir. / Les Chevaux de feu se maintien[nent] au pouvoir." (lower case / minuscule)
+defined_text = {
+	name = GetTNentPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_NENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses don't appear impressed by the political turn of the events." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne ne se laiss[e] pas impressionner par les menaces. / Les Chevaux de feu ne se laiss[ent] pas impressionner par la tournure des événements." (lower case / minuscule)
+defined_text = {
+	name = GetEEntPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses foresee a glorious future for the country." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne voi[t] un avenir radieux pour le pays. / Les Chevaux de feu voi[ent] un avenir radieux pour  le pays." (lower case / minuscule)
+defined_text = {
+	name = GetTEntPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of [their] ideology." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend avec ardeur [son] idéologie. / Les Chevaux de feu défendent avec ardeur [leur] idéologie." (lower case / minuscule)
+defined_text = {
+	name = GetSonLeurPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### "[Their] ideology is defended with zeal by the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "[Son] idéologie est défendue avec ardeur par le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne. / [Leur] idéologie est défendue avec ardeur par les Chevaux de feu." (upper case / majuscule)
+defined_text = {
+	name = GetSonLeurPartiCommCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of [their] view." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend avec ardeur [sa] vision. / Les Chevaux de feu défendent avec ardeur [leur] vision." (lower case / minuscule)
+defined_text = {
+	name = GetSaLeurPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### "[Their] vision is defended with zeal by the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "[Sa] vision est défendue avec zèle par le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne. / [Leur] vision est défendue avec zèle par les Chevaux de feu." (upper case / majuscule)
+defined_text = {
+	name = GetSaLeurPartiCommCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of their principles." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend avec ardeur [ses] principes. / Les Chevaux de feu défend[ent] avec ardeur [leurs] principes." (lower case / minuscule)
+defined_text = {
+	name = GetSesLeursPartiComm
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEURS
+	}
+}
+### "[Their] principles are defended with zeal by the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "[Ses] principes sont défendus avec ardeur par le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne. / [Leurs] principes sont défendus avec ardeur par les Chevaux de feu." (upper case / majuscule)
+defined_text = {
+	name = GetSesLeursPartiCommCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEURS_CAP
+	}
+}
+
+
+
+### Democratic Parties / Partis démocratiques ###
+
+### "The ruling party is [the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "Le parti au pouvoir est [le] NSDAP/[] Misr al-Fatah/[l']IKL/[la] Légion arménienne/[les] Chevaux de feu" (lower case / minuscule)
+defined_text = {
+	name = GetLeLaLPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LES
+	}
+}
+### "[The] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses rules the country." => "[Le] NSDAP/[] Misr al-Fatah/[L']IKL/[La] Légion arménienne/[Les] Chevaux de feu gouverne(nt) le pays." (upper case / majuscule)
+defined_text = {
+	name = GetLeLaLPartiDemoCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LES_CAP
+	}
+}
+
+
+
+### "That's the aim [of the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "C'est l'objectif [du] NSDAP/[de] Misr al-Fatah/[de l']IKL/[de la] Légion arménienne/[des] Chevaux de feu." (lower case / minuscule)
+defined_text = {
+	name = GetDuDelaDelPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_DES
+	}
+}
+### "[Of the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses came the idea that..." => "[Du] NSDAP/[De] Misr al-Fatah/[De l']IKL/[De la] Légion arménienne/[Des] Chevaux de feu est venue l'idée que..." (upper case / majuscule)
+defined_text = {
+	name = GetDuDelaDelPartiDemoCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_DES_CAP
+	}
+}
+
+
+
+### "That has been promised [to the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "Cela a été promis [au] NSDAP/[à] Misr al-Fatah/[à l']IKL/[à la] Légion arménienne/[aux] Chevaux de feu." (lower case / minuscule)
+defined_text = {
+	name = GetAuAlaAlPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_AUX
+	}
+}
+### "[To the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses has been promised that..." => "[Au] NSDAP/[À] Misr al-Fatah/[À l']IKL/[À la] Légion arménienne/[Aux] Chevaux de feu a été promis que..." (upper case / majuscule)
+defined_text = {
+	name = GetAuAlaAlPartiDemoCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_AUX_CAP
+	}
+}
+
+
+
+### "Couldn't [they] launch a coup d'État? (= the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)." => "Ne pourrait-[il] lancer un coup d'État ? (= le NSDAP) / Ne pourrait-[elle] lancer un coup d'État ? (= Misr al-Fatah/l'IKL/la Légion arménienne) / Ne pourraient-[ils] lancer un coup d'État ? (= les Chevaux de feu)." (lower case / minuscule)
+defined_text = {
+	name = GetIlEllePartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ILS
+	}
+}
+### "They could launch a coup d'État. (= the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)" => "Il pourrait bien lancer un coup d'État. (= le NSDAP) / Elle pourrait bien lancer un coup d'État. (= Misr al-Fatah/l'IKL/la Légion arménienne) / Ils pourraient bien lancer un coup d'État (= les Chevaux de feu)." (lower case / minuscule)
+defined_text = {
+	name = GetIlEllePartiDemoCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ILS_CAP
+	}
+}
+
+
+
+### "As for [the] NSDAP/Armenian Legion/Fire Horses/Kataeb..." => "Le NSDAP, quant à [lui]... / La Légion arménienne, quant à [elle]... / Les Chevaux de feu, quant à [eux]... / Les Kataëb, quant à [elle]..." (lower case / minuscule)
+defined_text = {
+	name = GetLuiElleEuxPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_EUX
+	}
+}
+### "[Them] are inflexible. (= NSDAP/Armenian Legion/Fire Horses/Kataeb)" => "[Lui]... est instransigeant. (= le NSDAP) / [Elle] est intransigeante. (= la Légion arménienne) / [Eux] sont intransigeants. (= les Chevaux de feu) / [Elles] sont intransigeantes (= les Kataëb)" (upper case / majuscule)
+defined_text = {
+	name = GetLuiElleEuxPartiDemoCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_EUX_CAP
+	}
+}
+
+
+
+### "[They] have to be removed from power (= NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)" => "Il faut [lui] retirer le pouvoir. (= au NSDAP/à Misr al-Fatah/à l'IKL/à la Légion arménienne) / Il faut [leur] retirer le pouvoir. (= aux Chevaux de feu)" (lower case / minuscule)
+defined_text = {
+	name = GetLuiLeurPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### "Removing [them] from power is essential. (= NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)" => "[Lui] retirer le pouvoir est crucial. (= au NSDAP/à Misr al-Fatah/à l'IKL/à la Légion arménienne) / [Leur] retirer le pouvoir est crucial. (= aux Chevaux de feu)" (upper case / majuscule)
+defined_text = {
+	name = GetLuiLeurPartiDemoCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### "That has to be enforced on [this] very NSDAP/Armenian Legion who seized power... / [those] very Fire Horses who seized power..." => "Il faut l'imposer à [ce] même NSDAP qui a pris le pouvoir... / Il faut l'imposer à [cette] même Légion arménienne qui a pris le pouvoir... / Il faut l'imposer à [ces] mêmes Chevaux de feu qui ont pris le pouvoir..." (upper case / majuscule)
+defined_text = {
+	name = GetCeCetteCesPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_CES
+	}
+}
+### "[This] very NSDAP/Armenian Legion who seized power... / [Those] very Fire Horses who seized power..." => "[Ce] même NSDAP qui a pris le pouvoir... / [Cette] même Légion arménienne qui a pris le pouvoir... / [Ces] mêmes Chevaux de feu qui ont pris le pouvoir..." (lower case / minuscule)
+defined_text = {
+	name = GetCeCetteCesPartiDemoCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_CES_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses is powerful in the country." => "Le NSDAP est puissant[]./Misr al-Fatah/L'IKL/La Légion arménienne est puissant[e] dans le pays./Les Chevaux de feu sont puissants dans le pays." (lower case / minuscule)
+defined_text = {
+	name = GetXEPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_S
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses is vulnerable." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne est vulnérable[]./Les Chevaux de feu sont vulnérable[s]." (lower case / minuscule)
+defined_text = {
+	name = GetXSPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_S
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion [is] weak. The Fire Horses [are] weak." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne [est] vulnérable./Les Chevaux de feu [sont] vulnérable[s]." (lower case / minuscule)
+defined_text = {
+	name = GetEstSontPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_SONT
+	}
+}
+### "[Is] the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion that strong? / [Are] the Fire Horses that strong?" => "[Est]-il si puissant ? (= le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne)/[Sont]-ils si puissants ? (= les Chevaux de feu)." (upper case / majuscule)
+defined_text = {
+	name = GetEstSontPartiDemoCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_SONT_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion [is] not weak. The Fire Horses [are] not weak." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne [n'est] pas vulnérable. / Les Chevaux de feu [ne sont] pas vulnérables." (lower case / minuscule)
+defined_text = {
+	name = GetNestNesontPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_NESONT
+	}
+}
+### "[Isn't] the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion strong enough? / [Aren't] the Fire Horses strong enough?" => "[N'est]-il pas suffisamment puissant ? (= le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne)/[Ne sont]-ils pas suffisamment puissants ? (= les Chevaux de feu)." (upper case / majuscule)
+defined_text = {
+	name = GetNestNesontPartiDemoCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_NESONT_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion has launch a coup d'État. / The Fire Horses [have] launched a coup d'État." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne [a] lancé un coup d'État. / Les Chevaux de feu [ont] lancé un coup d'État." (lower case / minuscule)
+defined_text = {
+	name = GetAOntPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ONT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of their ideas." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend[] avec ardeur ses idées. / Les Chevaux de feu défend[ent] avec ardeur leurs idées." (lower case / minuscule)
+defined_text = {
+	name = GetXEntPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses hold(s) on to power." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne se maintien[t] au pouvoir. / Les Chevaux de feu se maintien[nent] au pouvoir." (lower case / minuscule)
+defined_text = {
+	name = GetTNentPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_NENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses don't appear impressed by the political turn of the events." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne ne se laiss[e] pas impressionner par les menaces. / Les Chevaux de feu ne se laiss[ent] pas impressionner par la tournure des événements." (lower case / minuscule)
+defined_text = {
+	name = GetEEntPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses foresee a glorious future for the country." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne voi[t] un avenir radieux pour le pays. / Les Chevaux de feu voi[ent] un avenir radieux pour  le pays." (lower case / minuscule)
+defined_text = {
+	name = GetTEntPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of [their] ideology." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend avec ardeur [son] idéologie. / Les Chevaux de feu défendent avec ardeur [leur] idéologie." (lower case / minuscule)
+defined_text = {
+	name = GetSonLeurPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### "[Their] ideology is defended with zeal by the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "[Son] idéologie est défendue avec ardeur par le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne. / [Leur] idéologie est défendue avec ardeur par les Chevaux de feu." (upper case / majuscule)
+defined_text = {
+	name = GetSonLeurPartiDemoCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of [their] view." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend avec ardeur [sa] vision. / Les Chevaux de feu défendent avec ardeur [leur] vision." (lower case / minuscule)
+defined_text = {
+	name = GetSaLeurPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### "[Their] vision is defended with zeal by the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "[Sa] vision est défendue avec zèle par le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne. / [Leur] vision est défendue avec zèle par les Chevaux de feu." (upper case / majuscule)
+defined_text = {
+	name = GetSaLeurPartiDemoCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of their principles." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend avec ardeur [ses] principes. / Les Chevaux de feu défend[ent] avec ardeur [leurs] principes." (lower case / minuscule)
+defined_text = {
+	name = GetSesLeursPartiDemo
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEURS
+	}
+}
+### "[Their] principles are defended with zeal by the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "[Ses] principes sont défendus avec ardeur par le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne. / [Leurs] principes sont défendus avec ardeur par les Chevaux de feu." (upper case / majuscule)
+defined_text = {
+	name = GetSesLeursPartiDemoCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEURS_CAP
+	}
+}
+
+
+
+### Neutral Parties / Partis neutres ###
+
+### "The ruling party is [the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "Le parti au pouvoir est [le] NSDAP/[] Misr al-Fatah/[l']IKL/[la] Légion arménienne/[les] Chevaux de feu" (lower case / minuscule)
+defined_text = {
+	name = GetLeLaLPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LES
+	}
+}
+### "[The] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses rules the country." => "[Le] NSDAP/[] Misr al-Fatah/[L']IKL/[La] Légion arménienne/[Les] Chevaux de feu gouverne(nt) le pays." (upper case / majuscule)
+defined_text = {
+	name = GetLeLaLPartiNeutCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LES_CAP
+	}
+}
+
+
+
+### "That's the aim [of the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "C'est l'objectif [du] NSDAP/[de] Misr al-Fatah/[de l']IKL/[de la] Légion arménienne/[des] Chevaux de feu." (lower case / minuscule)
+defined_text = {
+	name = GetDuDelaDelPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_DES
+	}
+}
+### "[Of the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses came the idea that..." => "[Du] NSDAP/[De] Misr al-Fatah/[De l']IKL/[De la] Légion arménienne/[Des] Chevaux de feu est venue l'idée que..." (upper case / majuscule)
+defined_text = {
+	name = GetDuDelaDelPartiNeutCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_DES_CAP
+	}
+}
+
+
+
+### "That has been promised [to the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "Cela a été promis [au] NSDAP/[à] Misr al-Fatah/[à l']IKL/[à la] Légion arménienne/[aux] Chevaux de feu." (lower case / minuscule)
+defined_text = {
+	name = GetAuAlaAlPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_AUX
+	}
+}
+### "[To the] NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses has been promised that..." => "[Au] NSDAP/[À] Misr al-Fatah/[À l']IKL/[À la] Légion arménienne/[Aux] Chevaux de feu a été promis que..." (upper case / majuscule)
+defined_text = {
+	name = GetAuAlaAlPartiNeutCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_AUX_CAP
+	}
+}
+
+
+
+### "Couldn't [they] launch a coup d'État? (= the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)." => "Ne pourrait-[il] lancer un coup d'État ? (= le NSDAP) / Ne pourrait-[elle] lancer un coup d'État ? (= Misr al-Fatah/l'IKL/la Légion arménienne) / Ne pourraient-[ils] lancer un coup d'État ? (= les Chevaux de feu)." (lower case / minuscule)
+defined_text = {
+	name = GetIlEllePartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ILS
+	}
+}
+### "They could launch a coup d'État. (= the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)" => "Il pourrait bien lancer un coup d'État. (= le NSDAP) / Elle pourrait bien lancer un coup d'État. (= Misr al-Fatah/l'IKL/la Légion arménienne) / Ils pourraient bien lancer un coup d'État (= les Chevaux de feu)." (lower case / minuscule)
+defined_text = {
+	name = GetIlEllePartiNeutCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ILS_CAP
+	}
+}
+
+
+
+### "As for [the] NSDAP/Armenian Legion/Fire Horses/Kataeb..." => "Le NSDAP, quant à [lui]... / La Légion arménienne, quant à [elle]... / Les Chevaux de feu, quant à [eux]... / Les Kataëb, quant à [elle]..." (lower case / minuscule)
+defined_text = {
+	name = GetLuiElleEuxPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_EUX
+	}
+}
+### "[Them] are inflexible. (= NSDAP/Armenian Legion/Fire Horses/Kataeb)" => "[Lui]... est instransigeant. (= le NSDAP) / [Elle] est intransigeante. (= la Légion arménienne) / [Eux] sont intransigeants. (= les Chevaux de feu) / [Elles] sont intransigeantes (= les Kataëb)" (upper case / majuscule)
+defined_text = {
+	name = GetLuiElleEuxPartiNeutCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_EUX_CAP
+	}
+}
+
+
+
+### "[They] have to be removed from power (= NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)" => "Il faut [lui] retirer le pouvoir. (= au NSDAP/à Misr al-Fatah/à l'IKL/à la Légion arménienne) / Il faut [leur] retirer le pouvoir. (= aux Chevaux de feu)" (lower case / minuscule)
+defined_text = {
+	name = GetLuiLeurPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### "Removing [them] from power is essential. (= NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses)" => "[Lui] retirer le pouvoir est crucial. (= au NSDAP/à Misr al-Fatah/à l'IKL/à la Légion arménienne) / [Leur] retirer le pouvoir est crucial. (= aux Chevaux de feu)" (upper case / majuscule)
+defined_text = {
+	name = GetLuiLeurPartiNeutCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### "That has to be enforced on [this] very NSDAP/Armenian Legion who seized power... / [those] very Fire Horses who seized power..." => "Il faut l'imposer à [ce] même NSDAP qui a pris le pouvoir... / Il faut l'imposer à [cette] même Légion arménienne qui a pris le pouvoir... / Il faut l'imposer à [ces] mêmes Chevaux de feu qui ont pris le pouvoir..." (upper case / majuscule)
+defined_text = {
+	name = GetCeCetteCesPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_CES
+	}
+}
+### "[This] very NSDAP/Armenian Legion who seized power... / [Those] very Fire Horses who seized power..." => "[Ce] même NSDAP qui a pris le pouvoir... / [Cette] même Légion arménienne qui a pris le pouvoir... / [Ces] mêmes Chevaux de feu qui ont pris le pouvoir..." (lower case / minuscule)
+defined_text = {
+	name = GetCeCetteCesPartiNeutCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_CES_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses is powerful in the country." => "Le NSDAP est puissant[]./Misr al-Fatah/L'IKL/La Légion arménienne est puissant[e] dans le pays./Les Chevaux de feu sont puissants dans le pays." (lower case / minuscule)
+defined_text = {
+	name = GetXEPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_S
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses is vulnerable." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne est vulnérable[]./Les Chevaux de feu sont vulnérable[s]." (lower case / minuscule)
+defined_text = {
+	name = GetXSPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_S
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion [is] weak. The Fire Horses [are] weak." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne [est] vulnérable./Les Chevaux de feu [sont] vulnérable[s]." (lower case / minuscule)
+defined_text = {
+	name = GetEstSontPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_SONT
+	}
+}
+### "[Is] the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion that strong? / [Are] the Fire Horses that strong?" => "[Est]-il si puissant ? (= le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne)/[Sont]-ils si puissants ? (= les Chevaux de feu)." (upper case / majuscule)
+defined_text = {
+	name = GetEstSontPartiNeutCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_SONT_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion [is] not weak. The Fire Horses [are] not weak." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne [n'est] pas vulnérable. / Les Chevaux de feu [ne sont] pas vulnérables." (lower case / minuscule)
+defined_text = {
+	name = GetNestNesontPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_NESONT
+	}
+}
+### "[Isn't] the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion strong enough? / [Aren't] the Fire Horses strong enough?" => "[N'est]-il pas suffisamment puissant ? (= le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne)/[Ne sont]-ils pas suffisamment puissants ? (= les Chevaux de feu)." (upper case / majuscule)
+defined_text = {
+	name = GetNestNesontPartiNeutCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_NESONT_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion has launch a coup d'État. / The Fire Horses [have] launched a coup d'État." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne [a] lancé un coup d'État. / Les Chevaux de feu [ont] lancé un coup d'État." (lower case / minuscule)
+defined_text = {
+	name = GetAOntPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ONT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of their ideas." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend[] avec ardeur ses idées. / Les Chevaux de feu défend[ent] avec ardeur leurs idées." (lower case / minuscule)
+defined_text = {
+	name = GetXEntPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses hold(s) on to power." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne se maintien[t] au pouvoir. / Les Chevaux de feu se maintien[nent] au pouvoir." (lower case / minuscule)
+defined_text = {
+	name = GetTNentPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_NENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses don't appear impressed by the political turn of the events." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne ne se laiss[e] pas impressionner par les menaces. / Les Chevaux de feu ne se laiss[ent] pas impressionner par la tournure des événements." (lower case / minuscule)
+defined_text = {
+	name = GetEEntPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses foresee a glorious future for the country." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne voi[t] un avenir radieux pour le pays. / Les Chevaux de feu voi[ent] un avenir radieux pour  le pays." (lower case / minuscule)
+defined_text = {
+	name = GetTEntPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ENT
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of [their] ideology." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend avec ardeur [son] idéologie. / Les Chevaux de feu défendent avec ardeur [leur] idéologie." (lower case / minuscule)
+defined_text = {
+	name = GetSonLeurPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### "[Their] ideology is defended with zeal by the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "[Son] idéologie est défendue avec ardeur par le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne. / [Leur] idéologie est défendue avec ardeur par les Chevaux de feu." (upper case / majuscule)
+defined_text = {
+	name = GetSonLeurPartiNeutCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of [their] view." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend avec ardeur [sa] vision. / Les Chevaux de feu défendent avec ardeur [leur] vision." (lower case / minuscule)
+defined_text = {
+	name = GetSaLeurPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR
+	}
+}
+### "[Their] vision is defended with zeal by the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "[Sa] vision est défendue avec zèle par le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne. / [Leur] vision est défendue avec zèle par les Chevaux de feu." (upper case / majuscule)
+defined_text = {
+	name = GetSaLeurPartiNeutCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEUR_CAP
+	}
+}
+
+
+
+### "The NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses stand up with zeal for the defense of their principles." => "Le NSDAP/Misr al-Fatah/L'IKL/La Légion arménienne défend avec ardeur [ses] principes. / Les Chevaux de feu défend[ent] avec ardeur [leurs] principes." (lower case / minuscule)
+defined_text = {
+	name = GetSesLeursPartiNeut
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEURS
+	}
+}
+### "[Their] principles are defended with zeal by the NSDAP/IKL/Misr al-Fatah/UNF/Armenian Legion/Fire Horses." => "[Ses] principes sont défendus avec ardeur par le NSDAP/Misr al-Fatah/l'IKL/la Légion arménienne. / [Leurs] principes sont défendus avec ardeur par les Chevaux de feu." (upper case / majuscule)
+defined_text = {
+	name = GetSesLeursPartiNeutCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LEURS_CAP
+	}
+}
+
+
+
+##############################
+###  Leaders / Dirigeants  ###
+##############################
+# We only generate male leaders
+# We'll pretend they all start with consonants
+
+### Ex. "That's an order issued by []Adolf Hitler/Charles de Gaulle / by [the] Federal Council." => "C'est un ordre envoyé par []Adolf Hitler/Charles de Gaulle / [le] Conseil fédéral / [la] Junte militaire." (lower case / minuscule)
+defined_text = {
+	name = GetLeLaLDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_XX
+	}
+}
+### Ex. "[]Adolf Hitler/Charles de Gaulle / [The] Federal Council took this decision." => "[] Adolf Hitler/Charles de Gaulle / [Le] Conseil fédéral [La] Junte militaire a pris cette décision." (upper case / majuscule)
+defined_text = {
+	name = GetLeLaLDirCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_XX
+	}
+}
+
+
+
+### Ex. "It is obvious []Adolf Hitler/Charles de Gaulle/[the] Federal Council must act swiftly." => "Il est évident [qu']Adolf Hitler / [que] Charles de Gaulle / [que le] Conseil fédéral / [que l']Imam Yahya / [que la] Junte militaire doit agir rapidement." (lower case / minuscule)
+defined_text = {
+	name = GetQueleQuelaQuelDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_QUE
+	}
+}
+### Ex. "Let []Adolf Hitler/Charles de Gaulle / [the] Federal Council take the decision quickly." => "[Qu']Adolf Hitler / [Que] Charles de Gaulle / [Que le] Conseil fédéral / [Que l']Imam Yahya [Que la] Junte militaire prenne rapidement sa décision." (upper case / majuscule)
+defined_text = {
+	name = GetQueleQuelaQuelDirCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_QUE_CAP
+	}
+}
+
+
+
+### Ex. "It's obvious [that] Adolf Hitler/Charles de Gaulle/Federal Council/Military Junta is crazy!" => "Il est évident que [cet] Adolf Hitler / [ce] Charles de Gaulle / [ce] Conseil fédéral / [cet] Imam Yahya / [cette] Junte militaire est malade !" (lower case / minuscule)
+defined_text = {
+	name = GetCeCetCetteDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_CE
+	}
+}
+### Ex. "[That] Adolf Hitler/Charles de Gaulle/Federal Council/Military Junta is crazy!" => "[Cet] Adolf Hitler / [Ce] Charles de Gaulle / [Ce] Conseil fédéral / [Cet] Imam Yahya / [Cette] Junte militaire est malade !" (upper case / majuscule)
+defined_text = {
+	name = GetCeCetCetteDirCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_CE_CAP
+	}
+}
+
+
+
+### Ex. "The letter has been given [to] Adolf Hitler/Charles de Gaulle / [to the] Federal Council." => "La lettre a été remise [à] Adolf Hitler/Charles de Gaulle / [au] Conseil fédéral / [à la] Junte militaire." (lower case / minuscule)
+defined_text = {
+	name = GetAuAlaAlDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_A
+	}
+}
+### Ex. "[To] Adolf Hitler/Charles de Gaulle / [To the] Federal Council were given some advices." => "[À] Adolf Hitler/Charles de Gaulle / [Au] Conseil fédéral [À la] Junte militaire ont été remises quelques recommandations." (upper case / majuscule)
+defined_text = {
+	name = GetAuAlaAlDirCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_A_CAP
+	}
+}
+
+
+
+### Ex. "The letter has been given [to the] ruler." => "La lettre a été remise [au] dirigeant/[à la] dirigeante." (lower case / minuscule)
+defined_text = {
+	name = GetAuAlaFDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_AU
+	}
+}
+### Ex. "[To the] ruler has been given a solemn advice." => "[Au] dirigeant/[À la] dirigeante a été donné un conseil solennel." (upper case / majuscule)
+defined_text = {
+	name = GetAuAlaFDirCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_AU_CAP
+	}
+}
+
+
+
+### Ex. "That's a direct order [by] Adolf Hitler/Charles de Gaulle / [by the] Federal Council." => "C'est un ordre direct [d']Adolf Hitler / [de]Charles de Gaulle / [du] Conseil fédéral / [de la] Junte militaire." (lower case / minuscule)
+defined_text = {
+	name = GetDuDelaDelDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_DE
+	}
+}
+### Ex. "[From] Adolf Hitler/Charles de Gaulle / [From the] Federal Council came this order: ..." => "[D']Adolf Hitler / [De] Charles de Gaulle / [Du] Conseil fédéral / [De la] Junte militaire est venu cet ordre : ..." (upper case / majuscule)
+defined_text = {
+	name = GetDuDelaDelDirCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_DE_CAP
+	}
+}
+
+
+
+### Ex. "That's a direct order [of the] ruler." => "C'est un ordre direct [du] dirigeant/[de la] dirigeante." (lower case / minuscule)
+defined_text = {
+	name = GetDuDelaFDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_DU_CAP
+	}
+}
+
+
+
+### Ex. "It's rumored [that] Adolf Hitler/Charles de Gaulle... / [that the] Federal Council..." => "On dit [qu']Adolf Hitler / [que] Charles de Gaulle / [que le] Conseil fédéral / [que la] Junte militaire..." (lower case / minuscule)
+defined_text = {
+	name = GetQueleQuelaQuelDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_QUE
+	}
+}
+### Ex. "[That] Adolf Hitler/Charles de Gaulle would stay in command would be incredible. / [That the] Federal Council would stay in command would be incredible." => "[Qu']Adolf Hitler / [Que] Charles de Gaulle / [Que le] Conseil fédéral [Que la] Junte militaire continue de commander serait incroyable." (upper case / majuscule)
+defined_text = {
+	name = GetQueleQuelaQuelDirCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_QUE_CAP
+	}
+}
+
+
+
+### Ex. "Because [he/she] gave a direct order..." => "Parce qu'[il/elle] a donné un ordre direct." (lower case / minuscule)
+defined_text = {
+	name = GetIlElleDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_IL
+	}
+}
+### Ex. "[He/She] gave a direct order." => "[Il/Elle] a donné un ordre direct." (upper case / majuscule)
+defined_text = {
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_IL_CAP
+	}
+}
+
+
+### Ex. "We need to know [if he/she] want to..." => "Nous devons savoir [s'il/si elle] acceptera...." (lower case / minuscule)
+defined_text = {
+	name = GetSilSielleDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_SIL
+	}
+}
+### Ex. "[If he/she] came to surrender..." => "[S'il/Si elle] en venait à se rendre...." (lower case / minuscule)
+defined_text = {
+	name = GetSilSielleDirCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_SIL_CAP
+	}
+}
+
+
+
+### Ex. "This soldier dared to speak directly to [him/her]!" => "Ce soldat a osé s'adresser directement à [celui/celle]-ci !" (lower case / minuscule)
+defined_text = {
+	name = GetCeluiCelleDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_CELUI
+	}
+}
+### Ex. "[This one] answered by a few days at jail." => "[Celui/Celle]-ci a répliqué en le condamnant à quelques jours de trou." (upper case / majuscule)
+defined_text = {
+	name = GetCeluiCelleDirCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_CELUI_CAP
+	}
+}
+
+
+
+### Ex. "He/She said it [himself/herself]." => "C'est [lui/elle]-même qui l'a dit." (lower case / minuscule)
+defined_text = {
+	name = GetLuiElleDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LUI
+	}
+}
+### Ex. "As for [himself/herself], he/she doesn't seem to bother that much about that." => "[Lui/Elle] ne semble guère s'en préoccuper." (upper case / majuscule)
+defined_text = {
+	name = GetLuiElleDirCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LUI_CAP
+	}
+}
+
+
+
+### Ex. "We'll show [him/her]." => "Nous allons nous occuper [de lui/d'elle]" (lower case / minuscule)
+defined_text = {
+	name = GetDeluiDelleDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_DELUI
+	}
+}
+### Ex. "[From him/her] came the order." => "[De lui/D'elle] est venu l'ordre." (upper case / majuscule)
+defined_text = {
+	name = GetDeluiDelleDirCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_DELUI_CAP
+	}
+}
+
+
+
+### Ex. "We'll have to meet [him/her] in person." => "Nous allons devoir [le/la] rencontrer en personne." (lower case / minuscule)
+defined_text = {
+	name = GetLeLaFDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LE
+	}
+}
+### Ex. "Having [him/her] killed would not be a good idea." => "[Le/La] faire tuer pourrait ne pas être une bonne idée." (upper case / majuscule)
+defined_text = {
+	name = GetLeLaFDirCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_LE_CAP
+	}
+}
+
+
+
+### Ex. "The [Prime Minister]" => "Le Premi[er] Ministre / La Premi[ère] ministre" (lower case / minuscule)
+defined_text = {
+	name = GetErEreDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_ER
+	}
+}
+
+
+
+### Ex. "Please say, [what] (wo)man may do this?" => "Dites, [quel/quelle] homme/femme peut faire cela ?" (lower case / minuscule)
+defined_text = {
+	name = GetQuelQuelleDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_QUEL2
+	}
+}
+### Ex. "[What] a patriot he/she is!" => "[Quel/Quelle] genre de patriote est-ce là ?" (upper case / majuscule)
+defined_text = {
+	name = GetQuelQuelleDirCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_QUEL2_CAP
+	}
+}
+
+
+
+### Ex. "What a [man/woman]!" => "Quel(le) [homme/femme] !" (lower case / minuscule)
+defined_text = {
+	name = GetHommeFemmeDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_HOMME
+	}
+}
+### Ex. "[Man/Woman] of action or not..." => "[Homme/Femme] d'action ou pas..." (upper case / majuscule)
+defined_text = {
+	name = GetHommeFemmeDirCap
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_HOMME_CAP
+	}
+}
+
+
+
+### Ex. "He/She's the greatest strategist ever." => "C'est le/la plus grand[e] stratège jamais vu[e]." (lower case / minuscule)
+defined_text = {
+	name = GetXEDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_X
+	}
+}
+
+
+
+### Ex. "He/She's kept silent." => "Il/Elle est silenci[eux/euse] sur la question." (lower case / minuscule)
+defined_text = {
+	name = GetEuxEuseDir
+	text = {
+		trigger = {
+			always = yes
+		}
+		localization_key = FRLOC_EUX
+	}
+}
+
+
+####################################
+###   Characters / Personnages   ###
+####################################
+# Taken straight from vanilla
+
+### Ex. "We know [he/she] won't break." => "Nous savons qu'[il/elle] ne craquera pas." (lower case / minuscule)
+defined_text = {
+	name = GetIlEllePers
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = FRLOC_IL
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = FRLOC_ELLE
+	}
+}
+### Ex. "[He/She] did not break." => "[Il/Elle] n'a pas craqué." (upper case / majuscule)
+defined_text = {
+	name = GetIlEllePersCap
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = FRLOC_IL_CAP
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = FRLOC_ELLE_CAP
+	}
+}
+
+
+
+### Ex. "We have to free [him/her]." => "Nous devons [le/la] sortir de là." (lower case / minuscule)
+defined_text = {
+	name = GetLeLaFPers
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = FRLOC_LE
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = FRLOC_LA
+	}
+}
+### Ex. "[Him/Her] in custody is a very bad thing." => "[Le/La] sortir de là est crucial." (upper case / majuscule)
+defined_text = {
+	name = GetLeLaFPersCap
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = FRLOC_LE_CAP
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = FRLOC_LA_CAP
+	}
+}
+
+
+
+### Ex. "We'll know soon enough [if he/she] accepts." => "Nous saurons bientôt [s'il/si elle] accepte." (lower case / minuscule)
+defined_text = {
+	name = GetSilSiellePers
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = FRLOC_SIL
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = FRLOC_SIELLE
+	}
+}
+### Ex. "[If he/she] accepts this mission..." => "[S'il/Si elle] accepte la mission..." (upper case / majuscule)
+defined_text = {
+	name = GetSilSiellePersCap
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = FRLOC_SIL_CAP
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = FRLOC_SIELLE_CAP
+	}
+}
+
+
+
+### Ex. "This is a very skilled operative." => "C'est un[ø/e] agent très compétent[ø/e]" (lower case / minuscule)
+defined_text = {
+	name = GetXEPers
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = FRLOC_X
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = FRLOC_E
+	}
+}
+
+
+
+### Ex. "This is a foreign operative." => "C'est un[ø/e] agent étrang[er/ère]" (lower case / minuscule)
+defined_text = {
+	name = GetErErePers
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = FRLOC_ER
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = FRLOC_ERE
+	}
+}
+
+
+
+### Ex. "He died a [hero]." => "Il est mort en [héro]./Elle est morte en [héroïne]." (lower case / minuscule)
+defined_text = {
+	name = GetHerosHeroinePers
+	text = {
+		trigger = { NOT = { is_female = yes } }
+		localization_key = FRLOC_HEROS
+	}
+	text = {
+		trigger = { is_female = yes }
+		localization_key = FRLOC_HEROINE
+	}
+}
+
+###############################
+###   Factions / Factions   ###
+###############################
+# We only output "The Alliance of X"
+
+### Ex. "This nation leads Allies/Axis/Comintern" => "Ce pays dirige [le] Komintern / [l']Axe / [les] Alliés." (lower case / minuscule)
+defined_text = {
+	name = GetLeLaLFaction
+	text = {
+		trigger = {
+		always = yes
+			}
+		}
+		localization_key = FRLOC_L
+	}
+}
+### Ex. "[] Allies/Axis/Comintern is led by (Country)" => "[Le] Komintern / [L']Axe / [Les] Alliés est/sont dirigés par NP." (upper case / majuscule)
+defined_text = {
+	name = GetLeLaLFactionCap
+	text = {
+		trigger = {
+		always = yes
+			}
+		}
+		localization_key = FRLOC_L_CAP
+	}
+}
+
+
+
+### Ex. "This nation agreed to become a member of Allies/Axis/Comintern" => "Ce pays a accepté de devenir membre [du] Komintern / [de l']Axe / [des] Alliés." (lower case / minuscule)
+defined_text = {
+	name = GetDuDelaDelFaction
+	text = {
+		trigger = {
+		always = yes
+			}
+		}
+		localization_key = FRLOC_DEL
+	}
+}
+### Ex. "[From] Allies/Axis/Comintern come the greatest threat." => "[Du] Komintern / [De l']Axe / [Des] Alliés provient le plus grand des dangers." (upper case / majuscule)
+defined_text = {
+	name = GetDuDelaDelFactionCap
+	text = {
+		trigger = {
+		always = yes
+			}
+		}
+		localization_key = FRLOC_DEL_CAP
+	}
+}
+
+
+
+### Ex. "He adressed [] Allies/Axis/Comintern" => "Il s'est adressé [au] Komintern / [à l']Axe / [aux] Alliés." (lower case / minuscule)
+defined_text = {
+	text = {
+		trigger = {
+		always = yes
+			}
+		}
+		localization_key = FRLOC_AL
+	}
+}
+### Ex. "[] Allies/Axis/Comintern should deal with it." => "[Au] Komintern / [À l']Axe / [Aux] Alliés de s'en occuper." (upper case / majuscule)
+defined_text = {
+	name = GetAuAlaAlFactionCap
+	text = {
+		trigger = {
+		always = yes
+			}
+		}
+		localization_key = FRLOC_AL_CAP
+	}
+}
+
+
+
+### Ex. "Allies/Axis/Comintern have been established." => "Le Komintern vient d'être établi[]. / L'Axe vient d'être établi[]. / Les Alliés vienennt d'être établi[s]." (lower case / minuscule)
+defined_text = {
+	name = GetXEFaction
+	text = {
+		trigger = {
+		always = yes
+			}
+		}
+		localization_key = FRLOC_E
+	}
+}
+
+
+
+### Ex. "Allies/Axis/Comintern [is rising]." => "Le Komintern/L'Axe mont[e] en puissance. / Les Alliés mont[ent] en puissance." (lower case / minuscule)
+defined_text = {
+	name = GetEEntFaction
+	text = {
+		trigger = {
+		always = yes
+			}
+		}
+		localization_key = FRLOC_E
+	}
+}
+
+
+
+### Ex. "Allies/Axis/Comintern [has/have declared] war." => "Le Komintern/L'Axe [a] déclaré la guerre. / Les Alliés [ont] déclaré la guerre." (lower case / minuscule)
+defined_text = {
+	name = GetAOntFaction
+	text = {
+		trigger = {
+		always = yes
+			}
+		}
+		localization_key = FRLOC_A2
+	}
+}
+
+
+
+### Ex. "Allies/Axis/Comintern [is/are] in war." => "Le Komintern/L'Axe [est] en guerre. / Les Alliés [sont] en guerre." (lower case / minuscule)
+defined_text = {
+	name = GetEstSontFaction
+	text = {
+		trigger = {
+		always = yes
+			}
+		}
+		localization_key = FRLOC_EST
+	}
+}
+
+
+
+### Ex. "Allies/Axis/Comintern [is/are] frightening." => "Le Komintern/L'Axe [fait] peur. / Les Alliés [font] peur." (lower case / minuscule)
+defined_text = {
+	name = GetFaitFontFaction
+	text = {
+		trigger = {
+		always = yes
+			}
+		}
+		localization_key = FRLOC_FAIT
+	}
+}
+
+
+
+### Ex. "Allies/Axis/Comintern [continue] the fight elsewhere." => "Le Komintern/L'Axe poursui[t] le combat ailleurs. / Les Alliés poursui[vent] le combat ailleurs." (lower case / minuscule)
+defined_text = {
+	name = GetTVentFaction
+	text = {
+		trigger = {
+		always = yes
+			}
+		}
+		localization_key = FRLOC_T
+	}
+}
+
+#################################################
+###############  Strategic regions  #############
+#################################################
+# Taken straight from vanilla, as we change not the strategic reasons
+
+### Ex. "The ace was killed while flying [over] Borneo/Scotland/Baltic Sea/Alpine Region/Southern England" => "L'as a été tué en volant [au-dessus de] Bornéo / [au-dessus de l']Écosse / [au-dessus de la] Baltique / [au-dessus des] Alpes / [au-dessus du] Sud de l'Angleterre" (lower case / minuscule)
+defined_text = {
+	name = GetAudessusdelazone
+	text = {
+		trigger = {
+			frloc_strategic_area_audessusde = yes
+		}
+		localization_key = FRLOC_AUDESSUSDE
+	}
+	text = {
+		trigger = {
+			frloc_strategic_area_audessusdel = yes
+		}
+		localization_key = FRLOC_AUDESSUSDEL
+	}
+	text = {
+		trigger = {
+			frloc_strategic_area_audessusdela = yes
+		}
+		localization_key = FRLOC_AUDESSUSDELA
+	}
+	text = {
+		trigger = {
+			frloc_strategic_area_audessusdes = yes
+		}
+		localization_key = FRLOC_AUDESSUSDES
+	}
+	text = {
+		trigger = {
+			frloc_strategic_area_audessusdu = yes
+		}
+		localization_key = FRLOC_AUDESSUSDU
+	}
+	text = { # FALLBACK
+		trigger = {
+		}
+		localization_key = FRLOC_ECHEC
+	}
+}
+# States: categories as per converter
+
+############################################
+###   Capital States / États capitales   ###
+############################################
+### Ex. "The troops [in] Berlin/Greater London/Ile-de-France/Okinawa" => "Les troupes stationnées [autour de] Berlin/[dans le] Grand Londres/[en] Île-de-France/[sur] Okinawa" (lower case / minuscule)
+defined_text = {
+	name = GetAutourdelacapitale
+	text = {
+		trigger = {
+			OR = {
+				msav = yes
+				fsav = yes
+			}
+		}
+		localization_key = FRLOC_DANSL
+	}
+	text = {
+		trigger = {
+			fsac = yes
+		}
+		localization_key = FRLOC_DANSLA
+	}
+	text = {
+		trigger = {
+			msac = yes
+		}
+		localization_key = FRLOC_DANSLE
+	}
+	text = {
+		trigger = {
+			OR = {
+				mpac = yes
+				mpav = yes
+				fpac = yes
+				fpav = yes
+			}
+		}
+		localization_key = FRLOC_DANSLES
+	}
+	text = {
+		trigger = {
+			OR = {
+				msnc = yes
+				msnv = yes
+				mpnc = yes
+				mpnv = yes
+				fsnc = yes
+				fsnv = yes
+				fpnc = yes
+				fpnv = yes
+			}
+		}
+		localization_key = FRLOC_EN
+	}
+	text = { # FALLBACK
+		trigger = {
+		}
+		localization_key = FRLOC_ECHEC
+	}
+}
+
+
+
+### Ex. "The opressors [in] Berlin/Greater London/Ile-de-France/Okinawa..." => "Les opresseurs [de] Berlin/[du] Grand Londres/[d']Île-de-France/[d']Okinawa" (lower case / minuscule)
+defined_text = {
+	name = GetDanslacapitale
+	text = {
+		trigger = {
+			msac = yes
+		}
+		localization_key = FRLOC_DU
+	}
+	text = {
+		trigger = {
+			msav = yes
+		}
+		localization_key = FRLOC_DELA
+	}
+	text = {
+		trigger = {
+			OR = {
+				msav = yes
+				fsav = yes
+			}
+		}
+		localization_key = FRLOC_DEL
+	}
+	text = {
+		trigger = {
+			OR = {
+				msnc = yes
+				mpnc = yes
+				fsnc = yes
+				fpnc = yes
+			}
+		}
+		localization_key = FRLOC_DE
+	}
+	text = {
+		trigger = {
+			OR = {
+				msnv = yes
+				mpnv = yes
+				fsnv = yes
+				fpnv = yes
+			}
+		}
+		localization_key = FRLOC_D
+	}
+	text = {
+		trigger = {
+			OR = {
+				msav = yes
+				fsav = yes
+			}
+		}
+		localization_key = FRLOC_DEL
+	}
+	text = {
+		trigger = {
+			OR = {
+				mpac = yes
+				mpav = yes
+				fpac = yes
+				fpav = yes
+			}
+		}
+		localization_key = FRLOC_DES
+	}
+	text = {
+		trigger = { # Fallback
+		
+		}
+		localization_key = FRLOC_DE
+	}
+}
+
+
+
+### Ex. "The bomb was droped [over] Berlin/Greater London/Ile-de-France/Okinawa" => "La bombe a été lâchée [au-dessus de] Berlin/[au-dessus du] Grand Londres/[au-dessus de l']Île-de-France/[au-dessus d']Okinawa" (lower case / minuscule)
+defined_text = {
+	name = GetAudessusdelacapitale
+	text = {
+		trigger = {
+			msac = yes
+		}
+		localization_key = FRLOC_AUDESSUSDU
+	}
+	text = {
+		trigger = {
+			fsac = yes
+		}
+		localization_key = FRLOC_AUDSSUSDELA
+	}
+	text = {
+		trigger = {
+			OR = {
+				msav = yes
+				fsav = yes
+			}
+		}
+		localization_key = FRLOC_AUDESSUSDEL
+	}
+	text = {
+		trigger = {
+			OR = {
+				msnc = yes
+				mpnc = yes
+				fsnc = yes
+				fpnc = yes
+			}
+		}
+		localization_key = FRLOC_AUDESSUSDE
+	}
+	text = {
+		trigger = {
+			OR = {
+				msnv = yes
+				mpnv = yes
+				fsnv = yes
+				fpnv = yes
+			}
+		}
+		localization_key = FRLOC_AUDESSUSD
+	}
+	text = {
+		trigger = {
+			OR = {
+				mpac = yes
+				mpav = yes
+				fpac = yes
+				fpav = yes
+			}
+		}
+		localization_key = FRLOC_AUDESSUSDES
+	}
+	text = {
+		trigger = { # Fallback
+		
+		}
+		localization_key = FRLOC_SUR
+	}
+}
+
+##########################
+###   States / États   ###
+##########################
+### Ex. "We occupy Luxemburg/Corsica/Auvergne/Balearic Islands/Cuba." => "Nous occupons [le] Luxembourg/[la] Corse/[l']Auvergne/[les] Baléares/[x] Cuba." (lower case / minuscule)
+defined_text = {
+	name = GetLeLaLEtat
+	text = {
+		trigger = {
+			msac = yes
+		}
+		localization_key = FRLOC_LE
+	}
+	text = {
+		trigger = {
+			fsac = yes
+		}
+		localization_key = FRLOC_LA
+	}
+	text = {
+		trigger = {
+			OR = {
+				msav = yes
+				fsav = yes
+			}
+		}
+		localization_key = FRLOC_L
+	}
+	text = {
+		trigger = {
+			OR = {
+				mpac = yes
+				mpav = yes
+				fpac = yes
+				fpav = yes
+			}
+		}
+		localization_key = FRLOC_LES
+	}
+	text = {
+		trigger = {
+			OR = {
+				msnc = yes
+				msnv = yes
+				mpnc = yes
+				mpnv = yes
+				fsnc = yes
+				fsnv = yes
+				fpnc = yes
+				fpnv = yes
+			}
+		}
+		localization_key = FRLOC_XX
+	}
+	text = {
+		trigger = { # Fallback
+		
+		}
+		localization_key = FRLOC_XX
+	}
+}
+### Ex. "Luxemburg/Corsica/Auvergne/Balearic Islands/Cuba is occupied." => "[Le] Luxembourg/[La] Corse/[L']Auvergne/[Les] Baléares/[x] Cuba est sous occupation." (upper case / majuscule)
+defined_text = {
+	name = GetLeLaLEtatCap
+	text = {
+		trigger = {
+			msac = yes
+		}
+		localization_key = FRLOC_LE_CAP
+	}
+	text = {
+		trigger = {
+			fsac = yes
+		}
+		localization_key = FRLOC_LA_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				msav = yes
+				fsav = yes
+			}
+		}
+		localization_key = FRLOC_L_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				mpac = yes
+				mpav = yes
+				fpac = yes
+				fpav = yes
+			}
+		}
+		localization_key = FRLOC_LES_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				msnc = yes
+				msnv = yes
+				mpnc = yes
+				mpnv = yes
+				fsnc = yes
+				fsnv = yes
+				fpnc = yes
+				fpnv = yes
+			}
+		}
+		localization_key = FRLOC_XX
+	}
+	text = {
+		trigger = { # Fallback
+		
+		}
+		localization_key = FRLOC_XX
+	}
+}
+
+
+
+### Ex. "We occupy Luxemburg/Corsica/Auvergne/Balearic Islands/Cuba." => "Nous nous sommes emparés [du] Luxembourg/[de la] Corse/[de l']Auvergne/[de] Cuba/[d']Ankara/des Baléares." (lower case / minuscule)
+defined_text = {
+	name = GetDuDelaDelEtat
+	text = {
+		trigger = {
+			msac = yes
+		}
+		localization_key = FRLOC_DU
+	}
+	text = {
+		trigger = {
+			fsac = yes
+		}
+		localization_key = FRLOC_DELA
+	}
+	text = {
+		trigger = {
+			OR = {
+				msav = yes
+				fsav = yes
+			}
+		}
+		localization_key = FRLOC_DEL
+	}
+	text = {
+		trigger = {
+			OR = {
+				msnc = yes
+				mpnc = yes
+				fsnc = yes
+				fpnc = yes
+			}
+		}
+		localization_key = FRLOC_DE
+	}
+	text = {
+		trigger = {
+			OR = {
+				msnv = yes
+				mpnv = yes
+				fsnv = yes
+				fpnv = yes
+			}
+		}
+		localization_key = FRLOC_D
+	}
+	text = {
+		trigger = {
+			OR = {
+				mpac = yes
+				mpav = yes
+				fpav = yes
+				fpac = yes
+			}
+		}
+		localization_key = FRLOC_DES
+	}
+	text = {
+		trigger = { # Fallback
+		
+		}
+		localization_key = FRLOC_DE
+	}
+}
+### Ex. "They finally were chased away from Luxemburg/Corsica/Auvergne/Balearic Islands/Cuba." => "[Du] Luxembourg/[De la] Corse/[De l']Auvergne/[De] Cuba/[D']Ankara/Des Baléares, ils ont été enfin chassés." (upper case / majuscule)
+defined_text = {
+	name = GetDuDelaDelEtatCap
+	text = {
+		trigger = {
+			msac = yes
+		}
+		localization_key = FRLOC_DU_CAP
+	}
+	text = {
+		trigger = {
+			fsac = yes
+		}
+		localization_key = FRLOC_DELA_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				msav = yes
+				fsav = yes
+			}
+		}
+		localization_key = FRLOC_DEL_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				msnc = yes
+				mpnc = yes
+				fsnc = yes
+				fpnc = yes
+			}
+		}
+		localization_key = FRLOC_DE_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				msnv = yes
+				mpnv = yes
+				fsnv = yes
+				fpnv = yes
+			}
+		}
+		localization_key = FRLOC_D_CAP
+	}
+	text = {
+		trigger = {
+			OR = {
+				mpac = yes
+				mpav = yes
+				fpav = yes
+				fpac = yes
+			}
+		}
+		localization_key = FRLOC_DES_CAP
+	}
+	text = {
+		trigger = { # Fallback
+		
+		}
+		localization_key = FRLOC_DE_CAP
+	}
+}
