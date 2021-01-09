@@ -120,7 +120,8 @@ class States: commonItems::parser
 		 const mappers::ProvinceMapper& provinceMapper,
 		 const MapData& mapData,
 		 const std::map<int, Province>& provinces,
-		 const Configuration& theConfiguration);
+		 const Configuration& theConfiguration,
+		 const std::map<std::string, std::string>& grammarMappings);
 	std::set<int> getProvincesInState(const Vic2::State& vic2State,
 		 const std::string& owner,
 		 const mappers::ProvinceMapper& provinceMapper);

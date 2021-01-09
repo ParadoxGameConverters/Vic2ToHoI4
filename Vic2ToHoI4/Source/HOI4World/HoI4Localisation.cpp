@@ -460,7 +460,8 @@ void HoI4::Localisation::addStateLocalisation(const State& hoi4State,
 	 const Vic2::State& vic2State,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const Vic2::Localisations& vic2Localisations,
-	 const mappers::ProvinceMapper& theProvinceMapper)
+	 const mappers::ProvinceMapper& theProvinceMapper,
+	 const std::map<std::string, std::string>& grammarMappings)
 {
 	for (const auto& Vic2NameInLanguage: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
 	{
@@ -469,7 +470,8 @@ void HoI4::Localisation::addStateLocalisation(const State& hoi4State,
 			 Vic2NameInLanguage,
 			 theStateDefinitions,
 			 vic2Localisations,
-			 theProvinceMapper);
+			 theProvinceMapper,
+			 grammarMappings);
 	}
 }
 
@@ -607,7 +609,8 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	 const std::pair<const std::string, std::string>& Vic2NameInLanguage,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const Vic2::Localisations& vic2Localisations,
-	 const mappers::ProvinceMapper& theProvinceMapper)
+	 const mappers::ProvinceMapper& theProvinceMapper,
+	 const std::map<std::string, std::string>& grammarMappings)
 {
 	std::string localisedName;
 	if (destinationStateHasOneProvince(hoi4State) || sourceStateHasOneProvince(hoi4State, theProvinceMapper))
@@ -650,8 +653,42 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	/* Reason: To avoid having to deal with German adjective declension */
 	else if (vic2State.isPartialState())
 	{
-		auto possibleOwnerAdjective =
-			 vic2Localisations.getTextInLanguage(vic2State.getOwner() + "_ADJ", Vic2NameInLanguage.first);
+		std::string adjectiveKey = vic2State.getOwner() + "_ADJ";
+		if ((Vic2NameInLanguage.first == "french") || (Vic2NameInLanguage.first == "spanish") ||
+			 (Vic2NameInLanguage.first == "portugese") || (Vic2NameInLanguage.first == "italian"))
+		{
+			const auto& languageCategory = vic2State.getLanguageCategory();
+			if (const auto& grammarMapping = grammarMappings.find(languageCategory);
+				 grammarMapping != grammarMappings.end())
+			{
+				adjectiveKey += grammarMapping->second;
+				if (Vic2NameInLanguage.first == "french")
+				{
+					adjectiveKey += "_FR";
+				}
+				else if (Vic2NameInLanguage.first == "spanish")
+				{
+					adjectiveKey += "_SP";
+				}
+				else if (Vic2NameInLanguage.first == "portugese")
+				{
+					adjectiveKey += "_PR";
+				}
+				else // if (Vic2NameInLanguage.first == "french")
+				{
+					adjectiveKey += "_IT";
+				}
+			}
+		}
+
+		auto possibleOwnerAdjective = vic2Localisations.getTextInLanguage(adjectiveKey, Vic2NameInLanguage.first);
+		if (!possibleOwnerAdjective)
+		{
+			// if the fancy localisations can't be found, try to fall back to basic behavior
+			Log(LogLevel::Warning) << "No localisation found for " << adjectiveKey;
+			adjectiveKey = vic2State.getOwner() + "_ADJ";
+			possibleOwnerAdjective = vic2Localisations.getTextInLanguage(adjectiveKey, Vic2NameInLanguage.first);
+		}
 		if (possibleOwnerAdjective)
 		{
 			if ((Vic2NameInLanguage.first == "french") || (Vic2NameInLanguage.first == "spanish") ||
@@ -670,6 +707,11 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 					localisedName = *possibleOwnerAdjective + " " + Vic2NameInLanguage.second;
 				}
 			}
+		}
+		else
+		{
+			Log(LogLevel::Warning) << "No localisation found for " << adjectiveKey;
+			localisedName = "Partial " + Vic2NameInLanguage.second;
 		}
 	}
 	else if (hoi4State.isImpassable())

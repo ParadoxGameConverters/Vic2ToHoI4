@@ -3,6 +3,7 @@
 #include "DefaultState.h"
 #include "HOI4World/HoI4Country.h"
 #include "HOI4World/HoI4Localisation.h"
+#include "HOI4World/Localisations/GrammarMappings.h"
 #include "HOI4World/Map/CoastalProvinces.h"
 #include "HOI4World/Map/HoI4Provinces.h"
 #include "HOI4World/Map/ImpassableProvinces.h"
@@ -239,6 +240,8 @@ void HoI4::States::createStates(const std::map<std::string, std::unique_ptr<Vic2
 	 const MapData& mapData,
 	 const Configuration& theConfiguration)
 {
+	const auto grammarMappings = GrammarMappings{}.importGrammarMappings();
+
 	std::set<int> ownedProvinces;
 
 	for (const auto& country: sourceCountries)
@@ -260,7 +263,8 @@ void HoI4::States::createStates(const std::map<std::string, std::unique_ptr<Vic2
 					 provinceMapper,
 					 mapData,
 					 theProvinces,
-					 theConfiguration);
+					 theConfiguration,
+					 grammarMappings);
 				for (const auto& province: vic2State.getProvinceNumbers())
 				{
 					ownedProvinces.insert(province);
@@ -311,7 +315,8 @@ void HoI4::States::createStates(const std::map<std::string, std::unique_ptr<Vic2
 			 provinceMapper,
 			 mapData,
 			 theProvinces,
-			 theConfiguration);
+			 theConfiguration,
+			 grammarMappings);
 	}
 
 	const auto manpower = getTotalManpower();
@@ -332,7 +337,8 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 	 const mappers::ProvinceMapper& provinceMapper,
 	 const MapData& mapData,
 	 const std::map<int, Province>& provinces,
-	 const Configuration& theConfiguration)
+	 const Configuration& theConfiguration,
+	 const std::map<std::string, std::string>& grammarMappings)
 {
 	const auto allProvinces = getProvincesInState(vic2State, stateOwner, provinceMapper);
 	const auto initialConnectedProvinceSets = getConnectedProvinceSets(allProvinces, mapData, provinces);
@@ -373,7 +379,8 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 				 vic2State,
 				 theStateDefinitions,
 				 vic2Localisations,
-				 provinceMapper);
+				 provinceMapper,
+				 grammarMappings);
 		}
 
 		if (!impassableProvinces.empty())
@@ -390,7 +397,8 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 				 vic2State,
 				 theStateDefinitions,
 				 vic2Localisations,
-				 provinceMapper);
+				 provinceMapper,
+				 grammarMappings);
 		}
 	}
 }
