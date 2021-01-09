@@ -15,7 +15,7 @@ defined_text = {
 	name = GetLeLaLPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LES
 	}
@@ -25,7 +25,7 @@ defined_text = {
 	name = GetLeLaLPartiPouvCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LES_CAP
 	}
@@ -38,7 +38,7 @@ defined_text = {
 	name = GetDuDelaDelPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_DES
 	}
@@ -48,7 +48,7 @@ defined_text = {
 	name = GetDuDelaDelPartiPouvCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_DES_CAP
 	}
@@ -61,7 +61,7 @@ defined_text = {
 	name = GetAuAlaAlPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_AUX
 	}
@@ -71,7 +71,7 @@ defined_text = {
 	name = GetAuAlaAlPartiPouvCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_AUX_CAP
   }
@@ -84,7 +84,7 @@ defined_text = {
 	name = GetIlEllePartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ILS
 	}
@@ -94,7 +94,7 @@ defined_text = {
 	name = GetIlEllePartiPouvCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ILS_CAP
 	}
@@ -107,7 +107,7 @@ defined_text = {
 	name = GetLuiElleEuxPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_EUX
 	}
@@ -117,7 +117,7 @@ defined_text = {
 	name = GetLuiElleEuxPartiPouvCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_EUX_CAP
 	}
@@ -130,7 +130,7 @@ defined_text = {
 	name = GetLuiLeurPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR
 	}
@@ -140,7 +140,7 @@ defined_text = {
 	name = GetLuiLeurPartiPouvCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR_CAP
 	}
@@ -153,7 +153,7 @@ defined_text = {
 	name = GetCeCetteCesPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_CES
 	}
@@ -165,7 +165,7 @@ defined_text = {
 		trigger = {
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_CES_CAP
 	}
@@ -178,7 +178,7 @@ defined_text = {
 	name = GetXEPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_S
 	}
@@ -191,7 +191,7 @@ defined_text = {
 	name = GetXSPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_S
 	}
@@ -204,7 +204,7 @@ defined_text = {
 	name = GetEstSontPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_SONT
 	}
@@ -214,7 +214,7 @@ defined_text = {
 	name = GetEstSontPartiPouvCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_SONT_CAP
 	}
@@ -227,7 +227,7 @@ defined_text = {
 	name = GetNestNesontPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_NESONT
 	}
@@ -237,7 +237,7 @@ defined_text = {
 	name = GetNestNesontPartiPouvCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_NESONT_CAP
 	}
@@ -250,7 +250,7 @@ defined_text = {
 	name = GetAOntPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ONT
 	}
@@ -263,7 +263,7 @@ defined_text = {
 	name = GetXEntPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ENT
 	}
@@ -276,7 +276,7 @@ defined_text = {
 	name = GetTNentPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_NENT
 	}
@@ -289,7 +289,7 @@ defined_text = {
 	name = GetEEntPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ENT
 	}
@@ -302,7 +302,7 @@ defined_text = {
 	name = GetTEntPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ENT
 	}
@@ -315,7 +315,7 @@ defined_text = {
 	name = GetSonLeurPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR
 	}
@@ -325,7 +325,7 @@ defined_text = {
 	name = GetSonLeurPartiPouvCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR_CAP
 	}
@@ -338,7 +338,7 @@ defined_text = {
 	name = GetSaLeurPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR
 	}
@@ -348,7 +348,7 @@ defined_text = {
 	name = GetSaLeurPartiPouvCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR_CAP
 	}
@@ -361,7 +361,7 @@ defined_text = {
 	name = GetSesLeursPartiPouv
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEURS
 	}
@@ -371,7 +371,7 @@ defined_text = {
 	name = GetSesLeursPartiPouvCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEURS_CAP
 	}
@@ -386,7 +386,7 @@ defined_text = {
 	name = GetLeLaLPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LES
 	}
@@ -396,7 +396,7 @@ defined_text = {
 	name = GetLeLaLPartiFascCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LES_CAP
 	}
@@ -409,7 +409,7 @@ defined_text = {
 	name = GetDuDelaDelPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_DES
 	}
@@ -419,7 +419,7 @@ defined_text = {
 	name = GetDuDelaDelPartiFascCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_DES_CAP
 	}
@@ -432,7 +432,7 @@ defined_text = {
 	name = GetAuAlaAlPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_AUX
 	}
@@ -442,7 +442,7 @@ defined_text = {
 	name = GetAuAlaAlPartiFascCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_AUX_CAP
 	}
@@ -455,7 +455,7 @@ defined_text = {
 	name = GetIlEllePartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ILS
 	}
@@ -466,7 +466,7 @@ defined_text = {
 	text = {
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ILS_CAP
 	}
@@ -479,7 +479,7 @@ defined_text = {
 	name = GetLuiElleEuxPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_EUX
 	}
@@ -489,7 +489,7 @@ defined_text = {
 	name = GetLuiElleEuxPartiFascCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_EUX_CAP
 	}
@@ -502,7 +502,7 @@ defined_text = {
 	name = GetLuiLeurPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR
 	}
@@ -512,7 +512,7 @@ defined_text = {
 	name = GetLuiLeurPartiFascCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR_CAP
 	}
@@ -525,7 +525,7 @@ defined_text = {
 	name = GetCeCetteCesPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_CES
 	}
@@ -535,7 +535,7 @@ defined_text = {
 	name = GetCeCetteCesPartiFascCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_CES_CAP
 	}
@@ -548,7 +548,7 @@ defined_text = {
 	name = GetXEPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_S
 	}
@@ -561,7 +561,7 @@ defined_text = {
 	name = GetXSPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_S
 	}
@@ -574,7 +574,7 @@ defined_text = {
 	name = GetEstSontPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_SONT
 	}
@@ -584,7 +584,7 @@ defined_text = {
 	name = GetEstSontPartiFascCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_SONT_CAP
 	}
@@ -596,7 +596,7 @@ defined_text = {
 defined_text = {
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_NESONT
 	}
@@ -606,7 +606,7 @@ defined_text = {
 	name = GetNestNesontPartiFascCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_NESONT_CAP
 	}
@@ -619,7 +619,7 @@ defined_text = {
 	name = GetAOntPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ONT
 	}
@@ -632,7 +632,7 @@ defined_text = {
 	name = GetXEntPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ENT
 	}
@@ -645,7 +645,7 @@ defined_text = {
 	name = GetTNentPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_NENT
 	}
@@ -658,7 +658,7 @@ defined_text = {
 	name = GetEEntPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ENT
 	}
@@ -671,7 +671,7 @@ defined_text = {
 	name = GetTEntPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ENT
 	}
@@ -684,7 +684,7 @@ defined_text = {
 	name = GetSonLeurPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR
 	}
@@ -694,7 +694,7 @@ defined_text = {
 	name = GetSonLeurPartiFascCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR_CAP
 	}
@@ -707,7 +707,7 @@ defined_text = {
 	name = GetSaLeurPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR
 	}
@@ -717,7 +717,7 @@ defined_text = {
 	name = GetSaLeurPartiFascCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR_CAP
 	}
@@ -730,7 +730,7 @@ defined_text = {
 	name = GetSesLeursPartiFasc
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEURS
 	}
@@ -740,7 +740,7 @@ defined_text = {
 	name = GetSesLeursPartiFascCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEURS_CAP
 	}
@@ -755,7 +755,7 @@ defined_text = {
 	name = GetLeLaLPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LES
 	}
@@ -765,7 +765,7 @@ defined_text = {
 	name = GetLeLaLPartiCommCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LES_CAP
 	}
@@ -778,7 +778,7 @@ defined_text = {
 	name = GetDuDelaDelPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_DES
 	}
@@ -788,7 +788,7 @@ defined_text = {
 	name = GetDuDelaDelPartiCommCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_DES_CAP
 	}
@@ -801,7 +801,7 @@ defined_text = {
 	name = GetAuAlaAlPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_AUX
 	}
@@ -811,7 +811,7 @@ defined_text = {
 	name = GetAuAlaAlPartiCommCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_AUX_CAP
 	}
@@ -824,7 +824,7 @@ defined_text = {
 	name = GetIlEllePartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ILS
 	}
@@ -834,7 +834,7 @@ defined_text = {
 	name = GetIlEllePartiCommCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ILS_CAP
 	}
@@ -847,7 +847,7 @@ defined_text = {
 	name = GetLuiElleEuxPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_EUX
 	}
@@ -857,7 +857,7 @@ defined_text = {
 	name = GetLuiElleEuxPartiCommCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_EUX_CAP
 	}
@@ -870,7 +870,7 @@ defined_text = {
 	name = GetLuiLeurPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR
 	}
@@ -880,7 +880,7 @@ defined_text = {
 	name = GetLuiLeurPartiCommCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR_CAP
 	}
@@ -893,7 +893,7 @@ defined_text = {
 	name = GetCeCetteCesPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_CES
 	}
@@ -903,7 +903,7 @@ defined_text = {
 	name = GetCeCetteCesPartiCommCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_CES_CAP
 	}
@@ -916,7 +916,7 @@ defined_text = {
 	name = GetXEPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_S
 	}
@@ -929,7 +929,7 @@ defined_text = {
 	name = GetXSPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_S
 	}
@@ -942,7 +942,7 @@ defined_text = {
 	name = GetEstSontPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_SONT
 	}
@@ -952,7 +952,7 @@ defined_text = {
 	name = GetEstSontPartiCommCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_SONT_CAP
 	}
@@ -965,7 +965,7 @@ defined_text = {
 	name = GetNestNesontPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_NESONT
 	}
@@ -975,7 +975,7 @@ defined_text = {
 	name = GetNestNesontPartiCommCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_NESONT_CAP
 	}
@@ -989,7 +989,7 @@ defined_text = {
 	text = {
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ONT
 	}
@@ -1002,7 +1002,7 @@ defined_text = {
 	name = GetXEntPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ENT
 	}
@@ -1015,7 +1015,7 @@ defined_text = {
 	name = GetTNentPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_NENT
 	}
@@ -1028,7 +1028,7 @@ defined_text = {
 	name = GetEEntPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ENT
 	}
@@ -1041,7 +1041,7 @@ defined_text = {
 	name = GetTEntPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ENT
 	}
@@ -1054,7 +1054,7 @@ defined_text = {
 	name = GetSonLeurPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR
 	}
@@ -1064,7 +1064,7 @@ defined_text = {
 	name = GetSonLeurPartiCommCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR_CAP
 	}
@@ -1077,7 +1077,7 @@ defined_text = {
 	name = GetSaLeurPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR
 	}
@@ -1087,7 +1087,7 @@ defined_text = {
 	name = GetSaLeurPartiCommCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR_CAP
 	}
@@ -1100,7 +1100,7 @@ defined_text = {
 	name = GetSesLeursPartiComm
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEURS
 	}
@@ -1110,7 +1110,7 @@ defined_text = {
 	name = GetSesLeursPartiCommCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEURS_CAP
 	}
@@ -1125,7 +1125,7 @@ defined_text = {
 	name = GetLeLaLPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LES
 	}
@@ -1135,7 +1135,7 @@ defined_text = {
 	name = GetLeLaLPartiDemoCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LES_CAP
 	}
@@ -1148,7 +1148,7 @@ defined_text = {
 	name = GetDuDelaDelPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_DES
 	}
@@ -1158,7 +1158,7 @@ defined_text = {
 	name = GetDuDelaDelPartiDemoCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_DES_CAP
 	}
@@ -1171,7 +1171,7 @@ defined_text = {
 	name = GetAuAlaAlPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_AUX
 	}
@@ -1181,7 +1181,7 @@ defined_text = {
 	name = GetAuAlaAlPartiDemoCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_AUX_CAP
 	}
@@ -1194,7 +1194,7 @@ defined_text = {
 	name = GetIlEllePartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ILS
 	}
@@ -1204,7 +1204,7 @@ defined_text = {
 	name = GetIlEllePartiDemoCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ILS_CAP
 	}
@@ -1217,7 +1217,7 @@ defined_text = {
 	name = GetLuiElleEuxPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_EUX
 	}
@@ -1227,7 +1227,7 @@ defined_text = {
 	name = GetLuiElleEuxPartiDemoCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_EUX_CAP
 	}
@@ -1240,7 +1240,7 @@ defined_text = {
 	name = GetLuiLeurPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR
 	}
@@ -1250,7 +1250,7 @@ defined_text = {
 	name = GetLuiLeurPartiDemoCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR_CAP
 	}
@@ -1263,7 +1263,7 @@ defined_text = {
 	name = GetCeCetteCesPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_CES
 	}
@@ -1273,7 +1273,7 @@ defined_text = {
 	name = GetCeCetteCesPartiDemoCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_CES_CAP
 	}
@@ -1286,7 +1286,7 @@ defined_text = {
 	name = GetXEPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_S
 	}
@@ -1299,7 +1299,7 @@ defined_text = {
 	name = GetXSPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_S
 	}
@@ -1312,7 +1312,7 @@ defined_text = {
 	name = GetEstSontPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_SONT
 	}
@@ -1322,7 +1322,7 @@ defined_text = {
 	name = GetEstSontPartiDemoCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_SONT_CAP
 	}
@@ -1335,7 +1335,7 @@ defined_text = {
 	name = GetNestNesontPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_NESONT
 	}
@@ -1345,7 +1345,7 @@ defined_text = {
 	name = GetNestNesontPartiDemoCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_NESONT_CAP
 	}
@@ -1358,7 +1358,7 @@ defined_text = {
 	name = GetAOntPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ONT
 	}
@@ -1371,7 +1371,7 @@ defined_text = {
 	name = GetXEntPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ENT
 	}
@@ -1384,7 +1384,7 @@ defined_text = {
 	name = GetTNentPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_NENT
 	}
@@ -1397,7 +1397,7 @@ defined_text = {
 	name = GetEEntPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ENT
 	}
@@ -1410,7 +1410,7 @@ defined_text = {
 	name = GetTEntPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ENT
 	}
@@ -1423,7 +1423,7 @@ defined_text = {
 	name = GetSonLeurPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR
 	}
@@ -1433,7 +1433,7 @@ defined_text = {
 	name = GetSonLeurPartiDemoCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR_CAP
 	}
@@ -1446,7 +1446,7 @@ defined_text = {
 	name = GetSaLeurPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR
 	}
@@ -1456,7 +1456,7 @@ defined_text = {
 	name = GetSaLeurPartiDemoCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR_CAP
 	}
@@ -1469,7 +1469,7 @@ defined_text = {
 	name = GetSesLeursPartiDemo
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEURS
 	}
@@ -1479,7 +1479,7 @@ defined_text = {
 	name = GetSesLeursPartiDemoCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEURS_CAP
 	}
@@ -1494,7 +1494,7 @@ defined_text = {
 	name = GetLeLaLPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LES
 	}
@@ -1504,7 +1504,7 @@ defined_text = {
 	name = GetLeLaLPartiNeutCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LES_CAP
 	}
@@ -1517,7 +1517,7 @@ defined_text = {
 	name = GetDuDelaDelPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_DES
 	}
@@ -1527,7 +1527,7 @@ defined_text = {
 	name = GetDuDelaDelPartiNeutCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_DES_CAP
 	}
@@ -1540,7 +1540,7 @@ defined_text = {
 	name = GetAuAlaAlPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_AUX
 	}
@@ -1550,7 +1550,7 @@ defined_text = {
 	name = GetAuAlaAlPartiNeutCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_AUX_CAP
 	}
@@ -1563,7 +1563,7 @@ defined_text = {
 	name = GetIlEllePartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ILS
 	}
@@ -1573,7 +1573,7 @@ defined_text = {
 	name = GetIlEllePartiNeutCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ILS_CAP
 	}
@@ -1586,7 +1586,7 @@ defined_text = {
 	name = GetLuiElleEuxPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_EUX
 	}
@@ -1596,7 +1596,7 @@ defined_text = {
 	name = GetLuiElleEuxPartiNeutCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_EUX_CAP
 	}
@@ -1609,7 +1609,7 @@ defined_text = {
 	name = GetLuiLeurPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR
 	}
@@ -1619,7 +1619,7 @@ defined_text = {
 	name = GetLuiLeurPartiNeutCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR_CAP
 	}
@@ -1632,7 +1632,7 @@ defined_text = {
 	name = GetCeCetteCesPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_CES
 	}
@@ -1642,7 +1642,7 @@ defined_text = {
 	name = GetCeCetteCesPartiNeutCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_CES_CAP
 	}
@@ -1655,7 +1655,7 @@ defined_text = {
 	name = GetXEPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_S
 	}
@@ -1668,7 +1668,7 @@ defined_text = {
 	name = GetXSPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_S
 	}
@@ -1681,7 +1681,7 @@ defined_text = {
 	name = GetEstSontPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_SONT
 	}
@@ -1691,7 +1691,7 @@ defined_text = {
 	name = GetEstSontPartiNeutCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_SONT_CAP
 	}
@@ -1704,7 +1704,7 @@ defined_text = {
 	name = GetNestNesontPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_NESONT
 	}
@@ -1714,7 +1714,7 @@ defined_text = {
 	name = GetNestNesontPartiNeutCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_NESONT_CAP
 	}
@@ -1727,7 +1727,7 @@ defined_text = {
 	name = GetAOntPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ONT
 	}
@@ -1740,7 +1740,7 @@ defined_text = {
 	name = GetXEntPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ENT
 	}
@@ -1753,7 +1753,7 @@ defined_text = {
 	name = GetTNentPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_NENT
 	}
@@ -1766,7 +1766,7 @@ defined_text = {
 	name = GetEEntPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ENT
 	}
@@ -1779,7 +1779,7 @@ defined_text = {
 	name = GetTEntPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ENT
 	}
@@ -1792,7 +1792,7 @@ defined_text = {
 	name = GetSonLeurPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR
 	}
@@ -1802,7 +1802,7 @@ defined_text = {
 	name = GetSonLeurPartiNeutCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR_CAP
 	}
@@ -1815,7 +1815,7 @@ defined_text = {
 	name = GetSaLeurPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR
 	}
@@ -1825,7 +1825,7 @@ defined_text = {
 	name = GetSaLeurPartiNeutCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEUR_CAP
 	}
@@ -1838,7 +1838,7 @@ defined_text = {
 	name = GetSesLeursPartiNeut
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEURS
 	}
@@ -1848,7 +1848,7 @@ defined_text = {
 	name = GetSesLeursPartiNeutCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LEURS_CAP
 	}
@@ -1867,7 +1867,7 @@ defined_text = {
 	name = GetLeLaLDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_XX
 	}
@@ -1877,7 +1877,7 @@ defined_text = {
 	name = GetLeLaLDirCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_XX
 	}
@@ -1890,7 +1890,7 @@ defined_text = {
 	name = GetQueleQuelaQuelDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_QUE
 	}
@@ -1900,7 +1900,7 @@ defined_text = {
 	name = GetQueleQuelaQuelDirCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_QUE_CAP
 	}
@@ -1913,7 +1913,7 @@ defined_text = {
 	name = GetCeCetCetteDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_CE
 	}
@@ -1923,7 +1923,7 @@ defined_text = {
 	name = GetCeCetCetteDirCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_CE_CAP
 	}
@@ -1936,7 +1936,7 @@ defined_text = {
 	name = GetAuAlaAlDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_A
 	}
@@ -1946,7 +1946,7 @@ defined_text = {
 	name = GetAuAlaAlDirCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_A_CAP
 	}
@@ -1959,7 +1959,7 @@ defined_text = {
 	name = GetAuAlaFDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_AU
 	}
@@ -1969,7 +1969,7 @@ defined_text = {
 	name = GetAuAlaFDirCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_AU_CAP
 	}
@@ -1982,7 +1982,7 @@ defined_text = {
 	name = GetDuDelaDelDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_DE
 	}
@@ -1992,7 +1992,7 @@ defined_text = {
 	name = GetDuDelaDelDirCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_DE_CAP
 	}
@@ -2005,7 +2005,7 @@ defined_text = {
 	name = GetDuDelaFDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_DU_CAP
 	}
@@ -2018,7 +2018,7 @@ defined_text = {
 	name = GetQueleQuelaQuelDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_QUE
 	}
@@ -2028,7 +2028,7 @@ defined_text = {
 	name = GetQueleQuelaQuelDirCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_QUE_CAP
 	}
@@ -2041,7 +2041,7 @@ defined_text = {
 	name = GetIlElleDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_IL
 	}
@@ -2050,7 +2050,7 @@ defined_text = {
 defined_text = {
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_IL_CAP
 	}
@@ -2062,7 +2062,7 @@ defined_text = {
 	name = GetSilSielleDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_SIL
 	}
@@ -2072,7 +2072,7 @@ defined_text = {
 	name = GetSilSielleDirCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_SIL_CAP
 	}
@@ -2085,7 +2085,7 @@ defined_text = {
 	name = GetCeluiCelleDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_CELUI
 	}
@@ -2095,7 +2095,7 @@ defined_text = {
 	name = GetCeluiCelleDirCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_CELUI_CAP
 	}
@@ -2108,7 +2108,7 @@ defined_text = {
 	name = GetLuiElleDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LUI
 	}
@@ -2118,7 +2118,7 @@ defined_text = {
 	name = GetLuiElleDirCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LUI_CAP
 	}
@@ -2131,7 +2131,7 @@ defined_text = {
 	name = GetDeluiDelleDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_DELUI
 	}
@@ -2141,7 +2141,7 @@ defined_text = {
 	name = GetDeluiDelleDirCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_DELUI_CAP
 	}
@@ -2154,7 +2154,7 @@ defined_text = {
 	name = GetLeLaFDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LE
 	}
@@ -2164,7 +2164,7 @@ defined_text = {
 	name = GetLeLaFDirCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_LE_CAP
 	}
@@ -2177,7 +2177,7 @@ defined_text = {
 	name = GetErEreDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_ER
 	}
@@ -2190,7 +2190,7 @@ defined_text = {
 	name = GetQuelQuelleDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_QUEL2
 	}
@@ -2200,7 +2200,7 @@ defined_text = {
 	name = GetQuelQuelleDirCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_QUEL2_CAP
 	}
@@ -2213,7 +2213,7 @@ defined_text = {
 	name = GetHommeFemmeDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_HOMME
 	}
@@ -2223,7 +2223,7 @@ defined_text = {
 	name = GetHommeFemmeDirCap
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_HOMME_CAP
 	}
@@ -2236,7 +2236,7 @@ defined_text = {
 	name = GetXEDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_X
 	}
@@ -2249,7 +2249,7 @@ defined_text = {
 	name = GetEuxEuseDir
 	text = {
 		trigger = {
-	  always = yes
+			always = yes
 		}
 		localization_key = FRLOC_EUX
 	}
@@ -2720,6 +2720,12 @@ defined_text = {
 		}
 		localization_key = FRLOC_DES
 	}
+	text = {
+		trigger = { # Fallback
+		
+		}
+		localization_key = FRLOC_DE
+	}
 }
 
 
@@ -2781,6 +2787,12 @@ defined_text = {
 		}
 		localization_key = FRLOC_AUDESSUSDES
 	}
+	text = {
+		trigger = { # Fallback
+		
+		}
+		localization_key = FRLOC_SUR
+	}
 }
 
 ##########################
@@ -2836,6 +2848,12 @@ defined_text = {
 		}
 		localization_key = FRLOC_XX
 	}
+	text = {
+		trigger = { # Fallback
+		
+		}
+		localization_key = FRLOC_XX
+	}
 }
 ### Ex. "Luxemburg/Corsica/Auvergne/Balearic Islands/Cuba is occupied." => "[Le] Luxembourg/[La] Corse/[L']Auvergne/[Les] Baléares/[x] Cuba est sous occupation." (upper case / majuscule)
 defined_text = {
@@ -2884,6 +2902,12 @@ defined_text = {
 				fpnc = yes
 				fpnv = yes
 			}
+		}
+		localization_key = FRLOC_XX
+	}
+	text = {
+		trigger = { # Fallback
+		
 		}
 		localization_key = FRLOC_XX
 	}
@@ -2948,6 +2972,12 @@ defined_text = {
 		}
 		localization_key = FRLOC_DES
 	}
+	text = {
+		trigger = { # Fallback
+		
+		}
+		localization_key = FRLOC_DE
+	}
 }
 ### Ex. "They finally were chased away from Luxemburg/Corsica/Auvergne/Balearic Islands/Cuba." => "[Du] Luxembourg/[De la] Corse/[De l']Auvergne/[De] Cuba/[D']Ankara/Des Baléares, ils ont été enfin chassés." (upper case / majuscule)
 defined_text = {
@@ -3005,5 +3035,11 @@ defined_text = {
 			}
 		}
 		localization_key = FRLOC_DES_CAP
+	}
+	text = {
+		trigger = { # Fallback
+		
+		}
+		localization_key = FRLOC_DE_CAP
 	}
 }
