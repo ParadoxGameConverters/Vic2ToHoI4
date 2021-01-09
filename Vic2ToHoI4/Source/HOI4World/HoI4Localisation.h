@@ -145,13 +145,13 @@ class Localisation
 
 	void addStateLocalisationForLanguage(const State& hoi4State,
 		 const Vic2::State& vic2State,
-		 const std::pair<const std::string, std::string>& Vic2NameInLanguage,
+		 const std::string& language,
+		 const std::string& name,
 		 const Vic2::StateDefinitions& theStateDefinitions,
 		 const Vic2::Localisations& vic2Localisations,
 		 const mappers::ProvinceMapper& theProvinceMapper,
 		 const std::map<std::string, std::string>& grammarMappings);
-	void addVPLocalisationForLanguage(const State& state,
-		 const std::pair<const std::string, std::string>& Vic2NameInLanguage);
+	void addVPLocalisationForLanguage(const State& state, const std::string& language, const std::string& name);
 	std::map<stateNumber, std::string>& getExistingStateLocalisation(const std::string& language);
 	keyToLocalisationMap& getExistingVPLocalisation(const std::string& language);
 	void addLanguageToStateLocalisations(const std::string& language);
