@@ -644,6 +644,10 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	{
 		localisedName = Vic2NameInLanguage.second;
 	}
+	else if (vic2State.isPartialState() && vic2State.getOwner().empty())
+	{
+		localisedName = "Partial " + Vic2NameInLanguage.second;
+	}
 	/* SPLIT STATES AND GRAMMAR */
 	/* Default: "French Guyana" */
 	/* French, Spanish, Portuguese, Italian: "Guyana French" */
