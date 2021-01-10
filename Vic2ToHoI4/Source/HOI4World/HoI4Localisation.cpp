@@ -646,32 +646,7 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	}
 	else if (vic2State.isPartialState() && vic2State.getOwner().empty())
 	{
-		std::optional<std::string> possibleOwnerAdjective;
-		const auto& partial = vic2Localisations.getTextInLanguage("PARTIAL", language);
-		if (partial)
-		{
-			possibleOwnerAdjective = *partial;
-		}
-		else
-		{
-			possibleOwnerAdjective = "Partial";
-		}
-
-		if ((language == "french") || (language == "spanish") || (language == "braz_por") || (language == "italian"))
-		{
-			localisedName = name + " " + *possibleOwnerAdjective;
-		}
-		else
-		{
-			if (language == "german")
-			{
-				localisedName = *possibleOwnerAdjective + "-" + name;
-			}
-			else
-			{
-				localisedName = *possibleOwnerAdjective + " " + name;
-			}
-		}
+		localisedName = name;
 	}
 	/* SPLIT STATES AND GRAMMAR */
 	/* Default: "French Guyana" */
