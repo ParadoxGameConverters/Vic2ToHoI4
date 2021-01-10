@@ -1,5 +1,6 @@
 ### VANILLA VIC2
 KEY;ENGLISH;FRENCH;GERMAN;POLISH;SPANISH;ITALIAN;HUNGARIAN;CZECH;HUNGARIAN;DUTCH;PORTUGUESE;RUSSIAN;FINNISH;x
+PARTIAL;Partial;Partial;Partial;Partial;Partial;Partial;Partial;Partial;Partial;Partial;Partial;Partial;x
 CSA_proletarian_dictatorship;The CSA;États confédérés d'Amérique;CSA;Konfederacja;EE CC;Stati Confederati d'America;;;;;Estados Confederados da América;ÑÊØÀ;;x
 USA_presidential_dictatorship;The USA;États-Unis;USA;USA;EE UU;Stati Uniti d'America;;;;;Estados Unidos;ÑØÀ;;x
 CSA_presidential_dictatorship;The CSA;États confédérés d'Amérique;CSA;Konfederacja;EE CC;Stati Confederati d'America;;;;;Estados Confederados da América;ÊØÀ;;x
@@ -6361,6 +6362,3 @@ TRI_1739_WASTELAND;Libyan Desert;Désert Libyen;Libysche Wüste;Libijska Pustynia;
 TRI_1743_WASTELAND;Fezzan;Fezzan;Fezzan;Fezzan;Fezzan;Fezzan;Fezzan;Fezzan;Fezzan;Fezzan;Fezzan;Ôåööàí;Fezzan;x
 EGY_1754_WASTELAND;Butnan Oasis;Oasis chez Butnan;Butnan-Oase;Oaza Butnana;Oasis de Butnan;Oasi di Butnan;Butnan-oázis;Butnan Oasis;Butnan-oázis;Butnan-oase;Oásis de Butnan;Îàçèñ Áóòíàí;Butnan-keidas;x
 EGY_1753_WASTELAND;Bawiti;Bawiti;Bawiti;Bawiti;Bawiti;Bawiti;Bawiti;Bawiti;Bawiti;Bawiti;Bawiti;Áàâèòè;Bawiti;x
-### COUNTRY ADJECTIVE LOCALISATIONS WITH GRAMMAR
-PARTIAL;Partial;Partial;Partial;Partial;Partial;Partial;Partial;Partial;Partial;Partial;Partial;Partial;x
-#BUK_ADJ_FS;English sample (unused);French sample;German sample (unused);Polish sample (unused);Spanish sample;Italian sample;Hungarian sample (unused);Czech sample (unused);Hungarian sample (unused);Dutch sample (unused);Portuguese sample;Russian sample (unused);Finnish sample (unused);x
