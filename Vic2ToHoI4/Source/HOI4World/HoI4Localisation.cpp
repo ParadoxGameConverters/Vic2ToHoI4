@@ -657,54 +657,78 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	/* Reason: To avoid having to deal with German adjective declension */
 	else if (vic2State.isPartialState())
 	{
-		std::string adjectiveKey = vic2State.getOwner() + "_ADJ";
+		std::optional<std::string> possibleOwnerAdjective;
 		if ((language == "french") || (language == "spanish") || (language == "braz_por") || (language == "italian"))
 		{
+			std::string adjectiveKey = hoi4State.getOwner() + "_neutrality" + "_ADJ";
 			const auto& languageCategory = vic2State.getLanguageCategory();
 			if (const auto& grammarMapping = grammarMappings.find(languageCategory);
 				 grammarMapping != grammarMappings.end())
 			{
 				adjectiveKey += grammarMapping->second;
+				if (language == "french")
+				{
+					adjectiveKey += "_FR";
+				}
+				else if (language == "spanish")
+				{
+					adjectiveKey += "_ES";
+				}
+				else if (language == "braz_por")
+				{
+					adjectiveKey += "_PT";
+				}
+				else // (language == "italian")
+				{
+					adjectiveKey += "_IT";
+				}
+			}
+			if (const auto hoi4LocalisationsInLanguage = customLocalisations.find(language);
+				 hoi4LocalisationsInLanguage != customLocalisations.end())
+			{
+				if (const auto hoi4Localisation = hoi4LocalisationsInLanguage->second.find(adjectiveKey);
+					 hoi4Localisation != hoi4LocalisationsInLanguage->second.end())
+				{
+					possibleOwnerAdjective = hoi4Localisation->second;
+				}
 			}
 		}
 
-		auto possibleOwnerAdjective = vic2Localisations.getTextInLanguage(adjectiveKey, language);
 		if (!possibleOwnerAdjective)
 		{
-			// if the fancy localisations can't be found, try to fall back to basic behavior
-			Log(LogLevel::Warning) << "No localisation found for " << adjectiveKey << " in " << language;
-			adjectiveKey = vic2State.getOwner() + "_ADJ";
-			possibleOwnerAdjective = vic2Localisations.getTextInLanguage(adjectiveKey, language);
+			// if the fancy localisations can't be found or doesn't apply, try to fall back to basic behavior
+			possibleOwnerAdjective = vic2Localisations.getTextInLanguage(vic2State.getOwner() + "_ADJ", language);
 		}
-		if (possibleOwnerAdjective)
+
+		if (!possibleOwnerAdjective)
 		{
-			if ((language == "french") || (language == "spanish") || (language == "braz_por") || (language == "italian"))
+			// in the final case, just use the word "partial"
+			Log(LogLevel::Warning) << "No localisation found for " << vic2State.getOwner() + "_ADJ"
+										  << " in " << language;
+			const auto& partial = vic2Localisations.getTextInLanguage("PARTIAL", language);
+			if (partial)
 			{
-				localisedName = name + " " + *possibleOwnerAdjective;
+				possibleOwnerAdjective = *partial;
 			}
 			else
 			{
-				if (language == "german")
-				{
-					localisedName = *possibleOwnerAdjective + "-" + name;
-				}
-				else
-				{
-					localisedName = *possibleOwnerAdjective + " " + name;
-				}
+				possibleOwnerAdjective = "Partial";
 			}
+		}
+
+		if ((language == "french") || (language == "spanish") || (language == "braz_por") || (language == "italian"))
+		{
+			localisedName = name + " " + *possibleOwnerAdjective;
 		}
 		else
 		{
-			Log(LogLevel::Warning) << "No localisation found for " << adjectiveKey << " in " << language;
-			const auto& partial = vic2Localisations.getTextInLanguage(adjectiveKey, language);
-			if (partial)
+			if (language == "german")
 			{
-				localisedName = *partial + " " + name;
+				localisedName = *possibleOwnerAdjective + "-" + name;
 			}
 			else
 			{
-				localisedName = "Partial " + name;
+				localisedName = *possibleOwnerAdjective + " " + name;
 			}
 		}
 	}
