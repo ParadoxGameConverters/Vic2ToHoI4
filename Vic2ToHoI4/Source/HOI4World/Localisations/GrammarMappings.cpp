@@ -7,7 +7,7 @@
 HoI4::GrammarMappings::GrammarMappings()
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& category, std::istream& theStream) {
-		grammarMappings.emplace(std::make_pair(category, commonItems::singleString{theStream}.getString()));
+		grammarMappings.emplace(category, commonItems::singleString{theStream}.getString());
 	});
 }
 
