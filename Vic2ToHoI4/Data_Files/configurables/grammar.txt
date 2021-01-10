@@ -1,0 +1,23 @@
+# Male singular - *Le Danube allemand*
+msnc = _MS
+msac = _MS
+msav = _MS
+msnv = _MS
+
+# Male plural - *Les Territoires allemands*
+mpac = _MP
+mpav = _MP
+mpnc = _MP
+mpnv = _MP
+
+# Female singular - *L'Autriche allemande*
+fsnc = _FS
+fsac = _FS
+fsav = _FS
+fsnv = _FS
+
+# Female plural - *Les Villes allemandes*
+fpnc = _FP
+fpac = _FP
+fpav = _FP
+fpnv = _FP

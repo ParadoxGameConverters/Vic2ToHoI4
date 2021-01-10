@@ -157,6 +157,7 @@
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRules.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.cpp" />
     <ClCompile Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\Localisations\GrammarMappings.cpp" />
     <ClCompile Include="Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="Source\HOI4World\Map\StrategicRegions.cpp" />
     <ClCompile Include="Source\HOI4World\Names\CultureGroupNames.cpp" />
@@ -470,6 +471,7 @@
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesBuilder.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.h" />
     <ClInclude Include="Source\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.h" />
+    <ClInclude Include="Source\HOI4World\Localisations\GrammarMappings.h" />
     <ClInclude Include="Source\HOI4World\Map\CoastalProvincesBuilder.h" />
     <ClInclude Include="Source\HOI4World\Map\HoI4Provinces.h" />
     <ClInclude Include="Source\HOI4World\Map\StrategicRegions.h" />
@@ -24530,6 +24532,12 @@
     <CopyFileToFolders Include="Data_Files\configurables\tech_mappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\configurables\grammar.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

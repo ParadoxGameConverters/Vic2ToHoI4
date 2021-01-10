@@ -460,16 +460,19 @@ void HoI4::Localisation::addStateLocalisation(const State& hoi4State,
 	 const Vic2::State& vic2State,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const Vic2::Localisations& vic2Localisations,
-	 const mappers::ProvinceMapper& theProvinceMapper)
+	 const mappers::ProvinceMapper& theProvinceMapper,
+	 const std::map<std::string, std::string>& grammarMappings)
 {
-	for (const auto& Vic2NameInLanguage: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
+	for (const auto& [language, name]: vic2Localisations.getTextInEachLanguage(vic2State.getStateID()))
 	{
 		addStateLocalisationForLanguage(hoi4State,
 			 vic2State,
-			 Vic2NameInLanguage,
+			 language,
+			 name,
 			 theStateDefinitions,
 			 vic2Localisations,
-			 theProvinceMapper);
+			 theProvinceMapper,
+			 grammarMappings);
 	}
 }
 
@@ -488,10 +491,10 @@ void HoI4::Localisation::addStateLocalisations(const States& states,
 			auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(*VPPositionInHoI4);
 			if (VPProvinceMapping && !VPProvinceMapping->empty())
 			{
-				for (const auto& Vic2NameInLanguage:
+				for (const auto& [language, name]:
 					 vic2Localisations.getTextInEachLanguage("PROV" + std::to_string((*VPProvinceMapping)[0])))
 				{
-					addVPLocalisationForLanguage(state.second, Vic2NameInLanguage);
+					addVPLocalisationForLanguage(state.second, language, name);
 				}
 			}
 		}
@@ -516,12 +519,11 @@ void HoI4::Localisation::addDebugLocalisations(const std::pair<const int, State>
 		auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(VPPositionInHoI4);
 		if (VPProvinceMapping && !VPProvinceMapping->empty())
 		{
-			for (const auto& Vic2NameInLanguage:
+			for (const auto& [language, name]:
 				 vic2Localisations.getTextInEachLanguage("PROV" + std::to_string((*VPProvinceMapping)[0])))
 			{
-				getExistingVPLocalisation(Vic2NameInLanguage.first)
-					 .insert(
-						  std::make_pair("VICTORY_POINTS_" + std::to_string(VPPositionInHoI4), Vic2NameInLanguage.second));
+				getExistingVPLocalisation(language).insert(
+					 std::make_pair("VICTORY_POINTS_" + std::to_string(VPPositionInHoI4), name));
 			}
 		}
 	}
@@ -531,12 +533,11 @@ void HoI4::Localisation::addDebugLocalisations(const std::pair<const int, State>
 		auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(VPPositionInHoI4);
 		if (VPProvinceMapping && !VPProvinceMapping->empty())
 		{
-			for (const auto& Vic2NameInLanguage:
+			for (const auto& [language, name]:
 				 vic2Localisations.getTextInEachLanguage("PROV" + std::to_string((*VPProvinceMapping)[0])))
 			{
-				getExistingVPLocalisation(Vic2NameInLanguage.first)
-					 .insert(
-						  make_pair("VICTORY_POINTS_" + std::to_string(VPPositionInHoI4), "_" + Vic2NameInLanguage.second));
+				getExistingVPLocalisation(language).insert(
+					 make_pair("VICTORY_POINTS_" + std::to_string(VPPositionInHoI4), "_" + name));
 			}
 		}
 	}
@@ -604,10 +605,12 @@ bool HoI4::Localisation::stateHasAllDefinedProvincesAfterConversion(const State&
 
 void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	 const Vic2::State& vic2State,
-	 const std::pair<const std::string, std::string>& Vic2NameInLanguage,
+	 const std::string& language,
+	 const std::string& name,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const Vic2::Localisations& vic2Localisations,
-	 const mappers::ProvinceMapper& theProvinceMapper)
+	 const mappers::ProvinceMapper& theProvinceMapper,
+	 const std::map<std::string, std::string>& grammarMappings)
 {
 	std::string localisedName;
 	if (destinationStateHasOneProvince(hoi4State) || sourceStateHasOneProvince(hoi4State, theProvinceMapper))
@@ -618,7 +621,7 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 		{
 			const auto theProvince = *possibleVic2Provinces->begin();
 			auto possibleProvinceName =
-				 vic2Localisations.getTextInLanguage("PROV" + std::to_string(theProvince), Vic2NameInLanguage.first);
+				 vic2Localisations.getTextInLanguage("PROV" + std::to_string(theProvince), language);
 			if (possibleProvinceName)
 			{
 				localisedName = *possibleProvinceName;
@@ -635,76 +638,132 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	}
 	else if (sourceStateHasAllButOneProvinceFromDefinition(vic2State, theStateDefinitions))
 	{
-		localisedName = Vic2NameInLanguage.second;
+		localisedName = name;
 	}
 	else if (stateHasAllDefinedProvincesAfterConversion(hoi4State, vic2State, theStateDefinitions, theProvinceMapper))
 	{
-		localisedName = Vic2NameInLanguage.second;
+		localisedName = name;
+	}
+	else if (vic2State.isPartialState() && vic2State.getOwner().empty())
+	{
+		localisedName = name;
 	}
 	/* SPLIT STATES AND GRAMMAR */
 	/* Default: "French Guyana" */
-	/* French, Spanish, Portugese(sic), Italian: "Guyana French" */
+	/* French, Spanish, Portuguese, Italian: "Guyana French" */
 	/* Reason: Grammar rules */
 	/* */
 	/* German: "French-Guyana" */
 	/* Reason: To avoid having to deal with German adjective declension */
 	else if (vic2State.isPartialState())
 	{
-		auto possibleOwnerAdjective =
-			 vic2Localisations.getTextInLanguage(vic2State.getOwner() + "_ADJ", Vic2NameInLanguage.first);
-		if (possibleOwnerAdjective)
+		std::optional<std::string> possibleOwnerAdjective;
+		if ((language == "french") || (language == "spanish") || (language == "braz_por") || (language == "italian"))
 		{
-			if ((Vic2NameInLanguage.first == "french") || (Vic2NameInLanguage.first == "spanish") ||
-				 (Vic2NameInLanguage.first == "portugese") || (Vic2NameInLanguage.first == "italian"))
+			std::string adjectiveKey = hoi4State.getOwner() + "_neutrality" + "_ADJ";
+			const auto& languageCategory = vic2State.getLanguageCategory();
+			if (const auto& grammarMapping = grammarMappings.find(languageCategory);
+				 grammarMapping != grammarMappings.end())
 			{
-				localisedName = Vic2NameInLanguage.second + " " + *possibleOwnerAdjective;
+				adjectiveKey += grammarMapping->second;
+				if (language == "french")
+				{
+					adjectiveKey += "_FR";
+				}
+				else if (language == "spanish")
+				{
+					adjectiveKey += "_ES";
+				}
+				else if (language == "braz_por")
+				{
+					adjectiveKey += "_PT";
+				}
+				else // (language == "italian")
+				{
+					adjectiveKey += "_IT";
+				}
+			}
+			if (const auto hoi4LocalisationsInLanguage = customLocalisations.find(language);
+				 hoi4LocalisationsInLanguage != customLocalisations.end())
+			{
+				if (const auto hoi4Localisation = hoi4LocalisationsInLanguage->second.find(adjectiveKey);
+					 hoi4Localisation != hoi4LocalisationsInLanguage->second.end())
+				{
+					possibleOwnerAdjective = hoi4Localisation->second;
+				}
+			}
+		}
+
+		if (!possibleOwnerAdjective)
+		{
+			// if the fancy localisations can't be found or doesn't apply, try to fall back to basic behavior
+			possibleOwnerAdjective = vic2Localisations.getTextInLanguage(vic2State.getOwner() + "_ADJ", language);
+		}
+
+		if (!possibleOwnerAdjective)
+		{
+			// in the final case, just use the word "partial"
+			Log(LogLevel::Warning) << "No localisation found for " << vic2State.getOwner() + "_ADJ"
+										  << " in " << language;
+			const auto& partial = vic2Localisations.getTextInLanguage("PARTIAL", language);
+			if (partial)
+			{
+				possibleOwnerAdjective = *partial;
 			}
 			else
 			{
-				if (Vic2NameInLanguage.first == "german")
-				{
-					localisedName = *possibleOwnerAdjective + "-" + Vic2NameInLanguage.second;
-				}
-				else
-				{
-					localisedName = *possibleOwnerAdjective + " " + Vic2NameInLanguage.second;
-				}
+				possibleOwnerAdjective = "Partial";
+			}
+		}
+
+		if ((language == "french") || (language == "spanish") || (language == "braz_por") || (language == "italian"))
+		{
+			localisedName = name + " " + *possibleOwnerAdjective;
+		}
+		else
+		{
+			if (language == "german")
+			{
+				localisedName = *possibleOwnerAdjective + "-" + name;
+			}
+			else
+			{
+				localisedName = *possibleOwnerAdjective + " " + name;
 			}
 		}
 	}
 	else if (hoi4State.isImpassable())
 	{
-		auto possibleWastelandName =
-			 vic2Localisations.getTextInLanguage(vic2State.getStateID() + "_WASTELAND", Vic2NameInLanguage.first);
+		const auto& possibleWastelandName = vic2Localisations.getTextInLanguage(vic2State.getStateID() + "_WASTELAND", language);
 		if (possibleWastelandName)
 		{
 			localisedName = *possibleWastelandName;
 		}
 		else
 		{
-			localisedName = Vic2NameInLanguage.second + " Wasteland";
-			Log(LogLevel::Warning) << Vic2NameInLanguage.second << " had a wasteland section with no localisation. Add "
+			localisedName = name + " Wasteland";
+			Log(LogLevel::Warning) << name << " had a wasteland section with no localisation. Add "
 										  << vic2State.getStateID()
 										  << "_WASTELAND to Configurables/Vic2Localisations.csv for better conversion.";
 		}
 	}
 	else
 	{
-		localisedName = Vic2NameInLanguage.second;
+		localisedName = name;
 	}
 
-	getExistingStateLocalisation(Vic2NameInLanguage.first).insert(std::make_pair(hoi4State.getID(), localisedName));
+	getExistingStateLocalisation(language).insert(std::make_pair(hoi4State.getID(), localisedName));
 }
 
 
 void HoI4::Localisation::addVPLocalisationForLanguage(const State& state,
-	 const std::pair<const std::string, std::string>& Vic2NameInLanguage)
+	 const std::string& language,
+	 const std::string& name)
 {
 	if (state.getVPLocation())
 	{
-		getExistingVPLocalisation(Vic2NameInLanguage.first)
-			 .insert(
-				  std::make_pair("VICTORY_POINTS_" + std::to_string(*state.getVPLocation()), Vic2NameInLanguage.second));
+		getExistingVPLocalisation(language).insert(
+			 std::make_pair("VICTORY_POINTS_" + std::to_string(*state.getVPLocation()), name));
 	}
 }
 

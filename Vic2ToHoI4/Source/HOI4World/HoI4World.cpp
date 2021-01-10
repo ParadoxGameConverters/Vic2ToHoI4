@@ -69,6 +69,20 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	const auto theProvinces = importProvinces(theConfiguration);
 	theCoastalProvinces.init(*theMapData, theProvinces);
 	strategicRegions = StrategicRegions::Factory{}.importStrategicRegions(theConfiguration);
+	names = Names::Factory{}.getNames(theConfiguration);
+	theGraphics.init();
+	countryNameMapper = mappers::CountryNameMapper::Factory{}.importCountryNameMapper();
+	convertCountries(sourceWorld);
+	determineGreatPowers(sourceWorld);
+	governmentMap.init();
+	convertGovernments(sourceWorld, vic2Localisations, theConfiguration.getDebug());
+	ideologies = std::make_unique<Ideologies>(theConfiguration);
+	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
+	convertCountryNames(vic2Localisations);
+	scriptedLocalisations = ScriptedLocalisations::Factory{}.getScriptedLocalisations();
+	scriptedLocalisations->updateIdeologyLocalisations(ideologies->getMajorIdeologies());
+	scriptedLocalisations->filterIdeologyLocalisations(ideologies->getMajorIdeologies());
+	hoi4Localisations->generateCustomLocalisations(*scriptedLocalisations, ideologies->getMajorIdeologies());
 	states = std::make_unique<States>(sourceWorld,
 		 countryMap,
 		 theProvinces,
@@ -83,11 +97,6 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 theConfiguration);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, provinceDefinitions, theConfiguration);
-	names = Names::Factory{}.getNames(theConfiguration);
-	theGraphics.init();
-	governmentMap.init();
-	countryNameMapper = mappers::CountryNameMapper::Factory{}.importCountryNameMapper();
-	convertCountries(sourceWorld);
 	addStatesToCountries(provinceMapper);
 	states->addCapitalsToStates(countries);
 	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
@@ -103,20 +112,13 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	theMilitaryMappings = importedMilitaryMappings.takeAllMilitaryMappings();
 	convertMilitaries(provinceDefinitions, provinceMapper, theConfiguration);
 
-	determineGreatPowers(sourceWorld);
-
 	scriptedEffects = std::make_unique<ScriptedEffects>(theConfiguration.getHoI4Path());
-	scriptedLocalisations = ScriptedLocalisations::Factory{}.getScriptedLocalisations();
 	setupNavalTreaty();
 
 	importLeaderTraits();
-	convertGovernments(sourceWorld, vic2Localisations, theConfiguration.getDebug());
-	ideologies = std::make_unique<Ideologies>(theConfiguration);
-	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
-	convertCountryNames(vic2Localisations);
+
 	scriptedEffects->updateOperationStratEffects(ideologies->getMajorIdeologies());
-	scriptedLocalisations->updateIdeologyLocalisations(ideologies->getMajorIdeologies());
-	scriptedLocalisations->filterIdeologyLocalisations(ideologies->getMajorIdeologies());
+
 	genericFocusTree.addGenericFocusTree(ideologies->getMajorIdeologies());
 	importIdeologicalMinisters();
 	convertParties(vic2Localisations);
@@ -150,7 +152,6 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 
 	addFocusTrees();
 	adjustResearchFocuses();
-	hoi4Localisations->generateCustomLocalisations(*scriptedLocalisations, ideologies->getMajorIdeologies());
 
 	setSphereLeaders();
 	processInfluence();

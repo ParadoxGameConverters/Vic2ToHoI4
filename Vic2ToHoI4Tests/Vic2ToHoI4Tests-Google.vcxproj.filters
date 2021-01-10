@@ -1365,6 +1365,12 @@
     <ClCompile Include="MapperTests\Technology\ResearchBonusMapperTests.cpp">
       <Filter>MapperTests\Technology</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\GrammarMappings.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Localisations\GrammarMappingsTests.cpp">
+      <Filter>HoI4WorldTests\Localisations</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2023,10 +2029,11 @@
       <Filter>TestFiles\World</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\Technology\tech_mappings.txt" />
+    <CopyFileToFolders Include="TestFiles\Mappers\Technology\research_bonus_mappings.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="TestFiles\Mappers\Technology\research_bonus_mappings.txt">
-      <Filter>TestFiles\Mappers\Technology</Filter>
+    <Text Include="TestFiles\Localisations\grammar.txt">
+      <Filter>TestFiles\Localistations</Filter>
     </Text>
   </ItemGroup>
 </Project>
