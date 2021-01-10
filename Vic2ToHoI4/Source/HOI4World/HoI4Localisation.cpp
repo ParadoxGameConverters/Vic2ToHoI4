@@ -759,7 +759,7 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	}
 	else if (hoi4State.isImpassable())
 	{
-		auto possibleWastelandName = vic2Localisations.getTextInLanguage(vic2State.getStateID() + "_WASTELAND", language);
+		const auto& possibleWastelandName = vic2Localisations.getTextInLanguage(vic2State.getStateID() + "_WASTELAND", language);
 		if (possibleWastelandName)
 		{
 			localisedName = *possibleWastelandName;
