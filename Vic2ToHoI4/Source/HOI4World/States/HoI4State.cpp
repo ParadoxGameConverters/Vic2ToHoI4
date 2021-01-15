@@ -99,6 +99,15 @@ void HoI4::State::addCores(const std::set<std::string>& newCores)
 }
 
 
+void HoI4::State::addClaims(const std::set<std::string>& newClaims)
+{
+	for (const auto& claim: newClaims)
+	{
+		claims.insert(claim);
+	}
+}
+
+
 void HoI4::State::convertControlledProvinces(const std::vector<std::pair<int, std::string>>& foreignControlledProvinces,
 	 const mappers::ProvinceMapper& theProvinceMapper,
 	 const CountryMapper& countryMapper)
