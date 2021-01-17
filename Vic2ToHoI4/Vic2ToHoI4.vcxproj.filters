@@ -339,9 +339,6 @@
     <ClCompile Include="Source\HOI4World\Decisions\IdeologicalDecisions.cpp">
       <Filter>HoI4World\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.cpp">
-      <Filter>Mappers\FlagsToIdeas</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp">
       <Filter>Mappers\FlagsToIdeas</Filter>
     </ClCompile>
@@ -1152,6 +1149,9 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\Localisations\GrammarMappings.cpp">
       <Filter>HoI4World\Localisations</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp">
+      <Filter>Mappers\FlagsToIdeas</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2261,6 +2261,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Localisations\GrammarMappings.h">
       <Filter>HoI4World\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.h">
+      <Filter>Mappers\FlagsToIdeas</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -20051,13 +20054,9 @@
     <CopyFileToFolders Include="Data_Files\configurables\tech_mappings.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\grammar.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Data_Files\configurables\grammar.txt">
-      <Filter>Data Files\Configurables</Filter>
-    </Text>
   </ItemGroup>
 </Project>

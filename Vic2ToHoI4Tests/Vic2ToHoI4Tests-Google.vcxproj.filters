@@ -109,12 +109,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\IdeologicalDecisions.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4State.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
     </ClCompile>
@@ -1370,6 +1364,12 @@
     </ClCompile>
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagToIdeaMappingTests.cpp">
       <Filter>MapperTests\FlagsToIdeas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
