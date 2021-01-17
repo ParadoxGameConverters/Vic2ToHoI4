@@ -57,6 +57,7 @@ class State
 		 const mappers::ProvinceMapper& theProvinceMapper);
 	void addNavalBase(int level, int location);
 	void addCores(const std::set<std::string>& newCores);
+	void addClaims(const std::set<std::string>& newClaims);
 	void convertControlledProvinces(const std::vector<std::pair<int, std::string>>& foreignControlledProvinces,
 		 const mappers::ProvinceMapper& theProvinceMapper,
 		 const CountryMapper& countryMapper);
@@ -66,6 +67,7 @@ class State
 	const std::set<int>& getProvinces() const { return provinces; }
 	const std::string& getOwner() const { return ownerTag; }
 	const std::set<std::string>& getCores() const { return cores; }
+	[[nodiscard]] const auto& getClaims() const { return claims; }
 	const std::map<std::string, std::set<int>>& getControlledProvinces() const { return controlledProvinces; }
 	bool isImpassable() const { return impassable; }
 	int getDockyards() const { return dockyards; }
@@ -123,6 +125,7 @@ class State
 	std::set<int> provinces;
 	std::string ownerTag;
 	std::set<std::string> cores;
+	std::set<std::string> claims;
 	std::map<std::string, std::set<int>> controlledProvinces;
 
 	bool capitalState = false;

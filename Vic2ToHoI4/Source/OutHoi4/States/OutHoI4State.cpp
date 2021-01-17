@@ -92,6 +92,10 @@ void HoI4::outputHoI4State(std::ostream& output, const State& theState, const bo
 	{
 		output << "\t\tadd_core_of = " << core << "\n";
 	}
+	for (const auto& claim: theState.getClaims())
+	{
+		output << "\t\tadd_claim_by = " << claim << "\n";
+	}
 	for (const auto& countryControlledProvinces: theState.getControlledProvinces())
 	{
 		output << "\t\t" << countryControlledProvinces.first << " = {\n";

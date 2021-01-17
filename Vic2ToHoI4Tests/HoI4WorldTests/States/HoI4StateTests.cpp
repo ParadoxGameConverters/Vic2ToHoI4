@@ -97,6 +97,31 @@ TEST(HoI4World_States_StateTests, CoresCanbeAdded)
 }
 
 
+TEST(HoI4World_States_StateTests, ClaimsDefaultToEmpty)
+{
+	const auto sourceState = *Vic2::State::Builder{}.build();
+	const HoI4::State theState(sourceState, 42, "TAG");
+
+	ASSERT_TRUE(theState.getClaims().empty());
+}
+
+
+TEST(HoI4World_States_StateTests, ClaimsCanbeAdded)
+{
+	const auto sourceState = *Vic2::State::Builder{}.build();
+	HoI4::State theState(sourceState, 42, "TAG");
+
+	std::set<std::string> claims;
+	claims.insert("TAG");
+	claims.insert("CLM");
+	theState.addClaims(claims);
+
+	ASSERT_EQ(2, theState.getClaims().size());
+	ASSERT_TRUE(theState.getClaims().contains("TAG"));
+	ASSERT_TRUE(theState.getClaims().contains("CLM"));
+}
+
+
 TEST(HoI4World_States_StateTests, ControlledProvincesDefaultToEmpty)
 {
 	const auto sourceState = *Vic2::State::Builder{}.build();
