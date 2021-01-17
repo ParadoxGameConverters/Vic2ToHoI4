@@ -200,7 +200,6 @@ void Configuration::Factory::setOutputName(const std::string& V2SaveFileName, co
 	if (customOutputName.empty())
 	{
 		outputName = trimPath(V2SaveFileName);
-		const auto length = outputName.find_last_of('.');
 		if (getExtension(outputName) != "v2")
 		{
 			throw std::invalid_argument("The save was not a Vic2 save. Choose a save ending in '.v2' and convert again.");
