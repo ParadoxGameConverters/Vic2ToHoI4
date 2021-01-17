@@ -446,8 +446,8 @@
     <ClCompile Include="HoI4WorldTests\TechnologiesTests.cpp" />
     <ClCompile Include="MapperTests\CountryName\CountryNameMapperTests.cpp" />
     <ClCompile Include="MapperTests\CountryName\CountryNameMappingTests.cpp" />
-    <ClCompile Include="MapperTests\FlagsToIdeasMapperTests.cpp" />
-    <ClCompile Include="MapperTests\FlagToIdeaMappingTests.cpp" />
+    <ClCompile Include="MapperTests\FlagsToIdeas\FlagsToIdeasMapperTests.cpp" />
+    <ClCompile Include="MapperTests\FlagsToIdeas\FlagToIdeaMappingTests.cpp" />
     <ClCompile Include="MapperTests\Technology\ResearchBonusMapperTests.cpp" />
     <ClCompile Include="MapperTests\Technology\ResearchBonusMappingTests.cpp" />
     <ClCompile Include="MapperTests\Technology\TechMapperTests.cpp" />

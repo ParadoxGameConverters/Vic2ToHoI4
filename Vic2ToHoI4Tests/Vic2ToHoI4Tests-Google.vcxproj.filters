@@ -112,12 +112,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
     </ClCompile>
-    <ClCompile Include="MapperTests\FlagToIdeaMappingTests.cpp">
-      <Filter>MapperTests</Filter>
-    </ClCompile>
-    <ClCompile Include="MapperTests\FlagsToIdeasMapperTests.cpp">
-      <Filter>MapperTests</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
     </ClCompile>
@@ -1371,6 +1365,12 @@
     <ClCompile Include="HoI4WorldTests\Localisations\GrammarMappingsTests.cpp">
       <Filter>HoI4WorldTests\Localisations</Filter>
     </ClCompile>
+    <ClCompile Include="MapperTests\FlagsToIdeas\FlagsToIdeasMapperTests.cpp">
+      <Filter>MapperTests\FlagsToIdeas</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\FlagsToIdeas\FlagToIdeaMappingTests.cpp">
+      <Filter>MapperTests\FlagsToIdeas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1778,6 +1778,9 @@
     <Filter Include="TestFiles\Mappers\Technology">
       <UniqueIdentifier>{aad5af90-c048-426c-87e3-6ba4cbe1281a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="MapperTests\FlagsToIdeas">
+      <UniqueIdentifier>{ca9a809b-f54e-4881-a19c-4fd552819316}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2030,10 +2033,6 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\Technology\tech_mappings.txt" />
     <CopyFileToFolders Include="TestFiles\Mappers\Technology\research_bonus_mappings.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="TestFiles\Localisations\grammar.txt">
-      <Filter>TestFiles\Localistations</Filter>
-    </Text>
+    <CopyFileToFolders Include="TestFiles\Localisations\grammar.txt" />
   </ItemGroup>
 </Project>
