@@ -71,7 +71,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	strategicRegions = StrategicRegions::Factory{}.importStrategicRegions(theConfiguration);
 	names = Names::Factory{}.getNames(theConfiguration);
 	theGraphics.init();
-	countryNameMapper = mappers::CountryNameMapper::Factory{}.importCountryNameMapper();
+	countryNameMapper = Mappers::CountryNameMapper::Factory{}.importCountryNameMapper();
 	convertCountries(sourceWorld);
 	determineGreatPowers(sourceWorld);
 	governmentMap.init();

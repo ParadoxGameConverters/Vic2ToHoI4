@@ -190,7 +190,7 @@ class World: commonItems::parser
 	graphicsMapper theGraphics;
 	governmentMapper governmentMap;
 	CountryMapper countryMap;
-	std::unique_ptr<mappers::CountryNameMapper> countryNameMapper;
+	std::unique_ptr<Mappers::CountryNameMapper> countryNameMapper;
 
 	std::unique_ptr<States> states;
 

@@ -70,7 +70,7 @@ class Localisation
 		 const mappers::ProvinceMapper& theProvinceMapper,
 		 const Configuration& theConfiguration);
 	void createCountryLocalisations(const std::pair<const std::string&, const std::string&>& tags,
-		 const mappers::CountryNameMapper& countryNameMapper,
+		 const Mappers::CountryNameMapper& countryNameMapper,
 		 const std::set<std::string>& majorIdeologies,
 		 const Vic2::Localisations& vic2Localisations,
 		 const ArticleRules& articleRules);
@@ -112,7 +112,7 @@ class Localisation
 	void addLocalisationsForAllGovernments(const std::pair<const std::string&, const std::string&>& tags,
 		 const std::string& vic2Suffix,
 		 const std::string& hoi4Suffix,
-		 const mappers::CountryNameMapper& countryNameMapper,
+		 const Mappers::CountryNameMapper& countryNameMapper,
 		 const std::set<std::string>& majorIdeologies,
 		 const Vic2::Localisations& vic2Localisations,
 		 const ArticleRules& articleRules);

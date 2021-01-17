@@ -158,7 +158,7 @@ void HoI4::Localisation::Importer::prepareBlankLocalisations()
 
 
 void HoI4::Localisation::createCountryLocalisations(const std::pair<const std::string&, const std::string&>& tags,
-	 const mappers::CountryNameMapper& countryNameMapper,
+	 const Mappers::CountryNameMapper& countryNameMapper,
 	 const std::set<std::string>& majorIdeologies,
 	 const Vic2::Localisations& vic2Localisations,
 	 const ArticleRules& articleRules)
@@ -193,7 +193,7 @@ void HoI4::Localisation::addLocalisationsForAllGovernments(
 	 const std::pair<const std::string&, const std::string&>& tags,
 	 const std::string& vic2Suffix,
 	 const std::string& hoi4Suffix,
-	 const mappers::CountryNameMapper& countryNameMapper,
+	 const Mappers::CountryNameMapper& countryNameMapper,
 	 const std::set<std::string>& majorIdeologies,
 	 const Vic2::Localisations& vic2Localisations,
 	 const ArticleRules& articleRules)
@@ -734,7 +734,8 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	}
 	else if (hoi4State.isImpassable())
 	{
-		const auto& possibleWastelandName = vic2Localisations.getTextInLanguage(vic2State.getStateID() + "_WASTELAND", language);
+		const auto& possibleWastelandName =
+			 vic2Localisations.getTextInLanguage(vic2State.getStateID() + "_WASTELAND", language);
 		if (possibleWastelandName)
 		{
 			localisedName = *possibleWastelandName;
