@@ -566,7 +566,7 @@ void HoI4::States::addProvincesAndCoresToNewState(State& newState,
 			}
 		}
 
-		if (acceptedPopulation / static_cast<double>(totalPopulation) >= 0.25)
+		if (acceptedPopulation / static_cast<double>(totalPopulation) >= 0.5)
 		{
 			newState.addCores({HoI4Core});
 		}
