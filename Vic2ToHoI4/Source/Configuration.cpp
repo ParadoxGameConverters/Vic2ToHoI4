@@ -165,8 +165,8 @@ Configuration::Factory::Factory()
 	registerKeyword("output_name", [this](const std::string& unused, std::istream& theStream) {
 		const commonItems::singleString outputNameStr(theStream);
 		configuration->customOutputName = outputNameStr.getString();
-		registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 	});
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
 

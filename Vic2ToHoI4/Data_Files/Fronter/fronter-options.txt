@@ -187,7 +187,7 @@ option = {
 	displayName = MODNAME
 	tooltip = MODNAMETIP
 	textSelector = {	
-		value = "myMod"
+		value = ""
 		editable = true
 		tooltip = MODNAMETIP2
 	}
