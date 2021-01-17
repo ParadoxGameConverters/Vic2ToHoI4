@@ -188,13 +188,13 @@ std::string HoI4::States::selectProvinceOwner(const std::map<std::string, std::p
 }
 
 
-std::set<std::string> HoI4::States::determineCores(const std::vector<int>& sourceProvinces,
+std::set<std::pair<std::string, std::string>> HoI4::States::determineCores(const std::vector<int>& sourceProvinces,
 	 const std::string& Vic2Owner,
 	 const CountryMapper& countryMap,
 	 const std::string& newOwner,
 	 const Vic2::World& sourceWorld)
 {
-	std::set<std::string> cores;
+	std::set<std::pair<std::string, std::string>> cores;
 
 	for (auto sourceProvinceNum: sourceProvinces)
 	{
@@ -217,7 +217,7 @@ std::set<std::string> HoI4::States::determineCores(const std::vector<int>& sourc
 					continue;
 				}
 
-				cores.insert(*HoI4CoreTag);
+				cores.insert(std::make_pair(Vic2Core, *HoI4CoreTag));
 			}
 		}
 	}
@@ -255,6 +255,7 @@ void HoI4::States::createStates(const std::map<std::string, std::unique_ptr<Vic2
 					 *possibleHoI4Owner,
 					 theImpassableProvinces,
 					 countryMap,
+					 sourceCountries,
 					 theCoastalProvinces,
 					 theStateDefinitions,
 					 strategicRegions,
@@ -263,6 +264,7 @@ void HoI4::States::createStates(const std::map<std::string, std::unique_ptr<Vic2
 					 provinceMapper,
 					 mapData,
 					 theProvinces,
+					 sourceProvinces,
 					 theConfiguration,
 					 grammarMappings);
 				for (const auto& province: vic2State.getProvinceNumbers())
@@ -307,6 +309,7 @@ void HoI4::States::createStates(const std::map<std::string, std::unique_ptr<Vic2
 			 "",
 			 theImpassableProvinces,
 			 countryMap,
+			 sourceCountries,
 			 theCoastalProvinces,
 			 theStateDefinitions,
 			 strategicRegions,
@@ -315,6 +318,7 @@ void HoI4::States::createStates(const std::map<std::string, std::unique_ptr<Vic2
 			 provinceMapper,
 			 mapData,
 			 theProvinces,
+			 sourceProvinces,
 			 theConfiguration,
 			 grammarMappings);
 	}
@@ -329,6 +333,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 	 const std::string& stateOwner,
 	 const ImpassableProvinces& theImpassableProvinces,
 	 const CountryMapper& countryMapper,
+	 const std::map<std::string, std::unique_ptr<Vic2::Country>>& sourceCountries,
 	 const CoastalProvinces& theCoastalProvinces,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const StrategicRegions& strategicRegions,
@@ -337,6 +342,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 	 const mappers::ProvinceMapper& provinceMapper,
 	 const MapData& mapData,
 	 const std::map<int, Province>& provinces,
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces,
 	 const Configuration& theConfiguration,
 	 const std::map<std::string, std::string>& grammarMappings)
 {
@@ -368,7 +374,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 			{
 				newState.markHadImpassablePart();
 			}
-			addProvincesAndCoresToNewState(newState, passableProvinces);
+			addProvincesAndCoresToNewState(newState, sourceCountries, passableProvinces, provinceMapper, vic2Provinces);
 			newState.convertControlledProvinces(vic2State.getForeignControlledProvinces(), provinceMapper, countryMapper);
 			newState.tryToCreateVP(vic2State, provinceMapper, theConfiguration);
 			newState.addManpower(vic2State.getProvinces(), provinceMapper, theConfiguration);
@@ -386,7 +392,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 		if (!impassableProvinces.empty())
 		{
 			State newState(vic2State, nextStateID, stateOwner);
-			addProvincesAndCoresToNewState(newState, impassableProvinces);
+			addProvincesAndCoresToNewState(newState, sourceCountries, impassableProvinces, provinceMapper, vic2Provinces);
 			newState.makeImpassable();
 			newState.tryToCreateVP(vic2State, provinceMapper, theConfiguration);
 			newState.addManpower(vic2State.getProvinces(), provinceMapper, theConfiguration);
@@ -510,15 +516,63 @@ std::vector<std::set<int>> HoI4::States::consolidateProvinceSets(std::vector<std
 }
 
 
-void HoI4::States::addProvincesAndCoresToNewState(State& newState, const std::set<int>& provinces)
+void HoI4::States::addProvincesAndCoresToNewState(State& newState,
+	 const std::map<std::string, std::unique_ptr<Vic2::Country>>& sourceCountries,
+	 const std::set<int>& provinceNumbers,
+	 const mappers::ProvinceMapper& provinceMapper,
+	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces)
 {
-	for (auto province: provinces)
+	std::set<std::pair<std::string, std::string>> possibleCores;
+	for (auto province: provinceNumbers)
 	{
 		newState.addProvince(province);
 		provinceToStateIDMap.insert(std::make_pair(province, newState.getID()));
 		if (auto coresMapping = coresMap.find(province); coresMapping != coresMap.end())
 		{
-			newState.addCores(coresMapping->second);
+			possibleCores.insert(coresMapping->second.begin(), coresMapping->second.end());
+		}
+	}
+
+	std::set<int> sourceProvinceNums;
+	for (const auto& province: provinceNumbers)
+	{
+		const auto possibleProvinces = provinceMapper.getHoI4ToVic2ProvinceMapping(province);
+		if (possibleProvinces)
+		{
+			sourceProvinceNums.insert(possibleProvinces->begin(), possibleProvinces->end());
+		}
+	}
+
+	for (const auto& [Vic2Core, HoI4Core]: possibleCores)
+	{
+		const auto sourceCountry = sourceCountries.find(Vic2Core);
+		if (sourceCountry == sourceCountries.end())
+		{
+			continue;
+		}
+		auto acceptedCultures = sourceCountry->second->getAcceptedCultures();
+		acceptedCultures.insert(sourceCountry->second->getPrimaryCulture());
+
+		uint64_t totalPopulation = 0;
+		double acceptedPopulation = 0;
+		for (const auto& sourceProvinceNum: sourceProvinceNums)
+		{
+			if (const auto& vic2Province = vic2Provinces.find(sourceProvinceNum); vic2Province != vic2Provinces.end())
+			{
+				const auto provincePopulation = vic2Province->second->getTotalPopulation();
+				totalPopulation += provincePopulation;
+				acceptedPopulation +=
+					 provincePopulation * vic2Province->second->getPercentageWithCultures(acceptedCultures);
+			}
+		}
+
+		if (acceptedPopulation / static_cast<double>(totalPopulation) >= 0.25)
+		{
+			newState.addCores({HoI4Core});
+		}
+		else
+		{
+			newState.addClaims({HoI4Core});
 		}
 	}
 }
