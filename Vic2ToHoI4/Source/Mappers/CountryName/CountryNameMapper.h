@@ -9,7 +9,7 @@
 
 
 
-namespace mappers
+namespace Mappers
 {
 
 class CountryNameMapper
@@ -24,7 +24,7 @@ class CountryNameMapper
 	std::vector<CountryNameMapping> mappings;
 };
 
-} // namespace mappers
+} // namespace Mappers
 
 
 

@@ -6,7 +6,7 @@
 
 
 
-namespace mappers
+namespace Mappers
 {
 
 struct CountryNameMapping
@@ -16,7 +16,7 @@ struct CountryNameMapping
 	std::string hoi4Ideology;
 };
 
-} // namespace mappers
+} // namespace Mappers
 
 
 
