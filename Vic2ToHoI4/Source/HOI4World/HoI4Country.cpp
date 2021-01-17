@@ -455,7 +455,7 @@ bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandCored(const mapper
 			 capitalStateMapping != provinceToStateIDMap.end())
 		{
 			const auto& state = allStates.find(capitalStateMapping->second)->second;
-			if (state.getCores().contains(tag) && !state.isImpassable())
+			if ((state.getCores().contains(tag) || state.getClaims().contains(tag)) && !state.isImpassable())
 			{
 				capitalState = capitalStateMapping->second;
 				capitalProvince = (*mapping)[0];
