@@ -8,7 +8,7 @@ TEST(Mappers_FlagsToIdeas_FlagToIdeaMapperTests, unmatchedFlagReturnEmptyOptiona
 {
 	const auto theMapper = Mappers::FlagsToIdeasMapper::Factory().importFlagsToIdeaMapper();
 
-	ASSERT_FALSE(theMapper->getIdea("unmatched_flag"));
+	ASSERT_EQ(theMapper->getIdea("unmatched_flag"), std::nullopt);
 }
 
 
