@@ -26,6 +26,12 @@ class Mod
 	std::set<std::string> dependencies;
 };
 
+
+inline bool operator==(const Mod& a, const Mod& b)
+{
+	return a.getName() == b.getName();
+}
+
 } // namespace Vic2
 
 
