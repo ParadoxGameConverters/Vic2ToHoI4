@@ -17,7 +17,7 @@ class FlagsToIdeasMapper::Factory: commonItems::parser
 {
   public:
 	Factory();
-	std::unique_ptr<FlagsToIdeasMapper> getFlagsToIdeaMapper(std::istream& theStream);
+	std::unique_ptr<FlagsToIdeasMapper> importFlagsToIdeaMapper();
 
   private:
 	std::unique_ptr<FlagsToIdeasMapper> flagsToIdeaMapper;

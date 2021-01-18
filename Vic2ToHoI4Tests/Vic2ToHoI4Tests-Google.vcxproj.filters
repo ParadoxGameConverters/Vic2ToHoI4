@@ -1784,6 +1784,9 @@
     <Filter Include="MapperTests\FlagsToIdeas">
       <UniqueIdentifier>{ca9a809b-f54e-4881-a19c-4fd552819316}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TestFiles\Mappers\FlagsToIdeas">
+      <UniqueIdentifier>{db8286f7-f3b8-4abe-852c-c68eca054173}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2037,5 +2040,10 @@
     <CopyFileToFolders Include="TestFiles\Mappers\Technology\tech_mappings.txt" />
     <CopyFileToFolders Include="TestFiles\Mappers\Technology\research_bonus_mappings.txt" />
     <CopyFileToFolders Include="TestFiles\Localisations\grammar.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TestFiles\Mappers\FlagsToIdeas\FlagsToIdeasMappings.txt">
+      <Filter>TestFiles\Mappers\FlagsToIdeas</Filter>
+    </Text>
   </ItemGroup>
 </Project>

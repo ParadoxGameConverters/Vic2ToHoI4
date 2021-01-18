@@ -1,15 +1,12 @@
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapperFactory.h"
 #include "gtest/gtest.h"
-#include <sstream>
 
 
 
 TEST(Mappers_FlagsToIdeas_FlagToIdeaMapperTests, unmatchedFlagReturnEmptyOptional)
 {
-	std::stringstream input;
-
-	const auto theMapper = Mappers::FlagsToIdeasMapper::Factory().getFlagsToIdeaMapper(input);
+	const auto theMapper = Mappers::FlagsToIdeasMapper::Factory().importFlagsToIdeaMapper();
 
 	ASSERT_FALSE(theMapper->getIdea("unmatched_flag"));
 }
@@ -17,10 +14,7 @@ TEST(Mappers_FlagsToIdeas_FlagToIdeaMapperTests, unmatchedFlagReturnEmptyOptiona
 
 TEST(Mappers_FlagsToIdeas_FlagToIdeaMapperTests, matchedFlagReturnsIdea)
 {
-	std::stringstream input;
-	input << "mapping = { flag = theFlag idea = theIdea }";
-
-	const auto theMapper = Mappers::FlagsToIdeasMapper::Factory().getFlagsToIdeaMapper(input);
+	const auto theMapper = Mappers::FlagsToIdeasMapper::Factory().importFlagsToIdeaMapper();
 
 	ASSERT_EQ(*theMapper->getIdea("theFlag"), "theIdea");
 }

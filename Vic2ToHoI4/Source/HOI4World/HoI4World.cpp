@@ -194,9 +194,7 @@ void HoI4::World::convertCountries(const Vic2::World& sourceWorld)
 {
 	Log(LogLevel::Info) << "\tConverting countries";
 
-	std::ifstream flagToIdeasMappingFile("Configurables/FlagsToIdeasMappings.txt");
-	const auto flagsToIdeasMapper = Mappers::FlagsToIdeasMapper::Factory().getFlagsToIdeaMapper(flagToIdeasMappingFile);
-	flagToIdeasMappingFile.close();
+	const auto flagsToIdeasMapper = Mappers::FlagsToIdeasMapper::Factory().importFlagsToIdeaMapper();
 
 	for (const auto& [tag, country]: sourceWorld.getCountries())
 	{

@@ -13,10 +13,9 @@ Mappers::FlagsToIdeasMapper::Factory::Factory()
 }
 
 
-std::unique_ptr<Mappers::FlagsToIdeasMapper> Mappers::FlagsToIdeasMapper::Factory::getFlagsToIdeaMapper(
-	 std::istream& theStream)
+std::unique_ptr<Mappers::FlagsToIdeasMapper> Mappers::FlagsToIdeasMapper::Factory::importFlagsToIdeaMapper()
 {
 	flagsToIdeaMapper = std::make_unique<FlagsToIdeasMapper>();
-	parseStream(theStream);
+	parseFile("Configurables/FlagsToIdeasMappings.txt");
 	return std::move(flagsToIdeaMapper);
 }

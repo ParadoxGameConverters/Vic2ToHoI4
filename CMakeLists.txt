@@ -624,6 +624,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ConverterLocalisations.t
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/EmptyLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/BlankLocalisations/localisation/EmptyLocalisations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ModLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/modLocalisations/localisation/ModLocalisations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/StateCategories.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/Localisations/StateCategories.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/FlagsToIdeas/FlagsToIdeasMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/FlagsToIdeasMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Technology/research_bonus_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/research_bonus_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Technology/tech_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/tech_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/DirectoryMissing.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/DirectoryMissing.mod" COPYONLY)
