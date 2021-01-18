@@ -117,7 +117,7 @@ class World: commonItems::parser
 	void convertCountries(const Vic2::World& sourceWorld);
 	void convertCountry(const std::string& oldTag,
 		 const Vic2::Country& oldCountry,
-		 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper);
+		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper);
 
 	void importLeaderTraits();
 	void importIdeologicalMinisters();

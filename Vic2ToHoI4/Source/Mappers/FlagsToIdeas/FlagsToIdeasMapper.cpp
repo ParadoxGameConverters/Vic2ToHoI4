@@ -1,30 +1,14 @@
 #include "FlagsToIdeasMapper.h"
-#include "FlagToIdeaMapping.h"
-#include "FlagToIdeaMappingFactory.h"
 
 
 
-mappers::FlagsToIdeasMapper::FlagsToIdeasMapper(std::istream& theStream)
+std::optional<std::string> Mappers::FlagsToIdeasMapper::getIdea(const std::string& flag) const
 {
-	Mappers::FlagToIdeaMapping::Factory factory;
-	registerKeyword("mapping", [this, &factory](std::istream& theStream) {
-		auto theMapping = factory.importFlagToIdeaMapping(theStream);
-		mappings.insert(std::make_pair(theMapping->getFlag(), theMapping->getIdea()));
-	});
-
-	parseStream(theStream);
-}
-
-
-std::optional<std::string> mappers::FlagsToIdeasMapper::getIdea(const std::string& flag) const
-{
-	auto mapping = mappings.find(flag);
+	const auto mapping = mappings.find(flag);
 	if (mapping == mappings.end())
 	{
-		return {};
+		return std::nullopt;
 	}
-	else
-	{
-		return mapping->second;
-	}
+
+	return mapping->second;
 }

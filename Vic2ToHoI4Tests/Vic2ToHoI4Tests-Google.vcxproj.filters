@@ -1371,6 +1371,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">

@@ -339,9 +339,6 @@
     <ClCompile Include="Source\HOI4World\Decisions\IdeologicalDecisions.cpp">
       <Filter>HoI4World\Decisions</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp">
-      <Filter>Mappers\FlagsToIdeas</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\States\HoI4State.cpp">
       <Filter>HoI4World\States</Filter>
     </ClCompile>
@@ -1151,6 +1148,12 @@
       <Filter>HoI4World\Localisations</Filter>
     </ClCompile>
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp">
+      <Filter>Mappers\FlagsToIdeas</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp">
+      <Filter>Mappers\FlagsToIdeas</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp">
       <Filter>Mappers\FlagsToIdeas</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2263,6 +2266,9 @@
       <Filter>HoI4World\Localisations</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.h">
+      <Filter>Mappers\FlagsToIdeas</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.h">
       <Filter>Mappers\FlagsToIdeas</Filter>
     </ClInclude>
   </ItemGroup>

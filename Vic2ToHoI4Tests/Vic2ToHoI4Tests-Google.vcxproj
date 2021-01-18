@@ -106,6 +106,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\ResearchBonusMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\ResearchBonusMappingFactory.cpp" />

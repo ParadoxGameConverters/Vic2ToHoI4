@@ -26,7 +26,7 @@ HoI4::Country::Country(std::string tag,
 	 Names& names,
 	 graphicsMapper& theGraphics,
 	 const CountryMapper& countryMap,
-	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
+	 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 	 Localisation& hoi4Localisations):
 	 tag(std::move(tag)),
 	 name(sourceCountry.getName("english")), adjective(sourceCountry.getAdjective("english")),

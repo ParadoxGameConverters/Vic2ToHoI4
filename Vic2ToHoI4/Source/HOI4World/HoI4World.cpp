@@ -24,6 +24,7 @@
 #include "Mappers/CountryMapping.h"
 #include "Mappers/CountryName/CountryNameMapperFactory.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
+#include "Mappers/FlagsToIdeas/FlagsToIdeasMapperFactory.h"
 #include "Mappers/Technology/ResearchBonusMapper.h"
 #include "Mappers/Technology/ResearchBonusMapperFactory.h"
 #include "Mappers/Technology/TechMapper.h"
@@ -194,19 +195,19 @@ void HoI4::World::convertCountries(const Vic2::World& sourceWorld)
 	Log(LogLevel::Info) << "\tConverting countries";
 
 	std::ifstream flagToIdeasMappingFile("Configurables/FlagsToIdeasMappings.txt");
-	const mappers::FlagsToIdeasMapper flagsToIdeasMapper(flagToIdeasMappingFile);
+	const auto flagsToIdeasMapper = Mappers::FlagsToIdeasMapper::Factory().getFlagsToIdeaMapper(flagToIdeasMappingFile);
 	flagToIdeasMappingFile.close();
 
 	for (const auto& [tag, country]: sourceWorld.getCountries())
 	{
-		convertCountry(tag, *country, flagsToIdeasMapper);
+		convertCountry(tag, *country, *flagsToIdeasMapper);
 	}
 }
 
 
 void HoI4::World::convertCountry(const std::string& oldTag,
 	 const Vic2::Country& oldCountry,
-	 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper)
+	 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper)
 {
 	// don't convert rebels
 	if (oldTag == "REB")
