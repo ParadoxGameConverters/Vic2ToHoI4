@@ -627,6 +627,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/StateCategories.txt" "${
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/FlagsToIdeas/FlagsToIdeasMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/FlagsToIdeasMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Technology/research_bonus_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/research_bonus_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Technology/tech_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/tech_mappings.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mods/Dependencies.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/Dependencies.mod" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/DirectoryMissing.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/DirectoryMissing.mod" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/DirectoryUnspecified.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/DirectoryUnspecified.mod" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/dummy.txt" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/test_directory/dummy.txt" COPYONLY)

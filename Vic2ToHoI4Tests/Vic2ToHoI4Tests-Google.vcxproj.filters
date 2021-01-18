@@ -1790,6 +1790,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="TestFiles\Mods\Dependencies.mod">
+      <Filter>TestFiles\Mods</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h">
@@ -2040,10 +2043,6 @@
     <CopyFileToFolders Include="TestFiles\Mappers\Technology\tech_mappings.txt" />
     <CopyFileToFolders Include="TestFiles\Mappers\Technology\research_bonus_mappings.txt" />
     <CopyFileToFolders Include="TestFiles\Localisations\grammar.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="TestFiles\Mappers\FlagsToIdeas\FlagsToIdeasMappings.txt">
-      <Filter>TestFiles\Mappers\FlagsToIdeas</Filter>
-    </Text>
+    <CopyFileToFolders Include="TestFiles\Mappers\FlagsToIdeas\FlagsToIdeasMappings.txt" />
   </ItemGroup>
 </Project>

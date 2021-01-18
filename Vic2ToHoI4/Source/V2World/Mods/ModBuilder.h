@@ -22,9 +22,16 @@ class Mod::Builder
 		mod->name = std::move(name);
 		return *this;
 	}
+
 	Builder& setDirectory(std::string directory)
 	{
 		mod->directory = std::move(directory);
+		return *this;
+	}
+
+	Builder& addDependency(std::string dependency)
+	{
+		mod->dependencies.insert(std::move(dependency));
 		return *this;
 	}
 
