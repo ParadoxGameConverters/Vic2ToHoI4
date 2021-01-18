@@ -57,7 +57,7 @@ class Country
 		 Names& names,
 		 graphicsMapper& theGraphics,
 		 const CountryMapper& countryMap,
-		 const mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
+		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 		 Localisation& hoi4Localisations);
 	Country() = delete;
 	Country(const Country&) = delete;

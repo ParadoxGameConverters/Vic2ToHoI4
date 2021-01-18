@@ -8,7 +8,7 @@
 #include <memory>
 
 
-namespace mappers
+namespace Mappers
 {
 
 class CountryNameMappingFactory: commonItems::parser
@@ -21,7 +21,7 @@ class CountryNameMappingFactory: commonItems::parser
 	std::unique_ptr<CountryNameMapping> countryNameMapping;
 };
 
-} // namespace mappers
+} // namespace Mappers
 
 
 

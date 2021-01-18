@@ -4,7 +4,7 @@
 
 
 
-mappers::CountryNameMapper::Factory::Factory()
+Mappers::CountryNameMapper::Factory::Factory()
 {
 	registerKeyword("name_mapping", [this](std::istream& theStream) {
 		countryNameMapper->mappings.push_back(*nameMappingFactory.importMapping(theStream));
@@ -13,7 +13,7 @@ mappers::CountryNameMapper::Factory::Factory()
 }
 
 
-std::unique_ptr<mappers::CountryNameMapper> mappers::CountryNameMapper::Factory::importCountryNameMapper()
+std::unique_ptr<Mappers::CountryNameMapper> Mappers::CountryNameMapper::Factory::importCountryNameMapper()
 {
 	countryNameMapper = std::make_unique<CountryNameMapper>();
 	parseFile("./Configurables/CountryNamesMappings.txt");

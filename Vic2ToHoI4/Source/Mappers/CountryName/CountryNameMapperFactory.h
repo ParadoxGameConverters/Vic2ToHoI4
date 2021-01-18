@@ -10,7 +10,7 @@
 
 
 
-namespace mappers
+namespace Mappers
 {
 
 class CountryNameMapper::Factory: commonItems::parser
@@ -24,7 +24,7 @@ class CountryNameMapper::Factory: commonItems::parser
 	std::unique_ptr<CountryNameMapper> countryNameMapper;
 };
 
-} // namespace mappers
+} // namespace Mappers
 
 
 

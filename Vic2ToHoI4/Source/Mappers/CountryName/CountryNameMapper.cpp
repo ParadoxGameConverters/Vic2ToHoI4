@@ -2,7 +2,7 @@
 
 
 
-std::optional<std::string> mappers::CountryNameMapper::getVic2Government(const std::string& HoI4Ideology,
+std::optional<std::string> Mappers::CountryNameMapper::getVic2Government(const std::string& HoI4Ideology,
 	 const std::string& Vic2Tag) const
 {
 	for (const auto& mapping: mappings)

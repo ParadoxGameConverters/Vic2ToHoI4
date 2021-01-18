@@ -4,7 +4,7 @@
 
 
 
-mappers::CountryNameMappingFactory::CountryNameMappingFactory()
+Mappers::CountryNameMappingFactory::CountryNameMappingFactory()
 {
 	registerKeyword("vic2_gov", [this](std::istream& theStream) {
 		countryNameMapping->vic2Government = commonItems::singleString{theStream}.getString();
@@ -19,7 +19,7 @@ mappers::CountryNameMappingFactory::CountryNameMappingFactory()
 }
 
 
-std::unique_ptr<mappers::CountryNameMapping> mappers::CountryNameMappingFactory::importMapping(std::istream& theStream)
+std::unique_ptr<Mappers::CountryNameMapping> Mappers::CountryNameMappingFactory::importMapping(std::istream& theStream)
 {
 	countryNameMapping = std::make_unique<CountryNameMapping>();
 	parseStream(theStream);
