@@ -1,6 +1,7 @@
 #include "InventionsFactory.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
+#include <ranges>
 
 
 
@@ -50,7 +51,8 @@ std::map<std::string, std::string> Vic2::Inventions::Factory::getTechFilesAndPat
 	{
 		techFiles[file] = theConfiguration.getVic2Path() + "/inventions/";
 	}
-	for (const auto& mod: theConfiguration.getVic2Mods())
+	std::ranges::reverse_view reverseMods{theConfiguration.getVic2Mods()};
+	for (const auto& mod: reverseMods)
 	{
 		auto modInventionsPath = theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/inventions/";
 		if (commonItems::DoesFolderExist(modInventionsPath))

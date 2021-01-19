@@ -1796,6 +1796,15 @@
     <None Include="TestFiles\Mods\Dependencies.mod">
       <Filter>TestFiles\Mods</Filter>
     </None>
+    <None Include="TestFiles\Mods\Dependent.mod">
+      <Filter>TestFiles\Mods</Filter>
+    </None>
+    <None Include="TestFiles\Mods\DependencyOne.mod">
+      <Filter>TestFiles\Mods</Filter>
+    </None>
+    <None Include="TestFiles\Mods\DependencyTwo.mod">
+      <Filter>TestFiles\Mods</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h">
