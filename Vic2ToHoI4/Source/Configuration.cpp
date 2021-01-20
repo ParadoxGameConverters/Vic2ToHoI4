@@ -229,7 +229,7 @@ void Configuration::Factory::importMods()
 
 void Configuration::Factory::sortMods()
 {
-	// using Khan's algorithm - https://en.wikipedia.org/wiki/Topological_sorting#Kahn's_algorithm
+	// using Kahn's algorithm - https://en.wikipedia.org/wiki/Topological_sorting#Kahn's_algorithm
 	auto unsortedMods = configuration->Vic2Mods;
 
 	// track incoming edges
