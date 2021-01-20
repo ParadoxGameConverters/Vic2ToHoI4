@@ -513,7 +513,7 @@ optional<double> HoI4WarCreator::getDistanceBetweenCountries(shared_ptr<HoI4::Co
 	 shared_ptr<HoI4::Country> country2)
 {
 	auto distanceBetweenCountries = getDistanceBetweenCapitals(country1, country2);
-	pair<int, int> capital2Position = getCapitalPosition(country2);
+	std::pair<int, int> capital2Position = getCapitalPosition(country2);
 
 	for (auto province1: country1->getProvinces())
 	{
@@ -1576,7 +1576,7 @@ map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::findCloseNeighbors(shared
 }
 
 
-map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::findCountriesWithin(int distancePx, shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData)
+std::map<string, shared_ptr<HoI4::Country>> HoI4WarCreator::findCountriesWithin(int distancePx, shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData)
 {
 	map<string, shared_ptr<HoI4::Country>> closeNeighbors;
 

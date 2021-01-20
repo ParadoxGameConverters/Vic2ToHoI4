@@ -105,7 +105,7 @@ class HoI4WarCreator
 	map<string, shared_ptr<HoI4::Country>> findCloseNeighbors(shared_ptr<HoI4::Country> country,
 		 const HoI4::MapData& theMapData,
 		 const HoI4::ProvinceDefinitions& provinceDefinitions);
-	map<string, shared_ptr<HoI4::Country>> findCountriesWithin(int distancePx, shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData);
+	std::map<string, shared_ptr<HoI4::Country>> findCountriesWithin(int distancePx, shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData);
 	vector<shared_ptr<HoI4::Country>> findWeakColonies(shared_ptr<HoI4::Country> country,
 		 const HoI4::MapData& theMapData,
 		 const HoI4::ProvinceDefinitions& provinceDefinitions);

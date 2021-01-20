@@ -299,6 +299,9 @@ void HoI4::Country::convertStrategies(const CountryMapper& countryMap, const Vic
 			conquerStrategies.push_back(newStrategy);
 		}
 	}
+	std::sort(conquerStrategies.begin(), conquerStrategies.end(), [](const HoI4::AIStrategy& a, const HoI4::AIStrategy& b) {
+			 return a.getValue() > b.getValue();
+	});
 
 	for (const auto& srcStrategy: sourceCountry.getAI()->getStrategies())
 	{
@@ -1017,8 +1020,7 @@ double HoI4::Country::calculateInfluenceFactor()
 		return std::clamp(influenceFactor, 1.0, 100.0);
 	}
 }
-
-bool HoI4::Country::isEligibleEnemy(std::string target)
+const bool HoI4::Country::isEligibleEnemy(std::string target)
 {
 	std::set<std::string> allies;
 	if (faction)
@@ -1027,5 +1029,6 @@ bool HoI4::Country::isEligibleEnemy(std::string target)
 		allies.insert(faction->getLeader()->getTag());
 	}
 	
-	return (allies.find(target) == allies.end() && puppets.find(target) == puppets.end() && target != puppetMaster);
+	return !allies.contains(target) && !puppets.contains(target) && target != puppetMaster;
 }
+
