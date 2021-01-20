@@ -109,15 +109,18 @@ TEST(Vic2World_Technology_InventionTests, ModInventionFilesOverrideDefaultOnes)
 }
 
 
-TEST(Vic2World_Technology_InventionTests, ModInventionFilesOverrideEarlierMods)
+TEST(Vic2World_Technology_InventionTests, ModInventionFilesOverrideDependeeMods)
 {
-	const auto configuration = Configuration::Builder{}
-											 .setVic2Path("./BaseGameInventions")
-											 .setVic2ModPath(".")
-											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("ModInventions/Mod1").build())
-											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("ModInventions/Mod2").build())
-											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("ModInventions/Mod3").build())
-											 .build();
+	const auto configuration =
+		 Configuration::Builder{}
+			  .setVic2Path("./BaseGameInventions")
+			  .setVic2ModPath(".")
+			  .addVic2Mod(*Vic2::Mod::Builder{}.setName("Mod1").setDirectory("ModInventions/Mod1").build())
+			  .addVic2Mod(
+					*Vic2::Mod::Builder{}.setName("Mod2").setDirectory("ModInventions/Mod2").addDependency("Mod1").build())
+			  .addVic2Mod(
+					*Vic2::Mod::Builder{}.setName("Mod3").setDirectory("ModInventions/Mod3").addDependency("Mod2").build())
+			  .build();
 	const auto inventions = Vic2::Inventions::Factory{}.loadInventions(*configuration);
 
 	ASSERT_EQ("replacement_tech_two", inventions->getInventionName(4));
