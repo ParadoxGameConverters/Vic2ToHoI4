@@ -20065,4 +20065,9 @@
   <ItemGroup>
     <None Include="Copy_Files.bat" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data_Files\configurables\Historical Flavour Mod v1.27I_province_mappings.txt">
+      <Filter>Data Files\Configurables</Filter>
+    </Text>
+  </ItemGroup>
 </Project>
