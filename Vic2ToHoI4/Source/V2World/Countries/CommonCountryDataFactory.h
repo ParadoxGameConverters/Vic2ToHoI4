@@ -20,7 +20,7 @@ class CommonCountryData::Factory: commonItems::parser
   public:
 	Factory();
 	std::unique_ptr<CommonCountryData> importCommonCountryData(const std::string& filename,
-		 const std::optional<std::string>& modFolder,
+		 const std::vector<Vic2::Mod>& vic2Mods,
 		 const Configuration& theConfiguration);
 
   private:

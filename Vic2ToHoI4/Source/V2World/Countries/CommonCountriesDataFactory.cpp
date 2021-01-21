@@ -22,7 +22,7 @@ std::string extractCountryFileName(const std::string& countryFileLine)
 
 std::tuple<std::map<std::string, Vic2::CommonCountryData>, std::vector<Vic2::Party>> processCountriesDotTxt(
 	 const std::string& countryListFile,
-	 const std::optional<std::string>& modFolder,
+	 const std::vector<Vic2::Mod>& vic2Mods,
 	 const Configuration& theConfiguration)
 {
 	std::map<std::string, Vic2::CommonCountryData> commonCountriesData;
@@ -47,7 +47,7 @@ std::tuple<std::map<std::string, Vic2::CommonCountryData>, std::vector<Vic2::Par
 
 		auto tag = line.substr(0, 3);
 		auto countryFileName = extractCountryFileName(line);
-		auto countryData = commonCountryDataFactory.importCommonCountryData(countryFileName, modFolder, theConfiguration);
+		auto countryData = commonCountryDataFactory.importCommonCountryData(countryFileName, vic2Mods, theConfiguration);
 		commonCountriesData[tag] = *countryData;
 		for (const auto& party: countryData->getParties())
 		{
@@ -70,7 +70,7 @@ std::tuple<std::map<std::string, Vic2::CommonCountryData>, std::vector<Vic2::Par
 	{
 		auto modFolder = theConfiguration.getVic2ModPath() + "/" + vic2Mod.getDirectory();
 		auto [commonCountriesData, parties] =
-			 processCountriesDotTxt(modFolder + "/common/countries.txt", modFolder, theConfiguration);
+			 processCountriesDotTxt(modFolder + "/common/countries.txt", theConfiguration.getVic2Mods(), theConfiguration);
 		if (!commonCountriesData.empty())
 		{
 			return std::make_tuple(commonCountriesData, parties);
@@ -78,6 +78,6 @@ std::tuple<std::map<std::string, Vic2::CommonCountryData>, std::vector<Vic2::Par
 	}
 
 	return processCountriesDotTxt(theConfiguration.getVic2Path() + "/common/countries.txt",
-		 std::nullopt,
+		 {},
 		 theConfiguration);
 }
