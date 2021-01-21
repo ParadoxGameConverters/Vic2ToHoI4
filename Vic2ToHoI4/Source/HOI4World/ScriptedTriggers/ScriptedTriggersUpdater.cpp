@@ -293,4 +293,21 @@ void updateNationalFocusTriggers(HoI4::ScriptedTriggers& scriptedTriggers,
 
 		scriptedTriggers.addNationalFocusTrigger(NFTrigger);
 	}
+
+	if (majorIdeologies.contains("radical"))
+	{
+		HoI4::ScriptedTrigger NFTrigger("potential_radical_annex_target");
+		std::string body = "= {\n";
+		body += "\tcustom_trigger_tooltip = {\n";
+		body += "\t\ttooltip = potential_radical_annex_target_tooltip\n";
+		body += "\t\thidden_trigger = {\n";
+		body += "\t\t\tROOT = { has_government = radical }\n";
+		body += "\t\t\tNOT = { has_government = radical }\n";
+		body += "\t\t}\n";
+		body += "\t}\n";
+		body += "}";
+		NFTrigger.setBody(body);
+
+		scriptedTriggers.addNationalFocusTrigger(NFTrigger);
+	}
 }

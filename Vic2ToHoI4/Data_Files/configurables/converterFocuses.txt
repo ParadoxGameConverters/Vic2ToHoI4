@@ -2315,6 +2315,7 @@ focus = {
 					potential_take_core_target = yes
 					#COMMUNISM
 					#FASCISM
+					#RADICAL
 					potential_take_state_target = yes
 					potential_border_war_target = yes
 				}
@@ -2332,6 +2333,7 @@ focus = {
 						potential_take_core_target = yes
 						#COMMUNISM
 						#FASCISM
+						#RADICAL
 						potential_take_state_target = yes
 						potential_border_war_target = yes
 					}
@@ -2493,6 +2495,7 @@ focus = {
 			}
 			#COMMUNISM
 			#FASCISM
+			#RADICAL
 			else_if = {
 				limit = { var:neighbor_war_defender = { potential_take_state_target = yes } }
 				add_state_claim = var:defender_state
@@ -2559,6 +2562,7 @@ focus = {
 					potential_take_core_target = yes
 					#COMMUNISM
 					#FASCISM
+					#RADICAL
 					potential_take_state_target = yes
 					potential_border_war_target = yes
 				}
@@ -2705,6 +2709,7 @@ focus = {
 			}
 			#COMMUNISM
 			#FASCISM
+			#RADICAL
 			else_if = {
 				limit = { var:neighbor_war_defender = { potential_take_state_target = yes } }
 				add_state_claim = var:defender_state
@@ -2772,6 +2777,7 @@ focus = {
 					potential_take_core_target = yes
 					#COMMUNISM
 					#FASCISM
+					#RADICAL
 					potential_take_state_target = yes
 					potential_border_war_target = yes
 				}
@@ -2924,6 +2930,7 @@ focus = {
 			}
 			#COMMUNISM
 			#FASCISM
+			#RADICAL
 			else_if = {
 				limit = { var:neighbor_war_defender = { potential_take_state_target = yes } }
 				add_state_claim = var:defender_state
