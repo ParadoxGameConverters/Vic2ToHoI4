@@ -2055,9 +2055,10 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(
 		return conquerTags;
 	}
 
+	const auto& maxConquerValue = getMaxConquerValue(conquerStrategies);
 	for (const auto& strategy: conquerStrategies)
 	{
-		int aiChance = 10 * strategy.getValue() / getMaxConquerValue(conquerStrategies);
+		int aiChance = 10 * strategy.getValue() / maxConquerValue;
 		if (hasMaxNeighborWars(numWarsWithNeighbors) || aiChance < 1)
 		{
 			break;
