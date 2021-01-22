@@ -145,6 +145,15 @@ TEST(ConfigurationTests, OutputNameOnlyRemovesFinalExtension)
 	ASSERT_EQ("hoi4.eu4", theConfiguration->getOutputName());
 }
 
+TEST(ConfigurationTests, CustomizedOutputNameCanBeSet)
+{
+	std::stringstream input;
+	input << R"(output_name = "Testname")";
+
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_EQ("Testname", theConfiguration->getOutputName());
+}
 
 TEST(ConfigurationTests, HoI4PathDefaultsToEmpty)
 {
