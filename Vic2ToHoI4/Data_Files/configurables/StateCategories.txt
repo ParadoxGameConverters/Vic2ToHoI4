@@ -287,6 +287,103 @@ msac = { # Le Sahara Occidental français
 	WUR_589 # Württemberg
 	YEM_1173 # Yemen
 	ZUL_2113 # Natal-Zululand
+
+	### HPM ###
+	MOR_1694 # Agadir
+	BRU_1396 # Sabah
+	CHI_1519 # West Hubei
+	CHI_1604 # North Zhejiang
+	CHI_1579 # East Sichuan
+	SCH_370 # Schleswig
+	RUS_343 # Helsinki
+	RUS_345 # Turku
+	SWE_334 # Malmö
+	ENG_258 # Connacht
+	NET_379 # Zeeland
+	NET_1401 # Siak
+	NET_1418 # East Java
+	NET_1446 # Timor
+	NET_1426 # South Borneo
+	CHI_1493 # East Canton
+	ENG_2067 # Nyasaland
+	PRU_570 # Palatinate
+	TUR_882 # Trebizond
+	TUR_880 # Kastamonu
+	TUR_890 # Van
+	TUR_893 # Diyarbakir
+	SOM_1872 # North Somaliland
+	EGY_1745 # Cairo
+	EGY_1755 # Sinai
+	AFG_1209 # North Afghanistan
+	PER_1136 # Fars
+	PER_1132 # Khuzestan
+	PER_1140 # Kerman
+	CHI_1470 # South Anhui
+	CHI_1477 # North Anhui
+	CHI_1540 # North Jiangsu
+	CHI_2221 # South Jiangsu
+	CHI_1565 # East Shandong
+	CHI_1612 # Hebei
+	CHI_1616 # Shuntian
+	CHI_1482 # Fujian
+	CHI_1505 # Guizhou
+	CHI_1526 # South Hunan
+	CHI_1545 # North Jiangxi
+	CHI_1547 # South Jiangxi
+	CHI_1610 # South Zhejiang
+	CHI_1524 # North Hunan
+	CHI_1594 # Kashgar
+	SIA_1352 # Pattani
+	CHI_1552 # Heilongjiang
+	CHI_1479 # Fengtian
+	CHI_1559 # Shaanxi
+	CHI_1508 # East Henan
+	CHI_1510 # West Henan
+	CHI_1522 # East Hubei
+	CHI_1572 # Shanxi
+	CAN_46 # Upper Canada
+	CAN_58 # Lower Canada
+	CAN_60 # Northern Quebec
+	CAN_50 # Northern Ontario
+	MEX_2159 # Veracruz
+	MEX_2181 # Chiapas
+	MEX_2172 # México
+	UCA_2193 # Honduras
+	ARG_2360 # Entre Rios
+	BRZ_2421 # Goiás
+	ENG_1391 # Northern Malaya
+	YEM_1412 # Aden
+	ENG_2071 # Rozwi
+	DAI_1375 # Annam
+	SOK_1937 # Tukari
+	SOM_1868 # South Somaliland
+	DAI_1369 # Tonkin
+	SOK_1945 # Kano
+	ENG_2036 # Zanzibar
+	RUS_940 # Pinsk
+	RUS_959 # Volyn
+	RUS_978 # Kharkov
+	RUS_973 # Kherson-Zaporizhia
+	FRA_400 # Champagne
+	ALD_1713 # North Central Sahara
+	FRA_801 # Tahiti
+	TON_2540 # Tonga
+	PRU_544 # Mecklenburg
+	HAN_528 # Lower Elbe
+	HOL_369 # Holstein
+	MEX_97 # Utah
+	JAP_1665 # Shikoku
+	CHI_1485 # Formosa
+	AUS_733 # Friuli
+	ETH_1852 # Begemder
+	ETH_1853 # Tigray
+	ETH_1859 # Shewa
+	ETH_1865 # Hararghe
+	BEL_2034 # Ruanda-Urundi
+	ENG_2044 # Tanganyika
+	ENG_1844 # Sudd
+	AUS_652 # Banat
+	JAP_1086 # Sakhalin
 }
 
 msav = { # L'Afghanistan Occidental français
@@ -506,6 +603,39 @@ fsac = { # La Cochinchine française
 	USA_247 # New England
 	USA_2556 # North Carolina
 	WAL_665 # Wallachia
+
+	### HPM ###
+	MOL_676 # Bessarabia
+	SPA_1955 # Equatorial Guinea
+	TRI_1731 # Tripolitania
+	TRI_1735 # Cyrenaica
+	YEM_1178 # Sana'a
+	FRA_1878 # Guinea-Bissau
+	POR_2054 # Sofala
+	TUR_823 # Eastern Macedonia
+	TUR_894 # Adana
+	CHI_1465 # Eastern Mongolia
+	CHI_1468 # Western Mongolia
+	CAN_13 # Columbia
+	MEX_2149 # Cohauila
+	ARG_2374 # Catamarca
+	BRZ_2461 # Santa Catarina
+	BOL_2309 # Antofagasta
+	ASH_1909 # Gold Coast
+	DAI_1380 # Cochinchina
+	ASH_1910 # Volta
+	SOK_1934 # Biafra
+	SOK_1963 # Adamawa
+	RUS_968 # Transnistria
+	RUS_715 # West Galicia
+	AST_1097 # New Caledonia
+	PRU_578 # Eastern Rheinland
+	HAN_540 # East Friesland
+	USA_205 # South Carolina
+	FRA_1883 # Guinea
+	AUS_2538 # Vojvodina
+	AUS_627 # Lower Silesia
+	PRU_554 # Thuringia
 }
 
 fsav = { # L'Hongrie Centrale française
@@ -608,6 +738,10 @@ fpav = { # Les Îles de la Sonde françaises
 	ENG_2228 # Lesser Antilles
 	HAW_658 # Hawaiian Islands
 	JAP_1654 # Bonin Islands
+
+	### HPM ###
+	SPA_610 # Caroline Islands
+	AST_2534 # Solomon Islands
 }
 
 fpnc = { # [Ø] Buenos Aires françaises
@@ -615,6 +749,10 @@ fpnc = { # [Ø] Buenos Aires françaises
 	ARG_2357 # Corrientes
 	AST_2244 # Christmas & Cocos Islands
 	MEX_2173 # Zacatecas
+
+	### HPM ###
+	NET_1447 # Moluccas
+	USA_2543 # Samoa
 }
 
 fpnv = { # [Ø] Islande et Grœnland françaises
