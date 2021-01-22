@@ -85,6 +85,7 @@ class Configuration::Factory: commonItems::parser
   private:
 	void setOutputName(const std::string& V2SaveFileName);
 	void importMods();
+	void sortMods();
 
 	std::unique_ptr<Configuration> configuration;
 

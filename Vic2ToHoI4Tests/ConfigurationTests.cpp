@@ -1,4 +1,6 @@
 #include "Configuration.h"
+#include "V2World/Mods/ModBuilder.h"
+#include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 #include <sstream>
 
@@ -308,6 +310,27 @@ TEST(ConfigurationTests, Vic2ModsCanBeSet)
 
 	ASSERT_EQ(1, theConfiguration->getVic2Mods().size());
 	ASSERT_EQ("Test Mod", theConfiguration->getVic2Mods()[0].getName());
+}
+
+
+TEST(ConfigurationTests, Vic2ModsWithDependenciesAreBeforeTheirDependencies)
+{
+	std::stringstream input;
+	input << R"(Vic2ModPath = "./Vic2/Mod")";
+	input << "selectedMods = { \n";
+	input << "\t\"DependencyTwo.mod\"\n";
+	input << "\t\"DependencyOne.mod\"\n";
+	input << "\t\"Test.mod\"\n";
+	input << "\t\"Dependent.mod\"\n";
+	input << "}";
+	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
+
+	ASSERT_THAT(theConfiguration->getVic2Mods(),
+		 testing::ElementsAre(
+			  *Vic2::Mod::Builder{}.setName("Dependent Mod").build(),
+			  *Vic2::Mod::Builder{}.setName("Dependency One").build(),
+			  *Vic2::Mod::Builder{}.setName("Dependency Two").build(),
+			  *Vic2::Mod::Builder{}.setName("Test Mod").build()));
 }
 
 

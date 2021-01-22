@@ -1,4 +1,5 @@
 #include "V2World/Mods/ModFactory.h"
+#include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 
 
@@ -12,6 +13,7 @@ TEST(Vic2World_Mods_ModFactoryTests, NameMissingCausesException)
 TEST(Vic2World_Mods_ModFactoryTests, NameCanBeSet)
 {
 	const auto mod = Vic2::Mod::Factory{}.getMod("Test.mod", "./Vic2/Mod");
+
 	ASSERT_EQ("Test Mod", mod->getName());
 }
 
@@ -31,5 +33,21 @@ TEST(Vic2World_Mods_ModFactoryTests, DirectoryMissingThrowsException)
 TEST(Vic2World_Mods_ModFactoryTests, DirectoryCanBeSet)
 {
 	const auto mod = Vic2::Mod::Factory{}.getMod("Test.mod", "./Vic2/Mod");
+
 	ASSERT_EQ("test_directory", mod->getDirectory());
+}
+
+TEST(Vic2World_Mods_ModFactoryTests, DependenciesDefaultToEmpty)
+{
+	const auto mod = Vic2::Mod::Factory{}.getMod("Test.mod", "./Vic2/Mod");
+
+	ASSERT_TRUE(mod->getDependencies().empty());
+}
+
+
+TEST(Vic2World_Mods_ModFactoryTests, DependenciesCanBeSet)
+{
+	const auto mod = Vic2::Mod::Factory{}.getMod("Dependencies.mod", "./Vic2/Mod");
+
+	ASSERT_THAT(mod->getDependencies(), testing::UnorderedElementsAre("dependency_one", "dependency two"));
 }

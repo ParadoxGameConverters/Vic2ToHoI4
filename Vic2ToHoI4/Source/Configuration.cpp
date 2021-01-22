@@ -222,4 +222,58 @@ void Configuration::Factory::importMods()
 			configuration->Vic2Mods.push_back(std::move(*mod));
 		}
 	}
+
+	sortMods();
+}
+
+
+void Configuration::Factory::sortMods()
+{
+	// using Kahn's algorithm - https://en.wikipedia.org/wiki/Topological_sorting#Kahn's_algorithm
+	auto unsortedMods = configuration->Vic2Mods;
+
+	// track incoming edges
+	std::map<std::string, std::set<std::string>> incomingDependencies;
+	for (const auto& mod: unsortedMods)
+	{
+		for (const auto& dependency: mod.getDependencies())
+		{
+			auto [itr, inserted] = incomingDependencies.emplace(dependency, std::set<std::string>{mod.getName()});
+			if (!inserted)
+			{
+				itr->second.insert(mod.getName());
+			}
+		}
+	}
+
+	// add mods with no incoming edges to the sorted mods
+	std::vector<Vic2::Mod> sortedMods;
+	while (!unsortedMods.empty())
+	{
+		auto itr = unsortedMods.begin();
+		while (incomingDependencies.contains(itr->getName()))
+		{
+			++itr;
+			if (itr == unsortedMods.end())
+			{
+				throw std::invalid_argument("A mod dependency was missing. Include all mods used in Vic2.");
+			}
+		}
+
+		sortedMods.push_back(*itr);
+
+		for (const auto& dependencyName: itr->getDependencies())
+		{
+			auto dependency = incomingDependencies.find(dependencyName);
+			dependency->second.erase(itr->getName());
+			if (dependency->second.empty())
+			{
+				incomingDependencies.erase(dependencyName);
+			}
+		}
+
+		unsortedMods.erase(itr);
+	}
+
+	configuration->Vic2Mods = sortedMods;
 }

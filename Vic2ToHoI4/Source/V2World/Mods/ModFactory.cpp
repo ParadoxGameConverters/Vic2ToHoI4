@@ -14,6 +14,10 @@ Vic2::Mod::Factory::Factory()
 		mod->directory = commonItems::singleString{theStream}.getString();
 		mod->directory = mod->directory.substr(4, mod->directory.size());
 	});
+	registerKeyword("dependencies", [this](std::istream& theStream) {
+		const auto dependencies = commonItems::stringList{theStream}.getStrings();
+		mod->dependencies.insert(dependencies.begin(), dependencies.end());
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 

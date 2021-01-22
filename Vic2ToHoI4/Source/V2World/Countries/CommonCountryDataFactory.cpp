@@ -28,14 +28,14 @@ Vic2::CommonCountryData::Factory::Factory()
 
 std::unique_ptr<Vic2::CommonCountryData> Vic2::CommonCountryData::Factory::importCommonCountryData(
 	 const std::string& filename,
-	 const std::optional<std::string>& modFolder,
+	 const std::vector<Vic2::Mod>& vic2Mods,
 	 const Configuration& theConfiguration)
 {
 	commonCountryData = std::make_unique<CommonCountryData>();
 
-	if (modFolder)
+	for (const auto& mod: vic2Mods)
 	{
-		const auto file = *modFolder + "/common/countries/" + filename;
+		const auto file = theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/common/countries/" + filename;
 		if (commonItems::DoesFileExist(file))
 		{
 			parseFile(file);
