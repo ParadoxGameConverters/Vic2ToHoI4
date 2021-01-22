@@ -100,26 +100,6 @@ potential_take_core_target = {
 	}
 }
 
-potential_communist_puppet_target = {
-	custom_trigger_tooltip = {
-		tooltip = potential_communist_puppet_target_tooltip
-		hidden_trigger = {
-			ROOT = { has_government = communism }
-			NOT = { has_government = communism }
-		}
-	}
-}
-
-potential_fascist_annex_target = {
-	custom_trigger_tooltip = {
-		tooltip = potential_fascist_annex_target_tooltip
-		hidden_trigger = {
-			ROOT = { has_government = fascism }
-			NOT = { has_government = fascism }
-		}
-	}
-}
-
 potential_take_state_target = {
 	custom_trigger_tooltip = {
 		tooltip = potential_take_state_target_tooltip

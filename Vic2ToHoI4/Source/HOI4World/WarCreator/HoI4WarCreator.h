@@ -105,6 +105,7 @@ class HoI4WarCreator
 	map<string, shared_ptr<HoI4::Country>> findCloseNeighbors(shared_ptr<HoI4::Country> country,
 		 const HoI4::MapData& theMapData,
 		 const HoI4::ProvinceDefinitions& provinceDefinitions);
+	std::map<string, shared_ptr<HoI4::Country>> findCountriesWithin(int distancePx, shared_ptr<HoI4::Country> country, const HoI4::MapData& theMapData);
 	vector<shared_ptr<HoI4::Country>> findWeakColonies(shared_ptr<HoI4::Country> country,
 		 const HoI4::MapData& theMapData,
 		 const HoI4::ProvinceDefinitions& provinceDefinitions);
@@ -126,6 +127,7 @@ class HoI4WarCreator
 		 double time);
 	vector<shared_ptr<HoI4::Country>> GetMorePossibleAllies(const shared_ptr<HoI4::Country>& CountryThatWantsAllies);
 	optional<double> getDistanceBetweenCountries(shared_ptr<HoI4::Country> Country1, shared_ptr<HoI4::Country> Country2);
+	optional<double> getDistanceBetweenCapitals(shared_ptr<HoI4::Country> Country1, shared_ptr<HoI4::Country> Country2);
 	bool bothCountriesHaveCapitals(shared_ptr<HoI4::Country> Country1, shared_ptr<HoI4::Country> Country2) const;
 	pair<int, int> getCapitalPosition(shared_ptr<HoI4::Country> country);
 	pair<int, int> getProvincePosition(int provinceNum);

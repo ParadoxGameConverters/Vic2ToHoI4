@@ -219,6 +219,8 @@ class Country
 	const auto& getGuaranteed() const { return guaranteed; }
 	void addGuaranteed(std::string guaranteedTag) { guaranteed.push_back(guaranteedTag); }
 
+	[[nodiscard]] const bool isEligibleEnemy(std::string target);
+
   private:
 	void determineFilename();
 	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
