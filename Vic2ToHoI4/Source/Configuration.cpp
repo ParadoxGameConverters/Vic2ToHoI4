@@ -163,8 +163,7 @@ Configuration::Factory::Factory()
 		Log(LogLevel::Info) << "\tPercent of commanders: " << configuration->percentOfCommanders;
 	});
 	registerKeyword("output_name", [this](const std::string& unused, std::istream& theStream) {
-		const commonItems::singleString outputNameStr(theStream);
-		configuration->customOutputName = outputNameStr.getString();
+		configuration->customOutputName = commonItems::singleString(theStream).getString();
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
