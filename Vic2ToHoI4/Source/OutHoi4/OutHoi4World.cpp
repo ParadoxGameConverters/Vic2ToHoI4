@@ -508,7 +508,12 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 		bookmarkFile << "\t\t" + greatPower->getTag() + "= {\n";
 		bookmarkFile << "\t\t\thistory = \"" + greatPower->getGovernmentIdeology() + "_GP_CONV_DESC\"\n";
 		bookmarkFile << "\t\t\tideology = " + greatPower->getGovernmentIdeology() + "\n";
-		bookmarkFile << "\t\t\tideas = { great_power }\n";
+		bookmarkFile << "\t\t\tideas = { great_power ";
+		for (const auto& idea: greatPower->getIdeas())
+		{
+			bookmarkFile << idea << " ";
+		}
+		bookmarkFile << "}\n";
 		bookmarkFile << "\t\t}\n";
 	}
 
@@ -516,18 +521,23 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 	bookmarkFile << "\t\t\thistory = \"OTHER_GATHERING_STORM_DESC\"\n";
 	bookmarkFile << "\t\t}\n";
 
-	for (const auto& country: countries)
+	for (const auto& [unused, country]: countries)
 	{
-		if (!country.second->isGreatPower() && (country.second->getStrengthOverTime(3) > 4500))
+		if (!country->isGreatPower() && (country->getStrengthOverTime(3) > 4500))
 		{
 			// add minor countries to the bookmark, only those with custom focus trees are visible due to Hoi4
 			// limitations Bookmark window has room for 22 minor countries, going over this seems to not cause any
 			// issues however
-			bookmarkFile << "\t\t" + country.second->getTag() + " = {\n";
+			bookmarkFile << "\t\t" + country->getTag() + " = {\n";
 			bookmarkFile << "\t\t\tminor = yes\n";
-			bookmarkFile << "\t\t\thistory = \"" + country.second->getGovernmentIdeology() + "_SP_CONV_DESC\"\n";
-			bookmarkFile << "\t\t\tideology = " + country.second->getGovernmentIdeology() + "\n";
-			bookmarkFile << "\t\t\tideas = { }\n";
+			bookmarkFile << "\t\t\thistory = \"" + country->getGovernmentIdeology() + "_SP_CONV_DESC\"\n";
+			bookmarkFile << "\t\t\tideology = " + country->getGovernmentIdeology() + "\n";
+			bookmarkFile << "\t\t\tideas = { ";
+			for (const auto& idea: country->getIdeas())
+			{
+				bookmarkFile << idea << " ";
+			}
+			bookmarkFile << "}\n";
 			bookmarkFile << "\t\t}\n";
 		}
 	}
