@@ -142,7 +142,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	addNeutrality(theConfiguration.getDebug());
 	addLeaders();
 	convertIdeologySupport();
-	states->convertCapitalVPs(countries, greatPowers, getStrongestCountryStrength());
+	states->convertCapitalVPs(countries, greatPowers);
 	states->convertAirBases(countries, greatPowers);
 	if (theConfiguration.getCreateFactions())
 	{
@@ -685,22 +685,6 @@ void HoI4::World::setupNavalTreaty()
 		hoi4Localisations->addDecisionLocalisation(strongestGpNavies->second + "_Naval_treaty_nation",
 			 "@" + strongestGpNavies->second + " [" + strongestGpNavies->second + ".GetName]");
 	}
-}
-
-
-double HoI4::World::getStrongestCountryStrength() const
-{
-	double greatestStrength = 0.0;
-	for (auto country: countries)
-	{
-		double currentStrength = country.second->getStrengthOverTime(1.0);
-		if (currentStrength > greatestStrength)
-		{
-			greatestStrength = currentStrength;
-		}
-	}
-
-	return greatestStrength;
 }
 
 

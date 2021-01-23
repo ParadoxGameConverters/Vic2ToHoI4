@@ -72,8 +72,7 @@ class States: commonItems::parser
 		 const CoastalProvinces& theCoastalProvinces,
 		 const Configuration& theConfiguration);
 	void convertCapitalVPs(const std::map<std::string, std::shared_ptr<Country>>& countries,
-		 const std::vector<std::shared_ptr<Country>>& greatPowers,
-		 double greatestStrength);
+		 const std::vector<std::shared_ptr<Country>>& greatPowers);
 	void addCapitalsToStates(const std::map<std::string, std::shared_ptr<Country>>& countries);
 	void giveProvinceControlToCountry(int provinceNum, const std::string& country);
 
@@ -147,10 +146,8 @@ class States: commonItems::parser
 	void addCapitalAirBases(const std::map<std::string, std::shared_ptr<Country>>& countries);
 	void addGreatPowerAirBases(const std::vector<std::shared_ptr<Country>>& greatPowers);
 
-	void addBasicCapitalVPs(const std::map<std::string, std::shared_ptr<Country>>& countries);
 	void addGreatPowerVPs(const std::vector<std::shared_ptr<Country>>& greatPowers);
-	void addStrengthVPs(const std::map<std::string, std::shared_ptr<Country>>& countries, double greatestStrength);
-	[[nodiscard]] static int calculateStrengthVPs(const Country& country, double greatestStrength);
+	void addStrengthVPs(const std::map<std::string, std::shared_ptr<Country>>& countries);
 
 	std::map<int, std::string> ownersMap;
 	std::map<int, std::set<std::pair<std::string, std::string>>> coresMap;

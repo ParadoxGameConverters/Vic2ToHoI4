@@ -697,14 +697,12 @@ void HoI4::States::putIndustryInStates(const std::map<std::string, double>& fact
 
 
 void HoI4::States::convertCapitalVPs(const std::map<std::string, std::shared_ptr<Country>>& countries,
-	 const std::vector<std::shared_ptr<Country>>& greatPowers,
-	 double greatestStrength)
+	 const std::vector<std::shared_ptr<Country>>& greatPowers)
 {
 	Log(LogLevel::Info) << "\tConverting capital VPs";
 
-	addBasicCapitalVPs(countries);
+	addStrengthVPs(countries);
 	addGreatPowerVPs(greatPowers);
-	addStrengthVPs(countries, greatestStrength);
 }
 
 
@@ -737,46 +735,80 @@ void HoI4::States::giveProvinceControlToCountry(int provinceNum, const std::stri
 }
 
 
-void HoI4::States::addBasicCapitalVPs(const std::map<std::string, std::shared_ptr<Country>>& countries)
-{
-	for (const auto& country: countries)
-	{
-		if (auto capitalState = states.find(*country.second->getCapitalState()); capitalState != states.end())
-		{
-			capitalState->second.addVictoryPointValue(5);
-		}
-	}
-}
-
-
 void HoI4::States::addGreatPowerVPs(const std::vector<std::shared_ptr<Country>>& greatPowers)
 {
+	int ranking = 1;
 	for (const auto& greatPower: greatPowers)
 	{
 		if (auto capitalState = states.find(*greatPower->getCapitalState()); capitalState != states.end())
 		{
-			capitalState->second.addVictoryPointValue(5);
+			if (ranking < 5)
+			{
+				capitalState->second.setVPValue(50);
+			}
+			else
+			{
+				capitalState->second.setVPValue(40);
+			}
 		}
+		ranking++;
 	}
 }
 
 
-void HoI4::States::addStrengthVPs(const std::map<std::string, std::shared_ptr<Country>>& countries,
-	 double greatestStrength)
+void HoI4::States::addStrengthVPs(const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
-	for (const auto& country: countries)
+	std::vector<std::string> tags;
+	for (const auto& [tag, country]: countries)
 	{
-		const auto VPs = calculateStrengthVPs(*country.second, greatestStrength);
-		if (auto capitalState = states.find(*country.second->getCapitalState()); capitalState != states.end())
+		if (!country->isGreatPower())
 		{
-			capitalState->second.addVictoryPointValue(VPs);
+			tags.push_back(tag);
 		}
 	}
-}
+	std::sort(tags.begin(), tags.end(), [countries](const std::string& a, const std::string& b) {
+		return countries.at(a)->getStrengthOverTime(1.0) > countries.at(b)->getStrengthOverTime(1.0);
+	});
 
-
-int HoI4::States::calculateStrengthVPs(const Country& country, double greatestStrength)
-{
-	const auto relativeStrength = country.getStrengthOverTime(1.0) / greatestStrength;
-	return static_cast<int>(relativeStrength * 30.0);
+	auto i = 0;
+	for (; i < 4; i++)
+	{
+		auto country = countries.at(tags[i]);
+		if (auto capitalState = states.find(*country->getCapitalState()); capitalState != states.end())
+		{
+			capitalState->second.setVPValue(30);
+		}
+	}
+	for (; i < 8; i++)
+	{
+		auto country = countries.at(tags[i]);
+		if (auto capitalState = states.find(*country->getCapitalState()); capitalState != states.end())
+		{
+			capitalState->second.setVPValue(25);
+		}
+	}
+	for (; i < 16; i++)
+	{
+		auto country = countries.at(tags[i]);
+		if (auto capitalState = states.find(*country->getCapitalState()); capitalState != states.end())
+		{
+			capitalState->second.setVPValue(20);
+		}
+	}
+	for (; i < tags.size() / 2; i++)
+	{
+		auto country = countries.at(tags[i]);
+		if (auto capitalState = states.find(*country->getCapitalState()); capitalState != states.end())
+		{
+			capitalState->second.setVPValue(15);
+		}
+	}
+	for (; i < tags.size(); i++)
+	{
+		auto country = countries.at(tags[i]);
+		if (auto capitalState = states.find(*country->getCapitalState()); capitalState != states.end())
+		{
+			capitalState->second.setVPValue(10);
+		}
+	}
 }
