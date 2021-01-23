@@ -848,7 +848,7 @@ TEST(HoI4World_States_StateTests, DebugVpsAreOutput)
 	expectedOutput << "\thistory={\n";
 	expectedOutput << "\t\towner = TAG\n";
 	expectedOutput << "\t\tvictory_points = {\n";
-	expectedOutput << "\t\t\t12 11\n";
+	expectedOutput << "\t\t\t12 10\n";
 	expectedOutput << "\t\t}\n";
 	expectedOutput << "\t\tvictory_points = { 24 5\n";
 	expectedOutput << "\t}\n";

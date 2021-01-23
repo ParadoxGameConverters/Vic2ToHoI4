@@ -33,12 +33,12 @@ void HoI4::outputHoI4State(std::ostream& output, const State& theState, const bo
 	}
 	if (!theState.isImpassable())
 	{
-		if ((theState.getVpValue() > 0) && theState.getVPLocation())
+		if (theState.getVPLocation())
 		{
 			if (debugEnabled)
 			{
 				output << "\t\tvictory_points = {\n";
-				output << "\t\t\t" << *theState.getVPLocation() << " " << (theState.getVpValue() + 10) << "\n";
+				output << "\t\t\t" << *theState.getVPLocation() << " 10\n";
 				output << "\t\t}\n";
 				for (auto VP: theState.getDebugVPs())
 				{
