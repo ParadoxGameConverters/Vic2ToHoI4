@@ -67,6 +67,7 @@ class World: commonItems::parser
 		 const Configuration& theConfiguration);
 	~World() = default;
 
+	[[nodiscard]] const auto& getHumanCountry() const { return humanCountry; }
 	[[nodiscard]] auto& getNames() { return names; }
 	[[nodiscard]] const auto& getNames() const { return *names; }
 	[[nodiscard]] const auto& getTheStates() const { return *states; }
@@ -185,6 +186,8 @@ class World: commonItems::parser
 
 	// vector<int> getPortLocationCandidates(const vector<int>& locationCandidates, const HoI4AdjacencyMapping&
 	// HoI4AdjacencyMap);
+
+	std::optional<std::string> humanCountry;
 
 	std::unique_ptr<Names> names;
 	graphicsMapper theGraphics;

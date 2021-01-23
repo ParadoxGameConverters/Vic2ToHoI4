@@ -26,6 +26,7 @@
 #include "outDifficultySettings.h"
 #include <fstream>
 #include <iterator>
+#include <optional>
 
 
 namespace HoI4
@@ -58,6 +59,7 @@ void outputLeaderTraits(const std::map<std::string, std::vector<std::string>>& i
 	 const std::string& outputName);
 void outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
+	 const std::optional<std::string> humanCountry,
 	 const std::string& outputName);
 
 } // namespace HoI4
@@ -185,7 +187,7 @@ void HoI4::OutputWorld(const World& world,
 	outputIdeologies(world.getIdeologies(), outputName);
 	outputLeaderTraits(world.getIdeologicalLeaderTraits(), world.getMajorIdeologies(), outputName);
 	outIdeas(world.getTheIdeas(), world.getMajorIdeologies(), outputName);
-	outputBookmarks(world.getGreatPowers(), world.getCountries(), outputName);
+	outputBookmarks(world.getGreatPowers(), world.getCountries(), world.getHumanCountry(), outputName);
 	outputScriptedLocalisations(outputName, *world.getScriptedLocalisations());
 	outputScriptedTriggers(world.getScriptedTriggers(), outputName);
 	outputDifficultySettings(world.getGreatPowers(), outputName);
@@ -484,6 +486,7 @@ void HoI4::outputLeaderTraits(const std::map<std::string, std::vector<std::strin
 
 void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
+	 const std::optional<std::string> humanCountry,
 	 const std::string& outputName)
 {
 	Log(LogLevel::Info) << "\t\tWriting bookmarks";
@@ -500,7 +503,14 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 	bookmarkFile << "\t\tdesc = GATHERING_STORM_DESC\n";
 	bookmarkFile << "\t\tdate = 1936.1.1.12\n";
 	bookmarkFile << "\t\tpicture = GFX_select_date_1936\n";
-	bookmarkFile << "\t\tdefault_country = \"---\"\n";
+	if (humanCountry)
+	{
+		bookmarkFile << "\t\tdefault_country = \"" << *humanCountry << "\"\n";
+	}
+	else
+	{
+		bookmarkFile << "\t\tdefault_country = \"---\"\n";
+	}
 	bookmarkFile << "\t\tdefault = yes\n";
 
 	for (const auto& greatPower: greatPowers)
