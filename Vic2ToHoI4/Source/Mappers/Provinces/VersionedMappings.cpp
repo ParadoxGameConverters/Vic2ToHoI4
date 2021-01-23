@@ -2,16 +2,19 @@
 #include "CommonRegexes.h"
 #include "ParserHelpers.h"
 #include "ProvinceMapping.h"
+#include "ProvinceMappingFactory.h"
+
 
 
 mappers::VersionedMappings::VersionedMappings(std::istream& theStream)
 {
-	registerKeyword("link", [this](std::istream& theStream) {
-		const ProvinceMapping theMapping(theStream);
-		if (theMapping.getHoI4Provinces().empty() && theMapping.getVic2Provinces().empty())
+	Mappers::ProvinceMapping::Factory provinceMappingFactory;
+	registerKeyword("link", [this, &provinceMappingFactory](std::istream& theStream) {
+		const auto theMapping = provinceMappingFactory.importProvinceMapping(theStream);
+		if (theMapping->getHoI4Provinces().empty() && theMapping->getVic2Provinces().empty())
 			return;
-		insertIntoHoI4ToVic2ProvinceMap(theMapping.getVic2Provinces(), theMapping.getHoI4Provinces());
-		insertIntoVic2ToHoI4ProvinceMap(theMapping.getVic2Provinces(), theMapping.getHoI4Provinces());
+		insertIntoHoI4ToVic2ProvinceMap(theMapping->getVic2Provinces(), theMapping->getHoI4Provinces());
+		insertIntoVic2ToHoI4ProvinceMap(theMapping->getVic2Provinces(), theMapping->getHoI4Provinces());
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 

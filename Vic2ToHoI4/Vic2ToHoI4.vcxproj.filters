@@ -288,9 +288,6 @@
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMapper.cpp">
       <Filter>Mappers\Provinces</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mappers\Provinces\ProvinceMapping.cpp">
-      <Filter>Mappers\Provinces</Filter>
-    </ClCompile>
     <ClCompile Include="Source\Mappers\Provinces\VersionedMappings.cpp">
       <Filter>Mappers\Provinces</Filter>
     </ClCompile>
@@ -1155,6 +1152,9 @@
     </ClCompile>
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp">
       <Filter>Mappers\FlagsToIdeas</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\Provinces\ProvinceMappingFactory.cpp">
+      <Filter>Mappers\Provinces</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2270,6 +2270,9 @@
     </ClInclude>
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.h">
       <Filter>Mappers\FlagsToIdeas</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Provinces\ProvinceMappingFactory.h">
+      <Filter>Mappers\Provinces</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -20061,13 +20064,9 @@
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configurables\grammar.txt" />
+    <CopyFileToFolders Include="Data_Files\configurables\Historical Flavour Mod v1.27I_province_mappings.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Data_Files\configurables\Historical Flavour Mod v1.27I_province_mappings.txt">
-      <Filter>Data Files\Configurables</Filter>
-    </Text>
   </ItemGroup>
 </Project>

@@ -3,17 +3,17 @@
 
 
 
-#include "Parser.h"
+#include <vector>
 
 
 
-namespace mappers
+namespace Mappers
 {
 
-class ProvinceMapping: commonItems::parser
+class ProvinceMapping
 {
   public:
-	explicit ProvinceMapping(std::istream& theStream);
+	class Factory;
 
 	[[nodiscard]] const auto& getVic2Provinces() const { return Vic2Provinces; }
 	[[nodiscard]] const auto& getHoI4Provinces() const { return HoI4Provinces; }
