@@ -167,8 +167,6 @@ class World: commonItems::parser
 
 	void setupNavalTreaty();
 
-	double getStrongestCountryStrength() const;
-
 	void createFactions(const Configuration& theConfiguration);
 	void logFactionMember(std::ofstream& factionsLog, std::shared_ptr<HoI4::Country> member) const;
 	std::optional<std::string> returnSphereLeader(std::shared_ptr<HoI4::Country> possibleSphereling) const;

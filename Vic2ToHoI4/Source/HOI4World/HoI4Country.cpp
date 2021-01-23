@@ -299,9 +299,11 @@ void HoI4::Country::convertStrategies(const CountryMapper& countryMap, const Vic
 			conquerStrategies.push_back(newStrategy);
 		}
 	}
-	std::sort(conquerStrategies.begin(), conquerStrategies.end(), [](const HoI4::AIStrategy& a, const HoI4::AIStrategy& b) {
+	std::sort(conquerStrategies.begin(),
+		 conquerStrategies.end(),
+		 [](const HoI4::AIStrategy& a, const HoI4::AIStrategy& b) {
 			 return a.getValue() > b.getValue();
-	});
+		 });
 
 	for (const auto& srcStrategy: sourceCountry.getAI()->getStrategies())
 	{
@@ -1028,7 +1030,6 @@ const bool HoI4::Country::isEligibleEnemy(std::string target)
 		allies = faction->getLeader()->getAllies();
 		allies.insert(faction->getLeader()->getTag());
 	}
-	
+
 	return !allies.contains(target) && !puppets.contains(target) && target != puppetMaster;
 }
-

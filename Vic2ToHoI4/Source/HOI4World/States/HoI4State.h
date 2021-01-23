@@ -50,6 +50,7 @@ class State
 			airbaseLevel = 10;
 	}
 	void addVictoryPointValue(int additionalValue) { victoryPointValue += additionalValue; }
+	void setVPValue(int value) { victoryPointValue = value; }
 	void setVPLocation(int province) { victoryPointPosition = province; }
 
 	void convertNavalBases(const std::map<int, int>& sourceNavalBases,

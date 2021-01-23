@@ -183,10 +183,9 @@ void HoI4::State::assignVP(int location)
 {
 	victoryPointPosition = location;
 
-	victoryPointValue = 1;
 	if (cores.contains(ownerTag))
 	{
-		victoryPointValue += 2;
+		victoryPointValue += 1;
 	}
 }
 
