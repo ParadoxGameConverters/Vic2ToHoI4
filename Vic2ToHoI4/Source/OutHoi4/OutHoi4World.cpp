@@ -25,6 +25,7 @@
 #include "States/OutHoI4States.h"
 #include "outDifficultySettings.h"
 #include <fstream>
+#include <iterator>
 
 
 namespace HoI4
@@ -521,25 +522,45 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 	bookmarkFile << "\t\t\thistory = \"OTHER_GATHERING_STORM_DESC\"\n";
 	bookmarkFile << "\t\t}\n";
 
-	for (const auto& [unused, country]: countries)
+	// sort non-GP tags by strength
+	std::vector<std::string> tags;
+	for (const auto& [tag, country]: countries)
 	{
-		if (!country->isGreatPower() && (country->getStrengthOverTime(3) > 4500))
+		if (!country->isGreatPower())
 		{
-			// add minor countries to the bookmark, only those with custom focus trees are visible due to Hoi4
-			// limitations Bookmark window has room for 22 minor countries, going over this seems to not cause any
-			// issues however
-			bookmarkFile << "\t\t" + country->getTag() + " = {\n";
-			bookmarkFile << "\t\t\tminor = yes\n";
-			bookmarkFile << "\t\t\thistory = \"" + country->getGovernmentIdeology() + "_SP_CONV_DESC\"\n";
-			bookmarkFile << "\t\t\tideology = " + country->getGovernmentIdeology() + "\n";
-			bookmarkFile << "\t\t\tideas = { ";
-			for (const auto& idea: country->getIdeas())
-			{
-				bookmarkFile << idea << " ";
-			}
-			bookmarkFile << "}\n";
-			bookmarkFile << "\t\t}\n";
+			tags.push_back(tag);
 		}
+	}
+	std::sort(tags.begin(), tags.end(), [countries](const std::string& a, const std::string& b) {
+		return countries.at(a)->getStrengthOverTime(1.0) > countries.at(b)->getStrengthOverTime(3.0);
+	});
+
+	// then remove all but the strongest 22
+	auto trimHere = tags.begin();
+	std::advance(trimHere, 23);
+	tags.erase(trimHere, tags.end());
+
+	// then alphabetize them
+	std::sort(tags.begin(), tags.end());
+
+	for (const auto& tag: tags)
+	{
+		const auto& country = countries.at(tag);
+
+		// add minor countries to the bookmark, only those with custom focus trees are visible due to Hoi4
+		// limitations Bookmark window has room for 22 minor countries, going over this seems to not cause any
+		// issues however
+		bookmarkFile << "\t\t" + country->getTag() + " = {\n";
+		bookmarkFile << "\t\t\tminor = yes\n";
+		bookmarkFile << "\t\t\thistory = \"" + country->getGovernmentIdeology() + "_SP_CONV_DESC\"\n";
+		bookmarkFile << "\t\t\tideology = " + country->getGovernmentIdeology() + "\n";
+		bookmarkFile << "\t\t\tideas = { ";
+		for (const auto& idea: country->getIdeas())
+		{
+			bookmarkFile << idea << " ";
+		}
+		bookmarkFile << "}\n";
+		bookmarkFile << "\t\t}\n";
 	}
 
 	bookmarkFile << "\t\teffect = {\n";
