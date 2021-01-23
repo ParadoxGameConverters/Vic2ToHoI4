@@ -751,7 +751,7 @@ void HoI4::States::addGreatPowerVPs(const std::vector<std::shared_ptr<Country>>&
 				capitalState->second.setVPValue(40);
 			}
 		}
-		ranking++;
+		++ranking;
 	}
 }
 
