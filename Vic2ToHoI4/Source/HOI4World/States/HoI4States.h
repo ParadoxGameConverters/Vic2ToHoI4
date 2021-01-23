@@ -147,7 +147,7 @@ class States: commonItems::parser
 	void addGreatPowerAirBases(const std::vector<std::shared_ptr<Country>>& greatPowers);
 
 	void addGreatPowerVPs(const std::vector<std::shared_ptr<Country>>& greatPowers);
-	void addStrengthVPs(const std::map<std::string, std::shared_ptr<Country>>& countries);
+	void addCapitalVictoryPoints(const std::map<std::string, std::shared_ptr<Country>>& countries);
 
 	std::map<int, std::string> ownersMap;
 	std::map<int, std::set<std::pair<std::string, std::string>>> coresMap;

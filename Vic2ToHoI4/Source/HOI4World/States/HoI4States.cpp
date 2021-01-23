@@ -701,7 +701,7 @@ void HoI4::States::convertCapitalVPs(const std::map<std::string, std::shared_ptr
 {
 	Log(LogLevel::Info) << "\tConverting capital VPs";
 
-	addStrengthVPs(countries);
+	addCapitalVictoryPoints(countries);
 	addGreatPowerVPs(greatPowers);
 }
 
@@ -756,7 +756,7 @@ void HoI4::States::addGreatPowerVPs(const std::vector<std::shared_ptr<Country>>&
 }
 
 
-void HoI4::States::addStrengthVPs(const std::map<std::string, std::shared_ptr<Country>>& countries)
+void HoI4::States::addCapitalVictoryPoints(const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
 	std::vector<std::string> tags;
 	for (const auto& [tag, country]: countries)
