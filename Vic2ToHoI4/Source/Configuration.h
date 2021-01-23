@@ -54,6 +54,7 @@ class Configuration
 	// set on construction
 	std::string inputFile{"input.v2"};
 	std::string outputName;
+	std::string customOutputName;
 	std::string HoI4Path;
 	std::string Vic2Path;
 	std::string Vic2ModPath;
@@ -83,7 +84,7 @@ class Configuration::Factory: commonItems::parser
 	std::unique_ptr<Configuration> importConfiguration(std::istream& theStream);
 
   private:
-	void setOutputName(const std::string& V2SaveFileName);
+	void setOutputName(const std::string& V2SaveFileName, const std::string& OutputCustomName);
 	void importMods();
 	void sortMods();
 

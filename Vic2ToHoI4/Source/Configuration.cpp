@@ -162,6 +162,9 @@ Configuration::Factory::Factory()
 			 std::clamp(static_cast<float>(commonItems::singleDouble{theStream}.getDouble()), 0.0F, 100.0F) / 100.0F;
 		Log(LogLevel::Info) << "\tPercent of commanders: " << configuration->percentOfCommanders;
 	});
+	registerKeyword("output_name", [this](const std::string& unused, std::istream& theStream) {
+		configuration->customOutputName = commonItems::singleString(theStream).getString();
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
@@ -171,7 +174,7 @@ std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(const
 	Log(LogLevel::Info) << "Reading configuration file";
 	configuration = std::make_unique<Configuration>();
 	parseFile(filename);
-	setOutputName(configuration->inputFile);
+	setOutputName(configuration->inputFile, configuration->customOutputName);
 	importMods();
 
 	return std::move(configuration);
@@ -183,27 +186,34 @@ std::unique_ptr<Configuration> Configuration::Factory::importConfiguration(std::
 	Log(LogLevel::Info) << "Reading configuration file";
 	configuration = std::make_unique<Configuration>();
 	parseStream(theStream);
-	setOutputName(configuration->inputFile);
+	setOutputName(configuration->inputFile, configuration->customOutputName);
 	importMods();
 
 	return std::move(configuration);
 }
 
 
-void Configuration::Factory::setOutputName(const std::string& V2SaveFileName)
+void Configuration::Factory::setOutputName(const std::string& V2SaveFileName, const std::string& customOutputName)
 {
-	std::string outputName = trimPath(V2SaveFileName);
+	std::string outputName;
+	if (customOutputName.empty())
+	{
+		outputName = trimPath(V2SaveFileName);
+		if (getExtension(outputName) != "v2")
+		{
+			throw std::invalid_argument("The save was not a Vic2 save. Choose a save ending in '.v2' and convert again.");
+		}
+		outputName = trimExtension(outputName);
+	}
+	else
+	{
+		outputName = customOutputName;
+	}
 	if (outputName.empty())
 	{
 		return;
 	}
 
-	const auto length = outputName.find_last_of('.');
-	if ((length == std::string::npos) || (".v2" != outputName.substr(length, outputName.length())))
-	{
-		throw std::invalid_argument("The save was not a Vic2 save. Choose a save ending in '.v2' and convert again.");
-	}
-	outputName = trimExtension(outputName);
 	outputName = normalizeStringPath(outputName);
 
 	Log(LogLevel::Info) << "Using output name " << outputName;
