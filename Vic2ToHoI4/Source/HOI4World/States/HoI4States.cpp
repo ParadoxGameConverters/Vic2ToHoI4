@@ -771,7 +771,7 @@ void HoI4::States::addCapitalVictoryPoints(const std::map<std::string, std::shar
 	});
 
 	auto i = 0;
-	for (; i < 4; i++)
+	for (; i < 4 && i < tags.size(); i++)
 	{
 		auto country = countries.at(tags[i]);
 		if (auto capitalState = states.find(*country->getCapitalState()); capitalState != states.end())
@@ -779,7 +779,7 @@ void HoI4::States::addCapitalVictoryPoints(const std::map<std::string, std::shar
 			capitalState->second.setVPValue(30);
 		}
 	}
-	for (; i < 8; i++)
+	for (; i < 8 && i < tags.size(); i++)
 	{
 		auto country = countries.at(tags[i]);
 		if (auto capitalState = states.find(*country->getCapitalState()); capitalState != states.end())
@@ -787,7 +787,7 @@ void HoI4::States::addCapitalVictoryPoints(const std::map<std::string, std::shar
 			capitalState->second.setVPValue(25);
 		}
 	}
-	for (; i < 16; i++)
+	for (; i < 16 && i < tags.size(); i++)
 	{
 		auto country = countries.at(tags[i]);
 		if (auto capitalState = states.find(*country->getCapitalState()); capitalState != states.end())
