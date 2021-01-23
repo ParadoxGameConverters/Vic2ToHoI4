@@ -25,6 +25,8 @@
 #include "States/OutHoI4States.h"
 #include "outDifficultySettings.h"
 #include <fstream>
+#include <iterator>
+#include <optional>
 
 
 namespace HoI4
@@ -57,6 +59,7 @@ void outputLeaderTraits(const std::map<std::string, std::vector<std::string>>& i
 	 const std::string& outputName);
 void outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
+	 const std::optional<std::string> humanCountry,
 	 const std::string& outputName);
 
 } // namespace HoI4
@@ -184,7 +187,7 @@ void HoI4::OutputWorld(const World& world,
 	outputIdeologies(world.getIdeologies(), outputName);
 	outputLeaderTraits(world.getIdeologicalLeaderTraits(), world.getMajorIdeologies(), outputName);
 	outIdeas(world.getTheIdeas(), world.getMajorIdeologies(), outputName);
-	outputBookmarks(world.getGreatPowers(), world.getCountries(), outputName);
+	outputBookmarks(world.getGreatPowers(), world.getCountries(), world.getHumanCountry(), outputName);
 	outputScriptedLocalisations(outputName, *world.getScriptedLocalisations());
 	outputScriptedTriggers(world.getScriptedTriggers(), outputName);
 	outputDifficultySettings(world.getGreatPowers(), outputName);
@@ -483,6 +486,7 @@ void HoI4::outputLeaderTraits(const std::map<std::string, std::vector<std::strin
 
 void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPowers,
 	 const std::map<std::string, std::shared_ptr<Country>>& countries,
+	 const std::optional<std::string> humanCountry,
 	 const std::string& outputName)
 {
 	Log(LogLevel::Info) << "\t\tWriting bookmarks";
@@ -499,7 +503,14 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 	bookmarkFile << "\t\tdesc = GATHERING_STORM_DESC\n";
 	bookmarkFile << "\t\tdate = 1936.1.1.12\n";
 	bookmarkFile << "\t\tpicture = GFX_select_date_1936\n";
-	bookmarkFile << "\t\tdefault_country = \"---\"\n";
+	if (humanCountry)
+	{
+		bookmarkFile << "\t\tdefault_country = \"" << *humanCountry << "\"\n";
+	}
+	else
+	{
+		bookmarkFile << "\t\tdefault_country = \"---\"\n";
+	}
 	bookmarkFile << "\t\tdefault = yes\n";
 
 	for (const auto& greatPower: greatPowers)
@@ -508,7 +519,12 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 		bookmarkFile << "\t\t" + greatPower->getTag() + "= {\n";
 		bookmarkFile << "\t\t\thistory = \"" + greatPower->getGovernmentIdeology() + "_GP_CONV_DESC\"\n";
 		bookmarkFile << "\t\t\tideology = " + greatPower->getGovernmentIdeology() + "\n";
-		bookmarkFile << "\t\t\tideas = { great_power }\n";
+		bookmarkFile << "\t\t\tideas = { great_power ";
+		for (const auto& idea: greatPower->getIdeas())
+		{
+			bookmarkFile << idea << " ";
+		}
+		bookmarkFile << "}\n";
 		bookmarkFile << "\t\t}\n";
 	}
 
@@ -516,20 +532,45 @@ void HoI4::outputBookmarks(const std::vector<std::shared_ptr<Country>>& greatPow
 	bookmarkFile << "\t\t\thistory = \"OTHER_GATHERING_STORM_DESC\"\n";
 	bookmarkFile << "\t\t}\n";
 
-	for (const auto& country: countries)
+	// sort non-GP tags by strength
+	std::vector<std::string> tags;
+	for (const auto& [tag, country]: countries)
 	{
-		if (!country.second->isGreatPower() && (country.second->getStrengthOverTime(3) > 4500))
+		if (!country->isGreatPower())
 		{
-			// add minor countries to the bookmark, only those with custom focus trees are visible due to Hoi4
-			// limitations Bookmark window has room for 22 minor countries, going over this seems to not cause any
-			// issues however
-			bookmarkFile << "\t\t" + country.second->getTag() + " = {\n";
-			bookmarkFile << "\t\t\tminor = yes\n";
-			bookmarkFile << "\t\t\thistory = \"" + country.second->getGovernmentIdeology() + "_SP_CONV_DESC\"\n";
-			bookmarkFile << "\t\t\tideology = " + country.second->getGovernmentIdeology() + "\n";
-			bookmarkFile << "\t\t\tideas = { }\n";
-			bookmarkFile << "\t\t}\n";
+			tags.push_back(tag);
 		}
+	}
+	std::sort(tags.begin(), tags.end(), [countries](const std::string& a, const std::string& b) {
+		return countries.at(a)->getStrengthOverTime(1.0) > countries.at(b)->getStrengthOverTime(3.0);
+	});
+
+	// then remove all but the strongest 22
+	auto trimHere = tags.begin();
+	std::advance(trimHere, 23);
+	tags.erase(trimHere, tags.end());
+
+	// then alphabetize them
+	std::sort(tags.begin(), tags.end());
+
+	for (const auto& tag: tags)
+	{
+		const auto& country = countries.at(tag);
+
+		// add minor countries to the bookmark, only those with custom focus trees are visible due to Hoi4
+		// limitations Bookmark window has room for 22 minor countries, going over this seems to not cause any
+		// issues however
+		bookmarkFile << "\t\t" + country->getTag() + " = {\n";
+		bookmarkFile << "\t\t\tminor = yes\n";
+		bookmarkFile << "\t\t\thistory = \"" + country->getGovernmentIdeology() + "_SP_CONV_DESC\"\n";
+		bookmarkFile << "\t\t\tideology = " + country->getGovernmentIdeology() + "\n";
+		bookmarkFile << "\t\t\tideas = { ";
+		for (const auto& idea: country->getIdeas())
+		{
+			bookmarkFile << idea << " ";
+		}
+		bookmarkFile << "}\n";
+		bookmarkFile << "\t\t}\n";
 	}
 
 	bookmarkFile << "\t\teffect = {\n";

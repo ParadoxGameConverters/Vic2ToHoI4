@@ -200,6 +200,20 @@ void HoI4::World::convertCountries(const Vic2::World& sourceWorld)
 	{
 		convertCountry(tag, *country, *flagsToIdeasMapper);
 	}
+
+	int numHumanCountries = 0;
+	for (const auto& [tag, country]: countries)
+	{
+		if (country->isHuman())
+		{
+			humanCountry = tag;
+			numHumanCountries++;
+		}
+	}
+	if (numHumanCountries > 1)
+	{
+		humanCountry = std::nullopt;
+	}
 }
 
 
