@@ -22,14 +22,5 @@ std::unique_ptr<Mappers::ProvinceMapping> Mappers::ProvinceMapping::Factory::imp
 	provinceMapping = std::make_unique<ProvinceMapping>();
 	parseStream(theStream);
 
-	if (provinceMapping->Vic2Provinces.empty())
-	{
-		provinceMapping->Vic2Provinces.push_back(0);
-	}
-	if (provinceMapping->HoI4Provinces.empty())
-	{
-		provinceMapping->HoI4Provinces.push_back(0);
-	}
-
 	return std::move(provinceMapping);
 }

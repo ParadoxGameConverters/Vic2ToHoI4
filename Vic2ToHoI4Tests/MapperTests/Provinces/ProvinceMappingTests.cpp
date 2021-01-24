@@ -12,7 +12,7 @@ TEST(Mappers_Provinces_ProvinceMappingTests, Vic2ProvincesDefaultsToZero)
 
 	const auto mapping = Mappers::ProvinceMapping::Factory().importProvinceMapping(input);
 
-	ASSERT_THAT(mapping->getVic2Provinces(), testing::ElementsAre(0));
+	ASSERT_TRUE(mapping->getVic2Provinces().empty());
 }
 
 
@@ -33,7 +33,7 @@ TEST(Mappers_Provinces_ProvinceMappingTests, HoI4ProvincesDefaultsToZero)
 
 	const auto mapping = Mappers::ProvinceMapping::Factory().importProvinceMapping(input);
 
-	ASSERT_THAT(mapping->getHoI4Provinces(), testing::ElementsAre(0));
+	ASSERT_TRUE(mapping->getHoI4Provinces().empty());
 }
 
 

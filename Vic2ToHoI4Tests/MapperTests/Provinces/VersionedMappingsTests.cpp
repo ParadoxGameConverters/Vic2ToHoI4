@@ -31,10 +31,8 @@ TEST(Mappers_Provinces_VersionedMappingsTests, ProvinceMappingsCanBeAdded)
 	std::stringstream input;
 	input << "link = { vic2 = 1 hoi4 = 1 hoi4 = 10 }\n";
 	input << "link = { vic2 = 2 vic2 = 20 hoi4 = 2 }\n";
-	input << "link = { vic2 = 3 hoi4 = 0 }\n";
-	input << "link = { vic2 = 0 hoi4 = 3 }\n";
-	input << "link = { vic2 = 4 }\n";
-	input << "link = { hoi4 = 4 }\n";
+	input << "link = { vic2 = 3 }\n";
+	input << "link = { hoi4 = 3 }\n";
 
 	const auto versionedMappings = Mappers::VersionedMappings::Factory().importVersionedMappings(input);
 
@@ -42,12 +40,10 @@ TEST(Mappers_Provinces_VersionedMappingsTests, ProvinceMappingsCanBeAdded)
 		 testing::UnorderedElementsAre(testing::Pair(1, std::vector<int>{1, 10}),
 			  testing::Pair(2, std::vector<int>{2}),
 			  testing::Pair(20, std::vector<int>{2}),
-			  testing::Pair(3, std::vector<int>{0}),
-			  testing::Pair(4, std::vector<int>{0})));
+			  testing::Pair(3, std::vector<int>{})));
 	ASSERT_THAT(versionedMappings->getHoI4ToVic2Mapping(),
 		 testing::UnorderedElementsAre(testing::Pair(1, std::vector<int>{1}),
 			  testing::Pair(10, std::vector<int>{1}),
 			  testing::Pair(2, std::vector<int>{2, 20}),
-			  testing::Pair(3, std::vector<int>{0}),
-			  testing::Pair(4, std::vector<int>{0})));
+			  testing::Pair(3, std::vector<int>{})));
 }

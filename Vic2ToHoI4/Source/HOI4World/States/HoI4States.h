@@ -137,7 +137,6 @@ class States: commonItems::parser
 		 const std::set<int>& provinceNumbers,
 		 const Mappers::ProvinceMapper& provinceMapper,
 		 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces);
-	[[nodiscard]] static bool isProvinceValid(int provNum);
 	[[nodiscard]] bool isProvinceOwnedByCountry(int provNum, const std::string& stateOwner) const;
 	[[nodiscard]] bool isProvinceNotAlreadyAssigned(int provNum) const;
 	[[nodiscard]] unsigned int getTotalManpower() const;

@@ -114,17 +114,13 @@ void HoI4::States::determineOwnersAndCores(const CountryMapper& countryMap,
 std::optional<std::vector<int>> HoI4::States::retrieveSourceProvinceNumbers(int provNum,
 	 const Mappers::ProvinceMapper& provinceMapper)
 {
-	if (auto provinceLink = provinceMapper.getHoI4ToVic2ProvinceMapping(provNum); !provinceLink.empty())
+	auto provinceLink = provinceMapper.getHoI4ToVic2ProvinceMapping(provNum);
+	if (provinceLink.empty())
 	{
-		if (provinceLink[0] == 0)
-		{
-			return std::nullopt;
-		}
-		return provinceLink;
+		return std::nullopt;
 	}
 
-	Log(LogLevel::Warning) << "No source for HoI4 land province " << provNum;
-	return std::nullopt;
+	return provinceLink;
 }
 
 
@@ -419,8 +415,7 @@ std::set<int> HoI4::States::getProvincesInState(const Vic2::State& vic2State,
 	{
 		for (auto HoI4ProvNum: provinceMapper.getVic2ToHoI4ProvinceMapping(vic2ProvinceNum))
 		{
-			if (isProvinceValid(HoI4ProvNum) && isProvinceOwnedByCountry(HoI4ProvNum, owner) &&
-				 isProvinceNotAlreadyAssigned(HoI4ProvNum))
+			if (isProvinceOwnedByCountry(HoI4ProvNum, owner) && isProvinceNotAlreadyAssigned(HoI4ProvNum))
 
 			{
 				provinces.insert(HoI4ProvNum);
@@ -569,12 +564,6 @@ void HoI4::States::addProvincesAndCoresToNewState(State& newState,
 			newState.addClaims({HoI4Core});
 		}
 	}
-}
-
-
-bool HoI4::States::isProvinceValid(int provNum)
-{
-	return provNum != 0;
 }
 
 
