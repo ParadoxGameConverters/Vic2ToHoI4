@@ -488,11 +488,11 @@ void HoI4::Localisation::addStateLocalisations(const States& states,
 		auto VPPositionInHoI4 = state.second.getVPLocation();
 		if (VPPositionInHoI4)
 		{
-			auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(*VPPositionInHoI4);
-			if (VPProvinceMapping && !VPProvinceMapping->empty())
+			if (auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(*VPPositionInHoI4);
+				 !VPProvinceMapping.empty())
 			{
 				for (const auto& [language, name]:
-					 vic2Localisations.getTextInEachLanguage("PROV" + std::to_string((*VPProvinceMapping)[0])))
+					 vic2Localisations.getTextInEachLanguage("PROV" + std::to_string(VPProvinceMapping[0])))
 				{
 					addVPLocalisationForLanguage(state.second, language, name);
 				}
@@ -516,11 +516,11 @@ void HoI4::Localisation::addDebugLocalisations(const std::pair<const int, State>
 {
 	for (auto VPPositionInHoI4: state.second.getDebugVPs())
 	{
-		auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(VPPositionInHoI4);
-		if (VPProvinceMapping && !VPProvinceMapping->empty())
+		if (auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(VPPositionInHoI4);
+			 !VPProvinceMapping.empty())
 		{
 			for (const auto& [language, name]:
-				 vic2Localisations.getTextInEachLanguage("PROV" + std::to_string((*VPProvinceMapping)[0])))
+				 vic2Localisations.getTextInEachLanguage("PROV" + std::to_string(VPProvinceMapping[0])))
 			{
 				getExistingVPLocalisation(language).insert(
 					 std::make_pair("VICTORY_POINTS_" + std::to_string(VPPositionInHoI4), name));
@@ -530,11 +530,11 @@ void HoI4::Localisation::addDebugLocalisations(const std::pair<const int, State>
 
 	for (auto VPPositionInHoI4: state.second.getSecondaryDebugVPs())
 	{
-		auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(VPPositionInHoI4);
-		if (VPProvinceMapping && !VPProvinceMapping->empty())
+		if (auto VPProvinceMapping = theProvinceMapper.getHoI4ToVic2ProvinceMapping(VPPositionInHoI4);
+			 !VPProvinceMapping.empty())
 		{
 			for (const auto& [language, name]:
-				 vic2Localisations.getTextInEachLanguage("PROV" + std::to_string((*VPProvinceMapping)[0])))
+				 vic2Localisations.getTextInEachLanguage("PROV" + std::to_string(VPProvinceMapping[0])))
 			{
 				getExistingVPLocalisation(language).insert(
 					 make_pair("VICTORY_POINTS_" + std::to_string(VPPositionInHoI4), "_" + name));
@@ -551,7 +551,7 @@ bool HoI4::Localisation::sourceStateHasOneProvince(const State& hoi4State,
 	for (const auto& hoi4Province: hoi4State.getProvinces())
 	{
 		const auto Vic2Provinces = theProvinceMapper.getHoI4ToVic2ProvinceMapping(hoi4Province);
-		allVic2Provinces.insert(Vic2Provinces->begin(), Vic2Provinces->end());
+		allVic2Provinces.insert(Vic2Provinces.begin(), Vic2Provinces.end());
 	}
 	return allVic2Provinces.size() == 1;
 }
@@ -612,10 +612,10 @@ void HoI4::Localisation::addStateLocalisationForLanguage(const State& hoi4State,
 	if (destinationStateHasOneProvince(hoi4State) || sourceStateHasOneProvince(hoi4State, theProvinceMapper))
 	{
 		const auto hoi4Province = *hoi4State.getProvinces().begin();
-		const auto possibleVic2Provinces = theProvinceMapper.getHoI4ToVic2ProvinceMapping(hoi4Province);
-		if (possibleVic2Provinces && !possibleVic2Provinces->empty())
+		if (const auto possibleVic2Provinces = theProvinceMapper.getHoI4ToVic2ProvinceMapping(hoi4Province);
+			 !possibleVic2Provinces.empty())
 		{
-			const auto theProvince = *possibleVic2Provinces->begin();
+			const auto theProvince = possibleVic2Provinces[0];
 			auto possibleProvinceName =
 				 vic2Localisations.getTextInLanguage("PROV" + std::to_string(theProvince), language);
 			if (possibleProvinceName)

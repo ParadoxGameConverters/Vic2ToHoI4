@@ -114,9 +114,9 @@ void HoI4::States::determineOwnersAndCores(const CountryMapper& countryMap,
 std::optional<std::vector<int>> HoI4::States::retrieveSourceProvinceNumbers(int provNum,
 	 const Mappers::ProvinceMapper& provinceMapper)
 {
-	if (auto provinceLink = provinceMapper.getHoI4ToVic2ProvinceMapping(provNum); provinceLink && !provinceLink->empty())
+	if (auto provinceLink = provinceMapper.getHoI4ToVic2ProvinceMapping(provNum); !provinceLink.empty())
 	{
-		if ((*provinceLink)[0] == 0)
+		if (provinceLink[0] == 0)
 		{
 			return std::nullopt;
 		}
@@ -534,10 +534,7 @@ void HoI4::States::addProvincesAndCoresToNewState(State& newState,
 	for (const auto& province: provinceNumbers)
 	{
 		const auto possibleProvinces = provinceMapper.getHoI4ToVic2ProvinceMapping(province);
-		if (possibleProvinces)
-		{
-			sourceProvinceNums.insert(possibleProvinces->begin(), possibleProvinces->end());
-		}
+		sourceProvinceNums.insert(possibleProvinces.begin(), possibleProvinces.end());
 	}
 
 	for (const auto& [Vic2Core, HoI4Core]: possibleCores)

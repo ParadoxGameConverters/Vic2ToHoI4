@@ -124,14 +124,13 @@ std::vector<int> Mappers::ProvinceMapper::getVic2ToHoI4ProvinceMapping(const int
 }
 
 
-std::optional<std::vector<int>> Mappers::ProvinceMapper::getHoI4ToVic2ProvinceMapping(const int HoI4Province) const
+std::vector<int> Mappers::ProvinceMapper::getHoI4ToVic2ProvinceMapping(const int HoI4Province) const
 {
-	if (const auto mapping = HoI4ToVic2ProvinceMap.find(HoI4Province); mapping != HoI4ToVic2ProvinceMap.end())
+	const auto mapping = HoI4ToVic2ProvinceMap.find(HoI4Province);
+	if (mapping == HoI4ToVic2ProvinceMap.end())
 	{
-		return mapping->second;
+		return {};
 	}
-	else
-	{
-		return std::nullopt;
-	}
+
+	return mapping->second;
 }
