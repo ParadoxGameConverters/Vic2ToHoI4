@@ -581,13 +581,9 @@ bool HoI4::Localisation::stateHasAllDefinedProvincesAfterConversion(const State&
 	auto stateDefinitionSourceProvinces = theStateDefinitions.getAllProvinces(*sourceState.getProvinceNumbers().begin());
 	for (auto sourceProvince: stateDefinitionSourceProvinces)
 	{
-		auto possibleMappedProvinces = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince);
-		if (possibleMappedProvinces)
+		for (auto HoI4Province: theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince))
 		{
-			for (auto HoI4Province: *possibleMappedProvinces)
-			{
-				stateDefinitionDefinitionProvinces.insert(HoI4Province);
-			}
+			stateDefinitionDefinitionProvinces.insert(HoI4Province);
 		}
 	}
 

@@ -370,16 +370,16 @@ bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandOwned(const Mapper
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates)
 {
-	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); !mapping.empty())
 	{
-		if (const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+		if (const auto capitalStateMapping = provinceToStateIDMap.find(mapping[0]);
 			 capitalStateMapping != provinceToStateIDMap.end())
 		{
 			const auto& state = allStates.find(capitalStateMapping->second)->second;
 			if ((state.getOwner() == tag) && !state.isImpassable())
 			{
 				capitalState = capitalStateMapping->second;
-				capitalProvince = (*mapping)[0];
+				capitalProvince = mapping[0];
 				return true;
 			}
 		}
@@ -413,16 +413,16 @@ bool HoI4::Country::attemptToPutCapitalInPreferredWastelandOwned(const Mappers::
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates)
 {
-	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); !mapping.empty())
 	{
-		if (const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+		if (const auto capitalStateMapping = provinceToStateIDMap.find(mapping[0]);
 			 capitalStateMapping != provinceToStateIDMap.end())
 		{
 			const auto& state = allStates.find(capitalStateMapping->second)->second;
 			if (state.getOwner() == tag)
 			{
 				capitalState = capitalStateMapping->second;
-				capitalProvince = (*mapping)[0];
+				capitalProvince = mapping[0];
 				return true;
 			}
 		}
@@ -455,16 +455,16 @@ bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandCored(const Mapper
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates)
 {
-	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); !mapping.empty())
 	{
-		if (const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+		if (const auto capitalStateMapping = provinceToStateIDMap.find(mapping[0]);
 			 capitalStateMapping != provinceToStateIDMap.end())
 		{
 			const auto& state = allStates.find(capitalStateMapping->second)->second;
 			if ((state.getCores().contains(tag) || state.getClaims().contains(tag)) && !state.isImpassable())
 			{
 				capitalState = capitalStateMapping->second;
-				capitalProvince = (*mapping)[0];
+				capitalProvince = mapping[0];
 				return true;
 			}
 		}
@@ -498,16 +498,16 @@ bool HoI4::Country::attemptToPutCapitalInPreferredWastelandCored(const Mappers::
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates)
 {
-	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); !mapping.empty())
 	{
-		if (const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+		if (const auto capitalStateMapping = provinceToStateIDMap.find(mapping[0]);
 			 capitalStateMapping != provinceToStateIDMap.end())
 		{
 			const auto& state = allStates.find(capitalStateMapping->second)->second;
 			if (state.getCores().contains(tag) || state.getClaims().contains(tag))
 			{
 				capitalState = capitalStateMapping->second;
-				capitalProvince = (*mapping)[0];
+				capitalProvince = mapping[0];
 				return true;
 			}
 		}

@@ -112,16 +112,15 @@ void Mappers::ProvinceMapper::Factory::verifyProvinceIsMapped(const int provNum)
 }
 
 
-std::optional<std::vector<int>> Mappers::ProvinceMapper::getVic2ToHoI4ProvinceMapping(const int Vic2Province) const
+std::vector<int> Mappers::ProvinceMapper::getVic2ToHoI4ProvinceMapping(const int Vic2Province) const
 {
-	if (const auto mapping = Vic2ToHoI4ProvinceMap.find(Vic2Province); mapping != Vic2ToHoI4ProvinceMap.end())
+	const auto mapping = Vic2ToHoI4ProvinceMap.find(Vic2Province);
+	if (mapping == Vic2ToHoI4ProvinceMap.end())
 	{
-		return mapping->second;
+		return {};
 	}
-	else
-	{
-		return std::nullopt;
-	}
+
+	return mapping->second;
 }
 
 

@@ -417,17 +417,14 @@ std::set<int> HoI4::States::getProvincesInState(const Vic2::State& vic2State,
 	std::set<int> provinces;
 	for (auto vic2ProvinceNum: vic2State.getProvinceNumbers())
 	{
-		if (auto mapping = provinceMapper.getVic2ToHoI4ProvinceMapping(vic2ProvinceNum))
+		for (auto HoI4ProvNum: provinceMapper.getVic2ToHoI4ProvinceMapping(vic2ProvinceNum))
 		{
-			for (auto HoI4ProvNum: *mapping)
-			{
-				if (isProvinceValid(HoI4ProvNum) && isProvinceOwnedByCountry(HoI4ProvNum, owner) &&
-					 isProvinceNotAlreadyAssigned(HoI4ProvNum))
+			if (isProvinceValid(HoI4ProvNum) && isProvinceOwnedByCountry(HoI4ProvNum, owner) &&
+				 isProvinceNotAlreadyAssigned(HoI4ProvNum))
 
-				{
-					provinces.insert(HoI4ProvNum);
-					assignedProvinces.insert(HoI4ProvNum);
-				}
+			{
+				provinces.insert(HoI4ProvNum);
+				assignedProvinces.insert(HoI4ProvNum);
 			}
 		}
 	}

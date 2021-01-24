@@ -342,8 +342,7 @@ void Vic2::World::Factory::checkAllProvincesMapped(const Mappers::ProvinceMapper
 	Log(LogLevel::Info) << "\tChecking all provinces are mapped";
 	for (const auto& [provinceNum, unused]: world->provinces)
 	{
-		const auto mapping = provinceMapper.getVic2ToHoI4ProvinceMapping(provinceNum);
-		if (!mapping)
+		if (!provinceMapper.isVic2ProvinceMapped(provinceNum))
 		{
 			Log(LogLevel::Warning) << "No mapping for Vic2 province " << provinceNum;
 		}

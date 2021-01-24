@@ -66,18 +66,15 @@ std::optional<int> HoI4::State::determineNavalBaseLocation(int sourceProvince,
 	 const CoastalProvinces& theCoastalProvinces,
 	 const Mappers::ProvinceMapper& theProvinceMapper)
 {
-	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince))
+	for (auto HoI4ProvNum: theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince))
 	{
-		for (auto HoI4ProvNum: *mapping)
+		if (theCoastalProvinces.isProvinceCoastal(HoI4ProvNum))
 		{
-			if (theCoastalProvinces.isProvinceCoastal(HoI4ProvNum))
-			{
-				return HoI4ProvNum;
-			}
+			return HoI4ProvNum;
 		}
 	}
 
-	return {};
+	return std::nullopt;
 }
 
 
@@ -120,26 +117,22 @@ void HoI4::State::convertControlledProvinces(const std::vector<std::pair<int, st
 			continue;
 		}
 
-		auto provinceMapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(foreignControlledProvince.first);
-		if (provinceMapping)
+		for (auto destinationProvince: theProvinceMapper.getVic2ToHoI4ProvinceMapping(foreignControlledProvince.first))
 		{
-			for (auto destinationProvince: *provinceMapping)
+			if (!provinces.contains(destinationProvince))
 			{
-				if (!provinces.contains(destinationProvince))
-				{
-					continue;
-				}
+				continue;
+			}
 
-				if (!controlledProvinces.contains(*possibleController))
-				{
-					std::set<int> destinationProvinces;
-					destinationProvinces.insert(destinationProvince);
-					controlledProvinces.insert(std::make_pair(*possibleController, destinationProvinces));
-				}
-				else
-				{
-					controlledProvinces.find(*possibleController)->second.insert(destinationProvince);
-				}
+			if (!controlledProvinces.contains(*possibleController))
+			{
+				std::set<int> destinationProvinces;
+				destinationProvinces.insert(destinationProvince);
+				controlledProvinces.insert(std::make_pair(*possibleController, destinationProvinces));
+			}
+			else
+			{
+				controlledProvinces.find(*possibleController)->second.insert(destinationProvince);
 			}
 		}
 	}
@@ -163,15 +156,12 @@ void HoI4::State::setControlledProvince(int provinceNum, const std::string& coun
 
 bool HoI4::State::assignVPFromVic2Province(int Vic2ProvinceNumber, const Mappers::ProvinceMapper& theProvinceMapper)
 {
-	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(Vic2ProvinceNumber))
+	for (auto province: theProvinceMapper.getVic2ToHoI4ProvinceMapping(Vic2ProvinceNumber))
 	{
-		for (auto province: *mapping)
+		if (isProvinceInState(province))
 		{
-			if (isProvinceInState(province))
-			{
-				assignVP(province);
-				return true;
-			}
+			assignVP(province);
+			return true;
 		}
 	}
 
@@ -270,11 +260,11 @@ void HoI4::State::addDebugVPs(const Vic2::State& sourceState, const Mappers::Pro
 	for (auto sourceProvinceNum: sourceState.getProvinceNumbers())
 	{
 		auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvinceNum);
-		if (mapping && (isProvinceInState((*mapping)[0])))
+		if (!mapping.empty() && isProvinceInState(mapping[0]))
 		{
-			debugVictoryPoints.insert((*mapping)[0]);
+			debugVictoryPoints.insert(mapping[0]);
 		}
-		for (auto province: *mapping)
+		for (auto province: mapping)
 		{
 			secondaryDebugVictoryPoints.insert(province);
 		}
@@ -290,17 +280,17 @@ void HoI4::State::addManpower(const std::set<std::shared_ptr<Vic2::Province>>& s
 	{
 		int numProvincesInState = 0;
 		int numProvincesInMapping = 0;
-		if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince->getNumber()))
+		auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(sourceProvince->getNumber());
+
+		numProvincesInMapping = static_cast<int>(mapping.size());
+		for (auto HoI4Province: mapping)
 		{
-			numProvincesInMapping = static_cast<int>(mapping->size());
-			for (auto HoI4Province: *mapping)
+			if (isProvinceInState(HoI4Province))
 			{
-				if (isProvinceInState(HoI4Province))
-				{
-					numProvincesInState++;
-				}
+				numProvincesInState++;
 			}
 		}
+
 
 		if (numProvincesInMapping && numProvincesInState)
 		{

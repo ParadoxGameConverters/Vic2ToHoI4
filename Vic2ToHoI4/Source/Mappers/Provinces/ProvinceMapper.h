@@ -19,8 +19,13 @@ class ProvinceMapper
 	class Factory;
 	class Builder;
 
-	[[nodiscard]] std::optional<std::vector<int>> getVic2ToHoI4ProvinceMapping(int Vic2Province) const;
+	[[nodiscard]] std::vector<int> getVic2ToHoI4ProvinceMapping(int Vic2Province) const;
 	[[nodiscard]] std::optional<std::vector<int>> getHoI4ToVic2ProvinceMapping(int HoI4Province) const;
+
+	[[nodiscard]] bool isVic2ProvinceMapped(int vic2ProvinceNum) const
+	{
+		return Vic2ToHoI4ProvinceMap.contains(vic2ProvinceNum);
+	}
 
   private:
 	HoI4ToVic2ProvinceMapping HoI4ToVic2ProvinceMap;

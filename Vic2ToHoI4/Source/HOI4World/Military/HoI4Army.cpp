@@ -86,12 +86,12 @@ std::optional<int> HoI4::Army::getLocation(std::optional<int> vic2Location,
 	}
 
 	const auto mapping = provinceMapper.getVic2ToHoI4ProvinceMapping(*vic2Location);
-	if (mapping == std::nullopt || mapping->size() == 0)
+	if (mapping.empty())
 	{
 		return std::nullopt;
 	}
 
-	return *mapping->begin();
+	return mapping[0];
 }
 
 

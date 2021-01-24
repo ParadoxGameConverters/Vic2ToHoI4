@@ -93,22 +93,19 @@ std::tuple<int, int> HoI4::Navies::getLocationAndBase(std::optional<int> vic2Loc
 		return {backupNavalLocation, backupNavalLocation};
 	}
 
-	if (auto mapping = provinceMapper.getVic2ToHoI4ProvinceMapping(*vic2Location); mapping)
+	for (auto possibleProvince: provinceMapper.getVic2ToHoI4ProvinceMapping(*vic2Location))
 	{
-		for (auto possibleProvince: *mapping)
+		if (provinceDefinitions.isSeaProvince(possibleProvince))
 		{
-			if (provinceDefinitions.isSeaProvince(possibleProvince))
+			return {possibleProvince, backupNavalLocation};
+		}
+		if (auto stateID = provinceToStateIDMap.find(possibleProvince); stateID != provinceToStateIDMap.end())
+		{
+			if (auto state = states.find(stateID->second); state != states.end())
 			{
-				return {possibleProvince, backupNavalLocation};
-			}
-			if (auto stateID = provinceToStateIDMap.find(possibleProvince); stateID != provinceToStateIDMap.end())
-			{
-				if (auto state = states.find(stateID->second); state != states.end())
+				if (auto mainNavalLocation = state->second.getMainNavalLocation(); mainNavalLocation)
 				{
-					if (auto mainNavalLocation = state->second.getMainNavalLocation(); mainNavalLocation)
-					{
-						return {*mainNavalLocation, *mainNavalLocation};
-					}
+					return {*mainNavalLocation, *mainNavalLocation};
 				}
 			}
 		}
