@@ -381,7 +381,7 @@
     <ClCompile Include="Source\Mappers\GovernmentMapper.cpp" />
     <ClCompile Include="Source\Mappers\GraphicsMapper.cpp" />
     <ClCompile Include="Source\Mappers\MergeRules.cpp" />
-    <ClCompile Include="Source\Mappers\Provinces\ProvinceMapper.cpp" />
+    <ClCompile Include="Source\Mappers\Provinces\ProvinceMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\VersionedMappingsFactory.cpp" />
     <ClCompile Include="Source\Mappers\VersionParser\VersionParser.cpp" />
@@ -526,6 +526,8 @@
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.h" />
     <ClInclude Include="Source\Mappers\GovernmentMapperBuilder.h" />
     <ClInclude Include="Source\Mappers\GraphicsMappedBuilder.h" />
+    <ClInclude Include="Source\Mappers\Provinces\ProvinceMapperBuilder.h" />
+    <ClInclude Include="Source\Mappers\Provinces\ProvinceMapperFactory.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMappingFactory.h" />
     <ClInclude Include="Source\Mappers\Provinces\VersionedMappingsFactory.h" />
     <ClInclude Include="Source\Mappers\Technology\ResearchBonusMapper.h" />

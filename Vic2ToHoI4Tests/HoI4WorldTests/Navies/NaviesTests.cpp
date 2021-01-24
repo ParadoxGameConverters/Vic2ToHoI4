@@ -1,6 +1,7 @@
 #include "HOI4World/Navies/Navies.h"
 #include "HOI4World/ProvinceDefinitions.h"
 #include "HOI4World/TechnologiesBuilder.h"
+#include "Mappers/Provinces/ProvinceMapperBuilder.h"
 #include "OutHoi4/Navies/OutNavies.h"
 #include "V2World/Military/ArmyFactory.h"
 #include "gtest/gtest.h"
@@ -20,7 +21,7 @@ class HoI4World_Navies_NaviesTests: public testing::Test
 };
 
 
-HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests(): provinceDefinitions({}, {}, {}), provinceMapper({}, {})
+HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests(): provinceDefinitions({}, {}, {})
 {
 	std::stringstream shipVariantsInput;
 	shipVariantsInput << "mtg_ship_type = {\n";
@@ -72,6 +73,8 @@ HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests(): provinceDefinition
 	limitedShipVariants = std::make_unique<HoI4::ShipVariants>(thePossibleVariants,
 		 *HoI4::technologies::Builder{}.addTechnology("early_ship_hull_light").Build(),
 		 "");
+
+	provinceMapper = *Mappers::ProvinceMapper::Builder().Build();
 }
 
 

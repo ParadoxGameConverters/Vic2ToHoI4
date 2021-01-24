@@ -4,6 +4,7 @@
 #include "HOI4World/States/HoI4State.h"
 #include "HOI4World/States/StateCategoriesBuilder.h"
 #include "Mappers/CountryMapperBuilder.h"
+#include "Mappers/Provinces/ProvinceMapperBuilder.h"
 #include "OutHoi4/States/OutHoI4State.h"
 #include "V2World/Pops/PopBuilder.h"
 #include "V2World/Provinces/Province.h"
@@ -137,10 +138,8 @@ TEST(HoI4World_States_StateTests, ControllersCanBeAdded)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	Mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
-
 	theState.convertControlledProvinces({{12, "NOT"}},
-		 theProvinceMapper,
+		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(12, {12}).Build(),
 		 *CountryMapper::Builder{}.addMapping("NOT", "NOT").Build());
 
 	std::map<std::string, std::set<int>> expectedControlledProvinces{{"NOT", {12}}};
@@ -154,10 +153,8 @@ TEST(HoI4World_States_StateTests, ControllersConvertWithHoI4Tag)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	Mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
-
 	theState.convertControlledProvinces({{12, "NOT"}},
-		 theProvinceMapper,
+		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(12, {12}).Build(),
 		 *CountryMapper::Builder{}.addMapping("NOT", "HOI").Build());
 
 	std::map<std::string, std::set<int>> expectedControlledProvinces{{"HOI", {12}}};
@@ -171,10 +168,8 @@ TEST(HoI4World_States_StateTests, ControllersDontConvertForRebels)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	const Mappers::ProvinceMapper theProvinceMapper{{}, {}};
-
 	theState.convertControlledProvinces({{12, "REB"}},
-		 theProvinceMapper,
+		 *Mappers::ProvinceMapper::Builder().Build(),
 		 *CountryMapper::Builder{}.addMapping("REB", "REB").Build());
 
 	ASSERT_TRUE(theState.getControlledProvinces().empty());
@@ -448,11 +443,9 @@ TEST(HoI4World_States_StateTests, NavalBasesCanBeConverted)
 	theState.addProvince(1);
 	theState.addProvince(2);
 
-	const Mappers::ProvinceMapper theProvinceMapper{{}, {{1, {1}}, {2, {2}}}};
-
 	theState.convertNavalBases({{1, 1}, {2, 1}},
 		 *HoI4::CoastalProvinces::Builder{}.addCoastalProvince(1, {}).addCoastalProvince(2, {}).Build(),
-		 theProvinceMapper);
+		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(1, {1}).addVic2ToHoI4ProvinceMap(2, {2}).Build());
 
 	const std::map<int, int> expectedNavalBases{{1, 2}, {2, 2}};
 	ASSERT_EQ(expectedNavalBases, theState.getNavalBases());
@@ -522,10 +515,10 @@ TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	const Mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
-
 	const Configuration theConfiguration;
-	theState.addManpower(provinces, theProvinceMapper, theConfiguration);
+	theState.addManpower(provinces,
+		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(12, {12}).Build(),
+		 theConfiguration);
 
 	ASSERT_EQ(49380, theState.getManpower());
 }
@@ -612,11 +605,11 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	const Mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
-
 	const Configuration theConfiguration;
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
+	theState.tryToCreateVP(sourceState,
+		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(12, {12}).Build(),
+		 theConfiguration);
 
 	ASSERT_EQ(theState.getVPLocation(), 12);
 }
@@ -648,11 +641,11 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	theState.addProvince(12);
 	theState.addProvince(24);
 
-	const Mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
-
 	const Configuration theConfiguration;
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
+	theState.tryToCreateVP(sourceState,
+		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(24, {24}).Build(),
+		 theConfiguration);
 
 	ASSERT_EQ(24, theState.getVPLocation());
 }
@@ -684,11 +677,11 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	theState.addProvince(12);
 	theState.addProvince(24);
 
-	const Mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
-
 	const Configuration theConfiguration;
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
+	theState.tryToCreateVP(sourceState,
+		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(24, {24}).Build(),
+		 theConfiguration);
 
 	ASSERT_EQ(24, theState.getVPLocation());
 }
@@ -720,11 +713,11 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	theState.addProvince(12);
 	theState.addProvince(24);
 
-	const Mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
-
 	const Configuration theConfiguration;
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
+	theState.tryToCreateVP(sourceState,
+		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(24, {24}).Build(),
+		 theConfiguration);
 
 	ASSERT_EQ(24, theState.getVPLocation());
 }
@@ -755,11 +748,11 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousPr
 	theState.addProvince(12);
 	theState.addProvince(24);
 
-	const Mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
-
 	const Configuration theConfiguration;
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
+	theState.tryToCreateVP(sourceState,
+		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(24, {24}).Build(),
+		 theConfiguration);
 
 	ASSERT_EQ(24, theState.getVPLocation());
 }
@@ -771,15 +764,13 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionLoggedIfNotSet)
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
-	const Mappers::ProvinceMapper theProvinceMapper{{}, {}};
-
 	const Configuration theConfiguration;
 
 	const std::stringstream log;
 	const auto coutBuffer = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
+	theState.tryToCreateVP(sourceState, *Mappers::ProvinceMapper::Builder().Build(), theConfiguration);
 
 	std::cout.rdbuf(coutBuffer);
 
@@ -795,11 +786,11 @@ TEST(HoI4World_States_StateTests, DebugVPsCanBeAdded)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	const Mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
-
 	const Configuration theConfiguration;
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
+	theState.tryToCreateVP(sourceState,
+		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(12, {12}).Build(),
+		 theConfiguration);
 
 	ASSERT_EQ(std::set<int>{12}, theState.getDebugVPs());
 }
@@ -811,11 +802,11 @@ TEST(HoI4World_States_StateTests, SecondaryDebugVPsCanBeAdded)
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
-	const Mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12, 13}}}};
-
 	const Configuration theConfiguration;
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
+	theState.tryToCreateVP(sourceState,
+		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(12, {12, 13}).Build(),
+		 theConfiguration);
 
 	const std::set<int> expectedVps{12, 13};
 	ASSERT_EQ(expectedVps, theState.getSecondaryDebugVPs());
@@ -832,11 +823,14 @@ TEST(HoI4World_States_StateTests, DebugVpsAreOutput)
 	theState.addProvince(24);
 	theState.addProvince(25);
 
-	const Mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12, 13}}, {24, {24, 25}}}};
-
 	const Configuration theConfiguration;
 
-	theState.tryToCreateVP(sourceState, theProvinceMapper, theConfiguration);
+	theState.tryToCreateVP(sourceState,
+		 *Mappers::ProvinceMapper::Builder()
+				.addVic2ToHoI4ProvinceMap(12, {12, 13})
+				.addVic2ToHoI4ProvinceMap(24, {24, 25})
+				.Build(),
+		 theConfiguration);
 
 	std::stringstream expectedOutput;
 	expectedOutput << "\n";

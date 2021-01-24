@@ -1,30 +1,28 @@
-#include "ProvinceMapper.h"
+#include "ProvinceMapperFactory.h"
 #include "CommonRegexes.h"
 #include "Configuration.h"
 #include "GameVersion.h"
 #include "Log.h"
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
+#include "ProvinceMapper.h"
 #include "VersionedMappings.h"
-#include "VersionedMappingsFactory.h"
 #include <fstream>
 
 
 
-Mappers::ProvinceMapper Mappers::ProvinceMapper::Parser::initializeMapper(const Configuration& theConfiguration)
+Mappers::ProvinceMapper::Factory::Factory(const Configuration& theConfiguration)
 {
-	VersionedMappings::Factory versionedMappingsFactory;
 	auto gotMappings = false;
 	registerRegex(R"(\d\.[\d]+\.\d)",
-		 [this, &gotMappings, theConfiguration, &versionedMappingsFactory](const std::string& version,
-			  std::istream& theStream) {
+		 [this, &gotMappings, theConfiguration](const std::string& version, std::istream& theStream) {
 			 const GameVersion defaultVersion(version);
 			 if ((GameVersion{1, 10, 1, 0} >= defaultVersion) && !gotMappings)
 			 {
 				 Log(LogLevel::Info) << "\tUsing version " << version << " mappings";
 				 const auto thisVersionsMappings = versionedMappingsFactory.importVersionedMappings(theStream);
-				 HoI4ToVic2ProvinceMap = thisVersionsMappings->getHoI4ToVic2Mapping();
-				 Vic2ToHoI4ProvinceMap = thisVersionsMappings->getVic2ToHoI4Mapping();
+				 provinceMapper->HoI4ToVic2ProvinceMap = thisVersionsMappings->getHoI4ToVic2Mapping();
+				 provinceMapper->Vic2ToHoI4ProvinceMap = thisVersionsMappings->getVic2ToHoI4Mapping();
 				 gotMappings = true;
 			 }
 			 else
@@ -33,8 +31,14 @@ Mappers::ProvinceMapper Mappers::ProvinceMapper::Parser::initializeMapper(const 
 			 }
 		 });
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+}
 
+
+std::unique_ptr<Mappers::ProvinceMapper> Mappers::ProvinceMapper::Factory::importProvinceMapper(
+	 const Configuration& theConfiguration)
+{
 	Log(LogLevel::Info) << "Parsing province mappings";
+	provinceMapper = std::make_unique<ProvinceMapper>();
 
 	auto mapped = false;
 	for (const auto& mod: theConfiguration.getVic2Mods())
@@ -53,11 +57,11 @@ Mappers::ProvinceMapper Mappers::ProvinceMapper::Parser::initializeMapper(const 
 
 	checkAllHoI4ProvincesMapped(theConfiguration);
 
-	return ProvinceMapper(HoI4ToVic2ProvinceMap, Vic2ToHoI4ProvinceMap);
+	return std::move(provinceMapper);
 }
 
 
-void Mappers::ProvinceMapper::Parser::checkAllHoI4ProvincesMapped(const Configuration& theConfiguration) const
+void Mappers::ProvinceMapper::Factory::checkAllHoI4ProvincesMapped(const Configuration& theConfiguration) const
 {
 	std::ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
 	if (!definitions.is_open())
@@ -80,7 +84,7 @@ void Mappers::ProvinceMapper::Parser::checkAllHoI4ProvincesMapped(const Configur
 }
 
 
-std::optional<int> Mappers::ProvinceMapper::Parser::getNextProvinceNumFromFile(std::ifstream& definitions) const
+std::optional<int> Mappers::ProvinceMapper::Factory::getNextProvinceNumFromFile(std::ifstream& definitions) const
 {
 	std::string line;
 	getline(definitions, line);
@@ -96,11 +100,11 @@ std::optional<int> Mappers::ProvinceMapper::Parser::getNextProvinceNumFromFile(s
 }
 
 
-void Mappers::ProvinceMapper::Parser::verifyProvinceIsMapped(const int provNum) const
+void Mappers::ProvinceMapper::Factory::verifyProvinceIsMapped(const int provNum) const
 {
 	if (provNum != 0)
 	{
-		if (!HoI4ToVic2ProvinceMap.contains(provNum))
+		if (!provinceMapper->HoI4ToVic2ProvinceMap.contains(provNum))
 		{
 			Log(LogLevel::Warning) << "No mapping for HoI4 province " << provNum;
 		}

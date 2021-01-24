@@ -2,6 +2,7 @@
 #include "HOI4World/HoI4World.h"
 #include "Log.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
+#include "Mappers/Provinces/ProvinceMapperFactory.h"
 #include "OSCompatibilityLayer.h"
 #include "OutHoi4/OutMod.h"
 #include "V2World/World/World.h"
@@ -17,10 +18,11 @@ void ConvertV2ToHoI4()
 	checkMods(*theConfiguration);
 	clearOutputFolder(theConfiguration->getOutputName());
 
-	const auto provinceMapper = Mappers::ProvinceMapper::Parser{}.initializeMapper(*theConfiguration);
+	const auto provinceMapper =
+		 Mappers::ProvinceMapper::Factory(*theConfiguration).importProvinceMapper(*theConfiguration);
 
-	const auto sourceWorld = Vic2::World::Factory{*theConfiguration}.importWorld(*theConfiguration, provinceMapper);
-	const HoI4::World destWorld(*sourceWorld, provinceMapper, *theConfiguration);
+	const auto sourceWorld = Vic2::World::Factory{*theConfiguration}.importWorld(*theConfiguration, *provinceMapper);
+	const HoI4::World destWorld(*sourceWorld, *provinceMapper, *theConfiguration);
 
 	output(destWorld,
 		 theConfiguration->getOutputName(),

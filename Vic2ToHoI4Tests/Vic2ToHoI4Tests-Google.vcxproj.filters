@@ -51,9 +51,6 @@
     </ClCompile>
     <ClCompile Include="..\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="..\googletest\googletest\src\gtest-all.cc" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapper.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
     </ClCompile>
@@ -1382,6 +1379,9 @@
     </ClCompile>
     <ClCompile Include="MapperTests\Provinces\VersionedMappingsTests.cpp">
       <Filter>MapperTests\Provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapperFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
