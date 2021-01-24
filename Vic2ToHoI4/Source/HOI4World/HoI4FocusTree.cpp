@@ -2063,6 +2063,283 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 	nextFreeColumn += 2 * static_cast<int>(max(newAllies.size(), GCTargets.size()));
 }
 
+std::map<std::string, int> HoI4FocusTree::determineCoreHolders(std::shared_ptr<HoI4::Country> theCountry,
+	 const std::map<int, HoI4::State>& states
+){
+	std::map<std::string, int> coreHolders;
+
+	for (const auto& coreState: theCountry->getCoreStates())
+	{
+		if (const auto& owner = states.find(coreState)->second.getOwner(); owner != theCountry->getTag())
+		{
+			if (theCountry->isEligibleEnemy(owner))
+			{
+				int numProvinces = std::min(static_cast<int>(states.find(coreState)->second.getProvinces().size()), 10);
+				if (auto coreHolder = coreHolders.find(owner); coreHolder == coreHolders.end())
+				{
+					coreHolders.insert(make_pair(owner, numProvinces));
+				}
+				else
+				{
+					coreHolder->second += numProvinces;
+				}
+			}
+		}
+	}
+
+	return coreHolders;
+}
+
+int HoI4FocusTree::calculateNumUnownedCores(std::shared_ptr<HoI4::Country> theCountry,
+	 const std::map<int, HoI4::State>& states
+){
+	int sumUnownedCores = 0;
+
+	for (const auto& coreHolder: determineCoreHolders(theCountry, states))
+	{
+		sumUnownedCores += coreHolder.second;
+	}
+
+	return sumUnownedCores;
+}
+
+
+std::map<std::string, int> HoI4FocusTree::addReconquestBranch(std::shared_ptr<HoI4::Country> theCountry,
+	 int& numWarsWithNeighbors,
+	 const std::set<std::string>& majorIdeologies,
+	 const std::map<int, HoI4::State>& states,
+	 HoI4::Localisation& hoi4Localisations)
+{
+	const auto& coreHolders = determineCoreHolders(theCountry, states);
+	int sumUnownedCores = calculateNumUnownedCores(theCountry, states);
+
+	numWarsWithNeighbors = std::min(static_cast<int>(coreHolders.size()), 4);
+
+	if (coreHolders.empty())
+	{
+		return coreHolders;
+	}
+
+	std::string fascistGovernmentCheck;
+	fascistGovernmentCheck = "modifier = {\n";
+	fascistGovernmentCheck += "\t\t\t\tfactor = 5\n";
+	fascistGovernmentCheck += "\t\t\t\thas_government = fascism\n";
+	fascistGovernmentCheck += "\t\t\t}";
+
+	if (const auto& originalFocus = loadedFocuses.find("reclaim_cores"); originalFocus != loadedFocuses.end())
+	{
+		shared_ptr<HoI4Focus> newFocus = originalFocus->second.makeCustomizedCopy(theCountry->getTag());
+		newFocus->selectEffect = "= {\n";
+		for (const auto& [tag, numProvinces]: coreHolders)
+		{
+			newFocus->selectEffect += "\t\t\tset_variable = { unowned_cores_@" + tag + " = " + std::to_string(numProvinces) + " }\n";
+		}
+		newFocus->selectEffect += "\t\t\tset_variable = { revanchism = " + std::to_string(0.00001*sumUnownedCores) + " }\n";
+		newFocus->selectEffect += "\t\t\tset_variable = { revanchism_stab = " + std::to_string(-0.000001*sumUnownedCores) + " }\n";
+		newFocus->selectEffect += "\t\t\tadd_dynamic_modifier = { modifier = revanchism }\n";
+		if (majorIdeologies.count("fascism"))
+		{
+			newFocus->selectEffect += "\t\t\tadd_dynamic_modifier = { modifier = revanchism_fasc }\n";
+		}
+		newFocus->selectEffect += "\t\t}\n";
+		newFocus->xPos = nextFreeColumn + static_cast<int>(coreHolders.size()) - 1;
+		focuses.push_back(newFocus);
+	}
+	else
+	{
+		throw std::runtime_error("Could not load focus reclaim_cores");
+	}
+
+	for (const auto& [target, numProvinces]: coreHolders)
+	{
+		const auto& aiChance = std::to_string(std::max(static_cast<int>(0.1 * numProvinces), 1));
+
+		if (const auto& originalFocus = loadedFocuses.find("raise_matter"); originalFocus != loadedFocuses.end())
+		{
+			shared_ptr<HoI4Focus> newFocus =
+				 originalFocus->second.makeTargetedCopy(theCountry->getTag(), target, hoi4Localisations);
+			newFocus->xPos = nextFreeColumn;
+			if (majorIdeologies.contains("fascism"))
+			{
+				std::string fascismPopularityCheck;
+				fascismPopularityCheck = "modifier = {\n";
+				fascismPopularityCheck += "\t\t\t\tfactor = 0\n";
+				fascismPopularityCheck += "\t\t\t\tNOT = { has_government = fascism }\n";
+				fascismPopularityCheck += "\t\t\t\tNOT = { fascism > 0.35 }\n";
+				fascismPopularityCheck += "\t\t\t}";
+				newFocus->updateFocusElement(newFocus->aiWillDo, "#FASCPOP", fascismPopularityCheck);
+				newFocus->updateFocusElement(newFocus->aiWillDo, "#FASCGOV", fascistGovernmentCheck);
+			}
+			else
+			{
+				newFocus->completionReward = "= {\n";
+				newFocus->completionReward += "\t\t\tadd_stability = 0.0001\n";
+				newFocus->completionReward += "\t\t\tadd_political_power = 150\n";
+				newFocus->completionReward += "\t\t\tadd_timed_idea = { idea = generic_military_industry days = 180 }\n";
+				newFocus->completionReward += "\t\t}";
+				newFocus->removePlaceholder(newFocus->aiWillDo, "#FASCPOP");
+				newFocus->removePlaceholder(newFocus->aiWillDo, "#FASCGOV");
+			}
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->completionReward, "$POPULARITY", std::to_string(0.000001*numProvinces));
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$REVANCHISM", aiChance);
+			focuses.push_back(newFocus);
+			nextFreeColumn += 2;
+		}
+		else
+		{
+			throw std::runtime_error("Could not load focus raise_matter");
+		}
+
+		if (const auto& originalFocus = loadedFocuses.find("build_public_support"); originalFocus != loadedFocuses.end())
+		{
+			shared_ptr<HoI4Focus> newFocus =
+				 originalFocus->second.makeTargetedCopy(theCountry->getTag(), target, hoi4Localisations);
+			newFocus->prerequisites.clear();
+			newFocus->prerequisites.push_back("= { focus = raise_matter" + theCountry->getTag() + target + " }");
+			newFocus->relativePositionId += target;
+			if (majorIdeologies.contains("fascism"))
+			{
+				std::string fascismPopularityCheck;
+				fascismPopularityCheck = "modifier = {\n";
+				fascismPopularityCheck += "\t\t\t\tfactor = 0\n";
+				fascismPopularityCheck += "\t\t\t\tNOT = { has_government = fascism }\n";
+				fascismPopularityCheck += "\t\t\t\tNOT = { fascism > 0.4 }\n";
+				fascismPopularityCheck += "\t\t\t}";
+				newFocus->updateFocusElement(newFocus->aiWillDo, "#FASCPOP", fascismPopularityCheck);
+				newFocus->updateFocusElement(newFocus->aiWillDo, "#FASCGOV", fascistGovernmentCheck);
+			}
+			else
+			{
+				newFocus->completionReward = " = {\n";
+				newFocus->completionReward += "\t\t\tadd_stability = 0.0001\n";
+				newFocus->completionReward += "\t\t\tadd_war_support = $WARSUPPORT\n";
+				newFocus->completionReward += "\t\t\tadd_timed_idea = { idea = generic_rapid_mobilization days = 180 }\n";
+				newFocus->completionReward += "\t\t}";
+				newFocus->removePlaceholder(newFocus->aiWillDo, "#FASCPOP");
+				newFocus->removePlaceholder(newFocus->aiWillDo, "#FASCGOV");
+			}
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->completionReward, "$POPULARITY", std::to_string(0.000001*numProvinces));
+			newFocus->updateFocusElement(newFocus->completionReward, "$WARSUPPORT", std::to_string(0.00001*numProvinces));
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$TAG", theCountry->getTag());
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$REVANCHISM", aiChance);
+			focuses.push_back(newFocus);
+		}
+		else
+		{
+			throw std::runtime_error("Could not load focus build_public_support");
+		}
+
+		if (const auto& originalFocus = loadedFocuses.find("territory_or_war"); originalFocus != loadedFocuses.end())
+		{
+			shared_ptr<HoI4Focus> newFocus =
+				 originalFocus->second.makeTargetedCopy(theCountry->getTag(), target, hoi4Localisations);
+			newFocus->prerequisites.clear();
+			newFocus->prerequisites.push_back("= { focus = build_public_support" + theCountry->getTag() + target + " }");
+			newFocus->relativePositionId += target;
+			if (majorIdeologies.contains("fascism"))
+			{
+				newFocus->updateFocusElement(newFocus->aiWillDo, "#FASCGOV", fascistGovernmentCheck);
+			}
+			else
+			{
+				newFocus->removePlaceholder(newFocus->aiWillDo, "#FASCGOV");
+			}
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$TAG", theCountry->getTag());
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$REVANCHISM", aiChance);
+			focuses.push_back(newFocus);
+		}
+		else
+		{
+			throw std::runtime_error("Could not load focus territory_or_war");
+		}
+
+		if (const auto& originalFocus = loadedFocuses.find("war_plan"); originalFocus != loadedFocuses.end())
+		{
+			shared_ptr<HoI4Focus> newFocus =
+				 originalFocus->second.makeTargetedCopy(theCountry->getTag(), target, hoi4Localisations);
+			newFocus->prerequisites.clear();
+			newFocus->prerequisites.push_back("= { focus = territory_or_war" + theCountry->getTag() + target + " }");
+			newFocus->relativePositionId += target;
+			if (majorIdeologies.contains("fascism"))
+			{
+				newFocus->updateFocusElement(newFocus->aiWillDo, "#FASCGOV", fascistGovernmentCheck);
+			}
+			else
+			{
+				newFocus->removePlaceholder(newFocus->aiWillDo, "#FASCGOV");
+			}
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$TAG", theCountry->getTag());
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$REVANCHISM", aiChance);
+			focuses.push_back(newFocus);
+		}
+		else
+		{
+			throw std::runtime_error("Could not load focus war_plan");
+		}
+
+		if (const auto& originalFocus = loadedFocuses.find("declare_war"); originalFocus != loadedFocuses.end())
+		{
+			shared_ptr<HoI4Focus> newFocus =
+				 originalFocus->second.makeTargetedCopy(theCountry->getTag(), target, hoi4Localisations);
+			newFocus->prerequisites.clear();
+			newFocus->prerequisites.push_back("= { focus = war_plan" + theCountry->getTag() + target + " }");
+			newFocus->relativePositionId += target;
+			if (majorIdeologies.contains("fascism"))
+			{
+				newFocus->updateFocusElement(newFocus->aiWillDo, "#FASCGOV", fascistGovernmentCheck);
+			}
+			else
+			{
+				newFocus->removePlaceholder(newFocus->aiWillDo, "#FASCGOV");
+			}
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->bypass, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$TAG", theCountry->getTag());
+			newFocus->updateFocusElement(newFocus->aiWillDo, "$REVANCHISM", std::to_string(std::max(static_cast<int>(numProvinces), 1)));
+			focuses.push_back(newFocus);
+		}
+		else
+		{
+			throw std::runtime_error("Could not load focus declare_war");
+		}
+
+		if (const auto& originalFocus = loadedFocuses.find("cleanup_revanchism"); originalFocus != loadedFocuses.end())
+		{
+			shared_ptr<HoI4Focus> newFocus =
+				 originalFocus->second.makeTargetedCopy(theCountry->getTag(), target, hoi4Localisations);
+			newFocus->prerequisites.clear();
+			newFocus->prerequisites.push_back("= { focus = declare_war" + theCountry->getTag() + target + " }");
+			newFocus->relativePositionId += target;
+			newFocus->updateFocusElement(newFocus->available, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->completionReward, "$TARGET", target);
+			newFocus->updateFocusElement(newFocus->completionReward, "$REVANCHISM", std::to_string(0.000005*numProvinces));
+			newFocus->updateFocusElement(newFocus->completionReward, "$STABILITY", std::to_string(0.0000005*numProvinces));
+			focuses.push_back(newFocus);
+		}
+		else
+		{
+			throw std::runtime_error("Could not load focus cleanup_revanchism");
+		}
+	}
+
+	return coreHolders;
+}
 
 int HoI4FocusTree::getMaxConquerValue(const std::vector<HoI4::AIStrategy>& conquerStrategies)
 {
@@ -2073,9 +2350,10 @@ int HoI4FocusTree::getMaxConquerValue(const std::vector<HoI4::AIStrategy>& conqu
 }
 
 std::set<std::string> HoI4FocusTree::addConquerBranch(
-	std::shared_ptr<HoI4::Country> theCountry,
-	int& numWarsWithNeighbors,
-	const std::set<std::string>& majorIdeologies,
+	 std::shared_ptr<HoI4::Country> theCountry,
+	 int& numWarsWithNeighbors,
+	 const std::set<std::string>& majorIdeologies,
+	 const std::map<std::string, int>& coreHolders,
 	 HoI4::Localisation& hoi4Localisations)
 {
 	std::string tag = theCountry->getTag();
@@ -2096,6 +2374,10 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(
 			break;
 		}
 		if (!theCountry->isEligibleEnemy(strategy.getID()))
+		{
+			continue;
+		}
+		if (coreHolders.contains(strategy.getID()))
 		{
 			continue;
 		}

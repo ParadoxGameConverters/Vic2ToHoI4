@@ -7,6 +7,7 @@
 #include "Diplomacy/HoI4AIStrategy.h"
 #include "Events/Events.h"
 #include "Parser.h"
+#include "States/HoI4State.h"
 #include <memory>
 #include <set>
 #include <string>
@@ -78,10 +79,17 @@ class HoI4FocusTree: commonItems::parser
 		 HoI4::Events& events,
 		 HoI4::Localisation& hoi4Localisations);
 	int getMaxConquerValue(const std::vector<HoI4::AIStrategy>& conquerStrategies);
+	std::map<std::string, int> addReconquestBranch(std::shared_ptr<HoI4::Country> theCountry,
+		 int& numWarsWithNeighbors,
+		 const std::set<std::string>& majorIdeologies,
+		 const std::map<int, HoI4::State>& states,
+		 HoI4::Localisation& hoi4Localisations
+	);
 	std::set<std::string> addConquerBranch(
-		std::shared_ptr<HoI4::Country> theCountry,
-		int& numWarsWithNeighbors,
-		const std::set<std::string>& majorIdeologies,
+		 std::shared_ptr<HoI4::Country> theCountry,
+		 int& numWarsWithNeighbors,
+		 const std::set<std::string>& majorIdeologies,
+		 const std::map<std::string, int>& coreHolders,
 		 HoI4::Localisation& hoi4Localisations);
 	void addNeighborWarBranch(const std::string& tag,
 		 const std::map<std::string, std::shared_ptr<HoI4::Country>>& closeNeighbors,
@@ -90,6 +98,10 @@ class HoI4FocusTree: commonItems::parser
 		 const date& startDate,
 		 const std::set<std::string>& majorIdeologies,
 		 HoI4::Localisation& hoi4Localisations);
+	std::map<std::string, int> determineCoreHolders(std::shared_ptr<HoI4::Country> theCountry,
+		 const std::map<int, HoI4::State>& states);
+	int calculateNumUnownedCores(std::shared_ptr<HoI4::Country> theCountry,
+		 const std::map<int, HoI4::State>& states);
 	void removeFocus(const std::string& id);
 
 	void addFocus(std::shared_ptr<HoI4Focus> newFocus) { focuses.push_back(newFocus); }

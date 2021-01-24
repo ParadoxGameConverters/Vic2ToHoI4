@@ -30,6 +30,7 @@
 #include "Mappers/Technology/TechMapper.h"
 #include "Mappers/Technology/TechMapperFactory.h"
 #include "MilitaryMappings/MilitaryMappingsFile.h"
+#include "Modifiers/DynamicModifiers.h"
 #include "Names/Names.h"
 #include "Operations/OperationsFactory.h"
 #include "OperativeNames/OperativeNamesFactory.h"
@@ -103,6 +104,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
 	convertIndustry(theConfiguration);
+	determineCoreStates();
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
 	strategicRegions->convert(*states);
@@ -158,6 +160,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	processInfluence();
 	determineSpherelings();
 	calculateSpherelingAutonomy();
+	dynamicModifiers.updateDynamicModifiers(*ideologies);
 	scriptedTriggers.importScriptedTriggers(theConfiguration);
 	updateScriptedTriggers(scriptedTriggers, ideologies->getMajorIdeologies());
 
@@ -395,6 +398,21 @@ void HoI4::World::addStatesToCountries(const mappers::ProvinceMapper& provinceMa
 		}
 		country.second->determineCapitalFromVic2(provinceMapper, states->getProvinceToStateIDMap(), states->getStates());
 		country.second->setCapitalRegionFlag(*theRegions);
+	}
+}
+
+
+void HoI4::World::determineCoreStates()
+{
+	for (const auto& state: states->getStates())
+	{
+		for (const auto& core: state.second.getCores())
+		{
+			if (core != state.second.getOwner())
+			{
+				findCountry(core)->addCoreState(state.first);
+			}
+		}
 	}
 }
 

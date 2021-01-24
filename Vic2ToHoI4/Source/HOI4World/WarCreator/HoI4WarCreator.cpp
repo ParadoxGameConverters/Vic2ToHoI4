@@ -45,6 +45,8 @@ HoI4WarCreator::HoI4WarCreator(HoI4::World* world,
 		 provinceDefinitions,
 		 hoi4Localisations,
 		 theConfiguration);
+	Log(LogLevel::Info) << "Generating reconquest wars";
+	generateReconquestWars(AILog, hoi4Localisations, theConfiguration);
 	Log(LogLevel::Info) << "\t\tGenerating additional wars";
 	generateAdditionalWars(AILog,
 		 factionsAtWar,
@@ -1350,6 +1352,32 @@ vector<shared_ptr<HoI4::Faction>> HoI4WarCreator::absolutistWarCreator(shared_pt
 }
 
 
+void HoI4WarCreator::generateReconquestWars(std::ofstream& AILog,
+	 HoI4::Localisation& hoi4Localisations,
+	 const Configuration& theConfiguration)
+{
+	if (theConfiguration.getDebug())
+	{
+		AILog << "Creating Reconquest wars\n";
+	}
+
+	for (const auto& country: theWorld->getCountries())
+	{
+		if (country.second->getNationalFocus())
+		{
+			continue;
+		}
+		int numWarsWithNeighbors = 0;
+		auto focusTree = genericFocusTree->makeCustomizedCopy(*country.second);
+		const auto& coreHolders = focusTree->addReconquestBranch(country.second, numWarsWithNeighbors, theWorld->getMajorIdeologies(), theWorld->getStates(), hoi4Localisations);
+		if (!coreHolders.empty())
+		{
+			country.second->giveNationalFocus(focusTree);
+		}
+	}
+}
+
+
 std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(std::shared_ptr<HoI4::Country> country,
 	 std::ofstream& AILog,
 	 const HoI4::MapData& theMapData,
@@ -1388,7 +1416,8 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 	int numWarsWithNeighbors = 0;
 	auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
 
-	auto conquerTags = focusTree->addConquerBranch(country, numWarsWithNeighbors, theWorld->getMajorIdeologies(), hoi4Localisations);
+	const auto& coreHolders = focusTree->addReconquestBranch(country, numWarsWithNeighbors, theWorld->getMajorIdeologies(), theWorld->getStates(), hoi4Localisations);
+	const auto& conquerTags = focusTree->addConquerBranch(country, numWarsWithNeighbors, theWorld->getMajorIdeologies(), coreHolders, hoi4Localisations);
 
 	for (const auto& target: closeNeighbors)
 	{
@@ -1396,7 +1425,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 		{
 			break;
 		}
-		if (conquerTags.contains(target.first))
+		if (coreHolders.contains(target.first) || conquerTags.contains(target.first))
 		{
 			continue;
 		}
