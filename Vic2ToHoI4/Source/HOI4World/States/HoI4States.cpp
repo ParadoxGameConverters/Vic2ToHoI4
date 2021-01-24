@@ -41,7 +41,7 @@ HoI4::States::States(const Vic2::World& sourceWorld,
 	 const ProvinceDefinitions& provinceDefinitions,
 	 const MapData& mapData,
 	 Localisation& hoi4Localisations,
-	 const mappers::ProvinceMapper& provinceMapper,
+	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Configuration& theConfiguration)
 {
 	int num;
@@ -79,7 +79,7 @@ HoI4::States::States(const Vic2::World& sourceWorld,
 void HoI4::States::determineOwnersAndCores(const CountryMapper& countryMap,
 	 const Vic2::World& sourceWorld,
 	 const ProvinceDefinitions& provinceDefinitions,
-	 const mappers::ProvinceMapper& provinceMapper)
+	 const Mappers::ProvinceMapper& provinceMapper)
 {
 	for (auto provinceNumber: provinceDefinitions.getLandProvinces())
 	{
@@ -112,7 +112,7 @@ void HoI4::States::determineOwnersAndCores(const CountryMapper& countryMap,
 
 
 std::optional<std::vector<int>> HoI4::States::retrieveSourceProvinceNumbers(int provNum,
-	 const mappers::ProvinceMapper& provinceMapper)
+	 const Mappers::ProvinceMapper& provinceMapper)
 {
 	if (auto provinceLink = provinceMapper.getHoI4ToVic2ProvinceMapping(provNum); provinceLink && !provinceLink->empty())
 	{
@@ -236,7 +236,7 @@ void HoI4::States::createStates(const std::map<std::string, std::unique_ptr<Vic2
 	 const StrategicRegions& strategicRegions,
 	 const Vic2::Localisations& vic2Localisations,
 	 Localisation& hoi4Localisations,
-	 const mappers::ProvinceMapper& provinceMapper,
+	 const Mappers::ProvinceMapper& provinceMapper,
 	 const MapData& mapData,
 	 const Configuration& theConfiguration)
 {
@@ -339,7 +339,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 	 const StrategicRegions& strategicRegions,
 	 const Vic2::Localisations& vic2Localisations,
 	 Localisation& hoi4Localisations,
-	 const mappers::ProvinceMapper& provinceMapper,
+	 const Mappers::ProvinceMapper& provinceMapper,
 	 const MapData& mapData,
 	 const std::map<int, Province>& provinces,
 	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces,
@@ -412,7 +412,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 
 std::set<int> HoI4::States::getProvincesInState(const Vic2::State& vic2State,
 	 const std::string& owner,
-	 const mappers::ProvinceMapper& provinceMapper)
+	 const Mappers::ProvinceMapper& provinceMapper)
 {
 	std::set<int> provinces;
 	for (auto vic2ProvinceNum: vic2State.getProvinceNumbers())
@@ -519,7 +519,7 @@ std::vector<std::set<int>> HoI4::States::consolidateProvinceSets(std::vector<std
 void HoI4::States::addProvincesAndCoresToNewState(State& newState,
 	 const std::map<std::string, std::unique_ptr<Vic2::Country>>& sourceCountries,
 	 const std::set<int>& provinceNumbers,
-	 const mappers::ProvinceMapper& provinceMapper,
+	 const Mappers::ProvinceMapper& provinceMapper,
 	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces)
 {
 	std::set<std::pair<std::string, std::string>> possibleCores;

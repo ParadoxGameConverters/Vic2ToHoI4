@@ -1,7 +1,7 @@
 #include "Navies.h"
 #include "HOI4World/ProvinceDefinitions.h"
-#include "Mappers/Provinces/ProvinceMapper.h"
 #include "Log.h"
+#include "Mappers/Provinces/ProvinceMapper.h"
 
 
 
@@ -14,7 +14,7 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 	 std::map<int, State> states,
 	 const std::string& tag,
 	 const ProvinceDefinitions& provinceDefinitions,
-	 const mappers::ProvinceMapper& provinceMapper)
+	 const Mappers::ProvinceMapper& provinceMapper)
 {
 	for (auto army: srcArmies)
 	{
@@ -83,7 +83,7 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 
 std::tuple<int, int> HoI4::Navies::getLocationAndBase(std::optional<int> vic2Location,
 	 int backupNavalLocation,
-	 const mappers::ProvinceMapper& provinceMapper,
+	 const Mappers::ProvinceMapper& provinceMapper,
 	 const ProvinceDefinitions& provinceDefinitions,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 std::map<int, State> states)

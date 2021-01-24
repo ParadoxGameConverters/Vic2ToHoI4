@@ -16,7 +16,7 @@ class HoI4World_Navies_NaviesTests: public testing::Test
 	std::unique_ptr<HoI4::ShipVariants> limitedShipVariants;
 
 	HoI4::ProvinceDefinitions provinceDefinitions;
-	mappers::ProvinceMapper provinceMapper;
+	Mappers::ProvinceMapper provinceMapper;
 };
 
 

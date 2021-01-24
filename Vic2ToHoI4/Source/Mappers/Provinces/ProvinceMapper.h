@@ -12,7 +12,7 @@
 
 
 
-namespace mappers
+namespace Mappers
 {
 
 class ProvinceMapper

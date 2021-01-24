@@ -58,7 +58,7 @@ class States: commonItems::parser
 		 const ProvinceDefinitions& provinceDefinitions,
 		 const MapData& mapData,
 		 Localisation& hoi4Localisations,
-		 const mappers::ProvinceMapper& provinceMapper,
+		 const Mappers::ProvinceMapper& provinceMapper,
 		 const Configuration& theConfiguration);
 
 	[[nodiscard]] const std::map<int, DefaultState>& getDefaultStates() const { return defaultStates; }
@@ -80,9 +80,9 @@ class States: commonItems::parser
 	void determineOwnersAndCores(const CountryMapper& countryMap,
 		 const Vic2::World& sourceWorld,
 		 const ProvinceDefinitions& provinceDefinitions,
-		 const mappers::ProvinceMapper& provinceMapper);
+		 const Mappers::ProvinceMapper& provinceMapper);
 	[[nodiscard]] static std::optional<std::vector<int>> retrieveSourceProvinceNumbers(int provNum,
-		 const mappers::ProvinceMapper& provinceMapper);
+		 const Mappers::ProvinceMapper& provinceMapper);
 	[[nodiscard]] static std::map<std::string, std::pair<int, int>> determinePotentialOwners(
 		 const std::vector<int>& sourceProvinceNumbers,
 		 const Vic2::World& sourceWorld);
@@ -105,7 +105,7 @@ class States: commonItems::parser
 		 const StrategicRegions& strategicRegions,
 		 const Vic2::Localisations& vic2Localisations,
 		 Localisation& hoi4Localisations,
-		 const mappers::ProvinceMapper& provinceMapper,
+		 const Mappers::ProvinceMapper& provinceMapper,
 		 const MapData& mapData,
 		 const Configuration& theConfiguration);
 	void createMatchingHoI4State(const Vic2::State& vic2State,
@@ -118,7 +118,7 @@ class States: commonItems::parser
 		 const StrategicRegions& strategicRegions,
 		 const Vic2::Localisations& vic2Localisations,
 		 Localisation& hoi4Localisations,
-		 const mappers::ProvinceMapper& provinceMapper,
+		 const Mappers::ProvinceMapper& provinceMapper,
 		 const MapData& mapData,
 		 const std::map<int, Province>& provinces,
 		 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces,
@@ -126,7 +126,7 @@ class States: commonItems::parser
 		 const std::map<std::string, std::string>& grammarMappings);
 	std::set<int> getProvincesInState(const Vic2::State& vic2State,
 		 const std::string& owner,
-		 const mappers::ProvinceMapper& provinceMapper);
+		 const Mappers::ProvinceMapper& provinceMapper);
 	static std::vector<std::set<int>> getConnectedProvinceSets(std::set<int> provinceNumbers,
 		 const MapData& mapData,
 		 const std::map<int, Province>& provinces);
@@ -135,7 +135,7 @@ class States: commonItems::parser
 	void addProvincesAndCoresToNewState(State& newState,
 		 const std::map<std::string, std::unique_ptr<Vic2::Country>>& sourceCountries,
 		 const std::set<int>& provinceNumbers,
-		 const mappers::ProvinceMapper& provinceMapper,
+		 const Mappers::ProvinceMapper& provinceMapper,
 		 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces);
 	[[nodiscard]] static bool isProvinceValid(int provNum);
 	[[nodiscard]] bool isProvinceOwnedByCountry(int provNum, const std::string& stateOwner) const;

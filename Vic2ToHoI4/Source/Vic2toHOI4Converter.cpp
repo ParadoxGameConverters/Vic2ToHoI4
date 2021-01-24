@@ -17,7 +17,7 @@ void ConvertV2ToHoI4()
 	checkMods(*theConfiguration);
 	clearOutputFolder(theConfiguration->getOutputName());
 
-	const auto provinceMapper = mappers::ProvinceMapper::Parser{}.initializeMapper(*theConfiguration);
+	const auto provinceMapper = Mappers::ProvinceMapper::Parser{}.initializeMapper(*theConfiguration);
 
 	const auto sourceWorld = Vic2::World::Factory{*theConfiguration}.importWorld(*theConfiguration, provinceMapper);
 	const HoI4::World destWorld(*sourceWorld, provinceMapper, *theConfiguration);

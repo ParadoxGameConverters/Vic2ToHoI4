@@ -19,7 +19,7 @@
 //
 //
 //
-//class HoI4World_HoI4CountryTests: public testing::Test
+// class HoI4World_HoI4CountryTests: public testing::Test
 //{
 //  protected:
 //	HoI4World_HoI4CountryTests();
@@ -35,7 +35,7 @@
 //};
 //
 //
-//HoI4World_HoI4CountryTests::HoI4World_HoI4CountryTests()
+// HoI4World_HoI4CountryTests::HoI4World_HoI4CountryTests()
 //{
 //	std::stringstream input;
 //	theFlagsToIdeasMapper = std::make_unique<mappers::FlagsToIdeasMapper>(input);
@@ -62,7 +62,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, tagCanBeAssigned)
+// TEST_F(HoI4World_HoI4CountryTests, tagCanBeAssigned)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -75,7 +75,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, filenamesDefaultToTag)
+// TEST_F(HoI4World_HoI4CountryTests, filenamesDefaultToTag)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -89,7 +89,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, filenamesBasedOnSourceCountryName)
+// TEST_F(HoI4World_HoI4CountryTests, filenamesBasedOnSourceCountryName)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.addNameInLanguage("english", "source country name").Build(),
@@ -103,7 +103,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, filenamesReplaceBadCharacters)
+// TEST_F(HoI4World_HoI4CountryTests, filenamesReplaceBadCharacters)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.addNameInLanguage("english", "hardname|><").Build(),
@@ -117,7 +117,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, filenamesConvertFrom1252ToUtf8)
+// TEST_F(HoI4World_HoI4CountryTests, filenamesConvertFrom1252ToUtf8)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.addNameInLanguage("english", "1252\xC7").Build(),
@@ -132,7 +132,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, isHumanDefaultsToFalse)
+// TEST_F(HoI4World_HoI4CountryTests, isHumanDefaultsToFalse)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -146,7 +146,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, isHumanCanBetSetTrue)
+// TEST_F(HoI4World_HoI4CountryTests, isHumanCanBetSetTrue)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setHuman().Build(),
@@ -160,7 +160,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, colorIsFromSourceCountry)
+// TEST_F(HoI4World_HoI4CountryTests, colorIsFromSourceCountry)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setColor(commonItems::Color{std::array<int, 3>{33, 66, 99}}).Build(),
@@ -175,7 +175,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, graphicalCultureDefaultsToWesternEuropean)
+// TEST_F(HoI4World_HoI4CountryTests, graphicalCultureDefaultsToWesternEuropean)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -190,7 +190,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, graphicalCultureIsFromSourceCountryCultureGroup)
+// TEST_F(HoI4World_HoI4CountryTests, graphicalCultureIsFromSourceCountryCultureGroup)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -208,7 +208,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, hasProvincesDefaultsToFalse)
+// TEST_F(HoI4World_HoI4CountryTests, hasProvincesDefaultsToFalse)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -222,7 +222,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, getProvincesDefaultsToEmpty)
+// TEST_F(HoI4World_HoI4CountryTests, getProvincesDefaultsToEmpty)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -236,7 +236,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, provincesCanBeAdded)
+// TEST_F(HoI4World_HoI4CountryTests, provincesCanBeAdded)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -255,7 +255,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, getStatesDefaultsToEmpty)
+// TEST_F(HoI4World_HoI4CountryTests, getStatesDefaultsToEmpty)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -269,7 +269,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, statesCanBeAdded)
+// TEST_F(HoI4World_HoI4CountryTests, statesCanBeAdded)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -285,7 +285,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, capitalDefaultsToNone)
+// TEST_F(HoI4World_HoI4CountryTests, capitalDefaultsToNone)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -300,7 +300,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, capitalCanBeSetInOwnedState)
+// TEST_F(HoI4World_HoI4CountryTests, capitalCanBeSetInOwnedState)
 //{
 //	const auto sourceCountry = Vic2::Country::Builder{}.setCapital(42).Build();
 //	HoI4::Country theCountry("TAG",
@@ -321,7 +321,7 @@
 //	std::map<int, int> provinceToStateIDMap;
 //	provinceToStateIDMap.insert(std::make_pair(84, 1));
 //
-//	mappers::ProvinceMapper aProvinceMapper{{}, {{42, {84}}}};
+//	Mappers::ProvinceMapper aProvinceMapper{{}, {{42, {84}}}};
 //
 //	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 //
@@ -332,7 +332,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceIsImpassible)
+// TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceIsImpassible)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
@@ -362,7 +362,7 @@
 //	provinceToStateIDMap.insert(std::make_pair(20, 2));
 //	provinceToStateIDMap.insert(std::make_pair(30, 3));
 //
-//	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
+//	Mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 //
 //	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 //
@@ -373,7 +373,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceNotOwned)
+// TEST_F(HoI4World_HoI4CountryTests, capitalSetInFirstOwnedStateIfFirstChoiceNotOwned)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
@@ -403,7 +403,7 @@
 //	provinceToStateIDMap.insert(std::make_pair(20, 2));
 //	provinceToStateIDMap.insert(std::make_pair(30, 3));
 //
-//	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
+//	Mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 //
 //	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 //
@@ -414,7 +414,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInPreferredWastelandIfOnlyWastelandOwned)
+// TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInPreferredWastelandIfOnlyWastelandOwned)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
@@ -444,7 +444,7 @@
 //	provinceToStateIDMap.insert(std::make_pair(20, 2));
 //	provinceToStateIDMap.insert(std::make_pair(30, 3));
 //
-//	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
+//	Mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 //
 //	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 //
@@ -455,7 +455,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInOtherWastelandIfOnlyWastelandOwnedAndPreferredNotOwned)
+// TEST_F(HoI4World_HoI4CountryTests, capitalCanGoInOtherWastelandIfOnlyWastelandOwnedAndPreferredNotOwned)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
@@ -486,7 +486,7 @@
 //	provinceToStateIDMap.insert(std::make_pair(20, 2));
 //	provinceToStateIDMap.insert(std::make_pair(30, 3));
 //
-//	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
+//	Mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 //
 //	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 //
@@ -497,7 +497,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredPreferredIfNoneOwned)
+// TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredPreferredIfNoneOwned)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
@@ -527,7 +527,7 @@
 //	provinceToStateIDMap.insert(std::make_pair(20, 2));
 //	provinceToStateIDMap.insert(std::make_pair(30, 3));
 //
-//	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
+//	Mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 //
 //	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 //
@@ -538,7 +538,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredNonWastelandIfNoneOwnedAndPreferredIsWasteland)
+// TEST_F(HoI4World_HoI4CountryTests, capitalGoesToCoredNonWastelandIfNoneOwnedAndPreferredIsWasteland)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
@@ -569,7 +569,7 @@
 //	provinceToStateIDMap.insert(std::make_pair(20, 2));
 //	provinceToStateIDMap.insert(std::make_pair(30, 3));
 //
-//	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
+//	Mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 //
 //	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 //
@@ -580,7 +580,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, capitalGoesToPreferredWastelandIfNoneOwnedAndAllWasteland)
+// TEST_F(HoI4World_HoI4CountryTests, capitalGoesToPreferredWastelandIfNoneOwnedAndAllWasteland)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
@@ -612,7 +612,7 @@
 //	provinceToStateIDMap.insert(std::make_pair(20, 2));
 //	provinceToStateIDMap.insert(std::make_pair(30, 3));
 //
-//	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
+//	Mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 //
 //	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 //
@@ -623,7 +623,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, capitalGoesToAnyWastelandIfNoneOwnedAllWastelandAndPreferredNotCored)
+// TEST_F(HoI4World_HoI4CountryTests, capitalGoesToAnyWastelandIfNoneOwnedAllWastelandAndPreferredNotCored)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
@@ -654,7 +654,7 @@
 //	provinceToStateIDMap.insert(std::make_pair(20, 2));
 //	provinceToStateIDMap.insert(std::make_pair(30, 3));
 //
-//	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
+//	Mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 //
 //	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 //
@@ -665,7 +665,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, capitalRemainsUnassignedIfNoCoresAndNoOwnedProvince)
+// TEST_F(HoI4World_HoI4CountryTests, capitalRemainsUnassignedIfNoCoresAndNoOwnedProvince)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setCapital(3).Build(),
@@ -684,7 +684,7 @@
 //	std::map<int, int> provinceToStateIDMap;
 //	provinceToStateIDMap.insert(std::make_pair(30, 3));
 //
-//	mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
+//	Mappers::ProvinceMapper aProvinceMapper{{}, {{3, {30}}}};
 //
 //	theCountry.determineCapitalFromVic2(aProvinceMapper, provinceToStateIDMap, allStates);
 //
@@ -693,7 +693,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesDefaultsToNeutrality)
+// TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesDefaultsToNeutrality)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -707,7 +707,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesCanBeSet)
+// TEST_F(HoI4World_HoI4CountryTests, governmentIdeologiesCanBeSet)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}
@@ -734,7 +734,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, rulingPartyComesFromVic2Country)
+// TEST_F(HoI4World_HoI4CountryTests, rulingPartyComesFromVic2Country)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setRulingParty(*Vic2::Party::Builder{}.setName("testParty").Build()).Build(),
@@ -758,7 +758,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, missingRulingPartyThrowsException)
+// TEST_F(HoI4World_HoI4CountryTests, missingRulingPartyThrowsException)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -777,7 +777,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, partiesDefaultsToEmpty)
+// TEST_F(HoI4World_HoI4CountryTests, partiesDefaultsToEmpty)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -791,7 +791,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, partiesComeFromVic2Country)
+// TEST_F(HoI4World_HoI4CountryTests, partiesComeFromVic2Country)
 //{
 //	const auto testParty = Vic2::Party::Builder{}.setName("TAG_testParty").Build();
 //	const auto testParty2 = Vic2::Party::Builder{}.setName("TAG_testParty2").Build();
@@ -824,7 +824,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, defaultIdeologicalSupportIsAllNeutrality)
+// TEST_F(HoI4World_HoI4CountryTests, defaultIdeologicalSupportIsAllNeutrality)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -840,7 +840,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportWithNoIdeologiesIsAllNeutrality)
+// TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportWithNoIdeologiesIsAllNeutrality)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -858,7 +858,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportCanBeConverted)
+// TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportCanBeConverted)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setUpperHouseComposition({{"conservative", 0.30}, {"liberal", 0.70}}).Build(),
@@ -882,7 +882,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportCombinesSameIdeologies)
+// TEST_F(HoI4World_HoI4CountryTests, ideologicalSupportCombinesSameIdeologies)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setUpperHouseComposition({{"conservative", 0.30}, {"liberal", 0.70}}).Build(),
@@ -905,7 +905,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, lastElectionIsFromSourceCountry)
+// TEST_F(HoI4World_HoI4CountryTests, lastElectionIsFromSourceCountry)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setLastElection(date{"1234.5.6"}).Build(),
@@ -919,7 +919,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, stabilityDefaultsToSixty)
+// TEST_F(HoI4World_HoI4CountryTests, stabilityDefaultsToSixty)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -933,7 +933,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, warSupportDefaultsToSixty)
+// TEST_F(HoI4World_HoI4CountryTests, warSupportDefaultsToSixty)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -947,7 +947,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByJingosim)
+// TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByJingosim)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}
@@ -966,7 +966,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByProMilitary)
+// TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByProMilitary)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}
@@ -985,7 +985,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByAntiMilitary)
+// TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByAntiMilitary)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}
@@ -1004,7 +1004,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByPacifism)
+// TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByPacifism)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}
@@ -1023,7 +1023,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByRevanchism)
+// TEST_F(HoI4World_HoI4CountryTests, warSupportIncreasedByRevanchism)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setRevanchism(100).addProvince(1, nullptr).Build(),
@@ -1037,7 +1037,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByWarExhaustion)
+// TEST_F(HoI4World_HoI4CountryTests, warSupportDecreasedByWarExhaustion)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.setWarExhaustion(50).addProvince(1, nullptr).Build(),
@@ -1051,7 +1051,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, warSupportHasMinimumOfFifteen)
+// TEST_F(HoI4World_HoI4CountryTests, warSupportHasMinimumOfFifteen)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}
@@ -1074,7 +1074,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDefaultsToVolunteerOnly)
+// TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDefaultsToVolunteerOnly)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -1088,7 +1088,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, mobilizationLawIncreasesIfRulingPartyJingoistic)
+// TEST_F(HoI4World_HoI4CountryTests, mobilizationLawIncreasesIfRulingPartyJingoistic)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}
@@ -1116,7 +1116,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDecreasesIfRulingPartyPacifistic)
+// TEST_F(HoI4World_HoI4CountryTests, mobilizationLawDecreasesIfRulingPartyPacifistic)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}
@@ -1144,7 +1144,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, economicLawDefaultsToCivilian)
+// TEST_F(HoI4World_HoI4CountryTests, economicLawDefaultsToCivilian)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -1158,7 +1158,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfAtWar)
+// TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfAtWar)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}
@@ -1187,7 +1187,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfFascist)
+// TEST_F(HoI4World_HoI4CountryTests, economicLawIncreasesIfFascist)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}
@@ -1216,7 +1216,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, tradeLawDefaultsToExport)
+// TEST_F(HoI4World_HoI4CountryTests, tradeLawDefaultsToExport)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -1230,7 +1230,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfFascist)
+// TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfFascist)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}
@@ -1259,7 +1259,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfRadical)
+// TEST_F(HoI4World_HoI4CountryTests, tradeLawChangesIfRadical)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}
@@ -1288,7 +1288,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, technologyCountDefaultsToZero)
+// TEST_F(HoI4World_HoI4CountryTests, technologyCountDefaultsToZero)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -1302,7 +1302,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, technologiesDefaultToNullopt)
+// TEST_F(HoI4World_HoI4CountryTests, technologiesDefaultToNullopt)
 //{
 //	const HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.Build(),
@@ -1316,7 +1316,7 @@
 //}
 //
 //
-//TEST_F(HoI4World_HoI4CountryTests, technologyCanBeConverted)
+// TEST_F(HoI4World_HoI4CountryTests, technologyCanBeConverted)
 //{
 //	HoI4::Country theCountry("TAG",
 //		 &*Vic2::Country::Builder{}.addTech("testTech").addDiscoveredInvention("testInvention").Build(),

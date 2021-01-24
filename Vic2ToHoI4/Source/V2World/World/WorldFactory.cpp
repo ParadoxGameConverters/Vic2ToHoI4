@@ -67,7 +67,7 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 
 
 std::unique_ptr<Vic2::World> Vic2::World::Factory::importWorld(const Configuration& theConfiguration,
-	 const mappers::ProvinceMapper& provinceMapper)
+	 const Mappers::ProvinceMapper& provinceMapper)
 {
 	Log(LogLevel::Progress) << "15%";
 	Log(LogLevel::Info) << "*** Importing V2 save ***";
@@ -337,7 +337,7 @@ void Vic2::World::Factory::setLocalisations(Localisations& vic2Localisations)
 }
 
 
-void Vic2::World::Factory::checkAllProvincesMapped(const mappers::ProvinceMapper& provinceMapper) const
+void Vic2::World::Factory::checkAllProvincesMapped(const Mappers::ProvinceMapper& provinceMapper) const
 {
 	Log(LogLevel::Info) << "\tChecking all provinces are mapped";
 	for (const auto& [provinceNum, unused]: world->provinces)

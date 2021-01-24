@@ -38,7 +38,7 @@ class Army
 		 double forceMultiplier,
 		 const technologies& countryTechnologies,
 		 const States& theStates,
-		 const mappers::ProvinceMapper& provinceMapper);
+		 const Mappers::ProvinceMapper& provinceMapper);
 
 	friend std::ostream& operator<<(std::ostream& output, const Army& theArmy);
 
@@ -47,7 +47,7 @@ class Army
 
   private:
 	static std::optional<int> getLocation(std::optional<int> vic2Location,
-		 const mappers::ProvinceMapper& provinceMapper);
+		 const Mappers::ProvinceMapper& provinceMapper);
 
 	void convertArmyDivisions(const militaryMappings& theMilitaryMappings,
 		 std::map<std::string, std::vector<SizedRegiment>>& BattalionsAndCompanies,

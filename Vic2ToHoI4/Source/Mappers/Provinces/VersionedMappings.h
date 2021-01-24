@@ -8,7 +8,7 @@
 
 
 
-namespace mappers
+namespace Mappers
 {
 
 class VersionedMappings: commonItems::parser

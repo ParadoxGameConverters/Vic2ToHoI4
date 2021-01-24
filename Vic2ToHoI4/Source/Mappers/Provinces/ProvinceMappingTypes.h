@@ -8,13 +8,13 @@
 
 
 
-namespace mappers
+namespace Mappers
 {
 
 using HoI4ToVic2ProvinceMapping = std::map<int, std::vector<int>>;
 using Vic2ToHoI4ProvinceMapping = std::map<int, std::vector<int>>;
 
-} // namespace mappers
+} // namespace Mappers
 
 
 

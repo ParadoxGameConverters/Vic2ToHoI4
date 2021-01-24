@@ -137,7 +137,7 @@ TEST(HoI4World_States_StateTests, ControllersCanBeAdded)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
+	Mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
 	theState.convertControlledProvinces({{12, "NOT"}},
 		 theProvinceMapper,
@@ -154,7 +154,7 @@ TEST(HoI4World_States_StateTests, ControllersConvertWithHoI4Tag)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
+	Mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
 	theState.convertControlledProvinces({{12, "NOT"}},
 		 theProvinceMapper,
@@ -171,7 +171,7 @@ TEST(HoI4World_States_StateTests, ControllersDontConvertForRebels)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	const mappers::ProvinceMapper theProvinceMapper{{}, {}};
+	const Mappers::ProvinceMapper theProvinceMapper{{}, {}};
 
 	theState.convertControlledProvinces({{12, "REB"}},
 		 theProvinceMapper,
@@ -448,7 +448,7 @@ TEST(HoI4World_States_StateTests, NavalBasesCanBeConverted)
 	theState.addProvince(1);
 	theState.addProvince(2);
 
-	const mappers::ProvinceMapper theProvinceMapper{{}, {{1, {1}}, {2, {2}}}};
+	const Mappers::ProvinceMapper theProvinceMapper{{}, {{1, {1}}, {2, {2}}}};
 
 	theState.convertNavalBases({{1, 1}, {2, 1}},
 		 *HoI4::CoastalProvinces::Builder{}.addCoastalProvince(1, {}).addCoastalProvince(2, {}).Build(),
@@ -522,7 +522,7 @@ TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	const mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
+	const Mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
 	const Configuration theConfiguration;
 	theState.addManpower(provinces, theProvinceMapper, theConfiguration);
@@ -612,7 +612,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapital)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	const mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
+	const Mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
 	const Configuration theConfiguration;
 
@@ -648,7 +648,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	theState.addProvince(12);
 	theState.addProvince(24);
 
-	const mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
+	const Mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
 	const Configuration theConfiguration;
 
@@ -684,7 +684,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	theState.addProvince(12);
 	theState.addProvince(24);
 
-	const mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
+	const Mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
 	const Configuration theConfiguration;
 
@@ -720,7 +720,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 	theState.addProvince(12);
 	theState.addProvince(24);
 
-	const mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
+	const Mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
 	const Configuration theConfiguration;
 
@@ -755,7 +755,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousPr
 	theState.addProvince(12);
 	theState.addProvince(24);
 
-	const mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
+	const Mappers::ProvinceMapper theProvinceMapper{{}, {{24, {24}}}};
 
 	const Configuration theConfiguration;
 
@@ -771,7 +771,7 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionLoggedIfNotSet)
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
-	const mappers::ProvinceMapper theProvinceMapper{{}, {}};
+	const Mappers::ProvinceMapper theProvinceMapper{{}, {}};
 
 	const Configuration theConfiguration;
 
@@ -795,7 +795,7 @@ TEST(HoI4World_States_StateTests, DebugVPsCanBeAdded)
 	HoI4::State theState(sourceState, 42, "TAG");
 	theState.addProvince(12);
 
-	const mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
+	const Mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12}}}};
 
 	const Configuration theConfiguration;
 
@@ -811,7 +811,7 @@ TEST(HoI4World_States_StateTests, SecondaryDebugVPsCanBeAdded)
 
 	HoI4::State theState(sourceState, 42, "TAG");
 
-	const mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12, 13}}}};
+	const Mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12, 13}}}};
 
 	const Configuration theConfiguration;
 
@@ -832,7 +832,7 @@ TEST(HoI4World_States_StateTests, DebugVpsAreOutput)
 	theState.addProvince(24);
 	theState.addProvince(25);
 
-	const mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12, 13}}, {24, {24, 25}}}};
+	const Mappers::ProvinceMapper theProvinceMapper{{}, {{12, {12, 13}}, {24, {24, 25}}}};
 
 	const Configuration theConfiguration;
 

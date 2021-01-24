@@ -6,7 +6,7 @@
 
 
 
-mappers::VersionedMappings::VersionedMappings(std::istream& theStream)
+Mappers::VersionedMappings::VersionedMappings(std::istream& theStream)
 {
 	Mappers::ProvinceMapping::Factory provinceMappingFactory;
 	registerKeyword("link", [this, &provinceMappingFactory](std::istream& theStream) {
@@ -22,7 +22,7 @@ mappers::VersionedMappings::VersionedMappings(std::istream& theStream)
 }
 
 
-void mappers::VersionedMappings::insertIntoHoI4ToVic2ProvinceMap(const std::vector<int>& Vic2Provinces,
+void Mappers::VersionedMappings::insertIntoHoI4ToVic2ProvinceMap(const std::vector<int>& Vic2Provinces,
 	 const std::vector<int>& HoI4Provinces)
 {
 	for (auto num: HoI4Provinces)
@@ -35,7 +35,7 @@ void mappers::VersionedMappings::insertIntoHoI4ToVic2ProvinceMap(const std::vect
 }
 
 
-void mappers::VersionedMappings::insertIntoVic2ToHoI4ProvinceMap(const std::vector<int>& Vic2Provinces,
+void Mappers::VersionedMappings::insertIntoVic2ToHoI4ProvinceMap(const std::vector<int>& Vic2Provinces,
 	 const std::vector<int>& HoI4Provinces)
 {
 	for (auto num: Vic2Provinces)
