@@ -54,9 +54,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\VersionedMappings.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
     </ClCompile>
@@ -1378,6 +1375,12 @@
       <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
     </ClCompile>
     <ClCompile Include="MapperTests\Provinces\ProvinceMappingTests.cpp">
+      <Filter>MapperTests\Provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\VersionedMappingsFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\Provinces\VersionedMappingsTests.cpp">
       <Filter>MapperTests\Provinces</Filter>
     </ClCompile>
   </ItemGroup>

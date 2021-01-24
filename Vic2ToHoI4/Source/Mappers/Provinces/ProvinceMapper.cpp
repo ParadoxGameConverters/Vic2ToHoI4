@@ -6,22 +6,25 @@
 #include "OSCompatibilityLayer.h"
 #include "ParserHelpers.h"
 #include "VersionedMappings.h"
+#include "VersionedMappingsFactory.h"
 #include <fstream>
 
 
 
 Mappers::ProvinceMapper Mappers::ProvinceMapper::Parser::initializeMapper(const Configuration& theConfiguration)
 {
+	VersionedMappings::Factory versionedMappingsFactory;
 	auto gotMappings = false;
 	registerRegex(R"(\d\.[\d]+\.\d)",
-		 [this, &gotMappings, theConfiguration](const std::string& version, std::istream& theStream) {
+		 [this, &gotMappings, theConfiguration, &versionedMappingsFactory](const std::string& version,
+			  std::istream& theStream) {
 			 const GameVersion defaultVersion(version);
 			 if ((GameVersion{1, 10, 1, 0} >= defaultVersion) && !gotMappings)
 			 {
 				 Log(LogLevel::Info) << "\tUsing version " << version << " mappings";
-				 const VersionedMappings thisVersionsMappings(theStream);
-				 HoI4ToVic2ProvinceMap = thisVersionsMappings.getHoI4ToVic2Mapping();
-				 Vic2ToHoI4ProvinceMap = thisVersionsMappings.getVic2ToHoI4Mapping();
+				 const auto thisVersionsMappings = versionedMappingsFactory.importVersionedMappings(theStream);
+				 HoI4ToVic2ProvinceMap = thisVersionsMappings->getHoI4ToVic2Mapping();
+				 Vic2ToHoI4ProvinceMap = thisVersionsMappings->getVic2ToHoI4Mapping();
 				 gotMappings = true;
 			 }
 			 else
