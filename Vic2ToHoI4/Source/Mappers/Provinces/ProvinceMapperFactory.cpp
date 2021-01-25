@@ -76,6 +76,10 @@ void Mappers::ProvinceMapper::Factory::checkAllHoI4ProvincesMapped(const Configu
 		{
 			break;
 		}
+		if (*provNum == 0)
+		{
+			continue;
+		}
 
 		verifyProvinceIsMapped(*provNum);
 	}
@@ -91,23 +95,26 @@ std::optional<int> Mappers::ProvinceMapper::Factory::getNextProvinceNumFromFile(
 
 	if (const auto pos = line.find_first_of(';'); pos != std::string::npos)
 	{
-		return stoi(line.substr(0, pos));
+		try
+		{
+			return stoi(line.substr(0, pos));
+		}
+		catch (...)
+		{
+			Log(LogLevel::Warning) << "Bad line in /map/definition.csv: " << line;
+			return 0;
+		}
 	}
-	else
-	{
-		return {};
-	}
+
+	return std::nullopt;
 }
 
 
 void Mappers::ProvinceMapper::Factory::verifyProvinceIsMapped(const int provNum) const
 {
-	if (provNum != 0)
+	if (!provinceMapper->HoI4ToVic2ProvinceMap.contains(provNum))
 	{
-		if (!provinceMapper->HoI4ToVic2ProvinceMap.contains(provNum))
-		{
-			Log(LogLevel::Warning) << "No mapping for HoI4 province " << provNum;
-		}
+		Log(LogLevel::Warning) << "No mapping for HoI4 province " << provNum;
 	}
 }
 
