@@ -1377,6 +1377,21 @@
     <ClCompile Include="Vic2WorldTests\Mods\ModTests.cpp">
       <Filter>Vic2WorldTests\Mods</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Modifiers\DynamicModifiersTests.cpp">
+      <Filter>HoI4WorldTests\Modifiers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Modifiers\OutModifier.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Modifiers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Modifiers\Modifier.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Modifiers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Modifiers\DynamicModifiers.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Modifiers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Modifiers\OutDynamicModifiers.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Modifiers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1790,21 +1805,18 @@
     <Filter Include="TestFiles\Mappers\FlagsToIdeas">
       <UniqueIdentifier>{db8286f7-f3b8-4abe-852c-c68eca054173}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4WorldTests\Modifiers">
+      <UniqueIdentifier>{f703d079-d901-4465-adda-ed2250948000}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\Modifiers">
+      <UniqueIdentifier>{98232ab0-7cca-45b8-8d8b-08f532766fcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Modifiers">
+      <UniqueIdentifier>{06ecf8d8-f6f6-49c0-9829-647be3e1ae08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="TestFiles\Mods\Dependencies.mod">
-      <Filter>TestFiles\Mods</Filter>
-    </None>
-    <None Include="TestFiles\Mods\Dependent.mod">
-      <Filter>TestFiles\Mods</Filter>
-    </None>
-    <None Include="TestFiles\Mods\DependencyOne.mod">
-      <Filter>TestFiles\Mods</Filter>
-    </None>
-    <None Include="TestFiles\Mods\DependencyTwo.mod">
-      <Filter>TestFiles\Mods</Filter>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h">
@@ -2056,5 +2068,9 @@
     <CopyFileToFolders Include="TestFiles\Mappers\Technology\research_bonus_mappings.txt" />
     <CopyFileToFolders Include="TestFiles\Localisations\grammar.txt" />
     <CopyFileToFolders Include="TestFiles\Mappers\FlagsToIdeas\FlagsToIdeasMappings.txt" />
+    <CopyFileToFolders Include="TestFiles\Mods\Dependencies.mod" />
+    <CopyFileToFolders Include="TestFiles\Mods\DependencyOne.mod" />
+    <CopyFileToFolders Include="TestFiles\Mods\DependencyTwo.mod" />
+    <CopyFileToFolders Include="TestFiles\Mods\Dependent.mod" />
   </ItemGroup>
 </Project>

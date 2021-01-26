@@ -61,6 +61,11 @@ void HoI4::Ideas::updateIdeas(const std::set<std::string>& majorIdeologies)
 	});
 	updateGeneralIdeas(*foundGroup, majorIdeologies);
 
+	foundGroup = std::find_if(generalIdeas.begin(), generalIdeas.end(), [](auto& theGroup) {
+		return (theGroup.getName() == "hidden_ideas");
+	});
+	updateHiddenIdeas(*foundGroup, majorIdeologies);
+
 	if (auto foundIdeologicalGroup = ideologicalIdeas.find("neutrality");
 		 foundIdeologicalGroup != ideologicalIdeas.end())
 	{

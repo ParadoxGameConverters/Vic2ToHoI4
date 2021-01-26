@@ -30,6 +30,7 @@
 #include "Mappers/Technology/TechMapper.h"
 #include "Mappers/Technology/TechMapperFactory.h"
 #include "MilitaryMappings/MilitaryMappingsFile.h"
+#include "Modifiers/DynamicModifiers.h"
 #include "Names/Names.h"
 #include "Operations/OperationsFactory.h"
 #include "OperativeNames/OperativeNamesFactory.h"
@@ -159,6 +160,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	processInfluence();
 	determineSpherelings();
 	calculateSpherelingAutonomy();
+	dynamicModifiers.updateDynamicModifiers(ideologies->getMajorIdeologies());
 	scriptedTriggers.importScriptedTriggers(theConfiguration);
 	updateScriptedTriggers(scriptedTriggers, ideologies->getMajorIdeologies());
 

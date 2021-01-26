@@ -17,6 +17,7 @@ void updateEconomyIdeas(IdeaGroup& economicIdeas, const std::set<std::string>& m
 void updateTradeLaws(IdeaGroup& tradeLaws, const std::set<std::string>& majorIdeologies);
 void updateGeneralIdeas(IdeaGroup& generalIdeas, const std::set<std::string>& majorIdeologies);
 void updateNeutralIdeas(IdeaGroup& neutralIdeas, const std::set<std::string>& majorIdeologies);
+void updateHiddenIdeas(IdeaGroup& generalIdeas, const std::set<std::string>& majorIdeologies);
 
 } // namespace HoI4
 

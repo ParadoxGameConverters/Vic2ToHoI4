@@ -32,6 +32,8 @@
 #include "MilitaryMappings/AllMilitaryMappings.h"
 #include "MilitaryMappings/HoI4UnitType.h"
 #include "MilitaryMappings/UnitMappings.h"
+#include "Modifiers/Modifier.h"
+#include "Modifiers/DynamicModifiers.h"
 #include "Names/Names.h"
 #include "OccupationLaws/OccupationLawsFactory.h"
 #include "OnActions.h"
@@ -90,6 +92,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getIdeologies() const { return *ideologies; }
 	[[nodiscard]] const auto& getTheIdeas() const { return *theIdeas; }
 	[[nodiscard]] const auto& getOccupationLaws() const { return *occupationLaws; }
+	[[nodiscard]] const auto& getDynamicModifiers() const { return dynamicModifiers; }
 	[[nodiscard]] const auto& getScriptedEffects() const { return *scriptedEffects; }
 	[[nodiscard]] const auto& getScriptedLocalisations() const { return scriptedLocalisations; }
 	[[nodiscard]] const auto& getScriptedTriggers() const { return scriptedTriggers; }
@@ -231,6 +234,7 @@ class World: commonItems::parser
 	ScriptedTriggers scriptedTriggers;
 
 	std::unique_ptr<GameRules> gameRules;
+	DynamicModifiers dynamicModifiers;
 
 	HoI4FocusTree genericFocusTree;
 
