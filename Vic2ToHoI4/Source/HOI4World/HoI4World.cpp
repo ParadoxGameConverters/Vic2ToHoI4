@@ -402,13 +402,13 @@ void HoI4::World::addStatesToCountries(const mappers::ProvinceMapper& provinceMa
 
 void HoI4::World::determineCoreStates()
 {
-	for (const auto& state: states->getStates())
+	for (const auto& [id, state]: states->getStates())
 	{
-		for (const auto& core: state.second.getCores())
+		for (const auto& coreTag: state.getCores())
 		{
-			if (core != state.second.getOwner())
+			if (const auto& coreCountry = findCountry(coreTag); coreCountry)
 			{
-				findCountry(core)->addCoreState(state.first);
+				coreCountry->addCoreState(id);
 			}
 		}
 	}

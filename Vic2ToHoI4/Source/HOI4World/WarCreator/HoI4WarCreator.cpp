@@ -1361,18 +1361,18 @@ void HoI4WarCreator::generateReconquestWars(std::ofstream& AILog,
 		AILog << "Creating Reconquest wars\n";
 	}
 
-	for (const auto& country: theWorld->getCountries())
+	for (const auto& [unused, country]: theWorld->getCountries())
 	{
-		if (country.second->getNationalFocus())
+		if (country->getNationalFocus())
 		{
 			continue;
 		}
 		int numWarsWithNeighbors = 0;
-		auto focusTree = genericFocusTree->makeCustomizedCopy(*country.second);
-		const auto& coreHolders = focusTree->addReconquestBranch(country.second, numWarsWithNeighbors, theWorld->getMajorIdeologies(), theWorld->getStates(), hoi4Localisations);
+		auto focusTree = genericFocusTree->makeCustomizedCopy(*country);
+		const auto& coreHolders = focusTree->addReconquestBranch(country, numWarsWithNeighbors, theWorld->getMajorIdeologies(), theWorld->getStates(), hoi4Localisations);
 		if (!coreHolders.empty())
 		{
-			country.second->giveNationalFocus(focusTree);
+			country->giveNationalFocus(focusTree);
 		}
 	}
 }
@@ -1455,8 +1455,8 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 				AILog << "Creating focus to attack " + targetName << "\n";
 			}
 
-			date startDate = date("1937.01.01");
-			startDate.increaseByMonths(relations->getRelations() / -4);
+			date startDate = date("1936.01.01");
+			startDate.increaseByMonths((200 + relations->getRelations()) / 8);
 			focusTree->addNeighborWarBranch(country->getTag(),
 				 closeNeighbors,
 				 target.second,

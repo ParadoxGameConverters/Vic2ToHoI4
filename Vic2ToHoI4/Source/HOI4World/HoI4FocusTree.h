@@ -98,9 +98,9 @@ class HoI4FocusTree: commonItems::parser
 		 const date& startDate,
 		 const std::set<std::string>& majorIdeologies,
 		 HoI4::Localisation& hoi4Localisations);
-	std::map<std::string, int> determineCoreHolders(std::shared_ptr<HoI4::Country> theCountry,
+	std::map<std::string, int> determineEnemyCoreHolders(std::shared_ptr<HoI4::Country> theCountry,
 		 const std::map<int, HoI4::State>& states);
-	int calculateNumUnownedCores(std::shared_ptr<HoI4::Country> theCountry,
+	int calculateNumEnemyOwnedCores(std::shared_ptr<HoI4::Country> theCountry,
 		 const std::map<int, HoI4::State>& states);
 	void removeFocus(const std::string& id);
 

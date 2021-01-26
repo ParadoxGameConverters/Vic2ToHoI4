@@ -2063,25 +2063,28 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 	nextFreeColumn += 2 * static_cast<int>(max(newAllies.size(), GCTargets.size()));
 }
 
-std::map<std::string, int> HoI4FocusTree::determineCoreHolders(std::shared_ptr<HoI4::Country> theCountry,
+std::map<std::string, int> HoI4FocusTree::determineEnemyCoreHolders(std::shared_ptr<HoI4::Country> theCountry,
 	 const std::map<int, HoI4::State>& states
 ){
 	std::map<std::string, int> coreHolders;
 
-	for (const auto& coreState: theCountry->getCoreStates())
+	for (const auto& stateID: theCountry->getCoreStates())
 	{
-		if (const auto& owner = states.find(coreState)->second.getOwner(); owner != theCountry->getTag())
+		const auto& stateItr = states.find(stateID);
+		if (stateItr == states.end())
+		{
+			continue;
+		}
+		const auto& state = stateItr->second;
+		if (const auto& owner = state.getOwner(); owner != theCountry->getTag())
 		{
 			if (theCountry->isEligibleEnemy(owner))
 			{
-				int numProvinces = std::min(static_cast<int>(states.find(coreState)->second.getProvinces().size()), 10);
-				if (auto coreHolder = coreHolders.find(owner); coreHolder == coreHolders.end())
+				int numProvinces = std::min(static_cast<int>(state.getProvinces().size()), 10);
+				const auto& [existing, inserted] = coreHolders.insert(make_pair(owner, numProvinces));
+				if (!inserted)
 				{
-					coreHolders.insert(make_pair(owner, numProvinces));
-				}
-				else
-				{
-					coreHolder->second += numProvinces;
+				  existing->second += numProvinces;
 				}
 			}
 		}
@@ -2090,14 +2093,14 @@ std::map<std::string, int> HoI4FocusTree::determineCoreHolders(std::shared_ptr<H
 	return coreHolders;
 }
 
-int HoI4FocusTree::calculateNumUnownedCores(std::shared_ptr<HoI4::Country> theCountry,
+int HoI4FocusTree::calculateNumEnemyOwnedCores(std::shared_ptr<HoI4::Country> theCountry,
 	 const std::map<int, HoI4::State>& states
 ){
 	int sumUnownedCores = 0;
 
-	for (const auto& coreHolder: determineCoreHolders(theCountry, states))
+	for (const auto& [unused, numCores]: determineEnemyCoreHolders(theCountry, states))
 	{
-		sumUnownedCores += coreHolder.second;
+		sumUnownedCores += numCores;
 	}
 
 	return sumUnownedCores;
@@ -2110,21 +2113,15 @@ std::map<std::string, int> HoI4FocusTree::addReconquestBranch(std::shared_ptr<Ho
 	 const std::map<int, HoI4::State>& states,
 	 HoI4::Localisation& hoi4Localisations)
 {
-	const auto& coreHolders = determineCoreHolders(theCountry, states);
-	int sumUnownedCores = calculateNumUnownedCores(theCountry, states);
-
-	numWarsWithNeighbors = std::min(static_cast<int>(coreHolders.size()), 4);
-
+	const auto& coreHolders = determineEnemyCoreHolders(theCountry, states);
 	if (coreHolders.empty())
 	{
 		return coreHolders;
 	}
 
-	std::string fascistGovernmentCheck;
-	fascistGovernmentCheck = "modifier = {\n";
-	fascistGovernmentCheck += "\t\t\t\tfactor = 5\n";
-	fascistGovernmentCheck += "\t\t\t\thas_government = fascism\n";
-	fascistGovernmentCheck += "\t\t\t}";
+	int sumUnownedCores = calculateNumEnemyOwnedCores(theCountry, states);
+
+	numWarsWithNeighbors = std::min(static_cast<int>(coreHolders.size()), 4);
 
 	if (const auto& originalFocus = loadedFocuses.find("reclaim_cores"); originalFocus != loadedFocuses.end())
 	{
@@ -2149,6 +2146,12 @@ std::map<std::string, int> HoI4FocusTree::addReconquestBranch(std::shared_ptr<Ho
 	{
 		throw std::runtime_error("Could not load focus reclaim_cores");
 	}
+
+	std::string fascistGovernmentCheck;
+	fascistGovernmentCheck = "modifier = {\n";
+	fascistGovernmentCheck += "\t\t\t\tfactor = 5\n";
+	fascistGovernmentCheck += "\t\t\t\thas_government = fascism\n";
+	fascistGovernmentCheck += "\t\t\t}";
 
 	for (const auto& [target, numProvinces]: coreHolders)
 	{
@@ -2386,7 +2389,7 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(
 		numWarsWithNeighbors++;
 		auto relations = theCountry->getRelations(strategy.getID());
 		date startDate = date("1936.01.01");
-		startDate.increaseByMonths(std::max(0, relations->getRelations() / 4 + 12));
+		startDate.increaseByMonths((200 + relations->getRelations()) / 8);
 
 		if (const auto& originalFocus = loadedFocuses.find("border_disputes_conquer"); originalFocus != loadedFocuses.end())
 		{
