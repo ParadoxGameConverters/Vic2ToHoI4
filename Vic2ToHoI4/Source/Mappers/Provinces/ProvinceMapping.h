@@ -23,7 +23,7 @@ class ProvinceMapping
 	std::vector<int> HoI4Provinces;
 };
 
-} // namespace mappers
+} // namespace Mappers
 
 
 

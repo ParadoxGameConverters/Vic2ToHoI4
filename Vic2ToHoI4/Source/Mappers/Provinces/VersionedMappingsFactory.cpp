@@ -33,10 +33,7 @@ void Mappers::VersionedMappings::Factory::insertIntoHoI4ToVic2ProvinceMap(const 
 {
 	for (auto num: HoI4Provinces)
 	{
-		if (num != 0)
-		{
-			versionedMappings->HoI4ToVic2ProvinceMap.insert(make_pair(num, Vic2Provinces));
-		}
+		versionedMappings->HoI4ToVic2ProvinceMap.insert(make_pair(num, Vic2Provinces));
 	}
 }
 
@@ -46,9 +43,6 @@ void Mappers::VersionedMappings::Factory::insertIntoVic2ToHoI4ProvinceMap(const 
 {
 	for (auto num: Vic2Provinces)
 	{
-		if (num != 0)
-		{
-			versionedMappings->Vic2ToHoI4ProvinceMap.insert(make_pair(num, HoI4Provinces));
-		}
+		versionedMappings->Vic2ToHoI4ProvinceMap.insert(make_pair(num, HoI4Provinces));
 	}
 }

@@ -11,25 +11,24 @@
 
 
 
-Mappers::ProvinceMapper::Factory::Factory(const Configuration& theConfiguration)
+Mappers::ProvinceMapper::Factory::Factory()
 {
 	auto gotMappings = false;
-	registerRegex(R"(\d\.[\d]+\.\d)",
-		 [this, &gotMappings, theConfiguration](const std::string& version, std::istream& theStream) {
-			 const GameVersion defaultVersion(version);
-			 if ((GameVersion{1, 10, 1, 0} >= defaultVersion) && !gotMappings)
-			 {
-				 Log(LogLevel::Info) << "\tUsing version " << version << " mappings";
-				 const auto thisVersionsMappings = versionedMappingsFactory.importVersionedMappings(theStream);
-				 provinceMapper->HoI4ToVic2ProvinceMap = thisVersionsMappings->getHoI4ToVic2Mapping();
-				 provinceMapper->Vic2ToHoI4ProvinceMap = thisVersionsMappings->getVic2ToHoI4Mapping();
-				 gotMappings = true;
-			 }
-			 else
-			 {
-				 commonItems::ignoreItem(version, theStream);
-			 }
-		 });
+	registerRegex(R"(\d\.[\d]+\.\d)", [this, &gotMappings](const std::string& version, std::istream& theStream) {
+		const GameVersion defaultVersion(version);
+		if ((GameVersion{1, 10, 1, 0} >= defaultVersion) && !gotMappings)
+		{
+			Log(LogLevel::Info) << "\tUsing version " << version << " mappings";
+			const auto thisVersionsMappings = versionedMappingsFactory.importVersionedMappings(theStream);
+			provinceMapper->HoI4ToVic2ProvinceMap = thisVersionsMappings->getHoI4ToVic2Mapping();
+			provinceMapper->Vic2ToHoI4ProvinceMap = thisVersionsMappings->getVic2ToHoI4Mapping();
+			gotMappings = true;
+		}
+		else
+		{
+			commonItems::ignoreItem(version, theStream);
+		}
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
