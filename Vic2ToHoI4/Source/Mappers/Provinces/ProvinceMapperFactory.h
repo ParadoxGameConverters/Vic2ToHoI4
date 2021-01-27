@@ -17,7 +17,7 @@ namespace Mappers
 class ProvinceMapper::Factory: commonItems::parser
 {
   public:
-	Factory(const Configuration& theConfiguration);
+	explicit Factory(const Configuration& theConfiguration);
 	std::unique_ptr<ProvinceMapper> importProvinceMapper(const Configuration& theConfiguration);
 
   private:

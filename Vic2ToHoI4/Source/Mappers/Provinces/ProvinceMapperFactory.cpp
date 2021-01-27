@@ -28,8 +28,9 @@ std::optional<int> getNextProvinceNumFromFile(std::ifstream& definitions)
 		catch (...)
 		{
 			Log(LogLevel::Warning) << "Bad line in /map/definition.csv: " << line;
-			return 0;
 		}
+
+		return 0;
 	}
 
 	return std::nullopt;

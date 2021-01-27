@@ -1383,6 +1383,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapperFactory.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
     </ClCompile>
+    <ClCompile Include="MapperTests\Provinces\ProvinceMapperTests.cpp">
+      <Filter>MapperTests\Provinces</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1799,6 +1802,9 @@
     <Filter Include="MapperTests\Provinces">
       <UniqueIdentifier>{9daabb38-1cf8-4b13-ba32-f7d6d2e9e1b4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TestFiles\Mappers\Provinces">
+      <UniqueIdentifier>{de357879-9c99-4ce0-887d-e1dbcf2fa99c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2057,5 +2063,23 @@
     <CopyFileToFolders Include="TestFiles\Mods\DependencyOne.mod" />
     <CopyFileToFolders Include="TestFiles\Mods\DependencyTwo.mod" />
     <CopyFileToFolders Include="TestFiles\Mods\Dependent.mod" />
+    <CopyFileToFolders Include="TestFiles\Mappers\Provinces\vanilla_province_mappings.txt">
+      <Filter>TestFiles\Mappers\Provinces</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Provinces\empty_definition.csv">
+      <Filter>TestFiles\Mappers\Provinces</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Provinces\mod_province_mappings.txt">
+      <Filter>TestFiles\Mappers\Provinces</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Provinces\bad_line_definition.csv">
+      <Filter>TestFiles\Mappers\Provinces</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Provinces\missing_definition.csv">
+      <Filter>TestFiles\Mappers\Provinces</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Provinces\good_definition.csv">
+      <Filter>TestFiles\Mappers\Provinces</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

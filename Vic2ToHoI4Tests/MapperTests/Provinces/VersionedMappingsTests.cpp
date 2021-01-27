@@ -26,6 +26,18 @@ TEST(Mappers_Provinces_VersionedMappingsTests, HoI4ProvinceMappingsDefaultToEmpt
 }
 
 
+TEST(Mappers_Provinces_VersionedMappingsTests, EmptyMappingsAddNothing)
+{
+	std::stringstream input;
+	input << "link = {}";
+
+	const auto versionedMappings = Mappers::VersionedMappings::Factory().importVersionedMappings(input);
+
+	ASSERT_TRUE(versionedMappings->getVic2ToHoI4Mapping().empty());
+	ASSERT_TRUE(versionedMappings->getHoI4ToVic2Mapping().empty());
+}
+
+
 TEST(Mappers_Provinces_VersionedMappingsTests, ProvinceMappingsCanBeAdded)
 {
 	std::stringstream input;
