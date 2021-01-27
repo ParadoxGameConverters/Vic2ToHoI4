@@ -45,7 +45,7 @@ HoI4WarCreator::HoI4WarCreator(HoI4::World* world,
 		 provinceDefinitions,
 		 hoi4Localisations,
 		 theConfiguration);
-	Log(LogLevel::Info) << "Generating reconquest wars";
+	Log(LogLevel::Info) << "\t\tGenerating reconquest wars";
 	generateReconquestWars(AILog, hoi4Localisations, theConfiguration);
 	Log(LogLevel::Info) << "\t\tGenerating additional wars";
 	generateAdditionalWars(AILog,

@@ -6,20 +6,16 @@
 HoI4::Modifier::Modifier(const std::string& modifierName, std::istream& theStream): name(modifierName)
 {
 	registerKeyword("icon", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::singleString iconString(theStream);
-		icon = iconString.getString();
+		icon = commonItems::singleString(theStream).getString();
 	});
 	registerKeyword("enable", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::stringOfItem enableString(theStream);
-		enable = enableString.getString();
+		enable = commonItems::stringOfItem(theStream).getString();
 	});
 	registerKeyword("remove_trigger", [this](const std::string& unused, std::istream& theStream) {
-		commonItems::stringOfItem removeTriggerString(theStream);
-		removeTrigger = removeTriggerString.getString();
+		removeTrigger = commonItems::stringOfItem(theStream).getString();
 	});
 	registerRegex("[a-zA-Z0-9_]+", [this](const std::string& theEffect, std::istream& theStream) {
-		commonItems::singleString effectsString(theStream);
-		effects.insert(make_pair(theEffect, effectsString.getString()));
+		effects.insert(make_pair(theEffect, commonItems::singleString(theStream).getString()));
 	});
 
 	parseStream(theStream);

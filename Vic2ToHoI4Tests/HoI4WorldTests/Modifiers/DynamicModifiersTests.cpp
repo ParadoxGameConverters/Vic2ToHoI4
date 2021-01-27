@@ -151,13 +151,32 @@ TEST(HoI4World_Modifiers_DynamicModifiersTests, RemoveTriggerCanBeUpdated)
 }
 
 
-TEST(HoI4World_Modifiers_DynamicModifiersTests, EffectCanBeAdded)
+TEST(HoI4World_Modifiers_DynamicModifiersTests, EffectCanBeSet)
 {
 	std::stringstream input;
 	input << "= {\n";
 	input << "\tfascism_drift = var:revanchism\n";
 	input << "}";
 	const HoI4::Modifier theModifier("theModifier", input);
+
+	std::stringstream actualOutput;
+	actualOutput << theModifier;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "theModifier = {\n";
+	expectedOutput << "\n";
+	expectedOutput << "\tfascism_drift = var:revanchism\n";
+	expectedOutput << "}\n";
+
+	ASSERT_EQ(expectedOutput.str(), actualOutput.str());
+}
+
+
+TEST(HoI4World_Modifiers_DynamicModifiersTests, EffectCanBeAdded)
+{
+	std::stringstream input;
+	HoI4::Modifier theModifier("theModifier", input);
+	theModifier.addEffect("fascism_drift", "var:revanchism");
 
 	std::stringstream actualOutput;
 	actualOutput << theModifier;

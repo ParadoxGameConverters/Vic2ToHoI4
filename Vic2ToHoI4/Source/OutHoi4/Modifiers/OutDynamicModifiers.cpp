@@ -11,17 +11,15 @@ void outDynamicModifiers(const DynamicModifiers& dynamicModifiers, const Configu
 {
 	if (!commonItems::TryCreateFolder("output/" + theConfiguration.getOutputName() + "/common/dynamic_modifiers"))
 	{
-		Log(LogLevel::Error) << "Could not create output/" + theConfiguration.getOutputName() +
-											 "/common/dynamic_modifiers/";
-		exit(-1);
+		throw std::runtime_error("Could not create output/" + theConfiguration.getOutputName() +
+											 "/common/dynamic_modifiers/");
 	}
 
 	std::ofstream out(
 		 "output/" + theConfiguration.getOutputName() + "/common/dynamic_modifiers/01_converter_modifiers.txt");
 	if (!out.is_open())
 	{
-		LOG(LogLevel::Error) << "Could not create 01_converter_modifiers.txt.";
-		exit(-1);
+		throw std::runtime_error("Could not create 01_converter_modifiers.txt.");
 	}
 
 	for (const auto& [unused, modifier]: dynamicModifiers.getDynamicModifiers())
