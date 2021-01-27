@@ -11,10 +11,76 @@
 
 
 
-Mappers::ProvinceMapper::Factory::Factory()
+namespace
 {
-	registerRegex(R"(\d\.[\d]+\.\d)", [this](const std::string& version, std::istream& theStream) {
+
+std::optional<int> getNextProvinceNumFromFile(std::ifstream& definitions)
+{
+	std::string line;
+	getline(definitions, line);
+
+	if (const auto pos = line.find_first_of(';'); pos != std::string::npos)
+	{
+		try
+		{
+			return stoi(line.substr(0, pos));
+		}
+		catch (...)
+		{
+			Log(LogLevel::Warning) << "Bad line in /map/definition.csv: " << line;
+			return 0;
+		}
+	}
+
+	return std::nullopt;
+}
+
+
+void verifyProvinceIsMapped(const Mappers::VersionedMappings& versionedMapper, int provNum)
+{
+	if (!versionedMapper.getHoI4ToVic2Mapping().contains(provNum))
+	{
+		Log(LogLevel::Warning) << "No mapping for HoI4 province " << provNum;
+	}
+}
+
+
+void checkAllHoI4ProvincesMapped(const Mappers::VersionedMappings& versionedMapper,
+	 const Configuration& theConfiguration)
+{
+	std::ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
+	if (!definitions.is_open())
+	{
+		throw std::runtime_error("Could not open " + theConfiguration.getHoI4Path() + "/map/definition.csv");
+	}
+
+	while (true)
+	{
+		auto provNum = getNextProvinceNumFromFile(definitions);
+		if (!provNum)
+		{
+			break;
+		}
+		if (*provNum == 0)
+		{
+			continue;
+		}
+
+		verifyProvinceIsMapped(versionedMapper, *provNum);
+	}
+
+	definitions.close();
+}
+
+} // namespace
+
+
+
+Mappers::ProvinceMapper::Factory::Factory(const Configuration& theConfiguration)
+{
+	registerRegex(R"(\d\.[\d]+\.\d)", [this, theConfiguration](const std::string& unused, std::istream& theStream) {
 		const auto thisVersionsMappings = versionedMappingsFactory.importVersionedMappings(theStream);
+		checkAllHoI4ProvincesMapped(*thisVersionsMappings, theConfiguration);
 		provinceMapper->HoI4ToVic2ProvinceMap = thisVersionsMappings->getHoI4ToVic2Mapping();
 		provinceMapper->Vic2ToHoI4ProvinceMap = thisVersionsMappings->getVic2ToHoI4Mapping();
 	});
@@ -43,67 +109,7 @@ std::unique_ptr<Mappers::ProvinceMapper> Mappers::ProvinceMapper::Factory::impor
 		parseFile("Configurables/province_mappings.txt");
 	}
 
-	checkAllHoI4ProvincesMapped(theConfiguration);
-
 	return std::move(provinceMapper);
-}
-
-
-void Mappers::ProvinceMapper::Factory::checkAllHoI4ProvincesMapped(const Configuration& theConfiguration) const
-{
-	std::ifstream definitions(theConfiguration.getHoI4Path() + "/map/definition.csv");
-	if (!definitions.is_open())
-	{
-		throw std::runtime_error("Could not open " + theConfiguration.getHoI4Path() + "/map/definition.csv");
-	}
-
-	while (true)
-	{
-		auto provNum = getNextProvinceNumFromFile(definitions);
-		if (!provNum)
-		{
-			break;
-		}
-		if (*provNum == 0)
-		{
-			continue;
-		}
-
-		verifyProvinceIsMapped(*provNum);
-	}
-
-	definitions.close();
-}
-
-
-std::optional<int> Mappers::ProvinceMapper::Factory::getNextProvinceNumFromFile(std::ifstream& definitions) const
-{
-	std::string line;
-	getline(definitions, line);
-
-	if (const auto pos = line.find_first_of(';'); pos != std::string::npos)
-	{
-		try
-		{
-			return stoi(line.substr(0, pos));
-		}
-		catch (...)
-		{
-			Log(LogLevel::Warning) << "Bad line in /map/definition.csv: " << line;
-			return 0;
-		}
-	}
-
-	return std::nullopt;
-}
-
-
-void Mappers::ProvinceMapper::Factory::verifyProvinceIsMapped(const int provNum) const
-{
-	if (!provinceMapper->HoI4ToVic2ProvinceMap.contains(provNum))
-	{
-		Log(LogLevel::Warning) << "No mapping for HoI4 province " << provNum;
-	}
 }
 
 

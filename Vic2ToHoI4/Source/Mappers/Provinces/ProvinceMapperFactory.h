@@ -17,14 +17,10 @@ namespace Mappers
 class ProvinceMapper::Factory: commonItems::parser
 {
   public:
-	Factory();
+	Factory(const Configuration& theConfiguration);
 	std::unique_ptr<ProvinceMapper> importProvinceMapper(const Configuration& theConfiguration);
 
   private:
-	void checkAllHoI4ProvincesMapped(const Configuration& theConfiguration) const;
-	std::optional<int> getNextProvinceNumFromFile(std::ifstream& definitions) const;
-	void verifyProvinceIsMapped(int provNum) const;
-
 	VersionedMappings::Factory versionedMappingsFactory;
 
 	std::unique_ptr<ProvinceMapper> provinceMapper;
