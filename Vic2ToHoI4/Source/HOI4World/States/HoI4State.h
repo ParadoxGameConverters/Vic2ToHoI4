@@ -55,12 +55,12 @@ class State
 
 	void convertNavalBases(const std::map<int, int>& sourceNavalBases,
 		 const CoastalProvinces& theCoastalProvinces,
-		 const mappers::ProvinceMapper& theProvinceMapper);
+		 const Mappers::ProvinceMapper& theProvinceMapper);
 	void addNavalBase(int level, int location);
 	void addCores(const std::set<std::string>& newCores);
 	void addClaims(const std::set<std::string>& newClaims);
 	void convertControlledProvinces(const std::vector<std::pair<int, std::string>>& foreignControlledProvinces,
-		 const mappers::ProvinceMapper& theProvinceMapper,
+		 const Mappers::ProvinceMapper& theProvinceMapper,
 		 const CountryMapper& countryMapper);
 	void setControlledProvince(int provinceNum, const std::string& country);
 
@@ -89,10 +89,10 @@ class State
 	[[nodiscard]] int getManpower() const;
 
 	void tryToCreateVP(const Vic2::State& sourceState,
-		 const mappers::ProvinceMapper& theProvinceMapper,
+		 const Mappers::ProvinceMapper& theProvinceMapper,
 		 const Configuration& theConfiguration);
 	void addManpower(const std::set<std::shared_ptr<Vic2::Province>>& sourceProvinces,
-		 const mappers::ProvinceMapper& theProvinceMapper,
+		 const Mappers::ProvinceMapper& theProvinceMapper,
 		 const Configuration& theConfiguration);
 
 	void convertIndustry(double workerFactoryRatio,
@@ -112,12 +112,12 @@ class State
 	static int determineNavalBaseLevel(int sourceLevel);
 	static std::optional<int> determineNavalBaseLocation(int sourceProvince,
 		 const CoastalProvinces& theCoastalProvinces,
-		 const mappers::ProvinceMapper& theProvinceMapper);
+		 const Mappers::ProvinceMapper& theProvinceMapper);
 
-	bool assignVPFromVic2Province(int Vic2ProvinceNumber, const mappers::ProvinceMapper& theProvinceMapper);
+	bool assignVPFromVic2Province(int Vic2ProvinceNumber, const Mappers::ProvinceMapper& theProvinceMapper);
 	void assignVP(int location);
 	bool isProvinceInState(int provinceNum) const;
-	void addDebugVPs(const Vic2::State& sourceState, const mappers::ProvinceMapper& theProvinceMapper);
+	void addDebugVPs(const Vic2::State& sourceState, const Mappers::ProvinceMapper& theProvinceMapper);
 
 	int population = 0;
 	long employedWorkers = 0;

@@ -125,7 +125,9 @@ set(MAPPERS_COUNTRYNAME_SOURCES ${MAPPERS_COUNTRYNAME_SOURCES} "${PROJECT_SOURCE
 set(MAPPERS_FLAGS_TO_IDEAS_SOURCES ${MAPPERS_FLAGS_TO_IDEAS_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/FlagsToIdeas/FlagsToIdeasMapper.cpp")
 set(MAPPERS_FLAGS_TO_IDEAS_SOURCES ${MAPPERS_FLAGS_TO_IDEAS_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/FlagsToIdeas/FlagsToIdeasMapperFactory.cpp")
 set(MAPPERS_FLAGS_TO_IDEAS_SOURCES ${MAPPERS_FLAGS_TO_IDEAS_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/FlagsToIdeas/FlagToIdeaMappingFactory.cpp")
-file(GLOB PROVINCE_MAPPER_SOURCES "${PROJECT_SOURCE_DIR}/Mappers/Provinces/*.cpp")
+set(MAPPERS_PROVINCES_SOURCES ${MAPPERS_PROVINCES_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Provinces/ProvinceMapperFactory.cpp")
+set(MAPPERS_PROVINCES_SOURCES ${MAPPERS_PROVINCES_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Provinces/ProvinceMappingFactory.cpp")
+set(MAPPERS_PROVINCES_SOURCES ${MAPPERS_PROVINCES_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Provinces/VersionedMappingsFactory.cpp")
 set(MAPPER_TECHNOLOGY_SOURCES ${MAPPER_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Technology/ResearchBonusMappingFactory.cpp")
 set(MAPPER_TECHNOLOGY_SOURCES ${MAPPER_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Technology/ResearchBonusMapperFactory.cpp")
 set(MAPPER_TECHNOLOGY_SOURCES ${MAPPER_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Technology/TechMapperFactory.cpp")
@@ -264,7 +266,7 @@ add_executable(
 	${MAPPERS_COUNTRYNAME_SOURCES}
 	${MAPPERS_FLAGS_TO_IDEAS_SOURCES}
 	${MAPPER_TECHNOLOGY_SOURCES}
-	${PROVINCE_MAPPER_SOURCES}
+	${MAPPERS_PROVINCES_SOURCES}
 	${MAPPER_VERSIONPARSER_SOURCES}
 	${OUTHOI4_SOURCES}
 	${OUTHOI4_DECISIONS_SOURCES}
@@ -402,6 +404,9 @@ set(MAPPER_COUNTRYNAME_TESTS_SOURCES ${MAPPER_COUNTRYNAME_TESTS_SOURCES} "${TEST
 set(MAPPER_COUNTRYNAME_TESTS_SOURCES ${MAPPER_COUNTRYNAME_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/CountryName/CountryNameMappingTests.cpp")
 set(MAPPER_FLAGS_TO_IDEAS_TESTS_SOURCES ${MAPPER_FLAGS_TO_IDEAS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/FlagsToIdeas/FlagsToIdeasMapperTests.cpp")
 set(MAPPER_FLAGS_TO_IDEAS_TESTS_SOURCES ${MAPPER_FLAGS_TO_IDEAS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/FlagsToIdeas/FlagToIdeaMappingTests.cpp")
+set(MAPPER_PROVINCES_TESTS_SOURCES ${MAPPER_PROVINCES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Provinces/ProvinceMapperTests.cpp")
+set(MAPPER_PROVINCES_TESTS_SOURCES ${MAPPER_PROVINCES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Provinces/ProvinceMappingTests.cpp")
+set(MAPPER_PROVINCES_TESTS_SOURCES ${MAPPER_PROVINCES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Provinces/VersionedMappingsTests.cpp")
 set(MAPPER_TECHNOLOGY_TESTS_SOURCES ${MAPPER_TECHNOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Technology/ResearchBonusMapperTests.cpp")
 set(MAPPER_TECHNOLOGY_TESTS_SOURCES ${MAPPER_TECHNOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Technology/ResearchBonusMappingTests.cpp")
 set(MAPPER_TECHNOLOGY_TESTS_SOURCES ${MAPPER_TECHNOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Technology/TechMapperTests.cpp")
@@ -494,7 +499,7 @@ add_executable(
 	${MAPPERS_COUNTRYNAME_SOURCES}
 	${MAPPERS_FLAGS_TO_IDEAS_SOURCES}
 	${MAPPER_TECHNOLOGY_SOURCES}
-	${PROVINCE_MAPPER_SOURCES}
+	${MAPPERS_PROVINCES_SOURCES}
 	${MAPPER_VERSIONPARSER_SOURCES}
 	${OUTHOI4_SOURCES}
 	${OUTHOI4_AI_STRATEGY_SOURCES}
@@ -565,6 +570,7 @@ add_executable(
 	${MAPPER_TESTS_SOURCES}
 	${MAPPER_COUNTRYNAME_TESTS_SOURCES}
 	${MAPPER_FLAGS_TO_IDEAS_TESTS_SOURCES}
+	${MAPPER_PROVINCES_TESTS_SOURCES}
 	${MAPPER_TECHNOLOGY_TESTS_SOURCES}
 	${VIC2WORLD_AI_TESTS_SOURCES}
 	${VIC2WORLD_COUNTRIES_TESTS_SOURCES}
@@ -627,6 +633,12 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/EmptyLocalisations.txt" 
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ModLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/modLocalisations/localisation/ModLocalisations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/StateCategories.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/Localisations/StateCategories.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/FlagsToIdeas/FlagsToIdeasMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/FlagsToIdeasMappings.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/bad_line_definition.csv" "${TEST_OUTPUT_DIRECTORY}/bad_line_definition/map/definition.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/empty_definition.csv" "${TEST_OUTPUT_DIRECTORY}/empty_definition/map/definition.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/good_definition.csv" "${TEST_OUTPUT_DIRECTORY}/good_definition/map/definition.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/missing_definition.csv" "${TEST_OUTPUT_DIRECTORY}/missing_definition/map/definition.csv" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/mod_province_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/mod_province_mappings.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/vanilla_province_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/province_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Technology/research_bonus_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/research_bonus_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Technology/tech_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/tech_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mods/Dependencies.mod" "${TEST_OUTPUT_DIRECTORY}/Vic2/Mod/Dependencies.mod" COPYONLY)

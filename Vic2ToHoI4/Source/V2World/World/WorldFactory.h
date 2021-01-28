@@ -25,7 +25,7 @@ class World::Factory: commonItems::parser
   public:
 	explicit Factory(const Configuration& theConfiguration);
 	std::unique_ptr<World> importWorld(const Configuration& theConfiguration,
-		 const mappers::ProvinceMapper& provinceMapper);
+		 const Mappers::ProvinceMapper& provinceMapper);
 
   private:
 	void setLocalisations(Localisations& vic2Localisations);
@@ -39,7 +39,7 @@ class World::Factory: commonItems::parser
 	void addWarsToCountries(const std::vector<War>& wars);
 	void overallMergeNations(bool debug);
 	void mergeNations(const std::string& masterTag, const std::vector<std::string>& slaveTags, bool debug);
-	void checkAllProvincesMapped(const mappers::ProvinceMapper& provinceMapper) const;
+	void checkAllProvincesMapped(const Mappers::ProvinceMapper& provinceMapper) const;
 	void consolidateConquerStrategies();
 	void moveArmiesHome();
 	void removeBattles();

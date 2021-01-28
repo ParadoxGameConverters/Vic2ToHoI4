@@ -326,7 +326,7 @@ void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry, const Cou
 }
 
 
-void HoI4::Country::determineCapitalFromVic2(const mappers::ProvinceMapper& theProvinceMapper,
+void HoI4::Country::determineCapitalFromVic2(const Mappers::ProvinceMapper& theProvinceMapper,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates)
 {
@@ -366,20 +366,20 @@ void HoI4::Country::determineCapitalFromVic2(const mappers::ProvinceMapper& theP
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandOwned(const mappers::ProvinceMapper& theProvinceMapper,
+bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandOwned(const Mappers::ProvinceMapper& theProvinceMapper,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates)
 {
-	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); !mapping.empty())
 	{
-		if (const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+		if (const auto capitalStateMapping = provinceToStateIDMap.find(mapping[0]);
 			 capitalStateMapping != provinceToStateIDMap.end())
 		{
 			const auto& state = allStates.find(capitalStateMapping->second)->second;
 			if ((state.getOwner() == tag) && !state.isImpassable())
 			{
 				capitalState = capitalStateMapping->second;
-				capitalProvince = (*mapping)[0];
+				capitalProvince = mapping[0];
 				return true;
 			}
 		}
@@ -409,20 +409,20 @@ bool HoI4::Country::attemptToPutCapitalInNonWastelandOwned(const std::map<int, S
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInPreferredWastelandOwned(const mappers::ProvinceMapper& theProvinceMapper,
+bool HoI4::Country::attemptToPutCapitalInPreferredWastelandOwned(const Mappers::ProvinceMapper& theProvinceMapper,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates)
 {
-	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); !mapping.empty())
 	{
-		if (const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+		if (const auto capitalStateMapping = provinceToStateIDMap.find(mapping[0]);
 			 capitalStateMapping != provinceToStateIDMap.end())
 		{
 			const auto& state = allStates.find(capitalStateMapping->second)->second;
 			if (state.getOwner() == tag)
 			{
 				capitalState = capitalStateMapping->second;
-				capitalProvince = (*mapping)[0];
+				capitalProvince = mapping[0];
 				return true;
 			}
 		}
@@ -451,20 +451,20 @@ bool HoI4::Country::attemptToPutCapitalInAnyOwned(const std::map<int, State>& al
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandCored(const mappers::ProvinceMapper& theProvinceMapper,
+bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandCored(const Mappers::ProvinceMapper& theProvinceMapper,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates)
 {
-	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); !mapping.empty())
 	{
-		if (const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+		if (const auto capitalStateMapping = provinceToStateIDMap.find(mapping[0]);
 			 capitalStateMapping != provinceToStateIDMap.end())
 		{
 			const auto& state = allStates.find(capitalStateMapping->second)->second;
 			if ((state.getCores().contains(tag) || state.getClaims().contains(tag)) && !state.isImpassable())
 			{
 				capitalState = capitalStateMapping->second;
-				capitalProvince = (*mapping)[0];
+				capitalProvince = mapping[0];
 				return true;
 			}
 		}
@@ -494,20 +494,20 @@ bool HoI4::Country::attemptToPutCapitalInAnyNonWastelandCored(const std::map<int
 }
 
 
-bool HoI4::Country::attemptToPutCapitalInPreferredWastelandCored(const mappers::ProvinceMapper& theProvinceMapper,
+bool HoI4::Country::attemptToPutCapitalInPreferredWastelandCored(const Mappers::ProvinceMapper& theProvinceMapper,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates)
 {
-	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); mapping)
+	if (auto mapping = theProvinceMapper.getVic2ToHoI4ProvinceMapping(oldCapital); !mapping.empty())
 	{
-		if (const auto capitalStateMapping = provinceToStateIDMap.find((*mapping)[0]);
+		if (const auto capitalStateMapping = provinceToStateIDMap.find(mapping[0]);
 			 capitalStateMapping != provinceToStateIDMap.end())
 		{
 			const auto& state = allStates.find(capitalStateMapping->second)->second;
 			if (state.getCores().contains(tag) || state.getClaims().contains(tag))
 			{
 				capitalState = capitalStateMapping->second;
-				capitalProvince = (*mapping)[0];
+				capitalProvince = mapping[0];
 				return true;
 			}
 		}
@@ -667,7 +667,7 @@ void HoI4::Country::convertNavies(const UnitMappings& unitMap,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates,
 	 const ProvinceDefinitions& provinceDefinitions,
-	 const mappers::ProvinceMapper& provinceMapper)
+	 const Mappers::ProvinceMapper& provinceMapper)
 {
 	auto backupNavalLocation = 0;
 	for (const auto& state: allStates)
@@ -835,7 +835,7 @@ void HoI4::Country::convertAirForce(const UnitMappings& unitMap)
 
 void HoI4::Country::convertArmies(const militaryMappings& theMilitaryMappings,
 	 const HoI4::States& theStates,
-	 const mappers::ProvinceMapper& provinceMapper,
+	 const Mappers::ProvinceMapper& provinceMapper,
 	 const Configuration& theConfiguration)
 {
 	if (capitalProvince)

@@ -32,7 +32,7 @@ class Navies
 		 std::map<int, State> states,
 		 const std::string& tag,
 		 const ProvinceDefinitions& provinceDefinitions,
-		 const mappers::ProvinceMapper& provinceMapper);
+		 const Mappers::ProvinceMapper& provinceMapper);
 
 	Navies() = delete;
 	~Navies() = default;
@@ -47,7 +47,7 @@ class Navies
   private:
 	std::tuple<int, int> getLocationAndBase(std::optional<int> vic2Location,
 		 int backupNavalLocation,
-		 const mappers::ProvinceMapper& provinceMapper,
+		 const Mappers::ProvinceMapper& provinceMapper,
 		 const ProvinceDefinitions& provinceDefinitions,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 std::map<int, State> states);

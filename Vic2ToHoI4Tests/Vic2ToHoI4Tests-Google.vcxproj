@@ -108,6 +108,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapperFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMappingFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\VersionedMappingsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\ResearchBonusMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\ResearchBonusMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapperFactory.cpp" />
@@ -287,9 +290,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapper.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapping.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\VersionedMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Sounds\OutSounds.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4States.cpp" />
@@ -449,6 +449,9 @@
     <ClCompile Include="MapperTests\CountryName\CountryNameMappingTests.cpp" />
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagsToIdeasMapperTests.cpp" />
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagToIdeaMappingTests.cpp" />
+    <ClCompile Include="MapperTests\Provinces\ProvinceMapperTests.cpp" />
+    <ClCompile Include="MapperTests\Provinces\ProvinceMappingTests.cpp" />
+    <ClCompile Include="MapperTests\Provinces\VersionedMappingsTests.cpp" />
     <ClCompile Include="MapperTests\Technology\ResearchBonusMapperTests.cpp" />
     <ClCompile Include="MapperTests\Technology\ResearchBonusMappingTests.cpp" />
     <ClCompile Include="MapperTests\Technology\TechMapperTests.cpp" />
@@ -585,6 +588,34 @@
       <FileType>Document</FileType>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Provinces\empty_definition.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/empty_definition/map/</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">definition%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/empty_definition/map/</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">definition%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Provinces\bad_line_definition.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/bad_line_definition/map/</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">definition%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/bad_line_definition/map/</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">definition%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Provinces\missing_definition.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/missing_definition/map/</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">definition%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/missing_definition/map/</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">definition%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Provinces\good_definition.csv">
+      <FileType>Document</FileType>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/good_definition/map/</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">definition%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/good_definition/map/</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">definition%(Extension)</DestinationFileName>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
@@ -1062,6 +1093,20 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Mappers\FlagsToIdeas\FlagsToIdeasMappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Mappers\Provinces\vanilla_province_mappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">province_mappings%(Extension)</DestinationFileName>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">province_mappings%(Extension)</DestinationFileName>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Mappers\Provinces\mod_province_mappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>

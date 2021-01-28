@@ -63,7 +63,7 @@ class World: commonItems::parser
 {
   public:
 	explicit World(const Vic2::World& sourceWorld,
-		 const mappers::ProvinceMapper& provinceMapper,
+		 const Mappers::ProvinceMapper& provinceMapper,
 		 const Configuration& theConfiguration);
 	~World() = default;
 
@@ -133,7 +133,7 @@ class World: commonItems::parser
 	void convertIdeologySupport();
 
 	void convertIndustry(const Configuration& theConfiguration);
-	void addStatesToCountries(const mappers::ProvinceMapper& provinceMapper);
+	void addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper);
 	std::map<std::string, double> calculateFactoryWorkerRatios(const Configuration& theConfiguration);
 	std::map<std::string, double> getIndustrialWorkersPerCountry();
 	double getTotalWorldWorkers(const std::map<std::string, double>& industrialWorkersPerCountry);
@@ -152,15 +152,15 @@ class World: commonItems::parser
 	void convertTechs();
 
 	void convertMilitaries(const ProvinceDefinitions& provinceDefinitions,
-		 const mappers::ProvinceMapper& provinceMapper,
+		 const Mappers::ProvinceMapper& provinceMapper,
 		 const Configuration& theConfiguration);
 	void convertArmies(const militaryMappings& localMilitaryMappings,
-		 const mappers::ProvinceMapper& provinceMapper,
+		 const Mappers::ProvinceMapper& provinceMapper,
 		 const Configuration& theConfiguration);
 	void convertNavies(const UnitMappings& unitMap,
 		 const MtgUnitMappings& mtgUnitMap,
 		 const ProvinceDefinitions& provinceDefinitions,
-		 const mappers::ProvinceMapper& provinceMapper);
+		 const Mappers::ProvinceMapper& provinceMapper);
 	void convertAirforces(const UnitMappings& unitMap);
 
 	void determineGreatPowers(const Vic2::World& sourceWorld);

@@ -1,7 +1,7 @@
 #include "Navies.h"
 #include "HOI4World/ProvinceDefinitions.h"
-#include "Mappers/Provinces/ProvinceMapper.h"
 #include "Log.h"
+#include "Mappers/Provinces/ProvinceMapper.h"
 
 
 
@@ -14,7 +14,7 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 	 std::map<int, State> states,
 	 const std::string& tag,
 	 const ProvinceDefinitions& provinceDefinitions,
-	 const mappers::ProvinceMapper& provinceMapper)
+	 const Mappers::ProvinceMapper& provinceMapper)
 {
 	for (auto army: srcArmies)
 	{
@@ -83,7 +83,7 @@ HoI4::Navies::Navies(const std::vector<Vic2::Army>& srcArmies,
 
 std::tuple<int, int> HoI4::Navies::getLocationAndBase(std::optional<int> vic2Location,
 	 int backupNavalLocation,
-	 const mappers::ProvinceMapper& provinceMapper,
+	 const Mappers::ProvinceMapper& provinceMapper,
 	 const ProvinceDefinitions& provinceDefinitions,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 std::map<int, State> states)
@@ -93,22 +93,19 @@ std::tuple<int, int> HoI4::Navies::getLocationAndBase(std::optional<int> vic2Loc
 		return {backupNavalLocation, backupNavalLocation};
 	}
 
-	if (auto mapping = provinceMapper.getVic2ToHoI4ProvinceMapping(*vic2Location); mapping)
+	for (auto possibleProvince: provinceMapper.getVic2ToHoI4ProvinceMapping(*vic2Location))
 	{
-		for (auto possibleProvince: *mapping)
+		if (provinceDefinitions.isSeaProvince(possibleProvince))
 		{
-			if (provinceDefinitions.isSeaProvince(possibleProvince))
+			return {possibleProvince, backupNavalLocation};
+		}
+		if (auto stateID = provinceToStateIDMap.find(possibleProvince); stateID != provinceToStateIDMap.end())
+		{
+			if (auto state = states.find(stateID->second); state != states.end())
 			{
-				return {possibleProvince, backupNavalLocation};
-			}
-			if (auto stateID = provinceToStateIDMap.find(possibleProvince); stateID != provinceToStateIDMap.end())
-			{
-				if (auto state = states.find(stateID->second); state != states.end())
+				if (auto mainNavalLocation = state->second.getMainNavalLocation(); mainNavalLocation)
 				{
-					if (auto mainNavalLocation = state->second.getMainNavalLocation(); mainNavalLocation)
-					{
-						return {*mainNavalLocation, *mainNavalLocation};
-					}
+					return {*mainNavalLocation, *mainNavalLocation};
 				}
 			}
 		}
