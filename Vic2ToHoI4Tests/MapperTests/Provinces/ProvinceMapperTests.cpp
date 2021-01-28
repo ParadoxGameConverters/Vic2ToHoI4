@@ -86,7 +86,7 @@ TEST(Mappers_Provinces_ProvinceMapperTests, BadLineInMapDefinitionLogsWarning)
 }
 
 
-TEST(Mappers_Provinces_ProvinceMapperTests, MissingProvinceMappingLogsWarning)
+TEST(Mappers_Provinces_ProvinceMapperTests, MissingHoI4ProvinceMappingLogsWarning)
 {
 	std::stringstream log;
 	auto stdOutBuf = std::cout.rdbuf();
@@ -95,12 +95,33 @@ TEST(Mappers_Provinces_ProvinceMapperTests, MissingProvinceMappingLogsWarning)
 	const auto province_mappings =
 		 Mappers::ProvinceMapper::Factory(*Configuration::Builder().setHoI4Path("./missing_definition/").build())
 			  .importProvinceMapper(*Configuration::Builder().build());
+	const auto _ = province_mappings->getHoI4ToVic2ProvinceMapping(12);
+
 	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_EQ(
 		 "    [INFO] Parsing province mappings\n"
-		 " [WARNING] No mapping for HoI4 province 12\n",
+		 " [WARNING] No mapping for HoI4 province 12\n"
+		 " [WARNING] No mapping found for HoI4 province 12\n",
 		 log.str());
+}
+
+
+TEST(Mappers_Provinces_ProvinceMapperTests, MissingVic2ProvinceMappingLogsWarning)
+{
+	const auto province_mappings =
+		 Mappers::ProvinceMapper::Factory(*Configuration::Builder().setHoI4Path("./empty_definition/").build())
+			  .importProvinceMapper(*Configuration::Builder().build());
+
+	std::stringstream log;
+	auto stdOutBuf = std::cout.rdbuf();
+	std::cout.rdbuf(log.rdbuf());
+
+	const auto _ = province_mappings->getVic2ToHoI4ProvinceMapping(12);
+
+	std::cout.rdbuf(stdOutBuf);
+
+	ASSERT_EQ(" [WARNING] No mapping found for Vic2 province 12\n", log.str());
 }
 
 

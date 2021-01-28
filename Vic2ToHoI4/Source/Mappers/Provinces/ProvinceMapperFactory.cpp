@@ -119,6 +119,7 @@ std::vector<int> Mappers::ProvinceMapper::getVic2ToHoI4ProvinceMapping(const int
 	const auto mapping = Vic2ToHoI4ProvinceMap.find(Vic2Province);
 	if (mapping == Vic2ToHoI4ProvinceMap.end())
 	{
+		Log(LogLevel::Warning) << "No mapping found for Vic2 province " << Vic2Province;
 		return {};
 	}
 
@@ -131,6 +132,7 @@ std::vector<int> Mappers::ProvinceMapper::getHoI4ToVic2ProvinceMapping(const int
 	const auto mapping = HoI4ToVic2ProvinceMap.find(HoI4Province);
 	if (mapping == HoI4ToVic2ProvinceMap.end())
 	{
+		Log(LogLevel::Warning) << "No mapping found for HoI4 province " << HoI4Province;
 		return {};
 	}
 
