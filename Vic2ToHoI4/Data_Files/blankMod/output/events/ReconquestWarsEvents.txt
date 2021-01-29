@@ -12,7 +12,7 @@ country_event = {
 	option = {
 		name = reconquest_wars.1.a
 		FROM = {
-			country_event = { id = reconquest_wars.5 }
+			country_event = { id = reconquest_wars.2 }
 		}
 		effect_tooltip = {
 			every_owned_state = {
@@ -31,7 +31,7 @@ country_event = {
 			modifier = unprovoked_aggression
 		}
 		FROM = {
-			country_event = { id = reconquest_wars.6 }
+			country_event = { id = reconquest_wars.3 }
 		}
 		effect_tooltip = {
 			FROM = {
