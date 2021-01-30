@@ -1,7 +1,7 @@
 #ifndef OUT_MODIFIER_H
 #define OUT_MODIFIER_H
 
-#include "HoI4World/Modifiers/Modifier.h"
+#include "HOI4World/Modifiers/Modifier.h"
 #include <ostream>
 
 
