@@ -365,6 +365,12 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 
 		if (!passableProvinces.empty())
 		{
+			auto [existing, emplaced] =
+				 languageCategories.emplace(vic2State.getLanguageCategory(), std::set<int>{nextStateID});
+			if (!emplaced)
+			{
+				existing->second.insert(nextStateID);
+			}
 			State newState(vic2State, nextStateID, stateOwner);
 			if (!impassableProvinces.empty())
 			{
@@ -387,6 +393,12 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 
 		if (!impassableProvinces.empty())
 		{
+			auto [existing, emplaced] =
+				 languageCategories.emplace(vic2State.getLanguageCategory(), std::set<int>{nextStateID});
+			if (!emplaced)
+			{
+				existing->second.insert(nextStateID);
+			}
 			State newState(vic2State, nextStateID, stateOwner);
 			addProvincesAndCoresToNewState(newState, sourceCountries, impassableProvinces, provinceMapper, vic2Provinces);
 			newState.makeImpassable();

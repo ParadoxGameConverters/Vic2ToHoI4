@@ -64,6 +64,7 @@ class States: commonItems::parser
 	[[nodiscard]] const std::map<int, DefaultState>& getDefaultStates() const { return defaultStates; }
 	[[nodiscard]] const std::map<int, State>& getStates() const { return states; }
 	[[nodiscard]] const std::map<int, int>& getProvinceToStateIDMap() const { return provinceToStateIDMap; }
+	[[nodiscard]] const auto& getLanguageCategories() const { return languageCategories; }
 
 	void convertAirBases(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 const std::vector<std::shared_ptr<Country>>& greatPowers);
@@ -156,6 +157,8 @@ class States: commonItems::parser
 	std::map<int, State> states;
 	std::map<int, int> provinceToStateIDMap;
 	int nextStateID = 1;
+
+	std::map<std::string, std::set<int>> languageCategories;
 };
 
 } // namespace HoI4
