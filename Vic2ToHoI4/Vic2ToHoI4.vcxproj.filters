@@ -238,6 +238,12 @@
     <Filter Include="Mappers\Technology">
       <UniqueIdentifier>{2dfccdae-f805-4fd4-ad08-4495ac0fd6a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4World\Modifiers">
+      <UniqueIdentifier>{a57516c4-041e-4d6e-9cc8-87a692e29742}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OutHoi4\Modifiers">
+      <UniqueIdentifier>{88bc8a6c-d4e0-4f8f-8673-9ed00dd8c3ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1155,6 +1161,18 @@
     </ClCompile>
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp">
       <Filter>Mappers\FlagsToIdeas</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Modifiers\DynamicModifiers.cpp">
+      <Filter>HoI4World\Modifiers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HOI4World\Modifiers\Modifier.cpp">
+      <Filter>HoI4World\Modifiers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\Modifiers\OutDynamicModifiers.cpp">
+      <Filter>OutHoi4\Modifiers</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\Modifiers\OutModifier.cpp">
+      <Filter>OutHoi4\Modifiers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2270,6 +2288,18 @@
     </ClInclude>
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.h">
       <Filter>Mappers\FlagsToIdeas</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Modifiers\DynamicModifiers.h">
+      <Filter>HoI4World\Modifiers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Modifiers\Modifier.h">
+      <Filter>HoI4World\Modifiers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\Modifiers\OutDynamicModifiers.h">
+      <Filter>OutHoi4\Modifiers</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\Modifiers\OutModifier.h">
+      <Filter>OutHoi4\Modifiers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -18647,6 +18677,9 @@
     <CopyFileToFolders Include="Data_Files\Configurables\ArticleRules.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\Configurables\converterDynamicModifiers.txt">
+      <Filter>Data Files\Configurables</Filter>
+    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Configurables\converterFocuses.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
@@ -20061,13 +20094,9 @@
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configurables\grammar.txt" />
+    <CopyFileToFolders Include="Data_Files\configurables\Historical Flavour Mod v1.27I_province_mappings.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Data_Files\configurables\Historical Flavour Mod v1.27I_province_mappings.txt">
-      <Filter>Data Files\Configurables</Filter>
-    </Text>
   </ItemGroup>
 </Project>

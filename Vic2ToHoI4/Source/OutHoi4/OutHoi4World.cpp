@@ -10,6 +10,7 @@
 #include "Map/OutBuildings.h"
 #include "Map/OutStrategicRegions.h"
 #include "Map/OutSupplyZones.h"
+#include "Modifiers/OutDynamicModifiers.h"
 #include "OSCompatibilityLayer.h"
 #include "OccupationLaws/OutOccupationLaws.h"
 #include "Operations/OutOperations.h"
@@ -187,6 +188,7 @@ void HoI4::OutputWorld(const World& world,
 	outputIdeologies(world.getIdeologies(), outputName);
 	outputLeaderTraits(world.getIdeologicalLeaderTraits(), world.getMajorIdeologies(), outputName);
 	outIdeas(world.getTheIdeas(), world.getMajorIdeologies(), outputName);
+	outDynamicModifiers(world.getDynamicModifiers(), theConfiguration);
 	outputBookmarks(world.getGreatPowers(), world.getCountries(), world.getHumanCountry(), outputName);
 	outputScriptedLocalisations(outputName, *world.getScriptedLocalisations());
 	outputScriptedTriggers(world.getScriptedTriggers(), outputName);

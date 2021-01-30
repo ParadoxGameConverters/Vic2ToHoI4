@@ -100,6 +100,7 @@ class Country
 		 const Configuration& theConfiguration);
 	void convertTechnology(const Mappers::TechMapper& techMapper, const Mappers::ResearchBonusMapper& theTechMapper);
 	void addState(const State& state);
+	void addCoreState(const int stateId) { coreStates.insert(stateId); }
 	void calculateIndustry(const std::map<int, State>& allStates);
 	void addGenericFocusTree(const std::set<std::string>& majorIdeologies);
 	void adjustResearchFocuses() const;
@@ -146,6 +147,7 @@ class Country
 	[[nodiscard]] const std::set<int>& getStates() const { return states; }
 	[[nodiscard]] std::optional<int> getCapitalState() const { return capitalState; }
 	[[nodiscard]] std::optional<int> getCapitalProvince() const { return capitalProvince; }
+	[[nodiscard]] const auto& getCoreStates() const { return coreStates; }
 
 	[[nodiscard]] const std::string& getOldGovernment() const { return oldGovernment; }
 	[[nodiscard]] const std::string& getGovernmentIdeology() const { return governmentIdeology; }
@@ -274,6 +276,7 @@ class Country
 	std::optional<int> capitalState;
 	std::optional<int> capitalProvince;
 	int oldCapital;
+	std::set<int> coreStates;
 
 	std::string oldGovernment;
 	std::string governmentIdeology = "neutrality";
