@@ -207,6 +207,30 @@ TEST(HoI4World_Ideas_IdeaTests, CancelCanBeSet)
 }
 
 
+TEST(HoI4World_Ideas_IdeaTests, CancelCanBeUpdated)
+{
+	std::stringstream input;
+	HoI4::Idea theIdea("theIdea", input);
+
+	std::string newString = "= {\n";
+	newString +="\t\t\t\tat_war = yes\n";
+	newString +="\t\t\t}";
+	theIdea.updateCancel(newString);
+
+	std::stringstream actualOutput;
+	actualOutput << theIdea;
+
+	std::stringstream expectedOutput;
+	expectedOutput << "\t\ttheIdea = {\n";
+	expectedOutput << "\t\t\tcancel = {\n";
+	expectedOutput << "\t\t\t\tat_war = yes\n";
+	expectedOutput << "\t\t\t}\n";
+	expectedOutput << "\t\t}\n";
+
+	ASSERT_EQ(expectedOutput.str(), actualOutput.str());
+}
+
+
 TEST(HoI4World_Ideas_IdeaTests, AvailableCanBeSet)
 {
 	std::stringstream input;

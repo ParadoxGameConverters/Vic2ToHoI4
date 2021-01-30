@@ -160,6 +160,8 @@
     <ClCompile Include="Source\HOI4World\Localisations\GrammarMappings.cpp" />
     <ClCompile Include="Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="Source\HOI4World\Map\StrategicRegions.cpp" />
+    <ClCompile Include="Source\HOI4World\Modifiers\DynamicModifiers.cpp" />
+    <ClCompile Include="Source\HOI4World\Modifiers\Modifier.cpp" />
     <ClCompile Include="Source\HOI4World\Names\CultureGroupNames.cpp" />
     <ClCompile Include="Source\HOI4World\Names\CultureNames.cpp" />
     <ClCompile Include="Source\HOI4World\Names\Names.cpp" />
@@ -235,6 +237,8 @@
     <ClCompile Include="Source\OutHoi4\Military\OutDivisionType.cpp" />
     <ClCompile Include="Source\OutHoi4\Military\OutDivisionTemplate.cpp" />
     <ClCompile Include="Source\OutHoi4\Military\OutRegimentType.cpp" />
+    <ClCompile Include="Source\OutHoi4\Modifiers\OutDynamicModifiers.cpp" />
+    <ClCompile Include="Source\OutHoi4\Modifiers\OutModifier.cpp" />
     <ClCompile Include="Source\OutHoi4\Navies\OutLegacyNavy.cpp" />
     <ClCompile Include="Source\OutHoi4\Navies\OutLegacyShip.cpp" />
     <ClCompile Include="Source\OutHoi4\Navies\OutMtgNavy.cpp" />
@@ -476,6 +480,8 @@
     <ClInclude Include="Source\HOI4World\Map\CoastalProvincesBuilder.h" />
     <ClInclude Include="Source\HOI4World\Map\HoI4Provinces.h" />
     <ClInclude Include="Source\HOI4World\Map\StrategicRegions.h" />
+    <ClInclude Include="Source\HOI4World\Modifiers\DynamicModifiers.h" />
+    <ClInclude Include="Source\HOI4World\Modifiers\Modifier.h" />
     <ClInclude Include="Source\HOI4World\Names\CultureGroupNames.h" />
     <ClInclude Include="Source\HOI4World\Names\CultureNames.h" />
     <ClInclude Include="Source\HOI4World\Names\Names.h" />
@@ -560,6 +566,8 @@
     <ClInclude Include="Source\OutHoi4\Leaders\OutCountryLeader.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutGeneral.h" />
     <ClInclude Include="Source\OutHoi4\Map\OutStrategicRegions.h" />
+    <ClInclude Include="Source\OutHoi4\Modifiers\OutDynamicModifiers.h" />
+    <ClInclude Include="Source\OutHoi4\Modifiers\OutModifier.h" />
     <ClInclude Include="Source\OutHoi4\OccupationLaws\OutOccupationLaw.h" />
     <ClInclude Include="Source\OutHoi4\OccupationLaws\OutOccupationLaws.h" />
     <ClInclude Include="Source\OutHoi4\Operations\OutOperation.h" />
@@ -826,6 +834,10 @@
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">configuration-example.txt</DestinationFileName>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)</DestinationFolders>
       <DestinationFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">configuration-example.txt</DestinationFileName>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\converterDynamicModifiers.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configurables\converterFocuses.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>

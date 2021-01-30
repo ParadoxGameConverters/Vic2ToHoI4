@@ -50,6 +50,9 @@ class HoI4WarCreator
 		 const set<shared_ptr<HoI4::Faction>>& factionsAtWar,
 		 double worldStrength,
 		 const Configuration& theConfiguration) const;
+	void generateReconquestWars(std::ofstream& AILog,
+		 HoI4::Localisation& hoi4Localisations,
+		 const Configuration& theConfiguration);
 	void generateAdditionalWars(ofstream& AILog,
 		 set<shared_ptr<HoI4::Faction>>& factionsAtWar,
 		 double worldStrength,

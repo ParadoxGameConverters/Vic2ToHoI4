@@ -2298,6 +2298,336 @@ focus = {
 	cost = 10
 }
 
+	focus = {
+		id = reclaim_cores
+		icon = GFX_goal_generic_more_territorial_claims
+		cost = 10
+		x = 1
+		y = 0
+		available = {
+			always = yes
+		}
+		select_effect = {
+			# Block built by the Converter
+		}
+		completion_reward = {
+			custom_effect_tooltip = revanchism_reduction
+			divide_variable = { revanchism = 2 }
+			divide_variable = { revanchism_stab = 2 }
+			add_political_power = 150
+			add_ideas = reclaim_cores_idea
+		}
+		ai_will_do = {
+			factor = 10
+		}
+	}
+	focus = {
+		id = raise_matter
+		icon = GFX_focus_generic_self_management
+		cost = 10
+		prerequisite = { focus = reclaim_cores }
+		x = 0
+		y = 1
+		available = {
+			NOT = { is_in_faction_with = $TARGET }
+			NOT = { has_war_with = $TARGET }
+			$TARGET = { in_weak_faction = yes }
+		}
+		completion_reward = {
+			if = {
+				limit = { has_government = fascism }
+				add_popularity = { ideology = fascism popularity = $POPULARITY }
+			}
+			else = {
+				add_popularity = { ideology = fascism popularity = -$POPULARITY }
+			}
+			add_political_power = 150
+			add_timed_idea = { idea = generic_military_industry days = 180 }
+		}
+		bypass = {
+			OR = {
+				has_war_with = $TARGET
+				is_in_faction_with = $TARGET
+				NOT = { $TARGET = { any_owned_state = { is_core_of = ROOT } } }
+			}
+		}
+		ai_will_do = {
+			factor = $REVANCHISM
+			#FASCPOP
+			modifier = {
+				factor = 0
+				$TARGET = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = $TARGET value > 0 }
+			}
+			#FASCGOV
+			modifier = {
+				factor = 2
+				has_opinion = { target = $TARGET value < -25 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = $TARGET value < -50 }
+			}
+		}
+	}
+	focus = {
+		id = build_public_support
+		icon = GFX_goal_generic_propaganda
+		cost = 10
+		prerequisite = { focus = raise_matter }
+		x = 0
+		y = 1
+		relative_position_id = raise_matter
+		available = {
+			NOT = { is_in_faction_with = $TARGET }
+			NOT = { has_war_with = $TARGET }
+		}
+		completion_reward = {
+			if = {
+				limit = { has_government = fascism }
+				add_popularity = { ideology = fascism popularity = $POPULARITY }
+			}
+			else = {
+				add_popularity = { ideology = fascism popularity = -$POPULARITY }
+			}
+			add_war_support = $WARSUPPORT
+			add_political_power = 150
+			add_timed_idea = { idea = generic_recruit_centers days = 180 }
+		}
+		bypass = {
+			OR = {
+				has_war_with = $TARGET
+				is_in_faction_with = $TARGET
+				NOT = { $TARGET = { any_owned_state = { is_core_of = ROOT } } }
+			}
+		}
+		ai_will_do = {
+			factor = $REVANCHISM
+			#FASCPOP
+			modifier = {
+				factor = 0
+				$TARGET = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = $TARGET value > 0 }
+			}
+			modifier = {
+				factor = 1.5
+				has_completed_focus = raise_matter$TAG$TARGET
+			}
+			#FASCGOV
+			modifier = {
+				factor = 2
+				has_opinion = { target = $TARGET value < -25 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = $TARGET value < -50 }
+			}
+		}
+	}
+	focus = {
+		id = territory_or_war
+		icon = GFX_goal_generic_territory_or_war
+		cost = 3
+		prerequisite = { focus = build_public_support }
+		x = 0
+		y = 1
+		relative_position_id = build_public_support
+		available = {
+			NOT = { is_in_faction_with = $TARGET }
+			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
+			hidden_trigger = {
+				every_owned_state = {
+					OR = {
+						NOT = { is_core_of = ROOT }
+						is_fully_controlled_by = $TARGET
+					}
+				}
+			}
+			has_war = no
+		}
+		completion_reward = {
+			$TARGET = {
+				country_event = { id = reconquest_wars.1 }
+				custom_effect_tooltip = needs_approval
+			}
+			add_timed_idea = { idea = generic_rapid_mobilization days = 180 }
+			add_named_threat = { threat = 1 name = territory_or_war_NF_threat }
+		}
+		bypass = {
+			OR = {
+				has_war_with = $TARGET
+				is_in_faction_with = $TARGET
+				NOT = { $TARGET = { any_owned_state = { is_core_of = ROOT } } }
+				NOT = { $TARGET = { any_owned_state = { is_capital = no } } }
+			}
+		}
+		ai_will_do = {
+			factor = $REVANCHISM
+			modifier = {
+				factor = 0
+				$TARGET = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = $TARGET value > 0 }
+			}
+			modifier = {
+				factor = 1.5
+				has_completed_focus = build_public_support$TAG$TARGET
+			}
+			#FASCGOV
+			modifier = {
+				factor = 2
+				has_opinion = { target = $TARGET value < -25 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = $TARGET value < -50 }
+			}
+		}
+	}
+	focus = {
+		id = war_plan
+		icon = GFX_goal_generic_position_armies
+		cost = 4
+		prerequisite = { focus = territory_or_war }
+		x = 0
+		y = 1
+		relative_position_id = territory_or_war
+		available = {
+			NOT = { is_in_faction_with = $TARGET }
+			has_war = no
+		}
+		completion_reward = {
+			add_ai_strategy = { type = prepare_for_war id = $TARGET value = 1000 }
+			$TARGET = { add_ai_strategy = { type = prepare_for_war id = ROOT value = 1000 } }
+			random_list = {
+			    25 = { add_command_power = 25 }
+			    25 = { add_manpower = 10000 }
+			    25 = { add_war_support = 0.25 }
+			    25 = { army_experience = 10 }
+			}
+			add_timed_idea = { idea = generic_war_of_national_liberation days = 180 }
+			add_named_threat = { threat = 1 name = war_plan_NF_threat }
+		}
+		bypass = {
+			OR = {
+				has_war_with = $TARGET
+				is_in_faction_with = $TARGET
+				NOT = { $TARGET = { any_owned_state = { is_core_of = ROOT } } }
+			}
+		}
+		ai_will_do = {
+			factor = $REVANCHISM
+			modifier = {
+				factor = 0
+				$TARGET = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = $TARGET value > 0 }
+			}
+			modifier = {
+				factor = 2
+				has_completed_focus = territory_or_war$TAG$TARGET
+			}
+			#FASCGOV
+			modifier = {
+				factor = 2
+				has_opinion = { target = $TARGET value < -25 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = $TARGET value < -50 }
+			}
+		}
+	}
+	focus = {
+		id = declare_war
+		icon = GFX_goal_generic_army_tanks
+		cost = 3
+		prerequisite = { focus = war_plan }
+		x = 0
+		y = 1
+		relative_position_id = war_plan
+		available = {
+			NOT = { is_in_faction_with = $TARGET }
+			has_war = no
+		}
+		completion_reward = {
+			declare_war_on = {
+				target = $TARGET
+				type = take_core_state
+				generator = core_states
+			}
+			add_named_threat = { threat = 1 name = declare_war_NF_threat }
+		}
+		bypass = {
+			OR = {
+				has_war_with = $TARGET
+				is_in_faction_with = $TARGET
+				NOT = { $TARGET = { any_owned_state = { is_core_of = ROOT } } }
+			}
+		}
+		ai_will_do = {
+			factor = $REVANCHISM
+			modifier = {
+				factor = 0
+				$TARGET = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
+				has_opinion = { target = $TARGET value > 0 }
+			}
+			modifier = {
+				factor = 2
+				has_completed_focus = war_plan$TAG$TARGET
+			}
+			#FASCGOV
+			modifier = {
+				factor = 2
+				has_opinion = { target = $TARGET value < -25 }
+			}
+			modifier = {
+				factor = 2
+				has_opinion = { target = $TARGET value < -50 }
+			}
+		}
+	}
+	focus = {
+		id = cleanup_revanchism
+		icon = GFX_focus_generic_treaty
+		cost = 0
+		prerequisite = { focus = declare_war }
+		x = 0
+		y = 1
+		relative_position_id = declare_war
+		available = {
+			OR = {
+				is_in_faction_with = $TARGET
+				NOT = { $TARGET = { any_owned_state = { is_core_of = ROOT } } }
+			}
+			NOT = { has_war_with = $TARGET }
+		}
+		completion_reward = {
+			add_ai_strategy = { type = prepare_for_war id = $TARGET value = -1000 }
+			$TARGET = { add_ai_strategy = { type = prepare_for_war id = ROOT value = -1000 } }
+			custom_effect_tooltip = decrease_revanchism
+			subtract_from_variable = { revanchism = $REVANCHISM }
+			add_to_variable = { revanchism_stab = $STABILITY }
+			add_ideas = generic_national_unification
+		}
+		ai_will_do = {
+			factor = 100
+		}
+	}
+
 	shared_focus = {
 		id = border_disputes_shared
 		icon = GFX_goal_generic_more_territorial_claims
