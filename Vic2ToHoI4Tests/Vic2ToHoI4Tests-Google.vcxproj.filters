@@ -1386,6 +1386,21 @@
     <ClCompile Include="MapperTests\Provinces\ProvinceMapperTests.cpp">
       <Filter>MapperTests\Provinces</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\Modifiers\DynamicModifiersTests.cpp">
+      <Filter>HoI4WorldTests\Modifiers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Modifiers\OutModifier.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Modifiers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Modifiers\Modifier.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Modifiers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Modifiers\DynamicModifiers.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Modifiers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Modifiers\OutDynamicModifiers.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\Modifiers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1805,6 +1820,15 @@
     <Filter Include="TestFiles\Mappers\Provinces">
       <UniqueIdentifier>{de357879-9c99-4ce0-887d-e1dbcf2fa99c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="HoI4WorldTests\Modifiers">
+      <UniqueIdentifier>{f703d079-d901-4465-adda-ed2250948000}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\Modifiers">
+      <UniqueIdentifier>{98232ab0-7cca-45b8-8d8b-08f532766fcb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\Modifiers">
+      <UniqueIdentifier>{06ecf8d8-f6f6-49c0-9829-647be3e1ae08}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2081,5 +2105,9 @@
     <CopyFileToFolders Include="TestFiles\Mappers\Provinces\good_definition.csv">
       <Filter>TestFiles\Mappers\Provinces</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\Dependencies.mod" />
+    <CopyFileToFolders Include="TestFiles\Mods\DependencyOne.mod" />
+    <CopyFileToFolders Include="TestFiles\Mods\DependencyTwo.mod" />
+    <CopyFileToFolders Include="TestFiles\Mods\Dependent.mod" />
   </ItemGroup>
 </Project>

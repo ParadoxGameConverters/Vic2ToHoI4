@@ -72,6 +72,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\GrammarMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Modifiers\DynamicModifiers.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Modifiers\Modifier.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureGroupNames.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureNames.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Names\Names.cpp" />
@@ -134,6 +136,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutCountryLeader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Modifiers\OutDynamicModifiers.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Modifiers\OutModifier.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OccupationLaws\OutOccupationLaw.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\OccupationLaws\OutOccupationLaws.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Operations\OutOperation.cpp" />
@@ -402,6 +406,7 @@
     <ClCompile Include="HoI4WorldTests\Military\HoI4ArmyTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Military\RegimentTypeTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Military\RegimentTypeGroupTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Modifiers\DynamicModifiersTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Names\CultureGroupNamesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Names\CultureNamesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Navies\LegacyNavyTests.cpp" />

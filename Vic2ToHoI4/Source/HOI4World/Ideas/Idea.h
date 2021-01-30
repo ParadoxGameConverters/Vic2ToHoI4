@@ -21,6 +21,7 @@ class Idea: commonItems::parser
 
 	void setAvailable(const std::string& newAvailable) { available = newAvailable; }
 	void setAllowedCivilWar(const std::string& newAllowedCivilWar) { allowedCivilWar = newAllowedCivilWar; }
+	void updateCancel(const std::string& newCancel) { cancel = newCancel; }
 
   private:
 	std::string name;

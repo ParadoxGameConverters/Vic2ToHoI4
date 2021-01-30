@@ -722,4 +722,29 @@ spriteTypes = {
 		textureFile = "gfx/interface/autonomy/autonomy_clerkdom_icon.dds"
 	}
 	
+	spriteType = {
+		name = "GFX_idea_revanchism"
+		textureFile = "gfx/interface/revanchism_modifier_icon.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_generic_military_industry"
+		textureFile = "gfx/interface/ideas/generic_military_industry.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_generic_recruit_centers"
+		textureFile = "gfx/interface/ideas/generic_recruit_centers.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_generic_war_of_national_liberation"
+		textureFile = "gfx/interface/ideas/generic_war_of_national_liberation.dds"
+	}
+	
+	spriteType = {
+		name = "GFX_idea_generic_national_unification"
+		textureFile = "gfx/interface/ideas/generic_national_unification.dds"
+	}
+	
 }
