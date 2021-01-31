@@ -312,7 +312,7 @@ void Vic2::World::Factory::mergeNations(const std::string& masterTag,
 	 const std::vector<std::string>& slaveTags,
 	 bool debug)
 {
-	if (const auto master = world->countries.find(masterTag); master != world->countries.end())
+	if (auto master = world->countries.find(masterTag); master != world->countries.end())
 	{
 		for (const auto& slaveTag: slaveTags)
 		{
@@ -322,6 +322,7 @@ void Vic2::World::Factory::mergeNations(const std::string& masterTag,
 			}
 			world->countries.erase(slaveTag);
 		}
+		master->second->mergeStates(*world->theStateDefinitions);
 	}
 }
 
