@@ -16,6 +16,7 @@
 #include "V2World/Politics/Party.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/States/State.h"
+#include "V2World/States/StateDefinitions.h"
 #include "V2World/Wars/War.h"
 #include <cstdint>
 #include <map>
@@ -51,6 +52,7 @@ class Country
 	}
 
 	void eatCountry(Country& target, bool debug);
+	void mergeStates(const StateDefinitions& stateDefinitions);
 	void putProvincesInStates();
 	void determineEmployedWorkers();
 	void setLocalisationNames(Localisations& vic2Localisations);
