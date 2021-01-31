@@ -436,11 +436,11 @@ TEST(Vic2World_States_StateTests, EatingStateAbsorbsProvinces)
 {
 	Vic2::State state;
 	const auto state2 = Vic2::State::Builder{}
-							.setProvinceNumbers({1, 2, 3})
-							.setProvinces({Vic2::Province::Builder{}.setNumber(1).build(),
-								 Vic2::Province::Builder{}.setNumber(2).build(),
-								 Vic2::Province::Builder{}.setNumber(3).build()})
-							.build();
+									.setProvinceNumbers({1, 2, 3})
+									.setProvinces({Vic2::Province::Builder{}.setNumber(1).build(),
+										 Vic2::Province::Builder{}.setNumber(2).build(),
+										 Vic2::Province::Builder{}.setNumber(3).build()})
+									.build();
 
 	state.eatState(*state2, Vic2::StateDefinitions());
 
@@ -484,6 +484,7 @@ TEST(Vic2World_States_StateTests, EatingStateAbsorbsWorkers)
 {
 	auto state =
 		 Vic2::State::Builder{}
+			  .setProvinceNumbers({1})
 			  .setProvinces(
 					{Vic2::Province::Builder{}
 							  .setOwner("TAG")
@@ -491,10 +492,11 @@ TEST(Vic2World_States_StateTests, EatingStateAbsorbsWorkers)
 							  .setCores({"TAG"})
 							  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("craftsmen").setSize(12).build()})
 							  .build()})
-						  .setFactoryLevel(1)
-							.build();
+			  .setFactoryLevel(1)
+			  .build();
 	const auto state2 =
 		 Vic2::State::Builder{}
+			  .setProvinceNumbers({2})
 			  .setProvinces(
 					{Vic2::Province::Builder{}
 							  .setOwner("TAG")
@@ -502,8 +504,8 @@ TEST(Vic2World_States_StateTests, EatingStateAbsorbsWorkers)
 							  .setCores({"TAG"})
 							  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("craftsmen").setSize(12).build()})
 							  .build()})
-							.setFactoryLevel(2)
-							.build();
+			  .setFactoryLevel(2)
+			  .build();
 
 	state->eatState(*state2, Vic2::StateDefinitions());
 
