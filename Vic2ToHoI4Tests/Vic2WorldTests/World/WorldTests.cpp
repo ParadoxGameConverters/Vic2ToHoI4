@@ -226,14 +226,14 @@ TEST(Vic2World_World_WorldTests, ProvincesAreAssignedToStates)
 	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_TRUE(world->getCountries().contains("ONE"));
-	ASSERT_EQ(1, world->getCountries().at("ONE")->getStates().size());
-	ASSERT_EQ(1, world->getCountries().at("ONE")->getStates()[0].getProvinces().size());
-	ASSERT_EQ(1, (*world->getCountries().at("ONE")->getStates()[0].getProvinces().begin())->getNumber());
-	ASSERT_EQ("test_culture", world->getCountries().at("ONE")->getPrimaryCulture());
+	ASSERT_EQ(1, world->getCountries().at("ONE").getStates().size());
+	ASSERT_EQ(1, world->getCountries().at("ONE").getStates()[0].getProvinces().size());
+	ASSERT_EQ(1, (*world->getCountries().at("ONE").getStates()[0].getProvinces().begin())->getNumber());
+	ASSERT_EQ("test_culture", world->getCountries().at("ONE").getPrimaryCulture());
 	ASSERT_TRUE(world->getCountries().contains("TWO"));
-	ASSERT_EQ(1, world->getCountries().at("TWO")->getStates().size());
-	ASSERT_EQ(1, world->getCountries().at("TWO")->getStates()[0].getProvinces().size());
-	ASSERT_EQ(2, (*world->getCountries().at("TWO")->getStates()[0].getProvinces().begin())->getNumber());
+	ASSERT_EQ(1, world->getCountries().at("TWO").getStates().size());
+	ASSERT_EQ(1, world->getCountries().at("TWO").getStates()[0].getProvinces().size());
+	ASSERT_EQ(2, (*world->getCountries().at("TWO").getStates()[0].getProvinces().begin())->getNumber());
 
 	ASSERT_THAT(log.str(),
 		 testing::HasSubstr(" [WARNING] Trying to assign province 3 to HUH, but country does not exist.\n"));
@@ -247,7 +247,7 @@ TEST(Vic2World_World_WorldTests, MissingCulturesAreHandled)
 		 *Mappers::ProvinceMapper::Builder().Build());
 
 	ASSERT_TRUE(world->getCountries().contains("ONE"));
-	ASSERT_EQ("test_culture", world->getCountries().at("ONE")->getPrimaryCulture());
+	ASSERT_EQ("test_culture", world->getCountries().at("ONE").getPrimaryCulture());
 }
 
 
@@ -306,15 +306,15 @@ TEST(Vic2World_World_WorldTests, WarsCanBeAdded)
 		 *Mappers::ProvinceMapper::Builder().Build());
 
 	ASSERT_TRUE(world->getCountries().contains("ONE"));
-	ASSERT_EQ(1, world->getCountries().at("ONE")->getWars().size());
-	ASSERT_EQ("ONE", world->getCountries().at("ONE")->getWars()[0].getOriginalAttacker());
-	ASSERT_TRUE(world->getCountries().at("ONE")->isAtWar());
+	ASSERT_EQ(1, world->getCountries().at("ONE").getWars().size());
+	ASSERT_EQ("ONE", world->getCountries().at("ONE").getWars()[0].getOriginalAttacker());
+	ASSERT_TRUE(world->getCountries().at("ONE").isAtWar());
 	ASSERT_TRUE(world->getCountries().contains("TWO"));
-	ASSERT_TRUE(world->getCountries().at("TWO")->isAtWar());
+	ASSERT_TRUE(world->getCountries().at("TWO").isAtWar());
 	ASSERT_TRUE(world->getCountries().contains("NON"));
-	ASSERT_TRUE(world->getCountries().at("NON")->isAtWar());
+	ASSERT_TRUE(world->getCountries().at("NON").isAtWar());
 	ASSERT_TRUE(world->getCountries().contains("NOT"));
-	ASSERT_TRUE(world->getCountries().at("NOT")->isAtWar());
+	ASSERT_TRUE(world->getCountries().at("NOT").isAtWar());
 }
 
 
@@ -329,21 +329,21 @@ TEST(Vic2World_World_WorldTests, CoresAreAssignedToCountries)
 		 *Mappers::ProvinceMapper::Builder().Build());
 
 	ASSERT_TRUE(world->getCountries().contains("ONE"));
-	ASSERT_EQ(1, world->getCountries().at("ONE")->getCores().size());
-	ASSERT_EQ(1, world->getCountries().at("ONE")->getCores()[0]->getNumber());
+	ASSERT_EQ(1, world->getCountries().at("ONE").getCores().size());
+	ASSERT_EQ(1, world->getCountries().at("ONE").getCores()[0]->getNumber());
 	ASSERT_TRUE(world->getCountries().contains("NOT"));
-	ASSERT_EQ(2, world->getCountries().at("NOT")->getCores().size());
-	ASSERT_EQ(1, world->getCountries().at("NOT")->getCores()[0]->getNumber());
-	ASSERT_EQ(2, world->getCountries().at("NOT")->getCores()[1]->getNumber());
+	ASSERT_EQ(2, world->getCountries().at("NOT").getCores().size());
+	ASSERT_EQ(1, world->getCountries().at("NOT").getCores()[0]->getNumber());
+	ASSERT_EQ(2, world->getCountries().at("NOT").getCores()[1]->getNumber());
 	ASSERT_TRUE(world->getCountries().contains("TWO"));
-	ASSERT_EQ(1, world->getCountries().at("TWO")->getCores().size());
-	ASSERT_EQ(2, world->getCountries().at("TWO")->getCores()[0]->getNumber());
+	ASSERT_EQ(1, world->getCountries().at("TWO").getCores().size());
+	ASSERT_EQ(2, world->getCountries().at("TWO").getCores()[0]->getNumber());
 	ASSERT_TRUE(world->getCountries().contains("NON"));
-	ASSERT_EQ(4, world->getCountries().at("NON")->getCores().size());
-	ASSERT_EQ(2, world->getCountries().at("NON")->getCores()[0]->getNumber());
-	ASSERT_EQ(4, world->getCountries().at("NON")->getCores()[1]->getNumber());
-	ASSERT_EQ(5, world->getCountries().at("NON")->getCores()[2]->getNumber());
-	ASSERT_EQ(6, world->getCountries().at("NON")->getCores()[3]->getNumber());
+	ASSERT_EQ(4, world->getCountries().at("NON").getCores().size());
+	ASSERT_EQ(2, world->getCountries().at("NON").getCores()[0]->getNumber());
+	ASSERT_EQ(4, world->getCountries().at("NON").getCores()[1]->getNumber());
+	ASSERT_EQ(5, world->getCountries().at("NON").getCores()[2]->getNumber());
+	ASSERT_EQ(6, world->getCountries().at("NON").getCores()[3]->getNumber());
 }
 
 
@@ -358,15 +358,15 @@ TEST(Vic2World_World_WorldTests, SimpleLandlessNationsAreRemoved)
 		 *Mappers::ProvinceMapper::Builder().Build());
 
 	ASSERT_TRUE(world->getCountries().contains("ONE"));
-	ASSERT_EQ(1, world->getCountries().at("ONE")->getCores().size());
-	ASSERT_EQ(1, world->getCountries().at("ONE")->getCores()[0]->getNumber());
+	ASSERT_EQ(1, world->getCountries().at("ONE").getCores().size());
+	ASSERT_EQ(1, world->getCountries().at("ONE").getCores()[0]->getNumber());
 	ASSERT_FALSE(world->getCountries().contains("NOT"));
 	ASSERT_TRUE(world->getCountries().contains("TWO"));
-	ASSERT_EQ(1, world->getCountries().at("TWO")->getCores().size());
-	ASSERT_EQ(2, world->getCountries().at("TWO")->getCores()[0]->getNumber());
+	ASSERT_EQ(1, world->getCountries().at("TWO").getCores().size());
+	ASSERT_EQ(2, world->getCountries().at("TWO").getCores()[0]->getNumber());
 	ASSERT_TRUE(world->getCountries().contains("NON"));
-	ASSERT_EQ(1, world->getCountries().at("NON")->getCores().size());
-	ASSERT_EQ(6, world->getCountries().at("NON")->getCores()[0]->getNumber());
+	ASSERT_EQ(1, world->getCountries().at("NON").getCores().size());
+	ASSERT_EQ(6, world->getCountries().at("NON").getCores()[0]->getNumber());
 	ASSERT_FALSE(world->getCountries().contains("DED"));
 }
 
@@ -382,9 +382,9 @@ TEST(Vic2World_World_WorldTests, EmployedWorkersAreAssigned)
 		 *Mappers::ProvinceMapper::Builder().Build());
 
 	ASSERT_TRUE(world->getCountries().contains("ONE"));
-	ASSERT_EQ(5, world->getCountries().at("ONE")->getEmployedWorkers());
+	ASSERT_EQ(5, world->getCountries().at("ONE").getEmployedWorkers());
 	ASSERT_TRUE(world->getCountries().contains("TWO"));
-	ASSERT_EQ(0, world->getCountries().at("TWO")->getEmployedWorkers());
+	ASSERT_EQ(0, world->getCountries().at("TWO").getEmployedWorkers());
 }
 
 
@@ -436,8 +436,7 @@ TEST(Vic2World_World_WorldTests, ConquerStrategiesAreConsolidated)
 		 *Mappers::ProvinceMapper::Builder().Build());
 
 	ASSERT_TRUE(world->getCountries().contains("ONE"));
-	ASSERT_NE(nullptr, world->getCountries().at("ONE")->getAI());
-	ASSERT_THAT(world->getCountries().at("ONE")->getAI()->getConsolidatedStrategies(),
+	ASSERT_THAT(world->getCountries().at("ONE").getAI().getConsolidatedStrategies(),
 		 testing::UnorderedElementsAre(std::make_pair(std::string("TWO"), 182)));
 }
 
@@ -453,7 +452,7 @@ TEST(Vic2World_World_WorldTests, ArmiesAreMovedHome)
 		 *Mappers::ProvinceMapper::Builder().Build());
 
 	ASSERT_TRUE(world->getCountries().contains("ONE"));
-	ASSERT_THAT(world->getCountries().at("ONE")->getArmies(),
+	ASSERT_THAT(world->getCountries().at("ONE").getArmies(),
 		 testing::ElementsAre(
 			  *Vic2::Army::Builder{}.setOwner("ONE").setName("No location army").setLocation(std::nullopt).Build(),
 			  *Vic2::Army::Builder{}.setOwner("ONE").setName("Non-existent location army").setLocation(5).Build(),
@@ -467,7 +466,7 @@ TEST(Vic2World_World_WorldTests, ArmiesAreMovedHome)
 					 .Build()));
 	ASSERT_TRUE(world->getCountries().contains("TWO"));
 	ASSERT_TRUE(world->getCountries().contains("NON"));
-	ASSERT_THAT(world->getCountries().at("NON")->getArmies(),
+	ASSERT_THAT(world->getCountries().at("NON").getArmies(),
 		 testing::ElementsAre(*Vic2::Army::Builder{}
 											.setOwner("NON")
 											.setName("Not at war country army")
@@ -487,7 +486,7 @@ TEST(Vic2World_World_WorldTests, BattlesAreResolved)
 		 *Mappers::ProvinceMapper::Builder().Build());
 
 	ASSERT_TRUE(world->getCountries().contains("ONE"));
-	ASSERT_THAT(world->getCountries().at("ONE")->getArmies(),
+	ASSERT_THAT(world->getCountries().at("ONE").getArmies(),
 		 testing::ElementsAre(
 			  *Vic2::Army::Builder{}.setOwner("ONE").setName("No location army").setLocation(std::nullopt).Build(),
 			  *Vic2::Army::Builder{}.setOwner("ONE").setName("Only by itself army").setLocation(4).Build(),
@@ -497,7 +496,7 @@ TEST(Vic2World_World_WorldTests, BattlesAreResolved)
 			  *Vic2::Army::Builder{}.setOwner("ONE").setName("Non-existent province army").setLocation(5).Build(),
 			  *Vic2::Army::Builder{}.setOwner("ONE").setName("Second non-existent province army").setLocation(5).Build()));
 	ASSERT_TRUE(world->getCountries().contains("TWO"));
-	ASSERT_THAT(world->getCountries().at("TWO")->getArmies(),
+	ASSERT_THAT(world->getCountries().at("TWO").getArmies(),
 		 testing::ElementsAre(*Vic2::Army::Builder{}
 											.setOwner("TWO")
 											.setName("Second in different-country province")

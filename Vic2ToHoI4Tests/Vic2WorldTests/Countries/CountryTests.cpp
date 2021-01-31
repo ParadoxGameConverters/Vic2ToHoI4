@@ -870,7 +870,7 @@ TEST(Vic2World_Countries_CountryTests, AiDefaultsToEmpty)
 										  *Vic2::StateLanguageCategories::Builder{}.build(),
 										  0.05F);
 
-	ASSERT_TRUE(country->getAI()->getStrategies().empty());
+	ASSERT_TRUE(country->getAI().getStrategies().empty());
 }
 
 
@@ -897,10 +897,10 @@ TEST(Vic2World_Countries_CountryTests, AiCanBeImported)
 										  *Vic2::StateLanguageCategories::Builder{}.build(),
 										  0.05F);
 
-	ASSERT_EQ(1, country->getAI()->getStrategies().size());
-	ASSERT_EQ("protect", country->getAI()->getStrategies()[0].getType());
-	ASSERT_EQ("TWO", country->getAI()->getStrategies()[0].getID());
-	ASSERT_EQ(42, country->getAI()->getStrategies()[0].getValue());
+	ASSERT_EQ(1, country->getAI().getStrategies().size());
+	ASSERT_EQ("protect", country->getAI().getStrategies()[0].getType());
+	ASSERT_EQ("TWO", country->getAI().getStrategies()[0].getID());
+	ASSERT_EQ(42, country->getAI().getStrategies()[0].getValue());
 }
 
 
@@ -935,7 +935,7 @@ TEST(Vic2World_Countries_CountryTests, AiConquerStrategiesCanBeConsolidated)
 		 {std::make_pair(1, Vic2::Province::Builder{}.setNumber(1).setOwner("TWO").build()),
 			  std::make_pair(2, Vic2::Province::Builder{}.setNumber(2).setOwner("TWO").build())});
 
-	ASSERT_EQ(12, country->getAI()->getConsolidatedStrategies().find("TWO")->second);
+	ASSERT_EQ(12, country->getAI().getConsolidatedStrategies().find("TWO")->second);
 }
 
 
@@ -2312,12 +2312,22 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveCanComeFromDomain)
 
 TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsStates)
 {
+	const auto stateDefinitions =
+		 Vic2::StateDefinitions::Builder{}
+			  .setProvinceToIDMap({{1, "MERGE_STATE"}, {2, "MERGE_STATE"}, {3, "MERGE_STATE"}, {42, "UNMERGED_STATE"}})
+			  .setStateMap({{1, {1, 2, 3}}, {2, {1, 2, 3}}, {3, {1, 2, 3}}, {42, {42}}})
+			  .build();
+
 	std::stringstream theStream;
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
+	theStream << "\tstate=\n";
+	theStream << "\t{\n";
+	theStream << "\t\tprovinces = { 1 }\n";
+	theStream << "\t}\n";
 	theStream << "}";
 	auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
-		 *Vic2::StateDefinitions::Builder{}.build(),
+		 *stateDefinitions,
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
 							 .createCountry("TAG",
 								  theStream,
@@ -2331,10 +2341,15 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsStates)
 	theStreamTwo << "\truling_party = 1\n";
 	theStreamTwo << "\tstate=\n";
 	theStreamTwo << "\t{\n";
+	theStreamTwo << "\t\tprovinces = { 2 3 }\n";
+	theStreamTwo << "\t}\n";
+	theStreamTwo << "\tstate=\n";
+	theStreamTwo << "\t{\n";
+	theStreamTwo << "\t\tprovinces = { 42 }\n";
 	theStreamTwo << "\t}\n";
 	theStreamTwo << "}";
 	const auto countryTwo = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
-		 *Vic2::StateDefinitions::Builder{}.build(),
+		 *stateDefinitions,
 		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
 										 .createCountry("TWO",
 											  theStreamTwo,
@@ -2343,10 +2358,11 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsStates)
 											  *Vic2::StateLanguageCategories::Builder{}.build(),
 											  0.05F);
 
-	ASSERT_TRUE(country->getStates().empty());
-	country->eatCountry(*countryTwo, false);
-
 	ASSERT_EQ(1, country->getStates().size());
+	country->eatCountry(*countryTwo, false);
+	country->mergeStates(*stateDefinitions);
+
+	ASSERT_EQ(2, country->getStates().size());
 	ASSERT_EQ("TAG", country->getStates()[0].getOwner());
 }
 

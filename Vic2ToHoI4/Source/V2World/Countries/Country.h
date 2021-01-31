@@ -16,6 +16,7 @@
 #include "V2World/Politics/Party.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/States/State.h"
+#include "V2World/States/StateDefinitions.h"
 #include "V2World/Wars/War.h"
 #include <cstdint>
 #include <map>
@@ -47,10 +48,11 @@ class Country
 	void setAtWar() { atWar = true; }
 	void consolidateConquerStrategies(const std::map<int, std::shared_ptr<Province>>& allProvinces)
 	{
-		vic2AI->consolidateConquerStrategies(allProvinces);
+		vic2AI.consolidateConquerStrategies(allProvinces);
 	}
 
 	void eatCountry(Country& target, bool debug);
+	void mergeStates(const StateDefinitions& stateDefinitions);
 	void putProvincesInStates();
 	void determineEmployedWorkers();
 	void setLocalisationNames(Localisations& vic2Localisations);
@@ -124,7 +126,7 @@ class Country
 	std::set<std::string> technologiesAndInventions;
 
 	std::map<std::string, Relations> relations;
-	std::unique_ptr<AI> vic2AI;
+	AI vic2AI;
 	bool civilized = false;
 
 	std::vector<Army> armies;

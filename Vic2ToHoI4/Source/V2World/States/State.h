@@ -4,6 +4,7 @@
 
 
 #include "V2World/Provinces/Province.h"
+#include "V2World/States/StateDefinitions.h"
 #include <memory>
 #include <optional>
 #include <set>
@@ -31,6 +32,7 @@ class State
 	class Factory;
 
 	void determineEmployedWorkers();
+	void eatState(const State& state, const StateDefinitions& stateDefinitions);
 
 	void addProvince(std::shared_ptr<Province> province) { provinces.insert(std::move(province)); }
 	void setOwner(std::string newOwner) { owner = std::move(newOwner); }

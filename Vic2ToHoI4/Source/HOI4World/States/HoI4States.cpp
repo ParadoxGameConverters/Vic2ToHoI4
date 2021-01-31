@@ -14,7 +14,6 @@
 #include "Mappers/CountryMapping.h"
 #include "OSCompatibilityLayer.h"
 #include "StateCategories.h"
-#include "V2World/Countries/Country.h"
 #include "V2World/Localisations/Vic2Localisations.h"
 #include "V2World/Provinces/Province.h"
 #include "V2World/States/State.h"
@@ -222,7 +221,7 @@ std::set<std::pair<std::string, std::string>> HoI4::States::determineCores(const
 }
 
 
-void HoI4::States::createStates(const std::map<std::string, std::unique_ptr<Vic2::Country>>& sourceCountries,
+void HoI4::States::createStates(const std::map<std::string, Vic2::Country>& sourceCountries,
 	 const std::map<int, std::shared_ptr<Vic2::Province>>& sourceProvinces,
 	 const std::map<int, Province>& theProvinces,
 	 const ImpassableProvinces& theImpassableProvinces,
@@ -242,7 +241,7 @@ void HoI4::States::createStates(const std::map<std::string, std::unique_ptr<Vic2
 
 	for (const auto& country: sourceCountries)
 	{
-		for (const auto& vic2State: country.second->getStates())
+		for (const auto& vic2State: country.second.getStates())
 		{
 			auto possibleHoI4Owner = countryMap.getHoI4Tag(country.first);
 			if (possibleHoI4Owner)
@@ -329,7 +328,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 	 const std::string& stateOwner,
 	 const ImpassableProvinces& theImpassableProvinces,
 	 const CountryMapper& countryMapper,
-	 const std::map<std::string, std::unique_ptr<Vic2::Country>>& sourceCountries,
+	 const std::map<std::string, Vic2::Country>& sourceCountries,
 	 const CoastalProvinces& theCoastalProvinces,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const StrategicRegions& strategicRegions,
@@ -521,7 +520,7 @@ std::vector<std::set<int>> HoI4::States::consolidateProvinceSets(std::vector<std
 
 
 void HoI4::States::addProvincesAndCoresToNewState(State& newState,
-	 const std::map<std::string, std::unique_ptr<Vic2::Country>>& sourceCountries,
+	 const std::map<std::string, Vic2::Country>& sourceCountries,
 	 const std::set<int>& provinceNumbers,
 	 const Mappers::ProvinceMapper& provinceMapper,
 	 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces)
@@ -551,8 +550,8 @@ void HoI4::States::addProvincesAndCoresToNewState(State& newState,
 		{
 			continue;
 		}
-		auto acceptedCultures = sourceCountry->second->getAcceptedCultures();
-		acceptedCultures.insert(sourceCountry->second->getPrimaryCulture());
+		auto acceptedCultures = sourceCountry->second.getAcceptedCultures();
+		acceptedCultures.insert(sourceCountry->second.getPrimaryCulture());
 
 		uint64_t totalPopulation = 0;
 		double acceptedPopulation = 0;

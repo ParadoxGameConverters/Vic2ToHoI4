@@ -41,13 +41,13 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 		if (const auto commonCountryData = commonCountriesData.find(countryTag);
 			 commonCountryData != commonCountriesData.end())
 		{
-			world->countries.insert(std::make_pair(countryTag,
-				 countryFactory->createCountry(countryTag,
+			world->countries.emplace(countryTag,
+				 *countryFactory->createCountry(countryTag,
 					  theStream,
 					  commonCountryData->second,
 					  allParties,
 					  *stateLanguageCategories,
-					  theConfiguration.getPercentOfCommanders())));
+					  theConfiguration.getPercentOfCommanders()));
 			tagsInOrder.push_back(countryTag);
 		}
 		else
@@ -139,7 +139,7 @@ void Vic2::World::Factory::setProvinceOwners()
 
 		if (auto country = world->countries.find(province->getOwner()); country != world->countries.end())
 		{
-			country->second->addProvince(provinceNum, province);
+			country->second.addProvince(provinceNum, province);
 		}
 		else
 		{
@@ -149,8 +149,8 @@ void Vic2::World::Factory::setProvinceOwners()
 	}
 	for (auto& [unused, country]: world->countries)
 	{
-		country->putProvincesInStates();
-		country->handleMissingCulture(*theCultureGroups);
+		country.putProvincesInStates();
+		country.handleMissingCulture(*theCultureGroups);
 	}
 }
 
@@ -166,7 +166,7 @@ void Vic2::World::Factory::addProvinceCoreInfoToCountries()
 			auto coreCountry = world->countries.find(coreCountryString);
 			if (coreCountry != world->countries.end())
 			{
-				coreCountry->second->addCore(province);
+				coreCountry->second.addCore(province);
 			}
 		}
 	}
@@ -178,15 +178,15 @@ void Vic2::World::Factory::removeSimpleLandlessNations()
 	Log(LogLevel::Info) << "\tRemoving simple landless nations";
 	for (auto& [tag, country]: world->countries)
 	{
-		if (country->hasLand())
+		if (country.hasLand())
 		{
 			continue;
 		}
 
 		std::vector<std::shared_ptr<Province>> coresToKeep;
-		for (auto& core: country->getCores())
+		for (auto& core: country.getCores())
 		{
-			if (shouldCoreBeRemoved(*core, *country))
+			if (shouldCoreBeRemoved(*core, country))
 			{
 				core->removeCore(tag);
 			}
@@ -195,11 +195,11 @@ void Vic2::World::Factory::removeSimpleLandlessNations()
 				coresToKeep.push_back(core);
 			}
 		}
-		country->replaceCores(coresToKeep);
+		country.replaceCores(coresToKeep);
 
-		if (!country->hasCoreOnCapital())
+		if (!country.hasCoreOnCapital())
 		{
-			country->replaceCores(std::vector<std::shared_ptr<Province>>{});
+			country.replaceCores(std::vector<std::shared_ptr<Province>>{});
 		}
 	}
 }
@@ -218,11 +218,11 @@ bool Vic2::World::Factory::shouldCoreBeRemoved(const Province& core, const Count
 	{
 		return true;
 	}
-	if (country.getPrimaryCulture() == owner->second->getPrimaryCulture())
+	if (country.getPrimaryCulture() == owner->second.getPrimaryCulture())
 	{
 		return true;
 	}
-	if (owner->second->isAnAcceptedCulture(country.getPrimaryCulture()))
+	if (owner->second.isAnAcceptedCulture(country.getPrimaryCulture()))
 	{
 		return true;
 	}
@@ -240,7 +240,7 @@ void Vic2::World::Factory::determineEmployedWorkers()
 	Log(LogLevel::Info) << "\tFinding employed workers";
 	for (auto& [unused, country]: world->countries)
 	{
-		country->determineEmployedWorkers();
+		country.determineEmployedWorkers();
 	}
 }
 
@@ -250,7 +250,7 @@ void Vic2::World::Factory::removeEmptyNations()
 	Log(LogLevel::Info) << "\tRemoving empty nations";
 	for (auto country = world->countries.begin(); country != world->countries.end();)
 	{
-		if (country->second->isEmpty())
+		if (country->second.isEmpty())
 		{
 			country = world->countries.erase(country);
 		}
@@ -272,7 +272,7 @@ void Vic2::World::Factory::addWarsToCountries(const std::vector<War>& wars)
 		{
 			continue;
 		}
-		warStarter->second->addWar(war);
+		warStarter->second.addWar(war);
 
 		for (const auto& participant: war.getAttackers())
 		{
@@ -281,7 +281,7 @@ void Vic2::World::Factory::addWarsToCountries(const std::vector<War>& wars)
 			{
 				continue;
 			}
-			participantCountry->second->setAtWar();
+			participantCountry->second.setAtWar();
 		}
 
 		for (const auto& participant: war.getDefenders())
@@ -291,7 +291,7 @@ void Vic2::World::Factory::addWarsToCountries(const std::vector<War>& wars)
 			{
 				continue;
 			}
-			participantCountry->second->setAtWar();
+			participantCountry->second.setAtWar();
 		}
 	}
 }
@@ -312,16 +312,17 @@ void Vic2::World::Factory::mergeNations(const std::string& masterTag,
 	 const std::vector<std::string>& slaveTags,
 	 bool debug)
 {
-	if (const auto master = world->countries.find(masterTag); master != world->countries.end())
+	if (auto master = world->countries.find(masterTag); master != world->countries.end())
 	{
 		for (const auto& slaveTag: slaveTags)
 		{
 			if (const auto& slave = world->countries.find(slaveTag); slave != world->countries.end())
 			{
-				master->second->eatCountry(*slave->second, debug);
+				master->second.eatCountry(slave->second, debug);
 			}
 			world->countries.erase(slaveTag);
 		}
+		master->second.mergeStates(*world->theStateDefinitions);
 	}
 }
 
@@ -331,8 +332,8 @@ void Vic2::World::Factory::setLocalisations(Localisations& vic2Localisations)
 	Log(LogLevel::Info) << "\tSetting localisations";
 	for (auto& [unused, country]: world->countries)
 	{
-		country->setLocalisationNames(vic2Localisations);
-		country->setLocalisationAdjectives(vic2Localisations);
+		country.setLocalisationNames(vic2Localisations);
+		country.setLocalisationAdjectives(vic2Localisations);
 	}
 }
 
@@ -354,7 +355,7 @@ void Vic2::World::Factory::consolidateConquerStrategies()
 {
 	for (auto& [unused, country]: world->countries)
 	{
-		country->consolidateConquerStrategies(world->provinces);
+		country.consolidateConquerStrategies(world->provinces);
 	}
 }
 
@@ -365,7 +366,7 @@ void Vic2::World::Factory::moveArmiesHome()
 {
 	for (auto& [tag, country]: world->countries)
 	{
-		for (auto& army: country->getModifiableArmies())
+		for (auto& army: country.getModifiableArmies())
 		{
 			// if the army doesn't have a location, there's nothing to do
 			auto possibleLocation = army.getLocation();
@@ -396,7 +397,7 @@ void Vic2::World::Factory::moveArmiesHome()
 
 			// if the countries are at war with another, the armies can be there
 			auto atWarWithAnother = false;
-			if (country->isAtWar())
+			if (country.isAtWar())
 			{
 				for (const auto& war: wars)
 				{
@@ -461,7 +462,7 @@ std::map<int, std::vector<Vic2::Army*>> Vic2::World::Factory::determineArmyLocat
 
 	for (auto& [tag, country]: world->countries)
 	{
-		for (auto& army: country->getModifiableArmies())
+		for (auto& army: country.getModifiableArmies())
 		{
 			auto possibleLocation = army.getLocation();
 			if (possibleLocation)

@@ -41,6 +41,32 @@ void Vic2::Country::eatCountry(Country& target, bool debug)
 }
 
 
+void Vic2::Country::mergeStates(const StateDefinitions& stateDefinitions)
+{
+	for (auto state = states.begin(); state != states.end(); ++state)
+	{
+		if (!state->isPartialState())
+		{
+			continue;
+		}
+
+		auto state2 = state;
+		++state2;
+		while (state2 != states.end())
+		{
+			if (state->getStateID() != state2->getStateID())
+			{
+				++state2;
+				continue;
+			}
+
+			state->eatState(*state2, stateDefinitions);
+			state2 = states.erase(state2);
+		}
+	}
+}
+
+
 void Vic2::Country::putProvincesInStates()
 {
 	for (auto& state: states)

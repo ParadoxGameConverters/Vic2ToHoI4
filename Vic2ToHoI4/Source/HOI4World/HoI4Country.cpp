@@ -291,7 +291,7 @@ void HoI4::Country::convertRelations(const CountryMapper& countryMap, const Vic2
 
 void HoI4::Country::convertStrategies(const CountryMapper& countryMap, const Vic2::Country& sourceCountry)
 {
-	for (const auto& [vic2Tag, strategy]: sourceCountry.getAI()->getConsolidatedStrategies())
+	for (const auto& [vic2Tag, strategy]: sourceCountry.getAI().getConsolidatedStrategies())
 	{
 		if (const auto& HoI4Tag = countryMap.getHoI4Tag(vic2Tag); HoI4Tag)
 		{
@@ -305,7 +305,7 @@ void HoI4::Country::convertStrategies(const CountryMapper& countryMap, const Vic
 			 return a.getValue() > b.getValue();
 		 });
 
-	for (const auto& srcStrategy: sourceCountry.getAI()->getStrategies())
+	for (const auto& srcStrategy: sourceCountry.getAI().getStrategies())
 	{
 		if (const auto& HoI4Tag = countryMap.getHoI4Tag(srcStrategy.getID()); HoI4Tag)
 		{
