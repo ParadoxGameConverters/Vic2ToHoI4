@@ -57,7 +57,7 @@ void Vic2::State::eatState(const State& state, const StateDefinitions& stateDefi
 {
 	provinceNumbers.insert(state.provinceNumbers.begin(), state.provinceNumbers.end());
 	provinces.insert(state.provinces.begin(), state.provinces.end());
-	
+
 	partialState = false;
 	for (const auto provinceNumber: stateDefinitions.getAllProvinces(*provinceNumbers.begin()))
 	{
@@ -71,7 +71,6 @@ void Vic2::State::eatState(const State& state, const StateDefinitions& stateDefi
 	factoryLevel += state.factoryLevel;
 	determineEmployedWorkers();
 }
-
 
 
 int Vic2::State::getPopulation() const

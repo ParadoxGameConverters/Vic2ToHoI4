@@ -67,7 +67,6 @@ void Vic2::Country::mergeStates(const StateDefinitions& stateDefinitions)
 }
 
 
-
 void Vic2::Country::putProvincesInStates()
 {
 	for (auto& state: states)

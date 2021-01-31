@@ -41,13 +41,13 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 		if (const auto commonCountryData = commonCountriesData.find(countryTag);
 			 commonCountryData != commonCountriesData.end())
 		{
-			auto country = *countryFactory->createCountry(countryTag,
-				 theStream,
-				 commonCountryData->second,
-				 allParties,
-				 *stateLanguageCategories,
-				 theConfiguration.getPercentOfCommanders());
-			world->countries.emplace(countryTag, country);
+			world->countries.emplace(countryTag,
+				 *countryFactory->createCountry(countryTag,
+					  theStream,
+					  commonCountryData->second,
+					  allParties,
+					  *stateLanguageCategories,
+					  theConfiguration.getPercentOfCommanders()));
 			tagsInOrder.push_back(countryTag);
 		}
 		else
