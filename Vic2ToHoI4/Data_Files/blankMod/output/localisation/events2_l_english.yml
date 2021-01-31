@@ -530,7 +530,7 @@
  reconquest_wars.1.a:0 "I see no other option"
  reconquest_wars.1.b:0 "We'll take our chances"
  reconquest_wars.2.t:0 "[From.GetName] accepts demands"
- reconquest_wars.2.d:0 "[From.GetAdjectiveCap] has wisely accepted our demands to return core territory."
+ reconquest_wars.2.d:0 "[From.GetHabitants] have wisely accepted our demands to return core territory."
  reconquest_wars.2.a:0 "The matter should be closed?"
  reconquest_wars.3.t:0 "[From.GetName] rejects demands"
  reconquest_wars.3.d:0 "Apparently the [From.GetAdjective] government would like to take their chances against us on the battlefield."

@@ -86,3 +86,15 @@
  CHI_union:0 "El Mandato del Cielo"
  CHI_union_desc:0 "Durante mucho tiempo, el Reino Medio se ha dividido en luchas feudales entre los diversos burócratas. Pero hoy, un nuevo Imperio nació de las cenizas de esos estados en guerra."
  form_country_chinese_required_state_tt:0 "Controla todos los estados §YChinos§!." 
+ reclaim_cores_idea:0 "Reclamar territorios esenciales"
+ reclaim_cores_idea_desc:0 "Por todos los medios necesarios, debemos recuperar la tierra que nos quitaron ilegalmente en el pasado."
+ generic_military_industry:0 "Industria militar"
+ generic_military_industry_desc:0 "Si queremos lograr nuestros objetivos expansionistas, debemos asegurarnos de que nuestras leyes económicas estén en consonancia con ellos".
+ generic_rapid_mobilization:0 "Movilización rápida"
+ generic_rapid_mobilization_desc:0 "Para convertirnos en un contendiente viable para el liderazgo de todos [Root.GetName] debemos aumentar el tamaño de nuestro ejército. Desarrollaremos nuevos métodos para agilizar el entrenamiento y crear un ejército que pueda estar a la altura de cualquier desafío".
+ generic_recruit_centers:0 "Centros de reclutamiento"
+ generic_recruit_centers_desc:0 "Nuestras recientes campañas de promoción han dado como resultado que miles de jóvenes esperando en la fila para unirse son una causa justa".
+ generic_war_of_national_liberation:0 "Guerra de Liberación Nacional"
+ generic_war_of_national_liberation_desc:0 "Con el Ultimátum rechazado, debemos pasar a la ofensiva y liberar todo nuestro territorio".
+ generic_national_unification:0 "Unificación nacional"
+ generic_national_unification_desc:0 "Los éxitos en nuestras Campañas de Liberación solo han aumentado el interés entre los hombres [Root.GetAdjMP] para inscribirse en el servicio".
