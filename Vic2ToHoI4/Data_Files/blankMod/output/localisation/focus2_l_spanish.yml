@@ -54,39 +54,56 @@
  Alliance_:0 "Alianza con [$TARGET.GetName]"
  GPWar:0 "Guerra con [$TARGET.GetName]"
  War_with:0 "Guerra con [$TARGET.GetName]"
- border_disputes_shared:0 "[$TARGET.GetAdjective] Territorial Dispute"
- border_disputes_shared_desc:0 "Pushing for the resolution of the [$TARGET.GetAdjective] territorial disputes is likely to go our way. We should however be prepared for war."
- prepare_for_war_shared:0 "Prepare for War"
- prepare_for_war_shared_desc:0 "We know it, they know it - war is inevitable. They'll certainly be prepared and we must make sure we are as well."
- neighbor_war_shared:0 "Neighbor War"
- neighbor_war_shared_desc:0 "All that is left to do is a formal declaration of war."
- border_disputes_conquer:0 "[$TARGET.GetAdjective] Territorial Dispute"
- border_disputes_conquer_desc:0 "Pushing for the resolution of the [$TARGET.GetAdjective] territorial disputes is likely to go our way. We should however be prepared for war."
- prepare_for_war_conquer:0 "Prepare for War"
- prepare_for_war_conquer_desc:0 "We know it, they know it - war is inevitable. They'll certainly be prepared and we must make sure we are as well."
- neighbor_war_conquer:0 "Neighbor War"
- neighbor_war_conquer_desc:0 "All that is left to do is a formal declaration of war."
- border_disputes_nw:0 "[$TARGET.GetAdjective] Territorial Dispute"
- border_disputes_nw_desc:0 "Pushing for the resolution of the [$TARGET.GetAdjective] territorial disputes is likely to go our way. We should however be prepared for war."
- prepare_for_war_nw:0 "Prepare for War"
- prepare_for_war_nw_desc:0 "We know it, they know it - war is inevitable. They'll certainly be prepared and we must make sure we are as well."
- neighbor_war_nw:0 "Neighbor War"
- neighbor_war_nw_desc:0 "All that is left to do is a formal declaration of war."
- neighbor_war_NF_threat:0 "Neighbor War"
- not_in_border_conflict_tooltip:0 "Not involved in a border dispute"
- potential_take_core_target_tooltip:0 "Owns our cores"
- potential_communist_puppet_target_tooltip:0 "Is not Communist"
- potential_fascist_annex_target_tooltip:0 "Is not Fascist"
- potential_radical_annex_target_tooltip:0 "Is not Radical"
- potential_take_state_target_tooltip:0 "Controls at least 2 states"
- potential_border_war_target_tooltip:0 "Potential rival for border conflict"
- not_allied_or_subject_of_one_another_tooltip:0 "Not allies or subjects of one another"
- in_weak_faction_tooltip:0 "Weaker faction than ours\n(Us: §Y[?var:their_enemies]§! Divisions Them: §Y[?var:their_faction]§! Divisions)"
- is_beatable_tooltip:0 "We can beat them"
- reclaim_cores:0 "reclaim_cores"
- raise_matter:0 "raise_matter"
- build_public_support:0 "build_public_support"
- territory_or_war:0 "territory_or_war"
- war_plan:0 "war_plan"
- declare_war:0 "declare_war"
- cleanup_revanchism:0 "cleanup_revanchism"
+ border_disputes_shared:0 "Disputa territorial [$TARGET.GetAdjFS]"
+ border_disputes_shared_desc:0 "Es probable que impulsemos la resolución de las disputas territoriales [$TARGET.GetAdjFP]. Sin embargo, deberíamos estar preparados para la guerra".
+ prepare_for_war_shared:0 "Prepararnos para la guerra"
+ prepare_for_war_shared_desc:0 "Lo sabemos, ellos lo saben, la guerra es inevitable. Seguramente estarán preparados y debemos asegurarnos de que nosotros también lo estemos".
+ neighbor_war_shared:0 "Guerra de vecinos"
+ neighbour_war_shared_desc:0 "Todo lo que queda por hacer es una declaración formal de guerra".
+ border_disputes_conquer:0 "Disputa territorial [$TARGET.GetAdjFS]"
+ border_disputes_conquer_desc:0 "Es probable que impulsemos por la resolución de las disputas territoriales [$TARGET.GetAdjFP]. Sin embargo, debemos estar preparados para la guerra".
+ prepare_for_war_conquer:0 "Prepararnos para la guerra"
+ prepare_for_war_conquer_desc:0 "Lo sabemos, ellos lo saben, la guerra es inevitable. Seguramente estarán preparados y debemos asegurarnos de que nosotros también lo estemos".
+ neighbour_war_conquer:0 "Guerra de vecinos"
+ neighbour_war_conquer_desc:0 "Todo lo que queda por hacer es una declaración formal de guerra".
+ border_disputes_nw:0 "Disputa territorial [$TARGET.GetAdjFS]"
+ border_disputes_nw_desc:0 "Es probable que impulsemos la resolución de las disputas territoriales [$TARGET.GetAdjFP]. Sin embargo, debemos estar preparados para la guerra".
+ prepare_for_war_nw:0 "Prepararnos para la guerra"
+ prepare_for_war_nw_desc:0 "Lo sabemos, ellos lo saben; la guerra es inevitable. Sin duda estarán preparados y debemos asegurarnos de que nosotros también lo estemos".
+ neighbor_war_nw:0 "Guerra de vecinos"
+ neighbour_war_nw_desc:0 "Todo lo que queda por hacer es una declaración formal de guerra".
+ neighbour_war_NF_threat:0 "Guerra de vecinos"
+ not_in_border_conflict_tooltip:0 "No participa en una disputa fronteriza"
+ potential_take_core_target_tooltip:0 "Posee nuestros territorios esenciales"
+ potential_communist_puppet_target_tooltip:0 "No es comunista"
+ potential_fascist_annex_target_tooltip:0 "No es fascista"
+ potential_radical_annex_target_tooltip:0 "No es radical"
+ potential_take_state_target_tooltip:0 "Controla al menos 2 estados"
+ potential_border_war_target_tooltip:0 "Potencial rival para el conflicto fronterizo"
+ not_allied_or_subject_of_one_another_tooltip:0 "No son aliados ni súbditos unos de otros"
+ in_weak_faction_tooltip:0 "Facción más débil que la nuestra\n (Nosotros: §Y[?var:their_enemies]§! divisiones Ellos: §Y[?var:their_faction]§! divisiones)"
+ is_beatable_tooltip:0 "Podemos vencerlos"
+ reclaim_cores:0 "Reclamar territorios esenciales"
+ reclaim_cores_desc:0 "Por todos los medios necesarios, debemos recuperar la tierra que nos quitaron ilegalmente en el pasado".
+ revanchism:0 "Revanchismo"
+ revanchism_desc:0 "El revanchismo, de la palabra francesa para 'venganza', es el anhelo por la devolución de la tierra perdida a la nación. Tanto en el amor, la guerra y la paz, nuestro pueblo estará dispuesto a hacer mayores sacrificios por el regreso de nuestro suelo sagrado ".
+ revanchism_fasc:0 "Revanchism"
+ revanchism_fasc_desc:0 "El revanchismo, de la palabra francesa para 'venganza', es el anhelo por la devolución de la tierra perdida para la nación. En el amor, la guerra y la paz por igual, nuestro pueblo estará dispuesto a hacer mayores sacrificios por el regreso de nuestro suelo sagrado ".
+ revanchism_reduction:0 "§G-50% §! Revanchismo\n"
+ raise_matter:0 "Plantee la cuestión [$TARGET.GetAdjFS]"
+ raise_matter_desc:0 "Al plantear el asunto de [$TARGET.GetName] que ocupa nuestro territorio principal y obtener apoyo para él en el Parlamento, nos aseguramos de que cualquier acción que tomemos en esta dirección tenga una base legal válida".
+ build_public_support:0 "Crear soporte público"
+ build_public_support_desc:0 "Debemos usar la fuerza solo como último recurso. Si llegamos a eso, debemos asegurarnos de que tenemos el apoyo del público en general".
+ territory_or_war:0 "Territorio o guerra"
+ territory_or_war_desc:0 "Envía un ultimátum a [$TARGET.GetName] - ¡devuelve nuestra tierra o la tomaremos por la fuerza!"
+ full_controll_of_our_cores:0 "Tienen control total de nuestros territorios esenciales"
+ territory_or_war_NF_threat:0 "Territorio exigido"
+ war_plan:0 "Plan de guerra [$TARGET.GetName]"
+ war_plan_desc:0 "Lo sabemos, ellos lo saben, la guerra es inevitable. Sin duda, estarán preparados y debemos asegurarnos de que nosotros también lo estemos".
+ war_plan_NF_threat:0 "Movilizado para la guerra"
+ declare_war:0 "Declare la guerra a [$TARGET.GetName]"
+ declare_war_desc:0 "Todo lo que queda por hacer es una declaración formal de guerra".
+ declare_war_NF_threat:0 "Objetivo de guerra ganado"
+ cleanup_revanchism:0 "Poner fin al revanchismo con [$TARGET.GetName]"
+ cleanup_revanchism_desc:0 "Hemos recuperado con éxito nuestro territorio principal de [$TARGET.GetName]".
+ decrease_revanchism:0 "§G-0.1§! base Revanchismo por territorio esencial\n"
