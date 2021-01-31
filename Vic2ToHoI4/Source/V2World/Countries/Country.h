@@ -48,7 +48,7 @@ class Country
 	void setAtWar() { atWar = true; }
 	void consolidateConquerStrategies(const std::map<int, std::shared_ptr<Province>>& allProvinces)
 	{
-		vic2AI->consolidateConquerStrategies(allProvinces);
+		vic2AI.consolidateConquerStrategies(allProvinces);
 	}
 
 	void eatCountry(Country& target, bool debug);
@@ -126,7 +126,7 @@ class Country
 	std::set<std::string> technologiesAndInventions;
 
 	std::map<std::string, Relations> relations;
-	std::unique_ptr<AI> vic2AI;
+	AI vic2AI;
 	bool civilized = false;
 
 	std::vector<Army> armies;

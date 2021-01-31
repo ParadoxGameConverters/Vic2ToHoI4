@@ -870,7 +870,7 @@ TEST(Vic2World_Countries_CountryTests, AiDefaultsToEmpty)
 										  *Vic2::StateLanguageCategories::Builder{}.build(),
 										  0.05F);
 
-	ASSERT_TRUE(country->getAI()->getStrategies().empty());
+	ASSERT_TRUE(country->getAI().getStrategies().empty());
 }
 
 
@@ -897,10 +897,10 @@ TEST(Vic2World_Countries_CountryTests, AiCanBeImported)
 										  *Vic2::StateLanguageCategories::Builder{}.build(),
 										  0.05F);
 
-	ASSERT_EQ(1, country->getAI()->getStrategies().size());
-	ASSERT_EQ("protect", country->getAI()->getStrategies()[0].getType());
-	ASSERT_EQ("TWO", country->getAI()->getStrategies()[0].getID());
-	ASSERT_EQ(42, country->getAI()->getStrategies()[0].getValue());
+	ASSERT_EQ(1, country->getAI().getStrategies().size());
+	ASSERT_EQ("protect", country->getAI().getStrategies()[0].getType());
+	ASSERT_EQ("TWO", country->getAI().getStrategies()[0].getID());
+	ASSERT_EQ(42, country->getAI().getStrategies()[0].getValue());
 }
 
 
@@ -935,7 +935,7 @@ TEST(Vic2World_Countries_CountryTests, AiConquerStrategiesCanBeConsolidated)
 		 {std::make_pair(1, Vic2::Province::Builder{}.setNumber(1).setOwner("TWO").build()),
 			  std::make_pair(2, Vic2::Province::Builder{}.setNumber(2).setOwner("TWO").build())});
 
-	ASSERT_EQ(12, country->getAI()->getConsolidatedStrategies().find("TWO")->second);
+	ASSERT_EQ(12, country->getAI().getConsolidatedStrategies().find("TWO")->second);
 }
 
 

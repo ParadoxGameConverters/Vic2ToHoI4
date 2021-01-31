@@ -9,6 +9,7 @@
 #include "HOI4World/Map/StrategicRegions.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Parser.h"
+#include "V2World/Countries/Country.h"
 #include "V2World/States/State.h"
 #include <map>
 #include <optional>
@@ -96,7 +97,7 @@ class States: commonItems::parser
 		 const std::string& newOwner,
 		 const Vic2::World& sourceWorld);
 
-	void createStates(const std::map<std::string, std::unique_ptr<Vic2::Country>>& sourceCountries,
+	void createStates(const std::map<std::string, Vic2::Country>& sourceCountries,
 		 const std::map<int, std::shared_ptr<Vic2::Province>>& sourceProvinces,
 		 const std::map<int, Province>& theProvinces,
 		 const ImpassableProvinces& theImpassableProvinces,
@@ -113,7 +114,7 @@ class States: commonItems::parser
 		 const std::string& stateOwner,
 		 const ImpassableProvinces& theImpassableProvinces,
 		 const CountryMapper& countryMapper,
-		 const std::map<std::string, std::unique_ptr<Vic2::Country>>& sourceCountries,
+		 const std::map<std::string, Vic2::Country>& sourceCountries,
 		 const CoastalProvinces& theCoastalProvinces,
 		 const Vic2::StateDefinitions& theStateDefinitions,
 		 const StrategicRegions& strategicRegions,
@@ -134,7 +135,7 @@ class States: commonItems::parser
 	static std::vector<std::set<int>> consolidateProvinceSets(std::vector<std::set<int>> connectedProvinceSets,
 		 const std::map<int, int>& provinceToStrategicRegionMap);
 	void addProvincesAndCoresToNewState(State& newState,
-		 const std::map<std::string, std::unique_ptr<Vic2::Country>>& sourceCountries,
+		 const std::map<std::string, Vic2::Country>& sourceCountries,
 		 const std::set<int>& provinceNumbers,
 		 const Mappers::ProvinceMapper& provinceMapper,
 		 const std::map<int, std::shared_ptr<Vic2::Province>>& vic2Provinces);

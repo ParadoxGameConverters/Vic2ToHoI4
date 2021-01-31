@@ -201,7 +201,7 @@ void HoI4::World::convertCountries(const Vic2::World& sourceWorld)
 
 	for (const auto& [tag, country]: sourceWorld.getCountries())
 	{
-		convertCountry(tag, *country, *flagsToIdeasMapper);
+		convertCountry(tag, country, *flagsToIdeasMapper);
 	}
 
 	int numHumanCountries = 0;
