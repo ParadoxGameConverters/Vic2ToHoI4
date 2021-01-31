@@ -3,6 +3,7 @@
 #include "V2World/Provinces/ProvinceBuilder.h"
 #include "V2World/States/State.h"
 #include "V2World/States/StateBuilder.h"
+#include "V2World/States/StateDefinitionsBuilder.h"
 #include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 
@@ -10,7 +11,7 @@
 
 TEST(Vic2World_States_StateTests, ProvincesDefaultToEmpty)
 {
-	Vic2::State state;
+	const Vic2::State state;
 
 	ASSERT_EQ(0, state.getProvinces().size());
 }
@@ -428,4 +429,83 @@ TEST(Vic2World_States_StateTests, CapitalistsNotCappedByFactoryLevel)
 	state->determineEmployedWorkers();
 
 	ASSERT_EQ(40000, state->getEmployedWorkers());
+}
+
+
+TEST(Vic2World_States_StateTests, EatingStateAbsorbsProvinces)
+{
+	Vic2::State state;
+	const auto state2 = Vic2::State::Builder{}
+							.setProvinceNumbers({1, 2, 3})
+							.setProvinces({Vic2::Province::Builder{}.setNumber(1).build(),
+								 Vic2::Province::Builder{}.setNumber(2).build(),
+								 Vic2::Province::Builder{}.setNumber(3).build()})
+							.build();
+
+	state.eatState(*state2, Vic2::StateDefinitions());
+
+	ASSERT_THAT(state.getProvinceNumbers(), testing::ElementsAre(1, 2, 3));
+	std::set<int> provinceNumbers;
+	for (const auto& province: state.getProvinces())
+	{
+		provinceNumbers.insert(province->getNumber());
+	}
+	ASSERT_THAT(provinceNumbers, testing::ElementsAre(1, 2, 3));
+}
+
+
+TEST(Vic2World_States_StateTests, EatingStateCanMakePartialStatesWhole)
+{
+	Vic2::State state;
+	const auto state2 = Vic2::State::Builder{}.setProvinceNumbers({1, 2, 3}).build();
+
+	state.eatState(*state2,
+		 *Vic2::StateDefinitions::Builder().setStateMap({{1, {1, 2, 3}}, {2, {1, 2, 3}}, {3, {1, 2, 3}}}).build());
+
+	ASSERT_FALSE(state.isPartialState());
+}
+
+
+TEST(Vic2World_States_StateTests, EatingStateCanLeavePartialStatesPartial)
+{
+	Vic2::State state;
+	const auto state2 = Vic2::State::Builder{}.setProvinceNumbers({1, 2, 3}).build();
+
+	state.eatState(*state2,
+		 *Vic2::StateDefinitions::Builder()
+				.setStateMap({{1, {1, 2, 3, 4}}, {2, {1, 2, 3, 4}}, {3, {1, 2, 3, 4}}, {4, {1, 2, 3, 4}}})
+				.build());
+
+	ASSERT_TRUE(state.isPartialState());
+}
+
+
+TEST(Vic2World_States_StateTests, EatingStateAbsorbsWorkers)
+{
+	auto state =
+		 Vic2::State::Builder{}
+			  .setProvinces(
+					{Vic2::Province::Builder{}
+							  .setOwner("TAG")
+							  .setNumber(1)
+							  .setCores({"TAG"})
+							  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("craftsmen").setSize(12).build()})
+							  .build()})
+						  .setFactoryLevel(1)
+							.build();
+	const auto state2 =
+		 Vic2::State::Builder{}
+			  .setProvinces(
+					{Vic2::Province::Builder{}
+							  .setOwner("TAG")
+							  .setNumber(2)
+							  .setCores({"TAG"})
+							  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("craftsmen").setSize(12).build()})
+							  .build()})
+							.setFactoryLevel(2)
+							.build();
+
+	state->eatState(*state2, Vic2::StateDefinitions());
+
+	ASSERT_EQ(24, state->getEmployedWorkers());
 }
