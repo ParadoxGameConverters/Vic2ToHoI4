@@ -38,6 +38,7 @@
   <ItemGroup>
     <ClCompile Include="..\common_items\Color.cpp" />
     <ClCompile Include="..\common_items\CommonFunctions.cpp" />
+    <ClCompile Include="..\common_items\ConvenientParser.cpp" />
     <ClCompile Include="..\common_items\Date.cpp" />
     <ClCompile Include="..\common_items\GameVersion.cpp" />
     <ClCompile Include="..\common_items\iconvlite.cpp" />

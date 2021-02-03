@@ -1401,6 +1401,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Modifiers\OutDynamicModifiers.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Modifiers</Filter>
     </ClCompile>
+    <ClCompile Include="..\common_items\ConvenientParser.cpp">
+      <Filter>Vic2ToHoI4 files\common items</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
