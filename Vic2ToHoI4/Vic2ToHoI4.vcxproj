@@ -130,6 +130,8 @@
   <ItemGroup>
     <ClCompile Include="..\common_items\Color.cpp" />
     <ClCompile Include="..\common_items\CommonFunctions.cpp" />
+    <ClCompile Include="..\common_items\ConvenientParser.cpp" />
+    <ClCompile Include="..\common_items\ConverterVersion.cpp" />
     <ClCompile Include="..\common_items\Date.cpp" />
     <ClCompile Include="..\common_items\GameVersion.cpp" />
     <ClCompile Include="..\common_items\iconvlite.cpp" />
@@ -278,7 +280,6 @@
     <ClCompile Include="Source\OutHoi4\Sounds\OutSounds.cpp" />
     <ClCompile Include="Source\OutHoi4\States\OutHoI4State.cpp" />
     <ClCompile Include="Source\OutHoi4\States\OutHoI4States.cpp" />
-    <ClCompile Include="Source\OutHoi4\Version\outVersion.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\Decision.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\Decisions.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsInCategory.cpp" />
@@ -388,7 +389,6 @@
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\VersionedMappingsFactory.cpp" />
-    <ClCompile Include="Source\Mappers\VersionParser\VersionParser.cpp" />
     <ClCompile Include="Source\V2World\Ai\AIFactory.cpp" />
     <ClCompile Include="Source\V2World\Countries\CommonCountriesDataFactory.cpp" />
     <ClCompile Include="Source\V2World\Countries\CommonCountryDataFactory.cpp" />
@@ -446,6 +446,8 @@
     <ClInclude Include="..\common_items\Color.h" />
     <ClInclude Include="..\common_items\CommonFunctions.h" />
     <ClInclude Include="..\common_items\CommonRegexes.h" />
+    <ClInclude Include="..\common_items\ConvenientParser.h" />
+    <ClInclude Include="..\common_items\ConverterVersion.h" />
     <ClInclude Include="..\common_items\Date.h" />
     <ClInclude Include="..\common_items\GameVersion.h" />
     <ClInclude Include="..\common_items\iconvlite.h" />
@@ -623,7 +625,6 @@
     <ClInclude Include="Source\OutHoi4\Sounds\OutSounds.h" />
     <ClInclude Include="Source\OutHoi4\States\OutHoI4State.h" />
     <ClInclude Include="Source\OutHoi4\States\OutHoI4States.h" />
-    <ClInclude Include="Source\OutHoi4\Version\outVersion.h" />
     <ClInclude Include="Source\HOI4World\Decisions\Decision.h" />
     <ClInclude Include="Source\HOI4World\Decisions\Decisions.h" />
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsInCategory.h" />
@@ -749,7 +750,6 @@
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapping.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMappingTypes.h" />
     <ClInclude Include="Source\Mappers\Provinces\VersionedMappings.h" />
-    <ClInclude Include="Source\Mappers\VersionParser\VersionParser.h" />
     <ClInclude Include="Source\V2World\Ai\AIStrategyFactory.h" />
     <ClInclude Include="Source\V2World\Ai\AIFactory.h" />
     <ClInclude Include="Source\V2World\Countries\CommonCountriesDataFactory.h" />

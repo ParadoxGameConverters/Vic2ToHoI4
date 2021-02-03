@@ -1,5 +1,5 @@
+#include "ConverterVersion.h"
 #include "Log.h"
-#include "Mappers/VersionParser/VersionParser.h"
 #include "Vic2ToHoI4Converter.h"
 
 
@@ -8,8 +8,7 @@ int main(const int argc, const char* argv[])
 {
 	try
 	{
-		const mappers::VersionParser versionParser;
-		Log(LogLevel::Info) << versionParser;
+		Log(LogLevel::Info) << commonItems::ConverterVersionParser().importVersion("../version.txt");
 		Log(LogLevel::Info) << "Built on " << __TIMESTAMP__;
 		Log(LogLevel::Progress) << "0%";
 		ConvertV2ToHoI4();

@@ -76,9 +76,6 @@
     <Filter Include="HoI4World\Ideologies">
       <UniqueIdentifier>{5ca39d58-45d2-4dcb-bd6a-9fd4b774d4a8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Mappers\Versionparser">
-      <UniqueIdentifier>{0c08d158-43c3-4134-987f-ed0267f4ab9d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="HoI4World\GameRules">
       <UniqueIdentifier>{86be07e0-2152-44da-8224-d6336c3f4257}</UniqueIdentifier>
     </Filter>
@@ -123,9 +120,6 @@
     </Filter>
     <Filter Include="OutHoi4\Ideologies">
       <UniqueIdentifier>{6fc8d6c8-1ae7-4ab9-b6b3-7865848dcf79}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="OutHoi4\Version">
-      <UniqueIdentifier>{c0a59499-5a02-42d7-aca3-ac699087bab8}</UniqueIdentifier>
     </Filter>
     <Filter Include="OutHoi4\GameRules">
       <UniqueIdentifier>{689b88ea-3de7-4920-8b8d-3876eadee40e}</UniqueIdentifier>
@@ -651,12 +645,6 @@
     <ClCompile Include="Source\HOI4World\ShipTypes\ShipUpgrades.cpp">
       <Filter>HoI4World\ShipTypes</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mappers\VersionParser\VersionParser.cpp">
-      <Filter>Mappers\Versionparser</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\OutHoi4\Version\outVersion.cpp">
-      <Filter>OutHoi4\Version</Filter>
-    </ClCompile>
     <ClCompile Include="Source\HOI4World\GameRules\GameRuleOption.cpp">
       <Filter>HoI4World\GameRules</Filter>
     </ClCompile>
@@ -1174,6 +1162,12 @@
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMapperFactory.cpp">
       <Filter>Mappers\Provinces</Filter>
     </ClCompile>
+    <ClCompile Include="..\common_items\ConverterVersion.cpp">
+      <Filter>CommonItems</Filter>
+    </ClCompile>
+    <ClCompile Include="..\common_items\ConvenientParser.cpp">
+      <Filter>CommonItems</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1645,12 +1639,6 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\ShipTypes\ShipUpgrades.h">
       <Filter>HoI4World\ShipTypes</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Mappers\VersionParser\VersionParser.h">
-      <Filter>Mappers\Versionparser</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\OutHoi4\Version\outVersion.h">
-      <Filter>OutHoi4\Version</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\GameRules\GameRuleOption.h">
       <Filter>HoI4World\GameRules</Filter>
@@ -2312,6 +2300,12 @@
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\Modifiers\OutModifier.h">
       <Filter>OutHoi4\Modifiers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common_items\ConverterVersion.h">
+      <Filter>CommonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="..\common_items\ConvenientParser.h">
+      <Filter>CommonItems</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -18680,9 +18674,6 @@
     <CopyFileToFolders Include="Data_Files\configuration-example.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\version.txt">
-      <Filter>Data Files</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Configurables\ai_peaces.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
@@ -20110,6 +20101,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configurables\grammar.txt">
       <Filter>Data Files\Configurables</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\version.txt">
+      <Filter>Data Files</Filter>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
