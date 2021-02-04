@@ -34,12 +34,16 @@ class graphicsCultureGroup: commonItems::parser
   public:
 	explicit graphicsCultureGroup(std::istream& theStream);
 
+	auto getArmyPortraits() const { return armyPortraits; }
+	auto getNavyPortraits() const { return navyPortraits; }
 	auto getLeaderPortraits() const { return leaderPortraits; }
 	auto getIdeologyMinisterPortraits() const { return ideologyMinisterPortraits; }
 	auto getGraphicalCulture() const { return graphicalCulture; }
 	auto getGraphicalCulture2D() const { return graphicalCulture2D; }
 
   private:
+	std::vector<std::string> armyPortraits;
+	std::vector<std::string> navyPortraits;
 	std::map<std::string, std::vector<std::string>> leaderPortraits;
 	std::map<std::string, std::vector<std::string>> ideologyMinisterPortraits;
 	std::string graphicalCulture;
@@ -49,6 +53,12 @@ class graphicsCultureGroup: commonItems::parser
 
 graphicsCultureGroup::graphicsCultureGroup(std::istream& theStream)
 {
+	registerKeyword("army_portraits", [this](std::istream& theStream) {
+		armyPortraits = commonItems::stringList(theStream).getStrings();
+	});
+	registerKeyword("navy_portraits", [this](std::istream& theStream) {
+		navyPortraits = commonItems::stringList(theStream).getStrings();
+	});
 	registerKeyword("leader_portraits", [this](std::istream& theStream) {
 		ideologyToPortraitsMapping mappings(theStream);
 		leaderPortraits = mappings.getMap();
@@ -76,6 +86,8 @@ void graphicsMapper::init()
 
 	registerRegex(commonItems::catchallRegex, [this](const std::string& cultureGroupName, std::istream& theStream) {
 		graphicsCultureGroup newCultureGroup(theStream);
+		armyPortraitMappings[cultureGroupName] = newCultureGroup.getArmyPortraits();
+		navyPortraitMappings[cultureGroupName] = newCultureGroup.getNavyPortraits();
 		graphicalCultureMap[cultureGroupName] = newCultureGroup.getGraphicalCulture();
 		graphicalCulture2dMap[cultureGroupName] = newCultureGroup.getGraphicalCulture2D();
 		loadLeaderPortraitMappings(cultureGroupName, newCultureGroup.getLeaderPortraits());
@@ -119,6 +131,30 @@ void graphicsMapper::loadIdeologyMinisterPortraitMappings(const std::string& cul
 	{
 		cultureGroupMappings->second.insert(portraitMapping);
 	}
+}
+
+
+const std::vector<std::string>& graphicsMapper::getArmyPortraits(const std::string& cultureGroup)
+{
+	auto mapping = armyPortraitMappings.find(cultureGroup);
+	if (mapping == armyPortraitMappings.end())
+	{
+		return {};
+	}
+
+	return mapping->second;
+}
+
+
+const std::vector<std::string>& graphicsMapper::getNavyPortraits(const std::string& cultureGroup)
+{
+	auto mapping = navyPortraitMappings.find(cultureGroup);
+	if (mapping == navyPortraitMappings.end())
+	{
+		return {};
+	}
+
+	return mapping->second;
 }
 
 
