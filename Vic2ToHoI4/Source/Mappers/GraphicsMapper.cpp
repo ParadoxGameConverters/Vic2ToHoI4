@@ -134,7 +134,7 @@ void graphicsMapper::loadIdeologyMinisterPortraitMappings(const std::string& cul
 }
 
 
-const std::vector<std::string>& graphicsMapper::getArmyPortraits(const std::string& cultureGroup)
+const std::vector<std::string> graphicsMapper::getArmyPortraits(const std::string& cultureGroup)
 {
 	auto mapping = armyPortraitMappings.find(cultureGroup);
 	if (mapping == armyPortraitMappings.end())
@@ -146,7 +146,7 @@ const std::vector<std::string>& graphicsMapper::getArmyPortraits(const std::stri
 }
 
 
-const std::vector<std::string>& graphicsMapper::getNavyPortraits(const std::string& cultureGroup)
+const std::vector<std::string> graphicsMapper::getNavyPortraits(const std::string& cultureGroup)
 {
 	auto mapping = navyPortraitMappings.find(cultureGroup);
 	if (mapping == navyPortraitMappings.end())

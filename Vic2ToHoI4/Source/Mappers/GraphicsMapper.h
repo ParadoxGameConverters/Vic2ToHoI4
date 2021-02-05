@@ -27,8 +27,8 @@ class graphicsMapper: commonItems::parser
 
 	class Builder;
 
-	const std::vector<std::string>& getArmyPortraits(const std::string& cultureGroup);
-	const std::vector<std::string>& getNavyPortraits(const std::string& cultureGroup);
+	const std::vector<std::string> getArmyPortraits(const std::string& cultureGroup);
+	const std::vector<std::string> getNavyPortraits(const std::string& cultureGroup);
 	std::string getLeaderPortrait(const std::string& cultureGroup, const std::string& ideology);
 	std::string getIdeologyMinisterPortrait(const std::string& cultureGroup, const std::string& ideology);
 	std::string getGeneralPortrait(const std::string& cultureGroup) const;
