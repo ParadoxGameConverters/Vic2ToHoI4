@@ -55,6 +55,8 @@ HoI4::Country::Country(std::string tag,
 	{
 		graphicalCulture2d = *possibleGraphicalCulture2d;
 	}
+	armyPortraits = theGraphics.getArmyPortraits(primaryCultureGroup);
+	navyPortraits = theGraphics.getNavyPortraits(primaryCultureGroup);
 	communistAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "communism");
 	democraticAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "democratic");
 	neutralityAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "neutrality");
