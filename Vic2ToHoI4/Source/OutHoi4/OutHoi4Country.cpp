@@ -185,6 +185,50 @@ void HoI4::outputIdeaGraphics(std::ostream& ideasFile, const Country& theCountry
 }
 
 
+void HoI4::outputPortraits(std::ostream& portraitsFile, const HoI4::Country& theCountry)
+{
+	const auto& armyPortraits = theCountry.getArmyPortraits();
+	const auto& navyPortraits = theCountry.getNavyPortraits();
+	if (armyPortraits.empty() && navyPortraits.empty())
+	{
+		return;
+	}
+
+	portraitsFile << theCountry.getTag() << " = {\n";
+
+	if (!armyPortraits.empty())
+	{
+		portraitsFile << "\tarmy = {\n";
+		portraitsFile << "\t\tmale = {\n";
+		for (const auto& portrait: armyPortraits)
+		{
+			portraitsFile << "\t\t\t\"" << portrait << "\"\n";
+		}
+		portraitsFile << "\t\t}\n";
+		portraitsFile << "\t}\n";
+	}
+
+	if (!armyPortraits.empty() && !navyPortraits.empty())
+	{
+		portraitsFile << "\n";
+	}
+
+	if (!navyPortraits.empty())
+	{
+		portraitsFile << "\tnavy = {\n";
+		portraitsFile << "\t\tmale = {\n";
+		for (const auto& portrait: navyPortraits)
+		{
+			portraitsFile << "\t\t\t\"" << portrait << "\"\n";
+		}
+		portraitsFile << "\t\t}\n";
+		portraitsFile << "\t}\n";
+	}
+
+	portraitsFile << "}\n\n";
+}
+
+
 void outputHistory(const HoI4::Country& theCountry, const Configuration& theConfiguration);
 void outputOOB(const std::vector<HoI4::DivisionTemplateType>& divisionTemplates,
 	 const HoI4::Country& theCountry,

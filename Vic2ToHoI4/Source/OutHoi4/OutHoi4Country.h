@@ -23,6 +23,7 @@ void outputColors(std::ostream& out, const Country& theCountry);
 void outputToNamesFiles(std::ostream& namesFile, const Names& names, const Country& theCountry);
 void outputToUnitNamesFiles(const Country& theCountry, const Configuration& theConfiguration);
 void outputIdeaGraphics(std::ostream& ideasFile, const Country& theCountry);
+void outputPortraits(std::ostream& portraitsFile, const Country& theCountry);
 void outputCountry(const std::set<Advisor>& ideologicalMinisters,
 	 const std::vector<DivisionTemplateType>& divisionTemplates,
 	 const Country& theCountry,
