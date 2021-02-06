@@ -135,6 +135,8 @@ class Country
 	[[nodiscard]] const auto& getColor() const { return color; }
 	[[nodiscard]] const std::string& getGraphicalCulture() const { return graphicalCulture; }
 	[[nodiscard]] const std::string& getGraphicalCulture2d() const { return graphicalCulture2d; }
+	[[nodiscard]] const auto& getArmyPortraits() const { return armyPortraits; }
+	[[nodiscard]] const auto& getNavyPortraits() const { return navyPortraits; }
 	[[nodiscard]] const auto& getCommunistAdvisorPortrait() const { return communistAdvisorPortrait; }
 	[[nodiscard]] const auto& getDemocraticAdvisorPortrait() const { return democraticAdvisorPortrait; }
 	[[nodiscard]] const auto& getNeutralityAdvisorPortrait() const { return neutralityAdvisorPortrait; }
@@ -264,6 +266,8 @@ class Country
 	commonItems::Color color;
 	std::string graphicalCulture = "western_european_gfx";
 	std::string graphicalCulture2d = "western_european_2d";
+	std::vector<std::string> armyPortraits;
+	std::vector<std::string> navyPortraits;
 	std::string communistAdvisorPortrait;
 	std::string democraticAdvisorPortrait;
 	std::string neutralityAdvisorPortrait;

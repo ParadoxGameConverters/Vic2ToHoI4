@@ -400,6 +400,21 @@ void HoI4::outputCountries(const std::set<Advisor>& activeIdeologicalAdvisors,
 	}
 	ideasFile << "\n";
 	ideasFile << "}\n";
+	ideasFile.close();
+
+	std::ofstream portraitsFile("output/" + outputName + "/portraits/conv_portraits.txt");
+	if (!portraitsFile.is_open())
+	{
+		throw std::runtime_error("Could not open output/" + outputName + "/interface/conv_portraits.gfx");
+	}
+	for (const auto& country: countries)
+	{
+		if (country.second->getCapitalState())
+		{
+			outputPortraits(portraitsFile, *country.second);
+		}
+	}
+	portraitsFile.close();
 }
 
 
