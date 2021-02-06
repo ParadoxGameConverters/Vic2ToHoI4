@@ -15,4 +15,3 @@ mapping = { flag = big_brother_is_watching idea = trotskyite_plot }
 mapping = { flag = we_have_tried_this_once idea = MEX_politicised_army }
 mapping = { flag = GeneralStrike idea = FRA_political_violence }
 mapping = { flag = IlyaGarashinin idea = YUG_idea_croatian_opposition }
-mapping = { flag = state_controlled_rite idea = MEX_church_power_1 }

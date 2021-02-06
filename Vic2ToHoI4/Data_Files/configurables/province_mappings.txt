@@ -1659,13 +1659,12 @@
 	link = { comment = "# # Flanders" }
 	link = { vic2 = 387 hoi4 = 516 } # Brussels -> Brussel
 	link = { vic2 = 388 hoi4 = 6446 } # Bruges -> Oostende
-	link = { vic2 = 389 hoi4 = 6560 hoi4 = 480 } # Ghent -> Gent, Terneuzen
+	link = { vic2 = 389 hoi4 = 6560 hoi4 = 480 hoi4 = 3576 } # Ghent -> Gent, Terneuzen, Kortrijk
 	link = { vic2 = 390 hoi4 = 6598 hoi4 = 11419 hoi4 = 13068 } # Antwerp -> Antwerpen, Turnhout, Leuven
 	link = { vic2 = 391 hoi4 = 9574 } # Hasselt -> Hasselt
 	link = { comment = "# # Wallonia" }
 	link = { vic2 = 392 hoi4 = 3516 hoi4 = 9444 hoi4 = 13081 } # Namur -> Namur, Rochefort, Couvin
-	link = { vic2 = 393 hoi4 = 3576 } # Tournai -> Kortrijk
-	link = { vic2 = 394 hoi4 = 9536 } # Charleroi -> Charleroi
+	link = { vic2 = 394 vic2 = 393 hoi4 = 9536 } # Charleroi, Tournai -> Charleroi
 	link = { vic2 = 395 hoi4 = 11519 hoi4 = 6537 } # Liège -> Liége, Verviers
 	link = { vic2 = 396 hoi4 = 3488 } # Spa -> Eupen
 	link = { vic2 = 398 hoi4 = 9418 hoi4 = 11407 } # Arlon -> Arlon, Bastogne
