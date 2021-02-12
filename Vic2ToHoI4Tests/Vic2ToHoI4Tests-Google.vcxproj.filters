@@ -1265,7 +1265,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\CountryFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\Country.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Technology\TechnologyFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Technology</Filter>
     </ClCompile>
@@ -1403,6 +1402,9 @@
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffects.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ScriptedEffects</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\Country.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2943,14 +2945,6 @@
     <CopyFileToFolders Include="TestFiles\World\MoveArmiesWorld.v2">
       <Filter>TestFiles\World</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mappers\Technology\tech_mappings.txt" />
-    <CopyFileToFolders Include="TestFiles\Mappers\Technology\research_bonus_mappings.txt" />
-    <CopyFileToFolders Include="TestFiles\Localisations\grammar.txt" />
-    <CopyFileToFolders Include="TestFiles\Mappers\FlagsToIdeas\FlagsToIdeasMappings.txt" />
-    <CopyFileToFolders Include="TestFiles\Mods\Dependencies.mod" />
-    <CopyFileToFolders Include="TestFiles\Mods\DependencyOne.mod" />
-    <CopyFileToFolders Include="TestFiles\Mods\DependencyTwo.mod" />
-    <CopyFileToFolders Include="TestFiles\Mods\Dependent.mod" />
     <CopyFileToFolders Include="TestFiles\Mappers\Provinces\vanilla_province_mappings.txt">
       <Filter>TestFiles\Mappers\Provinces</Filter>
     </CopyFileToFolders>
@@ -2973,5 +2967,29 @@
     <CopyFileToFolders Include="TestFiles\Mods\DependencyOne.mod" />
     <CopyFileToFolders Include="TestFiles\Mods\DependencyTwo.mod" />
     <CopyFileToFolders Include="TestFiles\Mods\Dependent.mod" />
+    <CopyFileToFolders Include="TestFiles\Mods\Dependencies.mod">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\DependencyOne.mod">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\DependencyTwo.mod">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mods\Dependent.mod">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\FlagsToIdeas\FlagsToIdeasMappings.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Localisations\grammar.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Technology\research_bonus_mappings.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Technology\tech_mappings.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>
