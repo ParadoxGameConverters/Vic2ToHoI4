@@ -1,19 +1,15 @@
 #include "CountryMappingRuleFactory.h"
-#include "ParserHelpers.h"
 
 
 
 Mappers::CountryMappingRuleFactory::CountryMappingRuleFactory()
 {
 	registerSetter("vic", vic2);
-	registerKeyword("hoi", [this](std::istream& theStream) {
-		hoi4.push_back(commonItems::singleString(theStream).getString());
-	});
+	registerSetter("hoi", hoi4);
 }
 
 
-std::pair<std::string, std::vector<std::string>> Mappers::CountryMappingRuleFactory::importMapping(
-	 std::istream& theStream)
+std::pair<std::string, std::string> Mappers::CountryMappingRuleFactory::importMapping(std::istream& theStream)
 {
 	vic2.clear();
 	hoi4.clear();

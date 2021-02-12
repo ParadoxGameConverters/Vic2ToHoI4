@@ -53,24 +53,7 @@ void CountryMapper::makeOneMapping(const std::string& Vic2Tag, bool debug)
 	bool mapped = false;
 	if (mappingRule != Vic2TagToHoI4TagsRules.end())
 	{
-		auto possibleHoI4Tags = mappingRule->second;
-		mapped = mapToFirstUnusedVic2Tag(possibleHoI4Tags, Vic2Tag, debug);
-	}
-
-	if (!mapped)
-	{
-		std::string HoI4Tag = generateNewHoI4Tag(Vic2Tag);
-		mapToNewTag(Vic2Tag, HoI4Tag, debug);
-	}
-}
-
-
-bool CountryMapper::mapToFirstUnusedVic2Tag(const std::vector<std::string>& possibleHoI4Tags,
-	 const std::string& Vic2Tag,
-	 bool debug)
-{
-	for (auto possibleHoI4Tag: possibleHoI4Tags)
-	{
+		const auto& possibleHoI4Tag = mappingRule->second;
 		if (!tagIsAlreadyAssigned(possibleHoI4Tag))
 		{
 			V2TagToHoI4TagMap.insert(make_pair(Vic2Tag, possibleHoI4Tag));
@@ -79,12 +62,15 @@ bool CountryMapper::mapToFirstUnusedVic2Tag(const std::vector<std::string>& poss
 			{
 				logMapping(Vic2Tag, possibleHoI4Tag, "mapping rule");
 			}
-
-			return true;
+			mapped = true;
 		}
 	}
 
-	return false;
+	if (!mapped)
+	{
+		std::string HoI4Tag = generateNewHoI4Tag(Vic2Tag);
+		mapToNewTag(Vic2Tag, HoI4Tag, debug);
+	}
 }
 
 

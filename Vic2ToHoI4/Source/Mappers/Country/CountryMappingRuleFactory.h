@@ -5,7 +5,6 @@
 
 #include "ConvenientParser.h"
 #include <string>
-#include <vector>
 
 
 
@@ -17,11 +16,11 @@ class CountryMappingRuleFactory: commonItems::convenientParser
   public:
 	CountryMappingRuleFactory();
 
-	std::pair<std::string, std::vector<std::string>> importMapping(std::istream& theStream);
+	std::pair<std::string, std::string> importMapping(std::istream& theStream);
 
   private:
 	std::string vic2;
-	std::vector<std::string> hoi4;
+	std::string hoi4;
 };
 
 } // namespace Mappers

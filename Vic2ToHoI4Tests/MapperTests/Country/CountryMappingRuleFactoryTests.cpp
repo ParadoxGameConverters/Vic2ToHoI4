@@ -36,8 +36,8 @@ TEST(Mappers_Country_CountryMappingRuleFactoryTests, HoI4PartDefaultsToEmpty)
 TEST(Mappers_Country_CountryMappingRuleFactoryTests, HoI4PartCanBeSet)
 {
 	std::stringstream input;
-	input << "hoi = TAG hoi = TWO";
+	input << "hoi = TAG";
 	const auto [unused, HoI4] = Mappers::CountryMappingRuleFactory().importMapping(input);
 
-	ASSERT_THAT(HoI4, testing::ElementsAre("TAG", "TWO"));
+	ASSERT_EQ("TAG", HoI4);
 }
