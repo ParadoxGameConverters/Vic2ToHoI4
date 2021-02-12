@@ -5,7 +5,7 @@
 
 #include "Configuration.h"
 #include "HOI4World/Map/CoastalProvinces.h"
-#include "Mappers/CountryMapping.h"
+#include "Mappers/Country/CountryMapping.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Parser.h"
 #include "StateCategories.h"

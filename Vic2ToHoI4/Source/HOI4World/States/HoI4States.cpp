@@ -11,7 +11,7 @@
 #include "HOI4World/ProvinceDefinitions.h"
 #include "HoI4State.h"
 #include "Log.h"
-#include "Mappers/CountryMapping.h"
+#include "Mappers/Country/CountryMapping.h"
 #include "OSCompatibilityLayer.h"
 #include "StateCategories.h"
 #include "V2World/Localisations/Vic2Localisations.h"

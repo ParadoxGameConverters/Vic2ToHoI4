@@ -3,7 +3,7 @@
 #include "HOI4World/Map/CoastalProvincesBuilder.h"
 #include "HOI4World/States/HoI4State.h"
 #include "HOI4World/States/StateCategoriesBuilder.h"
-#include "Mappers/CountryMapperBuilder.h"
+#include "Mappers/Country/CountryMapperBuilder.h"
 #include "Mappers/Provinces/ProvinceMapperBuilder.h"
 #include "OutHoi4/States/OutHoI4State.h"
 #include "V2World/Pops/PopBuilder.h"

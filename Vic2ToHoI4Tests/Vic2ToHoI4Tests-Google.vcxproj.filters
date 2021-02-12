@@ -22,9 +22,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Localisation.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryMapping.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
@@ -1103,9 +1100,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\ScriptedEffects\OutScriptedEffect.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\ScriptedEffects</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffects.cpp">
-      <Filter>Vic2ToHoI4 files\HoI4\ScriptedEffect</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroups.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Culture</Filter>
     </ClCompile>
@@ -1404,6 +1398,12 @@
     <ClCompile Include="..\common_items\ConvenientParser.cpp">
       <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapping.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffects.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedEffects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1700,9 +1700,6 @@
     <Filter Include="TestFiles\ScriptedEffects">
       <UniqueIdentifier>{b4f66916-2bcb-41a1-9a27-e2fd66607965}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Vic2ToHoI4 files\HoI4\ScriptedEffect">
-      <UniqueIdentifier>{cc258a3d-20a2-4ef7-9bef-95ad3de9c29e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Vic2ToHoI4 files\Vic2\Culture">
       <UniqueIdentifier>{da69dde2-9b1d-48b3-b680-0883c7ce15da}</UniqueIdentifier>
     </Filter>
@@ -1832,6 +1829,9 @@
     <Filter Include="Vic2ToHoI4 files\HoI4\Modifiers">
       <UniqueIdentifier>{06ecf8d8-f6f6-49c0-9829-647be3e1ae08}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\Country">
+      <UniqueIdentifier>{65c80616-fc5d-454c-8ab7-4e589e030579}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -1839,6 +1839,867 @@
   <ItemGroup>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h">
       <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapperBuilder.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapping.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.h">
+      <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.h">
+      <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\FlagsToIdeas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapper.h">
+      <Filter>Vic2ToHoI4 files\Mappers\CountryName</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapperFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\CountryName</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapping.h">
+      <Filter>Vic2ToHoI4 files\Mappers\CountryName</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMappingFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\CountryName</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapper.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapperBuilder.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapperFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapping.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMappingFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMappingTypes.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Provinces\VersionedMappings.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Provinces\VersionedMappingsFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\ResearchBonusMapper.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\ResearchBonusMapperFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\ResearchBonusMapping.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\ResearchBonusMappingFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapper.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapperFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapping.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingBuilder.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Ai\AI.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Ai</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Ai\AIFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Ai</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Ai\AIStrategy.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Ai</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Ai\AIStrategyFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Ai</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountriesDataFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountryData.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountryDataBuilder.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Countries\CommonCountryDataFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Countries\Country.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Countries\CountryBuilder.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Countries\CountryFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Countries\UnitNamesFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroupFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Culture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroups.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Culture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Culture\CultureGroupsFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Culture</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\Agreement.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\AgreementFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\Diplomacy.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\DiplomacyFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\Relations.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\RelationsBuilder.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\RelationsFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueCategoryHelper.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Issues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueHelper.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Issues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Issues\Issues.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Issues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Issues\IssuesBuilder.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Issues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Issues\IssuesFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Issues</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Localisations\LocalisationsFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Localisations\Vic2Localisations.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\Leader.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\LeaderFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\Trait.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\TraitGroup.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\Traits.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\TraitsBuilder.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\Leaders\TraitsFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Military\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\Army.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\ArmyBuilder.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\ArmyFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\Unit.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Military\UnitFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Mods\Mod.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Mods</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Mods\ModBuilder.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Mods</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Mods\ModFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Mods</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Politics\Party.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Politics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Politics\PartyBuilder.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Politics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Politics\PartyFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Politics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Pops\Pop.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Pops</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Pops\PopBuilder.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Pops</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Pops\PopFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Pops</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Provinces\Province.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Provinces\ProvinceBuilder.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Provinces\ProvinceFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Provinces</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\States\BuildingReader.h">
+      <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\States\State.h">
+      <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\States\StateBuilder.h">
+      <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\States\StateDefinitions.h">
+      <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\States\StateDefinitionsBuilder.h">
+      <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\States\StateDefinitionsFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\States\StateFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategories.h">
+      <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategoriesBuilder.h">
+      <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategoriesFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Technology\Inventions.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Technology\InventionsFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Technology\TechnologyFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Technology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Wars\War.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Wars</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Wars\WarBuilder.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Wars</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Wars\WarFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Wars</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Wars\WarGoalFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Wars</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\World\World.h">
+      <Filter>Vic2ToHoI4 files\Vic2\World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\World\WorldFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\World</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.h">
+      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapperBuilder.h">
+      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMappedBuilder.h">
+      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.h">
+      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.h">
+      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decision.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decisions.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategories.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsFile.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsInCategory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\ExiledGovernmentsDecisions.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\ForeignInfluenceDecisions.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\GenericDecisions.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\AgentRecruitmentDecisions.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\IdeologicalDecisions.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\NavalTreatyDecisions.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\PoliticalDecisions.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\ResourceProspectingDecisions.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\StabilityWarSupportDecisions.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AIPeace.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AIPeaces.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\AiPeacesUpdater.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\Faction.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4AIStrategy.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4Relations.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Diplomacy\HoI4War.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Diplomacy</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\CapitulationEvents.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Event.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventHelpers.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventOption.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\Events.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventsBuilder.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\EventsFile.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\GenericEventUpdaters.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\GovernmentInExileEvent.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\LarOccupationEvents.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\GameRules\GameRule.h">
+      <Filter>Vic2ToHoI4 files\HoI4\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\GameRules\GameRuleOption.h">
+      <Filter>Vic2ToHoI4 files\HoI4\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\GameRules\GameRules.h">
+      <Filter>Vic2ToHoI4 files\HoI4\GameRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\Idea.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\IdeaGroup.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\Ideas.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\IdeaUpdaters.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideas</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideologies.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideology.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyFile.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyItems.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.h">
+      <Filter>Vic2ToHoI4 files\HoI4\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.h">
+      <Filter>Vic2ToHoI4 files\HoI4\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.h">
+      <Filter>Vic2ToHoI4 files\HoI4\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogos.h">
+      <Filter>Vic2ToHoI4 files\HoI4\IntelligenceAgencies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Admiral.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Advisor.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\Commander.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeader.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeaderFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\CountryLeadersFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\General.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Leaders\IdeologicalAdvisors.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Leaders</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRule.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRuleBuilder.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRules.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRulesBuilder.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRulesDefinition.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations\ArticleRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\AllReplacementRules.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\GrammarMappings.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacementRule.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacementRules.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\LanguageReplacements.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Localisations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\ActualResources.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\BuildingPosition.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Buildings.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\CoastalProvinces.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\CoastalProvincesBuilder.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Hoi4Building.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Hoi4Province.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\ImpassableProvinces.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapData.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\ProvincePoints.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Region.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Resources.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\ResourcesLink.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegion.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegions.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyArea.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyZone.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\SupplyZones.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Military\Airplane.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Military\DivisionTemplate.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Military\DivisionType.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Military\HoI4Army.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Military\RegimentType.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Military\RegimentTypeGroup.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Military</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\AllMilitaryMappings.h">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\DivisionTemplatesImporter.h">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\HoI4UnitType.h">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MilitaryMappings.h">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MilitaryMappingsFile.h">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MtgUnitMapping.h">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\MtgUnitMappings.h">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\SubstitutesImporter.h">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\UnitMapping.h">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\UnitMappings.h">
+      <Filter>Vic2ToHoI4 files\HoI4\MilitaryMappings</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Modifiers\DynamicModifiers.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Modifiers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Modifiers\Modifier.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Modifiers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureGroupNames.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Names</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Names\CultureNames.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Names</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Names\Names.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Names</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Navies\LegacyNavy.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Navies\LegacyShip.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Navies\LegacyShipTypeNames.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgNavy.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgShip.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Navies\MtgShipTypeNames.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Navies\Navies.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Navies\Navy.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Navies\NavyNames.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Navies\Ship.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Navies</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLaw.h">
+      <Filter>Vic2ToHoI4 files\HoI4\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLaws.h">
+      <Filter>Vic2ToHoI4 files\HoI4\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OccupationLaws\OccupationLawsFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\OccupationLaws</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Operations\Operation.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Operations\OperationFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Operations\Operations.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Operations\OperationsFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Operations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNames.h">
+      <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesMappingFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesMappings.h">
+      <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesMappingsFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSet.h">
+      <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Regions\Regions.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Regions\RegionsFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffect.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffectFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffectFile.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffects.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedEffects</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisation.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedLocalisations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedLocalisations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisations.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedLocalisations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedLocalisations\ScriptedLocalisationsFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedLocalisations</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedTriggers\ScriptedTrigger.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedTriggers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedTriggers\ScriptedTriggers.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedTriggers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedTriggers\ScriptedTriggersUpdater.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ScriptedTriggers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\LegacyShipVariant.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\MtgShipVariant.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\PossibleShipVariants.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipModules.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipUpgrades.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ShipTypes\ShipVariants.h">
+      <Filter>Vic2ToHoI4 files\HoI4\ShipTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffect.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectMapping.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectMappingFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapper.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperLink.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapperLinkFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Sounds\SoundEffectsMapping.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\DefaultState.h">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\DockyardProvince.h">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4State.h">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4StateBuilder.h">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\HoI4States.h">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\StateBuildings.h">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\StateCategories.h">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\StateCategoriesBuilder.h">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\StateCategory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\StateCategoryFile.h">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\States\StateHistory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\States</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\HoI4WarCreator.h">
+      <Filter>Vic2ToHoI4 files\HoI4\WarCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Country.h">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Focus.h">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\HoI4FocusTree.h">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Localisation.h">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\HoI4World.h">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OnActions.h">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.h">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\SharedFocus.h">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Technologies.h">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\TechnologiesBuilder.h">
+      <Filter>Vic2ToHoI4 files\HoI4</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Configuration.h">
+      <Filter>Vic2ToHoI4 files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Vic2ToHoI4Converter.h">
+      <Filter>Vic2ToHoI4 files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

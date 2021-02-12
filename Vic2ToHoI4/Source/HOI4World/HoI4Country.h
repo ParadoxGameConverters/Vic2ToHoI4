@@ -15,7 +15,7 @@
 #include "Leaders/CountryLeader.h"
 #include "Leaders/General.h"
 #include "Map/CoastalProvinces.h"
-#include "Mappers/CountryMapping.h"
+#include "Mappers/Country/CountryMapping.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/GovernmentMapper.h"
 #include "Mappers/GraphicsMapper.h"

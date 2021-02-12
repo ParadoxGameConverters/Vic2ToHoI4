@@ -1,5 +1,5 @@
 #include "HOI4World/Diplomacy/HoI4War.h"
-#include "Mappers/CountryMapperBuilder.h"
+#include "Mappers/Country/CountryMapperBuilder.h"
 #include "V2World/Wars/WarBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
