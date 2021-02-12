@@ -1,38 +1,10 @@
 #include "CountryMapping.h"
+#include "CountryMappingRuleFactory.h"
 #include "Log.h"
 #include "ParserHelpers.h"
 #include "V2World/World/World.h"
 #include <iomanip>
 
-
-
-class countryMappingRule: commonItems::parser
-{
-  public:
-	explicit countryMappingRule(std::istream& theStream);
-
-	std::string getVic2Tag() const { return Vic2Tag; }
-	std::vector<std::string> getHoI4Tags() const { return HoI4Tags; }
-
-  private:
-	std::string Vic2Tag;
-	std::vector<std::string> HoI4Tags;
-};
-
-
-countryMappingRule::countryMappingRule(std::istream& theStream)
-{
-	registerKeyword("vic", [this](std::istream& theStream) {
-		commonItems::singleString mapping(theStream);
-		Vic2Tag = mapping.getString();
-	});
-	registerKeyword("hoi", [this](std::istream& theStream) {
-		commonItems::singleString mapping(theStream);
-		HoI4Tags.push_back(mapping.getString());
-	});
-
-	parseStream(theStream);
-}
 
 
 CountryMapper::CountryMapper(const Vic2::World& srcWorld, bool debug)
@@ -45,9 +17,9 @@ CountryMapper::CountryMapper(const Vic2::World& srcWorld, bool debug)
 
 void CountryMapper::readRules()
 {
-	registerKeyword("link", [this](std::istream& theStream) {
-		countryMappingRule rule(theStream);
-		Vic2TagToHoI4TagsRules.insert(make_pair(rule.getVic2Tag(), rule.getHoI4Tags()));
+	Mappers::CountryMappingRuleFactory countryMappingRuleFactory;
+	registerKeyword("link", [this, &countryMappingRuleFactory](std::istream& theStream) {
+		Vic2TagToHoI4TagsRules.insert(countryMappingRuleFactory.importMapping(theStream));
 	});
 
 	Log(LogLevel::Info) << "\tReading country mapping rules";

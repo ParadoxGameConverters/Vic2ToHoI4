@@ -198,6 +198,7 @@
     <ClCompile Include="Source\Mappers\CountryName\CountryNameMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\CountryName\CountryNameMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\Country\CountryMapping.cpp" />
+    <ClCompile Include="Source\Mappers\Country\CountryMappingRuleFactory.cpp" />
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Technology\ResearchBonusMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Technology\ResearchBonusMappingFactory.cpp" />
@@ -531,6 +532,7 @@
     <ClInclude Include="Source\Mappers\CountryName\CountryNameMappingFactory.h" />
     <ClInclude Include="Source\Mappers\Country\CountryMapperBuilder.h" />
     <ClInclude Include="Source\Mappers\Country\CountryMapping.h" />
+    <ClInclude Include="Source\Mappers\Country\CountryMappingRuleFactory.h" />
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.h" />
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.h" />
     <ClInclude Include="Source\Mappers\GovernmentMapperBuilder.h" />

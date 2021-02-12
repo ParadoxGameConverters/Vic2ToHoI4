@@ -1406,6 +1406,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Countries\Country.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\Countries</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMappingRuleFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\Country\CountryMappingRuleFactoryTests.cpp">
+      <Filter>MapperTests\Country</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1833,6 +1839,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Mappers\Country">
       <UniqueIdentifier>{65c80616-fc5d-454c-8ab7-4e589e030579}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests\Country">
+      <UniqueIdentifier>{0b071c23-7f0d-4632-8207-75baee1198c9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2702,6 +2711,9 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Vic2ToHoI4Converter.h">
       <Filter>Vic2ToHoI4 files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMappingRuleFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

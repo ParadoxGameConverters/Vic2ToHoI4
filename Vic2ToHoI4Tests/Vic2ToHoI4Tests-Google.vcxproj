@@ -109,6 +109,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapping.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMappingRuleFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp" />
@@ -453,6 +454,7 @@
     <ClCompile Include="HoI4WorldTests\TechnologiesTests.cpp" />
     <ClCompile Include="MapperTests\CountryName\CountryNameMapperTests.cpp" />
     <ClCompile Include="MapperTests\CountryName\CountryNameMappingTests.cpp" />
+    <ClCompile Include="MapperTests\Country\CountryMappingRuleFactoryTests.cpp" />
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagsToIdeasMapperTests.cpp" />
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagToIdeaMappingTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\ProvinceMapperTests.cpp" />
@@ -814,6 +816,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMappingFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapperBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapping.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMappingRuleFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.h" />
