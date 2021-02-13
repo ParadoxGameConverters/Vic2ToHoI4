@@ -58,20 +58,20 @@
  border_disputes_shared_desc:0 "Стремление к разрешению [$TARGET.GetAdjective] территориальных споров, вероятно, пойдет нашим путем. Однако мы должны быть готовы к войне".
  prepare_for_war_shared:0 "Готовимся к войне"
  prepare_for_war_shared_desc:0 "Мы это знаем, они это знают - война неизбежна. Они обязательно будут готовы, и мы должны убедиться, что мы тоже".
- neighbour_war_shared:0 "Война соседей"
- neighbour_war_shared_desc:0 "Все, что осталось сделать, это формальное объявление войны".
+ neighbor_war_shared:0 "Война соседей"
+ neighbor_war_shared_desc:0 "Все, что осталось сделать, это формальное объявление войны".
  border_disputes_conquer:0 "[$TARGET.GetAdjective] Территориальный спор"
  border_disputes_conquer_desc:0 "Стремление к разрешению [$TARGET.GetAdjective] территориальных споров, вероятно, пойдет нашим путем. Однако мы должны быть готовы к войне".
  prepare_for_war_conquer:0 "Готовимся к войне"
  prepare_for_war_conquer_desc:0 "Мы это знаем, они это знают - война неизбежна. Они обязательно будут готовы, и мы должны убедиться, что мы тоже".
- neighbour_war_conquer:0 "Война соседей"
+ neighbor_war_conquer:0 "Война соседей"
  Neighbor_war_conquer_desc:0 "Все, что осталось сделать, это формальное объявление войны".
  border_disputes_nw:0 "[$TARGET.GetAdjective] Территориальный спор"
  border_disputes_nw_desc:0 "Стремление к разрешению [$TARGET.GetAdjective] территориальных споров, вероятно, пойдет нашим путем. Однако мы должны быть готовы к войне".
  prepare_for_war_nw:0 "Готовимся к войне"
  prepare_for_war_nw_desc:0 "Мы это знаем, они это знают - война неизбежна. Они обязательно будут готовы, и мы должны убедиться, что мы тоже".
- neighbour_war_nw:0 "Война соседей"
- neighbour_war_nw_desc:0 "Все, что осталось сделать, это формальное объявление войны".
+ neighbor_war_nw:0 "Война соседей"
+ neighbor_war_nw_desc:0 "Все, что осталось сделать, это формальное объявление войны".
  neighbor War_NF_threat:0 "Война соседей"
  not_in_border_conflict_tooltip:0 "Не участвует в пограничном споре"
  potential_take_core_target_tooltip:0 "Владеет нашими национальными территориями"

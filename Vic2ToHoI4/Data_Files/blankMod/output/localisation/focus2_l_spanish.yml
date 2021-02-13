@@ -59,19 +59,19 @@
  prepare_for_war_shared:0 "Prepararnos para la guerra"
  prepare_for_war_shared_desc:0 "Lo sabemos, ellos lo saben, la guerra es inevitable. Seguramente estarán preparados y debemos asegurarnos de que nosotros también lo estemos".
  neighbor_war_shared:0 "Guerra de vecinos"
- neighbour_war_shared_desc:0 "Todo lo que queda por hacer es una declaración formal de guerra".
+ neighbor_war_shared_desc:0 "Todo lo que queda por hacer es una declaración formal de guerra".
  border_disputes_conquer:0 "Disputa territorial [$TARGET.GetAdjFS]"
  border_disputes_conquer_desc:0 "Es probable que impulsemos por la resolución de las disputas territoriales [$TARGET.GetAdjFP]. Sin embargo, debemos estar preparados para la guerra".
  prepare_for_war_conquer:0 "Prepararnos para la guerra"
  prepare_for_war_conquer_desc:0 "Lo sabemos, ellos lo saben, la guerra es inevitable. Seguramente estarán preparados y debemos asegurarnos de que nosotros también lo estemos".
- neighbour_war_conquer:0 "Guerra de vecinos"
- neighbour_war_conquer_desc:0 "Todo lo que queda por hacer es una declaración formal de guerra".
+ neighbor_war_conquer:0 "Guerra de vecinos"
+ neighbor_war_conquer_desc:0 "Todo lo que queda por hacer es una declaración formal de guerra".
  border_disputes_nw:0 "Disputa territorial [$TARGET.GetAdjFS]"
  border_disputes_nw_desc:0 "Es probable que impulsemos la resolución de las disputas territoriales [$TARGET.GetAdjFP]. Sin embargo, debemos estar preparados para la guerra".
  prepare_for_war_nw:0 "Prepararnos para la guerra"
  prepare_for_war_nw_desc:0 "Lo sabemos, ellos lo saben; la guerra es inevitable. Sin duda estarán preparados y debemos asegurarnos de que nosotros también lo estemos".
  neighbor_war_nw:0 "Guerra de vecinos"
- neighbour_war_nw_desc:0 "Todo lo que queda por hacer es una declaración formal de guerra".
+ neighbor_war_nw_desc:0 "Todo lo que queda por hacer es una declaración formal de guerra".
  neighbour_war_NF_threat:0 "Guerra de vecinos"
  not_in_border_conflict_tooltip:0 "No participa en una disputa fronteriza"
  potential_take_core_target_tooltip:0 "Posee nuestros territorios esenciales"
