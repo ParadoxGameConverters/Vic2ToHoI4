@@ -19,7 +19,7 @@ void logMapping(const std::string& sourceTag, const std::string& targetTag, cons
 Mappers::CountryMapper::Factory::Factory()
 {
 	registerKeyword("link", [this](std::istream& theStream) {
-		countryMapper->Vic2TagToHoI4TagsRules.insert(countryMappingRuleFactory.importMapping(theStream));
+		Vic2TagToHoI4TagsRules.insert(countryMappingRuleFactory.importMapping(theStream));
 	});
 }
 
@@ -66,14 +66,12 @@ void Mappers::CountryMapper::Factory::resetMappingData()
 
 void Mappers::CountryMapper::Factory::makeOneMapping(const std::string& Vic2Tag, bool debug)
 {
-	if (const auto mappingRule = countryMapper->Vic2TagToHoI4TagsRules.find(Vic2Tag);
-		 mappingRule != countryMapper->Vic2TagToHoI4TagsRules.end())
+	if (const auto mappingRule = Vic2TagToHoI4TagsRules.find(Vic2Tag); mappingRule != Vic2TagToHoI4TagsRules.end())
 	{
 		const auto& possibleHoI4Tag = mappingRule->second;
 		if (!tagIsAlreadyAssigned(possibleHoI4Tag))
 		{
-			countryMapper->V2TagToHoI4TagMap.insert(make_pair(Vic2Tag, possibleHoI4Tag));
-			countryMapper->HoI4TagToV2TagMap.insert(make_pair(possibleHoI4Tag, Vic2Tag));
+			countryMapper->Vic2TagToHoI4TagMap.insert(make_pair(Vic2Tag, possibleHoI4Tag));
 			if (debug)
 			{
 				logMapping(Vic2Tag, possibleHoI4Tag, "mapping rule");
@@ -88,7 +86,7 @@ void Mappers::CountryMapper::Factory::makeOneMapping(const std::string& Vic2Tag,
 
 bool Mappers::CountryMapper::Factory::tagIsAlreadyAssigned(const std::string& HoI4Tag) const
 {
-	return countryMapper->HoI4TagToV2TagMap.contains(HoI4Tag);
+	return assignedTags.contains(HoI4Tag);
 }
 
 
@@ -111,8 +109,8 @@ std::string Mappers::CountryMapper::Factory::generateNewHoI4Tag()
 
 void Mappers::CountryMapper::Factory::mapToNewTag(const std::string& Vic2Tag, const std::string& HoI4Tag, bool debug)
 {
-	countryMapper->V2TagToHoI4TagMap.insert(make_pair(Vic2Tag, HoI4Tag));
-	countryMapper->HoI4TagToV2TagMap.insert(make_pair(HoI4Tag, Vic2Tag));
+	countryMapper->Vic2TagToHoI4TagMap.insert(make_pair(Vic2Tag, HoI4Tag));
+	assignedTags.insert(HoI4Tag);
 	if (debug)
 	{
 		logMapping(Vic2Tag, HoI4Tag, "generated tag");

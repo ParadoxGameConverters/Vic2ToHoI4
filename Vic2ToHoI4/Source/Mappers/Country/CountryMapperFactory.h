@@ -8,6 +8,7 @@
 #include "Parser.h"
 #include "V2World/World/World.h"
 #include <memory>
+#include <unordered_set>
 
 
 
@@ -30,9 +31,12 @@ class CountryMapper::Factory: commonItems::parser
 	void mapToNewTag(const std::string& Vic2Tag, const std::string& HoI4Tag, bool debug);
 
 	CountryMappingRuleFactory countryMappingRuleFactory;
-	std::unique_ptr<CountryMapper> countryMapper;
+	std::map<std::string, std::string> Vic2TagToHoI4TagsRules;
+	std::unordered_set<std::string> assignedTags;
 	char generatedHoI4TagPrefix = 'X';
 	int generatedHoI4TagSuffix = 0;
+
+	std::unique_ptr<CountryMapper> countryMapper;
 };
 
 } // namespace Mappers
