@@ -12,7 +12,7 @@ TEST(Mappers_Country_CountryMapperTests, UnmatchedVic2TagReturnsNullopt)
 {
 	const auto mapper = Mappers::CountryMapper::Builder().Build();
 
-	ASSERT_EQ(mapper->getHoI4Tag("NON"), std::nullopt);
+	ASSERT_EQ(std::nullopt, mapper->getHoI4Tag("NON"));
 }
 
 
@@ -20,7 +20,7 @@ TEST(Mappers_Country_CountryMapperTests, MatchedVic2TagReturnsHoI4Tag)
 {
 	const auto mapper = Mappers::CountryMapper::Builder().addMapping("VIC", "HOI").Build();
 
-	ASSERT_EQ(mapper->getHoI4Tag("VIC"), "HOI");
+	ASSERT_EQ("HOI", mapper->getHoI4Tag("VIC"));
 }
 
 
@@ -30,7 +30,7 @@ TEST(Mappers_Country_CountryMapperTests, MappingCanBeGivenFromRule)
 		 *Vic2::World::Builder().addCountry("AAA", *Vic2::Country::Builder().Build()).Build(),
 		 false);
 
-	ASSERT_EQ(mapper->getHoI4Tag("AAA"), "HOI");
+	ASSERT_EQ("HOI", mapper->getHoI4Tag("AAA"));
 }
 
 
@@ -63,8 +63,8 @@ TEST(Mappers_Country_CountryMapperTests, UsedHoI4TagForcesGeneratedTag)
 																						.Build(),
 			  false);
 
-	ASSERT_EQ(mapper->getHoI4Tag("AAA"), "HOI");
-	ASSERT_EQ(mapper->getHoI4Tag("BBB"), "X00");
+	ASSERT_EQ("HOI", mapper->getHoI4Tag("AAA"));
+	ASSERT_EQ("X00", mapper->getHoI4Tag("BBB"));
 }
 
 
@@ -74,7 +74,7 @@ TEST(Mappers_Country_CountryMapperTests, NoRulesMeansGeneratedTag)
 		 *Vic2::World::Builder().addCountry("CCC", *Vic2::Country::Builder().Build()).Build(),
 		 false);
 
-	ASSERT_EQ(mapper->getHoI4Tag("CCC"), "X00");
+	ASSERT_EQ("X00", mapper->getHoI4Tag("CCC"));
 }
 
 
@@ -107,8 +107,8 @@ TEST(Mappers_Country_CountryMapperTests, GeneratedTagSuffixesIncrease)
 																						.Build(),
 			  false);
 
-	ASSERT_EQ(mapper->getHoI4Tag("CCC"), "X00");
-	ASSERT_EQ(mapper->getHoI4Tag("DDD"), "X01");
+	ASSERT_EQ("X00", mapper->getHoI4Tag("CCC"));
+	ASSERT_EQ("X01", mapper->getHoI4Tag("DDD"));
 }
 
 
@@ -220,7 +220,7 @@ TEST(Mappers_Country_CountryMapperTests, GeneratedTagPrefixesDecrease)
 																						.Build(),
 			  false);
 
-	ASSERT_EQ(mapper->getHoI4Tag("A00"), "X00");
-	ASSERT_EQ(mapper->getHoI4Tag("A99"), "X99");
-	ASSERT_EQ(mapper->getHoI4Tag("B00"), "W00");
+	ASSERT_EQ("X00", mapper->getHoI4Tag("A00"));
+	ASSERT_EQ("X99", mapper->getHoI4Tag("A99"));
+	ASSERT_EQ("W00", mapper->getHoI4Tag("B00"));
 }
