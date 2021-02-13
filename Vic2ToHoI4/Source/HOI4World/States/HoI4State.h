@@ -61,7 +61,7 @@ class State
 	void addClaims(const std::set<std::string>& newClaims);
 	void convertControlledProvinces(const std::vector<std::pair<int, std::string>>& foreignControlledProvinces,
 		 const Mappers::ProvinceMapper& theProvinceMapper,
-		 const CountryMapper& countryMapper);
+		 const Mappers::CountryMapper& countryMapper);
 	void setControlledProvince(int provinceNum, const std::string& country);
 
 	int getID() const { return ID; }

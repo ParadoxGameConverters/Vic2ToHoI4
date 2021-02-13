@@ -107,7 +107,7 @@ void HoI4::State::addClaims(const std::set<std::string>& newClaims)
 
 void HoI4::State::convertControlledProvinces(const std::vector<std::pair<int, std::string>>& foreignControlledProvinces,
 	 const Mappers::ProvinceMapper& theProvinceMapper,
-	 const CountryMapper& countryMapper)
+	 const Mappers::CountryMapper& countryMapper)
 {
 	for (const auto& foreignControlledProvince: foreignControlledProvinces)
 	{

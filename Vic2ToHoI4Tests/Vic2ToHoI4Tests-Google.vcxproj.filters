@@ -1412,6 +1412,9 @@
     <ClCompile Include="MapperTests\Country\CountryMappingRuleFactoryTests.cpp">
       <Filter>MapperTests\Country</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapperFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2713,6 +2716,9 @@
       <Filter>Vic2ToHoI4 files</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMappingRuleFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapperFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
     </ClInclude>
   </ItemGroup>

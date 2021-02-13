@@ -1174,6 +1174,9 @@
     <ClCompile Include="Source\Mappers\Country\CountryMappingRuleFactory.cpp">
       <Filter>Mappers\Country</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Mappers\Country\CountryMapperFactory.cpp">
+      <Filter>Mappers\Country</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2314,6 +2317,9 @@
       <Filter>Mappers\Country</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\Country\CountryMappingRuleFactory.h">
+      <Filter>Mappers\Country</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Country\CountryMapperFactory.h">
       <Filter>Mappers\Country</Filter>
     </ClInclude>
   </ItemGroup>

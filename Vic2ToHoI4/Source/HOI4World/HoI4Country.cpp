@@ -25,7 +25,7 @@ HoI4::Country::Country(std::string tag,
 	 const Vic2::Country& sourceCountry,
 	 Names& names,
 	 graphicsMapper& theGraphics,
-	 const CountryMapper& countryMap,
+	 const Mappers::CountryMapper& countryMap,
 	 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 	 Localisation& hoi4Localisations):
 	 tag(std::move(tag)),
@@ -276,7 +276,7 @@ void HoI4::Country::convertLeaders(const graphicsMapper& theGraphics, const Vic2
 }
 
 
-void HoI4::Country::convertRelations(const CountryMapper& countryMap, const Vic2::Country& sourceCountry)
+void HoI4::Country::convertRelations(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry)
 {
 	auto srcRelations = sourceCountry.getRelations();
 	for (const auto& srcRelation: srcRelations)
@@ -285,13 +285,13 @@ void HoI4::Country::convertRelations(const CountryMapper& countryMap, const Vic2
 		if (HoI4Tag)
 		{
 			HoI4::Relations newRelation(*HoI4Tag, srcRelation.second);
-			relations.insert(make_pair(*HoI4Tag, std::move(newRelation)));
+			relations.insert(std::make_pair(*HoI4Tag, std::move(newRelation)));
 		}
 	}
 }
 
 
-void HoI4::Country::convertStrategies(const CountryMapper& countryMap, const Vic2::Country& sourceCountry)
+void HoI4::Country::convertStrategies(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry)
 {
 	for (const auto& [vic2Tag, strategy]: sourceCountry.getAI().getConsolidatedStrategies())
 	{
@@ -318,7 +318,7 @@ void HoI4::Country::convertStrategies(const CountryMapper& countryMap, const Vic
 }
 
 
-void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry, const CountryMapper& countryMap)
+void HoI4::Country::convertWars(const Vic2::Country& theSourceCountry, const Mappers::CountryMapper& countryMap)
 {
 	for (const auto& sourceWar: theSourceCountry.getWars())
 	{

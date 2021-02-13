@@ -8,6 +8,9 @@
 
 
 
+namespace Mappers
+{
+
 class CountryMapper::Builder
 {
   public:
@@ -23,6 +26,8 @@ class CountryMapper::Builder
   private:
 	std::unique_ptr<CountryMapper> countryMapper;
 };
+
+} // namespace Mappers
 
 
 

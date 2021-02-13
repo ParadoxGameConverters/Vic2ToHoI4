@@ -108,6 +108,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMappingFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapping.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMappingRuleFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp" />
@@ -815,6 +816,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\CountryName\CountryNameMappingFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapperBuilder.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapperFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMappingRuleFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.h" />

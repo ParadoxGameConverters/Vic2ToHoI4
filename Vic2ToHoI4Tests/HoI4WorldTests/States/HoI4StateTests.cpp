@@ -140,7 +140,7 @@ TEST(HoI4World_States_StateTests, ControllersCanBeAdded)
 
 	theState.convertControlledProvinces({{12, "NOT"}},
 		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(12, {12}).Build(),
-		 *CountryMapper::Builder{}.addMapping("NOT", "NOT").Build());
+		 *Mappers::CountryMapper::Builder{}.addMapping("NOT", "NOT").Build());
 
 	std::map<std::string, std::set<int>> expectedControlledProvinces{{"NOT", {12}}};
 	ASSERT_EQ(expectedControlledProvinces, theState.getControlledProvinces());
@@ -155,7 +155,7 @@ TEST(HoI4World_States_StateTests, ControllersConvertWithHoI4Tag)
 
 	theState.convertControlledProvinces({{12, "NOT"}},
 		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(12, {12}).Build(),
-		 *CountryMapper::Builder{}.addMapping("NOT", "HOI").Build());
+		 *Mappers::CountryMapper::Builder{}.addMapping("NOT", "HOI").Build());
 
 	std::map<std::string, std::set<int>> expectedControlledProvinces{{"HOI", {12}}};
 	ASSERT_EQ(expectedControlledProvinces, theState.getControlledProvinces());
@@ -170,7 +170,7 @@ TEST(HoI4World_States_StateTests, ControllersDontConvertForRebels)
 
 	theState.convertControlledProvinces({{12, "REB"}},
 		 *Mappers::ProvinceMapper::Builder().Build(),
-		 *CountryMapper::Builder{}.addMapping("REB", "REB").Build());
+		 *Mappers::CountryMapper::Builder{}.addMapping("REB", "REB").Build());
 
 	ASSERT_TRUE(theState.getControlledProvinces().empty());
 }

@@ -7,6 +7,7 @@
 #include "HOI4World/Map/Hoi4Province.h"
 #include "HOI4World/Map/MapData.h"
 #include "HOI4World/Map/StrategicRegions.h"
+#include "Mappers/Country/CountryMapping.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Parser.h"
 #include "V2World/Countries/Country.h"
@@ -20,7 +21,6 @@
 
 
 class Configuration;
-class CountryMapper;
 
 
 
@@ -50,7 +50,7 @@ class States: commonItems::parser
   public:
 	States() = default;
 	explicit States(const Vic2::World& sourceWorld,
-		 const CountryMapper& countryMap,
+		 const Mappers::CountryMapper& countryMap,
 		 const std::map<int, Province>& theProvinces,
 		 const CoastalProvinces& theCoastalProvinces,
 		 const Vic2::StateDefinitions& theStateDefinitions,
@@ -79,7 +79,7 @@ class States: commonItems::parser
 	void giveProvinceControlToCountry(int provinceNum, const std::string& country);
 
   private:
-	void determineOwnersAndCores(const CountryMapper& countryMap,
+	void determineOwnersAndCores(const Mappers::CountryMapper& countryMap,
 		 const Vic2::World& sourceWorld,
 		 const ProvinceDefinitions& provinceDefinitions,
 		 const Mappers::ProvinceMapper& provinceMapper);
@@ -93,7 +93,7 @@ class States: commonItems::parser
 	[[nodiscard]] static std::set<std::pair<std::string, std::string>> determineCores(
 		 const std::vector<int>& sourceProvinces,
 		 const std::string& Vic2Owner,
-		 const CountryMapper& countryMap,
+		 const Mappers::CountryMapper& countryMap,
 		 const std::string& newOwner,
 		 const Vic2::World& sourceWorld);
 
@@ -101,7 +101,7 @@ class States: commonItems::parser
 		 const std::map<int, std::shared_ptr<Vic2::Province>>& sourceProvinces,
 		 const std::map<int, Province>& theProvinces,
 		 const ImpassableProvinces& theImpassableProvinces,
-		 const CountryMapper& countryMap,
+		 const Mappers::CountryMapper& countryMap,
 		 const CoastalProvinces& theCoastalProvinces,
 		 const Vic2::StateDefinitions& theStateDefinitions,
 		 const StrategicRegions& strategicRegions,
@@ -113,7 +113,7 @@ class States: commonItems::parser
 	void createMatchingHoI4State(const Vic2::State& vic2State,
 		 const std::string& stateOwner,
 		 const ImpassableProvinces& theImpassableProvinces,
-		 const CountryMapper& countryMapper,
+		 const Mappers::CountryMapper& countryMapper,
 		 const std::map<std::string, Vic2::Country>& sourceCountries,
 		 const CoastalProvinces& theCoastalProvinces,
 		 const Vic2::StateDefinitions& theStateDefinitions,
