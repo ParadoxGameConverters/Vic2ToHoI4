@@ -21,7 +21,7 @@
 #include "Map/StrategicRegion.h"
 #include "Map/StrategicRegions.h"
 #include "Map/SupplyZones.h"
-#include "Mappers/Country/CountryMapping.h"
+#include "Mappers/Country/CountryMapper.h"
 #include "Mappers/CountryName/CountryNameMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/GovernmentMapper.h"

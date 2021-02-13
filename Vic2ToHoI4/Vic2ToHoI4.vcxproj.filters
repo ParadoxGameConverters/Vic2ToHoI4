@@ -1165,9 +1165,6 @@
     <ClCompile Include="..\common_items\ConvenientParser.cpp">
       <Filter>CommonItems</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mappers\Country\CountryMapping.cpp">
-      <Filter>Mappers\Country</Filter>
-    </ClCompile>
     <ClCompile Include="Source\V2World\Countries\Country.cpp">
       <Filter>Vic2World\Countries</Filter>
     </ClCompile>
@@ -1175,6 +1172,9 @@
       <Filter>Mappers\Country</Filter>
     </ClCompile>
     <ClCompile Include="Source\Mappers\Country\CountryMapperFactory.cpp">
+      <Filter>Mappers\Country</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\Country\CountryMapper.cpp">
       <Filter>Mappers\Country</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2313,13 +2313,13 @@
     <ClInclude Include="Source\Mappers\Country\CountryMapperBuilder.h">
       <Filter>Mappers\Country</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mappers\Country\CountryMapping.h">
-      <Filter>Mappers\Country</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Mappers\Country\CountryMappingRuleFactory.h">
       <Filter>Mappers\Country</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\Country\CountryMapperFactory.h">
+      <Filter>Mappers\Country</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Country\CountryMapper.h">
       <Filter>Mappers\Country</Filter>
     </ClInclude>
   </ItemGroup>

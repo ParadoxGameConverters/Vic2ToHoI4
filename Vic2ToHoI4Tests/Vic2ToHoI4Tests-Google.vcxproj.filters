@@ -1397,9 +1397,6 @@
     <ClCompile Include="..\common_items\ConvenientParser.cpp">
       <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapping.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffects.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\ScriptedEffects</Filter>
     </ClCompile>
@@ -1413,6 +1410,9 @@
       <Filter>MapperTests\Country</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapperFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
     </ClCompile>
   </ItemGroup>
@@ -1855,9 +1855,6 @@
       <Filter>Vic2ToHoI4 files\HoI4\OperativeNames</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapperBuilder.h">
-      <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapping.h">
       <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.h">
@@ -2719,6 +2716,10 @@
       <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapperFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapping.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapper.h">
       <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
     </ClInclude>
   </ItemGroup>

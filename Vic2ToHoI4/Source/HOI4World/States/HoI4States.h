@@ -7,7 +7,7 @@
 #include "HOI4World/Map/Hoi4Province.h"
 #include "HOI4World/Map/MapData.h"
 #include "HOI4World/Map/StrategicRegions.h"
-#include "Mappers/Country/CountryMapping.h"
+#include "Mappers/Country/CountryMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Parser.h"
 #include "V2World/Countries/Country.h"
