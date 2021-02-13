@@ -4,6 +4,18 @@
 
 
 
+namespace
+{
+
+void logMapping(const std::string& sourceTag, const std::string& targetTag, const std::string& reason)
+{
+	Log(LogLevel::Debug) << "Mapping " << sourceTag << " -> " << targetTag << " (" << reason << ')';
+}
+
+} // namespace
+
+
+
 Mappers::CountryMapper::Factory::Factory()
 {
 	registerKeyword("link", [this](std::istream& theStream) {
@@ -54,10 +66,8 @@ void Mappers::CountryMapper::Factory::resetMappingData()
 
 void Mappers::CountryMapper::Factory::makeOneMapping(const std::string& Vic2Tag, bool debug)
 {
-	auto mappingRule = countryMapper->Vic2TagToHoI4TagsRules.find(Vic2Tag);
-
-	bool mapped = false;
-	if (mappingRule != countryMapper->Vic2TagToHoI4TagsRules.end())
+	if (const auto mappingRule = countryMapper->Vic2TagToHoI4TagsRules.find(Vic2Tag);
+		 mappingRule != countryMapper->Vic2TagToHoI4TagsRules.end())
 	{
 		const auto& possibleHoI4Tag = mappingRule->second;
 		if (!tagIsAlreadyAssigned(possibleHoI4Tag))
@@ -68,15 +78,11 @@ void Mappers::CountryMapper::Factory::makeOneMapping(const std::string& Vic2Tag,
 			{
 				logMapping(Vic2Tag, possibleHoI4Tag, "mapping rule");
 			}
-			mapped = true;
+			return;
 		}
 	}
 
-	if (!mapped)
-	{
-		std::string HoI4Tag = generateNewHoI4Tag(Vic2Tag);
-		mapToNewTag(Vic2Tag, HoI4Tag, debug);
-	}
+	mapToNewTag(Vic2Tag, generateNewHoI4Tag(), debug);
 }
 
 
@@ -86,19 +92,11 @@ bool Mappers::CountryMapper::Factory::tagIsAlreadyAssigned(const std::string& Ho
 }
 
 
-void Mappers::CountryMapper::Factory::logMapping(const std::string& sourceTag,
-	 const std::string& targetTag,
-	 const std::string& reason) const
-{
-	Log(LogLevel::Debug) << "Mapping " << sourceTag << " -> " << targetTag << " (" << reason << ')';
-}
-
-
-std::string Mappers::CountryMapper::Factory::generateNewHoI4Tag(const std::string& Vic2Tag)
+std::string Mappers::CountryMapper::Factory::generateNewHoI4Tag()
 {
 	std::ostringstream generatedHoI4TagStream;
 	generatedHoI4TagStream << generatedHoI4TagPrefix << std::setfill('0') << std::setw(2) << generatedHoI4TagSuffix;
-	std::string newTag = generatedHoI4TagStream.str();
+	auto newTag = generatedHoI4TagStream.str();
 
 	++generatedHoI4TagSuffix;
 	if (generatedHoI4TagSuffix > 99)
