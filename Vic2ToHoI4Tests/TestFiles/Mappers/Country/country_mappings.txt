@@ -1,0 +1,2 @@
+link = { vic = AAA hoi = HOI }
+link = { vic = BBB hoi = HOI }

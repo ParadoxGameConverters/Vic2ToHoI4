@@ -23,6 +23,7 @@ namespace Vic2
 class World
 {
   public:
+	class Builder;
 	class Factory;
 
 	World() = default;

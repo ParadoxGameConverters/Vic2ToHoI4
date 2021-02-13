@@ -1849,6 +1849,9 @@
     <Filter Include="MapperTests\Country">
       <UniqueIdentifier>{0b071c23-7f0d-4632-8207-75baee1198c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TestFiles\Mappers\Country">
+      <UniqueIdentifier>{0b677f95-f312-4a1a-94c3-fa7203f7f3a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2724,6 +2727,9 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Country\CountryMapper.h">
       <Filter>Vic2ToHoI4 files\Mappers\Country</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\World\WorldBuilder.h">
+      <Filter>Vic2ToHoI4 files\Vic2\World</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3012,5 +3018,10 @@
     <CopyFileToFolders Include="TestFiles\Mappers\Technology\tech_mappings.txt">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TestFiles\Mappers\Country\country_mappings.txt">
+      <Filter>TestFiles\Mappers\Country</Filter>
+    </Text>
   </ItemGroup>
 </Project>

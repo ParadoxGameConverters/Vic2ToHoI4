@@ -917,6 +917,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Wars\WarFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Wars\WarGoalFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\World\World.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\World\WorldBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\World\WorldFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Vic2ToHoI4Converter.h" />
   </ItemGroup>
@@ -1406,6 +1407,12 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Mappers\Provinces\mod_province_mappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Mappers\Country\country_mappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>

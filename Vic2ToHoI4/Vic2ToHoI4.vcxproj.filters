@@ -2322,6 +2322,9 @@
     <ClInclude Include="Source\Mappers\Country\CountryMapper.h">
       <Filter>Mappers\Country</Filter>
     </ClInclude>
+    <ClInclude Include="Source\V2World\World\WorldBuilder.h">
+      <Filter>Vic2World\World</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\FAQ.txt">

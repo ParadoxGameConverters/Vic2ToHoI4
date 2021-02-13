@@ -72,6 +72,7 @@ void Mappers::CountryMapper::Factory::makeOneMapping(const std::string& Vic2Tag,
 		if (!tagIsAlreadyAssigned(possibleHoI4Tag))
 		{
 			countryMapper->Vic2TagToHoI4TagMap.insert(make_pair(Vic2Tag, possibleHoI4Tag));
+			assignedTags.insert(possibleHoI4Tag);
 			if (debug)
 			{
 				logMapping(Vic2Tag, possibleHoI4Tag, "mapping rule");

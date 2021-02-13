@@ -825,6 +825,7 @@
     <ClInclude Include="Source\V2World\Wars\WarFactory.h" />
     <ClInclude Include="Source\V2World\Wars\WarGoalFactory.h" />
     <ClInclude Include="Source\V2World\World\World.h" />
+    <ClInclude Include="Source\V2World\World\WorldBuilder.h" />
     <ClInclude Include="Source\V2World\World\WorldFactory.h" />
     <ClInclude Include="Source\Vic2ToHoI4Converter.h" />
   </ItemGroup>
