@@ -5,27 +5,23 @@
 
 std::optional<std::string> Mappers::CountryMapper::getHoI4Tag(const std::string& V2Tag) const
 {
-	auto findIter = V2TagToHoI4TagMap.find(V2Tag);
-	if (findIter != V2TagToHoI4TagMap.end())
+	const auto mapping = V2TagToHoI4TagMap.find(V2Tag);
+	if (mapping == V2TagToHoI4TagMap.end())
 	{
-		return findIter->second;
+		return std::nullopt;
 	}
-	else
-	{
-		return {};
-	}
+
+	return mapping->second;
 }
 
 
 std::optional<std::string> Mappers::CountryMapper::getVic2Tag(const std::string& HoI4Tag) const
 {
-	auto findIter = HoI4TagToV2TagMap.find(HoI4Tag);
-	if (findIter != HoI4TagToV2TagMap.end())
+	const auto mapping = HoI4TagToV2TagMap.find(HoI4Tag);
+	if (mapping == HoI4TagToV2TagMap.end())
 	{
-		return findIter->second;
+		return std::nullopt;
 	}
-	else
-	{
-		return {};
-	}
+
+	return mapping->second;
 }

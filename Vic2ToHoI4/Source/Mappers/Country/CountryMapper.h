@@ -19,8 +19,8 @@ class CountryMapper
 	class Builder;
 	class Factory;
 
-	std::optional<std::string> getHoI4Tag(const std::string& V2Tag) const;
-	std::optional<std::string> getVic2Tag(const std::string& HoI4Tag) const;
+	[[nodiscard]] std::optional<std::string> getHoI4Tag(const std::string& V2Tag) const;
+	[[nodiscard]] std::optional<std::string> getVic2Tag(const std::string& HoI4Tag) const;
 
   private:
 	std::map<std::string, std::string> Vic2TagToHoI4TagsRules;
