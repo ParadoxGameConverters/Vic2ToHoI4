@@ -121,6 +121,9 @@ set(HOI4WORLD_SOUNDS_SOURCES ${HOI4WORLD_SOUNDS_SOURCES} "${PROJECT_SOURCE_DIR}/
 file(GLOB HOI4WORLD_STATES_SOURCES "${PROJECT_SOURCE_DIR}/HOI4World/States/*.cpp")
 file(GLOB HOI4WORLD_WAR_CREATOR_SOURCES "${PROJECT_SOURCE_DIR}/HOI4World/WarCreator/*.cpp")
 file(GLOB MAPPER_SOURCES "${PROJECT_SOURCE_DIR}/Mappers/*.cpp")
+set(MAPPERS_COUNTRY_SOURCES ${MAPPERS_COUNTRY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Country/CountryMapper.cpp")
+set(MAPPERS_COUNTRY_SOURCES ${MAPPERS_COUNTRY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Country/CountryMapperFactory.cpp")
+set(MAPPERS_COUNTRY_SOURCES ${MAPPERS_COUNTRY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Country/CountryMappingRuleFactory.cpp")
 set(MAPPERS_COUNTRYNAME_SOURCES ${MAPPERS_COUNTRYNAME_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/CountryName/CountryNameMapper.cpp")
 set(MAPPERS_COUNTRYNAME_SOURCES ${MAPPERS_COUNTRYNAME_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/CountryName/CountryNameMapperFactory.cpp")
 set(MAPPERS_COUNTRYNAME_SOURCES ${MAPPERS_COUNTRYNAME_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/CountryName/CountryNameMappingFactory.cpp")
@@ -268,6 +271,7 @@ add_executable(
 	${HOI4WORLD_SOUNDS_SOURCES}
 	${HOI4WORLD_WAR_CREATOR_SOURCES}
 	${MAPPER_SOURCES}
+	${MAPPERS_COUNTRY_SOURCES}
 	${MAPPERS_COUNTRYNAME_SOURCES}
 	${MAPPERS_FLAGS_TO_IDEAS_SOURCES}
 	${MAPPER_TECHNOLOGY_SOURCES}
@@ -406,6 +410,8 @@ file(GLOB HOI4WORLD_SCRIPTED_TRIGGERS_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4Worl
 file(GLOB HOI4WORLD_SHIP_TYPES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4WorldTests/ShipTypes/*.cpp")
 file(GLOB HOI4WORLD_STATES_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4WorldTests/States/*.cpp")
 file(GLOB MAPPER_TESTS_SOURCES "${TEST_SOURCE_DIR}/MapperTests/*.cpp")
+set(MAPPER_COUNTRY_TESTS_SOURCES ${MAPPER_COUNTRY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Country/CountryMapperTests.cpp")
+set(MAPPER_COUNTRY_TESTS_SOURCES ${MAPPER_COUNTRY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Country/CountryMappingRuleFactoryTests.cpp")
 set(MAPPER_COUNTRYNAME_TESTS_SOURCES ${MAPPER_COUNTRYNAME_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/CountryName/CountryNameMapperTests.cpp")
 set(MAPPER_COUNTRYNAME_TESTS_SOURCES ${MAPPER_COUNTRYNAME_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/CountryName/CountryNameMappingTests.cpp")
 set(MAPPER_FLAGS_TO_IDEAS_TESTS_SOURCES ${MAPPER_FLAGS_TO_IDEAS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/FlagsToIdeas/FlagsToIdeasMapperTests.cpp")
@@ -503,6 +509,7 @@ add_executable(
 	${HOI4WORLD_STATES_SOURCES}
 	${HOI4WORLD_WAR_CREATOR_SOURCES}
 	${MAPPER_SOURCES}
+	${MAPPERS_COUNTRY_SOURCES}
 	${MAPPERS_COUNTRYNAME_SOURCES}
 	${MAPPERS_FLAGS_TO_IDEAS_SOURCES}
 	${MAPPER_TECHNOLOGY_SOURCES}
@@ -576,6 +583,7 @@ add_executable(
 	${HOI4WORLD_SOUNDS_TESTS_SOURCES}
 	${HOI4WORLD_STATES_TESTS_SOURCES}
 	${MAPPER_TESTS_SOURCES}
+	${MAPPER_COUNTRY_TESTS_SOURCES}
 	${MAPPER_COUNTRYNAME_TESTS_SOURCES}
 	${MAPPER_FLAGS_TO_IDEAS_TESTS_SOURCES}
 	${MAPPER_PROVINCES_TESTS_SOURCES}
@@ -640,6 +648,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ConverterLocalisations.t
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/EmptyLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/BlankLocalisations/localisation/EmptyLocalisations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/ModLocalisations.txt" "${TEST_OUTPUT_DIRECTORY}/modLocalisations/localisation/ModLocalisations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/StateCategories.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/Localisations/StateCategories.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Country/country_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/country_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/FlagsToIdeas/FlagsToIdeasMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/FlagsToIdeasMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/bad_line_definition.csv" "${TEST_OUTPUT_DIRECTORY}/bad_line_definition/map/definition.csv" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/empty_definition.csv" "${TEST_OUTPUT_DIRECTORY}/empty_definition/map/definition.csv" COPYONLY)

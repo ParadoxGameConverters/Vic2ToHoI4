@@ -1,5 +1,5 @@
 #include "HOI4World/Diplomacy/HoI4War.h"
-#include "Mappers/CountryMapperBuilder.h"
+#include "Mappers/Country/CountryMapperBuilder.h"
 #include "V2World/Wars/WarBuilder.h"
 #include "gtest/gtest.h"
 #include <sstream>
@@ -10,7 +10,7 @@ TEST(HoI4World_Diplomacy_WarTests, allItemsDefaultToEmpty)
 {
 	auto sourceWar = *Vic2::War::Builder{}.build();
 
-	const HoI4::War war(sourceWar, *CountryMapper::Builder{}.Build());
+	const HoI4::War war(sourceWar, *Mappers::CountryMapper::Builder{}.Build());
 	std::stringstream output;
 	output << war;
 
@@ -33,7 +33,7 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalDefenderCantBeMapped)
 	auto stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
-	const HoI4::War war(sourceWar, *CountryMapper::Builder{}.addMapping("OAT", "NAT").Build());
+	const HoI4::War war(sourceWar, *Mappers::CountryMapper::Builder{}.addMapping("OAT", "NAT").Build());
 
 	std::cout.rdbuf(stdOutBuf);
 
@@ -47,7 +47,11 @@ TEST(HoI4World_Diplomacy_WarTests, extraDefendersCanBeAdded)
 		 *Vic2::War::Builder{}.setOriginalAttacker("OAT").setOriginalDefender("ODF").setDefenders({"OED"}).build();
 
 	const HoI4::War war(sourceWar,
-		 *CountryMapper::Builder{}.addMapping("ODF", "NDF").addMapping("OED", "NED").addMapping("OAT", "NAT").Build());
+		 *Mappers::CountryMapper::Builder{}
+				.addMapping("ODF", "NDF")
+				.addMapping("OED", "NED")
+				.addMapping("OAT", "NAT")
+				.Build());
 	std::stringstream output;
 	output << war;
 
@@ -74,7 +78,11 @@ TEST(HoI4World_Diplomacy_WarTests, extraAttackersCanBeAdded)
 		 *Vic2::War::Builder{}.setOriginalAttacker("OAT").setAttackers({"OEA"}).setOriginalDefender("ODF").build();
 
 	const HoI4::War war(sourceWar,
-		 *CountryMapper::Builder{}.addMapping("ODF", "NDF").addMapping("OEA", "NEA").addMapping("OAT", "NAT").Build());
+		 *Mappers::CountryMapper::Builder{}
+				.addMapping("ODF", "NDF")
+				.addMapping("OEA", "NEA")
+				.addMapping("OAT", "NAT")
+				.Build());
 	std::stringstream output;
 	output << war;
 
@@ -103,7 +111,7 @@ TEST(HoI4World_Diplomacy_WarTests, warnIfOriginalAttackerCantBeMapped)
 	auto stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
-	const HoI4::War war(sourceWar, *CountryMapper::Builder{}.addMapping("ODF", "NDF").Build());
+	const HoI4::War war(sourceWar, *Mappers::CountryMapper::Builder{}.addMapping("ODF", "NDF").Build());
 
 	std::cout.rdbuf(stdOutBuf);
 

@@ -5,7 +5,7 @@
 
 #include "Configuration.h"
 #include "HOI4World/Map/CoastalProvinces.h"
-#include "Mappers/CountryMapping.h"
+#include "Mappers/Country/CountryMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Parser.h"
 #include "StateCategories.h"
@@ -61,7 +61,7 @@ class State
 	void addClaims(const std::set<std::string>& newClaims);
 	void convertControlledProvinces(const std::vector<std::pair<int, std::string>>& foreignControlledProvinces,
 		 const Mappers::ProvinceMapper& theProvinceMapper,
-		 const CountryMapper& countryMapper);
+		 const Mappers::CountryMapper& countryMapper);
 	void setControlledProvince(int provinceNum, const std::string& country);
 
 	int getID() const { return ID; }

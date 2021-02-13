@@ -21,7 +21,7 @@
 #include "Map/StrategicRegion.h"
 #include "Map/StrategicRegions.h"
 #include "Map/SupplyZones.h"
-#include "Mappers/CountryMapping.h"
+#include "Mappers/Country/CountryMapper.h"
 #include "Mappers/CountryName/CountryNameMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/GovernmentMapper.h"
@@ -32,8 +32,8 @@
 #include "MilitaryMappings/AllMilitaryMappings.h"
 #include "MilitaryMappings/HoI4UnitType.h"
 #include "MilitaryMappings/UnitMappings.h"
-#include "Modifiers/Modifier.h"
 #include "Modifiers/DynamicModifiers.h"
+#include "Modifiers/Modifier.h"
 #include "Names/Names.h"
 #include "OccupationLaws/OccupationLawsFactory.h"
 #include "OnActions.h"
@@ -194,7 +194,7 @@ class World: commonItems::parser
 	std::unique_ptr<Names> names;
 	graphicsMapper theGraphics;
 	governmentMapper governmentMap;
-	CountryMapper countryMap;
+	std::unique_ptr<Mappers::CountryMapper> countryMap;
 	std::unique_ptr<Mappers::CountryNameMapper> countryNameMapper;
 
 	std::unique_ptr<States> states;

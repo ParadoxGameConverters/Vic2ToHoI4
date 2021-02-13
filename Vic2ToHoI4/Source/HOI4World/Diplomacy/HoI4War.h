@@ -3,7 +3,7 @@
 
 
 
-#include "Mappers/CountryMapping.h"
+#include "Mappers/Country/CountryMapper.h"
 #include "V2World/Wars/War.h"
 #include <ostream>
 #include <set>
@@ -17,7 +17,7 @@ namespace HoI4
 class War
 {
   public:
-	War(const Vic2::War& sourceWar, const CountryMapper& countryMapper);
+	War(const Vic2::War& sourceWar, const Mappers::CountryMapper& countryMapper);
 
 	friend std::ostream& operator<<(std::ostream& out, const War& theWar);
 

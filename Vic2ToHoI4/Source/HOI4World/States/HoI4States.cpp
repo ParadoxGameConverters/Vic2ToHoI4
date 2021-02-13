@@ -11,7 +11,7 @@
 #include "HOI4World/ProvinceDefinitions.h"
 #include "HoI4State.h"
 #include "Log.h"
-#include "Mappers/CountryMapping.h"
+#include "Mappers/Country/CountryMapper.h"
 #include "OSCompatibilityLayer.h"
 #include "StateCategories.h"
 #include "V2World/Localisations/Vic2Localisations.h"
@@ -31,7 +31,7 @@ constexpr int AIRBASES_FOR_INFRASTRUCTURE_LEVEL = 6;
 
 
 HoI4::States::States(const Vic2::World& sourceWorld,
-	 const CountryMapper& countryMap,
+	 const Mappers::CountryMapper& countryMap,
 	 const std::map<int, Province>& theProvinces,
 	 const CoastalProvinces& theCoastalProvinces,
 	 const Vic2::StateDefinitions& theStateDefinitions,
@@ -75,7 +75,7 @@ HoI4::States::States(const Vic2::World& sourceWorld,
 }
 
 
-void HoI4::States::determineOwnersAndCores(const CountryMapper& countryMap,
+void HoI4::States::determineOwnersAndCores(const Mappers::CountryMapper& countryMap,
 	 const Vic2::World& sourceWorld,
 	 const ProvinceDefinitions& provinceDefinitions,
 	 const Mappers::ProvinceMapper& provinceMapper)
@@ -185,7 +185,7 @@ std::string HoI4::States::selectProvinceOwner(const std::map<std::string, std::p
 
 std::set<std::pair<std::string, std::string>> HoI4::States::determineCores(const std::vector<int>& sourceProvinces,
 	 const std::string& Vic2Owner,
-	 const CountryMapper& countryMap,
+	 const Mappers::CountryMapper& countryMap,
 	 const std::string& newOwner,
 	 const Vic2::World& sourceWorld)
 {
@@ -225,7 +225,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country>& sour
 	 const std::map<int, std::shared_ptr<Vic2::Province>>& sourceProvinces,
 	 const std::map<int, Province>& theProvinces,
 	 const ImpassableProvinces& theImpassableProvinces,
-	 const CountryMapper& countryMap,
+	 const Mappers::CountryMapper& countryMap,
 	 const CoastalProvinces& theCoastalProvinces,
 	 const Vic2::StateDefinitions& theStateDefinitions,
 	 const StrategicRegions& strategicRegions,
@@ -327,7 +327,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country>& sour
 void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 	 const std::string& stateOwner,
 	 const ImpassableProvinces& theImpassableProvinces,
-	 const CountryMapper& countryMapper,
+	 const Mappers::CountryMapper& countryMapper,
 	 const std::map<std::string, Vic2::Country>& sourceCountries,
 	 const CoastalProvinces& theCoastalProvinces,
 	 const Vic2::StateDefinitions& theStateDefinitions,

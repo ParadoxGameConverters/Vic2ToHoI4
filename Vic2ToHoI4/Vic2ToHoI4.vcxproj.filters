@@ -238,6 +238,9 @@
     <Filter Include="OutHoi4\Modifiers">
       <UniqueIdentifier>{88bc8a6c-d4e0-4f8f-8673-9ed00dd8c3ec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mappers\Country">
+      <UniqueIdentifier>{4bf38eb1-47cf-4cd9-b658-e47e8ce3ae05}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -261,9 +264,6 @@
     </ClCompile>
     <ClCompile Include="..\common_items\targa.cpp" />
     <ClCompile Include="Source\Mappers\GovernmentMapper.cpp">
-      <Filter>Mappers</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Mappers\CountryMapping.cpp">
       <Filter>Mappers</Filter>
     </ClCompile>
     <ClCompile Include="Source\HOI4World\HoI4FocusTree.cpp">
@@ -1084,9 +1084,6 @@
     <ClCompile Include="Source\V2World\Countries\CountryFactory.cpp">
       <Filter>Vic2World\Countries</Filter>
     </ClCompile>
-    <ClCompile Include="Source\V2World\Countries\Country.cpp">
-      <Filter>Vic2World\Countries</Filter>
-    </ClCompile>
     <ClCompile Include="Source\V2World\Technology\TechnologyFactory.cpp">
       <Filter>Vic2World\Technology</Filter>
     </ClCompile>
@@ -1168,6 +1165,18 @@
     <ClCompile Include="..\common_items\ConvenientParser.cpp">
       <Filter>CommonItems</Filter>
     </ClCompile>
+    <ClCompile Include="Source\V2World\Countries\Country.cpp">
+      <Filter>Vic2World\Countries</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\Country\CountryMappingRuleFactory.cpp">
+      <Filter>Mappers\Country</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\Country\CountryMapperFactory.cpp">
+      <Filter>Mappers\Country</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\Country\CountryMapper.cpp">
+      <Filter>Mappers\Country</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1190,9 +1199,6 @@
     </ClInclude>
     <ClInclude Include="..\common_items\targa.h" />
     <ClInclude Include="Source\Mappers\GovernmentMapper.h">
-      <Filter>Mappers</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Mappers\CountryMapping.h">
       <Filter>Mappers</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\HoI4FocusTree.h">
@@ -2150,9 +2156,6 @@
     <ClInclude Include="Source\HOI4World\Map\CoastalProvincesBuilder.h">
       <Filter>HoI4World\Map</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mappers\CountryMapperBuilder.h">
-      <Filter>Mappers</Filter>
-    </ClInclude>
     <ClInclude Include="Source\Mappers\GovernmentMapperBuilder.h">
       <Filter>Mappers</Filter>
     </ClInclude>
@@ -2306,6 +2309,21 @@
     </ClInclude>
     <ClInclude Include="..\common_items\ConvenientParser.h">
       <Filter>CommonItems</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Country\CountryMapperBuilder.h">
+      <Filter>Mappers\Country</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Country\CountryMappingRuleFactory.h">
+      <Filter>Mappers\Country</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Country\CountryMapperFactory.h">
+      <Filter>Mappers\Country</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Country\CountryMapper.h">
+      <Filter>Mappers\Country</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\World\WorldBuilder.h">
+      <Filter>Vic2World\World</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

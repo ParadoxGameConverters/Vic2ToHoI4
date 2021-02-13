@@ -15,7 +15,7 @@
 #include "Leaders/CountryLeader.h"
 #include "Leaders/General.h"
 #include "Map/CoastalProvinces.h"
-#include "Mappers/CountryMapping.h"
+#include "Mappers/Country/CountryMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/GovernmentMapper.h"
 #include "Mappers/GraphicsMapper.h"
@@ -56,7 +56,7 @@ class Country
 		 const Vic2::Country& sourceCountry,
 		 Names& names,
 		 graphicsMapper& theGraphics,
-		 const CountryMapper& countryMap,
+		 const Mappers::CountryMapper& countryMap,
 		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 		 Localisation& hoi4Localisations);
 	Country() = delete;
@@ -230,9 +230,9 @@ class Country
 	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
 	void convertLaws();
 	void convertLeaders(const graphicsMapper& theGraphics, const Vic2::Country& sourceCountry);
-	void convertRelations(const CountryMapper& countryMap, const Vic2::Country& sourceCountry);
-	void convertStrategies(const CountryMapper& countryMap, const Vic2::Country& sourceCountry);
-	void convertWars(const Vic2::Country& sourceCountry, const CountryMapper& countryMap);
+	void convertRelations(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
+	void convertStrategies(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
+	void convertWars(const Vic2::Country& sourceCountry, const Mappers::CountryMapper& countryMap);
 
 	bool attemptToPutCapitalInPreferredNonWastelandOwned(const Mappers::ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,

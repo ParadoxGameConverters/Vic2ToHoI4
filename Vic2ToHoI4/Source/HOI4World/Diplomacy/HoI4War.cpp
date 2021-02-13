@@ -3,7 +3,7 @@
 
 
 
-HoI4::War::War(const Vic2::War& sourceWar, const CountryMapper& countryMapper)
+HoI4::War::War(const Vic2::War& sourceWar, const Mappers::CountryMapper& countryMapper)
 {
 	auto possibleOriginalDefender = countryMapper.getHoI4Tag(sourceWar.getOriginalDefender());
 	if (possibleOriginalDefender)
