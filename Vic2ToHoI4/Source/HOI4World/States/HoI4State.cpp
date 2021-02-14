@@ -47,6 +47,18 @@ void HoI4::State::convertNavalBases(const std::map<int, int>& sourceNavalBases,
 			addNavalBase(navalBaseLevel, *navalBaseLocation);
 		}
 	}
+
+	if (navalBases.empty())
+	{
+		for (const auto& province: provinces)
+		{
+			if (theCoastalProvinces.isProvinceCoastal(province))
+			{
+				addNavalBase(1, province);
+				break;
+			}
+		}
+	}
 }
 
 
