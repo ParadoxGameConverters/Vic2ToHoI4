@@ -1,0 +1,14 @@
+When adding new cultures, these are the changes to make.
+
+Required changes:
+Update Vic2ToHoI4\Data_Files\blankMod\output\localisation\cultures_l_<language>.yml
+Update Vic2ToHoI4\Data_Files\configurables\names.txt
+Add culture badge to C:\MyProjects\paradoxGameConvertersForks\Vic2ToHoI4\Vic2ToHoI4\Data_Files\blankMod\output\gfx\interface\culture
+Update Vic2ToHoI4\Data_Files\blankMod\output\interface\culture_ideas.gfx
+Update Vic2ToHoI4\Data_Files\blankMod\output\common\ideas\_cultures.txt
+Update Vic2ToHoI4\Data_Files\configurables\cultureGroupToGraphics.txt
+
+Optional changes:
+Update Vic2ToHoI4\Data_Files\configurables\OperativeNamesMappings.txt
+Update Vic2ToHoI4\Data_Files\configurables\IntelligenceAgencyLogos.txt
+Update Vic2ToHoI4\Data_Files\configurables\CultureToVoiceMappings.txt
