@@ -5,16 +5,13 @@
 Mappers::PartyMappingFactory::PartyMappingFactory()
 {
 	registerKeyword("ruling_ideology", [this](std::istream& theStream) {
-		commonItems::singleString ideologyString(theStream);
-		partyMapping->rulingIdeology = ideologyString.getString();
+		partyMapping->rulingIdeology = commonItems::singleString(theStream).getString();
 	});
 	registerKeyword("vic2_ideology", [this](std::istream& theStream) {
-		commonItems::singleString ideologyString(theStream);
-		partyMapping->vic2Ideology = ideologyString.getString();
+		partyMapping->vic2Ideology = commonItems::singleString(theStream).getString();
 	});
 	registerKeyword("supported_ideology", [this](std::istream& theStream) {
-		commonItems::singleString ideologyString(theStream);
-		partyMapping->supportedIdeology = ideologyString.getString();
+		partyMapping->supportedIdeology = commonItems::singleString(theStream).getString();
 	});
 }
 

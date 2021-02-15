@@ -53,7 +53,7 @@ TEST(Mappers_Government_GovernmentMappingTests, HoI4GovernmentDefaultsToEmpty)
 
 	const auto mapping = Mappers::GovernmentMappingFactory().importMapping(input);
 
-	ASSERT_TRUE(mapping->HoI4GovernmentIdeology.empty());
+	ASSERT_TRUE(mapping->hoI4GovernmentIdeology.empty());
 }
 
 
@@ -64,7 +64,7 @@ TEST(Mappers_Government_GovernmentMappingTests, HoI4GovernmentCanBeImported)
 
 	const auto mapping = Mappers::GovernmentMappingFactory().importMapping(input);
 
-	ASSERT_EQ("test_government", mapping->HoI4GovernmentIdeology);
+	ASSERT_EQ("test_government", mapping->hoI4GovernmentIdeology);
 }
 
 
@@ -74,7 +74,7 @@ TEST(Mappers_Government_GovernmentMappingTests, HoI4LeaerIdeologyDefaultsToEmpty
 
 	const auto mapping = Mappers::GovernmentMappingFactory().importMapping(input);
 
-	ASSERT_TRUE(mapping->HoI4LeaderIdeology.empty());
+	ASSERT_TRUE(mapping->hoI4LeaderIdeology.empty());
 }
 
 
@@ -85,7 +85,7 @@ TEST(Mappers_Government_GovernmentMappingTests, HoI4LeaerIdeologyCanBeImported)
 
 	const auto mapping = Mappers::GovernmentMappingFactory().importMapping(input);
 
-	ASSERT_EQ("test_ideology", mapping->HoI4LeaderIdeology);
+	ASSERT_EQ("test_ideology", mapping->hoI4LeaderIdeology);
 }
 
 

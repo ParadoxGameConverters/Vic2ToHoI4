@@ -14,8 +14,8 @@ struct GovernmentMapping
 {
 	std::string vic2Government;
 	std::string tagRequired;
-	std::string HoI4GovernmentIdeology;
-	std::string HoI4LeaderIdeology;
+	std::string hoI4GovernmentIdeology;
+	std::string hoI4LeaderIdeology;
 	std::string rulingPartyRequired;
 };
 

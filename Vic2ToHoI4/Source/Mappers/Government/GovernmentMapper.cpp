@@ -80,7 +80,7 @@ std::string governmentMapper::getIdeologyForCountry(const std::string& sourceTag
 		if (governmentMatches(mapping, sourceGovernment) && rulingIdeologyMatches(mapping, Vic2RulingIdeology) &&
 			 tagMatches(mapping, sourceTag))
 		{
-			ideology = mapping.HoI4GovernmentIdeology;
+			ideology = mapping.hoI4GovernmentIdeology;
 			break;
 		}
 	}
@@ -104,7 +104,7 @@ std::string governmentMapper::getLeaderIdeologyForCountry(const std::string& sou
 		if (governmentMatches(mapping, sourceGovernment) && rulingIdeologyMatches(mapping, Vic2RulingIdeology) &&
 			 tagMatches(mapping, sourceTag))
 		{
-			ideology = mapping.HoI4LeaderIdeology;
+			ideology = mapping.hoI4LeaderIdeology;
 			break;
 		}
 	}
@@ -130,7 +130,7 @@ std::string governmentMapper::getExistingIdeologyForCountry(const std::string& t
 		if (governmentMatches(mapping, government) && rulingIdeologyMatches(mapping, Vic2RulingIdeology) &&
 			 tagMatches(mapping, tag) && ideologyIsValid(mapping, majorIdeologies, ideologies))
 		{
-			ideology = mapping.HoI4GovernmentIdeology;
+			ideology = mapping.hoI4GovernmentIdeology;
 			break;
 		}
 	}
@@ -156,7 +156,7 @@ std::string governmentMapper::getExistingLeaderIdeologyForCountry(const std::str
 		if (governmentMatches(mapping, government) && rulingIdeologyMatches(mapping, Vic2RulingIdeology) &&
 			 tagMatches(mapping, tag) && ideologyIsValid(mapping, majorIdeologies, ideologies))
 		{
-			ideology = mapping.HoI4LeaderIdeology;
+			ideology = mapping.hoI4LeaderIdeology;
 			break;
 		}
 	}
@@ -192,8 +192,8 @@ bool governmentMapper::ideologyIsValid(const Mappers::GovernmentMapping& mapping
 	 const std::set<std::string>& majorIdeologies,
 	 const HoI4::Ideologies& ideologies)
 {
-	return majorIdeologies.contains(mapping.HoI4GovernmentIdeology) &&
-			 ideologies.subIdeologyIsValid(mapping.HoI4GovernmentIdeology, mapping.HoI4LeaderIdeology);
+	return majorIdeologies.contains(mapping.hoI4GovernmentIdeology) &&
+			 ideologies.subIdeologyIsValid(mapping.hoI4GovernmentIdeology, mapping.hoI4LeaderIdeology);
 }
 
 
