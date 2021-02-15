@@ -114,6 +114,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\VersionedMappingsFactory.cpp" />
@@ -294,7 +295,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateHistory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Technologies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\HoI4WarCreator.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Sounds\OutSounds.cpp" />
@@ -824,8 +824,8 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapperBuilder.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapper.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMappedBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.h" />

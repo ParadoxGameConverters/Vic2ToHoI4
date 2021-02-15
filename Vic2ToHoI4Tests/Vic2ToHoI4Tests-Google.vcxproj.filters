@@ -22,9 +22,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Localisation.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
@@ -1418,6 +1415,9 @@
     <ClCompile Include="MapperTests\Country\CountryMapperTests.cpp">
       <Filter>MapperTests\Country</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapper.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1852,6 +1852,9 @@
     <Filter Include="TestFiles\Mappers\Country">
       <UniqueIdentifier>{0b677f95-f312-4a1a-94c3-fa7203f7f3a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\Government">
+      <UniqueIdentifier>{0b132c3d-7051-4fcb-b8ce-cd2a6473ae49}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2153,12 +2156,6 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\World\WorldFactory.h">
       <Filter>Vic2ToHoI4 files\Vic2\World</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.h">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapperBuilder.h">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMappedBuilder.h">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
@@ -2730,6 +2727,12 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\World\WorldBuilder.h">
       <Filter>Vic2ToHoI4 files\Vic2\World</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapper.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperBuilder.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3018,10 +3021,6 @@
     <CopyFileToFolders Include="TestFiles\Mappers\Technology\tech_mappings.txt">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="TestFiles\Mappers\Country\country_mappings.txt">
-      <Filter>TestFiles\Mappers\Country</Filter>
-    </Text>
+    <CopyFileToFolders Include="TestFiles\Mappers\Country\country_mappings.txt" />
   </ItemGroup>
 </Project>

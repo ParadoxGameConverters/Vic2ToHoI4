@@ -201,6 +201,7 @@
     <ClCompile Include="Source\Mappers\Country\CountryMapper.cpp" />
     <ClCompile Include="Source\Mappers\Country\CountryMappingRuleFactory.cpp" />
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp" />
+    <ClCompile Include="Source\Mappers\Government\GovernmentMapper.cpp" />
     <ClCompile Include="Source\Mappers\Technology\ResearchBonusMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Technology\ResearchBonusMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\Technology\TechMapperFactory.cpp" />
@@ -385,7 +386,6 @@
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp" />
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp" />
-    <ClCompile Include="Source\Mappers\GovernmentMapper.cpp" />
     <ClCompile Include="Source\Mappers\GraphicsMapper.cpp" />
     <ClCompile Include="Source\Mappers\MergeRules.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMapperFactory.cpp" />
@@ -537,7 +537,8 @@
     <ClInclude Include="Source\Mappers\Country\CountryMappingRuleFactory.h" />
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.h" />
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.h" />
-    <ClInclude Include="Source\Mappers\GovernmentMapperBuilder.h" />
+    <ClInclude Include="Source\Mappers\Government\GovernmentMapper.h" />
+    <ClInclude Include="Source\Mappers\Government\GovernmentMapperBuilder.h" />
     <ClInclude Include="Source\Mappers\GraphicsMappedBuilder.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapperBuilder.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapperFactory.h" />
@@ -749,7 +750,6 @@
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.h" />
     <ClInclude Include="Source\Mappers\GraphicsMapper.h" />
     <ClInclude Include="Source\Mappers\MergeRules.h" />
-    <ClInclude Include="Source\Mappers\GovernmentMapper.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapper.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapping.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMappingTypes.h" />

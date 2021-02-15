@@ -2,7 +2,7 @@
 #include "Configuration.h"
 #include "Localisations/AllReplacementRules.h"
 #include "Log.h"
-#include "Mappers/GovernmentMapper.h"
+#include "Mappers/Government/GovernmentMapper.h"
 #include "OSCompatibilityLayer.h"
 #include "States/HoI4State.h"
 #include "States/HoI4States.h"
