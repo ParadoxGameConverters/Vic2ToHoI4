@@ -1424,6 +1424,12 @@
     <ClCompile Include="MapperTests\Government\GovernmentMappingTests.cpp">
       <Filter>MapperTests\Government</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMappingFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\Government\PartyMappingTests.cpp">
+      <Filter>MapperTests\Government</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2746,6 +2752,12 @@
       <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMapping.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMappingFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
     </ClInclude>
   </ItemGroup>

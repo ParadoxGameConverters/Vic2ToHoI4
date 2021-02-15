@@ -6,18 +6,11 @@
 #include "GovernmentMapping.h"
 #include "HOI4World/Ideologies/Ideologies.h"
 #include "Parser.h"
+#include "PartyMapping.h"
 #include <set>
 #include <string>
 #include <vector>
 
-
-
-typedef struct partyMapping
-{
-	std::string rulingIdeology;
-	std::string vic2Ideology;
-	std::string supportedIdeology;
-} partyMapping;
 
 
 class governmentMapper: commonItems::parser
@@ -67,7 +60,7 @@ class governmentMapper: commonItems::parser
 		 const HoI4::Ideologies& ideologies);
 
 	std::vector<Mappers::GovernmentMapping> governmentMap;
-	std::vector<partyMapping> partyMap;
+	std::vector<Mappers::PartyMapping> partyMap;
 };
 
 

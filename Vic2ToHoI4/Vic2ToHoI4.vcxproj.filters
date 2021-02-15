@@ -1183,6 +1183,9 @@
     <ClCompile Include="Source\Mappers\Government\GovernmentMappingFactory.cpp">
       <Filter>Mappers\Government</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Mappers\Government\PartyMappingFactory.cpp">
+      <Filter>Mappers\Government</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2335,6 +2338,12 @@
       <Filter>Mappers\Government</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\Government\GovernmentMappingFactory.h">
+      <Filter>Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Government\PartyMapping.h">
+      <Filter>Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Government\PartyMappingFactory.h">
       <Filter>Mappers\Government</Filter>
     </ClInclude>
   </ItemGroup>

@@ -203,6 +203,7 @@
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Government\GovernmentMapper.cpp" />
     <ClCompile Include="Source\Mappers\Government\GovernmentMappingFactory.cpp" />
+    <ClCompile Include="Source\Mappers\Government\PartyMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\Technology\ResearchBonusMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Technology\ResearchBonusMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\Technology\TechMapperFactory.cpp" />
@@ -542,6 +543,8 @@
     <ClInclude Include="Source\Mappers\Government\GovernmentMapperBuilder.h" />
     <ClInclude Include="Source\Mappers\Government\GovernmentMapping.h" />
     <ClInclude Include="Source\Mappers\Government\GovernmentMappingFactory.h" />
+    <ClInclude Include="Source\Mappers\Government\PartyMapping.h" />
+    <ClInclude Include="Source\Mappers\Government\PartyMappingFactory.h" />
     <ClInclude Include="Source\Mappers\GraphicsMappedBuilder.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapperBuilder.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapperFactory.h" />

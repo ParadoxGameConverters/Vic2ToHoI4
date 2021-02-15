@@ -1,7 +1,7 @@
 #include "GovernmentMapper.h"
 #include "GovernmentMappingFactory.h"
 #include "Log.h"
-#include "ParserHelpers.h"
+#include "PartyMappingFactory.h"
 #include "V2World/Countries/Country.h"
 
 
@@ -29,37 +29,6 @@ governmentMappings::governmentMappings(std::istream& theStream)
 }
 
 
-class aPartyMapping: commonItems::parser
-{
-  public:
-	explicit aPartyMapping(std::istream& theStream);
-
-	auto getMapping() const { return mapping; }
-
-  private:
-	partyMapping mapping;
-};
-
-
-aPartyMapping::aPartyMapping(std::istream& theStream)
-{
-	registerKeyword("ruling_ideology", [this](std::istream& theStream) {
-		commonItems::singleString ideologyString(theStream);
-		mapping.rulingIdeology = ideologyString.getString();
-	});
-	registerKeyword("vic2_ideology", [this](std::istream& theStream) {
-		commonItems::singleString ideologyString(theStream);
-		mapping.vic2Ideology = ideologyString.getString();
-	});
-	registerKeyword("supported_ideology", [this](std::istream& theStream) {
-		commonItems::singleString ideologyString(theStream);
-		mapping.supportedIdeology = ideologyString.getString();
-	});
-
-	parseStream(theStream);
-}
-
-
 class partyMappings: commonItems::parser
 {
   public:
@@ -68,15 +37,15 @@ class partyMappings: commonItems::parser
 	auto getPartyMap() const { return partyMap; }
 
   private:
-	std::vector<partyMapping> partyMap;
+	Mappers::PartyMappingFactory partyMappingFactory;
+	std::vector<Mappers::PartyMapping> partyMap;
 };
 
 
 partyMappings::partyMappings(std::istream& theStream)
 {
 	registerKeyword("mapping", [this](std::istream& theStream) {
-		aPartyMapping mapping(theStream);
-		partyMap.push_back(mapping.getMapping());
+		partyMap.push_back(*partyMappingFactory.importPartyMapping(theStream));
 	});
 
 	parseStream(theStream);
