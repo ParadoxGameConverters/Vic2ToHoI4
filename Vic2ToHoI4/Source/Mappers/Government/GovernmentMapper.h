@@ -3,22 +3,12 @@
 
 
 
+#include "GovernmentMapping.h"
 #include "HOI4World/Ideologies/Ideologies.h"
 #include "Parser.h"
 #include <set>
 #include <string>
 #include <vector>
-
-
-
-typedef struct governmentMapping
-{
-	std::string vic2Government;
-	std::string tagRequired;
-	std::string HoI4GovernmentIdeology;
-	std::string HoI4LeaderIdeology;
-	std::string rulingPartyRequired;
-} governmentMapping;
 
 
 
@@ -69,14 +59,14 @@ class governmentMapper: commonItems::parser
 	governmentMapper(const governmentMapper&) = delete;
 	governmentMapper& operator=(const governmentMapper&) = delete;
 
-	bool governmentMatches(const governmentMapping& mapping, const std::string& government) const;
-	bool rulingIdeologyMatches(const governmentMapping& mapping, const std::string& rulingIdeology) const;
-	bool tagMatches(const governmentMapping& mapping, const std::string& tag) const;
-	static bool ideologyIsValid(const governmentMapping& mapping,
+	bool governmentMatches(const Mappers::GovernmentMapping& mapping, const std::string& government) const;
+	bool rulingIdeologyMatches(const Mappers::GovernmentMapping& mapping, const std::string& rulingIdeology) const;
+	bool tagMatches(const Mappers::GovernmentMapping& mapping, const std::string& tag) const;
+	static bool ideologyIsValid(const Mappers::GovernmentMapping& mapping,
 		 const std::set<std::string>& majorIdeologies,
 		 const HoI4::Ideologies& ideologies);
 
-	std::vector<governmentMapping> governmentMap;
+	std::vector<Mappers::GovernmentMapping> governmentMap;
 	std::vector<partyMapping> partyMap;
 };
 

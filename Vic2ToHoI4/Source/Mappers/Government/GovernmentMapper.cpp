@@ -1,46 +1,9 @@
 #include "GovernmentMapper.h"
+#include "GovernmentMappingFactory.h"
 #include "Log.h"
 #include "ParserHelpers.h"
 #include "V2World/Countries/Country.h"
 
-
-
-class aGovernmentMapping: commonItems::parser
-{
-  public:
-	explicit aGovernmentMapping(std::istream& theStream);
-
-	auto getMapping() const { return mapping; }
-
-  private:
-	governmentMapping mapping;
-};
-
-
-aGovernmentMapping::aGovernmentMapping(std::istream& theStream)
-{
-	registerKeyword("vic", [this](std::istream& theStream) {
-		commonItems::singleString vic2Government(theStream);
-		mapping.vic2Government = vic2Government.getString();
-	});
-	registerKeyword("tag_required", [this](std::istream& theStream) {
-		mapping.tagRequired = commonItems::singleString{theStream}.getString();
-	});
-	registerKeyword("ruling_party", [this](std::istream& theStream) {
-		commonItems::singleString rulingParty(theStream);
-		mapping.rulingPartyRequired = rulingParty.getString();
-	});
-	registerKeyword("hoi_gov", [this](std::istream& theStream) {
-		commonItems::singleString hoi4Government(theStream);
-		mapping.HoI4GovernmentIdeology = hoi4Government.getString();
-	});
-	registerKeyword("hoi_leader", [this](std::istream& theStream) {
-		commonItems::singleString hoi4Leader(theStream);
-		mapping.HoI4LeaderIdeology = hoi4Leader.getString();
-	});
-
-	parseStream(theStream);
-}
 
 
 class governmentMappings: commonItems::parser
@@ -51,15 +14,15 @@ class governmentMappings: commonItems::parser
 	auto getGovernmentMap() const { return governmentMap; }
 
   private:
-	std::vector<governmentMapping> governmentMap;
+	Mappers::GovernmentMappingFactory governmentMappingFactory;
+	std::vector<Mappers::GovernmentMapping> governmentMap;
 };
 
 
 governmentMappings::governmentMappings(std::istream& theStream)
 {
 	registerKeyword("mapping", [this](std::istream& theStream) {
-		aGovernmentMapping mapping(theStream);
-		governmentMap.push_back(mapping.getMapping());
+		governmentMap.push_back(*governmentMappingFactory.importMapping(theStream));
 	});
 
 	parseStream(theStream);
@@ -237,25 +200,26 @@ std::string governmentMapper::getExistingLeaderIdeologyForCountry(const std::str
 }
 
 
-bool governmentMapper::governmentMatches(const governmentMapping& mapping, const std::string& government) const
+bool governmentMapper::governmentMatches(const Mappers::GovernmentMapping& mapping, const std::string& government) const
 {
 	return ((mapping.vic2Government.empty()) || (mapping.vic2Government == government));
 }
 
 
-bool governmentMapper::rulingIdeologyMatches(const governmentMapping& mapping, const std::string& rulingIdeology) const
+bool governmentMapper::rulingIdeologyMatches(const Mappers::GovernmentMapping& mapping,
+	 const std::string& rulingIdeology) const
 {
 	return ((mapping.rulingPartyRequired.empty()) || (mapping.rulingPartyRequired == rulingIdeology));
 }
 
 
-bool governmentMapper::tagMatches(const governmentMapping& mapping, const std::string& tag) const
+bool governmentMapper::tagMatches(const Mappers::GovernmentMapping& mapping, const std::string& tag) const
 {
 	return ((mapping.tagRequired.empty()) || (mapping.tagRequired == tag));
 }
 
 
-bool governmentMapper::ideologyIsValid(const governmentMapping& mapping,
+bool governmentMapper::ideologyIsValid(const Mappers::GovernmentMapping& mapping,
 	 const std::set<std::string>& majorIdeologies,
 	 const HoI4::Ideologies& ideologies)
 {

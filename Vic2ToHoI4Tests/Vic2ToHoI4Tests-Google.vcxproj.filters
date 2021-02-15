@@ -1418,6 +1418,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\Government\GovernmentMappingTests.cpp">
+      <Filter>MapperTests\Government</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1854,6 +1860,9 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Mappers\Government">
       <UniqueIdentifier>{0b132c3d-7051-4fcb-b8ce-cd2a6473ae49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests\Government">
+      <UniqueIdentifier>{ff7855af-5fde-4ee4-aa0b-0ac69583f073}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2731,6 +2740,12 @@
       <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperBuilder.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapping.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
     </ClInclude>
   </ItemGroup>
