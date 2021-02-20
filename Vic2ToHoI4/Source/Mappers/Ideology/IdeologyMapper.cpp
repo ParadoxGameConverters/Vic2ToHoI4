@@ -6,16 +6,14 @@ std::string Mappers::IdeologyMapper::getSupportedIdeology(const std::string& rul
 	 const std::string& Vic2Ideology,
 	 const std::set<std::string>& majorIdeologies) const
 {
-	std::string ideology = "neutrality";
-	for (auto mapping: ideologyMap)
+	for (const auto& mapping: ideologyMap)
 	{
 		if ((rulingIdeology == mapping.rulingIdeology) && (Vic2Ideology == mapping.vic2Ideology) &&
 			 majorIdeologies.contains(mapping.supportedIdeology))
 		{
-			ideology = mapping.supportedIdeology;
-			break;
+			return mapping.supportedIdeology;
 		}
 	}
 
-	return ideology;
+	return "neutrality";
 }

@@ -3073,10 +3073,8 @@
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\Country\country_mappings.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="MapperTests\Ideology\IdeologyMappings.txt">
+    <CopyFileToFolders Include="TestFiles\Mappers\Ideology\IdeologyMappings.txt">
       <Filter>TestFiles\Mappers\Ideology</Filter>
-    </Text>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

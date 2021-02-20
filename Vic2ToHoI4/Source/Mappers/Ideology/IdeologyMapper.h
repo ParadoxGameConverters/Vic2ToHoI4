@@ -18,7 +18,7 @@ class IdeologyMapper
   public:
 	class Factory;
 
-	std::string getSupportedIdeology(const std::string& rulingIdeology,
+	[[nodiscard]] std::string getSupportedIdeology(const std::string& rulingIdeology,
 		 const std::string& Vic2Ideology,
 		 const std::set<std::string>& majorIdeologies) const;
 
