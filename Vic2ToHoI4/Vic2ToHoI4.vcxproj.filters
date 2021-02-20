@@ -20159,7 +20159,7 @@
     <CopyFileToFolders Include="Data_Files\version.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\configurables\IdeologyMappings.txt" />
+    <CopyFileToFolders Include="..\Vic2ToHoI4Tests\TestFiles\Mappers\Ideology\IdeologyMappings.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />

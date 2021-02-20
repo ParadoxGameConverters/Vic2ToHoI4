@@ -1436,6 +1436,9 @@
     <ClCompile Include="MapperTests\Ideology\IdeologyMappingTests.cpp">
       <Filter>MapperTests\Ideology</Filter>
     </ClCompile>
+    <ClCompile Include="MapperTests\Ideology\IdeologyMapperTests.cpp">
+      <Filter>MapperTests\Ideology</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1881,6 +1884,9 @@
     </Filter>
     <Filter Include="MapperTests\Ideology">
       <UniqueIdentifier>{59cd8f0f-8e62-4a7f-b404-782d3d4f5e61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Mappers\Ideology">
+      <UniqueIdentifier>{4fccec2b-87d5-41a0-969f-d4483c3cba3b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3067,5 +3073,10 @@
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\Country\country_mappings.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="MapperTests\Ideology\IdeologyMappings.txt">
+      <Filter>TestFiles\Mappers\Ideology</Filter>
+    </Text>
   </ItemGroup>
 </Project>

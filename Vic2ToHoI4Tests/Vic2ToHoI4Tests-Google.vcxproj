@@ -464,6 +464,7 @@
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagsToIdeasMapperTests.cpp" />
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagToIdeaMappingTests.cpp" />
     <ClCompile Include="MapperTests\Government\GovernmentMappingTests.cpp" />
+    <ClCompile Include="MapperTests\Ideology\IdeologyMapperTests.cpp" />
     <ClCompile Include="MapperTests\Ideology\IdeologyMappingTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\ProvinceMapperTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\ProvinceMappingTests.cpp" />
@@ -1425,6 +1426,12 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Mappers\Country\country_mappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Mappers\Ideology\IdeologyMappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
