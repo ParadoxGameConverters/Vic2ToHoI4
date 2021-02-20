@@ -42,9 +42,6 @@ class governmentMapper: commonItems::parser
 		 const std::set<std::string>& majorIdeologies,
 		 const HoI4::Ideologies& ideologies,
 		 bool debug) const;
-	std::string getSupportedIdeology(const std::string& rulingIdeology,
-		 const std::string& Vic2Ideology,
-		 const std::set<std::string>& majorIdeologies) const;
 
 	auto getGovernmentMappings() const { return governmentMap; }
 
@@ -60,7 +57,6 @@ class governmentMapper: commonItems::parser
 		 const HoI4::Ideologies& ideologies);
 
 	std::vector<Mappers::GovernmentMapping> governmentMap;
-	std::vector<Mappers::PartyMapping> partyMap;
 };
 
 

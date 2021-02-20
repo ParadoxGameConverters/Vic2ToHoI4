@@ -244,6 +244,9 @@
     <Filter Include="Mappers\Government">
       <UniqueIdentifier>{440acb62-bbce-4a1d-b9e3-177bb53702c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mappers\Ideology">
+      <UniqueIdentifier>{79bc5641-0b32-4592-ba99-c35e1307dab7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1184,6 +1187,12 @@
       <Filter>Mappers\Government</Filter>
     </ClCompile>
     <ClCompile Include="Source\Mappers\Government\PartyMappingFactory.cpp">
+      <Filter>Mappers\Government</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\Government\PartyMapper.cpp">
+      <Filter>Mappers\Government</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\Government\PartyMapperFactory.cpp">
       <Filter>Mappers\Government</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2344,6 +2353,12 @@
       <Filter>Mappers\Government</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\Government\PartyMappingFactory.h">
+      <Filter>Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Government\PartyMapper.h">
+      <Filter>Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Government\PartyMapperFactory.h">
       <Filter>Mappers\Government</Filter>
     </ClInclude>
   </ItemGroup>
@@ -20147,5 +20162,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data_Files\configurables\partyMapping.txt">
+      <Filter>Data Files\Configurables</Filter>
+    </Text>
   </ItemGroup>
 </Project>

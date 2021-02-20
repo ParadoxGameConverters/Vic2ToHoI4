@@ -29,29 +29,6 @@ governmentMappings::governmentMappings(std::istream& theStream)
 }
 
 
-class partyMappings: commonItems::parser
-{
-  public:
-	explicit partyMappings(std::istream& theStream);
-
-	auto getPartyMap() const { return partyMap; }
-
-  private:
-	Mappers::PartyMappingFactory partyMappingFactory;
-	std::vector<Mappers::PartyMapping> partyMap;
-};
-
-
-partyMappings::partyMappings(std::istream& theStream)
-{
-	registerKeyword("mapping", [this](std::istream& theStream) {
-		partyMap.push_back(*partyMappingFactory.importPartyMapping(theStream));
-	});
-
-	parseStream(theStream);
-}
-
-
 void governmentMapper::init()
 {
 	Log(LogLevel::Info) << "\tParsing governments mappings";
@@ -59,10 +36,6 @@ void governmentMapper::init()
 	registerKeyword("government_mappings", [this](std::istream& theStream) {
 		governmentMappings mappings(theStream);
 		governmentMap = mappings.getGovernmentMap();
-	});
-	registerKeyword("party_mappings", [this](std::istream& theStream) {
-		partyMappings mappings(theStream);
-		partyMap = mappings.getPartyMap();
 	});
 
 	parseFile("Configurables/governmentMapping.txt");
@@ -194,23 +167,4 @@ bool governmentMapper::ideologyIsValid(const Mappers::GovernmentMapping& mapping
 {
 	return majorIdeologies.contains(mapping.hoI4GovernmentIdeology) &&
 			 ideologies.subIdeologyIsValid(mapping.hoI4GovernmentIdeology, mapping.hoI4LeaderIdeology);
-}
-
-
-std::string governmentMapper::getSupportedIdeology(const std::string& rulingIdeology,
-	 const std::string& Vic2Ideology,
-	 const std::set<std::string>& majorIdeologies) const
-{
-	std::string ideology = "neutrality";
-	for (auto mapping: partyMap)
-	{
-		if ((rulingIdeology == mapping.rulingIdeology) && (Vic2Ideology == mapping.vic2Ideology) &&
-			 majorIdeologies.contains(mapping.supportedIdeology))
-		{
-			ideology = mapping.supportedIdeology;
-			break;
-		}
-	}
-
-	return ideology;
 }

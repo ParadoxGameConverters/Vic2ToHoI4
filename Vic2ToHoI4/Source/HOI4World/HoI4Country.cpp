@@ -177,7 +177,7 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 
 
 void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies,
-	 const governmentMapper& governmentMap,
+	 const Mappers::PartyMapper& partyMapper,
 	 const Vic2::Localisations& vic2Localisations,
 	 Localisation& hoi4Localisations)
 {
@@ -185,8 +185,7 @@ void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies,
 	{
 		for (const auto& party: parties)
 		{
-			if (HoI4Ideology ==
-				 governmentMap.getSupportedIdeology(governmentIdeology, party.getIdeology(), majorIdeologies))
+			if (HoI4Ideology == partyMapper.getSupportedIdeology(governmentIdeology, party.getIdeology(), majorIdeologies))
 			{
 				hoi4Localisations.addPoliticalPartyLocalisation(party.getName(),
 					 tag + "_" + HoI4Ideology + "_party",
@@ -614,7 +613,7 @@ void HoI4::Country::createLeader(Names& names, graphicsMapper& theGraphics)
 
 
 void HoI4::Country::convertIdeologySupport(const std::set<std::string>& majorIdeologies,
-	 const governmentMapper& governmentMap)
+	 const Mappers::PartyMapper& partyMapper)
 {
 	ideologySupport.clear();
 	if (oldTag == "AAA")
@@ -630,7 +629,7 @@ void HoI4::Country::convertIdeologySupport(const std::set<std::string>& majorIde
 
 	for (const auto& upperHouseIdeology: upperHouseComposition)
 	{
-		auto ideology = governmentMap.getSupportedIdeology(governmentIdeology, upperHouseIdeology.first, majorIdeologies);
+		auto ideology = partyMapper.getSupportedIdeology(governmentIdeology, upperHouseIdeology.first, majorIdeologies);
 		auto supportItr = ideologySupport.find(ideology);
 		if (supportItr == ideologySupport.end())
 		{

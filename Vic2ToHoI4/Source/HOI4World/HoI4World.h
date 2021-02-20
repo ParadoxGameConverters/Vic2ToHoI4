@@ -25,6 +25,7 @@
 #include "Mappers/CountryName/CountryNameMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/Government/GovernmentMapper.h"
+#include "Mappers/Government/PartyMapper.h"
 #include "Mappers/GraphicsMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Mappers/Technology/TechMapper.h"
@@ -194,6 +195,7 @@ class World: commonItems::parser
 	std::unique_ptr<Names> names;
 	graphicsMapper theGraphics;
 	governmentMapper governmentMap;
+	std::unique_ptr<Mappers::PartyMapper> partyMapper;
 	std::unique_ptr<Mappers::CountryMapper> countryMap;
 	std::unique_ptr<Mappers::CountryNameMapper> countryNameMapper;
 

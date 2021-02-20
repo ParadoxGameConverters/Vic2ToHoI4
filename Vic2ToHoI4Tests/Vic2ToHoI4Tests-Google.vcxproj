@@ -116,6 +116,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMapper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMappingFactory.cpp" />
@@ -832,6 +834,8 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMapper.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMapperFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMappingFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMappedBuilder.h" />

@@ -18,6 +18,7 @@
 #include "Mappers/Country/CountryMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/Government/GovernmentMapper.h"
+#include "Mappers/Government/PartyMapper.h"
 #include "Mappers/GraphicsMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Mappers/Technology/TechMapper.h"
@@ -81,10 +82,10 @@ class Country
 		 Localisation& hoi4Localisations,
 		 bool debug);
 	void convertParties(const std::set<std::string>& majorIdeologies,
-		 const governmentMapper& governmentMap,
+		 const Mappers::PartyMapper& partyMapper,
 		 const Vic2::Localisations& vic2Localisations,
 		 Localisation& hoi4Localisations);
-	void convertIdeologySupport(const std::set<std::string>& majorIdeologies, const governmentMapper& governmentMap);
+	void convertIdeologySupport(const std::set<std::string>& majorIdeologies, const Mappers::PartyMapper& partyMapper);
 	void determineShipVariants(const PossibleShipVariants& possibleVariants);
 	void convertNavies(const UnitMappings& unitMap,
 		 const MtgUnitMappings& mtgUnitMap,
