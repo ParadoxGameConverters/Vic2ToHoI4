@@ -4,6 +4,7 @@
 
 
 #include "IdeologyMapper.h"
+#include "IdeologyMappingFactory.h"
 #include "Parser.h"
 #include <memory>
 
@@ -19,6 +20,8 @@ class IdeologyMapper::Factory: commonItems::parser
 	std::unique_ptr<IdeologyMapper> importIdeologyMapper();
 
   private:
+	IdeologyMappingFactory ideologyMappingFactory;
+
 	std::unique_ptr<IdeologyMapper> ideologyMapper;
 };
 
