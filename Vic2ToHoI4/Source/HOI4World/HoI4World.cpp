@@ -25,7 +25,7 @@
 #include "Mappers/CountryName/CountryNameMapperFactory.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapperFactory.h"
-#include "Mappers/Government/IdeologyMapperFactory.h"
+#include "Mappers/Ideology/IdeologyMapperFactory.h"
 #include "Mappers/Technology/ResearchBonusMapper.h"
 #include "Mappers/Technology/ResearchBonusMapperFactory.h"
 #include "Mappers/Technology/TechMapper.h"

@@ -1424,17 +1424,17 @@
     <ClCompile Include="MapperTests\Government\GovernmentMappingTests.cpp">
       <Filter>MapperTests\Government</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMappingFactory.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapper.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Ideology</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMapper.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapperFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Ideology</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMapperFactory.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMappingFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Ideology</Filter>
     </ClCompile>
-    <ClCompile Include="MapperTests\Government\IdeologyMappingTests.cpp">
-      <Filter>MapperTests\Government</Filter>
+    <ClCompile Include="MapperTests\Ideology\IdeologyMappingTests.cpp">
+      <Filter>MapperTests\Ideology</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1875,6 +1875,12 @@
     </Filter>
     <Filter Include="MapperTests\Government">
       <UniqueIdentifier>{ff7855af-5fde-4ee4-aa0b-0ac69583f073}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\Ideology">
+      <UniqueIdentifier>{6dcff594-caef-4aec-9a53-5e218b10495c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests\Ideology">
+      <UniqueIdentifier>{59cd8f0f-8e62-4a7f-b404-782d3d4f5e61}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2760,17 +2766,17 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
     </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMapping.h">
-      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapper.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Ideology</Filter>
     </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMappingFactory.h">
-      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapperFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Ideology</Filter>
     </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMapper.h">
-      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapping.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Ideology</Filter>
     </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMapperFactory.h">
-      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMappingFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Ideology</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

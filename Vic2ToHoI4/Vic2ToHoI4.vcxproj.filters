@@ -1186,14 +1186,14 @@
     <ClCompile Include="Source\Mappers\Government\GovernmentMappingFactory.cpp">
       <Filter>Mappers\Government</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mappers\Government\IdeologyMappingFactory.cpp">
-      <Filter>Mappers\Government</Filter>
+    <ClCompile Include="Source\Mappers\Ideology\IdeologyMapper.cpp">
+      <Filter>Mappers\Ideology</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mappers\Government\IdeologyMapper.cpp">
-      <Filter>Mappers\Government</Filter>
+    <ClCompile Include="Source\Mappers\Ideology\IdeologyMapperFactory.cpp">
+      <Filter>Mappers\Ideology</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mappers\Government\IdeologyMapperFactory.cpp">
-      <Filter>Mappers\Government</Filter>
+    <ClCompile Include="Source\Mappers\Ideology\IdeologyMappingFactory.cpp">
+      <Filter>Mappers\Ideology</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2349,17 +2349,17 @@
     <ClInclude Include="Source\Mappers\Government\GovernmentMappingFactory.h">
       <Filter>Mappers\Government</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mappers\Government\IdeologyMapping.h">
-      <Filter>Mappers\Government</Filter>
+    <ClInclude Include="Source\Mappers\Ideology\IdeologyMapper.h">
+      <Filter>Mappers\Ideology</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mappers\Government\IdeologyMappingFactory.h">
-      <Filter>Mappers\Government</Filter>
+    <ClInclude Include="Source\Mappers\Ideology\IdeologyMapperFactory.h">
+      <Filter>Mappers\Ideology</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mappers\Government\IdeologyMapper.h">
-      <Filter>Mappers\Government</Filter>
+    <ClInclude Include="Source\Mappers\Ideology\IdeologyMapping.h">
+      <Filter>Mappers\Ideology</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mappers\Government\IdeologyMapperFactory.h">
-      <Filter>Mappers\Government</Filter>
+    <ClInclude Include="Source\Mappers\Ideology\IdeologyMappingFactory.h">
+      <Filter>Mappers\Ideology</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
