@@ -1,5 +1,5 @@
-#ifndef PARTY_MAPPING_H
-#define PARTY_MAPPING_H
+#ifndef IDEOLOGY_MAPPING_H
+#define IDEOLOGY_MAPPING_H
 
 
 
@@ -10,7 +10,7 @@
 namespace Mappers
 {
 
-struct PartyMapping
+struct IdeologyMapping
 {
 	std::string rulingIdeology;
 	std::string vic2Ideology;
@@ -21,4 +21,4 @@ struct PartyMapping
 
 
 
-#endif // PARTY_MAPPING_H
+#endif // IDEOLOGY_MAPPING_H

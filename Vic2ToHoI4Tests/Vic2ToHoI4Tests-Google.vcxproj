@@ -116,9 +116,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMapper.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMapperFactory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMappingFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMapper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMapperFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\VersionedMappingsFactory.cpp" />
@@ -464,7 +464,7 @@
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagsToIdeasMapperTests.cpp" />
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagToIdeaMappingTests.cpp" />
     <ClCompile Include="MapperTests\Government\GovernmentMappingTests.cpp" />
-    <ClCompile Include="MapperTests\Government\PartyMappingTests.cpp" />
+    <ClCompile Include="MapperTests\Government\IdeologyMappingTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\ProvinceMapperTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\ProvinceMappingTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\VersionedMappingsTests.cpp" />
@@ -834,10 +834,10 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMapper.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMapperFactory.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMapping.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMappingFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMapper.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMapperFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMapping.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMappingFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMappedBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.h" />

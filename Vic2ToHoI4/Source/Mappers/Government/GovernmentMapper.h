@@ -6,7 +6,6 @@
 #include "GovernmentMapping.h"
 #include "HOI4World/Ideologies/Ideologies.h"
 #include "Parser.h"
-#include "PartyMapping.h"
 #include <set>
 #include <string>
 #include <vector>

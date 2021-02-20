@@ -1424,17 +1424,17 @@
     <ClCompile Include="MapperTests\Government\GovernmentMappingTests.cpp">
       <Filter>MapperTests\Government</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMappingFactory.cpp">
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMappingFactory.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
     </ClCompile>
-    <ClCompile Include="MapperTests\Government\PartyMappingTests.cpp">
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMapper.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMapperFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\Government\IdeologyMappingTests.cpp">
       <Filter>MapperTests\Government</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMapper.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMapperFactory.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2760,16 +2760,16 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
     </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMapping.h">
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMapping.h">
       <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
     </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMappingFactory.h">
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMappingFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
     </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMapper.h">
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMapper.h">
       <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
     </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\PartyMapperFactory.h">
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\IdeologyMapperFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
     </ClInclude>
   </ItemGroup>

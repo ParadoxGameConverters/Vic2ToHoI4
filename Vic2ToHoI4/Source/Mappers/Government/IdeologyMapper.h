@@ -1,33 +1,32 @@
-#ifndef PARTY_MAPPER_H
-#define PARTY_MAPPER_H
+#ifndef IDEOLOGY_MAPPER_H
+#define IDEOLOGY_MAPPER_H
 
 
 
-
-#include "PartyMapping.h"
-#include <vector>
+#include "IdeologyMapping.h"
 #include <set>
 #include <string>
+#include <vector>
 
 
 
 namespace Mappers
 {
 
-class PartyMapper
+class IdeologyMapper
 {
-public:
+  public:
 	class Factory;
 
 	std::string getSupportedIdeology(const std::string& rulingIdeology,
 		 const std::string& Vic2Ideology,
 		 const std::set<std::string>& majorIdeologies) const;
 
-private:
-	std::vector<PartyMapping> partyMap;
+  private:
+	std::vector<IdeologyMapping> ideologyMap;
 };
-	
-}
+
+} // namespace Mappers
 
 
-#endif // PARTY_MAPPER_H
+#endif // IDEOLOGY_MAPPER_H

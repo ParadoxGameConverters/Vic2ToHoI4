@@ -1186,13 +1186,13 @@
     <ClCompile Include="Source\Mappers\Government\GovernmentMappingFactory.cpp">
       <Filter>Mappers\Government</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mappers\Government\PartyMappingFactory.cpp">
+    <ClCompile Include="Source\Mappers\Government\IdeologyMappingFactory.cpp">
       <Filter>Mappers\Government</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mappers\Government\PartyMapper.cpp">
+    <ClCompile Include="Source\Mappers\Government\IdeologyMapper.cpp">
       <Filter>Mappers\Government</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mappers\Government\PartyMapperFactory.cpp">
+    <ClCompile Include="Source\Mappers\Government\IdeologyMapperFactory.cpp">
       <Filter>Mappers\Government</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2349,16 +2349,16 @@
     <ClInclude Include="Source\Mappers\Government\GovernmentMappingFactory.h">
       <Filter>Mappers\Government</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mappers\Government\PartyMapping.h">
+    <ClInclude Include="Source\Mappers\Government\IdeologyMapping.h">
       <Filter>Mappers\Government</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mappers\Government\PartyMappingFactory.h">
+    <ClInclude Include="Source\Mappers\Government\IdeologyMappingFactory.h">
       <Filter>Mappers\Government</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mappers\Government\PartyMapper.h">
+    <ClInclude Include="Source\Mappers\Government\IdeologyMapper.h">
       <Filter>Mappers\Government</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mappers\Government\PartyMapperFactory.h">
+    <ClInclude Include="Source\Mappers\Government\IdeologyMapperFactory.h">
       <Filter>Mappers\Government</Filter>
     </ClInclude>
   </ItemGroup>
@@ -20159,13 +20159,9 @@
     <CopyFileToFolders Include="Data_Files\version.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\IdeologyMappings.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Data_Files\configurables\partyMapping.txt">
-      <Filter>Data Files\Configurables</Filter>
-    </Text>
   </ItemGroup>
 </Project>

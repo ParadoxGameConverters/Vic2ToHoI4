@@ -1,4 +1,4 @@
-party_mappings = {
+ideology_mappings = {
 	mapping = { ruling_ideology = absolutist vic2_ideology = reactionary supported_ideology = absolutist }
 	mapping = { ruling_ideology = absolutist vic2_ideology = conservative supported_ideology = absolutist }
 	mapping = { ruling_ideology = absolutist vic2_ideology = anarcho_liberal supported_ideology = radical }
