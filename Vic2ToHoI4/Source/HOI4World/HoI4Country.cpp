@@ -5,7 +5,7 @@
 #include "Leaders/CountryLeaderFactory.h"
 #include "Log.h"
 #include "Mappers/Country/CountryMapper.h"
-#include "Mappers/GovernmentMapper.h"
+#include "Mappers/Government/GovernmentMapper.h"
 #include "Mappers/GraphicsMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Mappers/Technology/TechMapper.h"
@@ -144,7 +144,7 @@ void HoI4::Country::determineFilename()
 
 
 void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
-	 const governmentMapper& governmentMap,
+	 const Mappers::GovernmentMapper& governmentMap,
 	 const Vic2::Localisations& vic2Localisations,
 	 Localisation& hoi4Localisations,
 	 bool debug)
@@ -177,7 +177,7 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 
 
 void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies,
-	 const governmentMapper& governmentMap,
+	 const Mappers::IdeologyMapper& ideologyMapper,
 	 const Vic2::Localisations& vic2Localisations,
 	 Localisation& hoi4Localisations)
 {
@@ -186,7 +186,7 @@ void HoI4::Country::convertParties(const std::set<std::string>& majorIdeologies,
 		for (const auto& party: parties)
 		{
 			if (HoI4Ideology ==
-				 governmentMap.getSupportedIdeology(governmentIdeology, party.getIdeology(), majorIdeologies))
+				 ideologyMapper.getSupportedIdeology(governmentIdeology, party.getIdeology(), majorIdeologies))
 			{
 				hoi4Localisations.addPoliticalPartyLocalisation(party.getName(),
 					 tag + "_" + HoI4Ideology + "_party",
@@ -571,7 +571,7 @@ void HoI4::Country::convertTechnology(const Mappers::TechMapper& techMapper,
 
 void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>& majorIdeologies,
 	 const Ideologies& ideologies,
-	 const governmentMapper& governmentMap,
+	 const Mappers::GovernmentMapper& governmentMap,
 	 bool debug)
 {
 	if (rulingParty == std::nullopt)
@@ -614,7 +614,7 @@ void HoI4::Country::createLeader(Names& names, graphicsMapper& theGraphics)
 
 
 void HoI4::Country::convertIdeologySupport(const std::set<std::string>& majorIdeologies,
-	 const governmentMapper& governmentMap)
+	 const Mappers::IdeologyMapper& partyMapper)
 {
 	ideologySupport.clear();
 	if (oldTag == "AAA")
@@ -630,7 +630,7 @@ void HoI4::Country::convertIdeologySupport(const std::set<std::string>& majorIde
 
 	for (const auto& upperHouseIdeology: upperHouseComposition)
 	{
-		auto ideology = governmentMap.getSupportedIdeology(governmentIdeology, upperHouseIdeology.first, majorIdeologies);
+		auto ideology = partyMapper.getSupportedIdeology(governmentIdeology, upperHouseIdeology.first, majorIdeologies);
 		auto supportItr = ideologySupport.find(ideology);
 		if (supportItr == ideologySupport.end())
 		{

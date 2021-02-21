@@ -81,7 +81,7 @@ bool HoI4::Ideologies::subIdeologyIsValid(const std::string& ideologyName, const
 		}
 	}
 
-	return true;
+	return false;
 }
 
 

@@ -201,6 +201,12 @@
     <ClCompile Include="Source\Mappers\Country\CountryMapper.cpp" />
     <ClCompile Include="Source\Mappers\Country\CountryMappingRuleFactory.cpp" />
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp" />
+    <ClCompile Include="Source\Mappers\Government\GovernmentMapper.cpp" />
+    <ClCompile Include="Source\Mappers\Government\GovernmentMapperFactory.cpp" />
+    <ClCompile Include="Source\Mappers\Government\GovernmentMappingFactory.cpp" />
+    <ClCompile Include="Source\Mappers\Ideology\IdeologyMapper.cpp" />
+    <ClCompile Include="Source\Mappers\Ideology\IdeologyMapperFactory.cpp" />
+    <ClCompile Include="Source\Mappers\Ideology\IdeologyMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\Technology\ResearchBonusMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Technology\ResearchBonusMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\Technology\TechMapperFactory.cpp" />
@@ -385,7 +391,6 @@
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp" />
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp" />
-    <ClCompile Include="Source\Mappers\GovernmentMapper.cpp" />
     <ClCompile Include="Source\Mappers\GraphicsMapper.cpp" />
     <ClCompile Include="Source\Mappers\MergeRules.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMapperFactory.cpp" />
@@ -467,6 +472,8 @@
     <ClInclude Include="Source\HOI4World\Events\CapitulationEvents.h" />
     <ClInclude Include="Source\HOI4World\Events\EventsBuilder.h" />
     <ClInclude Include="Source\HOI4World\Events\LarOccupationEvents.h" />
+    <ClInclude Include="Source\HOI4World\Ideologies\IdeologiesBuilder.h" />
+    <ClInclude Include="Source\HOI4World\Ideologies\IdeologyBuilder.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.h" />
@@ -537,8 +544,16 @@
     <ClInclude Include="Source\Mappers\Country\CountryMappingRuleFactory.h" />
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.h" />
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.h" />
-    <ClInclude Include="Source\Mappers\GovernmentMapperBuilder.h" />
+    <ClInclude Include="Source\Mappers\Government\GovernmentMapper.h" />
+    <ClInclude Include="Source\Mappers\Government\GovernmentMapperBuilder.h" />
+    <ClInclude Include="Source\Mappers\Government\GovernmentMapperFactory.h" />
+    <ClInclude Include="Source\Mappers\Government\GovernmentMapping.h" />
+    <ClInclude Include="Source\Mappers\Government\GovernmentMappingFactory.h" />
     <ClInclude Include="Source\Mappers\GraphicsMappedBuilder.h" />
+    <ClInclude Include="Source\Mappers\Ideology\IdeologyMapper.h" />
+    <ClInclude Include="Source\Mappers\Ideology\IdeologyMapperFactory.h" />
+    <ClInclude Include="Source\Mappers\Ideology\IdeologyMapping.h" />
+    <ClInclude Include="Source\Mappers\Ideology\IdeologyMappingFactory.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapperBuilder.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapperFactory.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMappingFactory.h" />
@@ -749,7 +764,6 @@
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.h" />
     <ClInclude Include="Source\Mappers\GraphicsMapper.h" />
     <ClInclude Include="Source\Mappers\MergeRules.h" />
-    <ClInclude Include="Source\Mappers\GovernmentMapper.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapper.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapping.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMappingTypes.h" />
@@ -872,7 +886,7 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/..</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/..</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\configurables\governmentMapping.txt">
+    <CopyFileToFolders Include="Data_Files\configurables\GovernmentMappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
@@ -24568,6 +24582,12 @@
     <CopyFileToFolders Include="Data_Files\configurables\Historical Flavour Mod v1.27I_province_mappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\configurables\IdeologyMappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

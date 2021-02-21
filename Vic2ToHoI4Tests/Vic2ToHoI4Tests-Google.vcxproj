@@ -114,6 +114,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapper.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapperFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\VersionedMappingsFactory.cpp" />
@@ -294,7 +300,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateHistory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Technologies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\HoI4WarCreator.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Sounds\OutSounds.cpp" />
@@ -459,6 +464,10 @@
     <ClCompile Include="MapperTests\Country\CountryMappingRuleFactoryTests.cpp" />
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagsToIdeasMapperTests.cpp" />
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagToIdeaMappingTests.cpp" />
+    <ClCompile Include="MapperTests\Government\GovernmentMapperTests.cpp" />
+    <ClCompile Include="MapperTests\Government\GovernmentMappingTests.cpp" />
+    <ClCompile Include="MapperTests\Ideology\IdeologyMapperTests.cpp" />
+    <ClCompile Include="MapperTests\Ideology\IdeologyMappingTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\ProvinceMapperTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\ProvinceMappingTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\VersionedMappingsTests.cpp" />
@@ -675,6 +684,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\Ideas.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\IdeaUpdaters.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideologies.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologiesBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideology.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyFile.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyItems.h" />
@@ -824,10 +834,17 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagsToIdeasMapperFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapperBuilder.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapper.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperBuilder.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapping.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMappedBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapper.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapperFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapping.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMappingFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapperBuilder.h" />
@@ -1413,6 +1430,18 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Mappers\Country\country_mappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Mappers\Ideology\IdeologyMappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Mappers\Government\GovernmentMappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>

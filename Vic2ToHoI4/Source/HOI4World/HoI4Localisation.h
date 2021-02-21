@@ -6,7 +6,7 @@
 #include "Configuration.h"
 #include "Localisations/ArticleRules/ArticleRules.h"
 #include "Mappers/CountryName/CountryNameMapper.h"
-#include "Mappers/GovernmentMapper.h"
+#include "Mappers/Government/GovernmentMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "ScriptedLocalisations/ScriptedLocalisations.h"
 #include "States/HoI4State.h"

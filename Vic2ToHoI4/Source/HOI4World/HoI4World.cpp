@@ -25,6 +25,8 @@
 #include "Mappers/CountryName/CountryNameMapperFactory.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapperFactory.h"
+#include "Mappers/Government/GovernmentMapperFactory.h"
+#include "Mappers/Ideology/IdeologyMapperFactory.h"
 #include "Mappers/Technology/ResearchBonusMapper.h"
 #include "Mappers/Technology/ResearchBonusMapperFactory.h"
 #include "Mappers/Technology/TechMapper.h"
@@ -77,7 +79,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	countryNameMapper = Mappers::CountryNameMapper::Factory{}.importCountryNameMapper();
 	convertCountries(sourceWorld);
 	determineGreatPowers(sourceWorld);
-	governmentMap.init();
+	governmentMapper = Mappers::GovernmentMapper::Factory().importGovernmentMapper();
+	ideologyMapper = Mappers::IdeologyMapper::Factory().importIdeologyMapper();
 	convertGovernments(sourceWorld, vic2Localisations, theConfiguration.getDebug());
 	ideologies = std::make_unique<Ideologies>(theConfiguration);
 	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
@@ -281,7 +284,7 @@ void HoI4::World::convertGovernments(const Vic2::World& sourceWorld,
 	Log(LogLevel::Info) << "\tConverting governments";
 	for (auto country: countries)
 	{
-		country.second->convertGovernment(sourceWorld, governmentMap, vic2Localisations, *hoi4Localisations, debug);
+		country.second->convertGovernment(sourceWorld, *governmentMapper, vic2Localisations, *hoi4Localisations, debug);
 	}
 }
 
@@ -315,7 +318,7 @@ void HoI4::World::convertParties(const Vic2::Localisations& vic2Localisations)
 	for (auto country: countries)
 	{
 		country.second->convertParties(ideologies->getMajorIdeologies(),
-			 governmentMap,
+			 *ideologyMapper,
 			 vic2Localisations,
 			 *hoi4Localisations);
 	}
@@ -331,7 +334,7 @@ void HoI4::World::addNeutrality(bool debug)
 		{
 			country.second->setGovernmentToExistingIdeology(ideologies->getMajorIdeologies(),
 				 *ideologies,
-				 governmentMap,
+				 *governmentMapper,
 				 debug);
 		}
 	}
@@ -361,7 +364,7 @@ void HoI4::World::convertIdeologySupport()
 	Log(LogLevel::Info) << "\tConverting ideology support";
 	for (auto country: countries)
 	{
-		country.second->convertIdeologySupport(ideologies->getMajorIdeologies(), governmentMap);
+		country.second->convertIdeologySupport(ideologies->getMajorIdeologies(), *ideologyMapper);
 	}
 }
 

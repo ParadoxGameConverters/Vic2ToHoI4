@@ -22,9 +22,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Localisation.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClCompile>
@@ -1418,6 +1415,36 @@
     <ClCompile Include="MapperTests\Country\CountryMapperTests.cpp">
       <Filter>MapperTests\Country</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapper.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\Government\GovernmentMappingTests.cpp">
+      <Filter>MapperTests\Government</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapper.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Ideology</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapperFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Ideology</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMappingFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Ideology</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\Ideology\IdeologyMappingTests.cpp">
+      <Filter>MapperTests\Ideology</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\Ideology\IdeologyMapperTests.cpp">
+      <Filter>MapperTests\Ideology</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\Government\GovernmentMapperTests.cpp">
+      <Filter>MapperTests\Government</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1852,6 +1879,24 @@
     <Filter Include="TestFiles\Mappers\Country">
       <UniqueIdentifier>{0b677f95-f312-4a1a-94c3-fa7203f7f3a2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\Government">
+      <UniqueIdentifier>{0b132c3d-7051-4fcb-b8ce-cd2a6473ae49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests\Government">
+      <UniqueIdentifier>{ff7855af-5fde-4ee4-aa0b-0ac69583f073}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\Ideology">
+      <UniqueIdentifier>{6dcff594-caef-4aec-9a53-5e218b10495c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests\Ideology">
+      <UniqueIdentifier>{59cd8f0f-8e62-4a7f-b404-782d3d4f5e61}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Mappers\Ideology">
+      <UniqueIdentifier>{4fccec2b-87d5-41a0-969f-d4483c3cba3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Mappers\Government">
+      <UniqueIdentifier>{f1edaffd-2ee1-4b2a-bbc9-859bc2e6fa34}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2153,12 +2198,6 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\World\WorldFactory.h">
       <Filter>Vic2ToHoI4 files\Vic2\World</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapper.h">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GovernmentMapperBuilder.h">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMappedBuilder.h">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
@@ -2730,6 +2769,36 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\World\WorldBuilder.h">
       <Filter>Vic2ToHoI4 files\Vic2\World</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapper.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperBuilder.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapping.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapper.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Ideology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapperFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Ideology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapping.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Ideology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMappingFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Ideology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologiesBuilder.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3018,10 +3087,14 @@
     <CopyFileToFolders Include="TestFiles\Mappers\Technology\tech_mappings.txt">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Country\country_mappings.txt" />
+    <CopyFileToFolders Include="TestFiles\Mappers\Ideology\IdeologyMappings.txt">
+      <Filter>TestFiles\Mappers\Ideology</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="TestFiles\Mappers\Country\country_mappings.txt">
-      <Filter>TestFiles\Mappers\Country</Filter>
+    <Text Include="TestFiles\Mappers\Government\GovernmentMappings.txt">
+      <Filter>TestFiles\Mappers\Government</Filter>
     </Text>
   </ItemGroup>
 </Project>
