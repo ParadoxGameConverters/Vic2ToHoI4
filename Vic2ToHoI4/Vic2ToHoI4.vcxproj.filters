@@ -18776,9 +18776,6 @@
     <CopyFileToFolders Include="Data_Files\Configurables\foreignInfluenceDecisions.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\Configurables\governmentMapping.txt">
-      <Filter>Data Files\Configurables</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\Configurables\Historical Project Mod 0.4.6_province_mappings.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
@@ -20165,11 +20162,16 @@
     <CopyFileToFolders Include="Data_Files\version.txt">
       <Filter>Data Files</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="..\Vic2ToHoI4Tests\TestFiles\Mappers\Ideology\IdeologyMappings.txt">
+    <CopyFileToFolders Include="Data_Files\configurables\GovernmentMappings.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Data_Files\configurables\IdeologyMappings.txt">
+      <Filter>Data Files\Configurables</Filter>
+    </Text>
   </ItemGroup>
 </Project>

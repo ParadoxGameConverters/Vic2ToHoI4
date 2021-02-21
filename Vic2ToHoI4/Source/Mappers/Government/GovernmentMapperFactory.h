@@ -4,6 +4,7 @@
 
 
 #include "GovernmentMapper.h"
+#include "GovernmentMappingFactory.h"
 #include "Parser.h"
 #include <memory>
 
@@ -19,6 +20,8 @@ class GovernmentMapper::Factory: commonItems::parser
 	std::unique_ptr<GovernmentMapper> importGovernmentMapper();
 
   private:
+	GovernmentMappingFactory governmentMappingFactory;
+
 	std::unique_ptr<GovernmentMapper> governmentMapper;
 };
 

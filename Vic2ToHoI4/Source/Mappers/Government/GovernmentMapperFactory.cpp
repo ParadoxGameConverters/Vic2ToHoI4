@@ -1,39 +1,17 @@
 #include "GovernmentMapperFactory.h"
+#include "CommonRegexes.h"
 #include "GovernmentMappingFactory.h"
 #include "Log.h"
-
-
-
-class governmentMappings: commonItems::parser
-{
-  public:
-	explicit governmentMappings(std::istream& theStream);
-
-	auto getGovernmentMap() const { return governmentMap; }
-
-  private:
-	Mappers::GovernmentMappingFactory governmentMappingFactory;
-	std::vector<Mappers::GovernmentMapping> governmentMap;
-};
-
-
-governmentMappings::governmentMappings(std::istream& theStream)
-{
-	registerKeyword("mapping", [this](std::istream& theStream) {
-		governmentMap.push_back(*governmentMappingFactory.importMapping(theStream));
-	});
-
-	parseStream(theStream);
-}
+#include "ParserHelpers.h"
 
 
 
 Mappers::GovernmentMapper::Factory::Factory()
 {
-	registerKeyword("government_mappings", [this](std::istream& theStream) {
-		governmentMappings mappings(theStream);
-		governmentMapper->governmentMap = mappings.getGovernmentMap();
+	registerKeyword("mapping", [this](std::istream& theStream) {
+		governmentMapper->governmentMap.push_back(*governmentMappingFactory.importMapping(theStream));
 	});
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 
 
@@ -42,6 +20,6 @@ std::unique_ptr<Mappers::GovernmentMapper> Mappers::GovernmentMapper::Factory::i
 	Log(LogLevel::Info) << "\tParsing governments mappings";
 
 	governmentMapper = std::make_unique<GovernmentMapper>();
-	parseFile("Configurables/governmentMapping.txt");
+	parseFile("Configurables/GovernmentMappings.txt");
 	return std::move(governmentMapper);
 }
