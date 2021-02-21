@@ -1,3 +1,14 @@
+# Mappings for determining ideological support for HoI4 countries.
+#	In a country ruled by the specified HoI4 ideology, the Vic2 ideology will become the supported ideology.
+
+# Each mapping has the following elements:
+#	ruling_ideology (required) - the ideology ruling the country in HoI4.
+#	vic2_ideology (required) - the Vic2 ideology.
+#	supported_ideology (required) - the ideology given support in HoI4.
+
+# All possible combinations are represented.
+
+
 mapping = { ruling_ideology = absolutist vic2_ideology = reactionary supported_ideology = absolutist }
 mapping = { ruling_ideology = absolutist vic2_ideology = conservative supported_ideology = absolutist }
 mapping = { ruling_ideology = absolutist vic2_ideology = anarcho_liberal supported_ideology = radical }
