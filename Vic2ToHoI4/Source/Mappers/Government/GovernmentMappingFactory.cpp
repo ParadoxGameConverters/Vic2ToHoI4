@@ -5,19 +5,19 @@
 Mappers::GovernmentMappingFactory::GovernmentMappingFactory()
 {
 	registerKeyword("vic", [this](std::istream& theStream) {
-		governmentMapping->vic2Government = commonItems::singleString(theStream).getString();
+		governmentMapping->vic2Government = commonItems::getString(theStream);
 	});
 	registerKeyword("tag_required", [this](std::istream& theStream) {
-		governmentMapping->tagRequired = commonItems::singleString(theStream).getString();
+		governmentMapping->tagRequired = commonItems::getString(theStream);
 	});
 	registerKeyword("ruling_party", [this](std::istream& theStream) {
-		governmentMapping->rulingPartyRequired = commonItems::singleString(theStream).getString();
+		governmentMapping->rulingPartyRequired = commonItems::getString(theStream);
 	});
 	registerKeyword("hoi_gov", [this](std::istream& theStream) {
-		governmentMapping->hoI4GovernmentIdeology = commonItems::singleString(theStream).getString();
+		governmentMapping->hoI4GovernmentIdeology = commonItems::getString(theStream);
 	});
 	registerKeyword("hoi_leader", [this](std::istream& theStream) {
-		governmentMapping->hoI4LeaderIdeology = commonItems::singleString(theStream).getString();
+		governmentMapping->hoI4LeaderIdeology = commonItems::getString(theStream);
 	});
 }
 
