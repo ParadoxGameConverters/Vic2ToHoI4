@@ -32,7 +32,7 @@ TEST(Mappers_Government_GovernmentMapperTests, IdeologyMappingIsLogged)
 {
 	const auto mapper = Mappers::GovernmentMapper::Factory().importGovernmentMapper();
 	std::stringstream log;
-	auto stdOutBuf = std::cout.rdbuf();
+	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
 	const auto ideology = mapper->getIdeologyForCountry("TAG", "source_government", "ruling_ideology", true);
@@ -98,7 +98,7 @@ TEST(Mappers_Government_GovernmentMapperTests, LeaderIdeologyMappingIsLogged)
 {
 	const auto mapper = Mappers::GovernmentMapper::Factory().importGovernmentMapper();
 	std::stringstream log;
-	auto stdOutBuf = std::cout.rdbuf();
+	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
 	const auto ideology = mapper->getLeaderIdeologyForCountry("TAG", "source_government", "ruling_ideology", true);
@@ -161,7 +161,7 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingIdeologyMappingIsLogged)
 {
 	const auto mapper = Mappers::GovernmentMapper::Factory().importGovernmentMapper();
 	std::stringstream log;
-	auto stdOutBuf = std::cout.rdbuf();
+	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
 	const auto ideology = mapper->getExistingIdeologyForCountry("TAG",
@@ -293,7 +293,7 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingLeaderIdeologyMappingIsLo
 {
 	const auto mapper = Mappers::GovernmentMapper::Factory().importGovernmentMapper();
 	std::stringstream log;
-	auto stdOutBuf = std::cout.rdbuf();
+	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
 	const auto ideology = mapper->getExistingLeaderIdeologyForCountry("TAG",

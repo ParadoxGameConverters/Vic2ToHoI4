@@ -8,26 +8,20 @@
 
 
 
-class governmentMapper::Builder
+class Mappers::GovernmentMapper::Builder
 {
   public:
-	Builder() { theGovernmentMapper = std::make_unique<governmentMapper>(); }
-	std::unique_ptr<governmentMapper> Build() { return std::move(theGovernmentMapper); }
+	Builder() { governmentMapper = std::make_unique<GovernmentMapper>(); }
+	std::unique_ptr<GovernmentMapper> Build() { return std::move(governmentMapper); }
 
-	Builder& addGovernmentMapping(const governmentMapping& theGovernmentMapping)
+	Builder& addGovernmentMapping(const GovernmentMapping& governmentMapping)
 	{
-		theGovernmentMapper->governmentMap.push_back(theGovernmentMapping);
-		return *this;
-	}
-
-	Builder& addPartyMapping(const partyMapping& thePartyMapping)
-	{
-		theGovernmentMapper->partyMap.push_back(thePartyMapping);
+		governmentMapper->governmentMap.push_back(governmentMapping);
 		return *this;
 	}
 
   private:
-	std::unique_ptr<governmentMapper> theGovernmentMapper;
+	std::unique_ptr<GovernmentMapper> governmentMapper;
 };
 
 
