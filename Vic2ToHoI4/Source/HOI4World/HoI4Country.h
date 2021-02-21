@@ -73,11 +73,11 @@ class Country
 	void setCapitalRegionFlag(const Regions& regions);
 	void setGovernmentToExistingIdeology(const std::set<std::string>& majorIdeologies,
 		 const Ideologies& ideologies,
-		 const governmentMapper& governmentMap,
+		 const Mappers::GovernmentMapper& governmentMap,
 		 bool debug);
 	void createLeader(Names& names, graphicsMapper& theGraphics);
 	void convertGovernment(const Vic2::World& sourceWorld,
-		 const governmentMapper& governmentMap,
+		 const Mappers::GovernmentMapper& governmentMap,
 		 const Vic2::Localisations& vic2Localisations,
 		 Localisation& hoi4Localisations,
 		 bool debug);

@@ -5,43 +5,7 @@
 
 
 
-class governmentMappings: commonItems::parser
-{
-  public:
-	explicit governmentMappings(std::istream& theStream);
-
-	auto getGovernmentMap() const { return governmentMap; }
-
-  private:
-	Mappers::GovernmentMappingFactory governmentMappingFactory;
-	std::vector<Mappers::GovernmentMapping> governmentMap;
-};
-
-
-governmentMappings::governmentMappings(std::istream& theStream)
-{
-	registerKeyword("mapping", [this](std::istream& theStream) {
-		governmentMap.push_back(*governmentMappingFactory.importMapping(theStream));
-	});
-
-	parseStream(theStream);
-}
-
-
-void governmentMapper::init()
-{
-	Log(LogLevel::Info) << "\tParsing governments mappings";
-
-	registerKeyword("government_mappings", [this](std::istream& theStream) {
-		governmentMappings mappings(theStream);
-		governmentMap = mappings.getGovernmentMap();
-	});
-
-	parseFile("Configurables/governmentMapping.txt");
-}
-
-
-std::string governmentMapper::getIdeologyForCountry(const std::string& sourceTag,
+std::string Mappers::GovernmentMapper::getIdeologyForCountry(const std::string& sourceTag,
 	 const std::string& sourceGovernment,
 	 const std::string& Vic2RulingIdeology,
 	 bool debug) const
@@ -65,7 +29,7 @@ std::string governmentMapper::getIdeologyForCountry(const std::string& sourceTag
 }
 
 
-std::string governmentMapper::getLeaderIdeologyForCountry(const std::string& sourceTag,
+std::string Mappers::GovernmentMapper::getLeaderIdeologyForCountry(const std::string& sourceTag,
 	 const std::string& sourceGovernment,
 	 const std::string& Vic2RulingIdeology,
 	 bool debug) const
@@ -89,7 +53,7 @@ std::string governmentMapper::getLeaderIdeologyForCountry(const std::string& sou
 }
 
 
-std::string governmentMapper::getExistingIdeologyForCountry(const std::string& tag,
+std::string Mappers::GovernmentMapper::getExistingIdeologyForCountry(const std::string& tag,
 	 const std::string& government,
 	 const std::string& Vic2RulingIdeology,
 	 const std::set<std::string>& majorIdeologies,
@@ -115,7 +79,7 @@ std::string governmentMapper::getExistingIdeologyForCountry(const std::string& t
 }
 
 
-std::string governmentMapper::getExistingLeaderIdeologyForCountry(const std::string& tag,
+std::string Mappers::GovernmentMapper::getExistingLeaderIdeologyForCountry(const std::string& tag,
 	 const std::string& government,
 	 const std::string& Vic2RulingIdeology,
 	 const std::set<std::string>& majorIdeologies,
@@ -141,26 +105,27 @@ std::string governmentMapper::getExistingLeaderIdeologyForCountry(const std::str
 }
 
 
-bool governmentMapper::governmentMatches(const Mappers::GovernmentMapping& mapping, const std::string& government) const
+bool Mappers::GovernmentMapper::governmentMatches(const Mappers::GovernmentMapping& mapping,
+	 const std::string& government) const
 {
 	return ((mapping.vic2Government.empty()) || (mapping.vic2Government == government));
 }
 
 
-bool governmentMapper::rulingIdeologyMatches(const Mappers::GovernmentMapping& mapping,
+bool Mappers::GovernmentMapper::rulingIdeologyMatches(const Mappers::GovernmentMapping& mapping,
 	 const std::string& rulingIdeology) const
 {
 	return ((mapping.rulingPartyRequired.empty()) || (mapping.rulingPartyRequired == rulingIdeology));
 }
 
 
-bool governmentMapper::tagMatches(const Mappers::GovernmentMapping& mapping, const std::string& tag) const
+bool Mappers::GovernmentMapper::tagMatches(const Mappers::GovernmentMapping& mapping, const std::string& tag) const
 {
 	return ((mapping.tagRequired.empty()) || (mapping.tagRequired == tag));
 }
 
 
-bool governmentMapper::ideologyIsValid(const Mappers::GovernmentMapping& mapping,
+bool Mappers::GovernmentMapper::ideologyIsValid(const Mappers::GovernmentMapping& mapping,
 	 const std::set<std::string>& majorIdeologies,
 	 const HoI4::Ideologies& ideologies)
 {

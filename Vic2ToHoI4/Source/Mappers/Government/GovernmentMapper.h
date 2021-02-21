@@ -5,20 +5,19 @@
 
 #include "GovernmentMapping.h"
 #include "HOI4World/Ideologies/Ideologies.h"
-#include "Parser.h"
 #include <set>
 #include <string>
 #include <vector>
 
 
 
-class governmentMapper: commonItems::parser
+namespace Mappers
+{
+
+class GovernmentMapper
 {
   public:
-	governmentMapper() = default;
-	void init();
-	~governmentMapper() = default;
-
+	class Factory;
 	class Builder;
 
 	std::string getIdeologyForCountry(const std::string& sourceTag,
@@ -45,9 +44,6 @@ class governmentMapper: commonItems::parser
 	auto getGovernmentMappings() const { return governmentMap; }
 
   private:
-	governmentMapper(const governmentMapper&) = delete;
-	governmentMapper& operator=(const governmentMapper&) = delete;
-
 	bool governmentMatches(const Mappers::GovernmentMapping& mapping, const std::string& government) const;
 	bool rulingIdeologyMatches(const Mappers::GovernmentMapping& mapping, const std::string& rulingIdeology) const;
 	bool tagMatches(const Mappers::GovernmentMapping& mapping, const std::string& tag) const;
@@ -57,6 +53,8 @@ class governmentMapper: commonItems::parser
 
 	std::vector<Mappers::GovernmentMapping> governmentMap;
 };
+
+} // namespace Mappers
 
 
 

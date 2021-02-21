@@ -144,7 +144,7 @@ void HoI4::Country::determineFilename()
 
 
 void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
-	 const governmentMapper& governmentMap,
+	 const Mappers::GovernmentMapper& governmentMap,
 	 const Vic2::Localisations& vic2Localisations,
 	 Localisation& hoi4Localisations,
 	 bool debug)
@@ -571,7 +571,7 @@ void HoI4::Country::convertTechnology(const Mappers::TechMapper& techMapper,
 
 void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>& majorIdeologies,
 	 const Ideologies& ideologies,
-	 const governmentMapper& governmentMap,
+	 const Mappers::GovernmentMapper& governmentMap,
 	 bool debug)
 {
 	if (rulingParty == std::nullopt)

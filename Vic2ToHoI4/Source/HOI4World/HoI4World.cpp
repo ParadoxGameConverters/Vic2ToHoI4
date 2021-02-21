@@ -25,6 +25,7 @@
 #include "Mappers/CountryName/CountryNameMapperFactory.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapperFactory.h"
+#include "Mappers/Government/GovernmentMapperFactory.h"
 #include "Mappers/Ideology/IdeologyMapperFactory.h"
 #include "Mappers/Technology/ResearchBonusMapper.h"
 #include "Mappers/Technology/ResearchBonusMapperFactory.h"
@@ -78,7 +79,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	countryNameMapper = Mappers::CountryNameMapper::Factory{}.importCountryNameMapper();
 	convertCountries(sourceWorld);
 	determineGreatPowers(sourceWorld);
-	governmentMap.init();
+	governmentMap = Mappers::GovernmentMapper::Factory().importGovernmentMapper();
 	ideologyMapper = Mappers::IdeologyMapper::Factory().importIdeologyMapper();
 	convertGovernments(sourceWorld, vic2Localisations, theConfiguration.getDebug());
 	ideologies = std::make_unique<Ideologies>(theConfiguration);
@@ -283,7 +284,7 @@ void HoI4::World::convertGovernments(const Vic2::World& sourceWorld,
 	Log(LogLevel::Info) << "\tConverting governments";
 	for (auto country: countries)
 	{
-		country.second->convertGovernment(sourceWorld, governmentMap, vic2Localisations, *hoi4Localisations, debug);
+		country.second->convertGovernment(sourceWorld, *governmentMap, vic2Localisations, *hoi4Localisations, debug);
 	}
 }
 
@@ -333,7 +334,7 @@ void HoI4::World::addNeutrality(bool debug)
 		{
 			country.second->setGovernmentToExistingIdeology(ideologies->getMajorIdeologies(),
 				 *ideologies,
-				 governmentMap,
+				 *governmentMap,
 				 debug);
 		}
 	}

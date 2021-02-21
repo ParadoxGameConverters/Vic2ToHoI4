@@ -194,7 +194,7 @@ class World: commonItems::parser
 
 	std::unique_ptr<Names> names;
 	graphicsMapper theGraphics;
-	governmentMapper governmentMap;
+	std::unique_ptr<Mappers::GovernmentMapper> governmentMap;
 	std::unique_ptr<Mappers::IdeologyMapper> ideologyMapper;
 	std::unique_ptr<Mappers::CountryMapper> countryMap;
 	std::unique_ptr<Mappers::CountryNameMapper> countryNameMapper;

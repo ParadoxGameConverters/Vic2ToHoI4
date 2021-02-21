@@ -1439,6 +1439,9 @@
     <ClCompile Include="MapperTests\Ideology\IdeologyMapperTests.cpp">
       <Filter>MapperTests\Ideology</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2783,6 +2786,9 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMappingFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\Ideology</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
