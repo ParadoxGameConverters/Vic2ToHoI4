@@ -4,10 +4,10 @@
 
 Mappers::GovernmentMappingFactory::GovernmentMappingFactory()
 {
-	registerKeyword("vic", [this](std::istream& theStream) {
+	registerKeyword("vic_government", [this](std::istream& theStream) {
 		governmentMapping->vic2Government = commonItems::getString(theStream);
 	});
-	registerKeyword("tag_required", [this](std::istream& theStream) {
+	registerKeyword("vic_tag", [this](std::istream& theStream) {
 		governmentMapping->tagRequired = commonItems::getString(theStream);
 	});
 	registerKeyword("ruling_party", [this](std::istream& theStream) {

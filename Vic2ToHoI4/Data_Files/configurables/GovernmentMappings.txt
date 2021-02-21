@@ -1,410 +1,430 @@
+# Mappings for determining governments for HoI4 countries.
+#	They are evaluated in order until one applies, then that ideology and sub-ideology are applied to the country.
+
+# Each mapping has the following elements:
+#	vic_government (optional) - the government in Vic2. If the country has a different government the rule is skipped.
+#	vic_tag (optional) - the Vic2 tag. If the country has a different tag the rule is skipped.
+#	ruling_party (optional) - the ideology of the Vic2 party currently ruling the country.
+#		If the country is ruled by a party with a different ideology the rule is skipped.
+#	hoi_gov (required) - the ideology that will be ruling the HoI4 country.
+#	hoi_leader (required) - the sub-ideology that the ruler of the HoI4 will hold.
+
+# The file is organized into a few sections:
+#	Main forms - the ideologies that will apply if all ideologies will be converted
+#	CoE Main forms - the ideologies that will apply if all ideologies will be converted, with extras for Concert of Europe
+#	Neutrality Forms - the neutral-form ideologies that will apply when ideologies have been dropped
+#	CoE Neutrality Forms - the neutral-form ideologies that will apply when ideologies have been dropped, with extras for Concert of Europe
+#	Limited Forms - when only default ideologies are converted, these rules will replace the converter's new ideologies
+#	CoE Limited Forms - when only default ideologies are converted, these rules will replace the converter's new ideologies, with extras for Concert of Europe
+
+
 ## Main Forms
-mapping = { vic = prussian_constitutionalism tag_required = PAP ruling_party = conservative hoi_gov = absolutist hoi_leader = theocracy }
-mapping = { vic = prussian_constitutionalism tag_required = PAP ruling_party = reactionary hoi_gov = absolutist hoi_leader = theocracy }
-mapping = { vic = prussian_constitutionalism ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
-mapping = { vic = prussian_constitutionalism ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
-mapping = { vic = prussian_constitutionalism ruling_party = conservative hoi_gov = absolutist hoi_leader = prussian_const }
-mapping = { vic = prussian_constitutionalism ruling_party = reactionary hoi_gov = absolutist hoi_leader = absolute_monarchy }
-mapping = { vic = prussian_constitutionalism ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
-mapping = { vic = prussian_constitutionalism ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
-mapping = { vic = prussian_constitutionalism ruling_party = communist hoi_gov = communism hoi_leader = leninism }
-mapping = { vic = hms_government tag_required = PAP ruling_party = conservative hoi_gov = absolutist hoi_leader = theocracy }
-mapping = { vic = hms_government tag_required = PAP ruling_party = reactionary hoi_gov = absolutist hoi_leader = theocracy }
-mapping = { vic = hms_government ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
-mapping = { vic = hms_government ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
-mapping = { vic = hms_government ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism }
-mapping = { vic = hms_government ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism }
-mapping = { vic = hms_government ruling_party = communist hoi_gov = communism hoi_leader = leninism }
-mapping = { vic = hms_government ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
-mapping = { vic = hms_government ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
-mapping = { vic = democracy ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
-mapping = { vic = democracy ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
-mapping = { vic = democracy ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism }
-mapping = { vic = democracy ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism }
-mapping = { vic = democracy ruling_party = communist hoi_gov = communism hoi_leader = leninism }
-mapping = { vic = democracy ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
-mapping = { vic = democracy ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
-mapping = { vic = proletarian_dictatorship hoi_gov = communism hoi_leader = leninism }
-# mapping = { vic = presidential_dictatorship hoi_gov = absolutist hoi_leader = dictatorship } # handled by the more-specific CoE mappings below
-mapping = { vic = bourgeois_dictatorship hoi_gov = radical hoi_leader = minarchism }
-mapping = { vic = fascist_dictatorship hoi_gov = fascism hoi_leader = fascism_ideology }
-mapping = { vic = absolute_monarchy tag_required = PAP ruling_party = conservative hoi_gov = absolutist hoi_leader = theocracy }
-mapping = { vic = absolute_monarchy tag_required = PAP ruling_party = reactionary hoi_gov = absolutist hoi_leader = theocracy }
-mapping = { vic = absolute_monarchy hoi_gov = absolutist hoi_leader = absolute_monarchy }
-mapping = { vic = theocracy hoi_gov = absolutist hoi_leader = theocracy } ## From HPM
+mapping = { vic_government = prussian_constitutionalism vic_tag = PAP ruling_party = conservative hoi_gov = absolutist hoi_leader = theocracy }
+mapping = { vic_government = prussian_constitutionalism vic_tag = PAP ruling_party = reactionary hoi_gov = absolutist hoi_leader = theocracy }
+mapping = { vic_government = prussian_constitutionalism ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
+mapping = { vic_government = prussian_constitutionalism ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
+mapping = { vic_government = prussian_constitutionalism ruling_party = conservative hoi_gov = absolutist hoi_leader = prussian_const }
+mapping = { vic_government = prussian_constitutionalism ruling_party = reactionary hoi_gov = absolutist hoi_leader = absolute_monarchy }
+mapping = { vic_government = prussian_constitutionalism ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
+mapping = { vic_government = prussian_constitutionalism ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
+mapping = { vic_government = prussian_constitutionalism ruling_party = communist hoi_gov = communism hoi_leader = leninism }
+mapping = { vic_government = hms_government vic_tag = PAP ruling_party = conservative hoi_gov = absolutist hoi_leader = theocracy }
+mapping = { vic_government = hms_government vic_tag = PAP ruling_party = reactionary hoi_gov = absolutist hoi_leader = theocracy }
+mapping = { vic_government = hms_government ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
+mapping = { vic_government = hms_government ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
+mapping = { vic_government = hms_government ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism }
+mapping = { vic_government = hms_government ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism }
+mapping = { vic_government = hms_government ruling_party = communist hoi_gov = communism hoi_leader = leninism }
+mapping = { vic_government = hms_government ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
+mapping = { vic_government = hms_government ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
+mapping = { vic_government = democracy ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
+mapping = { vic_government = democracy ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
+mapping = { vic_government = democracy ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism }
+mapping = { vic_government = democracy ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism }
+mapping = { vic_government = democracy ruling_party = communist hoi_gov = communism hoi_leader = leninism }
+mapping = { vic_government = democracy ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
+mapping = { vic_government = democracy ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
+mapping = { vic_government = proletarian_dictatorship hoi_gov = communism hoi_leader = leninism }
+# mapping = { vic_government = presidential_dictatorship hoi_gov = absolutist hoi_leader = dictatorship } # handled by the more-specific CoE mappings below
+mapping = { vic_government = bourgeois_dictatorship hoi_gov = radical hoi_leader = minarchism }
+mapping = { vic_government = fascist_dictatorship hoi_gov = fascism hoi_leader = fascism_ideology }
+mapping = { vic_government = absolute_monarchy vic_tag = PAP ruling_party = conservative hoi_gov = absolutist hoi_leader = theocracy }
+mapping = { vic_government = absolute_monarchy vic_tag = PAP ruling_party = reactionary hoi_gov = absolutist hoi_leader = theocracy }
+mapping = { vic_government = absolute_monarchy hoi_gov = absolutist hoi_leader = absolute_monarchy }
+mapping = { vic_government = theocracy hoi_gov = absolutist hoi_leader = theocracy } ## From HPM
 	
 ## CoE - Main Forms
-mapping = { vic = socialist_democracy ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
-mapping = { vic = socialist_democracy ruling_party = communist hoi_gov = communism hoi_leader = leninism }
-mapping = { vic = socialist_democracy2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
-mapping = { vic = socialist_democracy2 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
-mapping = { vic = socialist_democracy3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
-mapping = { vic = socialist_democracy3 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
-# mapping = { vic = proletarian_dictatorship hoi_gov = communism hoi_leader = leninism } # Already present
-mapping = { vic = proletarian_dictatorship2 hoi_gov = communism hoi_leader = leninism }
-mapping = { vic = proletarian_dictatorship3 hoi_gov = communism hoi_leader = leninism }
-mapping = { vic = presidential_dictatorship ruling_party = socialist hoi_gov = communism hoi_leader = leninism }
-mapping = { vic = presidential_dictatorship ruling_party = conservatist hoi_gov = absolutist hoi_leader = conservatism }
-mapping = { vic = presidential_dictatorship ruling_party = reactionary hoi_gov = absolutist hoi_leader = dictatorship }
-mapping = { vic = presidential_dictatorship2 ruling_party = socialist hoi_gov = communism hoi_leader = leninism }
-mapping = { vic = presidential_dictatorship2 ruling_party = conservatist hoi_gov = absolutist hoi_leader = conservatism }
-mapping = { vic = presidential_dictatorship2 ruling_party = reactionary hoi_gov = absolutist hoi_leader = dictatorship }
-mapping = { vic = presidential_dictatorship3 ruling_party = socialist hoi_gov = communism hoi_leader = leninism }
-mapping = { vic = presidential_dictatorship3 ruling_party = conservatist hoi_gov = absolutist hoi_leader = conservatism }
-mapping = { vic = presidential_dictatorship3 ruling_party = reactionary hoi_gov = absolutist hoi_leader = dictatorship }
-# mapping = { vic = bourgeois_dictatorship hoi_gov = radical hoi_leader = minarchism } # Already present
-mapping = { vic = bourgeois_dictatorship2 hoi_gov = radical hoi_leader = minarchism }
-mapping = { vic = bourgeois_dictatorship3 hoi_gov = radical hoi_leader = minarchism }
-# mapping = { vic = fascist_dictatorship hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-mapping = { vic = fascist_dictatorship2 hoi_gov = fascism hoi_leader = fascism_ideology }
-mapping = { vic = fascist_dictatorship3 hoi_gov = fascism hoi_leader = fascism_ideology }
-# mapping = { vic = absolute_monarchy hoi_gov = absolutist hoi_leader = absolute_monarchy } # Already present
-mapping = { vic = absolute_monarchy2 hoi_gov = absolutist hoi_leader = absolute_monarchy }
-mapping = { vic = absolute_monarchy3 hoi_gov = absolutist hoi_leader = absolute_monarchy }
-# mapping = { vic = prussian_constitutionalism ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = conservative hoi_gov = absolutist hoi_leader = prussian_const } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = reactionary hoi_gov = absolutist hoi_leader = absolute_monarchy } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-mapping = { vic = prussian_constitutionalism ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
-mapping = { vic = prussian_constitutionalism2 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
-mapping = { vic = prussian_constitutionalism2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
-mapping = { vic = prussian_constitutionalism2 ruling_party = conservative hoi_gov = absolutist hoi_leader = prussian_const }
-mapping = { vic = prussian_constitutionalism2 ruling_party = reactionary hoi_gov = absolutist hoi_leader = absolute_monarchy }
-mapping = { vic = prussian_constitutionalism2 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } 
-mapping = { vic = prussian_constitutionalism2 ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism } 
-mapping = { vic = prussian_constitutionalism2 ruling_party = communist hoi_gov = communism hoi_leader = leninism } 
-mapping = { vic = prussian_constitutionalism2 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
-mapping = { vic = prussian_constitutionalism3 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
-mapping = { vic = prussian_constitutionalism3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
-mapping = { vic = prussian_constitutionalism3 ruling_party = conservative hoi_gov = absolutist hoi_leader = prussian_const }
-mapping = { vic = prussian_constitutionalism3 ruling_party = reactionary hoi_gov = absolutist hoi_leader = absolute_monarchy }
-mapping = { vic = prussian_constitutionalism3 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
-mapping = { vic = prussian_constitutionalism3 ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
-mapping = { vic = prussian_constitutionalism3 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
-mapping = { vic = prussian_constitutionalism3 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
-# mapping = { vic = hms_government ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = hms_government ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-# mapping = { vic = hms_government ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = hms_government ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = hms_government ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-# mapping = { vic = hms_government ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism } # Already present
-# mapping = { vic = hms_government ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-mapping = { vic = hms_government ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
-mapping = { vic = hms_government2 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
-mapping = { vic = hms_government2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
-mapping = { vic = hms_government2 ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism }
-mapping = { vic = hms_government2 ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism }
-mapping = { vic = hms_government2 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
-mapping = { vic = hms_government2 ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
-mapping = { vic = hms_government2 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
-mapping = { vic = hms_government2 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
-mapping = { vic = hms_government3 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
-mapping = { vic = hms_government3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
-mapping = { vic = hms_government3 ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism }
-mapping = { vic = hms_government3 ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism }
-mapping = { vic = hms_government3 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
-mapping = { vic = hms_government3 ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
-mapping = { vic = hms_government3 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
-mapping = { vic = hms_government3 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
-# mapping = { vic = democracy ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = democracy ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-# mapping = { vic = democracy ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = democracy ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = democracy ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-# mapping = { vic = democracy ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism } # Already present
-# mapping = { vic = democracy ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-mapping = { vic = democracy ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
-mapping = { vic = democracy2 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
-mapping = { vic = democracy2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
-mapping = { vic = democracy2 ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism }
-mapping = { vic = democracy2 ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism }
-mapping = { vic = democracy2 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
-mapping = { vic = democracy2 ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
-mapping = { vic = democracy2 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
-mapping = { vic = democracy2 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
-mapping = { vic = democracy3 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
-mapping = { vic = democracy3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
-mapping = { vic = democracy3 ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism }
-mapping = { vic = democracy3 ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism }
-mapping = { vic = democracy3 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
-mapping = { vic = democracy3 ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
-mapping = { vic = democracy3 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
-mapping = { vic = democracy3 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
-# mapping = { vic = theocracy hoi_gov = absolutist hoi_leader = theocracy } ## From HPM # Already present
-mapping = { vic = theocracy2 hoi_gov = absolutist hoi_leader = theocracy } ## From HPM
-mapping = { vic = theocracy3 hoi_gov = absolutist hoi_leader = theocracy } ## From HPM
+mapping = { vic_government = socialist_democracy ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
+mapping = { vic_government = socialist_democracy ruling_party = communist hoi_gov = communism hoi_leader = leninism }
+mapping = { vic_government = socialist_democracy2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
+mapping = { vic_government = socialist_democracy2 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
+mapping = { vic_government = socialist_democracy3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
+mapping = { vic_government = socialist_democracy3 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
+# mapping = { vic_government = proletarian_dictatorship hoi_gov = communism hoi_leader = leninism } # Already present
+mapping = { vic_government = proletarian_dictatorship2 hoi_gov = communism hoi_leader = leninism }
+mapping = { vic_government = proletarian_dictatorship3 hoi_gov = communism hoi_leader = leninism }
+mapping = { vic_government = presidential_dictatorship ruling_party = socialist hoi_gov = communism hoi_leader = leninism }
+mapping = { vic_government = presidential_dictatorship ruling_party = conservatist hoi_gov = absolutist hoi_leader = conservatism }
+mapping = { vic_government = presidential_dictatorship ruling_party = reactionary hoi_gov = absolutist hoi_leader = dictatorship }
+mapping = { vic_government = presidential_dictatorship2 ruling_party = socialist hoi_gov = communism hoi_leader = leninism }
+mapping = { vic_government = presidential_dictatorship2 ruling_party = conservatist hoi_gov = absolutist hoi_leader = conservatism }
+mapping = { vic_government = presidential_dictatorship2 ruling_party = reactionary hoi_gov = absolutist hoi_leader = dictatorship }
+mapping = { vic_government = presidential_dictatorship3 ruling_party = socialist hoi_gov = communism hoi_leader = leninism }
+mapping = { vic_government = presidential_dictatorship3 ruling_party = conservatist hoi_gov = absolutist hoi_leader = conservatism }
+mapping = { vic_government = presidential_dictatorship3 ruling_party = reactionary hoi_gov = absolutist hoi_leader = dictatorship }
+# mapping = { vic_government = bourgeois_dictatorship hoi_gov = radical hoi_leader = minarchism } # Already present
+mapping = { vic_government = bourgeois_dictatorship2 hoi_gov = radical hoi_leader = minarchism }
+mapping = { vic_government = bourgeois_dictatorship3 hoi_gov = radical hoi_leader = minarchism }
+# mapping = { vic_government = fascist_dictatorship hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+mapping = { vic_government = fascist_dictatorship2 hoi_gov = fascism hoi_leader = fascism_ideology }
+mapping = { vic_government = fascist_dictatorship3 hoi_gov = fascism hoi_leader = fascism_ideology }
+# mapping = { vic_government = absolute_monarchy hoi_gov = absolutist hoi_leader = absolute_monarchy } # Already present
+mapping = { vic_government = absolute_monarchy2 hoi_gov = absolutist hoi_leader = absolute_monarchy }
+mapping = { vic_government = absolute_monarchy3 hoi_gov = absolutist hoi_leader = absolute_monarchy }
+# mapping = { vic_government = prussian_constitutionalism ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = conservative hoi_gov = absolutist hoi_leader = prussian_const } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = reactionary hoi_gov = absolutist hoi_leader = absolute_monarchy } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+mapping = { vic_government = prussian_constitutionalism ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = conservative hoi_gov = absolutist hoi_leader = prussian_const }
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = reactionary hoi_gov = absolutist hoi_leader = absolute_monarchy }
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } 
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism } 
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = communist hoi_gov = communism hoi_leader = leninism } 
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = conservative hoi_gov = absolutist hoi_leader = prussian_const }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = reactionary hoi_gov = absolutist hoi_leader = absolute_monarchy }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
+# mapping = { vic_government = hms_government ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = hms_government ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+# mapping = { vic_government = hms_government ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = hms_government ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = hms_government ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+# mapping = { vic_government = hms_government ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism } # Already present
+# mapping = { vic_government = hms_government ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+mapping = { vic_government = hms_government ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
+mapping = { vic_government = hms_government2 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
+mapping = { vic_government = hms_government2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
+mapping = { vic_government = hms_government2 ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism }
+mapping = { vic_government = hms_government2 ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism }
+mapping = { vic_government = hms_government2 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
+mapping = { vic_government = hms_government2 ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
+mapping = { vic_government = hms_government2 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
+mapping = { vic_government = hms_government2 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
+mapping = { vic_government = hms_government3 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
+mapping = { vic_government = hms_government3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
+mapping = { vic_government = hms_government3 ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism }
+mapping = { vic_government = hms_government3 ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism }
+mapping = { vic_government = hms_government3 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
+mapping = { vic_government = hms_government3 ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
+mapping = { vic_government = hms_government3 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
+mapping = { vic_government = hms_government3 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
+# mapping = { vic_government = democracy ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = democracy ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+# mapping = { vic_government = democracy ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = democracy ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = democracy ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+# mapping = { vic_government = democracy ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism } # Already present
+# mapping = { vic_government = democracy ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+mapping = { vic_government = democracy ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
+mapping = { vic_government = democracy2 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
+mapping = { vic_government = democracy2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
+mapping = { vic_government = democracy2 ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism }
+mapping = { vic_government = democracy2 ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism }
+mapping = { vic_government = democracy2 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
+mapping = { vic_government = democracy2 ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
+mapping = { vic_government = democracy2 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
+mapping = { vic_government = democracy2 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
+mapping = { vic_government = democracy3 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism }
+mapping = { vic_government = democracy3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism }
+mapping = { vic_government = democracy3 ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism }
+mapping = { vic_government = democracy3 ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism }
+mapping = { vic_government = democracy3 ruling_party = communist hoi_gov = communism hoi_leader = leninism }
+mapping = { vic_government = democracy3 ruling_party = anarcho_liberal hoi_gov = radical hoi_leader = minarchism }
+mapping = { vic_government = democracy3 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology }
+mapping = { vic_government = democracy3 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism }
+# mapping = { vic_government = theocracy hoi_gov = absolutist hoi_leader = theocracy } ## From HPM # Already present
+mapping = { vic_government = theocracy2 hoi_gov = absolutist hoi_leader = theocracy } ## From HPM
+mapping = { vic_government = theocracy3 hoi_gov = absolutist hoi_leader = theocracy } ## From HPM
 
-## neutrality Forms (for when minor ideologies are dropped)
-mapping = { vic = prussian_constitutionalism tag_required = VAT ruling_party = conservative hoi_gov = neutrality hoi_leader = theocracy_neutral }
-mapping = { vic = prussian_constitutionalism tag_required = VAT ruling_party = reactionary hoi_gov = neutrality hoi_leader = theocracy_neutral }
-mapping = { vic = prussian_constitutionalism ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-mapping = { vic = prussian_constitutionalism ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
-mapping = { vic = prussian_constitutionalism ruling_party = conservative hoi_gov = neutrality hoi_leader = prussian_const_neutral }
-mapping = { vic = prussian_constitutionalism ruling_party = reactionary hoi_gov = neutrality hoi_leader = absolute_monarchy_neutral }
-mapping = { vic = prussian_constitutionalism ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
-mapping = { vic = prussian_constitutionalism ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral }
-mapping = { vic = prussian_constitutionalism ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
-mapping = { vic = hms_government tag_required = VAT ruling_party = conservative hoi_gov = neutrality hoi_leader = theocracy_neutral }
-mapping = { vic = hms_government tag_required = VAT ruling_party = reactionary hoi_gov = neutrality hoi_leader = theocracy_neutral }
-mapping = { vic = hms_government ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-mapping = { vic = hms_government ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
-mapping = { vic = hms_government ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism_neutral }
-mapping = { vic = hms_government ruling_party = reactionary hoi_gov = neutrality hoi_leader = conservatism_neutral }
-mapping = { vic = hms_government ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
-mapping = { vic = hms_government ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral }
-mapping = { vic = hms_government ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
-mapping = { vic = democracy ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-mapping = { vic = democracy ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
-mapping = { vic = democracy ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism_neutral }
-mapping = { vic = democracy ruling_party = reactionary hoi_gov = neutrality hoi_leader = conservatism_neutral }
-mapping = { vic = democracy ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
-mapping = { vic = democracy ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral }
-mapping = { vic = democracy ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
-mapping = { vic = proletarian_dictatorship hoi_gov = neutrality hoi_leader = leninism_neutral }
-mapping = { vic = presidential_dictatorship hoi_gov = neutrality hoi_leader = dictatorship_neutral }
-mapping = { vic = bourgeois_dictatorship hoi_gov = neutrality hoi_leader = minarchism_neutral }
-mapping = { vic = fascist_dictatorship hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
-mapping = { vic = absolute_monarchy tag_required = VAT ruling_party = conservative hoi_gov = neutrality hoi_leader = theocracy_neutral }
-mapping = { vic = absolute_monarchy tag_required = VAT ruling_party = reactionary hoi_gov = neutrality hoi_leader = theocracy_neutral }
-mapping = { vic = absolute_monarchy hoi_gov = neutrality hoi_leader = absolute_monarchy_neutral }
-mapping = { vic = theocracy hoi_gov = neutrality hoi_leader = theocracy_neutral } ## From HPM
+## Neutrality Forms (for when minor ideologies are dropped)
+mapping = { vic_government = prussian_constitutionalism vic_tag = VAT ruling_party = conservative hoi_gov = neutrality hoi_leader = theocracy_neutral }
+mapping = { vic_government = prussian_constitutionalism vic_tag = VAT ruling_party = reactionary hoi_gov = neutrality hoi_leader = theocracy_neutral }
+mapping = { vic_government = prussian_constitutionalism ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+mapping = { vic_government = prussian_constitutionalism ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
+mapping = { vic_government = prussian_constitutionalism ruling_party = conservative hoi_gov = neutrality hoi_leader = prussian_const_neutral }
+mapping = { vic_government = prussian_constitutionalism ruling_party = reactionary hoi_gov = neutrality hoi_leader = absolute_monarchy_neutral }
+mapping = { vic_government = prussian_constitutionalism ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
+mapping = { vic_government = prussian_constitutionalism ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral }
+mapping = { vic_government = prussian_constitutionalism ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
+mapping = { vic_government = hms_government vic_tag = VAT ruling_party = conservative hoi_gov = neutrality hoi_leader = theocracy_neutral }
+mapping = { vic_government = hms_government vic_tag = VAT ruling_party = reactionary hoi_gov = neutrality hoi_leader = theocracy_neutral }
+mapping = { vic_government = hms_government ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+mapping = { vic_government = hms_government ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
+mapping = { vic_government = hms_government ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism_neutral }
+mapping = { vic_government = hms_government ruling_party = reactionary hoi_gov = neutrality hoi_leader = conservatism_neutral }
+mapping = { vic_government = hms_government ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
+mapping = { vic_government = hms_government ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral }
+mapping = { vic_government = hms_government ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
+mapping = { vic_government = democracy ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+mapping = { vic_government = democracy ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
+mapping = { vic_government = democracy ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism_neutral }
+mapping = { vic_government = democracy ruling_party = reactionary hoi_gov = neutrality hoi_leader = conservatism_neutral }
+mapping = { vic_government = democracy ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
+mapping = { vic_government = democracy ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral }
+mapping = { vic_government = democracy ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
+mapping = { vic_government = proletarian_dictatorship hoi_gov = neutrality hoi_leader = leninism_neutral }
+mapping = { vic_government = presidential_dictatorship hoi_gov = neutrality hoi_leader = dictatorship_neutral }
+mapping = { vic_government = bourgeois_dictatorship hoi_gov = neutrality hoi_leader = minarchism_neutral }
+mapping = { vic_government = fascist_dictatorship hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
+mapping = { vic_government = absolute_monarchy vic_tag = VAT ruling_party = conservative hoi_gov = neutrality hoi_leader = theocracy_neutral }
+mapping = { vic_government = absolute_monarchy vic_tag = VAT ruling_party = reactionary hoi_gov = neutrality hoi_leader = theocracy_neutral }
+mapping = { vic_government = absolute_monarchy hoi_gov = neutrality hoi_leader = absolute_monarchy_neutral }
+mapping = { vic_government = theocracy hoi_gov = neutrality hoi_leader = theocracy_neutral } ## From HPM
 	
-## CoE - neutrality Forms (for when minor ideologies are dropped)
-mapping = { vic = socialist_democracy ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
-mapping = { vic = socialist_democracy ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
-mapping = { vic = socialist_democracy2 ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
-mapping = { vic = socialist_democracy2 ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
-mapping = { vic = socialist_democracy3 ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
-mapping = { vic = socialist_democracy3 ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
-# mapping = { vic = proletarian_dictatorship hoi_gov = neutrality hoi_leader = leninism_neutral } # Already present
-mapping = { vic = proletarian_dictatorship2 hoi_gov = neutrality hoi_leader = leninism_neutral }
-mapping = { vic = proletarian_dictatorship3 hoi_gov = neutrality hoi_leader = leninism_neutral }
-mapping = { vic = presidential_dictatorship ruling_party = socialist hoi_gov = neutrality hoi_leader = leninism_neutral }
-mapping = { vic = presidential_dictatorship ruling_party = conservatist hoi_gov = neutrality hoi_leader = conservatism_neutral }
-mapping = { vic = presidential_dictatorship ruling_party = reactionary hoi_gov = neutrality hoi_leader = dictatorship_neutral }
-mapping = { vic = presidential_dictatorship2 ruling_party = socialist hoi_gov = neutrality hoi_leader = leninism_neutral }
-mapping = { vic = presidential_dictatorship2 ruling_party = conservatist hoi_gov = neutrality hoi_leader = conservatism_neutral }
-mapping = { vic = presidential_dictatorship2 ruling_party = reactionary hoi_gov = neutrality hoi_leader = dictatorship_neutral }
-mapping = { vic = presidential_dictatorship3 ruling_party = socialist hoi_gov = neutrality hoi_leader = leninism_neutral }
-mapping = { vic = presidential_dictatorship3 ruling_party = conservatist hoi_gov = neutrality hoi_leader = conservatism_neutral }
-mapping = { vic = presidential_dictatorship3 ruling_party = reactionary hoi_gov = neutrality hoi_leader = dictatorship_neutral }
-# mapping = { vic = bourgeois_dictatorship hoi_gov = neutrality hoi_leader = minarchism_neutral } # Already present
-mapping = { vic = bourgeois_dictatorship2 hoi_gov = neutrality hoi_leader = minarchism_neutral }
-mapping = { vic = bourgeois_dictatorship3 hoi_gov = neutrality hoi_leader = minarchism_neutral }
-# mapping = { vic = fascist_dictatorship hoi_gov = neutrality hoi_leader = fascism_ideology_neutral } # Already present
-mapping = { vic = fascist_dictatorship2 hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
-mapping = { vic = fascist_dictatorship3 hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
-# mapping = { vic = absolute_monarchy hoi_gov = neutrality hoi_leader = absolute_monarchy_neutral } # Already present
-mapping = { vic = absolute_monarchy2 hoi_gov = neutrality hoi_leader = absolute_monarchy_neutral }
-mapping = { vic = absolute_monarchy3 hoi_gov = neutrality hoi_leader = absolute_monarchy_neutral }
-# mapping = { vic = prussian_constitutionalism ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = conservative hoi_gov = neutrality hoi_leader = prussian_const_neutral } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = reactionary hoi_gov = neutrality hoi_leader = absolute_monarchy_neutral } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral } # Already present
-mapping = { vic = prussian_constitutionalism ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-mapping = { vic = prussian_constitutionalism2 ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-mapping = { vic = prussian_constitutionalism2 ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
-mapping = { vic = prussian_constitutionalism2 ruling_party = conservative hoi_gov = neutrality hoi_leader = prussian_const_neutral }
-mapping = { vic = prussian_constitutionalism2 ruling_party = reactionary hoi_gov = neutrality hoi_leader = absolute_monarchy_neutral }
-mapping = { vic = prussian_constitutionalism2 ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral } 
-mapping = { vic = prussian_constitutionalism2 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral } 
-mapping = { vic = prussian_constitutionalism2 ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral } 
-mapping = { vic = prussian_constitutionalism2 ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-mapping = { vic = prussian_constitutionalism3 ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-mapping = { vic = prussian_constitutionalism3 ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
-mapping = { vic = prussian_constitutionalism3 ruling_party = conservative hoi_gov = neutrality hoi_leader = prussian_const_neutral }
-mapping = { vic = prussian_constitutionalism3 ruling_party = reactionary hoi_gov = neutrality hoi_leader = absolute_monarchy_neutral }
-mapping = { vic = prussian_constitutionalism3 ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
-mapping = { vic = prussian_constitutionalism3 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral }
-mapping = { vic = prussian_constitutionalism3 ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
-mapping = { vic = prussian_constitutionalism3 ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-# mapping = { vic = hms_government ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral } # Already present
-# mapping = { vic = hms_government ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral } # Already present
-# mapping = { vic = hms_government ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism_neutral } # Already present
-# mapping = { vic = hms_government ruling_party = reactionary hoi_gov = neutrality hoi_leader = conservatism_neutral } # Already present
-# mapping = { vic = hms_government ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral } # Already present
-# mapping = { vic = hms_government ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral } # Already present
-# mapping = { vic = hms_government ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral } # Already present
-mapping = { vic = hms_government ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-mapping = { vic = hms_government2 ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-mapping = { vic = hms_government2 ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
-mapping = { vic = hms_government2 ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism_neutral }
-mapping = { vic = hms_government2 ruling_party = reactionary hoi_gov = neutrality hoi_leader = conservatism_neutral }
-mapping = { vic = hms_government2 ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
-mapping = { vic = hms_government2 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral }
-mapping = { vic = hms_government2 ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
-mapping = { vic = hms_government2 ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-mapping = { vic = hms_government3 ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-mapping = { vic = hms_government3 ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
-mapping = { vic = hms_government3 ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism_neutral }
-mapping = { vic = hms_government3 ruling_party = reactionary hoi_gov = neutrality hoi_leader = conservatism_neutral }
-mapping = { vic = hms_government3 ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
-mapping = { vic = hms_government3 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral }
-mapping = { vic = hms_government3 ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
-mapping = { vic = hms_government3 ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-# mapping = { vic = democracy ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral } # Already present
-# mapping = { vic = democracy ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral } # Already present
-# mapping = { vic = democracy ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism_neutral } # Already present
-# mapping = { vic = democracy ruling_party = reactionary hoi_gov = neutrality hoi_leader = conservatism_neutral } # Already present
-# mapping = { vic = democracy ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral } # Already present
-# mapping = { vic = democracy ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral } # Already present
-# mapping = { vic = democracy ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral } # Already present
-mapping = { vic = democracy ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-mapping = { vic = democracy2 ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-mapping = { vic = democracy2 ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
-mapping = { vic = democracy2 ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism_neutral }
-mapping = { vic = democracy2 ruling_party = reactionary hoi_gov = neutrality hoi_leader = conservatism_neutral }
-mapping = { vic = democracy2 ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
-mapping = { vic = democracy2 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral }
-mapping = { vic = democracy2 ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
-mapping = { vic = democracy2 ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-mapping = { vic = democracy3 ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-mapping = { vic = democracy3 ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
-mapping = { vic = democracy3 ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism_neutral }
-mapping = { vic = democracy3 ruling_party = reactionary hoi_gov = neutrality hoi_leader = conservatism_neutral }
-mapping = { vic = democracy3 ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
-mapping = { vic = democracy3 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral }
-mapping = { vic = democracy3 ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
-mapping = { vic = democracy3 ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
-# mapping = { vic = theocracy hoi_gov = neutrality hoi_leader = theocracy_neutral } ## From HPM # Already present
-mapping = { vic = theocracy2 hoi_gov = neutrality hoi_leader = theocracy_neutral } ## From HPM
-mapping = { vic = theocracy3 hoi_gov = neutrality hoi_leader = theocracy_neutral } ## From HPM
+## CoE - Neutrality Forms (for when minor ideologies are dropped)
+mapping = { vic_government = socialist_democracy ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
+mapping = { vic_government = socialist_democracy ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
+mapping = { vic_government = socialist_democracy2 ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
+mapping = { vic_government = socialist_democracy2 ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
+mapping = { vic_government = socialist_democracy3 ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
+mapping = { vic_government = socialist_democracy3 ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
+# mapping = { vic_government = proletarian_dictatorship hoi_gov = neutrality hoi_leader = leninism_neutral } # Already present
+mapping = { vic_government = proletarian_dictatorship2 hoi_gov = neutrality hoi_leader = leninism_neutral }
+mapping = { vic_government = proletarian_dictatorship3 hoi_gov = neutrality hoi_leader = leninism_neutral }
+mapping = { vic_government = presidential_dictatorship ruling_party = socialist hoi_gov = neutrality hoi_leader = leninism_neutral }
+mapping = { vic_government = presidential_dictatorship ruling_party = conservatist hoi_gov = neutrality hoi_leader = conservatism_neutral }
+mapping = { vic_government = presidential_dictatorship ruling_party = reactionary hoi_gov = neutrality hoi_leader = dictatorship_neutral }
+mapping = { vic_government = presidential_dictatorship2 ruling_party = socialist hoi_gov = neutrality hoi_leader = leninism_neutral }
+mapping = { vic_government = presidential_dictatorship2 ruling_party = conservatist hoi_gov = neutrality hoi_leader = conservatism_neutral }
+mapping = { vic_government = presidential_dictatorship2 ruling_party = reactionary hoi_gov = neutrality hoi_leader = dictatorship_neutral }
+mapping = { vic_government = presidential_dictatorship3 ruling_party = socialist hoi_gov = neutrality hoi_leader = leninism_neutral }
+mapping = { vic_government = presidential_dictatorship3 ruling_party = conservatist hoi_gov = neutrality hoi_leader = conservatism_neutral }
+mapping = { vic_government = presidential_dictatorship3 ruling_party = reactionary hoi_gov = neutrality hoi_leader = dictatorship_neutral }
+# mapping = { vic_government = bourgeois_dictatorship hoi_gov = neutrality hoi_leader = minarchism_neutral } # Already present
+mapping = { vic_government = bourgeois_dictatorship2 hoi_gov = neutrality hoi_leader = minarchism_neutral }
+mapping = { vic_government = bourgeois_dictatorship3 hoi_gov = neutrality hoi_leader = minarchism_neutral }
+# mapping = { vic_government = fascist_dictatorship hoi_gov = neutrality hoi_leader = fascism_ideology_neutral } # Already present
+mapping = { vic_government = fascist_dictatorship2 hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
+mapping = { vic_government = fascist_dictatorship3 hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
+# mapping = { vic_government = absolute_monarchy hoi_gov = neutrality hoi_leader = absolute_monarchy_neutral } # Already present
+mapping = { vic_government = absolute_monarchy2 hoi_gov = neutrality hoi_leader = absolute_monarchy_neutral }
+mapping = { vic_government = absolute_monarchy3 hoi_gov = neutrality hoi_leader = absolute_monarchy_neutral }
+# mapping = { vic_government = prussian_constitutionalism ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = conservative hoi_gov = neutrality hoi_leader = prussian_const_neutral } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = reactionary hoi_gov = neutrality hoi_leader = absolute_monarchy_neutral } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral } # Already present
+mapping = { vic_government = prussian_constitutionalism ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = conservative hoi_gov = neutrality hoi_leader = prussian_const_neutral }
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = reactionary hoi_gov = neutrality hoi_leader = absolute_monarchy_neutral }
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral } 
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral } 
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral } 
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = conservative hoi_gov = neutrality hoi_leader = prussian_const_neutral }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = reactionary hoi_gov = neutrality hoi_leader = absolute_monarchy_neutral }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+# mapping = { vic_government = hms_government ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral } # Already present
+# mapping = { vic_government = hms_government ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral } # Already present
+# mapping = { vic_government = hms_government ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism_neutral } # Already present
+# mapping = { vic_government = hms_government ruling_party = reactionary hoi_gov = neutrality hoi_leader = conservatism_neutral } # Already present
+# mapping = { vic_government = hms_government ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral } # Already present
+# mapping = { vic_government = hms_government ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral } # Already present
+# mapping = { vic_government = hms_government ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral } # Already present
+mapping = { vic_government = hms_government ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+mapping = { vic_government = hms_government2 ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+mapping = { vic_government = hms_government2 ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
+mapping = { vic_government = hms_government2 ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism_neutral }
+mapping = { vic_government = hms_government2 ruling_party = reactionary hoi_gov = neutrality hoi_leader = conservatism_neutral }
+mapping = { vic_government = hms_government2 ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
+mapping = { vic_government = hms_government2 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral }
+mapping = { vic_government = hms_government2 ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
+mapping = { vic_government = hms_government2 ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+mapping = { vic_government = hms_government3 ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+mapping = { vic_government = hms_government3 ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
+mapping = { vic_government = hms_government3 ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism_neutral }
+mapping = { vic_government = hms_government3 ruling_party = reactionary hoi_gov = neutrality hoi_leader = conservatism_neutral }
+mapping = { vic_government = hms_government3 ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
+mapping = { vic_government = hms_government3 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral }
+mapping = { vic_government = hms_government3 ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
+mapping = { vic_government = hms_government3 ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+# mapping = { vic_government = democracy ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral } # Already present
+# mapping = { vic_government = democracy ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral } # Already present
+# mapping = { vic_government = democracy ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism_neutral } # Already present
+# mapping = { vic_government = democracy ruling_party = reactionary hoi_gov = neutrality hoi_leader = conservatism_neutral } # Already present
+# mapping = { vic_government = democracy ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral } # Already present
+# mapping = { vic_government = democracy ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral } # Already present
+# mapping = { vic_government = democracy ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral } # Already present
+mapping = { vic_government = democracy ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+mapping = { vic_government = democracy2 ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+mapping = { vic_government = democracy2 ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
+mapping = { vic_government = democracy2 ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism_neutral }
+mapping = { vic_government = democracy2 ruling_party = reactionary hoi_gov = neutrality hoi_leader = conservatism_neutral }
+mapping = { vic_government = democracy2 ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
+mapping = { vic_government = democracy2 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral }
+mapping = { vic_government = democracy2 ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
+mapping = { vic_government = democracy2 ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+mapping = { vic_government = democracy3 ruling_party = liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+mapping = { vic_government = democracy3 ruling_party = socialist hoi_gov = neutrality hoi_leader = socialism_neutral }
+mapping = { vic_government = democracy3 ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism_neutral }
+mapping = { vic_government = democracy3 ruling_party = reactionary hoi_gov = neutrality hoi_leader = conservatism_neutral }
+mapping = { vic_government = democracy3 ruling_party = communist hoi_gov = neutrality hoi_leader = leninism_neutral }
+mapping = { vic_government = democracy3 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = minarchism_neutral }
+mapping = { vic_government = democracy3 ruling_party = fascist hoi_gov = neutrality hoi_leader = fascism_ideology_neutral }
+mapping = { vic_government = democracy3 ruling_party = social_liberal hoi_gov = neutrality hoi_leader = liberalism_neutral }
+# mapping = { vic_government = theocracy hoi_gov = neutrality hoi_leader = theocracy_neutral } ## From HPM # Already present
+mapping = { vic_government = theocracy2 hoi_gov = neutrality hoi_leader = theocracy_neutral } ## From HPM
+mapping = { vic_government = theocracy3 hoi_gov = neutrality hoi_leader = theocracy_neutral } ## From HPM
 
 ## Limited Forms (for when only default ideologies are used)
-# mapping = { vic = prussian_constitutionalism ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-mapping = { vic = prussian_constitutionalism ruling_party = conservative hoi_gov = neutrality hoi_leader = despotism }
-mapping = { vic = prussian_constitutionalism ruling_party = reactionary hoi_gov = neutrality hoi_leader = despotism }
-# mapping = { vic = prussian_constitutionalism ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-mapping = { vic = prussian_constitutionalism ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
-# mapping = { vic = prussian_constitutionalism ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-# mapping = { vic = hms_government ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = hms_government ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-# mapping = { vic = hms_government ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = hms_government ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = hms_government ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-mapping = { vic = hms_government ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
-# mapping = { vic = hms_government ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-# mapping = { vic = democracy ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = democracy ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-# mapping = { vic = democracy ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = democracy ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = democracy ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-mapping = { vic = democracy ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
-# mapping = { vic = democracy ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-# mapping = { vic = proletarian_dictatorship hoi_gov = communism hoi_leader = leninism } # Already present
-mapping = { vic = presidential_dictatorship hoi_gov = neutrality hoi_leader = despotism }
-mapping = { vic = bourgeois_dictatorship hoi_gov = neutrality hoi_leader = oligarchism }
-# mapping = { vic = fascist_dictatorship hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-mapping = { vic = absolute_monarchy hoi_gov = neutrality hoi_leader = despotism }
-mapping = { vic = theocracy hoi_gov = neutrality hoi_leader = despotism } ## From HPM
+# mapping = { vic_government = prussian_constitutionalism ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+mapping = { vic_government = prussian_constitutionalism ruling_party = conservative hoi_gov = neutrality hoi_leader = despotism }
+mapping = { vic_government = prussian_constitutionalism ruling_party = reactionary hoi_gov = neutrality hoi_leader = despotism }
+# mapping = { vic_government = prussian_constitutionalism ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+mapping = { vic_government = prussian_constitutionalism ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
+# mapping = { vic_government = prussian_constitutionalism ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+# mapping = { vic_government = hms_government ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = hms_government ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+# mapping = { vic_government = hms_government ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = hms_government ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = hms_government ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+mapping = { vic_government = hms_government ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
+# mapping = { vic_government = hms_government ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+# mapping = { vic_government = democracy ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = democracy ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+# mapping = { vic_government = democracy ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = democracy ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = democracy ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+mapping = { vic_government = democracy ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
+# mapping = { vic_government = democracy ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+# mapping = { vic_government = proletarian_dictatorship hoi_gov = communism hoi_leader = leninism } # Already present
+mapping = { vic_government = presidential_dictatorship hoi_gov = neutrality hoi_leader = despotism }
+mapping = { vic_government = bourgeois_dictatorship hoi_gov = neutrality hoi_leader = oligarchism }
+# mapping = { vic_government = fascist_dictatorship hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+mapping = { vic_government = absolute_monarchy hoi_gov = neutrality hoi_leader = despotism }
+mapping = { vic_government = theocracy hoi_gov = neutrality hoi_leader = despotism } ## From HPM
 	
 ## CoE - Limited Forms (for when only default ideologies are used)
-# mapping = { vic = socialist_democracy ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-# mapping = { vic = socialist_democracy ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-# mapping = { vic = socialist_democracy2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-# mapping = { vic = socialist_democracy2 ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-# mapping = { vic = socialist_democracy3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-# mapping = { vic = socialist_democracy3 ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-# mapping = { vic = proletarian_dictatorship hoi_gov = communism hoi_leader = leninism } # Already present
-# mapping = { vic = proletarian_dictatorship2 hoi_gov = communism hoi_leader = leninism } # Already present
-# mapping = { vic = proletarian_dictatorship3 hoi_gov = communism hoi_leader = leninism } # Already present
-# mapping = { vic = presidential_dictatorship ruling_party = socialist hoi_gov = communism hoi_leader = leninism } # Already present
-mapping = { vic = presidential_dictatorship ruling_party = conservatist hoi_gov = neutrality hoi_leader = conservatism }
-mapping = { vic = presidential_dictatorship ruling_party = reactionary hoi_gov = neutrality hoi_leader = despotism }
-# mapping = { vic = presidential_dictatorship2 ruling_party = socialist hoi_gov = communism hoi_leader = leninism } # Already present
-mapping = { vic = presidential_dictatorship2 ruling_party = conservatist hoi_gov = neutrality hoi_leader = conservatism }
-mapping = { vic = presidential_dictatorship2 ruling_party = reactionary hoi_gov = neutrality hoi_leader = despotism }
-# mapping = { vic = presidential_dictatorship3 ruling_party = socialist hoi_gov = communism hoi_leader = leninism } # Already present
-mapping = { vic = presidential_dictatorship3 ruling_party = conservatist hoi_gov = neutrality hoi_leader = conservatism }
-mapping = { vic = presidential_dictatorship3 ruling_party = reactionary hoi_gov = neutrality hoi_leader = despotism }
-# mapping = { vic = bourgeois_dictatorship hoi_gov = neutrality hoi_leader = oligarchism } # Already present
-mapping = { vic = bourgeois_dictatorship2 hoi_gov = neutrality hoi_leader = oligarchism }
-mapping = { vic = bourgeois_dictatorship3 hoi_gov = neutrality hoi_leader = oligarchism }
-# mapping = { vic = fascist_dictatorship hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-# mapping = { vic = fascist_dictatorship2 hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-# mapping = { vic = fascist_dictatorship3 hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-# mapping = { vic = absolute_monarchy hoi_gov = neutrality hoi_leader = despotism } # Already present
-mapping = { vic = absolute_monarchy2 hoi_gov = neutrality hoi_leader = despotism }
-mapping = { vic = absolute_monarchy3 hoi_gov = neutrality hoi_leader = despotism }
-# mapping = { vic = prussian_constitutionalism ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = reactionary hoi_gov = neutrality hoi_leader = despotism } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-# mapping = { vic = prussian_constitutionalism ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = prussian_constitutionalism2 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = prussian_constitutionalism2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-# mapping = { vic = prussian_constitutionalism2 ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism } # Already present
-mapping = { vic = prussian_constitutionalism2 ruling_party = reactionary hoi_gov = neutrality hoi_leader = despotism }
-# mapping = { vic = prussian_constitutionalism2 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-mapping = { vic = prussian_constitutionalism2 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
-# mapping = { vic = prussian_constitutionalism2 ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-# mapping = { vic = prussian_constitutionalism2 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = prussian_constitutionalism3 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = prussian_constitutionalism3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-mapping = { vic = prussian_constitutionalism3 ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism }
-mapping = { vic = prussian_constitutionalism3 ruling_party = reactionary hoi_gov = neutrality hoi_leader = despotism }
-# mapping = { vic = prussian_constitutionalism3 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-mapping = { vic = prussian_constitutionalism3 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
-# mapping = { vic = prussian_constitutionalism3 ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-# mapping = { vic = prussian_constitutionalism3 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = hms_government ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = hms_government ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-# mapping = { vic = hms_government ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = hms_government ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = hms_government ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-# mapping = { vic = hms_government ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism } # Already present
-# mapping = { vic = hms_government ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-# mapping = { vic = hms_government ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = hms_government2 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = hms_government2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-# mapping = { vic = hms_government2 ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = hms_government2 ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = hms_government2 ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-mapping = { vic = hms_government2 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
-# mapping = { vic = hms_government2 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-# mapping = { vic = hms_government2 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = hms_government3 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = hms_government3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-# mapping = { vic = hms_government3 ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = hms_government3 ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = hms_government3 ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-mapping = { vic = hms_government3 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
-# mapping = { vic = hms_government3 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-# mapping = { vic = hms_government3 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = democracy ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = democracy ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-# mapping = { vic = democracy ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = democracy ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = democracy ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-# mapping = { vic = democracy ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism } # Already present
-# mapping = { vic = democracy ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-# mapping = { vic = democracy ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = democracy2 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = democracy2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-# mapping = { vic = democracy2 ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = democracy2 ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = democracy2 ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-mapping = { vic = democracy2 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
-# mapping = { vic = democracy2 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-# mapping = { vic = democracy2 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = democracy3 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = democracy3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
-# mapping = { vic = democracy3 ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = democracy3 ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
-# mapping = { vic = democracy3 ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
-mapping = { vic = democracy3 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
-# mapping = { vic = democracy3 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
-# mapping = { vic = democracy3 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
-# mapping = { vic = theocracy hoi_gov = neutrality hoi_leader = despotism } ## From HPM # Already present
-mapping = { vic = theocracy2 hoi_gov = neutrality hoi_leader = despotism } ## From HPM
-mapping = { vic = theocracy3 hoi_gov = neutrality hoi_leader = despotism } ## From HPM
+# mapping = { vic_government = socialist_democracy ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+# mapping = { vic_government = socialist_democracy ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+# mapping = { vic_government = socialist_democracy2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+# mapping = { vic_government = socialist_democracy2 ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+# mapping = { vic_government = socialist_democracy3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+# mapping = { vic_government = socialist_democracy3 ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+# mapping = { vic_government = proletarian_dictatorship hoi_gov = communism hoi_leader = leninism } # Already present
+# mapping = { vic_government = proletarian_dictatorship2 hoi_gov = communism hoi_leader = leninism } # Already present
+# mapping = { vic_government = proletarian_dictatorship3 hoi_gov = communism hoi_leader = leninism } # Already present
+# mapping = { vic_government = presidential_dictatorship ruling_party = socialist hoi_gov = communism hoi_leader = leninism } # Already present
+mapping = { vic_government = presidential_dictatorship ruling_party = conservatist hoi_gov = neutrality hoi_leader = conservatism }
+mapping = { vic_government = presidential_dictatorship ruling_party = reactionary hoi_gov = neutrality hoi_leader = despotism }
+# mapping = { vic_government = presidential_dictatorship2 ruling_party = socialist hoi_gov = communism hoi_leader = leninism } # Already present
+mapping = { vic_government = presidential_dictatorship2 ruling_party = conservatist hoi_gov = neutrality hoi_leader = conservatism }
+mapping = { vic_government = presidential_dictatorship2 ruling_party = reactionary hoi_gov = neutrality hoi_leader = despotism }
+# mapping = { vic_government = presidential_dictatorship3 ruling_party = socialist hoi_gov = communism hoi_leader = leninism } # Already present
+mapping = { vic_government = presidential_dictatorship3 ruling_party = conservatist hoi_gov = neutrality hoi_leader = conservatism }
+mapping = { vic_government = presidential_dictatorship3 ruling_party = reactionary hoi_gov = neutrality hoi_leader = despotism }
+# mapping = { vic_government = bourgeois_dictatorship hoi_gov = neutrality hoi_leader = oligarchism } # Already present
+mapping = { vic_government = bourgeois_dictatorship2 hoi_gov = neutrality hoi_leader = oligarchism }
+mapping = { vic_government = bourgeois_dictatorship3 hoi_gov = neutrality hoi_leader = oligarchism }
+# mapping = { vic_government = fascist_dictatorship hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+# mapping = { vic_government = fascist_dictatorship2 hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+# mapping = { vic_government = fascist_dictatorship3 hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+# mapping = { vic_government = absolute_monarchy hoi_gov = neutrality hoi_leader = despotism } # Already present
+mapping = { vic_government = absolute_monarchy2 hoi_gov = neutrality hoi_leader = despotism }
+mapping = { vic_government = absolute_monarchy3 hoi_gov = neutrality hoi_leader = despotism }
+# mapping = { vic_government = prussian_constitutionalism ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = reactionary hoi_gov = neutrality hoi_leader = despotism } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+# mapping = { vic_government = prussian_constitutionalism ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = prussian_constitutionalism2 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = prussian_constitutionalism2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+# mapping = { vic_government = prussian_constitutionalism2 ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism } # Already present
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = reactionary hoi_gov = neutrality hoi_leader = despotism }
+# mapping = { vic_government = prussian_constitutionalism2 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+mapping = { vic_government = prussian_constitutionalism2 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
+# mapping = { vic_government = prussian_constitutionalism2 ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+# mapping = { vic_government = prussian_constitutionalism2 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = prussian_constitutionalism3 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = prussian_constitutionalism3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = conservative hoi_gov = neutrality hoi_leader = conservatism }
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = reactionary hoi_gov = neutrality hoi_leader = despotism }
+# mapping = { vic_government = prussian_constitutionalism3 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+mapping = { vic_government = prussian_constitutionalism3 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
+# mapping = { vic_government = prussian_constitutionalism3 ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+# mapping = { vic_government = prussian_constitutionalism3 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = hms_government ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = hms_government ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+# mapping = { vic_government = hms_government ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = hms_government ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = hms_government ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+# mapping = { vic_government = hms_government ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism } # Already present
+# mapping = { vic_government = hms_government ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+# mapping = { vic_government = hms_government ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = hms_government2 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = hms_government2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+# mapping = { vic_government = hms_government2 ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = hms_government2 ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = hms_government2 ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+mapping = { vic_government = hms_government2 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
+# mapping = { vic_government = hms_government2 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+# mapping = { vic_government = hms_government2 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = hms_government3 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = hms_government3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+# mapping = { vic_government = hms_government3 ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = hms_government3 ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = hms_government3 ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+mapping = { vic_government = hms_government3 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
+# mapping = { vic_government = hms_government3 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+# mapping = { vic_government = hms_government3 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = democracy ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = democracy ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+# mapping = { vic_government = democracy ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = democracy ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = democracy ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+# mapping = { vic_government = democracy ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism } # Already present
+# mapping = { vic_government = democracy ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+# mapping = { vic_government = democracy ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = democracy2 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = democracy2 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+# mapping = { vic_government = democracy2 ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = democracy2 ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = democracy2 ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+mapping = { vic_government = democracy2 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
+# mapping = { vic_government = democracy2 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+# mapping = { vic_government = democracy2 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = democracy3 ruling_party = liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = democracy3 ruling_party = socialist hoi_gov = democratic hoi_leader = socialism } # Already present
+# mapping = { vic_government = democracy3 ruling_party = conservative hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = democracy3 ruling_party = reactionary hoi_gov = democratic hoi_leader = conservatism } # Already present
+# mapping = { vic_government = democracy3 ruling_party = communist hoi_gov = communism hoi_leader = leninism } # Already present
+mapping = { vic_government = democracy3 ruling_party = anarcho_liberal hoi_gov = neutrality hoi_leader = oligarchism }
+# mapping = { vic_government = democracy3 ruling_party = fascist hoi_gov = fascism hoi_leader = fascism_ideology } # Already present
+# mapping = { vic_government = democracy3 ruling_party = social_liberal hoi_gov = democratic hoi_leader = liberalism } # Already present
+# mapping = { vic_government = theocracy hoi_gov = neutrality hoi_leader = despotism } ## From HPM # Already present
+mapping = { vic_government = theocracy2 hoi_gov = neutrality hoi_leader = despotism } ## From HPM
+mapping = { vic_government = theocracy3 hoi_gov = neutrality hoi_leader = despotism } ## From HPM

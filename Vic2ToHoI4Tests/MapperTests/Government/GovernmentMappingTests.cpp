@@ -18,7 +18,7 @@ TEST(Mappers_Government_GovernmentMappingTests, Vic2GovernmentDefaultsToEmpty)
 TEST(Mappers_Government_GovernmentMappingTests, Vic2GovernmentCanBeImported)
 {
 	std::stringstream input;
-	input << "vic = test_government";
+	input << "vic_government = test_government";
 
 	const auto mapping = Mappers::GovernmentMappingFactory().importMapping(input);
 
@@ -39,7 +39,7 @@ TEST(Mappers_Government_GovernmentMappingTests, RequiredTagDefaultsToEmpty)
 TEST(Mappers_Government_GovernmentMappingTests, RequiredTagCanBeImported)
 {
 	std::stringstream input;
-	input << "tag_required = TAG";
+	input << "vic_tag = TAG";
 
 	const auto mapping = Mappers::GovernmentMappingFactory().importMapping(input);
 
