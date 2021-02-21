@@ -17,7 +17,7 @@ HoI4::Ideology::Ideology(const std::string& _ideologyName, std::istream& theStre
 		dynamicFactionNames = namesStrings.getStrings();
 	});
 	registerKeyword("color", [this](std::istream& theStream) {
-		theColor = std::make_unique<commonItems::Color>(commonItems::Color::Factory{}.getColor(theStream));
+		theColor = commonItems::Color::Factory{}.getColor(theStream);
 	});
 	registerKeyword("war_impact_on_world_tension", [this](std::istream& theStream) {
 		const commonItems::singleDouble impactNum(theStream);
@@ -56,14 +56,10 @@ HoI4::Ideology::Ideology(const std::string& _ideologyName, std::istream& theStre
 
 HoI4::Ideology::Ideology(const Ideology& other):
 	 parser(other), ideologyName(other.ideologyName), types(other.types), dynamicFactionNames(other.dynamicFactionNames),
-	 rules(other.rules), warImpactOnWorldTension(other.warImpactOnWorldTension),
+	 theColor(other.theColor), rules(other.rules), warImpactOnWorldTension(other.warImpactOnWorldTension),
 	 factionImpactOnWorldTension(other.factionImpactOnWorldTension), modifiers(other.modifiers),
 	 factionModifiers(other.factionModifiers), cans(other.cans), AI(other.AI)
 {
-	if (other.theColor != nullptr)
-	{
-		theColor = std::make_unique<commonItems::Color>(*other.theColor);
-	}
 }
 
 
@@ -72,7 +68,7 @@ HoI4::Ideology& HoI4::Ideology::operator=(const Ideology& other)
 	ideologyName = other.ideologyName;
 	types = other.types;
 	dynamicFactionNames = other.dynamicFactionNames;
-	theColor = std::make_unique<commonItems::Color>(*other.theColor);
+	theColor = other.theColor;
 	rules = other.rules;
 	warImpactOnWorldTension = other.warImpactOnWorldTension;
 	factionImpactOnWorldTension = other.factionImpactOnWorldTension;
