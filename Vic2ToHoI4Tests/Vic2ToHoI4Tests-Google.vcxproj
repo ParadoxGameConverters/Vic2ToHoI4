@@ -464,6 +464,7 @@
     <ClCompile Include="MapperTests\Country\CountryMappingRuleFactoryTests.cpp" />
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagsToIdeasMapperTests.cpp" />
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagToIdeaMappingTests.cpp" />
+    <ClCompile Include="MapperTests\Government\GovernmentMapperTests.cpp" />
     <ClCompile Include="MapperTests\Government\GovernmentMappingTests.cpp" />
     <ClCompile Include="MapperTests\Ideology\IdeologyMapperTests.cpp" />
     <ClCompile Include="MapperTests\Ideology\IdeologyMappingTests.cpp" />
@@ -683,6 +684,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\Ideas.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideas\IdeaUpdaters.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideologies.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologiesBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\Ideology.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyFile.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologyItems.h" />
@@ -1434,6 +1436,12 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Mappers\Ideology\IdeologyMappings.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Mappers\Government\GovernmentMappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>

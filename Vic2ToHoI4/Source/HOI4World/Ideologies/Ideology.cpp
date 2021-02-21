@@ -56,11 +56,14 @@ HoI4::Ideology::Ideology(const std::string& _ideologyName, std::istream& theStre
 
 HoI4::Ideology::Ideology(const Ideology& other):
 	 parser(other), ideologyName(other.ideologyName), types(other.types), dynamicFactionNames(other.dynamicFactionNames),
-	 theColor(std::make_unique<commonItems::Color>(*other.theColor)), rules(other.rules),
-	 warImpactOnWorldTension(other.warImpactOnWorldTension),
+	 rules(other.rules), warImpactOnWorldTension(other.warImpactOnWorldTension),
 	 factionImpactOnWorldTension(other.factionImpactOnWorldTension), modifiers(other.modifiers),
 	 factionModifiers(other.factionModifiers), cans(other.cans), AI(other.AI)
 {
+	if (other.theColor != nullptr)
+	{
+		theColor = std::make_unique<commonItems::Color>(*other.theColor);
+	}
 }
 
 

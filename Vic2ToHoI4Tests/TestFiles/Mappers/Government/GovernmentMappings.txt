@@ -1,0 +1,4 @@
+mapping = { vic = source_government tag_required = TAG ruling_party = ruling_ideology hoi_gov = test_ideology hoi_leader = test_leader_ideology }
+mapping = { tag_required = TAG ruling_party = ruling_ideology hoi_gov = source_government_not_required_ideology hoi_leader = source_government_not_required_leader_ideology }
+mapping = { vic = source_government tag_required = TAG hoi_gov = ruling_ideology_not_required_ideology hoi_leader = ruling_ideology_not_required_leader_ideology }
+mapping = { vic = source_government ruling_party = ruling_ideology hoi_gov = tag_not_required_ideology hoi_leader = tag_not_required_leader_ideology }

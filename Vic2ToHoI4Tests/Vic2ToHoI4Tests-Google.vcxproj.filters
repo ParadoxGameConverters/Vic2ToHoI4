@@ -1442,6 +1442,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperFactory.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
     </ClCompile>
+    <ClCompile Include="MapperTests\Government\GovernmentMapperTests.cpp">
+      <Filter>MapperTests\Government</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1890,6 +1893,9 @@
     </Filter>
     <Filter Include="TestFiles\Mappers\Ideology">
       <UniqueIdentifier>{4fccec2b-87d5-41a0-969f-d4483c3cba3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Mappers\Government">
+      <UniqueIdentifier>{f1edaffd-2ee1-4b2a-bbc9-859bc2e6fa34}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2790,6 +2796,9 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\Government</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Ideologies\IdeologiesBuilder.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Ideologies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3082,5 +3091,10 @@
     <CopyFileToFolders Include="TestFiles\Mappers\Ideology\IdeologyMappings.txt">
       <Filter>TestFiles\Mappers\Ideology</Filter>
     </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="TestFiles\Mappers\Government\GovernmentMappings.txt">
+      <Filter>TestFiles\Mappers\Government</Filter>
+    </Text>
   </ItemGroup>
 </Project>

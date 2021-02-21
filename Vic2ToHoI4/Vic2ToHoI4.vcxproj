@@ -472,6 +472,8 @@
     <ClInclude Include="Source\HOI4World\Events\CapitulationEvents.h" />
     <ClInclude Include="Source\HOI4World\Events\EventsBuilder.h" />
     <ClInclude Include="Source\HOI4World\Events\LarOccupationEvents.h" />
+    <ClInclude Include="Source\HOI4World\Ideologies\IdeologiesBuilder.h" />
+    <ClInclude Include="Source\HOI4World\Ideologies\IdeologyBuilder.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.h" />

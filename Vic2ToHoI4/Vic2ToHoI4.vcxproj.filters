@@ -2367,6 +2367,12 @@
     <ClInclude Include="Source\Mappers\Government\GovernmentMapperFactory.h">
       <Filter>Mappers\Government</Filter>
     </ClInclude>
+    <ClInclude Include="Source\HOI4World\Ideologies\IdeologiesBuilder.h">
+      <Filter>HoI4World\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Ideologies\IdeologyBuilder.h">
+      <Filter>HoI4World\Ideologies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\FAQ.txt">

@@ -21,6 +21,9 @@ class Country; // forward declaration to break circular dependency
 class Ideologies: commonItems::parser
 {
   public:
+	class Builder;
+
+	Ideologies() = default;
 	explicit Ideologies(const Configuration& theConfiguration);
 
 	void identifyMajorIdeologies(const std::vector<std::shared_ptr<Country>>& greatPowers,

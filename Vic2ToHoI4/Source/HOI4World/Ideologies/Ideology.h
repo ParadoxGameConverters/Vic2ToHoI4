@@ -3,12 +3,12 @@
 
 
 
+#include "Color.h"
 #include "Parser.h"
 #include <map>
 #include <memory>
 #include <string>
 #include <vector>
-#include "Color.h"
 
 
 
@@ -18,13 +18,17 @@ namespace HoI4
 class Ideology: commonItems::parser
 {
   public:
+	class Builder;
+
+	Ideology() = default;
 	explicit Ideology(const std::string& _ideologyName, std::istream& theStream);
 	~Ideology() = default;
 	Ideology(const Ideology& other);
-	Ideology( Ideology&& other) = default;
+	Ideology(Ideology&& other) = default;
 	Ideology& operator=(const Ideology& other);
 	Ideology& operator=(Ideology&& other) = default;
 
+	[[nodiscard]] const auto& getName() const { return ideologyName; }
 	[[nodiscard]] std::vector<std::string> getTypes() const { return types; }
 
 	friend std::ostream& operator<<(std::ostream& out, const Ideology& ideology);
