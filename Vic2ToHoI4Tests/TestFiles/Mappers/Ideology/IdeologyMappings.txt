@@ -1,2 +1,2 @@
+mapping = { ruling_ideology = non_ruling_ideology vic2_ideology = non_ideology supported_ideology = skipped_ideology }
 mapping = { ruling_ideology = ruling_ideology vic2_ideology = vic2_ideology supported_ideology = matched_ideology }
-mapping = { ruling_ideology = non_ruling_ideology vic2_ideology = non__ideology supported_ideology = skipped_ideology }
