@@ -16,7 +16,7 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        destination_file: 'publish_commit_id.txt'
+        destination_file: 'Vic2ToHoI4.txt'
         user_email: 'idhrendur@hotmail.com'
         user_name: 'idhrendur'
         destination_branch: 'main'
