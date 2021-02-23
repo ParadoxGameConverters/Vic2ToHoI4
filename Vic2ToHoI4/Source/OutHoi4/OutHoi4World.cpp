@@ -16,6 +16,7 @@
 #include "Operations/OutOperations.h"
 #include "OperativeNames/OutOperativeNames.h"
 #include "OutFocusTree.h"
+#include "OutHoi4/Interface/OutMonarchsInterface.h"
 #include "OutHoi4Country.h"
 #include "OutLocalisation.h"
 #include "OutOnActions.h"
@@ -200,6 +201,7 @@ void HoI4::OutputWorld(const World& world,
 	outputOperations(world.getOperations(), outputName);
 	outputScriptedEffects(world.getScriptedEffects(), world.getMajorIdeologies(), outputName);
 	outputSounds(outputName, world.getSoundEffects());
+	outMonarchInterface(outputName, world.getCountries());
 }
 
 

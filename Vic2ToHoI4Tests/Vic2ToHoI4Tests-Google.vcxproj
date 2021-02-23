@@ -144,6 +144,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutCountryLeader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Modifiers\OutDynamicModifiers.cpp" />
@@ -863,6 +864,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Ai\AI.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Ai\AIFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Ai\AIStrategy.h" />

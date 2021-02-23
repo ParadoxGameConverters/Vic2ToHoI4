@@ -233,6 +233,7 @@
     <ClCompile Include="Source\OutHoi4\Ideologies\OutIdeology.cpp" />
     <ClCompile Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.cpp" />
     <ClCompile Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
+    <ClCompile Include="Source\OutHoi4\Interface\OutMonarchsInterface.cpp" />
     <ClCompile Include="Source\OutHoi4\Leaders\OutAdmiral.cpp" />
     <ClCompile Include="Source\OutHoi4\Leaders\OutAdvisor.cpp" />
     <ClCompile Include="Source\OutHoi4\Leaders\OutCountryLeader.cpp" />
@@ -584,6 +585,7 @@
     <ClInclude Include="Source\OutHoi4\GameRules\OutGameRules.h" />
     <ClInclude Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.h" />
     <ClInclude Include="Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.h" />
+    <ClInclude Include="Source\OutHoi4\Interface\OutMonarchsInterface.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutAdmiral.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutCountryLeader.h" />
     <ClInclude Include="Source\OutHoi4\Leaders\OutGeneral.h" />

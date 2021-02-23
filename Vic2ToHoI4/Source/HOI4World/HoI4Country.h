@@ -122,6 +122,7 @@ class Country
 	[[nodiscard]] bool areElectionsAllowed() const;
 	[[nodiscard]] std::optional<Faction> getFaction() const;
 	[[nodiscard]] std::optional<HoI4FocusTree> getNationalFocus() const;
+	[[nodiscard]] bool hasMonarchIdea() const;
 
 	[[nodiscard]] const std::string& getTag() const { return tag; }
 	[[nodiscard]] const auto& getOldTag() const { return oldTag; }
@@ -130,6 +131,8 @@ class Country
 	[[nodiscard]] const std::string& getFilename() const { return filename; }
 	[[nodiscard]] const std::string& getCommonCountryFile() const { return commonCountryFile; }
 	[[nodiscard]] bool isHuman() const { return human; }
+
+	[[nodiscard]] const auto& getMonarchIdeaTexture() const { return monarchIdeaTexture; }
 
 	[[nodiscard]] const auto& getPrimaryCulture() const { return primaryCulture; }
 	[[nodiscard]] const auto& getPrimaryCultureGroup() const { return primaryCultureGroup; }
@@ -305,6 +308,9 @@ class Country
 	std::set<std::string> ideas;
 	std::unique_ptr<HoI4FocusTree> nationalFocus;
 	std::set<std::string> flags;
+
+	bool hasMonarchIdea_ = true;
+	std::string monarchIdeaTexture = "idea_george_v";
 
 	double militaryFactories = 0.0;
 	double civilianFactories = 0.0;

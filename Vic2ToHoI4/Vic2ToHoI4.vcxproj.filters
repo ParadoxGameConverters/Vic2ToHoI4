@@ -247,6 +247,9 @@
     <Filter Include="Mappers\Ideology">
       <UniqueIdentifier>{79bc5641-0b32-4592-ba99-c35e1307dab7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OutHoi4\Interface">
+      <UniqueIdentifier>{e04ab258-5ce4-4cdb-86f1-8729ed76f9f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1197,6 +1200,9 @@
     </ClCompile>
     <ClCompile Include="Source\Mappers\Government\GovernmentMapperFactory.cpp">
       <Filter>Mappers\Government</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\Interface\OutMonarchsInterface.cpp">
+      <Filter>OutHoi4\Interface</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2372,6 +2378,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Ideologies\IdeologyBuilder.h">
       <Filter>HoI4World\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\Interface\OutMonarchsInterface.h">
+      <Filter>OutHoi4\Interface</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -20171,13 +20180,9 @@
     <CopyFileToFolders Include="Data_Files\configurables\GovernmentMappings.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\IdeologyMappings.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Data_Files\configurables\IdeologyMappings.txt">
-      <Filter>Data Files\Configurables</Filter>
-    </Text>
   </ItemGroup>
 </Project>

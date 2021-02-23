@@ -997,6 +997,14 @@ std::optional<HoI4FocusTree> HoI4::Country::getNationalFocus() const
 	}
 }
 
+
+bool HoI4::Country::hasMonarchIdea() const
+{
+	return (oldGovernment == "prussian_constitutionalism" || oldGovernment == "hms_government") &&
+			 (governmentIdeology != "absolutist");
+}
+
+
 // Calculates Influence Factor = Σ Outside Influence - 1.5 * Leader Influence
 double HoI4::Country::calculateInfluenceFactor()
 {
