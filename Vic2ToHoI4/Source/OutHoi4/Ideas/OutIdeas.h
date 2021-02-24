@@ -3,7 +3,7 @@
 
 
 
-#include "Configuration.h"
+#include "HOI4World/HoI4Country.h"
 #include "HOI4World/Ideas/Ideas.h"
 #include <set>
 #include <string>
@@ -13,7 +13,10 @@
 namespace HoI4
 {
 
-void outIdeas(const Ideas& ideas, const std::set<std::string>& majorIdeologies, const std::string& outputName);
+void outIdeas(const Ideas& ideas,
+	 const std::set<std::string>& majorIdeologies,
+	 std::map<std::string, std::shared_ptr<Country>> countries,
+	 const std::string& outputName);
 
 } // namespace HoI4
 

@@ -188,7 +188,7 @@ void HoI4::OutputWorld(const World& world,
 	outAiPeaces(world.getPeaces(), world.getMajorIdeologies(), outputName);
 	outputIdeologies(world.getIdeologies(), outputName);
 	outputLeaderTraits(world.getIdeologicalLeaderTraits(), world.getMajorIdeologies(), outputName);
-	outIdeas(world.getTheIdeas(), world.getMajorIdeologies(), outputName);
+	outIdeas(world.getTheIdeas(), world.getMajorIdeologies(), world.getCountries(), outputName);
 	outDynamicModifiers(world.getDynamicModifiers(), theConfiguration);
 	outputBookmarks(world.getGreatPowers(), world.getCountries(), world.getHumanCountry(), outputName);
 	outputScriptedLocalisations(outputName, *world.getScriptedLocalisations());
