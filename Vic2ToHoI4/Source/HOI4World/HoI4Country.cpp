@@ -291,13 +291,46 @@ void HoI4::Country::convertMonarchIdea(Names& names, Localisation& hoi4Localisat
 		return;
 	}
 
-	hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "King " + *firstName + " " + *surname);
+	hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "King " + *firstName + " " + *surname, "english");
+	hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Rei " + *firstName + " " + *surname, "braz_por");
+	hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Le roi " + *firstName + " " + *surname, "french");
+	hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "König " + *firstName + " " + *surname, "german");
+	hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Król " + *firstName + " " + *surname, "polish");
+	hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "царь " + *firstName + " " + *surname, "russian");
+	hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Rey " + *firstName + " " + *surname, "spanish");
+
 	if (name && adjective)
 	{
 		hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
 			 "Rallying around the King of " + *name + " and the " + *adjective + " Dominions, the " + *adjective +
-				  " people stand united and proud of their imperial legacy.");
+				  " people stand united and proud of their imperial legacy.",
+			 "english");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+			 "Reunindo-se em torno do Rei da " + *name + " e dos Domínios " + *adjective + ", o povo " + *adjective +
+				  " se mantém unido e orgulhoso de seu legado imperial.",
+			 "braz_por");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+			 "Rassemblant autour du roi de " + *name + " et des dominions " + *adjective + " le peuple " + *adjective +
+				  " est uni et fier de son héritage impérial.",
+			 "french");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+			 "Das " + *adjective + " Volk versammelt sich um den König von " + *name + " und die " + *adjective +
+				  " Dominions und ist vereint und stolz auf sein imperiales Erbe.",
+			 "german");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+			 "Gromadząc się wokół Króla " + *name + " i " + *adjective + " Dominium, " + *adjective +
+				  " są zjednoczeni i dumni ze swojego imperialnego dziedzictwa.",
+			 "polish");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+			 "Сплотившись вокруг Короля " + *name + " и " + *adjective + " Доминионов, " + *adjective +
+				  " народ объединяется и гордится своим имперским наследием.",
+			 "russian");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+			 "Al reunirse en torno al Rey de" + *name + " y los Dominios " + *adjective + " el pueblo " + *adjective +
+				  " está unido y orgulloso de su legado imperial.",
+			 "spanish");
 	}
+
 	ideas.insert(tag + "_monarch");
 }
 
