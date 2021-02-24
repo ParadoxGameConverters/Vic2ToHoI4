@@ -95,6 +95,7 @@ HoI4::Country::Country(std::string tag,
 	oldTechnologiesAndInventions = sourceCountry.getTechnologiesAndInventions();
 
 	convertLeaders(theGraphics, sourceCountry);
+	convertMonarchIdea(names, hoi4Localisations);
 	convertRelations(countryMap, sourceCountry);
 	convertStrategies(countryMap, sourceCountry);
 	atWar = sourceCountry.isAtWar();
@@ -273,6 +274,31 @@ void HoI4::Country::convertLeaders(const graphicsMapper& theGraphics, const Vic2
 			admirals.push_back(newLeader);
 		}
 	}
+}
+
+
+void HoI4::Country::convertMonarchIdea(Names& names, Localisation& hoi4Localisations)
+{
+	if (!hasMonarchIdea())
+	{
+		return;
+	}
+
+	const auto& firstName = names.getMaleName(primaryCulture);
+	const auto& surname = names.getSurname(primaryCulture);
+	if (!firstName || !surname)
+	{
+		return;
+	}
+
+	hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "King " + *firstName + " " + *surname);
+	if (name && adjective)
+	{
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+			 "Rallying around the King of " + *name + " and the " + *adjective + " Dominions, the " + *adjective +
+				  " people stand united and proud of their imperial legacy.");
+	}
+	ideas.insert(tag + "_monarch");
 }
 
 
