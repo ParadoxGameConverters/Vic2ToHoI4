@@ -14,11 +14,6 @@ void HoI4::outMonarchInterface(const std::string& outputFolder,
 
 	for (const auto& [tag, country]: countries)
 	{
-		if (!country->hasMonarchIdea())
-		{
-			continue;
-		}
-
 		monarchsFile << "\tspriteType = {\n";
 		monarchsFile << "\t\tname = \"GFX_idea_" << tag << "_monarch\"\n";
 		monarchsFile << "\t\ttexturefile = \"gfx/interface/ideas/" << country->getMonarchIdeaTexture() << ".dds\"\n";
