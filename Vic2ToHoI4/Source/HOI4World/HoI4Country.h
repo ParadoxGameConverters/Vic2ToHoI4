@@ -235,7 +235,7 @@ class Country
 	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
 	void convertLaws();
 	void convertLeaders(const graphicsMapper& theGraphics, const Vic2::Country& sourceCountry);
-	void convertMonarchIdea(Names& names, Localisation& hoi4Localisations);
+	void convertMonarchIdea(const graphicsMapper& theGraphicsmapper, Names& names, Localisation& hoi4Localisations);
 	void convertRelations(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
 	void convertStrategies(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
 	void convertWars(const Vic2::Country& sourceCountry, const Mappers::CountryMapper& countryMap);
@@ -311,7 +311,7 @@ class Country
 	std::set<std::string> flags;
 
 	bool hasMonarchIdea_ = true;
-	std::string monarchIdeaTexture = "idea_george_v";
+	std::string monarchIdeaTexture = "GFX_idea_george_v";
 
 	double militaryFactories = 0.0;
 	double civilianFactories = 0.0;
@@ -347,6 +347,8 @@ class Country
 	std::map<std::string, int> GPInfluences;
 	std::map<std::string, double> spherelings;
 	std::vector<std::string> guaranteed;
+
+	std::mt19937 generator;
 };
 
 } // namespace HoI4

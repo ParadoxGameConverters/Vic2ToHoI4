@@ -33,6 +33,10 @@ germanic = {
 		neutrality = { "gfx/interface/ideas/idea_albert_kesselring.dds" }
 		radical = { "gfx/interface/ideas/idea_hjalmar_schacht.dds" } 
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
 }
@@ -53,6 +57,10 @@ jewish_group = {
 		absolutist = { "gfx/leaders/ideas/idea_eng_service_overseas.dds" }
 		neutrality = { "gfx/interface/ideas/generic_spy_coup.dds" }
 		radical = { "gfx/interface/ideas/idea_hol_depillarization.dds" }
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
@@ -75,6 +83,10 @@ barbarian = {
 		neutrality = { "gfx/interface/ideas/idea_konstantin_von_neurath.dds" }
 		radical = { "gfx/interface/ideas/idea_louis_kahn.dds" }
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
 }
@@ -95,6 +107,10 @@ beneluxian = {
 		absolutist = { "gfx/interface/ideas/idea_gerd_von_rundstedt.dds" }
 		neutrality = { "gfx/interface/ideas/idea_erich_bey.dds" }
 		radical = { "gfx/interface/ideas/idea_hermann_gortz.dds" }
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
@@ -117,6 +133,10 @@ pan_swiss = {
 		neutrality = { "gfx/interface/ideas/idea_erhard_milch.dds" }
 		radical = { "gfx/interface/ideas/idea_ernst_udet.dds" }
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
 }
@@ -137,6 +157,10 @@ scandinavian = {
 		absolutist = { "gfx/interface/ideas/idea_raeder.dds" }
 		neutrality = { "gfx/interface/ideas/idea_ritter_von_greim.dds" }
 		radical = { "gfx/interface/ideas/idea_robert_oppenheimer.dds" }
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
@@ -159,6 +183,13 @@ british = {
 		neutrality = { "gfx/interface/ideas/idea_bernard_montgomery.dds" }
 		radical = { "gfx/interface/ideas/idea_alan_brooke.dds" } 
 	}
+	male_monarch_portraits = {
+		GFX_idea_george_v
+		GFX_idea_king_edward
+		GFX_idea_george_vi
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { commonwealth_gfx }
 	graphical_culture_2d = { commonwealth_2d }
 }
@@ -179,6 +210,10 @@ celtic = {
 		absolutist = { "gfx/interface/ideas/idea_louis_mountbatten.dds" } 
 		neutrality = { "gfx/interface/ideas/idea_john_vereker.dds" } 
 		radical = { "gfx/interface/ideas/idea_archibald_wavell.dds" }
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { commonwealth_gfx }
 	graphical_culture_2d = { commonwealth_2d }
@@ -201,6 +236,10 @@ italian = {
 		neutrality = { "gfx/interface/ideas/idea_alberto_da_zara.dds" } 
 		radical = { "gfx/interface/ideas/idea_alfredo_guzzoni.dds" } 
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
 }
@@ -221,6 +260,10 @@ romantic = {
 		absolutist = { "gfx/interface/ideas/idea_victor_emmanuel.dds" } # Revise
 		neutrality = { "gfx/interface/ideas/idea_alberto_da_zara.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_alfredo_guzzoni.dds" } # Revise
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
@@ -243,6 +286,10 @@ iberian = {
 		neutrality = { "gfx/interface/ideas/idea_emilio_de_bono.dds" }
 		radical = { "gfx/interface/ideas/idea_francesco_pricolo.dds" }
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
 }
@@ -263,6 +310,10 @@ french = {
 		absolutist = { "gfx/interface/ideas/idea_charles_de_gaulle.dds" }
 		neutrality = { "gfx/interface/ideas/idea_alfred_heurtaux.dds" }
 		radical = { "gfx/interface/ideas/idea_alphonse_georges.dds" } 
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
@@ -285,6 +336,10 @@ south_slavic = {
 		neutrality = { "gfx/interface/ideas/idea_alexander_yegorov.dds" } 
 		radical = { "gfx/interface/ideas/idea_igor_kurchatov.dds" }
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { eastern_european_gfx }
 	graphical_culture_2d = { eastern_european_2d }
 }
@@ -305,6 +360,10 @@ pan_albanian = { #HFM
 		absolutist = { "gfx/interface/ideas/idea_ivan_konev.dds" }
 		neutrality = { "gfx/interface/ideas/idea_kliment_voroshilov.dds" }
 		radical = { "gfx/interface/ideas/idea_konstantin_vershinin.dds" }
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { eastern_european_gfx }
 	graphical_culture_2d = { eastern_european_2d }
@@ -327,6 +386,10 @@ pan_romanian = {
 		neutrality = { "gfx/interface/ideas/idea_rom_michael_figurehead.dds" }
 		radical = { "gfx/interface/ideas/idea_nikolay_kuznetsov.dds" }
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { eastern_european_gfx }
 	graphical_culture_2d = { eastern_european_2d }
 }
@@ -347,6 +410,10 @@ hungarian_culture_group = {
 		absolutist = { "gfx/interface/ideas/idea_pyotr_smirnov.dds" }
 		neutrality = { "gfx/interface/ideas/idea_pavel_rychagov.dds" }
 		radical = { "gfx/interface/ideas/idea_semyon_timoshenko.dds" }
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { eastern_european_gfx }
 	graphical_culture_2d = { eastern_european_2d }
@@ -369,6 +436,10 @@ polish_culture_group = {
 		neutrality = { "gfx/interface/ideas/idea_sergei_rudenko.dds" }
 		radical = { "gfx/interface/ideas/idea_stepan_krasovsky.dds" }
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { eastern_european_gfx }
 	graphical_culture_2d = { eastern_european_2d }
 }
@@ -389,6 +460,10 @@ czecho_slovak_culture_group = {
 		absolutist = { "gfx/interface/ideas/idea_vasily_blucher.dds" }
 		neutrality = { "gfx/interface/ideas/idea_rom_michael_figurehead.dds" }
 		radical = { "gfx/interface/ideas/idea_rom_carol_ii_deal.dds" }
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { eastern_european_gfx }
 	graphical_culture_2d = { eastern_european_2d }
@@ -411,6 +486,10 @@ east_slavic = {
 		neutrality = { "gfx/interface/ideas/idea_alexander_novikov.dds" } 
 		radical = { "gfx/interface/ideas/idea_alexander_golovanov.dds" } 
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { eastern_european_gfx }
 	graphical_culture_2d = { eastern_european_2d }
 }
@@ -431,6 +510,10 @@ baltic = {
 		absolutist = { "gfx/aces/ace_m_1.dds" }
 		neutrality = { "gfx/aces/Amelia_Earhart_ace.dds" }
 		radical = { "gfx/aces/AST_axe_ace.dds" }
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { eastern_european_gfx }
 	graphical_culture_2d = { eastern_european_2d }
@@ -453,6 +536,10 @@ levantine = {
 		neutrality = { "gfx/interface/ideas/idea_amedeo_mecozzi.dds" } 
 		radical = { "gfx/interface/ideas/idea_domenico_cavagnari.dds" }
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { middle_eastern_gfx }
 	graphical_culture_2d = { middle_eastern_2d }
 }
@@ -473,6 +560,10 @@ turko_semitic = {
 		absolutist = { "gfx/interface/ideas/idea_generic_army_arab_1.dds" } # Revise
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { middle_eastern_gfx }
 	graphical_culture_2d = { middle_eastern_2d }
@@ -495,6 +586,10 @@ caucasian = { #HPM
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { middle_eastern_gfx }
 	graphical_culture_2d = { middle_eastern_2d }
 }
@@ -515,6 +610,10 @@ arab = {
 		absolutist = { "gfx/interface/ideas/idea_generic_army_arab_1.dds" } # Revise
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { middle_eastern_gfx }
 	graphical_culture_2d = { middle_eastern_2d }
@@ -537,6 +636,10 @@ iranian_turanian = {
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { middle_eastern_gfx }
 	graphical_culture_2d = { middle_eastern_2d }
 }
@@ -557,6 +660,10 @@ central_asian = {
 		absolutist = { "gfx/interface/ideas/idea_generic_army_asia_1.dds" } # Revise
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_asia.dds" } # Revise
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { asian_gfx }
 	graphical_culture_2d = { asian_2d }
@@ -579,6 +686,10 @@ south_asian = {
 		neutrality = { "gfx/interface/ideas/generic_political_advisor_india_1.dds" }
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { asian_gfx }
 	graphical_culture_2d = { asian_2d }
 }
@@ -599,6 +710,10 @@ indo_iranian = { #HFM
 		absolutist = { "gfx/interface/ideas/idea_raj_quit_india_movement.dds" } # Revise
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { asian_gfx }
 	graphical_culture_2d = { asian_2d }
@@ -621,6 +736,10 @@ southeast_asian = {
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_asia.dds" } # Revise
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { asian_gfx }
 	graphical_culture_2d = { asian_2d }
 }
@@ -641,6 +760,10 @@ east_asian = {
 		absolutist = { "gfx/interface/ideas/idea_hideki_tojo.dds" }
 		neutrality = { "gfx/interface/ideas/idea_hajime_sugiyama.dds" }
 		radical = { "gfx/interface/ideas/idea_hino_kumazo.dds" }
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { asian_gfx }
 	graphical_culture_2d = { asian_2d }
@@ -663,6 +786,10 @@ far_east_asian = {
 		neutrality = { "gfx/interface/ideas/idea_chuichi_nagumo.dds" } 
 		radical = { "gfx/interface/ideas/idea_fushimi_hiroyasu.dds" }
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { asian_gfx }
 	graphical_culture_2d = { asian_2d }
 }
@@ -683,6 +810,10 @@ oceanic = {
 		absolutist = { "gfx/interface/ideas/idea_francisco_franco.dds" } # Revise
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_south_america.dds" } # Revise
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { asian_gfx }
 	graphical_culture_2d = { asian_2d }
@@ -705,6 +836,10 @@ native_american = {
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_south_america.dds" } # Revise
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { southamerican_gfx }
 	graphical_culture_2d = { southamerican_2d }
 }
@@ -725,6 +860,10 @@ native_central_american = {
 		absolutist = { "gfx/interface/ideas/idea_francisco_franco.dds" } # Revise
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_south_america.dds" } # Revise
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { southamerican_gfx }
 	graphical_culture_2d = { southamerican_2d }
@@ -747,6 +886,10 @@ native_south_american = {
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_south_america.dds" } # Revise
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { southamerican_gfx }
 	graphical_culture_2d = { southamerican_2d }
 }
@@ -767,6 +910,10 @@ native_north_american = {
 		absolutist = { "gfx/interface/ideas/idea_francisco_franco.dds" } # Revise
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_south_america.dds" } # Revise
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { southamerican_gfx }
 	graphical_culture_2d = { southamerican_2d }
@@ -789,6 +936,10 @@ native_carribean = {
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_south_america.dds" } # Revise
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { southamerican_gfx }
 	graphical_culture_2d = { southamerican_2d }
 }
@@ -809,6 +960,10 @@ american_cultures = {
 		absolutist = { "gfx/interface/ideas/idea_douglas_macarthur.dds" }
 		neutrality = { "gfx/interface/ideas/idea_claire_lee_chennault.dds" } 
 		radical = { "gfx/interface/ideas/idea_courtney_hodges.dds" }
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { commonwealth_gfx }
 	graphical_culture_2d = { commonwealth_2d }
@@ -831,6 +986,10 @@ neo_european_cultures = {
 		neutrality = { "gfx/interface/ideas/idea_charles_portal.dds" }
 		radical = { "gfx/interface/ideas/idea_claude_auchinleck.dds" }
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
 }
@@ -851,6 +1010,10 @@ latin_american_cultures = {
 		absolutist = { "gfx/interface/ideas/idea_francisco_franco.dds" } # Revise
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_south_america.dds" } # Revise
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { southamerican_gfx }
 	graphical_culture_2d = { southamerican_2d }
@@ -873,6 +1036,10 @@ african_diaspora_cultures = {
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_africa.dds" } # Revise
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { african_gfx }
 	graphical_culture_2d = { african_2d }
 }
@@ -893,6 +1060,10 @@ west_african = {
 		absolutist = { "gfx/interface/ideas/idea_generic_army_africa_3.dds" } # Revise
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_africa.dds" } # Revise
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { african_gfx }
 	graphical_culture_2d = { african_2d }
@@ -915,6 +1086,10 @@ central_african = {
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_africa.dds" } # Revise
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { african_gfx }
 	graphical_culture_2d = { african_2d }
 }
@@ -935,6 +1110,10 @@ east_african = {
 		absolutist = { "gfx/interface/ideas/idea_generic_army_africa_3.dds" } # Revise
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_africa.dds" } # Revise
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { african_gfx }
 	graphical_culture_2d = { african_2d }
@@ -957,6 +1136,10 @@ southern_african = {
 		neutrality = { "gfx/interface/ideas/neutrality_idea.dds" } # Revise
 		radical = { "gfx/interface/ideas/idea_generic_fascist_africa.dds" } # Revise
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { african_gfx }
 	graphical_culture_2d = { african_2d }
 }
@@ -977,6 +1160,10 @@ bears = {
 		absolutist = { "gfx/interface/nuke_icon.dds" }
 		neutrality = { "gfx/interface/nuke_icon.dds" }
 		radical = { "gfx/interface/nuke_icon.dds" }
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
@@ -999,6 +1186,10 @@ equine = {
 		neutrality = { "gfx/interface/nuke_icon.dds" } 
 		radical = { "gfx/interface/nuke_icon.dds" } 
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
 }
@@ -1020,6 +1211,10 @@ non_human = {
 		neutrality = { "gfx/interface/spr_anarchist_society.dds" }
 		radical = { "gfx/interface/spr_anarchist_society.dds" }
 	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
+	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
 }
@@ -1040,6 +1235,10 @@ anti_human = {
 		absolutist = { "gfx/interface/nuke_icon.dds" }
 		neutrality = { "gfx/interface/nuke_icon.dds" }
 		radical = { "gfx/interface/nuke_icon.dds" }
+	}
+	male_monarch_portraits = {
+	}
+	female_monarch_portraits = {
 	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }

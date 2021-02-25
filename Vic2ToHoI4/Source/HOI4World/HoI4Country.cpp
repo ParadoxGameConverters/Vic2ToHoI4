@@ -95,7 +95,7 @@ HoI4::Country::Country(std::string tag,
 	oldTechnologiesAndInventions = sourceCountry.getTechnologiesAndInventions();
 
 	convertLeaders(theGraphics, sourceCountry);
-	convertMonarchIdea(names, hoi4Localisations);
+	convertMonarchIdea(theGraphics, names, hoi4Localisations);
 	convertRelations(countryMap, sourceCountry);
 	convertStrategies(countryMap, sourceCountry);
 	atWar = sourceCountry.isAtWar();
@@ -277,7 +277,9 @@ void HoI4::Country::convertLeaders(const graphicsMapper& theGraphics, const Vic2
 }
 
 
-void HoI4::Country::convertMonarchIdea(Names& names, Localisation& hoi4Localisations)
+void HoI4::Country::convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
+	 Names& names,
+	 Localisation& hoi4Localisations)
 {
 	if (!hasMonarchIdea())
 	{
@@ -319,7 +321,6 @@ void HoI4::Country::convertMonarchIdea(Names& names, Localisation& hoi4Localisat
 		}
 	}
 
-	
 	if (!firstName || !surname)
 	{
 		return;
@@ -390,8 +391,8 @@ void HoI4::Country::convertMonarchIdea(Names& names, Localisation& hoi4Localisat
 					  " se mantém unido e orgulhoso de seu legado imperial.",
 				 "braz_por");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Rassemblant autour de la reine de " + *name + " et des dominions " + *adjective + " le peuple " + *adjective +
-					  " est uni et fier de son héritage impérial.",
+				 "Rassemblant autour de la reine de " + *name + " et des dominions " + *adjective + " le peuple " +
+					  *adjective + " est uni et fier de son héritage impérial.",
 				 "french");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
 				 "Das " + *adjective + " Volk versammelt sich um die Königin von " + *name + " und die " + *adjective +
@@ -409,6 +410,25 @@ void HoI4::Country::convertMonarchIdea(Names& names, Localisation& hoi4Localisat
 				 "Reunidos en torno a la Reina de" + *name + " y los Dominios " + *adjective + ", el pueblo " + *adjective +
 					  " está unido y orgulloso de su legado imperial.",
 				 "spanish");
+		}
+	}
+
+	if (!female)
+	{
+		const auto monarchPortraits = theGraphicsmapper.getMaleMonarchPortraits(primaryCultureGroup);
+		if (!monarchPortraits.empty())
+		{
+			monarchIdeaTexture = monarchPortraits.at(
+				 std::uniform_int_distribution<int>{0, static_cast<int>(monarchPortraits.size() - 1)}(generator));
+		}
+	}
+	else
+	{
+		const auto monarchPortraits = theGraphicsmapper.getFemaleMonarchPortraits(primaryCultureGroup);
+		if (!monarchPortraits.empty())
+		{
+			monarchIdeaTexture = monarchPortraits.at(
+				 std::uniform_int_distribution<int>{0, static_cast<int>(monarchPortraits.size() - 1)}(generator));
 		}
 	}
 
