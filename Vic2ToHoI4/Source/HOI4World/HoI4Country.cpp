@@ -95,7 +95,7 @@ HoI4::Country::Country(std::string tag,
 	oldTechnologiesAndInventions = sourceCountry.getTechnologiesAndInventions();
 
 	convertLeaders(theGraphics, sourceCountry);
-	convertMonarchIdea(theGraphics, names, hoi4Localisations);
+	convertMonarchIdea(theGraphics, names, hoi4Localisations, sourceCountry);
 	convertRelations(countryMap, sourceCountry);
 	convertStrategies(countryMap, sourceCountry);
 	atWar = sourceCountry.isAtWar();
@@ -279,7 +279,8 @@ void HoI4::Country::convertLeaders(const graphicsMapper& theGraphics, const Vic2
 
 void HoI4::Country::convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
 	 Names& names,
-	 Localisation& hoi4Localisations)
+	 Localisation& hoi4Localisations,
+	 const Vic2::Country& sourceCountry)
 {
 	if (!hasMonarchIdea())
 	{
@@ -287,37 +288,53 @@ void HoI4::Country::convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
 	}
 
 	std::optional<std::string> firstName;
-	std::optional<std::string> surname;
+	std::optional<std::string> surname = sourceCountry.getLastDynasty();
 
 	bool female = false;
 	if (female)
 	{
 		firstName = names.getFemaleName(primaryCulture);
-		surname = names.getFemaleSurname(primaryCulture);
+		auto femaleSurname = names.getFemaleSurname(primaryCulture);
 		if (!firstName)
 		{
 			firstName = names.getMaleName(primaryCulture);
-			surname = names.getSurname(primaryCulture);
+			if (!surname)
+			{
+				surname = names.getSurname(primaryCulture);
+			}
 			female = false;
 		}
-		else if (firstName && !surname)
+		else if (!surname)
 		{
-			surname = names.getSurname(primaryCulture);
+			if (femaleSurname)
+			{
+				surname = femaleSurname;
+			}
+			else
+			{
+				surname = names.getSurname(primaryCulture);
+			}
 		}
 	}
 	else
 	{
 		firstName = names.getMaleName(primaryCulture);
-		surname = names.getSurname(primaryCulture);
+		const auto newSurname = names.getSurname(primaryCulture);
+
 		if (!firstName)
 		{
 			firstName = names.getFemaleName(primaryCulture);
 			auto femaleSurname = names.getFemaleSurname(primaryCulture);
-			if (femaleSurname)
+			if (!newSurname && femaleSurname)
 			{
 				surname = femaleSurname;
 			}
 			female = true;
+		}
+
+		if (!surname)
+		{
+			surname = newSurname;
 		}
 	}
 

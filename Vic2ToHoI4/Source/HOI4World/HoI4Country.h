@@ -235,7 +235,10 @@ class Country
 	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
 	void convertLaws();
 	void convertLeaders(const graphicsMapper& theGraphics, const Vic2::Country& sourceCountry);
-	void convertMonarchIdea(const graphicsMapper& theGraphicsmapper, Names& names, Localisation& hoi4Localisations);
+	void convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
+		 Names& names,
+		 Localisation& hoi4Localisations,
+		 const Vic2::Country& sourceCountry);
 	void convertRelations(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
 	void convertStrategies(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
 	void convertWars(const Vic2::Country& sourceCountry, const Mappers::CountryMapper& countryMap);
