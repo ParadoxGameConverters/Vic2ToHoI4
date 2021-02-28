@@ -1448,6 +1448,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.cpp">
       <Filter>Vic2ToHoI4 files\OutHoi4\Interface</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountryDataFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\EU4ToVic2Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\EU4ToVic2Data\CountryDataTests.cpp">
+      <Filter>Vic2WorldTests\EU4ToVic2Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1902,6 +1908,12 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\OutHoi4\Interface">
       <UniqueIdentifier>{b7fc2877-59f0-4e4e-a493-91ac5efab5bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\EU4ToVic2Data">
+      <UniqueIdentifier>{1ff045cb-f01e-42ee-8de5-1a6391ea54d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\EU4ToVic2Data">
+      <UniqueIdentifier>{d3296d48-38c0-4b97-a828-ec69ba26d296}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2807,6 +2819,12 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.h">
       <Filter>Vic2ToHoI4 files\OutHoi4\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountryData.h">
+      <Filter>Vic2ToHoI4 files\Vic2\EU4ToVic2Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountryDataFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\EU4ToVic2Data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

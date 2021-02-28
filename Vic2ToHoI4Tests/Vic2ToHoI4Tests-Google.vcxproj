@@ -321,6 +321,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\DiplomacyFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\Relations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\RelationsFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountryDataFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueCategoryHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\Issues.cpp" />
@@ -487,6 +488,7 @@
     <ClCompile Include="Vic2WorldTests\Diplomacy\AgreementTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Diplomacy\DiplomacyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Diplomacy\RelationsTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\EU4ToVic2Data\CountryDataTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Issues\IssueHelperTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Issues\IssuesBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Issues\IssuesFactoryTests.cpp" />
@@ -887,6 +889,8 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\Relations.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\RelationsBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\RelationsFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountryData.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountryDataFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueCategoryHelper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueHelper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Issues\Issues.h" />

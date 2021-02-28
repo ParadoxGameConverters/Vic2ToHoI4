@@ -412,6 +412,7 @@
     <ClCompile Include="Source\V2World\Diplomacy\DiplomacyFactory.cpp" />
     <ClCompile Include="Source\V2World\Diplomacy\Relations.cpp" />
     <ClCompile Include="Source\V2World\Diplomacy\RelationsFactory.cpp" />
+    <ClCompile Include="Source\V2World\EU4ToVic2Data\CountryDataFactory.cpp" />
     <ClCompile Include="Source\V2World\Issues\IssuesFactory.cpp" />
     <ClCompile Include="Source\V2World\Localisations\LocalisationsFactory.cpp" />
     <ClCompile Include="Source\V2World\Localisations\Vic2Localisations.cpp" />
@@ -792,6 +793,8 @@
     <ClInclude Include="Source\V2World\Diplomacy\Relations.h" />
     <ClInclude Include="Source\V2World\Diplomacy\RelationsBuilder.h" />
     <ClInclude Include="Source\V2World\Diplomacy\RelationsFactory.h" />
+    <ClInclude Include="Source\V2World\EU4ToVic2Data\CountryData.h" />
+    <ClInclude Include="Source\V2World\EU4ToVic2Data\CountryDataFactory.h" />
     <ClInclude Include="Source\V2World\Issues\IssueHelper.h" />
     <ClInclude Include="Source\V2World\Issues\Issues.h" />
     <ClInclude Include="Source\V2World\Issues\IssuesBuilder.h" />
