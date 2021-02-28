@@ -798,6 +798,7 @@
     <ClInclude Include="Source\V2World\EU4ToVic2Data\CountriesData.h" />
     <ClInclude Include="Source\V2World\EU4ToVic2Data\CountriesDataFactory.h" />
     <ClInclude Include="Source\V2World\EU4ToVic2Data\CountryData.h" />
+    <ClInclude Include="Source\V2World\EU4ToVic2Data\CountryDataBuilder.h" />
     <ClInclude Include="Source\V2World\EU4ToVic2Data\CountryDataFactory.h" />
     <ClInclude Include="Source\V2World\Issues\IssueHelper.h" />
     <ClInclude Include="Source\V2World\Issues\Issues.h" />

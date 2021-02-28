@@ -15,6 +15,7 @@ class CountryData
 {
   public:
 	class Factory;
+	class Builder;
 
 	[[nodiscard]] const auto& getLastDynasty() const { return lastDynasty; }
 

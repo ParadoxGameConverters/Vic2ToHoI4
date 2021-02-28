@@ -151,7 +151,8 @@ std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::
 	 const CommonCountryData& commonCountryData,
 	 const std::vector<Party>& allParties,
 	 const StateLanguageCategories& stateLanguageCategories,
-	 float percentOfCommanders)
+	 float percentOfCommanders,
+	 const std::optional<CountryData>& countryData)
 {
 	country = std::make_unique<Country>();
 	country->tag = theTag;
@@ -163,6 +164,10 @@ std::unique_ptr<Vic2::Country> Vic2::Country::Factory::createCountry(const std::
 	setParties(allParties);
 	limitCommanders(percentOfCommanders);
 	setStateLanguageCategories(stateLanguageCategories);
+	if (countryData)
+	{
+		country->lastDynasty = countryData->getLastDynasty();
+	}
 
 	return std::move(country);
 }

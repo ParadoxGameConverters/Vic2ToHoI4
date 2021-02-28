@@ -2406,6 +2406,9 @@
     <ClInclude Include="Source\V2World\EU4ToVic2Data\CountriesDataFactory.h">
       <Filter>Vic2World\EU4ToVic2Data</Filter>
     </ClInclude>
+    <ClInclude Include="Source\V2World\EU4ToVic2Data\CountryDataBuilder.h">
+      <Filter>Vic2World\EU4ToVic2Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="Data_Files\FAQ.txt">

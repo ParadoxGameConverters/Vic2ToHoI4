@@ -47,7 +47,7 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 					  commonCountryData->second,
 					  allParties,
 					  *stateLanguageCategories,
-					  theConfiguration.getPercentOfCommanders()));
+					  theConfiguration.getPercentOfCommanders(), std::nullopt));
 			tagsInOrder.push_back(countryTag);
 		}
 		else

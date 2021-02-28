@@ -310,7 +310,6 @@ class Country
 	std::unique_ptr<HoI4FocusTree> nationalFocus;
 	std::set<std::string> flags;
 
-	bool hasMonarchIdea_ = true;
 	std::string monarchIdeaTexture = "GFX_idea_george_v";
 
 	double militaryFactories = 0.0;
