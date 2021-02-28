@@ -20,6 +20,7 @@ TEST(Vic2World_EU4ToVic2Data_CountriesDataTests, CountryDataCanBeImported)
 	const auto countriesData = Vic2::CountriesData::Factory().importCountriesData(
 		 *Configuration::Builder()
 				.setVic2ModPath("./Vic2/Mod")
+				.addVic2Mod(*Vic2::Mod::Builder().setDirectory("uninteresting_mod").build())
 				.addVic2Mod(*Vic2::Mod::Builder().setDirectory("test_directory").build())
 				.build());
 
