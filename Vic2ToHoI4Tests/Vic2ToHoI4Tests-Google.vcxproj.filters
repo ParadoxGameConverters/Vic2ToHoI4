@@ -1454,6 +1454,15 @@
     <ClCompile Include="Vic2WorldTests\EU4ToVic2Data\CountryDataTests.cpp">
       <Filter>Vic2WorldTests\EU4ToVic2Data</Filter>
     </ClCompile>
+    <ClCompile Include="Vic2WorldTests\EU4ToVic2Data\CountriesDataTests.cpp">
+      <Filter>Vic2WorldTests\EU4ToVic2Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountriesData.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\EU4ToVic2Data</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountriesDataFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\EU4ToVic2Data</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1914,6 +1923,12 @@
     </Filter>
     <Filter Include="Vic2ToHoI4 files\Vic2\EU4ToVic2Data">
       <UniqueIdentifier>{d3296d48-38c0-4b97-a828-ec69ba26d296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Vic2">
+      <UniqueIdentifier>{84046750-40c8-4338-a2cc-98fa563242c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Vic2\EU4ToVic2Data">
+      <UniqueIdentifier>{33a1fcff-c49d-4e1c-80b5-0bc49357bf9e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2826,6 +2841,12 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountryDataFactory.h">
       <Filter>Vic2ToHoI4 files\Vic2\EU4ToVic2Data</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountriesData.h">
+      <Filter>Vic2ToHoI4 files\Vic2\EU4ToVic2Data</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountriesDataFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\EU4ToVic2Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3119,5 +3140,13 @@
       <Filter>TestFiles\Mappers\Ideology</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\Government\GovernmentMappings.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="Vic2WorldTests\Vic2World\EU4ToVic2Data\botanical_expedition.txt">
+      <Filter>TestFiles\Vic2\EU4ToVic2Data</Filter>
+    </Text>
+    <Text Include="TestFiles\Vic2World\EU4ToVic2Data\botanical_expedition.txt">
+      <Filter>TestFiles\Vic2\EU4ToVic2Data</Filter>
+    </Text>
   </ItemGroup>
 </Project>
