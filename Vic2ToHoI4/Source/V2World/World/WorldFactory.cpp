@@ -25,6 +25,7 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 	const auto [commonCountriesData_, allParties_] = importCommonCountriesData(theConfiguration);
 	commonCountriesData = commonCountriesData_;
 	allParties = allParties_;
+	countriesData = CountriesData::Factory().importCountriesData(theConfiguration);
 
 	registerKeyword("date", [](std::istream& theStream) {
 		const date theDate{commonItems::singleString{theStream}.getString()};
@@ -47,7 +48,8 @@ Vic2::World::Factory::Factory(const Configuration& theConfiguration):
 					  commonCountryData->second,
 					  allParties,
 					  *stateLanguageCategories,
-					  theConfiguration.getPercentOfCommanders(), std::nullopt));
+					  theConfiguration.getPercentOfCommanders(),
+					  countriesData->getCountryData(countryTag)));
 			tagsInOrder.push_back(countryTag);
 		}
 		else
