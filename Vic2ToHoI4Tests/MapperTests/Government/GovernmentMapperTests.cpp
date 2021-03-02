@@ -385,7 +385,7 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingLeaderIdeologyIsRequired)
 				.Build(),
 		 false);
 
-	ASSERT_EQ("neutrality", ideology);
+	ASSERT_EQ("dictatorship_neutral", ideology);
 }
 
 
@@ -400,5 +400,5 @@ TEST(Mappers_Government_GovernmentMapperTests, ExistingLeaderIdeologyMustBeValid
 		 *HoI4::Ideologies::Builder().Build(),
 		 false);
 
-	ASSERT_EQ("neutrality", ideology);
+	ASSERT_EQ("dictatorship_neutral", ideology);
 }
