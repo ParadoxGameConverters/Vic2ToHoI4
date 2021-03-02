@@ -119,7 +119,7 @@ std::string Mappers::GovernmentMapper::getExistingLeaderIdeologyForCountry(const
 	 const HoI4::Ideologies& ideologies,
 	 bool debug) const
 {
-	std::string ideology = "neutrality";
+	std::string ideology = "dictatorship_neutral";
 	for (const auto& mapping: governmentMap)
 	{
 		if (governmentMatches(mapping, government) && rulingIdeologyMatches(mapping, Vic2RulingIdeology) &&
