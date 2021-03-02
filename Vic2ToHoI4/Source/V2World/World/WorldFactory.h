@@ -9,6 +9,7 @@
 #include "V2World/Countries/CountryFactory.h"
 #include "V2World/Culture/CultureGroups.h"
 #include "V2World/Diplomacy/DiplomacyFactory.h"
+#include "V2World/EU4ToVic2Data/CountriesDataFactory.h"
 #include "V2World/Issues/Issues.h"
 #include "V2World/Provinces/ProvinceFactory.h"
 #include "V2World/Wars/WarFactory.h"
@@ -62,7 +63,10 @@ class World::Factory: commonItems::parser
 	std::unique_ptr<Diplomacy::Factory> diplomacyFactory;
 	std::map<std::string, CommonCountryData> commonCountriesData;
 	std::vector<Party> allParties;
+
+	std::unique_ptr<CountriesData> countriesData;
 };
+
 } // namespace Vic2
 
 

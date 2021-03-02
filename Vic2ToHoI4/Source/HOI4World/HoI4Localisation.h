@@ -87,6 +87,7 @@ class Localisation
 		 const std::string& HoI4Key,
 		 const Vic2::Localisations& vic2Localisations);
 	void addIdeaLocalisation(const std::string& idea, const std::optional<std::string>& localisation);
+	void addIdeaLocalisation(const std::string& idea, const std::string& localisation, const std::string& language);
 	void addPoliticalPartyLocalisation(const std::string& Vic2Key,
 		 const std::string& HoI4Key,
 		 const Vic2::Localisations& vic2Localisations);

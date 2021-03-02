@@ -93,6 +93,7 @@ class Country
 	[[nodiscard]] std::map<std::string, std::vector<std::string>> getAllShipNames() const { return shipNames; }
 	[[nodiscard]] bool isAtWar() const { return atWar; }
 	[[nodiscard]] const auto& getWars() const { return wars; }
+	[[nodiscard]] const auto& getLastDynasty() const { return lastDynasty; }
 
 	[[nodiscard]] auto& getModifiableArmies() { return armies; }
 
@@ -153,6 +154,8 @@ class Country
 
 	bool atWar = false;
 	std::vector<War> wars; // only the country that started a war owns it here
+
+	std::optional<std::string> lastDynasty;
 };
 
 

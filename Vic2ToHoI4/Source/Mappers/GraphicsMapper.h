@@ -29,6 +29,8 @@ class graphicsMapper: commonItems::parser
 
 	const std::vector<std::string> getArmyPortraits(const std::string& cultureGroup);
 	const std::vector<std::string> getNavyPortraits(const std::string& cultureGroup);
+	[[nodiscard]] const std::vector<std::string> getMaleMonarchPortraits(const std::string& cultureGroup) const;
+	[[nodiscard]] const std::vector<std::string> getFemaleMonarchPortraits(const std::string& cultureGroup) const;
 	std::string getLeaderPortrait(const std::string& cultureGroup, const std::string& ideology);
 	std::string getIdeologyMinisterPortrait(const std::string& cultureGroup, const std::string& ideology);
 	std::string getGeneralPortrait(const std::string& cultureGroup) const;
@@ -51,6 +53,8 @@ class graphicsMapper: commonItems::parser
 
 	cultureGroupToPortraitsMap armyPortraitMappings;
 	cultureGroupToPortraitsMap navyPortraitMappings;
+	cultureGroupToPortraitsMap maleMonarchMappings;
+	cultureGroupToPortraitsMap femaleMonarchMappings;
 	ideologyToPortraitsMap leaderPortraitMappings;
 	ideologyToPortraitsMap ideologyMinisterMappings;
 	cultureGroupToGraphicalCultureMap graphicalCultureMap;

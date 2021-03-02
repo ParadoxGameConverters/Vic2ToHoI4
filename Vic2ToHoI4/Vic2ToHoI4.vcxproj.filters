@@ -247,6 +247,12 @@
     <Filter Include="Mappers\Ideology">
       <UniqueIdentifier>{79bc5641-0b32-4592-ba99-c35e1307dab7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OutHoi4\Interface">
+      <UniqueIdentifier>{e04ab258-5ce4-4cdb-86f1-8729ed76f9f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2World\EU4ToVic2Data">
+      <UniqueIdentifier>{df9cade8-7351-4c33-b65e-b63cb4136118}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1197,6 +1203,18 @@
     </ClCompile>
     <ClCompile Include="Source\Mappers\Government\GovernmentMapperFactory.cpp">
       <Filter>Mappers\Government</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\Interface\OutMonarchsInterface.cpp">
+      <Filter>OutHoi4\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\EU4ToVic2Data\CountryDataFactory.cpp">
+      <Filter>Vic2World\EU4ToVic2Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\EU4ToVic2Data\CountriesData.cpp">
+      <Filter>Vic2World\EU4ToVic2Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\EU4ToVic2Data\CountriesDataFactory.cpp">
+      <Filter>Vic2World\EU4ToVic2Data</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2372,6 +2390,24 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Ideologies\IdeologyBuilder.h">
       <Filter>HoI4World\Ideologies</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\Interface\OutMonarchsInterface.h">
+      <Filter>OutHoi4\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\EU4ToVic2Data\CountryData.h">
+      <Filter>Vic2World\EU4ToVic2Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\EU4ToVic2Data\CountryDataFactory.h">
+      <Filter>Vic2World\EU4ToVic2Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\EU4ToVic2Data\CountriesData.h">
+      <Filter>Vic2World\EU4ToVic2Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\EU4ToVic2Data\CountriesDataFactory.h">
+      <Filter>Vic2World\EU4ToVic2Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\EU4ToVic2Data\CountryDataBuilder.h">
+      <Filter>Vic2World\EU4ToVic2Data</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -20171,13 +20207,9 @@
     <CopyFileToFolders Include="Data_Files\configurables\GovernmentMappings.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\IdeologyMappings.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Data_Files\configurables\IdeologyMappings.txt">
-      <Filter>Data Files\Configurables</Filter>
-    </Text>
   </ItemGroup>
 </Project>

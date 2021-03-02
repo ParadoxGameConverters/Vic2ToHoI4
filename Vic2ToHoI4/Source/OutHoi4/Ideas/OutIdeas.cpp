@@ -9,10 +9,15 @@ void outputIdeologicalIdeas(const std::map<std::string, HoI4::IdeaGroup>& ideolo
 	 const std::set<std::string>& majorIdeologies,
 	 const std::string& outputName);
 void outputGeneralIdeas(const std::vector<HoI4::IdeaGroup>& generalIdeas, const std::string& outputName);
-void HoI4::outIdeas(const Ideas& ideas, const std::set<std::string>& majorIdeologies, const std::string& outputName)
+void outputMonarchIdeas(std::map<std::string, std::shared_ptr<HoI4::Country>> countries, const std::string& outputName);
+void HoI4::outIdeas(const Ideas& ideas,
+	 const std::set<std::string>& majorIdeologies,
+	 std::map<std::string, std::shared_ptr<HoI4::Country>> countries,
+	 const std::string& outputName)
 {
 	outputIdeologicalIdeas(ideas.getIdeologicalIdeas(), majorIdeologies, outputName);
 	outputGeneralIdeas(ideas.getGeneralIdeas(), outputName);
+	outputMonarchIdeas(countries, outputName);
 }
 
 
@@ -83,4 +88,41 @@ void closeIdeaFile(std::ofstream& fileStream)
 {
 	fileStream << "}";
 	fileStream.close();
+}
+
+
+void outputMonarchIdeas(std::map<std::string, std::shared_ptr<HoI4::Country>> countries, const std::string& outputName)
+{
+	std::ofstream monarchFile("output/" + outputName + "/common/ideas/_monarchs.txt");
+
+	monarchFile << "ideas = {\n";
+	monarchFile << "\tcountry = {\n";
+
+	for (const auto& [tag, country]: countries)
+	{
+		if (!country->hasMonarchIdea())
+		{
+			continue;
+		}
+
+		monarchFile << "\t\t" << tag << "_monarch = {\n";
+		monarchFile << "\t\t\tallowed = {\n";
+		monarchFile << "\t\t\t\toriginal_tag = " << tag << "\n";
+		monarchFile << "\t\t\t}\n";
+		monarchFile << "\n";
+		monarchFile << "\t\t\tallowed_civil_war = {\n";
+		monarchFile << "\t\t\t\toriginal_tag = " << tag << "\n";
+		monarchFile << "\t\t\t\thas_government = " << country->getGovernmentIdeology() << "\n";
+		monarchFile << "\t\t\t}\n";
+		monarchFile << "\n";
+		monarchFile << "\t\t\tremoval_cost = -1\n";
+		monarchFile << "\n";
+		monarchFile << "\t\t\ttraits = { popular_figurehead }\n";
+		monarchFile << "\t\t}\n";
+	}
+
+	monarchFile << "\t}\n";
+	monarchFile << "}";
+
+	monarchFile.close();
 }

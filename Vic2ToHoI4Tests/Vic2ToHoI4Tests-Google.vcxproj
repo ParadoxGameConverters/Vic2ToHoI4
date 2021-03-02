@@ -144,6 +144,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\GameRules\OutGameRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgencies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\IntelligenceAgencies\OutIntelligenceAgency.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Leaders\OutCountryLeader.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Map\OutStrategicRegions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Modifiers\OutDynamicModifiers.cpp" />
@@ -320,6 +321,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\DiplomacyFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\Relations.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\RelationsFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountriesData.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountriesDataFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountryDataFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueCategoryHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueHelper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Issues\Issues.cpp" />
@@ -486,6 +490,8 @@
     <ClCompile Include="Vic2WorldTests\Diplomacy\AgreementTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Diplomacy\DiplomacyTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Diplomacy\RelationsTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\EU4ToVic2Data\CountriesDataTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\EU4ToVic2Data\CountryDataTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Issues\IssueHelperTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Issues\IssuesBuilderTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Issues\IssuesFactoryTests.cpp" />
@@ -863,6 +869,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Ai\AI.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Ai\AIFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Ai\AIStrategy.h" />
@@ -885,6 +892,10 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\Relations.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\RelationsBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Diplomacy\RelationsFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountriesData.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountriesDataFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountryData.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountryDataFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueCategoryHelper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Issues\IssueHelper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Issues\Issues.h" />
@@ -1444,6 +1455,12 @@
     <CopyFileToFolders Include="TestFiles\Mappers\Government\GovernmentMappings.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Vic2World\EU4ToVic2Data\botanical_expedition.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2/Mod/test_directory/common</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod/test_directory/common</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

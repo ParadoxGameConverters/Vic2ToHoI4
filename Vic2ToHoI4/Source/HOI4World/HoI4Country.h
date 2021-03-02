@@ -122,6 +122,7 @@ class Country
 	[[nodiscard]] bool areElectionsAllowed() const;
 	[[nodiscard]] std::optional<Faction> getFaction() const;
 	[[nodiscard]] std::optional<HoI4FocusTree> getNationalFocus() const;
+	[[nodiscard]] bool hasMonarchIdea() const;
 
 	[[nodiscard]] const std::string& getTag() const { return tag; }
 	[[nodiscard]] const auto& getOldTag() const { return oldTag; }
@@ -130,6 +131,8 @@ class Country
 	[[nodiscard]] const std::string& getFilename() const { return filename; }
 	[[nodiscard]] const std::string& getCommonCountryFile() const { return commonCountryFile; }
 	[[nodiscard]] bool isHuman() const { return human; }
+
+	[[nodiscard]] const auto& getMonarchIdeaTexture() const { return monarchIdeaTexture; }
 
 	[[nodiscard]] const auto& getPrimaryCulture() const { return primaryCulture; }
 	[[nodiscard]] const auto& getPrimaryCultureGroup() const { return primaryCultureGroup; }
@@ -232,6 +235,10 @@ class Country
 	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
 	void convertLaws();
 	void convertLeaders(const graphicsMapper& theGraphics, const Vic2::Country& sourceCountry);
+	void convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
+		 Names& names,
+		 Localisation& hoi4Localisations,
+		 const Vic2::Country& sourceCountry);
 	void convertRelations(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
 	void convertStrategies(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
 	void convertWars(const Vic2::Country& sourceCountry, const Mappers::CountryMapper& countryMap);
@@ -306,6 +313,8 @@ class Country
 	std::unique_ptr<HoI4FocusTree> nationalFocus;
 	std::set<std::string> flags;
 
+	std::string monarchIdeaTexture = "GFX_idea_george_v";
+
 	double militaryFactories = 0.0;
 	double civilianFactories = 0.0;
 	double dockyards = 0.0;
@@ -340,6 +349,8 @@ class Country
 	std::map<std::string, int> GPInfluences;
 	std::map<std::string, double> spherelings;
 	std::vector<std::string> guaranteed;
+
+	std::mt19937 generator;
 };
 
 } // namespace HoI4

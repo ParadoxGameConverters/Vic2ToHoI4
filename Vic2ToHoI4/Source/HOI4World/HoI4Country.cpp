@@ -95,6 +95,7 @@ HoI4::Country::Country(std::string tag,
 	oldTechnologiesAndInventions = sourceCountry.getTechnologiesAndInventions();
 
 	convertLeaders(theGraphics, sourceCountry);
+	convertMonarchIdea(theGraphics, names, hoi4Localisations, sourceCountry);
 	convertRelations(countryMap, sourceCountry);
 	convertStrategies(countryMap, sourceCountry);
 	atWar = sourceCountry.isAtWar();
@@ -273,6 +274,182 @@ void HoI4::Country::convertLeaders(const graphicsMapper& theGraphics, const Vic2
 			admirals.push_back(newLeader);
 		}
 	}
+}
+
+
+void HoI4::Country::convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
+	 Names& names,
+	 Localisation& hoi4Localisations,
+	 const Vic2::Country& sourceCountry)
+{
+	if (!hasMonarchIdea())
+	{
+		return;
+	}
+
+	std::optional<std::string> firstName;
+	std::optional<std::string> surname = sourceCountry.getLastDynasty();
+
+	bool female = false; // todo(#897): Add chance of female monarchs
+	if (female)
+	{
+		firstName = names.getFemaleName(primaryCulture);
+		auto femaleSurname = names.getFemaleSurname(primaryCulture);
+		if (!firstName)
+		{
+			firstName = names.getMaleName(primaryCulture);
+			if (!surname)
+			{
+				surname = names.getSurname(primaryCulture);
+			}
+			female = false;
+		}
+		else if (!surname)
+		{
+			if (femaleSurname)
+			{
+				surname = femaleSurname;
+			}
+			else
+			{
+				surname = names.getSurname(primaryCulture);
+			}
+		}
+	}
+	else
+	{
+		firstName = names.getMaleName(primaryCulture);
+		const auto newSurname = names.getSurname(primaryCulture);
+
+		if (!firstName)
+		{
+			firstName = names.getFemaleName(primaryCulture);
+			auto femaleSurname = names.getFemaleSurname(primaryCulture);
+			if (!newSurname && femaleSurname)
+			{
+				surname = femaleSurname;
+			}
+			female = true;
+		}
+
+		if (!surname)
+		{
+			surname = newSurname;
+		}
+	}
+
+	if (!firstName || !surname)
+	{
+		return;
+	}
+
+	if (!female)
+	{
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "King " + *firstName + " " + *surname, "english");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Rei " + *firstName + " " + *surname, "braz_por");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Le roi " + *firstName + " " + *surname, "french");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "König " + *firstName + " " + *surname, "german");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Król " + *firstName + " " + *surname, "polish");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "царь " + *firstName + " " + *surname, "russian");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Rey " + *firstName + " " + *surname, "spanish");
+	}
+	else
+	{
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Queen " + *firstName + " " + *surname, "english");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Rainha " + *firstName + " " + *surname, "braz_por");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Reine " + *firstName + " " + *surname, "french");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Königin " + *firstName + " " + *surname, "german");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Królowa " + *firstName + " " + *surname, "polish");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Королева " + *firstName + " " + *surname, "russian");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Reina " + *firstName + " " + *surname, "spanish");
+	}
+
+	if (name && adjective)
+	{
+		if (!female)
+		{
+			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+				 "Rallying around the Queen of " + *name + " and the " + *adjective + " Dominions, the " + *adjective +
+					  " people stand united and proud of their imperial legacy.",
+				 "english");
+			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+				 "Reunindo-se em torno do Rei da " + *name + " e dos Domínios " + *adjective + ", o povo " + *adjective +
+					  " se mantém unido e orgulhoso de seu legado imperial.",
+				 "braz_por");
+			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+				 "Rassemblant autour du roi de " + *name + " et des dominions " + *adjective + " le peuple " + *adjective +
+					  " est uni et fier de son héritage impérial.",
+				 "french");
+			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+				 "Das " + *adjective + " Volk versammelt sich um den König von " + *name + " und die " + *adjective +
+					  " Dominions und ist vereint und stolz auf sein kaiserliches Erbe.",
+				 "german");
+			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+				 "Gromadząc się wokół Króla " + *name + " i " + *adjective + " Dominium, " + *adjective +
+					  " są zjednoczeni i dumni ze swojego imperialnego dziedzictwa.",
+				 "polish");
+			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+				 "Сплотившись вокруг Короля " + *name + " и " + *adjective + " Доминионов, " + *adjective +
+					  " народ объединяется и гордится своим имперским наследием.",
+				 "russian");
+			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+				 "Al reunirse en torno al Rey de" + *name + " y los Dominios " + *adjective + ", el pueblo " + *adjective +
+					  " está unido y orgulloso de su legado imperial.",
+				 "spanish");
+		}
+		else
+		{
+			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+				 "Rallying around the Queen of " + *name + " and the " + *adjective + " Dominions, the " + *adjective +
+					  " people stand united and proud of their imperial legacy.",
+				 "english");
+			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+				 "Reunindo-se em torno da Rainha da " + *name + " e dos Domínios " + *adjective + ", o povo " + *adjective +
+					  " se mantém unido e orgulhoso de seu legado imperial.",
+				 "braz_por");
+			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+				 "Rassemblant autour de la reine de " + *name + " et des dominions " + *adjective + " le peuple " +
+					  *adjective + " est uni et fier de son héritage impérial.",
+				 "french");
+			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+				 "Das " + *adjective + " Volk versammelt sich um die Königin von " + *name + " und die " + *adjective +
+					  " Dominions und ist vereint und stolz auf sein kaiserliches Erbe.",
+				 "german");
+			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+				 "Zbierając się wokół Królowej" + *name + " i " + *adjective + " Dominium, " + *adjective +
+					  " są zjednoczeni i dumni ze swojego imperialnego dziedzictwa.",
+				 "polish");
+			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+				 "Сплотившись вокруг Королевы " + *name + " и " + *adjective + " Доминионов, " + *adjective +
+					  " народ объединяется и гордится своим имперским наследием.",
+				 "russian");
+			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
+				 "Reunidos en torno a la Reina de" + *name + " y los Dominios " + *adjective + ", el pueblo " + *adjective +
+					  " está unido y orgulloso de su legado imperial.",
+				 "spanish");
+		}
+	}
+
+	if (!female)
+	{
+		const auto monarchPortraits = theGraphicsmapper.getMaleMonarchPortraits(primaryCultureGroup);
+		if (!monarchPortraits.empty())
+		{
+			monarchIdeaTexture = monarchPortraits.at(
+				 std::uniform_int_distribution<int>{0, static_cast<int>(monarchPortraits.size() - 1)}(generator));
+		}
+	}
+	else
+	{
+		const auto monarchPortraits = theGraphicsmapper.getFemaleMonarchPortraits(primaryCultureGroup);
+		if (!monarchPortraits.empty())
+		{
+			monarchIdeaTexture = monarchPortraits.at(
+				 std::uniform_int_distribution<int>{0, static_cast<int>(monarchPortraits.size() - 1)}(generator));
+		}
+	}
+
+	ideas.emplace(tag + "_monarch");
 }
 
 
@@ -996,6 +1173,14 @@ std::optional<HoI4FocusTree> HoI4::Country::getNationalFocus() const
 		return std::nullopt;
 	}
 }
+
+
+bool HoI4::Country::hasMonarchIdea() const
+{
+	return (oldGovernment == "prussian_constitutionalism" || oldGovernment == "hms_government") &&
+			 (governmentIdeology != "absolutist");
+}
+
 
 // Calculates Influence Factor = Σ Outside Influence - 1.5 * Leader Influence
 double HoI4::Country::calculateInfluenceFactor()

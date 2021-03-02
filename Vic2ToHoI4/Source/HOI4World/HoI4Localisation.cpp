@@ -886,6 +886,21 @@ void HoI4::Localisation::addIdeaLocalisation(const std::string& idea, const std:
 }
 
 
+void HoI4::Localisation::addIdeaLocalisation(const std::string& idea,
+	 const std::string& localisation,
+	 const std::string& language)
+{
+	auto localisationInLanguage = ideaLocalisations.find(language);
+	if (localisationInLanguage != ideaLocalisations.end())
+	{
+		localisationInLanguage->second[idea] = localisation;
+		return;
+	}
+
+	ideaLocalisations[language].emplace(idea, localisation);
+}
+
+
 void HoI4::Localisation::addPoliticalPartyLocalisation(const std::string& Vic2Key,
 	 const std::string& HoI4Key,
 	 const Vic2::Localisations& vic2Localisations)

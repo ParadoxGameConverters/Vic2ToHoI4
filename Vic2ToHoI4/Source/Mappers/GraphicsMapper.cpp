@@ -36,6 +36,8 @@ class graphicsCultureGroup: commonItems::parser
 
 	auto getArmyPortraits() const { return armyPortraits; }
 	auto getNavyPortraits() const { return navyPortraits; }
+	auto getMaleMonarchPortraits() const { return maleMonarchPortraits; }
+	auto getFemaleMonarchPortraits() const { return femaleMonarchPortraits; }
 	auto getLeaderPortraits() const { return leaderPortraits; }
 	auto getIdeologyMinisterPortraits() const { return ideologyMinisterPortraits; }
 	auto getGraphicalCulture() const { return graphicalCulture; }
@@ -44,6 +46,8 @@ class graphicsCultureGroup: commonItems::parser
   private:
 	std::vector<std::string> armyPortraits;
 	std::vector<std::string> navyPortraits;
+	std::vector<std::string> maleMonarchPortraits;
+	std::vector<std::string> femaleMonarchPortraits;
 	std::map<std::string, std::vector<std::string>> leaderPortraits;
 	std::map<std::string, std::vector<std::string>> ideologyMinisterPortraits;
 	std::string graphicalCulture;
@@ -58,6 +62,12 @@ graphicsCultureGroup::graphicsCultureGroup(std::istream& theStream)
 	});
 	registerKeyword("navy_portraits", [this](std::istream& theStream) {
 		navyPortraits = commonItems::stringList(theStream).getStrings();
+	});
+	registerKeyword("male_monarch_portraits", [this](std::istream& theStream) {
+		maleMonarchPortraits = commonItems::stringList(theStream).getStrings();
+	});
+	registerKeyword("female_monarch_portraits", [this](std::istream& theStream) {
+		femaleMonarchPortraits = commonItems::stringList(theStream).getStrings();
 	});
 	registerKeyword("leader_portraits", [this](std::istream& theStream) {
 		ideologyToPortraitsMapping mappings(theStream);
@@ -88,6 +98,8 @@ void graphicsMapper::init()
 		graphicsCultureGroup newCultureGroup(theStream);
 		armyPortraitMappings[cultureGroupName] = newCultureGroup.getArmyPortraits();
 		navyPortraitMappings[cultureGroupName] = newCultureGroup.getNavyPortraits();
+		maleMonarchMappings[cultureGroupName] = newCultureGroup.getMaleMonarchPortraits();
+		femaleMonarchMappings[cultureGroupName] = newCultureGroup.getFemaleMonarchPortraits();
 		graphicalCultureMap[cultureGroupName] = newCultureGroup.getGraphicalCulture();
 		graphicalCulture2dMap[cultureGroupName] = newCultureGroup.getGraphicalCulture2D();
 		loadLeaderPortraitMappings(cultureGroupName, newCultureGroup.getLeaderPortraits());
@@ -150,6 +162,30 @@ const std::vector<std::string> graphicsMapper::getNavyPortraits(const std::strin
 {
 	auto mapping = navyPortraitMappings.find(cultureGroup);
 	if (mapping == navyPortraitMappings.end())
+	{
+		return {};
+	}
+
+	return mapping->second;
+}
+
+
+const std::vector<std::string> graphicsMapper::getMaleMonarchPortraits(const std::string& cultureGroup) const
+{
+	auto mapping = maleMonarchMappings.find(cultureGroup);
+	if (mapping == maleMonarchMappings.end())
+	{
+		return {};
+	}
+
+	return mapping->second;
+}
+
+
+const std::vector<std::string> graphicsMapper::getFemaleMonarchPortraits(const std::string& cultureGroup) const
+{
+	auto mapping = femaleMonarchMappings.find(cultureGroup);
+	if (mapping == femaleMonarchMappings.end())
 	{
 		return {};
 	}

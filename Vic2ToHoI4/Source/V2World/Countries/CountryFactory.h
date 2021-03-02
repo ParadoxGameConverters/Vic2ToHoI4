@@ -10,6 +10,7 @@
 #include "V2World/Ai/AIFactory.h"
 #include "V2World/Culture/CultureGroups.h"
 #include "V2World/Diplomacy/RelationsFactory.h"
+#include "V2World/EU4ToVic2Data/CountryData.h"
 #include "V2World/Military/ArmyFactory.h"
 #include "V2World/Military/Leaders/LeaderFactory.h"
 #include "V2World/States/StateFactory.h"
@@ -17,6 +18,7 @@
 #include "V2World/Technology/Inventions.h"
 #include "V2World/Technology/TechnologyFactory.h"
 #include <memory>
+#include <optional>
 
 
 
@@ -34,7 +36,8 @@ class Country::Factory: commonItems::parser
 		 const CommonCountryData& commonCountryData,
 		 const std::vector<Party>& allParties,
 		 const StateLanguageCategories& stateLanguageCategories,
-		 float percentOfCommanders);
+		 float percentOfCommanders,
+		 const std::optional<CountryData>& countryData);
 
   private:
 	void setParties(const std::vector<Party>& allParties);
