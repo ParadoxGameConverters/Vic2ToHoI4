@@ -290,7 +290,7 @@ void HoI4::Country::convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
 	std::optional<std::string> firstName;
 	std::optional<std::string> surname = sourceCountry.getLastDynasty();
 
-	bool female = false;
+	bool female = false; // todo(#897): Add chance of female monarchs
 	if (female)
 	{
 		firstName = names.getFemaleName(primaryCulture);
@@ -449,7 +449,7 @@ void HoI4::Country::convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
 		}
 	}
 
-	ideas.insert(tag + "_monarch");
+	ideas.emplace(tag + "_monarch");
 }
 
 

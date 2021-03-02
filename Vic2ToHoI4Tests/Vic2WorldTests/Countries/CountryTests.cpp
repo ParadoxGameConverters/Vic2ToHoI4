@@ -2894,7 +2894,7 @@ TEST(Vic2World_Countries_CountryTests, DifferentTagsMakeUnequalCountries)
 }
 
 
-TEST(Vic2World_Countries_CountryTests, DynastyDefaultsToNulltop)
+TEST(Vic2World_Countries_CountryTests, DynastyDefaultsToNullopt)
 {
 	std::stringstream theStream;
 	theStream << "= {\n";
