@@ -393,7 +393,7 @@ void HoI4::Country::convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
 					  "ий народ объединяется и гордится своим имперским наследием.",
 				 "russian");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Reunida en torno al Rey de" + *name + " y las tierras " + *adjective + "s, la nación " + *adjective +
+				 "Reunida en torno al Rey de " + *name + " y las tierras " + *adjective + "s, la nación " + *adjective +
 					  " está unida y orgullosa de su legado imperial.",
 				 "spanish");
 		}
@@ -424,7 +424,7 @@ void HoI4::Country::convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
 					  "ий народ объединяется и гордится своим имперским наследием.",
 				 "russian");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Reunida en torno a la Reina de" + *name + " y las tierras " + *adjective + "s, la nación " + *adjective +
+				 "Reunida en torno a la Reina de " + *name + " y las tierras " + *adjective + "s, la nación " + *adjective +
 					  " está unida y orgullosa de su legado imperial.",
 				 "spanish");
 		}
