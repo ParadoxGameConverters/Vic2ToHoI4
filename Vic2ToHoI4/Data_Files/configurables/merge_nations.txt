@@ -1,35 +1,14 @@
-# Copyright (c) 2016 The Paradox Game Converters Project
-# 
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-# 
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-# 
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
-
-
 ### Merging Victoria 2 nations
 
 # You may add your own entries here if you wish, or find the ones you like and set "merge = yes".
-# Each entry contains ONE master and N slave tags, and a "merge" statement which can be "yes" (enabled) or "no" (disabled).
-# ALL TAGS ARE V2 TAGS!  Merging is done BEFORE conversion!  "master" should have a one-to-one mapping for best results.
+# Each entry contains ONE master and several slave tags, and a "merge" statement which can be "yes" (enabled) or "no" (disabled).
+# ALL TAGS ARE V2 TAGS!  Merging is done BEFORE conversion!
 
 soviet_union =
 {
-	merge = no	# Change to yes to enable merging
+	merge = no # Change to yes to enable merging
 
-	master = RUS	# Russia
+	master = RUS # Russia
 
 	slave = CRI	# Crimea
 	slave = RUT	# Ruthenia
@@ -45,9 +24,9 @@ soviet_union =
 
 germany =
 {
-	merge = no	# Change to yes to enable merging
+	merge = no # Change to yes to enable merging
 
-	master = GER	# Germany proper (if extant)
+	master = GER # Germany proper (if extant)
 
 	slave = NGF	# North German Federation
 	slave = SGF	# South German Federation
@@ -80,9 +59,9 @@ germany =
 
 italy = 
 {
-	merge = no	# Change to yes to enable merging
+	merge = no # Change to yes to enable merging
 
-	master = ITA	# Italy proper (if extant)
+	master = ITA # Italy proper (if extant)
 	
 	slave = LOM	# Lombardia
 	slave = LUC	# Lucca
@@ -98,9 +77,9 @@ italy =
 
 yugoslavia = 
 {
-	merge = no	# Change to yes to enable merging
+	merge = no # Change to yes to enable merging
 
-	master = YUG	# Yugoslavia proper (if extant)
+	master = YUG # Yugoslavia proper (if extant)
 
 	slave = BOS	# Bosnia-Herzegovina
 	slave = CRO	# Croatia
@@ -111,9 +90,9 @@ yugoslavia =
 
 greece =
 {
-	merge = no	# Change to yes to enable merging
+	merge = no # Change to yes to enable merging
 
-	master = GRE	# Greece proper (if extant)
+	master = GRE # Greece proper (if extant)
 
 	slave = CRE	# Crete
 	slave = ION	# Ionian Islands
@@ -122,9 +101,9 @@ greece =
 
 india = 
 {
-	merge = no	# Change to yes to enable merging
+	merge = no # Change to yes to enable merging
 
-	master = HND	# India proper (if extant)
+	master = HND # India proper (if extant)
 
 	slave = AWA	# Awadh
 	slave = BAS	# Bastar
@@ -156,9 +135,9 @@ india =
 
 USA =
 {
-	merge = no	# Change to yes to enable merging
+	merge = no # Change to yes to enable merging
 
-	master = USA	# USA proper
+	master = USA # USA proper
 
 	slave = CAL	# California Republic
 	slave = CHE	# Cherokee
@@ -173,9 +152,9 @@ USA =
 
 south_africa =
 {
-	merge = no	# Change to yes to enable merging
+	merge = no # Change to yes to enable merging
 
-	master = SAF	# South Africa
+	master = SAF # South Africa
 
 	slave = NAL	# Natalia
 	slave = ORA	# Oranje
