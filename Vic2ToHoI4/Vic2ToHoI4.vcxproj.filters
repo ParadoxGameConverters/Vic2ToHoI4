@@ -20223,8 +20223,6 @@
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\configurables\IdeologyMappings.txt" />
-    <CopyFileToFolders Include="Data_Files\flags\ANG.tga" />
-    <CopyFileToFolders Include="Data_Files\flags\ANG_monarchy.tga" />
     <CopyFileToFolders Include="Data_Files\flags\AOT.tga" />
     <CopyFileToFolders Include="Data_Files\flags\AOT_communist.tga" />
     <CopyFileToFolders Include="Data_Files\flags\AOT_fascist.tga" />
@@ -20322,6 +20320,12 @@
     <CopyFileToFolders Include="Data_Files\flags\XHO_fascist.tga" />
     <CopyFileToFolders Include="Data_Files\flags\XHO_monarchy.tga" />
     <CopyFileToFolders Include="Data_Files\flags\XHO_republic.tga" />
+    <CopyFileToFolders Include="Data_Files\flags\ANG_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ANG.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
