@@ -21,6 +21,7 @@ class MergeRule::Factory: commonItems::parser
   private:
 	std::unique_ptr<MergeRule> mergeRule;
 };
+
 } // namespace Mappers
 
 

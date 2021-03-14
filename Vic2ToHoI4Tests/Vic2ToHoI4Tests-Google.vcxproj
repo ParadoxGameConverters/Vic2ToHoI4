@@ -473,8 +473,8 @@
     <ClCompile Include="MapperTests\Government\GovernmentMappingTests.cpp" />
     <ClCompile Include="MapperTests\Ideology\IdeologyMapperTests.cpp" />
     <ClCompile Include="MapperTests\Ideology\IdeologyMappingTests.cpp" />
-    <ClCompile Include="MapperTests\MergeRule\MergeRulesTests.cpp" />
-    <ClCompile Include="MapperTests\MergeRule\MergeRuleTests.cpp" />
+    <ClCompile Include="MapperTests\MergeRules\MergeRulesTests.cpp" />
+    <ClCompile Include="MapperTests\MergeRules\MergeRuleTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\ProvinceMapperTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\ProvinceMappingTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\VersionedMappingsTests.cpp" />
@@ -1472,6 +1472,7 @@
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Mappers\MergeRules\merge_nations.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

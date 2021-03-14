@@ -1463,14 +1463,14 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRuleFactory.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\MergeRules</Filter>
     </ClCompile>
-    <ClCompile Include="MapperTests\MergeRule\MergeRuleTests.cpp">
-      <Filter>MapperTests\MergeRule</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRulesFactory.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\MergeRules</Filter>
     </ClCompile>
-    <ClCompile Include="MapperTests\MergeRule\MergeRulesTests.cpp">
-      <Filter>MapperTests\MergeRule</Filter>
+    <ClCompile Include="MapperTests\MergeRules\MergeRulesTests.cpp">
+      <Filter>MapperTests\MergeRules</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\MergeRules\MergeRuleTests.cpp">
+      <Filter>MapperTests\MergeRules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1942,11 +1942,11 @@
     <Filter Include="Vic2ToHoI4 files\Mappers\MergeRules">
       <UniqueIdentifier>{5e6fe4fc-a4f1-4339-a2ef-bd91e29eefae}</UniqueIdentifier>
     </Filter>
-    <Filter Include="MapperTests\MergeRule">
-      <UniqueIdentifier>{f420c814-796c-4f3e-9f8b-b23e2422d9ad}</UniqueIdentifier>
-    </Filter>
     <Filter Include="TestFiles\Mappers\MergeRules">
       <UniqueIdentifier>{877cabb1-d8cf-4b8f-96db-17cddf7c97e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests\MergeRules">
+      <UniqueIdentifier>{f420c814-796c-4f3e-9f8b-b23e2422d9ad}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

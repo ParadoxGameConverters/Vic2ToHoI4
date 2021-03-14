@@ -6,7 +6,7 @@
 
 Mappers::MergeRules::Factory::Factory()
 {
-	registerRegex(commonItems::catchallRegex, [this](const std::string& ruleName, std::istream& theStream) {
+	registerRegex(commonItems::catchallRegex, [this](const std::string& unused, std::istream& theStream) {
 		const auto theRule = *mergeRuleFactory.importMergeRule(theStream);
 		if (theRule.isEnabled())
 		{

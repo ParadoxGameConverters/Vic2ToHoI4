@@ -16,7 +16,7 @@ class MergeRules
   public:
 	class Factory;
 
-	std::map<std::string, std::vector<std::string>> getRules() const { return rules; }
+	[[nodiscard]] std::map<std::string, std::vector<std::string>> getRules() const { return rules; }
 
   private:
 	std::map<std::string, std::vector<std::string>> rules;

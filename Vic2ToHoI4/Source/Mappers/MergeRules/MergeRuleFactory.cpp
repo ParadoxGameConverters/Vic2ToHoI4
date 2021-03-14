@@ -6,16 +6,13 @@
 Mappers::MergeRule::Factory::Factory()
 {
 	registerKeyword("merge", [this](std::istream& theStream) {
-		commonItems::singleString enabledString(theStream);
-		mergeRule->enabled = (enabledString.getString() == "yes");
+		mergeRule->enabled = commonItems::singleString(theStream).getString() == "yes";
 	});
 	registerKeyword("master", [this](std::istream& theStream) {
-		commonItems::singleString masterString(theStream);
-		mergeRule->master = masterString.getString();
+		mergeRule->master = commonItems::singleString(theStream).getString();
 	});
 	registerKeyword("slave", [this](std::istream& theStream) {
-		commonItems::singleString slaveString(theStream);
-		mergeRule->slaves.push_back(slaveString.getString());
+		mergeRule->slaves.push_back(commonItems::singleString(theStream).getString());
 	});
 }
 
