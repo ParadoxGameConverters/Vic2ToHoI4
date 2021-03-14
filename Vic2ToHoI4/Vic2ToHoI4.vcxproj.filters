@@ -1219,6 +1219,9 @@
     <ClCompile Include="Source\Mappers\MergeRules\MergeRules.cpp">
       <Filter>Mappers\MergeRules</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Mappers\MergeRules\MergeRule.cpp">
+      <Filter>Mappers\MergeRules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2410,6 +2413,9 @@
       <Filter>Vic2World\EU4ToVic2Data</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\MergeRules\MergeRules.h">
+      <Filter>Mappers\MergeRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\MergeRules\MergeRule.h">
       <Filter>Mappers\MergeRules</Filter>
     </ClInclude>
   </ItemGroup>
