@@ -18,8 +18,8 @@ class MergeRule
 	class Factory;
 
 	[[nodiscard]] bool isEnabled() const { return enabled; }
-	[[nodiscard]] std::string getMaster() const { return master; }
-	[[nodiscard]] std::vector<std::string> getSlaves() const { return slaves; }
+	[[nodiscard]] const auto& getMaster() const { return master; }
+	[[nodiscard]] const auto& getSlaves() const { return slaves; }
 
   private:
 	bool enabled = false;
