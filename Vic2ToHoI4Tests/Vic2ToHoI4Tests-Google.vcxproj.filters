@@ -40,9 +40,6 @@
     <ClCompile Include="..\common_items\targa.cpp">
       <Filter>Vic2ToHoI4 files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
-    </ClCompile>
     <ClCompile Include="..\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="..\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp">
@@ -1463,6 +1460,18 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountriesDataFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\EU4ToVic2Data</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRuleFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\MergeRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRulesFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\MergeRules</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\MergeRules\MergeRulesTests.cpp">
+      <Filter>MapperTests\MergeRules</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\MergeRules\MergeRuleTests.cpp">
+      <Filter>MapperTests\MergeRules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1930,9 +1939,21 @@
     <Filter Include="TestFiles\Vic2\EU4ToVic2Data">
       <UniqueIdentifier>{33a1fcff-c49d-4e1c-80b5-0bc49357bf9e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\MergeRules">
+      <UniqueIdentifier>{5e6fe4fc-a4f1-4339-a2ef-bd91e29eefae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Mappers\MergeRules">
+      <UniqueIdentifier>{877cabb1-d8cf-4b8f-96db-17cddf7c97e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests\MergeRules">
+      <UniqueIdentifier>{f420c814-796c-4f3e-9f8b-b23e2422d9ad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="TestFiles\World\merge_nations.txt">
+      <Filter>TestFiles\World</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h">
@@ -2236,9 +2257,6 @@
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.h">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.h">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decision.h">
@@ -2847,6 +2865,18 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountriesDataFactory.h">
       <Filter>Vic2ToHoI4 files\Vic2\EU4ToVic2Data</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRules.h">
+      <Filter>Vic2ToHoI4 files\Mappers\MergeRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRule.h">
+      <Filter>Vic2ToHoI4 files\Mappers\MergeRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRuleFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\MergeRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRulesFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\MergeRules</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3038,9 +3068,6 @@
     <CopyFileToFolders Include="TestFiles\World\MergeWorld.v2">
       <Filter>TestFiles\World</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\World\merge_nations.txt">
-      <Filter>TestFiles\World</Filter>
-    </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\World\merge_countries.txt">
       <Filter>TestFiles\World</Filter>
     </CopyFileToFolders>
@@ -3135,18 +3162,20 @@
     <CopyFileToFolders Include="TestFiles\Mappers\Technology\tech_mappings.txt">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mappers\Country\country_mappings.txt" />
     <CopyFileToFolders Include="TestFiles\Mappers\Ideology\IdeologyMappings.txt">
       <Filter>TestFiles\Mappers\Ideology</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mappers\Government\GovernmentMappings.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Vic2WorldTests\Vic2World\EU4ToVic2Data\botanical_expedition.txt">
-      <Filter>TestFiles\Vic2\EU4ToVic2Data</Filter>
-    </Text>
-    <Text Include="TestFiles\Vic2World\EU4ToVic2Data\botanical_expedition.txt">
-      <Filter>TestFiles\Vic2\EU4ToVic2Data</Filter>
-    </Text>
+    <CopyFileToFolders Include="TestFiles\Mappers\MergeRules\merge_nations.txt">
+      <Filter>TestFiles\Mappers\MergeRules</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Vic2World\EU4ToVic2Data\botanical_expedition.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Country\country_mappings.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Government\GovernmentMappings.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
 </Project>

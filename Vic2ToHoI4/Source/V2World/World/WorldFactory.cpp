@@ -1,7 +1,8 @@
 #include "WorldFactory.h"
 #include "CommonRegexes.h"
 #include "Log.h"
-#include "Mappers/MergeRules.h"
+#include "Mappers/MergeRules/MergeRules.h"
+#include "Mappers/MergeRules/MergeRulesFactory.h"
 #include "ParserHelpers.h"
 #include "V2World/Countries/CommonCountriesDataFactory.h"
 #include "V2World/Culture/CultureGroupsFactory.h"
@@ -302,8 +303,8 @@ void Vic2::World::Factory::addWarsToCountries(const std::vector<War>& wars)
 void Vic2::World::Factory::overallMergeNations(bool debug)
 {
 	Log(LogLevel::Info) << "\tMerging nations";
-	const MergeRules theMergeRules;
-	for (const auto& [master, slaves]: theMergeRules.getRules())
+	const auto theMergeRules = Mappers::MergeRules::Factory().importMergeRules();
+	for (const auto& [master, slaves]: theMergeRules->getRules())
 	{
 		mergeNations(master, slaves, debug);
 	}

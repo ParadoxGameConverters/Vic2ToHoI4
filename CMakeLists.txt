@@ -136,6 +136,8 @@ set(MAPPERS_GOVERNMENT_SOURCES ${MAPPERS_GOVERNMENT_SOURCES} "${PROJECT_SOURCE_D
 set(MAPPERS_IDEOLOGY_SOURCES ${MAPPERS_IDEOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Ideology/IdeologyMappingFactory.cpp")
 set(MAPPERS_IDEOLOGY_SOURCES ${MAPPERS_IDEOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Ideology/IdeologyMapper.cpp")
 set(MAPPERS_IDEOLOGY_SOURCES ${MAPPERS_IDEOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Ideology/IdeologyMapperFactory.cpp")
+set(MAPPERS_MERGE_RULES_SOURCES ${MAPPERS_MERGE_RULES_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/MergeRules/MergeRuleFactory.cpp")
+set(MAPPERS_MERGE_RULES_SOURCES ${MAPPERS_MERGE_RULES_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/MergeRules/MergeRulesFactory.cpp")
 set(MAPPERS_PROVINCES_SOURCES ${MAPPERS_PROVINCES_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Provinces/ProvinceMapperFactory.cpp")
 set(MAPPERS_PROVINCES_SOURCES ${MAPPERS_PROVINCES_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Provinces/ProvinceMappingFactory.cpp")
 set(MAPPERS_PROVINCES_SOURCES ${MAPPERS_PROVINCES_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Provinces/VersionedMappingsFactory.cpp")
@@ -286,6 +288,7 @@ add_executable(
 	${MAPPERS_FLAGS_TO_IDEAS_SOURCES}
 	${MAPPERS_GOVERNMENT_SOURCES}
 	${MAPPERS_IDEOLOGY_SOURCES}
+	${MAPPERS_MERGE_RULES_SOURCES}
 	${MAPPERS_TECHNOLOGY_SOURCES}
 	${MAPPERS_PROVINCES_SOURCES}
 	${OUTHOI4_SOURCES}
@@ -436,6 +439,8 @@ set(MAPPERS_GOVERNMENT_TESTS_SOURCES ${MAPPERS_GOVERNMENT_TESTS_SOURCES} "${TEST
 set(MAPPERS_GOVERNMENT_TESTS_SOURCES ${MAPPERS_GOVERNMENT_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Government/GovernmentMappingTests.cpp")
 set(MAPPERS_IDEOLOGY_TESTS_SOURCES ${MAPPERS_IDEOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Ideology/IdeologyMappingTests.cpp")
 set(MAPPERS_IDEOLOGY_TESTS_SOURCES ${MAPPERS_IDEOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Ideology/IdeologyMapperTests.cpp")
+set(MAPPERS_MERGE_RULES_TESTS_SOURCES ${MAPPERS_MERGE_RULES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/MergeRules/MergeRulesTests.cpp")
+set(MAPPERS_MERGE_RULES_TESTS_SOURCES ${MAPPERS_MERGE_RULES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/MergeRules/MergeRuleTests.cpp")
 set(MAPPERS_PROVINCES_TESTS_SOURCES ${MAPPERS_PROVINCES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Provinces/ProvinceMapperTests.cpp")
 set(MAPPERS_PROVINCES_TESTS_SOURCES ${MAPPERS_PROVINCES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Provinces/ProvinceMappingTests.cpp")
 set(MAPPERS_PROVINCES_TESTS_SOURCES ${MAPPERS_PROVINCES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Provinces/VersionedMappingsTests.cpp")
@@ -536,6 +541,7 @@ add_executable(
 	${MAPPERS_FLAGS_TO_IDEAS_SOURCES}
 	${MAPPERS_GOVERNMENT_SOURCES}
 	${MAPPERS_IDEOLOGY_SOURCES}
+	${MAPPERS_MERGE_RULES_SOURCES}
 	${MAPPERS_TECHNOLOGY_SOURCES}
 	${MAPPERS_PROVINCES_SOURCES}
 	${OUTHOI4_SOURCES}
@@ -614,6 +620,7 @@ add_executable(
 	${MAPPERS_FLAGS_TO_IDEAS_TESTS_SOURCES}
 	${MAPPERS_GOVERNMENT_TESTS_SOURCES}
 	${MAPPERS_IDEOLOGY_TESTS_SOURCES}
+	${MAPPERS_MERGE_RULES_TESTS_SOURCES}
 	${MAPPERS_PROVINCES_TESTS_SOURCES}
 	${MAPPERS_TECHNOLOGY_TESTS_SOURCES}
 	${VIC2WORLD_AI_TESTS_SOURCES}
@@ -681,6 +688,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Country/country_mappings.txt" 
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/FlagsToIdeas/FlagsToIdeasMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/FlagsToIdeasMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Government/GovernmentMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/GovernmentMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Ideology/IdeologyMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/IdeologyMappings.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/MergeRules/merge_nations.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/merge_nations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/bad_line_definition.csv" "${TEST_OUTPUT_DIRECTORY}/bad_line_definition/map/definition.csv" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/empty_definition.csv" "${TEST_OUTPUT_DIRECTORY}/empty_definition/map/definition.csv" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/good_definition.csv" "${TEST_OUTPUT_DIRECTORY}/good_definition/map/definition.csv" COPYONLY)
@@ -720,7 +728,6 @@ configure_file("Vic2ToHoI4Tests/TestFiles/World/DED.txt" "${TEST_OUTPUT_DIRECTOR
 configure_file("Vic2ToHoI4Tests/TestFiles/World/FOO.txt" "${TEST_OUTPUT_DIRECTORY}/MergeWorld/common/countries/FOO.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/MergeWorld.v2" "${TEST_OUTPUT_DIRECTORY}/MergeWorld/MergeWorld.v2" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/merge_countries.txt" "${TEST_OUTPUT_DIRECTORY}/MergeWorld/common/countries.txt" COPYONLY)
-configure_file("Vic2ToHoI4Tests/TestFiles/World/merge_nations.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/merge_nations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/MoveArmiesWorld.v2" "${TEST_OUTPUT_DIRECTORY}/MoveArmiesWorld/MoveArmiesWorld.v2" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/NON.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/NON.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/World/NOT.txt" "${TEST_OUTPUT_DIRECTORY}/V2World/common/countries/NOT.txt" COPYONLY)

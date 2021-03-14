@@ -1,0 +1,36 @@
+one = {
+	merge = yes
+	master = ONE
+	slave = ONA
+	slave = ONB
+}
+
+two = {
+	merge = yes
+	master = TWO
+	slave = TWA
+	slave = TWB
+}
+
+three = {
+	merge = no
+	master = THR
+	slave = THA
+	slave = THB
+}
+
+# For Vic2World tests, as we can only have one copy of this file
+test_merge =
+{
+	merge = yes
+	master = FOO
+	slave = BAR
+	slave = BAZ
+}
+
+non_merge =
+{
+	merge = yes
+	master = QUX
+	slave = BAR
+}
