@@ -40,9 +40,6 @@
     <ClCompile Include="..\common_items\targa.cpp">
       <Filter>Vic2ToHoI4 files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
-    </ClCompile>
     <ClCompile Include="..\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="..\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\MilitaryMappings\AllMilitaryMappings.cpp">
@@ -1463,6 +1460,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountriesDataFactory.cpp">
       <Filter>Vic2ToHoI4 files\Vic2\EU4ToVic2Data</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRules.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1930,6 +1930,9 @@
     <Filter Include="TestFiles\Vic2\EU4ToVic2Data">
       <UniqueIdentifier>{33a1fcff-c49d-4e1c-80b5-0bc49357bf9e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\MergeRules">
+      <UniqueIdentifier>{5e6fe4fc-a4f1-4339-a2ef-bd91e29eefae}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2236,9 +2239,6 @@
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.h">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.h">
       <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decision.h">
@@ -2847,6 +2847,9 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\EU4ToVic2Data\CountriesDataFactory.h">
       <Filter>Vic2ToHoI4 files\Vic2\EU4ToVic2Data</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRules.h">
+      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3140,13 +3143,6 @@
       <Filter>TestFiles\Mappers\Ideology</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\Government\GovernmentMappings.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Vic2WorldTests\Vic2World\EU4ToVic2Data\botanical_expedition.txt">
-      <Filter>TestFiles\Vic2\EU4ToVic2Data</Filter>
-    </Text>
-    <Text Include="TestFiles\Vic2World\EU4ToVic2Data\botanical_expedition.txt">
-      <Filter>TestFiles\Vic2\EU4ToVic2Data</Filter>
-    </Text>
+    <CopyFileToFolders Include="TestFiles\Vic2World\EU4ToVic2Data\botanical_expedition.txt" />
   </ItemGroup>
 </Project>

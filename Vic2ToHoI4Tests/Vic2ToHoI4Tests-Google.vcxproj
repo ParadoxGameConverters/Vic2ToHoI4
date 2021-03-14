@@ -120,6 +120,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMappingFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\VersionedMappingsFactory.cpp" />
@@ -302,7 +303,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Technologies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\HoI4WarCreator.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Sounds\OutSounds.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4States.cpp" />
@@ -851,7 +851,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapperFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMappingFactory.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRules.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapperBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapperFactory.h" />

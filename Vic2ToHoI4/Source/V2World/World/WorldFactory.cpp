@@ -1,7 +1,7 @@
 #include "WorldFactory.h"
 #include "CommonRegexes.h"
 #include "Log.h"
-#include "Mappers/MergeRules.h"
+#include "Mappers/MergeRules/MergeRules.h"
 #include "ParserHelpers.h"
 #include "V2World/Countries/CommonCountriesDataFactory.h"
 #include "V2World/Culture/CultureGroupsFactory.h"

@@ -207,6 +207,7 @@
     <ClCompile Include="Source\Mappers\Ideology\IdeologyMapper.cpp" />
     <ClCompile Include="Source\Mappers\Ideology\IdeologyMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Ideology\IdeologyMappingFactory.cpp" />
+    <ClCompile Include="Source\Mappers\MergeRules\MergeRules.cpp" />
     <ClCompile Include="Source\Mappers\Technology\ResearchBonusMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Technology\ResearchBonusMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\Technology\TechMapperFactory.cpp" />
@@ -393,7 +394,6 @@
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp" />
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\GraphicsMapper.cpp" />
-    <ClCompile Include="Source\Mappers\MergeRules.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\VersionedMappingsFactory.cpp" />
@@ -558,6 +558,7 @@
     <ClInclude Include="Source\Mappers\Ideology\IdeologyMapperFactory.h" />
     <ClInclude Include="Source\Mappers\Ideology\IdeologyMapping.h" />
     <ClInclude Include="Source\Mappers\Ideology\IdeologyMappingFactory.h" />
+    <ClInclude Include="Source\Mappers\MergeRules\MergeRules.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapperBuilder.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapperFactory.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMappingFactory.h" />
@@ -768,7 +769,6 @@
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.h" />
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.h" />
     <ClInclude Include="Source\Mappers\GraphicsMapper.h" />
-    <ClInclude Include="Source\Mappers\MergeRules.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapper.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapping.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMappingTypes.h" />
