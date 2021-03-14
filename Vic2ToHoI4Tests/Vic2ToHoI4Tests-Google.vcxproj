@@ -473,6 +473,7 @@
     <ClCompile Include="MapperTests\Government\GovernmentMappingTests.cpp" />
     <ClCompile Include="MapperTests\Ideology\IdeologyMapperTests.cpp" />
     <ClCompile Include="MapperTests\Ideology\IdeologyMappingTests.cpp" />
+    <ClCompile Include="MapperTests\MergeRule\MergeRulesTests.cpp" />
     <ClCompile Include="MapperTests\MergeRule\MergeRuleTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\ProvinceMapperTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\ProvinceMappingTests.cpp" />
@@ -1370,10 +1371,10 @@
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/MergeWorld</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/MergeWorld</DestinationFolders>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\World\merge_nations.txt">
+    <None Include="TestFiles\World\merge_nations.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
-    </CopyFileToFolders>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\World\merge_countries.txt">
@@ -1466,6 +1467,11 @@
     <CopyFileToFolders Include="TestFiles\Vic2World\EU4ToVic2Data\botanical_expedition.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Vic2/Mod/test_directory/common</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Vic2/Mod/test_directory/common</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\Mappers\MergeRules\merge_nations.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemDefinitionGroup />

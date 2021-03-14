@@ -1,3 +1,4 @@
+#overriden by the merge rules test file, but here for reference
 test_merge =
 {
 	merge = yes
