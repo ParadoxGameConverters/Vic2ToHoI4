@@ -473,6 +473,7 @@
     <ClCompile Include="MapperTests\Government\GovernmentMappingTests.cpp" />
     <ClCompile Include="MapperTests\Ideology\IdeologyMapperTests.cpp" />
     <ClCompile Include="MapperTests\Ideology\IdeologyMappingTests.cpp" />
+    <ClCompile Include="MapperTests\MergeRule\MergeRuleTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\ProvinceMapperTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\ProvinceMappingTests.cpp" />
     <ClCompile Include="MapperTests\Provinces\VersionedMappingsTests.cpp" />
