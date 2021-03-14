@@ -1216,7 +1216,7 @@
     <ClCompile Include="Source\V2World\EU4ToVic2Data\CountriesDataFactory.cpp">
       <Filter>Vic2World\EU4ToVic2Data</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mappers\MergeRules\MergeRules.cpp">
+    <ClCompile Include="Source\Mappers\MergeRules\MergeRulesFactory.cpp">
       <Filter>Mappers\MergeRules</Filter>
     </ClCompile>
     <ClCompile Include="Source\Mappers\MergeRules\MergeRuleFactory.cpp">
@@ -2419,6 +2419,9 @@
       <Filter>Mappers\MergeRules</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\MergeRules\MergeRuleFactory.h">
+      <Filter>Mappers\MergeRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\MergeRules\MergeRulesFactory.h">
       <Filter>Mappers\MergeRules</Filter>
     </ClInclude>
   </ItemGroup>

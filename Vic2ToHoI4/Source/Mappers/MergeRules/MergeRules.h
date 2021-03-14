@@ -3,25 +3,26 @@
 
 
 
-#include "Parser.h"
 #include <map>
 #include <string>
 #include <vector>
-#include "MergeRuleFactory.h"
 
 
-
-class MergeRules: commonItems::parser
+namespace Mappers
 {
-	public:
-		MergeRules() noexcept;
 
-		std::map<std::string, std::vector<std::string>> getRules() const { return rules; }
+class MergeRules
+{
+  public:
+	class Factory;
 
-	private:
-		Mappers::MergeRule::Factory mergeRuleFactory;
-		std::map<std::string, std::vector<std::string>> rules;
+	std::map<std::string, std::vector<std::string>> getRules() const { return rules; }
+
+  private:
+	std::map<std::string, std::vector<std::string>> rules;
 };
+
+} // namespace Mappers
 
 
 
