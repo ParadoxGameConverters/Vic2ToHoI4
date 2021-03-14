@@ -347,10 +347,10 @@ void HoI4::Country::convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
 	{
 		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "King " + *firstName + " " + *surname, "english");
 		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Rei " + *firstName + " " + *surname, "braz_por");
-		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Le roi " + *firstName + " " + *surname, "french");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Roi " + *firstName + " " + *surname, "french");
 		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "König " + *firstName + " " + *surname, "german");
 		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Król " + *firstName + " " + *surname, "polish");
-		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "царь " + *firstName + " " + *surname, "russian");
+		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Король " + *firstName + " " + *surname, "russian");
 		hoi4Localisations.addIdeaLocalisation(tag + "_monarch", "Rey " + *firstName + " " + *surname, "spanish");
 	}
 	else
@@ -369,7 +369,7 @@ void HoI4::Country::convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
 		if (!female)
 		{
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Rallying around the Queen of " + *name + " and the " + *adjective + " Dominions, the " + *adjective +
+				 "Rallying around the King of " + *name + " and the " + *adjective + " Dominions, the " + *adjective +
 					  " people stand united and proud of their imperial legacy.",
 				 "english");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
@@ -377,24 +377,24 @@ void HoI4::Country::convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
 					  " se mantém unido e orgulhoso de seu legado imperial.",
 				 "braz_por");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Rassemblant autour du roi de " + *name + " et des dominions " + *adjective + " le peuple " + *adjective +
-					  " est uni et fier de son héritage impérial.",
+				 "Rassemblant autour du Roi de " + *name + " et des colonies " + *adjective + "s, la nation " + *adjective +
+					  " est unie et fière de son héritage impérial.",
 				 "french");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Das " + *adjective + " Volk versammelt sich um den König von " + *name + " und die " + *adjective +
-					  " Dominions und ist vereint und stolz auf sein kaiserliches Erbe.",
+				 "Das " + *adjective + "e Volk versammelt sich um den König von " + *name + " und die " + *adjective +
+					  "e Kolonien und ist vereint und stolz auf sein kaiserliches Erbe.",
 				 "german");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Gromadząc się wokół Króla " + *name + " i " + *adjective + " Dominium, " + *adjective +
+				 "Gromadząc się wokół Króla " + *name + " i " + *adjective + "ich Dominiów, " + *adjective +
 					  " są zjednoczeni i dumni ze swojego imperialnego dziedzictwa.",
 				 "polish");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Сплотившись вокруг Короля " + *name + " и " + *adjective + " Доминионов, " + *adjective +
-					  " народ объединяется и гордится своим имперским наследием.",
+				 "Сплотившись вокруг Короля " + *name + " и " + *adjective + "их Доминионов, " + *adjective +
+					  "ий народ объединяется и гордится своим имперским наследием.",
 				 "russian");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Al reunirse en torno al Rey de" + *name + " y los Dominios " + *adjective + ", el pueblo " + *adjective +
-					  " está unido y orgulloso de su legado imperial.",
+				 "Reunida en torno al Rey de " + *name + " y las tierras " + *adjective + "s, la nación " + *adjective +
+					  " está unida y orgullosa de su legado imperial.",
 				 "spanish");
 		}
 		else
@@ -408,24 +408,24 @@ void HoI4::Country::convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
 					  " se mantém unido e orgulhoso de seu legado imperial.",
 				 "braz_por");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Rassemblant autour de la reine de " + *name + " et des dominions " + *adjective + " le peuple " +
-					  *adjective + " est uni et fier de son héritage impérial.",
+				 "Rassemblant autour de la Reine de " + *name + " et des colonies " + *adjective + "s, la nation " + *adjective +
+					  " est unie et fière de son héritage impérial.",
 				 "french");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Das " + *adjective + " Volk versammelt sich um die Königin von " + *name + " und die " + *adjective +
-					  " Dominions und ist vereint und stolz auf sein kaiserliches Erbe.",
+				 "Das " + *adjective + "e Volk versammelt sich um die Königin von " + *name + " und die " + *adjective +
+					  "e Kolonien und ist vereint und stolz auf sein kaiserliches Erbe.",
 				 "german");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Zbierając się wokół Królowej" + *name + " i " + *adjective + " Dominium, " + *adjective +
+				 "Gromadząc się wokół Królowej " + *name + " i " + *adjective + "ich Dominiów, " + *adjective +
 					  " są zjednoczeni i dumni ze swojego imperialnego dziedzictwa.",
 				 "polish");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Сплотившись вокруг Королевы " + *name + " и " + *adjective + " Доминионов, " + *adjective +
-					  " народ объединяется и гордится своим имперским наследием.",
+				 "Сплотившись вокруг Королевы " + *name + " и " + *adjective + "их Доминионов, " + *adjective +
+					  "ий народ объединяется и гордится своим имперским наследием.",
 				 "russian");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Reunidos en torno a la Reina de" + *name + " y los Dominios " + *adjective + ", el pueblo " + *adjective +
-					  " está unido y orgulloso de su legado imperial.",
+				 "Reunida en torno a la Reina de " + *name + " y las tierras " + *adjective + "s, la nación " + *adjective +
+					  " está unida y orgullosa de su legado imperial.",
 				 "spanish");
 		}
 	}
