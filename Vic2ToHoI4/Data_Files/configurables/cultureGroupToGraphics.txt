@@ -720,9 +720,9 @@ indo_iranian = { #HFM
 }
 southeast_asian = {
 	leader_portraits = {
-		communism = { "GFX_SIA_Chin_Peng" } 
-		democratic = { "GFX_SIA_Pridi_Banomyon" } 
-		fascism = { "gfx/leaders/OC/portrait_VIN_Pan_Boi_Chau.dds" } 
+		communism = { "GFX_SIA_Chin_Peng" "gfx/leaders/OC/tou.png" } 
+		democratic = { "GFX_SIA_Pridi_Banomyon" "gfx/leaders/OC/Cheng_Heng.png" } 
+		fascism = { "gfx/leaders/OC/portrait_VIN_Pan_Boi_Chau.dds" "gfx/leaders/OC/Son.png" } 
 		absolutist = { "gfx/leaders/SIA/Portrait_Siam_Phraya_Phahon.dds" }
 		neutrality = { "GFX_SIA_Plaek_Phibunsongk" } 
 		radical = { "gfx/leaders/Asia/portrait_asia_generic_4.dds" } # Manopakorn Nititada
@@ -795,12 +795,12 @@ far_east_asian = {
 }
 oceanic = {
 	leader_portraits = {
-		communism = { "gfx/leaders/South America/Portrait_South_America_Generic_1.dds" } # Revise
-		democratic = { "gfx/leaders/South America/Portrait_South_America_Generic_2.dds" } # Revise
-		fascism = { "gfx/leaders/South America/Portrait_South_America_Generic_3.dds" } # Revise
-		absolutist = { "gfx/leaders/OC/portrait_HAW_David_Kalakaua_Kawananakoa.dds" } 
-		neutrality = { "gfx/leaders/South America/Portrait_South_America_Generic_2.dds" } # Revise
-		radical = { "gfx/leaders/South America/Portrait_South_America_Generic_3.dds" } # Revise
+		communism = { "gfx/leaders/OC/portrait_HAW_David_Kalakaua_Kawananakoa.dds" "gfx/leaders/OC/David.png" } # Revise
+		democratic = { "gfx/leaders/OC/portrait_HAW_David_Kalakaua_Kawananakoa.dds" "gfx/leaders/OC/David.png" } # Revise
+		fascism = { "gfx/leaders/OC/portrait_HAW_David_Kalakaua_Kawananakoa.dds" "gfx/leaders/OC/David.png" } # Revise
+		absolutist = { "gfx/leaders/OC/portrait_HAW_David_Kalakaua_Kawananakoa.dds" "gfx/leaders/OC/David.png" } 
+		neutrality = { "gfx/leaders/OC/portrait_HAW_David_Kalakaua_Kawananakoa.dds" "gfx/leaders/OC/David.png" } # Revise
+		radical = { "gfx/leaders/OC/portrait_HAW_David_Kalakaua_Kawananakoa.dds" "gfx/leaders/OC/David.png" } # Revise
 	}
 	ideology_minister_portraits = 
 	{
