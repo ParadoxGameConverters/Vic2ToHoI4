@@ -11,10 +11,10 @@
 
 namespace Mappers
 {
-class MergeRule: commonItems::parser
+class MergeRule
 {
   public:
-	explicit MergeRule(std::istream& theStream);
+	class Factory;
 
 	bool isEnabled() const { return enabled; }
 	std::string getMaster() const { return master; }

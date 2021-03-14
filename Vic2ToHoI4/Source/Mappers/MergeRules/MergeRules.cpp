@@ -7,7 +7,7 @@
 MergeRules::MergeRules() noexcept
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& ruleName, std::istream& theStream) {
-		Mappers::MergeRule theRule(theStream);
+		const auto theRule = *mergeRuleFactory.importMergeRule(theStream);
 		if (theRule.isEnabled())
 		{
 			rules.insert(std::make_pair(theRule.getMaster(), theRule.getSlaves()));

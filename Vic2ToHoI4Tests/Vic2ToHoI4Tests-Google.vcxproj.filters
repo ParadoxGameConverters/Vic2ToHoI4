@@ -1461,7 +1461,10 @@
       <Filter>Vic2ToHoI4 files\Vic2\EU4ToVic2Data</Filter>
     </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRules.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+      <Filter>Vic2ToHoI4 files\Mappers\MergeRules</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRuleFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\MergeRules</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2848,7 +2851,13 @@
       <Filter>Vic2ToHoI4 files\Vic2\EU4ToVic2Data</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRules.h">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
+      <Filter>Vic2ToHoI4 files\Mappers\MergeRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRule.h">
+      <Filter>Vic2ToHoI4 files\Mappers\MergeRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRuleFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\MergeRules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -120,6 +120,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMappingFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRuleFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRules.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMappingFactory.cpp" />
@@ -851,6 +852,8 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapperFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMappingFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRule.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRuleFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRules.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Provinces\ProvinceMapperBuilder.h" />

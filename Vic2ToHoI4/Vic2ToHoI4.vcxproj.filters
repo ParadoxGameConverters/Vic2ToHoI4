@@ -1219,7 +1219,7 @@
     <ClCompile Include="Source\Mappers\MergeRules\MergeRules.cpp">
       <Filter>Mappers\MergeRules</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Mappers\MergeRules\MergeRule.cpp">
+    <ClCompile Include="Source\Mappers\MergeRules\MergeRuleFactory.cpp">
       <Filter>Mappers\MergeRules</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2416,6 +2416,9 @@
       <Filter>Mappers\MergeRules</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\MergeRules\MergeRule.h">
+      <Filter>Mappers\MergeRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\MergeRules\MergeRuleFactory.h">
       <Filter>Mappers\MergeRules</Filter>
     </ClInclude>
   </ItemGroup>
