@@ -3162,14 +3162,20 @@
     <CopyFileToFolders Include="TestFiles\Mappers\Technology\tech_mappings.txt">
       <Filter>TestFiles</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mappers\Country\country_mappings.txt" />
     <CopyFileToFolders Include="TestFiles\Mappers\Ideology\IdeologyMappings.txt">
       <Filter>TestFiles\Mappers\Ideology</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="TestFiles\Mappers\Government\GovernmentMappings.txt" />
-    <CopyFileToFolders Include="TestFiles\Vic2World\EU4ToVic2Data\botanical_expedition.txt" />
     <CopyFileToFolders Include="TestFiles\Mappers\MergeRules\merge_nations.txt">
       <Filter>TestFiles\Mappers\MergeRules</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Vic2World\EU4ToVic2Data\botanical_expedition.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Country\country_mappings.txt">
+      <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Government\GovernmentMappings.txt">
+      <Filter>TestFiles</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

@@ -20222,8 +20222,7 @@
     <CopyFileToFolders Include="Data_Files\configurables\GovernmentMappings.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
-    <CopyFileToFolders Include="Data_Files\configurables\IdeologyMappings.txt" />
-	<CopyFileToFolders Include="Data_Files\flags\ANG_monarchy.tga">
+    <CopyFileToFolders Include="Data_Files\flags\ANG_monarchy.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\ANG.tga">
@@ -20519,6 +20518,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\XHO_republic.tga">
       <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\configurables\IdeologyMappings.txt">
+      <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
