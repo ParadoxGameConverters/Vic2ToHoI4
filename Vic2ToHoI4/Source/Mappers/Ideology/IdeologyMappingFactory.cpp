@@ -1,4 +1,5 @@
 #include "IdeologyMappingFactory.h"
+#include "ParserHelpers.h"
 
 
 
