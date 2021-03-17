@@ -1,17 +1,21 @@
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
-# THE SOFTWARE.
-
 # Those with "# Revise" after it refers to generic portraits that should get a replacement
 # Currently 280-ish needed
 # I support the idea of giving an historical figure a wrong name rather than using
 # John Jackson Adams, 1st Baron thereof
 
 germanic = {
+	army_portraits = {
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_1.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_2.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_3.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_4.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_land_5.dds"
+	}
+	navy_portraits = {
+		"gfx/leaders/GER/Portrait_Germany_Generic_navy_1.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_navy_2.dds"
+		"gfx/leaders/GER/Portrait_Germany_Generic_navy_3.dds"
+	}
 	leader_portraits = {
 		communism = { "gfx/leaders/GER/Portrait_Germany_Wilhelm_Pieck.dds" }
 		democratic = { "gfx/leaders/GER/Portrait_Germany_Konrad_Adenauer.dds" }
