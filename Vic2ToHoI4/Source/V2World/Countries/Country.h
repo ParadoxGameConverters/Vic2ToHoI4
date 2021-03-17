@@ -103,6 +103,7 @@ class Country
 	[[nodiscard]] std::optional<std::string> getName(const std::string& language) const;
 	[[nodiscard]] std::optional<std::string> getAdjective(const std::string& language) const;
 	[[nodiscard]] std::vector<std::string> getShipNames(const std::string& category) const;
+	[[nodiscard]] float getGoodAmount(const std::string& good) const;
 
   private:
 	std::map<std::string, int> determineCultureSizes();
@@ -156,6 +157,8 @@ class Country
 	std::vector<War> wars; // only the country that started a war owns it here
 
 	std::optional<std::string> lastDynasty;
+
+	std::map<std::string, float> stockpile;
 };
 
 

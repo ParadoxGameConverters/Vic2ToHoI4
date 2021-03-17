@@ -288,3 +288,15 @@ std::vector<std::string> Vic2::Country::getShipNames(const std::string& category
 	}
 	return foundShipNames->second;
 }
+
+
+float Vic2::Country::getGoodAmount(const std::string& good) const
+{
+	const auto itr = stockpile.find(good);
+	if (itr == stockpile.end())
+	{
+		return 0.0F;
+	}
+
+	return itr->second;
+}
