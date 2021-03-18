@@ -2442,7 +2442,7 @@ focus = {
 			NOT = { is_in_faction_with = $TARGET }
 			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
 			hidden_trigger = {
-				every_owned_state = {
+				all_owned_state = {
 					OR = {
 						NOT = { is_core_of = ROOT }
 						is_fully_controlled_by = $TARGET

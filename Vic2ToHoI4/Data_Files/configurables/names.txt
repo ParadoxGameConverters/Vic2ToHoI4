@@ -16,6 +16,17 @@ north_german = {
 	aircraft_companies = { Messerschmitt Junkers "Focke Wulf" Heinkel Dornier }
 	intelligence_agencies = { "Abwehr" }
 }
+nehwaustronijaz = {
+	female_names = { Jessica Emma Hanna Sofia Marie }
+	callsigns = { "Bubi" "Assi" "The Black Devil" "The Blond Knight Of Germany" "Dolfo" "Fighter of Libau" "Petit Rouge" "Pritzl" "The Red Baron" "The Red Battle-flyer" "The Red knight" "Reeste" }
+	industry_companies = { "IG Farben" Krupp }
+	electronic_companies = { Siemens }
+	car_companies = { Porsche Henschel MAN }
+	naval_companies = { Germaniawerft "Blohm & Voss" }
+	weapon_companies = { Rheinmetall Mauser Opel }
+	aircraft_companies = { Messerschmitt Junkers "Focke Wulf" Heinkel Dornier }
+	intelligence_agencies = { "Abwehr" }
+}
 
 south_german = {
 	female_names = { Jessica Emma Hanna Sofia Marie Sandra }
@@ -513,6 +524,17 @@ hungarian = {
 }
 
 romanian = {
+	female_names = { Andrea }
+	callsigns = { Dracula "the Vampire" Wallachia }
+	industry_companies = { ROMLOC }
+	electronic_companies = { RADET }
+	car_companies = { PZinż "Leonidas Works" }
+	naval_companies = { "Constanta Shipyard" "Coastal Defense Ships" "Braila Shipyards" }
+	weapon_companies = { "Vauxhall Romania" "Atelierele Ford Bucuresti" "Nicolae Malaxa" "Cugir Small Arms" "Resita Works" "Opel Abt. Rumänien" }
+	aircraft_companies = { IAR ICAR SET }
+	intelligence_agencies = { "Serviciul Român de Informatii" }
+}
+dacian = {
 	female_names = { Andrea }
 	callsigns = { Dracula "the Vampire" Wallachia }
 	industry_companies = { ROMLOC }
@@ -1051,6 +1073,17 @@ bulgarian = {
 		Kutinceva Lazarova Lukova Marinkova Marinova Mutkorova Naydenova Nazlamova Nikiforova Nikolaeva
 		Pakoska Petroska Radeva Saksokoburggotska Savoska Sirakoska Solaroska Stoyanoska Teneva Todoroska
 		Tsakleva Valkoska Valnaroska Vasileva Vazoska Velčeva Veselinova Zafiroska Žekoska Zlatareva Zlateva }
+	callsigns = { Bŭlgarinŭt Makedonskiyat Grŭtskiyat Albanetsŭt }
+	electronic_companies = { "Elektrichestvo za Vsichki" }
+	naval_companies = { "Korabostroitelnitsata na Aleksandr" }
+	weapon_companies = { "Frenski Stomana" }
+	car_companies = { BDŽ }
+	industry_companies = { "Petrol AD" "VMZ Sopot" }
+	aircraft_companies = { "Daržava Aeroplanna Rabotilnica" "Kaproni Bulgarski" }
+	intelligence_agencies = { "Služba Voenna Informacija" }
+}
+thracian = {
+	female_names = { Anna Amaka Desi Elena Evgeniya Hirstiana Ina Kaloyana Katerina Katrin Lucy Magdalena Maria Mihaela Nina Ralitsa Reneta Stella Sylvie Vania }
 	callsigns = { Bŭlgarinŭt Makedonskiyat Grŭtskiyat Albanetsŭt }
 	electronic_companies = { "Elektrichestvo za Vsichki" }
 	naval_companies = { "Korabostroitelnitsata na Aleksandr" }
@@ -2635,6 +2668,50 @@ svart = {
 	weapon_companies = { "Kongsberg Våpenfabrikk" "Raufoss Ammunisjonsfabrikker" "Hønefoss Karosserifabrikk" }
 	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
 	intelligence_agencies = { "B.Ö.R.K." }
+}
+varangian = {
+	female_names = { Trine Kajsa }
+	callsigns = { Oslo "the Norse" Viking Valhalla }
+	industry_companies = { "Norsk Hydro" }
+	electronic_companies = { "Tandbergs Radiofabrikk" }
+	car_companies = { "Jösse Car" }
+	naval_companies = { "Horten Naval Yard" }
+	weapon_companies = { "Kongsberg Våpenfabrikk" "Raufoss Ammunisjonsfabrikker" "Hønefoss Karosserifabrikk" }
+	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
+	intelligence_agencies = { "Secret Danes" }
+}
+varangian_african = {
+	female_names = { Trine Kajsa }
+	callsigns = { Oslo "the Norse" Viking Valhalla }
+	industry_companies = { "Norsk Hydro" }
+	electronic_companies = { "Tandbergs Radiofabrikk" }
+	car_companies = { "Jösse Car" }
+	naval_companies = { "Horten Naval Yard" }
+	weapon_companies = { "Kongsberg Våpenfabrikk" "Raufoss Ammunisjonsfabrikker" "Hønefoss Karosserifabrikk" }
+	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
+	intelligence_agencies = { "Secret Danes" }
+}
+varangian_american = {
+	female_names = { Trine Kajsa }
+	callsigns = { Oslo "the Norse" Viking Valhalla }
+	industry_companies = { "Norsk Hydro" }
+	electronic_companies = { "Tandbergs Radiofabrikk" }
+	car_companies = { "Jösse Car" }
+	naval_companies = { "Horten Naval Yard" }
+	weapon_companies = { "Kongsberg Våpenfabrikk" "Raufoss Ammunisjonsfabrikker" "Hønefoss Karosserifabrikk" }
+	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
+	intelligence_agencies = { "Secret Danes" }
+}
+varangian_austrlian = {
+	female_names = { Trine Kajsa }
+	callsigns = { Oslo "the Norse" Viking Valhalla }
+	industry_companies = { "Norsk Hydro" }
+	electronic_companies = { "Tandbergs Radiofabrikk" }
+	car_companies = { "Jösse Car" }
+	naval_companies = { "Horten Naval Yard" }
+	weapon_companies = { "Kongsberg Våpenfabrikk" "Raufoss Ammunisjonsfabrikker" "Hønefoss Karosserifabrikk" }
+	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
+	intelligence_agencies = { "Secret Danes" }
 }
 irish = {
 	female_names = { Saraid Órfhlaith Fedelma }
@@ -4712,6 +4789,28 @@ ostrogothic = {
 	aircraft_companies = { Messerschmitt Junkers "Focke Wulf" Heinkel Dornier }
 	intelligence_agencies = { "The Byzantines" }
 }
+gothic = {
+	female_names = { Jessica Emma Hanna Sofia Marie Sandra }
+	callsigns = { "Bubi" "Assi" "The Black Devil" "The Blond Knight Of Germany" "Dolfo" "Fighter of Libau" "Petit Rouge" "Pritzl" "The Red Baron" "The Red Battle-flyer" "The Red knight" "Reeste" }
+	car_companies = { Steyr-Daimler-Puch }
+	weapon_companies = { Hirtenberger }
+	industry_companies = { "IG Farben" Krupp }
+	electronic_companies = { Siemens }
+	naval_companies = { Germaniawerft "Blohm & Voss" }
+	aircraft_companies = { Messerschmitt Junkers "Focke Wulf" Heinkel Dornier }
+	intelligence_agencies = { "The Byzantines" }
+}
+getian = {
+	female_names = { Jessica Emma Hanna Sofia Marie Sandra }
+	callsigns = { "Bubi" "Assi" "The Black Devil" "The Blond Knight Of Germany" "Dolfo" "Fighter of Libau" "Petit Rouge" "Pritzl" "The Red Baron" "The Red Battle-flyer" "The Red knight" "Reeste" }
+	car_companies = { Steyr-Daimler-Puch }
+	weapon_companies = { Hirtenberger }
+	industry_companies = { "IG Farben" Krupp }
+	electronic_companies = { Siemens }
+	naval_companies = { Germaniawerft "Blohm & Voss" }
+	aircraft_companies = { Messerschmitt Junkers "Focke Wulf" Heinkel Dornier }
+	intelligence_agencies = { "The Byzantines" }
+}
 cree = {
 	female_names = { Torotiy Meriy Elin Ashenee Astina Echa Kiche Kika Mati Matisa Matisoon Nichena Osceola Pamoon Paniya }
 	callsigns = { Iyiyiw Chisasibi Wemindji Whapmagoostui Mistissini Nemaska "Ouje-Bougoumou" Waskaganish Waswanipi Mosoni Maskekowak }
@@ -4845,6 +4944,47 @@ tupinamba = {
 	intelligence_agencies = { "Red & Black" }
 }
 latin = {
+	female_names = { Acilia Aebutia Aelia Aemilia Albia Amatia Annaea Anneia Annia Antonia Arria
+		Artoria Asinia Atilia Atia Aurelia Autronia Caecilia Caedicia Caelia Calidia
+		Calpurnia Cassia Claudia Cloelia Cocceia Cominia Cornelia Coruncania Curiatia
+		Curia Curtia Decia Didia Domitia Duilia Durmia Equitia Fabia Fabricia Fannia
+		Flavia Fulvia Furia Gabinia Galeria Gegania Gellia Geminia Genucia Gratia
+		Herennia Hirtia Horatia Hortensia Hostilia Iulia Iunia Iuventia Laelia Lartia
+		Licinia Livia Lucilia Lucretia Manlia Marcia Maria Memmia Menenia Minicia
+		Minia Minucia Modia Mucia Naevia Nautia Numeria Numicia Octavia Ovidia
+		Papiria Petronia Pinaria Pompeia Pompilia Pontia Popillia Porcia Postumia
+		Quinctilia Quinctia Rubellia Rufia Rutilia Sallustia Salonia Salvia Scribonia
+		Seia Sempronia Sentia Sergia Sertoria Servilia Sextia Sicinia Suetonia Sulpicia
+		Tarpeia Tarquitia Terentia Titinia Tituria Tuccia Tullia Ulpia Valeria Vedia
+		Velleia Vergilia Verginia Vibia Villia Vipsania Vitellia Vitruvia Volumnia }
+	female_surnames = { Aculeo Agricola Agrippa Ahala Ahenobarba Albina Alba Ambusta Annalis Aquila
+		Aquilina Arvina Asellio Asina Atella Avita Balba Barba Barbata Bassa Bestia
+		Bibacula Bibula Blaesa Broccha Bruta Bubulca Bucco Bulba Buteo Caeca Caepio
+		Caesar Calida Calvina Calva Camilla Canina Cana Capito Carbo Catilina Cato
+		Catula Celer Celsa Cethega Cicero Cicurina Cilo Cincinnata Cinna Corda Cornicen
+		Cornuta Corvina Corva Cossa Costa Cotta Crassipes Crassa Crispina Crispa Culleo
+		Curio Cursor Curva Dentata Denter Dento Dives Dolabella Dorsuo Drusa Figula Fimbria
+		Flacca Fava Flora Fronto Fullo Fusa Galeo Gemella Glabrio Graccha Gurges Habita
+		Helva Imperiosa Iulla Labeo Lactuca Laenas Lanata Laevina Laterensis Lentula Lepida
+		Libo Licina Longa Luculla Lupa Lurco Macer Macula Malleola Mamerca Marcella Maro
+		Merenda Merga Merula Messalla Metella Murena Ma Musca Nasica Naso Natta Nepos Nero
+		Nerva Niger Novella Ocella Pacila Paeta Pansa Papa Patercula Paulla Pavo Pera Pictor
+		Piso Planca Plauta Poplicola Postuma Potita Praeconina Praetextata Prisca Procula
+		Publicola Pulcher Pulla Pulvilla Purpureo Quadrata Ralla Regilla Regula Rufa Ruga Rulla
+		Rutila Salinator Saturnina Scaeva Scaevola Scapula Scaura Scipio Scrofa Seneca Severa
+		Silana Silo Sila Stolo Strabo Structa Sulla Sura Taura Triaria Trigemina Trio Tubero
+		Tuberta Tubula Tuditana Tulla Turda Varro Vara Vatia Verres Vespillo Veta Vitula
+		Volusa }
+	callsigns = { Germanicus Britannicus Dacicus Parthicus Optimus Armeniacus Medicus "Parthicus Maximus" Sarmaticus Arabicus Adiabenicus "Britannicus Maximus" "Germanicus Maximus" "Gothicus Maximus" Gothicus "Persicus Maximus" "Carpicus Maximus" Alamannicus Francicus Anticus Alanicus Vandalicus Africanus Erullicus Gypedicus Africus Isauricus Cilicius Dalmaticus Ugricus Bosniacus Chrobaticus Lazicus Ibericus Bulgaricus Serbicus Zikhicus Azaricus }
+	industry_companies = { "Caminus Hephaesti" }
+	electronic_companies = { "Olympus Jovis" }
+	car_companies = { Autocinetum }
+	naval_companies = { "Auxilio Neptuni" }
+	weapon_companies = { "Campus Martius" }
+	aircraft_companies = { "Ut Mercurio Talares" }
+	intelligence_agencies = { "Legio Ignota" }
+}
+euxinian = {
 	female_names = { Acilia Aebutia Aelia Aemilia Albia Amatia Annaea Anneia Annia Antonia Arria
 		Artoria Asinia Atilia Atia Aurelia Autronia Caecilia Caedicia Caelia Calidia
 		Calpurnia Cassia Claudia Cloelia Cocceia Cominia Cornelia Coruncania Curiatia
@@ -6216,4 +6356,716 @@ vandal = {
 	weapon_companies = { Rheinmetall Mauser Opel }
 	aircraft_companies = { Messerschmitt Junkers "Focke Wulf" Heinkel Dornier }
 	intelligence_agencies = { "Vandalismus" }
+}
+
+zzz_religion_cybelene = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_dummy_religion = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_german_pagan = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_hetanism = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_iberian_pagan = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_mithraism = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_scythian_pagan = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+zzz_religion_zamolxism = {
+ female_names = { " " }
+ callsigns = { " " }
+ industry_companies = { " " }
+ electronic_companies = { " " }
+ car_companies = { " " }
+ naval_companies = { " " }
+ weapon_companies = { " " }
+ aircraft_companies = { " " }
+ intelligence_agencies = { " " }
+}
+adelphic = {
+	female_names = { Maria Eleni Aiketerine Baslikike Sofia Aggeliki Georgia Anastasia Evangelia Demetra Eirene Anna Panagiota Ioanna Konstantina Despoina Calliope Alexandra Kyriake Paraskevi }
+	female_surnames = { Charalámpi Christáki-Zográfo Dagli Dousmani Foúmi Gonatá Chatzianésti Kallérgi Kanári Katsimiro
+		Kolokotróni Kondýli Kountourióti Kriezí Makriiánni Máno Mavrokordáto Mavrovounióti Metaxá Moúsko
+		Níder Othonaío Paláska Pan'galo Papadiamantópoulo Papadópoulo Papágo Papoúla Parakevópoulo Plapoúta
+		Plastíra Sapountzáki Saráfi Smolénski Sofoúli Soútso Spyromílio Staïkópoulo Stanota "ti Elládas"
+		Trikoúpi Tsakalóto Tsolákoglou Typáldos-Alfonsáto Tzavéla Vásso Venizélo Voúlgari Zaḯmi Zymvrakáki }
+	callsigns = { Ellinikí Spartiátis Vyzantinó Aléxandros Toúrkos Aftokrátos }
+	industry_companies = { "Ethnikés Viomichaníes" }
+	electronic_companies = { "Xénes Enérgeies" }
+	car_companies = { ELVO Korres Namco "Replicar Hellas" Sfakianakis Tangalakis-Temax }
+	weapon_companies = { "Gallikó Chályva" }
+	aircraft_companies = { GNAF }
+	naval_companies = { "Royal Hellenic Naval Shipyard" }
+	intelligence_agencies = { "Ethnikí Ypiresía Pliroforión" }
+}
+dytic_african = {
+	female_names = { Maria Eleni Aiketerine Baslikike Sofia Aggeliki Georgia Anastasia Evangelia Demetra Eirene Anna Panagiota Ioanna Konstantina Despoina Calliope Alexandra Kyriake Paraskevi }
+	female_surnames = { Charalámpi Christáki-Zográfo Dagli Dousmani Foúmi Gonatá Chatzianésti Kallérgi Kanári Katsimiro
+		Kolokotróni Kondýli Kountourióti Kriezí Makriiánni Máno Mavrokordáto Mavrovounióti Metaxá Moúsko
+		Níder Othonaío Paláska Pan'galo Papadiamantópoulo Papadópoulo Papágo Papoúla Parakevópoulo Plapoúta
+		Plastíra Sapountzáki Saráfi Smolénski Sofoúli Soútso Spyromílio Staïkópoulo Stanota "ti Elládas"
+		Trikoúpi Tsakalóto Tsolákoglou Typáldos-Alfonsáto Tzavéla Vásso Venizélo Voúlgari Zaḯmi Zymvrakáki }
+	callsigns = { Ellinikí Spartiátis Vyzantinó Aléxandros Toúrkos Aftokrátos }
+	industry_companies = { "Ethnikés Viomichaníes" }
+	electronic_companies = { "Xénes Enérgeies" }
+	car_companies = { ELVO Korres Namco "Replicar Hellas" Sfakianakis Tangalakis-Temax }
+	weapon_companies = { "Gallikó Chályva" }
+	aircraft_companies = { GNAF }
+	naval_companies = { "Royal Hellenic Naval Shipyard" }
+	intelligence_agencies = { "Ethnikí Ypiresía Pliroforión" }
+}
+dytic_american = {
+	female_names = { Maria Eleni Aiketerine Baslikike Sofia Aggeliki Georgia Anastasia Evangelia Demetra Eirene Anna Panagiota Ioanna Konstantina Despoina Calliope Alexandra Kyriake Paraskevi }
+	female_surnames = { Charalámpi Christáki-Zográfo Dagli Dousmani Foúmi Gonatá Chatzianésti Kallérgi Kanári Katsimiro
+		Kolokotróni Kondýli Kountourióti Kriezí Makriiánni Máno Mavrokordáto Mavrovounióti Metaxá Moúsko
+		Níder Othonaío Paláska Pan'galo Papadiamantópoulo Papadópoulo Papágo Papoúla Parakevópoulo Plapoúta
+		Plastíra Sapountzáki Saráfi Smolénski Sofoúli Soútso Spyromílio Staïkópoulo Stanota "ti Elládas"
+		Trikoúpi Tsakalóto Tsolákoglou Typáldos-Alfonsáto Tzavéla Vásso Venizélo Voúlgari Zaḯmi Zymvrakáki }
+	callsigns = { Ellinikí Spartiátis Vyzantinó Aléxandros Toúrkos Aftokrátos }
+	industry_companies = { "Ethnikés Viomichaníes" }
+	electronic_companies = { "Xénes Enérgeies" }
+	car_companies = { ELVO Korres Namco "Replicar Hellas" Sfakianakis Tangalakis-Temax }
+	weapon_companies = { "Gallikó Chályva" }
+	aircraft_companies = { GNAF }
+	naval_companies = { "Royal Hellenic Naval Shipyard" }
+	intelligence_agencies = { "Ethnikí Ypiresía Pliroforión" }
+}
+dytic_australian = {
+	female_names = { Maria Eleni Aiketerine Baslikike Sofia Aggeliki Georgia Anastasia Evangelia Demetra Eirene Anna Panagiota Ioanna Konstantina Despoina Calliope Alexandra Kyriake Paraskevi }
+	female_surnames = { Charalámpi Christáki-Zográfo Dagli Dousmani Foúmi Gonatá Chatzianésti Kallérgi Kanári Katsimiro
+		Kolokotróni Kondýli Kountourióti Kriezí Makriiánni Máno Mavrokordáto Mavrovounióti Metaxá Moúsko
+		Níder Othonaío Paláska Pan'galo Papadiamantópoulo Papadópoulo Papágo Papoúla Parakevópoulo Plapoúta
+		Plastíra Sapountzáki Saráfi Smolénski Sofoúli Soútso Spyromílio Staïkópoulo Stanota "ti Elládas"
+		Trikoúpi Tsakalóto Tsolákoglou Typáldos-Alfonsáto Tzavéla Vásso Venizélo Voúlgari Zaḯmi Zymvrakáki }
+	callsigns = { Ellinikí Spartiátis Vyzantinó Aléxandros Toúrkos Aftokrátos }
+	industry_companies = { "Ethnikés Viomichaníes" }
+	electronic_companies = { "Xénes Enérgeies" }
+	car_companies = { ELVO Korres Namco "Replicar Hellas" Sfakianakis Tangalakis-Temax }
+	weapon_companies = { "Gallikó Chályva" }
+	aircraft_companies = { GNAF }
+	naval_companies = { "Royal Hellenic Naval Shipyard" }
+	intelligence_agencies = { "Ethnikí Ypiresía Pliroforión" }
+}
+galatian = {
+	female_names = { Maria Eleni Aiketerine Baslikike Sofia Aggeliki Georgia Anastasia Evangelia Demetra Eirene Anna Panagiota Ioanna Konstantina Despoina Calliope Alexandra Kyriake Paraskevi }
+	female_surnames = { Charalámpi Christáki-Zográfo Dagli Dousmani Foúmi Gonatá Chatzianésti Kallérgi Kanári Katsimiro
+		Kolokotróni Kondýli Kountourióti Kriezí Makriiánni Máno Mavrokordáto Mavrovounióti Metaxá Moúsko
+		Níder Othonaío Paláska Pan'galo Papadiamantópoulo Papadópoulo Papágo Papoúla Parakevópoulo Plapoúta
+		Plastíra Sapountzáki Saráfi Smolénski Sofoúli Soútso Spyromílio Staïkópoulo Stanota "ti Elládas"
+		Trikoúpi Tsakalóto Tsolákoglou Typáldos-Alfonsáto Tzavéla Vásso Venizélo Voúlgari Zaḯmi Zymvrakáki }
+	callsigns = { Ellinikí Spartiátis Vyzantinó Aléxandros Toúrkos Aftokrátos }
+	industry_companies = { "Ethnikés Viomichaníes" }
+	electronic_companies = { "Xénes Enérgeies" }
+	car_companies = { ELVO Korres Namco "Replicar Hellas" Sfakianakis Tangalakis-Temax }
+	weapon_companies = { "Gallikó Chályva" }
+	aircraft_companies = { GNAF }
+	naval_companies = { "Royal Hellenic Naval Shipyard" }
+	intelligence_agencies = { "Ethnikí Ypiresía Pliroforión" }
+}
+prettanian = {
+	female_names = { Maria Eleni Aiketerine Baslikike Sofia Aggeliki Georgia Anastasia Evangelia Demetra Eirene Anna Panagiota Ioanna Konstantina Despoina Calliope Alexandra Kyriake Paraskevi }
+	female_surnames = { Charalámpi Christáki-Zográfo Dagli Dousmani Foúmi Gonatá Chatzianésti Kallérgi Kanári Katsimiro
+		Kolokotróni Kondýli Kountourióti Kriezí Makriiánni Máno Mavrokordáto Mavrovounióti Metaxá Moúsko
+		Níder Othonaío Paláska Pan'galo Papadiamantópoulo Papadópoulo Papágo Papoúla Parakevópoulo Plapoúta
+		Plastíra Sapountzáki Saráfi Smolénski Sofoúli Soútso Spyromílio Staïkópoulo Stanota "ti Elládas"
+		Trikoúpi Tsakalóto Tsolákoglou Typáldos-Alfonsáto Tzavéla Vásso Venizélo Voúlgari Zaḯmi Zymvrakáki }
+	callsigns = { Ellinikí Spartiátis Vyzantinó Aléxandros Toúrkos Aftokrátos }
+	industry_companies = { "Ethnikés Viomichaníes" }
+	electronic_companies = { "Xénes Enérgeies" }
+	car_companies = { ELVO Korres Namco "Replicar Hellas" Sfakianakis Tangalakis-Temax }
+	weapon_companies = { "Gallikó Chályva" }
+	aircraft_companies = { GNAF }
+	naval_companies = { "Royal Hellenic Naval Shipyard" }
+	intelligence_agencies = { "Ethnikí Ypiresía Pliroforión" }
+}
+spaniolic = {
+	female_names = { Maria Eleni Aiketerine Baslikike Sofia Aggeliki Georgia Anastasia Evangelia Demetra Eirene Anna Panagiota Ioanna Konstantina Despoina Calliope Alexandra Kyriake Paraskevi }
+	female_surnames = { Charalámpi Christáki-Zográfo Dagli Dousmani Foúmi Gonatá Chatzianésti Kallérgi Kanári Katsimiro
+		Kolokotróni Kondýli Kountourióti Kriezí Makriiánni Máno Mavrokordáto Mavrovounióti Metaxá Moúsko
+		Níder Othonaío Paláska Pan'galo Papadiamantópoulo Papadópoulo Papágo Papoúla Parakevópoulo Plapoúta
+		Plastíra Sapountzáki Saráfi Smolénski Sofoúli Soútso Spyromílio Staïkópoulo Stanota "ti Elládas"
+		Trikoúpi Tsakalóto Tsolákoglou Typáldos-Alfonsáto Tzavéla Vásso Venizélo Voúlgari Zaḯmi Zymvrakáki }
+	callsigns = { Ellinikí Spartiátis Vyzantinó Aléxandros Toúrkos Aftokrátos }
+	industry_companies = { "Ethnikés Viomichaníes" }
+	electronic_companies = { "Xénes Enérgeies" }
+	car_companies = { ELVO Korres Namco "Replicar Hellas" Sfakianakis Tangalakis-Temax }
+	weapon_companies = { "Gallikó Chályva" }
+	aircraft_companies = { GNAF }
+	naval_companies = { "Royal Hellenic Naval Shipyard" }
+	intelligence_agencies = { "Ethnikí Ypiresía Pliroforión" }
+}
+bythlimmoth = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+carthaginian = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+epicrateian = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+gadolite = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+inythmum = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+lacanite = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+liphocaneth = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+mlachthi = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+mysehi = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+pmpese = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+punic_american = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+punic_australian = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+sicorathi = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+sidonian = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+symacom = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+sythchy = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+taliaite = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+ualonuth = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+ychibarku = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+ynnocho = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+ysthyalm = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+ythalonim = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+ythbynuthi = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+belgian = {
+	female_names = { Aife Airmed Ancasta Banna Billica Boudica Bricta Cata Cartimandua Chiomara Damona Diseta Gwendolen Litavis Iamcilla Maeve Verica
+	Cingetessa Conna Catia Carssouna Cunovinna Illica Lovernisca Magunna Lucilia Oconea Ria Rosula Senica Sentica Sulicena
+	Vassura Vinoma Vorvena Urca Veloriga Velibia Totia Titocuna Velbutena Seniciana Senila Vrocata Exuperata Deiana Cunolava Cunsa Aucissa
+	Allauna Alatucca Aessicunia Bodicacia Britivenda Catissena Cantisena }
+	callsigns = { Anartes Arabiates Belgites Boii Breuci Carni Catubrini Cornacates Cotini Eravisci Helvetii Hercuniates Latobrigi Scordisci Serdi Serrapili Serretes Tricornenses Norici Varciani Vindelici Volcae }
+	industry_companies = { Gobannom }
+	electronic_companies = { Tefnetom }
+	car_companies = { Carbantom }
+	weapon_companies = { Isarnom }
+	aircraft_companies = { Fetni }
+	naval_companies = { Arthrach }
+	intelligence_agencies = { Skata }
+}
+celtiberian = {
+	female_names = { Aife Airmed Ancasta Banna Billica Boudica Bricta Cata Cartimandua Chiomara Damona Diseta Gwendolen Litavis Iamcilla Maeve Verica
+	Cingetessa Conna Catia Carssouna Cunovinna Illica Lovernisca Magunna Lucilia Oconea Ria Rosula Senica Sentica Sulicena
+	Vassura Vinoma Vorvena Urca Veloriga Velibia Totia Titocuna Velbutena Seniciana Senila Vrocata Exuperata Deiana Cunolava Cunsa Aucissa
+	Allauna Alatucca Aessicunia Bodicacia Britivenda Catissena Cantisena }
+	callsigns = { Anartes Arabiates Belgites Boii Breuci Carni Catubrini Cornacates Cotini Eravisci Helvetii Hercuniates Latobrigi Scordisci Serdi Serrapili Serretes Tricornenses Norici Varciani Vindelici Volcae }
+	industry_companies = { Gobannom }
+	electronic_companies = { Tefnetom }
+	car_companies = { Carbantom }
+	weapon_companies = { Isarnom }
+	aircraft_companies = { Fetni }
+	naval_companies = { Arthrach }
+	intelligence_agencies = { Skata }
+}
+gaulish = {
+	female_names = { Aife Airmed Ancasta Banna Billica Boudica Bricta Cata Cartimandua Chiomara Damona Diseta Gwendolen Litavis Iamcilla Maeve Verica
+	Cingetessa Conna Catia Carssouna Cunovinna Illica Lovernisca Magunna Lucilia Oconea Ria Rosula Senica Sentica Sulicena
+	Vassura Vinoma Vorvena Urca Veloriga Velibia Totia Titocuna Velbutena Seniciana Senila Vrocata Exuperata Deiana Cunolava Cunsa Aucissa
+	Allauna Alatucca Aessicunia Bodicacia Britivenda Catissena Cantisena }
+	callsigns = { Anartes Arabiates Belgites Boii Breuci Carni Catubrini Cornacates Cotini Eravisci Helvetii Hercuniates Latobrigi Scordisci Serdi Serrapili Serretes Tricornenses Norici Varciani Vindelici Volcae }
+	industry_companies = { Gobannom }
+	electronic_companies = { Tefnetom }
+	car_companies = { Carbantom }
+	weapon_companies = { Isarnom }
+	aircraft_companies = { Fetni }
+	naval_companies = { Arthrach }
+	intelligence_agencies = { Skata }
+}
+hittite_american = {
+	female_names = { Cassandra Laodice Theano Penthesilea Cleomestra Hecuba Medesicaste Creusa Medusa
+	Aristodeme Lysimache Polyxena Demnosia Demosthea Ethionome Henicea Iliona Lysianassa
+	Nereis Phegea Philomela Aristomache Clymene Xenodice Deinome Metioche Peisis Cleodice }
+	callsigns = { Dios Diogenes Antitheos Theoeides "Anax Andron" }
+	industry_companies = { Aniyatt }
+	electronic_companies = { Pahhuenant }
+	car_companies = { Gišhuluganni }
+	weapon_companies = { Kuškursa }
+	aircraft_companies = { Mušensurassura }
+	naval_companies = { Aruna }
+	intelligence_agencies = { Ispant }
+}
+hittite_australian = {
+	female_names = { Cassandra Laodice Theano Penthesilea Cleomestra Hecuba Medesicaste Creusa Medusa
+	Aristodeme Lysimache Polyxena Demnosia Demosthea Ethionome Henicea Iliona Lysianassa
+	Nereis Phegea Philomela Aristomache Clymene Xenodice Deinome Metioche Peisis Cleodice }
+	callsigns = { Dios Diogenes Antitheos Theoeides "Anax Andron" }
+	industry_companies = { Aniyatt }
+	electronic_companies = { Pahhuenant }
+	car_companies = { Gišhuluganni }
+	weapon_companies = { Kuškursa }
+	aircraft_companies = { Mušensurassura }
+	naval_companies = { Aruna }
+	intelligence_agencies = { Ispant }
+}
+hittite_g = {
+	female_names = { Cassandra Laodice Theano Penthesilea Cleomestra Hecuba Medesicaste Creusa Medusa
+	Aristodeme Lysimache Polyxena Demnosia Demosthea Ethionome Henicea Iliona Lysianassa
+	Nereis Phegea Philomela Aristomache Clymene Xenodice Deinome Metioche Peisis Cleodice }
+	callsigns = { Dios Diogenes Antitheos Theoeides "Anax Andron" }
+	industry_companies = { Aniyatt }
+	electronic_companies = { Pahhuenant }
+	car_companies = { Gišhuluganni }
+	weapon_companies = { Kuškursa }
+	aircraft_companies = { Mušensurassura }
+	naval_companies = { Aruna }
+	intelligence_agencies = { Ispant }
+}
+luwian = {
+	female_names = { Cassandra Laodice Theano Penthesilea Cleomestra Hecuba Medesicaste Creusa Medusa
+	Aristodeme Lysimache Polyxena Demnosia Demosthea Ethionome Henicea Iliona Lysianassa
+	Nereis Phegea Philomela Aristomache Clymene Xenodice Deinome Metioche Peisis Cleodice }
+	callsigns = { Dios Diogenes Antitheos Theoeides "Anax Andron" }
+	industry_companies = { Aniyatt }
+	electronic_companies = { Pahhuenant }
+	car_companies = { Gišhuluganni }
+	weapon_companies = { Kuškursa }
+	aircraft_companies = { Mušensurassura }
+	naval_companies = { Aruna }
+	intelligence_agencies = { Ispant }
+}
+lydian = {
+	female_names = { Cassandra Laodice Theano Penthesilea Cleomestra Hecuba Medesicaste Creusa Medusa
+	Aristodeme Lysimache Polyxena Demnosia Demosthea Ethionome Henicea Iliona Lysianassa
+	Nereis Phegea Philomela Aristomache Clymene Xenodice Deinome Metioche Peisis Cleodice }
+	callsigns = { Dios Diogenes Antitheos Theoeides "Anax Andron" }
+	industry_companies = { Aniyatt }
+	electronic_companies = { Pahhuenant }
+	car_companies = { Gišhuluganni }
+	weapon_companies = { Kuškursa }
+	aircraft_companies = { Mušensurassura }
+	naval_companies = { Aruna }
+	intelligence_agencies = { Ispant }
+}
+phrygian = {
+	female_names = { Cassandra Laodice Theano Penthesilea Cleomestra Hecuba Medesicaste Creusa Medusa
+	Aristodeme Lysimache Polyxena Demnosia Demosthea Ethionome Henicea Iliona Lysianassa
+	Nereis Phegea Philomela Aristomache Clymene Xenodice Deinome Metioche Peisis Cleodice }
+	callsigns = { Dios Diogenes Antitheos Theoeides "Anax Andron" }
+	industry_companies = { Aniyatt }
+	electronic_companies = { Pahhuenant }
+	car_companies = { Gišhuluganni }
+	weapon_companies = { Kuškursa }
+	aircraft_companies = { Mušensurassura }
+	naval_companies = { Aruna }
+	intelligence_agencies = { Ispant }
 }

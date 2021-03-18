@@ -2108,4 +2108,212 @@ spriteTypes = {
 	  name = "GFX_idea_culture_camite"
 	  texturefile = "gfx/interface/culture/culture_camite"
 	 }
+	 spriteType = {
+		name = "GFX_idea_culture_adelphic"
+		texturefile = "gfx/interface/culture/culture_adelphic.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_belgian"
+		texturefile = "gfx/interface/culture/culture_belgian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_bythlimmoth"
+		texturefile = "gfx/interface/culture/culture_bythlimmoth.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_carthaginian"
+		texturefile = "gfx/interface/culture/culture_carthaginian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_celtiberian"
+		texturefile = "gfx/interface/culture/culture_celtiberian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_dacian"
+		texturefile = "gfx/interface/culture/culture_dacian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_dytic_african"
+		texturefile = "gfx/interface/culture/culture_dytic_african.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_dytic_american"
+		texturefile = "gfx/interface/culture/culture_dytic_american.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_dytic_australian"
+		texturefile = "gfx/interface/culture/culture_dytic_australian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_epicrateian"
+		texturefile = "gfx/interface/culture/culture_epicrateian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_euxinian"
+		texturefile = "gfx/interface/culture/culture_euxinian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_gadolite"
+		texturefile = "gfx/interface/culture/culture_gadolite.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_galatian"
+		texturefile = "gfx/interface/culture/culture_galatian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_gaulish"
+		texturefile = "gfx/interface/culture/culture_gaulish.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_getian"
+		texturefile = "gfx/interface/culture/culture_getian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_gothic"
+		texturefile = "gfx/interface/culture/culture_gothic.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_hittite_american"
+		texturefile = "gfx/interface/culture/culture_hittite_american.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_hittite_australian"
+		texturefile = "gfx/interface/culture/culture_hittite_australian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_hittite_g"
+		texturefile = "gfx/interface/culture/culture_hittite_g.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_inythmum"
+		texturefile = "gfx/interface/culture/culture_inythmum.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_lacanite"
+		texturefile = "gfx/interface/culture/culture_lacanite.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_liphocaneth"
+		texturefile = "gfx/interface/culture/culture_liphocaneth.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_luwian"
+		texturefile = "gfx/interface/culture/culture_luwian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_lydian"
+		texturefile = "gfx/interface/culture/culture_lydian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_mlachthi"
+		texturefile = "gfx/interface/culture/culture_mlachthi.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_mysehi"
+		texturefile = "gfx/interface/culture/culture_mysehi.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_nehwaustronijaz"
+		texturefile = "gfx/interface/culture/culture_nehwaustronijaz.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_phrygian"
+		texturefile = "gfx/interface/culture/culture_phrygian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_pmpese"
+		texturefile = "gfx/interface/culture/culture_pmpese.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_prettanian"
+		texturefile = "gfx/interface/culture/culture_prettanian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_punic_american"
+		texturefile = "gfx/interface/culture/culture_punic_american.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_punic_australian"
+		texturefile = "gfx/interface/culture/culture_punic_australian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_sicorathi"
+		texturefile = "gfx/interface/culture/culture_sicorathi.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_sidonian"
+		texturefile = "gfx/interface/culture/culture_sidonian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_spaniolic"
+		texturefile = "gfx/interface/culture/culture_spaniolic.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_symacom"
+		texturefile = "gfx/interface/culture/culture_symacom.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_sythchy"
+		texturefile = "gfx/interface/culture/culture_sythchy.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_taliaite"
+		texturefile = "gfx/interface/culture/culture_taliaite.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_thracian"
+		texturefile = "gfx/interface/culture/culture_thracian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_ualonuth"
+		texturefile = "gfx/interface/culture/culture_ualonuth.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_varangian"
+		texturefile = "gfx/interface/culture/culture_varangian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_varangian_african"
+		texturefile = "gfx/interface/culture/culture_varangian_african.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_varangian_american"
+		texturefile = "gfx/interface/culture/culture_varangian_american.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_varangian_australian"
+		texturefile = "gfx/interface/culture/culture_varangian_australian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_ychibarku"
+		texturefile = "gfx/interface/culture/culture_ychibarku.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_ynnocho"
+		texturefile = "gfx/interface/culture/culture_ynnocho.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_ysthyalm"
+		texturefile = "gfx/interface/culture/culture_ysthyalm.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_ythalonim"
+		texturefile = "gfx/interface/culture/culture_ythalonim.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_ythbynuthi"
+		texturefile = "gfx/interface/culture/culture_ythbynuthi.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_etrurian"
+		texturefile = "gfx/interface/culture/culture_etrurian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_rhaetian"
+		texturefile = "gfx/interface/culture/culture_rhaetian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_lemnian"
+		texturefile = "gfx/interface/culture/culture_lemnian.dds"
+	}
 }

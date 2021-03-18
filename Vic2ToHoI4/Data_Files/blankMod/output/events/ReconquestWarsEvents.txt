@@ -15,7 +15,7 @@ country_event = {
 			country_event = { id = reconquest_wars.2 }
 		}
 		effect_tooltip = {
-			every_owned_state = {
+			all_owned_state = {
 				limit = { is_core_of = FROM }
 				FROM = { transfer_state = PREV.id }
 			}
@@ -57,7 +57,7 @@ country_event = {
 	option = {
 		name = reconquest_wars.2.a
 		FROM = {
-			every_owned_state = {
+			all_owned_state = {
 				limit = { is_core_of = ROOT }
 				ROOT = { transfer_state = PREV.id }
 			}
