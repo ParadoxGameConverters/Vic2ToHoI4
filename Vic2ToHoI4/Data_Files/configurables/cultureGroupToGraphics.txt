@@ -34,10 +34,10 @@ germanic = {
 		radical = { "gfx/interface/ideas/idea_hjalmar_schacht.dds" } 
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_ger_revive_the_kaiserreich.dds"
+		"gfx/interface/ideas/idea_ger_wilhelm_iii.dds"	
 	}
 	female_monarch_portraits = {
-		"pdx_launcher/common/gfx/interface/German_flag.dds" # Revise
+		"gfx/interface/ideas/idea_ger_revive_the_kaiserreich.dds"
 	}
 	graphical_culture = { western_european_gfx }
 	graphical_culture_2d = { western_european_2d }
@@ -550,7 +550,7 @@ hungarian_culture_group = {
 		"gfx/interface/ideas/idea_hun_charles_v.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"GFX_idea_HUN_hungarian_monarchy"
 	}
 	graphical_culture = { eastern_european_gfx }
 	graphical_culture_2d = { eastern_european_2d }
@@ -968,10 +968,10 @@ turko_semitic = {
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_tur_legacy_of_ataturk.dds"
+		"GFX_focus_TUR_pivot_to_the_past"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"GFX_focus_TUR_pivot_to_the_past"
 	}
 	graphical_culture = { middle_eastern_gfx }
 	graphical_culture_2d = { middle_eastern_2d }
@@ -2031,10 +2031,10 @@ iranian_turanian = {
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"GFX_focus_TUR_turanist_ambition"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"GFX_focus_TUR_turanist_ambition"
 	}
 	graphical_culture = { middle_eastern_gfx }
 	graphical_culture_2d = { middle_eastern_2d }
@@ -2286,10 +2286,10 @@ east_asian = {
 		radical = { "gfx/interface/ideas/idea_hino_kumazo.dds" }
 	}
 	male_monarch_portraits = {
-		"gfx/achievements/sun_tzu_reborn.dds"
+		"GFX_focus_man_claim_the_mandate_of_heaven"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"GFX_focus_man_claim_the_mandate_of_heaven"
 	}
 	graphical_culture = { asian_gfx }
 	graphical_culture_2d = { asian_2d }
