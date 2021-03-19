@@ -248,6 +248,17 @@ south_italian = {
 	aircraft_companies = { Macchi Savoia-Marchetti Caproni Biaggio }
 	intelligence_agencies = { "DIS" }
 }
+morlach = {
+	female_names = { Maria Anna }
+	callsigns = { Buzzard Dusty Falcon Hawk Hammer Viper Banshee "The Baron" Lightning Duce Raven "Two Shot" Rosso }
+	industry_companies = { Danieli }
+	electronic_companies = { ENEL }
+	car_companies = { Fiat }
+	naval_companies = { CRDA }
+	weapon_companies = { Beretta Lancia Breda }
+	aircraft_companies = { Macchi Savoia-Marchetti Caproni Biaggio }
+	intelligence_agencies = { "Servizio Informazioni Militare" }
+}
 
 maltese = {
 	female_names = { Maria Anna }
@@ -468,7 +479,23 @@ lithuanian = {
 	weapon_companies = { "Vokiečių Ugnis" }
 	intelligence_agencies = { "AOTD" }
 }
-
+pruthenian = {
+	female_names = { Agnė Aldona Anastasija Aurelija Austėja Birutė Daiva Danutė Donata Edita Elena Elzė Ernesta Gabija Gertrüda Gintarė Ieva Inga Irma Janina Jolanta Julija Kamilė Katrė Kristina Laimutė Lilija Liucija Margarita Marijona
+			Miglė Monika Odeta Paulina Regina Rozė Sandra Silvija Smiltė Solveiga Tatjana Urtė Valerija Viktorija Viltautė Violeta Vitalija Zydrė }
+	female_surnames = { Adamkienė Almenienė Avizienienė Baltrušaitienė Brazauskienė Basanavičiienė Birutienė Brazdžiūnienė Būgienė Čiurlionienė
+		Danauskienė Daukantienė Dobkevičiienė Dubeneckienė Dvarionienė Galdikienė Griniienė Griškevičiienė Ivanauskienė Jablonskienė
+		Jucienė Krupavičiienė Landsbergienė Lozoraitienė Merkienė Paksienė Paleckienė Paulauskienė Petrauskienė Piskarkienė
+		Poželienė Radvilienė Šabaniauskienė Šacienė Simonavičiienė Širvydienė Šleževičiienė Semtonienė Sniečkienė Stauaitienė
+		Straižienė Stulginkienė Švedienė Terleckienė Urbšienė Vagnoriienė Valeškienė Voldemarienė Žemaitienė Zuokienė }
+	aircraft_companies = { ANBO }
+	callsigns = { Memel Litva Vilnius Gediminas }
+	industry_companies = { "Nacionalne Industrije" }
+	electronic_companies = { "Gromoviti Bog" }
+	car_companies = { "Sėkmės Ratas" }
+	naval_companies = { "Baltijos Laivų Statykla" }
+	weapon_companies = { "Vokiečių Ugnis" }
+	intelligence_agencies = { "AOTD" }
+}
 oldpommeranian = {
 	female_names = { Agnė Aldona Anastasija Aurelija Austėja Birutė Daiva Danutė Donata Edita Elena Elzė Ernesta Gabija Gertrüda Gintarė Ieva Inga Irma Janina Jolanta Julija Kamilė Katrė Kristina Laimutė Lilija Liucija Margarita Marijona
 			Miglė Monika Odeta Paulina Regina Rozė Sandra Silvija Smiltė Solveiga Tatjana Urtė Valerija Viktorija Viltautė Violeta Vitalija Zydrė }
@@ -535,6 +562,39 @@ romanian = {
 	intelligence_agencies = { "Serviciul Român de Informatii" }
 }
 dacian = {
+	female_names = { Andrea }
+	callsigns = { Dracula "the Vampire" Wallachia }
+	industry_companies = { ROMLOC }
+	electronic_companies = { RADET }
+	car_companies = { PZinż "Leonidas Works" }
+	naval_companies = { "Constanta Shipyard" "Coastal Defense Ships" "Braila Shipyards" }
+	weapon_companies = { "Vauxhall Romania" "Atelierele Ford Bucuresti" "Nicolae Malaxa" "Cugir Small Arms" "Resita Works" "Opel Abt. Rumänien" }
+	aircraft_companies = { IAR ICAR SET }
+	intelligence_agencies = { "Serviciul Român de Informatii" }
+}
+dacian_american = {
+	female_names = { Andrea }
+	callsigns = { Dracula "the Vampire" Wallachia }
+	industry_companies = { ROMLOC }
+	electronic_companies = { RADET }
+	car_companies = { PZinż "Leonidas Works" }
+	naval_companies = { "Constanta Shipyard" "Coastal Defense Ships" "Braila Shipyards" }
+	weapon_companies = { "Vauxhall Romania" "Atelierele Ford Bucuresti" "Nicolae Malaxa" "Cugir Small Arms" "Resita Works" "Opel Abt. Rumänien" }
+	aircraft_companies = { IAR ICAR SET }
+	intelligence_agencies = { "Serviciul Român de Informatii" }
+}
+dacian_african = {
+	female_names = { Andrea }
+	callsigns = { Dracula "the Vampire" Wallachia }
+	industry_companies = { ROMLOC }
+	electronic_companies = { RADET }
+	car_companies = { PZinż "Leonidas Works" }
+	naval_companies = { "Constanta Shipyard" "Coastal Defense Ships" "Braila Shipyards" }
+	weapon_companies = { "Vauxhall Romania" "Atelierele Ford Bucuresti" "Nicolae Malaxa" "Cugir Small Arms" "Resita Works" "Opel Abt. Rumänien" }
+	aircraft_companies = { IAR ICAR SET }
+	intelligence_agencies = { "Serviciul Român de Informatii" }
+}
+dacian_australian = {
 	female_names = { Andrea }
 	callsigns = { Dracula "the Vampire" Wallachia }
 	industry_companies = { ROMLOC }
@@ -1093,6 +1153,39 @@ thracian = {
 	aircraft_companies = { "Daržava Aeroplanna Rabotilnica" "Kaproni Bulgarski" }
 	intelligence_agencies = { "Služba Voenna Informacija" }
 }
+thracian_american = {
+	female_names = { Anna Amaka Desi Elena Evgeniya Hirstiana Ina Kaloyana Katerina Katrin Lucy Magdalena Maria Mihaela Nina Ralitsa Reneta Stella Sylvie Vania }
+	callsigns = { Bŭlgarinŭt Makedonskiyat Grŭtskiyat Albanetsŭt }
+	electronic_companies = { "Elektrichestvo za Vsichki" }
+	naval_companies = { "Korabostroitelnitsata na Aleksandr" }
+	weapon_companies = { "Frenski Stomana" }
+	car_companies = { BDŽ }
+	industry_companies = { "Petrol AD" "VMZ Sopot" }
+	aircraft_companies = { "Daržava Aeroplanna Rabotilnica" "Kaproni Bulgarski" }
+	intelligence_agencies = { "Služba Voenna Informacija" }
+}
+thracian_african = {
+	female_names = { Anna Amaka Desi Elena Evgeniya Hirstiana Ina Kaloyana Katerina Katrin Lucy Magdalena Maria Mihaela Nina Ralitsa Reneta Stella Sylvie Vania }
+	callsigns = { Bŭlgarinŭt Makedonskiyat Grŭtskiyat Albanetsŭt }
+	electronic_companies = { "Elektrichestvo za Vsichki" }
+	naval_companies = { "Korabostroitelnitsata na Aleksandr" }
+	weapon_companies = { "Frenski Stomana" }
+	car_companies = { BDŽ }
+	industry_companies = { "Petrol AD" "VMZ Sopot" }
+	aircraft_companies = { "Daržava Aeroplanna Rabotilnica" "Kaproni Bulgarski" }
+	intelligence_agencies = { "Služba Voenna Informacija" }
+}
+thracian_australian = {
+	female_names = { Anna Amaka Desi Elena Evgeniya Hirstiana Ina Kaloyana Katerina Katrin Lucy Magdalena Maria Mihaela Nina Ralitsa Reneta Stella Sylvie Vania }
+	callsigns = { Bŭlgarinŭt Makedonskiyat Grŭtskiyat Albanetsŭt }
+	electronic_companies = { "Elektrichestvo za Vsichki" }
+	naval_companies = { "Korabostroitelnitsata na Aleksandr" }
+	weapon_companies = { "Frenski Stomana" }
+	car_companies = { BDŽ }
+	industry_companies = { "Petrol AD" "VMZ Sopot" }
+	aircraft_companies = { "Daržava Aeroplanna Rabotilnica" "Kaproni Bulgarski" }
+	intelligence_agencies = { "Služba Voenna Informacija" }
+}
 
 macedonian = {
 	female_names = { Adrijana Aleksandra Anamarija Angel Angelina Beti Bisera Blagica Blaguna Dafina Dana Daniela Despina Divna Doroteja Dzvezda Elena Emilija Evdokija Filimena Galena Gorica Grozdana Ilina Irina Iskra Ivana Jaga Jagoda
@@ -1434,6 +1527,17 @@ turkish = {
 	aircraft_companies = { THK KTF }
 	intelligence_agencies = { "Millî Emniyet Hizmeti Riyâseti" }
 }
+pecheneg = {
+	female_names = { Çiçek Çilen Çiltanesi Özgul Özlem Akgul }
+	callsigns = { Türk Kebap Selçuklu Yunan 1453 }
+	industry_companies = { "Ulusal Endüstriler" }
+	electronic_companies = { "Herkes için Elektrik" }
+	car_companies = { BMC Diardi Erkunt Etox Fiat-Tofaş FNSS Guleryuz Karsan Otokar }
+	naval_companies = { "Gölcük NSY" }
+	weapon_companies = { "Istanbul Military Industries" }
+	aircraft_companies = { THK KTF }
+	intelligence_agencies = { "Millî Emniyet Hizmeti Riyâseti" }
+}
 
 croat = {
 	female_names = { Adriana Anna Borislava Cededa Doroteja Dorothy Ekaterina Catherine Helena Helen Jadviga }
@@ -1657,6 +1761,30 @@ akan = {
 	intelligence_agencies = { "BNI" }
 }
 alan = {
+	female_names = { Agunda Allæ Elenæ Lira Rukhsana Zalina }
+	female_surnames = { Andiyeva Ashuraliyeva Basieva Bazayeva Bestayeva Chibirova Dina Dudarova Dzhanayeva Fadzayeva Farnieva Gabulova Gassieva Gazyumova Gurieva Khapova Khetagurova Kokoity Kusova Nyxas Pagayeva Pliyeva Sanakoyeva Tibilova Tokataya Torchinova Toshinoraya Valiyeva Zangieva Zazirova }
+	callsigns = { "the Alan" "the Ossetian" "the Caucasian" }
+	car_companies = { "Mashinæ Kuystuarzag" }
+	weapon_companies = { "Hæst Kuystuarzag" }
+	aircraft_companies = { "Hædtæhæg Kuystuarzag" }
+	naval_companies = { "Dendzhyz Kuystuarzag" }
+	industry_companies = { "Bolat Kuystuarzag" }
+	electronic_companies = { "Elektrondyh Kuystuarzag" }
+	intelligence_agencies = { "Skythai" }
+}
+sarmatian = {
+	female_names = { Agunda Allæ Elenæ Lira Rukhsana Zalina }
+	female_surnames = { Andiyeva Ashuraliyeva Basieva Bazayeva Bestayeva Chibirova Dina Dudarova Dzhanayeva Fadzayeva Farnieva Gabulova Gassieva Gazyumova Gurieva Khapova Khetagurova Kokoity Kusova Nyxas Pagayeva Pliyeva Sanakoyeva Tibilova Tokataya Torchinova Toshinoraya Valiyeva Zangieva Zazirova }
+	callsigns = { "the Alan" "the Ossetian" "the Caucasian" }
+	car_companies = { "Mashinæ Kuystuarzag" }
+	weapon_companies = { "Hæst Kuystuarzag" }
+	aircraft_companies = { "Hædtæhæg Kuystuarzag" }
+	naval_companies = { "Dendzhyz Kuystuarzag" }
+	industry_companies = { "Bolat Kuystuarzag" }
+	electronic_companies = { "Elektrondyh Kuystuarzag" }
+	intelligence_agencies = { "Skythai" }
+}
+tocharian = {
 	female_names = { Agunda Allæ Elenæ Lira Rukhsana Zalina }
 	female_surnames = { Andiyeva Ashuraliyeva Basieva Bazayeva Bestayeva Chibirova Dina Dudarova Dzhanayeva Fadzayeva Farnieva Gabulova Gassieva Gazyumova Gurieva Khapova Khetagurova Kokoity Kusova Nyxas Pagayeva Pliyeva Sanakoyeva Tibilova Tokataya Torchinova Toshinoraya Valiyeva Zangieva Zazirova }
 	callsigns = { "the Alan" "the Ossetian" "the Caucasian" }
@@ -2669,6 +2797,17 @@ svart = {
 	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
 	intelligence_agencies = { "B.Ö.R.K." }
 }
+elsinorian = {
+	female_names = { Trine Kajsa }
+	callsigns = { Oslo "the Norse" Viking Valhalla }
+	industry_companies = { "Norsk Hydro" }
+	electronic_companies = { "Tandbergs Radiofabrikk" }
+	car_companies = { "Jösse Car" }
+	naval_companies = { "Horten Naval Yard" }
+	weapon_companies = { "Kongsberg Våpenfabrikk" "Raufoss Ammunisjonsfabrikker" "Hønefoss Karosserifabrikk" }
+	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
+	intelligence_agencies = { "Secret Danes" }
+}
 varangian = {
 	female_names = { Trine Kajsa }
 	callsigns = { Oslo "the Norse" Viking Valhalla }
@@ -2714,6 +2853,39 @@ varangian_austrlian = {
 	intelligence_agencies = { "Secret Danes" }
 }
 irish = {
+	female_names = { Saraid Órfhlaith Fedelma }
+	callsigns = { Gaeilge Sasanaigh Celt Leprechaun }
+	industry_companies = { "Tionscail Náisiúnta" }
+	electronic_companies = { "Solas Draoi" }
+	car_companies = { "Ceithre Roth" }
+	naval_companies = { "An Longchlós Pale" }
+	weapon_companies = { "Cruach Sasanaigh" }
+	aircraft_companies = { "Ag Eitilt" }
+	intelligence_agencies = { "G2" }
+}
+celtic_american = {
+	female_names = { Saraid Órfhlaith Fedelma }
+	callsigns = { Gaeilge Sasanaigh Celt Leprechaun }
+	industry_companies = { "Tionscail Náisiúnta" }
+	electronic_companies = { "Solas Draoi" }
+	car_companies = { "Ceithre Roth" }
+	naval_companies = { "An Longchlós Pale" }
+	weapon_companies = { "Cruach Sasanaigh" }
+	aircraft_companies = { "Ag Eitilt" }
+	intelligence_agencies = { "G2" }
+}
+celtic_african = {
+	female_names = { Saraid Órfhlaith Fedelma }
+	callsigns = { Gaeilge Sasanaigh Celt Leprechaun }
+	industry_companies = { "Tionscail Náisiúnta" }
+	electronic_companies = { "Solas Draoi" }
+	car_companies = { "Ceithre Roth" }
+	naval_companies = { "An Longchlós Pale" }
+	weapon_companies = { "Cruach Sasanaigh" }
+	aircraft_companies = { "Ag Eitilt" }
+	intelligence_agencies = { "G2" }
+}
+celtic_australian = {
 	female_names = { Saraid Órfhlaith Fedelma }
 	callsigns = { Gaeilge Sasanaigh Celt Leprechaun }
 	industry_companies = { "Tionscail Náisiúnta" }
@@ -2780,6 +2952,39 @@ meashighcaw = {
 	intelligence_agencies = { "W.A.L.L." }
 }
 italoamericano = {
+	female_names = { Maria Giovanna }
+	callsigns = { Buzzard Dusty Falcon Hawk Hammer Viper Banshee "The Baron" Lightning Duce Raven "Two Shot" Rosso }
+	industry_companies = { Danieli }
+	electronic_companies = { ENEL }
+	car_companies = { Fiat }
+	naval_companies = { CRDA }
+	weapon_companies = { Beretta Lancia Breda }
+	aircraft_companies = { Macchi Savoia-Luigiana Caproni Biaggio }
+	intelligence_agencies = { "Carosone" }
+}
+old_italian_american = {
+	female_names = { Maria Giovanna }
+	callsigns = { Buzzard Dusty Falcon Hawk Hammer Viper Banshee "The Baron" Lightning Duce Raven "Two Shot" Rosso }
+	industry_companies = { Danieli }
+	electronic_companies = { ENEL }
+	car_companies = { Fiat }
+	naval_companies = { CRDA }
+	weapon_companies = { Beretta Lancia Breda }
+	aircraft_companies = { Macchi Savoia-Luigiana Caproni Biaggio }
+	intelligence_agencies = { "Carosone" }
+}
+old_italian_african = {
+	female_names = { Maria Giovanna }
+	callsigns = { Buzzard Dusty Falcon Hawk Hammer Viper Banshee "The Baron" Lightning Duce Raven "Two Shot" Rosso }
+	industry_companies = { Danieli }
+	electronic_companies = { ENEL }
+	car_companies = { Fiat }
+	naval_companies = { CRDA }
+	weapon_companies = { Beretta Lancia Breda }
+	aircraft_companies = { Macchi Savoia-Luigiana Caproni Biaggio }
+	intelligence_agencies = { "Carosone" }
+}
+old_italian_australian = {
 	female_names = { Maria Giovanna }
 	callsigns = { Buzzard Dusty Falcon Hawk Hammer Viper Banshee "The Baron" Lightning Duce Raven "Two Shot" Rosso }
 	industry_companies = { Danieli }
@@ -5246,7 +5451,211 @@ coptic = {
 	aircraft_companies = { "Thoth Scrolls" }
 	intelligence_agencies = { "ANU-bis" }
 }
-
+sabellian = {
+	female_names = { Acilia Aebutia Aelia Aemilia Albia Amatia Annaea Anneia Annia Antonia Arria
+		Artoria Asinia Atilia Atia Aurelia Autronia Caecilia Caedicia Caelia Calidia
+		Calpurnia Cassia Claudia Cloelia Cocceia Cominia Cornelia Coruncania Curiatia
+		Curia Curtia Decia Didia Domitia Duilia Durmia Equitia Fabia Fabricia Fannia
+		Flavia Fulvia Furia Gabinia Galeria Gegania Gellia Geminia Genucia Gratia
+		Herennia Hirtia Horatia Hortensia Hostilia Iulia Iunia Iuventia Laelia Lartia
+		Licinia Livia Lucilia Lucretia Manlia Marcia Maria Memmia Menenia Minicia
+		Minia Minucia Modia Mucia Naevia Nautia Numeria Numicia Octavia Ovidia
+		Papiria Petronia Pinaria Pompeia Pompilia Pontia Popillia Porcia Postumia
+		Quinctilia Quinctia Rubellia Rufia Rutilia Sallustia Salonia Salvia Scribonia
+		Seia Sempronia Sentia Sergia Sertoria Servilia Sextia Sicinia Suetonia Sulpicia
+		Tarpeia Tarquitia Terentia Titinia Tituria Tuccia Tullia Ulpia Valeria Vedia
+		Velleia Vergilia Verginia Vibia Villia Vipsania Vitellia Vitruvia Volumnia }
+	female_surnames = { Aculeo Agricola Agrippa Ahala Ahenobarba Albina Alba Ambusta Annalis Aquila
+		Aquilina Arvina Asellio Asina Atella Avita Balba Barba Barbata Bassa Bestia
+		Bibacula Bibula Blaesa Broccha Bruta Bubulca Bucco Bulba Buteo Caeca Caepio
+		Caesar Calida Calvina Calva Camilla Canina Cana Capito Carbo Catilina Cato
+		Catula Celer Celsa Cethega Cicero Cicurina Cilo Cincinnata Cinna Corda Cornicen
+		Cornuta Corvina Corva Cossa Costa Cotta Crassipes Crassa Crispina Crispa Culleo
+		Curio Cursor Curva Dentata Denter Dento Dives Dolabella Dorsuo Drusa Figula Fimbria
+		Flacca Fava Flora Fronto Fullo Fusa Galeo Gemella Glabrio Graccha Gurges Habita
+		Helva Imperiosa Iulla Labeo Lactuca Laenas Lanata Laevina Laterensis Lentula Lepida
+		Libo Licina Longa Luculla Lupa Lurco Macer Macula Malleola Mamerca Marcella Maro
+		Merenda Merga Merula Messalla Metella Murena Ma Musca Nasica Naso Natta Nepos Nero
+		Nerva Niger Novella Ocella Pacila Paeta Pansa Papa Patercula Paulla Pavo Pera Pictor
+		Piso Planca Plauta Poplicola Postuma Potita Praeconina Praetextata Prisca Procula
+		Publicola Pulcher Pulla Pulvilla Purpureo Quadrata Ralla Regilla Regula Rufa Ruga Rulla
+		Rutila Salinator Saturnina Scaeva Scaevola Scapula Scaura Scipio Scrofa Seneca Severa
+		Silana Silo Sila Stolo Strabo Structa Sulla Sura Taura Triaria Trigemina Trio Tubero
+		Tuberta Tubula Tuditana Tulla Turda Varro Vara Vatia Verres Vespillo Veta Vitula
+		Volusa }
+	callsigns = { Germanicus Britannicus Dacicus Parthicus Optimus Armeniacus Medicus "Parthicus Maximus" Sarmaticus Arabicus Adiabenicus "Britannicus Maximus" "Germanicus Maximus" "Gothicus Maximus" Gothicus "Persicus Maximus" "Carpicus Maximus" Alamannicus Francicus Anticus Alanicus Vandalicus Africanus Erullicus Gypedicus Africus Isauricus Cilicius Dalmaticus Ugricus Bosniacus Chrobaticus Lazicus Ibericus Bulgaricus Serbicus Zikhicus Azaricus }
+	industry_companies = { "Caminus Hephaesti" }
+	electronic_companies = { "Olympus Jovis" }
+	car_companies = { Autocinetum }
+	naval_companies = { "Auxilio Neptuni" }
+	weapon_companies = { "Campus Martius" }
+	aircraft_companies = { "Ut Mercurio Talares" }
+	intelligence_agencies = { "Legio Ignota" }
+}
+old_ligurian = {
+	female_names = { Acilia Aebutia Aelia Aemilia Albia Amatia Annaea Anneia Annia Antonia Arria
+		Artoria Asinia Atilia Atia Aurelia Autronia Caecilia Caedicia Caelia Calidia
+		Calpurnia Cassia Claudia Cloelia Cocceia Cominia Cornelia Coruncania Curiatia
+		Curia Curtia Decia Didia Domitia Duilia Durmia Equitia Fabia Fabricia Fannia
+		Flavia Fulvia Furia Gabinia Galeria Gegania Gellia Geminia Genucia Gratia
+		Herennia Hirtia Horatia Hortensia Hostilia Iulia Iunia Iuventia Laelia Lartia
+		Licinia Livia Lucilia Lucretia Manlia Marcia Maria Memmia Menenia Minicia
+		Minia Minucia Modia Mucia Naevia Nautia Numeria Numicia Octavia Ovidia
+		Papiria Petronia Pinaria Pompeia Pompilia Pontia Popillia Porcia Postumia
+		Quinctilia Quinctia Rubellia Rufia Rutilia Sallustia Salonia Salvia Scribonia
+		Seia Sempronia Sentia Sergia Sertoria Servilia Sextia Sicinia Suetonia Sulpicia
+		Tarpeia Tarquitia Terentia Titinia Tituria Tuccia Tullia Ulpia Valeria Vedia
+		Velleia Vergilia Verginia Vibia Villia Vipsania Vitellia Vitruvia Volumnia }
+	female_surnames = { Aculeo Agricola Agrippa Ahala Ahenobarba Albina Alba Ambusta Annalis Aquila
+		Aquilina Arvina Asellio Asina Atella Avita Balba Barba Barbata Bassa Bestia
+		Bibacula Bibula Blaesa Broccha Bruta Bubulca Bucco Bulba Buteo Caeca Caepio
+		Caesar Calida Calvina Calva Camilla Canina Cana Capito Carbo Catilina Cato
+		Catula Celer Celsa Cethega Cicero Cicurina Cilo Cincinnata Cinna Corda Cornicen
+		Cornuta Corvina Corva Cossa Costa Cotta Crassipes Crassa Crispina Crispa Culleo
+		Curio Cursor Curva Dentata Denter Dento Dives Dolabella Dorsuo Drusa Figula Fimbria
+		Flacca Fava Flora Fronto Fullo Fusa Galeo Gemella Glabrio Graccha Gurges Habita
+		Helva Imperiosa Iulla Labeo Lactuca Laenas Lanata Laevina Laterensis Lentula Lepida
+		Libo Licina Longa Luculla Lupa Lurco Macer Macula Malleola Mamerca Marcella Maro
+		Merenda Merga Merula Messalla Metella Murena Ma Musca Nasica Naso Natta Nepos Nero
+		Nerva Niger Novella Ocella Pacila Paeta Pansa Papa Patercula Paulla Pavo Pera Pictor
+		Piso Planca Plauta Poplicola Postuma Potita Praeconina Praetextata Prisca Procula
+		Publicola Pulcher Pulla Pulvilla Purpureo Quadrata Ralla Regilla Regula Rufa Ruga Rulla
+		Rutila Salinator Saturnina Scaeva Scaevola Scapula Scaura Scipio Scrofa Seneca Severa
+		Silana Silo Sila Stolo Strabo Structa Sulla Sura Taura Triaria Trigemina Trio Tubero
+		Tuberta Tubula Tuditana Tulla Turda Varro Vara Vatia Verres Vespillo Veta Vitula
+		Volusa }
+	callsigns = { Germanicus Britannicus Dacicus Parthicus Optimus Armeniacus Medicus "Parthicus Maximus" Sarmaticus Arabicus Adiabenicus "Britannicus Maximus" "Germanicus Maximus" "Gothicus Maximus" Gothicus "Persicus Maximus" "Carpicus Maximus" Alamannicus Francicus Anticus Alanicus Vandalicus Africanus Erullicus Gypedicus Africus Isauricus Cilicius Dalmaticus Ugricus Bosniacus Chrobaticus Lazicus Ibericus Bulgaricus Serbicus Zikhicus Azaricus }
+	industry_companies = { "Caminus Hephaesti" }
+	electronic_companies = { "Olympus Jovis" }
+	car_companies = { Autocinetum }
+	naval_companies = { "Auxilio Neptuni" }
+	weapon_companies = { "Campus Martius" }
+	aircraft_companies = { "Ut Mercurio Talares" }
+	intelligence_agencies = { "Legio Ignota" }
+}
+venetic = {
+	female_names = { Acilia Aebutia Aelia Aemilia Albia Amatia Annaea Anneia Annia Antonia Arria
+		Artoria Asinia Atilia Atia Aurelia Autronia Caecilia Caedicia Caelia Calidia
+		Calpurnia Cassia Claudia Cloelia Cocceia Cominia Cornelia Coruncania Curiatia
+		Curia Curtia Decia Didia Domitia Duilia Durmia Equitia Fabia Fabricia Fannia
+		Flavia Fulvia Furia Gabinia Galeria Gegania Gellia Geminia Genucia Gratia
+		Herennia Hirtia Horatia Hortensia Hostilia Iulia Iunia Iuventia Laelia Lartia
+		Licinia Livia Lucilia Lucretia Manlia Marcia Maria Memmia Menenia Minicia
+		Minia Minucia Modia Mucia Naevia Nautia Numeria Numicia Octavia Ovidia
+		Papiria Petronia Pinaria Pompeia Pompilia Pontia Popillia Porcia Postumia
+		Quinctilia Quinctia Rubellia Rufia Rutilia Sallustia Salonia Salvia Scribonia
+		Seia Sempronia Sentia Sergia Sertoria Servilia Sextia Sicinia Suetonia Sulpicia
+		Tarpeia Tarquitia Terentia Titinia Tituria Tuccia Tullia Ulpia Valeria Vedia
+		Velleia Vergilia Verginia Vibia Villia Vipsania Vitellia Vitruvia Volumnia }
+	female_surnames = { Aculeo Agricola Agrippa Ahala Ahenobarba Albina Alba Ambusta Annalis Aquila
+		Aquilina Arvina Asellio Asina Atella Avita Balba Barba Barbata Bassa Bestia
+		Bibacula Bibula Blaesa Broccha Bruta Bubulca Bucco Bulba Buteo Caeca Caepio
+		Caesar Calida Calvina Calva Camilla Canina Cana Capito Carbo Catilina Cato
+		Catula Celer Celsa Cethega Cicero Cicurina Cilo Cincinnata Cinna Corda Cornicen
+		Cornuta Corvina Corva Cossa Costa Cotta Crassipes Crassa Crispina Crispa Culleo
+		Curio Cursor Curva Dentata Denter Dento Dives Dolabella Dorsuo Drusa Figula Fimbria
+		Flacca Fava Flora Fronto Fullo Fusa Galeo Gemella Glabrio Graccha Gurges Habita
+		Helva Imperiosa Iulla Labeo Lactuca Laenas Lanata Laevina Laterensis Lentula Lepida
+		Libo Licina Longa Luculla Lupa Lurco Macer Macula Malleola Mamerca Marcella Maro
+		Merenda Merga Merula Messalla Metella Murena Ma Musca Nasica Naso Natta Nepos Nero
+		Nerva Niger Novella Ocella Pacila Paeta Pansa Papa Patercula Paulla Pavo Pera Pictor
+		Piso Planca Plauta Poplicola Postuma Potita Praeconina Praetextata Prisca Procula
+		Publicola Pulcher Pulla Pulvilla Purpureo Quadrata Ralla Regilla Regula Rufa Ruga Rulla
+		Rutila Salinator Saturnina Scaeva Scaevola Scapula Scaura Scipio Scrofa Seneca Severa
+		Silana Silo Sila Stolo Strabo Structa Sulla Sura Taura Triaria Trigemina Trio Tubero
+		Tuberta Tubula Tuditana Tulla Turda Varro Vara Vatia Verres Vespillo Veta Vitula
+		Volusa }
+	callsigns = { Germanicus Britannicus Dacicus Parthicus Optimus Armeniacus Medicus "Parthicus Maximus" Sarmaticus Arabicus Adiabenicus "Britannicus Maximus" "Germanicus Maximus" "Gothicus Maximus" Gothicus "Persicus Maximus" "Carpicus Maximus" Alamannicus Francicus Anticus Alanicus Vandalicus Africanus Erullicus Gypedicus Africus Isauricus Cilicius Dalmaticus Ugricus Bosniacus Chrobaticus Lazicus Ibericus Bulgaricus Serbicus Zikhicus Azaricus }
+	industry_companies = { "Caminus Hephaesti" }
+	electronic_companies = { "Olympus Jovis" }
+	car_companies = { Autocinetum }
+	naval_companies = { "Auxilio Neptuni" }
+	weapon_companies = { "Campus Martius" }
+	aircraft_companies = { "Ut Mercurio Talares" }
+	intelligence_agencies = { "Legio Ignota" }
+}
+siculian = {
+	female_names = { Acilia Aebutia Aelia Aemilia Albia Amatia Annaea Anneia Annia Antonia Arria
+		Artoria Asinia Atilia Atia Aurelia Autronia Caecilia Caedicia Caelia Calidia
+		Calpurnia Cassia Claudia Cloelia Cocceia Cominia Cornelia Coruncania Curiatia
+		Curia Curtia Decia Didia Domitia Duilia Durmia Equitia Fabia Fabricia Fannia
+		Flavia Fulvia Furia Gabinia Galeria Gegania Gellia Geminia Genucia Gratia
+		Herennia Hirtia Horatia Hortensia Hostilia Iulia Iunia Iuventia Laelia Lartia
+		Licinia Livia Lucilia Lucretia Manlia Marcia Maria Memmia Menenia Minicia
+		Minia Minucia Modia Mucia Naevia Nautia Numeria Numicia Octavia Ovidia
+		Papiria Petronia Pinaria Pompeia Pompilia Pontia Popillia Porcia Postumia
+		Quinctilia Quinctia Rubellia Rufia Rutilia Sallustia Salonia Salvia Scribonia
+		Seia Sempronia Sentia Sergia Sertoria Servilia Sextia Sicinia Suetonia Sulpicia
+		Tarpeia Tarquitia Terentia Titinia Tituria Tuccia Tullia Ulpia Valeria Vedia
+		Velleia Vergilia Verginia Vibia Villia Vipsania Vitellia Vitruvia Volumnia }
+	female_surnames = { Aculeo Agricola Agrippa Ahala Ahenobarba Albina Alba Ambusta Annalis Aquila
+		Aquilina Arvina Asellio Asina Atella Avita Balba Barba Barbata Bassa Bestia
+		Bibacula Bibula Blaesa Broccha Bruta Bubulca Bucco Bulba Buteo Caeca Caepio
+		Caesar Calida Calvina Calva Camilla Canina Cana Capito Carbo Catilina Cato
+		Catula Celer Celsa Cethega Cicero Cicurina Cilo Cincinnata Cinna Corda Cornicen
+		Cornuta Corvina Corva Cossa Costa Cotta Crassipes Crassa Crispina Crispa Culleo
+		Curio Cursor Curva Dentata Denter Dento Dives Dolabella Dorsuo Drusa Figula Fimbria
+		Flacca Fava Flora Fronto Fullo Fusa Galeo Gemella Glabrio Graccha Gurges Habita
+		Helva Imperiosa Iulla Labeo Lactuca Laenas Lanata Laevina Laterensis Lentula Lepida
+		Libo Licina Longa Luculla Lupa Lurco Macer Macula Malleola Mamerca Marcella Maro
+		Merenda Merga Merula Messalla Metella Murena Ma Musca Nasica Naso Natta Nepos Nero
+		Nerva Niger Novella Ocella Pacila Paeta Pansa Papa Patercula Paulla Pavo Pera Pictor
+		Piso Planca Plauta Poplicola Postuma Potita Praeconina Praetextata Prisca Procula
+		Publicola Pulcher Pulla Pulvilla Purpureo Quadrata Ralla Regilla Regula Rufa Ruga Rulla
+		Rutila Salinator Saturnina Scaeva Scaevola Scapula Scaura Scipio Scrofa Seneca Severa
+		Silana Silo Sila Stolo Strabo Structa Sulla Sura Taura Triaria Trigemina Trio Tubero
+		Tuberta Tubula Tuditana Tulla Turda Varro Vara Vatia Verres Vespillo Veta Vitula
+		Volusa }
+	callsigns = { Germanicus Britannicus Dacicus Parthicus Optimus Armeniacus Medicus "Parthicus Maximus" Sarmaticus Arabicus Adiabenicus "Britannicus Maximus" "Germanicus Maximus" "Gothicus Maximus" Gothicus "Persicus Maximus" "Carpicus Maximus" Alamannicus Francicus Anticus Alanicus Vandalicus Africanus Erullicus Gypedicus Africus Isauricus Cilicius Dalmaticus Ugricus Bosniacus Chrobaticus Lazicus Ibericus Bulgaricus Serbicus Zikhicus Azaricus }
+	industry_companies = { "Caminus Hephaesti" }
+	electronic_companies = { "Olympus Jovis" }
+	car_companies = { Autocinetum }
+	naval_companies = { "Auxilio Neptuni" }
+	weapon_companies = { "Campus Martius" }
+	aircraft_companies = { "Ut Mercurio Talares" }
+	intelligence_agencies = { "Legio Ignota" }
+}
+lepontic = {
+	female_names = { Acilia Aebutia Aelia Aemilia Albia Amatia Annaea Anneia Annia Antonia Arria
+		Artoria Asinia Atilia Atia Aurelia Autronia Caecilia Caedicia Caelia Calidia
+		Calpurnia Cassia Claudia Cloelia Cocceia Cominia Cornelia Coruncania Curiatia
+		Curia Curtia Decia Didia Domitia Duilia Durmia Equitia Fabia Fabricia Fannia
+		Flavia Fulvia Furia Gabinia Galeria Gegania Gellia Geminia Genucia Gratia
+		Herennia Hirtia Horatia Hortensia Hostilia Iulia Iunia Iuventia Laelia Lartia
+		Licinia Livia Lucilia Lucretia Manlia Marcia Maria Memmia Menenia Minicia
+		Minia Minucia Modia Mucia Naevia Nautia Numeria Numicia Octavia Ovidia
+		Papiria Petronia Pinaria Pompeia Pompilia Pontia Popillia Porcia Postumia
+		Quinctilia Quinctia Rubellia Rufia Rutilia Sallustia Salonia Salvia Scribonia
+		Seia Sempronia Sentia Sergia Sertoria Servilia Sextia Sicinia Suetonia Sulpicia
+		Tarpeia Tarquitia Terentia Titinia Tituria Tuccia Tullia Ulpia Valeria Vedia
+		Velleia Vergilia Verginia Vibia Villia Vipsania Vitellia Vitruvia Volumnia }
+	female_surnames = { Aculeo Agricola Agrippa Ahala Ahenobarba Albina Alba Ambusta Annalis Aquila
+		Aquilina Arvina Asellio Asina Atella Avita Balba Barba Barbata Bassa Bestia
+		Bibacula Bibula Blaesa Broccha Bruta Bubulca Bucco Bulba Buteo Caeca Caepio
+		Caesar Calida Calvina Calva Camilla Canina Cana Capito Carbo Catilina Cato
+		Catula Celer Celsa Cethega Cicero Cicurina Cilo Cincinnata Cinna Corda Cornicen
+		Cornuta Corvina Corva Cossa Costa Cotta Crassipes Crassa Crispina Crispa Culleo
+		Curio Cursor Curva Dentata Denter Dento Dives Dolabella Dorsuo Drusa Figula Fimbria
+		Flacca Fava Flora Fronto Fullo Fusa Galeo Gemella Glabrio Graccha Gurges Habita
+		Helva Imperiosa Iulla Labeo Lactuca Laenas Lanata Laevina Laterensis Lentula Lepida
+		Libo Licina Longa Luculla Lupa Lurco Macer Macula Malleola Mamerca Marcella Maro
+		Merenda Merga Merula Messalla Metella Murena Ma Musca Nasica Naso Natta Nepos Nero
+		Nerva Niger Novella Ocella Pacila Paeta Pansa Papa Patercula Paulla Pavo Pera Pictor
+		Piso Planca Plauta Poplicola Postuma Potita Praeconina Praetextata Prisca Procula
+		Publicola Pulcher Pulla Pulvilla Purpureo Quadrata Ralla Regilla Regula Rufa Ruga Rulla
+		Rutila Salinator Saturnina Scaeva Scaevola Scapula Scaura Scipio Scrofa Seneca Severa
+		Silana Silo Sila Stolo Strabo Structa Sulla Sura Taura Triaria Trigemina Trio Tubero
+		Tuberta Tubula Tuditana Tulla Turda Varro Vara Vatia Verres Vespillo Veta Vitula
+		Volusa }
+	callsigns = { Germanicus Britannicus Dacicus Parthicus Optimus Armeniacus Medicus "Parthicus Maximus" Sarmaticus Arabicus Adiabenicus "Britannicus Maximus" "Germanicus Maximus" "Gothicus Maximus" Gothicus "Persicus Maximus" "Carpicus Maximus" Alamannicus Francicus Anticus Alanicus Vandalicus Africanus Erullicus Gypedicus Africus Isauricus Cilicius Dalmaticus Ugricus Bosniacus Chrobaticus Lazicus Ibericus Bulgaricus Serbicus Zikhicus Azaricus }
+	industry_companies = { "Caminus Hephaesti" }
+	electronic_companies = { "Olympus Jovis" }
+	car_companies = { Autocinetum }
+	naval_companies = { "Auxilio Neptuni" }
+	weapon_companies = { "Campus Martius" }
+	aircraft_companies = { "Ut Mercurio Talares" }
+	intelligence_agencies = { "Legio Ignota" }
+}
 ## Anti-debug spamming measures
 ## These cultures are not real cultures (religions, generated but never used, etc.)
 british_andes_superregion_culture = {
@@ -6346,6 +6755,20 @@ oldspain = {
 	aircraft_companies = { "Mercurius" }
 	intelligence_agencies = { "HIS-Pania" }
 }
+lusitanian = {
+	female_names = { Ana Ama Aretaunin Aunia Auruningica Canine Daleninar Similce Sicounin Stena Aife Thurinninar Secetaunin Teite Tettingica Nerseada
+	}
+	callsigns = {
+		"Iberian" "Carthaginian" "Lusitanian"
+	}
+	industry_companies = { "Ibericus Inc." }
+	electronic_companies = { "Elektron-IBER" }
+	car_companies = { "Currus Currus" }
+	naval_companies = { "Mare" }
+	weapon_companies = { "Gladius" }
+	aircraft_companies = { "Mercurius" }
+	intelligence_agencies = { "HIS-Pania" }
+}
 vandal = {
 	female_names = { Jessica Emma Hanna Sofia Marie }
 	callsigns = { "Bubi" "Assi" "The Black Devil" "The Blond Knight Of Germany" "Dolfo" "Fighter of Libau" "Petit Rouge" "Pritzl" "The Red Baron" "The Red Battle-flyer" "The Red knight" "Reeste" }
@@ -6576,6 +6999,23 @@ bythlimmoth = {
 	intelligence_agencies = { }
 }
 carthaginian = {
+	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
+	female_surnames = {
+		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
+		Bodonida Bostarida Chelbesida Eshbaalida Eugorida Hannida
+		Hiramida Magida Mattanida Metallida Milkiramida Philosirida
+		Gisgoida Gerbalida Hammida Eugarida Mashhida Ummashida
+	}
+	callsigns = { "Hannibal" "Hamilcar" "Roman" "Phoenician" "Aeneas" "Barqa" }
+	industry_companies = { }
+	electronic_companies = { }
+	car_companies = { }
+	weapon_companies = { }
+	aircraft_companies = { }
+	naval_companies = { }
+	intelligence_agencies = { }
+}
+phoenician = {
 	female_names = { Abdosir Arishat Astarte Batnoam Dido Shayna Sophonisba Tamar Adiya Tabua Yapa Ytab Suhaima Huldu Mashah Gamila Asherah Izavel Iezabel Elissa Muttunbaal }
 	female_surnames = {
 		Abbarida Adonibaalida Ahiromida Baalhannida Baalida Barcida
@@ -6978,6 +7418,20 @@ celtiberian = {
 	intelligence_agencies = { Skata }
 }
 gaulish = {
+	female_names = { Aife Airmed Ancasta Banna Billica Boudica Bricta Cata Cartimandua Chiomara Damona Diseta Gwendolen Litavis Iamcilla Maeve Verica
+	Cingetessa Conna Catia Carssouna Cunovinna Illica Lovernisca Magunna Lucilia Oconea Ria Rosula Senica Sentica Sulicena
+	Vassura Vinoma Vorvena Urca Veloriga Velibia Totia Titocuna Velbutena Seniciana Senila Vrocata Exuperata Deiana Cunolava Cunsa Aucissa
+	Allauna Alatucca Aessicunia Bodicacia Britivenda Catissena Cantisena }
+	callsigns = { Anartes Arabiates Belgites Boii Breuci Carni Catubrini Cornacates Cotini Eravisci Helvetii Hercuniates Latobrigi Scordisci Serdi Serrapili Serretes Tricornenses Norici Varciani Vindelici Volcae }
+	industry_companies = { Gobannom }
+	electronic_companies = { Tefnetom }
+	car_companies = { Carbantom }
+	weapon_companies = { Isarnom }
+	aircraft_companies = { Fetni }
+	naval_companies = { Arthrach }
+	intelligence_agencies = { Skata }
+}
+noric = {
 	female_names = { Aife Airmed Ancasta Banna Billica Boudica Bricta Cata Cartimandua Chiomara Damona Diseta Gwendolen Litavis Iamcilla Maeve Verica
 	Cingetessa Conna Catia Carssouna Cunovinna Illica Lovernisca Magunna Lucilia Oconea Ria Rosula Senica Sentica Sulicena
 	Vassura Vinoma Vorvena Urca Veloriga Velibia Totia Titocuna Velbutena Seniciana Senila Vrocata Exuperata Deiana Cunolava Cunsa Aucissa

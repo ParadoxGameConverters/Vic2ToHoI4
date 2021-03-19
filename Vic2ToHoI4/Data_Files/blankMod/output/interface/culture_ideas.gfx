@@ -2316,4 +2316,108 @@ spriteTypes = {
 		name = "GFX_idea_culture_lemnian"
 		texturefile = "gfx/interface/culture/culture_lemnian.dds"
 	}
+	spriteType = {
+		name = "GFX_idea_culture_elsinorian"
+		texturefile = "gfx/interface/culture/culture_elsinorian"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_sabellian"
+		texturefile = "gfx/interface/culture/culture_sabellian"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_old_ligurian"
+		texturefile = "gfx/interface/culture/culture_old_ligurian"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_venetic"
+		texturefile = "gfx/interface/culture/culture_venetic"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_siculian"
+		texturefile = "gfx/interface/culture/culture_siculian"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_lepontic"
+		texturefile = "gfx/interface/culture/culture_lepontic"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_noric"
+		texturefile = "gfx/interface/culture/culture_noric"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_lusitanian"
+		texturefile = "gfx/interface/culture/culture_lusitanian"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_morlach"
+		texturefile = "gfx/interface/culture/culture_morlach"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_phoenician"
+		texturefile = "gfx/interface/culture/culture_phoenician"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_dacian_american"
+		texturefile = "gfx/interface/culture/culture_dacian_american"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_dacian_african"
+		texturefile = "gfx/interface/culture/culture_dacian_african"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_dacian_australian"
+		texturefile = "gfx/interface/culture/culture_dacian_australian"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_celtic_american"
+		texturefile = "gfx/interface/culture/culture_celtic_american"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_celtic_african"
+		texturefile = "gfx/interface/culture/culture_celtic_african"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_celtic_australian"
+		texturefile = "gfx/interface/culture/culture_celtic_australian"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_old_italian_american"
+		texturefile = "gfx/interface/culture/culture_old_italian_american"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_old_italian_african"
+		texturefile = "gfx/interface/culture/culture_old_italian_african"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_old_italian_australian"
+		texturefile = "gfx/interface/culture/culture_old_italian_australian"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_pruthenian"
+		texturefile = "gfx/interface/culture/culture_pruthenian"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_thracian_american"
+		texturefile = "gfx/interface/culture/culture_thracian_american"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_thracian_african"
+		texturefile = "gfx/interface/culture/culture_thracian_african"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_thracian_australian"
+		texturefile = "gfx/interface/culture/culture_thracian_australian"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_pecheneg"
+		texturefile = "gfx/interface/culture/culture_pecheneg"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_sarmatian"
+		texturefile = "gfx/interface/culture/culture_sarmatian"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_tocharian"
+		texturefile = "gfx/interface/culture/culture_tocharian"
+	}
 }
