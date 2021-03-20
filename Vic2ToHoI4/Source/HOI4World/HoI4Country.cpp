@@ -106,6 +106,10 @@ HoI4::Country::Country(std::string tag,
 	oldArmies = sourceCountry.getArmies();
 	theArmy.addSourceArmies(oldArmies);
 	shipNames = sourceCountry.getAllShipNames();
+
+	sourceCountryGoods["small_arms"] = sourceCountry.getGoodAmount("small_arms");
+	sourceCountryGoods["artillery"] = sourceCountry.getGoodAmount("artillery");
+	sourceCountryGoods["tanks"] = sourceCountry.getGoodAmount("barrels");
 }
 
 
@@ -408,8 +412,8 @@ void HoI4::Country::convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
 					  " se mantém unido e orgulhoso de seu legado imperial.",
 				 "braz_por");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
-				 "Rassemblant autour de la Reine de " + *name + " et des colonies " + *adjective + "s, la nation " + *adjective +
-					  " est unie et fière de son héritage impérial.",
+				 "Rassemblant autour de la Reine de " + *name + " et des colonies " + *adjective + "s, la nation " +
+					  *adjective + " est unie et fière de son héritage impérial.",
 				 "french");
 			hoi4Localisations.addIdeaLocalisation(tag + "_monarch_desc",
 				 "Das " + *adjective + "e Volk versammelt sich um die Königin von " + *name + " und die " + *adjective +
@@ -1039,6 +1043,36 @@ void HoI4::Country::convertArmies(const militaryMappings& theMilitaryMappings,
 	for (const auto& [equipmentType, amount]: theArmy.getLeftoverEquipment())
 	{
 		equipmentStockpile[equipmentType] += amount;
+	}
+
+	convertStockpile();
+}
+
+
+constexpr float max_stockpile = 2000.0F;
+void HoI4::Country::convertStockpile()
+{
+	const auto armyRequiredEquipment = theArmy.getRequiredEquipment();
+
+	const auto infantryEquipment = armyRequiredEquipment.find("infantry_equipment_0");
+	if (infantryEquipment != armyRequiredEquipment.end())
+	{
+		equipmentStockpile["infantry_equipment_0"] +=
+			 static_cast<unsigned int>(infantryEquipment->second * sourceCountryGoods["small_arms"] / max_stockpile);
+	}
+
+	const auto artilleryEquipment = armyRequiredEquipment.find("artillery_equipment_1");
+	if (artilleryEquipment != armyRequiredEquipment.end())
+	{
+		equipmentStockpile["artillery_equipment_1"] +=
+			 static_cast<unsigned int>(artilleryEquipment->second * sourceCountryGoods["artillery"] / max_stockpile);
+	}
+
+	const auto tankEquipment = armyRequiredEquipment.find("gw_tank_equipment");
+	if (tankEquipment != armyRequiredEquipment.end())
+	{
+		equipmentStockpile["gw_tank_equipment"] +=
+			 static_cast<unsigned int>(tankEquipment->second * sourceCountryGoods["tanks"] / max_stockpile);
 	}
 }
 

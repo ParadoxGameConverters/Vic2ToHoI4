@@ -358,7 +358,7 @@ void HoI4::Army::collectLeftoverEquipment(std::map<std::string, std::vector<Size
 	}
 }
 
-#pragma optimize("", off)
+
 std::map<std::string, int> HoI4::Army::getRequiredEquipment()
 {
 	std::map<std::string, int> requiredEquipment;
@@ -393,4 +393,3 @@ std::map<std::string, int> HoI4::Army::getRequiredEquipment()
 
 	return requiredEquipment;
 }
-#pragma optimize("", on)
