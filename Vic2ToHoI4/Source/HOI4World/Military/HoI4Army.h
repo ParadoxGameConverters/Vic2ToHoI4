@@ -40,6 +40,8 @@ class Army
 		 const States& theStates,
 		 const Mappers::ProvinceMapper& provinceMapper);
 
+	std::map<std::string, int> getRequiredEquipment();
+
 	friend std::ostream& operator<<(std::ostream& output, const Army& theArmy);
 
 	[[nodiscard]] const auto& getLeftoverEquipment() const { return leftoverEquipment; }

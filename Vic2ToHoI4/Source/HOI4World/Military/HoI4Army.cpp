@@ -326,7 +326,8 @@ HoI4::DivisionType HoI4::createDivision(const std::map<std::string, int>& templa
 		 divisionTemplate.getName(),
 		 location,
 		 actualExperience,
-		 actualStrength);
+		 actualStrength,
+		 templateRequirements);
 }
 
 
@@ -356,3 +357,40 @@ void HoI4::Army::collectLeftoverEquipment(std::map<std::string, std::vector<Size
 		}
 	}
 }
+
+#pragma optimize("", off)
+std::map<std::string, int> HoI4::Army::getRequiredEquipment()
+{
+	std::map<std::string, int> requiredEquipment;
+	for (const auto& division: divisions)
+	{
+		for (const auto& [type, amount]: division.getRegiments())
+		{
+			// TODO(#737): Make this use the HoI4 data instead of hard-coding
+			if (type == "infantry")
+			{
+				requiredEquipment["infantry_equipment_0"] += 100 * amount;
+			}
+			else if (type == "cavalry")
+			{
+				requiredEquipment["infantry_equipment_0"] += 120 * amount;
+			}
+			else if (type == "artillery_brigade")
+			{
+				requiredEquipment["artillery_equipment_1"] += 12 * amount;
+			}
+			else if (type == "light_armor")
+			{
+				requiredEquipment["gw_tank_equipment"] += 60 * amount;
+			}
+		}
+	}
+
+	for (const auto& [type, amount]: leftoverEquipment)
+	{
+		requiredEquipment[type] += amount;
+	}
+
+	return requiredEquipment;
+}
+#pragma optimize("", on)

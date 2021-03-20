@@ -3,6 +3,7 @@
 
 
 
+#include <map>
 #include <ostream>
 #include <string>
 
@@ -18,13 +19,18 @@ class DivisionType
 		 std::string _type,
 		 const int _location,
 		 const double _experience,
-		 double _startEquipment):
+		 double _startEquipment,
+		 std::map<std::string, int> _regiments):
 		 name(std::move(_name)),
-		 type(std::move(_type)), location(_location), experience(_experience), startEquipment(_startEquipment)
+		 type(std::move(_type)), location(_location), experience(_experience), startEquipment(_startEquipment),
+		 regiments(_regiments)
 	{
 	}
 
 	friend std::ostream& operator<<(std::ostream& out, const DivisionType&);
+
+	[[nodiscard]] const auto& getType() const { return type; }
+	[[nodiscard]] const auto& getRegiments() const { return regiments; }
 
   private:
 	std::string name;
@@ -32,6 +38,7 @@ class DivisionType
 	int location = 0;
 	double experience = 0.0;
 	double startEquipment = 0.7;
+	std::map<std::string, int> regiments;
 };
 
 } // namespace HoI4

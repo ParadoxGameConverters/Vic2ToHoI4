@@ -5,7 +5,7 @@
 
 TEST(HoI4World_Military_DivisionTypeTests, AllItemsAreAsSet)
 {
-	const HoI4::DivisionType division("Test Division", "Light Infantry Brigade", 42, 0.3, 0.8);
+	const HoI4::DivisionType division("Test Division", "Light Infantry Brigade", 42, 0.3, 0.8, {});
 	std::ostringstream output;
 	output << division;
 
@@ -19,4 +19,21 @@ TEST(HoI4World_Military_DivisionTypeTests, AllItemsAreAsSet)
 	expectedOutput << "\t}\n";
 
 	ASSERT_EQ(expectedOutput.str(), output.str());
+}
+
+
+TEST(HoI4World_Military_DivisionTypeTests, TypeCanBeRead)
+{
+	const HoI4::DivisionType division("Test Division", "Light Infantry Brigade", 42, 0.3, 0.8, {});
+
+	ASSERT_EQ("Light Infantry Brigade", division.getType());
+}
+
+
+TEST(HoI4World_Military_DivisionTypeTests, RegimentsAreAsSet)
+{
+	std::map<std::string, int> regiments{{"type_one", 1}, {"type_2", 2}};
+	const HoI4::DivisionType division("Test Division", "Light Infantry Brigade", 42, 0.3, 0.8, regiments);
+
+	ASSERT_EQ(regiments, division.getRegiments());
 }
