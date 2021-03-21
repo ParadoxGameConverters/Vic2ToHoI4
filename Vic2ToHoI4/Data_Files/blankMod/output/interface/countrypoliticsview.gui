@@ -55,7 +55,7 @@ guiTypes = {
 			name = "chart_explanation"
 			position = { x = 18 y = 116 }
 			size = { width = 330 height = 70 }
-			clipping = yes  				#####
+			clipping = no	  				#####
 			verticalScrollbar = "right_vertical_slider"	#####
 			margin = { top = 3 bottom = 2 }			#####
 			
