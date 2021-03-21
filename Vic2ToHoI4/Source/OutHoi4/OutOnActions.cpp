@@ -111,7 +111,7 @@ void HoI4::outputOnActions(const OnActions& onActions,
 
 	onActionsFile << "\ton_startup = {\n";
 	onActionsFile << "\t\teffect = {\n";
-	onActionsFile << "\t\t\tset_province_name = { id = 587 name = \"Köln\"} #Cologne\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 587 name = \"K\xC3\xB6ln\"} #Cologne\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 957 name = \"Vladivostok\"} #Haishenwai\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 1025 name = \"Kokura\"} #Fukuoka\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 1047 name = \"Guangzhou\"} #Canton\n";
@@ -122,9 +122,9 @@ void HoI4::outputOnActions(const OnActions& onActions,
 	onActionsFile << "\t\t\tset_province_name = { id = 3152 name = \"Tallinn\"} #Reval\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 3529 name = \"Stalingrad\"} #Tsaritsyn\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 4180 name = \"Honolulu\"} #Hawaii\n";
-	onActionsFile << "\t\t\tset_province_name = { id = 4268 name = \"Nouméa\"} #New Caledonia\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 4268 name = \"Noum" "\xC3\xA9" "a\"} #New Caledonia\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 4333 name = \"Astana\"} #Qaraganda\n";
-	onActionsFile << "\t\t\tset_province_name = { id = 4709 name = \"Ürümqi\"} #Díhuà\n";
+	onActionsFile << "\t\t\tset_province_name = { id = 4709 name = \"\xC3\x9Cr\xC3\xBCmqi\"} #D\xC3\xADhu\xC3\xA0\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 4801 name = \"Ulaanbaatar\"} #Urga\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 6115 name = \"Oslo\"} #Christiania\n";
 	onActionsFile << "\t\t\tset_province_name = { id = 7371 name = \"Kuching\"} #Brunei\n";
