@@ -116,6 +116,7 @@ link = { vic = IRE hoi = IRE } # Ireland
 link = { vic = IRQ hoi = IRQ } # Iraq
 link = { vic = ISR hoi = ISR } # Israel
 link = { vic = ITA hoi = ITA } # Italy
+# link = { vic = ITP hoi = ITA } # Papal Italy => Italy
 link = { vic = IVC hoi = IVO } # Ivory Coast
 link = { vic = JAM hoi = JAM } # Jamaica
 link = { vic = JAP hoi = JAP } # Japan
@@ -175,6 +176,7 @@ link = { vic = PRG hoi = PAR } # Paraguay
 link = { vic = PER hoi = PER } # Persia
 link = { vic = PHI hoi = PHI } # Philippines
 link = { vic = POL hoi = POL } # Poland
+link = { vic = CPL hoi = POL } # Congress Poland => Poland
 link = { vic = PNG hoi = PNG } # Papua New Guinea
 link = { vic = POR hoi = POR } # Portugal
 #link = { vic = CHI hoi = PRC } # China (already used)
@@ -206,6 +208,7 @@ link = { vic = SLO hoi = SLV } # Slovenia
 link = { vic = SOM hoi = SOM } # Somalia
 link = { vic = RUS hoi = SOV } # Russia
 link = { vic = SPA hoi = SPR } # Spain
+link = { vic = SPC hoi = SPR } # Carlist Spain => Spain
 link = { vic = KTH hoi = SRL } # Ceylon
 link = { vic = SUD hoi = SUD } # Sudan
 link = { vic = NUB hoi = SUD } # Funj => Sudan
