@@ -6,7 +6,7 @@
 
 Vic2::StockpileFactory::StockpileFactory()
 {
-	registerRegex(commonItems::catchallRegex, [this](const std::string& itemType, std::istream&  theStream)
+	registerRegex(commonItems::catchallRegex, [this](const std::string& itemType, std::istream& theStream)
 	{
 		stockpile.emplace(itemType, static_cast<float>(commonItems::getDouble(theStream)));
 	});
