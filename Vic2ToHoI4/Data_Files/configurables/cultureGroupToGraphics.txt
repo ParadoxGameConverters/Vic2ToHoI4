@@ -2269,7 +2269,7 @@ southeast_asian = {
 }
 east_asian = {
 	leader_portraits = {
-		communism = { "gfx/leaders/CHI/portrait_prc_mao_zedong.dds" }
+		communism = { "gfx/leaders/CHI/portrait_prc_mao_zedong.dds" "gfx/leaders/KOR/Portrait_KOR_Kim_Il-Sung.dds" }
 		democratic = { "GFX_CHI_Sun_Fo" "gfx/leaders/CHI/Portrait_China_weng_wenhao.dds" } 
 		fascism = { "GFX_CHI_Chen_Gongbo" "gfx/leaders/MEN/portrait_men_demchugdongrub.dds" "gfx/leaders/SIK/Portrait_Sinkiang_Sheng_Shicai.dds" } 
 		absolutist = { "GFX_portrait_man_henry_pu_yi_emperor" "gfx/leaders/SHX/portrait_shx_yan_xishan.dds" "gfx/leaders/XSM/portrait_xsm_ma_bufang.dds" }
@@ -2378,6 +2378,7 @@ native_american = {
 		"gfx/leaders/OC/portrait_nat_south_neutral.dds"
 		"gfx/leaders/OC/portrait_nat_south_radical.dds"
 		"gfx/leaders/OC/portrait_Native_American.dds"
+		"gfx/leaders/OC/Portrait_Lakota_Russell_Means.dds"
 	}
 	navy_portraits = {
 		"gfx/leaders/OC/portrait_Apocalypto_absolutist.dds"
@@ -2405,6 +2406,7 @@ native_american = {
 		"gfx/leaders/OC/portrait_nat_south_neutral.dds"
 		"gfx/leaders/OC/portrait_nat_south_radical.dds"
 		"gfx/leaders/OC/portrait_Native_American.dds"
+		"gfx/leaders/OC/Portrait_Lakota_Russell_Means.dds"
 	}
 	leader_portraits = {
 		communism = { "gfx/leaders/OC/portrait_nat_north_communist.dds" }
@@ -2459,6 +2461,7 @@ native_central_american = {
 		"gfx/leaders/OC/portrait_nat_south_neutral.dds"
 		"gfx/leaders/OC/portrait_nat_south_radical.dds"
 		"gfx/leaders/OC/portrait_Native_American.dds"
+		"gfx/leaders/OC/Portrait_Lakota_Russell_Means.dds"
 	}
 	navy_portraits = {
 		"gfx/leaders/OC/portrait_Apocalypto_absolutist.dds"
@@ -2486,6 +2489,7 @@ native_central_american = {
 		"gfx/leaders/OC/portrait_nat_south_neutral.dds"
 		"gfx/leaders/OC/portrait_nat_south_radical.dds"
 		"gfx/leaders/OC/portrait_Native_American.dds"
+		"gfx/leaders/OC/Portrait_Lakota_Russell_Means.dds"
 	}
 	leader_portraits = {
 		communism = { "gfx/leaders/OC/portrait_Apocalypto_communist.dds" }
@@ -2540,6 +2544,7 @@ native_south_american = {
 		"gfx/leaders/OC/portrait_nat_south_neutral.dds"
 		"gfx/leaders/OC/portrait_nat_south_radical.dds"
 		"gfx/leaders/OC/portrait_Native_American.dds"
+		"gfx/leaders/OC/Portrait_Lakota_Russell_Means.dds"
 	}
 	navy_portraits = {
 		"gfx/leaders/OC/portrait_Apocalypto_absolutist.dds"
@@ -2567,6 +2572,7 @@ native_south_american = {
 		"gfx/leaders/OC/portrait_nat_south_neutral.dds"
 		"gfx/leaders/OC/portrait_nat_south_radical.dds"
 		"gfx/leaders/OC/portrait_Native_American.dds"
+		"gfx/leaders/OC/Portrait_Lakota_Russell_Means.dds"
 	}
 	leader_portraits = {
 		communism = { "gfx/leaders/OC/portrait_nat_south_communist.dds" }
@@ -2621,6 +2627,7 @@ native_north_american = {
 		"gfx/leaders/OC/portrait_nat_south_neutral.dds"
 		"gfx/leaders/OC/portrait_nat_south_radical.dds"
 		"gfx/leaders/OC/portrait_Native_American.dds"
+		"gfx/leaders/OC/Portrait_Lakota_Russell_Means.dds"
 	}
 	navy_portraits = {
 		"gfx/leaders/OC/portrait_Apocalypto_absolutist.dds"
@@ -2648,6 +2655,7 @@ native_north_american = {
 		"gfx/leaders/OC/portrait_nat_south_neutral.dds"
 		"gfx/leaders/OC/portrait_nat_south_radical.dds"
 		"gfx/leaders/OC/portrait_Native_American.dds"
+		"gfx/leaders/OC/Portrait_Lakota_Russell_Means.dds"
 	}
 	leader_portraits = {
 		communism = { "gfx/leaders/OC/portrait_nat_north_communist.dds" }
@@ -2702,6 +2710,7 @@ native_carribean = {
 		"gfx/leaders/OC/portrait_nat_south_neutral.dds"
 		"gfx/leaders/OC/portrait_nat_south_radical.dds"
 		"gfx/leaders/OC/portrait_Native_American.dds"
+		"gfx/leaders/OC/Portrait_Lakota_Russell_Means.dds"
 	}
 	navy_portraits = {
 		"gfx/leaders/OC/portrait_Apocalypto_absolutist.dds"
@@ -2729,6 +2738,7 @@ native_carribean = {
 		"gfx/leaders/OC/portrait_nat_south_neutral.dds"
 		"gfx/leaders/OC/portrait_nat_south_radical.dds"
 		"gfx/leaders/OC/portrait_Native_American.dds"
+		"gfx/leaders/OC/Portrait_Lakota_Russell_Means.dds"
 	}
 	leader_portraits = {
 		communism = { "gfx/leaders/OC/portrait_nat_carib_communist.dds" }
