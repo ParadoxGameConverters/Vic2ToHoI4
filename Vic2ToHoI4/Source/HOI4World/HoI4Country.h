@@ -262,6 +262,7 @@ class Country
 	[[nodiscard]] std::vector<std::string> getShipNames(const std::string& category) const;
 
 	void convertStockpile();
+	float getSourceCountryGoodAmount(const std::string& goodType);
 
 	std::string tag;
 	std::string oldTag;

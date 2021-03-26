@@ -18,6 +18,7 @@
 #include "V2World/Politics/Party.h"
 #include "V2World/World/World.h"
 #include <algorithm>
+#include <cmath>
 
 
 
@@ -1047,51 +1048,103 @@ void HoI4::Country::convertArmies(const militaryMappings& theMilitaryMappings,
 }
 
 
+float HoI4::Country::getSourceCountryGoodAmount(const std::string& goodType)
+{
+	if (const auto good = sourceCountryGoods.find(goodType); good != sourceCountryGoods.end())
+	{
+		return good->second;
+	}
+
+	return 0.0F;
+}
+
+
 constexpr float max_stockpile = 2000.0F;
+constexpr float barrels_supply_required_for_light_armor = 1.1175F;
+constexpr float artillery_supply_required_for_light_armor = 0.745F;
+constexpr float canned_food_supply_required_for_light_armor = 0.755F;
+constexpr float fuel_supply_required_for_light_armor = 1.49F;
+constexpr float full_light_armor_supply = 2000.0F / 1.49F;
+constexpr float light_armor_equipment_per_division = 60.0F;
+constexpr float artillery_supply_required_for_artillery = 0.76F;
+constexpr float canned_food_supply_required_for_artillery = 0.456F;
+constexpr float full_artillery_supply = 2000.0F / 0.76F;
+constexpr float artillery_equipment_per_division = 12.0F;
+constexpr float small_arms_supply_required_for_infantry = 0.0726F;
+constexpr float ammunition_supply_required_for_infantry = 0.45375F;
+constexpr float canned_food_supply_required_for_infantry = 0.4235F;
+constexpr float full_infantry_supply = 2000.0F / 0.45375F;
+constexpr float infantry_equipment_per_division = 100.0F;
+constexpr float small_arms_supply_required_for_cavalry = 0.08775F;
+constexpr float ammunition_supply_required_for_cavalry = 0.43875F;
+constexpr float canned_food_supply_required_for_cavalry = 0.468F;
+constexpr float full_cavalry_supply = 2000.0F / 0.468F;
+constexpr float cavalry_equipment_per_division = 120.0F;
 void HoI4::Country::convertStockpile()
 {
-	std::map<std::string, int> armyRequiredEquipment;
-	for (const auto& [type, amount]: theArmy.getDivisionTypesAndAmounts())
-	{
-		// TODO(#737): Make this use the HoI4 data instead of hard-coding
-		if (type == "infantry")
-		{
-			armyRequiredEquipment["infantry_equipment_0"] += 100 * amount;
-		}
-		else if (type == "cavalry")
-		{
-			armyRequiredEquipment["infantry_equipment_0"] += 120 * amount;
-		}
-		else if (type == "artillery_brigade")
-		{
-			armyRequiredEquipment["artillery_equipment_1"] += 12 * amount;
-		}
-		else if (type == "light_armor")
-		{
-			armyRequiredEquipment["gw_tank_equipment"] += 60 * amount;
-		}
-	}
+	const auto divisionTypesAndAmounts = theArmy.getDivisionTypesAndAmounts();
 
-	const auto infantryEquipment = armyRequiredEquipment.find("infantry_equipment_0");
-	if (infantryEquipment != armyRequiredEquipment.end())
-	{
-		equipmentStockpile["infantry_equipment_0"] +=
-			 static_cast<unsigned int>(infantryEquipment->second * sourceCountryGoods["small_arms"] / max_stockpile);
-	}
-
-	const auto artilleryEquipment = armyRequiredEquipment.find("artillery_equipment_1");
-	if (artilleryEquipment != armyRequiredEquipment.end())
-	{
-		equipmentStockpile["artillery_equipment_1"] +=
-			 static_cast<unsigned int>(artilleryEquipment->second * sourceCountryGoods["artillery"] / max_stockpile);
-	}
-
-	const auto tankEquipment = armyRequiredEquipment.find("gw_tank_equipment");
-	if (tankEquipment != armyRequiredEquipment.end())
+	// convert supply into light armor equipment via light_armor
+	std::set<float> armorSupplyLevels{getSourceCountryGoodAmount("barrels") / barrels_supply_required_for_light_armor,
+		 getSourceCountryGoodAmount("artillery") / artillery_supply_required_for_light_armor,
+		 getSourceCountryGoodAmount("canned_food") / canned_food_supply_required_for_light_armor,
+		 getSourceCountryGoodAmount("fuel") / fuel_supply_required_for_light_armor};
+	const auto armorSupply = *std::min_element(armorSupplyLevels.begin(), armorSupplyLevels.end());
+	if (const auto tanks = divisionTypesAndAmounts.find("light_armor"); tanks != divisionTypesAndAmounts.end())
 	{
 		equipmentStockpile["gw_tank_equipment"] +=
-			 static_cast<unsigned int>(tankEquipment->second * sourceCountryGoods["barrels"] / max_stockpile);
+			 static_cast<int>(std::ceil(static_cast<float>(tanks->second) * armorSupply / full_light_armor_supply *
+												 light_armor_equipment_per_division));
 	}
+	sourceCountryGoods["barrels"] -= barrels_supply_required_for_light_armor * armorSupply;
+	sourceCountryGoods["artillery"] -= artillery_supply_required_for_light_armor * armorSupply;
+	sourceCountryGoods["canned_food"] -= canned_food_supply_required_for_light_armor * armorSupply;
+	sourceCountryGoods["fuel"] -= fuel_supply_required_for_light_armor * armorSupply;
+
+	// convert supply into artillery equipment via artillery_brigade
+	std::set<float> artillerySupplyLevels{
+		 getSourceCountryGoodAmount("artillery") / artillery_supply_required_for_artillery,
+		 getSourceCountryGoodAmount("canned_food") / canned_food_supply_required_for_artillery};
+	const auto artillerySupply = *std::min_element(artillerySupplyLevels.begin(), artillerySupplyLevels.end());
+	if (const auto artillery = divisionTypesAndAmounts.find("artillery_brigade");
+		 artillery != divisionTypesAndAmounts.end())
+	{
+		equipmentStockpile["artillery_equipment_1"] +=
+			 static_cast<int>(std::ceil(static_cast<float>(artillery->second) * artillerySupply / full_artillery_supply *
+												 artillery_equipment_per_division));
+	}
+	sourceCountryGoods["artillery"] -= artillery_supply_required_for_artillery * artillerySupply;
+	sourceCountryGoods["canned_food"] -= canned_food_supply_required_for_artillery * artillerySupply;
+
+	// convert supply into infantry equipment via infantry
+	std::set<float> infantrySupplyLevels{
+		 getSourceCountryGoodAmount("small_arms") / small_arms_supply_required_for_infantry,
+		 getSourceCountryGoodAmount("ammunition") / ammunition_supply_required_for_infantry,
+		 getSourceCountryGoodAmount("canned_food") / canned_food_supply_required_for_infantry};
+	const auto infantrySupply = *std::min_element(infantrySupplyLevels.begin(), infantrySupplyLevels.end());
+	if (const auto tanks = divisionTypesAndAmounts.find("infantry"); tanks != divisionTypesAndAmounts.end())
+	{
+		equipmentStockpile["infantry_equipment_0"] += static_cast<int>(std::ceil(
+			 static_cast<float>(tanks->second) * infantrySupply / full_infantry_supply * infantry_equipment_per_division));
+	}
+	sourceCountryGoods["small_arms"] -= small_arms_supply_required_for_infantry * infantrySupply;
+	sourceCountryGoods["ammunition"] -= ammunition_supply_required_for_infantry * infantrySupply;
+	sourceCountryGoods["canned_food"] -= canned_food_supply_required_for_infantry * infantrySupply;
+
+	// convert supply into infantry equipment via cavalry
+	std::set<float> cavalrySupplyLevels{
+		 getSourceCountryGoodAmount("small_arms") / small_arms_supply_required_for_cavalry,
+		 getSourceCountryGoodAmount("ammunition") / ammunition_supply_required_for_cavalry,
+		 getSourceCountryGoodAmount("canned_food") / canned_food_supply_required_for_cavalry};
+	const auto cavalrySupply = *std::min_element(cavalrySupplyLevels.begin(), cavalrySupplyLevels.end());
+	if (const auto tanks = divisionTypesAndAmounts.find("cavalry"); tanks != divisionTypesAndAmounts.end())
+	{
+		equipmentStockpile["infantry_equipment_0"] += static_cast<int>(std::ceil(
+			 static_cast<float>(tanks->second) * cavalrySupply / full_cavalry_supply * cavalry_equipment_per_division));
+	}
+	sourceCountryGoods["small_arms"] -= small_arms_supply_required_for_cavalry * cavalrySupply;
+	sourceCountryGoods["ammunition"] -= ammunition_supply_required_for_cavalry * cavalrySupply;
+	sourceCountryGoods["canned_food"] -= canned_food_supply_required_for_cavalry * cavalrySupply;
 }
 
 
