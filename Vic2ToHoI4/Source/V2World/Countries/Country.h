@@ -94,6 +94,7 @@ class Country
 	[[nodiscard]] bool isAtWar() const { return atWar; }
 	[[nodiscard]] const auto& getWars() const { return wars; }
 	[[nodiscard]] const auto& getLastDynasty() const { return lastDynasty; }
+	[[nodiscard]] const auto& getGoodsStockpile() const { return stockpile; }
 
 	[[nodiscard]] auto& getModifiableArmies() { return armies; }
 
@@ -103,7 +104,6 @@ class Country
 	[[nodiscard]] std::optional<std::string> getName(const std::string& language) const;
 	[[nodiscard]] std::optional<std::string> getAdjective(const std::string& language) const;
 	[[nodiscard]] std::vector<std::string> getShipNames(const std::string& category) const;
-	[[nodiscard]] float getGoodAmount(const std::string& good) const;
 
   private:
 	std::map<std::string, int> determineCultureSizes();

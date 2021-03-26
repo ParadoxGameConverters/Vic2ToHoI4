@@ -107,9 +107,7 @@ HoI4::Country::Country(std::string tag,
 	theArmy.addSourceArmies(oldArmies);
 	shipNames = sourceCountry.getAllShipNames();
 
-	sourceCountryGoods["small_arms"] = sourceCountry.getGoodAmount("small_arms");
-	sourceCountryGoods["artillery"] = sourceCountry.getGoodAmount("artillery");
-	sourceCountryGoods["tanks"] = sourceCountry.getGoodAmount("barrels");
+	sourceCountryGoods = sourceCountry.getGoodsStockpile();
 }
 
 
@@ -1072,7 +1070,7 @@ void HoI4::Country::convertStockpile()
 	if (tankEquipment != armyRequiredEquipment.end())
 	{
 		equipmentStockpile["gw_tank_equipment"] +=
-			 static_cast<unsigned int>(tankEquipment->second * sourceCountryGoods["tanks"] / max_stockpile);
+			 static_cast<unsigned int>(tankEquipment->second * sourceCountryGoods["barrels"] / max_stockpile);
 	}
 }
 

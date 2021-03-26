@@ -2936,7 +2936,26 @@ TEST(Vic2World_Countries_CountryTests, DynastyImportedFromCountryData)
 }
 
 
-TEST(Vic2World_Countries_CountryTests, GoodAmountsAreReturned)
+TEST(Vic2World_Countries_CountryTests, GoodsStockpileDefaultsToEmpty)
+{
+	std::stringstream input;
+
+	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
+		 *Vic2::StateDefinitions::Builder{}.build(),
+		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
+									 .createCountry("TAG",
+										  input,
+										  *Vic2::CommonCountryData::Builder{}.Build(),
+										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
+										  *Vic2::StateLanguageCategories::Builder{}.build(),
+										  0.05F,
+										  std::nullopt);
+
+	ASSERT_TRUE(country->getGoodsStockpile().empty());
+}
+
+
+TEST(Vic2World_Countries_CountryTests, GoodsStockpileIsReturned)
 {
 	std::stringstream input;
 	input << "stockpile=\n";
@@ -2955,24 +2974,5 @@ TEST(Vic2World_Countries_CountryTests, GoodAmountsAreReturned)
 										  0.05F,
 										  std::nullopt);
 
-	ASSERT_THAT(country->getGoodAmount("test_good"), testing::FloatEq(4.2F));
-}
-
-
-TEST(Vic2World_Countries_CountryTests, GoodAmountsAreZeroForMissingGoods)
-{
-	std::stringstream input;
-
-	const auto country = Vic2::Country::Factory{*Configuration::Builder{}.setVic2Path("./countries/blank/").build(),
-		 *Vic2::StateDefinitions::Builder{}.build(),
-		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build())}
-									 .createCountry("TAG",
-										  input,
-										  *Vic2::CommonCountryData::Builder{}.Build(),
-										  std::vector<Vic2::Party>{*Vic2::Party::Builder{}.Build()},
-										  *Vic2::StateLanguageCategories::Builder{}.build(),
-										  0.05F,
-										  std::nullopt);
-
-	ASSERT_THAT(country->getGoodAmount("test_good"), testing::FloatEq(0.0F));
+	ASSERT_THAT(country->getGoodsStockpile(), testing::UnorderedElementsAre(testing::Pair("test_good", 4.2F)));
 }
