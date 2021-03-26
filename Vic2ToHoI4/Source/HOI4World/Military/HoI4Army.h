@@ -40,10 +40,10 @@ class Army
 		 const States& theStates,
 		 const Mappers::ProvinceMapper& provinceMapper);
 
-	std::map<std::string, int> getRequiredEquipment();
 
 	friend std::ostream& operator<<(std::ostream& output, const Army& theArmy);
 
+	[[nodiscard]] const auto& getDivisionTypesAndAmounts() const { return divisionTypesAndAmounts; }
 	[[nodiscard]] const auto& getLeftoverEquipment() const { return leftoverEquipment; }
 	[[nodiscard]] const auto& getDivisionLocations() const { return divisionLocations; }
 
@@ -56,6 +56,12 @@ class Army
 		 const technologies& countryTechnologies,
 		 int location);
 
+	void addAvailableBattalionsAndCompanies(
+		 std::map<std::string, std::vector<SizedRegiment>>& availableBattalionsAndCompanies,
+		 const Vic2::Army& sourceArmy,
+		 const militaryMappings& theMilitaryMappings,
+		 const double forceMultiplier);
+
 	bool missingRequiredTechnologies(const DivisionTemplateType& divisionTemplate,
 		 const technologies& countryTechnologies);
 
@@ -64,6 +70,7 @@ class Army
 	std::vector<Vic2::Army> sourceArmies;
 	std::vector<DivisionType> divisions;
 
+	std::map<std::string, int> divisionTypesAndAmounts;
 	std::map<std::string, unsigned int> leftoverEquipment;
 
 	std::set<int> divisionLocations;

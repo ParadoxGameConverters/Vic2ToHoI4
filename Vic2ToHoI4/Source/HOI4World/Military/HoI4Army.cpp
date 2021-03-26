@@ -111,7 +111,7 @@ bool HoI4::isWastelandProvince(const int provinceNum, const States& theStates)
 }
 
 
-void HoI4::addAvailableBattalionsAndCompanies(
+void HoI4::Army::addAvailableBattalionsAndCompanies(
 	 std::map<std::string, std::vector<SizedRegiment>>& availableBattalionsAndCompanies,
 	 const Vic2::Army& sourceArmy,
 	 const militaryMappings& theMilitaryMappings,
@@ -132,6 +132,7 @@ void HoI4::addAvailableBattalionsAndCompanies(
 					theRegiment.experience = regiment.getExperience();
 					theRegiment.strength = regiment.getStrength();
 					availableBattalionsAndCompanies[unitInfo.getType()].push_back(theRegiment);
+					divisionTypesAndAmounts[unitInfo.getType()] += 1;
 					break;
 				}
 			}
@@ -356,40 +357,4 @@ void HoI4::Army::collectLeftoverEquipment(std::map<std::string, std::vector<Size
 			}
 		}
 	}
-}
-
-
-std::map<std::string, int> HoI4::Army::getRequiredEquipment()
-{
-	std::map<std::string, int> requiredEquipment;
-	for (const auto& division: divisions)
-	{
-		for (const auto& [type, amount]: division.getRegiments())
-		{
-			// TODO(#737): Make this use the HoI4 data instead of hard-coding
-			if (type == "infantry")
-			{
-				requiredEquipment["infantry_equipment_0"] += 100 * amount;
-			}
-			else if (type == "cavalry")
-			{
-				requiredEquipment["infantry_equipment_0"] += 120 * amount;
-			}
-			else if (type == "artillery_brigade")
-			{
-				requiredEquipment["artillery_equipment_1"] += 12 * amount;
-			}
-			else if (type == "light_armor")
-			{
-				requiredEquipment["gw_tank_equipment"] += 60 * amount;
-			}
-		}
-	}
-
-	for (const auto& [type, amount]: leftoverEquipment)
-	{
-		requiredEquipment[type] += amount;
-	}
-
-	return requiredEquipment;
 }
