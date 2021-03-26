@@ -8109,9 +8109,17 @@ continent = { # Theoretically, East Asian portrait pool
 			"gfx/leaders/CAM/Portrait_Cambodia_Cheng_Heng.dds"
 			"gfx/leaders/CAM/Portrait_Cambodia_Son_Ngoc_Than.dds"
 			"gfx/leaders/CAM/Portrait_Cambodia_Tou_Samouth.dds"
+			"gfx/leaders/CAM/Portrait_CAM_Dap_Chhoun_Mchoul_Pich.dds"
+			"gfx/leaders/CAM/Portrait_CAM_Norodom_Sihanouk.dds"
+			"gfx/leaders/KOR/Portrait_KOR_Kim_Il-Sung.dds"
+			"gfx/leaders/KOR/Portrait_KOR_Syngman_Rhee.dds"
 			"gfx/leaders/CAM/Portrait_Cambodia_Cheng_Heng.dds"
 			"gfx/leaders/CAM/Portrait_Cambodia_Son_Ngoc_Than.dds"
 			"gfx/leaders/CAM/Portrait_Cambodia_Tou_Samouth.dds"
+			"gfx/leaders/CAM/Portrait_CAM_Dap_Chhoun_Mchoul_Pich.dds"
+			"gfx/leaders/CAM/Portrait_CAM_Norodom_Sihanouk.dds"
+			"gfx/leaders/KOR/Portrait_KOR_Kim_Il-Sung.dds"
+			"gfx/leaders/KOR/Portrait_KOR_Syngman_Rhee.dds"
 		}
 		female = {
 			"gfx/leaders/Asia/portrait_asia_generic_operative_female_1.dds"
@@ -8309,6 +8317,10 @@ continent = { # Theoretically, East Asian portrait pool
 			"gfx/leaders/CAM/Portrait_Cambodia_Cheng_Heng.dds"
 			"gfx/leaders/CAM/Portrait_Cambodia_Son_Ngoc_Than.dds"
 			"gfx/leaders/CAM/Portrait_Cambodia_Tou_Samouth.dds"
+			"gfx/leaders/CAM/Portrait_CAM_Dap_Chhoun_Mchoul_Pich.dds"
+			"gfx/leaders/CAM/Portrait_CAM_Norodom_Sihanouk.dds"
+			"gfx/leaders/KOR/Portrait_KOR_Kim_Il-Sung.dds"
+			"gfx/leaders/KOR/Portrait_KOR_Syngman_Rhee.dds"
 		}
 		female = {
 			"gfx/leaders/Asia/portrait_asia_generic_operative_female_1.dds"
@@ -8507,6 +8519,10 @@ continent = { # Theoretically, East Asian portrait pool
 				"gfx/leaders/CAM/Portrait_Cambodia_Cheng_Heng.dds"
 				"gfx/leaders/CAM/Portrait_Cambodia_Son_Ngoc_Than.dds"
 				"gfx/leaders/CAM/Portrait_Cambodia_Tou_Samouth.dds"
+				"gfx/leaders/CAM/Portrait_CAM_Dap_Chhoun_Mchoul_Pich.dds"
+				"gfx/leaders/CAM/Portrait_CAM_Norodom_Sihanouk.dds"
+				"gfx/leaders/KOR/Portrait_KOR_Kim_Il-Sung.dds"
+				"gfx/leaders/KOR/Portrait_KOR_Syngman_Rhee.dds"
 			}
 			female = {
 				"gfx/leaders/Asia/portrait_asia_generic_operative_female_1.dds"
@@ -8703,6 +8719,10 @@ continent = { # Theoretically, East Asian portrait pool
 				"gfx/leaders/CAM/Portrait_Cambodia_Cheng_Heng.dds"
 				"gfx/leaders/CAM/Portrait_Cambodia_Son_Ngoc_Than.dds"
 				"gfx/leaders/CAM/Portrait_Cambodia_Tou_Samouth.dds"
+				"gfx/leaders/CAM/Portrait_CAM_Dap_Chhoun_Mchoul_Pich.dds"
+				"gfx/leaders/CAM/Portrait_CAM_Norodom_Sihanouk.dds"
+				"gfx/leaders/KOR/Portrait_KOR_Kim_Il-Sung.dds"
+				"gfx/leaders/KOR/Portrait_KOR_Syngman_Rhee.dds"
 			}
 			female = {
 				"gfx/leaders/Asia/portrait_asia_generic_operative_female_1.dds"
@@ -8899,6 +8919,10 @@ continent = { # Theoretically, East Asian portrait pool
 				"gfx/leaders/CAM/Portrait_Cambodia_Cheng_Heng.dds"
 				"gfx/leaders/CAM/Portrait_Cambodia_Son_Ngoc_Than.dds"
 				"gfx/leaders/CAM/Portrait_Cambodia_Tou_Samouth.dds"
+				"gfx/leaders/CAM/Portrait_CAM_Dap_Chhoun_Mchoul_Pich.dds"
+				"gfx/leaders/CAM/Portrait_CAM_Norodom_Sihanouk.dds"
+				"gfx/leaders/KOR/Portrait_KOR_Kim_Il-Sung.dds"
+				"gfx/leaders/KOR/Portrait_KOR_Syngman_Rhee.dds"
 			}
 			female = {
 				"gfx/leaders/Asia/portrait_asia_generic_operative_female_1.dds"
@@ -9095,6 +9119,10 @@ continent = { # Theoretically, East Asian portrait pool
 				"gfx/leaders/CAM/Portrait_Cambodia_Cheng_Heng.dds"
 				"gfx/leaders/CAM/Portrait_Cambodia_Son_Ngoc_Than.dds"
 				"gfx/leaders/CAM/Portrait_Cambodia_Tou_Samouth.dds"
+				"gfx/leaders/CAM/Portrait_CAM_Dap_Chhoun_Mchoul_Pich.dds"
+				"gfx/leaders/CAM/Portrait_CAM_Norodom_Sihanouk.dds"
+				"gfx/leaders/KOR/Portrait_KOR_Kim_Il-Sung.dds"
+				"gfx/leaders/KOR/Portrait_KOR_Syngman_Rhee.dds"
 			}
 			female = {
 				"gfx/leaders/Asia/portrait_asia_generic_operative_female_1.dds"
@@ -9291,6 +9319,10 @@ continent = { # Theoretically, East Asian portrait pool
 				"gfx/leaders/CAM/Portrait_Cambodia_Cheng_Heng.dds"
 				"gfx/leaders/CAM/Portrait_Cambodia_Son_Ngoc_Than.dds"
 				"gfx/leaders/CAM/Portrait_Cambodia_Tou_Samouth.dds"
+				"gfx/leaders/CAM/Portrait_CAM_Dap_Chhoun_Mchoul_Pich.dds"
+				"gfx/leaders/CAM/Portrait_CAM_Norodom_Sihanouk.dds"
+				"gfx/leaders/KOR/Portrait_KOR_Kim_Il-Sung.dds"
+				"gfx/leaders/KOR/Portrait_KOR_Syngman_Rhee.dds"
 			}
 			female = {
 				"gfx/leaders/Asia/portrait_asia_generic_operative_female_1.dds"
@@ -9487,6 +9519,10 @@ continent = { # Theoretically, East Asian portrait pool
 				"gfx/leaders/CAM/Portrait_Cambodia_Cheng_Heng.dds"
 				"gfx/leaders/CAM/Portrait_Cambodia_Son_Ngoc_Than.dds"
 				"gfx/leaders/CAM/Portrait_Cambodia_Tou_Samouth.dds"
+				"gfx/leaders/CAM/Portrait_CAM_Dap_Chhoun_Mchoul_Pich.dds"
+				"gfx/leaders/CAM/Portrait_CAM_Norodom_Sihanouk.dds"
+				"gfx/leaders/KOR/Portrait_KOR_Kim_Il-Sung.dds"
+				"gfx/leaders/KOR/Portrait_KOR_Syngman_Rhee.dds"
 			}
 			female = {
 				"gfx/leaders/Asia/portrait_asia_generic_operative_female_1.dds"
@@ -9685,6 +9721,10 @@ continent = { # Theoretically, East Asian portrait pool
 			"gfx/leaders/CAM/Portrait_Cambodia_Cheng_Heng.dds"
 			"gfx/leaders/CAM/Portrait_Cambodia_Son_Ngoc_Than.dds"
 			"gfx/leaders/CAM/Portrait_Cambodia_Tou_Samouth.dds"
+			"gfx/leaders/CAM/Portrait_CAM_Dap_Chhoun_Mchoul_Pich.dds"
+			"gfx/leaders/CAM/Portrait_CAM_Norodom_Sihanouk.dds"
+			"gfx/leaders/KOR/Portrait_KOR_Kim_Il-Sung.dds"
+			"gfx/leaders/KOR/Portrait_KOR_Syngman_Rhee.dds"
 		}
 		female = {
 			"gfx/leaders/Asia/portrait_asia_generic_operative_female_1.dds"
