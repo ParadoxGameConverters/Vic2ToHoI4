@@ -256,6 +256,9 @@
     <Filter Include="Mappers\MergeRules">
       <UniqueIdentifier>{c3977410-020a-4d83-8207-09bebec30d0a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2World\Stockpiles">
+      <UniqueIdentifier>{3f96e7cb-42d9-4e94-963c-dda43836eb2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1221,6 +1224,9 @@
     </ClCompile>
     <ClCompile Include="Source\Mappers\MergeRules\MergeRuleFactory.cpp">
       <Filter>Mappers\MergeRules</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\V2World\Stockpiles\StockpileFactory.cpp">
+      <Filter>Vic2World\Stockpiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2423,6 +2429,9 @@
     </ClInclude>
     <ClInclude Include="Source\Mappers\MergeRules\MergeRulesFactory.h">
       <Filter>Mappers\MergeRules</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\V2World\Stockpiles\StockpileFactory.h">
+      <Filter>Vic2World\Stockpiles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

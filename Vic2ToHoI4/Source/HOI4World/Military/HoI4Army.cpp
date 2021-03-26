@@ -111,7 +111,7 @@ bool HoI4::isWastelandProvince(const int provinceNum, const States& theStates)
 }
 
 
-void HoI4::addAvailableBattalionsAndCompanies(
+void HoI4::Army::addAvailableBattalionsAndCompanies(
 	 std::map<std::string, std::vector<SizedRegiment>>& availableBattalionsAndCompanies,
 	 const Vic2::Army& sourceArmy,
 	 const militaryMappings& theMilitaryMappings,
@@ -132,6 +132,7 @@ void HoI4::addAvailableBattalionsAndCompanies(
 					theRegiment.experience = regiment.getExperience();
 					theRegiment.strength = regiment.getStrength();
 					availableBattalionsAndCompanies[unitInfo.getType()].push_back(theRegiment);
+					divisionTypesAndAmounts[unitInfo.getType()] += 1;
 					break;
 				}
 			}
@@ -326,7 +327,8 @@ HoI4::DivisionType HoI4::createDivision(const std::map<std::string, int>& templa
 		 divisionTemplate.getName(),
 		 location,
 		 actualExperience,
-		 actualStrength);
+		 actualStrength,
+		 templateRequirements);
 }
 
 

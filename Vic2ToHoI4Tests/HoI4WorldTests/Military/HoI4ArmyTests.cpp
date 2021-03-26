@@ -6,6 +6,7 @@
 #include "Mappers/Provinces/ProvinceMapperBuilder.h"
 #include "V2World/Military/Army.h"
 #include "V2World/Military/ArmyFactory.h"
+#include "gmock/gmock-matchers.h"
 #include "gtest/gtest.h"
 
 
@@ -868,4 +869,224 @@ TEST(HoI4World_Military_HoI4ArmyTests, BackupDivisionLocationsAreConverted)
 				.Build());
 
 	ASSERT_EQ(std::set<int>{1}, theArmy.getDivisionLocations());
+}
+
+
+TEST(HoI4World_Military_HoI4ArmyTests, InfantryDivisionsAreReturned)
+{
+	HoI4::States theStates;
+
+	HoI4::Army theArmy;
+	std::vector<Vic2::Army> Vic2Armies;
+	std::istringstream armyInput(
+		 "=\n"
+		 "\t{\n"
+		 "\t\tregiment=\n"
+		 "\t\t{\n"
+		 "\t\t\tcount=1\n"
+		 "\t\t\ttype=infantry\n"
+		 "\t\t}\n"
+		 "\t}");
+	Vic2::Army::Factory armyFactory;
+	auto Vic2Army = *armyFactory.getArmy("", armyInput);
+	Vic2Armies.push_back(Vic2Army);
+	theArmy.addSourceArmies(Vic2Armies);
+
+	std::stringstream mappingsInput;
+	mappingsInput << "= {\n";
+	mappingsInput << "\tmtg_unit_map = {}\n";
+	mappingsInput << "\tunit_map = {\n";
+	mappingsInput << "\t\tlink = {\n";
+	mappingsInput << "\t\t\tvic = infantry\n";
+	mappingsInput << "\t\t\thoi = {\n";
+	mappingsInput << "\t\t\t\tcategory = land\n";
+	mappingsInput << "\t\t\t\ttype = infantry\n";
+	mappingsInput << "\t\t\t\tequipment = infantry_equipment_0\n";
+	mappingsInput << "\t\t\t\tsize = 1\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "\tdivision_templates = {\n";
+	mappingsInput << "\t\tdivision_template= {\n";
+	mappingsInput << "\t\t\tregiments = {\n";
+	mappingsInput << "\t\t\t\tinfantry = { x = 0 y = 0 }\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "}";
+	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
+
+	theArmy.convertArmies(theMilitaryMappings,
+		 0,
+		 1.0,
+		 HoI4::technologies{},
+		 theStates,
+		 *Mappers::ProvinceMapper::Builder().Build());
+
+	ASSERT_THAT(theArmy.getDivisionTypesAndAmounts(), testing::UnorderedElementsAre(testing::Pair("infantry", 1)));
+}
+
+
+TEST(HoI4World_Military_HoI4ArmyTests, CavalryDivisionsRequireEquipment)
+{
+	HoI4::States theStates;
+
+	HoI4::Army theArmy;
+	std::vector<Vic2::Army> Vic2Armies;
+	std::istringstream armyInput(
+		 "=\n"
+		 "\t{\n"
+		 "\t\tregiment=\n"
+		 "\t\t{\n"
+		 "\t\t\tcount=1\n"
+		 "\t\t\ttype=cavalry\n"
+		 "\t\t}\n"
+		 "\t}");
+	Vic2::Army::Factory armyFactory;
+	auto Vic2Army = *armyFactory.getArmy("", armyInput);
+	Vic2Armies.push_back(Vic2Army);
+	theArmy.addSourceArmies(Vic2Armies);
+
+	std::stringstream mappingsInput;
+	mappingsInput << "= {\n";
+	mappingsInput << "\tmtg_unit_map = {}\n";
+	mappingsInput << "\tunit_map = {\n";
+	mappingsInput << "\t\tlink = {\n";
+	mappingsInput << "\t\t\tvic = cavalry\n";
+	mappingsInput << "\t\t\thoi = {\n";
+	mappingsInput << "\t\t\t\tcategory = land\n";
+	mappingsInput << "\t\t\t\ttype = cavalry\n";
+	mappingsInput << "\t\t\t\tsize = 1\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "\tdivision_templates = {\n";
+	mappingsInput << "\t\tdivision_template= {\n";
+	mappingsInput << "\t\t\tregiments = {\n";
+	mappingsInput << "\t\t\t\tcavalry = { x = 0 y = 0 }\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "}";
+	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
+
+	theArmy.convertArmies(theMilitaryMappings,
+		 0,
+		 1.0,
+		 HoI4::technologies{},
+		 theStates,
+		 *Mappers::ProvinceMapper::Builder().Build());
+
+	ASSERT_THAT(theArmy.getDivisionTypesAndAmounts(),
+		 testing::UnorderedElementsAre(testing::Pair("cavalry", 1)));
+}
+
+
+TEST(HoI4World_Military_HoI4ArmyTests, ArtilleryDivisionsAreReturned)
+{
+	HoI4::States theStates;
+
+	HoI4::Army theArmy;
+	std::vector<Vic2::Army> Vic2Armies;
+	std::istringstream armyInput(
+		 "=\n"
+		 "\t{\n"
+		 "\t\tregiment=\n"
+		 "\t\t{\n"
+		 "\t\t\tcount=1\n"
+		 "\t\t\ttype=artillery\n"
+		 "\t\t}\n"
+		 "\t}");
+	Vic2::Army::Factory armyFactory;
+	auto Vic2Army = *armyFactory.getArmy("", armyInput);
+	Vic2Armies.push_back(Vic2Army);
+	theArmy.addSourceArmies(Vic2Armies);
+
+	std::stringstream mappingsInput;
+	mappingsInput << "= {\n";
+	mappingsInput << "\tmtg_unit_map = {}\n";
+	mappingsInput << "\tunit_map = {\n";
+	mappingsInput << "\t\tlink = {\n";
+	mappingsInput << "\t\t\tvic = artillery\n";
+	mappingsInput << "\t\t\thoi = {\n";
+	mappingsInput << "\t\t\t\tcategory = land\n";
+	mappingsInput << "\t\t\t\ttype = artillery_brigade\n";
+	mappingsInput << "\t\t\t\tequipment = artillery_equipment_1\n";
+	mappingsInput << "\t\t\t\tsize = 1\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "\tdivision_templates = {\n";
+	mappingsInput << "\t\tdivision_template= {\n";
+	mappingsInput << "\t\t\tregiments = {\n";
+	mappingsInput << "\t\t\t\tartillery_brigade = { x = 0 y = 0 }\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "}";
+	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
+
+	theArmy.convertArmies(theMilitaryMappings,
+		 0,
+		 1.0,
+		 HoI4::technologies{},
+		 theStates,
+		 *Mappers::ProvinceMapper::Builder().Build());
+
+	ASSERT_THAT(theArmy.getDivisionTypesAndAmounts(), testing::UnorderedElementsAre(testing::Pair("artillery_brigade", 1)));
+}
+
+
+TEST(HoI4World_Military_HoI4ArmyTests, ArmorDivisionsAreReturned)
+{
+	HoI4::States theStates;
+
+	HoI4::Army theArmy;
+	std::vector<Vic2::Army> Vic2Armies;
+	std::istringstream armyInput(
+		 "=\n"
+		 "\t{\n"
+		 "\t\tregiment=\n"
+		 "\t\t{\n"
+		 "\t\t\tcount=1\n"
+		 "\t\t\ttype=light_armor\n"
+		 "\t\t}\n"
+		 "\t}");
+	Vic2::Army::Factory armyFactory;
+	auto Vic2Army = *armyFactory.getArmy("", armyInput);
+	Vic2Armies.push_back(Vic2Army);
+	theArmy.addSourceArmies(Vic2Armies);
+
+	std::stringstream mappingsInput;
+	mappingsInput << "= {\n";
+	mappingsInput << "\tmtg_unit_map = {}\n";
+	mappingsInput << "\tunit_map = {\n";
+	mappingsInput << "\t\tlink = {\n";
+	mappingsInput << "\t\t\tvic = light_armor\n";
+	mappingsInput << "\t\t\thoi = {\n";
+	mappingsInput << "\t\t\t\tcategory = land\n";
+	mappingsInput << "\t\t\t\ttype = light_armor\n";
+	mappingsInput << "\t\t\t\tequipment = gw_tank_equipment\n";
+	mappingsInput << "\t\t\t\tsize = 1\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "\tdivision_templates = {\n";
+	mappingsInput << "\t\tdivision_template= {\n";
+	mappingsInput << "\t\t\tregiments = {\n";
+	mappingsInput << "\t\t\t\tlight_armor = { x = 0 y = 0 }\n";
+	mappingsInput << "\t\t\t}\n";
+	mappingsInput << "\t\t}\n";
+	mappingsInput << "\t}\n";
+	mappingsInput << "}";
+	HoI4::militaryMappings theMilitaryMappings(std::string("default"), mappingsInput);
+
+	theArmy.convertArmies(theMilitaryMappings,
+		 0,
+		 1.0,
+		 HoI4::technologies{},
+		 theStates,
+		 *Mappers::ProvinceMapper::Builder().Build());
+
+	ASSERT_THAT(theArmy.getDivisionTypesAndAmounts(), testing::UnorderedElementsAre(testing::Pair("light_armor", 1)));
 }

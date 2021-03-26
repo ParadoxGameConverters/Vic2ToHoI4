@@ -353,6 +353,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategories.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategoriesFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Stockpiles\StockpileFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Technology\Inventions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Technology\InventionsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Technology\TechnologyFactory.cpp" />
@@ -523,6 +524,7 @@
     <ClCompile Include="Vic2WorldTests\States\StateLanguageCategoriesFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateLanguageCategoriesTests.cpp" />
     <ClCompile Include="Vic2WorldTests\States\StateTests.cpp" />
+    <ClCompile Include="Vic2WorldTests\Stockpiles\StockpileTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Technology\InventionTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Technology\TechnologyFactoryTests.cpp" />
     <ClCompile Include="Vic2WorldTests\Wars\WarBuilderTests.cpp" />
@@ -943,6 +945,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategories.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategoriesBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\States\StateLanguageCategoriesFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Stockpiles\StockpileFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Technology\Inventions.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Technology\InventionsFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Technology\TechnologyFactory.h" />

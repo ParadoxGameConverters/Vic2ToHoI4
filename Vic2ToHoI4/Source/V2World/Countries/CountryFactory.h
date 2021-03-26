@@ -15,6 +15,7 @@
 #include "V2World/Military/Leaders/LeaderFactory.h"
 #include "V2World/States/StateFactory.h"
 #include "V2World/States/StateLanguageCategories.h"
+#include "V2World/Stockpiles/StockpileFactory.h"
 #include "V2World/Technology/Inventions.h"
 #include "V2World/Technology/TechnologyFactory.h"
 #include <memory>
@@ -52,6 +53,7 @@ class Country::Factory: commonItems::parser
 	std::unique_ptr<State::Factory> stateFactory;
 	TechnologyFactory technologyFactory;
 	AI::Factory aiFactory;
+	StockpileFactory stockpileFactory;
 
 	std::unique_ptr<Country> country;
 	unsigned int rulingPartyID;

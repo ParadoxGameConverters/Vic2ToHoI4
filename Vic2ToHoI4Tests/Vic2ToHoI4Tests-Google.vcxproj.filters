@@ -1472,6 +1472,12 @@
     <ClCompile Include="MapperTests\MergeRules\MergeRuleTests.cpp">
       <Filter>MapperTests\MergeRules</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\V2World\Stockpiles\StockpileFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Vic2\Stockpiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Vic2WorldTests\Stockpiles\StockpileTests.cpp">
+      <Filter>Vic2WorldTests\Stockpiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1947,6 +1953,12 @@
     </Filter>
     <Filter Include="MapperTests\MergeRules">
       <UniqueIdentifier>{f420c814-796c-4f3e-9f8b-b23e2422d9ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\Vic2\Stockpiles">
+      <UniqueIdentifier>{19c7f172-8c0d-4fb3-a8e3-72171e77fcbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2WorldTests\Stockpiles">
+      <UniqueIdentifier>{c06c0c92-114e-436b-af0e-45dc82fef7af}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2876,6 +2888,9 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\MergeRules\MergeRulesFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\MergeRules</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Stockpiles\StockpileFactory.h">
+      <Filter>Vic2ToHoI4 files\Vic2\Stockpiles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

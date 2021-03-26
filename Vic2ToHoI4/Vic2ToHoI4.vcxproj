@@ -441,6 +441,7 @@
     <ClCompile Include="Source\V2World\States\StateFactory.cpp" />
     <ClCompile Include="Source\V2World\States\StateLanguageCategories.cpp" />
     <ClCompile Include="Source\V2World\States\StateLanguageCategoriesFactory.cpp" />
+    <ClCompile Include="Source\V2World\Stockpiles\StockpileFactory.cpp" />
     <ClCompile Include="Source\V2World\Technology\Inventions.cpp" />
     <ClCompile Include="Source\V2World\Technology\InventionsFactory.cpp" />
     <ClCompile Include="Source\V2World\Technology\TechnologyFactory.cpp" />
@@ -845,6 +846,7 @@
     <ClInclude Include="Source\V2World\States\StateLanguageCategories.h" />
     <ClInclude Include="Source\V2World\States\StateLanguageCategoriesBuilder.h" />
     <ClInclude Include="Source\V2World\States\StateLanguageCategoriesFactory.h" />
+    <ClInclude Include="Source\V2World\Stockpiles\StockpileFactory.h" />
     <ClInclude Include="Source\V2World\Technology\Inventions.h" />
     <ClInclude Include="Source\V2World\Technology\InventionsFactory.h" />
     <ClInclude Include="Source\V2World\Technology\TechnologyFactory.h" />

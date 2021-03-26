@@ -142,6 +142,9 @@ Vic2::Country::Factory::Factory(const Configuration& theConfiguration,
 			country->flags.insert(flag);
 		}
 	});
+	registerKeyword("stockpile", [this](std::istream& theStream) {
+		country->stockpile = stockpileFactory.importStockpile(theStream);
+	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
 }
 

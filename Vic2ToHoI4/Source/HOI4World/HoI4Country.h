@@ -261,6 +261,9 @@ class Country
 	bool attemptToPutCapitalInAnyCored(const std::map<int, State>& allStates);
 	[[nodiscard]] std::vector<std::string> getShipNames(const std::string& category) const;
 
+	void convertStockpile();
+	float getSourceCountryGoodAmount(const std::string& goodType);
+
 	std::string tag;
 	std::string oldTag;
 	std::optional<std::string> name;
@@ -351,6 +354,8 @@ class Country
 	std::vector<std::string> guaranteed;
 
 	std::mt19937 generator;
+
+	std::map<std::string, float> sourceCountryGoods;
 };
 
 } // namespace HoI4
