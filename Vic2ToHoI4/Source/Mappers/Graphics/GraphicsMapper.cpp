@@ -56,8 +56,16 @@ std::string Mappers::GraphicsMapper::getLeaderPortrait(const std::string& cultur
 	auto portraits = getLeaderPortraits(cultureGroup, ideology);
 	if (!portraits.empty())
 	{
-		const std::uniform_int_distribution<int> firstNameGen(0, static_cast<int>(portraits.size()) - 1);
-		return portraits[firstNameGen(rng)];
+		const auto key = std::make_pair(cultureGroup, ideology);
+		auto index = leaderPortraitIndexes.find(key);
+		if (index == leaderPortraitIndexes.end())
+		{
+			leaderPortraitIndexes.emplace(key, 0);
+			index = leaderPortraitIndexes.find(key);
+		}
+		auto portrait = portraits[index->second];
+		index->second = (index->second + 1) % portraits.size();
+		return portrait;
 	}
 
 	return "gfx/leaders/leader_unknown.dds";
@@ -87,8 +95,16 @@ std::string Mappers::GraphicsMapper::getIdeologyMinisterPortrait(const std::stri
 	auto portraits = getIdeologyMinisterPortraits(cultureGroup, ideology);
 	if (!portraits.empty())
 	{
-		const std::uniform_int_distribution<int> firstNameGen(0, static_cast<int>(portraits.size()) - 1);
-		return portraits[firstNameGen(rng)];
+		const auto key = std::make_pair(cultureGroup, ideology);
+		auto index = ministerPortraitIndexes.find(key);
+		if (index == ministerPortraitIndexes.end())
+		{
+			ministerPortraitIndexes.emplace(key, 0);
+			index = ministerPortraitIndexes.find(key);
+		}
+		auto portrait = portraits[index->second];
+		index->second = (index->second + 1) % portraits.size();
+		return portrait;
 	}
 
 	return "gfx/interface/ideas/idea_unknown.dds";

@@ -5,7 +5,6 @@
 
 #include <map>
 #include <optional>
-#include <random>
 #include <string>
 #include <vector>
 
@@ -48,7 +47,8 @@ class GraphicsMapper
 	cultureGroupToGraphicalCultureMap graphicalCultureMap;
 	cultureGroupToGraphicalCultureMap graphicalCulture2dMap;
 
-	std::mt19937 rng;
+	std::map<std::pair<std::string, std::string>, int> leaderPortraitIndexes;
+	std::map<std::pair<std::string, std::string>, int> ministerPortraitIndexes;
 };
 
 } // namespace Mappers
