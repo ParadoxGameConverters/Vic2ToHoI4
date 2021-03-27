@@ -12,7 +12,7 @@
 #include "Leaders/OutAdvisor.h"
 #include "Leaders/OutCountryLeader.h"
 #include "Leaders/OutGeneral.h"
-#include "Mappers/GraphicsMapper.h"
+#include "Mappers/Graphics/GraphicsMapper.h"
 #include "Navies/OutLegacyNavyNames.h"
 #include "Navies/OutMtgNavyNames.h"
 #include "Navies/OutNavies.h"

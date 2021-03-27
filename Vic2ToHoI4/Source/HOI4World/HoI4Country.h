@@ -18,7 +18,7 @@
 #include "Mappers/Country/CountryMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/Government/GovernmentMapper.h"
-#include "Mappers/GraphicsMapper.h"
+#include "Mappers/Graphics/GraphicsMapper.h"
 #include "Mappers/Ideology/IdeologyMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Mappers/Technology/TechMapper.h"

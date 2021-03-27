@@ -117,6 +117,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMappingFactory.cpp" />
@@ -303,7 +304,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\States\StateHistory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Technologies.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\HoI4WarCreator.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Sounds\OutSounds.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4State.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\States\OutHoI4States.cpp" />
@@ -850,8 +850,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMappedBuilder.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsMapper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapperFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapping.h" />
