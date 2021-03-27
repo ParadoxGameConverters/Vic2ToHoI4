@@ -8,6 +8,7 @@ Mappers::IdeologyToPortraitsMappingFactory::IdeologyToPortraitsMappingFactory()
 {
 	registerRegex(commonItems::catchallRegex, [this](const std::string& ideology, std::istream& theStream) {
 		auto strings = commonItems::stringList(theStream).getStrings();
+		theMap.emplace(ideology, strings);
 	});
 }
 
