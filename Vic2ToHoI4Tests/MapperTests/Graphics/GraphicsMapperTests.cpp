@@ -9,16 +9,10 @@
 class Mappers_Graphics_GraphicsMapperTests: public testing::Test
 {
   protected:
-	Mappers_Graphics_GraphicsMapperTests();
+	Mappers_Graphics_GraphicsMapperTests(): graphicsMapper(Mappers::GraphicsMapper::Factory().importGraphicsMapper()) {}
 
 	std::unique_ptr<Mappers::GraphicsMapper> graphicsMapper;
 };
-
-
-Mappers_Graphics_GraphicsMapperTests::Mappers_Graphics_GraphicsMapperTests()
-{
-	graphicsMapper = Mappers::GraphicsMapper::Factory().importGraphicsMapper();
-}
 
 
 TEST_F(Mappers_Graphics_GraphicsMapperTests, UnmatchedArmyPortraitsAreEmpty)
