@@ -77,7 +77,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getStrategicRegions() const { return *strategicRegions; }
 	[[nodiscard]] const auto& getCountries() const { return countries; }
 	[[nodiscard]] const auto& getMilitaryMappings() const { return *theMilitaryMappings; }
-	[[nodiscard]] auto& getGraphics() { return theGraphics; }
+	[[nodiscard]] auto& getGraphicsMapper() { return *graphicsMapper; }
 	[[nodiscard]] const auto& getIdeologicalLeaderTraits() const { return ideologicalLeaderTraits; }
 	[[nodiscard]] const auto& getGreatPowers() const { return greatPowers; }
 	[[nodiscard]] const auto& getSupplyZones() const { return *supplyZones; }
@@ -193,7 +193,7 @@ class World: commonItems::parser
 	std::optional<std::string> humanCountry;
 
 	std::unique_ptr<Names> names;
-	Mappers::GraphicsMapper theGraphics;
+	std::unique_ptr<Mappers::GraphicsMapper> graphicsMapper;
 	std::unique_ptr<Mappers::GovernmentMapper> governmentMapper;
 	std::unique_ptr<Mappers::IdeologyMapper> ideologyMapper;
 	std::unique_ptr<Mappers::CountryMapper> countryMap;

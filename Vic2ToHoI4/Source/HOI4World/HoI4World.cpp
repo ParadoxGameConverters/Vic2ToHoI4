@@ -26,6 +26,7 @@
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapperFactory.h"
 #include "Mappers/Government/GovernmentMapperFactory.h"
+#include "Mappers/Graphics/GraphicsMapperFactory.h"
 #include "Mappers/Ideology/IdeologyMapperFactory.h"
 #include "Mappers/Technology/ResearchBonusMapper.h"
 #include "Mappers/Technology/ResearchBonusMapperFactory.h"
@@ -75,7 +76,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	theCoastalProvinces.init(*theMapData, theProvinces);
 	strategicRegions = StrategicRegions::Factory{}.importStrategicRegions(theConfiguration);
 	names = Names::Factory{}.getNames(theConfiguration);
-	theGraphics.init();
+	graphicsMapper = Mappers::GraphicsMapper::Factory().importGraphicsMapper();
 	countryNameMapper = Mappers::CountryNameMapper::Factory{}.importCountryNameMapper();
 	convertCountries(sourceWorld);
 	determineGreatPowers(sourceWorld);
@@ -245,7 +246,7 @@ void HoI4::World::convertCountry(const std::string& oldTag,
 		destCountry = new HoI4::Country(*possibleHoI4Tag,
 			 oldCountry,
 			 *names,
-			 theGraphics,
+			 *graphicsMapper,
 			 *countryMap,
 			 flagsToIdeasMapper,
 			 *hoi4Localisations);
@@ -354,7 +355,7 @@ void HoI4::World::addLeaders()
 			country->addLeader(i->second);
 		}
 
-		country->createLeader(*names, theGraphics);
+		country->createLeader(*names, *graphicsMapper);
 	}
 }
 

@@ -1,13 +1,10 @@
-#ifndef GRAPHICS_MAPPER_H_
-#define GRAPHICS_MAPPER_H_
+#ifndef GRAPHICS_MAPPER_H
+#define GRAPHICS_MAPPER_H
 
 
 
-#include "GraphicsCultureGroupFactory.h"
-#include "Parser.h"
 #include <map>
 #include <optional>
-#include <random>
 #include <string>
 #include <vector>
 
@@ -21,10 +18,10 @@ using ideologyToPortraitsMap = std::map<std::string, cultureGroupToPortraitsMap>
 using cultureGroupToGraphicalCultureMap = std::map<std::string, std::string>;
 
 
-class GraphicsMapper: commonItems::parser
+class GraphicsMapper
 {
   public:
-	void init();
+	class Factory;
 
 	[[nodiscard]] std::vector<std::string> getArmyPortraits(const std::string& cultureGroup) const;
 	[[nodiscard]] std::vector<std::string> getNavyPortraits(const std::string& cultureGroup) const;
@@ -36,13 +33,6 @@ class GraphicsMapper: commonItems::parser
 	[[nodiscard]] std::optional<std::string> get2dGraphicalCulture(const std::string& cultureGroup) const;
 
   private:
-	GraphicsCultureGroup::Factory graphicsCultureGroupFactory;
-
-	void loadLeaderPortraitMappings(const std::string& cultureGroup,
-		 const std::map<std::string, std::vector<std::string>>& portraitMappings);
-	void loadIdeologyMinisterPortraitMappings(const std::string& cultureGroup,
-		 const std::map<std::string, std::vector<std::string>>& portraitMappings);
-
 	[[nodiscard]] std::vector<std::string> getLeaderPortraits(const std::string& cultureGroup,
 		 const std::string& ideology) const;
 	[[nodiscard]] std::vector<std::string> getIdeologyMinisterPortraits(const std::string& cultureGroup,
@@ -57,11 +47,12 @@ class GraphicsMapper: commonItems::parser
 	cultureGroupToGraphicalCultureMap graphicalCultureMap;
 	cultureGroupToGraphicalCultureMap graphicalCulture2dMap;
 
-	std::mt19937 rng;
+	int leaderPortraitIndex = 0;
+	int ministerPortraitIndex = 0;
 };
 
 } // namespace Mappers
 
 
 
-#endif // GRAPHICS_MAPPER_H_
+#endif // GRAPHICS_MAPPER_H

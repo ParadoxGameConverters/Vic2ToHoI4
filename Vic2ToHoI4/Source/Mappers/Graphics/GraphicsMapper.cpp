@@ -1,64 +1,6 @@
 #include "GraphicsMapper.h"
-#include "CommonRegexes.h"
 #include "GraphicsCultureGroup.h"
-#include "Log.h"
 
-
-
-void Mappers::GraphicsMapper::init()
-{
-	Log(LogLevel::Info) << "\tReading graphics mappings";
-
-	registerRegex(commonItems::catchallRegex, [this](const std::string& cultureGroupName, std::istream& theStream) {
-		const auto newCultureGroup = graphicsCultureGroupFactory.importCultureGroup(theStream);
-		armyPortraitMappings[cultureGroupName] = newCultureGroup->getArmyPortraits();
-		navyPortraitMappings[cultureGroupName] = newCultureGroup->getNavyPortraits();
-		maleMonarchMappings[cultureGroupName] = newCultureGroup->getMaleMonarchPortraits();
-		femaleMonarchMappings[cultureGroupName] = newCultureGroup->getFemaleMonarchPortraits();
-		graphicalCultureMap[cultureGroupName] = newCultureGroup->getGraphicalCulture();
-		graphicalCulture2dMap[cultureGroupName] = newCultureGroup->getGraphicalCulture2D();
-		loadLeaderPortraitMappings(cultureGroupName, newCultureGroup->getLeaderPortraits());
-		loadIdeologyMinisterPortraitMappings(cultureGroupName, newCultureGroup->getIdeologyMinisterPortraits());
-	});
-
-	parseFile("Configurables/cultureGroupToGraphics.txt");
-}
-
-
-void Mappers::GraphicsMapper::loadLeaderPortraitMappings(const std::string& cultureGroup,
-	 const std::map<std::string, std::vector<std::string>>& portraitMappings)
-{
-	auto cultureGroupMappings = leaderPortraitMappings.find(cultureGroup);
-	if (cultureGroupMappings == leaderPortraitMappings.end())
-	{
-		cultureGroupToPortraitsMap newCultureGroupMappings;
-		leaderPortraitMappings.insert(make_pair(cultureGroup, newCultureGroupMappings));
-		cultureGroupMappings = leaderPortraitMappings.find(cultureGroup);
-	}
-
-	for (const auto& portraitMapping: portraitMappings)
-	{
-		cultureGroupMappings->second.insert(portraitMapping);
-	}
-}
-
-
-void Mappers::GraphicsMapper::loadIdeologyMinisterPortraitMappings(const std::string& cultureGroup,
-	 const std::map<std::string, std::vector<std::string>>& portraitMappings)
-{
-	auto cultureGroupMappings = ideologyMinisterMappings.find(cultureGroup);
-	if (cultureGroupMappings == ideologyMinisterMappings.end())
-	{
-		cultureGroupToPortraitsMap newCultureGroupMappings;
-		ideologyMinisterMappings.insert(make_pair(cultureGroup, newCultureGroupMappings));
-		cultureGroupMappings = ideologyMinisterMappings.find(cultureGroup);
-	}
-
-	for (const auto& portraitMapping: portraitMappings)
-	{
-		cultureGroupMappings->second.insert(portraitMapping);
-	}
-}
 
 
 std::vector<std::string> Mappers::GraphicsMapper::getArmyPortraits(const std::string& cultureGroup) const
@@ -114,8 +56,9 @@ std::string Mappers::GraphicsMapper::getLeaderPortrait(const std::string& cultur
 	auto portraits = getLeaderPortraits(cultureGroup, ideology);
 	if (!portraits.empty())
 	{
-		const std::uniform_int_distribution<int> firstNameGen(0, static_cast<int>(portraits.size()) - 1);
-		return portraits[firstNameGen(rng)];
+		auto portrait = portraits[leaderPortraitIndex];
+		leaderPortraitIndex = leaderPortraitIndex + 1 / static_cast<int>(portraits.size());
+		return portrait;
 	}
 
 	return "gfx/leaders/leader_unknown.dds";
@@ -145,8 +88,9 @@ std::string Mappers::GraphicsMapper::getIdeologyMinisterPortrait(const std::stri
 	auto portraits = getIdeologyMinisterPortraits(cultureGroup, ideology);
 	if (!portraits.empty())
 	{
-		const std::uniform_int_distribution<int> firstNameGen(0, static_cast<int>(portraits.size()) - 1);
-		return portraits[firstNameGen(rng)];
+		auto portrait = portraits[ministerPortraitIndex];
+		ministerPortraitIndex = ministerPortraitIndex + 1 / static_cast<int>(portraits.size());
+		return portrait;
 	}
 
 	return "gfx/interface/ideas/idea_unknown.dds";

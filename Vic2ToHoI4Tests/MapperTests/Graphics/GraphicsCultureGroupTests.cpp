@@ -134,10 +134,11 @@ TEST(Mappers_Graphics_GraphicsCultureGroupTests, LeaderPortraitsCanBeImported)
 	const auto graphicsCultureGroup = Mappers::GraphicsCultureGroup::Factory().importCultureGroup(input);
 
 	ASSERT_THAT(graphicsCultureGroup->getLeaderPortraits(),
-		 testing::UnorderedElementsAre(testing::Pair("test_ideology",
-													  std::vector<std::string>{"path/test_portrait.dds", "path/test_portrait2.dds"}),
+		 testing::UnorderedElementsAre(
+			  testing::Pair("test_ideology",
+					testing::UnorderedElementsAre("path/test_portrait.dds", "path/test_portrait2.dds")),
 			  testing::Pair("test_ideology2",
-					std::vector<std::string>{"path/test_portrait3.dds", "path/test_portrait4.dds"})));
+					testing::UnorderedElementsAre("path/test_portrait3.dds", "path/test_portrait4.dds"))));
 }
 
 
@@ -168,10 +169,11 @@ TEST(Mappers_Graphics_GraphicsCultureGroupTests, IdeologyMinisterPortraitsCanBeI
 	const auto graphicsCultureGroup = Mappers::GraphicsCultureGroup::Factory().importCultureGroup(input);
 
 	ASSERT_THAT(graphicsCultureGroup->getIdeologyMinisterPortraits(),
-		 testing::UnorderedElementsAre(testing::Pair("test_ideology",
-													  std::vector<std::string>{"path/test_portrait.dds", "path/test_portrait2.dds"}),
+		 testing::UnorderedElementsAre(
+			  testing::Pair("test_ideology",
+					testing::UnorderedElementsAre("path/test_portrait.dds", "path/test_portrait2.dds")),
 			  testing::Pair("test_ideology2",
-					std::vector<std::string>{"path/test_portrait3.dds", "path/test_portrait4.dds"})));
+					testing::UnorderedElementsAre("path/test_portrait3.dds", "path/test_portrait4.dds"))));
 }
 
 

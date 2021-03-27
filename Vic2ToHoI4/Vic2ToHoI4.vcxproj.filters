@@ -1237,6 +1237,9 @@
     <ClCompile Include="Source\Mappers\Graphics\IdeologyToPortraitsMappingFactory.cpp">
       <Filter>Mappers\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Mappers\Graphics\GraphicsMapperFactory.cpp">
+      <Filter>Mappers\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2446,6 +2449,9 @@
       <Filter>Mappers\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\Graphics\GraphicsCultureGroupFactory.h">
+      <Filter>Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Graphics\GraphicsMapperFactory.h">
       <Filter>Mappers\Graphics</Filter>
     </ClInclude>
   </ItemGroup>

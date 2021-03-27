@@ -29,5 +29,5 @@ TEST(Mappers_Graphics_IdeologyToPortraitsMappingFactoryTests, ProvinceMappingsCa
 
 	ASSERT_THAT(mappings,
 		 testing::UnorderedElementsAre(
-			  testing::Pair("category", std::vector<std::string>{"path/item1.dds", "path/item2.dds"})));
+			  testing::Pair("category", testing::UnorderedElementsAre("path/item1.dds", "path/item2.dds"))));
 }
