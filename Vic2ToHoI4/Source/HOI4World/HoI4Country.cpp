@@ -21,7 +21,7 @@
 #include <cmath>
 
 
-#pragma optimize("",off)
+
 HoI4::Country::Country(std::string tag,
 	 const Vic2::Country& sourceCountry,
 	 Names& names,
@@ -110,7 +110,7 @@ HoI4::Country::Country(std::string tag,
 
 	sourceCountryGoods = sourceCountry.getGoodsStockpile();
 }
-#pragma optimize("", on)
+
 
 void HoI4::Country::determineFilename()
 {
