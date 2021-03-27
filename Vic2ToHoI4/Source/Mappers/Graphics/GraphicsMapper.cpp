@@ -57,7 +57,7 @@ std::string Mappers::GraphicsMapper::getLeaderPortrait(const std::string& cultur
 	if (!portraits.empty())
 	{
 		auto portrait = portraits[leaderPortraitIndex];
-		leaderPortraitIndex = leaderPortraitIndex + 1 / static_cast<int>(portraits.size());
+		leaderPortraitIndex = leaderPortraitIndex + 1 % static_cast<int>(portraits.size());
 		return portrait;
 	}
 
@@ -89,7 +89,7 @@ std::string Mappers::GraphicsMapper::getIdeologyMinisterPortrait(const std::stri
 	if (!portraits.empty())
 	{
 		auto portrait = portraits[ministerPortraitIndex];
-		ministerPortraitIndex = ministerPortraitIndex + 1 / static_cast<int>(portraits.size());
+		ministerPortraitIndex = ministerPortraitIndex + 1 % static_cast<int>(portraits.size());
 		return portrait;
 	}
 

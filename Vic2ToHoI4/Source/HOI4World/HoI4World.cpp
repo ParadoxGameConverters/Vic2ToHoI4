@@ -197,7 +197,7 @@ shared_ptr<HoI4::Country> HoI4::World::findCountry(const string& countryTag)
 	return country->second;
 }
 
-
+#pragma optimize("", off)
 void HoI4::World::convertCountries(const Vic2::World& sourceWorld)
 {
 	Log(LogLevel::Info) << "\tConverting countries";
@@ -253,7 +253,7 @@ void HoI4::World::convertCountry(const std::string& oldTag,
 		countries.insert(make_pair(*possibleHoI4Tag, destCountry));
 	}
 }
-
+#pragma optimize("", on)
 
 void HoI4::World::importLeaderTraits()
 {

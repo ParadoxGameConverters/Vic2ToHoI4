@@ -1493,6 +1493,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsMapperFactory.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="MapperTests\Graphics\GraphicsMapperTests.cpp">
+      <Filter>MapperTests\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1980,6 +1983,9 @@
     </Filter>
     <Filter Include="MapperTests\Graphics">
       <UniqueIdentifier>{81153f46-239f-4bea-bb1c-4114a260ccb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Mappers\Graphics">
+      <UniqueIdentifier>{cee8fc55-67f7-4cbb-8589-93b2985d47d9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3221,6 +3227,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\Government\GovernmentMappings.txt">
       <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Graphics\cultureGroupToGraphics.txt">
+      <Filter>TestFiles\Mappers\Graphics</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>
