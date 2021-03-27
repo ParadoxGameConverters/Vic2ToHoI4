@@ -39,8 +39,8 @@ germanic = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_ger_revive_the_kaiserreich.dds"
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 jewish_group = {
 	leader_portraits = {
@@ -66,8 +66,8 @@ jewish_group = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 barbarian = { 
 	leader_portraits = {
@@ -93,8 +93,8 @@ barbarian = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 gothic_g = { 
 	leader_portraits = {
@@ -120,8 +120,8 @@ gothic_g = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 beneluxian = {
 	leader_portraits = {
@@ -147,8 +147,8 @@ beneluxian = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_hol_wilhelmina.dds"
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 pan_swiss = {
 	leader_portraits = {
@@ -174,8 +174,8 @@ pan_swiss = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 scandinavian = {
 	leader_portraits = {
@@ -201,8 +201,8 @@ scandinavian = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 varangian_g = {
 	leader_portraits = {
@@ -228,8 +228,8 @@ varangian_g = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 british = {
 	leader_portraits = {
@@ -255,8 +255,8 @@ british = {
 	female_monarch_portraits = {
 		"gfx/achievements/william_wallis.dds"
 	}
-	graphical_culture = { commonwealth_gfx }
-	graphical_culture_2d = { commonwealth_2d }
+	graphical_culture = commonwealth_gfx
+	graphical_culture_2d = commonwealth_2d
 }
 celtic = {
 	leader_portraits = {
@@ -282,8 +282,8 @@ celtic = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { commonwealth_gfx }
-	graphical_culture_2d = { commonwealth_2d }
+	graphical_culture = commonwealth_gfx
+	graphical_culture_2d = commonwealth_2d
 }
 italian = {
 	leader_portraits = {
@@ -309,8 +309,8 @@ italian = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 romantic = {
 	leader_portraits = {
@@ -336,8 +336,8 @@ romantic = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 old_italian = {
 	leader_portraits = {
@@ -363,8 +363,8 @@ old_italian = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 iberian = {
 	leader_portraits = {
@@ -390,8 +390,8 @@ iberian = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 french = {
 	leader_portraits = {
@@ -417,8 +417,8 @@ french = {
 	female_monarch_portraits = {
 		"pdx_launcher/common/gfx/interface/French_flag.dds" # Revise
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 south_slavic = {
 	leader_portraits = {
@@ -444,8 +444,8 @@ south_slavic = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { eastern_european_gfx }
-	graphical_culture_2d = { eastern_european_2d }
+	graphical_culture = eastern_european_gfx
+	graphical_culture_2d = eastern_european_2d
 }
 pan_albanian = { #HFM
 	leader_portraits = {
@@ -471,8 +471,8 @@ pan_albanian = { #HFM
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { eastern_european_gfx }
-	graphical_culture_2d = { eastern_european_2d }
+	graphical_culture = eastern_european_gfx
+	graphical_culture_2d = eastern_european_2d
 }
 pan_romanian = {
 	leader_portraits = {
@@ -498,8 +498,8 @@ pan_romanian = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { eastern_european_gfx }
-	graphical_culture_2d = { eastern_european_2d }
+	graphical_culture = eastern_european_gfx
+	graphical_culture_2d = eastern_european_2d
 }
 balkan = {
 	leader_portraits = {
@@ -525,8 +525,8 @@ balkan = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { eastern_european_gfx }
-	graphical_culture_2d = { eastern_european_2d }
+	graphical_culture = eastern_european_gfx
+	graphical_culture_2d = eastern_european_2d
 }
 hungarian_culture_group = {
 	leader_portraits = {
@@ -552,8 +552,8 @@ hungarian_culture_group = {
 	female_monarch_portraits = {
 		"GFX_idea_HUN_hungarian_monarchy"
 	}
-	graphical_culture = { eastern_european_gfx }
-	graphical_culture_2d = { eastern_european_2d }
+	graphical_culture = eastern_european_gfx
+	graphical_culture_2d = eastern_european_2d
 }
 polish_culture_group = {
 	leader_portraits = {
@@ -579,8 +579,8 @@ polish_culture_group = {
 	female_monarch_portraits = {
 		"pdx_launcher/common/gfx/interface/Polish_flag.dds" # Revise
 	}
-	graphical_culture = { eastern_european_gfx }
-	graphical_culture_2d = { eastern_european_2d }
+	graphical_culture = eastern_european_gfx
+	graphical_culture_2d = eastern_european_2d
 }
 czecho_slovak_culture_group = {
 	leader_portraits = {
@@ -606,8 +606,8 @@ czecho_slovak_culture_group = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { eastern_european_gfx }
-	graphical_culture_2d = { eastern_european_2d }
+	graphical_culture = eastern_european_gfx
+	graphical_culture_2d = eastern_european_2d
 }
 east_slavic = {
 	leader_portraits = {
@@ -633,8 +633,8 @@ east_slavic = {
 	female_monarch_portraits = {
 		"pdx_launcher/common/gfx/interface/Russian_flag.dds" # Revise
 	}
-	graphical_culture = { eastern_european_gfx }
-	graphical_culture_2d = { eastern_european_2d }
+	graphical_culture = eastern_european_gfx
+	graphical_culture_2d = eastern_european_2d
 }
 baltic = {
 	leader_portraits = {
@@ -660,8 +660,8 @@ baltic = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { eastern_european_gfx }
-	graphical_culture_2d = { eastern_european_2d }
+	graphical_culture = eastern_european_gfx
+	graphical_culture_2d = eastern_european_2d
 }
 levantine = {
 	leader_portraits = {
@@ -687,8 +687,8 @@ levantine = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { middle_eastern_gfx }
-	graphical_culture_2d = { middle_eastern_2d }
+	graphical_culture = middle_eastern_gfx
+	graphical_culture_2d = middle_eastern_2d
 }
 dytic_g = {
 	leader_portraits = {
@@ -714,8 +714,8 @@ dytic_g = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { middle_eastern_gfx }
-	graphical_culture_2d = { middle_eastern_2d }
+	graphical_culture = middle_eastern_gfx
+	graphical_culture_2d = middle_eastern_2d
 }
 turko_semitic = {
 	army_portraits = { 
@@ -973,8 +973,8 @@ turko_semitic = {
 	female_monarch_portraits = {
 		"GFX_focus_TUR_pivot_to_the_past"
 	}
-	graphical_culture = { middle_eastern_gfx }
-	graphical_culture_2d = { middle_eastern_2d }
+	graphical_culture = middle_eastern_gfx
+	graphical_culture_2d = middle_eastern_2d
 }
 hittite_g = {
 	army_portraits = { 
@@ -1232,8 +1232,8 @@ hittite_g = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { middle_eastern_gfx }
-	graphical_culture_2d = { middle_eastern_2d }
+	graphical_culture = middle_eastern_gfx
+	graphical_culture_2d = middle_eastern_2d
 }
 caucasian = { #HPM
 	leader_portraits = {
@@ -1259,8 +1259,8 @@ caucasian = { #HPM
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { middle_eastern_gfx }
-	graphical_culture_2d = { middle_eastern_2d }
+	graphical_culture = middle_eastern_gfx
+	graphical_culture_2d = middle_eastern_2d
 }
 arab = {
 	army_portraits = { 
@@ -1518,8 +1518,8 @@ arab = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { middle_eastern_gfx }
-	graphical_culture_2d = { middle_eastern_2d }
+	graphical_culture = middle_eastern_gfx
+	graphical_culture_2d = middle_eastern_2d
 }
 punic = {
 	army_portraits = { 
@@ -1777,8 +1777,8 @@ punic = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { middle_eastern_gfx }
-	graphical_culture_2d = { middle_eastern_2d }
+	graphical_culture = middle_eastern_gfx
+	graphical_culture_2d = middle_eastern_2d
 }
 iranian_turanian = {
 	army_portraits = { 
@@ -2036,8 +2036,8 @@ iranian_turanian = {
 	female_monarch_portraits = {
 		"GFX_focus_TUR_turanist_ambition"
 	}
-	graphical_culture = { middle_eastern_gfx }
-	graphical_culture_2d = { middle_eastern_2d }
+	graphical_culture = middle_eastern_gfx
+	graphical_culture_2d = middle_eastern_2d
 }
 central_asian = {
 	leader_portraits = {
@@ -2063,8 +2063,8 @@ central_asian = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { asian_gfx }
-	graphical_culture_2d = { asian_2d }
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
 }
 south_asian = {
 	army_portraits = { 
@@ -2150,8 +2150,8 @@ south_asian = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { asian_gfx }
-	graphical_culture_2d = { asian_2d }
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
 }
 indo_iranian = { #HFM
 	army_portraits = { 
@@ -2237,8 +2237,8 @@ indo_iranian = { #HFM
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { asian_gfx }
-	graphical_culture_2d = { asian_2d }
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
 }
 southeast_asian = {
 	leader_portraits = {
@@ -2264,8 +2264,8 @@ southeast_asian = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { asian_gfx }
-	graphical_culture_2d = { asian_2d }
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
 }
 east_asian = {
 	leader_portraits = {
@@ -2291,8 +2291,8 @@ east_asian = {
 	female_monarch_portraits = {
 		"GFX_focus_man_claim_the_mandate_of_heaven"
 	}
-	graphical_culture = { asian_gfx }
-	graphical_culture_2d = { asian_2d }
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
 }
 far_east_asian = {
 	leader_portraits = {
@@ -2318,8 +2318,8 @@ far_east_asian = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { asian_gfx }
-	graphical_culture_2d = { asian_2d }
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
 }
 oceanic = {
 	leader_portraits = {
@@ -2348,8 +2348,8 @@ oceanic = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { asian_gfx }
-	graphical_culture_2d = { asian_2d }
+	graphical_culture = asian_gfx
+	graphical_culture_2d = asian_2d
 }
 native_american = {
 	army_portraits = {
@@ -2431,8 +2431,8 @@ native_american = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { southamerican_gfx }
-	graphical_culture_2d = { southamerican_2d }
+	graphical_culture = southamerican_gfx
+	graphical_culture_2d = southamerican_2d
 }
 native_central_american = {
 	army_portraits = {
@@ -2514,8 +2514,8 @@ native_central_american = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { southamerican_gfx }
-	graphical_culture_2d = { southamerican_2d }
+	graphical_culture = southamerican_gfx
+	graphical_culture_2d = southamerican_2d
 }
 native_south_american = {
 	army_portraits = {
@@ -2597,8 +2597,8 @@ native_south_american = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { southamerican_gfx }
-	graphical_culture_2d = { southamerican_2d }
+	graphical_culture = southamerican_gfx
+	graphical_culture_2d = southamerican_2d
 }
 native_north_american = {
 	army_portraits = {
@@ -2680,8 +2680,8 @@ native_north_american = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { southamerican_gfx }
-	graphical_culture_2d = { southamerican_2d }
+	graphical_culture = southamerican_gfx
+	graphical_culture_2d = southamerican_2d
 }
 native_carribean = {
 	army_portraits = {
@@ -2763,8 +2763,8 @@ native_carribean = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { southamerican_gfx }
-	graphical_culture_2d = { southamerican_2d }
+	graphical_culture = southamerican_gfx
+	graphical_culture_2d = southamerican_2d
 }
 american_cultures = {
 	leader_portraits = {
@@ -2790,8 +2790,8 @@ american_cultures = {
 	female_monarch_portraits = {
 		"gfx/achievements/play_it_again.dds"
 	}
-	graphical_culture = { commonwealth_gfx }
-	graphical_culture_2d = { commonwealth_2d }
+	graphical_culture = commonwealth_gfx
+	graphical_culture_2d = commonwealth_2d
 }
 neo_european_cultures = {
 	leader_portraits = {
@@ -2817,8 +2817,8 @@ neo_european_cultures = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 latin_american_cultures = {
 	leader_portraits = {
@@ -2844,8 +2844,8 @@ latin_american_cultures = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { southamerican_gfx }
-	graphical_culture_2d = { southamerican_2d }
+	graphical_culture = southamerican_gfx
+	graphical_culture_2d = southamerican_2d
 }
 african_diaspora_cultures = {
 	leader_portraits = {
@@ -2871,8 +2871,8 @@ african_diaspora_cultures = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { african_gfx }
-	graphical_culture_2d = { african_2d }
+	graphical_culture = african_gfx
+	graphical_culture_2d = african_2d
 }
 west_african = {
 	leader_portraits = {
@@ -2898,8 +2898,8 @@ west_african = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { african_gfx }
-	graphical_culture_2d = { african_2d }
+	graphical_culture = african_gfx
+	graphical_culture_2d = african_2d
 }
 central_african = {
 	leader_portraits = {
@@ -2925,8 +2925,8 @@ central_african = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { african_gfx }
-	graphical_culture_2d = { african_2d }
+	graphical_culture = african_gfx
+	graphical_culture_2d = african_2d
 }
 east_african = {
 	leader_portraits = {
@@ -2952,8 +2952,8 @@ east_african = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { african_gfx }
-	graphical_culture_2d = { african_2d }
+	graphical_culture = african_gfx
+	graphical_culture_2d = african_2d
 }
 southern_african = {
 	leader_portraits = {
@@ -2979,8 +2979,8 @@ southern_african = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
 	}
-	graphical_culture = { african_gfx }
-	graphical_culture_2d = { african_2d }
+	graphical_culture = african_gfx
+	graphical_culture_2d = african_2d
 }
 bears = {
 	army_portraits = { "gfx/leaders/POL/Portrait_POL_Voytek.dds" }
@@ -3008,8 +3008,8 @@ bears = {
 	female_monarch_portraits = {
 		"gfx/achievements/vojtek_commander.dds"
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 equine = {
 	army_portraits = { "gfx/leaders/OC/portrait_Chancellor_Glitterhoof.dds" }
@@ -3037,8 +3037,8 @@ equine = {
 	female_monarch_portraits = {
 		"gfx/interface/ideas/idea_porsche.dds"
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 non_human = {
 	army_portraits = { "gfx/leaders/leader_unknown_female.dds" } # I see a little silhoutte-o...
@@ -3066,8 +3066,8 @@ non_human = {
 	female_monarch_portraits = {
 		"pdx_launcher/game/gfx/interface/legal_dog.dds"
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }
 anti_human = {
 	army_portraits = { "gfx/leaders/OC/portrait_Non_Human.dds" }
@@ -3095,6 +3095,6 @@ anti_human = {
 	female_monarch_portraits = {
 		"gfx/achievements/brains.dds"
 	}
-	graphical_culture = { western_european_gfx }
-	graphical_culture_2d = { western_european_2d }
+	graphical_culture = western_european_gfx
+	graphical_culture_2d = western_european_2d
 }

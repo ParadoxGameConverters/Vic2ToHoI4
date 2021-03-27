@@ -5,7 +5,7 @@
 
 #include "CountryLeader.h"
 #include "HOI4World/Names/Names.h"
-#include "Mappers/GraphicsMapper.h"
+#include "Mappers/Graphics/GraphicsMapper.h"
 #include "Parser.h"
 #include <memory>
 
@@ -24,7 +24,7 @@ class CountryLeader::Factory: commonItems::parser
 		 const std::string& governmentIdeology,
 		 const std::string& leaderIdeology,
 		 Names& names,
-		 graphicsMapper& theGraphics);
+		 Mappers::GraphicsMapper& graphicsMapper);
 	std::unique_ptr<CountryLeader> importCountryLeader(std::istream& theStream);
 
   private:

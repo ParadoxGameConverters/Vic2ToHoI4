@@ -204,6 +204,10 @@
     <ClCompile Include="Source\Mappers\Government\GovernmentMapper.cpp" />
     <ClCompile Include="Source\Mappers\Government\GovernmentMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Government\GovernmentMappingFactory.cpp" />
+    <ClCompile Include="Source\Mappers\Graphics\GraphicsCultureGroupFactory.cpp" />
+    <ClCompile Include="Source\Mappers\Graphics\GraphicsMapper.cpp" />
+    <ClCompile Include="Source\Mappers\Graphics\GraphicsMapperFactory.cpp" />
+    <ClCompile Include="Source\Mappers\Graphics\IdeologyToPortraitsMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\Ideology\IdeologyMapper.cpp" />
     <ClCompile Include="Source\Mappers\Ideology\IdeologyMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Ideology\IdeologyMappingFactory.cpp" />
@@ -394,7 +398,6 @@
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.cpp" />
     <ClCompile Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMappingFactory.cpp" />
-    <ClCompile Include="Source\Mappers\GraphicsMapper.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\ProvinceMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\Provinces\VersionedMappingsFactory.cpp" />
@@ -555,7 +558,11 @@
     <ClInclude Include="Source\Mappers\Government\GovernmentMapperFactory.h" />
     <ClInclude Include="Source\Mappers\Government\GovernmentMapping.h" />
     <ClInclude Include="Source\Mappers\Government\GovernmentMappingFactory.h" />
-    <ClInclude Include="Source\Mappers\GraphicsMappedBuilder.h" />
+    <ClInclude Include="Source\Mappers\Graphics\GraphicsCultureGroup.h" />
+    <ClInclude Include="Source\Mappers\Graphics\GraphicsCultureGroupFactory.h" />
+    <ClInclude Include="Source\Mappers\Graphics\GraphicsMapper.h" />
+    <ClInclude Include="Source\Mappers\Graphics\GraphicsMapperFactory.h" />
+    <ClInclude Include="Source\Mappers\Graphics\IdeologyToPortraitsMappingFactory.h" />
     <ClInclude Include="Source\Mappers\Ideology\IdeologyMapper.h" />
     <ClInclude Include="Source\Mappers\Ideology\IdeologyMapperFactory.h" />
     <ClInclude Include="Source\Mappers\Ideology\IdeologyMapping.h" />
@@ -773,7 +780,6 @@
     <ClInclude Include="Source\HOI4World\WarCreator\HoI4WarCreator.h" />
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagsToIdeasMapper.h" />
     <ClInclude Include="Source\Mappers\FlagsToIdeas\FlagToIdeaMapping.h" />
-    <ClInclude Include="Source\Mappers\GraphicsMapper.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapper.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMapping.h" />
     <ClInclude Include="Source\Mappers\Provinces\ProvinceMappingTypes.h" />

@@ -15,11 +15,10 @@ namespace HoI4
 class Commander
 {
   public:
-	Commander(const Vic2::Leader& srcLeader, std::string portrait);
+	Commander(const Vic2::Leader& srcLeader);
 
   protected:
 	std::string name;
-	std::string picture;
 	std::vector<std::string> traits;
 	int skill = 1;
 	int attackSkill = 1;

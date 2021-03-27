@@ -8,7 +8,7 @@
 #include "HOI4World/Leaders/Advisor.h"
 #include "HOI4World/Military/DivisionTemplate.h"
 #include "HOI4World/Names/Names.h"
-#include "Mappers/GraphicsMapper.h"
+#include "Mappers/Graphics/GraphicsMapper.h"
 #include <ostream>
 #include <set>
 #include <vector>

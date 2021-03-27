@@ -31,11 +31,11 @@ HoI4::CountryLeader HoI4::CountryLeader::Factory::createNewLeader(const std::str
 	 const std::string& governmentIdeology,
 	 const std::string& leaderIdeology,
 	 Names& names,
-	 graphicsMapper& theGraphics)
+	 Mappers::GraphicsMapper& graphicsMapper)
 {
 	CountryLeader leader;
 	leader.ideology = leaderIdeology;
-	leader.picture = theGraphics.getLeaderPortrait(primaryCultureGroup, governmentIdeology);
+	leader.picture = graphicsMapper.getLeaderPortrait(primaryCultureGroup, governmentIdeology);
 
 	const auto firstName = names.getMaleName(primaryCulture);
 	const auto surname = names.getSurname(primaryCulture);

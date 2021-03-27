@@ -259,6 +259,9 @@
     <Filter Include="Vic2World\Stockpiles">
       <UniqueIdentifier>{3f96e7cb-42d9-4e94-963c-dda43836eb2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Mappers\Graphics">
+      <UniqueIdentifier>{ab3aa485-4b62-490f-8af4-7ad6ba117d9c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -286,9 +289,6 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\HoI4Focus.cpp">
       <Filter>HoI4World</Filter>
-    </ClCompile>
-    <ClCompile Include="Source\Mappers\GraphicsMapper.cpp">
-      <Filter>Mappers</Filter>
     </ClCompile>
     <ClCompile Include="..\common_items\ParserHelpers.cpp">
       <Filter>CommonItems</Filter>
@@ -1228,6 +1228,18 @@
     <ClCompile Include="Source\V2World\Stockpiles\StockpileFactory.cpp">
       <Filter>Vic2World\Stockpiles</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Mappers\Graphics\GraphicsMapper.cpp">
+      <Filter>Mappers\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\Graphics\GraphicsCultureGroupFactory.cpp">
+      <Filter>Mappers\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\Graphics\IdeologyToPortraitsMappingFactory.cpp">
+      <Filter>Mappers\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\Graphics\GraphicsMapperFactory.cpp">
+      <Filter>Mappers\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1254,9 +1266,6 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\HoI4Focus.h">
       <Filter>HoI4World</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\Mappers\GraphicsMapper.h">
-      <Filter>Mappers</Filter>
     </ClInclude>
     <ClInclude Include="..\common_items\ParserHelpers.h">
       <Filter>CommonItems</Filter>
@@ -2201,9 +2210,6 @@
     <ClInclude Include="Source\HOI4World\Map\CoastalProvincesBuilder.h">
       <Filter>HoI4World\Map</Filter>
     </ClInclude>
-    <ClInclude Include="Source\Mappers\GraphicsMappedBuilder.h">
-      <Filter>Mappers</Filter>
-    </ClInclude>
     <ClInclude Include="Source\HOI4World\States\HoI4StateBuilder.h">
       <Filter>HoI4World\States</Filter>
     </ClInclude>
@@ -2432,6 +2438,21 @@
     </ClInclude>
     <ClInclude Include="Source\V2World\Stockpiles\StockpileFactory.h">
       <Filter>Vic2World\Stockpiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Graphics\GraphicsMapper.h">
+      <Filter>Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Graphics\GraphicsCultureGroup.h">
+      <Filter>Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Graphics\IdeologyToPortraitsMappingFactory.h">
+      <Filter>Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Graphics\GraphicsCultureGroupFactory.h">
+      <Filter>Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Graphics\GraphicsMapperFactory.h">
+      <Filter>Mappers\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

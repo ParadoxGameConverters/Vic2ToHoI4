@@ -22,9 +22,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\HoI4Localisation.cpp">
       <Filter>Vic2ToHoI4 files\HoI4</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
-    </ClCompile>
     <ClCompile Include="..\common_items\Date.cpp">
       <Filter>Vic2ToHoI4 files\common items</Filter>
     </ClCompile>
@@ -1478,6 +1475,27 @@
     <ClCompile Include="Vic2WorldTests\Stockpiles\StockpileTests.cpp">
       <Filter>Vic2WorldTests\Stockpiles</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsMapper.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\IdeologyToPortraitsMappingFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\Graphics\IdeologyToPortraitsMappingFactoryTests.cpp">
+      <Filter>MapperTests\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsCultureGroupFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\Graphics\GraphicsCultureGroupTests.cpp">
+      <Filter>MapperTests\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsMapperFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\Graphics\GraphicsMapperTests.cpp">
+      <Filter>MapperTests\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1960,6 +1978,15 @@
     <Filter Include="Vic2WorldTests\Stockpiles">
       <UniqueIdentifier>{c06c0c92-114e-436b-af0e-45dc82fef7af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vic2ToHoI4 files\Mappers\Graphics">
+      <UniqueIdentifier>{569ad768-3544-4729-bad0-70dfefdc23b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapperTests\Graphics">
+      <UniqueIdentifier>{81153f46-239f-4bea-bb1c-4114a260ccb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\Mappers\Graphics">
+      <UniqueIdentifier>{cee8fc55-67f7-4cbb-8589-93b2985d47d9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -2264,12 +2291,6 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\World\WorldFactory.h">
       <Filter>Vic2ToHoI4 files\Vic2\World</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMappedBuilder.h">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\GraphicsMapper.h">
-      <Filter>Vic2ToHoI4 files\Mappers</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decision.h">
       <Filter>Vic2ToHoI4 files\HoI4\Decisions</Filter>
@@ -2892,6 +2913,21 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Stockpiles\StockpileFactory.h">
       <Filter>Vic2ToHoI4 files\Vic2\Stockpiles</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsMapper.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsCultureGroup.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\IdeologyToPortraitsMappingFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsCultureGroupFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsMapperFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3191,6 +3227,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\Government\GovernmentMappings.txt">
       <Filter>TestFiles</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\Mappers\Graphics\cultureGroupToGraphics.txt">
+      <Filter>TestFiles\Mappers\Graphics</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

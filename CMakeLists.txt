@@ -120,7 +120,6 @@ set(HOI4WORLD_SOUNDS_SOURCES ${HOI4WORLD_SOUNDS_SOURCES} "${PROJECT_SOURCE_DIR}/
 set(HOI4WORLD_SOUNDS_SOURCES ${HOI4WORLD_SOUNDS_SOURCES} "${PROJECT_SOURCE_DIR}/HOI4World/Sounds/SoundEffectsMapperLinkFactory.cpp")
 file(GLOB HOI4WORLD_STATES_SOURCES "${PROJECT_SOURCE_DIR}/HOI4World/States/*.cpp")
 file(GLOB HOI4WORLD_WAR_CREATOR_SOURCES "${PROJECT_SOURCE_DIR}/HOI4World/WarCreator/*.cpp")
-file(GLOB MAPPERS_SOURCES "${PROJECT_SOURCE_DIR}/Mappers/*.cpp")
 set(MAPPERS_COUNTRY_SOURCES ${MAPPERS_COUNTRY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Country/CountryMapper.cpp")
 set(MAPPERS_COUNTRY_SOURCES ${MAPPERS_COUNTRY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Country/CountryMapperFactory.cpp")
 set(MAPPERS_COUNTRY_SOURCES ${MAPPERS_COUNTRY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Country/CountryMappingRuleFactory.cpp")
@@ -133,6 +132,10 @@ set(MAPPERS_FLAGS_TO_IDEAS_SOURCES ${MAPPERS_FLAGS_TO_IDEAS_SOURCES} "${PROJECT_
 set(MAPPERS_GOVERNMENT_SOURCES ${MAPPERS_GOVERNMENT_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Government/GovernmentMapper.cpp")
 set(MAPPERS_GOVERNMENT_SOURCES ${MAPPERS_GOVERNMENT_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Government/GovernmentMapperFactory.cpp")
 set(MAPPERS_GOVERNMENT_SOURCES ${MAPPERS_GOVERNMENT_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Government/GovernmentMappingFactory.cpp")
+set(MAPPERS_GRAPHICS_SOURCES ${MAPPERS_GRAPHICS_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Graphics/GraphicsCultureGroupFactory.cpp")
+set(MAPPERS_GRAPHICS_SOURCES ${MAPPERS_GRAPHICS_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Graphics/GraphicsMapper.cpp")
+set(MAPPERS_GRAPHICS_SOURCES ${MAPPERS_GRAPHICS_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Graphics/GraphicsMapperFactory.cpp")
+set(MAPPERS_GRAPHICS_SOURCES ${MAPPERS_GRAPHICS_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Graphics/IdeologyToPortraitsMappingFactory.cpp")
 set(MAPPERS_IDEOLOGY_SOURCES ${MAPPERS_IDEOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Ideology/IdeologyMappingFactory.cpp")
 set(MAPPERS_IDEOLOGY_SOURCES ${MAPPERS_IDEOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Ideology/IdeologyMapper.cpp")
 set(MAPPERS_IDEOLOGY_SOURCES ${MAPPERS_IDEOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Ideology/IdeologyMapperFactory.cpp")
@@ -288,6 +291,7 @@ add_executable(
 	${MAPPERS_COUNTRYNAME_SOURCES}
 	${MAPPERS_FLAGS_TO_IDEAS_SOURCES}
 	${MAPPERS_GOVERNMENT_SOURCES}
+	${MAPPERS_GRAPHICS_SOURCES}
 	${MAPPERS_IDEOLOGY_SOURCES}
 	${MAPPERS_MERGE_RULES_SOURCES}
 	${MAPPERS_TECHNOLOGY_SOURCES}
@@ -439,6 +443,9 @@ set(MAPPERS_FLAGS_TO_IDEAS_TESTS_SOURCES ${MAPPERS_FLAGS_TO_IDEAS_TESTS_SOURCES}
 set(MAPPERS_FLAGS_TO_IDEAS_TESTS_SOURCES ${MAPPERS_FLAGS_TO_IDEAS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/FlagsToIdeas/FlagToIdeaMappingTests.cpp")
 set(MAPPERS_GOVERNMENT_TESTS_SOURCES ${MAPPERS_GOVERNMENT_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Government/GovernmentMapperTests.cpp")
 set(MAPPERS_GOVERNMENT_TESTS_SOURCES ${MAPPERS_GOVERNMENT_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Government/GovernmentMappingTests.cpp")
+set(MAPPERS_GRAPHICS_TESTS_SOURCES ${MAPPERS_GRAPHICS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Graphics/IdeologyToPortraitsMappingFactoryTests.cpp")
+set(MAPPERS_GRAPHICS_TESTS_SOURCES ${MAPPERS_GRAPHICS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Graphics/GraphicsCultureGroupTests.cpp")
+set(MAPPERS_GRAPHICS_TESTS_SOURCES ${MAPPERS_GRAPHICS_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Graphics/GraphicsMapperTests.cpp")
 set(MAPPERS_IDEOLOGY_TESTS_SOURCES ${MAPPERS_IDEOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Ideology/IdeologyMappingTests.cpp")
 set(MAPPERS_IDEOLOGY_TESTS_SOURCES ${MAPPERS_IDEOLOGY_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/Ideology/IdeologyMapperTests.cpp")
 set(MAPPERS_MERGE_RULES_TESTS_SOURCES ${MAPPERS_MERGE_RULES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/MapperTests/MergeRules/MergeRulesTests.cpp")
@@ -543,6 +550,7 @@ add_executable(
 	${MAPPERS_COUNTRYNAME_SOURCES}
 	${MAPPERS_FLAGS_TO_IDEAS_SOURCES}
 	${MAPPERS_GOVERNMENT_SOURCES}
+	${MAPPERS_GRAPHICS_SOURCES}
 	${MAPPERS_IDEOLOGY_SOURCES}
 	${MAPPERS_MERGE_RULES_SOURCES}
 	${MAPPERS_TECHNOLOGY_SOURCES}
@@ -623,6 +631,7 @@ add_executable(
 	${MAPPERS_COUNTRYNAME_TESTS_SOURCES}
 	${MAPPERS_FLAGS_TO_IDEAS_TESTS_SOURCES}
 	${MAPPERS_GOVERNMENT_TESTS_SOURCES}
+	${MAPPERS_GRAPHICS_TESTS_SOURCES}
 	${MAPPERS_IDEOLOGY_TESTS_SOURCES}
 	${MAPPERS_MERGE_RULES_TESTS_SOURCES}
 	${MAPPERS_PROVINCES_TESTS_SOURCES}
@@ -692,6 +701,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/Localisations/StateCategories.txt" "${
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Country/country_mappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/country_mappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/FlagsToIdeas/FlagsToIdeasMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/FlagsToIdeasMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Government/GovernmentMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/GovernmentMappings.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Graphics/cultureGroupToGraphics.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/cultureGroupToGraphics.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Ideology/IdeologyMappings.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/IdeologyMappings.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/MergeRules/merge_nations.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/merge_nations.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/Mappers/Provinces/bad_line_definition.csv" "${TEST_OUTPUT_DIRECTORY}/bad_line_definition/map/definition.csv" COPYONLY)

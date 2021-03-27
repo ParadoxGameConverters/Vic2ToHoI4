@@ -18,7 +18,7 @@
 #include "Mappers/Country/CountryMapper.h"
 #include "Mappers/FlagsToIdeas/FlagsToIdeasMapper.h"
 #include "Mappers/Government/GovernmentMapper.h"
-#include "Mappers/GraphicsMapper.h"
+#include "Mappers/Graphics/GraphicsMapper.h"
 #include "Mappers/Ideology/IdeologyMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Mappers/Technology/TechMapper.h"
@@ -56,7 +56,7 @@ class Country
 	explicit Country(std::string tag,
 		 const Vic2::Country& sourceCountry,
 		 Names& names,
-		 graphicsMapper& theGraphics,
+		 Mappers::GraphicsMapper& graphicsMapper,
 		 const Mappers::CountryMapper& countryMap,
 		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 		 Localisation& hoi4Localisations);
@@ -75,7 +75,7 @@ class Country
 		 const Ideologies& ideologies,
 		 const Mappers::GovernmentMapper& governmentMap,
 		 bool debug);
-	void createLeader(Names& names, graphicsMapper& theGraphics);
+	void createLeader(Names& names, Mappers::GraphicsMapper& graphicsMapper);
 	void convertGovernment(const Vic2::World& sourceWorld,
 		 const Mappers::GovernmentMapper& governmentMap,
 		 const Vic2::Localisations& vic2Localisations,
@@ -234,8 +234,8 @@ class Country
 	void determineFilename();
 	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
 	void convertLaws();
-	void convertLeaders(const graphicsMapper& theGraphics, const Vic2::Country& sourceCountry);
-	void convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
+	void convertLeaders(const Vic2::Country& sourceCountry);
+	void convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names,
 		 Localisation& hoi4Localisations,
 		 const Vic2::Country& sourceCountry);
