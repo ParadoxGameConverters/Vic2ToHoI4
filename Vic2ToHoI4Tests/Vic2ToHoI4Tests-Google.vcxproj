@@ -117,7 +117,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsCultureGroup.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsCultureGroupFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\IdeologyToPortraitsMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapper.cpp" />
@@ -474,6 +474,7 @@
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagToIdeaMappingTests.cpp" />
     <ClCompile Include="MapperTests\Government\GovernmentMapperTests.cpp" />
     <ClCompile Include="MapperTests\Government\GovernmentMappingTests.cpp" />
+    <ClCompile Include="MapperTests\Graphics\GraphicsCultureGroupTests.cpp" />
     <ClCompile Include="MapperTests\Graphics\IdeologyToPortraitsMappingFactoryTests.cpp" />
     <ClCompile Include="MapperTests\Ideology\IdeologyMapperTests.cpp" />
     <ClCompile Include="MapperTests\Ideology\IdeologyMappingTests.cpp" />
@@ -854,6 +855,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsCultureGroup.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsCultureGroupFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsMapper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\IdeologyToPortraitsMappingFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapper.h" />

@@ -1478,13 +1478,16 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsCultureGroup.cpp">
-      <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\IdeologyToPortraitsMappingFactory.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="MapperTests\Graphics\IdeologyToPortraitsMappingFactoryTests.cpp">
+      <Filter>MapperTests\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsCultureGroupFactory.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="MapperTests\Graphics\GraphicsCultureGroupTests.cpp">
       <Filter>MapperTests\Graphics</Filter>
     </ClCompile>
   </ItemGroup>
@@ -2908,6 +2911,9 @@
       <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\IdeologyToPortraitsMappingFactory.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsCultureGroupFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
     </ClInclude>
   </ItemGroup>

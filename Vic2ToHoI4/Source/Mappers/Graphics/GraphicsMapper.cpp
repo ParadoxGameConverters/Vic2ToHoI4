@@ -11,15 +11,15 @@ void graphicsMapper::init()
 	Log(LogLevel::Info) << "\tReading graphics mappings";
 
 	registerRegex(commonItems::catchallRegex, [this](const std::string& cultureGroupName, std::istream& theStream) {
-		Mappers::GraphicsCultureGroup newCultureGroup(theStream);
-		armyPortraitMappings[cultureGroupName] = newCultureGroup.getArmyPortraits();
-		navyPortraitMappings[cultureGroupName] = newCultureGroup.getNavyPortraits();
-		maleMonarchMappings[cultureGroupName] = newCultureGroup.getMaleMonarchPortraits();
-		femaleMonarchMappings[cultureGroupName] = newCultureGroup.getFemaleMonarchPortraits();
-		graphicalCultureMap[cultureGroupName] = newCultureGroup.getGraphicalCulture();
-		graphicalCulture2dMap[cultureGroupName] = newCultureGroup.getGraphicalCulture2D();
-		loadLeaderPortraitMappings(cultureGroupName, newCultureGroup.getLeaderPortraits());
-		loadIdeologyMinisterPortraitMappings(cultureGroupName, newCultureGroup.getIdeologyMinisterPortraits());
+		const auto newCultureGroup = graphicsCultureGroupFactory.importCultureGroup(theStream);
+		armyPortraitMappings[cultureGroupName] = newCultureGroup->getArmyPortraits();
+		navyPortraitMappings[cultureGroupName] = newCultureGroup->getNavyPortraits();
+		maleMonarchMappings[cultureGroupName] = newCultureGroup->getMaleMonarchPortraits();
+		femaleMonarchMappings[cultureGroupName] = newCultureGroup->getFemaleMonarchPortraits();
+		graphicalCultureMap[cultureGroupName] = newCultureGroup->getGraphicalCulture();
+		graphicalCulture2dMap[cultureGroupName] = newCultureGroup->getGraphicalCulture2D();
+		loadLeaderPortraitMappings(cultureGroupName, newCultureGroup->getLeaderPortraits());
+		loadIdeologyMinisterPortraitMappings(cultureGroupName, newCultureGroup->getIdeologyMinisterPortraits());
 	});
 
 	parseFile("Configurables/cultureGroupToGraphics.txt");

@@ -9,6 +9,7 @@
 #include <random>
 #include <string>
 #include <vector>
+#include "GraphicsCultureGroupFactory.h"
 
 
 
@@ -40,6 +41,8 @@ class graphicsMapper: commonItems::parser
   private:
 	graphicsMapper(const graphicsMapper&) = delete;
 	graphicsMapper& operator=(const graphicsMapper&) = delete;
+
+	Mappers::GraphicsCultureGroup::Factory graphicsCultureGroupFactory;
 
 	void loadLeaderPortraitMappings(const std::string& cultureGroup,
 		 const std::map<std::string, std::vector<std::string>>& portraitMappings);

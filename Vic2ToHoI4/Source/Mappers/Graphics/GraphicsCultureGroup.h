@@ -3,7 +3,6 @@
 
 
 
-#include "IdeologyToPortraitsMappingFactory.h"
 #include "Parser.h"
 #include <map>
 #include <string>
@@ -14,23 +13,21 @@
 namespace Mappers
 {
 
-class GraphicsCultureGroup: commonItems::parser
+class GraphicsCultureGroup
 {
   public:
-	explicit GraphicsCultureGroup(std::istream& theStream);
+	class Factory;
 
-	auto getArmyPortraits() const { return armyPortraits; }
-	auto getNavyPortraits() const { return navyPortraits; }
-	auto getMaleMonarchPortraits() const { return maleMonarchPortraits; }
-	auto getFemaleMonarchPortraits() const { return femaleMonarchPortraits; }
-	auto getLeaderPortraits() const { return leaderPortraits; }
-	auto getIdeologyMinisterPortraits() const { return ideologyMinisterPortraits; }
-	auto getGraphicalCulture() const { return graphicalCulture; }
-	auto getGraphicalCulture2D() const { return graphicalCulture2D; }
+	[[nodiscard]] const auto& getArmyPortraits() const { return armyPortraits; }
+	[[nodiscard]] const auto& getNavyPortraits() const { return navyPortraits; }
+	[[nodiscard]] const auto& getMaleMonarchPortraits() const { return maleMonarchPortraits; }
+	[[nodiscard]] const auto& getFemaleMonarchPortraits() const { return femaleMonarchPortraits; }
+	[[nodiscard]] const auto& getLeaderPortraits() const { return leaderPortraits; }
+	[[nodiscard]] const auto& getIdeologyMinisterPortraits() const { return ideologyMinisterPortraits; }
+	[[nodiscard]] const auto& getGraphicalCulture() const { return graphicalCulture; }
+	[[nodiscard]] const auto& getGraphicalCulture2D() const { return graphicalCulture2D; }
 
   private:
-	IdeologyToPortraitsMappingFactory ideologyToPortraitsMappingFactory;
-	
 	std::vector<std::string> armyPortraits;
 	std::vector<std::string> navyPortraits;
 	std::vector<std::string> maleMonarchPortraits;
