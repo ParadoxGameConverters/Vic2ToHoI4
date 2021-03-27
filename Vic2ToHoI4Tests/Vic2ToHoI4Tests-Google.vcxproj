@@ -119,7 +119,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsCultureGroup.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsMapper.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\IdeologyToPortraitsMapping.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\IdeologyToPortraitsMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapper.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMappingFactory.cpp" />
@@ -474,6 +474,7 @@
     <ClCompile Include="MapperTests\FlagsToIdeas\FlagToIdeaMappingTests.cpp" />
     <ClCompile Include="MapperTests\Government\GovernmentMapperTests.cpp" />
     <ClCompile Include="MapperTests\Government\GovernmentMappingTests.cpp" />
+    <ClCompile Include="MapperTests\Graphics\IdeologyToPortraitsMappingFactoryTests.cpp" />
     <ClCompile Include="MapperTests\Ideology\IdeologyMapperTests.cpp" />
     <ClCompile Include="MapperTests\Ideology\IdeologyMappingTests.cpp" />
     <ClCompile Include="MapperTests\MergeRules\MergeRulesTests.cpp" />
@@ -854,7 +855,7 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Government\GovernmentMappingFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsCultureGroup.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsMapper.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\IdeologyToPortraitsMapping.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\IdeologyToPortraitsMappingFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapper.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapperFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Ideology\IdeologyMapping.h" />

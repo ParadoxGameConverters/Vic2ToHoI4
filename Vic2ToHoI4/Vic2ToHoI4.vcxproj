@@ -206,7 +206,7 @@
     <ClCompile Include="Source\Mappers\Government\GovernmentMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\Graphics\GraphicsCultureGroup.cpp" />
     <ClCompile Include="Source\Mappers\Graphics\GraphicsMapper.cpp" />
-    <ClCompile Include="Source\Mappers\Graphics\IdeologyToPortraitsMapping.cpp" />
+    <ClCompile Include="Source\Mappers\Graphics\IdeologyToPortraitsMappingFactory.cpp" />
     <ClCompile Include="Source\Mappers\Ideology\IdeologyMapper.cpp" />
     <ClCompile Include="Source\Mappers\Ideology\IdeologyMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Ideology\IdeologyMappingFactory.cpp" />
@@ -559,7 +559,7 @@
     <ClInclude Include="Source\Mappers\Government\GovernmentMappingFactory.h" />
     <ClInclude Include="Source\Mappers\Graphics\GraphicsCultureGroup.h" />
     <ClInclude Include="Source\Mappers\Graphics\GraphicsMapper.h" />
-    <ClInclude Include="Source\Mappers\Graphics\IdeologyToPortraitsMapping.h" />
+    <ClInclude Include="Source\Mappers\Graphics\IdeologyToPortraitsMappingFactory.h" />
     <ClInclude Include="Source\Mappers\Ideology\IdeologyMapper.h" />
     <ClInclude Include="Source\Mappers\Ideology\IdeologyMapperFactory.h" />
     <ClInclude Include="Source\Mappers\Ideology\IdeologyMapping.h" />

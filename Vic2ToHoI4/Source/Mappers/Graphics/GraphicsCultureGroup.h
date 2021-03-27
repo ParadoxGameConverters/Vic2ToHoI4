@@ -3,6 +3,7 @@
 
 
 
+#include "IdeologyToPortraitsMappingFactory.h"
 #include "Parser.h"
 #include <map>
 #include <string>
@@ -28,6 +29,8 @@ class GraphicsCultureGroup: commonItems::parser
 	auto getGraphicalCulture2D() const { return graphicalCulture2D; }
 
   private:
+	IdeologyToPortraitsMappingFactory ideologyToPortraitsMappingFactory;
+	
 	std::vector<std::string> armyPortraits;
 	std::vector<std::string> navyPortraits;
 	std::vector<std::string> maleMonarchPortraits;

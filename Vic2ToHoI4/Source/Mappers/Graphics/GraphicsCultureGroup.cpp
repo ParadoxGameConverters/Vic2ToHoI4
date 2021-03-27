@@ -1,5 +1,4 @@
 #include "GraphicsCultureGroup.h"
-#include "IdeologyToPortraitsMapping.h"
 #include "ParserHelpers.h"
 
 
@@ -19,12 +18,10 @@ Mappers::GraphicsCultureGroup::GraphicsCultureGroup(std::istream& theStream)
 		femaleMonarchPortraits = commonItems::stringList(theStream).getStrings();
 	});
 	registerKeyword("leader_portraits", [this](std::istream& theStream) {
-		IdeologyToPortraitsMapping mappings(theStream);
-		leaderPortraits = mappings.getMap();
+		leaderPortraits = ideologyToPortraitsMappingFactory.importMapping(theStream);
 	});
 	registerKeyword("ideology_minister_portraits", [this](std::istream& theStream) {
-		IdeologyToPortraitsMapping mappings(theStream);
-		ideologyMinisterPortraits = mappings.getMap();
+		ideologyMinisterPortraits = ideologyToPortraitsMappingFactory.importMapping(theStream);
 	});
 	registerKeyword("graphical_culture", [this](std::istream& theStream) {
 		commonItems::stringList graphicsString(theStream);
