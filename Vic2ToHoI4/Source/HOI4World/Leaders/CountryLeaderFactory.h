@@ -24,7 +24,7 @@ class CountryLeader::Factory: commonItems::parser
 		 const std::string& governmentIdeology,
 		 const std::string& leaderIdeology,
 		 Names& names,
-		 graphicsMapper& theGraphics);
+		 Mappers::GraphicsMapper& graphicsMapper);
 	std::unique_ptr<CountryLeader> importCountryLeader(std::istream& theStream);
 
   private:

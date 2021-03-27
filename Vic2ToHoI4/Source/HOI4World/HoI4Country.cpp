@@ -25,7 +25,7 @@
 HoI4::Country::Country(std::string tag,
 	 const Vic2::Country& sourceCountry,
 	 Names& names,
-	 graphicsMapper& theGraphics,
+	 Mappers::GraphicsMapper& graphicsMapper,
 	 const Mappers::CountryMapper& countryMap,
 	 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 	 Localisation& hoi4Localisations):
@@ -46,24 +46,24 @@ HoI4::Country::Country(std::string tag,
 		color = *sourceColor;
 	}
 
-	auto possibleGraphicalCulture = theGraphics.getGraphicalCulture(primaryCultureGroup);
+	auto possibleGraphicalCulture = graphicsMapper.getGraphicalCulture(primaryCultureGroup);
 	if (possibleGraphicalCulture)
 	{
 		graphicalCulture = *possibleGraphicalCulture;
 	}
-	auto possibleGraphicalCulture2d = theGraphics.get2dGraphicalCulture(primaryCultureGroup);
+	auto possibleGraphicalCulture2d = graphicsMapper.get2dGraphicalCulture(primaryCultureGroup);
 	if (possibleGraphicalCulture2d)
 	{
 		graphicalCulture2d = *possibleGraphicalCulture2d;
 	}
-	armyPortraits = theGraphics.getArmyPortraits(primaryCultureGroup);
-	navyPortraits = theGraphics.getNavyPortraits(primaryCultureGroup);
-	communistAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "communism");
-	democraticAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "democratic");
-	neutralityAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "neutrality");
-	absolutistAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "absolutist");
-	radicalAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "radical");
-	fascistAdvisorPortrait = theGraphics.getIdeologyMinisterPortrait(primaryCultureGroup, "fascism");
+	armyPortraits = graphicsMapper.getArmyPortraits(primaryCultureGroup);
+	navyPortraits = graphicsMapper.getNavyPortraits(primaryCultureGroup);
+	communistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "communism");
+	democraticAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "democratic");
+	neutralityAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "neutrality");
+	absolutistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "absolutist");
+	radicalAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "radical");
+	fascistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "fascism");
 
 	initIdeas(names, hoi4Localisations);
 
@@ -95,8 +95,8 @@ HoI4::Country::Country(std::string tag,
 
 	oldTechnologiesAndInventions = sourceCountry.getTechnologiesAndInventions();
 
-	convertLeaders(theGraphics, sourceCountry);
-	convertMonarchIdea(theGraphics, names, hoi4Localisations, sourceCountry);
+	convertLeaders(graphicsMapper, sourceCountry);
+	convertMonarchIdea(graphicsMapper, names, hoi4Localisations, sourceCountry);
 	convertRelations(countryMap, sourceCountry);
 	convertStrategies(countryMap, sourceCountry);
 	atWar = sourceCountry.isAtWar();
@@ -261,26 +261,26 @@ void HoI4::Country::convertLaws()
 }
 
 
-void HoI4::Country::convertLeaders(const graphicsMapper& theGraphics, const Vic2::Country& sourceCountry)
+void HoI4::Country::convertLeaders(Mappers::GraphicsMapper& graphicsMapper, const Vic2::Country& sourceCountry)
 {
 	auto srcLeaders = sourceCountry.getLeaders();
 	for (auto srcLeader: srcLeaders)
 	{
 		if (srcLeader.getType() == "land")
 		{
-			General newLeader(srcLeader, theGraphics.getGeneralPortrait(graphicalCulture));
+			General newLeader(srcLeader, graphicsMapper.getLeaderPortrait(primaryCultureGroup, governmentIdeology));
 			generals.push_back(newLeader);
 		}
 		else if (srcLeader.getType() == "sea")
 		{
-			Admiral newLeader(srcLeader, theGraphics.getGeneralPortrait(graphicalCulture));
+			Admiral newLeader(srcLeader, graphicsMapper.getLeaderPortrait(primaryCultureGroup, governmentIdeology));
 			admirals.push_back(newLeader);
 		}
 	}
 }
 
 
-void HoI4::Country::convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
+void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMapper,
 	 Names& names,
 	 Localisation& hoi4Localisations,
 	 const Vic2::Country& sourceCountry)
@@ -435,7 +435,7 @@ void HoI4::Country::convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
 
 	if (!female)
 	{
-		const auto monarchPortraits = theGraphicsmapper.getMaleMonarchPortraits(primaryCultureGroup);
+		const auto monarchPortraits = graphicsMapper.getMaleMonarchPortraits(primaryCultureGroup);
 		if (!monarchPortraits.empty())
 		{
 			monarchIdeaTexture = monarchPortraits.at(
@@ -444,7 +444,7 @@ void HoI4::Country::convertMonarchIdea(const graphicsMapper& theGraphicsmapper,
 	}
 	else
 	{
-		const auto monarchPortraits = theGraphicsmapper.getFemaleMonarchPortraits(primaryCultureGroup);
+		const auto monarchPortraits = graphicsMapper.getFemaleMonarchPortraits(primaryCultureGroup);
 		if (!monarchPortraits.empty())
 		{
 			monarchIdeaTexture = monarchPortraits.at(
@@ -774,7 +774,7 @@ void HoI4::Country::setGovernmentToExistingIdeology(const std::set<std::string>&
 }
 
 
-void HoI4::Country::createLeader(Names& names, graphicsMapper& theGraphics)
+void HoI4::Country::createLeader(Names& names, Mappers::GraphicsMapper& graphicsMapper)
 {
 	for (const auto& configuredLeader: leaders)
 	{
@@ -789,7 +789,7 @@ void HoI4::Country::createLeader(Names& names, graphicsMapper& theGraphics)
 		 governmentIdeology,
 		 leaderIdeology,
 		 names,
-		 theGraphics));
+		 graphicsMapper));
 }
 
 
