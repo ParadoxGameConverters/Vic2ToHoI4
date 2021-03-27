@@ -1478,6 +1478,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsMapper.cpp">
       <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsCultureGroup.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Graphics\IdeologyToPortraitsMapping.cpp">
+      <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2890,6 +2896,12 @@
       <Filter>Vic2ToHoI4 files\Vic2\Stockpiles</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsMapper.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsCultureGroup.h">
+      <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\IdeologyToPortraitsMapping.h">
       <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
     </ClInclude>
   </ItemGroup>

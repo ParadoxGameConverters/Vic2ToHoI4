@@ -1,93 +1,9 @@
 #include "GraphicsMapper.h"
 #include "CommonRegexes.h"
+#include "GraphicsCultureGroup.h"
 #include "Log.h"
 #include "ParserHelpers.h"
 
-
-
-class ideologyToPortraitsMapping: commonItems::parser
-{
-  public:
-	explicit ideologyToPortraitsMapping(std::istream& theStream);
-
-	auto getMap() const { return theMap; }
-
-  private:
-	std::map<std::string, std::vector<std::string>> theMap;
-};
-
-
-ideologyToPortraitsMapping::ideologyToPortraitsMapping(std::istream& theStream)
-{
-	registerRegex(commonItems::catchallRegex, [this](const std::string& ideology, std::istream& theStream) {
-		commonItems::stringList portraits(theStream);
-		theMap.insert(make_pair(ideology, portraits.getStrings()));
-	});
-
-	parseStream(theStream);
-}
-
-
-
-class graphicsCultureGroup: commonItems::parser
-{
-  public:
-	explicit graphicsCultureGroup(std::istream& theStream);
-
-	auto getArmyPortraits() const { return armyPortraits; }
-	auto getNavyPortraits() const { return navyPortraits; }
-	auto getMaleMonarchPortraits() const { return maleMonarchPortraits; }
-	auto getFemaleMonarchPortraits() const { return femaleMonarchPortraits; }
-	auto getLeaderPortraits() const { return leaderPortraits; }
-	auto getIdeologyMinisterPortraits() const { return ideologyMinisterPortraits; }
-	auto getGraphicalCulture() const { return graphicalCulture; }
-	auto getGraphicalCulture2D() const { return graphicalCulture2D; }
-
-  private:
-	std::vector<std::string> armyPortraits;
-	std::vector<std::string> navyPortraits;
-	std::vector<std::string> maleMonarchPortraits;
-	std::vector<std::string> femaleMonarchPortraits;
-	std::map<std::string, std::vector<std::string>> leaderPortraits;
-	std::map<std::string, std::vector<std::string>> ideologyMinisterPortraits;
-	std::string graphicalCulture;
-	std::string graphicalCulture2D;
-};
-
-
-graphicsCultureGroup::graphicsCultureGroup(std::istream& theStream)
-{
-	registerKeyword("army_portraits", [this](std::istream& theStream) {
-		armyPortraits = commonItems::stringList(theStream).getStrings();
-	});
-	registerKeyword("navy_portraits", [this](std::istream& theStream) {
-		navyPortraits = commonItems::stringList(theStream).getStrings();
-	});
-	registerKeyword("male_monarch_portraits", [this](std::istream& theStream) {
-		maleMonarchPortraits = commonItems::stringList(theStream).getStrings();
-	});
-	registerKeyword("female_monarch_portraits", [this](std::istream& theStream) {
-		femaleMonarchPortraits = commonItems::stringList(theStream).getStrings();
-	});
-	registerKeyword("leader_portraits", [this](std::istream& theStream) {
-		ideologyToPortraitsMapping mappings(theStream);
-		leaderPortraits = mappings.getMap();
-	});
-	registerKeyword("ideology_minister_portraits", [this](std::istream& theStream) {
-		ideologyToPortraitsMapping mappings(theStream);
-		ideologyMinisterPortraits = mappings.getMap();
-	});
-	registerKeyword("graphical_culture", [this](std::istream& theStream) {
-		commonItems::stringList graphicsString(theStream);
-		graphicalCulture = graphicsString.getStrings()[0];
-	});
-	registerKeyword("graphical_culture_2d", [this](std::istream& theStream) {
-		commonItems::stringList graphicsString(theStream);
-		graphicalCulture2D = graphicsString.getStrings()[0];
-	});
-
-	parseStream(theStream);
-}
 
 
 void graphicsMapper::init()
@@ -95,7 +11,7 @@ void graphicsMapper::init()
 	Log(LogLevel::Info) << "\tReading graphics mappings";
 
 	registerRegex(commonItems::catchallRegex, [this](const std::string& cultureGroupName, std::istream& theStream) {
-		graphicsCultureGroup newCultureGroup(theStream);
+		Mappers::GraphicsCultureGroup newCultureGroup(theStream);
 		armyPortraitMappings[cultureGroupName] = newCultureGroup.getArmyPortraits();
 		navyPortraitMappings[cultureGroupName] = newCultureGroup.getNavyPortraits();
 		maleMonarchMappings[cultureGroupName] = newCultureGroup.getMaleMonarchPortraits();

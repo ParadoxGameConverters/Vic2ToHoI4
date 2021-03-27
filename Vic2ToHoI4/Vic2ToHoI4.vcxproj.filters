@@ -1231,6 +1231,12 @@
     <ClCompile Include="Source\Mappers\Graphics\GraphicsMapper.cpp">
       <Filter>Mappers\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Source\Mappers\Graphics\GraphicsCultureGroup.cpp">
+      <Filter>Mappers\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Mappers\Graphics\IdeologyToPortraitsMapping.cpp">
+      <Filter>Mappers\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2431,6 +2437,12 @@
       <Filter>Vic2World\Stockpiles</Filter>
     </ClInclude>
     <ClInclude Include="Source\Mappers\Graphics\GraphicsMapper.h">
+      <Filter>Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Graphics\GraphicsCultureGroup.h">
+      <Filter>Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Mappers\Graphics\IdeologyToPortraitsMapping.h">
       <Filter>Mappers\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
