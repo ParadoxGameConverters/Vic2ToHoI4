@@ -85,6 +85,12 @@ TEST_F(Mappers_Graphics_GraphicsMapperTests, UnmatchedLeaderPortraitsAreDefault)
 TEST_F(Mappers_Graphics_GraphicsMapperTests, MatchedLeaderPortraitsAreReturned)
 {
 	std::set<std::string> leaderPortraits;
+	// repeat the insertion so that the random chance eventually selects both portraits
+	leaderPortraits.insert(graphicsMapper->getLeaderPortrait("test_culture_group", "good_ideology"));
+	leaderPortraits.insert(graphicsMapper->getLeaderPortrait("test_culture_group", "good_ideology"));
+	leaderPortraits.insert(graphicsMapper->getLeaderPortrait("test_culture_group", "good_ideology"));
+	leaderPortraits.insert(graphicsMapper->getLeaderPortrait("test_culture_group", "good_ideology"));
+	leaderPortraits.insert(graphicsMapper->getLeaderPortrait("test_culture_group", "good_ideology"));
 	leaderPortraits.insert(graphicsMapper->getLeaderPortrait("test_culture_group", "good_ideology"));
 	leaderPortraits.insert(graphicsMapper->getLeaderPortrait("test_culture_group", "good_ideology"));
 
@@ -105,6 +111,12 @@ TEST_F(Mappers_Graphics_GraphicsMapperTests, UnmatchedIdeologyMinisterPortraitsA
 TEST_F(Mappers_Graphics_GraphicsMapperTests, MatchedIdeologyMinisterPortraitsAreReturned)
 {
 	std::set<std::string> leaderPortraits;
+	// repeat the insertion so that the random chance eventually selects both portraits
+	leaderPortraits.insert(graphicsMapper->getIdeologyMinisterPortrait("test_culture_group", "good_ideology"));
+	leaderPortraits.insert(graphicsMapper->getIdeologyMinisterPortrait("test_culture_group", "good_ideology"));
+	leaderPortraits.insert(graphicsMapper->getIdeologyMinisterPortrait("test_culture_group", "good_ideology"));
+	leaderPortraits.insert(graphicsMapper->getIdeologyMinisterPortrait("test_culture_group", "good_ideology"));
+	leaderPortraits.insert(graphicsMapper->getIdeologyMinisterPortrait("test_culture_group", "good_ideology"));
 	leaderPortraits.insert(graphicsMapper->getIdeologyMinisterPortrait("test_culture_group", "good_ideology"));
 	leaderPortraits.insert(graphicsMapper->getIdeologyMinisterPortrait("test_culture_group", "good_ideology"));
 
