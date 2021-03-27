@@ -7,7 +7,6 @@ std::ostream& HoI4::operator<<(std::ostream& output, const Admiral& admiral)
 {
 	output << "create_navy_leader = {\n";
 	output << "\tname = \"" << admiral.name << "\"\n";
-	output << "\tpicture = \"" << admiral.picture << "\"\n";
 	output << "\ttraits = { ";
 	for (const auto& trait: admiral.traits)
 	{

@@ -4,7 +4,7 @@
 
 
 
-HoI4::General::General(const Vic2::Leader& srcLeader, const std::string& portrait): Commander(srcLeader, portrait)
+HoI4::General::General(const Vic2::Leader& srcLeader): Commander(srcLeader)
 {
 	planningSkill = std::clamp(static_cast<int>(std::round(srcLeader.getTraitEffectValue("morale") * 8.0F)) + 1, 1, 5);
 	logisticsSkill =

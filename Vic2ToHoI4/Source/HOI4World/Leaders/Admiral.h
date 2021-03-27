@@ -13,7 +13,7 @@ namespace HoI4
 class Admiral: Commander
 {
   public:
-	Admiral(const Vic2::Leader& srcLeader, const std::string& portrait);
+	Admiral(const Vic2::Leader& srcLeader);
 
 	friend std::ostream& operator<<(std::ostream& output, const Admiral& admiral);
 

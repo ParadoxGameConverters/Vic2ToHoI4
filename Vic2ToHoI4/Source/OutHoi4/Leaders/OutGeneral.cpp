@@ -7,7 +7,6 @@ std::ostream& HoI4::operator<<(std::ostream& output, const General& general)
 {
 	output << "create_corps_commander = {\n";
 	output << "\tname = \"" << general.name << "\"\n";
-	output << "\tpicture = \"" << general.picture << "\"\n";
 	output << "\ttraits = { ";
 	for (const auto& trait: general.traits)
 	{

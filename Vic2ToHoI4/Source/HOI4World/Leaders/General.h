@@ -13,7 +13,7 @@ namespace HoI4
 class General: Commander
 {
   public:
-	General(const Vic2::Leader& srcLeader, const std::string& portrait);
+	General(const Vic2::Leader& srcLeader);
 
 	friend std::ostream& operator<<(std::ostream& output, const General& general);
 

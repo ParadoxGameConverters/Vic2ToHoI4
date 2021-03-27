@@ -234,7 +234,7 @@ class Country
 	void determineFilename();
 	void initIdeas(Names& names, Localisation& hoi4Localisations) const;
 	void convertLaws();
-	void convertLeaders(Mappers::GraphicsMapper& graphicsMapper, const Vic2::Country& sourceCountry);
+	void convertLeaders(const Vic2::Country& sourceCountry);
 	void convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names,
 		 Localisation& hoi4Localisations,

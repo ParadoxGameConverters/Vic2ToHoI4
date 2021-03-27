@@ -95,7 +95,7 @@ HoI4::Country::Country(std::string tag,
 
 	oldTechnologiesAndInventions = sourceCountry.getTechnologiesAndInventions();
 
-	convertLeaders(graphicsMapper, sourceCountry);
+	convertLeaders(sourceCountry);
 	convertMonarchIdea(graphicsMapper, names, hoi4Localisations, sourceCountry);
 	convertRelations(countryMap, sourceCountry);
 	convertStrategies(countryMap, sourceCountry);
@@ -261,19 +261,19 @@ void HoI4::Country::convertLaws()
 }
 
 
-void HoI4::Country::convertLeaders(Mappers::GraphicsMapper& graphicsMapper, const Vic2::Country& sourceCountry)
+void HoI4::Country::convertLeaders(const Vic2::Country& sourceCountry)
 {
 	auto srcLeaders = sourceCountry.getLeaders();
 	for (auto srcLeader: srcLeaders)
 	{
 		if (srcLeader.getType() == "land")
 		{
-			General newLeader(srcLeader, graphicsMapper.getLeaderPortrait(primaryCultureGroup, governmentIdeology));
+			General newLeader(srcLeader);
 			generals.push_back(newLeader);
 		}
 		else if (srcLeader.getType() == "sea")
 		{
-			Admiral newLeader(srcLeader, graphicsMapper.getLeaderPortrait(primaryCultureGroup, governmentIdeology));
+			Admiral newLeader(srcLeader);
 			admirals.push_back(newLeader);
 		}
 	}
