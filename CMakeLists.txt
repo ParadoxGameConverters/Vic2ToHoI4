@@ -357,6 +357,7 @@ configure_file("${DATA_FILE_DIR}/configurables/converterFocuses.txt" "${CONVERTE
 configure_file("${DATA_FILE_DIR}/configurables/converterIdeas.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterIdeas.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/converterIdeologies.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterIdeologies.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/converterLeaderTraits.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterLeaderTraits.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CountryGrammar.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CountryGrammar.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/CountryNamesMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CountryNamesMappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/country_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/country_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/cultureGroupToGraphics.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/cultureGroupToGraphics.txt" COPYONLY)

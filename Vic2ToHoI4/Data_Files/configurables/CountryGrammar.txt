@@ -1,0 +1,1089 @@
+### TAG BASED GRAMMAR CATEGORIES ###
+# French should be privileged when possible #
+
+# Structure:
+# link = { category = A vic2_tag = B }
+# B is considered part of the scripted trigger category A
+
+# link = { category = A vic2_tag = B extra = "C" }
+# B is considered part of the scripted trigger category A,
+# but it must also fullfill the C requirements (which must
+# be written in HoI4 syntax)
+
+# While adding a comment is not needed, it is highly advised you do
+
+# List of categories used throughout this file, with an
+# example sentence (in French) that translates to
+# [Country] is big / I live in [Country].
+
+# tag_mscad: LE Banat est GRAND / J'habite DANS LE Banat.
+# tag_mscae: LE Bélize est GRAND / J'habite AU Bélize.
+# tag_mscnd: [Ø] Blambangan est GRAND / J'habite DANS Blambangan.
+# tag_mscne: [Ø] Djibouti est GRAND / J'habite À Djibouti.
+# tag_msvad: L'Empire Roumain est GRAND / J'habite DANS L'Empire Roumain.
+# tag_msvae: L'Afghanistan est GRAND / J'habite EN Afghanistan.
+# tag_msvnd: (Not used!) [Ø] ... est GRAND / J'habite DANS ...
+# tag_msvne: [Ø] Abu Dhabi est GRAND / J'habite À Abu Dhabi.
+# tag_mpcad: LES Cherokees sont GRANDS / J'habite DANS LES Cherokees.
+# tag_mpcae: LES Qara Qoyunlu sont GRANDS / J'habite AUX Qara Qoyunlu.
+# tag_mpvad: LES Iroquois sont GRANDS / J'habite DANS LES Iroquois.
+# tag_mpvae: LES États-Unis sont GRANDS / J'habite AUX États-Unis.
+# tag_fscad: LA Côte d'Ivoire est GRANDE / J'habite DANS LA Côte d'Ivoire.
+# tag_fscae: LA Chine est GRANDE / J'habite EN Chine.
+# tag_fscne: [Ø] Francfort est GRANDE / J'habite À Francfort.
+# tag_fsvad: L'Union Arabe est GRANDE / J'habite DANS L'Union Arabe.
+# tag_fsvae: L'Angleterre est GRANDE / J'habite EN Angleterre.
+# tag_fsvnd: (Not used!) [Ø] ... est GRANDE / J'habite DANS ...
+# tag_fsvne: [Ø] Athènes est GRANDE / J'habite À Athènes.
+# tag_fpcad: LES Sudètes sont GRANDES / J'habite DANS LES Sudètes.
+# tag_fpcae: LES Philippines sont GRANDES / J'habite AUX Philippines.
+# tag_fpvad: LES Asturies sont GRANDES / J'habite DANS LES Asturies.
+# tag_fpvae: (not used!) LES ... sont GRANDES / J'habite AUX ...
+# tag_fpvnd: (not used!) [Ø] ... sont GRANDES / J'habite DANS ...
+# tag_fpvne: [Ø] Hawaii sont GRANDES / J'habite AUX Hawaii.
+ 
+
+# Of course, some gender/number categories will vary between French and
+# the other localization languages. This will be solved in later patches.
+
+# Feel free to correct my French.
+
+
+####
+
+# tag_mscad: LE Banat est GRAND / J'habite DANS LE Banat.
+link = { category = tag_mscad vic2_tag = BAN } # Le Banat
+link = { category = tag_mscad vic2_tag = BOU } # Le Bourbonnais
+link = { category = tag_mscad vic2_tag = ENG NOT = { has_government = absolutism has_government = democratic has_government = democratic } } # Le Royaume-Uni / Le Commonwealth des Ouvriers
+link = { category = tag_mscad vic2_tag = HYD } # Le Hyderabad/Haïderabad
+link = { category = tag_mscad vic2_tag = ALL extra = "NOT = { has_government = democratic has_government = fascism has_government = communism }" } # Le Caliphat
+link = { category = tag_mscad vic2_tag = GBR extra = "has_government = communism" } # Le Commonwealth des Travailleurs
+link = { category = tag_mscad vic2_tag = SUE extra = "NOT = { has_government = communism has_government = democratic }" } # Le Duché/Royaume/Sénat des Suèves
+link = { category = tag_mscad vic2_tag = QAS extra = "NOT = { has_government = democratic }" } # Le Khanat de Qasim / Le Prolétariat de Qasim
+link = { category = tag_mscad vic2_tag = YRK extra = "NOT = { has_government = democratic }" } # Le Khanat de Yarkand / Le Prolétariat de Yarkand
+link = { category = tag_mscad vic2_tag = CHG extra = "NOT = { has_government = democratic }" } # Le Khanat Djaghataï / Le Prolétariat de Djaghataï
+link = { category = tag_mscad vic2_tag = KHA extra = "NOT = { has_government = democratic }" } # Le Khanat Mongol / Le Prolétariat de Khalka
+link = { category = tag_mscad vic2_tag = MGH } # Le Maghreb
+link = { category = tag_mscad vic2_tag = PAL } # Le Palatinat
+link = { category = tag_mscad vic2_tag = LIV extra = "has_government = communism" } # Le Prolétariat de Livonie
+link = { category = tag_mscad vic2_tag = OIR extra = "has_government = communism" } # Le Prolétariat d'Oirat
+link = { category = tag_mscad vic2_tag = KNI extra = "has_government = communism" } # Le Prolétariat Hôpital
+link = { category = tag_mscad vic2_tag = TEU extra = "has_government = communism" } # Le Prolétariat Teutonique
+link = { category = tag_mscad vic2_tag = HRE extra = "NOT = { has_government = democratic }" } # Le Saint Empire Romain
+link = { category = tag_mscad vic2_tag = USA extra = "has_government = absolutism" } # Le Royaume d'Amerique
+link = { category = tag_mscad vic2_tag = VAT extra = "has_government = fascism" } # Le Royaume de Dieu
+link = { category = tag_mscad vic2_tag = TPG extra = "NOT = { has_government = democratic has_government = radical has_government = communism has_government = fascism }" } # Le Royaume Céleste
+link = { category = tag_mscad vic2_tag = CAL extra = "has_government = absolutism" } # Le Royaume de Californie
+link = { category = tag_mscad vic2_tag = MOS extra = "has_government = absolutism" } # Le Royaume Mossi
+link = { category = tag_mscad vic2_tag = SYC } # Le [Pays] Syriaque
+link = { category = tag_mscad vic2_tag = TOK } # Le Tonkin
+
+
+# tag_mscae: LE Bélize est GRAND / J'habite AU Bélize.
+
+link = { category = tag_mscae vic2_tag = BGL } # Le Bagelkhand
+link = { category = tag_mscae vic2_tag = BLC } # Le Baloutchistan
+link = { category = tag_mscae vic2_tag = BAR } # Le Bar (ou Barrois)
+link = { category = tag_mscae vic2_tag = BSG } # Le Basoga
+link = { category = tag_mscae vic2_tag = BLZ } # Le Bélize
+link = { category = tag_mscae vic2_tag = BNG } # Le Bengale
+link = { category = tag_mscae vic2_tag = BEN } # Le Bénin
+link = { category = tag_mscae vic2_tag = BRY } # Le Berry
+link = { category = tag_mscae vic2_tag = BHU } # Le Bhoutan
+link = { category = tag_mscae vic2_tag = BIA } # Le Biafra
+link = { category = tag_mscae vic2_tag = BIH } # Le Bihar
+link = { category = tag_mscae vic2_tag = TSW } # Le Botswana
+link = { category = tag_mscae vic2_tag = BUG } # Le Buganda
+link = { category = tag_mscae vic2_tag = BRB } # Le Brabant
+link = { category = tag_mscae vic2_tag = BRN } # Le Brandenbourg
+link = { category = tag_mscae vic2_tag = BRZ } # Le Brésil
+link = { category = tag_mscae vic2_tag = BUN } # Le Bundelkhand
+link = { category = tag_mscae vic2_tag = BNY } # Le Bunyoro
+link = { category = tag_mscae vic2_tag = BKF } # Le Burkina Faso
+link = { category = tag_mscae vic2_tag = BRD } # Le Burundi
+link = { category = tag_mscae vic2_tag = KAS } # Le Cachemire
+link = { category = tag_mscae vic2_tag = CAM } # Le Cambodge
+link = { category = tag_mscae vic2_tag = CMR } # Le Cameroun
+link = { category = tag_mscae vic2_tag = CAN } # Le Canada
+link = { category = tag_mscae vic2_tag = CPV } # Le Cap-Vert
+link = { category = tag_mscae vic2_tag = SRI } # Le Ceylan
+link = { category = tag_mscae vic2_tag = CHL } # Le Chili
+link = { category = tag_mscae vic2_tag = SHW } # Le Choa
+link = { category = tag_mscae vic2_tag = CNG } # Le Congo / Zaïre
+link = { category = tag_mscae vic2_tag = CGO extra = "OR = { has_government = neutrality has_government = absolutism }" } # Le Congo-Brazzaville
+link = { category = tag_mscae vic2_tag = CNN } # Le Connacht
+link = { category = tag_mscae vic2_tag = COS } # Le Costa Rica
+link = { category = tag_mscae vic2_tag = DAG } # Le Daguestan
+link = { category = tag_mscae vic2_tag = DAH } # Le Dahoméy
+link = { category = tag_mscae vic2_tag = DAI } # Le Dai Nam
+link = { category = tag_mscae vic2_tag = DEN } # Le Danemark
+link = { category = tag_mscae vic2_tag = DAR } # Le Darfour
+link = { category = tag_mscae vic2_tag = DAU } # Le Dauphiné
+link = { category = tag_mscae vic2_tag = BAH } # Le Deccan
+link = { category = tag_mscae vic2_tag = DEC } # Le Deccan
+link = { category = tag_mscae vic2_tag = DES } # Le Deseret
+link = { category = tag_mscae vic2_tag = NIZ } # Le Déva-Bengal
+link = { category = tag_mscae vic2_tag = WOL } # Le Djolof
+link = { category = tag_mscae vic2_tag = DRA } # Le Dravidistan
+link = { category = tag_mscae vic2_tag = JAL } # Le Fouta-Djalon
+link = { category = tag_mscae vic2_tag = TOO } # Le Fouta-Toro
+link = { category = tag_mscae vic2_tag = FJN } # Le Fujian
+link = { category = tag_mscae vic2_tag = GAB } # Le Gabon
+link = { category = tag_mscae vic2_tag = GAK } # Le Gaqouar
+link = { category = tag_mscae vic2_tag = GHN } # Le Ghana
+link = { category = tag_mscae vic2_tag = GDW } # Le Gondouana
+link = { category = tag_mscae vic2_tag = GOT } # Le Gotland
+link = { category = tag_mscae vic2_tag = GRN } # Le Groenland
+link = { category = tag_mscae vic2_tag = GNG } # Le Guangdong
+link = { category = tag_mscae vic2_tag = GUA } # Le Guatemala
+link = { category = tag_mscae vic2_tag = GUJ } # Le Gujarat
+link = { category = tag_mscae vic2_tag = GMJ } # Le Guominjun
+link = { category = tag_mscae vic2_tag = HAT } # Le Hainaut
+link = { category = tag_mscae vic2_tag = HAN } # Le Hanovre
+link = { category = tag_mscae vic2_tag = HDJ } # Le Hedjaz
+link = { category = tag_mscae vic2_tag = HOL } # Le Holstein
+link = { category = tag_mscae vic2_tag = HON } # Le Honduras
+link = { category = tag_mscae vic2_tag = HNN } # Le Hunnan
+link = { category = tag_mscae vic2_tag = JAP } # Le Japon
+link = { category = tag_mscae vic2_tag = KAM } # Le Kamtchatka
+link = { category = tag_mscae vic2_tag = KHD } # Le Khandesh
+link = { category = tag_mscae vic2_tag = KBO } # Le Kanem-Bornou
+link = { category = tag_mscae vic2_tag = KAT } # Le Kâthiawâr
+link = { category = tag_mscae vic2_tag = KZB } # Le Kazembe
+link = { category = tag_mscae vic2_tag = KNY } # Le Kénya
+link = { category = tag_mscae vic2_tag = MIA } # Le Khaouitmau
+link = { category = tag_mscae vic2_tag = KHO } # Le Khorassan
+link = { category = tag_mscae vic2_tag = KYR } # Le Kirghizistan
+link = { category = tag_mscae vic2_tag = KON } # Le Kongo
+link = { category = tag_mscae vic2_tag = KOS } # Le Kosovo
+link = { category = tag_mscae vic2_tag = KCX } # Le Kotch
+link = { category = tag_mscae vic2_tag = KWT } # Le Koweït
+link = { category = tag_mscae vic2_tag = KDS } # Le Kurdistan
+link = { category = tag_mscae vic2_tag = KUT } # Le Kutch
+link = { category = tag_mscae vic2_tag = LAD } # Le Ladakh
+link = { category = tag_mscae vic2_tag = LXA } # Le Lan Xang
+link = { category = tag_mscae vic2_tag = LNA } # Le Lanna
+link = { category = tag_mscae vic2_tag = LAU } # Le Lauenbourg
+link = { category = tag_mscae vic2_tag = LEI } # Le Leinster
+link = { category = tag_mscae vic2_tag = BSH } # Le Lésotho
+link = { category = tag_mscae vic2_tag = LBN } # Le Liban
+link = { category = tag_mscae vic2_tag = LIE } # Le Liechtenstein
+link = { category = tag_mscae vic2_tag = LIM } # Le Limbourg
+link = { category = tag_mscae vic2_tag = LUX } # Le Luxembourg
+link = { category = tag_mscae vic2_tag = MAH } # Le Maharashtra
+link = { category = tag_mscae vic2_tag = MAR } # Le Maharashtra
+link = { category = tag_mscae vic2_tag = MAK } # Le Makran
+link = { category = tag_mscae vic2_tag = MAB } # Le Malabar
+link = { category = tag_mscae vic2_tag = MLI } # Le Mali
+link = { category = tag_mscae vic2_tag = MAW } # Le Malva
+link = { category = tag_mscae vic2_tag = MCK } # Le Manchukuo
+link = { category = tag_mscae vic2_tag = QNG extra = "OR = { has_government = fascism has_government = radical }" } # Le Mandchoukuo
+link = { category = tag_mscae vic2_tag = MLB } # Le Manipur
+link = { category = tag_mscae vic2_tag = MLW } # Le Maravi
+link = { category = tag_mscae vic2_tag = MOR } # Le Maroc
+link = { category = tag_mscae vic2_tag = MAT } # Le Matabélé
+link = { category = tag_mscae vic2_tag = MML } # Le Memelland
+link = { category = tag_mscae vic2_tag = IMG extra = "has_government = fascism" } # Le Mengjiang
+link = { category = tag_mscae vic2_tag = MWT } # Le Meouat
+link = { category = tag_mscae vic2_tag = MEW } # Le Mewar
+link = { category = tag_mscae vic2_tag = MEX extra = "NOT = { has_government = absolutism }" } # Le Mexique
+link = { category = tag_mscae vic2_tag = MUG } # Le Mogholistan
+link = { category = tag_mscae vic2_tag = MON } # Le Monténégro
+link = { category = tag_mscae vic2_tag = MFA } # Le Montferrat
+link = { category = tag_mscae vic2_tag = MOZ } # Le Mozambique
+link = { category = tag_mscae vic2_tag = MNS } # Le Munster
+link = { category = tag_mscae vic2_tag = NAL } # Le Natal
+link = { category = tag_mscae vic2_tag = UNB } # Le Nebraska
+link = { category = tag_mscae vic2_tag = NEJ } # Le Nejd
+link = { category = tag_mscae vic2_tag = NEP } # Le Népal
+link = { category = tag_mscae vic2_tag = NIC } # Le Nicaragua
+link = { category = tag_mscae vic2_tag = NIG } # Le Niger
+link = { category = tag_mscae vic2_tag = NGR } # Le Nigéria
+link = { category = tag_mscae vic2_tag = NKO } # Le Nkoré
+link = { category = tag_mscae vic2_tag = UNM } # Le Nouveau-Mexique
+link = { category = tag_mscae vic2_tag = HDU extra = "has_government = democratic" } # Le Pakistan
+link = { category = tag_mscae vic2_tag = PNM } # Le Panama
+link = { category = tag_mscae vic2_tag = PRG } # Le Paraguay
+link = { category = tag_mscae vic2_tag = PAT } # Le Pattani
+link = { category = tag_mscae vic2_tag = PAN } # Le Pendjab
+link = { category = tag_mscae vic2_tag = PEU } # Le Pérou
+link = { category = tag_mscae vic2_tag = SPU } # Le Pérou du Sud
+link = { category = tag_mscae vic2_tag = SAR } # Le Piémont-Sardaigne
+link = { category = tag_mscae vic2_tag = PNT } # Le Pontus
+link = { category = tag_mscae vic2_tag = POR } # Le Portugal
+link = { category = tag_mscae vic2_tag = QAT } # Le Qatar
+link = { category = tag_mscae vic2_tag = QUE } # Le Québec
+link = { category = tag_mscae vic2_tag = RAJ } # Le Rajputana
+link = { category = tag_mscae vic2_tag = RGR } # Le Rio-Grande
+link = { category = tag_mscae vic2_tag = RGS } # Le Rio-Grande-do-Sul
+link = { category = tag_mscae vic2_tag = RWA } # Le Rwanda
+link = { category = tag_mscae vic2_tag = WSH } # Le Sahara Occidental
+link = { category = tag_mscae vic2_tag = ELS } # Le Salvador
+link = { category = tag_mscae vic2_tag = SMO } # Le Samoa
+link = { category = tag_mscae vic2_tag = SWH } # Le Schleswig-Holstein
+link = { category = tag_mscae vic2_tag = SNG } # Le Sénégal
+link = { category = tag_mscae vic2_tag = SHD } # Le Shandong
+link = { category = tag_mscae vic2_tag = SAK } # Le Siak
+link = { category = tag_mscae vic2_tag = SIA } # Le Siam
+link = { category = tag_mscae vic2_tag = SIH } # Le Sibir
+link = { category = tag_mscae vic2_tag = SZC } # Le Sichuan
+link = { category = tag_mscae vic2_tag = SIK } # Le Sikkim
+link = { category = tag_mscae vic2_tag = SIN } # Le Sindh
+link = { category = tag_mscae vic2_tag = SGP } # Le Singapour
+link = { category = tag_mscae vic2_tag = SCH } # Le Slesvig
+link = { category = tag_mscae vic2_tag = SON } # Le Sonore
+link = { category = tag_mscae vic2_tag = SUD } # Le Soudan
+link = { category = tag_mscae vic2_tag = SSU } # Le Soudan du Sud
+link = { category = tag_mscae vic2_tag = SUR } # Le Suriname
+link = { category = tag_mscae vic2_tag = SUA } # Le Swaziland
+link = { category = tag_mscae vic2_tag = TAJ extra = "NOT = { has_government = communism }" } # Le Tadjikistan
+link = { category = tag_mscae vic2_tag = TPG extra = "has_government = communism" } # Le Taïwan communiste
+link = { category = tag_mscae vic2_tag = TNZ } # Le Tanganyika
+link = { category = tag_mscae vic2_tag = TNT } # Le Tannou-Touva
+link = { category = tag_mscae vic2_tag = TAR } # Le Tatarstan
+link = { category = tag_mscae vic2_tag = CHD } # Le Tchad
+link = { category = tag_mscae vic2_tag = CHA } # Le Tchampa
+link = { category = tag_mscae vic2_tag = TEX } # Le Texas
+link = { category = tag_mscae vic2_tag = TIB } # Le Tibet
+link = { category = tag_mscae vic2_tag = TIG } # Le Tigré
+link = { category = tag_mscae vic2_tag = TOG } # Le Togo
+link = { category = tag_mscae vic2_tag = TAM extra = "NOT = { has_government = communism }" } # Le Transamour
+link = { category = tag_mscae vic2_tag = TRN } # Le Transvaal
+link = { category = tag_mscae vic2_tag = TRZ extra = "has_government = absolutism" } # Le Trarza
+link = { category = tag_mscae vic2_tag = TKS } # Le Turkestan
+link = { category = tag_mscae vic2_tag = TKM } # Le Turkménistan
+link = { category = tag_mscae vic2_tag = TIR } # Le Tyrol
+link = { category = tag_mscae vic2_tag = TST } # Le Tyrol du Sud
+link = { category = tag_mscae vic2_tag = VTU } # Le Vanuatu
+link = { category = tag_mscae vic2_tag = VND } # Le Vénad
+link = { category = tag_mscae vic2_tag = VNZ } # Le Venezuela
+link = { category = tag_mscae vic2_tag = WUR } # Le Wurtemberg
+link = { category = tag_mscae vic2_tag = YEM } # Le Yémen
+link = { category = tag_mscae vic2_tag = NYE } # Le Yémen du Nord
+link = { category = tag_mscae vic2_tag = YUC } # Le Yucatán
+link = { category = tag_mscae vic2_tag = ZAN } # Le Zanzibar
+link = { category = tag_mscae vic2_tag = ZBW } # Le Zimbabwe
+link = { category = tag_mscae vic2_tag = PIN } # Le Pinde
+
+
+# tag_mscnd: [Ø] Blambangan est GRAND / J'habite DANS Blambangan.
+
+link = { category = tag_mscnd vic2_tag = D01 } # $REGION$, de D01 à D50
+link = { category = tag_mscnd vic2_tag = D02 }
+link = { category = tag_mscnd vic2_tag = D03 }
+link = { category = tag_mscnd vic2_tag = D04 }
+link = { category = tag_mscnd vic2_tag = D05 }
+link = { category = tag_mscnd vic2_tag = D06 }
+link = { category = tag_mscnd vic2_tag = D07 }
+link = { category = tag_mscnd vic2_tag = D08 }
+link = { category = tag_mscnd vic2_tag = D09 }
+link = { category = tag_mscnd vic2_tag = D10 }
+link = { category = tag_mscnd vic2_tag = D11 }
+link = { category = tag_mscnd vic2_tag = D12 }
+link = { category = tag_mscnd vic2_tag = D13 }
+link = { category = tag_mscnd vic2_tag = D14 }
+link = { category = tag_mscnd vic2_tag = D15 }
+link = { category = tag_mscnd vic2_tag = D16 }
+link = { category = tag_mscnd vic2_tag = D17 }
+link = { category = tag_mscnd vic2_tag = D18 }
+link = { category = tag_mscnd vic2_tag = D19 }
+link = { category = tag_mscnd vic2_tag = D20 }
+link = { category = tag_mscnd vic2_tag = D21 }
+link = { category = tag_mscnd vic2_tag = D22 }
+link = { category = tag_mscnd vic2_tag = D23 }
+link = { category = tag_mscnd vic2_tag = D24 }
+link = { category = tag_mscnd vic2_tag = D25 }
+link = { category = tag_mscnd vic2_tag = D26 }
+link = { category = tag_mscnd vic2_tag = D27 }
+link = { category = tag_mscnd vic2_tag = D28 }
+link = { category = tag_mscnd vic2_tag = D29 }
+link = { category = tag_mscnd vic2_tag = D30 }
+link = { category = tag_mscnd vic2_tag = D31 }
+link = { category = tag_mscnd vic2_tag = D32 }
+link = { category = tag_mscnd vic2_tag = D33 }
+link = { category = tag_mscnd vic2_tag = D34 }
+link = { category = tag_mscnd vic2_tag = D35 }
+link = { category = tag_mscnd vic2_tag = D36 }
+link = { category = tag_mscnd vic2_tag = D37 }
+link = { category = tag_mscnd vic2_tag = D38 }
+link = { category = tag_mscnd vic2_tag = D39 }
+link = { category = tag_mscnd vic2_tag = D40 }
+link = { category = tag_mscnd vic2_tag = D41 }
+link = { category = tag_mscnd vic2_tag = D42 }
+link = { category = tag_mscnd vic2_tag = D43 }
+link = { category = tag_mscnd vic2_tag = D44 }
+link = { category = tag_mscnd vic2_tag = D45 }
+link = { category = tag_mscnd vic2_tag = D46 }
+link = { category = tag_mscnd vic2_tag = D47 }
+link = { category = tag_mscnd vic2_tag = D48 }
+link = { category = tag_mscnd vic2_tag = D49 }
+link = { category = tag_mscnd vic2_tag = D50 }
+link = { category = tag_mscnd vic2_tag = BLM } # Blambangan
+
+
+# tag_mscne: [Ø] Djibouti est GRAND / J'habite À Djibouti.
+
+link = { category = tag_mscne vic2_tag = BAD } # Bade
+link = { category = tag_mscne vic2_tag = BHR } # Bahreïn
+link = { category = tag_mscne vic2_tag = BNT } # Banten
+link = { category = tag_mscne vic2_tag = BAS } # Bastar
+link = { category = tag_mscne vic2_tag = BRR } # Bérar
+link = { category = tag_mscne vic2_tag = BER } # Beroda
+link = { category = tag_mscne vic2_tag = BHO } # Bhopal
+link = { category = tag_mscne vic2_tag = BIJ } # Bijapur
+link = { category = tag_mscne vic2_tag = BIK } # Bikaner
+link = { category = tag_mscne vic2_tag = UBH } # Bouha
+link = { category = tag_mscne vic2_tag = BRU } # Brunei
+link = { category = tag_mscne vic2_tag = BRA } # Brunswick
+link = { category = tag_mscne vic2_tag = RZW } # Butua
+link = { category = tag_mscne vic2_tag = KAC } # Cachar
+link = { category = tag_mscne vic2_tag = CLA } # Calabar
+link = { category = tag_mscne vic2_tag = CND } # Candar
+link = { category = tag_mscne vic2_tag = KSJ } # Cassange
+link = { category = tag_mscne vic2_tag = CHK } # Champassak
+link = { category = tag_mscne vic2_tag = CHO } # Choshu
+link = { category = tag_mscne vic2_tag = CUR } # Curaçao
+link = { category = tag_mscne vic2_tag = DAM } # Damagaram
+link = { category = tag_mscne vic2_tag = DMS } # Desmond
+link = { category = tag_mscne vic2_tag = DJA } # Djambi
+link = { category = tag_mscne vic2_tag = JJI } # Djandjiro
+link = { category = tag_mscne vic2_tag = DJI } # Djibouti
+link = { category = tag_mscne vic2_tag = FER } # Ferrare
+link = { category = tag_mscne vic2_tag = FIU } # Fiume
+link = { category = tag_mscne vic2_tag = FLO } # Florence
+link = { category = tag_mscne vic2_tag = WHA } # Galles
+link = { category = tag_mscne vic2_tag = GRJ } # Gardjat
+link = { category = tag_mscne vic2_tag = GEL } # Geledi
+link = { category = tag_mscne vic2_tag = HAM } # Hambourg
+link = { category = tag_mscne vic2_tag = HOH } # Hohenzollern
+link = { category = tag_mscne vic2_tag = HKG } # Hong Kong
+link = { category = tag_mscne vic2_tag = JAI } # Jaipur
+link = { category = tag_mscne vic2_tag = JAS } # Jaisalmer
+link = { category = tag_mscne vic2_tag = JAN } # Jan Mayen
+link = { category = tag_mscne vic2_tag = JAV } # Java
+link = { category = tag_mscne vic2_tag = JNP } # Jawnpur
+link = { category = tag_mscne vic2_tag = JOD } # Jodhpur
+link = { category = tag_mscne vic2_tag = JOH } # Johore
+link = { category = tag_mscne vic2_tag = GBU } # Kaabou
+link = { category = tag_mscne vic2_tag = KAL } # Kalat
+link = { category = tag_mscne vic2_tag = KLM } # Kalimantan
+link = { category = tag_mscne vic2_tag = KRW } # Karagwe
+link = { category = tag_mscne vic2_tag = KZN } # Kazan
+link = { category = tag_mscne vic2_tag = KLN } # Kéladi
+link = { category = tag_mscne vic2_tag = KOK extra = "NOT = { has_government = communism }" } # Kokand
+link = { category = tag_mscne vic2_tag = KNG } # Kong
+link = { category = tag_mscne vic2_tag = KTI } # Kutai
+link = { category = tag_mscne vic2_tag = LAN } # Lanfang
+link = { category = tag_mscne vic2_tag = LUA } # Luang Prabang
+link = { category = tag_mscne vic2_tag = LUC } # Lucques
+link = { category = tag_mscne vic2_tag = LUN } # Lunebourg
+link = { category = tag_mscne vic2_tag = MAD } # Madagascar
+link = { category = tag_mscne vic2_tag = MAG } # Magdebourg
+link = { category = tag_mscne vic2_tag = MJP } # Majapahit
+link = { category = tag_mscne vic2_tag = MAN } # Manhattan
+link = { category = tag_mscne vic2_tag = MTR } # Mataram
+link = { category = tag_mscne vic2_tag = MAU } # Maurice
+link = { category = tag_mscne vic2_tag = MEC } # Mecklenbourg
+link = { category = tag_mscne vic2_tag = MEM } # Memmingen
+link = { category = tag_mscne vic2_tag = MDI } # Mogadiscio
+link = { category = tag_mscne vic2_tag = MBA } # Mombasse
+link = { category = tag_mscne vic2_tag = MNC } # Monaco
+link = { category = tag_mscne vic2_tag = MNR } # Montserrat
+link = { category = tag_mscne vic2_tag = MUL } # Moultan
+link = { category = tag_mscne vic2_tag = MUR } # Mourom
+link = { category = tag_mscne vic2_tag = MUN } # Münster
+link = { category = tag_mscne vic2_tag = ZIM } # Mutapa
+link = { category = tag_mscne vic2_tag = MYS } # Mysore
+link = { category = tag_mscne vic2_tag = NAG } # Nagpur
+link = { category = tag_mscne vic2_tag = NAS } # Nassau
+link = { category = tag_mscne vic2_tag = NCT } # Neuchâtel
+link = { category = tag_mscne vic2_tag = NEV } # Nevers
+link = { category = tag_mscne vic2_tag = NZH } # Nijni-Novgorod
+link = { category = tag_mscne vic2_tag = NOV } # Novgorod
+link = { category = tag_mscne vic2_tag = NUM } # Nuremberg
+link = { category = tag_mscne vic2_tag = PEG } # Pégou
+link = { category = tag_mscne vic2_tag = PLT } # Polotsk
+link = { category = tag_mscne vic2_tag = PRI } # Porto Rico
+link = { category = tag_mscne vic2_tag = PSK } # Pskov
+link = { category = tag_mscne vic2_tag = PYO extra = "NOT = { has_government = communism has_government = fascism }" } # Pyongyang
+link = { category = tag_mscne vic2_tag = RVA } # Ravensburg
+link = { category = tag_mscne vic2_tag = RYA } # Riazan
+link = { category = tag_mscne vic2_tag = SKN } # St.-Christ.-et-Niévès
+link = { category = tag_mscne vic2_tag = SMR } # Saint-Marin
+link = { category = tag_mscne vic2_tag = SAO } # St.-Thomas-et-l'Île-du-Pr.
+link = { category = tag_mscne vic2_tag = STV } # St.-Vinc.-et-les-Gren.
+link = { category = tag_mscne vic2_tag = SLZ } # Salzbourg
+link = { category = tag_mscne vic2_tag = SAM } # Samos
+link = { category = tag_mscne vic2_tag = DOM extra = "has_government = absolutism" } # Santo Domingo
+link = { category = tag_mscne vic2_tag = SWK } # Sarawak
+link = { category = tag_mscne vic2_tag = SRU } # Saruhan
+link = { category = tag_mscne vic2_tag = SEG } # Ségou
+link = { category = tag_mscne vic2_tag = SEN } # Séndaï
+link = { category = tag_mscne vic2_tag = SBA } # Shiba
+link = { category = tag_mscne vic2_tag = SHI } # Shimla
+link = { category = tag_mscne vic2_tag = SLN } # Sligo
+link = { category = tag_mscne vic2_tag = SYO } # Soyo
+link = { category = tag_mscne vic2_tag = SUK } # Sukhothaï
+link = { category = tag_mscne vic2_tag = SUL } # Sulu
+link = { category = tag_mscne vic2_tag = TAH } # Tahiti
+link = { category = tag_mscne vic2_tag = TAI } # Taïwan
+link = { category = tag_mscne vic2_tag = TPG extra = "has_government = fascism" } # Taïwan
+link = { category = tag_mscne vic2_tag = TMR } # Timor
+link = { category = tag_mscne vic2_tag = TRA } # Travancore
+link = { category = tag_mscne vic2_tag = TRI } # Tripoli
+link = { category = tag_mscne vic2_tag = TUN } # Tunis
+link = { category = tag_mscne vic2_tag = TVE } # Tver
+link = { category = tag_mscne vic2_tag = TAM extra = "has_government = communism" } # Wai Dongbei
+link = { category = tag_mscne vic2_tag = WRL } # Warsangali
+link = { category = tag_mscne vic2_tag = WBG } # Wurtzbourg
+link = { category = tag_mscne vic2_tag = XBI } # Xibei San Ma
+
+
+# tag_msvad: L'Empire Roumain est GRAND / J'habite DANS L'Empire Roumain.
+link = { category = tag_msvad vic2_tag = AYR } # L'Aïr
+link = { category = tag_msvad vic2_tag = LSK } # L'Alaska
+link = { category = tag_msvad vic2_tag = ALT } # L'Altaï
+link = { category = tag_msvad vic2_tag = AWS } # L'Aoussa
+link = { category = tag_msvae vic2_tag = GBR extra = "has_government = absolutism" } # L'Empire Albionesque
+link = { category = tag_msvad vic2_tag = GER extra = "has_government = absolutism" } # L'Empire Allemand
+link = { category = tag_msvad vic2_tag = ENG extra = "has_government = absolutism" } # L'Empire Britannique
+link = { category = tag_msvad vic2_tag = BYZ } # L'Empire Byzantine
+link = { category = tag_msvad vic2_tag = LTN extra = "NOT = { has_government = democratic has_government = communism }" } # L'Empire Latin
+link = { category = tag_msvad vic2_tag = MEX extra = "has_government = absolutism" } # L'Empire Mexicain
+link = { category = tag_msvad vic2_tag = MNG extra = "NOT = { has_government = fascism has_government = communism has_government = democratic }" } # L'Empire Ming
+link = { category = tag_msvad vic2_tag = TUR extra = "NOT = { has_government = democratic has_government = communism }" } # L'Empire Ottoman
+link = { category = tag_msvad vic2_tag = QNG extra = "NOT = { has_government = fascism has_government = radical }" } # L'Empire Qing
+link = { category = tag_msvad vic2_tag = SPQ extra = "NOT = { has_government = democratic has_government = communism }" } # L'Empire Romain
+link = { category = tag_msvad vic2_tag = RUS extra = "has_government = absolutism" } # L'Empire Russe
+link = { category = tag_msvad vic2_tag = YUA extra = "NOT = { has_government = democratic has_government = communism has_government = fascism }" } # L'Empire Yuan
+link = { category = tag_msvad vic2_tag = LIV extra = "NOT = { has_government = communism has_government = democratic }" } # L'Ordre Livonien
+link = { category = tag_msvad vic2_tag = TEU extra = "NOT = { has_government = communism has_government = democratic }" } # L'Ordre Teutonique
+
+
+# tag_msvae: L'Afghanistan est GRAND / J'habite EN Afghanistan.
+
+link = { category = tag_msvae vic2_tag = ASH } # L'Achanti
+link = { category = tag_msvae vic2_tag = ADA } # L'Adal
+link = { category = tag_msvae vic2_tag = AFA } # L'Afar
+link = { category = tag_msvae vic2_tag = AFG } # L'Afghanistan
+link = { category = tag_msvae vic2_tag = AIN } # L'Aïnou
+link = { category = tag_msvae vic2_tag = AND } # L'Andhra
+link = { category = tag_msvae vic2_tag = ANG } # L'Angola
+link = { category = tag_msvae vic2_tag = ANH } # L'Anhalt
+link = { category = tag_msvae vic2_tag = HUI } # L'Anhui
+link = { category = tag_msvae vic2_tag = ANN } # L'Annam
+link = { category = tag_msvae vic2_tag = ANT } # L'Antemoro
+link = { category = tag_msvae vic2_tag = ARN } # L'Aragon
+link = { category = tag_msvae vic2_tag = AMG } # L'Armagnac
+link = { category = tag_msvae vic2_tag = ASR } # L'Asir
+link = { category = tag_msvae vic2_tag = ASM } # L'Assam
+link = { category = tag_msvae vic2_tag = AZB } # L'Azerbaïdjan
+link = { category = tag_msvae vic2_tag = ECU } # L'Équateur
+link = { category = tag_msvae vic2_tag = CEQ } # L'Équateur Confédération
+link = { category = tag_msvae vic2_tag = ALL extra = "has_government = fascism" } # L'État Islamique
+link = { category = tag_msvae vic2_tag = CNG extra = "NOT = { has_government = democratic }" } # L'État Libre du Congo
+link = { category = tag_msvae vic2_tag = HDU extra = "NOT = { has_government = democratic }" } # L'Hindustan
+link = { category = tag_msvae vic2_tag = UIL } # L'Illinois
+link = { category = tag_msvae vic2_tag = IRQ } # L'Iraq
+link = { category = tag_msvae vic2_tag = AAA } # L'Observateur
+# -- J'habite dans l'Observateur :thunk:
+link = { category = tag_msvae vic2_tag = UOR } # L'Orégon
+link = { category = tag_msvae vic2_tag = ORI } # L'Orissa
+link = { category = tag_msvae vic2_tag = UYG } # L'Ouïghourstan
+link = { category = tag_msvae vic2_tag = UZB } # L'Ouzbékistan
+link = { category = tag_msvae vic2_tag = PHA } # L'Ü
+link = { category = tag_msvae vic2_tag = ULS } # L'Ulster
+link = { category = tag_msvae vic2_tag = URU } # L'Uruguay
+
+
+# tag_msvnd: (Not used!) [Ø] ... est GRAND / J'habite DANS ...
+
+
+# tag_msvne: [Ø] Abu Dhabi est GRAND / J'habite À Abu Dhabi.
+
+link = { category = tag_msvne vic2_tag = ABU } # Abu Dhabi
+link = { category = tag_msvne vic2_tag = ATJ } # Aceh
+link = { category = tag_msvne vic2_tag = AJU } # Ajuran
+link = { category = tag_msvne vic2_tag = GBR extra = "NOT = { has_government = communism has_government = absolutism has_government = radical has_government = fascism }" } # Albion
+link = { category = tag_msvne vic2_tag = AMA } # Amago
+link = { category = tag_msvne vic2_tag = ANS } # Ansbach
+link = { category = tag_msvne vic2_tag = ARK } # Arakan
+link = { category = tag_msvne vic2_tag = ARD } # Ardalan
+link = { category = tag_msvne vic2_tag = AKH } # Astrakhan
+link = { category = tag_msvne vic2_tag = AUG } # Augsbourg
+link = { category = tag_msvne vic2_tag = AVA } # Ava
+link = { category = tag_msvne vic2_tag = AWA } # Avadh
+link = { category = tag_msvne vic2_tag = AYD } # Aÿdin
+link = { category = tag_msvne vic2_tag = ENT } # Entre-Ríos
+link = { category = tag_msvne vic2_tag = EZO } # Ezo
+link = { category = tag_msvne vic2_tag = ALH } # Haasa
+link = { category = tag_msvne vic2_tag = HAL } # Haïl
+link = { category = tag_msvne vic2_tag = HAI } # Haïti
+link = { category = tag_msvne vic2_tag = HAR } # Harar
+link = { category = tag_msvne vic2_tag = ISR } # Israël
+link = { category = tag_msvne vic2_tag = OKA } # Odoyev
+link = { category = tag_msvne vic2_tag = OLD } # Oldenbourg
+link = { category = tag_msvne vic2_tag = OMA } # Oman
+link = { category = tag_msvne vic2_tag = OAX } # Ouahaca
+link = { category = tag_msvne vic2_tag = WRI } # Ouarri
+link = { category = tag_msvne vic2_tag = OYO } # Oyo
+link = { category = tag_msvne vic2_tag = URB } # Urbin
+
+
+# tag_mpcad: LES Cherokees sont GRANDS / J'habite DANS LES Cherokees.
+
+link = { category = tag_mpcad vic2_tag = BTS } # Les Betsimisaraka
+link = { category = tag_mpcad vic2_tag = CAD } # Les Caddos
+link = { category = tag_mpcad vic2_tag = CHE } # Les Cherokee
+link = { category = tag_mpcad vic2_tag = CHE } # Les Cheyennes
+link = { category = tag_mpcad vic2_tag = CHN } # Les Chicachas
+link = { category = tag_mpcad vic2_tag = CHM } # Les Chimu
+link = { category = tag_mpcad vic2_tag = CSK } # Les Chosokabe
+link = { category = tag_mpcad vic2_tag = COM } # Les Comanches
+link = { category = tag_mpcad vic2_tag = CRK } # Les Creeks
+link = { category = tag_mpcad vic2_tag = WCR } # Les Cris
+link = { category = tag_mpcad vic2_tag = DAK } # Les Dakotas
+link = { category = tag_mpcad vic2_tag = DTE } # Les Date
+link = { category = tag_mpcad vic2_tag = DND } # Les Dendi
+link = { category = tag_mpcad vic2_tag = DRU } # Les Druzes
+link = { category = tag_mpcad vic2_tag = DUL } # Les Dulkadir
+link = { category = tag_mpcad vic2_tag = FUJ } # Les Fujiwara
+link = { category = tag_mpcad vic2_tag = HAU } # Les Haoussa
+link = { category = tag_mpcad vic2_tag = HTK } # Les Hatakeyama
+link = { category = tag_mpcad vic2_tag = HJO } # Les Hojo
+link = { category = tag_mpcad vic2_tag = HSK } # Les Hosokawa
+link = { category = tag_mpcad vic2_tag = HUR } # Les Hurons
+link = { category = tag_mpcad vic2_tag = KAR } # Les Karènes
+link = { category = tag_mpcad vic2_tag = KCH } # Les Katchins
+link = { category = tag_mpcad vic2_tag = KAZ extra = "NOT = { has_government = communism }" } # Les Kazakhs
+link = { category = tag_mpcad vic2_tag = KUB } # Les Kubas
+link = { category = tag_mpcad vic2_tag = LEN } # Les Lenapes
+link = { category = tag_mpcad vic2_tag = KNI extra = "NOT = { has_government = communism }" } # Les Chevaliers
+link = { category = tag_mpcad vic2_tag = DUR } # Les Dourranis
+link = { category = tag_mpcad vic2_tag = NUB } # Les Founji
+link = { category = tag_mpcad vic2_tag = LOA } # Les Loango
+link = { category = tag_mpcad vic2_tag = LBX } # Les Lubas
+link = { category = tag_mpcad vic2_tag = LND } # Les Lundas
+link = { category = tag_mpcad vic2_tag = LDU } # Les Lundu
+link = { category = tag_mpcad vic2_tag = MAE } # Les Maeda
+link = { category = tag_mpcad vic2_tag = MFY } # Les Mahafaly
+link = { category = tag_mpcad vic2_tag = MKS } # Les Makassars
+link = { category = tag_mpcad vic2_tag = MKU } # Les Makuas
+link = { category = tag_mpcad vic2_tag = MCH } # Les Mandchous
+link = { category = tag_mpcad vic2_tag = MAS } # Les Masina
+link = { category = tag_mpcad vic2_tag = MEN } # Les Menteche
+link = { category = tag_mpcad vic2_tag = MIR } # Les Mérinas
+link = { category = tag_mpcad vic2_tag = MMI } # Les Miamis
+link = { category = tag_mpcad vic2_tag = MIK } # Les Micmacs
+link = { category = tag_mpcad vic2_tag = MHC } # Les Mohicans
+link = { category = tag_mpcad vic2_tag = RFR } # Les Nanbu
+link = { category = tag_mpcad vic2_tag = NAH } # Les Navajos
+link = { category = tag_mpcad vic2_tag = NOG } # Les Nogaïs
+link = { category = tag_mpcad vic2_tag = PAW } # Les Pawnees
+link = { category = tag_mpcad vic2_tag = NET } # Les Pays-Bas
+link = { category = tag_mpcad vic2_tag = PEQ } # Les Pequots
+link = { category = tag_mpcad vic2_tag = BLA } # Les Pieds-Noirs
+link = { category = tag_mpcad vic2_tag = PIM } # Les Pimas
+link = { category = tag_mpcad vic2_tag = POT } # Les Potéouatamis
+link = { category = tag_mpcad vic2_tag = POW } # Les Powhatans
+link = { category = tag_mpcad vic2_tag = PUE } # Les Pueblos
+link = { category = tag_mpcad vic2_tag = RAM } # Les Ramazans
+link = { category = tag_mpcad vic2_tag = REB } # Les Rebelles
+link = { category = tag_mpcad vic2_tag = FOX } # Les Renards
+link = { category = tag_mpcad vic2_tag = SKA } # Les Sakalava
+link = { category = tag_mpcad vic2_tag = SMI } # Les Samis
+link = { category = tag_mpcad vic2_tag = SHX } # Les Shawnees
+link = { category = tag_mpcad vic2_tag = SMZ } # Les Shimazu
+link = { category = tag_mpcad vic2_tag = SHO } # Les Shonas
+link = { category = tag_mpcad vic2_tag = SHS } # Les Shoshones
+link = { category = tag_mpcad vic2_tag = SIO } # Les Sioux
+link = { category = tag_mpcad vic2_tag = SGH } # Les Songhaï
+link = { category = tag_mpcad vic2_tag = SWA } # Les Souahélis
+link = { category = tag_mpcad vic2_tag = SUS } # Les Susquehannocks
+link = { category = tag_mpcad vic2_tag = TAC } # Les Tachibana
+link = { category = tag_mpcad vic2_tag = TKD } # Les Takeda
+link = { category = tag_mpcad vic2_tag = CCW } # Les Tchactas
+link = { category = tag_mpcad vic2_tag = CHP } # Les Tchiapas
+link = { category = tag_mpcad vic2_tag = CKW } # Les Tchokwés
+link = { category = tag_mpcad vic2_tag = TTE } # Les Ternates
+link = { category = tag_mpcad vic2_tag = TIM } # Les Timourides
+link = { category = tag_mpcad vic2_tag = TKG } # Les Tokugawa
+link = { category = tag_mpcad vic2_tag = TGA } # Les Tonga
+link = { category = tag_mpcad vic2_tag = TBK } # Les Tumbukas
+link = { category = tag_mpcad vic2_tag = WLY } # Les Welaytas
+link = { category = tag_mpcad vic2_tag = XHO } # Les Xhosas
+link = { category = tag_mpcad vic2_tag = YKA } # Les Yakas
+link = { category = tag_mpcad vic2_tag = YMN } # Les Yamana
+link = { category = tag_mpcad vic2_tag = YZW } # Les Yonezawa
+link = { category = tag_mpcad vic2_tag = ZAP } # Les Zapotèques
+link = { category = tag_mpcad vic2_tag = ZUL } # Les Zoulou
+link = { category = tag_mpcad vic2_tag = MAY } # Les Mayas
+
+
+# tag_mpcae: LES Qara Qoyunlu sont GRANDS / J'habite AUX Qara Qoyunlu.
+
+link = { category = tag_mpcae vic2_tag = QAR } # Les Qara Qoyunlu
+link = { category = tag_mpcae vic2_tag = RYU } # Les Ryukyu
+link = { category = tag_mpcae vic2_tag = TOS } # Les Tosa
+
+# tag_mpvad: LES Iroquois sont GRANDS / J'habite DANS LES Iroquois.
+
+link = { category = tag_mpvad vic2_tag = ABE } # Les Abénaquis
+link = { category = tag_mpvad vic2_tag = ALW } # Les Alaouites
+link = { category = tag_mpvad vic2_tag = APA } # Les Apaches
+link = { category = tag_mpvad vic2_tag = AKK } # Les Aq Qoyunlu
+link = { category = tag_mpvad vic2_tag = ARP } # Les Arapahos
+link = { category = tag_mpvad vic2_tag = ARO } # Les Aro
+link = { category = tag_mpvad vic2_tag = ARW } # Les Aroüagues
+link = { category = tag_mpvad vic2_tag = ASI } # Les Assiniboines
+link = { category = tag_mpvad vic2_tag = HDY } # Les Hadiya
+link = { category = tag_mpvad vic2_tag = IKE } # Les Ikeda
+link = { category = tag_mpvad vic2_tag = ILL } # Les Illinéouécs
+link = { category = tag_mpvad vic2_tag = IGW } # Les Imagawa
+link = { category = tag_mpvad vic2_tag = IRO } # Les Iroquois
+link = { category = tag_mpvad vic2_tag = ABO } # Les Aborigènes
+link = { category = tag_mpvad vic2_tag = LOS } # Les Altos
+link = { category = tag_mpvad vic2_tag = AZT } # Les Aztèques
+link = { category = tag_mpvad vic2_tag = ALI } # Les Envahisseurs Aliens
+link = { category = tag_mpvad vic2_tag = INC } # Les Incas
+link = { category = tag_mpvad vic2_tag = ODA } # Les Oda
+link = { category = tag_mpvad vic2_tag = OJI } # Les Ojibwés
+link = { category = tag_mpvad vic2_tag = OSA } # Les Osage
+link = { category = tag_mpvad vic2_tag = OTM } # Les Otomo
+link = { category = tag_mpvad vic2_tag = OUC } # Les Ouchi
+link = { category = tag_mpvad vic2_tag = UES } # Les Uesugi
+
+
+# tag_mpvae: LES États-Unis sont GRANDS / J'habite AUX États-Unis.
+
+link = { category = tag_mpvae vic2_tag = CSA } # Les États Confédérés
+link = { category = tag_mpvae vic2_tag = PAP } # Les États Pontificaux
+link = { category = tag_mpvae vic2_tag = USA extra = "NOT = { has_government = absolutism has_government = communism }" } # Les États-Unis
+link = { category = tag_mpvae vic2_tag = BSQ } # Les Euskadi
+link = { category = tag_mpvae vic2_tag = SHA } # Les États Chans
+link = { category = tag_mpvae vic2_tag = FSA } # Les États Libres d'Amérique
+
+
+# tag_fscad: LA Côte d'Ivoire est GRANDE / J'habite DANS LA Côte d'Ivoire.
+
+link = { category = tag_fscad vic2_tag = UCV } # La Terra Nullius
+link = { category = tag_fscad vic2_tag = GXI } # La Clique de Guangxi
+link = { category = tag_fscad vic2_tag = SXI } # La Clique de Shanxi
+link = { category = tag_fscad vic2_tag = XIN } # La Clique de Xinjiang
+link = { category = tag_fscad vic2_tag = YNN } # La Clique de Yunnan
+link = { category = tag_fscad vic2_tag = UCA } # La Confédération d'Am.Centr.
+link = { category = tag_fscad vic2_tag = KUK extra = "has_government = democratic" } # La Conf. du Danube
+link = { category = tag_fscad vic2_tag = MTC } # La Confédération Métisse
+link = { category = tag_fscad vic2_tag = MSK } # La Côte des Mosquitos
+link = { category = tag_fscad vic2_tag = IVC } # La Côte d'Ivoire
+link = { category = tag_fscad vic2_tag = QIN } # La Dynastie Qin
+link = { category = tag_fscad vic2_tag = CSH } # La Dynastie Shun
+link = { category = tag_fscad vic2_tag = CWU } # La Dynastie Wu
+link = { category = tag_fscad vic2_tag = WUU } # La Dynastie Wu
+link = { category = tag_fscad vic2_tag = CXI } # La Dynastie Xi
+link = { category = tag_fscad vic2_tag = XIA } # La Dynastie Xia
+link = { category = tag_fscad vic2_tag = DNB } # La Fédération Danubienne
+link = { category = tag_fscad vic2_tag = NGF } # La Féd. de l'All. du Nord
+link = { category = tag_fscad vic2_tag = SGF } # La Féd. de l'All. du Sud
+link = { category = tag_fscad vic2_tag = GCO } # La Grande Colombie
+link = { category = tag_fscad vic2_tag = ENG extra = "has_government = democratic" } # La Grande-Bretagne
+link = { category = tag_fscad vic2_tag = VAT extra = "has_government = communism" } # La Communauté de Rome
+link = { category = tag_fscad vic2_tag = SUE extra = "OR = { has_government = communism has_government = democratic }" } # La Commune / République des Suèves
+link = { category = tag_fscad vic2_tag = PBC } # La Conf. Pérou-Bolivie
+link = { category = tag_fscad vic2_tag = GRH } # La Grande Horde
+link = { category = tag_fscad vic2_tag = HNS } # La Hanse
+link = { category = tag_fscad vic2_tag = UND } # La Horde des Morts-Vivants
+link = { category = tag_fscad vic2_tag = OIR extra = "NOT = { has_government = communism }" } # La Horde d'Oirat
+link = { category = tag_fscad vic2_tag = GOL } # La Horde d'Or
+link = { category = tag_fscad vic2_tag = YUA extra = "OR = { has_government = democratic has_government = fascism has_government = communism }" } # La République de Sino-Mongolie / Cambaluc
+link = { category = tag_fscad vic2_tag = MNG extra = "OR = { has_government = democratic has_government = fascism has_government = communism }" } # La République de Chine / de Nankin
+link = { category = tag_fscad vic2_tag = QAS extra = "has_government = democratic" } # La République de Qasim
+link = { category = tag_fscad vic2_tag = YRK extra = "has_government = democratic" } # La République de Yarkand
+link = { category = tag_fscad vic2_tag = KHA extra = "has_government = democratic" } # La République Khalkha
+link = { category = tag_fscad vic2_tag = LTN extra = "has_government = democratic" } # La République Latine
+link = { category = tag_fscad vic2_tag = VAT extra = "has_government = communism" } # La République Populaire de Rome
+link = { category = tag_fscad vic2_tag = HRE extra = "has_government = democratic" } # La Sainte République Romaine
+link = { category = tag_fscad vic2_tag = ALL extra = "OR = { has_government = communism has_government = democratic }" } # La Nation de l'Islam / La République de l'Islam
+link = { category = tag_fscad vic2_tag = BAV extra = "has_government = communism" } # La Räterepublik Bavaroise
+link = { category = tag_fscad vic2_tag = GBR extra = "OR = { has_government = fascism has_government = radical }" } # La République d'Albion
+link = { category = tag_fscad vic2_tag = ENG extra = "has_government = radical" } # La République de Britannie
+link = { category = tag_fscad vic2_tag = CHG extra = "has_government = democratic" } # La République de Djaghataï
+link = { category = tag_fscad vic2_tag = TPG extra = "OR = { has_government = democratic has_government = radical }" } # La République de Taïwan
+link = { category = tag_fscad vic2_tag = DOM extra = "NOT = { has_government = absolutism }" } # La République Dominicaine
+link = { category = tag_fscad vic2_tag = CGO extra = "OR = { has_government = communism has_government = fascism has_government = radical has_government = democratic }" } # La République du Congo
+link = { category = tag_fscad vic2_tag = USA extra = "has_government = communism" } # La Rép. Pop. d'Am.
+link = { category = tag_fscad vic2_tag = BOH extra = "has_government = democratic" } # La République tchèque
+link = { category = tag_fscad vic2_tag = PYO extra = "has_government = communism" } # La RPD Corée
+link = { category = tag_fscad vic2_tag = KAZ extra = "has_government = communism" } # La RSS Kazakhstan
+link = { category = tag_fscad vic2_tag = KOK extra = "has_government = communism" } # La RSS Kirghizistan
+link = { category = tag_fscad vic2_tag = BUK extra = "has_government = communism" } # La RSS Ouzbékistan
+link = { category = tag_fscad vic2_tag = TAJ extra = "has_government = communism" } # La RSS Tadjikistan
+link = { category = tag_fscad vic2_tag = KHI extra = "has_government = communism" } # La RSS Turkménistan
+link = { category = tag_fscad vic2_tag = RPL } # La Terre de Rupert
+link = { category = tag_fscad vic2_tag = LPL } # La Plata
+
+
+# tag_fscae: LA Chine est GRANDE / J'habite EN Chine.
+
+link = { category = tag_fscae vic2_tag = GDL } # La Guadeloupe
+link = { category = tag_fscae vic2_tag = MTQ } # La Martinique
+link = { category = tag_fscae vic2_tag = NEW } # La Terre-Neuve
+link = { category = tag_fscae vic2_tag = BAV extra = "NOT = { has_government = communism }" } # La Bavière
+link = { category = tag_fscae vic2_tag = BEL } # La Belgique
+link = { category = tag_fscae vic2_tag = BYE } # La Biélorussie
+link = { category = tag_fscae vic2_tag = BUR } # La Birmanie
+link = { category = tag_fscae vic2_tag = BOH extra = "NOT = { has_government = democratic }" } # La Bohême-Morave
+link = { category = tag_fscae vic2_tag = BOL } # La Bolivie
+link = { category = tag_fscae vic2_tag = BOS } # La Bosnie-Herzégovine
+link = { category = tag_fscae vic2_tag = BRG } # La Bourgogne
+link = { category = tag_fscae vic2_tag = BRT } # La Bretagne
+link = { category = tag_fscae vic2_tag = ENR } # La Brittanie
+link = { category = tag_fscae vic2_tag = BKV } # La Bucovine
+link = { category = tag_fscae vic2_tag = BUL } # La Bulgarie
+link = { category = tag_fscae vic2_tag = CAL extra = "NOT = { has_government = absolutism }" } # La Californie
+link = { category = tag_fscae vic2_tag = KRL } # La Carélie
+link = { category = tag_fscae vic2_tag = CRT } # La Carinthie
+link = { category = tag_fscae vic2_tag = KRN } # La Carnatique
+link = { category = tag_fscae vic2_tag = CAS } # La Cascadie
+link = { category = tag_fscae vic2_tag = CST } # La Castille
+link = { category = tag_fscae vic2_tag = CAT } # La Catalogne
+link = { category = tag_fscae vic2_tag = CPG } # La Champagne
+link = { category = tag_fscae vic2_tag = CHI } # La Chine
+link = { category = tag_fscae vic2_tag = KMT } # La Chine Kuomintang
+link = { category = tag_fscae vic2_tag = XLI } # La Chliponie
+link = { category = tag_fscae vic2_tag = CLC } # La Cilicie
+link = { category = tag_fscae vic2_tag = CIR } # La Circassie
+link = { category = tag_fscae vic2_tag = COL } # La Colombie (capitale Bogotá)
+link = { category = tag_fscae vic2_tag = CLM } # La Colombie (du Canada)
+link = { category = tag_fscae vic2_tag = COP } # La Coptie
+link = { category = tag_fscae vic2_tag = KOR } # La Corée
+link = { category = tag_fscae vic2_tag = PYO extra = "has_government = fascism" } # La Corée Juche
+link = { category = tag_fscae vic2_tag = CRN } # La Cornouaille
+link = { category = tag_fscae vic2_tag = CRS } # La Corse
+link = { category = tag_fscae vic2_tag = DON } # La Cosaquie
+link = { category = tag_fscae vic2_tag = KUR } # La Courlande
+link = { category = tag_fscae vic2_tag = CRE } # La Crète
+link = { category = tag_fscae vic2_tag = CRI } # La Crimée
+link = { category = tag_fscae vic2_tag = CRO } # La Croatie
+link = { category = tag_fscae vic2_tag = CYR } # La Cyrénaïque
+link = { category = tag_fscae vic2_tag = DLM } # La Dalmatie
+link = { category = tag_fscae vic2_tag = DTT } # La Dithmarse
+link = { category = tag_fscae vic2_tag = DMN } # La Dominique
+link = { category = tag_fscae vic2_tag = FIN } # La Finlande
+link = { category = tag_fscae vic2_tag = FRA } # La France
+link = { category = tag_fscae vic2_tag = FRK } # La France Vieux
+link = { category = tag_fscae vic2_tag = FRI } # La Frise
+link = { category = tag_fscae vic2_tag = EFR } # La Frise Orientale
+link = { category = tag_fscae vic2_tag = GLC } # La Galice
+link = { category = tag_fscae vic2_tag = GLM } # La Galicie-Lodomirie
+link = { category = tag_fscae vic2_tag = GMB } # La Gambie
+link = { category = tag_fscae vic2_tag = GYN } # La Gascogne
+link = { category = tag_fscae vic2_tag = FRR } # La Gaule
+link = { category = tag_fscae vic2_tag = GEO } # La Géorgie
+link = { category = tag_fscae vic2_tag = GRE } # La Grèce
+link = { category = tag_fscae vic2_tag = GRD } # La Grenade (dans le Caribe)
+link = { category = tag_fscae vic2_tag = GLR } # La Gueldre
+link = { category = tag_fscae vic2_tag = GNE } # La Guinée
+link = { category = tag_fscae vic2_tag = EQG } # La Guinée Équatoriale
+link = { category = tag_fscae vic2_tag = GBI } # La Guinée-Bissau
+link = { category = tag_fscae vic2_tag = GUY } # La Guyane
+link = { category = tag_fscae vic2_tag = MOS extra = "NOT = { has_government = absolutism }" } # La Haute-Volta
+link = { category = tag_fscae vic2_tag = HLL } # La Hollande
+link = { category = tag_fscae vic2_tag = HUN } # La Hongrie
+link = { category = tag_fscae vic2_tag = JAM } # La Jamaïque
+link = { category = tag_fscae vic2_tag = JOR } # La Jordanie
+link = { category = tag_fscae vic2_tag = KMK } # La Kalmoukie
+link = { category = tag_fscae vic2_tag = KRM } # La Karaman
+link = { category = tag_fscae vic2_tag = BBD } # La Barbade
+link = { category = tag_fscae vic2_tag = TTB } # La Trinité
+link = { category = tag_fscae vic2_tag = AUR } # La Läßinia
+link = { category = tag_fscae vic2_tag = LAT } # La Lettonie
+link = { category = tag_fscae vic2_tag = LIB } # La Libéria
+link = { category = tag_fscae vic2_tag = LBY } # La Libye
+link = { category = tag_fscae vic2_tag = LIT } # La Lituanie
+link = { category = tag_fscae vic2_tag = LOM } # La Lombardie
+link = { category = tag_fscae vic2_tag = LVN } # La Lombardie-Venise
+link = { category = tag_fscae vic2_tag = LGB } # La Longobardie
+link = { category = tag_fscae vic2_tag = LOR } # La Lorraine
+link = { category = tag_fscae vic2_tag = LOU } # La Louisiane
+link = { category = tag_fscae vic2_tag = MCD } # La Macédoine
+link = { category = tag_fscae vic2_tag = MLY } # La Malaisie
+link = { category = tag_fscae vic2_tag = MAZ } # La Masovie
+link = { category = tag_fscae vic2_tag = TRZ extra = "NOT = { has_government = absolutism }" } # La Mauritanie
+link = { category = tag_fscae vic2_tag = MAJ } # La Midjourtine
+link = { category = tag_fscae vic2_tag = MOL } # La Moldavie (capitale Chisinau)
+link = { category = tag_fscae vic2_tag = MDV } # La Moldavie (partie de la Roumaine)
+link = { category = tag_fscae vic2_tag = MGL } # La Mongolie
+link = { category = tag_fscae vic2_tag = IMG extra = "NOT = { has_government = fascism }" } # La Mongolie Intérieure
+link = { category = tag_fscae vic2_tag = MOE } # La Morée
+link = { category = tag_fscae vic2_tag = NMB } # La Namibie
+link = { category = tag_fscae vic2_tag = NAV } # La Navarre
+link = { category = tag_fscae vic2_tag = NRM } # La Normandie
+link = { category = tag_fscae vic2_tag = NOL } # La Northumbrie
+link = { category = tag_fscae vic2_tag = NOR } # La Norvège
+link = { category = tag_fscae vic2_tag = NEN } # La Nouvelle-Angleterre
+link = { category = tag_fscae vic2_tag = UNY } # La Nouvelle-York
+link = { category = tag_fscae vic2_tag = NZL } # La Nouvelle-Zélande
+link = { category = tag_fscae vic2_tag = PAE } # La Paërthe
+link = { category = tag_fscae vic2_tag = PLS } # La Palestine
+link = { category = tag_fscae vic2_tag = PPG } # La Papouasie-Nouvelle Guinée
+link = { category = tag_fscae vic2_tag = PTG } # La Patagonie
+link = { category = tag_fscae vic2_tag = PER } # La Perse
+link = { category = tag_fscae vic2_tag = POL } # La Pologne
+link = { category = tag_fscae vic2_tag = CPL } # La Pologne du Congrès
+link = { category = tag_fscae vic2_tag = PLC } # La Pologne-Lituanie
+link = { category = tag_fscae vic2_tag = POM } # La Poméranie
+link = { category = tag_fscae vic2_tag = PML } # La Pomérélie
+link = { category = tag_fscae vic2_tag = PZN } # La Posnanie
+link = { category = tag_fscae vic2_tag = PRO } # La Provence
+link = { category = tag_fscae vic2_tag = PRU } # La Prusse
+link = { category = tag_fscae vic2_tag = RHI } # La Rhénanie
+link = { category = tag_fscae vic2_tag = RHO } # La Rhodésie du Sud
+link = { category = tag_fscae vic2_tag = RMG } # La Romagne
+link = { category = tag_fscae vic2_tag = SPQ extra = "has_government = democratic" } # La Rome Sénatoriale
+link = { category = tag_fscae vic2_tag = ROM } # La Roumanie
+link = { category = tag_fscae vic2_tag = RUS extra = "NOT = { has_government = absolutism }" } # La Russie
+link = { category = tag_fscae vic2_tag = RUT } # La Ruthénie
+link = { category = tag_fscae vic2_tag = SRD } # La Sardaigne
+link = { category = tag_fscae vic2_tag = SAA } # La Sarre
+link = { category = tag_fscae vic2_tag = SVY } # La Savoie
+link = { category = tag_fscae vic2_tag = SAX } # La Saxe
+link = { category = tag_fscae vic2_tag = COB } # La Saxe-Coburg-Gotha
+link = { category = tag_fscae vic2_tag = MEI } # La Saxe-Meiningen
+link = { category = tag_fscae vic2_tag = WEI } # La Saxe-Weimar
+link = { category = tag_fscae vic2_tag = SCA } # La Scandinavie
+link = { category = tag_fscae vic2_tag = SER } # La Serbie
+link = { category = tag_fscae vic2_tag = SIB } # La Sibérie
+link = { category = tag_fscae vic2_tag = SCY } # La Sicile
+link = { category = tag_fscae vic2_tag = SLE } # La Sierra-Léone
+link = { category = tag_fscae vic2_tag = SLS } # La Silésie
+link = { category = tag_fscae vic2_tag = SLV } # La Slovaquie
+link = { category = tag_fscae vic2_tag = SLO } # La Slovénie
+link = { category = tag_fscae vic2_tag = SOK } # La Sokoto
+link = { category = tag_fscae vic2_tag = SOM } # La Somalie
+link = { category = tag_fscae vic2_tag = STY } # La Styrie
+link = { category = tag_fscae vic2_tag = SWE } # La Suède
+link = { category = tag_fscae vic2_tag = SWI } # La Suisse
+link = { category = tag_fscae vic2_tag = SYR } # La Syrie
+link = { category = tag_fscae vic2_tag = TRS } # La Tarasque
+link = { category = tag_fscae vic2_tag = CZH } # La Tchécoslovaquie
+link = { category = tag_fscae vic2_tag = CZE } # La Tchéquie
+link = { category = tag_fscae vic2_tag = CHY } # La Tchétchénie
+link = { category = tag_fscae vic2_tag = TEU extra = "has_government = democratic" } # La Teutonie
+link = { category = tag_fscae vic2_tag = THU } # La Thuringe
+link = { category = tag_fscae vic2_tag = TUS } # La Toscane
+link = { category = tag_fscae vic2_tag = TCA } # La Transcaucasie
+link = { category = tag_fscae vic2_tag = SIE } # La Transylvanie
+link = { category = tag_fscae vic2_tag = TRL } # La Trapalandie
+link = { category = tag_fscae vic2_tag = TUR extra = "OR = { has_government = democratic has_government = communism }" } # La Turquie
+link = { category = tag_fscae vic2_tag = WAL } # La Valachie
+link = { category = tag_fscae vic2_tag = WEN } # La Vénédie
+link = { category = tag_fscae vic2_tag = VGO } # La Visigothie
+link = { category = tag_fscae vic2_tag = WLL } # La Wallonie
+link = { category = tag_fscae vic2_tag = WES } # La Westphalie
+link = { category = tag_fscae vic2_tag = YUG } # La Yougoslavie
+link = { category = tag_fscae vic2_tag = ZAM } # La Zambie
+link = { category = tag_fscae vic2_tag = WSF } # La Zapadoslavie
+
+
+# tag_fscne: [Ø] Francfort est GRANDE / J'habite À Francfort.
+
+link = { category = tag_fscne vic2_tag = BAB } # Babylone
+link = { category = tag_fscne vic2_tag = BAL } # Bali
+link = { category = tag_fscne vic2_tag = BMK } # Bamako
+link = { category = tag_fscne vic2_tag = BIM } # Bima
+link = { category = tag_fscne vic2_tag = BUK extra = "NOT = { has_government = communism }" } # Boukhara
+link = { category = tag_fscne vic2_tag = BRE } # Brême
+link = { category = tag_fscne vic2_tag = BUE } # Buénos-Aïres
+link = { category = tag_fscne vic2_tag = KRT } # Carthage
+link = { category = tag_fscne vic2_tag = CAY } # Cayenne
+link = { category = tag_fscne vic2_tag = SHG } # Chang-Haï (ou Shanghai)
+link = { category = tag_fscne vic2_tag = CYP } # Chypre
+link = { category = tag_fscne vic2_tag = KLE } # Clèves
+link = { category = tag_fscne vic2_tag = KOL } # Cologne
+link = { category = tag_fscne vic2_tag = KRA } # Cracovie
+link = { category = tag_fscne vic2_tag = CUB } # Cuba
+link = { category = tag_fscne vic2_tag = DZG } # Dantzig
+link = { category = tag_fscne vic2_tag = DLH } # Délhi
+link = { category = tag_fscne vic2_tag = ABB } # Dongola
+link = { category = tag_fscne vic2_tag = FEZ } # Fès
+link = { category = tag_fscne vic2_tag = FOI } # Foix
+link = { category = tag_fscne vic2_tag = FRM } # Francfort
+link = { category = tag_fscne vic2_tag = GAZ } # Gaza
+link = { category = tag_fscne vic2_tag = GEN } # Gênes
+link = { category = tag_fscne vic2_tag = GOC } # Golconde
+link = { category = tag_fscne vic2_tag = GON } # Gondar
+link = { category = tag_fscne vic2_tag = GRA } # Grenade (en Espagne)
+link = { category = tag_fscne vic2_tag = GWA } # Gwalior
+link = { category = tag_fscne vic2_tag = HEK } # Hesse-Cassel
+link = { category = tag_fscne vic2_tag = HES } # Hesse-Darmstadt
+link = { category = tag_fscne vic2_tag = JER } # Jérusalem
+link = { category = tag_fscne vic2_tag = KAG } # Kaga
+link = { category = tag_fscne vic2_tag = KGR } # Kangra
+link = { category = tag_fscne vic2_tag = KHI extra = "NOT = { has_government = communism }" } # Khiva
+link = { category = tag_fscne vic2_tag = KID } # Kildare
+link = { category = tag_fscne vic2_tag = KIK } # Kinkondja
+link = { category = tag_fscne vic2_tag = LIG } # Liège
+link = { category = tag_fscne vic2_tag = LIP } # Lippe-Detmold
+link = { category = tag_fscne vic2_tag = LUB } # Lübeck
+link = { category = tag_fscne vic2_tag = AOM extra = "NOT = { has_government = communism }" } # Macao
+link = { category = tag_fscne vic2_tag = MRI } # Maduraï
+link = { category = tag_fscne vic2_tag = MLC } # Malacca
+link = { category = tag_fscne vic2_tag = MLT } # Malte
+link = { category = tag_fscne vic2_tag = MTA } # Mantoue
+link = { category = tag_fscne vic2_tag = MAI } # Mayence
+link = { category = tag_fscne vic2_tag = ML1 } # Mélinde
+link = { category = tag_fscne vic2_tag = MOD } # Modène
+link = { category = tag_fscne vic2_tag = MUS } # Moscou
+link = { category = tag_fscne vic2_tag = NAP } # Naples
+link = { category = tag_fscne vic2_tag = NAX } # Naxos
+link = { category = tag_fscne vic2_tag = PAR } # Parme
+link = { category = tag_fscne vic2_tag = PIS } # Pise
+link = { category = tag_fscne vic2_tag = RAG } # Raguse
+link = { category = tag_fscne vic2_tag = RIG } # Riga
+link = { category = tag_fscne vic2_tag = STL } # Sainte-Lucie
+link = { category = tag_fscne vic2_tag = YAK } # Sakha
+link = { category = tag_fscne vic2_tag = SAT } # Satsuma
+link = { category = tag_fscne vic2_tag = SNA } # Sienne
+link = { category = tag_fscne vic2_tag = SMK } # Smolensk
+link = { category = tag_fscne vic2_tag = SOF } # Sofala
+link = { category = tag_fscne vic2_tag = TUL } # Toulouse
+link = { category = tag_fscne vic2_tag = TBZ } # Trébizonde
+link = { category = tag_fscne vic2_tag = TER } # Trèves
+link = { category = tag_fscne vic2_tag = TRE } # Trieste
+link = { category = tag_fscne vic2_tag = TYR } # Tyrone
+link = { category = tag_fscne vic2_tag = VEN } # Venise
+link = { category = tag_fscne vic2_tag = VIJ } # Vijayanâgara
+link = { category = tag_fscne vic2_tag = WIA } # Wiang Chan (ou Vientiane)
+link = { category = tag_fscne vic2_tag = YOR } # York
+link = { category = tag_fscne vic2_tag = ZAZ } # Zaporijjia
+
+
+# tag_fsvad: L'Union Arabe est GRANDE / J'habite DANS L'Union Arabe.
+
+link = { category = tag_fsvad vic2_tag = SNZ } # L'Île du Sud
+link = { category = tag_fsvad vic2_tag = ARU } # L'Union Arabe
+link = { category = tag_fsvad vic2_tag = LTN extra = "has_government = communism" } # L'Union de Rhomanie
+link = { category = tag_fsvad vic2_tag = SPQ extra = "has_government = communism" } # L'Union de Rome
+link = { category = tag_fsvad vic2_tag = DKU } # L'Union du Don-Kouban
+link = { category = tag_fsvad vic2_tag = MRU } # L'Union Maritime
+
+# tag_fsvae: L'Angleterre est GRANDE / J'habite EN Angleterre.
+
+link = { category = tag_fsvae vic2_tag = ALB } # L'Albanie
+link = { category = tag_fsvae vic2_tag = ABK } # L'Abkhazie
+link = { category = tag_fsvae vic2_tag = ACA } # L'Acadie
+link = { category = tag_fsvae vic2_tag = ACH } # L'Achaïe
+link = { category = tag_fsvae vic2_tag = SAF } # L'Afrique du Sud
+link = { category = tag_fsvae vic2_tag = CAR } # L'Afrique Équatoriale
+link = { category = tag_fsvae vic2_tag = ALN } # L'Alanie
+link = { category = tag_fsvae vic2_tag = ALD } # L'Algérie
+link = { category = tag_fsvae vic2_tag = GER } # L'Allemagne
+link = { category = tag_fsvae vic2_tag = ALO } # L'Alodie
+link = { category = tag_fsvae vic2_tag = ALS } # L'Alsace
+link = { category = tag_fsvae vic2_tag = ADO } # L'Andorre
+link = { category = tag_fsvae vic2_tag = ENL } # L'Angleterre
+link = { category = tag_fsvae vic2_tag = AES } # L'Anglo-Saxe
+link = { category = tag_fsvae vic2_tag = ARA } # L'Arabie
+link = { category = tag_fsvae vic2_tag = ARG } # L'Argentine
+link = { category = tag_fsvae vic2_tag = ARM } # L'Armenie
+link = { category = tag_fsvae vic2_tag = ASY } # L'Assyrie
+link = { category = tag_fsvae vic2_tag = AST } # L'Australie
+link = { category = tag_fsvae vic2_tag = AUS } # L'Autriche
+link = { category = tag_fsvae vic2_tag = KUK extra = "NOT = { has_government = democratic }" } # L'Autriche-Hongrie
+link = { category = tag_fsvae vic2_tag = AUV } # L'Auvergne
+link = { category = tag_fsvae vic2_tag = SCO } # L'Écosse
+link = { category = tag_fsvae vic2_tag = CEG } # L'Égypte
+link = { category = tag_fsvae vic2_tag = EGY } # L'Égypte
+link = { category = tag_fsvae vic2_tag = EPI } # L'Épire
+link = { category = tag_fsvae vic2_tag = ERI } # L'Érythrée
+link = { category = tag_fsvae vic2_tag = SPA } # L'Espagne
+link = { category = tag_fsvae vic2_tag = SPC } # L'Espagne Carliste
+link = { category = tag_fsvae vic2_tag = EST } # L'Estonie
+link = { category = tag_fsvae vic2_tag = ETH } # L'Éthiopie
+link = { category = tag_fsvae vic2_tag = ETR } # L'Étrurie
+link = { category = tag_fsvae vic2_tag = HSP } # L'Hesperie
+link = { category = tag_fsvae vic2_tag = IBR } # L'Ibérie
+link = { category = tag_fsvae vic2_tag = HND } # L'Inde
+link = { category = tag_fsvae vic2_tag = IDO } # L'Indochine
+link = { category = tag_fsvae vic2_tag = INO } # L'Indonésie
+link = { category = tag_fsvae vic2_tag = IZH } # L'Ingrie
+link = { category = tag_fsvae vic2_tag = IRE } # L'Irlande
+link = { category = tag_fsvae vic2_tag = ICL } # L'Islande
+link = { category = tag_fsvae vic2_tag = ITA } # L'Italie
+link = { category = tag_fsvae vic2_tag = ITP } # L'Italie Pontificale
+link = { category = tag_fsvae vic2_tag = OCC } # L'Occitanie
+link = { category = tag_fsvae vic2_tag = OGO } # L'Ostrogothie
+link = { category = tag_fsvae vic2_tag = UGR } # L'Ougra
+link = { category = tag_fsvae vic2_tag = URA } # L'Ouralie
+link = { category = tag_fsvae vic2_tag = UKR } # L'Ukraine
+link = { category = tag_fsvae vic2_tag = ADU } # L'Andalousie
+
+
+# tag_fsvnd: (Not used!) [Ø] ... est GRANDE / J'habite DANS ...
+
+
+
+# tag_fsvne: [Ø] Athènes est GRANDE / J'habite À Athènes.
+
+link = { category = tag_fsvne vic2_tag = UTR } # Utrecht
+link = { category = tag_fsvne vic2_tag = AMD } # Ahmadnagar
+link = { category = tag_fsvne vic2_tag = AAC } # Aix-la-Chapelle
+link = { category = tag_fsvne vic2_tag = ALE } # Alençon
+link = { category = tag_fsvne vic2_tag = AGC } # Angotché
+link = { category = tag_fsvne vic2_tag = AGU } # Anguilla
+link = { category = tag_fsvne vic2_tag = ATB } # Antigua-et-Barbuda
+link = { category = tag_fsvne vic2_tag = AOM extra = "has_government = communism" } # Aomen
+link = { category = tag_fsvne vic2_tag = AOT } # Aotéaroa
+link = { category = tag_fsvne vic2_tag = AQU } # Aquilée
+link = { category = tag_fsvne vic2_tag = ASA } # Asakura
+link = { category = tag_fsvne vic2_tag = ATH } # Athènes
+link = { category = tag_fsvne vic2_tag = AVI } # Avignon
+link = { category = tag_fsvne vic2_tag = YAR } # Iaroslavl
+link = { category = tag_fsvne vic2_tag = IND } # Indore
+link = { category = tag_fsvne vic2_tag = ORA } # Orange
+link = { category = tag_fsvne vic2_tag = ORL } # Orléans
+link = { category = tag_fsvne vic2_tag = OTT } # Ottawa
+link = { category = tag_fsvne vic2_tag = ULM } # Ulm
+
+
+# tag_fpcad: LES Sudètes sont GRANDES / J'habite DANS LES Sudètes.
+
+link = { category = tag_fpcad vic2_tag = BHM } # Les Bahamas
+link = { category = tag_fpcad vic2_tag = CRB } # Les Caraïbes
+link = { category = tag_fpcad vic2_tag = UBD } # Les Provinces Baltiques Unies
+link = { category = tag_fpcad vic2_tag = SDT } # Les Sudètes
+
+
+# tag_fpcae: LES Philippines sont GRANDES / J'habite AUX Philippines.
+
+link = { category = tag_fpcae vic2_tag = KOM } # Les Comores
+link = { category = tag_fpcae vic2_tag = SIC } # Les Deux-Siciles
+link = { category = tag_fpcae vic2_tag = FRO } # Les Féroé
+link = { category = tag_fpcae vic2_tag = FIJ } # Les Fidji
+link = { category = tag_fpcae vic2_tag = FLA } # Les Flandres
+link = { category = tag_fpcae vic2_tag = HSC } # Les Hautes-Terres
+link = { category = tag_fpcae vic2_tag = SEY } # Les Seychelles
+link = { category = tag_fpcae vic2_tag = MLD } # Les Maldives
+link = { category = tag_fpcae vic2_tag = MAL } # Les Moluques
+link = { category = tag_fpcae vic2_tag = PHI } # Les Philippines
+link = { category = tag_fpcae vic2_tag = SLW } # Les Célèbes
+
+
+# tag_fpvad: LES Asturies sont GRANDES / J'habite DANS LES Asturies.
+
+link = { category = tag_fpvad vic2_tag = ATR } # Les Asturies
+link = { category = tag_fpvad vic2_tag = ION } # Les Îles Ioniennes
+
+
+# tag_fpvae: (not used!) LES ... sont GRANDES / J'habite AUX ...
+
+
+
+# tag_fpvnd: (not used!) [Ø] ... sont GRANDES / J'habite DANS ...
+
+
+
+# tag_fpvne: [Ø] Hawaii sont GRANDES / J'habite AUX Hawaii.
+
+link = { category = tag_fpvne vic2_tag = HAW } # Les Hawaii
