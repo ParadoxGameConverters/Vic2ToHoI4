@@ -1508,6 +1508,12 @@
     <ClCompile Include="HoI4WorldTests\CountryCategories\CountryGrammarTests.cpp">
       <Filter>HoI4WorldTests\CountryCategories</Filter>
     </ClCompile>
+    <ClCompile Include="HoI4WorldTests\CountryCategories\CountryCategoriesTests.cpp">
+      <Filter>HoI4WorldTests\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryCategories.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2959,6 +2965,9 @@
       <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryCategories.h">
       <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
     </ClInclude>
   </ItemGroup>

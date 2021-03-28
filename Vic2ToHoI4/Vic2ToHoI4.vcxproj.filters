@@ -1249,6 +1249,9 @@
     <ClCompile Include="Source\HOI4World\CountryCategories\CountryGrammarFactory.cpp">
       <Filter>HoI4World\CountryCategories</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\CountryCategories\CountryCategories.cpp">
+      <Filter>HoI4World\CountryCategories</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2470,6 +2473,9 @@
       <Filter>HoI4World\CountryCategories</Filter>
     </ClInclude>
     <ClInclude Include="Source\HOI4World\CountryCategories\CountryGrammarFactory.h">
+      <Filter>HoI4World\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\CountryCategories\CountryCategories.h">
       <Filter>HoI4World\CountryCategories</Filter>
     </ClInclude>
   </ItemGroup>

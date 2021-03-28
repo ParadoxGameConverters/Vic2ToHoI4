@@ -143,6 +143,7 @@
     <ClCompile Include="..\common_items\WinUtils.cpp" />
     <ClCompile Include="..\common_items\targa.cpp" />
     <ClCompile Include="Source\Configuration.cpp" />
+    <ClCompile Include="Source\HOI4World\CountryCategories\CountryCategories.cpp" />
     <ClCompile Include="Source\HOI4World\CountryCategories\CountryGrammarRuleFactory.cpp" />
     <ClCompile Include="Source\HOI4World\CountryCategories\CountryGrammarFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
@@ -476,6 +477,7 @@
     <ClInclude Include="..\common_items\StringUtils.h" />
     <ClInclude Include="..\common_items\targa.h" />
     <ClInclude Include="Source\Configuration.h" />
+    <ClInclude Include="Source\HOI4World\CountryCategories\CountryCategories.h" />
     <ClInclude Include="Source\HOI4World\CountryCategories\CountryGrammarRule.h" />
     <ClInclude Include="Source\HOI4World\CountryCategories\CountryGrammarRuleFactory.h" />
     <ClInclude Include="Source\HOI4World\CountryCategories\CountryGrammarFactory.h" />
