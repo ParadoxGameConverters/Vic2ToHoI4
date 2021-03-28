@@ -1502,6 +1502,12 @@
     <ClCompile Include="HoI4WorldTests\CountryCategories\CountryGrammarRuleTests.cpp">
       <Filter>HoI4WorldTests\CountryCategories</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\CountryCategories\CountryGrammarTests.cpp">
+      <Filter>HoI4WorldTests\CountryCategories</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1998,6 +2004,12 @@
     </Filter>
     <Filter Include="HoI4WorldTests\CountryCategories">
       <UniqueIdentifier>{d0c35a53-8d36-4558-a7a8-1d31f05ba748}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\HoI4">
+      <UniqueIdentifier>{922aef6c-b8ea-4516-b0c8-f8a90089a692}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\HoI4\CountryCategories">
+      <UniqueIdentifier>{02d631f1-9b06-4668-a709-45d7c3ff2f21}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2946,6 +2958,9 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarRuleFactory.h">
       <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3248,6 +3263,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\Graphics\cultureGroupToGraphics.txt">
       <Filter>TestFiles\Mappers\Graphics</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\HoI4Files\CountryCategories\CountryGrammar.txt">
+      <Filter>TestFiles\HoI4\CountryCategories</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

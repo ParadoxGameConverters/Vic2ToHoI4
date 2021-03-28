@@ -144,6 +144,7 @@
     <ClCompile Include="..\common_items\targa.cpp" />
     <ClCompile Include="Source\Configuration.cpp" />
     <ClCompile Include="Source\HOI4World\CountryCategories\CountryGrammarRuleFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\CountryCategories\CountryGrammarFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategories.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategory.cpp" />
@@ -477,6 +478,7 @@
     <ClInclude Include="Source\Configuration.h" />
     <ClInclude Include="Source\HOI4World\CountryCategories\CountryGrammarRule.h" />
     <ClInclude Include="Source\HOI4World\CountryCategories\CountryGrammarRuleFactory.h" />
+    <ClInclude Include="Source\HOI4World\CountryCategories\CountryGrammarFactory.h" />
     <ClInclude Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.h" />
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategories.h" />
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategory.h" />

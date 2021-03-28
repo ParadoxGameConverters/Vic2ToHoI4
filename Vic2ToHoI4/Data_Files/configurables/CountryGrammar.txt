@@ -54,7 +54,7 @@
 # tag_mscad: LE Banat est GRAND / J'habite DANS LE Banat.
 link = { category = tag_mscad vic2_tag = BAN } # Le Banat
 link = { category = tag_mscad vic2_tag = BOU } # Le Bourbonnais
-link = { category = tag_mscad vic2_tag = ENG NOT = { has_government = absolutism has_government = democratic has_government = democratic } } # Le Royaume-Uni / Le Commonwealth des Ouvriers
+link = { category = tag_mscad vic2_tag = ENG extra = "NOT = { has_government = absolutism has_government = democratic has_government = democratic }" } # Le Royaume-Uni / Le Commonwealth des Ouvriers
 link = { category = tag_mscad vic2_tag = HYD } # Le Hyderabad/Haïderabad
 link = { category = tag_mscad vic2_tag = ALL extra = "NOT = { has_government = democratic has_government = fascism has_government = communism }" } # Le Caliphat
 link = { category = tag_mscad vic2_tag = GBR extra = "has_government = communism" } # Le Commonwealth des Travailleurs
