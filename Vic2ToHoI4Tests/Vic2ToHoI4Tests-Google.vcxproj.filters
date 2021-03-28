@@ -1496,6 +1496,12 @@
     <ClCompile Include="MapperTests\Graphics\GraphicsMapperTests.cpp">
       <Filter>MapperTests\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarRuleFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\CountryCategories\CountryGrammarRuleTests.cpp">
+      <Filter>HoI4WorldTests\CountryCategories</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1986,6 +1992,12 @@
     </Filter>
     <Filter Include="TestFiles\Mappers\Graphics">
       <UniqueIdentifier>{cee8fc55-67f7-4cbb-8589-93b2985d47d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\CountryCategories">
+      <UniqueIdentifier>{d02df5d1-00a8-413f-b61b-a61721d151d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\CountryCategories">
+      <UniqueIdentifier>{d0c35a53-8d36-4558-a7a8-1d31f05ba748}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2927,6 +2939,12 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsMapperFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarRule.h">
+      <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarRuleFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
