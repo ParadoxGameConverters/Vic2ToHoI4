@@ -236,7 +236,7 @@ class World: commonItems::parser
 
 	std::unique_ptr<ScriptedLocalisations> scriptedLocalisations;
 	ScriptedTriggers scriptedTriggers;
-	std::map<std::string, tagsAndExtras> countryCategories;
+	std::map<std::string, TagsAndExtras> countryCategories;
 
 	std::unique_ptr<GameRules> gameRules;
 	DynamicModifiers dynamicModifiers;

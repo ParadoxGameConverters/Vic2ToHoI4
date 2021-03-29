@@ -3,11 +3,11 @@
 
 
 
-std::map<std::string, HoI4::tagsAndExtras> HoI4::createCountryCategories()
+std::map<std::string, HoI4::TagsAndExtras> HoI4::createCountryCategories()
 {
 	const auto countryGrammar = CountryGrammarFactory().importCountryGrammar();
 
-	std::map<std::string, tagsAndExtras> categories;
+	std::map<std::string, TagsAndExtras> categories;
 	for (const auto& countryGrammarRule: countryGrammar)
 	{
 		if (auto category = categories.find(countryGrammarRule.category); category != categories.end())
@@ -17,7 +17,7 @@ std::map<std::string, HoI4::tagsAndExtras> HoI4::createCountryCategories()
 		else
 		{
 			categories.emplace(countryGrammarRule.category,
-				 tagsAndExtras{{countryGrammarRule.tag, countryGrammarRule.extra}});
+				 TagsAndExtras{{countryGrammarRule.tag, countryGrammarRule.extra}});
 		}
 	}
 

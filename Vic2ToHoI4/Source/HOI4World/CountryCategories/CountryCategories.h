@@ -12,10 +12,10 @@
 namespace HoI4
 {
 
-using tagsAndExtras = std::map<std::string, std::optional<std::string>>;
+using TagsAndExtras = std::map<std::string, std::optional<std::string>>;
 
 
-std::map<std::string, tagsAndExtras> createCountryCategories();
+std::map<std::string, TagsAndExtras> createCountryCategories();
 
 
 } // namespace HoI4

@@ -1514,6 +1514,12 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryCategories.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategories.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategory.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\CountryCategories</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2016,6 +2022,9 @@
     </Filter>
     <Filter Include="TestFiles\HoI4\CountryCategories">
       <UniqueIdentifier>{02d631f1-9b06-4668-a709-45d7c3ff2f21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\CountryCategories">
+      <UniqueIdentifier>{e0d61698-9b2b-432a-9cb7-84b7180ae023}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2969,6 +2978,12 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryCategories.h">
       <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategories.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategory.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\CountryCategories</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

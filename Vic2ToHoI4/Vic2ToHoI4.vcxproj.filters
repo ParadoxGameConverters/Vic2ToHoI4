@@ -265,6 +265,9 @@
     <Filter Include="HoI4World\CountryCategories">
       <UniqueIdentifier>{fb141d34-8460-42f1-8ea2-59f9ef4b29ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="OutHoi4\CountryCategories">
+      <UniqueIdentifier>{f88af672-93e0-4688-8cc1-4687cdc63a9f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\common_items\Date.cpp">
@@ -1251,6 +1254,12 @@
     </ClCompile>
     <ClCompile Include="Source\HOI4World\CountryCategories\CountryCategories.cpp">
       <Filter>HoI4World\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\CountryCategories\OutCountryCategory.cpp">
+      <Filter>OutHoi4\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OutHoi4\CountryCategories\OutCountryCategories.cpp">
+      <Filter>OutHoi4\CountryCategories</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -2477,6 +2486,12 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\CountryCategories\CountryCategories.h">
       <Filter>HoI4World\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\CountryCategories\OutCountryCategory.h">
+      <Filter>OutHoi4\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OutHoi4\CountryCategories\OutCountryCategories.h">
+      <Filter>OutHoi4\CountryCategories</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

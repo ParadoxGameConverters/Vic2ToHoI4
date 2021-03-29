@@ -137,6 +137,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\AiStrategy\OutAiStrategy.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategories.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
@@ -896,6 +898,8 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategories.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Ai\AI.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Ai\AIFactory.h" />
