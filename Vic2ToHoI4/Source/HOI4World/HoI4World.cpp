@@ -169,7 +169,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	scriptedTriggers.importScriptedTriggers(theConfiguration);
 	updateScriptedTriggers(scriptedTriggers, ideologies->getMajorIdeologies());
 
-	countryCategories = createCountryCategories();
+	countryCategories = createCountryCategories(*countryMap);
 
 	gameRules = std::make_unique<GameRules>(
 		 GameRules::Parser{}.parseRulesFile(theConfiguration.getHoI4Path() + "/common/game_rules/00_game_rules.txt"));
