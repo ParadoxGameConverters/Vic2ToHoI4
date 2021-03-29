@@ -299,7 +299,14 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		if (majorIdeologies.contains("fascism"))
 		{
 			std::string fasc;
-			fasc = "if = {\n";
+			if (!majorIdeologies.contains("communism"))
+			{
+				fasc = "if = {\n";
+			}
+			else
+			{
+				fasc = "else_if = {\n";
+			}
 			fasc += "\t\t\t\t\t\tlimit = { ROOT = { has_government = fascism } }\n";
 			fasc += "\t\t\t\t\t\tpotential_fascist_annex_target = yes\n";
 			fasc += "\t\t\t\t\t}";
@@ -314,7 +321,14 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		if (majorIdeologies.contains("radical"))
 		{
 			std::string rad;
-			rad = "if = {\n";
+			if (!majorIdeologies.contains("communism") && !majorIdeologies.contains("fascism"))
+			{
+				rad = "if = {\n";
+			}
+			else
+			{
+				rad = "else_if = {\n";
+			}
 			rad += "\t\t\t\t\t\tlimit = { ROOT = { has_government = radical } }\n";
 			rad += "\t\t\t\t\t\tpotential_radical_annex_target = yes\n";
 			rad += "\t\t\t\t\t}";
@@ -325,6 +339,18 @@ void HoI4FocusTree::addGenericFocusTree(const set<string>& majorIdeologies)
 		{
 			newFocus->removePlaceholder(newFocus->available, "#RADICAL");
 			newFocus->removePlaceholder(newFocus->selectEffect, "#RADICAL");
+		}
+		if (majorIdeologies.contains("communism") || majorIdeologies.contains("fascism") || majorIdeologies.contains("radical"))
+		{
+			std::string els;
+			els = "else = {\n";
+			els += "\t\t\t\t\t\thidden_trigger = { always = no }\n";
+			els += "\t\t\t\t\t}";
+			newFocus->updateFocusElement(newFocus->available, "#ELSE", els);
+		}
+		else
+		{
+			newFocus->removePlaceholder(newFocus->available, "#ELSE");
 		}
 		sharedFocuses.push_back(newFocus);
 	}
@@ -2412,7 +2438,14 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(
 			if (majorIdeologies.contains("fascism"))
 			{
 				std::string fasc;
-				fasc = "if = {\n";
+				if (!majorIdeologies.contains("communism"))
+				{
+					fasc = "if = {\n";
+				}
+				else
+				{
+					fasc = "else_if = {\n";
+				}
 				fasc += "\t\t\t\t\t\tlimit = { ROOT = { has_government = fascism } }\n";
 				fasc += "\t\t\t\t\t\tpotential_fascist_annex_target = yes\n";
 				fasc += "\t\t\t\t\t}";
@@ -2425,7 +2458,14 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(
 			if (majorIdeologies.contains("radical"))
 			{
 				std::string rad;
-				rad = "if = {\n";
+				if (!majorIdeologies.contains("communism") && !majorIdeologies.contains("fascism"))
+				{
+					rad = "if = {\n";
+				}
+				else
+				{
+					rad = "else_if = {\n";
+				}
 				rad += "\t\t\t\t\t\tlimit = { ROOT = { has_government = radical } }\n";
 				rad += "\t\t\t\t\t\tpotential_radical_annex_target = yes\n";
 				rad += "\t\t\t\t\t}";
@@ -2434,6 +2474,18 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(
 			else
 			{
 				newFocus->removePlaceholder(newFocus->available, "#RADICAL");
+			}
+			if (majorIdeologies.contains("communism") || majorIdeologies.contains("fascism") || majorIdeologies.contains("radical"))
+			{
+				std::string els;
+				els = "else = {\n";
+				els += "\t\t\t\t\t\thidden_trigger = { always = no }\n";
+				els += "\t\t\t\t\t}";
+				newFocus->updateFocusElement(newFocus->available, "#ELSE", els);
+			}
+			else
+			{
+				newFocus->removePlaceholder(newFocus->available, "#ELSE");
 			}
 			newFocus->updateFocusElement(newFocus->available, "$TARGET", strategy.getID());
 			newFocus->xPos = nextFreeColumn;
@@ -2572,7 +2624,14 @@ void HoI4FocusTree::addNeighborWarBranch(const string& tag,
 		if (majorIdeologies.contains("fascism"))
 		{
 			std::string fasc;
-			fasc = "if = {\n";
+			if (!majorIdeologies.contains("communism"))
+			{
+				fasc = "if = {\n";
+			}
+			else
+			{
+				fasc = "else_if = {\n";
+			}
 			fasc += "\t\t\t\t\t\tlimit = { ROOT = { has_government = fascism } }\n";
 			fasc += "\t\t\t\t\t\tpotential_fascist_annex_target = yes\n";
 			fasc += "\t\t\t\t\t}";
@@ -2585,7 +2644,14 @@ void HoI4FocusTree::addNeighborWarBranch(const string& tag,
 		if (majorIdeologies.contains("radical"))
 		{
 			std::string rad;
-			rad = "if = {\n";
+			if (!majorIdeologies.contains("communism") && !majorIdeologies.contains("fascism"))
+			{
+				rad = "if = {\n";
+			}
+			else
+			{
+				rad = "else_if = {\n";
+			}
 			rad += "\t\t\t\t\t\tlimit = { ROOT = { has_government = radical } }\n";
 			rad += "\t\t\t\t\t\tpotential_radical_annex_target = yes\n";
 			rad += "\t\t\t\t\t}";
@@ -2595,7 +2661,20 @@ void HoI4FocusTree::addNeighborWarBranch(const string& tag,
 		{
 			newFocus->removePlaceholder(newFocus->available, "#RADICAL");
 		}
+		if (majorIdeologies.contains("communism") || majorIdeologies.contains("fascism") || majorIdeologies.contains("radical"))
+		{
+			std::string els;
+			els = "else = {\n";
+			els += "\t\t\t\t\t\thidden_trigger = { always = no }\n";
+			els += "\t\t\t\t\t}";
+			newFocus->updateFocusElement(newFocus->available, "#ELSE", els);
+		}
+		else
+		{
+			newFocus->removePlaceholder(newFocus->available, "#ELSE");
+		}
 		newFocus->updateFocusElement(newFocus->available, "$TARGET", targetNeighbors->getTag());
+		newFocus->updateFocusElement(newFocus->aiWillDo, "$TARGET", targetNeighbors->getTag());
 		newFocus->selectEffect.clear();
 		newFocus->xPos = nextFreeColumn;
 		newFocus->yPos = 0;
