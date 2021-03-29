@@ -11,7 +11,7 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, CategoriesCanBeCreated)
 																				  .addMapping("BAN", "BAN")
 																				  .addMapping("ENG", "ENG")
 																				  .addMapping("BGL", "BGL")
-																				  .Build());
+																				  .Build(), {});
 
 	ASSERT_THAT(categories,
 		 testing::UnorderedElementsAre(
@@ -30,7 +30,7 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, TagsAreTranslated)
 																				  .addMapping("BAN", "B2N")
 																				  .addMapping("ENG", "EN2")
 																				  .addMapping("BGL", "BG2")
-																				  .Build());
+																				  .Build(), {});
 
 	ASSERT_THAT(categories,
 		 testing::UnorderedElementsAre(
@@ -45,7 +45,18 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, TagsAreTranslated)
 
 TEST(HoI4World_CountryCategories_CountryCategoriesTests, UnmappedTagsAreSkipped)
 {
-	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder{}.Build());
+	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder{}.Build(), {});
 
 	ASSERT_THAT(categories, testing::UnorderedElementsAre());
+}
+
+
+TEST(HoI4World_CountryCategories_CountryCategoriesTests, UncategorizedCountriesAreInTagMscne)
+{
+	const auto categories =
+		 HoI4::createCountryCategories(*Mappers::CountryMapper::Builder{}.Build(), {{"TAG", nullptr}});
+
+	ASSERT_THAT(categories,
+		 testing::UnorderedElementsAre(
+			  testing::Pair("tag_mscne", testing::UnorderedElementsAre(testing::Pair("TAG", std::nullopt)))));
 }
