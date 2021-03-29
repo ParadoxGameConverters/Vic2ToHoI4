@@ -54,27 +54,27 @@
 # tag_mscad: LE Banat est GRAND / J'habite DANS LE Banat.
 link = { category = tag_mscad vic2_tag = BAN } # Le Banat
 link = { category = tag_mscad vic2_tag = BOU } # Le Bourbonnais
-link = { category = tag_mscad vic2_tag = ENG extra = "NOT = { has_government = absolutism has_government = democratic has_government = democratic }" } # Le Royaume-Uni / Le Commonwealth des Ouvriers
+link = { category = tag_mscad vic2_tag = ENG extra = "NOT = { $ABSOLUTIST $DEMOCRATIC }" } # Le Royaume-Uni / Le Commonwealth des Ouvriers
 link = { category = tag_mscad vic2_tag = HYD } # Le Hyderabad/Haïderabad
-link = { category = tag_mscad vic2_tag = ALL extra = "NOT = { has_government = democratic has_government = fascism has_government = communism }" } # Le Caliphat
-link = { category = tag_mscad vic2_tag = GBR extra = "has_government = communism" } # Le Commonwealth des Travailleurs
-link = { category = tag_mscad vic2_tag = SUE extra = "NOT = { has_government = communism has_government = democratic }" } # Le Duché/Royaume/Sénat des Suèves
-link = { category = tag_mscad vic2_tag = QAS extra = "NOT = { has_government = democratic }" } # Le Khanat de Qasim / Le Prolétariat de Qasim
-link = { category = tag_mscad vic2_tag = YRK extra = "NOT = { has_government = democratic }" } # Le Khanat de Yarkand / Le Prolétariat de Yarkand
-link = { category = tag_mscad vic2_tag = CHG extra = "NOT = { has_government = democratic }" } # Le Khanat Djaghataï / Le Prolétariat de Djaghataï
-link = { category = tag_mscad vic2_tag = KHA extra = "NOT = { has_government = democratic }" } # Le Khanat Mongol / Le Prolétariat de Khalka
+link = { category = tag_mscad vic2_tag = ALL extra = "NOT = { $DEMOCRATIC $FASCISM $COMMUNISM }" } # Le Caliphat
+link = { category = tag_mscad vic2_tag = GBR extra = "$COMMUNISM" } # Le Commonwealth des Travailleurs
+link = { category = tag_mscad vic2_tag = SUE extra = "NOT = { $COMMUNISM $DEMOCRATIC }" } # Le Duché/Royaume/Sénat des Suèves
+link = { category = tag_mscad vic2_tag = QAS extra = "NOT = { $DEMOCRATIC }" } # Le Khanat de Qasim / Le Prolétariat de Qasim
+link = { category = tag_mscad vic2_tag = YRK extra = "NOT = { $DEMOCRATIC }" } # Le Khanat de Yarkand / Le Prolétariat de Yarkand
+link = { category = tag_mscad vic2_tag = CHG extra = "NOT = { $DEMOCRATIC }" } # Le Khanat Djaghataï / Le Prolétariat de Djaghataï
+link = { category = tag_mscad vic2_tag = KHA extra = "NOT = { $DEMOCRATIC }" } # Le Khanat Mongol / Le Prolétariat de Khalka
 link = { category = tag_mscad vic2_tag = MGH } # Le Maghreb
 link = { category = tag_mscad vic2_tag = PAL } # Le Palatinat
-link = { category = tag_mscad vic2_tag = LIV extra = "has_government = communism" } # Le Prolétariat de Livonie
-link = { category = tag_mscad vic2_tag = OIR extra = "has_government = communism" } # Le Prolétariat d'Oirat
-link = { category = tag_mscad vic2_tag = KNI extra = "has_government = communism" } # Le Prolétariat Hôpital
-link = { category = tag_mscad vic2_tag = TEU extra = "has_government = communism" } # Le Prolétariat Teutonique
-link = { category = tag_mscad vic2_tag = HRE extra = "NOT = { has_government = democratic }" } # Le Saint Empire Romain
-link = { category = tag_mscad vic2_tag = USA extra = "has_government = absolutism" } # Le Royaume d'Amerique
-link = { category = tag_mscad vic2_tag = VAT extra = "has_government = fascism" } # Le Royaume de Dieu
-link = { category = tag_mscad vic2_tag = TPG extra = "NOT = { has_government = democratic has_government = radical has_government = communism has_government = fascism }" } # Le Royaume Céleste
-link = { category = tag_mscad vic2_tag = CAL extra = "has_government = absolutism" } # Le Royaume de Californie
-link = { category = tag_mscad vic2_tag = MOS extra = "has_government = absolutism" } # Le Royaume Mossi
+link = { category = tag_mscad vic2_tag = LIV extra = "$COMMUNISM" } # Le Prolétariat de Livonie
+link = { category = tag_mscad vic2_tag = OIR extra = "$COMMUNISM" } # Le Prolétariat d'Oirat
+link = { category = tag_mscad vic2_tag = KNI extra = "$COMMUNISM" } # Le Prolétariat Hôpital
+link = { category = tag_mscad vic2_tag = TEU extra = "$COMMUNISM" } # Le Prolétariat Teutonique
+link = { category = tag_mscad vic2_tag = HRE extra = "NOT = { $DEMOCRATIC }" } # Le Saint Empire Romain
+link = { category = tag_mscad vic2_tag = USA extra = "$ABSOLUTIST" } # Le Royaume d'Amerique
+link = { category = tag_mscad vic2_tag = VAT extra = "$FASCISM" } # Le Royaume de Dieu
+link = { category = tag_mscad vic2_tag = TPG extra = "NOT = { $DEMOCRATIC $RADICAL $COMMUNISM $FASCISM }" } # Le Royaume Céleste
+link = { category = tag_mscad vic2_tag = CAL extra = "$ABSOLUTIST" } # Le Royaume de Californie
+link = { category = tag_mscad vic2_tag = MOS extra = "$ABSOLUTIST" } # Le Royaume Mossi
 link = { category = tag_mscad vic2_tag = SYC } # Le [Pays] Syriaque
 link = { category = tag_mscad vic2_tag = TOK } # Le Tonkin
 
@@ -110,7 +110,7 @@ link = { category = tag_mscae vic2_tag = SRI } # Le Ceylan
 link = { category = tag_mscae vic2_tag = CHL } # Le Chili
 link = { category = tag_mscae vic2_tag = SHW } # Le Choa
 link = { category = tag_mscae vic2_tag = CNG } # Le Congo / Zaïre
-link = { category = tag_mscae vic2_tag = CGO extra = "OR = { has_government = neutrality has_government = absolutism }" } # Le Congo-Brazzaville
+link = { category = tag_mscae vic2_tag = CGO extra = "OR = { $NEUTRALITY $ABSOLUTIST }" } # Le Congo-Brazzaville
 link = { category = tag_mscae vic2_tag = CNN } # Le Connacht
 link = { category = tag_mscae vic2_tag = COS } # Le Costa Rica
 link = { category = tag_mscae vic2_tag = DAG } # Le Daguestan
@@ -177,16 +177,16 @@ link = { category = tag_mscae vic2_tag = MAB } # Le Malabar
 link = { category = tag_mscae vic2_tag = MLI } # Le Mali
 link = { category = tag_mscae vic2_tag = MAW } # Le Malva
 link = { category = tag_mscae vic2_tag = MCK } # Le Manchukuo
-link = { category = tag_mscae vic2_tag = QNG extra = "OR = { has_government = fascism has_government = radical }" } # Le Mandchoukuo
+link = { category = tag_mscae vic2_tag = QNG extra = "OR = { $FASCISM $RADICAL }" } # Le Mandchoukuo
 link = { category = tag_mscae vic2_tag = MLB } # Le Manipur
 link = { category = tag_mscae vic2_tag = MLW } # Le Maravi
 link = { category = tag_mscae vic2_tag = MOR } # Le Maroc
 link = { category = tag_mscae vic2_tag = MAT } # Le Matabélé
 link = { category = tag_mscae vic2_tag = MML } # Le Memelland
-link = { category = tag_mscae vic2_tag = IMG extra = "has_government = fascism" } # Le Mengjiang
+link = { category = tag_mscae vic2_tag = IMG extra = "$FASCISM" } # Le Mengjiang
 link = { category = tag_mscae vic2_tag = MWT } # Le Meouat
 link = { category = tag_mscae vic2_tag = MEW } # Le Mewar
-link = { category = tag_mscae vic2_tag = MEX extra = "NOT = { has_government = absolutism }" } # Le Mexique
+link = { category = tag_mscae vic2_tag = MEX extra = "NOT = { $ABSOLUTIST }" } # Le Mexique
 link = { category = tag_mscae vic2_tag = MUG } # Le Mogholistan
 link = { category = tag_mscae vic2_tag = MON } # Le Monténégro
 link = { category = tag_mscae vic2_tag = MFA } # Le Montferrat
@@ -201,7 +201,7 @@ link = { category = tag_mscae vic2_tag = NIG } # Le Niger
 link = { category = tag_mscae vic2_tag = NGR } # Le Nigéria
 link = { category = tag_mscae vic2_tag = NKO } # Le Nkoré
 link = { category = tag_mscae vic2_tag = UNM } # Le Nouveau-Mexique
-link = { category = tag_mscae vic2_tag = HDU extra = "has_government = democratic" } # Le Pakistan
+link = { category = tag_mscae vic2_tag = HDU extra = "$DEMOCRATIC" } # Le Pakistan
 link = { category = tag_mscae vic2_tag = PNM } # Le Panama
 link = { category = tag_mscae vic2_tag = PRG } # Le Paraguay
 link = { category = tag_mscae vic2_tag = PAT } # Le Pattani
@@ -236,8 +236,8 @@ link = { category = tag_mscae vic2_tag = SUD } # Le Soudan
 link = { category = tag_mscae vic2_tag = SSU } # Le Soudan du Sud
 link = { category = tag_mscae vic2_tag = SUR } # Le Suriname
 link = { category = tag_mscae vic2_tag = SUA } # Le Swaziland
-link = { category = tag_mscae vic2_tag = TAJ extra = "NOT = { has_government = communism }" } # Le Tadjikistan
-link = { category = tag_mscae vic2_tag = TPG extra = "has_government = communism" } # Le Taïwan communiste
+link = { category = tag_mscae vic2_tag = TAJ extra = "NOT = { $COMMUNISM }" } # Le Tadjikistan
+link = { category = tag_mscae vic2_tag = TPG extra = "$COMMUNISM" } # Le Taïwan communiste
 link = { category = tag_mscae vic2_tag = TNZ } # Le Tanganyika
 link = { category = tag_mscae vic2_tag = TNT } # Le Tannou-Touva
 link = { category = tag_mscae vic2_tag = TAR } # Le Tatarstan
@@ -247,9 +247,9 @@ link = { category = tag_mscae vic2_tag = TEX } # Le Texas
 link = { category = tag_mscae vic2_tag = TIB } # Le Tibet
 link = { category = tag_mscae vic2_tag = TIG } # Le Tigré
 link = { category = tag_mscae vic2_tag = TOG } # Le Togo
-link = { category = tag_mscae vic2_tag = TAM extra = "NOT = { has_government = communism }" } # Le Transamour
+link = { category = tag_mscae vic2_tag = TAM extra = "NOT = { $COMMUNISM }" } # Le Transamour
 link = { category = tag_mscae vic2_tag = TRN } # Le Transvaal
-link = { category = tag_mscae vic2_tag = TRZ extra = "has_government = absolutism" } # Le Trarza
+link = { category = tag_mscae vic2_tag = TRZ extra = "$ABSOLUTIST" } # Le Trarza
 link = { category = tag_mscae vic2_tag = TKS } # Le Turkestan
 link = { category = tag_mscae vic2_tag = TKM } # Le Turkménistan
 link = { category = tag_mscae vic2_tag = TIR } # Le Tyrol
@@ -370,7 +370,7 @@ link = { category = tag_mscne vic2_tag = KLM } # Kalimantan
 link = { category = tag_mscne vic2_tag = KRW } # Karagwe
 link = { category = tag_mscne vic2_tag = KZN } # Kazan
 link = { category = tag_mscne vic2_tag = KLN } # Kéladi
-link = { category = tag_mscne vic2_tag = KOK extra = "NOT = { has_government = communism }" } # Kokand
+link = { category = tag_mscne vic2_tag = KOK extra = "NOT = { $COMMUNISM }" } # Kokand
 link = { category = tag_mscne vic2_tag = KNG } # Kong
 link = { category = tag_mscne vic2_tag = KTI } # Kutai
 link = { category = tag_mscne vic2_tag = LAN } # Lanfang
@@ -405,7 +405,7 @@ link = { category = tag_mscne vic2_tag = PEG } # Pégou
 link = { category = tag_mscne vic2_tag = PLT } # Polotsk
 link = { category = tag_mscne vic2_tag = PRI } # Porto Rico
 link = { category = tag_mscne vic2_tag = PSK } # Pskov
-link = { category = tag_mscne vic2_tag = PYO extra = "NOT = { has_government = communism has_government = fascism }" } # Pyongyang
+link = { category = tag_mscne vic2_tag = PYO extra = "NOT = { $COMMUNISM $FASCISM }" } # Pyongyang
 link = { category = tag_mscne vic2_tag = RVA } # Ravensburg
 link = { category = tag_mscne vic2_tag = RYA } # Riazan
 link = { category = tag_mscne vic2_tag = SKN } # St.-Christ.-et-Niévès
@@ -414,7 +414,7 @@ link = { category = tag_mscne vic2_tag = SAO } # St.-Thomas-et-l'Île-du-Pr.
 link = { category = tag_mscne vic2_tag = STV } # St.-Vinc.-et-les-Gren.
 link = { category = tag_mscne vic2_tag = SLZ } # Salzbourg
 link = { category = tag_mscne vic2_tag = SAM } # Samos
-link = { category = tag_mscne vic2_tag = DOM extra = "has_government = absolutism" } # Santo Domingo
+link = { category = tag_mscne vic2_tag = DOM extra = "$ABSOLUTIST" } # Santo Domingo
 link = { category = tag_mscne vic2_tag = SWK } # Sarawak
 link = { category = tag_mscne vic2_tag = SRU } # Saruhan
 link = { category = tag_mscne vic2_tag = SEG } # Ségou
@@ -427,13 +427,13 @@ link = { category = tag_mscne vic2_tag = SUK } # Sukhothaï
 link = { category = tag_mscne vic2_tag = SUL } # Sulu
 link = { category = tag_mscne vic2_tag = TAH } # Tahiti
 link = { category = tag_mscne vic2_tag = TAI } # Taïwan
-link = { category = tag_mscne vic2_tag = TPG extra = "has_government = fascism" } # Taïwan
+link = { category = tag_mscne vic2_tag = TPG extra = "$FASCISM" } # Taïwan
 link = { category = tag_mscne vic2_tag = TMR } # Timor
 link = { category = tag_mscne vic2_tag = TRA } # Travancore
 link = { category = tag_mscne vic2_tag = TRI } # Tripoli
 link = { category = tag_mscne vic2_tag = TUN } # Tunis
 link = { category = tag_mscne vic2_tag = TVE } # Tver
-link = { category = tag_mscne vic2_tag = TAM extra = "has_government = communism" } # Wai Dongbei
+link = { category = tag_mscne vic2_tag = TAM extra = "$COMMUNISM" } # Wai Dongbei
 link = { category = tag_mscne vic2_tag = WRL } # Warsangali
 link = { category = tag_mscne vic2_tag = WBG } # Wurtzbourg
 link = { category = tag_mscne vic2_tag = XBI } # Xibei San Ma
@@ -444,20 +444,20 @@ link = { category = tag_msvad vic2_tag = AYR } # L'Aïr
 link = { category = tag_msvad vic2_tag = LSK } # L'Alaska
 link = { category = tag_msvad vic2_tag = ALT } # L'Altaï
 link = { category = tag_msvad vic2_tag = AWS } # L'Aoussa
-link = { category = tag_msvae vic2_tag = GBR extra = "has_government = absolutism" } # L'Empire Albionesque
-link = { category = tag_msvad vic2_tag = GER extra = "has_government = absolutism" } # L'Empire Allemand
-link = { category = tag_msvad vic2_tag = ENG extra = "has_government = absolutism" } # L'Empire Britannique
+link = { category = tag_msvae vic2_tag = GBR extra = "$ABSOLUTIST" } # L'Empire Albionesque
+link = { category = tag_msvad vic2_tag = GER extra = "$ABSOLUTIST" } # L'Empire Allemand
+link = { category = tag_msvad vic2_tag = ENG extra = "$ABSOLUTIST" } # L'Empire Britannique
 link = { category = tag_msvad vic2_tag = BYZ } # L'Empire Byzantine
-link = { category = tag_msvad vic2_tag = LTN extra = "NOT = { has_government = democratic has_government = communism }" } # L'Empire Latin
-link = { category = tag_msvad vic2_tag = MEX extra = "has_government = absolutism" } # L'Empire Mexicain
-link = { category = tag_msvad vic2_tag = MNG extra = "NOT = { has_government = fascism has_government = communism has_government = democratic }" } # L'Empire Ming
-link = { category = tag_msvad vic2_tag = TUR extra = "NOT = { has_government = democratic has_government = communism }" } # L'Empire Ottoman
-link = { category = tag_msvad vic2_tag = QNG extra = "NOT = { has_government = fascism has_government = radical }" } # L'Empire Qing
-link = { category = tag_msvad vic2_tag = SPQ extra = "NOT = { has_government = democratic has_government = communism }" } # L'Empire Romain
-link = { category = tag_msvad vic2_tag = RUS extra = "has_government = absolutism" } # L'Empire Russe
-link = { category = tag_msvad vic2_tag = YUA extra = "NOT = { has_government = democratic has_government = communism has_government = fascism }" } # L'Empire Yuan
-link = { category = tag_msvad vic2_tag = LIV extra = "NOT = { has_government = communism has_government = democratic }" } # L'Ordre Livonien
-link = { category = tag_msvad vic2_tag = TEU extra = "NOT = { has_government = communism has_government = democratic }" } # L'Ordre Teutonique
+link = { category = tag_msvad vic2_tag = LTN extra = "NOT = { $DEMOCRATIC $COMMUNISM }" } # L'Empire Latin
+link = { category = tag_msvad vic2_tag = MEX extra = "$ABSOLUTIST" } # L'Empire Mexicain
+link = { category = tag_msvad vic2_tag = MNG extra = "NOT = { $FASCISM $COMMUNISM $DEMOCRATIC }" } # L'Empire Ming
+link = { category = tag_msvad vic2_tag = TUR extra = "NOT = { $DEMOCRATIC $COMMUNISM }" } # L'Empire Ottoman
+link = { category = tag_msvad vic2_tag = QNG extra = "NOT = { $FASCISM $RADICAL }" } # L'Empire Qing
+link = { category = tag_msvad vic2_tag = SPQ extra = "NOT = { $DEMOCRATIC $COMMUNISM }" } # L'Empire Romain
+link = { category = tag_msvad vic2_tag = RUS extra = "$ABSOLUTIST" } # L'Empire Russe
+link = { category = tag_msvad vic2_tag = YUA extra = "NOT = { $DEMOCRATIC $COMMUNISM $FASCISM }" } # L'Empire Yuan
+link = { category = tag_msvad vic2_tag = LIV extra = "NOT = { $COMMUNISM $DEMOCRATIC }" } # L'Ordre Livonien
+link = { category = tag_msvad vic2_tag = TEU extra = "NOT = { $COMMUNISM $DEMOCRATIC }" } # L'Ordre Teutonique
 
 
 # tag_msvae: L'Afghanistan est GRAND / J'habite EN Afghanistan.
@@ -480,9 +480,9 @@ link = { category = tag_msvae vic2_tag = ASM } # L'Assam
 link = { category = tag_msvae vic2_tag = AZB } # L'Azerbaïdjan
 link = { category = tag_msvae vic2_tag = ECU } # L'Équateur
 link = { category = tag_msvae vic2_tag = CEQ } # L'Équateur Confédération
-link = { category = tag_msvae vic2_tag = ALL extra = "has_government = fascism" } # L'État Islamique
-link = { category = tag_msvae vic2_tag = CNG extra = "NOT = { has_government = democratic }" } # L'État Libre du Congo
-link = { category = tag_msvae vic2_tag = HDU extra = "NOT = { has_government = democratic }" } # L'Hindustan
+link = { category = tag_msvae vic2_tag = ALL extra = "$FASCISM" } # L'État Islamique
+link = { category = tag_msvae vic2_tag = CNG extra = "NOT = { $DEMOCRATIC }" } # L'État Libre du Congo
+link = { category = tag_msvae vic2_tag = HDU extra = "NOT = { $DEMOCRATIC }" } # L'Hindustan
 link = { category = tag_msvae vic2_tag = UIL } # L'Illinois
 link = { category = tag_msvae vic2_tag = IRQ } # L'Iraq
 link = { category = tag_msvae vic2_tag = AAA } # L'Observateur
@@ -504,7 +504,7 @@ link = { category = tag_msvae vic2_tag = URU } # L'Uruguay
 link = { category = tag_msvne vic2_tag = ABU } # Abu Dhabi
 link = { category = tag_msvne vic2_tag = ATJ } # Aceh
 link = { category = tag_msvne vic2_tag = AJU } # Ajuran
-link = { category = tag_msvne vic2_tag = GBR extra = "NOT = { has_government = communism has_government = absolutism has_government = radical has_government = fascism }" } # Albion
+link = { category = tag_msvne vic2_tag = GBR extra = "NOT = { $COMMUNISM $ABSOLUTIST $RADICAL $FASCISM }" } # Albion
 link = { category = tag_msvne vic2_tag = AMA } # Amago
 link = { category = tag_msvne vic2_tag = ANS } # Ansbach
 link = { category = tag_msvne vic2_tag = ARK } # Arakan
@@ -555,10 +555,10 @@ link = { category = tag_mpcad vic2_tag = HSK } # Les Hosokawa
 link = { category = tag_mpcad vic2_tag = HUR } # Les Hurons
 link = { category = tag_mpcad vic2_tag = KAR } # Les Karènes
 link = { category = tag_mpcad vic2_tag = KCH } # Les Katchins
-link = { category = tag_mpcad vic2_tag = KAZ extra = "NOT = { has_government = communism }" } # Les Kazakhs
+link = { category = tag_mpcad vic2_tag = KAZ extra = "NOT = { $COMMUNISM }" } # Les Kazakhs
 link = { category = tag_mpcad vic2_tag = KUB } # Les Kubas
 link = { category = tag_mpcad vic2_tag = LEN } # Les Lenapes
-link = { category = tag_mpcad vic2_tag = KNI extra = "NOT = { has_government = communism }" } # Les Chevaliers
+link = { category = tag_mpcad vic2_tag = KNI extra = "NOT = { $COMMUNISM }" } # Les Chevaliers
 link = { category = tag_mpcad vic2_tag = DUR } # Les Dourranis
 link = { category = tag_mpcad vic2_tag = NUB } # Les Founji
 link = { category = tag_mpcad vic2_tag = LOA } # Les Loango
@@ -658,7 +658,7 @@ link = { category = tag_mpvad vic2_tag = UES } # Les Uesugi
 
 link = { category = tag_mpvae vic2_tag = CSA } # Les États Confédérés
 link = { category = tag_mpvae vic2_tag = PAP } # Les États Pontificaux
-link = { category = tag_mpvae vic2_tag = USA extra = "NOT = { has_government = absolutism has_government = communism }" } # Les États-Unis
+link = { category = tag_mpvae vic2_tag = USA extra = "NOT = { $ABSOLUTIST $COMMUNISM }" } # Les États-Unis
 link = { category = tag_mpvae vic2_tag = BSQ } # Les Euskadi
 link = { category = tag_mpvae vic2_tag = SHA } # Les États Chans
 link = { category = tag_mpvae vic2_tag = FSA } # Les États Libres d'Amérique
@@ -672,7 +672,7 @@ link = { category = tag_fscad vic2_tag = SXI } # La Clique de Shanxi
 link = { category = tag_fscad vic2_tag = XIN } # La Clique de Xinjiang
 link = { category = tag_fscad vic2_tag = YNN } # La Clique de Yunnan
 link = { category = tag_fscad vic2_tag = UCA } # La Confédération d'Am.Centr.
-link = { category = tag_fscad vic2_tag = KUK extra = "has_government = democratic" } # La Conf. du Danube
+link = { category = tag_fscad vic2_tag = KUK extra = "$DEMOCRATIC" } # La Conf. du Danube
 link = { category = tag_fscad vic2_tag = MTC } # La Confédération Métisse
 link = { category = tag_fscad vic2_tag = MSK } # La Côte des Mosquitos
 link = { category = tag_fscad vic2_tag = IVC } # La Côte d'Ivoire
@@ -686,39 +686,39 @@ link = { category = tag_fscad vic2_tag = DNB } # La Fédération Danubienne
 link = { category = tag_fscad vic2_tag = NGF } # La Féd. de l'All. du Nord
 link = { category = tag_fscad vic2_tag = SGF } # La Féd. de l'All. du Sud
 link = { category = tag_fscad vic2_tag = GCO } # La Grande Colombie
-link = { category = tag_fscad vic2_tag = ENG extra = "has_government = democratic" } # La Grande-Bretagne
-link = { category = tag_fscad vic2_tag = VAT extra = "has_government = communism" } # La Communauté de Rome
-link = { category = tag_fscad vic2_tag = SUE extra = "OR = { has_government = communism has_government = democratic }" } # La Commune / République des Suèves
+link = { category = tag_fscad vic2_tag = ENG extra = "$DEMOCRATIC" } # La Grande-Bretagne
+link = { category = tag_fscad vic2_tag = VAT extra = "$COMMUNISM" } # La Communauté de Rome
+link = { category = tag_fscad vic2_tag = SUE extra = "OR = { $COMMUNISM $DEMOCRATIC }" } # La Commune / République des Suèves
 link = { category = tag_fscad vic2_tag = PBC } # La Conf. Pérou-Bolivie
 link = { category = tag_fscad vic2_tag = GRH } # La Grande Horde
 link = { category = tag_fscad vic2_tag = HNS } # La Hanse
 link = { category = tag_fscad vic2_tag = UND } # La Horde des Morts-Vivants
-link = { category = tag_fscad vic2_tag = OIR extra = "NOT = { has_government = communism }" } # La Horde d'Oirat
+link = { category = tag_fscad vic2_tag = OIR extra = "NOT = { $COMMUNISM }" } # La Horde d'Oirat
 link = { category = tag_fscad vic2_tag = GOL } # La Horde d'Or
-link = { category = tag_fscad vic2_tag = YUA extra = "OR = { has_government = democratic has_government = fascism has_government = communism }" } # La République de Sino-Mongolie / Cambaluc
-link = { category = tag_fscad vic2_tag = MNG extra = "OR = { has_government = democratic has_government = fascism has_government = communism }" } # La République de Chine / de Nankin
-link = { category = tag_fscad vic2_tag = QAS extra = "has_government = democratic" } # La République de Qasim
-link = { category = tag_fscad vic2_tag = YRK extra = "has_government = democratic" } # La République de Yarkand
-link = { category = tag_fscad vic2_tag = KHA extra = "has_government = democratic" } # La République Khalkha
-link = { category = tag_fscad vic2_tag = LTN extra = "has_government = democratic" } # La République Latine
-link = { category = tag_fscad vic2_tag = VAT extra = "has_government = communism" } # La République Populaire de Rome
-link = { category = tag_fscad vic2_tag = HRE extra = "has_government = democratic" } # La Sainte République Romaine
-link = { category = tag_fscad vic2_tag = ALL extra = "OR = { has_government = communism has_government = democratic }" } # La Nation de l'Islam / La République de l'Islam
-link = { category = tag_fscad vic2_tag = BAV extra = "has_government = communism" } # La Räterepublik Bavaroise
-link = { category = tag_fscad vic2_tag = GBR extra = "OR = { has_government = fascism has_government = radical }" } # La République d'Albion
-link = { category = tag_fscad vic2_tag = ENG extra = "has_government = radical" } # La République de Britannie
-link = { category = tag_fscad vic2_tag = CHG extra = "has_government = democratic" } # La République de Djaghataï
-link = { category = tag_fscad vic2_tag = TPG extra = "OR = { has_government = democratic has_government = radical }" } # La République de Taïwan
-link = { category = tag_fscad vic2_tag = DOM extra = "NOT = { has_government = absolutism }" } # La République Dominicaine
-link = { category = tag_fscad vic2_tag = CGO extra = "OR = { has_government = communism has_government = fascism has_government = radical has_government = democratic }" } # La République du Congo
-link = { category = tag_fscad vic2_tag = USA extra = "has_government = communism" } # La Rép. Pop. d'Am.
-link = { category = tag_fscad vic2_tag = BOH extra = "has_government = democratic" } # La République tchèque
-link = { category = tag_fscad vic2_tag = PYO extra = "has_government = communism" } # La RPD Corée
-link = { category = tag_fscad vic2_tag = KAZ extra = "has_government = communism" } # La RSS Kazakhstan
-link = { category = tag_fscad vic2_tag = KOK extra = "has_government = communism" } # La RSS Kirghizistan
-link = { category = tag_fscad vic2_tag = BUK extra = "has_government = communism" } # La RSS Ouzbékistan
-link = { category = tag_fscad vic2_tag = TAJ extra = "has_government = communism" } # La RSS Tadjikistan
-link = { category = tag_fscad vic2_tag = KHI extra = "has_government = communism" } # La RSS Turkménistan
+link = { category = tag_fscad vic2_tag = YUA extra = "OR = { $DEMOCRATIC $FASCISM $COMMUNISM }" } # La République de Sino-Mongolie / Cambaluc
+link = { category = tag_fscad vic2_tag = MNG extra = "OR = { $DEMOCRATIC $FASCISM $COMMUNISM }" } # La République de Chine / de Nankin
+link = { category = tag_fscad vic2_tag = QAS extra = "$DEMOCRATIC" } # La République de Qasim
+link = { category = tag_fscad vic2_tag = YRK extra = "$DEMOCRATIC" } # La République de Yarkand
+link = { category = tag_fscad vic2_tag = KHA extra = "$DEMOCRATIC" } # La République Khalkha
+link = { category = tag_fscad vic2_tag = LTN extra = "$DEMOCRATIC" } # La République Latine
+link = { category = tag_fscad vic2_tag = VAT extra = "$COMMUNISM" } # La République Populaire de Rome
+link = { category = tag_fscad vic2_tag = HRE extra = "$DEMOCRATIC" } # La Sainte République Romaine
+link = { category = tag_fscad vic2_tag = ALL extra = "OR = { $COMMUNISM $DEMOCRATIC }" } # La Nation de l'Islam / La République de l'Islam
+link = { category = tag_fscad vic2_tag = BAV extra = "$COMMUNISM" } # La Räterepublik Bavaroise
+link = { category = tag_fscad vic2_tag = GBR extra = "OR = { $FASCISM $RADICAL }" } # La République d'Albion
+link = { category = tag_fscad vic2_tag = ENG extra = "$RADICAL" } # La République de Britannie
+link = { category = tag_fscad vic2_tag = CHG extra = "$DEMOCRATIC" } # La République de Djaghataï
+link = { category = tag_fscad vic2_tag = TPG extra = "OR = { $DEMOCRATIC $RADICAL }" } # La République de Taïwan
+link = { category = tag_fscad vic2_tag = DOM extra = "NOT = { $ABSOLUTIST }" } # La République Dominicaine
+link = { category = tag_fscad vic2_tag = CGO extra = "OR = { $COMMUNISM $FASCISM $RADICAL $DEMOCRATIC }" } # La République du Congo
+link = { category = tag_fscad vic2_tag = USA extra = "$COMMUNISM" } # La Rép. Pop. d'Am.
+link = { category = tag_fscad vic2_tag = BOH extra = "$DEMOCRATIC" } # La République tchèque
+link = { category = tag_fscad vic2_tag = PYO extra = "$COMMUNISM" } # La RPD Corée
+link = { category = tag_fscad vic2_tag = KAZ extra = "$COMMUNISM" } # La RSS Kazakhstan
+link = { category = tag_fscad vic2_tag = KOK extra = "$COMMUNISM" } # La RSS Kirghizistan
+link = { category = tag_fscad vic2_tag = BUK extra = "$COMMUNISM" } # La RSS Ouzbékistan
+link = { category = tag_fscad vic2_tag = TAJ extra = "$COMMUNISM" } # La RSS Tadjikistan
+link = { category = tag_fscad vic2_tag = KHI extra = "$COMMUNISM" } # La RSS Turkménistan
 link = { category = tag_fscad vic2_tag = RPL } # La Terre de Rupert
 link = { category = tag_fscad vic2_tag = LPL } # La Plata
 
@@ -728,11 +728,11 @@ link = { category = tag_fscad vic2_tag = LPL } # La Plata
 link = { category = tag_fscae vic2_tag = GDL } # La Guadeloupe
 link = { category = tag_fscae vic2_tag = MTQ } # La Martinique
 link = { category = tag_fscae vic2_tag = NEW } # La Terre-Neuve
-link = { category = tag_fscae vic2_tag = BAV extra = "NOT = { has_government = communism }" } # La Bavière
+link = { category = tag_fscae vic2_tag = BAV extra = "NOT = { $COMMUNISM }" } # La Bavière
 link = { category = tag_fscae vic2_tag = BEL } # La Belgique
 link = { category = tag_fscae vic2_tag = BYE } # La Biélorussie
 link = { category = tag_fscae vic2_tag = BUR } # La Birmanie
-link = { category = tag_fscae vic2_tag = BOH extra = "NOT = { has_government = democratic }" } # La Bohême-Morave
+link = { category = tag_fscae vic2_tag = BOH extra = "NOT = { $DEMOCRATIC }" } # La Bohême-Morave
 link = { category = tag_fscae vic2_tag = BOL } # La Bolivie
 link = { category = tag_fscae vic2_tag = BOS } # La Bosnie-Herzégovine
 link = { category = tag_fscae vic2_tag = BRG } # La Bourgogne
@@ -740,7 +740,7 @@ link = { category = tag_fscae vic2_tag = BRT } # La Bretagne
 link = { category = tag_fscae vic2_tag = ENR } # La Brittanie
 link = { category = tag_fscae vic2_tag = BKV } # La Bucovine
 link = { category = tag_fscae vic2_tag = BUL } # La Bulgarie
-link = { category = tag_fscae vic2_tag = CAL extra = "NOT = { has_government = absolutism }" } # La Californie
+link = { category = tag_fscae vic2_tag = CAL extra = "NOT = { $ABSOLUTIST }" } # La Californie
 link = { category = tag_fscae vic2_tag = KRL } # La Carélie
 link = { category = tag_fscae vic2_tag = CRT } # La Carinthie
 link = { category = tag_fscae vic2_tag = KRN } # La Carnatique
@@ -757,7 +757,7 @@ link = { category = tag_fscae vic2_tag = COL } # La Colombie (capitale Bogotá)
 link = { category = tag_fscae vic2_tag = CLM } # La Colombie (du Canada)
 link = { category = tag_fscae vic2_tag = COP } # La Coptie
 link = { category = tag_fscae vic2_tag = KOR } # La Corée
-link = { category = tag_fscae vic2_tag = PYO extra = "has_government = fascism" } # La Corée Juche
+link = { category = tag_fscae vic2_tag = PYO extra = "$FASCISM" } # La Corée Juche
 link = { category = tag_fscae vic2_tag = CRN } # La Cornouaille
 link = { category = tag_fscae vic2_tag = CRS } # La Corse
 link = { category = tag_fscae vic2_tag = DON } # La Cosaquie
@@ -787,7 +787,7 @@ link = { category = tag_fscae vic2_tag = GNE } # La Guinée
 link = { category = tag_fscae vic2_tag = EQG } # La Guinée Équatoriale
 link = { category = tag_fscae vic2_tag = GBI } # La Guinée-Bissau
 link = { category = tag_fscae vic2_tag = GUY } # La Guyane
-link = { category = tag_fscae vic2_tag = MOS extra = "NOT = { has_government = absolutism }" } # La Haute-Volta
+link = { category = tag_fscae vic2_tag = MOS extra = "NOT = { $ABSOLUTIST }" } # La Haute-Volta
 link = { category = tag_fscae vic2_tag = HLL } # La Hollande
 link = { category = tag_fscae vic2_tag = HUN } # La Hongrie
 link = { category = tag_fscae vic2_tag = JAM } # La Jamaïque
@@ -809,12 +809,12 @@ link = { category = tag_fscae vic2_tag = LOU } # La Louisiane
 link = { category = tag_fscae vic2_tag = MCD } # La Macédoine
 link = { category = tag_fscae vic2_tag = MLY } # La Malaisie
 link = { category = tag_fscae vic2_tag = MAZ } # La Masovie
-link = { category = tag_fscae vic2_tag = TRZ extra = "NOT = { has_government = absolutism }" } # La Mauritanie
+link = { category = tag_fscae vic2_tag = TRZ extra = "NOT = { $ABSOLUTIST }" } # La Mauritanie
 link = { category = tag_fscae vic2_tag = MAJ } # La Midjourtine
 link = { category = tag_fscae vic2_tag = MOL } # La Moldavie (capitale Chisinau)
 link = { category = tag_fscae vic2_tag = MDV } # La Moldavie (partie de la Roumaine)
 link = { category = tag_fscae vic2_tag = MGL } # La Mongolie
-link = { category = tag_fscae vic2_tag = IMG extra = "NOT = { has_government = fascism }" } # La Mongolie Intérieure
+link = { category = tag_fscae vic2_tag = IMG extra = "NOT = { $FASCISM }" } # La Mongolie Intérieure
 link = { category = tag_fscae vic2_tag = MOE } # La Morée
 link = { category = tag_fscae vic2_tag = NMB } # La Namibie
 link = { category = tag_fscae vic2_tag = NAV } # La Navarre
@@ -840,9 +840,9 @@ link = { category = tag_fscae vic2_tag = PRU } # La Prusse
 link = { category = tag_fscae vic2_tag = RHI } # La Rhénanie
 link = { category = tag_fscae vic2_tag = RHO } # La Rhodésie du Sud
 link = { category = tag_fscae vic2_tag = RMG } # La Romagne
-link = { category = tag_fscae vic2_tag = SPQ extra = "has_government = democratic" } # La Rome Sénatoriale
+link = { category = tag_fscae vic2_tag = SPQ extra = "$DEMOCRATIC" } # La Rome Sénatoriale
 link = { category = tag_fscae vic2_tag = ROM } # La Roumanie
-link = { category = tag_fscae vic2_tag = RUS extra = "NOT = { has_government = absolutism }" } # La Russie
+link = { category = tag_fscae vic2_tag = RUS extra = "NOT = { $ABSOLUTIST }" } # La Russie
 link = { category = tag_fscae vic2_tag = RUT } # La Ruthénie
 link = { category = tag_fscae vic2_tag = SRD } # La Sardaigne
 link = { category = tag_fscae vic2_tag = SAA } # La Sarre
@@ -869,13 +869,13 @@ link = { category = tag_fscae vic2_tag = TRS } # La Tarasque
 link = { category = tag_fscae vic2_tag = CZH } # La Tchécoslovaquie
 link = { category = tag_fscae vic2_tag = CZE } # La Tchéquie
 link = { category = tag_fscae vic2_tag = CHY } # La Tchétchénie
-link = { category = tag_fscae vic2_tag = TEU extra = "has_government = democratic" } # La Teutonie
+link = { category = tag_fscae vic2_tag = TEU extra = "$DEMOCRATIC" } # La Teutonie
 link = { category = tag_fscae vic2_tag = THU } # La Thuringe
 link = { category = tag_fscae vic2_tag = TUS } # La Toscane
 link = { category = tag_fscae vic2_tag = TCA } # La Transcaucasie
 link = { category = tag_fscae vic2_tag = SIE } # La Transylvanie
 link = { category = tag_fscae vic2_tag = TRL } # La Trapalandie
-link = { category = tag_fscae vic2_tag = TUR extra = "OR = { has_government = democratic has_government = communism }" } # La Turquie
+link = { category = tag_fscae vic2_tag = TUR extra = "OR = { $DEMOCRATIC $COMMUNISM }" } # La Turquie
 link = { category = tag_fscae vic2_tag = WAL } # La Valachie
 link = { category = tag_fscae vic2_tag = WEN } # La Vénédie
 link = { category = tag_fscae vic2_tag = VGO } # La Visigothie
@@ -892,7 +892,7 @@ link = { category = tag_fscne vic2_tag = BAB } # Babylone
 link = { category = tag_fscne vic2_tag = BAL } # Bali
 link = { category = tag_fscne vic2_tag = BMK } # Bamako
 link = { category = tag_fscne vic2_tag = BIM } # Bima
-link = { category = tag_fscne vic2_tag = BUK extra = "NOT = { has_government = communism }" } # Boukhara
+link = { category = tag_fscne vic2_tag = BUK extra = "NOT = { $COMMUNISM }" } # Boukhara
 link = { category = tag_fscne vic2_tag = BRE } # Brême
 link = { category = tag_fscne vic2_tag = BUE } # Buénos-Aïres
 link = { category = tag_fscne vic2_tag = KRT } # Carthage
@@ -920,13 +920,13 @@ link = { category = tag_fscne vic2_tag = HES } # Hesse-Darmstadt
 link = { category = tag_fscne vic2_tag = JER } # Jérusalem
 link = { category = tag_fscne vic2_tag = KAG } # Kaga
 link = { category = tag_fscne vic2_tag = KGR } # Kangra
-link = { category = tag_fscne vic2_tag = KHI extra = "NOT = { has_government = communism }" } # Khiva
+link = { category = tag_fscne vic2_tag = KHI extra = "NOT = { $COMMUNISM }" } # Khiva
 link = { category = tag_fscne vic2_tag = KID } # Kildare
 link = { category = tag_fscne vic2_tag = KIK } # Kinkondja
 link = { category = tag_fscne vic2_tag = LIG } # Liège
 link = { category = tag_fscne vic2_tag = LIP } # Lippe-Detmold
 link = { category = tag_fscne vic2_tag = LUB } # Lübeck
-link = { category = tag_fscne vic2_tag = AOM extra = "NOT = { has_government = communism }" } # Macao
+link = { category = tag_fscne vic2_tag = AOM extra = "NOT = { $COMMUNISM }" } # Macao
 link = { category = tag_fscne vic2_tag = MRI } # Maduraï
 link = { category = tag_fscne vic2_tag = MLC } # Malacca
 link = { category = tag_fscne vic2_tag = MLT } # Malte
@@ -963,8 +963,8 @@ link = { category = tag_fscne vic2_tag = ZAZ } # Zaporijjia
 
 link = { category = tag_fsvad vic2_tag = SNZ } # L'Île du Sud
 link = { category = tag_fsvad vic2_tag = ARU } # L'Union Arabe
-link = { category = tag_fsvad vic2_tag = LTN extra = "has_government = communism" } # L'Union de Rhomanie
-link = { category = tag_fsvad vic2_tag = SPQ extra = "has_government = communism" } # L'Union de Rome
+link = { category = tag_fsvad vic2_tag = LTN extra = "$COMMUNISM" } # L'Union de Rhomanie
+link = { category = tag_fsvad vic2_tag = SPQ extra = "$COMMUNISM" } # L'Union de Rome
 link = { category = tag_fsvad vic2_tag = DKU } # L'Union du Don-Kouban
 link = { category = tag_fsvad vic2_tag = MRU } # L'Union Maritime
 
@@ -990,7 +990,7 @@ link = { category = tag_fsvae vic2_tag = ARM } # L'Armenie
 link = { category = tag_fsvae vic2_tag = ASY } # L'Assyrie
 link = { category = tag_fsvae vic2_tag = AST } # L'Australie
 link = { category = tag_fsvae vic2_tag = AUS } # L'Autriche
-link = { category = tag_fsvae vic2_tag = KUK extra = "NOT = { has_government = democratic }" } # L'Autriche-Hongrie
+link = { category = tag_fsvae vic2_tag = KUK extra = "NOT = { $DEMOCRATIC }" } # L'Autriche-Hongrie
 link = { category = tag_fsvae vic2_tag = AUV } # L'Auvergne
 link = { category = tag_fsvae vic2_tag = SCO } # L'Écosse
 link = { category = tag_fsvae vic2_tag = CEG } # L'Égypte
@@ -1033,7 +1033,7 @@ link = { category = tag_fsvne vic2_tag = ALE } # Alençon
 link = { category = tag_fsvne vic2_tag = AGC } # Angotché
 link = { category = tag_fsvne vic2_tag = AGU } # Anguilla
 link = { category = tag_fsvne vic2_tag = ATB } # Antigua-et-Barbuda
-link = { category = tag_fsvne vic2_tag = AOM extra = "has_government = communism" } # Aomen
+link = { category = tag_fsvne vic2_tag = AOM extra = "$COMMUNISM" } # Aomen
 link = { category = tag_fsvne vic2_tag = AOT } # Aotéaroa
 link = { category = tag_fsvne vic2_tag = AQU } # Aquilée
 link = { category = tag_fsvne vic2_tag = ASA } # Asakura

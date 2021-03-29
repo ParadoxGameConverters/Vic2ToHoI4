@@ -18,7 +18,8 @@ using TagsAndExtras = std::map<std::string, std::optional<std::string>>;
 
 
 std::map<std::string, TagsAndExtras> createCountryCategories(const Mappers::CountryMapper& countryMapper,
-	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries);
+	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
+	 const std::set<std::string>& majorIdeologies);
 
 
 } // namespace HoI4

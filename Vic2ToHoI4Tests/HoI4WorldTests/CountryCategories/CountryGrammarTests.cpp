@@ -20,6 +20,6 @@ TEST_F(HoI4World_CountryCategories_CountryGrammarTests, RulesCanBeImported)
 
 	ASSERT_THAT(grammar,
 		 testing::ElementsAre(HoI4::CountryGrammarRule{.category = "tag_mscad", .tag = "BAN"},
-			  HoI4::CountryGrammarRule{.category = "tag_mscad", .tag = "ENG", .extra = R"(NOT = { has_government = absolutism has_government = democratic has_government = democratic })"},
+			  HoI4::CountryGrammarRule{.category = "tag_mscad", .tag = "ENG", .extra = R"(NOT = { $ABSOLUTIST $DEMOCRATIC })"},
 			  HoI4::CountryGrammarRule{.category = "tag_mscae", .tag = "BGL"}));
 }
