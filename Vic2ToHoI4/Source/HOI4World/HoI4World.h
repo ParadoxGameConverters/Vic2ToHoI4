@@ -3,6 +3,7 @@
 
 
 
+#include "CountryCategories/CountryCategories.h"
 #include "Decisions/Decisions.h"
 #include "Diplomacy/AIPeaces.h"
 #include "Events/Events.h"
@@ -97,6 +98,7 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getScriptedEffects() const { return *scriptedEffects; }
 	[[nodiscard]] const auto& getScriptedLocalisations() const { return scriptedLocalisations; }
 	[[nodiscard]] const auto& getScriptedTriggers() const { return scriptedTriggers; }
+	[[nodiscard]] const auto& getCountryCategories() const { return countryCategories; }
 	[[nodiscard]] const auto& getGameRules() const { return *gameRules; }
 	[[nodiscard]] const auto& getGenericFocusTree() const { return genericFocusTree; }
 	[[nodiscard]] const auto& getLocalisation() const { return *hoi4Localisations; }
@@ -234,6 +236,7 @@ class World: commonItems::parser
 
 	std::unique_ptr<ScriptedLocalisations> scriptedLocalisations;
 	ScriptedTriggers scriptedTriggers;
+	std::map<std::string, tagsAndExtras> countryCategories;
 
 	std::unique_ptr<GameRules> gameRules;
 	DynamicModifiers dynamicModifiers;
