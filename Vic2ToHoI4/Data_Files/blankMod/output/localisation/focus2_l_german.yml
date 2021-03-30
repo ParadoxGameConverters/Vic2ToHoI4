@@ -78,7 +78,7 @@
  potential_communist_Puppet_target_tooltip:0 "Ist nicht kommunistisch"
  potential_fascist_annex_target_tooltip:0 "Ist nicht faschistisch"
  potential_radical_annex_target_tooltip:0 "Ist nicht radikal"
- potential_take_state_target_tooltip:0 "Steuert mindestens 2 Zustände"
+ potential_take_state_target_tooltip:0 "Besitzt unsere Forderungen"
  potential_border_war_target_tooltip:0 "Möglicher Rivale für Grenzkonflikte"
  not_allied_or_subject_of_one_another_tooltip:0 "Nicht Verbündete oder Untertanen voneinander"
  in_weak_faction_tooltip:0 "Schwächere Fraktion als unsere\n (Uns: §Y[?var:their_enemies]§! Divisionen Sie: §Y[?var:theri_faction]§! Divisionen)"

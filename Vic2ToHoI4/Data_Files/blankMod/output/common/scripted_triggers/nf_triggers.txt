@@ -104,7 +104,7 @@ potential_take_state_target = {
 	custom_trigger_tooltip = {
 		tooltip = potential_take_state_target_tooltip
 		hidden_trigger = {
-			num_of_controlled_states > 1
+			any_owned_state = { is_claimed_by = ROOT }
 		}
 	}
 }

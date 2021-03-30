@@ -78,7 +78,7 @@
  potential_communist_puppet_target_tooltip:0 "Nie jest komunistą"
  potential_fascist_annex_target_tooltip:0 "Nie jest faszystą"
  potential_radical_annex_target_tooltip:0 "Nie jest radykalne"
- potential_take_state_target_tooltip:0 "Kontroluje co najmniej 2 stany"
+ potential_take_state_target_tooltip:0 "Jest właścicielem naszych roszczeń"
  potential_border_war_target_tooltip:0 "Potencjalny rywal w konflikcie granicznym"
  not_allied_or_subject_of_one_another_tooltip:0 "Nie są sojusznikami ani poddanymi siebie nawzajem"
  in_weak_faction_tooltip:0 "Frakcja słabsza niż nasza\n (My: §Y[?var:their_enemies]§! Dywizje Oni: §Y[?var:their_faction]§! Dywizje)"

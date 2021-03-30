@@ -2737,25 +2737,6 @@ focus = {
 					set_variable = { ROOT.defender_state = THIS.id }
 					set_state_flag = border_incident_active
 				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = var:ROOT.neighbor_war_defender } } }
-					random_state = {
-						limit = {
-							is_fully_controlled_by = var:ROOT.neighbor_war_defender
-							is_coastal = yes
-						}
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
-				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = var:ROOT.neighbor_war_defender } } }
-					random_state = {
-						limit = { is_fully_controlled_by = var:ROOT.neighbor_war_defender }
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
-				}
 			}
 		}
 		completion_reward = {
@@ -2829,7 +2810,6 @@ focus = {
 			#RADICAL
 			else_if = {
 				limit = { var:neighbor_war_defender = { potential_take_state_target = yes } }
-				add_state_claim = var:defender_state
 				declare_war_on = {
 					target = var:neighbor_war_defender
 					type = take_state_focus
@@ -2954,25 +2934,6 @@ focus = {
 					set_variable = { ROOT.defender_state = THIS.id }
 					set_state_flag = border_incident_active
 				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = var:ROOT.neighbor_war_defender } } }
-					random_state = {
-						limit = {
-							is_fully_controlled_by = var:ROOT.neighbor_war_defender
-							is_coastal = yes
-						}
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
-				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = var:ROOT.neighbor_war_defender } } }
-					random_state = {
-						limit = { is_fully_controlled_by = var:ROOT.neighbor_war_defender }
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
-				}
 			}
 		}
 		completion_reward = {
@@ -3043,7 +3004,6 @@ focus = {
 			#RADICAL
 			else_if = {
 				limit = { var:neighbor_war_defender = { potential_take_state_target = yes } }
-				add_state_claim = var:defender_state
 				declare_war_on = {
 					target = var:neighbor_war_defender
 					type = take_state_focus
@@ -3175,25 +3135,6 @@ focus = {
 					set_variable = { ROOT.defender_state = THIS.id }
 					set_state_flag = border_incident_active
 				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = var:ROOT.neighbor_war_defender } } }
-					random_state = {
-						limit = {
-							is_fully_controlled_by = var:ROOT.neighbor_war_defender
-							is_coastal = yes
-						}
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
-				}
-				if = {
-					limit = { var:ROOT.defender_state = { NOT = { is_fully_controlled_by = var:ROOT.neighbor_war_defender } } }
-					random_state = {
-						limit = { is_fully_controlled_by = var:ROOT.neighbor_war_defender }
-						set_variable = { ROOT.defender_state = THIS.id }
-						set_state_flag = border_incident_active
-					}
-				}
 			}
 		}
 		completion_reward = {
@@ -3267,7 +3208,6 @@ focus = {
 			#RADICAL
 			else_if = {
 				limit = { var:neighbor_war_defender = { potential_take_state_target = yes } }
-				add_state_claim = var:defender_state
 				declare_war_on = {
 					target = var:neighbor_war_defender
 					type = take_state_focus
