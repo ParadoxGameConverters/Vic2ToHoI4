@@ -2331,7 +2331,6 @@ focus = {
 		available = {
 			NOT = { is_in_faction_with = $TARGET }
 			NOT = { has_war_with = $TARGET }
-			$TARGET = { in_weak_faction = yes }
 		}
 		completion_reward = {
 			if = {
@@ -2442,10 +2441,12 @@ focus = {
 			NOT = { is_in_faction_with = $TARGET }
 			custom_trigger_tooltip = { tooltip = full_controll_of_our_cores }
 			hidden_trigger = {
-				all_owned_state = {
-					OR = {
-						NOT = { is_core_of = ROOT }
-						is_fully_controlled_by = $TARGET
+				$TARGET = {
+					all_owned_state = {
+						OR = {
+							NOT = { is_core_of = ROOT }
+							is_fully_controlled_by = $TARGET
+						}
 					}
 				}
 			}
@@ -2646,6 +2647,7 @@ focus = {
 					#COMMUNISM
 					#FASCISM
 					#RADICAL
+					#ELSE
 					potential_take_state_target = yes
 					potential_border_war_target = yes
 				}
@@ -2690,17 +2692,16 @@ focus = {
 			modifier = {
 				factor = 0
 				threat > 0.25
-				date > 1938.8.1
+				date < 1939.4.1
 			}
 			modifier = {
 				factor = 0
 				threat > 0.4
-				date > 1939.4.1
+				date < 1939.8.1
 			}
 			modifier = {
 				factor = 0
 				threat > 0.5
-				date > 1939.8.1
 			}
 		}
 	}
@@ -2887,12 +2888,12 @@ focus = {
 			$TARGET = {
 				exists = yes
 				not_allies_or_subjects = yes
-				in_weak_faction = yes
 				OR = {
 					potential_take_core_target = yes
 					#COMMUNISM
 					#FASCISM
 					#RADICAL
+					#ELSE
 					potential_take_state_target = yes
 					potential_border_war_target = yes
 				}
@@ -3102,12 +3103,12 @@ focus = {
 			$TARGET = {
 				exists = yes
 				not_allies_or_subjects = yes
-				in_weak_faction = yes
 				OR = {
 					potential_take_core_target = yes
 					#COMMUNISM
 					#FASCISM
 					#RADICAL
+					#ELSE
 					potential_take_state_target = yes
 					potential_border_war_target = yes
 				}
@@ -3120,22 +3121,25 @@ focus = {
 			factor = 1
 			modifier = {
 				factor = 0
+				$TARGET = { in_weak_faction = no }
+			}
+			modifier = {
+				factor = 0
 				date < 1938.8.1
 			}
 			modifier = {
 				factor = 0
 				threat > 0.25
-				date > 1938.8.1
+				date < 1939.4.1
 			}
 			modifier = {
 				factor = 0
 				threat > 0.4
-				date > 1939.4.1
+				date < 1939.8.1
 			}
 			modifier = {
 				factor = 0
 				threat > 0.5
-				date > 1939.8.1
 			}
 		}
 	}

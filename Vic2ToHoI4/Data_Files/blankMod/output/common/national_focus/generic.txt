@@ -13,6 +13,7 @@ focus_tree = {
 	shared_focus = naval_effort
 	shared_focus = industrial_effort
 	shared_focus = political_effort
+	shared_focus = border_disputes_shared
 
 }
 
