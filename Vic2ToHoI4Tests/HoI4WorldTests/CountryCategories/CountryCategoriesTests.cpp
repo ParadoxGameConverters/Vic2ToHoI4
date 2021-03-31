@@ -13,7 +13,7 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, CategoriesCanBeCreated)
 																				  .addMapping("BGL", "BGL")
 																				  .Build(),
 		 {},
-		 {"absolutist", "democratic"});
+		 {"absolutist", "democratic"}, false);
 
 	ASSERT_THAT(categories,
 		 testing::UnorderedElementsAre(
@@ -34,7 +34,8 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, TagsAreTranslated)
 																				  .addMapping("BGL", "BG2")
 																				  .Build(),
 		 {},
-		 {"absolutist", "democratic"});
+		 {"absolutist", "democratic"},
+		 false);
 
 	ASSERT_THAT(categories,
 		 testing::UnorderedElementsAre(
@@ -49,7 +50,7 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, TagsAreTranslated)
 
 TEST(HoI4World_CountryCategories_CountryCategoriesTests, UnmappedTagsAreSkipped)
 {
-	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder{}.Build(), {}, {});
+	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder{}.Build(), {}, {}, false);
 
 	ASSERT_THAT(categories, testing::UnorderedElementsAre());
 }
@@ -58,11 +59,26 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, UnmappedTagsAreSkipped)
 TEST(HoI4World_CountryCategories_CountryCategoriesTests, UncategorizedCountriesAreInTagMscne)
 {
 	const auto categories =
-		 HoI4::createCountryCategories(*Mappers::CountryMapper::Builder{}.Build(), {{"TAG", nullptr}}, {});
+		 HoI4::createCountryCategories(*Mappers::CountryMapper::Builder{}.Build(), {{"TAG", nullptr}}, {}, false);
 
 	ASSERT_THAT(categories,
 		 testing::UnorderedElementsAre(
 			  testing::Pair("tag_mscne", testing::UnorderedElementsAre(testing::Pair("TAG", std::nullopt)))));
+}
+
+
+TEST(HoI4World_CountryCategories_CountryCategoriesTests, UncategorizedCountriesAreLoggedWhenDebugIsTrue)
+{
+	std::stringstream log;
+	auto stdOutBuf = std::cout.rdbuf();
+	std::cout.rdbuf(log.rdbuf());
+
+	const auto categories =
+		 HoI4::createCountryCategories(*Mappers::CountryMapper::Builder{}.Build(), {{"TAG", nullptr}}, {}, true);
+
+	std::cout.rdbuf(stdOutBuf);
+
+	ASSERT_EQ(" [WARNING] TAG was not in any language category. Defaulting to tag_mscne\n", log.str());
 }
 
 
@@ -74,7 +90,8 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, MissingIdeologiesAreRem
 																				  .addMapping("BGL", "BGL")
 																				  .Build(),
 		 {},
-		 {"absolutist"});
+		 {"absolutist"},
+		 false);
 
 	ASSERT_THAT(categories,
 		 testing::UnorderedElementsAre(
@@ -93,7 +110,8 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, MissingIdeologiesCanTur
 																				  .addMapping("BGL", "BGL")
 																				  .Build(),
 		 {},
-		 {});
+		 {},
+		 false);
 
 	ASSERT_THAT(categories,
 		 testing::UnorderedElementsAre(

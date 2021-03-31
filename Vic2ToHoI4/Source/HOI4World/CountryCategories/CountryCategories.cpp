@@ -91,7 +91,8 @@ void applyAllGrammarRules(const Mappers::CountryMapper& countryMapper,
 
 void handleMissedCountries(const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
 	 std::set<std::string>& mappedTags,
-	 std::map<std::string, HoI4::TagsAndExtras>& categories)
+	 std::map<std::string, HoI4::TagsAndExtras>& categories,
+	 bool debug)
 {
 	for (const auto& tag: countries | std::views::keys)
 	{
@@ -100,7 +101,10 @@ void handleMissedCountries(const std::map<std::string, std::shared_ptr<HoI4::Cou
 			continue;
 		}
 
-		Log(LogLevel::Warning) << tag << " was not in any language category. Defaulting to tag_mscne";
+		if (debug)
+		{
+			Log(LogLevel::Warning) << tag << " was not in any language category. Defaulting to tag_mscne";
+		}
 		insertIntoCategories("tag_mscne", tag, std::nullopt, categories);
 	}
 }
@@ -108,13 +112,14 @@ void handleMissedCountries(const std::map<std::string, std::shared_ptr<HoI4::Cou
 
 std::map<std::string, HoI4::TagsAndExtras> HoI4::createCountryCategories(const Mappers::CountryMapper& countryMapper,
 	 const std::map<std::string, std::shared_ptr<HoI4::Country>>& countries,
-	 const std::set<std::string>& majorIdeologies)
+	 const std::set<std::string>& majorIdeologies,
+	 bool debug)
 {
 	std::map<std::string, TagsAndExtras> categories;
 
 	std::set<std::string> mappedTags;
 	applyAllGrammarRules(countryMapper, majorIdeologies, mappedTags, categories);
-	handleMissedCountries(countries, mappedTags, categories);
+	handleMissedCountries(countries, mappedTags, categories, debug);
 
 	return categories;
 }
