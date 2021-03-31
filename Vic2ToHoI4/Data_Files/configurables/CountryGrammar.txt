@@ -496,7 +496,8 @@ link = { category = tag_msvae vic2_tag = ULS } # L'Ulster
 link = { category = tag_msvae vic2_tag = URU } # L'Uruguay
 
 
-# tag_msvnd: (Not used!) [Ø] ... est GRAND / J'habite DANS ...
+# tag_msvnd: (Not used! But still defined so HoI4 doesn't run across missing scripts) [Ø] ... est GRAND / J'habite DANS ...
+link = { category = tag_msvnd }
 
 
 # tag_msvne: [Ø] Abu Dhabi est GRAND / J'habite À Abu Dhabi.
@@ -1020,7 +1021,8 @@ link = { category = tag_fsvae vic2_tag = UKR } # L'Ukraine
 link = { category = tag_fsvae vic2_tag = ADU } # L'Andalousie
 
 
-# tag_fsvnd: (Not used!) [Ø] ... est GRANDE / J'habite DANS ...
+# tag_fsvnd: (Not used! But still defined so HoI4 doesn't run across missing scripts) [Ø] ... est GRANDE / J'habite DANS ...
+link = { category = tag_fsvnd }
 
 
 
@@ -1076,11 +1078,13 @@ link = { category = tag_fpvad vic2_tag = ATR } # Les Asturies
 link = { category = tag_fpvad vic2_tag = ION } # Les Îles Ioniennes
 
 
-# tag_fpvae: (not used!) LES ... sont GRANDES / J'habite AUX ...
+# tag_fpvae: (not used! But still defined so HoI4 doesn't run across missing scripts) LES ... sont GRANDES / J'habite AUX ...
+link = { category = tag_fpvae }
 
 
 
-# tag_fpvnd: (not used!) [Ø] ... sont GRANDES / J'habite DANS ...
+# tag_fpvnd: (not used! But still defined so HoI4 doesn't run across missing scripts) [Ø] ... sont GRANDES / J'habite DANS ...
+link = { category = tag_fpvnd }
 
 
 

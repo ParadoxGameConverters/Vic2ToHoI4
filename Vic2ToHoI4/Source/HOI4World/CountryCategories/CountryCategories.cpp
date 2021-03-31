@@ -2,6 +2,7 @@
 #include "CountryGrammarFactory.h"
 #include "Log.h"
 #include <ranges>
+#include <unordered_set>
 
 
 
@@ -72,8 +73,10 @@ void applyAllGrammarRules(const Mappers::CountryMapper& countryMapper,
 	 std::set<std::string>& mappedTags,
 	 std::map<std::string, HoI4::TagsAndExtras>& categories)
 {
+	std::unordered_set<std::string> definedCategories;
 	for (const auto& countryGrammarRule: HoI4::CountryGrammarFactory().importCountryGrammar())
 	{
+		definedCategories.insert(countryGrammarRule.category);
 		const auto possibleTag = countryMapper.getHoI4Tag(countryGrammarRule.tag);
 		if (!possibleTag)
 		{
@@ -85,6 +88,11 @@ void applyAllGrammarRules(const Mappers::CountryMapper& countryMapper,
 			 expandIdeologyInExtra(countryGrammarRule.extra, majorIdeologies),
 			 categories);
 		mappedTags.insert(*possibleTag);
+	}
+
+	for (const auto& category: definedCategories)
+	{
+		categories.emplace(category, HoI4::TagsAndExtras{});
 	}
 }
 

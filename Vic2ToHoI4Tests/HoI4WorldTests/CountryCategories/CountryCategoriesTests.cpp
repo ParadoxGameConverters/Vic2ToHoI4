@@ -52,7 +52,10 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, UnmappedTagsAreSkipped)
 {
 	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder{}.Build(), {}, {}, false);
 
-	ASSERT_THAT(categories, testing::UnorderedElementsAre());
+	ASSERT_THAT(categories,
+		 testing::UnorderedElementsAre(
+			  testing::Pair("tag_mscad", testing::UnorderedElementsAre()),
+			  testing::Pair("tag_mscae", testing::UnorderedElementsAre())));
 }
 
 
@@ -63,7 +66,9 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, UncategorizedCountriesA
 
 	ASSERT_THAT(categories,
 		 testing::UnorderedElementsAre(
-			  testing::Pair("tag_mscne", testing::UnorderedElementsAre(testing::Pair("TAG", std::nullopt)))));
+			  testing::Pair("tag_mscne", testing::UnorderedElementsAre(testing::Pair("TAG", std::nullopt))),
+			  testing::Pair("tag_mscad", testing::UnorderedElementsAre()),
+			  testing::Pair("tag_mscae", testing::UnorderedElementsAre())));
 }
 
 
