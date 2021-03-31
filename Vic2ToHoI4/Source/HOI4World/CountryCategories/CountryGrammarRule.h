@@ -17,11 +17,7 @@ struct CountryGrammarRule
 	std::string tag;
 	std::optional<std::string> extra;
 
-	bool operator==(const CountryGrammarRule& rhs) const
-	{
-		return category == rhs.category && tag == rhs.tag &&
-				 ((!extra && !rhs.extra) || (extra && rhs.extra && *extra == *rhs.extra));
-	}
+	bool operator==(const CountryGrammarRule& rhs) const = default;
 };
 
 } // namespace HoI4

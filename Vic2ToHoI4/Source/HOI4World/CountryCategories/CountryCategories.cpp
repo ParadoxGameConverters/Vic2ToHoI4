@@ -1,6 +1,7 @@
 #include "CountryCategories.h"
 #include "CountryGrammarFactory.h"
 #include "Log.h"
+#include <ranges>
 
 
 
@@ -9,17 +10,18 @@ std::optional<std::string> expandIdeologyInExtra(const std::optional<std::string
 {
 	if (!extra)
 	{
-		return extra;
+		return std::nullopt;
 	}
 
 	auto finalString = *extra;
 	for (const auto& [ideology, placeholderText, fullText]:
-		 std::vector<std::tuple<std::string, std::string, std::string>>{{"absolutist", "$ABSOLUTIST", "has_government = absolutist"},
+		 std::vector<std::tuple<std::string, std::string, std::string>>{
+			  {"absolutist", "$ABSOLUTIST", "has_government = absolutist"},
 			  {"communism", "$COMMUNISM", "has_government = communism"},
 			  {"democratic", "$DEMOCRATIC", "has_government = democratic"},
 			  {"fascism", "$FASCISM", "has_government = fascism"},
 			  {"radical", "$RADICAL", "has_government = radical"},
-		 {"neutrality", "$NEUTRALITY", "has_government = neutrality"}})
+			  {"neutrality", "$NEUTRALITY", "has_government = neutrality"}})
 	{
 		if (majorIdeologies.contains(ideology))
 		{
@@ -37,7 +39,7 @@ std::optional<std::string> expandIdeologyInExtra(const std::optional<std::string
 		}
 	}
 
-	if (finalString == "")
+	if (finalString.empty())
 	{
 		return std::nullopt;
 	}
@@ -91,7 +93,7 @@ void handleMissedCountries(const std::map<std::string, std::shared_ptr<HoI4::Cou
 	 std::set<std::string>& mappedTags,
 	 std::map<std::string, HoI4::TagsAndExtras>& categories)
 {
-	for (const auto& [tag, unused]: countries)
+	for (const auto& tag: countries | std::views::keys)
 	{
 		if (mappedTags.contains(tag))
 		{
