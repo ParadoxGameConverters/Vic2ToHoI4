@@ -53,6 +53,9 @@
     <ClCompile Include="..\googletest\googletest\src\gtest-all.cc" />
     <ClCompile Include="..\googletest\googletest\src\gtest_main.cc" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Configuration.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryCategories.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarFactory.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarRuleFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategories.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\DecisionsCategory.cpp" />
@@ -134,6 +137,8 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapperFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\AiStrategy\OutAiStrategy.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategories.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
@@ -366,6 +371,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\V2World\World\WorldFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\Vic2toHOI4Converter.cpp" />
     <ClCompile Include="ConfigurationTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\CountryCategories\CountryCategoriesTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\CountryCategories\CountryGrammarRuleTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\CountryCategories\CountryGrammarTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Decisions\DecisionsCategoriesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Decisions\DecisionsCategoryTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Decisions\DecisionsInCategoryTests.cpp" />
@@ -656,6 +664,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Vic2ToHoI4\Source\Configuration.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryCategories.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarRule.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarRuleFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\AgentRecruitmentDecisions.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decision.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Decisions\Decisions.h" />
@@ -886,6 +898,8 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMapping.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingBuilder.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Technology\TechMappingFactory.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategories.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\Interface\OutMonarchsInterface.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Ai\AI.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\V2World\Ai\AIFactory.h" />
@@ -1489,6 +1503,12 @@
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\Mappers\Graphics\cultureGroupToGraphics.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="TestFiles\HoI4Files\CountryCategories\CountryGrammar.txt">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/Configurables</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/Configurables</DestinationFolders>
     </CopyFileToFolders>

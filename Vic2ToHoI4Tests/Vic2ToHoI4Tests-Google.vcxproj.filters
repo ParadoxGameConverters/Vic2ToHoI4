@@ -1496,6 +1496,30 @@
     <ClCompile Include="MapperTests\Graphics\GraphicsMapperTests.cpp">
       <Filter>MapperTests\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarRuleFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\CountryCategories\CountryGrammarRuleTests.cpp">
+      <Filter>HoI4WorldTests\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarFactory.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\CountryCategories\CountryGrammarTests.cpp">
+      <Filter>HoI4WorldTests\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="HoI4WorldTests\CountryCategories\CountryCategoriesTests.cpp">
+      <Filter>HoI4WorldTests\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryCategories.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategories.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\CountryCategories</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategory.cpp">
+      <Filter>Vic2ToHoI4 files\OutHoi4\CountryCategories</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -1986,6 +2010,21 @@
     </Filter>
     <Filter Include="TestFiles\Mappers\Graphics">
       <UniqueIdentifier>{cee8fc55-67f7-4cbb-8589-93b2985d47d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\HoI4\CountryCategories">
+      <UniqueIdentifier>{d02df5d1-00a8-413f-b61b-a61721d151d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HoI4WorldTests\CountryCategories">
+      <UniqueIdentifier>{d0c35a53-8d36-4558-a7a8-1d31f05ba748}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\HoI4">
+      <UniqueIdentifier>{922aef6c-b8ea-4516-b0c8-f8a90089a692}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="TestFiles\HoI4\CountryCategories">
+      <UniqueIdentifier>{02d631f1-9b06-4668-a709-45d7c3ff2f21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Vic2ToHoI4 files\OutHoi4\CountryCategories">
+      <UniqueIdentifier>{e0d61698-9b2b-432a-9cb7-84b7180ae023}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2928,6 +2967,24 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\Mappers\Graphics\GraphicsMapperFactory.h">
       <Filter>Vic2ToHoI4 files\Mappers\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarRule.h">
+      <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarRuleFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryGrammarFactory.h">
+      <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\CountryCategories\CountryCategories.h">
+      <Filter>Vic2ToHoI4 files\HoI4\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategories.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\OutHoi4\CountryCategories\OutCountryCategory.h">
+      <Filter>Vic2ToHoI4 files\OutHoi4\CountryCategories</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CopyFileToFolders Include="TestFiles\GameRules.txt">
@@ -3230,6 +3287,9 @@
     </CopyFileToFolders>
     <CopyFileToFolders Include="TestFiles\Mappers\Graphics\cultureGroupToGraphics.txt">
       <Filter>TestFiles\Mappers\Graphics</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="TestFiles\HoI4Files\CountryCategories\CountryGrammar.txt">
+      <Filter>TestFiles\HoI4\CountryCategories</Filter>
     </CopyFileToFolders>
   </ItemGroup>
 </Project>

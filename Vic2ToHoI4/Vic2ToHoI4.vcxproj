@@ -143,6 +143,9 @@
     <ClCompile Include="..\common_items\WinUtils.cpp" />
     <ClCompile Include="..\common_items\targa.cpp" />
     <ClCompile Include="Source\Configuration.cpp" />
+    <ClCompile Include="Source\HOI4World\CountryCategories\CountryCategories.cpp" />
+    <ClCompile Include="Source\HOI4World\CountryCategories\CountryGrammarRuleFactory.cpp" />
+    <ClCompile Include="Source\HOI4World\CountryCategories\CountryGrammarFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategories.cpp" />
     <ClCompile Include="Source\HOI4World\Decisions\DecisionsCategory.cpp" />
@@ -218,6 +221,8 @@
     <ClCompile Include="Source\Mappers\Technology\TechMapperFactory.cpp" />
     <ClCompile Include="Source\Mappers\Technology\TechMappingFactory.cpp" />
     <ClCompile Include="Source\OutHoi4\AiStrategy\OutAiStrategy.cpp" />
+    <ClCompile Include="Source\OutHoi4\CountryCategories\OutCountryCategories.cpp" />
+    <ClCompile Include="Source\OutHoi4\CountryCategories\OutCountryCategory.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecision.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategories.cpp" />
     <ClCompile Include="Source\OutHoi4\Decisions\OutDecisionsCategory.cpp" />
@@ -474,6 +479,10 @@
     <ClInclude Include="..\common_items\StringUtils.h" />
     <ClInclude Include="..\common_items\targa.h" />
     <ClInclude Include="Source\Configuration.h" />
+    <ClInclude Include="Source\HOI4World\CountryCategories\CountryCategories.h" />
+    <ClInclude Include="Source\HOI4World\CountryCategories\CountryGrammarRule.h" />
+    <ClInclude Include="Source\HOI4World\CountryCategories\CountryGrammarRuleFactory.h" />
+    <ClInclude Include="Source\HOI4World\CountryCategories\CountryGrammarFactory.h" />
     <ClInclude Include="Source\HOI4World\Decisions\AgentRecruitmentDecisions.h" />
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategories.h" />
     <ClInclude Include="Source\HOI4World\Decisions\DecisionsCategory.h" />
@@ -585,6 +594,8 @@
     <ClInclude Include="Source\Mappers\Technology\TechMappingBuilder.h" />
     <ClInclude Include="Source\Mappers\Technology\TechMappingFactory.h" />
     <ClInclude Include="Source\OutHoi4\AiStrategy\OutAiStrategy.h" />
+    <ClInclude Include="Source\OutHoi4\CountryCategories\OutCountryCategories.h" />
+    <ClInclude Include="Source\OutHoi4\CountryCategories\OutCountryCategory.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecision.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategories.h" />
     <ClInclude Include="Source\OutHoi4\Decisions\OutDecisionsCategory.h" />
@@ -25008,6 +25019,12 @@
     <CopyFileToFolders Include="Data_Files\flags\XHO_republic.tga">
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
       <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+  </ItemGroup>
+  <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\configurables\CountryGrammar.txt">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/configurables</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/configurables</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

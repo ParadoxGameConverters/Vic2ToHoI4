@@ -61,6 +61,9 @@ file(GLOB MAIN_SOURCE "${PROJECT_SOURCE_DIR}/main.cpp")
 file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/Configuration.cpp")
 file(GLOB CONVERTER_SOURCES ${CONVERTER_SOURCES} "${PROJECT_SOURCE_DIR}/Vic2toHOI4Converter.cpp")
 file(GLOB HOI4WORLD_SOURCES "${PROJECT_SOURCE_DIR}/HOI4World/*.cpp")
+set(HOI4WORLD_COUNTRY_CATEGORIES_SOURCES ${HOI4WORLD_COUNTRY_CATEGORIES_SOURCES} "${PROJECT_SOURCE_DIR}/HOI4World/CountryCategories/CountryCategories.cpp")
+set(HOI4WORLD_COUNTRY_CATEGORIES_SOURCES ${HOI4WORLD_COUNTRY_CATEGORIES_SOURCES} "${PROJECT_SOURCE_DIR}/HOI4World/CountryCategories/CountryGrammarRuleFactory.cpp")
+set(HOI4WORLD_COUNTRY_CATEGORIES_SOURCES ${HOI4WORLD_COUNTRY_CATEGORIES_SOURCES} "${PROJECT_SOURCE_DIR}/HOI4World/CountryCategories/CountryGrammarFactory.cpp")
 file(GLOB HOI4WORLD_DECISIONS_SOURCES "${PROJECT_SOURCE_DIR}/HOI4World/Decisions/*.cpp")
 file(GLOB HOI4WORLD_DIPLOMACY_SOURCES "${PROJECT_SOURCE_DIR}/HOI4World/Diplomacy/*.cpp")
 set(HOI4WORLD_EVENTS_SOURCES ${HOI4WORLD_EVENTS_SOURCES} "${PROJECT_SOURCE_DIR}/HOI4World/Events/CapitulationEvents.cpp")
@@ -150,6 +153,8 @@ set(MAPPERS_TECHNOLOGY_SOURCES ${MAPPERS_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_D
 set(MAPPERS_TECHNOLOGY_SOURCES ${MAPPERS_TECHNOLOGY_SOURCES} "${PROJECT_SOURCE_DIR}/Mappers/Technology/TechMappingFactory.cpp")
 file(GLOB OUTHOI4_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/*.cpp")
 set(OUTHOI4_AI_STRATEGY_SOURCES ${OUTHOI4_AI_STRATEGY_SOURCES} "${PROJECT_SOURCE_DIR}/OutHoi4/AiStrategy/OutAiStrategy.cpp")
+set(OUTHOI4_COUNTRY_CATEGORIES_SOURCES ${OUTHOI4_COUNTRY_CATEGORIES_SOURCES} "${PROJECT_SOURCE_DIR}/OutHoi4/CountryCategories/OutCountryCategories.cpp")
+set(OUTHOI4_COUNTRY_CATEGORIES_SOURCES ${OUTHOI4_COUNTRY_CATEGORIES_SOURCES} "${PROJECT_SOURCE_DIR}/OutHoi4/CountryCategories/OutCountryCategory.cpp")
 file(GLOB OUTHOI4_DECISIONS_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/Decisions/*.cpp")
 file(GLOB OUTHOI4_DIPLOMACY_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/Diplomacy/*.cpp")
 file(GLOB OUTHOI4_EVENTS_SOURCES "${PROJECT_SOURCE_DIR}/OutHoi4/Events/*.cpp")
@@ -259,6 +264,7 @@ add_executable(
 	${HOI4_SHIP_TYPES_SOURCES}
 	${HOI4_STATES_SOURCES}
 	${HOI4WORLD_SOURCES}
+	${HOI4WORLD_COUNTRY_CATEGORIES_SOURCES}
 	${HOI4WORLD_DECISIONS_SOURCES}
 	${HOI4WORLD_DIPLOMACY_SOURCES}
 	${HOI4WORLD_EVENTS_SOURCES}
@@ -297,6 +303,7 @@ add_executable(
 	${MAPPERS_TECHNOLOGY_SOURCES}
 	${MAPPERS_PROVINCES_SOURCES}
 	${OUTHOI4_SOURCES}
+	${OUTHOI4_COUNTRY_CATEGORIES_SOURCES}
 	${OUTHOI4_DECISIONS_SOURCES}
 	${OUTHOI4_AI_STRATEGY_SOURCES}
 	${OUTHOI4_DIPLOMACY_SOURCES}
@@ -357,6 +364,7 @@ configure_file("${DATA_FILE_DIR}/configurables/converterFocuses.txt" "${CONVERTE
 configure_file("${DATA_FILE_DIR}/configurables/converterIdeas.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterIdeas.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/converterIdeologies.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterIdeologies.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/converterLeaderTraits.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/converterLeaderTraits.txt" COPYONLY)
+configure_file("${DATA_FILE_DIR}/configurables/CountryGrammar.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CountryGrammar.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/CountryNamesMappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/CountryNamesMappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/country_mappings.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/country_mappings.txt" COPYONLY)
 configure_file("${DATA_FILE_DIR}/configurables/cultureGroupToGraphics.txt" "${CONVERTER_OUTPUT_DIRECTORY}/Configurables/cultureGroupToGraphics.txt" COPYONLY)
@@ -393,6 +401,9 @@ set(GMOCK_SOURCES ${GMOCK_SOURCES} "../googletest/googletest/src/gtest-all.cc")
 set(GMOCK_SOURCES ${GMOCK_SOURCES} "../googletest/googlemock/src/gmock-all.cc")
 file(GLOB CONFIGURATION_TESTS_SOURCES "${TEST_SOURCE_DIR}/ConfigurationTests.cpp")
 file(GLOB HOI4WORLD_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4WorldTests/*.cpp")
+set(HOI4WORLD_COUNTRY_CATEGORIES_TESTS_SOURCES ${HOI4WORLD_COUNTRY_CATEGORIES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/HoI4WorldTests/CountryCategories/CountryCategoriesTests.cpp")
+set(HOI4WORLD_COUNTRY_CATEGORIES_TESTS_SOURCES ${HOI4WORLD_COUNTRY_CATEGORIES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/HoI4WorldTests/CountryCategories/CountryGrammarRuleTests.cpp")
+set(HOI4WORLD_COUNTRY_CATEGORIES_TESTS_SOURCES ${HOI4WORLD_COUNTRY_CATEGORIES_TESTS_SOURCES} "${TEST_SOURCE_DIR}/HoI4WorldTests/CountryCategories/CountryGrammarTests.cpp")
 file(GLOB HOI4WORLD_DECISIONS_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4WorldTests/Decisions/*.cpp")
 file(GLOB HOI4WORLD_DIPLOMACY_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4WorldTests/Diplomacy/*.cpp")
 file(GLOB HOI4WORLD_EVENTS_TESTS_SOURCES "${TEST_SOURCE_DIR}/HoI4WorldTests/Events/*.cpp")
@@ -518,6 +529,7 @@ add_executable(
 	${HOI4_SHIP_TYPES_SOURCES}
 	${HOI4_STATES_SOURCES}
 	${HOI4WORLD_SOURCES}
+	${HOI4WORLD_COUNTRY_CATEGORIES_SOURCES}
 	${HOI4WORLD_DECISIONS_SOURCES}
 	${HOI4WORLD_DIPLOMACY_SOURCES}
 	${HOI4WORLD_EVENTS_SOURCES}
@@ -557,6 +569,7 @@ add_executable(
 	${MAPPERS_PROVINCES_SOURCES}
 	${OUTHOI4_SOURCES}
 	${OUTHOI4_AI_STRATEGY_SOURCES}
+	${OUTHOI4_COUNTRY_CATEGORIES_SOURCES}
 	${OUTHOI4_DECISIONS_SOURCES}
 	${OUTHOI4_DIPLOMACY_SOURCES}
 	${OUTHOI4_EVENTS_SOURCES}
@@ -600,6 +613,7 @@ add_executable(
 	${VIC2WORLD_WORLD_SOURCES}
 	${CONFIGURATION_TESTS_SOURCES}
 	${HOI4WORLD_TESTS_SOURCES}
+	${HOI4WORLD_COUNTRY_CATEGORIES_TESTS_SOURCES}
 	${HOI4WORLD_DECISIONS_TESTS_SOURCES}
 	${HOI4WORLD_DIPLOMACY_TESTS_SOURCES}
 	${HOI4WORLD_EVENTS_TESTS_SOURCES}
@@ -685,6 +699,7 @@ configure_file("Vic2ToHoI4Tests/TestFiles/EmptyOccupationLaws.txt" "${TEST_OUTPU
 configure_file("Vic2ToHoI4Tests/TestFiles/GameRules.txt" "${TEST_OUTPUT_DIRECTORY}/GameRules.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/GameRulesEmpty.txt" "${TEST_OUTPUT_DIRECTORY}/GameRulesEmpty.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/generic_opertive_codenames.txt" "${TEST_OUTPUT_DIRECTORY}/common/units/codenames_operatives/generic_opertive_codenames.txt" COPYONLY)
+configure_file("Vic2ToHoI4Tests/TestFiles/HoI4Files/CountryCategories/CountryGrammar.txt" "${TEST_OUTPUT_DIRECTORY}/Configurables/CountryGrammar.txt" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/hoi4" "${TEST_OUTPUT_DIRECTORY}/HoI4Linux/hoi4" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/hoi4.exe" "${TEST_OUTPUT_DIRECTORY}/HoI4Windows/hoi4.exe" COPYONLY)
 configure_file("Vic2ToHoI4Tests/TestFiles/IntelligenceAgencyLogos.txt" "${TEST_OUTPUT_DIRECTORY}/configurables/IntelligenceAgencyLogos.txt" COPYONLY)

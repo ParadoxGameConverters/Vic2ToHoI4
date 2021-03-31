@@ -29,6 +29,7 @@
 #include <fstream>
 #include <iterator>
 #include <optional>
+#include "CountryCategories/OutCountryCategories.h"
 
 
 namespace HoI4
@@ -200,6 +201,7 @@ void HoI4::OutputWorld(const World& world,
 	outputOperativeNames(world.getOperativeNames(), outputName);
 	outputOperations(world.getOperations(), outputName);
 	outputScriptedEffects(world.getScriptedEffects(), world.getMajorIdeologies(), outputName);
+	outCountryCategories(world.getCountryCategories(), outputName);
 	outputSounds(outputName, world.getSoundEffects());
 	outMonarchInterface(outputName, world.getCountries());
 }

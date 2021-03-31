@@ -1,0 +1,5 @@
+# test rules just grabbed from the 'release' file
+
+link = { category = tag_mscad vic2_tag = BAN } # Le Banat
+link = { category = tag_mscad vic2_tag = ENG extra = "NOT = { $ABSOLUTIST $DEMOCRATIC }" } # Le Royaume-Uni / Le Commonwealth des Ouvriers
+link = { category = tag_mscae vic2_tag = BGL } # Le Bagelkhand
