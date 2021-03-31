@@ -174,6 +174,10 @@ void HoI4::Events::createAnnexEvent(const Country& annexer, const Country& annex
 	std::string acceptAiChance = "= {\n";
 	acceptAiChance += "\t\t\tbase = 30\n";
 	acceptAiChance += "\t\t\tmodifier = {\n";
+	acceptAiChance += "\t\t\t\tfactor = 0\n";
+	acceptAiChance += "\t\t\t\t" + annexed.getTag() + " = { is_subject = yes }\n";
+	acceptAiChance += "\t\t\t}\n";
+	acceptAiChance += "\t\t\tmodifier = {\n";
 	acceptAiChance += "\t\t\t\tadd = -15\n";
 	acceptAiChance += "\t\t\t\t" + annexed.getTag() + " = { has_army_size = { size > 39 } }\n";
 	acceptAiChance += "\t\t\t}\n";
