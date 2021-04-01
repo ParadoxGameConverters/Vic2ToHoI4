@@ -93,7 +93,6 @@ country_event = {
 	trigger = {
 		any_other_country = {
 			any_owned_state = { is_core_of = ROOT }
-			has_war = yes
 		}
 	}
 
@@ -102,20 +101,26 @@ country_event = {
 	}
 
 	immediate = {
-		every_other_country = {
+		random_country = {
 			limit = {
 				any_owned_state = { is_core_of = ROOT }
 				has_war = yes
+				any_owned_state = {
+					NOT = { is_controlled_by = owner }
+					OR = {
+						is_in_home_area = yes
+						owner = { has_capitulated = yes }
+					}
+				}
 			}
 			clear_array = ROOT.possible_allies@THIS
 			every_other_country = {
 				limit = {
-					any_state = {
-						is_controlled_by = PREV
+					any_controlled_state = {
 						is_owned_by = PREV.PREV
 						OR = {
 							is_in_home_area = yes
-							PREV.PREV = { has_capitulated = yes }
+							owner = { has_capitulated = yes }
 						}
 					}
 				}
