@@ -4,11 +4,6 @@
 
 void HoI4::outputCountryCategory(std::ostream& out, const std::string& category, const TagsAndExtras& tagsAndExtras)
 {
-	if (tagsAndExtras.empty())
-	{
-		return;
-	}
-
 	out << category << "= {\n";
 	out << "\tOR = {\n";
 	for (const auto& [tag, extra]: tagsAndExtras)

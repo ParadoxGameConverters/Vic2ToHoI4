@@ -115,7 +115,7 @@ country_event = {
 						is_owned_by = PREV.PREV
 						OR = {
 							is_in_home_area = yes
-							PREV.PREV = { is_capitulated = yes }
+							PREV.PREV = { has_capitulated = yes }
 						}
 					}
 				}

@@ -49,7 +49,7 @@ void HoI4::outputStates(const States& theStates, const std::string& outputName, 
 		out << "\tOR = {\n";
 		for (const auto& id: stateIds)
 		{
-			out << "\t\t" << id << "\n";
+			out << "\t\tstate = " << id << "\n";
 		}
 		out << "\t}\n";
 		out << "}\n";

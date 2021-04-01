@@ -72,6 +72,23 @@ HoI4::States::States(const Vic2::World& sourceWorld,
 		 provinceMapper,
 		 mapData,
 		 theConfiguration);
+
+	languageCategories.emplace("msnc", std::set<int>{});
+	languageCategories.emplace("msac", std::set<int>{});
+	languageCategories.emplace("msav", std::set<int>{});
+	languageCategories.emplace("msnv", std::set<int>{});
+	languageCategories.emplace("mpac", std::set<int>{});
+	languageCategories.emplace("mpav", std::set<int>{});
+	languageCategories.emplace("mpnc", std::set<int>{});
+	languageCategories.emplace("mpnv", std::set<int>{});
+	languageCategories.emplace("fsnc", std::set<int>{});
+	languageCategories.emplace("fsac", std::set<int>{});
+	languageCategories.emplace("fsav", std::set<int>{});
+	languageCategories.emplace("fsnv", std::set<int>{});
+	languageCategories.emplace("fpac", std::set<int>{});
+	languageCategories.emplace("fpav", std::set<int>{});
+	languageCategories.emplace("fpnc", std::set<int>{});
+	languageCategories.emplace("fpnv", std::set<int>{});
 }
 
 
