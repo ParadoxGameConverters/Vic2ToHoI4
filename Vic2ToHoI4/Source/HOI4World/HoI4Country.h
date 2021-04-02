@@ -80,6 +80,8 @@ class Country
 		 const Mappers::GovernmentMapper& governmentMap,
 		 const Vic2::Localisations& vic2Localisations,
 		 Localisation& hoi4Localisations,
+		 Mappers::GraphicsMapper& graphicsMapper,
+		 Names& names,
 		 bool debug);
 	void convertParties(const std::set<std::string>& majorIdeologies,
 		 const Mappers::IdeologyMapper& ideologyMapper,
@@ -237,8 +239,7 @@ class Country
 	void convertLeaders(const Vic2::Country& sourceCountry);
 	void convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names,
-		 Localisation& hoi4Localisations,
-		 const Vic2::Country& sourceCountry);
+		 Localisation& hoi4Localisations);
 	void convertRelations(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
 	void convertStrategies(const Mappers::CountryMapper& countryMap, const Vic2::Country& sourceCountry);
 	void convertWars(const Vic2::Country& sourceCountry, const Mappers::CountryMapper& countryMap);
@@ -271,6 +272,7 @@ class Country
 	std::string filename;
 	std::string commonCountryFile;
 	bool human = false;
+	std::optional<std::string> lastDynasty;
 
 	std::string primaryCulture;
 	std::string primaryCultureGroup;
