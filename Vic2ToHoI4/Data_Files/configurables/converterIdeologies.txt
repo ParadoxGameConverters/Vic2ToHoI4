@@ -77,7 +77,7 @@ ideologies = {
 			"FACTION_NAME_KINGDOM_5"
 		}
 		
-		color = { 0 0 120 }
+		color = { 128 0 255 }
 		
 		war_impact_on_world_tension = 1.0			#evil!
 		faction_impact_on_world_tension = 1.0
