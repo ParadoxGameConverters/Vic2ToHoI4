@@ -1449,7 +1449,7 @@
 	link = { vic2 = 556 hoi4 = 11545 hoi4 = 6441 } # Halle -> Wittenberg, Torgau
 	link = { vic2 = 559 hoi4 = 3535 hoi4 = 11481 } # Leipzig -> Leipzig, Riesa
 	link = { vic2 = 687 hoi4 = 3514 hoi4 = 9535 } # Gorlitz -> Zittau, Görlitz
-	link = { vic2 = 558 hoi4 = 514 hoi4 = 573 hoi4 = 11432 hoi4 = 6559 } # Dresden -> Dresden, Pirna, Ústí nad Labem, Freiberg
+	link = { vic2 = 558 hoi4 = 514 hoi4 = 573 hoi4 = 6559 } # Dresden -> Dresden, Pirna, Freiberg
 	link = { vic2 = 560 hoi4 = 9441 hoi4 = 9471 } # Chemnitz -> Zwickau, Chemnitz
 	link = { vic2 = 531 hoi4 = 6349 hoi4 = 374 hoi4 = 3271 } # Stade -> Stade, Cuxhaven, Verden
 	link = { vic2 = 539 hoi4 = 3326 hoi4 = 309 } # Bremen -> Bremen, Oldenburg
@@ -1470,7 +1470,7 @@
 	link = { vic2 = 562 hoi4 = 13116 } # Gotha -> Bad Neustadt
 	link = { vic2 = 563 hoi4 = 6421 } # Meiningen -> Schweinfurt
 	link = { vic2 = 598 hoi4 = 9416 hoi4 = 3474 hoi4 = 11404 hoi4 = 586 } # Bayreuth -> Bamberg, Coburg, Bayreuth, Weiden
-	link = { vic2 = 602 hoi4 = 571 hoi4 = 3571 hoi4 = 3299 hoi4 = 3541 } # Regensburg -> Amberg, Schwandorf, Neumarkt, Deggendorf
+	link = { vic2 = 602 hoi4 = 571 hoi4 = 3571 hoi4 = 3299 hoi4 = 3541 hoi4 = 11497 } # Regensburg -> Amberg, Schwandorf, Neumarkt, Deggendorf, Cham
 	link = { vic2 = 597 hoi4 = 11417 hoi4 = 9572 hoi4 = 9557 } # Wurzburg -> Bad Kissingen, Kitzingen, Würzburg
 	link = { vic2 = 538 hoi4 = 11388 } # Osnabruck -> Osnabrück
 	link = { vic2 = 585 hoi4 = 3355 } # Detmold -> Paderborn
@@ -1491,8 +1491,8 @@
 	link = { vic2 = 565 hoi4 = 6444 hoi4 = 9486 } # Wiesbaden -> Wiesbaden, Limburg
 	link = { vic2 = 567 hoi4 = 3397 } # Giessen -> Gelnhausen
 	link = { vic2 = 568 vic2 = 596 hoi4 = 6594 } # Fulda, Aschaffenburg -> Aschaffenburg
-	link = { vic2 = 564 hoi4 = 6488 hoi4 = 589 } # Frankfurt -> Frankfurt, Darmstadt
-	link = { vic2 = 2560 hoi4 = 3574 } # Darmstadt -> Bensheim
+	link = { vic2 = 564 hoi4 = 6488 } # Frankfurt -> Frankfurt
+	link = { vic2 = 2560 hoi4 = 589 hoi4 = 3574 } # Darmstadt -> Darmstadt, Bensheim
 	link = { vic2 = 570 hoi4 = 11560 } # Mainz -> Mainz
 	link = { vic2 = 571 hoi4 = 563 hoi4 = 11547 hoi4 = 3558 } # Kaiserlautern -> Zweibrücken, Kaiserslautern, Ludwigshafen
 	link = { vic2 = 573 hoi4 = 11531 } # Saarbrucken -> Saarbrücken
@@ -1512,16 +1512,16 @@
 	link = { vic2 = 600 hoi4 = 9681 hoi4 = 9515 hoi4 = 532 } # Landshut -> Pocking, Regensburg, Passau
 	link = { vic2 = 546 hoi4 = 6282 hoi4 = 6334 hoi4 = 6390 hoi4 = 537 hoi4 = 6309 } # Stettin -> Stettin, Swinemünde, Stargard, Neudamm, Arnswalde
 	link = { vic2 = 679 hoi4 = 9334 hoi4 = 9361 hoi4 = 9277 hoi4 = 9306 } # Kolberg -> Greifenberg, Kolberg, Dramburg, Belgard
-	link = { vic2 = 680 hoi4 = 11372 hoi4 = 11343 hoi4 = 11316 hoi4 = 11288 } # Koslin -> Köslin, Stolp, Lauenburg, Bütow
-	link = { vic2 = 692 hoi4 = 11260 hoi4 = 9252 hoi4 = 388 hoi4 = 11232 } # Deutsch Krone -> Neustettin, Deutsch Krone, land, Wagrowiec
-	link = { vic2 = 681 hoi4 = 3473 hoi4 = 3572 hoi4 = 444 hoi4 = 3438 hoi4 = 11478 hoi4 = 6236 hoi4 = 9387 } # Kustrin -> Küstrin, Sorau, Schwiebus, Sagan, Landsberg an der Warthe, Berlinchen, Driesen
-	link = { vic2 = 682 hoi4 = 9570 hoi4 = 552 hoi4 = 6595 hoi4 = 3545 hoi4 = 3283 hoi4 = 6462 } # Breslau -> Breslau, Liegnitz, Bunzlau, Waldenburg, Trebnitz, Zwickau
-	link = { vic2 = 683 hoi4 = 11414 hoi4 = 6534 hoi4 = 11517 hoi4 = 11401 hoi4 = 3485 hoi4 = 445 } # Waldenburg -> Trutnov, Oels, Lauban, Liberec, Glatz, Rychnov nad Knežnou
+	link = { vic2 = 680 hoi4 = 11372 hoi4 = 11343 hoi4 = 11316 } # Koslin -> Köslin, Stolp, Lauenburg
+	link = { vic2 = 692 hoi4 = 11260 hoi4 = 9252 hoi4 = 11288 } # Deutsch Krone -> Neustettin, Deutsch Krone, Bütow
+	link = { vic2 = 681 hoi4 = 3473 hoi4 = 3572 hoi4 = 444 hoi4 = 11478 hoi4 = 6236 hoi4 = 9387 } # Kustrin -> Küstrin, Sorau, Schwiebus, Landsberg an der Warthe, Berlinchen, Driesen
+	link = { vic2 = 682 hoi4 = 9570 hoi4 = 552 hoi4 = 6595 hoi4 = 3283 hoi4 = 6462 hoi4 = 3510 hoi4 = 9470 hoi4 = 3438 } # Breslau -> Breslau, Liegnitz, Bunzlau, Trebnitz, Zwickau, Dyhernfurth, Glogau, Sagan
+	link = { vic2 = 683 hoi4 = 6534 hoi4 = 11517 hoi4 = 3485 hoi4 = 3545 } # Waldenburg -> Oels, Lauban, Glatz, Waldenburg
 	link = { vic2 = 688 hoi4 = 3414 hoi4 = 6485 hoi4 = 3583 } # Troppau -> Opava, Krnov, Ostrava
-	link = { vic2 = 684 hoi4 = 9511 hoi4 = 6512 hoi4 = 9457 hoi4 = 11467 } # Oppeln -> Oppeln, Neisse, Rybnick, Gleiwitz
+	link = { vic2 = 684 hoi4 = 9511 hoi4 = 6512 hoi4 = 9457 hoi4 = 11467 hoi4 = 479 } # Oppeln -> Oppeln, Neisse, Rybnick, Gleiwitz, Kreuzburg
 	link = { vic2 = 701 hoi4 = 11558 hoi4 = 9532 hoi4 = 17 } # Gniezno -> Ostrów Wielkopolski, Srem, Wrzesnia
-	link = { vic2 = 699 hoi4 = 6558 hoi4 = 3532 hoi4 = 9470 hoi4 = 3510 hoi4 = 3460 } # Posen -> Poznan, Koscian, Glogau, Dyhernfurth, Leszno
-	link = { vic2 = 700 hoi4 = 3381 hoi4 = 279 hoi4 = 243 } # Bromberg -> Mogilno, land, Inowroclaw
+	link = { vic2 = 699 hoi4 = 6558 hoi4 = 3532 hoi4 = 3460 hoi4 = 388 } # Posen -> Poznan, Koscian, Leszno, land
+	link = { vic2 = 700 hoi4 = 3381 hoi4 = 279 hoi4 = 243 hoi4 = 11232 } # Bromberg -> Mogilno, land, Inowroclaw, Wagrowiec
 	link = { vic2 = 691 hoi4 = 334 hoi4 = 9263 hoi4 = 3324 hoi4 = 389 } # Tuchel -> Chojnice, Gdynia, Swiecie, Tczew
 	link = { vic2 = 690 hoi4 = 362 } # Danzig -> Gdansk
 	link = { vic2 = 696 hoi4 = 9398 hoi4 = 6375 hoi4 = 9346 hoi4 = 11245 hoi4 = 9372 hoi4 = 11386 hoi4 = 9327 hoi4 = 266 } # Allenstein -> Rastenburg, Allenstein, Soldau, Bartenstein, Ortelsburg, Lyck, Goldap, Lötzen
@@ -1541,15 +1541,15 @@
 	link = { vic2 = 621 hoi4 = 6723 hoi4 = 6552 } # Krems -> Freistadt, Zwettl
 	link = { vic2 = 619 hoi4 = 11666 hoi4 = 3718 hoi4 = 6739 hoi4 = 9527 } # Vienna -> Wien, Mistelbach, Gänserndorf, Krems
 	link = { comment = "# Czechoslovakia" }
-	link = { vic2 = 627 hoi4 = 3585 hoi4 = 6470 hoi4 = 3418 hoi4 = 424 } # Karlsbad -> Karlovy Vary, Cheb, Most, Tachov
-	link = { vic2 = 629 hoi4 = 6418 hoi4 = 9555 } # Plzen -> Plzen, Domažlice
-	link = { vic2 = 630 hoi4 = 7857 hoi4 = 11497 hoi4 = 5283 hoi4 = 543 } # Budejovice -> Kdyne, Cham, Prachatice, Ceský Krumlov
-	link = { vic2 = 628 hoi4 = 6440 hoi4 = 9414 hoi4 = 469 } # Aussig -> Kladno, Mladá Boleslav, Decín
+	link = { vic2 = 627 hoi4 = 3585 hoi4 = 6470 hoi4 = 3418 } # Karlsbad -> Karlovy Vary, Cheb, Most
+	link = { vic2 = 629 hoi4 = 6418 hoi4 = 9555 hoi4 = 424 } # Plzen -> Plzen, Domažlice, Tachov
+	link = { vic2 = 630 hoi4 = 7857 hoi4 = 5283 hoi4 = 543 } # Budejovice -> Kdyne, Prachatice, Ceský Krumlov
+	link = { vic2 = 628 hoi4 = 6440 hoi4 = 9414 hoi4 = 469 hoi4 = 11432 hoi4 = 11401 hoi4 = 11414 } # Aussig -> Kladno, Mladá Boleslav, Decín, Ústí nad Labem, Liberec, Trutnov
 	link = { vic2 = 625 hoi4 = 11542 hoi4 = 9421 hoi4 = 9429 hoi4 = 11556 hoi4 = 9541 hoi4 = 9569 hoi4 = 6592 } # Prague -> Praha, Pribram, Kolín, Jihlava, Ceské Budejovice, Tábor, Klatovy
 	link = { vic2 = 631 hoi4 = 3569 hoi4 = 569 hoi4 = 11525 hoi4 = 557 hoi4 = 11511 hoi4 = 6576 } # Brno -> Brno, Trebíc, Jindrichuv Hradec, Breclav, Hodonín, Kromeríž
-	link = { vic2 = 632 hoi4 = 3553 hoi4 = 6562 hoi4 = 421 hoi4 = 6590 hoi4 = 9551 } # Olomouc -> Blansko, Prostejov, Šumperk, Zlín, Visla
+	link = { vic2 = 632 hoi4 = 3553 hoi4 = 6562 hoi4 = 421 hoi4 = 6590 hoi4 = 445 } # Olomouc -> Blansko, Prostejov, Šumperk, Zlín, Rychnov nad Knežnou
 	link = { vic2 = 626 hoi4 = 3462 hoi4 = 494 hoi4 = 583 } # Hradec Kralove -> Jicín, Hradec Králové, Pardubice
-	link = { vic2 = 689 hoi4 = 9567 } # Teschen -> Tešín
+	link = { vic2 = 689 hoi4 = 9567 hoi4 = 9551 } # Teschen -> Tešín, Visla
 	link = { vic2 = 633 hoi4 = 9692 hoi4 = 9539 } # Bratislava -> Bratislava, Pieštany
 	link = { vic2 = 635 hoi4 = 11679 hoi4 = 3716 hoi4 = 6561 } # Nitra -> Nové Zámky, Dunajská Streda, Lucenec
 	link = { vic2 = 637 hoi4 = 6573 hoi4 = 9537 hoi4 = 3565 } # Kosice -> Košice, Rimavská Sobota, Trebišov
@@ -1699,13 +1699,13 @@
 	link = { vic2 = 951 hoi4 = 6431 hoi4 = 6483 } # Stryi -> Sambor, Drohobycz
 	link = { vic2 = 705 hoi4 = 466 hoi4 = 3434 hoi4 = 9468 hoi4 = 6522 hoi4 = 11507 hoi4 = 6499 hoi4 = 3410 hoi4 = 442 } # Przemysl -> Krosno, Przemysl, Gródek, Rzeszów, Stalowa Wola, Mielec, Jaslo, Tarnów
 	link = { vic2 = 704 hoi4 = 417 } # Nowy Sacz -> Nowy Sacz
-	link = { vic2 = 714 hoi4 = 11413 } # Tarnow -> Bochnia
+	link = { vic2 = 714 hoi4 = 11413 hoi4 = 11398 } # Tarnow -> Bochnia, Skawina
 	link = { vic2 = 2584 hoi4 = 9412 } # Bielsko -> Oswiecim
-	link = { vic2 = 703 hoi4 = 9427 hoi4 = 11398 } # Krakow -> Kraków, Skawina
-	link = { vic2 = 685 hoi4 = 6464 hoi4 = 13205 } # Kattowitz -> Katowice, Tychy
+	link = { vic2 = 703 hoi4 = 9427 } # Krakow -> Kraków
+	link = { vic2 = 685 hoi4 = 6464 hoi4 = 13205 hoi4 = 506 } # Kattowitz -> Katowice, Tychy, Tarnowskie Gory
 	link = { vic2 = 716 hoi4 = 11430 hoi4 = 3497 } # Kielce -> Kielce, Staszow
-	link = { vic2 = 712 hoi4 = 9508 hoi4 = 11428 hoi4 = 584 hoi4 = 3586 hoi4 = 11532 } # Lodz -> Lódz, Piotrków Trybunalski, land, Wloszczowa, Skarzysko-Kamienna
-	link = { vic2 = 717 hoi4 = 9546 hoi4 = 506 hoi4 = 479 hoi4 = 9439 } # Kalisz -> Kalisz, Tarnowskie Gory, Kreuzburg, Turek
+	link = { vic2 = 712 hoi4 = 9508 hoi4 = 11428 hoi4 = 3586 hoi4 = 11532 } # Lodz -> Lódz, Piotrków Trybunalski, Wloszczowa, Skarzysko-Kamienna
+	link = { vic2 = 717 hoi4 = 9546 hoi4 = 9439 hoi4 = 584 } # Kalisz -> Kalisz, Turek, land
 	link = { vic2 = 710 hoi4 = 493 hoi4 = 548 hoi4 = 11515 hoi4 = 6401 hoi4 = 9400 hoi4 = 3482 hoi4 = 11492 } # Skierniewicz -> Borysew, Gostynin, Konin, Wloclawek, Pruszków, Tomaszów Mazowiecki, Sochaczew
 	link = { vic2 = 706 hoi4 = 3544 hoi4 = 6511 hoi4 = 12562 hoi4 = 524 hoi4 = 467 } # Warsaw -> Warszawa, Piaseczno, Minsk Mazowiecki, Legionowo, Grójec
 	link = { vic2 = 713 hoi4 = 6416 hoi4 = 3458 hoi4 = 562 } # Radom -> Starachowice, Radom, Ostrowiec
