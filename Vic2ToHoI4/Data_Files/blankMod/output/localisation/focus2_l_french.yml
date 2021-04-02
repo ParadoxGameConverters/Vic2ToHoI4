@@ -81,7 +81,7 @@
  potential_take_state_target_tooltip:0 "Possède nos revendications"
  potential_border_war_target_tooltip:0 "Rival potentiel pour un conflit frontalier"
  not_allied_or_subject_of_one_another_tooltip:0 "Pas des alliés ou des sujets l'un de l'autre"
- in_weak_faction_tooltip:0 "Faction plus faible que la nôtre\n(Nous: §Y[?var:their_enemies]§! Divisions Leur: §Y[?var:their_faction]§! Divisions)"
+ in_weak_faction_tooltip:0 "Faction plus faible que la nôtre"
  is_beatable_tooltip:0 "Nous pouvons les battre"
  reclaim_cores:0 "Récupérer les cœurs"
  reclaim_cores_desc:0 "Par tous les moyens nécessaires, nous devons récupérer les terres qui nous ont été illégalement prises dans le passé."

@@ -2718,8 +2718,8 @@ focus = {
 		available = {
 			has_war = no
 			not_in_border_conflict = yes
-			has_opinion = { target = var:neighbor_war_defender value < 0 }
 			var:neighbor_war_defender = {
+				ROOT = { has_opinion = { target = PREV value < 0 } }
 				exists = yes
 				not_in_border_conflict = yes
 			}

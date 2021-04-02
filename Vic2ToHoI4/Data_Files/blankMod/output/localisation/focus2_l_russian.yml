@@ -81,7 +81,7 @@
  potential_take_state_target_tooltip:0 "Владеет нашими претензиями"
  potential_border_war_target_tooltip:0 "Возможный соперник в приграничном конфликте"
  not_allied_or_subject_of_one_another_tooltip:0 "Не союзники или подданные друг друга"
- in_weak_faction_tooltip:0 "Более слабая фракция, чем наша\n (Мы: §Y[?var:their_enemies]§! дивизии Oни: §Y[?var:their_faction]§! дивизии)"
+ in_weak_faction_tooltip:0 "Более слабая фракция, чем наша"
  is_beatable_tooltip:0 "Мы можем победить их"
  reclaim_cores:0 "Восстановить национальные территории"
  reclaim_cores_desc:0 "Любыми необходимыми средствами мы должны вернуть землю, незаконно отнятую у нас в прошлом."

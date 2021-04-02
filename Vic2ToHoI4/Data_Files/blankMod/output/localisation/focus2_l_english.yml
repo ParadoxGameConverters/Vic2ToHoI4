@@ -121,7 +121,7 @@
  potential_take_state_target_tooltip:0 "Owns our claims"
  potential_border_war_target_tooltip:0 "Potential rival for border conflict"
  not_allied_or_subject_of_one_another_tooltip:0 "Not allies or subjects of one another"
- in_weak_faction_tooltip:0 "Weaker faction than ours\n(Us: §Y[?var:their_enemies]§! Divisions Them: §Y[?var:their_faction]§! Divisions)"
+ in_weak_faction_tooltip:0 "Weaker faction than ours"
  is_beatable_tooltip:0 "We can beat them"
  reclaim_cores:0 "Reclaim Cores"
  reclaim_cores_desc:0 "By all means necessary, we must recover the land unlawfully taken from us in the past."
