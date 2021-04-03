@@ -288,7 +288,13 @@ void HoI4::World::convertGovernments(const Vic2::World& sourceWorld,
 	Log(LogLevel::Info) << "\tConverting governments";
 	for (auto country: countries)
 	{
-		country.second->convertGovernment(sourceWorld, *governmentMapper, vic2Localisations, *hoi4Localisations, debug);
+		country.second->convertGovernment(sourceWorld,
+			 *governmentMapper,
+			 vic2Localisations,
+			 *hoi4Localisations,
+			 *graphicsMapper,
+			 *names,
+			 debug);
 	}
 }
 

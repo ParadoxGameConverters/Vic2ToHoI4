@@ -95,8 +95,8 @@ HoI4::Country::Country(std::string tag,
 
 	oldTechnologiesAndInventions = sourceCountry.getTechnologiesAndInventions();
 
+	lastDynasty = sourceCountry.getLastDynasty();
 	convertLeaders(sourceCountry);
-	convertMonarchIdea(graphicsMapper, names, hoi4Localisations, sourceCountry);
 	convertRelations(countryMap, sourceCountry);
 	convertStrategies(countryMap, sourceCountry);
 	atWar = sourceCountry.isAtWar();
@@ -151,6 +151,8 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	 const Mappers::GovernmentMapper& governmentMap,
 	 const Vic2::Localisations& vic2Localisations,
 	 Localisation& hoi4Localisations,
+	 Mappers::GraphicsMapper& graphicsMapper,
+	 Names& names,
 	 bool debug)
 {
 	if (rulingParty == std::nullopt)
@@ -177,6 +179,7 @@ void HoI4::Country::convertGovernment(const Vic2::World& sourceWorld,
 	}
 
 	convertLaws();
+	convertMonarchIdea(graphicsMapper, names, hoi4Localisations);
 }
 
 
@@ -282,8 +285,7 @@ void HoI4::Country::convertLeaders(const Vic2::Country& sourceCountry)
 
 void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMapper,
 	 Names& names,
-	 Localisation& hoi4Localisations,
-	 const Vic2::Country& sourceCountry)
+	 Localisation& hoi4Localisations)
 {
 	if (!hasMonarchIdea())
 	{
@@ -291,7 +293,7 @@ void HoI4::Country::convertMonarchIdea(const Mappers::GraphicsMapper& graphicsMa
 	}
 
 	std::optional<std::string> firstName;
-	std::optional<std::string> surname = sourceCountry.getLastDynasty();
+	std::optional<std::string> surname = lastDynasty;
 
 	bool female = false; // todo(#897): Add chance of female monarchs
 	if (female)
@@ -1283,7 +1285,7 @@ std::optional<HoI4FocusTree> HoI4::Country::getNationalFocus() const
 bool HoI4::Country::hasMonarchIdea() const
 {
 	return (oldGovernment == "prussian_constitutionalism" || oldGovernment == "hms_government") &&
-			 (governmentIdeology != "absolutist");
+			 (governmentIdeology != "absolutist") && (leaderIdeology != "absolute_monarchy_neutral");
 }
 
 
