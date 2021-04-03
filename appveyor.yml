@@ -17,14 +17,14 @@ test_script:
     (new-object net.webclient).UploadFile("https://ci.appveyor.com/api/testresults/junit/$($env:APPVEYOR_JOB_ID)", (Resolve-Path .\tests.xml))
 artifacts:
 - path: Release
-  name: Vic2ToHoI4-0.2Oppenheimer-prerelease
+  name: Vic2ToHoI4-0.3Oppenheimer
 deploy:
 - provider: GitHub
-  release: windows_development_build
-  description: The most recent build of the development version
+  release: 0.3Oppenheimer
+  description: The Domestic Release
   auth_token:
     secure: LBJzs4y9j0N5y0ajp7gmVk3Pvnec1UU5pTCdIMbQYUddEXQnWTJ79FXsd9SCs7YQ
   repository: ParadoxGameConverters/Vic2ToHoI4
-  artifact: Vic2ToHoI4-0.2Oppenheimer-prerelease
+  artifact: Vic2ToHoI4-0.3Oppenheimer
   prerelease: true
   force_update: true
