@@ -561,6 +561,10 @@
 			}
 
 			cancel_if_invalid = no
+
+			ai_will_do = {
+   				factor = 1
+   			}
 		}
 
 		export_focus = {
@@ -582,6 +586,10 @@
 			default = yes
 
 			cancel_if_invalid = no
+
+			ai_will_do = {
+   				factor = 1
+   			}
 		}
 
 		limited_exports = {
