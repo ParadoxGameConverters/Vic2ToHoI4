@@ -6,10 +6,22 @@ ideas = {
 			picture = culture_aborigine
 			modifier = { }
 		}
+		culture_adelphic = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_adelphic
+			modifier = { }
+		}
 		culture_afar = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_afar
+			modifier = { }
+		}
+		culture_afer = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_afer
 			modifier = { }
 		}
 		culture_africaine = {
@@ -60,6 +72,36 @@ ideas = {
 			picture = culture_afro_caribeno
 			modifier = { }
 		}
+		culture_afro_carpathian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_afro_carpathian
+			modifier = { }
+		}
+		culture_afro_greek = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_afro_greek
+			modifier = { }
+		}
+		culture_afro_italian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_afro_italian
+			modifier = { }
+		}
+		culture_afro_norse = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_afro_norse
+			modifier = { }
+		}
+		culture_afro_slavic = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_afro_slavic
+			modifier = { }
+		}
 		culture_aimara = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -88,6 +130,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_albanian
+			modifier = { }
+		}
+		culture_alexandrine = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_alexandrine
 			modifier = { }
 		}
 		culture_alien = {
@@ -119,6 +167,12 @@ ideas = {
 			picture = culture_all_italian
 			modifier = { }
 		}
+		culture_alpine = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_alpine
+			modifier = { }
+		}
 		culture_amazonian = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -141,6 +195,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_amhara
+			modifier = { }
+		}
+		culture_anatolian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_anatolian
 			modifier = { }
 		}
 		culture_andalucian = {
@@ -177,6 +237,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_armenian
+			modifier = { }
+		}
+		culture_aromanian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_aromanian
 			modifier = { }
 		}
 		culture_ashkenazi = {
@@ -219,6 +285,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_australienne
+			modifier = { }
+		}
+		culture_australus = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_australus
 			modifier = { }
 		}
 		culture_avadhi = {
@@ -281,6 +353,12 @@ ideas = {
 			picture = culture_basque
 			modifier = { }
 		}
+		culture_bazramani = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_bazramani
+			modifier = { }
+		}
 		culture_bedouin = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -297,6 +375,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_beja
+			modifier = { }
+		}
+		culture_belgian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_belgian
 			modifier = { }
 		}
 		culture_bengali = {
@@ -347,6 +431,12 @@ ideas = {
 			picture = culture_breton
 			modifier = { }
 		}
+		culture_brithenig = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_brithenig
+			modifier = { }
+		}
 		culture_british = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -371,10 +461,22 @@ ideas = {
 			picture = culture_byelorussian
 			modifier = { }
 		}
+		culture_bythlimmoth = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_bythlimmoth
+			modifier = { }
+		}
 		culture_caddoan = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_caddoan
+			modifier = { }
+		}
+		culture_camite = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_camite
 			modifier = { }
 		}
 		culture_caribeno = {
@@ -387,6 +489,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_carribean
+			modifier = { }
+		}
+		culture_carthaginian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_carthaginian
 			modifier = { }
 		}
 		culture_cat = {
@@ -406,6 +514,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_catalan
+			modifier = { }
+		}
+		culture_celtiberian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_celtiberian
 			modifier = { }
 		}
 		culture_central_algonquian = {
@@ -444,6 +558,12 @@ ideas = {
 			picture = culture_chibchan
 			modifier = { }
 		}
+		culture_coptic = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_coptic
+			modifier = { }
+		}
 		culture_crni = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -466,6 +586,30 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_czech
+			modifier = { }
+		}
+		culture_dacian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_dacian
+			modifier = { }
+		}
+		culture_dacian_african = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_dacian_african
+			modifier = { }
+		}
+		culture_dacian_american = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_dacian_american
+			modifier = { }
+		}
+		culture_dacian_australian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_dacian_australian
 			modifier = { }
 		}
 		culture_dakshin = {
@@ -510,11 +654,38 @@ ideas = {
 			picture = culture_dixie
 			modifier = { }
 		}
+		culture_dog_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = GFX_default_fallback_texture # This is Dog
+			modifier = { opinion_gain_monthly_factor = 0.2 }
+		}
 		culture_dongren = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_dongren
 			modifier = { }
+		}
+		culture_dragon_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_dragon_culture
+			modifier = {
+				no_supply_grace = 500
+				heat_attrition_factor = -1
+				offence = 0.2
+				enemy_army_bonus_air_superiority_factor = -0.5
+				ai_get_ally_desire_factor = -100
+			}
+		}
+		culture_duck_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_duck_culture
+			modifier = {
+				winter_attrition_factor = 0.5
+				amphibious_invasion = 0.1 #Can ducks swim?
+			}
 		}
 		culture_dummy = {
 			removal_cost = -1
@@ -526,6 +697,24 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_dutch
+			modifier = { }
+		}
+		culture_dytic_african = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_dytic_african
+			modifier = { }
+		}
+		culture_dytic_american = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_dytic_american
+			modifier = { }
+		}
+		culture_dytic_australian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_dytic_australian
 			modifier = { }
 		}
 		culture_dyula = {
@@ -552,10 +741,31 @@ ideas = {
 			picture = culture_edo
 			modifier = { }
 		}
+		culture_elephant_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_elephant_culture
+			modifier = {
+				army_artillery_attack_factor = 0.5
+				ai_focus_aggressive_factor = -0.5
+			}
+		}
+		culture_elsinorian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_elsinorian
+			modifier = { }
+		}
 		culture_english = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_english
+			modifier = { }
+		}
+		culture_epicrateian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_epicrateian
 			modifier = { }
 		}
 		culture_eskaleut = {
@@ -574,6 +784,18 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_estonian
+			modifier = { }
+		}
+		culture_etrurian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_etrurian
+			modifier = { }
+		}
+		culture_euxinian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_euxinian
 			modifier = { }
 		}
 		culture_ewe = {
@@ -618,6 +840,12 @@ ideas = {
 			picture = culture_flemish
 			modifier = { }
 		}
+		culture_foederatus = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_foederatus
+			modifier = { }
+		}
 		culture_fon = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -642,6 +870,12 @@ ideas = {
 			picture = culture_french_canadian
 			modifier = { }
 		}
+		culture_frencharab = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_frencharab
+			modifier = { }
+		}
 		culture_fulbe = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -654,10 +888,28 @@ ideas = {
 			picture = culture_fur
 			modifier = { }
 		}
+		culture_gadolite = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_gadolite
+			modifier = { }
+		}
+		culture_galatian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_galatian
+			modifier = { }
+		}
 		culture_galician = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_galician
+			modifier = { }
+		}
+		culture_gaulish = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_gaulish
 			modifier = { }
 		}
 		culture_georgian = {
@@ -670,6 +922,18 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_german
+			modifier = { }
+		}
+		culture_getian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_getian
+			modifier = { }
+		}
+		culture_gothic = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_gothic
 			modifier = { }
 		}
 		culture_greek = {
@@ -702,6 +966,12 @@ ideas = {
 			picture = culture_guney
 			modifier = { }
 		}
+		culture_gypsy = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_gypsy
+			modifier = { }
+		}
 		culture_hakka = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -732,6 +1002,14 @@ ideas = {
 			picture = culture_hazara
 			modifier = { }
 		}
+		culture_hedgehog_culture = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_hedgehog_culture
+			modifier = { #Gotta go fast
+				army_armor_speed_factor = 0.5
+			}
+		}
 		culture_heiren = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -744,10 +1022,34 @@ ideas = {
 			picture = culture_herero
 			modifier = { }
 		}
+		culture_hittite_american = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_hittite_american
+			modifier = { }
+		}
+		culture_hittite_australian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_hittite_australian
+			modifier = { }
+		}
+		culture_hittite_g = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_hittite_g
+			modifier = { }
+		}
 		culture_hnedy = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_hnedy
+			modifier = { }
+		}
+		culture_holmgardr = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_holmgardr
 			modifier = { }
 		}
 		culture_horse = {
@@ -764,6 +1066,12 @@ ideas = {
 				cavalry_attack_factor = 0.1
 				cavalry_defence_factor = 0.1
 			}
+		}
+		culture_hulwud = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_hulwud
+			modifier = { }
 		}
 		culture_hungarian = {
 			removal_cost = -1
@@ -795,6 +1103,18 @@ ideas = {
 			picture = culture_ifriqi
 			modifier = { }
 		}
+		culture_illyrian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_illyrian
+			modifier = { }
+		}
+		culture_inythmum = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_inythmum
+			modifier = { }
+		}
 		culture_irish = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -805,6 +1125,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_iroquoian
+			modifier = { }
+		}
+		culture_israeli = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_israeli
 			modifier = { }
 		}
 		culture_italoamericano = {
@@ -861,6 +1187,12 @@ ideas = {
 			picture = culture_jizni
 			modifier = { }
 		}
+		culture_juodaodis = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_juodaodis
+			modifier = { }
+		}
 		culture_juzhno = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -877,6 +1209,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_kachin
+			modifier = { }
+		}
+		culture_kaifeng = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_kaifeng
 			modifier = { }
 		}
 		culture_kanauji = {
@@ -945,6 +1283,18 @@ ideas = {
 			picture = culture_kirgiz
 			modifier = { }
 		}
+		culture_kleinvenedig = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_kleinvenedig
+			modifier = { }
+		}
+		culture_knaanic = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_knaanic
+			modifier = { }
+		}
 		culture_korean = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -963,16 +1313,58 @@ ideas = {
 			picture = culture_kurdish
 			modifier = { }
 		}
+		culture_laaz = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_laaz
+			modifier = { }
+		}
+		culture_lacanite = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_lacanite
+			modifier = { }
+		}
+		culture_laessin = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_laessin
+			modifier = { }
+		}
 		culture_lao = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_lao
 			modifier = { }
 		}
+		culture_latin = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_latin
+			modifier = { }
+		}
 		culture_latvian = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_latvian
+			modifier = { }
+		}
+		culture_lemnian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_lemnian
+			modifier = { }
+		}
+		culture_lepontic = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_lepontic
+			modifier = { }
+		}
+		culture_liphocaneth = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_liphocaneth
 			modifier = { }
 		}
 		culture_lithuanian = {
@@ -1023,6 +1415,24 @@ ideas = {
 			picture = culture_luo
 			modifier = { }
 		}
+		culture_lusitanian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_lusitanian
+			modifier = { }
+		}
+		culture_luwian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_luwian
+			modifier = { }
+		}
+		culture_lydian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_lydian
+			modifier = { }
+		}
 		culture_maasai = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -1045,6 +1455,18 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_maghrebi
+			modifier = { }
+		}
+		culture_magnagreek = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_magnagreek
+			modifier = { }
+		}
+		culture_magogic = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_magogic
 			modifier = { }
 		}
 		culture_makua = {
@@ -1137,6 +1559,12 @@ ideas = {
 			picture = culture_mayan
 			modifier = { }
 		}
+		culture_meashighcaw = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_meashighcaw
+			modifier = { }
+		}
 		culture_melanesian = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -1173,10 +1601,28 @@ ideas = {
 			picture = culture_min
 			modifier = { }
 		}
+		culture_misrayim = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_misrayim
+			modifier = { }
+		}
 		culture_misri = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_misri
+			modifier = { }
+		}
+		culture_mizrahi = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_mizrahi
+			modifier = { }
+		}
+		culture_mlachthi = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_mlachthi
 			modifier = { }
 		}
 		culture_moluccan = {
@@ -1203,6 +1649,12 @@ ideas = {
 			picture = culture_morado
 			modifier = { }
 		}
+		culture_morlach = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_morlach
+			modifier = { }
+		}
 		culture_mossi = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -1219,6 +1671,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_mustvalge
+			modifier = { }
+		}
+		culture_mysehi = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_mysehi
 			modifier = { }
 		}
 		culture_na_dene = {
@@ -1263,10 +1721,22 @@ ideas = {
 			picture = culture_negru
 			modifier = { }
 		}
+		culture_nehwaustronijaz = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_nehwaustronijaz
+			modifier = { }
+		}
 		culture_neokosmi = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_neokosmi
+			modifier = { }
+		}
+		culture_neotyrrhenian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_neotyrrhenian
 			modifier = { }
 		}
 		culture_nepali = {
@@ -1287,10 +1757,10 @@ ideas = {
 			picture = culture_nieuwereld
 			modifier = { }
 		}
-		culture_noculture = {
+		culture_noric = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_noculture
+			picture = culture_noric
 			modifier = { }
 		}
 		culture_north_andean = {
@@ -1371,16 +1841,52 @@ ideas = {
 			picture = culture_nuer
 			modifier = { }
 		}
+		culture_nuragic = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_nuragic
+			modifier = { }
+		}
 		culture_occitan = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_occitan
 			modifier = { }
 		}
+		culture_old_italian_african = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_old_italian_african
+			modifier = { }
+		}
+		culture_old_italian_american = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_old_italian_american
+			modifier = { }
+		}
+		culture_old_italian_australian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_old_italian_australian
+			modifier = { }
+		}
+		culture_old_ligurian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_old_ligurian
+			modifier = { }
+		}
 		culture_oldpommeranian = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_oldpommeranian
+			modifier = { }
+		}
+		culture_oldspain = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_oldspain
 			modifier = { }
 		}
 		culture_ontustik = {
@@ -1407,6 +1913,18 @@ ideas = {
 			picture = culture_ostrogothic
 			modifier = { }
 		}
+		culture_outremer = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_outremer
+			modifier = { }
+		}
+		culture_overnissian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_overnissian
+			modifier = { }
+		}
 		culture_ovimbundu = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -1431,6 +1949,12 @@ ideas = {
 			picture = culture_patagonian
 			modifier = { }
 		}
+		culture_pecheneg = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_pecheneg
+			modifier = { }
+		}
 		culture_penutian = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -1449,6 +1973,18 @@ ideas = {
 			picture = culture_phianam
 			modifier = { }
 		}
+		culture_phoenician = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_phoenician
+			modifier = { }
+		}
+		culture_phrygian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_phrygian
+			modifier = { }
+		}
 		culture_picard = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -1461,6 +1997,24 @@ ideas = {
 			picture = culture_pictish
 			modifier = { }
 		}
+		culture_pie_african = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_pie_african
+			modifier = { }
+		}
+		culture_pie_american = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_pie_american
+			modifier = { }
+		}
+		culture_pie_oceanian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_pie_oceanian
+			modifier = { }
+		}
 		culture_plains_algonquian = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -1471,6 +2025,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_platinean
+			modifier = { }
+		}
+		culture_pmpese = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_pmpese
 			modifier = { }
 		}
 		culture_polar_bears = {
@@ -1510,6 +2070,30 @@ ideas = {
 			picture = culture_portuguese
 			modifier = { }
 		}
+		culture_prettanian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_prettanian
+			modifier = { }
+		}
+		culture_pruthenian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_pruthenian
+			modifier = { }
+		}
+		culture_punic_american = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_punic_american
+			modifier = { }
+		}
+		culture_punic_australian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_punic_australian
+			modifier = { }
+		}
 		culture_qalindigi = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -1526,6 +2110,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_rajput
+			modifier = { }
+		}
+		culture_rhaetian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_rhaetian
 			modifier = { }
 		}
 		culture_romanian = {
@@ -1558,6 +2148,12 @@ ideas = {
 			picture = culture_saahi
 			modifier = { }
 		}
+		culture_sabellian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_sabellian
+			modifier = { }
+		}
 		culture_sami = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -1568,6 +2164,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_sara
+			modifier = { }
+		}
+		culture_sarmatian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_sarmatian
 			modifier = { }
 		}
 		culture_schwarzreicher = {
@@ -1624,10 +2226,28 @@ ideas = {
 			picture = culture_siberian
 			modifier = { }
 		}
+		culture_sicorathi = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_sicorathi
+			modifier = { }
+		}
+		culture_siculian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_siculian
+			modifier = { }
+		}
 		culture_sidama = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_sidama
+			modifier = { }
+		}
+		culture_sidonian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_sidonian
 			modifier = { }
 		}
 		culture_sindi = {
@@ -1658,6 +2278,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_slovene
+			modifier = { }
+		}
+		culture_smelis = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_smelis
 			modifier = { }
 		}
 		culture_smugly = {
@@ -1712,6 +2338,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_south_italian
+			modifier = { }
+		}
+		culture_spaniolic = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_spaniolic
 			modifier = { }
 		}
 		culture_spanish = {
@@ -1786,10 +2418,28 @@ ideas = {
 			picture = culture_sydlig
 			modifier = { }
 		}
+		culture_symacom = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_symacom
+			modifier = { }
+		}
+		culture_sythchy = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_sythchy
+			modifier = { }
+		}
 		culture_tajik = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_tajik
+			modifier = { }
+		}
+		culture_taliaite = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_taliaite
 			modifier = { }
 		}
 		culture_tamil = {
@@ -1840,6 +2490,30 @@ ideas = {
 			picture = culture_thegioimoi
 			modifier = { }
 		}
+		culture_thracian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_thracian
+			modifier = { }
+		}
+		culture_thracian_african = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_thracian_african
+			modifier = { }
+		}
+		culture_thracian_american = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_thracian_american
+			modifier = { }
+		}
+		culture_thracian_australian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_thracian_australian
+			modifier = { }
+		}
 		culture_tibetan = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -1856,6 +2530,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_tiv
+			modifier = { }
+		}
+		culture_tocharian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_tocharian
 			modifier = { }
 		}
 		culture_tonga = {
@@ -1894,10 +2574,28 @@ ideas = {
 			picture = culture_turkmen
 			modifier = { }
 		}
+		culture_tyrrhafrican = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_tyrrhafrican
+			modifier = { }
+		}
+		culture_tyrrhaustralian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_tyrrhaustralian
+			modifier = { }
+		}
+		culture_ualonuth = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_ualonuth
+			modifier = { }
+		}
 		culture_ugrian = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_ugrian
+			picture = culture_ugrian 
 			modifier = { }
 		}
 		culture_uighur = {
@@ -1953,1050 +2651,10 @@ ideas = {
 			picture = culture_uzbek
 			modifier = { }
 		}
-		culture_vietnamese = {
+		culture_vandal = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_vietnamese
-			modifier = { }
-		}
-		culture_vinlander = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_vinlander
-			modifier = { }
-		}
-		culture_visigothic = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_visigothic
-			modifier = { }
-		}
-		culture_wallonian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_wallonian
-			modifier = { }
-		}
-		culture_welsh = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_welsh
-			modifier = { }
-		}
-		culture_western_slavic = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_western_slavic
-			modifier = { }
-		}
-		culture_wolof = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_wolof
-			modifier = { }
-		}
-		culture_xhosa = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_xhosa
-			modifier = { }
-		}
-		culture_yakut = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_yakut
-			modifier = { }
-		}
-		culture_yankee = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_yankee
-			modifier = { }
-		}
-		culture_yao = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_yao
-			modifier = { }
-		}
-		culture_yenidun = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_yenidun
-			modifier = { }
-		}
-		culture_yi = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_yi
-			modifier = { }
-		}
-		culture_yoruba = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_yoruba
-			modifier = { }
-		}
-		culture_yue = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_yue
-			modifier = { }
-		}
-		culture_yuzhny = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_yuzhny
-			modifier = { }
-		}
-		culture_zapotec = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_zapotec
-			modifier = { }
-		}
-		culture_zhuang = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_zhuang
-			modifier = { }
-		}
-		culture_zuidelijk = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_zuidelijk
-			modifier = { }
-		}
-		culture_zulu = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_zulu
-			modifier = { }
-		}
-		culture_gypsy = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_gypsy
-			modifier = { }
-		}
-		culture_brithenig = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_brithenig
-			modifier = { }
-		}
-		culture_gaul = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_gaul
-			modifier = { }
-		}
-		culture_laessin = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_laessin
-			modifier = { }
-		}
-		culture_volga_german = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_volga_german
-			modifier = { }
-		}
-
-
-		culture_siebenburger = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_siebenburger
-			modifier = { }
-		}
-
-
-		culture_swiss_french = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_swiss_french
-			modifier = { }
-		}
-
-
-		culture_swiss_german = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_swiss_german
-			modifier = { }
-		}
-
-
-		culture_swiss_italian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_swiss_italian
-			modifier = { }
-		}
-
-
-		culture_romansh = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_romansh
-			modifier = { }
-		}
-
-
-		culture_rhinelander = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_rhinelander
-			modifier = { }
-		}
-
-
-		culture_arpitan = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_arpitan
-			modifier = { }
-		}
-
-
-		culture_montenegrin = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_montenegrin
-			modifier = { }
-		}
-
-
-		culture_dagestani = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_dagestani
-			modifier = { }
-		}
-
-
-		culture_chechen = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_chechen
-			modifier = { }
-		}
-
-
-		culture_circassian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_circassian
-			modifier = { }
-		}
-
-
-		culture_anglo_indian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_anglo_indian
-			modifier = { }
-		}
-
-
-		culture_alaskan = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_alaskan
-			modifier = { }
-		}
-
-
-		culture_neo_zelandais = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_neo_zelandais
-			modifier = { }
-		}
-
-
-		culture_louisianan = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_louisianan
-			modifier = { }
-		}
-
-
-		culture_cajun = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_cajun
-			modifier = { }
-		}
-
-
-		culture_french_australian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_french_australian
-			modifier = { }
-		}
-
-
-		culture_kreol = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_kreol
-			modifier = { }
-		}
-
-
-		culture_griqua = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_griqua
-			modifier = { }
-		}
-
-
-		culture_western_nigritic = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_western_nigritic
-			modifier = { }
-		}
-
-
-		culture_gur = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_gur
-			modifier = { }
-		}
-
-
-		culture_east_kwa = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_east_kwa
-			modifier = { }
-		}
-
-
-		culture_kuba = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_kuba
-			modifier = { }
-		}
-
-
-		culture_lendu = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_lendu
-			modifier = { }
-		}
-
-
-		culture_kingwana = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_kingwana
-			modifier = { }
-		}
-
-
-		culture_chokwe = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_chokwe
-			modifier = { }
-		}
-
-
-		culture_kavango = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_kavango
-			modifier = { }
-		}
-
-
-		culture_ubangian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_ubangian
-			modifier = { }
-		}
-
-
-		culture_forest_bantu = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_forest_bantu
-			modifier = { }
-		}
-
-
-		culture_south_forest_bantu = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_south_forest_bantu
-			modifier = { }
-		}
-
-
-		culture_kilombero = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_kilombero
-			modifier = { }
-		}
-
-
-		culture_lacustrine_bantu = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_lacustrine_bantu
-			modifier = { }
-		}
-
-
-		culture_cushitic = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_cushitic
-			modifier = { }
-		}
-
-
-		culture_nilotic = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_nilotic
-			modifier = { }
-		}
-
-
-		culture_nyasa = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_nyasa
-			modifier = { }
-		}
-
-
-		culture_southern_bantu = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_southern_bantu
-			modifier = { }
-		}
-
-
-		culture_afro_norse = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_afro_norse
-			modifier = { }
-		}
-		culture_afro_carpathian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_afro_carpathian
-			modifier = { }
-		}
-		culture_afro_italian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_afro_italian
-			modifier = { }
-		}
-		culture_afro_greek = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_afro_greek
-			modifier = { }
-		}
-		culture_afro_slavic = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_afro_slavic
-			modifier = { }
-		}
-		culture_aromanian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_aromanian
-			modifier = { }
-		}
-		#1.28
-		culture_outremer = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_outremer
-			modifier = { }
-		}
-		culture_dog_culture = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = GFX_default_fallback_texture #This Is Dog
-			modifier = { opinion_gain_monthly_factor = 0.2 }
-		}
-		culture_duck_culture = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_duck_culture
-			modifier = {
-				winter_attrition_factor = 0.5
-				amphibious_invasion = 0.1 #Can ducks swim?
-			}
-		}
-		culture_dragon_culture = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_dragon_culture
-			modifier = {
-				no_supply_grace = 500
-				heat_attrition_factor = -1
-				offence = 0.2
-				enemy_army_bonus_air_superiority_factor = -0.5
-				ai_get_ally_desire_factor = -100
-			}
-		}
-		culture_elephant_culture = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_elephant_culture
-			modifier = {
-				army_artillery_attack_factor = 0.5
-				ai_focus_aggressive_factor = -0.5
-			}
-		}
-		culture_hedgehog_culture = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_hedgehog_culture
-			modifier = { #Gotta go fast
-				army_armor_speed_factor = 0.5
-			}
-		}
-		culture_cree = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_cree
-			modifier = { 
-			}
-		}
-		culture_dakota = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_dakota
-			modifier = { 
-			}
-		}
-		culture_inuit = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_inuit
-			modifier = { 
-			}
-		}
-		culture_navajo = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_navajo
-			modifier = { 
-			}
-		}
-		culture_pueblo = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_pueblo
-			modifier = { 
-			}
-		}
-		culture_tupinamba = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_tupinamba
-			modifier = { 
-			}
-		}
-		culture_yangichi = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_yangichi
-			modifier = { 
-			}
-		}
-		culture_janubi = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_janubi
-			modifier = { 
-			}
-		}
-		culture_afrigi = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_afrigi
-			modifier = { 
-			}
-		}
-		culture_pishgam = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_dinajidad
-			modifier = { 
-			}
-		}
-		culture_nimruzi = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_janub
-			modifier = { 
-			}
-		}
-		culture_afrighayi = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_saahi
-			modifier = { 
-			}
-		}
-
-    culture_coptic = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_coptic
-			modifier = { }
-		}
-		
-		culture_latin = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_latin
-			modifier = { }
-		}
-		
-		culture_xliponian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_xliponian
-			modifier = { }
-		}
-		
-		culture_wenedyk = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_wenedyk
-			modifier = { }
-		}
-		
-		culture_bazramani = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_bazramani
-			modifier = { }
-		}
-		
-		culture_foederatus = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_foederatus
-			modifier = { }
-		}
-		
-		culture_afer = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_afer
-			modifier = { }
-		}
-		
-		culture_australus = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_australus
-			modifier = { }
-		}
-		
-		culture_meashighcaw = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_meashighcaw
-			modifier = { }
-		}
-		
-		culture_anatolian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_anatolian
-			modifier = { }
-		}
-		culture_frencharab = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_frencharab
-			modifier = { }
-		}
-		culture_magnagreek = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_magnagreek
-			modifier = { }
-		}
-		#Jewish world cultures
-		  culture_knaanic = {
-		   removal_cost = -1
-		   allowed = { always = no } allowed_civil_war = { always = yes }
-		   picture = culture_knaanic
-		   modifier = { }
-		  }
-
-		  culture_magogic = {
-		   removal_cost = -1
-		   allowed = { always = no } allowed_civil_war = { always = yes }
-		   picture = culture_magogic
-		   modifier = { }
-		  }
-
-		  culture_yevanic = {
-		   removal_cost = -1
-		   allowed = { always = no } allowed_civil_war = { always = yes }
-		   picture = culture_yevanic
-		   modifier = { }
-		  }
-
-		  culture_mizrahi = {
-		   removal_cost = -1
-		   allowed = { always = no } allowed_civil_war = { always = yes }
-		   picture = culture_mizrahi
-		   modifier = { }
-		  }
-
-		  culture_israeli = {
-		   removal_cost = -1
-		   allowed = { always = no } allowed_civil_war = { always = yes }
-		   picture = culture_israeli
-		   modifier = { }
-		  }
-
-		  culture_misrayim = {
-		   removal_cost = -1
-		   allowed = { always = no } allowed_civil_war = { always = yes }
-		   picture = culture_misrayim
-		   modifier = { }
-		  }
-
-		  culture_zarphatic = {
-		   removal_cost = -1
-		   allowed = { always = no } allowed_civil_war = { always = yes }
-		   picture = culture_zarphatic
-		   modifier = { }
-		  }
-
-		  culture_laaz = {
-		   removal_cost = -1
-		   allowed = { always = no } allowed_civil_war = { always = yes }
-		   picture = culture_laaz
-		   modifier = { }
-		  }
-
-		  culture_kaifeng = {
-		   removal_cost = -1
-		   allowed = { always = no } allowed_civil_war = { always = yes }
-		   picture = culture_kaifeng
-		   modifier = { }
-		  }
-
-		  culture_hulwud = {
-		   removal_cost = -1
-		   allowed = { always = no } allowed_civil_war = { always = yes }
-		   picture = culture_hulwud
-		   modifier = { }
-		  }
-
-		  culture_camite = {
-		   removal_cost = -1
-		   allowed = { always = no } allowed_civil_war = { always = yes }
-		   picture = culture_camite
-		   modifier = { }
-		  }
-		culture_alexandrine = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_alexandrine
-			modifier = { }
-		}
-		culture_nuragic = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_nuragic
-			modifier = { }
-		}
-		culture_oldspain = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_oldspain
-			modifier = { }
-		}
-		culture_pie_american = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_pie_american
-			modifier = { }
-		}
-		culture_pie_oceanian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_pie_oceanian
-			modifier = { }
-		}
-		culture_pie_african = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_pie_african
-			modifier = { }
-		}		
-		culture_adelphic = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_adelphic
-			modifier = { }
-		}
-		culture_belgian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_belgian
-			modifier = { }
-		}
-		culture_bythlimmoth = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_bythlimmoth
-			modifier = { }
-		}
-		culture_carthaginian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_carthaginian
-			modifier = { }
-		}
-		culture_celtiberian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_celtiberian
-			modifier = { }
-		}
-		culture_dacian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_dacian
-			modifier = { }
-		}
-		culture_dytic_african = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_dytic_african
-			modifier = { }
-		}
-		culture_dytic_american = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_dytic_american
-			modifier = { }
-		}
-		culture_dytic_australian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_dytic_australian
-			modifier = { }
-		}
-		culture_epicrateian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_epicrateian
-			modifier = { }
-		}
-		culture_euxinian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_euxinian
-			modifier = { }
-		}
-		culture_gadolite = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_gadolite
-			modifier = { }
-		}
-		culture_galatian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_galatian
-			modifier = { }
-		}
-		culture_gaulish = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_gaulish
-			modifier = { }
-		}
-		culture_getian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_getian
-			modifier = { }
-		}
-		culture_gothic = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_gothic
-			modifier = { }
-		}
-		culture_hittite_american = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_hittite_american
-			modifier = { }
-		}
-		culture_hittite_australian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_hittite_australian
-			modifier = { }
-		}
-		culture_hittite_g = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_hittite_g
-			modifier = { }
-		}
-		culture_inythmum = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_inythmum
-			modifier = { }
-		}
-		culture_lacanite = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_lacanite
-			modifier = { }
-		}
-		culture_liphocaneth = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_liphocaneth
-			modifier = { }
-		}
-		culture_luwian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_luwian
-			modifier = { }
-		}
-		culture_lydian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_lydian
-			modifier = { }
-		}
-		culture_mlachthi = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_mlachthi
-			modifier = { }
-		}
-		culture_mysehi = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_mysehi
-			modifier = { }
-		}
-		culture_nehwaustronijaz = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_nehwaustronijaz
-			modifier = { }
-		}
-		culture_phrygian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_phrygian
-			modifier = { }
-		}
-		culture_pmpese = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_pmpese
-			modifier = { }
-		}
-		culture_prettanian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_prettanian
-			modifier = { }
-		}
-		culture_punic_american = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_punic_american
-			modifier = { }
-		}
-		culture_punic_australian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_punic_australian
-			modifier = { }
-		}
-		culture_sicorathi = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_sicorathi
-			modifier = { }
-		}
-		culture_sidonian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_sidonian
-			modifier = { }
-		}
-		culture_spaniolic = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_spaniolic
-			modifier = { }
-		}
-		culture_symacom = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_symacom
-			modifier = { }
-		}
-		culture_sythchy = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_sythchy
-			modifier = { }
-		}
-		culture_taliaite = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_taliaite
-			modifier = { }
-		}
-		culture_thracian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_thracian
-			modifier = { }
-		}
-		culture_ualonuth = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_ualonuth
+			picture = culture_vandal
 			modifier = { }
 		}
 		culture_varangian = {
@@ -3023,16 +2681,130 @@ ideas = {
 			picture = culture_varangian_australian
 			modifier = { }
 		}
+		culture_venetic = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_venetic
+			modifier = { }
+		}
+		culture_vietnamese = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_vietnamese
+			modifier = { }
+		}
+		culture_vinlander = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_vinlander
+			modifier = { }
+		}
+		culture_virshjuros = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_virshjuros
+			modifier = { }
+		}
+		culture_visigothic = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_visigothic
+			modifier = { }
+		}
+		culture_wallonian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_wallonian
+			modifier = { }
+		}
+		culture_welsh = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_welsh
+			modifier = { }
+		}
+		culture_wenedyk = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_wenedyk
+			modifier = { }
+		}
+		culture_western_slavic = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_western_slavic
+			modifier = { }
+		}
+		culture_wolof = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_wolof
+			modifier = { }
+		}
+		culture_xhosa = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_xhosa
+			modifier = { }
+		}
+		culture_xliponian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_xliponian
+			modifier = { }
+		}
+		culture_yakut = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_yakut
+			modifier = { }
+		}
+		culture_yankee = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_yankee
+			modifier = { }
+		}
+		culture_yao = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_yao
+			modifier = { }
+		}
 		culture_ychibarku = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_ychibarku
 			modifier = { }
 		}
+		culture_yenidun = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_yenidun
+			modifier = { }
+		}
+		culture_yevanic = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_yevanic
+			modifier = { }
+		}
+		culture_yi = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_yi
+			modifier = { }
+		}
 		culture_ynnocho = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_ynnocho
+			modifier = { }
+		}
+		culture_yoruba = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_yoruba
 			modifier = { }
 		}
 		culture_ysthyalm = {
@@ -3053,178 +2825,46 @@ ideas = {
 			picture = culture_ythbynuthi
 			modifier = { }
 		}
-		culture_etrurian = {
+		culture_yue = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_etrurian
+			picture = culture_yue
 			modifier = { }
 		}
-		culture_rhaetian = {
+		culture_yuzhny = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_rhaetian
+			picture = culture_yuzhny
 			modifier = { }
 		}
-		culture_lemnian = {
+		culture_zapotec = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_lemnian
+			picture = culture_zapotec
 			modifier = { }
 		}
- 		culture_elsinorian = {
+		culture_zarphatic = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_elsinorian
+			picture = culture_zarphatic
 			modifier = { }
 		}
- 		culture_sabellian = {
+		culture_zhuang = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_sabellian
+			picture = culture_zhuang
 			modifier = { }
 		}
- 		culture_old_ligurian = {
+		culture_zuidelijk = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_old_ligurian
+			picture = culture_zuidelijk
 			modifier = { }
 		}
- 		culture_venetic = {
+		culture_zulu = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_venetic
-			modifier = { }
-		}
- 		culture_siculian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_siculian
-			modifier = { }
-		}
- 		culture_lepontic = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_lepontic
-			modifier = { }
-		}
- 		culture_noric = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_noric
-			modifier = { }
-		}
- 		culture_lusitanian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_lusitanian
-			modifier = { }
-		}
- 		culture_morlach = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_morlach
-			modifier = { }
-		}
- 		culture_phoenician = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_phoenician
-			modifier = { }
-		}
- 		culture_dacian_american = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_dacian_american
-			modifier = { }
-		}
- 		culture_dacian_african = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_dacian_african
-			modifier = { }
-		}
- 		culture_dacian_australian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_dacian_australian
-			modifier = { }
-		}
- 		culture_celtic_american = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_celtic_american
-			modifier = { }
-		}
- 		culture_celtic_african = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_celtic_african
-			modifier = { }
-		}
- 		culture_celtic_australian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_celtic_australian
-			modifier = { }
-		}
- 		culture_old_italian_american = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_old_italian_american
-			modifier = { }
-		}
- 		culture_old_italian_african = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_old_italian_african
-			modifier = { }
-		}
- 		culture_old_italian_australian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_old_italian_australian
-			modifier = { }
-		}
- 		culture_pruthenian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_pruthenian
-			modifier = { }
-		}
- 		culture_thracian_american = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_thracian_american
-			modifier = { }
-		}
- 		culture_thracian_african = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_thracian_african
-			modifier = { }
-		}
- 		culture_thracian_australian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_thracian_australian
-			modifier = { }
-		}
- 		culture_pecheneg = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_pecheneg
-			modifier = { }
-		}
- 		culture_sarmatian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_sarmatian
-			modifier = { }
-		}
- 		culture_tocharian = {
-			removal_cost = -1
-			allowed = { always = no } allowed_civil_war = { always = yes }
-			picture = culture_tocharian
+			picture = culture_zulu
 			modifier = { }
 		}
 	}
