@@ -1,2423 +1,1870 @@
 spriteTypes = {
 	spriteType = {
-		name = "GFX_idea_culture_aborigine"
-		texturefile = "gfx/interface/culture/culture_aborigine.dds"
+		name = "GFX_idea_culture_aborigine
+		texturefile = gfx/interface/culture/culture_aborigine
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_afar"
-		texturefile = "gfx/interface/culture/culture_afar.dds"
+		name = "GFX_idea_culture_adelphic
+		texturefile = gfx/interface/culture/culture_adelphic
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_africaine"
-		texturefile = "gfx/interface/culture/culture_africaine.dds"
+		name = "GFX_idea_culture_afar
+		texturefile = gfx/interface/culture/culture_afar
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_african_minor"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		name = "GFX_idea_culture_afer
+		texturefile = gfx/interface/culture/culture_afer
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_africano"
-		texturefile = "gfx/interface/culture/culture_africano.dds"
+		name = "GFX_idea_culture_africaine 
+		texturefile = gfx/interface/culture/culture_africaine 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_afro_american"
-		texturefile = "gfx/interface/culture/culture_afro_american.dds"
+		name = "GFX_idea_culture_african_minor
+		texturefile = gfx/interface/culture/culture_african_minor
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_afro_antillean"
-		texturefile = "gfx/interface/culture/culture_afro_antillean.dds"
+		name = "GFX_idea_culture_africano
+		texturefile = gfx/interface/culture/culture_africano
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_afro_brazilian"
-		texturefile = "gfx/interface/culture/culture_afro_brazilian.dds"
+		name = "GFX_idea_culture_afro_american
+		texturefile = gfx/interface/culture/culture_afro_american
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_afro_caribbean"
-		texturefile = "gfx/interface/culture/culture_afro_antillean.dds"
+		name = "GFX_idea_culture_afro_antillean 
+		texturefile = gfx/interface/culture/culture_afro_antillean 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_afro_caribeno"
-		texturefile = "gfx/interface/culture/culture_afro_antillean.dds"
+		name = "GFX_idea_culture_afro_brazilian
+		texturefile = gfx/interface/culture/culture_afro_brazilian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_aimara"
-		texturefile = "gfx/interface/culture/culture_aimara.dds"
+		name = "GFX_idea_culture_afro_caribbean
+		texturefile = gfx/interface/culture/culture_afro_caribbean
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_ainu"
-		texturefile = "gfx/interface/culture/culture_ainu.dds"
+		name = "GFX_idea_culture_afro_caribeno 
+		texturefile = gfx/interface/culture/culture_afro_caribeno 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_akan"
-		texturefile = "gfx/interface/culture/culture_akan.dds"
+		name = "GFX_idea_culture_afro_carpathian
+		texturefile = gfx/interface/culture/culture_afro_carpathian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_alan"
-		texturefile = "gfx/interface/culture/culture_alan.dds"
+		name = "GFX_idea_culture_afro_greek
+		texturefile = gfx/interface/culture/culture_afro_greek
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_albanian"
-		texturefile = "gfx/interface/culture/culture_albanian.dds"
+		name = "GFX_idea_culture_afro_italian
+		texturefile = gfx/interface/culture/culture_afro_italian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_alien"
-		texturefile = "gfx/interface/culture/culture_alien.dds"
+		name = "GFX_idea_culture_afro_norse 
+		texturefile = gfx/interface/culture/culture_afro_norse 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_all_italian"
-		texturefile = "gfx/interface/culture/culture_all_italian.dds"
+		name = "GFX_idea_culture_afro_slavic
+		texturefile = gfx/interface/culture/culture_afro_slavic
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_amazonian"
-		texturefile = "gfx/interface/culture/culture_amazonian.dds"
+		name = "GFX_idea_culture_aimara
+		texturefile = gfx/interface/culture/culture_aimara
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_americano"
-		texturefile = "gfx/interface/culture/culture_americano.dds"
+		name = "GFX_idea_culture_ainu
+		texturefile = gfx/interface/culture/culture_ainu
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_amerikaner"
-		texturefile = "gfx/interface/culture/culture_amerikaner.dds"
+		name = "GFX_idea_culture_akan
+		texturefile = gfx/interface/culture/culture_akan
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_amhara"
-		texturefile = "gfx/interface/culture/culture_amhara.dds"
+		name = "GFX_idea_culture_alan
+		texturefile = gfx/interface/culture/culture_alan
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_andalucian"
-		texturefile = "gfx/interface/culture/culture_andalucian.dds"
+		name = "GFX_idea_culture_albanian
+		texturefile = gfx/interface/culture/culture_albanian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_anglo_african"
-		texturefile = "gfx/interface/culture/culture_anglo_african.dds"
+		name = "GFX_idea_culture_alexandrine
+		texturefile = gfx/interface/culture/culture_alexandrine
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_anglo_canadian"
-		texturefile = "gfx/interface/culture/culture_anglo_canadian.dds"
+		name = "GFX_idea_culture_alien
+		texturefile = gfx/interface/culture/culture_alien
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_anglo_saxon"
-		texturefile = "gfx/interface/culture/culture_anglo_saxon.dds"
+		name = "GFX_idea_culture_all_italian
+		texturefile = gfx/interface/culture/culture_all_italian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_araucanian"
-		texturefile = "gfx/interface/culture/culture_araucanian.dds"
+		name = "GFX_idea_culture_alpine
+		texturefile = gfx/interface/culture/culture_alpine
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_armenian"
-		texturefile = "gfx/interface/culture/culture_armenian.dds"
+		name = "GFX_idea_culture_amazonian
+		texturefile = gfx/interface/culture/culture_amazonian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_ashkenazi"
-		texturefile = "gfx/interface/culture/culture_ashkenazi.dds"
+		name = "GFX_idea_culture_americano
+		texturefile = gfx/interface/culture/culture_americano
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_asian_minor"
-		texturefile = "gfx/interface/culture/culture_asian_minor.dds"
+		name = "GFX_idea_culture_amerikaner
+		texturefile = gfx/interface/culture/culture_amerikaner
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_assamese"
-		texturefile = "gfx/interface/culture/culture_assamese.dds"
+		name = "GFX_idea_culture_amhara
+		texturefile = gfx/interface/culture/culture_amhara
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_assyrian"
-		texturefile = "gfx/interface/culture/culture_assyrian.dds"
+		name = "GFX_idea_culture_anatolian
+		texturefile = gfx/interface/culture/culture_anatolian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_australian"
-		texturefile = "gfx/interface/culture/culture_australian.dds"
+		name = "GFX_idea_culture_andalucian
+		texturefile = gfx/interface/culture/culture_andalucian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_australiano"
-		texturefile = "gfx/interface/culture/culture_australiano.dds"
+		name = "GFX_idea_culture_anglo_african
+		texturefile = gfx/interface/culture/culture_anglo_african
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_australienne"
-		texturefile = "gfx/interface/culture/culture_australienne.dds"
+		name = "GFX_idea_culture_anglo_canadian
+		texturefile = gfx/interface/culture/culture_anglo_canadian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_avadhi"
-		texturefile = "gfx/interface/culture/culture_avadhi.dds"
+		name = "GFX_idea_culture_anglo_saxon
+		texturefile = gfx/interface/culture/culture_anglo_saxon
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_azande"
-		texturefile = "gfx/interface/culture/culture_african_native.dds"
+		name = "GFX_idea_culture_araucanian
+		texturefile = gfx/interface/culture/culture_araucanian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_azerbaijani"
-		texturefile = "gfx/interface/culture/culture_azerbaijani.dds"
+		name = "GFX_idea_culture_armenian
+		texturefile = gfx/interface/culture/culture_armenian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_baganda"
-		texturefile = "gfx/interface/culture/culture_baganda.dds"
+		name = "GFX_idea_culture_aromanian
+		texturefile = gfx/interface/culture/culture_aromanian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_baguirmi"
-		texturefile = "gfx/interface/culture/culture_baguirmi.dds"
+		name = "GFX_idea_culture_ashkenazi 
+		texturefile = gfx/interface/culture/culture_ashkenazi 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_bai"
-		texturefile = "gfx/interface/culture/culture_bai.dds"
+		name = "GFX_idea_culture_asian_minor
+		texturefile = gfx/interface/culture/culture_asian_minor
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_bakongo"
-		texturefile = "gfx/interface/culture/culture_bakongo.dds"
+		name = "GFX_idea_culture_assamese
+		texturefile = gfx/interface/culture/culture_assamese
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_baluchi"
-		texturefile = "gfx/interface/culture/culture_baluchi.dds"
+		name = "GFX_idea_culture_assyrian
+		texturefile = gfx/interface/culture/culture_assyrian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_bambara"
-		texturefile = "gfx/interface/culture/culture_bambara.dds"
+		name = "GFX_idea_culture_australian
+		texturefile = gfx/interface/culture/culture_australian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_basque"
-		texturefile = "gfx/interface/culture/culture_basque.dds"
+		name = "GFX_idea_culture_australiano
+		texturefile = gfx/interface/culture/culture_australiano
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_bedouin"
-		texturefile = "gfx/interface/culture/culture_bedouin.dds"
+		name = "GFX_idea_culture_australienne 
+		texturefile = gfx/interface/culture/culture_australienne 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_beifaren"
-		texturefile = "gfx/interface/culture/culture_beifaren.dds"
+		name = "GFX_idea_culture_australus
+		texturefile = gfx/interface/culture/culture_australus
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_beja"
-		texturefile = "gfx/interface/culture/culture_beja.dds"
+		name = "GFX_idea_culture_avadhi
+		texturefile = gfx/interface/culture/culture_avadhi
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_bengali"
-		texturefile = "gfx/interface/culture/culture_bengali.dds"
+		name = "GFX_idea_culture_azande
+		texturefile = gfx/interface/culture/culture_azande
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_berber"
-		texturefile = "gfx/interface/culture/culture_berber.dds"
+		name = "GFX_idea_culture_azerbaijani
+		texturefile = gfx/interface/culture/culture_azerbaijani
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_bihari"
-		texturefile = "gfx/interface/culture/culture_bihari.dds"
+		name = "GFX_idea_culture_baganda
+		texturefile = gfx/interface/culture/culture_baganda
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_boer"
-		texturefile = "gfx/interface/culture/culture_boer.dds"
+		name = "GFX_idea_culture_baguirmi
+		texturefile = gfx/interface/culture/culture_baguirmi
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_bornean"
-		texturefile = "gfx/interface/culture/culture_bornean.dds"
+		name = "GFX_idea_culture_bai
+		texturefile = gfx/interface/culture/culture_bai
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_bosniak"
-		texturefile = "gfx/interface/culture/culture_bosniak.dds"
+		name = "GFX_idea_culture_bakongo
+		texturefile = gfx/interface/culture/culture_bakongo
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_brazilian"
-		texturefile = "gfx/interface/culture/culture_brazilian.dds"
+		name = "GFX_idea_culture_baluchi
+		texturefile = gfx/interface/culture/culture_baluchi
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_breton"
-		texturefile = "gfx/interface/culture/culture_breton.dds"
+		name = "GFX_idea_culture_bambara
+		texturefile = gfx/interface/culture/culture_bambara
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_british"
-		texturefile = "gfx/interface/culture/culture_british.dds"
+		name = "GFX_idea_culture_basque
+		texturefile = gfx/interface/culture/culture_basque
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_bulgarian"
-		texturefile = "gfx/interface/culture/culture_bulgarian.dds"
+		name = "GFX_idea_culture_bazramani
+		texturefile = gfx/interface/culture/culture_bazramani
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_burmese"
-		texturefile = "gfx/interface/culture/culture_burmese.dds"
+		name = "GFX_idea_culture_bedouin
+		texturefile = gfx/interface/culture/culture_bedouin
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_byelorussian"
-		texturefile = "gfx/interface/culture/culture_byelorussian.dds"
+		name = "GFX_idea_culture_beifaren
+		texturefile = gfx/interface/culture/culture_beifaren
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_caddoan"
-		texturefile = "gfx/interface/culture/culture_caddoan.dds"
+		name = "GFX_idea_culture_beja
+		texturefile = gfx/interface/culture/culture_beja
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_caribeno"
-		texturefile = "gfx/interface/culture/culture_caribeno.dds"
+		name = "GFX_idea_culture_belgian
+		texturefile = gfx/interface/culture/culture_belgian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_carribean"
-		texturefile = "gfx/interface/culture/culture_carribean.dds"
+		name = "GFX_idea_culture_bengali
+		texturefile = gfx/interface/culture/culture_bengali
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_cat"
-		texturefile = "gfx/interface/culture/culture_cat.dds"
+		name = "GFX_idea_culture_berber
+		texturefile = gfx/interface/culture/culture_berber
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_catalan"
-		texturefile = "gfx/interface/culture/culture_catalan.dds"
+		name = "GFX_idea_culture_bihari
+		texturefile = gfx/interface/culture/culture_bihari
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_central_algonquian"
-		texturefile = "gfx/interface/culture/culture_central_algonquian.dds"
+		name = "GFX_idea_culture_boer
+		texturefile = gfx/interface/culture/culture_boer
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_central_american"
-		texturefile = "gfx/interface/culture/culture_central_american.dds"
+		name = "GFX_idea_culture_bornean
+		texturefile = gfx/interface/culture/culture_bornean
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_chacoan"
-		texturefile = "gfx/interface/culture/culture_chacoan.dds"
+		name = "GFX_idea_culture_bosniak
+		texturefile = gfx/interface/culture/culture_bosniak
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_cherokee"
-		texturefile = "gfx/interface/culture/culture_cherokee.dds"
+		name = "GFX_idea_culture_brazilian
+		texturefile = gfx/interface/culture/culture_brazilian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_chewa"
-		texturefile = "gfx/interface/culture/culture_chewa.dds"
+		name = "GFX_idea_culture_breton
+		texturefile = gfx/interface/culture/culture_breton
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_chibchan"
-		texturefile = "gfx/interface/culture/culture_chibchan.dds"
+		name = "GFX_idea_culture_brithenig 
+		texturefile = gfx/interface/culture/culture_brithenig 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_crni"
-		texturefile = "gfx/interface/culture/culture_crni.dds"
+		name = "GFX_idea_culture_british
+		texturefile = gfx/interface/culture/culture_british
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_croat"
-		texturefile = "gfx/interface/culture/culture_croat.dds"
+		name = "GFX_idea_culture_bulgarian
+		texturefile = gfx/interface/culture/culture_bulgarian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_czarny"
-		texturefile = "gfx/interface/culture/culture_czarny.dds"
+		name = "GFX_idea_culture_burmese
+		texturefile = gfx/interface/culture/culture_burmese
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_czech"
-		texturefile = "gfx/interface/culture/culture_czech.dds"
+		name = "GFX_idea_culture_byelorussian
+		texturefile = gfx/interface/culture/culture_byelorussian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_dakshin"
-		texturefile = "gfx/interface/culture/culture_dakshin.dds"
+		name = "GFX_idea_culture_bythlimmoth
+		texturefile = gfx/interface/culture/culture_bythlimmoth
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_danish"
-		texturefile = "gfx/interface/culture/culture_danish.dds"
+		name = "GFX_idea_culture_caddoan
+		texturefile = gfx/interface/culture/culture_caddoan
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_delian"
-		texturefile = "gfx/interface/culture/culture_delian.dds"
+		name = "GFX_idea_culture_camite
+		texturefile = gfx/interface/culture/culture_camite
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_dhen"
-		texturefile = "gfx/interface/culture/culture_dhen.dds"
+		name = "GFX_idea_culture_caribeno
+		texturefile = gfx/interface/culture/culture_caribeno
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_dinajidad"
-		texturefile = "gfx/interface/culture/culture_dinajidad.dds"
+		name = "GFX_idea_culture_carribean
+		texturefile = gfx/interface/culture/culture_carribean
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_dinka"
-		texturefile = "gfx/interface/culture/culture_dinka.dds"
+		name = "GFX_idea_culture_carthaginian
+		texturefile = gfx/interface/culture/culture_carthaginian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_dixie"
-		texturefile = "gfx/interface/culture/culture_dixie.dds"
+		name = "GFX_idea_culture_cat
+		texturefile = gfx/interface/culture/culture_cat
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_dongren"
-		texturefile = "gfx/interface/culture/culture_dongren.dds"
+		name = "GFX_idea_culture_catalan
+		texturefile = gfx/interface/culture/culture_catalan
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_dummy"
-		texturefile = "gfx/interface/culture/culture_dummy.dds"
+		name = "GFX_idea_culture_celtiberian
+		texturefile = gfx/interface/culture/culture_celtiberian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_dutch"
-		texturefile = "gfx/interface/culture/culture_dutch.dds"
+		name = "GFX_idea_culture_central_algonquian
+		texturefile = gfx/interface/culture/culture_central_algonquian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_dyula"
-		texturefile = "gfx/interface/culture/culture_dyula.dds"
+		name = "GFX_idea_culture_central_american
+		texturefile = gfx/interface/culture/culture_central_american
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_ealimi"
-		texturefile = "gfx/interface/culture/culture_ealimi.dds"
+		name = "GFX_idea_culture_chacoan
+		texturefile = gfx/interface/culture/culture_chacoan
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_eastern_algonquian"
-		texturefile = "gfx/interface/culture/culture_eastern_algonquian.dds"
+		name = "GFX_idea_culture_cherokee
+		texturefile = gfx/interface/culture/culture_cherokee
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_edo"
-		texturefile = "gfx/interface/culture/culture_edo.dds"
+		name = "GFX_idea_culture_chewa
+		texturefile = gfx/interface/culture/culture_chewa
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_english"
-		texturefile = "gfx/interface/culture/culture_english.dds"
+		name = "GFX_idea_culture_chibchan
+		texturefile = gfx/interface/culture/culture_chibchan
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_eskaleut"
-		texturefile = "gfx/interface/culture/culture_eskaleut.dds"
+		name = "GFX_idea_culture_coptic
+		texturefile = gfx/interface/culture/culture_coptic
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_esmer"
-		texturefile = "gfx/interface/culture/culture_esmer.dds"
+		name = "GFX_idea_culture_crni
+		texturefile = gfx/interface/culture/culture_crni
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_estonian"
-		texturefile = "gfx/interface/culture/culture_estonian.dds"
+		name = "GFX_idea_culture_croat
+		texturefile = gfx/interface/culture/culture_croat
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_ewe"
-		texturefile = "gfx/interface/culture/culture_ewe.dds"
+		name = "GFX_idea_culture_czarny
+		texturefile = gfx/interface/culture/culture_czarny
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_falklander"
-		texturefile = "gfx/interface/culture/culture_falklander.dds"
+		name = "GFX_idea_culture_czech
+		texturefile = gfx/interface/culture/culture_czech
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_fang"
-		texturefile = "gfx/interface/culture/culture_fang.dds"
+		name = "GFX_idea_culture_dacian
+		texturefile = gfx/interface/culture/culture_dacian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_fekete"
-		texturefile = "gfx/interface/culture/culture_fekete.dds"
+		name = "GFX_idea_culture_dacian_african
+		texturefile = gfx/interface/culture/culture_dacian_african
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_filipino"
-		texturefile = "gfx/interface/culture/culture_filipino.dds"
+		name = "GFX_idea_culture_dacian_american
+		texturefile = gfx/interface/culture/culture_dacian_american
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_finnish"
-		texturefile = "gfx/interface/culture/culture_finnish.dds"
+		name = "GFX_idea_culture_dacian_australian
+		texturefile = gfx/interface/culture/culture_dacian_australian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_flemish"
-		texturefile = "gfx/interface/culture/culture_flemish.dds"
+		name = "GFX_idea_culture_dakshin
+		texturefile = gfx/interface/culture/culture_dakshin
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_fon"
-		texturefile = "gfx/interface/culture/culture_fon.dds"
+		name = "GFX_idea_culture_danish 
+		texturefile = gfx/interface/culture/culture_danish 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_frankish"
-		texturefile = "gfx/interface/culture/culture_frankish.dds"
+		name = "GFX_idea_culture_delian
+		texturefile = gfx/interface/culture/culture_delian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_french"
-		texturefile = "gfx/interface/culture/culture_french.dds"
+		name = "GFX_idea_culture_dhen
+		texturefile = gfx/interface/culture/culture_dhen
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_french_canadian"
-		texturefile = "gfx/interface/culture/culture_french_canadian.dds"
+		name = "GFX_idea_culture_dinajidad
+		texturefile = gfx/interface/culture/culture_dinajidad
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_fulbe"
-		texturefile = "gfx/interface/culture/culture_fulbe.dds"
+		name = "GFX_idea_culture_dinka
+		texturefile = gfx/interface/culture/culture_dinka
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_fur"
-		texturefile = "gfx/interface/culture/culture_fur.dds"
+		name = "GFX_idea_culture_dixie
+		texturefile = gfx/interface/culture/culture_dixie
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_galician"
-		texturefile = "gfx/interface/culture/culture_galician.dds"
+		name = "GFX_idea_culture_dog_culture
+		texturefile = gfx/interface/culture/culture_dog_culture
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_georgian"
-		texturefile = "gfx/interface/culture/culture_georgian.dds"
+		name = "GFX_idea_culture_dongren
+		texturefile = gfx/interface/culture/culture_dongren
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_german"
-		texturefile = "gfx/interface/culture/culture_german.dds"
+		name = "GFX_idea_culture_dragon_culture
+		texturefile = gfx/interface/culture/culture_dragon_culture
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_greek"
-		texturefile = "gfx/interface/culture/culture_greek.dds"
+		name = "GFX_idea_culture_duck_culture
+		texturefile = gfx/interface/culture/culture_duck_culture
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_guajiro"
-		texturefile = "gfx/interface/culture/culture_guajiro.dds"
+		name = "GFX_idea_culture_dummy
+		texturefile = gfx/interface/culture/culture_dummy
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_guarani"
-		texturefile = "gfx/interface/culture/culture_guarani.dds"
+		name = "GFX_idea_culture_dutch 
+		texturefile = gfx/interface/culture/culture_dutch 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_gujarati"
-		texturefile = "gfx/interface/culture/culture_gujarati.dds"
+		name = "GFX_idea_culture_dytic_african
+		texturefile = gfx/interface/culture/culture_dytic_african
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_guney"
-		texturefile = "gfx/interface/culture/culture_guney.dds"
+		name = "GFX_idea_culture_dytic_american
+		texturefile = gfx/interface/culture/culture_dytic_american
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_hakka"
-		texturefile = "gfx/interface/culture/culture_hakka.dds"
+		name = "GFX_idea_culture_dytic_australian
+		texturefile = gfx/interface/culture/culture_dytic_australian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_harari"
-		texturefile = "gfx/interface/culture/culture_harari.dds"
+		name = "GFX_idea_culture_dyula
+		texturefile = gfx/interface/culture/culture_dyula
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_hausa"
-		texturefile = "gfx/interface/culture/culture_hausa.dds"
+		name = "GFX_idea_culture_ealimi
+		texturefile = gfx/interface/culture/culture_ealimi
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_hawaiian"
-		texturefile = "gfx/interface/culture/culture_hawaiian.dds"
+		name = "GFX_idea_culture_eastern_algonquian
+		texturefile = gfx/interface/culture/culture_eastern_algonquian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_hazara"
-		texturefile = "gfx/interface/culture/culture_hazara.dds"
+		name = "GFX_idea_culture_edo
+		texturefile = gfx/interface/culture/culture_edo
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_heiren"
-		texturefile = "gfx/interface/culture/culture_heiren.dds"
+		name = "GFX_idea_culture_elephant_culture
+		texturefile = gfx/interface/culture/culture_elephant_culture
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_herero"
-		texturefile = "gfx/interface/culture/culture_herero.dds"
+		name = "GFX_idea_culture_elsinorian 
+		texturefile = gfx/interface/culture/culture_elsinorian 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_hnedy"
-		texturefile = "gfx/interface/culture/culture_hnedy.dds"
+		name = "GFX_idea_culture_english
+		texturefile = gfx/interface/culture/culture_english
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_horse"
-		texturefile = "gfx/interface/culture/culture_horse.dds"
+		name = "GFX_idea_culture_epicrateian
+		texturefile = gfx/interface/culture/culture_epicrateian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_hungarian"
-		texturefile = "gfx/interface/culture/culture_hungarian.dds"
+		name = "GFX_idea_culture_eskaleut
+		texturefile = gfx/interface/culture/culture_eskaleut
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_ibibio"
-		texturefile = "gfx/interface/culture/culture_ibibio.dds"
+		name = "GFX_idea_culture_esmer
+		texturefile = gfx/interface/culture/culture_esmer
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_ibo"
-		texturefile = "gfx/interface/culture/culture_ibo.dds"
+		name = "GFX_idea_culture_estonian
+		texturefile = gfx/interface/culture/culture_estonian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_icelandic"
-		texturefile = "gfx/interface/culture/culture_icelandic.dds"
+		name = "GFX_idea_culture_etrurian
+		texturefile = gfx/interface/culture/culture_etrurian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_ifriqi"
-		texturefile = "gfx/interface/culture/culture_ifriqi.dds"
+		name = "GFX_idea_culture_euxinian 
+		texturefile = gfx/interface/culture/culture_euxinian 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_irish"
-		texturefile = "gfx/interface/culture/culture_irish.dds"
+		name = "GFX_idea_culture_ewe
+		texturefile = gfx/interface/culture/culture_ewe
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_iroquoian"
-		texturefile = "gfx/interface/culture/culture_iroquoian.dds"
+		name = "GFX_idea_culture_falklander
+		texturefile = gfx/interface/culture/culture_falklander
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_italoamericano"
-		texturefile = "gfx/interface/culture/culture_italoamericano.dds"
+		name = "GFX_idea_culture_fang
+		texturefile = gfx/interface/culture/culture_fang
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_itsekari"
-		texturefile = "gfx/interface/culture/culture_itsekari.dds"
+		name = "GFX_idea_culture_fekete
+		texturefile = gfx/interface/culture/culture_fekete
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_janalem"
-		texturefile = "gfx/interface/culture/culture_janalem.dds"
+		name = "GFX_idea_culture_filipino
+		texturefile = gfx/interface/culture/culture_filipino
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_janub"
-		texturefile = "gfx/interface/culture/culture_janub.dds"
+		name = "GFX_idea_culture_finnish 
+		texturefile = gfx/interface/culture/culture_finnish 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_janubii"
-		texturefile = "gfx/interface/culture/culture_janubii.dds"
+		name = "GFX_idea_culture_flemish 
+		texturefile = gfx/interface/culture/culture_flemish 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_japanese"
-		texturefile = "gfx/interface/culture/culture_japanese.dds"
+		name = "GFX_idea_culture_foederatus
+		texturefile = gfx/interface/culture/culture_foederatus
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_javan"
-		texturefile = "gfx/interface/culture/culture_javan.dds"
+		name = "GFX_idea_culture_fon
+		texturefile = gfx/interface/culture/culture_fon
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_je"
-		texturefile = "gfx/interface/culture/culture_je.dds"
+		name = "GFX_idea_culture_frankish
+		texturefile = gfx/interface/culture/culture_frankish
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_jizni"
-		texturefile = "gfx/interface/culture/culture_jizni.dds"
+		name = "GFX_idea_culture_french 
+		texturefile = gfx/interface/culture/culture_french 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_juzhno"
-		texturefile = "gfx/interface/culture/culture_juzhno.dds"
+		name = "GFX_idea_culture_french_canadian 
+		texturefile = gfx/interface/culture/culture_french_canadian 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_kaala"
-		texturefile = "gfx/interface/culture/culture_kaala.dds"
+		name = "GFX_idea_culture_frencharab
+		texturefile = gfx/interface/culture/culture_frencharab
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_kachin"
-		texturefile = "gfx/interface/culture/culture_kachin.dds"
+		name = "GFX_idea_culture_fulbe
+		texturefile = gfx/interface/culture/culture_fulbe
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_kanauji"
-		texturefile = "gfx/interface/culture/culture_kanauji.dds"
+		name = "GFX_idea_culture_fur
+		texturefile = gfx/interface/culture/culture_fur
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_kannada"
-		texturefile = "gfx/interface/culture/culture_kannada.dds"
+		name = "GFX_idea_culture_gadolite
+		texturefile = gfx/interface/culture/culture_gadolite
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_kanuri"
-		texturefile = "gfx/interface/culture/culture_kanuri.dds"
+		name = "GFX_idea_culture_galatian
+		texturefile = gfx/interface/culture/culture_galatian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_karen"
-		texturefile = "gfx/interface/culture/culture_karen.dds"
+		name = "GFX_idea_culture_galician
+		texturefile = gfx/interface/culture/culture_galician
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_kashmiri"
-		texturefile = "gfx/interface/culture/culture_kashmiri.dds"
+		name = "GFX_idea_culture_gaulish
+		texturefile = gfx/interface/culture/culture_gaulish
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_kazak"
-		texturefile = "gfx/interface/culture/culture_kazak.dds"
+		name = "GFX_idea_culture_georgian
+		texturefile = gfx/interface/culture/culture_georgian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_kefficho"
-		texturefile = "gfx/interface/culture/culture_kefficho.dds"
+		name = "GFX_idea_culture_german
+		texturefile = gfx/interface/culture/culture_german
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_khmer"
-		texturefile = "gfx/interface/culture/culture_khmer.dds"
+		name = "GFX_idea_culture_getian
+		texturefile = gfx/interface/culture/culture_getian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_khoisan"
-		texturefile = "gfx/interface/culture/culture_khoisan.dds"
+		name = "GFX_idea_culture_gothic
+		texturefile = gfx/interface/culture/culture_gothic
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_kikuyu"
-		texturefile = "gfx/interface/culture/culture_kikuyu.dds"
+		name = "GFX_idea_culture_greek
+		texturefile = gfx/interface/culture/culture_greek
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_kirgiz"
-		texturefile = "gfx/interface/culture/culture_kirgiz.dds"
+		name = "GFX_idea_culture_guajiro
+		texturefile = gfx/interface/culture/culture_guajiro
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_korean"
-		texturefile = "gfx/interface/culture/culture_korean.dds"
+		name = "GFX_idea_culture_guarani
+		texturefile = gfx/interface/culture/culture_guarani
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_kru"
-		texturefile = "gfx/interface/culture/culture_kru.dds"
+		name = "GFX_idea_culture_gujarati
+		texturefile = gfx/interface/culture/culture_gujarati
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_kurdish"
-		texturefile = "gfx/interface/culture/culture_kurdish.dds"
+		name = "GFX_idea_culture_guney
+		texturefile = gfx/interface/culture/culture_guney
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_lao"
-		texturefile = "gfx/interface/culture/culture_lao.dds"
+		name = "GFX_idea_culture_gypsy 
+		texturefile = gfx/interface/culture/culture_gypsy 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_latvian"
-		texturefile = "gfx/interface/culture/culture_latvian.dds"
+		name = "GFX_idea_culture_hakka
+		texturefile = gfx/interface/culture/culture_hakka
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_lithuanian"
-		texturefile = "gfx/interface/culture/culture_lithuanian.dds"
+		name = "GFX_idea_culture_harari
+		texturefile = gfx/interface/culture/culture_harari
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_lombard"
-		texturefile = "gfx/interface/culture/culture_lombard.dds"
+		name = "GFX_idea_culture_hausa 
+		texturefile = gfx/interface/culture/culture_hausa 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_lomwe"
-		texturefile = "gfx/interface/culture/culture_lomwe.dds"
+		name = "GFX_idea_culture_hawaiian
+		texturefile = gfx/interface/culture/culture_hawaiian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_lounast"
-		texturefile = "gfx/interface/culture/culture_lounast.dds"
+		name = "GFX_idea_culture_hazara
+		texturefile = gfx/interface/culture/culture_hazara
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_luba"
-		texturefile = "gfx/interface/culture/culture_luba.dds"
+		name = "GFX_idea_culture_hedgehog_culture
+		texturefile = gfx/interface/culture/culture_hedgehog_culture
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_lumenoua"
-		texturefile = "gfx/interface/culture/culture_lumenoua.dds"
+		name = "GFX_idea_culture_heiren
+		texturefile = gfx/interface/culture/culture_heiren
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_lunda"
-		texturefile = "gfx/interface/culture/culture_lunda.dds"
+		name = "GFX_idea_culture_herero
+		texturefile = gfx/interface/culture/culture_herero
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_luo"
-		texturefile = "gfx/interface/culture/culture_luo.dds"
+		name = "GFX_idea_culture_hittite_american
+		texturefile = gfx/interface/culture/culture_hittite_american
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_maasai"
-		texturefile = "gfx/interface/culture/culture_maasaie.dds"
+		name = "GFX_idea_culture_hittite_australian
+		texturefile = gfx/interface/culture/culture_hittite_australian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_macedonian"
-		texturefile = "gfx/interface/culture/culture_macedonian.dds"
+		name = "GFX_idea_culture_hittite_g
+		texturefile = gfx/interface/culture/culture_hittite_g
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_maghreb_arabic" #Actually, Maghreb NOT Arabic, i.e. Carthaginian
-		texturefile = "gfx/interface/culture/culture_maghreb_arabic.dds"
+		name = "GFX_idea_culture_hnedy
+		texturefile = gfx/interface/culture/culture_hnedy
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_maghrebi"
-		texturefile = "gfx/interface/culture/culture_maghrebi.dds"
+		name = "GFX_idea_culture_holmgardr 
+		texturefile = gfx/interface/culture/culture_holmgardr 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_makua"
-		texturefile = "gfx/interface/culture/culture_makua.dds"
+		name = "GFX_idea_culture_horse
+		texturefile = gfx/interface/culture/culture_horse
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_malagasy"
-		texturefile = "gfx/interface/culture/culture_malagasy.dds"
+		name = "GFX_idea_culture_hulwud
+		texturefile = gfx/interface/culture/culture_hulwud
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_malay"
-		texturefile = "gfx/interface/culture/culture_malay.dds"
+		name = "GFX_idea_culture_hungarian
+		texturefile = gfx/interface/culture/culture_hungarian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_malayalam"
-		texturefile = "gfx/interface/culture/culture_malayalam.dds"
+		name = "GFX_idea_culture_ibibio
+		texturefile = gfx/interface/culture/culture_ibibio
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_maltese"
-		texturefile = "gfx/interface/culture/culture_maltese.dds"
+		name = "GFX_idea_culture_ibo
+		texturefile = gfx/interface/culture/culture_ibo
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_manchu"
-		texturefile = "gfx/interface/culture/culture_manchu.dds"
+		name = "GFX_idea_culture_icelandic 
+		texturefile = gfx/interface/culture/culture_icelandic 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_mande"
-		texturefile = "gfx/interface/culture/culture_mande.dds"
+		name = "GFX_idea_culture_ifriqi
+		texturefile = gfx/interface/culture/culture_ifriqi
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_manipuri"
-		texturefile = "gfx/interface/culture/culture_manipuri.dds"
+		name = "GFX_idea_culture_illyrian
+		texturefile = gfx/interface/culture/culture_illyrian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_maori"
-		texturefile = "gfx/interface/culture/culture_maori.dds"
+		name = "GFX_idea_culture_inythmum
+		texturefile = gfx/interface/culture/culture_inythmum
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_maranon"
-		texturefile = "gfx/interface/culture/culture_maranon.dds"
+		name = "GFX_idea_culture_irish 
+		texturefile = gfx/interface/culture/culture_irish 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_marathi"
-		texturefile = "gfx/interface/culture/culture_marathi.dds"
+		name = "GFX_idea_culture_iroquoian
+		texturefile = gfx/interface/culture/culture_iroquoian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_mashriqi"
-		texturefile = "gfx/interface/culture/culture_mashriqi.dds"
+		name = "GFX_idea_culture_israeli
+		texturefile = gfx/interface/culture/culture_israeli
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_maures"
-		texturefile = "gfx/interface/culture/culture_maures.dds"
+		name = "GFX_idea_culture_italoamericano
+		texturefile = gfx/interface/culture/culture_italoamericano
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_mavro"
-		texturefile = "gfx/interface/culture/culture_mavro.dds"
+		name = "GFX_idea_culture_itsekari
+		texturefile = gfx/interface/culture/culture_itsekari
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_mayan"
-		texturefile = "gfx/interface/culture/culture_mayan.dds"
+		name = "GFX_idea_culture_janalem
+		texturefile = gfx/interface/culture/culture_janalem
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_melanesian"
-		texturefile = "gfx/interface/culture/culture_melanesian.dds"
+		name = "GFX_idea_culture_janub
+		texturefile = gfx/interface/culture/culture_janub
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_metis"
-		texturefile = "gfx/interface/culture/culture_metis.dds"
+		name = "GFX_idea_culture_janubii
+		texturefile = gfx/interface/culture/culture_janubii
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_mexican"
-		texturefile = "gfx/interface/culture/culture_mexican.dds"
+		name = "GFX_idea_culture_japanese
+		texturefile = gfx/interface/culture/culture_japanese
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_miao"
-		texturefile = "gfx/interface/culture/culture_miao.dds"
+		name = "GFX_idea_culture_javan
+		texturefile = gfx/interface/culture/culture_javan
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_micronesian"
-		texturefile = "gfx/interface/culture/culture_micronesian.dds"
+		name = "GFX_idea_culture_je
+		texturefile = gfx/interface/culture/culture_je
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_min"
-		texturefile = "gfx/interface/culture/culture_min.dds"
+		name = "GFX_idea_culture_jizni
+		texturefile = gfx/interface/culture/culture_jizni
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_misri"
-		texturefile = "gfx/interface/culture/culture_misri.dds"
+		name = "GFX_idea_culture_juodaodis 
+		texturefile = gfx/interface/culture/culture_juodaodis 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_moluccan"
-		texturefile = "gfx/interface/culture/culture_moluccan.dds"
+		name = "GFX_idea_culture_juzhno
+		texturefile = gfx/interface/culture/culture_juzhno
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_mongo"
-		texturefile = "gfx/interface/culture/culture_mongo.dds"
+		name = "GFX_idea_culture_kaala
+		texturefile = gfx/interface/culture/culture_kaala
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_mongol"
-		texturefile = "gfx/interface/culture/culture_mongol.dds"
+		name = "GFX_idea_culture_kachin
+		texturefile = gfx/interface/culture/culture_kachin
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_morado"
-		texturefile = "gfx/interface/culture/culture_morado.dds"
+		name = "GFX_idea_culture_kaifeng
+		texturefile = gfx/interface/culture/culture_kaifeng
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_mossi"
-		texturefile = "gfx/interface/culture/culture_mossi.dds"
+		name = "GFX_idea_culture_kanauji
+		texturefile = gfx/interface/culture/culture_kanauji
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_muskogean"
-		texturefile = "gfx/interface/culture/culture_muskogean.dds"
+		name = "GFX_idea_culture_kannada
+		texturefile = gfx/interface/culture/culture_kannada
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_mustvalge"
-		texturefile = "gfx/interface/culture/culture_mustvalge.dds"
+		name = "GFX_idea_culture_kanuri
+		texturefile = gfx/interface/culture/culture_kanuri
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_na_dene"
-		texturefile = "gfx/interface/culture/culture_na_dene.dds"
+		name = "GFX_idea_culture_karen
+		texturefile = gfx/interface/culture/culture_karen
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_nahua"
-		texturefile = "gfx/interface/culture/culture_nahua.dds"
+		name = "GFX_idea_culture_kashmiri
+		texturefile = gfx/interface/culture/culture_kashmiri
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_nanfaren"
-		texturefile = "gfx/interface/culture/culture_nanfaren.dds"
+		name = "GFX_idea_culture_kazak
+		texturefile = gfx/interface/culture/culture_kazak
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_nanren"
-		texturefile = "gfx/interface/culture/culture_nanren.dds"
+		name = "GFX_idea_culture_kefficho
+		texturefile = gfx/interface/culture/culture_kefficho
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_native_american_minor"
-		texturefile = "gfx/interface/culture/culture_native_american_minor.dds"
+		name = "GFX_idea_culture_khmer
+		texturefile = gfx/interface/culture/culture_khmer
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_nayeduniya"
-		texturefile = "gfx/interface/culture/culture_nayeduniya.dds"
+		name = "GFX_idea_culture_khoisan
+		texturefile = gfx/interface/culture/culture_khoisan
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_negru"
-		texturefile = "gfx/interface/culture/culture_negru.dds"
+		name = "GFX_idea_culture_kikuyu
+		texturefile = gfx/interface/culture/culture_kikuyu
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_neokosmi"
-		texturefile = "gfx/interface/culture/culture_neokosmi.dds"
+		name = "GFX_idea_culture_kirgiz
+		texturefile = gfx/interface/culture/culture_kirgiz
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_nepali"
-		texturefile = "gfx/interface/culture/culture_nepali.dds"
+		name = "GFX_idea_culture_kleinvenedig
+		texturefile = gfx/interface/culture/culture_kleinvenedig
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_nguni"
-		texturefile = "gfx/interface/culture/culture_nguni.dds"
+		name = "GFX_idea_culture_knaanic
+		texturefile = gfx/interface/culture/culture_knaanic
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_nieuwereld"
-		texturefile = "gfx/interface/culture/culture_nieuwereld.dds"
+		name = "GFX_idea_culture_korean
+		texturefile = gfx/interface/culture/culture_korean
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_noculture"
-		texturefile = "gfx/interface/culture/culture_noculture.dds"
+		name = "GFX_idea_culture_kru
+		texturefile = gfx/interface/culture/culture_kru
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_north_andean"
-		texturefile = "gfx/interface/culture/culture_north_andean.dds"
+		name = "GFX_idea_culture_kurdish
+		texturefile = gfx/interface/culture/culture_kurdish
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_north_caucasian"
-		texturefile = "gfx/interface/culture/culture_north_caucasian.dds"
+		name = "GFX_idea_culture_laaz
+		texturefile = gfx/interface/culture/culture_laaz
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_north_german"
-		texturefile = "gfx/interface/culture/culture_north_german.dds"
+		name = "GFX_idea_culture_lacanite
+		texturefile = gfx/interface/culture/culture_lacanite
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_north_italian"
-		texturefile = "gfx/interface/culture/culture_north_italian.dds"
+		name = "GFX_idea_culture_laessin 
+		texturefile = gfx/interface/culture/culture_laessin 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_norwegian"
-		texturefile = "gfx/interface/culture/culture_norwegian.dds"
+		name = "GFX_idea_culture_lao
+		texturefile = gfx/interface/culture/culture_lao
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_notios"
-		texturefile = "gfx/interface/culture/culture_notios.dds"
+		name = "GFX_idea_culture_latin
+		texturefile = gfx/interface/culture/culture_latin
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_nouvellien"
-		texturefile = "gfx/interface/culture/culture_nouvellien.dds"
+		name = "GFX_idea_culture_latvian 
+		texturefile = gfx/interface/culture/culture_latvian 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_novisvet"
-		texturefile = "gfx/interface/culture/culture_novisvet.dds"
+		name = "GFX_idea_culture_lemnian
+		texturefile = gfx/interface/culture/culture_lemnian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_novvymir"
-		texturefile = "gfx/interface/culture/culture_novvymir.dds"
+		name = "GFX_idea_culture_lepontic 
+		texturefile = gfx/interface/culture/culture_lepontic 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_novysvet"
-		texturefile = "gfx/interface/culture/culture_novysvet.dds"
+		name = "GFX_idea_culture_liphocaneth
+		texturefile = gfx/interface/culture/culture_liphocaneth
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_nowyswiat"
-		texturefile = "gfx/interface/culture/culture_nowyswiat.dds"
+		name = "GFX_idea_culture_lithuanian 
+		texturefile = gfx/interface/culture/culture_lithuanian 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_nuba"
-		texturefile = "gfx/interface/culture/culture_nuba.dds"
+		name = "GFX_idea_culture_lombard 
+		texturefile = gfx/interface/culture/culture_lombard 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_nuer"
-		texturefile = "gfx/interface/culture/culture_nuer.dds"
+		name = "GFX_idea_culture_lomwe
+		texturefile = gfx/interface/culture/culture_lomwe
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_occitan"
-		texturefile = "gfx/interface/culture/culture_occitan.dds"
+		name = "GFX_idea_culture_lounast
+		texturefile = gfx/interface/culture/culture_lounast
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_oldpommeranian"
-		texturefile = "gfx/interface/culture/culture_oldpommeranian.dds"
+		name = "GFX_idea_culture_luba
+		texturefile = gfx/interface/culture/culture_luba
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_ontustik"
-		texturefile = "gfx/interface/culture/culture_ontustik.dds"
+		name = "GFX_idea_culture_lumenoua
+		texturefile = gfx/interface/culture/culture_lumenoua
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_oriya"
-		texturefile = "gfx/interface/culture/culture_oriya.dds"
+		name = "GFX_idea_culture_lunda
+		texturefile = gfx/interface/culture/culture_lunda
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_oromo"
-		texturefile = "gfx/interface/culture/culture_oromo.dds"
+		name = "GFX_idea_culture_luo
+		texturefile = gfx/interface/culture/culture_luo
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_ostrogothic"
-		texturefile = "gfx/interface/culture/culture_ostrogothic.dds"
+		name = "GFX_idea_culture_lusitanian
+		texturefile = gfx/interface/culture/culture_lusitanian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_ovimbundu"
-		texturefile = "gfx/interface/culture/culture_ovimbundu.dds"
+		name = "GFX_idea_culture_luwian
+		texturefile = gfx/interface/culture/culture_luwian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_panjabi"
-		texturefile = "gfx/interface/culture/culture_panjabi.dds"
+		name = "GFX_idea_culture_lydian
+		texturefile = gfx/interface/culture/culture_lydian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_pashtun"
-		texturefile = "gfx/interface/culture/culture_pashtun.dds"
+		name = "GFX_idea_culture_maasai
+		texturefile = gfx/interface/culture/culture_maasai
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_patagonian"
-		texturefile = "gfx/interface/culture/culture_patagonian.dds"
+		name = "GFX_idea_culture_macedonian
+		texturefile = gfx/interface/culture/culture_macedonian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_penutian"
-		texturefile = "gfx/interface/culture/culture_penutian.dds"
+		name = "GFX_idea_culture_maghreb_arabic
+		texturefile = gfx/interface/culture/culture_maghreb_arabic
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_persian"
-		texturefile = "gfx/interface/culture/culture_persian.dds"
+		name = "GFX_idea_culture_maghrebi
+		texturefile = gfx/interface/culture/culture_maghrebi
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_phianam"
-		texturefile = "gfx/interface/culture/culture_phianam.dds"
+		name = "GFX_idea_culture_magnagreek
+		texturefile = gfx/interface/culture/culture_magnagreek
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_picard"
-		texturefile = "gfx/interface/culture/culture_picard.dds"
+		name = "GFX_idea_culture_magogic
+		texturefile = gfx/interface/culture/culture_magogic
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_pictish"
-		texturefile = "gfx/interface/culture/culture_scottish.dds"
+		name = "GFX_idea_culture_makua
+		texturefile = gfx/interface/culture/culture_makua
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_plains_algonquian"
-		texturefile = "gfx/interface/culture/culture_plains_algonquian.dds"
+		name = "GFX_idea_culture_malagasy
+		texturefile = gfx/interface/culture/culture_malagasy
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_platinean"
-		texturefile = "gfx/interface/culture/culture_platinean.dds"
+		name = "GFX_idea_culture_malay
+		texturefile = gfx/interface/culture/culture_malay
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_polar_bears"
-		texturefile = "gfx/interface/culture/culture_polar_bears.dds"
+		name = "GFX_idea_culture_malayalam
+		texturefile = gfx/interface/culture/culture_malayalam
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_polish"
-		texturefile = "gfx/interface/culture/culture_polish.dds"
+		name = "GFX_idea_culture_maltese 
+		texturefile = gfx/interface/culture/culture_maltese 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_poludniowy"
-		texturefile = "gfx/interface/culture/culture_poludniowy.dds"
+		name = "GFX_idea_culture_manchu
+		texturefile = gfx/interface/culture/culture_manchu
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_polynesian"
-		texturefile = "gfx/interface/culture/culture_polynesian.dds"
+		name = "GFX_idea_culture_mande
+		texturefile = gfx/interface/culture/culture_mande
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_portuguese"
-		texturefile = "gfx/interface/culture/culture_portuguese.dds"
+		name = "GFX_idea_culture_manipuri
+		texturefile = gfx/interface/culture/culture_manipuri
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_qalindigi"
-		texturefile = "gfx/interface/culture/culture_qalindigi.dds"
+		name = "GFX_idea_culture_maori
+		texturefile = gfx/interface/culture/culture_maori
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_quechua"
-		texturefile = "gfx/interface/culture/culture_quechua.dds"
+		name = "GFX_idea_culture_maranon
+		texturefile = gfx/interface/culture/culture_maranon
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_rajput"
-		texturefile = "gfx/interface/culture/culture_rajput.dds"
+		name = "GFX_idea_culture_marathi
+		texturefile = gfx/interface/culture/culture_marathi
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_romanian"
-		texturefile = "gfx/interface/culture/culture_romanian.dds"
+		name = "GFX_idea_culture_mashriqi
+		texturefile = gfx/interface/culture/culture_mashriqi
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_ruanda"
-		texturefile = "gfx/interface/culture/culture_ruanda.dds"
+		name = "GFX_idea_culture_maures
+		texturefile = gfx/interface/culture/culture_maures
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_rundi"
-		texturefile = "gfx/interface/culture/culture_rundi.dds"
+		name = "GFX_idea_culture_mavro
+		texturefile = gfx/interface/culture/culture_mavro
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_russian"
-		texturefile = "gfx/interface/culture/culture_russian.dds"
+		name = "GFX_idea_culture_mayan
+		texturefile = gfx/interface/culture/culture_mayan
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_saahi"
-		texturefile = "gfx/interface/culture/culture_saahi.dds"
+		name = "GFX_idea_culture_meashighcaw
+		texturefile = gfx/interface/culture/culture_meashighcaw
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_sami"
-		texturefile = "gfx/interface/culture/culture_sami.dds"
+		name = "GFX_idea_culture_melanesian
+		texturefile = gfx/interface/culture/culture_melanesian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_sara"
-		texturefile = "gfx/interface/culture/culture_sara.dds"
+		name = "GFX_idea_culture_metis
+		texturefile = gfx/interface/culture/culture_metis
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_schwarzreicher"
-		texturefile = "gfx/interface/culture/culture_schwarzreicher.dds"
+		name = "GFX_idea_culture_mexican
+		texturefile = gfx/interface/culture/culture_mexican
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_scottish"
-		texturefile = "gfx/interface/culture/culture_scottish.dds"
+		name = "GFX_idea_culture_miao
+		texturefile = gfx/interface/culture/culture_miao
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_sena"
-		texturefile = "gfx/interface/culture/culture_sena.dds"
+		name = "GFX_idea_culture_micronesian
+		texturefile = gfx/interface/culture/culture_micronesian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_senufo"
-		texturefile = "gfx/interface/culture/culture_senufo.dds"
+		name = "GFX_idea_culture_min
+		texturefile = gfx/interface/culture/culture_min
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_sephardic"
-		texturefile = "gfx/interface/culture/culture_sephardic.dds"
+		name = "GFX_idea_culture_misrayim
+		texturefile = gfx/interface/culture/culture_misrayim
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_serb"
-		texturefile = "gfx/interface/culture/culture_serb.dds"
+		name = "GFX_idea_culture_misri
+		texturefile = gfx/interface/culture/culture_misri
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_shan"
-		texturefile = "gfx/interface/culture/culture_shan.dds"
+		name = "GFX_idea_culture_mizrahi
+		texturefile = gfx/interface/culture/culture_mizrahi
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_shona"
-		texturefile = "gfx/interface/culture/culture_shona.dds"
+		name = "GFX_idea_culture_mlachthi
+		texturefile = gfx/interface/culture/culture_mlachthi
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_siberian"
-		texturefile = "gfx/interface/culture/culture_siberian.dds"
+		name = "GFX_idea_culture_moluccan
+		texturefile = gfx/interface/culture/culture_moluccan
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_sidama"
-		texturefile = "gfx/interface/culture/culture_sidama.dds"
+		name = "GFX_idea_culture_mongo
+		texturefile = gfx/interface/culture/culture_mongo
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_sindi"
-		texturefile = "gfx/interface/culture/culture_sindi.dds"
+		name = "GFX_idea_culture_mongol
+		texturefile = gfx/interface/culture/culture_mongol
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_sinhala"
-		texturefile = "gfx/interface/culture/culture_sinhala.dds"
+		name = "GFX_idea_culture_morado
+		texturefile = gfx/interface/culture/culture_morado
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_siouan"
-		texturefile = "gfx/interface/culture/culture_siouan.dds"
+		name = "GFX_idea_culture_morlach
+		texturefile = gfx/interface/culture/culture_morlach
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_slovak"
-		texturefile = "gfx/interface/culture/culture_slovak.dds"
+		name = "GFX_idea_culture_mossi
+		texturefile = gfx/interface/culture/culture_mossi
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_slovene"
-		texturefile = "gfx/interface/culture/culture_slovene.dds"
+		name = "GFX_idea_culture_muskogean
+		texturefile = gfx/interface/culture/culture_muskogean
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_smugly"
-		texturefile = "gfx/interface/culture/culture_smugly.dds"
+		name = "GFX_idea_culture_mustvalge
+		texturefile = gfx/interface/culture/culture_mustvalge
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_somali"
-		texturefile = "gfx/interface/culture/culture_somali.dds"
+		name = "GFX_idea_culture_mysehi
+		texturefile = gfx/interface/culture/culture_mysehi
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_songhai"
-		texturefile = "gfx/interface/culture/culture_songhai.dds"
+		name = "GFX_idea_culture_na_dene
+		texturefile = gfx/interface/culture/culture_na_dene
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_sonoran"
-		texturefile = "gfx/interface/culture/culture_sonoran.dds"
+		name = "GFX_idea_culture_nahua
+		texturefile = gfx/interface/culture/culture_nahua
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_sorbian"
-		texturefile = "gfx/interface/culture/culture_sorbian.dds"
+		name = "GFX_idea_culture_nanfaren
+		texturefile = gfx/interface/culture/culture_nanfaren
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_sotho"
-		texturefile = "gfx/interface/culture/culture_sotho.dds"
+		name = "GFX_idea_culture_nanren
+		texturefile = gfx/interface/culture/culture_nanren
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_south_andean"
-		texturefile = "gfx/interface/culture/culture_south_andean.dds"
+		name = "GFX_idea_culture_native_american_minor
+		texturefile = gfx/interface/culture/culture_native_american_minor
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_south_german"
-		texturefile = "gfx/interface/culture/culture_south_german.dds"
+		name = "GFX_idea_culture_nayeduniya
+		texturefile = gfx/interface/culture/culture_nayeduniya
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_south_italian"
-		texturefile = "gfx/interface/culture/culture_south_italian.dds"
+		name = "GFX_idea_culture_negru
+		texturefile = gfx/interface/culture/culture_negru
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_spanish"
-		texturefile = "gfx/interface/culture/culture_spanish.dds"
+		name = "GFX_idea_culture_nehwaustronijaz
+		texturefile = gfx/interface/culture/culture_nehwaustronijaz
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_sudanese"
-		texturefile = "gfx/interface/culture/culture_sudanese.dds"
+		name = "GFX_idea_culture_neokosmi
+		texturefile = gfx/interface/culture/culture_neokosmi
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_sudic"
-		texturefile = "gfx/interface/culture/culture_sudic.dds"
+		name = "GFX_idea_culture_neotyrrhenian
+		texturefile = gfx/interface/culture/culture_neotyrrhenian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_sudreicher"
-		texturefile = "gfx/interface/culture/culture_sudreicher.dds"
+		name = "GFX_idea_culture_nepali
+		texturefile = gfx/interface/culture/culture_nepali
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_suebi"
-		texturefile = "gfx/interface/culture/culture_suebi.dds"
+		name = "GFX_idea_culture_nguni
+		texturefile = gfx/interface/culture/culture_nguni
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_sukuma"
-		texturefile = "gfx/interface/culture/culture_sukuma.dds"
+		name = "GFX_idea_culture_nieuwereld
+		texturefile = gfx/interface/culture/culture_nieuwereld
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_sureno"
-		texturefile = "gfx/interface/culture/culture_sureno.dds"
+		name = "GFX_idea_culture_noric
+		texturefile = gfx/interface/culture/culture_noric
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_svart"
-		texturefile = "gfx/interface/culture/culture_svart.dds"
+		name = "GFX_idea_culture_north_andean
+		texturefile = gfx/interface/culture/culture_north_andean
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_swahili"
-		texturefile = "gfx/interface/culture/culture_swahili.dds"
+		name = "GFX_idea_culture_north_caucasian
+		texturefile = gfx/interface/culture/culture_north_caucasian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_swedish"
-		texturefile = "gfx/interface/culture/culture_swedish.dds"
+		name = "GFX_idea_culture_north_german 
+		texturefile = gfx/interface/culture/culture_north_german 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_swiss"
-		texturefile = "gfx/interface/culture/culture_swiss.dds"
+		name = "GFX_idea_culture_north_italian 
+		texturefile = gfx/interface/culture/culture_north_italian 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_sydlig"
-		texturefile = "gfx/interface/culture/culture_sydlig.dds"
+		name = "GFX_idea_culture_norwegian 
+		texturefile = gfx/interface/culture/culture_norwegian 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_tajik"
-		texturefile = "gfx/interface/culture/culture_tajik.dds"
+		name = "GFX_idea_culture_notios
+		texturefile = gfx/interface/culture/culture_notios
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_tamil"
-		texturefile = "gfx/interface/culture/culture_tamil.dds"
+		name = "GFX_idea_culture_nouvellien 
+		texturefile = gfx/interface/culture/culture_nouvellien 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_tarascan"
-		texturefile = "gfx/interface/culture/culture_tarascan.dds"
+		name = "GFX_idea_culture_novisvet
+		texturefile = gfx/interface/culture/culture_novisvet
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_tatar"
-		texturefile = "gfx/interface/culture/culture_tatar.dds"
+		name = "GFX_idea_culture_novvymir
+		texturefile = gfx/interface/culture/culture_novvymir
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_teda"
-		texturefile = "gfx/interface/culture/culture_teda.dds"
+		name = "GFX_idea_culture_novysvet
+		texturefile = gfx/interface/culture/culture_novysvet
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_telegu"
-		texturefile = "gfx/interface/culture/culture_telegu.dds"
+		name = "GFX_idea_culture_nowyswiat
+		texturefile = gfx/interface/culture/culture_nowyswiat
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_texan"
-		texturefile = "gfx/interface/culture/culture_texan.dds"
+		name = "GFX_idea_culture_nuba
+		texturefile = gfx/interface/culture/culture_nuba
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_thai"
-		texturefile = "gfx/interface/culture/culture_thai.dds"
+		name = "GFX_idea_culture_nuer
+		texturefile = gfx/interface/culture/culture_nuer
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_thegioimoi"
-		texturefile = "gfx/interface/culture/culture_thegioimoi.dds"
+		name = "GFX_idea_culture_nuragic
+		texturefile = gfx/interface/culture/culture_nuragic
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_tibetan"
-		texturefile = "gfx/interface/culture/culture_tibetan.dds"
+		name = "GFX_idea_culture_occitan
+		texturefile = gfx/interface/culture/culture_occitan
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_tigray"
-		texturefile = "gfx/interface/culture/culture_tigray.dds"
+		name = "GFX_idea_culture_old_italian_african 
+		texturefile = gfx/interface/culture/culture_old_italian_african 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_tiv"
-		texturefile = "gfx/interface/culture/culture_tiv.dds"
+		name = "GFX_idea_culture_old_italian_american 
+		texturefile = gfx/interface/culture/culture_old_italian_american 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_tonga"
-		texturefile = "gfx/interface/culture/culture_tonga.dds"
+		name = "GFX_idea_culture_old_italian_australian 
+		texturefile = gfx/interface/culture/culture_old_italian_australian 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_tswana"
-		texturefile = "gfx/interface/culture/culture_tswana.dds"
+		name = "GFX_idea_culture_old_ligurian 
+		texturefile = gfx/interface/culture/culture_old_ligurian 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_tuareg"
-		texturefile = "gfx/interface/culture/culture_tuareg.dds"
+		name = "GFX_idea_culture_oldpommeranian
+		texturefile = gfx/interface/culture/culture_oldpommeranian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_tupi"
-		texturefile = "gfx/interface/culture/culture_tupi.dds"
+		name = "GFX_idea_culture_oldspain
+		texturefile = gfx/interface/culture/culture_oldspain
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_turkish"
-		texturefile = "gfx/interface/culture/culture_turkish.dds"
+		name = "GFX_idea_culture_ontustik
+		texturefile = gfx/interface/culture/culture_ontustik
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_turkmen"
-		texturefile = "gfx/interface/culture/culture_turkmen.dds"
+		name = "GFX_idea_culture_oriya
+		texturefile = gfx/interface/culture/culture_oriya
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_ugrian"
-		texturefile = "gfx/interface/culture/culture_ugrian.dds"
+		name = "GFX_idea_culture_oromo
+		texturefile = gfx/interface/culture/culture_oromo
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_uighur"
-		texturefile = "gfx/interface/culture/culture_uighur.dds"
+		name = "GFX_idea_culture_ostrogothic
+		texturefile = gfx/interface/culture/culture_ostrogothic
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_ujvilag"
-		texturefile = "gfx/interface/culture/culture_ujvilag.dds"
+		name = "GFX_idea_culture_outremer
+		texturefile = gfx/interface/culture/culture_outremer
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_ukrainian"
-		texturefile = "gfx/interface/culture/culture_ukrainian.dds"
+		name = "GFX_idea_culture_overnissian
+		texturefile = gfx/interface/culture/culture_overnissian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_undead"
-		texturefile = "gfx/interface/culture/culture_undead.dds"
+		name = "GFX_idea_culture_ovimbundu
+		texturefile = gfx/interface/culture/culture_ovimbundu
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_unyamwezi"
-		texturefile = "gfx/interface/culture/culture_unyamwezi.dds"
+		name = "GFX_idea_culture_panjabi
+		texturefile = gfx/interface/culture/culture_panjabi
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_usmailmian"
-		texturefile = "gfx/interface/culture/culture_usmailmian.dds"
+		name = "GFX_idea_culture_pashtun
+		texturefile = gfx/interface/culture/culture_pashtun
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_uzbek"
-		texturefile = "gfx/interface/culture/culture_uzbek.dds"
+		name = "GFX_idea_culture_patagonian
+		texturefile = gfx/interface/culture/culture_patagonian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_vietnamese"
-		texturefile = "gfx/interface/culture/culture_vietnamese.dds"
+		name = "GFX_idea_culture_pecheneg
+		texturefile = gfx/interface/culture/culture_pecheneg
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_vinlander"
-		texturefile = "gfx/interface/culture/culture_vinlander.dds"
+		name = "GFX_idea_culture_penutian
+		texturefile = gfx/interface/culture/culture_penutian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_visigothic"
-		texturefile = "gfx/interface/culture/culture_visigothic.dds"
+		name = "GFX_idea_culture_persian
+		texturefile = gfx/interface/culture/culture_persian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_wallonian"
-		texturefile = "gfx/interface/culture/culture_wallonian.dds"
+		name = "GFX_idea_culture_phianam
+		texturefile = gfx/interface/culture/culture_phianam
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_welsh"
-		texturefile = "gfx/interface/culture/culture_welsh.dds"
+		name = "GFX_idea_culture_phoenician
+		texturefile = gfx/interface/culture/culture_phoenician
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_western_slavic" #Chervenian/Red Ruthenian
-		texturefile = "gfx/interface/culture/culture_western_slavic.dds"
+		name = "GFX_idea_culture_phrygian
+		texturefile = gfx/interface/culture/culture_phrygian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_wolof"
-		texturefile = "gfx/interface/culture/culture_wolof.dds"
+		name = "GFX_idea_culture_picard 
+		texturefile = gfx/interface/culture/culture_picard 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_xhosa"
-		texturefile = "gfx/interface/culture/culture_xhosa.dds"
+		name = "GFX_idea_culture_pictish
+		texturefile = gfx/interface/culture/culture_pictish
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_yakut"
-		texturefile = "gfx/interface/culture/culture_yakut.dds"
+		name = "GFX_idea_culture_pie_african
+		texturefile = gfx/interface/culture/culture_pie_african
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_yankee"
-		texturefile = "gfx/interface/culture/culture_yankee.dds"
+		name = "GFX_idea_culture_pie_american
+		texturefile = gfx/interface/culture/culture_pie_american
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_yao"
-		texturefile = "gfx/interface/culture/culture_yao.dds"
+		name = "GFX_idea_culture_pie_oceanian
+		texturefile = gfx/interface/culture/culture_pie_oceanian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_yenidun"
-		texturefile = "gfx/interface/culture/culture_yenidun.dds"
+		name = "GFX_idea_culture_plains_algonquian
+		texturefile = gfx/interface/culture/culture_plains_algonquian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_yi"
-		texturefile = "gfx/interface/culture/culture_yi.dds"
+		name = "GFX_idea_culture_platinean
+		texturefile = gfx/interface/culture/culture_platinean
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_yoruba"
-		texturefile = "gfx/interface/culture/culture_yoruba.dds"
+		name = "GFX_idea_culture_pmpese
+		texturefile = gfx/interface/culture/culture_pmpese
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_yue"
-		texturefile = "gfx/interface/culture/culture_yue.dds"
+		name = "GFX_idea_culture_polar_bears
+		texturefile = gfx/interface/culture/culture_polar_bears
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_yuzhny"
-		texturefile = "gfx/interface/culture/culture_yuzhny.dds"
+		name = "GFX_idea_culture_polish
+		texturefile = gfx/interface/culture/culture_polish
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_zapotec"
-		texturefile = "gfx/interface/culture/culture_zapotec.dds"
+		name = "GFX_idea_culture_poludniowy
+		texturefile = gfx/interface/culture/culture_poludniowy
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_zhuang"
-		texturefile = "gfx/interface/culture/culture_zhuang.dds"
+		name = "GFX_idea_culture_polynesian
+		texturefile = gfx/interface/culture/culture_polynesian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_zuidelijk"
-		texturefile = "gfx/interface/culture/culture_zuidelijk.dds"
+		name = "GFX_idea_culture_portuguese
+		texturefile = gfx/interface/culture/culture_portuguese
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_zulu"
-		texturefile = "gfx/interface/culture/culture_zulu.dds"
+		name = "GFX_idea_culture_prettanian
+		texturefile = gfx/interface/culture/culture_prettanian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_gypsy"
-		texturefile = "gfx/interface/culture/culture_gypsy.dds"
+		name = "GFX_idea_culture_pruthenian 
+		texturefile = gfx/interface/culture/culture_pruthenian 
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_brithenig"
-		texturefile = "gfx/interface/culture/culture_brithenig.dds"
+		name = "GFX_idea_culture_punic_american
+		texturefile = gfx/interface/culture/culture_punic_american
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_gaul"
-		texturefile = "gfx/interface/culture/culture_gaul.dds"
+		name = "GFX_idea_culture_punic_australian
+		texturefile = gfx/interface/culture/culture_punic_australian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_laessin"
-		texturefile = "gfx/interface/culture/culture_laessin.dds"
+		name = "GFX_idea_culture_qalindigi
+		texturefile = gfx/interface/culture/culture_qalindigi
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_volga_german"
-		texturefile = "gfx/interface/culture/culture_volga_german.dds"
+		name = "GFX_idea_culture_quechua
+		texturefile = gfx/interface/culture/culture_quechua
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_siebenburger"
-		texturefile = "gfx/interface/culture/culture_siebenburger.dds"
+		name = "GFX_idea_culture_rajput
+		texturefile = gfx/interface/culture/culture_rajput
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_swiss_french"
-		texturefile = "gfx/interface/culture/culture_swiss_french.dds"
+		name = "GFX_idea_culture_rhaetian
+		texturefile = gfx/interface/culture/culture_rhaetian
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_swiss_german"
-		texturefile = "gfx/interface/culture/culture_swiss_german.dds"
+		name = "GFX_idea_culture_romanian
+		texturefile = gfx/interface/culture/culture_romanian
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_swiss_italian"
-		texturefile = "gfx/interface/culture/culture_swiss_italian.dds"
+		name = "GFX_idea_culture_ruanda
+		texturefile = gfx/interface/culture/culture_ruanda
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_romansh"
-		texturefile = "gfx/interface/culture/culture_romansh.dds"
+		name = "GFX_idea_culture_rundi
+		texturefile = gfx/interface/culture/culture_rundi
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_rhinelander"
-		texturefile = "gfx/interface/culture/culture_rhinelander.dds"
+		name = "GFX_idea_culture_russian
+		texturefile = gfx/interface/culture/culture_russian
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_arpitan"
-		texturefile = "gfx/interface/culture/culture_arpitan.dds"
+		name = "GFX_idea_culture_saahi
+		texturefile = gfx/interface/culture/culture_saahi
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_montenegrin"
-		texturefile = "gfx/interface/culture/culture_montenegrin.dds"
+		name = "GFX_idea_culture_sabellian 
+		texturefile = gfx/interface/culture/culture_sabellian 
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_dagestani"
-		texturefile = "gfx/interface/culture/culture_dagestani.dds"
+		name = "GFX_idea_culture_sami
+		texturefile = gfx/interface/culture/culture_sami
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_chechen"
-		texturefile = "gfx/interface/culture/culture_chechen.dds"
+		name = "GFX_idea_culture_sara
+		texturefile = gfx/interface/culture/culture_sara
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_circassian"
-		texturefile = "gfx/interface/culture/culture_circassian.dds"
+		name = "GFX_idea_culture_sarmatian
+		texturefile = gfx/interface/culture/culture_sarmatian
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_anglo_indian"
-		texturefile = "gfx/interface/culture/culture_anglo_indian.dds"
+		name = "GFX_idea_culture_schwarzreicher
+		texturefile = gfx/interface/culture/culture_schwarzreicher
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_alaskan"
-		texturefile = "gfx/interface/culture/culture_alaskan.dds"
+		name = "GFX_idea_culture_scottish
+		texturefile = gfx/interface/culture/culture_scottish
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_neo_zelandais"
-		texturefile = "gfx/interface/culture/culture_neo_zelandais.dds"
+		name = "GFX_idea_culture_sena
+		texturefile = gfx/interface/culture/culture_sena
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_louisianan"
-		texturefile = "gfx/interface/culture/culture_louisianan.dds"
+		name = "GFX_idea_culture_senufo
+		texturefile = gfx/interface/culture/culture_senufo
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_cajun"
-		texturefile = "gfx/interface/culture/culture_cajun.dds"
+		name = "GFX_idea_culture_sephardic
+		texturefile = gfx/interface/culture/culture_sephardic
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_french_australian"
-		texturefile = "gfx/interface/culture/culture_french_australian.dds"
+		name = "GFX_idea_culture_serb
+		texturefile = gfx/interface/culture/culture_serb
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_kreol"
-		texturefile = "gfx/interface/culture/culture_kreol.dds"
+		name = "GFX_idea_culture_shan
+		texturefile = gfx/interface/culture/culture_shan
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_griqua"
-		texturefile = "gfx/interface/culture/culture_griqua.dds"
+		name = "GFX_idea_culture_shona
+		texturefile = gfx/interface/culture/culture_shona
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_western_nigritic"
-		texturefile = "gfx/interface/culture/culture_western_nigritic.dds"
+		name = "GFX_idea_culture_siberian
+		texturefile = gfx/interface/culture/culture_siberian
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_gur"
-		texturefile = "gfx/interface/culture/culture_gur.dds"
+		name = "GFX_idea_culture_sicorathi
+		texturefile = gfx/interface/culture/culture_sicorathi
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_east_kwa"
-		texturefile = "gfx/interface/culture/culture_east_kwa.dds"
+		name = "GFX_idea_culture_siculian 
+		texturefile = gfx/interface/culture/culture_siculian 
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_kuba"
-		texturefile = "gfx/interface/culture/culture_kuba.dds"
+		name = "GFX_idea_culture_sidama
+		texturefile = gfx/interface/culture/culture_sidama
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_lendu"
-		texturefile = "gfx/interface/culture/culture_lendu.dds"
+		name = "GFX_idea_culture_sidonian
+		texturefile = gfx/interface/culture/culture_sidonian
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_kingwana"
-		texturefile = "gfx/interface/culture/culture_kingwana.dds"
+		name = "GFX_idea_culture_sindi
+		texturefile = gfx/interface/culture/culture_sindi
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_chokwe"
-		texturefile = "gfx/interface/culture/culture_chokwe.dds"
+		name = "GFX_idea_culture_sinhala
+		texturefile = gfx/interface/culture/culture_sinhala
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_kavango"
-		texturefile = "gfx/interface/culture/culture_kavango.dds"
+		name = "GFX_idea_culture_siouan
+		texturefile = gfx/interface/culture/culture_siouan
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_ubangian"
-		texturefile = "gfx/interface/culture/culture_ubangian.dds"
+		name = "GFX_idea_culture_slovak
+		texturefile = gfx/interface/culture/culture_slovak
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_forest_bantu"
-		texturefile = "gfx/interface/culture/culture_forest_bantu.dds"
+		name = "GFX_idea_culture_slovene
+		texturefile = gfx/interface/culture/culture_slovene
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_south_forest_bantu"
-		texturefile = "gfx/interface/culture/culture_south_forest_bantu.dds"
+		name = "GFX_idea_culture_smelis 
+		texturefile = gfx/interface/culture/culture_smelis 
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_kilombero"
-		texturefile = "gfx/interface/culture/culture_kilombero.dds"
+		name = "GFX_idea_culture_smugly
+		texturefile = gfx/interface/culture/culture_smugly
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_lacustrine_bantu"
-		texturefile = "gfx/interface/culture/culture_lacustrine_bantu.dds"
+		name = "GFX_idea_culture_somali
+		texturefile = gfx/interface/culture/culture_somali
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_cushitic"
-		texturefile = "gfx/interface/culture/culture_cushitic.dds"
+		name = "GFX_idea_culture_songhai
+		texturefile = gfx/interface/culture/culture_songhai
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_nilotic"
-		texturefile = "gfx/interface/culture/culture_nilotic.dds"
+		name = "GFX_idea_culture_sonoran
+		texturefile = gfx/interface/culture/culture_sonoran
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_nyasa"
-		texturefile = "gfx/interface/culture/culture_nyasa.dds"
+		name = "GFX_idea_culture_sorbian
+		texturefile = gfx/interface/culture/culture_sorbian
 	}
-
-
 	spriteType = {
-		name = "GFX_idea_culture_southern_bantu"
-		texturefile = "gfx/interface/culture/culture_southern_bantu.dds"
+		name = "GFX_idea_culture_sotho
+		texturefile = gfx/interface/culture/culture_sotho
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_afro_norse"
-		texturefile = "gfx/interface/culture/culture_afro_norse.dds"
+		name = "GFX_idea_culture_south_andean
+		texturefile = gfx/interface/culture/culture_south_andean
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_afro_carpathian"
-		texturefile = "gfx/interface/culture/culture_afro_carpathian.dds"
+		name = "GFX_idea_culture_south_german
+		texturefile = gfx/interface/culture/culture_south_german
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_afro_italian"
-		texturefile = "gfx/interface/culture/culture_afro_italian.dds"
+		name = "GFX_idea_culture_south_italian
+		texturefile = gfx/interface/culture/culture_south_italian
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_afro_greek"
-		texturefile = "gfx/interface/culture/culture_afro_greek.dds"
+		name = "GFX_idea_culture_spaniolic
+		texturefile = gfx/interface/culture/culture_spaniolic
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_afro_slavic"
-		texturefile = "gfx/interface/culture/culture_afro_slavic.dds"
+		name = "GFX_idea_culture_spanish
+		texturefile = gfx/interface/culture/culture_spanish
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_aromanian"
-		texturefile = "gfx/interface/culture/culture_aromanian.dds"
+		name = "GFX_idea_culture_sudanese
+		texturefile = gfx/interface/culture/culture_sudanese
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_outremer"
-		texturefile = "gfx/interface/culture/culture_outremer.dds"
+		name = "GFX_idea_culture_sudic
+		texturefile = gfx/interface/culture/culture_sudic
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_duck_culture"
-		texturefile = "gfx/interface/culture/culture_duck_culture.dds"
+		name = "GFX_idea_culture_sudreicher
+		texturefile = gfx/interface/culture/culture_sudreicher
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_dragon_culture"
-		texturefile = "gfx/interface/culture/culture_dragon_culture.dds"
+		name = "GFX_idea_culture_suebi
+		texturefile = gfx/interface/culture/culture_suebi
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_elephant_culture"
-		texturefile = "gfx/interface/culture/culture_elephant_culture.dds"
+		name = "GFX_idea_culture_sukuma
+		texturefile = gfx/interface/culture/culture_sukuma
 	}
-
 	spriteType = {
-		name = "GFX_idea_culture_hedgehog_culture"
-		texturefile = "gfx/interface/culture/culture_hedgehog_culture.dds"
+		name = "GFX_idea_culture_sureno
+		texturefile = gfx/interface/culture/culture_sureno
 	}
 	spriteType = {
-		name = "GFX_idea_culture_cree"
-		texturefile = "gfx/interface/culture/culture_cree.dds"
+		name = "GFX_idea_culture_svart 
+		texturefile = gfx/interface/culture/culture_svart 
 	}
 	spriteType = {
-		name = "GFX_idea_culture_dakota"
-		texturefile = "gfx/interface/culture/culture_dakota.dds"
+		name = "GFX_idea_culture_swahili
+		texturefile = gfx/interface/culture/culture_swahili
 	}
 	spriteType = {
-		name = "GFX_idea_culture_inuit"
-		texturefile = "gfx/interface/culture/culture_inuit.dds"
+		name = "GFX_idea_culture_swedish 
+		texturefile = gfx/interface/culture/culture_swedish 
 	}
 	spriteType = {
-		name = "GFX_idea_culture_navajo"
-		texturefile = "gfx/interface/culture/culture_navajo.dds"
+		name = "GFX_idea_culture_swiss 
+		texturefile = gfx/interface/culture/culture_swiss 
 	}
 	spriteType = {
-		name = "GFX_idea_culture_pueblo"
-		texturefile = "gfx/interface/culture/culture_pueblo.dds"
+		name = "GFX_idea_culture_sydlig 
+		texturefile = gfx/interface/culture/culture_sydlig 
 	}
 	spriteType = {
-		name = "GFX_idea_culture_tupinamba"
-		texturefile = "gfx/interface/culture/culture_tupinamba.dds"
+		name = "GFX_idea_culture_symacom
+		texturefile = gfx/interface/culture/culture_symacom
 	}
 	spriteType = {
-		name = "GFX_idea_culture_yangichi"
-		texturefile = "gfx/interface/culture/culture_yangichi.dds"
+		name = "GFX_idea_culture_sythchy
+		texturefile = gfx/interface/culture/culture_sythchy
 	}
 	spriteType = {
-		name = "GFX_idea_culture_janubi"
-		texturefile = "gfx/interface/culture/culture_janubi.dds"
+		name = "GFX_idea_culture_tajik
+		texturefile = gfx/interface/culture/culture_tajik
 	}
 	spriteType = {
-		name = "GFX_idea_culture_afrigi"
-		texturefile = "gfx/interface/culture/culture_afrigi.dds"
+		name = "GFX_idea_culture_taliaite
+		texturefile = gfx/interface/culture/culture_taliaite
 	}
 	spriteType = {
-		name = "GFX_idea_culture_coptic"
-		texturefile = "gfx/interface/culture/culture_coptic.dds"
+		name = "GFX_idea_culture_tamil
+		texturefile = gfx/interface/culture/culture_tamil
 	}
 	spriteType = {
-		name = "GFX_idea_culture_latin"
-		texturefile = "gfx/interface/culture/culture_latin.dds"
+		name = "GFX_idea_culture_tarascan
+		texturefile = gfx/interface/culture/culture_tarascan
 	}
 	spriteType = {
-		name = "GFX_idea_culture_xliponian"
-		texturefile = "gfx/interface/culture/culture_xliponian.dds"
+		name = "GFX_idea_culture_tatar
+		texturefile = gfx/interface/culture/culture_tatar
 	}
 	spriteType = {
-		name = "GFX_idea_culture_wenedyk"
-		texturefile = "gfx/interface/culture/culture_wenedyk.dds"
+		name = "GFX_idea_culture_teda
+		texturefile = gfx/interface/culture/culture_teda
 	}
 	spriteType = {
-		name = "GFX_idea_culture_bazramani"
-		texturefile = "gfx/interface/culture/culture_bazramani.dds"
+		name = "GFX_idea_culture_telegu
+		texturefile = gfx/interface/culture/culture_telegu
 	}
 	spriteType = {
-		name = "GFX_idea_culture_foederatus"
-		texturefile = "gfx/interface/culture/culture_foederatus.dds"
+		name = "GFX_idea_culture_texan
+		texturefile = gfx/interface/culture/culture_texan
 	}
 	spriteType = {
-		name = "GFX_idea_culture_afer"
-		texturefile = "gfx/interface/culture/culture_afer.dds"
+		name = "GFX_idea_culture_thai
+		texturefile = gfx/interface/culture/culture_thai
 	}
 	spriteType = {
-		name = "GFX_idea_culture_australus"
-		texturefile = "gfx/interface/culture/culture_australus.dds"
+		name = "GFX_idea_culture_thegioimoi
+		texturefile = gfx/interface/culture/culture_thegioimoi
 	}
 	spriteType = {
-		name = "GFX_idea_culture_meashighcaw"
-		texturefile = "gfx/interface/culture/culture_meashighcaw.dds"
+		name = "GFX_idea_culture_thracian
+		texturefile = gfx/interface/culture/culture_thracian
 	}
 	spriteType = {
-		name = "GFX_idea_culture_anatolian"
-		texturefile = "gfx/interface/culture/culture_anatolian.dds"
+		name = "GFX_idea_culture_thracian_african
+		texturefile = gfx/interface/culture/culture_thracian_african
 	}
 	spriteType = {
-		name = "GFX_idea_culture_frencharab"
-		texturefile = "gfx/interface/culture/culture_frencharab.dds"
+		name = "GFX_idea_culture_thracian_american
+		texturefile = gfx/interface/culture/culture_thracian_american
 	}
 	spriteType = {
-		name = "GFX_idea_culture_magnagreek"
-		texturefile = "gfx/interface/culture/culture_magnagreek.dds"
+		name = "GFX_idea_culture_thracian_australian
+		texturefile = gfx/interface/culture/culture_thracian_australian
 	}
-	#Jewish cultures
 	spriteType = {
-	  name = "GFX_idea_culture_knaanic"
-	  texturefile = "gfx/interface/culture/culture_knaanic"
-	 }
-	spriteType = {
-	  name = "GFX_idea_culture_magogic"
-	  texturefile = "gfx/interface/culture/culture_magogic"
-	 }
-	spriteType = {
-	  name = "GFX_idea_culture_yevanic"
-	  texturefile = "gfx/interface/culture/culture_yevanic"
-	 }
-	spriteType = {
-	  name = "GFX_idea_culture_mizrahi"
-	  texturefile = "gfx/interface/culture/culture_mizrahi"
-	 }
-	spriteType = {
-	  name = "GFX_idea_culture_israeli"
-	  texturefile = "gfx/interface/culture/culture_israeli"
-	 }
-	spriteType = {
-	  name = "GFX_idea_culture_misrayim"
-	  texturefile = "gfx/interface/culture/culture_misrayim"
-	 }
-	spriteType = {
-	  name = "GFX_idea_culture_zarphatic"
-	  texturefile = "gfx/interface/culture/culture_zarphatic"
-	 }
-	spriteType = {
-	  name = "GFX_idea_culture_laaz"
-	  texturefile = "gfx/interface/culture/culture_laaz"
-	 }
-	spriteType = {
-	  name = "GFX_idea_culture_kaifeng"
-	  texturefile = "gfx/interface/culture/culture_kaifeng"
-	 }
-	spriteType = {
-	  name = "GFX_idea_culture_hulwud"
-	  texturefile = "gfx/interface/culture/culture_hulwud"
-	 }
-	spriteType = {
-	  name = "GFX_idea_culture_camite"
-	  texturefile = "gfx/interface/culture/culture_camite"
-	 }
-	 spriteType = {
-		name = "GFX_idea_culture_adelphic"
-		texturefile = "gfx/interface/culture/culture_adelphic.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_belgian"
-		texturefile = "gfx/interface/culture/culture_belgian.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_bythlimmoth"
-		texturefile = "gfx/interface/culture/culture_bythlimmoth.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_carthaginian"
-		texturefile = "gfx/interface/culture/culture_carthaginian.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_celtiberian"
-		texturefile = "gfx/interface/culture/culture_celtiberian.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_dacian"
-		texturefile = "gfx/interface/culture/culture_dacian.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_dytic_african"
-		texturefile = "gfx/interface/culture/culture_dytic_african.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_dytic_american"
-		texturefile = "gfx/interface/culture/culture_dytic_american.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_dytic_australian"
-		texturefile = "gfx/interface/culture/culture_dytic_australian.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_epicrateian"
-		texturefile = "gfx/interface/culture/culture_epicrateian.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_euxinian"
-		texturefile = "gfx/interface/culture/culture_euxinian.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_gadolite"
-		texturefile = "gfx/interface/culture/culture_gadolite.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_galatian"
-		texturefile = "gfx/interface/culture/culture_galatian.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_gaulish"
-		texturefile = "gfx/interface/culture/culture_gaulish.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_getian"
-		texturefile = "gfx/interface/culture/culture_getian.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_gothic"
-		texturefile = "gfx/interface/culture/culture_gothic.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_hittite_american"
-		texturefile = "gfx/interface/culture/culture_hittite_american.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_hittite_australian"
-		texturefile = "gfx/interface/culture/culture_hittite_australian.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_hittite_g"
-		texturefile = "gfx/interface/culture/culture_hittite_g.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_inythmum"
-		texturefile = "gfx/interface/culture/culture_inythmum.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_lacanite"
-		texturefile = "gfx/interface/culture/culture_lacanite.dds"
-	}
-	spriteType = {
-		name = "GFX_idea_culture_liphocaneth"
-		texturefile = "gfx/interface/culture/culture_liphocaneth.dds"
+		name = "GFX_idea_culture_tibetan
+		texturefile = gfx/interface/culture/culture_tibetan
 	}
 	spriteType = {
-		name = "GFX_idea_culture_luwian"
-		texturefile = "gfx/interface/culture/culture_luwian.dds"
+		name = "GFX_idea_culture_tigray
+		texturefile = gfx/interface/culture/culture_tigray
 	}
 	spriteType = {
-		name = "GFX_idea_culture_lydian"
-		texturefile = "gfx/interface/culture/culture_lydian.dds"
+		name = "GFX_idea_culture_tiv
+		texturefile = gfx/interface/culture/culture_tiv
 	}
 	spriteType = {
-		name = "GFX_idea_culture_mlachthi"
-		texturefile = "gfx/interface/culture/culture_mlachthi.dds"
+		name = "GFX_idea_culture_tocharian
+		texturefile = gfx/interface/culture/culture_tocharian
 	}
 	spriteType = {
-		name = "GFX_idea_culture_mysehi"
-		texturefile = "gfx/interface/culture/culture_mysehi.dds"
+		name = "GFX_idea_culture_tonga
+		texturefile = gfx/interface/culture/culture_tonga
 	}
 	spriteType = {
-		name = "GFX_idea_culture_nehwaustronijaz"
-		texturefile = "gfx/interface/culture/culture_nehwaustronijaz.dds"
+		name = "GFX_idea_culture_tswana
+		texturefile = gfx/interface/culture/culture_tswana
 	}
 	spriteType = {
-		name = "GFX_idea_culture_phrygian"
-		texturefile = "gfx/interface/culture/culture_phrygian.dds"
+		name = "GFX_idea_culture_tuareg
+		texturefile = gfx/interface/culture/culture_tuareg
 	}
 	spriteType = {
-		name = "GFX_idea_culture_pmpese"
-		texturefile = "gfx/interface/culture/culture_pmpese.dds"
+		name = "GFX_idea_culture_tupi
+		texturefile = gfx/interface/culture/culture_tupi
 	}
 	spriteType = {
-		name = "GFX_idea_culture_prettanian"
-		texturefile = "gfx/interface/culture/culture_prettanian.dds"
+		name = "GFX_idea_culture_turkish
+		texturefile = gfx/interface/culture/culture_turkish
 	}
 	spriteType = {
-		name = "GFX_idea_culture_punic_american"
-		texturefile = "gfx/interface/culture/culture_punic_american.dds"
+		name = "GFX_idea_culture_turkmen
+		texturefile = gfx/interface/culture/culture_turkmen
 	}
 	spriteType = {
-		name = "GFX_idea_culture_punic_australian"
-		texturefile = "gfx/interface/culture/culture_punic_australian.dds"
+		name = "GFX_idea_culture_tyrrhafrican
+		texturefile = gfx/interface/culture/culture_tyrrhafrican
 	}
 	spriteType = {
-		name = "GFX_idea_culture_sicorathi"
-		texturefile = "gfx/interface/culture/culture_sicorathi.dds"
+		name = "GFX_idea_culture_tyrrhaustralian
+		texturefile = gfx/interface/culture/culture_tyrrhaustralian
 	}
 	spriteType = {
-		name = "GFX_idea_culture_sidonian"
-		texturefile = "gfx/interface/culture/culture_sidonian.dds"
+		name = "GFX_idea_culture_ualonuth
+		texturefile = gfx/interface/culture/culture_ualonuth
 	}
 	spriteType = {
-		name = "GFX_idea_culture_spaniolic"
-		texturefile = "gfx/interface/culture/culture_spaniolic.dds"
+		name = "GFX_idea_culture_ugrian  
+		texturefile = gfx/interface/culture/culture_ugrian  
 	}
 	spriteType = {
-		name = "GFX_idea_culture_symacom"
-		texturefile = "gfx/interface/culture/culture_symacom.dds"
+		name = "GFX_idea_culture_uighur
+		texturefile = gfx/interface/culture/culture_uighur
 	}
 	spriteType = {
-		name = "GFX_idea_culture_sythchy"
-		texturefile = "gfx/interface/culture/culture_sythchy.dds"
+		name = "GFX_idea_culture_ujvilag
+		texturefile = gfx/interface/culture/culture_ujvilag
 	}
 	spriteType = {
-		name = "GFX_idea_culture_taliaite"
-		texturefile = "gfx/interface/culture/culture_taliaite.dds"
+		name = "GFX_idea_culture_ukrainian
+		texturefile = gfx/interface/culture/culture_ukrainian
 	}
 	spriteType = {
-		name = "GFX_idea_culture_thracian"
-		texturefile = "gfx/interface/culture/culture_thracian.dds"
+		name = "GFX_idea_culture_undead
+		texturefile = gfx/interface/culture/culture_undead
 	}
 	spriteType = {
-		name = "GFX_idea_culture_ualonuth"
-		texturefile = "gfx/interface/culture/culture_ualonuth.dds"
+		name = "GFX_idea_culture_unyamwezi
+		texturefile = gfx/interface/culture/culture_unyamwezi
 	}
 	spriteType = {
-		name = "GFX_idea_culture_varangian"
-		texturefile = "gfx/interface/culture/culture_varangian.dds"
+		name = "GFX_idea_culture_usmailmian
+		texturefile = gfx/interface/culture/culture_usmailmian
 	}
 	spriteType = {
-		name = "GFX_idea_culture_varangian_african"
-		texturefile = "gfx/interface/culture/culture_varangian_african.dds"
+		name = "GFX_idea_culture_uzbek
+		texturefile = gfx/interface/culture/culture_uzbek
 	}
 	spriteType = {
-		name = "GFX_idea_culture_varangian_american"
-		texturefile = "gfx/interface/culture/culture_varangian_american.dds"
+		name = "GFX_idea_culture_vandal
+		texturefile = gfx/interface/culture/culture_vandal
 	}
 	spriteType = {
-		name = "GFX_idea_culture_varangian_australian"
-		texturefile = "gfx/interface/culture/culture_varangian_australian.dds"
+		name = "GFX_idea_culture_varangian
+		texturefile = gfx/interface/culture/culture_varangian
 	}
 	spriteType = {
-		name = "GFX_idea_culture_ychibarku"
-		texturefile = "gfx/interface/culture/culture_ychibarku.dds"
+		name = "GFX_idea_culture_varangian_african
+		texturefile = gfx/interface/culture/culture_varangian_african
 	}
 	spriteType = {
-		name = "GFX_idea_culture_ynnocho"
-		texturefile = "gfx/interface/culture/culture_ynnocho.dds"
+		name = "GFX_idea_culture_varangian_american
+		texturefile = gfx/interface/culture/culture_varangian_american
 	}
 	spriteType = {
-		name = "GFX_idea_culture_ysthyalm"
-		texturefile = "gfx/interface/culture/culture_ysthyalm.dds"
+		name = "GFX_idea_culture_varangian_australian
+		texturefile = gfx/interface/culture/culture_varangian_australian
 	}
 	spriteType = {
-		name = "GFX_idea_culture_ythalonim"
-		texturefile = "gfx/interface/culture/culture_ythalonim.dds"
+		name = "GFX_idea_culture_venetic 
+		texturefile = gfx/interface/culture/culture_venetic 
 	}
 	spriteType = {
-		name = "GFX_idea_culture_ythbynuthi"
-		texturefile = "gfx/interface/culture/culture_ythbynuthi.dds"
+		name = "GFX_idea_culture_vietnamese
+		texturefile = gfx/interface/culture/culture_vietnamese
 	}
 	spriteType = {
-		name = "GFX_idea_culture_etrurian"
-		texturefile = "gfx/interface/culture/culture_etrurian.dds"
+		name = "GFX_idea_culture_vinlander 
+		texturefile = gfx/interface/culture/culture_vinlander 
 	}
 	spriteType = {
-		name = "GFX_idea_culture_rhaetian"
-		texturefile = "gfx/interface/culture/culture_rhaetian.dds"
+		name = "GFX_idea_culture_virshjuros 
+		texturefile = gfx/interface/culture/culture_virshjuros 
 	}
 	spriteType = {
-		name = "GFX_idea_culture_lemnian"
-		texturefile = "gfx/interface/culture/culture_lemnian.dds"
+		name = "GFX_idea_culture_visigothic
+		texturefile = gfx/interface/culture/culture_visigothic
 	}
 	spriteType = {
-		name = "GFX_idea_culture_elsinorian"
-		texturefile = "gfx/interface/culture/culture_elsinorian"
+		name = "GFX_idea_culture_wallonian 
+		texturefile = gfx/interface/culture/culture_wallonian 
 	}
 	spriteType = {
-		name = "GFX_idea_culture_sabellian"
-		texturefile = "gfx/interface/culture/culture_sabellian"
+		name = "GFX_idea_culture_welsh
+		texturefile = gfx/interface/culture/culture_welsh
 	}
 	spriteType = {
-		name = "GFX_idea_culture_old_ligurian"
-		texturefile = "gfx/interface/culture/culture_old_ligurian"
+		name = "GFX_idea_culture_wenedyk
+		texturefile = gfx/interface/culture/culture_wenedyk
 	}
 	spriteType = {
-		name = "GFX_idea_culture_venetic"
-		texturefile = "gfx/interface/culture/culture_venetic"
+		name = "GFX_idea_culture_western_slavic
+		texturefile = gfx/interface/culture/culture_western_slavic
 	}
 	spriteType = {
-		name = "GFX_idea_culture_siculian"
-		texturefile = "gfx/interface/culture/culture_siculian"
+		name = "GFX_idea_culture_wolof
+		texturefile = gfx/interface/culture/culture_wolof
 	}
 	spriteType = {
-		name = "GFX_idea_culture_lepontic"
-		texturefile = "gfx/interface/culture/culture_lepontic"
+		name = "GFX_idea_culture_xhosa
+		texturefile = gfx/interface/culture/culture_xhosa
 	}
 	spriteType = {
-		name = "GFX_idea_culture_noric"
-		texturefile = "gfx/interface/culture/culture_noric"
+		name = "GFX_idea_culture_xliponian
+		texturefile = gfx/interface/culture/culture_xliponian
 	}
 	spriteType = {
-		name = "GFX_idea_culture_lusitanian"
-		texturefile = "gfx/interface/culture/culture_lusitanian"
+		name = "GFX_idea_culture_yakut
+		texturefile = gfx/interface/culture/culture_yakut
 	}
 	spriteType = {
-		name = "GFX_idea_culture_morlach"
-		texturefile = "gfx/interface/culture/culture_morlach"
+		name = "GFX_idea_culture_yankee
+		texturefile = gfx/interface/culture/culture_yankee
 	}
 	spriteType = {
-		name = "GFX_idea_culture_phoenician"
-		texturefile = "gfx/interface/culture/culture_phoenician"
+		name = "GFX_idea_culture_yao
+		texturefile = gfx/interface/culture/culture_yao
 	}
 	spriteType = {
-		name = "GFX_idea_culture_dacian_american"
-		texturefile = "gfx/interface/culture/culture_dacian_american"
+		name = "GFX_idea_culture_ychibarku
+		texturefile = gfx/interface/culture/culture_ychibarku
 	}
 	spriteType = {
-		name = "GFX_idea_culture_dacian_african"
-		texturefile = "gfx/interface/culture/culture_dacian_african"
+		name = "GFX_idea_culture_yenidun
+		texturefile = gfx/interface/culture/culture_yenidun
 	}
 	spriteType = {
-		name = "GFX_idea_culture_dacian_australian"
-		texturefile = "gfx/interface/culture/culture_dacian_australian"
+		name = "GFX_idea_culture_yevanic
+		texturefile = gfx/interface/culture/culture_yevanic
 	}
 	spriteType = {
-		name = "GFX_idea_culture_celtic_american"
-		texturefile = "gfx/interface/culture/culture_celtic_american"
+		name = "GFX_idea_culture_yi
+		texturefile = gfx/interface/culture/culture_yi
 	}
 	spriteType = {
-		name = "GFX_idea_culture_celtic_african"
-		texturefile = "gfx/interface/culture/culture_celtic_african"
+		name = "GFX_idea_culture_ynnocho
+		texturefile = gfx/interface/culture/culture_ynnocho
 	}
 	spriteType = {
-		name = "GFX_idea_culture_celtic_australian"
-		texturefile = "gfx/interface/culture/culture_celtic_australian"
+		name = "GFX_idea_culture_yoruba
+		texturefile = gfx/interface/culture/culture_yoruba
 	}
 	spriteType = {
-		name = "GFX_idea_culture_old_italian_american"
-		texturefile = "gfx/interface/culture/culture_old_italian_american"
+		name = "GFX_idea_culture_ysthyalm
+		texturefile = gfx/interface/culture/culture_ysthyalm
 	}
 	spriteType = {
-		name = "GFX_idea_culture_old_italian_african"
-		texturefile = "gfx/interface/culture/culture_old_italian_african"
+		name = "GFX_idea_culture_ythalonim
+		texturefile = gfx/interface/culture/culture_ythalonim
 	}
 	spriteType = {
-		name = "GFX_idea_culture_old_italian_australian"
-		texturefile = "gfx/interface/culture/culture_old_italian_australian"
+		name = "GFX_idea_culture_ythbynuthi
+		texturefile = gfx/interface/culture/culture_ythbynuthi
 	}
 	spriteType = {
-		name = "GFX_idea_culture_pruthenian"
-		texturefile = "gfx/interface/culture/culture_pruthenian"
+		name = "GFX_idea_culture_yue
+		texturefile = gfx/interface/culture/culture_yue
 	}
 	spriteType = {
-		name = "GFX_idea_culture_thracian_american"
-		texturefile = "gfx/interface/culture/culture_thracian_american"
+		name = "GFX_idea_culture_yuzhny
+		texturefile = gfx/interface/culture/culture_yuzhny
 	}
 	spriteType = {
-		name = "GFX_idea_culture_thracian_african"
-		texturefile = "gfx/interface/culture/culture_thracian_african"
+		name = "GFX_idea_culture_zapotec
+		texturefile = gfx/interface/culture/culture_zapotec
 	}
 	spriteType = {
-		name = "GFX_idea_culture_thracian_australian"
-		texturefile = "gfx/interface/culture/culture_thracian_australian"
+		name = "GFX_idea_culture_zarphatic
+		texturefile = gfx/interface/culture/culture_zarphatic
 	}
 	spriteType = {
-		name = "GFX_idea_culture_pecheneg"
-		texturefile = "gfx/interface/culture/culture_pecheneg"
+		name = "GFX_idea_culture_zhuang
+		texturefile = gfx/interface/culture/culture_zhuang
 	}
 	spriteType = {
-		name = "GFX_idea_culture_sarmatian"
-		texturefile = "gfx/interface/culture/culture_sarmatian"
+		name = "GFX_idea_culture_zuidelijk
+		texturefile = gfx/interface/culture/culture_zuidelijk
 	}
 	spriteType = {
-		name = "GFX_idea_culture_tocharian"
-		texturefile = "gfx/interface/culture/culture_tocharian"
+		name = "GFX_idea_culture_zulu
+		texturefile = gfx/interface/culture/culture_zulu
 	}
 }
