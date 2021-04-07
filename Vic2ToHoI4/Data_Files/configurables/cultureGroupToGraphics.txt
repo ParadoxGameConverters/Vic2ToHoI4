@@ -426,7 +426,7 @@ south_slavic = {
 		democratic = { "gfx/leaders/YUG/Portrait_Yugoslavia_Milan_Grol.dds" "gfx/leaders/BUL/Portrait_Bulgaria_Georgi_Dimitrov.dds" }
 		fascism = { "gfx/leaders/YUG/Portrait_Yugoslavia_Milan_Stojadinovic.dds" "gfx/leaders/BUL/portrait_bul_hristo_lukov.dds" "gfx/leaders/CRO/Portrait_Croatia_Ante_Pavelic.dds" }
 		absolutist = { "gfx/leaders/BUL/Portrait_Bulgaria_Boris_III.dds" "GFX_portrait_bul_ferdinand_i" }
-		neutrality = { "gfx/leaders/YUG/Portrait_Yugoslavia_Peter_II.dds" "gfx/leaders/CRO/CRO_vladko_macek.dds" "GFX_portrait_bul_regency_council" }
+		neutrality = { "gfx/leaders/YUG/Portrait_Yugoslavia_Peter_II.dds" "gfx/leaders/CRO/CRO_vladko_macek.dds" }
 		radical = { "gfx/leaders/Europe/portrait_europe_generic_land_18.dds" } #Pavle Jurišic Sturm
 	}
 	ideology_minister_portraits = 
