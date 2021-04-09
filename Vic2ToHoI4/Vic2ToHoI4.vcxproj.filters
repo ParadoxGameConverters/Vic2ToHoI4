@@ -20594,6 +20594,21 @@
     <CopyFileToFolders Include="Data_Files\configurables\CountryGrammar.txt">
       <Filter>Data Files\Configurables</Filter>
     </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PAK.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PAK_communist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PAK_fascist.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PAK_monarchy.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\PAK_republic.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
     <None Include="Copy_Files.bat" />
