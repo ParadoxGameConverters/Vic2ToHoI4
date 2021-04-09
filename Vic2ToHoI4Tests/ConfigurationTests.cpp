@@ -299,6 +299,27 @@ TEST(ConfigurationTests, Vic2PathThrowsExceptionOnNonExistantPath)
 }
 
 
+TEST(ConfigurationTests, HoI4ModPathIsLogged)
+{
+	std::stringstream input;
+	input << R"(targetGameModPath = "C:\MyDocuments\Paradox Interactive\Hearts of Iron IV\mod")";
+
+	std::stringstream log;
+	auto stdOutBuf = std::cout.rdbuf();
+	std::cout.rdbuf(log.rdbuf());
+
+	Configuration::Factory{}.importConfiguration(input);
+
+	std::cout.rdbuf(stdOutBuf);
+
+	ASSERT_EQ(
+		 "    [INFO] Reading configuration file\n"
+		 "    [INFO] \tHoI4 mod path is C:\\MyDocuments\\Paradox Interactive\\Hearts of Iron IV\\mod\n"
+		 "    [INFO] Using output name input\n",
+		 log.str());
+}
+
+
 TEST(ConfigurationTests, Vic2ModsDefaultsToEmpty)
 {
 	std::stringstream input;
@@ -335,8 +356,7 @@ TEST(ConfigurationTests, Vic2ModsWithDependenciesAreBeforeTheirDependencies)
 	const auto theConfiguration = Configuration::Factory{}.importConfiguration(input);
 
 	ASSERT_THAT(theConfiguration->getVic2Mods(),
-		 testing::ElementsAre(
-			  *Vic2::Mod::Builder{}.setName("Dependent Mod").build(),
+		 testing::ElementsAre(*Vic2::Mod::Builder{}.setName("Dependent Mod").build(),
 			  *Vic2::Mod::Builder{}.setName("Dependency One").build(),
 			  *Vic2::Mod::Builder{}.setName("Dependency Two").build(),
 			  *Vic2::Mod::Builder{}.setName("Test Mod").build()));
