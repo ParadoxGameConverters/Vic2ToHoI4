@@ -25028,25 +25028,329 @@
     </CopyFileToFolders>
   </ItemGroup>
   <ItemGroup>
+    <CopyFileToFolders Include="Data_Files\flags\BMN.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BMN_communist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BMN_fascist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BMN_monarchy.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\BMN_republic.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CLB.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CLB_communist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CLB_fascist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CLB_monarchy.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CLB_republic.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CLI.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CLI_communist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CLI_fascist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CLI_monarchy.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CLI_republic.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CYN.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CYN_communist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CYN_fascist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CYN_monarchy.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CYN_republic.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CZE.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CZE_communist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CZE_fascist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CZE_monarchy.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\CZE_republic.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DAW.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DAW_communist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DAW_fascist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DAW_monarchy.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\DAW_republic.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FLR.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FLR_communist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FLR_fascist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FLR_monarchy.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\FLR_republic.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LNB.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LNB_communist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LNB_fascist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LNB_monarchy.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\LNB_republic.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MLH.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MLH_communist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MLH_fascist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MLH_monarchy.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MLH_republic.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSC.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSC_communist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSC_fascist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSC_monarchy.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSC_republic.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSY.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSY_communist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSY_fascist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSY_monarchy.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\MSY_republic.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\PAK.tga">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/flags</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\PAK_communist.tga">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/flags</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\PAK_fascist.tga">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/flags</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\PAK_monarchy.tga">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/flags</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
     </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\PAK_republic.tga">
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)/flags</DestinationFolders>
-      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)/flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\RDL.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\RDL_communist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\RDL_fascist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\RDL_monarchy.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\RDL_republic.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ROT.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ROT_communist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ROT_fascist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ROT_monarchy.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ROT_republic.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SOO.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SOO_communist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SOO_fascist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SOO_monarchy.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SOO_republic.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SRN.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SRN_communist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SRN_fascist.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SRN_monarchy.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\SRN_republic.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
+    </CopyFileToFolders>
+    <CopyFileToFolders Include="Data_Files\flags\ZAM.tga">
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(OutDir)\flags</DestinationFolders>
+      <DestinationFolders Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(OutDir)\flags</DestinationFolders>
     </CopyFileToFolders>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
