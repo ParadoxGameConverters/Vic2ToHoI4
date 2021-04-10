@@ -8,6 +8,7 @@
 #include "HOI4World/HoI4World.h"
 #include "HOI4World/Map/MapData.h"
 #include "HOI4World/ProvinceDefinitions.h"
+#include "MapUtils.h"
 #include "V2World/World/World.h"
 #include <fstream>
 #include <map>
@@ -133,19 +134,7 @@ class HoI4WarCreator
 		 double time);
 	std::vector<std::shared_ptr<HoI4::Country>> GetMorePossibleAllies(
 		 const std::shared_ptr<HoI4::Country>& CountryThatWantsAllies);
-	std::optional<double> getDistanceBetweenCountries(std::shared_ptr<HoI4::Country> Country1,
-		 std::shared_ptr<HoI4::Country> Country2);
-	std::optional<double> getDistanceBetweenCapitals(std::shared_ptr<HoI4::Country> Country1,
-		 std::shared_ptr<HoI4::Country> Country2);
-	bool bothCountriesHaveCapitals(std::shared_ptr<HoI4::Country> Country1,
-		 std::shared_ptr<HoI4::Country> Country2) const;
-	std::pair<int, int> getCapitalPosition(std::shared_ptr<HoI4::Country> country);
-	std::pair<int, int> getProvincePosition(int provinceNum);
-	void establishProvincePositions();
-	void processPositionLine(const std::string& line);
-	std::vector<std::string> tokenizeLine(const std::string& line);
-	void addProvincePosition(const std::vector<std::string>& tokenizedLine);
-	double getDistanceBetweenPoints(std::pair<int, int> point1, std::pair<int, int> point2) const;
+
 	double GetFactionStrengthWithDistance(std::shared_ptr<HoI4::Country> HomeCountry,
 		 const std::vector<std::shared_ptr<HoI4::Country>>& Faction,
 		 double time);
@@ -165,9 +154,10 @@ class HoI4WarCreator
 	HoI4FocusTree* genericFocusTree;
 	HoI4::World* theWorld;
 
+	HoI4::MapUtils mapUtils;
+
 	std::vector<HoI4::Country*> AggressorFactions;
 	std::map<std::shared_ptr<HoI4::Country>, std::vector<std::shared_ptr<HoI4::Country>>> WorldTargetMap;
-	std::map<int, std::pair<int, int>> provincePositions;
 
 	std::map<int, std::string> provinceToOwnerMap;
 };
