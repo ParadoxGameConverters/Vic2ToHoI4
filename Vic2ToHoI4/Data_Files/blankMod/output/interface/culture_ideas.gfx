@@ -84,6 +84,10 @@ spriteTypes = {
 		texturefile = "gfx/interface/culture/culture_alan.dds"
 	}
 	spriteType = {
+		name = "GFX_idea_culture_alaskan"
+		texturefile = "gfx/interface/culture/culture_alaskan.dds"
+	}
+	spriteType = {
 		name = "GFX_idea_culture_albanian"
 		texturefile = "gfx/interface/culture/culture_albanian.dds"
 	}
@@ -344,6 +348,10 @@ spriteTypes = {
 		texturefile = "gfx/interface/culture/culture_chacoan.dds"
 	}
 	spriteType = {
+		name = "GFX_idea_culture_chechen"
+		texturefile = "gfx/interface/culture/culture_chechen.dds"
+	}
+	spriteType = {
 		name = "GFX_idea_culture_cherokee"
 		texturefile = "gfx/interface/culture/culture_cherokee.dds"
 	}
@@ -356,6 +364,10 @@ spriteTypes = {
 		texturefile = "gfx/interface/culture/culture_chibchan.dds"
 	}
 	spriteType = {
+		name = "GFX_idea_culture_circassian"
+		texturefile = "gfx/interface/culture/culture_circassian.dds"
+	}
+	spriteType = {
 		name = "GFX_idea_culture_coptic"
 		texturefile = "gfx/interface/culture/culture_coptic.dds"
 	}
@@ -366,6 +378,10 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_idea_culture_croat"
 		texturefile = "gfx/interface/culture/culture_croat.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_cushitic"
+		texturefile = "gfx/interface/culture/culture_cushitic.dds"
 	}
 	spriteType = {
 		name = "GFX_idea_culture_czarny"
@@ -390,6 +406,10 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_idea_culture_dacian_australian"
 		texturefile = "gfx/interface/culture/culture_dacian_australian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_dagestani"
+		texturefile = "gfx/interface/culture/culture_dagestani.dds"
 	}
 	spriteType = {
 		name = "GFX_idea_culture_dakshin"
@@ -542,6 +562,10 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_idea_culture_fon"
 		texturefile = "gfx/interface/culture/culture_fon.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_forest_bantu"
+		texturefile = "gfx/interface/culture/culture_forest_bantu.dds"
 	}
 	spriteType = {
 		name = "GFX_idea_culture_frankish"
@@ -820,6 +844,10 @@ spriteTypes = {
 		texturefile = "gfx/interface/culture/culture_kikuyu.dds"
 	}
 	spriteType = {
+		name = "GFX_idea_culture_kilombero"
+		texturefile = "gfx/interface/culture/culture_kilombero.dds"
+	}
+	spriteType = {
 		name = "GFX_idea_culture_kirgiz"
 		texturefile = "gfx/interface/culture/culture_kirgiz.dds"
 	}
@@ -838,6 +866,10 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_idea_culture_kru"
 		texturefile = "gfx/interface/culture/culture_kru.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_kuba"
+		texturefile = "gfx/interface/culture/culture_kuba.dds"
 	}
 	spriteType = {
 		name = "GFX_idea_culture_kurdish"
@@ -1692,6 +1724,10 @@ spriteTypes = {
 		texturefile = "gfx/interface/culture/culture_ualonuth.dds"
 	}
 	spriteType = {
+		name = "GFX_idea_culture_ubangian"
+		texturefile = "gfx/interface/culture/culture_ubangian.dds"
+	}
+	spriteType = {
 		name = "GFX_idea_culture_ugrian "
 		texturefile = "gfx/interface/culture/culture_ugrian.dds"
 	}
@@ -1774,6 +1810,10 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_idea_culture_wenedyk"
 		texturefile = "gfx/interface/culture/culture_wenedyk.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_western_nigritic"
+		texturefile = "gfx/interface/culture/culture_western_nigritic.dds"
 	}
 	spriteType = {
 		name = "GFX_idea_culture_western_slavic"
