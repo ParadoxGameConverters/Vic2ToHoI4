@@ -16,7 +16,7 @@ void HoI4::outMonarchInterface(const std::string& outputFolder,
 	{
 		monarchsFile << "\tspriteType = {\n";
 		monarchsFile << "\t\tname = \"GFX_idea_" << tag << "_monarch\"\n";
-		monarchsFile << "\t\ttexturefile = \"gfx/interface/ideas/" << country->getMonarchIdeaTexture() << ".dds\"\n";
+		monarchsFile << "\t\ttexturefile = \"" << country->getMonarchIdeaTexture() << "\"\n";
 		monarchsFile << "\t}\n";
 	}
 
