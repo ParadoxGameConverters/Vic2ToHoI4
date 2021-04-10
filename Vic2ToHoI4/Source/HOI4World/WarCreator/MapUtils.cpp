@@ -3,6 +3,12 @@
 
 
 
+HoI4::MapUtils::MapUtils(const World& theWorld)
+{
+	determineProvinceOwners(theWorld);
+}
+
+
 std::optional<double> HoI4::MapUtils::getDistanceBetweenCountries(std::shared_ptr<HoI4::Country> country1,
 	 std::shared_ptr<HoI4::Country> country2)
 {
@@ -140,4 +146,272 @@ double HoI4::MapUtils::getDistanceBetweenPoints(std::pair<int, int> point1, std:
 	int yDistance = point2.second - point1.second;
 
 	return sqrt(pow(xDistance, 2) + pow(yDistance, 2));
+}
+
+
+std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::getNeighbors(
+	 std::shared_ptr<HoI4::Country> checkingCountry,
+	 const HoI4::MapData& theMapData,
+	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 const World& theWorld)
+{
+	std::map<std::string, std::shared_ptr<HoI4::Country>> neighbors =
+		 getImmediateNeighbors(checkingCountry, theMapData, provinceDefinitions, theWorld);
+	if (neighbors.size() == 0)
+	{
+		neighbors = getNearbyCountries(checkingCountry, theWorld);
+	}
+
+	return neighbors;
+}
+
+
+std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::getImmediateNeighbors(
+	 std::shared_ptr<HoI4::Country> checkingCountry,
+	 const HoI4::MapData& theMapData,
+	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 const World& theWorld)
+{
+	std::map<std::string, std::shared_ptr<HoI4::Country>> neighbors;
+
+	for (auto province: checkingCountry->getProvinces())
+	{
+		for (int provinceNumber: theMapData.getNeighbors(province))
+		{
+			if (!provinceDefinitions.isLandProvince(province))
+			{
+				continue;
+			}
+
+			auto provinceToOwnerItr = provinceToOwnerMap.find(provinceNumber);
+			if (provinceToOwnerItr == provinceToOwnerMap.end())
+			{
+				continue;
+			}
+
+			auto ownerTag = provinceToOwnerItr->second;
+			if (ownerTag == checkingCountry->getTag())
+			{
+				continue;
+			}
+
+			auto countries = theWorld.getCountries();
+			if (auto ownerCountry = countries.find(ownerTag); ownerCountry != countries.end())
+			{
+				neighbors.insert(std::make_pair(ownerTag, ownerCountry->second));
+			}
+		}
+	}
+
+	return neighbors;
+}
+
+
+std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::getNearbyCountries(
+	 std::shared_ptr<HoI4::Country> checkingCountry,
+	 const World& theWorld)
+{
+	std::map<std::string, std::shared_ptr<HoI4::Country>> neighbors;
+
+	for (auto countryItr: theWorld.getCountries())
+	{
+		auto country = countryItr.second;
+		if (country->getCapitalState())
+		{
+			// IMPROVE
+			// need to get further neighbors, as well as countries without capital in an area
+			auto distance = getDistanceBetweenCapitals(checkingCountry, country);
+			if (distance && (*distance <= 500) && (country->hasProvinces()))
+			{
+				neighbors.insert(countryItr);
+			}
+		}
+	}
+
+	return neighbors;
+}
+
+
+void HoI4::MapUtils::determineProvinceOwners(const World& theWorld)
+{
+	for (auto state: theWorld.getStates())
+	{
+		for (auto province: state.second.getProvinces())
+		{
+			std::string owner = state.second.getOwner();
+			provinceToOwnerMap.insert(std::make_pair(province, owner));
+		}
+	}
+}
+
+
+std::set<int> HoI4::MapUtils::findBorderState(std::shared_ptr<HoI4::Country> country,
+	 std::shared_ptr<HoI4::Country> neighbor,
+	 const HoI4::World* world,
+	 const HoI4::MapData& theMapData,
+	 const HoI4::ProvinceDefinitions& provinceDefinitions)
+{
+	std::set<int> demandedStates;
+	std::map<int, int> provinceToStateIdMapping = world->getProvinceToStateIDMap();
+	for (auto leaderprov: country->getProvinces())
+	{
+		for (int prov: theMapData.getNeighbors(leaderprov))
+		{
+			if (!provinceDefinitions.isLandProvince(prov))
+			{
+				continue;
+			}
+
+			if (provinceToOwnerMap.contains(prov))
+			{
+				std::string owner = provinceToOwnerMap.find(prov)->second;
+				if (owner == neighbor->getTag())
+				{
+					demandedStates.insert(provinceToStateIdMapping[prov]);
+				}
+			}
+		}
+	}
+	return demandedStates;
+}
+
+
+std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::findCloseNeighbors(
+	 std::shared_ptr<HoI4::Country> country,
+	 const HoI4::MapData& theMapData,
+	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 const World& theWorld)
+{
+	std::map<std::string, std::shared_ptr<HoI4::Country>> closeNeighbors;
+
+	for (auto neighbor: getNeighbors(country, theMapData, provinceDefinitions, theWorld))
+	{
+		if ((neighbor.second->getCapitalState()) && (neighbor.first != ""))
+		{
+			auto distance = getDistanceBetweenCapitals(country, neighbor.second);
+			if (distance && (*distance <= 500))
+			{
+				closeNeighbors.insert(neighbor);
+			}
+		}
+	}
+
+	return closeNeighbors;
+}
+
+
+std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::findCountriesWithin(int distancePx,
+	 std::shared_ptr<HoI4::Country> country,
+	 const HoI4::MapData& theMapData,
+	 const World& theWorld)
+{
+	std::map<std::string, std::shared_ptr<HoI4::Country>> closeNeighbors;
+
+	for (const auto& neighbor: theWorld.getCountries())
+	{
+		if ((neighbor.second->getCapitalState()) && (!neighbor.first.empty()) && (neighbor.second->hasProvinces()))
+		{
+			const auto& distance = getDistanceBetweenCountries(country, neighbor.second);
+			if (distance && (*distance <= distancePx))
+			{
+				closeNeighbors.insert(neighbor);
+			}
+		}
+	}
+
+	return closeNeighbors;
+}
+
+
+std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::findFarNeighbors(
+	 std::shared_ptr<HoI4::Country> country,
+	 const HoI4::MapData& theMapData,
+	 const HoI4::ProvinceDefinitions& provinceDefinitions,
+	 const World& theWorld)
+{
+	std::map<std::string, std::shared_ptr<HoI4::Country>> farNeighbors;
+
+	for (auto neighbor: getNeighbors(country, theMapData, provinceDefinitions, theWorld))
+	{
+		if (neighbor.second->getCapitalState())
+		{
+			auto distance = getDistanceBetweenCapitals(country, neighbor.second);
+			if (distance && (*distance > 500))
+			{
+				farNeighbors.insert(neighbor);
+			}
+		}
+	}
+
+	if (farNeighbors.size() == 0) // find all nearby countries
+	{
+		for (auto otherCountry: theWorld.getCountries())
+		{
+			if (otherCountry.second->getCapitalState())
+			{
+				auto distance = getDistanceBetweenCapitals(country, otherCountry.second);
+				if (distance && (*distance <= 1000) && (otherCountry.second->hasProvinces()))
+				{
+					farNeighbors.insert(otherCountry);
+				}
+			}
+		}
+	}
+
+	return farNeighbors;
+}
+
+
+std::map<double, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::getGPsByDistance(
+	 std::shared_ptr<HoI4::Country> country,
+	 const World& theWorld)
+{
+	std::map<double, std::shared_ptr<HoI4::Country>> distanceToGPMap;
+	for (auto greatPower: theWorld.getGreatPowers())
+	{
+		auto distance = getDistanceBetweenCapitals(country, greatPower);
+		if (distance && (*distance < 1200))
+		{
+			distanceToGPMap.insert(std::make_pair(*distance, greatPower));
+		}
+	}
+
+	return distanceToGPMap;
+}
+
+
+std::vector<int> HoI4::MapUtils::sortStatesByCapitalDistance(const std::set<int>& stateList,
+	 std::shared_ptr<HoI4::Country> country,
+	 const HoI4::World* world)
+{
+	std::multimap<double, int> statesWithDistance;
+	std::pair<int, int> capitalCoords = getCapitalPosition(country);
+	std::map<int, HoI4::State> statesMapping = world->getStates();
+
+	for (int stateID: stateList)
+	{
+		if (auto state = statesMapping.find(stateID); state != statesMapping.end())
+		{
+			std::optional<int> provCapID = state->second.getVPLocation();
+			std::pair<int, int> stateVPCoords;
+			if (provCapID)
+			{
+				stateVPCoords = getProvincePosition(*provCapID);
+			}
+			else
+			{
+				stateVPCoords = std::make_pair(65536, 65536);
+			}
+			double distanceSquared =
+				 pow(capitalCoords.first - stateVPCoords.first, 2) + pow(capitalCoords.second - stateVPCoords.second, 2);
+			statesWithDistance.insert(std::pair<double, int>(distanceSquared, stateID));
+		}
+	}
+
+	std::vector<int> sortedStates;
+	for (std::pair<double, int> oneStateDistance: statesWithDistance)
+	{
+		sortedStates.push_back(oneStateDistance.second);
+	}
+	return sortedStates;
 }
