@@ -20,7 +20,7 @@ HoI4WarCreator::HoI4WarCreator(HoI4::World* world,
 	 HoI4::Localisation& hoi4Localisations,
 	 const Configuration& theConfiguration):
 	 genericFocusTree(new HoI4FocusTree),
-	 theWorld(world), mapUtils(*theWorld), AggressorFactions(), WorldTargetMap()
+	 theWorld(world), mapUtils(theWorld->getStates()), AggressorFactions(), WorldTargetMap()
 {
 	Log(LogLevel::Info) << "\tCreating wars";
 
@@ -709,13 +709,23 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 	}
 	// find neighboring states to take in sudeten deal
 	std::vector<std::vector<int>> demandedStates;
-	for (unsigned int i = 0; i < nan.size(); i++)
+
+	const auto leaderCapitalPosition = mapUtils.getCapitalPosition(*Leader);
+	if (leaderCapitalPosition)
 	{
-		std::set<int> borderStates = mapUtils.findBorderState(*Leader, *nan[i], *world, theMapData, provinceDefinitions);
-		demandedStates.push_back(mapUtils.sortStatesByCapitalDistance(borderStates, *Leader, *world));
+		for (unsigned int i = 0; i < nan.size(); i++)
+		{
+			std::set<int> borderStates = mapUtils.findBorderStates(*Leader,
+				 *nan[i],
+				 world->getProvinceToStateIDMap(),
+				 theMapData,
+				 provinceDefinitions);
+			demandedStates.push_back(
+				 mapUtils.sortStatesByDistance(borderStates, *leaderCapitalPosition, world->getStates()));
+		}
+		FocusTree->addFascistSudetenBranch(Leader, nan, demandedStates, *theWorld, hoi4Localisations);
+		nan.clear();
 	}
-	FocusTree->addFascistSudetenBranch(Leader, nan, demandedStates, *theWorld, hoi4Localisations);
-	nan.clear();
 
 	// events for allies
 	auto newAllies = GetMorePossibleAllies(Leader);

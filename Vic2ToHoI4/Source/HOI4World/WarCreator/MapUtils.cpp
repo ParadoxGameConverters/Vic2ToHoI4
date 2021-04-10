@@ -1,22 +1,22 @@
 #include "MapUtils.h"
+#include "HOI4World/States/HoI4State.h"
+#include "Log.h"
+#include <limits>
+#include <ranges>
 #include <sstream>
 
 
 
-HoI4::MapUtils::MapUtils(const World& theWorld)
+HoI4::MapUtils::MapUtils(const std::map<int, State>& theStates)
 {
 	establishProvincePositions();
-	determineProvinceOwners(theWorld);
+	determineProvinceOwners(theStates);
 }
 
 
 void HoI4::MapUtils::establishProvincePositions()
 {
 	std::ifstream positionsFile("Configurables/positions.txt");
-	if (!positionsFile.is_open())
-	{
-		throw std::runtime_error("Could not open positions.txt");
-	}
 
 	std::string line;
 	while (getline(positionsFile, line))
@@ -30,8 +30,14 @@ void HoI4::MapUtils::establishProvincePositions()
 
 void HoI4::MapUtils::processPositionLine(const std::string& line)
 {
-	const std::vector<std::string> tokenizedLine = tokenizeLine(line);
-	addProvincePosition(tokenizedLine);
+	const auto lineTokens = tokenizeLine(line);
+	if (lineTokens.size() < 5)
+	{
+		Log(LogLevel::Warning) << "positions.txt line had too few sections: " << line;
+		return;
+	}
+
+	addProvincePosition(lineTokens);
 }
 
 
@@ -49,23 +55,23 @@ std::vector<std::string> HoI4::MapUtils::tokenizeLine(const std::string& line) c
 }
 
 
-void HoI4::MapUtils::addProvincePosition(const std::vector<std::string>& tokenizedLine)
+void HoI4::MapUtils::addProvincePosition(const std::vector<std::string>& lineTokens)
 {
-	int province = std::stoi(tokenizedLine[0]);
-	int x = std::stoi(tokenizedLine[2]);
-	int y = std::stoi(tokenizedLine[4]);
+	auto province = std::stoi(lineTokens[0]);
+	auto x = std::stoi(lineTokens[2]);
+	auto y = std::stoi(lineTokens[4]);
 
-	provincePositions.insert(std::make_pair(province, std::make_pair(x, y)));
+	provincePositions.insert(std::make_pair(province, Coordinate{.x = x, .y = y}));
 }
 
 
-void HoI4::MapUtils::determineProvinceOwners(const World& theWorld)
+void HoI4::MapUtils::determineProvinceOwners(const std::map<int, State>& theStates)
 {
-	for (const auto& state: theWorld.getStates())
+	for (const auto& state: theStates | std::ranges::views::values)
 	{
-		for (auto province: state.second.getProvinces())
+		for (auto province: state.getProvinces())
 		{
-			std::string owner = state.second.getOwner();
+			std::string owner = state.getOwner();
 			provinceToOwnerMap.insert(std::make_pair(province, owner));
 		}
 	}
@@ -74,82 +80,93 @@ void HoI4::MapUtils::determineProvinceOwners(const World& theWorld)
 
 std::optional<double> HoI4::MapUtils::getDistanceBetweenCapitals(const Country& country1, const Country& country2) const
 {
-	if (!bothCountriesHaveCapitals(country1, country2))
+	const auto country1Position = getCapitalPosition(country1);
+	const auto country2Position = getCapitalPosition(country2);
+	if (!country1Position || !country2Position)
 	{
-		return {};
+		return std::nullopt;
 	}
 
-	std::pair<int, int> country1Position = getCapitalPosition(country1);
-	std::pair<int, int> country2Position = getCapitalPosition(country2);
-
-	return getDistanceBetweenPoints(country1Position, country2Position);
+	return getDistanceBetweenPoints(*country1Position, *country2Position);
 }
 
 
-std::set<int> HoI4::MapUtils::findBorderState(const Country& country,
+std::optional<HoI4::Coordinate> HoI4::MapUtils::getCapitalPosition(const Country& country) const
+{
+	if (auto capitalProvince = country.getCapitalProvince(); capitalProvince)
+	{
+		return getProvincePosition(*capitalProvince);
+	}
+
+	return std::nullopt;
+}
+
+
+std::set<int> HoI4::MapUtils::findBorderStates(const Country& country,
 	 const Country& neighbor,
-	 const World& world,
+	 const std::map<int, int>& provinceToStateIdMapping,
 	 const MapData& theMapData,
 	 const ProvinceDefinitions& provinceDefinitions) const
 {
-	std::set<int> demandedStates;
-	std::map<int, int> provinceToStateIdMapping = world.getProvinceToStateIDMap();
-	for (const auto& leaderprov: country.getProvinces())
+	std::set<int> borderProvinces;
+	for (const auto& province: country.getProvinces())
 	{
-		for (int prov: theMapData.getNeighbors(leaderprov))
+		for (auto borderProvince: theMapData.getNeighbors(province))
 		{
-			if (!provinceDefinitions.isLandProvince(prov))
+			if (!provinceDefinitions.isLandProvince(borderProvince))
 			{
 				continue;
 			}
 
-			if (provinceToOwnerMap.contains(prov))
+			borderProvinces.insert(borderProvince);
+		}
+	}
+
+	std::set<int> borderStates;
+	for (const auto borderProvince: borderProvinces)
+	{
+		if (const auto provinceAndOwner = provinceToOwnerMap.find(borderProvince);
+			 provinceAndOwner != provinceToOwnerMap.end() && provinceAndOwner->second == neighbor.getTag())
+		{
+			if (const auto provinceAndState = provinceToStateIdMapping.find(borderProvince);
+				 provinceAndState != provinceToStateIdMapping.end())
 			{
-				std::string owner = provinceToOwnerMap.find(prov)->second;
-				if (owner == neighbor.getTag())
-				{
-					demandedStates.insert(provinceToStateIdMapping[prov]);
-				}
+				borderStates.insert(provinceAndState->second);
 			}
 		}
 	}
-	return demandedStates;
+
+	return borderStates;
 }
 
 
-std::vector<int> HoI4::MapUtils::sortStatesByCapitalDistance(const std::set<int>& stateList,
-	 const Country& country,
-	 const World& world) const
+std::vector<int> HoI4::MapUtils::sortStatesByDistance(const std::set<int>& stateList,
+	 const Coordinate& location,
+	 const std::map<int, State>& states) const
 {
 	std::multimap<double, int> statesWithDistance;
-	std::pair<int, int> capitalCoords = getCapitalPosition(country);
-	std::map<int, HoI4::State> statesMapping = world.getStates();
 
-	for (int stateID: stateList)
+	for (auto stateID: stateList)
 	{
-		if (auto state = statesMapping.find(stateID); state != statesMapping.end())
+		if (auto state = states.find(stateID); state != states.end())
 		{
-			std::optional<int> provCapID = state->second.getVPLocation();
-			std::pair<int, int> stateVPCoords;
-			if (provCapID)
+			double distance = std::numeric_limits<double>::max();
+			if (const auto stateCapital = state->second.getVPLocation(); stateCapital)
 			{
-				stateVPCoords = getProvincePosition(*provCapID);
+				const auto stateCapitalLocation = getProvincePosition(*stateCapital);
+				distance = pow(location.x - stateCapitalLocation.x, 2) + pow(location.y - stateCapitalLocation.y, 2);
 			}
-			else
-			{
-				stateVPCoords = std::make_pair(65536, 65536);
-			}
-			double distanceSquared =
-				 pow(capitalCoords.first - stateVPCoords.first, 2) + pow(capitalCoords.second - stateVPCoords.second, 2);
-			statesWithDistance.insert(std::pair<double, int>(distanceSquared, stateID));
+
+			statesWithDistance.insert(std::make_pair(distance, stateID));
 		}
 	}
 
 	std::vector<int> sortedStates;
-	for (std::pair<double, int> oneStateDistance: statesWithDistance)
+	for (const auto state: statesWithDistance | std::ranges::views::values)
 	{
-		sortedStates.push_back(oneStateDistance.second);
+		sortedStates.push_back(state);
 	}
+
 	return sortedStates;
 }
 
@@ -316,12 +333,16 @@ std::optional<double> HoI4::MapUtils::getDistanceBetweenCountries(const Country&
 	 const Country& country2) const
 {
 	auto distanceBetweenCountries = getDistanceBetweenCapitals(country1, country2);
-	std::pair<int, int> capital2Position = getCapitalPosition(country2);
+	const auto capital2Position = getCapitalPosition(country2);
+	if (!capital2Position)
+	{
+		return std::nullopt;
+	}
 
 	for (auto province1: country1.getProvinces())
 	{
 		auto province1Position = getProvincePosition(province1);
-		if (auto newDistance = getDistanceBetweenPoints(province1Position, capital2Position);
+		if (auto newDistance = getDistanceBetweenPoints(province1Position, *capital2Position);
 			 newDistance < distanceBetweenCountries)
 		{
 			distanceBetweenCountries = newDistance;
@@ -341,43 +362,22 @@ std::optional<double> HoI4::MapUtils::getDistanceBetweenCountries(const Country&
 }
 
 
-bool HoI4::MapUtils::bothCountriesHaveCapitals(const Country& Country1, const Country& Country2) const
-{
-	return (Country1.getCapitalState()) && (Country2.getCapitalState());
-}
-
-
-std::pair<int, int> HoI4::MapUtils::getCapitalPosition(const Country& country) const
-{
-	auto capitalProvince = country.getCapitalProvince();
-	if (capitalProvince)
-	{
-		return getProvincePosition(*capitalProvince);
-	}
-	else
-	{
-		return std::make_pair(65536, 65536);
-	}
-}
-
-
-std::pair<int, int> HoI4::MapUtils::getProvincePosition(int provinceNum) const
+HoI4::Coordinate HoI4::MapUtils::getProvincePosition(int provinceNum) const
 {
 	const auto itr = provincePositions.find(provinceNum);
 	return itr->second;
 }
 
 
-double HoI4::MapUtils::getDistanceBetweenPoints(const std::pair<int, int>& point1,
-	 const std::pair<int, int>& point2) const
+double HoI4::MapUtils::getDistanceBetweenPoints(const Coordinate& point1, const Coordinate& point2) const
 {
-	int xDistance = abs(point2.first - point1.first);
+	int xDistance = abs(point2.x - point1.x);
 	if (xDistance > 2625)
 	{
 		xDistance = 5250 - xDistance;
 	}
 
-	int yDistance = point2.second - point1.second;
+	int yDistance = point2.y - point1.y;
 
 	return sqrt(pow(xDistance, 2) + pow(yDistance, 2));
 }
