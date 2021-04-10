@@ -62,6 +62,9 @@ Configuration::Factory::Factory()
 
 		Log(LogLevel::Info) << "\tVictoria 2 mod path is " << configuration->Vic2ModPath;
 	});
+	registerKeyword("targetGameModPath", [this](std::istream& theStream) {
+		Log(LogLevel::Info) << "\tHoI4 mod path is " << commonItems::getString(theStream);
+	});
 	registerKeyword("selectedMods", [this](std::istream& theStream) {
 		const auto& theList = commonItems::stringList{theStream}.getStrings();
 		modFileNames.insert(theList.begin(), theList.end());
