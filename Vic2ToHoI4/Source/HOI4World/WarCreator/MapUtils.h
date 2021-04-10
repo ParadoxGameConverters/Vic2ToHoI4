@@ -38,9 +38,7 @@ class MapUtils
 		 const Coordinate& location,
 		 const std::map<int, State>& states) const;
 
-	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getNeighbors(const Country& checkingCountry,
-		 const MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions,
+	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getNearbyCountries(const Country& checkingCountry,
 		 const World& theWorld) const;
 	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getImmediateNeighbors(const Country& checkingCountry,
 		 const MapData& theMapData,
@@ -69,10 +67,12 @@ class MapUtils
 	void establishProvincePositions();
 	[[nodiscard]] Coordinate getProvincePosition(int provinceNum) const;
 	[[nodiscard]] double getDistanceBetweenPoints(const Coordinate& point1, const Coordinate& point2) const;
-	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getNearbyCountries(const Country& checkingCountry,
-		 const World& theWorld) const;
 	[[nodiscard]] std::optional<double> getDistanceBetweenCountries(const Country& Country1,
 		 const Country& Country2) const;
+	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getNeighbors(const Country& checkingCountry,
+		 const MapData& theMapData,
+		 const ProvinceDefinitions& provinceDefinitions,
+		 const World& theWorld) const;
 
 	std::map<int, Coordinate> provincePositions;
 	std::map<int, std::string> provinceToOwnerMap;

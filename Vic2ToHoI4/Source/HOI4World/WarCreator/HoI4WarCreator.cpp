@@ -601,7 +601,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 	std::vector<std::shared_ptr<HoI4::Country>> EqualTargets;
 	std::vector<std::shared_ptr<HoI4::Country>> DifficultTargets;
 	// getting country provinces and its neighbors
-	auto AllNeighbors = mapUtils.getNeighbors(*Leader, theMapData, provinceDefinitions, *theWorld);
+	auto AllNeighbors = mapUtils.getNearbyCountries(*Leader, *theWorld);
 	std::map<std::string, std::shared_ptr<HoI4::Country>> CloseNeighbors;
 	// gets neighbors that are actually close to you
 	for (auto neigh: AllNeighbors)
@@ -891,7 +891,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(
 		Log(LogLevel::Info) << "\t\t\tCalculating AI for a country";
 		Log(LogLevel::Info) << "\t\t\tCalculating Neighbors for a country";
 	}
-	auto AllNeighbors = mapUtils.getNeighbors(*Leader, theMapData, provinceDefinitions, *theWorld);
+	auto AllNeighbors = mapUtils.getNearbyCountries(*Leader, *theWorld);
 	std::map<std::string, std::shared_ptr<HoI4::Country>> Neighbors;
 	for (auto neigh: AllNeighbors)
 	{

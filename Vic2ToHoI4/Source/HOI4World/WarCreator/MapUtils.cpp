@@ -171,16 +171,24 @@ std::vector<int> HoI4::MapUtils::sortStatesByDistance(const std::set<int>& state
 }
 
 
-std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::getNeighbors(const Country& checkingCountry,
-	 const MapData& theMapData,
-	 const ProvinceDefinitions& provinceDefinitions,
+std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::getNearbyCountries(const Country& checkingCountry,
 	 const World& theWorld) const
 {
-	std::map<std::string, std::shared_ptr<HoI4::Country>> neighbors =
-		 getImmediateNeighbors(checkingCountry, theMapData, provinceDefinitions, theWorld);
-	if (neighbors.size() == 0)
+	std::map<std::string, std::shared_ptr<HoI4::Country>> neighbors;
+
+	for (const auto& countryItr: theWorld.getCountries())
 	{
-		neighbors = getNearbyCountries(checkingCountry, theWorld);
+		auto country = countryItr.second;
+		if (country->getCapitalState())
+		{
+			// IMPROVE
+			// need to get further neighbors, as well as countries without capital in an area
+			auto distance = getDistanceBetweenCapitals(checkingCountry, *country);
+			if (distance && (*distance <= 500) && (country->hasProvinces()))
+			{
+				neighbors.insert(countryItr);
+			}
+		}
 	}
 
 	return neighbors;
@@ -383,24 +391,16 @@ double HoI4::MapUtils::getDistanceBetweenPoints(const Coordinate& point1, const 
 }
 
 
-std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::getNearbyCountries(const Country& checkingCountry,
+std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::getNeighbors(const Country& checkingCountry,
+	 const MapData& theMapData,
+	 const ProvinceDefinitions& provinceDefinitions,
 	 const World& theWorld) const
 {
-	std::map<std::string, std::shared_ptr<HoI4::Country>> neighbors;
-
-	for (const auto& countryItr: theWorld.getCountries())
+	std::map<std::string, std::shared_ptr<HoI4::Country>> neighbors =
+		 getImmediateNeighbors(checkingCountry, theMapData, provinceDefinitions, theWorld);
+	if (neighbors.size() == 0)
 	{
-		auto country = countryItr.second;
-		if (country->getCapitalState())
-		{
-			// IMPROVE
-			// need to get further neighbors, as well as countries without capital in an area
-			auto distance = getDistanceBetweenCapitals(checkingCountry, *country);
-			if (distance && (*distance <= 500) && (country->hasProvinces()))
-			{
-				neighbors.insert(countryItr);
-			}
-		}
+		neighbors = getNearbyCountries(checkingCountry, theWorld);
 	}
 
 	return neighbors;
