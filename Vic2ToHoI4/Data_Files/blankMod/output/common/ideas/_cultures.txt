@@ -582,6 +582,12 @@ ideas = {
 			picture = culture_coptic
 			modifier = { }
 		}
+		culture_cree = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_cree
+			modifier = { }
+		}
 		culture_crni = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -640,6 +646,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_dagestani
+			modifier = { }
+		}
+		culture_dakota = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_dakota
 			modifier = { }
 		}
 		culture_dakshin = {
@@ -1143,6 +1155,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_illyrian
+			modifier = { }
+		}
+		culture_inuit = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_inuit
 			modifier = { }
 		}
 		culture_inythmum = {
@@ -1757,6 +1775,12 @@ ideas = {
 			picture = culture_native_american_minor
 			modifier = { }
 		}
+		culture_navajo = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_navajo
+			modifier = { }
+		}
 		culture_nayeduniya = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -2128,6 +2152,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_pruthenian
+			modifier = { }
+		}
+		culture_pueblo = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_pueblo
 			modifier = { }
 		}
 		culture_punic_american = {

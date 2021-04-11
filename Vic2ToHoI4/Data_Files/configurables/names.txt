@@ -4598,6 +4598,17 @@ unyamwezi = {
 	electronic_companies = { "Thunder Factory" }
 	intelligence_agencies = { "A.I.A." }
 }
+kilombero = {
+	female_names = { Ambari }
+	callsigns = { Black Africa Kilombero "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Comoros Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Kilombero Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+	intelligence_agencies = { "A.I.A." }
+}
 wolof = {
 	female_names = { "Fatoumata Sall" Fatim Fatoumata Halima Hawa Ina Kadi Kilia Kolonkan Lorane Mariam Nafissa Namandjé Namiss }
 	callsigns = { Black Africa Wolof "the Foreigner" "the White" Colonizer Hunter }
@@ -7522,4 +7533,62 @@ phrygian = {
 	aircraft_companies = { Mušensurassura }
 	naval_companies = { Aruna }
 	intelligence_agencies = { Ispant }
+}
+dagestani = {
+	female_names = { Abidat Aizaant Amanat Aset Aysha Chovka Elbika Fariza Kesira Khafsat Khazbika Kulsum Maryat Medni Nurbika Qoqa Raykhanat Rezeda Rovzan Ruvayda Sakinat Shovda Taymaskha Xava Yakhiyta Zakhira Zalina Zamira Zargan
+			Zaynap Zelimat Zulay Zulikha }
+	female_surnames = {	Mollaha Beyeha Abdulayeva Abdurakhmanova Akhmadova Alieva Aslanbekova Barayeva Basayeva Dudayeva Dudina Džabrailova Džokharova Elmurzaeva Ibragimova Isaeva Kadyrova Khasanova Kurbanova Magomedova Maskhadova Mayrbekova Murtazalieva Musaeva Otarsultanova
+			Sadulaeva Sagaipova Šapieva Šišhani Taymaskhanova Tsarnaeva Umarova Vagabova Vakhaeva Varayeva Yamadaeva Yandarbieva Zelimkhanova }
+	callsigns = { Urysybzé Adygébzé }
+	industry_companies = { "Lʺépkʺ"}
+	electronic_companies = { Šyblé }
+	car_companies = { KӀON }
+	naval_companies = { HY }
+	weapon_companies = { ŽYR }
+	aircraft_companies = { "Ž'ygʺogu" }
+	intelligence_agencies = { "Vladikavkaz" }
+}
+chechen = {
+	female_names = { Abidat Aizaant Amanat Aset Aysha Chovka Elbika Fariza Kesira Khafsat Khazbika Kulsum Maryat Medni Nurbika Qoqa Raykhanat Rezeda Rovzan Ruvayda Sakinat Shovda Taymaskha Xava Yakhiyta Zakhira Zalina Zamira Zargan
+			Zaynap Zelimat Zulay Zulikha }
+	female_surnames = {	Mollaha Beyeha Abdulayeva Abdurakhmanova Akhmadova Alieva Aslanbekova Barayeva Basayeva Dudayeva Dudina Džabrailova Džokharova Elmurzaeva Ibragimova Isaeva Kadyrova Khasanova Kurbanova Magomedova Maskhadova Mayrbekova Murtazalieva Musaeva Otarsultanova
+			Sadulaeva Sagaipova Šapieva Šišhani Taymaskhanova Tsarnaeva Umarova Vagabova Vakhaeva Varayeva Yamadaeva Yandarbieva Zelimkhanova }
+	callsigns = { Urysybzé Adygébzé }
+	industry_companies = { "Lʺépkʺ"}
+	electronic_companies = { Šyblé }
+	car_companies = { KӀON }
+	naval_companies = { HY }
+	weapon_companies = { ŽYR }
+	aircraft_companies = { "Ž'ygʺogu" }
+	intelligence_agencies = { "Vladikavkaz" }
+}
+circassian = {
+	female_names = { Abidat Aizaant Amanat Aset Aysha Chovka Elbika Fariza Kesira Khafsat Khazbika Kulsum Maryat Medni Nurbika Qoqa Raykhanat Rezeda Rovzan Ruvayda Sakinat Shovda Taymaskha Xava Yakhiyta Zakhira Zalina Zamira Zargan
+			Zaynap Zelimat Zulay Zulikha }
+	female_surnames = {	Mollaha Beyeha Abdulayeva Abdurakhmanova Akhmadova Alieva Aslanbekova Barayeva Basayeva Dudayeva Dudina Džabrailova Džokharova Elmurzaeva Ibragimova Isaeva Kadyrova Khasanova Kurbanova Magomedova Maskhadova Mayrbekova Murtazalieva Musaeva Otarsultanova
+			Sadulaeva Sagaipova Šapieva Šišhani Taymaskhanova Tsarnaeva Umarova Vagabova Vakhaeva Varayeva Yamadaeva Yandarbieva Zelimkhanova }
+	callsigns = { Urysybzé Adygébzé }
+	industry_companies = { "Lʺépkʺ"}
+	electronic_companies = { Šyblé }
+	car_companies = { KӀON }
+	naval_companies = { HY }
+	weapon_companies = { ŽYR }
+	aircraft_companies = { "Ž'ygʺogu" }
+	intelligence_agencies = { "Vladikavkaz" }
+}
+alaskan = {
+	female_names = { Jelena Ludmila }
+	female_surnames = { Aleksseyeva Antonova Azarova Badanova Brusilova Budonnaya Chibisova Denikina
+			Dragomirova Frolova Golivina Grishina Gurkova Ivanova Koneva Konstantinova Kornilova
+			Kolchakova Kuropatkina Lazareva Makarova Men'shikova Nakhimova Nebogatova
+			Nikolayevicha Ostrovskaya Pavlova Putyatina Romanova Rozhestvenskaya Skobeleva
+			Shuvalova Surkova Tukhachevskaya Yegorova Yudenicha Vorontsova Voroshilova Zavoyko }
+	callsigns = { Anvil Hammer Fury Arrow Storm Bear "White Lily" Devil Eagle Falcon Fox Snowflake Greasy Guardian Gunman Hawk Hardball Howl Blizzard Husky Ice Killer Steel Iron Skull Striker Thunder Warrior Wardog Vodka }
+	industry_companies = { "Stalingrad Tractor Factory" }
+	electronic_companies = { "Leningrad Industrial Institute" }
+	car_companies = { "Morozov Design Bureau" "Astrov Design Bureau" OKMO }
+	naval_companies = { "Nevskoye Design Bureau" }
+	weapon_companies = { "Grabin Design Bureau" "Tula Arms Plant" GAZ }
+	aircraft_companies = { "MiG Design Bureau" "Ilyushin Design Bureau" "Tupolev Design Bureau" "Yakovlev Design Bureau" }
+	intelligence_agencies = { "FSB" }
 }
