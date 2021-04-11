@@ -65,10 +65,12 @@ class MapUtils
 	[[nodiscard]] std::vector<std::string> tokenizeLine(const std::string& line) const;
 	void processPositionLine(const std::string& line);
 	void establishProvincePositions();
-	[[nodiscard]] Coordinate getProvincePosition(int provinceNum) const;
-	[[nodiscard]] double getDistanceBetweenPoints(const Coordinate& point1, const Coordinate& point2) const;
+
+	[[nodiscard]] std::optional<Coordinate> getProvincePosition(int provinceNum) const;
+	[[nodiscard]] double getDistanceSquaredBetweenPoints(const Coordinate& point1, const Coordinate& point2) const;
 	[[nodiscard]] std::optional<double> getDistanceBetweenCountries(const Country& Country1,
 		 const Country& Country2) const;
+
 	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getNeighbors(const Country& checkingCountry,
 		 const MapData& theMapData,
 		 const ProvinceDefinitions& provinceDefinitions,
