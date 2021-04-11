@@ -372,6 +372,10 @@ spriteTypes = {
 		texturefile = "gfx/interface/culture/culture_coptic.dds"
 	}
 	spriteType = {
+		name = "GFX_idea_culture_cree"
+		texturefile = "gfx/interface/culture/culture_cree.dds"
+	}
+	spriteType = {
 		name = "GFX_idea_culture_crni"
 		texturefile = "gfx/interface/culture/culture_crni.dds"
 	}
@@ -410,6 +414,10 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_idea_culture_dagestani"
 		texturefile = "gfx/interface/culture/culture_dagestani.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_dakota"
+		texturefile = "gfx/interface/culture/culture_dakota.dds"
 	}
 	spriteType = {
 		name = "GFX_idea_culture_dakshin"
@@ -730,6 +738,10 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_idea_culture_illyrian"
 		texturefile = "gfx/interface/culture/culture_illyrian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_inuit"
+		texturefile = "gfx/interface/culture/culture_inuit.dds"
 	}
 	spriteType = {
 		name = "GFX_idea_culture_inythmum"
@@ -1140,6 +1152,10 @@ spriteTypes = {
 		texturefile = "gfx/interface/culture/culture_native_american_minor.dds"
 	}
 	spriteType = {
+		name = "GFX_idea_culture_navajo"
+		texturefile = "gfx/interface/culture/culture_navajo.dds"
+	}
+	spriteType = {
 		name = "GFX_idea_culture_nayeduniya"
 		texturefile = "gfx/interface/culture/culture_nayeduniya.dds"
 	}
@@ -1382,6 +1398,10 @@ spriteTypes = {
 	spriteType = {
 		name = "GFX_idea_culture_pruthenian"
 		texturefile = "gfx/interface/culture/culture_pruthenian.dds"
+	}
+	spriteType = {
+		name = "GFX_idea_culture_pueblo"
+		texturefile = "gfx/interface/culture/culture_pueblo.dds"
 	}
 	spriteType = {
 		name = "GFX_idea_culture_punic_american"
