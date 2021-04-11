@@ -192,7 +192,7 @@ std::vector<int> HoI4::MapUtils::sortStatesByDistance(const std::set<int>& state
 	{
 		if (auto state = states.find(stateID); state != states.end())
 		{
-			float distance = std::numeric_limits<float>::max();
+			auto distance = std::numeric_limits<float>::max();
 			if (const auto stateCapital = state->second.getVPLocation(); stateCapital)
 			{
 				const auto stateCapitalLocation = getProvincePosition(*stateCapital);
@@ -218,8 +218,6 @@ std::vector<int> HoI4::MapUtils::sortStatesByDistance(const std::set<int>& state
 
 std::set<std::string> HoI4::MapUtils::getNearbyCountries(const std::string& country, float range) const
 {
-	std::map<std::string, std::shared_ptr<HoI4::Country>> neighbors;
-
 	const auto countriesAndDistances = distancesBetweenCountries.find(country);
 	if (countriesAndDistances == distancesBetweenCountries.end())
 	{
@@ -241,8 +239,6 @@ std::set<std::string> HoI4::MapUtils::getNearbyCountries(const std::string& coun
 
 std::set<std::string> HoI4::MapUtils::getFarCountries(const std::string& country, float range) const
 {
-	std::map<std::string, std::shared_ptr<HoI4::Country>> neighbors;
-
 	const auto countriesAndDistances = distancesBetweenCountries.find(country);
 	if (countriesAndDistances == distancesBetweenCountries.end())
 	{
@@ -298,13 +294,13 @@ std::optional<HoI4::Coordinate> HoI4::MapUtils::getProvincePosition(int province
 
 float HoI4::MapUtils::getDistanceSquaredBetweenPoints(const Coordinate& point1, const Coordinate& point2) const
 {
-	float xDistance = static_cast<float>(abs(point2.x - point1.x));
+	auto xDistance = static_cast<float>(abs(point2.x - point1.x));
 	if (xDistance > halfMapWidth)
 	{
 		xDistance = mapWidth - xDistance;
 	}
 
-	const float yDistance = static_cast<float>(point2.y - point1.y);
+	const auto yDistance = static_cast<float>(point2.y - point1.y);
 
 	return xDistance * xDistance + yDistance * yDistance;
 }
@@ -318,7 +314,7 @@ std::optional<float> HoI4::MapUtils::getDistanceBetweenCountries(const Country& 
 		return std::nullopt;
 	}
 
-	float distanceSquared = *distanceBetweenCapitals * *distanceBetweenCapitals;
+	auto distanceSquared = *distanceBetweenCapitals * *distanceBetweenCapitals;
 	for (auto province1: country1.getProvinces())
 	{
 		auto province1Position = getProvincePosition(province1);

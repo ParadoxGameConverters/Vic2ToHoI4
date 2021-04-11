@@ -26,8 +26,8 @@ class MapUtils
 	explicit MapUtils(const std::map<int, State>& theStates,
 		 const std::map<std::string, std::shared_ptr<Country>>& theCountries);
 
-	[[nodiscard]] std::optional<float> getDistanceBetweenCapitals(const Country& Country1,
-		 const Country& Country2) const;
+	[[nodiscard]] std::optional<float> getDistanceBetweenCapitals(const Country& country1,
+		 const Country& country2) const;
 
 	[[nodiscard]] std::optional<Coordinate> getCapitalPosition(const Country& country) const;
 	[[nodiscard]] std::set<int> findBorderStates(const Country& country,
