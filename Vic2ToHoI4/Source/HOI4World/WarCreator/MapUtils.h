@@ -23,9 +23,10 @@ struct Coordinate
 class MapUtils
 {
   public:
-	explicit MapUtils(const std::map<int, State>& theStates);
+	explicit MapUtils(const std::map<int, State>& theStates,
+		 const std::map<std::string, std::shared_ptr<Country>>& theCountries);
 
-	[[nodiscard]] std::optional<double> getDistanceBetweenCapitals(const Country& Country1,
+	[[nodiscard]] std::optional<float> getDistanceBetweenCapitals(const Country& Country1,
 		 const Country& Country2) const;
 
 	[[nodiscard]] std::optional<Coordinate> getCapitalPosition(const Country& country) const;
@@ -38,46 +39,27 @@ class MapUtils
 		 const Coordinate& location,
 		 const std::map<int, State>& states) const;
 
-	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getNearbyCountries(const Country& checkingCountry,
-		 const World& theWorld) const;
-	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getImmediateNeighbors(const Country& checkingCountry,
-		 const MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions,
-		 const World& theWorld) const;
-	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> findCloseNeighbors(const Country& country,
-		 const MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions,
-		 const World& theWorld) const;
-	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> findFarNeighbors(const Country& country,
-		 const MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions,
-		 const World& theWorld) const;
-	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> findCountriesWithin(int distancePx,
-		 const Country& country,
-		 const MapData& theMapData,
-		 const World& theWorld) const;
-	[[nodiscard]] std::map<double, std::shared_ptr<Country>> getGPsByDistance(const Country& country,
+	[[nodiscard]] std::set<std::string> getNearbyCountries(const std::string& country, float range) const;
+	[[nodiscard]] std::set<std::string> getFarCountries(const std::string& country, float range) const;
+	[[nodiscard]] std::map<float, std::shared_ptr<Country>> getGPsByDistance(const Country& country,
 		 const World& theWorld) const;
 
   private:
-	void determineProvinceOwners(const std::map<int, State>& theStates);
+	void establishProvincePositions();
 	void addProvincePosition(const std::vector<std::string>& lineTokens);
 	[[nodiscard]] std::vector<std::string> tokenizeLine(const std::string& line) const;
 	void processPositionLine(const std::string& line);
-	void establishProvincePositions();
+	void determineProvinceOwners(const std::map<int, State>& theStates);
+	void establishDistancesBetweenCountries(const std::map<std::string, std::shared_ptr<Country>>& theCountries);
 
 	[[nodiscard]] std::optional<Coordinate> getProvincePosition(int provinceNum) const;
-	[[nodiscard]] double getDistanceSquaredBetweenPoints(const Coordinate& point1, const Coordinate& point2) const;
-	[[nodiscard]] std::optional<double> getDistanceBetweenCountries(const Country& Country1,
+	[[nodiscard]] float getDistanceSquaredBetweenPoints(const Coordinate& point1, const Coordinate& point2) const;
+	[[nodiscard]] std::optional<float> getDistanceBetweenCountries(const Country& Country1,
 		 const Country& Country2) const;
-
-	[[nodiscard]] std::map<std::string, std::shared_ptr<Country>> getNeighbors(const Country& checkingCountry,
-		 const MapData& theMapData,
-		 const ProvinceDefinitions& provinceDefinitions,
-		 const World& theWorld) const;
 
 	std::map<int, Coordinate> provincePositions;
 	std::map<int, std::string> provinceToOwnerMap;
+	std::map<std::string, std::map<std::string, float>> distancesBetweenCountries;
 };
 
 } // namespace HoI4

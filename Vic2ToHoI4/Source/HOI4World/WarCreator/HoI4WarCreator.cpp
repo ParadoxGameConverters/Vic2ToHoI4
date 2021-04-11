@@ -20,7 +20,7 @@ HoI4WarCreator::HoI4WarCreator(HoI4::World* world,
 	 HoI4::Localisation& hoi4Localisations,
 	 const Configuration& theConfiguration):
 	 genericFocusTree(new HoI4FocusTree),
-	 theWorld(world), mapUtils(theWorld->getStates()), AggressorFactions(), WorldTargetMap()
+	 theWorld(world), mapUtils(theWorld->getStates(), theWorld->getCountries()), AggressorFactions(), WorldTargetMap()
 {
 	Log(LogLevel::Info) << "\tCreating wars";
 
@@ -601,22 +601,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 	std::vector<std::shared_ptr<HoI4::Country>> EqualTargets;
 	std::vector<std::shared_ptr<HoI4::Country>> DifficultTargets;
 	// getting country provinces and its neighbors
-	auto AllNeighbors = mapUtils.getNearbyCountries(*Leader, *theWorld);
-	std::map<std::string, std::shared_ptr<HoI4::Country>> CloseNeighbors;
-	// gets neighbors that are actually close to you
-	for (auto neigh: AllNeighbors)
-	{
-		if (neigh.second->getCapitalState())
-		{
-			// IMPROVE
-			// need to get further neighbors, as well as countries without capital in an area
-			auto distance = mapUtils.getDistanceBetweenCapitals(*Leader, *neigh.second);
-			if (distance && (distance <= 500))
-			{
-				CloseNeighbors.insert(neigh);
-			}
-		}
-	}
+	auto neighbors = mapUtils.getNearbyCountries(Leader->getTag(), 500.0F);
 
 	std::set<std::string> Allies = Leader->getAllies();
 	// should add method to look for cores you dont own
@@ -631,39 +616,45 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 	{
 		Log(LogLevel::Info) << "\t\t\tDoing Neighbor calcs";
 	}
-	for (auto neigh: CloseNeighbors)
+	for (const auto& neighborTag: neighbors)
 	{
-		// lets check to see if they are not our ally and not a great country
-		if (!Allies.contains(neigh.second->getTag()) && !neigh.second->isGreatPower())
+		const auto neighbor = world->findCountry(neighborTag);
+		if (neighbor == nullptr)
 		{
-			volatile double enemystrength = neigh.second->getStrengthOverTime(1.5);
+			continue;
+		}
+
+		// lets check to see if they are not our ally and not a great country
+		if (!Allies.contains(neighbor->getTag()) && !neighbor->isGreatPower())
+		{
+			volatile double enemystrength = neighbor->getStrengthOverTime(1.5);
 			volatile double mystrength = Leader->getStrengthOverTime(1.5);
 			// lets see their strength is at least < 20%
-			if (neigh.second->getStrengthOverTime(1.5) < Leader->getStrengthOverTime(1.5) * 0.2 &&
-				 findFaction(neigh.second)->getMembers().size() == 1)
+			if (neighbor->getStrengthOverTime(1.5) < Leader->getStrengthOverTime(1.5) * 0.2 &&
+				 findFaction(neighbor)->getMembers().size() == 1)
 			{
 				// they are very weak
-				Anschluss.push_back(neigh.second);
+				Anschluss.push_back(neighbor);
 			}
 			// if not, lets see their strength is at least < 60%
-			else if (neigh.second->getStrengthOverTime(1.5) < Leader->getStrengthOverTime(1.5) * 0.6 &&
-						neigh.second->getStrengthOverTime(1.5) > Leader->getStrengthOverTime(1.5) * 0.2 &&
-						findFaction(neigh.second)->getMembers().size() == 1)
+			else if (neighbor->getStrengthOverTime(1.5) < Leader->getStrengthOverTime(1.5) * 0.6 &&
+						neighbor->getStrengthOverTime(1.5) > Leader->getStrengthOverTime(1.5) * 0.2 &&
+						findFaction(neighbor)->getMembers().size() == 1)
 			{
 				// they are weak and we can get 1 of these countries in sudeten deal
-				Sudeten.push_back(neigh.second);
+				Sudeten.push_back(neighbor);
 			}
 			// if not, lets see their strength is at least = to ours%
-			else if (neigh.second->getStrengthOverTime(1.5) < Leader->getStrengthOverTime(1.5))
+			else if (neighbor->getStrengthOverTime(1.5) < Leader->getStrengthOverTime(1.5))
 			{
 				// EqualTargets.push_back(neigh);
-				EqualTargets.push_back(neigh.second);
+				EqualTargets.push_back(neighbor);
 			}
 			// if not, lets see their strength is at least < 120%
-			else if (neigh.second->getStrengthOverTime(1.5) < Leader->getStrengthOverTime(1.5) * 1.2)
+			else if (neighbor->getStrengthOverTime(1.5) < Leader->getStrengthOverTime(1.5) * 1.2)
 			{
 				// StrongerTargets.push_back(neigh);
-				DifficultTargets.push_back(neigh.second);
+				DifficultTargets.push_back(neighbor);
 			}
 		}
 	}
@@ -891,21 +882,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(
 		Log(LogLevel::Info) << "\t\t\tCalculating AI for a country";
 		Log(LogLevel::Info) << "\t\t\tCalculating Neighbors for a country";
 	}
-	auto AllNeighbors = mapUtils.getNearbyCountries(*Leader, *theWorld);
-	std::map<std::string, std::shared_ptr<HoI4::Country>> Neighbors;
-	for (auto neigh: AllNeighbors)
-	{
-		if (neigh.second->getCapitalState())
-		{
-			// IMPROVE
-			// need to get further neighbors, as well as countries without capital in an area
-			auto distance = mapUtils.getDistanceBetweenCapitals(*Leader, *neigh.second);
-			if (distance && (distance <= 400))
-			{
-				Neighbors.insert(neigh);
-			}
-		}
-	}
+	auto neighbors = mapUtils.getNearbyCountries(Leader->getTag(), 400);
 	std::set<std::string> Allies = Leader->getAllies();
 	std::vector<std::shared_ptr<HoI4::Country>> coups;
 	std::vector<std::shared_ptr<HoI4::Country>> forcedtakeover;
@@ -922,32 +899,36 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(
 	{
 		Log(LogLevel::Info) << "\t\t\tDoing Neighbor calcs for a country";
 	}
-	for (auto neigh: Neighbors)
+	for (const auto& neighborTag: neighbors)
 	{
+		const auto neighbor = theWorld->findCountry(neighborTag);
+		if (neighbor == nullptr)
+		{
+			continue;
+		}
 		// lets check to see if they are our ally and not a great country
-		if (!Allies.contains(neigh.second->getTag()) && !neigh.second->isGreatPower())
+		if (!Allies.contains(neighbor->getTag()) && !neighbor->isGreatPower())
 		{
 			double com = 0;
-			auto neighFaction = findFaction(neigh.second);
-			for (auto party: neigh.second->getIdeologySupport())
+			auto neighFaction = findFaction(neighbor);
+			for (auto party: neighbor->getIdeologySupport())
 			{
 				if ((party.first == "socialist") || (party.first == "communist") || (party.first == "anarcho_liberal"))
 					com += party.second;
 			}
-			if (const auto& rulingParty = neigh.second->getRulingParty();
-				 com > 25 && rulingParty->getIdeology() != "communist" &&
-				 HowToTakeLand(neigh.second, Leader, 2.5) == "coup")
+			if (const auto& rulingParty = neighbor->getRulingParty();
+				 com > 25 && rulingParty->getIdeology() != "communist" && HowToTakeLand(neighbor, Leader, 2.5) == "coup")
 			{
 				// look for neighboring countries to spread communism too(Need 25 % or more Communism support), Prioritizing
 				// those with "Communism Allowed" Flags, prioritizing those who are weakest 	Method() Influence Ideology
 				// and
 				// Attempt Coup
-				coups.push_back(neigh.second);
+				coups.push_back(neighbor);
 			}
 			else if (neighFaction->getMembers().size() == 1 && rulingParty->getIdeology() != "communist")
 			{
 				//	Then look for neighboring countries to spread communism by force, prioritizing weakest first
-				forcedtakeover.push_back(neigh.second);
+				forcedtakeover.push_back(neighbor);
 				//	Depending on Anti - Ideology Focus, look for allies in alternate ideologies to get to ally with to
 				// declare war against Anti - Ideology Country.
 			}
@@ -1187,14 +1168,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 
 	std::vector<std::shared_ptr<HoI4::Faction>> countriesAtWar;
 
-	auto closeNeighbors = mapUtils.getImmediateNeighbors(*country, theMapData, provinceDefinitions, *theWorld);
-	for (const auto& nonImmediateNeighbor: mapUtils.findCountriesWithin(100, *country, theMapData, *theWorld))
-	{
-		if (closeNeighbors.find(nonImmediateNeighbor.first) == closeNeighbors.end())
-		{
-			closeNeighbors.insert(nonImmediateNeighbor);
-		}
-	}
+	auto closeNeighbors = mapUtils.getNearbyCountries(country->getTag(), 100);
 	if (closeNeighbors.empty())
 	{
 		return countriesAtWar;
@@ -1214,28 +1188,35 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 		 coreHolders,
 		 hoi4Localisations);
 
-	for (const auto& target: closeNeighbors)
+	for (const auto& targetTag: closeNeighbors)
 	{
 		if (numWarsWithNeighbors >= 5)
 		{
 			break;
 		}
-		if (coreHolders.contains(target.first) || conquerTags.contains(target.first))
+
+		auto target = theWorld->findCountry(targetTag);
+		if (target == nullptr)
+		{
+			continue;
+		}
+
+		if (coreHolders.contains(targetTag) || conquerTags.contains(targetTag))
 		{
 			continue;
 		}
 
 
-		auto relations = country->getRelations(target.second->getTag());
-		if (!relations || (relations->getRelations() > 0) || (country == target.second))
+		auto relations = country->getRelations(targetTag);
+		if (!relations || (relations->getRelations() > 0) || (country == target))
 		{
 			continue;
 		}
 
-		if (auto allies = country->getAllies(); !allies.contains(target.second->getTag()))
+		if (auto allies = country->getAllies(); !allies.contains(targetTag))
 		{
 			std::string targetName;
-			if (auto possibleTargetName = target.second->getName(); possibleTargetName)
+			if (auto possibleTargetName = target->getName(); possibleTargetName)
 			{
 				targetName = *possibleTargetName;
 			}
@@ -1253,8 +1234,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 			date startDate = date("1936.01.01");
 			startDate.increaseByMonths((200 + relations->getRelations()) / 8);
 			focusTree->addNeighborWarBranch(country->getTag(),
-				 closeNeighbors,
-				 target.second,
+				 target,
 				 targetName,
 				 startDate,
 				 theWorld->getMajorIdeologies(),
@@ -1289,22 +1269,29 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findWeakNeighbors(st
 	std::vector<std::shared_ptr<HoI4::Country>> weakNeighbors;
 
 	auto allies = country->getAllies();
-	for (auto neighbor: mapUtils.findCloseNeighbors(*country, theMapData, provinceDefinitions, *theWorld))
+	for (const auto& neighborTag: mapUtils.getNearbyCountries(country->getTag(), 500))
 	{
-		if (allies.contains(neighbor.second->getTag()))
-		{
-			continue;
-		}
-		if (neighbor.second->isGreatPower())
+		if (allies.contains(neighborTag))
 		{
 			continue;
 		}
 
-		double enemystrength = neighbor.second->getStrengthOverTime(1.5);
-		double mystrength = country->getStrengthOverTime(1.5);
-		if ((enemystrength < (mystrength * 0.5)) && (findFaction(neighbor.second)->getMembers().size() == 1))
+		auto neighbor = theWorld->findCountry(neighborTag);
+		if (neighbor == nullptr)
 		{
-			weakNeighbors.push_back(neighbor.second);
+			continue;
+		}
+
+		if (neighbor->isGreatPower())
+		{
+			continue;
+		}
+
+		double enemystrength = neighbor->getStrengthOverTime(1.5);
+		double mystrength = country->getStrengthOverTime(1.5);
+		if ((enemystrength < (mystrength * 0.5)) && (findFaction(neighbor)->getMembers().size() == 1))
+		{
+			weakNeighbors.push_back(neighbor);
 		}
 	}
 
@@ -1319,22 +1306,28 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::findWeakColonies(std
 	std::vector<std::shared_ptr<HoI4::Country>> weakColonies;
 
 	auto allies = country->getAllies();
-	for (auto neighbor: mapUtils.findFarNeighbors(*country, theMapData, provinceDefinitions, *theWorld))
+	for (auto neighborTag: mapUtils.getFarCountries(country->getTag(), 500))
 	{
-		if (allies.contains(neighbor.second->getTag()))
-		{
-			continue;
-		}
-		if (neighbor.second->isGreatPower())
+		if (allies.contains(neighborTag))
 		{
 			continue;
 		}
 
-		double enemystrength = neighbor.second->getStrengthOverTime(1.5);
-		double mystrength = country->getStrengthOverTime(1.5);
-		if ((enemystrength < mystrength * 0.5) && (findFaction(neighbor.second)->getMembers().size() == 1))
+		auto neighbor = theWorld->findCountry(neighborTag);
+		if (neighbor == nullptr)
 		{
-			weakColonies.push_back(neighbor.second);
+			continue;
+		}
+		if (neighbor->isGreatPower())
+		{
+			continue;
+		}
+
+		double enemystrength = neighbor->getStrengthOverTime(1.5);
+		double mystrength = country->getStrengthOverTime(1.5);
+		if ((enemystrength < mystrength * 0.5) && (findFaction(neighbor)->getMembers().size() == 1))
+		{
+			weakColonies.push_back(neighbor);
 		}
 	}
 

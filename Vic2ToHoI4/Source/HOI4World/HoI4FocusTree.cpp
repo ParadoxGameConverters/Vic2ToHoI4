@@ -2596,7 +2596,6 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(
 }
 
 void HoI4FocusTree::addNeighborWarBranch(const string& tag,
-	 const map<string, shared_ptr<HoI4::Country>>& closeNeighbors,
 	 const shared_ptr<HoI4::Country>& targetNeighbors,
 	 const string& targetName,
 	 const date& startDate,

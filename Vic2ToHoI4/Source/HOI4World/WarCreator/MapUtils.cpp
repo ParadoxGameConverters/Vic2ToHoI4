@@ -12,10 +12,13 @@ constexpr int halfMapWidth = mapWidth / 2;
 
 
 
-HoI4::MapUtils::MapUtils(const std::map<int, State>& theStates)
+HoI4::MapUtils::MapUtils(const std::map<int, State>& theStates,
+	 const std::map<std::string, std::shared_ptr<Country>>& theCountries)
 {
+	Log(LogLevel::Info) << "Determining HoI4 map information";
 	establishProvincePositions();
 	determineProvinceOwners(theStates);
+	establishDistancesBetweenCountries(theCountries);
 }
 
 
@@ -83,7 +86,41 @@ void HoI4::MapUtils::determineProvinceOwners(const std::map<int, State>& theStat
 }
 
 
-std::optional<double> HoI4::MapUtils::getDistanceBetweenCapitals(const Country& country1, const Country& country2) const
+void HoI4::MapUtils::establishDistancesBetweenCountries(
+	 const std::map<std::string, std::shared_ptr<Country>>& theCountries)
+{
+	for (const auto& [tagOne, countryOne]: theCountries)
+	{
+		for (const auto& [tagTwo, countryTwo]: theCountries)
+		{
+			// no need to know the distance to one's self
+			if (tagOne == tagTwo)
+			{
+				continue;
+			}
+
+			// we already found the distance from two to one
+			if (const auto itr = distancesBetweenCountries.find(tagTwo); itr != distancesBetweenCountries.end())
+			{
+				if (const auto itr2 = itr->second.find(tagOne); itr2 != itr->second.end())
+				{
+					distancesBetweenCountries[tagOne].emplace(tagTwo, itr2->second);
+					continue;
+				}
+			}
+
+			// this is a new distance to calculate
+			auto distance = getDistanceBetweenCountries(*countryOne, *countryTwo);
+			if (distance)
+			{
+				distancesBetweenCountries[tagOne].emplace(tagTwo, *distance);
+			}
+		}
+	}
+}
+
+
+std::optional<float> HoI4::MapUtils::getDistanceBetweenCapitals(const Country& country1, const Country& country2) const
 {
 	const auto country1Position = getCapitalPosition(country1);
 	const auto country2Position = getCapitalPosition(country2);
@@ -149,19 +186,19 @@ std::vector<int> HoI4::MapUtils::sortStatesByDistance(const std::set<int>& state
 	 const Coordinate& location,
 	 const std::map<int, State>& states) const
 {
-	std::multimap<double, int> statesWithDistance;
+	std::multimap<float, int> statesWithDistance;
 
 	for (auto stateID: stateList)
 	{
 		if (auto state = states.find(stateID); state != states.end())
 		{
-			double distance = std::numeric_limits<double>::max();
+			float distance = std::numeric_limits<float>::max();
 			if (const auto stateCapital = state->second.getVPLocation(); stateCapital)
 			{
 				const auto stateCapitalLocation = getProvincePosition(*stateCapital);
 				if (stateCapitalLocation)
 				{
-					distance = pow(location.x - stateCapitalLocation->x, 2) + pow(location.y - stateCapitalLocation->y, 2);
+					distance = getDistanceSquaredBetweenPoints(location, *stateCapitalLocation);
 				}
 			}
 
@@ -179,159 +216,56 @@ std::vector<int> HoI4::MapUtils::sortStatesByDistance(const std::set<int>& state
 }
 
 
-std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::getNearbyCountries(const Country& checkingCountry,
-	 const World& theWorld) const
+std::set<std::string> HoI4::MapUtils::getNearbyCountries(const std::string& country, float range) const
 {
 	std::map<std::string, std::shared_ptr<HoI4::Country>> neighbors;
 
-	for (const auto& countryItr: theWorld.getCountries())
+	const auto countriesAndDistances = distancesBetweenCountries.find(country);
+	if (countriesAndDistances == distancesBetweenCountries.end())
 	{
-		auto country = countryItr.second;
-		if (country->getCapitalState())
+		return {};
+	}
+
+	std::set<std::string> nearbyCountries;
+	for (const auto& [tag, distance]: countriesAndDistances->second)
+	{
+		if (distance <= range)
 		{
-			// IMPROVE
-			// need to get further neighbors, as well as countries without capital in an area
-			auto distance = getDistanceBetweenCapitals(checkingCountry, *country);
-			if (distance && (*distance <= 500) && (country->hasProvinces()))
-			{
-				neighbors.insert(countryItr);
-			}
+			nearbyCountries.insert(tag);
 		}
 	}
 
-	return neighbors;
+	return nearbyCountries;
 }
 
 
-std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::getImmediateNeighbors(
-	 const Country& checkingCountry,
-	 const MapData& theMapData,
-	 const ProvinceDefinitions& provinceDefinitions,
-	 const World& theWorld) const
+std::set<std::string> HoI4::MapUtils::getFarCountries(const std::string& country, float range) const
 {
 	std::map<std::string, std::shared_ptr<HoI4::Country>> neighbors;
 
-	for (auto province: checkingCountry.getProvinces())
+	const auto countriesAndDistances = distancesBetweenCountries.find(country);
+	if (countriesAndDistances == distancesBetweenCountries.end())
 	{
-		for (int provinceNumber: theMapData.getNeighbors(province))
+		return {};
+	}
+
+	std::set<std::string> nearbyCountries;
+	for (const auto& [tag, distance]: countriesAndDistances->second)
+	{
+		if (distance > range)
 		{
-			if (!provinceDefinitions.isLandProvince(province))
-			{
-				continue;
-			}
-
-			auto provinceToOwnerItr = provinceToOwnerMap.find(provinceNumber);
-			if (provinceToOwnerItr == provinceToOwnerMap.end())
-			{
-				continue;
-			}
-
-			auto ownerTag = provinceToOwnerItr->second;
-			if (ownerTag == checkingCountry.getTag())
-			{
-				continue;
-			}
-
-			auto countries = theWorld.getCountries();
-			if (auto ownerCountry = countries.find(ownerTag); ownerCountry != countries.end())
-			{
-				neighbors.insert(std::make_pair(ownerTag, ownerCountry->second));
-			}
+			nearbyCountries.insert(tag);
 		}
 	}
 
-	return neighbors;
+	return nearbyCountries;
 }
 
 
-std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::findCloseNeighbors(const Country& country,
-	 const MapData& theMapData,
-	 const ProvinceDefinitions& provinceDefinitions,
+std::map<float, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::getGPsByDistance(const Country& country,
 	 const World& theWorld) const
 {
-	std::map<std::string, std::shared_ptr<HoI4::Country>> closeNeighbors;
-
-	for (const auto& neighbor: getNeighbors(country, theMapData, provinceDefinitions, theWorld))
-	{
-		if ((neighbor.second->getCapitalState()) && (neighbor.first != ""))
-		{
-			auto distance = getDistanceBetweenCapitals(country, *neighbor.second);
-			if (distance && (*distance <= 500))
-			{
-				closeNeighbors.insert(neighbor);
-			}
-		}
-	}
-
-	return closeNeighbors;
-}
-
-
-std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::findFarNeighbors(const Country& country,
-	 const MapData& theMapData,
-	 const ProvinceDefinitions& provinceDefinitions,
-	 const World& theWorld) const
-{
-	std::map<std::string, std::shared_ptr<HoI4::Country>> farNeighbors;
-
-	for (auto neighbor: getNeighbors(country, theMapData, provinceDefinitions, theWorld))
-	{
-		if (neighbor.second->getCapitalState())
-		{
-			auto distance = getDistanceBetweenCapitals(country, *neighbor.second);
-			if (distance && (*distance > 500))
-			{
-				farNeighbors.insert(neighbor);
-			}
-		}
-	}
-
-	if (farNeighbors.size() == 0) // find all nearby countries
-	{
-		for (const auto& otherCountry: theWorld.getCountries())
-		{
-			if (otherCountry.second->getCapitalState())
-			{
-				auto distance = getDistanceBetweenCapitals(country, *otherCountry.second);
-				if (distance && (*distance <= 1000) && (otherCountry.second->hasProvinces()))
-				{
-					farNeighbors.insert(otherCountry);
-				}
-			}
-		}
-	}
-
-	return farNeighbors;
-}
-
-
-std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::findCountriesWithin(int distancePx,
-	 const Country& country,
-	 const MapData& theMapData,
-	 const World& theWorld) const
-{
-	std::map<std::string, std::shared_ptr<HoI4::Country>> closeNeighbors;
-
-	for (const auto& neighbor: theWorld.getCountries())
-	{
-		if ((neighbor.second->getCapitalState()) && (!neighbor.first.empty()) && (neighbor.second->hasProvinces()))
-		{
-			const auto& distance = getDistanceBetweenCountries(country, *neighbor.second);
-			if (distance && (*distance <= distancePx))
-			{
-				closeNeighbors.insert(neighbor);
-			}
-		}
-	}
-
-	return closeNeighbors;
-}
-
-
-std::map<double, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::getGPsByDistance(const Country& country,
-	 const World& theWorld) const
-{
-	std::map<double, std::shared_ptr<HoI4::Country>> distanceToGPMap;
+	std::map<float, std::shared_ptr<HoI4::Country>> distanceToGPMap;
 	for (auto greatPower: theWorld.getGreatPowers())
 	{
 		auto distance = getDistanceBetweenCapitals(country, *greatPower);
@@ -356,22 +290,21 @@ std::optional<HoI4::Coordinate> HoI4::MapUtils::getProvincePosition(int province
 }
 
 
-double HoI4::MapUtils::getDistanceSquaredBetweenPoints(const Coordinate& point1, const Coordinate& point2) const
+float HoI4::MapUtils::getDistanceSquaredBetweenPoints(const Coordinate& point1, const Coordinate& point2) const
 {
-	int xDistance = abs(point2.x - point1.x);
+	float xDistance = static_cast<float>(abs(point2.x - point1.x));
 	if (xDistance > halfMapWidth)
 	{
 		xDistance = mapWidth - xDistance;
 	}
 
-	const int yDistance = point2.y - point1.y;
+	const float yDistance = static_cast<float>(point2.y - point1.y);
 
-	return pow(xDistance, 2) + pow(yDistance, 2);
+	return xDistance * xDistance + yDistance * yDistance;
 }
 
 
-std::optional<double> HoI4::MapUtils::getDistanceBetweenCountries(const Country& country1,
-	 const Country& country2) const
+std::optional<float> HoI4::MapUtils::getDistanceBetweenCountries(const Country& country1, const Country& country2) const
 {
 	auto distanceBetweenCapitals = getDistanceBetweenCapitals(country1, country2);
 	if (!distanceBetweenCapitals)
@@ -379,7 +312,7 @@ std::optional<double> HoI4::MapUtils::getDistanceBetweenCountries(const Country&
 		return std::nullopt;
 	}
 
-	double distanceSquared = *distanceBetweenCapitals;
+	float distanceSquared = *distanceBetweenCapitals * *distanceBetweenCapitals;
 	for (auto province1: country1.getProvinces())
 	{
 		auto province1Position = getProvincePosition(province1);
@@ -402,19 +335,4 @@ std::optional<double> HoI4::MapUtils::getDistanceBetweenCountries(const Country&
 	}
 
 	return std::sqrt(distanceSquared);
-}
-
-
-std::map<std::string, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::getNeighbors(const Country& checkingCountry,
-	 const MapData& theMapData,
-	 const ProvinceDefinitions& provinceDefinitions,
-	 const World& theWorld) const
-{
-	auto neighbors = getImmediateNeighbors(checkingCountry, theMapData, provinceDefinitions, theWorld);
-	if (neighbors.empty())
-	{
-		neighbors = getNearbyCountries(checkingCountry, theWorld);
-	}
-
-	return neighbors;
 }
