@@ -2088,7 +2088,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 	}
 	nextFreeColumn += 2 * static_cast<int>(max(newAllies.size(), GCTargets.size()));
 }
-#pragma optimize("", on)
+
 
 std::map<std::string, int> HoI4FocusTree::determineEnemyCoreHolders(std::shared_ptr<HoI4::Country> theCountry,
 	 const std::map<int, HoI4::State>& states

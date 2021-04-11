@@ -41,8 +41,8 @@ class MapUtils
 
 	[[nodiscard]] std::set<std::string> getNearbyCountries(const std::string& country, float range) const;
 	[[nodiscard]] std::set<std::string> getFarCountries(const std::string& country, float range) const;
-	[[nodiscard]] std::map<float, std::shared_ptr<Country>> getGPsByDistance(const Country& country,
-		 const World& theWorld) const;
+	[[nodiscard]] std::vector<std::string> getGPsByDistance(const Country& country,
+		 const std::vector<std::shared_ptr<Country>>& greatPowers) const;
 
   private:
 	void establishProvincePositions();
@@ -54,8 +54,8 @@ class MapUtils
 
 	[[nodiscard]] std::optional<Coordinate> getProvincePosition(int provinceNum) const;
 	[[nodiscard]] float getDistanceSquaredBetweenPoints(const Coordinate& point1, const Coordinate& point2) const;
-	[[nodiscard]] std::optional<float> getDistanceBetweenCountries(const Country& Country1,
-		 const Country& Country2) const;
+	[[nodiscard]] std::optional<float> getDistanceBetweenCountries(const Country& country1,
+		 const Country& country2) const;
 
 	std::map<int, Coordinate> provincePositions;
 	std::map<int, std::string> provinceToOwnerMap;

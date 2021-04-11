@@ -262,20 +262,26 @@ std::set<std::string> HoI4::MapUtils::getFarCountries(const std::string& country
 }
 
 
-std::map<float, std::shared_ptr<HoI4::Country>> HoI4::MapUtils::getGPsByDistance(const Country& country,
-	 const World& theWorld) const
+std::vector<std::string> HoI4::MapUtils::getGPsByDistance(const Country& country,
+	 const std::vector<std::shared_ptr<Country>>& greatPowers) const
 {
-	std::map<float, std::shared_ptr<HoI4::Country>> distanceToGPMap;
-	for (auto greatPower: theWorld.getGreatPowers())
+	std::map<float, std::shared_ptr<Country>> distanceToGPMap;
+	for (const auto& greatPower: greatPowers)
 	{
 		auto distance = getDistanceBetweenCapitals(country, *greatPower);
-		if (distance && (*distance < 1200))
+		if (distance)
 		{
 			distanceToGPMap.insert(std::make_pair(*distance, greatPower));
 		}
 	}
 
-	return distanceToGPMap;
+	std::vector<std::string> orderedGreatPowers(distanceToGPMap.size());
+	for (const auto& [unused, country]: distanceToGPMap)
+	{
+		orderedGreatPowers.push_back(country->getTag());
+	}
+
+	return orderedGreatPowers;
 }
 
 

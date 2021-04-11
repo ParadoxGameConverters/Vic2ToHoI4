@@ -77,60 +77,47 @@ void HoI4WarCreator::addTargetsToWorldTargetMap(std::shared_ptr<HoI4::Country> c
 	if (country->getGovernmentIdeology() != "democratic")
 	{
 		int maxGCWars = 0;
-		for (auto GC: getDistancesToGreatPowers(country))
+		for (const auto& greatPowerTag: mapUtils.getGPsByDistance(*country, theWorld->getGreatPowers()))
 		{
-			if (maxGCWars < 2)
+			auto greatPower = theWorld->findCountry(greatPowerTag);
+			if (greatPower == nullptr)
 			{
-				std::string HowToTakeGC = HowToTakeLand(GC.second, country, 3);
-				if (HowToTakeGC == "noactionneeded" || HowToTakeGC == "factionneeded" || HowToTakeGC == "morealliesneeded")
-				{
-					if (GC.second != country)
-					{
-						auto relations = country->getRelations(GC.second->getTag());
-						if ((relations) && (relations->getRelations() < 0))
-						{
-							std::vector<std::shared_ptr<HoI4::Country>> tempvector;
-							if (WorldTargetMap.find(GC.second) == WorldTargetMap.end())
-							{
-								tempvector.push_back(country);
-								WorldTargetMap.insert(std::make_pair(GC.second, tempvector));
-							}
-							if (WorldTargetMap.find(GC.second) != WorldTargetMap.end())
-							{
-								tempvector = WorldTargetMap.find(GC.second)->second;
-								if (find(tempvector.begin(), tempvector.end(), country) == tempvector.end())
-									tempvector.push_back(country);
+				continue;
+			}
 
-								WorldTargetMap[GC.second] = tempvector;
-							}
-							maxGCWars++;
+			if (maxGCWars > 1)
+			{
+				continue;
+			}
+
+			std::string HowToTakeGC = HowToTakeLand(greatPower, country, 3);
+			if (HowToTakeGC == "noactionneeded" || HowToTakeGC == "factionneeded" || HowToTakeGC == "morealliesneeded")
+			{
+				if (greatPower != country)
+				{
+					auto relations = country->getRelations(greatPower->getTag());
+					if ((relations) && (relations->getRelations() < 0))
+					{
+						std::vector<std::shared_ptr<HoI4::Country>> tempvector;
+						if (WorldTargetMap.find(greatPower) == WorldTargetMap.end())
+						{
+							tempvector.push_back(country);
+							WorldTargetMap.insert(std::make_pair(greatPower, tempvector));
 						}
+						if (WorldTargetMap.find(greatPower) != WorldTargetMap.end())
+						{
+							tempvector = WorldTargetMap.find(greatPower)->second;
+							if (find(tempvector.begin(), tempvector.end(), country) == tempvector.end())
+								tempvector.push_back(country);
+
+							WorldTargetMap[greatPower] = tempvector;
+						}
+						maxGCWars++;
 					}
 				}
 			}
 		}
 	}
-}
-
-
-std::map<double, std::shared_ptr<HoI4::Country>> HoI4WarCreator::getDistancesToGreatPowers(
-	 std::shared_ptr<HoI4::Country> country)
-{
-	std::map<double, std::shared_ptr<HoI4::Country>> GCDistance;
-	for (auto GC: theWorld->getGreatPowers())
-	{
-		std::set<std::string> Allies = country->getAllies();
-		if (!Allies.contains(GC->getTag()))
-		{
-			auto distance = mapUtils.getDistanceBetweenCapitals(*country, *GC);
-			if (distance && (*distance < 2200))
-			{
-				GCDistance.insert(std::make_pair(*distance, GC));
-			}
-		}
-	}
-
-	return GCDistance;
 }
 
 
@@ -821,35 +808,24 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 	}
 
 	// Declaring war with Great Country
-	std::map<double, std::shared_ptr<HoI4::Country>> GCDistance;
-	std::vector<std::shared_ptr<HoI4::Country>> GCDistanceSorted;
-	// get great countries with a distance
-	for (auto GC: theWorld->getGreatPowers())
-	{
-		auto distance = mapUtils.getDistanceBetweenCapitals(*Leader, *GC);
-		if (distance)
-		{
-			GCDistance.insert(std::make_pair(*distance, GC));
-		}
-	}
-	// put them into a std::vector so we know their order
-	for (auto iterator = GCDistance.begin(); iterator != GCDistance.end(); ++iterator)
-	{
-		GCDistanceSorted.push_back(iterator->second);
-	}
-
 	std::vector<std::shared_ptr<HoI4::Country>> GCTargets;
-	for (auto GC: GCDistanceSorted)
+	for (const auto& greatPowerTag: mapUtils.getGPsByDistance(*Leader, theWorld->getGreatPowers()))
 	{
-		std::string HowToTakeGC = HowToTakeLand(GC, Leader, 3);
+		auto greatPower = theWorld->findCountry(greatPowerTag);
+		if (greatPower == nullptr)
+		{
+			continue;
+		}
+
+		std::string HowToTakeGC = HowToTakeLand(greatPower, Leader, 3);
 		if (HowToTakeGC == "noactionneeded" || HowToTakeGC == "factionneeded" || HowToTakeGC == "morealliesneeded")
 		{
-			auto relations = Leader->getRelations(GC->getTag());
-			if ((GC != Leader) && (relations) && (relations->getRelations() < 0))
+			auto relations = Leader->getRelations(greatPowerTag);
+			if ((greatPower != Leader) && (relations) && (relations->getRelations() < 0))
 			{
 				if (GCTargets.size() < maxGCWars)
 				{
-					GCTargets.push_back(GC);
+					GCTargets.push_back(greatPower);
 				}
 			}
 		}
@@ -997,30 +973,20 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(
 	auto newAllies = GetMorePossibleAllies(Leader);
 
 	// Declaring war with Great Country
-	std::map<double, std::shared_ptr<HoI4::Country>> GCDistance;
-	std::vector<std::shared_ptr<HoI4::Country>> GCDistanceSorted;
-	for (auto GC: theWorld->getGreatPowers())
-	{
-		auto distance = mapUtils.getDistanceBetweenCapitals(*Leader, *GC);
-		if (distance && (distance < 1200))
-		{
-			GCDistance.insert(std::make_pair(*distance, GC));
-		}
-	}
-	// put them into a std::vector so we know their order
-	for (auto iterator = GCDistance.begin(); iterator != GCDistance.end(); ++iterator)
-	{
-		GCDistanceSorted.push_back(iterator->second);
-	}
-	sort(GCDistanceSorted.begin(), GCDistanceSorted.end());
 	std::vector<std::shared_ptr<HoI4::Country>> GCTargets;
-	for (auto GC: GCDistanceSorted)
+	for (const auto& greatPowerTag: mapUtils.getGPsByDistance(*Leader, theWorld->getGreatPowers()))
 	{
-		std::string HowToTakeGC = HowToTakeLand(GC, Leader, 3);
+		auto greatPower = theWorld->findCountry(greatPowerTag);
+		if (greatPower == nullptr)
+		{
+			continue;
+		}
+		
+		std::string HowToTakeGC = HowToTakeLand(greatPower, Leader, 3);
 		if (HowToTakeGC == "noactionneeded" || HowToTakeGC == "factionneeded")
 		{
-			if (GC != Leader)
-				GCTargets.push_back(GC);
+			if (greatPower != Leader)
+				GCTargets.push_back(greatPower);
 		}
 		if (HowToTakeGC == "morealliesneeded")
 		{
@@ -1339,14 +1305,20 @@ std::vector<std::shared_ptr<HoI4::Country>> HoI4WarCreator::getGreatPowerTargets
 {
 	std::vector<std::shared_ptr<HoI4::Country>> greatPowerTargets;
 
-	for (auto greatPower: mapUtils.getGPsByDistance(*country, *theWorld))
+	for (auto greatPowerTag: mapUtils.getGPsByDistance(*country, theWorld->getGreatPowers()))
 	{
-		std::string prereqsNeeded = HowToTakeLand(greatPower.second, country, 3);
+		auto greatPower = theWorld->findCountry(greatPowerTag);
+		if (greatPower == nullptr)
+		{
+			continue;
+		}
+
+		std::string prereqsNeeded = HowToTakeLand(greatPower, country, 3);
 		if (prereqsNeeded == "noactionneeded" || prereqsNeeded == "factionneeded")
 		{
-			if (greatPower.second != country)
+			if (greatPower != country)
 			{
-				greatPowerTargets.push_back(greatPower.second);
+				greatPowerTargets.push_back(greatPower);
 			}
 		}
 		if (prereqsNeeded == "morealliesneeded")

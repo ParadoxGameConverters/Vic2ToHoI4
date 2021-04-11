@@ -36,7 +36,6 @@ class HoI4WarCreator
 
 	void addAllTargetsToWorldTargetMap();
 	void addTargetsToWorldTargetMap(std::shared_ptr<HoI4::Country> country);
-	std::map<double, std::shared_ptr<HoI4::Country>> getDistancesToGreatPowers(std::shared_ptr<HoI4::Country> country);
 	double calculateWorldStrength(std::ofstream& AILog, const Configuration& theConfiguration) const;
 	void generateMajorWars(std::ofstream& AILog,
 		 std::set<std::shared_ptr<HoI4::Faction>>& factionsAtWar,
