@@ -272,7 +272,7 @@ std::vector<std::string> HoI4::MapUtils::getGPsByDistance(const Country& country
 	}
 
 	std::vector<std::string> orderedGreatPowers(distanceToGPMap.size());
-	for (const auto& [unused, country]: distanceToGPMap)
+	for (const auto& country: distanceToGPMap | std::ranges::views::values)
 	{
 		orderedGreatPowers.push_back(country->getTag());
 	}
