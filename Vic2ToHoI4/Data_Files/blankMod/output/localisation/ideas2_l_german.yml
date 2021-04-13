@@ -8,6 +8,7 @@
  autonomy_vicereign:0 "Vizekönigreich"
  autonomy_vassal:0 "Vasall"
  autonomy_demesne:0 "Landgut"
+ militarism_focus_absolutist:0 "Militarismus-Schwerpunkt"
  TUR_name_category:0 "Der Zustand des türkischen Volkes"
  TUR_turkey_dec:0 "Land der Türken"
  TUR_turkey_dec_desc:0 "Das alte Imperium war verloren, die Zeit ist gekommen, als die Türken ihr Land den Karten zurückgeben."

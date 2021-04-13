@@ -8,6 +8,7 @@
  autonomy_vicereign:0 "Vicereign"
  autonomy_vassal:0 "Vassal"
  autonomy_demesne:0 "Demesne"
+ militarism_focus_absolutist:0 "Militarism"
  TUR_name_category:0 "The State of the Turkish people"
  TUR_turkey_dec:0 "The Country of the Turks"
  TUR_turkey_dec_desc:0 "The old Empire has been lost. It is time the Turks reclaim their country on the maps."
