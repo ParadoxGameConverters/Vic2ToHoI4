@@ -691,7 +691,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::fascistWarMaker(std:
 	const auto leaderCapitalPosition = mapUtils.getCapitalPosition(*Leader);
 	if (leaderCapitalPosition)
 	{
-		for (unsigned int i = 0; i < nan.size(); i++)
+		for (unsigned int i = 0; i < nan.size(); ++i)
 		{
 			std::set<int> borderStates = mapUtils.findBorderStates(*Leader,
 				 *nan[i],
