@@ -938,10 +938,10 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::communistWarCreator(
 			coup.push_back(target);
 	}
 	// insert these values in targetmap for use later possibly?
-	TargetMap.insert(std::make_pair("noactionneeded", nan));
-	TargetMap.insert(std::make_pair("factionneeded", fn));
-	TargetMap.insert(std::make_pair("morealliesneeded", man));
-	TargetMap.insert(std::make_pair("coup", coup));
+	TargetMap.emplace("noactionneeded", nan);
+	TargetMap.emplace("factionneeded", fn);
+	TargetMap.emplace("morealliesneeded", man);
+	TargetMap.emplace("coup", coup);
 
 	std::vector<std::shared_ptr<HoI4::Country>> TargetsByTech;
 	bool first = true;
