@@ -8,6 +8,7 @@
  autonomy_vicereign:0 "Вице-королевство"
  autonomy_vassal:0 "Вассал"
  autonomy_demesne:0 "Домен"
+ militarism_focus_absolutist:0 "Милитаризм"
  TUR_name_category:0 "Государство турецкого народа"
  TUR_turkey_dec:0 "Страна турок"
  TUR_turkey_dec_desc:0 "Старая Империя была потеряна. Настало время, когда турки возвращают свою страну на карты."

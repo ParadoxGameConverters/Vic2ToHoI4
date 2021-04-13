@@ -8,6 +8,7 @@
  autonomy_vicereign:0 "Virreinato"
  autonomy_vassal:0 "Vasallo"
  autonomy_demesne:0 "Domínio"
+ militarism_focus_absolutist:0 "Militarismo"
  TUR_name_category:0 "El estado del pueblo turco"
  TUR_turkey_dec:0 "País de los turcos"
  TUR_turkey_dec_desc:0 "El antiguo Imperio se perdió, ha llegado el momento en que los turcos devuelven su país a los mapas".
