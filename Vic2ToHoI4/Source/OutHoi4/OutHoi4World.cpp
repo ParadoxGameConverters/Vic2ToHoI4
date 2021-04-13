@@ -450,6 +450,7 @@ void HoI4::outputRelations(const std::string& outputName)
 		}
 		out << std::abs(i) << " = {\n";
 		out << "\tvalue = " << i << "\n";
+		out << "\tdecay = 1\n";
 		out << "}\n";
 	}
 	out << "private_channels_trade = {\n";
