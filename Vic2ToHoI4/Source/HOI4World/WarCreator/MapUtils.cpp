@@ -120,7 +120,7 @@ void HoI4::MapUtils::establishDistancesBetweenCountries(
 }
 
 
-std::optional<float> HoI4::MapUtils::getDistanceBetweenCapitals(const Country& country1, const Country& country2) const
+std::optional<float> HoI4::MapUtils::getDistanceBetweenCapitals(const Country& country1, const Country& country2)
 {
 	const auto country1Position = getCapitalPosition(country1);
 	const auto country2Position = getCapitalPosition(country2);
@@ -184,7 +184,7 @@ std::set<int> HoI4::MapUtils::findBorderStates(const Country& country,
 
 std::vector<int> HoI4::MapUtils::sortStatesByDistance(const std::set<int>& stateList,
 	 const Coordinate& location,
-	 const std::map<int, State>& states) const
+	 const std::map<int, State>& states)
 {
 	std::multimap<float, int> statesWithDistance;
 
@@ -259,7 +259,7 @@ std::set<std::string> HoI4::MapUtils::getFarCountries(const std::string& country
 
 
 std::vector<std::string> HoI4::MapUtils::getGPsByDistance(const Country& country,
-	 const std::vector<std::shared_ptr<Country>>& greatPowers) const
+	 const std::vector<std::shared_ptr<Country>>& greatPowers)
 {
 	std::map<float, std::shared_ptr<Country>> distanceToGPMap;
 	for (const auto& greatPower: greatPowers)
@@ -292,8 +292,14 @@ std::optional<HoI4::Coordinate> HoI4::MapUtils::getProvincePosition(int province
 }
 
 
-float HoI4::MapUtils::getDistanceSquaredBetweenPoints(const Coordinate& point1, const Coordinate& point2) const
+float HoI4::MapUtils::getDistanceSquaredBetweenPoints(const Coordinate& point1, const Coordinate& point2)
 {
+	if (const auto distance = provinceDistanceCache.find(std::make_pair(point1, point2));
+		 distance != provinceDistanceCache.end())
+	{
+		return distance->second;
+	}
+
 	auto xDistance = static_cast<float>(abs(point2.x - point1.x));
 	if (xDistance > halfMapWidth)
 	{
@@ -302,11 +308,15 @@ float HoI4::MapUtils::getDistanceSquaredBetweenPoints(const Coordinate& point1, 
 
 	const auto yDistance = static_cast<float>(point2.y - point1.y);
 
-	return xDistance * xDistance + yDistance * yDistance;
+	const auto distance = xDistance * xDistance + yDistance * yDistance;
+	provinceDistanceCache[std::make_pair(point1, point2)] = distance;
+	provinceDistanceCache[std::make_pair(point2, point1)] = distance;
+
+	return distance;
 }
 
 
-std::optional<float> HoI4::MapUtils::getDistanceBetweenCountries(const Country& country1, const Country& country2) const
+std::optional<float> HoI4::MapUtils::getDistanceBetweenCountries(const Country& country1, const Country& country2)
 {
 	auto distanceBetweenCapitals = getDistanceBetweenCapitals(country1, country2);
 	if (!distanceBetweenCapitals)

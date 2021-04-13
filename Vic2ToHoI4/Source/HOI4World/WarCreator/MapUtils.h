@@ -17,6 +17,8 @@ struct Coordinate
 {
 	int x;
 	int y;
+
+	auto operator<=>(const Coordinate&) const = default;
 };
 
 
@@ -26,8 +28,7 @@ class MapUtils
 	explicit MapUtils(const std::map<int, State>& theStates,
 		 const std::map<std::string, std::shared_ptr<Country>>& theCountries);
 
-	[[nodiscard]] std::optional<float> getDistanceBetweenCapitals(const Country& country1,
-		 const Country& country2) const;
+	[[nodiscard]] std::optional<float> getDistanceBetweenCapitals(const Country& country1, const Country& country2);
 
 	[[nodiscard]] std::optional<Coordinate> getCapitalPosition(const Country& country) const;
 	[[nodiscard]] std::set<int> findBorderStates(const Country& country,
@@ -37,12 +38,12 @@ class MapUtils
 		 const ProvinceDefinitions& provinceDefinitions) const;
 	[[nodiscard]] std::vector<int> sortStatesByDistance(const std::set<int>& stateList,
 		 const Coordinate& location,
-		 const std::map<int, State>& states) const;
+		 const std::map<int, State>& states);
 
 	[[nodiscard]] std::set<std::string> getNearbyCountries(const std::string& country, float range) const;
 	[[nodiscard]] std::set<std::string> getFarCountries(const std::string& country, float range) const;
 	[[nodiscard]] std::vector<std::string> getGPsByDistance(const Country& country,
-		 const std::vector<std::shared_ptr<Country>>& greatPowers) const;
+		 const std::vector<std::shared_ptr<Country>>& greatPowers);
 
   private:
 	void establishProvincePositions();
@@ -53,11 +54,11 @@ class MapUtils
 	void establishDistancesBetweenCountries(const std::map<std::string, std::shared_ptr<Country>>& theCountries);
 
 	[[nodiscard]] std::optional<Coordinate> getProvincePosition(int provinceNum) const;
-	[[nodiscard]] float getDistanceSquaredBetweenPoints(const Coordinate& point1, const Coordinate& point2) const;
-	[[nodiscard]] std::optional<float> getDistanceBetweenCountries(const Country& country1,
-		 const Country& country2) const;
+	[[nodiscard]] float getDistanceSquaredBetweenPoints(const Coordinate& point1, const Coordinate& point2);
+	[[nodiscard]] std::optional<float> getDistanceBetweenCountries(const Country& country1, const Country& country2);
 
 	std::map<int, Coordinate> provincePositions;
+	std::map<std::pair<Coordinate, Coordinate>, float> provinceDistanceCache;
 	std::map<int, std::string> provinceToOwnerMap;
 	std::map<std::string, std::map<std::string, float>> distancesBetweenCountries;
 };
