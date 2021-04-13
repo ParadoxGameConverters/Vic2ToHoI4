@@ -112,7 +112,7 @@ void HoI4WarCreator::addTargetsToWorldTargetMap(std::shared_ptr<HoI4::Country> c
 
 							WorldTargetMap[greatPower] = tempvector;
 						}
-						maxGCWars++;
+						++maxGCWars;
 					}
 				}
 			}
