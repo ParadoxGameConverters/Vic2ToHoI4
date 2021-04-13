@@ -31,6 +31,8 @@ class MapUtils
 	[[nodiscard]] std::optional<float> getDistanceBetweenCapitals(const Country& country1, const Country& country2);
 
 	[[nodiscard]] std::optional<Coordinate> getCapitalPosition(const Country& country) const;
+
+	// Returns the state IDs of all states within neighbor that border states withing country
 	[[nodiscard]] std::set<int> findBorderStates(const Country& country,
 		 const Country& neighbor,
 		 const std::map<int, int>& provinceToStateIdMapping,

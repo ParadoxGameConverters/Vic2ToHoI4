@@ -65,11 +65,18 @@ std::vector<std::string> HoI4::MapUtils::tokenizeLine(const std::string& line) c
 
 void HoI4::MapUtils::addProvincePosition(const std::vector<std::string>& lineTokens)
 {
-	auto province = std::stoi(lineTokens[0]);
-	auto x = std::stoi(lineTokens[2]);
-	auto y = std::stoi(lineTokens[4]);
+	try
+	{
+		auto province = std::stoi(lineTokens[0]);
+		auto x = std::stoi(lineTokens[2]);
+		auto y = std::stoi(lineTokens[4]);
 
-	provincePositions.insert(std::make_pair(province, Coordinate{.x = x, .y = y}));
+		provincePositions.insert(std::make_pair(province, Coordinate{.x = x, .y = y}));
+	}
+	catch (...)
+	{
+		Log(LogLevel::Warning) << "Bad line when getting province positions";
+	}
 }
 
 
@@ -150,11 +157,17 @@ std::set<int> HoI4::MapUtils::findBorderStates(const Country& country,
 	 const MapData& theMapData,
 	 const ProvinceDefinitions& provinceDefinitions) const
 {
+	const auto& ownProvinces = country.getProvinces();
+
 	std::set<int> borderProvinces;
-	for (const auto& province: country.getProvinces())
+	for (const auto& province: ownProvinces)
 	{
 		for (auto borderProvince: theMapData.getNeighbors(province))
 		{
+			if (ownProvinces.contains(province))
+			{
+				continue;
+			}
 			if (!provinceDefinitions.isLandProvince(borderProvince))
 			{
 				continue;
@@ -245,16 +258,16 @@ std::set<std::string> HoI4::MapUtils::getFarCountries(const std::string& country
 		return {};
 	}
 
-	std::set<std::string> nearbyCountries;
+	std::set<std::string> farCountries;
 	for (const auto& [tag, distance]: countriesAndDistances->second)
 	{
 		if (distance > range)
 		{
-			nearbyCountries.insert(tag);
+			farCountries.insert(tag);
 		}
 	}
 
-	return nearbyCountries;
+	return farCountries;
 }
 
 
