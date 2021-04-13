@@ -267,7 +267,7 @@ std::vector<std::string> HoI4::MapUtils::getGPsByDistance(const Country& country
 		auto distance = getDistanceBetweenCapitals(country, *greatPower);
 		if (distance)
 		{
-			distanceToGPMap.insert(std::make_pair(*distance, greatPower));
+			distanceToGPMap.emplace(*distance, greatPower);
 		}
 	}
 
