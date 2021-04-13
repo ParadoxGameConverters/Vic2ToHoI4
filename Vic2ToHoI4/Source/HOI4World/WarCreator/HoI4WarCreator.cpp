@@ -1362,7 +1362,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::addGreatPowerWars(st
 			}
 			else
 			{
-				Log(LogLevel::Warning) << "Could not std::set target name in great power war creator";
+				Log(LogLevel::Warning) << "Could not set target name in great power war creator";
 				targetName.clear();
 			}
 
