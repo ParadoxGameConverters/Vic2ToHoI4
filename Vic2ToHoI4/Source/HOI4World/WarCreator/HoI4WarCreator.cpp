@@ -1188,7 +1188,7 @@ std::vector<std::shared_ptr<HoI4::Faction>> HoI4WarCreator::neighborWarCreator(s
 			}
 			else
 			{
-				Log(LogLevel::Warning) << "Could not std::set target name in neighbor war creator";
+				Log(LogLevel::Warning) << "Could not set target name in neighbor war creator";
 			}
 
 			countriesAtWar.push_back(findFaction(country));
