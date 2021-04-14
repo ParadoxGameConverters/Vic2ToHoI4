@@ -7592,3 +7592,62 @@ alaskan = {
 	aircraft_companies = { "MiG Design Bureau" "Ilyushin Design Bureau" "Tupolev Design Bureau" "Yakovlev Design Bureau" }
 	intelligence_agencies = { "FSB" }
 }
+kreol = {
+	female_names = { Juliette Monique Paulina Rosaline Sophie Virgine }
+	callsigns = { Louis Cajun Dixie }
+}
+gur = {
+	female_names = { Poko Kenga Wenkouni }
+	callsigns = { Black Africa Gur "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Walewale Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Gur Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+	intelligence_agencies = { "A.I.A." }
+}
+kingwana = {
+	female_names = { "Mwana Mwema" Fatima }
+	callsigns = { Black Africa Kingwana "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Kingwana Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Kingwana Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+	intelligence_agencies = { "C.B.I." }
+}
+chokwe = {
+	female_names = { Jetta Vandana Zody }
+	callsigns = { Black Africa Chokwe "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Zambezi Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Chokwe Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+	intelligence_agencies = { "A.I.A." }
+}
+kavango = {
+	female_names = { Nia Cadence Hanna Nala Zahra }
+	callsigns = { "The Black" "the Kongo" "Slave-owner" }
+	car_companies = { "Magari na Magari" }
+	weapon_companies = { "Bunduki kwa mtu Yeyote" }
+	aircraft_companies = { "Sisi ni Ndege" }
+	naval_companies = { "Utoaji wa Afrika" }
+	industry_companies = { "Kazi Kazi Kazi" }
+	electronic_companies = { "Uzalishaji wa Umeme" }
+	intelligence_agencies = { "CENAREF" }
+}
+nyasa = {
+	female_names = { Lhatie Weyzhie Piwa }
+	callsigns = { Black Africa Nyasa "the Foreigner" "the White" Colonizer Hunter }
+	car_companies = { "Malawi Four Wheels" }
+	weapon_companies = { "White Steel Inc." }
+	aircraft_companies = { "Great Nyasa Shaman" }
+	naval_companies = { "Lapislazuli Shipyard" }
+	industry_companies = { "Hard-Work & Work-Hard" }
+	electronic_companies = { "Thunder Factory" }
+	intelligence_agencies = { "A.I.A." }
+}
