@@ -1261,6 +1261,9 @@
     <ClCompile Include="Source\OutHoi4\CountryCategories\OutCountryCategories.cpp">
       <Filter>OutHoi4\CountryCategories</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\WarCreator\MapUtils.cpp">
+      <Filter>HoI4World\WarCreator</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2492,6 +2495,9 @@
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\CountryCategories\OutCountryCategories.h">
       <Filter>OutHoi4\CountryCategories</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\WarCreator\MapUtils.h">
+      <Filter>HoI4World\WarCreator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

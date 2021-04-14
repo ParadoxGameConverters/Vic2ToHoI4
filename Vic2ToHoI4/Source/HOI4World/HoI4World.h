@@ -104,12 +104,12 @@ class World: commonItems::parser
 	[[nodiscard]] const auto& getLocalisation() const { return *hoi4Localisations; }
 	[[nodiscard]] const auto& getSoundEffects() const { return soundEffects; }
 
-	std::map<int, HoI4::State> getStates() const { return states->getStates(); }
+	const std::map<int, HoI4::State>& getStates() const { return states->getStates(); }
 	const std::map<int, int>& getProvinceToStateIDMap() const { return states->getProvinceToStateIDMap(); }
 	std::vector<std::shared_ptr<Faction>> getFactions() const { return factions; }
 	const auto& getMajorIdeologies() const { return ideologies->getMajorIdeologies(); }
 
-	std::shared_ptr<HoI4::Country> findCountry(const std::string& countryTag);
+	std::shared_ptr<HoI4::Country> findCountry(const std::string& countryTag) const;
 	std::set<HoI4::Advisor> getActiveIdeologicalAdvisors() const;
 
 	void setSphereLeaders();

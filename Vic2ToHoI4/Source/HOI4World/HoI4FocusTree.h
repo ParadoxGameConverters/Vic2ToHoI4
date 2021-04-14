@@ -86,13 +86,12 @@ class HoI4FocusTree: commonItems::parser
 		 HoI4::Localisation& hoi4Localisations
 	);
 	std::set<std::string> addConquerBranch(
-		 std::shared_ptr<HoI4::Country> theCountry,
+		std::shared_ptr<HoI4::Country> theCountry,
 		 int& numWarsWithNeighbors,
 		 const std::set<std::string>& majorIdeologies,
 		 const std::map<std::string, int>& coreHolders,
 		 HoI4::Localisation& hoi4Localisations);
 	void addNeighborWarBranch(const std::string& tag,
-		 const std::map<std::string, std::shared_ptr<HoI4::Country>>& closeNeighbors,
 		 const std::shared_ptr<HoI4::Country>& targetNeighbors,
 		 const std::string& targetName,
 		 const date& startDate,
@@ -101,7 +100,7 @@ class HoI4FocusTree: commonItems::parser
 	std::map<std::string, int> determineEnemyCoreHolders(std::shared_ptr<HoI4::Country> theCountry,
 		 const std::map<int, HoI4::State>& states);
 	int calculateNumEnemyOwnedCores(std::shared_ptr<HoI4::Country> theCountry,
-		 const std::map<int, HoI4::State>& states);
+		const std::map<int, HoI4::State>& states);
 	void removeFocus(const std::string& id);
 
 	void addFocus(std::shared_ptr<HoI4Focus> newFocus) { focuses.push_back(newFocus); }

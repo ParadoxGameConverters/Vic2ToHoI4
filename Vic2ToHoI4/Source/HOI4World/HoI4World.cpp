@@ -189,7 +189,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 }
 
 
-shared_ptr<HoI4::Country> HoI4::World::findCountry(const string& countryTag)
+shared_ptr<HoI4::Country> HoI4::World::findCountry(const string& countryTag) const
 {
 	auto country = countries.find(countryTag);
 	if (country == countries.end())

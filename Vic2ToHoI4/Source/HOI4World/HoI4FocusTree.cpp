@@ -1613,7 +1613,7 @@ void HoI4FocusTree::addCommunistWarBranch(shared_ptr<HoI4::Country> Home,
 						for (unsigned int i2 = 0; i2 < warTargets.size(); i2++)
 						{
 							if (i != i2)
-								newFocus->aiWillDo += "\t\t\t\t\thas_war_with = " + warTargets[i]->getTag() + "\n";
+								newFocus->aiWillDo += "\t\t\t\t\thas_war_with = " + warTargets[i2]->getTag() + "\n";
 						}
 						newFocus->aiWillDo += "\t\t\t\t}\n";
 						newFocus->aiWillDo += "\t\t\t}";
@@ -2088,6 +2088,7 @@ void HoI4FocusTree::addGPWarBranch(shared_ptr<HoI4::Country> Home,
 	}
 	nextFreeColumn += 2 * static_cast<int>(max(newAllies.size(), GCTargets.size()));
 }
+
 
 std::map<std::string, int> HoI4FocusTree::determineEnemyCoreHolders(std::shared_ptr<HoI4::Country> theCountry,
 	 const std::map<int, HoI4::State>& states
@@ -2596,7 +2597,6 @@ std::set<std::string> HoI4FocusTree::addConquerBranch(
 }
 
 void HoI4FocusTree::addNeighborWarBranch(const string& tag,
-	 const map<string, shared_ptr<HoI4::Country>>& closeNeighbors,
 	 const shared_ptr<HoI4::Country>& targetNeighbors,
 	 const string& targetName,
 	 const date& startDate,
