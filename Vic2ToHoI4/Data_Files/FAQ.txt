@@ -1,30 +1,21 @@
 Q: I used a mod, will the converter work with it?
-A: It depends on what the mod changed. Your best bet is to simply try (and let us know how it went). As far as we can tell, it does work well with
-	NNM, PDM, HPM, and games converted from EU4.
+A: It depends on what the mod changed. Your best bet is to simply try (and let us know how it went). As far as we can
+   tell, it does work well with NNM, PDM, HPM, and games converted from EU4.
 
 Q: What should I put it the Victoria 2 mod directory option?
 A: It should be the directory where Victoria 2 stores mods.
-	If Victoria 2 was installed at D:\Paradox Interactive\Victoria 2 then this option should be D:\Paradox Interactive\Victoria 2\mod.
-
-Q: What should I put in the Vic2 Mods option?
-A: The name of the folder for any mods you used. For PoD, put PDM. For HPM, put HPM. For Divergences, put "Divergences of Darkness" (and include the quotes).
-	You can check log.txt after trying to convert to see if this setting was correct.
-	Early on it will say "Double-check Vic2 mods", and follow that with a list of mods it expected and a list of mods it found.
-	The ones it expects are the ones listed in the option. The ones it found are the ones it could see in your mod folder.
-	The names of the ones it expects should exactly match the names of the ones it found.
+   If Victoria 2 was installed at C:\Program Files (x86)\Steam\steamapps\common\Victoria 2 then this option should be
+   C:\Program Files (x86)\Steam\steamapps\common\Victoria 2\mod.​
 
 Q: I'm trying to convert a EU4 To Vic2 game and keep getting an error. What do I do?
-A: You need to include the Vic2 mod from the EU4 to Vic2 converter to properly convert these games.
-	You should put the name of the mod's folder in the Vic2 Mods option, as with other mods.
+A: You need to include the Vic2 mod from the EU4 to Vic2 converter
 
-Q: The converter crashes after no time with no errors and no log.txt (when running through the frontend). What went wrong?
-A: You may need to install this if you are not on Windows 10: https://support.microsoft.com/en-us/kb/2999226
+Q: I loaded my mod, but vanilla HoI4 loaded. How do I make it load?
+A: Make sure you've added your mod to a new playlist and then activated that playlist. If that doesn't work, try the
+   solution in this thread: https://forum.paradoxplaza.com/forum/threads/launcher-solution.1455443/
 
-Q: The flags on my units keep changing. What can I do about this?
-A: This is an HoI4 bug, with a temporary solution here: https://forum.paradoxplaza.com/forum/index.php?threads/hoi4-dev-diary-squanching-them-bugs.995110/page-4#post-22333853
+Q: The converter stops after just a few seconds. What went wrong?
+A: Run VC_redist.x64.exe in the converter directory.
 
-Q: My nations are mostly flagless. I only used the Vic2 random generator world
-A: Tags differ from Vanilla, that's why. The solution is to paste the flags of the generated mod in the converter's flag folder
-
-Q: Most of my map is blank? What's wrong and how do I fix it?
-A: HoI4 has an occasional problem with mods replacing default files. Paradox is aware and aiming to fix it, so this should go away. In the meanwhile, try moving your mod from Steam/steamapps/common/Hearts of Iron IV/mod to Documents/Paradox Interactive/Hearts of Iron IV/mod.
+Q: The converter says "Saving Configuration: Failed!" How do I fix it?
+A: Disable your antivirus or whitelist the converter.
