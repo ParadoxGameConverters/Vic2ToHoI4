@@ -43,7 +43,7 @@ void HoI4::NavalTreatyDecisions::updateDecisions(const std::set<std::string>& ma
 			}
 			else if (decision.getName() == "MTG_cheat_on_treaty")
 			{
-				std::string newAiWillDo = "= {\n\t\t\tfactor = 0\n\t\t}";
+				std::string newAiWillDo = "= {\n\t\t\tfactor = 3\n\t\t}";
 				decision.setAiWillDo(newAiWillDo);
 
 				std::string newVisible = "= {\n";
