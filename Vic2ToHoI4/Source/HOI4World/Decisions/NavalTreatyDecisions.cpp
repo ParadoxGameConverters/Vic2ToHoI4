@@ -68,18 +68,6 @@ void HoI4::NavalTreatyDecisions::updateDecisions(const std::set<std::string>& ma
 			}
 			else if (decision.getName() == "MTG_invite_FROM_to_treaty")
 			{
-				std::string newAiWillDo = "= {\n";
-				newAiWillDo += "\t\t\tfactor = 3\n";
-				if (majorIdeologies.contains("democratic"))
-				{
-					newAiWillDo += "\t\t\tmodifier = {\n";
-					newAiWillDo += "\t\t\t\thas_government = democratic\n";
-					newAiWillDo += "\t\t\t\tadd = 10\n";
-					newAiWillDo += "\t\t\t}\n";
-				}
-				newAiWillDo += "\t\t}";
-				decision.setAiWillDo(newAiWillDo);
-
 				std::string newTargetTrigger = "= {\n";
 				newTargetTrigger += "\t\t\tFROM = { \n";
 				newTargetTrigger += "\t\t\t\thas_war = no\n";
@@ -93,14 +81,33 @@ void HoI4::NavalTreatyDecisions::updateDecisions(const std::set<std::string>& ma
 				newTargetTrigger += "\t\t\t}\n";
 				newTargetTrigger += "\t\t}";
 				decision.setTargetTrigger(newTargetTrigger);
+				
+				std::string newAiWillDo = "= {\n";
+				newAiWillDo += "\t\t\tfactor = 0\n";
+				if (majorIdeologies.contains("democratic"))
+				{
+					newAiWillDo += "\t\t\tmodifier = {\n";
+					newAiWillDo += "\t\t\t\tOR = {\n";
+					newAiWillDo += "\t\t\t\t\thas_government = democratic\n";
+					newAiWillDo += "\t\t\t\t\thas_government = neutrality\n";
+					newAiWillDo += "\t\t\t\t}\n";
+					newAiWillDo += "\t\t\t\tadd = 10\n";
+					newAiWillDo += "\t\t\t}\n";
+				}
+				else
+				{
+					newAiWillDo += "\t\t\tmodifier = {\n";
+					newAiWillDo += "\t\t\t\thas_government = neutrality\n";
+					newAiWillDo += "\t\t\t\tadd = 10\n";
+					newAiWillDo += "\t\t\t}\n";
+				}
+				newAiWillDo += "\t\t}";
+				decision.setAiWillDo(newAiWillDo);
 
 				decisionsCategory.replaceDecision(decision);
 			}
 			else if (decision.getName() == "MTG_send_treaty_warning_to_FROM_previous_signatory")
 			{
-				std::string newAiWillDo = "= {\n\t\t\tfactor = 10\n\t\t}";
-				decision.setAiWillDo(newAiWillDo);
-
 				std::string newTargetTrigger = "= {\n";
 				newTargetTrigger += "\t\t\tFROM = { \n";
 				newTargetTrigger += "\t\t\t\thas_war = no\n";
@@ -113,13 +120,13 @@ void HoI4::NavalTreatyDecisions::updateDecisions(const std::set<std::string>& ma
 				newTargetTrigger += "\t\t}";
 				decision.setTargetTrigger(newTargetTrigger);
 
+				std::string newAiWillDo = "= {\n\t\t\tfactor = 10\n\t\t}";
+				decision.setAiWillDo(newAiWillDo);
+
 				decisionsCategory.replaceDecision(decision);
 			}
 			else if (decision.getName() == "MTG_send_treaty_warning_to_FROM")
 			{
-				std::string newAiWillDo = "= {\n\t\t\tfactor = 10\n\t\t}";
-				decision.setAiWillDo(newAiWillDo);
-
 				std::string newTargetTrigger = "= {\n";
 				newTargetTrigger += "\t\t\tFROM = {\n";
 				newTargetTrigger += "\t\t\t\tOR = {\n";
@@ -144,6 +151,9 @@ void HoI4::NavalTreatyDecisions::updateDecisions(const std::set<std::string>& ma
 				newTargetTrigger += "\t\t\t}\n";
 				newTargetTrigger += "\t\t}";
 				decision.setTargetTrigger(newTargetTrigger);
+
+				std::string newAiWillDo = "= {\n\t\t\tfactor = 10\n\t\t}";
+				decision.setAiWillDo(newAiWillDo);
 
 				decisionsCategory.replaceDecision(decision);
 			}
