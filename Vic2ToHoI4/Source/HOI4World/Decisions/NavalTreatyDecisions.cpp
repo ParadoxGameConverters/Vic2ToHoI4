@@ -8,7 +8,7 @@ void HoI4::NavalTreatyDecisions::updateDecisions(const std::set<std::string>& ma
 	{
 		for (auto decision: decisionsCategory.getDecisions())
 		{
-			if ((decision.getName() == "MTG_abandon_treaty_democratic") && majorIdeologies.contains("democratic"))
+			if ((decision.getName() == "MTG_abandon_treaty_democratic") && !majorIdeologies.contains("democratic"))
 			{
 				std::string newVisible = "= {\n";
 				newVisible += "\t\t\thas_naval_treaty_trigger = yes\n";
