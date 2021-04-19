@@ -51,6 +51,17 @@ german = {
 	aircraft_companies = { Messerschmitt Junkers "Focke Wulf" Heinkel Dornier }
 	intelligence_agencies = { "Abteilung III b" }
 }
+boehmisch = {
+	female_names = { Jessica Emma Hanna Sofia Marie }
+	callsigns = { "Bubi" "Assi" "The Black Devil" "The Blond Knight Of Germany" "Dolfo" "Fighter of Libau" "Petit Rouge" "Pritzl" "The Red Baron" "The Red Battle-flyer" "The Red knight" "Reeste" }
+	industry_companies = { "IG Farben" Krupp }
+	electronic_companies = { Siemens }
+	car_companies = { Porsche Henschel MAN }
+	naval_companies = { Germaniawerft "Blohm & Voss" }
+	weapon_companies = { Rheinmetall Mauser Opel }
+	aircraft_companies = { Messerschmitt Junkers "Focke Wulf" Heinkel Dornier }
+	intelligence_agencies = { "Abteilung III b" }
+}
 
 british = {
 	female_names = { Elizabeth Anne }
@@ -106,6 +117,38 @@ russian = {
 }
 
 novvymir = {
+	female_names = { Jelena Ludmila }
+	female_surnames = { Aleksseyeva Antonova Azarova Badanova Brusilova Budonnaya Chibisova Denikina
+			Dragomirova Frolova Golivina Grishina Gurkova Ivanova Koneva Konstantinova Kornilova
+			Kolchakova Kuropatkina Lazareva Makarova Men'shikova Nakhimova Nebogatova
+			Nikolayevicha Ostrovskaya Pavlova Putyatina Romanova Rozhestvenskaya Skobeleva
+			Shuvalova Surkova Tukhachevskaya Yegorova Yudenicha Vorontsova Voroshilova Zavoyko }
+	callsigns = { Anvil Hammer Fury Arrow Storm Bear "White Lily" Devil Eagle Falcon Fox Snowflake Greasy Guardian Gunman Hawk Hardball Howl Blizzard Husky Ice Killer Steel Iron Skull Striker Thunder Warrior Wardog Vodka }
+	industry_companies = { "Stalingrad Tractor Factory" }
+	electronic_companies = { "Leningrad Industrial Institute" }
+	car_companies = { "Morozov Design Bureau" "Astrov Design Bureau" OKMO }
+	naval_companies = { "Nevskoye Design Bureau" }
+	weapon_companies = { "Grabin Design Bureau" "Tula Arms Plant" GAZ }
+	aircraft_companies = { "MiG Design Bureau" "Ilyushin Design Bureau" "Tupolev Design Bureau" "Yakovlev Design Bureau" }
+	intelligence_agencies = { "FSB" }
+}
+alaskan = {
+	female_names = { Jelena Ludmila }
+	female_surnames = { Aleksseyeva Antonova Azarova Badanova Brusilova Budonnaya Chibisova Denikina
+			Dragomirova Frolova Golivina Grishina Gurkova Ivanova Koneva Konstantinova Kornilova
+			Kolchakova Kuropatkina Lazareva Makarova Men'shikova Nakhimova Nebogatova
+			Nikolayevicha Ostrovskaya Pavlova Putyatina Romanova Rozhestvenskaya Skobeleva
+			Shuvalova Surkova Tukhachevskaya Yegorova Yudenicha Vorontsova Voroshilova Zavoyko }
+	callsigns = { Anvil Hammer Fury Arrow Storm Bear "White Lily" Devil Eagle Falcon Fox Snowflake Greasy Guardian Gunman Hawk Hardball Howl Blizzard Husky Ice Killer Steel Iron Skull Striker Thunder Warrior Wardog Vodka }
+	industry_companies = { "Stalingrad Tractor Factory" }
+	electronic_companies = { "Leningrad Industrial Institute" }
+	car_companies = { "Morozov Design Bureau" "Astrov Design Bureau" OKMO }
+	naval_companies = { "Nevskoye Design Bureau" }
+	weapon_companies = { "Grabin Design Bureau" "Tula Arms Plant" GAZ }
+	aircraft_companies = { "MiG Design Bureau" "Ilyushin Design Bureau" "Tupolev Design Bureau" "Yakovlev Design Bureau" }
+	intelligence_agencies = { "FSB" }
+}
+kholodnovoynsky = {
 	female_names = { Jelena Ludmila }
 	female_surnames = { Aleksseyeva Antonova Azarova Badanova Brusilova Budonnaya Chibisova Denikina
 			Dragomirova Frolova Golivina Grishina Gurkova Ivanova Koneva Konstantinova Kornilova
@@ -462,6 +505,20 @@ icelandic = {
 	intelligence_agencies = { "GVMSÍ" }
 }
 
+wandernorse = {
+	female_names = { Árný Arnfrithur Bjarnhildur Boghildur Dómhildur Drótt Freydís Gunnrún Rafney }
+	female_surnames = { Arnórsdóttir Ásgeirsdóttir Benediktsdóttir Bjarnadóttir Björnsdóttir Eggersdóttir Eldjárnsdóttir Hafsteinsdóttir Hansdóttir
+		Hermannsdóttir Johánesdóttir Jónsdóttir Magnúsdóttir Stefánsdóttir Steinþosdóttir Þórdarson Þórhallson Þorláksdóttir Þursdóttir }
+	callsigns = { "the Viking" "the Icelander" Volcano Elf Geyser }
+	industry_companies = { "Innlendum Atvinnugreinum" }
+	electronic_companies = { "Rafmagn fyrir Alla" }
+	car_companies = { "Reykjavík Bílaframleiðendur" }
+	naval_companies = { Víkingasveinninn }
+	weapon_companies = { Leiðaföndur }
+	aircraft_companies = { "Riddaralið Óðins" }
+	intelligence_agencies = { "GVMSÍ" }
+}
+
 lithuanian = {
 	female_names = { Agnė Aldona Anastasija Aurelija Austėja Birutė Daiva Danutė Donata Edita Elena Elzė Ernesta Gabija Gertrüda Gintarė Ieva Inga Irma Janina Jolanta Julija Kamilė Katrė Kristina Laimutė Lilija Liucija Margarita Marijona
 			Miglė Monika Odeta Paulina Regina Rozė Sandra Silvija Smiltė Solveiga Tatjana Urtė Valerija Viktorija Viltautė Violeta Vitalija Zydrė }
@@ -539,6 +596,17 @@ latvian = {
 }
 
 hungarian = {
+	female_names = { Ágnes Agnes Éva Eva Adelaida Adelaide Agáta Agatha Amália Amelia Angyalka Anikó Aranka }
+	callsigns = { Habsburg "the Magyar" Orc Hun Attila }
+	electronic_companies = { MVM }
+	car_companies = { "Škoda Budapest" }
+	industry_companies = { MÁVAG }
+	naval_companies = { "Ganz Danubius" }
+	weapon_companies = { "Fegyver- és Gépgyár" }
+	aircraft_companies = { "M.W. Aircraft" }
+	intelligence_agencies = { "Nemzetbiztonsági Hivatal" }
+}
+szekely = {
 	female_names = { Ágnes Agnes Éva Eva Adelaida Adelaide Agáta Agatha Amália Amelia Angyalka Anikó Aranka }
 	callsigns = { Habsburg "the Magyar" Orc Hun Attila }
 	electronic_companies = { MVM }
@@ -1235,6 +1303,17 @@ french_canadian = {
 	aircraft_companies = { "de Havilland Canada" "Canadian Car & Foundry" "Fairchild Aircraft Ltd." "Handley Page" }
 	intelligence_agencies = { "CBSA" }
 }
+antartique = {
+	female_names = { Marie Jeanne Françoise }
+	callsigns = { Québéc Canada Désolé Tuer }
+	industry_companies = { "Polymer Corporation" }
+	electronic_companies = { "Montreal Lab" }
+	car_companies = { Vickers-Armstrong }
+	naval_companies = { "Kingston Shipbuilding Co" "Halifax Shipyard Limited" }
+	weapon_companies = { "John Inglis and Company" "Small Arms Limited" }
+	aircraft_companies = { "de Havilland Canada" "Canadian Car & Foundry" "Fairchild Aircraft Ltd." "Handley Page" }
+	intelligence_agencies = { "CBSA" }
+}
 
 manchu = {
 	naval_companies = { "Jiangnan Shipyard Group" }
@@ -1270,6 +1349,39 @@ nanfaren = {
 	car_companies = { "Sì Gè Lúnzi" }
 	weapon_companies = { "Yāpiàn & Gāngtiě" }
 	intelligence_agencies = { "Intelligence Department Central Military Commission" }
+}
+xiyeren = {
+	naval_companies = { "Jiangnan Shipyard Group" }
+	aircraft_companies = { CAMCO }
+	female_names = { Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen }
+	callsigns = { Hán "Yěmán Rén" Móguǐ "Mǎnzhōu De" Huángdì Shén }
+	industry_companies = { "Mínzú Gōngyè" }
+	electronic_companies = { "Suǒyǒu Rén De Diànlì" }
+	car_companies = { "Sì Gè Lúnzi" }
+	weapon_companies = { "Yāpiàn & Gāngtiě" }
+	intelligence_agencies = { "NBIS" }
+}
+beieren = {
+	naval_companies = { "Jiangnan Shipyard Group" }
+	aircraft_companies = { CAMCO }
+	female_names = { Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen }
+	callsigns = { Hán "Yěmán Rén" Móguǐ "Mǎnzhōu De" Huángdì Shén }
+	industry_companies = { "Mínzú Gōngyè" }
+	electronic_companies = { "Suǒyǒu Rén De Diànlì" }
+	car_companies = { "Sì Gè Lúnzi" }
+	weapon_companies = { "Yāpiàn & Gāngtiě" }
+	intelligence_agencies = { "NBIS" }
+}
+naiyeren = {
+	naval_companies = { "Jiangnan Shipyard Group" }
+	aircraft_companies = { CAMCO }
+	female_names = { Heying Chunmei Tianhui Kon Mao Yuying Yuantong Yanxiang Xiurong Shouying Fuyuan Luzhen Ruirong Suzhen }
+	callsigns = { Hán "Yěmán Rén" Móguǐ "Mǎnzhōu De" Huángdì Shén }
+	industry_companies = { "Mínzú Gōngyè" }
+	electronic_companies = { "Suǒyǒu Rén De Diànlì" }
+	car_companies = { "Sì Gè Lúnzi" }
+	weapon_companies = { "Yāpiàn & Gāngtiě" }
+	intelligence_agencies = { "NBIS" }
 }
 
 hakka = {
@@ -2808,6 +2920,94 @@ elsinorian = {
 	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
 	intelligence_agencies = { "Secret Danes" }
 }
+nyasverigian = {
+	female_names = { Trine Kajsa }
+	callsigns = { Oslo "the Norse" Viking Valhalla }
+	industry_companies = { "Norsk Hydro" }
+	electronic_companies = { "Tandbergs Radiofabrikk" }
+	car_companies = { "Jösse Car" }
+	naval_companies = { "Horten Naval Yard" }
+	weapon_companies = { "Kongsberg Våpenfabrikk" "Raufoss Ammunisjonsfabrikker" "Hønefoss Karosserifabrikk" }
+	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
+	intelligence_agencies = { "B.Ö.R.K." }
+}
+bomullborgar = {
+	female_names = { Trine Kajsa }
+	callsigns = { Oslo "the Norse" Viking Valhalla }
+	industry_companies = { "Norsk Hydro" }
+	electronic_companies = { "Tandbergs Radiofabrikk" }
+	car_companies = { "Jösse Car" }
+	naval_companies = { "Horten Naval Yard" }
+	weapon_companies = { "Kongsberg Våpenfabrikk" "Raufoss Ammunisjonsfabrikker" "Hønefoss Karosserifabrikk" }
+	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
+	intelligence_agencies = { "B.Ö.R.K." }
+}
+bundsfoervant = {
+	female_names = { Trine Kajsa }
+	callsigns = { Oslo "the Norse" Viking Valhalla }
+	industry_companies = { "Norsk Hydro" }
+	electronic_companies = { "Tandbergs Radiofabrikk" }
+	car_companies = { "Jösse Car" }
+	naval_companies = { "Horten Naval Yard" }
+	weapon_companies = { "Kongsberg Våpenfabrikk" "Raufoss Ammunisjonsfabrikker" "Hønefoss Karosserifabrikk" }
+	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
+	intelligence_agencies = { "B.Ö.R.K." }
+}
+hjartnaaeter = {
+	female_names = { Trine Kajsa }
+	callsigns = { Oslo "the Norse" Viking Valhalla }
+	industry_companies = { "Norsk Hydro" }
+	electronic_companies = { "Tandbergs Radiofabrikk" }
+	car_companies = { "Jösse Car" }
+	naval_companies = { "Horten Naval Yard" }
+	weapon_companies = { "Kongsberg Våpenfabrikk" "Raufoss Ammunisjonsfabrikker" "Hønefoss Karosserifabrikk" }
+	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
+	intelligence_agencies = { "B.Ö.R.K." }
+}
+raudhskogarling = {
+	female_names = { Trine Kajsa }
+	callsigns = { Oslo "the Norse" Viking Valhalla }
+	industry_companies = { "Norsk Hydro" }
+	electronic_companies = { "Tandbergs Radiofabrikk" }
+	car_companies = { "Jösse Car" }
+	naval_companies = { "Horten Naval Yard" }
+	weapon_companies = { "Kongsberg Våpenfabrikk" "Raufoss Ammunisjonsfabrikker" "Hønefoss Karosserifabrikk" }
+	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
+	intelligence_agencies = { "B.Ö.R.K." }
+}
+hvitrduptling = {
+	female_names = { Trine Kajsa }
+	callsigns = { Oslo "the Norse" Viking Valhalla }
+	industry_companies = { "Norsk Hydro" }
+	electronic_companies = { "Tandbergs Radiofabrikk" }
+	car_companies = { "Jösse Car" }
+	naval_companies = { "Horten Naval Yard" }
+	weapon_companies = { "Kongsberg Våpenfabrikk" "Raufoss Ammunisjonsfabrikker" "Hønefoss Karosserifabrikk" }
+	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
+	intelligence_agencies = { "B.Ö.R.K." }
+}
+guldfjallling = {
+	female_names = { Trine Kajsa }
+	callsigns = { Oslo "the Norse" Viking Valhalla }
+	industry_companies = { "Norsk Hydro" }
+	electronic_companies = { "Tandbergs Radiofabrikk" }
+	car_companies = { "Jösse Car" }
+	naval_companies = { "Horten Naval Yard" }
+	weapon_companies = { "Kongsberg Våpenfabrikk" "Raufoss Ammunisjonsfabrikker" "Hønefoss Karosserifabrikk" }
+	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
+	intelligence_agencies = { "B.Ö.R.K." }
+}
+silfrvazling = {
+	female_names = { Trine Kajsa }
+	callsigns = { Oslo "the Norse" Viking Valhalla }
+	industry_companies = { "Norsk Hydro" }
+	electronic_companies = { "Tandbergs Radiofabrikk" }
+	car_companies = { "Jösse Car" }
+	naval_companies = { "Horten Naval Yard" }
+	weapon_companies = { "Kongsberg Våpenfabrikk" "Raufoss Ammunisjonsfabrikker" "Hønefoss Karosserifabrikk" }
+	aircraft_companies = { "Marinens Flyvebaatfabrikk" "Kjeller Flyfabrikk" }
+	intelligence_agencies = { "B.Ö.R.K." }
+}
 varangian = {
 	female_names = { Trine Kajsa }
 	callsigns = { Oslo "the Norse" Viking Valhalla }
@@ -2864,6 +3064,28 @@ irish = {
 	intelligence_agencies = { "G2" }
 }
 celtic_american = {
+	female_names = { Saraid Órfhlaith Fedelma }
+	callsigns = { Gaeilge Sasanaigh Celt Leprechaun }
+	industry_companies = { "Tionscail Náisiúnta" }
+	electronic_companies = { "Solas Draoi" }
+	car_companies = { "Ceithre Roth" }
+	naval_companies = { "An Longchlós Pale" }
+	weapon_companies = { "Cruach Sasanaigh" }
+	aircraft_companies = { "Ag Eitilt" }
+	intelligence_agencies = { "G2" }
+}
+y_wladfan = {
+	female_names = { Saraid Órfhlaith Fedelma }
+	callsigns = { Gaeilge Sasanaigh Celt Leprechaun }
+	industry_companies = { "Tionscail Náisiúnta" }
+	electronic_companies = { "Solas Draoi" }
+	car_companies = { "Ceithre Roth" }
+	naval_companies = { "An Longchlós Pale" }
+	weapon_companies = { "Cruach Sasanaigh" }
+	aircraft_companies = { "Ag Eitilt" }
+	intelligence_agencies = { "G2" }
+}
+nova_scotian = {
 	female_names = { Saraid Órfhlaith Fedelma }
 	callsigns = { Gaeilge Sasanaigh Celt Leprechaun }
 	industry_companies = { "Tionscail Náisiúnta" }
@@ -2950,6 +3172,39 @@ meashighcaw = {
 	weapon_companies = { "RSAF Enfield" Vauxhall "Royal Arsenal" }
 	aircraft_companies = { Supermarine "Hawker Aircraft" "De Havilland" Avro "Fairey Aviation" }
 	intelligence_agencies = { "W.A.L.L." }
+}
+redwoodian = {
+	female_names = { Anne Mary }
+	callsigns = { Stubborn Arrow "The King" Eagle Stewart Striker Chase "One Wing" Pickle Thief Thunder Lightning Storm Target Hawk Fox Dog Sparrow Sunrise "Night Owl" Butcher Cocky Hawkeye Killer Mick Brandy "The Baron" }
+	industry_companies = { AIOC }
+	electronic_companies = { "Scots Electric" }
+	car_companies = { Vickers-Armstrong }
+	naval_companies = { "Yarrow Shipbuilders" "Harland & Wolff" "Cammell Laird" "John Brown & Company" }
+	weapon_companies = { "RSAF Enfield" Vauxhall "Royal Arsenal" }
+	aircraft_companies = { Supermarine "Hawker Aircraft" "De Havilland" Avro "Fairey Aviation" }
+	intelligence_agencies = { "River Plate" }
+}
+guyanese = {
+	female_names = { Anne Mary }
+	callsigns = { Stubborn Arrow "The King" Eagle Stewart Striker Chase "One Wing" Pickle Thief Thunder Lightning Storm Target Hawk Fox Dog Sparrow Sunrise "Night Owl" Butcher Cocky Hawkeye Killer Mick Brandy "The Baron" }
+	industry_companies = { AIOC }
+	electronic_companies = { "Scots Electric" }
+	car_companies = { Vickers-Armstrong }
+	naval_companies = { "Yarrow Shipbuilders" "Harland & Wolff" "Cammell Laird" "John Brown & Company" }
+	weapon_companies = { "RSAF Enfield" Vauxhall "Royal Arsenal" }
+	aircraft_companies = { Supermarine "Hawker Aircraft" "De Havilland" Avro "Fairey Aviation" }
+	intelligence_agencies = { "River Plate" }
+}
+incacunapic = {
+	female_names = { Anne Mary }
+	callsigns = { Stubborn Arrow "The King" Eagle Stewart Striker Chase "One Wing" Pickle Thief Thunder Lightning Storm Target Hawk Fox Dog Sparrow Sunrise "Night Owl" Butcher Cocky Hawkeye Killer Mick Brandy "The Baron" }
+	industry_companies = { AIOC }
+	electronic_companies = { "Scots Electric" }
+	car_companies = { Vickers-Armstrong }
+	naval_companies = { "Yarrow Shipbuilders" "Harland & Wolff" "Cammell Laird" "John Brown & Company" }
+	weapon_companies = { "RSAF Enfield" Vauxhall "Royal Arsenal" }
+	aircraft_companies = { Supermarine "Hawker Aircraft" "De Havilland" Avro "Fairey Aviation" }
+	intelligence_agencies = { "River Plate" }
 }
 italoamericano = {
 	female_names = { Maria Giovanna }
@@ -3051,6 +3306,28 @@ occitan = {
 	intelligence_agencies = { "Troubadours" }
 }
 picard = {
+	female_names = { Anne Marie }
+	callsigns = { "Draco" "Fast" "Tiger" "Sparrow" "Ripper" "Sundance" "Toad" "Twitch" "Farmer" "Weasel" "Target Practice" "Invisible" "Beach Boy" "Princess" "The Mute" "Carpenter" }
+	industry_companies = { FAMH }
+	car_companies = { Renault AMX }
+	electronic_companies = { Énergem }
+	naval_companies = { FCM }
+	weapon_companies = { SOMUA MAS Schneider }
+	aircraft_companies = { Morane-Saulnier Bloch Amiot Levasseur }
+	intelligence_agencies = { "Dunkirk" }
+}
+guillaumois = {
+	female_names = { Anne Marie }
+	callsigns = { "Draco" "Fast" "Tiger" "Sparrow" "Ripper" "Sundance" "Toad" "Twitch" "Farmer" "Weasel" "Target Practice" "Invisible" "Beach Boy" "Princess" "The Mute" "Carpenter" }
+	industry_companies = { FAMH }
+	car_companies = { Renault AMX }
+	electronic_companies = { Énergem }
+	naval_companies = { FCM }
+	weapon_companies = { SOMUA MAS Schneider }
+	aircraft_companies = { Morane-Saulnier Bloch Amiot Levasseur }
+	intelligence_agencies = { "Dunkirk" }
+}
+guiscard = {
 	female_names = { Anne Marie }
 	callsigns = { "Draco" "Fast" "Tiger" "Sparrow" "Ripper" "Sundance" "Toad" "Twitch" "Farmer" "Weasel" "Target Practice" "Invisible" "Beach Boy" "Princess" "The Mute" "Carpenter" }
 	industry_companies = { FAMH }
@@ -3194,6 +3471,94 @@ lounast = {
 	intelligence_agencies = { "PE TIEDOS" }
 }
 mustvalge = {
+	female_names = { Anna }
+	callsigns = { Läti Liivlased Eesti Poola Vene Soome }
+	naval_companies = { "Paldiski Port" }
+	weapon_companies = { "Arsenal Tallinn" }
+	industry_companies = { "Riiklikud Tööstusharud" }
+	electronic_companies = { "Elektrit Kõigile" }
+	car_companies = { "Neli Ratast" }
+	aircraft_companies = { "Lendavad Alustassid" }
+	intelligence_agencies = { "PE TIEDOS" }
+}
+antivuorean = {
+	female_names = { Anna }
+	callsigns = { Läti Liivlased Eesti Poola Vene Soome }
+	naval_companies = { "Paldiski Port" }
+	weapon_companies = { "Arsenal Tallinn" }
+	industry_companies = { "Riiklikud Tööstusharud" }
+	electronic_companies = { "Elektrit Kõigile" }
+	car_companies = { "Neli Ratast" }
+	aircraft_companies = { "Lendavad Alustassid" }
+	intelligence_agencies = { "PE TIEDOS" }
+}
+hopeajokan = {
+	female_names = { Anna }
+	callsigns = { Läti Liivlased Eesti Poola Vene Soome }
+	naval_companies = { "Paldiski Port" }
+	weapon_companies = { "Arsenal Tallinn" }
+	industry_companies = { "Riiklikud Tööstusharud" }
+	electronic_companies = { "Elektrit Kõigile" }
+	car_companies = { "Neli Ratast" }
+	aircraft_companies = { "Lendavad Alustassid" }
+	intelligence_agencies = { "PE TIEDOS" }
+}
+kepejokian = {
+	female_names = { Anna }
+	callsigns = { Läti Liivlased Eesti Poola Vene Soome }
+	naval_companies = { "Paldiski Port" }
+	weapon_companies = { "Arsenal Tallinn" }
+	industry_companies = { "Riiklikud Tööstusharud" }
+	electronic_companies = { "Elektrit Kõigile" }
+	car_companies = { "Neli Ratast" }
+	aircraft_companies = { "Lendavad Alustassid" }
+	intelligence_agencies = { "PE TIEDOS" }
+}
+kujaanan = {
+	female_names = { Anna }
+	callsigns = { Läti Liivlased Eesti Poola Vene Soome }
+	naval_companies = { "Paldiski Port" }
+	weapon_companies = { "Arsenal Tallinn" }
+	industry_companies = { "Riiklikud Tööstusharud" }
+	electronic_companies = { "Elektrit Kõigile" }
+	car_companies = { "Neli Ratast" }
+	aircraft_companies = { "Lendavad Alustassid" }
+	intelligence_agencies = { "PE TIEDOS" }
+}
+maraivoan = {
+	female_names = { Anna }
+	callsigns = { Läti Liivlased Eesti Poola Vene Soome }
+	naval_companies = { "Paldiski Port" }
+	weapon_companies = { "Arsenal Tallinn" }
+	industry_companies = { "Riiklikud Tööstusharud" }
+	electronic_companies = { "Elektrit Kõigile" }
+	car_companies = { "Neli Ratast" }
+	aircraft_companies = { "Lendavad Alustassid" }
+	intelligence_agencies = { "PE TIEDOS" }
+}
+meksikan = {
+	female_names = { Anna }
+	callsigns = { Läti Liivlased Eesti Poola Vene Soome }
+	naval_companies = { "Paldiski Port" }
+	weapon_companies = { "Arsenal Tallinn" }
+	industry_companies = { "Riiklikud Tööstusharud" }
+	electronic_companies = { "Elektrit Kõigile" }
+	car_companies = { "Neli Ratast" }
+	aircraft_companies = { "Lendavad Alustassid" }
+	intelligence_agencies = { "PE TIEDOS" }
+}
+salislahtian = {
+	female_names = { Anna }
+	callsigns = { Läti Liivlased Eesti Poola Vene Soome }
+	naval_companies = { "Paldiski Port" }
+	weapon_companies = { "Arsenal Tallinn" }
+	industry_companies = { "Riiklikud Tööstusharud" }
+	electronic_companies = { "Elektrit Kõigile" }
+	car_companies = { "Neli Ratast" }
+	aircraft_companies = { "Lendavad Alustassid" }
+	intelligence_agencies = { "PE TIEDOS" }
+}
+suurjokian = {
 	female_names = { Anna }
 	callsigns = { Läti Liivlased Eesti Poola Vene Soome }
 	naval_companies = { "Paldiski Port" }
