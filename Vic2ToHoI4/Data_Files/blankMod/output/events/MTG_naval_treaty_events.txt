@@ -275,7 +275,6 @@ country_event = {
 			has_war = yes
 			any_enemy_country = {
 				is_major = yes
-				NOT = { tag = event_target:WTT_current_china_leader} #special exception
 			}
 		}
 	}
