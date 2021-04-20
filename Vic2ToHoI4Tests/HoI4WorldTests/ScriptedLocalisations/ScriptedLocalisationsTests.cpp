@@ -14,7 +14,7 @@ TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationsTests, LocalisationsDef
 TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationsTests, GetStrengthRatioAdded)
 {
 	HoI4::ScriptedLocalisations theLocalisations;
-	theLocalisations.addNavyScriptedLocalisations("TAG", "TWO");
+	theLocalisations.addNavyScriptedLocalisations({"TAG", "TWO"});
 
 	ASSERT_TRUE(!theLocalisations.getLocalisations().empty());
 	ASSERT_EQ("GetStrengthRatioBritain", theLocalisations.getLocalisations()[0].getName());
@@ -24,7 +24,7 @@ TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationsTests, GetStrengthRatio
 TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationsTests, GetRelevantNavalTreatyNationAdded)
 {
 	HoI4::ScriptedLocalisations theLocalisations;
-	theLocalisations.addNavyScriptedLocalisations("TAG", "TWO");
+	theLocalisations.addNavyScriptedLocalisations({"TAG", "TWO"});
 
 	ASSERT_TRUE(theLocalisations.getLocalisations().size() > 1);
 	ASSERT_EQ("GetRelevantNavalTreatyNation", theLocalisations.getLocalisations()[1].getName());
@@ -34,7 +34,7 @@ TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationsTests, GetRelevantNaval
 TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationsTests, TagsGetApplied)
 {
 	HoI4::ScriptedLocalisations theLocalisations;
-	theLocalisations.addNavyScriptedLocalisations("TAG", "TWO");
+	theLocalisations.addNavyScriptedLocalisations({"TAG", "TWO"});
 
 	ASSERT_TRUE(theLocalisations.getLocalisations().size() > 1);
 	ASSERT_EQ(2, theLocalisations.getLocalisations()[1].getTexts().size());

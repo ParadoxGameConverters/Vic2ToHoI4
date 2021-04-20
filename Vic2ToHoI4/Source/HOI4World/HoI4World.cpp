@@ -725,14 +725,15 @@ void HoI4::World::determineGreatPowers(const Vic2::World& sourceWorld)
 void HoI4::World::setupNavalTreaty()
 {
 	Log(LogLevel::Info) << "\tCreating naval treaty";
-	std::optional<std::pair<std::string, std::string>> strongestGpNavies = getStrongestNavyGps();
-	if (strongestGpNavies)
+	auto strongestGpNavies = getStrongestNavyGps();
+	if (!strongestGpNavies.empty())
 	{
-		scriptedLocalisations->addNavyScriptedLocalisations(strongestGpNavies->first, strongestGpNavies->second);
-		hoi4Localisations->addDecisionLocalisation(strongestGpNavies->first + "_Naval_treaty_nation",
-			 "@" + strongestGpNavies->first + " [" + strongestGpNavies->first + ".GetName]");
-		hoi4Localisations->addDecisionLocalisation(strongestGpNavies->second + "_Naval_treaty_nation",
-			 "@" + strongestGpNavies->second + " [" + strongestGpNavies->second + ".GetName]");
+		scriptedLocalisations->addNavyScriptedLocalisations(strongestGpNavies);
+		for (const auto& strongestGpNavy: strongestGpNavies)
+		{
+			hoi4Localisations->addDecisionLocalisation(strongestGpNavy + "_Naval_treaty_nation",
+				 "@" + strongestGpNavy + " [" + strongestGpNavy + ".GetName]");
+		}
 	}
 }
 
@@ -956,37 +957,40 @@ std::set<HoI4::Advisor> HoI4::World::getActiveIdeologicalAdvisors() const
 }
 
 
-std::optional<std::pair<std::string, std::string>> HoI4::World::getStrongestNavyGps()
+std::vector<std::string> HoI4::World::getStrongestNavyGps()
 {
-	std::pair<std::string, std::string> strongestNavies;
-	float strongestNavy = 0;
-	float secondStrongestNavy = 0;
+	std::string strongestNavy;
+	float strongestNavyPower = 0.0F;
+	std::string secondStrongestNavy;
+	float secondStrongestNavyPower = 0.0F;
 
-	for (auto greatPower: greatPowers)
+	for (const auto& greatPower: greatPowers)
 	{
-		float navyStrength = greatPower->getNavalStrength();
-		if (navyStrength > strongestNavy)
+		const float navyStrength = greatPower->getNavalStrength();
+		if (navyStrength > strongestNavyPower)
 		{
-			strongestNavies.second = strongestNavies.first;
 			secondStrongestNavy = strongestNavy;
-			strongestNavies.first = greatPower->getTag();
-			strongestNavy = navyStrength;
+			secondStrongestNavyPower = strongestNavyPower;
+			strongestNavy = greatPower->getTag();
+			strongestNavyPower = navyStrength;
 		}
-		else if (navyStrength > secondStrongestNavy)
+		else if (navyStrength > secondStrongestNavyPower)
 		{
-			strongestNavies.second = greatPower->getTag();
-			secondStrongestNavy = navyStrength;
+			secondStrongestNavy = greatPower->getTag();
+			secondStrongestNavyPower = navyStrength;
 		}
 	}
 
-	if ((strongestNavy > 0) && (secondStrongestNavy > 0))
+	if (secondStrongestNavyPower > 0.0F)
 	{
-		return strongestNavies;
+		return {strongestNavy, secondStrongestNavy};
 	}
-	else
+	if (strongestNavyPower)
 	{
-		return std::nullopt;
+		return {strongestNavy};
 	}
+
+	return {};
 }
 
 

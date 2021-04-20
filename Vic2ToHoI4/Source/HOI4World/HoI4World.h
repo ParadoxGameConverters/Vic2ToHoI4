@@ -185,7 +185,7 @@ class World: commonItems::parser
 	void addCountryElectionEvents(const std::set<std::string>& theMajorIdeologies,
 		 const Vic2::Localisations& vic2Localisations);
 
-	std::optional<std::pair<std::string, std::string>> getStrongestNavyGps();
+	std::vector<std::string> getStrongestNavyGps();
 
 	std::set<std::string> getSouthAsianCountries() const;
 

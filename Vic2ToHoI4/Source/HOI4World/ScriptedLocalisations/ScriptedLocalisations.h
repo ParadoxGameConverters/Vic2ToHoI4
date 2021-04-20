@@ -17,7 +17,7 @@ class ScriptedLocalisations
 {
   public:
 	class Factory;
-	void addNavyScriptedLocalisations(const std::string& strongestNavyTag, const std::string& secondStrongestNavyTag);
+	void addNavyScriptedLocalisations(const std::vector<std::string>& strongestNaviesTags);
 	void giveAdjectiveLocalisation(const std::string& language, ScriptedLocalisation&& localisation);
 	void filterIdeologyLocalisations(const std::set<std::string>& majorIdeologies);
 	void updateIdeologyLocalisations(const std::set<std::string>& majorIdeologies);
