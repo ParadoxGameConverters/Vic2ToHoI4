@@ -734,6 +734,19 @@ void HoI4::World::setupNavalTreaty()
 			hoi4Localisations->addDecisionLocalisation(strongestGpNavy + "_Naval_treaty_nation",
 				 "@" + strongestGpNavy + " [" + strongestGpNavy + ".GetName]");
 		}
+
+		auto numAdherents = 0;
+		for (const auto& greatPower: greatPowers)
+		{
+			if (greatPower->getNavalStrength() > 0)
+			{
+				greatPower->makeNavalTreatyAdherent();
+				numAdherents++;
+			}
+		}
+
+		(*greatPowers.begin())->makeGreatestNavalPower();
+		(*greatPowers.begin())->setNumberOfAdherents(numAdherents);
 	}
 }
 
