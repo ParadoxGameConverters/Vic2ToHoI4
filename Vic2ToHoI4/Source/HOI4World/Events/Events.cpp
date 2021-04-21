@@ -1540,6 +1540,22 @@ void HoI4::Events::importCapitulationEvents(const Configuration& theConfiguratio
 }
 
 
+void HoI4::Events::importMtgNavalTreatyEvents(const Configuration& theConfiguration,
+	 const std::set<std::string>& majorIdeologies)
+{
+	Log(LogLevel::Info) << "\tImporting naval treaty events";
+
+	registerKeyword("country_event", [this](const std::string& type, std::istream& theStream) {
+		const Event navalTreatyEvent(type, theStream);
+		mtgNavalTreatyEvents.push_back(navalTreatyEvent);
+	});
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+
+	parseFile(theConfiguration.getHoI4Path() + "/events/MTG_naval_treaty_events.txt");
+	clearRegisteredKeywords();
+}
+
+
 void HoI4::Events::importLarOccupationEvents(const Configuration& theConfiguration,
 	 const std::set<std::string>& majorIdeologies)
 {

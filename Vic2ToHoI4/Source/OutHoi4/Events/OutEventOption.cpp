@@ -5,7 +5,10 @@
 std::ostream& HoI4::operator<<(std::ostream& out, const EventOption& theOption)
 {
 	out << "\toption = {\n";
-	out << "\t\tname = " << theOption.name << "\n";
+	if (!theOption.name.empty())
+	{
+		out << "\t\tname = " << theOption.name << "\n";
+	}
 	if (!theOption.trigger.empty())
 	{
 		out << "\t\ttrigger = {\n";
