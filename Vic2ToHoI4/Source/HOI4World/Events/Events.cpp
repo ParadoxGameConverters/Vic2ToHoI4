@@ -14,6 +14,7 @@
 #include "V2World/Countries/Country.h"
 #include "V2World/Politics/Party.h"
 #include <fstream>
+#include "NavalTreatyEventsUpdaters.h"
 
 
 
@@ -1553,6 +1554,14 @@ void HoI4::Events::importMtgNavalTreatyEvents(const Configuration& theConfigurat
 
 	parseFile(theConfiguration.getHoI4Path() + "/events/MTG_naval_treaty_events.txt");
 	clearRegisteredKeywords();
+
+	for (auto& event: mtgNavalTreatyEvents)
+	{
+		if (event.getId() == "MTG_naval_treaty.1")
+		{
+			updateNavalTreatyEventOne(event, majorIdeologies);
+		}
+	}
 }
 
 
