@@ -12,6 +12,7 @@ namespace HoI4
 {
 
 void updateNavalTreatyEventOne(Event& event, const std::set<std::string>& majorIdeologies);
+void updateNavalTreatyEventFour(Event& event, const std::set<std::string>& majorIdeologies);
 	
 }
 

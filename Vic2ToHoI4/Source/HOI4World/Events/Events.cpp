@@ -1561,6 +1561,10 @@ void HoI4::Events::importMtgNavalTreatyEvents(const Configuration& theConfigurat
 		{
 			updateNavalTreatyEventOne(event, majorIdeologies);
 		}
+		else if (event.getId() == "MTG_naval_treaty.4")
+		{
+			updateNavalTreatyEventFour(event, majorIdeologies);
+		}
 	}
 }
 
