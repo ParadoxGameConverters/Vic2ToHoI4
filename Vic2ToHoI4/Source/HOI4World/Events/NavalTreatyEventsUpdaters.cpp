@@ -210,3 +210,18 @@ void HoI4::updateNavalTreatyEventFour(Event& event, const std::set<std::string>&
 
 	event.giveOption(std::move(optionB));
 }
+
+
+void HoI4::updateNavalTreatyEventTen(Event& event, const std::set<std::string>& majorIdeologies)
+{
+	event.giveTrigger(
+		 "= {\n"
+		 "\t\tany_country = {\n"
+		 "\t\t\thas_naval_treaty_trigger = yes\n"
+		 "\t\t\thas_war = yes\n"
+		 "\t\t\tany_enemy_country = {\n"
+		 "\t\t\t\tis_major = yes\n"
+		 "\t\t\t}\n"
+		 "\t\t}\n"
+		 "\t}");
+}
