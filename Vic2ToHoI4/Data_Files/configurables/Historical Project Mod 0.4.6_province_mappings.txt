@@ -1289,7 +1289,7 @@
 	link = { vic2 = 751 hoi4 = 3885 hoi4 = 6926 hoi4 = 9794 } # Perugia -> Perugia, Foligno, Terni
 	link = { vic2 = 752 hoi4 = 925 hoi4 = 967 hoi4 = 11861 hoi4 = 11790 } # Ancona -> Ancona, Pesaro, Urbino, Ascoli
 	link = { vic2 = 748 hoi4 = 6875 hoi4 = 9750 } # Grosseto -> Grosseto, Cortona
-	link = { vic2 = 745 hoi4 = 11833 } # Leghorn -> Livorno
+	link = { vic2 = 745 vic2 = 1981 hoi4 = 11833 } # Leghorn, Elba -> Livorno
 	link = { vic2 = 747 hoi4 = 910 hoi4 = 9879 } # Siena -> Siena, Arezzo
 	link = { vic2 = 744 hoi4 = 9907 hoi4 = 1616 hoi4 = 11889 } # Florence -> Firenze, Prato, Borgo San Lorenzo
 	link = { vic2 = 746 hoi4 = 6946 } # Lucca -> Pisa
@@ -2322,8 +2322,7 @@
 	link = { vic2 = 1976 vic2 = 1975 hoi4 = 10948 hoi4 = 13210 } # MANY-TO-MANY: Makokou, Moanda -> Oyem, Franceville
 	link = { vic2 = 1972 hoi4 = 5139 } # Baraka -> Libreville
 	link = { vic2 = 1974 hoi4 = 8207 } # Mayumbe -> Mouila
-	link = { vic2 = 1981 hoi4 = 6008 hoi4 = 3109 } # Elba -> Impfondo, Fort-Rousset
-	link = { vic2 = 1980 hoi4 = 2192 } # Djambala -> Djambala
+	link = { vic2 = 1980 hoi4 = 2192 hoi4 = 3109 hoi4 = 6008 } # Djambala -> Djambala, Fort-Rousset, Impfondo
 	link = { vic2 = 1977 vic2 = 1983 hoi4 = 8193 } # Nkuna, Boma -> Brazzaville
 	link = { vic2 = 2624 vic2 = 1978 hoi4 = 12975 } # Loango, Madingou -> Pointe-Noire
 	link = { vic2 = 2000 hoi4 = 2115 } # Cabinda -> Cabinda
