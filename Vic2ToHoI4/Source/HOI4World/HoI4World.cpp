@@ -50,6 +50,7 @@
 #include "V2World/Localisations/Vic2Localisations.h"
 #include "V2World/World/World.h"
 #include "WarCreator/HoI4WarCreator.h"
+#include <numeric>
 using namespace std;
 
 
@@ -974,38 +975,73 @@ std::set<HoI4::Advisor> HoI4::World::getActiveIdeologicalAdvisors() const
 
 std::vector<std::string> HoI4::World::getStrongestNavyGps()
 {
-	std::string strongestNavy;
-	float strongestNavyPower = 0.0F;
-	std::string secondStrongestNavy;
-	float secondStrongestNavyPower = 0.0F;
+	struct gpStrengthStruct
+	{
+		std::string tag;
+		float strength;
+		int meansIndex;
+	};
+	std::vector<gpStrengthStruct> gpStrengths;
 
+	float strongestNavy = 0.0;
 	for (const auto& greatPower: greatPowers)
 	{
-		const float navyStrength = greatPower->getNavalStrength();
-		if (navyStrength > strongestNavyPower)
+		auto strength = greatPower->getNavalStrength();
+		if (strength > strongestNavy)
 		{
-			secondStrongestNavy = strongestNavy;
-			secondStrongestNavyPower = strongestNavyPower;
-			strongestNavy = greatPower->getTag();
-			strongestNavyPower = navyStrength;
+			strongestNavy = strength;
 		}
-		else if (navyStrength > secondStrongestNavyPower)
-		{
-			secondStrongestNavy = greatPower->getTag();
-			secondStrongestNavyPower = navyStrength;
-		}
+		gpStrengths.push_back({.tag = greatPower->getTag(), .strength = strength, .meansIndex = 0});
 	}
 
-	if (secondStrongestNavyPower > 0.0F)
+	struct meansStruct
 	{
-		return {strongestNavy, secondStrongestNavy};
-	}
-	if (strongestNavyPower)
-	{
-		return {strongestNavy};
-	}
+		float value;
+		std::vector<float> strengthAssignments;
+		std::vector<std::string> tags;
+		bool operator<(const meansStruct& rhs) const {return value < rhs.value; }
+	};
+	std::vector<meansStruct> means = {{.value = 0.0F}, {.value = strongestNavy / 2.0F}, {.value = strongestNavy}};
 
-	return {};
+	bool assignmentsChanged;
+	do
+	{
+		assignmentsChanged = false;
+		for (auto& mean: means)
+		{
+			mean.tags.clear();
+		}
+
+		// assignment
+		for (auto& gpStrength: gpStrengths)
+		{
+			auto leastDistance = std::abs(means[gpStrength.meansIndex].value - gpStrength.strength);
+			for (auto i = 0; i < means.size(); i++)
+			{
+				if (std::abs(means[i].value - gpStrength.strength) < leastDistance)
+				{
+					leastDistance = std::abs(means[i].value - gpStrength.strength);
+					gpStrength.meansIndex = i;
+					assignmentsChanged = true;
+				}
+			}
+			means[gpStrength.meansIndex].strengthAssignments.push_back(gpStrength.strength);
+			means[gpStrength.meansIndex].tags.push_back(gpStrength.tag);
+		}
+
+		// adjustment
+		for (auto& mean: means)
+		{
+			if (!mean.strengthAssignments.empty())
+			{
+				mean.value = std::accumulate(mean.strengthAssignments.begin(), mean.strengthAssignments.end(), 0.0F) /
+								 mean.strengthAssignments.size();
+				mean.strengthAssignments.clear();
+			}
+		}
+	} while (assignmentsChanged);
+
+	return std::max_element(means.begin(), means.end())->tags;
 }
 
 
