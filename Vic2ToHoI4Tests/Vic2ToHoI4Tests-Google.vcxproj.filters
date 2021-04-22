@@ -1523,6 +1523,9 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\MapUtils.cpp">
       <Filter>Vic2ToHoI4 files\HoI4\WarCreator</Filter>
     </ClCompile>
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Events\NavalTreatyEventsUpdaters.cpp">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Vic2ToHoI4 files">
@@ -2990,6 +2993,9 @@
     </ClInclude>
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\WarCreator\MapUtils.h">
       <Filter>Vic2ToHoI4 files\HoI4\WarCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Events\NavalTreatyEventsUpdaters.h">
+      <Filter>Vic2ToHoI4 files\HoI4\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
