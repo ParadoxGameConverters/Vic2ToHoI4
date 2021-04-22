@@ -28,7 +28,8 @@ void HoI4::decisions::updateDecisions(const std::set<std::string>& majorIdeologi
 	 const std::map<int, int>& provinceToStateIdMap,
 	 const std::map<int, DefaultState>& defaultStates,
 	 const Events& theEvents,
-	 const std::set<std::string>& southAsianCountries)
+	 const std::set<std::string>& southAsianCountries,
+	 const std::vector<std::string>& strongestGpNavies)
 {
 	Log(LogLevel::Info) << "\tUpdating decisions";
 
@@ -39,7 +40,7 @@ void HoI4::decisions::updateDecisions(const std::set<std::string>& majorIdeologi
 	politicalDecisions.updateDecisions(majorIdeologies, theEvents);
 	exiledGovernmentsDecisions.updateDecisions(majorIdeologies);
 	foreignInfluenceDecisions.updateDecisions(majorIdeologies);
-	navalTreatyDecisions.updateDecisions(majorIdeologies);
+	navalTreatyDecisions.updateDecisions(majorIdeologies, strongestGpNavies);
 	resourceProspectingDecisions.updateDecisions(provinceToStateIdMap, defaultStates);
 	genericDecisions.updateDecisions(provinceToStateIdMap, majorIdeologies);
 }

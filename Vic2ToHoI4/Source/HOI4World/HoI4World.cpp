@@ -145,7 +145,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 states->getProvinceToStateIDMap(),
 		 states->getDefaultStates(),
 		 *events,
-		 getSouthAsianCountries());
+		 getSouthAsianCountries(),
+		 strongestGpNavies);
 	updateAiPeaces(*peaces, ideologies->getMajorIdeologies());
 	addNeutrality(theConfiguration.getDebug());
 	addLeaders();
@@ -726,7 +727,7 @@ void HoI4::World::determineGreatPowers(const Vic2::World& sourceWorld)
 void HoI4::World::setupNavalTreaty()
 {
 	Log(LogLevel::Info) << "\tCreating naval treaty";
-	auto strongestGpNavies = getStrongestNavyGps();
+	strongestGpNavies = getStrongestNavyGps();
 	if (!strongestGpNavies.empty())
 	{
 		scriptedLocalisations->addNavyScriptedLocalisations(strongestGpNavies);

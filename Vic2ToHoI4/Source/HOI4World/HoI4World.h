@@ -246,6 +246,8 @@ class World: commonItems::parser
 	std::unique_ptr<Localisation> hoi4Localisations;
 
 	std::vector<SoundEffect> soundEffects;
+
+	std::vector<std::string> strongestGpNavies;
 };
 
 } // namespace HoI4

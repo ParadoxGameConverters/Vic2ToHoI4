@@ -36,7 +36,8 @@ class decisions: commonItems::parser
 		 const std::map<int, int>& provinceToStateIdMap,
 		 const std::map<int, DefaultState>& defaultStates,
 		 const Events& theEvents,
-		 const std::set<std::string>& southAsianCountries);
+		 const std::set<std::string>& southAsianCountries,
+		 const std::vector<std::string>& strongestGpNavies);
 
 	[[nodiscard]] const auto& getIdeologicalCategories() const { return *ideologicalCategories; }
 	[[nodiscard]] const std::vector<DecisionsInCategory>& getAgentRecruitmentDecisions() const
