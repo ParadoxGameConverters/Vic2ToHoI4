@@ -1014,6 +1014,7 @@ modelStruct initializeModel(int numMeans, float strongestNavy, const std::vector
 }
 
 
+// run the naive k-means algorithm as described here: https://en.wikipedia.org/wiki/K-means_clustering#Standard_algorithm_(naive_k-means)
 void runKMeans(modelStruct& model)
 {
 	bool assignmentsChanged;
@@ -1056,6 +1057,7 @@ void runKMeans(modelStruct& model)
 }
 
 
+// find sum of the deviations between each strength and the mean it's associated with
 float rateModel(const modelStruct& model)
 {
 	float score = 0.0F;
@@ -1069,6 +1071,8 @@ float rateModel(const modelStruct& model)
 }
 
 
+// run repeated k-means clustering with increasing numbers of clusters until this gives no improvement
+// the highest-value cluster is the set of strongest navies
 std::vector<std::string> HoI4::World::getStrongestNavyGps()
 {
 	float strongestNavy = 0.0;
