@@ -144,11 +144,33 @@ ideas = {
 			picture = culture_alexandrine
 			modifier = { }
 		}
+		culture_algonquish = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_algonquish
+			modifier = { }
+		}
 		culture_alien = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_alien
 			modifier = {
+				nuclear_production = 1 # Automatically knows of nukes
+				offensive_war_stability_factor = 0
+				war_support_weekly = 100
+				generate_wargoal_tension = 0 # Free CB
+				justify_war_goal_time = 0
+				opinion_gain_monthly = -100 # We hate aliens
+				surrender_limit = 0.001 # Capitulation only when there's literally nothing left
+				annex_cost_factor = 0.001 # The world? Free real estate
+				land_reinforce_rate = 0.001 # Instant reinforcements
+				weekly_manpower = 50000
+				base_fuel_gain = 10000
+				decryption = 5
+				encryption = 5
+				ai_focus_aggressive_factor = 2
+				ai_focus_peaceful_factor = 0
+				ai_get_ally_desire_factor = 0
 				army_org = 100
 				army_morale_factor = 100
 				offence = 100
@@ -157,7 +179,7 @@ ideas = {
 				attrition = -100
 				justify_war_goal_time = -1
 				trade_opinion_factor = -1
-				research_speed_factor = 0.25
+				research_speed_factor = 0.01
 				decryption_factor = 1
 				encryption_factor = 1
 				invasion_preparation = -0.5
@@ -249,6 +271,18 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_araucanian
+			modifier = { }
+		}
+		culture_aravacian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_aravacian
+			modifier = { }
+		}
+		culture_arcansian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_arcansian
 			modifier = { }
 		}
 		culture_armenian = {
@@ -407,6 +441,12 @@ ideas = {
 			picture = culture_belgian
 			modifier = { }
 		}
+		culture_beltramian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_beltramian
+			modifier = { }
+		}
 		culture_bengali = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -509,10 +549,22 @@ ideas = {
 			picture = culture_bythlimmoth
 			modifier = { }
 		}
+		culture_cabottian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_cabottian
+			modifier = { }
+		}
 		culture_caddoan = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_caddoan
+			modifier = { }
+		}
+		culture_calusan = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_calusan
 			modifier = { }
 		}
 		culture_camite = {
@@ -558,6 +610,12 @@ ideas = {
 			picture = culture_catalan
 			modifier = { }
 		}
+		culture_ceian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_ceian
+			modifier = { }
+		}
 		culture_celtiberian = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -574,6 +632,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_central_american
+			modifier = { }
+		}
+		culture_cetuan = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_cetuan
 			modifier = { }
 		}
 		culture_chacoan = {
@@ -706,6 +770,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_danish
+			modifier = { }
+		}
+		culture_deagostinian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_deagostinian
 			modifier = { }
 		}
 		culture_delian = {
@@ -1002,10 +1072,28 @@ ideas = {
 			picture = culture_galician
 			modifier = { }
 		}
+		culture_garanian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_garanian
+			modifier = { }
+		}
 		culture_gaulish = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_gaulish
+			modifier = { }
+		}
+		culture_garibaldine = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_garibaldine
+			modifier = { }
+		}
+		culture_geheimnisdeutsch = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_geheimnisdeutsch
 			modifier = { }
 		}
 		culture_georgian = {
@@ -1036,6 +1124,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_greek
+			modifier = { }
+		}
+		culture_grootdesseyn = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_grootdesseyn
 			modifier = { }
 		}
 		culture_guajiro = {
@@ -1110,6 +1204,12 @@ ideas = {
 			picture = culture_harari
 			modifier = { }
 		}
+		culture_harpeian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_harpeian
+			modifier = { }
+		}
 		culture_hausa = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -1146,6 +1246,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_herero
+			modifier = { }
+		}
+		culture_hilterian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_hilterian
 			modifier = { }
 		}
 		culture_hittite_american = {
@@ -1215,6 +1321,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_hungarian
+			modifier = { }
+		}
+		culture_hunsrik = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_hunsrik
 			modifier = { }
 		}
 		culture_hvitrduptling = {
@@ -1769,10 +1881,22 @@ ideas = {
 			picture = culture_maures
 			modifier = { }
 		}
+		culture_mauritsstadtian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_mauritsstadtian
+			modifier = { }
+		}
 		culture_mavro = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_mavro
+			modifier = { }
+		}
+		culture_maximilianish = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_maximilianish
 			modifier = { }
 		}
 		culture_mayan = {
@@ -1797,6 +1921,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_melanesian
+			modifier = { }
+		}
+		culture_mesican = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_mesican
 			modifier = { }
 		}
 		culture_metis = {
@@ -1857,6 +1987,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_moluccan
+			modifier = { }
+		}
+		culture_money = { # This is how the converter likes to output "noculture"
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_dummy
 			modifier = { }
 		}
 		culture_mongo = {
@@ -1983,6 +2119,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_nepali
+			modifier = { }
+		}
+		culture_newswiss = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_newswiss
 			modifier = { }
 		}
 		culture_nguni = {
@@ -2400,6 +2542,12 @@ ideas = {
 			picture = culture_rhaetian
 			modifier = { }
 		}
+		culture_rollonian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_rollonian
+			modifier = { }
+		}
 		culture_romanian = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -2694,6 +2842,12 @@ ideas = {
 			picture = culture_sureno
 			modifier = { }
 		}
+		culture_surinamian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_surinamian
+			modifier = { }
+		}
 		culture_suurjokian = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -2808,6 +2962,12 @@ ideas = {
 			picture = culture_thegioimoi
 			modifier = { }
 		}
+		culture_thulean = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_thulean
+			modifier = { }
+		}
 		culture_thracian = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
@@ -2860,6 +3020,18 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_tonga
+			modifier = { }
+		}
+		culture_tounensois = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_tounensois
+			modifier = { }
+		}
+		culture_trattoloyan = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_trattoloyan
 			modifier = { }
 		}
 		culture_tswana = {
@@ -2945,6 +3117,17 @@ ideas = {
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_undead
 			modifier = {
+				offensive_war_stability_factor = 0
+				war_support_weekly = 100
+				generate_wargoal_tension = 0 # Free CB
+				opinion_gain_monthly = -100
+				surrender_limit = 0.001 # Capitulation only when there's literally nothing left
+				annex_cost_factor = 0.001 # The world? Free real estate
+				land_reinforce_rate = 0.001 # Instant reinforcements
+				weekly_manpower = 50000
+				ai_focus_aggressive_factor = 2
+				ai_focus_peaceful_factor = 0
+				ai_get_ally_desire_factor = 0
 				army_org = 100
 				army_morale_factor = 100
 				offence = 100
@@ -2953,8 +3136,6 @@ ideas = {
 				attrition = -100
 				justify_war_goal_time = -1
 				trade_opinion_factor = -1
-				ai_get_ally_desire_factor = -1
-				ai_badass_factor = -1
 			}
 		}
 		culture_unyamwezi = {
@@ -3009,6 +3190,12 @@ ideas = {
 			removal_cost = -1
 			allowed = { always = no } allowed_civil_war = { always = yes }
 			picture = culture_venetic
+			modifier = { }
+		}
+		culture_vespuccian = {
+			removal_cost = -1
+			allowed = { always = no } allowed_civil_war = { always = yes }
+			picture = culture_vespuccian
 			modifier = { }
 		}
 		culture_vietnamese = {

@@ -281,6 +281,14 @@ german = {
 		_IN = "in der $1-Küste"
 		_NACH = "in die $1-Küste"
 	}
+	"^Die (.+)e Inseln$" = { # The ... Islands
+		_GEN = "der $1en Inseln"
+		_DAT = "der $1en Inseln"
+		_AKK = "die $1en Inseln"
+		_VON = "der $1en Inseln"
+		_IN = "auf den $1en Inseln"
+		_NACH = "zu den $1en Inseln"
+	}
 	"^(.+)e Inseln$" = { # The ... Islands
 		_GEN = "der $1en Inseln"
 		_DAT = "der $1en Inseln"
@@ -2637,6 +2645,13 @@ polish = {
 		_INS = "Krzyżakami"
 		_LOC = "Krzyżakach"
 	}
+	"Zachodnie Indie" = {
+		_GEN = "Zachodnich Indii"
+		_DAT = "Zachodnim Indiom"
+		_AKK = "Zachodnie Indie"
+		_INS = "Zachodnimi Indiami"
+		_LOC = "Zachodnich Indach"
+	}
 	"(.+)u$" = { # Indeclinable
 		_GEN = "$1u"
 		_DAT = "$1u"
@@ -2659,6 +2674,13 @@ polish = {
 		_AKK = "$1kę"
 		_INS = "$1ką"
 		_LOC = "$1ce"
+	}
+	"Floryda$" = {
+		_GEN = "Florydy"
+		_DAT = "Florydzie"
+		_AKK = "Florydę"
+		_INS = "Florydą"
+		_LOC = "Florydze"
 	}
 	"(.+)da$" = {
 		_GEN = "$1dy"
@@ -4191,6 +4213,13 @@ russian = {
 		_AKK = "$1юю $2тю"
 		_INS = "$1ей $2тей"
 		_PRE = "$1ей $2те"
+	}
+	"^(.+)ые (.+)ии$" = {
+		_GEN = "$1ых $2ий"
+		_DAT = "$1ым $2иям"
+		_AKK = "$1ых $2ии"
+		_INS = "$1ыми $2иями"
+		_PRE = "$1ых $2иях"
 	}
 
 	# First declension
