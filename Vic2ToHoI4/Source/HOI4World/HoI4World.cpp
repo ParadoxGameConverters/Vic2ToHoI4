@@ -973,64 +973,77 @@ std::set<HoI4::Advisor> HoI4::World::getActiveIdeologicalAdvisors() const
 }
 
 
-std::vector<std::string> HoI4::World::getStrongestNavyGps()
+struct gpStrengthStruct
 {
-	struct gpStrengthStruct
-	{
-		std::string tag;
-		float strength;
-		int meansIndex;
-	};
-	std::vector<gpStrengthStruct> gpStrengths;
+	std::string tag;
+	float strength;
+	int meansIndex;
+};
 
-	float strongestNavy = 0.0;
+struct meansStruct
+{
+	float value;
+	std::vector<float> strengthAssignments;
+	std::vector<std::string> tags;
+	bool operator<(const meansStruct& rhs) const { return value < rhs.value; }
+};
+
+struct modelStruct
+{
+	std::vector<gpStrengthStruct> gpStrengths;
+	std::vector<meansStruct> means;
+	float score;
+};
+
+
+modelStruct initializeModel(int numMeans, float strongestNavy, const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers)
+{
+	modelStruct model;
+
 	for (const auto& greatPower: greatPowers)
 	{
-		auto strength = greatPower->getNavalStrength();
-		if (strength > strongestNavy)
-		{
-			strongestNavy = strength;
-		}
-		gpStrengths.push_back({.tag = greatPower->getTag(), .strength = strength, .meansIndex = 0});
+		model.gpStrengths.push_back(
+			 {.tag = greatPower->getTag(), .strength = greatPower->getNavalStrength(), .meansIndex = 0});
+	}
+	for (int i = 0; i < numMeans; i++)
+	{
+		model.means.push_back({.value = i * strongestNavy / (numMeans - 1)});
 	}
 
-	struct meansStruct
-	{
-		float value;
-		std::vector<float> strengthAssignments;
-		std::vector<std::string> tags;
-		bool operator<(const meansStruct& rhs) const {return value < rhs.value; }
-	};
-	std::vector<meansStruct> means = {{.value = 0.0F}, {.value = strongestNavy / 2.0F}, {.value = strongestNavy}};
+	return model;
+}
 
+
+void runKMeans(modelStruct& model)
+{
 	bool assignmentsChanged;
 	do
 	{
 		assignmentsChanged = false;
-		for (auto& mean: means)
+		for (auto& mean: model.means)
 		{
 			mean.tags.clear();
 		}
 
 		// assignment
-		for (auto& gpStrength: gpStrengths)
+		for (auto& gpStrength: model.gpStrengths)
 		{
-			auto leastDistance = std::abs(means[gpStrength.meansIndex].value - gpStrength.strength);
-			for (auto i = 0; i < means.size(); i++)
+			auto leastDistance = std::abs(model.means[gpStrength.meansIndex].value - gpStrength.strength);
+			for (auto i = 0; i < model.means.size(); i++)
 			{
-				if (std::abs(means[i].value - gpStrength.strength) < leastDistance)
+				if (std::abs(model.means[i].value - gpStrength.strength) < leastDistance)
 				{
-					leastDistance = std::abs(means[i].value - gpStrength.strength);
+					leastDistance = std::abs(model.means[i].value - gpStrength.strength);
 					gpStrength.meansIndex = i;
 					assignmentsChanged = true;
 				}
 			}
-			means[gpStrength.meansIndex].strengthAssignments.push_back(gpStrength.strength);
-			means[gpStrength.meansIndex].tags.push_back(gpStrength.tag);
+			model.means[gpStrength.meansIndex].strengthAssignments.push_back(gpStrength.strength);
+			model.means[gpStrength.meansIndex].tags.push_back(gpStrength.tag);
 		}
 
 		// adjustment
-		for (auto& mean: means)
+		for (auto& mean: model.means)
 		{
 			if (!mean.strengthAssignments.empty())
 			{
@@ -1040,8 +1053,50 @@ std::vector<std::string> HoI4::World::getStrongestNavyGps()
 			}
 		}
 	} while (assignmentsChanged);
+}
 
-	return std::max_element(means.begin(), means.end())->tags;
+
+float rateModel(const modelStruct& model)
+{
+	float score = 0.0F;
+	for (const auto& gpStrength: model.gpStrengths)
+	{
+		const auto difference = gpStrength.strength - model.means[gpStrength.meansIndex].value;
+		score += difference * difference;
+	}
+
+	return score;
+}
+
+
+std::vector<std::string> HoI4::World::getStrongestNavyGps()
+{
+	float strongestNavy = 0.0;
+	for (const auto& greatPower: greatPowers)
+	{
+		const auto strength = greatPower->getNavalStrength();
+		if (strength > strongestNavy)
+		{
+			strongestNavy = strength;
+		}
+	}
+
+	modelStruct model = initializeModel(1, strongestNavy, greatPowers);
+	runKMeans(model);
+	model.score = rateModel(model);
+	for (int i = 2; i <= 8; i++)
+	{
+		modelStruct newModel = initializeModel(i, strongestNavy, greatPowers);
+		runKMeans(newModel);
+		newModel.score = rateModel(newModel);
+		if (newModel.score >= model.score)
+		{
+			break;
+		}
+		model = newModel;
+	}
+
+	return std::max_element(model.means.begin(), model.means.end())->tags;
 }
 
 
