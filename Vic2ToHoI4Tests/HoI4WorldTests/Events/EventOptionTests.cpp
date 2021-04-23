@@ -4,7 +4,7 @@
 
 
 
-TEST(HoI4World_Events_EventOptionTests, NameDefaultsToBlank)
+TEST(HoI4World_Events_EventOptionTests, NameDefaultsToAbsent)
 {
 	const HoI4::EventOption theOption;
 
@@ -13,7 +13,6 @@ TEST(HoI4World_Events_EventOptionTests, NameDefaultsToBlank)
 
 	std::string expectedOutput;
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t}";
 
 	ASSERT_EQ(actualOutput.str(), expectedOutput);
@@ -66,7 +65,6 @@ TEST(HoI4World_Events_EventOptionTests, TriggerDefaultsToBlank)
 
 	std::string expectedOutput;
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t}";
 
 	ASSERT_EQ(actualOutput.str(), expectedOutput);
@@ -83,7 +81,6 @@ TEST(HoI4World_Events_EventOptionTests, TriggerCanBeGiven)
 
 	std::string expectedOutput;
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t\ttrigger = {\n";
 	expectedOutput += "\t\t\ttriggerText\n";
 	expectedOutput += "\t\t}\n";
@@ -108,7 +105,6 @@ TEST(HoI4World_Events_EventOptionTests, TriggerCanBeInput)
 
 	std::string expectedOutput;
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t\ttrigger = {\n";
 	expectedOutput += "\t\t\ttriggerText\n";
 	expectedOutput += "\t\t}\n";
@@ -128,7 +124,6 @@ TEST(HoI4World_Events_EventOptionTests, AiChanceDefaultsToBlank)
 
 	std::string expectedOutput;
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t}";
 
 	ASSERT_EQ(actualOutput.str(), expectedOutput);
@@ -145,7 +140,6 @@ TEST(HoI4World_Events_EventOptionTests, AiChanceCanBeGiven)
 
 	std::string expectedOutput;
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t\tai_chance = { factor = 0 }\n";
 	expectedOutput += "\t}";
 
@@ -166,7 +160,6 @@ TEST(HoI4World_Events_EventOptionTests, AiChanceCanBeInput)
 
 	std::string expectedOutput;
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t\tai_chance = { factor = 0 }\n";
 	expectedOutput += "\t}";
 
@@ -183,7 +176,6 @@ TEST(HoI4World_Events_EventOptionTests, ScriptBlocksDefaultToEmpty)
 
 	std::string expectedOutput;
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t}";
 
 	ASSERT_EQ(actualOutput.str(), expectedOutput);
@@ -203,7 +195,6 @@ TEST(HoI4World_Events_EventOptionTests, ScriptBlocksCanBeGiven)
 
 	std::string expectedOutput;
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t\tTAG = {\n";
 	expectedOutput += "\t\t\tadd_to_faction = NEW\n";
 	expectedOutput += "\t\t}\n";
@@ -230,7 +221,6 @@ TEST(HoI4World_Events_EventOptionTests, ScriptBlocksCanBeGivenRepeatedly)
 
 	std::string expectedOutput;
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t\tTAG = {\n";
 	expectedOutput += "\t\t\tadd_to_faction = ONE\n";
 	expectedOutput += "\t\t}\n";
@@ -258,7 +248,6 @@ TEST(HoI4World_Events_EventOptionTests, ScriptBlocksCanBeInput)
 
 	std::string expectedOutput;
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t\tTAG = {\n";
 	expectedOutput += "\t\t\tadd_to_faction = NEW\n";
 	expectedOutput += "\t\t}\n";
@@ -278,7 +267,6 @@ TEST(HoI4World_Events_EventOptionTests, HiddenEffectDefaultsToEmpty)
 
 	std::string expectedOutput;
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t}";
 
 	ASSERT_EQ(actualOutput.str(), expectedOutput);
@@ -298,7 +286,6 @@ TEST(HoI4World_Events_EventOptionTests, HiddenEffectCanBeGiven)
 
 	std::string expectedOutput;
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t\thidden_effect = {\n";
 	expectedOutput += "\t\t\tnews_event = { id = news.42 }\n";
 	expectedOutput += "\t\t}\n";
@@ -323,7 +310,6 @@ TEST(HoI4World_Events_EventOptionTests, HiddenEffectCanBeInput)
 
 	std::string expectedOutput;
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t\thidden_effect = {\n";
 	expectedOutput += "\t\t\tnews_event = { id = news.42 }\n";
 	expectedOutput += "\t\t}\n";
