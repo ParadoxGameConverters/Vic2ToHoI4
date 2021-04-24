@@ -996,7 +996,12 @@ struct modelStruct
 };
 
 
-modelStruct initializeModel(int numMeans, float strongestNavy, const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers)
+// Initialize a k-means model.
+// The great powers hold their tag and naval strength and are assigned the the first means
+// The means are distributed evenly across the range of naval strengths
+modelStruct initializeModel(int numMeans,
+	 float strongestNavy,
+	 const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers)
 {
 	modelStruct model;
 
@@ -1005,7 +1010,7 @@ modelStruct initializeModel(int numMeans, float strongestNavy, const std::vector
 		model.gpStrengths.push_back(
 			 {.tag = greatPower->getTag(), .strength = greatPower->getNavalStrength(), .meansIndex = 0});
 	}
-	for (int i = 0; i < numMeans; i++)
+	for (auto i = 0; i < numMeans; i++)
 	{
 		model.means.push_back({.value = i * strongestNavy / (numMeans - 1)});
 	}
@@ -1014,7 +1019,8 @@ modelStruct initializeModel(int numMeans, float strongestNavy, const std::vector
 }
 
 
-// run the naive k-means algorithm as described here: https://en.wikipedia.org/wiki/K-means_clustering#Standard_algorithm_(naive_k-means)
+// run the naive k-means algorithm as described here:
+// https://en.wikipedia.org/wiki/K-means_clustering#Standard_algorithm_(naive_k-means)
 void runKMeans(modelStruct& model)
 {
 	bool assignmentsChanged;
@@ -1057,7 +1063,7 @@ void runKMeans(modelStruct& model)
 }
 
 
-// find sum of the deviations between each strength and the mean it's associated with
+// find sum of the deviations between each strength and the mean it's associated with. Lower is better.
 float rateModel(const modelStruct& model)
 {
 	float score = 0.0F;
@@ -1071,8 +1077,11 @@ float rateModel(const modelStruct& model)
 }
 
 
-// run repeated k-means clustering with increasing numbers of clusters until this gives no improvement
-// the highest-value cluster is the set of strongest navies
+// Identify the countries with the strongest navies by examining Great Power naval strengths, finding the clusters of
+// similar strength, and returning the strongest cluster Clusters are found using the naive k-means clustering algorithm
+// To identify the number of clusters, run k-means assuming two clusters, then run repeated k-means clustering with
+// increasing numbers of clusters until this gives no improvement When there is no improvement, use the previous run for
+// analysis
 std::vector<std::string> HoI4::World::getStrongestNavyGps()
 {
 	float strongestNavy = 0.0;
@@ -1088,7 +1097,7 @@ std::vector<std::string> HoI4::World::getStrongestNavyGps()
 	modelStruct model = initializeModel(1, strongestNavy, greatPowers);
 	runKMeans(model);
 	model.score = rateModel(model);
-	for (int i = 2; i <= 8; i++)
+	for (int i = 2; i <= greatPowers.size(); i++)
 	{
 		modelStruct newModel = initializeModel(i, strongestNavy, greatPowers);
 		runKMeans(newModel);
@@ -1103,33 +1112,6 @@ std::vector<std::string> HoI4::World::getStrongestNavyGps()
 	return std::max_element(model.means.begin(), model.means.end())->tags;
 }
 
-
-/*vector<int> HoI4::World::getPortLocationCandidates(const vector<int>& locationCandidates, const HoI4AdjacencyMapping&
-HoI4AdjacencyMap)
-{
-vector<int> portLocationCandidates = getPortProvinces(locationCandidates);
-if (portLocationCandidates.size() == 0)
-{
-// if none of the mapped provinces are ports, try to push the navy out to sea
-for (auto candidate : locationCandidates)
-{
-if (HoI4AdjacencyMap.size() > static_cast<unsigned int>(candidate))
-{
-auto newCandidates = HoI4AdjacencyMap[candidate];
-for (auto newCandidate : newCandidates)
-{
-auto candidateProvince = provinces.find(newCandidate.to);
-if (candidateProvince == provinces.end())	// if this was not an imported province but has an adjacency, we can assume
-it's a sea province
-{
-portLocationCandidates.push_back(newCandidate.to);
-}
-}
-}
-}
-}
-return portLocationCandidates;
-}*/
 
 void HoI4::World::setSphereLeaders()
 {
