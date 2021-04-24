@@ -152,6 +152,7 @@
     <ClCompile Include="Source\HOI4World\Diplomacy\HoI4AIStrategy.cpp" />
     <ClCompile Include="Source\HOI4World\Events\CapitulationEvents.cpp" />
     <ClCompile Include="Source\HOI4World\Events\LarOccupationEvents.cpp" />
+    <ClCompile Include="Source\HOI4World\Events\NavalTreatyEventsUpdaters.cpp" />
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.cpp" />
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgency.cpp" />
     <ClCompile Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencyLogoMapping.cpp" />
@@ -491,6 +492,7 @@
     <ClInclude Include="Source\HOI4World\Events\CapitulationEvents.h" />
     <ClInclude Include="Source\HOI4World\Events\EventsBuilder.h" />
     <ClInclude Include="Source\HOI4World\Events\LarOccupationEvents.h" />
+    <ClInclude Include="Source\HOI4World\Events\NavalTreatyEventsUpdaters.h" />
     <ClInclude Include="Source\HOI4World\Ideologies\IdeologiesBuilder.h" />
     <ClInclude Include="Source\HOI4World\Ideologies\IdeologyBuilder.h" />
     <ClInclude Include="Source\HOI4World\IntelligenceAgencies\IntelligenceAgencies.h" />

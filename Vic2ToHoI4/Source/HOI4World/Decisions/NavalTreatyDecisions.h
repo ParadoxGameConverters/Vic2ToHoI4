@@ -12,11 +12,12 @@ namespace HoI4
 
 class NavalTreatyDecisions: public DecisionsFile
 {
-	public:
-		void updateDecisions(const std::set<std::string>& majorIdeologies);
+  public:
+	void updateDecisions(const std::set<std::string>& majorIdeologies,
+		 const std::vector<std::string>& strongestGpNavies);
 };
 
-}
+} // namespace HoI4
 
 
 

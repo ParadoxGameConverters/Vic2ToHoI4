@@ -116,6 +116,10 @@ class Country
 	void setPuppetMaster(const std::string& _master) { puppetMaster = _master; }
 	void addPuppet(const std::string& countryTag) { puppets.insert(countryTag); }
 
+	void makeNavalTreatyAdherent() { navalTreatyAdherent = true; }
+	void makeGreatestNavalPower() { greatestNavalPower = true; }
+	void setNumberOfAdherents(int num) { numAdherents = num; }
+
 	[[nodiscard]] std::optional<HoI4::Relations> getRelations(const std::string& withWhom) const;
 	[[nodiscard]] double getStrengthOverTime(const double& years) const;
 	static double getMilitaryStrength();
@@ -215,6 +219,10 @@ class Country
 	[[nodiscard]] const std::string& getPuppetMaster() const { return puppetMaster; }
 	[[nodiscard]] bool isGreatPower() const { return greatPower; }
 	[[nodiscard]] bool isCivilized() const { return civilized; }
+
+	[[nodiscard]] bool isNavalTreatyAdherent() const { return navalTreatyAdherent; }
+	[[nodiscard]] bool isGreatestNavalPower() const { return greatestNavalPower; }
+	[[nodiscard]] const auto& getNumAdherents() const { return numAdherents; }
 
 	std::set<std::string>& editAllies() { return allies; }
 
@@ -354,6 +362,10 @@ class Country
 	std::map<std::string, int> GPInfluences;
 	std::map<std::string, double> spherelings;
 	std::vector<std::string> guaranteed;
+
+	bool navalTreatyAdherent = false;
+	bool greatestNavalPower = false;
+	std::optional<int> numAdherents;
 
 	std::mt19937 generator;
 

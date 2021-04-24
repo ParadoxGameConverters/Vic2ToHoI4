@@ -50,6 +50,7 @@
 #include "V2World/Localisations/Vic2Localisations.h"
 #include "V2World/World/World.h"
 #include "WarCreator/HoI4WarCreator.h"
+#include <numeric>
 using namespace std;
 
 
@@ -134,6 +135,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	events->createWarJustificationEvents(ideologies->getMajorIdeologies(), *hoi4Localisations);
 	events->importElectionEvents(ideologies->getMajorIdeologies(), *onActions);
 	events->importCapitulationEvents(theConfiguration, ideologies->getMajorIdeologies());
+	events->importMtgNavalTreatyEvents(theConfiguration, ideologies->getMajorIdeologies());
 	events->importLarOccupationEvents(theConfiguration, ideologies->getMajorIdeologies());
 	addCountryElectionEvents(ideologies->getMajorIdeologies(), vic2Localisations);
 	events->createStabilityEvents(ideologies->getMajorIdeologies(), theConfiguration);
@@ -144,7 +146,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 states->getProvinceToStateIDMap(),
 		 states->getDefaultStates(),
 		 *events,
-		 getSouthAsianCountries());
+		 getSouthAsianCountries(),
+		 strongestGpNavies);
 	updateAiPeaces(*peaces, ideologies->getMajorIdeologies());
 	addNeutrality(theConfiguration.getDebug());
 	addLeaders();
@@ -725,14 +728,28 @@ void HoI4::World::determineGreatPowers(const Vic2::World& sourceWorld)
 void HoI4::World::setupNavalTreaty()
 {
 	Log(LogLevel::Info) << "\tCreating naval treaty";
-	std::optional<std::pair<std::string, std::string>> strongestGpNavies = getStrongestNavyGps();
-	if (strongestGpNavies)
+	strongestGpNavies = getStrongestNavyGps();
+	if (!strongestGpNavies.empty())
 	{
-		scriptedLocalisations->addNavyScriptedLocalisations(strongestGpNavies->first, strongestGpNavies->second);
-		hoi4Localisations->addDecisionLocalisation(strongestGpNavies->first + "_Naval_treaty_nation",
-			 "@" + strongestGpNavies->first + " [" + strongestGpNavies->first + ".GetName]");
-		hoi4Localisations->addDecisionLocalisation(strongestGpNavies->second + "_Naval_treaty_nation",
-			 "@" + strongestGpNavies->second + " [" + strongestGpNavies->second + ".GetName]");
+		scriptedLocalisations->addNavyScriptedLocalisations(strongestGpNavies);
+		for (const auto& strongestGpNavy: strongestGpNavies)
+		{
+			hoi4Localisations->addDecisionLocalisation(strongestGpNavy + "_Naval_treaty_nation",
+				 "@" + strongestGpNavy + " [" + strongestGpNavy + ".GetName]");
+		}
+
+		auto numAdherents = 0;
+		for (const auto& greatPower: greatPowers)
+		{
+			if (greatPower->getNavalStrength() > 0)
+			{
+				greatPower->makeNavalTreatyAdherent();
+				numAdherents++;
+			}
+		}
+
+		(*greatPowers.begin())->makeGreatestNavalPower();
+		(*greatPowers.begin())->setNumberOfAdherents(numAdherents);
 	}
 }
 
@@ -956,66 +973,145 @@ std::set<HoI4::Advisor> HoI4::World::getActiveIdeologicalAdvisors() const
 }
 
 
-std::optional<std::pair<std::string, std::string>> HoI4::World::getStrongestNavyGps()
+struct gpStrengthStruct
 {
-	std::pair<std::string, std::string> strongestNavies;
-	float strongestNavy = 0;
-	float secondStrongestNavy = 0;
+	std::string tag;
+	float strength;
+	int meansIndex;
+};
 
-	for (auto greatPower: greatPowers)
+struct meansStruct
+{
+	float value;
+	std::vector<float> strengthAssignments;
+	std::vector<std::string> tags;
+	bool operator<(const meansStruct& rhs) const { return value < rhs.value; }
+};
+
+struct modelStruct
+{
+	std::vector<gpStrengthStruct> gpStrengths;
+	std::vector<meansStruct> means;
+	float score;
+};
+
+
+// Initialize a k-means model.
+// The great powers hold their tag and naval strength and are assigned the the first means
+// The means are distributed evenly across the range of naval strengths
+modelStruct initializeModel(int numMeans,
+	 float strongestNavy,
+	 const std::vector<std::shared_ptr<HoI4::Country>>& greatPowers)
+{
+	modelStruct model;
+
+	for (const auto& greatPower: greatPowers)
 	{
-		float navyStrength = greatPower->getNavalStrength();
-		if (navyStrength > strongestNavy)
+		model.gpStrengths.push_back(
+			 {.tag = greatPower->getTag(), .strength = greatPower->getNavalStrength(), .meansIndex = 0});
+	}
+	for (auto i = 0; i < numMeans; i++)
+	{
+		model.means.push_back({.value = i * strongestNavy / (numMeans - 1)});
+	}
+
+	return model;
+}
+
+
+// run the naive k-means algorithm as described here:
+// https://en.wikipedia.org/wiki/K-means_clustering#Standard_algorithm_(naive_k-means)
+void runKMeans(modelStruct& model)
+{
+	bool assignmentsChanged;
+	do
+	{
+		assignmentsChanged = false;
+		for (auto& mean: model.means)
 		{
-			strongestNavies.second = strongestNavies.first;
-			secondStrongestNavy = strongestNavy;
-			strongestNavies.first = greatPower->getTag();
-			strongestNavy = navyStrength;
+			mean.tags.clear();
 		}
-		else if (navyStrength > secondStrongestNavy)
+
+		// assignment
+		for (auto& gpStrength: model.gpStrengths)
 		{
-			strongestNavies.second = greatPower->getTag();
-			secondStrongestNavy = navyStrength;
+			auto leastDistance = std::abs(model.means[gpStrength.meansIndex].value - gpStrength.strength);
+			for (auto i = 0; i < model.means.size(); i++)
+			{
+				if (std::abs(model.means[i].value - gpStrength.strength) < leastDistance)
+				{
+					leastDistance = std::abs(model.means[i].value - gpStrength.strength);
+					gpStrength.meansIndex = i;
+					assignmentsChanged = true;
+				}
+			}
+			model.means[gpStrength.meansIndex].strengthAssignments.push_back(gpStrength.strength);
+			model.means[gpStrength.meansIndex].tags.push_back(gpStrength.tag);
+		}
+
+		// adjustment
+		for (auto& mean: model.means)
+		{
+			if (!mean.strengthAssignments.empty())
+			{
+				mean.value = std::accumulate(mean.strengthAssignments.begin(), mean.strengthAssignments.end(), 0.0F) /
+								 mean.strengthAssignments.size();
+				mean.strengthAssignments.clear();
+			}
+		}
+	} while (assignmentsChanged);
+}
+
+
+// find sum of the deviations between each strength and the mean it's associated with. Lower is better.
+float rateModel(const modelStruct& model)
+{
+	float score = 0.0F;
+	for (const auto& gpStrength: model.gpStrengths)
+	{
+		const auto difference = gpStrength.strength - model.means[gpStrength.meansIndex].value;
+		score += difference * difference;
+	}
+
+	return score;
+}
+
+
+// Identify the countries with the strongest navies by examining Great Power naval strengths, finding the clusters of
+// similar strength, and returning the strongest cluster Clusters are found using the naive k-means clustering algorithm
+// To identify the number of clusters, run k-means assuming two clusters, then run repeated k-means clustering with
+// increasing numbers of clusters until this gives no improvement When there is no improvement, use the previous run for
+// analysis
+std::vector<std::string> HoI4::World::getStrongestNavyGps()
+{
+	float strongestNavy = 0.0;
+	for (const auto& greatPower: greatPowers)
+	{
+		const auto strength = greatPower->getNavalStrength();
+		if (strength > strongestNavy)
+		{
+			strongestNavy = strength;
 		}
 	}
 
-	if ((strongestNavy > 0) && (secondStrongestNavy > 0))
+	modelStruct model = initializeModel(1, strongestNavy, greatPowers);
+	runKMeans(model);
+	model.score = rateModel(model);
+	for (int i = 2; i <= greatPowers.size(); i++)
 	{
-		return strongestNavies;
+		modelStruct newModel = initializeModel(i, strongestNavy, greatPowers);
+		runKMeans(newModel);
+		newModel.score = rateModel(newModel);
+		if (newModel.score >= model.score)
+		{
+			break;
+		}
+		model = newModel;
 	}
-	else
-	{
-		return std::nullopt;
-	}
+
+	return std::max_element(model.means.begin(), model.means.end())->tags;
 }
 
-
-/*vector<int> HoI4::World::getPortLocationCandidates(const vector<int>& locationCandidates, const HoI4AdjacencyMapping&
-HoI4AdjacencyMap)
-{
-vector<int> portLocationCandidates = getPortProvinces(locationCandidates);
-if (portLocationCandidates.size() == 0)
-{
-// if none of the mapped provinces are ports, try to push the navy out to sea
-for (auto candidate : locationCandidates)
-{
-if (HoI4AdjacencyMap.size() > static_cast<unsigned int>(candidate))
-{
-auto newCandidates = HoI4AdjacencyMap[candidate];
-for (auto newCandidate : newCandidates)
-{
-auto candidateProvince = provinces.find(newCandidate.to);
-if (candidateProvince == provinces.end())	// if this was not an imported province but has an adjacency, we can assume
-it's a sea province
-{
-portLocationCandidates.push_back(newCandidate.to);
-}
-}
-}
-}
-}
-return portLocationCandidates;
-}*/
 
 void HoI4::World::setSphereLeaders()
 {

@@ -297,7 +297,10 @@ void outputIdeas(std::ostream& output,
 	 const std::string& mobilizationLaw,
 	 const std::string& economicLaw,
 	 const std::string& tradeLaw,
-	 const std::string& primaryCulture);
+	 const std::string& primaryCulture,
+	 const bool navalTreatyAdherent,
+	 const bool greatestNavalPower,
+	 std::optional<int> numAdherents);
 void outputStability(std::ostream& output, const int& stability);
 void outputWarSupport(std::ostream& output, const int& warSupport);
 void outputCommanders(std::ostream& output,
@@ -354,7 +357,10 @@ void outputHistory(const HoI4::Country& theCountry, const Configuration& theConf
 		 theCountry.getMobilizationLaw(),
 		 theCountry.getEconomicLaw(),
 		 theCountry.getTradeLaw(),
-		 primaryCulture);
+		 primaryCulture,
+		 theCountry.isNavalTreatyAdherent(),
+		 theCountry.isGreatestNavalPower(),
+		 theCountry.getNumAdherents());
 	if (theCountry.hasProvinces())
 	{
 		outputStability(output, theCountry.getStability());
@@ -670,13 +676,24 @@ void outputIdeas(std::ostream& output,
 	 const std::string& mobilizationLaw,
 	 const std::string& economicLaw,
 	 const std::string& tradeLaw,
-	 const std::string& primaryCulture)
+	 const std::string& primaryCulture,
+	 const bool navalTreatyAdherent,
+	 const bool greatestNavalPower,
+	 std::optional<int> numAdherents)
 {
-	if (greatPower)
+	if (navalTreatyAdherent)
 	{
 		output << "if = {\n";
 		output << "\tlimit = { has_dlc = \"Man the Guns\" }\n";
 		output << "\tadd_ideas = MTG_naval_treaty_adherent\n";
+		if (greatestNavalPower)
+		{
+			output << "\tset_global_flag = MTG_second_london_conference\n";
+		}
+		if (numAdherents)
+		{
+			output << "\tset_global_flag = { flag = MTG_naval_treaty_signatories value = " << *numAdherents << " }\n";
+		}
 		output << "}\n";
 	}
 	output << "add_ideas = {\n";

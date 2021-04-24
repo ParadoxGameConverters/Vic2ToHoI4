@@ -726,7 +726,6 @@ TEST(HoI4World_Events_EventTests, OptionsCanBeGiven)
 	expectedOutput += "\n";
 	expectedOutput += "\n";
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t}\n";
 	expectedOutput += "}\n";
 
@@ -751,11 +750,9 @@ TEST(HoI4World_Events_EventTests, OptionsCanBeGivenMultipleTimes)
 	expectedOutput += "\n";
 	expectedOutput += "\n";
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t}\n";
 	expectedOutput += "\n";
 	expectedOutput += "\toption = {\n";
-	expectedOutput += "\t\tname = \n";
 	expectedOutput += "\t}\n";
 	expectedOutput += "}\n";
 

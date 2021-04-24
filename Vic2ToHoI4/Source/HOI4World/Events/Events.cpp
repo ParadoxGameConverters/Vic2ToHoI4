@@ -14,6 +14,7 @@
 #include "V2World/Countries/Country.h"
 #include "V2World/Politics/Party.h"
 #include <fstream>
+#include "NavalTreatyEventsUpdaters.h"
 
 
 
@@ -1537,6 +1538,38 @@ void HoI4::Events::importCapitulationEvents(const Configuration& theConfiguratio
 	clearRegisteredKeywords();
 
 	updateCapitulationEvent(capitulationEvents[0], majorIdeologies);
+}
+
+
+void HoI4::Events::importMtgNavalTreatyEvents(const Configuration& theConfiguration,
+	 const std::set<std::string>& majorIdeologies)
+{
+	Log(LogLevel::Info) << "\tImporting naval treaty events";
+
+	registerKeyword("country_event", [this](const std::string& type, std::istream& theStream) {
+		const Event navalTreatyEvent(type, theStream);
+		mtgNavalTreatyEvents.push_back(navalTreatyEvent);
+	});
+	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);
+
+	parseFile(theConfiguration.getHoI4Path() + "/events/MTG_naval_treaty_events.txt");
+	clearRegisteredKeywords();
+
+	for (auto& event: mtgNavalTreatyEvents)
+	{
+		if (event.getId() == "MTG_naval_treaty.1")
+		{
+			updateNavalTreatyEventOne(event, majorIdeologies);
+		}
+		else if (event.getId() == "MTG_naval_treaty.4")
+		{
+			updateNavalTreatyEventFour(event, majorIdeologies);
+		}
+		else if (event.getId() == "MTG_naval_treaty.10")
+		{
+			updateNavalTreatyEventTen(event, majorIdeologies);
+		}
+	}
 }
 
 

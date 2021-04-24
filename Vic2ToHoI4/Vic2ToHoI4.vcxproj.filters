@@ -1264,6 +1264,9 @@
     <ClCompile Include="Source\HOI4World\WarCreator\MapUtils.cpp">
       <Filter>HoI4World\WarCreator</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Events\NavalTreatyEventsUpdaters.cpp">
+      <Filter>HoI4World\Events</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -2498,6 +2501,9 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\WarCreator\MapUtils.h">
       <Filter>HoI4World\WarCreator</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Events\NavalTreatyEventsUpdaters.h">
+      <Filter>HoI4World\Events</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
