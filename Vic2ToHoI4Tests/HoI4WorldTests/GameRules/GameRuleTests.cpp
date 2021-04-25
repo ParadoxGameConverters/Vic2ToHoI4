@@ -7,7 +7,7 @@
 
 TEST(HoI4World_GameRules_GameRuleTests, DefaultsAreEmpty)
 {
-	HoI4::GameRule rule("", "", std::nullopt, "", std::nullopt, std::vector<HoI4::GameRuleOption>{});
+	HoI4::GameRule rule("", "", std::nullopt, "", std::nullopt, {});
 
 	std::stringstream output;
 	output << rule;
@@ -23,7 +23,7 @@ TEST(HoI4World_GameRules_GameRuleTests, DefaultsAreEmpty)
 
 TEST(HoI4World_GameRules_GameRuleTests, KeyCanBeSet)
 {
-	HoI4::GameRule rule("test_rule", "", std::nullopt, "", std::nullopt, std::vector<HoI4::GameRuleOption>{});
+	HoI4::GameRule rule("test_rule", "", std::nullopt, "", std::nullopt, {});
 
 	std::stringstream output;
 	output << rule;
@@ -58,7 +58,7 @@ TEST(HoI4World_GameRules_GameRuleTests, KeyCanBeParsed)
 
 TEST(HoI4World_GameRules_GameRuleTests, NameCanBeSet)
 {
-	HoI4::GameRule rule("", "RULE_TEST", std::nullopt, "", std::nullopt, std::vector<HoI4::GameRuleOption>{});
+	HoI4::GameRule rule("", "RULE_TEST", std::nullopt, "", std::nullopt, {});
 
 	std::stringstream output;
 	output << rule;
@@ -94,7 +94,7 @@ TEST(HoI4World_GameRules_GameRuleTests, NameCanBeParsed)
 
 TEST(HoI4World_GameRules_GameRuleTests, RequiredDlcCanBeSet)
 {
-	HoI4::GameRule rule("", "", "Test Required DLC", "", std::nullopt, std::vector<HoI4::GameRuleOption>{});
+	HoI4::GameRule rule("", "", "Test Required DLC", "", std::nullopt, {});
 
 	std::stringstream output;
 	output << rule;
@@ -132,7 +132,7 @@ TEST(HoI4World_GameRules_GameRuleTests, RequiredDlcCanBeParsed)
 
 TEST(HoI4World_GameRules_GameRuleTests, GroupCanBeSet)
 {
-	HoI4::GameRule rule("", "", std::nullopt, "RULE_GROUP_TEST", std::nullopt, std::vector<HoI4::GameRuleOption>{});
+	HoI4::GameRule rule("", "", std::nullopt, "RULE_GROUP_TEST", std::nullopt, {});
 
 	std::stringstream output;
 	output << rule;
@@ -168,7 +168,7 @@ TEST(HoI4World_GameRules_GameRuleTests, GroupCanBeParsed)
 
 TEST(HoI4World_GameRules_GameRuleTests, IconCanBeSet)
 {
-	HoI4::GameRule rule("", "", std::nullopt, "", "GFX_test", std::vector<HoI4::GameRuleOption>{});
+	HoI4::GameRule rule("", "", std::nullopt, "", "GFX_test", {});
 
 	std::stringstream output;
 	output << rule;

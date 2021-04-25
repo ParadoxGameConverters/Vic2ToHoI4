@@ -506,7 +506,7 @@ TEST(HoI4World_States_StateTests, ManpowerCanBeSet)
 			  .setNumber(12)
 			  .setOwner("TAG")
 			  .setController("REB")
-			  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("farmers").setSize(12345).build()})
+			  .setPops(std::vector{*Vic2::Pop::Builder{}.setType("farmers").setSize(12345).build()})
 			  .build();
 	std::set<std::shared_ptr<Vic2::Province>> provinces;
 	provinces.insert(theProvince);
@@ -624,16 +624,14 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 										 .setNumber(12)
 										 .setOwner("TAG")
 										 .setController("REB")
-										 .setPops(std::vector<Vic2::Pop>{
-											  *Vic2::Pop::Builder{}.setType("farmers").setSize(123456).build()})
+										 .setPops(std::vector{*Vic2::Pop::Builder{}.setType("farmers").setSize(123456).build()})
 										 .build(),
 					 Vic2::Province::Builder{}
 						  .setNumber(0)
 						  .setNumber(24)
 						  .setOwner("TAG")
 						  .setController("REB")
-						  .setPops(
-								std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("aristocrats").setSize(12345).build()})
+						  .setPops(std::vector{*Vic2::Pop::Builder{}.setType("aristocrats").setSize(12345).build()})
 						  .build()})
 				.build();
 
@@ -660,16 +658,14 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 										 .setNumber(12)
 										 .setOwner("TAG")
 										 .setController("REB")
-										 .setPops(std::vector<Vic2::Pop>{
-											  *Vic2::Pop::Builder{}.setType("farmers").setSize(123456).build()})
+										 .setPops(std::vector{*Vic2::Pop::Builder{}.setType("farmers").setSize(123456).build()})
 										 .build(),
 					 Vic2::Province::Builder{}
 						  .setNumber(0)
 						  .setNumber(24)
 						  .setOwner("TAG")
 						  .setController("REB")
-						  .setPops(
-								std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("bureaucrats").setSize(12345).build()})
+						  .setPops(std::vector{*Vic2::Pop::Builder{}.setType("bureaucrats").setSize(12345).build()})
 						  .build()})
 				.build();
 
@@ -696,16 +692,14 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromStateCapitalDe
 										 .setNumber(12)
 										 .setOwner("TAG")
 										 .setController("REB")
-										 .setPops(std::vector<Vic2::Pop>{
-											  *Vic2::Pop::Builder{}.setType("farmers").setSize(123456).build()})
+										 .setPops(std::vector{*Vic2::Pop::Builder{}.setType("farmers").setSize(123456).build()})
 										 .build(),
 					 Vic2::Province::Builder{}
 						  .setNumber(0)
 						  .setNumber(24)
 						  .setOwner("TAG")
 						  .setController("REB")
-						  .setPops(
-								std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("capitalists").setSize(12345).build()})
+						  .setPops(std::vector{*Vic2::Pop::Builder{}.setType("capitalists").setSize(12345).build()})
 						  .build()})
 				.build();
 
@@ -732,15 +726,14 @@ TEST(HoI4World_States_StateTests, VictoryPointPositionCanBeSetFromMostPopulousPr
 										 .setNumber(12)
 										 .setOwner("TAG")
 										 .setController("REB")
-										 .setPops(std::vector<Vic2::Pop>{
-											  *Vic2::Pop::Builder{}.setType("farmers").setSize(12345).build()})
+										 .setPops(std::vector{*Vic2::Pop::Builder{}.setType("farmers").setSize(12345).build()})
 										 .build(),
 					 Vic2::Province::Builder{}
 						  .setNumber(0)
 						  .setNumber(24)
 						  .setOwner("TAG")
 						  .setController("REB")
-						  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("farmers").setSize(123456).build()})
+						  .setPops(std::vector{*Vic2::Pop::Builder{}.setType("farmers").setSize(123456).build()})
 						  .build()})
 				.build();
 

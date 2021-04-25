@@ -49,13 +49,13 @@ TEST(Mappers_Provinces_VersionedMappingsTests, ProvinceMappingsCanBeAdded)
 	const auto versionedMappings = Mappers::VersionedMappings::Factory().importVersionedMappings(input);
 
 	ASSERT_THAT(versionedMappings->getVic2ToHoI4Mapping(),
-		 testing::UnorderedElementsAre(testing::Pair(1, std::vector<int>{1, 10}),
-			  testing::Pair(2, std::vector<int>{2}),
-			  testing::Pair(20, std::vector<int>{2}),
+		 testing::UnorderedElementsAre(testing::Pair(1, std::vector{1, 10}),
+			  testing::Pair(2, std::vector{2}),
+			  testing::Pair(20, std::vector{2}),
 			  testing::Pair(3, std::vector<int>{})));
 	ASSERT_THAT(versionedMappings->getHoI4ToVic2Mapping(),
-		 testing::UnorderedElementsAre(testing::Pair(1, std::vector<int>{1}),
-			  testing::Pair(10, std::vector<int>{1}),
-			  testing::Pair(2, std::vector<int>{2, 20}),
+		 testing::UnorderedElementsAre(testing::Pair(1, std::vector{1}),
+			  testing::Pair(10, std::vector{1}),
+			  testing::Pair(2, std::vector{2, 20}),
 			  testing::Pair(3, std::vector<int>{})));
 }
