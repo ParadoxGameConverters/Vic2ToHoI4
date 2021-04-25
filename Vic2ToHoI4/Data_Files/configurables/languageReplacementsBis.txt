@@ -281,6 +281,14 @@ german = {
 		_IN = "in der $1-Küste"
 		_NACH = "in die $1-Küste"
 	}
+	"^Die (.+)e Inseln$" = { # The ... Islands
+		_GEN = "der $1en Inseln"
+		_DAT = "der $1en Inseln"
+		_AKK = "die $1en Inseln"
+		_VON = "der $1en Inseln"
+		_IN = "auf den $1en Inseln"
+		_NACH = "zu den $1en Inseln"
+	}
 	"^(.+)e Inseln$" = { # The ... Islands
 		_GEN = "der $1en Inseln"
 		_DAT = "der $1en Inseln"
@@ -1318,6 +1326,13 @@ polish = {
 		_INS = "$1ami"
 		_LOC = "$1ach"
 	}
+	"(.+)ci$" = { # ...ites
+		_GEN = "$1tów"
+		_DAT = "$1tom"
+		_AKK = "$1tów"
+		_INS = "$1tami"
+		_LOC = "$1tach"
+	}
 	"Timurydzi" = { # Timurids
 		_GEN = "Timurydzów"
 		_DAT = "Timurydzom"
@@ -1598,6 +1613,20 @@ polish = {
 		_INS = "Kalifatem Tureckim"
 		_LOC = "Kalifacie Tureckim"
 	}
+	"Pomorze Gdańskie" = { # Pomerelia
+		_GEN = "Pomorza Gdańskiego"
+		_DAT = "Pomorzu Gdańskiemu"
+		_AKK = "Pomorze Gdańskie"
+		_INS = "Pomorzem Gdańskim"
+		_LOC = "Pomorzu Gdańskim"
+	}	
+	"^Sułtanat (.+)$" = { # The ... Sultanate
+		_GEN = "Sułtanatu $1"
+		_DAT = "Sułtanatowi $1"
+		_AKK = "Sułtanat $1"
+		_INS = "Sułtanatem $1"
+		_LOC = "Sułtanacie $1"
+	}
 	
 	# Compound names
 	"Alien Invaders" = { # (sic)
@@ -1606,6 +1635,13 @@ polish = {
 		_AKK = "Kosmitów Najeźdźców"
 		_INS = "Kosmitami Najeźdźcami"
 		_LOC = "Kosmitach Najeźdźcach"
+	}
+	"Pozaziemskie Najeźdźcy" = { # Alien Invaders
+		_GEN = "Pozaziemskich Najeźdźców"
+		_DAT = "Pozaziemskim Najeźdźcom"
+		_AKK = "Pozaziemskie Najeźdźców"
+		_INS = "Pozazienskimi Najeźdźcami"
+		_LOC = "Pozaziemskich Najeźdźcach"
 	}
 	"Państwo Islamskie" = { # Islamic Republic
 		_GEN = "Państwa Islamskich"
@@ -1642,6 +1678,13 @@ polish = {
 		_INS = "Państwem $1"
 		_LOC = "Państwie $1"
 	}
+	"^Państwa (.+)" = { # States of ...
+		_GEN = "Państw $1"
+		_DAT = "Państwom $1"
+		_AKK = "Państwa $1"
+		_INS = "Państwami $1"
+		_LOC = "Państwach $1"
+	}
 	"^Naród (.+)" = { # ... Nation
 		_GEN = "Narodu $1"
 		_DAT = "Narodowi $1"
@@ -1662,6 +1705,13 @@ polish = {
 		_AKK = "Unię $1ową $2"
 		_INS = "Unią $1ową $2"
 		_LOC = "Unii $1owej $2"
+	}	
+	"^Unia (.+)ska (.+)czna$" = { # ... Union
+		_GEN = "Unii $1skiej $2cznej"
+		_DAT = "Unii $1skiej $2cznej"
+		_AKK = "Unię $1ską $2czną"
+		_INS = "Unią $1ską $2czną"
+		_LOC = "Unii $1skiej $2cznej"
 	}	
 	"^Unia (.+)ska$" = { # ... Union
 		_GEN = "Unii $1skiej"
@@ -1733,6 +1783,13 @@ polish = {
 		_INS = "$1ią Republiką Ludową $2"
 		_LOC = "$1ii Republice Ludowej $2"
 	}	
+	"(.+)ska Republika Ludowa$" = { # People's Republic of ...
+		_GEN = "$1skiej Republiki Ludowej"
+		_DAT = "$1skiej Republice Ludowej"
+		_AKK = "$1ską Republikę Ludową"
+		_INS = "$1ską Republiką Ludową"
+		_LOC = "$1skiej Republice Ludowej"
+	}	
 	"(.+)ska Republika Ludowa (.+)" = { # ... People's Republic of ...
 		_GEN = "$1skiej Republiki Ludowej $2"
 		_DAT = "$1skiej Republice Ludowej $2"
@@ -1768,12 +1825,33 @@ polish = {
 		_INS = "Ludową Republiką $1"
 		_LOC = "Ludowej Republice $1"
 	}	
-	"^Republika (.+)ska" = { # ... Republic
-		_GEN = "Republiki $1skiej"
-		_DAT = "Republice $1skiej"
-		_AKK = "Republikę $1ską"
-		_INS = "Republiką $1ską"
-		_LOC = "Republice $1skiej"
+	"^(.+)cka Republika$" = { # ... Republic
+		_GEN = "$1ckej Republiki"
+		_DAT = "$1ckej Republice"
+		_AKK = "$1cką Republikę"
+		_INS = "$1cką Republiką"
+		_LOC = "$1ckej Republice"
+	}
+	"^(.+)ta Republika$" = { # ... Republic
+		_GEN = "$1tej Republiki"
+		_DAT = "$1tej Republice"
+		_AKK = "$1tą Republikę"
+		_INS = "$1tą Republiką"
+		_LOC = "$1tej Republice"
+	}
+	"^(.+)ów Republika$" = { # ...s' Republic
+		_GEN = "$1ów Republiki"
+		_DAT = "$1ów Republice"
+		_AKK = "$1ów Republikę"
+		_INS = "$1ów Republiką"
+		_LOC = "$1ów Republice"
+	}
+	"^Republika (.+)ka" = { # ... Republic
+		_GEN = "Republiki $1kiej"
+		_DAT = "Republice $1kiej"
+		_AKK = "Republikę $1ką"
+		_INS = "Republiką $1ką"
+		_LOC = "Republice $1kiej"
 	}
 	"^Republika demokratyczna (.+)" = { # Democratic Republic of ...
 		_GEN = "Republiki Demokratycznej $1"
@@ -1824,12 +1902,26 @@ polish = {
 		_INS = "Senatem $1"
 		_LOC = "Senacie $1"
 	}	
+	"^Gmina (.+)ska$" = { # Municipality of ...
+		_GEN = "Gminy $1skiej"
+		_DAT = "Gminie $1skiej"
+		_AKK = "Gminę $1ską"
+		_INS = "Gminą $1ską"
+		_LOC = "Gminie $1skiej"
+	}	
 	"^Gmina (.+)" = { # Municipality of ...
 		_GEN = "Gminy $1"
 		_DAT = "Gminie $1"
 		_AKK = "Gminę $1"
 		_INS = "Gminą $1"
 		_LOC = "Gminie $1"
+	}	
+	"^Papiestwo (.+)skie$" = { # Papacy of ...
+		_GEN = "Papiestwa $1skiego"
+		_DAT = "Papiestwu $1skiemu"
+		_AKK = "Papiestwo $1skie"
+		_INS = "Papiestwem $1skim"
+		_LOC = "Papiestwie $1skim"
 	}	
 	"^Papiestwo (.+)" = { # Papacy of ...
 		_GEN = "Papiestwa $1"
@@ -1894,12 +1986,26 @@ polish = {
 		_INS = "Chanatem $1skim"
 		_LOC = "Chanacie $1skim"
 	}	
+	"^Chanat (.+)$" = { # ... Khanate
+		_GEN = "Chanatu $1"
+		_DAT = "Chanatowi $1"
+		_AKK = "Chanat $1"
+		_INS = "Chanatem $1"
+		_LOC = "Chanacie $1"
+	}	
 	"(.+)i Proletariat$" = { # ... Proletariate
 		_GEN = "$1iego Proletariatu"
 		_DAT = "$1iemu Proletariatowi"
 		_AKK = "$1i Proletariat"
 		_INS = "$1im Proletariatem"
 		_LOC = "$1im Proletariacie"
+	}	
+	"^Proletariat (.+)i$" = { # ... Proletariate
+		_GEN = "Proletariatu $1iego"
+		_DAT = "Proletariatowi $1iemu"
+		_AKK = "Proletariat $1i"
+		_INS = "Proletariatem $1im"
+		_LOC = "Proletariacie $1im"
 	}	
 	"(.+)y Proletariat$" = { # ... Proletariate
 		_GEN = "$1ego Proletariatu"
@@ -1914,6 +2020,13 @@ polish = {
 		_AKK = "$1 Proletariat"
 		_INS = "$1 Proletariatem"
 		_LOC = "$1 Proletariacie"
+	}	
+	"^Proletariat (.+)$" = { # ... Proletariate
+		_GEN = "Proletariatu $1"
+		_DAT = "Proletariatowi $1"
+		_AKK = "Proletariat $1"
+		_INS = "Proletariatem $1"
+		_LOC = "Proletariacie $1"
 	}	
 	"(.+) Proletariate$" = { # ... Proletariate
 		_GEN = "$1 Proletariatu"
@@ -1949,6 +2062,13 @@ polish = {
 		_AKK = "Buenos Aires"
 		_INS = "Buenos Aires"
 		_LOC = "Buenos Aires"
+	}
+	"^SRR (.+)stan$" = {
+		_GEN = "SRR.ki $1stanu"
+		_DAT = "SRR.ce $1stanu"
+		_AKK = "SRR.kę $1stanu"
+		_INS = "SRR.ką $1stanu"
+		_LOC = "SRR.ce $1stanu"
 	}
 	"^SSR (.+)stan$" = {
 		_GEN = "SRR.ki $1stanu"
@@ -2034,12 +2154,26 @@ polish = {
 		_INS = "Wspólnotą Polityczną $1"
 		_LOC = "Wspólnocie Politycznej $1"
 	}	
+	"Wspólnota Rzymska" = { # (sic!)
+		_GEN = "Wspólnoty Rzymskiej"
+		_DAT = "Wspónocie Rzymskiej"
+		_AKK = "Wspólnotę Rzymską"
+		_INS = "Wspólnotą Rzymską"
+		_LOC = "Wspólnocie Rzymskiej"
+	}	
 	"Commonwealth of Rome" = { # (sic!)
 		_GEN = "Wspólnoty Rzymskiej"
 		_DAT = "Wspónocie Rzymskiej"
 		_AKK = "Wspólnotę Rzymską"
 		_INS = "Wspólnotą Rzymską"
 		_LOC = "Wspólnocie Rzymskiej"
+	}	
+	"Senatorskie Rzym = { # Senatorial Rome
+		_GEN = "Senatorskiego Rzymu"
+		_DAT = "Senatorskiemu Rzymowi"
+		_AKK = "Senatorskie Rzym"
+		_INS = "Senatorskim Rzymem"
+		_LOC = "Senatorskim Rzymie"
 	}	
 	"^Stan (.+)" = { # State of ...
 		_GEN = "Stanu $1"
@@ -2097,6 +2231,13 @@ polish = {
 		_INS = "Stanami Federalnymi $1"
 		_LOC = "Stanach Federalnych $1"
 	}	
+	"^Stany Swobodne (.+)" = { # Free States of ...
+		_GEN = "Stanów Swobodnych $1"
+		_DAT = "Stanom Swobodnym $1"
+		_AKK = "Stany Swobodne $1"
+		_INS = "Stanami Swobodnymi $1"
+		_LOC = "Stanach Swobodnych $1"
+	}	
 	"^Wolne Stany (.+)" = { # Free States of ...
 		_GEN = "Wolnych Stanów $1"
 		_DAT = "Wolnym Stanom $1"
@@ -2139,6 +2280,13 @@ polish = {
 		_INS = "Autonomią $1"
 		_LOC = "Autonomii $1"
 	}
+	"^Ród (.+)" = { # Clan of ...
+		_GEN = "Rodu $1"
+		_DAT = "Rodowi $1"
+		_AKK = "Ród $1"
+		_INS = "Rodem $1"
+		_LOC = "Rodzie $1"
+	}	
 	"^Komuna (.+)" = { # ... Commune
 		_GEN = "Komuny $1"
 		_DAT = "Komunie $1"
@@ -2209,6 +2357,13 @@ polish = {
 		_INS = "Wyspami Owczymi"
 		_LOC = "Wyspach Owczych"
 	}	
+	"Wyspy Owcze" = { # Faroe Islands
+		_GEN = "Wysp Owczych"
+		_DAT = "Wyspom Owczym"
+		_AKK = "Wyspy Owcze"
+		_INS = "Wyspami Owczymi"
+		_LOC = "Wyspach Owczych"
+	}	
 	"Wyspy Jońskie" = { # Ionian Islands
 		_GEN = "Wysp Jońskich"
 		_DAT = "Wyspom Jońskim"
@@ -2224,6 +2379,13 @@ polish = {
 		_LOC = "Ordi Nieumarłych"
 	}	
 	"Oirat Horde" = { # Oirat Horde
+		_GEN = "Oiratów Ordi"
+		_DAT = "Oiratów Ordi"
+		_AKK = "Oiratów Ordę"
+		_INS = "Oiratów Ordą"
+		_LOC = "Oiratów Ordi"
+	}	
+	"Horda Oiratów" = { # Oirat Horde
 		_GEN = "Oiratów Ordi"
 		_DAT = "Oiratów Ordi"
 		_AKK = "Oiratów Ordę"
@@ -2257,6 +2419,20 @@ polish = {
 		_AKK = "Święte Cesarstwo Rzymskie"
 		_INS = "Świętym Cesarstwem Rzymskimi"
 		_LOC = "Świętym Cesarstwie Rzymskich"
+	}	
+	"^Cesarstwo (.+)ski$" = { # (sic!) ... Empire
+		_GEN = "Cesarstwa $1skich"
+		_DAT = "Cesarstwu $1skim"
+		_AKK = "Cesarstwo $1skie"
+		_INS = "Cesarstwem $1skimi"
+		_LOC = "Cesarstwie $1skich"
+	}	
+	"^Cesarstwo (.+)skie" = { # ... Empire
+		_GEN = "Cesarstwa $1skich"
+		_DAT = "Cesarstwu $1skim"
+		_AKK = "Cesarstwo $1skie"
+		_INS = "Cesarstwem $1skimi"
+		_LOC = "Cesarstwie $1skich"
 	}	
 	"Holy Roman Republic" = { # (sic!) - HRE Republic
 		_GEN = "Świętej Republiki Rzymskej"
@@ -2320,6 +2496,13 @@ polish = {
 		_AKK = "Liège"
 		_INS = "Liège"
 		_LOC = "Liège"
+	}	
+	"Illinois" = { # Illinois - indeclinable
+		_GEN = "Illinois"
+		_DAT = "Illinois"
+		_AKK = "Illinois"
+		_INS = "Illinois"
+		_LOC = "Illinois"
 	}	
 	"inflanckiemu" = { # (sic!) - Livonian Order
 		_GEN = "Zakonu Liwońskiego"
@@ -2397,6 +2580,20 @@ polish = {
 		_AKK = "Północny Jemen"
 		_INS = "Północnym Jemenem"
 		_LOC = "Północnym Jemenie"
+	}	
+	"Jemen Północny" = { # North Yemen
+		_GEN = "Jemenu Północnego"
+		_DAT = "Jemenowi Północnemu"
+		_AKK = "Jemen Północny"
+		_INS = "Jemenem Północnym"
+		_LOC = "Jemenie Północnym"
+	}	
+	"Niżny Nowogród" = { # Nizhny Novgorod
+		_GEN = "Niżnego Nowogrodu"
+		_DAT = "Niżnemu Nowogrodowi"
+		_AKK = "Niżny Nowogród"
+		_INS = "Niżnym Nowogrodem"
+		_LOC = "Niżnym Nowogrodzie"
 	}	
 	"Nizny Nowogród" = { # Nizhny Novgorod
 		_GEN = "Niżnego Nowogrodu"
@@ -2496,6 +2693,13 @@ polish = {
 		_INS = "Saint Vincent i Grenadynami"
 		_LOC = "Saint Vincent i Grenadynach"
 	}
+	"Wyspa Południowa" = { # South Island
+		_GEN = "Wyspy Południowej"
+		_DAT = "Wyspie Południowej"
+		_AKK = "Wyspę Południową"
+		_INS = "Wyspą Południową"
+		_LOC = "Wyspie Południowej"
+	}	
 	"Południowa Wyspa" = { # South Island
 		_GEN = "Południowej Wyspy"
 		_DAT = "Południowej Wyspie"
@@ -2510,6 +2714,13 @@ polish = {
 		_INS = "Południowym Peru"
 		_LOC = "Południowym Peru"
 	}	
+	"Sudan Południowy" = { # South Sudan
+		_GEN = "Sudanu Południowego"
+		_DAT = "Sudanowi Południowemu"
+		_AKK = "Sudan Południowy"
+		_INS = "Sudanem Południowym"
+		_LOC = "Sudanie Południowym"
+	}	
 	"Południowy Sudan" = { # South Sudan
 		_GEN = "Południowego Sudanu"
 		_DAT = "Południowemu Sudanowi"
@@ -2518,6 +2729,13 @@ polish = {
 		_LOC = "Południowym Sudanie"
 	}	
 	"Schleswig-Holstein" = {
+		_GEN = "Szlezwika-Holsztynu"
+		_DAT = "Szlezwikowi-Holsztynowi"
+		_AKK = "Szlezwik-Holsztyn"
+		_INS = "Szlezwikiem-Holsztynem"
+		_LOC = "Szlezwiku-Holsztynie"
+	}	
+	"Szlezwik-Holsztyn" = {
 		_GEN = "Szlezwika-Holsztynu"
 		_DAT = "Szlezwikowi-Holsztynowi"
 		_AKK = "Szlezwik-Holsztyn"
@@ -2609,6 +2827,13 @@ polish = {
 		_INS = "Zakaukaziem"
 		_LOC = "Zakaukaziu"
 	}
+	"Zakaukazie" = { # Transcaucasia
+		_GEN = "Zakaukazia"
+		_DAT = "Zakaukaziu"
+		_AKK = "Zakaukazie"
+		_INS = "Zakaukaziem"
+		_LOC = "Zakaukaziu"
+	}
 	"Hawaje" = { # Hawaii
 		_GEN = "Hawajów"
 		_DAT = "Hawajom"
@@ -2622,6 +2847,13 @@ polish = {
 		_AKK = "Imperium Meksykańskie"
 		_INS = "Imperium Meksykańskim"
 		_LOC = "Imperium Meksykańskim"
+	}
+	"Imperium (.+)" = { # ... Empire
+		_GEN = "Imperium (.+)"
+		_DAT = "Imperium (.+)"
+		_AKK = "Imperium (.+)"
+		_INS = "Imperium (.+)"
+		_LOC = "Imperium (.+)"
 	}
 	"(.+)skie$" = { # ...ish [neuter]
 		_GEN = "$1skiego"
@@ -2637,12 +2869,26 @@ polish = {
 		_INS = "Krzyżakami"
 		_LOC = "Krzyżakach"
 	}
+	"Zachodnie Indie" = {
+		_GEN = "Zachodnich Indii"
+		_DAT = "Zachodnim Indiom"
+		_AKK = "Zachodnie Indie"
+		_INS = "Zachodnimi Indiami"
+		_LOC = "Zachodnich Indach"
+	}
 	"(.+)u$" = { # Indeclinable
 		_GEN = "$1u"
 		_DAT = "$1u"
 		_AKK = "$1u"
 		_INS = "$1u"
 		_LOC = "$1u"
+	}
+	"Berry" = { # indeclinable
+		_GEN = "Berry"
+		_DAT = "Berry"
+		_AKK = "Berry"
+		_INS = "Berry"
+		_LOC = "Berry"
 	}
 	
 	# Feminine declension - singular
@@ -2659,6 +2905,13 @@ polish = {
 		_AKK = "$1kę"
 		_INS = "$1ką"
 		_LOC = "$1ce"
+	}
+	"Floryda$" = {
+		_GEN = "Florydy"
+		_DAT = "Florydzie"
+		_AKK = "Florydę"
+		_INS = "Florydą"
+		_LOC = "Florydze"
 	}
 	"(.+)da$" = {
 		_GEN = "$1dy"
@@ -2680,6 +2933,13 @@ polish = {
 		_AKK = "$1nę"
 		_INS = "$1ną"
 		_LOC = "$1nie"
+	}
+	"^(.+)ka (.+)ia$" = {
+		_GEN = "$1kiej $2ii"
+		_DAT = "$1kiej $2ii"
+		_AKK = "$1ką $2ię"
+		_INS = "$1ką $2ią"
+		_LOC = "$1kiej $2ii"
 	}
 	"(.+)ia$" = {
 		_GEN = "$1ii"
@@ -2729,6 +2989,13 @@ polish = {
 		_AKK = "$1guę i $2dę"
 		_INS = "$1guą i $2dą"
 		_LOC = "$1gui i $2dzie"
+	}
+	"(.+)ja i (.+)ja$" = {
+		_GEN = "$1ji i $2ji"
+		_DAT = "$1ji i $2ji"
+		_AKK = "$1ję i $1ję"
+		_INS = "$1ją i $1ją"
+		_LOC = "$1ji i $ji"
 	}
 	"(.+)ja$" = {
 		_GEN = "$1ji"
@@ -2794,6 +3061,13 @@ polish = {
 		_INS = "$1kim"
 		_LOC = "$1kim"
 	}
+	"Słonie$" = { # Elephants
+		_GEN = "Słoni"
+		_DAT = "Słoniom"
+		_AKK = "Słonie"
+		_INS = "Słoniami"
+		_LOC = "Słoniach"
+	}
 	"(.+)ie$" = {
 		_GEN = "$1ii"
 		_DAT = "$1iom"
@@ -2814,6 +3088,34 @@ polish = {
 		_AKK = "$1ki"
 		_INS = "$1kami"
 		_LOC = "$1kach"
+	}
+	"Kozacy$" = { # Cossacks
+		_GEN = "Kozaków"
+		_DAT = "Kazakom"
+		_AKK = "Kazaków"
+		_INS = "Kozakami"
+		_LOC = "Kozakach"
+	}
+	"Szpitalnicy$" = { # Hospitallers
+		_GEN = "Szpitalników"
+		_DAT = "Szpitalnikom"
+		_AKK = "Szpitalników"
+		_INS = "Szpitalnikami"
+		_LOC = "Szpitalnikach"
+	}
+	"Zakon Liwscy" = { # Livonian Order
+		_GEN = "Zakonu Liwskiego"
+		_DAT = "Zakonowi Liwskiemu"
+		_AKK = "Zakon Liwski"
+		_INS = "Zakonem Liwskim"
+		_LOC = "Zakonie Liwskim"
+	}
+	"(.+)scy$" = {
+		_GEN = "$1skich"
+		_DAT = "$1skim"
+		_AKK = "$1skich" # Animate
+		_INS = "$1skimi"
+		_LOC = "$1skich"
 	}
 	"(.+)cy$" = {
 		_GEN = "$1iec"
@@ -2843,6 +3145,13 @@ polish = {
 		_INS = "$1lami"
 		_LOC = "$1lach"
 	}
+	"^Łużyce$" = { # Sorbia
+		_GEN = "Łużyc"
+		_DAT = "Łużycom"
+		_AKK = "Łużyce"
+		_INS = "Łużycami"
+		_LOC = "Łużycach"
+	}
 	"(.+)ce$" = {
 		_GEN = "$1cy"
 		_DAT = "$1com"
@@ -2857,6 +3166,13 @@ polish = {
 		_AKK = "$1sło"
 		_INS = "$1słami"
 		_LOC = "$1śle"
+	}
+	"Afar" = { # indeclinable
+		_GEN = "Afar"
+		_DAT = "Afar"
+		_AKK = "Afar"
+		_INS = "Afar"
+		_LOC = "Afar"
 	}
 	"Kongo" = { # indeclinable
 		_GEN = "Kongo"
@@ -2984,6 +3300,20 @@ polish = {
 		_AKK = "$1gwaj"
 		_INS = "$1gwajem"
 		_LOC = "$1gwaju"
+	}
+	"^Kraj (.+)ów$" = { # ...s' Land
+		_GEN = "Kraju $1ów"
+		_DAT = "Krajowi $1ów"
+		_AKK = "Kraj $1ów"
+		_INS = "Krajem $1ów"
+		_LOC = "Karju $1ów"
+	}
+	"^(.+)skie (.+)j$" = {
+		_GEN = "$1skiego $2ja"
+		_DAT = "$1skiemu $2ju"
+		_AKK = "$1skie $2j"
+		_INS = "$1skim $2jem"
+		_LOC = "$1skim $2ju"
 	}
 	"^(.+)j$" = {
 		_GEN = "$1ja"
@@ -3238,6 +3568,13 @@ russian = {
 		_INS = "Апачами"
 		_PRE = "Апачах"
 	}
+	"^Араваки$" = { # Arawaks (animate noun)
+		_GEN = "Араваков"
+		_DAT = "Аравакам"
+		_AKK = "Араваков"
+		_INS = "Араваками"
+		_PRE = "Араваках"
+	}
 	"^Ассинибойны$" = { # Assiniboine (animate noun)
 		_GEN = "Ассинибойнов"
 		_DAT = "Ассинибойнам"
@@ -3265,6 +3602,13 @@ russian = {
 		_AKK = "Багамы"
 		_INS = "Багамами"
 		_PRE = "Багамах"
+	}
+	"^(.+)гуллары$" = { # ... Beylik (indeclinable)
+		_GEN = "$1гуллары"
+		_DAT = "$1гуллары"
+		_AKK = "$1гуллары"
+		_INS = "$1гуллары"
+		_PRE = "$1гуллары"
 	}
 	"^Буркина-Фасо$" = { # Burkina Faso (indeclinable)
 		_GEN = "Буркина-Фасо"
@@ -3476,12 +3820,33 @@ russian = {
 		_INS = "Ирокезами"
 		_PRE = "Ирокезах"
 	}
+	"^Кот-д'Ивуар$" = { # Ivory Coast (translated for declension)
+		_GEN = "Берега Слоновой Кости"
+		_DAT = "Берегу Слоновой Кости"
+		_AKK = "Берег Слоновой Кости"
+		_INS = "Берегом Слоновой Кости"
+		_PRE = "Береге Слоновой Кости"
+	}
 	"^Кот-Дьивуар$" = { # Ivory Coast (translated for declension)
 		_GEN = "Берега Слоновой Кости"
 		_DAT = "Берегу Слоновой Кости"
 		_AKK = "Берег Слоновой Кости"
 		_INS = "Берегом Слоновой Кости"
 		_PRE = "Береге Слоновой Кости"
+	}
+	"^(.+)ский Берег$" = { # ... Coast
+		_GEN = "$1ского Берега"
+		_DAT = "$1скому Берегу"
+		_AKK = "$1ский Берег"
+		_INS = "$1ским Берегом"
+		_PRE = "$1ском Береге"
+	}
+	"^(.+)ский Китай$" = { # ... China
+		_GEN = "$1ского Китая"
+		_DAT = "$1скому Китаю"
+		_AKK = "$1ский Китай"
+		_INS = "$1ским Китаем"
+		_PRE = "$1ском Китае"
 	}
 	"^Казахи$" = { # Kazakhs (animate noun)
 		_GEN = "Казахов"
@@ -3622,6 +3987,20 @@ russian = {
 		_AKK = "Сардинию-Пьемонт"
 		_INS = "Сардинией-Пьемонтом"
 		_PRE = "Сардинии-Пьемонте"
+	}
+	"^Коса$" = { # Xhosa (indeclinable)
+		_GEN = "Коса"
+		_DAT = "Коса"
+		_AKK = "Коса"
+		_INS = "Коса"
+		_PRE = "Коса"
+	}
+	"^Судеты$" = { # Sudetes (inanimate noun)
+		_GEN = "Судетов"
+		_DAT = "Судетам"
+		_AKK = "Судеты"
+		_INS = "Судетами"
+		_PRE = "Судетах"
 	}
 	"^Судетской$" = { # Sudetes (inanimate noun)
 		_GEN = "Судетов"
@@ -3791,6 +4170,13 @@ russian = {
 		_INS = "$1ой Сечью"
 		_PRE = "$1ой Сечи"
 	}
+	"^Эдзо$" = { # Ezo (indeclinable)
+		_GEN = "Эдзо"
+		_DAT = "Эдзо"
+		_AKK = "Эдзо"
+		_INS = "Эдзо"
+		_PRE = "Эдзо"
+	}
 	
 	# Fuller names
 	"^ССР (.+)стан$" = { # ...stan SSR
@@ -3828,6 +4214,13 @@ russian = {
 		_INS = "$1ским Союзом $2"
 		_PRE = "$1ском Союзе $2"
 	}
+	"^Страна (.+)$" = { # State of ...
+		_GEN = "Страны $1"
+		_DAT = "Стране $1"
+		_AKK = "Страну $1"
+		_INS = "Страной $1"
+		_PRE = "Стране $1"
+	}
 	"^Страны (.+)$" = { # States of ...
 		_GEN = "Стран $1"
 		_DAT = "Странам $1"
@@ -3862,6 +4255,13 @@ russian = {
 		_AKK = "$1ский Союз"
 		_INS = "$1ским Союзом"
 		_PRE = "$1ском Союзе"
+	}
+	"^Орден (.+)$" = { # Order of ...
+		_GEN = "Ордена $1"
+		_DAT = "Ордену $1"
+		_AKK = "Орден $1"
+		_INS = "Орденим $1"
+		_PRE = "Орденом $1"
 	}
 	"^(.+)ский Орден$" = { # ... Order
 		_GEN = "$1ского Ордена"
@@ -3926,6 +4326,13 @@ russian = {
 		_INS = "$1ой Республикой"
 		_PRE = "$1ой Республике"
 	}
+	"^(.+)ий улус$" = { # ... State (Mongol)
+		_GEN = "$1ого улуса"
+		_DAT = "$1ому улусу"
+		_AKK = "$1ое улус"
+		_INS = "$1им улусом"
+		_PRE = "$1ом улусе"
+	}
 	"^(.+)ое (.+)ство (.+)$" = { # ... ...dom of ...
 		_GEN = "$1ого $2ства $3"
 		_DAT = "$1ому $2ству $3"
@@ -3946,6 +4353,13 @@ russian = {
 		_AKK = "$1ское $2ство"
 		_INS = "$1ским $2ством"
 		_PRE = "$1ском $2стве"
+	}
+	"^(.+)ство (.+)ское$" = { # ...dom ...
+		_GEN = "$1ства $2ского"
+		_DAT = "$1ству $2скому"
+		_AKK = "$1ство $2ское"
+		_INS = "$1ством $2ским"
+		_PRE = "$1стве $2ском"
 	}
 	"^(.+)ство (.+)$" = { # ...dom of ...
 		_GEN = "$1ства $2"
@@ -4192,6 +4606,13 @@ russian = {
 		_INS = "$1ей $2тей"
 		_PRE = "$1ей $2те"
 	}
+	"^(.+)ые (.+)ии$" = {
+		_GEN = "$1ых $2ий"
+		_DAT = "$1ым $2иям"
+		_AKK = "$1ых $2ии"
+		_INS = "$1ыми $2иями"
+		_PRE = "$1ых $2иях"
+	}
 
 	# First declension
 	"^(.+)а - (.+)ая (.+)я$" = {
@@ -4200,6 +4621,13 @@ russian = {
 		_AKK = "$1у - $2ую $3у"
 		_INS = "$1ей - $2ой $3ей"
 		_PRE = "$1е - $2ой $3е"
+	}
+	"^(.+)ия и (.+)ия$" = {
+		_GEN = "$1ии и $2ии"
+		_DAT = "$1ии и $2ии"
+		_AKK = "$1ию и $2ию"
+		_INS = "$1ией и $2ией"
+		_PRE = "$1ии и $2ии"
 	}
 	"^(.+)ия-(.+)ия$" = {
 		_GEN = "$1ии-$2ии"
