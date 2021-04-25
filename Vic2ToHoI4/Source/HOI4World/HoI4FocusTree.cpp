@@ -2161,7 +2161,7 @@ std::map<std::string, int> HoI4FocusTree::addReconquestBranch(std::shared_ptr<Ho
 		newFocus->selectEffect += "\t\t\tset_variable = { revanchism = " + std::to_string(0.00001*sumUnownedCores) + " }\n";
 		newFocus->selectEffect += "\t\t\tset_variable = { revanchism_stab = " + std::to_string(-0.000001*sumUnownedCores) + " }\n";
 		newFocus->selectEffect += "\t\t\tadd_dynamic_modifier = { modifier = revanchism }\n";
-		if (majorIdeologies.count("fascism"))
+		if (majorIdeologies.contains("fascism"))
 		{
 			newFocus->selectEffect += "\t\t\tadd_dynamic_modifier = { modifier = revanchism_fasc }\n";
 		}
