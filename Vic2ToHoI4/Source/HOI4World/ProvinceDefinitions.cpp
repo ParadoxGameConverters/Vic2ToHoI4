@@ -53,7 +53,7 @@ HoI4::ProvinceDefinitions HoI4::ProvinceDefinitions::Importer::importProvinceDef
 		int blue(stoi(line.substr(0, pos)));
 		line = line.substr(pos + 1, line.length());
 
-		auto colorInt = getIntFromColor(commonItems::Color(std::array<int, 3>{red, green, blue}));
+		auto colorInt = getIntFromColor(commonItems::Color(std::array{red, green, blue}));
 		colorToProvinceMap.insert(std::make_pair(colorInt, provNum));
 
 		pos = line.find_first_of(';');

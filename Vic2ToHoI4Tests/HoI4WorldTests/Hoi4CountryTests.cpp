@@ -163,14 +163,14 @@
 // TEST_F(HoI4World_HoI4CountryTests, colorIsFromSourceCountry)
 //{
 //	const HoI4::Country theCountry("TAG",
-//		 &*Vic2::Country::Builder{}.setColor(commonItems::Color{std::array<int, 3>{33, 66, 99}}).Build(),
+//		 &*Vic2::Country::Builder{}.setColor(commonItems::Color{std::array{33, 66, 99}}).Build(),
 //		 *names,
 //		 *graphicsMapper::Builder{}.Build(),
 //		 *CountryMapper::Builder{}.Build(),
 //		 *theFlagsToIdeasMapper,
 //		 *hoi4Localisations);
 //
-//	const auto expectedColor = commonItems::Color{std::array<int, 3>{33, 66, 99}};
+//	const auto expectedColor = commonItems::Color{std::array{33, 66, 99}};
 //	ASSERT_EQ(theCountry.getColor(), expectedColor);
 //}
 //

@@ -39,7 +39,7 @@ TEST(Vic2World_Countries_CountryTests, TagIsAsSet)
 
 TEST(Vic2World_Countries_CountryTests, ColorIsFromCommonCountryData)
 {
-	const commonItems::Color testColor{std::array<int, 3>{1, 2, 3}};
+	const commonItems::Color testColor{std::array{1, 2, 3}};
 
 	std::stringstream theStream;
 	theStream << "= {\n";
