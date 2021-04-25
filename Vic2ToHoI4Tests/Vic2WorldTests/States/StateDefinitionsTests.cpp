@@ -17,7 +17,7 @@ TEST(Vic2World_States_StateDefinitionsTests, GetAllProvincesReturnsProvincesForM
 	const auto stateDefinitions =
 		 *Vic2::StateDefinitions::Builder{}.setStateMap(std::map<int, std::set<int>>{{1, {1, 2, 3}}}).build();
 
-	ASSERT_EQ(static_cast<std::set<int>>(std::set<int>{1, 2, 3}), stateDefinitions.getAllProvinces(1));
+	ASSERT_EQ(static_cast<std::set<int>>(std::set{1, 2, 3}), stateDefinitions.getAllProvinces(1));
 }
 
 

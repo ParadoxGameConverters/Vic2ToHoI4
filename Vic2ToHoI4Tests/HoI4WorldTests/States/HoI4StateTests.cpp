@@ -184,7 +184,7 @@ TEST(HoI4World_States_StateTests, SetControlledProvinceSetsControlledProvinces)
 	theState.setControlledProvince(1, "ONE");
 
 	ASSERT_THAT(theState.getControlledProvinces(),
-		 testing::UnorderedElementsAre(testing::Pair(std::string("ONE"), std::set<int>{1})));
+		 testing::UnorderedElementsAre(testing::Pair(std::string("ONE"), std::set{1})));
 }
 
 
@@ -197,7 +197,7 @@ TEST(HoI4World_States_StateTests, SetControlledProvinceSetsMultipleControlledPro
 	theState.setControlledProvince(2, "ONE");
 
 	ASSERT_THAT(theState.getControlledProvinces(),
-		 testing::UnorderedElementsAre(testing::Pair(std::string("ONE"), std::set<int>{1, 2})));
+		 testing::UnorderedElementsAre(testing::Pair(std::string("ONE"), std::set{1, 2})));
 }
 
 
@@ -792,7 +792,7 @@ TEST(HoI4World_States_StateTests, DebugVPsCanBeAdded)
 		 *Mappers::ProvinceMapper::Builder().addVic2ToHoI4ProvinceMap(12, {12}).Build(),
 		 theConfiguration);
 
-	ASSERT_EQ(std::set<int>{12}, theState.getDebugVPs());
+	ASSERT_EQ(std::set{12}, theState.getDebugVPs());
 }
 
 

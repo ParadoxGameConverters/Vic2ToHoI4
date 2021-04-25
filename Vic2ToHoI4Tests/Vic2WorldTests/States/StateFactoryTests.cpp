@@ -52,7 +52,7 @@ TEST(Vic2World_States_StateFactoryTests, GetStateSetsProvinceNumbers)
 	input << "}\n";
 	const auto state = Vic2::State::Factory{}.getState(input, "TAG", *Vic2::StateDefinitions::Builder{}.build());
 
-	ASSERT_EQ(std::set<int>{42}, state->getProvinceNumbers());
+	ASSERT_EQ(std::set{42}, state->getProvinceNumbers());
 }
 
 
@@ -61,7 +61,7 @@ TEST(Vic2World_States_StateFactoryTests, GetUnownedStateSetsProvinceNumbers)
 	const auto state =
 		 Vic2::State::Factory{}.getUnownedState({{42, nullptr}}, *Vic2::StateDefinitions::Builder{}.build());
 
-	ASSERT_EQ(std::set<int>{42}, state->getProvinceNumbers());
+	ASSERT_EQ(std::set{42}, state->getProvinceNumbers());
 }
 
 

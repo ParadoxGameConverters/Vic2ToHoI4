@@ -251,7 +251,7 @@ void Configuration::Factory::sortMods()
 	{
 		for (const auto& dependency: mod.getDependencies())
 		{
-			auto [itr, inserted] = incomingDependencies.emplace(dependency, std::set<std::string>{mod.getName()});
+			auto [itr, inserted] = incomingDependencies.emplace(dependency, std::set{mod.getName()});
 			if (!inserted)
 			{
 				itr->second.insert(mod.getName());
