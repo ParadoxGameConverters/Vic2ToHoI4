@@ -22,8 +22,8 @@ TEST(HoI4World_GameRules_GameRulesTests, RulesDefaultParseToEmpty)
 
 TEST(HoI4World_GameRules_GameRulesTests, RulesCanBeAdded)
 {
-	const HoI4::GameRules rules({HoI4::GameRule("rule_1", "", std::nullopt, "", "", std::vector<HoI4::GameRuleOption>{}),
-		 HoI4::GameRule("rule_2", "", std::nullopt, "", "", std::vector<HoI4::GameRuleOption>{})});
+	const HoI4::GameRules rules({HoI4::GameRule("rule_1", "", std::nullopt, "", "", {}),
+		 HoI4::GameRule("rule_2", "", std::nullopt, "", "", {})});
 
 	const auto& theRules = rules.getGameRules();
 	ASSERT_EQ(2, theRules.size());

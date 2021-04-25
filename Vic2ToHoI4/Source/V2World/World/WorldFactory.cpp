@@ -202,7 +202,7 @@ void Vic2::World::Factory::removeSimpleLandlessNations()
 
 		if (!country.hasCoreOnCapital())
 		{
-			country.replaceCores(std::vector<std::shared_ptr<Province>>{});
+			country.replaceCores({});
 		}
 	}
 }

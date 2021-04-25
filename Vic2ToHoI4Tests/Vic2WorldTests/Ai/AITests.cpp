@@ -118,7 +118,7 @@ TEST(Vic2World_Vic2_AI_Tests, ConquerStrategiesProperlyConsolidated)
 	const std::map<int, std::shared_ptr<Vic2::Province>> provinceMap{
 		 {42, Vic2::Province::Builder{}.setNumber(42).setOwner("TAG").build()},
 		 {43, Vic2::Province::Builder{}.setNumber(43).setOwner("TAG").build()},
-		 {44, std::shared_ptr<Vic2::Province>{}}};
+		 {44, {}}};
 
 	newVic2Ai->consolidateConquerStrategies(provinceMap);
 

@@ -28,6 +28,6 @@ std::vector<HoI4::HoI4UnitType> HoI4::MtgUnitMappings::getMatchingUnitInfo(const
 	}
 	else
 	{
-		return std::vector<HoI4UnitType>{};
+		return {};
 	}
 }

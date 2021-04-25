@@ -1624,7 +1624,7 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyNonexistantThrowsException)
 				 countryFactory.createCountry("TAG",
 					  theStream,
 					  *Vic2::CommonCountryData::Builder{}.Build(),
-					  std::vector<Vic2::Party>{},
+					  {},
 					  *Vic2::StateLanguageCategories::Builder{}.build(),
 					  0.05F,
 					  std::nullopt);
