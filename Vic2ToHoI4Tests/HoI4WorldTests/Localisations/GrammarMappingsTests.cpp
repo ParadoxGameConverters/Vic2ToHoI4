@@ -6,7 +6,7 @@
 
 TEST(HoI4World_Localisations_GrammarMappings, RulesAreImported)
 {
-	const auto mappings = HoI4::GrammarMappings{}.importGrammarMappings();
+	const auto mappings = HoI4::GrammarMappings().importGrammarMappings();
 
 	ASSERT_EQ(2, mappings.size());
 	ASSERT_THAT(mappings,

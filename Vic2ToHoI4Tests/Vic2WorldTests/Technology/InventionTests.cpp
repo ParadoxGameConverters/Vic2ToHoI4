@@ -8,7 +8,7 @@
 
 TEST(Vic2World_Technology_InventionTests, MissingInventionLogsErrorAndReturnsNullopt)
 {
-	const auto inventions = Vic2::Inventions{};
+	const auto inventions = Vic2::Inventions();
 
 	std::stringstream log;
 	auto* stdOutBuf = std::cout.rdbuf();
@@ -25,7 +25,7 @@ TEST(Vic2World_Technology_InventionTests, MissingInventionLogsErrorAndReturnsNul
 
 TEST(Vic2World_Technology_InventionTests, InventionZeroLogsErrorAndReturnsNullopt)
 {
-	const auto inventions = Vic2::Inventions{};
+	const auto inventions = Vic2::Inventions();
 
 	std::stringstream log;
 	auto* stdOutBuf = std::cout.rdbuf();

@@ -252,7 +252,7 @@ void HoI4::States::createStates(const std::map<std::string, Vic2::Country>& sour
 	 const MapData& mapData,
 	 const Configuration& theConfiguration)
 {
-	const auto grammarMappings = GrammarMappings{}.importGrammarMappings();
+	const auto grammarMappings = GrammarMappings().importGrammarMappings();
 
 	std::set<int> ownedProvinces;
 

@@ -68,10 +68,10 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	countryMap = Mappers::CountryMapper::Factory().importCountryMapper(sourceWorld, theConfiguration.getDebug());
 
 	auto vic2Localisations = sourceWorld.getLocalisations();
-	hoi4Localisations = Localisation::Importer{}.generateLocalisations(theConfiguration);
+	hoi4Localisations = Localisation::Importer().generateLocalisations(theConfiguration);
 
 	ProvinceDefinitions provinceDefinitions =
-		 ProvinceDefinitions::Importer{}.importProvinceDefinitions(theConfiguration);
+		 ProvinceDefinitions::Importer().importProvinceDefinitions(theConfiguration);
 	theMapData = std::make_unique<MapData>(provinceDefinitions, theConfiguration);
 	const auto theProvinces = importProvinces(theConfiguration);
 	theCoastalProvinces.init(*theMapData, theProvinces);

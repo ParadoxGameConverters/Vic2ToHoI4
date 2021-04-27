@@ -45,7 +45,7 @@
 //	vic2Localisations = std::make_unique<Vic2::Localisations>(localisations, localisationToKeyMap);
 //
 //	const auto theConfiguration = Configuration::Builder().build();
-//	hoi4Localisations = HoI4::Localisation::Importer{}.generateLocalisations(*theConfiguration);
+//	hoi4Localisations = HoI4::Localisation::Importer().generateLocalisations(*theConfiguration);
 //	names = std::make_unique<HoI4::Names>(
 //		std::map<std::string, std::vector<std::string>>{},
 //		 std::map<std::string, std::vector<std::string>>{},
