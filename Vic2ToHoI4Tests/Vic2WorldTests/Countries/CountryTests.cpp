@@ -22,9 +22,9 @@ TEST(Vic2World_Countries_CountryTests, TagIsAsSet)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -45,9 +45,9 @@ TEST(Vic2World_Countries_CountryTests, ColorIsFromCommonCountryData)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().setColor(testColor).Build(),
@@ -66,9 +66,9 @@ TEST(Vic2World_Countries_CountryTests, HumanDefaultsToFalse)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -88,9 +88,9 @@ TEST(Vic2World_Countries_CountryTests, HumanCanBeSet)
 	theStream << "\truling_party = 1\n";
 	theStream << "\thuman = yes\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -110,9 +110,9 @@ TEST(Vic2World_Countries_CountryTests, HumanNotSetWithoutYes)
 	theStream << "\truling_party = 1\n";
 	theStream << "\thuman = whatever\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -131,9 +131,9 @@ TEST(Vic2World_Countries_CountryTests, StatesDefaultToEmpty)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -154,9 +154,9 @@ TEST(Vic2World_Countries_CountryTests, StatesCanBeImported)
 	theStream << "\tstate = {\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -175,9 +175,9 @@ TEST(Vic2World_Countries_CountryTests, DoesNotHaveLandByDefault)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -196,9 +196,9 @@ TEST(Vic2World_Countries_CountryTests, HasLandWhenGivenProvinces)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -218,9 +218,9 @@ TEST(Vic2World_Countries_CountryTests, IsEmptyByDefault)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -239,9 +239,9 @@ TEST(Vic2World_Countries_CountryTests, IsNotEmptyWhenGivenProvinces)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -261,9 +261,9 @@ TEST(Vic2World_Countries_CountryTests, IsNotEmptyWhenGivenCores)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -283,9 +283,9 @@ TEST(Vic2World_Countries_CountryTests, CoresDefaultToEmpty)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -304,9 +304,9 @@ TEST(Vic2World_Countries_CountryTests, CoresCanBeAdded)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -327,9 +327,9 @@ TEST(Vic2World_Countries_CountryTests, CoresCanBeReplaced)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -351,9 +351,9 @@ TEST(Vic2World_Countries_CountryTests, CapitalDefaultsToZero)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -373,9 +373,9 @@ TEST(Vic2World_Countries_CountryTests, CapitalCanBeSet)
 	theStream << "\truling_party = 1\n";
 	theStream << "\tcapital = 42\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -394,9 +394,9 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureDefaultsToNoCulture)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -416,9 +416,9 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSet)
 	theStream << "\truling_party = 1\n";
 	theStream << "\tprimary_culture = test_primary\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -438,9 +438,9 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureWithQuotesCanBeSet)
 	theStream << "\truling_party = 1\n";
 	theStream << "\tprimary_culture = \"test_primary\"\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -459,9 +459,9 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromLargestCulture)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countryTests/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countryTests/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -489,9 +489,9 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureCanBeSetFromMultiplePopsAdd
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countryTests/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countryTests/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -520,9 +520,9 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureNotSetFromLargestCultureIfN
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countryTests/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countryTests/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -544,9 +544,9 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupDefaultsToNoCulture)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -567,10 +567,10 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupsSetFromPrimaryCulture
 	theStream << "\truling_party = 1\n";
 	theStream << "\tprimary_culture = test_primary\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countryTests/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countryTests/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
 		 Vic2::CultureGroups::Factory().getCultureGroups(
-			  *Configuration::Builder().setVic2Path("./countryTests/").build())}
+			  *Configuration::Builder().setVic2Path("./countryTests/").build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -589,9 +589,9 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCulturGroupeNotSetFromLargestCultu
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countryTests/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countryTests/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -613,9 +613,9 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupCanBeSetFromLargestCul
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countryTests/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countryTests/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -643,9 +643,9 @@ TEST(Vic2World_Countries_CountryTests, PrimaryCultureGroupBecomesNoCultureIfUnse
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -666,9 +666,9 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesDefaultToEmpty)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -688,9 +688,9 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesIncludePrimaryCulture)
 	theStream << "\truling_party = 1\n";
 	theStream << "\tprimary_culture = test_primary\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -713,9 +713,9 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesCanBeAdded)
 	theStream << "\t\t\"test_primary2\"\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -738,9 +738,9 @@ TEST(Vic2World_Countries_CountryTests, AcceptedCulturesIdentifiedAsAcceptedCultu
 	theStream << "\t\t\"test_primary2\"\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -760,9 +760,9 @@ TEST(Vic2World_Countries_CountryTests, NonAcceptedCulturesNotIdentifiedAsAccepte
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -781,9 +781,9 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsDefaultToEmpty)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -806,9 +806,9 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsCanBeAddedFromTe
 	theStream << "\t\ttechnology_two = {}\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -829,9 +829,9 @@ TEST(Vic2World_Countries_CountryTests, TechnologiesAndInventionsCanBeAddedFromIn
 	theStream << "\truling_party = 1\n";
 	theStream << "\tactive_inventions = { 1 4 5 }\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countryTests/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countryTests/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -851,9 +851,9 @@ TEST(Vic2World_Countries_CountryTests, RelationsDefaultToEmpty)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -876,9 +876,9 @@ TEST(Vic2World_Countries_CountryTests, RelationsCanBeAdded)
 	theStream << "\t\tvalue=42\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -899,9 +899,9 @@ TEST(Vic2World_Countries_CountryTests, AiDefaultsToEmpty)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -927,9 +927,9 @@ TEST(Vic2World_Countries_CountryTests, AiCanBeImported)
 	theStream << "\t\t}\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -963,9 +963,9 @@ TEST(Vic2World_Countries_CountryTests, AiConquerStrategiesCanBeConsolidated)
 	theStream << "\t\t}\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -987,9 +987,9 @@ TEST(Vic2World_Countries_CountryTests, CivilizedDefaultsToFalse)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1009,9 +1009,9 @@ TEST(Vic2World_Countries_CountryTests, CivilizedCanBeSet)
 	theStream << "\truling_party = 1\n";
 	theStream << "\tcivilized = yes\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1031,9 +1031,9 @@ TEST(Vic2World_Countries_CountryTests, CivilizedNotSetWithoutYes)
 	theStream << "\truling_party = 1\n";
 	theStream << "\tcivilized = no\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1052,9 +1052,9 @@ TEST(Vic2World_Countries_CountryTests, ArmiesDefaultsToEmpty)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1077,9 +1077,9 @@ TEST(Vic2World_Countries_CountryTests, ArmiesCanBeAdded)
 	theStream << "\t\t\tname=\"42nd Army\"\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1103,9 +1103,9 @@ TEST(Vic2World_Countries_CountryTests, ArmiesCanBeModified)
 	theStream << "\t\t\tname=\"42nd Army\"\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -1131,9 +1131,9 @@ TEST(Vic2World_Countries_CountryTests, NaviesCanBeAdded)
 	theStream << "\t\t\tname=\"42nd Fleet\"\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1161,9 +1161,9 @@ TEST(Vic2World_Countries_CountryTests, TransportedArmiesCanBeAdded)
 	theStream << "\t\t}\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1184,9 +1184,9 @@ TEST(Vic2World_Countries_CountryTests, LeadersDefaultToEmpty)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1211,9 +1211,9 @@ TEST(Vic2World_Countries_CountryTests, LeadersCanBeAdded)
 	theStream << "\t\t\tprestige=20\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1256,9 +1256,9 @@ TEST(Vic2World_Countries_CountryTests, GeneralsAndAdmiralsAreLimited)
 	theStream << "\t\t\ttype=sea\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1279,9 +1279,9 @@ TEST(Vic2World_Countries_CountryTests, RevanchismDefaultsToZero)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1301,9 +1301,9 @@ TEST(Vic2World_Countries_CountryTests, RevanchismCanBeSet)
 	theStream << "\truling_party = 1\n";
 	theStream << "\trevanchism = 4.2\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1322,9 +1322,9 @@ TEST(Vic2World_Countries_CountryTests, WarExhaustionDefaultsToZero)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1344,9 +1344,9 @@ TEST(Vic2World_Countries_CountryTests, WarExhaustionCanBeSet)
 	theStream << "\truling_party = 1\n";
 	theStream << "\twar_exhaustion = 4.2\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1365,9 +1365,9 @@ TEST(Vic2World_Countries_CountryTests, BadBoyDefaultsToZero)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1387,9 +1387,9 @@ TEST(Vic2World_Countries_CountryTests, BadBoyCanBeSet)
 	theStream << "\truling_party = 1\n";
 	theStream << "\tbadboy = 4.2\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1408,9 +1408,9 @@ TEST(Vic2World_Countries_CountryTests, FlagsDefaultToEmpty)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1435,9 +1435,9 @@ TEST(Vic2World_Countries_CountryTests, FlagsCanBeSet)
 	theStream << "\t\ttest_flag_three=nobody_cares_what_this_is\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1456,9 +1456,9 @@ TEST(Vic2World_Countries_CountryTests, GovernmentDefaultsToBlank)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1478,9 +1478,9 @@ TEST(Vic2World_Countries_CountryTests, GovernmentCanBeSet)
 	theStream << "\truling_party = 1\n";
 	theStream << "\tgovernment=test_government\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1499,9 +1499,9 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionDefaultsToEmpty)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1526,9 +1526,9 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionCanBeSet)
 	theStream << "\t\tideology_three=0.125\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1558,9 +1558,9 @@ TEST(Vic2World_Countries_CountryTests, UpperHouseCompositionLogsErrorOnBadInput)
 	std::stringstream log;
 	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1585,9 +1585,9 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyUnsetLogsWarning)
 	std::cout.rdbuf(log.rdbuf());
 
 	std::stringstream theStream;
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1613,9 +1613,9 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyNonexistantThrowsException)
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
 
-	auto countryFactory = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto countryFactory = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())};
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()));
 
 	ASSERT_THROW(
 		 {
@@ -1649,9 +1649,9 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyCanBeSet)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1671,9 +1671,9 @@ TEST(Vic2World_Countries_CountryTests, RulingPartyNotSetForRebel)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("REB",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1692,9 +1692,9 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesDefaultToEmpty)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1715,9 +1715,9 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesCanBeSet)
 	theStream << "\tactive_party=1\n";
 	theStream << "\tactive_party=3\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1745,9 +1745,9 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesLoggedIfUndefined)
 	theStream << "\tactive_party=1\n";
 	theStream << "\tactive_party=3\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1774,9 +1774,9 @@ TEST(Vic2World_Countries_CountryTests, ActivePartiesCanBecomeRulingPartyIfUnset)
 	theStream << "= {\n";
 	theStream << "\tactive_party=3\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1798,9 +1798,9 @@ TEST(Vic2World_Countries_CountryTests, LastElectionDefaultsToOneOneOne)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1820,9 +1820,9 @@ TEST(Vic2World_Countries_CountryTests, LastElectionCanBeSet)
 	theStream << "\truling_party = 1\n";
 	theStream << "\tlast_election=1942.11.6\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1841,9 +1841,9 @@ TEST(Vic2World_Countries_CountryTests, ShipNamesDefaultToEmpty)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1864,9 +1864,9 @@ TEST(Vic2World_Countries_CountryTests, ShipNamesCanBeSet)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder()
@@ -1893,9 +1893,9 @@ TEST(Vic2World_Countries_CountryTests, AtWarDefaultsToFalse)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1914,9 +1914,9 @@ TEST(Vic2World_Countries_CountryTests, AtWarCanBeSet)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -1936,9 +1936,9 @@ TEST(Vic2World_Countries_CountryTests, WarsDefaultToEmpty)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -1957,9 +1957,9 @@ TEST(Vic2World_Countries_CountryTests, WarsCanBeAdded)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -1979,9 +1979,9 @@ TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalFalseWithNoCores)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -2001,9 +2001,9 @@ TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalFalseWithNoCoreOnCapital)
 	theStream << "\truling_party = 1\n";
 	theStream << "\tcapital = 42\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -2024,9 +2024,9 @@ TEST(Vic2World_Countries_CountryTests, HasCoreOnCapitalTrueWithCoreOnCapital)
 	theStream << "\truling_party = 1\n";
 	theStream << "\tcapital = 42\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2047,9 +2047,9 @@ TEST(Vic2World_Countries_CountryTests, EmployedWorkersDefaultsToZero)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -2090,9 +2090,9 @@ TEST(Vic2World_Countries_CountryTests, EmployedWorkersComeFromStates)
 	theStream << "\t\t}\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2127,9 +2127,9 @@ TEST(Vic2World_Countries_CountryTests, StateCategoriesCanBeSet)
 	theStream << "\t}\n";
 	theStream << "}";
 	const auto country =
-		 Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+		 Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 			  *Vic2::StateDefinitions::Builder().setProvinceToIDMap({{42, "TEST_STATE"}}).build(),
-			  Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+			  Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 			  .createCountry("TAG",
 					theStream,
 					*Vic2::CommonCountryData::Builder().Build(),
@@ -2157,9 +2157,9 @@ TEST(Vic2World_Countries_CountryTests, StateCategoriesLoggedWhenNotSet)
 	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
 
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().setProvinceToIDMap({{42, "TEST_STATE"}}).build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2180,9 +2180,9 @@ TEST(Vic2World_Countries_CountryTests, IssueSupportDefaultsToZero)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -2201,9 +2201,9 @@ TEST(Vic2World_Countries_CountryTests, IssueSupportComesFromProvinces)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2227,9 +2227,9 @@ TEST(Vic2World_Countries_CountryTests, NameMissingByDefault)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -2248,9 +2248,9 @@ TEST(Vic2World_Countries_CountryTests, NameComesFromLocalisations)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2277,9 +2277,9 @@ TEST(Vic2World_Countries_CountryTests, NameCanComeFromDomain)
 	theStream << "\truling_party = 1\n";
 	theStream << "\tdomain_region=\"Test Region\"\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2306,9 +2306,9 @@ TEST(Vic2World_Countries_CountryTests, NameFromDomainUpdatesLocalisations)
 	theStream << "\truling_party = 1\n";
 	theStream << "\tdomain_region=\"Test Region\"\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2334,9 +2334,9 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveMissingByDefault)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -2355,9 +2355,9 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveComesFromLocalisations)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2385,9 +2385,9 @@ TEST(Vic2World_Countries_CountryTests, AdjectiveCanComeFromDomain)
 	theStream << "\truling_party = 1\n";
 	theStream << "\tdomain_region=\"Test Region\"\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2424,9 +2424,9 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsStates)
 	theStream << "\t\tprovinces = { 1 }\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *stateDefinitions,
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2447,9 +2447,9 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsStates)
 	theStreamTwo << "\t\tprovinces = { 42 }\n";
 	theStreamTwo << "\t}\n";
 	theStreamTwo << "}";
-	const auto countryTwo = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *stateDefinitions,
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TWO",
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder().Build(),
@@ -2473,9 +2473,9 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsCores)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2488,9 +2488,9 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsCores)
 	theStreamTwo << "= {\n";
 	theStreamTwo << "\truling_party = 1\n";
 	theStreamTwo << "}";
-	const auto countryTwo = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TWO",
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder().Build(),
@@ -2518,9 +2518,9 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsProvinces)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2533,9 +2533,9 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsProvinces)
 	theStreamTwo << "= {\n";
 	theStreamTwo << "\truling_party = 1\n";
 	theStreamTwo << "}";
-	const auto countryTwo = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TWO",
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder().Build(),
@@ -2564,9 +2564,9 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsTechnologiesAndInvention
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2583,9 +2583,9 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsTechnologiesAndInvention
 	theStreamTwo << "\t\ttechnology_two = {}\n";
 	theStreamTwo << "\t}\n";
 	theStreamTwo << "}";
-	const auto countryTwo = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TWO",
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder().Build(),
@@ -2608,9 +2608,9 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsArmies)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2627,9 +2627,9 @@ TEST(Vic2World_Countries_CountryTests, EatCountryAbsorbsArmies)
 	theStreamTwo << "\t\t\tname=\"42nd Army\"\n";
 	theStreamTwo << "\t}\n";
 	theStreamTwo << "}";
-	const auto countryTwo = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TWO",
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder().Build(),
@@ -2652,9 +2652,9 @@ TEST(Vic2World_Countries_CountryTests, EatCountryNoLoggingIfDebugOff)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2667,9 +2667,9 @@ TEST(Vic2World_Countries_CountryTests, EatCountryNoLoggingIfDebugOff)
 	theStreamTwo << "= {\n";
 	theStreamTwo << "\truling_party = 1\n";
 	theStreamTwo << "}";
-	const auto countryTwo = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TWO",
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder().Build(),
@@ -2694,9 +2694,9 @@ TEST(Vic2World_Countries_CountryTests, EatCountryLogsIfDebugTrue)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2709,9 +2709,9 @@ TEST(Vic2World_Countries_CountryTests, EatCountryLogsIfDebugTrue)
 	theStreamTwo << "= {\n";
 	theStreamTwo << "\truling_party = 1\n";
 	theStreamTwo << "}";
-	const auto countryTwo = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TWO",
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder().Build(),
@@ -2739,9 +2739,9 @@ TEST(Vic2World_Countries_CountryTests, EatCountryHasNoEffectOnSelf)
 	theStream << "\t{\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2770,9 +2770,9 @@ TEST(Vic2World_Countries_CountryTests, ProvincesCanBePlacedInStates)
 	theStream << "\t\t}\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2801,9 +2801,9 @@ TEST(Vic2World_Countries_CountryTests, MissingProvinceInStateLogged)
 	theStream << "\t\t}\n";
 	theStream << "\t}\n";
 	theStream << "}";
-	auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 							 .createCountry("TAG",
 								  theStream,
 								  *Vic2::CommonCountryData::Builder().Build(),
@@ -2828,9 +2828,9 @@ TEST(Vic2World_Countries_CountryTests, SameTagsMakeEqualCountries)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -2843,9 +2843,9 @@ TEST(Vic2World_Countries_CountryTests, SameTagsMakeEqualCountries)
 	theStreamTwo << "= {\n";
 	theStreamTwo << "\truling_party = 1\n";
 	theStreamTwo << "}";
-	const auto countryTwo = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TAG",
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder().Build(),
@@ -2864,9 +2864,9 @@ TEST(Vic2World_Countries_CountryTests, DifferentTagsMakeUnequalCountries)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -2879,9 +2879,9 @@ TEST(Vic2World_Countries_CountryTests, DifferentTagsMakeUnequalCountries)
 	theStreamTwo << "= {\n";
 	theStreamTwo << "\truling_party = 1\n";
 	theStreamTwo << "}";
-	const auto countryTwo = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto countryTwo = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 										 .createCountry("TWO",
 											  theStreamTwo,
 											  *Vic2::CommonCountryData::Builder().Build(),
@@ -2900,9 +2900,9 @@ TEST(Vic2World_Countries_CountryTests, DynastyDefaultsToNullopt)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -2921,9 +2921,9 @@ TEST(Vic2World_Countries_CountryTests, DynastyImportedFromCountryData)
 	theStream << "= {\n";
 	theStream << "\truling_party = 1\n";
 	theStream << "}";
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  theStream,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -2940,9 +2940,9 @@ TEST(Vic2World_Countries_CountryTests, GoodsStockpileDefaultsToEmpty)
 {
 	std::stringstream input;
 
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  input,
 										  *Vic2::CommonCountryData::Builder().Build(),
@@ -2963,9 +2963,9 @@ TEST(Vic2World_Countries_CountryTests, GoodsStockpileIsReturned)
 	input << "\ttest_good = 4.2\n";
 	input << "}";
 
-	const auto country = Vic2::Country::Factory{*Configuration::Builder().setVic2Path("./countries/blank/").build(),
+	const auto country = Vic2::Country::Factory(*Configuration::Builder().setVic2Path("./countries/blank/").build(),
 		 *Vic2::StateDefinitions::Builder().build(),
-		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build())}
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder().build()))
 									 .createCountry("TAG",
 										  input,
 										  *Vic2::CommonCountryData::Builder().Build(),

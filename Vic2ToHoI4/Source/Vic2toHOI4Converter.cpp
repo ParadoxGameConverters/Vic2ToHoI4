@@ -21,7 +21,7 @@ void ConvertV2ToHoI4()
 	const auto provinceMapper =
 		 Mappers::ProvinceMapper::Factory(*theConfiguration).importProvinceMapper(*theConfiguration);
 
-	const auto sourceWorld = Vic2::World::Factory{*theConfiguration}.importWorld(*theConfiguration, *provinceMapper);
+	const auto sourceWorld = Vic2::World::Factory(*theConfiguration).importWorld(*theConfiguration, *provinceMapper);
 	const HoI4::World destWorld(*sourceWorld, *provinceMapper, *theConfiguration);
 
 	output(destWorld,
