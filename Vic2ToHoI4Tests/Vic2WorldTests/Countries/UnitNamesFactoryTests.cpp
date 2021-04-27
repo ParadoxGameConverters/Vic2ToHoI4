@@ -8,7 +8,7 @@
 TEST(Vic2World_Countries_UnitNamesFactoryTests, UnitNamesDefaultToEmpty)
 {
 	std::stringstream input;
-	const auto unitNames = Vic2::UnitNamesFactory{}.importUnitNames(input);
+	const auto unitNames = Vic2::UnitNamesFactory().importUnitNames(input);
 
 	ASSERT_TRUE(unitNames.empty());
 }
@@ -23,7 +23,7 @@ TEST(Vic2World_Countries_UnitNamesFactoryTests, UnitNamesCanBeSet)
 	input << "\tironclad = {\n";
 	input << "\t\tErivan Nakchivan\n";
 	input << "\t}\n";
-	const auto unitNames = Vic2::UnitNamesFactory{}.importUnitNames(input);
+	const auto unitNames = Vic2::UnitNamesFactory().importUnitNames(input);
 
 	ASSERT_THAT(unitNames,
 		 testing::UnorderedElementsAre(
@@ -41,7 +41,7 @@ TEST(Vic2World_Countries_UnitNamesFactoryTests, MoreNamesCanBeAdded)
 	input << "\tironclad = {\n";
 	input << "\t\tNakchivan\n";
 	input << "\t}\n";
-	const auto unitNames = Vic2::UnitNamesFactory{}.importUnitNames(input);
+	const auto unitNames = Vic2::UnitNamesFactory().importUnitNames(input);
 
 	ASSERT_THAT(unitNames,
 		 testing::UnorderedElementsAre(

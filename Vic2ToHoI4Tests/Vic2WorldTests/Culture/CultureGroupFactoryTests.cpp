@@ -8,7 +8,7 @@ TEST(Vic2World_CultureGroupFactoryTests, GroupDefaultsToEmpy)
 {
 	std::stringstream input;
 
-	const auto cultureGroup = Vic2::CultureGroupFactory{}.getCultureGroup(input);
+	const auto cultureGroup = Vic2::CultureGroupFactory().getCultureGroup(input);
 	ASSERT_TRUE(cultureGroup.empty());
 }
 
@@ -23,7 +23,7 @@ TEST(Vic2World_CultureGroupFactoryTests, NonCultureItemsAreIgnored)
 	input << "\tis_overseas = {}\n";
 	input << "}";
 
-	const auto cultureGroup = Vic2::CultureGroupFactory{}.getCultureGroup(input);
+	const auto cultureGroup = Vic2::CultureGroupFactory().getCultureGroup(input);
 	ASSERT_TRUE(cultureGroup.empty());
 }
 
@@ -36,7 +36,7 @@ TEST(Vic2World_CultureGroupFactoryTests, CulturesAreImported)
 	input << "\tculture_two = {}\n";
 	input << "}";
 
-	const auto cultureGroup = Vic2::CultureGroupFactory{}.getCultureGroup(input);
+	const auto cultureGroup = Vic2::CultureGroupFactory().getCultureGroup(input);
 	ASSERT_EQ(2, cultureGroup.size());
 	ASSERT_EQ("culture_one", cultureGroup[0]);
 	ASSERT_EQ("culture_two", cultureGroup[1]);

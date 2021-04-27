@@ -20,8 +20,8 @@ class HoI4World_technologiesTests: public ::testing::Test
 
 
 HoI4World_technologiesTests::HoI4World_technologiesTests():
-	 techMapper(Mappers::TechMapper::Factory{}.importTechMapper()),
-	 researchBonusMapper(Mappers::ResearchBonusMapper::Factory{}.importResearchBonusMapper())
+	 techMapper(Mappers::TechMapper::Factory().importTechMapper()),
+	 researchBonusMapper(Mappers::ResearchBonusMapper::Factory().importResearchBonusMapper())
 {
 }
 

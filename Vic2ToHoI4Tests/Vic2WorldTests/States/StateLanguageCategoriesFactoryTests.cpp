@@ -6,7 +6,7 @@
 
 TEST(Vic2World_States_StateLanguageCategories, StateCategoriesCanBeImported)
 {
-	const auto theCategories = Vic2::StateLanguageCategories::Factory{}.getCategories();
+	const auto theCategories = Vic2::StateLanguageCategories::Factory().getCategories();
 
 	ASSERT_EQ("test_category", theCategories->getStateCategory("test_state"));
 }

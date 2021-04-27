@@ -14,7 +14,7 @@
 void checkMods(const Configuration& theConfiguration);
 void ConvertV2ToHoI4()
 {
-	const auto theConfiguration = Configuration::Factory{}.importConfiguration("configuration.txt");
+	const auto theConfiguration = Configuration::Factory().importConfiguration("configuration.txt");
 	checkMods(*theConfiguration);
 	clearOutputFolder(theConfiguration->getOutputName());
 

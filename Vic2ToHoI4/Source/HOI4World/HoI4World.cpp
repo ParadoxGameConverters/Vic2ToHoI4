@@ -75,10 +75,10 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	theMapData = std::make_unique<MapData>(provinceDefinitions, theConfiguration);
 	const auto theProvinces = importProvinces(theConfiguration);
 	theCoastalProvinces.init(*theMapData, theProvinces);
-	strategicRegions = StrategicRegions::Factory{}.importStrategicRegions(theConfiguration);
-	names = Names::Factory{}.getNames(theConfiguration);
+	strategicRegions = StrategicRegions::Factory().importStrategicRegions(theConfiguration);
+	names = Names::Factory().getNames(theConfiguration);
 	graphicsMapper = Mappers::GraphicsMapper::Factory().importGraphicsMapper();
-	countryNameMapper = Mappers::CountryNameMapper::Factory{}.importCountryNameMapper();
+	countryNameMapper = Mappers::CountryNameMapper::Factory().importCountryNameMapper();
 	convertCountries(sourceWorld);
 	determineGreatPowers(sourceWorld);
 	governmentMapper = Mappers::GovernmentMapper::Factory().importGovernmentMapper();
@@ -87,7 +87,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	ideologies = std::make_unique<Ideologies>(theConfiguration);
 	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
 	convertCountryNames(vic2Localisations);
-	scriptedLocalisations = ScriptedLocalisations::Factory{}.getScriptedLocalisations();
+	scriptedLocalisations = ScriptedLocalisations::Factory().getScriptedLocalisations();
 	scriptedLocalisations->updateIdeologyLocalisations(ideologies->getMajorIdeologies());
 	scriptedLocalisations->filterIdeologyLocalisations(ideologies->getMajorIdeologies());
 	hoi4Localisations->generateCustomLocalisations(*scriptedLocalisations, ideologies->getMajorIdeologies());
@@ -179,16 +179,16 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 GameRules::Parser{}.parseRulesFile(theConfiguration.getHoI4Path() + "/common/game_rules/00_game_rules.txt"));
 	gameRules->updateRules();
 
-	occupationLaws = OccupationLaws::Factory{}.getOccupationLaws(theConfiguration);
+	occupationLaws = OccupationLaws::Factory().getOccupationLaws(theConfiguration);
 	occupationLaws->updateLaws(ideologies->getMajorIdeologies());
 
 	operativeNames = OperativeNames::Factory::getOperativeNames(theConfiguration.getHoI4Path());
 	operativeNames->addCountriesToNameSets(countries);
 
-	operations = Operations::Factory{}.getOperations(theConfiguration.getHoI4Path());
+	operations = Operations::Factory().getOperations(theConfiguration.getHoI4Path());
 	operations->updateOperations(ideologies->getMajorIdeologies());
 
-	soundEffects = SoundEffectsFactory{}.createSoundEffects(countries);
+	soundEffects = SoundEffectsFactory().createSoundEffects(countries);
 }
 
 
@@ -305,7 +305,7 @@ void HoI4::World::convertGovernments(const Vic2::World& sourceWorld,
 void HoI4::World::convertCountryNames(const Vic2::Localisations& vic2Localisations)
 {
 	Log(LogLevel::Info) << "\tConverting country names";
-	const auto articleRules = ArticleRules::Factory{}.getRules("Configurables/Localisations/ArticleRules.txt");
+	const auto articleRules = ArticleRules::Factory().getRules("Configurables/Localisations/ArticleRules.txt");
 	for (const auto& [tag, country]: countries)
 	{
 		hoi4Localisations->createCountryLocalisations(std::make_pair(country->getOldTag(), tag),
@@ -357,7 +357,7 @@ void HoI4::World::addNeutrality(bool debug)
 void HoI4::World::addLeaders()
 {
 	Log(LogLevel::Info) << "\tAdding leaders";
-	auto configurableLeaders = CountryLeadersFactory{}.importCountryLeaders();
+	auto configurableLeaders = CountryLeadersFactory().importCountryLeaders();
 
 	for (auto& [tag, country]: countries)
 	{
@@ -406,7 +406,7 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 		}
 	}
 
-	const auto theRegions = Regions::Factory{}.getRegions();
+	const auto theRegions = Regions::Factory().getRegions();
 	for (auto country: countries)
 	{
 		if (country.second->getStates().size() > 0)
@@ -618,8 +618,8 @@ void HoI4::World::convertTechs()
 {
 	Log(LogLevel::Info) << "\tConverting techs and research bonuses";
 
-	const auto techMapper = Mappers::TechMapper::Factory{}.importTechMapper();
-	const auto researchBonusMapper = Mappers::ResearchBonusMapper::Factory{}.importResearchBonusMapper();
+	const auto techMapper = Mappers::TechMapper::Factory().importTechMapper();
+	const auto researchBonusMapper = Mappers::ResearchBonusMapper::Factory().importResearchBonusMapper();
 
 	for (const auto& [unused, country]: countries)
 	{

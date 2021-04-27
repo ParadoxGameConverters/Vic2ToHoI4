@@ -7,7 +7,7 @@
 TEST(Vic2World_Diplomacy_DiplomacyTests, AgreementsDefaultToEmpty)
 {
 	std::stringstream input;
-	const auto diplomacy = Vic2::Diplomacy::Factory{}.getDiplomacy(input);
+	const auto diplomacy = Vic2::Diplomacy::Factory().getDiplomacy(input);
 
 	ASSERT_TRUE(diplomacy->getAgreements().empty());
 }
@@ -18,7 +18,7 @@ TEST(Vic2World_Diplomacy_DiplomacyTests, AgreementsCanBeAdded)
 	std::stringstream input;
 	input << "type_one = {}\n";
 	input << "type_two = {}\n";
-	const auto diplomacy = Vic2::Diplomacy::Factory{}.getDiplomacy(input);
+	const auto diplomacy = Vic2::Diplomacy::Factory().getDiplomacy(input);
 
 	ASSERT_EQ(2, diplomacy->getAgreements().size());
 	ASSERT_EQ("type_one", diplomacy->getAgreements()[0].getType());

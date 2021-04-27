@@ -8,7 +8,7 @@
 
 TEST(Vic2World_CultureGroupsTests, UnmatchedCultureReturnsNullopt)
 {
-	const auto cultureGroups = Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.build());
+	const auto cultureGroups = Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder{}.build());
 
 	ASSERT_EQ(std::nullopt, cultureGroups->getGroup("unmatched_culture"));
 }
@@ -17,7 +17,7 @@ TEST(Vic2World_CultureGroupsTests, UnmatchedCultureReturnsNullopt)
 TEST(Vic2World_CultureGroupsTests, BaseGameCulturesCanBeMatched)
 {
 	const auto cultureGroups =
-		 Vic2::CultureGroups::Factory{}.getCultureGroups(*Configuration::Builder{}.setVic2Path("./BaseCultures").build());
+		 Vic2::CultureGroups::Factory().getCultureGroups(*Configuration::Builder{}.setVic2Path("./BaseCultures").build());
 
 	ASSERT_EQ("base_game_group", cultureGroups->getGroup("matched_culture"));
 }
@@ -25,7 +25,7 @@ TEST(Vic2World_CultureGroupsTests, BaseGameCulturesCanBeMatched)
 
 TEST(Vic2World_CultureGroupsTests, ModCulturesCanBeMatched)
 {
-	const auto cultureGroups = Vic2::CultureGroups::Factory{}.getCultureGroups(
+	const auto cultureGroups = Vic2::CultureGroups::Factory().getCultureGroups(
 		 *Configuration::Builder{}
 				.setVic2ModPath("./ModCultures")
 				.addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("ModOne").build())
@@ -37,7 +37,7 @@ TEST(Vic2World_CultureGroupsTests, ModCulturesCanBeMatched)
 
 TEST(Vic2World_CultureGroupsTests, OnlyFinalModCulturesCanBeMatched)
 {
-	const auto cultureGroups = Vic2::CultureGroups::Factory{}.getCultureGroups(
+	const auto cultureGroups = Vic2::CultureGroups::Factory().getCultureGroups(
 		 *Configuration::Builder{}
 				.setVic2Path("./BaseCultures")
 				.setVic2ModPath("./ModCultures")

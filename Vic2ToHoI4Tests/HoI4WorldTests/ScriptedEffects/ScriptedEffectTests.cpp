@@ -8,7 +8,7 @@
 TEST(HoI4World_ScriptedEffects_ScriptedEffectTests, NameCanBeSet)
 {
 	std::stringstream input;
-	const auto theEffect = HoI4::ScriptedEffect::Factory{}.getScriptedEffect("test_name", input);
+	const auto theEffect = HoI4::ScriptedEffect::Factory().getScriptedEffect("test_name", input);
 
 	ASSERT_EQ("test_name", theEffect->getName());
 }
@@ -17,7 +17,7 @@ TEST(HoI4World_ScriptedEffects_ScriptedEffectTests, NameCanBeSet)
 TEST(HoI4World_ScriptedEffects_ScriptedEffectTests, ItemsDefaultToEmpty)
 {
 	std::stringstream input;
-	const auto theEffect = HoI4::ScriptedEffect::Factory{}.getScriptedEffect("test_name", input);
+	const auto theEffect = HoI4::ScriptedEffect::Factory().getScriptedEffect("test_name", input);
 
 	ASSERT_TRUE(theEffect->getItems().empty());
 }
@@ -30,7 +30,7 @@ TEST(HoI4World_ScriptedEffects_ScriptedEffectTests, ItemsCanBeSet)
 	input << "\tif = { whatever }\n";
 	input << "\tfoo = { bar }\n";
 	input << "}";
-	const auto theEffect = HoI4::ScriptedEffect::Factory{}.getScriptedEffect("test_name", input);
+	const auto theEffect = HoI4::ScriptedEffect::Factory().getScriptedEffect("test_name", input);
 
 	const std::vector<std::pair<std::string, std::string>> expectedItems{{"if", "= { whatever }"}, {"foo", "= { bar }"}};
 	ASSERT_EQ(expectedItems, theEffect->getItems());
@@ -44,7 +44,7 @@ TEST(HoI4World_ScriptedEffects_ScriptedEffectTests, ItemsCanBeModified)
 	input << "\tif = { whatever }\n";
 	input << "\tfoo = { bar }\n";
 	input << "}";
-	const auto theEffect = HoI4::ScriptedEffect::Factory{}.getScriptedEffect("test_name", input);
+	const auto theEffect = HoI4::ScriptedEffect::Factory().getScriptedEffect("test_name", input);
 
 	auto& items = theEffect->getMutableItems();
 	for (auto& [itemName, itemBody]: items)

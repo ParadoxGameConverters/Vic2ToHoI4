@@ -9,7 +9,7 @@
 TEST(Vic2World_Vic2_AI_Tests, AiStrategiesDefaultToEmpty)
 {
 	std::stringstream input;
-	const auto newVic2Ai = Vic2::AI::Factory{}.importAI(input);
+	const auto newVic2Ai = Vic2::AI::Factory().importAI(input);
 
 	ASSERT_TRUE(newVic2Ai->getStrategies().empty());
 }
@@ -43,7 +43,7 @@ TEST(Vic2World_Vic2_AI_Tests, AiStrategiesCanBeSet)
 	input << "\tid=\"PSE\"\n";
 	input << "\tvalue=34\n";
 	input << "}\n";
-	const auto newVic2Ai = Vic2::AI::Factory{}.importAI(input);
+	const auto newVic2Ai = Vic2::AI::Factory().importAI(input);
 
 	ASSERT_EQ(5, newVic2Ai->getStrategies().size());
 	ASSERT_EQ("threat", newVic2Ai->getStrategies()[0].getType());
@@ -67,7 +67,7 @@ TEST(Vic2World_Vic2_AI_Tests, AiStrategiesCanBeSet)
 TEST(Vic2World_Vic2_AI_Tests, ConquerStrategiesDefaultToEmpty)
 {
 	std::stringstream input;
-	const auto newVic2Ai = Vic2::AI::Factory{}.importAI(input);
+	const auto newVic2Ai = Vic2::AI::Factory().importAI(input);
 
 	ASSERT_TRUE(newVic2Ai->getConquerStrategies().empty());
 }
@@ -81,7 +81,7 @@ TEST(Vic2World_Vic2_AI_Tests, ConquerStrategiesCanBeSet)
 	input << "\tid=278\n";
 	input << "\tvalue=182\n";
 	input << "}\n";
-	const auto newVic2Ai = Vic2::AI::Factory{}.importAI(input);
+	const auto newVic2Ai = Vic2::AI::Factory().importAI(input);
 
 	ASSERT_EQ(1, newVic2Ai->getConquerStrategies().size());
 	ASSERT_EQ("conquer_prov", newVic2Ai->getConquerStrategies()[0].getType());
@@ -113,7 +113,7 @@ TEST(Vic2World_Vic2_AI_Tests, ConquerStrategiesProperlyConsolidated)
 	input << "\tid=45\n";
 	input << "\tvalue=11\n";
 	input << "}\n";
-	auto newVic2Ai = Vic2::AI::Factory{}.importAI(input);
+	auto newVic2Ai = Vic2::AI::Factory().importAI(input);
 
 	const std::map<int, std::shared_ptr<Vic2::Province>> provinceMap{
 		 {42, Vic2::Province::Builder{}.setNumber(42).setOwner("TAG").build()},

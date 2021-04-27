@@ -8,7 +8,7 @@
 TEST(Vic2World_Politics_PartyTests, NameDefaultsToEmpty)
 {
 	std::stringstream input;
-	const auto party = Vic2::Party::Factory{}.getParty(input);
+	const auto party = Vic2::Party::Factory().getParty(input);
 
 	ASSERT_TRUE(party->getName().empty());
 }
@@ -20,7 +20,7 @@ TEST(Vic2World_Politics_PartyTests, NameCanBeSet)
 	input << "= {\n";
 	input << "\tname = \"test_name\"\n";
 	input << "}";
-	const auto party = Vic2::Party::Factory{}.getParty(input);
+	const auto party = Vic2::Party::Factory().getParty(input);
 
 	ASSERT_EQ("test_name", party->getName());
 }
@@ -29,7 +29,7 @@ TEST(Vic2World_Politics_PartyTests, NameCanBeSet)
 TEST(Vic2World_Politics_PartyTests, IdeologyDefaultsToConservative)
 {
 	std::stringstream input;
-	const auto party = Vic2::Party::Factory{}.getParty(input);
+	const auto party = Vic2::Party::Factory().getParty(input);
 
 	ASSERT_EQ("conservative", party->getIdeology());
 }
@@ -41,7 +41,7 @@ TEST(Vic2World_Politics_PartyTests, IdeologyCanBeSet)
 	input << "= {\n";
 	input << "\tideology = \"test_ideology\"\n";
 	input << "}";
-	const auto party = Vic2::Party::Factory{}.getParty(input);
+	const auto party = Vic2::Party::Factory().getParty(input);
 
 	ASSERT_EQ("test_ideology", party->getIdeology());
 }
@@ -50,7 +50,7 @@ TEST(Vic2World_Politics_PartyTests, IdeologyCanBeSet)
 TEST(Vic2World_Politics_PartyTests, EconomicPolicyDefaultsToInterventionism)
 {
 	std::stringstream input;
-	const auto party = Vic2::Party::Factory{}.getParty(input);
+	const auto party = Vic2::Party::Factory().getParty(input);
 
 	ASSERT_EQ("interventionism", party->getEconomicPolicy());
 }
@@ -62,7 +62,7 @@ TEST(Vic2World_Politics_PartyTests, EconomicPolicyCanBeSet)
 	input << "= {\n";
 	input << "\teconomic_policy = \"test_policy\"\n";
 	input << "}";
-	const auto party = Vic2::Party::Factory{}.getParty(input);
+	const auto party = Vic2::Party::Factory().getParty(input);
 
 	ASSERT_EQ("test_policy", party->getEconomicPolicy());
 }
@@ -71,7 +71,7 @@ TEST(Vic2World_Politics_PartyTests, EconomicPolicyCanBeSet)
 TEST(Vic2World_Politics_PartyTests, TradePolicyDefaultsToProtectionism)
 {
 	std::stringstream input;
-	const auto party = Vic2::Party::Factory{}.getParty(input);
+	const auto party = Vic2::Party::Factory().getParty(input);
 
 	ASSERT_EQ("protectionism", party->getTradePolicy());
 }
@@ -83,7 +83,7 @@ TEST(Vic2World_Politics_PartyTests, TradePolicyCanBeSet)
 	input << "= {\n";
 	input << "\ttrade_policy = \"test_policy\"\n";
 	input << "}";
-	const auto party = Vic2::Party::Factory{}.getParty(input);
+	const auto party = Vic2::Party::Factory().getParty(input);
 
 	ASSERT_EQ("test_policy", party->getTradePolicy());
 }
@@ -92,7 +92,7 @@ TEST(Vic2World_Politics_PartyTests, TradePolicyCanBeSet)
 TEST(Vic2World_Politics_PartyTests, ReligiousPolicyDefaultsToMoralism)
 {
 	std::stringstream input;
-	const auto party = Vic2::Party::Factory{}.getParty(input);
+	const auto party = Vic2::Party::Factory().getParty(input);
 
 	ASSERT_EQ("moralism", party->getReligiousPolicy());
 }
@@ -104,7 +104,7 @@ TEST(Vic2World_Politics_PartyTests, ReligiousPolicyCanBeSet)
 	input << "= {\n";
 	input << "\treligious_policy = \"test_policy\"\n";
 	input << "}";
-	const auto party = Vic2::Party::Factory{}.getParty(input);
+	const auto party = Vic2::Party::Factory().getParty(input);
 
 	ASSERT_EQ("test_policy", party->getReligiousPolicy());
 }
@@ -113,7 +113,7 @@ TEST(Vic2World_Politics_PartyTests, ReligiousPolicyCanBeSet)
 TEST(Vic2World_Politics_PartyTests, CitizenshipPolicyDefaultsToResidency)
 {
 	std::stringstream input;
-	const auto party = Vic2::Party::Factory{}.getParty(input);
+	const auto party = Vic2::Party::Factory().getParty(input);
 
 	ASSERT_EQ("residency", party->getCitizenshipPolicy());
 }
@@ -125,7 +125,7 @@ TEST(Vic2World_Politics_PartyTests, CitizenshipPolicyCanBeSet)
 	input << "= {\n";
 	input << "\tcitizenship_policy = \"test_policy\"\n";
 	input << "}";
-	const auto party = Vic2::Party::Factory{}.getParty(input);
+	const auto party = Vic2::Party::Factory().getParty(input);
 
 	ASSERT_EQ("test_policy", party->getCitizenshipPolicy());
 }
@@ -134,7 +134,7 @@ TEST(Vic2World_Politics_PartyTests, CitizenshipPolicyCanBeSet)
 TEST(Vic2World_Politics_PartyTests, WarPolicyDefaultsToProMilitary)
 {
 	std::stringstream input;
-	const auto party = Vic2::Party::Factory{}.getParty(input);
+	const auto party = Vic2::Party::Factory().getParty(input);
 
 	ASSERT_EQ("pro_military", party->getWarPolicy());
 }
@@ -146,7 +146,7 @@ TEST(Vic2World_Politics_PartyTests, WarPolicyCanBeSet)
 	input << "= {\n";
 	input << "\twar_policy = \"test_policy\"\n";
 	input << "}";
-	const auto party = Vic2::Party::Factory{}.getParty(input);
+	const auto party = Vic2::Party::Factory().getParty(input);
 
 	ASSERT_EQ("test_policy", party->getWarPolicy());
 }

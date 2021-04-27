@@ -7,7 +7,7 @@
 
 void HoI4::OperativeNames::addCountriesToNameSets(const std::map<std::string, std::shared_ptr<Country>>& countries)
 {
-	const auto mappings = OperativeNamesMappings::Factory{}.getMappings();
+	const auto mappings = OperativeNamesMappings::Factory().getMappings();
 	for (const auto& country: countries)
 	{
 		const auto& culture = country.second->getPrimaryCulture();

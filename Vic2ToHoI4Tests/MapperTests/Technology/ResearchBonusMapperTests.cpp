@@ -6,7 +6,7 @@
 
 TEST(Mappers_ResearchBonusMapperTests, researchBonusesCanBeImported)
 {
-	const auto researchBonusMapper = Mappers::ResearchBonusMapper::Factory{}.importResearchBonusMapper();
+	const auto researchBonusMapper = Mappers::ResearchBonusMapper::Factory().importResearchBonusMapper();
 
 	ASSERT_EQ(3, researchBonusMapper->getResearchBonusMappings().size());
 
