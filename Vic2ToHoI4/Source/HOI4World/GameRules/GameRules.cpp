@@ -10,7 +10,7 @@ HoI4::GameRules HoI4::GameRules::Parser::parseRulesFile(const std::string& filen
 	std::vector<GameRule> rules;
 
 	registerRegex(commonItems::catchallRegex, [&rules](const std::string& ruleKey, std::istream& theStream) {
-		const auto rule = GameRule::Parser{}.parseRule(ruleKey, theStream);
+		const auto rule = GameRule::Parser().parseRule(ruleKey, theStream);
 		rules.push_back(rule);
 	});
 	parseFile(filename);

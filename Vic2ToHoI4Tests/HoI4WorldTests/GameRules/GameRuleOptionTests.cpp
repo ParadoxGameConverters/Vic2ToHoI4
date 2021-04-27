@@ -45,7 +45,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, IsDefaultCanBeParsed)
 	input << "= {\n";
 	input << "\t\tname = OPTION_NAME\n";
 	input << "\t}";
-	auto option = HoI4::GameRuleOption::Parser{}.parseOption("default", input);
+	auto option = HoI4::GameRuleOption::Parser().parseOption("default", input);
 
 	std::stringstream output;
 	output << option;
@@ -83,7 +83,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, NameCanBeParsed)
 	input << "= {\n";
 	input << "\t\tname = OPTION_NAME\n";
 	input << "\t}";
-	auto option = HoI4::GameRuleOption::Parser{}.parseOption("option", input);
+	auto option = HoI4::GameRuleOption::Parser().parseOption("option", input);
 
 	std::stringstream output;
 	output << option;
@@ -121,7 +121,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, TextCanBeParsed)
 	input << "= {\n";
 	input << "\t\ttext = OPTION_TEXT\n";
 	input << "\t}";
-	auto option = HoI4::GameRuleOption::Parser{}.parseOption("option", input);
+	auto option = HoI4::GameRuleOption::Parser().parseOption("option", input);
 
 	std::stringstream output;
 	output << option;
@@ -159,7 +159,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, DescriptionCanBeParsed)
 	input << "= {\n";
 	input << "\t\tdesc = OPTION_DESC\n";
 	input << "\t}";
-	auto option = HoI4::GameRuleOption::Parser{}.parseOption("option", input);
+	auto option = HoI4::GameRuleOption::Parser().parseOption("option", input);
 
 	std::stringstream output;
 	output << option;
@@ -198,7 +198,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, AllowAchievementsCanBeParsedToYes)
 	input << "= {\n";
 	input << "\t\tallow_achievements = yes\n";
 	input << "\t}";
-	auto option = HoI4::GameRuleOption::Parser{}.parseOption("option", input);
+	auto option = HoI4::GameRuleOption::Parser().parseOption("option", input);
 
 	std::stringstream output;
 	output << option;
@@ -238,7 +238,7 @@ TEST(HoI4World_GameRules_GameRuleOptionTests, AllowAchievementsCanBeParsedToNo)
 	input << "= {\n";
 	input << "\t\tallow_achievements = no\n";
 	input << "\t}";
-	auto option = HoI4::GameRuleOption::Parser{}.parseOption("option", input);
+	auto option = HoI4::GameRuleOption::Parser().parseOption("option", input);
 
 	std::stringstream output;
 	output << option;

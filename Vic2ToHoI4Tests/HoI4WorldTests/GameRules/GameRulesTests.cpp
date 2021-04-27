@@ -14,7 +14,7 @@ TEST(HoI4World_GameRules_GameRulesTests, RulesDefaultToEmpty)
 
 TEST(HoI4World_GameRules_GameRulesTests, RulesDefaultParseToEmpty)
 {
-	const auto rules = HoI4::GameRules::Parser{}.parseRulesFile("GameRulesEmpty.txt");
+	const auto rules = HoI4::GameRules::Parser().parseRulesFile("GameRulesEmpty.txt");
 
 	ASSERT_TRUE(rules.getGameRules().empty());
 }
@@ -32,7 +32,7 @@ TEST(HoI4World_GameRules_GameRulesTests, RulesCanBeAdded)
 
 TEST(HoI4World_GameRules_GameRulesTests, RulesCanBeParsed)
 {
-	const auto rules = HoI4::GameRules::Parser{}.parseRulesFile("GameRules.txt");
+	const auto rules = HoI4::GameRules::Parser().parseRulesFile("GameRules.txt");
 
 	const auto& theRules = rules.getGameRules();
 	ASSERT_EQ(5, theRules.size());
@@ -41,7 +41,7 @@ TEST(HoI4World_GameRules_GameRulesTests, RulesCanBeParsed)
 
 TEST(HoI4World_GameRules_GameRulesTests, RulesCanBeRemoved)
 {
-	auto rules = HoI4::GameRules::Parser{}.parseRulesFile("GameRules.txt");
+	auto rules = HoI4::GameRules::Parser().parseRulesFile("GameRules.txt");
 	rules.updateRules();
 
 	const auto& theRules = rules.getGameRules();

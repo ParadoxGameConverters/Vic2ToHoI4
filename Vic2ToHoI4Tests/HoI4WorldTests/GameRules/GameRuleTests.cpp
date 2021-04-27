@@ -41,7 +41,7 @@ TEST(HoI4World_GameRules_GameRuleTests, KeyCanBeSet)
 TEST(HoI4World_GameRules_GameRuleTests, KeyCanBeParsed)
 {
 	std::stringstream input;
-	auto rule = HoI4::GameRule::Parser{}.parseRule("test_rule", input);
+	auto rule = HoI4::GameRule::Parser().parseRule("test_rule", input);
 
 	std::stringstream output;
 	output << rule;
@@ -78,7 +78,7 @@ TEST(HoI4World_GameRules_GameRuleTests, NameCanBeParsed)
 	input << " = {\n";
 	input << "\tname = RULE_TEST\n";
 	input << "}";
-	auto rule = HoI4::GameRule::Parser{}.parseRule("", input);
+	auto rule = HoI4::GameRule::Parser().parseRule("", input);
 
 	std::stringstream output;
 	output << rule;
@@ -115,7 +115,7 @@ TEST(HoI4World_GameRules_GameRuleTests, RequiredDlcCanBeParsed)
 	input << " = {\n";
 	input << "\trequired_dlc = \"Test Required DLC\"\n";
 	input << "}";
-	auto rule = HoI4::GameRule::Parser{}.parseRule("", input);
+	auto rule = HoI4::GameRule::Parser().parseRule("", input);
 
 	std::stringstream output;
 	output << rule;
@@ -152,7 +152,7 @@ TEST(HoI4World_GameRules_GameRuleTests, GroupCanBeParsed)
 	input << " = {\n";
 	input << "\tgroup = \"RULE_GROUP_TEST\"\n";
 	input << "}";
-	auto rule = HoI4::GameRule::Parser{}.parseRule("", input);
+	auto rule = HoI4::GameRule::Parser().parseRule("", input);
 
 	std::stringstream output;
 	output << rule;
@@ -189,7 +189,7 @@ TEST(HoI4World_GameRules_GameRuleTests, IconCanBeParsed)
 	input << " = {\n";
 	input << "\ticon = \"GFX_test\"\n";
 	input << "}";
-	auto rule = HoI4::GameRule::Parser{}.parseRule("", input);
+	auto rule = HoI4::GameRule::Parser().parseRule("", input);
 
 	std::stringstream output;
 	output << rule;
@@ -245,7 +245,7 @@ TEST(HoI4World_GameRules_GameRuleTests, OptionsCanBeParsed)
 	input << "\tdefault= {\n";
 	input << "\t}";
 	input << "}";
-	auto rule = HoI4::GameRule::Parser{}.parseRule("", input);
+	auto rule = HoI4::GameRule::Parser().parseRule("", input);
 
 	std::stringstream output;
 	output << rule;
