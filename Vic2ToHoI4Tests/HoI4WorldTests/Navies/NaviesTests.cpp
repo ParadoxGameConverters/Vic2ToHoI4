@@ -65,13 +65,13 @@ HoI4World_Navies_NaviesTests::HoI4World_Navies_NaviesTests(): provinceDefinition
 	HoI4::PossibleShipVariants thePossibleVariants(shipVariantsInput);
 
 	theShipVariants = std::make_unique<HoI4::ShipVariants>(thePossibleVariants,
-		 *HoI4::technologies::Builder{}
+		 *HoI4::technologies::Builder()
 				.addTechnology("early_ship_hull_light")
 				.addTechnology("basic_ship_hull_light")
 				.Build(),
 		 "");
 	limitedShipVariants = std::make_unique<HoI4::ShipVariants>(thePossibleVariants,
-		 *HoI4::technologies::Builder{}.addTechnology("early_ship_hull_light").Build(),
+		 *HoI4::technologies::Builder().addTechnology("early_ship_hull_light").Build(),
 		 "");
 
 	provinceMapper = *Mappers::ProvinceMapper::Builder().Build();
@@ -127,7 +127,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToLegacy)
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	const auto ownedTechs = *HoI4::technologies::Builder{}.Build();
+	const auto ownedTechs = *HoI4::technologies::Builder().Build();
 	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	HoI4::Navies navies(sourceArmies,
@@ -215,7 +215,7 @@ TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableLegacyShipType)
 		 provinceDefinitions,
 		 provinceMapper);
 	std::ostringstream output;
-	outputMtgNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
+	outputMtgNavies(navies, *HoI4::technologies::Builder().Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -269,7 +269,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToLegacy)
 		 provinceDefinitions,
 		 provinceMapper);
 	std::ostringstream output;
-	outputLegacyNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
+	outputLegacyNavies(navies, *HoI4::technologies::Builder().Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -331,7 +331,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToLegacyNavy)
 		 provinceDefinitions,
 		 provinceMapper);
 	std::ostringstream output;
-	outputLegacyNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
+	outputLegacyNavies(navies, *HoI4::technologies::Builder().Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -391,7 +391,7 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyNavyNamesConvert)
 	input << "\ttype = destroyer_1\n";
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
-	const auto ownedTechs = *HoI4::technologies::Builder{}.Build();
+	const auto ownedTechs = *HoI4::technologies::Builder().Build();
 	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	HoI4::Navies navies(sourceArmies,
@@ -445,7 +445,7 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHave1936DestroyerInProduction)
 
 	std::stringstream input;
 	HoI4::PossibleShipVariants possibleVariants(input);
-	const auto ownedTechs = *HoI4::technologies::Builder{}.addTechnology("basic_destroyer").Build();
+	const auto ownedTechs = *HoI4::technologies::Builder().addTechnology("basic_destroyer").Build();
 	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	HoI4::Navies navies(sourceArmies,
@@ -498,7 +498,7 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHaveEarlyDestroyerInProduction)
 
 	std::stringstream input;
 	HoI4::PossibleShipVariants possibleVariants(input);
-	const auto ownedTechs = *HoI4::technologies::Builder{}.addTechnology("early_destroyer").Build();
+	const auto ownedTechs = *HoI4::technologies::Builder().addTechnology("early_destroyer").Build();
 	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	HoI4::Navies navies(sourceArmies,
@@ -551,7 +551,7 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHave1936BattleshipInProduction)
 
 	std::stringstream input;
 	HoI4::PossibleShipVariants possibleVariants(input);
-	const auto ownedTechs = *HoI4::technologies::Builder{}.addTechnology("basic_battleship").Build();
+	const auto ownedTechs = *HoI4::technologies::Builder().addTechnology("basic_battleship").Build();
 	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	HoI4::Navies navies(sourceArmies,
@@ -604,7 +604,7 @@ TEST_F(HoI4World_Navies_NaviesTests, LegacyCanHaveEarlyBattleshipInProduction)
 
 	std::stringstream input;
 	HoI4::PossibleShipVariants possibleVariants(input);
-	const auto ownedTechs = *HoI4::technologies::Builder{}.addTechnology("early_battleship").Build();
+	const auto ownedTechs = *HoI4::technologies::Builder().addTechnology("early_battleship").Build();
 	HoI4::ShipVariants theVariants(possibleVariants, ownedTechs, "TAG");
 
 	HoI4::Navies navies(sourceArmies,
@@ -691,7 +691,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesConvertToMtg)
 		 provinceDefinitions,
 		 provinceMapper);
 	std::ostringstream output;
-	outputMtgNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
+	outputMtgNavies(navies, *HoI4::technologies::Builder().Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -772,7 +772,7 @@ TEST_F(HoI4World_Navies_NaviesTests, OnlyConvertToAvailableMtgShipType)
 		 provinceDefinitions,
 		 provinceMapper);
 	std::ostringstream output;
-	outputMtgNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
+	outputMtgNavies(navies, *HoI4::technologies::Builder().Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -846,7 +846,7 @@ TEST_F(HoI4World_Navies_NaviesTests, ConvertedNaviesGetExperience)
 		 provinceDefinitions,
 		 provinceMapper);
 	std::ostringstream output;
-	outputMtgNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
+	outputMtgNavies(navies, *HoI4::technologies::Builder().Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -912,7 +912,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NaviesWithoutShipsDontConvertToMtg)
 		 provinceDefinitions,
 		 provinceMapper);
 	std::ostringstream output;
-	outputMtgNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
+	outputMtgNavies(navies, *HoI4::technologies::Builder().Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -976,7 +976,7 @@ TEST_F(HoI4World_Navies_NaviesTests, NonNavalUnitsArentAddedToMtgNavy)
 		 provinceDefinitions,
 		 provinceMapper);
 	std::ostringstream output;
-	outputMtgNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
+	outputMtgNavies(navies, *HoI4::technologies::Builder().Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -1040,7 +1040,7 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgNavyNamesConvert)
 		 provinceDefinitions,
 		 provinceMapper);
 	std::ostringstream output;
-	outputMtgNavies(navies, *HoI4::technologies::Builder{}.Build(), "TAG", output);
+	outputMtgNavies(navies, *HoI4::technologies::Builder().Build(), "TAG", output);
 
 	std::ostringstream expectedOutput;
 	expectedOutput << "units = {\n";
@@ -1091,7 +1091,7 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgCanHave1936DestroyerInProduction)
 		 provinceMapper);
 	std::ostringstream output;
 	outputMtgNavies(navies,
-		 *HoI4::technologies::Builder{}.addTechnology("basic_ship_hull_light").Build(),
+		 *HoI4::technologies::Builder().addTechnology("basic_ship_hull_light").Build(),
 		 "TAG",
 		 output);
 
@@ -1144,7 +1144,7 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgCanHaveEarlyDestroyerInProduction)
 		 provinceMapper);
 	std::ostringstream output;
 	outputMtgNavies(navies,
-		 *HoI4::technologies::Builder{}.addTechnology("early_ship_hull_light").Build(),
+		 *HoI4::technologies::Builder().addTechnology("early_ship_hull_light").Build(),
 		 "TAG",
 		 output);
 
@@ -1197,7 +1197,7 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgCanHave1936BattleshipInProduction)
 		 provinceMapper);
 	std::ostringstream output;
 	outputMtgNavies(navies,
-		 *HoI4::technologies::Builder{}.addTechnology("basic_ship_hull_heavy").Build(),
+		 *HoI4::technologies::Builder().addTechnology("basic_ship_hull_heavy").Build(),
 		 "TAG",
 		 output);
 
@@ -1250,7 +1250,7 @@ TEST_F(HoI4World_Navies_NaviesTests, MtgCanHaveEarlyBattleshipInProduction)
 		 provinceMapper);
 	std::ostringstream output;
 	outputMtgNavies(navies,
-		 *HoI4::technologies::Builder{}.addTechnology("early_ship_hull_heavy").Build(),
+		 *HoI4::technologies::Builder().addTechnology("early_ship_hull_heavy").Build(),
 		 "TAG",
 		 output);
 

@@ -196,7 +196,7 @@ TEST(Vic2World_Pops_PopTests, IssuesCanBeImported)
 	input << "\t}";
 	input << "}";
 	const auto pop =
-		 Vic2::Pop::Factory(*Vic2::Issues::Builder{}.addIssueName("learn_the_question").build()).getPop("", input);
+		 Vic2::Pop::Factory(*Vic2::Issues::Builder().addIssueName("learn_the_question").build()).getPop("", input);
 
 	ASSERT_NEAR(87.125, pop->getIssueSupport("learn_the_question"), 0.001);
 }

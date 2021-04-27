@@ -356,10 +356,10 @@ TEST(ConfigurationTests, Vic2ModsWithDependenciesAreBeforeTheirDependencies)
 	const auto theConfiguration = Configuration::Factory().importConfiguration(input);
 
 	ASSERT_THAT(theConfiguration->getVic2Mods(),
-		 testing::ElementsAre(*Vic2::Mod::Builder{}.setName("Dependent Mod").build(),
-			  *Vic2::Mod::Builder{}.setName("Dependency One").build(),
-			  *Vic2::Mod::Builder{}.setName("Dependency Two").build(),
-			  *Vic2::Mod::Builder{}.setName("Test Mod").build()));
+		 testing::ElementsAre(*Vic2::Mod::Builder().setName("Dependent Mod").build(),
+			  *Vic2::Mod::Builder().setName("Dependency One").build(),
+			  *Vic2::Mod::Builder().setName("Dependency Two").build(),
+			  *Vic2::Mod::Builder().setName("Test Mod").build()));
 }
 
 

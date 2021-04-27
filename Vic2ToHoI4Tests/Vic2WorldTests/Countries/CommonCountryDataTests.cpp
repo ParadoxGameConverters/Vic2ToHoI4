@@ -12,7 +12,7 @@ TEST(Vic2World_Countries_CommonCountryDataTests, ColorDefaultsToNullopt)
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("blankCommonCountryData.txt",
 			  {},
-			  *Configuration::Builder{}.setVic2Path("./").build());
+			  *Configuration::Builder().setVic2Path("./").build());
 
 	ASSERT_EQ(std::nullopt, commonCountryData->getColor());
 }
@@ -23,7 +23,7 @@ TEST(Vic2World_Countries_CommonCountryDataTests, ColorCanBeSet)
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("CommonCountryTestData.txt",
 			  {},
-			  *Configuration::Builder{}.setVic2Path("./").build());
+			  *Configuration::Builder().setVic2Path("./").build());
 
 	ASSERT_TRUE(commonCountryData->getColor().has_value());
 	const auto expectedColor = std::array{56, 32, 172};
@@ -35,8 +35,8 @@ TEST(Vic2World_Countries_CommonCountryDataTests, ColorCanBeSetFromMod)
 {
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("CommonCountryModTestData.txt",
-			  {*Vic2::Mod::Builder{}.setDirectory("mod").build()},
-			  *Configuration::Builder{}.setVic2Path("./").setVic2ModPath("./").build());
+			  {*Vic2::Mod::Builder().setDirectory("mod").build()},
+			  *Configuration::Builder().setVic2Path("./").setVic2ModPath("./").build());
 
 	ASSERT_TRUE(commonCountryData->getColor().has_value());
 	const auto expectedColor = std::array{10, 20, 30};
@@ -48,8 +48,8 @@ TEST(Vic2World_Countries_CommonCountryDataTests, MissingModUsesVanillaColor)
 {
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("CommonCountryTestData.txt",
-			  {*Vic2::Mod::Builder{}.setDirectory("missing_mod").build()},
-			  *Configuration::Builder{}.setVic2Path("./").build());
+			  {*Vic2::Mod::Builder().setDirectory("missing_mod").build()},
+			  *Configuration::Builder().setVic2Path("./").build());
 
 	ASSERT_TRUE(commonCountryData->getColor().has_value());
 	const auto expectedColor = std::array{56, 32, 172};
@@ -62,7 +62,7 @@ TEST(Vic2World_Countries_CommonCountryDataTests, UnitNamesDefaultToEmpty)
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("blankCommonCountryData.txt",
 			  {},
-			  *Configuration::Builder{}.setVic2Path("./").build());
+			  *Configuration::Builder().setVic2Path("./").build());
 
 	ASSERT_TRUE(commonCountryData->getUnitNames().empty());
 }
@@ -73,7 +73,7 @@ TEST(Vic2World_Countries_CommonCountryDataTests, UnitNamesCanBeSet)
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("CommonCountryTestData.txt",
 			  {},
-			  *Configuration::Builder{}.setVic2Path("./").build());
+			  *Configuration::Builder().setVic2Path("./").build());
 
 	ASSERT_THAT(commonCountryData->getUnitNames(),
 		 testing::UnorderedElementsAre(
@@ -86,8 +86,8 @@ TEST(Vic2World_Countries_CommonCountryDataTests, UnitNamesCanBeSetFromMod)
 {
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("CommonCountryModTestData.txt",
-			  {*Vic2::Mod::Builder{}.setDirectory("mod").build()},
-			  *Configuration::Builder{}.setVic2Path("./").setVic2ModPath("./").build());
+			  {*Vic2::Mod::Builder().setDirectory("mod").build()},
+			  *Configuration::Builder().setVic2Path("./").setVic2ModPath("./").build());
 
 	ASSERT_THAT(commonCountryData->getUnitNames(),
 		 testing::UnorderedElementsAre(
@@ -100,8 +100,8 @@ TEST(Vic2World_Countries_CommonCountryDataTests, MissingModUsesVanillaUnitNames)
 {
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("CommonCountryTestData.txt",
-			  {*Vic2::Mod::Builder{}.setDirectory("missing_mod").build()},
-			  *Configuration::Builder{}.setVic2Path("./").build());
+			  {*Vic2::Mod::Builder().setDirectory("missing_mod").build()},
+			  *Configuration::Builder().setVic2Path("./").build());
 
 	ASSERT_THAT(commonCountryData->getUnitNames(),
 		 testing::UnorderedElementsAre(
@@ -115,7 +115,7 @@ TEST(Vic2World_Countries_CommonCountryDataTests, PartiesDefaultToEmpty)
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("blankCommonCountryData.txt",
 			  {},
-			  *Configuration::Builder{}.setVic2Path("./").build());
+			  *Configuration::Builder().setVic2Path("./").build());
 
 	ASSERT_TRUE(commonCountryData->getParties().empty());
 }
@@ -126,7 +126,7 @@ TEST(Vic2World_Countries_CommonCountryDataTests, PartiesCanBeSet)
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("CommonCountryTestData.txt",
 			  {},
-			  *Configuration::Builder{}.setVic2Path("./").build());
+			  *Configuration::Builder().setVic2Path("./").build());
 
 	const auto parties = commonCountryData->getParties();
 	ASSERT_EQ(2, parties.size());
@@ -139,8 +139,8 @@ TEST(Vic2World_Countries_CommonCountryDataTests, PartiesCanBeSetFromMod)
 {
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("CommonCountryModTestData.txt",
-			  {*Vic2::Mod::Builder{}.setDirectory("mod").build()},
-			  *Configuration::Builder{}.setVic2Path("./").setVic2ModPath("./").build());
+			  {*Vic2::Mod::Builder().setDirectory("mod").build()},
+			  *Configuration::Builder().setVic2Path("./").setVic2ModPath("./").build());
 
 	const auto parties = commonCountryData->getParties();
 	ASSERT_EQ(2, parties.size());
@@ -153,8 +153,8 @@ TEST(Vic2World_Countries_CommonCountryDataTests, MissingModUsesVanillaParties)
 {
 	const auto commonCountryData =
 		 Vic2::CommonCountryData::Factory().importCommonCountryData("CommonCountryTestData.txt",
-			  {*Vic2::Mod::Builder{}.setDirectory("missing_mod").build()},
-			  *Configuration::Builder{}.setVic2Path("./").build());
+			  {*Vic2::Mod::Builder().setDirectory("missing_mod").build()},
+			  *Configuration::Builder().setVic2Path("./").build());
 
 	const auto parties = commonCountryData->getParties();
 	ASSERT_EQ(2, parties.size());

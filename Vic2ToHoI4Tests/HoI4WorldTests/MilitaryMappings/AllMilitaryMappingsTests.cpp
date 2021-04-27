@@ -45,7 +45,7 @@ TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getDefaultMappingsWi
 TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getDefaultMappingsWithInvalidMod)
 {
 	std::vector<Vic2::Mod> mods;
-	mods.push_back(*Vic2::Mod::Builder{}.setName("NotAMod").build());
+	mods.push_back(*Vic2::Mod::Builder().setName("NotAMod").build());
 	const auto& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("default"), specificMappings.getMappingsName());
 }
@@ -54,7 +54,7 @@ TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getDefaultMappingsWi
 TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getModMappingsWithSimpleName)
 {
 	std::vector<Vic2::Mod> mods;
-	mods.push_back(*Vic2::Mod::Builder{}.setName("PDM").build());
+	mods.push_back(*Vic2::Mod::Builder().setName("PDM").build());
 	const auto& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("PDM"), specificMappings.getMappingsName());
 }
@@ -63,7 +63,7 @@ TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getModMappingsWithSi
 TEST_F(HoI4World_MilitaryMappings_allMilitaryMappingsTests, getModMappingsWithQuotedName)
 {
 	std::vector<Vic2::Mod> mods;
-	mods.push_back(*Vic2::Mod::Builder{}.setName("POPs of Darkness").build());
+	mods.push_back(*Vic2::Mod::Builder().setName("POPs of Darkness").build());
 	const auto& specificMappings = allTheMappings->getMilitaryMappings(mods);
 	ASSERT_EQ(std::string("POPs of Darkness"), specificMappings.getMappingsName());
 }

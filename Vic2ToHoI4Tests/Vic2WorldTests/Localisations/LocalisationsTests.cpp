@@ -9,7 +9,7 @@
 
 TEST(Vic2World_Localisations_LocalisationsTests, MissingKeyGivesNullopt)
 {
-	const auto configuration = Configuration::Builder{}.setVic2Path("./").build();
+	const auto configuration = Configuration::Builder().setVic2Path("./").build();
 	const auto localisations = Vic2::Localisations::Factory().importLocalisations(*configuration);
 
 	ASSERT_EQ(std::nullopt, localisations->getTextInLanguage("bad_key", "english"));
@@ -18,7 +18,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, MissingKeyGivesNullopt)
 
 TEST(Vic2World_Localisations_LocalisationsTests, MissingLanguageGivesNullopt)
 {
-	const auto configuration = Configuration::Builder{}.setVic2Path("./").build();
+	const auto configuration = Configuration::Builder().setVic2Path("./").build();
 	const auto localisations = Vic2::Localisations::Factory().importLocalisations(*configuration);
 
 	ASSERT_EQ(std::nullopt, localisations->getTextInLanguage("test_key", "bad_language"));
@@ -27,7 +27,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, MissingLanguageGivesNullopt)
 
 TEST(Vic2World_Localisations_LocalisationsTests, MissingTextInAllLanguagesGivesEmptyMap)
 {
-	const auto configuration = Configuration::Builder{}.setVic2Path("./").build();
+	const auto configuration = Configuration::Builder().setVic2Path("./").build();
 	const auto localisations = Vic2::Localisations::Factory().importLocalisations(*configuration);
 
 	ASSERT_TRUE(localisations->getTextInEachLanguage("bad_key").empty());
@@ -36,7 +36,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, MissingTextInAllLanguagesGivesE
 
 TEST(Vic2World_Localisations_LocalisationsTests, TextInLanguageIsReturned)
 {
-	const auto configuration = Configuration::Builder{}.setVic2Path("./").build();
+	const auto configuration = Configuration::Builder().setVic2Path("./").build();
 	const auto localisations = Vic2::Localisations::Factory().importLocalisations(*configuration);
 
 	ASSERT_EQ("english_loc", localisations->getTextInLanguage("test_key", "english"));
@@ -57,7 +57,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, TextInLanguageIsReturned)
 
 TEST(Vic2World_Localisations_LocalisationsTests, MissingLocalisationsReplacedWithEnglish)
 {
-	const auto configuration = Configuration::Builder{}.setVic2Path("./").build();
+	const auto configuration = Configuration::Builder().setVic2Path("./").build();
 	const auto localisations = Vic2::Localisations::Factory().importLocalisations(*configuration);
 
 	ASSERT_EQ("english_loc", localisations->getTextInLanguage("replace_key", "english"));
@@ -78,7 +78,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, MissingLocalisationsReplacedWit
 
 TEST(Vic2World_Localisations_LocalisationsTests, TextInAllLanguagesTextInAllLanguages)
 {
-	const auto configuration = Configuration::Builder{}.setVic2Path("./").build();
+	const auto configuration = Configuration::Builder().setVic2Path("./").build();
 	const auto localisations = Vic2::Localisations::Factory().importLocalisations(*configuration);
 
 	const Vic2::LanguageToLocalisationMap expected{
@@ -102,10 +102,10 @@ TEST(Vic2World_Localisations_LocalisationsTests, TextInAllLanguagesTextInAllLang
 
 TEST(Vic2World_Localisations_LocalisationsTests, LocalisationsCanBeLoadedFromMod)
 {
-	const auto configuration = Configuration::Builder{}
+	const auto configuration = Configuration::Builder()
 											 .setVic2Path("./")
 											 .setVic2ModPath("./")
-											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("ModLocalisations").build())
+											 .addVic2Mod(*Vic2::Mod::Builder().setDirectory("ModLocalisations").build())
 											 .build();
 	const auto localisations = Vic2::Localisations::Factory().importLocalisations(*configuration);
 
@@ -127,7 +127,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, LocalisationsCanBeLoadedFromMod
 
 TEST(Vic2World_Localisations_LocalisationsTests, LocalisationsCanBeLoadedFromConverter)
 {
-	const auto configuration = Configuration::Builder{}.build();
+	const auto configuration = Configuration::Builder().build();
 	const auto localisations = Vic2::Localisations::Factory().importLocalisations(*configuration);
 
 	ASSERT_EQ("english_converter_loc", localisations->getTextInLanguage("converter_key", "english"));
@@ -148,7 +148,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, LocalisationsCanBeLoadedFromCon
 
 TEST(Vic2World_Localisations_LocalisationsTests, RegionTextCanBeReplaced)
 {
-	const auto configuration = Configuration::Builder{}.setVic2Path("./").build();
+	const auto configuration = Configuration::Builder().setVic2Path("./").build();
 	auto localisations = Vic2::Localisations::Factory().importLocalisations(*configuration);
 	localisations->updateDomainCountry("TAG", "Replace Region");
 
@@ -172,7 +172,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, RegionTextCanBeReplaced)
 
 TEST(Vic2World_Localisations_LocalisationsTests, ReplacementRegionTextCanBeFromLocalisation)
 {
-	const auto configuration = Configuration::Builder{}.setVic2Path("./").build();
+	const auto configuration = Configuration::Builder().setVic2Path("./").build();
 	auto localisations = Vic2::Localisations::Factory().importLocalisations(*configuration);
 	localisations->updateDomainCountry("TAG", "Replacement Region English");
 
@@ -207,7 +207,7 @@ TEST(Vic2World_Localisations_LocalisationsTests, ReplacementRegionTextCanBeFromL
 
 TEST(Vic2World_Localisations_LocalisationsTests, UpdateDomainCountrySkipsMissingTag)
 {
-	const auto configuration = Configuration::Builder{}.setVic2Path("./").build();
+	const auto configuration = Configuration::Builder().setVic2Path("./").build();
 	auto localisations = Vic2::Localisations::Factory().importLocalisations(*configuration);
 
 	ASSERT_NO_THROW(localisations->updateDomainCountry("NON", "Replacement Region English"));
