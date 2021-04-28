@@ -6,7 +6,7 @@
 
 TEST(Mappers_TechMapperTests, techsMappingsCanBeImported)
 {
-	const auto techMapper = Mappers::TechMapper::Factory{}.importTechMapper();
+	const auto techMapper = Mappers::TechMapper::Factory().importTechMapper();
 
 	ASSERT_EQ(7, techMapper->getTechMappings().size());
 

@@ -7,7 +7,7 @@
 
 TEST(Vic2World_Military_Leaders_TraitsTests, MissingTraitsHaveNoEffects)
 {
-	const auto traits = Vic2::Traits::Factory{}.loadTraits("./");
+	const auto traits = Vic2::Traits::Factory().loadTraits("./");
 
 	ASSERT_TRUE(traits->getEffectsForTrait("missing_trait").empty());
 }
@@ -15,7 +15,7 @@ TEST(Vic2World_Military_Leaders_TraitsTests, MissingTraitsHaveNoEffects)
 
 TEST(Vic2World_Military_Leaders_TraitsTests, TraitEffectsAreReturned)
 {
-	const auto traits = Vic2::Traits::Factory{}.loadTraits("./");
+	const auto traits = Vic2::Traits::Factory().loadTraits("./");
 	const auto effects = traits->getEffectsForTrait("test_trait");
 
 	ASSERT_THAT(effects,

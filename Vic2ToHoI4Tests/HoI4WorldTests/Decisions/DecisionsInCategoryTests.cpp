@@ -199,7 +199,7 @@ TEST(HoI4World_Decisions_DecisionsInCategoryTests, OpenUpPoliticalDiscourseCanBe
 	ideologies.insert("fascism");
 	ideologies.insert("democracy");
 	ideologies.insert("communism");
-	theDecisionsInCategory.updatePoliticalDecisions(ideologies, *HoI4::Events::Builder{}.Build());
+	theDecisionsInCategory.updatePoliticalDecisions(ideologies, *HoI4::Events::Builder().Build());
 
 	std::stringstream output;
 	output << theDecisionsInCategory;
@@ -233,7 +233,7 @@ TEST(HoI4World_Decisions_DecisionsInCategoryTests, DiscreditGovernmentCanBeUpdat
 	ideologies.insert("fascism");
 	ideologies.insert("democracy");
 	ideologies.insert("communism");
-	theDecisionsInCategory.updatePoliticalDecisions(ideologies, *HoI4::Events::Builder{}.Build());
+	theDecisionsInCategory.updatePoliticalDecisions(ideologies, *HoI4::Events::Builder().Build());
 
 	std::stringstream output;
 	output << theDecisionsInCategory;
@@ -293,7 +293,7 @@ TEST(HoI4World_Decisions_DecisionsInCategoryTests, InstituePressCensorshipCanBeU
 	ideologies.insert("absolutism");
 	ideologies.insert("democracy");
 	ideologies.insert("communism");
-	theDecisionsInCategory.updatePoliticalDecisions(ideologies, *HoI4::Events::Builder{}.Build());
+	theDecisionsInCategory.updatePoliticalDecisions(ideologies, *HoI4::Events::Builder().Build());
 
 	std::stringstream output;
 	output << theDecisionsInCategory;
@@ -327,7 +327,7 @@ TEST(HoI4World_Decisions_DecisionsInCategoryTests, IgniteTheIdeologyCivilWarCanB
 	ideologies.insert("absolutism");
 	ideologies.insert("democracy");
 	ideologies.insert("radical");
-	theDecisionsInCategory.updatePoliticalDecisions(ideologies, *HoI4::Events::Builder{}.Build());
+	theDecisionsInCategory.updatePoliticalDecisions(ideologies, *HoI4::Events::Builder().Build());
 
 	std::stringstream output;
 	output << theDecisionsInCategory;
@@ -403,7 +403,7 @@ TEST(HoI4World_Decisions_DecisionsInCategoryTests, HoldTheIdeologyNationalRefere
 
 	std::set<std::string> ideologies;
 	theDecisionsInCategory.updatePoliticalDecisions(ideologies,
-		 *HoI4::Events::Builder{}.addEventNumber("fiftyPercentdemocratic", 122).Build());
+		 *HoI4::Events::Builder().addEventNumber("fiftyPercentdemocratic", 122).Build());
 
 	std::stringstream output;
 	output << theDecisionsInCategory;

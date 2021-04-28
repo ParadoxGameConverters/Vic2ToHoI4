@@ -725,7 +725,7 @@ std::vector<std::string> HoI4::Country::getShipNames(const std::string& category
 	const auto foundShipNames = shipNames.find(category);
 	if (foundShipNames == shipNames.end())
 	{
-		return std::vector<std::string>{};
+		return {};
 	}
 	return foundShipNames->second;
 }

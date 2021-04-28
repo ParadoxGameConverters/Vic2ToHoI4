@@ -7,7 +7,7 @@
 
 TEST(HoI4World_CountryCategories_CountryCategoriesTests, CategoriesCanBeCreated)
 {
-	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder{}
+	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder()
 																				  .addMapping("BAN", "BAN")
 																				  .addMapping("ENG", "ENG")
 																				  .addMapping("BGL", "BGL")
@@ -28,7 +28,7 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, CategoriesCanBeCreated)
 
 TEST(HoI4World_CountryCategories_CountryCategoriesTests, TagsAreTranslated)
 {
-	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder{}
+	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder()
 																				  .addMapping("BAN", "B2N")
 																				  .addMapping("ENG", "EN2")
 																				  .addMapping("BGL", "BG2")
@@ -50,7 +50,7 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, TagsAreTranslated)
 
 TEST(HoI4World_CountryCategories_CountryCategoriesTests, UnmappedTagsAreSkipped)
 {
-	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder{}.Build(), {}, {}, false);
+	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder().Build(), {}, {}, false);
 
 	ASSERT_THAT(categories,
 		 testing::UnorderedElementsAre(
@@ -62,7 +62,7 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, UnmappedTagsAreSkipped)
 TEST(HoI4World_CountryCategories_CountryCategoriesTests, UncategorizedCountriesAreInTagMscne)
 {
 	const auto categories =
-		 HoI4::createCountryCategories(*Mappers::CountryMapper::Builder{}.Build(), {{"TAG", nullptr}}, {}, false);
+		 HoI4::createCountryCategories(*Mappers::CountryMapper::Builder().Build(), {{"TAG", nullptr}}, {}, false);
 
 	ASSERT_THAT(categories,
 		 testing::UnorderedElementsAre(
@@ -79,7 +79,7 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, UncategorizedCountriesA
 	std::cout.rdbuf(log.rdbuf());
 
 	const auto categories =
-		 HoI4::createCountryCategories(*Mappers::CountryMapper::Builder{}.Build(), {{"TAG", nullptr}}, {}, true);
+		 HoI4::createCountryCategories(*Mappers::CountryMapper::Builder().Build(), {{"TAG", nullptr}}, {}, true);
 
 	std::cout.rdbuf(stdOutBuf);
 
@@ -89,7 +89,7 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, UncategorizedCountriesA
 
 TEST(HoI4World_CountryCategories_CountryCategoriesTests, MissingIdeologiesAreRemovedFromExtras)
 {
-	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder{}
+	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder()
 																				  .addMapping("BAN", "BAN")
 																				  .addMapping("ENG", "ENG")
 																				  .addMapping("BGL", "BGL")
@@ -109,7 +109,7 @@ TEST(HoI4World_CountryCategories_CountryCategoriesTests, MissingIdeologiesAreRem
 
 TEST(HoI4World_CountryCategories_CountryCategoriesTests, MissingIdeologiesCanTurnExtraToNullopt)
 {
-	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder{}
+	const auto categories = HoI4::createCountryCategories(*Mappers::CountryMapper::Builder()
 																				  .addMapping("BAN", "BAN")
 																				  .addMapping("ENG", "ENG")
 																				  .addMapping("BGL", "BGL")

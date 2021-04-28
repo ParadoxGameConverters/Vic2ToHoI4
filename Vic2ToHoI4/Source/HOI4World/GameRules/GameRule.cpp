@@ -29,7 +29,7 @@ HoI4::GameRule HoI4::GameRule::Parser::parseRule(const std::string& key, std::is
 		icon = iconString.getString();
 	});
 	registerRegex("option|default", [&options](const std::string& key, std::istream& theStream) {
-		const auto option = GameRuleOption::Parser{}.parseOption(key, theStream);
+		const auto option = GameRuleOption::Parser().parseOption(key, theStream);
 		options.push_back(option);
 	});
 	registerRegex(commonItems::catchallRegex, commonItems::ignoreItem);

@@ -8,7 +8,7 @@
 TEST(Vic2World_Military_ArmyTests, NameDefaultsToEmpty)
 {
 	std::stringstream input;
-	const auto army = Vic2::Army::Factory{}.getArmy("", input);
+	const auto army = Vic2::Army::Factory().getArmy("", input);
 
 	ASSERT_TRUE(army->getName().empty());
 }
@@ -20,7 +20,7 @@ TEST(Vic2World_Military_ArmyTests, NameCanBeSet)
 	input << "= {\n";
 	input << "\tname = test_name\n";
 	input << "}";
-	const auto army = Vic2::Army::Factory{}.getArmy("", input);
+	const auto army = Vic2::Army::Factory().getArmy("", input);
 
 	ASSERT_EQ("test_name", army->getName());
 }
@@ -32,7 +32,7 @@ TEST(Vic2World_Military_ArmyTests, OwnerIsAsSet)
 	input << "= {\n";
 	input << "\tname = test_name\n";
 	input << "}";
-	const auto army = Vic2::Army::Factory{}.getArmy("TAG", input);
+	const auto army = Vic2::Army::Factory().getArmy("TAG", input);
 
 	ASSERT_EQ("TAG", army->getOwner());
 }
@@ -48,7 +48,7 @@ TEST(Vic2World_Military_ArmyTests, LocationDefaultsToNullopt)
 	const std::stringstream log;
 	auto* stdOutBuf = std::cout.rdbuf();
 	std::cout.rdbuf(log.rdbuf());
-	const auto army = Vic2::Army::Factory{}.getArmy("", input);
+	const auto army = Vic2::Army::Factory().getArmy("", input);
 	std::cout.rdbuf(stdOutBuf);
 
 	ASSERT_FALSE(army->getLocation());
@@ -62,7 +62,7 @@ TEST(Vic2World_Military_ArmyTests, LocationCanBeSet)
 	input << "= {\n";
 	input << "\tlocation = 42\n";
 	input << "}";
-	const auto army = Vic2::Army::Factory{}.getArmy("", input);
+	const auto army = Vic2::Army::Factory().getArmy("", input);
 
 	ASSERT_EQ(42, army->getLocation());
 }
@@ -74,7 +74,7 @@ TEST(Vic2World_Military_ArmyTests, LocationCanBeChanged)
 	input << "= {\n";
 	input << "\tlocation = 42\n";
 	input << "}";
-	auto army = Vic2::Army::Factory{}.getArmy("", input);
+	auto army = Vic2::Army::Factory().getArmy("", input);
 	army->setLocation(144);
 
 	ASSERT_EQ(144, army->getLocation());
@@ -84,7 +84,7 @@ TEST(Vic2World_Military_ArmyTests, LocationCanBeChanged)
 TEST(Vic2World_Military_ArmyTests, UnitsDefaultsToEmpty)
 {
 	std::stringstream input;
-	const auto army = Vic2::Army::Factory{}.getArmy("", input);
+	const auto army = Vic2::Army::Factory().getArmy("", input);
 
 	ASSERT_TRUE(army->getUnits().empty());
 }
@@ -101,7 +101,7 @@ TEST(Vic2World_Military_ArmyTests, UnitsCanBeAdded)
 	input << "\t\tname = test_ship\n";
 	input << "\t}\n";
 	input << "}";
-	const auto army = Vic2::Army::Factory{}.getArmy("", input);
+	const auto army = Vic2::Army::Factory().getArmy("", input);
 
 	ASSERT_EQ(2, army->getUnits().size());
 	ASSERT_EQ("test_regiment", army->getUnits()[0].getName());
@@ -112,7 +112,7 @@ TEST(Vic2World_Military_ArmyTests, UnitsCanBeAdded)
 TEST(Vic2World_Military_ArmyTests, TransportedArmiesDefaultsToEmpty)
 {
 	std::stringstream input;
-	const auto army = Vic2::Army::Factory{}.getArmy("", input);
+	const auto army = Vic2::Army::Factory().getArmy("", input);
 
 	ASSERT_TRUE(army->getTransportedArmies().empty());
 }
@@ -128,7 +128,7 @@ TEST(Vic2World_Military_ArmyTests, TransportedArmiesCanBeAdded)
 	input << "\t\t}\n";
 	input << "\t}\n";
 	input << "}";
-	const auto army = Vic2::Army::Factory{}.getArmy("", input);
+	const auto army = Vic2::Army::Factory().getArmy("", input);
 
 	ASSERT_EQ(1, army->getTransportedArmies().size());
 	ASSERT_EQ(1, army->getTransportedArmies()[0].getUnits().size());

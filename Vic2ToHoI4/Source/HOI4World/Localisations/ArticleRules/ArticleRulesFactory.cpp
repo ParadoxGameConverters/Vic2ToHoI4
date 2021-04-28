@@ -14,7 +14,7 @@ HoI4::ArticleRules::Factory::Factory()
 		std::vector<ArticleRule> articleRules;
 		for (const auto& matcher: definition.getMatchers())
 		{
-			articleRules.push_back(*ArticleRule::Builder{}
+			articleRules.push_back(*ArticleRule::Builder()
 												 .setMatcher(std::regex(matcher))
 												 .setReplacement(definition.getReplacement())
 												 .build());

@@ -34,6 +34,6 @@ std::vector<HoI4::HoI4UnitType> HoI4::UnitMappings::getMatchingUnitInfo(const st
 	}
 	else
 	{
-		return std::vector<HoI4::HoI4UnitType>{};
+		return {};
 	}
 }

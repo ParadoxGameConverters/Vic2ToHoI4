@@ -14,14 +14,14 @@
 void checkMods(const Configuration& theConfiguration);
 void ConvertV2ToHoI4()
 {
-	const auto theConfiguration = Configuration::Factory{}.importConfiguration("configuration.txt");
+	const auto theConfiguration = Configuration::Factory().importConfiguration("configuration.txt");
 	checkMods(*theConfiguration);
 	clearOutputFolder(theConfiguration->getOutputName());
 
 	const auto provinceMapper =
 		 Mappers::ProvinceMapper::Factory(*theConfiguration).importProvinceMapper(*theConfiguration);
 
-	const auto sourceWorld = Vic2::World::Factory{*theConfiguration}.importWorld(*theConfiguration, *provinceMapper);
+	const auto sourceWorld = Vic2::World::Factory(*theConfiguration).importWorld(*theConfiguration, *provinceMapper);
 	const HoI4::World destWorld(*sourceWorld, *provinceMapper, *theConfiguration);
 
 	output(destWorld,

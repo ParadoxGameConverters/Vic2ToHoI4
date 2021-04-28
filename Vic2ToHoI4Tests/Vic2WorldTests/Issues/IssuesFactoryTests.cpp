@@ -6,7 +6,7 @@
 
 TEST(Vic2World_Issues_IssuesFactoryTests, IssuesDefaultToEmpty)
 {
-	const auto issues = Vic2::Issues::Factory{}.getIssues("./EmptyIssues");
+	const auto issues = Vic2::Issues::Factory().getIssues("./EmptyIssues");
 
 	ASSERT_TRUE(issues->getIssueName(1).empty());
 }
@@ -14,7 +14,7 @@ TEST(Vic2World_Issues_IssuesFactoryTests, IssuesDefaultToEmpty)
 
 TEST(Vic2World_Issues_IssuesFactoryTests, IssuesCanBeImported)
 {
-	const auto issues = Vic2::Issues::Factory{}.getIssues("./");
+	const auto issues = Vic2::Issues::Factory().getIssues("./");
 
 	ASSERT_EQ("protectionism", issues->getIssueName(1));
 	ASSERT_EQ("free_trade", issues->getIssueName(2));

@@ -20,8 +20,8 @@ TEST(Vic2World_States_StateTests, ProvincesDefaultToEmpty)
 TEST(Vic2World_States_StateTests, ProvincesCanBeAdded)
 {
 	Vic2::State state;
-	state.addProvince(Vic2::Province::Builder{}.setNumber(1).build());
-	state.addProvince(Vic2::Province::Builder{}.setNumber(2).build());
+	state.addProvince(Vic2::Province::Builder().setNumber(1).build());
+	state.addProvince(Vic2::Province::Builder().setNumber(2).build());
 
 	ASSERT_EQ(2, state.getProvinces().size());
 }
@@ -72,13 +72,13 @@ TEST(Vic2World_States_StateTests, PopulationIsZeroWithNoProvinces)
 TEST(Vic2World_States_StateTests, PopulationComesFromAllProvinces)
 {
 	Vic2::State state;
-	state.addProvince(Vic2::Province::Builder{}
+	state.addProvince(Vic2::Province::Builder()
 								 .setNumber(1)
-								 .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("farmers").setSize(12).build()})
+								 .setPops(std::vector{*Vic2::Pop::Builder().setType("farmers").setSize(12).build()})
 								 .build());
-	state.addProvince(Vic2::Province::Builder{}
+	state.addProvince(Vic2::Province::Builder()
 								 .setNumber(2)
-								 .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("farmers").setSize(34).build()})
+								 .setPops(std::vector{*Vic2::Pop::Builder().setType("farmers").setSize(34).build()})
 								 .build());
 
 	ASSERT_EQ(46, state.getPopulation());
@@ -96,8 +96,8 @@ TEST(Vic2World_States_StateTests, RailLevelIsZeroWithNoProvinces)
 TEST(Vic2World_States_StateTests, RailLevelIsAverageOfProvinceRailLevels)
 {
 	Vic2::State state;
-	state.addProvince(Vic2::Province::Builder{}.setNumber(1).setRailLevel(3).build());
-	state.addProvince(Vic2::Province::Builder{}.setNumber(2).setRailLevel(1).build());
+	state.addProvince(Vic2::Province::Builder().setNumber(1).setRailLevel(3).build());
+	state.addProvince(Vic2::Province::Builder().setNumber(2).setRailLevel(1).build());
 
 	ASSERT_EQ(2, state.getAverageRailLevel());
 }
@@ -106,13 +106,13 @@ TEST(Vic2World_States_StateTests, RailLevelIsAverageOfProvinceRailLevels)
 TEST(Vic2World_States_StateTests, UpperClassLocationReturnedFromAristocrats)
 {
 	Vic2::State state;
-	state.addProvince(Vic2::Province::Builder{}
+	state.addProvince(Vic2::Province::Builder()
 								 .setNumber(1)
-								 .setPops({*Vic2::Pop::Builder{}.setType("farmers").setSize(12).build()})
+								 .setPops({*Vic2::Pop::Builder().setType("farmers").setSize(12).build()})
 								 .build());
-	state.addProvince(Vic2::Province::Builder{}
+	state.addProvince(Vic2::Province::Builder()
 								 .setNumber(2)
-								 .setPops({*Vic2::Pop::Builder{}.setType("aristocrats").setSize(1).build()})
+								 .setPops({*Vic2::Pop::Builder().setType("aristocrats").setSize(1).build()})
 								 .build());
 
 	ASSERT_EQ(2, state.getUpperClassLocation());
@@ -122,13 +122,13 @@ TEST(Vic2World_States_StateTests, UpperClassLocationReturnedFromAristocrats)
 TEST(Vic2World_States_StateTests, UpperClassLocationReturnedFromBureaucrats)
 {
 	Vic2::State state;
-	state.addProvince(Vic2::Province::Builder{}
+	state.addProvince(Vic2::Province::Builder()
 								 .setNumber(1)
-								 .setPops({*Vic2::Pop::Builder{}.setType("farmers").setSize(12).build()})
+								 .setPops({*Vic2::Pop::Builder().setType("farmers").setSize(12).build()})
 								 .build());
-	state.addProvince(Vic2::Province::Builder{}
+	state.addProvince(Vic2::Province::Builder()
 								 .setNumber(2)
-								 .setPops({*Vic2::Pop::Builder{}.setType("bureaucrats").setSize(1).build()})
+								 .setPops({*Vic2::Pop::Builder().setType("bureaucrats").setSize(1).build()})
 								 .build());
 
 	ASSERT_EQ(2, state.getUpperClassLocation());
@@ -138,13 +138,13 @@ TEST(Vic2World_States_StateTests, UpperClassLocationReturnedFromBureaucrats)
 TEST(Vic2World_States_StateTests, UpperClassLocationReturnedFromCapitalists)
 {
 	Vic2::State state;
-	state.addProvince(Vic2::Province::Builder{}
+	state.addProvince(Vic2::Province::Builder()
 								 .setNumber(1)
-								 .setPops({*Vic2::Pop::Builder{}.setType("farmers").setSize(12).build()})
+								 .setPops({*Vic2::Pop::Builder().setType("farmers").setSize(12).build()})
 								 .build());
-	state.addProvince(Vic2::Province::Builder{}
+	state.addProvince(Vic2::Province::Builder()
 								 .setNumber(2)
-								 .setPops({*Vic2::Pop::Builder{}.setType("capitalists").setSize(1).build()})
+								 .setPops({*Vic2::Pop::Builder().setType("capitalists").setSize(1).build()})
 								 .build());
 
 	ASSERT_EQ(2, state.getUpperClassLocation());
@@ -154,13 +154,13 @@ TEST(Vic2World_States_StateTests, UpperClassLocationReturnedFromCapitalists)
 TEST(Vic2World_States_StateTests, UpperClassLocationReturnesNulloptIfNoUpperClasses)
 {
 	Vic2::State state;
-	state.addProvince(Vic2::Province::Builder{}
+	state.addProvince(Vic2::Province::Builder()
 								 .setNumber(1)
-								 .setPops({*Vic2::Pop::Builder{}.setType("farmers").setSize(12).build()})
+								 .setPops({*Vic2::Pop::Builder().setType("farmers").setSize(12).build()})
 								 .build());
-	state.addProvince(Vic2::Province::Builder{}
+	state.addProvince(Vic2::Province::Builder()
 								 .setNumber(2)
-								 .setPops({*Vic2::Pop::Builder{}.setType("farmers").setSize(1).build()})
+								 .setPops({*Vic2::Pop::Builder().setType("farmers").setSize(1).build()})
 								 .build());
 
 	ASSERT_EQ(std::nullopt, state.getUpperClassLocation());
@@ -170,17 +170,17 @@ TEST(Vic2World_States_StateTests, UpperClassLocationReturnesNulloptIfNoUpperClas
 TEST(Vic2World_States_StateTests, ProvincesAreOrderedByPopulation)
 {
 	Vic2::State state;
-	state.addProvince(Vic2::Province::Builder{}
+	state.addProvince(Vic2::Province::Builder()
 								 .setNumber(1)
-								 .setPops({*Vic2::Pop::Builder{}.setType("farmers").setSize(22).build()})
+								 .setPops({*Vic2::Pop::Builder().setType("farmers").setSize(22).build()})
 								 .build());
-	state.addProvince(Vic2::Province::Builder{}
+	state.addProvince(Vic2::Province::Builder()
 								 .setNumber(2)
-								 .setPops({*Vic2::Pop::Builder{}.setType("farmers").setSize(11).build()})
+								 .setPops({*Vic2::Pop::Builder().setType("farmers").setSize(11).build()})
 								 .build());
-	state.addProvince(Vic2::Province::Builder{}
+	state.addProvince(Vic2::Province::Builder()
 								 .setNumber(3)
-								 .setPops({*Vic2::Pop::Builder{}.setType("farmers").setSize(33).build()})
+								 .setPops({*Vic2::Pop::Builder().setType("farmers").setSize(33).build()})
 								 .build());
 
 	const auto expectedProvinces = std::vector<int>{3, 1, 2};
@@ -191,9 +191,9 @@ TEST(Vic2World_States_StateTests, ProvincesAreOrderedByPopulation)
 TEST(Vic2World_States_StateTests, ForeignControlledProvincesAreReturned)
 {
 	Vic2::State state;
-	state.addProvince(Vic2::Province::Builder{}.setNumber(1).setOwner("OWN").setController("ONE").build());
-	state.addProvince(Vic2::Province::Builder{}.setNumber(2).setOwner("OWN").setController("TWO").build());
-	state.addProvince(Vic2::Province::Builder{}.setNumber(3).setOwner("OWN").setController("REB").build());
+	state.addProvince(Vic2::Province::Builder().setNumber(1).setOwner("OWN").setController("ONE").build());
+	state.addProvince(Vic2::Province::Builder().setNumber(2).setOwner("OWN").setController("TWO").build());
+	state.addProvince(Vic2::Province::Builder().setNumber(3).setOwner("OWN").setController("REB").build());
 
 	const auto expectedProvinces = std::vector<std::pair<int, std::string>>{{1, "ONE"}, {2, "TWO"}, {3, "REB"}};
 	EXPECT_THAT(state.getForeignControlledProvinces(), ::testing::WhenSorted(expectedProvinces));
@@ -203,9 +203,9 @@ TEST(Vic2World_States_StateTests, ForeignControlledProvincesAreReturned)
 TEST(Vic2World_States_StateTests, NavalBasesAreReturned)
 {
 	Vic2::State state;
-	state.addProvince(Vic2::Province::Builder{}.setNumber(1).setNavalBaseLevel(2).build());
-	state.addProvince(Vic2::Province::Builder{}.setNumber(2).setNavalBaseLevel(4).build());
-	state.addProvince(Vic2::Province::Builder{}.setNumber(4).setNavalBaseLevel(8).build());
+	state.addProvince(Vic2::Province::Builder().setNumber(1).setNavalBaseLevel(2).build());
+	state.addProvince(Vic2::Province::Builder().setNumber(2).setNavalBaseLevel(4).build());
+	state.addProvince(Vic2::Province::Builder().setNumber(4).setNavalBaseLevel(8).build());
 
 	const auto expectedProvinces = std::map<int, int>{{1, 2}, {2, 4}, {4, 8}};
 	ASSERT_EQ(expectedProvinces, state.getNavalBases());
@@ -224,14 +224,13 @@ TEST(Vic2World_States_StateTests, EmployedWorkersDefaultsToZero)
 TEST(Vic2World_States_StateTests, CraftsmenAddToEmployedWorkers)
 {
 	auto state =
-		 Vic2::State::Builder{}
+		 Vic2::State::Builder()
 			  .setOwner("TAG")
-			  .setProvinces(
-					{Vic2::Province::Builder{}
-							  .setNumber(1)
-							  .setCores({"TAG"})
-							  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("craftsmen").setSize(12).build()})
-							  .build()})
+			  .setProvinces({Vic2::Province::Builder()
+										.setNumber(1)
+										.setCores({"TAG"})
+										.setPops(std::vector{*Vic2::Pop::Builder().setType("craftsmen").setSize(12).build()})
+										.build()})
 			  .setFactoryLevel(1)
 			  .build();
 	state->determineEmployedWorkers();
@@ -243,13 +242,13 @@ TEST(Vic2World_States_StateTests, CraftsmenAddToEmployedWorkers)
 TEST(Vic2World_States_StateTests, CraftsmenLiteracyDoesNotAffectEmployedWorkers)
 {
 	auto state =
-		 Vic2::State::Builder{}
+		 Vic2::State::Builder()
 			  .setOwner("TAG")
-			  .setProvinces({Vic2::Province::Builder{}
+			  .setProvinces({Vic2::Province::Builder()
 										.setNumber(1)
 										.setCores({"TAG"})
-										.setPops(std::vector<Vic2::Pop>{
-											 *Vic2::Pop::Builder{}.setType("craftsmen").setSize(12).setLiteracy(1.0).build()})
+										.setPops(std::vector{
+											 *Vic2::Pop::Builder().setType("craftsmen").setSize(12).setLiteracy(1.0).build()})
 										.build()})
 			  .setFactoryLevel(1)
 			  .build();
@@ -262,14 +261,13 @@ TEST(Vic2World_States_StateTests, CraftsmenLiteracyDoesNotAffectEmployedWorkers)
 TEST(Vic2World_States_StateTests, ClerksAddTwoToEmployedWorkers)
 {
 	auto state =
-		 Vic2::State::Builder{}
+		 Vic2::State::Builder()
 			  .setOwner("TAG")
-			  .setProvinces(
-					{Vic2::Province::Builder{}
-							  .setNumber(1)
-							  .setCores({"TAG"})
-							  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("clerks").setSize(12).build()})
-							  .build()})
+			  .setProvinces({Vic2::Province::Builder()
+										.setNumber(1)
+										.setCores({"TAG"})
+										.setPops(std::vector{*Vic2::Pop::Builder().setType("clerks").setSize(12).build()})
+										.build()})
 			  .setFactoryLevel(1)
 			  .build();
 	state->determineEmployedWorkers();
@@ -281,13 +279,13 @@ TEST(Vic2World_States_StateTests, ClerksAddTwoToEmployedWorkers)
 TEST(Vic2World_States_StateTests, ClerkLiteracyDoesNotAffectEmployedWorkers)
 {
 	auto state =
-		 Vic2::State::Builder{}
+		 Vic2::State::Builder()
 			  .setOwner("TAG")
-			  .setProvinces({Vic2::Province::Builder{}
+			  .setProvinces({Vic2::Province::Builder()
 										.setNumber(1)
 										.setCores({"TAG"})
-										.setPops(std::vector<Vic2::Pop>{
-											 *Vic2::Pop::Builder{}.setType("clerks").setSize(12).setLiteracy(1.0).build()})
+										.setPops(std::vector{
+											 *Vic2::Pop::Builder().setType("clerks").setSize(12).setLiteracy(1.0).build()})
 										.build()})
 			  .setFactoryLevel(1)
 			  .build();
@@ -300,14 +298,13 @@ TEST(Vic2World_States_StateTests, ClerkLiteracyDoesNotAffectEmployedWorkers)
 TEST(Vic2World_States_StateTests, ArtisansAddHalfToEmployedWorkers)
 {
 	auto state =
-		 Vic2::State::Builder{}
+		 Vic2::State::Builder()
 			  .setOwner("TAG")
-			  .setProvinces(
-					{Vic2::Province::Builder{}
-							  .setNumber(1)
-							  .setCores({"TAG"})
-							  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("artisans").setSize(12).build()})
-							  .build()})
+			  .setProvinces({Vic2::Province::Builder()
+										.setNumber(1)
+										.setCores({"TAG"})
+										.setPops(std::vector{*Vic2::Pop::Builder().setType("artisans").setSize(12).build()})
+										.build()})
 			  .setFactoryLevel(1)
 			  .build();
 	state->determineEmployedWorkers();
@@ -319,13 +316,13 @@ TEST(Vic2World_States_StateTests, ArtisansAddHalfToEmployedWorkers)
 TEST(Vic2World_States_StateTests, ArtisanLiteracyDoesNotAffectEmployedWorkers)
 {
 	auto state =
-		 Vic2::State::Builder{}
+		 Vic2::State::Builder()
 			  .setOwner("TAG")
-			  .setProvinces({Vic2::Province::Builder{}
+			  .setProvinces({Vic2::Province::Builder()
 										.setNumber(1)
 										.setCores({"TAG"})
-										.setPops(std::vector<Vic2::Pop>{
-											 *Vic2::Pop::Builder{}.setType("artisans").setSize(12).setLiteracy(1.0).build()})
+										.setPops(std::vector{
+											 *Vic2::Pop::Builder().setType("artisans").setSize(12).setLiteracy(1.0).build()})
 										.build()})
 			  .setFactoryLevel(1)
 			  .build();
@@ -338,13 +335,13 @@ TEST(Vic2World_States_StateTests, ArtisanLiteracyDoesNotAffectEmployedWorkers)
 TEST(Vic2World_States_StateTests, CapitalistsAddTwoToEmployedWorkers)
 {
 	auto state =
-		 Vic2::State::Builder{}
+		 Vic2::State::Builder()
 			  .setOwner("TAG")
-			  .setProvinces({Vic2::Province::Builder{}
+			  .setProvinces({Vic2::Province::Builder()
 										.setNumber(1)
 										.setCores({"TAG"})
-										.setPops(std::vector<Vic2::Pop>{
-											 *Vic2::Pop::Builder{}.setType("capitalists").setSize(10).setLiteracy(1.0).build()})
+										.setPops(std::vector{
+											 *Vic2::Pop::Builder().setType("capitalists").setSize(10).setLiteracy(1.0).build()})
 										.build()})
 			  .setFactoryLevel(1)
 			  .build();
@@ -357,13 +354,13 @@ TEST(Vic2World_States_StateTests, CapitalistsAddTwoToEmployedWorkers)
 TEST(Vic2World_States_StateTests, CapitalistLiteracyAffectsEmployedWorkers)
 {
 	auto state =
-		 Vic2::State::Builder{}
+		 Vic2::State::Builder()
 			  .setOwner("TAG")
-			  .setProvinces({Vic2::Province::Builder{}
+			  .setProvinces({Vic2::Province::Builder()
 										.setNumber(1)
 										.setCores({"TAG"})
-										.setPops(std::vector<Vic2::Pop>{
-											 *Vic2::Pop::Builder{}.setType("capitalists").setSize(10).setLiteracy(0.0).build()})
+										.setPops(std::vector{
+											 *Vic2::Pop::Builder().setType("capitalists").setSize(10).setLiteracy(0.0).build()})
 										.build()})
 			  .setFactoryLevel(1)
 			  .build();
@@ -375,17 +372,17 @@ TEST(Vic2World_States_StateTests, CapitalistLiteracyAffectsEmployedWorkers)
 
 TEST(Vic2World_States_StateTests, CraftsmentAndClerksCappedByFactoryLevel)
 {
-	auto state = Vic2::State::Builder{}
-						  .setOwner("TAG")
-						  .setProvinces({Vic2::Province::Builder{}
-													.setNumber(1)
-													.setCores({"TAG"})
-													.setPops(std::vector<Vic2::Pop>{
-														 *Vic2::Pop::Builder{}.setType("craftsmen").setSize(10000).build(),
-														 *Vic2::Pop::Builder{}.setType("clerks").setSize(5000).build()})
-													.build()})
-						  .setFactoryLevel(1)
-						  .build();
+	auto state =
+		 Vic2::State::Builder()
+			  .setOwner("TAG")
+			  .setProvinces({Vic2::Province::Builder()
+										.setNumber(1)
+										.setCores({"TAG"})
+										.setPops(std::vector{*Vic2::Pop::Builder().setType("craftsmen").setSize(10000).build(),
+											 *Vic2::Pop::Builder().setType("clerks").setSize(5000).build()})
+										.build()})
+			  .setFactoryLevel(1)
+			  .build();
 	state->determineEmployedWorkers();
 
 	ASSERT_EQ(13333, state->getEmployedWorkers());
@@ -395,15 +392,14 @@ TEST(Vic2World_States_StateTests, CraftsmentAndClerksCappedByFactoryLevel)
 TEST(Vic2World_States_StateTests, ArtisansNotCappedByFactoryLevel)
 {
 	auto state =
-		 Vic2::State::Builder{}
+		 Vic2::State::Builder()
 			  .setOwner("TAG")
-			  .setProvinces(
-					{Vic2::Province::Builder{}
-							  .setNumber(1)
-							  .setCores({"TAG"})
-							  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("artisans").setSize(30000).build(),
-									*Vic2::Pop::Builder{}.setType("clerks").setSize(20000).build()})
-							  .build()})
+			  .setProvinces({Vic2::Province::Builder()
+										.setNumber(1)
+										.setCores({"TAG"})
+										.setPops(std::vector{*Vic2::Pop::Builder().setType("artisans").setSize(30000).build(),
+											 *Vic2::Pop::Builder().setType("clerks").setSize(20000).build()})
+										.build()})
 			  .setFactoryLevel(0)
 			  .build();
 	state->determineEmployedWorkers();
@@ -415,14 +411,14 @@ TEST(Vic2World_States_StateTests, ArtisansNotCappedByFactoryLevel)
 TEST(Vic2World_States_StateTests, CapitalistsNotCappedByFactoryLevel)
 {
 	auto state =
-		 Vic2::State::Builder{}
+		 Vic2::State::Builder()
 			  .setOwner("TAG")
-			  .setProvinces({Vic2::Province::Builder{}
+			  .setProvinces({Vic2::Province::Builder()
 										.setNumber(1)
 										.setCores({"TAG"})
-										.setPops(std::vector<Vic2::Pop>{
-											 *Vic2::Pop::Builder{}.setType("capitalists").setSize(20000).setLiteracy(1.0).build(),
-											 *Vic2::Pop::Builder{}.setType("clerks").setSize(20000).setLiteracy(1.0).build()})
+										.setPops(std::vector{
+											 *Vic2::Pop::Builder().setType("capitalists").setSize(20000).setLiteracy(1.0).build(),
+											 *Vic2::Pop::Builder().setType("clerks").setSize(20000).setLiteracy(1.0).build()})
 										.build()})
 			  .setFactoryLevel(0)
 			  .build();
@@ -435,11 +431,11 @@ TEST(Vic2World_States_StateTests, CapitalistsNotCappedByFactoryLevel)
 TEST(Vic2World_States_StateTests, EatingStateAbsorbsProvinces)
 {
 	Vic2::State state;
-	const auto state2 = Vic2::State::Builder{}
+	const auto state2 = Vic2::State::Builder()
 									.setProvinceNumbers({1, 2, 3})
-									.setProvinces({Vic2::Province::Builder{}.setNumber(1).build(),
-										 Vic2::Province::Builder{}.setNumber(2).build(),
-										 Vic2::Province::Builder{}.setNumber(3).build()})
+									.setProvinces({Vic2::Province::Builder().setNumber(1).build(),
+										 Vic2::Province::Builder().setNumber(2).build(),
+										 Vic2::Province::Builder().setNumber(3).build()})
 									.build();
 
 	state.eatState(*state2, Vic2::StateDefinitions());
@@ -457,7 +453,7 @@ TEST(Vic2World_States_StateTests, EatingStateAbsorbsProvinces)
 TEST(Vic2World_States_StateTests, EatingStateCanMakePartialStatesWhole)
 {
 	Vic2::State state;
-	const auto state2 = Vic2::State::Builder{}.setProvinceNumbers({1, 2, 3}).build();
+	const auto state2 = Vic2::State::Builder().setProvinceNumbers({1, 2, 3}).build();
 
 	state.eatState(*state2,
 		 *Vic2::StateDefinitions::Builder().setStateMap({{1, {1, 2, 3}}, {2, {1, 2, 3}}, {3, {1, 2, 3}}}).build());
@@ -469,7 +465,7 @@ TEST(Vic2World_States_StateTests, EatingStateCanMakePartialStatesWhole)
 TEST(Vic2World_States_StateTests, EatingStateCanLeavePartialStatesPartial)
 {
 	Vic2::State state;
-	const auto state2 = Vic2::State::Builder{}.setProvinceNumbers({1, 2, 3}).build();
+	const auto state2 = Vic2::State::Builder().setProvinceNumbers({1, 2, 3}).build();
 
 	state.eatState(*state2,
 		 *Vic2::StateDefinitions::Builder()
@@ -483,27 +479,25 @@ TEST(Vic2World_States_StateTests, EatingStateCanLeavePartialStatesPartial)
 TEST(Vic2World_States_StateTests, EatingStateAbsorbsWorkers)
 {
 	auto state =
-		 Vic2::State::Builder{}
+		 Vic2::State::Builder()
 			  .setProvinceNumbers({1})
-			  .setProvinces(
-					{Vic2::Province::Builder{}
-							  .setOwner("TAG")
-							  .setNumber(1)
-							  .setCores({"TAG"})
-							  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("craftsmen").setSize(12).build()})
-							  .build()})
+			  .setProvinces({Vic2::Province::Builder()
+										.setOwner("TAG")
+										.setNumber(1)
+										.setCores({"TAG"})
+										.setPops(std::vector{*Vic2::Pop::Builder().setType("craftsmen").setSize(12).build()})
+										.build()})
 			  .setFactoryLevel(1)
 			  .build();
 	const auto state2 =
-		 Vic2::State::Builder{}
+		 Vic2::State::Builder()
 			  .setProvinceNumbers({2})
-			  .setProvinces(
-					{Vic2::Province::Builder{}
-							  .setOwner("TAG")
-							  .setNumber(2)
-							  .setCores({"TAG"})
-							  .setPops(std::vector<Vic2::Pop>{*Vic2::Pop::Builder{}.setType("craftsmen").setSize(12).build()})
-							  .build()})
+			  .setProvinces({Vic2::Province::Builder()
+										.setOwner("TAG")
+										.setNumber(2)
+										.setCores({"TAG"})
+										.setPops(std::vector{*Vic2::Pop::Builder().setType("craftsmen").setSize(12).build()})
+										.build()})
 			  .setFactoryLevel(2)
 			  .build();
 

@@ -185,7 +185,7 @@ TEST(HoI4World_ShipTypes_MtgShipVariantTests, NoRequiredTechsMeansVariantIsValid
 	input << "}";
 	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
-	ASSERT_TRUE(theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder{}.Build()));
+	ASSERT_TRUE(theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder().Build()));
 }
 
 
@@ -199,7 +199,7 @@ TEST(HoI4World_ShipTypes_MtgShipVariantTests, MissingRequiredTechMeansVariantIsI
 	input << "}";
 	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
-	ASSERT_FALSE(theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder{}.Build()));
+	ASSERT_FALSE(theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder().Build()));
 }
 
 
@@ -214,7 +214,7 @@ TEST(HoI4World_ShipTypes_MtgShipVariantTests, HavingRequiredTechsMeansVariantIsV
 	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
 	ASSERT_TRUE(
-		 theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder{}.addTechnology("required_tech1").Build()));
+		 theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
 }
 
 
@@ -230,7 +230,7 @@ TEST(HoI4World_ShipTypes_MtgShipVariantTests, HavingOnlySomeRequiredTechsMeansVa
 	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
 	ASSERT_FALSE(
-		 theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder{}.addTechnology("required_tech1").Build()));
+		 theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
 }
 
 
@@ -245,7 +245,7 @@ TEST(HoI4World_ShipTypes_MtgShipVariantTests, HavingBlockingTechsMeansVariantIsI
 	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
 	ASSERT_FALSE(
-		 theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder{}.addTechnology("required_tech1").Build()));
+		 theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
 }
 
 
@@ -259,5 +259,5 @@ TEST(HoI4World_ShipTypes_MtgShipVariantTests, HavingNoBlockingTechsMeansVariantI
 	input << "}";
 	const HoI4::MtgShipVariant theMtgShipVariant(input);
 
-	ASSERT_TRUE(theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder{}.Build()));
+	ASSERT_TRUE(theMtgShipVariant.isValidVariant(*HoI4::technologies::Builder().Build()));
 }

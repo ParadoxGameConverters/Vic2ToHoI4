@@ -11,7 +11,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, VariantsDefaultsToEmpty)
 	std::stringstream input;
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder{}.Build(), std::string(""));
+	HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder().Build(), std::string(""));
 
 	std::stringstream output;
 	output << theVariants;
@@ -44,7 +44,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, CanReceiveMtgVariant)
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder{}.Build(), "TAG");
+	HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder().Build(), "TAG");
 
 	std::stringstream output;
 	output << theVariants;
@@ -89,7 +89,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, HeldMtgVariantIsIdentified)
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	const HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder{}.Build(), "TAG");
+	const HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder().Build(), "TAG");
 
 	ASSERT_TRUE(theVariants.hasMtgVariant("Early submarine"));
 }
@@ -111,7 +111,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, MissingMtgVariantIsNotIdentified)
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	const HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder{}.Build(), "TAG");
+	const HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder().Build(), "TAG");
 
 	ASSERT_FALSE(theVariants.hasMtgVariant("1936 submarine"));
 }
@@ -151,7 +151,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, MtgVariantsNeedRequiredTechs)
 	HoI4::PossibleShipVariants possibleVariants(input);
 
 	HoI4::ShipVariants theVariants(possibleVariants,
-		 *HoI4::technologies::Builder{}.addTechnology("tech2").Build(),
+		 *HoI4::technologies::Builder().addTechnology("tech2").Build(),
 		 "TAG");
 
 	std::stringstream output;
@@ -215,7 +215,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, MtgVariantsCanBeBlocked)
 	HoI4::PossibleShipVariants possibleVariants(input);
 
 	HoI4::ShipVariants theVariants(possibleVariants,
-		 *HoI4::technologies::Builder{}.addTechnology("tech2").Build(),
+		 *HoI4::technologies::Builder().addTechnology("tech2").Build(),
 		 "TAG");
 
 	std::stringstream output;
@@ -261,7 +261,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, CanReceiveLegacyVariant)
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder{}.Build(), "TAG");
+	HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder().Build(), "TAG");
 
 	std::stringstream output;
 	output << theVariants;
@@ -306,7 +306,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, HeldLegacyVariantIsIdentified)
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	const HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder{}.Build(), "TAG");
+	const HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder().Build(), "TAG");
 
 	ASSERT_TRUE(theVariants.hasLegacyVariant("Early submarine"));
 }
@@ -328,7 +328,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, MissingVariantIsNotIdentified)
 	input << "}\n";
 	HoI4::PossibleShipVariants possibleVariants(input);
 
-	const HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder{}.Build(), "TAG");
+	const HoI4::ShipVariants theVariants(possibleVariants, *HoI4::technologies::Builder().Build(), "TAG");
 
 	ASSERT_FALSE(theVariants.hasLegacyVariant("1936 submarine"));
 }
@@ -369,7 +369,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, LegacyVariantsNeedRequiredTechs)
 
 
 	HoI4::ShipVariants theVariants(possibleVariants,
-		 *HoI4::technologies::Builder{}.addTechnology("tech2").Build(),
+		 *HoI4::technologies::Builder().addTechnology("tech2").Build(),
 		 "TAG");
 
 	std::stringstream output;
@@ -433,7 +433,7 @@ TEST(HoI4World_ShipTypes_shipVariantsTests, LegacyVariantsCanBeBlocked)
 	HoI4::PossibleShipVariants possibleVariants(input);
 
 	HoI4::ShipVariants theVariants(possibleVariants,
-		 *HoI4::technologies::Builder{}.addTechnology("tech2").Build(),
+		 *HoI4::technologies::Builder().addTechnology("tech2").Build(),
 		 "TAG");
 
 	std::stringstream output;

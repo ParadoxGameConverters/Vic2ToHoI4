@@ -6,7 +6,7 @@
 
 HoI4::SoundEffectsFactory::SoundEffectsFactory()
 {
-	soundEffectsMapper = SoundEffectsMapper::Factory{}.getMapper();
+	soundEffectsMapper = SoundEffectsMapper::Factory().getMapper();
 }
 
 

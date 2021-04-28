@@ -789,7 +789,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, DivisionLocationsAreConverted)
 				.addVic2ToHoI4ProvinceMap(496, {11821})
 				.Build());
 
-	ASSERT_EQ(std::set<int>{11821}, theArmy.getDivisionLocations());
+	ASSERT_EQ(std::set{11821}, theArmy.getDivisionLocations());
 }
 
 
@@ -868,7 +868,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, BackupDivisionLocationsAreConverted)
 				.addVic2ToHoI4ProvinceMap(1496, {12821})
 				.Build());
 
-	ASSERT_EQ(std::set<int>{1}, theArmy.getDivisionLocations());
+	ASSERT_EQ(std::set{1}, theArmy.getDivisionLocations());
 }
 
 
@@ -977,8 +977,7 @@ TEST(HoI4World_Military_HoI4ArmyTests, CavalryDivisionsRequireEquipment)
 		 theStates,
 		 *Mappers::ProvinceMapper::Builder().Build());
 
-	ASSERT_THAT(theArmy.getDivisionTypesAndAmounts(),
-		 testing::UnorderedElementsAre(testing::Pair("cavalry", 1)));
+	ASSERT_THAT(theArmy.getDivisionTypesAndAmounts(), testing::UnorderedElementsAre(testing::Pair("cavalry", 1)));
 }
 
 
@@ -1033,7 +1032,8 @@ TEST(HoI4World_Military_HoI4ArmyTests, ArtilleryDivisionsAreReturned)
 		 theStates,
 		 *Mappers::ProvinceMapper::Builder().Build());
 
-	ASSERT_THAT(theArmy.getDivisionTypesAndAmounts(), testing::UnorderedElementsAre(testing::Pair("artillery_brigade", 1)));
+	ASSERT_THAT(theArmy.getDivisionTypesAndAmounts(),
+		 testing::UnorderedElementsAre(testing::Pair("artillery_brigade", 1)));
 }
 
 

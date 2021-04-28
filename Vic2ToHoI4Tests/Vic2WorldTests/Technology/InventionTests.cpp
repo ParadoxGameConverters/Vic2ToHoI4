@@ -8,7 +8,7 @@
 
 TEST(Vic2World_Technology_InventionTests, MissingInventionLogsErrorAndReturnsNullopt)
 {
-	const auto inventions = Vic2::Inventions{};
+	const auto inventions = Vic2::Inventions();
 
 	std::stringstream log;
 	auto* stdOutBuf = std::cout.rdbuf();
@@ -25,7 +25,7 @@ TEST(Vic2World_Technology_InventionTests, MissingInventionLogsErrorAndReturnsNul
 
 TEST(Vic2World_Technology_InventionTests, InventionZeroLogsErrorAndReturnsNullopt)
 {
-	const auto inventions = Vic2::Inventions{};
+	const auto inventions = Vic2::Inventions();
 
 	std::stringstream log;
 	auto* stdOutBuf = std::cout.rdbuf();
@@ -43,8 +43,8 @@ TEST(Vic2World_Technology_InventionTests, InventionZeroLogsErrorAndReturnsNullop
 #ifndef _DEBUG // disable some test that break code coverage
 TEST(Vic2World_Technology_InventionTests, InventionNameIsReturned)
 {
-	const auto configuration = Configuration::Builder{}.setVic2Path("./BaseGameInventions").build();
-	const auto inventions = Vic2::Inventions::Factory{}.loadInventions(*configuration);
+	const auto configuration = Configuration::Builder().setVic2Path("./BaseGameInventions").build();
+	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
 
 	ASSERT_EQ("test_tech_one", inventions->getInventionName(1));
 }
@@ -52,8 +52,8 @@ TEST(Vic2World_Technology_InventionTests, InventionNameIsReturned)
 
 TEST(Vic2World_Technology_InventionTests, AllInventionFilesAreRead)
 {
-	const auto configuration = Configuration::Builder{}.setVic2Path("./BaseGameInventions").build();
-	const auto inventions = Vic2::Inventions::Factory{}.loadInventions(*configuration);
+	const auto configuration = Configuration::Builder().setVic2Path("./BaseGameInventions").build();
+	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
 
 	ASSERT_EQ("test_tech_one", inventions->getInventionName(1));
 	ASSERT_EQ("test_tech_two", inventions->getInventionName(2));
@@ -62,8 +62,8 @@ TEST(Vic2World_Technology_InventionTests, AllInventionFilesAreRead)
 
 TEST(Vic2World_Technology_InventionTests, InventionsWithAtypicalCharactersAreReturned)
 {
-	const auto configuration = Configuration::Builder{}.setVic2Path("./BaseGameInventions").build();
-	const auto inventions = Vic2::Inventions::Factory{}.loadInventions(*configuration);
+	const auto configuration = Configuration::Builder().setVic2Path("./BaseGameInventions").build();
+	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
 
 	ASSERT_NE(std::nullopt, inventions->getInventionName(3));
 }
@@ -71,12 +71,12 @@ TEST(Vic2World_Technology_InventionTests, InventionsWithAtypicalCharactersAreRet
 
 TEST(Vic2World_Technology_InventionTests, ModInventionFilesAreRead)
 {
-	const auto configuration = Configuration::Builder{}
+	const auto configuration = Configuration::Builder()
 											 .setVic2Path("./BaseGameInventions")
 											 .setVic2ModPath(".")
-											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("ModInventions/Mod1").build())
+											 .addVic2Mod(*Vic2::Mod::Builder().setDirectory("ModInventions/Mod1").build())
 											 .build();
-	const auto inventions = Vic2::Inventions::Factory{}.loadInventions(*configuration);
+	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
 
 	ASSERT_EQ("test_tech_four", inventions->getInventionName(4));
 }
@@ -84,13 +84,13 @@ TEST(Vic2World_Technology_InventionTests, ModInventionFilesAreRead)
 
 TEST(Vic2World_Technology_InventionTests, MultipleModInventionFilesAreRead)
 {
-	const auto configuration = Configuration::Builder{}
+	const auto configuration = Configuration::Builder()
 											 .setVic2Path("./BaseGameInventions")
 											 .setVic2ModPath(".")
-											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("ModInventions/Mod1").build())
-											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("ModInventions/Mod2").build())
+											 .addVic2Mod(*Vic2::Mod::Builder().setDirectory("ModInventions/Mod1").build())
+											 .addVic2Mod(*Vic2::Mod::Builder().setDirectory("ModInventions/Mod2").build())
 											 .build();
-	const auto inventions = Vic2::Inventions::Factory{}.loadInventions(*configuration);
+	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
 
 	ASSERT_EQ("test_tech_five", inventions->getInventionName(5));
 }
@@ -98,12 +98,12 @@ TEST(Vic2World_Technology_InventionTests, MultipleModInventionFilesAreRead)
 
 TEST(Vic2World_Technology_InventionTests, ModInventionFilesOverrideDefaultOnes)
 {
-	const auto configuration = Configuration::Builder{}
+	const auto configuration = Configuration::Builder()
 											 .setVic2Path("./BaseGameInventions")
 											 .setVic2ModPath(".")
-											 .addVic2Mod(*Vic2::Mod::Builder{}.setDirectory("ModInventions/Mod3").build())
+											 .addVic2Mod(*Vic2::Mod::Builder().setDirectory("ModInventions/Mod3").build())
 											 .build();
-	const auto inventions = Vic2::Inventions::Factory{}.loadInventions(*configuration);
+	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
 
 	ASSERT_EQ("replacement_tech_one", inventions->getInventionName(1));
 }
@@ -112,16 +112,16 @@ TEST(Vic2World_Technology_InventionTests, ModInventionFilesOverrideDefaultOnes)
 TEST(Vic2World_Technology_InventionTests, ModInventionFilesOverrideDependeeMods)
 {
 	const auto configuration =
-		 Configuration::Builder{}
+		 Configuration::Builder()
 			  .setVic2Path("./BaseGameInventions")
 			  .setVic2ModPath(".")
-			  .addVic2Mod(*Vic2::Mod::Builder{}.setName("Mod1").setDirectory("ModInventions/Mod1").build())
+			  .addVic2Mod(*Vic2::Mod::Builder().setName("Mod1").setDirectory("ModInventions/Mod1").build())
 			  .addVic2Mod(
-					*Vic2::Mod::Builder{}.setName("Mod2").setDirectory("ModInventions/Mod2").addDependency("Mod1").build())
+					*Vic2::Mod::Builder().setName("Mod2").setDirectory("ModInventions/Mod2").addDependency("Mod1").build())
 			  .addVic2Mod(
-					*Vic2::Mod::Builder{}.setName("Mod3").setDirectory("ModInventions/Mod3").addDependency("Mod2").build())
+					*Vic2::Mod::Builder().setName("Mod3").setDirectory("ModInventions/Mod3").addDependency("Mod2").build())
 			  .build();
-	const auto inventions = Vic2::Inventions::Factory{}.loadInventions(*configuration);
+	const auto inventions = Vic2::Inventions::Factory().loadInventions(*configuration);
 
 	ASSERT_EQ("replacement_tech_two", inventions->getInventionName(4));
 }

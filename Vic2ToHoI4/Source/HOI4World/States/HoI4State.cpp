@@ -158,7 +158,7 @@ void HoI4::State::setControlledProvince(int provinceNum, const std::string& coun
 		return;
 	}
 
-	auto [existing, inserted] = controlledProvinces.insert(std::make_pair(country, std::set<int>{provinceNum}));
+	auto [existing, inserted] = controlledProvinces.insert(std::make_pair(country, std::set{provinceNum}));
 	if (!inserted)
 	{
 		existing->second.insert(provinceNum);

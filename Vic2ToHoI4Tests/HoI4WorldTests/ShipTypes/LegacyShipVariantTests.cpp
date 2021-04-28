@@ -147,7 +147,7 @@ TEST(HoI4World_ShipTypes_LegacyShipVariantTests, NoRequiredTechsMeansVariantIsVa
 	input << "}";
 	const HoI4::LegacyShipVariant theLegacyShipVariant(input);
 
-	ASSERT_TRUE(theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder{}.Build()));
+	ASSERT_TRUE(theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder().Build()));
 }
 
 
@@ -161,7 +161,7 @@ TEST(HoI4World_ShipTypes_LegacyShipVariantTests, MissingRequiredTechMeansVariant
 	input << "}";
 	const HoI4::LegacyShipVariant theLegacyShipVariant(input);
 
-	ASSERT_FALSE(theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder{}.Build()));
+	ASSERT_FALSE(theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder().Build()));
 }
 
 
@@ -176,7 +176,7 @@ TEST(HoI4World_ShipTypes_LegacyShipVariantTests, HavingRequiredTechsMeansVariant
 	const HoI4::LegacyShipVariant theLegacyShipVariant(input);
 
 	ASSERT_TRUE(
-		 theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder{}.addTechnology("required_tech1").Build()));
+		 theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
 }
 
 
@@ -192,7 +192,7 @@ TEST(HoI4World_ShipTypes_LegacyShipVariantTests, HavingOnlySomeRequiredTechsMean
 	const HoI4::LegacyShipVariant theLegacyShipVariant(input);
 
 	ASSERT_FALSE(
-		 theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder{}.addTechnology("required_tech1").Build()));
+		 theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
 }
 
 
@@ -207,7 +207,7 @@ TEST(HoI4World_ShipTypes_LegacyShipVariantTests, HavingBlockingTechsMeansVariant
 	const HoI4::LegacyShipVariant theLegacyShipVariant(input);
 
 	ASSERT_FALSE(
-		 theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder{}.addTechnology("required_tech1").Build()));
+		 theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder().addTechnology("required_tech1").Build()));
 }
 
 
@@ -221,5 +221,5 @@ TEST(HoI4World_ShipTypes_LegacyShipVariantTests, HavingNoBlockingTechsMeansVaria
 	input << "}";
 	const HoI4::LegacyShipVariant theLegacyShipVariant(input);
 
-	ASSERT_TRUE(theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder{}.Build()));
+	ASSERT_TRUE(theLegacyShipVariant.isValidVariant(*HoI4::technologies::Builder().Build()));
 }

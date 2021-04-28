@@ -28,7 +28,7 @@ TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationTests, NameCanBeImported
 	input << "= {\n";
 	input << "\tname=test_name\n";
 	input << "}";
-	const auto theLocalisation = HoI4::ScriptedLocalisation::Factory{}.getScriptedLocalisation(input);
+	const auto theLocalisation = HoI4::ScriptedLocalisation::Factory().getScriptedLocalisation(input);
 
 	ASSERT_EQ("test_name", theLocalisation->getName());
 }
@@ -64,7 +64,7 @@ TEST(HoI4World_ScriptedLocalisations_SciptedLocalisationTests, TextCanBeImported
 	input << "\t\ttrigger = { has_government = communism }\n";
 	input << "\t\tlocalization_key = FRLOC_COMMUNISME\n";
 	input << "\t}";
-	const auto theLocalisation = HoI4::ScriptedLocalisation::Factory{}.getScriptedLocalisation(input);
+	const auto theLocalisation = HoI4::ScriptedLocalisation::Factory().getScriptedLocalisation(input);
 
 	ASSERT_EQ(2, theLocalisation->getTexts().size());
 	ASSERT_EQ(

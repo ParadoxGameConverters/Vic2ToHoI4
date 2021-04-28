@@ -7,7 +7,7 @@ std::set<int> Vic2::StateDefinitions::getAllProvinces(const int provinceNumber) 
 {
 	if (!stateMap.contains(provinceNumber))
 	{
-		return std::set<int>{};
+		return {};
 	}
 
 	return stateMap.at(provinceNumber);

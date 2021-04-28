@@ -14,7 +14,7 @@ Vic2::CommonCountryData::Factory::Factory()
 	registerKeyword("color", [this](std::istream& theStream) {
 		const commonItems::intList colorComponents(theStream);
 		commonCountryData->theColor = commonItems::Color(
-			 std::array<int, 3>{colorComponents.getInts()[0], colorComponents.getInts()[1], colorComponents.getInts()[2]});
+			 std::array{colorComponents.getInts()[0], colorComponents.getInts()[1], colorComponents.getInts()[2]});
 	});
 	registerKeyword("unit_names", [this](std::istream& theStream) {
 		commonCountryData->unitNames = unitNamesFactory.importUnitNames(theStream);

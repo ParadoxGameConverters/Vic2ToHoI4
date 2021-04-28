@@ -7,7 +7,7 @@
 
 HoI4::decisions::decisions(const Configuration& theConfiguration)
 {
-	ideologicalCategories = DecisionsCategories::Factory{}.getDecisionsCategories(
+	ideologicalCategories = DecisionsCategories::Factory().getDecisionsCategories(
 		 "blankmod/output/common/decisions/categories/00_decision_categories.txt");
 	agentRecruitmentDecisions.importDecisions(
 		 theConfiguration.getHoI4Path() + "/common/decisions/lar_agent_recruitment_decisions.txt");
@@ -245,7 +245,7 @@ HoI4::DecisionsCategory HoI4::decisions::createLocalRecruitmentCategory(const st
 		input << "\t}\n";
 	}
 
-	return DecisionsCategory::Factory{}.getDecisionsCategory("lar_local_recruitment", input);
+	return DecisionsCategory::Factory().getDecisionsCategory("lar_local_recruitment", input);
 }
 
 

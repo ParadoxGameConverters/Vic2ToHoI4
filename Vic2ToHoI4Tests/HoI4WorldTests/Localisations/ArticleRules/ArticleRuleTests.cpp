@@ -6,7 +6,7 @@
 
 TEST(HoI4World_Localisations_ArticleRules_ArticleRule, RuleDoesNotApplyToNonMatch)
 {
-	const auto rule = HoI4::ArticleRule::Builder{}.build();
+	const auto rule = HoI4::ArticleRule::Builder().build();
 
 	ASSERT_FALSE(rule->doesRuleApply("Non-matching String"));
 }
@@ -14,7 +14,7 @@ TEST(HoI4World_Localisations_ArticleRules_ArticleRule, RuleDoesNotApplyToNonMatc
 
 TEST(HoI4World_Localisations_ArticleRules_ArticleRule, RuleDoesNotApplyToEmptyString)
 {
-	const auto rule = HoI4::ArticleRule::Builder{}.build();
+	const auto rule = HoI4::ArticleRule::Builder().build();
 
 	ASSERT_FALSE(rule->doesRuleApply(""));
 }
@@ -22,7 +22,7 @@ TEST(HoI4World_Localisations_ArticleRules_ArticleRule, RuleDoesNotApplyToEmptySt
 
 TEST(HoI4World_Localisations_ArticleRules_ArticleRule, RuleAppliesToMachingString)
 {
-	const auto rule = HoI4::ArticleRule::Builder{}.setMatcher(std::regex(R"(The (.+))")).build();
+	const auto rule = HoI4::ArticleRule::Builder().setMatcher(std::regex(R"(The (.+))")).build();
 
 	ASSERT_TRUE(rule->doesRuleApply("The Matching String"));
 }
@@ -30,7 +30,7 @@ TEST(HoI4World_Localisations_ArticleRules_ArticleRule, RuleAppliesToMachingStrin
 
 TEST(HoI4World_Localisations_ArticleRules_ArticleRule, RuleDoesNotUpdateNonMachingString)
 {
-	const auto rule = HoI4::ArticleRule::Builder{}.setMatcher(std::regex(R"(The (.+))")).setReplacement(R"($1)").build();
+	const auto rule = HoI4::ArticleRule::Builder().setMatcher(std::regex(R"(The (.+))")).setReplacement(R"($1)").build();
 
 	ASSERT_EQ("Non-matching String", rule->applyRuleToText("Non-matching String"));
 }
@@ -38,7 +38,7 @@ TEST(HoI4World_Localisations_ArticleRules_ArticleRule, RuleDoesNotUpdateNonMachi
 
 TEST(HoI4World_Localisations_ArticleRules_ArticleRule, RuleUpdatesMachingString)
 {
-	const auto rule = HoI4::ArticleRule::Builder{}.setMatcher(std::regex(R"(The (.+))")).setReplacement(R"($1)").build();
+	const auto rule = HoI4::ArticleRule::Builder().setMatcher(std::regex(R"(The (.+))")).setReplacement(R"($1)").build();
 
 	ASSERT_EQ("Matching String", rule->applyRuleToText("The Matching String"));
 }
@@ -46,7 +46,7 @@ TEST(HoI4World_Localisations_ArticleRules_ArticleRule, RuleUpdatesMachingString)
 
 TEST(HoI4World_Localisations_ArticleRules_ArticleRule, RuleUpdatesMachingEmptyString)
 {
-	const auto rule = HoI4::ArticleRule::Builder{}.setMatcher(std::regex("")).setReplacement("Foo").build();
+	const auto rule = HoI4::ArticleRule::Builder().setMatcher(std::regex("")).setReplacement("Foo").build();
 
 	ASSERT_EQ("Foo", rule->applyRuleToText(""));
 }

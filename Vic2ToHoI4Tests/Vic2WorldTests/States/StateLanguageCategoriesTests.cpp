@@ -6,7 +6,7 @@
 
 TEST(Vic2World_States_StateLanguageCategories, StateCategoryCanBeReturned)
 {
-	const auto theCategories = Vic2::StateLanguageCategories::Builder{}.setCategories({{"test_state", "test_category"}}).build();
+	const auto theCategories = Vic2::StateLanguageCategories::Builder().setCategories({{"test_state", "test_category"}}).build();
 
 	ASSERT_EQ("test_category", theCategories->getStateCategory("test_state"));
 }
@@ -15,7 +15,7 @@ TEST(Vic2World_States_StateLanguageCategories, StateCategoryCanBeReturned)
 TEST(Vic2World_States_StateLanguageCategories, MissingStateReturnsNullopt)
 {
 	const auto theCategories =
-		 Vic2::StateLanguageCategories::Builder{}.build();
+		 Vic2::StateLanguageCategories::Builder().build();
 
 	ASSERT_EQ(std::nullopt, theCategories->getStateCategory("test_state"));
 }
