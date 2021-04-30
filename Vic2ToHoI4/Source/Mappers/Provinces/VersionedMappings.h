@@ -15,8 +15,8 @@ class VersionedMappings
   public:
 	class Factory;
 
-	[[nodiscard]] auto getVic2ToHoI4Mapping() const { return Vic2ToHoI4ProvinceMap; }
-	[[nodiscard]] auto getHoI4ToVic2Mapping() const { return HoI4ToVic2ProvinceMap; }
+	[[nodiscard]] auto& getVic2ToHoI4Mapping() const { return Vic2ToHoI4ProvinceMap; }
+	[[nodiscard]] auto& getHoI4ToVic2Mapping() const { return HoI4ToVic2ProvinceMap; }
 
   private:
 	HoI4ToVic2ProvinceMapping HoI4ToVic2ProvinceMap;
