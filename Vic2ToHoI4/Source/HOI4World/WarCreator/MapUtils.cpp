@@ -307,12 +307,6 @@ std::optional<HoI4::Coordinate> HoI4::MapUtils::getProvincePosition(int province
 
 float HoI4::MapUtils::getDistanceSquaredBetweenPoints(const Coordinate& point1, const Coordinate& point2)
 {
-	if (const auto distance = provinceDistanceCache.find(std::make_pair(point1, point2));
-		 distance != provinceDistanceCache.end())
-	{
-		return distance->second;
-	}
-
 	auto xDistance = static_cast<float>(abs(point2.x - point1.x));
 	if (xDistance > halfMapWidth)
 	{
@@ -322,8 +316,6 @@ float HoI4::MapUtils::getDistanceSquaredBetweenPoints(const Coordinate& point1, 
 	const auto yDistance = static_cast<float>(point2.y - point1.y);
 
 	const auto distance = xDistance * xDistance + yDistance * yDistance;
-	provinceDistanceCache[std::make_pair(point1, point2)] = distance;
-	provinceDistanceCache[std::make_pair(point2, point1)] = distance;
 
 	return distance;
 }
