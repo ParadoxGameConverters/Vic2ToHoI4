@@ -60,7 +60,6 @@ class MapUtils
 	[[nodiscard]] std::optional<float> getDistanceBetweenCountries(const Country& country1, const Country& country2);
 
 	std::map<int, Coordinate> provincePositions;
-	std::map<std::pair<Coordinate, Coordinate>, float> provinceDistanceCache;
 	std::map<int, std::string> provinceToOwnerMap;
 	std::map<std::string, std::map<std::string, float>> distancesBetweenCountries;
 };
