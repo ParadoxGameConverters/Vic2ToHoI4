@@ -20,8 +20,116 @@ germanic = {
 		communism = { "gfx/leaders/GER/Portrait_Germany_Wilhelm_Pieck.dds" }
 		democratic = { "gfx/leaders/GER/Portrait_Germany_Konrad_Adenauer.dds" }
 		fascism = { "gfx/leaders/GER/Portrait_Germany_Hilter_M.dds" "gfx/leaders/GER/Portrait_Germany_Heinrich_Himmler.dds" "gfx/leaders/GER/Portrait_Germany_Hermann_Goring.dds" }
-		absolutist = { "GFX_portrait_ger_wilhelm_ii" "GFX_Portrait_hungary_otto_von_hapsburg" "GFX_portrait_ger_wilhelm_iii" }
-		neutrality = { "GFX_portrait_ger_august_von_mackensen" "GFX_portrait_chi_alexander_von_falkenhausen" }
+		absolutist = { "GFX_portrait_ger_wilhelm_ii" "GFX_Portrait_hungary_otto_von_hapsburg" "GFX_portrait_ger_wilhelm_iii" "gfx/leaders/OC/portrait_Vic1_Franz_Joseph.tga" "gfx/leaders/OC/portrait_Vic1_Wilhelm_II.tga"
+		"gfx/leaders/MotE/BAD_Karl_Friedrich.tga"
+		"gfx/leaders/MotE/BAV_King.tga"
+		"gfx/leaders/MotE/BRU_Karl_Wilhelm_FerdinandII.tga"
+		"gfx/leaders/MotE/HAN_Frederick_AugustusIII.tga"
+		"gfx/leaders/MotE/HES_LudwigX.tga"
+		"gfx/leaders/MotE/HES_WilhelmIX.tga"
+		"gfx/leaders/MotE/HRE_FrancisII.tga"
+		"gfx/leaders/MotE/MEK_Frederick_FrancisI.tga"
+		"gfx/leaders/MotE/NAS_Friedrich_Wilhelm.tga"
+		"gfx/leaders/MotE/OLD_PeterI.tga"
+		"gfx/leaders/MotE/PRU_Friedriech-WilhelmIII.tga"
+		"gfx/leaders/MotE/Unit_AUS_Alvinczy.tga"
+		"gfx/leaders/MotE/Unit_AUS_Bellegarde.tga"
+		"gfx/leaders/MotE/Unit_AUS_Bianchi.tga"
+		"gfx/leaders/MotE/Unit_AUS_Bubna.tga"
+		"gfx/leaders/MotE/Unit_AUS_Colloredo.tga"
+		"gfx/leaders/MotE/Unit_AUS_Courcelles.tga"
+		"gfx/leaders/MotE/Unit_AUS_Duka.tga"
+		"gfx/leaders/MotE/Unit_AUS_Ferdinand.tga"
+		"gfx/leaders/MotE/Unit_AUS_Frimont.tga"
+		"gfx/leaders/MotE/Unit_AUS_Gyulai.tga"
+		"gfx/leaders/MotE/Unit_AUS_Hessen.tga"
+		"gfx/leaders/MotE/Unit_AUS_Hiller.tga"
+		"gfx/leaders/MotE/Unit_AUS_Jellachich.tga"
+		"gfx/leaders/MotE/Unit_AUS_Kienmayer.tga"
+		"gfx/leaders/MotE/Unit_AUS_Klenau.tga"
+		"gfx/leaders/MotE/Unit_AUS_Kollowrath.tga"
+		"gfx/leaders/MotE/Unit_AUS_Liechtenstein.tga"
+		"gfx/leaders/MotE/Unit_AUS_Mack.tga"
+		"gfx/leaders/MotE/Unit_AUS_Nostitz.tga"
+		"gfx/leaders/MotE/Unit_AUS_Radetzky.tga"
+		"gfx/leaders/MotE/Unit_AUS_Schwarzenberg.tga"
+		"gfx/leaders/MotE/Unit_AUS_Wurtemberg.tga"
+		"gfx/leaders/MotE/Unit_BAV_Deroy.tga"
+		"gfx/leaders/MotE/Unit_BAV_Ludwig.tga"
+		"gfx/leaders/MotE/Unit_BAV_Wrede.tga"
+		"gfx/leaders/MotE/Unit_PRU_Blucher.tga"
+		"gfx/leaders/MotE/Unit_PRU_Boyen.tga"
+		"gfx/leaders/MotE/Unit_PRU_Bulow.tga"
+		"gfx/leaders/MotE/Unit_PRU_Gneisenau.tga"
+		"gfx/leaders/MotE/Unit_PRU_Hohenlohe.tga"
+		"gfx/leaders/MotE/Unit_PRU_Kalckreuth.tga"
+		"gfx/leaders/MotE/Unit_PRU_LEstocq.tga"
+		"gfx/leaders/MotE/Unit_PRU_LouisFerdinand.tga"
+		"gfx/leaders/MotE/Unit_PRU_Luise.tga"
+		"gfx/leaders/MotE/Unit_PRU_SachsWeimar.tga"
+		"gfx/leaders/MotE/Unit_PRU_Scharnhorst.tga"
+		"gfx/leaders/MotE/Unit_PRU_Schill.tga"
+		"gfx/leaders/MotE/Unit_PRU_Tauentzien.tga"
+		"gfx/leaders/MotE/Unit_PRU_Thielmann.tga"
+		"gfx/leaders/MotE/Unit_PRU_Yorck.tga"
+		"gfx/leaders/MotE/Unit_PRU_Ziethen.tga"
+		"gfx/leaders/MotE/Unit_SAX_Reitzenstein.tga"
+		"gfx/leaders/MotE/Unit_WES_Eble.tga" }
+		neutrality = { "GFX_portrait_ger_august_von_mackensen" "GFX_portrait_chi_alexander_von_falkenhausen" "gfx/leaders/OC/portrait_Vic1_Franz_Joseph.tga" "gfx/leaders/OC/portrait_Vic1_Wilhelm_II.tga"
+		"gfx/leaders/MotE/BAD_Karl_Friedrich.tga"
+		"gfx/leaders/MotE/BAV_King.tga"
+		"gfx/leaders/MotE/BRU_Karl_Wilhelm_FerdinandII.tga"
+		"gfx/leaders/MotE/HAN_Frederick_AugustusIII.tga"
+		"gfx/leaders/MotE/HES_LudwigX.tga"
+		"gfx/leaders/MotE/HES_WilhelmIX.tga"
+		"gfx/leaders/MotE/HRE_FrancisII.tga"
+		"gfx/leaders/MotE/MEK_Frederick_FrancisI.tga"
+		"gfx/leaders/MotE/NAS_Friedrich_Wilhelm.tga"
+		"gfx/leaders/MotE/OLD_PeterI.tga"
+		"gfx/leaders/MotE/PRU_Friedriech-WilhelmIII.tga"
+		"gfx/leaders/MotE/Unit_AUS_Alvinczy.tga"
+		"gfx/leaders/MotE/Unit_AUS_Bellegarde.tga"
+		"gfx/leaders/MotE/Unit_AUS_Bianchi.tga"
+		"gfx/leaders/MotE/Unit_AUS_Bubna.tga"
+		"gfx/leaders/MotE/Unit_AUS_Colloredo.tga"
+		"gfx/leaders/MotE/Unit_AUS_Courcelles.tga"
+		"gfx/leaders/MotE/Unit_AUS_Duka.tga"
+		"gfx/leaders/MotE/Unit_AUS_Ferdinand.tga"
+		"gfx/leaders/MotE/Unit_AUS_Frimont.tga"
+		"gfx/leaders/MotE/Unit_AUS_Gyulai.tga"
+		"gfx/leaders/MotE/Unit_AUS_Hessen.tga"
+		"gfx/leaders/MotE/Unit_AUS_Hiller.tga"
+		"gfx/leaders/MotE/Unit_AUS_Jellachich.tga"
+		"gfx/leaders/MotE/Unit_AUS_Kienmayer.tga"
+		"gfx/leaders/MotE/Unit_AUS_Klenau.tga"
+		"gfx/leaders/MotE/Unit_AUS_Kollowrath.tga"
+		"gfx/leaders/MotE/Unit_AUS_Liechtenstein.tga"
+		"gfx/leaders/MotE/Unit_AUS_Mack.tga"
+		"gfx/leaders/MotE/Unit_AUS_Nostitz.tga"
+		"gfx/leaders/MotE/Unit_AUS_Radetzky.tga"
+		"gfx/leaders/MotE/Unit_AUS_Schwarzenberg.tga"
+		"gfx/leaders/MotE/Unit_AUS_Wurtemberg.tga"
+		"gfx/leaders/MotE/Unit_BAV_Deroy.tga"
+		"gfx/leaders/MotE/Unit_BAV_Ludwig.tga"
+		"gfx/leaders/MotE/Unit_BAV_Wrede.tga"
+		"gfx/leaders/MotE/Unit_PRU_Blucher.tga"
+		"gfx/leaders/MotE/Unit_PRU_Boyen.tga"
+		"gfx/leaders/MotE/Unit_PRU_Bulow.tga"
+		"gfx/leaders/MotE/Unit_PRU_Gneisenau.tga"
+		"gfx/leaders/MotE/Unit_PRU_Hohenlohe.tga"
+		"gfx/leaders/MotE/Unit_PRU_Kalckreuth.tga"
+		"gfx/leaders/MotE/Unit_PRU_LEstocq.tga"
+		"gfx/leaders/MotE/Unit_PRU_LouisFerdinand.tga"
+		"gfx/leaders/MotE/Unit_PRU_Luise.tga"
+		"gfx/leaders/MotE/Unit_PRU_SachsWeimar.tga"
+		"gfx/leaders/MotE/Unit_PRU_Scharnhorst.tga"
+		"gfx/leaders/MotE/Unit_PRU_Schill.tga"
+		"gfx/leaders/MotE/Unit_PRU_Tauentzien.tga"
+		"gfx/leaders/MotE/Unit_PRU_Thielmann.tga"
+		"gfx/leaders/MotE/Unit_PRU_Yorck.tga"
+		"gfx/leaders/MotE/Unit_PRU_Ziethen.tga"
+		"gfx/leaders/MotE/Unit_SAX_Reitzenstein.tga"
+		"gfx/leaders/MotE/Unit_WES_Eble.tga" }
 		radical = { "gfx/leaders/Europe/portrait_europe_generic_land_10.dds" } #Helmuth Weidling
 	}
 	ideology_minister_portraits = 
@@ -34,10 +142,10 @@ germanic = {
 		radical = { "gfx/interface/ideas/idea_hjalmar_schacht.dds" } 
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_ger_wilhelm_iii.dds"	
+		"gfx/interface/ideas/crowns/germany.dds"	
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_ger_revive_the_kaiserreich.dds"
+		"gfx/interface/ideas/crowns/germany.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -88,10 +196,10 @@ barbarian = {
 		radical = { "gfx/interface/ideas/idea_louis_kahn.dds" }
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/longobards.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/longobards.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -126,10 +234,20 @@ gothic_g = {
 beneluxian = {
 	leader_portraits = {
 		communism = { "GFX_BEL_Joseph_Jacquemotte" }
-		democratic = { "gfx/leaders/BEL/Portrait_Belgium_Hubert_Pierlot.dds" "gfx/leaders/HOL/Portrait_Netherlands_Dirk_Jan_de_Geer.dds" }
+		democratic = { "gfx/leaders/BEL/Portrait_Belgium_Hubert_Pierlot.dds" "gfx/leaders/HOL/Portrait_Netherlands_Dirk_Jan_de_Geer.dds" "gfx/leaders/OC/portrait_Vic1_Leopold_I.tga" }
 		fascism = { "GFX_HOL_Anton_Mussert" } 
-		absolutist = { "GFX_BEL_Leopold_III" "gfx/leaders/INS/portrait_ins_at_van_starkenborgh.dds" "GFX_portrait_hol_prins_bernhard" } 
-		neutrality = { "gfx/leaders/LUX/portrait_lux_joseph_bech.dds" "gfx/leaders/HOL/portrait_hol_hendrikus_colijn.dds" }
+		absolutist = { "GFX_BEL_Leopold_III" "gfx/leaders/INS/portrait_ins_at_van_starkenborgh.dds" "GFX_portrait_hol_prins_bernhard" "gfx/leaders/OC/portrait_Vic1_Leopold_I.tga"
+		"gfx/leaders/MotE/NDS_FerdinandIV.tga"
+		"gfx/leaders/MotE/NED_Jan_Bernd_Bicker.tga"
+		"gfx/leaders/MotE/NED_Lodevig_Bonaparte.tga"
+		"gfx/leaders/MotE/Unit_NED_Kinsberger.tga"
+		"gfx/leaders/MotE/Unit_NED_Verhuell.tga" } 
+		neutrality = { "gfx/leaders/LUX/portrait_lux_joseph_bech.dds" "gfx/leaders/HOL/portrait_hol_hendrikus_colijn.dds" "gfx/leaders/OC/portrait_Vic1_Leopold_I.tga"
+		"gfx/leaders/MotE/NDS_FerdinandIV.tga"
+		"gfx/leaders/MotE/NED_Jan_Bernd_Bicker.tga"
+		"gfx/leaders/MotE/NED_Lodevig_Bonaparte.tga"
+		"gfx/leaders/MotE/Unit_NED_Kinsberger.tga"
+		"gfx/leaders/MotE/Unit_NED_Verhuell.tga" }
 		radical = { "gfx/leaders/OC/Portrait_Netherlands_Theo_Heemskerk.dds" }
 	}
 	ideology_minister_portraits = 
@@ -142,10 +260,10 @@ beneluxian = {
 		radical = { "gfx/interface/ideas/idea_hermann_gortz.dds" }
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/netherlands.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_hol_wilhelmina.dds"
+		"gfx/interface/ideas/crowns/netherlands.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -180,10 +298,34 @@ pan_swiss = {
 scandinavian = {
 	leader_portraits = {
 		communism = { "GFX_DEN_Aksel_Larsen" } 
-		democratic = { "gfx/leaders/SWE/Portrait_Sweden_Per_Albin_Hansson.dds" "gfx/leaders/FIN/Portrait_Finland_Risto_Heikki_Ryti.dds" "gfx/leaders/NOR/Portrait_Norway_Johan_Nygaardsvold.dds" }
+		democratic = { "gfx/leaders/SWE/Portrait_Sweden_Per_Albin_Hansson.dds" "gfx/leaders/FIN/Portrait_Finland_Risto_Heikki_Ryti.dds" "gfx/leaders/NOR/Portrait_Norway_Johan_Nygaardsvold.dds" "gfx/leaders/OC/portrait_Vic1_Oscar_II.tga" }
 		fascism = { "GFX_DEN_Fritz_Clausen" "gfx/leaders/DEN/Portrait_Denmark_Erik_Scavenius.dds" "gfx/leaders/NOR/Portrait_Norway_Vidkun_Quisling.dds" } 
-		absolutist = { "gfx/leaders/OC/portrait_SWE_Gustav_V.dds" "gfx/leaders/FIN/portrait_fin_carl_mannerheim.dds" } 
-		neutrality = { "gfx/leaders/DEN/Portrait_Denmark_Thorvald_Stauning.dds" "gfx/leaders/FIN/Portrait_Finland_Kyosti_Kallio.dds" "gfx/leaders/ICE/portrait_ice_sveinn_bjornsson.dds" }
+		absolutist = { "gfx/leaders/OC/portrait_SWE_Gustav_V.dds" "gfx/leaders/FIN/portrait_fin_carl_mannerheim.dds" "gfx/leaders/OC/portrait_Vic1_Christian_IX.tga" "gfx/leaders/OC/portrait_Vic1_Oscar_II.tga"
+		"gfx/leaders/MotE/DEN_Prince_Frederick.tga"
+		"gfx/leaders/MotE/SWE_Bernadotte.tga"
+		"gfx/leaders/MotE/SWE_GustavIV.tga"
+		"gfx/leaders/MotE/SWE_KarlXIII.tga"
+		"gfx/leaders/MotE/Unit_SWE_Adlercreutz.tga"
+		"gfx/leaders/MotE/Unit_SWE_Adlersparre.tga"
+		"gfx/leaders/MotE/Unit_SWE_Armfelt.tga"
+		"gfx/leaders/MotE/Unit_SWE_Cronstedt.tga"
+		"gfx/leaders/MotE/Unit_SWE_Dobeln.tga"
+		"gfx/leaders/MotE/Unit_SWE_JACronstedt.tga"
+		"gfx/leaders/MotE/Unit_SWE_Sandels.tga"
+		"gfx/leaders/MotE/Unit_SWE_Stedingk.tga" } 
+		neutrality = { "gfx/leaders/DEN/Portrait_Denmark_Thorvald_Stauning.dds" "gfx/leaders/FIN/Portrait_Finland_Kyosti_Kallio.dds" "gfx/leaders/ICE/portrait_ice_sveinn_bjornsson.dds" "gfx/leaders/OC/portrait_Vic1_Christian_IX.tga" "gfx/leaders/OC/portrait_Vic1_Oscar_II.tga"
+		"gfx/leaders/MotE/DEN_Prince_Frederick.tga"
+		"gfx/leaders/MotE/SWE_Bernadotte.tga"
+		"gfx/leaders/MotE/SWE_GustavIV.tga"
+		"gfx/leaders/MotE/SWE_KarlXIII.tga"
+		"gfx/leaders/MotE/Unit_SWE_Adlercreutz.tga"
+		"gfx/leaders/MotE/Unit_SWE_Adlersparre.tga"
+		"gfx/leaders/MotE/Unit_SWE_Armfelt.tga"
+		"gfx/leaders/MotE/Unit_SWE_Cronstedt.tga"
+		"gfx/leaders/MotE/Unit_SWE_Dobeln.tga"
+		"gfx/leaders/MotE/Unit_SWE_JACronstedt.tga"
+		"gfx/leaders/MotE/Unit_SWE_Sandels.tga"
+		"gfx/leaders/MotE/Unit_SWE_Stedingk.tga" }
 		radical = { "gfx/leaders/OC/Portrait_SWE_Podcat.dds" }
 	}
 	ideology_minister_portraits = 
@@ -196,10 +338,10 @@ scandinavian = {
 		radical = { "gfx/interface/ideas/idea_robert_oppenheimer.dds" }
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/sweden.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/sweden.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -234,11 +376,49 @@ varangian_g = {
 british = {
 	leader_portraits = {
 		communism = { "gfx/leaders/ENG/Portrait_Britain_Palme_Dutt.dds" }
-		democratic = { "gfx/leaders/ENG/Portrait_Britain_Stanley_Baldwin.dds" "gfx/leaders/ENG/Portrait_Britain_Winston_Churchill.dds" "gfx/leaders/RAJ/Portrait_British_Raj_Lord_Linlithgow.dds" }
+		democratic = { "gfx/leaders/ENG/Portrait_Britain_Stanley_Baldwin.dds" "gfx/leaders/ENG/Portrait_Britain_Winston_Churchill.dds" "gfx/leaders/RAJ/Portrait_British_Raj_Lord_Linlithgow.dds" "gfx/leaders/OC/portrait_Vic1_Paul_Kruger.tga" }
 		fascism = { "gfx/leaders/ENG/Portrait_Britain_Oswald_Mosley.dds" "gfx/leaders/SAF/Portrait_SouthAfrica_Jan_Smuts.dds" }
-		absolutist = { "gfx/leaders/ENG/Portrait_Britain_Edward_VIII.dds" "gfx/leaders/portrait_mal_shenton_thomas.dds" }
-		neutrality = { "gfx/leaders/ENG/Portrait_Britain_George_VI.dds" "gfx/leaders/ENG/Portrait_Britain_Bernard_Montmomery.dds" }
-		radical = { "gfx/leaders/ENG/Portrait_Britain_Generic_3.dds" }
+		absolutist = { "gfx/leaders/ENG/Portrait_Britain_Edward_VIII.dds" "gfx/leaders/portrait_mal_shenton_thomas.dds"
+		"gfx/leaders/MotE/GBR_GeorgesIV.tga"
+		"gfx/leaders/MotE/GBR_George_III.tga"
+		"gfx/leaders/MotE/Unit_GBR_Auchmuty.tga"
+		"gfx/leaders/MotE/Unit_GBR_Ball.tga"
+		"gfx/leaders/MotE/Unit_GBR_Bentick.tga"
+		"gfx/leaders/MotE/Unit_GBR_Calder.tga"
+		"gfx/leaders/MotE/Unit_GBR_Collingwood.tga"
+		"gfx/leaders/MotE/Unit_GBR_Cornwallis.tga"
+		"gfx/leaders/MotE/Unit_GBR_Cradock.tga"
+		"gfx/leaders/MotE/Unit_GBR_Duckworth.tga"
+		"gfx/leaders/MotE/Unit_GBR_EPaget.tga"
+		"gfx/leaders/MotE/Unit_GBR_Gambier.tga"
+		"gfx/leaders/MotE/Unit_GBR_Jervis.tga"
+		"gfx/leaders/MotE/Unit_GBR_Nelson.tga"
+		"gfx/leaders/MotE/Unit_GBR_Pakenham.tga"
+		"gfx/leaders/MotE/Unit_GBR_Picton.tga"
+		"gfx/leaders/MotE/Unit_GBR_RCraufurd.tga"
+		"gfx/leaders/MotE/Unit_GBR_Saumarez.tga"
+		"gfx/leaders/MotE/Unit_GBR_Wellesley.tga" }
+		neutrality = { "gfx/leaders/ENG/Portrait_Britain_George_VI.dds" "gfx/leaders/ENG/Portrait_Britain_Bernard_Montmomery.dds" "gfx/leaders/OC/portrait_Vic1_Paul_Kruger.tga"
+		"gfx/leaders/MotE/GBR_GeorgesIV.tga"
+		"gfx/leaders/MotE/GBR_George_III.tga"
+		"gfx/leaders/MotE/Unit_GBR_Auchmuty.tga"
+		"gfx/leaders/MotE/Unit_GBR_Ball.tga"
+		"gfx/leaders/MotE/Unit_GBR_Bentick.tga"
+		"gfx/leaders/MotE/Unit_GBR_Calder.tga"
+		"gfx/leaders/MotE/Unit_GBR_Collingwood.tga"
+		"gfx/leaders/MotE/Unit_GBR_Cornwallis.tga"
+		"gfx/leaders/MotE/Unit_GBR_Cradock.tga"
+		"gfx/leaders/MotE/Unit_GBR_Duckworth.tga"
+		"gfx/leaders/MotE/Unit_GBR_EPaget.tga"
+		"gfx/leaders/MotE/Unit_GBR_Gambier.tga"
+		"gfx/leaders/MotE/Unit_GBR_Jervis.tga"
+		"gfx/leaders/MotE/Unit_GBR_Nelson.tga"
+		"gfx/leaders/MotE/Unit_GBR_Pakenham.tga"
+		"gfx/leaders/MotE/Unit_GBR_Picton.tga"
+		"gfx/leaders/MotE/Unit_GBR_RCraufurd.tga"
+		"gfx/leaders/MotE/Unit_GBR_Saumarez.tga"
+		"gfx/leaders/MotE/Unit_GBR_Wellesley.tga" }
+		radical = { "gfx/leaders/ENG/Portrait_Britain_Generic_3.dds" "gfx/leaders/OC/portrait_Vic1_Paul_Kruger.tga" }
 	}
 	ideology_minister_portraits = 
 	{
@@ -250,10 +430,10 @@ british = {
 		radical = { "gfx/interface/ideas/idea_alan_brooke.dds" } 
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_george_v.dds"
+		"gfx/interface/ideas/crowns/commonwealth.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/achievements/william_wallis.dds"
+		"gfx/interface/ideas/crowns/commonwealth.dds"
 	}
 	graphical_culture = commonwealth_gfx
 	graphical_culture_2d = commonwealth_2d
@@ -288,10 +468,32 @@ celtic = {
 italian = {
 	leader_portraits = {
 		communism = { "GFX_portrait_ita_palmiro_togliatti" }
-		democratic = { "gfx/leaders/ITA/portrait_ita_ferruccio_parri.dds" }
+		democratic = { "gfx/leaders/ITA/portrait_ita_ferruccio_parri.dds" "gfx/leaders/OC/portrait_Vic1_Vittorio_Emanuell_II.tga" }
 		fascism = { "gfx/leaders/ITA/portrait_italy_emilio_de_bono.dds" "gfx/leaders/portrait_italy_italo_balbo.dds" } #Can't put Mussolini, too obvious
-		absolutist = { "gfx/leaders/OC/Portrait_ITA_Gabriele_Anunnzio.tga" "gfx/leaders/ITA/Portrait_Italy_Victor_Emmanuel_III.dds" }
-		neutrality = { "gfx/leaders/ITA/Portrait_Italy_Pietro_Badoglio.dds" }
+		absolutist = { "gfx/leaders/OC/Portrait_ITA_Gabriele_Anunnzio.tga" "gfx/leaders/ITA/Portrait_Italy_Victor_Emmanuel_III.dds" "gfx/leaders/OC/portrait_Vic1_Francesco_II.tga" "gfx/leaders/OC/portrait_Vic1_Vittorio_Emanuell_II.tga"
+		"gfx/leaders/MotE/KOI_Eugene_de_Beauharnais.tga"
+		"gfx/leaders/MotE/NAP_Joachim_Murat.tga"
+		"gfx/leaders/MotE/NAP_Joseph_Bonaparte.tga"
+		"gfx/leaders/MotE/PAP_PiusVII.tga"
+		"gfx/leaders/MotE/PIE_VittorioEmanueleI.tga"
+		"gfx/leaders/MotE/Unit_KOI_Pino.tga"
+		"gfx/leaders/MotE/Unit_NAP_Dumas.tga"
+		"gfx/leaders/MotE/Unit_NAP_Manhes.tga"
+		"gfx/leaders/MotE/Unit_NDS_Damas.tga"
+		"gfx/leaders/MotE/Unit_NDS_FraDiavolo.tga"
+		"gfx/leaders/MotE/Unit_NDS_Francesco.tga" }
+		neutrality = { "gfx/leaders/ITA/Portrait_Italy_Pietro_Badoglio.dds" "gfx/leaders/OC/portrait_Vic1_Francesco_II.tga" "gfx/leaders/OC/portrait_Vic1_Vittorio_Emanuell_II.tga"
+		"gfx/leaders/MotE/KOI_Eugene_de_Beauharnais.tga"
+		"gfx/leaders/MotE/NAP_Joachim_Murat.tga"
+		"gfx/leaders/MotE/NAP_Joseph_Bonaparte.tga"
+		"gfx/leaders/MotE/PAP_PiusVII.tga"
+		"gfx/leaders/MotE/PIE_VittorioEmanueleI.tga"
+		"gfx/leaders/MotE/Unit_KOI_Pino.tga"
+		"gfx/leaders/MotE/Unit_NAP_Dumas.tga"
+		"gfx/leaders/MotE/Unit_NAP_Manhes.tga"
+		"gfx/leaders/MotE/Unit_NDS_Damas.tga"
+		"gfx/leaders/MotE/Unit_NDS_FraDiavolo.tga"
+		"gfx/leaders/MotE/Unit_NDS_Francesco.tga" }
 		radical = { "gfx/leaders/ITA/Portrait_Italy_Generic_3.dds" } #Julius Evola
 	}
 	ideology_minister_portraits = 
@@ -304,22 +506,22 @@ italian = {
 		radical = { "gfx/interface/ideas/idea_alfredo_guzzoni.dds" } 
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_victor_emmanuel.dds"
+		"gfx/interface/ideas/crowns/italy.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/italy.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
 }
 romantic = {
 	leader_portraits = {
-		communism = { "gfx/leaders/OC/Portrait_Italy_Filippo_Turati.tga" }
-		democratic = { "gfx/leaders/OC/Portrait_SRI_Giacomo_Matteotti.tga" }
-		fascism = { "gfx/leaders/OC/ELS_Duke.tga" } # John Cena
-		absolutist = { "gfx/leaders/OC/Portrait_SPM_Infante_Jaime.tga" }
-		neutrality = { "gfx/leaders/OC/Portrait_Italy_Luigi_Sturzo.dds" }
-		radical = { "gfx/leaders/OC/AlfredoPalacios.tga" }
+		communism = { "gfx/leaders/OC/Portrait_Italy_Filippo_Turati.tga" "gfx/leaders/SPQR/portrait_SPQR_Aemilian.tga" "gfx/leaders/SPQR/portrait_SPQR_Antoninus_Pius.tga" "gfx/leaders/SPQR/portrait_SPQR_Augustus.tga" "gfx/leaders/SPQR/portrait_SPQR_Aurelian.tga" "gfx/leaders/SPQR/portrait_SPQR_Balbinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Caligula.tga" "gfx/leaders/SPQR/portrait_SPQR_Caracalla.tga" "gfx/leaders/SPQR/portrait_SPQR_Carinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Carus.tga" "gfx/leaders/SPQR/portrait_SPQR_Claudius.tga" "gfx/leaders/SPQR/portrait_SPQR_Claudius_Gothicus.tga" "gfx/leaders/SPQR/portrait_SPQR_Commodus.tga" "gfx/leaders/SPQR/portrait_SPQR_Decius.tga" "gfx/leaders/SPQR/portrait_SPQR_Diadumenian.tga" "gfx/leaders/SPQR/portrait_SPQR_Didus_Julianus.tga" "gfx/leaders/SPQR/portrait_SPQR_Domitian.tga" "gfx/leaders/SPQR/portrait_SPQR_Elagabalus.tga" "gfx/leaders/SPQR/portrait_SPQR_Florianus.tga" "gfx/leaders/SPQR/portrait_SPQR_Galba.tga" "gfx/leaders/SPQR/portrait_SPQR_Gallienus.tga" "gfx/leaders/SPQR/portrait_SPQR_Geta.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_I.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_II.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_III.tga" "gfx/leaders/SPQR/portrait_SPQR_Hadrian.tga" "gfx/leaders/SPQR/portrait_SPQR_Herennius_Etruscus.tga" "gfx/leaders/SPQR/portrait_SPQR_Hostilian.tga" "gfx/leaders/SPQR/portrait_SPQR_Lucius_Verus.tga" "gfx/leaders/SPQR/portrait_SPQR_Macrinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Marcus_Aurelius.tga" "gfx/leaders/SPQR/portrait_SPQR_Maximinus_Thrax.tga" "gfx/leaders/SPQR/portrait_SPQR_Nero.tga" "gfx/leaders/SPQR/portrait_SPQR_Nerva.tga" "gfx/leaders/SPQR/portrait_SPQR_Numerian.tga" "gfx/leaders/SPQR/portrait_SPQR_Otho.tga" "gfx/leaders/SPQR/portrait_SPQR_Pertinax.tga" "gfx/leaders/SPQR/portrait_SPQR_Philip_II.tga" "gfx/leaders/SPQR/portrait_SPQR_Philip_the_Arab.tga" "gfx/leaders/SPQR/portrait_SPQR_Probus.tga" "gfx/leaders/SPQR/portrait_SPQR_Pupienus.tga" "gfx/leaders/SPQR/portrait_SPQR_Quintillus.tga" "gfx/leaders/SPQR/portrait_SPQR_Saloninus.tga" "gfx/leaders/SPQR/portrait_SPQR_Septimius_Severus.tga" "gfx/leaders/SPQR/portrait_SPQR_Severus_Alexander.tga" "gfx/leaders/SPQR/portrait_SPQR_Tacitus.tga" "gfx/leaders/SPQR/portrait_SPQR_Tiberius.tga" "gfx/leaders/SPQR/portrait_SPQR_Titus.tga" "gfx/leaders/SPQR/portrait_SPQR_Trajan.tga" "gfx/leaders/SPQR/portrait_SPQR_Trebonianus_Gallus.tga" "gfx/leaders/SPQR/portrait_SPQR_Valerian.tga" "gfx/leaders/SPQR/portrait_SPQR_Vespasian.tga" "gfx/leaders/SPQR/portrait_SPQR_Vitellius.tga" "gfx/leaders/SPQR/portrait_SPQR_Volusianus.tga" }
+		democratic = { "gfx/leaders/OC/Portrait_SRI_Giacomo_Matteotti.tga" "gfx/leaders/SPQR/portrait_SPQR_Aemilian.tga" "gfx/leaders/SPQR/portrait_SPQR_Antoninus_Pius.tga" "gfx/leaders/SPQR/portrait_SPQR_Augustus.tga" "gfx/leaders/SPQR/portrait_SPQR_Aurelian.tga" "gfx/leaders/SPQR/portrait_SPQR_Balbinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Caligula.tga" "gfx/leaders/SPQR/portrait_SPQR_Caracalla.tga" "gfx/leaders/SPQR/portrait_SPQR_Carinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Carus.tga" "gfx/leaders/SPQR/portrait_SPQR_Claudius.tga" "gfx/leaders/SPQR/portrait_SPQR_Claudius_Gothicus.tga" "gfx/leaders/SPQR/portrait_SPQR_Commodus.tga" "gfx/leaders/SPQR/portrait_SPQR_Decius.tga" "gfx/leaders/SPQR/portrait_SPQR_Diadumenian.tga" "gfx/leaders/SPQR/portrait_SPQR_Didus_Julianus.tga" "gfx/leaders/SPQR/portrait_SPQR_Domitian.tga" "gfx/leaders/SPQR/portrait_SPQR_Elagabalus.tga" "gfx/leaders/SPQR/portrait_SPQR_Florianus.tga" "gfx/leaders/SPQR/portrait_SPQR_Galba.tga" "gfx/leaders/SPQR/portrait_SPQR_Gallienus.tga" "gfx/leaders/SPQR/portrait_SPQR_Geta.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_I.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_II.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_III.tga" "gfx/leaders/SPQR/portrait_SPQR_Hadrian.tga" "gfx/leaders/SPQR/portrait_SPQR_Herennius_Etruscus.tga" "gfx/leaders/SPQR/portrait_SPQR_Hostilian.tga" "gfx/leaders/SPQR/portrait_SPQR_Lucius_Verus.tga" "gfx/leaders/SPQR/portrait_SPQR_Macrinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Marcus_Aurelius.tga" "gfx/leaders/SPQR/portrait_SPQR_Maximinus_Thrax.tga" "gfx/leaders/SPQR/portrait_SPQR_Nero.tga" "gfx/leaders/SPQR/portrait_SPQR_Nerva.tga" "gfx/leaders/SPQR/portrait_SPQR_Numerian.tga" "gfx/leaders/SPQR/portrait_SPQR_Otho.tga" "gfx/leaders/SPQR/portrait_SPQR_Pertinax.tga" "gfx/leaders/SPQR/portrait_SPQR_Philip_II.tga" "gfx/leaders/SPQR/portrait_SPQR_Philip_the_Arab.tga" "gfx/leaders/SPQR/portrait_SPQR_Probus.tga" "gfx/leaders/SPQR/portrait_SPQR_Pupienus.tga" "gfx/leaders/SPQR/portrait_SPQR_Quintillus.tga" "gfx/leaders/SPQR/portrait_SPQR_Saloninus.tga" "gfx/leaders/SPQR/portrait_SPQR_Septimius_Severus.tga" "gfx/leaders/SPQR/portrait_SPQR_Severus_Alexander.tga" "gfx/leaders/SPQR/portrait_SPQR_Tacitus.tga" "gfx/leaders/SPQR/portrait_SPQR_Tiberius.tga" "gfx/leaders/SPQR/portrait_SPQR_Titus.tga" "gfx/leaders/SPQR/portrait_SPQR_Trajan.tga" "gfx/leaders/SPQR/portrait_SPQR_Trebonianus_Gallus.tga" "gfx/leaders/SPQR/portrait_SPQR_Valerian.tga" "gfx/leaders/SPQR/portrait_SPQR_Vespasian.tga" "gfx/leaders/SPQR/portrait_SPQR_Vitellius.tga" "gfx/leaders/SPQR/portrait_SPQR_Volusianus.tga" }
+		fascism = { "gfx/leaders/OC/ELS_Duke.tga" "gfx/leaders/SPQR/portrait_SPQR_Aemilian.tga" "gfx/leaders/SPQR/portrait_SPQR_Antoninus_Pius.tga" "gfx/leaders/SPQR/portrait_SPQR_Augustus.tga" "gfx/leaders/SPQR/portrait_SPQR_Aurelian.tga" "gfx/leaders/SPQR/portrait_SPQR_Balbinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Caligula.tga" "gfx/leaders/SPQR/portrait_SPQR_Caracalla.tga" "gfx/leaders/SPQR/portrait_SPQR_Carinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Carus.tga" "gfx/leaders/SPQR/portrait_SPQR_Claudius.tga" "gfx/leaders/SPQR/portrait_SPQR_Claudius_Gothicus.tga" "gfx/leaders/SPQR/portrait_SPQR_Commodus.tga" "gfx/leaders/SPQR/portrait_SPQR_Decius.tga" "gfx/leaders/SPQR/portrait_SPQR_Diadumenian.tga" "gfx/leaders/SPQR/portrait_SPQR_Didus_Julianus.tga" "gfx/leaders/SPQR/portrait_SPQR_Domitian.tga" "gfx/leaders/SPQR/portrait_SPQR_Elagabalus.tga" "gfx/leaders/SPQR/portrait_SPQR_Florianus.tga" "gfx/leaders/SPQR/portrait_SPQR_Galba.tga" "gfx/leaders/SPQR/portrait_SPQR_Gallienus.tga" "gfx/leaders/SPQR/portrait_SPQR_Geta.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_I.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_II.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_III.tga" "gfx/leaders/SPQR/portrait_SPQR_Hadrian.tga" "gfx/leaders/SPQR/portrait_SPQR_Herennius_Etruscus.tga" "gfx/leaders/SPQR/portrait_SPQR_Hostilian.tga" "gfx/leaders/SPQR/portrait_SPQR_Lucius_Verus.tga" "gfx/leaders/SPQR/portrait_SPQR_Macrinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Marcus_Aurelius.tga" "gfx/leaders/SPQR/portrait_SPQR_Maximinus_Thrax.tga" "gfx/leaders/SPQR/portrait_SPQR_Nero.tga" "gfx/leaders/SPQR/portrait_SPQR_Nerva.tga" "gfx/leaders/SPQR/portrait_SPQR_Numerian.tga" "gfx/leaders/SPQR/portrait_SPQR_Otho.tga" "gfx/leaders/SPQR/portrait_SPQR_Pertinax.tga" "gfx/leaders/SPQR/portrait_SPQR_Philip_II.tga" "gfx/leaders/SPQR/portrait_SPQR_Philip_the_Arab.tga" "gfx/leaders/SPQR/portrait_SPQR_Probus.tga" "gfx/leaders/SPQR/portrait_SPQR_Pupienus.tga" "gfx/leaders/SPQR/portrait_SPQR_Quintillus.tga" "gfx/leaders/SPQR/portrait_SPQR_Saloninus.tga" "gfx/leaders/SPQR/portrait_SPQR_Septimius_Severus.tga" "gfx/leaders/SPQR/portrait_SPQR_Severus_Alexander.tga" "gfx/leaders/SPQR/portrait_SPQR_Tacitus.tga" "gfx/leaders/SPQR/portrait_SPQR_Tiberius.tga" "gfx/leaders/SPQR/portrait_SPQR_Titus.tga" "gfx/leaders/SPQR/portrait_SPQR_Trajan.tga" "gfx/leaders/SPQR/portrait_SPQR_Trebonianus_Gallus.tga" "gfx/leaders/SPQR/portrait_SPQR_Valerian.tga" "gfx/leaders/SPQR/portrait_SPQR_Vespasian.tga" "gfx/leaders/SPQR/portrait_SPQR_Vitellius.tga" "gfx/leaders/SPQR/portrait_SPQR_Volusianus.tga" } # John Cena
+		absolutist = { "gfx/leaders/OC/Portrait_SPM_Infante_Jaime.tga" "gfx/leaders/SPQR/portrait_SPQR_Aemilian.tga" "gfx/leaders/SPQR/portrait_SPQR_Antoninus_Pius.tga" "gfx/leaders/SPQR/portrait_SPQR_Augustus.tga" "gfx/leaders/SPQR/portrait_SPQR_Aurelian.tga" "gfx/leaders/SPQR/portrait_SPQR_Balbinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Caligula.tga" "gfx/leaders/SPQR/portrait_SPQR_Caracalla.tga" "gfx/leaders/SPQR/portrait_SPQR_Carinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Carus.tga" "gfx/leaders/SPQR/portrait_SPQR_Claudius.tga" "gfx/leaders/SPQR/portrait_SPQR_Claudius_Gothicus.tga" "gfx/leaders/SPQR/portrait_SPQR_Commodus.tga" "gfx/leaders/SPQR/portrait_SPQR_Decius.tga" "gfx/leaders/SPQR/portrait_SPQR_Diadumenian.tga" "gfx/leaders/SPQR/portrait_SPQR_Didus_Julianus.tga" "gfx/leaders/SPQR/portrait_SPQR_Domitian.tga" "gfx/leaders/SPQR/portrait_SPQR_Elagabalus.tga" "gfx/leaders/SPQR/portrait_SPQR_Florianus.tga" "gfx/leaders/SPQR/portrait_SPQR_Galba.tga" "gfx/leaders/SPQR/portrait_SPQR_Gallienus.tga" "gfx/leaders/SPQR/portrait_SPQR_Geta.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_I.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_II.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_III.tga" "gfx/leaders/SPQR/portrait_SPQR_Hadrian.tga" "gfx/leaders/SPQR/portrait_SPQR_Herennius_Etruscus.tga" "gfx/leaders/SPQR/portrait_SPQR_Hostilian.tga" "gfx/leaders/SPQR/portrait_SPQR_Lucius_Verus.tga" "gfx/leaders/SPQR/portrait_SPQR_Macrinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Marcus_Aurelius.tga" "gfx/leaders/SPQR/portrait_SPQR_Maximinus_Thrax.tga" "gfx/leaders/SPQR/portrait_SPQR_Nero.tga" "gfx/leaders/SPQR/portrait_SPQR_Nerva.tga" "gfx/leaders/SPQR/portrait_SPQR_Numerian.tga" "gfx/leaders/SPQR/portrait_SPQR_Otho.tga" "gfx/leaders/SPQR/portrait_SPQR_Pertinax.tga" "gfx/leaders/SPQR/portrait_SPQR_Philip_II.tga" "gfx/leaders/SPQR/portrait_SPQR_Philip_the_Arab.tga" "gfx/leaders/SPQR/portrait_SPQR_Probus.tga" "gfx/leaders/SPQR/portrait_SPQR_Pupienus.tga" "gfx/leaders/SPQR/portrait_SPQR_Quintillus.tga" "gfx/leaders/SPQR/portrait_SPQR_Saloninus.tga" "gfx/leaders/SPQR/portrait_SPQR_Septimius_Severus.tga" "gfx/leaders/SPQR/portrait_SPQR_Severus_Alexander.tga" "gfx/leaders/SPQR/portrait_SPQR_Tacitus.tga" "gfx/leaders/SPQR/portrait_SPQR_Tiberius.tga" "gfx/leaders/SPQR/portrait_SPQR_Titus.tga" "gfx/leaders/SPQR/portrait_SPQR_Trajan.tga" "gfx/leaders/SPQR/portrait_SPQR_Trebonianus_Gallus.tga" "gfx/leaders/SPQR/portrait_SPQR_Valerian.tga" "gfx/leaders/SPQR/portrait_SPQR_Vespasian.tga" "gfx/leaders/SPQR/portrait_SPQR_Vitellius.tga" "gfx/leaders/SPQR/portrait_SPQR_Volusianus.tga" }
+		neutrality = { "gfx/leaders/OC/Portrait_Italy_Luigi_Sturzo.dds" "gfx/leaders/SPQR/portrait_SPQR_Aemilian.tga" "gfx/leaders/SPQR/portrait_SPQR_Antoninus_Pius.tga" "gfx/leaders/SPQR/portrait_SPQR_Augustus.tga" "gfx/leaders/SPQR/portrait_SPQR_Aurelian.tga" "gfx/leaders/SPQR/portrait_SPQR_Balbinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Caligula.tga" "gfx/leaders/SPQR/portrait_SPQR_Caracalla.tga" "gfx/leaders/SPQR/portrait_SPQR_Carinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Carus.tga" "gfx/leaders/SPQR/portrait_SPQR_Claudius.tga" "gfx/leaders/SPQR/portrait_SPQR_Claudius_Gothicus.tga" "gfx/leaders/SPQR/portrait_SPQR_Commodus.tga" "gfx/leaders/SPQR/portrait_SPQR_Decius.tga" "gfx/leaders/SPQR/portrait_SPQR_Diadumenian.tga" "gfx/leaders/SPQR/portrait_SPQR_Didus_Julianus.tga" "gfx/leaders/SPQR/portrait_SPQR_Domitian.tga" "gfx/leaders/SPQR/portrait_SPQR_Elagabalus.tga" "gfx/leaders/SPQR/portrait_SPQR_Florianus.tga" "gfx/leaders/SPQR/portrait_SPQR_Galba.tga" "gfx/leaders/SPQR/portrait_SPQR_Gallienus.tga" "gfx/leaders/SPQR/portrait_SPQR_Geta.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_I.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_II.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_III.tga" "gfx/leaders/SPQR/portrait_SPQR_Hadrian.tga" "gfx/leaders/SPQR/portrait_SPQR_Herennius_Etruscus.tga" "gfx/leaders/SPQR/portrait_SPQR_Hostilian.tga" "gfx/leaders/SPQR/portrait_SPQR_Lucius_Verus.tga" "gfx/leaders/SPQR/portrait_SPQR_Macrinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Marcus_Aurelius.tga" "gfx/leaders/SPQR/portrait_SPQR_Maximinus_Thrax.tga" "gfx/leaders/SPQR/portrait_SPQR_Nero.tga" "gfx/leaders/SPQR/portrait_SPQR_Nerva.tga" "gfx/leaders/SPQR/portrait_SPQR_Numerian.tga" "gfx/leaders/SPQR/portrait_SPQR_Otho.tga" "gfx/leaders/SPQR/portrait_SPQR_Pertinax.tga" "gfx/leaders/SPQR/portrait_SPQR_Philip_II.tga" "gfx/leaders/SPQR/portrait_SPQR_Philip_the_Arab.tga" "gfx/leaders/SPQR/portrait_SPQR_Probus.tga" "gfx/leaders/SPQR/portrait_SPQR_Pupienus.tga" "gfx/leaders/SPQR/portrait_SPQR_Quintillus.tga" "gfx/leaders/SPQR/portrait_SPQR_Saloninus.tga" "gfx/leaders/SPQR/portrait_SPQR_Septimius_Severus.tga" "gfx/leaders/SPQR/portrait_SPQR_Severus_Alexander.tga" "gfx/leaders/SPQR/portrait_SPQR_Tacitus.tga" "gfx/leaders/SPQR/portrait_SPQR_Tiberius.tga" "gfx/leaders/SPQR/portrait_SPQR_Titus.tga" "gfx/leaders/SPQR/portrait_SPQR_Trajan.tga" "gfx/leaders/SPQR/portrait_SPQR_Trebonianus_Gallus.tga" "gfx/leaders/SPQR/portrait_SPQR_Valerian.tga" "gfx/leaders/SPQR/portrait_SPQR_Vespasian.tga" "gfx/leaders/SPQR/portrait_SPQR_Vitellius.tga" "gfx/leaders/SPQR/portrait_SPQR_Volusianus.tga" }
+		radical = { "gfx/leaders/OC/AlfredoPalacios.tga" "gfx/leaders/SPQR/portrait_SPQR_Aemilian.tga" "gfx/leaders/SPQR/portrait_SPQR_Antoninus_Pius.tga" "gfx/leaders/SPQR/portrait_SPQR_Augustus.tga" "gfx/leaders/SPQR/portrait_SPQR_Aurelian.tga" "gfx/leaders/SPQR/portrait_SPQR_Balbinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Caligula.tga" "gfx/leaders/SPQR/portrait_SPQR_Caracalla.tga" "gfx/leaders/SPQR/portrait_SPQR_Carinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Carus.tga" "gfx/leaders/SPQR/portrait_SPQR_Claudius.tga" "gfx/leaders/SPQR/portrait_SPQR_Claudius_Gothicus.tga" "gfx/leaders/SPQR/portrait_SPQR_Commodus.tga" "gfx/leaders/SPQR/portrait_SPQR_Decius.tga" "gfx/leaders/SPQR/portrait_SPQR_Diadumenian.tga" "gfx/leaders/SPQR/portrait_SPQR_Didus_Julianus.tga" "gfx/leaders/SPQR/portrait_SPQR_Domitian.tga" "gfx/leaders/SPQR/portrait_SPQR_Elagabalus.tga" "gfx/leaders/SPQR/portrait_SPQR_Florianus.tga" "gfx/leaders/SPQR/portrait_SPQR_Galba.tga" "gfx/leaders/SPQR/portrait_SPQR_Gallienus.tga" "gfx/leaders/SPQR/portrait_SPQR_Geta.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_I.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_II.tga" "gfx/leaders/SPQR/portrait_SPQR_Gordian_III.tga" "gfx/leaders/SPQR/portrait_SPQR_Hadrian.tga" "gfx/leaders/SPQR/portrait_SPQR_Herennius_Etruscus.tga" "gfx/leaders/SPQR/portrait_SPQR_Hostilian.tga" "gfx/leaders/SPQR/portrait_SPQR_Lucius_Verus.tga" "gfx/leaders/SPQR/portrait_SPQR_Macrinus.tga" "gfx/leaders/SPQR/portrait_SPQR_Marcus_Aurelius.tga" "gfx/leaders/SPQR/portrait_SPQR_Maximinus_Thrax.tga" "gfx/leaders/SPQR/portrait_SPQR_Nero.tga" "gfx/leaders/SPQR/portrait_SPQR_Nerva.tga" "gfx/leaders/SPQR/portrait_SPQR_Numerian.tga" "gfx/leaders/SPQR/portrait_SPQR_Otho.tga" "gfx/leaders/SPQR/portrait_SPQR_Pertinax.tga" "gfx/leaders/SPQR/portrait_SPQR_Philip_II.tga" "gfx/leaders/SPQR/portrait_SPQR_Philip_the_Arab.tga" "gfx/leaders/SPQR/portrait_SPQR_Probus.tga" "gfx/leaders/SPQR/portrait_SPQR_Pupienus.tga" "gfx/leaders/SPQR/portrait_SPQR_Quintillus.tga" "gfx/leaders/SPQR/portrait_SPQR_Saloninus.tga" "gfx/leaders/SPQR/portrait_SPQR_Septimius_Severus.tga" "gfx/leaders/SPQR/portrait_SPQR_Severus_Alexander.tga" "gfx/leaders/SPQR/portrait_SPQR_Tacitus.tga" "gfx/leaders/SPQR/portrait_SPQR_Tiberius.tga" "gfx/leaders/SPQR/portrait_SPQR_Titus.tga" "gfx/leaders/SPQR/portrait_SPQR_Trajan.tga" "gfx/leaders/SPQR/portrait_SPQR_Trebonianus_Gallus.tga" "gfx/leaders/SPQR/portrait_SPQR_Valerian.tga" "gfx/leaders/SPQR/portrait_SPQR_Vespasian.tga" "gfx/leaders/SPQR/portrait_SPQR_Vitellius.tga" "gfx/leaders/SPQR/portrait_SPQR_Volusianus.tga" }
 	}
 	ideology_minister_portraits = 
 	{
@@ -331,10 +533,10 @@ romantic = {
 		radical = { "gfx/interface/ideas/idea_alfredo_guzzoni.dds" } # Revise
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/camp_crown.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/camp_crown.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -371,8 +573,48 @@ iberian = {
 		communism = { "gfx/leaders/SPR/Portrait_Spain_Jose_Diaz.dds" "GFX_portrait_SPR_anarchist_commune" }
 		democratic = { "gfx/leaders/SPR/Portrait_Spain_Manuel_Azana.dds" }
 		fascism = { "GFX_POR_Francisco_Preto" "gfx/leaders/POR/portrait_por_antonio_de_oliveira_salazar.dds" "GFX_portrait_SPA_military_junta" } 
-		absolutist = { "GFX_portrait_SPA_alfonso_xiii" "GFX_portrait_SPA_infante_alfonso_carlos" }
-		neutrality = { "gfx/leaders/POR/Portrait_Portugal_Antonio_de_Oliveira_Salazar.dds" }
+		absolutist = { "GFX_portrait_SPA_alfonso_xiii" "GFX_portrait_SPA_infante_alfonso_carlos" "gfx/leaders/OC/portrait_Vic1_Carlos_I.tga"
+		"gfx/leaders/MotE/SPA_CarlosIV.tga"
+		"gfx/leaders/MotE/SPA_FerdinandVII.tga"
+		"gfx/leaders/MotE/Unit_POR_Alorna.tga"
+		"gfx/leaders/MotE/Unit_POR_Silveira.tga"
+		"gfx/leaders/MotE/Unit_SPA_Areizaga.tga"
+		"gfx/leaders/MotE/Unit_SPA_Ballesteros.tga"
+		"gfx/leaders/MotE/Unit_SPA_Blake.tga"
+		"gfx/leaders/MotE/Unit_SPA_Castanos.tga"
+		"gfx/leaders/MotE/Unit_SPA_Cuesta.tga"
+		"gfx/leaders/MotE/Unit_SPA_Dumouriez.tga"
+		"gfx/leaders/MotE/Unit_SPA_Empecinado.tga"
+		"gfx/leaders/MotE/Unit_SPA_FMina.tga"
+		"gfx/leaders/MotE/Unit_SPA_Godoy.tga"
+		"gfx/leaders/MotE/Unit_SPA_Gravina.tga"
+		"gfx/leaders/MotE/Unit_SPA_Lazan.tga"
+		"gfx/leaders/MotE/Unit_SPA_Longa.tga"
+		"gfx/leaders/MotE/Unit_SPA_Mendizabal.tga"
+		"gfx/leaders/MotE/Unit_SPA_Morillo.tga"
+		"gfx/leaders/MotE/Unit_SPA_Rovira.tga"
+		"gfx/leaders/MotE/Unit_SPA_Venegas.tga" }
+		neutrality = { "gfx/leaders/POR/Portrait_Portugal_Antonio_de_Oliveira_Salazar.dds" "gfx/leaders/OC/portrait_Vic1_Alfonso_XIII.tga" "gfx/leaders/OC/portrait_Vic1_Carlos_I.tga"
+		"gfx/leaders/MotE/SPA_CarlosIV.tga"
+		"gfx/leaders/MotE/SPA_FerdinandVII.tga"
+		"gfx/leaders/MotE/Unit_POR_Alorna.tga"
+		"gfx/leaders/MotE/Unit_POR_Silveira.tga"
+		"gfx/leaders/MotE/Unit_SPA_Areizaga.tga"
+		"gfx/leaders/MotE/Unit_SPA_Ballesteros.tga"
+		"gfx/leaders/MotE/Unit_SPA_Blake.tga"
+		"gfx/leaders/MotE/Unit_SPA_Castanos.tga"
+		"gfx/leaders/MotE/Unit_SPA_Cuesta.tga"
+		"gfx/leaders/MotE/Unit_SPA_Dumouriez.tga"
+		"gfx/leaders/MotE/Unit_SPA_Empecinado.tga"
+		"gfx/leaders/MotE/Unit_SPA_FMina.tga"
+		"gfx/leaders/MotE/Unit_SPA_Godoy.tga"
+		"gfx/leaders/MotE/Unit_SPA_Gravina.tga"
+		"gfx/leaders/MotE/Unit_SPA_Lazan.tga"
+		"gfx/leaders/MotE/Unit_SPA_Longa.tga"
+		"gfx/leaders/MotE/Unit_SPA_Mendizabal.tga"
+		"gfx/leaders/MotE/Unit_SPA_Morillo.tga"
+		"gfx/leaders/MotE/Unit_SPA_Rovira.tga"
+		"gfx/leaders/MotE/Unit_SPA_Venegas.tga" }
 		radical = { "gfx/leaders/South America/portrait_south_america_generic_land_6.dds" } #Jorge Isaacs
 	}
 	ideology_minister_portraits = 
@@ -385,10 +627,10 @@ iberian = {
 		radical = { "gfx/interface/ideas/idea_francesco_pricolo.dds" }
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/spain.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/spain.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -398,8 +640,212 @@ french = {
 		communism = { "gfx/leaders/FRA/portrait_fra_maurice_thorez.dds" "gfx/leaders/portrait_fra_leon_blum.dds" }
 		democratic = { "gfx/leaders/FRA/Portrait_France_Edouard_Daladier.dds" }
 		fascism = { "gfx/leaders/FRA/Portrait_France_Philippe_Petain.dds" }
-		absolutist = { "gfx/leaders/FRA/Portrait_France_Charles_De_Gaulle.dds" "GFX_portrait_fra_infante_jaime" "GFX_portrait_fra_jean_duke_of_guise""GFX_portraits_fra_napoleon_vi" }
-		neutrality = { "gfx/leaders/OC/portrait_FRA_Albert_Francois_Lebrun.dds" "GFX_portrait_fra_henry_count_of_paris" } 
+		absolutist = { "gfx/leaders/FRA/Portrait_France_Charles_De_Gaulle.dds" "GFX_portrait_fra_infante_jaime" "GFX_portrait_fra_jean_duke_of_guise""GFX_portraits_fra_napoleon_vi" "gfx/leaders/OC/portrait_Vic1_Napoleon_III.tga"
+		"gfx/leaders/MotE/CHE_Frederic_Cesar_de_La_Harpe.tga"
+		"gfx/leaders/MotE/FRA_NapoleonI.tga"
+		"gfx/leaders/MotE/Unit_FRA_AJCaulaincourt.tga"
+		"gfx/leaders/MotE/Unit_FRA_Allemand.tga"
+		"gfx/leaders/MotE/Unit_FRA_Arrighi.tga"
+		"gfx/leaders/MotE/Unit_FRA_Augereau.tga"
+		"gfx/leaders/MotE/Unit_FRA_Bacler.tga"
+		"gfx/leaders/MotE/Unit_FRA_BaragueyHilliers.tga"
+		"gfx/leaders/MotE/Unit_FRA_Belliard.tga"
+		"gfx/leaders/MotE/Unit_FRA_Berthier.tga"
+		"gfx/leaders/MotE/Unit_FRA_Bessieres.tga"
+		"gfx/leaders/MotE/Unit_FRA_Bruey.tga"
+		"gfx/leaders/MotE/Unit_FRA_Bruix.tga"
+		"gfx/leaders/MotE/Unit_FRA_Brune.tga"
+		"gfx/leaders/MotE/Unit_FRA_Canclaux.tga"
+		"gfx/leaders/MotE/Unit_FRA_Carnot.tga"
+		"gfx/leaders/MotE/Unit_FRA_Carteaux.tga"
+		"gfx/leaders/MotE/Unit_FRA_Clarke.tga"
+		"gfx/leaders/MotE/Unit_FRA_Clauzel.tga"
+		"gfx/leaders/MotE/Unit_FRA_Colaud.tga"
+		"gfx/leaders/MotE/Unit_FRA_Compans.tga"
+		"gfx/leaders/MotE/Unit_FRA_Cosmao.tga"
+		"gfx/leaders/MotE/Unit_FRA_Davout.tga"
+		"gfx/leaders/MotE/Unit_FRA_Decaen.tga"
+		"gfx/leaders/MotE/Unit_FRA_Decres.tga"
+		"gfx/leaders/MotE/Unit_FRA_Delaborde.tga"
+		"gfx/leaders/MotE/Unit_FRA_Desaix.tga"
+		"gfx/leaders/MotE/Unit_FRA_Dombrowski.tga"
+		"gfx/leaders/MotE/Unit_FRA_Dorsenne.tga"
+		"gfx/leaders/MotE/Unit_FRA_Drouet.tga"
+		"gfx/leaders/MotE/Unit_FRA_Drouot.tga"
+		"gfx/leaders/MotE/Unit_FRA_Duhesme.tga"
+		"gfx/leaders/MotE/Unit_FRA_Dumouriez.tga"
+		"gfx/leaders/MotE/Unit_FRA_Exelmans.tga"
+		"gfx/leaders/MotE/Unit_FRA_Ferino.tga"
+		"gfx/leaders/MotE/Unit_FRA_Ganteaume.tga"
+		"gfx/leaders/MotE/Unit_FRA_Gazan.tga"
+		"gfx/leaders/MotE/Unit_FRA_GouvionSaintCyr.tga"
+		"gfx/leaders/MotE/Unit_FRA_Grenier.tga"
+		"gfx/leaders/MotE/Unit_FRA_Grouchy.tga"
+		"gfx/leaders/MotE/Unit_FRA_Hedouville.tga"
+		"gfx/leaders/MotE/Unit_FRA_Heudelet.tga"
+		"gfx/leaders/MotE/Unit_FRA_Junot.tga"
+		"gfx/leaders/MotE/Unit_FRA_Kellermann.tga"
+		"gfx/leaders/MotE/Unit_FRA_Kleber.tga"
+		"gfx/leaders/MotE/Unit_FRA_Klein.tga"
+		"gfx/leaders/MotE/Unit_FRA_LaFayette.tga"
+		"gfx/leaders/MotE/Unit_FRA_Lamarque.tga"
+		"gfx/leaders/MotE/Unit_FRA_Lannes.tga"
+		"gfx/leaders/MotE/Unit_FRA_Lasalle.tga"
+		"gfx/leaders/MotE/Unit_FRA_LatoucheTreville.tga"
+		"gfx/leaders/MotE/Unit_FRA_Lauriston.tga"
+		"gfx/leaders/MotE/Unit_FRA_Lecourbe.tga"
+		"gfx/leaders/MotE/Unit_FRA_Leissegue.tga"
+		"gfx/leaders/MotE/Unit_FRA_LeMarois.tga"
+		"gfx/leaders/MotE/Unit_FRA_Linois.tga"
+		"gfx/leaders/MotE/Unit_FRA_Loison.tga"
+		"gfx/leaders/MotE/Unit_FRA_MacDonald.tga"
+		"gfx/leaders/MotE/Unit_FRA_Magon.tga"
+		"gfx/leaders/MotE/Unit_FRA_Maison.tga"
+		"gfx/leaders/MotE/Unit_FRA_Marchand.tga"
+		"gfx/leaders/MotE/Unit_FRA_Marmont.tga"
+		"gfx/leaders/MotE/Unit_FRA_Massena.tga"
+		"gfx/leaders/MotE/Unit_FRA_MGerard.tga"
+		"gfx/leaders/MotE/Unit_FRA_Michaud.tga"
+		"gfx/leaders/MotE/Unit_FRA_Milhaud.tga"
+		"gfx/leaders/MotE/Unit_FRA_Miollis.tga"
+		"gfx/leaders/MotE/Unit_FRA_Missiessy.tga"
+		"gfx/leaders/MotE/Unit_FRA_Molitor.tga"
+		"gfx/leaders/MotE/Unit_FRA_Moncey.tga"
+		"gfx/leaders/MotE/Unit_FRA_MorandC.tga"
+		"gfx/leaders/MotE/Unit_FRA_Moreau.tga"
+		"gfx/leaders/MotE/Unit_FRA_Mortier.tga"
+		"gfx/leaders/MotE/Unit_FRA_Mouton.tga"
+		"gfx/leaders/MotE/Unit_FRA_Nansouty.tga"
+		"gfx/leaders/MotE/Unit_FRA_Ney.tga"
+		"gfx/leaders/MotE/Unit_FRA_Ornano.tga"
+		"gfx/leaders/MotE/Unit_FRA_Oudinot.tga"
+		"gfx/leaders/MotE/Unit_FRA_Pajol.tga"
+		"gfx/leaders/MotE/Unit_FRA_Partouneaux.tga"
+		"gfx/leaders/MotE/Unit_FRA_Percy.tga"
+		"gfx/leaders/MotE/Unit_FRA_Perignon.tga"
+		"gfx/leaders/MotE/Unit_FRA_Poniatowski.tga"
+		"gfx/leaders/MotE/Unit_FRA_Reille.tga"
+		"gfx/leaders/MotE/Unit_FRA_Reynier.tga"
+		"gfx/leaders/MotE/Unit_FRA_RosilyMesros.tga"
+		"gfx/leaders/MotE/Unit_FRA_SaintHilaire.tga"
+		"gfx/leaders/MotE/Unit_FRA_Savary.tga"
+		"gfx/leaders/MotE/Unit_FRA_Schauenburg.tga"
+		"gfx/leaders/MotE/Unit_FRA_Schulmeister.tga"
+		"gfx/leaders/MotE/Unit_FRA_Serurier.tga"
+		"gfx/leaders/MotE/Unit_FRA_Souham.tga"
+		"gfx/leaders/MotE/Unit_FRA_Soult.tga"
+		"gfx/leaders/MotE/Unit_FRA_Suchet.tga"
+		"gfx/leaders/MotE/Unit_FRA_Surcouf.tga"
+		"gfx/leaders/MotE/Unit_FRA_Tilly.tga"
+		"gfx/leaders/MotE/Unit_FRA_Vandamme.tga"
+		"gfx/leaders/MotE/Unit_FRA_Verdier.tga"
+		"gfx/leaders/MotE/Unit_FRA_Villaret.tga"
+		"gfx/leaders/MotE/Unit_FRA_Villeneuve.tga"
+		"gfx/leaders/MotE/Unit_FRA_Walther.tga"
+		"gfx/leaders/MotE/Unit_FRA_Willaumez.tga" }
+		neutrality = { "gfx/leaders/OC/portrait_FRA_Albert_Francois_Lebrun.dds" "GFX_portrait_fra_henry_count_of_paris"
+		"gfx/leaders/MotE/CHE_Frederic_Cesar_de_La_Harpe.tga"
+		"gfx/leaders/MotE/FRA_NapoleonI.tga"
+		"gfx/leaders/MotE/Unit_FRA_AJCaulaincourt.tga"
+		"gfx/leaders/MotE/Unit_FRA_Allemand.tga"
+		"gfx/leaders/MotE/Unit_FRA_Arrighi.tga"
+		"gfx/leaders/MotE/Unit_FRA_Augereau.tga"
+		"gfx/leaders/MotE/Unit_FRA_Bacler.tga"
+		"gfx/leaders/MotE/Unit_FRA_BaragueyHilliers.tga"
+		"gfx/leaders/MotE/Unit_FRA_Belliard.tga"
+		"gfx/leaders/MotE/Unit_FRA_Berthier.tga"
+		"gfx/leaders/MotE/Unit_FRA_Bessieres.tga"
+		"gfx/leaders/MotE/Unit_FRA_Bruey.tga"
+		"gfx/leaders/MotE/Unit_FRA_Bruix.tga"
+		"gfx/leaders/MotE/Unit_FRA_Brune.tga"
+		"gfx/leaders/MotE/Unit_FRA_Canclaux.tga"
+		"gfx/leaders/MotE/Unit_FRA_Carnot.tga"
+		"gfx/leaders/MotE/Unit_FRA_Carteaux.tga"
+		"gfx/leaders/MotE/Unit_FRA_Clarke.tga"
+		"gfx/leaders/MotE/Unit_FRA_Clauzel.tga"
+		"gfx/leaders/MotE/Unit_FRA_Colaud.tga"
+		"gfx/leaders/MotE/Unit_FRA_Compans.tga"
+		"gfx/leaders/MotE/Unit_FRA_Cosmao.tga"
+		"gfx/leaders/MotE/Unit_FRA_Davout.tga"
+		"gfx/leaders/MotE/Unit_FRA_Decaen.tga"
+		"gfx/leaders/MotE/Unit_FRA_Decres.tga"
+		"gfx/leaders/MotE/Unit_FRA_Delaborde.tga"
+		"gfx/leaders/MotE/Unit_FRA_Desaix.tga"
+		"gfx/leaders/MotE/Unit_FRA_Dombrowski.tga"
+		"gfx/leaders/MotE/Unit_FRA_Dorsenne.tga"
+		"gfx/leaders/MotE/Unit_FRA_Drouet.tga"
+		"gfx/leaders/MotE/Unit_FRA_Drouot.tga"
+		"gfx/leaders/MotE/Unit_FRA_Duhesme.tga"
+		"gfx/leaders/MotE/Unit_FRA_Dumouriez.tga"
+		"gfx/leaders/MotE/Unit_FRA_Exelmans.tga"
+		"gfx/leaders/MotE/Unit_FRA_Ferino.tga"
+		"gfx/leaders/MotE/Unit_FRA_Ganteaume.tga"
+		"gfx/leaders/MotE/Unit_FRA_Gazan.tga"
+		"gfx/leaders/MotE/Unit_FRA_GouvionSaintCyr.tga"
+		"gfx/leaders/MotE/Unit_FRA_Grenier.tga"
+		"gfx/leaders/MotE/Unit_FRA_Grouchy.tga"
+		"gfx/leaders/MotE/Unit_FRA_Hedouville.tga"
+		"gfx/leaders/MotE/Unit_FRA_Heudelet.tga"
+		"gfx/leaders/MotE/Unit_FRA_Junot.tga"
+		"gfx/leaders/MotE/Unit_FRA_Kellermann.tga"
+		"gfx/leaders/MotE/Unit_FRA_Kleber.tga"
+		"gfx/leaders/MotE/Unit_FRA_Klein.tga"
+		"gfx/leaders/MotE/Unit_FRA_LaFayette.tga"
+		"gfx/leaders/MotE/Unit_FRA_Lamarque.tga"
+		"gfx/leaders/MotE/Unit_FRA_Lannes.tga"
+		"gfx/leaders/MotE/Unit_FRA_Lasalle.tga"
+		"gfx/leaders/MotE/Unit_FRA_LatoucheTreville.tga"
+		"gfx/leaders/MotE/Unit_FRA_Lauriston.tga"
+		"gfx/leaders/MotE/Unit_FRA_Lecourbe.tga"
+		"gfx/leaders/MotE/Unit_FRA_Leissegue.tga"
+		"gfx/leaders/MotE/Unit_FRA_LeMarois.tga"
+		"gfx/leaders/MotE/Unit_FRA_Linois.tga"
+		"gfx/leaders/MotE/Unit_FRA_Loison.tga"
+		"gfx/leaders/MotE/Unit_FRA_MacDonald.tga"
+		"gfx/leaders/MotE/Unit_FRA_Magon.tga"
+		"gfx/leaders/MotE/Unit_FRA_Maison.tga"
+		"gfx/leaders/MotE/Unit_FRA_Marchand.tga"
+		"gfx/leaders/MotE/Unit_FRA_Marmont.tga"
+		"gfx/leaders/MotE/Unit_FRA_Massena.tga"
+		"gfx/leaders/MotE/Unit_FRA_MGerard.tga"
+		"gfx/leaders/MotE/Unit_FRA_Michaud.tga"
+		"gfx/leaders/MotE/Unit_FRA_Milhaud.tga"
+		"gfx/leaders/MotE/Unit_FRA_Miollis.tga"
+		"gfx/leaders/MotE/Unit_FRA_Missiessy.tga"
+		"gfx/leaders/MotE/Unit_FRA_Molitor.tga"
+		"gfx/leaders/MotE/Unit_FRA_Moncey.tga"
+		"gfx/leaders/MotE/Unit_FRA_MorandC.tga"
+		"gfx/leaders/MotE/Unit_FRA_Moreau.tga"
+		"gfx/leaders/MotE/Unit_FRA_Mortier.tga"
+		"gfx/leaders/MotE/Unit_FRA_Mouton.tga"
+		"gfx/leaders/MotE/Unit_FRA_Nansouty.tga"
+		"gfx/leaders/MotE/Unit_FRA_Ney.tga"
+		"gfx/leaders/MotE/Unit_FRA_Ornano.tga"
+		"gfx/leaders/MotE/Unit_FRA_Oudinot.tga"
+		"gfx/leaders/MotE/Unit_FRA_Pajol.tga"
+		"gfx/leaders/MotE/Unit_FRA_Partouneaux.tga"
+		"gfx/leaders/MotE/Unit_FRA_Percy.tga"
+		"gfx/leaders/MotE/Unit_FRA_Perignon.tga"
+		"gfx/leaders/MotE/Unit_FRA_Poniatowski.tga"
+		"gfx/leaders/MotE/Unit_FRA_Reille.tga"
+		"gfx/leaders/MotE/Unit_FRA_Reynier.tga"
+		"gfx/leaders/MotE/Unit_FRA_RosilyMesros.tga"
+		"gfx/leaders/MotE/Unit_FRA_SaintHilaire.tga"
+		"gfx/leaders/MotE/Unit_FRA_Savary.tga"
+		"gfx/leaders/MotE/Unit_FRA_Schauenburg.tga"
+		"gfx/leaders/MotE/Unit_FRA_Schulmeister.tga"
+		"gfx/leaders/MotE/Unit_FRA_Serurier.tga"
+		"gfx/leaders/MotE/Unit_FRA_Souham.tga"
+		"gfx/leaders/MotE/Unit_FRA_Soult.tga"
+		"gfx/leaders/MotE/Unit_FRA_Suchet.tga"
+		"gfx/leaders/MotE/Unit_FRA_Surcouf.tga"
+		"gfx/leaders/MotE/Unit_FRA_Tilly.tga"
+		"gfx/leaders/MotE/Unit_FRA_Vandamme.tga"
+		"gfx/leaders/MotE/Unit_FRA_Verdier.tga"
+		"gfx/leaders/MotE/Unit_FRA_Villaret.tga"
+		"gfx/leaders/MotE/Unit_FRA_Villeneuve.tga"
+		"gfx/leaders/MotE/Unit_FRA_Walther.tga"
+		"gfx/leaders/MotE/Unit_FRA_Willaumez.tga" } 
 		radical = { "gfx/leaders/FRA/Portrait_France_Generic_3.dds" }
 	}
 	ideology_minister_portraits = 
@@ -412,10 +858,10 @@ french = {
 		radical = { "gfx/interface/ideas/idea_alphonse_georges.dds" } 
 	}
 	male_monarch_portraits = {
-		"pdx_launcher/common/gfx/interface/French_flag.dds" # Revise
+		"gfx/interface/ideas/crowns/france.dds"
 	}
 	female_monarch_portraits = {
-		"pdx_launcher/common/gfx/interface/French_flag.dds" # Revise
+		"gfx/interface/ideas/crowns/france.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -426,7 +872,7 @@ south_slavic = {
 		democratic = { "gfx/leaders/YUG/Portrait_Yugoslavia_Milan_Grol.dds" "gfx/leaders/BUL/Portrait_Bulgaria_Georgi_Dimitrov.dds" }
 		fascism = { "gfx/leaders/YUG/Portrait_Yugoslavia_Milan_Stojadinovic.dds" "gfx/leaders/BUL/portrait_bul_hristo_lukov.dds" "gfx/leaders/CRO/Portrait_Croatia_Ante_Pavelic.dds" }
 		absolutist = { "gfx/leaders/BUL/Portrait_Bulgaria_Boris_III.dds" "GFX_portrait_bul_ferdinand_i" }
-		neutrality = { "gfx/leaders/YUG/Portrait_Yugoslavia_Peter_II.dds" "gfx/leaders/CRO/CRO_vladko_macek.dds" }
+		neutrality = { "gfx/leaders/YUG/Portrait_Yugoslavia_Peter_II.dds" "gfx/leaders/CRO/CRO_vladko_macek.dds" "GFX_portrait_bul_regency_council" }
 		radical = { "gfx/leaders/Europe/portrait_europe_generic_land_18.dds" } #Pavle Jurišic Sturm
 	}
 	ideology_minister_portraits = 
@@ -439,10 +885,10 @@ south_slavic = {
 		radical = { "gfx/interface/ideas/idea_igor_kurchatov.dds" }
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_yug_peter_ii.dds"
+		"gfx/interface/ideas/crowns/bulgaria.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/bulgaria.dds"
 	}
 	graphical_culture = eastern_european_gfx
 	graphical_culture_2d = eastern_european_2d
@@ -479,8 +925,12 @@ pan_romanian = {
 		communism = { "gfx/leaders/ROM/Portrait_Romania_Constantin_Parhon.dds" }
 		democratic = { "gfx/leaders/ROM/Portrait_Romania_Armand_Calinescu.dds" }
 		fascism = { "gfx/leaders/ROM/Portrait_Romania_Ion_Antonescu.dds" }
-		absolutist = { "GFX_ROM_Carol_II" "GFX_Portrait_romania_michael_i" } 
-		neutrality = { "gfx/leaders/ROM/Portrait_Romania_Gheorghe_Tatarescu.dds" }
+		absolutist = { "GFX_ROM_Carol_II" "GFX_Portrait_romania_michael_i"
+		"gfx/leaders/MotE/MOL_Alexandros_Mourouzis.tga"
+		"gfx/leaders/MotE/WAL_Konstantinos_Ypsilantis.tga" } 
+		neutrality = { "gfx/leaders/ROM/Portrait_Romania_Gheorghe_Tatarescu.dds"
+		"gfx/leaders/MotE/MOL_Alexandros_Mourouzis.tga"
+		"gfx/leaders/MotE/WAL_Konstantinos_Ypsilantis.tga" }
 		radical = { "gfx/leaders/ROM/Portrait_Romania_Octavian_Goga.dds" }
 	}
 	ideology_minister_portraits = 
@@ -493,10 +943,10 @@ pan_romanian = {
 		radical = { "gfx/interface/ideas/idea_nikolay_kuznetsov.dds" }
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_rom_carol_ii_deal.dds"
+		"gfx/interface/ideas/crowns/romania.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/romania.dds"
 	}
 	graphical_culture = eastern_european_gfx
 	graphical_culture_2d = eastern_european_2d
@@ -547,10 +997,10 @@ hungarian_culture_group = {
 		radical = { "gfx/interface/ideas/idea_semyon_timoshenko.dds" }
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_hun_charles_v.dds"
+		"gfx/interface/ideas/crowns/hungary.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_idea_HUN_hungarian_monarchy"
+		"gfx/interface/ideas/crowns/hungary.dds"
 	}
 	graphical_culture = eastern_european_gfx
 	graphical_culture_2d = eastern_european_2d
@@ -574,10 +1024,10 @@ polish_culture_group = {
 		radical = { "gfx/interface/ideas/idea_stepan_krasovsky.dds" }
 	}
 	male_monarch_portraits = {
-		"pdx_launcher/common/gfx/interface/Polish_flag.dds" # Revise
+		"gfx/interface/ideas/crowns/poland.dds"
 	}
 	female_monarch_portraits = {
-		"pdx_launcher/common/gfx/interface/Polish_flag.dds" # Revise
+		"gfx/interface/ideas/crowns/poland.dds"
 	}
 	graphical_culture = eastern_european_gfx
 	graphical_culture_2d = eastern_european_2d
@@ -601,10 +1051,10 @@ czecho_slovak_culture_group = {
 		radical = { "gfx/interface/ideas/idea_rom_carol_ii_deal.dds" }
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/bohemia.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/bohemia.dds"
 	}
 	graphical_culture = eastern_european_gfx
 	graphical_culture_2d = eastern_european_2d
@@ -614,8 +1064,84 @@ east_slavic = {
 		communism = { "gfx/leaders/SOV/Portrait_Leon_Trotsky.dds" }
 		democratic = { "GFX_SOV_Alexander_Kerensky" } 
 		fascism = { "gfx/leaders/SOV/Portrait_Soviet_Konstantin_Rodzaevsky.dds" }
-		absolutist = { "GFX_SOV_Alexander_Guchkov" } 
-		neutrality = { "gfx/leaders/SOV/Portrait_Soviet_Gregory_Zhukov.dds" }
+		absolutist = { "gfx/leaders/OC/portrait_Vic1_Nicolas_II.tga" "GFX_SOV_Alexander_Guchkov"
+		"gfx/leaders/MotE/RUS_AleksandrI.tga"
+		"gfx/leaders/MotE/Unit_RUS_Baggovut.tga"
+		"gfx/leaders/MotE/Unit_RUS_Bagration.tga"
+		"gfx/leaders/MotE/Unit_RUS_Barclay.tga"
+		"gfx/leaders/MotE/Unit_RUS_Bennigsen.tga"
+		"gfx/leaders/MotE/Unit_RUS_Borozdin.tga"
+		"gfx/leaders/MotE/Unit_RUS_Buxhowden.tga"
+		"gfx/leaders/MotE/Unit_RUS_Chichagov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Depreradovich.tga"
+		"gfx/leaders/MotE/Unit_RUS_Doctorov.tga"
+		"gfx/leaders/MotE/Unit_RUS_EKSivers.tga"
+		"gfx/leaders/MotE/Unit_RUS_Ermolov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Ertel.tga"
+		"gfx/leaders/MotE/Unit_RUS_Gollitzin.tga"
+		"gfx/leaders/MotE/Unit_RUS_Gorchakov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Kutaisov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Kutuzov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Langeron.tga"
+		"gfx/leaders/MotE/Unit_RUS_Miloradovich.tga"
+		"gfx/leaders/MotE/Unit_RUS_Olsufiev.tga"
+		"gfx/leaders/MotE/Unit_RUS_OrlovDenisov.tga"
+		"gfx/leaders/MotE/Unit_RUS_ORourke.tga"
+		"gfx/leaders/MotE/Unit_RUS_OstenSacken.tga"
+		"gfx/leaders/MotE/Unit_RUS_Pahlen.tga"
+		"gfx/leaders/MotE/Unit_RUS_Platov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Raevsky.tga"
+		"gfx/leaders/MotE/Unit_RUS_SaintPriest.tga"
+		"gfx/leaders/MotE/Unit_RUS_Senyavin.tga"
+		"gfx/leaders/MotE/Unit_RUS_Steinheil.tga"
+		"gfx/leaders/MotE/Unit_RUS_Suvorov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Tolstoy.tga"
+		"gfx/leaders/MotE/Unit_RUS_Tormasov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Ushakov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Vasilchikov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Volkonsky.tga"
+		"gfx/leaders/MotE/Unit_RUS_Vorontsov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Wintzingerode.tga"
+		"gfx/leaders/MotE/Unit_RUS_Wittgenstein.tga" } 
+		neutrality = { "gfx/leaders/OC/portrait_Vic1_Nicolas_II.tga" "gfx/leaders/SOV/Portrait_Soviet_Gregory_Zhukov.dds"
+		"gfx/leaders/MotE/RUS_AleksandrI.tga"
+		"gfx/leaders/MotE/Unit_RUS_Baggovut.tga"
+		"gfx/leaders/MotE/Unit_RUS_Bagration.tga"
+		"gfx/leaders/MotE/Unit_RUS_Barclay.tga"
+		"gfx/leaders/MotE/Unit_RUS_Bennigsen.tga"
+		"gfx/leaders/MotE/Unit_RUS_Borozdin.tga"
+		"gfx/leaders/MotE/Unit_RUS_Buxhowden.tga"
+		"gfx/leaders/MotE/Unit_RUS_Chichagov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Depreradovich.tga"
+		"gfx/leaders/MotE/Unit_RUS_Doctorov.tga"
+		"gfx/leaders/MotE/Unit_RUS_EKSivers.tga"
+		"gfx/leaders/MotE/Unit_RUS_Ermolov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Ertel.tga"
+		"gfx/leaders/MotE/Unit_RUS_Gollitzin.tga"
+		"gfx/leaders/MotE/Unit_RUS_Gorchakov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Kutaisov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Kutuzov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Langeron.tga"
+		"gfx/leaders/MotE/Unit_RUS_Miloradovich.tga"
+		"gfx/leaders/MotE/Unit_RUS_Olsufiev.tga"
+		"gfx/leaders/MotE/Unit_RUS_OrlovDenisov.tga"
+		"gfx/leaders/MotE/Unit_RUS_ORourke.tga"
+		"gfx/leaders/MotE/Unit_RUS_OstenSacken.tga"
+		"gfx/leaders/MotE/Unit_RUS_Pahlen.tga"
+		"gfx/leaders/MotE/Unit_RUS_Platov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Raevsky.tga"
+		"gfx/leaders/MotE/Unit_RUS_SaintPriest.tga"
+		"gfx/leaders/MotE/Unit_RUS_Senyavin.tga"
+		"gfx/leaders/MotE/Unit_RUS_Steinheil.tga"
+		"gfx/leaders/MotE/Unit_RUS_Suvorov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Tolstoy.tga"
+		"gfx/leaders/MotE/Unit_RUS_Tormasov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Ushakov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Vasilchikov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Volkonsky.tga"
+		"gfx/leaders/MotE/Unit_RUS_Vorontsov.tga"
+		"gfx/leaders/MotE/Unit_RUS_Wintzingerode.tga"
+		"gfx/leaders/MotE/Unit_RUS_Wittgenstein.tga" }
 		radical = { "gfx/leaders/OC/Portrait_SOV_Vladimir_Lenin.dds" }
 	}
 	ideology_minister_portraits = 
@@ -628,10 +1154,10 @@ east_slavic = {
 		radical = { "gfx/interface/ideas/idea_alexander_golovanov.dds" } 
 	}
 	male_monarch_portraits = {
-		"pdx_launcher/common/gfx/interface/Russian_flag.dds" # Revise
+		"gfx/interface/ideas/crowns/russia.dds"
 	}
 	female_monarch_portraits = {
-		"pdx_launcher/common/gfx/interface/Russian_flag.dds" # Revise
+		"gfx/interface/ideas/crowns/russia.dds"
 	}
 	graphical_culture = eastern_european_gfx
 	graphical_culture_2d = eastern_european_2d
@@ -1718,10 +2244,10 @@ levantine = { # Added European portrait pool to avoid Byzantines going Arabic st
 		radical = { "gfx/interface/ideas/idea_domenico_cavagnari.dds" }
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_gre_venerate_the_ancient_hellenes_alexander_the_great.dds"
+		"gfx/interface/ideas/crowns/greece.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/greece.dds"
 	}
 	graphical_culture = middle_eastern_gfx
 	graphical_culture_2d = middle_eastern_2d
@@ -1870,6 +2396,7 @@ turko_semitic = {
 		"GFX_portrait_tur_ruzi_nazar"
 		"GFX_portrait_kur_seyid_riza"
 		"GFX_portrait_kur_ihsan_nuri"
+		"gfx/leaders/OC/portrait_Vic1_Abdul_Hamid_II.tga"
 	}
 	navy_portraits = { 
 		"gfx/leaders/AFG/Portrait_Afghanistan_Mohammed_Zahir_Shah.dds"
@@ -1987,13 +2514,36 @@ turko_semitic = {
 		"GFX_portrait_tur_ruzi_nazar"
 		"GFX_portrait_kur_seyid_riza"
 		"GFX_portrait_kur_ihsan_nuri"
+		"gfx/leaders/OC/portrait_Vic1_Abdul_Hamid_II.tga"
 	}
 	leader_portraits = {
 		communism = { "gfx/leaders/TUR/Portrait_Turkey_Sefik_Husnu.dds" }
 		democratic = { "gfx/leaders/TUR/Portrait_Turkey_Ismet_Inonu.dds" }
 		fascism = { "gfx/leaders/OC/portrait_TUR_Alparslan_Turkesh.dds" } 
-		absolutist = { "GFX_portrait_tur_fevzi_cakmak" } 
-		neutrality = { "GFX_portrait_tur_abdulmejid_ii" }
+		absolutist = { "GFX_portrait_tur_fevzi_cakmak" 		"gfx/leaders/OC/portrait_Vic1_Abdul_Hamid_II.tga"
+		"gfx/leaders/MotE/MAH_Shah_AlamII.tga"
+		"gfx/leaders/MotE/MAR_Slimane.tga"
+		"gfx/leaders/MotE/EGY_Hursid_Pasha.tga"
+		"gfx/leaders/MotE/TUN_Hammuda_Bey.tga"
+		"gfx/leaders/MotE/TUR_MahmudII.tga"
+		"gfx/leaders/MotE/TUR_MustafaIV.tga"
+		"gfx/leaders/MotE/TUR_SelimIII.tga"
+		"gfx/leaders/MotE/Unit_EGY_MehmetAli.tga"
+		"gfx/leaders/MotE/Unit_TUR_Ibrahim.tga"
+		"gfx/leaders/MotE/Unit_TUR_Mahmud.tga"
+		"gfx/leaders/MotE/Unit_TUR_Mustafa.tga" } 
+		neutrality = { "GFX_portrait_tur_abdulmejid_ii" 		"gfx/leaders/OC/portrait_Vic1_Abdul_Hamid_II.tga"
+		"gfx/leaders/MotE/MAH_Shah_AlamII.tga"
+		"gfx/leaders/MotE/MAR_Slimane.tga"
+		"gfx/leaders/MotE/EGY_Hursid_Pasha.tga"
+		"gfx/leaders/MotE/TUN_Hammuda_Bey.tga"
+		"gfx/leaders/MotE/TUR_MahmudII.tga"
+		"gfx/leaders/MotE/TUR_MustafaIV.tga"
+		"gfx/leaders/MotE/TUR_SelimIII.tga"
+		"gfx/leaders/MotE/Unit_EGY_MehmetAli.tga"
+		"gfx/leaders/MotE/Unit_TUR_Ibrahim.tga"
+		"gfx/leaders/MotE/Unit_TUR_Mahmud.tga"
+		"gfx/leaders/MotE/Unit_TUR_Mustafa.tga" }
 		radical = { "gfx/leaders/TUR/Portrait_Turkey_Mustafa_Kemal_Ataturk.dds" }
 	}
 	ideology_minister_portraits = 
@@ -2267,10 +2817,10 @@ hittite_g = {
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/eastern_crown.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/eastern_crown.dds"
 	}
 	graphical_culture = middle_eastern_gfx
 	graphical_culture_2d = middle_eastern_2d
@@ -2294,10 +2844,10 @@ caucasian = { #HPM
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/georgia.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/georgia.dds"
 	}
 	graphical_culture = middle_eastern_gfx
 	graphical_culture_2d = middle_eastern_2d
@@ -2419,6 +2969,7 @@ arab = {
 		"GFX_portrait_tur_ruzi_nazar"
 		"GFX_portrait_kur_seyid_riza"
 		"GFX_portrait_kur_ihsan_nuri"
+		"gfx/leaders/OC/portrait_Vic1_Arabic_leader.tga"
 	}
 	navy_portraits = { 
 		"gfx/leaders/AFG/Portrait_Afghanistan_Mohammed_Zahir_Shah.dds"
@@ -2536,13 +3087,14 @@ arab = {
 		"GFX_portrait_tur_ruzi_nazar"
 		"GFX_portrait_kur_seyid_riza"
 		"GFX_portrait_kur_ihsan_nuri"
+		"gfx/leaders/OC/portrait_Vic1_Arabic_leader.tga"
 	}
 	leader_portraits = {
 		communism = { "gfx/leaders/OC/portrait_IRQ_Yusuf_Salman_Yusuf.dds" } 
 		democratic = { "gfx/leaders/OC/portrait_IRQ_Hashim_al_Atassi.dds" "gfx/leaders/OC/Arabia/Portrait_EGY_abdel_hakim_amer.dds" "gfx/leaders/EGY/Portrait_EGY_Aziz_Ezzat.dds" "gfx/leaders/TUN/Portrait_Tunisia_Abdelaziz_Thaalbi.dds" } 
 		fascism = { "gfx/leaders/OC/portrait_IRQ_Rashid_Ali_al_Gaylani.dds" } 
-		absolutist = { "gfx/leaders/SAU/Portrait_Saudi_arabia_Abdulazis_Ibn_Saud.dds" "gfx/leaders/EGY/Portrait_EGY_faud_i.dds" "gfx/leaders/OMA/portrait_oma_said_bin_taimur.dds" "gfx/leaders/OC/Arabia/Mohammed_V.dds" "gfx/leaders/OC/Arabia/Portrait_EGY_Sabry_Pasha.dds" "gfx/leaders/OC/Arabia/Portrait_Egypt_Farouk.dds" }
-		neutrality = { "gfx/leaders/IRQ/portrait_ghazi.dds" "gfx/leaders/IRQ/portrait_irq_rashid_al_gaylani.dds" "gfx/leaders/YEM/portrait_yem_imam_yaha.dds" "gfx/leaders/OC/Arabia/Portrait_Arabia_Faisal_Bin_Hussein.dds" }
+		absolutist = { "gfx/leaders/SAU/Portrait_Saudi_arabia_Abdulazis_Ibn_Saud.dds" "gfx/leaders/EGY/Portrait_EGY_faud_i.dds" "gfx/leaders/OMA/portrait_oma_said_bin_taimur.dds" "gfx/leaders/OC/Arabia/Mohammed_V.dds" "gfx/leaders/OC/Arabia/Portrait_EGY_Sabry_Pasha.dds" "gfx/leaders/OC/Arabia/Portrait_Egypt_Farouk.dds" "gfx/leaders/OC/portrait_Vic1_Arabic_leader.tga" }
+		neutrality = { "gfx/leaders/IRQ/portrait_ghazi.dds" "gfx/leaders/IRQ/portrait_irq_rashid_al_gaylani.dds" "gfx/leaders/YEM/portrait_yem_imam_yaha.dds" "gfx/leaders/OC/Arabia/Portrait_Arabia_Faisal_Bin_Hussein.dds" "gfx/leaders/OC/portrait_Vic1_Arabic_leader.tga" }
 		radical = { "gfx/leaders/OC/portrait_yem_imam_yaha.dds" } #Yahya Imam
 	}
 	ideology_minister_portraits = 
@@ -2555,10 +3107,10 @@ arab = {
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/egypt.dds" # Revise
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/egypt.dds" # Revise
 	}
 	graphical_culture = middle_eastern_gfx
 	graphical_culture_2d = middle_eastern_2d
@@ -2941,6 +3493,7 @@ iranian_turanian = {
 		"GFX_portrait_tur_ruzi_nazar"
 		"GFX_portrait_kur_seyid_riza"
 		"GFX_portrait_kur_ihsan_nuri"
+		"gfx/leaders/OC/portrait_Vic1_Mozaffar_al-Din_Shah_Qajar.tga"
 	}
 	navy_portraits = { 
 		"gfx/leaders/AFG/Portrait_Afghanistan_Mohammed_Zahir_Shah.dds"
@@ -3058,13 +3611,18 @@ iranian_turanian = {
 		"GFX_portrait_tur_ruzi_nazar"
 		"GFX_portrait_kur_seyid_riza"
 		"GFX_portrait_kur_ihsan_nuri"
+		"gfx/leaders/OC/portrait_Vic1_Mozaffar_al-Din_Shah_Qajar.tga"
 	}
 	leader_portraits = {
 		communism = { "gfx/leaders/SIK/Portrait_Sinkiang_Sheng_Shicai.dds" }
 		democratic = { "gfx/leaders/OC/portrait_PER_Jalaleddin_Tehrani.dds" } 
 		fascism = { "gfx/leaders/OC/portrait_PER_Abdolhossein_Teymourtash.dds" } 
-		absolutist = { "gfx/leaders/PER/Portrait_Iran_Reza_Shah_Pahlavi.dds" }
-		neutrality = { "gfx/leaders/AFG/Portrait_Afghanistan_Mohammed_Zahir_Shah.dds" }
+		absolutist = { "gfx/leaders/PER/Portrait_Iran_Reza_Shah_Pahlavi.dds" "gfx/leaders/OC/portrait_Vic1_Mozaffar_al-Din_Shah_Qajar.tga"
+		"gfx/leaders/MotE/PER_AbbasMirza.tga"
+		"gfx/leaders/MotE/PER_Fath_Ali_Shah_Qajar.tga" }
+		neutrality = { "gfx/leaders/AFG/Portrait_Afghanistan_Mohammed_Zahir_Shah.dds" "gfx/leaders/OC/portrait_Vic1_Mozaffar_al-Din_Shah_Qajar.tga"
+		"gfx/leaders/MotE/PER_AbbasMirza.tga"
+		"gfx/leaders/MotE/PER_Fath_Ali_Shah_Qajar.tga" }
 		radical = { "gfx/leaders/OC/Portrait_Afgahnistan_Habibullah_Khan.dds" }
 	}
 	ideology_minister_portraits = 
@@ -3077,10 +3635,10 @@ iranian_turanian = {
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
 	}
 	male_monarch_portraits = {
-		"GFX_focus_TUR_turanist_ambition"
+		"gfx/interface/ideas/crowns/persia.dds"
 	}
 	female_monarch_portraits = {
-		"GFX_focus_TUR_turanist_ambition"
+		"gfx/interface/ideas/crowns/persia.dds"
 	}
 	graphical_culture = middle_eastern_gfx
 	graphical_culture_2d = middle_eastern_2d
@@ -3191,10 +3749,10 @@ south_asian = {
 		radical = { "gfx/interface/ideas/idea_generic_fascist_arab.dds" } # Revise
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/bhutan.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/bhutan.dds"
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
@@ -3305,10 +3863,10 @@ southeast_asian = {
 		radical = { "gfx/interface/ideas/idea_generic_fascist_asia.dds" } # Revise
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/cambodia.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/cambodia.dds"
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
@@ -3318,8 +3876,8 @@ east_asian = {
 		communism = { "gfx/leaders/CHI/portrait_prc_mao_zedong.dds" "gfx/leaders/KOR/Portrait_KOR_Kim_Il-Sung.dds" }
 		democratic = { "GFX_CHI_Sun_Fo" "gfx/leaders/CHI/Portrait_China_weng_wenhao.dds" } 
 		fascism = { "GFX_CHI_Chen_Gongbo" "gfx/leaders/MEN/portrait_men_demchugdongrub.dds" "gfx/leaders/SIK/Portrait_Sinkiang_Sheng_Shicai.dds" } 
-		absolutist = { "GFX_portrait_man_henry_pu_yi_emperor" "gfx/leaders/SHX/portrait_shx_yan_xishan.dds" "gfx/leaders/XSM/portrait_xsm_ma_bufang.dds" }
-		neutrality = { "gfx/leaders/CHI/Portrait_China_Chiang_Kai_Shek.dds" "gfx/leaders/CHI/Portrait_China_Mao_Zedong.dds" "gfx/leaders/GXC/Portrait_Guanxi_Clique_Li_Zongren.dds" }
+		absolutist = { "GFX_portrait_man_henry_pu_yi_emperor" "gfx/leaders/SHX/portrait_shx_yan_xishan.dds" "gfx/leaders/OC/portrait_Vic1_Tibetan_leader.tga" "gfx/leaders/XSM/portrait_xsm_ma_bufang.dds" }
+		neutrality = { "gfx/leaders/OC/portrait_Vic1_Tibetan_leader.tga" "gfx/leaders/CHI/Portrait_China_Chiang_Kai_Shek.dds" "gfx/leaders/CHI/Portrait_China_Mao_Zedong.dds" "gfx/leaders/GXC/Portrait_Guanxi_Clique_Li_Zongren.dds" }
 		radical = { "gfx/leaders/Asia/Portrait_Asia_Generic_warlord2.dds" } # Yan Xishan
 	}
 	ideology_minister_portraits = 
@@ -3344,9 +3902,9 @@ far_east_asian = {
 	leader_portraits = {
 		communism = { "gfx/leaders/JAP/portrait_jap_kyuichi_tokuda.dds" }
 		democratic = { "gfx/leaders/JAP/portrait_jap_tetsu_katayama.dds" }
-		fascism = { "gfx/leaders/OC/portrait_JAP_Yi_Un.dds" } #Meiji Emperor
-		absolutist = { "gfx/leaders/JAP/Portrait_Japan_Hirohito.dds" }
-		neutrality = { "gfx/leaders/Asia/portrait_asia_generic_land_9.dds" } #Gojong of Korea
+		fascism = { "gfx/leaders/OC/portrait_JAP_Yi_Un.dds" "gfx/leaders/OC/portrait_Vic1_Korean_leader.tga" } #Yi Un = Meiji Emperor
+		absolutist = { "gfx/leaders/JAP/Portrait_Japan_Hirohito.dds" "gfx/leaders/OC/portrait_Vic1_Korean_leader.tga" "gfx/leaders/OC/portrait_Vic1_Mutsu_Hito.tga" }
+		neutrality = { "gfx/leaders/Asia/portrait_asia_generic_land_9.dds" "gfx/leaders/OC/portrait_Vic1_Mutsu_Hito.tga" } #Land 9 = Gojong of Korea
 		radical = { "gfx/leaders/Asia/portrait_asia_generic_land_11.dds" } #Kato Sadakichi
 	}
 	ideology_minister_portraits = 
@@ -3389,10 +3947,10 @@ oceanic = {
 		radical = { "gfx/interface/ideas/idea_generic_fascist_south_america.dds" } # Revise
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/tonga.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/tonga.dds"
 	}
 	graphical_culture = asian_gfx
 	graphical_culture_2d = asian_2d
@@ -3815,10 +4373,14 @@ native_carribean = {
 american_cultures = {
 	leader_portraits = {
 		communism = { "gfx/leaders/OC/portrait_USA_Earl_Browder.dds" } 
-		democratic = { "gfx/leaders/USA/Portrait_USA_Franklin_Roosevelt.dds" }
+		democratic = { "gfx/leaders/USA/Portrait_USA_Franklin_Roosevelt.dds" "gfx/leaders/OC/portrait_Vic1_Robert_E_Lee.tga" "gfx/leaders/OC/portrait_Vic1_Sam_Houston.tga" "gfx/leaders/OC/portrait_Vic1_Teddy_Roosevelt.tga" }
 		fascism = { "gfx/leaders/USA/Portrait_USA_William_Dudley_Pelley.dds" }
-		absolutist = { "gfx/leaders/USA/Portrait_USA_Douglas_MacArthur.dds" }
-		neutrality = { "gfx/leaders/OC/portrait_USA_Alf_Landon.dds" } 
+		absolutist = { "gfx/leaders/USA/Portrait_USA_Douglas_MacArthur.dds" "gfx/leaders/OC/portrait_Vic1_Robert_E_Lee.tga" "gfx/leaders/OC/portrait_Vic1_Sam_Houston.tga" "gfx/leaders/OC/portrait_Vic1_Teddy_Roosevelt.tga"
+		"gfx/leaders/MotE/USA_James_Madison.tga"
+		"gfx/leaders/MotE/USA_Thomas_Jefferson.tga" }
+		neutrality = { "gfx/leaders/OC/portrait_USA_Alf_Landon.dds" "gfx/leaders/OC/portrait_Vic1_Robert_E_Lee.tga" "gfx/leaders/OC/portrait_Vic1_Sam_Houston.tga" "gfx/leaders/OC/portrait_Vic1_Teddy_Roosevelt.tga"
+		"gfx/leaders/MotE/USA_James_Madison.tga"
+		"gfx/leaders/MotE/USA_Thomas_Jefferson.tga" } 
 		radical = { "gfx/leaders/USA/Portrait_USA_Generic_land_2.dds" } #Frank Abbott
 	}
 	ideology_minister_portraits = 
@@ -3870,9 +4432,9 @@ latin_american_cultures = {
 	leader_portraits = {
 		communism = { "gfx/leaders/VEN/Portrait_Venezuela_Elezar_Lopez_Contreras.dds" "gfx/leaders/CUB/portrait_cub_jose_barnet.dds" }
 		democratic = { "gfx/leaders/CHL/portrait_chl_arturo_alessandri.dds" "gfx/leaders/BOL/Portrait_Bolivia_Jose_Luis_Tejada_Scorzano.dds" "gfx/leaders/BRA/Portrait_Brazil_Plinio_Salgado.dds" "gfx/leaders/GUA/portrait_gua_jorge_ubico.dds" "gfx/leaders/MEX/Portrait_Mexico_Lazaro_Cardenas.dds" }
-		fascism = { "gfx/leaders/ARG/portrait_south_america_generic_leader_1.dds" "gfx/leaders/ELS/portrait_els_maximiliano_hernandez_martinez.dds" "gfx/leaders/NIC/portrait_nic_anastasio_somoza_garcia.dds" } #Leader_1 = Totally-not-Hitler
-		absolutist = { "GFX_portrait_south_america_generic_land_8" "gfx/leaders/DOM/portrait_dom_rafael_trujillo.dds" "gfx/leaders/HON/portrait_hon_tiburcio_carias_andino-dds" "gfx/leaders/PRU/portrait_per_oscar_benavides.dds" "gfx/leaders/VEN/Portrait_Venezuela_Elezar_Lopez_Contreras.dds" } #Land_8 = Pedro II, Emperor of Brazil
-		neutrality = { "gfx/leaders/ARG/Portrait_Argentina_Agustin_Pedro_Justo.dds" "gfx/leaders/BRA/Portrait_Brazil_Getulio_Vargas.dds" "gfx/leaders/COL/portrait_col_alfonso_lopez_pumarejo.dds" "gfx/leaders/COS/portrait_cos_ricardo_jiminez_oreamuno.dds" "gfx/leaders/ECU/portrait_ecu_federico_paez.dds" }
+		fascism = { "gfx/leaders/ARG/portrait_south_america_generic_leader_1.dds" "gfx/leaders/ELS/portrait_els_maximiliano_hernandez_martinez.dds" "gfx/leaders/NIC/portrait_nic_anastasio_somoza_garcia.dds" "gfx/leaders/OC/portrait_Vic1_Pedro_II.tga" } #Leader_1 = Totally-not-Hitler
+		absolutist = { "GFX_portrait_south_america_generic_land_8" "gfx/leaders/DOM/portrait_dom_rafael_trujillo.dds" "gfx/leaders/HON/portrait_hon_tiburcio_carias_andino-dds" "gfx/leaders/PRU/portrait_per_oscar_benavides.dds" "gfx/leaders/VEN/Portrait_Venezuela_Elezar_Lopez_Contreras.dds" "gfx/leaders/OC/portrait_Vic1_Pedro_II.tga" } #Land_8 = Pedro II, Emperor of Brazil
+		neutrality = { "gfx/leaders/ARG/Portrait_Argentina_Agustin_Pedro_Justo.dds" "gfx/leaders/BRA/Portrait_Brazil_Getulio_Vargas.dds" "gfx/leaders/COL/portrait_col_alfonso_lopez_pumarejo.dds" "gfx/leaders/COS/portrait_cos_ricardo_jiminez_oreamuno.dds" "gfx/leaders/ECU/portrait_ecu_federico_paez.dds" "gfx/leaders/OC/portrait_Vic1_Benito_Suarez.tga" "gfx/leaders/OC/portrait_Vic1_Pedro_II.tga" }
 		radical = { "gfx/leaders/OC/portrait_The_Che.dds" }
 	}
 	ideology_minister_portraits = 
@@ -3885,22 +4447,22 @@ latin_american_cultures = {
 		radical = { "gfx/interface/ideas/idea_generic_fascist_south_america.dds" } # Revise
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/brazil.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/brazil.dds"
 	}
 	graphical_culture = southamerican_gfx
 	graphical_culture_2d = southamerican_2d
 }
 african_diaspora_cultures = {
 	leader_portraits = {
-		communism = { "gfx/leaders/OC/portrait_HAI_Jacques_Roumain.dds" } 
-		democratic = { "gfx/leaders/HAI/portrait_hai_stenio_vincent.dds" }
-		fascism = { "gfx/leaders/OC/portrait_HAI_Francois_Duvalier.dds" } 
-		absolutist = { "gfx/leaders/OC/portrait_HAI_Faustin_Soulouque.dds" } 
-		neutrality = { "gfx/leaders/OC/portrait_LIB_Edwin_Barclay.dds" } 
-		radical = { "gfx/leaders/OC/Portrait_LIB_Daniel_Edward_Howard.dds" }
+		communism = { "gfx/leaders/OC/portrait_HAI_Jacques_Roumain.dds" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" } 
+		democratic = { "gfx/leaders/HAI/portrait_hai_stenio_vincent.dds" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" }
+		fascism = { "gfx/leaders/OC/portrait_HAI_Francois_Duvalier.dds" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" } 
+		absolutist = { "gfx/leaders/OC/portrait_HAI_Faustin_Soulouque.dds" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" } 
+		neutrality = { "gfx/leaders/OC/portrait_LIB_Edwin_Barclay.dds" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" } 
+		radical = { "gfx/leaders/OC/Portrait_LIB_Daniel_Edward_Howard.dds" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" }
 	}
 	ideology_minister_portraits = 
 	{
@@ -3922,12 +4484,12 @@ african_diaspora_cultures = {
 }
 west_african = {
 	leader_portraits = {
-		communism = { "gfx/leaders/OC/Africa/Portrait_Africa_Generic_land_new_1.tga" } # Revise
-		democratic = { "gfx/leaders/OC/Africa/Portrait_Africa_Generic_land_new_2.tga" } # Revise
-		fascism = { "gfx/leaders/OC/Africa/Portrait_Africa_Generic_land_new_3.tga" } # Revise
-		absolutist = { "GFX_portrait_africa_generic_land_6" } #Béhanzin of Dahomey
-		neutrality = { "gfx/leaders/OC/Africa/Portrait_Africa_Generic_new_1.tga" } # Revise
-		radical = { "gfx/leaders/OC/Africa/Portrait_Africa_Generic_new_2.tga" } # Revise
+		communism = { "gfx/leaders/OC/Africa/Portrait_Africa_Generic_land_new_1.tga" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" } # Revise
+		democratic = { "gfx/leaders/OC/Africa/Portrait_Africa_Generic_land_new_2.tga" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" } # Revise
+		fascism = { "gfx/leaders/OC/Africa/Portrait_Africa_Generic_land_new_3.tga" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" } # Revise
+		absolutist = { "GFX_portrait_africa_generic_land_6" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" } #Land 6 = Béhanzin of Dahomey
+		neutrality = { "gfx/leaders/OC/Africa/Portrait_Africa_Generic_new_1.tga" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" } # Revise
+		radical = { "gfx/leaders/OC/Africa/Portrait_Africa_Generic_new_2.tga" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" } # Revise
 	}
 	ideology_minister_portraits = 
 	{
@@ -3949,12 +4511,12 @@ west_african = {
 }
 central_african = {
 	leader_portraits = {
-		communism = { "gfx/leaders/OC/Africa/Portrait_Ashanti_Addo.tga" }
-		democratic = { "gfx/leaders/OC/Africa/Portrait_Ashanti_Busia.tga" }
-		fascism = { "gfx/leaders/OC/Africa/Portrait_Ashanti_Danquah.tga" }
-		absolutist = { "gfx/leaders/SAF/Portrait_South_Africa_Army_Generic_2.dds" } #Félix-Houphouët Boigny
-		neutrality = { "gfx/leaders/OC/Africa/Portrait_Ashanti_Kwame.tga" }
-		radical = { "gfx/leaders/OC/Africa/Portrait_Ashanti_Ofori.tga" }
+		communism = { "gfx/leaders/OC/Africa/Portrait_Ashanti_Addo.tga" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" }
+		democratic = { "gfx/leaders/OC/Africa/Portrait_Ashanti_Busia.tga" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" }
+		fascism = { "gfx/leaders/OC/Africa/Portrait_Ashanti_Danquah.tga" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" }
+		absolutist = { "gfx/leaders/SAF/Portrait_South_Africa_Army_Generic_2.dds" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" } #Generic 2 = Félix-Houphouët Boigny
+		neutrality = { "gfx/leaders/OC/Africa/Portrait_Ashanti_Kwame.tga" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" }
+		radical = { "gfx/leaders/OC/Africa/Portrait_Ashanti_Ofori.tga" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" }
 	}
 	ideology_minister_portraits = 
 	{
@@ -3966,22 +4528,22 @@ central_african = {
 		radical = { "gfx/interface/ideas/idea_generic_fascist_africa.dds" } # Revise
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/central_africa.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/central_africa.dds"
 	}
 	graphical_culture = african_gfx
 	graphical_culture_2d = african_2d
 }
 east_african = {
 	leader_portraits = {
-		communism = { "gfx/leaders/OC/Africa/Portrait_Ashanti_Prempeh.tga" }
-		democratic = { "gfx/leaders/OC/Africa/Portrait_Barot_Yetalll.tga" }
-		fascism = { "gfx/leaders/OC/Africa/Portrait_Burkina_Henri.tga" }
-		absolutist = { "gfx/leaders/ETH/Portrait_Ethiopia_Haile_Selassie.dds" } 
-		neutrality = { "gfx/leaders/OC/Africa/Portrait_Burkina_Joseph.tga" }
-		radical = { "gfx/leaders/OC/Africa/Portrait_Burkina_Nazi_Boni.tga" }
+		communism = { "gfx/leaders/OC/Africa/Portrait_Ashanti_Prempeh.tga" "gfx/leaders/OC/portrait_Vic1_Ethiopian_leader.tga" }
+		democratic = { "gfx/leaders/OC/Africa/Portrait_Barot_Yetalll.tga" "gfx/leaders/OC/portrait_Vic1_Ethiopian_leader.tga" }
+		fascism = { "gfx/leaders/OC/Africa/Portrait_Burkina_Henri.tga" "gfx/leaders/OC/portrait_Vic1_Ethiopian_leader.tga" }
+		absolutist = { "gfx/leaders/ETH/Portrait_Ethiopia_Haile_Selassie.dds" "gfx/leaders/OC/portrait_Vic1_Ethiopian_leader.tga" } 
+		neutrality = { "gfx/leaders/OC/Africa/Portrait_Burkina_Joseph.tga" "gfx/leaders/OC/portrait_Vic1_Ethiopian_leader.tga" }
+		radical = { "gfx/leaders/OC/Africa/Portrait_Burkina_Nazi_Boni.tga" "gfx/leaders/OC/portrait_Vic1_Ethiopian_leader.tga" }
 	}
 	ideology_minister_portraits = 
 	{
@@ -3993,22 +4555,22 @@ east_african = {
 		radical = { "gfx/interface/ideas/idea_generic_fascist_africa.dds" } # Revise
 	}
 	male_monarch_portraits = {
-		"gfx/interface/ideas/idea_bra_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/ethiopia.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/interface/ideas/idea_por_monarchist_uprising.dds" # Revise
+		"gfx/interface/ideas/crowns/ethiopia.dds"
 	}
 	graphical_culture = african_gfx
 	graphical_culture_2d = african_2d
 }
 southern_african = {
 	leader_portraits = {
-		communism = { "gfx/leaders/OC/Africa/Portrait_Burkina_Ouedraogo.tga" }
-		democratic = { "gfx/leaders/OC/Africa/Portrait_Burundi_Mwambutsa_Fourth.tga" }
-		fascism = { "gfx/leaders/OC/Africa/Portrait_CAF_Aime_Ceasire.tga" }
-		absolutist = { "gfx/leaders/OC/Africa/Portrait_CAF_CLR_James.tga" }
-		neutrality = { "gfx/leaders/SAF/Portrait_South_Africa_Political_Leader_Generic.dds" } #Khama III of Botswana
-		radical = { "gfx/leaders/OC/Africa/Portrait_CAF_Felix_Eboue.tga" }
+		communism = { "gfx/leaders/OC/Africa/Portrait_Burkina_Ouedraogo.tga" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" }
+		democratic = { "gfx/leaders/OC/Africa/Portrait_Burundi_Mwambutsa_Fourth.tga" "gfx/leaders/OC/portrait_Vic1_African_leader.tga" }
+		fascism = { "gfx/leaders/OC/Africa/Portrait_CAF_Aime_Ceasire.tga" "gfx/leaders/OC/portrait_Vic1_Zulu_leader.tga" }
+		absolutist = { "gfx/leaders/OC/Africa/Portrait_CAF_CLR_James.tga" "gfx/leaders/OC/portrait_Vic1_Zulu_leader.tga" }
+		neutrality = { "gfx/leaders/SAF/Portrait_South_Africa_Political_Leader_Generic.dds" "gfx/leaders/OC/portrait_Vic1_Zulu_leader.tga" } #Generic = Khama III of Botswana
+		radical = { "gfx/leaders/OC/Africa/Portrait_CAF_Felix_Eboue.tga" "gfx/leaders/OC/portrait_Vic1_Zulu_leader.tga" }
 	}
 	ideology_minister_portraits = 
 	{
@@ -4107,10 +4669,10 @@ non_human = {
 		radical = { "gfx/interface/spr_anarchist_society.dds" }
 	}
 	male_monarch_portraits = {
-		"pdx_launcher/game/gfx/interface/legal_dog.dds"
+		"gfx/interface/ideas/crowns/zoo.dds"
 	}
 	female_monarch_portraits = {
-		"pdx_launcher/game/gfx/interface/legal_dog.dds"
+		"gfx/interface/ideas/crowns/zoo.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
@@ -4136,10 +4698,10 @@ anti_human = {
 		radical = { "gfx/interface/nuke_icon.dds" }
 	}
 	male_monarch_portraits = {
-		"gfx/achievements/brains.dds" # This is a Zombie
+		"gfx/interface/ideas/crowns/eldritch.dds"
 	}
 	female_monarch_portraits = {
-		"gfx/achievements/brains.dds"
+		"gfx/interface/ideas/crowns/eldritch.dds"
 	}
 	graphical_culture = western_european_gfx
 	graphical_culture_2d = western_european_2d
