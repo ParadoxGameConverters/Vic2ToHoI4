@@ -381,8 +381,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 
 		if (!passableProvinces.empty())
 		{
-			auto [existing, emplaced] =
-				 languageCategories.emplace(vic2State.getLanguageCategory(), std::set{nextStateID});
+			auto [existing, emplaced] = languageCategories.emplace(vic2State.getLanguageCategory(), std::set{nextStateID});
 			if (!emplaced)
 			{
 				existing->second.insert(nextStateID);
@@ -409,8 +408,7 @@ void HoI4::States::createMatchingHoI4State(const Vic2::State& vic2State,
 
 		if (!impassableProvinces.empty())
 		{
-			auto [existing, emplaced] =
-				 languageCategories.emplace(vic2State.getLanguageCategory(), std::set{nextStateID});
+			auto [existing, emplaced] = languageCategories.emplace(vic2State.getLanguageCategory(), std::set{nextStateID});
 			if (!emplaced)
 			{
 				existing->second.insert(nextStateID);
@@ -743,6 +741,60 @@ void HoI4::States::giveProvinceControlToCountry(int provinceNum, const std::stri
 	}
 
 	states.at(stateIdMapping->second).setControlledProvince(provinceNum, country);
+}
+
+
+void HoI4::States::addDominions(std::map<std::string, std::shared_ptr<Country>>& countries,
+	 const Regions& regions,
+	 Mappers::CountryMapper::Factory& countryMapperFactory)
+{
+	for (auto& [stateNum, state]: states)
+	{
+		const auto& provinces = state.getProvinces();
+		if (provinces.empty())
+		{
+			continue;
+		}
+		const auto& stateRegion = regions.getRegion(*provinces.begin());
+
+		const auto& owner = countries.find(state.getOwner());
+		if (owner == countries.end())
+		{
+			continue;
+		}
+		const auto& ownerCapitalProvince = owner->second->getCapitalProvince();
+		if (!ownerCapitalProvince)
+		{
+			continue;
+		}
+		const auto& ownerRegion = regions.getRegion(*ownerCapitalProvince);
+
+		const bool differentRegions =
+			 ((stateRegion && !ownerRegion) || (stateRegion && ownerRegion && *stateRegion != *ownerRegion));
+		if (!differentRegions)
+		{
+			continue;
+		}
+
+		auto [dominionTag, dominion] = getDominion(owner->first, *stateRegion, countries, countryMapperFactory);
+		state.addCores({dominionTag});
+	}
+}
+
+
+std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::States::getDominion(const std::string& owner,
+	 const std::string& region,
+	 std::map<std::string, std::shared_ptr<Country>>& countries,
+	 Mappers::CountryMapper::Factory& countryMapperFactory)
+{
+	if (const auto& dominionTag = dominions.find(std::make_pair(owner, region)); dominionTag != dominions.end())
+	{
+		return std::make_pair(dominionTag->second, nullptr);
+	}
+
+	const auto dominionTag = countryMapperFactory.generateNewHoI4Tag();
+	dominions.emplace(std::make_pair(owner, region), dominionTag);
+	return std::make_pair(dominionTag, nullptr);
 }
 
 

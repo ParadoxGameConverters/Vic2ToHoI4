@@ -139,7 +139,8 @@ class World: commonItems::parser
 	void convertIdeologySupport();
 
 	void convertIndustry(const Configuration& theConfiguration);
-	void addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper);
+	void addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper,
+		 Mappers::CountryMapper::Factory& countryMapperFactory);
 	void determineCoreStates();
 	std::map<std::string, double> calculateFactoryWorkerRatios(const Configuration& theConfiguration);
 	std::map<std::string, double> getIndustrialWorkersPerCountry();

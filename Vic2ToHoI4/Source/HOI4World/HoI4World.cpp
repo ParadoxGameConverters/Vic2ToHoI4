@@ -65,7 +65,8 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	Log(LogLevel::Progress) << "24%";
 	Log(LogLevel::Info) << "Building HoI4 World";
 
-	countryMap = Mappers::CountryMapper::Factory().importCountryMapper(sourceWorld, theConfiguration.getDebug());
+	Mappers::CountryMapper::Factory countryMapperFactory;
+	countryMap = countryMapperFactory.importCountryMapper(sourceWorld, theConfiguration.getDebug());
 
 	auto vic2Localisations = sourceWorld.getLocalisations();
 	hoi4Localisations = Localisation::Importer().generateLocalisations(theConfiguration);
@@ -105,7 +106,7 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 theConfiguration);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, provinceDefinitions, theConfiguration);
-	addStatesToCountries(provinceMapper);
+	addStatesToCountries(provinceMapper, countryMapperFactory);
 	states->addCapitalsToStates(countries);
 	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
@@ -394,7 +395,8 @@ void HoI4::World::convertIndustry(const Configuration& theConfiguration)
 }
 
 
-void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper)
+void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper,
+	 Mappers::CountryMapper::Factory& countryMapperFactory)
 {
 	Log(LogLevel::Info) << "\tAdding states to countries";
 	for (auto state: states->getStates())
@@ -416,6 +418,8 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 		country.second->determineCapitalFromVic2(provinceMapper, states->getProvinceToStateIDMap(), states->getStates());
 		country.second->setCapitalRegionFlag(*theRegions);
 	}
+
+	states->addDominions(countries, *theRegions, countryMapperFactory);
 }
 
 
