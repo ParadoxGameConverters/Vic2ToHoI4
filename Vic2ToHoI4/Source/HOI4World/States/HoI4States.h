@@ -155,7 +155,8 @@ class States: commonItems::parser
 	void addGreatPowerVPs(const std::vector<std::shared_ptr<Country>>& greatPowers);
 	void addCapitalVictoryPoints(const std::map<std::string, std::shared_ptr<Country>>& countries);
 
-	std::pair<std::string, std::shared_ptr<Country>> getDominion(const std::string& owner,
+	std::pair<std::string, std::shared_ptr<Country>> getDominion(const std::string& ownerTag,
+		 const Country& owner,
 		 const std::string& region,
 		 std::map<std::string, std::shared_ptr<Country>>& countries,
 		 Mappers::CountryMapper::Factory& countryMapperFactory);

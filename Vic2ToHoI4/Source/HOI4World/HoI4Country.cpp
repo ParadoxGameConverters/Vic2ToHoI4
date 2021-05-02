@@ -112,6 +112,13 @@ HoI4::Country::Country(std::string tag,
 }
 
 
+HoI4::Country::Country(const std::string& tag_, const Country& owner): tag(tag_)
+{
+	filename = tag + ".txt";
+	commonCountryFile = tag + ".txt";
+}
+
+
 void HoI4::Country::determineFilename()
 {
 	if (name)
@@ -550,6 +557,28 @@ void HoI4::Country::determineCapitalFromVic2(const Mappers::ProvinceMapper& theP
 }
 
 
+void HoI4::Country::determineBestCapital(const std::map<int, State>& allStates)
+{
+	auto success = attemptToPutCapitalInNonWastelandOwned(allStates);
+	if (!success)
+	{
+		success = attemptToPutCapitalInAnyOwned(allStates);
+	}
+	if (!success)
+	{
+		success = attemptToPutCapitalInAnyNonWastelandCored(allStates);
+	}
+	if (!success)
+	{
+		success = attemptToPutCapitalInAnyCored(allStates);
+	}
+	if (!success)
+	{
+		Log(LogLevel::Warning) << "Could not properly set capital for " << tag;
+	}
+}
+
+
 bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandOwned(const Mappers::ProvinceMapper& theProvinceMapper,
 	 const std::map<int, int>& provinceToStateIDMap,
 	 const std::map<int, State>& allStates)
@@ -660,14 +689,14 @@ bool HoI4::Country::attemptToPutCapitalInPreferredNonWastelandCored(const Mapper
 
 bool HoI4::Country::attemptToPutCapitalInAnyNonWastelandCored(const std::map<int, State>& allStates)
 {
-	for (auto ownedStateNum: states)
+	for (auto coredStateNum: coreStates)
 	{
-		if (auto stateAndNum = allStates.find(ownedStateNum); stateAndNum != allStates.end())
+		if (auto stateAndNum = allStates.find(coredStateNum); stateAndNum != allStates.end())
 		{
 			auto state = stateAndNum->second;
 			if ((state.getCores().contains(tag) || state.getClaims().contains(tag)) && !state.isImpassable())
 			{
-				capitalState = ownedStateNum;
+				capitalState = coredStateNum;
 				capitalProvince = *state.getProvinces().begin();
 				return true;
 			}
@@ -703,13 +732,13 @@ bool HoI4::Country::attemptToPutCapitalInPreferredWastelandCored(const Mappers::
 
 bool HoI4::Country::attemptToPutCapitalInAnyCored(const std::map<int, State>& allStates)
 {
-	for (auto ownedStateNum: states)
+	for (auto coredStateNum: coreStates)
 	{
-		if (auto state = allStates.find(ownedStateNum); state != allStates.end())
+		if (auto state = allStates.find(coredStateNum); state != allStates.end())
 		{
 			if (state->second.getCores().contains(tag) || state->second.getClaims().contains(tag))
 			{
-				capitalState = ownedStateNum;
+				capitalState = coredStateNum;
 				capitalProvince = *state->second.getProvinces().begin();
 				return true;
 			}

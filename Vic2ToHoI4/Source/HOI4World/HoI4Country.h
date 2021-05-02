@@ -60,16 +60,12 @@ class Country
 		 const Mappers::CountryMapper& countryMap,
 		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 		 Localisation& hoi4Localisations);
-	Country() = delete;
-	Country(const Country&) = delete;
-	Country& operator=(const Country&) = delete;
-	Country(Country&&) = delete;
-	Country& operator=(Country&&) = delete;
-	~Country() = default;
+	explicit Country(const std::string& tag_, const Country& owner);
 
 	void determineCapitalFromVic2(const Mappers::ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,
 		 const std::map<int, State>& allStates);
+	void determineBestCapital(const std::map<int, State>& allStates);
 	void setCapitalRegionFlag(const Regions& regions);
 	void setGovernmentToExistingIdeology(const std::set<std::string>& majorIdeologies,
 		 const Ideologies& ideologies,
