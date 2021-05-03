@@ -1,4 +1,5 @@
 test_region = {
 	name = "Test Region"
+	adjective = "Test Regional"
 	provinces = { 42 }
 }

@@ -11,6 +11,7 @@ TEST(HoI4World_Regions_RegionsTests, DefaultsAreSet)
 	const auto region = HoI4::Region::Factory().importRegion(input);
 
 	EXPECT_TRUE(region->getName().empty());
+	EXPECT_TRUE(region->getAdjective().empty());
 	EXPECT_TRUE(region->getProvinces().empty());
 }
 
@@ -20,10 +21,12 @@ TEST(HoI4World_Regions_RegionsTests, ItemsCanBeSet)
 	std::stringstream input;
 	input << "= {\n";
 	input << "\tname = \"Test Name\"\n";
+	input << "\tadjective = \"Test Adjective\"\n";
 	input << "\tprovinces = { 42 43 44 }\n";
 	input << "}";
 	const auto region = HoI4::Region::Factory().importRegion(input);
 
 	EXPECT_EQ("Test Name", region->getName());
+	EXPECT_EQ("Test Adjective", region->getAdjective());
 	EXPECT_THAT(region->getProvinces(), testing::UnorderedElementsAre(42, 43, 44));
 }

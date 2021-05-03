@@ -16,10 +16,12 @@ class Region
   public:
 	class Factory;
 	[[nodiscard]] const auto& getName() const { return name; }
+	[[nodiscard]] const auto& getAdjective() const { return adjective; }
 	[[nodiscard]] const auto& getProvinces() const { return provinces; }
 
   private:
 	std::string name;
+	std::string adjective;
 	std::vector<int> provinces;
 };
 

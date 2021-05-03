@@ -13,6 +13,7 @@ HoI4::Regions::Factory::Factory()
 			theRegions->regionsMap.emplace(province, regionId);
 		}
 		theRegions->regionNames.emplace(regionId, region->getName());
+		theRegions->regionAdjectives.emplace(regionId, region->getAdjective());
 	});
 }
 

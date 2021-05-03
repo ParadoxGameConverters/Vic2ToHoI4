@@ -22,3 +22,14 @@ std::optional<std::string> HoI4::Regions::getRegionName(const std::string& regio
 
 	return std::nullopt;
 }
+
+
+std::optional<std::string> HoI4::Regions::getRegionAdjective(const std::string& regionName) const
+{
+	if (regionAdjectives.contains(regionName))
+	{
+		return regionAdjectives.at(regionName);
+	}
+
+	return std::nullopt;
+}

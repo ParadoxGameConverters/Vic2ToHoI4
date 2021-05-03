@@ -129,6 +129,12 @@ HoI4::Country::Country(const std::string& tag_,
 			name = *regionName;
 		}
 	}
+
+	if (const auto& regionAdjective = regions.getRegionAdjective(region); regionAdjective)
+	{
+		adjective = *regionAdjective;
+	}
+	
 	determineFilename();
 }
 

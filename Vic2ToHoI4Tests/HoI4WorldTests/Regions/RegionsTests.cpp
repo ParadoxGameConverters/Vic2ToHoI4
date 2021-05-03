@@ -34,3 +34,19 @@ TEST(HoI4World_Regions_RegionsTests, NameInMappedRegionReturnsName)
 
 	EXPECT_EQ("Test Region", regions->getRegionName("test_region"));
 }
+
+
+TEST(HoI4World_Regions_RegionsTests, AdjectiveInUnmappedRegionReturnsNullopt)
+{
+	const auto regions = HoI4::Regions::Factory().getRegions();
+
+	EXPECT_EQ(std::nullopt, regions->getRegionName("missing_region"));
+}
+
+
+TEST(HoI4World_Regions_RegionsTests, AdjectiveInMappedRegionReturnsAdjective)
+{
+	const auto regions = HoI4::Regions::Factory().getRegions();
+
+	EXPECT_EQ("Test Regional", regions->getRegionAdjective("test_region"));
+}
