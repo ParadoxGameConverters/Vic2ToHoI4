@@ -746,7 +746,10 @@ void HoI4::States::giveProvinceControlToCountry(int provinceNum, const std::stri
 
 void HoI4::States::addDominions(std::map<std::string, std::shared_ptr<Country>>& countries,
 	 const Regions& regions,
-	 Mappers::CountryMapper::Factory& countryMapperFactory)
+	 Mappers::CountryMapper::Factory& countryMapperFactory,
+	 Mappers::GraphicsMapper& graphicsMapper,
+	 Names& names,
+	 Localisation& hoi4Localisations)
 {
 	for (auto& [stateId, state]: states)
 	{
@@ -776,7 +779,15 @@ void HoI4::States::addDominions(std::map<std::string, std::shared_ptr<Country>>&
 			continue;
 		}
 
-		auto [dominionTag, dominion] = getDominion(owner->first, *owner->second, *stateRegion, countries, countryMapperFactory, regions);
+		auto [dominionTag, dominion] = getDominion(owner->first,
+			 *owner->second,
+			 *stateRegion,
+			 countries,
+			 countryMapperFactory,
+			 regions,
+			 graphicsMapper,
+			 names,
+			 hoi4Localisations);
 		state.addCores({dominionTag});
 		dominion->addCoreState(stateId);
 	}
@@ -791,10 +802,15 @@ void HoI4::States::addDominions(std::map<std::string, std::shared_ptr<Country>>&
 }
 
 
-std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::States::getDominion(const std::string& ownerTag, const Country& owner,
+std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::States::getDominion(const std::string& ownerTag,
+	 const Country& owner,
 	 const std::string& region,
 	 std::map<std::string, std::shared_ptr<Country>>& countries,
-	 Mappers::CountryMapper::Factory& countryMapperFactory, const Regions& regions)
+	 Mappers::CountryMapper::Factory& countryMapperFactory,
+	 const Regions& regions,
+	 Mappers::GraphicsMapper& graphicsMapper,
+	 Names& names,
+	 Localisation& hoi4Localisations)
 {
 	if (const auto& dominionTag = dominions.find(std::make_pair(ownerTag, region)); dominionTag != dominions.end())
 	{
@@ -807,9 +823,10 @@ std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::States::getDominion
 
 	const auto dominionTag = countryMapperFactory.generateNewHoI4Tag();
 	dominions.emplace(std::make_pair(ownerTag, region), dominionTag);
-	auto dominion = std::make_shared<Country>(dominionTag, owner, region, regions);
+	auto dominion =
+		 std::make_shared<Country>(dominionTag, owner, region, regions, graphicsMapper, names, hoi4Localisations);
 	countries.emplace(dominionTag, dominion);
-	
+
 	return std::make_pair(dominionTag, dominion);
 }
 

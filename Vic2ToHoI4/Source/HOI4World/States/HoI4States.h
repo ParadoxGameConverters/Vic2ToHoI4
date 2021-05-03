@@ -7,9 +7,11 @@
 #include "HOI4World/Map/Hoi4Province.h"
 #include "HOI4World/Map/MapData.h"
 #include "HOI4World/Map/StrategicRegions.h"
+#include "HOI4World/Names/Names.h"
 #include "HOI4World/Regions/Regions.h"
 #include "Mappers/Country/CountryMapper.h"
 #include "Mappers/Country/CountryMapperFactory.h"
+#include "Mappers/Graphics/GraphicsMapper.h"
 #include "Mappers/Provinces/ProvinceMapper.h"
 #include "Parser.h"
 #include "V2World/Countries/Country.h"
@@ -81,7 +83,10 @@ class States: commonItems::parser
 	void giveProvinceControlToCountry(int provinceNum, const std::string& country);
 	void addDominions(std::map<std::string, std::shared_ptr<Country>>& countries,
 		 const Regions& regions,
-		 Mappers::CountryMapper::Factory& countryMapperFactory);
+		 Mappers::CountryMapper::Factory& countryMapperFactory,
+		 Mappers::GraphicsMapper& graphicsMapper,
+		 Names& names,
+		 Localisation& hoi4Localisations);
 
   private:
 	void determineOwnersAndCores(const Mappers::CountryMapper& countryMap,
@@ -160,7 +165,10 @@ class States: commonItems::parser
 		 const std::string& region,
 		 std::map<std::string, std::shared_ptr<Country>>& countries,
 		 Mappers::CountryMapper::Factory& countryMapperFactory,
-		 const Regions& regions);
+		 const Regions& regions,
+		 Mappers::GraphicsMapper& graphicsMapper,
+		 Names& names,
+		 Localisation& hoi4Localisations);
 
 	std::map<int, std::string> ownersMap;
 	std::map<int, std::set<std::pair<std::string, std::string>>> coresMap;

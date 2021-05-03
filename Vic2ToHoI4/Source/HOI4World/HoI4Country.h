@@ -60,7 +60,13 @@ class Country
 		 const Mappers::CountryMapper& countryMap,
 		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 		 Localisation& hoi4Localisations);
-	explicit Country(const std::string& tag_, const Country& owner, const std::string& region, const Regions& regions);
+	explicit Country(const std::string& tag_,
+		 const Country& owner,
+		 const std::string& region,
+		 const Regions& regions,
+		 Mappers::GraphicsMapper& graphicsMapper,
+		 Names& names,
+		 Localisation& hoi4Localisations);
 
 	void determineCapitalFromVic2(const Mappers::ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,
@@ -308,8 +314,8 @@ class Country
 	std::map<std::string, double> upperHouseComposition;
 	std::map<std::string, int> ideologySupport{std::make_pair("neutrality", 100)};
 	date lastElection;
-	int stability = 50;
-	int warSupport = 50;
+	int stability = 60;
+	int warSupport = 60;
 	std::string mobilizationLaw = "volunteer_only";
 	std::string economicLaw = "civilian_economy";
 	std::string tradeLaw = "export_focus";

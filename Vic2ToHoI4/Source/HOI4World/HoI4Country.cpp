@@ -67,9 +67,6 @@ HoI4::Country::Country(std::string tag,
 
 	initIdeas(names, hoi4Localisations);
 
-	stability = 60;
-	warSupport = 60;
-
 	if (sourceCountry.hasLand())
 	{
 		auto warAttitude = sourceCountry.getAverageIssueSupport("jingoism");
@@ -115,12 +112,20 @@ HoI4::Country::Country(std::string tag,
 HoI4::Country::Country(const std::string& tag_,
 	 const Country& owner,
 	 const std::string& region,
-	 const Regions& regions):
-	 tag(tag_)
+	 const Regions& regions,
+	 Mappers::GraphicsMapper& graphicsMapper,
+	 Names& names,
+	 Localisation& hoi4Localisations):
+	 tag(tag_),
+	 primaryCulture(owner.primaryCulture), primaryCultureGroup(owner.primaryCultureGroup), civilized(owner.civilized),
+	 rulingParty(owner.rulingParty), parties(owner.parties), upperHouseComposition(owner.upperHouseComposition),
+	 lastElection(owner.lastElection), color(owner.color), graphicalCulture(owner.graphicalCulture),
+	 graphicalCulture2d(owner.graphicalCulture2d), warSupport(owner.warSupport),
+	 oldTechnologiesAndInventions(owner.oldTechnologiesAndInventions), atWar(owner.atWar), shipNames(owner.shipNames)
 {
 	if (const auto& regionName = regions.getRegionName(region); regionName)
 	{
-		if (const auto& ownerAdjective = owner.getAdjective(); ownerAdjective)
+		if (const auto& ownerAdjective = owner.adjective; ownerAdjective)
 		{
 			name = *ownerAdjective + " " + *regionName;
 		}
@@ -134,8 +139,33 @@ HoI4::Country::Country(const std::string& tag_,
 	{
 		adjective = *regionAdjective;
 	}
-	
+
 	determineFilename();
+
+	color.RandomlyFluctuate(2.0F);
+
+	armyPortraits = graphicsMapper.getArmyPortraits(primaryCultureGroup);
+	navyPortraits = graphicsMapper.getNavyPortraits(primaryCultureGroup);
+	communistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "communism");
+	democraticAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "democratic");
+	neutralityAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "neutrality");
+	absolutistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "absolutist");
+	radicalAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "radical");
+	fascistAdvisorPortrait = graphicsMapper.getIdeologyMinisterPortrait(primaryCultureGroup, "fascism");
+
+	initIdeas(names, hoi4Localisations);
+	if (owner.hasMonarchIdea())
+	{
+		ideas.insert(owner.tag + "_monarch");
+	}
+
+	// do something about oldTag or make it not always needed
+	// same with oldGovernment. Though maybe the owner's works? Double-check how the localisations work
+	// make sure tech converts. oldTechnologiesAndInventions may be redundant
+	// employedWorkers is only relevant if freed, and even then only if freed before converting industry
+	// flags
+	// country categories - common/scripted_triggers/country_categories.txt
+	// what it takes to make scripted localisations work
 }
 
 

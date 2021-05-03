@@ -419,7 +419,7 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 		country.second->setCapitalRegionFlag(*theRegions);
 	}
 
-	states->addDominions(countries, *theRegions, countryMapperFactory);
+	states->addDominions(countries, *theRegions, countryMapperFactory, *graphicsMapper, *names, *hoi4Localisations);
 }
 
 
