@@ -185,6 +185,7 @@
     <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesSetDetails.cpp" />
     <ClCompile Include="Source\HOI4World\OperativeNames\OperativeNamesSetFactory.cpp" />
     <ClCompile Include="Source\HOI4World\ProvinceDefinitions.cpp" />
+    <ClCompile Include="Source\HOI4World\Regions\RegionFactory.cpp" />
     <ClCompile Include="Source\HOI4World\Regions\Regions.cpp" />
     <ClCompile Include="Source\HOI4World\Regions\RegionsFactory.cpp" />
     <ClCompile Include="Source\HOI4World\ScriptedEffects\ScriptedEffectFactory.cpp" />
@@ -359,7 +360,7 @@
     <ClCompile Include="Source\HOI4World\Map\ImpassableProvinces.cpp" />
     <ClCompile Include="Source\HOI4World\Map\MapData.cpp" />
     <ClCompile Include="Source\HOI4World\Map\ProvincePoints.cpp" />
-    <ClCompile Include="Source\HOI4World\Map\Region.cpp" />
+    <ClCompile Include="Source\HOI4World\Map\MapRegion.cpp" />
     <ClCompile Include="Source\HOI4World\Map\Resources.cpp" />
     <ClCompile Include="Source\HOI4World\Map\ResourcesLink.cpp" />
     <ClCompile Include="Source\HOI4World\Map\SupplyArea.cpp" />
@@ -534,6 +535,8 @@
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h" />
     <ClInclude Include="Source\HOI4World\OperativeNames\OperativeNamesSetFactory.h" />
     <ClInclude Include="Source\HOI4World\ProvinceDefinitions.h" />
+    <ClInclude Include="Source\HOI4World\Regions\Region.h" />
+    <ClInclude Include="Source\HOI4World\Regions\RegionFactory.h" />
     <ClInclude Include="Source\HOI4World\Regions\Regions.h" />
     <ClInclude Include="Source\HOI4World\Regions\RegionsFactory.h" />
     <ClInclude Include="Source\HOI4World\ScriptedEffects\ScriptedEffect.h" />
@@ -739,7 +742,7 @@
     <ClInclude Include="Source\HOI4World\Map\ImpassableProvinces.h" />
     <ClInclude Include="Source\HOI4World\Map\MapData.h" />
     <ClInclude Include="Source\HOI4World\Map\ProvincePoints.h" />
-    <ClInclude Include="Source\HOI4World\Map\Region.h" />
+    <ClInclude Include="Source\HOI4World\Map\MapRegion.h" />
     <ClInclude Include="Source\HOI4World\Map\Resources.h" />
     <ClInclude Include="Source\HOI4World\Map\ResourcesLink.h" />
     <ClInclude Include="Source\HOI4World\Map\SupplyArea.h" />

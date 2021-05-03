@@ -76,6 +76,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\ArticleRules\ArticleRulesFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Localisations\GrammarMappings.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapRegion.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Modifiers\DynamicModifiers.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Modifiers\Modifier.cpp" />
@@ -96,6 +97,7 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.cpp" />
+    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regions\RegionFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regions\Regions.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Regions\RegionsFactory.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffectFactory.cpp" />
@@ -270,7 +272,6 @@
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\ImpassableProvinces.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapData.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\ProvincePoints.cpp" />
-    <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Region.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\Resources.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\ResourcesLink.cpp" />
     <ClCompile Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegion.cpp" />
@@ -415,7 +416,7 @@
     <ClCompile Include="HoI4WorldTests\Map\HoI4ProvincesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\ImpassableProvincesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\ProvincePointsTests.cpp" />
-    <ClCompile Include="HoI4WorldTests\Map\RegionTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Map\MapRegionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\ResourcesLinkTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Map\SupplyAreaTests.cpp" />
     <ClCompile Include="HoI4WorldTests\MilitaryMappings\AllMilitaryMappingsTests.cpp" />
@@ -453,6 +454,7 @@
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativeNamesTests.cpp" />
     <ClCompile Include="HoI4WorldTests\OperativeNames\OperativesNamesSetTests.cpp" />
     <ClCompile Include="HoI4WorldTests\Regions\RegionsTests.cpp" />
+    <ClCompile Include="HoI4WorldTests\Regions\RegionTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedEffects\ScriptedEffectFileTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedEffects\ScriptedEffectTests.cpp" />
     <ClCompile Include="HoI4WorldTests\ScriptedLocalisations\ScriptedLocalisationsTests.cpp" />
@@ -753,8 +755,8 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\HoI4Provinces.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\ImpassableProvinces.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapData.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\MapRegion.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\ProvincePoints.h" />
-    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Region.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\Resources.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\ResourcesLink.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Map\StrategicRegion.h" />
@@ -811,6 +813,8 @@
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetDetails.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\OperativeNames\OperativeNamesSetFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ProvinceDefinitions.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Regions\Region.h" />
+    <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Regions\RegionFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Regions\Regions.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\Regions\RegionsFactory.h" />
     <ClInclude Include="..\Vic2ToHoI4\Source\HOI4World\ScriptedEffects\ScriptedEffect.h" />

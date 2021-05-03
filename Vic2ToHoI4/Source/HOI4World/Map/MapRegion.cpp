@@ -1,10 +1,10 @@
-#include "Region.h"
+#include "MapRegion.h"
 #include "CommonRegexes.h"
 #include "ParserHelpers.h"
 
 
 
-HoI4::Region::Region(std::istream& theStream)
+HoI4::MapRegion::MapRegion(std::istream& theStream)
 {
 	registerKeyword("id", [this](std::istream& theStream) {
 		const commonItems::singleInt idString(theStream);

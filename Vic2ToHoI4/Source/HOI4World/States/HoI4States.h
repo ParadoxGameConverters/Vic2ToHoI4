@@ -159,7 +159,8 @@ class States: commonItems::parser
 		 const Country& owner,
 		 const std::string& region,
 		 std::map<std::string, std::shared_ptr<Country>>& countries,
-		 Mappers::CountryMapper::Factory& countryMapperFactory);
+		 Mappers::CountryMapper::Factory& countryMapperFactory,
+		 const Regions& regions);
 
 	std::map<int, std::string> ownersMap;
 	std::map<int, std::set<std::pair<std::string, std::string>>> coresMap;

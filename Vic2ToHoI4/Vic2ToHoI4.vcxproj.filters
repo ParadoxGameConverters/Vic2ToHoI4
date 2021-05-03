@@ -486,7 +486,7 @@
     <ClCompile Include="Source\OutHoi4\Map\OutBuildings.cpp">
       <Filter>OutHoi4\Map</Filter>
     </ClCompile>
-    <ClCompile Include="Source\HOI4World\Map\Region.cpp">
+    <ClCompile Include="Source\HOI4World\Map\MapRegion.cpp">
       <Filter>HoI4World\Map</Filter>
     </ClCompile>
     <ClCompile Include="Source\OutHoi4\Map\OutStrategicRegion.cpp">
@@ -1267,6 +1267,9 @@
     <ClCompile Include="Source\HOI4World\Events\NavalTreatyEventsUpdaters.cpp">
       <Filter>HoI4World\Events</Filter>
     </ClCompile>
+    <ClCompile Include="Source\HOI4World\Regions\RegionFactory.cpp">
+      <Filter>HoI4World\Regions</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\common_items\Date.h">
@@ -1520,7 +1523,7 @@
     <ClInclude Include="Source\OutHoi4\Map\OutBuildings.h">
       <Filter>OutHoi4\Map</Filter>
     </ClInclude>
-    <ClInclude Include="Source\HOI4World\Map\Region.h">
+    <ClInclude Include="Source\HOI4World\Map\MapRegion.h">
       <Filter>HoI4World\Map</Filter>
     </ClInclude>
     <ClInclude Include="Source\OutHoi4\Map\OutStrategicRegion.h">
@@ -2504,6 +2507,12 @@
     </ClInclude>
     <ClInclude Include="Source\HOI4World\Events\NavalTreatyEventsUpdaters.h">
       <Filter>HoI4World\Events</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Regions\Region.h">
+      <Filter>HoI4World\Regions</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HOI4World\Regions\RegionFactory.h">
+      <Filter>HoI4World\Regions</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

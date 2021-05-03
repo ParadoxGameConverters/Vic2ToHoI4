@@ -112,10 +112,24 @@ HoI4::Country::Country(std::string tag,
 }
 
 
-HoI4::Country::Country(const std::string& tag_, const Country& owner): tag(tag_)
+HoI4::Country::Country(const std::string& tag_,
+	 const Country& owner,
+	 const std::string& region,
+	 const Regions& regions):
+	 tag(tag_)
 {
-	filename = tag + ".txt";
-	commonCountryFile = tag + ".txt";
+	if (const auto& regionName = regions.getRegionName(region); regionName)
+	{
+		if (const auto& ownerAdjective = owner.getAdjective(); ownerAdjective)
+		{
+			name = *ownerAdjective + " " + *regionName;
+		}
+		else
+		{
+			name = *regionName;
+		}
+	}
+	determineFilename();
 }
 
 

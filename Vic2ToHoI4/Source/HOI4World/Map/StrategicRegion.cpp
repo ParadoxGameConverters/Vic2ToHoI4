@@ -1,8 +1,8 @@
 #include "StrategicRegion.h"
 #include "CommonRegexes.h"
 #include "Configuration.h"
+#include "MapRegion.h"
 #include "ParserHelpers.h"
-#include "Region.h"
 #include <fstream>
 
 
@@ -11,7 +11,7 @@ HoI4::StrategicRegion::StrategicRegion(const std::string& _filename, const Confi
 	 filename(_filename)
 {
 	registerKeyword("strategic_region", [this](std::istream& theStream) {
-		Region theRegion(theStream);
+		MapRegion theRegion(theStream);
 		ID = theRegion.getID();
 		name = theRegion.takeName();
 		oldProvinces = theRegion.takeProvinces();

@@ -60,7 +60,7 @@ class Country
 		 const Mappers::CountryMapper& countryMap,
 		 const Mappers::FlagsToIdeasMapper& flagsToIdeasMapper,
 		 Localisation& hoi4Localisations);
-	explicit Country(const std::string& tag_, const Country& owner);
+	explicit Country(const std::string& tag_, const Country& owner, const std::string& region, const Regions& regions);
 
 	void determineCapitalFromVic2(const Mappers::ProvinceMapper& theProvinceMapper,
 		 const std::map<int, int>& provinceToStateIDMap,

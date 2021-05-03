@@ -8,8 +8,17 @@ std::optional<std::string> HoI4::Regions::getRegion(int provinceNumber) const
 	{
 		return regionsMap.at(provinceNumber);
 	}
-	else
+
+	return std::nullopt;
+}
+
+
+std::optional<std::string> HoI4::Regions::getRegionName(const std::string& regionName) const
+{
+	if (regionNames.contains(regionName))
 	{
-		return std::nullopt;
+		return regionNames.at(regionName);
 	}
+
+	return std::nullopt;
 }

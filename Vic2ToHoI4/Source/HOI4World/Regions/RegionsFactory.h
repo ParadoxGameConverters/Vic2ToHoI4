@@ -5,6 +5,7 @@
 
 #include "Parser.h"
 #include "Regions.h"
+#include "RegionFactory.h"
 #include <memory>
 
 
@@ -20,6 +21,8 @@ class Regions::Factory: commonItems::parser
 	std::unique_ptr<Regions> getRegions();
 
   private:
+	Region::Factory regionFactory;
+	
 	std::unique_ptr<Regions> theRegions;
 };
 

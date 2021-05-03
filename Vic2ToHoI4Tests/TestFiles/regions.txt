@@ -1,1 +1,4 @@
-test_region = { 42 }
+test_region = {
+	name = "Test Region"
+	provinces = { 42 }
+}
