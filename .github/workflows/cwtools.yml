@@ -1,0 +1,15 @@
+name: CWTools CI
+
+on: [pull_request, push] # other events may work but are not supported
+
+jobs:
+  cwtools_job:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1 # required
+    - uses: cwtools/cwtools-action@v1.0.0
+      with:
+        game: hoi4
+        modPath: "Vic2ToHoI4/Data_Files/blankMod/output"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
