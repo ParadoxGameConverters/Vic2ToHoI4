@@ -1,0 +1,2 @@
+0.3O - Oppenheimer: Compatible with HoI4 1.10
+https://github.com/ParadoxGameConverters/Vic2ToHoI4/releases/download/0.3Oppenheimer/Vic2ToHoI4-0.3Oppenheimer.zip
