@@ -74,6 +74,13 @@ class Localisation
 		 const std::set<std::string>& majorIdeologies,
 		 const Vic2::Localisations& vic2Localisations,
 		 const ArticleRules& articleRules);
+	void createGeneratedDominionLocalisations(const std::string& tag,
+		 const std::string& region,
+		 const std::string& ownerOldTag,
+		 const Vic2::Localisations& vic2Localisations,
+		 const Mappers::CountryNameMapper& countryNameMapper,
+		 const std::set<std::string>& majorIdeologies,
+		 const ArticleRules& articleRules);
 	void updateMainCountryLocalisation(const std::string& HoI4Key,
 		 const std::string& Vic2Tag,
 		 const std::string& Vic2Government,

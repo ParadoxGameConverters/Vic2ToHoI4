@@ -111,7 +111,7 @@ HoI4::Country::Country(std::string tag,
 
 HoI4::Country::Country(const std::string& tag_,
 	 const Country& owner,
-	 const std::string& region,
+	 const std::string& region_,
 	 const Regions& regions,
 	 Mappers::GraphicsMapper& graphicsMapper,
 	 Names& names,
@@ -121,7 +121,8 @@ HoI4::Country::Country(const std::string& tag_,
 	 rulingParty(owner.rulingParty), parties(owner.parties), upperHouseComposition(owner.upperHouseComposition),
 	 lastElection(owner.lastElection), color(owner.color), graphicalCulture(owner.graphicalCulture),
 	 graphicalCulture2d(owner.graphicalCulture2d), warSupport(owner.warSupport),
-	 oldTechnologiesAndInventions(owner.oldTechnologiesAndInventions), atWar(owner.atWar), shipNames(owner.shipNames)
+	 oldTechnologiesAndInventions(owner.oldTechnologiesAndInventions), atWar(owner.atWar), shipNames(owner.shipNames),
+	 generatedDominion(true), region(region_), puppetMaster(owner.getOldTag())
 {
 	if (const auto& regionName = regions.getRegionName(region); regionName)
 	{
@@ -159,13 +160,11 @@ HoI4::Country::Country(const std::string& tag_,
 		ideas.insert(owner.tag + "_monarch");
 	}
 
-	// do something about oldTag or make it not always needed
-	// same with oldGovernment. Though maybe the owner's works? Double-check how the localisations work
+	// update main country localisation, same as for other countries
 	// make sure tech converts. oldTechnologiesAndInventions may be redundant
 	// employedWorkers is only relevant if freed, and even then only if freed before converting industry
 	// flags
-	// country categories - common/scripted_triggers/country_categories.txt
-	// what it takes to make scripted localisations work
+	// possibly free dominions (set diplomacy if so)
 }
 
 

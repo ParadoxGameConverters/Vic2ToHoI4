@@ -87,11 +87,6 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	convertGovernments(sourceWorld, vic2Localisations, theConfiguration.getDebug());
 	ideologies = std::make_unique<Ideologies>(theConfiguration);
 	ideologies->identifyMajorIdeologies(greatPowers, countries, theConfiguration);
-	convertCountryNames(vic2Localisations);
-	scriptedLocalisations = ScriptedLocalisations::Factory().getScriptedLocalisations();
-	scriptedLocalisations->updateIdeologyLocalisations(ideologies->getMajorIdeologies());
-	scriptedLocalisations->filterIdeologyLocalisations(ideologies->getMajorIdeologies());
-	hoi4Localisations->generateCustomLocalisations(*scriptedLocalisations, ideologies->getMajorIdeologies());
 	states = std::make_unique<States>(sourceWorld,
 		 *countryMap,
 		 theProvinces,
@@ -117,6 +112,12 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	strategicRegions->convert(*states);
 	convertDiplomacy(sourceWorld);
 	convertTechs();
+
+	convertCountryNames(vic2Localisations);
+	scriptedLocalisations = ScriptedLocalisations::Factory().getScriptedLocalisations();
+	scriptedLocalisations->updateIdeologyLocalisations(ideologies->getMajorIdeologies());
+	scriptedLocalisations->filterIdeologyLocalisations(ideologies->getMajorIdeologies());
+	hoi4Localisations->generateCustomLocalisations(*scriptedLocalisations, ideologies->getMajorIdeologies());
 
 	militaryMappingsFile importedMilitaryMappings;
 	theMilitaryMappings = importedMilitaryMappings.takeAllMilitaryMappings();
@@ -309,16 +310,30 @@ void HoI4::World::convertCountryNames(const Vic2::Localisations& vic2Localisatio
 	const auto articleRules = ArticleRules::Factory().getRules("Configurables/Localisations/ArticleRules.txt");
 	for (const auto& [tag, country]: countries)
 	{
-		hoi4Localisations->createCountryLocalisations(std::make_pair(country->getOldTag(), tag),
-			 *countryNameMapper,
-			 ideologies->getMajorIdeologies(),
-			 vic2Localisations,
-			 *articleRules);
-		hoi4Localisations->updateMainCountryLocalisation(tag + "_" + country->getGovernmentIdeology(),
-			 country->getOldTag(),
-			 country->getOldGovernment(),
-			 vic2Localisations,
-			 *articleRules);
+		if (country->isGeneratedDominion())
+		{
+			const auto ownerOldTag = country->getPuppetMaster();
+			hoi4Localisations->createGeneratedDominionLocalisations(tag,
+				 country->getRegion(),
+				 ownerOldTag,
+				 vic2Localisations,
+				 *countryNameMapper,
+				 ideologies->getMajorIdeologies(),
+				 *articleRules);
+		}
+		else
+		{
+			hoi4Localisations->createCountryLocalisations(std::make_pair(country->getOldTag(), tag),
+				 *countryNameMapper,
+				 ideologies->getMajorIdeologies(),
+				 vic2Localisations,
+				 *articleRules);
+			hoi4Localisations->updateMainCountryLocalisation(tag + "_" + country->getGovernmentIdeology(),
+				 country->getOldTag(),
+				 country->getOldGovernment(),
+				 vic2Localisations,
+				 *articleRules);
+		}
 	}
 
 	hoi4Localisations->addNonenglishCountryLocalisations();

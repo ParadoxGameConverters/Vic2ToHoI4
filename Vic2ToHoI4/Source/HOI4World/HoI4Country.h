@@ -62,7 +62,7 @@ class Country
 		 Localisation& hoi4Localisations);
 	explicit Country(const std::string& tag_,
 		 const Country& owner,
-		 const std::string& region,
+		 const std::string& region_,
 		 const Regions& regions,
 		 Mappers::GraphicsMapper& graphicsMapper,
 		 Names& names,
@@ -221,6 +221,8 @@ class Country
 	[[nodiscard]] const std::string& getPuppetMaster() const { return puppetMaster; }
 	[[nodiscard]] bool isGreatPower() const { return greatPower; }
 	[[nodiscard]] bool isCivilized() const { return civilized; }
+	[[nodiscard]] bool isGeneratedDominion() const { return generatedDominion; }
+	[[nodiscard]] const auto& getRegion() const { return region; }
 
 	[[nodiscard]] bool isNavalTreatyAdherent() const { return navalTreatyAdherent; }
 	[[nodiscard]] bool isGreatestNavalPower() const { return greatestNavalPower; }
@@ -360,6 +362,8 @@ class Country
 	std::string puppetMaster;
 	bool greatPower = false;
 	bool civilized = false;
+	bool generatedDominion = false;
+	std::string region;
 
 	std::map<std::string, int> GPInfluences;
 	std::map<std::string, double> spherelings;
