@@ -26,5 +26,4 @@ deploy:
     secure: LBJzs4y9j0N5y0ajp7gmVk3Pvnec1UU5pTCdIMbQYUddEXQnWTJ79FXsd9SCs7YQ
   repository: ParadoxGameConverters/Vic2ToHoI4
   artifact: Vic2ToHoI4-0.3Oppenheimer
-  prerelease: true
   force_update: true
