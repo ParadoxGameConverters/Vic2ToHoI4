@@ -3931,7 +3931,7 @@ oceanic = {
 	# HAW/Portrait_Hawaii_David_Kawananakoa is David Sr. (1868-1908)
 	# OC/portrait_HAW_David_Kalakaua_Kawananakoa is his son David Jr. (1904-1953)
 		communism = { "gfx/leaders/HAW/Portrait_Hawaii_David_Kawananakoa.dds" "gfx/leaders/OC/portrait_HAW_David_Kalakaua_Kawananakoa.dds" } # Revise
-		democratic = { "gfx/leaders/HAW/Portrait_Hawaii_David_Kawananakoa.dds" "gfx/leaders/OC/portrait_HAW_David_Kalakaua_Kawananakoa.dds" } # Revise
+		democratic = { "gfx/leaders/NZL/Portrait_NZL_Apirana_Ngata.dds" } 
 		fascism = { "gfx/leaders/HAW/Portrait_Hawaii_David_Kawananakoa.dds" "gfx/leaders/OC/portrait_HAW_David_Kalakaua_Kawananakoa.dds" } # Revise
 		absolutist = { "gfx/leaders/HAW/Portrait_Hawaii_David_Kawananakoa.dds" "gfx/leaders/OC/portrait_HAW_David_Kalakaua_Kawananakoa.dds" } 
 		neutrality = { "gfx/leaders/HAW/Portrait_Hawaii_David_Kawananakoa.dds" "gfx/leaders/OC/portrait_HAW_David_Kalakaua_Kawananakoa.dds" } # Revise
