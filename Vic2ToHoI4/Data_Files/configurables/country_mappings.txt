@@ -133,7 +133,7 @@ link = { vic = LUA hoi = LAO } # Laos
 link = { vic = LAT hoi = LAT } # Latvia
 link = { vic = LBY hoi = LBA } # Libya
 link = { vic = TRI hoi = LBA } # Tripoli => Libya
-link = { vic = LEB hoi = LEB } # Lebanon
+link = { vic = LBN hoi = LEB } # Lebanon
 link = { vic = LIB hoi = LIB } # Liberia
 link = { vic = LIT hoi = LIT } # Lithuania
 link = { vic = LUX hoi = LUX } # Luxembourg
