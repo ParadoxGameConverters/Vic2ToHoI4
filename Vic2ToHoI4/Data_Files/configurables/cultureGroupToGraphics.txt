@@ -3875,10 +3875,10 @@ east_asian = {
 	leader_portraits = {
 		communism = { "gfx/leaders/CHI/portrait_prc_mao_zedong.dds" "gfx/leaders/KOR/Portrait_KOR_Kim_Il-Sung.dds" }
 		democratic = { "GFX_CHI_Sun_Fo" "gfx/leaders/CHI/Portrait_China_weng_wenhao.dds" } 
-		fascism = { "GFX_CHI_Chen_Gongbo" "gfx/leaders/MEN/portrait_men_demchugdongrub.dds" "gfx/leaders/SIK/Portrait_Sinkiang_Sheng_Shicai.dds" } 
-		absolutist = { "GFX_portrait_man_henry_pu_yi_emperor" "gfx/leaders/SHX/portrait_shx_yan_xishan.dds" "gfx/leaders/OC/portrait_Vic1_Tibetan_leader.tga" "gfx/leaders/XSM/portrait_xsm_ma_bufang.dds" }
+		fascism = { "GFX_CHI_Chen_Gongbo" "gfx/leaders/MEN/portrait_men_demchugdongrub.dds" "GFX_portrait_chi_wang_jingwei" } 
+		absolutist = { "GFX_portrait_man_henry_pu_yi_emperor" "gfx/leaders/SHX/portrait_shx_yan_xishan.dds" "gfx/leaders/OC/portrait_Vic1_Tibetan_leader.tga" "gfx/leaders/XSM/portrait_xsm_ma_bufang.dds" "gfx/leaders/CHI/Portrait_Kung_Te-Ping.dds" }
 		neutrality = { "gfx/leaders/OC/portrait_Vic1_Tibetan_leader.tga" "gfx/leaders/CHI/Portrait_China_Chiang_Kai_Shek.dds" "gfx/leaders/CHI/Portrait_China_Mao_Zedong.dds" "gfx/leaders/GXC/Portrait_Guanxi_Clique_Li_Zongren.dds" }
-		radical = { "gfx/leaders/Asia/Portrait_Asia_Generic_warlord2.dds" } # Yan Xishan
+		radical = { "gfx/leaders/Asia/Portrait_Asia_Generic_warlord2.dds" "gfx/leaders/CHI/Portrait_CHI_Yuan_Shikai.dds" } # warlord2 is Yan Xishan
 	}
 	ideology_minister_portraits = 
 	{
