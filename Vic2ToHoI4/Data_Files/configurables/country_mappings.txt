@@ -180,7 +180,7 @@ link = { vic = CPL hoi = POL } # Congress Poland => Poland
 link = { vic = PPG hoi = PNG } # Papua New Guinea
 link = { vic = POR hoi = POR } # Portugal
 #link = { vic = CHI hoi = PRC } # China (already used)
-#link = { vic = KOR hoi = PYO } # Pyongyang => DPRK
+link = { vic = KOR hoi = PYO } # Pyongyang => DPRK
 link = { vic = PRU hoi = PRE } # Prussia
 link = { vic = PEU hoi = PRU } # Peru
 link = { vic = PRI hoi = PUE } # Puerto Rico
