@@ -398,21 +398,22 @@ bool HoI4::Localisation::attemptToUpdateMainCountryLocalisation(const std::strin
 	 const std::string& Vic2Key,
 	 const Vic2::Localisations& vic2Localisations)
 {
-	if (auto Vic2Text = vic2Localisations.getTextInEachLanguage(Vic2Key); Vic2Text.empty())
+	auto Vic2Text = vic2Localisations.getTextInEachLanguage(Vic2Key);
+	if (!Vic2Text.empty())
 	{
-		for (const auto& textInLanguage: Vic2Text)
-		{
-			auto localisations = getExistingLocalisationsInLanguage(textInLanguage.first);
-			if (auto localisation = localisations->second.find(HoI4Key); localisation != localisations->second.end())
-			{
-				localisation->second = textInLanguage.second;
-			}
-		}
-
-		return true;
+		return false;
 	}
 
-	return false;
+	for (const auto& textInLanguage: Vic2Text)
+	{
+		auto localisations = getExistingLocalisationsInLanguage(textInLanguage.first);
+		if (auto localisation = localisations->second.find(HoI4Key); localisation != localisations->second.end())
+		{
+			localisation->second = textInLanguage.second;
+		}
+	}
+
+	return true;
 }
 
 
@@ -421,21 +422,22 @@ bool HoI4::Localisation::attemptToUpdateMainCountryLocalisationChangingArticles(
 	 const Vic2::Localisations& vic2Localisations,
 	 const ArticleRules& articleRules)
 {
-	if (auto Vic2Text = vic2Localisations.getTextInEachLanguage(Vic2Key); Vic2Text.empty())
+	const auto Vic2Text = vic2Localisations.getTextInEachLanguage(Vic2Key);
+	if (Vic2Text.empty())
 	{
-		for (const auto& textInLanguage: Vic2Text)
-		{
-			auto localisations = getExistingLocalisationsInLanguage(textInLanguage.first);
-			if (auto localisation = localisations->second.find(HoI4Key); localisation != localisations->second.end())
-			{
-				localisation->second = articleRules.updateArticles(textInLanguage.first, textInLanguage.second);
-			}
-		}
-
-		return true;
+		return false;
 	}
 
-	return false;
+	for (const auto& textInLanguage: Vic2Text)
+	{
+		auto localisations = getExistingLocalisationsInLanguage(textInLanguage.first);
+		if (auto localisation = localisations->second.find(HoI4Key); localisation != localisations->second.end())
+		{
+			localisation->second = articleRules.updateArticles(textInLanguage.first, textInLanguage.second);
+		}
+	}
+
+	return true;
 }
 
 
