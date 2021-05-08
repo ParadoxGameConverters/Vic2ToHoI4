@@ -133,7 +133,7 @@ link = { vic = LUA hoi = LAO } # Laos
 link = { vic = LAT hoi = LAT } # Latvia
 link = { vic = LBY hoi = LBA } # Libya
 link = { vic = TRI hoi = LBA } # Tripoli => Libya
-link = { vic = LEB hoi = LEB } # Lebanon
+link = { vic = LBN hoi = LEB } # Lebanon
 link = { vic = LIB hoi = LIB } # Liberia
 link = { vic = LIT hoi = LIT } # Lithuania
 link = { vic = LUX hoi = LUX } # Luxembourg
@@ -177,7 +177,7 @@ link = { vic = PER hoi = PER } # Persia
 link = { vic = PHI hoi = PHI } # Philippines
 link = { vic = POL hoi = POL } # Poland
 link = { vic = CPL hoi = POL } # Congress Poland => Poland
-link = { vic = PNG hoi = PNG } # Papua New Guinea
+link = { vic = PPG hoi = PNG } # Papua New Guinea
 link = { vic = POR hoi = POR } # Portugal
 #link = { vic = CHI hoi = PRC } # China (already used)
 link = { vic = KOR hoi = PYO } # Pyongyang => DPRK
@@ -209,7 +209,7 @@ link = { vic = SOM hoi = SOM } # Somalia
 link = { vic = RUS hoi = SOV } # Russia
 link = { vic = SPA hoi = SPR } # Spain
 link = { vic = SPC hoi = SPR } # Carlist Spain => Spain
-link = { vic = KTH hoi = SRL } # Ceylon
+link = { vic = SRI hoi = SRL } # Ceylon
 link = { vic = SUD hoi = SUD } # Sudan
 link = { vic = NUB hoi = SUD } # Funj => Sudan
 link = { vic = SUR hoi = SUR } # Suriname
