@@ -336,6 +336,10 @@ void HoI4::Localisation::createGeneratedDominionLocalisations(const std::string&
 
 		auto localisationsForGovernment =
 			 vic2Localisations.getTextInEachLanguage(ownerOldTag + "_" + *vic2Government + "_ADJ");
+		if (localisationsForGovernment.empty())
+		{
+			localisationsForGovernment = vic2Localisations.getTextInEachLanguage(ownerOldTag + "_ADJ");
+		}
 		for (auto& [language, localisation]: localisationsForGovernment)
 		{
 			if (const auto& secondPart = vic2Localisations.getTextInLanguage(region, language); secondPart)
