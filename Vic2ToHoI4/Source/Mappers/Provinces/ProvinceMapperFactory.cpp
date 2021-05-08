@@ -98,6 +98,12 @@ std::unique_ptr<Mappers::ProvinceMapper> Mappers::ProvinceMapper::Factory::impor
 	auto mapped = false;
 	for (const auto& mod: theConfiguration.getVic2Mods())
 	{
+		if (commonItems::DoesFileExist(theConfiguration.getVic2ModPath() + "/" + mod.getDirectory() + "/hybridization.txt"))
+		{
+			parseFile("Configurables/Historical Project Mod 0.4.6_province_mappings.txt");
+			mapped = true;
+			break;
+		}
 		if (commonItems::DoesFileExist("Configurables/" + mod.getName() + "_province_mappings.txt"))
 		{
 			parseFile("Configurables/" + mod.getName() + "_province_mappings.txt");
