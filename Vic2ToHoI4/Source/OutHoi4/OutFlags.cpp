@@ -16,7 +16,11 @@ void processFlagsForCountry(const std::string&,
 	 const std::string& outputName,
 	 const std::vector<Vic2::Mod>& vic2Mods,
 	 const std::string& vic2ModPath);
-std::optional<tga_image*> createDominionFlag(std::string_view hoi4Suffix);
+std::optional<tga_image*> createDominionFlag(std::string hoi4Suffix,
+	 std::string vic2Suffix,
+	 std::string overlord,
+	 const std::vector<Vic2::Mod>& vic2Mods,
+	 const std::string& vic2ModPath);
 std::tuple<uint8_t, uint8_t, uint8_t> getDominionFlagBaseColor(std::string_view hoi4Suffix);
 std::optional<tga_image*> readFlag(const std::string& path);
 tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsigned int sizeY);
@@ -108,7 +112,8 @@ void HoI4::processFlagsForCountry(const std::string& tag,
 
 		if (country.isGeneratedDominion())
 		{
-			sourceFlag = createDominionFlag(hoi4Suffixes[i]);
+			sourceFlag =
+				 createDominionFlag(hoi4Suffixes[i], vic2Suffixes[i], country.getPuppetMaster(), vic2Mods, vic2ModPath);
 		}
 		else
 		{
@@ -226,7 +231,11 @@ std::optional<std::string> HoI4::getAllowModFlags(const std::string& flagFilenam
 }
 
 
-std::optional<tga_image*> HoI4::createDominionFlag(std::string_view hoi4Suffix)
+std::optional<tga_image*> HoI4::createDominionFlag(std::string hoi4Suffix,
+	 std::string vic2Suffix,
+	 std::string overlord,
+	 const std::vector<Vic2::Mod>& vic2Mods,
+	 const std::string& vic2ModPath)
 {
 	constexpr int sizeX = 93;
 	constexpr int sizeY = 64;
@@ -264,6 +273,29 @@ std::optional<tga_image*> HoI4::createDominionFlag(std::string_view hoi4Suffix)
 			flag->image_data[destIndex + 1] = g;
 			flag->image_data[destIndex + 2] = b;
 			flag->image_data[destIndex + 3] = 0xFF;
+		}
+	}
+
+	const auto ownerSourcePath = getSourceFlagPath(overlord, vic2Suffix, vic2Mods, vic2ModPath);
+	if (ownerSourcePath)
+	{
+		const auto sourceFlag = readFlag(*ownerSourcePath);
+		if (sourceFlag)
+		{
+			const auto sourceBytesPerPixel = (*sourceFlag)->pixel_depth / 8;
+			for (unsigned int y = 0; y < (*sourceFlag)->height; y += 2)
+			{
+				for (unsigned int x = 0; x < (*sourceFlag)->width; x += 2)
+				{
+					const auto sourceIndex = (y * (*sourceFlag)->width + x) * sourceBytesPerPixel;
+					const auto destIndex = ((y / 2 + (sizeY / 2)) * sizeX + (x / 2)) * 4;
+
+					flag->image_data[destIndex + 0] = (*sourceFlag)->image_data[sourceIndex + 0];
+					flag->image_data[destIndex + 1] = (*sourceFlag)->image_data[sourceIndex + 1];
+					flag->image_data[destIndex + 2] = (*sourceFlag)->image_data[sourceIndex + 2];
+					flag->image_data[destIndex + 3] = 0xFF;
+				}
+			}
 		}
 	}
 
