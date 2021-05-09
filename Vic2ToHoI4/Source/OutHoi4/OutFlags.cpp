@@ -11,13 +11,13 @@
 namespace HoI4
 {
 
-void processFlagsForCountry(const std::pair<std::string, std::shared_ptr<Country>>& country,
+void processFlagsForCountry(const std::string&,
+	 const Country& country,
 	 const std::string& outputName,
 	 const std::vector<Vic2::Mod>& vic2Mods,
 	 const std::string& vic2ModPath);
-std::vector<std::string> getSourceFlagPaths(const std::string& Vic2Tag,
-	 const std::vector<Vic2::Mod>& vic2Mods,
-	 const std::string& vic2ModPath);
+std::optional<tga_image*> createDominionFlag(std::string_view hoi4Suffix);
+std::tuple<uint8_t, uint8_t, uint8_t> getDominionFlagBaseColor(std::string_view hoi4Suffix);
 std::optional<tga_image*> readFlag(const std::string& path);
 tga_image* createNewFlag(const tga_image* sourceFlag, unsigned int sizeX, unsigned int sizeY);
 void createBigFlag(const tga_image* sourceFlag, const std::string& filename, const std::string& outputName);
@@ -63,14 +63,16 @@ void HoI4::copyFlags(const std::map<std::string, std::shared_ptr<Country>>& coun
 		throw std::runtime_error("Could not create output/" + outputName + "/gfx/flags/small");
 	}
 
-	for (const auto& country: countries)
+	for (const auto& [tag, country]: countries)
 	{
-		processFlagsForCountry(country, outputName, vic2Mods, vic2ModPath);
+		processFlagsForCountry(tag, *country, outputName, vic2Mods, vic2ModPath);
 	}
 }
 
 
-const std::vector<std::string> vic2Suffixes{
+constexpr int numFlagsPerCountry = 6;
+
+constexpr std::array<const char*, numFlagsPerCountry> vic2Suffixes{
 	 ".tga",				 // base flag
 	 "_communist.tga", // communism flag
 	 ".tga",				 // democratic flag
@@ -79,7 +81,7 @@ const std::vector<std::string> vic2Suffixes{
 	 "_republic.tga",	 // radical flag
 };
 
-const std::vector<std::string> hoi4Suffixes{
+constexpr std::array<const char*, numFlagsPerCountry> hoi4Suffixes{
 	 ".tga",				  // base flag
 	 "_communism.tga",  // communism flag
 	 "_democratic.tga", // democratic flag
@@ -88,64 +90,49 @@ const std::vector<std::string> hoi4Suffixes{
 	 "_radical.tga",	  // radical flag
 };
 
-static std::set<std::string> allowedMods = {"POPs of Darkness", "New Nations Mod", "Divergences of Darkness", "The Concert of Europe"};
+static std::set<std::string> allowedMods = {"POPs of Darkness",
+	 "New Nations Mod",
+	 "Divergences of Darkness",
+	 "The Concert of Europe"};
 
 
-void HoI4::processFlagsForCountry(const std::pair<std::string, std::shared_ptr<Country>>& country,
+void HoI4::processFlagsForCountry(const std::string& tag,
+	 const Country& country,
 	 const std::string& outputName,
 	 const std::vector<Vic2::Mod>& vic2Mods,
 	 const std::string& vic2ModPath)
 {
-	const auto sourcePaths = getSourceFlagPaths(country.second->getOldTag(), vic2Mods, vic2ModPath);
-	for (size_t i = 0; i < sourcePaths.size(); i++)
+	for (size_t i = 0; i < numFlagsPerCountry; i++)
 	{
-		if (!sourcePaths[i].empty())
+		std::optional<tga_image*> sourceFlag;
+
+		if (country.isGeneratedDominion())
 		{
-			auto sourceFlag = readFlag(sourcePaths[i]);
-			if (!sourceFlag)
-			{
-				return;
-			}
-
-			createBigFlag(*sourceFlag, country.first + hoi4Suffixes[i], outputName);
-			createMediumFlag(*sourceFlag, country.first + hoi4Suffixes[i], outputName);
-			createSmallFlag(*sourceFlag, country.first + hoi4Suffixes[i], outputName);
-
-			tga_free_buffers(*sourceFlag);
-			delete *sourceFlag;
-		}
-	}
-}
-
-
-std::vector<std::string> HoI4::getSourceFlagPaths(const std::string& Vic2Tag,
-	 const std::vector<Vic2::Mod>& vic2Mods,
-	 const std::string& vic2ModPath)
-{
-	std::vector<std::string> paths;
-
-	for (const auto& vic2Suffix: vic2Suffixes)
-	{
-		auto path = getSourceFlagPath(Vic2Tag, vic2Suffix, vic2Mods, vic2ModPath);
-		if (path)
-		{
-			paths.push_back(*path);
+			sourceFlag = createDominionFlag(hoi4Suffixes[i]);
 		}
 		else
 		{
-			Log(LogLevel::Warning) << "Could not find source flag: " << Vic2Tag << vic2Suffix;
-			if (paths.size() > 0)
+			const auto sourcePath = getSourceFlagPath(country.getOldTag(), vic2Suffixes[i], vic2Mods, vic2ModPath);
+			if (!sourcePath)
 			{
-				paths.push_back(*paths.begin());
+				continue;
 			}
-			else
-			{
-				paths.push_back("");
-			}
-		}
-	}
 
-	return paths;
+			sourceFlag = readFlag(*sourcePath);
+		}
+
+		if (!sourceFlag)
+		{
+			continue;
+		}
+
+		createBigFlag(*sourceFlag, tag + hoi4Suffixes[i], outputName);
+		createMediumFlag(*sourceFlag, tag + hoi4Suffixes[i], outputName);
+		createSmallFlag(*sourceFlag, tag + hoi4Suffixes[i], outputName);
+
+		tga_free_buffers(*sourceFlag);
+		delete *sourceFlag;
+	}
 }
 
 
@@ -190,6 +177,7 @@ std::optional<std::string> HoI4::getSourceFlagPath(const std::string& Vic2Tag,
 		return path;
 	}
 
+	Log(LogLevel::Warning) << "Could not find source flag: " << Vic2Tag << sourceSuffix;
 	return {};
 }
 
@@ -235,6 +223,78 @@ std::optional<std::string> HoI4::getAllowModFlags(const std::string& flagFilenam
 	}
 
 	return {};
+}
+
+
+std::optional<tga_image*> HoI4::createDominionFlag(std::string_view hoi4Suffix)
+{
+	constexpr int sizeX = 93;
+	constexpr int sizeY = 64;
+
+	const auto flag = new tga_image;
+	flag->image_id_length = 0;
+	flag->color_map_type = TGA_COLOR_MAP_ABSENT;
+	flag->image_type = TGA_IMAGE_TYPE_BGR;
+	flag->color_map_origin = 0;
+	flag->color_map_length = 0;
+	flag->color_map_depth = 0;
+	flag->origin_x = 0;
+	flag->origin_y = 0;
+	flag->width = sizeX;
+	flag->height = sizeY;
+	flag->pixel_depth = 32;
+	flag->image_descriptor = 8;
+	flag->image_id = nullptr;
+	flag->color_map_data = nullptr;
+
+	flag->image_data = static_cast<uint8_t*>(malloc(sizeX * sizeY * 4));
+	if (flag->image_data == nullptr)
+	{
+		return flag;
+	}
+
+	const auto [r, g, b] = HoI4::getDominionFlagBaseColor(hoi4Suffix);
+	for (unsigned int y = 0; y < sizeY; y++)
+	{
+		for (unsigned int x = 0; x < sizeX; x++)
+		{
+			const auto destIndex = (y * sizeX + x) * 4;
+
+			flag->image_data[destIndex + 0] = r;
+			flag->image_data[destIndex + 1] = g;
+			flag->image_data[destIndex + 2] = b;
+			flag->image_data[destIndex + 3] = 0xFF;
+		}
+	}
+
+	return flag;
+}
+
+
+std::tuple<uint8_t, uint8_t, uint8_t> HoI4::getDominionFlagBaseColor(std::string_view hoi4Suffix)
+{
+	if (hoi4Suffix == "_communism.tga")
+	{
+		return {0x00, 0x00, 0xFF};
+	}
+	if (hoi4Suffix == "_democratic.tga")
+	{
+		return {0xFF, 0x00, 0x00};
+	}
+	if (hoi4Suffix == "_fascism.tga")
+	{
+		return {0x00, 0x4B, 0x96};
+	}
+	if (hoi4Suffix == "_absolutist.tga")
+	{
+		return {0xFF, 0x00, 0x80};
+	}
+	if (hoi4Suffix == "_radical.tga")
+	{
+		return {0x00, 0x9B, 0x9B};
+	}
+
+	return {0x7C, 0x7C, 0x7C};
 }
 
 

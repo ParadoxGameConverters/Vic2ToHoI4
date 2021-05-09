@@ -143,7 +143,7 @@ HoI4::Country::Country(const std::string& tag_,
 
 	determineFilename();
 
-	color.RandomlyFluctuate(2.0F);
+	color.RandomlyFluctuate(2);
 
 	armyPortraits = graphicsMapper.getArmyPortraits(primaryCultureGroup);
 	navyPortraits = graphicsMapper.getNavyPortraits(primaryCultureGroup);
@@ -160,7 +160,6 @@ HoI4::Country::Country(const std::string& tag_,
 		ideas.insert(owner.tag + "_monarch");
 	}
 
-	// make sure tech converts. oldTechnologiesAndInventions may be redundant
 	// employedWorkers is only relevant if freed, and even then only if freed before converting industry
 	// flags
 	// possibly free dominions (set diplomacy if so)
