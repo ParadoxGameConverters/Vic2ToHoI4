@@ -16,9 +16,10 @@ void processFlagsForCountry(const std::string&,
 	 const std::string& outputName,
 	 const std::vector<Vic2::Mod>& vic2Mods,
 	 const std::string& vic2ModPath);
-std::optional<tga_image*> createDominionFlag(std::string hoi4Suffix,
-	 std::string vic2Suffix,
-	 std::string overlord,
+std::optional<tga_image*> createDominionFlag(const std::string& hoi4Suffix,
+	 const std::string& vic2Suffix,
+	 const std::string& overlord,
+	 const std::string& region,
 	 const std::vector<Vic2::Mod>& vic2Mods,
 	 const std::string& vic2ModPath);
 std::tuple<uint8_t, uint8_t, uint8_t> getDominionFlagBaseColor(std::string_view hoi4Suffix);
@@ -113,7 +114,7 @@ void HoI4::processFlagsForCountry(const std::string& tag,
 		if (country.isGeneratedDominion())
 		{
 			sourceFlag =
-				 createDominionFlag(hoi4Suffixes[i], vic2Suffixes[i], country.getPuppetMaster(), vic2Mods, vic2ModPath);
+				 createDominionFlag(hoi4Suffixes[i], vic2Suffixes[i], country.getPuppetMaster(), country.getRegion(), vic2Mods, vic2ModPath);
 		}
 		else
 		{
@@ -231,9 +232,10 @@ std::optional<std::string> HoI4::getAllowModFlags(const std::string& flagFilenam
 }
 
 
-std::optional<tga_image*> HoI4::createDominionFlag(std::string hoi4Suffix,
-	 std::string vic2Suffix,
-	 std::string overlord,
+std::optional<tga_image*> HoI4::createDominionFlag(const std::string& hoi4Suffix,
+	 const std::string& vic2Suffix,
+	 const std::string& overlord,
+	 const std::string& region,
 	 const std::vector<Vic2::Mod>& vic2Mods,
 	 const std::string& vic2ModPath)
 {
@@ -279,22 +281,48 @@ std::optional<tga_image*> HoI4::createDominionFlag(std::string hoi4Suffix,
 	const auto ownerSourcePath = getSourceFlagPath(overlord, vic2Suffix, vic2Mods, vic2ModPath);
 	if (ownerSourcePath)
 	{
-		const auto sourceFlag = readFlag(*ownerSourcePath);
-		if (sourceFlag)
+		const auto ownerSourceFlag = readFlag(*ownerSourcePath);
+		if (ownerSourceFlag)
 		{
-			const auto sourceBytesPerPixel = (*sourceFlag)->pixel_depth / 8;
-			for (unsigned int y = 0; y < (*sourceFlag)->height; y += 2)
+			const auto sourceBytesPerPixel = (*ownerSourceFlag)->pixel_depth / 8;
+			for (unsigned int y = 0; y < (*ownerSourceFlag)->height; y += 2)
 			{
-				for (unsigned int x = 0; x < (*sourceFlag)->width; x += 2)
+				for (unsigned int x = 0; x < (*ownerSourceFlag)->width; x += 2)
 				{
-					const auto sourceIndex = (y * (*sourceFlag)->width + x) * sourceBytesPerPixel;
+					const auto sourceIndex = (y * (*ownerSourceFlag)->width + x) * sourceBytesPerPixel;
 					const auto destIndex = ((y / 2 + (sizeY / 2)) * sizeX + (x / 2)) * 4;
 
-					flag->image_data[destIndex + 0] = (*sourceFlag)->image_data[sourceIndex + 0];
-					flag->image_data[destIndex + 1] = (*sourceFlag)->image_data[sourceIndex + 1];
-					flag->image_data[destIndex + 2] = (*sourceFlag)->image_data[sourceIndex + 2];
+					flag->image_data[destIndex + 0] = (*ownerSourceFlag)->image_data[sourceIndex + 0];
+					flag->image_data[destIndex + 1] = (*ownerSourceFlag)->image_data[sourceIndex + 1];
+					flag->image_data[destIndex + 2] = (*ownerSourceFlag)->image_data[sourceIndex + 2];
 					flag->image_data[destIndex + 3] = 0xFF;
 				}
+			}
+		}
+	}
+
+	const auto emblemPath = "flags/" + region + "_emblem.tga";
+	const auto emblem = readFlag(emblemPath);
+	if (emblem)
+	{
+		const auto sourceBytesPerPixel = (*emblem)->pixel_depth / 8;
+		for (unsigned int y = 0; y < (*emblem)->height; y++)
+		{
+			for (unsigned int x = 0; x < (*emblem)->width; x++)
+			{
+				const auto sourceIndex = (y * (*emblem)->width + x) * sourceBytesPerPixel;
+				const auto destIndex = (y * sizeX + (sizeX - (*emblem)->width) + x) * 4;
+
+				// skip pixels masked by the alpha channel
+				if ((*emblem)->image_data[sourceIndex + 2] == 0)
+				{
+					continue;
+				}
+
+				flag->image_data[destIndex + 0] = (*emblem)->image_data[sourceIndex + 0];
+				flag->image_data[destIndex + 1] = (*emblem)->image_data[sourceIndex + 1];
+				flag->image_data[destIndex + 2] = (*emblem)->image_data[sourceIndex + 2];
+				flag->image_data[destIndex + 3] = 0xFF;
 			}
 		}
 	}
@@ -338,7 +366,7 @@ std::optional<tga_image*> HoI4::readFlag(const std::string& path)
 	{
 		Log(LogLevel::Warning) << "Could not read flag " << path << ": " << tga_error(result) << ".";
 		delete flag;
-		flag = {};
+		return std::nullopt;
 	}
 
 	return flag;
