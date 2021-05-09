@@ -161,7 +161,6 @@ HoI4::Country::Country(const std::string& tag_,
 	}
 
 	// employedWorkers is only relevant if freed, and even then only if freed before converting industry
-	// flags
 	// possibly free dominions (set diplomacy if so)
 }
 

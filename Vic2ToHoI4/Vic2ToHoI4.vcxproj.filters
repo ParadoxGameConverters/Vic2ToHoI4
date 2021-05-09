@@ -4955,6 +4955,9 @@
     <CopyFileToFolders Include="Data_Files\flags\CEG_republic.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
+	<CopyFileToFolders Include="Data_Files\flags\central_asia_emblem.tga">
+      <Filter>Data Files\Flags</Filter>
+    </CopyFileToFolders>
     <CopyFileToFolders Include="Data_Files\flags\CEP.tga">
       <Filter>Data Files\Flags</Filter>
     </CopyFileToFolders>
