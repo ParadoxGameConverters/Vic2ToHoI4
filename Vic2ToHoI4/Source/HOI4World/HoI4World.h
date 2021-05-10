@@ -139,8 +139,8 @@ class World: commonItems::parser
 	void convertIdeologySupport();
 
 	void convertIndustry(const Configuration& theConfiguration);
-	void addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper,
-		 Mappers::CountryMapper::Factory& countryMapperFactory);
+	void addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper);
+	void addDominions(Mappers::CountryMapper::Factory& countryMapperFactory);
 	void determineCoreStates();
 	std::map<std::string, double> calculateFactoryWorkerRatios(const Configuration& theConfiguration);
 	std::map<std::string, double> getIndustrialWorkersPerCountry();
@@ -189,6 +189,16 @@ class World: commonItems::parser
 	std::vector<std::string> getStrongestNavyGps();
 
 	std::set<std::string> getSouthAsianCountries() const;
+
+		std::pair<std::string, std::shared_ptr<Country>> getDominion(const std::string& ownerTag,
+		 const Country& owner,
+		 const std::string& region,
+		 std::map<std::string, std::shared_ptr<Country>>& countries,
+		 Mappers::CountryMapper::Factory& countryMapperFactory,
+		 const Regions& regions,
+		 Mappers::GraphicsMapper& graphicsMapper,
+		 Names& names,
+		 Localisation& hoi4Localisations);
 
 	// vector<int> getPortLocationCandidates(const vector<int>& locationCandidates, const HoI4AdjacencyMapping&
 	// HoI4AdjacencyMap);
@@ -249,6 +259,9 @@ class World: commonItems::parser
 	std::vector<SoundEffect> soundEffects;
 
 	std::vector<std::string> strongestGpNavies;
+
+	std::unique_ptr<Regions> theRegions;
+	std::map<std::pair<std::string, std::string>, std::string> dominions;
 };
 
 } // namespace HoI4

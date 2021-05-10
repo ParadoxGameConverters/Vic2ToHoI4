@@ -71,6 +71,8 @@ class States: commonItems::parser
 	[[nodiscard]] const std::map<int, int>& getProvinceToStateIDMap() const { return provinceToStateIDMap; }
 	[[nodiscard]] const auto& getLanguageCategories() const { return languageCategories; }
 
+	[[nodiscard]] std::map<int, State>& getModifiableStates() { return states; }
+
 	void convertAirBases(const std::map<std::string, std::shared_ptr<Country>>& countries,
 		 const std::vector<std::shared_ptr<Country>>& greatPowers);
 	void convertResources();
@@ -160,16 +162,6 @@ class States: commonItems::parser
 	void addGreatPowerVPs(const std::vector<std::shared_ptr<Country>>& greatPowers);
 	void addCapitalVictoryPoints(const std::map<std::string, std::shared_ptr<Country>>& countries);
 
-	std::pair<std::string, std::shared_ptr<Country>> getDominion(const std::string& ownerTag,
-		 const Country& owner,
-		 const std::string& region,
-		 std::map<std::string, std::shared_ptr<Country>>& countries,
-		 Mappers::CountryMapper::Factory& countryMapperFactory,
-		 const Regions& regions,
-		 Mappers::GraphicsMapper& graphicsMapper,
-		 Names& names,
-		 Localisation& hoi4Localisations);
-
 	std::map<int, std::string> ownersMap;
 	std::map<int, std::set<std::pair<std::string, std::string>>> coresMap;
 	std::set<int> assignedProvinces;
@@ -180,8 +172,6 @@ class States: commonItems::parser
 	int nextStateID = 1;
 
 	std::map<std::string, std::set<int>> languageCategories;
-
-	std::map<std::pair<std::string, std::string>, std::string> dominions;
 };
 
 } // namespace HoI4

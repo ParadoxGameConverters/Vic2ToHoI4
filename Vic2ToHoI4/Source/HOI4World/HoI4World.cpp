@@ -101,7 +101,9 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 		 theConfiguration);
 	supplyZones = new HoI4::SupplyZones(states->getDefaultStates(), theConfiguration);
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, provinceDefinitions, theConfiguration);
-	addStatesToCountries(provinceMapper, countryMapperFactory);
+	theRegions = Regions::Factory().getRegions();
+	addStatesToCountries(provinceMapper);
+	addDominions(countryMapperFactory);
 	states->addCapitalsToStates(countries);
 	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
@@ -410,8 +412,7 @@ void HoI4::World::convertIndustry(const Configuration& theConfiguration)
 }
 
 
-void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper,
-	 Mappers::CountryMapper::Factory& countryMapperFactory)
+void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMapper)
 {
 	Log(LogLevel::Info) << "\tAdding states to countries";
 	for (auto state: states->getStates())
@@ -423,7 +424,6 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 		}
 	}
 
-	const auto theRegions = Regions::Factory().getRegions();
 	for (auto country: countries)
 	{
 		if (country.second->getStates().size() > 0)
@@ -433,8 +433,87 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 		country.second->determineCapitalFromVic2(provinceMapper, states->getProvinceToStateIDMap(), states->getStates());
 		country.second->setCapitalRegionFlag(*theRegions);
 	}
+}
 
-	states->addDominions(countries, *theRegions, countryMapperFactory, *graphicsMapper, *names, *hoi4Localisations);
+void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFactory)
+{
+	for (auto& [stateId, state]: states->getModifiableStates())
+	{
+		const auto& provinces = state.getProvinces();
+		if (provinces.empty())
+		{
+			continue;
+		}
+		const auto& stateRegion = theRegions->getRegion(*provinces.begin());
+
+		const auto& owner = countries.find(state.getOwner());
+		if (owner == countries.end())
+		{
+			continue;
+		}
+		const auto& ownerCapitalProvince = owner->second->getCapitalProvince();
+		if (!ownerCapitalProvince)
+		{
+			continue;
+		}
+		const auto& ownerRegion = theRegions->getRegion(*ownerCapitalProvince);
+
+		const bool differentRegions =
+			 ((stateRegion && !ownerRegion) || (stateRegion && ownerRegion && *stateRegion != *ownerRegion));
+		if (!differentRegions)
+		{
+			continue;
+		}
+
+		auto [dominionTag, dominion] = getDominion(owner->first,
+			 *owner->second,
+			 *stateRegion,
+			 countries,
+			 countryMapperFactory,
+			 *theRegions,
+			 *graphicsMapper,
+			 *names,
+			 *hoi4Localisations);
+		state.addCores({dominionTag});
+		dominion->addCoreState(stateId);
+	}
+
+	for (auto& [unused, dominionTag]: dominions)
+	{
+		if (auto dominion = countries.find(dominionTag); dominion != countries.end())
+		{
+			dominion->second->determineBestCapital(states->getStates());
+		}
+	}
+}
+
+
+std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::World::getDominion(const std::string& ownerTag,
+	 const Country& owner,
+	 const std::string& region,
+	 std::map<std::string, std::shared_ptr<Country>>& countries,
+	 Mappers::CountryMapper::Factory& countryMapperFactory,
+	 const Regions& regions,
+	 Mappers::GraphicsMapper& graphicsMapper,
+	 Names& names,
+	 Localisation& hoi4Localisations)
+{
+	if (const auto& dominionTag = dominions.find(std::make_pair(ownerTag, region)); dominionTag != dominions.end())
+	{
+		if (const auto dominion = countries.find(dominionTag->second); dominion != countries.end())
+		{
+			return *dominion;
+		}
+		return std::make_pair(dominionTag->second, nullptr);
+	}
+
+	const auto dominionTag = countryMapperFactory.generateNewHoI4Tag();
+	dominions.emplace(std::make_pair(ownerTag, region), dominionTag);
+	auto dominion =
+		 std::make_shared<Country>(dominionTag, owner, region, regions, graphicsMapper, names, hoi4Localisations);
+	countries.emplace(dominionTag, dominion);
+
+	return std::make_pair(dominionTag, dominion);
 }
 
 
