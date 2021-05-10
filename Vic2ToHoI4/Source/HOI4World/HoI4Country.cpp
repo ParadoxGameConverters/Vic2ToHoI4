@@ -159,9 +159,6 @@ HoI4::Country::Country(const std::string& tag_,
 	{
 		ideas.insert(owner.tag + "_monarch");
 	}
-
-	// employedWorkers is only relevant if freed, and even then only if freed before converting industry
-	// possibly free dominions (set diplomacy if so)
 }
 
 
