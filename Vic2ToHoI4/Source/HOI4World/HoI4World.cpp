@@ -488,6 +488,8 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 }
 
 
+// employedWorkers is only relevant if freed, and even then only if freed before converting industry
+// possibly free dominions (set diplomacy if so)
 std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::World::getDominion(const std::string& ownerTag,
 	 const Country& owner,
 	 const std::string& region,
