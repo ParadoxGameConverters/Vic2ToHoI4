@@ -122,7 +122,7 @@ HoI4::Country::Country(const std::string& tag_,
 	 lastElection(owner.lastElection), color(owner.color), graphicalCulture(owner.graphicalCulture),
 	 graphicalCulture2d(owner.graphicalCulture2d), warSupport(owner.warSupport),
 	 oldTechnologiesAndInventions(owner.oldTechnologiesAndInventions), atWar(owner.atWar), shipNames(owner.shipNames),
-	 generatedDominion(true), region(region_), puppetMaster(owner.getOldTag())
+	 generatedDominion(true), region(region_), puppetMaster(owner.getTag()), puppetMasterOldTag(owner.getOldTag())
 {
 	if (const auto& regionName = regions.getRegionName(region); regionName)
 	{

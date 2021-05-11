@@ -219,6 +219,7 @@ class Country
 	[[nodiscard]] const std::set<std::string>& getAllies() const { return allies; }
 	[[nodiscard]] const std::set<std::string>& getPuppets() const { return puppets; }
 	[[nodiscard]] const std::string& getPuppetMaster() const { return puppetMaster; }
+	[[nodiscard]] const std::string& getPuppetMasterOldTag() const { return puppetMasterOldTag; }
 	[[nodiscard]] bool isGreatPower() const { return greatPower; }
 	[[nodiscard]] bool isCivilized() const { return civilized; }
 	[[nodiscard]] bool isGeneratedDominion() const { return generatedDominion; }
@@ -360,6 +361,7 @@ class Country
 	std::set<std::string> allies;
 	std::set<std::string> puppets;
 	std::string puppetMaster;
+	std::string puppetMasterOldTag;
 	bool greatPower = false;
 	bool civilized = false;
 	bool generatedDominion = false;

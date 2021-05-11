@@ -103,11 +103,11 @@ HoI4::World::World(const Vic2::World& sourceWorld,
 	buildings = new Buildings(*states, theCoastalProvinces, *theMapData, provinceDefinitions, theConfiguration);
 	theRegions = Regions::Factory().getRegions();
 	addStatesToCountries(provinceMapper);
-	addDominions(countryMapperFactory);
 	states->addCapitalsToStates(countries);
 	intelligenceAgencies = IntelligenceAgencies::Factory::createIntelligenceAgencies(countries, *names);
 	hoi4Localisations->addStateLocalisations(*states, vic2Localisations, provinceMapper, theConfiguration);
 	convertIndustry(theConfiguration);
+	addDominions(countryMapperFactory);
 	determineCoreStates();
 	states->convertResources();
 	supplyZones->convertSupplyZones(*states);
@@ -314,7 +314,7 @@ void HoI4::World::convertCountryNames(const Vic2::Localisations& vic2Localisatio
 	{
 		if (country->isGeneratedDominion())
 		{
-			const auto ownerOldTag = country->getPuppetMaster();
+			const auto ownerOldTag = country->getPuppetMasterOldTag();
 			hoi4Localisations->createGeneratedDominionLocalisations(tag,
 				 country->getRegion(),
 				 ownerOldTag,
@@ -435,6 +435,7 @@ void HoI4::World::addStatesToCountries(const Mappers::ProvinceMapper& provinceMa
 	}
 }
 
+
 void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFactory)
 {
 	for (auto& [stateId, state]: states->getModifiableStates())
@@ -478,18 +479,41 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 		dominion->addCoreState(stateId);
 	}
 
+	auto& modifiableStates = states->getModifiableStates();
 	for (auto& [unused, dominionTag]: dominions)
 	{
 		if (auto dominion = countries.find(dominionTag); dominion != countries.end())
 		{
 			dominion->second->determineBestCapital(states->getStates());
+
+			const auto overlordTag = dominion->second->getPuppetMaster();
+			auto overlord = countries.find(overlordTag);
+			if (overlord == countries.end())
+			{
+				continue;
+			}
+
+			if (dominionShouldBeFreed(*dominion->second, *overlord->second))
+			{
+				overlord->second->addPuppet(dominionTag);
+				for (const auto& stateId: dominion->second->getCoreStates())
+				{
+					if (auto state = modifiableStates.find(stateId); state != modifiableStates.end())
+					{
+						state->second.setOwner(dominionTag);
+						dominion->second->addState(state->second);
+					}
+				}
+			}
 		}
 	}
 }
 
 
-// employedWorkers is only relevant if freed, and even then only if freed before converting industry
-// possibly free dominions (set diplomacy if so)
+// set government
+// set leader
+// give generic political parties
+// overlord units don't need to control provinces
 std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::World::getDominion(const std::string& ownerTag,
 	 const Country& owner,
 	 const std::string& region,
@@ -516,6 +540,12 @@ std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::World::getDominion(
 	countries.emplace(dominionTag, dominion);
 
 	return std::make_pair(dominionTag, dominion);
+}
+
+
+bool HoI4::World::dominionShouldBeFreed(const Country& dominion, const Country& overlord)
+{
+	return true;
 }
 
 

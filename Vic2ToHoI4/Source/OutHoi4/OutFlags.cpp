@@ -114,7 +114,7 @@ void HoI4::processFlagsForCountry(const std::string& tag,
 		if (country.isGeneratedDominion())
 		{
 			sourceFlag =
-				 createDominionFlag(hoi4Suffixes[i], vic2Suffixes[i], country.getPuppetMaster(), country.getRegion(), vic2Mods, vic2ModPath);
+				 createDominionFlag(hoi4Suffixes[i], vic2Suffixes[i], country.getPuppetMasterOldTag(), country.getRegion(), vic2Mods, vic2ModPath);
 		}
 		else
 		{

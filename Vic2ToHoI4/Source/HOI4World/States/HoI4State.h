@@ -63,6 +63,7 @@ class State
 		 const Mappers::ProvinceMapper& theProvinceMapper,
 		 const Mappers::CountryMapper& countryMapper);
 	void setControlledProvince(int provinceNum, const std::string& country);
+	void setOwner(std::string newOwner) { ownerTag = std::move(newOwner); }
 
 	int getID() const { return ID; }
 	const std::set<int>& getProvinces() const { return provinces; }
