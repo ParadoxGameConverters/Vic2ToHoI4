@@ -510,10 +510,10 @@ void HoI4::World::addDominions(Mappers::CountryMapper::Factory& countryMapperFac
 }
 
 
-// set government
-// set leader
-// give generic political parties
 // overlord units don't need to control provinces
+// determine actual release conditions
+// some shouldn't be formed
+// Central Asia not so far north
 std::pair<std::string, std::shared_ptr<HoI4::Country>> HoI4::World::getDominion(const std::string& ownerTag,
 	 const Country& owner,
 	 const std::string& region,

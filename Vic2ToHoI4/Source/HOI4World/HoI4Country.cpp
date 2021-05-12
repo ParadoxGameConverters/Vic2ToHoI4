@@ -122,7 +122,8 @@ HoI4::Country::Country(const std::string& tag_,
 	 lastElection(owner.lastElection), color(owner.color), graphicalCulture(owner.graphicalCulture),
 	 graphicalCulture2d(owner.graphicalCulture2d), warSupport(owner.warSupport),
 	 oldTechnologiesAndInventions(owner.oldTechnologiesAndInventions), atWar(owner.atWar), shipNames(owner.shipNames),
-	 generatedDominion(true), region(region_), puppetMaster(owner.getTag()), puppetMasterOldTag(owner.getOldTag())
+	 generatedDominion(true), region(region_), puppetMaster(owner.getTag()), puppetMasterOldTag(owner.getOldTag()),
+	 governmentIdeology(owner.getGovernmentIdeology()), leaderIdeology(owner.getLeaderIdeology())
 {
 	if (const auto& regionName = regions.getRegionName(region); regionName)
 	{
@@ -159,6 +160,8 @@ HoI4::Country::Country(const std::string& tag_,
 	{
 		ideas.insert(owner.tag + "_monarch");
 	}
+
+	convertLaws();
 }
 
 
